@@ -1,6 +1,6 @@
 # Vídeo «EconomIA» (clave `claude-prepara`)
 
-Apaisado 1920×1080, 3-4 minutos, sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `claude-prepara`) y lo enlazan `oposicion/economia.html`, `app/index.html#claude` y la app (Más → EconomIA).
+Apaisado 1920×1080, tres minutos como máximo (2:59 desde el 11 nov.), sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `claude-prepara`) y lo enlazan `oposicion/economia.html`, `app/index.html#claude` y la app (Más → EconomIA).
 
 Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de pantalla a 1920×1080, sin voz, despacio, con el ratón visible):
 
@@ -19,31 +19,35 @@ Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de panta
 
 El conector se llama «Oposición TCEE · DCE» y funciona en Claude, ChatGPT, Le Chat y Gemini (con Claude, completo). En `index.html`: marca y portada con el icono de la app y «EconomIA» (sin el asterisco de Claude), escena nueva **plataformas** tras «porque» (4 compases: «En tu IA. Con Claude, completo.» y una tarjeta por IA), las tomas corridas 4 compases y el cierre con las cuatro IA y `economia.html`; el resto de escenas sigue enseñándolo en Claude. Antes de renderizar hay que **volver a grabar G2c** (la página de autorización y la de entrar con Google ya no llevan el asterisco ni el nombre antiguo) y revisar las capturas de `claude-movil-*` (el conector puede salir con el nombre antiguo).
 
-## Escenas (versión del 28 oct., unos 3:36; con la escena de plataformas, 3:53)
+## Escenas (versión del 11 nov.: 2:59, 82 compases)
 
-1. **Portada**: «Prepara con Claude» · «Complementa tu preparación con la skill de Claude» · aviso «No sustituye a un preparador para la oposición: lo complementa».
-2. **Gancho**: «Tu preparador te corrige una vez a la semana. Entre clase y clase, las dudas esperan.» → «A la medida de cada opositor. Cada semana te conoce mejor.»
-3. **Qué hace**: seis tarjetas (cantes, dictámenes, dudas, cronograma, tribunal, test), para TCEE y DCE.
-4. **No es un chatbot genérico**: «Sabe tu temario. Y tú aprendes de ella.» · lleva el temario · parte de tu preparación real · tiene memoria (cada vez te conoce mejor) · se mantiene al día sola.
-5. **Instalar** (toma G2): tres pasos, una sola vez.
-6. **Un cante**: la app transcribe (móviles de TCEE y DCE) → adjuntar y pedir (G4a) → el informe con el minuto y la fuente, el tribunal y el PDF (G4b).
-7. **Un dictamen** (G5a, G5b): aunque esté a mano; diagnóstico, coherencia, preguntas de la defensa.
-8. **Una duda** (G6a, G6b): ve el temario en conjunto.
-9. **El cronograma**: exportar (las dos apps) → un opositor a DCE pide el reparto del cante de 20 minutos y el cronograma por fases (G9na, G9nb; colores y letra de DCE; el nombre «Manuel» solo en el saludo «Buenas noches, Manuel») → en TCEE igual (G7b) → traerlo a la app.
-10. **Tu carpeta** (G8): la estructura por ejercicios y Claude trabajando desde ella.
-11. **En el móvil**: la app de Claude con la misma skill (la app → el chat con el cante adjunto → la respuesta; capturas de claude.ai con viewport de móvil).
-12. **Y mucho más**: «Pide lo que se te ocurra», seis ejemplos.
-13. **Al día**: se actualiza sola, tus datos son tuyos, material exclusivo.
-14. **Cierre**: Claude Pro, aviso y dirección.
+El 11 nov. se acortó de 4:39 a 2:59 y se añadieron las vistas interactivas del conector (MCP Apps). Las tomas grabadas son las mismas, aceleradas (`guion.json` → `tomas`: de qué escena cuelga cada una, cuánto dura en el vídeo y qué tramo de la grabación se usa; `preparar.py` las recodifica en `assets/tomas/r-*.mp4`). Las vistas son capturas reales de `mcp/worker/src/vistas/` hechas con `vistas/capturar.py` (cliente simulado, datos de ejemplo con preguntas y títulos reales); en el vídeo van dentro de un cuadro con el nombre del conector, un cursor pulsa el botón y la captura pasa de «antes» a «después».
+
+1. **Portada** (2 compases) y **gancho** (3): igual que antes, más breve.
+2. **Qué hace** (4): seis tarjetas; el test, «en el propio chat».
+3. **No es un chatbot genérico** (4): temario, tu preparación real, memoria y «al día y en tus manos» (antes era una escena aparte al final).
+4. **En qué IA funciona** (3).
+5. **Conectar** (6, toma G2c): tres pasos.
+6. **Un cante** (3 + 4 + 4): la app transcribe → adjuntar y pedir (G4a) → el informe (G4b), el PDF y **la vista del informe**: nota, rúbrica y deberes, y el botón «Guardar en la app».
+7. **Un dictamen** (6, G5a y G5b).
+8. **Una duda** (4, G6a y G6b) y **con gráfico** (4, G10a y G10b).
+9. **El cronograma** (6 + 4): en DCE (G9na y G9nb) → en TCEE, **la vista del cronograma** por meses, el botón de guardar y cómo queda en la app.
+10. **Un test** (4, nuevo): **la vista del test** con la figura de la pregunta; al contestar, la corrección y el porqué.
+11. **Una clase** (5): la petición, **la vista de la clase** con «Pedir la clase» y la agenda de la app.
+12. **Tu carpeta** (5, G8), **en el móvil** (3) e **y mucho más** (4; una de las peticiones es de preparador).
+13. **Cierre** (4).
+
+Quitadas: «Claude ya conoce tus datos» (lo dice el rótulo del cronograma), la toma G7b y «Al día» (su contenido va en la escena 3; la tarjeta de «material exclusivo» ya no sale).
 
 ## Montaje (hecho el 28 oct. con HyperFrames)
 
 `index.html` es la composición (copiada del promocional `scripts/video-app/`: misma paleta, GSAP, rótulos de bloque y barrido dorado; la escena de DCE usa el granate, el azul y Latin Modern). `guion.json` fija el compás en que empieza cada escena; `preparar.py` lo lleva al HTML y prepara `assets/` (fuentes, el asterisco del logo de Claude —el nombre va siempre en Pagella, nunca con la letra de la marca; el icono de la app aparece aparte, en la portada y el cierre—, capturas de la app y de claude.ai en el móvil, páginas del informe en PDF, las tomas MP4 y la banda sonora de `musica.py`: la música del promocional compuesta de una pieza para esta duración, con un respiro en cada cambio de bloque, sin bucle ni cortes). La ventana de las tomas tiene su misma proporción (1912 × 948) y `object-fit: contain`, para que no se recorten los lados. El rótulo de bloque (arriba a la derecha) lleva solo el nombre del bloque; «Prepara con Claude» aparece una vez, en la marca de arriba a la izquierda. Las tomas se graban en un Edge aparte con `cdp.mjs` y se montan con `montar-toma.py` (carpeta `C:\Users\vgutierrez\AppData\Local\Temp\claude-video`); van en la raíz de `index.html`, fuera de las escenas, porque HyperFrames no admite un `<video data-start>` dentro de otro elemento con `data-start`. Rótulos sobre cada toma: qué está pasando y qué aporta.
 
 ```bash
-python3 scripts/video-claude/preparar.py        # recursos y compases
-cd scripts/video-claude && npx hyperframes lint && npx hyperframes render
-python3 scripts/video-claude/publicar.py --subir  # MP4 para la web, pósteres y YouTube (clave claude-prepara)
+python3 scripts/video-claude/vistas/capturar.py # solo si cambian las vistas del conector: rehace las capturas
+python3 scripts/video-claude/preparar.py        # recursos, compases, tomas aceleradas y música
+cd scripts/video-claude && npx hyperframes lint && npx hyperframes render -o ~/.local/share/oposicion-web/videos/claude-prepara-render.mp4
+python3 scripts/video-claude/publicar.py --render ~/.local/share/oposicion-web/videos/claude-prepara-render.mp4 --web --subir  # MP4 para la web, pósteres y YouTube (clave claude-prepara)
 ```
 
 Después, quitar `hidden` a los reproductores de `oposicion/economia.html` y `app/index.html#claude` y hacer commit de `videos.json`. Nunca usar `scripts/montar-video-app.py`.
