@@ -294,6 +294,7 @@ Todo el tema es nuevo. Lo que no está en Tebar (o está en una línea) y de dó
 | Comentario | Cómo se ha aplicado |
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 10 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): III: corte tras «Acuerdos internacionales» (antes, antes de «frente al»), con `\cortetitulo`. Sin `c_K` en el tema. |
+| Sin comentarios específicos de Víctor (11/11/2026) | Víctor lo da por revisado por ahora; las mejoras se aplicarán más adelante. |
 
 ## Dudas abiertas
 
