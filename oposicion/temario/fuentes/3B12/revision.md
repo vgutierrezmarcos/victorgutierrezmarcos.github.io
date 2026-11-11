@@ -183,3 +183,8 @@ Opción aplicada entre corchetes.
   - III.3 (1′30″): de palabra; la pegatina «lo temporal se financia; lo permanente se ajusta» se escribe junto al gráfico intertemporal. `eq:cc-fundamental` como apoyo, no se escribe.
   - III.4 (5′): a la pizarra la función clave `eq:deuda-externa` y debajo `eq:saldo-estabilizador`; el gráfico `dinamica-deuda-externa` en sus 2 paneles (caso 3: capas 1-3; caso 4: capas 4-5); la lista de determinantes con sus signos. Las extensiones, como lista de títulos con una frase cada una (valoración, indicadores, DSA, fuentes de financiación, pecado original, *risk sharing*, superávits). España: se dicen las cifras de 2007 (estabilizador −2 %, déficit del 6 %) y de 2025; `cc-piin-espana` y las tablas `tab:indicadores-externos`, `tab:fuentes-financiacion` y `tab:sostenibilidad-espana`, como apoyo.
 - No se dicen números de temas en voz alta.
+
+## Respuestas de Víctor (12/11/2026)
+
+- Se mantiene el I.4 nuevo (IS-LM-BP, asignación de Mundell y ajuste con tipo flexible).
+- Enganche «De aquellos polvos, estos lodos» aprobado.

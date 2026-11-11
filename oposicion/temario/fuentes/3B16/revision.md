@@ -7,8 +7,8 @@
 - Tema reescrito en LaTeX sobre el Word de Víctor, con los 3 apartados del original y sus títulos de segundo nivel en su orden (los de primer nivel, acortados: D3). Minutos: introducción 2′30″, I 11′, II 9′, III 6′30″, conclusión 1′ (30′).
 - Errores de teoría y de datos corregidos (McKinnon, notación de Magnifico, uniones «incompletas» de la introducción, fechas de Ingram, Frankel y Rose y Rose, federalismo fiscal atribuido a Mundell, PEC y Europa 2020 caducos), con todas las cifras al último dato oficial y citadas.
 - Huecos del título cubiertos: beneficios y credibilidad (Barro-Gordon y «atarse las manos»), evidencia, críticas de los 80, fragilidad de De Grauwe (2011) y prestamista de última instancia, política fiscal en la unión (Galí y Monacelli), unión bancaria y fiscal al día.
-- El modelo centro-periferia sale del cuerpo (está en el 3.B.6): queda su resultado (Krugman, 1993) y un anexo breve con el *tomahawk*. Anexos nuevos: otras uniones monetarias y la salida de una unión; test con el enlace genérico al simulador.
-- 7 gráficos TikZ nuevos o copiados (mundell, mundell-devaluacion, amo-flexibilidad, costes-beneficios, endogeneidad hechos; circulo-vicioso y logica-amo pedidos) más 3 copiados sin cambios (joroba, barro-gordon, tomahawk). 109 entradas en `3B16.bib`.
+- El modelo centro-periferia sale del cuerpo (está en el 3.B.6): queda su resultado (Krugman, 1993) en pocas líneas con remisión al 3.B.6, sin anexo (decisión del 12/11/2026). Anexos nuevos: otras uniones monetarias y la salida de una unión; test con el enlace genérico al simulador.
+- 7 gráficos TikZ nuevos o copiados (mundell, mundell-devaluacion, amo-flexibilidad, costes-beneficios, endogeneidad hechos; circulo-vicioso y logica-amo pedidos) más 2 copiados sin cambios (joroba, barro-gordon; el tomahawk se quitó el 12/11/2026). 109 entradas en `3B16.bib`.
 
 ## 2. Errores corregidos
 
@@ -24,7 +24,7 @@
 | I.2, nota 17 | 3.ª función «ante shocks simétricos»; «cambo»; atribuida a Eichengreen | «aseguradora ante perturbaciones asimétricas»; sin atribuirla a Eichengreen (ver Dudas) |
 | II.2.2 | Frankel y Rose (1999) | (1998), *Economic Journal* |
 | II.3 | «Ross (2000)»; Bertola y Blanchard y Soskice (2001) sin obra | Rose (2000); Alesina, Ardagna y Galasso (2011) (ver Dudas) |
-| II.2.1, modelo centro-periferia | Tabla de mecanismos con errores de signo, γ y μ con 2 sentidos | Sale; resultado en el cuerpo y *tomahawk* en anexo con la notación del 3.B.6 ($\phi_\tau$, $\lambda_A$) |
+| II.2.1, modelo centro-periferia | Tabla de mecanismos con errores de signo, γ y μ con 2 sentidos | Sale; resumen del resultado en el cuerpo con \vertema{3.B.6}, sin anexo (12/11/2026) |
 | II.4 | Costes de transacción «0,25-0,5 % del PIB» | «En torno al 0,4 %» (Comisión, 1990) |
 | III.3.1 | Federalismo fiscal «tal y como proponía Mundell» | Kenen (1969) |
 | III.3.2 | PEC «3 % y 60 %»; «Estrategia Europa 2020»; frase duplicada («en ausencia de una integración completa» 2 veces) | Senda de gasto primario neto desde 2024 (Reglamentos 2024/1263 y 2024/1264) con los valores de referencia; Semestre Europeo; reescrita |
@@ -54,7 +54,7 @@
 | P18 (comentarios) | Desarrollar Barro-Gordon (De Grauwe, pp. 41 y ss.) | Credibilidad en II.4 con a)-d), `eq:sesgo` y `fig:credibilidad` |
 | P19 (comentario) | «Es un poco lioso… hay que reestructurar» | Reordenado por debajo de los títulos; no se publica |
 | P20-P24, P26 (figuras) | Imágenes 1-4, nota 13, imagen 6 | TikZ: `mundell` (3 filas), `mundell-devaluacion` (caja gris), `amo-flexibilidad`, `endogeneidad`; la superficie 3D sale. La imagen 6 citaba el tema de otro opositor: fuente cambiada a De Grauwe (2022) |
-| P25, P29 | Calmfors-Driffill y *tomahawk* escaneados | `joroba` (3.A.27) y `tomahawk` (3.B.6) copiados sin cambios |
+| P25, P29 | Calmfors-Driffill y *tomahawk* escaneados | `joroba` (3.A.27) copiado sin cambios; el `tomahawk` (3.B.6) se copió y se quitó el 12/11/2026 con su anexo |
 | P27, P32 | Tablas de criterios y de ventajas | `tab:criterios` y `tab:beneficios-costes` en LaTeX con color |
 | P28, P30 | Miniaturas y tabla de mecanismos del centro-periferia | Salen con el modelo (están en el 3.B.6) |
 | P31, P33 | Capturas «Size matters» y «¿La Zona Euro es un AMO?» | La idea de tamaño, en II.1 de palabra; la captura, como `tab:zona-euro-amo` con datos al día (caja gris) |
@@ -97,7 +97,7 @@ Fecha de consulta: 11/11/2026 salvo que se diga. Detalle completo y segunda comp
 - **II**: costes y beneficios frente a la apertura y al tamaño; Krugman (1993) con a)-c); Frankel y Rose (1998) con su evidencia (BCE, 2018; Campos, Fidrmuc y Korhonen, 2019); evidencia (Bayoumi y Eichengreen, 1993; Rose, 2000; Rose y Stanley, 2005; Glick y Rose, 2016; Polák, 2019; Alesina, Ardagna y Galasso, 2011); tabla «¿Es la zona del euro un AMO?» con los 7 criterios; beneficios micro, credibilidad con Barro-Gordon y Giavazzi-Pagano (con la libra en 1992 y Rogoff, 1985), geopolíticos; costes adicionales; terceros países (Bayoumi, 1994).
 - **III** (nuevo en gran parte): la fragilidad de De Grauwe (2011) con a)-d) (equilibrios múltiples, Calvo, 1988; Reino Unido frente a España; prestamista de última instancia; Draghi, 2012); el círculo vicioso con sus 5 pasos y en los 2 sentidos (`fig:circulo-vicioso`); contagio por balances, flujos (TARGET), moneda común y reversibilidad; monetización con los programas del BCE, la dominación fiscal, el art. 123 del TFUE y las sentencias *Gauweiler* (2015) y *Weiss* (2018); unión bancaria (MUS, MUR con el FUR, EDIS sin aprobar), Unión de Ahorros e Inversiones, unión fiscal de Kenen, NGEU y Bénassy-Quéré *et al.* (2018); solución imperfecta con Galí y Monacelli (2008), Nakamura y Steinsson (2014), la devaluación fiscal (Farhi, Gopinath e Itskhoki, 2014), el art. 125 del TFUE y las reglas de 2024.
 - **Conclusión**: los 5 bloques; idea final que responde a la pregunta del enganche y retoma el refrán.
-- **Anexos**: lógica de las AMO (TikZ pedido); especialización y *tomahawk*; Stiglitz (con datos de Eurostat y contrapunto); crisis del euro y respuesta; otras uniones y la salida de una unión (nuevo, D4); test.
+- **Anexos**: lógica de las AMO (TikZ pedido); Stiglitz (con datos de Eurostat y contrapunto); crisis del euro y respuesta; otras uniones y la salida de una unión (nuevo, D4); test.
 
 ### Propuestas: aplicadas y no aplicadas
 
@@ -121,13 +121,13 @@ Fecha de consulta: 11/11/2026 salvo que se diga. Detalle completo y segunda comp
 
 ## 6. Coherencia
 
-Cambios en este tema: notación del canon ($q$, $\gamma_q$, $\gamma_{P^*}$, $\mathrm{XN}$, $\mathrm{DA}_{\mathrm{ES}}$, $\phi_\tau$); «zona del euro» y «perturbación»; remisiones con `\vertema` a 3.A.6, 3.A.27, 3.A.32, 3.A.36, 3.A.38, 3.A.39, 3.A.40, 3.B.6, 3.B.10, 3.B.11, 3.B.12, 3.B.14, 3.B.15, 3.B.17, 3.B.19, 3.B.26, 3.B.37, 3.B.40, 3.B.43, 3.B.44, 3.B.45, 4.A.16 y 4.A.28; promesas de otros temas cumplidas (3.B.10, 3.A.32, 3.A.27, 3.A.6/3.A.28/3.A.36, 3.A.38, 3.A.39, 3.A.40, 3.B.11); fragilidad, OMT y TPI con las palabras y claves del 3.A.39 y el 3.A.36; Galí-Monacelli y Nakamura-Steinsson con las del 3.A.32, 3.A.38 y 3.A.40; *tomahawk* con la notación y los textos del 3.B.6.
+Cambios en este tema: notación del canon ($q$, $\gamma_q$, $\gamma_{P^*}$, $\mathrm{XN}$, $\mathrm{DA}_{\mathrm{ES}}$); «zona del euro» y «perturbación»; remisiones con `\vertema` a 3.A.6, 3.A.27, 3.A.32, 3.A.36, 3.A.38, 3.A.39, 3.A.40, 3.B.6, 3.B.10, 3.B.11, 3.B.12, 3.B.14, 3.B.15, 3.B.17, 3.B.19, 3.B.26, 3.B.37, 3.B.40, 3.B.43, 3.B.44, 3.B.45, 4.A.16 y 4.A.28; promesas de otros temas cumplidas (3.B.10, 3.A.32, 3.A.27, 3.A.6/3.A.28/3.A.36, 3.A.38, 3.A.39, 3.A.40, 3.B.11); fragilidad, OMT y TPI con las palabras y claves del 3.A.39 y el 3.A.36; Galí-Monacelli y Nakamura-Steinsson con las del 3.A.32, 3.A.38 y 3.A.40; el centro-periferia, resumen del resultado con \vertema{3.B.6}, sin anexo (12/11/2026).
 
 **Lo que hay que cambiar en otros temas** (no se ha tocado ninguno; para `canon/pendientes-coherencia.md`):
 
 1. **Clave `GiavazziPagano1988Advantage` mal en 3A06, 3A28 y 3A36**: pp. 1077-1082 y DOI 10.1016/0014-2921(88)90067-0, que es el comentario de Obstfeld. Correcto: *European Economic Review* 32(5), 1055-1075, DOI 10.1016/0014-2921(88)90065-7 (corregida en `3B16.bib`).
 2. **Ficha `areas-monetarias-optimas`, filas del 4.A.28 y 4.A.30**: el 4.A.28 es «Evolución de la economía española desde la constitución de la zona euro hasta 2019» (la mención «one size fits all» encaja, la pregunta no es «política monetaria y España»); el 4.A.30 es «Relaciones financieras de España con la UE… convergencia real», no «España en la UEM»: convergencia real y presupuesto de la UE como seguro pequeño, o quitar la fila.
-3. **`mapa.yaml`, modelo `centro-periferia`**: «3.B.16: desarrollo» → «resumen del resultado (Krugman, 1993); *tomahawk* copiado del 3.B.6 en un anexo, sin derivación» (CC2). La ficha `centro-periferia` usa γ en sus ecuaciones: cambiar a μ (D019, 3.B.6).
+3. **`mapa.yaml`, modelo `centro-periferia`**: «3.B.16: desarrollo» → «resumen del resultado (Krugman, 1993); *tomahawk* copiado del 3.B.6 en un anexo, sin derivación» (CC2); el 12/11/2026, «resumen del resultado, sin anexo». La ficha `centro-periferia` usa γ en sus ecuaciones: cambiar a μ (D019, 3.B.6).
 4. **Alias**: `de-grauwe-coste-beneficio` y `frankel-rose` → alias de `areas-monetarias-optimas` (CC1), con los gráficos de referencia `mundell`, `costes-beneficios`, `amo-flexibilidad` y `endogeneidad` de este tema.
 5. `mapa.yaml`, entrada del 3.B.16: la de coherencia (sección 5.3 de `propuestas-coherencia.md`).
 6. Fichas `barro-gordon` (3.B.16 como resumen aplicado; alias `giavazzi-pagano`), `doom-loop`, `union-bancaria`, `pec`, `mede`, `semestre-europeo`, `papel-internacional-euro`, `criterios-convergencia-nominal`, `oa-da`, `tipo-cambio-real`, `calmfors-driffill` y `notacion.md` § 9: filas del 3.B.16 (CC3-CC8).
@@ -147,10 +147,10 @@ Cada una con la opción aplicada:
 7. **De Grauwe**: se cita la 14.ª edición (2022) en vez de la 12.ª (2018); las «pp. 41 y ss.» del comentario no se han comprobado en la 14.ª.
 8. **Gráfico `barro-gordon`** copiado del 3.A.6 con la tentación T y los pasos intermedios; si se prefiere uno más sencillo (solo R y D, con la flecha de D a R), habría que pedir una variante.
 9. **Obras sin localizar sustituidas**: Bertola y Blanchard y «Soskice (2001)» → Alesina, Ardagna y Galasso (2011); «Gandolfo, *Tablas de Economía de la UE*» no se cita.
-10. **Centro-periferia como resultado + anexo** (D1): aplicado; alternativa, la derivación completa en un anexo (duplicaría el 3.B.6).
+10. **Centro-periferia** (D1). **Respuesta de Víctor (12/11/2026):** «resultado brevemente y remisión al tema 3.B.6, pero sin anexo». Aplicado: fuera el anexo de especialización con el *tomahawk* (y `graficos/tomahawk.*`); en II.2.1 queda el resultado de Krugman (1993) en pocas líneas, con el punto de ruptura de palabra y \vertema{3.B.6}.
 11. **Títulos de primer nivel acortados** (D3), sin «(1960s-1970s)» ni «aplicación para el caso de la eurozona»; el I con `\cortetitulo` tras «:».
 12. **Anexo de otras uniones y salida** (D4): aplicado, breve y sin cantar. Sin el *eco* ni la salida de Burkina Faso, Malí y Níger de la CEDEAO (sin fuente primaria comprobada); el número de miembros de la Unión del Caribe Oriental (8) se apoya en el AREAER (la web del ECCB devuelve 403).
-13. **Refranes**: enganche «El casado casa quiere» (no usado en ningún otro tema) y pegatina «Arrímate a los buenos y serás uno de ellos» para la credibilidad. ¿Le valen?
+13. **Refranes**: enganche «El casado casa quiere» (no usado en ningún otro tema) y pegatina «Arrímate a los buenos y serás uno de ellos» para la credibilidad. **Respuesta de Víctor (12/11/2026):** aprobados, el enganche y los refranes.
 14. **Tabla «¿Es la zona del euro un AMO?»**: en caja gris en II.3 (no anexo) y con la diversificación cualitativa («en general, sí»), por no haber un indicador oficial sencillo.
 15. **Grecia, junio de 2015**: el cierre de bancos y los controles de capital se citan con la nota del BCE del 28/6/2015, que no los menciona (dice que mantiene el techo de la liquidez de emergencia). Si prefiere, añadir el decreto griego.
 16. **Reino Unido frente a España** (De Grauwe, 2011): sin años, porque no se ha comprobado el periodo exacto en esa versión.

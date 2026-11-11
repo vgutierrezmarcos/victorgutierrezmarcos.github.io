@@ -128,3 +128,8 @@ Todo lo que caduca está en `datos-actualizables.yaml` (4 entradas: `trienal-vol
   - III.2.3 (1′30″): `eq:pnci-prima` en la pizarra, debajo de la `eq:pnci` del I si sigue, para que se vea que lo único nuevo es $\rho_t$; la `ideaclave` como apunte al cerrar el bloque.
 - **Gráfico conjunto por partes**: no hay un gráfico de síntesis único; el hilo es la PNCI, que se escribe en el I, sostiene Dornbusch en el II, falla en III.1.2 y vuelve con prima en III.2.3. Conviene mantener `eq:pnci` en la esquina junto a las funciones clave y escribir la prima $\rho_t$ al lado al llegar a III.2.3, sin reescribirla.
 - **Al final** la pizarra queda con las 3 funciones clave y la PNCI con prima.
+
+## Respuestas de Víctor (12/11/2026)
+
+- Estructura: se mantienen los bloques del Word (tradicionales, de activos y recientes), con el tipo de cambio real dentro.
+- Enganche «El hombre propone y Dios dispone» y pegatinas aprobados.
