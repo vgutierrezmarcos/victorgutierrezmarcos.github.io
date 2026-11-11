@@ -83,6 +83,8 @@ export interface Contexto {
   desconectar(): Promise<void>;
   /** Resumen criptográfico de un texto con un secreto del servidor: para códigos de confirmación que la IA no puede inventarse. */
   sello(texto: string): Promise<string>;
+  /** Una figura del test (ruta «img/….webp» bajo la carpeta del test de la web) en base64, para las vistas que no pueden cargarla por su cuenta. */
+  figura?(ruta: string): Promise<{ mime: string; base64: string } | null>;
   /** Apunta el uso de una herramienta, sin nada que identifique al usuario (qué herramienta, si fue bien y cuánto tardó). */
   medir?(dato: { herramienta: string; oposicion: string; ok: boolean; ms: number }): void;
 }
@@ -964,6 +966,26 @@ export function crearServidor(ctx: Contexto): McpServer {
                 'El usuario tiene estas preguntas delante en un cuadro interactivo: las contesta con botones y ve la corrección y el «¿Por qué?» al momento. NO las copies ni des las respuestas en el chat: dile solo, en una línea, que conteste en el cuadro. Cuando termine te llegará su resultado con los fallos: entonces explícaselos con la fuente. Si dice que no ve ningún cuadro, su cliente no pinta vistas: plantéale tú estas mismas preguntas, sin la respuesta.',
               ...t,
             });
+      }),
+  );
+
+  server.registerTool(
+    'figura_test',
+    {
+      title: 'Figura de una pregunta del test (para la vista interactiva)',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description: 'Uso interno de la vista de test_interactivo: devuelve la imagen de una figura del test cuando el cliente no deja a la vista cargarla de la web. No la llames tú: las figuras ya vienen en «figuras» con su dirección y su descripción.',
+      inputSchema: { url: z.string().max(300).describe('Dirección de la figura, tal como viene en «figuras».') },
+      // Solo la vista: los clientes que entienden «visibility» no se la enseñan al modelo.
+      _meta: { ui: { visibility: ['app'] } },
+    },
+    async ({ url }) =>
+      protegido(async () => {
+        const m = /^https:\/\/www\.victorgutierrezmarcos\.es\/oposicion\/temario\/primer-ejercicio\/test\/(img\/[\w.-]+\.(?:webp|png|jpe?g))$/.exec(url);
+        if (!m) return error('Esa dirección no es una figura del test.');
+        const f = await ctx.figura?.(m[1]);
+        if (!f) return error('No se ha podido leer la figura.');
+        return { content: [{ type: 'image', data: f.base64, mimeType: f.mime }] };
       }),
   );
 

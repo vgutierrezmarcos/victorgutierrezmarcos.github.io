@@ -143,7 +143,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
+    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -415,6 +415,14 @@ describe('herramientas', () => {
     expect((t.preguntas as Obj[]).length).toBe(2);
     expect((t.preguntas as Obj[])[0]).toHaveProperty('respuesta');
     expect((await c.callTool({ name: 'test_interactivo', arguments: { temas: ['nada'] } })).isError).toBe(true);
+    // La figura que la vista no puede cargar de la web se la da el conector, y solo las del test.
+    const web = 'https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/';
+    const cf = await cliente({ ...ctx, figura: async (ruta) => (ruta === 'img/a_p01.webp' ? { mime: 'image/webp', base64: 'QUJD' } : null) });
+    expect((await cf.callTool({ name: 'figura_test', arguments: { url: `${web}img/a_p01.webp` } })).content).toEqual([{ type: 'image', data: 'QUJD', mimeType: 'image/webp' }]);
+    expect((await cf.callTool({ name: 'figura_test', arguments: { url: `${web}preguntas.json` } })).isError).toBe(true);
+    expect((await cf.callTool({ name: 'figura_test', arguments: { url: 'https://otro.example/img/a.webp' } })).isError).toBe(true);
+    const fig = (await cf.listTools()).tools.find((t) => t.name === 'figura_test')!;
+    expect((fig._meta as { ui: { visibility: string[] } }).ui.visibility).toEqual(['app']);
   });
 
   it('con vistaPrevia, proponer_cronograma y guardar_informe_cante validan y enseñan, pero no escriben', async () => {
