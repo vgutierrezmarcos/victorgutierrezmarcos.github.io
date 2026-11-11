@@ -18,7 +18,7 @@
   sig/.style={-{Stealth[length=2.2mm]}, thick, tceegris},
   suma/.style={right=3pt, font=\footnotesize, text=tceeverde}]
   % Marco fijo: todas las capas del vídeo con el mismo tamaño
-  \path (-5.0,-7.0) rectangle (6.4,0.6);
+  \path (-5.0,-7.3) rectangle (6.4,0.6);
   % 1: la absorción (gasto nacional)
   \capa{1}{\node[ag] (A) at (0,0) {\textbf{Absorción} (gasto nacional)\\ ${A=C+I+G}$};}
   % 2: + bienes y servicios
@@ -40,11 +40,11 @@
   \capa{8}{\draw[decorate, decoration={brace, amplitude=5pt}, thick, tceeverde]
       (2.55,0.3) -- (2.55,-5.25)
       node[midway, right=8pt, align=left, text=tceeverde]
-      {${\mathrm{RNDB}-A}$\\ ${{}=(X-M)+\mathrm{RP}+\mathrm{RS}}$\\ ${{}=\mathrm{CC}=S-I}$};}
+      {cuenta\\ corriente\\ (CC)};}
   % 9: con la cuenta de capital, la capacidad o necesidad, que es la CF
   \capa{9}{\node[draw=tceeazul, fill=tceeazul!10, line width=0.8pt, rounded corners=2pt,
-      align=center, text width=8.6cm, inner sep=4pt] at (0.7,-6.25)
-      {${\mathrm{CC}+\mathrm{CK}={}}$ \textbf{capacidad ($+$) o necesidad ($-$) de financiación}\\
-       ${{}=\mathrm{CF}}$, salvo errores y omisiones};}
+      align=center, text width=10.8cm, inner sep=4pt] at (0.7,-6.4)
+      {${\mathrm{RNDB}-A=(X-M)+\mathrm{RP}+\mathrm{RS}=\mathrm{CC}=S-I}$\\[2pt]
+       ${\mathrm{CC}+\mathrm{CK}=\mathrm{CF}}$ (salvo errores y omisiones): \textbf{capacidad ($+$) o necesidad ($-$) de financiación}};}
 \end{tikzpicture}
 \end{document}

@@ -1,0 +1,45 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% CIF y FOB (MBP7, párr. 10.24-10.29; IMTS 2010): la mercancía se valora en la
+% frontera del exportador (FOB); la estadística de comercio del importador la
+% valora en su propia frontera (CIF), con el flete y el seguro; la balanza de
+% pagos lo mide todo FOB y anota el flete y el seguro como servicios.
+% Capas: el viaje -> precio FOB -> flete y seguro -> precio CIF -> qué anota
+% cada estadística.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  pais/.style={draw=#1, fill=#1!10, line width=0.8pt, rounded corners=3pt, minimum width=3.6cm, minimum height=2.2cm, align=center},
+  front/.style={tceemorado, line width=1.4pt, dashed},
+  tramo/.style={decorate, decoration={brace, amplitude=6pt}, thick},
+  caja/.style={draw=#1, fill=#1!8, line width=0.6pt, rounded corners=2pt, align=left, text width=6.6cm, inner sep=4pt}]
+  \path (-0.4,-6.9) rectangle (16.2,2.7);
+  % 1: el viaje
+  \capa{1}{
+    \node[pais=tceeverde] (es) at (1.6,0) {\textbf{España}\\ almazara de Jaén\\ (exportador)};
+    \node[pais=tceeazul] (us) at (14.2,0) {\textbf{Estados Unidos}\\ importador de\\ Nueva York};
+    \draw[front] (3.6,-1.4) -- (3.6,1.6) node[above, font=\scriptsize\bfseries] {frontera de España};
+    \draw[front] (12.2,-1.4) -- (12.2,1.6) node[above, font=\scriptsize\bfseries] {frontera de EE.\,UU.};
+    \draw[-{Stealth[length=3mm]}, very thick, tceegris] (3.7,0) -- node[above, text=black] {barco: flete y seguro} (12.1,0);}
+  % 2: precio FOB
+  \capa{2}{\node[draw=tceeverde, fill=white, line width=0.8pt, rounded corners=2pt, align=center] at (3.6,-2.1)
+    {\textbf{FOB} (\emph{free on board})\\ valor en la frontera\\ del exportador: \textbf{100}};}
+  % 3: flete y seguro
+  \capa{3}{\draw[tramo, tceedorado] (3.7,-1.0) -- (12.1,-1.0) node[midway, above=-26pt, text=tceedorado!80!black, align=center]
+    {};
+    \node[text=tceedorado!80!black, align=center] at (7.9,-1.6) {flete y seguro entre las 2 fronteras: \textbf{8}\\ (\emph{servicios} de transporte y de seguro)};}
+  % 4: precio CIF
+  \capa{4}{\node[draw=tceeazul, fill=white, line width=0.8pt, rounded corners=2pt, align=center] at (12.2,-2.1)
+    {\textbf{CIF} (\emph{cost, insurance, freight})\\ valor en la frontera\\ del importador: \textbf{108}};}
+  % 5: qué anota cada estadística
+  \capa{5}{
+    \node[caja=tceemorado, anchor=north west] at (0,-3.5)
+      {\textbf{Estadísticas de comercio de mercancías}\\ (Naciones Unidas, IMTS 2010): cada país, al precio en \emph{su} frontera.\\[2pt]
+       $\bullet$ España exporta 100 (FOB).\\
+       $\bullet$ EE.\,UU. importa 108 (CIF).};
+    \node[caja=tceeazul, anchor=north west] at (8.3,-3.5)
+      {\textbf{Balanza de pagos} (MBP6 y MBP7): todo FOB.\\[2pt]
+       $\bullet$ Bienes: España exporta 100 y EE.\,UU. importa 100.\\
+       $\bullet$ Los 8 de flete y seguro son \emph{servicios} de quien los presta: si la naviera es española, exportación de servicios de España e importación de EE.\,UU.; si es estadounidense, operación entre residentes de EE.\,UU.};}
+\end{tikzpicture}
+\end{document}

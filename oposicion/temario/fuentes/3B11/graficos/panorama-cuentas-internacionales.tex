@@ -15,13 +15,13 @@
     align=center, inner sep=3pt, minimum height=1cm},
   nofin/.style={caja=tceeverde, text width=4.3cm},
   fin/.style={caja=tceeazul, text width=4.3cm},
-  pii/.style={caja=tceeazul, fill=tceeazul!22, text width=2.55cm, minimum height=2.2cm},
+  pii/.style={caja=tceeazul, fill=tceeazul!22, text width=3.6cm, minimum height=2.2cm},
   sig/.style={-{Stealth[length=2.2mm]}, thick, tceegris}]
   % Marco fijo: todas las capas del vídeo con el mismo tamaño
-  \path (-1.45,-4.3) rectangle (14.45,3.75);
+  \path (-2.15,-4.3) rectangle (15.75,3.75);
   % 1: la posición de partida
   \capa{1}{\node[pii] (pii0) at (0,-0.9)
-    {\textbf{PII al comienzo}\\ (fin de $t-1$)\\[2pt] activos $-$ pasivos\\ ${{}=\mathrm{PIIN}_{t-1}}$};}
+    {\textbf{PII al comienzo}\\ (fin de $t-1$)\\[2pt] ${\text{activos}-\text{pasivos}=\mathrm{PIIN}_{t-1}}$};}
   % 2: la balanza de pagos (las transacciones del periodo)
   \capa{2}{\draw[tceemorado, dashed, rounded corners=3pt] (2.95,-2.0) rectangle (11.05,3.3);
     \node[tceemorado, font=\footnotesize\bfseries, anchor=south west] at (2.95,3.3)
@@ -49,8 +49,8 @@
   \capa{9}{\node[caja=tceedorado, text width=4.3cm] (ov) at (5.55,-3.55)
     {\textbf{Otras variaciones} (OV)\\ revalorizaciones (precios y tipo de cambio) y cambios de volumen};}
   % 10: la posición final
-  \capa{10}{\node[pii] (pii1) at (13.05,-1.2)
-    {\textbf{PII al final}\\ (fin de $t$)\\[2pt] activos $-$ pasivos\\ ${{}=\mathrm{PIIN}_{t}}$};}
+  \capa{10}{\node[pii] (pii1) at (13.25,-1.2)
+    {\textbf{PII al final}\\ (fin de $t$)\\[2pt] ${\text{activos}-\text{pasivos}=\mathrm{PIIN}_{t}}$};}
   % 11: la posición inicial pasa a la final
   \capa{11}{\draw[sig] (pii0.south) |- ([xshift=-6mm]pii1.south |- 0,-2.55) -- ([xshift=-6mm]pii1.south);}
   % 12: la cuenta financiera la cambia por transacciones
@@ -58,7 +58,7 @@
   % 13: las otras variaciones la cambian sin transacciones
   \capa{13}{\draw[sig, tceedorado] (ov.east) -| ([xshift=6mm]pii1.south);}
   % 14: la ecuación de la posición
-  \capa{14}{\node[tceemorado, font=\small\bfseries, align=center] at (13.05,0.65)
-    {${\mathrm{PIIN}_t=\mathrm{PIIN}_{t-1}}$\\ ${{}+\mathrm{CF}_t+\mathrm{OV}_t}$};}
+  \capa{14}{\node[tceemorado, font=\small\bfseries] at (13.45,0.45)
+    {$\mathrm{PIIN}_t=\mathrm{PIIN}_{t-1}+\mathrm{CF}_t+\mathrm{OV}_t$};}
 \end{tikzpicture}
 \end{document}
