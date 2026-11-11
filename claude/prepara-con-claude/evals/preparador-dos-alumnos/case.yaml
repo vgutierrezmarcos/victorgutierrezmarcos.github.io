@@ -1,0 +1,19 @@
+schema_version: "1.1"
+name: preparador-dos-alumnos
+expected_outcome: |
+  Reconoce el perfil de preparador sin preguntar y escribe tres ficheros. informe-ana.md e
+  informe-jorge.md son informes separados dirigidos al preparador (segunda persona es el
+  preparador, el alumno se nombra por su nombre), con las secciones del corrector del cante y
+  las dos del modo preparador («qué trabajar en la próxima clase» y «qué preguntarle en
+  clase»). El de Ana detecta los errores plantados del 3.A.8 (saludo inicial, Slutsky en 1925
+  en vez de 1915, efecto sustitución «siempre positivo», exposición de 6 minutos frente a 30).
+  El de Jorge detecta los del 3.A.11 (elasticidad de sustitución de la Cobb-Douglas «igual a
+  cero» en vez de uno, Leontief con elasticidad «infinita» en vez de cero, rendimientos
+  constantes «implican productividad marginal creciente», cierre con «gracias» y sin idea
+  final). Ningún informe menciona al otro alumno ni los ordena de mejor a peor. clase-jueves.md
+  reparte las dos horas entre los dos con el guion de la clase (qué cantar, dónde parar, qué
+  preguntar, pizarra, deberes) y un bloque «Para la app · Ana» y «Para la app · Jorge» con
+  Notas del preparador, Deberes y Temas de la clase, para la ficha del alumno en la app del
+  preparador. Los tres acaban con el aviso de la skill con «los datos de tu alumno».
+context:
+  scaffold_script: place-files.sh

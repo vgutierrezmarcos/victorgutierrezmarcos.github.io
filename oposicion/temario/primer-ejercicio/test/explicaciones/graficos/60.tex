@@ -1,0 +1,33 @@
+% Pregunta 60 (2024-junio-A, n.º 13): NAIRU y tasa natural en el modelo de fijación de salarios y precios. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$N$}{$W/P$}{7.3}{5.1}
+  % población activa
+  \draw[guia] (6.4,0) -- (6.4,4.9);
+  % fijación de precios (horizontal)
+  \draw[curva2] (0,2.5) -- (7.0,2.5) node[etiqueta,above left] {$FP$};
+  % fijación de salarios (creciente)
+  \draw[curva1] (0.3,1.055) -- (4.6,4.71) node[etiqueta,above left] {$FS$};
+  % oferta de trabajo competitiva
+  \draw[curva3] (3.0,0.34) -- (5.4,4.66) node[etiqueta,right] {$N^s$};
+  % puntos
+  \node[punto] (A) at (2.0,2.5) {};
+  \node[punto] (B) at (4.2,2.5) {};
+  \node[etiqueta,above left] at (A) {NAIRU};
+  \node[etiqueta,below right] at (B) {competencia};
+  \draw[guia] (2.0,2.5) -- (2.0,0) node[below] {$N^*$};
+  \draw[guia] (4.2,2.5) -- (4.2,0) node[below] {$N_c$};
+  \node[below] at (6.4,0) {$L$};
+  \node[left] at (0,2.5) {$(W/P)^*$};
+  % llaves del paro
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceerojo] (2.03,-0.6) -- (4.17,-0.6)
+    node[midway,below=6pt,align=center,font=\small,text=tceerojo] {paro\\involuntario};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceeverde] (4.23,-0.6) -- (6.37,-0.6)
+    node[midway,below=6pt,align=center,font=\small,text=tceeverde] {paro voluntario\\y friccional\\(TNP)};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,black] (2.03,-2.15) -- (6.37,-2.15)
+    node[midway,below=6pt,font=\small] {paro de la NAIRU};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,43 @@
+% Pregunta 33 (2025-marzo-A, n.º 36): Línea del Mercado de Títulos (SML) del CAPM.
+% E(R) = R_f + beta [E(R_M) - R_f]: ordenada R_f, pendiente = prima de riesgo (b correcta).
+% Eje horizontal: beta, solo riesgo sistemático (a falsa). Por encima: alfa > 0, infravalorado,
+% se compra (c y d falsas). Esquemático: R_f = 1, E(R_M) = 2,6 (unidades del dibujo).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=3cm,y=1cm]
+  \ejes{$\beta$}{$E(R)$}{2.4}{5}
+  \foreach \b in {1,2} \draw (\b,0) -- (\b,-0.08) node[below] {$\b$};
+  % SML: E(R) = 1 + 1,6 beta
+  \draw[curva1] (0,1) -- (2,4.2) node[etiqueta,above,text=tceemorado] {SML};
+  % Triángulo de pendiente entre beta = 0 y beta = 1
+  \fill[tceedorado,opacity=0.18] (0,1) -- (1,1) -- (1,2.6) -- cycle;
+  \draw[thick,tceedorado!80!black] (0,1) -- (1,1) node[midway,below,font=\footnotesize,text=black] {$\Delta\beta=1$};
+  \draw[thick,tceedorado!80!black] (1,1) -- (1,2.6);
+  \draw[guia] (1,0) -- (1,1);
+  \draw[guia] (0,2.6) -- (1,2.6);
+  \node[etiqueta,anchor=west,align=left,font=\footnotesize] at (1.04,1.5)
+    {$E(R_M)-R_f$:\\\textbf{pendiente = prima de riesgo}};
+  % Marcas del eje vertical
+  \node[left] at (0,1) {$R_f$};
+  \node[left] at (0,2.6) {$E(R_M)$};
+  % Puntos de la recta
+  \node[punto] at (0,1) {};
+  \node[punto] at (1,2.6) {};
+  \node[etiqueta,above left] at (1,2.6) {$M$};
+  % Activo A: por encima (alfa > 0)
+  \draw[decorate,decoration={brace,amplitude=3pt,mirror},thick,tceeverde!70!black] (0.62,1.99) -- (0.62,3.0);
+  \node[circle,fill=tceeverde!70!black,inner sep=2pt] at (0.6,3.05) {};
+  \node[etiqueta,anchor=south,text=tceeverde!70!black,align=center,font=\footnotesize] at (0.62,3.2)
+    {$A$: $\alpha>0$, infravalorado\\(barato): se compra};
+  % Activo B: por debajo (alfa < 0)
+  \draw[decorate,decoration={brace,amplitude=3pt},thick,tceerojo] (1.77,3.81) -- (1.77,2.95);
+  \node[circle,fill=tceerojo,inner sep=2pt] at (1.75,2.9) {};
+  \node[etiqueta,anchor=north,text=tceerojo,align=center,font=\footnotesize] at (1.8,2.75)
+    {$B$: $\alpha<0$, sobrevalorado\\(caro): se vende};
+  % Nota sobre el eje
+  \node[etiqueta,anchor=north,font=\footnotesize,text=tceegris,align=center] at (1.05,-0.55)
+    {$\beta$ mide solo el riesgo sistemático; el riesgo total $\sigma$ es el eje de la CML};
+\end{tikzpicture}
+\end{document}

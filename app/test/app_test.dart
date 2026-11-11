@@ -9,14 +9,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:tcee_app/features/temario/temario_page.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
+import 'package:tcee_app/core/constants.dart';
+import 'package:tcee_app/core/invitacion.dart';
+import 'package:tcee_app/features/guia/guia.dart';
+import 'package:tcee_app/features/inicio/permisos_sheet.dart';
+import 'package:tcee_app/features/preparador/tema_anticipado.dart';
 import 'package:tcee_app/core/providers.dart';
+import 'package:tcee_app/data/models/esquema.dart';
 import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
 import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/data/models/resultado.dart';
 import 'package:tcee_app/data/models/revisado.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/data/models/frecuencia_test.dart';
@@ -194,8 +202,24 @@ void main() {
     expect(find.text('Haz tu primer test'), findsOneWidget);
 
     await estudiar(tester, 'Temas');
+    // Temas: una tarjeta por ejercicio; dentro, sus partes.
+    expect(find.text('Primer ejercicio'), findsOneWidget);
+    expect(find.text('Quinto ejercicio'), findsOneWidget);
+    await tocar(tester, find.text('Tercer ejercicio'));
     expect(find.textContaining('Parte A: Economía general'), findsOneWidget);
+    Navigator.of(tester.element(find.byType(EjercicioPage))).pop();
+    await tester.pumpAndSettle();
+    await tocar(tester, find.text('Quinto ejercicio'));
     expect(find.textContaining('Parte B: Econometría'), findsOneWidget);
+    Navigator.of(tester.element(find.byType(EjercicioPage))).pop();
+    await tester.pumpAndSettle();
+    // El primer ejercicio: el simulador, el test diario y el dictamen.
+    await tocar(tester, find.text('Primer ejercicio'));
+    expect(find.text('Simulador de test'), findsOneWidget);
+    expect(find.text('Test diario'), findsOneWidget);
+    expect(find.text('Dictamen de coyuntura'), findsOneWidget);
+    Navigator.of(tester.element(find.byType(EjercicioPage))).pop();
+    await tester.pumpAndSettle();
 
     await subpestana(tester, 'Agenda');
     expect(find.text('Programa tu próximo cante'), findsOneWidget);
@@ -447,6 +471,7 @@ void main() {
   testWidgets('agenda por tema: apuntar algo para la próxima vuelta', (tester) async {
     await arrancar(tester);
     await estudiar(tester, 'Temas');
+    await tocar(tester, find.text('Quinto ejercicio'));
     await tocar(tester, find.textContaining('Parte C: Derecho'));
     // Tema sin PDF: se abre directamente su agenda.
     await tocar(tester, find.textContaining('5.C.4 ·'));
@@ -478,8 +503,11 @@ void main() {
         })));
     await arrancar(tester);
     await estudiar(tester, 'Temas');
+    // Aprobado desde el 1 oct. 2026: exclusivo (uso personal); el chip del filtro cuenta uno.
+    expect(find.text('Materiales exclusivos · 1'), findsOneWidget);
+    await tocar(tester, find.text('Quinto ejercicio'));
     await tocar(tester, find.textContaining('Parte C: Derecho'));
-    expect(find.text('Revisado · exclusivo de la app'), findsOneWidget);
+    expect(find.text('Exclusivo · revisado'), findsOneWidget);
     // Sin cuenta: se ve la versión anterior (aquí, la agenda: no tiene PDF) y la invitación.
     await tocar(tester, find.textContaining('5.C.4 ·'));
     expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsOneWidget);
@@ -636,6 +664,126 @@ void main() {
     await tester.pumpAndSettle();
     await tocar(tester, find.textContaining('Mover al'));
     expect(plan.cronogramaActivo()!.semanas.map((s) => s.temas), [['3.A.1'], ['3.B.1', '3.A.2']]);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('invitación de un preparador: la app abre Mi preparador con el código puesto', (tester) async {
+    // Como si la app se hubiera abierto desde el enlace de invitación (o
+    // instalado desde él): la invitación queda pendiente en la caja `app`.
+    final app = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : await Hive.openBox(Cajas.app, bytes: Uint8List(0));
+    await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true});
+    await const Invitacion(codigo: 'ABC234', oposicion: 'tcee').guardar();
+    expect(Invitacion.pendiente()?.codigo, 'ABC234');
+    await arrancar(tester);
+    expect(find.text('Mi preparador'), findsWidgets);
+    expect(find.text('Tu preparador te invita a conectar'), findsOneWidget);
+    expect(find.text('Descartar la invitación'), findsOneWidget);
+    // Sin Firebase no se puede conectar; descartarla la quita.
+    await tocar(tester, find.text('Descartar la invitación'));
+    expect(Invitacion.pendiente(), isNull);
+    expect(find.text('Conecta con tu preparador'), findsOneWidget);
+    // La caja queda abierta para las pruebas siguientes: que no salga la hoja de permisos ni la guía.
+    await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true, claveGuiaVista('tcee', Papel.preparador): true});
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('invitación de otra oposición: se ofrece cambiar a ella', (tester) async {
+    final app = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : await Hive.openBox(Cajas.app, bytes: Uint8List(0));
+    await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true});
+    await const Invitacion(codigo: 'XYZ789', oposicion: 'dce').guardar();
+    await arrancar(tester);
+    expect(find.text('Cambiar a DCE'), findsOneWidget);
+    // Sin Firebase ni invitación no hay nada más que hacer; el toque cambia de
+    // oposición (en las pruebas, nada) y deja pasar los temporizadores del arranque.
+    await tocar(tester, find.text('Cambiar a DCE'));
+    // La caja queda abierta para las pruebas siguientes: que no salga la hoja de permisos ni la guía.
+    await app.clear();
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true, claveGuiaVista('tcee', Papel.opositor): true, claveGuiaVista('tcee', Papel.preparador): true});
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('alumno sin app: los temas de la clase se le mandan por WhatsApp a la hora programada', (tester) async {
+    await preparador.activar();
+    await preparador.guardarAlumno(Alumno(id: 'a1', nombre: 'Lucía', telefono: '600 000 000', temas: const ['3.A.1', '3.A.2'], updatedAt: DateTime.now()));
+    final clase = DateTime.now().add(const Duration(days: 2));
+    // Clase con un tema elegido que «se manda» una hora antes: como el alumno
+    // no tiene la app, se lo manda el preparador.
+    await preparador.guardarSesion(Cante(id: 's1', fecha: clase, alumno: 'a1', minutos: 120, temaA: clase.subtract(const Duration(hours: 1)), temasMandados: const ['3.A.1'], numTemas: 1, updatedAt: DateTime.now()));
+    await arrancar(tester);
+    await pestana(tester, 'Más');
+    await tocar(tester, find.widgetWithText(FilaEnlace, 'Preparador'));
+    await tocar(tester, find.textContaining('· Lucía'));
+    expect(find.text('Alumno sin app enlazada'), findsOneWidget);
+    expect(find.textContaining('Se lo mandas tú'), findsOneWidget);
+    expect(find.text('Enviar por WhatsApp'), findsOneWidget);
+    expect(find.text('Copiar'), findsOneWidget);
+    // El mensaje lleva el tema con su título y el tiempo de esquema del examen.
+    final msg = mensajeTemasClase(preparador.sesiones().single, titulo: (t) => temario.tema(t)?.titulo);
+    expect(msg, contains('· 3.A.1 '));
+    expect(msg, contains('Tienes 22 min 30 s de esquema'));
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('Hoy te toca: test diario y, si se activan, la racha (congelable) y el tema más frío', (tester) async {
+    await usuario.guardarAjustes(const Ajustes(racha: true, temaFrio: true, temasEstudiados: {'3.A.1', '3.A.2'}));
+    // Ayer hubo test: racha de 1 día en juego hoy.
+    final ayer = DateTime.now().subtract(const Duration(days: 1));
+    await usuario.guardarResultado(ResultadoTest(id: 'r1', timestamp: ayer, puntosBrutos: 5, maxPuntos: 10, notaSobre10: 5, correctas: 5, incorrectas: 5, sinResponder: 0, totalPreguntas: 10, tiempoSeconds: 60, temas: const []));
+    await plan.guardarAgenda(AgendaTema(codigo: '3.A.2', vueltas: [DateTime.now().subtract(const Duration(days: 40))], updatedAt: DateTime.now()));
+    await arrancar(tester);
+    await pestana(tester, 'Hoy'); // el enrutador conserva la pantalla de la prueba anterior
+    expect(find.text('Hoy te toca'), findsOneWidget);
+    expect(find.text('Test diario'), findsOneWidget);
+    expect(find.text('1 día seguidos'), findsOneWidget);
+    // El más frío es el 3.A.1: estudiado y sin vuelta (el 3.A.2 tiene una, aunque vieja).
+    expect(find.text('Repasa 3.A.1, el tema más frío'), findsOneWidget);
+    // Congelar 7 días desde la etiqueta de la racha.
+    await tocar(tester, find.text('1 día seguidos'));
+    expect(find.text('Congelar la racha'), findsOneWidget);
+    await tocar(tester, find.text('7 días'));
+    expect(usuario.ajustes().rachaCongelaciones.length, 1);
+    expect(find.textContaining('Congelada hasta el'), findsOneWidget);
+    // Descongelar.
+    await tocar(tester, find.textContaining('Congelada hasta el'));
+    await tocar(tester, find.text('Descongelar'));
+    expect(find.text('1 día seguidos'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('esquema a ciegas: desde Cantar, se compara con el esquema del tema y va al diario como esquema', (tester) async {
+    // Un esquema para el PDF del 3.A.1 (como el de esquemas.json).
+    final url = temario.tema('3.A.1')!.url ?? '';
+    final fichero = Uri.parse(url).pathSegments.last;
+    overrides = [
+      ...overrides,
+      esquemasProvider.overrideWith((ref) => Esquemas({
+            fichero: const [EntradaEsquema(nivel: 0, titulo: '1. OBJETO', pagina: 1), EntradaEsquema(nivel: 1, titulo: '1.1. Definiciones', pagina: 2), EntradaEsquema(nivel: 0, titulo: '2. MÉTODO', pagina: 5), EntradaEsquema(nivel: 1, titulo: '2.1. Ciencia', pagina: 5)],
+          })),
+    ];
+    await usuario.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.1'}));
+    await arrancar(tester);
+    await subpestana(tester, 'Cantar');
+    await tocar(tester, find.text('Sacar un esquema de memoria'));
+    expect(find.textContaining('los que llevas más tiempo sin repasar'), findsOneWidget);
+    await tocar(tester, find.descendant(of: find.byType(ListTile), matching: find.textContaining('3.A.1')));
+    expect(find.text('Ya está: comparar'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), '1. Objeto\n2. Método');
+    await tocar(tester, find.text('Ya está: comparar'));
+    expect(find.text('0 de 4 apartados'), findsOneWidget);
+    await tocar(tester, find.text('1. OBJETO'));
+    await tocar(tester, find.text('2. MÉTODO'));
+    expect(find.text('2 de 4 apartados'), findsOneWidget);
+    await tocar(tester, find.byIcon(Icons.star_border).at(2)); // tres estrellas
+    await tocar(tester, find.text('Guardar en el diario'));
+    final c = plan.cantes().single;
+    expect(c.esquema, isTrue);
+    expect(c.hecho, isTrue);
+    expect(c.resultado!.valoracion, 3);
+    expect(c.resultado!.cubiertos, {'3.A.1': ['1. OBJETO', '2. MÉTODO']});
+    expect(c.resultado!.apartados, {'3.A.1': 4});
+    expect(c.resultado!.comentarios, contains('1. Objeto'));
+    // En el diario, como esquema con su cobertura.
+    await subpestana(tester, 'Diario');
+    expect(find.textContaining('esquema a ciegas · 2/4 apartados'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

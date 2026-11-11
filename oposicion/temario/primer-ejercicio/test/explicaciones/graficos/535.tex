@@ -1,0 +1,36 @@
+% Pregunta 535 (2016-enero-OEP2015, n.º 22): diagrama de Solow con f(k)=1,2*sqrt(k), s=0,7 y n+delta=0,3. Con k>k* la inversión no cubre (n+delta)k y k (y la renta per cápita) cae; con k<k* sube. k*=7,84 está por encima de k_oro=4 (ineficiencia dinámica). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=1cm]
+  \ejes{$k$}{$y$}{12}{4.6}
+  % Función de producción per cápita
+  \draw[curva4,domain=0:11.2,samples=80] plot (\x,{1.2*sqrt(\x)}) node[etiqueta,right] {$f(k)$};
+  % Inversión per cápita (s = 0,7)
+  \draw[curva1,domain=0:11.2,samples=80] plot (\x,{0.84*sqrt(\x)}) node[etiqueta,right] {$s f(k)$};
+  % Inversión de reposición
+  \draw[curva2] (0,0) -- (11.2,3.36) node[etiqueta,right] {$(n+\delta)k$};
+  % Regla de oro: f'(k_oro) = n + delta (tangente paralela a la recta)
+  \draw[tceeazul,thick,dashed] (1.2,1.56) -- (6.8,3.24);
+  \draw[guia] (4,2.4) -- (4,0) node[below] {$k_{\mathrm{oro}}$};
+  \node[punto,tceedorado] at (4,2.4) {};
+  % Estado estacionario
+  \draw[guia] (7.84,2.352) -- (7.84,0) node[below] {$k^*$};
+  \node[punto] at (7.84,2.352) {};
+  % k1 > k*: la inversión no cubre la reposición
+  \draw[guia] (10.5,2.722) -- (10.5,0) node[below] {$k_1$};
+  \draw[very thick,tceerojo] (10.5,2.722) -- (10.5,3.15);
+  \node[punto,tceerojo] at (10.5,3.15) {};
+  \node[punto,tceerojo] at (10.5,2.722) {};
+  % k0 < k*: la inversión supera la reposición
+  \draw[guia] (2,0.6) -- (2,0) node[below] {$k_0$};
+  \draw[very thick,tceeverde] (2,0.6) -- (2,1.188);
+  \node[punto,tceeverde] at (2,0.6) {};
+  \node[punto,tceeverde] at (2,1.188) {};
+  % Sentido del movimiento de k
+  \draw[flecha,tceeverde] (2.6,-0.62) -- (6.6,-0.62);
+  \node[etiqueta,tceeverde,font=\footnotesize] at (4.6,-0.9) {$\dot k>0$};
+  \draw[flecha,tceerojo] (10.4,-0.62) -- (8.5,-0.62);
+  \node[etiqueta,tceerojo,font=\footnotesize] at (9.45,-0.9) {$\dot k<0$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,53 @@
+% Pregunta 803 (2005-septiembre-OEP2005, n.º 22): Solow con s > alfa (por encima de la regla de oro).
+% A escala con alfa = 1/3 y n+g+delta = 0,1:  c*(s) = (1-s)(s/0,1)^{1/2}
+%   Panel 1: x = 5,5 s ; y = 3 c*.  Regla de oro s = 1/3 (c* = 1,217); s0 = 0,5 (c* = 1,118); s1 = 0,6 (c* = 0,980)
+%   Panel 2: y = 8 (c - 0,75).  c0 = 1,118; impacto (1-0,6)·y0 = 0,4·2,236 = 0,894; c*' = 0,980
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- Panel 1: consumo de estado estacionario según s ----------
+  \node[font=\small\bfseries,text=tceemorado] at (3,4.6) {Estado estacionario};
+  \ejes{$s$}{$c^*$}{6.2}{4.2}
+  \draw[curva1,domain=0:5.5,samples=200,smooth]
+    plot (\x,{3*(1-\x/5.5)*sqrt(\x/0.55)});
+  \node[etiqueta,text=tceemorado] at (5.25,1.25) {$c^*(s)$};
+  % Regla de oro
+  \draw[guia] (1.833,3.651) -- (1.833,0) node[below] {$\alpha$};
+  \node[punto] at (1.833,3.651) {};
+  \node[etiqueta,above,align=center,font=\footnotesize] at (1.833,3.70) {regla de oro};
+  % s0 y s1
+  \draw[guia] (2.75,3.354) -- (2.75,0) node[below] {$s_0$};
+  \draw[guia] (3.30,2.939) -- (3.30,0) node[below] {$s_1$};
+  \node[punto] at (2.75,3.354) {};
+  \node[punto,fill=tceerojo] at (3.30,2.939) {};
+  \draw[flecha] (2.85,3.36) to[bend left=25] (3.27,3.03);
+  \node[etiqueta,text=tceerojo,anchor=west,font=\footnotesize,align=left] at (3.5,3.35) {$s\uparrow$: $c^*$ baja\\($s>\alpha$: exceso\\de capital)};
+  % ---------- Panel 2: trayectoria temporal de c ----------
+  \begin{scope}[xshift=7.6cm]
+    \node[font=\small\bfseries,text=tceemorado] at (3,4.6) {Trayectoria de $c$};
+    % Eje vertical truncado (no empieza en c = 0): sin el 0 en el origen y con marca de corte
+    \draw[eje] (0,0) -- (6,0) node[below left=2pt and 0pt] {$t$};
+    \draw[eje] (0,0) -- (0,4.2) node[left] {$c$};
+    \draw[fill=white,draw=none] (-0.12,0.28) rectangle (0.12,0.40);
+    \draw[thin] (-0.12,0.24) -- (0.12,0.32) (-0.12,0.36) -- (0.12,0.44);
+    % nivel inicial
+    \draw[guia] (0,2.944) -- (5.7,2.944);
+    \node[etiqueta,left] at (0,2.944) {$c_0$};
+    \draw[curva1] (0,2.944) -- (1.5,2.944);
+    % salto en t0 y convergencia
+    \draw[guia] (1.5,2.944) -- (1.5,0) node[below] {$t_0$};
+    \draw[curvanueva,dashed,thick] (1.5,2.944) -- (1.5,1.152);
+    \draw[curvanueva,domain=1.5:5.7,samples=80,smooth]
+      plot (\x,{1.84-(1.84-1.152)*exp(-0.9*(\x-1.5))});
+    \draw[guia] (0,1.84) -- (1.5,1.84);
+    \node[etiqueta,left,text=tceerojo] at (0,1.84) {$c^{*\prime}$};
+    \node[etiqueta,left,text=tceerojo] at (0,1.152) {$c_1$};
+    \draw[guia] (0,1.152) -- (1.5,1.152);
+    \node[punto,fill=tceerojo] at (1.5,1.152) {};
+    \node[etiqueta,right,font=\footnotesize,text=tceerojo,align=left] at (1.6,0.75) {cae en el impacto\\($y$ dado, ahorra más)};
+    \node[etiqueta,above,font=\footnotesize,text=tceerojo,align=center] at (4.4,2.0) {sube con $k$, pero\\queda bajo $c_0$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

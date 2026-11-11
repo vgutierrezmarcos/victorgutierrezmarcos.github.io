@@ -72,6 +72,14 @@ function getHtmlFiles(dir, base) {
         } else if (shouldExclude(relativePath)) {
             continue;
         } else if (entry.name.endsWith('.html')) {
+            // Las páginas con <meta name="robots" content="noindex…"> no van al sitemap
+            // (p. ej. una página publicada pero todavía oculta, como economia.html
+            // mientras se prueba: scripts/economia-visible.py)
+            // Tampoco las páginas puente que redirigen a otra (meta refresh), como
+            // las de scripts/paginas-puente.py o prepara-con-ia.html
+            const html = fs.readFileSync(fullPath, 'utf8');
+            if (/<meta\s+name="robots"\s+content="noindex/i.test(html)) continue;
+            if (/<meta\s+http-equiv="refresh"/i.test(html)) continue;
             results.push(relativePath);
         } else if (DOC_EXTENSIONS.includes(path.extname(entry.name).toLowerCase()) && DOC_DIRS.some(d => relativePath.startsWith(d))) {
             results.push(relativePath);

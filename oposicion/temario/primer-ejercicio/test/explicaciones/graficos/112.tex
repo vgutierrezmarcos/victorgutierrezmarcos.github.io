@@ -1,0 +1,36 @@
+% Pregunta 112 (2023-junio-A, n.º 15): IS-LM-BP con tipo de cambio fijo y BP más plana que la LM
+% (movilidad del capital relativamente alta). Rectas a escala:
+%   LM: i = Y - 0,5   BP: i = 1 + 0,4 Y   IS: i = 4 - 0,8 Y   IS': i = 5,6 - 0,8 Y
+%   E0 = (2,5; 2)   A = IS'∩LM = (3,39; 2,89), por encima de la BP (2,36): superávit
+%   E1 = IS'∩BP = (3,83; 2,53)   LM': i = Y - 1,3 (la oferta monetaria aumenta)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.4)
+    {BP más plana que LM (movilidad alta)};
+  % Curvas iniciales
+  \draw[curva3] (0.2,1.08) -- (5.6,3.24) node[etiqueta,right,text=tceeverde] {$BP$};
+  \draw[curva1] (0.8,0.3) -- (4.9,4.4) node[etiqueta,above,text=tceemorado] {$LM$};
+  \draw[curva2] (0.5,3.6) -- (4.6,0.32) node[etiqueta,right,text=tceeazul] {$IS$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (2.5,3.6) -- (6.0,0.8) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[curvanueva,desplazada] (1.6,0.3) -- (5.7,4.4) node[etiqueta,above,text=tceerojo] {$LM'$};
+  \draw[flecha] (1.35,0.85) -- (2.15,0.85);
+  % Proyecciones
+  \draw[guia] (2.5,2) -- (2.5,0) node[below] {$Y_0$};
+  \draw[guia] (3.389,2.889) -- (3.389,0) node[below] {$Y_A$};
+  \draw[guia] (3.833,2.533) -- (3.833,0) node[below] {$Y_1$};
+  % Puntos
+  \node[punto] at (2.5,2) {};
+  \node[etiqueta,below right] at (2.5,2) {$E_0$};
+  \node[punto] at (3.389,2.889) {};
+  \node[etiqueta,above left] at (3.389,2.889) {$A$};
+  \node[punto] at (3.833,2.533) {};
+  \node[etiqueta,below=3pt] at (3.833,2.533) {$E_1$};
+  \node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=north west] at (0.15,4.75)
+    {$A$ sobre la $BP$: superávit,\\entran reservas, $M\uparrow$};
+\end{tikzpicture}
+\end{document}

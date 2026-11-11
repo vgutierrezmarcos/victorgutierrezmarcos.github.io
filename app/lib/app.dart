@@ -10,7 +10,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'core/analitica.dart';
+import 'data/repos/usuario_repo.dart' show Ajustes;
+import 'core/cronograma_providers.dart';
+import 'core/instalacion.dart';
+import 'data/models/plan.dart';
+import 'data/models/temas_clase.dart';
 import 'core/constants.dart';
+import 'core/enlaces.dart';
+import 'core/invitacion.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
 import 'core/red_providers.dart';
@@ -29,6 +36,7 @@ import 'features/inicio/estadisticas_dialogo.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/inicio/permisos_sheet.dart';
 import 'features/mas/cuenta_page.dart';
+import 'features/mas/economia_page.dart';
 import 'features/mas/mas_page.dart';
 import 'features/organizacion/mapa_calor_page.dart';
 import 'features/organizacion/organizacion_hub_page.dart';
@@ -65,7 +73,13 @@ final _router = GoRouter(
   // vez de a la página de error del enrutador, de la que no se puede salir.
   onException: (_, state, router) => router.go('/hoy'),
   // Rutas de antes de la reorganización (avisos, enlaces guardados): a su sitio nuevo.
-  redirect: (context, state) => rutaNueva(state.uri.path),
+  // El examen y los resultados llevan sus datos en `extra`, que el historial
+  // del navegador no guarda: al volver a ellos con «atrás» (o al recargar), a Estudiar.
+  redirect: (context, state) => switch (state.uri.path) {
+        '/examen' when state.extra is! ConfigTest && state.extra is! TestEnCurso => '/estudiar',
+        '/resultados' when state.extra is! DatosResultado => '/estudiar',
+        final ruta => rutaNueva(ruta),
+      },
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => _Shell(shell: shell),
@@ -91,6 +105,7 @@ final _router = GoRouter(
         StatefulShellBranch(navigatorKey: clavesRamas[4], routes: [
           GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
             GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
+            GoRoute(path: 'economia', builder: (c, s) => const EconomiaPage()),
             GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage(), routes: [
               GoRoute(path: 'alta', builder: (c, s) => const AltaPreparadorPage()),
             ]),
@@ -100,7 +115,11 @@ final _router = GoRouter(
       ],
     ),
     // Fuera del shell: pantalla completa sin barra inferior.
-    GoRoute(path: '/examen', builder: (c, s) => ExamenPage(config: s.extra as ConfigTest)),
+    GoRoute(
+      path: '/examen',
+      // Un test nuevo (ConfigTest) o uno a medias que se continúa (TestEnCurso).
+      builder: (c, s) => s.extra is TestEnCurso ? ExamenPage(config: (s.extra as TestEnCurso).config, reanudar: s.extra as TestEnCurso) : ExamenPage(config: s.extra as ConfigTest),
+    ),
     GoRoute(path: '/resultados', builder: (c, s) => ResultadosPage(datos: s.extra as DatosResultado)),
   ],
 );
@@ -139,6 +158,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       onResume: () {
         ref.read(sesionProvider.notifier).sincronizarSiToca();
         _programar();
+        _anotarUso();
         // En el navegador: si se ha publicado otra versión, se ofrece recargar.
         if (kIsWeb) ref.invalidate(actualizacionProvider);
         // Lo que haya cambiado en los ajustes del sistema, y la escucha en
@@ -160,25 +180,43 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _relojes.empezar();
     ref.listenManual(sesionesProvider, (_, __) => _relojes.revisar());
     ref.listenManual(cantesProvider, (_, __) => _relojes.revisar());
+    // Los temas de las próximas clases con preparador, fijados desde el
+    // cronograma para que el preparador vea la misma lista (comparta o no el
+    // cronograma). Converge: una vez fijados, el origen ya no es el cronograma.
+    ref.listenManual(cantesProvider, (_, __) => _fijarTemasDeClases(), fireImmediately: true);
+    ref.listenManual(cronogramaProvider, (_, __) => _fijarTemasDeClases());
+    ref.listenManual(ajustesProvider, (_, __) => _fijarTemasDeClases());
+    // Los deberes que se tachan solos (tema estudiado, esquema, cante, test).
+    ref.listenManual(cantesProvider, (_, __) => _tacharDeberes(), fireImmediately: true);
+    ref.listenManual(ajustesProvider, (_, __) => _tacharDeberes());
+    ref.listenManual(historialProvider, (_, __) => _tacharDeberes());
     // Un alumno nuevo (o uno que se va): se escuchan sus clases.
     ref.listenManual(alumnosProvider, (antes, ahora) {
       if (antes?.map((a) => '${a.id}:${a.uid}').join() != ahora.map((a) => '${a.id}:${a.uid}').join()) ref.read(sesionesProvider.notifier).escucharAlumnos();
     });
     ref.listenManual(papelProvider, (_, __) => _relojes.revisar());
     // Estadísticas (si están activadas): la pantalla que se ve y, como
-    // propiedades, la oposición y el papel. Nunca datos personales.
+    // propiedades, la oposición, el papel y de dónde se instaló (Play, APK o
+    // navegador). Nunca datos personales.
     _router.routerDelegate.addListener(_pantallaVista);
     _pantallaVista();
+    _anotarUso();
     ref.listenManual(papelProvider, (_, p) => Analitica.instancia.usuario(papel: p.name), fireImmediately: true);
     Analitica.instancia.usuario(oposicion: ref.read(oposicionProvider).id);
+    origenInstalacion().then((o) => Analitica.instancia.usuario(instalacion: o.name));
     ref.listenManual(usuarioActualProvider, (_, __) => _relojes.revisar());
     // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
     abiertoDesdeWidget().then(_desdeWidget);
     _clicsWidget = clicsEnWidget().listen(_desdeWidget);
+    // Enlace de invitación de un preparador tocado con la app ya abierta.
+    _enlaces = enlacesEntrantes().listen(_desdeEnlace);
     // Y se redibuja cuando cambia lo que muestra.
     ref.listenManual(datosWidgetProvider, (_, d) => actualizarWidget(d), fireImmediately: true);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (ref.read(serviciosProvider).firebaseDisponible) ref.read(sesionProvider.notifier).renovarFoto();
+      // Invitación pendiente (del enlace o del referrer de Play, leída al
+      // arrancar): directo a conectar con el preparador.
+      if (Invitacion.pendiente() != null) _router.go('/mas/mi-preparador');
       // La primera vez: para qué sirven los avisos y el permiso para
       // mostrarlos; después, la guía de la app (una vez por oposición y papel)
       // y, a quien acaba de elegir «Preparo a opositores», el alta.
@@ -200,6 +238,16 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         if (mounted) await _abrirAltaSiToca();
       });
     });
+  }
+
+  /// El día de hoy como último uso de la app, si el opositor comparte con su
+  /// preparador cuándo la usó por última vez (solo el día). Una escritura al día.
+  void _anotarUso() {
+    final a = ref.read(ajustesProvider);
+    if (!a.avisosPreparador.contains('uso')) return;
+    final hoy = Ajustes.claveDia(DateTime.now());
+    if (a.ultimoUso == hoy) return;
+    ref.read(ajustesProvider.notifier).actualizar((x) => x.copyWith(ultimoUso: hoy));
   }
 
   /// Abre el test diario de hoy (si no está hecho; si no, Hoy).
@@ -226,6 +274,18 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   }
 
   StreamSubscription<Uri?>? _clicsWidget;
+  StreamSubscription<Uri>? _enlaces;
+
+  /// Enlace `…/app/?codigo=…` con la app abierta: la invitación queda
+  /// pendiente y se abre Mi preparador con el código puesto.
+  Future<void> _desdeEnlace(Uri uri) async {
+    final inv = Invitacion.deUri(uri);
+    if (inv == null) return;
+    await inv.guardar();
+    if (!mounted) return;
+    ref.invalidate(invitacionPendienteProvider);
+    _router.go('/mas/mi-preparador');
+  }
 
   /// tcee://widget/{ruta}: cada zona del widget abre su pantalla.
   void _desdeWidget(Uri? uri) {
@@ -301,6 +361,51 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   }
 
   String? _ultimaPantalla;
+  bool _fijando = false;
+  Future<void> _fijarTemasDeClases() async {
+    if (_fijando) return;
+    // Nunca dentro de un build (el primer aviso llega en initState): se espera al siguiente tick.
+    await Future<void>.delayed(Duration.zero);
+    if (!mounted || _fijando) return;
+    final ajustes = ref.read(ajustesProvider);
+    final pendientes = clasesParaFijar(ref.read(cantesProvider), elegidos: ajustes.temasClases, cronograma: ref.read(cronogramaProvider), noCantar: ajustes.noCantar, ahora: DateTime.now());
+    if (pendientes.isEmpty) return;
+    _fijando = true;
+    try {
+      for (final e in pendientes.entries) {
+        await ref.read(ajustesProvider.notifier).fijarTemasClase(e.key, e.value);
+      }
+    } catch (_) {
+      // Sin ajustes todavía (arranque) o sin sitio: se intenta en el siguiente cambio.
+    } finally {
+      _fijando = false;
+    }
+  }
+
+  bool _tachando = false;
+  Future<void> _tacharDeberes() async {
+    if (_tachando) return;
+    await Future<void>.delayed(Duration.zero);
+    if (!mounted || _tachando) return;
+    final repo = ref.read(usuarioRepoProvider);
+    final cambiadas = tacharDeberes(
+      ref.read(cantesProvider).where((c) => c.dePreparador),
+      estudiados: ref.read(ajustesProvider).temasEstudiados,
+      cantes: ref.read(cantesProvider),
+      tests: ref.read(historialProvider).valueOrNull ?? repo.resultadosLocales(),
+      banco: ref.read(preguntasProvider).valueOrNull,
+    );
+    if (cambiadas.isEmpty) return;
+    _tachando = true;
+    try {
+      await ref.read(cantesProvider.notifier).guardarVarios(cambiadas);
+    } catch (_) {
+      // Se vuelve a intentar en el siguiente cambio.
+    } finally {
+      _tachando = false;
+    }
+  }
+
   void _pantallaVista() {
     final nombre = Analitica.nombreDePantalla(_router.routerDelegate.currentConfiguration.uri.toString());
     if (nombre == _ultimaPantalla) return;
@@ -316,6 +421,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     Notificaciones.alTocar = null;
     _relojes.cerrar();
     _clicsWidget?.cancel();
+    _enlaces?.cancel();
     super.dispose();
   }
 
@@ -332,6 +438,9 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       if (ahora == null) {
         ref.read(cantesProvider.notifier).dejarDeEscuchar();
         ref.read(sesionesProvider.notifier).dejarDeEscucharAlumnos();
+        // Firebase ha cerrado la sesión en pleno uso (token invalidado) sin
+        // que el usuario tocara «Cerrar sesión»: se recupera sin preguntar.
+        if (antes != null && !saliendoAProposito) unawaited(recuperarSesion());
       }
     });
     return MaterialApp.router(

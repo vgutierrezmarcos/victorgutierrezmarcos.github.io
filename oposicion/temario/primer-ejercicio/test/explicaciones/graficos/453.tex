@@ -1,0 +1,38 @@
+% Pregunta 453 (2013-noviembre-OEP2013, n.º 30): coste de protección de un arancel en país pequeño (B+D). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,yscale=1]
+  % D: P = 5 - 0,8Q ; S: P = 0,5 + 0,8Q ; P* = 1,4 ; P*+t = 2,4
+  % S0 = 1,125 ; D0 = 4,5 ; S1 = 2,375 ; D1 = 3,25
+  \fill[area] (0,1.4) -- (1.125,1.4) -- (2.375,2.4) -- (0,2.4) -- cycle;
+  \fill[area2] (1.125,1.4) -- (2.375,1.4) -- (2.375,2.4) -- cycle;
+  \fill[fill=tceeverde,fill opacity=0.2] (2.375,1.4) rectangle (3.25,2.4);
+  \fill[area2] (3.25,1.4) -- (4.5,1.4) -- (3.25,2.4) -- cycle;
+  \ejes{$Q$}{$P$}{6.4}{5.2}
+  \draw[curva1] (0.25,4.8) -- (5.6,0.52) node[etiqueta,above right] {demanda};
+  \draw[curva2] (0,0.5) -- (5.1,4.58) node[etiqueta,right] {oferta};
+  \draw[curva4] (0,1.4) -- (5.9,1.4);
+  \draw[curvanueva] (0,2.4) -- (5.9,2.4);
+  \node[left] at (0,1.4) {$P^*$};
+  \node[left] at (0,2.4) {$P^*{+}t$};
+  \foreach \x/\l in {1.125/S_0,2.375/S_1,3.25/D_1,4.5/D_0}
+    \draw[guia] (\x,1.4) -- (\x,0) node[below] {$\l$};
+  \draw[guia] (2.375,2.4) -- (2.375,1.4);
+  \draw[guia] (3.25,2.4) -- (3.25,1.4);
+  \foreach \p in {(1.125,1.4),(2.375,2.4),(3.25,2.4),(4.5,1.4)} \node[punto] at \p {};
+  \node at (0.9,1.9) {$A$};
+  \node at (2.05,1.68) {$B$};
+  \node at (2.81,1.9) {$C$};
+  \node at (3.62,1.68) {$D$};
+  % importaciones
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceedorado] (1.125,-0.55) -- (4.5,-0.55)
+    node[midway,below=5pt,font=\footnotesize,text=tceedorado] {importaciones antes del arancel};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceerojo] (2.375,-1.35) -- (3.25,-1.35)
+    node[midway,below=5pt,font=\footnotesize,text=tceerojo] {importaciones con arancel};
+  \node[align=left,anchor=north west,font=\small] at (-0.6,-2.35) {%
+    Pérdida del consumidor $=A+B+C+D$\\
+    Ganancia de los productores $=A$\quad Recaudación $=C$\\
+    \textcolor{tceerojo}{Coste de protección $=(A{+}B{+}C{+}D)-A-C=B+D$}};
+\end{tikzpicture}
+\end{document}

@@ -12,7 +12,7 @@
          los avisos de las clases y de los temas tienen que llegar a su hora -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
     <application
-        android:label="TCEE · DCE"
+        android:label="Oposición TCEE · DCE"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <!-- Estadísticas de uso e informes de errores apagados hasta que el
@@ -43,6 +43,18 @@
             <!-- Al tocar el widget de la pantalla de inicio -->
             <intent-filter>
                 <action android:name="es.antonborri.home_widget.action.LAUNCH"/>
+            </intent-filter>
+            <!-- Enlace de invitación de un preparador (App Links): la página de la
+                 app (/app/?codigo=…) y la app web (/app/abrir/) abren la app si
+                 está instalada. Android lo verifica con
+                 https://www.victorgutierrezmarcos.es/.well-known/assetlinks.json
+                 (huella SHA-256 de la firma de Google Play). -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="www.victorgutierrezmarcos.es" android:path="/app/"/>
+                <data android:scheme="https" android:host="www.victorgutierrezmarcos.es" android:pathPrefix="/app/abrir"/>
             </intent-filter>
         </activity>
         <!-- Widget de la pantalla de inicio -->
@@ -86,6 +98,10 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Transcripción del cante: ver el servicio de reconocimiento de voz (Android 11+) -->
+        <intent>
+            <action android:name="android.speech.RecognitionService"/>
         </intent>
         <!-- url_launcher: abrir enlaces web y correo -->
         <intent>

@@ -4,6 +4,8 @@
 /// cambios ([PropuestaCronograma]), que el opositor acepta o rechaza.
 library;
 
+import 'fases.dart';
+
 DateTime? _fecha(Object? s) => s is String ? DateTime.tryParse(s) : null;
 List<String> _textos(Object? l) => [for (final e in (l as List?) ?? const []) e.toString()];
 
@@ -101,9 +103,24 @@ class Cronograma {
     this.updatedAt,
     this.diaCante,
     this.manual = false,
+    this.fases = const [],
+    this.examen,
   });
 
   final String id;
+  /// Fases de un ejercicio escrito (primera vuelta, simulacros y revisión),
+  /// en orden; vacío en los demás. Las semanas ([semanas]) son las de la
+  /// primera vuelta; las otras fases no llevan temas fijos.
+  final List<FaseCronograma> fases;
+  /// Fecha del examen (cronograma por fases).
+  final DateTime? examen;
+
+  bool get porFases => fases.isNotEmpty;
+
+  /// La fase en curso en [d] (null si no tiene fases o cae fuera).
+  FaseCronograma? faseEn(DateTime d) => fases.where((f) => f.contiene(d)).firstOrNull;
+
+  FaseCronograma? fase(TipoFase t) => fases.where((f) => f.tipo == t).firstOrNull;
   /// Hecho o retocado a mano (semana a semana, importado o editado): sus
   /// semanas no se reparten solas; se reparte lo pendiente solo si se pide.
   final bool manual;
@@ -226,6 +243,7 @@ class Cronograma {
     Map<String, DateTime>? resueltas,
     Map<String, String>? respuestas,
     bool? manual,
+    List<FaseCronograma>? fases,
   }) =>
       Cronograma(
         id: id,
@@ -253,6 +271,8 @@ class Cronograma {
         updatedAt: DateTime.now(),
         diaCante: diaCante,
         manual: manual ?? this.manual,
+        fases: fases ?? this.fases,
+        examen: examen,
       );
 
   Map<String, dynamic> toJson() => {
@@ -281,6 +301,8 @@ class Cronograma {
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         if (diaCante != null) 'diaCante': diaCante,
         if (manual) 'manual': true,
+        if (fases.isNotEmpty) 'fases': [for (final f in fases) f.toJson()],
+        if (examen != null) 'examen': examen!.toIso8601String(),
       };
 
   factory Cronograma.fromJson(Map<dynamic, dynamic> j) => Cronograma(
@@ -318,6 +340,8 @@ class Cronograma {
         updatedAt: _fecha(j['updatedAt']),
         diaCante: (j['diaCante'] as num?)?.toInt(),
         manual: j['manual'] as bool? ?? false,
+        fases: [for (final f in (j['fases'] as List?) ?? const []) if (f is Map) FaseCronograma.fromJson(f)],
+        examen: _fecha(j['examen']),
       );
 
   /// Gana la versión más reciente, pero una propuesta del preparador posterior

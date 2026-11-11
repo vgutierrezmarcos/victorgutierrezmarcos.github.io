@@ -15,6 +15,8 @@ import '../../widgets/selector_temas.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../plan/informes_cante.dart';
+import '../plan/rubrica.dart';
 import '../plan/resultado_sheet.dart';
 import '../cronograma/propuesta_page.dart';
 import 'materiales_page.dart';
@@ -203,13 +205,22 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Cargando lo que comparte el alumno…', style: context.textos.labelSmall))
             else if (a.enlazado && progreso?.value == null)
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Sin conexión con su app: se muestran los últimos datos guardados.', style: context.textos.labelSmall)),
+            // Solo si el alumno comparte cuándo usó la app por última vez (solo el día).
+            if (progreso?.value?.ultimoUso case final u? when DateTime.tryParse(u) != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text(
+                  switch (DateTime.now().difference(DateTime.parse(u)).inDays) { 0 => 'Ha usado la app hoy.', 1 => 'Usó la app ayer.', final d => 'Última vez que usó la app: hace $d días.' },
+                  style: context.textos.labelSmall,
+                ),
+              ),
             if (a.telefono.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: BotonWhatsApp(telefono: a.telefono, texto: 'Escribir a ${a.nombre}')),
             // Sin la app: invitarle en un toque con el código.
             if (!a.enlazado && telefonoWhatsApp(a.telefono) != null && ref.watch(perfilPreparadorProvider).codigo != null)
               Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton.icon(
-                  onPressed: () => abrirUrl(context, enlaceWhatsApp(a.telefono, mensajeInvitacion(ref.read(perfilPreparadorProvider).codigo!))!),
+                  onPressed: () => abrirUrl(context, enlaceWhatsApp(a.telefono, mensajeInvitacion(ref.read(perfilPreparadorProvider).codigo!, oposicion: ref.read(oposicionProvider).id))!),
                   icon: const Icon(Icons.person_add_alt, size: 18),
                   label: Text('Invitar a ${a.nombre} a la app'),
                 ),
@@ -360,6 +371,8 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                 ]),
               ),
             ],
+            // Cómo evoluciona en cada criterio de la rúbrica (si se valora con ella).
+            EvolucionCriterios(cantes: hechos.where((c) => idsMias.contains(c.id))),
             const TituloSeccion('Historial de cantes'),
             if (hechos.isEmpty)
               const VacioVista(icono: Icons.star_border, texto: 'Todavía no hay cantes valorados.')
@@ -369,11 +382,11 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Tarjeta(
                     padding: EdgeInsets.zero,
-                    onTap: idsMias.contains(c.id) ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: c.id))) : () => _verCanteDelAlumno(c, titulo),
+                    onTap: idsMias.contains(c.id) ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: c.id))) : () => _verCanteDelAlumno(c, titulo, uid: a.uid),
                     child: ListTile(
                       title: Text(tituloCanteHecho(c, titulo), maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
                       subtitle: Text(
-                        '${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${idsMias.contains(c.id) ? '' : ' · ${conQuienCanto(c, yo: ref.read(usuarioActualProvider)?.uid, mia: false)}'}',
+                        '${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${idsMias.contains(c.id) ? '' : ' · ${conQuienCanto(c, yo: ref.read(usuarioActualProvider)?.uid, mia: false)}'}${sufijoCobertura(c)}',
                         style: context.textos.labelSmall,
                       ),
                       // De las clases con otros preparadores no se ve la valoración.
@@ -398,12 +411,13 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
   }
 
   /// Cante que el alumno hizo por su cuenta: se puede leer, no cambiar.
-  void _verCanteDelAlumno(Cante c, String Function(String) titulo) {
+  void _verCanteDelAlumno(Cante c, String Function(String) titulo, {String? uid}) {
     final r = c.resultado;
     showModalBottomSheet<void>(
       context: context,
       useRootNavigator: true,
-      builder: (_) => Padding(
+      isScrollControlled: true,
+      builder: (_) => SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text('${c.preparador == null ? 'Cante por su cuenta' : 'Clase ${conQuienCanto(c, yo: null, mia: false)}'} · ${fechaLarga(c.fecha)}', style: context.textos.titleMedium),
@@ -416,6 +430,8 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             if ((r?.segundos ?? 0) > 0) Text(formatoTiempo(r!.segundos), style: context.textos.labelMedium),
           ]),
           if ((r?.comentarios ?? '').isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(r!.comentarios, style: context.textos.bodyMedium)),
+          // Los informes que ha guardado con su IA (solo lectura).
+          if (uid != null) SeccionInformesCante(uid: uid, canteId: c.id, titulo: false),
           const SizedBox(height: 8),
         ]),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
@@ -9,6 +10,7 @@ import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import 'economia_page.dart' show textoPrivacidadConector;
 
 /// Cuenta: Google Sign-In, sincronización, privacidad, exportación y borrado de datos.
 class CuentaPage extends ConsumerWidget {
@@ -28,7 +30,15 @@ class CuentaPage extends ConsumerWidget {
         padding: const EdgeInsets.all(16),
         children: [
           if (!firebase)
-            Tarjeta(child: Text('Esta compilación no incluye credenciales de Firebase: la app funciona solo en local.', style: context.textos.bodySmall))
+            Tarjeta(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('No se ha podido conectar con la cuenta: la app funciona solo en local.', style: context.textos.bodySmall),
+                if (errorFirebase != null) ...[
+                  const SizedBox(height: 8),
+                  SelectableText('Detalle técnico (cópialo y mándalo a contacto@victorgutierrezmarcos.es): $errorFirebase', style: context.textos.bodySmall),
+                ],
+              ]),
+            )
           else if (usuario == null) ...[
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -59,6 +69,9 @@ class CuentaPage extends ConsumerWidget {
                   Text(usuario.displayName ?? '', style: context.textos.titleMedium),
                   Text(usuario.email ?? '', style: context.textos.bodySmall),
                   if (pendientes > 0) Text('$pendientes resultados pendientes de subir', style: context.textos.labelSmall?.copyWith(color: context.colores.dorado)),
+                  if (((Hive.box(Cajas.app).get(claveSesionesRecuperadas) as int?) ?? 0) > 0)
+                    // Para saber si en este móvil la sesión se pierde al cerrar la app (y que la recuperación funciona).
+                    Text('La sesión se había perdido al cerrar la app y se recuperó sola ${Hive.box(Cajas.app).get(claveSesionesRecuperadas)} ${Hive.box(Cajas.app).get(claveSesionesRecuperadas) == 1 ? 'vez' : 'veces'}${sesionRecuperada ? ', también en este arranque' : ''}.', style: context.textos.labelSmall),
                 ])),
               ]),
             ),
@@ -105,17 +118,12 @@ class CuentaPage extends ConsumerWidget {
                 title: Text('Reiniciar repaso Leitner', style: TextStyle(color: context.esquema.error)),
                 onTap: () => _confirmar(context, 'Se olvidarán las preguntas en seguimiento.', () => ref.read(leitnerProvider.notifier).reiniciar()),
               ),
-              if (usuario != null)
-                ListTile(
-                  leading: Icon(Icons.cloud_off_outlined, color: context.esquema.error),
-                  title: Text('Borrar todos mis datos', style: TextStyle(color: context.esquema.error)),
-                  subtitle: Text('De la nube y de este dispositivo; rompe los enlaces con preparadores y alumnos', style: context.textos.labelSmall),
-                  onTap: () => _confirmar(
-                    context,
-                    'Se borrarán de la nube y de este dispositivo tus tests, repaso, temas, notas, cantes, planificación, alumnos y sesiones, y se romperán los enlaces con tus preparadores y alumnos. Después se cerrará la sesión. Tu cuenta de Google no se toca. Esta acción no se puede deshacer.',
-                    () => borrarTodosMisDatos(ref),
-                  ),
-                ),
+              ListTile(
+                leading: Icon(Icons.cloud_off_outlined, color: context.esquema.error),
+                title: Text('Borrar mis datos de una oposición', style: TextStyle(color: context.esquema.error)),
+                subtitle: Text(usuario == null ? 'Todo lo de esa oposición en este dispositivo' : 'Todo lo de esa oposición, en la nube y en este dispositivo; rompe sus enlaces con preparadores y alumnos', style: context.textos.labelSmall),
+                onTap: () => showDialog<void>(context: context, builder: (_) => DialogoBorrarOposicion(conSesion: usuario != null)),
+              ),
               if (usuario != null)
                 ListTile(
                   leading: Icon(Icons.person_remove_outlined, color: context.esquema.error),
@@ -156,6 +164,114 @@ class CuentaPage extends ConsumerWidget {
   }
 }
 
+/// Borrar todos los datos de una oposición: se elige cuál, se lee qué se
+/// pierde y hay que escribir «BORRAR» y sus siglas para que el botón se active.
+class DialogoBorrarOposicion extends ConsumerStatefulWidget {
+  const DialogoBorrarOposicion({super.key, required this.conSesion});
+
+  final bool conSesion;
+
+  /// Lo que hay que escribir para confirmar el borrado de [o].
+  static String frase(Oposicion o) => 'BORRAR ${o.siglas.toUpperCase()}';
+
+  @override
+  ConsumerState<DialogoBorrarOposicion> createState() => _DialogoBorrarOposicionState();
+}
+
+class _DialogoBorrarOposicionState extends ConsumerState<DialogoBorrarOposicion> {
+  late Oposicion _oposicion = ref.read(oposicionProvider);
+  final _texto = TextEditingController();
+  bool _borrando = false;
+  String? _error;
+
+  @override
+  void dispose() {
+    _texto.dispose();
+    super.dispose();
+  }
+
+  bool get _confirmado => _texto.text.trim().toUpperCase() == DialogoBorrarOposicion.frase(_oposicion);
+
+  Future<void> _borrar() async {
+    setState(() {
+      _borrando = true;
+      _error = null;
+    });
+    final mensajes = ScaffoldMessenger.of(context);
+    try {
+      await borrarDatosDeOposicion(ref, _oposicion);
+      if (!mounted) return;
+      Navigator.pop(context);
+      mensajes.mostrar(SnackBar(content: Text('Borrados tus datos de ${_oposicion.siglas}')));
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _borrando = false;
+        _error = 'No se ha podido borrar todo (¿sin conexión?). Vuelve a intentarlo: no pasa nada por repetirlo.';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final frase = DialogoBorrarOposicion.frase(_oposicion);
+    final varias = Oposiciones.disponibles.length > 1;
+    return AlertDialog(
+      title: Text('Borrar mis datos de ${_oposicion.siglas}'),
+      content: SingleChildScrollView(
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          if (varias) ...[
+            Text('¿De qué oposición?', style: context.textos.labelLarge),
+            const SizedBox(height: 6),
+            SegmentedButton<String>(
+              segments: [for (final o in Oposiciones.disponibles) ButtonSegment(value: o.id, label: Text(o.siglas))],
+              selected: {_oposicion.id},
+              onSelectionChanged: _borrando
+                  ? null
+                  : (s) => setState(() {
+                        _oposicion = Oposiciones.disponibles.firstWhere((o) => o.id == s.first);
+                        _texto.clear();
+                      }),
+            ),
+            const SizedBox(height: 14),
+          ],
+          Text(
+            widget.conSesion
+                ? 'Se borrará todo lo que tienes en ${_oposicion.siglas}, en la nube y en este dispositivo: tests, repaso, temas, notas, cantes y sus informes, cronogramas, clases, alumnos y reservas. Se romperán tus enlaces con preparadores y alumnos de ${_oposicion.siglas}. En tus otros dispositivos se borrará al sincronizar.'
+                : 'Se borrará de este dispositivo todo lo que tienes en ${_oposicion.siglas}: tests, repaso, temas, notas, cantes, cronogramas, clases y alumnos.',
+          ),
+          const SizedBox(height: 10),
+          Text(
+            varias ? 'No se toca nada de las demás oposiciones ni tu cuenta. No se puede deshacer: si quieres una copia, exporta antes tus datos.' : 'Tu cuenta no se toca. No se puede deshacer: si quieres una copia, exporta antes tus datos.',
+            style: context.textos.bodySmall,
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _texto,
+            enabled: !_borrando,
+            autocorrect: false,
+            textCapitalization: TextCapitalization.characters,
+            decoration: InputDecoration(labelText: 'Escribe $frase para confirmar', border: const OutlineInputBorder()),
+            onChanged: (_) => setState(() {}),
+          ),
+          if (_error != null) ...[
+            const SizedBox(height: 10),
+            Text(_error!, style: context.textos.bodySmall?.copyWith(color: context.esquema.error)),
+          ],
+        ]),
+      ),
+      actions: [
+        TextButton(onPressed: _borrando ? null : () => Navigator.pop(context), child: const Text('Cancelar')),
+        FilledButton(
+          style: FilledButton.styleFrom(backgroundColor: context.esquema.error),
+          onPressed: _confirmado && !_borrando ? _borrar : null,
+          child: Text(_borrando ? 'Borrando…' : 'Borrar los datos de ${_oposicion.siglas}'),
+        ),
+      ],
+    );
+  }
+}
+
 /// Qué se guarda, quién lo ve y quién no. Se muestra en Cuenta y en la
 /// pantalla de inicio de sesión.
 class TarjetaPrivacidad extends StatelessWidget {
@@ -180,7 +296,8 @@ class TarjetaPrivacidad extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         punto(Icons.lock_outline, 'Nadie más los ve.', 'Tus tests, temas, notas, cantes y planificación quedan guardados a nombre de tu cuenta, y las reglas de la base de datos impiden que nadie más los lea: ni otros opositores ni ningún otro usuario de la app o de la web.'),
         punto(Icons.person_pin_outlined, 'Tu preparador, solo si tú quieres.', 'Si enlazas con su código, verá los temas que marcas y tus cantes. Nunca tus tests, tus notas ni tus grabaciones. Puedes quitarle el acceso cuando quieras.'),
-        punto(Icons.mic_off_outlined, 'Las grabaciones no salen de tu dispositivo.', 'No se suben a ningún sitio.'),
+        punto(Icons.mic_off_outlined, 'Las grabaciones, las transcripciones y la pizarra grabada con tus cantes no salen de tu dispositivo.', 'No se suben a ningún sitio: una transcripción o una pizarra solo llega a tu IA si la envías tú.'),
+        punto(Icons.auto_awesome_outlined, 'Tu IA, solo si la conectas.', textoPrivacidadConector),
         punto(Icons.block, 'Sin publicidad. Estadísticas solo si tú quieres.', 'Tus datos no se venden ni se ceden. Si lo activas en Ajustes, la app envía a Google estadísticas de uso anónimas e informes de errores, sin tu nombre ni tus datos de estudio. Tampoco yo, que hago la app, consulto tus datos.'),
         punto(Icons.delete_outline, 'Son tuyos.', 'Puedes descargarlos o borrarlos todos desde aquí.'),
         Align(

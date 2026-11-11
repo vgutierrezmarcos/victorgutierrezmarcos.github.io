@@ -1,0 +1,35 @@
+% Pregunta 833 (2004-junio-OEP2004, n.º 6): monopolio con P = 100 - x y CMg = 50; pérdida irrecuperable de eficiencia (triángulo de 312,5) frente al beneficio (rectángulo de 625, transferencia) y al excedente total competitivo (1250). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+% Escala: 1 unidad de x = 0,06 cm; 1 unidad de P = 0,05 cm
+\begin{tikzpicture}[tcee,x=0.06cm,y=0.05cm]
+  % Áreas
+  \fill[area2] (0,50) rectangle (25,75);
+  \fill[area] (25,75) -- (25,50) -- (50,50) -- cycle;
+  \ejes{$x$}{$P$}{110}{112}
+  % Curvas
+  \draw[curva1] (0,100) -- (100,0) node[etiqueta,pos=0.88,above right] {$D$};
+  \draw[curva2] (0,100) -- (50,0) node[etiqueta,pos=0.8,left] {$IMg$};
+  \draw[curva3] (0,50) -- (105,50) node[etiqueta,right] {$CMg$};
+  % Guías y puntos
+  \draw[guia] (25,0) -- (25,75) -- (0,75);
+  \draw[guia] (50,0) -- (50,50);
+  \node[left] at (0,75) {$75$};
+  \node[left] at (0,50) {$50$};
+  \node[left] at (0,100) {$100$};
+  \node[below] at (25,0) {$25$};
+  \node[below] at (50,0) {$50$};
+  \node[below] at (100,0) {$100$};
+  \node[punto] at (25,50) {};
+  \node[punto,tceerojo] at (25,75) {};
+  \node[punto] at (50,50) {};
+  \node[etiqueta,above right] at (25,75) {$M$};
+  \node[etiqueta,above right] at (50,50) {$C$};
+  % Rótulos de las áreas
+  \node[font=\small] at (8,57) {$625$};
+  \draw[thin] (34,57) -- (62,76) node[right,font=\small,align=left,inner sep=1pt] {PIE $=312{,}5$\\[-1pt]$=\tfrac12\cdot25\cdot25$};
+  \draw[thin] (15,80) -- (24,96) node[above right=-1pt,font=\small,inner sep=1pt] {$EC=312{,}5$};
+  \node[font=\small,align=left,anchor=north west] at (62,116) {Excedente total en $C$:\\$EC+625+\mathrm{PIE}=1250$};
+\end{tikzpicture}
+\end{document}

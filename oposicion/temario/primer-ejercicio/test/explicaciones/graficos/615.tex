@@ -1,0 +1,36 @@
+% Pregunta 615 (2009-octubre-OEP2009, n.º 12): bien inferior y subida de p1 de p1^0 a p1^1.
+% Marshalliana x1 = 5,5 - p1; hicksianas más planas (|dx/dp| = 1,5) porque el efecto renta
+% compensa en parte el de sustitución: h(U0) pasa por A, h(U1) por B. A escala:
+% |VC| = 5 < |ΔEC| = 6 < |VE| = 7. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Áreas entre p1^0 = 1,5 y p1^1 = 3,5
+  \fill[tceeazul,fill opacity=0.22] (0,1.5) -- (4,1.5) -- (1,3.5) -- (0,3.5) -- cycle;
+  \fill[tceemorado,fill opacity=0.28] (4,1.5) -- (2,3.5) -- (1,3.5) -- cycle;
+  \fill[tceeverde,fill opacity=0.28] (4,1.5) -- (5,1.5) -- (2,3.5) -- cycle;
+  \ejes{$x_1$}{$p_1$}{6.6}{5.2}
+  % Precios
+  \draw[guia] (0,1.5) -- (5,1.5);
+  \draw[guia] (0,3.5) -- (2,3.5);
+  \node[left] at (0,1.5) {$p_1^0$};
+  \node[left] at (0,3.5) {$p_1^1$};
+  % Curvas
+  \draw[curva2] (0.55,3.8) -- (5.2,0.7) node[etiqueta,below,text=tceeazul] {$h_1(p_1,\overline{U}^0)$};
+  \draw[curva1] (4.5,1.0) -- (0.9,4.6) node[etiqueta,above right,text=tceemorado] {$x_1(p_1,\overline{W})$};
+  \draw[curva3] (5.45,1.2) -- (1.1,4.1);
+  \node[etiqueta,right,text=tceeverde] at (5.45,1.2) {$h_1(p_1,\overline{U}^1)$};
+  % Puntos
+  \node[punto] at (4,1.5) {};
+  \node[etiqueta,above right] at (4,1.5) {$A$};
+  \node[punto] at (2,3.5) {};
+  \node[etiqueta,above right] at (2,3.5) {$B$};
+  % Leyenda
+  \node[etiqueta,align=left,anchor=north west] at (3.1,5.1) {%
+    $|\mathrm{VC}|$: \textcolor{tceeazul}{azul}\\
+    $|\Delta\mathrm{EC}|$: \textcolor{tceeazul}{azul} + \textcolor{tceemorado}{morado}\\
+    $|\mathrm{VE}|$: \textcolor{tceeazul}{azul} + \textcolor{tceemorado}{morado} + \textcolor{tceeverde}{verde}\\[3pt]
+    $|\mathrm{VC}|<|\Delta\mathrm{EC}|<|\mathrm{VE}|$};
+\end{tikzpicture}
+\end{document}

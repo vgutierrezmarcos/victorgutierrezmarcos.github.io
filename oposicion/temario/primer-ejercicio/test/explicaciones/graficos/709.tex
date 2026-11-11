@@ -1,0 +1,34 @@
+% Pregunta 709 (2007-julio-OEP2007, n.º 17): oferta agregada a corto plazo con salarios nominales fijos
+% (pendiente positiva) y con indiciación plena (vertical en el nivel natural).
+% Con W fijo, al pasar de P0 a P1 la producción va de Y0 a Y1; con W indiciado, W/P no cambia y Y se queda en Ȳ.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Y$}{$P$}{6}{5}
+  % Niveles de precios
+  \draw[guia] (0,1.6) -- (1.68,1.6);
+  \draw[guia] (0,3.6) -- (4.62,3.6);
+  \node[left] at (0,1.6) {$P_0$};
+  \node[left] at (0,3.6) {$P_1$};
+  % Producciones con salario fijo
+  \draw[guia] (1.68,0) -- (1.68,1.6);
+  \draw[guia] (4.62,0) -- (4.62,3.6);
+  \node[below] at (1.68,0) {$Y_0$};
+  \node[below] at (4.62,0) {$Y_1$};
+  \node[below] at (3,0) {$\bar{Y}$};
+  % OA sin indiciar (salario nominal fijo)
+  \draw[curva2,desplazada] (0.8,1.0) -- (5.2,4.0) node[etiqueta,right,align=left,text=tceeazul] {OA sin\\indiciar};
+  % OA con indiciación plena
+  \draw[curvanueva] (3,0) -- (3,4.6) node[etiqueta,above,align=center,text=tceerojo] {OA con\\indiciación plena};
+  % Puntos
+  \node[punto,fill=tceeazul] at (1.68,1.6) {};
+  \node[punto,fill=tceeazul] at (4.62,3.6) {};
+  \node[punto,fill=tceerojo] at (3,1.6) {};
+  \node[punto,fill=tceerojo] at (3,3.6) {};
+  % Notas
+  \node[etiqueta,font=\footnotesize,text=tceeazul,align=left,anchor=north west] at (3.25,1.45) {$W$ fijo: si $P$ sube,\\$W/P$ baja y $Y$ crece};
+  \node[etiqueta,font=\footnotesize,text=tceerojo,align=right,anchor=south east] at (2.85,3.75) {$W$ sube con $P$:\\$W/P$ igual, $Y=\bar{Y}$};
+\end{tikzpicture}
+\end{document}

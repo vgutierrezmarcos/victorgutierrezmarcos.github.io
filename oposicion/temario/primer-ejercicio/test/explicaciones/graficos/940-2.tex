@@ -1,0 +1,30 @@
+% Pregunta 940 (2002-octubre-OEP2002, n.º 23): consumo de estado estacionario en función de la tasa de ahorro.
+% Con f(k) = 2 sqrt(k) y n = 0,6: c*(s) = (20/3)(s - s^2), máximo en s_oro = 0,5 (c = 1,67);
+% s = 0,6 da c* = 1,6 y s' = 0,8 da c*' = 1,07 (los mismos puntos del gráfico 1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=6cm,y=2.2cm]
+  \draw[eje] (0,0) -- (1.08,0) node[below left=2pt and 0pt] {$s$};
+  \draw[eje] (0,0) -- (0,2.2) node[left] {$c^*$};
+  \node[below left] at (0,0) {$0$};
+  \draw (1,0) -- (1,-0.04) node[below] {$1$};
+  \draw[curva1] plot[domain=0:1,samples=80,smooth] (\x,{20/3*(\x-\x*\x)});
+  \node[etiqueta,text=tceemorado] at (0.13,1.35) {$c^*(s)$};
+  % Máximo: regla de oro
+  \draw[guia] (0.5,0) node[below,text=tceedorado] {$s_{oro}$} -- (0.5,1.667);
+  \draw[guia] (0,1.667) node[left,text=tceedorado] {$c_{oro}$} -- (0.5,1.667);
+  \node[punto,fill=tceedorado] at (0.5,1.667) {};
+  % Puntos del gráfico 1
+  \draw[guia] (0.6,0) node[below,text=black] {$s$} -- (0.6,1.6);
+  \node[punto] at (0.6,1.6) {};
+  \draw[guia] (0.8,0) node[below,text=tceerojo] {$s'$} -- (0.8,1.067);
+  \node[punto,fill=tceerojo] at (0.8,1.067) {};
+  \draw[flecha] (0.63,1.66) to[bend left=12] (0.79,1.2);
+  % Tramos
+  \draw[flecha,tceeverde] (0.2,0.82) to[bend right=8] (0.37,1.3);
+  \node[etiqueta,text=tceeverde,align=center,font=\footnotesize] at (0.25,0.3) {$f'(k^*)>n$:\\más $s$, más $c^*$};
+  \node[etiqueta,text=tceerojo,align=center,font=\footnotesize] at (0.75,0.45) {$f'(k^*)<n$:\\más $s$, menos $c^*$};
+\end{tikzpicture}
+\end{document}

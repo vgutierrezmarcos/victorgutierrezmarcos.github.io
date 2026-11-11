@@ -1,0 +1,43 @@
+% Pregunta 225 (2021-julio-OEP2020, n.º 30): Melitz (2003), del comercio a la autarquía.
+% Con comercio: pi_d (corta en phi*_C), pi_x (más plana, desde -f_x, corta en phi*_x) y pi_d + pi_x de los exportadores.
+% En autarquía: pi_A, más inclinada que pi_d, corta antes (phi*_A < phi*_C) y queda por debajo de pi_d + pi_x
+% a la derecha de phi~ (los exportadores más productivos). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.95cm]
+  % pi_d = -1 + 0,4 x; pi_x = -1,3 + 0,38 x; pi_A = -1 + 0,55 x
+  % Umbrales: phiA = 1,818; phiC = 2,5; phix = 3,421; cruce de pi_A con pi_d + pi_x en 5,652
+  \def\xm{7.2}
+  % Franja de las empresas que entran con la autarquía
+  \fill[area2] (1.818,-1.65) rectangle (2.5,2.9);
+  % Ejes (el vertical baja a los costes fijos)
+  \draw[eje] (0,0) -- (\xm+0.5,0) node[above left=2pt and 0pt] {$\varphi^{\sigma-1}$};
+  \draw[eje] (0,-1.65) -- (0,3.8) node[left] {$\pi$};
+  \node[left] at (0,-0.95) {$-f$};
+  \node[left] at (0,-1.35) {$-f_x$};
+  % Con comercio (situación de partida)
+  \draw[curva2] (0,-1) -- (\xm,-1+0.4*\xm) node[etiqueta,right] {$\pi_d$};
+  \draw[curva3] (0,-1.3) -- (\xm,-1.3+0.38*\xm) node[etiqueta,right] {$\pi_x$};
+  \draw[curva1] (3.421,0.368) -- (\xm,-2.3+0.78*\xm) node[etiqueta,right,yshift=4pt] {$\pi_d+\pi_x$};
+  % Autarquía (lo que cambia)
+  \draw[curvanueva,desplazada] (0,-1) -- (\xm,-1+0.55*\xm) node[etiqueta,right,text=tceerojo,yshift=-4pt] {$\pi_A$};
+  % Umbrales, con las etiquetas debajo
+  \foreach \u in {1.818,2.5,3.421} \node[punto] at (\u,0) {};
+  \draw[guia] (3.421,0.368) -- (3.421,-1.65);
+  \draw[guia] (1.818,0) -- (1.818,-1.65);
+  \draw[guia] (2.5,0) -- (2.5,-1.65);
+  \node[etiqueta,below,text=tceerojo] at (1.818,-1.65) {$\varphi^*_A$};
+  \node[etiqueta,below] at (2.5,-1.65) {$\varphi^*_C$};
+  \node[etiqueta,below] at (3.421,-1.65) {$\varphi^*_x$};
+  \draw[flecha] (2.45,-1.45) -- (1.87,-1.45);
+  % Cruce: a la derecha, los exportadores ganan con comercio y pierden con el cierre
+  \node[punto] at (5.652,2.109) {};
+  \draw[guia] (5.652,2.109) -- (5.652,-1.65) node[below,text=black] {$\tilde\varphi$};
+  \fill[tceerojo,fill opacity=0.25] (5.652,2.109) -- (\xm,-2.3+0.78*\xm) -- (\xm,-1+0.55*\xm) -- cycle;
+  % Anotaciones
+  \node[etiqueta,font=\footnotesize,align=right,anchor=north east,text=tceedorado!70!black] at (1.75,3.0) {c) entran\\empresas\\poco\\productivas};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west,text=tceerojo] at (5.75,-0.25) {b) baja el umbral\\de supervivencia: cae\\la productividad media};
+  \node[etiqueta,font=\footnotesize,align=right,anchor=south east,text=tceerojo] at (6.4,3.1) {a) con el cierre, los exportadores\\pierden la zona roja};
+\end{tikzpicture}
+\end{document}

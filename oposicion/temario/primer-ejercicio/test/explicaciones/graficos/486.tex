@@ -1,0 +1,31 @@
+% Pregunta 486 (2014-septiembre-OEP2014, n.º 18): aspa keynesiana; a la derecha del punto de nivelación S > I y se acumulan existencias. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Y$}{$DA$}{6.2}{5.6}
+  % Recta de 45 grados
+  \draw[curva2] (0,0) -- (5.3,5.3) node[etiqueta,above] {$DA=Y$};
+  % Demanda agregada DA = 1,5 + 0,5 Y (pendiente c < 1)
+  \draw[curva1] (0,1.5) -- (5.6,4.3) node[etiqueta,right] {$DA=C(Y)+I$};
+  % Funcion de consumo C = 0,75 + 0,5 Y (discontinua)
+  \draw[curva3,desplazada] (0,0.75) -- (3.6,2.55) node[etiqueta,right] {$C(Y)$};
+  % Umbral de la funcion de consumo (C = Y)
+  \draw[guia] (1.5,0) -- (1.5,1.5);
+  \node[punto] at (1.5,1.5) {};
+  \node[etiqueta,left=2pt] at (1.5,1.6) {$C=Y$};
+  \node[etiqueta,below] at (1.5,0) {$Y_U$};
+  % Punto de nivelacion
+  \draw[guia] (3,0) -- (3,3);
+  \node[punto,label={[etiqueta]above left=0pt:$E$}] at (3,3) {};
+  \node[etiqueta,below] at (3,0) {$Y^*$};
+  % A la derecha: Y1 = 4,6; DA = 3,8 < Y = 4,6
+  \draw[guia] (4.6,0) -- (4.6,3.8);
+  \draw[curvanueva] (4.6,3.8) -- (4.6,4.6);
+  \node[etiqueta,below] at (4.6,0) {$Y_1$};
+  \draw[tceerojo,thin] (4.63,4.0) -- (4.95,3.2);
+  \node[etiqueta,tceerojo,below right=-2pt,align=left] at (4.85,3.3) {$S-I>0$:\\existencias\\no deseadas};
+  % Ajuste hacia el equilibrio
+  \draw[flecha] (4.45,0.45) -- (3.15,0.45);
+\end{tikzpicture}
+\end{document}

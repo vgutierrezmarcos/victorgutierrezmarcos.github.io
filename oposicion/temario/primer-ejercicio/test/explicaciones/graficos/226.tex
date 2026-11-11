@@ -1,0 +1,34 @@
+% Pregunta 226 (2021-julio-OEP2020, n.º 31): curvas de oferta de Marshall-Edgeworth, caso normal.
+% A exporta X e importa Y. El arancel de A contrae su curva de oferta (OC_A -> OC_A'), el equilibrio pasa
+% de E0 a E1 sobre la curva de B y el rayo por el origen se empina: la RRI p_X*/p_Y* mejora.
+% Los precios internos de A llevan el arancel: rayo dorado más plano que RRI_0 y RRI_1, la ratio interna baja.
+% Curvas: OC_A: Y = 0.2X + 0.14X^2; OC_A': Y = 1.7(0.2X + 0.14X^2); OC_B: Y = 4.6(1 - e^{-X/2}).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \draw[eje] (0,0) -- (6.6,0) node[below left,align=right] {$X$\\[-2pt]{\footnotesize(exporta A)}};
+  \draw[eje] (0,0) -- (0,5.4) node[left,align=right] {$Y$\\[-2pt]{\footnotesize(importa A)}};
+  \node[below left] at (0,0) {$0$};
+  % Rayos desde el origen: pendiente = precio relativo de X en unidades de Y
+  \draw[guia,thick] (0,0) -- (5.9,5.143) node[etiqueta,right,text=tceegris] {$\mathit{RRI}_0$};
+  \draw[guia,thick,tceerojo] (0,0) -- (4.2,4.729) node[etiqueta,above,text=tceerojo] {$\mathit{RRI}_1\uparrow$};
+  % Ratio de precios internos de A con arancel: más plana que RRI_0 y RRI_1
+  \draw[guia,very thick,tceedorado] (0,0) -- (6.3,3.78);
+  \node[etiqueta,anchor=north east,align=right,text=tceedorado] at (6.55,2.5) {precios\\internos de A\\$\dfrac{p_X}{p_Y(1+t)}\downarrow$};
+  % Curva de oferta de B
+  \draw[curva2] plot[domain=0:6.3,samples=60] (\x,{4.6*(1-exp(-0.5*\x))}) node[etiqueta,right] {$OC_B$};
+  % Curva de oferta de A, libre comercio
+  \draw[curva1] plot[domain=0:5.15,samples=60] (\x,{0.2*\x+0.14*\x*\x});
+  \node[etiqueta,right,text=tceemorado] at (4.0,2.8) {$OC_A$};
+  % Curva de oferta de A con arancel: se contrae hacia el eje de su importación
+  \draw[curvanueva,desplazada] plot[domain=0:3.6,samples=60] (\x,{1.7*(0.2*\x+0.14*\x*\x)}) node[etiqueta,above left,text=tceerojo] {$OC_A'$};
+  \draw[flecha] (3.9,2.75) -- (3.05,2.75);
+  % Equilibrios
+  \node[punto] at (4.798,4.182) {};
+  \node[etiqueta,below right] at (4.798,4.182) {$E_0$};
+  \node[punto,fill=tceerojo] at (3.302,3.717) {};
+  \node[etiqueta,below right,text=tceerojo] at (3.33,3.68) {$E_1$};
+\end{tikzpicture}
+\end{document}

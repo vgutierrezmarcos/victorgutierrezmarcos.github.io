@@ -1,0 +1,36 @@
+% Pregunta 4 (2025-marzo-A, n.º 4): descomposición de Hicks de una subida de p_x con un bien Giffen.
+% Mismas rectas que en 4.tex (m = 4, p_y = 1, p_x de 1 a 2); eje x ampliado (2 cm por unidad) y recta inicial cortada en x = 2,8.
+%   U0: y = 1,6 + 1,44/x, tangente a y = 4 - x en A = (1,2; 2,8).
+%   Recta compensada y = 4,995 - 2x, tangente a U0 en B = (0,849; 3,297).
+%   U1: y = -2,1 + 4,5/(x - 0,05), tangente a y = 4 - 2x en C = (1,55; 0,9); queda por debajo de U0.
+%   ES = x_B - x_A < 0, ER = x_C - x_B > 0 y mayor: x2 > x1 (demanda marshalliana con pendiente positiva).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=2cm,y=1cm]
+  \def\xA{1.2}\def\yA{2.8}\def\xB{0.84853}\def\yB{3.29706}\def\xC{1.55}\def\yC{0.9}
+  \node[font=\normalsize\bfseries,text=tceemorado] at (1.5,6.1) {Bien Giffen: $x_2>x_1$};
+  \ejes{$x$}{$y$}{3.1}{5.8}
+  % Rectas de balance
+  \draw[curva1] (0,4) -- (2.8,1.2) node[etiqueta,right,text=tceemorado] {$p_x^0$};
+  \draw[curvanueva] (0,4) -- (2,0) node[etiqueta,below,text=tceerojo] {$p_x^1$};
+  \draw[curva2,desplazada] (0,4.99411) -- (2.49706,0) node[etiqueta,below,text=tceeazul] {comp.};
+  % Curvas de indiferencia
+  \draw[curvanueva] plot[domain=0.95:2.193,samples=80,smooth] (\x,{-2.1+4.5/(\x-0.05)}) node[etiqueta,above right] {$U^1$};
+  \draw[curva1] plot[domain=0.34:2.9,samples=80,smooth] (\x,{1.6+1.44/\x}) node[etiqueta,right] {$U^0$};
+  % Puntos
+  \draw[guia] (\xA,\yA) -- (\xA,-0.15);
+  \draw[guia] (\xB,\yB) -- (\xB,-0.15);
+  \draw[guia] (\xC,\yC) -- (\xC,-0.15);
+  \node[punto] at (\xA,\yA) {}; \node[etiqueta,above right] at (\xA,\yA) {$A$};
+  \node[punto] at (\xB,\yB) {}; \node[etiqueta,below left] at (\xB,\yB) {$B$};
+  \node[punto] at (\xC,\yC) {}; \node[etiqueta,right] at (\xC,\yC) {$C$};
+  \node[below,font=\footnotesize] at (\xA,-0.1) {$x_1$};
+  \node[below,font=\footnotesize] at (\xC,-0.1) {$x_2$};
+  % Efectos
+  \draw[flecha,tceeazul] (\xA,-0.85) -- (\xB,-0.85) node[midway,below,font=\footnotesize,text=tceeazul] {ES};
+  \draw[flecha,tceeverde] (\xB,-1.6) -- (\xC,-1.6) node[midway,below,font=\footnotesize,text=tceeverde] {ER};
+  \draw[flecha] (\xA,-2.35) -- (\xC,-2.35) node[midway,below,font=\footnotesize,text=tceerojo] {efecto total};
+\end{tikzpicture}
+\end{document}

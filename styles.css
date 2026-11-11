@@ -786,7 +786,11 @@ h1, h2, h3, h4 { text-wrap: balance; }
     .cards-grid-half { grid-template-columns: 1fr; }
 }
 
-/* Enlaces secundarios dentro de una tarjeta */
+/* Enlaces secundarios dentro de una tarjeta: el enlace principal no ocupa
+   toda la altura, para que estos queden dentro del borde */
+.tema-card:has(.tema-card-extra) { display: flex; flex-direction: column; }
+.tema-card:has(.tema-card-extra) > a { height: auto; flex: 1; }
+
 .tema-card-extra {
     margin: -0.75rem 1.6rem 1.25rem;
     font-family: var(--font-ui);
@@ -1757,4 +1761,167 @@ h1, h2, h3, h4 { text-wrap: balance; }
     opacity: 0.55;
     -webkit-mask: url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat;
     mask: url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat;
+}
+
+/* ---- Materiales exclusivos (desde el 1 de octubre de 2026; exclusivos.js) ---- */
+.etiqueta-exclusivo {
+    display: inline-block;
+    vertical-align: 0.1em;
+    padding: 0 0.45em;
+    border: 1px solid var(--color-accent-gold);
+    border-radius: 3px;
+    font-family: var(--font-display);
+    font-variant-caps: all-small-caps;
+    font-size: 0.78em;
+    letter-spacing: 0.06em;
+    line-height: 1.45;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+.tema-card-title .etiqueta-exclusivo { font-size: 0.62em; vertical-align: 0.25em; }
+.exclusivo-cta {
+    margin: -0.5rem 1.6rem 1.2rem;
+    font-family: var(--font-ui);
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+.tema-card .exclusivo-cta a, .exclusivo-cta a { display: inline; padding: 0; color: var(--color-primary); text-decoration: underline; text-decoration-color: var(--color-accent-gold); text-underline-offset: 0.15em; }
+p + .exclusivo-cta { margin: 0.4rem 0 1rem; }
+.materiales-exclusivos { margin: 2rem 0 2.5rem; padding: 1.4rem 1.75rem 1.2rem; background: var(--color-bg-cream); border: 1px solid var(--color-border); border-radius: 6px; }
+.materiales-exclusivos .exclusivos-titulo { margin: 0 0 0.6rem; font-size: 1.45rem; }
+.materiales-exclusivos .exclusivos-titulo .etiqueta-exclusivo { font-size: 0.55em; vertical-align: 0.35em; margin-left: 0.35em; }
+.materiales-exclusivos h3 { margin: 1.2rem 0 0.2rem; font-size: 1.05rem; font-variant-caps: all-small-caps; letter-spacing: 0.05em; color: var(--color-text-muted); }
+.materiales-exclusivos .exclusivos-nota { margin: 0 0 0.6rem; font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-text-muted); }
+.materiales-exclusivos ul { list-style: none; margin: 0; padding: 0; }
+.materiales-exclusivos li { padding: 0.35rem 0; border-top: 1px solid var(--color-border-light); font-family: var(--font-ui); font-size: 0.95rem; line-height: 1.5; }
+.materiales-exclusivos li:first-child { border-top: 0; }
+.materiales-exclusivos .exclusivos-detalle { display: block; font-size: 0.82rem; color: var(--color-text-light); }
+.materiales-exclusivos .exclusivo-cta { margin: 1rem 0 0; }
+.app-banner-exclusivos { margin: 0.6rem 0 0; font-family: var(--font-ui); font-size: 0.9rem; line-height: 1.55; color: var(--color-text-muted); }
+.app-banner-exclusivos a { color: var(--color-primary); }
+.aviso-exclusivo { margin: 1rem 0 1.5rem; padding: 1rem 1.4rem; border-left: 3px solid var(--color-accent-gold); background: var(--color-primary-pale); border-radius: 0 6px 6px 0; }
+.aviso-exclusivo p { margin: 0; }
+[data-theme="dark"] .etiqueta-exclusivo { border-color: #d9ae45; color: var(--color-primary); }
+/* En el pie (fondo morado), en dorado claro: el morado de la etiqueta no se lee */
+.site-footer .etiqueta-exclusivo { color: #f1d58a; border-color: #d9ae45; font-size: 0.9em; }
+
+/* ---- Vídeos de YouTube por su clave (videos.js y videos.json) ---- */
+.video-yt { position: relative; overflow: hidden; }
+.video-yt-boton {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: center / cover no-repeat;
+    cursor: pointer;
+}
+.video-yt-icono {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4.2rem;
+    height: 4.2rem;
+    margin: -2.1rem 0 0 -2.1rem;
+    border-radius: 50%;
+    background: rgba(46, 34, 53, 0.82);
+    border: 2px solid var(--color-accent-gold);
+}
+.video-yt-icono::after {
+    content: "";
+    position: absolute;
+    left: 1.65rem;
+    top: 1.2rem;
+    border-style: solid;
+    border-width: 0.9rem 0 0.9rem 1.4rem;
+    border-color: transparent transparent transparent #fff;
+}
+.video-yt-boton:hover .video-yt-icono { background: var(--color-primary); }
+.video-yt-boton:focus-visible { outline: 2px solid var(--color-accent-gold); outline-offset: -4px; }
+.video-yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---- Visor propio sobre YouTube (videos.js) ---- */
+.video-yt { background: #1c1622; }
+.vgm-escenario { position: absolute; inset: 0; overflow: hidden; }
+.video-yt .vgm-escenario iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; }
+.vgm-velo { position: absolute; inset: 0; background: #1c1622 center / cover no-repeat; cursor: pointer; transition: opacity 0.25s; }
+.vgm-velo .vgm-icono { pointer-events: none; }
+.vgm-espera { position: absolute; left: 50%; top: 50%; width: 3rem; height: 3rem; margin: -1.5rem 0 0 -1.5rem; border-radius: 50%; border: 3px solid rgba(255,255,255,0.25); border-top-color: var(--color-accent-gold); animation: vgm-giro 0.9s linear infinite; display: none; }
+@keyframes vgm-giro { to { transform: rotate(360deg); } }
+.video-yt[data-estado="reproduciendo"] .vgm-velo { opacity: 0; pointer-events: none; }
+.video-yt[data-estado="cargando"] .vgm-velo .vgm-icono { display: none; }
+.video-yt[data-estado="cargando"] .vgm-espera { display: block; }
+.video-yt[data-estado="fin"] .vgm-icono::after { border: 0; left: 0; top: 0; width: 100%; height: 100%; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 12a9 9 0 1 0 3-6.7'/><path d='M3 4v5h5'/></svg>") center / 48% no-repeat; }
+.vgm-captura { position: absolute; inset: 0; bottom: 2.6rem; cursor: pointer; }
+.video-yt[data-estado="inicio"] .vgm-captura, .video-yt[data-estado="inicio"] .vgm-controles { display: none; }
+.vgm-controles { position: absolute; left: 0; right: 0; bottom: 0; height: 2.6rem; display: flex; align-items: center; gap: 0.5rem; padding: 0 0.6rem; background: linear-gradient(transparent, rgba(28, 22, 34, 0.85)); color: #fff; font-family: var(--font-ui); font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; }
+.video-yt:hover .vgm-controles, .video-yt:focus-within .vgm-controles, .video-yt:not([data-estado="reproduciendo"]) .vgm-controles { opacity: 1; }
+/* En el móvil no hay «hover»: la barra se queda a la vista, para que siempre se vea cómo poner la pantalla completa */
+@media (hover: none) { .video-yt .vgm-controles { opacity: 1; } }
+/* El botón de pantalla completa con su nombre, si cabe */
+.vgm-pantalla-texto { display: none; font-size: 0.82rem; white-space: nowrap; color: #fff; cursor: pointer; padding-right: 0.2rem; }
+@container (min-width: 520px) { .vgm-pantalla-texto { display: inline; } }
+.vgm-controles button { width: 2rem; height: 2rem; padding: 0; border: 0; border-radius: 50%; background: transparent center / 55% no-repeat; cursor: pointer; flex: none; }
+.vgm-controles button:hover { background-color: rgba(255,255,255,0.15); }
+.vgm-controles button:focus-visible { outline: 2px solid var(--color-accent-gold); }
+.vgm-play { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M6 4h4v16H6zM14 4h4v16h-4z'/></svg>"); }
+.video-yt:not([data-estado="reproduciendo"]) .vgm-play { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M7 4l13 8-13 8z'/></svg>"); }
+.vgm-silencio { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5L6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14'/></svg>"); }
+.vgm-silenciado .vgm-silencio { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5L6 9H2v6h4l5 4z'/><path d='M23 9l-6 6M17 9l6 6'/></svg>"); }
+.vgm-pantalla { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5'/></svg>"); }
+.vgm-tiempo { font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 5.6em; }
+.vgm-barra { flex: 1 1 0; min-width: 0; width: 0; height: 4px; margin: 0; appearance: none; -webkit-appearance: none; background: rgba(255,255,255,0.3); border-radius: 2px; cursor: pointer; }
+.vgm-barra::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent-gold); border: 0; }
+.vgm-barra::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--color-accent-gold); border: 0; }
+.vgm-barra::-moz-range-track { height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px; }
+.video-yt:fullscreen, .video-yt:-webkit-full-screen { width: 100vw; height: 100vh; }
+.video-yt:fullscreen .vgm-escenario, .video-yt:-webkit-full-screen .vgm-escenario { inset: 0; }
+/* En visores estrechos (los vídeos verticales de ayuda) la barra se encoge y, si no
+   cabe todo, el contador de tiempo se oculta: el botón de pantalla completa siempre se ve */
+.video-yt { container-type: inline-size; }
+@container (max-width: 300px) { .vgm-tiempo { display: none; } .vgm-controles { gap: 0.3rem; padding: 0 0.4rem; } }
+.vgm-fijo { position: fixed !important; inset: 0 !important; z-index: 10000; width: auto !important; height: auto !important; aspect-ratio: auto !important; }
+body.vgm-con-fijo { overflow: hidden; }
+
+/* APUNTES DE OTROS TCEE (oposicion/enlaces.html; los rellena apuntes-otros.js) */
+.apuntes-promocion { margin: 1.5rem 0 0.5rem; }
+.apuntes-promocion h4 {
+    font-family: var(--font-display);
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.04em;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.apuntes-autor {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 0.75rem;
+}
+.apuntes-autor-nombre { margin: 0 0 0.35rem; }
+.apuntes-numeracion { font-variant-caps: all-small-caps; color: var(--color-text-muted); font-size: 0.92rem; margin-left: 0.6rem; }
+.apuntes-nota { font-size: 0.93rem; color: var(--color-text-muted); margin: 0 0 0.7rem; }
+.apuntes-nota summary { cursor: pointer; }
+.apuntes-nota p { margin: 0.5rem 0 0; }
+.apuntes-enlaces { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; }
+.apuntes-aviso { font-size: 0.93rem; color: var(--color-text-muted); margin-top: 1rem; }
+
+/* Texto solo para lectores de pantalla y buscadores (p. ej. el h1 del blog) */
+.solo-lectores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
 }

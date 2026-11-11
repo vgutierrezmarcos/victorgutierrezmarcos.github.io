@@ -1,0 +1,20 @@
+% Pregunta 745 (2006-septiembre-OEP2006, n.º 8): axioma débil de preferencia revelada; a precios p0 se elige x0 pudiendo comprar x1, y a precios p1 se elige x1 sin poder comprar x0. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$x_1$}{$x_2$}{6.4}{5}
+  % Recta de balance a precios p0: elige x0 y x1 era asequible (p0x0 >= p0x1)
+  \draw[curva1] (0,4.4) -- (5.2,0);
+  \node[etiqueta,tceemorado,anchor=south west] at (0.1,4.4) {precios $p^0$};
+  % Recta de balance a precios p1 que cumple el axioma: x0 queda fuera (p1x1 < p1x0)
+  \draw[curva2] (0,1.99) -- (5.69,0);
+  \node[etiqueta,tceeazul,anchor=south west,align=left] at (0.1,0.1) {precios $p^1$:\\cumple el axioma débil};
+  % Recta p1 que violaría el axioma: x0 asequible
+  \draw[curvanueva,desplazada] (1.4,4.0) -- (3.9,0);
+  \node[etiqueta,tceerojo,anchor=west,align=left] at (1.55,4.0) {otros $p^1$: $x^0$ asequible,\\viola el axioma débil};
+  % Cestas
+  \node[punto,label={[etiqueta]above left:$x^0$}] at (2,2.708) {};
+  \node[punto,label={[etiqueta]above right:$x^1$}] at (3.4,0.8) {};
+\end{tikzpicture}
+\end{document}

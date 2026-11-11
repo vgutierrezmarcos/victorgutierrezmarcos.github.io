@@ -1,0 +1,47 @@
+% Pregunta 145 (2023-junio-A, n.º 48): modelo de factores específicos, sube P_X.
+% A escala, con L total = 6:
+%   P_X·PMgL_X = P_X(4,2 - 0,6 L_X), P_X pasa de 1 a 1,3 (+30 %): 4,2 - 0,6 L  ->  5,46 - 0,78 L
+%   P_Y·PMgL_Y = 4,2 - 0,6 L_Y = 0,6 + 0,6 L_X
+%   E0: L_X = 3, w0 = 2,4.   E1: L_X = 3,52, w1 = 2,71 (+13 % < +30 %).
+%   En L_X = 3 la curva de X sube de 2,4 a 3,12 (+30 %).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.05cm]
+  % Rentas del capital tras la subida
+  \fill[area] (0,5.46) -- (3.5217,2.713) -- (0,2.713) -- cycle;
+  \fill[area2] (6,4.2) -- (3.5217,2.713) -- (6,2.713) -- cycle;
+  % Ejes: O_X a la izquierda, O_Y a la derecha
+  \draw[eje] (0,0) -- (0,6.1) node[left] {$w$};
+  \draw[eje] (6,0) -- (6,6.1) node[right] {$w$};
+  \draw[thick] (0,0) -- (6,0);
+  \node[below left] at (0,0) {$O_X$};
+  \node[below right] at (6,0) {$O_Y$};
+  \draw[->,thick] (0.3,-0.75) -- (1.3,-0.75) node[right,etiqueta] {$L_X$};
+  \draw[->,thick] (5.7,-0.75) -- (4.7,-0.75) node[left,etiqueta] {$L_Y$};
+  % Curvas
+  \draw[curva2] (0.9,1.14) -- (6,4.2) node[etiqueta,above left,text=tceeazul] {$P_Y\,PMgL_Y$};
+  \draw[curva1] (0,4.2) -- (5.4,0.96) node[etiqueta,below,text=tceemorado] {$P_X\,PMgL_X$};
+  \draw[curvanueva,desplazada] (0,5.46) -- (5.6,1.092) node[etiqueta,above right,text=tceerojo] {$P'_X\,PMgL_X$};
+  % Guías
+  \draw[guia] (0,2.4) node[left,text=black] {$w_0$} -- (6,2.4);
+  \draw[guia] (0,2.713) node[left,text=black] {$w_1$} -- (6,2.713);
+  \draw[guia] (3,0) node[below,text=black] {$L_X^0$} -- (3,2.4);
+  \draw[guia] (3.5217,0) node[below,text=black] {$L_X^1$} -- (3.5217,2.713);
+  % Trabajo hacia X
+  \draw[flecha] (3.05,0.35) -- (3.47,0.35);
+  % Desplazamiento de la curva (+30 %) frente a subida del salario (+13 %)
+  \draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (2.92,2.4) -- (2.92,3.12)
+    node[pos=0.8,left=4pt,etiqueta,text=tceerojo] {$+30\,\%$};
+  \draw[guia] (3,2.4) -- (3,3.12);
+  \draw[decorate,decoration={brace,amplitude=3pt},thick] (6.08,2.713) -- (6.08,2.4)
+    node[midway,right=4pt,etiqueta,align=left] {$\Delta w$:\\$+13\,\%$};
+  % Puntos
+  \node[punto] at (3,2.4) {}; \node[etiqueta,below left] at (3,2.4) {$E_0$};
+  \node[punto,fill=tceerojo] at (3.5217,2.713) {}; \node[etiqueta,text=tceerojo] at (3.78,2.3) {$E_1$};
+  % Rentas
+  \node[etiqueta,text=tceemorado] at (0.75,3.35) {$r_X K_X\uparrow$};
+  \node[etiqueta,text=tceedorado!80!black] at (5.35,3.05) {$r_Y K_Y\downarrow$};
+\end{tikzpicture}
+\end{document}

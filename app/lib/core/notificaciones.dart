@@ -8,6 +8,7 @@ import 'package:timezone/timezone.dart' as tz;
 
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
+import 'instalacion.dart';
 import 'avisos_navegador.dart';
 
 /// Notificaciones locales: recordatorio diario de estudio, avisos del
@@ -132,16 +133,23 @@ class Notificaciones {
   /// ([hechoHoy]); si no, mañana. No se repite solo: la app lo vuelve a
   /// programar en cada arranque, al sincronizar y al terminar el test, así
   /// que no llega si no hay nada que recordar.
-  static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false}) async {
+  static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false, int pendientesRepaso = 0, int racha = 0}) async {
     if (!disponibles) return;
     await iniciar();
     await _cancelar(_idRecordatorio);
     if (minutosDesdeMedianoche < 0) return;
+    // Con preguntas de repaso vencidas (Leitner), el aviso lo dice.
+    // Con racha en juego (activada, sin nada hecho hoy y sin congelar), se dice.
+    final texto = racha > 0 && !hechoHoy
+        ? 'No pierdas la racha de $racha ${racha == 1 ? 'día' : 'días'}: el test diario son 15 minutos${pendientesRepaso > 0 ? ' y tienes $pendientesRepaso de repaso' : ''}.'
+        : pendientesRepaso > 0
+            ? 'Tus 10 preguntas de hoy te esperan y tienes $pendientesRepaso de repaso. Toca para empezar.'
+            : 'Tus 10 preguntas de hoy te esperan. Toca para empezar.';
     if (kIsWeb) {
       final ahora = DateTime.now();
       var cuando = DateTime(ahora.year, ahora.month, ahora.day, minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
       if (cuando.isBefore(ahora) || hechoHoy) cuando = DateTime(ahora.year, ahora.month, ahora.day + 1, minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
-      _programarWeb(_idRecordatorio, cuando, 'Test diario ${Oposiciones.actual.siglas}', 'Tus 10 preguntas de hoy te esperan. Toca para empezar.', contenido: 'ruta:/hoy?test=diario');
+      _programarWeb(_idRecordatorio, cuando, 'Test diario ${Oposiciones.actual.siglas}', texto, contenido: 'ruta:/hoy?test=diario');
       return;
     }
     final ahora = tz.TZDateTime.now(tz.local);
@@ -151,7 +159,7 @@ class Notificaciones {
     await _plugin.zonedSchedule(
       _idRecordatorio,
       'Test diario ${Oposiciones.actual.siglas}',
-      'Tus 10 preguntas de hoy te esperan. Toca para empezar.',
+      texto,
       cuando,
       const NotificationDetails(
         android: AndroidNotificationDetails(color: _colorAviso, 'recordatorio', 'Recordatorio diario',
@@ -318,14 +326,14 @@ class Notificaciones {
   }
 
   /// Reprograma los recordatorios de las próximas clases del preparador.
-  static Future<void> programarClases(List<Cante> clases, {required String Function(Cante) alumno, required List<int> antelaciones, DateTime? ahora}) async {
+  static Future<void> programarClases(List<Cante> clases, {required String Function(Cante) alumno, required List<int> antelaciones, DateTime? ahora, bool Function(Cante)? sinApp}) async {
     if (!disponibles) return;
     await iniciar();
     for (var i = 0; i < _maxAvisosClase + _maxAvisosTema; i++) {
       await _cancelar(_idClases + i);
     }
     final hoy = ahora ?? DateTime.now();
-    await _programarEntregasDeTemas(clases, alumno: alumno, ahora: hoy);
+    await _programarEntregasDeTemas(clases, alumno: alumno, ahora: hoy, sinApp: sinApp ?? (_) => false);
     if (antelaciones.isEmpty) return;
     final proximas = clases.where((c) => c.pendiente && !c.borrado && c.fecha.isAfter(hoy)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
     final avisos = [
@@ -362,17 +370,24 @@ class Notificaciones {
   static const _maxAvisosTema = 20;
 
   /// Al preparador, a la hora en que le llegan los temas al alumno: el mismo
-  /// aviso con la cuenta atrás del esquema que ve el alumno.
-  static Future<void> _programarEntregasDeTemas(List<Cante> clases, {required String Function(Cante) alumno, required DateTime ahora}) async {
+  /// aviso con la cuenta atrás del esquema que ve el alumno. Si el alumno no
+  /// tiene la app ([sinApp]), a esa hora le toca mandárselos a él por
+  /// WhatsApp: el aviso lo dice y abre la ficha de la clase.
+  static Future<void> _programarEntregasDeTemas(List<Cante> clases, {required String Function(Cante) alumno, required DateTime ahora, required bool Function(Cante) sinApp}) async {
     final entregas = clases.where((c) => c.pendiente && !c.borrado && c.mandaTema && c.temaA!.isAfter(ahora)).toList()
       ..sort((a, b) => a.temaA!.compareTo(b.temaA!));
     var id = _idClases + _maxAvisosClase;
     for (final c in entregas.take(_maxAvisosTema)) {
-      final seg = Oposiciones.actual.ejercicio(c.ejercicio)?.segundosEsquemaPara(c.temasMandados.length) ?? 0;
+      final manual = sinApp(c);
+      final seg = manual ? 0 : Oposiciones.actual.ejercicio(c.ejercicio)?.segundosEsquemaPara(c.temasMandados.length) ?? 0;
       final hasta = c.temaA!.add(Duration(seconds: seg));
       final temas = c.temaSorteado ? 'los temas sorteados' : (c.temasMandados.length == 1 ? 'el tema ${c.temasMandados.first}' : 'los temas ${c.temasMandados.join(' y ')}');
-      final titulo = 'A ${alumno(c)} le ${c.temasMandados.length == 1 && !c.temaSorteado ? 'ha llegado' : 'han llegado'} $temas';
-      final texto = seg > 0 ? 'Tiene ${seg ~/ 60} min de esquema, hasta las ${hasta.hour.toString().padLeft(2, '0')}:${hasta.minute.toString().padLeft(2, '0')}.' : 'Para la clase de las ${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}.';
+      final titulo = manual ? 'Toca mandar a ${alumno(c)} $temas' : 'A ${alumno(c)} le ${c.temasMandados.length == 1 && !c.temaSorteado ? 'ha llegado' : 'han llegado'} $temas';
+      final texto = manual
+          ? 'Abre la clase y envíaselos por WhatsApp con un toque (no tiene la app).'
+          : seg > 0
+              ? 'Tiene ${seg ~/ 60} min de esquema, hasta las ${hasta.hour.toString().padLeft(2, '0')}:${hasta.minute.toString().padLeft(2, '0')}.'
+              : 'Para la clase de las ${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}.';
       if (kIsWeb) {
         _programarWeb(id++, c.temaA!, titulo, texto, contenido: 'ruta:/clase?id=${c.id}');
         continue;
@@ -428,15 +443,21 @@ class Notificaciones {
     );
   }
 
+  static Future<bool> _desdePlay() async => await origenInstalacion() == OrigenInstalacion.play;
+
   /// Hay una versión nueva de la app: al tocarlo se abre [url] (Play o el APK).
+  /// Con la app instalada desde el APK y la ficha en Play, se dice que se
+  /// actualice desde Play (así Play pasa a ser quien la actualiza).
   static Future<void> avisoVersion(String version, String url) async {
     if (!disponibles) return;
     await iniciar();
     if (kIsWeb) return mostrarAvisoNavegador(1000 + ('version:$version'.hashCode & 0x7ffff), 'Hay una versión nueva de la app ($version)', 'Toca para abrirla.', contenido: 'url:$url');
     await _plugin.show(
       1000 + ('version:$version'.hashCode & 0x7ffff),
-      'Hay una versión nueva de la app ($version)',
-      'Toca para actualizarla. Se instala encima de la actual, sin perder tus datos.',
+      url.contains('play.google.com') && !(await _desdePlay()) ? 'La app ya está en Google Play' : 'Hay una versión nueva de la app ($version)',
+      url.contains('play.google.com') && !(await _desdePlay())
+          ? 'Toca para actualizarla desde Google Play (versión $version). Se instala encima, sin perder tus datos, y después se actualizará sola.'
+          : 'Toca para actualizarla. Se instala encima de la actual, sin perder tus datos.',
       const NotificationDetails(
         android: AndroidNotificationDetails(color: _colorAviso, 'version', 'Versiones nuevas',
             channelDescription: 'Aviso de que hay una versión nueva de la app', importance: Importance.defaultImportance),

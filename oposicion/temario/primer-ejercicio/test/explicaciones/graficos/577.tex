@@ -1,0 +1,35 @@
+% Pregunta 577 (2016-noviembre-OEP2016, n.º 22): mix de políticas que mantiene la renta,
+% baja el tipo de interés (sube I) y sube los impuestos (baja C). Rectas:
+%   IS: i = 3 - 0,8 (Y - 3)     IS': i = 1,6 - 0,8 (Y - 3)
+%   LM: i = 3 + 0,6 (Y - 3)     LM': i = 1,6 + 0,6 (Y - 3)
+%   E0 = (3; 3)   E1 = (3; 1,6): misma renta, menor tipo de interés
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  % Curvas iniciales
+  \draw[curva1] (0.6,4.92) -- (5.4,1.08) node[etiqueta,right,text=tceemorado] {$IS$};
+  \draw[curva2] (0.5,1.5) -- (5.5,4.5) node[etiqueta,right,text=tceeazul] {$LM$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (0.8,3.36) -- (4.7,0.24) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[curvanueva,desplazada] (2.1,1.06) -- (6.0,3.4) node[etiqueta,right,text=tceerojo] {$LM'$};
+  % Desplazamientos
+  \draw[flecha] (5.0,1.2) -- (3.75,1.2);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=north] at (4.9,0.95) {$T\uparrow\ \Rightarrow\ C\downarrow$};
+  \draw[flecha] (1.35,2.01) -- (1.95,1.25);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=north west,align=left] at (0.1,1.2) {coef. reservas$\downarrow$\\$\Rightarrow M\uparrow$};
+  % Proyecciones
+  \draw[guia] (3,3) -- (3,0) node[below] {$Y_0 = Y_1$};
+  \draw[guia] (3,3) -- (0,3) node[left] {$i_0$};
+  \draw[guia] (3,1.6) -- (0,1.6) node[left] {$i_1$};
+  \draw[flecha] (0.25,2.85) -- (0.25,1.75);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west] at (0.3,2.3) {$I\uparrow$};
+  % Puntos
+  \node[punto] at (3,3) {};
+  \node[etiqueta,above=3pt] at (3,3) {$E_0$};
+  \node[punto] at (3,1.6) {};
+  \node[etiqueta,right=4pt] at (3,1.6) {$E_1$};
+\end{tikzpicture}
+\end{document}

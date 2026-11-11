@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.13",
+ "archivo": "3A13",
+ "preguntas": [
+  {
+   "id": "3A13-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué distingue la información oculta de la acción oculta y a qué problema da lugar cada una?",
+   "respuesta": "La información oculta existe antes del contrato (calidad, productividad, riesgo) y da lugar a la selección adversa. La acción oculta se produce después del contrato (esfuerzo, cuidado) y da lugar al riesgo moral."
+  },
+  {
+   "id": "3A13-02",
+   "tipo": "vf",
+   "apartado": "Introducción",
+   "pregunta": "Basta con que la información sea incompleta para que la asignación competitiva deje de ser eficiente.",
+   "verdadero": false,
+   "respuesta": "Falso: con información incompleta pero simétrica y mercados contingentes completos (Arrow-Debreu) la asignación puede ser eficiente. La ineficiencia exige asimetría con conflicto de intereses: entonces faltan mercados (Arrow, 1963) y falla el primer teorema del bienestar."
+  },
+  {
+   "id": "3A13-03",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "En la teoría de la agencia, ¿qué exigen la restricción de participación (PC) y la de compatibilidad de incentivos (IC)?",
+   "respuesta": "La PC exige que el contrato dé al agente al menos su utilidad de reserva, para que lo acepte. La IC exige que al agente le convenga hacer lo que el principal quiere: revelar su tipo o esforzarse."
+  },
+  {
+   "id": "3A13-04",
+   "tipo": "definicion",
+   "apartado": "I.1. Selección adversa: definición",
+   "pregunta": "¿Qué tres condiciones tienen que darse para que haya selección adversa?",
+   "respuesta": "Información oculta antes del contrato (calidad, productividad, riesgo), heterogeneidad de tipos (si todos fueran iguales no habría nada que distinguir) y conflicto de intereses (si no, la parte informada lo revelaría)."
+  },
+  {
+   "id": "3A13-05",
+   "tipo": "prediccion",
+   "apartado": "I.2. The Market for «Lemons» (Akerlof, 1970)",
+   "pregunta": "En el ejemplo de Akerlof, con mitad de coches buenos (1.000 € para el comprador) y mitad malos (500 €), ¿qué ocurre si el comprador no distingue la calidad?",
+   "respuesta": "Ofrece el valor esperado, 750 €; a ese precio solo venden los dueños de limones, así que el precio baja a 500 € y solo se venden limones. Se pierden intercambios beneficiosos de coches buenos: no se alcanza un óptimo de Pareto."
+  },
+  {
+   "id": "3A13-06",
+   "tipo": "formula",
+   "apartado": "I.2. The Market for «Lemons» (Akerlof, 1970)",
+   "pregunta": "En la versión continua de Akerlof, con $s\\sim U[\\underline{s},\\bar{s}]$ y el comprador valorando $\\alpha s$ ($1<\\alpha<2$), ¿cuál es el precio de equilibrio?",
+   "respuesta": "Venden los $s\\leq p$ y $p=\\alpha(\\underline{s}+p)/2$, de donde $p^*=\\frac{\\alpha\\underline{s}}{2-\\alpha}$. Si $\\underline{s}=0$, $p^*=0$ y el mercado desaparece; con $s\\in[1,2]$ y $\\alpha=1{,}2$, $p^*=1{,}5$ y se vende la mitad."
+  },
+  {
+   "id": "3A13-07",
+   "tipo": "definicion",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "¿Qué es la señalización en el sentido de Spence (1973)?",
+   "respuesta": "La transmisión creíble de información privada de la parte informada a la no informada mediante una acción observable que cuesta más al tipo de calidad baja (cruce único). Sin ese coste diferencial la señal no informaría."
+  },
+  {
+   "id": "3A13-08",
+   "tipo": "formula",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "En el modelo de Spence, ¿qué condición debe cumplir el nivel de educación $\\hat{y}$ que separa a los tipos A (productivos) y B?",
+   "respuesta": "$c_A(\\hat{y})\\leq w_A-w_B\\leq c_B(\\hat{y})$, equivalente a $y_0\\leq\\hat{y}\\leq y_1$: la diferencia salarial compensa al productivo el coste de educarse, pero no al poco productivo."
+  },
+  {
+   "id": "3A13-09",
+   "tipo": "prediccion",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "En el modelo de Spence hay infinitos equilibrios. ¿Cuál sobrevive al criterio intuitivo de Cho y Kreps (1987)?",
+   "respuesta": "Solo el separador más barato, $\\hat{y}^*=y_0$, en el que $c_B(\\hat{y}^*)=w_A-w_B$: el nivel mínimo de educación que el tipo B no quiere imitar. Se eliminan los demás separadores y los agrupadores."
+  },
+  {
+   "id": "3A13-10",
+   "tipo": "vf",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "En el modelo de Spence, la correlación entre educación y salario prueba que la educación aumenta la productividad.",
+   "verdadero": false,
+   "respuesta": "Falso: en el modelo la educación no aumenta la productividad y aun así está correlacionada con el salario, porque señala el tipo (a diferencia del capital humano de Becker). Por eso puede haber sobreeducación y despilfarro social."
+  },
+  {
+   "id": "3A13-11",
+   "tipo": "definicion",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "¿Qué dice el principio de revelación?",
+   "respuesta": "Gibbard (1973) y Myerson (1979): para diseñar el menú de contratos basta ofrecer un contrato por tipo que cumpla, para cada tipo, su participación ($\\mathrm{PC}_i$) y su compatibilidad de incentivos ($\\mathrm{IC}_i$), de modo que cada uno elija el suyo y revele quién es."
+  },
+  {
+   "id": "3A13-12",
+   "tipo": "prediccion",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "En Rothschild-Stiglitz (1976), ¿por qué no puede haber un equilibrio agrupador con seguro a la prima media?",
+   "respuesta": "Porque en ese contrato $M$ la curva de indiferencia del prudente es más inclinada: otra aseguradora ofrece un contrato $N$ con algo menos de cobertura y prima menor que solo atrae a los prudentes (cream skimming), y $M$ queda con los temerarios y da pérdidas."
+  },
+  {
+   "id": "3A13-13",
+   "tipo": "prediccion",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "En el equilibrio separador de Rothschild-Stiglitz, ¿qué contrato obtiene cada tipo?",
+   "respuesta": "Los temerarios, seguro completo a su prima justa ($E_A$): no hay distorsión arriba. Los prudentes, seguro parcial con franquicia ($S_B$), justo el que los temerarios no quieren imitar: pagan el coste de la separación."
+  },
+  {
+   "id": "3A13-14",
+   "tipo": "vf",
+   "apartado": "I.3. Selección adversa: soluciones",
+   "pregunta": "En el modelo de Rothschild-Stiglitz, si la proporción de prudentes es alta puede no existir equilibrio en estrategias puras.",
+   "verdadero": true,
+   "respuesta": "Verdadero: con muchos prudentes la recta de la prima media pasa por encima de la curva del prudente que cruza su contrato separador, así que un agrupador rompe el separador y el agrupador tampoco se sostiene. El equilibrio es frágil."
+  },
+  {
+   "id": "3A13-15",
+   "tipo": "definicion",
+   "apartado": "II.1. Riesgo moral: definición",
+   "pregunta": "¿Qué es el riesgo moral y qué tres condiciones exige?",
+   "respuesta": "Asimetría posterior al contrato por una acción oculta (no observable o no verificable). Exige acción oculta, conflicto de intereses (el esfuerzo cuesta al agente y beneficia al principal) y riesgo con aversión de alguna parte; si no, el resultado revelaría el esfuerzo o se resolvería sin coste."
+  },
+  {
+   "id": "3A13-16",
+   "tipo": "formula",
+   "apartado": "II.2. El modelo principal-agente",
+   "pregunta": "Con esfuerzo observable, principal neutral y agente averso, ¿cuál es el contrato óptimo para exigir el esfuerzo alto?",
+   "respuesta": "Igualar las RMSE da $u^{\\prime}(w_E)=u^{\\prime}(w_F)$: salario fijo $w^*$ con $u(w^*)=U^R+v(e^A)$ y la PC saturada. El principal neutral soporta todo el riesgo: es el first best."
+  },
+  {
+   "id": "3A13-17",
+   "tipo": "vf",
+   "apartado": "II.2. El modelo principal-agente",
+   "pregunta": "Con esfuerzo inobservable y agente neutral al riesgo, el principal alcanza el first best vendiéndole el negocio al agente.",
+   "verdadero": true,
+   "respuesta": "Verdadero: con $w(x)=x-k$ el agente es propietario residual y elige el esfuerzo eficiente; como no le importa el riesgo, no hay coste de agencia. La excepción es la responsabilidad limitada."
+  },
+  {
+   "id": "3A13-18",
+   "tipo": "formula",
+   "apartado": "II.2. El modelo principal-agente",
+   "pregunta": "¿Cómo se escribe la restricción de compatibilidad de incentivos en el modelo principal-agente con dos esfuerzos y dos resultados?",
+   "respuesta": "$[\\pi(e^A)-\\pi(e^B)][u(w_E)-u(w_F)]\\geq v(e^A)-v(e^B)$: lo que sube la probabilidad de éxito por el premio en utilidad debe compensar la mayor desutilidad del esfuerzo. Exige $w_E>w_F$."
+  },
+  {
+   "id": "3A13-19",
+   "tipo": "prediccion",
+   "apartado": "II.2. El modelo principal-agente",
+   "pregunta": "Con esfuerzo inobservable y agente averso al riesgo, ¿cómo es el contrato óptimo y qué coste tiene para el principal?",
+   "respuesta": "El pago crece con el resultado, $w_E>w^*>w_F$, con PC e IC saturadas. Como el agente soporta riesgo, el pago esperado supera a $w^*$: la diferencia es una prima de riesgo, el coste de agencia, y el resultado es un óptimo restringido."
+  },
+  {
+   "id": "3A13-20",
+   "tipo": "vf",
+   "apartado": "II.2. El modelo principal-agente",
+   "pregunta": "Según el principio de informatividad de Holmström (1979), toda variable que aporte información sobre el esfuerzo debe entrar en el contrato.",
+   "verdadero": true,
+   "respuesta": "Verdadero: el contrato debe condicionarse a cualquier señal informativa del esfuerzo, porque permite dar incentivos cargando menos riesgo al agente (skin in the game)."
+  },
+  {
+   "id": "3A13-21",
+   "tipo": "formula",
+   "apartado": "II.2. El modelo principal-agente",
+   "pregunta": "En el contrato lineal de Holmström y Milgrom (1987), con $x=e+\\varepsilon$, ¿cuál es la parte variable óptima?",
+   "respuesta": "$b^*=\\frac{1}{1+r_A\\sigma^2}<1$, y el esfuerzo es $e^*=b^*$, menor que el eficiente. Cuanto mayor la aversión al riesgo $r_A$ o la varianza $\\sigma^2$, menos incentivos."
+  },
+  {
+   "id": "3A13-22",
+   "tipo": "prediccion",
+   "apartado": "II.3. Riesgo moral: soluciones",
+   "pregunta": "Según el modelo de multitarea de Holmström y Milgrom (1991), ¿qué ocurre si se paga al agente por la parte medible de su trabajo?",
+   "respuesta": "Desvía el esfuerzo hacia lo que se mide, en perjuicio de las tareas no medibles. Por eso puede convenir un salario fijo aunque haya riesgo moral."
+  },
+  {
+   "id": "3A13-23",
+   "tipo": "vf",
+   "apartado": "III.2. Racionamiento del crédito (Stiglitz y Weiss, 1981)",
+   "pregunta": "En el modelo de Stiglitz y Weiss (1981), subir el tipo de interés siempre aumenta el rendimiento esperado del banco.",
+   "verdadero": false,
+   "respuesta": "Falso: además del efecto directo, atrae a prestatarios más arriesgados (selección adversa) y empuja a elegir proyectos más arriesgados (incentivos). El rendimiento tiene un máximo en $\\hat{r}^*$, la oferta se dobla hacia atrás y puede haber racionamiento del crédito."
+  },
+  {
+   "id": "3A13-24",
+   "tipo": "definicion",
+   "apartado": "Conclusión",
+   "pregunta": "¿Qué es el óptimo restringido y por qué es el listón con el que se valoran las soluciones a la asimetría de información?",
+   "respuesta": "Es el mejor resultado que podría alcanzar quien diseña los contratos sujeto a las mismas restricciones de información (second best de los contratos, no el de Lipsey-Lancaster). Señales, menús e incentivos nunca son gratis: como mucho alcanzan ese óptimo restringido."
+  }
+ ]
+}

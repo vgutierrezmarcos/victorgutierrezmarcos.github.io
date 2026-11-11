@@ -1,0 +1,27 @@
+% Pregunta 591 (2016-noviembre-OEP2016, n.º 36): componentes de la réplica de una put comprada.
+% Pagos a vencimiento con K = 3 (a escala, pendientes ±1):
+%   call comprada: max(S_T - K, 0)   forward vendido a precio K: K - S_T
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm]
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,3.75)
+    {Las dos piezas: call larga y forward corto};
+  % Ejes: el pago puede ser negativo
+  \draw[eje] (0,0) -- (6.3,0) node[below left] {$S_T$};
+  \draw[eje] (0,-2.9) -- (0,3.3) node[left] {pago};
+  \node[below left] at (0,0) {$0$};
+  \draw (3,0.08) -- (3,-0.08);
+  \node[below=2pt] at (3,0) {$K$};
+  % Call comprada
+  \draw[curva1] (0,0) -- (3,0) -- (5.8,2.8)
+    node[etiqueta,above,text=tceemorado,align=center] {call larga\\$\max(S_T-K,0)$};
+  % Forward vendido
+  \draw[curva2] (0,3) -- (5.8,-2.8);
+  \node[left] at (0,3) {$K$};
+  \node[etiqueta,text=tceeazul,align=right,anchor=east] at (4.1,-2.1) {forward corto\\$K-S_T$};
+  \node[etiqueta,text=tceemorado] at (1.5,0.3) {$0$};
+  \node[punto] at (3,0) {};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.12",
+ "archivo": "3A12",
+ "preguntas": [
+  {
+   "id": "3A12-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué es el coste económico y qué recoge la función de costes $C(w,q)$?",
+   "respuesta": "El coste económico es el coste de oportunidad de los factores (con mercados competitivos, su precio de mercado), distinto del contable. $C(w,q)$ es el coste mínimo de producir $q$ a los precios $w$: exige eficiencia técnica y económica."
+  },
+  {
+   "id": "3A12-02",
+   "tipo": "vf",
+   "apartado": "Introducción",
+   "pregunta": "La maximización del beneficio y la minimización del coste son problemas primal y dual en sentido estricto, como en la teoría del consumidor.",
+   "verdadero": false,
+   "respuesta": "Falso: el problema del beneficio incluye los ingresos y tiene más información. En sentido estricto, el dual de minimizar el coste de $q$ es maximizar la producción con un coste dado (Segura); de ahí que se hable de «dualidad» en sentido amplio."
+  },
+  {
+   "id": "3A12-03",
+   "tipo": "formula",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué condición de primer orden da la maximización del beneficio en una etapa y qué implica para la RMST?",
+   "respuesta": "$p\\,\\mathrm{PMg}_i=w_i$: el valor del producto marginal de cada factor iguala su precio; dividiendo, $\\mathrm{RMST}_{LK}=w_L/w_K$. Solo vale para la empresa precio-aceptante en el producto y en los factores."
+  },
+  {
+   "id": "3A12-04",
+   "tipo": "formula",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué dice el lema de Hotelling?",
+   "respuesta": "Hotelling (1932): $\\frac{\\partial B}{\\partial p}=q(p,w)$ y $\\frac{\\partial B}{\\partial w_i}=-z_i(p,w)$. Derivando la función de beneficio se obtienen la oferta y, con signo menos, las demandas no condicionadas."
+  },
+  {
+   "id": "3A12-05",
+   "tipo": "vf",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "En la teoría de la empresa competitiva puede haber factores Giffen, cuya demanda no condicionada aumenta con su precio.",
+   "verdadero": false,
+   "respuesta": "Falso: la convexidad de $B$ (y la concavidad de $C$) da $\\partial z_i(p,w)/\\partial w_i\\leq0$. Sin restricción presupuestaria no hay efecto renta, y el efecto escala refuerza al de sustitución. Sí puede haber factores inferiores."
+  },
+  {
+   "id": "3A12-06",
+   "tipo": "vf",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "La función de costes es cóncava en los precios de los factores.",
+   "verdadero": true,
+   "respuesta": "Verdadero: si sube un precio, una empresa «pasiva» que no cambiara de combinación pagaría un coste lineal en ese precio; al sustituir factores, paga como mucho eso. Es además homogénea de grado 1 en $w$."
+  },
+  {
+   "id": "3A12-07",
+   "tipo": "formula",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué dice el lema de Shephard?",
+   "respuesta": "Shephard (1953): $z_i(w,q)=\\frac{\\partial C(w,q)}{\\partial w_i}$. La derivada de la función de costes respecto al precio de un factor es su demanda condicionada, sin signo menos."
+  },
+  {
+   "id": "3A12-08",
+   "tipo": "definicion",
+   "apartado": "I.2. Problemas primal y dual",
+   "pregunta": "¿Qué son las demandas condicionadas de factores y a qué demandas del consumidor equivalen?",
+   "respuesta": "$z(w,q)$: la combinación de mínimo coste para producir $q$ a precios $w$. Son las análogas de las hicksianas (el parámetro es $q$, como allí la utilidad), homogéneas de grado 0 en $w$ (no en $q$) y no crecientes en su propio precio."
+  },
+  {
+   "id": "3A12-09",
+   "tipo": "definicion",
+   "apartado": "I.3. «Dualidad» entre maximización de beneficio y minimización de coste",
+   "pregunta": "¿En qué consiste maximizar el beneficio en dos etapas?",
+   "respuesta": "Primero se minimiza el coste de cada $q$, lo que da $C(w,q)$; después se elige $q$ maximizando $pq-C(w,q)$, con $p=\\mathrm{CMg}$ y CMg creciente. El resultado coincide con el de una etapa, pero $C$ existe con cualquier rendimiento y $B$ no."
+  },
+  {
+   "id": "3A12-10",
+   "tipo": "definicion",
+   "apartado": "I.3. «Dualidad» entre maximización de beneficio y minimización de coste",
+   "pregunta": "¿Qué dice la relación de dualidad entre la función de costes y la tecnología (Shephard-Uzawa)?",
+   "respuesta": "La envolvente de las isocostes mínimas recupera el conjunto de requerimientos si es convexo y con eliminación gratuita (si no, su envoltura convexa). Toda función con las propiedades de $C$ es la de costes de alguna tecnología, así que se puede estimar $C$ sin escribir $F$."
+  },
+  {
+   "id": "3A12-11",
+   "tipo": "prediccion",
+   "apartado": "II.1. Análisis de estática comparativa",
+   "pregunta": "¿Qué le ocurre al coste marginal si sube el precio de un factor inferior?",
+   "respuesta": "Baja: $\\partial\\mathrm{CMg}/\\partial w_i=\\partial z_i(w,q)/\\partial q$, que es negativo para un factor inferior. Con un factor normal, el CMg sube."
+  },
+  {
+   "id": "3A12-12",
+   "tipo": "formula",
+   "apartado": "II.1. Análisis de estática comparativa",
+   "pregunta": "¿Qué relación hay entre la elasticidad de escala y la elasticidad del coste respecto a la producción?",
+   "respuesta": "Hanoch (1975): en la combinación de mínimo coste, $\\varepsilon_{q,\\lambda}=\\frac{\\mathrm{CMe}}{\\mathrm{CMg}}=\\frac{1}{\\varepsilon_{C,q}}$. Hay economías de escala si $\\varepsilon_{C,q}<1$, es decir, si los rendimientos locales son crecientes."
+  },
+  {
+   "id": "3A12-13",
+   "tipo": "vf",
+   "apartado": "II.1. Análisis de estática comparativa",
+   "pregunta": "La igualdad entre la elasticidad de escala y $1/\\varepsilon_{C,q}$ en la combinación óptima se cumple aunque la tecnología no sea homotética.",
+   "verdadero": true,
+   "respuesta": "Verdadero: vale localmente en el óptimo con cualquier tecnología (de $w_i=\\mathrm{CMg}\\,\\mathrm{PMg}_i$ sale $C=\\mathrm{CMg}\\,q\\,\\varepsilon_{q,\\lambda}$). Con homoteticidad se cumple además en toda la senda de expansión."
+  },
+  {
+   "id": "3A12-14",
+   "tipo": "prediccion",
+   "apartado": "II.1. Análisis de estática comparativa",
+   "pregunta": "Si sube el precio de un factor, ¿qué hace el efecto escala de la ecuación de Slutsky de factores sobre su demanda no condicionada?",
+   "respuesta": "Refuerza al efecto sustitución: el efecto escala propio, $-(\\partial z_i/\\partial q)^2/(\\partial^2C/\\partial q^2)$, es no positivo. Por eso la demanda no condicionada es más elástica que la condicionada y no hay factores Giffen."
+  },
+  {
+   "id": "3A12-15",
+   "tipo": "vf",
+   "apartado": "II.2. Análisis de plazos",
+   "pregunta": "A corto plazo, el tramo decreciente del coste medio se debe al reparto del coste fijo, no a economías de escala.",
+   "verdadero": true,
+   "respuesta": "Verdadero: a corto plazo hay un factor fijo y no se cambia la escala; el CMg tiene forma de U por la ley de las proporciones variables y el CMe baja al repartir el coste fijo. Las economías de escala son un concepto de largo plazo."
+  },
+  {
+   "id": "3A12-16",
+   "tipo": "definicion",
+   "apartado": "II.2. Análisis de plazos",
+   "pregunta": "¿Qué son el mínimo de explotación y el óptimo de explotación?",
+   "respuesta": "El mínimo de explotación es el mínimo del coste variable medio: por debajo de ese precio la empresa cierra a corto plazo. El óptimo de explotación es el mínimo del coste medio total, donde el beneficio es nulo; el CMg corta a ambas curvas en su mínimo."
+  },
+  {
+   "id": "3A12-17",
+   "tipo": "prediccion",
+   "apartado": "II.2. Análisis de plazos",
+   "pregunta": "Según el principio de Le Chatelier-Samuelson, ¿cuándo responde más la demanda de un factor a su precio, a corto o a largo plazo?",
+   "respuesta": "A largo plazo: $\\partial z_i^{\\mathrm{LP}}/\\partial w_i\\leq\\partial z_i^{\\mathrm{CP}}/\\partial w_i\\leq0$, y la oferta es más elástica a largo plazo. Cuantas más restricciones (factores fijos), menos margen de ajuste."
+  },
+  {
+   "id": "3A12-18",
+   "tipo": "formula",
+   "apartado": "II.3. Estimación de funciones de costes por dualidad",
+   "pregunta": "¿Cómo se obtienen las ecuaciones de participación de la translog de costes y qué la hace una forma flexible?",
+   "respuesta": "$s_i=\\frac{\\partial\\ln C}{\\partial\\ln w_i}=\\alpha_i+\\sum_j\\beta_{ij}\\ln w_j+\\beta_{iq}\\ln q$, con $\\sum_is_i=1$ (Christensen-Jorgenson-Lau, 1973). Es una aproximación de segundo orden que no impone $\\sigma$ ni rendimientos; con $\\beta=0$ se reduce a la Cobb-Douglas."
+  },
+  {
+   "id": "3A12-19",
+   "tipo": "prediccion",
+   "apartado": "II.4. Economías de escala y forma de los costes en los datos",
+   "pregunta": "¿Qué encontraron Christensen y Greene (1976) en las eléctricas de EE. UU. en 1970 y qué implicación tiene?",
+   "respuesta": "Que el grueso de la producción estaba ya en el tramo plano de la curva de coste medio: las economías de escala se habían agotado en generación, lo que justifica la competencia en esa actividad."
+  },
+  {
+   "id": "3A12-20",
+   "tipo": "definicion",
+   "apartado": "II.5. Medición de la eficiencia: SFA frente a DEA",
+   "pregunta": "¿Cómo descompone Farrell (1957) la eficiencia económica de una empresa?",
+   "respuesta": "En el rayo de la empresa $P$, con $Q$ en la isocuanta y $R$ en la isocoste mínima: eficiencia técnica $OQ/OP$, asignativa $OR/OQ$ y económica $OR/OP$, que es el producto de las dos. La técnica mide cuánto se pueden reducir todos los factores; la asignativa, si $\\mathrm{RMST}=w_L/w_K$."
+  },
+  {
+   "id": "3A12-21",
+   "tipo": "vf",
+   "apartado": "III.1. Implicaciones sobre la estructura de mercado",
+   "pregunta": "Para que una industria de un solo producto sea un monopolio natural es necesario que haya economías de escala en todo el tramo relevante.",
+   "verdadero": false,
+   "respuesta": "Falso: el monopolio natural equivale a la subaditividad de los costes (Baumol, 1977). Con un producto, las economías de escala son suficientes pero no necesarias: puede haber subaditividad con CMe creciente en un tramo."
+  },
+  {
+   "id": "3A12-22",
+   "tipo": "prediccion",
+   "apartado": "III.3. Críticas desde la organización industrial",
+   "pregunta": "Según Stigler (1939), ¿qué forma tienen los costes a corto plazo de una empresa que elige una planta flexible ante una demanda incierta?",
+   "respuesta": "Si el factor «fijo» es divisible, el CVMe y el CMg son constantes en un tramo amplio (reserva de capacidad), en vez de en U. Hay una horquilla de tamaños óptimos, en línea con los costes en L de los datos."
+  },
+  {
+   "id": "3A12-23",
+   "tipo": "prediccion",
+   "apartado": "III.3. Críticas desde la organización industrial",
+   "pregunta": "Según Leibenstein (1966), ¿qué efecto tiene la competencia sobre la ineficiencia X y sobre el coste del monopolio?",
+   "respuesta": "Con contratos incompletos el coste observado es $(1+\\chi)C(w,q)$, con $\\chi\\geq0$, y $\\chi$ baja con la presión competitiva. Por eso la pérdida del monopolio es mayor que el triángulo de Harberger (evidencia de Nickell, 1996, y Bloom-Van Reenen, 2007)."
+  },
+  {
+   "id": "3A12-24",
+   "tipo": "definicion",
+   "apartado": "Conclusión",
+   "pregunta": "¿Qué es la curva de aprendizaje y qué enseña el caso de la fotovoltaica con que se cierra el tema?",
+   "respuesta": "$c=c_1(Q^{\\mathrm{ac}})^{-b}$ (Wright, 1936): el coste baja con la producción acumulada y desplaza la curva de costes. El coste nivelado fotovoltaico cayó un 89 % en 2010-2025 por escala y, sobre todo, aprendizaje (módulos, −27 % por duplicación, $b\\approx0{,}45$)."
+  }
+ ]
+}

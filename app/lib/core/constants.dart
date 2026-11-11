@@ -16,8 +16,21 @@ class Urls {
   static final String paginaApp = '$base/app/';
   /// Un vídeo de ayuda (sección «Cómo se usa» de la página de la app).
   static String videoAyuda(String id) => '$paginaApp#ayuda-$id';
+  /// Registro de los vídeos de YouTube: clave → vídeo vigente (scripts/youtube.py).
+  static final String videos = '$base/videos.json';
   /// La misma app, compilada para el navegador.
   static final String appWeb = '$base/app/abrir/';
+
+  /// EconomIA: la página del equipo de preparación con IA y la dirección del
+  /// conector «Oposición TCEE · DCE» (Claude, Le Chat, ChatGPT y Gemini).
+  static final String economia = '$base/oposicion/economia.html';
+  static const String conectorIa = 'https://mcp.victorgutierrezmarcos.es/mcp';
+
+  /// Enlace de invitación de un preparador: en Android abre la app si está
+  /// instalada (App Links) y, si no, la página de la app lleva a Google Play
+  /// con el código como `referrer`; en iPhone y ordenador, a la app web. La
+  /// app lee `codigo` y `op` (core/invitacion.dart).
+  static String invitacion(String codigo, String oposicion) => '$paginaApp?codigo=$codigo&op=$oposicion';
 }
 
 /// Nombre de la app y quién la ha hecho (pie de Más).
@@ -49,6 +62,25 @@ const claveAbrirAlta = 'abrir_alta';
 /// En la caja [Cajas.app]: ya se ha mostrado la bienvenida con la entrada con
 /// Google (se muestra una vez, en la instalación nueva).
 const claveBienvenidaVista = 'bienvenida_vista';
+/// Veces que la sesión de Firebase se perdió y se recuperó sola al arrancar
+/// con la cuenta de Google del móvil (`recuperarSesion`).
+const claveSesionesRecuperadas = 'sesiones_recuperadas';
+/// Periodo de cada indicador del cuadro de coyuntura ya visto (id → periodo).
+const claveCoyunturaVista = 'coyuntura_vista';
+/// Índice local de las grabaciones de los cantes (ruta, fecha y cante).
+const claveGrabaciones = 'grabaciones';
+/// Leitner de la autoevaluación de cada tema revisado (prefijo + código).
+const prefijoAutoevaluacion = 'autoeval_';
+
+/// En la caja [Cajas.app]: invitación de un preparador pendiente de conectar
+/// (su código y la oposición), llegada por el enlace de invitación o por el
+/// `referrer` de Google Play (core/invitacion.dart).
+const claveInvitacionCodigo = 'invitacion_codigo';
+const claveInvitacionOposicion = 'invitacion_oposicion';
+
+/// En la caja [Cajas.app]: ya se ha leído el `referrer` de Google Play (se
+/// lee una sola vez, en el primer arranque).
+const claveReferrerLeido = 'referrer_leido';
 
 class Cajas {
   Cajas._();

@@ -1,0 +1,35 @@
+% Pregunta 703 (2007-julio-OEP2007, n.º 11): x = ln L, PMg_L = 1/L, VPMg = p/L (p = 6, a escala).
+% Oferta de trabajo W(L) = 0,3 + 0,4L; coste marginal del factor CMgF = W + L·W' = 0,3 + 0,8L.
+% Competencia en los dos mercados: p/L = W(L) (a y b son la misma condición) -> L_c = 3,52, w_c = 1,71.
+% Monopsonio: p/L = CMgF (d) -> L_m = 2,56, VPMg = 2,35 > w_m = W(L_m) = 1,32 (c).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.2cm]
+  \ejes{$L$}{$w$}{6.4}{5.0}
+  % VPMg = p·PMg_L = 6/L
+  \draw[curva1,domain=1.25:5.7,samples=60] plot (\x,{6/\x}) node[etiqueta,right] {$VPMg_L=\dfrac{p}{L}$};
+  % Oferta de trabajo
+  \draw[curva2] (0,0.3) -- (5.7,2.58) node[etiqueta,right] {$W(L)$};
+  % Coste marginal del factor
+  \draw[curvanueva] (0,0.3) -- (5.0,4.3) node[etiqueta,right,align=left] {$CMgF=$\\$W+L\,W'$};
+  % Competencia
+  \draw[guia] (3.516,0) node[below] {$L_c$} -- (3.516,1.706) -- (0,1.706) node[left] {$w_c$};
+  \node[punto] at (3.516,1.706) {};
+  \node[etiqueta,anchor=west,font=\footnotesize,text=tceeazul] (ab) at (4.15,2.85) {a) y b): $p/L=W$};
+  \draw[->,thin,tceeazul] (ab.west) -- (3.6,1.76);
+  % Monopsonio
+  \draw[guia] (2.558,0) node[below] {$L_m$} -- (2.558,2.346);
+  \draw[guia] (2.558,1.323) -- (0,1.323) node[left] {$w_m$};
+  \draw[guia] (2.558,2.346) -- (0,2.346) node[left] {$VPMg(L_m)$};
+  \node[punto,fill=tceerojo] at (2.558,2.346) {};
+  \node[punto] at (2.558,1.323) {};
+  \node[etiqueta,anchor=west,font=\footnotesize,text=tceerojo] (d) at (4.45,3.2) {d) $VPMg=CMgF$};
+  \draw[->,thin,tceerojo] (d.west) -- (2.64,2.38);
+  % Llave: explotación monopsonista
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceerojo] (2.68,1.34) -- (2.68,2.33);
+  \node[etiqueta,anchor=north west,font=\footnotesize,text=tceerojo] (c) at (3.75,0.98) {c) $VPMg>W$};
+  \draw[->,thin,tceerojo] (c.west) -- (2.78,1.83);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,25 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Cliente simulado de MCP Apps (para capturar.py)</title>
+<style>body{margin:0;font:14px system-ui;background:FONDO;color:TEXTO}#m{max-width:none;margin:0}iframe{display:block;width:100%;border:0;height:200px}pre{font-size:11px;white-space:pre-wrap;opacity:.8}</style></head>
+<body><div id="m"><iframe id="f"></iframe><pre id="log" style="display:none"></pre></div><script src="casos.js"></script><script>
+var q=new URLSearchParams(location.search), v=q.get('vista'), tema=q.get('tema')||'light', pasos=(q.get('pasos')||'').split('|').filter(Boolean), caso=CASOS[v];
+document.body.style.background=tema==='dark'?'#262329':'#fff'; document.body.style.color=tema==='dark'?'#eee':'#111';
+var f=document.getElementById('f'), log=document.getElementById('log');
+function anota(t){log.textContent+=t+'\n';}
+function manda(m){f.contentWindow.postMessage(m,'*');}
+window.addEventListener('message',function(e){var m=e.data;if(!m||m.jsonrpc!=='2.0')return;
+ if(m.method==='ui/initialize'){anota('← ui/initialize '+JSON.stringify(m.params));manda({jsonrpc:'2.0',id:m.id,result:{protocolVersion:'2026-01-26',hostInfo:{name:'simulado',version:'0'},hostCapabilities:{serverTools:{},updateModelContext:{text:{}},message:{text:{}},openLinks:{}},hostContext:{theme:tema,toolInfo:{id:7,tool:{name:v}}}}});}
+ else if(m.method==='ui/notifications/initialized'){anota('← initialized');manda({jsonrpc:'2.0',method:'ui/notifications/tool-input',params:{arguments:caso.args}});manda({jsonrpc:'2.0',method:'ui/notifications/tool-result',params:{content:[{type:'text',text:JSON.stringify(caso.res)}]}});setTimeout(siguiente,700);}
+ else if(m.method==='ui/notifications/size-changed'){f.style.height=m.params.height+'px';}
+ else if(m.method==='tools/call'){anota('← tools/call '+m.params.name+' '+JSON.stringify(m.params.arguments));var r=caso.llamadas[m.params.name];if(r==='=res')r=caso.res;setTimeout(function(){manda({jsonrpc:'2.0',id:m.id,result:r&&r.__crudo?r.__crudo:{content:[{type:'text',text:JSON.stringify(r)}]}});},100);}
+ else if(m.id!==undefined&&m.method){anota('← '+m.method+' '+JSON.stringify(m.params).slice(0,400));manda({jsonrpc:'2.0',id:m.id,result:{}});}
+});
+// Pasos: «clic:selector», «clicTexto:texto», «escribe:selector=valor»
+window.addEventListener('error',function(e){anota('!! error host '+e.message)});
+function siguiente(){var p=pasos.shift();if(!p){var d0=f.contentDocument;anota('botones: '+d0.querySelectorAll('button').length+' · alto doc: '+d0.documentElement.getBoundingClientRect().height+' · raiz: '+d0.getElementById('raiz').children.length+' · fallo: '+f.contentWindow.__fallo);return;}var d=f.contentDocument,i=p.indexOf(':'),que=p.slice(0,i),arg=p.slice(i+1);
+ try{if(que==='clic')d.querySelector(arg).click();
+ else if(que==='clicTexto'){var b=[].find.call(d.querySelectorAll('button,summary,input'),function(x){return x.textContent.trim().indexOf(arg)===0});if(!b)anota('!! no encuentro '+arg);else b.click();}
+ else if(que==='escribe'){var k=arg.indexOf('='),c=d.querySelector(arg.slice(0,k));c.value=arg.slice(k+1);c.dispatchEvent(new Event('input',{bubbles:true}));}
+ }catch(err){anota('!! '+p+': '+err.message);}
+ setTimeout(siguiente,500);}
+f.addEventListener('load',function(){f.contentWindow.addEventListener('error',function(e){anota('!! error vista '+e.message+' @'+e.lineno)});});f.src=v+'.html';
+</script></body></html>

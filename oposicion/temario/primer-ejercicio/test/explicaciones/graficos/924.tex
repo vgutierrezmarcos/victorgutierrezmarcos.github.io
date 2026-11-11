@@ -1,0 +1,46 @@
+% Pregunta 924 (2002-octubre-OEP2002, n.º 7): el impuesto unitario t no mueve la demanda de los consumidores; baja en t el ingreso medio y marginal netos del monopolista. Menos cantidad, más precio para el consumidor y cuña t entre lo que paga y lo que cobra el productor. Autor: Víctor Gutiérrez Marcos
+% A escala: p = 10 - q, IMg = 10 - 2q, CMg = 1, t = 2. Sin impuesto q0 = 4,5, p0 = 5,5; con impuesto q1 = 3,5, p1 = 6,5, el productor cobra 4,5.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.5cm]
+  \ejes{$q$}{$p$}{11.5}{11}
+  % Coste marginal constante
+  \draw[curva4] (0,1) -- (10.6,1);
+  \node[etiqueta,tceedorado,above] at (9.6,1) {$\mathit{CMg}$};
+  % Demanda de los consumidores (no se mueve) e ingreso marginal
+  \draw[curva1] (0,10) -- (10,0);
+  \node[etiqueta,tceemorado,right] at (1.2,9.0) {$D=\mathit{IMe}$};
+  \draw[curva2] (0,10) -- (5,0);
+  % Ingresos netos del productor: bajan en t
+  \draw[curvanueva,desplazada] (0,8) -- (8,0);
+  \path (5.0,3.0) -- (7.0,1.0) node[midway,above,sloped,etiqueta,tceerojo] {$\mathit{IMe}-t$};
+  \draw[curvanueva,desplazada] (0,8) -- (4,0);
+  % Etiquetas de los ingresos marginales, bajo el CMg
+  \node[etiqueta,tceeazul,right] at (4.9,0.45) {$\mathit{IMg}$};
+  \node[etiqueta,tceerojo,left] at (3.7,0.45) {$\mathit{IMg}-t$};
+  % Equilibrio inicial
+  \draw[guia] (4.5,0) -- (4.5,5.5);
+  \draw[guia] (0,5.5) -- (4.5,5.5);
+  \node[punto] at (4.5,1) {};
+  \node[punto] at (4.5,5.5) {};
+  \node[etiqueta,right] at (4.6,5.75) {$E_0$};
+  % Equilibrio con impuesto
+  \draw[guia] (3.5,0) -- (3.5,6.5);
+  \draw[guia] (0,6.5) -- (3.5,6.5);
+  \draw[guia] (0,4.5) -- (3.5,4.5);
+  \node[punto] at (3.5,1) {};
+  % Cuña fiscal sobre la vertical de q1
+  \draw[<->,thick,tceerojo] (3.5,4.65) -- (3.5,6.35);
+  \node[punto,tceerojo] at (3.5,6.5) {};
+  \node[punto,tceerojo] at (3.5,4.5) {};
+  \node[etiqueta,right] at (3.6,6.8) {$E_1$};
+  \node[etiqueta,tceerojo,right] at (3.55,5.0) {$t$};
+  % Rótulos de los ejes
+  \node[left] at (0,6.5) {$p_1$};
+  \node[left] at (0,5.5) {$p_0$};
+  \node[left] at (0,4.5) {$p_1-t$};
+  \node[below] at (3.5,-0.1) {$q_1$};
+  \node[below] at (4.5,-0.1) {$q_0$};
+\end{tikzpicture}
+\end{document}

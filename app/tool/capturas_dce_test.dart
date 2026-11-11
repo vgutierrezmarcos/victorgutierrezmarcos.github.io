@@ -45,11 +45,12 @@ import 'package:tcee_app/features/inicio/elegir_oposicion.dart';
 import 'package:tcee_app/features/plan/cante_page.dart';
 import 'package:tcee_app/features/preparador/preparador_page.dart';
 import 'package:tcee_app/features/preparador/sustituciones.dart';
+import 'package:tcee_app/features/cantar/reloj_compartido.dart';
 import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/features/temario/tema_page.dart';
 import 'package:tcee_app/theme/app_theme.dart';
 
-import 'demo_comun.dart' show cajaAppSinPrimerosPasos, versionApp;
+import 'demo_comun.dart' show cajaAppSinPrimerosPasos, densidadCaptura, rutaCaptura, tamCaptura, versionApp;
 
 Map<String, dynamic> _json(String ruta) => jsonDecode(File(ruta).readAsStringSync()) as Map<String, dynamic>;
 
@@ -78,8 +79,8 @@ void main() {
 
   /// Móvil de 1080 × 2340 a 2,625 de densidad, como en capturas_test.dart.
   void movil(WidgetTester tester) {
-    tester.view.physicalSize = const Size(1080, 2340);
-    tester.view.devicePixelRatio = 2.625;
+    tester.view.physicalSize = tamCaptura;
+    tester.view.devicePixelRatio = densidadCaptura;
     addTearDown(tester.view.reset);
     debugDisableShadows = false;
   }
@@ -89,7 +90,7 @@ void main() {
 
   Future<void> captura(WidgetTester tester, String nombre) async {
     await tester.pumpAndSettle();
-    await expectLater(find.byType(MaterialApp), matchesGoldenFile('../promo/capturas/$nombre.png'));
+    await expectLater(find.byType(MaterialApp), matchesGoldenFile(rutaCaptura(nombre)));
   }
 
   Future<List<Override>> base(Oposicion o, Temario temario, UsuarioRepo usuario, PlanRepo plan, PreparadorRepo preparador) async {
@@ -158,6 +159,8 @@ void main() {
     overrides.addAll([
       preguntasProvider.overrideWith((ref) => BancoPreguntas.fromJson(_json('../oposicion/temario/primer-ejercicio/test/preguntas.json'))),
       authStateProvider.overrideWith((ref) => Stream<User?>.value(yo)),
+      // El vigilante de relojes compartidos lee Firestore al arrancar (1.20.x).
+      firestoreRelojProvider.overrideWithValue(FakeFirebaseFirestore()),
     ]);
     await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
     await tester.pumpAndSettle();
@@ -230,6 +233,7 @@ void main() {
       // El test de DCE es el de TCEE, voluntario.
       preguntasProvider.overrideWith((ref) => BancoPreguntas.fromJson(_json('../oposicion/temario/primer-ejercicio/test/preguntas.json'))),
       authStateProvider.overrideWith((ref) => Stream<User?>.value(yo)),
+      firestoreRelojProvider.overrideWithValue(FakeFirebaseFirestore()),
       redRepoProvider.overrideWithValue(RedRepo(firestore: FakeFirebaseFirestore(), auth: MockFirebaseAuth(signedIn: true, mockUser: yo), oposicion: Oposiciones.dce)),
       verificadosProvider.overrideWith((ref) async => const [
             PreparadorVerificado(uid: 'tomas', nombre: 'Tomás Herrero', ejercicios: [3], avaladoPor: 'yo'),
@@ -257,7 +261,7 @@ void main() {
 
     Future<void> pestana(String nombre) async {
       for (var i = 0; i < 2; i++) {
-        await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
+        await tocar(find.descendant(of: find.byWidgetPredicate((w) => w is NavigationBar || w is NavigationRail), matching: find.text(nombre)));
       }
     }
 
@@ -273,17 +277,18 @@ void main() {
     // ------------------------------------------------------------- Estudiar
     Future<void> estudiar(String nombre) async {
       await pestana('Estudiar');
-      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
+      await tocar(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining(nombre, findRichText: true)));
     }
 
     await estudiar('Temas');
+    await tocar(find.text('Tercer ejercicio'));
     final parte = find.textContaining('Parte A: Microeconom');
     await tester.scrollUntilVisible(parte, 300, scrollable: find.descendant(of: find.byType(ListView).first, matching: find.byType(Scrollable)).first);
     // Que no quede detrás del menú inferior al tocarla.
     await bajar(350);
     await tocar(parte);
     await captura(tester, 'dce-temario');
-    Navigator.of(tester.element(find.byType(NavigationBar))).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
     await captura(tester, 'dce-tema');
     Navigator.of(tester.element(find.byType(TemaPage))).pop();
     await tester.pumpAndSettle();
@@ -293,7 +298,7 @@ void main() {
 
     // --------------------------------------------------------------- Cantes
     await pestana('Cantes');
-    await tocar(find.descendant(of: find.byType(TabBar), matching: find.text('Cantar')));
+    await tocar(find.descendant(of: find.byType(BotonesPestanas), matching: find.textContaining('Cantar', findRichText: true)));
     await tocar(find.text('Sacar 2 bolas de cada parte'));
     // Sin organización por bloques, cada tema sale como «3.A.9 · título».
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+ ·')));
@@ -301,7 +306,7 @@ void main() {
     await captura(tester, 'dce-cantar');
 
     // ------------------------------------------- Clase cancelada: sustituto
-    Navigator.of(tester.element(find.byType(NavigationBar))).push(MaterialPageRoute(builder: (_) => const CantePage(id: 'dc')));
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const CantePage(id: 'dc')));
     await tester.pumpAndSettle();
     await tocar(find.text('Pedir una clase suelta'));
     await captura(tester, 'dce-buscar-preparador');

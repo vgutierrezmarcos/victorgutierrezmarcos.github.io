@@ -1,0 +1,109 @@
+<style>
+  details.mes { margin-top: 14px; }
+  details.mes > summary { cursor: pointer; padding: 8px 0; min-height: 40px; list-style-position: inside; }
+  details.mes > summary .resto { color: var(--apagado); font-variant-caps: normal; letter-spacing: 0; }
+  .semana { display: grid; grid-template-columns: 5.2em 1fr; gap: 10px; padding: 7px 0; border-top: 1px solid var(--linea); align-items: baseline; }
+  .semana .dia { font-variant-numeric: tabular-nums; color: var(--apagado); }
+  .semana .dia b { color: var(--texto); font-weight: 600; }
+  .tema { display: block; }
+  .tema .titulo { color: var(--apagado); }
+  .descanso { color: var(--apagado); font-style: italic; }
+  .cifras { display: flex; gap: 22px; flex-wrap: wrap; margin: 4px 0 0; }
+  .cifras div { font-variant-numeric: tabular-nums; }
+  .cifras b { font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, Georgia, serif; font-weight: 400; font-size: 24px; color: var(--tinta); display: block; line-height: 1.1; }
+</style>
+<div id="raiz"><p class="apagado">Preparando el cronograma…</p></div>
+<script>
+  (function () {
+    var guardando = false;
+
+    function semanas(c, titulos) {
+      var bloques = [], mesActual = '', caja = null;
+      (c.semanas || []).forEach(function (s) {
+        var f = fechaDe(s.cante);
+        var clave = f ? f.mes + ' de ' + f.anio : '';
+        if (clave !== mesActual) {
+          mesActual = clave;
+          // Cada mes se pliega (sin barras de desplazamiento dentro de la vista, que en el móvil no se pueden arrastrar): abiertos los dos primeros.
+          caja = el('details', { class: 'mes', open: bloques.length < 2 }, el('summary', { class: 'sobre' }, [clave, el('span', { class: 'resto' })]));
+          caja.addEventListener('toggle', Vista.medir);
+          caja.cuenta = { semanas: 0, temas: 0 };
+          bloques.push(caja);
+        }
+        var temas = (s.temas || []).map(function (t) {
+          return el('span', { class: 'tema' }, [el('span', { class: 'codigo' }, t), titulos[t] ? el('span', { class: 'titulo' }, ' · ' + tituloCorto(titulos[t])) : null]);
+        });
+        if (!s.descanso && temas.length) { caja.cuenta.semanas++; caja.cuenta.temas += temas.length; }
+        caja.querySelector('.resto').textContent = ' · ' + caja.cuenta.semanas + (caja.cuenta.semanas === 1 ? ' cante, ' : ' cantes, ') + caja.cuenta.temas + (caja.cuenta.temas === 1 ? ' tema' : ' temas');
+        caja.appendChild(el('div', { class: 'semana' }, [
+          el('div', { class: 'dia' }, f ? [f.dia.slice(0, 3) + ' ', el('b', {}, String(f.n))] : s.cante),
+          el('div', {}, s.descanso || !temas.length ? el('span', { class: 'descanso' }, 'Descanso') : temas),
+        ]));
+      });
+      return bloques;
+    }
+
+    function recibir(d, args) {
+      if (!d || d.error || !d.cronograma) {
+        pintar(el('p', { class: 'aviso aviso--mal' }, (d && d.error) || 'No hay cronograma que enseñar.'));
+        return;
+      }
+      var c = d.cronograma, titulos = d.titulos || {};
+      var conTemas = (c.semanas || []).filter(function (s) { return !s.descanso && (s.temas || []).length; });
+      var nTemas = conTemas.reduce(function (a, s) { return a + s.temas.length; }, 0);
+      var ultima = (c.semanas || []).length ? c.semanas[c.semanas.length - 1].cante : '';
+      var yaGuardado = d.guardado === true || Vista.recordar('guardado') === '1';
+      var estado = el('div', {});
+      var boton = el('button', { class: 'boton', type: 'button' }, 'Guardar en la app');
+
+      function hecho(r) {
+        boton.classList.add('oculto');
+        estado.textContent = '';
+        estado.appendChild(el('p', { class: 'aviso aviso--bien' }, 'Guardado en la app. Lo verás en Cronograma al sincronizar, y allí puedes retocar cada semana.'));
+        if (r && r.sigueCompartido) estado.appendChild(el('p', { class: 'apagado' }, 'Sigue compartido con tu preparador, como el anterior.'));
+      }
+
+      boton.addEventListener('click', function () {
+        if (guardando) return;
+        guardando = true;
+        boton.disabled = true;
+        boton.textContent = 'Guardando…';
+        var a = {};
+        Object.keys(args || {}).forEach(function (k) { if (k !== 'vistaPrevia') a[k] = args[k]; });
+        Vista.llamar('proponer_cronograma', a).then(function (r) {
+          guardando = false;
+          if (r && r.guardado) {
+            Vista.recordar('guardado', '1');
+            Vista.contar('El usuario ha guardado el cronograma en la app con el botón de la vista (id ' + r.id + ', ' + r.semanas + ' semanas, ' + r.temas + ' temas). No lo guardes otra vez.');
+            recibir(Object.assign({}, d, r, { guardado: true }), args);
+          } else {
+            boton.disabled = false;
+            boton.textContent = 'Guardar en la app';
+            estado.textContent = '';
+            estado.appendChild(el('p', { class: 'aviso aviso--mal' }, (r && r.error) || 'No se ha podido guardar.'));
+          }
+        });
+      });
+
+      pintar([
+        el('div', { class: 'sobre' }, (d.oposicion || '').toUpperCase() + (c.ejercicio ? ' · ejercicio ' + c.ejercicio : '') + (yaGuardado ? '' : ' · propuesta sin guardar')),
+        el('h1', {}, 'Cronograma de estudio'),
+        el('hr', { class: 'filete' }),
+        el('div', { class: 'cifras' }, [
+          el('div', {}, [el('b', {}, String(conTemas.length)), 'semanas de cante']),
+          el('div', {}, [el('b', {}, String(nTemas)), 'temas']),
+          ultima ? el('div', {}, [el('b', {}, (fechaDe(ultima) || {}).n + ' ' + ((fechaDe(ultima) || {}).mes || '').slice(0, 3)), 'último cante']) : null,
+          c.examen ? el('div', {}, [el('b', {}, (fechaDe(c.examen) || {}).n + ' ' + ((fechaDe(c.examen) || {}).mes || '').slice(0, 3)), 'examen']) : null,
+        ]),
+        el('div', { id: 'lista' }, semanas(c, titulos)),
+        yaGuardado ? null : el('p', { class: 'apagado pie' }, 'Al guardarlo pasa a ser tu cronograma activo. El anterior queda archivado (no se borra) y, si era del mismo ejercicio, se conservan los temas que ya tenías hechos.'),
+        el('div', { class: 'fila pie' }, [yaGuardado ? null : boton,
+          Vista.puedeAmpliar() ? el('button', { class: 'boton boton--secundario', type: 'button', onclick: function (e) { var b = e.currentTarget; Vista.ampliar().then(function (ok) { if (ok) b.classList.add('oculto'); }); } }, 'Ver a pantalla completa') : null]),
+        estado,
+      ]);
+      if (yaGuardado) hecho(d);
+    }
+
+    Vista.alRecibir(recibir);
+  })();
+</script>

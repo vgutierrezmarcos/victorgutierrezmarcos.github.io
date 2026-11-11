@@ -1,0 +1,29 @@
+% Pregunta 362 (2020-enero-OEP2019, n.º 29): monopolio interior, país pequeño, con arancel.
+% D: P = 4,6 - 0,8Q; IMg: P = 4,6 - 1,6Q; CMg: P = 0,4 + 0,6Q. Autarquía: IMg = CMg en Q = 1,91 (P = 1,55), P^M = 3,07.
+% P^W = 1; P^W + t = 1,8: el monopolista es precio-aceptante (CMg = P^W + t en Q = 2,33), importa hasta 3,5.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Q$}{$P$}{6.4}{5}
+  % Autarquía
+  \draw[guia] (0,3.073) node[left] {$P^M$} -- (1.909,3.073);
+  \draw[guia] (1.909,3.073) -- (1.909,1.545);
+  % Curvas
+  \draw[curva1] (0,4.6) -- (5.5,0.2) node[etiqueta,right] {$D$};
+  \draw[curva4] (0,4.6) -- (2.6,0.44) node[etiqueta,left] {$IMg$};
+  \draw[curva2] (0,0.4) -- (5,3.4) node[etiqueta,right] {$CMg$};
+  \draw[curva3] (0,1.0) node[left,text=black] {$P^W$} -- (6.1,1.0);
+  \draw[curvanueva] (0,1.8) node[left,text=black] {$P^W\!+t$} -- (6.1,1.8) node[etiqueta,above left,text=tceerojo,align=right] {oferta exterior\\horizontal};
+  % Puntos
+  \node[punto] at (1.909,1.545) {};
+  \node[punto,label={[etiqueta]above left:$M$}] at (1.909,3.073) {};
+  \node[punto] at (2.333,1.8) {};
+  \node[punto] at (3.5,1.8) {};
+  \draw[guia] (2.333,1.8) -- (2.333,0) node[below] {$Q_s$};
+  \draw[guia] (3.5,1.8) -- (3.5,0) node[below] {$Q_d$};
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceerojo] (2.333,1.68) -- node[below=4pt,text=tceerojo,font=\footnotesize] {importa} (3.5,1.68);
+  \node[etiqueta,align=center,font=\footnotesize] at (4.3,4.5) {Arancel: produce donde\\$CMg=P^W+t$ (sin poder)};
+\end{tikzpicture}
+\end{document}

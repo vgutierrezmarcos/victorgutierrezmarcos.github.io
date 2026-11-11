@@ -21,6 +21,7 @@ Future<void> guardarWidget(DatosWidget d) async {
       HomeWidget.saveWidgetData<String>('semana', d.semana),
       HomeWidget.saveWidgetData<String>('test_hecho', d.testHecho == null ? '' : _dia(d.testHecho!)),
       HomeWidget.saveWidgetData<bool>('preparador', d.preparador),
+      HomeWidget.saveWidgetData<String>('racha', d.racha == null ? '' : '${d.racha}'),
     ]);
     await HomeWidget.updateWidget(qualifiedAndroidName: _proveedor);
   } catch (_) {

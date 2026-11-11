@@ -1,0 +1,28 @@
+% Pregunta 429 (2013-noviembre-OEP2013, n.º 5): isocuantas de Y = raíz(A + 2H), sustitutivos perfectos.
+% Rectas A + 2H = Y^2 para Y = 1, 2 y 3 (A = 1, 4, 9; H = 0,5; 2; 4,5), a escala.
+% La separación entre isocuantas crece: rendimientos decrecientes a escala, coste medio creciente.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\usetikzlibrary{decorations.pathreplacing}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=0.55cm]
+  \draw[eje] (0,0) -- (5.4,0) node[right,align=left] {$H$\\[-2pt](heno)};
+  \draw[eje] (0,0) -- (0,10.4) node[above] {$A$ (avena)};
+  \node[below left] at (0,0) {$0$};
+  \foreach \h/\t in {0.5/{0{,}5},2/2,4.5/{4{,}5}} \draw (\h,0) -- (\h,-0.15) node[below] {$\t$};
+  \foreach \a in {1,4,9} \draw (0,\a) -- (-0.07,\a) node[left] {$\a$};
+  % Isocuantas: rectas de pendiente -2
+  \draw[curva1] (0,1) -- (0.5,0);
+  \draw[curva1] (0,4) -- (2,0);
+  \draw[curva1] (0,9) -- (4.5,0);
+  \node[etiqueta,text=tceemorado,above right] at (0.25,0.5) {$Y=1$};
+  \node[etiqueta,text=tceemorado,above right] at (1,2) {$Y=2$};
+  \node[etiqueta,text=tceemorado,above right] at (2.25,4.5) {$Y=3$};
+  % Llaves: pienso adicional por cada unidad más de leche
+  \draw[decorate,decoration={brace,amplitude=5pt},thick,tceerojo] (-0.55,1.05) -- (-0.55,3.95) node[midway,left=5pt,text=tceerojo] {$+3$};
+  \draw[decorate,decoration={brace,amplitude=6pt},thick,tceerojo] (-0.55,4.05) -- (-0.55,8.95) node[midway,left=6pt,text=tceerojo] {$+5$};
+  \draw[decorate,decoration={brace,amplitude=3pt},thick,tceerojo] (-0.55,0.05) -- (-0.55,0.95) node[midway,left=4pt,text=tceerojo] {$+1$};
+  \node[etiqueta,align=left,font=\footnotesize,anchor=north west] at (2.4,10.2) {Cada unidad más de leche exige\\cada vez más pienso (llaves):\\rendimientos decrecientes\\y $\mathrm{CMe}=kY$ creciente};
+\end{tikzpicture}
+\end{document}

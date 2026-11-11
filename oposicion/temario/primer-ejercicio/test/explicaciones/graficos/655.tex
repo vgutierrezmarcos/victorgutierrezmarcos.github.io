@@ -1,0 +1,42 @@
+% Pregunta 655 (2008-julio-OEP2008, n.º 7): equilibrio a largo plazo de Chamberlin. La demanda de la
+% empresa es tangente al CMe en su tramo decreciente (q* < q_min): capacidad ociosa y rendimientos
+% de escala crecientes sin aprovechar.
+% Curvas: C(q) = q^3 - 8 q^2 + 24 q  =>  CMe = q^2 - 8 q + 24 (mínimo 8 en q = 4), CMg = 3 q^2 - 16 q + 24.
+% Demanda d: p = 20 - 4 q, tangente al CMe en q* = 2 (p* = 12, CMe' = -4); CMe - d = (q - 2)^2 >= 0.
+% IMg = 20 - 8 q corta al CMg en q* = 2 (valor 4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.25cm,
+    declare function={CMg(\q)=3*\q^2-16*\q+24; CMe(\q)=\q^2-8*\q+24;}]
+  \draw[eje] (0,0) -- (6.9,0) node[below left=2pt and 0pt] {$q$};
+  \draw[eje] (0,0) -- (0,21) node[left] {$p$, costes};
+  \node[below left] at (0,0) {$0$};
+  % Demanda e ingreso marginal de la empresa
+  \draw[curva3] (0.2,19.2) -- (4.6,1.6) node[etiqueta,right] {$d$};
+  \draw[curva3,desplazada] (0.2,18.4) -- (2.4,0.8);
+  \node[etiqueta,right=0pt,text=tceeverde] at (1.2,10.3) {IMg};
+  % Costes a largo plazo
+  \draw[curva1] plot[domain=1:6.5,samples=80,smooth] (\x,{CMe(\x)})
+    node[etiqueta,right] {CMe};
+  \draw[curva2] plot[domain=1.2:5,samples=80,smooth] (\x,{CMg(\x)})
+    node[etiqueta,right] {CMg};
+  % IMg = CMg en q*
+  \node[punto] at (2,4) {};
+  % Tangencia d = CMe: p* = CMe(q*)
+  \draw[guia] (2,12) -- (2,0);
+  \draw[guia] (2,12) -- (0,12) node[left] {$p^*$};
+  \node[punto] at (2,12) {};
+  % Mínimo del CMe: escala eficiente
+  \draw[guia] (4,8) -- (4,0);
+  \draw[guia] (4,8) -- (0,8) node[left] {CMe$_{\min}$};
+  \node[punto] at (4,8) {};
+  \node[below] at (2,0) {$q^*$};
+  \node[below] at (4,0) {$q_{\min}$};
+  % Capacidad ociosa
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceerojo]
+    (2,-3.4) -- (4,-3.4) node[midway,below=5pt,font=\footnotesize,text=tceerojo] {capacidad ociosa};
+\end{tikzpicture}
+\end{document}

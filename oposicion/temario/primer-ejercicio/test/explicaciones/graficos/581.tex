@@ -1,0 +1,67 @@
+% Pregunta 581 (2016-noviembre-OEP2016, n.º 26): diagrama de Solow en el plano (k, y).
+% Izquierda, función neoclásica: s f(k) = 0,9 sqrt(k) y (n+delta) k = 0,4 k; corte único k* = 5,06, estable;
+%   el hueco s f(k) - (n+delta)k entre k es mayor en k_P = 1 que en k_R = 3,5 (convergencia).
+% Derecha, tramo de rendimientos crecientes: s f(k) = 0,45 sqrt(k) + 1,5/(1+e^{-3(k-3)}) - 1,5/(1+e^{9})
+%   y (n+delta) k = 0,5 k; cortes k_A = 0,82 (estable), k_B = 2,96 (inestable), k_C = 5,01 (estable).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm]
+  % ---------------- Panel izquierdo: caso neoclásico ----------------
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3.3,4.1)
+    {Rendimientos decrecientes};
+  \ejes{$k$}{}{7}{3.7}
+  \draw[curva2] (0,0) -- (6.4,2.56) node[etiqueta,above right=-1pt] {$(n+\delta)k$};
+  \draw[curva1,domain=0:6.4,samples=100] plot (\x,{0.9*sqrt(\x)}) node[etiqueta,below right=-1pt] {$s\,f(k)$};
+  % Estado estacionario
+  \draw[guia] (5.0625,0) -- (5.0625,2.025);
+  \node[punto,label={[etiqueta]above left:$E$}] at (5.0625,2.025) {};
+  \node[below] at (5.0625,0) {$k^*$};
+  % Dos países: pobre (k_P = 1) y rico (k_R = 3,5)
+  \draw[guia] (1,0) -- (1,0.4);
+  \draw[guia] (3.5,0) -- (3.5,1.4);
+  \draw[curvanueva] (1,0.4) -- (1,0.9);
+  \draw[curvanueva] (3.5,1.4) -- (3.5,1.684);
+  \node[below] at (1,0) {$k_P$};
+  \node[below] at (3.5,0) {$k_R$};
+  \node[etiqueta,text=tceerojo,font=\footnotesize,align=center] at (1.9,2.75)
+    {$\dot k/k$ mayor\\en el pobre};
+  \draw[->,thin,tceerojo] (1.55,2.35) -- (1.08,0.95);
+  % Dinámica sobre el eje: hacia k*
+  \draw[->,very thick,tceemorado] (0.35,0) -- (4.8,0);
+  \draw[->,very thick,tceemorado] (6.6,0) -- (5.3,0);
+  % ---------------- Panel derecho: tramo de rendimientos crecientes ----------------
+  \begin{scope}[xshift=8.6cm]
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3.3,4.1)
+    {Tramo de rendimientos crecientes};
+  \ejes{$k$}{}{7}{3.7}
+  \draw[curva2] (0,0) -- (6.4,3.2) node[etiqueta,right] {$(n+\delta)k$};
+  \draw[curva1,domain=0.0001:6.4,samples=160] plot (\x,{0.45*sqrt(\x)+1.5/(1+exp(-3*(\x-3)))-0.000185}) node[etiqueta,right] {$s\,f(k)$};
+  % Tres estados estacionarios
+  \draw[guia] (0.818,0) -- (0.818,0.409);
+  \draw[guia] (2.961,0) -- (2.961,1.481);
+  \draw[guia] (5.006,0) -- (5.006,2.503);
+  \node[punto] at (0.818,0.409) {};
+  \node[circle,draw=black,fill=white,thick,inner sep=1.5pt] at (2.961,1.481) {};
+  \node[punto] at (5.006,2.503) {};
+  \node[below] at (0.818,0) {$k_A$};
+  \node[below] at (2.961,0) {$k_B$};
+  \node[below] at (5.006,0) {$k_C$};
+  \node[etiqueta,font=\footnotesize,align=center,text=tceegris] at (0.75,1.55) {trampa\\de pobreza};
+  \draw[->,thin,tceegris] (0.78,1.1) -- (0.81,0.55);
+  \node[etiqueta,font=\footnotesize,align=center,text=tceegris] at (2.35,2.4) {inestable};
+  \draw[->,thin,tceegris] (2.5,2.15) -- (2.88,1.6);
+  % Dinámica sobre el eje: se aleja de k_B
+  \draw[->,very thick,tceemorado] (0.1,0) -- (0.62,0);
+  \draw[->,very thick,tceemorado] (2.8,0) -- (1.0,0);
+  \draw[->,very thick,tceemorado] (3.12,0) -- (4.83,0);
+  \draw[->,very thick,tceemorado] (6.6,0) -- (5.2,0);
+  % Dos países con k0 a un lado y otro de k_B
+  \draw[flecha] (2.6,-0.85) -- (0.9,-0.85) node[midway,below,font=\footnotesize] {país 1};
+  \draw[flecha] (3.3,-0.85) -- (4.95,-0.85) node[midway,below,font=\footnotesize] {país 2};
+  \node[punto,tceerojo] at (2.6,-0.85) {};
+  \node[punto,tceerojo] at (3.3,-0.85) {};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

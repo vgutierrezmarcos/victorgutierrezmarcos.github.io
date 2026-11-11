@@ -1,0 +1,31 @@
+% Pregunta 408 (2011-octubre-OEP2011, n.º 29): crisis de primera generación; el tipo sombra alcanza al fijo en T* y un ataque se lleva de golpe las reservas que quedan, antes de que se agoten solas en T_ag. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Números: R0 = 3,6; dR/dt = -0,6 (mu); alfa*mu = 1,2 -> T* = (R0 - alfa mu)/mu = 4; T_ag = R0/mu = 6
+  % ---------- Panel superior: tipo de cambio ----------
+  \begin{scope}[yshift=5.6cm]
+    \ejes{$t$}{tipo de cambio}{7}{4}
+    \draw[curva2] (0,2.4) -- (6.2,2.4) node[etiqueta,right] {$\bar E$ (fijo)};
+    \draw[curva1] (0,0.8) -- (6.2,3.28) node[etiqueta,right] {$\tilde E(t)$ (sombra)};
+    \node[etiqueta,font=\footnotesize,tceemorado,align=left,anchor=north west] at (0.15,0.75) {crece con el crédito interno};
+    \draw[guia] (4,0) -- (4,2.4);
+    \node[punto,tceerojo] at (4,2.4) {};
+    \node[etiqueta,tceerojo,above left] at (4,2.45) {$\tilde E=\bar E$};
+    \node[below] at (4,0) {$T^*$};
+  \end{scope}
+  % ---------- Panel inferior: reservas ----------
+  \ejes{$t$}{reservas $R$}{7}{4.4}
+  \draw[curva1] (0,3.6) -- (4,1.2) node[pos=0.35,etiqueta,above right] {$R$ cae gradualmente};
+  \node[left] at (0,3.6) {$R_0$};
+  \draw[guia] (4,1.2) -- (6,0);
+  \node[etiqueta,font=\footnotesize,tceegris,anchor=west] at (4.95,1.05) {sin ataque};
+  \draw[curvanueva] (4,1.2) -- (4,0);
+  \node[punto,tceerojo] at (4,1.2) {};
+  \node[etiqueta,tceerojo,font=\footnotesize,align=right,anchor=east] at (3.85,0.6) {ataque especulativo:\\se lleva de golpe\\lo que queda};
+  \node[below] at (4,0) {$T^*$};
+  \node[below] at (6,0) {$T_{\mathrm{ag}}$};
+  \draw[flecha] (5.85,-0.75) -- (4.15,-0.75) node[midway,below,font=\footnotesize] {$T^*<T_{\mathrm{ag}}$};
+\end{tikzpicture}
+\end{document}

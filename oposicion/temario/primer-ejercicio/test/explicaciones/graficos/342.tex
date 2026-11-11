@@ -1,0 +1,55 @@
+% Pregunta 342 (2020-enero-OEP2019, n.º 9): menú óptimo de autoselección con dos tipos.
+% Escala: q en [0,1] -> 6 cm (x = 6q); p en [0,2] -> 5 cm (y = 2,5p).
+% D1: p = 1 - q ; D2: p = 2(1 - q) ; c = 0,5.
+% Tipo 1: q1 = 0,25, p1 = 0,75 > c ; A1 = triángulo bajo D1 sobre 0,75 (0,03125).
+% Renta informativa = área entre D2 y D1 de 0 a q1 (0,21875).
+% Tipo 2: q2 = q** = 0,75, p2 = c ; A2 = ACF - renta (0,34375).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Áreas
+  \fill[fill=tceeverde,fill opacity=0.16] (0,1.25) -- (0,2.5) -- (1.5,1.875) -- (1.5,3.75) -- (4.5,1.25) -- cycle;
+  \fill[area2] (0,2.5) -- (0,5) -- (1.5,3.75) -- (1.5,1.875) -- cycle;
+  \fill[area,fill opacity=0.45] (0,2.5) -- (0,1.875) -- (1.5,1.875) -- cycle;
+  \ejes{$q$}{$p$}{6.5}{5.5}
+  % Guías
+  \draw[guia] (0,1.25) -- (5.6,1.25);
+  \draw[guia] (0,1.875) -- (1.5,1.875);
+  \draw[guia] (1.5,0) -- (1.5,3.75);
+  \draw[guia] (3,0) -- (3,2.5);
+  \draw[guia] (4.5,0) -- (4.5,1.25);
+  % Demandas
+  \draw[curva2] (0,2.5) -- (6,0);
+  \node[etiqueta,text=tceeazul] at (4.3,1.95) {$p_1^D$};
+  \draw[curvanueva] (0,5) -- (6,0);
+  \node[etiqueta,text=tceerojo] at (3.5,3.55) {$p_2^D$};
+  \node[etiqueta,right] at (5.6,1.25) {$c$};
+  % Rótulos de las áreas
+  \node[font=\footnotesize] at (0.55,3.55) {$R$};
+  \node[font=\footnotesize] at (2.25,2.45) {$A_2$};
+  % Puntos del enunciado
+  \foreach \p in {(0,1.25),(0,2.5),(0,5),(3,1.25),(3,2.5),(4.5,1.25)} \node[punto] at \p {};
+  \node[etiqueta,font=\footnotesize] at (0.62,2.03) {$A_1$};
+  \node[etiqueta,above right] at (3,2.5) {E};
+  \node[etiqueta,below left] at (3,1.25) {D};
+  \node[etiqueta,above right] at (4.5,1.25) {F};
+  % Paquete del tipo 1
+  \node[punto,tceerojo] at (1.5,1.875) {};
+  % Eje vertical
+  \node[left] at (0,5) {$\theta_2=2$\ \ C};
+  \node[left] at (0,2.5) {$\theta_1=1$\ \ B};
+  \node[left] at (0,1.875) {$p_1=0{,}75$};
+  \node[left] at (0,1.25) {$c=0{,}5$\ \ A};
+  % Eje horizontal
+  \node[below] at (1.5,0) {$q_1$};
+  \node[below] at (3,0) {$q^*$};
+  \node[below] at (4.5,0) {$q^{**}$};
+  \node[below] at (6,0) {$1$};
+  % Leyenda
+  \fill[area,fill opacity=0.45] (-1.6,-1.05) rectangle (-1.3,-0.8); \node[anchor=base west,font=\footnotesize] at (-1.25,-1.02) {$A_1$};
+  \fill[area2] (-0.5,-1.05) rectangle (-0.2,-0.8); \node[anchor=base west,font=\footnotesize] at (-0.15,-1.02) {$R$: renta informativa};
+  \fill[fill=tceeverde,fill opacity=0.16] (2.75,-1.05) rectangle (3.05,-0.8); \node[anchor=base west,font=\footnotesize] at (3.1,-1.02) {$A_2=ACF-R$};
+\end{tikzpicture}
+\end{document}

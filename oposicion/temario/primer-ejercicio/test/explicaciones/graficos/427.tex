@@ -1,0 +1,33 @@
+% Pregunta 427 (2013-noviembre-OEP2013, n.º 3): pasar recursos de defensa a educación es moverse de A a B por la misma FPP (d);
+% desplazarla hacia fuera exigiría más recursos o tecnología (a) y hacia dentro, perderlos (b). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{Educación}{Defensa}{6.6}{5.4}
+  % FPP de partida (cóncava) y las que exigirían cambiar recursos o tecnología
+  \draw[curvanueva,desplazada,domain=0:90,samples=60] plot ({4.9*cos(\x)},{4.5*sin(\x)});
+  \draw[curvanueva,desplazada,domain=0:90,samples=60] plot ({2.9*cos(\x)},{2.6*sin(\x)});
+  \draw[curva1,domain=0:90,samples=60] plot ({4*cos(\x)},{3.6*sin(\x)});
+  % Puntos A y B sobre la FPP
+  \coordinate (A) at ({4*cos(70)},{3.6*sin(70)});
+  \coordinate (B) at ({4*cos(35)},{3.6*sin(35)});
+  % Proyecciones: lo que se pierde de defensa y se gana de educación
+  \proyeccion{(A)}{$E_A$}{$D_A$}
+  \proyeccion{(B)}{$E_B$}{$D_B$}
+  \node[punto,label={[etiqueta]above left:$A$}] at (A) {};
+  \node[punto,label={[etiqueta]right:$B$}] at (B) {};
+  % Movimiento a lo largo de la curva (d)
+  \draw[flecha,tceemorado,domain=66:39,samples=30] plot ({4.4*cos(\x)},{3.96*sin(\x)});
+  % Variaciones en los ejes
+  \draw[flecha] (-0.75,{3.6*sin(70)}) -- (-0.75,{3.6*sin(35)});
+  \node[etiqueta,tceerojo,left,align=center,font=\footnotesize] at (-0.8,{(3.6*sin(70)+3.6*sin(35))/2}) {menos\\defensa};
+  \draw[flecha] ({4*cos(70)},-0.75) -- ({4*cos(35)},-0.75);
+  \node[etiqueta,tceerojo,below,font=\footnotesize] at ({(4*cos(70)+4*cos(35))/2},-0.8) {más educación};
+  % Rótulos
+  \node[etiqueta,tceemorado,anchor=west] at (4.02,0.3) {$FPP$};
+  \node[etiqueta,tceerojo,align=left,anchor=south west,font=\footnotesize] at (3.5,3.45) {$FPP'$ (a): exige más\\recursos o tecnología};
+  \node[etiqueta,tceerojo,align=left,anchor=south west,font=\footnotesize] at (1.45,0.06) {$FPP''$\\(b): exige\\perder\\recursos};
+  \node[etiqueta,align=left,anchor=west,font=\footnotesize] at (5.0,2.3) {(d) misma $FPP$:\\se mueve de $A$ a $B$;\\coste de oportunidad\\$=$ pendiente ($RMT$)};
+\end{tikzpicture}
+\end{document}

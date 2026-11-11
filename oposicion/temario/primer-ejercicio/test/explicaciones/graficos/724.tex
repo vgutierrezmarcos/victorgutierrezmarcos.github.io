@@ -1,0 +1,37 @@
+% Pregunta 724 (2007-julio-OEP2007, n.º 32): Mundell-Fleming con movilidad perfecta y tipo de cambio
+% flexible: expansión monetaria. Rectas a escala:
+%   BP: i = 2,5 (= i*)   IS: i = 5 - Y   LM: i = Y   E0 = (2,5; 2,5)
+%   LM': i = Y - 1,4   A = IS∩LM' = (3,2; 1,8), por debajo de i*: salen capitales, se deprecia
+%   IS': i = 6,4 - Y (la depreciación sube las exportaciones netas)   E1 = (3,9; 2,5)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  \ejes{$Y$}{$i$}{6.4}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3.2,5.75)
+    {Tipo flexible: reservas constantes};
+  % Curvas iniciales
+  \draw[curva4] (0,2.5) -- (6.2,2.5) node[etiqueta,right,text=tceedorado] {$BP$};
+  \node[etiqueta,left] at (0,2.5) {$i^*$};
+  \draw[curva1] (0.6,4.4) -- (4.6,0.4) node[etiqueta,below,text=tceemorado] {$IS$};
+  \draw[curva2] (0.4,0.4) -- (4.4,4.4) node[etiqueta,above,text=tceeazul] {$LM$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (1.8,0.4) -- (5.8,4.4) node[etiqueta,above,text=tceerojo] {$LM'$};
+  \draw[curvanueva,desplazada] (2.0,4.4) -- (6.0,0.4) node[etiqueta,below,text=tceerojo] {$IS'$};
+  \draw[flecha] (4.35,3.85) -- (5.15,3.85);
+  \draw[flecha] (1.15,3.85) -- (1.95,3.85);
+  % Proyecciones
+  \draw[guia] (2.5,2.5) -- (2.5,0) node[below] {$Y_0$};
+  \draw[guia] (3.9,2.5) -- (3.9,0) node[below] {$Y_1$};
+  % Puntos
+  \node[punto] at (2.5,2.5) {};
+  \node[etiqueta] at (1.98,2.76) {$E_0$};
+  \node[punto] at (3.2,1.8) {};
+  \node[etiqueta,below=3pt] at (3.2,1.8) {$A$};
+  \node[punto] at (3.9,2.5) {};
+  \node[etiqueta] at (4.42,2.76) {$E_1$};
+  \node[etiqueta,font=\footnotesize,align=center,text=tceerojo] at (3.2,5.25)
+    {$A$: $i<i^*$, salen capitales y se deprecia $\Rightarrow$ $IS'$};
+\end{tikzpicture}
+\end{document}

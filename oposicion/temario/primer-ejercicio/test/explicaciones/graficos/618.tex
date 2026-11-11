@@ -1,0 +1,37 @@
+% Pregunta 618 (2009-octubre-OEP2009, n.º 15): consumidor en dos periodos con y1 = y2; con r = 3 % es prestatario (A, a la derecha de E) y el límite de crédito c1 <= (1+alpha)y le deja en la esquina B si c1* > (1+alpha)y; con r = 6 % es prestamista (C). Escala exagerada. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=1.1]
+  % Parámetros esquemáticos: y = 3, beta = 0,5; r = 3 % -> pendiente -1; r = 6 % -> pendiente -2,6
+  % Óptimo libre: c1* = (y + y/(1+r))/(1+beta); c2* = beta(1+r)c1*
+  \ejes{$c_1$}{$c_2$}{7.2}{5.8}
+  % Bisectriz c1 = c2
+  \draw[guia] (0,0) -- (5.1,5.1) node[etiqueta,above right,tceegris] {$c_1=c_2$};
+  % Recta de balance con r = 6 % (más inclinada) y su óptimo C (prestamista)
+  \draw[guia,tceedorado,thick] (2.0385,5.5) -- (4.1538,0);
+  \node[etiqueta,left,tceedorado] at (2.0385,5.5) {$r=6\,\%$};
+  % Recta de balance con r = 3 %, pendiente -(1+r)
+  \draw[curva1] (0.5,5.5) -- (6,0) node[etiqueta,below] {$r=3\,\%$};
+  % Curva de indiferencia tangente en A (óptimo libre: c1* > y, prestatario)
+  \draw[curva2] plot[domain=2.457:6.4,samples=80,smooth] (\x,{32/(\x*\x)});
+  \node[etiqueta,tceeazul,above right] at (6.4,0.78) {$U_A$};
+  % Límite de crédito: c1 <= (1+alpha) y
+  \draw[curvanueva] (3.2,0) -- (3.2,5.35) node[etiqueta,above] {$c_1=(1+\alpha)y$};
+  % Curva de indiferencia más baja por la esquina B
+  \draw[curva3,desplazada] plot[domain=3.02:6.4,samples=80,smooth] (\x,{28.672/(\x*\x)});
+  \node[etiqueta,tceeverde,below right] at (6.4,0.75) {$U_B$};
+  % Dotación E sobre la bisectriz
+  \proyeccion{(3,3)}{$y$}{$y$}
+  \node[punto] (E) at (3,3) {};
+  \node[etiqueta,below left,fill=white,inner sep=1pt] at (2.95,2.95) {$E$};
+  % Óptimos
+  \node[punto,fill=tceedorado] (C) at (2.7692,3.6) {};
+  \draw[thin,tceedorado] (C) -- (2.05,4.25) node[etiqueta,above left,tceedorado,inner sep=1pt] {$C$};
+  \draw[guia] (4,2) -- (4,0) node[below] {$c_1^*$};
+  \node[punto,fill=tceeazul] (A) at (4,2) {};
+  \node[etiqueta,above right,tceeazul] at (A) {$A$};
+  \node[punto,fill=tceeverde] (B) at (3.2,2.8) {};
+  \draw[thin,tceeverde] (B) -- (2.75,1.95) node[etiqueta,below left,tceeverde,inner sep=1pt] {$B$};
+\end{tikzpicture}
+\end{document}

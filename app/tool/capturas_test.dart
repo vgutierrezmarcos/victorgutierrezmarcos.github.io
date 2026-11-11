@@ -76,7 +76,7 @@ void main() {
     final excepciones = <Object>[];
     Future<void> captura(String nombre) async {
       await tester.pumpAndSettle();
-      await expectLater(find.byType(MaterialApp), matchesGoldenFile('../promo/capturas/$nombre.png'));
+      await expectLater(find.byType(MaterialApp), matchesGoldenFile(rutaCaptura(nombre)));
       // Si una pantalla ha fallado (p. ej. un desbordamiento), que se sepa en cuál.
       final e = tester.takeException();
       if (e != null) {
@@ -100,6 +100,8 @@ void main() {
 
     await estudiar('Temas');
     await captura('temario');
+    // Desde la 1.20.4, Temas enseña una tarjeta por ejercicio; las partes, dentro.
+    await tocar(find.text('Tercer ejercicio'));
     await buscar(find.textContaining('Parte A: Economía general'));
     await tocar(find.textContaining('Parte A: Economía general'));
     await bajar(330);
@@ -206,7 +208,7 @@ void main() {
     await captura('pizarra');
     Navigator.of(tester.element(find.byType(PizarraPage))).pop();
     await tester.pumpAndSettle();
-    tester.view.physicalSize = const Size(1080, 2340);
+    tester.view.physicalSize = tamCaptura;
     await tester.pumpAndSettle();
     // Los avisos: lo que pide la app al abrirla por primera vez.
     showModalBottomSheet<void>(context: tester.element(find.byType(Scaffold).first), isScrollControlled: true, showDragHandle: true, builder: (_) => const HojaPermisos());
@@ -425,8 +427,9 @@ void main() {
     await tester.pumpAndSettle();
     // Dos temas de los primeros de la lista de la hoja (el código va solo en
     // su casilla; en la ficha, detrás, va con el título, así que no se confunden).
-    await tocar(find.textContaining(RegExp(r'^3\.A\.2$')));
-    await tocar(find.textContaining(RegExp(r'^3\.A\.3$')));
+    // Desde la 1.19.2 la hoja ofrece los temas de esa clase, no todo el temario: los dos primeros.
+    await tocar(find.textContaining(RegExp(r'^3\.[AB]\.\d+$')).at(0));
+    await tocar(find.textContaining(RegExp(r'^3\.[AB]\.\d+$')).at(1));
     await captura('tema-programar');
     // El botón queda por debajo del borde de la hoja: se sube la hoja.
     await tester.drag(find.textContaining('Cuándo le llegan'), const Offset(0, -700));

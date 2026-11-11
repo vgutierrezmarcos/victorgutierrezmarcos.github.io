@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.18",
+ "archivo": "3A18",
+ "preguntas": [
+  {
+   "id": "3A18-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué es la diferenciación de productos y en qué se distingue la horizontal de la vertical?",
+   "respuesta": "Hay diferenciación cuando los productos son sustitutivos cercanos pero no perfectos: a igual precio, al consumidor no le da igual cuál comprar (Tirole, 1988). Es horizontal si no hay acuerdo sobre cuál es mejor (sabor, color, ubicación) y vertical si todos prefieren la de más calidad y solo difieren en cuánto están dispuestos a pagar."
+  },
+  {
+   "id": "3A18-02",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿En qué se diferencian el enfoque de no direcciones y el enfoque de direcciones para modelizar la diferenciación?",
+   "respuesta": "En el de no direcciones las preferencias se definen sobre los bienes, con un consumidor representativo que tiene preferencia por la variedad (Chamberlin, Dixit-Stiglitz). En el de direcciones se definen sobre las características, y cada consumidor tiene su variedad ideal o «dirección» (Hotelling, Salop, Lancaster); la competencia pasa a ser local."
+  },
+  {
+   "id": "3A18-03",
+   "tipo": "definicion",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Chamberlin)",
+   "pregunta": "En el modelo de Chamberlin (1933), ¿qué son la demanda percibida $d$ y la demanda efectiva $D$?",
+   "respuesta": "La demanda percibida $d$ es lo que la empresa cree que venderá si las demás no mueven su precio (supuesto de miopía); es muy elástica. La demanda efectiva $D$, o de cuota de mercado ($1/n$), es lo que vende realmente cuando todas mueven el precio a la vez; es menos elástica."
+  },
+  {
+   "id": "3A18-04",
+   "tipo": "prediccion",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Chamberlin)",
+   "pregunta": "¿Cómo es el equilibrio a largo plazo de la competencia monopolística de Chamberlin y qué predice sobre la escala de producción?",
+   "respuesta": "La entrada desplaza la demanda hasta que $d$ es tangente al CMe: $p^*=\\mathrm{CMe}(q^*)>\\mathrm{CMg}(q^*)=\\mathrm{IMg}_d(q^*)$, con beneficio nulo y $d$ cortando a $D$. Como la tangencia está en el tramo decreciente del CMe, $q^*<\\bar{q}$: es el teorema del exceso de capacidad, «demasiadas empresas, cada una demasiado pequeña» (Kaldor, 1935)."
+  },
+  {
+   "id": "3A18-05",
+   "tipo": "vf",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Chamberlin)",
+   "pregunta": "El exceso de capacidad del modelo de Chamberlin demuestra que la competencia monopolística es inequívocamente peor para el bienestar que la competencia perfecta.",
+   "verdadero": false,
+   "respuesta": "Falso: hay ineficiencia asignativa ($p>\\mathrm{CMg}$) y productiva ($\\mathrm{CMe}>\\min\\mathrm{CMe}$), pero el exceso de capacidad es el precio de la variedad. Chamberlin no puede valorarlo porque no modeliza la demanda; lo hará Dixit-Stiglitz."
+  },
+  {
+   "id": "3A18-06",
+   "tipo": "formula",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Dixit-Stiglitz)",
+   "pregunta": "Escriba las preferencias del modelo de Dixit y Stiglitz (1977) y muestre en qué consiste la preferencia por la variedad.",
+   "respuesta": "$U=x_0^{1-\\alpha}y^{\\alpha}$ con el agregador CES $y=\\left[\\sum_{i=1}^n x_i^{\\rho}\\right]^{1/\\rho}$, $\\rho=\\frac{\\sigma-1}{\\sigma}$, $\\sigma>1$. Si $x_i=X/n$, $y=n^{1/(\\sigma-1)}X$: con la misma cantidad total, más variedades dan más utilidad, y tanto más cuanto menor es $\\sigma$."
+  },
+  {
+   "id": "3A18-07",
+   "tipo": "vf",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Dixit-Stiglitz)",
+   "pregunta": "En el modelo de Dixit y Stiglitz se exige $\\sigma>1$ porque con $\\sigma\\leq1$ las preferencias dejarían de ser convexas.",
+   "verdadero": false,
+   "respuesta": "Falso: la convexidad solo exige $\\sigma>0$. Se pide $\\sigma>1$ para que ninguna variedad sea imprescindible y, sobre todo, para que la demanda de cada variedad sea elástica; si no, su monopolista no tendría un precio óptimo."
+  },
+  {
+   "id": "3A18-08",
+   "tipo": "formula",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Dixit-Stiglitz)",
+   "pregunta": "¿Qué regla de precios sigue cada empresa en el modelo de Dixit y Stiglitz?",
+   "respuesta": "Con muchas variedades, $p_i$ no mueve el índice de precios y la elasticidad de su demanda es $\\sigma$, así que $\\mathcal{L}=\\frac{p^*-c}{p^*}=\\frac{1}{\\sigma}$, es decir, $p^*=\\mu c$ con $\\mu=\\frac{\\sigma}{\\sigma-1}>1$. El margen es constante, igual para todas y mayor cuanto mayor es la preferencia por la variedad (menor $\\sigma$)."
+  },
+  {
+   "id": "3A18-09",
+   "tipo": "prediccion",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Dixit-Stiglitz)",
+   "pregunta": "En el equilibrio de libre entrada de Dixit y Stiglitz, ¿qué ocurre con la producción por empresa y con el número de variedades si crece el tamaño del mercado?",
+   "respuesta": "Con $B=0$, $q^*=\\frac{(\\sigma-1)\\mathrm{CF}}{c}$ y $n^*=\\frac{\\alpha\\overline{W}}{\\sigma\\,\\mathrm{CF}}$. La producción por empresa no depende del tamaño del mercado; todo el ajuste se hace por el número de variedades, que crece con el gasto $\\alpha\\overline{W}$ y baja con el CF y con $\\sigma$."
+  },
+  {
+   "id": "3A18-10",
+   "tipo": "vf",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Dixit-Stiglitz)",
+   "pregunta": "Con preferencias CES y Cobb-Douglas, el equilibrio de Dixit y Stiglitz es un óptimo restringido, y el primer óptimo tendría la misma cantidad por variedad y más variedades.",
+   "verdadero": true,
+   "respuesta": "Verdadero: sin subvenciones, el equilibrio coincide con lo que elegiría un planificador que obliga a cada empresa a cubrir costes. El primer óptimo ($p=\\mathrm{CMg}$ y el CF financiado con suma fija) tiene la misma $q$ y más variedades: $n^{o}/n^*=1/[\\rho(1-\\alpha)+\\alpha]>1$."
+  },
+  {
+   "id": "3A18-11",
+   "tipo": "definicion",
+   "apartado": "I. La competencia monopolística: el enfoque de no direcciones (Dixit-Stiglitz)",
+   "pregunta": "¿Qué dos fuerzas hacen que el mercado ofrezca demasiadas o demasiado pocas variedades (Spence, 1976; Mankiw y Whinston, 1986)?",
+   "respuesta": "El excedente no apropiable: quien lanza una variedad no cobra todo lo que vale para los consumidores, lo que empuja a pocas variedades. El robo de clientes: parte de lo que gana el entrante se lo quita a las demás, lo que empuja a demasiadas. El resultado depende de cuál domine."
+  },
+  {
+   "id": "3A18-12",
+   "tipo": "prediccion",
+   "apartado": "II. El oligopolio con productos diferenciados (Bertrand y Cournot diferenciados)",
+   "pregunta": "Con la demanda de Singh y Vives (1984), ¿qué predice el modelo sobre los precios de Bertrand y de Cournot cuando los productos están diferenciados?",
+   "respuesta": "Si $\\gamma<\\beta$, $p^B>c$: la diferenciación resuelve la paradoja de Bertrand, y el margen crece al bajar $\\gamma$. Bertrand sigue siendo más competitivo, $p^B<p^C$ con $\\gamma>0$, y las empresas prefieren competir en cantidades. Las cantidades son sustitutivos estratégicos y los precios, complementos estratégicos."
+  },
+  {
+   "id": "3A18-13",
+   "tipo": "definicion",
+   "apartado": "II. El oligopolio con productos diferenciados (modelos con direcciones)",
+   "pregunta": "¿Qué aporta la demanda de características de Lancaster (1966) al estudio de la diferenciación?",
+   "respuesta": "Los consumidores no demandan bienes sino sus características: el bien $i$ aporta $a_{ki}$ de la característica $k$ y la utilidad depende de $z_k=\\sum_i a_{ki}x_i$. Justifica el enfoque de direcciones y la competencia local, y explica la fidelidad a la marca, los nichos de productos nuevos y la publicidad."
+  },
+  {
+   "id": "3A18-14",
+   "tipo": "formula",
+   "apartado": "II. El oligopolio con productos diferenciados (ciudad lineal de Hotelling)",
+   "pregunta": "En la ciudad lineal de Hotelling con empresas en los extremos y costes cuadráticos, ¿quién es el consumidor indiferente y cuál es el equilibrio en precios?",
+   "respuesta": "$\\tilde{x}=\\frac{1}{2}+\\frac{p_2-p_1}{2t}$, que es la demanda de la empresa 1. Con funciones de reacción crecientes $R_i(p_j)=\\frac{p_j+c+t}{2}$, el equilibrio es $p_1^*=p_2^*=c+t$, cada una con la mitad del mercado y $B_i^*=t/2$. Si $t\\to0$, $p\\to c$."
+  },
+  {
+   "id": "3A18-15",
+   "tipo": "vf",
+   "apartado": "II. El oligopolio con productos diferenciados (ciudad lineal de Hotelling)",
+   "pregunta": "En la ciudad lineal con costes de transporte cuadráticos y competencia en precios, las dos empresas se localizan en el centro (principio de diferenciación mínima).",
+   "verdadero": false,
+   "respuesta": "Falso: d'Aspremont, Gabszewicz y Thisse (1979) muestran que se van a los extremos (diferenciación máxima), porque el efecto estratégico (acercarse obliga a la rival a bajar el precio) domina al efecto demanda. La diferenciación mínima de Hotelling falla cuando se eligen precios."
+  },
+  {
+   "id": "3A18-16",
+   "tipo": "prediccion",
+   "apartado": "II. El oligopolio con productos diferenciados (ciudad lineal de Hotelling)",
+   "pregunta": "¿Dónde se localizarían las empresas de la ciudad lineal si sus precios estuvieran fijados por un regulador, y por qué?",
+   "respuesta": "En el centro, como decía Hotelling: con precios fijos desaparece el efecto estratégico y solo actúa el efecto demanda, que premia acercarse al centro para captar más clientes. Es la lógica del votante mediano (Downs, 1957)."
+  },
+  {
+   "id": "3A18-17",
+   "tipo": "vf",
+   "apartado": "II. El oligopolio con productos diferenciados (ciudad lineal de Hotelling)",
+   "pregunta": "En la ciudad lineal con costes cuadráticos, el mercado diferencia más los productos de lo que sería socialmente óptimo.",
+   "verdadero": true,
+   "respuesta": "Verdadero: el precio es una transferencia, y el óptimo minimiza el coste de transporte con las empresas en $1/4$ y $3/4$ (coste $t/48$), frente a los extremos del equilibrio (coste $t/12$). El mercado diferencia demasiado."
+  },
+  {
+   "id": "3A18-18",
+   "tipo": "formula",
+   "apartado": "II. El oligopolio con productos diferenciados (ciudad circular de Salop)",
+   "pregunta": "¿Cuál es el equilibrio de libre entrada en la ciudad circular de Salop (1979) y cómo se compara con el número óptimo de empresas?",
+   "respuesta": "$p^*=c+\\frac{t}{n}$ y $B^*=\\frac{t}{n^2}-\\mathrm{CF}$; con $B=0$, $n^*=\\sqrt{t/\\mathrm{CF}}$ y $p^*=c+\\sqrt{t\\,\\mathrm{CF}}$. El planificador minimiza $n\\,\\mathrm{CF}+t/(4n)$ y elige $n^{o}=\\frac{1}{2}\\sqrt{t/\\mathrm{CF}}=n^*/2$: hay entrada excesiva."
+  },
+  {
+   "id": "3A18-19",
+   "tipo": "prediccion",
+   "apartado": "II. El oligopolio con productos diferenciados (ciudad circular de Salop)",
+   "pregunta": "En la ciudad circular de Salop, ¿qué ocurre con el número de empresas y con el margen si sube el coste fijo? ¿Y si el coste fijo tiende a cero?",
+   "respuesta": "Si sube el CF, entran menos empresas y el margen es mayor, porque cada una está más lejos de sus rivales. Si el CF tiende a cero, el número de empresas tiende a infinito y el precio, al coste marginal. Un mayor $t$ eleva tanto el número de empresas como el margen."
+  },
+  {
+   "id": "3A18-20",
+   "tipo": "prediccion",
+   "apartado": "II. El oligopolio con productos diferenciados (diferenciación vertical)",
+   "pregunta": "En el modelo de Shaked y Sutton, ¿qué calidades eligen las dos empresas en la primera etapa y por qué?",
+   "respuesta": "La empresa alta elige la calidad máxima y la baja, la mínima: diferenciación máxima de calidades. Los márgenes y beneficios de ambas crecen con $\\Delta s$, porque alejarse suaviza la competencia en precios; con la misma calidad volverían a la paradoja de Bertrand. La de calidad alta gana más, de ahí la pugna por el liderazgo."
+  },
+  {
+   "id": "3A18-21",
+   "tipo": "definicion",
+   "apartado": "II. El oligopolio con productos diferenciados (diferenciación vertical)",
+   "pregunta": "¿Qué es la propiedad de finitud en la diferenciación vertical?",
+   "respuesta": "Si la calidad cuesta sobre todo en costes fijos (I+D) y poco en costes variables, el número de empresas con cuota positiva está acotado aunque el mercado crezca y el CF sea muy pequeño: un oligopolio natural (duopolio natural si $2\\underline{\\theta}<\\overline{\\theta}<4\\underline{\\theta}$). Sutton (1991) lo confirma con costes hundidos endógenos."
+  },
+  {
+   "id": "3A18-22",
+   "tipo": "formula",
+   "apartado": "II. El oligopolio con productos diferenciados (publicidad y proliferación de marcas)",
+   "pregunta": "Escriba la regla de Dorfman y Steiner (1954) para el gasto en publicidad y explique qué implica.",
+   "respuesta": "$\\frac{A}{p\\,q}=\\frac{\\varepsilon_{q,A}}{|\\varepsilon_{q,p}|}=\\mathcal{L}\\,\\varepsilon_{q,A}$: el gasto en publicidad sobre ventas es mayor cuanto más eficaz es la publicidad y cuanto mayor es el poder de mercado. En competencia perfecta ($\\mathcal{L}=0$) no hay publicidad."
+  },
+  {
+   "id": "3A18-23",
+   "tipo": "vf",
+   "apartado": "II. El oligopolio con productos diferenciados (publicidad y proliferación de marcas)",
+   "pregunta": "La proliferación de marcas solo disuade la entrada si es creíble, es decir, si a la empresa instalada le cuesta retirar marcas.",
+   "verdadero": true,
+   "respuesta": "Verdadero: la instalada ocupa los nichos rentables y no deja hueco para cubrir el coste fijo, pero Judd (1985) muestra que si retirar marcas cuesta poco, ante la entrada le conviene retirarlas y la amenaza no disuade. Ejemplo: los cereales de desayuno en EE. UU. (Schmalensee, 1978)."
+  },
+  {
+   "id": "3A18-24",
+   "tipo": "definicion",
+   "apartado": "Conclusión",
+   "pregunta": "Según la opinión que cierra el tema, ¿de qué depende sobre todo el resultado de bienestar y qué debe perseguir la política de la competencia?",
+   "respuesta": "Depende menos de cómo se modelice la demanda que de lo local que sea la competencia: si cada producto compite con todos, la variedad compensa buena parte de la ineficiencia; si compite con unos pocos vecinos, el resultado se aleja más del óptimo. La política no debe castigar la diferenciación en sí, sino las estrategias que la usan para cerrar el paso a otros."
+  }
+ ]
+}

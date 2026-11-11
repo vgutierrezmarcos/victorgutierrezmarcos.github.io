@@ -1,0 +1,33 @@
+% Pregunta 522 (2016-enero-OEP2015, n.º 9): coste medio con una empresa (40/q+10q) y con dos que se reparten la producción (80/q+5q); hay subaditividad hasta q=raíz de 8, más allá del mínimo del coste medio en q=2. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+% Escala: x = q (1,6 cm por unidad); y = (CMe - 35)/6 cm (el eje vertical empieza en 35)
+\begin{tikzpicture}[tcee,x=1.6cm,y=1cm]
+  % Franja con subaditividad pero sin economías de escala (2 < q < raíz de 8)
+  \fill[area] plot[domain=2:2.8284,samples=30] (\x,{(40/\x+10*\x-35)/6})
+    -- plot[domain=2.8284:2,samples=30] (\x,{(80/\x+5*\x-35)/6}) -- cycle;
+  % Ejes (el vertical, cortado: empieza en 35)
+  \draw[eje] (0,0) -- (4.3,0) node[below left=2pt and 0pt] {$q$};
+  \draw[eje] (0,0) -- (0,5.2) node[left] {$CMe$};
+  \draw[thick,white] (-0.04,0.25) -- (0.04,0.35);
+  \draw[thin] (-0.05,0.18) -- (0.05,0.28) (-0.05,0.32) -- (0.05,0.42);
+  % Coste medio con dos empresas (q/2 cada una)
+  \draw[curva2,domain=1.42:4,samples=80] plot (\x,{(80/\x+5*\x-35)/6});
+  \node[etiqueta,tceeazul,anchor=west] at (1.5,4.75) {$CMe_2=\frac{80}{q}+5q$ (dos empresas)};
+  % Coste medio con una empresa
+  \draw[curva1,domain=0.9:4,samples=80] plot (\x,{(40/\x+10*\x-35)/6});
+  \node[etiqueta,tceemorado,anchor=west,align=left] at (4.02,2.5) {$CMe_1=\frac{40}{q}+10q$\\(una empresa)};
+  % Mínimo del coste medio, corte de las curvas y q = 3
+  \proyeccion{(2,{(40-35)/6})}{$2$}{$40$}
+  \proyeccion{(2.8284,{(42.426-35)/6})}{}{$42{,}4$}
+  \node[below left=0pt and -6pt] at (2.8284,0) {$\sqrt{8}$};
+  \draw[guia] (3,0) node[below right=0pt and -4pt] {$3$} -- (3,{(43.33-35)/6});
+  \node[punto] at (2,{(40-35)/6}) {};
+  \node[punto] at (2.8284,{(42.426-35)/6}) {};
+  % Rótulos de las zonas
+  \node[etiqueta,font=\footnotesize,align=center] at (1.05,0.5) {economías\\de escala};
+  \node[etiqueta,font=\footnotesize,align=center,tceemorado] at (2.42,-1.05) {subaditividad\\sin economías};
+  \draw[thin,tceemorado] (2.42,-0.7) -- (2.42,1.05);
+\end{tikzpicture}
+\end{document}

@@ -22,8 +22,11 @@ import '../cantar/pizarra_page.dart';
 import '../cantar/relojes_alumnos.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../plan/informes_cante.dart';
 import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
+import '../temario/esquema_tema.dart';
+import 'deberes.dart';
 import 'alumno_page.dart';
 import 'calendario_google_tarjeta.dart';
 import 'coordinacion.dart';
@@ -35,9 +38,25 @@ import '../mas/ayuda_videos.dart';
 /// ([temasDeLaClase]: los que eligió para ella o la semana de su [cronograma]
 /// compartido), la misma lista que ve él. Sin ninguno, vacía (pendiente).
 /// Sin la app (ficha que lleva el preparador), los que él apunta en la ficha.
-List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma, ProgresoAlumno? progreso}) => alumno.enlazado
-    ? temasDeCante(sesion, temario, Ajustes(temasClases: progreso?.temasClases ?? const {}, noCantar: progreso?.noCantar ?? const {}), cronograma: cronograma, clase: true)
-    : temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), clase: false);
+List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario, {Cronograma? cronograma, ProgresoAlumno? progreso}) {
+  if (!alumno.enlazado) return temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()), clase: false);
+  final deLaClase = temasDeCante(sesion, temario, Ajustes(temasClases: progreso?.temasClases ?? const {}, noCantar: progreso?.noCantar ?? const {}), cronograma: cronograma, clase: true);
+  if (deLaClase.isNotEmpty || sesion.bolsa != TipoBolsa.estudiados) return deLaClase;
+  // Pendiente de que el alumno indique sus temas: mientras tanto, para
+  // mandarle o sortear un tema, todos los que lleva (estudiados más los de su
+  // cronograma hasta hoy, sin los que pide no cantar) y, si no hay ninguno,
+  // todos los del ejercicio.
+  return temasDeRespaldo(sesion, alumno, temario, progreso: progreso);
+}
+
+/// La bolsa de respaldo de una clase pendiente de temas (ver [temasDeSesion]).
+List<Tema> temasDeRespaldo(Cante sesion, Alumno alumno, Temario temario, {ProgresoAlumno? progreso}) {
+  final noCantar = progreso?.noCantar ?? const <String, DateTime>{};
+  final lleva = {...alumno.temas, ...?progreso?.estudiados, ...?progreso?.delCronograma}..removeAll(noCantar.keys);
+  final todos = temasDeCante(sesion.copyWith(bolsa: TipoBolsa.ejercicio), temario, const Ajustes(), clase: false);
+  final suyos = todos.where((t) => lleva.contains(t.codigo)).toList();
+  return suyos.isNotEmpty ? suyos : todos;
+}
 
 /// Envía el informe de un cante al alumno por la app que elija el preparador.
 Future<void> enviarInforme(BuildContext context, Cante sesion, Alumno? alumno, Temario? temario) => compartirTexto(
@@ -129,8 +148,48 @@ class SesionPage extends ConsumerWidget {
         opciones: temas,
         titulo: '¿Cómo ha ido el cante${alumno == null ? '' : ' de ${alumno.nombre}'}?',
         textoGuardar: 'Guardar valoración',
+        esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]),
+        criterios: ref.read(perfilPreparadorProvider).rubrica,
       );
-      if (res != null) await notifier.guardar(s.copyWith(estado: EstadoCante.hecho, resultado: res));
+      if (res == null) return;
+      await notifier.guardar(s.copyWith(estado: EstadoCante.hecho, resultado: res));
+      // ¿Deberes para la siguiente clase con este alumno? Si ya está programada
+      // van en ella; si no, en esta misma, como «para la próxima clase».
+      final siguiente = ref.read(sesionesProvider).where((x) => x.alumno == s.alumno && x.id != s.id && x.pendiente && !x.borrado && x.fecha.isAfter(s.fecha)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
+      if (!context.mounted) return;
+      final destino = siguiente.firstOrNull ?? ref.read(sesionesProvider).where((x) => x.id == s.id).firstOrNull ?? s;
+      final dejar = await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('¿Deberes para la siguiente clase?'),
+          content: Text(siguiente.isEmpty
+              ? 'Aún no hay otra clase programada${alumno == null ? '' : ' con ${alumno.nombre}'}: los deberes quedan en esta, «para la próxima clase». Los verá en su app y se tachan solos al hacerlos.'
+              : 'La del ${fechaCorta(siguiente.first.fecha)}${alumno == null ? '' : ' con ${alumno.nombre}'}. Los verá en su app y se tachan solos al hacerlos.'),
+          actions: [TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Ahora no')), FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar deberes'))],
+        ),
+      );
+      if (dejar != true || !context.mounted) return;
+      final tareas = await editarDeberes(context, clase: destino, bolsa: temas, temario: temario);
+      if (tareas != null) await notifier.guardar(destino.copyWith(tareas: tareas));
+    }
+
+    Future<void> deberes() async {
+      final tareas = await editarDeberes(context, clase: s, bolsa: temas, temario: temario);
+      if (tareas != null) await notifier.guardar(s.copyWith(tareas: tareas));
+    }
+
+    // Lista de control mientras escucha: los temas que se están cantando (los
+    // ya anotados, los mandados o, si no, los dos primeros de la clase).
+    final temasEnCurso = (r?.temasCantados.isNotEmpty ?? false) ? r!.temasCantados : (s.temasMandados.isNotEmpty ? s.temasMandados : [for (final t in temas.take(s.numTemas.clamp(1, 2))) t.codigo]);
+    final esquemasEnCurso = esquemasDe(ref, temasEnCurso.map((t) => temario?.tema(t)));
+    Future<void> apartados() async {
+      final res = await marcarApartados(
+        context,
+        inicial: r ?? ResultadoCante(temaCantado: temasEnCurso.firstOrNull, otrosCantados: temasEnCurso.skip(1).toList()),
+        temas: temasEnCurso,
+        esquemas: esquemasEnCurso,
+      );
+      if (res != null) await notifier.guardar(s.copyWith(resultado: res));
     }
 
     Future<void> borrar() async {
@@ -370,6 +429,16 @@ class SesionPage extends ConsumerWidget {
               const SizedBox(width: 10),
               OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
             ]),
+            // Los apartados del esquema que va tocando, para marcarlos mientras escucha.
+            if (esquemasEnCurso.isNotEmpty)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  onPressed: apartados,
+                  icon: const Icon(Icons.checklist, size: 18),
+                  label: Text(r?.textoCoberturaTotal == null ? 'Apartados que va tocando' : 'Apartados: ${r!.textoCoberturaTotal}'),
+                ),
+              ),
             // El cronómetro compartido de la clase, el mismo que ve el alumno.
             if (alumno?.uid != null && usuario != null)
               RelojDeClaseTarjeta(
@@ -383,10 +452,21 @@ class SesionPage extends ConsumerWidget {
             else
               TarjetaRelojAlumno(claseId: s.id, onAbrir: () => cantar()),
           ],
+          // Deberes para esta clase (los pone el preparador; el alumno los tacha).
+          if (s.pendiente || s.tareas.isNotEmpty) ...[
+            TituloSeccion(
+              s.tareas.isEmpty ? 'Deberes para esta clase' : (s.pendiente ? 'Deberes: ${resumenDeberes(s)}' : 'Deberes para la próxima clase: ${resumenDeberes(s)}'),
+              accion: s.pendiente || s.tareas.isNotEmpty ? TextButton.icon(onPressed: deberes, icon: Icon(s.tareas.isEmpty ? Icons.add : Icons.edit_outlined, size: 18), label: Text(s.tareas.isEmpty ? 'Dejar' : 'Cambiar')) : null,
+            ),
+            if (s.tareas.isEmpty)
+              Text('Estudiar un tema, su esquema a ciegas, cantarlo por su cuenta, un test o lo que quieras. ${conUid ? 'Los ve en Hoy y en la clase, y se tachan solos al hacerlos.' : 'Sin la app, van en el mensaje de los temas y en el informe.'}', style: context.textos.labelSmall)
+            else
+              Tarjeta(child: ListaDeberes(clase: s)),
+          ],
           // Lo principal de la clase: mandarle los temas antes.
           if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[
             const TituloSeccion('Temas antes de la clase'),
-            if (s.sustitucion != null && !conUid) _RecuperarClaseSuelta(id: s.id) else SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
+            if (s.sustitucion != null && !conUid) _RecuperarClaseSuelta(id: s.id) else SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid, telefono: alumno?.telefono ?? ''),
             if (temas.isEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
             if (mandadosQueNoQuiere.isNotEmpty)
               Padding(
@@ -467,6 +547,8 @@ class SesionPage extends ConsumerWidget {
             OutlinedButton.icon(onPressed: () => enviarInforme(context, s, alumno, temario), icon: const Icon(Icons.ios_share, size: 18), label: const Text('Enviar informe al alumno')),
             if (conUid) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Además, la valoración ya está en su diario de cantes.', textAlign: TextAlign.center, style: context.textos.labelSmall)),
           ],
+          // Los informes que el alumno ha guardado con su IA (EconomIA), solo lectura.
+          if (conUid && usuario != null) SeccionInformesCante(uid: alumno!.uid!, canteId: s.id),
           // Alumno con la app y bolsa «los que lleva»: los temas de ESTA clase,
           // los mismos que ve él; el preparador solo propone cambios.
           if (!dictamen && s.bolsa == TipoBolsa.estudiados && alumno != null && alumno.enlazado)
@@ -487,6 +569,7 @@ class SesionPage extends ConsumerWidget {
                 propuestaPendiente: propuestaPendiente(s, progreso?.temasClases ?? const {}),
                 onProponer: proponer,
                 onRetirarPropuesta: () => notifier.guardar(s.copyWith(sinPropuesta: true)),
+                respaldo: resueltos.pendiente ? temas.length : null,
               );
             })
           else ...[

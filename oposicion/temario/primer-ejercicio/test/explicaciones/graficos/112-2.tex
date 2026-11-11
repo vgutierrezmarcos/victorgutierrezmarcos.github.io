@@ -1,0 +1,36 @@
+% Pregunta 112 (2023-junio-A, n.º 15): IS-LM-BP con tipo de cambio fijo y BP más inclinada que la LM
+% (poca movilidad del capital). Rectas a escala:
+%   LM: i = 0,5 + 0,6 Y   BP: i = 1,6 Y - 2   IS: i = 4 - 0,8 Y   IS': i = 5,6 - 0,8 Y
+%   E0 = (2,5; 2)   A = IS'∩LM = (3,64; 2,69), por debajo de la BP (3,83): déficit
+%   E1 = IS'∩BP = (3,17; 3,07)   LM': i = 1,167 + 0,6 Y (la oferta monetaria cae)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.4)
+    {BP más inclinada que LM (movilidad baja)};
+  % Curvas iniciales
+  \draw[curva3] (1.4,0.24) -- (4.15,4.64) node[etiqueta,above,text=tceeverde] {$BP$};
+  \draw[curva1] (0.2,0.62) -- (5.6,3.86) node[etiqueta,right,text=tceemorado] {$LM$};
+  \draw[curva2] (0.5,3.6) -- (4.6,0.32) node[etiqueta,right,text=tceeazul] {$IS$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (2.5,3.6) -- (6.0,0.8) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[curvanueva,desplazada] (0.2,1.287) -- (5.4,4.407) node[etiqueta,above,text=tceerojo] {$LM'$};
+  \draw[flecha] (4.85,3.44) -- (3.9,3.44);
+  % Proyecciones
+  \draw[guia] (2.5,2) -- (2.5,0) node[below] {$Y_0$};
+  \draw[guia] (3.167,3.067) -- (3.167,0) node[below] {$Y_1$};
+  \draw[guia] (3.643,2.686) -- (3.643,0) node[below] {$Y_A$};
+  % Puntos
+  \node[punto] at (2.5,2) {};
+  \node[etiqueta,below right] at (2.5,2) {$E_0$};
+  \node[punto] at (3.643,2.686) {};
+  \node[etiqueta,below right] at (3.643,2.686) {$A$};
+  \node[punto] at (3.167,3.067) {};
+  \node[etiqueta,above=3pt] at (3.167,3.067) {$E_1$};
+  \node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=north west] at (0.15,4.75)
+    {$A$ bajo la $BP$: déficit,\\salen reservas, $M\downarrow$};
+\end{tikzpicture}
+\end{document}

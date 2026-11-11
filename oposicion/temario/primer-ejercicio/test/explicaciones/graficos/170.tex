@@ -1,0 +1,38 @@
+% Pregunta 170 (2022-julio, n.º 25): Ramsey-Cass-Koopmans, caída permanente de rho. El consumo salta abajo hasta la nueva senda de silla y luego k y c crecen hasta E'. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \ejes{$k$}{$c$}{6.9}{5.3}
+  % Locus kdot = 0: joroba
+  \draw[curva1,domain=0:6.2,samples=301,smooth] plot (\x,{1.3*sqrt(\x*(6.2-\x))});
+  \node[etiqueta,text=tceemorado,anchor=west] at (6.2,0.9) {$\dot k=0$};
+  % Locus cdot = 0 inicial y nuevo
+  \draw[curva2] (1.3,0) -- (1.3,4.95) node[etiqueta,above] {$\dot c=0$};
+  \draw[curvanueva,desplazada] (2.6,0) -- (2.6,4.95) node[etiqueta,above,text=tceerojo] {$\dot c=0\,'$};
+  \draw[flecha] (1.4,0.6) -- (2.5,0.6);
+  \node[etiqueta,font=\footnotesize,text=tceerojo] at (1.95,0.85) {$\rho\downarrow$};
+  % Sendas de silla
+  \draw[curva3,smooth] plot coordinates {(0.06,0.5) (0.5,1.85) (1.3,3.28) (2.0,4.15)};
+  \node[etiqueta,text=tceeverde,font=\footnotesize,anchor=south] at (2.0,4.15) {silla};
+  \draw[curvanueva,smooth] plot coordinates {(0.06,0.3) (0.5,1.45) (1.3,2.75) (2.6,3.98) (3.7,4.75)};
+  \node[etiqueta,text=tceerojo,font=\footnotesize,anchor=west] at (3.7,4.75) {silla$'$};
+  % Puntos
+  \node[punto] (E) at (1.3,3.28) {};
+  \node[etiqueta,anchor=east] at (1.25,3.42) {$E$};
+  \node[punto] (Ep) at (2.6,3.98) {};
+  \node[etiqueta,anchor=north west] at (2.62,3.95) {$E'$};
+  \node[punto,fill=tceerojo] (A) at (1.3,2.75) {};
+  \node[etiqueta,anchor=north west,text=tceerojo] at (1.33,2.72) {$A$};
+  % Salto y transición
+  \draw[flecha,line width=1.4pt] (1.3,3.2) -- (1.3,2.83);
+  \draw[flecha,line width=1.4pt] (1.55,3.02) -- (1.95,3.4);
+  \draw[flecha,line width=1.4pt] (2.1,3.55) -- (2.45,3.85);
+  % Ejes
+  \node[below] at (1.3,0) {$k^*$};
+  \node[below,text=tceerojo] at (2.6,0) {$k^{*\prime}$};
+  \draw[guia] (2.6,3.98) -- (0,3.98) node[left] {$c^{*\prime}$};
+  \draw[guia] (1.3,3.28) -- (0,3.28) node[left] {$c^{*}$};
+  \draw[guia] (1.3,2.75) -- (0,2.75) node[left,text=tceerojo] {$c_0$};
+\end{tikzpicture}
+\end{document}

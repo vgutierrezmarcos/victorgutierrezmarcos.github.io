@@ -1,0 +1,34 @@
+% Pregunta 435 (2013-noviembre-OEP2013, n.º 11): ciudad lineal de Hotelling con coste 2x^2.
+% Coste de comprar en A: 1 + 2x^2 (de 1 a 3); en B: 3 + 2(1-x)^2 (de 5 a 3): solo se tocan en x = 1.
+% Con p_B = 2, B: 2 + 2(1-x)^2 (de 4 a 2) corta a A en x = 3/4 (coste 2,125), la clave oficial. A escala.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=6cm,y=0.9cm]
+  \draw[eje] (0,0) -- (1.12,0) node[right] {$x$};
+  \draw[eje] (0,0) -- (0,5.9) node[above] {coste total};
+  \node[below left] at (0,0) {$0$};
+  \node[below=3pt] at (0,-0.6) {\footnotesize A};
+  \foreach \t/\e in {0.25/\tfrac14,0.5/\tfrac12,0.75/\tfrac34,1/1} \draw (\t,0) -- (\t,-0.1) node[below] {$\e$};
+  \node[below=3pt] at (1,-0.6) {\footnotesize B};
+  \foreach \t in {1,...,5} \draw (0,\t) -- (-0.013,\t) node[left] {$\t$};
+  % Guías
+  \draw[guia] (1,0) -- (1,5.2);
+  \draw[guia] (0.75,0) -- (0.75,2.125);
+  % Comprar en A: 1 + 2x^2
+  \draw[curva1,domain=0:1,samples=60] plot (\x,{1+2*\x*\x});
+  \node[etiqueta,text=tceemorado,left] at (0.42,1.62) {A: $1+2x^2$};
+  % Comprar en B con el enunciado: 3 + 2(1-x)^2
+  \draw[curva2,domain=0:1,samples=60] plot (\x,{3+2*(1-\x)*(1-\x)});
+  \node[etiqueta,text=tceeazul,above right] at (0.12,4.6) {B: $3+2(1-x)^2$};
+  % Comprar en B si p_B = 2: 2 + 2(1-x)^2
+  \draw[curvanueva,desplazada,domain=0:1,samples=60] plot (\x,{2+2*(1-\x)*(1-\x)});
+  \node[etiqueta,text=tceerojo,below left] at (0.3,3.0) {B si $p_B=2$};
+  % Puntos de corte
+  \node[punto] at (1,3) {};
+  \node[etiqueta,right,align=left,font=\footnotesize] at (1.01,3.25) {$x=1$: indiferente\\en el extremo,\\todos compran en A};
+  \node[punto,fill=tceerojo] at (0.75,2.125) {};
+  \node[etiqueta,text=tceerojo,below right,align=left,font=\footnotesize] at (0.77,1.75) {$x=\tfrac34$: clave oficial,\\solo con $p_B=2$ o $t=4$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,39 @@
+% Pregunta 662 (2008-julio-OEP2008, n.º 14): por qué la caída de precios (más M/P) no lleva al pleno empleo con trampa de la liquidez (izquierda) o con inversión inelástica al tipo de interés (derecha). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % ---------- Panel 1: trampa de la liquidez ----------
+  % IS: de (0.4,4.4) a (2.8,0.4) -> corta i = 1,2 en Y0 = 2,32
+  \begin{scope}
+  \node[font=\small\bfseries] at (3,5.4) {Trampa de la liquidez};
+  \ejes{$Y$}{$i$}{6}{5}
+  \draw[guia] (4.4,0) node[below] {$Y_{pe}$} -- (4.4,4.8);
+  \draw[curva2] (0.4,4.4) -- (2.8,0.4) node[etiqueta,right] {$IS$};
+  \draw[curva1] (0.3,1.2) -- (2.9,1.2) .. controls (3.6,1.2) and (4.0,2.0) .. (4.6,4.4) node[etiqueta,above] {$LM$};
+  \draw[curvanueva,desplazada] (0.3,1.2) -- (4.5,1.2) .. controls (5.0,1.2) and (5.3,1.9) .. (5.7,3.6) node[etiqueta,above] {$LM'$};
+  \draw[flecha] (4.4,3.3) -- (5.25,3.3);
+  \draw[guia] (2.32,0) node[below] {$Y_0$} -- (2.32,1.2);
+  \node[punto] at (2.32,1.2) {};
+  \node[font=\footnotesize,align=center] at (3,-1.0) {$\uparrow M/P$ lleva $LM$ a $LM'$, pero el corte\\no se mueve: $Y_0<Y_{pe}$};
+  \end{scope}
+
+  % ---------- Panel 2: inversión inelástica (IS vertical) ----------
+  % LM: i = 0,4 + 0,8Y ; LM': i = 0,4 + 0,8(Y - 1,5) ; IS en Y0 = 2,3
+  \begin{scope}[xshift=8.2cm]
+  \node[font=\small\bfseries] at (3,5.4) {Inversión inelástica};
+  \ejes{$Y$}{$i$}{6}{5}
+  \draw[guia] (4.4,0) node[below] {$Y_{pe}$} -- (4.4,4.8);
+  \draw[curva2] (2.3,0.2) -- (2.3,4.6) node[etiqueta,above] {$IS$};
+  \draw[curva1] (0.3,0.64) -- (5.0,4.4) node[etiqueta,right] {$LM$};
+  \draw[curvanueva,desplazada] (1.3,0.24) -- (5.6,3.68) node[etiqueta,right] {$LM'$};
+  \draw[flecha] (4.0,3.6) -- (5.0,3.6);
+  \draw[guia] (2.3,2.24) -- (0,2.24) node[left] {$i_0$};
+  \draw[guia] (2.3,1.04) -- (0,1.04) node[left] {$i_1$};
+  \node[below,tceegris] at (2.3,0) {$Y_0$};
+  \node[punto] at (2.3,2.24) {};
+  \node[punto,tceerojo] at (2.3,1.04) {};
+  \node[font=\footnotesize,align=center] at (3,-1.0) {$\uparrow M/P$ lleva $LM$ a $LM'$: baja $i$,\\pero $Y$ no cambia: $Y_0<Y_{pe}$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

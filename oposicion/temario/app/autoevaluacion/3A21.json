@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.21",
+ "archivo": "3A21",
+ "preguntas": [
+  {
+   "id": "3A21-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué distingue el análisis de equilibrio general del de equilibrio parcial?",
+   "respuesta": "El equilibrio parcial (Marshall) estudia un mercado aislado; el general trata todos los mercados como interdependientes y determina a la vez todos los precios y cantidades, a partir de individuos que optimizan (individualismo metodológico)."
+  },
+  {
+   "id": "3A21-02",
+   "tipo": "formula",
+   "apartado": "I. Construcción del modelo (I.2)",
+   "pregunta": "¿Cómo se define la función de exceso de demanda agregada?",
+   "respuesta": "$\\mathbf{z}(\\mathbf{p})=\\sum_i \\mathbf{x}_i(\\mathbf{p},\\overline{W}_i(\\mathbf{p}))-\\sum_i \\boldsymbol{\\omega}_i-\\sum_j \\mathbf{y}_j(\\mathbf{p})$: demanda menos oferta (dotaciones más producción). Su ventaja es resumir todo el modelo en función de los precios."
+  },
+  {
+   "id": "3A21-03",
+   "tipo": "formula",
+   "apartado": "I. Construcción del modelo (I.2)",
+   "pregunta": "¿Qué establece la ley de Walras y qué implica para el número de precios que se determinan?",
+   "respuesta": "$\\mathbf{p}\\cdot\\mathbf{z}(\\mathbf{p})=\\sum_{k=1}^{n}p_k z_k(\\mathbf{p})=0$ a cualquier precio. Si $n-1$ mercados se vacían y $p_n>0$, el último también; con la homogeneidad de grado 0, solo se determinan $n-1$ precios relativos (numerario o símplice)."
+  },
+  {
+   "id": "3A21-04",
+   "tipo": "vf",
+   "apartado": "I. Construcción del modelo (I.2)",
+   "pregunta": "La ley de Walras es una condición de equilibrio: el valor de los excesos de demanda solo suma cero a los precios de equilibrio.",
+   "verdadero": false,
+   "respuesta": "Falso: es una identidad que se cumple a cualquier vector de precios; sale de sumar las restricciones presupuestarias saturadas (no saciedad local) de todos los agentes."
+  },
+  {
+   "id": "3A21-05",
+   "tipo": "formula",
+   "apartado": "I. Construcción del modelo (I.3)",
+   "pregunta": "¿Qué condiciones cumple el vector de precios de un equilibrio general competitivo en cada mercado $k$?",
+   "respuesta": "$z_k(\\mathbf{p}^*)\\leq 0$ y $p^*_k z_k(\\mathbf{p}^*)=0$. Bien económico: $p^*_k>0$ y $z_k=0$; bien libre (Schlesinger, Wald): $p^*_k=0$ y $z_k\\leq 0$, como el aire."
+  },
+  {
+   "id": "3A21-06",
+   "tipo": "definicion",
+   "apartado": "I. Construcción del modelo (I.3)",
+   "pregunta": "¿Qué es el subastador walrasiano y cómo forma los precios?",
+   "respuesta": "Figura que anuncia precios, recoge los planes de los agentes y, sin permitir transacciones fuera del equilibrio, sube el precio donde hay exceso de demanda y lo baja donde sobra (tanteo). Walras no lo nombra: es la pieza más irreal del modelo."
+  },
+  {
+   "id": "3A21-07",
+   "tipo": "vf",
+   "apartado": "II. Análisis positivo y normativo (II.1.1)",
+   "pregunta": "Para probar la existencia del equilibrio basta comprobar que el número de ecuaciones independientes coincide con el de incógnitas, como hizo Walras.",
+   "verdadero": false,
+   "respuesta": "Falso: contar ecuaciones e incógnitas no es necesario ni suficiente, porque el sistema no es lineal (puede no tener solución o tener varias) y podrían salir precios negativos. La prueba rigurosa usa teoremas de punto fijo (Arrow-Debreu y McKenzie, 1954)."
+  },
+  {
+   "id": "3A21-08",
+   "tipo": "definicion",
+   "apartado": "II. Análisis positivo y normativo (II.1.1)",
+   "pregunta": "¿Qué dice el teorema de Brouwer y cómo se usa para probar la existencia del equilibrio?",
+   "respuesta": "Toda función continua de un conjunto no vacío, compacto y convexo en sí mismo tiene un punto fijo. Se aplica al símplice de precios con una regla de tanteo continua: el punto fijo es un vector en el que ningún precio tiene motivo para moverse, es decir, un equilibrio."
+  },
+  {
+   "id": "3A21-09",
+   "tipo": "definicion",
+   "apartado": "II. Análisis positivo y normativo (II.1.2)",
+   "pregunta": "¿Qué significa que los bienes sean sustitutivos brutos?",
+   "respuesta": "Que $\\partial z_k/\\partial p_l>0$ para todo $l\\neq k$: subir el precio de un bien aumenta el exceso de demanda de todos los demás. «Brutos» porque incluye los efectos renta y renta-dotación. Es condición suficiente de unicidad."
+  },
+  {
+   "id": "3A21-10",
+   "tipo": "prediccion",
+   "apartado": "II. Análisis positivo y normativo (II.1.2)",
+   "pregunta": "¿Cuántos equilibrios cabe esperar en una economía regular?",
+   "respuesta": "Un número finito e impar de equilibrios localmente únicos (Debreu, 1970), salvo en un conjunto de economías de medida nula; lo impar sale del teorema del índice (Dierker, 1972)."
+  },
+  {
+   "id": "3A21-11",
+   "tipo": "definicion",
+   "apartado": "II. Análisis positivo y normativo (II.1.2)",
+   "pregunta": "¿Qué dice el teorema de Sonnenschein-Mantel-Debreu y qué consecuencia tiene?",
+   "respuesta": "Toda función continua, homogénea de grado 0 y que cumpla la ley de Walras es el exceso de demanda de alguna economía. La racionalidad individual no impone más estructura al agregado: puede haber cualquier número impar de equilibrios y cualquier dinámica."
+  },
+  {
+   "id": "3A21-12",
+   "tipo": "formula",
+   "apartado": "II. Análisis positivo y normativo (II.1.3)",
+   "pregunta": "¿Cómo se formaliza el tanteo en tiempo continuo y qué condición garantiza su convergencia?",
+   "respuesta": "$\\dot p_k=\\kappa_k z_k(\\mathbf{p})$ con $\\kappa_k>0$. La distancia ponderada al equilibrio es una función de Liapunov que baja si $\\mathbf{p}^*\\cdot\\mathbf{z}(\\mathbf{p})>0$ para todo $\\mathbf{p}$ no proporcional a $\\mathbf{p}^*$, la misma condición que da la unicidad."
+  },
+  {
+   "id": "3A21-13",
+   "tipo": "vf",
+   "apartado": "II. Análisis positivo y normativo (II.1.3)",
+   "pregunta": "Si todos los bienes son sustitutivos brutos, el equilibrio walrasiano es único y globalmente estable bajo el tanteo.",
+   "verdadero": true,
+   "respuesta": "Verdadero: Arrow, Block y Hurwicz (1959) lo demuestran; la sustitución bruta implica $\\mathbf{p}^*\\cdot\\mathbf{z}(\\mathbf{p})>0$ fuera del equilibrio, lo que descarta otro equilibrio y hace bajar la distancia a él."
+  },
+  {
+   "id": "3A21-14",
+   "tipo": "prediccion",
+   "apartado": "II. Análisis positivo y normativo (II.1.3)",
+   "pregunta": "¿Qué ocurre en el contraejemplo de Scarf (1960) con 3 consumidores y 3 bienes complementarios?",
+   "respuesta": "El equilibrio es único, pero el tanteo no lo alcanza: los precios giran a su alrededor sin converger. Muestra que la unicidad no garantiza la estabilidad."
+  },
+  {
+   "id": "3A21-15",
+   "tipo": "vf",
+   "apartado": "II. Análisis positivo y normativo (II.2)",
+   "pregunta": "El primer teorema fundamental de la economía del bienestar exige preferencias y tecnologías convexas.",
+   "verdadero": false,
+   "respuesta": "Falso: basta la no saciedad local (con mercados completos, precio-aceptantes, precios comunes e información perfecta). La convexidad se necesita para la existencia y para el segundo teorema."
+  },
+  {
+   "id": "3A21-16",
+   "tipo": "prediccion",
+   "apartado": "II. Análisis positivo y normativo (II.2)",
+   "pregunta": "Según el segundo teorema del bienestar, ¿qué tendría que hacer el Estado para alcanzar un óptimo de Pareto concreto $E^\\prime$ distinto del equilibrio?",
+   "respuesta": "Con preferencias y tecnologías convexas, redistribuir las dotaciones con transferencias de suma fija, de $\\boldsymbol{\\omega}$ a un $\\boldsymbol{\\omega}^\\prime$ sobre la recta tangente en $E^\\prime$, y dejar actuar al mercado. Separa eficiencia y equidad, pero esas transferencias no son factibles con información privada."
+  },
+  {
+   "id": "3A21-17",
+   "tipo": "prediccion",
+   "apartado": "III. Otros desarrollos y aplicaciones (III.1)",
+   "pregunta": "¿Qué resultado da el intercambio de Edgeworth entre 2 agentes que negocian libremente, sin precios dados?",
+   "respuesta": "Un resultado indeterminado: cualquier punto del tramo $CC^\\prime$ de la curva de contrato dentro de la lente (racional individualmente y eficiente), según el poder de negociación; el equilibrio competitivo $E$ es solo uno de ellos."
+  },
+  {
+   "id": "3A21-18",
+   "tipo": "vf",
+   "apartado": "III. Otros desarrollos y aplicaciones (III.2)",
+   "pregunta": "Toda asignación de equilibrio walrasiano pertenece al núcleo de la economía.",
+   "verdadero": true,
+   "respuesta": "Verdadero: con no saciedad local, si una coalición pudiera mejorar con sus propias dotaciones, alguno de sus miembros habría podido comprar algo mejor a los precios de equilibrio."
+  },
+  {
+   "id": "3A21-19",
+   "tipo": "prediccion",
+   "apartado": "III. Otros desarrollos y aplicaciones (III.2)",
+   "pregunta": "¿Qué ocurre con el núcleo cuando se replica la economía muchas veces?",
+   "respuesta": "Se encoge hasta el conjunto de equilibrios walrasianos (Debreu-Scarf, 1963, con preferencias estrictamente convexas; Aumann, 1964, con un continuo de agentes): se confirma la conjetura de Edgeworth y la precio-aceptación aparece como resultado."
+  },
+  {
+   "id": "3A21-20",
+   "tipo": "prediccion",
+   "apartado": "III. Otros desarrollos y aplicaciones (III.3)",
+   "pregunta": "En el modelo de Patinkin, ¿qué ocurre si se duplican a la vez la cantidad de dinero y todos los precios?",
+   "respuesta": "Nada real cambia: la demanda es homogénea de grado 0 en precios y dinero gracias al efecto saldos reales, así que el nivel de precios queda determinado y hay neutralidad sin dicotomía clásica."
+  },
+  {
+   "id": "3A21-21",
+   "tipo": "vf",
+   "apartado": "III. Otros desarrollos y aplicaciones (III.4)",
+   "pregunta": "Con títulos de Arrow, bastan $n+S$ mercados para lograr la asignación eficiente que requeriría $n\\cdot S$ mercados de bienes contingentes.",
+   "verdadero": true,
+   "respuesta": "Verdadero: cada título paga una unidad monetaria si ocurre el estado $s$; con mercados al contado en cada estado se replica la asignación de Arrow-Debreu (1.000 bienes y 10 estados: 1.010 mercados en vez de 10.000)."
+  },
+  {
+   "id": "3A21-22",
+   "tipo": "prediccion",
+   "apartado": "III. Otros desarrollos y aplicaciones (III.4)",
+   "pregunta": "¿Qué ocurre con la eficiencia del equilibrio cuando los mercados son incompletos?",
+   "respuesta": "Deja de ser eficiente, ni siquiera en sentido restringido (Hart, 1975); además, puede no existir con activos reales y quedar indeterminado con activos nominales."
+  },
+  {
+   "id": "3A21-23",
+   "tipo": "definicion",
+   "apartado": "III. Otros desarrollos y aplicaciones (III.5)",
+   "pregunta": "¿Qué es un modelo de equilibrio general computable y cuál es su metodología?",
+   "respuesta": "Un modelo numérico de equilibrio general con muchos sectores, hogares o países, resuelto con algoritmos como el de Scarf (1967). Se eligen formas funcionales, se calibran a una matriz de contabilidad social y se simula por estática comparativa (Shoven-Whalley)."
+  },
+  {
+   "id": "3A21-24",
+   "tipo": "definicion",
+   "apartado": "Conclusión",
+   "pregunta": "¿Qué valor tiene el modelo de equilibrio general competitivo si no describe ninguna economía real?",
+   "respuesta": "Es una referencia exacta: formaliza la mano invisible y muestra con qué supuestos coordinan los precios; cada supuesto incumplido señala dónde puede fallar el mercado y tener sentido la intervención."
+  }
+ ]
+}

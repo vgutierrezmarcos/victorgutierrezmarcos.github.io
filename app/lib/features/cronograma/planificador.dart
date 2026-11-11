@@ -1,6 +1,7 @@
 import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../data/models/estructura.dart';
+import '../../data/models/fases.dart';
 
 /// Lógica del cronograma, sin interfaz: orden sugerido por bloques
 /// y conexiones del PowerPoint de organización, intercalado de los temas más
@@ -256,7 +257,8 @@ Cronograma replanificarCronograma(Cronograma c, DateTime hoy, {int? porSemana, D
 /// Cronograma nuevo a partir de un orden de temas: [porSemana] temas cada
 /// semana o, con [fin], los que hagan falta para acabar esa semana. Con
 /// [diaCante], [inicio] es el día del primer cante de la vuelta y cada semana
-/// acaba en un cante.
+/// acaba en un cante. Con [fases] (ejercicio escrito), [temas] son los de la
+/// primera vuelta y [fin], el último día de esa fase.
 Cronograma crearCronograma({
   required String id,
   required int ejercicio,
@@ -268,6 +270,8 @@ Cronograma crearCronograma({
   int? cadaN,
   bool compartir = false,
   int? diaCante,
+  List<FaseCronograma> fases = const [],
+  DateTime? examen,
 }) {
   final lunes = inicioSemana(inicio, diaCante);
   final k = fin != null ? ritmoPara(temas.length, lunes, fin, const {}, diaCante: diaCante) : porSemana;
@@ -286,8 +290,14 @@ Cronograma crearCronograma({
     diaCante: diaCante,
     creado: ahora,
     updatedAt: ahora,
+    fases: fases,
+    examen: examen,
   );
 }
+
+/// Orden de la primera vuelta de un ejercicio escrito por fases: la parte A
+/// entera y después la B, cada una por número (1.A.1 … 1.A.18, 1.B.1 …).
+List<String> ordenPorPartes(Iterable<String> temas) => temas.toList()..sort(compararCodigos);
 
 // ------------------------------------------------------- Cronograma a mano
 

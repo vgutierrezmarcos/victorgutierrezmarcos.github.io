@@ -8,6 +8,11 @@ scripts/montar-video-app.py) y con su misma estética neutra:
     grafico-destacado.png    gráfico destacado (1024 × 500)
     capturas/01.png … 08.png capturas del teléfono (1080 × 1920, 9:16), con un
                              rótulo; mitad de TCEE y mitad de DCE
+    tablet/01.png … 08.png   las mismas pantallas en una tableta (1920 × 1080),
+                             tal cual: salen de app/promo/capturas-tableta/, que
+                             escriben los tests de capturas con TABLETA:
+                             cd app && flutter test tool/capturas_test.dart --update-goldens --dart-define=TABLETA=true
+                             (y lo mismo con tool/capturas_dce_test.dart)
 
     python3 scripts/generar-graficos-play.py
 
@@ -33,7 +38,7 @@ _spec.loader.exec_module(v)
 # (Play admite hasta ocho capturas de teléfono).
 CAPTURAS = [
     ('hoy', 'Cada día,\nlo que toca'),
-    ('dce-tema-web', 'Todo el temario,\ndentro de la app'),
+    ('dce-temario', 'Todo el temario,\ndentro de la app'),
     ('dce-cantar', 'Saca bola y canta\ncomo en el examen'),
     ('cronograma-revisar', 'Tu cronograma,\no el que ya tienes'),
     ('dce-probabilidades', '¿Qué probabilidad\nllevas?'),
@@ -44,8 +49,8 @@ CAPTURAS = [
 
 
 def fondo(ancho, alto):
-    f = v.degradado((ancho, alto), v.FONDO, v.FONDO_2, vertical=True).convert('RGB')
-    return f
+    # «Edición académica»: colores planos, sin degradados.
+    return Image.new('RGB', (ancho, alto), v.FONDO)
 
 
 def captura_play(nombre, rotulo, ruta):
@@ -54,7 +59,7 @@ def captura_play(nombre, rotulo, ruta):
     d = ImageDraw.Draw(img)
     # Banda superior berenjena con la línea dorada y el rótulo.
     banda = 430
-    img.paste(v.degradado((ancho, banda), v.TINTA, v.TINTA_CLARA), (0, 0))
+    d.rectangle((0, 0, ancho, banda), fill=v.TINTA)
     img.paste(v.linea_dorada(ancho, 8), (0, banda))
     tam = 74
     while max(v.serif(tam).getlength(l) for l in rotulo.split('\n')) > ancho - 120:
@@ -73,7 +78,7 @@ def captura_play(nombre, rotulo, ruta):
 
 def grafico_destacado(ruta):
     ancho, alto = 1024, 500
-    img = v.degradado((ancho, alto), v.TINTA_CLARA, v.TINTA).convert('RGB')
+    img = Image.new('RGB', (ancho, alto), v.TINTA)
     img.paste(v.linea_dorada(ancho, 6), (0, alto - 6))
     d = ImageDraw.Draw(img)
     ic = v.icono(150, sombra=True)
@@ -95,6 +100,13 @@ def main():
     grafico_destacado(os.path.join(SALIDA, 'grafico-destacado.png'))
     for i, (nombre, rotulo) in enumerate(CAPTURAS, 1):
         captura_play(nombre, rotulo, os.path.join(SALIDA, 'capturas', f'{i:02}.png'))
+    tableta = os.path.join(RAIZ, 'app', 'promo', 'capturas-tableta')
+    if os.path.isdir(tableta):
+        os.makedirs(os.path.join(SALIDA, 'tablet'), exist_ok=True)
+        for i, (nombre, _) in enumerate(CAPTURAS, 1):
+            Image.open(os.path.join(tableta, f'{nombre}.png')).convert('RGB').save(os.path.join(SALIDA, 'tablet', f'{i:02}.png'))
+    else:
+        print('Sin app/promo/capturas-tableta/: las de tableta se quedan como estaban.')
     print('Gráficos en', SALIDA)
 
 

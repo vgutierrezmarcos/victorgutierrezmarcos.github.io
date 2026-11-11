@@ -1,0 +1,35 @@
+% Pregunta 633 (2009-octubre-OEP2009, n.º 30): IS-LM-BP con movilidad perfecta del capital y
+% tipo de cambio fijo; perturbación monetaria contractiva. Rectas a escala:
+%   IS: i = 4,4 - 0,8 Y   LM: i = 0,5 + 0,5 Y   BP: i = i* = 2   E0 = (3; 2)
+%   LM': i = 1,5 + 0,5 Y (contracción)   A = IS∩LM' = (2,23; 2,62), por encima de la BP
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.55)
+    {Tipo fijo y movilidad perfecta del capital};
+  % Curvas iniciales
+  \draw[curva3] (0,2) -- (5.8,2) node[etiqueta,right,text=tceeverde] {$BP$};
+  \node[etiqueta,left] at (0,2) {$i^*$};
+  \draw[curva2] (0.6,3.92) -- (5.2,0.24) node[etiqueta,right,text=tceeazul] {$IS$};
+  \draw[curva1] (0.4,0.7) -- (5.6,3.3) node[etiqueta,right,text=tceemorado] {$LM$};
+  % Lo que cambia: la contracción desplaza la LM a la izquierda
+  \draw[curvanueva,desplazada] (0.2,1.6) -- (4.4,3.7) node[etiqueta,above,text=tceerojo] {$LM'$};
+  % Vuelta: el banco central compra divisas y M vuelve a subir
+  \draw[flecha] (3.75,3.37) -- (4.6,2.95);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west,align=left] at (4.75,4.15)
+    {compra de divisas:\\$\Delta R>0$, $M\uparrow$};
+  % Puntos
+  \node[punto] at (3,2) {};
+  \node[etiqueta,above=4pt] at (3,2) {$E_0$};
+  \node[punto] at (2.231,2.615) {};
+  \node[etiqueta,above=3pt] at (2.231,2.615) {$A$};
+  \draw[guia] (2.231,2.615) -- (2.231,2);
+  \draw[guia] (3,2) -- (3,0) node[below] {$Y_0$};
+  % Lectura del punto A
+  \node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=north west] at (0.2,4.95)
+    {$A$, por encima de la $BP$: $i>i^*$, entra\\capital, superávit y presión apreciatoria};
+\end{tikzpicture}
+\end{document}

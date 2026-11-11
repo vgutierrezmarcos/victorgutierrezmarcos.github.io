@@ -1,0 +1,39 @@
+% Pregunta 659 (2008-julio-OEP2008, n.º 11): monopolio sin discriminar (IMg = CMg, q^M y p^M) frente a discriminación perfecta (demanda = CMg, q^C > q^M; la última unidad se vende a p = CMg < p^M). Autor: Víctor Gutiérrez Marcos
+% A escala: p = 10 - q, IMg = 10 - 2q, CMg = 2.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.52cm,y=0.46cm]
+  \ejes{$q$}{$p$}{11.5}{11}
+  % Pérdida de eficiencia del monopolio que la discriminación perfecta recupera
+  \fill[area2] (4,2) -- (4,6) -- (8,2) -- cycle;
+  % Coste marginal constante
+  \draw[curva3] (0,2) -- (10.6,2);
+  \node[etiqueta,tceeverde,above] at (10.0,2.0) {$\mathit{CMg}$};
+  % Demanda e ingreso marginal
+  \draw[curva1] (0,10) -- (10,0);
+  \node[etiqueta,tceemorado,right] at (9.3,0.9) {$D$};
+  \draw[curva2] (0,10) -- (5,0);
+  \node[etiqueta,tceeazul,left] at (4.2,1.2) {$\mathit{IMg}$};
+  % Sin discriminar: IMg = CMg
+  \draw[guia] (4,0) -- (4,6);
+  \draw[guia] (0,6) -- (4,6);
+  \node[left] at (0,6) {$p^M$};
+  \node[below] at (4,-0.15) {$q^M$};
+  \node[punto] at (4,2) {};
+  \node[punto] at (4,6) {};
+  \node[etiqueta,above right] at (4.05,6.05) {$M$};
+  % Discriminación perfecta: D = CMg
+  \draw[guia] (8,0) -- (8,2);
+  \node[left] at (0,2) {$\mathit{CMg}$};
+  \node[below] at (8,-0.15) {$q^C$};
+  \node[punto] at (8,2) {};
+  \node[etiqueta,above right] at (8.0,2.1) {$C$};
+  % El precio marginal baja de p^M a CMg
+  \draw[flecha,tceerojo] (-1.9,5.7) -- (-1.9,2.3);
+  \node[etiqueta,tceerojo,align=center,font=\footnotesize,left] at (-2.0,4.0) {precio\\marginal};
+  % Rótulo del área
+  \node[etiqueta,tceerojo,align=left,font=\footnotesize] (r) at (7.6,6.6) {recuperada con\\discriminación\\perfecta};
+  \draw[flecha,tceerojo,thin] (r.south) -- (5.4,3.3);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,55 @@
+% Pregunta 56 (2024-junio-A, n.º 9): ciudad lineal de Hotelling con precios fijos.
+% Arriba, el óptimo social (1/4 y 3/4) no es equilibrio: la farmacia 2 gana
+% clientes acercándose a la 1. Abajo, el equilibrio de Nash: las dos en 1/2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=7cm,y=1cm,
+    f1/.style={circle,fill=tceemorado,inner sep=2.2pt},
+    f2/.style={circle,fill=tceedorado!85!black,inner sep=2.2pt},
+    zona1/.style={fill=tceemorado,fill opacity=0.22,draw=none},
+    zona2/.style={fill=tceedorado,fill opacity=0.30,draw=none},
+    titulo/.style={etiqueta,font=\small\bfseries,anchor=west},
+    nota/.style={etiqueta,font=\footnotesize,align=center}]
+  \def\h{0.32}
+  % ---------- 1. Partida: óptimo social ----------
+  \def\y{0}
+  \node[titulo] at (0,\y+1.25) {1. Óptimo social, $\tfrac14$ y $\tfrac34$: no es equilibrio};
+  \fill[zona1] (0,\y-\h) rectangle (0.5,\y+\h);
+  \fill[zona2] (0.5,\y-\h) rectangle (1,\y+\h);
+  \draw[line width=1.4pt] (0,\y) -- (1,\y);
+  \draw[guia] (0.5,\y-\h-0.1) -- (0.5,\y+\h+0.1);
+  \node[f1,label={[etiqueta,text=tceemorado]above:$F_1$}] at (0.25,\y) {};
+  \node[f2,label={[etiqueta,text=tceedorado!80!black]above:$F_2$}] at (0.75,\y) {};
+  \foreach \x/\t in {0/0,0.25/\tfrac14,0.5/\tfrac12,0.75/\tfrac34,1/1}
+    \node[below=1pt] at (\x,\y-\h) {$\t$};
+  % ---------- 2. Desvío: F2 se acerca a F1 ----------
+  \def\y{-3}
+  \node[titulo] at (0,\y+1.55) {2. $F_2$ se acerca a $F_1$ y gana clientes};
+  \fill[zona1] (0,\y-\h) rectangle (0.375,\y+\h);
+  \fill[zona2] (0.375,\y-\h) rectangle (1,\y+\h);
+  \draw[line width=1.4pt] (0,\y) -- (1,\y);
+  \draw[guia] (0.375,\y-\h-0.1) -- (0.375,\y+\h+0.1);
+  \node[f1,label={[etiqueta,text=tceemorado]above:$F_1$}] at (0.25,\y) {};
+  \draw[tceegris,thin] (0.75,\y) circle (2.2pt);
+  \draw[flecha] (0.735,\y+0.95) -- (0.515,\y+0.95);
+  \node[f2,label={[etiqueta,text=tceedorado!80!black]above:$F_2$}] at (0.5,\y) {};
+  \foreach \x/\t in {0/0,0.25/\tfrac14,0.375/\tfrac38,0.5/\tfrac12,0.75/\tfrac34,1/1}
+    \node[below=1pt] at (\x,\y-\h) {$\t$};
+  \node[nota,text=tceedorado!70!black] at (0.69,\y-1.2) {$F_2$ pasa de $\tfrac12$ a $\tfrac58$ de la calle};
+  % ---------- 3. Equilibrio de Nash ----------
+  \def\y{-6.6}
+  \node[titulo,text=tceerojo] at (0,\y+1.25) {3. Equilibrio de Nash: las dos en $\tfrac12$};
+  \fill[zona1] (0,\y-\h) rectangle (0.5,\y+\h);
+  \fill[zona2] (0.5,\y-\h) rectangle (1,\y+\h);
+  \draw[line width=1.4pt] (0,\y) -- (1,\y);
+  \node[f1,label={[etiqueta,text=tceemorado]above left:$F_1$}] at (0.493,\y) {};
+  \node[f2,label={[etiqueta,text=tceedorado!80!black]above right:$F_2$}] at (0.507,\y) {};
+  \foreach \x/\t in {0/0,0.5/\tfrac12,1/1}
+    \node[below=1pt] at (\x,\y-\h) {$\t$};
+  \node[nota] at (0.25,\y+0.75) {mitad para $F_1$};
+  \node[nota] at (0.75,\y+0.75) {mitad para $F_2$};
+  \node[nota,text=tceegris] at (0.5,\y-1.3) {Los extremos (0 y 1) solo son equilibrio si se compite\\ en precios con costes cuadráticos: aquí el precio es fijo};
+\end{tikzpicture}
+\end{document}

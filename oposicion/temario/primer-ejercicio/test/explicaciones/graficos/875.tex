@@ -1,0 +1,36 @@
+% Pregunta 875 (2003-julio-OEP2003, n.º 3): monopolio natural en un mercado perfectamente contestable.
+% D: p = 5 - 0,65q; CMe = 1,2 + 4/q (decreciente); CMg = 1,2. A escala.
+% Sostenible: D = CMe en q = 4,47, p = 2,10 (opción b). Monopolio: IMg = CMg en q = 2,92, p = 3,10 (opción a).
+% p = CMg: q = 5,85, CMe = 1,88 > p = 1,2: pérdidas (opción c).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  \ejes{$q$}{$p$}{8.6}{5.8}
+  % Pérdidas si p = CMg
+  \fill[area2] (0,1.2) rectangle (5.846,1.884);
+  % Curvas
+  \draw[curva3] (0,1.2) -- (7.6,1.2) node[etiqueta,right] {$\mathrm{CMg}$};
+  \draw[curva2] plot[domain=1.6:7.6,samples=60] (\x,{1.2+4/\x}) node[etiqueta,right] {$\mathrm{CMe}$};
+  \draw[curva1] (0,5) -- (7.4,0.19) node[etiqueta,right] {$D$};
+  % a) Monopolio
+  \draw[guia] (2.923,0) -- (2.923,3.1) -- (0,3.1);
+  \node[left] at (0,3.1) {$p^M$};
+  \node[below] at (2.923,0) {$q^M$};
+  \node[punto,fill=tceerojo] at (2.923,3.1) {};
+  \node[etiqueta,above right,text=tceerojo] at (2.923,3.1) {a) monopolio: $p>\mathrm{CMe}$};
+  % b) Sostenible
+  \draw[guia] (4.469,0) -- (4.469,2.095) -- (0,2.095);
+  \node[left] at (0,2.095) {$p^c=\mathrm{CMe}$};
+  \node[below] at (4.469,0) {$q^c$};
+  \node[punto] at (4.469,2.095) {};
+  \node[etiqueta,above right,text=tceemorado] at (4.469,2.095) {b) sostenible};
+  % c) p = CMg
+  \draw[guia] (5.846,0) -- (5.846,1.884);
+  \node[left] at (0,1.2) {$p=\mathrm{CMg}$};
+  \node[below] at (5.846,0) {$q^*$};
+  \node[punto,fill=tceeverde] at (5.846,1.2) {};
+  \node[etiqueta,text=tceeverde] at (1.45,1.542) {c) pérdidas};
+\end{tikzpicture}
+\end{document}

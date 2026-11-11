@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import 'pregunta.dart';
+import 'resultado.dart';
+
 import 'oposicion.dart';
 
 /// Modelos de planificación: cantes, convocatoria, horario y agenda por tema. Se guardan en local (Hive) y, con sesión, en Firestore
@@ -38,9 +41,42 @@ class ResultadoCante {
     this.valoracion = 0,
     this.valoraciones = const {},
     this.comentarios = '',
+    this.descartados = const [],
+    this.cubiertos = const {},
+    this.apartados = const {},
+    this.criterios = const {},
   });
 
+  /// Rúbrica: valoración 1-5 de cada criterio (nombre → estrellas), si quien
+  /// valora la usa; la de siempre ([valoracion]) sigue siendo la agregada.
+  final Map<String, int> criterios;
+
+  /// «Esquema ★★★★ · Rigor ★★» (vacío si no hay criterios).
+  String textoCriterios({String separador = ' · '}) => [for (final e in criterios.entries) if (e.value > 0) '${e.key} ${'★' * e.value}${'☆' * (5 - e.value)}'].join(separador);
+
+  /// Lista de control: por tema, los apartados del esquema que se tocaron
+  /// (sus títulos) y cuántos tenía el esquema ([apartados]). Lo marca el
+  /// opositor al valorar (o en el esquema a ciegas) o el preparador mientras
+  /// escucha. Las versiones anteriores lo ignoran.
+  final Map<String, List<String>> cubiertos;
+  final Map<String, int> apartados;
+
+  /// «14/19 apartados» del tema, o null si no se marcó la lista.
+  String? textoCobertura(String tema) {
+    final total = apartados[tema] ?? 0;
+    return total == 0 ? null : '${(cubiertos[tema] ?? const []).length}/$total apartados';
+  }
+
+  /// La cobertura de todos los temas cantados («14/19 · 9/12 apartados»), o null.
+  String? get textoCoberturaTotal {
+    final partes = [for (final t in temasCantados) if (apartados[t] case final n? when n > 0) '${(cubiertos[t] ?? const []).length}/$n'];
+    return partes.isEmpty ? null : '${partes.join(' · ')} apartados';
+  }
+
   final List<String> sorteados;
+  /// En un simulacro escrito, el tema que se dejó de cada par sorteado. Si
+  /// un tema se descarta casi siempre, es que no se domina (temas flojos).
+  final List<String> descartados;
   final String? temaCantado;
   /// Cuando se cantan varios (los dos que manda el preparador o los dos de un
   /// simulacro): los demás, en orden, después de [temaCantado]. Va aparte para
@@ -66,7 +102,7 @@ class ResultadoCante {
     return dadas.isEmpty ? 0 : (dadas.fold<int>(0, (s, v) => s + v) / dadas.length).round();
   }
 
-  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios}) =>
+  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios, List<String>? descartados, Map<String, List<String>>? cubiertos, Map<String, int>? apartados, Map<String, int>? criterios}) =>
       ResultadoCante(
         sorteados: sorteados ?? this.sorteados,
         temaCantado: temaCantado ?? this.temaCantado,
@@ -75,6 +111,10 @@ class ResultadoCante {
         valoracion: valoracion ?? this.valoracion,
         valoraciones: valoraciones ?? this.valoraciones,
         comentarios: comentarios ?? this.comentarios,
+        descartados: descartados ?? this.descartados,
+        cubiertos: cubiertos ?? this.cubiertos,
+        apartados: apartados ?? this.apartados,
+        criterios: criterios ?? this.criterios,
       );
 
   Map<String, dynamic> toJson() => {
@@ -85,6 +125,10 @@ class ResultadoCante {
         'valoracion': valoracion,
         if (valoraciones.isNotEmpty) 'valoraciones': valoraciones,
         'comentarios': comentarios,
+        if (descartados.isNotEmpty) 'descartados': descartados,
+        if (cubiertos.isNotEmpty) 'cubiertos': cubiertos,
+        if (apartados.isNotEmpty) 'apartados': apartados,
+        if (criterios.isNotEmpty) 'criterios': criterios,
       };
 
   factory ResultadoCante.fromJson(Map<dynamic, dynamic> j) => ResultadoCante(
@@ -95,7 +139,209 @@ class ResultadoCante {
         valoracion: (j['valoracion'] as num?)?.toInt() ?? 0,
         valoraciones: j['valoraciones'] is Map ? {for (final e in (j['valoraciones'] as Map).entries) if (e.value is num) e.key.toString(): (e.value as num).toInt()} : const {},
         comentarios: j['comentarios'] as String? ?? '',
+        descartados: ((j['descartados'] as List?) ?? []).map((e) => e.toString()).toList(),
+        cubiertos: j['cubiertos'] is Map ? {for (final e in (j['cubiertos'] as Map).entries) if (e.value is List) e.key.toString(): [for (final x in e.value as List) x.toString()]} : const {},
+        apartados: j['apartados'] is Map ? {for (final e in (j['apartados'] as Map).entries) if (e.value is num) e.key.toString(): (e.value as num).toInt()} : const {},
+        criterios: j['criterios'] is Map ? {for (final e in (j['criterios'] as Map).entries) if (e.value is num && (e.value as num) > 0) e.key.toString(): (e.value as num).toInt().clamp(1, 5)} : const {},
       );
+}
+
+/// Criterios de valoración por defecto (la web puede dar otros en
+/// app-config.json → `rubrica`; cada preparador u opositor, los suyos).
+const rubricaPorDefecto = ['Esquema', 'Rigor', 'Tiempo', 'Exposición', 'Actualidad'];
+
+/// Evolución de cada criterio: media de los últimos [n] cantes valorados con
+/// él frente a los [n] anteriores (null si no hay anteriores). [cantes] van
+/// de más reciente a más antiguo.
+Map<String, ({double ultimos, double? anteriores, int veces})> evolucionCriterios(Iterable<Cante> cantes, {int n = 5}) {
+  final porCriterio = <String, List<int>>{};
+  for (final c in cantes) {
+    final r = c.resultado;
+    if (!c.hecho || c.borrado || r == null) continue;
+    for (final e in r.criterios.entries) {
+      if (e.value > 0) porCriterio.putIfAbsent(e.key, () => []).add(e.value);
+    }
+  }
+  double media(List<int> v) => v.fold<int>(0, (s, x) => s + x) / v.length;
+  return {
+    for (final e in porCriterio.entries)
+      e.key: (
+        ultimos: media(e.value.take(n).toList()),
+        anteriores: e.value.length > n ? media(e.value.skip(n).take(n).toList()) : null,
+        veces: e.value.length,
+      ),
+  };
+}
+
+/// Lee «28», «28:30» o «28,5» como segundos (minutos, minutos:segundos o
+/// minutos con decimales); null si no se entiende o es cero.
+int? leerDuracionCante(String texto) {
+  final t = texto.trim().replaceAll(',', '.');
+  if (t.isEmpty) return null;
+  final partes = t.split(':');
+  if (partes.length == 2) {
+    final m = int.tryParse(partes[0].trim()), s = int.tryParse(partes[1].trim());
+    if (m == null || s == null || s < 0 || s > 59) return null;
+    final total = m * 60 + s;
+    return total <= 0 ? null : total;
+  }
+  final m = double.tryParse(t);
+  if (m == null || m <= 0) return null;
+  return (m * 60).round();
+}
+
+/// «28:30» (o «28» si son minutos justos).
+String textoDuracionCante(int segundos) => segundos % 60 == 0 ? '${segundos ~/ 60}' : '${segundos ~/ 60}:${(segundos % 60).toString().padLeft(2, '0')}';
+
+/// Qué apartados de un tema se cuentan y cuáles no, a partir de las listas de
+/// control de sus cantes y esquemas a ciegas: título → (veces tocado, veces
+/// que estuvo en la lista).
+class CoberturaApartados {
+  const CoberturaApartados(this.porApartado);
+  final Map<String, ({int cubierto, int ofrecido})> porApartado;
+
+  static CoberturaApartados desde(Iterable<Cante> cantes, String tema, {Iterable<String>? apartados}) {
+    final out = <String, ({int cubierto, int ofrecido})>{for (final a in apartados ?? const <String>[]) a: (cubierto: 0, ofrecido: 0)};
+    for (final c in cantes) {
+      final r = c.resultado;
+      if (!c.hecho || c.borrado || r == null || (r.apartados[tema] ?? 0) == 0) continue;
+      final marcados = (r.cubiertos[tema] ?? const <String>[]).toSet();
+      // Lo que no se marcó también cuenta como ofrecido: solo se sabe de los
+      // apartados que aparecen en alguna lista (los marcados) o en [apartados].
+      for (final a in {...out.keys, ...marcados}) {
+        final p = out[a] ?? (cubierto: 0, ofrecido: 0);
+        out[a] = (cubierto: p.cubierto + (marcados.contains(a) ? 1 : 0), ofrecido: p.ofrecido + 1);
+      }
+    }
+    return CoberturaApartados(out);
+  }
+
+  /// Apartados que en dos o más cantes con lista nunca se han tocado.
+  List<String> get nuncaCubiertos => [for (final e in porApartado.entries) if (e.value.ofrecido >= 2 && e.value.cubierto == 0) e.key];
+}
+
+/// Deber que el preparador deja para una clase: estudiar un tema, hacer su
+/// esquema a ciegas, cantarlo por su cuenta, un test o algo libre. Va en la
+/// clase ([Cante.tareas]), que el preparador escribe en la agenda del alumno;
+/// el alumno marca [hecha] (algunas se tachan solas: [tacharDeberes]).
+class Tarea {
+  const Tarea({required this.id, required this.tipo, this.tema, this.texto = '', this.preguntas = 0, required this.creada, this.hecha = false, this.hechaEn});
+
+  /// estudiar | esquema | cantar | test | libre
+  final String tipo;
+  final String id;
+  final String? tema;
+  final String texto;
+  /// Mínimo de preguntas del test (tipo `test`).
+  final int preguntas;
+  final DateTime creada;
+  final bool hecha;
+  final DateTime? hechaEn;
+
+  static const tipos = ['estudiar', 'esquema', 'cantar', 'test', 'libre'];
+
+  /// «Estudiar 3.A.12 · Título», «Esquema a ciegas de 3.A.12», …
+  String etiqueta({String Function(String codigo)? tituloDe}) {
+    final t = tema == null ? '' : '$tema${tituloDe == null || tituloDe(tema!).isEmpty ? '' : ' · ${tituloDe(tema!)}'}';
+    return switch (tipo) {
+      'estudiar' => 'Estudiar $t',
+      'esquema' => 'Esquema a ciegas de $t',
+      'cantar' => 'Cantar $t por tu cuenta',
+      'test' => 'Test de ${preguntas > 0 ? '$preguntas preguntas' : 'preguntas'}${tema == null ? '' : ' de $t'}',
+      _ => texto,
+    }.trim();
+  }
+
+  /// Si se tacha sola con lo que hace el alumno (estudiar, esquema, cantar y test).
+  bool get automatica => tipo != 'libre';
+
+  Tarea copyWith({bool? hecha, DateTime? hechaEn, bool borrarHechaEn = false, String? texto}) =>
+      Tarea(id: id, tipo: tipo, tema: tema, texto: texto ?? this.texto, preguntas: preguntas, creada: creada, hecha: hecha ?? this.hecha, hechaEn: borrarHechaEn ? null : (hechaEn ?? this.hechaEn));
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'tipo': tipo,
+        if (tema != null) 'tema': tema,
+        if (texto.isNotEmpty) 'texto': texto,
+        if (preguntas > 0) 'preguntas': preguntas,
+        'creada': creada.toIso8601String(),
+        if (hecha) 'hecha': true,
+        if (hechaEn != null) 'hechaEn': hechaEn!.toIso8601String(),
+      };
+
+  static Tarea? deJson(Object? j) {
+    if (j is! Map) return null;
+    final id = j['id']?.toString(), tipo = j['tipo']?.toString();
+    if (id == null || id.isEmpty || tipo == null || !tipos.contains(tipo)) return null;
+    return Tarea(
+      id: id,
+      tipo: tipo,
+      tema: j['tema']?.toString(),
+      texto: j['texto']?.toString() ?? '',
+      preguntas: (j['preguntas'] as num?)?.toInt() ?? 0,
+      creada: DateTime.tryParse(j['creada']?.toString() ?? '') ?? DateTime(2000),
+      hecha: j['hecha'] == true,
+      hechaEn: DateTime.tryParse(j['hechaEn']?.toString() ?? ''),
+    );
+  }
+
+  static List<Tarea> listaDeJson(Object? j) => j is! List ? const [] : [for (final e in j) if (deJson(e) case final t?) t];
+}
+
+/// Tacha solas las tareas de las clases pendientes con lo que ha hecho el
+/// alumno después de ponerlas: estudiar (tema marcado estudiado), esquema
+/// (esquema a ciegas del tema), cantar (cante propio del tema) y test (un test
+/// con al menos esas preguntas del tema, o de todo). Devuelve las clases que
+/// cambian, ya con las tareas tachadas.
+List<Cante> tacharDeberes(
+  Iterable<Cante> clases, {
+  required Set<String> estudiados,
+  Iterable<Cante> cantes = const [],
+  Iterable<ResultadoTest> tests = const [],
+  BancoPreguntas? banco,
+  DateTime? ahora,
+}) {
+  final hoy = ahora ?? DateTime.now();
+  final out = <Cante>[];
+  for (final c in clases) {
+    if (!c.pendiente || c.borrado || c.tareas.isEmpty || !c.tareas.any((t) => !t.hecha && t.automatica)) continue;
+    var cambio = false;
+    final nuevas = [
+      for (final t in c.tareas)
+        if (t.hecha || !t.automatica)
+          t
+        else if (_hecha(t, c, estudiados: estudiados, cantes: cantes, tests: tests, banco: banco))
+          () {
+            cambio = true;
+            return t.copyWith(hecha: true, hechaEn: hoy);
+          }()
+        else
+          t,
+    ];
+    if (cambio) out.add(c.copyWith(tareas: nuevas));
+  }
+  return out;
+}
+
+bool _hecha(Tarea t, Cante clase, {required Set<String> estudiados, required Iterable<Cante> cantes, required Iterable<ResultadoTest> tests, BancoPreguntas? banco}) {
+  final tema = t.tema;
+  switch (t.tipo) {
+    case 'estudiar':
+      return tema != null && estudiados.contains(tema);
+    case 'esquema':
+      return tema != null && cantes.any((c) => c.esquema && c.hecho && !c.borrado && c.fecha.isAfter(t.creada) && (c.resultado?.temasCantados.contains(tema) ?? false));
+    case 'cantar':
+      return tema != null && cantes.any((c) => !c.esquema && c.hecho && !c.borrado && c.id != clase.id && c.fecha.isAfter(t.creada) && (c.resultado?.temasCantados.contains(tema) ?? false));
+    case 'test':
+      return tests.any((r) {
+        if (!r.timestamp.isAfter(t.creada) || r.tipo == 'repaso' || r.totalPreguntas < t.preguntas) return false;
+        if (tema == null || r.temas.contains(tema)) return true;
+        if (banco == null) return false;
+        return r.respuestas.keys.where((id) => banco.porId(id)?.temas.contains(tema) ?? false).length >= 3;
+      });
+    default:
+      return false;
+  }
 }
 
 /// Dónde es un cante: en persona o por videollamada.
@@ -178,9 +424,20 @@ class Cante {
     this.notasCompartidas = false,
     this.temasPropuestos = const [],
     this.propuestaTemasA,
+    this.esquema = false,
+    this.tareas = const [],
   });
 
+  /// Deberes para esta clase (los pone el preparador; el alumno los tacha).
+  final List<Tarea> tareas;
+  int get tareasHechas => tareas.where((t) => t.hecha).length;
+
   final String id;
+
+  /// Esquema a ciegas (sacar el esquema de memoria y compararlo), no un cante
+  /// entero: cuenta aparte en las estadísticas y las versiones anteriores lo
+  /// ven como un cante corto.
+  final bool esquema;
 
   /// Temas que el preparador propone para esta clase (vacío si no propone
   /// nada). Los temas de la clase los decide el opositor
@@ -331,6 +588,8 @@ class Cante {
     int? numTemas,
     bool? unoPorParte,
     String? plataforma,
+    bool? esquema,
+    List<Tarea>? tareas,
     String? eventoGoogle,
     String? eventoGoogleAlumno,
     List<String>? temasPropuestos,
@@ -369,6 +628,8 @@ class Cante {
         numTemas: numTemas ?? this.numTemas,
         unoPorParte: unoPorParte ?? this.unoPorParte,
         plataforma: plataforma ?? this.plataforma,
+        esquema: esquema ?? this.esquema,
+        tareas: tareas ?? this.tareas,
         eventoGoogle: eventoGoogle ?? this.eventoGoogle,
         eventoGoogleAlumno: eventoGoogleAlumno ?? this.eventoGoogleAlumno,
         temasPropuestos: sinPropuesta ? const [] : (temasPropuestos ?? this.temasPropuestos),
@@ -409,6 +670,8 @@ class Cante {
         if (numTemas != 2) 'numTemas': numTemas,
         if (unoPorParte) 'unoPorParte': true,
         if (plataforma.isNotEmpty) 'plataforma': plataforma,
+        if (esquema) 'esquema': true,
+        if (tareas.isNotEmpty) 'tareas': [for (final t in tareas) t.toJson()],
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
         if (eventoGoogleAlumno.isNotEmpty) 'eventoGoogleAlumno': eventoGoogleAlumno,
         if (temasPropuestos.isNotEmpty) 'temasPropuestos': temasPropuestos,
@@ -453,6 +716,8 @@ class Cante {
         numTemas: (j['numTemas'] as num?)?.toInt() ?? 2,
         unoPorParte: j['unoPorParte'] as bool? ?? false,
         plataforma: j['plataforma'] as String? ?? '',
+        esquema: j['esquema'] == true,
+        tareas: Tarea.listaDeJson(j['tareas']),
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
         eventoGoogleAlumno: j['eventoGoogleAlumno'] as String? ?? '',
         temasPropuestos: ((j['temasPropuestos'] as List?) ?? []).map((e) => e.toString()).toList(),
@@ -473,9 +738,12 @@ class Cante {
 
 /// Estadísticas de un tema en el diario de cantes.
 class EstadisticaTema {
-  const EstadisticaTema({required this.codigo, required this.veces, required this.segundosMedios, required this.valoracionMedia, this.ultimo});
+  const EstadisticaTema({required this.codigo, required this.veces, required this.segundosMedios, required this.valoracionMedia, this.ultimo, this.esquemas = 0});
   final String codigo;
+  /// Cantes enteros (sin los esquemas a ciegas).
   final int veces;
+  /// Esquemas a ciegas hechos del tema.
+  final int esquemas;
   final int segundosMedios;
   /// Media de las valoraciones (0 si ninguna vez se valoró).
   final double valoracionMedia;
@@ -493,14 +761,18 @@ class EstadisticaTema {
       }
     }
     return porTema.map((codigo, lista) {
+      // Los esquemas a ciegas cuentan aparte (y refrescan el tema); la
+      // valoración y el tiempo medios son de los cantes enteros.
+      final enteros = lista.where((c) => !c.esquema).toList();
       // La valoración de ese tema en cada cante (la suya, si se valoró aparte).
-      final valorados = lista.where((c) => c.resultado!.valoracionDe(codigo) > 0).toList();
-      final conTiempo = lista.where((c) => c.resultado!.segundos > 0).toList();
+      final valorados = enteros.where((c) => c.resultado!.valoracionDe(codigo) > 0).toList();
+      final conTiempo = enteros.where((c) => c.resultado!.segundos > 0).toList();
       return MapEntry(
         codigo,
         EstadisticaTema(
           codigo: codigo,
-          veces: lista.length,
+          veces: enteros.length,
+          esquemas: lista.length - enteros.length,
           segundosMedios: conTiempo.isEmpty ? 0 : conTiempo.fold<int>(0, (s, c) => s + c.resultado!.segundos) ~/ conTiempo.length,
           valoracionMedia: valorados.isEmpty ? 0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracionDe(codigo)) / valorados.length,
           ultimo: lista.map((c) => c.fecha).reduce((x, y) => x.isAfter(y) ? x : y),

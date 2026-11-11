@@ -16,16 +16,21 @@ import 'core/cache_http.dart';
 import 'core/constants.dart';
 import 'core/permiso_calendario.dart';
 import 'core/firebase_web.dart';
+import 'core/invitacion.dart';
 import 'core/notificaciones.dart';
 import 'core/pantalla_error.dart';
 import 'core/providers.dart';
+import 'core/resenas.dart';
 import 'core/push_proceso.dart';
 import 'features/inicio/elegir_oposicion.dart';
+import 'features/inicio/racha.dart';
 import 'theme/app_theme.dart';
+import 'widgets/arranque.dart';
 import 'data/models/oposicion.dart';
 import 'data/models/preparador.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
+import 'data/repos/oposicion_cuenta.dart';
 import 'data/repos/plan_repo.dart';
 import 'data/repos/preparador_repo.dart';
 import 'data/repos/usuario_repo.dart';
@@ -53,6 +58,8 @@ Future<void> main() async {
     unawaited(iniciarPushProceso());
   } catch (e) {
     debugPrint('Firebase no disponible: $e');
+    // Se enseña en Más → Cuenta: sin él no hay forma de saber por qué falla en un móvil.
+    errorFirebase = '$e';
   }
 
   // Estadísticas de uso e informes de errores: solo si el usuario lo activa
@@ -63,9 +70,16 @@ Future<void> main() async {
 
   final http = await CacheHttp.crear();
   final cajaApp = await Hive.openBox(Cajas.app);
+  // Si la sesión guardada se ha perdido al cerrar la app (pasa en algunos
+  // móviles), se vuelve a entrar con la cuenta de Google sin preguntar.
+  if (firebaseDisponible) await recuperarSesion();
+  Resenas.iniciar(cajaApp);
   await Notificaciones.iniciar();
+  // Invitación de un preparador (enlace de invitación o referrer de Play):
+  // la bienvenida la tiene en cuenta y la app lleva a conectar.
+  final invitacion = await leerInvitacionAlArrancar();
 
-  runApp(RaizApp(http: http, firebaseDisponible: firebaseDisponible, elegida: cajaApp.get('oposicion') as String?));
+  runApp(RaizApp(http: http, firebaseDisponible: firebaseDisponible, elegida: cajaApp.get('oposicion') as String?, invitacion: invitacion));
 }
 
 /// Crea los servicios de una oposición: su contenido, los datos del opositor
@@ -102,15 +116,18 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
     try {
       final hoy = Ajustes.claveDia(DateTime.now());
       final hecho = usuario.resultadosLocales().any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
-      await Notificaciones.programarRecordatorio(usuario.ajustes().horaRecordatorio, hechoHoy: hecho);
+      final racha = rachaDe(usuario.ajustes(), tests: usuario.resultadosLocales(), cantes: plan.cantes(), vueltas: plan.agendas().values.expand((a) => a.vueltas));
+      await Notificaciones.programarRecordatorio(usuario.ajustes().horaRecordatorio, hechoHoy: hecho, pendientesRepaso: usuario.leitner().pendientes().length, racha: racha != null && racha.enJuego ? racha.dias : 0);
     } catch (_) {}
     // Los avisos de cantes se reprograman en cada arranque (y tras sincronizar).
     if (plan.plan().avisosCante) await Notificaciones.programarCantes(plan.cantes());
     // Y los de las clases, si en esta oposición es preparador.
     final perfil = preparador.perfil();
     if (perfil.activo) {
-      final nombres = {for (final a in preparador.alumnos()) a.id: a.nombre};
-      await Notificaciones.programarClases(preparador.sesiones(), alumno: (c) => nombres[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase);
+      final lista = preparador.alumnos();
+      final nombres = {for (final a in lista) a.id: a.nombre};
+      final sinApp = {for (final a in lista) if (!a.enlazado) a.id};
+      await Notificaciones.programarClases(preparador.sesiones(), alumno: (c) => nombres[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase, sinApp: (c) => sinApp.contains(c.alumno));
     }
   });
 
@@ -129,7 +146,10 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
 /// Raíz de la app: pregunta la oposición la primera vez (si hay varias) y
 /// vuelve a crear los servicios cuando se cambia (`cambiarOposicionProvider`).
 class RaizApp extends StatefulWidget {
-  const RaizApp({super.key, required this.http, required this.firebaseDisponible, this.elegida});
+  const RaizApp({super.key, required this.http, required this.firebaseDisponible, this.elegida, this.invitacion});
+
+  /// Invitación de un preparador pendiente de conectar (ver core/invitacion.dart).
+  final Invitacion? invitacion;
   final CacheHttp http;
   final bool firebaseDisponible;
   /// La guardada en la caja `app` (null = aún no ha elegido).
@@ -146,17 +166,51 @@ class _RaizAppState extends State<RaizApp> {
   /// Google (una vez; sin Firebase no tiene sentido).
   late final bool _bienvenida = widget.firebaseDisponible && widget.elegida == null && Hive.box(Cajas.app).get(claveBienvenidaVista) != true;
 
+  /// Sin oposición en este dispositivo pero con sesión: se mira la de la
+  /// cuenta antes de preguntar (mientras, pantalla vacía).
+  bool _buscandoEnCuenta = false;
+  StreamSubscription<User?>? _sesion;
+
+  /// La diana del arranque, encima hasta que hay algo que enseñar (en el
+  /// navegador ya está la pantalla de carga de web/index.html).
+  bool _arranqueVisto = kIsWeb || Arranque.omitir;
+
   @override
   void initState() {
     super.initState();
     final elegida = Oposiciones.todas.where((o) => o.id == widget.elegida).firstOrNull;
-    if (elegida != null || (!Oposiciones.variasDisponibles && !_bienvenida)) _arrancar(elegida ?? Oposiciones.todas.first);
+    if (elegida != null || (!Oposiciones.variasDisponibles && !_bienvenida)) {
+      _arrancar(elegida ?? Oposiciones.todas.first);
+    } else if (widget.firebaseDisponible) {
+      _buscandoEnCuenta = true;
+      OposicionCuenta.buscar().then((o) async {
+        if (!mounted) return;
+        if (o == null) return setState(() => _buscandoEnCuenta = false);
+        await Hive.box(Cajas.app).put(claveBienvenidaVista, true);
+        await _arrancar(o);
+      });
+    }
+    // Al iniciar sesión (también más tarde, en Más → Cuenta), la cuenta se
+    // queda con la oposición de este dispositivo como la última usada.
+    if (widget.firebaseDisponible) {
+      _sesion = FirebaseAuth.instance.authStateChanges().listen((u) {
+        final s = _servicios;
+        if (u != null && s != null) OposicionCuenta.guardar(s.oposicion);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _sesion?.cancel();
+    super.dispose();
   }
 
   /// Arranca con [oposicion]. Con [papel] (al elegirla la primera vez), lo fija.
   Future<void> _arrancar(Oposicion oposicion, {Papel? papel}) async {
     await Hive.box(Cajas.app).put('oposicion', oposicion.id);
     final servicios = await crearServicios(oposicion, http: widget.http, firebaseDisponible: widget.firebaseDisponible);
+    if (widget.firebaseDisponible) unawaited(OposicionCuenta.guardar(oposicion));
     if (papel != null) {
       final repo = servicios.preparador;
       if (papel == Papel.preparador && !repo.perfil().activo) await repo.activar();
@@ -169,10 +223,32 @@ class _RaizAppState extends State<RaizApp> {
 
   @override
   Widget build(BuildContext context) {
+    final contenido = _contenido();
+    // Siempre en el mismo Stack: al quitar la diana no se reconstruye la app.
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Stack(fit: StackFit.expand, children: [
+        contenido,
+        if (!_arranqueVisto)
+          Arranque(
+            listo: contenido is! SizedBox,
+            alTerminar: () => setState(() => _arranqueVisto = true),
+          ),
+      ]),
+    );
+  }
+
+  Widget _contenido() {
     final servicios = _servicios;
     if (servicios == null) {
-      return (Oposiciones.variasDisponibles && widget.elegida == null) || _bienvenida
-          ? ElegirOposicionApp(conBienvenida: _bienvenida, conOposicion: Oposiciones.variasDisponibles, alElegir: (o, papel) => _arrancar(o, papel: papel))
+      return !_buscandoEnCuenta && ((Oposiciones.variasDisponibles && widget.elegida == null) || _bienvenida)
+          ? ElegirOposicionApp(
+              conBienvenida: _bienvenida,
+              conOposicion: Oposiciones.variasDisponibles,
+              alElegir: (o, papel) => _arrancar(o, papel: papel),
+              buscarEnCuenta: OposicionCuenta.buscar,
+              invitacion: widget.invitacion,
+            )
           : const SizedBox.shrink();
     }
     // Una clave por oposición: al cambiarla se descartan todos los providers.

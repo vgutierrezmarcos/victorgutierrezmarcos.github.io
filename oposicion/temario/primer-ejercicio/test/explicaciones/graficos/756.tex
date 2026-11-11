@@ -1,0 +1,37 @@
+% Pregunta 756 (2006-septiembre-OEP2006, n.º 19): diagrama de fase de la ratio deuda/PIB.
+% b_t = d + ((1+R)/(1+n)) b_{t-1}, con d > 0 y pendiente < 1 (exagerada a 0,7 para que se vea la escalera).
+% Corta la bisectriz en b* > 0; desde b0 < b* la ratio sube hacia b* con pasos cada vez más cortos (a).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$b_{t-1}$}{$b_t$}{6}{5.6}
+  % Bisectriz
+  \draw[guia,thick] (0,0) -- (5.4,5.4) node[etiqueta,above,text=tceegris] {$45^\circ$};
+  % Recta de la dinámica: ordenada 1,2 y pendiente 0,7 -> b* = 4
+  \draw[curva1] (0,1.2) -- (5.6,5.12) node[etiqueta,right,align=left] {$b_t=\bar d+\frac{1+R}{1+n}\,b_{t-1}$};
+  \node[etiqueta,left] at (0,1.2) {$\bar d$};
+  % Escalera desde b0 = 0,8
+  \draw[curvanueva] (0.8,0) -- (0.8,1.76);
+  \draw[curvanueva,->] (0.8,1.76) -- (1.76,1.76);
+  \draw[curvanueva] (1.76,1.76) -- (1.76,2.432);
+  \draw[curvanueva,->] (1.76,2.432) -- (2.432,2.432);
+  \draw[curvanueva] (2.432,2.432) -- (2.432,2.9024);
+  \draw[curvanueva,->] (2.432,2.9024) -- (2.9024,2.9024);
+  \draw[curvanueva] (2.9024,2.9024) -- (2.9024,3.2317);
+  \draw[curvanueva,->] (2.9024,3.2317) -- (3.2317,3.2317);
+  \draw[curvanueva] (3.2317,3.2317) -- (3.2317,3.4622) -- (3.4622,3.4622);
+  \node[etiqueta,below] at (0.8,0) {$b_0$};
+  \node[etiqueta,below] at (1.76,0) {$b_1$};
+  \node[etiqueta,below] at (2.432,0) {$b_2$};
+  \draw[guia] (1.76,0) -- (1.76,1.76);
+  \draw[guia] (2.432,0) -- (2.432,2.432);
+  % Estado estacionario
+  \proyeccion{(4,4)}{$b^*$}{$b^*$}
+  \node[punto] at (4,4) {};
+  % Notas
+  \node[etiqueta,font=\footnotesize,text=tceerojo,align=center] at (1.6,4.85) {$b_0<b^*$: la ratio\\sube hacia $b^*$ (a)};
+  \node[etiqueta,font=\footnotesize,text=tceegris,align=left,anchor=west] at (4.15,2.2) {a la derecha de $b^*$\\la recta queda bajo\\la bisectriz: ahí\\sí bajaría (c)};
+\end{tikzpicture}
+\end{document}

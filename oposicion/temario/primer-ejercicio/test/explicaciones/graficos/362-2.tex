@@ -1,0 +1,31 @@
+% Pregunta 362 (2020-enero-OEP2019, n.º 29): monopolio interior, país pequeño, con cuota.
+% Misma D y CMg que 362.tex; cuota Qbarra = 1,17 (las importaciones del arancel P^W + t = 1,8).
+% Demanda residual: P = 3,667 - 0,8Q; IMg_R: P = 3,667 - 1,6Q. IMg_R = CMg en Q = 1,49, P^C = 2,48 > 1,8.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Q$}{$P$}{6.4}{5}
+  % Referencia: el precio con el arancel equivalente
+  \draw[guia] (0,1.8) node[left] {$P^W\!+t$} -- (6.1,1.8);
+  % Curvas
+  \draw[curva1] (0,4.6) -- (5.5,0.2) node[etiqueta,right] {$D$};
+  \draw[curva2] (0,0.4) -- (5,3.4) node[etiqueta,right] {$CMg$};
+  \draw[curvanueva] (0,3.667) -- (4.4,0.147) node[etiqueta,right] {$D-\bar Q$};
+  \draw[curvanueva,desplazada] (0,3.667) -- (2.0,0.467) node[etiqueta,left] {$IMg_R$};
+  % Desplazamiento de la demanda en la cuota
+  \draw[flecha] (4.625,0.9) -- (3.459,0.9);
+  \node[etiqueta,above,text=tceerojo] at (4.1,0.9) {$\bar Q$};
+  % Equilibrio
+  \node[punto] at (1.485,1.291) {};
+  \draw[guia] (1.485,1.291) -- (1.485,0) node[below] {$Q_C$};
+  \draw[guia] (0,2.479) node[left] {$P^C$} -- (2.652,2.479);
+  \draw[guia] (1.485,1.291) -- (1.485,2.479);
+  \node[punto,label={[etiqueta]above left:$C$}] at (1.485,2.479) {};
+  \node[punto] at (2.652,2.479) {};
+  \draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (1.6,2.6) -- node[above=4pt,text=tceerojo,font=\footnotesize] {$\bar Q$} (2.652,2.6);
+  \draw[guia] (2.652,2.479) -- (2.652,0) node[below] {$Q_C+\bar Q$};
+  \node[etiqueta,align=center,font=\footnotesize] at (4.4,4.5) {Cuota: $IMg_R=CMg$ y\\precio sobre $D-\bar Q$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,36 @@
+% Pregunta 578 (2016-noviembre-OEP2016, n.º 23): ajuste automático desde el sobreempleo y política monetaria restrictiva (opción c). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Y$}{$P$}{6.4}{5}
+  % OA de largo plazo en Y_n
+  \draw[curva3] (2.6,0) -- (2.6,4.6) node[etiqueta,above] {$OA^{LP}$};
+  \node[below] at (2.6,0) {$Y_n$};
+  % DA de partida: P = 5,6 - Y
+  \draw[curva1] (0.9,4.7) -- (5.3,0.3) node[etiqueta,right] {$DA$};
+  % OA de corto plazo: P = P^e + 0,7 (Y - Y_n)
+  \draw[curva2] (2.0,0.2) -- (5.4,2.58) node[etiqueta,right] {$OA_0$};
+  \draw[curva2,desplazada] (1.0,0.48) -- (5.0,3.28) node[etiqueta,right] {$OA_1$};
+  % Política restrictiva: DA' = DA desplazada a la izquierda
+  \draw[curvanueva,desplazada] (0.5,4.125) -- (4.3,0.325) node[etiqueta,right] {$DA'$};
+  \draw[flecha] (4.75,0.85) -- (4.0,0.85);
+  % Ajuste automático sin política
+  \draw[guia] (4.0,0) node[below] {$Y_0$} -- (4.0,1.6);
+  \node[punto] at (4.0,1.6) {};
+  \node[etiqueta,anchor=west] at (4.22,1.57) {$E_0$};
+  \node[punto] at (3.424,2.176) {};
+  \node[etiqueta,anchor=west] at (3.72,2.12) {$E_1$};
+  \draw[->,thick,tceemorado] (3.92,1.68) -- (3.52,2.08);
+  \draw[->,thick,tceemorado] (3.33,2.27) -- (2.71,2.89);
+  \draw[guia] (2.6,3.0) -- (0,3.0) node[left] {$P_n$};
+  \node[punto] at (2.6,3.0) {};
+  \node[etiqueta,left] at (2.55,3.25) {$E_n$};
+  % Con política restrictiva
+  \node[punto,fill=tceerojo] at (2.85,1.775) {};
+  \node[etiqueta,anchor=west,text=tceerojo] at (3.1,1.72) {$E'$};
+  \draw[guia] (2.6,2.025) -- (0,2.025) node[left] {$P'_n$};
+  \node[punto,fill=tceerojo] at (2.6,2.025) {};
+  \node[etiqueta,left,text=tceerojo] at (2.58,1.82) {$E'_n$};
+\end{tikzpicture}
+\end{document}

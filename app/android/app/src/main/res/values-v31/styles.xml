@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+: el arranque del sistema monta la diana del icono
+         (drawable/arranque_animado.xml); la app sigue con la misma diana en
+         el mismo sitio (lib/widgets/arranque.dart) y la desvanece al entrar. -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowSplashScreenBackground">@color/arranque_fondo</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/arranque_animado</item>
+        <item name="android:windowSplashScreenAnimationDuration">850</item>
+        <item name="android:windowBackground">@color/arranque_fondo</item>
+    </style>
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@color/arranque_fondo</item>
+    </style>
+</resources>

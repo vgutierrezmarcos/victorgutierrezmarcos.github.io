@@ -1,6 +1,6 @@
 // Prueba de firestore.rules con el emulador: node prueba.mjs (dentro de emulators:exec)
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction, Timestamp, arrayUnion } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction, Timestamp, arrayUnion, increment } from 'firebase/firestore';
 import { readFileSync } from 'node:fs';
 
 const env = await initializeTestEnvironment({ projectId: 'demo-tcee', firestore: { rules: readFileSync(process.argv[2], 'utf8'), host: '127.0.0.1', port: 8080 } });
@@ -79,6 +79,17 @@ await caso('otro opositor tampoco', () => assertFails(getDoc(doc(db('pepe'), 'us
 await caso('un retirado tampoco', () => assertFails(getDoc(doc(db('retirado'), 'users/alu/cantes/clase/pizarra/p1'))));
 await caso('el preparador no usa la pizarra de un cante propio del alumno', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/propio/pizarra/p1'), { n: 1, trazos: [] })));
 await caso('…ni otra subcolección de la clase', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/clase/otra/x'), { a: 1 })));
+
+console.log('Informes del cante (conector «Prepara con Claude»)');
+await caso('el alumno guarda el informe de un cante', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'), { fecha: '2026-11-01T10:12:00Z', origen: 'claude', informe: '# Informe', valoracion: 3 })));
+await caso('…y el de una clase', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/cantes/clase/informes/i1'), { origen: 'claude', informe: 'x' })));
+await caso('su preparador enlazado lee los informes', () => assertSucceeds(getDoc(doc(db('paula'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
+await caso('…y los lista', () => assertSucceeds(getDocs(collection(db('paula'), 'users/alu/cantes/clase/informes'))));
+await caso('…pero no los escribe', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/clase/informes/i2'), { origen: 'paula', informe: 'x' })));
+await caso('…ni los cambia', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cantes/clase/informes/i1'), { informe: 'y' })));
+await caso('otro preparador verificado no los lee', () => assertFails(getDoc(doc(db('olga'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
+await caso('otro opositor tampoco', () => assertFails(getDoc(doc(db('pepe'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
+await caso('un retirado tampoco', () => assertFails(getDoc(doc(db('retirado'), 'users/alu/cantes/propio/informes/2026-11-01T10-12-00'))));
 
 console.log('Notas del preparador (su segunda pizarra, en sus datos)');
 await caso('el preparador escribe sus notas de la clase', () => assertSucceeds(setDoc(doc(db('paula'), 'users/paula/sesiones/clase/notas/p1'), { n: 1, trazos: [], alumno: 'alu', visible: false })));
@@ -477,6 +488,34 @@ await caso('…pero sigue preparándole: ve su progreso', () => assertSucceeds(g
 await caso('Paula sí sigue viendo a los demás', () => assertSucceeds(getDocs(collection(db('paula'), 'users/alu/preparadores'))));
 await caso('el alumno lo vuelve a dejar ver', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/coordinacion/ajustes'), { aislados: [], verCantesPropios: true })));
 await caso('…y Olga vuelve a ver el tablón', () => assertSucceeds(getDocs(collection(db('olga'), 'users/alu/tablon'))));
+
+console.log('Reto diario (agregado anónimo)');
+const dia = '2026-10-28';
+function aportar(uid, nota, { marca = true, cuantos = 1, op = '' } = {}) {
+  const d = db(uid); const b = writeBatch(d);
+  if (marca) b.set(doc(d, `${op}retoDiario/${dia}/participantes/${uid}`), { nota });
+  b.set(doc(d, `${op}retoDiario/${dia}`), { hechos: increment(cuantos), sumaNotas: increment(nota), ['c' + Math.min(Math.max(nota, 0), 10)]: increment(cuantos) }, { merge: true });
+  return b.commit();
+}
+await caso('el primero crea el contador con su marca en la misma transacción', () => assertSucceeds(aportar('alu', 7)));
+await caso('el segundo suma uno', () => assertSucceeds(aportar('pepe', 4)));
+await caso('nadie suma dos veces', () => assertFails(aportar('alu', 9)));
+await caso('sin la marca de participación no se suma', () => assertFails(aportar('olga', 6, { marca: false })));
+await caso('ni de dos en dos', () => assertFails(aportar('olga', 6, { cuantos: 2 })));
+await caso('ni con una nota fuera de 0-10', () => assertFails(aportar('olga', 11)));
+await caso('ni a nombre de otro', () => assertFails((async () => { const d = db('olga'); const b = writeBatch(d); b.set(doc(d, `retoDiario/${dia}/participantes/paula`), { nota: 5 }); b.set(doc(d, `retoDiario/${dia}`), { hechos: increment(1), sumaNotas: increment(5), c5: increment(1) }, { merge: true }); await b.commit(); })()));
+await caso('cualquiera con cuenta lee el contador', () => assertSucceeds(getDoc(doc(db('olga'), `retoDiario/${dia}`))));
+await caso('sin sesión, no', () => assertFails(getDoc(doc(db(null), `retoDiario/${dia}`))));
+await caso('cada uno lee solo su marca', () => assertSucceeds(getDoc(doc(db('alu'), `retoDiario/${dia}/participantes/alu`))));
+await caso('…no la de otro', () => assertFails(getDoc(doc(db('pepe'), `retoDiario/${dia}/participantes/alu`))));
+await caso('…ni la lista', () => assertFails(getDocs(collection(db('alu'), `retoDiario/${dia}/participantes`))));
+await caso('en DCE, lo mismo bajo oposiciones/dce', () => assertSucceeds(aportar('alu', 8, { op: 'oposiciones/dce/' })));
+await caso('el contador es lo que se esperaba', async () => {
+  await env.withSecurityRulesDisabled(async (c) => {
+    const d = (await getDoc(doc(c.firestore(), `retoDiario/${dia}`))).data();
+    if (d.hechos !== 2 || d.sumaNotas !== 11 || d.c7 !== 1 || d.c4 !== 1) throw new Error(JSON.stringify(d));
+  });
+});
 
 console.log(`\n${ok} correctas, ${mal} fallidas`);
 await env.cleanup();

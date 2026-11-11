@@ -1,0 +1,34 @@
+% Pregunta 664 (2008-julio-OEP2008, n.º 16): Mundell-Fleming, país pequeño, cambio flexible y
+% movilidad perfecta del capital; expansión fiscal. Rectas a escala:
+%   BP: i = i* = 2   LM: i = 0,5 + 0,6 Y   IS: i = 4 - 0,8 Y   IS': i = 5,6 - 0,8 Y
+%   A = (2,5; 2)   B = IS'∩LM = (3,64; 2,69), por encima de i*: entran capitales,
+%   la moneda se aprecia, caen XN y la IS' vuelve a la IS: la renta sigue en Y0.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  % Curvas iniciales
+  \draw[curva4] (0,2) -- (5.7,2) node[etiqueta,right,text=tceedorado] {$BP$};
+  \node[etiqueta,left] at (0,2) {$i^*$};
+  \draw[curva1] (0.2,0.62) -- (5.6,3.86) node[etiqueta,right,text=tceemorado] {$LM$};
+  \draw[curva2] (0.2,3.84) -- (4.6,0.32) node[etiqueta,right,text=tceeazul] {$IS$};
+  % Lo que cambia: G sube
+  \draw[curvanueva,desplazada] (2.0,4.0) -- (6.0,0.8) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \node[etiqueta,above,text=tceerojo] at (2.0,4.0) {$G\uparrow$};
+  % Vuelta de IS' a IS por la apreciación
+  \draw[flecha] (2.25,3.7) -- (0.5,3.7);
+  \node[etiqueta,font=\footnotesize,align=center,text=tceerojo,anchor=north] at (1.75,3.6)
+    {apreciación:\\caen $XN$};
+  % Proyecciones
+  \draw[guia] (2.5,2) -- (2.5,0) node[below] {$Y_0=Y_1$};
+  % Puntos
+  \node[punto] at (2.5,2) {};
+  \node[etiqueta,above=4pt] at (2.5,2) {$A$};
+  \node[punto] at (3.643,2.686) {};
+  \node[etiqueta,below=4pt] at (3.643,2.686) {$B$};
+  \node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=south west] at (3.8,2.95)
+    {$B$: $i>i^*$,\\entran capitales};
+\end{tikzpicture}
+\end{document}

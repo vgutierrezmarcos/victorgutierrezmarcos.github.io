@@ -1,0 +1,66 @@
+# Conector remoto MCP «Oposición TCEE · DCE» (EconomIA): Cloudflare Worker (plan gratuito).
+# Desplegar: npx wrangler deploy (ver ../README.md). Antes, crear los tres KV y
+# poner sus id aquí, y el secreto CLAVE_CIFRADO con `npx wrangler secret put`.
+name = "prepara-con-claude"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+# Dominio propio (la zona victorgutierrezmarcos.es está en Cloudflare desde el 30 oct. 2026).
+routes = [{ pattern = "mcp.victorgutierrezmarcos.es", custom_domain = true }]
+
+# Las vistas interactivas (src/vistas/*.html) se empaquetan como texto.
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
+
+[observability]
+# Registros de Cloudflare desactivados: el Worker no escribe nada con datos personales.
+enabled = false
+
+# Contadores anónimos de uso (qué herramienta, qué IA, qué oposición, si fue bien y cuánto tardó): sin uid, correo ni contenido.
+# Se consultan con la API SQL de Analytics Engine (ver ../README.md).
+# El conjunto «analytics_mcp» lo creó Víctor en el panel el 10 nov. 2026; el enlace se llama USO en el código.
+[[analytics_engine_datasets]]
+binding = "USO"
+dataset = "analytics_mcp"
+
+[vars]
+# Clave pública de la app web de Firebase (la misma de firebase-config.js): identifica el proyecto, no da acceso a nada.
+FIREBASE_API_KEY = "AIzaSyCcNHY3IkriyV1lUejtL3qDn8luklhRo3o"
+FIREBASE_PROJECT = "web-vgm"
+# URL pública del Worker (sin barra final). Es el «issuer» OAuth y la base del recurso MCP (URL_WORKER/mcp):
+# con dominio propio desde el 30 oct. 2026 (antes, https://prepara-con-claude.victorgutierrezmarcos.workers.dev, que sigue respondiendo).
+URL_WORKER = "https://mcp.victorgutierrezmarcos.es"
+# Página de la web que hace el login con Google y devuelve los tokens al Worker.
+URL_LOGIN = "https://www.victorgutierrezmarcos.es/mcp/login.html"
+# Banco de preguntas del test (para el acierto por tema) y manifiesto de temas revisados.
+URL_PREGUNTAS = "https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/preguntas.json"
+# Documentos de cada proceso selectivo (lo rastrea leer-proceso.yml): lo sirve leer_proceso.
+URL_PROCESO = "https://www.victorgutierrezmarcos.es/oposicion/proceso.json"
+# Índice de fuentes por tema (temas de la web, de Manuel y apuntes de la ATCEE), de scripts/fuentes-temas.py.
+URL_FUENTES = "https://www.victorgutierrezmarcos.es/oposicion/temario/fuentes-temas.json"
+# Carpeta de la skill desplegada en la web (SKILL.md, references/, assets/…; sin el material exclusivo), que sirve leer_skill.
+URL_SKILL = "https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/prepara-oposicion/"
+# Orígenes que pueden llamar a /callback/sesion (la página de login).
+ORIGENES_LOGIN = "https://www.victorgutierrezmarcos.es,https://victorgutierrezmarcos.es"
+
+# Secretos (npx wrangler secret put NOMBRE):
+#   CLAVE_CIFRADO  32 bytes en base64 (openssl rand -base64 32): cifra el refresh token de Firebase
+#                  antes de guardarlo (además del cifrado propio de workers-oauth-provider).
+
+[[kv_namespaces]]
+# Clientes, concesiones y tokens OAuth (los maneja @cloudflare/workers-oauth-provider).
+binding = "OAUTH_KV"
+id = "f7bdb424ec584f8d91d088c0b5a037f1"
+
+[[kv_namespaces]]
+# Sesiones de login pendientes (10 min) y caché del ID token de Firebase (50 min), cifrados.
+binding = "SESIONES"
+id = "f316fc4ba43b40d89adb0d8c4a5f87b4"
+
+[[kv_namespaces]]
+# Contenido exclusivo (.md de temas, fichas, dictamen y canon), subido con ../publicar-contenido.py.
+binding = "CONTENIDO"
+id = "a3a18010289248f3b00115571ad287c2"

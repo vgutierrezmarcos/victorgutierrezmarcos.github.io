@@ -1,0 +1,54 @@
+% Pregunta 351 (2020-enero-OEP2019, n.º 18): Mundell-Fleming con movilidad perfecta del capital,
+% política fiscal expansiva con tipo fijo (izquierda) y flexible (derecha). Rectas a escala:
+%   BP: i = 2,2   IS: i = 4,45 - 0,9 Y   LM: i = 0,9 Y - 0,05   E0 = (2,5; 2,2)
+%   IS': i = 4,45 - 0,9 (Y - 1,2)   A = IS'∩LM = (3,1; 2,74), por encima de la BP
+%   LM' (compra de divisas): i = 0,9 (Y - 1,2) - 0,05   E1 = IS'∩LM'∩BP = (3,7; 2,2)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- Panel izquierdo: tipo de cambio fijo ----------
+  \begin{scope}
+  \ejes{$Y$}{$i$}{6}{4.8}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.45)
+    {Tipo fijo: $Y$ sube mucho\\(iii, verdadera)};
+  \draw[curva3] (0.1,2.2) -- (5.6,2.2) node[etiqueta,right,text=tceeverde] {$BP$};
+  \draw[curva2] (0.5,4.0) -- (4.5,0.4) node[etiqueta,below,text=tceeazul] {$IS$};
+  \draw[curva1] (0.8,0.67) -- (4.6,4.09) node[etiqueta,above,text=tceemorado] {$LM$};
+  \draw[curvanueva,desplazada] (1.7,4.0) -- (5.7,0.4) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[curvanueva,desplazada] (2.0,0.67) -- (5.6,3.91) node[etiqueta,above,text=tceerojo] {$LM'$};
+  \draw[flecha] (0.95,3.75) to[bend left=25] (1.95,3.75);
+  \draw[flecha] (1.4,0.8) to[bend left=25] (2.3,0.8);
+  \draw[guia] (2.5,2.2) -- (2.5,0) node[below] {$Y_0$};
+  \draw[guia] (3.7,2.2) -- (3.7,0) node[below] {$Y_1$};
+  \node[punto] at (2.5,2.2) {};
+  \node[etiqueta,below=3pt] at (2.5,2.2) {$E_0$};
+  \node[punto] at (3.1,2.74) {};
+  \node[etiqueta,left=4pt] at (3.1,2.74) {$A$};
+  \node[punto] at (3.7,2.2) {};
+  \node[etiqueta,below=3pt] at (3.7,2.2) {$E_1$};
+  \node[etiqueta,align=center,text=tceerojo,anchor=north] at (3,-0.75)
+    {$A$ sobre la $BP$: entran capitales, se compran\\divisas, $M\uparrow$ y la $LM$ pasa a $LM'$};
+  \end{scope}
+  % ---------- Panel derecho: tipo de cambio flexible ----------
+  \begin{scope}[xshift=8.6cm]
+  \ejes{$Y$}{$i$}{6}{4.8}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.45)
+    {Tipo flexible: $Y$ no cambia\\(iv, falsa)};
+  \draw[curva3] (0.1,2.2) -- (5.6,2.2) node[etiqueta,right,text=tceeverde] {$BP$};
+  \draw[curva2] (0.5,4.0) -- (4.5,0.4) node[etiqueta,below,text=tceeazul] {$IS$};
+  \draw[curva1] (0.8,0.67) -- (4.6,4.09) node[etiqueta,above,text=tceemorado] {$LM$};
+  \draw[curvanueva,desplazada] (1.7,4.0) -- (5.7,0.4) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[flecha] (0.95,3.75) to[bend left=25] (1.95,3.75);
+  \draw[flecha,tceeazul] (4.55,1.15) to[bend left=20] (3.45,1.15);
+  \draw[guia] (2.5,2.2) -- (2.5,0) node[below] {$Y_0 = Y_1$};
+  \node[punto] at (2.5,2.2) {};
+  \node[etiqueta,below=3pt] at (2.5,2.2) {$E_0$};
+  \node[punto] at (3.1,2.74) {};
+  \node[etiqueta,left=4pt] at (3.1,2.74) {$A$};
+  \node[etiqueta,align=center,text=tceerojo,anchor=north] at (3,-0.75)
+    {$A$ sobre la $BP$: entran capitales, la moneda\\se aprecia, $XN\downarrow$ y la $IS'$ vuelve a $IS$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

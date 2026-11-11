@@ -1,0 +1,27 @@
+% Pregunta 398 (2011-octubre-OEP2011, n.º 19): modelo q de Tobin; una bajada del impuesto sobre beneficios desplaza arriba el locus qpunto=0, q salta sobre la nueva senda de silla y vuelve a 1 con más capital. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$K$}{$q$}{6.4}{5}
+  % Locus Kpunto=0: q=1
+  \draw[curva2] (0,2) -- (6.1,2) node[etiqueta,right] {$\dot K=0$};
+  \node[left] at (0,2) {$1$};
+  % Locus qpunto=0 inicial: q = 2 - 0,8 (K - 2,5)
+  \draw[curva1] (0.6,3.52) -- (4.7,0.24);
+  \node[etiqueta,tceemorado,anchor=east] at (0.6,3.52) {$\dot q=0$};
+  % Locus qpunto=0 tras bajar el impuesto: q = 3,2 - 0,8 (K - 2,5)
+  \draw[curvanueva,desplazada] (1.1,4.32) -- (5.8,0.56) node[etiqueta,right] {$(\dot q=0)'$};
+  % Nueva senda de silla (más plana que qpunto=0): q = 2 - 0,4 (K - 4)
+  \draw[curva3] (1.5,3.0) -- (5.6,1.36) node[etiqueta,right] {$SS'$};
+  % Proyecciones
+  \draw[guia] (2.5,0) node[below] {$K^*$} -- (2.5,2);
+  \draw[guia] (4,0) node[below] {$K^{**}$} -- (4,2);
+  % Salto de q y ajuste a lo largo de la senda de silla
+  \draw[flecha,tceerojo,shorten >=2pt] (2.5,2) -- (2.5,2.6);
+  \draw[flecha,tceeverde,line width=1.4pt] (2.7,2.52) -- (3.55,2.18);
+  \node[punto,label={[etiqueta]below left:$E$}] at (2.5,2) {};
+  \node[punto,label={[etiqueta]above:$A$}] at (2.5,2.6) {};
+  \node[punto,label={[etiqueta]below left:$E'$}] at (4,2) {};
+\end{tikzpicture}
+\end{document}

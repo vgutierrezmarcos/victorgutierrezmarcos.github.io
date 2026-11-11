@@ -1,0 +1,25 @@
+% Pregunta 489 (2014-septiembre-OEP2014, n.º 21): oferta de Lucas y sorpresa de demanda; suben a la vez la producción y los precios (opción b). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$y$}{$P$}{6.4}{5}
+  % Producción natural
+  \draw[guia] (3,0) -- (3,4.8);
+  \node[below] at (3,0) {$\bar y$};
+  % Oferta de Lucas: y - ybar = beta (P - P^e)
+  \draw[curva1] (0.9,0.925) -- (5.6,4.45) node[etiqueta,right] {$OA(P^e)$};
+  % Demanda esperada y demanda efectiva (sorpresa)
+  \draw[curva2] (0.8,4.26) -- (5.4,0.58) node[etiqueta,right] {$DA^e$};
+  \draw[curvanueva,desplazada] (1.6,4.9) -- (6.0,1.38) node[etiqueta,right] {$DA'$};
+  \draw[flecha] (4.0,1.7) -- (4.9,1.7);
+  % Equilibrio esperado
+  \draw[guia] (3,2.5) -- (0,2.5) node[left] {$P^e$};
+  \node[punto] at (3,2.5) {};
+  \node[etiqueta,left] at (2.95,2.15) {$E_0$};
+  % Equilibrio con sorpresa
+  \draw[guia] (3.826,0) node[below] {$y_1$} -- (3.826,3.119) -- (0,3.119) node[left] {$P_1$};
+  \node[punto,fill=tceerojo] at (3.826,3.119) {};
+  \node[etiqueta] at (3.83,3.62) {$E_1$};
+\end{tikzpicture}
+\end{document}

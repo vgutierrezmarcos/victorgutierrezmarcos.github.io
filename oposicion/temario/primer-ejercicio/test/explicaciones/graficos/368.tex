@@ -1,0 +1,33 @@
+% Pregunta 368 (2020-enero-OEP2019, n.º 35): separación de Tobin en el CAPM. Todos los inversores eligen la misma cartera con riesgo M (tangencia de la LMC con la frontera eficiente); la aversión al riesgo solo elige el punto sobre la LMC: el muy averso presta (P1), el poco averso se endeuda (P2). Autor: Víctor Gutiérrez Marcos
+% Frontera: sigma = sqrt(1,8^2 + 2,56 (E - 1,7)^2), vértice (1,8; 1,7). LMC: E = 0,85625 + 0,78125 sigma, tangente en M = (3,0; 3,2).
+% Inversor A (muy averso), E = a + b sigma^2 tangente en sigma = 1,4: b = 0,27902, a = 1,40312; P1 = (1,4; 1,95).
+% Inversor B (poco averso), E = a + b sigma^3 tangente en sigma = 4,6: b = 0,012307, a = 3,25208; P2 = (4,6; 4,45).
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$\sigma$}{$E(r)$}{6.4}{5.8}
+  % Frontera eficiente de activos con riesgo (rama superior de la hipérbola)
+  \draw[curva1,smooth,variable=\y,domain=1.7:4.1,samples=60]
+    plot ({sqrt(3.24+2.56*(\y-1.7)^2)},\y);
+  \node[etiqueta,tceemorado,right,align=left] at (2.1,1.75) {frontera\\eficiente};
+  % LMC
+  \draw[curva2] (0,0.85625) -- (5.8,5.38750);
+  \node[etiqueta,tceeazul,right] at (5.8,5.3875) {LMC};
+  % Indiferencia del inversor A (muy averso)
+  \draw[curva3,smooth,domain=0.2:2.3,samples=40] plot (\x,{1.403125+0.2790179*\x*\x})
+    node[etiqueta,above left] {$U_A$};
+  % Indiferencia del inversor B (poco averso)
+  \draw[curva4,smooth,domain=3.0:5.4,samples=40] plot (\x,{3.252083+0.01230703*\x*\x*\x})
+    node[etiqueta,above left] {$U_B$};
+  % Puntos
+  \node[punto] at (0,0.85625) {};
+  \node[etiqueta,left] at (0,0.85625) {$r_f$};
+  \node[punto] at (3.0,3.2) {};
+  \node[etiqueta,below right] at (3.0,3.2) {$M$};
+  \node[punto] at (1.4,1.95) {};
+  \node[etiqueta,above left] at (1.4,1.95) {$P_1$: presta};
+  \node[punto] at (4.6,4.45) {};
+  \node[etiqueta,below right] at (4.6,4.45) {$P_2$: se endeuda};
+\end{tikzpicture}
+\end{document}

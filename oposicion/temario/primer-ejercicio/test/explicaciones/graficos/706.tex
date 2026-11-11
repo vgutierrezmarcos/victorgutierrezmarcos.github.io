@@ -1,0 +1,27 @@
+% Pregunta 706 (2007-julio-OEP2007, n.º 14): modelo AK frente a Solow.
+% En el AK la tasa de crecimiento sA-(n+delta) no depende de k: el pobre y el rico crecen igual,
+% sin transición ni estado estacionario, y no hay convergencia (d falsa). En Solow, s f(k)/k decrece.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$k$}{$\dot k/k$}{6.4}{5}
+  % Solow (contraste): s f(k)/k decreciente, corta n+delta en k*
+  \draw[curvanueva,desplazada,domain=1.15:5.9,samples=60] plot (\x,{1.5*(3.5/\x)^0.6})
+    node[etiqueta,below left,text=tceerojo] {$s f(k)/k$};
+  \node[punto] at (3.5,1.5) {};
+  \draw[guia] (3.5,1.5) -- (3.5,0) node[below] {$k^*$};
+  % AK: sA horizontal y n+delta horizontal
+  \draw[curva1] (0,3.6) -- (5.9,3.6) node[etiqueta,right] {$sA$};
+  \draw[curva2] (0,1.5) -- (5.9,1.5) node[etiqueta,above left] {$n+\delta$};
+  % Misma tasa para el pobre y el rico
+  \foreach \k/\t in {2.2/k_{\text{pobre}},4.6/k_{\text{rico}}} {
+    \draw[guia] (\k,0) node[below] {$\t$} -- (\k,1.5);
+    \draw[<->,thick,tceemorado] (\k,1.55) -- (\k,3.55);
+    \node[etiqueta,right,text=tceemorado] at (\k,2.55) {$\gamma$};
+  }
+  \node[etiqueta,align=center,text=tceemorado] at (3.1,4.35) {AK: $\gamma = sA-(n+\delta)$, igual con cualquier $k$};
+  \node[etiqueta,align=left,text=tceerojo,font=\footnotesize,anchor=west] at (0.05,0.75) {Solow: crece\\más el pobre\\(convergencia)};
+\end{tikzpicture}
+\end{document}

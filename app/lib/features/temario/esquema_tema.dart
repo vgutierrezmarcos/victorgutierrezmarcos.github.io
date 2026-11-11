@@ -1,7 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/providers.dart';
 import '../../data/models/esquema.dart';
+import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
+
+/// Los apartados del tema [tema] (los marcadores de su PDF: los del manifiesto
+/// si está revisado, si no los de esquemas.json), o null si no hay.
+List<EntradaEsquema>? esquemaDelTema(WidgetRef ref, Tema tema) {
+  final rv = ref.watch(revisadosProvider).valueOrNull?.de(tema.codigo);
+  if (rv != null && rv.esquema.isNotEmpty) return rv.esquema;
+  return ref.watch(esquemasProvider).valueOrNull?.de(tema.url);
+}
+
+/// Los esquemas de varios temas (por código), solo los que tienen bastantes
+/// apartados para una lista de control.
+Map<String, List<EntradaEsquema>> esquemasDe(WidgetRef ref, Iterable<Tema?> temas) {
+  final out = <String, List<EntradaEsquema>>{};
+  for (final t in temas) {
+    if (t == null) continue;
+    final e = esquemaDelTema(ref, t);
+    if (listaControlDisponible(e)) out[t.codigo] = e!;
+  }
+  return out;
+}
+
+/// Con menos de cuatro apartados la lista de control no aporta nada.
+bool listaControlDisponible(List<EntradaEsquema>? esquema) => esquema != null && esquema.length >= 4;
 
 /// El esquema del tema (los marcadores de su PDF) para leerlo al lado y
 /// saltar de bloque: en el ordenador, un panel a la izquierda del PDF; en el
@@ -121,3 +147,34 @@ Future<void> abrirEsquema(BuildContext context, {required List<EntradaEsquema> e
         ),
       ),
     );
+
+/// Un epígrafe encontrado por el buscador del temario.
+typedef EpigrafeEncontrado = ({Tema tema, EntradaEsquema entrada});
+
+/// Busca [consulta] en los epígrafes de los temas ([esquemas], por tema), sin
+/// tildes ni mayúsculas y con todas las palabras (en cualquier orden): «¿en
+/// qué tema está Feldstein-Horioka?». Como mucho [maximo] resultados, los
+/// apartados más generales primero dentro de cada tema.
+List<EpigrafeEncontrado> buscarEpigrafes(Map<Tema, List<EntradaEsquema>> esquemas, String consulta, {int maximo = 40}) {
+  final palabras = normalizarBusqueda(consulta).split(RegExp(r'\s+')).where((p) => p.length >= 2).toList();
+  if (palabras.isEmpty || palabras.join().length < 3) return const [];
+  final out = <EpigrafeEncontrado>[];
+  for (final e in esquemas.entries) {
+    for (final entrada in e.value) {
+      final t = normalizarBusqueda(entrada.titulo);
+      if (palabras.every(t.contains)) out.add((tema: e.key, entrada: entrada));
+      if (out.length >= maximo) return out;
+    }
+  }
+  return out;
+}
+
+/// Sin tildes, en minúsculas y con guiones como espacios (para buscar).
+String normalizarBusqueda(String s) => s
+    .toLowerCase()
+    .replaceAll(RegExp('[áàäâ]'), 'a')
+    .replaceAll(RegExp('[éèëê]'), 'e')
+    .replaceAll(RegExp('[íìïî]'), 'i')
+    .replaceAll(RegExp('[óòöô]'), 'o')
+    .replaceAll(RegExp('[úùüû]'), 'u')
+    .replaceAll(RegExp(r'[-–—/]'), ' ');

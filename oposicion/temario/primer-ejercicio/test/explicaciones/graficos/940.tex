@@ -1,0 +1,39 @@
+% Pregunta 940 (2002-octubre-OEP2002, n.º 23): regla de oro de Phelps en Solow sin depreciación ni progreso técnico.
+% A escala con f(k) = 2 sqrt(k) y n = 0,6: k_oro = 25/9 (f'(k) = n), s = 0,6 da k* = 4 y c* = 1,6;
+% s' = 0,8 da k*' = 64/9 y c*' = 1,07: sube k y sube y, pero baja c porque ya se estaba por encima de k_oro.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.72cm,y=0.82cm]
+  \draw[eje] (0,0) -- (8.9,0) node[below left=2pt and 0pt] {$k$};
+  \draw[eje] (0,0) -- (0,6.3) node[left] {$y$};
+  \node[below left] at (0,0) {$0$};
+  % Tangente a f(k) paralela a nk en k_oro (pendiente n)
+  \draw[curva4,thick,dashed] (0.9,2.213) -- (5.4,4.913) node[etiqueta,above,text=tceedorado,xshift=-6pt] {pendiente $n$};
+  % Curvas
+  \draw[curva1] plot[domain=0:8.2,samples=80,smooth] (\x,{2*sqrt(\x)}) node[etiqueta,right,text=tceemorado] {$f(k)$};
+  \draw[curva2] (0,0) -- (8.2,4.92) node[etiqueta,right,text=tceeazul,yshift=3pt] {$nk$};
+  \draw[curva3] plot[domain=0:8.2,samples=80,smooth] (\x,{1.2*sqrt(\x)}) node[etiqueta,right,text=tceeverde] {$s\,f(k)$};
+  \draw[curvanueva,desplazada] plot[domain=0:8.2,samples=80,smooth] (\x,{1.6*sqrt(\x)}) node[etiqueta,right,text=tceerojo,yshift=-4pt] {$s'f(k)$};
+  % Regla de oro
+  \draw[guia] (2.778,0) node[below,text=tceedorado] {$k_{oro}$} -- (2.778,3.333);
+  \draw[tceedorado,very thick] (2.778,1.667) -- (2.778,3.333);
+  \node[punto,fill=tceedorado] at (2.778,3.333) {};
+  \node[etiqueta,text=tceedorado] (coro) at (1.25,4.3) {$c_{oro}$};
+  \draw[tceedorado,thin] (coro.south east) -- (2.72,2.75);
+  % Estado estacionario inicial
+  \draw[guia] (4,0) node[below,text=black] {$k^*$} -- (4,4);
+  \draw[tceemorado,very thick] (4,2.4) -- (4,4);
+  \node[punto] at (4,2.4) {};
+  \node[punto] at (4,4) {};
+  \node[etiqueta,right] at (4,2.78) {$c^*$};
+  % Nuevo estado estacionario
+  \draw[guia] (7.111,0) node[below,text=tceerojo] {$k^{*\prime}$} -- (7.111,5.333);
+  \draw[tceerojo,very thick] (7.111,4.267) -- (7.111,5.333);
+  \node[punto,fill=tceerojo] at (7.111,4.267) {};
+  \node[punto,fill=tceerojo] at (7.111,5.333) {};
+  \node[etiqueta,left,text=tceerojo] at (7.111,4.8) {$c^{*\prime}$};
+  \draw[flecha] (4.25,0.45) -- (6.85,0.45);
+\end{tikzpicture}
+\end{document}

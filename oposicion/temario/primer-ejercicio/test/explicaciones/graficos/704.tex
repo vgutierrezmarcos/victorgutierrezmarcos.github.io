@@ -1,0 +1,29 @@
+% Pregunta 704 (2007-julio-OEP2007, n.º 12): cártel con costes marginales crecientes; IMg(X) = CMg1 = CMg2 y producen las dos empresas, más la eficiente. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % CMg1 = 0,6 + 0,5 x1 ; CMg2 = 1,4 + 0,8 x2 ; IMg* = 2,6
+  % x1* = 4 ; x2* = 1,5
+  % ---------- Panel 1: empresa 1 (más eficiente) ----------
+  \node[font=\small\bfseries] at (3,5.4) {Empresa 1 (más eficiente)};
+  \ejes{$x_1$}{$\text{€}$}{6}{5}
+  \draw[curva1] (0,0.6) -- (5.6,3.4) node[etiqueta,above] {$CMg_1$};
+  \draw[curva4] (0,2.6) -- (14.2,2.6);
+  \node[left] at (0,2.6) {$IMg^*$};
+  \draw[guia] (4,0) node[below] {$x_1^*$} -- (4,2.6);
+  \node[punto] at (4,2.6) {};
+
+  % ---------- Panel 2: empresa 2 ----------
+  \begin{scope}[xshift=8.2cm]
+  \node[font=\small\bfseries] at (3,5.4) {Empresa 2 (menos eficiente)};
+  \ejes{$x_2$}{$\text{€}$}{6}{5}
+  \draw[curva2] (0,1.4) -- (4.0,4.6) node[etiqueta,right] {$CMg_2$};
+  \node[left] at (0,1.4) {$CMg_2(0)$};
+  \draw[guia] (1.5,0) node[below] {$x_2^*$} -- (1.5,2.6);
+  \node[punto] at (1.5,2.6) {};
+  \node[etiqueta,tceedorado,above] at (4.6,2.6) {$IMg(X)=CMg_1=CMg_2$};
+  \end{scope}
+  \node[font=\small,align=center] at (7.1,-1.0) {$x_1^*>x_2^*>0$: producen las dos y la más eficiente produce más};
+\end{tikzpicture}
+\end{document}

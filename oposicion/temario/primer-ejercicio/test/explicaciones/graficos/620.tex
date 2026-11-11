@@ -1,0 +1,31 @@
+% Pregunta 620 (2009-octubre-OEP2009, n.º 17): equilibrio competitivo en el mercado de trabajo
+% con sindicato de 125 afiliados. Demanda PMgN = 8N^(-1/3); oferta horizontal en R = 2 hasta 125
+% y vertical después. Corte en (64, 2); con N = 125 la PMgN es 1,6 < R. A escala: x = N/25, y = w.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.1cm,
+    declare function={pmg(\n)=8*(\n)^(-1/3);}]
+  \draw[eje] (0,0) -- (6.4,0) node[below left=2pt and 0pt] {$N$};
+  \draw[eje] (0,0) -- (0,4.4) node[left] {$w$};
+  \node[below left] at (0,0) {$0$};
+  % Oferta competitiva: horizontal en R hasta 125 afiliados, vertical después
+  \draw[curva2] (0,2) -- (5,2) -- (5,4.2) node[etiqueta,above,text=tceeazul] {$L^s$};
+  % Afiliados sin empleo
+  \draw[flecha,<->] (2.56,2.35) -- (5,2.35);
+  \node[etiqueta,above,font=\small,text=tceerojo] at (3.15,2.35) {afiliados sin empleo (61)};
+  % Demanda = productividad marginal
+  \draw[curva1] plot[domain=8:155,samples=80,smooth] ({\x/25},{pmg(\x)})
+    node[etiqueta,right,text=tceemorado] {$PMgN$};
+  % Trampa de la opción b: con 125 trabajadores la PMgN es 1,6 < R
+  \draw[guia] (5,0) -- (5,1.6) -- (0,1.6) node[left] {$1{,}6$};
+  \node[punto] at (5,1.6) {};
+  \node[etiqueta,below right,font=\small,align=left] at (5,1.55) {$1{,}6<R$};
+  % Equilibrio competitivo
+  \draw[guia] (2.56,0) node[below] {$N_{ec}=64$} -- (2.56,2);
+  \node[left] at (0,2) {$\omega_{ec}=R=2$};
+  \node[punto] at (2.56,2) {};
+  \node[below] at (5,0) {$\bar L=125$};
+\end{tikzpicture}
+\end{document}
