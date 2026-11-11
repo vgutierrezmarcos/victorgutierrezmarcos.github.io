@@ -28,7 +28,7 @@ La fuente es un JSON por tema en la rama revision-temario, carpeta banco-test/ (
 
 Cuántas por tema: el banco guarda la proporción de los exámenes oficiales (un tema que cae mucho
 tiene más preguntas; uno que casi no cae, pocas), para que un test con preguntas del banco se
-parezca a un examen. `--cupos` enseña el reparto para un total (por defecto 900).
+parezca a un examen. `--cupos` enseña el reparto para un total (por defecto 1000).
 
     python3 scripts/banco-test.py                 # valida y resume
     python3 scripts/banco-test.py --cupos         # cuántas tocan a cada tema y cuántas hay
@@ -53,7 +53,7 @@ OFICIALES = os.path.join(RAIZ, 'oposicion', 'temario', 'primer-ejercicio', 'test
 WORKER = os.path.join(RAIZ, 'mcp', 'worker')
 TOKEN = os.path.expanduser('~/.config/oposicion-red/cloudflare.token')
 CLAVE_KV = 'banco/preguntas.json'
-TOTAL = 900
+TOTAL = 1000
 MINIMO = 2  # ningún tema se queda sin preguntas
 AVISO = ('Preguntas NO oficiales del banco de EconomIA (victorgutierrezmarcos.es), de Víctor Gutiérrez Marcos: material exclusivo, '
          'para la preparación personal de quien lo usa. No han salido en ningún examen.')
