@@ -1,0 +1,45 @@
+% La solución de negociación de Nash (1950): conjunto de acuerdos posibles,
+% punto de desacuerdo y curvas de nivel del producto de Nash.
+% Frontera de U: B = 5,5 sqrt(1 - (U_S/6)^2) (cóncava; corta los ejes en 6 y 5,5).
+% Desacuerdo d = (1, 1). Curvas de nivel (U_S - 1)(B - 1) = k, con k = 4, 9,37 y 15.
+% Tangencia (calculada): N = (4,217; 3,913), k = 9,369.
+% Elaboración propia a partir de Nash (1950). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee, x=0.85cm, y=0.85cm,
+    declare function={fr(\x)=5.5*sqrt(max(0,1-(\x/6)^2)); niv(\x,\k)=1+\k/(\x-1);}]
+  % 1: ejes
+  \capa{1}{\ejes{$U_S$}{$B$}{7.4}{6.8}}
+  % 2: conjunto de acuerdos posibles y su frontera
+  \capa{2}{
+    \fill[area] (0,0) -- plot[domain=90:0, samples=90] ({6*cos(\x)},{5.5*sin(\x)}) -- cycle;
+    \draw[curva1] plot[domain=90:0, samples=90] ({6*cos(\x)},{5.5*sin(\x)});
+    \node[etiqueta, text=tceemorado] at (1.9,2.2) {$\mathcal{U}$};
+    \node[etiqueta, text=tceemorado, anchor=south west] at (4.9,{fr(4.9)}) {frontera};
+  }
+  % 3: punto de desacuerdo y zona de ganancias mutuas
+  \capa{3}{
+    \draw[guia] (1,0) node[below] {$U_S^0$} -- (1,5.6);
+    \draw[guia] (0,1) node[left] {$B^0$} -- (6.6,1);
+    \node[punto] at (1,1) {};
+    \node[etiqueta, below left] at (1,1) {$d$};
+  }
+  % 4: curvas de nivel del producto de Nash
+  \capa{4}{
+    \draw[curva2] plot[domain=1.75:6.8, samples=60] (\x,{niv(\x,4)});
+    \draw[curva2] plot[domain=3.75:6.8, samples=60] (\x,{niv(\x,15)});
+    \node[etiqueta, text=tceeazul, anchor=west] at (6.8,{niv(6.8,15)}) {$k_2$};
+    \node[etiqueta, text=tceeazul, anchor=west] at (6.8,{niv(6.8,4)}) {$k_0$};
+  }
+  % 5: la curva de nivel más alta que toca la frontera: el acuerdo N
+  \capa{5}{
+    \draw[curva2, very thick] plot[domain=2.67:6.8, samples=60] (\x,{niv(\x,9.369)});
+    \node[etiqueta, text=tceeazul, anchor=west] at (6.8,{niv(6.8,9.369)}) {$k_1$};
+    \node[punto] at (4.217,3.913) {};
+    \node[etiqueta, above right] at (4.217,3.913) {$N$};
+    \draw[guia] (4.217,3.913) -- (4.217,0) node[below] {$U_S^*$};
+    \draw[guia] (4.217,3.913) -- (0,3.913) node[left] {$B^*$};
+  }
+\end{tikzpicture}
+\end{document}

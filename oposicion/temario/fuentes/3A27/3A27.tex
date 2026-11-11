@@ -96,7 +96,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11,5} (I.1, \tiempo{3
 \minutos{11,5}
 
 \begin{notaopositor}
-En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el monopolio bilateral y su indeterminación, que ya planteó \autor{Edgeworth}; \autor{Hicks} con su gráfico (concesión, resistencia y huelgas potenciales); \autor{Nash} con los 4 axiomas de palabra y el producto, y \autor{Rubinstein} con las ofertas alternadas y $\gamma$ como paciencia relativa. Las cajas grises (derivaciones) no se cantan. Los modelos de negociación colectiva (\tiempo{7,5}) empiezan con la infografía (gráfico~\ref{fig:mapa-negociacion}) de palabra y se cuentan sobre un solo plano $(L,w)$ que crece por capas: la demanda de trabajo y las isobeneficio, las indiferencias del sindicato con $w^R$ y $\overline{L}$, el punto $C$, el sindicato monopolista ($M$), el derecho a gestionar ($R$) y la curva de contratos; al final queda el gráfico~\ref{fig:negociacion-colectiva}. Los contratos fuertemente eficientes, con su gráfico, en 2 frases. Luego la tabla~\ref{tab:modelos-negociacion} de palabra y la evidencia con la cobertura de los convenios. Cierre macro (\tiempo{1}) con la curva salarial en una línea. Se levantan los supuestos 4 y 6, con el refrán «hablando se entiende la gente» junto al producto de \autor{Nash}. Las derivaciones de los modelos de negociación colectiva están en el anexo~\ref{anexo:contratos-eficientes}.
+En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el monopolio bilateral y su indeterminación, que ya planteó \autor{Edgeworth}; \autor{Hicks} con su gráfico (concesión, resistencia y huelgas potenciales); \autor{Nash} con los 4 axiomas de palabra, el producto y su gráfico, y \autor{Rubinstein} con las ofertas alternadas y $\gamma$ como paciencia relativa. Las cajas grises (derivaciones) no se cantan. Los modelos de negociación colectiva (\tiempo{7,5}) empiezan con la infografía (gráfico~\ref{fig:mapa-negociacion}) de palabra y se cuentan sobre un solo plano $(L,w)$ que crece por capas: la demanda de trabajo y las isobeneficio, las indiferencias del sindicato con $w^R$ y $\overline{L}$, el punto $C$, el sindicato monopolista ($M$), el derecho a gestionar ($R$) y la curva de contratos. Los contratos fuertemente eficientes, con su gráfico, en 2 frases. Luego la tabla~\ref{tab:modelos-negociacion} de palabra y la evidencia con la cobertura de los convenios. Cierre macro (\tiempo{1}) con la curva salarial en una línea. Se levantan los supuestos 4 y 6, con el refrán «hablando se entiende la gente» junto al producto de \autor{Nash}. Las derivaciones de los modelos de negociación colectiva están en el anexo~\ref{anexo:contratos-eficientes}.
 \end{notaopositor}
 
 \begin{itemize}
@@ -214,12 +214,25 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \item \emph{Resultado}: la única solución que cumple los 4 axiomas maximiza el producto de las ganancias de cada parte sobre su punto de desacuerdo.
 \item \emph{Solución de \autor{Nash} generalizada}: sin la simetría\nocite{Kalai1977Nonsymmetric}, cada ganancia se pondera con el \concepto{poder de negociación}, $\gamma\in(0,1)$ para el sindicato y $1-\gamma$ para la empresa \vertema{3.A.14}:
   \funcionclave[eq:nash-salarial]{\optim{\max}{U_S,\,B}{\big(U_S-U_S^0\big)^{\gamma}\,\big(B-B^0\big)^{1-\gamma}}{(U_S,B)\in\mathcal{U}\\ U_S\geq U_S^0,\ \ B\geq B^0}}
-\item \emph{Gráficamente}, en el plano $(U_S,B)$: el acuerdo es el punto de la frontera de $\mathcal{U}$ en que esta toca la curva de nivel más alta del producto de \autor{Nash}.
+\item \emph{Gráficamente} (gráfico~\ref{fig:nash}), en el plano $(U_S,B)$, paso a paso:
+  \begin{itemize}
+  \item el conjunto $\mathcal{U}$ de acuerdos posibles, con su frontera decreciente: sobre ella, lo que gana una parte lo pierde la otra;
+  \item el punto de desacuerdo $d=(U_S^0,B^0)$: solo interesan los acuerdos al noreste de $d$, que mejoran a los 2;
+  \item las curvas de nivel del producto de \autor{Nash}, $(U_S-U_S^0)(B-B^0)=k$, son hipérbolas con asíntotas en las rectas que pasan por $d$; cuanto más alejadas de $d$, mayor es $k$. La curva $k_0$ corta la frontera, así que aún se puede mejorar, y la $k_2$ ya no es alcanzable;
+  \item el acuerdo $N$ está donde la frontera toca la curva de nivel más alta, $k_1$: allí son tangentes y se reparten $U_S^*$ y $B^*$. Está en la frontera (eficiencia) y, con un $\gamma$ mayor, se desliza por ella hacia más $U_S$.
+  \end{itemize}
 \item \emph{Con utilidad transferible} (las partes se reparten un excedente $\Pi$, con $U_S+B=\Pi$), cada parte recibe su punto de desacuerdo más su cuota del excedente neto del acuerdo:
   \begin{equation}
   U_S=U_S^0+\gamma\,\big(\Pi-U_S^0-B^0\big),\qquad B=B^0+(1-\gamma)\,\big(\Pi-U_S^0-B^0\big) \label{eq:nash-transferible}
   \end{equation}
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La solución de negociación de \autor{Nash}: el acuerdo $N$ es la tangencia de la frontera de acuerdos posibles con la curva de nivel más alta del producto de \autor{Nash}}\label{fig:nash}
+\grafico[0.5\textwidth]{nash}
+\fuente{elaboración propia a partir de \textcite{Nash1950Bargaining}.}
+\end{figure}
 
 \begin{anotaciones}
 \textbf{Derivación del reparto con utilidad transferible}
@@ -660,15 +673,8 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \subsubsection{Valoración y evidencia de la negociación colectiva}\label{sec:negociacion-practica}
 
 \begin{itemize}
-\item \emph{Los modelos en un gráfico} (gráfico~\ref{fig:negociacion-colectiva} y tabla~\ref{tab:modelos-negociacion}): todos parten del mismo aparato gráfico y cambia solo lo que se pacta. Sobre la demanda de trabajo quedan $M$ ($\gamma=1$), $R$ y $C$ ($\gamma=0$); fuera de ella, la curva de contratos de $C$ a $F$ (con un seguro de paro, la vertical en $L^c$ del gráfico~\ref{fig:fuertemente-eficientes}).
+\item \emph{Los modelos, comparados} (tabla~\ref{tab:modelos-negociacion}): todos parten del mismo aparato gráfico y cambia solo lo que se pacta. Sobre la demanda de trabajo quedan $M$ ($\gamma=1$), $R$ y $C$ ($\gamma=0$); fuera de ella, la curva de contratos de $C$ a $F$ (con un seguro de paro, la vertical en $L^c$ del gráfico~\ref{fig:fuertemente-eficientes}).
 \end{itemize}
-
-\begin{figure}[H]
-\centering
-\caption{Los modelos de negociación colectiva en un solo plano: sindicato monopolista ($M$), derecho a gestionar ($R$), competencia ($C$) y curva de contratos ($C$-$D$-$F$)}\label{fig:negociacion-colectiva}
-\grafico[0.8\textwidth]{negociacion-colectiva}
-\fuente{elaboración propia a partir de \textcite{McDonaldSolow1981Wage} y \textcite[pp.~244-253]{Heijdra2017Foundations}.}
-\end{figure}
 
 \begin{table}[H]
 \centering
@@ -960,7 +966,7 @@ En el cante: la idea con los 4 motivos de \autor{Romer}, numerados (\tiempo{1});
 \begin{figure}[H]
 \centering
 \caption{Estática comparativa (i): más vigilancia ($q\uparrow$) baja la CNE, con menos salario y menos paro}\label{fig:shapiro-stiglitz-vigilancia}
-\grafico[0.6\textwidth]{shapiro-stiglitz-vigilancia}
+\grafico[0.5\textwidth]{shapiro-stiglitz-vigilancia}
 \fuente{elaboración propia a partir de \textcite{ShapiroStiglitz1984Equilibrium} y \textcite[cap.~11]{Romer2019Advanced}.}
 \end{figure}
 
@@ -975,7 +981,7 @@ En el cante: la idea con los 4 motivos de \autor{Romer}, numerados (\tiempo{1});
 \begin{figure}[H]
 \centering
 \caption{Estática comparativa (ii): sin rotación ($s=0$), la CNE es horizontal y una caída de la demanda solo mueve el empleo}\label{fig:shapiro-stiglitz-sin-rotacion}
-\grafico[0.6\textwidth]{shapiro-stiglitz-sin-rotacion}
+\grafico[0.5\textwidth]{shapiro-stiglitz-sin-rotacion}
 \fuente{elaboración propia a partir de \textcite{ShapiroStiglitz1984Equilibrium} y \textcite[cap.~11]{Romer2019Advanced}.}
 \end{figure}
 
@@ -991,7 +997,7 @@ En el cante: la idea con los 4 motivos de \autor{Romer}, numerados (\tiempo{1});
 \begin{figure}[H]
 \centering
 \caption{Estática comparativa (iii): caída de la demanda de trabajo con supervisión perfecta ($E^W\to E^{W\prime}$) e imperfecta ($E\to E'$)}\label{fig:shapiro-stiglitz-demanda}
-\grafico[0.6\textwidth]{shapiro-stiglitz-demanda}
+\grafico[0.5\textwidth]{shapiro-stiglitz-demanda}
 \fuente{elaboración propia a partir de \textcite{ShapiroStiglitz1984Equilibrium} y \textcite[cap.~11]{Romer2019Advanced}.}
 \end{figure}
 
@@ -1475,7 +1481,7 @@ La afiliación sindical es mucho menor, el 12,5~\% de los asalariados en 2023\no
 \section{Anexo: aspectos para el test}\label{anexo:test}
 
 \begin{anotaciones}
-Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html?tema=3.A.27}{simulador de test}.
 \end{anotaciones}
 
 \begin{itemize}
