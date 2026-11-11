@@ -140,6 +140,12 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Pizarra: quitadas 2 indicaciones de pizarra o punteros a cajas del texto y de las notas al opositor (que se imprimen en el PDF): zonas, qué se escribe, borra, tacha o recuadra, «conviene escribir este esquema en la pizarra», «(caja de abajo)»…; se conservan tiempos, orden y tablas resumen (las funciones clave se nombran como tales). El plan de pizarra de la ficha de repaso se mantiene (es plan de cante). Títulos (PDF actual, ≥2 líneas): \newline de I y III → \cortetitulo{}. Sin c_K en el tema. |
 
+## Comentarios de Víctor (11/11/2026, 6.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| El anexo de regulación debe remitirse directamente al 3.A.20; no tiene sentido desarrollarlo aquí | Eliminado el anexo «Regulación y control del monopolio» (teoría tradicional, información asimétrica, teoría positiva, instituciones) y, con él, la derivación del efecto Averch-Johnson del anexo de derivaciones, que solo usaba ese anexo. Las 6 remisiones del cuerpo al anexo (introducción, segundo grado, regulación del monopolio natural, impuesto de suma fija, punta y valle, información asimétrica) pasan a `\vertema{3.A.20}` o se quitan. Los gráficos `algoritmo-regulacion`, `pcmg-beneficios`, `pico-valle` y `averch-johnson` quedan en `graficos/` sin usar. El anexo de test no se ha tocado (lo cambia otro agente): su pregunta del tribunal sobre Averch-Johnson y el *price cap* ya no tiene desarrollo en este tema; convendría añadirle `\vertema{3.A.20}`. |
+
 ## Dudas abiertas
 
 1. **Sentencia de Google (enganche)**: la cita («Google es un monopolista y ha actuado como tal para mantener su monopolio») y las cuotas (89,2 % y 94,9 %) están comprobadas **solo en prensa** que reproduce la sentencia, no en el texto de la *Memorandum Opinion* (D.D.C., 5/8/2024). La entrada `Mehta2024Google` no tiene URL. ¿La mantengo (cotejando la sentencia y añadiendo la URL) o dejo solo el refrán?
