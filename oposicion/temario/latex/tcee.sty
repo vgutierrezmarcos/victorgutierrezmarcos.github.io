@@ -178,8 +178,10 @@
 \newcommand{\tcee@textotitulo}{\MakeUppercase{\tcee@codigo:\ \tcee@titulo}}
 % Compone el título en la anchura #1 (caja 0) y deja sus líneas en \tcee@lineas
 \newcommand{\tcee@probar}[1]{%
-  \setbox0\vbox{\hsize=#1\relax\centering\tcee@formatotitulo\tcee@textotitulo\par
-    \global\tcee@lineas=\prevgraf}}
+  % el grupo interior hace que el \color se cierre dentro de la caja (si no,
+  % el cierre queda fuera y todo el tema sale en morado)
+  \setbox0\vbox{\begingroup\hsize=#1\relax\centering\tcee@formatotitulo\tcee@textotitulo\par
+    \global\tcee@lineas=\prevgraf\endgroup}}
 \newcommand{\tceetitulo}{%
   \thispagestyle{tceeprimera}%
   \begingroup
@@ -385,8 +387,11 @@
 % tceeimagen y tcee.lua les pone «Imagen n.–».
 \DeclareCaptionType[fileext=loi,placement={htbp}]{imagen}[Imagen][Lista de imágenes]
 \newcommand{\fuente}[1]{\par\vspace{2pt}{\centering\footnotesize\itshape Fuente: #1\par}}
+% (Víctor, 12/11/2026) Ningún gráfico se sale de la página ni deja una página
+% en blanco: la altura se limita al 78 % de la caja de texto (queda sitio para
+% el título y la fuente) y se conserva la proporción.
 \newcommand{\grafico}[2][0.75\textwidth]{%
-  \includegraphics[width=#1]{#2}}
+  \includegraphics[width=#1,height=0.78\textheight,keepaspectratio]{#2}}
 \graphicspath{{graficos/}{../graficos/}}
 % Gráfico o tabla dentro de una caja (anotaciones, ideaclave…): los flotantes
 % (figure, table) no pueden ir dentro de una tcolorbox, así que se usan

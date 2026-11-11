@@ -629,6 +629,20 @@ def verificar(tema):
                      if 60 < l['bbox'][1] and l['bbox'][3] < alto - 60 and l['spans']),
                     key=lambda x: x[0])
                 lineas = [(t, s) for _, t, s in lineas if t]
+                # (Víctor, 12/11/2026) ni páginas en blanco ni contenido que se
+                # salga por el pie: se mira la línea del pie (© …) y lo que hay
+                # entre la cabecera y ella (texto, imágenes y dibujos).
+                pie = [l['bbox'][1] for b in pag.get_text('dict')['blocks'] for l in b.get('lines', [])
+                       if ''.join(s['text'] for s in l['spans']).lstrip().startswith('©')]
+                limite = min(pie) - 8 if pie else alto - 60
+                cajas = [fitz.Rect(i['bbox']) for i in pag.get_image_info()]
+                cajas += [d['rect'] for d in pag.get_drawings() if d['rect'].height > 2 and d['rect'].width > 2]
+                cajas = [c for c in cajas if c.y0 > 60 and c.y0 < limite]
+                if not lineas and not cajas and n < doc.page_count:
+                    errores.append(f'Página {n} del PDF en blanco')
+                fuera = [c for c in cajas if c.y1 > limite + 6]
+                if fuera:
+                    errores.append(f'Contenido que se sale por el pie en la página {n} del PDF')
                 if not lineas:
                     continue
                 texto, span = lineas[-1]
