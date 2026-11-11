@@ -9,6 +9,12 @@ workers_dev = true
 # Dominio propio (la zona victorgutierrezmarcos.es está en Cloudflare desde el 30 oct. 2026).
 routes = [{ pattern = "mcp.victorgutierrezmarcos.es", custom_domain = true }]
 
+# Las vistas interactivas (src/vistas/*.html) se empaquetan como texto.
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
+
 [observability]
 # Registros de Cloudflare desactivados: el Worker no escribe nada con datos personales.
 enabled = false

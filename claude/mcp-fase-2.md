@@ -77,6 +77,7 @@ Tres o cuatro días de trabajo: Worker con OAuth (un día), herramientas de lect
 - Opositor: `empezar`, `leer_informes_cante`, `preguntas_test`, `leer_proceso`, textos por tramos, aviso de «la otra oposición», `anotar_tema`; cronograma atómico que conserva lo hecho y el compartir; el informe no pisa lo que ya había.
 - Preparador (fase 2 b): `leer_alumnos`, `leer_alumno`, `responder_reserva`, `guardar_nota_alumno`, `guardar_deberes`.
 - `mcp/prueba-humo.mjs` tras cada despliegue.
+- Vistas interactivas (MCP Apps, 11 nov. 2026): `test_interactivo` y, con `vistaPrevia`, `proponer_cronograma`, `guardar_informe_cante` y `agendar_clase`; `borrar_datos_oposicion` con la frase escrita en la vista. Detalle en `mcp/README.md` («Vistas interactivas»). Probadas con un cliente simulado en el navegador; falta verlas en Claude.
 
 **Falta (Víctor):**
 

@@ -1,0 +1,156 @@
+<style>
+  .enunciado { white-space: pre-wrap; margin: 12px 0; font-size: 16px; }
+  .opciones { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .opcion {
+    display: flex; gap: 10px; width: 100%; text-align: left; align-items: baseline;
+    border: 1px solid var(--linea); border-radius: 6px; background: var(--tarjeta); padding: 10px 12px; min-height: 44px;
+  }
+  .opcion .letra { font-weight: 600; color: var(--tinta); min-width: 1.2em; }
+  .opcion:disabled { cursor: default; opacity: 1; }
+  .opcion.es-bien { border-color: var(--bien); background: var(--bien-suave); }
+  .opcion.es-mal { border-color: var(--mal); background: var(--mal-suave); }
+  .opcion .marca { margin-left: auto; font-weight: 600; white-space: nowrap; }
+  .es-bien .marca { color: var(--bien); }
+  .es-mal .marca { color: var(--mal); }
+  figure { margin: 12px 0; }
+  figure img { max-width: 100%; height: auto; background: #fff; border: 1px solid var(--linea); border-radius: 4px; }
+  figcaption { font-size: 13px; color: var(--apagado); margin-top: 4px; }
+  .porque { white-space: pre-wrap; }
+  .barra { height: 3px; background: var(--linea); border-radius: 2px; overflow: hidden; margin-top: 8px; }
+  .barra > i { display: block; height: 100%; background: var(--oro); }
+  .nota-final { font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, Georgia, serif; font-size: 40px; color: var(--tinta); line-height: 1.1; }
+</style>
+<div id="raiz"><p class="apagado">Preparando el test…</p></div>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }, svg: { fontCache: 'global' }, startup: { typeset: false } };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script>
+  (function () {
+    var datos = null, i = 0, marcadas = [], cargando = false;
+
+    function formulas() {
+      // Las fórmulas van en LaTeX: si MathJax no carga (el cliente no deja), se ven tal cual.
+      function componer() { return MathJax.typesetPromise([document.getElementById('raiz')]).then(Vista.medir, function () {}); }
+      if (window.MathJax && MathJax.typesetPromise) componer();
+      else setTimeout(function () { if (window.MathJax && MathJax.typesetPromise) componer(); }, 1500);
+    }
+
+    /** El principio de un enunciado, sin partir una fórmula por la mitad. */
+    function recorte(t) {
+      var c = t.split('$$')[0].split('\n')[0];
+      if (c.length > 220) c = c.slice(0, 220).replace(/\s+\S*$/, '');
+      if ((c.split('$').length - 1) % 2) c = c.slice(0, c.lastIndexOf('$'));
+      c = c.replace(/[\s:,;]+$/, '');
+      return c.length < t.length ? c + '…' : c;
+    }
+
+    function resumenTexto(final) {
+      var bien = 0, lineas = [];
+      datos.preguntas.forEach(function (p, k) {
+        if (marcadas[k] === undefined) return;
+        var ok = p.respuesta.indexOf(marcadas[k]) >= 0;
+        if (ok) bien++;
+        else lineas.push('- ' + p.cabecera + ' id ' + p.id + ': marcó ' + marcadas[k] + '), correcta ' + p.respuesta.join(' o ') + '). ' + p.enunciado.slice(0, 160));
+      });
+      var hechas = marcadas.filter(function (m) { return m !== undefined; }).length;
+      return (final ? 'Test interactivo terminado' : 'Test interactivo en curso') + ' (' + datos.temas.join(', ') + '): ' + bien + ' aciertos de ' + hechas +
+        (final ? '' : ' contestadas, de ' + datos.preguntas.length) + '.' + (lineas.length ? '\nFalladas:\n' + lineas.join('\n') : '\nSin fallos.');
+    }
+
+    function pregunta() {
+      var p = datos.preguntas[i], marcada = marcadas[i], hecha = marcada !== undefined, total = datos.preguntas.length;
+      var opciones = Object.keys(p.opciones).sort().map(function (letra) {
+        var buena = p.respuesta.indexOf(letra) >= 0;
+        var clase = 'opcion' + (hecha && buena ? ' es-bien' : '') + (hecha && !buena && letra === marcada ? ' es-mal' : '');
+        return el('li', {}, el('button', {
+          class: clase, disabled: hecha, type: 'button',
+          onclick: function () {
+            marcadas[i] = letra;
+            Vista.contar(resumenTexto(false));
+            pregunta();
+          },
+        }, [
+          el('span', { class: 'letra' }, letra + ')'),
+          el('span', {}, p.opciones[letra]),
+          hecha && buena ? el('span', { class: 'marca' }, 'Correcta') : null,
+          hecha && !buena && letra === marcada ? el('span', { class: 'marca' }, 'Tu respuesta') : null,
+        ]));
+      });
+      var acierto = hecha && p.respuesta.indexOf(marcada) >= 0;
+      pintar([
+        el('div', { class: 'fila entre' }, [el('span', { class: 'sobre' }, p.cabecera.replace(/^\[|\]$/g, '')), el('span', { class: 'codigo' }, (i + 1) + ' / ' + total)]),
+        el('div', { class: 'barra' }, el('i', { style: 'width:' + Math.round(((i + (hecha ? 1 : 0)) / total) * 100) + '%' })),
+        el('p', { class: 'enunciado' }, p.enunciado),
+        (p.figuras || []).map(function (f) {
+          return el('figure', {}, [el('img', { src: f.url, alt: f.descripcion || 'Figura de la pregunta', onload: Vista.medir }), f.descripcion ? el('figcaption', {}, f.descripcion) : null]);
+        }),
+        p.figura && !(p.figuras || []).length ? el('p', { class: 'aviso' }, 'Esta pregunta lleva una figura que aquí no se ve: está en el simulador de la web y en la app.') : null,
+        el('ul', { class: 'opciones' }, opciones),
+        hecha ? el('div', { class: 'aviso ' + (acierto ? 'aviso--bien' : 'aviso--mal') }, acierto ? 'Bien.' : 'No: la correcta es la ' + p.respuesta.join(') o la ') + ').') : null,
+        hecha && p.variasValidas ? el('p', { class: 'apagado' }, 'En esta pregunta el tribunal dio por válida más de una respuesta.') : null,
+        hecha && p.porQue ? el('div', { class: 'tarjeta' }, [el('div', { class: 'sobre' }, '¿Por qué?'), el('div', { class: 'porque' }, p.porQue)]) : null,
+        hecha && p.nota ? el('p', { class: 'apagado' }, p.nota) : null,
+        el('div', { class: 'fila entre pie' }, [
+          i > 0 ? el('button', { class: 'boton boton--secundario', type: 'button', onclick: function () { i--; pregunta(); } }, 'Anterior') : el('span'),
+          hecha
+            ? el('button', { class: 'boton', type: 'button', onclick: function () { if (i + 1 < total) { i++; pregunta(); } else fin(); } }, i + 1 < total ? 'Siguiente' : 'Ver el resultado')
+            : el('span', { class: 'apagado' }, 'Elige una respuesta'),
+        ]),
+      ]);
+      formulas();
+    }
+
+    function fin() {
+      var total = datos.preguntas.length, bien = 0, falladas = [];
+      datos.preguntas.forEach(function (p, k) { if (p.respuesta.indexOf(marcadas[k]) >= 0) bien++; else falladas.push({ p: p, k: k }); });
+      Vista.contar(resumenTexto(true));
+      var estado = el('p', { class: 'apagado' });
+      pintar([
+        el('div', { class: 'sobre' }, 'Resultado · ' + datos.temas.join(', ')),
+        el('div', { class: 'nota-final' }, bien + ' / ' + total),
+        el('hr', { class: 'filete' }),
+        falladas.length
+          ? el('div', {}, [el('h2', {}, 'Para repasar'), el('ul', { class: 'lista' }, falladas.map(function (f) {
+              return el('li', {}, [
+                el('div', { class: 'sobre' }, f.p.cabecera.replace(/^\[|\]$/g, '')),
+                el('div', {}, recorte(f.p.enunciado)),
+                el('div', { class: 'apagado' }, 'Marcaste ' + marcadas[f.k] + '); era ' + f.p.respuesta.join(') o ') + ').'),
+                el('button', { class: 'boton boton--secundario', type: 'button', style: 'margin-top:6px', onclick: function () { i = f.k; pregunta(); } }, 'Verla otra vez'),
+              ]);
+            }))])
+          : el('p', { class: 'aviso aviso--bien' }, 'Sin fallos.'),
+        el('p', { class: 'apagado' }, 'Este test no se apunta en el historial de la app: para que cuente en tu repaso, hazlo en la app o en el simulador de la web.'),
+        el('div', { class: 'fila pie' }, [
+          Vista.puedeDecir() && falladas.length
+            ? el('button', { class: 'boton', type: 'button', onclick: function () {
+                Vista.decir(resumenTexto(true) + '\n\nExplícame los fallos uno a uno, con la fuente, y dime qué repasar.').then(function (ok) { estado.textContent = ok ? 'Enviado al chat.' : 'No se ha podido enviar: escríbelo tú en el chat.'; });
+              } }, 'Comentar los fallos en el chat')
+            : null,
+          el('button', { class: 'boton boton--secundario', type: 'button', disabled: cargando, onclick: otras }, 'Otras ' + Math.min(30, total) + ' preguntas'),
+        ]),
+        estado,
+      ]);
+      formulas();
+    }
+
+    function otras() {
+      if (cargando) return;
+      cargando = true;
+      pintar(el('p', { class: 'apagado' }, 'Buscando más preguntas…'));
+      var a = Vista.argumentos();
+      Vista.llamar('test_interactivo', { oposicion: a.oposicion, temas: datos.temas, n: datos.preguntas.length, modo: a.modo }).then(function (d) { cargando = false; recibir(d); });
+    }
+
+    function recibir(d) {
+      if (!d || d.error || !d.preguntas || !d.preguntas.length) {
+        pintar(el('p', { class: 'aviso aviso--mal' }, (d && (d.error || d.aviso)) || 'No hay preguntas que enseñar.'));
+        return;
+      }
+      datos = d; i = 0; marcadas = [];
+      pregunta();
+    }
+
+    Vista.alRecibir(recibir);
+  })();
+</script>

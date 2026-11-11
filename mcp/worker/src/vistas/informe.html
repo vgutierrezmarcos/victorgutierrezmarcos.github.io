@@ -1,0 +1,123 @@
+<style>
+  .campo { margin-top: 14px; }
+  .campo > label, .campo > .rotulo { display: block; margin-bottom: 4px; }
+  .rejilla { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center; }
+  .tarea { display: flex; gap: 6px; margin-bottom: 6px; }
+  .tarea button { border: 1px solid var(--linea); background: transparent; border-radius: 4px; min-width: 40px; }
+  details { margin-top: 14px; }
+  summary { cursor: pointer; color: var(--tinta); }
+  .informe { white-space: pre-wrap; max-height: 320px; overflow-y: auto; margin-top: 8px; font-size: 14px; }
+  .cuenta { font-size: 13px; text-align: right; }
+</style>
+<div id="raiz"><p class="apagado">Preparando el informe…</p></div>
+<script>
+  (function () {
+    var guardando = false;
+    var YA = { valoracion: 'una valoración general', valoraciones: 'valoraciones por tema', comentarios: 'comentarios', criterios: 'una rúbrica' };
+
+    /** Cinco botones 1-5; devuelve el nodo y una función que da el valor (o undefined). */
+    function puntos(valor, rotulo) {
+      var actual = valor;
+      var caja = el('span', { class: 'puntos', role: 'group', 'aria-label': rotulo });
+      [1, 2, 3, 4, 5].forEach(function (v) {
+        var b = el('button', { type: 'button', 'aria-pressed': String(v === actual), 'aria-label': rotulo + ': ' + v }, String(v));
+        b.addEventListener('click', function () {
+          actual = actual === v ? undefined : v;
+          [].forEach.call(caja.children, function (h, k) { h.setAttribute('aria-pressed', String(k + 1 === actual)); });
+        });
+        caja.appendChild(b);
+      });
+      return { nodo: caja, valor: function () { return actual; } };
+    }
+
+    function recibir(d, args) {
+      if (!d || d.error) {
+        pintar(el('p', { class: 'aviso aviso--mal' }, (d && d.error) || 'No hay informe que enseñar.'));
+        return;
+      }
+      var p = d.propuesta || {}, cante = d.cante || {};
+      var yaGuardado = d.guardado === true || Vista.recordar('guardado') === '1';
+      if (yaGuardado) {
+        pintar([
+          el('div', { class: 'sobre' }, 'Informe del cante'),
+          el('p', { class: 'aviso aviso--bien' }, 'Informe guardado en la app' + (d.diarioActualizado ? ', con la valoración y los comentarios en el diario.' : '.')),
+          d.deberesApuntados ? el('p', { class: 'apagado' }, d.deberesApuntados + ' tareas apuntadas como deberes.') : null,
+          d.aviso ? el('p', { class: 'aviso' }, d.aviso) : null,
+        ]);
+        return;
+      }
+
+      var general = puntos(p.valoracion, 'Valoración general');
+      var porTema = Object.keys(p.valoraciones || {}).concat((cante.temas || []).filter(function (t) { return !(p.valoraciones || {})[t]; }))
+        .map(function (t) { return { tema: t, c: puntos((p.valoraciones || {})[t], 'Valoración del ' + t) }; });
+      var criterios = Object.keys(p.criterios || {}).map(function (c) { return { nombre: c, c: puntos(p.criterios[c], c) }; });
+      var comentarios = el('textarea', { maxlength: '300', id: 'comentarios' });
+      comentarios.value = p.comentarios || '';
+      var cuenta = el('div', { class: 'cuenta apagado' }, comentarios.value.length + ' / 300');
+      comentarios.addEventListener('input', function () { cuenta.textContent = comentarios.value.length + ' / 300'; });
+
+      var cajaTareas = el('div', {});
+      function tarea(texto) {
+        var campo = el('input', { type: 'text', maxlength: '300', 'aria-label': 'Tarea' });
+        campo.value = texto || '';
+        var fila = el('div', { class: 'tarea' }, [campo, el('button', { type: 'button', 'aria-label': 'Quitar la tarea', onclick: function () { fila.remove(); } }, '×')]);
+        cajaTareas.appendChild(fila);
+      }
+      (p.tareas || []).forEach(tarea);
+
+      var hayPrevio = d.yaHabia && Object.keys(d.yaHabia).length > 0;
+      var sustituir = el('input', { type: 'checkbox', id: 'sustituir' });
+      var estado = el('div', {});
+      var boton = el('button', { class: 'boton', type: 'button' }, 'Guardar en la app');
+
+      boton.addEventListener('click', function () {
+        if (guardando) return;
+        guardando = true;
+        boton.disabled = true;
+        boton.textContent = 'Guardando…';
+        var a = { oposicion: args.oposicion, canteId: args.canteId, informe: args.informe, sustituir: sustituir.checked };
+        if (general.valor()) a.valoracion = general.valor();
+        var vs = {}; porTema.forEach(function (t) { if (t.c.valor()) vs[t.tema] = t.c.valor(); });
+        if (Object.keys(vs).length) a.valoraciones = vs;
+        var cs = {}; criterios.forEach(function (c) { if (c.c.valor()) cs[c.nombre] = c.c.valor(); });
+        if (Object.keys(cs).length) a.criterios = cs;
+        if (comentarios.value.trim()) a.comentarios = comentarios.value.trim();
+        var ts = [].map.call(cajaTareas.querySelectorAll('input'), function (x) { return x.value.trim(); }).filter(Boolean).slice(0, 10);
+        if (ts.length) a.tareas = ts;
+        Vista.llamar('guardar_informe_cante', a).then(function (r) {
+          guardando = false;
+          if (r && r.guardado) {
+            Vista.recordar('guardado', '1');
+            Vista.contar('El usuario ha guardado el informe del cante ' + args.canteId + ' en la app con el botón de la vista' +
+              (a.valoracion ? ' (valoración general ' + a.valoracion + ')' : '') + (r.aviso ? '. Aviso: ' + r.aviso : '') + '. No lo guardes otra vez.');
+            recibir(Object.assign({ guardado: true }, r), args);
+          } else {
+            boton.disabled = false;
+            boton.textContent = 'Guardar en la app';
+            estado.textContent = '';
+            estado.appendChild(el('p', { class: 'aviso aviso--mal' }, (r && r.error) || 'No se ha podido guardar.'));
+          }
+        });
+      });
+
+      pintar([
+        el('div', { class: 'sobre' }, 'Informe del cante · sin guardar'),
+        el('h1', {}, (cante.fecha ? 'Cante del ' + fechaLarga(cante.fecha) : 'Cante') + ((cante.temas || []).length ? ' · ' + cante.temas.join(', ') : '')),
+        el('hr', { class: 'filete' }),
+        cante.estado && cante.estado !== 'hecho' ? el('p', { class: 'aviso' }, 'Este cante no está marcado como hecho en la app: se guardará el informe, pero no la valoración ni los comentarios (ciérralo antes en la app).') : null,
+        el('div', { class: 'campo rejilla' }, [el('span', {}, 'Valoración general'), general.nodo].concat(
+          porTema.reduce(function (a, t) { return a.concat([el('span', { class: 'codigo' }, t.tema), t.c.nodo]); }, []))),
+        criterios.length ? el('div', { class: 'campo' }, [el('div', { class: 'sobre rotulo' }, 'Rúbrica'), el('div', { class: 'rejilla' }, criterios.reduce(function (a, c) { return a.concat([el('span', {}, c.nombre), c.c.nodo]); }, []))]) : null,
+        el('div', { class: 'campo' }, [el('label', { class: 'sobre', for: 'comentarios' }, 'Comentarios para el diario'), comentarios, cuenta]),
+        el('div', { class: 'campo' }, [el('div', { class: 'sobre rotulo' }, 'Tareas para el próximo cante'), cajaTareas,
+          el('button', { class: 'boton boton--secundario', type: 'button', onclick: function () { if (cajaTareas.children.length < 10) tarea(''); } }, 'Añadir tarea')]),
+        el('details', {}, [el('summary', {}, 'Ver el informe completo'), el('div', { class: 'informe tarjeta' }, args.informe || '')]),
+        hayPrevio ? el('p', { class: 'aviso' }, [el('label', {}, [sustituir, ' En el diario ya hay ' + Object.keys(d.yaHabia).map(function (k) { return (YA[k] || k) + (k === 'valoracion' ? ' (' + d.yaHabia[k] + ')' : ''); }).join(', ') + ', tuyo o de tu preparador. Marca aquí para cambiarlo; si no, se deja como está.'])]) : null,
+        el('div', { class: 'fila pie' }, boton),
+        estado,
+      ]);
+    }
+
+    Vista.alRecibir(recibir);
+  })();
+</script>

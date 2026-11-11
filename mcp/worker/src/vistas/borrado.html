@@ -1,0 +1,75 @@
+<style>
+  .recuento { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; }
+  .recuento span:nth-child(even) { font-variant-numeric: tabular-nums; text-align: right; font-weight: 600; }
+  h1.peligro { color: var(--mal); }
+</style>
+<div id="raiz"><p class="apagado">Contando lo que hay…</p></div>
+<script>
+  (function () {
+    var borrando = false;
+
+    function recibir(d) {
+      if (!d || d.error) {
+        pintar(el('p', { class: 'aviso aviso--mal' }, (d && d.error) || 'No se ha podido consultar.'));
+        return;
+      }
+      var op = (d.oposicion || '').toUpperCase();
+      if (d.borrado === true) {
+        pintar([
+          el('div', { class: 'sobre' }, 'Datos de ' + op),
+          el('p', { class: 'aviso aviso--bien' }, 'Borrados los datos de ' + op + ' en la nube (' + (d.documentosBorrados || 0) + ' documentos' + (d.enlacesRotos ? ', ' + d.enlacesRotos + (d.enlacesRotos === 1 ? ' enlace roto' : ' enlaces rotos') : '') + ').'),
+          el('p', { class: 'apagado' }, 'La app borra su copia en cada dispositivo la próxima vez que sincronice. Hace falta la versión 1.25.0 o posterior: una anterior podría volver a subir lo que tenga guardado.'),
+          (d.avisos || []).length ? el('div', { class: 'aviso' }, [el('div', {}, 'Algo no se ha podido borrar:'), el('ul', {}, d.avisos.map(function (a) { return el('li', {}, a); }))]) : null,
+        ]);
+        return;
+      }
+      if (!d.codigo) {
+        pintar(el('p', { class: 'aviso' }, d.aviso || 'No hay datos en ' + op + ': no hay nada que borrar.'));
+        return;
+      }
+
+      var campo = el('input', { type: 'text', id: 'frase', autocomplete: 'off', autocapitalize: 'characters', spellcheck: 'false', placeholder: d.frase });
+      var boton = el('button', { class: 'boton boton--peligro', type: 'button', disabled: true }, 'Borrar los datos de ' + op);
+      var estado = el('div', {});
+      campo.addEventListener('input', function () { boton.disabled = borrando || campo.value.trim().toUpperCase() !== d.frase; });
+
+      boton.addEventListener('click', function () {
+        if (borrando || campo.value.trim().toUpperCase() !== d.frase) return;
+        borrando = true;
+        boton.disabled = true;
+        campo.disabled = true;
+        boton.textContent = 'Borrando…';
+        Vista.llamar('borrar_datos_oposicion', { oposicion: d.oposicion, codigo: d.codigo, frase: campo.value.trim() }).then(function (r) {
+          borrando = false;
+          if (r && r.borrado) {
+            Vista.contar('El usuario ha borrado sus datos de ' + op + ' con la vista (escribió la frase él mismo): ' + (r.documentosBorrados || 0) + ' documentos.' +
+              ((r.avisos || []).length ? ' Avisos: ' + r.avisos.join('; ') : '') + ' No vuelvas a llamar a borrar_datos_oposicion.');
+            recibir(r);
+          } else {
+            campo.disabled = false;
+            boton.textContent = 'Borrar los datos de ' + op;
+            estado.textContent = '';
+            estado.appendChild(el('p', { class: 'aviso aviso--mal' }, (r && r.error) || 'No se ha borrado nada.'));
+          }
+        });
+      });
+
+      var filas = [];
+      Object.keys(d.seBorraria || {}).forEach(function (k) { filas.push(el('span', {}, k), el('span', {}, String(d.seBorraria[k]))); });
+      pintar([
+        el('div', { class: 'sobre' }, 'No se puede deshacer'),
+        el('h1', { class: 'peligro' }, 'Borrar todos tus datos de ' + op),
+        el('hr', { class: 'filete' }),
+        el('div', { class: 'tarjeta recuento' }, filas.length ? filas : [el('span', {}, 'Documentos'), el('span', {}, String(d.documentos || 0))]),
+        el('p', {}, 'Se romperán tus enlaces con preparadores y alumnos de esa oposición y se borrarán tus reservas de clase. No se toca la otra oposición ni tu cuenta.'),
+        el('p', { class: 'apagado' }, 'Antes puedes exportar tus datos en la app (Más → Cuenta).'),
+        el('label', { for: 'frase' }, ['Escribe ', el('b', {}, d.frase), ' para confirmar']),
+        el('div', { style: 'margin-top:6px' }, campo),
+        el('div', { class: 'fila pie' }, boton),
+        estado,
+      ]);
+    }
+
+    Vista.alRecibir(recibir);
+  })();
+</script>

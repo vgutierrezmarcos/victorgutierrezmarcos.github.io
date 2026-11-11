@@ -11,6 +11,7 @@ import {
   construirInforme,
   cronogramaActivo,
   nuevoId,
+  resumenCante,
   resumenCantes,
   resumenCronograma,
   resumenProgreso,
@@ -36,6 +37,7 @@ import { type Apuntes, ErrorApuntes, idDeDrive } from './drive';
 import { MINUTOS_CLASE, MODALIDADES, ahoraMadrid, construirReserva, construirSesion, copiaParaAlumno, erroresPeticion, fechaClase, fijarTemasClase, huecosLibres, proximas, seSolapan, temasDelCante, type PeticionClase } from './clases';
 import { type AlmacenDatos, ErrorFirestore, Firestore, type Json } from './firestore';
 import { borrarOposicion, recuentoOposicion } from './borrado';
+import { metaVista, registrarVistas } from './vistas';
 
 export const OPOSICIONES = ['tcee', 'dce'] as const;
 export type Oposicion = (typeof OPOSICIONES)[number];
@@ -269,7 +271,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Algunas herramientas llevan una vista interactiva que ciertos clientes (Claude) pintan dentro del chat: test_interactivo (el usuario contesta con botones) y, con vistaPrevia: true, proponer_cronograma, guardar_informe_cante y agendar_clase (el usuario revisa y guarda él con un botón); como no puedes saber si tu cliente la pinta, di siempre al usuario qué va a ver y qué hacer si no ve ningún cuadro. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -288,6 +290,20 @@ export function crearServidor(ctx: Contexto): McpServer {
         ctx.medir?.({ herramienta: String(nombre), oposicion: typeof op === 'string' ? op : '', ok, ms: Date.now() - t0 });
       }
     });
+
+  registrarVistas(server);
+
+  /** Títulos de los temas (para las vistas): solo los que se piden y existen en el programa. */
+  const titulosDe = async (oposicion: Oposicion, temas: string[]): Promise<Record<string, string>> => {
+    const programa = await ctx.fuentes().then((i) => (oposicion === 'dce' ? i.dce : i.tcee)).catch(() => null);
+    const t: Record<string, string> = {};
+    for (const c of new Set(temas)) if (programa?.[c]?.titulo) t[c] = programa[c].titulo;
+    return t;
+  };
+  const VISTA_PREVIA = (que: string, boton: string) =>
+    z.boolean().default(false).describe(`true: no ${que} nada; lo valida y lo devuelve para enseñarlo. En los clientes que pintan vistas interactivas (Claude) el usuario lo ve en un cuadro con el botón «${boton}» y lo hace él; en los demás, enséñaselo tú y, cuando confirme, repite la llamada sin vistaPrevia. Recomendado como primer paso.`);
+  const siguientePrevia = (boton: string) =>
+    `No se ha guardado nada todavía. Dile al usuario, en una o dos líneas, que lo revise y que pulse «${boton}» en el cuadro que tiene delante; y que, si no ve ningún cuadro (su cliente no pinta vistas), te lo confirme por escrito: entonces repite la llamada sin vistaPrevia. No repitas el contenido entero si ya se lo has enseñado.`;
 
   server.registerTool(
     'leer_skill',
@@ -601,7 +617,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Guardar en la app un cronograma nuevo',
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
       description:
-        'Crea en la app el cronograma acordado con el opositor (pasa a ser el activo; el anterior queda archivado, no se borra; si era del mismo ejercicio, conserva los temas que ya tenía hechos y sigue compartido con su preparador si lo estaba). Úsalo SOLO después de enseñárselo entero y de que confirme expresamente que lo quiere guardar. Una entrada por semana de cante, con la fecha del cante (AAAA-MM-DD, siempre en el día de cante) y los códigos de los temas («3.A.8»); las semanas sin cante entre la primera y la última quedan de descanso. La app lo muestra al sincronizar (al abrirla o cada pocos minutos).',
+        'Crea en la app el cronograma acordado con el opositor (pasa a ser el activo; el anterior queda archivado, no se borra; si era del mismo ejercicio, conserva los temas que ya tenía hechos y sigue compartido con su preparador si lo estaba). Sin vistaPrevia, úsalo SOLO después de enseñárselo entero y de que confirme expresamente que lo quiere guardar; con vistaPrevia: true no guarda nada y el usuario lo ve como calendario y lo guarda él con un botón (en los clientes con vistas interactivas). Una entrada por semana de cante, con la fecha del cante (AAAA-MM-DD, siempre en el día de cante) y los códigos de los temas («3.A.8»); las semanas sin cante entre la primera y la última quedan de descanso. La app lo muestra al sincronizar (al abrirla o cada pocos minutos).',
       inputSchema: {
         oposicion: oposicionParam,
         ejercicio: z.number().int().min(1).max(5).describe('Ejercicio (3 o 4 en TCEE; 1 en DCE).'),
@@ -612,9 +628,11 @@ export function crearServidor(ctx: Contexto): McpServer {
           .max(120),
         temasPorSemana: z.number().int().min(1).max(12).optional().describe('Ritmo nominal; si falta, la media de las semanas con temas.'),
         examen: z.string().optional().describe('Fecha del examen (AAAA-MM-DD), solo en cronogramas de un ejercicio escrito.'),
+        vistaPrevia: VISTA_PREVIA('guarda', 'Guardar en la app'),
       },
+      _meta: metaVista('cronograma'),
     },
-    async ({ oposicion, ejercicio, diaCante, semanas, temasPorSemana, examen }) =>
+    async ({ oposicion, ejercicio, diaCante, semanas, temasPorSemana, examen, vistaPrevia }) =>
       protegido(async () => {
         const { documento, errores } = construirCronograma({ semanas, diaCante, ejercicio, temasPorSemana, examen }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el cronograma:\n- ${errores.join('\n- ')}`);
@@ -624,6 +642,8 @@ export function crearServidor(ctx: Contexto): McpServer {
           const ajenos = (documento.temas as string[]).filter((t) => !programa[t]);
           if (ajenos.length) return error(`No se ha guardado el cronograma: ${ajenos.join(', ')} no ${ajenos.length > 1 ? 'están' : 'está'} en el programa de ${oposicion.toUpperCase()} (míralo con buscar_temario).`);
         }
+        const vista = { oposicion, cronograma: resumenCronograma(documento.id as string, documento), titulos: await titulosDe(oposicion, documento.temas as string[]) };
+        if (vistaPrevia) return json({ guardado: false, vistaPrevia: true, ...vista, siguiente: siguientePrevia('Guardar en la app') });
         const db = await ctx.almacen(oposicion);
         const anteriores = await db.listar('cronogramas');
         const marca = ahoraMadrid();
@@ -642,6 +662,7 @@ export function crearServidor(ctx: Contexto): McpServer {
           temas: (documento.temas as Json[]).length,
           archivados: anteriores.filter((c) => c.datos.archivado !== true).map((c) => c.id),
           aviso: `Dile al opositor que lo verá en la app (Cronograma) al sincronizar y que puede retocar cada semana allí.${heredado.compartido ? ' Sigue compartido con su preparador, como el anterior.' : ' No está compartido con ningún preparador: si quiere que su preparador lo vea, que lo comparta desde la app.'}`,
+          ...vista,
         });
       }),
   );
@@ -652,7 +673,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Guardar en la app el informe de un cante',
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
       description:
-        'Guarda el informe de corrección de un cante en la app (cantes/{id}/informes) y, si se dan, pone en el diario la valoración (1-5, general y por tema), los comentarios (hasta 300 caracteres) y los criterios de la rúbrica, como haría el opositor en «¿Cómo ha ido el cante?». No cambia una valoración o unos comentarios que ya estuvieran puestos (lo dice en «yaHabia») salvo con «sustituir». Úsalo SOLO con un cante que ya está en el diario (su «id» viene de leer_cantes) y después de que el opositor confirme el bloque «Para la app».',
+        'Guarda el informe de corrección de un cante en la app (cantes/{id}/informes) y, si se dan, pone en el diario la valoración (1-5, general y por tema), los comentarios (hasta 300 caracteres) y los criterios de la rúbrica, como haría el opositor en «¿Cómo ha ido el cante?». No cambia una valoración o unos comentarios que ya estuvieran puestos (lo dice en «yaHabia») salvo con «sustituir». Úsalo SOLO con un cante que ya está en el diario (su «id» viene de leer_cantes) y después de que el opositor confirme el bloque «Para la app»; o con vistaPrevia: true, que no guarda nada: el usuario ve la valoración, la rúbrica, los comentarios y las tareas en un cuadro, los retoca y lo guarda él con un botón (en los clientes con vistas interactivas).',
       inputSchema: {
         oposicion: oposicionParam,
         canteId: z.string().min(1).describe('Id del cante (de leer_cantes).'),
@@ -663,9 +684,11 @@ export function crearServidor(ctx: Contexto): McpServer {
         criterios: z.record(z.string(), z.number().int().min(1).max(5)).optional().describe('Nota 1-5 por criterio de la rúbrica, solo si el opositor la usa.'),
         tareas: z.array(z.string()).max(10).optional().describe('Tareas para antes del próximo cante (en un cante propio se apuntan también como deberes en la app).'),
         sustituir: z.boolean().default(false).describe('true solo si el opositor ha confirmado que quiere cambiar la valoración o los comentarios que ya había en el diario.'),
+        vistaPrevia: VISTA_PREVIA('guarda', 'Guardar en la app'),
       },
+      _meta: metaVista('informe'),
     },
-    async ({ oposicion, canteId, informe, valoracion, valoraciones, comentarios, criterios, tareas, sustituir }) =>
+    async ({ oposicion, canteId, informe, valoracion, valoraciones, comentarios, criterios, tareas, sustituir, vistaPrevia }) =>
       protegido(async () => {
         const { id, documento, resultado, errores } = construirInforme({ informe, valoracion, valoraciones, comentarios, criterios, tareas }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el informe:\n- ${errores.join('\n- ')}`);
@@ -673,6 +696,18 @@ export function crearServidor(ctx: Contexto): McpServer {
         const cid = Firestore.tramo(canteId);
         const cante = await db.leer(`cantes/${cid}`);
         if (!cante) return error(`No hay ningún cante con id «${canteId}» en la app.`);
+        if (vistaPrevia) {
+          const c = resumenCante(canteId, cante);
+          return json({
+            guardado: false,
+            vistaPrevia: true,
+            oposicion,
+            cante: { id: canteId, fecha: c.fecha, temas: c.temas, estado: typeof cante.estado === 'string' ? cante.estado : 'pendiente', conPreparador: typeof cante.preparador === 'string' || undefined },
+            propuesta: { valoracion, valoraciones, comentarios, criterios, tareas },
+            yaHabia: sinPisar(resultado, cante.resultado).yaHabia,
+            siguiente: siguientePrevia('Guardar en la app'),
+          });
+        }
         await db.escribir(`cantes/${cid}/informes/${id}`, documento);
         const marca = ahoraMadrid();
         const avisos: string[] = [];
@@ -852,6 +887,37 @@ export function crearServidor(ctx: Contexto): McpServer {
       }),
   );
 
+  /** Las preguntas de un test a medida (para preguntas_test y test_interactivo), o el error que se devuelve. */
+  const testDe = async (oposicion: Oposicion, temas: string[], n: number, modo: 'no_dominadas' | 'falladas' | 'todas'): Promise<CallToolResult | { [k: string]: unknown }> => {
+    const codigos = temas.map((t) => codigoTema(t)).filter((t): t is string => !!t);
+    if (!codigos.length) return error(`Ningún código de tema válido en ${JSON.stringify(temas)} (formato «3.A.8»).`);
+    const banco = await ctx.banco();
+    if (!banco.preguntas?.size) return error('El banco de preguntas no está disponible ahora mismo. Inténtalo más tarde o remite al simulador de la web.');
+    const db = await ctx.almacen(oposicion);
+    const elegidas = elegirPreguntas(banco.preguntas, codigos, n, modo, await db.leer('progress/spaced_repetition'));
+    const explicaciones = new Map<string, Record<string, { clave?: string }>>();
+    await Promise.all([...new Set(elegidas.map((p) => p.examen))].map(async (ex) => explicaciones.set(ex, await ctx.explicaciones(ex).catch(() => ({})))));
+    const disponibles = [...banco.preguntas.values()].filter((p) => p.respuesta.length && p.temas.some((t) => codigos.includes(t))).length;
+    return {
+      temas: codigos,
+      modo,
+      oficialesDeEsosTemas: disponibles,
+      preguntas: elegidas.map((p) => ({
+        id: p.id,
+        cabecera: `[${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}]`,
+        enunciado: p.enunciado,
+        opciones: p.opciones,
+        ...(p.figura ? { figura: p.figuras?.length ? 'Lleva figura: descríbela con «descripcion» y enlaza «url» para que la abra.' : 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.', ...(p.figuras?.length ? { figuras: p.figuras } : {}) } : {}),
+        respuesta: p.respuesta,
+        ...(p.respuesta.length > 1 ? { variasValidas: true } : {}),
+        porQue: explicaciones.get(p.examen)?.[String(p.id)]?.clave,
+        ...(p.nota ? { nota: p.nota } : {}),
+        historial: p.aciertos + p.fallos > 0 ? { aciertos: p.aciertos, fallos: p.fallos } : 'no la ha hecho',
+      })),
+      ...(elegidas.length < n ? { aviso: `Solo hay ${elegidas.length} preguntas oficiales de esos temas en el modo «${modo}». Completa con preguntas nuevas del mismo estilo, marcadas como «nueva», o prueba otro modo.` } : {}),
+    };
+  };
+
   server.registerTool(
     'preguntas_test',
     {
@@ -868,34 +934,36 @@ export function crearServidor(ctx: Contexto): McpServer {
     },
     async ({ oposicion, temas, n, modo }) =>
       protegido(async () => {
-        const codigos = temas.map((t) => codigoTema(t)).filter((t): t is string => !!t);
-        if (!codigos.length) return error(`Ningún código de tema válido en ${JSON.stringify(temas)} (formato «3.A.8»).`);
-        const banco = await ctx.banco();
-        if (!banco.preguntas?.size) return error('El banco de preguntas no está disponible ahora mismo. Inténtalo más tarde o remite al simulador de la web.');
-        const db = await ctx.almacen(oposicion);
-        const elegidas = elegirPreguntas(banco.preguntas, codigos, n, modo, await db.leer('progress/spaced_repetition'));
-        const explicaciones = new Map<string, Record<string, { clave?: string }>>();
-        await Promise.all([...new Set(elegidas.map((p) => p.examen))].map(async (ex) => explicaciones.set(ex, await ctx.explicaciones(ex).catch(() => ({})))));
-        const disponibles = [...banco.preguntas.values()].filter((p) => p.respuesta.length && p.temas.some((t) => codigos.includes(t))).length;
-        return json({
-          temas: codigos,
-          modo,
-          oficialesDeEsosTemas: disponibles,
-          preguntas: elegidas.map((p) => ({
-            id: p.id,
-            cabecera: `[${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}]`,
-            enunciado: p.enunciado,
-            opciones: p.opciones,
-            ...(p.figura ? { figura: p.figuras?.length ? 'Lleva figura: descríbela con «descripcion» y enlaza «url» para que la abra.' : 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.', ...(p.figuras?.length ? { figuras: p.figuras } : {}) } : {}),
-            respuesta: p.respuesta,
-            ...(p.respuesta.length > 1 ? { variasValidas: true } : {}),
-            porQue: explicaciones.get(p.examen)?.[String(p.id)]?.clave,
-            ...(p.nota ? { nota: p.nota } : {}),
-            historial: p.aciertos + p.fallos > 0 ? { aciertos: p.aciertos, fallos: p.fallos } : 'no la ha hecho',
-          })),
-          ...(elegidas.length < n ? { aviso: `Solo hay ${elegidas.length} preguntas oficiales de esos temas en el modo «${modo}». Completa con preguntas nuevas del mismo estilo, marcadas como «nueva», o prueba otro modo.` } : {}),
-          comoUsarlas: 'Plantéalas sin la respuesta; corrige cuando conteste, con la explicación («porQue») y la fuente. El desarrollo completo de cada explicación está en el simulador de la web y en la app («¿Por qué?»).',
-        });
+        const t = await testDe(oposicion, temas, n, modo);
+        return 'content' in t ? (t as CallToolResult) : json({ ...t, comoUsarlas: 'Plantéalas sin la respuesta; corrige cuando conteste, con la explicación («porQue») y la fuente. El desarrollo completo de cada explicación está en el simulador de la web y en la app («¿Por qué?»).' });
+      }),
+  );
+
+  server.registerTool(
+    'test_interactivo',
+    {
+      title: 'Test interactivo con preguntas oficiales',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Abre un test interactivo dentro del chat: las mismas preguntas oficiales que preguntas_test (mismos parámetros), pero el usuario las contesta con botones en un cuadro, con la figura a la vista, la corrección al momento y el «¿Por qué?», y al terminar te llega su resultado con los fallos para que se los expliques. Solo lo pintan los clientes con vistas interactivas (Claude, en la web y en el escritorio): úsala cuando pida «hazme un test» en uno de ellos y NO copies las preguntas ni las respuestas en el chat; dile que conteste en el cuadro. Si el usuario dice que no ve ningún cuadro, o tu cliente no pinta vistas, usa preguntas_test y plantéaselas tú.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        temas: z.array(z.string()).min(1).max(10).describe('Códigos de los temas, «3.A.8».'),
+        n: z.number().int().min(1).max(30).default(10).describe('Cuántas preguntas (1-30).'),
+        modo: z.enum(['no_dominadas', 'falladas', 'todas']).default('no_dominadas'),
+      },
+      _meta: metaVista('test'),
+    },
+    async ({ oposicion, temas, n, modo }) =>
+      protegido(async () => {
+        const t = await testDe(oposicion, temas, n, modo);
+        return 'content' in t
+          ? (t as CallToolResult)
+          : json({
+              vista:
+                'El usuario tiene estas preguntas delante en un cuadro interactivo: las contesta con botones y ve la corrección y el «¿Por qué?» al momento. NO las copies ni des las respuestas en el chat: dile solo, en una línea, que conteste en el cuadro. Cuando termine te llegará su resultado con los fallos: entonces explícaselos con la fuente. Si dice que no ve ningún cuadro, su cliente no pinta vistas: plantéale tú estas mismas preguntas, sin la respuesta.',
+              ...t,
+            });
       }),
   );
 
@@ -1059,12 +1127,13 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Borrar todos los datos de una oposición',
       annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: true },
       description:
-        'Borra TODOS los datos del usuario en UNA oposición (TCEE o DCE) y no se puede deshacer: tests, repaso, temas, notas, cantes e informes, cronogramas, clases, alumnos, reservas, y sus enlaces con preparadores y alumnos de esa oposición. No toca la otra oposición ni la cuenta. Es lo mismo que Cuenta → «Borrar mis datos de una oposición» en la app. NUNCA por iniciativa tuya: solo si el usuario lo pide expresamente. Va en dos pasos. PASO 1: llámala solo con «oposicion»; no borra nada y devuelve qué se borraría, un «codigo» y la «frase» de confirmación. Enseña al usuario ese recuento, dile que no se puede deshacer y que puede exportar antes sus datos en la app (Más → Cuenta), y pídele que escriba ÉL, tal cual, la frase. PASO 2: solo cuando la haya escrito literalmente en la conversación (no vale «sí», «adelante» ni que la escribas tú), llámala otra vez con «codigo» y con «frase» copiada de su mensaje. El código caduca en unos minutos. Si duda, no borres.',
+        'Borra TODOS los datos del usuario en UNA oposición (TCEE o DCE) y no se puede deshacer: tests, repaso, temas, notas, cantes e informes, cronogramas, clases, alumnos, reservas, y sus enlaces con preparadores y alumnos de esa oposición. No toca la otra oposición ni la cuenta. Es lo mismo que Cuenta → «Borrar mis datos de una oposición» en la app. NUNCA por iniciativa tuya: solo si el usuario lo pide expresamente. Va en dos pasos. PASO 1: llámala solo con «oposicion»; no borra nada y devuelve qué se borraría, un «codigo» y la «frase» de confirmación. Enseña al usuario ese recuento, dile que no se puede deshacer y que puede exportar antes sus datos en la app (Más → Cuenta), y pídele que escriba ÉL, tal cual, la frase. PASO 2: solo cuando la haya escrito literalmente en la conversación (no vale «sí», «adelante» ni que la escribas tú), llámala otra vez con «codigo» y con «frase» copiada de su mensaje. El código caduca en unos minutos. Si duda, no borres. En los clientes con vistas interactivas (Claude), el paso 1 abre además un cuadro con el recuento y un campo donde el usuario escribe la frase y confirma él mismo: díselo, y si lo hace ahí no llames al paso 2.',
       inputSchema: {
         oposicion: z.enum(OPOSICIONES).describe('Oposición cuyos datos se borran: «tcee» o «dce». Sin valor por defecto: tiene que decirla el usuario.'),
         codigo: z.string().max(20).optional().describe('Paso 2: el código que devolvió el paso 1.'),
         frase: z.string().max(40).optional().describe('Paso 2: la frase de confirmación tal como la ha escrito el usuario en la conversación.'),
       },
+      _meta: metaVista('borrado'),
     },
     async ({ oposicion, codigo, frase }) =>
       protegido(async () => {
@@ -1082,7 +1151,7 @@ export function crearServidor(ctx: Contexto): McpServer {
             ademas: 'Se romperán sus enlaces con preparadores y alumnos de esa oposición y se borrarán sus reservas de clase. No se toca la otra oposición ni la cuenta. No se puede deshacer.',
             frase: esperada,
             codigo: await codigoBorrado(oposicion, tramo),
-            siguiente: `Enseña esto al usuario y pídele que escriba él, tal cual, «${esperada}». Solo entonces vuelve a llamar con «codigo» y «frase».`,
+            siguiente: `Enseña esto al usuario y pídele que escriba él, tal cual, «${esperada}»: en el cuadro que tiene delante, si lo ve (ahí confirma él y no hace falta que llames otra vez), o en el chat. Solo si la escribe en el chat vuelve a llamar con «codigo» y «frase».`,
           });
         }
         if (!codigo || !frase) return error('Faltan «codigo» o «frase». Empieza por el paso 1 (solo «oposicion») y sigue sus indicaciones.');
@@ -1237,7 +1306,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       // Mundo abierto: la petición o la clase le llega a otra persona (el preparador o el alumno).
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
       description:
-        'Agenda una clase en la app. Como OPOSITOR («como»: «opositor», «con»: uid del preparador): pide la clase a su preparador (una reserva que él acepta en su app; al aceptarla, aparece en las dos agendas con la modalidad y los temas) y fija esos temas para la clase en la agenda del opositor. Como PREPARADOR («como»: «preparador», «con»: id del alumno): crea la clase en su agenda y en la del alumno (si está enlazado), con los temas como propuesta que el alumno acepta o cambia. Antes, preparar_clase y la confirmación explícita del usuario con el resumen (día, hora, duración, modalidad, temas, con quién). Hora de Madrid.',
+        'Agenda una clase en la app. Como OPOSITOR («como»: «opositor», «con»: uid del preparador): pide la clase a su preparador (una reserva que él acepta en su app; al aceptarla, aparece en las dos agendas con la modalidad y los temas) y fija esos temas para la clase en la agenda del opositor. Como PREPARADOR («como»: «preparador», «con»: id del alumno): crea la clase en su agenda y en la del alumno (si está enlazado), con los temas como propuesta que el alumno acepta o cambia. Antes, preparar_clase y la confirmación explícita del usuario con el resumen (día, hora, duración, modalidad, temas, con quién); o con vistaPrevia: true, que no agenda nada: el usuario ve ese resumen en un cuadro y la pide o la crea él con un botón (en los clientes con vistas interactivas). Hora de Madrid.',
       inputSchema: {
         oposicion: oposicionParam,
         como: z.enum(['opositor', 'preparador']),
@@ -1251,9 +1320,11 @@ export function crearServidor(ctx: Contexto): McpServer {
         enlace: z.string().max(300).optional().describe('Online: enlace de la videollamada, si ya lo hay (si no, la app del preparador crea el de Meet).'),
         nota: z.string().max(500).optional().describe('Lo que el usuario quiera decir (qué le preocupa, qué quiere trabajar).'),
         aunque_choque: z.boolean().default(false).describe('true solo si el usuario ya sabe que pisa otra clase suya y quiere seguir.'),
+        vistaPrevia: VISTA_PREVIA('agenda', 'Pedir la clase» o «Crear la clase'),
       },
+      _meta: metaVista('clase'),
     },
-    async ({ oposicion, como, con, dia, hora, minutos, modalidad, temas, lugar, enlace, nota, aunque_choque }) =>
+    async ({ oposicion, como, con, dia, hora, minutos, modalidad, temas, lugar, enlace, nota, aunque_choque, vistaPrevia }) =>
       protegido(async () => {
         const fecha = fechaClase(dia, hora);
         if (!fecha) return error(`Fecha u hora no válidas: «${dia}» «${hora}» (formato AAAA-MM-DD y HH:MM).`);
@@ -1275,6 +1346,26 @@ export function crearServidor(ctx: Contexto): McpServer {
           const errores = erroresPeticion(p, ahora);
           if (errores.length) return error(`No se ha pedido la clase: ${errores.join('; ')}.`);
           const choques = proximas(await yo.listar('cantes'), ahora, 800).filter((c) => seSolapan(fecha, p.minutos, c.fecha, c.minutos));
+          if (vistaPrevia)
+            return json({
+              vistaPrevia: true,
+              pedida: false,
+              como,
+              oposicion,
+              preparador: txt(vinculo.nombre) || 'tu preparador',
+              fecha: fecha.slice(0, 16),
+              minutos: p.minutos,
+              modalidad,
+              temas,
+              titulos: await titulosDe(oposicion, temas),
+              nota,
+              choques: choques.length ? choques.map((c) => `${c.fecha.slice(0, 16).replace('T', ' ')}${c.con ? ` con ${c.con}` : ''}`) : undefined,
+              avisos: [
+                ...(huecos && !libre ? ['Esa hora no es uno de los huecos que tu preparador tiene libres en la app: puede que la rechace.'] : []),
+                ...(lugar || enlace ? ['El lugar o el enlace no viajan en la petición: los pone el preparador al aceptarla.'] : []),
+              ],
+              siguiente: siguientePrevia('Pedir la clase'),
+            });
           if (choques.length && !aunque_choque)
             return error(`Pisa otra clase tuya: ${choques.map((c) => `${c.fecha.slice(0, 16)}${c.con ? ` con ${c.con}` : ''}`).join(', ')}. Pregunta al usuario y, si quiere seguir, repite con aunque_choque: true.`);
           const id = nuevoId();
@@ -1286,6 +1377,7 @@ export function crearServidor(ctx: Contexto): McpServer {
             await yo.escribir('progress/settings', { temasClases: fijarTemasClase(actuales, `res_${id}`, ahora, temas), updatedAt: ahora }, ['temasClases', 'updatedAt']);
           }
           return json({
+            como,
             pedida: true,
             reserva: id,
             fecha: fecha.slice(0, 16),
@@ -1316,6 +1408,25 @@ export function crearServidor(ctx: Contexto): McpServer {
           }
         }
         const choques = [...proximas(await yo.listar('sesiones'), ahora, 800), ...agendaAlumno].filter((c) => seSolapan(fecha, p.minutos, c.fecha, c.minutos));
+        if (vistaPrevia)
+          return json({
+            vistaPrevia: true,
+            creada: false,
+            como,
+            oposicion,
+            alumno: txt(alumno.nombre),
+            fecha: fecha.slice(0, 16),
+            minutos: p.minutos,
+            modalidad,
+            temas,
+            titulos: await titulosDe(oposicion, temas),
+            lugar,
+            enlace,
+            nota,
+            choques: choques.length ? choques.map((c) => c.fecha.slice(0, 16).replace('T', ' ')) : undefined,
+            avisos: uidAlumno ? [] : ['Este alumno no usa la app: la clase solo quedará en tu agenda.'],
+            siguiente: siguientePrevia('Crear la clase'),
+          });
         if (choques.length && !aunque_choque)
           return error(`Pisa otra clase (tuya o del alumno): ${choques.map((c) => c.fecha.slice(0, 16)).join(', ')}. Pregunta al usuario y, si quiere seguir, repite con aunque_choque: true.`);
         const id = nuevoId();
@@ -1334,6 +1445,7 @@ export function crearServidor(ctx: Contexto): McpServer {
           }
         }
         return json({
+          como,
           creada: true,
           sesion: id,
           fecha: fecha.slice(0, 16),
