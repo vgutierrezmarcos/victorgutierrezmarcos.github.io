@@ -3,7 +3,7 @@
  "preguntas": [
   {
    "id": 311401,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Dos empresas deciden a la vez, una sola vez y sin observar lo que hace la otra, si fijan un precio alto o un precio bajo. Las dos conocen los beneficios que obtiene cada una con cada combinación de precios, y eso es conocimiento común. Desde el punto de vista de la información, este juego es:",
    "opciones": {
     "a": "De información completa y perfecta: como las dos conocen la matriz de pagos, ninguna ignora nada relevante.",
@@ -26,7 +26,7 @@
   },
   {
    "id": 311402,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Una empresa entrante (E) decide si entra en el mercado de una empresa instalada (I). Si no entra, E gana 0 e I gana 8. Si entra, I elige entre acomodar (E gana 2 e I gana 3) o luchar con una guerra de precios (E gana $-1$ e I gana 1). Antes de que E decida, I puede invertir en capacidad adicional, con un coste hundido $K>0$ que E observa. Si I ha invertido, sus pagos pasan a ser $8-K$ si E no entra y $3-K$ si E entra e I acomoda (la capacidad queda ociosa), y siguen siendo 1 si E entra e I lucha (la capacidad se aprovecha en la guerra de precios); los pagos de E no cambian. ¿Para qué valores de $K$ invierte I en el equilibrio de Nash perfecto en subjuegos?",
    "opciones": {
     "a": "Para cualquier $K<5$: basta con que invertir y quedarse sola ($8-K$) le dé más que compartir el mercado (3).",
@@ -46,11 +46,17 @@
    "creada": "2026-11-11",
    "revisada": "2026-11-11",
    "vigencia": "estable",
-   "figura_pendiente": "Árbol del juego en forma extensiva, sin marcar el equilibrio. Raíz: I elige «Invertir» o «No invertir». En cada rama, E elige «Entrar» o «No entrar». Tras «Entrar», I elige «Acomodar» o «Luchar». Pagos (E, I) en los nodos terminales. Rama «No invertir»: No entrar (0, 8); Entrar-Acomodar (2, 3); Entrar-Luchar (−1, 1). Rama «Invertir»: No entrar (0, 8−K); Entrar-Acomodar (2, 3−K); Entrar-Luchar (−1, 1). Sin colores ni trazos que señalen las ramas elegidas."
+   "imagenes": [
+    {
+     "src": "banco:311402.webp",
+     "alt": "Árbol del juego. Primero la instalada (I) elige entre «No invertir» e «Invertir». Después la entrante (E) elige «No entrar» o «Entrar» y, si entra, I elige «Acomodar» o «Luchar». Pagos (E, I). Sin invertir: no entrar (0, 8); entrar y acomodar (2, 3); entrar y luchar (−1, 1). Con inversión: no entrar (0, 8 − K); entrar y acomodar (2, 3 − K); entrar y luchar (−1, 1). No se señala ninguna rama.",
+     "ancho": 600
+    }
+   ]
   },
   {
    "id": 311403,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "En un mercado de trabajo con señalización a la Spence hay trabajadores de productividad alta, $w_{\\mathrm A}=30$, y baja, $w_{\\mathrm B}=18$. La educación $y\\geq0$ no aumenta la productividad y cuesta $c_{\\mathrm A}(y)=2y$ a los de productividad alta y $c_{\\mathrm B}(y)=4y$ a los de productividad baja. Las empresas compiten, observan $y$ y pagan la productividad esperada dadas sus creencias. Considere los equilibrios bayesianos perfectos separadores en los que el tipo B elige $y=0$ y el tipo A elige $\\hat y>0$. ¿Qué nivel $\\hat y$ sobrevive al criterio intuitivo de Cho y Kreps?",
    "opciones": {
     "a": "$\\hat y=3$: el nivel más bajo de educación que el tipo B no quiere imitar.",
@@ -73,7 +79,7 @@
   },
   {
    "id": 311404,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Dos jugadores se reparten 1 euro con el procedimiento de ofertas alternadas de Rubinstein, con horizonte infinito: el jugador 1 propone en el primer período; si el 2 rechaza, propone el 2 en el período siguiente, y así sucesivamente. Un euro recibido un período más tarde vale $\\beta_1=0{,}5$ para el jugador 1 y $\\beta_2=0{,}8$ para el jugador 2. En el único equilibrio de Nash perfecto en subjuegos, el acuerdo es inmediato y el jugador 1 se lleva:",
    "opciones": {
     "a": "$1/2$, porque con información completa y acuerdo inmediato el reparto es simétrico.",
@@ -96,7 +102,7 @@
   },
   {
    "id": 311405,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "La empresa 1 tiene una patente que no puede explotar sola. Las empresas 2 y 3 son fabricantes: cualquiera de ellas, asociada con la 1, genera un beneficio de 120; solo hace falta un fabricante. En forma de función característica, con utilidad transferible: $v(\\{1\\})=v(\\{2\\})=v(\\{3\\})=v(\\{2,3\\})=0$ y $v(\\{1,2\\})=v(\\{1,3\\})=v(\\{1,2,3\\})=120$. Señale la afirmación CORRECTA:",
    "opciones": {
     "a": "El valor de Shapley es $(120,0,0)$ y coincide con el único punto del núcleo.",
@@ -119,7 +125,7 @@
   },
   {
    "id": 311406,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "En una subasta a sobre cerrado de segundo precio (de Vickrey) se vende un único objeto. Un pujador lo valora en 50, y su valoración es privada: no depende de lo que sepan los demás. Señale la afirmación CORRECTA sobre su puja:",
    "opciones": {
     "a": "Le conviene pujar algo menos de 50, tanto menos cuantos menos rivales haya, porque pujando 50 su ganancia sería nula si gana.",
@@ -142,7 +148,7 @@
   },
   {
    "id": 311407,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "En una subasta a sobre cerrado de primer precio participan 3 pujadores neutrales al riesgo. Sus valoraciones son privadas e independientes, y se distribuyen de manera uniforme entre 0 y 60. No hay precio de reserva. En el equilibrio bayesiano de Nash simétrico, ¿cuánto puja un participante que valora el objeto en 48 y cuál es el ingreso esperado del vendedor?",
    "opciones": {
     "a": "Puja 32, y el ingreso esperado es 30.",
@@ -165,7 +171,7 @@
   },
   {
    "id": 311408,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Un vendedor subasta un objeto entre $n$ pujadores neutrales al riesgo y simétricos, con valoraciones privadas e independientes distribuidas de manera uniforme entre 0 y 20. El vendedor valora el objeto en $v_0=4$ (es lo que obtiene si se queda sin venderlo). ¿Qué precio de reserva maximiza su ganancia esperada en una subasta de segundo precio?",
    "opciones": {
     "a": "4: por debajo de su propia valoración no le interesa vender, y por encima perdería ventas beneficiosas.",

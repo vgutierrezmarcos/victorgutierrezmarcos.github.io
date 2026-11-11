@@ -3,7 +3,7 @@
  "preguntas": [
   {
    "id": 312901,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Un consumidor con utilidad aditiva y descuento exponencial tiene una utilidad instantánea $u(C)=\\dfrac{C^{1-\\theta}-1}{1-\\theta}$ con $\\theta=2$ y una tasa de preferencia temporal $\\rho=1\\ \\%$. Puede prestar y pedir prestado sin límite a un tipo de interés real $r=5\\ \\%$. A lo largo de su senda óptima, su consumo crece cada periodo aproximadamente:",
    "opciones": {
     "a": "Un 4 %.",
@@ -11,7 +11,9 @@
     "c": "Un 8 %.",
     "d": "Un 0 %: con mercado de capitales perfecto, el consumidor alisa su consumo y lo mantiene constante."
    },
-   "respuesta": ["b"],
+   "respuesta": [
+    "b"
+   ],
    "explicacion": {
     "clave": "La ecuación de Euler con la CRRA da $C_{t+1}/C_t=[\\beta(1+r)]^{1/\\theta}$, es decir, $\\ln(C_{t+1}/C_t)\\simeq(r-\\rho)/\\theta=(5-1)/2=2\\ \\%$. La elasticidad de sustitución intertemporal, $1/\\theta=0{,}5$, dice cuánto de la diferencia entre $r$ y $\\rho$ se traslada al crecimiento del consumo.",
     "desarrollo": "La ecuación de Euler es $u'(C_t)=\\beta\\,(1+r)\\,u'(C_{t+1})$. Con $u'(C)=C^{-\\theta}$:\n\n$$\\frac{C_{t+1}}{C_t}=\\big[\\beta\\,(1+r)\\big]^{1/\\theta}=\\Big(\\frac{1{,}05}{1{,}01}\\Big)^{1/2}\\approx1{,}0196.$$\n\nCon la aproximación logarítmica, $(r-\\rho)/\\theta=0{,}04/2=0{,}02$. Las dos vías dan un 2 %.\n\nComo $r>\\rho$, al consumidor le compensa esperar y su consumo es creciente; cuánto, depende de su disposición a sustituir consumo entre periodos, la ESI $=1/\\theta$.\n\nPor qué fallan las demás:\n\n- a) $r-\\rho=4\\ \\%$ sería el crecimiento con utilidad logarítmica ($\\theta=1$); aquí la ESI es $0{,}5$.\n- c) Multiplica por $\\theta$ en lugar de dividir: cuanto mayor es $\\theta$, más cóncava es la utilidad y menos responde el consumo al tipo de interés, no más.\n- d) Alisar el consumo no es mantenerlo constante: es que su tasa de crecimiento no dependa de la senda de la renta. Solo es constante si $r=\\rho$."
@@ -24,7 +26,7 @@
   },
   {
    "id": 312902,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Un consumidor de horizonte infinito, sin renta laboral, con utilidad $\\sum_{t=0}^{\\infty}\\beta^t\\ln C_t$ y $\\beta=0{,}95$, vive de sus activos, que evolucionan según $b_{t+1}=(1+r)\\,b_t-C_t$, con $r=10\\ \\%$. Su función de valor tiene la forma $V(b)=A+B\\ln b$. Si hoy tiene $b_t=200$, señale la afirmación CORRECTA:",
    "opciones": {
     "a": "Consume $C_t=11$ y sus activos crecen un 4,5 % por periodo; la fracción que consume de sus recursos, $(1+r)\\,b_t$, no cambiaría si el tipo de interés fuera otro.",
@@ -32,7 +34,9 @@
     "c": "Consume $C_t=11$ y sus activos crecen un 4,5 % por periodo; si el tipo de interés subiera, consumiría una fracción menor de sus recursos, $(1+r)\\,b_t$, por el efecto sustitución.",
     "d": "Consume $C_t=10$ y sus activos crecen un 5 % por periodo."
    },
-   "respuesta": ["a"],
+   "respuesta": [
+    "a"
+   ],
    "explicacion": {
     "clave": "La regla de decisión es $C_t=(1-\\beta)(1+r)\\,b_t=0{,}05\\cdot220=11$, y $b_{t+1}=\\beta(1+r)\\,b_t=209$. Con utilidad logarítmica se consume siempre la fracción $1-\\beta$ de los recursos, sea cual sea $r$: los efectos renta y sustitución se compensan.",
     "desarrollo": "Ecuación de Bellman: $V(b_t)=\\max_{C_t}\\{\\ln C_t+\\beta\\,V((1+r)\\,b_t-C_t)\\}$, con $V(b)=A+B\\ln b$.\n\n- Condición de primer orden: $1/C_t=\\beta B/[(1+r)\\,b_t-C_t]$, de donde $C_t=(1+r)\\,b_t/(1+\\beta B)$.\n- Igualando los coeficientes de $\\ln b_t$: $B=1+\\beta B$, luego $B=1/(1-\\beta)=20$ y $1+\\beta B=20$.\n- Regla: $C_t=(1-\\beta)(1+r)\\,b_t=0{,}05\\cdot1{,}1\\cdot200=11$ y $b_{t+1}=220-11=209=\\beta(1+r)\\,b_t$.\n\nComprobación con la ecuación de Euler logarítmica, $C_{t+1}/C_t=\\beta(1+r)=1{,}045$: $C_{t+1}=0{,}05\\cdot1{,}1\\cdot209=11{,}495=1{,}045\\cdot11$.\n\nLa fracción consumida, $1-\\beta$, no depende de $r$: con ESI unitaria, un tipo más alto encarece el consumo de hoy (sustitución) y a la vez hace más rico a quien vive de sus activos (renta), y los dos efectos se anulan.\n\nPor qué fallan las demás:\n\n- b) Consumir solo los intereses es lo óptimo cuando $\\beta(1+r)=1$. Aquí $\\beta(1+r)=1{,}045>1$: compensa acumular y tener un consumo creciente.\n- c) Las cifras son correctas, pero no la estática comparativa: eso ocurriría con una ESI mayor que 1 ($\\theta<1$), no con la logarítmica.\n- d) Aplica la fracción $1-\\beta$ a los activos antes de intereses ($0{,}05\\cdot200$); la restricción dice que los recursos del periodo son $(1+r)\\,b_t=220$."
@@ -45,7 +49,7 @@
   },
   {
    "id": 312903,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "El propietario competitivo de un yacimiento de un recurso no renovable lo vende hoy a un precio de 50, con un coste marginal de extracción constante de 10. El tipo de interés es del 5 % y el yacimiento se explota hoy y dentro de un año. Según la regla de Hotelling, el precio del recurso dentro de un año será:",
    "opciones": {
     "a": "$50$: en competencia, el precio no cambia si no cambia el coste marginal.",
@@ -53,7 +57,9 @@
     "c": "$42$.",
     "d": "$52$."
    },
-   "respuesta": ["d"],
+   "respuesta": [
+    "d"
+   ],
    "explicacion": {
     "clave": "Lo que crece al tipo de interés no es el precio, sino la regalía, el precio neto del coste marginal de extracción: $40\\cdot1{,}05=42$. El precio dentro de un año es $42+10=52$, un 4 % más.",
     "desarrollo": "El recurso bajo tierra es un activo. Su propietario compara extraer hoy una unidad, ganar la regalía $p_t-\\mathrm{CMg}$ y prestarla al tipo $r$, con dejarla bajo tierra y ganar la regalía de mañana. Para que haya extracción en los dos momentos, ambas opciones tienen que rendir lo mismo:\n\n$$p_{t+1}-\\mathrm{CMg}=(1+r)\\,(p_t-\\mathrm{CMg})\\ \\Longrightarrow\\ p_{t+1}=10+1{,}05\\cdot40=52.$$\n\nComprobación: vender hoy y prestar da $40\\cdot1{,}05=42$; esperar da $52-10=42$. El precio sube un 4 %, menos que el tipo de interés, porque el coste de extracción no se revaloriza.\n\nLa regalía es el precio sombra del recurso (el coestado del problema de control óptimo): una renta de escasez, no un beneficio extraordinario.\n\nPor qué fallan las demás:\n\n- a) Es el razonamiento estático ($p=\\mathrm{CMg}$ o precio constante): ignora el coste de oportunidad de agotar el recurso.\n- b) Hace crecer el precio al 5 %: solo sería así con coste de extracción nulo.\n- c) $42$ es la regalía dentro de un año, no el precio."
@@ -74,7 +80,9 @@
     "c": "A 10 periodos de distancia prefiere B, pero cuando la fecha de A es hoy prefiere A: sus preferencias son temporalmente inconsistentes.",
     "d": "A 10 periodos de distancia prefiere A, pero cuando la fecha de A es hoy prefiere B: sus preferencias son temporalmente inconsistentes."
    },
-   "respuesta": ["c"],
+   "respuesta": [
+    "c"
+   ],
    "explicacion": {
     "clave": "Entre dos fechas futuras solo cuenta $d$: $0{,}95\\cdot115=109{,}25>100$, y prefiere B. Entre hoy y mañana cuenta $b\\,d=0{,}76$: $0{,}76\\cdot115=87{,}4<100$, y prefiere A. El plan que hoy hace para el futuro deja de parecerle óptimo cuando el futuro llega.",
     "desarrollo": "Vistas desde hoy, con A a 10 periodos:\n\n- A vale $b\\,d^{10}\\cdot100$ y B vale $b\\,d^{11}\\cdot115$. El cociente es $d\\cdot115/100=1{,}0925>1$: prefiere B. El sesgo $b$ afecta a las dos opciones por igual y se cancela.\n\nCuando la fecha de A es hoy:\n\n- A vale $100$ y B vale $b\\,d\\cdot115=0{,}76\\cdot115=87{,}4$: prefiere A.\n\nLa misma pareja de pagos, separada por el mismo intervalo, se ordena de forma distinta según lo lejos que esté del presente. Es la inconsistencia temporal del descuento (cuasi)hiperbólico: el individuo planea esperar y, llegado el momento, no espera, y por eso demanda mecanismos de compromiso. Con descuento exponencial no ocurre: el factor entre dos periodos seguidos es siempre el mismo, y el plan óptimo de hoy lo sigue siendo mañana (Strotz, 1955).\n\nPor qué fallan las demás:\n\n- a) Es lo que haría un consumidor exponencial con factor $0{,}95$: ignora el sesgo por el presente cuando una de las fechas es hoy.\n- b) Aplica el sesgo $b$ entre dos periodos futuros consecutivos; el sesgo solo separa el presente de todo lo demás.\n- d) Invierte el patrón: el sesgo por el presente lleva a la impaciencia en lo inmediato y a la paciencia en lo lejano, no al revés."
@@ -95,7 +103,9 @@
     "c": "El 4 %, igual a la tasa de preferencia temporal: en el estado estacionario el consumo por unidad de trabajo eficiente es constante.",
     "d": "El 13 %, superior al 8 % de la regla de oro: el capital es menor que el de la regla de oro y la economía es dinámicamente eficiente."
    },
-   "respuesta": ["a"],
+   "respuesta": [
+    "a"
+   ],
    "explicacion": {
     "clave": "La regla de oro modificada es $f'(\\tilde k^*)=\\rho+\\delta+\\theta g$, luego $r^*=f'(\\tilde k^*)-\\delta=\\rho+\\theta g=8\\ \\%$. La regla de oro exige $r=n+g=3\\ \\%$. Como $r^*>n+g$, hay menos capital que en la regla de oro: el modelo nunca acumula de más.",
     "desarrollo": "La ecuación de Euler del modelo es $\\gamma_{C/L}=(r_t-\\rho)/\\theta$. En el estado estacionario el consumo por persona crece a la tasa $g$, así que\n\n$$r^*=\\rho+\\theta\\,g=0{,}04+2\\cdot0{,}02=0{,}08.$$\n\nPor la otra vía: $f'(\\tilde k^*)=\\rho+\\delta+\\theta g=0{,}13$ y $r^*=0{,}13-0{,}05=0{,}08$.\n\nLa regla de oro (máximo consumo de estado estacionario) es $f'(\\tilde k_{\\mathrm{oro}})=n+g+\\delta=0{,}08$, es decir, un tipo neto del 3 %. Como $f'$ es decreciente y $0{,}13>0{,}08$, $\\tilde k^*<\\tilde k_{\\mathrm{oro}}$. No es casualidad: la condición de utilidad acotada, $\\rho-n>(1-\\theta)g$ (aquí, $0{,}03>-0{,}02$), equivale a $\\rho+\\theta g>n+g$. Hogares impacientes de vida infinita nunca ahorran tanto como para sobrepasar la regla de oro.\n\nPor qué fallan las demás:\n\n- b) La regla de oro es la referencia del modelo de Solow; un hogar que descuenta el futuro no la alcanza, y no por ello el equilibrio es ineficiente.\n- c) Olvida el progreso técnico: $r^*=\\rho$ solo si $g=0$. Con $g>0$, el consumo por persona crece y hace falta un tipo mayor para que el hogar lo acepte.\n- d) Mezcla magnitudes brutas y netas: el 13 % es el producto marginal bruto y el 8 % el producto marginal bruto de la regla de oro; el tipo de interés real es neto de depreciación."
@@ -116,7 +126,9 @@
     "c": "La tasa de ahorro es del 28,1 %, pero el equilibrio es un óptimo de Pareto, porque es competitivo y no hay externalidades ni otros fallos de mercado.",
     "d": "La tasa de ahorro es del 28,1 %, menor que el 75 % de la regla de oro: la economía acumula menos capital del que maximiza el consumo."
    },
-   "respuesta": ["b"],
+   "respuesta": [
+    "b"
+   ],
    "explicacion": {
     "clave": "Solo ahorran los jóvenes, la fracción $\\beta/(1+\\beta)=3/8$ de su salario, que es la parte $1-\\alpha=3/4$ del producto: $K_{t+1}/Y_t=9/32\\approx28{,}1\\ \\%$. La regla de oro, con $\\delta=1$, pide invertir la fracción $\\alpha=25\\ \\%$. Se ahorra de más: $r^*<n+g$, que es también la condición de Aaron.",
     "desarrollo": "- Ahorro de cada joven: $S_t=\\tfrac{\\beta}{1+\\beta}w_t=\\tfrac38w_t$. Con Cobb-Douglas, la masa salarial es $(1-\\alpha)Y_t=\\tfrac34Y_t$. Como $K_{t+1}=L_tS_t$, $K_{t+1}/Y_t=\\tfrac38\\cdot\\tfrac34=\\tfrac{9}{32}=0{,}281$.\n- Regla de oro con $\\delta=1$: $f'(\\tilde k_{\\mathrm{oro}})=(1+n)(1+g)$, es decir, $\\alpha\\,\\tilde k^{\\alpha-1}=(1+n)(1+g)$. La inversión necesaria para mantener $\\tilde k$, $(1+n)(1+g)\\,\\tilde k$, es entonces la fracción $\\alpha=0{,}25$ del producto.\n- Como $0{,}281>0{,}25$, $\\tilde k^*>\\tilde k_{\\mathrm{oro}}$. Por la otra vía: $1+r^*=f'(\\tilde k^*)=\\dfrac{\\alpha(1+\\beta)}{\\beta(1-\\alpha)}(1+n)(1+g)=\\dfrac{0{,}4}{0{,}45}(1+n)(1+g)=\\tfrac89(1+n)(1+g)$, menor que $(1+n)(1+g)$. Y con la condición del tema: $\\beta=0{,}6>\\alpha/(1-2\\alpha)=0{,}5$.\n\nCon $r^*<n+g$, reducir el capital aumenta el consumo de todas las generaciones. Un sistema de reparto rinde $(1+n)(1+g)$, más que el capital, y reduce el ahorro: puede ser una mejora de Pareto (condición de Aaron), igual que la deuda pública o una burbuja.\n\nPor qué fallan las demás:\n\n- a) Aplica la propensión a ahorrar de los jóvenes, $3/8$, a toda la renta: las rentas del capital las cobran los viejos, que no ahorran.\n- c) En generaciones solapadas, el primer teorema del bienestar puede fallar sin ningún fallo de mercado, por la doble infinitud de agentes y bienes: cada generación solo puede ahorrar acumulando capital, aunque rinda poco.\n- d) Confunde la regla de oro con la participación del trabajo: con $\\delta=1$, la tasa de ahorro de la regla de oro es la participación del capital, $\\alpha$."
@@ -126,11 +138,17 @@
    "creada": "2026-11-11",
    "revisada": "2026-11-11",
    "vigencia": "estable",
-   "figura_pendiente": "Plano (k̃_t, k̃_{t+1}) con la bisectriz y la ley de movimiento del capital de Diamond (cóncava, desde el origen con pendiente infinita), marcando solo el estado estacionario k̃* en su corte con la bisectriz. Sin marcar el capital de la regla de oro, que delataría la respuesta."
+   "imagenes": [
+    {
+     "src": "banco:312906.webp",
+     "alt": "Plano con el capital por unidad de trabajo eficiente de un periodo en abscisas y el del periodo siguiente en ordenadas. Se dibujan la bisectriz y la ley de movimiento del capital, cóncava, que sale del origen con pendiente vertical, queda por encima de la bisectriz y la corta una sola vez: ese corte es el estado estacionario, marcado con líneas de puntos sobre los dos ejes. No se señala ningún otro nivel de capital.",
+     "ancho": 520
+    }
+   ]
   },
   {
    "id": 312907,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "En el modelo de generaciones solapadas de Samuelson (1958), cada individuo vive dos periodos, recibe de joven una dotación de un bien perecedero y de viejo no recibe nada, y la población crece a la tasa $n>0$. Señale la afirmación CORRECTA:",
    "opciones": {
     "a": "Sin dinero, los jóvenes prestan parte de su dotación a los viejos de su tiempo, y el tipo de interés de equilibrio es igual a la tasa de preferencia temporal.",
@@ -138,7 +156,9 @@
     "c": "Con una cantidad constante de dinero fiduciario, el dinero tiene un rendimiento real nulo, porque los precios son constantes, y el equilibrio monetario no mejora a ninguna generación respecto de la autarquía.",
     "d": "Con una cantidad constante de dinero fiduciario que cada generación acepta, los precios caen al ritmo al que crece la población, el dinero rinde $n$ en términos reales y todas las generaciones están mejor que en la autarquía."
    },
-   "respuesta": ["d"],
+   "respuesta": [
+    "d"
+   ],
    "explicacion": {
     "clave": "Sin dinero nadie puede ahorrar y cada uno consume su dotación de joven. El dinero permite que cada generación de jóvenes ceda bienes a los viejos a cambio de recibirlos después: con $M$ constante rinde $1+n$, el «tipo de interés biológico», y mejora a todas las generaciones.",
     "desarrollo": "- Sin dinero: el bien no se puede guardar, los viejos no pueden devolver un préstamo (habrán muerto) y los acreedores futuros aún no han nacido. El único equilibrio es la autarquía: $C^J=e$, $C^V=0$.\n- Lo factible: $C^J+C^V/(1+n)=e$. La economía puede dar a cada viejo $1+n$ unidades por cada una a la que renuncie un joven, porque hay $1+n$ jóvenes por viejo.\n- Con dinero: los jóvenes venden parte de su dotación a los viejos a cambio de dinero y lo gastan de viejos. Con $M$ constante, los saldos reales por joven son constantes, así que $P_{t+1}/P_t=1/(1+n)$: el dinero rinde $1+n$ y la restricción de cada joven coincide con la de factibilidad. La primera generación de viejos gana (consume algo en lugar de nada) y las demás alcanzan el mejor estado estacionario.\n\nLa autarquía es, por tanto, un equilibrio competitivo que no es óptimo de Pareto: el primer teorema del bienestar falla por la doble infinitud de agentes y bienes. El valor del dinero es una burbuja que descansa en la confianza en que la generación siguiente lo aceptará; una pensión de reparto hace lo mismo.\n\nPor qué fallan las demás:\n\n- a) Ese préstamo es imposible: los viejos no vivirán para devolverlo. El intercambio que haría falta es con generaciones que aún no han nacido.\n- b) La primera parte es cierta, pero la autarquía no es un óptimo de Pareto: el equilibrio monetario mejora a todos.\n- c) Con $M$ constante y una economía que crece, los precios no son constantes, sino que caen a la tasa $n$, y el dinero rinde $n>0$."

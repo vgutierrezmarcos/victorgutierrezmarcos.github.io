@@ -1,11 +1,10 @@
-# Estado del banco de test (11 nov. 2026, tarde)
+# Estado del banco de test (11 nov. 2026, noche)
 
-Publicadas en el conector: 3A08 (21) y 3A09 (25), con 4 figuras.
+Publicadas en el conector (KV `banco/preguntas.json`): 294 preguntas de 29 temas (3.A.1 a 3.A.29), con sus figuras.
+- Piloto 3A08 (21) y 3A09 (25), aprobado por Víctor.
+- 248 del resto, resueltas a ciegas sin discrepancias y con las opciones equilibradas.
 
-Tanda 3.A.1-3.A.29 (borradores; nada publicado todavía):
-- Redactadas y resueltas a ciegas sin discrepancias, con retoques aplicados: 3A01, 3A02, 3A04, 3A11, 3A15.
-- Redactadas, pendientes de resolución a ciegas: 3A03, 3A05 (revisor lanzado), 3A10.
-- Redactores lanzados (comprobar si dejaron el fichero): 3A06-07, 3A12-13, 3A14-16, 3A17, 3A18-20, 3A19, 3A21-24, 3A22-23, 3A25-26, 3A27-29.
-- Falta en todas: equilibrar longitudes (la correcta suele ser la más larga), dibujar las figura_pendiente (310205, 310306, 311008…), pasar a "publicada" y `python3 scripts/banco-test.py --publicar`.
-- Dudas de redactores y revisores para Víctor: en el scratchpad de la sesión (dudas.md); las principales, 310203 (choca en apariencia con la oficial 469), 310207 (atribución a Becker y Baumol sin comprobar), 311502 (encaje en el 3.A.15), 310101-03 (el redactor no leyó entero el 3.A.1).
-- Instrucciones de redactor y revisor: INSTRUCCIONES.md y REVISOR.md del scratchpad (copiadas aquí al lado).
+En borrador: 39 preguntas que redactores o revisores dejan al criterio de Víctor (página privada https://claude.ai/artifact/NTxaQWg7cqZ7JB2beBEHxs; motivos en dudas.md). Al dar el visto bueno: pasar a "publicada" y `python3 scripts/banco-test.py --publicar`.
+
+Pendiente: temas 3.A.30 en adelante y parte B (según cupos: `python3 scripts/banco-test.py --cupos`); simulador de la web y app; clasificar la dificultad de las oficiales.
+Cómo se hace una tanda: INSTRUCCIONES.md (redactor), REVISOR.md (resolución a ciegas y pulido), figuras.py + figuras-alt.json (figuras).
