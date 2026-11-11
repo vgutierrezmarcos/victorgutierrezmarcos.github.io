@@ -1,0 +1,189 @@
+{
+ "tema": "3.A.5",
+ "preguntas": [
+  {
+   "id": 310501,
+   "estado": "borrador",
+   "enunciado": "En un modelo IS-LM lineal de economía cerrada y precios dados, la propensión marginal a consumir sobre la renta disponible es $c=0{,}75$, el tipo impositivo sobre la renta $t=0{,}2$, la inversión es $I=\\overline{I}-20\\,i$ y la demanda de saldos reales, $0{,}5\\,Y-100\\,i$ (con $i$ en puntos porcentuales). Si el gasto público aumenta en 100 y la oferta monetaria no cambia, la variación de la renta de equilibrio y la de la inversión son, respectivamente:",
+   "opciones": {
+    "a": "$+250$ y $0$.",
+    "b": "$+200$ y $-20$.",
+    "c": "$+200$ y $-50$.",
+    "d": "$0$ y $-100$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El multiplicador fiscal del IS-LM es $1/[1-c\\,(1-t)+b\\,k/h]=1/(0{,}4+0{,}1)=2$, menor que el simple ($2{,}5$): la renta sube 200. El tipo de interés sube 1 punto ($0{,}5\\cdot 200/100$) y la inversión cae $20\\cdot 1=20$: es el efecto expulsión, parcial.",
+    "desarrollo": "Parámetros: $1-c\\,(1-t)=1-0{,}75\\cdot 0{,}8=0{,}4$; $b=20$, $k=0{,}5$, $h=100$, luego $b\\,k/h=0{,}1$.\n\n- Renta: $\\Delta Y=\\Delta\\overline{G}/(0{,}4+0{,}1)=100/0{,}5=200$.\n- Tipo de interés: con $M/P$ constante, la LM exige $0{,}5\\,\\Delta Y-100\\,\\Delta i=0$, luego $\\Delta i=0{,}5\\cdot 200/100=1$ punto.\n- Inversión: $\\Delta I=-b\\,\\Delta i=-20$.\n\nComprobación por otra vía: el multiplicador simple aplicado al gasto neto de la expulsión da $(100-20)/0{,}4=200$.\n\nPor qué fallan las demás:\n\n- a) Es el resultado de la cruz keynesiana (multiplicador simple, $1/0{,}4=2{,}5$), que solo vale si el tipo de interés no sube: en la trampa de la liquidez ($h\\to\\infty$) o con inversión insensible al tipo ($b=0$).\n- c) La renta es la correcta, pero 50 no es la inversión expulsada, sino la renta que se deja de ganar respecto al multiplicador simple ($250-200$). La inversión cae 20, y esa caída, multiplicada por $2{,}5$, da los 50.\n- d) La expulsión total corresponde al caso clásico, con la LM vertical ($h=0$); aquí la demanda de dinero sí responde al tipo de interés."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 El modelo IS-LM (implicaciones: multiplicador fiscal y efecto expulsión)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310502,
+   "estado": "borrador",
+   "enunciado": "Una economía descrita por el modelo de la síntesis neoclásica está en la trampa de la liquidez y tiene paro. Si los salarios y los precios son flexibles y bajan, con la cantidad nominal de dinero dada:",
+   "opciones": {
+    "a": "El efecto Keynes devuelve la economía al pleno empleo: los mayores saldos reales desplazan la LM a la derecha, baja el tipo de interés y aumenta la inversión.",
+    "b": "El efecto Pigou-Patinkin devuelve la economía al pleno empleo porque los mayores saldos reales bajan el tipo de interés, cosa que el efecto Keynes no consigue.",
+    "c": "Ni el efecto Keynes ni el efecto Pigou-Patinkin operan, de modo que la síntesis acepta que hay equilibrio con paro involuntario aunque los salarios sean flexibles.",
+    "d": "El efecto Keynes no opera, porque el tipo de interés no puede bajar; pero los mayores saldos reales elevan el consumo y desplazan la IS a la derecha (efecto Pigou-Patinkin) hasta el pleno empleo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El efecto Keynes actúa por el tipo de interés (desplaza la LM) y falla en la trampa de la liquidez; el efecto Pigou-Patinkin actúa por la riqueza (desplaza la IS) y no necesita que el tipo baje. Por eso la síntesis concluye que, con precios flexibles, se vuelve al pleno empleo, y que el paro involuntario nace de la rigidez del salario nominal.",
+    "desarrollo": "Con paro, bajan los salarios y los precios y, con $M$ dado, suben los saldos reales $M/P$. Hay dos canales:\n\n- Efecto Keynes: más saldos reales desplazan la LM a la derecha, baja el tipo de interés y sube la inversión. En la trampa de la liquidez (LM horizontal, $h\\to\\infty$) el dinero de más se atesora y el tipo no baja; tampoco sirve si la inversión no responde al tipo ($b=0$). En esos casos la demanda agregada es vertical.\n- Efecto Pigou-Patinkin (o de saldos reales): los saldos reales son riqueza; con precios más bajos el consumo sube aunque el tipo no baje, y la IS se desplaza a la derecha. La demanda agregada vuelve a tener pendiente negativa.\n\nConclusión de la síntesis: con precios flexibles la economía siempre vuelve al pleno empleo, aunque el ajuste sea lento. La teoría de Keynes pasa a ser el caso particular de los salarios nominales rígidos (Modigliani, 1944).\n\nPor qué fallan las demás:\n\n- a) Describe bien el efecto Keynes, pero ese es justo el canal que no funciona en la trampa de la liquidez.\n- b) Confunde los canales: el efecto Pigou-Patinkin no pasa por el tipo de interés, sino por la riqueza y el consumo.\n- c) Era la posición de Keynes; Pigou (1943) y Patinkin (1956) la rebaten en el plano teórico con el efecto de los saldos reales."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 El modelo IS-LM (efecto Keynes y efecto Pigou-Patinkin)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310503,
+   "estado": "borrador",
+   "enunciado": "Samuelson y Solow (1960) pasan la curva de Phillips de salarios a precios suponiendo que las empresas fijan sus precios con un margen constante sobre el coste laboral unitario. Si, con la tasa de paro actual, los salarios nominales crecen un 5 % al año y la productividad del trabajo un 2 %, entonces:",
+   "opciones": {
+    "a": "La inflación es del 3 %; con este supuesto, la estabilidad de precios exige que los salarios nominales crezcan al mismo ritmo que la productividad.",
+    "b": "La inflación es del 7 %, porque el crecimiento de la productividad se suma al de los salarios.",
+    "c": "La inflación es del 5 %, porque con un margen constante los precios crecen siempre al mismo ritmo que los salarios nominales.",
+    "d": "La inflación es del 3 %; con este supuesto, la estabilidad de precios exige que los salarios nominales no crezcan."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con un margen fijo sobre el coste laboral unitario, $P=(1+\\mu)\\,W/(Y/L)$, los precios crecen lo que los salarios menos lo que la productividad: $5-2=3$ %. La inflación es nula cuando los salarios crecen como la productividad, el 2 %.",
+    "desarrollo": "El coste laboral unitario es el salario dividido por la productividad, $W/(Y/L)$. Si el precio es ese coste más un margen constante, en tasas de variación $\\pi=\\gamma_W-\\gamma_{Y/L}$.\n\n- $\\pi=5-2=3$ %.\n- $\\pi=0$ exige $\\gamma_W=\\gamma_{Y/L}=2$ %.\n\nAsí se traduce la curva de Phillips original (1958), que relaciona el paro con el crecimiento de los salarios nominales, en una relación entre paro e inflación: el «menú» de política económica. A cada tasa de paro le corresponde un crecimiento de los salarios y, descontada la productividad, una inflación.\n\nPor qué fallan las demás:\n\n- b) La productividad abarata cada unidad producida: se resta, no se suma.\n- c) Los precios crecen como los salarios solo si la productividad no crece. Con el margen constante, lo que crece al ritmo de los precios es el coste laboral unitario.\n- d) El cálculo es correcto, pero no la condición: congelar los salarios nominales daría, con la productividad creciendo al 2 %, una caída de los precios del 2 %."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 La curva de Phillips (Samuelson y Solow: de salarios a precios)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310504,
+   "estado": "borrador",
+   "enunciado": "Sobre la demanda de dinero de Friedman (1956), la reformulación de la teoría cuantitativa, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Depende solo de la renta corriente y es por completo independiente de los tipos de interés, de modo que la tesis monetarista equivale a una LM vertical, como reconocía el propio Friedman.",
+    "b": "Como en Keynes, el dinero solo tiene una alternativa, los bonos, y su demanda es inestable porque depende de las expectativas sobre el tipo de interés.",
+    "c": "El dinero es un activo más de la cartera: su demanda depende de la renta permanente y de los rendimientos de bonos, acciones y bienes físicos, y es una función estable, por lo que la velocidad es predecible.",
+    "d": "Como depende de la inflación esperada, es muy inestable, y por eso Friedman propone que el banco central se guíe por el tipo de interés y no por la cantidad de dinero."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Friedman trata el dinero como un activo más: su demanda depende de la riqueza (la renta permanente, que cambia despacio) y de los diferenciales de rendimiento con los demás activos, que se mueven poco porque el rendimiento del dinero sube con los otros. Resulta estable y poco sensible al tipo de interés: la velocidad es predecible.",
+    "desarrollo": "La función es $M^D/P=f(Y^P,\\ r_b-r_m,\\ r_e-r_m,\\ \\pi^e-r_m,\\ \\dots)$: crece con la renta permanente y decrece con la ventaja de rendimiento de los bonos, las acciones y los bienes físicos sobre el dinero.\n\nImplicaciones:\n\n- es estable, porque depende sobre todo de la renta permanente;\n- es poco sensible al tipo de interés ($h$ pequeño): la LM es inclinada y la trampa de la liquidez, una curiosidad teórica;\n- si $V$ es estable en $M\\,V=P\\,Y$, la cantidad de dinero determina la renta nominal.\n\nPor qué fallan las demás:\n\n- a) Depende de la renta permanente, no de la corriente, y los rendimientos sí entran en la función: la sensibilidad al tipo es pequeña, no nula. Friedman nunca aceptó que su tesis dependiera de una LM vertical; lo que le separaba de sus críticos era la estabilidad de la demanda de dinero y la amplitud de la transmisión.\n- b) Es la visión de Keynes y de la síntesis (dos activos y un motivo especulación inestable), contra la que Friedman escribe: en su teoría el dinero compite con toda la gama de activos, incluidos los bienes duraderos.\n- d) La inflación esperada entra en la función, como rendimiento de los bienes físicos, pero la demanda es estable; y la recomendación es la contraria: el objetivo intermedio debe ser la cantidad de dinero, porque el tipo de interés es un mal indicador de la política monetaria."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Formalización del pensamiento de Friedman (crítica por el lado de la demanda: la demanda de dinero)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310505,
+   "estado": "borrador",
+   "enunciado": "Una economía se ajusta a la curva de Phillips aceleracionista, $\\pi_t-\\pi_{t-1}=-0{,}5\\,(U_t-U^n)$, con una tasa natural de paro $U^n=6$ %. La inflación es del 10 % y las autoridades quieren reducirla al 4 % manteniendo el paro en el 9 % mientras dure la desinflación. ¿Cuánto tarda en conseguirse?",
+   "opciones": {
+    "a": "4 años: la inflación baja 1,5 puntos al año, la mitad de lo que el paro supera a la tasa natural.",
+    "b": "2 años: la inflación baja 3 puntos al año, tantos como el paro supera a la tasa natural.",
+    "c": "12 años: la inflación baja medio punto al año.",
+    "d": "Ninguno: en cuanto se anuncia la política, la inflación esperada baja al 4 % y el paro no tiene por qué subir."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Cada año, la inflación cambia en $-0{,}5\\cdot(9-6)=-1{,}5$ puntos. Bajarla 6 puntos lleva $6/1{,}5=4$ años, con 3 puntos de paro de más cada año: 12 puntos-año. Con expectativas adaptativas, la desinflación exige mantener un tiempo el paro por encima de la tasa natural.",
+    "desarrollo": "Con $\\pi^e_t=\\pi_{t-1}$, la curva aumentada con expectativas se convierte en la aceleracionista: la inflación solo baja si $U_t>U^n$.\n\n- Variación anual: $\\Delta\\pi=-0{,}5\\cdot(9-6)=-1{,}5$ puntos.\n- Senda: 10 %, 8,5 %, 7 %, 5,5 %, 4 %: cuatro años.\n- Coste: $4\\cdot 3=12$ puntos-año de paro; es decir, 2 puntos-año por cada punto de inflación ($1/a$).\n\nEl coste total no depende del ritmo: con 6 puntos de paro de más se tardarían 2 años, también con 12 puntos-año. Los monetaristas preferían el gradualismo anunciado y proponían indexar los contratos para abaratar la desinflación.\n\nPor qué fallan las demás:\n\n- b) Olvida el coeficiente $a=0{,}5$: cada punto de paro por encima de la tasa natural reduce la inflación medio punto al año, no uno.\n- c) Usa el coeficiente, pero olvida la brecha de paro, que es de 3 puntos y no de 1.\n- d) Es la desinflación sin coste de la nueva macroeconomía clásica, con expectativas racionales y un anuncio creíble. La curva del enunciado tiene expectativas adaptativas: la inflación esperada es la del año anterior y solo baja cuando ha bajado la inflación."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Formalización del pensamiento de Friedman (crítica por el lado de la oferta: curva aceleracionista) y II.3 (el coste de la desinflación)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310506,
+   "estado": "borrador",
+   "enunciado": "Un banco central quiere aplicar una regla de crecimiento constante de la cantidad de dinero como la que propuso Friedman. La producción crece a largo plazo un 3 % al año, la velocidad de circulación del dinero cae de forma tendencial un 1 % al año y se quiere una inflación del 2 %. La cantidad de dinero debe crecer cada año:",
+   "opciones": {
+    "a": "Un 4 %.",
+    "b": "Un 5 %.",
+    "c": "Un 3 %.",
+    "d": "Un 6 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "De la ecuación cuantitativa en tasas, $\\gamma_M+\\gamma_V=\\pi+\\gamma_Y$, sale $\\gamma_M=\\pi+\\gamma_Y-\\gamma_V=2+3-(-1)=6$ %. Si la velocidad cae, hace falta más dinero para financiar la misma renta nominal: su caída se suma.",
+    "desarrollo": "$M\\,V=P\\,Y$ en tasas de variación: $\\gamma_M+\\gamma_V=\\pi+\\gamma_Y$.\n\n- La renta nominal debe crecer $2+3=5$ %.\n- La velocidad cae un 1 %: cada unidad de dinero financia cada año menos gasto, y el dinero tiene que crecer un punto más que la renta nominal.\n- $\\gamma_M=5+1=6$ %. Comprobación: $6-1=5=2+3$.\n\nEs la lógica de la regla del $k$ %: Friedman situaba el crecimiento del dinero entre el 3 % y el 5 % anual para tener precios estables, el crecimiento de la producción más un margen por la caída tendencial de la velocidad. La regla solo funciona si la velocidad es predecible; cuando dejó de serlo, en los años 80, los bancos centrales abandonaron los objetivos monetarios.\n\nPor qué fallan las demás:\n\n- a) Resta la caída de la velocidad en lugar de sumarla ($2+3-1$): con un 4 % de dinero y la velocidad cayendo un 1 %, la renta nominal crecería un 3 % y la inflación sería nula.\n- b) Ignora la velocidad: sería correcto si fuera constante.\n- c) Iguala el crecimiento del dinero al de la producción: con la velocidad cayendo un 1 %, daría una caída de los precios del 1 %."
+   },
+   "dificultad": 1,
+   "apartado": "II.3 Recomendaciones de política económica (política monetaria: la regla del k %)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310507,
+   "estado": "borrador",
+   "enunciado": "Según Friedman y Schwartz, en la Gran Contracción de 1929-1933 en Estados Unidos:",
+   "opciones": {
+    "a": "La Reserva Federal redujo la base monetaria con ventas masivas de títulos, y esa reducción explica por sí sola la caída de la cantidad de dinero.",
+    "b": "La causa fue la política monetaria laxa de los años 20, que infló una burbuja de crédito cuyo estallido era inevitable, de modo que la Reserva Federal hizo bien en no intervenir.",
+    "c": "La base monetaria no cayó: la cantidad de dinero se redujo en torno a un tercio porque se hundió el multiplicador tras las quiebras bancarias, sin que la Reserva Federal lo impidiera.",
+    "d": "La cantidad de dinero cayó como consecuencia pasiva de la caída de la renta, y la política monetaria nada podía hacer porque la economía estaba en la trampa de la liquidez."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Para Friedman y Schwartz, la Gran Contracción prueba el poder de la política monetaria, no su impotencia. La base monetaria no cayó; lo que hundió la cantidad de dinero (un 35 %) fue el multiplicador, por las quiebras bancarias, y la Reserva Federal no actuó como prestamista de última instancia.",
+    "desarrollo": "Los hechos, según «A Monetary History of the United States» (1963):\n\n- entre agosto de 1929 y marzo de 1933, la cantidad de dinero cayó un 35 %;\n- la base monetaria no cayó; por sí sola habría elevado la cantidad de dinero;\n- cayó el multiplicador: con los pánicos bancarios, el público convirtió depósitos en efectivo (el cociente depósitos/efectivo bajó de 10,8 a 4,4) y los bancos acumularon reservas (el cociente depósitos/reservas bajó de 13,1 a 9,1);\n- la Reserva Federal no compró títulos ni prestó la liquidez que habría frenado los pánicos: es un error por omisión.\n\nPor qué fallan las demás:\n\n- a) La base no se redujo. El reproche es no haberla aumentado lo bastante para compensar la caída del multiplicador.\n- b) Es la tesis de la escuela austriaca (Rothbard, con la teoría del ciclo de Mises y Hayek). Friedman y Schwartz subrayan que la contracción no vino precedida de una expansión monetaria: el dinero llevaba casi dos años sin crecer.\n- d) Es la lectura keynesiana: demanda privada hundida y política monetaria impotente. Friedman y Schwartz le dan la vuelta: el dinero no siguió pasivamente a la renta, y una actuación de la Reserva Federal habría hecho la contracción menos grave y más corta."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Recomendaciones de política económica (teoría de los ciclos: la Gran Depresión)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310508,
+   "estado": "borrador",
+   "enunciado": "En el análisis de Poole (1970) sobre la elección del instrumento de la política monetaria en un modelo IS-LM con perturbaciones aleatorias, fijar la cantidad de dinero, como recomiendan los monetaristas, estabiliza la renta mejor que fijar el tipo de interés cuando:",
+   "opciones": {
+    "a": "Las perturbaciones proceden sobre todo de la demanda de dinero, porque así el tipo de interés absorbe los cambios de la velocidad sin que lleguen a la renta.",
+    "b": "Las perturbaciones proceden sobre todo del gasto (la IS) y la demanda de dinero es estable, porque entonces el tipo de interés sube cuando el gasto aumenta (y baja cuando cae) y amortigua su efecto sobre la renta.",
+    "c": "La demanda de dinero es muy sensible al tipo de interés (LM casi horizontal), sea cual sea el origen de las perturbaciones.",
+    "d": "Nunca: fijar el tipo de interés estabiliza mejor la renta sea cual sea el origen de las perturbaciones, y por eso los bancos centrales abandonaron los objetivos monetarios."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con la cantidad de dinero fija, una perturbación de gasto mueve el tipo de interés en el mismo sentido y se expulsa en parte a sí misma; con el tipo fijo, llega entera a la renta. Si la perturbación es de la demanda de dinero, ocurre lo contrario: fijar el tipo la aísla. La receta monetarista descansa, por tanto, en que la demanda de dinero sea estable.",
+    "desarrollo": "Poole compara la variabilidad de la renta con dos instrumentos:\n\n- Perturbaciones de la IS (gasto): con $M$ fija, la LM tiene pendiente positiva; un aumento del gasto sube el tipo de interés y frena la inversión, de modo que la renta varía menos. Con el tipo fijo, la LM es de hecho horizontal y la perturbación actúa con todo el multiplicador. Gana fijar el dinero.\n- Perturbaciones de la LM (demanda de dinero): con $M$ fija, un aumento de la demanda de dinero sube el tipo y contrae la renta. Con el tipo fijo, el banco central acomoda la demanda de dinero y la renta no se entera. Gana fijar el tipo.\n\nEs el argumento que cierra el debate en la práctica: cuando, con la desregulación financiera de los años 80, la velocidad dejó de ser estable (la ley de Goodhart), los bancos centrales pasaron a reglas de tipo de interés, como la de Taylor.\n\nPor qué fallan las demás:\n\n- a) Es el caso contrario: con perturbaciones de la demanda de dinero conviene fijar el tipo de interés.\n- c) Una LM casi horizontal hace que fijar el dinero se parezca a fijar el tipo: la ventaja del objetivo monetario ante perturbaciones de gasto es mayor cuanto más inclinada es la LM ($h$ pequeño), que es el supuesto monetarista.\n- d) El resultado depende del origen de las perturbaciones; los objetivos monetarios se abandonaron porque la demanda de dinero se volvió inestable, no porque el tipo de interés sea siempre mejor instrumento."
+   },
+   "dificultad": 3,
+   "apartado": "II.4 Valoración y aspectos criticados (la cantidad de dinero como objetivo intermedio: Poole y Goodhart)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

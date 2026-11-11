@@ -1,0 +1,98 @@
+{
+ "tema": "3.A.26",
+ "preguntas": [
+  {
+   "id": 312601,
+   "estado": "borrador",
+   "enunciado": "Un parado neutral al riesgo busca empleo de forma secuencial, como en el modelo de McCall: cada periodo recibe una oferta de salario, que puede ser 10, 20 o 30 con probabilidad $1/3$ cada una, y el empleo que acepte dura para siempre. Mientras busca obtiene $z=10$ y descuenta el futuro con el factor $\\beta=0{,}5$. Su salario de reserva cumple $w^R-z=\\dfrac{\\beta}{1-\\beta}\\,\\mathbb{E}\\big[\\max\\{w-w^R,0\\}\\big]$. El salario de reserva y la duración esperada del paro son:",
+   "opciones": {
+    "a": "$w^R=10$: acepta cualquier oferta, y la duración esperada del paro es de 1 periodo.",
+    "b": "$w^R=16$: rechaza la oferta de 10, y la duración esperada del paro es de 1,5 periodos.",
+    "c": "$w^R=20$, la media de las ofertas, y la duración esperada del paro es de 1,5 periodos.",
+    "d": "$w^R=16$: rechaza la oferta de 10, y la duración esperada del paro es de 3 periodos."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con $\\beta/(1-\\beta)=1$ y $w^R$ entre 10 y 20, la condición es $w^R-10=\\frac13(20-w^R)+\\frac13(30-w^R)$, de donde $w^R=16$. Acepta las ofertas de 20 y 30, con probabilidad $2/3$, y la duración esperada del paro es $1/(2/3)=1{,}5$ periodos.",
+    "desarrollo": "A la izquierda está lo que cuesta rechazar una oferta igual a $w^R$ (cobrar $z$ en lugar de $w^R$) y a la derecha, lo que se espera ganar buscando una vez más. Con $\\beta=0{,}5$, $\\beta/(1-\\beta)=1$.\n\n**Salario de reserva.** Probamos con $10<w^R<20$: superan el umbral las ofertas de 20 y de 30,\n\n$$w^R-10=\\tfrac13(20-w^R)+\\tfrac13(30-w^R)=\\frac{50-2w^R}{3}\\ \\Rightarrow\\ 5\\,w^R=80\\ \\Rightarrow\\ w^R=16,$$\n\nque está en el intervalo supuesto. Comprobación: lado izquierdo, $16-10=6$; lado derecho, $\\frac13\\cdot 4+\\frac13\\cdot 14=6$. No hay otra solución (el lado izquierdo crece con $w^R$ y el derecho decrece): con $20<w^R<30$ saldría $w^R-10=\\frac13(30-w^R)$, es decir, $w^R=15$, fuera de ese intervalo.\n\n**Duración del paro.** Acepta las ofertas iguales o superiores a 16: las de 20 y 30, con probabilidad $1-F(w^R)=2/3$ cada periodo. La duración esperada es $1/[1-F(w^R)]=1{,}5$ periodos.\n\nPor qué fallan las demás:\n\n- a) Iguala el salario de reserva a $z$, como si quien rechaza una oferta no fuera a recibir otra. La búsqueda añade el valor de opción de esperar una oferta mejor, y por eso $w^R>z$: aceptar 10 para siempre es peor que seguir buscando.\n- c) El salario de reserva no es la media de las ofertas: sale de comparar el coste de esperar con la ganancia esperada. Con un umbral de 20, el coste de rechazar sería 10 y la ganancia esperada, solo $\\frac13\\cdot 10\\approx 3{,}3$.\n- d) Calcula bien el umbral, pero usa la probabilidad de rechazar ($1/3$) en lugar de la de aceptar ($2/3$) para la duración."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 McCall: el salario de reserva y la duración del paro",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312602,
+   "estado": "borrador",
+   "enunciado": "En un modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides, la función de emparejamiento es $m(U,V)=0{,}9\\,U^{0{,}5}V^{0{,}5}$, la tensión del mercado de trabajo es $\\theta=V/U=0{,}25$ y la tasa de separación es $s=0{,}05$. La tasa a la que un parado encuentra empleo, $f(\\theta)$, la tasa a la que se cubre una vacante, $q(\\theta)$, y la tasa de paro de estado estacionario son:",
+   "opciones": {
+    "a": "$f(\\theta)=1{,}8$; $q(\\theta)=0{,}45$; $U\\approx 2{,}7\\ \\%$.",
+    "b": "$f(\\theta)=0{,}45$; $q(\\theta)=1{,}8$; $U\\approx 11{,}1\\ \\%$.",
+    "c": "$f(\\theta)=0{,}225$; $q(\\theta)=0{,}9$; $U\\approx 18{,}2\\ \\%$.",
+    "d": "$f(\\theta)=0{,}45$; $q(\\theta)=1{,}8$; $U=10\\ \\%$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$f(\\theta)=m/U=A\\,\\theta^{1-\\alpha}=0{,}9\\cdot 0{,}5=0{,}45$ y $q(\\theta)=m/V=A\\,\\theta^{-\\alpha}=0{,}9/0{,}5=1{,}8$. En estado estacionario, las entradas al paro igualan a las salidas, $s\\,(1-U)=f(\\theta)\\,U$, y $U=s/[s+f(\\theta)]=0{,}05/0{,}50=10\\ \\%$.",
+    "desarrollo": "**Las tasas.** Dividiendo los emparejamientos entre los parados y entre las vacantes, con $\\alpha=0{,}5$ y $\\sqrt{0{,}25}=0{,}5$:\n\n$$f(\\theta)=\\frac{m}{U}=A\\,\\theta^{1-\\alpha}=0{,}9\\cdot 0{,}5=0{,}45,\\qquad q(\\theta)=\\frac{m}{V}=A\\,\\theta^{-\\alpha}=\\frac{0{,}9}{0{,}5}=1{,}8.$$\n\nComprobación: $f(\\theta)=\\theta\\,q(\\theta)=0{,}25\\cdot 1{,}8=0{,}45$. Con pocas vacantes por parado ($\\theta<1$), a los parados les cuesta encontrar empleo y las vacantes se cubren deprisa.\n\n**El paro.** En estado estacionario, $\\dot U=s\\,(1-U)-f(\\theta)\\,U=0$:\n\n$$U=\\frac{s}{s+f(\\theta)}=\\frac{0{,}05}{0{,}05+0{,}45}=0{,}10.$$\n\nComprobación: entradas, $0{,}05\\cdot 0{,}9=0{,}045$; salidas, $0{,}45\\cdot 0{,}1=0{,}045$.\n\nPor qué fallan las demás:\n\n- a) Intercambia las 2 tasas: $f$ crece con la tensión y $q$ decrece. Con 4 parados por vacante, es la vacante la que se cubre deprisa.\n- b) Las tasas están bien, pero calcula el paro como $s/f(\\theta)$, olvidando que solo pierden el empleo los ocupados, $1-U$: lo correcto es $s/[s+f(\\theta)]$.\n- c) Olvida los exponentes de la función de emparejamiento: toma $f=A\\,\\theta$ y $q=A$, como si los emparejamientos dependieran solo de las vacantes."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Modelo DMP: tasas de emparejamiento y dinámica del paro",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312603,
+   "estado": "borrador",
+   "enunciado": "En una economía se observa de forma duradera, durante varios años, que la tasa de vacantes aumenta mientras la tasa de paro no baja: el punto $(U,V)$ se aleja del origen. Con el modelo de búsqueda y emparejamiento, la lectura más coherente es:",
+   "opciones": {
+    "a": "La curva de Beveridge se ha desplazado hacia fuera: ha empeorado la eficiencia del emparejamiento o ha aumentado la tasa de separación.",
+    "b": "La economía atraviesa una recesión de demanda, que reduce la tensión y la mueve a lo largo de la curva de Beveridge.",
+    "c": "Ha aumentado la productividad del trabajo, que eleva la tensión y mueve la economía a lo largo de la curva de Beveridge.",
+    "d": "Ha aumentado la prestación por desempleo o el poder negociador de los trabajadores, que desplazan la curva de Beveridge hacia fuera."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "A lo largo de la curva de Beveridge, paro y vacantes se mueven en sentido contrario: es el ciclo. Si las vacantes suben y el paro no baja, la curva se ha alejado del origen, y solo la desplazan la eficiencia del emparejamiento, $A$, y la tasa de separación, $s$: el mercado de trabajo empareja peor.",
+    "desarrollo": "La curva de Beveridge, $U=s/[s+f(\\theta)]$ con $f(\\theta)=A\\,\\theta^{1-\\alpha}$, es decreciente y convexa en el plano $(U,V)$, y separa 2 tipos de perturbaciones:\n\n- las de actividad agregada (la productividad o la demanda, $y$; el tipo de interés, $r$; el coste de las vacantes, $c$; la prestación, $z$; el poder negociador, $\\gamma$) cambian la tensión $\\theta^*$ y mueven la economía **a lo largo** de la curva: más vacantes con menos paro, o al revés;\n- la eficiencia del emparejamiento, $A$, y la tasa de separación, $s$, **desplazan** la curva. Si se aleja del origen, las mismas vacantes conviven con más paro: desajuste entre las cualificaciones de los parados y las que piden los puestos, paro de larga duración, reasignación entre sectores o más destrucción de empleo.\n\nVacantes al alza con un paro que no baja es un alejamiento del origen: el problema es de emparejamiento, no de demanda. El enunciado dice «de forma duradera» porque, al salir de una recesión, las vacantes se recuperan antes que el paro y el punto dibuja un bucle transitorio por encima de la curva sin que esta se haya desplazado.\n\nPor qué fallan las demás:\n\n- b) Una recesión de demanda mueve la economía por la curva hacia abajo y a la derecha: más paro y menos vacantes, no más vacantes.\n- c) Más productividad sube la tensión y mueve la economía por la curva hacia arriba y a la izquierda: más vacantes, pero con menos paro.\n- d) La prestación y el poder negociador suben el salario negociado y reducen la creación de vacantes: son movimientos a lo largo de la curva, hacia más paro y menos vacantes. No desplazan la curva."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Modelo DMP: lectura de la curva de Beveridge",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "figura_pendiente": "Plano con la tasa de paro U en abscisas y la tasa de vacantes V en ordenadas. Una curva decreciente y convexa rotulada «curva de Beveridge inicial», con un punto inicial sobre ella, y una sucesión de 4 o 5 puntos anuales unidos por flechas que parten de ese punto y suben casi en vertical (más vacantes con el mismo paro), alejándose de la curva. Sin dibujar una segunda curva ni rotular el movimiento."
+  },
+  {
+   "id": 312604,
+   "estado": "borrador",
+   "enunciado": "Una empresa precio-aceptante tiene una productividad marginal del trabajo $F_L(L)=50-L$ y una plantilla de $L=33$ trabajadores. Contratar a un trabajador le cuesta $\\phi_c=40$ y despedirlo, $\\phi_d=100$ (costes de ajuste lineales, que se pagan una sola vez), y el tipo de interés es $r=5\\ \\%$. El salario real sube de forma permanente de 20 a 26. La empresa:",
+   "opciones": {
+    "a": "No modifica la plantilla, porque sigue dentro de la banda de inacción.",
+    "b": "Despide de inmediato hasta $L=24$, donde la productividad marginal iguala al nuevo salario.",
+    "c": "Despide de inmediato hasta $L=29$, el borde de la nueva banda de inacción.",
+    "d": "Despide poco a poco hasta $L=24$, para repartir en el tiempo el coste del ajuste."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con costes lineales, la empresa no ajusta mientras $w-r\\phi_d\\leq F_L(L)\\leq w+r\\phi_c$. Con $w=26$, la banda es $21\\leq F_L\\leq 28$, es decir, $22\\leq L\\leq 29$. Con 33 trabajadores, $F_L=17<21$: despide de inmediato, pero solo hasta el borde, $L=29$.",
+    "desarrollo": "Con costes lineales, la empresa decide trabajador a trabajador. Despedir a uno compensa si lo que se ahorra para siempre, $[w-F_L(L)]/r$, supera $\\phi_d$; contratar a uno más, si lo que aporta, $[F_L(L)-w]/r$, supera $\\phi_c$. Entre los 2 umbrales no toca la plantilla:\n\n$$w-r\\,\\phi_d\\ \\leq\\ F_L(L)\\ \\leq\\ w+r\\,\\phi_c,\\qquad r\\,\\phi_d=0{,}05\\cdot 100=5,\\quad r\\,\\phi_c=0{,}05\\cdot 40=2.$$\n\n**Antes** ($w=20$): $15\\leq 50-L\\leq 22$, es decir, $28\\leq L\\leq 35$. Con $L=33$ ($F_L=17$) estaba dentro de la banda.\n\n**Después** ($w=26$): $21\\leq 50-L\\leq 28$, es decir, $22\\leq L\\leq 29$. Con $L=33$, $F_L=17<21$: la plantilla queda fuera de la banda por el lado del despido. La empresa despide hasta que $F_L(L)=w-r\\phi_d=21$, es decir, hasta $L=29$: 4 despidos. Comprobación: el trabajador número 33 hace perder $26-17=9$ por periodo, que descontado vale $9/0{,}05=180>100$, y compensa despedirlo; en $L=29$, la pérdida es $26-21=5$, que vale $5/0{,}05=100$, justo el coste de despedir.\n\nComo el coste marginal de ajustar es constante, ajustar despacio no ahorra nada: el ajuste es inmediato, pero se detiene en el borde de la banda.\n\nPor qué fallan las demás:\n\n- a) La subida del salario desplaza la banda: la antigua llegaba hasta $L=35$, pero la nueva acaba en $L=29$.\n- b) $L=24$ es el óptimo sin costes de ajuste ($F_L=w$). Con costes de despido, no compensa despedir a los trabajadores 25 a 29: lo que se ahorra con cada uno, descontado, no llega a 100.\n- d) El ajuste gradual es propio de los costes cuadráticos (convexos), con los que ajustar deprisa sale más que proporcionalmente caro. Con costes lineales no se gana nada escalonando, y tampoco se llega a $L=24$."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Costes de ajuste lineales: la banda de inacción",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

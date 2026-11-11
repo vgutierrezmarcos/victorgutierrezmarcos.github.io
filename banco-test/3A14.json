@@ -1,0 +1,190 @@
+{
+ "tema": "3.A.14",
+ "preguntas": [
+  {
+   "id": 311401,
+   "estado": "borrador",
+   "enunciado": "Dos empresas deciden a la vez, una sola vez y sin observar lo que hace la otra, si fijan un precio alto o un precio bajo. Las dos conocen los beneficios que obtiene cada una con cada combinación de precios, y eso es conocimiento común. Desde el punto de vista de la información, este juego es:",
+   "opciones": {
+    "a": "De información completa y perfecta: como las dos conocen la matriz de pagos, ninguna ignora nada relevante.",
+    "b": "De información incompleta y perfecta: ninguna sabe qué precio va a fijar la otra, es decir, desconoce su tipo.",
+    "c": "De información completa e imperfecta: los pagos son conocimiento común, pero cada una mueve sin conocer la jugada de la otra.",
+    "d": "De información incompleta e imperfecta: para resolverlo hay que introducir a la Naturaleza, como propone Harsanyi."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Son dos cosas distintas: la información es completa cuando los pagos de todos son conocimiento común, y perfecta cuando quien mueve conoce todas las jugadas anteriores. Un juego simultáneo con pagos conocidos, como el dilema del prisionero, tiene información completa e imperfecta.",
+    "desarrollo": "La información completa se refiere a los pagos; la perfecta, a las jugadas.\n\n- Completa o incompleta: es completa si los pagos de todos los jugadores son conocimiento común; es incompleta si algún jugador no conoce los pagos (el tipo) de otro. Aquí las dos empresas conocen los beneficios de ambas: completa.\n- Perfecta o imperfecta: es perfecta si cada jugador, cuando le toca mover, conoce todas las jugadas anteriores (todos sus conjuntos de información tienen un solo nodo). En un juego simultáneo, la que mueve «segunda» no ve lo que ha hecho la primera: en el árbol, sus dos nodos están unidos en un mismo conjunto de información. Imperfecta.\n\nPor qué fallan las demás:\n\n- a) Conocer la matriz de pagos da información completa, no perfecta. Sería perfecta si una empresa fijara su precio después de ver el de la otra.\n- b) Confunde no conocer la jugada del rival (información imperfecta) con no conocer su tipo, es decir, sus pagos (información incompleta). Y un juego simultáneo no puede ser de información perfecta.\n- d) La transformación de Harsanyi (la Naturaleza elige los tipos) hace falta cuando hay información incompleta, que no es el caso: convierte un juego de información incompleta en uno de información imperfecta."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Elementos, representación y clasificación de los juegos (información completa y perfecta)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311402,
+   "estado": "borrador",
+   "enunciado": "Una empresa entrante (E) decide si entra en el mercado de una empresa instalada (I). Si no entra, E gana 0 e I gana 8. Si entra, I elige entre acomodar (E gana 2 e I gana 3) o luchar con una guerra de precios (E gana $-1$ e I gana 1). Antes de que E decida, I puede invertir en capacidad adicional, con un coste hundido $K>0$ que E observa. Si I ha invertido, sus pagos pasan a ser $8-K$ si E no entra y $3-K$ si E entra e I acomoda (la capacidad queda ociosa), y siguen siendo 1 si E entra e I lucha (la capacidad se aprovecha en la guerra de precios); los pagos de E no cambian. ¿Para qué valores de $K$ invierte I en el equilibrio de Nash perfecto en subjuegos?",
+   "opciones": {
+    "a": "Para cualquier $K<5$: basta con que invertir y quedarse sola ($8-K$) le dé más que compartir el mercado (3).",
+    "b": "Para $2<K<5$: la inversión tiene que ser lo bastante cara para que luchar sea creíble y lo bastante barata para que disuadir compense.",
+    "c": "Para cualquier $K>2$: en cuanto luchar es su mejor respuesta a la entrada, E no entra e I conserva el mercado.",
+    "d": "Para ningún valor de $K$: invertir no mejora el pago de I en ninguno de los resultados posibles, de modo que no invertir es una estrategia dominante."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Hacen falta dos condiciones. La amenaza de luchar solo es creíble si, tras invertir, luchar da a I más que acomodar: $1>3-K$, es decir, $K>2$. Y disuadir solo compensa si $8-K$ supera lo que I gana sin invertir (E entra, I acomoda y gana 3): $K<5$.",
+    "desarrollo": "Se resuelve por inducción hacia atrás, comparando las dos ramas de la primera decisión de I.\n\nSi I no invierte:\n\n- si E entra, I compara acomodar (3) con luchar (1) y acomoda: la amenaza de luchar no es creíble;\n- E lo anticipa y entra ($2>0$);\n- I gana 3.\n\nSi I invierte:\n\n- si E entra, I compara acomodar ($3-K$) con luchar (1): lucha si $1>3-K$, es decir, si $K>2$;\n- con $K>2$, E anticipa la guerra de precios ($-1<0$) y no entra, e I gana $8-K$;\n- con $K<2$, I acomodaría, E entraría e I ganaría $3-K<3$: habría pagado la capacidad para nada.\n\nPrimera decisión de I: invertir compensa si disuade ($K>2$) y, además, $8-K>3$, es decir, $K<5$. Por tanto, I invierte si $2<K<5$. Es el compromiso de Schelling, Spence y Dixit: I se «ata las manos» para que su amenaza sea creíble, y gana reduciendo sus propias opciones.\n\nPor qué fallan las demás:\n\n- a) Olvida la credibilidad. Con $K\\leq2$, tras la inversión I sigue prefiriendo acomodar ($3-K\\geq1$), E entra igualmente e I pierde el coste de la capacidad.\n- c) Olvida la rentabilidad. Con $K\\geq5$ la amenaza es creíble y E no entraría, pero I ganaría $8-K\\leq3$: no gana más que acomodando sin invertir (3).\n- d) Es cierto que, resultado a resultado, invertir no mejora ningún pago de I ($8-K<8$, $3-K<3$, $1=1$). Pero eso no hace dominante no invertir, porque la inversión cambia lo que hace E: I compara $8-K$ (E no entra) con 3 (E entra), no los pagos de un mismo resultado."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Juegos secuenciales: compromiso y amenazas creíbles",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "figura_pendiente": "Árbol del juego en forma extensiva, sin marcar el equilibrio. Raíz: I elige «Invertir» o «No invertir». En cada rama, E elige «Entrar» o «No entrar». Tras «Entrar», I elige «Acomodar» o «Luchar». Pagos (E, I) en los nodos terminales. Rama «No invertir»: No entrar (0, 8); Entrar-Acomodar (2, 3); Entrar-Luchar (−1, 1). Rama «Invertir»: No entrar (0, 8−K); Entrar-Acomodar (2, 3−K); Entrar-Luchar (−1, 1). Sin colores ni trazos que señalen las ramas elegidas."
+  },
+  {
+   "id": 311403,
+   "estado": "borrador",
+   "enunciado": "En un mercado de trabajo con señalización a la Spence hay trabajadores de productividad alta, $w_{\\mathrm A}=30$, y baja, $w_{\\mathrm B}=18$. La educación $y\\geq0$ no aumenta la productividad y cuesta $c_{\\mathrm A}(y)=2y$ a los de productividad alta y $c_{\\mathrm B}(y)=4y$ a los de productividad baja. Las empresas compiten, observan $y$ y pagan la productividad esperada dadas sus creencias. Considere los equilibrios bayesianos perfectos separadores en los que el tipo B elige $y=0$ y el tipo A elige $\\hat y>0$. ¿Qué nivel $\\hat y$ sobrevive al criterio intuitivo de Cho y Kreps?",
+   "opciones": {
+    "a": "$\\hat y=3$: el nivel más bajo de educación que el tipo B no quiere imitar.",
+    "b": "$\\hat y=6$: el nivel más alto que el tipo A está dispuesto a costearse, porque es la señal más convincente.",
+    "c": "Cualquier $\\hat y$ entre 3 y 6: todos son equilibrios bayesianos perfectos y el criterio intuitivo solo descarta los agrupadores.",
+    "d": "Ninguno: el criterio intuitivo descarta todos los separadores, porque en ellos el tipo A gasta en una educación improductiva, y deja solo el agrupador en $y=0$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Hay equilibrio separador si $c_{\\mathrm A}(\\hat y)\\leq w_{\\mathrm A}-w_{\\mathrm B}\\leq c_{\\mathrm B}(\\hat y)$, es decir, $2\\hat y\\leq12\\leq4\\hat y$: $3\\leq\\hat y\\leq6$. El criterio intuitivo elimina los agrupadores y todos los separadores salvo el más barato, $c_{\\mathrm B}(\\hat y^*)=w_{\\mathrm A}-w_{\\mathrm B}$: $\\hat y^*=3$.",
+    "desarrollo": "Primero, qué separadores existen. Con $\\mu(\\hat y)=1$ y $\\mu(0)=0$, las empresas pagan 30 a quien elige $\\hat y$ y 18 a quien elige 0:\n\n- el tipo B no imita al A si $18\\geq30-4\\hat y$, es decir, $\\hat y\\geq3$;\n- el tipo A no prefiere quedarse en 0 si $30-2\\hat y\\geq18$, es decir, $\\hat y\\leq6$.\n\nTodo $\\hat y\\in[3,6]$ es un equilibrio bayesiano perfecto separador, sostenido por la creencia fuera de la senda de que quien elige una educación menor que $\\hat y$ es de tipo B.\n\nSegundo, el criterio intuitivo. Tómese un separador con $\\hat y>3$ y una desviación a $y'\\in(3,\\hat y)$. El tipo B no la elegiría nunca, ni aunque le tomaran por A: obtendría $30-4y'<18$. El tipo A sí la elegiría si le tomaran por A: $30-2y'>30-2\\hat y$. Las empresas deben creer entonces que quien elige $y'$ es A y pagarle 30, y el tipo A se desvía: el separador con $\\hat y>3$ cae. Solo sobrevive $\\hat y^*=3$, donde $c_{\\mathrm B}(\\hat y^*)=4\\cdot3=12=w_{\\mathrm A}-w_{\\mathrm B}$: el tipo A se distingue con el menor gasto posible.\n\nPor qué fallan las demás:\n\n- b) $\\hat y=6$ es el separador más caro: deja al tipo A indiferente entre educarse y no hacerlo ($30-12=18$). Es un equilibrio bayesiano perfecto, pero el criterio intuitivo lo descarta con el argumento anterior.\n- c) Es cierto que todos los $\\hat y\\in[3,6]$ son equilibrios bayesianos perfectos, pero el criterio intuitivo no solo elimina los agrupadores: también todos los separadores salvo el de menor coste.\n- d) Al revés: el criterio intuitivo elimina los agrupadores. Si los dos tipos eligen $y=0$ y cobran $\\overline w=18+12\\nu$ (con $\\nu<1$ la proporción de tipo A), hay desviaciones $y'$ que al tipo B no le convienen ni tomado por A ($30-4y'<\\overline w$) y al tipo A sí ($30-2y'>\\overline w$): las empresas deben atribuirlas al tipo A, y el agrupador se rompe. Que la señal sea un gasto improductivo es su coste de eficiencia, no un motivo para descartarla."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Equilibrio bayesiano perfecto y señalización (criterio intuitivo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311404,
+   "estado": "borrador",
+   "enunciado": "Dos jugadores se reparten 1 euro con el procedimiento de ofertas alternadas de Rubinstein, con horizonte infinito: el jugador 1 propone en el primer período; si el 2 rechaza, propone el 2 en el período siguiente, y así sucesivamente. Un euro recibido un período más tarde vale $\\beta_1=0{,}5$ para el jugador 1 y $\\beta_2=0{,}8$ para el jugador 2. En el único equilibrio de Nash perfecto en subjuegos, el acuerdo es inmediato y el jugador 1 se lleva:",
+   "opciones": {
+    "a": "$1/2$, porque con información completa y acuerdo inmediato el reparto es simétrico.",
+    "b": "$2/3$, porque quien propone primero se queda siempre con la mayor parte.",
+    "c": "$5/6$, porque puede hacer una oferta de «lo tomas o lo dejas».",
+    "d": "$1/3$, porque es más impaciente que el jugador 2, y eso pesa más que proponer primero."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Quien propone primero se lleva $x^*=\\dfrac{1-\\beta_2}{1-\\beta_1\\beta_2}=\\dfrac{0{,}2}{0{,}6}=\\dfrac13$. Proponer primero da ventaja, pero el poder de negociación viene de la paciencia: el jugador 2, que descuenta menos el futuro, se queda con $2/3$.",
+    "desarrollo": "Sea $x^*$ lo que se lleva el 1 cuando propone e $y^*$ lo que se lleva el 2 cuando propone él.\n\n- Cuando propone el 1, el 2 acepta cualquier oferta que le dé al menos lo que obtendría rechazando y proponiendo al período siguiente, $\\beta_2y^*$. El 1 le ofrece justo eso: $x^*=1-\\beta_2y^*$.\n- Cuando propone el 2, por lo mismo: $y^*=1-\\beta_1x^*$.\n\nSustituyendo, $x^*=\\dfrac{1-\\beta_2}{1-\\beta_1\\beta_2}=\\dfrac{1-0{,}8}{1-0{,}5\\cdot0{,}8}=\\dfrac{0{,}2}{0{,}6}=\\dfrac13$.\n\nComprobación: $y^*=1-0{,}5\\cdot\\tfrac13=\\tfrac56$ y $x^*=1-0{,}8\\cdot\\tfrac56=1-\\tfrac23=\\tfrac13$.\n\nEl jugador 2 acepta $2/3$ en el primer período porque es exactamente lo que vale hoy para él esperar un período y llevarse $5/6$ ($0{,}8\\cdot5/6=2/3$). El 1 no puede ofrecerle menos: el 2 rechazaría, y al 1 esperar le cuesta mucho.\n\nPor qué fallan las demás:\n\n- a) El reparto solo se acerca a la mitad si los dos son igual de pacientes y el descuento es pequeño. Con $\\beta_1=\\beta_2=\\beta$, el primero se lleva $1/(1+\\beta)>1/2$.\n- b) $2/3$ es lo que se lleva el jugador 2. La ventaja de proponer primero existe, pero aquí la supera la diferencia de paciencia.\n- c) $5/6$ es $y^*$, lo que se llevaría el jugador 2 si le tocara proponer (o el resultado de intercambiar los factores de descuento en la fórmula). Una oferta de «lo tomas o lo dejas» es el juego del ultimátum, de una sola ronda; aquí el 2 puede rechazar y contraproponer."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Negociación: el juego de ofertas alternadas de Rubinstein",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311405,
+   "estado": "borrador",
+   "enunciado": "La empresa 1 tiene una patente que no puede explotar sola. Las empresas 2 y 3 son fabricantes: cualquiera de ellas, asociada con la 1, genera un beneficio de 120; solo hace falta un fabricante. En forma de función característica, con utilidad transferible: $v(\\{1\\})=v(\\{2\\})=v(\\{3\\})=v(\\{2,3\\})=0$ y $v(\\{1,2\\})=v(\\{1,3\\})=v(\\{1,2,3\\})=120$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El valor de Shapley es $(120,0,0)$ y coincide con el único punto del núcleo.",
+    "b": "El valor de Shapley es $(40,40,40)$, por el axioma de simetría, y el núcleo es vacío.",
+    "c": "El valor de Shapley es $(80,20,20)$ y no pertenece al núcleo, que tiene un solo punto, $(120,0,0)$.",
+    "d": "El valor de Shapley es $(80,20,20)$ y pertenece al núcleo, porque es un reparto eficiente e individualmente racional."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El núcleo exige $x_1+x_2\\geq120$ y $x_1+x_3\\geq120$ con $x_1+x_2+x_3=120$: solo cabe $(120,0,0)$, porque los dos fabricantes compiten entre sí. El valor de Shapley promedia las aportaciones marginales en los 6 órdenes de llegada y da $(80,20,20)$, que la coalición $\\{1,2\\}$ bloquea ($80+20<120$).",
+    "desarrollo": "Núcleo. Con $x_1+x_2+x_3=120$:\n\n- $x_1+x_2\\geq120$ implica $x_3\\leq0$, y como $x_3\\geq v(\\{3\\})=0$, $x_3=0$;\n- $x_1+x_3\\geq120$ implica, del mismo modo, $x_2=0$;\n- por tanto, $x_1=120$: el núcleo es el punto $(120,0,0)$. La competencia entre los dos fabricantes deja todo el excedente a la dueña de la patente.\n\nValor de Shapley, por los 6 órdenes de llegada (aportación de la empresa 1 al llegar):\n\n- 1, 2, 3 y 1, 3, 2: llega la primera y aporta 0;\n- 2, 1, 3 y 3, 1, 2: llega tras un fabricante y aporta 120;\n- 2, 3, 1 y 3, 2, 1: llega la última, y como $v(\\{2,3\\})=0$, aporta 120.\n\n$\\phi_1=(0+0+120+120+120+120)/6=80$. La empresa 2 solo aporta algo (120) en el orden 1, 2, 3: $\\phi_2=120/6=20$, y por simetría $\\phi_3=20$. Suman 120 (eficiencia).\n\n$(80,20,20)$ no está en el núcleo: la coalición $\\{1,2\\}$ consigue 120 por su cuenta y con ese reparto recibe $80+20=100$. Núcleo y valor de Shapley responden a preguntas distintas: qué repartos resisten la competencia entre coaliciones y cuál refleja la aportación media de cada uno.\n\nPor qué fallan las demás:\n\n- a) El núcleo sí es $(120,0,0)$, pero el valor de Shapley da algo a los fabricantes: cada uno aporta 120 cuando llega justo después de la empresa 1 y antes que el otro fabricante.\n- b) La simetría solo iguala a los jugadores que aportan lo mismo a toda coalición: lo son la 2 y la 3 entre sí, no la 1. Y el núcleo no es vacío.\n- d) Ser eficiente e individualmente racional lo convierte en una imputación, no en un punto del núcleo: además, ninguna coalición debe poder bloquearlo, y $\\{1,2\\}$ y $\\{1,3\\}$ lo bloquean. El valor de Shapley solo está garantizado en el núcleo en los juegos convexos."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Juegos cooperativos: núcleo y valor de Shapley",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311406,
+   "estado": "borrador",
+   "enunciado": "En una subasta a sobre cerrado de segundo precio (de Vickrey) se vende un único objeto. Un pujador lo valora en 50, y su valoración es privada: no depende de lo que sepan los demás. Señale la afirmación CORRECTA sobre su puja:",
+   "opciones": {
+    "a": "Le conviene pujar algo menos de 50, tanto menos cuantos menos rivales haya, porque pujando 50 su ganancia sería nula si gana.",
+    "b": "Pujar 50 es una estrategia débilmente dominante: su puja decide si gana, pero no lo que paga, pujen lo que pujen los demás.",
+    "c": "Le conviene pujar más de 50 para asegurarse el objeto, porque en cualquier caso pagará la segunda puja y no la suya.",
+    "d": "Pujar 50 solo es óptimo si los demás también pujan su valoración: es un equilibrio de Nash, pero no una estrategia dominante."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En segundo precio, el ganador paga la puja más alta de los rivales: la puja propia solo decide si se gana. Pujar por encima de la valoración solo cambia el resultado cuando se gana pagando más de lo que vale el objeto, y pujar por debajo, cuando se pierde un objeto que daba ganancia. Por eso pujar la valoración es débilmente dominante.",
+    "desarrollo": "Sea $m$ la puja más alta de los rivales. Pujando $b$, el pujador gana si $b>m$ y paga $m$: obtiene $50-m$ si gana y 0 si pierde.\n\n- Pujando 50, gana exactamente cuando $m<50$, es decir, cuando ganar le da una ganancia positiva.\n- Pujando más, por ejemplo 60, el resultado solo cambia si $m$ está entre 50 y 60: ganaría y pagaría $m>50$, con pérdida.\n- Pujando menos, por ejemplo 40, solo cambia si $m$ está entre 40 y 50: perdería un objeto con el que habría ganado $50-m>0$.\n\nEn ningún caso le va mejor que pujando 50, y a veces le va peor: es una estrategia débilmente dominante (Vickrey, 1961), que no depende de las pujas de los demás, de su número ni de la distribución de las valoraciones. Como todos pujan su valoración, gana quien más valora el objeto: la subasta es eficiente. Es el caso más sencillo de mecanismo de Vickrey-Clarke-Groves, en el que decir la verdad es dominante.\n\nPor qué fallan las demás:\n\n- a) Es el razonamiento de la subasta de primer precio, en la que se paga la propia puja y hay que «sombrearla» (con valoraciones uniformes, $b=\\frac{n-1}{n}v$). En segundo precio, pujando 50 la ganancia si gana es $50-m$, no cero.\n- c) Pagará la segunda puja, sí, pero esa segunda puja puede estar por encima de 50: pujar de más solo añade los casos en los que gana perdiendo dinero.\n- d) Es más que un equilibrio de Nash: pujar la valoración es óptimo (débilmente) frente a cualquier perfil de pujas rivales, sean o no sinceras. Lo que sí ocurre es que hay otros equilibrios de Nash, pero usan estrategias débilmente dominadas."
+   },
+   "dificultad": 1,
+   "apartado": "III.3 Subastas: segundo precio con valores privados",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311407,
+   "estado": "borrador",
+   "enunciado": "En una subasta a sobre cerrado de primer precio participan 3 pujadores neutrales al riesgo. Sus valoraciones son privadas e independientes, y se distribuyen de manera uniforme entre 0 y 60. No hay precio de reserva. En el equilibrio bayesiano de Nash simétrico, ¿cuánto puja un participante que valora el objeto en 48 y cuál es el ingreso esperado del vendedor?",
+   "opciones": {
+    "a": "Puja 32, y el ingreso esperado es 30.",
+    "b": "Puja 32, y el ingreso esperado es 45.",
+    "c": "Puja 36, y el ingreso esperado es 30.",
+    "d": "Puja 24, y el ingreso esperado es 20."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $n$ pujadores y valoraciones uniformes, cada uno puja $b(v)=\\frac{n-1}{n}v$: con $n=3$, $\\frac23\\cdot48=32$. El ingreso esperado es el valor esperado de la segunda valoración más alta, $\\frac{n-1}{n+1}$ del tope: $\\frac24\\cdot60=30$, el mismo que en segundo precio (equivalencia de ingresos).",
+    "desarrollo": "Puja. En primer precio, pujar la valoración da una ganancia nula: hay que sombrear. Con valoraciones uniformes e independientes, la puja de equilibrio es $b(v)=\\frac{n-1}{n}\\,v$, sea cual sea el tope de la distribución. Con $n=3$ y $v=48$: $b=\\frac23\\cdot48=32$. Es lo que el pujador espera que valga la valoración rival más alta cuando la suya es la mayor: el máximo de 2 valoraciones uniformes en $[0,48]$ vale en promedio $\\frac23\\cdot48$.\n\nIngreso esperado, por dos vías:\n\n- el vendedor cobra la puja del ganador, $\\frac23$ de la valoración más alta; el valor esperado del máximo de 3 uniformes en $[0,60]$ es $\\frac{n}{n+1}\\cdot60=\\frac34\\cdot60=45$, de modo que el ingreso esperado es $\\frac23\\cdot45=30$;\n- por el teorema de equivalencia de ingresos, coincide con el de la subasta de segundo precio, el valor esperado de la segunda valoración más alta: $\\frac{n-1}{n+1}\\cdot60=\\frac24\\cdot60=30$.\n\nPor qué fallan las demás:\n\n- b) 45 es el valor esperado de la valoración más alta, no el ingreso: el ganador no paga su valoración, sino su puja sombreada.\n- c) 36 sale de aplicar $\\frac{n}{n+1}=\\frac34$ a la valoración: confunde el factor de sombreado, $\\frac{n-1}{n}$, con el del valor esperado del máximo.\n- d) Son las cifras con 2 pujadores: $\\frac12\\cdot48=24$ y $\\frac13\\cdot60=20$. Con más competencia se sombrea menos y el vendedor ingresa más."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Subastas: primer precio y equivalencia de ingresos",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311408,
+   "estado": "borrador",
+   "enunciado": "Un vendedor subasta un objeto entre $n$ pujadores neutrales al riesgo y simétricos, con valoraciones privadas e independientes distribuidas de manera uniforme entre 0 y 20. El vendedor valora el objeto en $v_0=4$ (es lo que obtiene si se queda sin venderlo). ¿Qué precio de reserva maximiza su ganancia esperada en una subasta de segundo precio?",
+   "opciones": {
+    "a": "4: por debajo de su propia valoración no le interesa vender, y por encima perdería ventas beneficiosas.",
+    "b": "10: el precio de reserva óptimo es siempre la mitad del valor máximo posible.",
+    "c": "Depende del número de pujadores: cuantos más haya, más bajo debe ser, porque la competencia sustituye al precio de reserva.",
+    "d": "12, sea cual sea el número de pujadores."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El precio de reserva óptimo iguala el valor virtual, $\\psi(v)=v-\\frac{1-F(v)}{f(v)}$, a la valoración del vendedor. Con una uniforme en $[0,20]$, $\\psi(v)=v-(20-v)=2v-20$, y $2p^R-20=4$ da $p^R=12$. No depende de $n$ y supera a $v_0$: como un monopolista, el vendedor sacrifica eficiencia para extraer renta.",
+    "desarrollo": "Según Myerson (1981) y Riley y Samuelson (1981), con pujadores simétricos y una distribución regular (valor virtual creciente, como la uniforme), la subasta óptima es cualquier formato estándar con un precio de reserva $p^R$ tal que $\\psi(p^R)=v_0$, donde $\\psi(v)=v-\\dfrac{1-F(v)}{f(v)}$ es el valor virtual: el ingreso marginal de vender a ese tipo.\n\nCon valoraciones uniformes en $[0,20]$: $F(v)=v/20$, $f(v)=1/20$ y $\\dfrac{1-F(v)}{f(v)}=20-v$, así que $\\psi(v)=2v-20$. Igualando a $v_0=4$: $2p^R-20=4$, $p^R=12$.\n\nComprobación con un solo pujador, al que se hace una oferta de «lo tomas o lo dejas» al precio $r$: la ganancia esperada del vendedor es $r\\,(1-r/20)+4\\,(r/20)$; derivando, $1-r/10+1/5=0$, $r=12$. La condición es la misma con cualquier $n$, porque el precio de reserva solo importa cuando decide si se vende al pujador de mayor valor.\n\nLectura: $p^R=12>v_0=4$. Cuando la valoración más alta está entre 4 y 12, el objeto se queda sin vender aunque haya un comprador que lo valora más que el vendedor: es una ineficiencia deliberada, como la del monopolista que restringe la cantidad.\n\nPor qué fallan las demás:\n\n- a) Un precio de reserva igual a $v_0$ es el eficiente (se vende siempre que alguien valora el objeto más que el vendedor), pero no el que maximiza la ganancia esperada: subirlo eleva el precio cuando solo un pujador lo supera.\n- b) 10 es el óptimo cuando $v_0=0$ ($2p^R-20=0$; con $U[0,1]$, el conocido $1/2$). Con $v_0=4$ sube a 12.\n- c) El precio de reserva óptimo no depende de $n$. Lo que sí ocurre es que su importancia disminuye al crecer $n$, y que un pujador más sin precio de reserva recauda más que la subasta óptima con los que había (Bulow y Klemperer, 1996)."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Subastas: subasta óptima y precio de reserva",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

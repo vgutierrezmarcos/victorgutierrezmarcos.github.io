@@ -1,0 +1,327 @@
+{
+ "tema": "3.A.11",
+ "preguntas": [
+  {
+   "id": 311101,
+   "estado": "borrador",
+   "enunciado": "En la representación de la tecnología mediante el conjunto de posibilidades de producción $\\mathcal{Y}$, el axioma de eliminación gratuita (libre disposición):",
+   "opciones": {
+    "a": "Establece que no puede obtenerse una cantidad positiva de ningún producto sin emplear algún factor.",
+    "b": "Establece que cualquier combinación convexa de dos planes posibles es también posible, de modo que la función de producción es cóncava.",
+    "c": "Establece que, si un plan es posible, lo es también cualquier otro con no menos factores y no más productos, de modo que la función de producción es no decreciente.",
+    "d": "Establece que el límite de una sucesión de planes posibles es también posible, lo que garantiza que exista una producción máxima para cada vector de factores."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Eliminación gratuita: si $\\vec{y}\\in\\mathcal{Y}$ e $\\vec{y}'\\leq\\vec{y}$, entonces $\\vec{y}'\\in\\mathcal{Y}$. Se puede desperdiciar capacidad sin coste, así que añadir factores nunca reduce la producción máxima: las productividades marginales son no negativas y las isocuantas tienen pendiente no positiva.",
+    "desarrollo": "Cada axioma del conjunto de posibilidades de producción da un rasgo distinto de la tecnología:\n\n- no vacío: hay al menos un plan posible;\n- cerrado: $\\mathcal{Y}$ incluye su frontera, y por eso existe el máximo que define la función de producción;\n- eliminación gratuita: todo el «sudoeste» de un plan posible (más factores, menos producto) es posible; por eso la frontera es no creciente en el plano de los netputs y $F$ es no decreciente ($\\mathrm{PMg}_i\\geq 0$);\n- imposibilidad de producción gratuita: no se obtiene producto sin factores.\n\nPor qué fallan las demás:\n\n- a) Describe la imposibilidad de producción gratuita (que, con la posibilidad de inacción, hace que la frontera pase por el origen).\n- b) Describe la convexidad, que es una propiedad adicional (no un axioma básico) y es la que, con un solo producto, equivale a que $F$ sea cóncava.\n- d) Describe el axioma de conjunto cerrado."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Conjunto tecnológico: axiomas (eliminación gratuita)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311102,
+   "estado": "borrador",
+   "enunciado": "Una empresa precio-aceptante en todos los mercados tiene la función de producción $F(z_L,z_K)=z_L^{0{,}8}\\,z_K^{0{,}6}$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Como la función es cuasicóncava, las condiciones de primer orden de la maximización del beneficio caracterizan un máximo, igual que la tangencia en el problema del consumidor.",
+    "b": "Sus isocuantas no son convexas, porque la suma de los exponentes es mayor que 1.",
+    "c": "No tiene función de costes, porque con rendimientos crecientes el problema de minimizar el coste de una producción dada no tiene solución.",
+    "d": "Es cuasicóncava pero no cóncava: minimizar el coste de una producción dada tiene solución, pero el problema de maximizar el beneficio no está acotado."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Una Cobb-Douglas con exponentes positivos es cuasicóncava (isocuantas convexas) sea cual sea su suma; con suma 1,4 tiene rendimientos crecientes y no es cóncava. La cuasiconcavidad basta para minimizar costes, pero no para maximizar el beneficio: a lo largo de un rayo el ingreso crece como $\\lambda^{1{,}4}$ y el coste como $\\lambda$.",
+    "desarrollo": "Hay que separar dos propiedades de curvatura:\n\n- la cuasiconcavidad (isocuantas convexas) recoge la sustitución entre factores y no impone ningún tipo de rendimientos a escala;\n- la concavidad equivale a que el conjunto de producción sea convexo e implica rendimientos no crecientes.\n\nLa función $z_L^{0{,}8}z_K^{0{,}6}$ es homogénea de grado $1{,}4$: es cuasicóncava, pero no cóncava. El beneficio a lo largo de un rayo es $B(\\lambda\\vec{z})=p\\,\\lambda^{1{,}4}F(\\vec{z})-\\lambda\\,\\vec{w}\\cdot\\vec{z}$, que tiende a infinito cuando $\\lambda$ crece: no hay máximo, y un punto que cumpla las condiciones de primer orden no lo es. En cambio, minimizar el coste de producir una cantidad dada es un problema acotado por construcción (como el del consumidor), y solo necesita isocuantas convexas: la función de costes existe con cualquier tipo de rendimientos.\n\nPor qué fallan las demás:\n\n- a) En el consumidor basta la cuasiconcavidad porque la renta acota el problema; la empresa no tiene restricción presupuestaria y necesita concavidad (rendimientos no crecientes).\n- b) La convexidad de las isocuantas depende de la cuasiconcavidad, no de la suma de los exponentes: la RMST, $\\frac{0{,}8}{0{,}6}\\cdot\\frac{z_K}{z_L}$, es decreciente a lo largo de la isocuanta.\n- c) La función de costes existe; lo que ocurre es que el coste medio es decreciente (economías de escala)."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 La función de producción: concavidad, cuasiconcavidad y maximización del beneficio",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311103,
+   "estado": "borrador",
+   "enunciado": "Una empresa produce con la tecnología $q=10\\,z_K^{1/3}z_L^{2/3}$ y emplea $z_L=8$ unidades de trabajo y $z_K=12$ de capital. La relación marginal de sustitución técnica $\\mathrm{RMST}_{LK}$ (unidades de capital que pueden dejar de usarse al emplear una unidad más de trabajo, con la producción constante) es, en ese punto:",
+   "opciones": {
+    "a": "$0{,}75$",
+    "b": "$3$",
+    "c": "$1{,}5$",
+    "d": "$1/3$"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "$\\mathrm{RMST}_{LK}=\\mathrm{PMg}_L/\\mathrm{PMg}_K$. En una Cobb-Douglas cada productividad marginal es el exponente por la productividad media, de modo que $\\mathrm{RMST}_{LK}=\\frac{2/3}{1/3}\\cdot\\frac{z_K}{z_L}=2\\cdot\\frac{12}{8}=3$.",
+    "desarrollo": "La RMST es el valor absoluto de la pendiente de la isocuanta y equivale al cociente de productividades marginales:\n\n- $\\mathrm{PMg}_L=\\frac{2}{3}\\cdot\\frac{q}{z_L}$ y $\\mathrm{PMg}_K=\\frac{1}{3}\\cdot\\frac{q}{z_K}$;\n- $\\mathrm{RMST}_{LK}=\\dfrac{\\mathrm{PMg}_L}{\\mathrm{PMg}_K}=\\dfrac{2/3}{1/3}\\cdot\\dfrac{z_K}{z_L}=2\\cdot\\dfrac{12}{8}=3$.\n\nLa constante 10 no influye (se cancela), y la RMST solo depende de la proporción $z_K/z_L$, como en toda función homogénea.\n\nPor qué fallan las demás:\n\n- a) $0{,}75$ sale de invertir el cociente de exponentes: $\\frac{1/3}{2/3}\\cdot\\frac{12}{8}$.\n- c) $1{,}5$ es solo la proporción $z_K/z_L$: olvida los exponentes.\n- d) $1/3$ es la inversa de la respuesta: sería $\\mathrm{RMST}_{KL}$, el trabajo que libera una unidad más de capital."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Las curvas isocuantas: relación marginal de sustitución técnica",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311104,
+   "estado": "borrador",
+   "enunciado": "Una empresa minimizadora de costes produce con la tecnología $q=\\left[0{,}5\\,z_K^{-1}+0{,}5\\,z_L^{-1}\\right]^{-1}$. Si el salario relativo $w_L/w_K$ sube un 10 %, la relación capital-trabajo $z_K/z_L$ que elige:",
+   "opciones": {
+    "a": "Aumenta aproximadamente un 5 %.",
+    "b": "Aumenta aproximadamente un 10 %.",
+    "c": "Aumenta aproximadamente un 20 %.",
+    "d": "No cambia, porque la proporción de factores viene dada por la tecnología."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Es una CES con $\\rho=-1$, luego $\\sigma=\\frac{1}{1-\\rho}=0{,}5$. Como al minimizar costes $\\mathrm{RMST}_{LK}=w_L/w_K$, $\\sigma$ es el porcentaje en que cambia $z_K/z_L$ cuando el salario relativo sube un 1 %: $0{,}5\\times 10\\,\\%\\approx 5\\,\\%$.",
+    "desarrollo": "La función es una CES, $q=[a_Kz_K^{\\rho}+a_Lz_L^{\\rho}]^{1/\\rho}$, con $\\rho=-1$. Su RMST es\n\n$\\mathrm{RMST}_{LK}=\\dfrac{a_L}{a_K}\\left(\\dfrac{z_K}{z_L}\\right)^{1-\\rho}=\\left(\\dfrac{z_K}{z_L}\\right)^{2}$.\n\nAl minimizar costes, $\\mathrm{RMST}_{LK}=w_L/w_K$, de modo que $z_K/z_L=(w_L/w_K)^{1/2}$: la elasticidad de sustitución es $\\sigma=1/(1-\\rho)=0{,}5$. Si el salario relativo se multiplica por $1{,}1$, la relación capital-trabajo se multiplica por $1{,}1^{0{,}5}\\approx 1{,}049$: sube en torno a un 5 %. Como la proporción de factores cambia menos que su precio relativo ($\\sigma<1$), la participación del trabajo en el coste aumenta.\n\nPor qué fallan las demás:\n\n- b) Un 10 % correspondería a $\\sigma=1$, la Cobb-Douglas (el límite $\\rho\\to 0$).\n- c) Un 20 % correspondería a $\\sigma=2$: es el error de tomar $\\sigma=1-\\rho$ en lugar de $1/(1-\\rho)$.\n- d) La proporción fija es propia de la función de Leontief ($\\sigma=0$, el límite $\\rho\\to-\\infty$); con $\\rho=-1$ sí hay sustitución, aunque difícil."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Elasticidad de sustitución y función CES",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311105,
+   "estado": "borrador",
+   "enunciado": "En una economía con una función de producción agregada de rendimientos constantes y elasticidad de sustitución entre capital y trabajo $\\sigma=0{,}5$, los factores cobran su productividad marginal. Si el capital por trabajador, $z_K/z_L$, aumenta un 10 %:",
+   "opciones": {
+    "a": "El salario relativo $w_L/w_K$ sube en torno a un 5 % y la participación del trabajo en la renta disminuye.",
+    "b": "El salario relativo $w_L/w_K$ sube un 10 % y las participaciones de los factores en la renta no cambian.",
+    "c": "El salario relativo $w_L/w_K$ sube en torno a un 21 % y la participación del trabajo en la renta aumenta.",
+    "d": "El salario relativo $w_L/w_K$ baja, porque el capital adicional sustituye al trabajo, y la participación del trabajo en la renta disminuye."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\sigma=d\\ln(z_K/z_L)/d\\ln(w_L/w_K)$, luego el salario relativo varía $1/\\sigma=2$ veces lo que varía la proporción de factores: en torno a un 21 % ($1{,}1^{2}=1{,}21$). El cociente de rentas, $\\frac{w_Lz_L}{w_Kz_K}=\\frac{w_L/w_K}{z_K/z_L}$, aumenta: con $\\sigma<1$, el factor que se hace relativamente escaso gana participación.",
+    "desarrollo": "Con factores pagados según su productividad marginal, $w_L/w_K=\\mathrm{RMST}_{LK}$, y la elasticidad de sustitución relaciona las variaciones de la proporción de factores y de la RMST: $d\\ln(z_K/z_L)=\\sigma\\,d\\ln(w_L/w_K)$.\n\n- Con $\\sigma=0{,}5$, un aumento del 10 % de $z_K/z_L$ exige que $w_L/w_K$ suba en torno a un 21 % ($1{,}1^{1/\\sigma}=1{,}1^{2}=1{,}21$; la aproximación lineal, $10/0{,}5$, da un 20 %): al ser difícil la sustitución, la productividad marginal del capital cae mucho cuando este abunda.\n- El cociente entre la renta del trabajo y la del capital es $\\dfrac{w_Lz_L}{w_Kz_K}=\\dfrac{w_L/w_K}{z_K/z_L}$, que se multiplica por $1{,}21/1{,}1=1{,}1$: la participación del trabajo aumenta.\n\nEs la regla de Hicks: con $\\sigma<1$, la participación de un factor aumenta cuando sube su precio relativo (o cuando se hace relativamente más escaso); con $\\sigma>1$, disminuye, y con $\\sigma=1$ no cambia.\n\nPor qué fallan las demás:\n\n- a) Multiplica por $\\sigma$ en lugar de dividir: confunde qué variable responde a cuál. Además, con $\\sigma<1$ la participación del trabajo no cae al acumular capital.\n- b) Es el caso Cobb-Douglas ($\\sigma=1$), con participaciones constantes.\n- d) Con isocuantas convexas, más capital por trabajador reduce la productividad marginal del capital y eleva la del trabajo: el salario relativo sube."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Elasticidad de sustitución: distribución de la renta (regla de Hicks)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311106,
+   "estado": "borrador",
+   "enunciado": "Una empresa produce con la tecnología $q=\\min\\left\\{\\dfrac{z_K}{2};\\ \\dfrac{z_L}{4}\\right\\}$ y dispone de $z_K=30$ unidades de capital y $z_L=40$ de trabajo. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Produce 15 unidades, porque el capital permite producir $30/2$.",
+    "b": "Produce 10 unidades; una unidad adicional de capital no aumentaría la producción, y una de trabajo, sí.",
+    "c": "Produce 10 unidades; una unidad adicional de trabajo no aumentaría la producción, y una de capital, sí.",
+    "d": "Produce 25 unidades, la suma de lo que permite cada factor."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con coeficientes fijos manda el factor más escaso en relación con su coeficiente: $\\min\\{30/2;\\ 40/4\\}=\\min\\{15;\\ 10\\}=10$. Sobra capital (bastarían 20 unidades), de modo que su productividad marginal es nula; el trabajo es el factor limitante.",
+    "desarrollo": "En la función de Leontief cada unidad de producto exige 2 unidades de capital y 4 de trabajo, sin sustitución posible ($\\sigma=0$):\n\n- el capital disponible permitiría producir $30/2=15$ unidades;\n- el trabajo disponible solo permite $40/4=10$ unidades;\n- la producción es el mínimo: $q=10$.\n\nPara producir 10 unidades bastan 20 de capital: sobran 10. La empresa está fuera del vértice de la isocuanta (que está sobre el rayo $z_K/z_L=2/4$), en su tramo vertical: una unidad más de capital deja la producción en 10 ($\\mathrm{PMg}_K=0$), mientras que una unidad más de trabajo la eleva a $41/4=10{,}25$ ($\\mathrm{PMg}_L=1/4$).\n\nPor qué fallan las demás:\n\n- a) Toma el máximo en lugar del mínimo: para producir 15 harían falta 60 unidades de trabajo.\n- c) Invierte el factor limitante: el que sobra es el capital.\n- d) Suma las dos cantidades, lo que solo tendría sentido con sustitutivos perfectos (función lineal), no con complementarios perfectos."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 La función de coeficientes fijos (Leontief)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311107,
+   "estado": "borrador",
+   "enunciado": "Con el capital fijo, la función de producción a corto plazo de una empresa es $q=12\\,z_L^{2}-z_L^{3}$, para $0\\leq z_L\\leq 12$. La etapa II de la producción (la región económica) corresponde a los niveles de empleo:",
+   "opciones": {
+    "a": "$4<z_L<8$",
+    "b": "$6<z_L<8$",
+    "c": "$0<z_L<6$",
+    "d": "$4<z_L<6$"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La etapa II va del máximo de la productividad media (margen extensivo) al punto en que la productividad marginal se anula (margen intensivo). $\\mathrm{PMe}_L=12z_L-z_L^2$ es máxima en $z_L=6$, y $\\mathrm{PMg}_L=24z_L-3z_L^2$ se anula en $z_L=8$.",
+    "desarrollo": "Las tres funciones:\n\n- producto total: $q=12z_L^2-z_L^3$;\n- productividad media: $\\mathrm{PMe}_L=q/z_L=12z_L-z_L^2$, máxima donde $12-2z_L=0$, es decir, en $z_L=6$ (allí vale 36);\n- productividad marginal: $\\mathrm{PMg}_L=24z_L-3z_L^2$, máxima en $z_L=4$ (punto de inflexión del producto total) y nula en $z_L=8$ (máximo del producto total, $q=256$).\n\nComprobación: en $z_L=6$, $\\mathrm{PMg}_L=144-108=36=\\mathrm{PMe}_L$; la marginal corta a la media en el máximo de esta.\n\nEtapas: la I llega hasta $z_L=6$ ($\\mathrm{PMg}_L>\\mathrm{PMe}_L$, media creciente); la II va de 6 a 8 ($0<\\mathrm{PMg}_L<\\mathrm{PMe}_L$, elasticidad-producto entre 0 y 1); la III empieza en 8 ($\\mathrm{PMg}_L<0$).\n\nPor qué fallan las demás:\n\n- a) Hace empezar la etapa II en el máximo de la productividad marginal ($z_L=4$): ahí empiezan los rendimientos marginales decrecientes, pero la productividad media sigue creciendo hasta $z_L=6$.\n- c) Es la etapa I.\n- d) Es el tramo de la etapa I en el que la productividad marginal ya decrece pero sigue por encima de la media."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Corto plazo: productividad media y marginal, etapas de la producción",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311108,
+   "estado": "borrador",
+   "enunciado": "Una función de producción $q=F(z_L,z_K)$ es homogénea de grado 1. Con el capital fijo, en un determinado nivel de empleo la elasticidad-producto del trabajo es $\\varepsilon_{q,z_L}=1{,}2$. En ese punto:",
+   "opciones": {
+    "a": "La tecnología presenta rendimientos crecientes a escala, porque la elasticidad es mayor que 1.",
+    "b": "La productividad media del trabajo es decreciente, porque la productividad marginal es inferior a la media.",
+    "c": "La empresa está en la etapa III de la producción, con demasiado trabajo para el capital disponible.",
+    "d": "La productividad marginal del capital es negativa: la empresa está en la etapa I, con demasiado capital."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con homogeneidad de grado 1, la suma de las elasticidades-producto es la elasticidad de escala, igual a 1: $\\varepsilon_{q,z_K}=1-1{,}2=-0{,}2<0$. Y $\\varepsilon_{q,z_L}=\\mathrm{PMg}_L/\\mathrm{PMe}_L>1$ es la etapa I, en la que la productividad media del trabajo crece.",
+    "desarrollo": "Dos resultados del tema:\n\n- la elasticidad-producto de un factor es el cociente entre su productividad marginal y su productividad media: $\\varepsilon_{q,z_L}=\\mathrm{PMg}_L/\\mathrm{PMe}_L$. Si vale $1{,}2$, $\\mathrm{PMg}_L>\\mathrm{PMe}_L$, la media es creciente y la empresa está en la etapa I;\n- por el teorema de Euler, en una función homogénea de grado 1, $q=\\mathrm{PMg}_L\\,z_L+\\mathrm{PMg}_K\\,z_K$; dividiendo por $q$, $\\varepsilon_{q,z_L}+\\varepsilon_{q,z_K}=1$. Por tanto $\\varepsilon_{q,z_K}=-0{,}2$ y $\\mathrm{PMg}_K<0$.\n\nCon rendimientos constantes, la etapa I del factor variable es la etapa III del factor fijo: hay tanto capital para tan poco trabajo que reducir el capital aumentaría la producción. Por eso la empresa racional no produce en la etapa I.\n\nPor qué fallan las demás:\n\n- a) Confunde la elasticidad-producto de un factor (respuesta a un solo factor) con la elasticidad de escala (respuesta a todos): esta vale 1 en todo punto, por ser la función homogénea de grado 1.\n- b) Es al revés: $\\varepsilon_{q,z_L}>1$ significa $\\mathrm{PMg}_L>\\mathrm{PMe}_L$, y entonces la media crece.\n- c) En la etapa III la productividad marginal del trabajo es negativa y la elasticidad-producto, también."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Corto plazo: elasticidad-producto y etapas con rendimientos constantes (teorema de Euler)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311109,
+   "estado": "borrador",
+   "enunciado": "Considere la función de producción $q=\\dfrac{100}{1+\\dfrac{1}{z_L\\,z_K}}$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "No es homogénea, pero sí homotética: sus rendimientos a escala son crecientes para $q<50$ y decrecientes para $q>50$.",
+    "b": "Es homogénea de grado 2, por lo que presenta rendimientos crecientes a escala en todos sus puntos.",
+    "c": "Presenta rendimientos decrecientes a escala en todos sus puntos, porque la producción está acotada por 100.",
+    "d": "Su elasticidad de escala cambia a lo largo de cada isocuanta, por lo que la función no es homotética."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La elasticidad de escala local es $\\varepsilon_{q,\\lambda}=2\\,(1-q/100)$: mayor que 1 si $q<50$ y menor si $q>50$. La función es una transformación creciente de $z_Lz_K$ (homotética), y por eso la elasticidad de escala solo depende del nivel de producción, pero no es homogénea, porque no es constante.",
+    "desarrollo": "Sea $g\\equiv 1/(z_Lz_K)$, de modo que $q=100/(1+g)$. Al multiplicar los dos factores por $\\lambda$, $g$ pasa a ser $\\lambda^{-2}g$:\n\n$\\ln F(\\lambda\\vec{z})=\\ln 100-\\ln\\left(1+\\lambda^{-2}g\\right)$,\n\ncuya derivada respecto a $\\ln\\lambda$ en $\\lambda=1$ es $\\varepsilon_{q,\\lambda}=\\dfrac{2g}{1+g}=2\\left(1-\\dfrac{q}{100}\\right)$.\n\n- Si $q<50$, $\\varepsilon_{q,\\lambda}>1$: rendimientos locales crecientes.\n- Si $q=50$, $\\varepsilon_{q,\\lambda}=1$.\n- Si $q>50$, $\\varepsilon_{q,\\lambda}<1$: rendimientos locales decrecientes.\n\nEs la tecnología «en S» (ley de los rendimientos a escala variables de Frisch) que está detrás de los costes medios en forma de U. La función es homotética: $q=G(h)$ con $h=(z_Lz_K)^{1/2}$ homogénea de grado 1 y $G(h)=100/(1+h^{-2})$ creciente. En las homotéticas la elasticidad de escala depende solo del nivel de producción: es la misma a lo largo de cada isocuanta y cambia de una a otra.\n\nPor qué fallan las demás:\n\n- b) $z_Lz_K$ es homogénea de grado 2, pero $q$ no: $F(\\lambda\\vec{z})\\neq\\lambda^{2}F(\\vec{z})$. La elasticidad de escala solo se acerca a 2 cuando $q$ tiende a 0.\n- c) Que la producción esté acotada implica rendimientos decrecientes a escalas altas, no en todos los puntos: para $q<50$ son crecientes.\n- d) La elasticidad depende solo de $q$, luego es constante a lo largo de cada isocuanta; eso es precisamente lo propio de una función homotética."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Largo plazo: rendimientos locales a escala, funciones homogéneas y homotéticas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311110,
+   "estado": "borrador",
+   "enunciado": "Una empresa competitiva con la tecnología $q=z_K^{0{,}5}\\,z_L^{0{,}25}$ maximiza su beneficio, de modo que el valor de la productividad marginal de cada factor iguala su precio. ¿Qué parte de sus ingresos queda como beneficio, una vez pagados los dos factores?",
+   "opciones": {
+    "a": "Ninguna: al pagar a cada factor su productividad marginal se agota el producto.",
+    "b": "El 75 %.",
+    "c": "El 25 %.",
+    "d": "No puede saberse sin conocer los precios del producto y de los factores."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La función es homogénea de grado $k=0{,}75$. Por el teorema de Euler, $\\sum_i\\mathrm{PMg}_i\\,z_i=k\\,q$: los pagos a los factores son el 75 % del ingreso (50 % al capital y 25 % al trabajo) y queda un 25 % de beneficio. El producto solo se agota con $k=1$.",
+    "desarrollo": "Con $p\\,\\mathrm{PMg}_i=w_i$, el coste total es $w_Kz_K+w_Lz_L=p\\,(\\mathrm{PMg}_K\\,z_K+\\mathrm{PMg}_L\\,z_L)$. En la Cobb-Douglas, $\\mathrm{PMg}_K\\,z_K=0{,}5\\,q$ y $\\mathrm{PMg}_L\\,z_L=0{,}25\\,q$, de modo que:\n\n- pago al capital: $0{,}5\\,pq$;\n- pago al trabajo: $0{,}25\\,pq$;\n- beneficio: $pq-0{,}75\\,pq=0{,}25\\,pq$.\n\nEs el teorema de Euler para una función homogénea de grado $k$: $\\sum_i\\mathrm{PMg}_i\\,z_i=k\\,F(\\vec{z})$. Con rendimientos decrecientes ($k<1$) queda un excedente, que puede interpretarse como la renta de un factor fijo no incluido en la función; con $k=1$ el producto se agota exactamente, y con $k>1$ pagar las productividades marginales costaría más que el producto. El resultado no depende de los precios: al ser la función estrictamente cóncava, el máximo existe, y en él las participaciones son los exponentes.\n\nPor qué fallan las demás:\n\n- a) El agotamiento del producto exige rendimientos constantes a escala; aquí $k=0{,}75$.\n- b) El 75 % es la parte que va a los factores, no el beneficio.\n- d) Los precios determinan el nivel de producción y de beneficio, pero no su proporción sobre el ingreso, que viene dada por los exponentes."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Largo plazo: funciones homogéneas y teorema de Euler",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311111,
+   "estado": "borrador",
+   "enunciado": "El progreso técnico neutral en el sentido de Harrod:",
+   "opciones": {
+    "a": "Es el que, para una proporción $z_K/z_L$ dada, no altera la relación marginal de sustitución técnica, y se representa como $q=A_t\\,F(z_K,z_L)$.",
+    "b": "Es aumentador del capital, $q=F(A_tz_K,z_L)$, y mantiene las participaciones de los factores para una relación trabajo-producto dada.",
+    "c": "Eleva la productividad marginal del trabajo más que la del capital para cualquier función de producción, por lo que siempre es ahorrador de capital en el sentido de Hicks.",
+    "d": "Es aumentador del trabajo, $q=F(z_K,A_tz_L)$, y mantiene las participaciones de los factores para una relación capital-producto dada."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La neutralidad de Harrod equivale a un progreso aumentador del trabajo: el trabajo se mide en unidades de eficiencia, $A_tz_L$, y las participaciones no cambian para una relación capital-producto dada. Por el teorema de Uzawa, es la forma que debe poder adoptar el progreso técnico para que haya crecimiento equilibrado.",
+    "desarrollo": "Los tres criterios de neutralidad se distinguen por lo que mantienen constante:\n\n- Hicks: $q=A_tF(z_K,z_L)$, aumentador del producto; no cambia la RMST para $z_K/z_L$ dada;\n- Solow: $q=F(A_tz_K,z_L)$, aumentador del capital; no cambian las participaciones para $z_L/q$ dada;\n- Harrod: $q=F(z_K,A_tz_L)$, aumentador del trabajo; no cambian las participaciones para $z_K/q$ dada.\n\nEl teorema de Uzawa (1961) establece que, con rendimientos constantes, una senda de crecimiento equilibrado exige que el progreso técnico pueda representarse como aumentador del trabajo; por eso el modelo de Solow lo supone. Con una Cobb-Douglas los tres tipos coinciden.\n\nPor qué fallan las demás:\n\n- a) Es la neutralidad de Hicks.\n- b) Es la neutralidad de Solow.\n- c) Aumentar un factor no es sesgar el progreso a su favor: el efecto sobre las productividades marginales relativas depende de $\\sigma$. Con una Cobb-Douglas ($\\sigma=1$) el progreso aumentador del trabajo es también neutral en el sentido de Hicks, y con $\\sigma<1$ reduce la RMST (es ahorrador de trabajo)."
+   },
+   "dificultad": 1,
+   "apartado": "II.3 Muy largo plazo: tipos de progreso técnico neutral",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311112,
+   "estado": "borrador",
+   "enunciado": "Una economía produce con la tecnología $q=\\left[0{,}5\\,(A\\,z_K)^{-1}+0{,}5\\,z_L^{-1}\\right]^{-1}$, cuya elasticidad de sustitución es $\\sigma=0{,}5$. Un progreso técnico aumentador del capital eleva $A$ de 1 a 2. Para una proporción $z_K/z_L$ dada, la relación marginal de sustitución técnica $\\mathrm{RMST}_{LK}=\\mathrm{PMg}_L/\\mathrm{PMg}_K$:",
+   "opciones": {
+    "a": "No cambia: el progreso es neutral en el sentido de Hicks.",
+    "b": "Se duplica: el progreso eleva la productividad marginal del trabajo en relación con la del capital, es decir, con $\\sigma<1$ es ahorrador de capital en el sentido de Hicks.",
+    "c": "Se reduce a la mitad: el progreso eleva la productividad marginal del factor aumentado, el capital, en relación con la del trabajo.",
+    "d": "Se multiplica por 4, porque la RMST depende del cuadrado de la eficiencia del capital."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "$\\mathrm{RMST}_{LK}=A\\,(z_K/z_L)^{2}$: al duplicarse $A$, se duplica. Con $\\sigma<1$ los factores son difíciles de sustituir, y disponer de más capital efectivo hace relativamente más escaso, y más productivo en el margen, al trabajo: un progreso aumentador del capital está sesgado hacia el trabajo.",
+    "desarrollo": "Derivando $q=\\left[0{,}5\\,A^{-1}z_K^{-1}+0{,}5\\,z_L^{-1}\\right]^{-1}$:\n\n- $\\mathrm{PMg}_L=0{,}5\\,q^{2}\\,z_L^{-2}$;\n- $\\mathrm{PMg}_K=0{,}5\\,q^{2}\\,A^{-1}z_K^{-2}$;\n- $\\mathrm{RMST}_{LK}=\\dfrac{\\mathrm{PMg}_L}{\\mathrm{PMg}_K}=A\\left(\\dfrac{z_K}{z_L}\\right)^{2}$.\n\nPara $z_K/z_L$ dada, pasar de $A=1$ a $A=2$ duplica la RMST. En general, con una CES la RMST es proporcional a $A^{-\\rho}$, con $\\rho=(\\sigma-1)/\\sigma$: si $\\sigma<1$ ($\\rho<0$), aumentar la eficiencia del capital eleva la RMST (sesgo hacia el trabajo, ahorrador de capital en la terminología de Hicks); si $\\sigma>1$, la reduce (sesgo hacia el capital), y si $\\sigma=1$ (Cobb-Douglas) no la altera.\n\nLa intuición: duplicar $A$ equivale a tener el doble de capital efectivo. Si los factores son muy complementarios, ese capital efectivo adicional vale poco sin más trabajo, y es el trabajo el que gana productividad marginal relativa.\n\nPor qué fallan las demás:\n\n- a) Solo ocurre con $\\sigma=1$: en la Cobb-Douglas las tres neutralidades coinciden.\n- c) Es el error de identificar «aumentador de un factor» con «sesgado hacia ese factor»; sería cierto con $\\sigma>1$.\n- d) El cuadrado afecta a la proporción $z_K/z_L$, no a $A$: en la RMST, $A$ aparece elevado a $-\\rho=1$."
+   },
+   "dificultad": 3,
+   "apartado": "II.3 Muy largo plazo: progreso aumentador de un factor y sesgo",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311113,
+   "estado": "borrador",
+   "enunciado": "Dos bienes se producen con las tecnologías $X=L_X^{1/2}K_X^{1/2}$ e $Y=2\\,L_Y^{1/2}K_Y^{1/2}$, y las dotaciones totales de factores son $\\overline{L}=100$ y $\\overline{K}=400$. En la caja de Edgeworth de la producción:",
+   "opciones": {
+    "a": "La curva de contrato es la diagonal de la caja y la frontera de posibilidades de producción es la recta $Y=400-2X$: el coste de oportunidad de $X$ es constante.",
+    "b": "La curva de contrato es la diagonal de la caja, pero la frontera de posibilidades de producción es estrictamente cóncava, porque la productividad marginal de cada factor es decreciente.",
+    "c": "La curva de contrato queda por debajo de la diagonal, porque el bien $Y$ es el doble de productivo y absorbe proporcionalmente más de ambos factores, y la frontera de posibilidades de producción es estrictamente cóncava.",
+    "d": "Como las dos relaciones marginales de sustitución técnica tienen la misma expresión, todos los repartos de factores de la caja son técnicamente eficientes."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Las dos RMST son $K_j/L_j$: se igualan cuando ambos bienes usan la proporción de la economía, $K/L=4$ (la diagonal). Entonces $X=2L_X$ e $Y=4L_Y$, y con $L_X+L_Y=100$ resulta $Y=400-2X$. Con rendimientos constantes e igual intensidad factorial, la FPP es lineal.",
+    "desarrollo": "Condición de eficiencia: $\\mathrm{RMST}^X_{LK}=K_X/L_X=K_Y/L_Y=\\mathrm{RMST}^Y_{LK}$. Con las dotaciones dadas, la única forma de que las dos proporciones coincidan es que ambas igualen la de la economía: $K_X/L_X=K_Y/L_Y=400/100=4$. La curva de contrato es la diagonal de la caja.\n\nSobre ella, $K_X=4L_X$ y $K_Y=4L_Y$:\n\n- $X=L_X^{1/2}(4L_X)^{1/2}=2L_X$;\n- $Y=2\\,L_Y^{1/2}(4L_Y)^{1/2}=4L_Y$;\n- como $L_X+L_Y=100$: $\\dfrac{X}{2}+\\dfrac{Y}{4}=100$, es decir, $Y=400-2X$.\n\nLa relación marginal de transformación es constante, $\\mathrm{RMT}_{XY}=2$: cada unidad más de $X$ cuesta 2 de $Y$. La concavidad estricta de la FPP exige rendimientos decrecientes o, con rendimientos constantes, intensidades factoriales distintas entre los dos bienes; aquí no se da ninguna de las dos.\n\nPor qué fallan las demás:\n\n- b) La productividad marginal decreciente de cada factor por separado no basta: al moverse por la diagonal los dos factores se reasignan en la misma proporción y, con rendimientos constantes, la producción de cada bien cambia linealmente.\n- c) El factor 2 de $Y$ es un parámetro de eficiencia neutral: no altera su RMST ni, por tanto, la curva de contrato; solo cambia la escala del eje de $Y$ en la FPP.\n- d) Que la expresión sea la misma no implica que el valor sea el mismo: fuera de la diagonal, $K_X/L_X\\neq K_Y/L_Y$, las isocuantas se cortan y puede producirse más de un bien sin producir menos del otro."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 La caja de Edgeworth: curva de contrato y frontera de posibilidades de producción",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311114,
+   "estado": "borrador",
+   "enunciado": "Con los factores de que dispone, una empresa multiproducto puede obtener las combinaciones de sus dos productos que cumplen $q_1^{2}+q_2^{2}=100$ (su curva de transformación). Si vende el bien 1 al precio $p_1=3$ y el bien 2 al precio $p_2=4$, la combinación que maximiza su ingreso es:",
+   "opciones": {
+    "a": "$(q_1,q_2)=(6,\\,8)$",
+    "b": "$(q_1,q_2)=(8,\\,6)$",
+    "c": "$(q_1,q_2)=(0,\\,10)$",
+    "d": "$(q_1,q_2)\\approx(7{,}07;\\ 7{,}07)$"
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La empresa elige el punto de su curva de transformación en el que la relación marginal de transformación iguala el precio relativo: $\\mathrm{RMT}_{12}=q_1/q_2=p_1/p_2=3/4$. Con $q_1^2+q_2^2=100$, resulta $q_1=6$ y $q_2=8$, con un ingreso de 50.",
+    "desarrollo": "La relación marginal de transformación es el valor absoluto de la pendiente de la curva de transformación: con $T=q_1^2+q_2^2-100$,\n\n$\\mathrm{RMT}_{12}=\\dfrac{\\partial T/\\partial q_1}{\\partial T/\\partial q_2}=\\dfrac{q_1}{q_2}$.\n\nCon los factores dados, maximizar el beneficio es maximizar el ingreso $3q_1+4q_2$ sobre la curva: la recta de isoingreso es tangente a ella donde $q_1/q_2=3/4$. Sustituyendo $q_1=0{,}75\\,q_2$ en la curva, $1{,}5625\\,q_2^2=100$, luego $q_2=8$ y $q_1=6$. El ingreso es $18+32=50$. Como la curva es cóncava respecto al origen (la RMT crece al especializarse en el bien 1), la tangencia es un máximo.\n\nPor qué fallan las demás:\n\n- b) Invierte la condición ($q_1/q_2=p_2/p_1$): produce más del bien barato. Su ingreso es $24+24=48<50$.\n- c) Especializarse en el bien más caro no es óptimo cuando la curva es estrictamente cóncava: cerca de ese extremo, renunciar a muy poco del bien 2 permite obtener mucho del bien 1. Su ingreso es 40.\n- d) Es el punto en el que la RMT vale 1: sería el óptimo solo con precios iguales. Su ingreso es $7\\cdot 7{,}07\\approx 49{,}5<50$."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 La empresa multiproducto: curva de transformación y relación marginal de transformación",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

@@ -1,0 +1,132 @@
+{
+ "tema": "3.A.27",
+ "preguntas": [
+  {
+   "id": 312701,
+   "estado": "borrador",
+   "enunciado": "Un sindicato y una empresa negocian cómo repartirse un excedente total $\\Pi=100$ (utilidad transferible: $U_S+B=\\Pi$). Si no hay acuerdo, el sindicato obtiene $U_S^0=20$ y la empresa $B^0=40$. El resultado es la solución de Nash generalizada, con un poder de negociación del sindicato $\\gamma=1/4$. El sindicato y la empresa obtienen, respectivamente:",
+   "opciones": {
+    "a": "$U_S=25$ y $B=75$.",
+    "b": "$U_S=40$ y $B=60$.",
+    "c": "$U_S=30$ y $B=70$.",
+    "d": "$U_S=35$ y $B=65$."
+   },
+   "respuesta": ["c"],
+   "explicacion": {
+    "clave": "Con utilidad transferible, cada parte recibe su punto de desacuerdo más su cuota del excedente neto del acuerdo. El excedente neto es $100-20-40=40$; el sindicato se lleva $1/4$ (10) y la empresa $3/4$ (30): $U_S=30$ y $B=70$.",
+    "desarrollo": "La solución de Nash generalizada maximiza $(U_S-U_S^0)^{\\gamma}(B-B^0)^{1-\\gamma}$ sujeta a $U_S+B=\\Pi$. La condición de primer orden, $\\gamma/(U_S-U_S^0)=(1-\\gamma)/(\\Pi-U_S-B^0)$, da\n\n$$U_S=U_S^0+\\gamma\\,(\\Pi-U_S^0-B^0),\\qquad B=B^0+(1-\\gamma)\\,(\\Pi-U_S^0-B^0).$$\n\nCon los datos: excedente neto $=100-20-40=40$; $U_S=20+\\tfrac14\\cdot40=30$ y $B=40+\\tfrac34\\cdot40=70$. Comprobación: $30+70=100$ y $(30-20)/(70-40)=1/3=\\gamma/(1-\\gamma)$.\n\nPor qué fallan las demás:\n\n- a) Reparte el excedente total con las cuotas $\\gamma$ y $1-\\gamma$ ($25$ y $75$) y olvida los puntos de desacuerdo: lo que se reparte con esas cuotas es la ganancia sobre el desacuerdo, no el total.\n- b) Reparte el excedente neto a medias ($20+20$ y $40+20$): es la solución simétrica de Nash ($\\gamma=1/2$), no la del enunciado.\n- d) Descuenta solo el punto de desacuerdo de la empresa: $20+\\tfrac14(100-40)=35$. El excedente neto descuenta lo que obtienen las dos partes sin acuerdo."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Teoría de la negociación: solución de Nash generalizada con utilidad transferible",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312702,
+   "estado": "borrador",
+   "enunciado": "Una empresa con tecnología $Y=A\\,L^{3/4}$ negocia el salario con un sindicato de afiliados neutrales al riesgo, cuyo salario de reserva es $w^R=12$; sin acuerdo, la empresa no produce. Se negocia solo el salario, con la solución de Nash generalizada y un poder de negociación del sindicato $\\gamma=1/4$, y después la empresa elige el empleo (derecho a gestionar). Hay afiliados sin empleo. El salario negociado y su respuesta a un aumento de la productividad $A$ son:",
+   "opciones": {
+    "a": "$w=13$, y no cambia al aumentar $A$: todo el ajuste recae en el empleo.",
+    "b": "$w=16$, y no cambia al aumentar $A$: todo el ajuste recae en el empleo.",
+    "c": "$w=13$, y aumenta en la misma proporción que $A$, porque el salario iguala el producto marginal del trabajo.",
+    "d": "$w=15$, y no cambia al aumentar $A$: todo el ajuste recae en el empleo."
+   },
+   "respuesta": ["a"],
+   "explicacion": {
+    "clave": "Con Cobb-Douglas y neutralidad al riesgo, el salario del derecho a gestionar es la media de los dos extremos ponderada por el poder: $w=(1-\\gamma)w^R+\\gamma w^S$, con $w^S=w^R/\\alpha=16$. Sale $w=13$, que no depende de $A$: la demanda de trabajo es isoelástica y el shock lo absorbe el empleo.",
+    "desarrollo": "Con $F(L)=L^{\\alpha}$, la demanda de trabajo tiene elasticidad constante, $|\\varepsilon_{L^D,w}|=1/(1-\\alpha)$.\n\n- Sindicato monopolista ($\\gamma=1$): $w^S=w^R/\\alpha=12/(3/4)=16$.\n- Competencia ($\\gamma=0$): $w=w^R=12$.\n- Derecho a gestionar: $w=(1-\\gamma)\\,w^R+\\gamma\\,w^S=w^R\\big[1+\\gamma\\,\\tfrac{1-\\alpha}{\\alpha}\\big]=12\\,[1+\\tfrac14\\cdot\\tfrac13]=13$. Por la otra vía: $\\tfrac34\\cdot12+\\tfrac14\\cdot16=9+4=13$.\n\nEn la fórmula no aparece $A$: un aumento de la productividad desplaza la demanda de trabajo sin cambiar su elasticidad, el salario negociado no se mueve y el empleo, $L^D(w)=(\\alpha A/w)^{1/(1-\\alpha)}$, absorbe todo el shock (mientras queden afiliados sin empleo). Es la rigidez real del salario que explican estos modelos.\n\nPor qué fallan las demás:\n\n- b) $16$ es el salario del sindicato monopolista, el caso $\\gamma=1$.\n- c) El salario sí iguala el producto marginal (el acuerdo está sobre la demanda de trabajo), pero lo que se ajusta para que se cumpla la igualdad es el empleo, no el salario.\n- d) $15=w^R(1+\\gamma)$ aplica el poder de negociación directamente como margen sobre el salario de reserva, sin la elasticidad de la demanda de trabajo."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Negociación colectiva: derecho a gestionar (Cobb-Douglas y neutralidad al riesgo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312703,
+   "estado": "borrador",
+   "enunciado": "En el modelo de contratos eficientes de McDonald y Solow (1981), un sindicato cuyos afiliados son aversos al riesgo negocia a la vez el salario y el empleo con una empresa, sin que exista ningún seguro de paro pactado. Señale la afirmación CORRECTA sobre el acuerdo:",
+   "opciones": {
+    "a": "Se sitúa sobre la demanda de trabajo de la empresa, entre el equilibrio competitivo y el del sindicato monopolista, según el poder de negociación de cada parte.",
+    "b": "Se sitúa sobre una curva de contratos vertical en el empleo competitivo: el poder sindical solo reparte la renta y el producto marginal del trabajo iguala el salario de reserva.",
+    "c": "Se sitúa a la izquierda de la demanda de trabajo, sobre una curva de contratos de pendiente negativa: con más poder, el sindicato sube el salario y acepta menos empleo que el competitivo.",
+    "d": "Se sitúa a la derecha de la demanda de trabajo, sobre una curva de contratos creciente: con más poder, el sindicato obtiene más salario y también más empleo que el competitivo."
+   },
+   "respuesta": ["d"],
+   "explicacion": {
+    "clave": "Las tangencias entre isobeneficio e indiferencias cumplen $A\\,F'(L)=w-[u(w)-u(w^R)]/u'(w)$. Con $u$ cóncava, el lado derecho es menor que $w^R$: hay sobreempleo y la curva de contratos es creciente. El acuerdo es eficiente para las partes, pero no en la producción (débilmente eficiente).",
+    "desarrollo": "Si salario y empleo se negocian juntos, el acuerdo es un punto de la curva de contratos (tangencias entre las isobeneficio de la empresa y las curvas de indiferencia del sindicato):\n\n$$A\\,F'(L)=w-\\frac{u(w)-u(w^R)}{u'(w)}.$$\n\n- Con afiliados aversos al riesgo, por la concavidad de $u$, $u(w)-u(w^R)>u'(w)(w-w^R)$, luego $A\\,F'(L)<w^R<w$: el acuerdo está a la derecha de la demanda de trabajo (a ese salario la empresa querría despedir) y el empleo supera al competitivo. El sindicato usa el empleo como seguro de sus afiliados frente al paro.\n- La curva es creciente: con más poder sindical hay más salario y más empleo. Leída al revés, una moderación salarial a lo largo de la curva reduce el empleo, lo contrario que en el derecho a gestionar.\n- El acuerdo es eficiente en el reparto entre las partes, pero no en la producción: el producto marginal queda por debajo del coste de oportunidad del trabajo.\n\nPor qué fallan las demás:\n\n- a) Es el derecho a gestionar: se negocia solo el salario y la empresa elige el empleo sobre su demanda.\n- b) Es el caso de afiliados neutrales al riesgo (o el de los contratos fuertemente eficientes, con un seguro de paro negociado): la curva de contratos es vertical en $L^c$.\n- c) Es el caso de afiliados amantes del riesgo ($u$ convexa): la desigualdad se invierte y hay subempleo."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Negociación colectiva: contratos eficientes (curva de contratos con aversión al riesgo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "figura_pendiente": "Plano (L, w) con la demanda de trabajo decreciente, la recta horizontal del salario de reserva w^R, el punto competitivo C en su corte (empleo L^c), dos o tres isobeneficio (con máximo sobre la demanda) y dos o tres curvas de indiferencia del sindicato (decrecientes y convexas, horizontales a partir del número de afiliados). Sin dibujar la curva de contratos ni marcar ningún punto de acuerdo, para no delatar la respuesta."
+  },
+  {
+   "id": 312704,
+   "estado": "borrador",
+   "enunciado": "En una economía con salarios de eficiencia a la Solow (1979), las empresas maximizan $B=A\\,F(e\\,L)-w\\,L$ y el esfuerzo de cada trabajador depende del salario real según $e(w)=(w-6)^{1/3}$ para $w\\geq 6$ (y $e=0$ para $w<6$). Al salario que eligen las empresas hay trabajadores en paro. Ese salario es:",
+   "opciones": {
+    "a": "$w^*=6$, el salario más bajo al que la empresa puede contratar sin que el esfuerzo sea negativo.",
+    "b": "$w^*=9$.",
+    "c": "$w^*=12$.",
+    "d": "No puede determinarse sin conocer la productividad $A$, la función $F$ y la oferta de trabajo."
+   },
+   "respuesta": ["b"],
+   "explicacion": {
+    "clave": "La condición de Solow exige que la elasticidad del esfuerzo respecto al salario sea 1: $w\\,e'(w)/e(w)=w/[3(w-6)]=1$, de donde $w^*=9$. Es el salario que minimiza el coste por unidad de trabajo efectivo, $w/e(w)$, y no depende de $A$ ni de la demanda de trabajo.",
+    "desarrollo": "Con paro, la empresa elige a la vez el empleo y el salario. Dividiendo sus dos condiciones de primer orden sale la condición de Solow, $\\varepsilon_{e,w}=w\\,e'(w)/e(w)=1$.\n\nCon $e(w)=(w-6)^{1/3}$: $e'(w)=\\tfrac13(w-6)^{-2/3}$, así que\n\n$$\\varepsilon_{e,w}=\\frac{w}{3\\,(w-6)}=1\\ \\Longrightarrow\\ w=3w-18\\ \\Longrightarrow\\ w^*=9.$$\n\nComprobación por la otra vía (minimizar $w/e(w)$, es decir, maximizar $e/w$): en $w=8$, $e/w=2^{1/3}/8\\approx0{,}157$; en $w=9$, $3^{1/3}/9\\approx0{,}160$; en $w=10$, $4^{1/3}/10\\approx0{,}159$. El máximo está en $w=9$. La función es cóncava para $w>6$, así que se cumple la condición de segundo orden.\n\nPor qué fallan las demás:\n\n- a) Con $w=6$ el esfuerzo es nulo: la empresa pagaría un salario y no obtendría trabajo efectivo. No busca el salario más bajo, sino el coste más bajo por unidad de trabajo efectivo.\n- c) En $w=12$ la elasticidad es $12/18=2/3<1$: un 1 % más de salario da menos de un 1 % más de esfuerzo, y el coste por unidad efectiva ya está subiendo.\n- d) Es justo el resultado central del modelo: el salario de eficiencia depende solo de la forma de $e(w)$. $A$ y $F$ determinan el empleo, y la oferta solo importa si la demanda llega a emplear a todos, que no es el caso."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Salarios de eficiencia: modelo de Solow (condición de Solow)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312705,
+   "estado": "borrador",
+   "enunciado": "En el modelo de Shapiro y Stiglitz (1984), la condición de no escaqueo es $w\\geq\\overline{e}+\\big(\\rho+\\tfrac{s}{U}\\big)\\tfrac{\\overline{e}}{q}$, con $\\overline{e}$ el coste del esfuerzo, $\\rho$ la tasa de descuento, $s$ la tasa de separación, $q$ la tasa de detección y $U$ la tasa de paro. Con $\\overline{e}=1$, $\\rho=0{,}1$, $s=0{,}1$ y $q=0{,}5$, el salario mínimo que evita el escaqueo cuando la tasa de paro es del 10 % y cuando es del 20 % es, respectivamente:",
+   "opciones": {
+    "a": "$2{,}2$ y $3{,}2$: con más paro hay que pagar más para compensar el mayor riesgo de quedarse sin empleo.",
+    "b": "$3{,}2$ en los dos casos: el salario que evita el escaqueo no depende del nivel de empleo.",
+    "c": "$1{,}22$ y $1{,}24$.",
+    "d": "$3{,}2$ y $2{,}2$: con más paro, el despedido tarda más en volver a trabajar y basta un salario menor para disciplinar."
+   },
+   "respuesta": ["d"],
+   "explicacion": {
+    "clave": "Con $U=0{,}1$: $w=1+(0{,}1+1)\\cdot2=3{,}2$. Con $U=0{,}2$: $w=1+(0{,}1+0{,}5)\\cdot2=2{,}2$. La condición de no escaqueo baja con el paro: el paro es el mecanismo que disciplina a los trabajadores.",
+    "desarrollo": "Sustituyendo: $\\overline{e}/q=1/0{,}5=2$.\n\n- $U=10\\ \\%$: $s/U=0{,}1/0{,}1=1$; $w=1+(0{,}1+1)\\cdot2=3{,}2$.\n- $U=20\\ \\%$: $s/U=0{,}1/0{,}2=0{,}5$; $w=1+(0{,}1+0{,}5)\\cdot2=2{,}2$.\n\nIntuición: en estado estacionario, $f+s=s/U$, con $f$ la tasa a la que los parados encuentran empleo. Con poco paro, el despedido vuelve a trabajar enseguida y el despido castiga poco, así que hay que pagar más para que la renta del empleo, $V_{\\mathrm E}-V_{\\mathrm U}=\\overline{e}/q$, se mantenga; con mucho paro, basta menos. Cuando $U\\to0$, ningún salario disuade.\n\nPor qué fallan las demás:\n\n- a) Invierte la relación: en el plano (empleo, salario) la condición de no escaqueo es creciente en el empleo, es decir, decreciente en el paro. El salario no compensa un riesgo: crea una renta que el trabajador teme perder.\n- b) La condición solo es independiente del empleo si no hay rotación ($s=0$); aquí $s=0{,}1$.\n- c) Multiplica $s$ por $U$ en vez de dividir: $1+(0{,}1+0{,}01)\\cdot2=1{,}22$ y $1+(0{,}1+0{,}02)\\cdot2=1{,}24$."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Salarios de eficiencia: Shapiro y Stiglitz (condición de no escaqueo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312706,
+   "estado": "borrador",
+   "enunciado": "En el modelo básico de contratos implícitos (Baily, Gordon y Azariadis), una empresa neutral al riesgo ofrece un contrato a un trabajador averso al riesgo antes de conocerse el estado de la naturaleza, que después observan los dos. El contrato óptimo:",
+   "opciones": {
+    "a": "Fija en cada estado un salario igual al producto marginal del trabajo, de modo que la renta del trabajador sube en los estados buenos y baja en los malos.",
+    "b": "Da al trabajador la misma renta en todos los estados y fija en cada uno el nivel de trabajo eficiente: explica la rigidez del salario, pero no el paro involuntario.",
+    "c": "Mantiene constantes tanto la renta como las horas de trabajo en todos los estados, por lo que la empresa absorbe los shocks de productividad sin ajustar la producción.",
+    "d": "Da al trabajador la misma renta en todos los estados, y como el salario no puede bajar en los estados malos, la empresa contrata menos de lo eficiente y aparece paro involuntario."
+   },
+   "respuesta": ["b"],
+   "explicacion": {
+    "clave": "La empresa, neutral al riesgo, asegura del todo al trabajador: $u'(C_j)$ igual en todos los estados, luego $C_j=\\overline{C}$. Y en cada estado se trabaja lo eficiente: $A_jF'(L_j)=v'(L_j)/u'(\\overline{C})$. El salario deja de ser el precio que decide el empleo: hay rigidez, no paro involuntario.",
+    "desarrollo": "La empresa maximiza su beneficio esperado, $\\sum_j\\pi_j[A_jF(L_j)-C_j]$, sujeta a que el trabajador obtenga al menos su utilidad de reserva, $\\sum_j\\pi_j[u(C_j)-v(L_j)]\\geq U^R$. Las condiciones de primer orden dan:\n\n- seguro completo: $u'(C_j)=1/\\lambda$ en todos los estados, y como $u'$ es decreciente, $C_j=\\overline{C}$. Quien es neutral al riesgo carga con todo el riesgo;\n- empleo eficiente: $A_jF'(L_j)=v'(L_j)/u'(\\overline{C})$: el producto marginal iguala la relación marginal de sustitución del trabajador, como en un mercado al contado. En los estados buenos se trabaja más.\n\nEl empleo de cada estado está en el contrato y es el eficiente; nadie trabaja menos de lo que aceptó (Barro, 1977). Por eso los contratos implícitos explican por qué el salario no sigue a la productividad, pero no el paro involuntario, que exige extensiones (información asimétrica, despidos sin indemnización, insiders).\n\nPor qué fallan las demás:\n\n- a) Es el mercado al contado: deja todo el riesgo al trabajador, que es justo quien no puede diversificarlo.\n- c) Lo que se estabiliza es la renta, no el trabajo: las horas (o el empleo) varían con el estado, y son las que hacen el ajuste.\n- d) Confunde rigidez con racionamiento. El empleo no se decide a partir del salario observado, sino en el contrato, y es el eficiente en cada estado."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Contratos implícitos: modelo básico (seguro completo y empleo eficiente)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}
