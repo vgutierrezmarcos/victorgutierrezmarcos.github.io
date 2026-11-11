@@ -1,0 +1,60 @@
+name: Sugerencias de mejora
+
+# Sugerencias de los usuarios sobre temas y fichas (conector «sugerir_mejora» y
+# «Sugerir una mejora» en la app; ver scripts/sugerencias.py):
+# las tramita cada día un agente en el ordenador de Víctor (scripts/agente-sugerencias.py). Aquí:
+# - `informe`: manda por correo el informe del día que el agente deja en el conector, con los botones para decidir;
+# - `resoluciones`: escribe en el documento de cada sugerencia en qué ha quedado, para que su autor lo vea en la app;
+# - cada mañana, red de seguridad: avisa si hay sugerencias con más de tres días sin tramitar.
+on:
+  schedule:
+    - cron: '13 6 * * *'
+  workflow_dispatch:
+    inputs:
+      resoluciones:
+        description: 'JSON: [{"id":"s_…","estado":"aceptada|descartada|duplicada","respuesta":"…"}] (vacío: manda el resumen)'
+        required: false
+        default: ''
+      informe:
+        description: 'Informe del agente: <clave>.<firma> (lo manda por correo)'
+        required: false
+        default: ''
+      asunto:
+        description: 'Asunto del correo del informe'
+        required: false
+        default: 'Sugerencias de mejora'
+
+concurrency:
+  group: sugerencias
+  cancel-in-progress: false
+
+jobs:
+  sugerencias:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: main
+    - name: Informe del agente por correo
+      if: ${{ github.event_name == 'workflow_dispatch' && inputs.informe != '' }}
+      env:
+        FCM_CUENTA_SERVICIO: ${{ secrets.FCM_CUENTA_SERVICIO }}
+        BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        INFORME: ${{ inputs.informe }}
+        ASUNTO: ${{ inputs.asunto }}
+      run: python3 scripts/enviar-sugerencias.py --informe
+    - name: Aviso de las que llevan días sin tramitar
+      if: ${{ github.event_name == 'schedule' || (inputs.resoluciones == '' && inputs.informe == '') }}
+      env:
+        FCM_CUENTA_SERVICIO: ${{ secrets.FCM_CUENTA_SERVICIO }}
+        BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      run: python3 scripts/enviar-sugerencias.py --resumen
+    - name: Apuntar lo resuelto en cada sugerencia
+      if: ${{ github.event_name == 'workflow_dispatch' && inputs.resoluciones != '' }}
+      env:
+        FCM_CUENTA_SERVICIO: ${{ secrets.FCM_CUENTA_SERVICIO }}
+        # Por variable de entorno, nunca dentro de la orden: es texto que llega de fuera.
+        RESOLUCIONES: ${{ inputs.resoluciones }}
+      run: python3 scripts/enviar-sugerencias.py --resolver
