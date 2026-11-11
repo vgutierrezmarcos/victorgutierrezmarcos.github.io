@@ -28,6 +28,7 @@ import {
   diasEntre,
   apuntarLeitner,
   corregirTest,
+  dificultadOficial,
   elegirPreguntas,
   resumenInforme,
   semanaDe,
@@ -71,6 +72,8 @@ export interface Contexto {
   banco(): Promise<Banco>;
   /** Banco propio de preguntas no oficiales (KV, banco/preguntas.json; lo publica scripts/banco-test.py). Vacío si aún no hay. */
   bancoPropio?(): Promise<Map<number, PreguntaBanco>>;
+  /** Aciertos de todos los usuarios en cada pregunta oficial (dificultad.json de la web): id → veces vista y aciertos. */
+  dificultad?(): Promise<Record<string, { v?: number; a?: number }>>;
   contenido: Contenido;
   /** Un fichero de la skill desplegada en la web (SKILL.md, references/…, assets/…), o null si no existe. */
   skill(ruta: string): Promise<string | null>;
@@ -903,20 +906,32 @@ export function crearServidor(ctx: Contexto): McpServer {
     .enum(['oficiales', 'banco', 'oficiales_y_banco'])
     .default('oficiales')
     .describe('«oficiales» (por defecto): solo preguntas de exámenes oficiales. «banco»: solo las del banco de EconomIA, no oficiales pero revisadas y con explicación. «oficiales_y_banco»: primero las oficiales y se completa con el banco. Usa «oficiales» salvo que el usuario pida otra cosa o no queden oficiales de ese tema.');
+  const nivelPreguntas = z
+    .enum(['cualquiera', 'primera_vuelta', 'avanzado'])
+    .default('cualquiera')
+    .describe('Dificultad: «cualquiera» (por defecto), «primera_vuelta» (sin las difíciles: para quien está viendo el temario por primera vez o lo pide más asequible) o «avanzado» (sin las fáciles). Las del banco llevan su dificultad; de las oficiales solo se conoce la de las que ya han contestado bastantes usuarios, y las demás entran en todos los niveles. Úsalo cuando el usuario lo pida o te diga en qué punto de la preparación está.');
   const JERARQUIA =
     'Hay tres tipos de pregunta y este es el orden de preferencia: 1) OFICIALES, de exámenes reales; 2) del BANCO de EconomIA, no oficiales pero revisadas y con explicación; 3) GENERADAS por ti al vuelo, sin revisar, solo si el usuario lo pide o necesita algo muy concreto que no cubren las otras. Dile siempre de qué tipo es lo que le pones y deja que elija.';
 
   /** Las preguntas de un test a medida (para preguntas_test y test_interactivo), o el error que se devuelve. */
-  const testDe = async (oposicion: Oposicion, temas: string[], n: number, modo: 'no_dominadas' | 'falladas' | 'todas', tipo: 'oficiales' | 'banco' | 'oficiales_y_banco' = 'oficiales'): Promise<CallToolResult | { [k: string]: unknown }> => {
+  const testDe = async (oposicion: Oposicion, temas: string[], n: number, modo: 'no_dominadas' | 'falladas' | 'todas', tipo: 'oficiales' | 'banco' | 'oficiales_y_banco' = 'oficiales', nivel: 'cualquiera' | 'primera_vuelta' | 'avanzado' = 'cualquiera'): Promise<CallToolResult | { [k: string]: unknown }> => {
     const codigos = temas.map((t) => codigoTema(t)).filter((t): t is string => !!t);
     if (!codigos.length) return error(`Ningún código de tema válido en ${JSON.stringify(temas)} (formato «3.A.8»).`);
     const banco = await ctx.banco();
     if (!banco.preguntas?.size) return error('El banco de preguntas no está disponible ahora mismo. Inténtalo más tarde o remite al simulador de la web.');
-    const propio = (await ctx.bancoPropio?.().catch(() => null)) ?? new Map<number, PreguntaBanco>();
+    const todoElPropio = (await ctx.bancoPropio?.().catch(() => null)) ?? new Map<number, PreguntaBanco>();
+    // Nivel: a las oficiales se les pone la dificultad que sale de los aciertos de todos (si hay datos) y se quitan las que no tocan.
+    const aciertos = nivel === 'cualquiera' ? {} : ((await ctx.dificultad?.().catch(() => null)) ?? {});
+    const entra = (d: number | undefined) => nivel === 'cualquiera' || d === undefined || (nivel === 'primera_vuelta' ? d < 3 : d > 1);
+    const dificultades = new Map<number, number | undefined>();
+    const cribar = (m: Map<number, PreguntaBanco>) =>
+      new Map([...m].filter(([id, p]) => { const d = p.dificultad ?? dificultadOficial(aciertos[String(id)]); dificultades.set(id, d); return entra(d); }));
+    const oficialesDelNivel = nivel === 'cualquiera' ? banco.preguntas : cribar(banco.preguntas);
+    const propio = cribar(todoElPropio);
     const db = await ctx.almacen(oposicion);
     const deEsosTemas = (m: Map<number, PreguntaBanco>) => [...m.values()].filter((p) => p.respuesta.length && p.temas.some((t) => codigos.includes(t))).length;
-    const [oficialesDeEsosTemas, delBancoDeEsosTemas] = [deEsosTemas(banco.preguntas), deEsosTemas(propio)];
-    const oficiales = tipo === 'banco' || n === 0 ? [] : elegirPreguntas(banco.preguntas, codigos, n, modo, await db.leer('progress/spaced_repetition'));
+    const [oficialesDeEsosTemas, delBancoDeEsosTemas] = [deEsosTemas(oficialesDelNivel), deEsosTemas(propio)];
+    const oficiales = tipo === 'banco' || n === 0 ? [] : elegirPreguntas(oficialesDelNivel, codigos, n, modo, await db.leer('progress/spaced_repetition'));
     const faltan = n - oficiales.length;
     const delBanco = tipo === 'oficiales' || faltan <= 0 || !delBancoDeEsosTemas ? [] : elegirPreguntas(propio, codigos, faltan, modo, await db.leer(LEITNER_BANCO));
     const elegidas = [...oficiales, ...delBanco];
@@ -927,6 +942,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       temas: codigos,
       modo,
       tipo,
+      nivel,
       oficialesDeEsosTemas,
       delBancoDeEsosTemas,
       preguntas: elegidas.map((p) => ({
@@ -934,9 +950,10 @@ export function crearServidor(ctx: Contexto): McpServer {
         tipo: p.tipo === 'banco' ? 'banco' : 'oficial',
         cabecera: p.tipo === 'banco' ? `[${p.temas.join(', ')} · banco de EconomIA]` : `[${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}]`,
         ...(p.tipo === 'banco' ? { aviso: AVISO_BANCO } : {}),
+        ...(dificultades.get(p.id) ? { dificultad: ['', 'fácil', 'media', 'difícil'][dificultades.get(p.id)!] } : {}),
         enunciado: p.enunciado,
         opciones: p.opciones,
-        ...(p.figura ? { figura: p.figuras?.length ? 'Lleva figura: descríbela con «descripcion» y enlaza «url» para que la abra.' : 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.', ...(p.figuras?.length ? { figuras: p.figuras } : {}) } : {}),
+        ...(p.figura ? { figura: p.figuras?.length ? 'Lleva figura: descríbela con «descripcion» y, si «url» empieza por https, enlázala para que la abra (las del banco solo se ven en el cuadro interactivo).' : 'Lleva una figura que no se ve aquí: está en el simulador de la web y en la app.', ...(p.figuras?.length ? { figuras: p.figuras } : {}) } : {}),
         respuesta: p.respuesta,
         ...(p.respuesta.length > 1 ? { variasValidas: true } : {}),
         porQue: p.tipo === 'banco' ? p.porQue : explicaciones.get(p.examen)?.[String(p.id)]?.clave,
@@ -968,11 +985,12 @@ export function crearServidor(ctx: Contexto): McpServer {
         n: z.number().int().min(1).max(30).default(10).describe('Cuántas preguntas (1-30).'),
         modo: z.enum(['no_dominadas', 'falladas', 'todas']).default('no_dominadas'),
         tipo: tipoPreguntas,
+        nivel: nivelPreguntas,
       },
     },
-    async ({ oposicion, temas, n, modo, tipo }) =>
+    async ({ oposicion, temas, n, modo, tipo, nivel }) =>
       protegido(async () => {
-        const t = await testDe(oposicion, temas, n, modo, tipo);
+        const t = await testDe(oposicion, temas, n, modo, tipo, nivel);
         return 'content' in t ? (t as CallToolResult) : json({ ...t, comoUsarlas: 'Plantéalas sin la respuesta; corrige cuando conteste, con la explicación («porQue») y la fuente. Las del banco llevan «aviso»: díselo en pequeño junto a la pregunta («No oficial · banco de EconomIA»). Si el usuario ve un error en una pregunta, su respuesta o su explicación, repórtalo con reportar_pregunta. El desarrollo completo de cada explicación está en el simulador de la web y en la app («¿Por qué?»).' });
       }),
   );
@@ -990,6 +1008,7 @@ export function crearServidor(ctx: Contexto): McpServer {
         n: z.number().int().min(0).max(30).default(10).describe('Cuántas preguntas oficiales o del banco (0-30; 0 solo si pasas «nuevas»).'),
         modo: z.enum(['no_dominadas', 'falladas', 'todas']).default('no_dominadas'),
         tipo: tipoPreguntas,
+        nivel: nivelPreguntas,
         nuevas: z
           .array(
             z.object({
@@ -1006,10 +1025,10 @@ export function crearServidor(ctx: Contexto): McpServer {
       },
       _meta: metaVista('test'),
     },
-    async ({ oposicion, temas, n, modo, tipo, nuevas }) =>
+    async ({ oposicion, temas, n, modo, tipo, nivel, nuevas }) =>
       protegido(async () => {
         if (n === 0 && !nuevas?.length) return error('Con n = 0 hacen falta preguntas en «nuevas».');
-        const t = await testDe(oposicion, temas, n, modo, tipo);
+        const t = await testDe(oposicion, temas, n, modo, tipo, nivel);
         if ('content' in t) return t as CallToolResult;
         // Las generadas por la IA llevan id negativo: no están en ningún banco y apuntar_test no las cuenta.
         const generadas = (nuevas ?? [])
@@ -1115,8 +1134,9 @@ export function crearServidor(ctx: Contexto): McpServer {
     async ({ url }) =>
       protegido(async () => {
         const m = /^https:\/\/www\.victorgutierrezmarcos\.es\/oposicion\/temario\/primer-ejercicio\/test\/(img\/[\w.-]+\.(?:webp|png|jpe?g))$/.exec(url);
-        if (!m) return error('Esa dirección no es una figura del test.');
-        const f = await ctx.figura?.(m[1]);
+        const delBanco = /^banco:[\w-]+\.(?:webp|png)$/.test(url);
+        if (!m && !delBanco) return error('Esa dirección no es una figura del test.');
+        const f = await ctx.figura?.(delBanco ? url : m![1]);
         if (!f) return error('No se ha podido leer la figura.');
         return { content: [{ type: 'image', data: f.base64, mimeType: f.mime }] };
       }),

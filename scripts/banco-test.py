@@ -23,7 +23,8 @@ La fuente es un JSON por tema en la rama revision-temario, carpeta banco-test/ (
           "apartado": "II.2 Ecuación de Slutsky",   # de dónde sale en el tema
           "creada": "2026-11-11", "revisada": "2026-11-11",
           "vigencia": "estable",             # o «revisar-AAAA-MM» si depende de un dato o una norma que cambia
-          "imagenes": [{"src": "https://…", "alt": "descripción con la que se puede contestar", "ancho": 600}]   # opcional
+          "imagenes": [{"src": "banco:310811.webp", "alt": "descripción con la que se puede contestar", "ancho": 560}]   # opcional:
+                                             # la figura está en banco-test/img/ (la dibuja banco-test/figuras.py) y solo se sirve con sesión
         } ] }
 
 Cuántas por tema: el banco guarda la proporción de los exámenes oficiales (un tema que cae mucho
@@ -134,7 +135,7 @@ def leer(origen):
             op = p.get('opciones') or {}
             if sorted(op) != LETRAS or not all(isinstance(v, str) and 1 <= len(v) <= 400 for v in op.values()):
                 mal.append('cuatro opciones (a, b, c y d) de 1 a 400 caracteres')
-            elif len({llano(v) for v in op.values()}) < 4:
+            elif len({' '.join(v.lower().split()) for v in op.values()}) < 4:  # sin llano(): «$1/3$» y «$-1/3$» no son iguales
                 mal.append('dos opciones iguales')
             r = p.get('respuesta')
             if not isinstance(r, list) or len(r) != 1 or r[0] not in LETRAS:
@@ -154,8 +155,12 @@ def leer(origen):
             if not re.fullmatch(r'estable|revisar-\d{4}-\d\d', p.get('vigencia') or ''):
                 mal.append('«vigencia»: estable o revisar-AAAA-MM')
             for img in p.get('imagenes') or []:
-                if not str(img.get('src', '')).startswith('https://') or len(img.get('alt') or '') < 20:
-                    mal.append('cada imagen lleva «src» (https) y un «alt» con el que se pueda contestar')
+                src = str(img.get('src', ''))
+                propia = re.fullmatch(r'banco:([\w-]+\.(?:webp|png))', src)
+                if not (src.startswith('https://') or propia) or len(img.get('alt') or '') < 20:
+                    mal.append('cada imagen lleva «src» (https://… o banco:<fichero de img/>) y un «alt» con el que se pueda contestar')
+                elif propia and not os.path.exists(os.path.join(origen, 'img', propia.group(1))):
+                    mal.append(f'falta la figura img/{propia.group(1)} (python3 banco-test/figuras.py)')
             if (enunciado + ''.join(op.values()) if isinstance(op, dict) else '').count('$') % 2:
                 mal.append('un $ sin cerrar')
             if estado == 'publicada' and (p.get('vigencia') or '').startswith('revisar-') and p['vigencia'][8:] <= date.today().strftime('%Y-%m'):
@@ -205,6 +210,11 @@ def main():
                 entorno['CLOUDFLARE_API_TOKEN'] = t.read().strip()
         subprocess.run(['npx', 'wrangler', 'kv', 'key', 'put', CLAVE_KV, '--path', f.name, '--binding', 'CONTENIDO', '--remote'], cwd=WORKER, env=entorno, check=True)
         os.unlink(f.name)
+        figuras = sorted({i['src'][6:] for p in preguntas for i in p.get('imagenes', []) if i['src'].startswith('banco:')})
+        for nombre in figuras:
+            subprocess.run(['npx', 'wrangler', 'kv', 'key', 'put', f'banco/img/{nombre}', '--path', os.path.join(args.origen, 'img', nombre), '--binding', 'CONTENIDO', '--remote'],
+                           cwd=WORKER, env=entorno, check=True, stdout=subprocess.DEVNULL)
+        print(f'{len(figuras)} figuras subidas.')
         print(f'Publicado en el KV del conector ({CLAVE_KV}). El conector lo recoge en diez minutos como mucho.')
 
 
