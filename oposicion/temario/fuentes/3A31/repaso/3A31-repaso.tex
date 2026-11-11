@@ -14,13 +14,13 @@
 \subcante{1. Tablas de origen y destino}{2}
 \subcante{2. La tabla simétrica (ejemplo de 2 ramas)}{3}
 \subcante{3. Los coeficientes técnicos}{2}
-\apartadocante{II. Aplicaciones del marco \emph{input-output}}{16}
-\subcante{1. Modelo de demanda: $(I-A)^{-1}$}{6,5}
-\subcante{2. Modelo de precios: dualidad}{3,5}
-\subcante{3. Eslabonamientos interindustriales}{3,5}
-\subcante{4. Estudios de economía aplicada}{2,5}
-\apartadocante{III. Utilidad y limitaciones}{3,5}
-\subcante{1. Utilidad hoy: medir, no planificar}{1}
+\apartadocante{II. Aplicaciones del marco \emph{input-output}}{14}
+\subcante{1. Modelo de demanda: $(I-A)^{-1}$}{6}
+\subcante{2. Modelo de precios: dualidad}{3}
+\subcante{3. Eslabonamientos interindustriales}{3}
+\subcante{4. Estudios de economía aplicada}{2}
+\apartadocante{III. Utilidad y limitaciones}{5,5}
+\subcante{1. Utilidad hoy: medir, no planificar}{3}
 \subcante{2. Origen de las limitaciones}{2,5}
 \apartadocante{Conclusión}{1}}
 \emph{Ejemplo conductor}: 2 ramas (industria y servicios, M€, precios básicos): todo a mano.
@@ -95,7 +95,7 @@ Los datos llegan por ramas y productos (origen y destino); la simétrica los reo
 \end{itemize}
 
 % ==========================================================================
-\bloque[16]{II. Aplicaciones del marco \emph{input-output}\label{rep:II}}
+\bloque[14]{II. Aplicaciones del marco \emph{input-output}\label{rep:II}}
 \begin{ideaclave}
 Una sola matriz, la inversa de \autor{Leontief} $(I-A)^{-1}$, responde a todo: por columnas, cuánto producir para una demanda (modelo de demanda); por filas, cómo se trasladan los costes (modelo de precios). Y de ella salen eslabonamientos y comercio en valor añadido.
 \end{ideaclave}
@@ -163,11 +163,11 @@ Una sola matriz, la inversa de \autor{Leontief} $(I-A)^{-1}$, responde a todo: p
 \begin{formula}
 \centering $\mathrm{PD}_j=\dfrac{\frac1n\sum_i r_{ij}}{\frac{1}{n^2}\sum_i\sum_j r_{ij}}$,\qquad $\mathrm{SD}_i=\dfrac{\frac1n\sum_j r_{ij}}{\frac{1}{n^2}\sum_i\sum_j r_{ij}}$
 \end{formula}
-\item[] \concepto{Poder de dispersión} $>1$: arrastra más que la media (atrás); \concepto{sensibilidad de dispersión} $>1$: arrastrada más (delante). Ramas \emph{clave} (ambos $>1$), \emph{impulsoras} (PD), \emph{estratégicas o de base} (SD), \emph{independientes}. Ejemplo: media $3{,}5/4=0{,}875$; PD $=(1{,}14;0{,}86)$, SD $=(0{,}86;1{,}14)$: industria impulsora, servicios estratégicos. Límite: + coef. de variación; ponderar.
+\item[] \concepto{Poder de dispersión} $>1$: arrastra más que la media (atrás); \concepto{sensibilidad de dispersión} $>1$: arrastrada más (delante). Ramas \emph{clave} (ambos $>1$), \emph{impulsoras} (PD), \emph{estratégicas o de base} (SD), \emph{independientes}. Ejemplo: media $3{,}5/4=0{,}875$; PD $=(1{,}14;0{,}86)$, SD $=(0{,}86;1{,}14)$: industria impulsora, servicios de base. Mismos 4 cuadrantes que \autor{Chenery}-\autor{Watanabe} (clave = manufacturas de destino intermedio; impulsoras = de destino final; base = primarias de destino intermedio; independientes = primarias de destino final). Límite: + coef. de variación; ponderar.
 \end{itemize}
-\graficorepaso[0.6\linewidth]{rasmussen-cuadrantes}{Cuadrantes de \autor{Rasmussen} con el ejemplo}
+\graficorepaso[0.8\linewidth]{rasmussen-espana}{Las 4 áreas de \autor{Rasmussen} con las ramas de España, 2022}
 \begin{itemize}
-\item \emph{España 2022} (inversa interior): \dato{14 de 63 ramas clave, 22\,\% del VAB}{INE}; atrás, alimentación y bebidas (1,32); delante, comercio mayorista (2,29), electricidad y gas (2,25), servicios a edificios (2,24); automóvil impulsor; refino bajo atrás (crudo importado).
+\item \emph{España 2022} (inversa interior): \dato{14 de 63 ramas clave, 22\,\% del VAB}{INE}; atrás, alimentación y bebidas (1,32); delante, comercio mayorista (2,29), electricidad y gas (2,25), servicios a edificios (2,24); automóvil, agencias de viajes y transporte marítimo, impulsores; refino de base pero bajo atrás (crudo importado); educación, sanidad y AA.\,PP., independientes.
 \item \autor{Streit} (1969): rama a rama (media de 4 ligazones de oferta y demanda, entre 0 y 1): complejos que se localizan juntos; sobrevalora ramas pequeñas muy ligadas. \autor{Ghosh} (1958): modelo de oferta con $b_{ij}\equiv z_{ij}/x_i$ y VAB exógeno; poco creíble como cantidades (\autor{Oosterhaven}, 1988), sí como precios (\autor{Dietzenbacher}, 1997).
 \end{itemize}
 
@@ -186,16 +186,17 @@ Una sola matriz, la inversa de \autor{Leontief} $(I-A)^{-1}$, responde a todo: p
 \end{itemize}
 
 % ==========================================================================
-\bloque[3,5]{III. Utilidad y limitaciones\label{rep:III}}
+\bloque[5,5]{III. Utilidad y limitaciones\label{rep:III}}
 \begin{ideaclave}
 Nacieron cerca de la planificación y no sirvieron para eso; hoy son imprescindibles para \emph{medir}. Sus límites son los de su sencillez (coeficientes fijos, en valor, lineales) y los de su estadística (retraso, coste).
 \end{ideaclave}
 
 \sub{III.1. Utilidad hoy\label{rep:III.1}}
 \begin{itemize}
-\item \emph{Sueño planificador}: \autor{Leontief}, formado en la Rusia revolucionaria; \autor{Stone} y \autor{Meade}, renta nacional en el Gabinete de Guerra; URSS e ISI \vertema{3.B.28}.
+\item \emph{Sueño planificador}: \autor{Leontief}, formado en la Rusia revolucionaria; \autor{Stone} y \autor{Meade}, renta nacional en el Gabinete de Guerra; la URSS planificaba con \emph{balances materiales} (1.ª tabla nacional: 1959); ISI y ramas clave \vertema{3.B.28}.
 \item \emph{Límite de la información} \vertema{3.A.3}: \autor{Barone} (1908): el planificador podría resolver las ecuaciones de \autor{Walras}; \autor{Mises} (1920): sin propiedad ni mercados de capital no hay precios; \autor{Lange} (1936): tanteo; \autor{Hayek} (1945): el problema es el \emph{conocimiento disperso}, que resumen los precios y ninguna tabla recoge.
 \item \emph{Usos de hoy}: estadísticos (cuadrar cuentas, nivel del PIB, \hyperref[rep:I.1]{I.1}); de impacto (\hyperref[rep:II.1]{II.1}); de precios (\hyperref[rep:II.2]{II.2}); de estructura (ramas clave, TiVA, huella, MEGC, \hyperref[rep:II.3]{II.3}-\hyperref[rep:II.4]{II.4}).
+\item[] Detalle: \emph{estadística} (revisión de 2024, cuentas satélite del turismo, SCN 2025: tablas ampliadas); \emph{impacto} (eventos, infraestructuras, turismo 2020, empleo de la exportación; cota superior cerca del pleno empleo); \emph{precios} (energía 2022, impuestos, aranceles); \emph{estructura} (autonomía estratégica: dependencias en valor añadido, extracción hipotética, chips 2021); \emph{medio ambiente y MEGC}. Más útiles cuanto más corto el plazo y menor el cambio.
 \end{itemize}
 
 \sub{III.2. Origen de las limitaciones\label{rep:III.2}}

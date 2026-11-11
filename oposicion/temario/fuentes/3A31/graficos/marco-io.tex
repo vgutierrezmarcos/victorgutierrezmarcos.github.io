@@ -1,0 +1,50 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+\definecolor{tceesalmon}{HTML}{FBE4D5}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+% El marco input-output del SEC 2010: de las tablas de origen y destino
+% (productos x ramas, con sus 2 identidades) a la tabla simétrica (producto x
+% producto o rama x rama) con una hipótesis de tecnología.
+% Capas: origen -> destino -> identidades -> hipótesis -> tabla simétrica.
+\begin{tikzpicture}[tcee, font=\footnotesize,
+  cabeza/.style={draw=#1, line width=0.8pt, fill=#1!12, minimum width=4.6cm,
+    minimum height=1.0cm, align=center},
+  pieza/.style={draw=#1, line width=0.5pt, fill=white, minimum width=4.6cm,
+    minimum height=0.75cm, align=center, text width=4.3cm},
+  flecha/.style={-{Stealth[length=6pt]}, thick, tceemorado}]
+  \path (-2.6,0.8) rectangle (10.1,-7.6);
+  % 1: tabla de origen
+  \capa{1}{%
+    \node[cabeza=tceeazul] (O) at (0,0) {\textbf{Tabla de origen}\\{\scriptsize productos $\times$ ramas: la \emph{oferta}}};
+    \node[pieza=tceeazul, below=4pt of O] (O1) {producción de cada producto por cada rama};
+    \node[pieza=tceeazul, below=3pt of O1] (O2) {importaciones};
+    \node[pieza=tceeazul, below=3pt of O2] (O3) {márgenes e impuestos netos sobre los productos};}
+  % 2: tabla de destino
+  \capa{2}{%
+    \node[cabeza=tceerojo] (D) at (7.5,0) {\textbf{Tabla de destino}\\{\scriptsize productos $\times$ ramas: los \emph{empleos}}};
+    \node[pieza=tceerojo, below=4pt of D] (D1) {consumos intermedios de cada rama};
+    \node[pieza=tceerojo, below=3pt of D1] (D2) {empleos finales (consumo, FBC, exportaciones)};
+    \node[pieza=tceerojo, below=3pt of D2] (D3) {componentes del VAB de cada rama};}
+  % 3: las 2 identidades que las unen
+  \capa{3}{%
+    \draw[<->, thick, tceegris] (O.east) -- node[above, font=\scriptsize, text width=2.7cm, align=center, text=tceegris!70!black] {identidad por producto:} node[below, font=\scriptsize, text width=2.7cm, align=center, text=tceegris!70!black] {oferta $=$ empleos} (D.west);
+    \draw[<->, thick, tceegris] (O3.east) -- node[above, font=\scriptsize, text width=2.7cm, align=center, text=tceegris!70!black] {identidad por rama:} node[below, font=\scriptsize, text width=2.7cm, align=center, text=tceegris!70!black] {producción $=$ CI $+$ VAB} (D3.west);}
+  % 4: la hipótesis de tecnología
+  \capa{4}{%
+    \node[draw=tceedorado, line width=0.6pt, fill=tceedorado!10, rounded corners=2pt,
+      align=center, inner sep=3pt, minimum width=12.1cm] (H) at (3.75,-4.55)
+      {\textbf{hipótesis de tecnología}\\{\scriptsize de producto (producto $\times$ producto) o de rama (rama $\times$ rama)}};
+    \draw[flecha] (O3.south) -- (O3.south |- H.north);
+    \draw[flecha] (D3.south) -- (D3.south |- H.north);}
+  % 5: la tabla simétrica
+  \capa{5}{%
+    \node[draw=tceemorado, line width=1pt, fill=tceesalvia, minimum width=7cm,
+      minimum height=1.1cm, align=center, anchor=north] (S) at (3.75,-5.6)
+      {\textbf{Tabla simétrica} (cuadrada)\\{\scriptsize una columna $=$ una tecnología: la base de los modelos}};
+    \draw[flecha] (H.south) -- (S.north);
+    \node[font=\scriptsize, text=tceegris, align=center, below=3pt of S]
+      {INE: 65 productos $\times$ 65 productos (2022)};}
+\end{tikzpicture}
+\end{document}
