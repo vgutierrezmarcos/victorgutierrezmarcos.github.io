@@ -582,7 +582,7 @@ def verificar(tema):
         # ni «2 puntos de vista» (solo puntos básicos o porcentuales)
         texto = re.sub(r'(?:examen|convocatoria|prueba|temario|oposici[óo]n)[^.;\n]{0,40}?\b(?:19|20)\d\d\b|\b(?:19|20)\d\d\b,?\s*pregunta~?\s*\d+', ' ', texto)
         if re.search(r'\d+(?:[.,]\d+)?\s*(?:\\?%|por ciento|millones|mill\.|billones|€|puntos (?:básicos|porcentuales))|\b20[12]\d\b', texto) \
-                and not re.search(r'\\(?:foot|auto|text|paren)?cites?|\\footnote|\\fuente', p):
+                and not re.search(r'\\(?:foot|auto|text|paren|no)?cites?|\\footnote|\\fuente', p):
             sin_cita += 1
             if sin_cita <= 15:
                 avisos.append('Cifra sin cita: ' + re.sub(r'\s+', ' ', texto.strip())[:140])

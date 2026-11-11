@@ -589,7 +589,9 @@ def comunes_pandoc(tema, datos):
         orden += ['-M', f'{campo.replace("_", "-")}={valor}']
     if os.path.exists(tema.bib):
         orden += ['--bibliography', ruta_windows(tema.bib),
-                  '-M', 'link-citations=true', '-M', 'reference-section-title=Bibliografía']
+                  '-M', 'link-citations=true', '-M', 'reference-section-title=Bibliografía',
+                  # las citas del texto son \nocite (Víctor, 11/11/2026): toda la .bib a la bibliografía
+                  '--metadata-file', ruta_windows(os.path.join(LATEX, 'nocite.yaml'))]
     return orden
 
 
