@@ -1,7 +1,7 @@
 # Identidades de la balanza de pagos y brecha ahorro-inversión
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.11 (Balanza de pagos: concepto, medición e interpretación) — lo tiene en el título y es el único que deriva las identidades desde el MBP6 y la contabilidad nacional. **Hecho** (revisado el 5/11/2026): la presentación de abajo es la del 3.B.11.
-- **Temas que lo usan:** 3.B.11 (desarrollo; hecho, 5/11/2026), 1D01 (uso: V.1, `eq:identidad-bp`), 3.A.30 (mención; hecho, 11/11/2026: remite los principios del MBP6 al 3.B.11; cuenta del resto del mundo con el signo cambiado; `eq:rndb` y la identidad ahorro-inversión con $(S_G-I_G)$), 3.B.12 (resumen: la identidad como punto de partida), 3.B.22 (mención), 4.A.1 (resumen), 4.A.21 (resumen), 4.A.22 (mención), 4.A.23 (mención)
+- **Temas que lo usan:** 3.B.11 (desarrollo; hecho, 5/11/2026), 1D01 (uso: V.1, `eq:identidad-bp`), 3.A.30 (mención; hecho, 11/11/2026: remite los principios del MBP6 al 3.B.11; cuenta del resto del mundo con el signo cambiado; `eq:rndb` y la identidad ahorro-inversión con $(S_G-I_G)$), 3.B.12 (resumen: la identidad como punto de partida), 3.B.22 (mención), 4.A.1 (resumen), 4.A.21 (resumen), 4.A.22 (mención), 4.A.23 (mención) También 3.A.32 (los déficits gemelos en Mundell-Fleming; hecho, 11/11/2026).
 - **Manuales de referencia:** FMI, *Manual de Balanza de Pagos y Posición de Inversión Internacional*, 6.ª ed. (MBP6, 2009; clave `FMI2009MBP6`), caps. 2-3, 9 y 14 (el MBP7, aprobado el 20/3/2025, se aplicará en 2029-2030; `FMI2025MBP7`); Krugman, Obstfeld y Melitz, *Economía internacional*, cap. 13 (contabilidad nacional y BP); Obstfeld y Rogoff, *Foundations of International Macroeconomics*, cap. 1; Feenstra y Taylor (2014), cap. 5 (de la absorción a la RNDB); Banco de España, nota metodológica de la balanza de pagos y la PII (2025; `BdE2025NotaMet`).
 
 ## Presentación de referencia
@@ -41,6 +41,7 @@ con $T$ los ingresos públicos netos de transferencias y $G$ el gasto público t
 | 4.A.21 | Sector exterior español: evolución de la BP | resumen | Identidad (remitiendo a `eq:identidad-bp`) con $\mathrm{CF}^{\text{exc. BdE}}$ y $\mathrm{CF}^{\text{BdE}}$ + $CC = S-I$ por sectores institucionales (hogares, SNF, AAPP, IF) para leer 1999-2008 y el ajuste | Derivación de la identidad |
 | 4.A.22 | Comercio exterior de bienes de España | mención | Una línea con la identidad y la remisión `\vertema{3.B.11}` | Desglose de la cuenta financiera |
 | 4.A.23 | Servicios / rentas en la BP de España | mención | Una línea con la identidad y la remisión | Desglose de la cuenta financiera |
+| 3.A.32 | Mundell-Fleming | mención (hecho, 11/11/2026) | II.1: déficits gemelos por 2 vías con Mundell-Fleming (las mismas de la 1D01, l. 1205, y del 3.B.11), `\vertema{3.B.11}`; anexo A: con tipo flexible y $\beta_K\to\infty$, $\Delta XN=-\Delta\overline G$; España: déficit corriente del 9,4 % del PIB en 2007 y superávit desde 2012 (`BdE2026BE17`, como el 3.B.11) | La identidad CC = S − I |
 
 ## Divergencias encontradas en el temario actual
 - **Copia literal** del bloque «Identidad contable de la balanza de pagos (6MBP)» (mismas tres ecuaciones y la misma imagen) en 4.A.21, 4.A.22 y 4.A.23. Propuesta: dejar el desarrollo aplicado en 4.A.21 y reducir 4.A.22-4.A.23 a mención.

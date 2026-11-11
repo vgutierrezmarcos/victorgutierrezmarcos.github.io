@@ -37,7 +37,8 @@ Nota (3.A.18, nota de I.3): con utilidad cuasilineal, $U=x_0+\alpha\ln y$, el ga
 | 3.A.7 | Nueva economía keynesiana | resumen (hecho, 4/11/2026) | Continuo de variedades $i\in[0,1]$, demanda $C_t(i)=(P_t(i)/P_t)^{-\sigma}C_t$ (y $Y_i=(M/P)(P_i/P)^{-\sigma}$ en Blanchard y Kiyotaki), margen **neto** $1+\mu\equiv\sigma/(\sigma-1)$ (convención macro, como la PS del 3.A.28; **[decidir]** A07-05); remitir a 3.A.18 | El bienestar y la libre entrada |
 | 3.A.11 | Elasticidad de sustitución | mención (hecho, 13/10/2026) | El agregador CES con σ > 1 entre variedades (ficha `ces`) | — |
 | 3.A.44 | Crecimiento endógeno | mención (hecho, 1/11/2026) | Romer (1990): variedades de bienes intermedios con la misma CES, $Y=L_Y^{1-\alpha}\sum_jx_j^{\alpha}$; elasticidad $\sigma=1/(1-\alpha)$ y margen $\mu=\sigma/(\sigma-1)=1/\alpha$ (`eq:lerner-variedad`), $p=1/\alpha$; la preferencia por la variedad se vuelve rendimientos crecientes | El modelo del consumidor |
-| 3.A.32, 3.B.19 | Macro abierta, coordinación de políticas | mención | Galí y Monacelli (2005); Corsetti y Pesenti | — |
+| 3.A.32 | OA-DA abierta (Galí-Monacelli) | mención (hecho, 11/11/2026) | I.3: competencia monopolística entre variedades nacionales con elasticidad σ y Calvo, `\vertema{3.A.18}`; $\sigma_{HF}$ y $\sigma_F$ locales en el anexo C (familia de σ) | La CES y la demanda de cada variedad |
+| 3.B.19 | Coordinación de políticas | mención | Corsetti y Pesenti | — |
 | 3.A.21 | Equilibrio general | mención opcional (`pendientes-coherencia.md`) | Ejemplo de equilibrio general con competencia imperfecta | — |
 | 3.A.22 | *Second best* (aplicaciones) | mención (hecho, 21/10/2026) | La variedad de la competencia monopolística se compara con el segundo óptimo de un planificador que no puede subvencionar, `\vertema{3.A.18}` | El modelo |
 

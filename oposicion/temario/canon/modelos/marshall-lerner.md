@@ -1,7 +1,7 @@
 # Condición de Marshall-Lerner y curva J
 
 - **Área:** macro-abierta · **Tema de referencia:** **3.B.12** (I.1, «Enfoque de las elasticidades y condición Marshall-Lerner») — lo desarrolla.
-- **Temas que lo usan:** 3.B.12 (desarrollo), 3.B.14, 3.B.15, 3.B.19 y 3.A.37 (supuesto de Mundell-Fleming y de la transmisión por el tipo de cambio: mención; hecho, 5/11/2026: I.2, `\vertema{3.B.12}`, y anexo D), 3.B.5 (mención: estabilidad de la curva de oferta), 1D01 (uso: IV.2, cómo se comprueba en el cuadro; preguntado en 2022), 3.B.11 (mención; hecho, 5/11/2026: III.2, una depreciación desvía el gasto si se cumple la condición, y el resumen de las políticas de ajuste al final del anexo E, con la suma de los valores absolutos de las elasticidades mayor que 1; `\vertema{3.B.12}`)
+- **Temas que lo usan:** 3.B.12 (desarrollo), 3.B.14, 3.B.15, 3.B.19 y 3.A.37 (supuesto de Mundell-Fleming y de la transmisión por el tipo de cambio: mención; hecho, 5/11/2026: I.2, `\vertema{3.B.12}`, y anexo D), 3.B.5 (mención: estabilidad de la curva de oferta), 1D01 (uso: IV.2, cómo se comprueba en el cuadro; preguntado en 2022), 3.B.11 (mención; hecho, 5/11/2026: III.2, una depreciación desvía el gasto si se cumple la condición, y el resumen de las políticas de ajuste al final del anexo E, con la suma de los valores absolutos de las elasticidades mayor que 1; `\vertema{3.B.12}`) También 3.A.32 (supuesto de Mundell-Fleming; hecho, 11/11/2026).
 - **Manuales de referencia:** Marshall (1923); Lerner (1944); Robinson (1937); Magee (1973) (curva J); Krugman, Obstfeld y Melitz, cap. 16 y apéndice; Gandolfo, *International Finance and Open-Economy Macroeconomics*, cap. 7.
 
 ## Presentación de referencia
@@ -25,6 +25,7 @@ elasticidades-precio con su signo (D047) y en valor absoluto en la condición. S
 | 3.B.12 | Mecanismos de ajuste de la BP | Desarrollo | Derivación, condición general, curva J, evidencia | — |
 | 3.B.14, 3.B.15, 3.B.19, 3.A.37 | Mundell-Fleming, regímenes, coordinación, transmisión | Mención | «Se cumple Marshall-Lerner» como supuesto, con `\vertema{3.B.12}` | La derivación |
 | 1D01 | Dictamen de coyuntura | Uso | La condición, la curva J y cómo se ve en el cuadro (saldo de bienes y servicios 1-2 años después de una depreciación real); los 2 sentidos del traspaso | La derivación |
+| 3.A.32 | OA-DA abierta | supuesto (hecho, 11/11/2026) | Supuesto de Mundell-Fleming: una depreciación real mejora el saldo comercial, `\vertema{3.B.12}` | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.12 (Word) llama *pass-through* solo al traslado a los precios de exportación; definir los 2 sentidos al revisarlo (contradicción 5 de la 1D01).

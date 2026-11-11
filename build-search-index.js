@@ -127,7 +127,7 @@ const tercerEjercicioParteA = [
   { num: 29, titulo: 'Modelización dinámica de las tomas de decisiones. Modelos de horizonte infinito y modelos de generaciones solapadas.', disponible: true, file: '3A29.html' },
   { num: 30, titulo: 'Magnitudes macroeconómicas y contabilidad nacional.', disponible: true, file: '3A30.html' },
   { num: 31, titulo: 'Análisis de las tablas «input-output».', disponible: true, file: '3A31.html' },
-  { num: 32, titulo: 'El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta.', disponible: false },
+  { num: 32, titulo: 'El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta.', disponible: true, file: '3A32.html' },
   { num: 33, titulo: 'Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica.', disponible: true, file: '3A33.html' },
   { num: 34, titulo: 'Teorías de la inversión en bienes de equipo. Incertidumbre e irreversibilidad de la inversión. Implicaciones de política económica.', disponible: true, file: '3A34.html' },
   { num: 35, titulo: 'Teorías de la demanda de dinero. Implicaciones de política económica.', disponible: true, file: '3A35.html' },

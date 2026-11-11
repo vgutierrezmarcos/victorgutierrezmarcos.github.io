@@ -1,7 +1,7 @@
 # Áreas monetarias óptimas
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.16 (Teoría de la integración monetaria) — lo tiene en el título y es el único desarrollo.
-- **Temas que lo usan:** 3.B.16 (desarrollo), 3.B.40 (mención), 4.A.28 (mención), 4.A.30 (mención); relacionado con 3.B.43 (UEM)
+- **Temas que lo usan:** 3.B.16 (desarrollo), 3.B.40 (mención), 4.A.28 (mención), 4.A.30 (mención); relacionado con 3.B.43 (UEM) También 3.A.32 (mención; hecho, 11/11/2026).
 - **Manuales de referencia:** Mundell (1961), McKinnon (1963), Kenen (1969); De Grauwe, *Economics of Monetary Union*, caps. 1-3; Frankel y Rose (1998); Krugman (1993) «Lessons of Massachusetts for EMU»; Baldwin y Wyplosz, *The Economics of European Integration*, cap. 14.
 
 ## Presentación de referencia
@@ -20,6 +20,7 @@
 | 3.B.40 | Política regional / cohesión UE | mención | La convergencia como condición de la UEM | Criterios |
 | 4.A.28 | Política monetaria y España | mención | «One size fits all»: asincronía de ciclos [ver tema 3.B.16] | — |
 | 4.A.30 | España en la UEM | mención | Costes de la pertenencia: shocks asimétricos | — |
+| 3.A.32 | Políticas en economía abierta | mención (hecho, 11/11/2026) | II.2-II.3: en una unión monetaria solo quedan la política fiscal nacional y la devaluación interna (Schmitt-Grohé y Uribe, 2016; Nakamura y Steinsson, 2014; Galí y Monacelli, 2008, `GaliMonacelli2008Optimal`), `\vertema{3.B.16}` | Mundell (1961), los criterios |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.16 desarrolla además el modelo centro-periferia completo (ecuaciones de Dixit-Stiglitz, tomahawk) para justificar la hipótesis de especialización: basta su resultado y Krugman (1993) [ver `centro-periferia`].

@@ -1,7 +1,7 @@
 # NOEM de Corsetti y Pesenti (2005)
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.19 (Coordinación internacional de políticas) — único tema con ecuaciones y gráfico, y el modelo responde a su pregunta (ganancias de la coordinación con microfundamentos).
-- **Temas que lo usan:** 3.B.19 (desarrollo), 3.A.37 (resumen en anexo; hecho, 5/11/2026: anexo D `anexo:abierta`, «La nueva macroeconomía abierta: Corsetti y Pesenti», con el gráfico `corsetti-pesenti` en el plano $(\ell,C)$; sin ecuaciones en el cuerpo), 3.B.14 (resumen → mención).
+- **Temas que lo usan:** 3.B.19 (desarrollo), 3.A.37 (resumen en anexo; hecho, 5/11/2026: anexo D `anexo:abierta`, «La nueva macroeconomía abierta: Corsetti y Pesenti», con el gráfico `corsetti-pesenti` en el plano $(\ell,C)$; sin ecuaciones en el cuerpo), 3.B.14 (resumen → mención). También 3.A.32 (mención; hecho, 11/11/2026).
 - **Manuales de referencia:** Corsetti y Pesenti (2005), «International Dimensions of Optimal Monetary Policy», *JME* (`CorsettiPesenti2005`); Corsetti y Pesenti (2009), versión para la enseñanza (`CorsettiPesenti2009`); Obstfeld y Rogoff (1995, `ObstfeldRogoff1995Redux`; 2002); Obstfeld y Rogoff, *Foundations…*, cap. 10; Corsetti, Dedola y Leduc (2010, *Handbook of Monetary Economics*); Gopinath *et al.* (2020), *AER* (facturación en dólares, `Gopinath2020DCP`); Erceg, Guerrieri y Gust (2005) (SIGMA).
 - **Decisión D015 (13/10/2026):** ¿Cómo se escribe el tipo de cambio real? q = EP*/P (↑q = depreciación real), como Krugman-Obstfeld y Obstfeld-Rogoff. **Desutilidad del trabajo: χ** (canon, `notacion.md` § 1, χ; fase canon del 3.A.37, CC5, **[decidir]**), no κ: en los temas que tienen también la NKPC, κ es su pendiente.
 
@@ -24,6 +24,7 @@ con $\mu$ = **tono de la política monetaria** (gasto nominal; local y avisado: 
 | 3.B.19 | Coordinación internacional | desarrollo | Modelo con PCP y LCP y la conclusión sobre coordinación | — |
 | 3.A.37 | Transmisión de la política monetaria en economía abierta (anexo D) | resumen en anexo (hecho, 5/11/2026) | La NOEM (Obstfeld y Rogoff, 1995) como Mundell-Fleming con microfundamentos; el gráfico en $(\ell,C)$ con los paneles a) y b) y los puntos $O$, $R$, $F$, $H$, $L$; lo que decide la transmisión es **en qué moneda se fijan los precios** (PCP, LCP, dólar); SIGMA de la Reserva Federal; `\vertema{3.B.19}`. Sin ecuaciones (las curvas, de palabra) | Las ecuaciones de NR y del tipo de cambio; la coordinación |
 | 3.B.14 | Determinación del tipo de cambio | mención | Tipo de cambio con microfundamentos: $E = \mu/\mu^*$ | El modelo |
+| 3.A.32 | Galí-Monacelli: extensiones | mención (hecho, 11/11/2026) | I.3 c): con precios en la moneda del comprador, el banco central no puede cerrar a la vez la brecha y el desalineamiento (`CorsettiPesenti2009`), `\vertema{3.A.37}` `\vertema{3.B.19}`; τ con la misma idea (relación de intercambio; en el 3.A.32, $\tau_t\equiv p_{F,t}-p_{H,t}$ en logaritmos) | El modelo y el gráfico |
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.A.37 (5/11/2026)**: el Word lo daba en el cuerpo (bloque 3, P13, P34) con el enlace del NBER WP y lo usaba como «evidencia empírica» de la depreciación por las compras de activos (era Dedola *et al.*, 2021); ahora va al anexo D, en resumen, con `\vertema{3.B.19}`.
