@@ -3,7 +3,7 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { Contenido } from '../src/contenido';
-import { temasDePreguntas } from '../src/datos';
+import { bancoPropioDe, temasDePreguntas } from '../src/datos';
 import type { AlmacenDatos, Consulta, Json } from '../src/firestore';
 import { type Contexto, crearServidor, ErrorSesion } from '../src/herramientas';
 
@@ -143,7 +143,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'apuntar_test', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
+    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'apuntar_test', 'reportar_pregunta', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -452,6 +452,50 @@ describe('herramientas', () => {
     expect((await c.callTool({ name: 'apuntar_test', arguments: { respuestas: { '424242': 'a' } } })).isError).toBe(true);
     // Y leer_resultados_test lo enseña como hecho con la IA.
     expect(JSON.stringify(json(await c.callTool({ name: 'leer_resultados_test', arguments: {} })))).toContain('"origen":"ia"');
+  });
+
+  it('tres tipos de pregunta: oficiales por defecto, el banco con su aviso y las generadas por la IA, que no cuentan', async () => {
+    const propio = bancoPropioDe({ preguntas: [
+      { id: 310801, temas: ['3.A.8'], enunciado: '¿Del banco?', opciones, respuesta: ['B'], explicacion: { clave: 'Por esto.' } },
+      { id: 310802, temas: ['3.A.8'], enunciado: '¿Otra del banco?', opciones, respuesta: ['c'], explicacion: { clave: 'Por aquello.' } },
+      { id: 7, temas: ['3.A.8'], enunciado: '¿Con id de oficial?', opciones, respuesta: ['a'] },
+    ] });
+    expect([...propio.keys()]).toEqual([310801, 310802]);
+    const red = new FirestoreSimulado();
+    const c = await cliente({ ...ctx, bancoPropio: async () => propio, almacenEn: async () => red });
+    // Por defecto, solo oficiales; si faltan, se ofrece el banco antes de inventar.
+    const o = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 5 } }));
+    expect((o.preguntas as Obj[]).every((p) => p.tipo === 'oficial')).toBe(true);
+    expect(o).toMatchObject({ oficialesDeEsosTemas: 3, delBancoDeEsosTemas: 2 });
+    expect(String(o.aviso)).toContain('oficiales_y_banco');
+    expect(String(o.tipos)).toContain('OFICIALES');
+    // Solo el banco: con su aviso y su explicación.
+    const b = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 5, tipo: 'banco' } }));
+    expect((b.preguntas as Obj[]).map((p) => p.id).sort()).toEqual([310801, 310802]);
+    expect((b.preguntas as Obj[])[0]).toMatchObject({ tipo: 'banco', aviso: 'No oficial · banco de EconomIA', cabecera: '[3.A.8 · banco de EconomIA]' });
+    expect((b.preguntas as Obj[]).map((p) => p.porQue).sort()).toEqual(['Por aquello.', 'Por esto.']);
+    // Las dos: primero las oficiales y se completa con el banco; las de la IA van al final, con id negativo.
+    const nueva = { tema: '3.A.8', enunciado: '¿Generada al vuelo?', opciones, respuesta: 'd', porQue: 'Porque lo digo yo.' };
+    const m = json(await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], modo: 'todas', n: 4, tipo: 'oficiales_y_banco', nuevas: [nueva] } }));
+    expect((m.preguntas as Obj[]).map((p) => p.tipo)).toEqual(['oficial', 'oficial', 'oficial', 'banco', 'ia']);
+    expect((m.preguntas as Obj[])[4]).toMatchObject({ id: -1, aviso: 'No oficial · generada por la IA, sin revisar', respuesta: ['d'] });
+    expect((await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], n: 0 } })).isError).toBe(true);
+    expect((await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], n: 0, nuevas: [{ ...nueva, opciones: { a: 'Una', b: 'Dos' } }] } })).isError).toBe(true);
+    // Al apuntarlo, cada tipo va a su repaso y las respuestas del banco, aparte (la app busca las de «respuestas» en el banco oficial).
+    const r = json(await c.callTool({ name: 'apuntar_test', arguments: { respuestas: { '1': 'a', '310801': 'a', '310802': 'c' }, clave: 'tmixto1' } }));
+    expect(r).toMatchObject({ apuntado: true, correctas: 2, incorrectas: 1, preguntas: 3, fuente: 'mixto' });
+    const doc = db.docs.get('exam_results/ia_tmixto1')!;
+    expect(doc).toMatchObject({ respuestas: { '1': 'a' }, respuestasBanco: { '310801': 'a', '310802': 'c' }, banco: { correctas: 1, incorrectas: 1 }, fuente: 'mixto' });
+    expect(Object.keys((db.docs.get('progress/spaced_repetition_banco') as { questions: Obj }).questions)).toEqual(['310801']);
+    expect(JSON.stringify(db.docs.get('progress/spaced_repetition') ?? {})).not.toContain('310801');
+    // Reportar: las mismas claves que la app (las reglas no admiten otras), en la raíz de la base.
+    const rep = json(await c.callTool({ name: 'reportar_pregunta', arguments: { pregunta: 310801, motivo: 'respuesta', comentario: 'La correcta es la a.', elegida: 'A' } }));
+    expect(rep).toMatchObject({ reportado: true, tipo: 'banco' });
+    const [[ruta, reporte]] = [...red.docs.entries()];
+    expect(ruta).toMatch(/^reportesTest\/ia_/);
+    expect(Object.keys(reporte).sort()).toEqual(['comentario', 'correo', 'elegida', 'enviado', 'examen', 'motivo', 'nombre', 'numero', 'oposicion', 'pregunta', 'uid', 'version']);
+    expect(reporte).toMatchObject({ uid: 'u1', pregunta: 310801, examen: 'banco', numero: 1, elegida: 'a', enviado: false, motivo: 'respuesta' });
+    expect((await c.callTool({ name: 'reportar_pregunta', arguments: { pregunta: 424242, motivo: 'otro', comentario: 'No existe.' } })).isError).toBe(true);
   });
 
   it('con vistaPrevia, proponer_cronograma y guardar_informe_cante validan y enseñan, pero no escriben', async () => {

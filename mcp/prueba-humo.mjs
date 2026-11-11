@@ -35,7 +35,7 @@ if (token) {
     return r.ok ? (await r.json()).result : { error: r.status };
   };
   const lista = await rpc('tools/list', {});
-  ok(Array.isArray(lista?.tools) && lista.tools.length >= 33, `tools/list (${lista?.tools?.length ?? 0} herramientas)`);
+  ok(Array.isArray(lista?.tools) && lista.tools.length >= 34, `tools/list (${lista?.tools?.length ?? 0} herramientas)`);
   // Vistas interactivas (MCP Apps): las herramientas que las declaran y sus páginas.
   const conVista = (lista?.tools ?? []).filter((t) => t._meta?.ui?.resourceUri);
   ok(conVista.length === 5, `herramientas con vista (${conVista.map((t) => t.name).join(', ')})`);

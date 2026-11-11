@@ -105,6 +105,8 @@ export interface Escritura {
   soloCampos?: string[];
   /** true: el documento se borra (`datos` no cuenta). Borrar uno que no existe no es un error. */
   borrar?: boolean;
+  /** Campos que Firestore rellena con la hora del servidor (las reglas de algunos documentos exigen `== request.time`). */
+  ahora?: string[];
 }
 
 /**
@@ -203,7 +205,11 @@ export class Firestore implements AlmacenDatos {
     const writes = escrituras.map((e) =>
       e.borrar
         ? { delete: nombre(e.ruta) }
-        : { update: { name: nombre(e.ruta), fields: aCampos(e.datos) }, ...(e.soloCampos ? { updateMask: { fieldPaths: e.soloCampos } } : {}) },
+        : {
+            update: { name: nombre(e.ruta), fields: aCampos(e.datos) },
+            ...(e.soloCampos ? { updateMask: { fieldPaths: e.soloCampos } } : {}),
+            ...(e.ahora?.length ? { updateTransforms: e.ahora.map((fieldPath) => ({ fieldPath, setToServerValue: 'REQUEST_TIME' })) } : {}),
+          },
     );
     await this.peticion('POST', `${this.base}:commit`, { writes });
   }

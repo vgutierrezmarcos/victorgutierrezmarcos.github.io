@@ -11,7 +11,7 @@
 import { OAuthProvider, AuthorizationError, CimdFetchError, OAuthError, type OAuthHelpers, type OAuthProviderOptions, type OAuthResourceContext } from '@cloudflare/workers-oauth-provider';
 import { cifrar, descifrar, sha256 } from './cifrado';
 import { Contenido } from './contenido';
-import { temasDePreguntas } from './datos';
+import { type PreguntaBanco, bancoPropioDe, temasDePreguntas } from './datos';
 import { datosDelIdToken, renovarIdToken } from './firebase';
 import { Firestore, type Json } from './firestore';
 import { htmlATexto, leerApuntesDrive } from './drive';
@@ -85,6 +85,15 @@ async function idTokenDe(env: Env, props: Props): Promise<string> {
 
 let fuentesEnMemoria: { url: string; indice: IndiceFuentes } | null = null;
 let bancoEnMemoria: { url: string; banco: Banco } | null = null;
+let bancoPropioEnMemoria: { hasta: number; preguntas: Map<number, PreguntaBanco> } | null = null;
+
+/** El banco propio (no oficial), del KV de contenido exclusivo; en memoria diez minutos. */
+async function bancoPropio(env: Env): Promise<Map<number, PreguntaBanco>> {
+  if (bancoPropioEnMemoria && bancoPropioEnMemoria.hasta > Date.now()) return bancoPropioEnMemoria.preguntas;
+  const preguntas = bancoPropioDe((await env.CONTENIDO.get('banco/preguntas.json', 'json')) as Parameters<typeof bancoPropioDe>[0]);
+  bancoPropioEnMemoria = { hasta: Date.now() + 600_000, preguntas };
+  return preguntas;
+}
 
 /** El banco de preguntas de la web, en la caché de Cloudflare un día y en memoria mientras viva el aislado. */
 async function bancoDePreguntas(env: Env): Promise<Banco> {
@@ -119,6 +128,7 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
       return new Firestore(env.FIREBASE_PROJECT, await idTokenDe(env, props), Firestore.raizDe(props.uid, oposicion));
     },
     banco: () => bancoDePreguntas(env),
+    bancoPropio: () => bancoPropio(env),
     async explicaciones(examen: string) {
       if (!/^[\w-]{4,60}$/.test(examen)) return {};
       const r = await fetch(new URL(`explicaciones/${examen}.json`, env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });

@@ -18,6 +18,9 @@
   .porque { white-space: pre-wrap; }
   .barra { height: 3px; background: var(--linea); border-radius: 2px; overflow: hidden; margin-top: 8px; }
   .barra > i { display: block; height: 100%; background: var(--oro); }
+  .no-oficial { display: inline-block; margin-top: 8px; padding: 1px 9px; border: 1px solid var(--linea); border-radius: 999px; font-size: 12px; color: var(--apagado); }
+  .enlace { background: none; border: 0; padding: 6px 0; min-height: 32px; font-size: 13px; color: var(--tinta); text-decoration: underline; }
+  select { width: 100%; padding: 8px; border: 1px solid var(--linea); border-radius: 6px; background: var(--tarjeta); color: inherit; font: inherit; }
   .nota-final { font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, Georgia, serif; font-size: 40px; color: var(--tinta); line-height: 1.1; }
 </style>
 <div id="raiz"><p class="apagado">Preparando el test…</p></div>
@@ -30,6 +33,8 @@
     var datos = null, i = 0, marcadas = [], cargando = false, figuras = {};
     // Apunte del test en la app (historial y repaso): '' sin hacer, 'pendiente', 'hecho' o el texto del fallo.
     var apunte = '', clave = '', empezado = 0;
+    // Reportes de error por pregunta: 'abierto' (formulario a la vista) o 'enviado'.
+    var reportes = {};
 
     function formulas() {
       // Las fórmulas van en LaTeX: si MathJax no carga (el cliente no deja), se ven tal cual.
@@ -60,6 +65,36 @@
         (final ? '' : ' contestadas, de ' + datos.preguntas.length) + '.' + (lineas.length ? '\nFalladas:\n' + lineas.join('\n') : '\nSin fallos.');
     }
 
+    /** «Reportar un error»: oficiales y del banco (las generadas por la IA no se revisan). */
+    function reporte(p, marcada) {
+      if (p.tipo === 'ia') return null;
+      if (reportes[p.id] === 'enviado') return el('p', { class: 'apagado' }, 'Reporte enviado. Gracias: se revisará.');
+      if (reportes[p.id] !== 'abierto') return el('button', { class: 'enlace', type: 'button', onclick: function () { reportes[p.id] = 'abierto'; pregunta(); } }, 'Reportar un error en esta pregunta');
+      var motivo = el('select', { 'aria-label': 'Qué está mal' }, [['respuesta', 'La respuesta dada por buena'], ['explicacion', 'La explicación'], ['enunciado', 'El enunciado o las opciones'], ['otro', 'Otra cosa']]
+        .map(function (m) { return el('option', { value: m[0] }, m[1]); }));
+      var texto = el('textarea', { maxlength: '2000', 'aria-label': 'Qué está mal', placeholder: 'Qué está mal y por qué (con la fuente, si la tienes)' });
+      var aviso = el('span', { class: 'apagado' });
+      var enviar = el('button', { class: 'boton boton--secundario', type: 'button' }, 'Enviar el reporte');
+      enviar.addEventListener('click', function () {
+        if (texto.value.trim().length < 5) { aviso.textContent = 'Cuenta qué está mal.'; return; }
+        enviar.disabled = true;
+        Vista.llamar('reportar_pregunta', { oposicion: Vista.argumentos().oposicion, pregunta: p.id, motivo: motivo.value, comentario: texto.value.trim(), elegida: marcada }).then(function (r) {
+          if (r && r.reportado) { reportes[p.id] = 'enviado'; pregunta(); }
+          else { enviar.disabled = false; aviso.textContent = (r && r.error) || 'No se ha podido enviar.'; }
+        });
+      });
+      return el('div', { class: 'tarjeta' }, [el('div', { class: 'sobre' }, 'Reportar un error'), motivo, el('div', { style: 'margin-top:6px' }, texto), el('div', { class: 'fila', style: 'margin-top:6px' }, [enviar, aviso])]);
+    }
+
+    /** De qué está hecho el test: «5 oficiales · 3 del banco (no oficiales) · 2 generadas por la IA». */
+    function composicion() {
+      var n = { oficial: 0, banco: 0, ia: 0 };
+      datos.preguntas.forEach(function (p) { n[p.tipo === 'banco' || p.tipo === 'ia' ? p.tipo : 'oficial']++; });
+      if (!n.banco && !n.ia) return '';
+      return [n.oficial ? n.oficial + (n.oficial === 1 ? ' oficial' : ' oficiales') : '', n.banco ? n.banco + ' del banco de EconomIA (no ' + (n.banco === 1 ? 'oficial' : 'oficiales') + ')' : '',
+        n.ia ? n.ia + (n.ia === 1 ? ' generada' : ' generadas') + ' por la IA (sin revisar; no ' + (n.ia === 1 ? 'cuenta' : 'cuentan') + ' en tu repaso)' : ''].filter(Boolean).join(' · ') + '.';
+    }
+
     function pregunta() {
       var p = datos.preguntas[i], marcada = marcadas[i], hecha = marcada !== undefined, total = datos.preguntas.length;
       var opciones = Object.keys(p.opciones).sort().map(function (letra) {
@@ -83,6 +118,8 @@
       pintar([
         el('div', { class: 'fila entre' }, [el('span', { class: 'sobre' }, p.cabecera.replace(/^\[|\]$/g, '')), el('span', { class: 'codigo' }, (i + 1) + ' / ' + total)]),
         el('div', { class: 'barra' }, el('i', { style: 'width:' + Math.round(((i + (hecha ? 1 : 0)) / total) * 100) + '%' })),
+        // Las que no son de un examen oficial lo dicen, en pequeño: las del banco y las generadas por la IA.
+        p.aviso ? el('div', { class: 'no-oficial' }, p.aviso) : null,
         el('p', { class: 'enunciado' }, p.enunciado),
         (p.figuras || []).map(function (f) {
           // La figura se ve en la propia vista: de la web si el cliente deja y, si no, la trae el conector.
@@ -103,6 +140,7 @@
         hecha && p.variasValidas ? el('p', { class: 'apagado' }, 'En esta pregunta el tribunal dio por válida más de una respuesta.') : null,
         hecha && p.porQue ? el('div', { class: 'tarjeta' }, [el('div', { class: 'sobre' }, '¿Por qué?'), el('div', { class: 'porque' }, p.porQue)]) : null,
         hecha && p.nota ? el('p', { class: 'apagado' }, p.nota) : null,
+        hecha ? reporte(p, marcada) : null,
         el('div', { class: 'fila entre pie' }, [
           i > 0 ? el('button', { class: 'boton boton--secundario', type: 'button', onclick: function () { i--; pregunta(); } }, 'Anterior') : el('span'),
           hecha
@@ -133,6 +171,7 @@
               ]);
             }))])
           : el('p', { class: 'aviso aviso--bien' }, 'Sin fallos.'),
+        composicion() ? el('p', { class: 'apagado' }, composicion()) : null,
         nota,
         el('div', { class: 'fila pie' }, [
           Vista.puedeDecir() && falladas.length
@@ -140,7 +179,7 @@
                 Vista.decir(resumenTexto(true) + '\n\nExplícame los fallos uno a uno, con la fuente, y dime qué repasar.').then(function (ok) { estado.textContent = ok ? 'Enviado al chat.' : 'No se ha podido enviar: escríbelo tú en el chat.'; });
               } }, 'Comentar los fallos en el chat')
             : null,
-          el('button', { class: 'boton boton--secundario', type: 'button', disabled: cargando, onclick: otras }, 'Otras ' + Math.min(30, total) + ' preguntas'),
+          el('button', { class: 'boton boton--secundario', type: 'button', disabled: cargando, onclick: otras }, 'Otras ' + Math.min(30, datos.preguntas.filter(function (p) { return p.tipo !== 'ia'; }).length || total) + ' preguntas'),
         ]),
         estado,
       ]);
@@ -149,6 +188,7 @@
 
     function textoApunte() {
       if (apunte === 'hecho') return 'Apuntado en tu historial de tests y en tu repaso de la app: lo verás allí al sincronizar.';
+      if (apunte === 'nada') return 'Las preguntas generadas por la IA no se apuntan en la app.';
       if (apunte === 'pendiente' || apunte === '') return 'Apuntándolo en la app…';
       return 'No se ha podido apuntar en la app (' + apunte + '). El resultado sigue aquí, pero no cuenta en tu repaso.';
     }
@@ -156,9 +196,11 @@
     /** Al terminar, el test se apunta en la app una sola vez (el conector lo corrige de nuevo contra el banco). */
     function apuntar(alAcabar) {
       if (apunte === 'pendiente' || apunte === 'hecho') { if (apunte === 'hecho') Vista.contar(resumenTexto(true) + '\nYa está apuntado en la app (historial y repaso): no llames a apuntar_test.'); return; }
-      apunte = 'pendiente';
+      if (apunte === 'nada') return;
       var respuestas = {};
-      datos.preguntas.forEach(function (p, k) { if (marcadas[k] !== undefined) respuestas[String(p.id)] = marcadas[k]; });
+      datos.preguntas.forEach(function (p, k) { if (marcadas[k] !== undefined && p.tipo !== 'ia' && p.id > 0) respuestas[String(p.id)] = marcadas[k]; });
+      if (!Object.keys(respuestas).length) { apunte = 'nada'; Vista.contar(resumenTexto(true)); alAcabar(); return; }
+      apunte = 'pendiente';
       Vista.llamar('apuntar_test', { oposicion: Vista.argumentos().oposicion, respuestas: respuestas, clave: clave, segundos: Math.min(86400, Math.round((Date.now() - empezado) / 1000)) }).then(function (r) {
         apunte = r && r.apuntado ? 'hecho' : ((r && r.error) || 'sin respuesta del conector');
         Vista.contar(resumenTexto(true) + (apunte === 'hecho' ? '\nYa está apuntado en la app (historial y repaso): no llames a apuntar_test.' : '\nNo se ha podido apuntar en la app: díselo y no lo des por guardado.'));
@@ -171,7 +213,7 @@
       cargando = true;
       pintar(el('p', { class: 'apagado' }, 'Buscando más preguntas…'));
       var a = Vista.argumentos();
-      Vista.llamar('test_interactivo', { oposicion: a.oposicion, temas: datos.temas, n: datos.preguntas.length, modo: a.modo }).then(function (d) { cargando = false; recibir(d); });
+      Vista.llamar('test_interactivo', { oposicion: a.oposicion, temas: datos.temas, n: datos.preguntas.filter(function (p) { return p.tipo !== 'ia'; }).length || datos.preguntas.length, modo: a.modo, tipo: a.tipo }).then(function (d) { cargando = false; recibir(d); });
     }
 
     function recibir(d) {
@@ -179,7 +221,7 @@
         pintar(el('p', { class: 'aviso aviso--mal' }, (d && (d.error || d.aviso)) || 'No hay preguntas que enseñar.'));
         return;
       }
-      datos = d; i = 0; marcadas = []; apunte = ''; empezado = Date.now();
+      datos = d; i = 0; marcadas = []; apunte = ''; reportes = {}; empezado = Date.now();
       clave = 't' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
       pregunta();
     }
