@@ -176,6 +176,14 @@
       alRecibir: function (f) { alRecibir = f; entregar(); },
       /** Llama a una herramienta del conector a través del cliente; devuelve sus datos ya leídos. */
       llamar: function (nombre, args) { return pedir('tools/call', { name: nombre, arguments: args || {} }).then(leer, function (e) { return { error: e.message }; }); },
+      /** Una imagen que devuelve una herramienta, como dirección «data:» (o null). */
+      imagen: function (nombre, args) {
+        return pedir('tools/call', { name: nombre, arguments: args || {} }).then(function (r) {
+          var c = null;
+          (r && !r.isError && r.content || []).forEach(function (x) { if (!c && x.type === 'image' && x.data) c = x; });
+          return c ? 'data:' + (c.mimeType || 'image/webp') + ';base64,' + c.data : null;
+        }, function () { return null; });
+      },
       /** Deja dicho al modelo lo que ha pasado en la vista (lo lee con el siguiente mensaje del usuario). */
       contar: function (texto) { if (capacidades.updateModelContext) pedir('ui/update-model-context', { content: [{ type: 'text', text: texto }] }).catch(function () {}); },
       /** Manda un mensaje al chat en nombre del usuario (solo tras un gesto suyo). */

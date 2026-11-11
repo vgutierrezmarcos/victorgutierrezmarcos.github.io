@@ -150,6 +150,15 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
       const r = await fetch(env.URL_SKILL + ruta, { cf: { cacheTtl: 600, cacheEverything: true } });
       return r.ok ? r.text() : null;
     },
+    async figura(ruta: string) {
+      const r = await fetch(new URL(ruta, env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });
+      if (!r.ok) return null;
+      const bytes = new Uint8Array(await r.arrayBuffer());
+      if (bytes.length > 1_500_000) return null;
+      let binario = '';
+      for (let i = 0; i < bytes.length; i += 0x8000) binario += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+      return { mime: r.headers.get('content-type')?.split(';')[0] || 'image/webp', base64: btoa(binario) };
+    },
     async sello(texto: string) {
       return sha256(`${env.CLAVE_CIFRADO}:${texto}`);
     },

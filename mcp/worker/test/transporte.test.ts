@@ -49,7 +49,7 @@ describe('Streamable HTTP sin estado', () => {
     expect(r.status).toBe(200);
     const j = (await r.json()) as { result: { tools: Array<{ name: string; inputSchema: unknown }> } };
     expect(j.result.tools.map((t) => t.name)).toContain('leer_progreso');
-    expect(j.result.tools).toHaveLength(31);
+    expect(j.result.tools).toHaveLength(32);
   });
 
   it('GET no se admite y una petición mal formada da error JSON-RPC', async () => {

@@ -27,7 +27,7 @@
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <script>
   (function () {
-    var datos = null, i = 0, marcadas = [], cargando = false;
+    var datos = null, i = 0, marcadas = [], cargando = false, figuras = {};
 
     function formulas() {
       // Las fórmulas van en LaTeX: si MathJax no carga (el cliente no deja), se ven tal cual.
@@ -83,7 +83,17 @@
         el('div', { class: 'barra' }, el('i', { style: 'width:' + Math.round(((i + (hecha ? 1 : 0)) / total) * 100) + '%' })),
         el('p', { class: 'enunciado' }, p.enunciado),
         (p.figuras || []).map(function (f) {
-          return el('figure', {}, [el('img', { src: f.url, alt: f.descripcion || 'Figura de la pregunta', onload: Vista.medir }), f.descripcion ? el('figcaption', {}, f.descripcion) : null]);
+          // La figura se ve en la propia vista: de la web si el cliente deja y, si no, la trae el conector.
+          var img = el('img', { alt: f.descripcion || 'Figura de la pregunta', onload: Vista.medir });
+          var pedida = false;
+          img.addEventListener('error', function () {
+            if (pedida) return;
+            pedida = true;
+            if (figuras[f.url]) { img.src = figuras[f.url]; return; }
+            Vista.imagen('figura_test', { url: f.url }).then(function (d) { if (d) { figuras[f.url] = d; img.src = d; } });
+          });
+          img.src = figuras[f.url] || f.url;
+          return el('figure', {}, [img, f.descripcion ? el('figcaption', {}, f.descripcion) : null]);
         }),
         p.figura && !(p.figuras || []).length ? el('p', { class: 'aviso' }, 'Esta pregunta lleva una figura que aquí no se ve: está en el simulador de la web y en la app.') : null,
         el('ul', { class: 'opciones' }, opciones),
