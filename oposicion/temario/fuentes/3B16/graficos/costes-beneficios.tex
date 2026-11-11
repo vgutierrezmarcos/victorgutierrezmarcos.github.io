@@ -1,0 +1,34 @@
+% Costes y beneficios de una unión monetaria frente a la apertura comercial
+% con los socios (De Grauwe, 2022).
+%   Beneficios: B(T) = 0,5 T
+%   Costes, visión keynesiana: C_K(T) = 16/(T + 2); corte en T* = -1 + raíz(33)
+%     = 4,745 (B = 2,372)
+%   Costes, visión monetarista: C_M(T) = 7,2/(T + 2); corte en T*_M =
+%     -1 + raíz(15,4) = 2,924 (B = 1,462)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.6cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.4,-1.5) rectangle (16.2,8.4);
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (10.8,0) node[below=12pt, anchor=north east] {apertura frente a los socios (\% del PIB)};}
+  \capa{1}{\draw[eje] (0,0) -- (0,7.4) node[above, anchor=south west, xshift=-6pt] {costes y beneficios (\% del PIB)};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: la recta de beneficios
+  \capa{2}{\draw[curva3] (0,0) -- (10.4,5.2) node[etiqueta, right, text=tceeverde] {beneficios};}
+  % 3: costes (visión keynesiana) y el umbral T*
+  \capa{3}{\draw[curva2] plot[domain=0.3:10.4, samples=80, smooth] (\x,{16/(\x+2)})
+      node[etiqueta, right, text=tceeazul] {costes (visión keynesiana)};}
+  \capa{3}{\draw[guia] (4.745,2.372) -- (4.745,0) node[below, text=black] {$T^*$};}
+  \capa{3}{\node[punto] at (4.745,2.372) {};}
+  % 4: a la derecha de T*, la unión compensa
+  \capa{4}{\node[etiqueta, font=\footnotesize, text=tceegris] at (8.3,2.55) {la unión compensa};}
+  % 5: costes (visión monetarista) y el umbral T*_M
+  \capa{5}{\draw[curva2, dashed] plot[domain=0.3:10.4, samples=80, smooth] (\x,{7.2/(\x+2)})
+      node[etiqueta, right, text=tceeazul] {costes (visión monetarista)};}
+  \capa{5}{\draw[guia] (2.924,1.462) -- (2.924,0) node[below, text=black] {$T^*_M$};}
+  \capa{5}{\node[punto] at (2.924,1.462) {};}
+\end{tikzpicture}
+\end{document}

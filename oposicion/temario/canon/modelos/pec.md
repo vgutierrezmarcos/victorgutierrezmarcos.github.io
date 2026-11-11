@@ -1,7 +1,7 @@
 # Pacto de Estabilidad y Crecimiento (reglas fiscales de la UE)
 
 - **Área:** union-europea · **Tema de referencia:** 3.B.45 (lo tiene en el título: «las reglas fiscales») — **tema sin fuente**
-- **Temas que lo usan:** 3.B.45 (desarrollo previsto), 4.B.21 (mención: cláusula general de salvaguardia y LOEPSF), 4.B.22 (mención), 4.B.26 (resumen: PDE de España y cumplimiento), 4.A.28 (mención: PDE 2009-2019, Six-Pack, Fiscal Compact, art. 135 CE), 4.A.29 (mención: reglas tras la covid), 4.A.30 (mención), 3.B.43 (mención: criterios de Maastricht como antecedente), 4.B.4 (mención: saldo estructural), 1D01 (uso: VI.2 y `tab:indicadores-exterior`)
+- **Temas que lo usan:** 3.B.45 (desarrollo previsto), 4.B.21 (mención: cláusula general de salvaguardia y LOEPSF), 4.B.22 (mención), 4.B.26 (resumen: PDE de España y cumplimiento), 4.A.28 (mención: PDE 2009-2019, Six-Pack, Fiscal Compact, art. 135 CE), 4.A.29 (mención: reglas tras la covid), 4.A.30 (mención), 3.B.43 (mención: criterios de Maastricht como antecedente), 4.B.4 (mención: saldo estructural), 1D01 (uso: VI.2 y `tab:indicadores-exterior`), 3.B.16 (mención; hecho, 11/11/2026: nota de Kenen y III.3.2, valores de referencia del 3 % y el 60 % en el Tratado y senda de gasto primario neto desde 2024, planes de 4 años ampliables a 7, `UE2024Reglamento1263`, `UE2024Reglamento1264`, `\vertema{3.B.45}`)
 - **Manuales de referencia:** Reglamentos (UE) 2024/1263 y 2024/1264 y Directiva 2024/1265; Baldwin y Wyplosz, cap. de política fiscal en la UEM; De Grauwe, *Economics of Monetary Union*; Blanchard, Leandro y Zettelmeyer (2021), «Redesigning EU fiscal rules»
 - **Decisión D033 (13/10/2026):** ¿Dónde se desarrolla el Pacto de Estabilidad y Crecimiento (con el marco de 2024)? 3.B.45; los temas 4.B solo lo aplican a España
 
@@ -32,6 +32,7 @@ Gráfico de referencia: ninguno propio; si acaso, deuda y déficit de España fr
 | 4.A.28 | España 1999-2019 | Mención | PDE de 2009, reforma del art. 135 CE (2011), salida del PDE (2019) | Six-Pack en detalle |
 | 4.A.29 | España desde la covid | Mención | Salvaguardia 2020-2023 y nuevo marco desde 2024 | — |
 | 1D01 | Dictamen de coyuntura | Uso | 3 % y 60 %; marco de 2024: senda de gasto primario neto, reducción de la deuda de 1 pp/año si > 90 % (0,5 entre 60 y 90 %), salvaguarda de resiliencia del déficit (1,5 % estructural) | El procedimiento |
+| 3.B.16 | Unión monetaria incompleta: solución imperfecta | mención (hecho, 11/11/2026) | Las reglas como disciplina de la política fiscal nacional en la unión (externalidades fiscales, riesgo moral, art. 125 TFUE): 3 % y 60 % como valores de referencia (`UE2016Protocolo12`) y la senda de gasto primario neto desde 2024; las mismas palabras que el 3.A.39 y el 3.A.32; `\vertema{3.B.45}` | El procedimiento |
 
 ## Divergencias encontradas en el temario actual
 - **PEC asignado a 3.B.45, que no tiene fuente**: hoy solo hay menciones dispersas en 4.A.28, 4.A.30, 4.B.21, 4.B.22 y 4.B.26, ninguna con el marco de 2024. Reparto: desarrollo (con el marco de 2024) en 3.B.45; los 4.B lo aplican a España y resumen lo imprescindible de las reglas para cantarse sin el 3.B.45.

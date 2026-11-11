@@ -1,0 +1,152 @@
+% El modelo de Mundell (1961): perturbación asimétrica y permanente de demanda
+% en una unión monetaria (España y Alemania) y los 2 mecanismos de ajuste.
+% Mismos valores, estilos y colores que da-oa-abierta del 3.A.32 (y da-oa del
+% 3.A.5): DA en morado, OA de corto plazo en azul, OA de largo plazo en verde
+% y lo desplazado, discontinuo (la DA', en rojo).
+%   Y^n = 7; DA: Y = 11/3 + 14/(P + 2); OA_CP(W_0): P = Y - 4,8; A = (7; 2,2)
+%   a) Perturbación: DA'_ES = DA - 2, B_ES = (6,018; 1,218) sobre OA_CP(W_0)
+%      ((P + 2)^2 + 1,133(P + 2) = 14); DA'_DE = DA + 4/3, B_DE = (7,8; 3)
+%   b) Flexibilidad salarial: OA_CP(W_1) española P = Y - 6,375, C_ES =
+%      (7; 0,625) (da(0,625) - 2 = 7); alemana P = Y - 2, C_DE = (7; 5)
+%   c) Movilidad del trabajo: Y^n' = 5 en España, OA'_CP: P = Y - 2,8,
+%      C_ES = (5; 2,2) (da(2,2) - 2 = 5); Y^n' = 8,333 en Alemania,
+%      OA'_CP: P = Y - 6,133, C_DE = (8,333; 2,2) (da(2,2) + 4/3)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm,
+    declare function={da(\p)=11/3+14/(\p+2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.2,-26.4) rectangle (33.2,11.4);
+  % ==================================================== fila a: perturbación
+  % 1: ejes de los 2 paneles y títulos
+  \capa{1}{\node[font=\bfseries] at (6.3,10.8) {España};}
+  \capa{1}{\node[anchor=base west, font=\small\bfseries] at (-1.2,9.3) {a) Perturbación asimétrica de demanda};}
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \begin{scope}[xshift=9.6cm]
+  \capa{1}{\node[font=\bfseries] at (6.3,10.8) {Alemania};}
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \end{scope}
+  % 2: la OA de largo plazo, vertical en Y^n, en los 2 países
+  \capa{2}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \begin{scope}[xshift=9.6cm]
+  \capa{2}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \end{scope}
+  % 3: DA y OA de corto plazo con W_0 en los 2 países; equilibrio inicial A
+  \capa{3}{\draw[curva1] plot[domain=6.2:1.2, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, right, text=tceemorado] {DA$_{\mathrm{ES}}$};}
+  \capa{3}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{3}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{3}{\node[punto] at (7,2.2) {};}
+  \capa{3}{\node[etiqueta, right=4pt] at (7,2.2) {$A$};}
+  \begin{scope}[xshift=9.6cm]
+  \capa{3}{\draw[curva1] plot[domain=1.2:6.2, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, above, text=tceemorado] {DA$_{\mathrm{DE}}$};}
+  \capa{3}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{3}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{3}{\node[punto] at (7,2.2) {};}
+  \capa{3}{\node[etiqueta] at (6.62,1.3) {$A$};}
+  \end{scope}
+  % 4: España: la demanda cae (DA') y la economía pasa a B, con paro
+  \capa{4}{\draw[curvanueva, desplazada] plot[domain=5.6:0.4, samples=60, smooth] ({da(\x)-2},\x)
+      node[etiqueta, right, yshift=2pt, text=tceerojo] {DA$'_{\mathrm{ES}}$};}
+  \capa{4}{\draw[guia] (6.018,1.218) -- (0,1.218) node[left, text=black] {$P_1$};}
+  \capa{4}{\draw[guia] (6.018,0) node[below, text=black] {$Y_1$} -- (6.018,1.218);}
+  \capa{4}{\node[punto] at (6.018,1.218) {};}
+  \capa{4}{\node[etiqueta, left=2pt] at (6.018,1.218) {$B$};}
+  \capa{4}{\node[etiqueta, anchor=north west, font=\footnotesize] at (0.3,7.6) {recesión: paro};}
+  % 5: Alemania: la demanda sube (DA') y la economía pasa a B, con
+  %    presiones inflacionistas
+  \begin{scope}[xshift=9.6cm]
+  \capa{5}{\draw[curvanueva, desplazada] plot[domain=6.3:1.0, samples=60, smooth] ({da(\x)+4/3},\x)
+      node[etiqueta, right, text=tceerojo] {DA$'_{\mathrm{DE}}$};}
+  \capa{5}{\draw[guia] (7.8,3) -- (0,3) node[left, text=black] {$P_1$};}
+  \capa{5}{\draw[guia] (7.8,0) node[below, text=black] {$Y_1$} -- (7.8,3);}
+  \capa{5}{\node[punto] at (7.8,3) {};}
+  \capa{5}{\node[etiqueta, right=3pt] at (7.8,3) {$B$};}
+  \capa{5}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6) {presiones\\inflacionistas};}
+  \end{scope}
+  % ==================================================== fila b: flexibilidad salarial
+  \begin{scope}[yshift=-6.9cm]
+  % 6: ejes y curvas de partida (OA_LP, DA', OA_CP(W_0), B) en los 2 países
+  \capa{6}{\node[anchor=base west, font=\small\bfseries] at (-1.2,9.3) {b) Flexibilidad salarial (devaluación interna)};}
+  \capa{6}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{6}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{6}{\draw[curvanueva, desplazada] plot[domain=5.6:0.4, samples=60, smooth] ({da(\x)-2},\x)
+      node[etiqueta, right, yshift=2pt, text=tceerojo] {DA$'_{\mathrm{ES}}$};}
+  \capa{6}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{6}{\draw[guia] (6.018,1.218) -- (0,1.218) node[left, text=black] {$P_1$};}
+  \capa{6}{\node[punto] at (6.018,1.218) {};}
+  \capa{6}{\node[etiqueta, left=2pt] at (6.018,1.218) {$B$};}
+  \begin{scope}[xshift=9.6cm]
+  \capa{6}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{6}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{6}{\draw[curvanueva, desplazada] plot[domain=6.3:1.0, samples=60, smooth] ({da(\x)+4/3},\x)
+      node[etiqueta, right, text=tceerojo] {DA$'_{\mathrm{DE}}$};}
+  \capa{6}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{6}{\draw[guia] (7.8,3) -- (0,3) node[left, text=black] {$P_1$};}
+  \capa{6}{\node[punto] at (7.8,3) {};}
+  \capa{6}{\node[etiqueta, right=3pt] at (7.8,3) {$B$};}
+  \end{scope}
+  % 7: España: los salarios bajan, la OA de corto plazo baja (W_1 < W_0) y la
+  %    economía vuelve a Y^n con un precio menor (C)
+  \capa{7}{\draw[flecha] (9.3,4.5) -- (10.35,3.45);}
+  \capa{7}{\draw[curva2, desplazada] (6.6,0.225) -- (10.6,4.225) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_1)$};}
+  \capa{7}{\draw[guia] (7,0.625) -- (0,0.625) node[left, text=black] {$P_2$};}
+  \capa{7}{\node[punto] (bC) at (7,0.625) {};}
+  \capa{7}{\node[etiqueta] at (6.5,0.3) {$C$};}
+  \capa{7}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6) {$W\downarrow$, $P\downarrow$, $q\uparrow$};}
+  % 8: Alemania: los salarios suben, la OA de corto plazo sube y la economía
+  %    vuelve a Y^n con un precio mayor (C)
+  \begin{scope}[xshift=9.6cm]
+  \capa{8}{\draw[flecha] (7.1,3.2) -- (6.0,4.3);}
+  \capa{8}{\draw[curva2, desplazada] (2.5,0.5) -- (8.4,6.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_1)$};}
+  \capa{8}{\draw[guia] (7,5) -- (0,5) node[left, text=black] {$P_2$};}
+  \capa{8}{\node[punto] (bC2) at (7,5) {};}
+  \capa{8}{\node[etiqueta, above left=1pt and 1pt] at (bC2) {$C$};}
+  \capa{8}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6) {$W\uparrow$, $P\uparrow$, $q\uparrow$};}
+  \end{scope}
+  \end{scope}
+  % ==================================================== fila c: movilidad del trabajo
+  \begin{scope}[yshift=-13.8cm]
+  % 9: ejes y curvas de partida (OA_LP, DA', OA_CP, B) en los 2 países
+  \capa{9}{\node[anchor=base west, font=\small\bfseries] at (-1.2,9.3) {c) Movilidad del trabajo};}
+  \capa{9}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{9}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above right=0pt and -6pt, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{9}{\draw[curvanueva, desplazada] plot[domain=5.6:0.4, samples=60, smooth] ({da(\x)-2},\x)
+      node[etiqueta, right, yshift=2pt, text=tceerojo] {DA$'_{\mathrm{ES}}$};}
+  \capa{9}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{9}{\node[punto] at (6.018,1.218) {};}
+  \capa{9}{\node[etiqueta, left=2pt] at (6.018,1.218) {$B$};}
+  \begin{scope}[xshift=9.6cm]
+  \capa{9}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \capa{9}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above left=0pt and -6pt, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{9}{\draw[curvanueva, desplazada] plot[domain=6.3:1.0, samples=60, smooth] ({da(\x)+4/3},\x)
+      node[etiqueta, right, text=tceerojo] {DA$'_{\mathrm{DE}}$};}
+  \capa{9}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{9}{\node[punto] at (7.8,3) {};}
+  \capa{9}{\node[etiqueta, left=1pt] at (7.8,3) {$B$};}
+  \end{scope}
+  % 10: España: salen trabajadores, la OA de largo plazo y la de corto plazo
+  %     se desplazan a la izquierda (Y^n') y la economía vuelve a P_0 (C)
+  \capa{10}{\draw[flecha] (6.8,6.6) -- (5.2,6.6);}
+  \capa{10}{\draw[curva3, desplazada] (5,0) node[below, text=black] {$Y^{n\prime}$} -- (5,7.6) node[etiqueta, above left=0pt and -6pt, text=tceeverde] {OA$'_{\mathrm{LP}}$};}
+  \capa{10}{\draw[curva2, desplazada] (3.3,0.5) -- (9.2,6.4) node[etiqueta, right, text=tceeazul] {OA$'_{\mathrm{CP}}$};}
+  \capa{10}{\draw[guia] (5,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{10}{\node[punto] (cC) at (5,2.2) {};}
+  \capa{10}{\node[etiqueta, left=3pt] at (cC) {$C$};}
+  % 11: Alemania: llegan trabajadores, las 2 OA se desplazan a la derecha y la
+  %     economía vuelve a P_0 sobre la DA' (C); flecha «emigración»
+  \begin{scope}[xshift=9.6cm]
+  \capa{11}{\draw[flecha] (7.2,6.6) -- (8.13,6.6);}
+  \capa{11}{\draw[curva3, desplazada] (8.333,0) node[below, text=black] {$Y^{n\prime}$} -- (8.333,7.6) node[etiqueta, above right=0pt and -6pt, text=tceeverde] {OA$'_{\mathrm{LP}}$};}
+  \capa{11}{\draw[curva2, desplazada] (6.4,0.267) -- (10.4,4.267) node[etiqueta, right, text=tceeazul] {OA$'_{\mathrm{CP}}$};}
+  \capa{11}{\draw[guia] (8.333,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{11}{\node[punto] (cC2) at (8.333,2.2) {};}
+  \capa{11}{\node[etiqueta, right=3pt] at (cC2) {$C$};}
+  \end{scope}
+  \capa{11}{\draw[flecha, very thick] (12.4,3.6) -- (16.2,3.6) node[midway, above, font=\footnotesize, text=black] {emigración};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

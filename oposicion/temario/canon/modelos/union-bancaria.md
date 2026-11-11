@@ -1,7 +1,7 @@
 # Unión Bancaria (MUS, MUR, garantía de depósitos, código normativo único)
 
 - **Área:** union-europea · **Tema de referencia:** 3.B.44 (lo tiene en el título; **sin fuente**). Hoy está en 4.A.18 (resumen), 3.B.21 (mención) y 3.B.39 (código normativo único)
-- **Temas que lo usan:** 3.B.44 (desarrollo previsto), 4.A.18 (resumen: origen en 2012), 4.A.19 (resumen previsto: supervisión y resolución de las entidades españolas; lo pide el título), 3.B.39 (mención), 3.B.21 (mención), 4.A.28 y 4.A.30 (mención), 3.B.27 (mención: regulación prudencial)
+- **Temas que lo usan:** 3.B.44 (desarrollo previsto), 4.A.18 (resumen: origen en 2012), 4.A.19 (resumen previsto: supervisión y resolución de las entidades españolas; lo pide el título), 3.B.39 (mención), 3.B.21 (mención), 4.A.28 y 4.A.30 (mención), 3.B.27 (mención: regulación prudencial), 3.B.16 (mención; hecho, 11/11/2026: III.3.1, la solución perfecta: MUS desde noviembre de 2014, MUR con el FUR de más de 81.000 millones, EDIS propuesto en 2015 y sin aprobar, `\vertema{3.B.44}`)
 - **Manuales de referencia:** Reglamentos 1024/2013 (MUS) y 806/2014 (MUR), CRR/CRD, BRRD, DGSD; BCE y JUR, informes anuales; Véron, *Europe's Radical Banking Union*; Freixas, Laeven y Peydró, *Systemic Risk, Crises and Macroprudential Regulation*
 - **Decisión D073 (13/10/2026):** ¿Dónde van la Unión Bancaria y la Unión de Mercados de Capitales? Diseño de las dos en 3.B.44 (UMC trasladada desde 3.B.39); aplicación a España en 4.A.19
 
@@ -23,6 +23,7 @@ Gráfico de referencia: esquema de los tres pilares sobre la base del código no
 | 4.A.19 | Regulación, supervisión y gestión de crisis en España | Resumen aplicado | BdE dentro del MUS, FROB como autoridad de resolución, FGD | Diseño general |
 | 4.A.18 | Crisis de 2008 en España | Mención | La Unión Bancaria como respuesta de 2012; Popular 2017 | Pilares |
 | 3.B.39 | Mercado único | Mención | Código normativo único como armonización | Detalle |
+| 3.B.16 | Unión monetaria incompleta: solución perfecta | mención (hecho, 11/11/2026) | Para romper el círculo vicioso: MUS (`RegUE2013MUS`), MUR y FUR (`RegUE2014MUR`, `SRB2026FUR`, más de 81.000 millones a 31/12/2025), EDIS sin aprobar (`CE2015EDIS`); la Unión de Ahorros e Inversiones (`CE2025UAI`); `\vertema{3.B.44}` | El detalle institucional |
 
 ## Divergencias encontradas en el temario actual
 - **Tema de referencia (3.B.44) sin fuente**; 4.A.18 la describe en su apartado III, que con el título nuevo debe pasar a 4.A.19. Reparto: diseño en 3.B.44; aplicación a España en 4.A.19, que resume el diseño para cantarse sin el 3.B.44.

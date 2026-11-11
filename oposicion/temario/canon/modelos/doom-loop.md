@@ -1,7 +1,7 @@
 # Círculo vicioso entre riesgo bancario y riesgo soberano (*doom loop*)
 
 - **Área:** economia-espanola · **Tema de referencia:** doble, uno por ejercicio. **3.B.26** (3.er ejercicio; crisis financieras): el mecanismo teórico en los dos sentidos, los agravantes en una unión monetaria y las respuestas, con el diagrama de referencia. **4.A.18** (4.º ejercicio; crisis de 2008 en España): el mecanismo resumido sin depender del 3.B.26 y aplicado al caso español de 2010-2012 (rescate, MoU). La solución institucional, en 3.B.44 (Unión Bancaria).
-- **Temas que lo usan:** 3.B.26 (desarrollo previsto, sin fuente), 4.A.18 (resumen → desarrollo), 4.A.20 (resumen → mención), 4.A.28 y 4.A.30 (mención: «intensificación del círculo vicioso»), 3.B.44 (mención prevista: objetivo de la Unión Bancaria)
+- **Temas que lo usan:** 3.B.26 (desarrollo previsto, sin fuente), 4.A.18 (resumen → desarrollo), 4.A.20 (resumen → mención), 4.A.28 y 4.A.30 (mención: «intensificación del círculo vicioso»), 3.B.44 (mención prevista: objetivo de la Unión Bancaria), 3.B.16 (resumen; hecho, 11/11/2026: III.2.2 `sec:circulo-vicioso`, 5 pasos y los 2 sentidos, gráfico `circulo-vicioso`, `\vertema{3.B.26}`; la unión bancaria como solución en III.3.1, `\vertema{3.B.44}`)
 - **Manuales de referencia:** Brunnermeier et al. (2016), «The sovereign-bank diabolic loop and ESBies», *AER P&P*; Acharya, Drechsler y Schnabl (2014); Farhi y Tirole (2018)
 - **Decisión D078 (13/10/2026):** ¿Cuál es el tema de referencia del bucle diabólico banca-soberano? 4.A.18 (crisis de 2008 en España), con la teoría general en 3.B.26 y la solución institucional en 3.B.44
 - **Decisión D136 (13/10/2026):** referencia doble: el mecanismo en 3.B.26 (3.º) y el caso español en 4.A.18 (4.º), cada uno completo para su examen.
@@ -18,6 +18,7 @@ Gráfico de referencia: diagrama de flechas circular (bancos ↔ soberano ↔ ec
 | 4.A.20 | Financiación no bancaria | Mención | Como argumento para diversificar la financiación | El mecanismo completo |
 | 4.A.28 | España 1999-2019 | Mención | — | — |
 | 3.B.44 | Unión Bancaria | Mención | Objetivo de romper el círculo | — |
+| 3.B.16 | Problemas de una unión monetaria incompleta | resumen (hecho, 11/11/2026) | El círculo como 1.er problema de una unión sin unión bancaria ni fiscal, tras la fragilidad de De Grauwe (2011): 5 pasos (perturbación de solvencia → deuda en los bancos nacionales → pérdidas en sus balances → recapitalización por el Estado → más deuda) y los 2 sentidos, con la economía real que lo empeora; **gráfico `fuentes/3B16/graficos/circulo-vicioso.tex`** (bancos ↔ Estado ↔ economía real; primer `.tex` del diagrama de esta ficha: **propuesto como gráfico de referencia hasta que se revise el 3.B.26, [decidir]**); `\vertema{3.B.26}`; solución, la unión bancaria (`\vertema{3.B.44}`) | El caso español de 2010-2012 |
 
 ## Divergencias encontradas en el temario actual
 - Texto casi idéntico en 4.A.18 y 4.A.20 («Esto aumentaría de nuevo las necesidades de endeudamiento del sector público…»). Propuesta: dejarlo en 4.A.18.

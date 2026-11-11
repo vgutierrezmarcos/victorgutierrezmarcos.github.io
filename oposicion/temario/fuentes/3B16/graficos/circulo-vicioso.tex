@@ -1,0 +1,47 @@
+% El círculo vicioso entre los bancos y el Estado en una unión monetaria
+% incompleta (De Grauwe, 2011 y 2022): una perturbación de solvencia hace que
+% los inversores vendan la deuda del Estado; los bonos que se deprecian abren
+% pérdidas en los bancos nacionales, el Estado los rescata y su deuda sube; los
+% bancos dan menos crédito, la economía real recauda menos y gasta más, y la
+% deuda vuelve a subir. Sin banco central propio que respalde al Estado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{
+  caja/.style={draw=tceemorado, thick, fill=tceemorado!10, rounded corners=3pt,
+    align=center, minimum width=3.3cm, minimum height=1.1cm, inner sep=4pt},
+  rotulo/.style={etiqueta, font=\footnotesize, align=center},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-7.6,-2.8) rectangle (7.0,4.0);
+  % 1: las 3 cajas, en triángulo
+  \capa{1}{\node[caja] (estado) at (0,3.0) {\textbf{Estado}\\(deuda pública)};}
+  \capa{1}{\node[caja] (bancos) at (-3.6,-1.8) {\textbf{Bancos nacionales}};}
+  \capa{1}{\node[caja] (economia) at (3.6,-1.8) {\textbf{Economía real}};}
+  % 2: la perturbación de solvencia entra por el Estado
+  \capa{2}{\draw[curva2, ->] (-7.2,3.0) -- (estado.west);}
+  \capa{2}{\node[rotulo, anchor=south, text=tceeazul] at (-4.6,3.05)
+      {perturbación de solvencia:\\los inversores venden la deuda};}
+  \capa{2}{\node[rotulo, anchor=north, text=tceeazul] at (-4.6,2.95)
+      {prima de riesgo $\uparrow$};}
+  % 3: del Estado a los bancos: los bonos se deprecian
+  \capa{3}{\draw[curva1, ->] (estado.south west) to[bend right=35] (bancos.north);}
+  \capa{3}{\node[rotulo, anchor=east, text=tceemorado] at (-3.7,1.0)
+      {bonos que se deprecian:\\pérdidas en el balance};}
+  % 4: de los bancos al Estado: rescates y más deuda
+  \capa{4}{\draw[curva1, ->] (bancos.north east) to[bend right=25] (estado.south);}
+  \capa{4}{\node[rotulo, anchor=west, text=tceemorado] at (0.0,0.95)
+      {rescates y\\recapitalizaciones:\\más deuda};}
+  % 5: de los bancos a la economía real y de esta al Estado
+  \capa{5}{\draw[curva1, ->] (bancos.east) -- (economia.west);}
+  \capa{5}{\node[rotulo, anchor=north, text=tceemorado] at (0,-1.9) {menos crédito};}
+  \capa{5}{\draw[curva1, ->] (economia.north) to[bend right=35] (estado.south east);}
+  \capa{5}{\node[rotulo, anchor=west, text=tceemorado] at (3.85,1.0)
+      {menos recaudación,\\más gasto};}
+  % 6: lo que falta en una unión incompleta
+  \capa{6}{\node[rotulo, text=tceegris] at (0.6,-0.8)
+      {sin banco central propio\\que respalde al Estado};}
+\end{tikzpicture}
+\end{document}

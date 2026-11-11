@@ -1,7 +1,7 @@
 # Criterios de convergencia nominal (Maastricht) y entrada en la UEM
 
 - **Área:** union-europea · **Tema de referencia:** 3.B.43 (su título: «Los criterios de convergencia nominal»; sin fuente)
-- **Temas que lo usan:** 3.B.43 (desarrollo previsto), 4.A.27 (resumen previsto: ajuste de España para entrar en el euro), 4.A.29 (hoy desarrollo, sobra con el título nuevo), 4.A.28 y 4.A.30 (resumen, duplicado), 3.B.40 (mención), 3.B.16 (mención: AMO)
+- **Temas que lo usan:** 3.B.43 (desarrollo previsto), 4.A.27 (resumen previsto: ajuste de España para entrar en el euro), 4.A.29 (hoy desarrollo, sobra con el título nuevo), 4.A.28 y 4.A.30 (resumen, duplicado), 3.B.40 (mención), 3.B.16 (mención; hecho, 11/11/2026: nota del criterio de inflación en Magnifico, `\vertema{3.B.43}`)
 - **Manuales de referencia:** art. 140 TFUE y Protocolo 13; BCE y Comisión, informes de convergencia (bienales); De Grauwe, *Economics of Monetary Union*
 
 ## Presentación de referencia
@@ -21,6 +21,7 @@ Crítica: la convergencia nominal no garantiza la real ni la sincronía de ciclo
 | 4.A.27 | Ajuste de España para el euro | Resumen | Programas de Convergencia y cumplimiento de España en 1997 | La definición formal |
 | 4.A.28 / 4.A.30 | 1999-2019 / relaciones con la UE | Mención | — | La lista de criterios |
 | 4.A.29 | España desde la covid | Nada | Quitar (sobra con el título nuevo) | — |
+| 3.B.16 | Integración monetaria | mención (hecho, 11/11/2026) | Nota del criterio de inflación en Magnifico (no más de 1,5 puntos sobre la media de los 3 Estados con mejor comportamiento, sin los atípicos, `UE2016Protocolo13`), `\vertema{3.B.43}` | La lista de criterios |
 
 ## Divergencias encontradas en el temario actual
 - Contado hoy en 4.A.28, 4.A.29 y 4.A.30 (bloques casi literales: «El objetivo de la convergencia nominal era sincronizar los ciclos…»).

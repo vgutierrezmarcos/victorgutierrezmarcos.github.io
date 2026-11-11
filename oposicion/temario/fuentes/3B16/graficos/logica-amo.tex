@@ -1,0 +1,68 @@
+% La lógica de la teoría de las áreas monetarias óptimas, como árbol de
+% preguntas (rehace en castellano la fig. 15.15 de Baldwin y Wyplosz, 2020):
+% apertura (McKinnon) y diversificación (Kenen) hacen poco probables las
+% perturbaciones asimétricas; si no lo son, hace falta ajustarse con salarios y
+% precios flexibles o con movilidad del trabajo (Mundell); si tampoco, la unión
+% necesita apoyo político (transferencias, preferencias homogéneas, solidaridad).
+% Hexágonos: criterios (salvia con borde morado); rombos azules: decisiones;
+% rombos verdes: el grupo es un área monetaria óptima (AMO).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{shapes.geometric,shapes.symbols}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  criterio/.style={signal, signal to=west and east, signal pointer angle=120,
+    draw=tceemorado, thick, fill=tceesalvia, align=center, text width=2.7cm,
+    minimum height=1.35cm, inner sep=3pt},
+  caja/.style={draw=tceemorado, thick, fill=tceesalvia, align=center,
+    text width=4.2cm, minimum height=1.1cm, inner sep=4pt},
+  decision/.style={diamond, aspect=2.6, draw=tceeazul, thick, fill=tceeazul!12,
+    align=center, inner sep=1pt},
+  amo/.style={diamond, aspect=2.2, minimum width=2.1cm, draw=tceeverde, thick, fill=tceeverde!18,
+    inner sep=1pt, font=\small\bfseries},
+  enlace/.style={thick, tceemorado, ->},
+  union/.style={thick, tceemorado},
+  rama/.style={etiqueta, font=\footnotesize, text=tceegris},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-5.5,-15.6) rectangle (5.6,1.0);
+  % 1: apertura (McKinnon) y diversificación (Kenen) confluyen en la caja
+  \capa{1}{\node[criterio, text width=3.1cm] (mckinnon) at (-2.6,0) {Muy abierta\\(\autor{Ronald McKinnon})};}
+  \capa{1}{\node[criterio, text width=3.1cm] (kenen) at (2.6,0) {Diversificada\\(\autor{Peter Kenen})};}
+  \capa{1}{\node[caja] (poco) at (0,-2.3) {Perturbaciones asimétricas\\poco probables};}
+  \capa{1}{\draw[union] (mckinnon.south) |- (0,-1.15);}
+  \capa{1}{\draw[union] (kenen.south) |- (0,-1.15);}
+  \capa{1}{\draw[enlace] (0,-1.15) -- (poco.north);}
+  % 2: «sí»: AMO; «no»: hace falta ajustarse
+  \capa{2}{\node[amo] (amo1) at (-3.0,-4.3) {AMO};}
+  \capa{2}{\draw[enlace] (poco.south) -- node[rama, above left] {sí} (amo1.north east);}
+  \capa{2}{\node[decision] (ajuste1) at (2.9,-4.3) {Hace falta\\ajustarse};}
+  \capa{2}{\draw[enlace] (poco.south) -- node[rama, above right] {no} (ajuste1.north west);}
+  % 3: salarios y precios flexibles
+  \capa{3}{\node[criterio] (salarios) at (2.9,-6.4) {Salarios y precios\\flexibles};}
+  \capa{3}{\draw[enlace] (ajuste1.south) -- (salarios.north);}
+  \capa{3}{\node[amo] (amo2) at (-3.0,-8.4) {AMO};}
+  \capa{3}{\draw[enlace] (salarios.south) -- node[rama, above, sloped] {sí} (amo2.east);}
+  \capa{3}{\node[decision] (ajuste2) at (2.9,-8.4) {Hace falta\\ajustarse};}
+  \capa{3}{\draw[enlace] (salarios.south) -- node[rama, right] {no} (ajuste2.north);}
+  % 4: movilidad del trabajo (Mundell)
+  \capa{4}{\node[criterio] (movilidad) at (2.9,-10.5) {Movilidad del trabajo\\(\autor{Robert Mundell})};}
+  \capa{4}{\draw[enlace] (ajuste2.south) -- (movilidad.north);}
+  \capa{4}{\node[amo] (amo3) at (-3.0,-12.5) {AMO};}
+  \capa{4}{\draw[enlace] (movilidad.south) -- node[rama, above, sloped] {sí} (amo3.east);}
+  % 5: si tampoco hay movilidad, hace falta apoyo político
+  \capa{5}{\node[decision] (apoyo) at (2.9,-12.5) {Hace falta\\apoyo político};}
+  \capa{5}{\draw[enlace] (movilidad.south) -- node[rama, right] {no} (apoyo.north);}
+  \capa{5}{\draw[union] (apoyo.south) -- (2.9,-13.75);}
+  \capa{5}{\draw[union] (-3.6,-13.75) -- (2.9,-13.75);}
+  \capa{5}{\node[criterio, text width=2.2cm] (transferencias) at (-3.6,-14.8) {Transferencias};}
+  \capa{5}{\draw[enlace] (-3.6,-13.75) -- (transferencias.north);}
+  \capa{5}{\node[criterio, text width=2.2cm] (preferencias) at (-0.35,-14.8) {Preferencias\\homogéneas};}
+  \capa{5}{\draw[enlace] (-0.35,-13.75) -- (preferencias.north);}
+  \capa{5}{\node[criterio, text width=2.2cm] (solidaridad) at (2.9,-14.8) {Solidaridad};}
+  \capa{5}{\draw[enlace] (2.9,-13.75) -- (solidaridad.north);}
+\end{tikzpicture}
+\end{document}

@@ -12,7 +12,7 @@ familias:
     periodicidad: trienal (preliminares en septiembre, definitivos al año siguiente)
     url: https://www.bis.org/statistics/rpfx25.htm
     proxima: 2028-09
-    temas: [3B13, 3B25]
+    temas: [3B13, 3B14, 3B25]
   mff-ue:
     organismo: Consejo de la UE / Comisión Europea
     que_es: "Marco financiero plurianual: techos de compromisos y pagos por rúbrica (2021-2027 en vigor; 2028-2034 en negociación)"
@@ -26,7 +26,7 @@ familias:
     periodicidad: anual (adopción en noviembre-diciembre)
     url: https://commission.europa.eu/strategy-and-policy/eu-budget/annual-eu-budget_en
     proxima: 2026-12
-    temas: []
+    temas: [3B16]
   pge:
     organismo: Ministerio de Hacienda
     que_es: "Presupuestos Generales del Estado: gasto por políticas, ingresos, déficit previsto (o prórroga)"
@@ -40,7 +40,7 @@ familias:
     periodicidad: continua (cuadro de indicadores; el MRR termina en 2026)
     url: https://ec.europa.eu/economy_finance/recovery-and-resilience-scoreboard/
     proxima: 2026-12
-    temas: []
+    temas: [3B16]
   omc-aranceles:
     organismo: OMC
     que_es: "Aranceles NMF aplicados y consolidados (medias simples y ponderadas, por país y producto; perfiles arancelarios y base analítica)"
@@ -105,7 +105,7 @@ familias:
     periodicidad: semestral (abril y octubre)
     url: https://www.wto.org/english/res_e/publications_e/trade_outlook_e.htm
     proxima: 2027-04
-    temas: [3B05, 3B06, 3B07, 3B09, 3B13]
+    temas: [3B05, 3B06, 3B07, 3B09, 3B13, 3B14]
   omc-acr:
     organismo: OMC
     que_es: "Acuerdos comerciales regionales notificados y en vigor (RTA-IS), por tipo"
@@ -203,7 +203,7 @@ familias:
     que_es: "Número de Estados de la zona del euro"
     periodicidad: irregular (cada ampliación)
     url: https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro_en
-    temas: [3B10]
+    temas: [3B10, 3B16]
   obr-brexit:
     organismo: Office for Budget Responsibility
     que_es: "Supuesto del efecto del Brexit sobre la productividad y el comercio británicos"
@@ -541,3 +541,74 @@ familias:
     url: https://unfccc.int/
     proxima: 2026-11
     temas: [3B31]
+  economist-bigmac:
+    organismo: The Economist
+    que_es: "Índice Big Mac: precio de un Big Mac en cada país, PPA Big Mac implícita y desviación del tipo de cambio de mercado frente al dólar, en bruto y ajustada por el PIB por habitante"
+    periodicidad: semestral (enero y julio; datos en el repositorio unas semanas después)
+    url: https://github.com/TheEconomist/big-mac-data
+    proxima: 2027-02
+    temas: [3B14]
+  # --- Nuevas del 3.B.16 (11/11/2026) ---
+  fmi-areaer:
+    organismo: FMI
+    que_es: "Annual Report on Exchange Arrangements and Exchange Restrictions: clasificación de facto de los regímenes cambiarios (anclajes duros y blandos, flotación) y uniones monetarias"
+    periodicidad: anual (irregular; el de 2023 salió el 19/12/2024)
+    url: https://www.elibrary.imf.org/fileasset/downloads/AEIEA2023001-S001.pdf
+    proxima: null
+    temas: [3A32, 3B16]
+  schengen-controles:
+    organismo: Comisión Europea (DG HOME)
+    que_es: "Reintroducciones temporales de controles en las fronteras interiores del espacio Schengen (Estados con controles en vigor, notificaciones)"
+    periodicidad: continua (notificaciones de hasta 6 meses)
+    url: https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en
+    proxima: 2027-03
+    temas: [3B16]
+  eurostat-iapc:
+    organismo: Eurostat
+    que_es: "IAPC anual por país (prc_hicp_aind): inflación media, índices y dispersión en la zona del euro"
+    periodicidad: anual (febrero) y mensual
+    url: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_aind/default/table
+    proxima: 2027-02
+    temas: [3A32, 3B16]
+  eurostat-nama:
+    organismo: Eurostat
+    que_es: "Cuentas nacionales anuales (nama_10_gdp, nama_10_pc): PIB, apertura (exportaciones + importaciones / PIB), crecimiento real, PIB por habitante"
+    periodicidad: anual (septiembre-octubre) y trimestral
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    proxima: 2027-04
+    temas: [3A32, 3B16]
+  eurostat-comercio-zona-euro:
+    organismo: Eurostat
+    que_es: "Comercio de bienes de la zona del euro por socio (ext_st_easitc): cuota del comercio entre países del euro"
+    periodicidad: mensual (año cerrado en febrero-marzo)
+    url: https://ec.europa.eu/eurostat/databrowser/view/ext_st_easitc/default/table
+    proxima: 2027-03
+    temas: [3B16]
+  eurostat-movilidad-ue:
+    organismo: Eurostat
+    que_es: "Ciudadanos de la UE que viven en otro Estado miembro por edad (migr_pop1ctz)"
+    periodicidad: anual
+    url: https://ec.europa.eu/eurostat/databrowser/view/migr_pop1ctz/default/table
+    proxima: 2027-03
+    temas: [3B16]
+  bce-compras-activos:
+    organismo: BCE
+    que_es: "Programas de compras de activos y de protección (SMP, OMT, APP, PEPP, TPI): fechas, estado y carteras"
+    periodicidad: irregular (cada decisión del Consejo de Gobierno)
+    url: https://www.ecb.europa.eu/mopo/implement/app/html/index.en.html
+    proxima: 2026-12
+    temas: [3B16]
+  srb-fur:
+    organismo: Junta Única de Resolución
+    que_es: "Tamaño del Fondo Único de Resolución y ciclo anual de aportaciones"
+    periodicidad: anual (verificación a principios de año)
+    url: https://www.srb.europa.eu/en/content/2026-srf-contributions-cycle
+    proxima: 2027-02
+    temas: [3B16]
+  cbo-presupuesto-eeuu:
+    organismo: Congressional Budget Office
+    que_es: "Gasto e ingresos del Gobierno federal de Estados Unidos por ejercicio fiscal, en % del PIB"
+    periodicidad: anual (noviembre)
+    url: https://www.cbo.gov/publication/61986
+    proxima: 2027-11
+    temas: [3B16]

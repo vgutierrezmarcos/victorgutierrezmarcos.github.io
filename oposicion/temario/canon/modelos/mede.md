@@ -1,7 +1,7 @@
 # Mecanismo Europeo de Estabilidad (MEDE) y sus antecesores (MEEF, FEEF)
 
 - **Área:** union-europea · **Tema de referencia:** 3.B.45 (gobernanza económica de la UE y la zona euro; lo tiene en el título) — **tema sin fuente**: hoy el contenido está en 3.B.36 (como «institución») y 3.B.37 (como instrumento extrapresupuestario)
-- **Temas que lo usan:** 3.B.45 (desarrollo previsto), 3.B.36 (resumen → mención), 3.B.37 (resumen), 4.B.26 (resumen), 4.A.18 (mención: préstamo de 2012 a España), 4.A.28 (mención), 4.A.30 (mención: flujos extrapresupuestarios), 3.B.21 y 3.B.22 (mención), 3.B.44 (mención: respaldo común del FUR)
+- **Temas que lo usan:** 3.B.45 (desarrollo previsto), 3.B.36 (resumen → mención), 3.B.37 (resumen), 4.B.26 (resumen), 4.A.18 (mención: préstamo de 2012 a España), 4.A.28 (mención), 4.A.30 (mención: flujos extrapresupuestarios), 3.B.21 y 3.B.22 (mención), 3.B.44 (mención: respaldo común del FUR), 3.B.16 (mención; hecho, 11/11/2026: anexo `anexo:crisis-euro`, los rescates y después el MEDE, `\vertema{3.B.45}`)
 - **Manuales de referencia:** Tratado MEDE (2012) y Tratado de reforma (2021); informes anuales del MEDE; Baldwin y Wyplosz, *The Economics of European Integration*, caps. de gobernanza; De Grauwe, *Economics of Monetary Union*
 - **Decisión D093 (13/10/2026):** ¿Dónde se desarrolla el MEDE? 3.B.45, a partir de la descripción de 3.B.37; 3.B.36 y 3.B.37 en mención o resumen
 
@@ -27,6 +27,7 @@ Reforma del Tratado (firmada en 2021): respaldo común (*backstop*) al Fondo Ún
 | 4.A.18 | Crisis y reestructuración bancaria en España | Resumen | Préstamo de 2012 (41.333 M€), MoU y condicionalidad | Estructura del MEDE |
 | 4.B.26 | Deuda pública | Resumen | Préstamo MEDE en la deuda del Estado y su amortización anticipada | — |
 | 4.A.30 | Relaciones financieras España-UE | Mención | Como flujo extrapresupuestario | — |
+| 3.B.16 | Integración monetaria: la crisis del euro | mención (hecho, 11/11/2026) | Anexo de la crisis del euro y la respuesta institucional: fondos de rescate temporales y después el MEDE (Sanchis i Marco, 2014); `\vertema{3.B.45}` | El detalle |
 
 ## Divergencias encontradas en el temario actual
 - **MEDE asignado a 3.B.45, que no tiene fuente**: hoy hay dos descripciones paralelas, en 3.B.36 y 3.B.37. Reparto: el desarrollo se escribe en 3.B.45 a partir de 3.B.37 (la más completa); 3.B.36 y 3.B.37 en mención o resumen.

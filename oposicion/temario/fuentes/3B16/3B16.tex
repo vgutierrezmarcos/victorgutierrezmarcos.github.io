@@ -1,0 +1,1084 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B16.bib}
+\tcetema[Teoría de la integración monetaria]{3.B.16}{Teoría de la integración monetaria.}
+\tcefecha{11/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «El casado casa quiere», dice el refrán.
+  \item El 1 de enero de 2026 Bulgaria adoptó el euro, y la zona del euro pasó a tener 21 miembros \parencite{BCE2026Bulgaria,CE2026PaisesEuro}: 21 países con una sola moneda y un solo banco central, pero con 21 presupuestos, 21 mercados de trabajo y 21 sistemas bancarios que siguen siendo, en buena parte, de cada casa.
+  \item Casi 3 décadas después de su nacimiento, el euro sigue sumando socios y sigue amueblando su casa común: la unión bancaria está a medias y la capacidad fiscal común es pequeña.
+  \item La pregunta que recorre la exposición es sencilla: \emph{¿cuándo compensa a un país renunciar a su moneda y a su tipo de cambio propios? Y, si renuncia, ¿qué casa común hace falta para que el matrimonio funcione?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Para España}: desde 1999 no tiene tipo de cambio frente a sus principales socios ni política monetaria propia \parencite{CE2026PaisesEuro}. Vivió las 2 caras de la unión: el fin de las devaluaciones de la peseta y de la prima de riesgo cambiaria y, en 2010-2012, una crisis sin tipo de cambio con que ajustarse \vertema{4.A.28}.
+  \item \emph{Para la política económica}: la teoría dice qué instrumentos le quedan a un país dentro de la unión (la política fiscal y las reformas) y qué instituciones necesita la unión (unión bancaria, capacidad fiscal, un prestamista de última instancia).
+  \item \emph{Para la teoría}: es el punto de encuentro de la macroeconomía abierta (el ajuste sin tipo de cambio) \vertema{3.A.32}, de la credibilidad de la política monetaria \vertema{3.A.36} y de la integración económica \vertema{3.B.10}.
+  \item \emph{Más allá de Europa}: hay uniones monetarias en África Occidental y Central y en el Caribe Oriental (anexo~\ref{anexo:otras-uniones}).
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Las definiciones de partida}:
+    \begin{itemize}
+    \item la \concepto{integración monetaria} es el proceso por el que varios países fijan de forma irrevocable sus tipos de cambio o adoptan una moneda común y, con ello, ceden la política monetaria a una autoridad común. Es uno de los peldaños más altos de la escalera de la integración económica \vertema{3.B.10};
+    \item en términos de \textcite{Tinbergen1954International}, combina \emph{integración negativa} (quitar barreras: los controles de cambios y los márgenes de fluctuación) e \emph{integración positiva} (crear instituciones comunes: un banco central);
+    \item la definición de referencia de \concepto{unión monetaria} es la del \concepto{Informe Werner}: convertibilidad total e irreversible de las monedas, sin márgenes de fluctuación, con paridades fijadas de forma irrevocable y con libertad total de capitales; la moneda única no es imprescindible, pero da irreversibilidad al proyecto \parencite{Werner1970Informe}. El \concepto{Informe Delors} (abril de 1989) llevó esa idea a 3 etapas, que acabaron en el euro \parencite{Delors1989Informe} \vertema{3.B.43};
+    \item \textcite{Corden1972Monetary} separa la \concepto{seudounión cambiaria}, en la que los países mantienen fijos sus tipos de cambio pero conservan su banco central, sus reservas y su política monetaria, de la \concepto{unión cambiaria completa}, con reservas comunes y un solo banco central. La primera es frágil: la paridad se puede abandonar (apartado~\ref{sec:credibilidad}).
+    \end{itemize}
+  \item \emph{La unión monetaria en el abanico de regímenes cambiarios}:
+    \begin{itemize}
+    \item entre la flotación libre y el tipo fijo hay regímenes intermedios, y la unión monetaria es el extremo de los \concepto{anclajes duros} (\emph{hard pegs}), junto a la dolarización y la caja de conversión: el país renuncia a su moneda o a su política monetaria \vertema{3.B.15};
+    \item el FMI cuenta hoy 4 uniones monetarias: la zona del euro, que flota frente al resto del mundo, y 3 con un ancla cambiaria, la del Caribe Oriental (caja de conversión con el dólar) y las 2 del franco CFA (la UMOA, pilar monetario de la UEMOA, y la CEMAC, ancladas al euro), cada una con su banco central común \parencite{FMI2024AREAER2023};
+    \item formar una unión monetaria equivale a fijar los tipos de cambio de forma irreversible: por eso su análisis nace del debate entre tipos fijos y flexibles\footnote{Los resultados del sistema de flotación desde los 70 y los avances de la teoría hicieron a los economistas, desde los 80, más escépticos sobre las ventajas de los tipos flexibles. Se creía que la flotación aislaría a las economías de las perturbaciones externas y reforzaría la estabilización interna; pero los tipos fijos tienen ventajas microeconómicas (menos costes de transacción y menos incertidumbre) y dan más disciplina a la política monetaria. El debate no ha sido concluyente: cada régimen tiene ventajas e inconvenientes y la elección depende de las circunstancias del país \vertema{3.B.15}. De él nace el de las áreas monetarias óptimas: si el tipo fijo fuera siempre mejor, el área óptima sería el mundo entero; si lo fuera el flexible, cada región debería tener su moneda.} y, con movilidad del capital, fijar el tipo es renunciar a la política monetaria propia (el \concepto{trilema}) \vertema{3.A.32}.
+    \end{itemize}
+  \item \emph{La convención}: el tipo de cambio $E$ es directo (euros por unidad de moneda extranjera), de modo que una subida es una depreciación; el tipo de cambio real es $q\equiv E\,P^*/P$ y su subida, una ganancia de competitividad-precio \vertema{3.B.13}.
+  \item \emph{La teoría}: la inició \autor{Robert Mundell} en 1961 con una pregunta, ¿cuál es el dominio apropiado de una moneda?, y ha seguido de cerca la integración europea hasta el euro \parencite{Mundell1961Theory}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Cuándo compensa a un grupo de países renunciar al tipo de cambio propio? ¿Qué cuesta y de qué depende?
+  \item ¿Qué se gana a cambio?
+  \item ¿Se cumplen las condiciones antes de entrar o las crea (o las destruye) la propia unión?
+  \item ¿Qué instituciones necesita una unión monetaria para no ser frágil?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición sigue la historia de la teoría, que va de los costes a los beneficios y de estos a las instituciones:
+    \begin{itemize}
+    \item \concepto{I. Costes de una moneda común} (\ref{sec:costes}): la teoría de las áreas monetarias óptimas de los años 60 y 70, con \autor{Mundell}, \autor{McKinnon}, \autor{Kenen} y sus criterios;
+    \item \concepto{II. Análisis coste-beneficio} (\ref{sec:coste-beneficio}): la segunda fase de la teoría, en los años 80 y 90, con los beneficios (entre ellos, la credibilidad) y el debate sobre si los criterios se cumplen solos una vez dentro;
+    \item \concepto{III. Las uniones monetarias incompletas} (\ref{sec:incompletas}): lo que enseñó la crisis del euro, que una unión monetaria sin unión bancaria ni fiscal es frágil, y cómo completarla.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}[unbreakable]
+\textbf{3.B.16. Teoría de la integración monetaria}\\[2pt]
+Introducción\esqtiempo{2,5}\\
+I. Costes de una moneda común: el enfoque tradicional de las AMO\esqtiempo{11}\\
+\hspace*{1.5em}1. Idea\\
+\hspace*{1.5em}2. Enfoque por criterios\\
+\hspace*{1.5em}3. Condiciones para constituir un área monetaria óptima\\
+\hspace*{1.5em}4. Valoración\\
+II. Análisis coste-beneficio: la segunda fase de las AMO\esqtiempo{9}\\
+\hspace*{1.5em}1. La emergencia de la segunda fase\\
+\hspace*{1.5em}2. Debate acerca de la endogeneidad de los criterios\\
+\hspace*{1.5em}3. Evidencia empírica\\
+\hspace*{1.5em}4. Otros beneficios y costes de la integración monetaria\\
+\hspace*{1.5em}5. ¿Para quién son óptimas las áreas monetarias óptimas?\\
+III. Las uniones monetarias incompletas y cómo completarlas\esqtiempo{6,5}\\
+\hspace*{1.5em}1. Introducción\\
+\hspace*{1.5em}2. Problemas de una unión monetaria incompleta\\
+\hspace*{1.5em}3. Soluciones\\
+Conclusión\esqtiempo{1}
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{1}; I.2, \tiempo{7,5}; I.3, \tiempo{1,5}; I.4, \tiempo{1}); II, \tiempo{9} (II.1, \tiempo{2}; II.2, \tiempo{2,5}; II.3, \tiempo{1,5}; II.4, \tiempo{2,5}; II.5, \tiempo{0,5}); III, \tiempo{6,5} (III.1, \tiempo{0,5}; III.2, \tiempo{2,5}; III.3, \tiempo{3,5}), y conclusión, \tiempo{1}. Todo el tema vuelve al mismo ejemplo: España y Alemania dentro del euro. Los criterios se ordenan por las 3 dimensiones de \autor{De Grauwe} (simetría, flexibilidad e integración) que cierran el apartado~\ref{sec:costes} y que el apartado~\ref{sec:coste-beneficio} convierte en coste-beneficio. Los gráficos imprescindibles son la oferta y la demanda agregadas de los 2 países, los costes y beneficios frente a la apertura y el plano simetría-integración con las 2 hipótesis de la endogeneidad.
+\end{notaopositor}
+
+\begin{anotaciones}
+\begin{itemize}
+\item Para ampliar: la conferencia «El euro como zona monetaria (no) óptima» \parencite{Vara2019Euro}, y las entradas «Optimum Currency Areas» y «Currency Unions» del \emph{New Palgrave Dictionary of Economics} \parencite{Palgrave2018OCA,Palgrave2018CurrencyUnions}.
+\item Según el FMI, a 30 de abril de 2023 el 44,8~\% de sus miembros tenía un anclaje blando, el 32,5~\% flotaba y el 13,4~\% tenía un anclaje duro (sin moneda propia o con caja de conversión); los países del euro aparecen en libre flotación frente al resto del mundo \parencite{FMI2024AREAER2023} \vertema{3.B.15}.
+\end{itemize}
+\end{anotaciones}
+
+
+% ==========================================================================
+\section{Costes de una moneda común:\cortetitulo el enfoque tradicional de las AMO}\label{sec:costes}
+\minutos{11}
+
+\begin{itemize}
+\item Empezamos por lo que cuesta compartir moneda, que es por donde empezó la teoría en los años 60 y 70.
+\item \emph{Conclusión anticipada}: sin tipo de cambio, el coste lo pagan las perturbaciones \emph{asimétricas}, las que golpean a un socio y no a los demás. Es pequeño si los países tienen con qué ajustarse sin tipo de cambio (salarios flexibles, trabajo móvil), con qué asegurarse (un presupuesto común, mercados financieros integrados) o si las perturbaciones son simétricas. La teoría lo resume en una lista de criterios.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea}\label{sec:idea-amo}
+
+\begin{itemize}
+\item \emph{El coste de una moneda común}: un país que entra en una unión monetaria renuncia a 3 instrumentos:\footnote{Dicho de otro modo, pierde el tipo de cambio como mecanismo estabilizador ante las perturbaciones reales asimétricas dentro de la unión y pierde la política monetaria propia: con tipo fijo y movilidad perfecta del capital, la política monetaria queda supeditada al tipo de cambio (el \concepto{trilema} o trinidad imposible) \vertema{3.A.32}.}
+  \begin{itemize}
+  \item cambiar el precio de su moneda (devaluar o revaluar);
+  \item fijar la cantidad de dinero en circulación;
+  \item fijar el tipo de interés a corto plazo.
+  \end{itemize}
+\item Su banco central no desaparece (en la zona del euro, los bancos centrales nacionales forman el Eurosistema con el BCE), pero ya no decide la política monetaria del país: la decide el banco central común para el conjunto.
+\item La \concepto{teoría de las áreas monetarias óptimas} (AMO) estudia cuándo ese coste es pequeño. La iniciaron \textcite{Mundell1961Theory},\footnote{\autor{Robert Mundell} (1932-2021) recibió el Nobel en 1999 por su análisis de la política monetaria y fiscal con distintos regímenes cambiarios y de las áreas monetarias óptimas \parencite{Nobel1999Mundell,UChicago2021Mundell}. Además de esas 2 aportaciones, dejó el problema de la asignación de instrumentos \vertema{3.A.32} y el efecto \autor{Mundell}-\autor{Tobin}. Tuvo pocos alumnos, pero escogidos, entre ellos \autor{Rudiger Dornbusch}, otro nombre familiar para generaciones de estudiantes de macroeconomía, y \autor{Carmen Reinhart}, economista jefa del Banco Mundial entre 2020 y 2022. Fue además asesor de las Naciones Unidas, el FMI, el Banco Mundial, la Comisión Europea, la Reserva Federal y los gobiernos de Estados Unidos y Canadá.} \textcite{McKinnon1963Optimum} y \textcite{Kenen1969Theory}, y se centró en el lado de los costes del análisis coste-beneficio.
+\item \concepto{Área monetaria}, en \textcite{Mundell1961Theory}: un territorio dentro del cual los tipos de cambio son fijos para siempre (o hay una sola moneda), mientras que frente al resto del mundo el tipo de cambio flota.
+\item \concepto{Área monetaria óptima}: la que puede mantener a la vez el equilibrio interno (pleno empleo y estabilidad de precios) y el externo (una balanza de pagos sostenible) sin necesidad de variar los tipos de cambio entre sus miembros. Para \autor{Mundell}, es la región con movilidad de los factores dentro y sin ella hacia fuera.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoque por criterios}\label{sec:criterios}
+
+\begin{itemize}
+\item La literatura propone varios \concepto{criterios} que delimitan un área monetaria óptima: cada autor señaló uno como el decisivo (tabla~\ref{tab:criterios}).
+\item Es un enfoque \emph{pesimista}, porque mira lo que se pierde: ¿a qué renunciamos al renunciar a una moneda propia?
+\item Para que no queden como una lista suelta, los criterios se ordenan por lo que hacen, con las 3 dimensiones que cierran el apartado (\ref{sec:condiciones}):
+  \begin{itemize}
+  \item \autor{Mundell} explica cómo ajustarse sin tipo de cambio (\emph{flexibilidad});
+  \item \autor{Kenen} e \autor{Ingram}, cómo repartir el golpe entre los socios (\emph{integración} como seguro);
+  \item \autor{Kenen}, \autor{Magnifico} y las instituciones laborales, cuándo es raro que el golpe sea asimétrico (\emph{simetría});
+  \item \autor{McKinnon}, cuánto vale de verdad el instrumento al que se renuncia (\emph{integración} comercial).
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los criterios de un área monetaria óptima, en el orden de la exposición}\label{tab:criterios}
+\small\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.22\textwidth}>{\raggedright\arraybackslash}m{0.47\textwidth}>{\centering\arraybackslash}m{0.19\textwidth}}
+\toprule
+\textbf{Autor} & \textbf{Criterio: ¿qué hace?} & \textbf{Dimensión}\\
+\midrule
+\rowcolor{tceeazulpalido}\multicolumn{3}{l}{\textbf{Criterios económicos}}\\
+\textcite{Mundell1961Theory} & Flexibilidad salarial o movilidad del trabajo: hacen el ajuste que haría el tipo de cambio & \textcolor{tceeazul}{flexibilidad}\\
+\textcite{Kenen1969Theory} & Integración fiscal: un presupuesto común asegura frente a las perturbaciones propias & \textcolor{tceedorado}{integración (seguro público)}\\
+\textcite{Ingram1959State,Ingram1973Case} & Integración financiera: los mercados de capitales financian los desequilibrios y reparten el riesgo & \textcolor{tceedorado}{integración (seguro privado)}\\
+\textcite{Kenen1969Theory} & Diversificación productiva: con muchos sectores, una perturbación sectorial pesa poco en el conjunto & \textcolor{tceeverde}{simetría}\\
+\textcite{Magnifico1971European}; \textcite{BrunoSachs1985Economics}; \textcite{CalmforsDriffill1988} & Propensiones a la inflación parecidas e instituciones laborales que respondan igual: si no, el tipo real se mueve aunque el nominal esté fijo & \textcolor{tceeverde}{simetría}\\
+\textcite{McKinnon1963Optimum} & Apertura: cuanto más abierta es la economía, menos eficaz es el tipo de cambio y más se gana con una moneda común & \textcolor{tceedorado}{integración (comercio)}\\
+\rowcolor{tceesalmon}\multicolumn{3}{l}{\textbf{Criterios políticos}}\\
+\textcite{Corden1972Monetary}; \textcite{DeGrauwe1975Conditions} & Preferencias de política compatibles (inflación frente a paro) & --\\
+\textcite{Kenen1969Theory}; \textcite{Oates1972Fiscal} & Transferencias fiscales de carácter federal o flexibilidad de las políticas nacionales & --\\
+\textcite{BaldwinWyplosz2020Economics} & Destino común frente a nacionalismo: aceptar con solidaridad los costes de la unión en nombre de un proyecto compartido & --\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{DeGrauwe2022Economics} y \textcite{BaldwinWyplosz2020Economics}.}
+\end{table}
+
+% ..........................................................................
+\subsubsection{\autor{Mundell} (1961): flexibilidad de los mercados de factores}\label{sec:mundell}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Mundell1961Theory} abre la teoría con una perturbación asimétrica de demanda y una pregunta: sin tipo de cambio entre 2 regiones, ¿hay algún mecanismo que devuelva cada una al pleno empleo?
+\item Su respuesta: sí, si los salarios son flexibles o el trabajo se mueve entre ellas. Si no, mejor tipos de cambio flexibles.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{2 países, España y Alemania, en una unión monetaria}: han abandonado sus monedas, han adoptado el euro y comparten un banco central, el BCE. Entre ellos $E\equiv 1$, así que el tipo real de España frente a Alemania es $q=P^*/P$, el precio de lo alemán frente a lo español.
+\item \emph{Demanda agregada} de cada país, $\mathrm{DA}_{\mathrm{ES}}$ y $\mathrm{DA}_{\mathrm{DE}}$: cae con su propio precio, porque lo encarece frente a lo del socio (efecto sustitución vía $q$).\footnote{Son las curvas habituales de oferta y demanda agregadas \parencite{BaldwinWyplosz2020Economics}. En la demanda se deja a un lado el efecto monetario (si suben los precios, bajan los saldos reales y sube el tipo de interés real) y se mira solo el efecto sustitución. Cada curva de oferta se dibuja con el salario nominal y los precios de los demás factores (energía, insumos importados) dados: si cambian, se desplaza.}
+\item \emph{Oferta agregada} de corto plazo, $\mathrm{OA}_{\mathrm{CP}}(W_0)$, dibujada con el salario nominal dado, y de largo plazo, $\mathrm{OA}_{\mathrm{LP}}$, vertical en la producción natural $Y^n$ \vertema{3.A.32}.
+\item \emph{Equilibrio inicial} en $Y^n$ en los 2 países (punto $A$; gráfico~\ref{fig:mundell}, panel a).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La perturbación}: un cambio en las preferencias de los consumidores desplaza la demanda de los bienes españoles a los alemanes. La $\mathrm{DA}_{\mathrm{ES}}$ cae y la $\mathrm{DA}_{\mathrm{DE}}$ sube (punto $B$, panel a).
+  \begin{itemize}
+  \item En España, recesión, paro y déficit exterior;\footnote{Y un déficit público: al bajar la renta cae la recaudación y suben las prestaciones por desempleo; en Alemania, al revés, superávit. Si los inversores temen por la deuda española, venden sus bonos y compran los alemanes, sale liquidez de España y la recesión se agrava: es la fragilidad que estudia el apartado~\ref{sec:incompletas}.} en Alemania, auge, presiones inflacionistas y superávit.
+  \item Es una \concepto{perturbación asimétrica} y permanente. El coste de la unión nace de este tipo de perturbaciones: si fuera simétrica, la política monetaria común la atendería en los 2 países por igual.\footnote{En ese caso usar la política monetaria nacional no sería ni necesario, ni eficiente, ni deseable: una devaluación de un socio obligaría a los demás a responder, en una espiral perjudicial para todos.}
+  \end{itemize}
+\item \emph{Con moneda propia}, el problema se resolvería con un solo instrumento: España bajaría su tipo de interés o devaluaría, $E$ y $q$ subirían y la demanda volvería hacia España; Alemania haría lo contrario. Es la referencia frente a la que se mide el coste de la unión (gráfico~\ref{fig:mundell-devaluacion}).
+\item \emph{En la unión}, el ajuste tiene que venir de los mercados de factores:\footnote{\autor{Mundell} habla del mercado de trabajo, pero el argumento vale para todos los factores.}
+  \begin{itemize}
+  \item \concepto{flexibilidad salarial}: los parados españoles aceptan salarios más bajos y los trabajadores alemanes, más demandados, consiguen subidas. La $\mathrm{OA}_{\mathrm{CP}}$ española baja y la alemana sube (panel b): los precios españoles caen frente a los alemanes, $q$ sube y la demanda vuelve hacia España, hasta que los 2 países recuperan $Y^n$ con otros precios (punto $C$).\footnote{El ajuste tiene 2 efectos secundarios sobre la demanda. Un \emph{efecto competitividad}, que lo refuerza: lo español se abarata frente a lo alemán. Y un \emph{efecto renta}, que puede compensarlo en parte: con salarios más bajos, los españoles gastan menos.} Sin tipo de cambio propio, es la \concepto{devaluación interna}: que los costes y los precios nacionales avancen por debajo de los del resto de la unión hasta recuperar el tipo real perdido. Tarda y destruye empleo, porque los salarios nominales casi nunca bajan \parencite{SchmittGroheUribe2016Downward} \vertema{3.A.32} \vertema{3.B.11};
+  \item \concepto{movilidad del trabajo}: los parados españoles emigran a Alemania, donde sobra demanda de trabajo. La capacidad productiva española se contrae y la alemana se amplía: las curvas de oferta se desplazan ($\mathrm{OA}'$), a la izquierda en España y a la derecha en Alemania, con $Y^n$ (panel c). Los 2 países vuelven al precio inicial $P_0$ sobre su nueva demanda (punto $C$): desaparecen el paro español y el exceso de demanda alemán.\footnote{Pero cargar todo el ajuste sobre el trabajo tiene costes sociales muy altos, y es poco probable que sustituya al tipo de cambio en uniones con diferencias culturales, lingüísticas e institucionales grandes, como la zona del euro.}
+  \end{itemize}
+\item \emph{Sin ninguno de los 2}, el ajuste es lento y lo hace solo Alemania: su inflación sube $q$ desde el otro lado y devuelve poco a poco la demanda a España. El ajuste toma la forma de inflación en Alemania y deflación (o recesión larga) en España.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de \autor{Mundell} (1961): una perturbación asimétrica y permanente de demanda en una unión monetaria y los 2 mecanismos de ajuste}\label{fig:mundell}
+\grafico[\textwidth]{mundell}
+\fuente{elaboración propia a partir de \textcite{Mundell1961Theory}, \textcite{DeGrauwe2022Economics} y \textcite{BaldwinWyplosz2020Economics}. a) La demanda pasa de España a Alemania: de $A$ a $B$, recesión en España y exceso de demanda en Alemania. b) Flexibilidad salarial: en España bajan los salarios y los precios y en Alemania suben; en los 2, $q$ sube y vuelven a $Y^n$ con otros precios ($C$). c) Movilidad del trabajo: la oferta ($\mathrm{OA}'$) y $Y^n$ se desplazan a la izquierda en España y a la derecha en Alemania, y los 2 vuelven a $P_0$ sobre la nueva demanda ($C$).}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{El ajuste con moneda propia} (para consultar; no se canta).
+\begin{itemize}
+\item \emph{Con tipo flexible}, España bajaría su tipo de interés para estimular su demanda y Alemania lo subiría para frenar la suya: la peseta se depreciaría frente al marco, $E$ y $q$ subirían y la demanda volvería hacia España.
+\item \emph{Con tipo fijo pero ajustable}, España podría devaluar la peseta: el mismo efecto sobre $q$, de golpe.
+\item En los 2 casos, un solo instrumento resolvería el paro español y la inflación alemana: demasiado bueno para ser verdad, como se verá en la valoración (\ref{sec:valoracion-amo}).
+\end{itemize}
+\begin{figuracaja}
+\caption{El ajuste con moneda propia: la depreciación devuelve la demanda a su sitio}\label{fig:mundell-devaluacion}
+\grafico[0.8\textwidth]{mundell-devaluacion}
+\fuente{elaboración propia a partir de \textcite{DeGrauwe2022Economics}.}
+\end{figuracaja}
+\end{anotaciones}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Los países con salarios flexibles o con trabajo móvil entre ellos pueden compartir moneda; entre los que no los tienen, mejor tipos de cambio flexibles.
+\item Los 2 mecanismos corrigen el paro y el déficit exterior del país de la perturbación negativa (España); en el de la positiva (Alemania), el efecto sobre los precios depende de cuánto suban sus salarios.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Perturbaciones transitorias y sincronía de los ciclos}: la actividad alterna expansiones y recesiones.
+  \begin{itemize}
+  \item Si los ciclos de los socios están sincronizados, la política monetaria común sirve a todos («una talla para todos», \emph{one size fits all}): cuanto mayor es la sincronía, menor es el coste de la unión.
+  \item Si no lo están, un país en recesión convive con otro en expansión y el tipo de interés común no conviene a ninguno. Al ser una perturbación transitoria, no compensa ajustar precios y salarios ni emigrar: lo que importa es cómo se financia la recesión.
+  \end{itemize}
+\item \textcite{DeGrauwe2022Economics} distingue 2 escenarios, según cómo reaccionen los mercados de deuda:
+  \begin{itemize}
+  \item \emph{benigno}: si los inversores confían en que España pagará su deuda (que ha subido con la recesión), compran la nueva deuda española sin pedir más interés y retiran parte de la alemana. Los mercados de capitales llevan renta del país en expansión al país en recesión y estabilizan;
+  \item \emph{maligno}: si desconfían, venden bonos españoles y compran alemanes, sube la prima de riesgo y sale liquidez de España hacia Alemania, lo contrario de lo que haría falta. La recesión se agrava, y el miedo a que España no pueda pagar se cumple a sí mismo: los mercados amplifican el ciclo.\footnote{Con monedas propias, la salida de capitales depreciaría la peseta y apreciaría el marco: la demanda española subiría y la alemana bajaría, y la dinámica se frenaría sola.}
+  \end{itemize}
+\item El escenario maligno es la \emph{fragilidad} de una unión monetaria sin prestamista de última instancia para los Estados, que desarrolla el apartado~\ref{sec:incompletas}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{La movilidad del trabajo es menor en Europa que en Estados Unidos}: allí, tras una perturbación regional, el ajuste se hace sobre todo con la emigración \parencite{BlanchardKatz1992Regional}; en Europa, durante los primeros años se hace con la tasa de actividad y no con la migración \parencite{DecressinFatas1995Regional}.
+\item La movilidad, aunque libre, es baja: unos 10 millones de ciudadanos de la UE en edad de trabajar viven en otro Estado miembro, menos del 4~\% de la población de 20 a 64 años \parencite{Eurostat2026MigrPop}. Pesan la lengua, la vivienda y el reconocimiento de títulos.
+\item Y la libre circulación tiene grietas: desde 2015 varios países han vuelto a controlar sus fronteras interiores por la inmigración irregular y la seguridad, y en noviembre de 2026 lo hacían 8 del espacio Schengen, entre ellos Alemania y Francia \parencite{CE2026ControlesSchengen}; la reforma del Código de fronteras Schengen de 2024 permite mantenerlos hasta 3 años \parencite{UE2024Reglamento1717}.
+\item \emph{La flexibilidad salarial} sigue siendo una asignatura pendiente en el sur. En su carta del 5 de agosto de 2011 al presidente del Gobierno, el BCE pidió a España descentralizar la negociación colectiva y suprimir las cláusulas que ligan los salarios a la inflación \parencite{BCE2011CartaEspana}; 2 días después anunció que aplicaría activamente su programa para los mercados de valores (en la práctica, compró deuda española e italiana) \parencite{BCE2011Declaracion} \vertema{4.A.16}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \autor{Mundell} explica bien por qué los costes nacen de las perturbaciones \emph{asimétricas}, pero mira solo el ajuste por el trabajo.
+\item Si los salarios no se mueven y el trabajo no emigra, queda otra salida: repartir el golpe entre los socios. Es lo que miran los 2 criterios siguientes.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{\autor{Kenen} (1969): integración fiscal}\label{sec:kenen-fiscal}
+
+\begin{itemize}
+\item \emph{Idea}: un presupuesto común para toda la unión hace de seguro frente a las perturbaciones asimétricas \parencite{Kenen1969Theory}.
+\item \emph{Mecanismo}: centralizar el presupuesto tendría 2 consecuencias:
+  \begin{itemize}
+  \item un \emph{mecanismo asegurador}: ante una perturbación asimétrica, el presupuesto común lleva recursos automáticamente al país golpeado (menos impuestos que paga, más prestaciones que recibe), y reduce el coste de renunciar a la política monetaria propia;\footnote{En el federalismo fiscal se distinguen 3 funciones de un presupuesto común: \emph{igualadora}, reducir las diferencias de renta entre regiones (en la UE, la política de cohesión) \vertema{3.B.40}; \emph{estabilizadora ante perturbaciones simétricas}, con los estabilizadores automáticos del conjunto; y \emph{aseguradora ante perturbaciones asimétricas}, con transferencias automáticas hacia la región golpeada. En el ejemplo, que parte del superávit que el auge da a Alemania financie el déficit que la recesión da a España; sin integración fiscal, es inviable políticamente. \textcite{Eichengreen1990One} estudia estas funciones en el federalismo fiscal de Estados Unidos como referencia para Europa.}
+  \item un \emph{mecanismo de protección}: la deuda de los gobiernos nacionales pasa a ser deuda de la unión. Desaparecen los movimientos de capital desestabilizadores de un mercado de bonos a otro, y el gobierno de la unión se endeuda en una moneda que controla, así que se evitan las crisis de liquidez.
+  \end{itemize}
+\item \emph{Límites}: un federalismo fiscal pleno es casi imposible entre Estados soberanos:
+  \begin{itemize}
+  \item cada Estado perdería también su última política de estabilización, la fiscal;
+  \item crearía \concepto{riesgo moral}: si un país sabe que en la recesión recibirá transferencias, tiene menos prisa por corregir sus desequilibrios. Eso podría llevar a transferencias grandes y permanentes de unos países a otros, y los que pagan se opondrían.\footnote{La zona del euro eligió la disciplina fiscal y no la integración fiscal. Los valores de referencia del 3~\% del PIB para el déficit y el 60~\% para la deuda siguen en el Tratado \parencite{UE2016Protocolo12}, pero desde 2024 la regla operativa es una senda de gasto primario neto a 4-7 años, fijada a partir de la sostenibilidad de la deuda de cada país \parencite{UE2024Reglamento1263} \vertema{3.B.45}.}
+  \end{itemize}
+\item \emph{¿Cuánto asegura?} En Estados Unidos, el Gobierno federal absorbe el 13~\% de las perturbaciones de la producción de cada estado \parencite{AsdrubaliSorensenYosha1996Channels}. En la zona del euro el presupuesto común es pequeño: en 2026 la UE gasta 190.100 millones de euros, en torno al 1~\% de su PIB \parencite{PE2025Presupuesto2026,Eurostat2026Nama10gdp}, frente al 23~\% del PIB del Gobierno federal de Estados Unidos \parencite{CBO2026MBR} \vertema{3.B.37}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{\autor{Ingram} (1959, 1973): integración financiera}\label{sec:ingram}
+
+\begin{itemize}
+\item \emph{Idea}: el seguro también puede ser privado y pasar por los mercados financieros \parencite{Ingram1959State,Ingram1973Case}.
+\item \emph{Mecanismo}: volvamos a España y Alemania con mercados financieros plenamente integrados.
+  \begin{itemize}
+  \item Con la perturbación, las empresas españolas pierden y sus acciones bajan. Como los alemanes también tienen acciones españolas, pagan parte de la caída de la actividad en España; y los españoles participan de la subida de las acciones alemanas.
+  \item Lo mismo vale para los bonos y el crédito: los flujos de capital financian los desequilibrios temporales.
+  \end{itemize}
+\item \emph{Frente al seguro público}: reduce el riesgo moral y deja la política fiscal para estabilizar.
+\item \emph{Límites}: falla cuando más se necesita, porque los inversores prefieren los activos de su país (\emph{sesgo doméstico}) y los flujos de crédito se pueden dar la vuelta en una crisis; y solo asegura a quien tiene una cartera diversificada: los parados españoles sin activos alemanes no están asegurados.
+\item \emph{¿Cuánto asegura?} En Estados Unidos los mercados de capitales absorben el 39~\% de las perturbaciones de cada estado y el crédito el 23~\%, más que el presupuesto federal; queda sin suavizar el 25~\% \parencite{AsdrubaliSorensenYosha1996Channels}. En la zona del euro ese seguro privado es menor, aunque el BCE ve mejoras desde 2022 \parencite{BCE2026IntegracionFinanciera}: de ahí la unión de los mercados de capitales \vertema{3.B.44}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{\autor{Kenen} (1969): diversificación productiva}\label{sec:kenen-diversificacion}
+
+\begin{itemize}
+\item \emph{Idea}: pasamos de cómo repartir el golpe a cuándo es raro que el golpe sea asimétrico. En zonas con una producción muy diversificada, los ajustes cambiarios no son ni necesarios, ni eficientes, ni deseables, porque una perturbación negativa en un sector se compensa con los demás \parencite{Kenen1969Theory}.
+\item \emph{Mecanismo}: un país diversificado exporta muchos productos distintos. Salvo ante perturbaciones que afectan a todo, unas exportaciones van bien mientras otras van mal: sus exportaciones son más estables, presionan menos sobre la balanza de pagos y el tipo de cambio, y el país tolera mejor un tipo fijo.
+\item \emph{En la zona del euro}, en general, sí: las grandes economías son diversificadas; las excepciones son pequeñas.
+\item Es la intuición que \autor{Krugman} (1993) pondrá en duda: la integración puede reducir la diversificación (\ref{sec:krugman}).
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{\autor{Magnifico} (1971): propensiones a la inflación parecidas}\label{sec:magnifico}
+
+\begin{itemize}
+\item \emph{Idea}: 2 o más países pueden compartir moneda si tienen \concepto{propensiones a la inflación} parecidas; si no, el tipo real se mueve aunque el nominal esté fijo, y hace falta ajustar el tipo de cambio para compensar las pérdidas de competitividad \parencite{Magnifico1971European}.
+\item \emph{Mecanismo}: con $q\equiv E\,P^*/P$, en tasas de variación,
+  \begin{equation}
+  \gamma_q\simeq\underbrace{\gamma_E}_{=\,0\ \text{en la unión}}+\gamma_{P^*}-\pi
+  \quad\Longrightarrow\quad \gamma_q\simeq\gamma_{P^*}-\pi,
+  \label{eq:magnifico}
+  \end{equation}
+  donde $\gamma_{P^*}$ es la inflación de los socios.\footnote{Se escribe $\gamma_{P^*}$ y no $\pi^*$ porque en esta exposición $\pi^*$ es el objetivo de inflación del banco central (\ref{sec:credibilidad}). Con subíndice, $\gamma$ es siempre una tasa de variación.} Un país con más inflación que sus socios se \emph{aprecia} en términos reales año tras año, sin poder devaluar \vertema{3.B.11}. Si las inflaciones son parecidas, los desequilibrios externos entre los socios son menores y cuesta menos renunciar a la política monetaria propia.
+\item \emph{Las instituciones del mercado de trabajo}: con la misma perturbación de oferta, la forma de negociar los salarios decide cuánto suben los salarios y los precios en cada país, y crea diferenciales de inflación aunque la perturbación sea común \parencite{BrunoSachs1985Economics}.
+  \begin{itemize}
+  \item \textcite{BrunoSachs1985Economics}: ante una perturbación de oferta (el petróleo en los 70), un sistema \emph{centralizado} interioriza que pedir más salario nominal solo trae más inflación y modera sus peticiones; en uno \emph{descentralizado}, cada sindicato pesa poco en la inflación y todos acaban pidiendo más.\footnote{Pasa como en un estadio de fútbol: si un aficionado se levanta, ve mejor el partido; si se levantan todos, nadie ve mejor y todos están más incómodos, y una vez de pie, nadie quiere ser el primero en sentarse, porque dejaría de ver el partido y los demás ni lo notarían.}
+  \item \textcite{CalmforsDriffill1988} añaden el otro extremo: con negociación de empresa, una subida excesiva cuesta empleo en la propia empresa y también modera. La relación entre centralización y salario real (o paro) es una \concepto{joroba} (gráfico~\ref{fig:joroba}): lo peor es el nivel sectorial, que no interioriza ni la inflación (como el centralizado) ni la pérdida de empleo de la empresa (como el de empresa).
+  \item Con datos recientes, lo que cuenta es la \emph{coordinación} entre niveles más que la centralización \parencite{OCDE2019Negotiating} \vertema{3.A.27}.
+  \item En una unión monetaria, donde el tipo de cambio ya no ajusta, esa diferencia es una perturbación asimétrica de costes, con los problemas de ajuste de \autor{Mundell}.
+  \end{itemize}
+\item \emph{En la zona del euro}, a medias. Los criterios de convergencia exigen una inflación parecida a la de los países más estables antes de entrar.\footnote{Para entrar en el euro, la inflación de un país en el año anterior no puede superar en más de 1,5 puntos la media de los 3 Estados miembros con mejor comportamiento en estabilidad de precios; la Comisión y el BCE dejan fuera los valores atípicos \parencite{UE2016Protocolo13} \vertema{3.B.43}.} Pero en los 10 primeros años del euro los precios subieron un 37~\% en España y un 18~\% en Alemania (un 24~\% en la zona), y el tipo de cambio real español se apreció sin poder devaluar; entre 2008 y 2019 la diferencia cambió de signo (un 13~\% frente a un 15~\%), la devaluación interna \parencite{Eurostat2026HICPaind} \vertema{3.B.11}. Con la crisis energética la dispersión volvió: en 2022 la inflación fue del 5,9~\% en Francia y del 19,4~\% en Estonia.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La hipótesis de la joroba de \autor{Calmfors} y \autor{Driffill}: salario real (y paro) según el grado de centralización de la negociación}\label{fig:joroba}
+\grafico[0.55\textwidth]{joroba}
+\fuente{elaboración propia a partir de \textcite{CalmforsDriffill1988}.}
+\end{figure}
+
+% ..........................................................................
+\subsubsection{\autor{McKinnon} (1963): grado de apertura}\label{sec:mckinnon}
+
+\begin{itemize}
+\item \emph{Idea}: queda la pregunta de cuánto se pierde de verdad al renunciar al tipo de cambio. \textcite{McKinnon1963Optimum} responde que, en una economía muy abierta, poco. La apertura se mide por el peso de los bienes comerciables (exportables e importables) frente a los no comerciables.
+\item \emph{Mecanismo}: cuanto más abierta, menos falta la política monetaria propia, por 2 vías:
+  \begin{itemize}
+  \item \emph{cuesta menos corregir un déficit exterior con la política fiscal}. Un recorte del gasto baja la renta y, con ella, las importaciones. Con el multiplicador de la economía abierta y las exportaciones netas $\mathrm{XN}=x\,Y^*-m\,Y+\nu\,q$ \vertema{3.A.32},
+    \begin{equation}
+    \Delta Y=\frac{\Delta\overline{G}}{1-c\,(1-t)+m},\qquad
+    \Delta\mathrm{XN}=-m\,\Delta Y\quad\Longrightarrow\quad
+    \frac{\Delta Y}{\Delta\mathrm{XN}}=-\frac{1}{m}.
+    \label{eq:mckinnon}
+    \end{equation}
+    Cada euro de mejora del saldo exterior cuesta $1/m$ euros de renta: cuanto mayor es la propensión a importar $m$, menos renta hay que sacrificar y menos falta el tipo de cambio;\footnote{Por cada euro de recorte, el saldo mejora en $m/[1-c\,(1-t)+m]$, que crece con $m$: su derivada es $[1-c\,(1-t)]/[1-c\,(1-t)+m]^2>0$.}
+  \item \emph{la devaluación es menos eficaz}: cuanto más pesan en la cesta los bienes importados y los comerciables, más sube el índice de precios de consumo con una devaluación. Si los salarios lo siguen, la ganancia de competitividad se borra antes; y más aún si se importan muchos insumos intermedios.
+  \end{itemize}
+\item \emph{Implicación}: un país en el que los bienes comerciables pesan mucho en la producción puede compartir moneda; si pesan poco, mejor que no fije su tipo de cambio. Por eso las economías pequeñas y abiertas son las más interesadas en las uniones monetarias.
+\item \emph{En la zona del euro} el criterio se cumple en buena medida: casi la mitad del comercio de bienes de los países del euro es con otros países del euro (el 47,6~\% de sus exportaciones en 2025, frente al 52-53~\% de 2002-2007) \parencite{Eurostat2026ExtStEasitc}, y son economías muy abiertas: exportaciones e importaciones suman el 69~\% del PIB en España y el 78~\% en Alemania \parencite{Eurostat2026Nama10gdp}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Condiciones para constituir un área monetaria óptima}\label{sec:condiciones}
+
+\begin{itemize}
+\item La teoría tradicional fija las condiciones que deben cumplir los países para que la unión les compense con el menor coste. Se ha usado para decidir si un país debía entrar en una unión y también para estudiar cuándo un socio podría preferir salir.
+\item La teoría tradicional se puede leer como un árbol de preguntas, de la apertura y la diversificación a la flexibilidad, la movilidad y el apoyo político (anexo~\ref{anexo:logica-amo}).
+\item \textcite{DeGrauwe2022Economics} reduce los criterios a 3 dimensiones:
+  \begin{itemize}
+  \item \concepto{simetría} de las perturbaciones: las de cada socio, bastante correlacionadas con las de los demás;
+  \item \concepto{flexibilidad}: mercados de trabajo capaces de ajustarse a las perturbaciones asimétricas una vez dentro;
+  \item \concepto{integración} con los socios, comercial y financiera, de la que salen los beneficios de usar la misma moneda.
+  \end{itemize}
+\item \emph{La línea AMO} (gráfico~\ref{fig:amo-flexibilidad}): las combinaciones mínimas de simetría y flexibilidad con las que los costes y los beneficios de la unión se igualan.
+  \begin{itemize}
+  \item Con la simetría en el eje vertical y la flexibilidad en el horizontal, tiene pendiente negativa: con menos simetría hay más perturbaciones asimétricas, y hace falta más flexibilidad para compensarlas.
+  \item Por encima de la línea, los beneficios de la unión superan a los costes; por debajo, al revés. Con los datos de los apartados siguientes, la zona del euro queda por debajo de la línea AMO (perturbaciones menos simétricas y mercados menos flexibles) y Estados Unidos, por encima.
+  \item Lo mismo pasa con la integración en lugar de la flexibilidad: con más comercio mutuo, la unión compensa con menos simetría. Las 3 dimensiones juntas forman una superficie AMO; el apartado~\ref{sec:endogeneidad} usa el plano simetría-integración.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La línea AMO: combinaciones mínimas de simetría y flexibilidad para que una unión monetaria compense}\label{fig:amo-flexibilidad}
+\grafico[0.6\textwidth]{amo-flexibilidad}
+\fuente{elaboración propia a partir de \textcite{DeGrauwe2022Economics}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración}\label{sec:valoracion-amo}
+
+\begin{itemize}
+\item \emph{Aportación}: una lista de criterios útil para juzgar una unión, que pesó mucho en el diseño del euro.
+\item \emph{El problema de la indeterminación}: los criterios no tienen un marco común y pueden apuntar en direcciones opuestas; un país muy abierto, que gana con la unión, puede tener una inflación alta, que la desaconseja \parencite{Tavlas1994Theory}.
+\item \emph{Las críticas de los años 80} rebajan los costes que la teoría tradicional atribuía a la unión \parencite{DeGrauwe2022Economics}:
+  \begin{itemize}
+  \item \emph{la política monetaria no mueve la producción a largo plazo}: con la curva de \autor{Phillips} vertical, una devaluación solo da competitividad mientras los salarios no la alcanzan, y su eficacia depende de que se cumpla la condición de \autor{Marshall}-\autor{Lerner} y de que no haya indexación \vertema{3.A.28} \vertema{3.B.12};
+  \item \emph{los diferenciales de inflación pueden ser de equilibrio}: por el efecto \autor{Balassa}-\autor{Samuelson}, los países que convergen tienen más inflación sin perder competitividad \vertema{3.B.14};
+  \item \emph{el tipo de cambio puede ser fuente de perturbaciones}: a menudo, los países que conservan una política cambiaria y monetaria propia descubren que es más una fuente de desequilibrios que un instrumento de estabilización; y la discrecionalidad tiene un sesgo inflacionista, así que renunciar a ella es una ganancia de credibilidad (\ref{sec:credibilidad}).
+  \end{itemize}
+\item \emph{\autor{Mundell} contra \autor{Mundell}}: el propio \autor{Mundell} defendió después que una moneda común \emph{reparte} el riesgo, porque los residentes de cada país tienen activos de todos y amortiguan juntos las perturbaciones \parencite{Mundell1973Uncommon}. \textcite{McKinnon2004Optimum} llama «\autor{Mundell} I» a la teoría escéptica de 1961 y «\autor{Mundell} II» a esta, que apoya la unión.
+\item \emph{Lo que deja abierto}: los criterios se tratan como datos fijos. ¿Y si la propia unión los cambia? Y a los costes ¿no hay que restarles los beneficios? Son las 2 preguntas del apartado siguiente.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Análisis coste-beneficio: la segunda fase de las AMO}\label{sec:coste-beneficio}
+\minutos{9}
+
+\begin{itemize}
+\item Una vez estudiados los costes, pasamos a ponerlos frente a los beneficios, que es lo que hizo la teoría desde finales de los 80.
+\item \emph{Conclusión anticipada}: el coste baja y el beneficio sube con la integración, así que la unión compensa a partir de un grado de integración. Y los criterios no son fijos: la unión puede crear las condiciones o destruirlas. La evidencia apunta a lo primero, con matices; y el beneficio más discutido, la credibilidad, explica por qué Italia o España quisieron entrar.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La emergencia de la segunda fase}\label{sec:segunda-fase}
+
+\begin{itemize}
+\item Tras las aportaciones de los años 60 y 70, en los 80 hay pocas: el proyecto de unión monetaria europea pierde impulso.
+\item En los 90, con el Informe Delors y Maastricht, el debate vuelve con 2 novedades \parencite{Mongelli2002New}:
+  \begin{itemize}
+  \item el \concepto{análisis coste-beneficio}: la decisión depende de cómo se ponderen los costes y los beneficios. Como las ponderaciones cambian entre países y con el tiempo, no hay una regla general, pero sí una forma de ordenarlos;
+  \item la \emph{batalla de los paradigmas} sobre si los criterios son \emph{endógenos}: la \concepto{hipótesis de la especialización} de \textcite{Krugman1993Lessons} frente a la \concepto{hipótesis de la endogeneidad} de \textcite{FrankelRose1998Endogeneity} (\ref{sec:endogeneidad}).
+  \end{itemize}
+\item \emph{Costes y beneficios frente a la apertura} (gráfico~\ref{fig:costes-beneficios}):
+  \begin{itemize}
+  \item los beneficios crecen con el comercio que el país hace con sus socios: más transacciones en la misma moneda;
+  \item los costes caen con él, por el argumento de \autor{McKinnon}: cuanto más abierta, menos eficaz es el tipo de cambio;
+  \item a partir de un umbral de apertura $T^*$, la unión compensa \parencite{DeGrauwe2022Economics}. El umbral está más a la izquierda si la política monetaria es poco eficaz (visión monetarista) y más a la derecha si los salarios son rígidos y el trabajo poco móvil (visión keynesiana, la de \autor{Mundell}).
+  \end{itemize}
+\item \emph{Costes y beneficios frente al tamaño}: una moneda es más útil cuantos más la usan, pero cuanto mayor y más diversa es el área, más frecuentes son las perturbaciones asimétricas. Ya \textcite{Mundell1961Theory} advertía que la utilidad del dinero limita el número de monedas: el área óptima no es ni el mundo entero ni cada región.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Costes y beneficios de una unión monetaria según la apertura frente a los socios}\label{fig:costes-beneficios}
+\grafico[0.6\textwidth]{costes-beneficios}
+\fuente{elaboración propia a partir de \textcite{DeGrauwe2022Economics}. A la derecha del umbral $T^*$, los beneficios superan a los costes; con costes «keynesianos» el umbral está más a la derecha.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Debate acerca de la endogeneidad de los criterios}\label{sec:endogeneidad}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿se cumplen los criterios \emph{ex post}, una vez formada la unión, aunque no se cumplieran \emph{ex ante}? ¿Hay fuerzas que acercan a los países a un área óptima o que los alejan de ella?
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{La hipótesis de la especialización de \autor{Krugman} (1993)}\label{sec:krugman}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Krugman1993Lessons} compara Europa con Estados Unidos: los estados de Estados Unidos, con un mercado integrado desde hace mucho, están mucho más especializados que los países europeos, y sufren crisis regionales fuertes, como la de Massachusetts y el resto de Nueva Inglaterra a finales de los 80.
+\item Si el mercado único y el euro integran Europa como Estados Unidos, las regiones europeas se especializarán, las perturbaciones sectoriales se volverán nacionales y, sin tipo de cambio, más costosas.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Se apoya en la nueva geografía económica: el modelo centro-periferia de \textcite{Krugman1991Increasing}, con rendimientos crecientes, costes de comerciar y movilidad de los factores, en el que la industria se puede concentrar en una región aunque no haya diferencias de partida entre ellas \vertema{3.B.6}.\footnote{Se llama \emph{nueva} geografía económica porque \textcite{Ohlin1933Interregional} ya hablaba de teoría de la localización, con los costes de transporte en el comercio interior e internacional; \autor{Johann Heinrich von Thünen} fue pionero en la localización de las ciudades y \autor{Harold Hotelling}, en la de las empresas. La retomaron \textcite{FujitaKrugmanVenables1999Spatial}. \textcite{Krugman1991Increasing} define la geografía económica como el estudio de la localización de la producción en el espacio: la rama de la economía que se ocupa de dónde ocurren las cosas unas en relación con otras.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Fuerzas de aglomeración} (centrípetas):
+  \begin{itemize}
+  \item el efecto del mercado doméstico: las empresas se instalan donde está la demanda, y la demanda sigue a los trabajadores;
+  \item el del coste de la vida: donde hay más variedades, el índice de precios es menor y el salario real mayor;
+  \item las \concepto{economías de escala externas} de \autor{Alfred Marshall} (proveedores especializados, un mercado de trabajo común y difusión del conocimiento) y el aprendizaje, que bajan los costes de toda la industria cuanto más produce.
+  \end{itemize}
+\item \emph{Fuerzas de dispersión} (centrífugas): los factores inmóviles (la tierra y, en Europa, buena parte del trabajo) y la competencia entre las empresas de una misma región.
+\item \emph{El resultado}: con costes de comerciar altos, la industria se reparte; cuando caen por debajo de un umbral, se concentra (el diagrama del \emph{tomahawk}, anexo~\ref{anexo:especializacion}).
+\item \emph{La aplicación a la unión monetaria}: la moneda común elimina el riesgo de tipo de cambio y los costes de cambiar de moneda, es decir, abarata comerciar. Si se cruza el umbral, la industria se concentra en un centro y la periferia se especializa en otras actividades.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La unión haría que, \emph{ex post}, se incumpliera el criterio de diversificación de \autor{Kenen} (\ref{sec:kenen-diversificacion}): más especialización, perturbaciones más asimétricas y una unión menos deseable con el paso del tiempo.
+\item Lejos de crear sola las condiciones para ser óptima, la unión podría destruirlas.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item El modelo da por hecho que los trabajadores se trasladan a donde se concentra la industria, y en Europa cambian poco de país; y los centros industriales no tienen por qué respetar las fronteras: un \emph{cluster} puede extenderse por varios países, y entonces la especialización regional no se traduce en perturbaciones nacionales \parencite{DeGrauwe2022Economics}.
+\item Además, buena parte del comercio entre países europeos es intraindustrial, lo que apunta en la dirección contraria: la de \autor{Frankel} y \autor{Rose}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{La hipótesis de la endogeneidad de \autor{Frankel} y \autor{Rose} (1998)}\label{sec:frankel-rose}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Frente a \autor{Krugman}, la Comisión Europea sostenía que en Europa el comercio es sobre todo intraindustrial: más comercio no especializa a los países por sectores y hace más parecidas sus perturbaciones \parencite{CE1990OneMarket}.
+\item \textcite{FrankelRose1998Endogeneity} lo convierten en una hipótesis contrastable: los criterios de un área óptima son \emph{endógenos}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La unión elimina el riesgo de tipo de cambio: sin coberturas ni miedo a depreciaciones, comerciar e invertir en el socio es más barato y permite relaciones de largo plazo, también la inversión directa.
+\item El comercio entre los socios es sobre todo intraindustrial, así que las perturbaciones de demanda de un país se transmiten a los demás.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La unión aumenta el comercio, y el comercio sincroniza los ciclos.
+\item Con 30 años de datos de 20 países industrializados, los pares de países que comercian más entre sí tienen ciclos más correlacionados \parencite{FrankelRose1998Endogeneity}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Un país puede cumplir los criterios \emph{ex post} aunque no los cumpla \emph{ex ante}: juzgar una unión con los datos de antes de formarla subestima sus ventajas. Es una aplicación de la crítica de \autor{Lucas}: las relaciones estimadas cambian cuando cambia el régimen \vertema{3.A.6}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Los ciclos están bastante sincronizados: un factor común explica más del 65~\% de la varianza del crecimiento de los países del euro \parencite{BCE2018Sincronizacion}. Un metaanálisis encuentra que la sincronía de los ciclos europeos subió tras 1999, también fuera del euro, pero más dentro \parencite{CamposFidrmucKorhonen2019}.
+\item Pero hay excepciones: el crecimiento de Grecia apenas se movió con el de la zona entre 1999 y 2019 (correlación de 0,3-0,5, frente a 0,8 en España; cálculo propio con datos de Eurostat, \cite{Eurostat2026Nama10gdp}).
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \textcite{DeGrauwe2022Economics} concluye que la teoría favorece la visión de la Comisión, pero que la pregunta es empírica, y la evidencia sobre la especialización es mixta.
+\item \emph{¿Cuál pesa más?} En el plano simetría-integración (gráfico~\ref{fig:endogeneidad}), la integración lleva a los países hacia la derecha; con \autor{Frankel} y \autor{Rose}, también hacia arriba (más simetría), y cruzan la línea AMO; con \autor{Krugman}, hacia abajo (menos simetría), y pueden no cruzarla nunca.
+\item Si la unión cambia a los países, juzgarla antes de formarla no basta: hay que mirar la evidencia.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La endogeneidad de los criterios: \autor{Krugman} frente a \autor{Frankel} y \autor{Rose} en el plano simetría-integración}\label{fig:endogeneidad}
+\grafico[0.6\textwidth]{endogeneidad}
+\fuente{elaboración propia a partir de \textcite{DeGrauwe2022Economics}, \textcite{Krugman1993Lessons} y \textcite{FrankelRose1998Endogeneity}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Evidencia empírica}\label{sec:evidencia}
+
+\begin{itemize}
+\item \emph{Simetría}: con un modelo que separa las perturbaciones de oferta y de demanda, \textcite{BayoumiEichengreen1993Shocking} encuentran un \emph{centro} (Alemania y sus vecinos) con perturbaciones tan parecidas como las de las regiones de Estados Unidos y una \emph{periferia} con perturbaciones más asimétricas y un ajuste más lento. Desde 1999 los ciclos se han acercado (\ref{sec:frankel-rose}).
+\item \emph{Comercio}: un estudio muy citado de \textcite{Rose2000One} encontró que los países con la misma moneda comerciaban entre sí unas 3 veces más que con los demás. El metaanálisis de \textcite{RoseStanley2005Meta}, con 754 estimaciones de 34 estudios, sitúa el efecto entre un 30 y un 90~\%. \textcite{GlickRose2016Currency} rebajan la cifra con datos del euro, y un metaanálisis posterior lo encuentra pequeño y dependiente del método \parencite{Polak2019Euro} \vertema{3.B.10}.
+\item \emph{Movilidad y ajuste}: menores en Europa que en Estados Unidos (\ref{sec:mundell}).
+\item \emph{Seguro}: el reparto de riesgos por los mercados es mucho menor en la zona del euro que entre los estados de Estados Unidos (\ref{sec:ingram}).
+\item \emph{Flexibilidad}: ¿empuja el euro a las reformas? \textcite{AlesinaArdagnaGalasso2011Euro} encuentran que su adopción aceleró la desregulación de los mercados de bienes, pero no la del mercado de trabajo, aunque la preparación para entrar vino acompañada de moderación salarial.
+\item \emph{Desequilibrios}: entre 1999 y 2008 la periferia acumuló inflación, crédito y déficits exteriores; su corrección, sin tipo de cambio, fue una devaluación interna larga \vertema{3.B.11}.
+\item \emph{En resumen}: la zona del euro cumple el criterio del comercio, a medias los de simetría, inflación e integración financiera y no los de movilidad y seguro fiscal (tabla~\ref{tab:zona-euro-amo}).
+\end{itemize}
+
+\begin{anotaciones}[unbreakable]
+\textbf{¿Es la zona del euro un área monetaria óptima?} (para consultar; no se canta).
+\begin{tablacaja}
+\caption{¿Es la zona del euro un área monetaria óptima? Los criterios, uno a uno}\label{tab:zona-euro-amo}
+\footnotesize\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.22\textwidth}>{\centering\arraybackslash}m{0.14\textwidth}>{\raggedright\arraybackslash}m{0.50\textwidth}}
+\toprule
+\textbf{Criterio (autor)} & \textbf{¿Se cumple?} & \textbf{Dato}\\
+\midrule
+Apertura e integración comercial (\autor{McKinnon}) & \textcolor{tceeverde}{Sí} & Casi la mitad del comercio de bienes de los países del euro es entre ellos (el 47,6~\% de las exportaciones en 2025; el 52-53~\% en 2002-2007) \parencite{Eurostat2026ExtStEasitc}; apertura del 69~\% del PIB en España y del 78~\% en Alemania \parencite{Eurostat2026Nama10gdp}\\
+Diversificación productiva (\autor{Kenen}) & \textcolor{tceeverde}{En general, sí} & Grandes economías diversificadas; las excepciones son pequeñas (sin un indicador oficial sencillo y comparable)\\
+Simetría y sincronía de los ciclos & \textcolor{tceedorado}{A medias} & Un factor común explica más del 65~\% de la varianza del crecimiento \parencite{BCE2018Sincronizacion}; Grecia, con una correlación de 0,3-0,5 con la zona en 1999-2019, frente a 0,8 en España (cálculo propio con datos de Eurostat, \cite{Eurostat2026Nama10gdp})\\
+Inflación parecida (\autor{Magnifico}) & \textcolor{tceedorado}{A medias} & En 1999-2008, precios $+$37~\% en España y $+$18~\% en Alemania; en 2025, del 0,8~\% (Chipre) al 4,8~\% (Estonia) \parencite{Eurostat2026HICPaind}\\
+Movilidad del trabajo (\autor{Mundell}) & \textcolor{tceerojo}{No} & Unos 10 millones de ciudadanos de la UE de 20 a 64 años viven en otro Estado miembro, menos del 4~\% \parencite{Eurostat2026MigrPop}; 8 países Schengen con controles en sus fronteras interiores en noviembre de 2026 \parencite{CE2026ControlesSchengen}\\
+Integración financiera (\autor{Ingram}) & \textcolor{tceedorado}{A medias} & En Estados Unidos los mercados de capitales absorben el 39~\% de las perturbaciones de cada estado \parencite{AsdrubaliSorensenYosha1996Channels}; en el euro, mejora desde 2022 según el BCE, sin cifra comparable \parencite{BCE2026IntegracionFinanciera}\\
+Transferencias fiscales (\autor{Kenen}) & \textcolor{tceerojo}{No} & Presupuesto de la UE en torno al 1~\% del PIB en 2026 \parencite{PE2025Presupuesto2026}, frente al 23~\% del Gobierno federal de Estados Unidos \parencite{CBO2026MBR}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia con datos de Eurostat, el BCE, la Comisión Europea, el Parlamento Europeo y la Oficina Presupuestaria del Congreso de Estados Unidos.}
+\end{tablacaja}
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{Otros beneficios y costes de la integración monetaria}\label{sec:beneficios}
+
+\begin{itemize}
+\item Hasta aquí, la teoría ha mirado sobre todo los costes y el comercio. El análisis coste-beneficio pone enfrente todo lo que se gana (tabla~\ref{tab:beneficios-costes}), y el beneficio que más pesó en la decisión de muchos países fue la credibilidad.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Beneficios de eficiencia (microeconómicos)}\label{sec:beneficios-micro}
+
+\begin{itemize}
+\item \emph{Menos costes de transacción}: desaparecen las comisiones de cambio y las actividades ligadas a ellas (cobertura, gestión de varias monedas). La Comisión Europea calculó en 1990 que suprimir los cambios de moneda ahorraría en torno al 0,4~\% del PIB de la Comunidad, menos en los países con sistemas financieros desarrollados \parencite{CE1990OneMarket}.
+\item \emph{Transparencia de precios}: con una sola unidad de cuenta, los precios se comparan mejor, y aumentan el arbitraje, la integración de los mercados y la competencia.
+\item \emph{Menos incertidumbre cambiaria}: más comercio y más inversión entre los socios y, con ellos, más crecimiento y empleo (\ref{sec:evidencia}).
+\item \emph{Menos reservas}: los bancos centrales no necesitan intervenir para defender paridades dentro de la unión.
+\item \emph{Integración financiera}: un mercado de capitales mayor y más líquido, con mejor reparto del riesgo.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Beneficios macroeconómicos: la credibilidad}\label{sec:credibilidad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La política monetaria a la que se renuncia no siempre es un activo. Si el banco central nacional tiene poca credibilidad, renunciar a él puede \emph{bajar} la inflación sin subir el paro.
+\item Pegatina: «Arrímate a los buenos y serás uno de ellos»: un país con fama de inflacionista que comparte moneda con uno creíble toma prestada su credibilidad.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Oferta}: la curva de \autor{Phillips} aumentada con expectativas, $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$, con $\alpha>0$: el paro solo baja de su tasa natural si la inflación sorprende \vertema{3.A.28}.
+\item \emph{Orden de las jugadas}: el público fija sus expectativas $\pi^e_t$ y después el banco central elige $\pi_t$, sin poder comprometerse antes.
+\item \emph{Objetivo del banco central}: minimizar una pérdida cuadrática, con un objetivo de inflación $\pi^*$ y $U^*<U^n$, es decir, quiere menos paro que el natural \parencite{BarroGordon1983Positive}:
+  $$\optim{\min}{\pi_t}{L_t=(U_t-U^*)^2+\gamma\,(\pi_t-\pi^*)^2}{U_t=U^n-\alpha\,(\pi_t-\pi^e_t)}$$
+  donde $\gamma$ es el peso de la inflación.\footnote{Aquí $\gamma$, sin subíndice, es el peso que el banco central da a la inflación; con subíndice ($\gamma_q$, $\gamma_E$, $\gamma_{P^*}$) es una tasa de variación. Las curvas de pérdida en el plano $(U,\pi)$ son elipses centradas en $(U^*,\pi^*)$: el conjunto de puntos mejores que uno dado es convexo; nunca son «cóncavas».}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Con discrecionalidad}, el público, racional, anticipa la inflación que el banco central elegirá. La economía acaba en el paro natural, $U_t=U^n$, y con una inflación mayor que el objetivo:
+  \begin{equation}
+  \pi^D=\pi^*+\frac{\alpha}{\gamma}\,(U^n-U^*)>\pi^*.
+  \label{eq:sesgo}
+  \end{equation}
+  Es el \concepto{sesgo inflacionista}: mayor cuanto menor es el peso $\gamma$ que la autoridad da a la inflación \vertema{3.A.36}.
+\item \emph{Gráficamente} (gráfico~\ref{fig:credibilidad}), los puntos van numerados en el orden en que se recorren:
+  \begin{itemize}
+  \item 0 = R, la regla: con $\pi^e=\pi^*$, la economía está en $(U^n,\pi^*)$;
+  \item 1 = T, la tentación: dada esa curva de \autor{Phillips}, el banco central prefiere sorprender, en la tangencia con su curva de pérdida, con menos paro y más inflación;
+  \item 2: el público lo anticipa y sube sus expectativas; la curva de \autor{Phillips} se desplaza hacia arriba y el paro vuelve a $U^n$ con más inflación;
+  \item 3: el banco central vuelve a optimizar sobre la nueva curva, y el proceso se repite;
+  \item la \concepto{función de reacción} une esas tangencias, la inflación que elige el banco central para cada expectativa; el equilibrio final, F = D (discreción), está donde corta a la vertical $U^n$: la inflación esperada es la elegida y no hay tentación de sorprender.
+  \end{itemize}
+\item \emph{La unión como solución}: si un país con $\gamma$ bajo (la Italia o la España de los 80) comparte banco central con uno de $\gamma'$ alto (la Alemania del Bundesbank), su inflación pasa a $\pi^*+(\alpha/\gamma')(U^n-U^*)$, menor, con el mismo paro natural. Es «atarse las manos» \parencite{GiavazziPagano1988Advantage}: en el gráfico~\ref{fig:credibilidad}, el equilibrio D baja por la vertical $U^n$ hacia R, porque el sesgo $(\alpha/\gamma')(U^n-U^*)$ es menor.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El sesgo inflacionista: de la regla, R, al equilibrio con discreción, F = D}\label{fig:credibilidad}
+\grafico[0.6\textwidth]{barro-gordon}
+\fuente{elaboración propia a partir de \textcite{BarroGordon1983Positive}. T: tentación; 2 y 3: ajuste de expectativas y nueva optimización; F: equilibrio final. Con un ancla creíble, D se acerca a R \parencite{GiavazziPagano1988Advantage}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Renunciar a la política monetaria propia con un tipo de cambio fijo frente a un país de baja inflación o con una unión monetaria baja la inflación sin coste en paro natural: desaparece el sesgo inflacionista, no el \emph{trade-off} de corto plazo.
+\item Fue el argumento de Italia y de España para entrar en el Sistema Monetario Europeo y en la unión económica y monetaria con el marco alemán como ancla \vertema{3.B.43}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{¿Por qué una unión y no un tipo fijo?} Con tipo fijo, el país sigue teniendo moneda y puede devaluar por sorpresa, y el público lo anticipa: la paridad solo es creíble mientras defenderla cuesta menos que abandonarla.
+  \begin{itemize}
+  \item El 16 de septiembre de 1992, tras intervenciones masivas, el Reino Unido suspendió la participación de la libra en el mecanismo de cambios del Sistema Monetario Europeo \parencite{BoE1992Operation}; la peseta se devaluó varias veces entre 1992 y 1993 \parencite{EichengreenWyplosz1993Unstable} \vertema{3.B.17}.
+  \item Una unión monetaria sube mucho el coste de salir y, con él, la credibilidad.
+  \end{itemize}
+\item \emph{El banquero conservador}: delegar en un banco central más averso a la inflación que la sociedad reduce el sesgo, pero estabiliza menos la producción ante las perturbaciones de oferta \parencite{Rogoff1985Optimal}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item El beneficio es para el país de menos credibilidad; el de más credibilidad gana poco y exige garantías: un banco central independiente con la estabilidad de precios como objetivo prioritario \vertema{3.B.43}.
+\item La credibilidad importada se paga en flexibilidad: el país acepta la política monetaria del ancla aunque sus preferencias sean otras, que es justo el coste del apartado~\ref{sec:costes}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Beneficios geopolíticos}\label{sec:beneficios-geo}
+
+\begin{itemize}
+\item Una moneda de uso internacional da más peso en las negociaciones con terceros, ingresos de señoreaje frente al resto del mundo y la posibilidad de endeudarse en la propia moneda \vertema{3.B.43}.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Costes, además de la pérdida del tipo de cambio}\label{sec:costes-adicionales}
+
+\begin{itemize}
+\item \emph{Sin política monetaria nacional}: con tipos fijos entre los socios y libertad de capitales, la política monetaria propia desaparece (el trilema) \vertema{3.A.32}; la común responde a la media de la unión, no a cada país.
+\item \emph{Sin financiación monetaria}: el banco central común no puede financiar a los gobiernos. El señoreaje no se pierde: se reparte entre los socios según su participación en el capital del BCE; lo que se pierde es la posibilidad de recurrir al impuesto inflacionario \vertema{3.A.39}.
+\item \emph{Externalidades fiscales}: la política fiscal pasa a ser el único instrumento nacional, y la de cada país afecta a los demás (por el comercio, por los tipos de interés y por la confianza en la moneda común). Una política fiscal insostenible en un socio puede acabar afectando a la estabilidad de la unión, porque el riesgo de cada país se difumina en el de la moneda común. De ahí la disyuntiva entre unión fiscal y disciplina fiscal, y las reglas: los valores de referencia del 3~\% y el 60~\% del PIB, con una senda de gasto primario neto desde 2024 \parencite{UE2024Reglamento1263,UE2024Reglamento1264} \vertema{3.B.45}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Beneficios y costes de una unión monetaria}\label{tab:beneficios-costes}
+\small\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}m{0.3\textwidth}>{\raggedright\arraybackslash}m{0.6\textwidth}}
+\toprule
+\textbf{Tipo} & \textbf{Qué se gana o se pierde}\\
+\midrule
+\rowcolor{tceeazulpalido}\multicolumn{2}{l}{\textbf{Beneficios}}\\
+\textcolor{tceeverde}{Microeconómicos: eficiencia} & Menos costes de transacción, más transparencia de precios, menos incertidumbre cambiaria, menos reservas, mercados financieros más integrados\\
+\textcolor{tceeverde}{Macroeconómicos: credibilidad} & El país de poca credibilidad «se ata las manos» y baja su inflación sin más paro\\
+\textcolor{tceeverde}{Geopolíticos} & Más peso internacional, señoreaje frente al resto del mundo, deuda en la propia moneda\\
+\rowcolor{tceesalmon}\multicolumn{2}{l}{\textbf{Costes}}\\
+\textcolor{tceerojo}{Pérdida del tipo de cambio} & Sin instrumento frente a las perturbaciones asimétricas\\
+\textcolor{tceerojo}{Pérdida de la política monetaria propia} & La política común responde a la media de la unión\\
+\textcolor{tceerojo}{Sin financiación monetaria} & Sin impuesto inflacionario; la fiscal, único instrumento propio, con reglas\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{DeGrauwe2022Economics} y \textcite{BaldwinWyplosz2020Economics}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{¿Para quién son óptimas las áreas monetarias óptimas?}\label{sec:terceros}
+
+\begin{itemize}
+\item Un área monetaria óptima lo es para sus miembros; ¿y para el resto del mundo? Es el \concepto{problema de los terceros países}: la unión puede perjudicar a los que se quedan fuera.
+\item \textcite{Bayoumi1994Formal} lo muestra con un modelo de equilibrio general con bienes diferenciados: la unión reduce el bienestar de las regiones que no participan.
+  \begin{itemize}
+  \item El tipo de interés común y la menor flexibilidad salarial reducen la producción de la unión, y eso es un coste para sus miembros y también para el resto del mundo, que comercia con ella.
+  \item Los beneficios, en cambio, se los quedan los miembros.
+  \end{itemize}
+\item El resultado depende del modelo, pero el efecto sobre terceros hay que tenerlo en cuenta.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: frente a los costes del apartado~\ref{sec:costes}, la unión da beneficios que crecen con la integración, sobre todo el comercio y la credibilidad, y los criterios se pueden cumplir \emph{ex post}. Pero la crisis del euro mostró un coste que la teoría de las áreas óptimas no había previsto: la fragilidad de una unión monetaria sin unión bancaria ni fiscal. Es el objeto del último apartado.
+\end{itemize}
+
+% ==========================================================================
+\section{Las uniones monetarias incompletas y cómo completarlas}\label{sec:incompletas}
+\minutos{6,5}
+
+\begin{itemize}
+\item Tras los costes y los beneficios, pasamos a lo que la teoría de las áreas óptimas no había previsto y enseñó la crisis del euro.
+\item \emph{Conclusión anticipada}: una unión con moneda y banco central comunes, pero sin unión bancaria ni fiscal, es frágil, porque sus Estados se endeudan en una moneda que no controlan. Completarla es la solución buena; usar bien la política fiscal nacional, con reglas, la de segunda mejor.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Introducción}\label{sec:incompletas-intro}
+
+\begin{itemize}
+\item La unión estudiada hasta aquí tiene una moneda y una política monetaria comunes. Así nació la zona del euro en 1999: con el BCE, pero sin un supervisor bancario común ni un presupuesto común de peso.
+\item Una \concepto{unión monetaria incompleta} es la que tiene moneda y banco central comunes, pero le faltan la unión bancaria y la fiscal \parencite{DeGrauwe2022Economics}.
+  \begin{itemize}
+  \item El adjetivo no se refiere a la seudounión cambiaria de \autor{Corden}, que ni siquiera tiene banco central común: aquí la unión monetaria está completa y lo que falta está fuera de ella.
+  \end{itemize}
+\item Sus riesgos se ven mejor con una \emph{perturbación de solvencia}: los inversores empiezan a dudar de que un Estado de la unión pueda pagar su deuda.
+\item Que la unión nació incompleta es también la tesis de \textcite{Stiglitz2016Euro}, que culpa al euro del estancamiento de 2008-2015 (anexo~\ref{anexo:stiglitz}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Problemas de una unión monetaria incompleta}\label{sec:problemas-incompleta}
+
+\begin{itemize}
+\item En una unión incompleta, una perturbación de solvencia en un país crea 3 problemas, que nacen de un rasgo común, la fragilidad:
+  \begin{itemize}
+  \item el círculo vicioso entre los bancos y el Estado;
+  \item el contagio al resto de la unión;
+  \item el peligro de que el banco central común acabe financiando a los Estados.
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{La fragilidad: deuda en una moneda que no se emite}\label{sec:fragilidad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Los Estados de la zona del euro se endeudan en una moneda que no emiten, y por eso son más vulnerables a las crisis que cumplen su propia profecía que un país con banco central propio \parencite{DeGrauwe2011Governance} \vertema{3.A.39}.
+\item Es el escenario maligno de las perturbaciones transitorias (\ref{sec:mundell}), contado ahora con su mecanismo.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{2 Estados con la misma deuda}: uno con moneda y banco central propios (el Reino Unido) y otro dentro de una unión monetaria (España).
+\item \emph{Inversores que pueden vender la deuda} de un Estado y comprar la de otro, dentro o fuera de la unión.
+\item \emph{Un banco central común} que no puede financiar a los Estados.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Con moneda propia}: si los inversores temen el impago y venden la deuda, cambian las libras por otra moneda, la libra se deprecia y el dinero se queda en el país. El banco central puede dar liquidez y, en último extremo, comprar la deuda: los inversores saben que siempre cobrarán, aunque sea con inflación, y el pánico no tiene sentido.
+\item \emph{En la unión}: si venden la deuda española, los euros salen del sistema bancario español hacia el de otro socio. Sube el tipo de interés de la deuda española, España pierde liquidez y su banco central no puede crearla.
+  \begin{itemize}
+  \item El Estado puede quedarse sin financiación aunque sea solvente: una \emph{crisis de liquidez} se convierte en una \emph{crisis de solvencia}.
+  \item Es como endeudarse en moneda extranjera.
+  \end{itemize}
+\item \emph{Equilibrios múltiples}: si los inversores temen un impago, exigen más interés, la deuda crece más deprisa y el impago se vuelve más probable: la crisis puede cumplir su propia profecía \parencite{Calvo1988Servicing}.
+  \begin{itemize}
+  \item El mismo país puede estar en un \emph{equilibrio bueno}, con tipos bajos y deuda sostenible, o en uno \emph{malo}, con tipos altos que la hacen insostenible.
+  \item Pasa de uno a otro solo por un cambio de las expectativas \vertema{3.B.17}.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Una unión monetaria necesita un \concepto{prestamista de última instancia} para la deuda pública, con condiciones que limiten el riesgo moral: alguien que elimine el equilibrio malo con la promesa creíble de comprar.
+\item En la zona del euro llegó en 2012. «Dentro de nuestro mandato, el BCE está dispuesto a hacer lo que sea necesario para preservar el euro; y créanme, será suficiente», dijo \autor{Mario Draghi} el 26 de julio \parencite{Draghi2012Speech}. En septiembre llegaron las operaciones monetarias de compraventa (OMT), que nunca se han usado \parencite{BCE2012OMT} \vertema{3.A.36}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Al comparar el Reino Unido y España, \textcite{DeGrauwe2011Governance} muestra que el Reino Unido tenía más deuda y más déficit y, sin embargo, pagaba menos por ella: la diferencia era tener banco central propio.
+\item Las primas de riesgo de la periferia empezaron a bajar con el anuncio de 2012, antes de que el BCE comprara un solo bono: la promesa bastó para descartar el equilibrio malo \parencite{DeGrauwe2022Economics}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item La fragilidad explica por qué la crisis de deuda se concentró en la zona del euro y no en países con más deuda y moneda propia.
+\item Pero un prestamista de última instancia de los Estados crea riesgo moral y roza la financiación monetaria; es el tercero de los problemas. Antes, los otros 2: el círculo vicioso y el contagio.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Círculo vicioso entre los bancos y el Estado}\label{sec:circulo-vicioso}
+
+\begin{itemize}
+\item \emph{Idea}: en una unión incompleta, los bancos de cada país dependen de su Estado, y el Estado de sus bancos. Una perturbación de solvencia en uno se transmite al otro y vuelve amplificada \vertema{3.B.26}.
+\item \emph{El círculo, paso a paso} (gráfico~\ref{fig:circulo-vicioso}):
+  \begin{enumerate}
+  \item la perturbación de solvencia hace dudar de la deuda del Estado; los inversores venden sus bonos hasta que acudir a los mercados es carísimo (por ejemplo, con una prima de riesgo de varios cientos de puntos básicos);
+  \item al Estado solo le queda colocar su deuda en los bancos nacionales, que ya son sus mayores acreedores, y que acaban teniendo aún más;
+  \item la caída del precio de los bonos abre pérdidas en el balance de los bancos, que necesitan capital y no pueden obtenerlo solos;
+  \item el Estado tiene que recapitalizarlos, por el riesgo sistémico que suponen;
+  \item la deuda pública sube de nuevo, los bonos se deprecian más y el círculo vuelve a empezar.
+  \end{enumerate}
+\item El círculo funciona en los 2 sentidos: también puede empezar en los bancos, cuando sus pérdidas obligan al Estado a rescatarlos.
+\item En una unión incompleta, además, el Estado no tiene un banco central propio que lo respalde, y la economía real, con menos crédito y más impuestos, lo empeora todo.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El círculo vicioso entre los bancos y el Estado en una unión monetaria incompleta}\label{fig:circulo-vicioso}
+\grafico[0.6\textwidth]{circulo-vicioso}
+\fuente{elaboración propia a partir de \textcite{DeGrauwe2022Economics}.}
+\end{figure}
+
+% ..........................................................................
+\subsubsection{Contagio al resto de la unión}\label{sec:contagio}
+
+\begin{itemize}
+\item \emph{Por los balances}: los bancos y los inversores de los demás socios tienen deuda pública y deuda bancaria del país en crisis; sus pérdidas se convierten en pérdidas en todo el sistema.
+\item \emph{Por los flujos de capital}: el dinero que sale de la periferia se refugia en los bancos del centro, una parada súbita dentro de la unión. El Eurosistema la cubre con liquidez a los bancos de la periferia, y la huella queda en los saldos TARGET de los bancos centrales nacionales \vertema{3.B.11}.
+\item \emph{Por la moneda común}: el impago de un Estado que usa el euro haría dudar del valor y de la credibilidad de la moneda de todos.
+\item \emph{Por la reversibilidad}: si los mercados dudan de que la unión sea para siempre, exigen a cada socio débil una prima por el riesgo de que su deuda se cambie a una moneda nueva y depreciada. Salir de una unión monetaria es muy costoso, para el que sale y para los que se quedan (anexo~\ref{anexo:otras-uniones}).
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Peligro de monetización por el banco central de la unión}\label{sec:monetizacion}
+
+\begin{itemize}
+\item \emph{El dilema}: si la deuda de un país se vuelve insostenible y las primas se disparan, el banco central común puede verse forzado a comprar deuda pública en el mercado secundario, una monetización indirecta.
+\item \emph{Lo que ha hecho el BCE}:
+  \begin{itemize}
+  \item compró deuda en el mercado secundario con el programa para los mercados de valores (SMP, 2010) \parencite{BCE2010SMP};
+  \item prometió compras ilimitadas, condicionadas a un programa de ajuste, con las OMT (2012), que nunca usó \parencite{BCE2012OMT};
+  \item compró a gran escala por razones de política monetaria con el programa de compras de activos (APP, desde 2014; deuda pública desde 2015) y el de emergencia frente a la pandemia (PEPP, desde marzo de 2020) \parencite{BCE2026APP,BCE2026PEPP}, y dejó de reinvertir sus vencimientos en julio de 2023 y a finales de 2024;
+  \item desde julio de 2022 tiene el instrumento para la protección de la transmisión (TPI), para frenar ampliaciones injustificadas de las primas de riesgo \parencite{BCE2022TPI} \vertema{3.A.36}.
+  \end{itemize}
+\item \emph{El riesgo es la dominación fiscal}: que el banco central acabe financiando a los Estados \vertema{3.A.39}.
+  \begin{itemize}
+  \item Por eso el artículo~123 del TFUE prohíbe la financiación directa \parencite{TFUE2016}, las OMT exigen un programa de ajuste y el TPI, que el país cumpla las reglas fiscales.
+  \item El Tribunal de Justicia de la UE avaló las OMT en 2015 \parencite{TJUE2015Gauweiler} y el programa de compras de deuda pública en 2018 \parencite{TJUE2018Weiss}.
+  \end{itemize}
+\item \emph{En resumen}: con alta probabilidad de contagio y pocos mecanismos para frenarlo, pertenecer a una unión incompleta es poco deseable. La crisis de deuda de 2010-2012 lo puso de manifiesto (anexo~\ref{anexo:crisis-euro}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Soluciones}\label{sec:soluciones}
+
+\begin{itemize}
+\item Hay 2 soluciones:
+  \begin{itemize}
+  \item la \emph{perfecta}: completar la unión, con una unión bancaria y una unión fiscal que la hagan creíble y eviten el equilibrio malo;
+  \item la \emph{imperfecta}, de segundo óptimo: mientras no se complete, usar bien la política fiscal nacional, con reglas que la disciplinen y la coordinen.
+  \end{itemize}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Solución perfecta: completar la unión monetaria}\label{sec:completar}
+
+\begin{itemize}
+\item \emph{Idea}: llevar a la unión la red de seguridad que un Estado con moneda propia tiene en casa, para los bancos y para el Estado.
+\item \emph{Unión bancaria}, para romper el círculo vicioso \vertema{3.B.44}:
+  \begin{itemize}
+  \item un \concepto{mecanismo único de supervisión}, que mire con los mismos criterios a todos los bancos: el BCE supervisa los bancos significativos desde noviembre de 2014 \parencite{RegUE2013MUS};
+  \item un \concepto{mecanismo único de resolución}, que reestructure los bancos con un mismo procedimiento y reparta el coste entre toda la unión, aislando al Estado de su crisis bancaria: la Junta Única de Resolución, con un fondo de más de 81.000 millones de euros \parencite{RegUE2014MUR,SRB2026FUR};
+  \item un \concepto{sistema europeo de garantía de depósitos}, que asegure igual un depósito en cualquier banco de la unión y evite las fugas de un país a otro: propuesto en 2015, sigue sin aprobarse \parencite{CE2015EDIS}.
+  \end{itemize}
+\item \emph{La unión de los mercados de capitales}, el seguro privado de \autor{Ingram} (\ref{sec:ingram}): la Comisión la impulsa desde 2025 como Unión de Ahorros e Inversiones \parencite{CE2025UAI} \vertema{3.B.44}.
+\item \emph{Unión fiscal}, el federalismo fiscal de \autor{Kenen} (1969) (\ref{sec:kenen-fiscal}):
+  \begin{itemize}
+  \item un \emph{presupuesto común}, con transferencias automáticas que aseguren frente a las perturbaciones asimétricas;
+  \item una \emph{autoridad fiscal común} que emita deuda en euros respaldada por todos, para que ningún Estado se vea forzado al impago por un pánico de los mercados.
+  \end{itemize}
+\item \emph{Los primeros pasos}:
+  \begin{itemize}
+  \item en 2020 la UE se endeudó en común por primera vez a gran escala con \emph{NextGenerationEU}, 750.000 millones de euros de 2018, cuyo programa central se cierra en 2026 \parencite{CE2026NGEU,UE2021Reglamento241} \vertema{3.B.45};
+  \item es temporal: si debe haber una capacidad fiscal permanente sigue en debate.
+  \item En 2018, 7 economistas franceses y 7 alemanes, entre ellos \autor{Hélène Rey}, \autor{Pierre-Olivier Gourinchas} y \autor{Markus Brunnermeier}, propusieron combinar más reparto de riesgos con más disciplina de mercado: reglas fiscales más simples, un seguro de depósitos común, un fondo para las grandes perturbaciones y un activo seguro \parencite{BenassyQuere2018Reconciling}.
+  \end{itemize}
+\item \emph{Límites}: estas soluciones exigen ceder soberanía sobre impuestos y gasto, y crean riesgo moral. Se avanza a pequeños pasos.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{Solución imperfecta: la importancia de la política fiscal}\label{sec:politica-fiscal}
+
+\begin{itemize}
+\item \emph{Idea}: mientras no haya unión fiscal, la política fiscal nacional es el único instrumento propio frente a las perturbaciones propias \vertema{3.A.40}. La solución de segundo óptimo es usarla bien y con reglas.
+\item \emph{Qué dice la teoría}: \textcite{GaliMonacelli2008Optimal} muestran que, en un modelo neokeynesiano de unión monetaria, lo óptimo es que el banco central estabilice la inflación media y que cada gobierno use el gasto para cerrar su brecha \vertema{3.A.32}.
+\item \emph{Por qué funciona}:
+  \begin{itemize}
+  \item el tipo de interés común no responde al gasto de un solo país, así que el multiplicador nacional es mayor: el multiplicador \emph{relativo} del gasto de una región dentro de una unión monetaria está en torno a 1,5 \parencite{NakamuraSteinsson2014} \vertema{3.A.38};
+  \item la \concepto{devaluación fiscal}, subir el IVA y bajar las cotizaciones sociales de las empresas, abarata las exportaciones y encarece las importaciones como una devaluación nominal, sin tocar el tipo de cambio \parencite{FarhiGopinathItskhoki2014}.
+  \end{itemize}
+\item \emph{Por qué hacen falta reglas}:
+  \begin{itemize}
+  \item la política fiscal de un país afecta a los demás, por el comercio, los tipos de interés y la confianza en la moneda común (\ref{sec:costes-adicionales});
+  \item el que espera ser rescatado tiene menos incentivos a la disciplina (riesgo moral): por eso el artículo~125 del TFUE prohíbe que la Unión o un Estado asuman los compromisos de otro \parencite{TFUE2016}.
+  \end{itemize}
+\item \emph{En la zona del euro}, hoy:
+  \begin{itemize}
+  \item \emph{control}: desde 2024, una senda de gasto primario neto en planes de 4 años, ampliables a 7, con los valores de referencia del 3~\% y el 60~\% del PIB \parencite{UE2024Reglamento1263,UE2024Reglamento1264};
+  \item \emph{coordinación}: el Semestre Europeo, que desde 2024 integra los planes fiscales-estructurales a medio plazo \parencite{UE2024Reglamento1263} \vertema{3.B.45}.
+  \end{itemize}
+\item \emph{Valoración}: con deuda alta, el margen depende de la prima de riesgo, y el multiplicador de un país muy endeudado puede ser muy pequeño \vertema{3.A.40}. Por eso la solución imperfecta necesita la red de la perfecta.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: la zona del euro nació como una unión monetaria incompleta y la crisis de 2010-2012 mostró su fragilidad, el círculo vicioso entre los bancos y el Estado y el contagio. Desde entonces ha ido completando su casa (un prestamista de última instancia con condiciones, 2 pilares de la unión bancaria, una primera deuda común), pero le faltan el seguro de depósitos y una capacidad fiscal permanente.
+\end{itemize}
+
+\begin{notaopositor}
+Preguntas del tribunal sobre este tema en otros exámenes, y dónde está la respuesta:
+\begin{itemize}
+\item ¿Son siempre cóncavas las curvas de isopérdidas? No: en \autor{Barro} y \autor{Gordon} son elipses centradas en $(U^*,\pi^*)$, y el conjunto de puntos mejores que uno dado es convexo (\ref{sec:credibilidad}).
+\item ¿Qué hay detrás de la inconsistencia dinámica de la política monetaria? El sesgo inflacionista de la discrecionalidad, ecuación~\eqref{eq:sesgo} \vertema{3.A.36}.
+\item ¿Cómo es posible una política monetaria común en una Europa a 2 velocidades? Con ciclos poco sincronizados, el tipo común no conviene a todos (\ref{sec:mundell}, c); la respuesta está en la endogeneidad (\ref{sec:endogeneidad}) y en la política fiscal nacional (\ref{sec:politica-fiscal}).
+\item ¿Qué opinión le merece el papel de \autor{Draghi} al frente del BCE? El prestamista de última instancia de la fragilidad (\ref{sec:fragilidad}).
+\item Comente la función aseguradora del federalismo fiscal: ¿qué recursos usaría ante una perturbación? \autor{Kenen} (\ref{sec:kenen-fiscal}) y la unión fiscal (\ref{sec:completar}).
+\end{itemize}
+\end{notaopositor}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item En conclusión, todo el tema gira en torno a un balance: lo que un país pierde al dejar su tipo de cambio frente a lo que gana al compartir moneda con sus socios.
+  \item Los costes dependen de lo asimétricas que sean las perturbaciones y de cómo se ajusten los países sin tipo de cambio (\autor{Mundell}, \autor{McKinnon}, \autor{Kenen}); los beneficios, del comercio y de la credibilidad que se gana al atarse las manos.
+  \item Los criterios no son fijos: la unión puede acercar los ciclos (\autor{Frankel} y \autor{Rose}) o especializar a los países (\autor{Krugman}); los datos se inclinan, con matices, por lo primero.
+  \item Una unión sin unión bancaria ni fiscal es frágil, porque sus Estados se endeudan en una moneda que no controlan.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Para España, sin tipo de cambio desde 1999, el ajuste tras la crisis fue una devaluación interna, y sus instrumentos propios son la política fiscal y las reformas.
+  \item Para la zona del euro, el debate está abierto: con el fin del Mecanismo de Recuperación y Resiliencia en 2026, se discute si debe haber una capacidad fiscal permanente \parencite{UE2021Reglamento241}.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item El origen del euro y los criterios de convergencia \vertema{3.B.43}, la unión bancaria \vertema{3.B.44} y la gobernanza económica \vertema{3.B.45}.
+  \item La elección del régimen cambiario \vertema{3.B.15}, las crisis cambiarias que una unión evita \vertema{3.B.17} y la coordinación internacional de las políticas \vertema{3.B.19}.
+  \item Las otras uniones monetarias del mundo y la salida de una unión (anexo~\ref{anexo:otras-uniones}).
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item La zona del euro no era un área monetaria óptima en 1999 según los criterios de los años 60, pero se ha ido acercando, por la endogeneidad y, sobre todo, por las instituciones que la crisis obligó a crear.
+  \item Las instituciones pueden suplir en parte lo que falta de flexibilidad y de movilidad.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Compensa renunciar al tipo de cambio propio cuando las perturbaciones son simétricas o hay con qué absorberlas; si no se cumple antes de entrar, las instituciones de la unión tienen que hacer de seguro.
+  \item «El casado casa quiere»: compartir moneda exige compartir también la casa. Que el euro siga sumando socios, como Bulgaria en 2026 \parencite{BCE2026Bulgaria}, dice que el matrimonio compensa; que siga amueblando la casa, que aún no está terminada.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: la lógica de la teoría de las AMO}\label{anexo:logica-amo}
+
+\begin{itemize}
+\item La teoría tradicional se puede leer como un árbol de preguntas (gráfico~\ref{fig:logica-amo}):
+  \begin{itemize}
+  \item si la economía es muy abierta (\autor{Ronald McKinnon}) y diversificada (\autor{Peter Kenen}), las perturbaciones asimétricas son poco probables y el grupo es un área monetaria óptima;
+  \item si no, hace falta ajustarse: con salarios y precios flexibles, el grupo sigue siendo un área óptima;
+  \item si no lo son, con movilidad del trabajo (\autor{Robert Mundell}), también;
+  \item si tampoco hay movilidad, la unión necesita apoyo político: transferencias, preferencias homogéneas y solidaridad.
+  \end{itemize}
+\item Es el orden de los criterios del apartado~\ref{sec:criterios}, que las 3 dimensiones de \autor{De Grauwe} resumen (\ref{sec:condiciones}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La lógica de la teoría de las áreas monetarias óptimas}\label{fig:logica-amo}
+\grafico[0.7\textwidth]{logica-amo}
+\fuente{elaboración propia a partir de \textcite{BaldwinWyplosz2020Economics}, fig.~15.15.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: la hipótesis de la especialización y el \emph{tomahawk}}\label{anexo:especializacion}
+
+\begin{itemize}
+\item La hipótesis de \textcite{Krugman1993Lessons} se apoya en el modelo centro-periferia de \textcite{Krugman1991Increasing}, cuyo desarrollo completo se estudia aparte \vertema{3.B.6}. Aquí basta su resultado.
+\item \emph{Supuestos}, en una línea: 2 regiones iguales; una industria con rendimientos crecientes y variedades diferenciadas, cuyos trabajadores se mueven entre regiones; una agricultura con trabajadores inmóviles; y costes de comerciar.
+\item \emph{Las fuerzas}: la aglomeración (el mercado doméstico, el coste de la vida y las economías externas) frente a la dispersión (los factores inmóviles y la competencia local).
+\item \emph{El diagrama del \emph{tomahawk}} (gráfico~\ref{fig:tomahawk}) resume los equilibrios a largo plazo según la libertad comercial $\phi_\tau=\tau^{1-\sigma}$, que va de 0 (comercio imposible) a 1 (comercio libre); en el eje vertical, $\lambda_A$ es la cuota de la región $A$ en la industria:
+  \begin{itemize}
+  \item el reparto simétrico es estable hasta el \concepto{punto de ruptura}, $\phi_\tau^{\mathrm r}$, a partir del cual cualquier perturbación concentra la industria;
+  \item el centro-periferia es sostenible a partir del \concepto{punto de sostenibilidad}, $\phi_\tau^{\mathrm s}$, con $\phi_\tau^{\mathrm s}<\phi_\tau^{\mathrm r}$;
+  \item entre los 2 conviven ambos: hay \concepto{histéresis}, y la historia decide.
+  \end{itemize}
+\item \emph{La aplicación a la unión monetaria}: la moneda común baja los costes de comerciar y empuja $\phi_\tau$ hacia la derecha. Si cruza el punto de ruptura, la industria se concentra y las perturbaciones sectoriales se vuelven nacionales (\ref{sec:krugman}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Diagrama del \emph{tomahawk}: equilibrios a largo plazo del modelo centro-periferia según la libertad comercial}\label{fig:tomahawk}
+\grafico[0.65\textwidth]{tomahawk}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{FujitaKrugmanVenables1999Spatial}. Líneas continuas: equilibrios estables; discontinuas: inestables.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: la tesis de \autor{Stiglitz} sobre el euro}\label{anexo:stiglitz}
+
+\begin{itemize}
+\item Según \textcite{Stiglitz2016Euro}, premio Nobel de Economía en 2001, el euro nació con defectos («\emph{the Eurozone was flawed at birth}»).
+  \begin{itemize}
+  \item Los datos le dan pie: el PIB real por habitante de la zona del euro era en 2015 prácticamente el de 2007, y el paro llegó al 12,2~\% en 2013 \parencite{Eurostat2026Nama10pc,Eurostat2026UneRtA}.
+  \item En lo político, \autor{Stiglitz} vincula a esa crisis el auge de los partidos contrarios al euro y, en cierta medida, el \emph{Brexit} \parencite{Stiglitz2016Guardian}.
+  \end{itemize}
+\item \emph{La causa, para \autor{Stiglitz}}: crear una moneda única sin las instituciones que permitieran funcionar a una región tan diversa como Europa.
+  \begin{itemize}
+  \item La estructura de la zona del euro, sus reglas e instituciones, es la culpable de sus crisis.
+  \item La diversidad es la fortaleza de la Unión Europea, pero hace difícil que una moneda única funcione bien.
+  \end{itemize}
+\item \emph{Ni prosperidad ni integración}: quienes defendieron el euro lo veían sobre todo como un proyecto político que traería más integración y más prosperidad. Según \autor{Stiglitz}, no ha logrado ninguna de las 2 y ha alimentado tensiones y viejos estereotipos entre el norte y el sur.
+\item \emph{Su propuesta}: instituciones comunes que ayuden a los países para los que la política común es menos adecuada.
+\item \emph{Contrapunto}: su diagnóstico coincide con el de la literatura (una unión incompleta es frágil); su pronóstico de ruptura no se ha cumplido, y desde 2012 la zona del euro ha creado parte de las instituciones que él echaba en falta (\ref{sec:soluciones}).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la crisis del euro y la respuesta institucional}\label{anexo:crisis-euro}
+
+\begin{itemize}
+\item \emph{2007-2009, crisis financiera}: la crisis global puso en duda la eficiencia de los mercados financieros. En la UE, los Estados recapitalizaron los bancos y aplicaron medidas fiscales para sostener a familias y empresas, y se creó un nuevo marco de regulación y supervisión financiera.
+\item \emph{2010-2012, crisis de deuda}: como suele ocurrir, la crisis bancaria trajo una crisis de deuda. Se crearon fondos y mecanismos de rescate para financiar a los países en peor situación y evitar el contagio, primero el Fondo Europeo de Estabilidad Financiera y después el Mecanismo Europeo de Estabilidad \parencite{SanchisiMarco2014Economics} \vertema{3.B.45}.
+\item \emph{Lo que había debajo}: la atención a los rescates escondió la naturaleza de la crisis, los desequilibrios de balanza de pagos y de tipo de cambio real acumulados entre el centro y la periferia desde 1999 \parencite{SanchisiMarco2014Economics} \vertema{3.B.11}.
+\item \emph{El ajuste}: corregirlos exigía que la periferia siguiera con su devaluación interna y que el centro, sobre todo Alemania, hiciera una revaluación interna que repartiera el ajuste, además de más transferencias a la periferia \parencite{SanchisiMarco2014Economics}.
+\item \emph{La respuesta}: el «lo que sea necesario» y las OMT (2012); la unión bancaria (supervisión única desde 2014, resolución única desde 2016); el PEPP y \emph{NextGenerationEU} frente a la covid (2020); el TPI (2022), y el nuevo marco fiscal (2024) \parencite{BCE2012OMT,RegUE2013MUS,RegUE2014MUR,BCE2026PEPP,CE2026NGEU,BCE2022TPI,UE2024Reglamento1263} (\ref{sec:fragilidad}, \ref{sec:monetizacion} y \ref{sec:soluciones}).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: otras uniones y la salida de una unión}\label{anexo:otras-uniones}
+
+\begin{itemize}
+\item \emph{Las 2 uniones del franco CFA}:
+  \begin{itemize}
+  \item la Unión Monetaria del África Occidental (UMOA, el pilar monetario de la UEMOA): 8 Estados (Benín, Burkina Faso, Costa de Marfil, Guinea-Bisáu, Malí, Níger, Senegal y Togo) con un banco central común, el Banco Central de los Estados de África Occidental (BCEAO) \parencite{BCEAO2026Presentacion};
+  \item la Comunidad Económica y Monetaria de África Central (CEMAC): 6 Estados (Camerún, Chad, Congo, Gabón, Guinea Ecuatorial y República Centroafricana) con el Banco de los Estados de África Central (BEAC) \parencite{BEAC2026Presentacion};
+  \item cada una tiene su franco CFA, anclado al euro a 655,957 francos por euro \parencite{BCEAO2026Presentacion,BEAC2026Presentacion,FMI2024AREAER2023}.
+  \end{itemize}
+\item \emph{La Unión Monetaria del Caribe Oriental}: 8 economías insulares (6 Estados y 2 territorios británicos) con un banco central común y un dólar del Caribe Oriental anclado al dólar estadounidense con una caja de conversión \parencite{FMI2024AREAER2023}.
+\item \emph{A la luz de la teoría de las áreas óptimas}: poco comercio entre los socios y economías poco diversificadas, dependientes de las materias primas (perturbaciones asimétricas); su beneficio principal es la credibilidad del ancla \parencite{DeGrauwe2022Economics}.
+\item \emph{La salida de una unión}: los costes de salir no son los de entrar con el signo cambiado; salir es caro en sí mismo (redenominar deudas y contratos, frenar la fuga de depósitos), y ese coste puede retener dentro a un país al que le iría mejor con moneda propia \parencite{DeGrauwe2022Economics}.
+  \begin{itemize}
+  \item \emph{Lo que ganaría el país}: recuperar la devaluación para ganar competitividad.
+  \item \emph{Lo que le costaría}: la fuga de depósitos hacia otros socios en cuanto se sospecha la salida, que obliga a imponer controles de capital (Grecia cerró sus bancos y los impuso a finales de junio de 2015, cuando el BCE dejó de ampliar la liquidez de emergencia a sus bancos \parencite{BCE2015ELA}); un impago parcial, porque la deuda emitida bajo derecho extranjero no se puede pasar a la moneda nueva; una crisis bancaria y una recesión, con inflación importada por la depreciación; y el coste de crear la moneda nueva.
+  \item \emph{Lo que costaría a la unión}: dejaría de ser irreversible, y ante cada perturbación asimétrica los mercados se preguntarían quién es el siguiente.
+  \item \emph{El derecho}: los Tratados no prevén salir del euro; solo salir de la UE, con el artículo~50 del TUE \parencite{TUE2016}.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+Preguntas tipo test del primer ejercicio sobre las áreas monetarias óptimas, la unión económica y monetaria y la zona del euro: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test} \parencite{GutierrezMarcos2026Simulador}.
+
+
+\bibliografia
+\end{document}
