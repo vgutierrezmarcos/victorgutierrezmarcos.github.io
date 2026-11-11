@@ -46,13 +46,14 @@ Lecturas (todas con `oposicion`: `tcee` por defecto o `dce`; si una sale vacía 
 | `leer_progreso`, `leer_resultados_test(desde, limite)`, `leer_cantes(n)`, `leer_cronograma` | `progress/*`, `notes/*`, `exam_results` (con acierto por tema), `cantes`, `cronogramas` y `cronogramasRecibidos` |
 | `leer_informes_cante(canteId, n, completo)` | `cantes/{id}/informes`: las correcciones guardadas |
 | `preguntas_test(temas, n, modo)` | Preguntas oficiales de `preguntas.json` por tema, filtradas con `progress/spaced_repetition`, con la clave de `explicaciones/<examen>.json` |
+| `test_interactivo(temas, n, modo)` | Lo mismo que `preguntas_test`, con la vista interactiva del test (ver «Vistas interactivas») |
 | `leer_proceso(seccion)` | `oposicion/proceso.json` (documentos del proceso selectivo en curso) |
 | `fuentes_tema(tema)`, `buscar_temario(consulta)`, `leer_fuente(enlace)` | `fuentes-temas.json`; la búsqueda mira también los apartados de cada PDF (`references/temario/indices-temas.md`); `leer_fuente` lee apuntes de la ATCEE, PDF de la web (`textos/{tema}` en KV) y páginas de Manuel |
 | `listar_temas_revisados`, `leer_tema`, `leer_ficha`, `leer_guia_dictamen`, `leer_canon` | KV `CONTENIDO`; por apartado o por tramos (`desde`/`limite`, 40.000 caracteres por defecto) |
 | `preparar_clase(con, dia)` | Preparadores, huecos, reservas, próximas clases y temas del cronograma para agendar |
 | `leer_alumnos`, `leer_alumno(alumno, n)` | Preparadores: `alumnos`, `sesiones`, `reservas` que le piden y, del alumno enlazado, lo que las reglas le dejan ver (`progress/settings`, cronograma compartido, informes de las clases que firma él) |
 
-Escrituras (siempre con confirmación del usuario en la conversación):
+Escrituras (siempre con confirmación del usuario: en la conversación o con el botón de la vista interactiva):
 
 | Herramienta | Escribe |
 |---|---|
@@ -65,6 +66,24 @@ Escrituras (siempre con confirmación del usuario en la conversación):
 | `desconectar(confirmar)` | Revoca las concesiones OAuth del usuario y borra su ID token cacheado |
 
 Las fechas se escriben como la app: hora de Madrid sin zona. Los ids que llegan de la IA se codifican antes de ir en una ruta.
+
+
+### Vistas interactivas (MCP Apps, «interactive connectors»)
+
+Cinco herramientas declaran una vista (`_meta.ui.resourceUri`) que los clientes compatibles (Claude) pintan dentro del chat; los demás reciben el mismo texto de siempre. Las vistas son recursos `ui://economia/*.html` (`text/html;profile=mcp-app`) que salen de `src/vistas/*.html` (texto empaquetado con la regla `Text` de `wrangler.toml`) y `src/vistas.ts`: `comun.html` lleva los estilos y el puente con el cliente (JSON-RPC por `postMessage`, sin dependencias) y cada vista, su cuerpo.
+
+| Vista | Herramienta | Qué hace |
+|---|---|---|
+| `test.html` | `test_interactivo` | Una pregunta cada vez, con figura y fórmulas (MathJax de jsDelivr), corrección al momento y «¿Por qué?»; al final manda el resultado al chat y puede pedir más preguntas |
+| `cronograma.html` | `proponer_cronograma` | El plan por meses; con `vistaPrevia: true`, botón «Guardar en la app» |
+| `informe.html` | `guardar_informe_cante` | Valoración, rúbrica, comentarios y tareas editables; con `vistaPrevia: true`, botón «Guardar en la app» |
+| `clase.html` | `agendar_clase` | El resumen de la clase y, si pisa otra, la casilla para seguir; con `vistaPrevia: true`, botón «Pedir la clase» o «Crear la clase» |
+| `borrado.html` | `borrar_datos_oposicion` | El recuento del paso 1 y el campo donde el usuario escribe la frase; el botón hace el paso 2 |
+
+- `vistaPrevia: true` valida todo y no escribe nada: el botón de la vista repite la llamada sin `vistaPrevia` (con la sesión del usuario, a través del cliente). Sin vista, el modelo enseña el resultado y repite la llamada cuando el usuario confirma.
+- El servidor no sabe si el cliente pinta vistas (no guarda estado entre peticiones): por eso los textos que devuelve dicen al modelo qué hacer en los dos casos, y `test_interactivo` es una herramienta aparte de `preguntas_test`.
+- Las vistas no hacen peticiones de red propias; solo `test.html` carga imágenes de la web y MathJax (`_meta.ui.csp.resourceDomains`). Lo que pasa en la vista se le cuenta al modelo con `ui/update-model-context`.
+- Para verlas sin Claude: montar cada página (lo común + el cuerpo) y abrirla en un marco con un cliente simulado que conteste a `ui/initialize` y mande `ui/notifications/tool-result`.
 
 ## Desplegar (Víctor)
 

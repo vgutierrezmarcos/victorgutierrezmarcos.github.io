@@ -143,7 +143,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
+    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -383,6 +383,63 @@ describe('herramientas', () => {
     expect(r.isError).toBe(true);
     expect(texto(r)).toContain('no cae en el día de cante');
     expect(db.escrituras).toEqual([]);
+  });
+
+  it('las vistas interactivas: recursos ui:// con su página, y las herramientas que las declaran', async () => {
+    const c = await cliente(ctx);
+    const recursos = (await c.listResources()).resources;
+    expect(recursos.map((r) => r.uri).sort()).toEqual(['ui://economia/borrado.html', 'ui://economia/clase.html', 'ui://economia/cronograma.html', 'ui://economia/informe.html', 'ui://economia/test.html']);
+    expect(recursos.every((r) => r.mimeType === 'text/html;profile=mcp-app')).toBe(true);
+    const pagina = (await c.readResource({ uri: 'ui://economia/test.html' })).contents[0] as { text: string; mimeType: string; _meta?: { ui?: { csp?: { resourceDomains?: string[] } } } };
+    expect(pagina.mimeType).toBe('text/html;profile=mcp-app');
+    expect(pagina.text).toContain('<!doctype html>');
+    expect(pagina.text).toContain("pedir('ui/initialize'");
+    expect(pagina.text).toContain("Vista.llamar('test_interactivo'");
+    expect(pagina._meta?.ui?.csp?.resourceDomains).toContain('https://www.victorgutierrezmarcos.es');
+    const conVista = (await c.listTools()).tools.filter((t) => (t._meta as { ui?: { resourceUri?: string } } | undefined)?.ui?.resourceUri);
+    expect(Object.fromEntries(conVista.map((t) => [t.name, (t._meta as { ui: { resourceUri: string } }).ui.resourceUri]))).toEqual({
+      test_interactivo: 'ui://economia/test.html',
+      proponer_cronograma: 'ui://economia/cronograma.html',
+      guardar_informe_cante: 'ui://economia/informe.html',
+      agendar_clase: 'ui://economia/clase.html',
+      borrar_datos_oposicion: 'ui://economia/borrado.html',
+    });
+    // La clave antigua («ui/resourceUri») también, para los clientes que aún la leen.
+    expect(conVista.every((t) => (t._meta as Record<string, unknown>)['ui/resourceUri'] === (t._meta as { ui: { resourceUri: string } }).ui.resourceUri)).toBe(true);
+  });
+
+  it('test_interactivo da las mismas preguntas que preguntas_test, con la indicación de no copiarlas', async () => {
+    const c = await cliente(ctx);
+    const t = json(await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], modo: 'todas', n: 2 } }));
+    expect(String(t.vista)).toContain('NO las copies');
+    expect((t.preguntas as Obj[]).length).toBe(2);
+    expect((t.preguntas as Obj[])[0]).toHaveProperty('respuesta');
+    expect((await c.callTool({ name: 'test_interactivo', arguments: { temas: ['nada'] } })).isError).toBe(true);
+  });
+
+  it('con vistaPrevia, proponer_cronograma y guardar_informe_cante validan y enseñan, pero no escriben', async () => {
+    const c = await cliente(ctx);
+    const args = { ejercicio: 3, diaCante: 6, semanas: [{ cante: '2026-11-07', temas: ['3.A.8'] }, { cante: '2026-11-21', temas: ['3.A.9'] }] };
+    const p = json(await c.callTool({ name: 'proponer_cronograma', arguments: { ...args, vistaPrevia: true } }));
+    expect(p).toMatchObject({ guardado: false, vistaPrevia: true, oposicion: 'tcee' });
+    const semanas = (p.cronograma as Obj).semanas as Obj[];
+    expect(semanas.map((s) => s.cante)).toEqual(['2026-11-07', '2026-11-14', '2026-11-21']);
+    expect(semanas[1].descanso).toBe(true);
+    expect(String(p.siguiente)).toContain('Guardar en la app');
+    expect(db.escrituras).toEqual([]);
+    expect(db.docs.get('cronogramas/viejo')!.archivado).not.toBe(true);
+    // Un plan con errores tampoco pasa la vista previa.
+    expect((await c.callTool({ name: 'proponer_cronograma', arguments: { ...args, semanas: [{ cante: '2026-11-08', temas: ['3.A.8'] }], vistaPrevia: true } })).isError).toBe(true);
+    // Lo que hace el botón de la vista: la misma llamada sin vistaPrevia.
+    const g = json(await c.callTool({ name: 'proponer_cronograma', arguments: args }));
+    expect(g.guardado).toBe(true);
+    expect((g.cronograma as Obj).id).toBe(g.id);
+
+    const antes = db.escrituras.length;
+    const i = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: '# Informe', valoracion: 4, criterios: { Rigor: 3 }, tareas: ['Repasar Slutsky'], vistaPrevia: true } }));
+    expect(i).toMatchObject({ guardado: false, vistaPrevia: true, cante: { id: 'c1' }, propuesta: { valoracion: 4, criterios: { Rigor: 3 }, tareas: ['Repasar Slutsky'] } });
+    expect(db.escrituras.length).toBe(antes);
+    expect((await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'no-existe', informe: 'x', vistaPrevia: true } })).isError).toBe(true);
   });
 
   it('guardar_informe_cante escribe el informe y actualiza el resultado del cante hecho', async () => {

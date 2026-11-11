@@ -35,13 +35,23 @@ if (token) {
     return r.ok ? (await r.json()).result : { error: r.status };
   };
   const lista = await rpc('tools/list', {});
-  ok(Array.isArray(lista?.tools) && lista.tools.length >= 29, `tools/list (${lista?.tools?.length ?? 0} herramientas)`);
+  ok(Array.isArray(lista?.tools) && lista.tools.length >= 31, `tools/list (${lista?.tools?.length ?? 0} herramientas)`);
+  // Vistas interactivas (MCP Apps): las herramientas que las declaran y sus páginas.
+  const conVista = (lista?.tools ?? []).filter((t) => t._meta?.ui?.resourceUri);
+  ok(conVista.length === 5, `herramientas con vista (${conVista.map((t) => t.name).join(', ')})`);
+  const recursos = await rpc('resources/list', {});
+  ok((recursos?.resources ?? []).filter((r) => r.uri.startsWith('ui://economia/') && r.mimeType === 'text/html;profile=mcp-app').length === 5, 'resources/list (cinco vistas)');
+  for (const t of conVista) {
+    const r = await rpc('resources/read', { uri: t._meta.ui.resourceUri });
+    const c = r?.contents?.[0];
+    ok(c?.mimeType === 'text/html;profile=mcp-app' && c.text?.includes("pedir('ui/initialize'") && c.text.length > 4000, `${t._meta.ui.resourceUri} (${c?.text?.length ?? 0} caracteres)`);
+  }
   // Solo lecturas: ninguna de estas escribe nada.
   const lecturas = [
     ['empezar', {}], ['leer_metodo', {}], ['leer_skill', { ruta: 'VERSION.txt' }], ['leer_progreso', {}], ['leer_resultados_test', { limite: 1 }],
     ['leer_cantes', { n: 1 }], ['leer_cronograma', {}], ['leer_informes_cante', { n: 1 }], ['listar_temas_revisados', {}], ['leer_tema', { tema: '3.A.8', apartado: 'Introducción' }],
     ['leer_ficha', { tema: '3.A.8', limite: 2000 }], ['leer_guia_dictamen', { limite: 2000 }], ['leer_canon', { limite: 2000 }], ['buscar_temario', { consulta: 'curva de Phillips' }],
-    ['fuentes_tema', { tema: '3.A.28' }], ['preguntas_test', { temas: ['3.A.8'], n: 2 }], ['leer_proceso', {}],
+    ['fuentes_tema', { tema: '3.A.28' }], ['preguntas_test', { temas: ['3.A.8'], n: 2 }], ['test_interactivo', { temas: ['3.A.8'], n: 2 }], ['leer_proceso', {}],
   ];
   for (const [name, args] of lecturas) {
     const r = await rpc('tools/call', { name, arguments: args });

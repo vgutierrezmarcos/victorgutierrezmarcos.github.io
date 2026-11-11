@@ -166,6 +166,23 @@ describe('preparar_clase y agendar_clase', () => {
     expect(ajustes.temasEstudiados).toEqual(['3.A.1']); // el resto de los ajustes no se toca
   });
 
+  it('con vistaPrevia enseña la clase (y si pisa otra) sin pedirla ni tocar la agenda', async () => {
+    const antes = [...base.docs.keys()].filter((k) => k.startsWith('reservas/')).length;
+    const ajustes = JSON.stringify(base.docs.get('users/alu/progress/settings'));
+    const r = await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online', temas: ['3.A.8'], vistaPrevia: true });
+    expect(r.error).toBe(false);
+    expect(r.datos).toMatchObject({ vistaPrevia: true, pedida: false, como: 'opositor', fecha: `${anio}-03-06T18:00`, minutos: 120, modalidad: 'online', temas: ['3.A.8'] });
+    expect(r.datos!.choques).toBeUndefined();
+    expect([...base.docs.keys()].filter((k) => k.startsWith('reservas/')).length).toBe(antes);
+    expect(JSON.stringify(base.docs.get('users/alu/progress/settings'))).toBe(ajustes);
+    base.docs.set('users/alu/cantes/x', { id: 'x', fecha: `${anio}-03-06T19:00:00.000`, minutos: 60, estado: 'pendiente', preparadorNombre: 'Otra' });
+    const choca = await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online', vistaPrevia: true });
+    expect(choca.error).toBe(false);
+    expect((choca.datos!.choques as string[])[0]).toContain('con Otra');
+    base.docs.delete('users/alu/cantes/x');
+    expect((await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'otro', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online', vistaPrevia: true })).error).toBe(true);
+  });
+
   it('no pide clase a quien no es su preparador, ni en el pasado, ni si pisa otra suya sin confirmarlo', async () => {
     expect((await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'otro', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online' })).error).toBe(true);
     expect((await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: '2020-03-06', hora: '18:00', modalidad: 'online' })).texto).toContain('futuras');

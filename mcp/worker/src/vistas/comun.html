@@ -1,0 +1,233 @@
+<style>
+  /* «Edición académica» de la web: morado como tinta, oro como filete fino, sin degradados ni saltos. */
+  :root {
+    --tinta: #5f2987;
+    --tinta-suave: rgba(95, 41, 135, 0.09);
+    --oro: #b08d3c;
+    --texto: #1f1b24;
+    --apagado: #6a6272;
+    --linea: rgba(31, 27, 36, 0.16);
+    --fondo: transparent;
+    --tarjeta: rgba(255, 255, 255, 0.6);
+    --bien: #2e6b3f;
+    --bien-suave: rgba(46, 107, 63, 0.12);
+    --mal: #a32a2a;
+    --mal-suave: rgba(163, 42, 42, 0.1);
+    color-scheme: light;
+  }
+  :root[data-theme='dark'] {
+    --tinta: #cfa9ea;
+    --tinta-suave: rgba(207, 169, 234, 0.14);
+    --oro: #d4b667;
+    --texto: #efeaf3;
+    --apagado: #b3a9bd;
+    --linea: rgba(239, 234, 243, 0.2);
+    --tarjeta: rgba(255, 255, 255, 0.05);
+    --bien: #8fd0a0;
+    --bien-suave: rgba(143, 208, 160, 0.14);
+    --mal: #f0a0a0;
+    --mal-suave: rgba(240, 160, 160, 0.13);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--fondo); }
+  body {
+    font: 15px/1.5 var(--font-sans, 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);
+    color: var(--texto);
+    padding: 16px;
+    overflow-wrap: anywhere;
+  }
+  h1, h2 {
+    font-family: 'TeX Gyre Pagella', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+    font-weight: 400;
+    color: var(--tinta);
+    margin: 0;
+  }
+  h1 { font-size: 21px; line-height: 1.25; }
+  h2 { font-size: 17px; margin-top: 18px; }
+  .filete { border: 0; border-top: 1px solid var(--oro); margin: 10px 0 14px; }
+  .sobre { font-variant-caps: all-small-caps; letter-spacing: 0.04em; color: var(--apagado); font-size: 14px; }
+  .apagado { color: var(--apagado); }
+  .tarjeta { border: 1px solid var(--linea); border-radius: 6px; background: var(--tarjeta); padding: 12px 14px; }
+  .fila { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .entre { justify-content: space-between; }
+  .pie { margin-top: 16px; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .boton {
+    border: 1px solid var(--tinta); background: var(--tinta); color: #fff; border-radius: 4px;
+    padding: 8px 16px; min-height: 40px; font-weight: 600;
+  }
+  :root[data-theme='dark'] .boton { color: #1f1b24; }
+  .boton--secundario { background: transparent; color: var(--tinta); }
+  :root[data-theme='dark'] .boton--secundario { color: var(--tinta); }
+  .boton--peligro { background: var(--mal); border-color: var(--mal); }
+  .boton:disabled { opacity: 0.45; cursor: default; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--oro); outline-offset: 2px; }
+  input[type='text'], textarea {
+    font: inherit; color: inherit; background: transparent; border: 1px solid var(--linea); border-radius: 4px;
+    padding: 8px 10px; width: 100%;
+  }
+  textarea { resize: vertical; min-height: 70px; }
+  .aviso { border-left: 2px solid var(--oro); padding: 6px 0 6px 12px; margin: 12px 0; }
+  .aviso--mal { border-left-color: var(--mal); color: var(--mal); }
+  .aviso--bien { border-left-color: var(--bien); color: var(--bien); }
+  .codigo { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--tinta); white-space: nowrap; }
+  .oculto { display: none !important; }
+  ul.lista { list-style: none; margin: 0; padding: 0; }
+  ul.lista > li { padding: 8px 0; border-top: 1px solid var(--linea); }
+  ul.lista > li:first-child { border-top: 0; }
+  .puntos { display: inline-flex; gap: 4px; }
+  .puntos button {
+    width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--linea); background: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+  .puntos button[aria-pressed='true'] { background: var(--tinta); border-color: var(--tinta); color: #fff; font-weight: 600; }
+  :root[data-theme='dark'] .puntos button[aria-pressed='true'] { color: #1f1b24; }
+</style>
+<script>
+  // Puente con el cliente (MCP Apps, 2026-01-26): JSON-RPC por postMessage con la ventana que pinta la vista.
+  // Sin dependencias: lo justo para iniciar, recibir el resultado de la herramienta, llamar a otras y avisar al modelo.
+  var Vista = (function () {
+    var n = 0, esperas = {}, oyentes = {}, alRecibir = null, ultimo = null, argumentos = {}, contexto = {}, capacidades = {};
+
+    function enviar(m) { window.parent.postMessage(m, '*'); }
+    function pedir(metodo, params) {
+      return new Promise(function (si, no) {
+        var id = ++n;
+        esperas[id] = { si: si, no: no };
+        enviar({ jsonrpc: '2.0', id: id, method: metodo, params: params || {} });
+      });
+    }
+    function notificar(metodo, params) { enviar({ jsonrpc: '2.0', method: metodo, params: params || {} }); }
+
+    window.addEventListener('message', function (e) {
+      if (e.source !== window.parent) return;
+      var m = e.data;
+      if (!m || m.jsonrpc !== '2.0') return;
+      if (typeof m.method === 'string') {
+        var r = {};
+        // Una vista rota no debe dejar colgado al cliente: el fallo va a la consola y se contesta igual.
+        try { if (oyentes[m.method]) r = oyentes[m.method](m.params || {}) || {}; } catch (e) { window.__fallo = String((e && e.stack) || e); if (window.console) console.error(e); }
+        if (m.id !== undefined && m.id !== null) enviar({ jsonrpc: '2.0', id: m.id, result: r });
+      } else if (m.id !== undefined && esperas[m.id]) {
+        var p = esperas[m.id];
+        delete esperas[m.id];
+        if (m.error) p.no(new Error(m.error.message || 'Error')); else p.si(m.result || {});
+      }
+    });
+
+    /** Lo que devuelve una herramienta, ya leído: el JSON del primer texto, o { error } si falló. */
+    function leer(resultado) {
+      var texto = '';
+      (resultado && resultado.content || []).forEach(function (c) { if (!texto && c.type === 'text') texto = c.text; });
+      if (resultado && resultado.isError) return { error: texto || 'No se ha podido hacer.' };
+      if (resultado && resultado.structuredContent) return resultado.structuredContent;
+      try { return JSON.parse(texto); } catch (_) { return { texto: texto }; }
+    }
+
+    function tema(c) {
+      if (!c) return;
+      if (c.theme === 'dark' || c.theme === 'light') document.documentElement.setAttribute('data-theme', c.theme);
+      var v = c.styles && c.styles.variables;
+      if (v) Object.keys(v).forEach(function (k) { if (/^--font-/.test(k) && v[k]) document.documentElement.style.setProperty(k, v[k]); });
+    }
+
+    function entregar() { if (alRecibir && ultimo) alRecibir(ultimo, argumentos); }
+
+    oyentes['ui/notifications/tool-input'] = function (p) { argumentos = p.arguments || {}; };
+    oyentes['ui/notifications/tool-result'] = function (p) { ultimo = leer(p); entregar(); };
+    oyentes['ui/notifications/tool-cancelled'] = function () { ultimo = { error: 'La llamada se ha cancelado.' }; entregar(); };
+    oyentes['ui/notifications/host-context-changed'] = function (p) { tema(p); };
+    oyentes['ui/resource-teardown'] = function () { return {}; };
+    oyentes['ping'] = function () { return {}; };
+
+    // El alto de la vista, para que el cliente ajuste el marco.
+    var ancho = 0, alto = 0, pendiente = false;
+    function medir() {
+      if (pendiente) return;
+      pendiente = true;
+      requestAnimationFrame(function () {
+        pendiente = false;
+        // Como el cliente oficial: se mide el contenido, no el marco (que puede ser más alto que la vista).
+        var raiz = document.documentElement, antes = raiz.style.height;
+        raiz.style.height = 'max-content';
+        var h = Math.ceil(raiz.getBoundingClientRect().height), w = Math.ceil(window.innerWidth);
+        raiz.style.height = antes;
+        if (h !== alto || w !== ancho) { alto = h; ancho = w; notificar('ui/notifications/size-changed', { width: w, height: h }); }
+      });
+    }
+
+    if (!window.matchMedia || !window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'light');
+    else document.documentElement.setAttribute('data-theme', 'dark');
+
+    pedir('ui/initialize', { appInfo: { name: 'Oposición TCEE · DCE', version: '1.0.0' }, appCapabilities: {}, protocolVersion: '2026-01-26' })
+      .then(function (r) {
+        contexto = r.hostContext || {};
+        capacidades = r.hostCapabilities || {};
+        tema(contexto);
+        notificar('ui/notifications/initialized');
+        if (window.ResizeObserver) { var o = new ResizeObserver(medir); o.observe(document.documentElement); o.observe(document.body); }
+        medir();
+      })
+      .catch(function () { /* sin cliente (vista abierta suelta): se queda con el mensaje de espera */ });
+
+    return {
+      /** f(datos, argumentos) se llama con el resultado de la herramienta que ha abierto la vista. */
+      alRecibir: function (f) { alRecibir = f; entregar(); },
+      /** Llama a una herramienta del conector a través del cliente; devuelve sus datos ya leídos. */
+      llamar: function (nombre, args) { return pedir('tools/call', { name: nombre, arguments: args || {} }).then(leer, function (e) { return { error: e.message }; }); },
+      /** Deja dicho al modelo lo que ha pasado en la vista (lo lee con el siguiente mensaje del usuario). */
+      contar: function (texto) { if (capacidades.updateModelContext) pedir('ui/update-model-context', { content: [{ type: 'text', text: texto }] }).catch(function () {}); },
+      /** Manda un mensaje al chat en nombre del usuario (solo tras un gesto suyo). */
+      decir: function (texto) { return pedir('ui/message', { role: 'user', content: [{ type: 'text', text: texto }] }).then(function (r) { return !r.isError; }, function () { return false; }); },
+      puedeDecir: function () { return !!capacidades.message; },
+      abrir: function (url) { pedir('ui/open-link', { url: url }).catch(function () {}); },
+      argumentos: function () { return argumentos; },
+      /** Vuelve a medir la vista (tras cargar una imagen o componer las fórmulas). */
+      medir: medir,
+      /** Recuerda algo de esta llamada (p. ej. que ya se guardó) si el marco deja usar almacenamiento. */
+      recordar: function (clave, valor) {
+        var k = 'economia:' + ((contexto.toolInfo && contexto.toolInfo.id) || '') + ':' + clave;
+        try { if (valor === undefined) return window.sessionStorage.getItem(k); window.sessionStorage.setItem(k, valor); } catch (_) { /* sin almacenamiento */ }
+        return null;
+      },
+    };
+  })();
+
+  /** Crea un elemento: el('p', { class: 'x', onclick: f }, 'texto' | nodo | [nodos]). El texto nunca se interpreta como HTML. */
+  function el(etiqueta, attrs, hijos) {
+    var e = document.createElement(etiqueta);
+    Object.keys(attrs || {}).forEach(function (k) {
+      var v = attrs[k];
+      if (v === undefined || v === null || v === false) return;
+      if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), v);
+      else if (k === 'class') e.className = v;
+      else e.setAttribute(k, v === true ? '' : v);
+    });
+    plano(hijos).forEach(function (h) { e.appendChild(typeof h === 'object' ? h : document.createTextNode(String(h))); });
+    return e;
+  }
+  /** Una lista de nodos y textos sin huecos, por muy anidada que venga (los .map() dentro de una lista). */
+  function plano(x, salida) {
+    salida = salida || [];
+    if (Array.isArray(x)) x.forEach(function (y) { plano(y, salida); });
+    else if (x !== undefined && x !== null && x !== false && x !== '') salida.push(x);
+    return salida;
+  }
+  function pintar(nodos) {
+    var raiz = document.getElementById('raiz');
+    raiz.textContent = '';
+    plano(nodos).forEach(function (x) { raiz.appendChild(typeof x === 'object' ? x : document.createTextNode(String(x))); });
+    Vista.medir();
+  }
+  var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  /** «2026-11-16» → { dia: 'lunes', n: 16, mes: 'noviembre', anio: 2026 } sin pasar por la zona horaria del navegador. */
+  function fechaDe(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+    if (!m) return null;
+    var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+    return { dia: DIAS[d.getUTCDay()], n: +m[3], mes: MESES[+m[2] - 1], anio: +m[1] };
+  }
+  function fechaLarga(iso) { var f = fechaDe(iso); return f ? f.dia + ' ' + f.n + ' de ' + f.mes : iso || ''; }
+</script>

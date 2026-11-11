@@ -1,0 +1,78 @@
+<style>
+  dl { display: grid; grid-template-columns: 7em 1fr; gap: 6px 12px; margin: 0; }
+  dt { color: var(--apagado); font-variant-caps: all-small-caps; letter-spacing: 0.04em; }
+  dd { margin: 0; }
+</style>
+<div id="raiz"><p class="apagado">Preparando la clase…</p></div>
+<script>
+  (function () {
+    var enviando = false;
+    var MODALIDAD = { presencial: 'Presencial', online: 'Online', telefono: 'Por teléfono' };
+
+    function recibir(d, args) {
+      if (!d || d.error) {
+        pintar(el('p', { class: 'aviso aviso--mal' }, (d && d.error) || 'No hay clase que enseñar.'));
+        return;
+      }
+      var hecha = d.pedida === true || d.creada === true || Vista.recordar('hecha') === '1';
+      var opositor = (d.como || args.como) === 'opositor';
+      var fecha = d.fecha || '';
+      var temas = d.temas || d.temas_propuestos || [];
+      var titulos = d.titulos || {};
+      var choques = d.choques || [];
+      var seguir = el('input', { type: 'checkbox', id: 'seguir' });
+      var estado = el('div', {});
+      var rotulo = opositor ? 'Pedir la clase' : 'Crear la clase';
+      var boton = el('button', { class: 'boton', type: 'button', disabled: choques.length > 0 }, rotulo);
+      seguir.addEventListener('change', function () { boton.disabled = !seguir.checked; });
+
+      boton.addEventListener('click', function () {
+        if (enviando) return;
+        enviando = true;
+        boton.disabled = true;
+        boton.textContent = opositor ? 'Pidiendo…' : 'Creando…';
+        var a = {};
+        Object.keys(args || {}).forEach(function (k) { if (k !== 'vistaPrevia') a[k] = args[k]; });
+        if (seguir.checked) a.aunque_choque = true;
+        Vista.llamar('agendar_clase', a).then(function (r) {
+          enviando = false;
+          if (r && (r.pedida || r.creada)) {
+            Vista.recordar('hecha', '1');
+            Vista.contar('El usuario ha ' + (r.pedida ? 'pedido la clase a su preparador' : 'creado la clase') + ' con el botón de la vista (' + (r.fecha || fecha) + '). ' + (r.aviso || '') + ' No la agendes otra vez.');
+            recibir(Object.assign({ como: opositor ? 'opositor' : 'preparador', con: d.con, titulos: titulos }, r), args);
+          } else {
+            boton.disabled = choques.length > 0 && !seguir.checked;
+            boton.textContent = rotulo;
+            estado.textContent = '';
+            estado.appendChild(el('p', { class: 'aviso aviso--mal' }, (r && r.error) || 'No se ha podido agendar.'));
+          }
+        });
+      });
+
+      var quien = d.preparador || d.alumno || d.con || '';
+      pintar([
+        el('div', { class: 'sobre' }, (opositor ? 'Clase con tu preparador' : 'Clase con tu alumno') + (hecha ? '' : ' · sin agendar')),
+        el('h1', {}, fechaLarga(fecha) + (fecha.length >= 16 ? ', ' + fecha.slice(11, 16) : '')),
+        el('hr', { class: 'filete' }),
+        el('dl', {}, [
+          el('dt', {}, opositor ? 'Preparador' : 'Alumno'), el('dd', {}, quien),
+          el('dt', {}, 'Duración'), el('dd', {}, (d.minutos || '') + ' min'),
+          el('dt', {}, 'Modalidad'), el('dd', {}, MODALIDAD[d.modalidad] || d.modalidad || ''),
+          el('dt', {}, 'Temas'), el('dd', {}, temas.length ? temas.map(function (t) { return el('div', {}, [el('span', { class: 'codigo' }, t), titulos[t] ? ' · ' + titulos[t] : '']); }) : 'Sin fijar'),
+          d.lugar ? el('dt', {}, 'Lugar') : null, d.lugar ? el('dd', {}, d.lugar) : null,
+          d.enlace ? el('dt', {}, 'Enlace') : null, d.enlace ? el('dd', {}, d.enlace) : null,
+          d.nota ? el('dt', {}, 'Nota') : null, d.nota ? el('dd', {}, d.nota) : null,
+        ]),
+        hecha ? el('p', { class: 'aviso aviso--bien' }, d.pedida ? 'Petición enviada.' : 'Clase creada.') : null,
+        d.aviso ? el('p', { class: 'aviso' }, d.aviso) : null,
+        !hecha && (d.avisos || []).length ? d.avisos.map(function (t) { return el('p', { class: 'aviso' }, t); }) : null,
+        !hecha && choques.length ? el('p', { class: 'aviso aviso--mal' }, [el('label', {}, [seguir, ' Pisa otra clase (' + choques.join(', ') + '). Marca aquí si quieres seguir de todos modos.'])]) : null,
+        hecha ? null : el('p', { class: 'apagado' }, opositor ? 'Es una petición: tu preparador la verá en su app y tiene que aceptarla.' : 'Se crea en tu agenda y en la del alumno, con los temas como propuesta.'),
+        el('div', { class: 'fila pie' }, hecha ? null : boton),
+        estado,
+      ]);
+    }
+
+    Vista.alRecibir(recibir);
+  })();
+</script>
