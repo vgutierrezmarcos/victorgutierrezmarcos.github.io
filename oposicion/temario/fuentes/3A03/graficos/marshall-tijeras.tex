@@ -1,0 +1,26 @@
+% Las tijeras de Marshall: la demanda (utilidad) y la oferta (coste) fijan
+% juntas el precio; excedente del consumidor (EC) y del productor (EP).
+% Demanda: p = 5 - 0,9 q; oferta: p = 0,8 + 0,6 q. Equilibrio E = (2,8; 2,48).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,declare function={dem(\q)=5-0.9*\q; ofe(\q)=0.8+0.6*\q;}]
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{5.8}{5.5}}
+  % 2: la hoja de la utilidad: precio de demanda
+  \capa{2}{\draw[curva1] plot[domain=0:4.6] (\x,{dem(\x)}) node[etiqueta,right] {$p^D(q)$};}
+  % 3: la hoja del coste: precio de oferta
+  \capa{3}{\draw[curva3] plot[domain=0:5.4] (\x,{ofe(\x)}) node[etiqueta,right] {$p^S(q)$};}
+  % 4: equilibrio
+  \capa{4}{\node[punto] (E) at (2.8,2.48) {};}
+  \capa{4}{\node[etiqueta,above=3pt] at (E) {$E$};}
+  \capa{4}{\proyeccion{(E)}{$q^*$}{$p^*$}}
+  % 5: excedente del consumidor
+  \capa{5}{\fill[area] (0,5) -- (0,2.48) -- (2.8,2.48) -- cycle;}
+  \capa{5}{\node[etiqueta] at (0.85,3.2) {EC};}
+  % 6: excedente del productor
+  \capa{6}{\fill[area2] (0,0.8) -- (0,2.48) -- (2.8,2.48) -- cycle;}
+  \capa{6}{\node[etiqueta] at (0.85,1.95) {EP};}
+\end{tikzpicture}
+\end{document}

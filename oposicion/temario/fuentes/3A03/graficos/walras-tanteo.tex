@@ -1,0 +1,30 @@
+% El tanteo de Walras en un mercado: el precio sube con exceso de demanda y
+% baja con exceso de oferta hasta vaciar el mercado.
+% Demanda D: p = 4,2 - 0,8 q; oferta S: p = 0,6 + 0,7 q.
+% Equilibrio E = (2,4; 2,28). Con p_1 = 3,3: D da 1,125 y S 3,857 (z < 0).
+% Con p_0 = 1,3: D da 3,625 y S 1,0 (z > 0).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,declare function={dem(\q)=4.2-0.8*\q; ofe(\q)=0.6+0.7*\q;}]
+  % 1: ejes
+  \capa{1}{\ejes{$q_k$}{$p_k$}{5.4}{4.6}}
+  % 2: demanda
+  \capa{2}{\draw[curva1] plot[domain=0.2:4.8] (\x,{dem(\x)}) node[etiqueta,right] {$D$};}
+  % 3: oferta
+  \capa{3}{\draw[curva3] plot[domain=0:5.0] (\x,{ofe(\x)}) node[etiqueta,right] {$S$};}
+  % 4: un precio alto: exceso de oferta y el precio baja
+  \capa{4}{\draw[guia] (0,3.3) node[left,text=black] {$p_k^1$} -- (1.125,3.3);}
+  \capa{4}{\draw[curvanueva] (1.125,3.3) -- (3.857,3.3) node[midway,above,etiqueta] {$z_k<0$};}
+  \capa{4}{\draw[flecha] (-0.75,3.2) -- (-0.75,2.45);}
+  % 5: un precio bajo: exceso de demanda y el precio sube
+  \capa{5}{\draw[guia] (0,1.3) node[left,text=black] {$p_k^0$} -- (1.0,1.3);}
+  \capa{5}{\draw[curvanueva] (1.0,1.3) -- (3.625,1.3) node[midway,below,etiqueta] {$z_k>0$};}
+  \capa{5}{\draw[flecha] (-0.75,1.4) -- (-0.75,2.1);}
+  % 6: equilibrio: z_k = 0
+  \capa{6}{\node[punto] (E) at (2.4,2.28) {};}
+  \capa{6}{\node[etiqueta,right=2pt] at (E) {$E$};}
+  \capa{6}{\proyeccion{(E)}{$q_k^*$}{$p_k^*$}}
+\end{tikzpicture}
+\end{document}
