@@ -1,0 +1,71 @@
+% AOD de los países del CAD (1960-2025) y de España (1980-2025) en % de la
+% RNB. Datos: ../datos/aod-cad-rnb.csv (OCDE, DAC1). Ruptura de serie en
+% 2018: hasta 2017, desembolsos netos; desde 2018, donación equivalente (dos
+% \addplot por serie). Meta del 0,7 % (Asamblea General de la ONU, 1970).
+% Valores de control: CAD 0,54 (1961, máximo), 0,21 (2001, mínimo), 0,37
+% (2022), 0,26 (2025, preliminar); España 0,27 (2025).
+% Orden de capas (CRITERIOS §7): ejes y referencias → líneas → puntos → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/aod-cad-rnb.csv}\aod
+\tikzset{
+  lineacad/.style={line width=1.8pt, tceemorado},
+  lineaespana/.style={thick, tceedorado},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7.5cm,
+      xmin=1959, xmax=2026, ymin=0, ymax=0.8,
+      xtick={1960,1970,...,2020,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ytick={0,0.1,...,0.8},
+      yticklabel style={font=\footnotesize, /pgf/number format/.cd,fixed,fixed zerofill,precision=1,use comma},
+      ylabel={\% de la renta nacional bruta},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      unbounded coords=discard,
+      legend style={at={(0.99,0.995)}, anchor=north east, draw=none,
+        font=\footnotesize, legend columns=2,
+        /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left, dicapas,
+    ]
+    % 1: ejes (los dibuja el axis)
+    % 2: meta del 0,7 % y cambio de método de 2018
+    \capa{2}{
+      \dicraya[dashed, tceerojo, thick]{(1959,0.7) (2026,0.7)}
+      \dicrotulo[font=\footnotesize, text=tceerojo, anchor=south west]{(1960,0.7)}{meta del 0,7\,\% (ONU, 1970)}
+      \dicraya[dashed, tceegris]{(2017.5,0) (2017.5,0.7)}
+      \dicrotulo[font=\scriptsize, text=tceegris!80!black, rotate=90, anchor=south east, align=right]{(2017.1,0.685)}{desde 2018,\\donación equivalente}
+    }
+    % 3: CAD, desembolsos netos hasta 2017 y donación equivalente desde 2018
+    \capa{3}{
+      \addplot[lineacad, forget plot, restrict x to domain=1960:2017] table[x=anio, y=cad] {\aod};
+      \addplot[lineacad, forget plot, restrict x to domain=2018:2025] table[x=anio, y=cad] {\aod};
+    }
+    % 4: España (desde 1980), con el mismo corte
+    \capa{4}{
+      \addplot[lineaespana, forget plot, restrict x to domain=1980:2017] table[x=anio, y=espana] {\aod};
+      \addplot[lineaespana, forget plot, restrict x to domain=2018:2025] table[x=anio, y=espana] {\aod};
+    }
+    % 5: puntos de 1961, 2001, 2022 y 2025
+    \capa{5}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=tceemorado]
+        coordinates {(1961,0.54) (2001,0.21) (2022,0.37) (2025,0.26)};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=tceedorado] coordinates {(2025,0.27)};
+    }
+    % 6: rótulos de los puntos y leyenda
+    \capa{6}{
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=south]{(1961,0.555)}{0,54}
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=north]{(2001,0.195)}{0,21}
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=south, align=center]{(2022.4,0.385)}{0,37\\[-2pt]{\scriptsize refugiados y Ucrania}}
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=north west]{(2025.2,0.255)}{0,26}
+      \dicrotulo[font=\footnotesize, text=tceedorado!85!black, anchor=south west]{(2025.2,0.275)}{0,27}
+      \addlegendimage{lineacad}\addlegendentry{países del CAD}
+      \addlegendimage{lineaespana}\addlegendentry{España}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

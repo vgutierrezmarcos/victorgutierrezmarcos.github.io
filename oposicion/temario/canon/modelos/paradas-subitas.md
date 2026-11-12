@@ -29,6 +29,7 @@
 | 3.B.15 | Regímenes | mención (hecho, 12/11/2026) | Miedo a flotar (`CalvoReinhart2002`, I.3.1 y II.2) desarrollado allí; las 3 hipótesis de Eichengreen y Hausmann (riesgo moral, pecado original, compromiso) en I.2.4 con `\vertema{3.B.11}`; falta `\vertema{3.B.17}` junto al pecado original (cosmético; `pendientes-coherencia.md`, «Pendiente del 3.B.15») | El mecanismo de la crisis |
 | 3.B.16 | Integración monetaria | mención (hecho, 11/11/2026) | La parada súbita dentro del euro y los saldos TARGET | — |
 | 3.B.18 | Globalización financiera | mención (prevista) | Volatilidad de los flujos de capital | — |
+| 3.B.29 | Financiación exterior y deuda | mención (hecho, 12/11/2026) | El riesgo de parada súbita de los préstamos bancarios y los bonos en `tab:fuentes-desarrollo` (`Calvo1998SuddenStops`); las crisis de los 90 de renta media como crisis de la cuenta financiera, `\vertema{3.B.17}` | — |
 | 3.B.21 | Historia desde 1973 | uso | México 1994-1995 como crisis **mixta** (no «primera generación» ni «segunda pura») | El modelo |
 | 1D01 | Dictamen | uso (aprobada) | Vulnerabilidad exterior | — |
 

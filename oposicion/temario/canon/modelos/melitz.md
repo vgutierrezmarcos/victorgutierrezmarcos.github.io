@@ -23,6 +23,7 @@ $$p(\varphi) = \frac{\sigma}{\sigma-1}\,\frac{w}{\varphi}, \qquad p_x(\varphi) =
 | 3.B.34, 3.B.39, 3.B.41 | OMC, política comercial UE | mención | Ganancias de productividad por selección | — |
 | 4.A.24, 4.A.25 | Internacionalización de la empresa española | mención | Empresas exportadoras más productivas; Helpman-Melitz-Yeaple para IED | Ecuaciones |
 | 3.A.18 | Competencia monopolística | mención (hecho, 19/10/2026) | Extensión de Dixit-Stiglitz a empresas heterogéneas, en una línea con `\vertema{3.B.6}` | El modelo |
+| 3.B.29 | Fuentes de la financiación exterior | mención (hecho, 12/11/2026) | IED frente a exportar: solo las más productivas pagan el coste fijo de producir fuera (Helpman, Melitz y Yeaple, 2004; no «Antràs-Yeaple»: E15), junto al paradigma ecléctico de Dunning (1980), `\vertema{3.B.18}` | — |
 
 ## Divergencias encontradas en el temario actual
 - En 3.B.6 la productividad es $\phi$ en el texto y $\varphi$ en las fórmulas, y la función de costes del inventario ($CT = w(F^d + F^x + q/\varphi + \tau q_x)$) mezcla costes fijos y variables de ambos mercados: canon $CT^d = w(F^d + q/\varphi)$ y $CT^x = w(F^x + \tau q_x/\varphi)$.

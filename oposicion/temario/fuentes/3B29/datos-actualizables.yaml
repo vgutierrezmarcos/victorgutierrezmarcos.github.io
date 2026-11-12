@@ -1,0 +1,330 @@
+tema: 3B29
+fecha_inventario: 2026-11-12
+# Fase 2 (datos, 12/11/2026); textos cambiados por los literales del 3B29.tex en la fase 3
+# (parte 1: introducción y I; parte 2: II y III, 12/11/2026).
+# Quedan fuera las fechas históricas (1956, 1978, 1982, 1985, 1989, 1996, 1999, 2005, 2020,
+# 2023, 2025) y los umbrales que son normas (HIPC 150/250 %; elemento de donación
+# 45/15/10 %; LIC DSF 30/40/55 y 140/180/240 %, este último en la ficha del 3B12 con
+# su revisión de 2026: cambia cuando se publique la nota de orientación nueva, verano de 2027).
+# Los CSV están en datos/.
+datos:
+  - id: deuda-externa-lmic-2025
+    texto: "la deuda externa de los países de renta baja y media llegó en 2025 a un récord de 9,4 billones de dólares, un 5,5~\\% más que un año antes"
+    donde: [3B29.tex]
+    valor: [9.4, 5.5]
+    unidad: "billones de dólares y %"
+    periodo: 2025
+    fuente: [BancoMundial2026IDR, BancoMundial2026IDS]
+    organismo: Banco Mundial
+    serie: "International Debt Statistics, LMY, DT.DOD.DECT.CD (9.445,0 miles de millones en 2025)"
+    url: https://www.bancomundial.org/es/news/press-release/2026/11/05/developing-countries-external-debt-surges-to-record-9-4-trillion
+    periodicidad: anual (International Debt Report, noviembre-diciembre)
+    proxima: 2027-11
+    familia: bm-ids
+    depende: [datos/deuda-externa-renta-baja-media.csv]
+    frase: "II (deuda en la actualidad) y gráfico de deuda"
+
+  - id: servicio-deuda-lmic-2025
+    texto: "pagaron 1,4 billones de principal e intereses, el 13,1~\\% de sus exportaciones"
+    donde: [3B29.tex]
+    valor: [1.4, 1.9]
+    unidad: "billones de dólares y %"
+    periodo: 2025
+    fuente: [BancoMundial2026IDR, BancoMundial2026IDS]
+    organismo: Banco Mundial
+    serie: "IDS, LMY, DT.TDS.DECT.CD (1.398,8 miles de millones en 2025; 1.373,3 en 2024) y DT.TDS.DECT.EX.ZS (13,1 % de las exportaciones)"
+    url: https://api.worldbank.org/v2/sources/6/country/LMY/series/DT.TDS.DECT.CD/counterpart-area/WLD/time/all?format=json
+    periodicidad: anual
+    proxima: 2027-11
+    familia: bm-ids
+    depende: [datos/deuda-externa-renta-baja-media.csv]
+    frase: "II (deuda en la actualidad); gráfico P12"
+
+  - id: transferencias-netas-deuda-2022-2025
+    texto: "entre 2022 y 2025 pagaron 436.000 millones de dólares más de lo que recibieron en financiación nueva, aunque en 2025 los flujos netos de deuda a largo plazo volvieron a ser positivos"
+    donde: [3B29.tex]
+    valor: [436, 45, -118]
+    unidad: "miles de millones de dólares"
+    periodo: 2022-2025
+    fuente: BancoMundial2026IDR
+    organismo: Banco Mundial
+    serie: "Nota de prensa del IDR 2026 (transferencias netas sobre deuda a largo plazo)"
+    url: https://www.bancomundial.org/es/news/press-release/2026/11/05/developing-countries-external-debt-surges-to-record-9-4-trillion
+    periodicidad: anual
+    proxima: 2027-11
+    familia: bm-ids
+    depende: []
+    frase: "II (deuda en la actualidad). El IDR 2025 daba 741.000 millones para 2022-2024 con otra definición: no mezclar"
+
+  - id: flujos-lmic-2025
+    texto: "en 2025, los países de renta baja y media recibieron unos 700.000 millones de dólares en remesas, más que en inversión directa (unos 494.000 millones), y una entrada neta de deuda de 423.500 millones, más del doble que un año antes; la ayuda oficial que recibieron en 2023, último año con dato, fue de unos 252.000 millones"
+    donde: [3B29.tex]
+    valor: {remesas: 703.6, ied: 494.3, deuda_neta: 423.5, cartera_acciones: 9.3}
+    unidad: "miles de millones de dólares"
+    periodo: 2025
+    fuente: [BancoMundial2026WDIFlujos, BancoMundial2026IDS]
+    organismo: Banco Mundial
+    serie: "WDI LMY: BX.TRF.PWKR.CD.DT, BX.KLT.DINV.CD.WD, BX.PEF.TOTL.CD.WD; IDS DT.NFL.DECT.CD. AOD recibida (DT.ODA.ODAT.CD): último dato 2023 (251,9)"
+    url: https://api.worldbank.org/v2/country/LMY/indicator/BX.TRF.PWKR.CD.DT?format=json
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/flujos-renta-baja-media.csv]
+    frase: "I (fuentes de financiación) y gráfico P10. FIDA da 728.600 millones de remesas en 2025 con otra cobertura"
+
+  - id: aod-cad-2025
+    texto: "un 23,1~\\% en 2025, la mayor caída registrada, hasta 174.300 millones de dólares y el 0,26~\\% de la renta nacional bruta de los donantes, el nivel más bajo desde 2004"
+    donde: [3B29.tex]
+    valor: {aod_musd: 174301.6, pct_rnb_2025: 0.26, pct_rnb_2024: 0.34, caida_real: -23.1}
+    unidad: "millones de dólares y % de la RNB"
+    periodo: 2025 (preliminar)
+    fuente: [OCDE2026AODPreliminar, OCDE2026DAC1]
+    organismo: OCDE (CAD)
+    serie: "DAC1, DONOR=DAC, MEASURE=11010 (V y Q base 2024) y 11002"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC1,/DAC..11010+11002....?startPeriod=2018&format=csvfilewithlabels
+    periodicidad: anual (preliminar en abril, definitivo en diciembre)
+    proxima: 2026-12
+    familia: ocde-aod
+    depende: [datos/aod-cad-rnb.csv]
+    frase: "III (evolución de la AOD) y gráfico P11. Revisar en diciembre de 2026 (definitivos de 2025) y en abril de 2027 (preliminares de 2026)"
+
+  - id: aod-cad-2024-final
+    texto: "tras un máximo en 2023, la AOD bajó un 6~\\% real en 2024"
+    donde: [3B29.tex]
+    valor: [-6.1, -7.1]
+    unidad: "%"
+    periodo: 2024
+    fuente: [OCDE2025AODFinal2024, OCDE2026DAC1]
+    organismo: OCDE (CAD)
+    serie: "DAC1, 11010, precios constantes de 2024: 215.141,8 frente a 229.211,9"
+    url: https://www.oecd.org/en/data/insights/data-explainers/2025/12/final-oecd-statistics-on-oda-and-other-development-finance-flows-in-2024-key-figures-and-trends.html
+    periodicidad: histórico (revisiones)
+    proxima: null
+    familia: ocde-aod
+    depende: [datos/aod-cad-rnb.csv]
+    frase: "III"
+
+  - id: aod-donantes-07-2025
+    texto: "Tres cuartas partes de la caída de 2025 son de Estados Unidos, que recortó su ayuda un 56,9~\\%; Alemania pasó a ser, por primera vez, el mayor donante"
+    donde: [3B29.tex]
+    valor: {NOR: 1.03, LUX: 0.99, SWE: 0.85, DNK: 0.72, DEU_musd: 29088.6, USA_caida: -56.9, USA_pct: 0.09}
+    unidad: "% de la RNB, millones de dólares y %"
+    periodo: 2025 (preliminar)
+    fuente: [OCDE2026AODPreliminar, OCDE2026DAC1]
+    organismo: OCDE (CAD)
+    serie: "DAC1 11002 por donante; 11010 V (Alemania) y Q (Estados Unidos: 28.195,7 frente a 65.475,4)"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC1,/..11002....?startPeriod=2024&format=csvfilewithlabels
+    periodicidad: anual
+    proxima: 2026-12
+    familia: ocde-aod
+    depende: []
+    frase: "III"
+
+  - id: aod-espana-2025
+    texto: "dio 4.554 millones de euros en 2025, el 0,27~\\% de su renta nacional bruta y la cifra más alta en 15 años"
+    donde: [3B29.tex]
+    valor: {meur: 4553.5, pct_rnb: 0.27}
+    unidad: "millones de euros y % de la RNB"
+    periodo: 2025 (preliminar)
+    fuente: [OCDE2026DAC1, Exteriores2026AOD, BOE2023LeyCooperacion]
+    organismo: OCDE (CAD) y MAEUEC
+    serie: "DAC1 ESP 11010 XDC y 11002"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC1,/ESP..11010+11002....?startPeriod=2018&format=csvfilewithlabels
+    periodicidad: anual
+    proxima: 2026-12
+    familia: ocde-aod
+    depende: [datos/aod-cad-rnb.csv]
+    frase: "III, una frase con \\vertema{4.A.26}. Coordinar con el 4.A.26"
+
+  - id: ayuda-desligada-2022
+    texto: "en 2022, el 81,5~\\% de los compromisos bilaterales de AOD de los países del CAD estaba desligado"
+    donde: [3B29.tex]
+    valor: 81.5
+    unidad: "% de los compromisos bilaterales"
+    periodo: 2022
+    fuente: OCDE2026DAC7b
+    organismo: OCDE (CAD)
+    serie: "DAC7b, DONOR=DAC, MEASURE=74, TYING_STATUS 510/500, precios corrientes (último año con agregado del CAD: 2022)"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC7B,/DAC.......?startPeriod=2019&format=csvfilewithlabels
+    periodicidad: anual (con retraso)
+    proxima: 2027-01
+    familia: ocde-aod
+    depende: []
+    frase: "III (ayuda ligada). Sustituye el «80 %» sin fuente de Tebar"
+
+  - id: lic-dsa-riesgo-2026
+    texto: "a 31 de marzo de 2026, de los países de renta baja que analiza el marco del FMI y el Banco Mundial, 9 estaban en sobreendeudamiento y 23 en riesgo alto"
+    donde: [3B29.tex]
+    valor: {sobreendeudamiento: 9, alto: 23, moderado: 27, bajo: 8}
+    unidad: "países"
+    periodo: 2026-03-31
+    fuente: FMI2026ListaDSA
+    organismo: FMI
+    serie: "List of LIC DSAs for PRGT-eligible countries (nota al pie)"
+    url: https://www.imf.org/external/pubs/ft/dsa/dsalist.pdf
+    periodicidad: trimestral o al publicar cada DSA
+    proxima: 2026-12
+    familia: fmi-dsa
+    depende: []
+    frase: "II.2 (de la pandemia a hoy). PDF no legible en la fase de datos: cifras del buscador; comprobar en el PDF antes de publicar"
+
+  - id: hipc-paises
+    texto: "de los 39 países de la PPME, 37 han llegado al punto de culminación"
+    donde: [3B29.tex]
+    valor: {elegibles: 39, culminacion: 37, decision: 1, predecision: 1}
+    unidad: "países"
+    periodo: 2026-11
+    fuente: [FMI2023HIPC, FMI2023Somalia]
+    organismo: FMI y Banco Mundial
+    serie: "Factsheet HIPC (enero de 2023: 36 + Somalia y Sudán + Eritrea) y nota 23/438 (Somalia, 37.º)"
+    url: https://www.imf.org/en/About/Factsheets/Sheets/2023/Debt-relief-under-the-heavily-indebted-poor-countries-initiative-HIPC
+    periodicidad: cuando un país cambia de fase
+    proxima: null
+    familia: fmi-hipc
+    depende: []
+    frase: "II.2 (PPME e IADM)"
+
+  - id: club-paris-miembros
+    texto: "Tiene 22 miembros permanentes, entre ellos España; los últimos en entrar fueron Corea y Brasil, en 2016"
+    donde: [3B29.tex]
+    valor: 22
+    unidad: "miembros"
+    periodo: 2026-11
+    fuente: [ClubParis2026Miembros, Francia2026ClubParis]
+    organismo: Club de París
+    serie: "FAQ del Club de París"
+    url: https://clubdeparis.org/en/frequently-asked-questions
+    periodicidad: cuando entra un miembro
+    proxima: null
+    familia: club-paris
+    depende: []
+    frase: "II (Club de París). Mismo dato que el 3.B.19 si lo da"
+
+  - id: marco-comun-casos
+    texto: "lo han pedido 4 países: Chad, el primero en cerrar un acuerdo con sus acreedores oficiales (2022), Zambia, Ghana y Etiopía"
+    donde: [3B29.tex]
+    valor: 4
+    unidad: "países"
+    periodo: 2026-11
+    fuente: [G202020MarcoComun, Francia2026MarcoComun]
+    organismo: G-20 y Club de París
+    serie: "Página Common Framework del Tesoro francés (secretaría del Club de París)"
+    url: https://bercy1.applis.finances.gouv.fr/en/common-framework
+    periodicidad: cuando cambia el estado de un caso
+    proxima: 2027-01
+    familia: club-paris
+    depende: []
+    frase: "II (actualidad). El estado de Zambia, Ghana y Etiopía sale de prensa: ver propuestas-datos.md"
+
+  - id: reino-unido-aod-03
+    texto: "El Reino Unido bajará la suya del 0,5~\\% al 0,3~\\% de la renta nacional bruta en 2027 para pagar más defensa"
+    donde: [3B29.tex]
+    valor: [0.5, 0.3]
+    unidad: "% de la RNB"
+    periodo: 2027
+    fuente: ReinoUnido2025AOD
+    organismo: Gobierno del Reino Unido
+    serie: "Declaración del primer ministro de 25/2/2025"
+    url: https://www.gov.uk/government/speeches/prime-ministers-oral-statement-to-the-house-of-commons-25-february-2025
+    periodicidad: cuando cambia la meta
+    proxima: 2027-12
+    familia: ocde-aod
+    depende: []
+    frase: "III (recortes). Pasar a pasado en 2028"
+
+  # --- Introducción y apartado I (fase 3, parte 1, 12/11/2026): literales del 3B29.tex ---
+  - id: brecha-ods
+    texto: "a los países en desarrollo les faltan unos 4 billones de dólares al año para cumplir los Objetivos de Desarrollo Sostenible"
+    donde: [3B29.tex]
+    valor: 4
+    unidad: "billones de dólares al año"
+    periodo: 2025
+    fuente: [ONU2025Sevilla, ONU2025FfD4Cierre]
+    organismo: Naciones Unidas (FfD4)
+    serie: "Estimación de la brecha de financiación de los ODS citada en el Compromiso de Sevilla y en la nota de cierre de la FfD4 («$4 trillion annual SDG financing gap»)"
+    url: https://www.un.org/sustainabledevelopment/blog/2025/07/ffd4-closing-press-release/
+    periodicidad: irregular (informes de la ONU sobre la financiación del desarrollo)
+    proxima: null
+    familia: onu-ffd
+    depende: []
+    frase: "Introducción, enganche"
+
+  - id: aod-cad-2025-intro
+    texto: "la ayuda oficial de los donantes de la OCDE cayó un 23,1~\\% en términos reales, la mayor caída registrada, hasta el 0,26~\\% de su renta nacional bruta"
+    donde: [3B29.tex]
+    valor: {caida_real: -23.1, pct_rnb: 0.26}
+    unidad: "% real y % de la RNB"
+    periodo: 2025 (preliminar)
+    fuente: OCDE2026AODPreliminar
+    organismo: OCDE (CAD)
+    serie: "La misma que aod-cad-2025 (DAC1, 11010 y 11002)"
+    url: https://www.oecd.org/en/about/news/press-releases/2026/04/international-aid-fell-sharply-in-2025-says-oecd.html
+    periodicidad: anual (preliminar en abril, definitivo en diciembre)
+    proxima: 2026-12
+    familia: ocde-aod
+    depende: [datos/aod-cad-rnb.csv]
+    frase: "Introducción, enganche (cambiar a la vez que aod-cad-2025)"
+
+  - id: servicio-deuda-lmic-2025-intro
+    texto: "mientras los países de renta baja y media pagaban 1,4 billones de dólares por el servicio de su deuda externa"
+    donde: [3B29.tex]
+    valor: 1.4
+    unidad: "billones de dólares"
+    periodo: 2025
+    fuente: BancoMundial2026IDR
+    organismo: Banco Mundial
+    serie: "La misma que servicio-deuda-lmic-2025 (IDS, DT.TDS.DECT.CD)"
+    url: https://www.bancomundial.org/es/news/press-release/2026/11/05/developing-countries-external-debt-surges-to-record-9-4-trillion
+    periodicidad: anual
+    proxima: 2027-11
+    familia: bm-ids
+    depende: [datos/deuda-externa-renta-baja-media.csv]
+    frase: "Introducción, enganche (cambiar a la vez que servicio-deuda-lmic-2025)"
+
+  - id: transferencias-netas-intro
+    texto: "Entre 2022 y 2025 pagaron 436.000 millones de dólares más por su deuda de lo que recibieron en financiación nueva"
+    donde: [3B29.tex]
+    valor: 436
+    unidad: "miles de millones de dólares"
+    periodo: 2022-2025
+    fuente: BancoMundial2026IDR
+    organismo: Banco Mundial
+    serie: "La misma que transferencias-netas-deuda-2022-2025"
+    url: https://www.bancomundial.org/es/news/press-release/2026/11/05/developing-countries-external-debt-surges-to-record-9-4-trillion
+    periodicidad: anual
+    proxima: 2027-11
+    familia: bm-ids
+    depende: []
+    frase: "Introducción, relevancia (cambiar a la vez que transferencias-netas-deuda-2022-2025)"
+
+  - id: cartera-lmic-2024
+    texto: "en 2024 salió en términos netos de los países de renta baja y media"
+    donde: [3B29.tex]
+    valor: -34.2
+    unidad: "miles de millones de dólares"
+    periodo: 2024
+    fuente: BancoMundial2026WDIFlujos
+    organismo: Banco Mundial
+    serie: "WDI LMY, BX.PEF.TOTL.CD.WD (−34,2 en 2024; +9,3 en 2025)"
+    url: https://api.worldbank.org/v2/country/LMY/indicator/BX.PEF.TOTL.CD.WD?format=json
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/flujos-renta-baja-media.csv]
+    frase: "I.3, inversión de cartera en acciones"
+
+  - id: financiacion-climatica
+    texto: "el objetivo de 100.000 millones de dólares anuales, fijado para 2020, solo se alcanzó en 2022, con 115.900 millones"
+    donde: [3B29.tex, 3B31.tex]
+    valor: 115.9
+    unidad: "miles de millones de dólares"
+    periodo: 2022
+    fuente: OCDE2024Financiacion
+    organismo: OCDE
+    serie: "Financiación climática de los países desarrollados (misma frase y clave que el 3.B.31)"
+    url: https://www.oecd.org/en/about/news/press-releases/2024/05/developed-countries-materially-surpassed-their-usd-100-billion-climate-finance-commitment-in-2022-oecd.html
+    periodicidad: bienal
+    proxima: null
+    familia: ocde-clima
+    depende: []
+    frase: "I.3, financiación climática (cambiar a la vez que el 3.B.31)"
