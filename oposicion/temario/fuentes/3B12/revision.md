@@ -149,7 +149,7 @@ Fecha de consulta de todo: 11/11/2026 (salvo lo que viene del 3.B.11, consultado
 
 Opción aplicada entre corchetes.
 
-1. **I.4 nuevo** (IS-LM-BP, Mundell y tipo flexible) en lugar de repartirlo como extensiones de I.3 y II.2. [I.4]
+1. **I.4 nuevo** (IS-LM-BP, Mundell y tipo flexible) en lugar de repartirlo como extensiones de I.3 y II.2. [I.4] **Respuesta de Víctor (12/11/2026):** se mantiene el I.4.
 2. **Títulos retocados** respecto al Word (K2), p. ej. «Enfoque absorción» → «El enfoque de la absorción»; el de I.1 se corta tras «elasticidades». [Retocados]
 3. **Notación de la 1D01** ($D^*$ y $\mathrm{CC}^{\text{sin int.}}$) frente a $b$ y $-d$ de aquí y del 3.B.11: decisión pendiente en el canon. [$b$, $d$]
 4. **Coste de la deuda en el ejemplo de España**: rendimiento implícito de la posición neta (dato) frente al bono a 10 años (C35) o a un tipo real supuesto del 3 % (Word). Con el bono, 2007 da −2,0 % igual, pero 2015, 2019 y 2025 cambian algo. [Rendimiento implícito; el 3 % supuesto, en el anexo D: no cambia la conclusión]
@@ -163,7 +163,7 @@ Opción aplicada entre corchetes.
 12. **Crisis del Tequila**: la cifra «una quinta parte fue inversión directa» no tiene fuente. [Sin la cifra]
 13. **DSA**: la perturbación normalizada de una depreciación real del 30 % y que el SRDSF no tenga módulo de deuda externa (V15, deducido de la nota de 2022) no están comprobados. [Sin el 30 %; el SRDSF como marco de deuda pública y la exterior en la evaluación del sector exterior]
 14. **La ilusión monetaria** como mecanismo de Alexander: está en Alexander (1952), sin página comprobada.
-15. **Enganche** parecido al del 3.B.11 (mismas cifras de 2007 y 2025; aquí el ángulo es el ajuste sin devaluación). La pegatina «lo temporal se financia; lo permanente se ajusta» es de la 1D01 (frase, no refrán). [Aplicados]
+15. **Enganche** parecido al del 3.B.11 (mismas cifras de 2007 y 2025; aquí el ángulo es el ajuste sin devaluación). La pegatina «lo temporal se financia; lo permanente se ajusta» es de la 1D01 (frase, no refrán). [Aplicados] **Respuesta de Víctor (12/11/2026):** enganche «De aquellos polvos, estos lodos» aprobado.
 16. **Longitud**: el tema ocupa 35 páginas (el Word, 47 con anexos); el cante cuadra en 30′, pero III.4 c) tiene 8 extensiones que en el cante son solo títulos.
 17. **Fichas nuevas** `absorcion`, `multiplicador-comercio-exterior` (¿ficha propia o alias de `mundell-fleming`?) y `cuenta-corriente-intertemporal`.
 

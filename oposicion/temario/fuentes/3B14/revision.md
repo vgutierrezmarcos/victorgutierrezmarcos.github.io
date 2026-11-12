@@ -94,12 +94,12 @@ Todo lo que caduca está en `datos-actualizables.yaml` (4 entradas: `trienal-vol
 
 ## 7. Dudas abiertas
 
-1. **Estructura** (D-1, C1 frente a K1): se ha aplicado la del original de Víctor (3 bloques: tradicionales, activos, recientes), con el tipo real de equilibrio en III.1.3. La alternativa de contenido (I paridades, II nominal, III real) cambiaría los títulos de primer nivel. Aplicada: la del original.
+1. **Estructura** (D-1, C1 frente a K1): se ha aplicado la del original de Víctor (3 bloques: tradicionales, activos, recientes), con el tipo real de equilibrio en III.1.3. La alternativa de contenido (I paridades, II nominal, III real) cambiaría los títulos de primer nivel. Aplicada: la del original. **Respuesta de Víctor (12/11/2026):** bloques del Word (tradicionales, de activos y recientes).
 2. **Notación de Dornbusch** (D-2): $k$, $h$, ψ, ν, $\bar a$, θ local (coherente con el 3.A.35) en lugar de φ, λ, π, δ, $u$ de Dornbusch (1976). Aplicada: la del canon. Además, a petición del coordinador y para que coincida con el gráfico de fases, la demanda lleva el término $-b\,i$ también en el cuerpo (II.1.2).
 3. **Notación de Branson** (D-3): pesos $w_{\mathrm M}$, $w_{\mathrm B}$, $w_{\mathrm B^*}$ (los de la cartera de Tobin del 3.A.35) en lugar de $m$, $b$, $f$ o $s$. Aplicada: $w$.
 4. **Peso de los no comerciables en B-S**: $\omega_N$ (coherencia) frente a $\alpha$ (contenido). Aplicada: $\omega_N$.
 5. **Fichas nuevas** (D-4): `ppa`, `balassa-samuelson`, `enfoque-monetario-tc` (o una sola `enfoque-monetario` con 2 variantes) y `oferta-demanda-divisas` (referencia en el 3.B.13 o aquí). Recomendado: las 4, con `oferta-demanda-divisas` en el 3.B.13. Lo decide Víctor al aplicar el canon.
-6. **Refranes** (D-5): enganche e idea final «El hombre propone y Dios dispone» (en lugar de «El tiempo pone a cada uno en su sitio» de C5); pegatinas «dar tiempo al tiempo» (PPA), «las prisas no son buenas consejeras» (sobrerreacción), «cada día trae su afán» (paseo aleatorio). Ninguno usado en otro tema.
+6. **Refranes** (D-5): enganche e idea final «El hombre propone y Dios dispone» (en lugar de «El tiempo pone a cada uno en su sitio» de C5); pegatinas «dar tiempo al tiempo» (PPA), «las prisas no son buenas consejeras» (sobrerreacción), «cada día trae su afán» (paseo aleatorio). Ninguno usado en otro tema. **Respuesta de Víctor (12/11/2026):** enganche y pegatinas aprobados.
 7. **III.2.3 nuevo** (D-6): Gabaix y Maggiori e Itskhoki y Mukhin (1′30″ de cante) a costa de recortar Corsetti-Pesenti a mención. Aplicado.
 8. **Wolff (1987)** (V18): la extensión de Dornbusch con la PPA solo para los comerciables va sin autor; el Wolff de 1987 que existe trata de predicción.
 9. **Edgeworth** (V36): la comparación del reloj parece de «The Theory of International Values» (1894, parte II), no de 1905; va en paráfrasis, sin año ni cita, hasta comprobarla en papel.

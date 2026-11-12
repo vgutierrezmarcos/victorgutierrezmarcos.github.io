@@ -182,6 +182,27 @@ def datos_seo(tema):
 
 
 # --- 2. Gráficos -------------------------------------------------------------------
+def fecha_grafico(tex):
+    """Fecha del gráfico: la de su .tex o la de los datos que lee, si son más
+    recientes (los CSV de pgfplots, \\input de otro .tex de la carpeta). Así se
+    recompila cuando solo cambian los datos (../datos/*.csv). Los estilos comunes (latex/) no
+    cuentan: si cambian, se reconstruye todo con --forzar-graficos."""
+    fecha = os.path.getmtime(tex)
+    carpeta = os.path.dirname(tex)
+    try:
+        texto = re.sub(r'(?<!\\)%[^\n]*', '', open(tex, encoding='utf-8').read())
+    except OSError:
+        return fecha
+    for ref in re.findall(r'\{([^{}\s]+?\.(?:csv|dat|txt|tsv|tex))\}', texto) + \
+               [r + '.tex' for r in re.findall(r'\\input\{([^{}.\s]+)\}', texto)]:
+        if 'latex/' in ref or os.path.isabs(ref):
+            continue
+        ruta = os.path.join(carpeta, ref)
+        if os.path.exists(ruta):
+            fecha = max(fecha, os.path.getmtime(ruta))
+    return fecha
+
+
 def compilar_graficos(tema, forzar=False, solo=None):
     """Compila cada graficos/*.tex a PDF, SVG y PNG. Devuelve la lista de errores."""
     errores = []
@@ -191,7 +212,7 @@ def compilar_graficos(tema, forzar=False, solo=None):
         if solo and os.path.basename(base) not in solo:
             continue
         pdf, svg, png = base + '.pdf', base + '.svg', base + '.png'
-        if not forzar and all(os.path.exists(x) and os.path.getmtime(x) >= os.path.getmtime(tex)
+        if not forzar and all(os.path.exists(x) and os.path.getmtime(x) >= fecha_grafico(tex)
                               for x in (pdf, svg, png)):
             continue
         nombre = os.path.basename(tex)
@@ -537,6 +558,9 @@ def preparar_pandoc(tema, tex, formato):
             for fila in filas(dentro):
                 fila = re.sub(r'\\label\{([^}]+)\}', etiqueta, fila)
                 fila = re.sub(r'^\s*\[[^\]]*\]', '', fila)  # «\\[2pt]»
+                # «&&» separa la fórmula de su comentario (\text{…}): sin él, en una
+                # ecuación suelta saldrían pegados; se deja un espacio ancho
+                fila = re.sub(r'(?<!\\)&\s*&', r'\\qquad ', fila)
                 fila = re.sub(r'\\(nonumber|notag)\b', '', fila).replace('&', '').strip()
                 if fila:
                     ecuaciones.append(f'\\begin{{equation*}}\n{fila}\n\\end{{equation*}}')
