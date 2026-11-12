@@ -1,0 +1,49 @@
+% Participación de España en las cadenas globales de valor: hacia atrás y
+% hacia delante. 3 países en fila: el país 1 vende insumos a España, España
+% monta y exporta (exportaciones brutas X) al país 3, que los incorpora a lo
+% que reexporta al resto del mundo.
+%   hacia atrás:   VAE/X, valor añadido extranjero en las exportaciones de España;
+%   hacia delante: VAI/X, valor añadido español en las exportaciones de otros;
+%   índice de participación (eq:participacion-cgv): (VAE + VAI)/X.
+% Colores como en contenido-importado-ue (3.A.31): hacia atrás en azul, hacia
+% delante en dorado.
+% Elaboración propia a partir de Koopman, Wang y Wei (2014) y Banco Mundial (2020).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    pais/.style={draw=#1,very thick,rounded corners=4pt,fill=#1!8,
+      align=center,text width=2.5cm,minimum height=1.3cm,font=\small},
+    pais/.default=black,
+    flujo/.style={->,very thick,#1},
+    rotflujo/.style={etiqueta,font=\footnotesize,align=center,below=3pt},
+    llave/.style={decorate,decoration={brace,amplitude=6pt},thick,#1},
+    rotllave/.style={etiqueta,font=\footnotesize,align=center,above=8pt,text width=5.4cm}]
+  % 1: los 3 países en fila (y el resto del mundo, destino final)
+  \capa{1}{\node[pais=tceegris] (p1) at (0,0) {País 1\\proveedor};}
+  \capa{1}{\node[pais=tceemorado] (es) at (4.6,0) {España};}
+  \capa{1}{\node[pais=tceegris] (p3) at (9.2,0) {País 3\\montaje y\\reexportación};}
+  \capa{1}{\node[etiqueta,align=center,font=\small] (rm) at (13.1,0) {resto del\\mundo};}
+  % 2: insumos importados (llevan el valor añadido extranjero)
+  \capa{2}{\draw[flujo=tceeazul] (p1.east) -- (es.west)
+    node[midway,rotflujo] {insumos\\importados};}
+  % 3: exportaciones brutas de España
+  \capa{3}{\draw[flujo=tceemorado] (es.east) -- (p3.west)
+    node[midway,rotflujo] {exportaciones\\brutas, $X$};}
+  % 4: el país 3 reexporta, con valor añadido español dentro
+  \capa{4}{\draw[flujo=tceedorado] (p3.east) -- (rm.west)
+    node[midway,rotflujo] {reexportación};}
+  % 5: participación hacia atrás
+  \capa{5}{\draw[llave=tceeazul] (-1.3,0.85) -- (5.85,0.85)
+    node[midway,rotllave] {\textcolor{tceeazul}{\textbf{hacia atrás}: $\mathrm{VAE}/X$}\\
+      valor añadido extranjero en las exportaciones de España};}
+  % 6: participación hacia delante
+  \capa{6}{\draw[llave=tceedorado] (6.0,0.85) -- (13.9,0.85)
+    node[midway,rotllave] {\textcolor{tceedorado}{\textbf{hacia delante}: $\mathrm{VAI}/X$}\\
+      valor añadido español en las exportaciones de otros};}
+  % 7: índice de participación
+  \capa{7}{\node[etiqueta,font=\normalsize] at (6.3,-1.95)
+    {participación en las CGV $=\dfrac{\mathrm{VAE}+\mathrm{VAI}}{X}$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,68 @@
+% Remesas personales recibidas en % del PIB, 2024: los 10 países por encima
+% del 20 % (sin Bermudas, territorio de renta alta) y, tras un hueco, algunas
+% referencias. Banco Mundial, WDI BX.TRF.PWKR.DT.GD.ZS (actualización del
+% 11/11/2026). Datos: ../datos/remesas-pib-paises.csv; posición vertical =
+% orden de la fila, con un hueco de una barra antes de las referencias.
+% Valores de control: Tayikistán 47,2; Tonga 39,4 (WDI del 11/11/2026); Liberia
+% 21,3; Filipinas 8,7; renta baja y media 1,8; mundo 0,8; España 0,4.
+% Paleta del tema: remesas (trabajo) en dorado; referencias en gris.
+% Capas (CRITERIOS §7): barras de los 10 -> barras de referencia -> ejes y
+% línea del 20 % -> etiquetas de valor.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/remesas-pib-paises.csv}\rempib
+% posición de cada fila (de arriba abajo) y valor con coma para las etiquetas
+\pgfplotstablecreatecol[expr={-\pgfplotstablerow-\thisrow{referencia}}]{pos}{\rempib}
+\colorlet{rpbarra}{tceedorado}
+\colorlet{rpref}{dicotroclaro}
+\pgfplotsset{
+  barras/.style={on layer=dicbarras, xbar, bar width=0.32cm, forget plot},
+  valores/.style={on layer=axis descriptions, forget plot, draw=none, mark=none,
+    point meta=x, nodes near coords,
+    every node near coord/.append style={font=\footnotesize, text=#1,
+      anchor=west, inner sep=3pt,
+      /pgf/number format/.cd, fixed, fixed zerofill, precision=1, use comma}},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=9cm, height=8cm,
+      xmin=0, xmax=50, xtick={0,10,...,50},
+      xticklabel style={font=\footnotesize},
+      xlabel={\% del PIB, 2024}, xlabel style={font=\footnotesize},
+      ymin=-18.7, ymax=0.7,
+      ytick={0,-1,...,-9,-11,-12,...,-18},
+      yticklabels from table={\rempib}{pais},
+      yticklabel style={font=\footnotesize, text height=1.6ex, text depth=0.4ex},
+      y axis line style={draw=none}, ytick style={draw=none},
+      axis lines*=left, tick align=outside, clip=false,
+      xmajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: los 10 países con más del 20 %
+    \capa{1}{
+      \addplot[barras, dicbarra=rpbarra, restrict expr to domain={\thisrow{referencia}}{0:0}]
+        table[x=remesas_pib, y=pos] {\rempib};
+    }
+    % 2: las referencias
+    \capa{2}{
+      \addplot[barras, dicbarra=rpref, restrict expr to domain={\thisrow{referencia}}{1:1}]
+        table[x=remesas_pib, y=pos] {\rempib};
+    }
+    % 3: ejes (los dibuja el axis) y la línea del 20 %
+    \capa{3}{
+      \dicraya[dicumbral, thick]{(20,0.7) (20,-18.7)}
+      \dicrotulo[font=\footnotesize, text=tceegris, anchor=south west, inner sep=2pt]{(20,0.7)}{20~\%}
+    }
+    % 4: etiquetas de valor
+    \capa{4}{
+      \addplot[valores=rpbarra!80!black, restrict expr to domain={\thisrow{referencia}}{0:0}]
+        table[x=remesas_pib, y=pos] {\rempib};
+      \addplot[valores=tceegris!80!black, restrict expr to domain={\thisrow{referencia}}{1:1}]
+        table[x=remesas_pib, y=pos] {\rempib};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

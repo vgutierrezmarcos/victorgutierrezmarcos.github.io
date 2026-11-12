@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Curva de la sonrisa (Stan Shih, Acer, principios de los 90): el valor
+% añadido de cada fase de la cadena de valor; mucho al principio (I+D, diseño)
+% y al final (marca, distribución, posventa) y poco en la fabricación.
+% Curva: v(x) = 0,6 + 0,15 (x - 4,2)^2, con el mínimo en el montaje (x = 4,2).
+% Capas: ejes -> fases -> curva -> puntos de cada fase -> rótulos.
+\begin{tikzpicture}[tcee,
+  fase/.style={font=\scriptsize, align=center, text width=1.55cm, anchor=north, inner sep=2pt}]
+  \path (-0.9,-1.0) rectangle (9.6,3.6);
+  % ejes
+  \draw[eje] (0,0) -- (8.6,0) node[right, font=\scriptsize] {fases};
+  \draw[eje] (0,0) -- (0,3.4) node[left, font=\scriptsize, align=right] {valor\\ añadido};
+  % 1: las fases de la cadena, de la idea al cliente
+  \capa{1}{\foreach \x/\t in {1/{I+D y\\ diseño}, 2.6/{componentes}, 4.2/{montaje}, 5.8/{distribución}, 7.4/{marca y\\ posventa}}
+      \draw (\x,0.06) -- (\x,-0.06) node[fase] {\t};}
+  % 2: la curva
+  \capa{2}{\draw[curva1, domain=0.55:7.85, samples=60] plot (\x,{0.6+0.15*(\x-4.2)^2});}
+  % 3: el valor añadido de cada fase
+  \capa{3}{\foreach \x in {1,2.6,4.2,5.8,7.4}
+      \node[punto] at (\x,{0.6+0.15*(\x-4.2)^2}) {};}
+  % 4: rótulos
+  \capa{4}{\node[etiqueta, font=\scriptsize, text=tceemorado, align=center] at (4.2,1.45) {fabricación:\\ poco valor añadido};
+    \node[etiqueta, font=\scriptsize, text=tceemorado, anchor=east, align=right] at (7.3,2.75) {servicios\\ posteriores};
+    \node[etiqueta, font=\scriptsize, text=tceemorado, anchor=west, align=left] at (1.0,2.75) {servicios\\ previos};}
+\end{tikzpicture}
+\end{document}
