@@ -1,7 +1,7 @@
 # Sistema de Bretton Woods (1944-1973)
 
 - **Área:** historia-organismos · **Tema de referencia:** 3.B.20 (SEI hasta la ruptura de Bretton Woods): lo tiene en el título y es el único que debe contar los acuerdos y su ruptura con detalle; 3.B.21 arranca donde 3.B.20 acaba (1971-1976)
-- **Temas que lo usan:** 3.B.20 (desarrollo), 3.B.21 (hoy desarrollo duplicado → debe quedar en resumen), 3.B.22 (resumen: el FMI en 1944-1973), 3.B.33 y 3.B.34 (mención: OIC fallida y GATT), 3.B.35 (mención), 4.A.27 (mención: entrada de España en el FMI/BIRD en 1958 y paridad de 60 pta/$ en 1959), 3.B.43 (mención, SME como «Bretton Woods europeo»; sin fuente)
+- **Temas que lo usan:** 3.B.20 (desarrollo), 3.B.21 (hoy desarrollo duplicado → debe quedar en resumen), 3.B.22 (resumen: el FMI en 1944-1973), 3.B.33 y 3.B.34 (mención: OIC fallida y GATT), 3.B.35 (mención), 4.A.27 (mención: entrada de España en el FMI/BIRD en 1958 y paridad de 60 pta/$ en 1959), 3.B.43 (mención, SME como «Bretton Woods europeo»; sin fuente); 3.B.19 (mención; hecho, 12/11/2026: el plan de Keynes y el ajuste simétrico, y las paridades como reglas).
 - **Manuales de referencia:** Eichengreen, *Globalizing Capital* (caps. 3-4); Krugman-Obstfeld-Melitz, cap. «El sistema monetario internacional, 1870-1973»; Bordo y Eichengreen (eds.), *A Retrospective on the Bretton Woods System* (1993); Triffin (1960)
 - **Decisión D025 (13/10/2026):** ¿Cómo se reparte Bretton Woods, cuyo texto se repite en seis temas? Desarrollo solo en 3.B.20; en 3.B.21 un resumen de la ruptura (1971-1976); una frase con el pilar monetario en 3.B.22 y con el comercial en 3.B.33-3.B.34; nada en 3.B.35
 
@@ -29,6 +29,7 @@ Gráfico de referencia: cronograma 1944-1976 (no hace falta gráfico analítico;
 | 3.B.33 / 3.B.34 | OMC y GATT | Mención | Solo el pilar comercial: OIC fallida → GATT 1947 → OMC 1995 | El pilar monetario y el de desarrollo |
 | 3.B.35 | Integración no comunitaria | Mención (1 línea) o nada | Multilateralismo de posguerra como contexto del art. XXIV | El párrafo de los tres pilares |
 | 4.A.27 | España 1959-1999 | Mención | España entra en FMI y BIRD (1958) y OECE (1959); paridad de 60 pta/$ | — |
+| 3.B.19 | Coordinación internacional | mención (hecho, 12/11/2026) | II.1: el **ajuste simétrico** que propuso Keynes (Unión de Compensación que cobraba también a los acreedores, `Keynes1943Proposals`; ganó White) como origen del debate superávit-déficit, `\vertema{3.B.20}`; II.3: las paridades de Bretton Woods como coordinación con **reglas** | Los acuerdos y su ruptura |
 
 ## Divergencias encontradas en el temario actual
 - **Párrafo de los «tres pilares» repetido literalmente en seis temas**: 3.B.20, 3.B.21, 3.B.22, 3.B.33, 3.B.34 y 3.B.35 (mismo texto, «La Segunda Guerra Mundial aún no había terminado…»). Reparto: dejarlo solo en 3.B.20 (desarrollo); en 3.B.22 una frase con el pilar monetario; en 3.B.33-3.B.34 una frase con el pilar comercial; quitarlo de 3.B.21 y 3.B.35 (en 3.B.21 sustituirlo por la ruptura de 1971-1976).

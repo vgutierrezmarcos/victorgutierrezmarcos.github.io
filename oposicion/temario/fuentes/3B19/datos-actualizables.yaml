@@ -1,0 +1,186 @@
+tema: 3B19
+fecha_inventario: 2026-11-11
+# Inventario de la fase 2 (propuestas-datos.md). Los «texto» son las frases
+# propuestas: cuando la fase de redacción las fije, actualizar «texto» y «donde».
+# Lo que más caduca: la presidencia del G-20 (cumbre de Miami, 14-15/12/2026),
+# los miembros y candidatos de la OCDE y el gráfico del WEO.
+# Familias nuevas propuestas (no están en _datos-familias.yaml): g20-presidencia,
+# ocde-miembros, fsb-presidencia, fmi-esr. El coordinador decide si se añaden.
+datos:
+  - id: saldos-superavit-weo
+    texto: "Superávit exterior y saldo público: Alemania, Países Bajos y Corea, 2019 y 2025 (% del PIB)"
+    donde: [3B19.tex]
+    valor: "cc 2025: 4,5 / 7,6 / 6,5; saldo público 2025: -2,9 / -1,6 / -2,3"
+    unidad: "% del PIB"
+    periodo: "2019 y 2025 (Corea, saldo público 2025 estimado)"
+    fuente: FMI2026WEOdatos
+    organismo: FMI
+    serie: "WEO, IMF.RES:WEO, BCA_NGDPD y GGXCNL_NGDP (DEU, NLD, KOR)"
+    url: https://data.imf.org/en/datasets/IMF.RES:WEO
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/saldos-corrientes-fiscales-superavit.csv]
+    nota: "2.ª comprobación con Eurostat (gov_10dd_edpt1, bop_gdp6_q) y OCDE EO; al actualizar, pasar de 2025 al último año observado"
+
+  - id: g20-presidencia
+    texto: "Estados Unidos desde el 1 de diciembre de 2025, con la cumbre de Miami los días 14 y 15 de diciembre de 2026, y el Reino Unido en 2027, con la cumbre en Manchester"
+    donde: [3B19.tex]
+    unidad: presidencia y cumbre del G-20
+    periodo: "2025-2027"
+    fuente: [G20RG2026Miami, EEUU2026Miami, ReinoUnido2026Manchester]
+    organismo: G-20 (G20 Research Group, Departamento de Estado, Gobierno británico)
+    url: https://www.g20.utoronto.ca/2026/2026-road.html
+    periodicidad: anual (cumbre a final de año; la presidencia cambia el 1 de diciembre)
+    proxima: 2026-12
+    familia: g20-presidencia
+    nota: "caduca el 15/12/2026: pasar Miami a pasado (declaración, si la hay) y añadir la presidencia de 2028"
+
+  - id: g20-enganche-johannesburgo
+    texto: "Estados Unidos, la primera economía del mundo y el país que preside el grupo en 2026, no acudió"
+    donde: [3B19.tex (introducción, enganche)]
+    unidad: presidencia del G-20
+    periodo: "cumbre de Johannesburgo, 22-23/11/2025; presidencia de 2026"
+    fuente: G20Johannesburgo2025
+    organismo: G-20 (G20 Research Group)
+    url: https://www.g20.utoronto.ca/2025/251122-declaration.html
+    periodicidad: anual (la presidencia cambia el 1 de diciembre)
+    proxima: 2026-12
+    familia: g20-presidencia
+    nota: "desde el 1/12/2026 «que preside el grupo en 2026» pasa a «que lo presidió en 2026»; el hecho de Johannesburgo no caduca"
+
+  - id: fmi-esr-relevancia
+    texto: "el FMI advierte de que los desequilibrios exteriores crecen y pide reequilibrar entre países"
+    donde: [3B19.tex (introducción, relevancia)]
+    unidad: evaluación anual del sector exterior
+    periodo: "ESR de 30/7/2026"
+    fuente: FMI2026ESR
+    organismo: FMI
+    url: https://www.imf.org/en/publications/esr/issues/2026/07/30/external-sector-report-2026
+    periodicidad: anual (julio)
+    proxima: 2027-07
+    familia: fmi-esr
+    nota: "comprobar que el ESR siguiente mantiene el diagnóstico (desequilibrios crecientes)"
+
+  - id: g20-miembros
+    texto: "Lo forman 19 países, la Unión Europea y, desde 2023, la Unión Africana"
+    donde: [3B19.tex]
+    unidad: miembros del G-20
+    periodo: "desde 9/9/2023"
+    fuente: G20NuevaDelhi2023
+    organismo: G-20
+    url: https://www.g20.utoronto.ca/2023/230909-declaration.html
+    periodicidad: irregular
+    familia: g20-presidencia
+    nota: "Sudáfrica no fue invitada a la cumbre de 2026: si deja de participar formalmente, revisar"
+
+  - id: ocde-miembros
+    texto: "Tiene 38 miembros y 8 candidatos: Argentina, Brasil, Bulgaria, Croacia, Perú y Rumanía, desde 2022, e Indonesia y Tailandia, desde 2024"
+    donde: [3B19.tex]
+    valor: 38
+    unidad: miembros de la OCDE
+    periodo: "a 11/11/2026"
+    fuente: OCDE2026Miembros
+    organismo: OCDE
+    url: https://www.oecd.org/en/about/members-partners.html
+    periodicidad: irregular (cada adhesión)
+    proxima: null
+    familia: ocde-miembros
+    nota: "Rumanía tenía 24 de 25 dictámenes en abril de 2026 y Bulgaria apunta a 2026: comprobar antes de publicar (oecd.org da 403 a la descarga automática)"
+
+  - id: fsb-presidente
+    texto: "lo preside Andrew Bailey desde julio de 2025"
+    donde: [3B19.tex]
+    unidad: presidente del FSB
+    periodo: "mandato de 3 años, 2025-2028"
+    fuente: FSB2025Bailey
+    organismo: Financial Stability Board
+    url: https://www.fsb.org/2025/04/financial-stability-board-nominates-andrew-bailey-to-serve-as-its-next-chair/
+    periodicidad: trienal
+    proxima: 2028-07
+    familia: fsb-presidencia
+    nota: "solo si el texto final nombra al presidente"
+
+  - id: fmi-esr
+    texto: "en su último informe, de julio de 2026, los saldos excesivos crecieron en 2025, con China y Estados Unidos como principales causas"
+    donde: [3B19.tex]
+    unidad: evaluación anual del sector exterior
+    periodo: "2025 (ESR de 30/7/2026)"
+    fuente: FMI2026ESR
+    organismo: FMI
+    url: https://www.imf.org/en/publications/esr/issues/2026/07/30/external-sector-report-2026
+    periodicidad: anual (julio)
+    proxima: 2027-07
+    familia: fmi-esr
+    nota: "mismo informe que 3B11, 3B12 y 3B14 (clave FMI2026ESR)"
+
+  - id: dssi-g20
+    texto: "aplazó más de 12.000 millones de dólares de pagos de casi 50 países entre mayo de 2020 y diciembre de 2021"
+    donde: [3B19.tex]
+    valor: 12.7
+    unidad: miles de millones de USD aplazados
+    periodo: "mayo de 2020-diciembre de 2021 (cerrado)"
+    fuente: G20Roma2021
+    organismo: G-20
+    url: https://www.g20.utoronto.ca/2021/211031-declaration.html
+    periodicidad: no cambia (iniciativa terminada)
+    proxima: null
+    nota: "dato cerrado; se anota por si el Banco Mundial publica una cifra final distinta"
+
+  - id: g7-club-clima
+    texto: "Club del Clima del G-7 (diciembre de 2022)"
+    donde: [3B19.tex]
+    unidad: foro
+    periodo: "2022"
+    fuente: G72022ClimateClub
+    organismo: G-7
+    url: https://www.consilium.europa.eu/en/press/press-releases/2022/12/12/g7-leaders-statement/
+    periodicidad: irregular
+    familia: cmnucc-cop
+    nota: "mención; el detalle está en 3B31 (ficha clubes-climaticos)"
+
+  - id: pilar-dos-lado-a-lado
+    texto: "en enero de 2026 el Marco Inclusivo aprobó el paquete «lado a lado»"
+    donde: [3B19.tex]
+    unidad: acuerdo fiscal internacional
+    periodo: "5/1/2026"
+    fuente: null
+    organismo: OCDE/G-20 (Marco Inclusivo)
+    url: https://kpmg.com/us/en/taxnewsflash/news/2026/01/oecd-agreement-pillar-two-side-by-side-package.html
+    periodicidad: irregular
+    nota: "solo si se usa; comprobado solo con fuentes secundarias (KPMG, Deloitte, Mayer Brown); oecd.org da 403: buscar la nota de la OCDE en el navegador y crear la entrada del .bib"
+
+  - id: g20-peso
+    texto: "Reúnen en torno al 85 % del PIB mundial, el 75 % del comercio y 2 tercios de la población"
+    donde: [3B19.tex (III.2, El G-20)]
+    unidad: "% del total mundial"
+    periodo: "cifra oficial del G-20 (canon, ficha g20-ocde)"
+    fuente: G20Acerca
+    organismo: G-20
+    url: https://g20.org/about-g20/
+    periodicidad: irregular (la actualiza cada presidencia)
+    familia: g20-presidencia
+    nota: "g20.org da 403 a programas: comprobar en el navegador; misma cifra en todos los temas"
+
+  - id: ocde-secretario-general
+    texto: "Mathias Cormann, en su segundo mandato desde junio de 2026"
+    donde: [3B19.tex (III.2, La OCDE)]
+    unidad: secretario general de la OCDE
+    periodo: "1/6/2026-2031"
+    fuente: OCDE2025Cormann
+    organismo: OCDE
+    url: https://www.oecd.org/en/about/news/press-releases/2025/07/oecd-council-extends-the-mandate-of-secretary-general-mathias-cormann-to-2031.html
+    periodicidad: quinquenal
+    proxima: 2031-06
+    familia: ocde-miembros
+
+  - id: alemania-freno-deuda-2025
+    texto: "en marzo de 2025 reformó su freno constitucional a la deuda para excluir parte del gasto en defensa y crear un fondo de inversión de hasta 500.000 millones de euros en 12 años"
+    donde: [3B19.tex (anexo C)]
+    unidad: reforma legal
+    periodo: "22/3/2025"
+    fuente: Bundestag2025Grundgesetz
+    organismo: República Federal de Alemania
+    url: https://www.recht.bund.de/bgbl/1/2025/94/VO.html
+    periodicidad: no cambia (hecho fechado)
+    nota: "revisar si el anexo C se actualiza con el saldo público de 2026"

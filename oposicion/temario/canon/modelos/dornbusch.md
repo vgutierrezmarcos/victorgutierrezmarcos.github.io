@@ -1,7 +1,7 @@
 # Modelo de sobrerreacción del tipo de cambio (Dornbusch, 1976)
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.14 (Teorías de la determinación del tipo de cambio), **revisado el 11/11/2026**: único tema que lo desarrolla, con a)-e), 4 ecuaciones, la función clave `eq:sobrerreaccion`, 3 gráficos y el anexo `anexo:dornbusch` con el diagrama de fases y la θ racional.
-- **Temas que lo usan:** 3.B.14 (desarrollo; hecho, 11/11/2026), 3.A.32 (mención; hecho, 11/11/2026), 3.B.13 (mención; hecho, 8/11/2026), 3.B.15 (mención), 3.B.43 (mención).
+- **Temas que lo usan:** 3.B.14 (desarrollo; hecho, 11/11/2026), 3.A.32 (mención; hecho, 11/11/2026), 3.B.13 (mención; hecho, 8/11/2026), 3.B.15 (mención), 3.B.43 (mención); 3.B.19 (mención; hecho, 12/11/2026: la sobrerreacción con LCP, Betts y Devereux, 2000, `\vertema{3.B.14}`).
 - **Manuales de referencia:** Dornbusch (1976), *JPE* (`Dornbusch1976Expectations`); Rogoff (2002), «Dornbusch's Overshooting Model After Twenty-Five Years» (`Rogoff2002Dornbusch`); Obstfeld y Rogoff, *Foundations…*, cap. 9 (`ObstfeldRogoff1996Foundations`); Krugman, Obstfeld y Melitz, cap. 15 (`KrugmanObstfeldMelitz2022International`); Wilson (1979) para la expansión anunciada (`Wilson1979Anticipated`); Frankel (1979) para el diferencial de intereses reales (`Frankel1979Mark`); Eichenbaum y Evans (1995) para la sobrerreacción retardada (`EichenbaumEvans1995`).
 
 ## Presentación de referencia (3.B.14, II.1.2)
@@ -37,6 +37,7 @@ $$m-p=k\,\bar y-h\,i\quad(\texttt{eq:dornbusch-dinero}),\qquad \dot p=\psi\,(d-\
 | 3.B.13 | Mercado de divisas | mención (hecho, 8/11/2026) | l. 864 y 1114: la PNCI como pieza central de Dornbusch, `\vertema{3.B.14}` | El modelo |
 | 3.B.15 | Regímenes cambiarios e intervención | mención | La volatilidad excesiva como coste de la flotación en 1-2 líneas `\vertema{3.B.14}`; su Word copia el bloque del Word del 3.B.14 con la errata («flexibles a corto plazo») y la frase sin fuente sobre el SME: quitar | Supuestos, ecuaciones y trayectorias |
 | 3.B.43 | SME y euro | mención | Una línea como argumento de estabilidad cambiaria, solo con fuente (el 3.B.14 la quitó por no tenerla) | — |
+| 3.B.19 | Coordinación internacional | mención (hecho, 12/11/2026) | Corsetti-Pesenti con LCP y *pricing to market*: vuelve la sobrerreacción de Dornbusch (Betts y Devereux, 2000, `BettsDevereux2000`); con PCP, sin sobrerreacción; `\vertema{3.B.14}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.B.14 (11/11/2026)**: el Word escribía la PNCI en tasas ($\gamma E^e\cong i-i^*$) y las trayectorias en niveles; ahora en logaritmos con $\dot e^{\,e}$. La ficha anterior usaba φ, λ, π, δ, $u$ y $de/dm=1+1/(\lambda\theta)$: ahora **$k$, $h$, ψ, ν, $\bar a$** y $1+1/(h\theta)$ (CC1 del 3.B.14, D-2, **[decidir]**; *alternativa*: las letras de Dornbusch, 1976, con aviso del cambio frente al 3.A.35). Desaparece el choque de λ con la NEG.

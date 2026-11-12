@@ -1,0 +1,36 @@
+% Corsetti y Pesenti (2009) con facturación en dólares: todo el comercio entre
+% los 2 países se factura en la moneda de B (Estados Unidos). Variante del panel
+% b) de corsetti-pesenti.tex. El país que no emite el dólar (A, la zona del
+% euro) ante una expansión monetaria de B:
+%   O = (3; 2), AS C = (2/3) l: tau no cambia (los precios de exportación de A
+%   están fijos en dólares y los de sus importaciones, en dólares, bajan en euros
+%   lo mismo que se deprecia el dólar: A no gana ni pierde relación de intercambio).
+%   AD' C = 2,55 (sus importaciones se abaratan): D = (3,825; 2,55) sobre la AS,
+%   a la derecha de la NR. H = (3; 2,55), el punto con PCP (AS_PCP C = 0,85 l),
+%   en gris para comparar: consume lo mismo, pero trabaja más.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \path (-0.9,-1.0) rectangle (7.3,5.0);
+  % 1: ejes, AS, AD, NR y O
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,4.6) {El país que no emite el dólar (A)};}
+  \capa{1}{\ejes{$\ell$}{$C$}{6.0}{4.3}}
+  \capa{1}{\draw[curva1] (0,0) -- (5.6,3.733) node[etiqueta,right,text=tceemorado] {AS};}
+  \capa{1}{\draw[curva3] (0,2) -- (5.6,2) node[etiqueta,right,text=tceeverde] {AD};}
+  \capa{1}{\draw[curva4] (3,0) node[below,text=black] {$\bar\ell$} -- (3,4.1) node[etiqueta,above,text=tceedorado] {NR};}
+  \capa{1}{\node[punto] (O) at (3,2) {};}
+  \capa{1}{\node[etiqueta,below right] at (O) {$O$};}
+  % 2: H, el punto con PCP, de referencia
+  \capa{2}{\draw[thick,dotted,tceegris] (0,0) -- (4.4,3.74) node[etiqueta,above,text=tceegris] {con PCP};}
+  \capa{2}{\node[circle,draw=tceegris,fill=white,thick,inner sep=1.3pt] (H) at (3,2.55) {};}
+  \capa{2}{\node[etiqueta,above left,text=tceegris] at (H) {$H$};}
+  % 3: AD sube (importaciones más baratas) y D sobre la AS
+  \capa{3}{\draw[curvanueva,desplazada] (0,2.55) -- (5.6,2.55) node[etiqueta,right,text=tceerojo] {AD$'$};}
+  \capa{3}{\node[punto,fill=tceerojo] (Dd) at (3.825,2.55) {};}
+  \capa{3}{\node[etiqueta,below right,text=tceerojo] at (Dd) {$D$};}
+  \capa{3}{\draw[guia,tceerojo] (Dd) -- (3.825,0) node[below,text=tceerojo] {$\ell_D$};}
+  \capa{3}{\node[etiqueta,text=tceerojo,font=\footnotesize,anchor=west] at (0.2,-0.75) {consume como con PCP, pero trabaja más};}
+\end{tikzpicture}
+\end{document}

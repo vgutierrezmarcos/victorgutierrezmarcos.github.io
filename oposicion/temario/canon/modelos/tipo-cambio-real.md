@@ -32,7 +32,7 @@
 
 ## Divergencias encontradas en el temario actual
 - Tipo efectivo como **media aritmética** $\sum \alpha_i E_i$ en 3.B.13; los índices oficiales son geométricos. Corregir.
-- Tipo real: $\varkappa$ en 3.B.12-3.B.19, pero 3.B.19 escribe también $e = E P_H^*/P_F$ en Corsetti-Pesenti y usa $\kappa$ para la desutilidad del trabajo (se confunde con $\varkappa$). Canon: $q$.
+- Tipo real: $\varkappa$ en 3.B.12-3.B.19, pero 3.B.19 escribe también $e = E P_H^*/P_F$ en Corsetti-Pesenti y usa $\kappa$ para la desutilidad del trabajo (se confunde con $\varkappa$). Canon: $q$. **Resuelto en el 3.B.19** (12/11/2026): $q$ en la caja de Mundell-Fleming en 4 ecuaciones (con ν), tipo real **sin letra** en Corsetti-Pesenti (como el 3.A.37) y χ para la desutilidad.
 - ~~El Word del **3.B.16** escribe el tipo real $e=E\cdot P^*/P$ y $\gamma_e=\gamma_E+(\pi^*-\pi)$~~: **resuelto al revisar el 3.B.16 (11/11/2026)**, $q$ y $\gamma_q$ con $\gamma_{P^*}$.
 - Tipo nominal: $E$ en definiciones y $s_t$ en paridades; $e$ en el Word del 3.B.17 (tipo sombra $\tilde e$, fijo $\bar e$) mientras $e$ era también el coeficiente de efectivo del multiplicador (**resuelto** al revisar el 3.B.17, 12/11/2026: $\tilde E$, $\bar E$, y $q$ en Krugman, 1999, en lugar de $\varkappa$). Canon: $E$ (sombra $\tilde E$, fijo $\bar E$), minúscula solo para logaritmos.
 - 4.A.22 usa $\beta_i$ para pesos y $\gamma$ para tasas: canon $\omega_i$ para pesos de comercio; $\gamma_X$ tasa de variación.

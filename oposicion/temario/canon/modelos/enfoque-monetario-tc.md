@@ -32,7 +32,7 @@
 | 3.A.32 | OA-DA abierta | mención (hecho, 11/11/2026) | l. 185: fondos frente a flujos con `FrenkelJohnson1976Monetary` (añadir `\vertema{3.B.12}`: pendiente C3 del 3.B.14) | La ecuación |
 | 3.B.12 | Ajuste de la BP | contraste (hecho, 11/11/2026: II.2 c), una línea con `\vertema{3.B.14}`; la demanda de dinero en niveles, $M^D=P\,L(Y,i)$) | El enfoque monetario de la BP con tipo fijo (reservas) y su simétrico con tipo flexible en una línea, `\vertema{3.B.14}`, con la misma demanda de dinero ($k$, $h$) | `eq:monetario` y su evidencia |
 | 3.B.15 | Regímenes cambiarios | mención | «un modelo monetario» citando Frenkel (1976) y Mussa (1976), no «Frenkel y Mussa, 1979» | El modelo |
-| 3.B.19 | Coordinación internacional | supuesto | Corsetti-Pesenti con PCP «restablece el resultado del modelo monetario con precios flexibles» (Frenkel, 1976; Mussa, 1976), `\vertema{3.B.14}` | — |
+| 3.B.19 | Coordinación internacional | supuesto (hecho, 12/11/2026) | En el diagrama de Hamada, el tipo de cambio lo fija el dinero relativo, $E=f(M_A/M_B)$, $f'>0$, «como en el modelo monetario» `\vertema{3.B.14}`; con PCP, Corsetti-Pesenti da el tipo de cambio que darían los precios flexibles, sin sobrerreacción (`\vertema{3.B.14}`; la frase de Frenkel y Mussa del Word sale) | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.B.14 (11/11/2026)**: «Frenkel y Mussa (1976)» como un artículo → 3 autores; «$\ln E$» → $e$; la contradicción de la nota 47 (un $i$ más alto deprecia o aprecia) se explica con Frankel (1979); el apartado «identidad contable del gasto» (omisible) pasa a nota con Fisher (1911) y Hume (1752).

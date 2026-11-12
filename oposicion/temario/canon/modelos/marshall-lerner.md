@@ -42,7 +42,7 @@ $$\frac{\mathrm d\,\mathrm{XN}}{\mathrm dq}>0\iff|\varepsilon_{X,q}|+|\varepsilo
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.B.12 (11/11/2026):** $\varkappa=EP_M/P_X$ y la condición sin valores absolutos → $q$, $\mathrm{XN}=X-qM$ y valores absolutos; *pass-through* solo a los precios de exportación → los 2 sentidos (contradicción 5 de la 1D01); efectos «precio y volumen» con numeración rota → efecto valor (o precio) y efecto volumen; «demanda de importaciones y **oferta** de exportaciones» → las 2 demandas; «Robinson (1947)» → 1937; «Bickerdicke» → Bickerdike (1920); la curva J como TikZ propio.
-- Tipo real: $\varkappa$ en 3.B.15-3.B.19 (sin revisar); canon $q$ (ficha `tipo-cambio-real`).
+- Tipo real: $\varkappa$ en 3.B.15-3.B.19 (sin revisar); canon $q$ (ficha `tipo-cambio-real`). **Resuelto en el 3.B.19** (12/11/2026): el supuesto «una depreciación real mejora el saldo comercial» con `\vertema{3.B.12}`, y $q$ y ν en la caja de las 4 ecuaciones.
 - El efecto **Harberger-Laursen-Metzler** (Harberger, 1950; Laursen y Metzler, 1950) va con el multiplicador (valoración de I.2 y anexo B del 3.B.12, ficha `mundell-fleming`, variante del multiplicador del comercio exterior) y con el enfoque intertemporal (Obstfeld, 1982; Svensson y Razin, 1983); el Word lo remitía al 3.B.5, que no lo trata. La forma $|\varepsilon_X|+|\varepsilon_M|>1+m+m^*$ no se publica hasta comprobarla en Gandolfo (duda 7 del 3.B.12).
 
 Autor: Víctor Gutiérrez Marcos

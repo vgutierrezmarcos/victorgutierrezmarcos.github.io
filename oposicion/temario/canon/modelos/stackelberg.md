@@ -1,7 +1,7 @@
 # Oligopolio de Stackelberg (1934): competencia secuencial en cantidades
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.19** (Teoría del oligopolio…; revisado el 20/10/2026, I.3 `sec:stackelberg`, con el anexo `anexo:stackelberg-lineal`) — lo desarrolla con a)-c) como ENPS sobre el mismo gráfico de Cournot. Ficha creada a raíz de esa revisión (K31 de coherencia).
-- **Temas que lo usan:** 3.A.19 (desarrollo; hecho, 20/10/2026), 3.A.14 (mención; hecho, 19/10/2026: juegos en 2 etapas y «el liderazgo de Stackelberg» como ENPS, l. 355), 3.A.15 (mención; hecho, 20/10/2026: la ventaja del primero es de compromiso, como en el compromiso de capacidad de Dixit; ficha `disuasion-entrada`), 3.A.18 (mención; hecho, 19/10/2026: con complementos estratégicos la ventaja es del segundo, Gal-Or, 1985), 3.B.8 (mención: Brander-Spencer, el subsidio hace creíble el liderazgo; ficha `brander-spencer`).
+- **Temas que lo usan:** 3.A.19 (desarrollo; hecho, 20/10/2026), 3.A.14 (mención; hecho, 19/10/2026: juegos en 2 etapas y «el liderazgo de Stackelberg» como ENPS, l. 355), 3.A.15 (mención; hecho, 20/10/2026: la ventaja del primero es de compromiso, como en el compromiso de capacidad de Dixit; ficha `disuasion-entrada`), 3.A.18 (mención; hecho, 19/10/2026: con complementos estratégicos la ventaja es del segundo, Gal-Or, 1985), 3.B.8 (mención: Brander-Spencer, el subsidio hace creíble el liderazgo; ficha `brander-spencer`); 3.B.19 (mención; hecho, 12/11/2026: el liderazgo en el diagrama de Hamada, `\vertema{3.A.19}`).
 - **Manuales de referencia:** von Stackelberg (1934), *Marktform und Gleichgewicht*; Mas-Colell, Whinston y Green (1995), cap. 9 y § 12.C; Tirole (1988), cap. 8; Gibbons (1992), § 2.1.B; Gal-Or (1985).
 
 ## Presentación de referencia (3.A.19, I.3)
@@ -26,6 +26,7 @@ $$p(Q)+p'(Q)\,q_1\,\big[1+R_2'(q_1)\big]=\mathrm{CMg}_1(q_1)$$
 | 3.A.15 | Compromiso de capacidad | mención (hecho, 20/10/2026) | La capacidad comprometida antes da a la instalada la ventaja del líder | — |
 | 3.A.18 | Precios con diferenciación | mención (hecho, 19/10/2026) | Con precios, ventaja del segundo (Gal-Or, 1985) | — |
 | 3.B.8 | Política comercial estratégica | mención | Brander-Spencer: el subsidio a la exportación lleva a la empresa nacional al punto de Stackelberg (hace creíble el liderazgo); remitir al 3.A.19 | La derivación |
+| 3.B.19 | Coordinación internacional | mención (hecho, 12/11/2026) | Hamada c): si un país decide primero, con curvas circulares el líder acaba en $N$ (no cambia nada) y con elípticas sí (Hamada, 1976), `\vertema{3.A.19}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.19 original: φ_2(q_1) y π para el beneficio; $q_2^e$ esperada. **Resuelto** (20/10/2026): $R_2(q_1)$, $B_1$, sin superíndice de expectativas.

@@ -1,0 +1,28 @@
+% La escalera de la cooperación internacional: 3 peldaños que suben de
+% izquierda a derecha (intercambio de información, coordinación puntual y
+% reglas permanentes), con los foros de cada uno y una flecha de compromiso.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    peldano/.style={etiqueta,font=\small\bfseries,text=tceemorado,align=center,anchor=south},
+    foro/.style={etiqueta,font=\footnotesize,text=tceeazul,align=center}]
+  % 1: los 3 peldaños y sus rótulos
+  \capa{1}{\fill[area,fill opacity=0.10] (0,0) -- (0,1.7) -- (4.2,1.7) -- (4.2,3.4) -- (8.4,3.4) -- (8.4,5.1) -- (12.6,5.1) -- (12.6,0) -- cycle;}
+  \capa{1}{\draw[thick,black] (-0.3,0) -- (12.9,0);}
+  \capa{1}{\draw[curva1,line width=1.6pt] (0,0) -- (0,1.7) -- (4.2,1.7) -- (4.2,3.4) -- (8.4,3.4) -- (8.4,5.1) -- (12.6,5.1) -- (12.6,0);}
+  \capa{1}{\node[peldano] at (2.1,1.75) {Intercambio\\de información};}
+  \capa{1}{\node[peldano] at (6.3,3.45) {Coordinación\\puntual};}
+  \capa{1}{\node[peldano] at (10.5,5.15) {Reglas\\permanentes};}
+  % 2: foros del peldaño 1
+  \capa{2}{\node[foro] at (2.1,0.85) {OCDE: evaluación por pares\\FMI: informes y supervisión};}
+  % 3: foros del peldaño 2 y sus hitos
+  \capa{3}{\node[foro] at (6.3,1.7) {G-7: Plaza (1985)\\y Louvre (1987)\\[3pt]G-20: Londres (2009)};}
+  % 4: foros del peldaño 3
+  \capa{4}{\node[foro] at (10.5,2.55) {OMC\\[3pt]Unión Europea\\[3pt]{\color{tceegris}antes, Bretton Woods}};}
+  % 5: flecha de compromiso
+  \capa{5}{\draw[->,very thick,tceedorado] (13.4,0.2) -- (13.4,5.4);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceedorado!80!black,rotate=90,anchor=south] at (13.4,2.8) {más compromiso, menos flexibilidad};}
+\end{tikzpicture}
+\end{document}

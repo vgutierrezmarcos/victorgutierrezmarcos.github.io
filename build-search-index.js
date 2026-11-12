@@ -165,7 +165,7 @@ const tercerEjercicioParteB = [
   { num: 16, titulo: 'Teoría de la integración monetaria.', disponible: true, file: '3B16.html' },
   { num: 17, titulo: 'Teorías explicativas de las crisis de balanza de pagos.', disponible: true, file: '3B17.html' },
   { num: 18, titulo: 'La nueva globalización económica y financiera. Determinantes y efectos de los movimientos internacionales de factores productivos: movilidad de trabajadores, inversión de cartera e inversión directa, con especial referencia a las cadenas globales de valor.', disponible: false },
-  { num: 19, titulo: 'La coordinación internacional de políticas económicas. Aspectos teóricos y prácticos. El G-20, la OCDE y otros foros internacionales.', disponible: true, file: '3B19.pdf' },
+  { num: 19, titulo: 'La coordinación internacional de políticas económicas. Aspectos teóricos y prácticos. El G-20, la OCDE y otros foros internacionales.', disponible: true, file: '3B19.html' },
   { num: 20, titulo: 'El sistema económico internacional desde el siglo XIX hasta la ruptura del sistema de Bretton-Woods.', disponible: true, file: '3B20.pdf' },
   { num: 21, titulo: 'El sistema económico internacional desde la desaparición del sistema de Bretton-Woods.', disponible: true, file: '3B21.pdf' },
   { num: 22, titulo: 'El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis.', disponible: true, file: '3B22.pdf' },

@@ -28,5 +28,6 @@ $$\beta_i = \frac{\mathrm{Cov}(r_i, r_M)}{\mathrm{Var}(r_M)}, \qquad SML:\; E(r_
 - **Error en 3.B.23**: $\beta_i$ se define bien como $\mathrm{cov}(R_i,R_M)/\mathrm{var}(R_M)$ y después como $\mathrm{Cov}(E[R_i], E[R_M])/\mathrm{Var}(R_M)$ (covarianza de dos constantes = 0). Corregir la segunda.
 - La prima de riesgo se escribe $\rho$ en 3.B.2 (y $\rho$ es el parámetro CES en comercio): canon $E(r_M) - r_f$ sin símbolo propio, o $\lambda_M$ como en 3.B.23.
 - 3.B.23 (sin revisar): no tiene el C-CAPM; debe resumirlo como generalización del CAPM (beta de consumo, Breeden, 1979) con `\vertema{3.A.33}` (ficha `ccapm`, tema de referencia 3.A.33).
+- **No confundir (fase canon del 3.B.19, 12/11/2026):** la «beta apalancada de Hamada» (3.B.2, 3.B.3, 3.B.23) es de **Robert Hamada (1972)**; el diagrama de la coordinación monetaria del 3.B.19 es de **Koichi Hamada (1974, 1976)** (ficha `hamada-coordinacion`). El 3.B.19 lo avisa en una nota al pie.
 
 Autor: Víctor Gutiérrez Marcos
