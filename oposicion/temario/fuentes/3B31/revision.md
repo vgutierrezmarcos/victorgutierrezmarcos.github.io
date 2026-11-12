@@ -22,7 +22,7 @@ están en «Dudas abiertas» (B31-01 a B31-12 y, de la ficha de repaso, R31-01).
   Enganche y cierre con «Quien siembra vientos recoge tempestades».
 - **Modelos con a)-e)**: el DICE de Nordhaus (II.3), los clubes climáticos (III.2) y el MAFC
   (III.4, en desarrollo); 2 funciones clave (`eq:dice` y `eq:ramsey-descuento`), la
-  definición del CSC (`eq:csc`) y 4 anexos (DICE-2023 completo, cronología, temas del bloque, test).
+  definición del CSC (`eq:csc`) y 4 anexos (DICE-2023 desarrollado, cronología, temas del bloque, test).
 - **Tamaño**: 46 páginas (32 de tema, 6 de anexos y 8 de bibliografía); 143 entradas en el
   `.bib`; los 7 gráficos (4 de teoría y 3 de datos) ya están hechos, y hay 7 tablas.
 
@@ -178,7 +178,7 @@ Todo el tema es nuevo. Lo que no está en Tebar (o está en una línea) y de dó
   Reino Unido, evidencia de Colmer *et al.*, 2025, OMC y comparación con el club), y el resto del
   mundo (Banco Mundial, China, EE. UU., España).
 - **Conclusión** con sus 5 bloques; la relevancia cita la conferencia Nobel de Nordhaus (2019).
-- **Anexos**: el DICE-2023 completo (bienestar, producción neta, daños, coste de reducción y
+- **Anexos**: el DICE-2023 desarrollado (bienestar, producción neta, daños, coste de reducción y
   tecnología de respaldo, con la derivación del precio óptimo; ciclo del carbono, forzamiento y
   temperatura de 2 cajas, con la calibración de la sensibilidad climática; tabla de resultados en 4
   escenarios), la cronología 1896-2026 (`tab:cop`), los temas del bloque (texto de K14) y el anexo
@@ -295,6 +295,12 @@ Todo el tema es nuevo. Lo que no está en Tebar (o está en una línea) y de dó
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 10 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): III: corte tras «Acuerdos internacionales» (antes, antes de «frente al»), con `\cortetitulo`. Sin `c_K` en el tema. |
 | Sin comentarios específicos de Víctor (11/11/2026) | Víctor lo da por revisado por ahora; las mejoras se aplicarán más adelante. |
+
+## Comentarios de Víctor (12/11/2026, 8.ª tanda)
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| No llamar al anexo «el modelo DICE-2023 completo»: «desarrollado» en vez de «completo» (título y menciones) | Título del anexo A: «Anexo: el modelo DICE-2023 desarrollado». Cambiado también en el resumen y en la lista de anexos de este revision.md. Las 2 remisiones del texto al anexo no usaban «completo» para el modelo («las ecuaciones del módulo climático y los resultados completos, en el anexo A»; «Los resultados completos están en el anexo A»): se dejan, porque hablan de los resultados. La ficha común `canon/modelos/dice.md` cita el anexo como «el modelo DICE-2023 completo»: no se ha tocado (fichero común); apuntado en `_trabajo/canon-pendiente.md` |
 
 ## Dudas abiertas
 

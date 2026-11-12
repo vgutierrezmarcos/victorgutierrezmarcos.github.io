@@ -1,5 +1,5 @@
 % Modelo de inventarios de Baumol (1952) y Tobin (1956), con el ejemplo de
-% Lucía del texto: Y = 21.600 euros al año, b = 2 euros por retirada, i = 3 %.
+% agente del texto: Y = 21.600 euros al año, b = 2 euros por retirada, i = 3 %.
 % a) Saldo en dientes de sierra: M* = sqrt(2·2·21.600/0,03) = 1.697,1 euros,
 %    n = 21.600/1.697,1 = 12,73 retiradas al año (una cada 0,943 meses);
 %    saldo medio M^D = M*/2 = 848,5 euros.
@@ -25,7 +25,7 @@
   \begin{scope}[x=1.1cm,y=0.002cm]
     % 1: ejes
     \capa{1}{\ejes{$t$ (meses)}{$M$ (euros)}{5.9}{2250}}
-    \capa{1}{\node[font=\small\bfseries,anchor=south west] at (-0.75,2420) {a) El saldo de Lucía};}
+    \capa{1}{\node[font=\small\bfseries,anchor=south west] at (-0.75,2420) {a) El saldo del agente};}
     \capa{1}{\foreach \k in {1,...,4} {\draw (\k,0) -- (\k,-60) node[below,font=\small] {\k};}}
     % 2: dientes de sierra de altura M*
     \capa{2}{\draw[curva1] (0,\Mopt)

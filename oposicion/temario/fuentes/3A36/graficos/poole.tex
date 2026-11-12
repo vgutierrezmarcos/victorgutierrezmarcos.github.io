@@ -3,21 +3,36 @@
 % (epsilon^IS: la IS oscila) o monetarias (epsilon^LM: la LM oscila).
 % Colores del IS-LM del 3.A.5 (fuentes/3A05/graficos/is-lm.tex): IS morada,
 % LM azul, desplazadas en discontinuo.
+% Presentado como una tabla, como la imagen 7 del tema antiguo (Víctor,
+% 12/11/2026): columnas = variable que se fija (cantidad, tipo); filas =
+% origen de la perturbación (real, monetaria); sin rótulos en negrita.
 %   IS: i = 8 - y; IS+: i = 9,5 - y; IS-: i = 6,5 - y (dibujada hasta y = 5)
 %   LM: i = Y - 1; LM+: i = Y + 0,5; LM-: i = Y - 2,5; tipo fijo: i = 3,5
 %   a) dinero fijo, IS±: Y en [3,75; 5,25]   b) tipo fijo, IS±: Y en [3; 6]
 %   c) dinero fijo, LM±: Y en [3,75; 5,25]   d) tipo fijo, LM±: Y = 4,5
-% Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \newcommand{\rango}[2]{\draw[line width=2.2pt, tceerojo] (#1,0) -- (#2,0);}
 \begin{document}
-\begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm]
+\begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm,
+    cabecera/.style={font=\small, align=center, text width=4.2cm},
+    cabfila/.style={font=\small, align=center, text width=2.1cm},
+    letra/.style={font=\small, anchor=north west, inner sep=0pt},
+    rejilla/.style={semithick, black}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (-1.5,-2) rectangle (21.5,22.6);
+  \path (-0.3,-2) rectangle (28.8,23.4);
+  % ---------- la tabla: cabeceras y rejilla ----------
+  \capa{1}{\node[cabecera] at (10.8,22.3) {Cantidad de dinero fija};}
+  \capa{1}{\node[cabecera] at (22.8,22.3) {Tipo de interés fijo};}
+  \capa{1}{\node[cabfila] at (2.35,16) {Perturbación real\\($\varepsilon^{\mathrm{IS}}$)};}
+  \capa{1}{\node[cabfila] at (2.35,4.5) {Perturbación monetaria\\($\varepsilon^{\mathrm{LM}}$)};}
+  \capa{1}{\draw[rejilla] (-0.3,21.2) -- (28.8,21.2);}
+  \capa{1}{\draw[rejilla] (-0.3,10.2) -- (28.8,10.2);}
+  \capa{1}{\draw[rejilla] (5.0,-2) -- (5.0,23.4);}
+  \capa{1}{\draw[rejilla] (16.7,-2) -- (16.7,23.4);}
   % ---------- a) perturbación real, dinero fijo ----------
-  \begin{scope}[yshift=12*0.42cm]
-    \capa{1}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {a) Perturbación real ($\varepsilon^{\mathrm{IS}}$),\\cantidad de dinero fija};}
+  \begin{scope}[xshift=6.2*0.42cm, yshift=11.6*0.42cm]
+    \capa{1}{\node[letra] at (9.2,9.2) {a)};}
     \capa{1}{\ejes{$y$}{$i$}{8.8}{8}}
     \capa{1}{\draw[curva2] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceeazul] {LM};}
     \capa{1}{\draw[curva1] (1,7) -- (7,1) node[etiqueta, below, text=tceemorado] {IS};}
@@ -28,8 +43,8 @@
     \capa{2}{\rango{3.75}{5.25}}
   \end{scope}
   % ---------- b) perturbación real, tipo fijo ----------
-  \begin{scope}[xshift=11.5*0.42cm, yshift=12*0.42cm]
-    \capa{3}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {b) Perturbación real ($\varepsilon^{\mathrm{IS}}$),\\tipo de interés fijo};}
+  \begin{scope}[xshift=17.9*0.42cm, yshift=11.6*0.42cm]
+    \capa{3}{\node[letra] at (9.2,9.2) {b)};}
     \capa{3}{\ejes{$y$}{$i$}{8.8}{8}}
     \capa{3}{\draw[curva2] (0,3.5) -- (8.4,3.5) node[etiqueta, above left, text=tceeazul] {LM ($\bar{\imath}$)};}
     \capa{3}{\node[etiqueta, left] at (0,3.5) {$\bar{\imath}$};}
@@ -41,8 +56,8 @@
     \capa{4}{\rango{3}{6}}
   \end{scope}
   % ---------- c) perturbación monetaria, dinero fijo ----------
-  \begin{scope}
-    \capa{5}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {c) Perturbación monetaria ($\varepsilon^{\mathrm{LM}}$),\\cantidad de dinero fija};}
+  \begin{scope}[xshift=6.2*0.42cm]
+    \capa{5}{\node[letra] at (9.2,9.2) {c)};}
     \capa{5}{\ejes{$y$}{$i$}{8.8}{8}}
     \capa{5}{\draw[curva1] (1,7) -- (7,1) node[etiqueta, below, text=tceemorado] {IS};}
     \capa{5}{\draw[curva2] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceeazul] {LM};}
@@ -53,8 +68,8 @@
     \capa{6}{\rango{3.75}{5.25}}
   \end{scope}
   % ---------- d) perturbación monetaria, tipo fijo ----------
-  \begin{scope}[xshift=11.5*0.42cm]
-    \capa{7}{\node[font=\footnotesize\bfseries, anchor=south west, align=left, inner sep=0pt] at (-0.8,8.6) {d) Perturbación monetaria ($\varepsilon^{\mathrm{LM}}$),\\tipo de interés fijo};}
+  \begin{scope}[xshift=17.9*0.42cm]
+    \capa{7}{\node[letra] at (9.2,9.2) {d)};}
     \capa{7}{\ejes{$y$}{$i$}{8.8}{8}}
     \capa{7}{\draw[curva1] (1,7) -- (7,1) node[etiqueta, below, text=tceemorado] {IS};}
     \capa{7}{\draw[curva2] (0,3.5) -- (8.4,3.5) node[etiqueta, above left, text=tceeazul] {LM ($\bar{\imath}$)};}

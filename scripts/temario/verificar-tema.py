@@ -634,7 +634,8 @@ def verificar(tema):
                 # entre la cabecera y ella (texto, imágenes y dibujos).
                 pie = [l['bbox'][1] for b in pag.get_text('dict')['blocks'] for l in b.get('lines', [])
                        if ''.join(s['text'] for s in l['spans']).lstrip().startswith('©')]
-                limite = min(pie) - 8 if pie else alto - 60
+                pie = [y for y in pie if y > alto * 0.85]
+                limite = max(pie) - 8 if pie else alto - 60
                 cajas = [fitz.Rect(i['bbox']) for i in pag.get_image_info()]
                 cajas += [d['rect'] for d in pag.get_drawings() if d['rect'].height > 2 and d['rect'].width > 2]
                 cajas = [c for c in cajas if c.y0 > 60 and c.y0 < limite]
@@ -647,6 +648,8 @@ def verificar(tema):
                     continue
                 texto, span = lineas[-1]
                 destacado = span['color'] in morados and (span['flags'] & 2 or span['flags'] & 16)
+                if re.search('[\U0001D400-\U0001D7FF]', texto):
+                    continue
                 if titulo.match(texto) or (destacado and len(texto) < 90 and not texto.endswith('.')):
                     errores.append(f'Título al pie de la página {n} del PDF: «{texto[:60]}»')
         except Exception as e:
