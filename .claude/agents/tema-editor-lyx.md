@@ -98,6 +98,37 @@ sencillo y solo las órdenes de `tcee.sty`):
   - Bloque de crecimiento: $\tilde k$, $\tilde y$, $\tilde c$ por unidad
     eficiente de trabajo; $k$, $y$, $c$ per cápita. Coste de uso del capital:
     $r$ (no $c_K$) si no confunde.
+- **Reglas del 12/11/2026** (CRITERIOS §2 y §4, 8.ª tanda):
+  - **Nunca se cita a Víctor Gutiérrez Marcos**: ni `\nocite`/`\textcite`/
+    `\parencite` de entradas suyas ni entradas suyas en el `.bib` (tampoco
+    del simulador de test, que va solo con `\href`), ni «de Víctor Gutiérrez
+    Marcos» en `\fuente{}`: si un gráfico es suyo, «elaboración propia». La
+    autoría del documento (cabecera, pie, `pdfauthor`) no se toca.
+  - **Nada de «pegatina(s)»** en ningún sitio: son refranes o dichos.
+  - **Resultados clave en morado**: la ecuación que es el resultado clave
+    de un modelo va con `\funcionclave[eq:…]{…}` (como la ecuación 11 del
+    3.A.33). Los desarrollos «Paso 1, Paso 2…» van en viñetas con sublistas
+    indentadas.
+  - **Estructura rígida de cada modelo**, siempre en este orden: a) Idea;
+    b) Modelo, con i) Supuestos, ii) Desarrollo, iii) Implicaciones;
+    c) Extensiones; d) Evidencia empírica; e) Valoración. Solo se saltan
+    Extensiones o Evidencia si no las hay, y las letras siguen seguidas.
+  - **Ejemplos sin nombres de personas inventadas** («Lucía»…): «un
+    agente», «un hogar». Si un ejemplo numérico vuelve mucho después, se
+    repiten sus datos o se usan números nuevos.
+  - **Sin frases que solo remiten** ni mezclas de dato, cita y remisión
+    («En el Eurosistema son 3 (Banco de España, 2026a); su detalle
+    institucional [ver tema 3.B.43].»): se dice lo esencial (cuáles son los
+    3) y, si hace falta, una caja gris breve aparte («Aquí no se trata el
+    detalle institucional \vertema{3.B.43}»).
+  - **Términos que se suelen ver en inglés**: la primera vez, en español con
+    el inglés entre paréntesis y en cursiva (`\emph{…}`).
+  - **Cajas**: la primera línea de una caja (su «título») nunca queda en
+    otra página que el resto; lo hace `tcee.sty`, pero compruébalo en el PDF
+    (si la caja empieza con `tablacaja`/`figuracaja`, pon antes el rótulo en
+    un primer párrafo).
+  - **Esquema**: los minutos van en una columna fija a la derecha y nunca
+    caen solos en otra línea (lo hace `tcee.sty`); entre líneas, solo `\\`.
 - **Toda remisión es un enlace** (CRITERIOS §6): `\vertema{3.A.12}` para otros
   temas y `\ref{…}`/`\eqref{…}` para apartados, anexos, gráficos, tablas y
   ecuaciones; nunca «(II.3)», «apartado~I.2», «bloque~III» o «anexo~B» a mano.

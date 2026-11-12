@@ -51,6 +51,10 @@ en cada tema. Ver `LICENSE.md` en la raíz.
 
 - Castellano cuidado, con todas las tildes. Términos en inglés en cursiva
   (*second-best*, *trade-off*) solo si son los habituales en la literatura.
+  **Términos que se suelen ver en inglés** (Víctor, 12/11/2026): la primera
+  vez que salen, en español con el inglés entre paréntesis y en cursiva
+  («fijación de precios escalonada (\emph{staggered pricing})»); después,
+  en español.
 - Estructura del tema (guía de Víctor «Cómo cantar un tema»,
   `oposicion/organizacion/como_cantar_un_tema.pdf`, y la de Manuel,
   manuelcabadogarcia.es/como-cantar-un-tema.html):
@@ -73,10 +77,16 @@ en cada tema. Ver `LICENSE.md` en la raíz.
     Cada apartado empieza anunciando su conclusión y termina con una
     recapitulación y el enlace con el siguiente. Cada concepto importante:
     definición, interpretación analítica e interpretación gráfica.
-  - **Estructura de un modelo** (Víctor, 13/10/2026; para memorizar). Cada
+  - **Estructura de un modelo** (Víctor, 13/10/2026; para memorizar;
+    **rígida** desde el 12/11/2026, 8.ª tanda: siempre esta jerarquía y este
+    orden, a) Idea; b) Modelo con i) Supuestos, ii) Desarrollo, iii)
+    Implicaciones; c) Extensiones; d) Evidencia empírica; e) Valoración. Solo
+    se pueden saltar Extensiones o Evidencia empírica si no las hay; Idea,
+    Modelo (con sus i-iii) y Valoración no se saltan ni se mezclan, y nada se
+    cambia de orden). Cada
     modelo se cuenta con estos bloques, con **títulos propios** de nivel 4 y 5
     (`\paragraph{a) Idea}`, `\subparagraph{i) Supuestos}`; letras a mano).
-    Si un bloque no procede, se salta y **las letras siguen seguidas** (a, b,
+    Si Extensiones o Evidencia no proceden, se saltan y **las letras siguen seguidas** (a, b,
     c… sin huecos: «a) Idea, b) Modelo, c) Valoración»; el nombre del bloque
     es lo que se memoriza, no la letra; Víctor, 17/10/2026, G06). Cuando
     varios modelos van dentro de un mismo subapartado, el nombre de cada
@@ -162,6 +172,13 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   pizarra y probablemente mantendría durante el cante (p. ej., la función de
   costes $C(\vect{w},q)$ y la de beneficio $B(p,\vect{w})$ en el 3.A.12).
   Pocas por tema; no en todos los temas las hay.
+  **Resultados clave en morado** (Víctor, 12/11/2026): la ecuación que es el
+  resultado clave de un modelo (la que se escribe en ii) Desarrollo y se usa
+  en iii) Implicaciones) se destaca igual que las demás ecuaciones clave del
+  tema, con `\funcionclave[eq:…]{…}` (como la ecuación 11 del 3.A.33), no en
+  un `equation` corriente. Los **desarrollos paso a paso** («Paso 1, Paso
+  2…») van en viñetas con sublistas indentadas: el rótulo del paso en su
+  viñeta y lo que se hace en ese paso, debajo, un nivel más adentro.
 - **Problemas de optimización con las restricciones debajo**, cada una en
   su línea (Víctor, 16/10/2026), como en los temas antiguos, para que el
   opositor se acostumbre a ver la función objetivo por un lado y las
@@ -246,6 +263,12 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   según \vertema{…}», ni «(\vertema{…})» como complemento. Bien: «La
   metodología de \autor{Friedman} (1953) defiende juzgar un modelo por sus
   predicciones \vertema{3.A.5}».
+- **Nada de frases que solo remiten** (Víctor, 12/11/2026): ni frases que
+  mandan a otro sitio sin decir lo esencial ni mezclas incoherentes de dato,
+  cita y remisión. Mal: «En el Eurosistema son 3 (Banco de España, 2026a); su
+  detalle institucional \vertema{3.B.43}.» Bien: decir cuáles son los 3 y,
+  si hace falta, añadir aparte una caja gris breve del tipo «Aquí no se trata
+  el detalle institucional \vertema{3.B.43}».
 - **Ningún gráfico ni tabla cita otro tema como fuente** (Víctor, 9/11/2026):
   la fuente es la obra o el dato original (o «elaboración propia»); si el
   gráfico se repite en otro tema, se dice en el texto con una remisión, no en
@@ -277,11 +300,23 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   sus `\subsection` en orden; Introducción y Conclusión por su nombre) o por
   el `\ref{sec:…}` con que empiece. Por eso el número de cada línea tiene que
   ser el orden real del apartado; `verificar-tema.py` avisa de las líneas que
-  no encuentran destino.
+  no encuentran destino. **Los minutos van en una columna fija a la derecha**
+  (Víctor, 12/11/2026): todas las líneas del esquema dejan libre ese hueco y,
+  si un título no cabe en una línea, se parte con sangría francesa y los
+  minutos quedan en su última línea, nunca solos en una línea aparte. Lo hace
+  `tcee.sty` (entorno `esquema` y `\esqtiempo`) y, en la web, `tema.css`: no
+  hay que hacer nada; basta con no meter en el esquema saltos que no sean `\\`.
 - **Cajas grises para lo que no se canta** (Víctor, 9/11/2026): datos de
   tablas que es imposible memorizar pero ayudan a entender, anécdotas
   biográficas, desarrollos largos y material complementario van en un
   recuadro gris (`anotaciones`), breve y en viñetas, sin perder información.
+  **La primera línea de una caja** (que hace de título) **nunca queda
+  separada del resto en otra página** (Víctor, 12/11/2026, 8.ª tanda): lo
+  hace `tcee.sty` en `anotaciones`, `ideaclave` y `notaopositor` (no hay
+  salto tras la primera línea ni entre el primer párrafo y lo que le sigue,
+  sea texto, lista, `tablacaja` o `figuracaja`). Hay que comprobarlo en el
+  PDF; si una caja empieza con un gráfico o tabla, el rótulo va antes, en
+  el primer párrafo.
 - Las notas al pie salen **siempre al pie de la página** (`footmisc` con
   `bottom`), aunque la página tenga hueco.
 - En las tablas con celdas sombreadas (`\cellcolor`, como las matrices de
@@ -305,6 +340,10 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   («Siguiendo con el ejemplo de nuestros 2 operadores…», «Volvamos a I y
   E…») y se desarrolla paso a paso con sus números (quién decide, qué sabe,
   qué gana, qué resulta), con una tabla o un gráfico si ayuda a seguirlo.
+- **Ejemplos sin nombres de personas inventadas** (Víctor, 12/11/2026): nada
+  de «Lucía», «Juan» o similares; «un agente», «un hogar», «una empresa»,
+  «el país A». Si un ejemplo numérico vuelve a salir mucho después, no se
+  obliga a recordar sus cifras: se repiten los datos o se usan números nuevos.
 - Cada figura va **pegada al párrafo que la explica** (`[H]` justo después
   de él), no al principio ni al final del apartado (Víctor, 20/10/2026).
 - Una nota que **sigue en la página siguiente** lleva una flecha morada (↪)
@@ -434,6 +473,13 @@ el texto original y lo que se hizo.
   («(INE, 2026)»). Las notas al pie quedan para aclaraciones con texto. Cada
   dato cita una entrada del `.bib` del tema. Para fuentes en línea: autor institucional, título, año,
   `url` y `urldate` (fecha de consulta). Gráficos y tablas con `\fuente{…}`.
+- **Nunca se cita a Víctor Gutiérrez Marcos** (Víctor, 12/11/2026): ni
+  `\nocite`, `\textcite` ni `\parencite` de entradas suyas (el simulador de
+  test, sus apuntes) ni entradas suyas en el `.bib`, ni «de Víctor Gutiérrez
+  Marcos» en una `\fuente{}`: si un gráfico o una tabla es suyo, «elaboración
+  propia». El enlace genérico al simulador va con `\href`, sin cita. Los
+  datos de autoría del documento (cabecera, `pdfauthor`, pie de copyright) no
+  se tocan.
 - Se respetan las citas que ya hay en el tema (bibliografía, notas al pie).
 - **Los enlaces del tema original se conservan** (Víctor, 9/11/2026): apuntes,
   documentos, vídeos o páginas que el original enlazaba siguen enlazados, con
@@ -651,11 +697,12 @@ el texto original y lo que se hizo.
   - El desarrollo de esos ejemplos va en un anexo, con la remisión a los
     temas donde se aplican. Así sirve de gancho para que el tribunal
     pregunte.
-  - **Refranes pegatina**: refranes o dichos cortos que se dicen una vez al
+  - **Refranes y dichos** (nunca «pegatina(s)» en ningún sitio: Víctor,
+    12/11/2026): refranes o dichos cortos que se dicen una vez al
     presentar el concepto y se apuntan a su lado en la pizarra. No se repite
     un refrán que ya sea el enganche de otro tema (el 3.A.17 usa «quien parte
     y reparte…», y el 3.A.16 «a río revuelto…»; el 3.A.20, «tener la sartén
-    por el mango», con las pegatinas «más sabe el loco en su casa…», «el que
+    por el mango», con los dichos «más sabe el loco en su casa…», «el que
     algo quiere, algo le cuesta», «las comparaciones son odiosas» y «poner al
     zorro a cuidar de las gallinas»; el 3.A.24, «nunca llueve a gusto de
     todos», con «donde hay patrón no manda marinero» y «cada cabeza es un

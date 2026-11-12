@@ -339,30 +339,69 @@
 
 
 % --- Cajas ----------------------------------------------------------------------
+% La primera línea de una caja hace de título: nunca queda sola al pie de una
+% página con el resto de la caja en la siguiente (Víctor, 12/11/2026). Al abrir
+% la caja (tcee primera linea) se marca su primer párrafo: no admite salto tras
+% su primera línea (\vadjust{\nobreak}) ni entre él y lo que le sigue (una
+% tabla o un gráfico de figuracaja, una lista, otro párrafo). Si el primer
+% párrafo y lo siguiente no caben juntos, la caja se corta más abajo o, si
+% nada cabe, empieza en la página siguiente (tcolorbox no deja la parte vacía).
+% Es una marca global (para que no la deshaga un grupo como \textbf{…} con que
+% empiece el párrafo); la consume el primer párrafo que se abre dentro.
+\newif\iftcee@primerpar
+\AddToHook{para/begin}{\iftcee@primerpar\vadjust{\nobreak}\fi}
+\AddToHook{para/after}{\iftcee@primerpar\global\tcee@primerparfalse\nobreak\fi}
+\tcbset{tcee primera linea/.style={before upper pre={\global\tcee@primerpartrue},
+  after upper pre={\global\tcee@primerparfalse}}}
 % Nota al opositor: consejo útil para el cante (sustituye a la caja amarilla
 % con texto rojo de los Word antiguos).
 \newtcolorbox{notaopositor}[1][]{enhanced,breakable,
   colback=tceemoradopalido,colframe=tceemorado,boxrule=0pt,leftrule=3pt,arc=1pt,
   fontupper=\small,left=8pt,right=8pt,top=5pt,bottom=5pt,
   title={\textsc{Nota al opositor}},coltitle=tceemorado,fonttitle=\small\bfseries,
-  attach title to upper={\ \textbullet\ },#1}
+  attach title to upper={\ \textbullet\ },tcee primera linea,#1}
 % Anotaciones: lecturas recomendadas, enlaces y material complementario.
 \newtcolorbox{anotaciones}[1][]{enhanced,breakable,
   colback=tceegrisclaro!55,colframe=tceegris,boxrule=0.4pt,arc=1pt,
-  fontupper=\footnotesize,left=8pt,right=8pt,top=4pt,bottom=4pt,#1}
+  fontupper=\footnotesize,left=8pt,right=8pt,top=4pt,bottom=4pt,tcee primera linea,#1}
 % Idea clave: frase que conviene decir tal cual en el cante.
 \newtcolorbox{ideaclave}[1][]{enhanced,breakable,
   colback=tceesalvia,colframe=tceesalviaoscuro,boxrule=0.6pt,arc=2pt,
-  fontupper=\itshape,left=8pt,right=8pt,top=5pt,bottom=5pt,#1}
+  fontupper=\itshape,left=8pt,right=8pt,top=5pt,bottom=5pt,tcee primera linea,#1}
 % Esquema del tema (para la pizarra)
 \newtcolorbox{esquema}[1][]{enhanced,breakable,
   colback=tceecrema,colframe=tceemorado,boxrule=0.6pt,arc=2pt,
   title={Esquema del tema},fonttitle=\bfseries,colbacktitle=tceemorado,
-  fontupper=\small,#1}
+  fontupper=\small,before upper app={\tcee@esqinicio},#1}
 % Minutos orientativos de cada parte en el esquema, a la derecha y en gris,
 % solo en la línea de la introducción, de cada apartado y de la conclusión:
 % «I. Título\esqtiempo{11}\\». Un título por línea (CRITERIOS §2).
-\newcommand{\esqtiempo}[1]{\hfill{\scriptsize\itshape\color{tceegris}\tceemmss{#1}}}
+% Los minutos van en una columna fija a la derecha (Víctor, 12/11/2026): todas
+% las líneas dejan libre ese hueco (\rightskip), así que un título largo se
+% parte antes y los minutos quedan en su última línea, nunca solos debajo. Cada
+% línea del esquema (lo que va entre \\) es un párrafo con sangría francesa: si
+% se parte, la segunda línea va sangrada bajo el texto (\tcee@esqhang más la
+% sangría \hspace* con que empiece la línea).
+\newdimen\tcee@esqancho
+\newdimen\tcee@esqhang
+\newif\iftcee@enesquema
+\newcommand{\tcee@esqlinea}{\noindent\hangindent\tcee@esqhang\hangafter\@ne\ignorespaces}
+\newcommand{\tcee@esqcr}[1][0pt]{\par\vspace{#1}\tcee@esqlinea}
+\newcommand{\tcee@esqsangria}[1]{\hskip#1\relax\advance\hangindent#1\relax}
+\newcommand{\tcee@esqinicio}{%
+  \tcee@enesquematrue
+  \settowidth{\tcee@esqancho}{\scriptsize\itshape\tceemmss{88,5}}%
+  \advance\tcee@esqancho 1em\relax
+  \settowidth{\tcee@esqhang}{III.\ }%
+  \parindent\z@\parskip\z@
+  \rightskip\tcee@esqancho plus 1fil\relax
+  \hyphenpenalty\@M\exhyphenpenalty\@M
+  \def\\{\@ifstar\tcee@esqcr\tcee@esqcr}%
+  \def\hspace{\@ifstar\tcee@esqsangria\tcee@esqsangria}%
+  \tcee@esqlinea}
+\newcommand{\esqtiempo}[1]{\iftcee@enesquema
+    \unskip\nobreak\hfill\rlap{\hbox to\tcee@esqancho{\hfill\scriptsize\itshape\color{tceegris}\tceemmss{#1}}}%
+  \else\hfill{\scriptsize\itshape\color{tceegris}\tceemmss{#1}}\fi}
 % Cada línea del esquema enlaza con su apartado (Víctor, 11/11/2026). No hay
 % que escribirlo: construir-tema.py (comun.enlazar_esquema) lo añade en la copia
 % de _trabajo/, por el orden de las líneas (I., II.…; 1., 2.… bajo cada una;
