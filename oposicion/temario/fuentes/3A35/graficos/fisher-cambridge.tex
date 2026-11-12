@@ -1,0 +1,49 @@
+% La teoría cuantitativa: el enfoque de Fisher (1911) y el de Cambridge
+% (Marshall y Pigou, 1917), en qué se diferencian y en qué coinciden.
+% Infografía de elaboración propia a partir de Fisher (1911), Pigou (1917) y
+% Serletis (2007, cap. 7, p. 90: la versión de transacciones, MV = PT, y la de
+% renta, MV = PY, son intercambiables si la renta y las transacciones son
+% proporcionales; cambia la velocidad). Recupera la nota 5 del tema antiguo.
+% Capas (vídeo): 1, cabeceras; 2-6, una fila de diferencias cada una;
+% 7, lo que tienen en común; 8, el puente entre las 2 ecuaciones.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    celda/.style={draw=#1,fill=#1!7,rounded corners=2pt,minimum height=1.05cm,
+      text width=5.6cm,align=center,font=\small,inner sep=3pt},
+    cabecera/.style={fill=#1,text=white,rounded corners=2pt,minimum height=0.8cm,
+      text width=5.6cm,align=center,font=\small\bfseries,inner sep=3pt},
+    every node/.append style={execute at begin node={\thickmuskip=5mu\medmuskip=4mu\hyphenpenalty=10000\exhyphenpenalty=10000\relax}},
+    rotulo/.style={text width=2.5cm,align=center,font=\footnotesize\itshape,text=tceegris}]
+  \def\xa{-4.35}\def\xb{4.35}
+  % 1: cabeceras
+  \capa{1}{\node[cabecera=tceemorado] at (\xa,0) {\textsc{Fisher} (1911)\\[-1pt]{\footnotesize\normalfont la ecuación de cambio}};}
+  \capa{1}{\node[cabecera=tceeazul] at (\xb,0) {Cambridge: \textsc{Marshall} y \textsc{Pigou} (1917)\\[-1pt]{\footnotesize\normalfont los saldos de caja}};}
+  \capa{1}{\node[font=\small\bfseries,text=tceegris] at (0,0) {En qué difieren};}
+  % 2-6: filas de diferencias
+  \foreach \n/\r/\f/\c in {
+      2/La pregunta/¿Cuánto dinero \emph{circula} en la economía?/¿Cuánto dinero quiere \emph{tener} cada uno?,
+      3/La ecuación/{$M\,V\equiv P\,T$\\[-1pt]{\footnotesize versión de transacciones}}/{$M^D=k\,P\,Y$\\[-1pt]{\footnotesize versión de renta}},
+      4/La perspectiva/{Macroeconómica: el flujo de pagos de toda la economía}/{Microeconómica: el saldo que decide cada individuo},
+      5/Las funciones del dinero/Medio de cambio/{Medio de cambio y depósito de valor (depende también de la riqueza)},
+      6/Qué fija $V$ o $k$/{Los hábitos de pago y las instituciones, que cambian despacio}/{Además, el coste de oportunidad y las expectativas: $k$ se mueve a corto plazo}} {
+    \capa{\n}{\node[celda=tceemorado] at (\xa,{-1.25*(\n-1)}) {\f};}
+    \capa{\n}{\node[celda=tceeazul] at (\xb,{-1.25*(\n-1)}) {\c};}
+    \capa{\n}{\node[rotulo] at (0,{-1.25*(\n-1)}) {\r};}
+  }
+  % 7: lo que tienen en común
+  \capa{7}{\node[draw=tceedorado,fill=tceedorado!10,rounded corners=2pt,text width=14.3cm,
+      align=left,font=\small,inner sep=5pt,anchor=north] (comun) at (0,-6.95) {%
+      \textbf{En qué coinciden}\\[1pt]
+      $\blacksquare$ En equilibrio, $M=M^D$ y $V=1/k$: las 2 ecuaciones son la misma, $M\,V=P\,Y$.\\
+      $\blacksquare$ La demanda de dinero es proporcional a la renta nominal; el tipo de interés apenas cuenta.\\
+      $\blacksquare$ A largo plazo, con $V$ (o $k$) y la producción dados y $M$ exógeno, la causalidad va de $M$ a $P$.\\
+      $\blacksquare$ Por eso los precios son proporcionales al dinero, la inflación es monetaria y el dinero es neutral.};}
+  % 8: el puente entre las 2 ecuaciones (Serletis, 2007)
+  \capa{8}{\node[draw=tceegris,dashed,rounded corners=2pt,text width=14.3cm,align=center,
+      font=\footnotesize,inner sep=4pt,anchor=north] at ([yshift=-0.25cm]comun.south) {%
+      De $M\,V\equiv P\,T$ a $M\,V=P\,Y$: si el volumen de transacciones es proporcional a la renta real, se cambia $T$ por $Y$.
+      La velocidad ya no es la misma (las transacciones incluyen bienes intermedios y activos), pero por lo demás los 2 enfoques son intercambiables.};}
+\end{tikzpicture}
+\end{document}

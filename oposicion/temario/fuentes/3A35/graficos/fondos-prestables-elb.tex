@@ -1,0 +1,44 @@
+% El límite inferior de los tipos en el mercado de fondos prestables.
+% Rehace en TikZ el gráfico a mano de la p. 40 del tema antiguo (ahorro S
+% creciente, demanda de fondos (G - T) + I decreciente, equilibrio r* por
+% debajo del 0 %), con el suelo del tipo real y las salidas.
+% Rectas (elaboración propia, ilustrativas):
+%   S:          r = -1,2 + 0,8 (x - 3)
+%   I + (G-T):  r = -1,2 - 0,8 (x - 3)      -> r* = -1,2 con x = 3
+%   suelo:      r = i^ELB - pi^e = -0,4     -> S en x = 4, demanda en x = 2
+%   fiscal:     la demanda se desplaza 2 a la derecha: corta S en (4; -0,4)
+% Capas (vídeo): 1, ejes y 0 %; 2, ahorro; 3, demanda de fondos; 4, tipo
+% natural r*; 5, suelo y exceso de ahorro; 6, salida fiscal; 7, bajar el suelo.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.25cm,y=1cm]
+  % 1: ejes (el tipo real puede ser negativo) y el 0 %
+  \capa{1}{\draw[eje] (0,-3.1) -- (6.4,-3.1) node[below left=2pt and 0pt] {Fondos prestables};}
+  \capa{1}{\draw[eje] (0,-3.1) -- (0,1.7) node[left] {$r$};}
+  \capa{1}{\draw[guia] (0,0) -- (6.2,0);}
+  \capa{1}{\node[left] at (0,0) {$0$};}
+  % 2: ahorro
+  \capa{2}{\draw[curva1] (0.9,-2.88) -- (5.6,0.88) node[etiqueta,right,text=tceemorado] {$S$};}
+  % 3: demanda de fondos
+  \capa{3}{\draw[curva2] (0.6,0.72) -- (5.1,-2.88) node[etiqueta,right,text=tceeazul] {$I+(G-T)$};}
+  % 4: el tipo natural, negativo
+  \capa{4}{\node[punto] (E) at (3,-1.2) {};}
+  \capa{4}{\draw[guia] (0,-1.2) -- (E);}
+  \capa{4}{\node[left,align=right] at (0,-1.2) {$r^*$\\[-2pt]{\footnotesize tipo natural}};}
+  % 5: el suelo del tipo real y el exceso de ahorro
+  \capa{5}{\draw[very thick,tceedorado] (0,-0.4) -- (6.2,-0.4);}
+  \capa{5}{\node[left] at (0,-0.4) {$i^{\mathrm{ELB}}-\pi^e$};}
+  \capa{5}{\node[punto] at (2,-0.4) {};}
+  \capa{5}{\node[punto] at (4,-0.4) {};}
+  \capa{5}{\draw[decorate,decoration={brace,amplitude=5pt}] (2,-0.25) -- (4,-0.25);}
+  \capa{5}{\draw[thin,tceegris] (3,-0.08) -- (3,1.02);}
+  \capa{5}{\node[font=\footnotesize,align=center,anchor=south,inner sep=1pt] at (3,1.02) {ahorro $>$ inversión: baja la renta};}
+  % 6: salida fiscal: la demanda de fondos se desplaza a la derecha
+  \capa{6}{\draw[curvanueva,dashed] (2.6,0.72) -- (6.1,-2.08) node[etiqueta,below,text=tceerojo,font=\footnotesize] {más déficit};}
+  \capa{6}{\draw[flecha] (3.8,-1.7) -- (5.4,-1.7);}
+  % 7: bajar el suelo: más inflación esperada o suprimir el efectivo
+  \capa{7}{\draw[flecha] (5.55,-0.45) -- (5.55,-1.15);}
+  \capa{7}{\node[font=\footnotesize,text=tceerojo,align=left,anchor=west] at (5.65,-0.8) {más $\pi^e$ o\\[-2pt]sin efectivo};}
+\end{tikzpicture}
+\end{document}
