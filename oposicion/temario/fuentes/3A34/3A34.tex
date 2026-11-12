@@ -269,9 +269,18 @@ En el cante (\tiempo{9}): los antecedentes (\tiempo{2,5}), muy deprisa: de \auto
   \mathcal{H}_t=P_t\,F(K_t,L_t)-W_t\,L_t-P^K_t\,I_t+\lambda_t\,(I_t-\delta K_t),
   \end{equation*}
   donde $\lambda_t$ es el \concepto{precio sombra del capital}: lo que vale para la empresa, en $t$, una unidad más de capital instalado \vertema{3.A.29}. Las condiciones de primer orden salen del principio del máximo de \autor{Pontriaguin}.
+\item Las decisiones de la empresa se resumen en 3 ecuaciones:
+  \begin{itemize}
+  \item se contrata \emph{trabajo} hasta que el valor de su producto marginal iguala el salario:
+  \funcionclave[eq:jorgenson-trabajo]{P\,F_L(K,L)=W}
+  \item se demanda \emph{capital} hasta que el valor de su producto marginal iguala su coste de uso:
+  \funcionclave[eq:coste-uso]{P\,F_K(K^*,L)=c_K\equiv P^K\left(r+\delta-\frac{\dot P^K}{P^K}\right)}
+  \item y la \emph{condición de transversalidad}, que descarta las sendas explosivas:
+  \funcionclave[eq:jorgenson-transversalidad]{\lim_{t\to\infty}e^{-r\,t}\lambda_t\,K_t=0}
+  \end{itemize}
 \end{itemize}
 
-\begin{anotaciones}
+\begin{anotaciones}[unbreakable]
 \textbf{Cómo se obtienen las condiciones de primer orden del modelo de \autor{Jorgenson}.} Se aplica el principio del máximo de \autor{Pontriaguin} (anexo~\ref{anexo:control-optimo}) al hamiltoniano en valor corriente, con controles $L_t$ e $I_t$, estado $K_t$, coestado $\lambda_t$ y descuento $r$.
 
 \medskip
@@ -292,15 +301,6 @@ La versión en valor presente, como en el original de \autor{Jorgenson}, está e
 \end{anotaciones}
 
 \begin{itemize}
-\item Las decisiones de la empresa se resumen en 3 ecuaciones:
-  \begin{itemize}
-  \item se contrata \emph{trabajo} hasta que el valor de su producto marginal iguala el salario:
-  \funcionclave[eq:jorgenson-trabajo]{P\,F_L(K,L)=W}
-  \item se demanda \emph{capital} hasta que el valor de su producto marginal iguala su coste de uso:
-  \funcionclave[eq:coste-uso]{P\,F_K(K^*,L)=c_K\equiv P^K\left(r+\delta-\frac{\dot P^K}{P^K}\right)}
-  \item y la \emph{condición de transversalidad}, que descarta las sendas explosivas:
-  \funcionclave[eq:jorgenson-transversalidad]{\lim_{t\to\infty}e^{-r\,t}\lambda_t\,K_t=0}
-  \end{itemize}
 \item El \concepto{coste de uso} $c_K$ es lo que cuesta, por unidad de tiempo, tener una unidad de capital. Tiene 3 componentes:
   \begin{itemize}
   \item $P^K r$, el \emph{coste de oportunidad}: el interés al que se renuncia por tener la máquina en vez de venderla y prestar el dinero. Cuanto mayor es el tipo de interés, menos capital se desea;
@@ -347,9 +347,9 @@ La versión en valor presente, como en el original de \autor{Jorgenson}, está e
 \paragraph{d) Evidencia empírica}
 
 \begin{itemize}
-\item \textcite{HallJorgenson1967Tax} usan el coste de uso para medir los efectos de la política fiscal en Estados Unidos y concluyen que la amortización acelerada de 1954 y la desgravación a la inversión de 1962 aumentaron mucho la inversión en equipo.
-\item Pero el modelo impone, con la función \autor{Cobb}-\autor{Douglas}, que el capital deseado responda igual a la producción que al coste de uso. Cuando se estiman por separado, la respuesta a la producción es mucho mayor que al coste de uso\nocite{EisnerNadiri1968Investment}, y los modelos con el coste de uso no explican la inversión mejor que el acelerador\nocite{Chirinko1993Business}. Con datos de empresas, la elasticidad del capital al coste de uso ronda $-0{,}25$\nocite{ChirinkoFazzariMeyer1999}.
-\item Las estimaciones a largo plazo dan elasticidades más altas, cercanas a la unidad: en muestras cortas, los costes de ajuste las sesgan hacia cero\nocite{Caballero1994Small}. Y cuando el incentivo es grande y fácil de identificar, la respuesta es clara: la amortización acelerada de Estados Unidos aumentó la inversión en los bienes que podían acogerse a ella un 10,4~\% en 2001-2004 y un 16,9~\% en 2008-2010\nocite{ZwickMahon2017Tax}.
+\item \textcite{HallJorgenson1967Tax} usan el coste de uso para medir los efectos de las reformas fiscales de Estados Unidos (la amortización acelerada de 1954 y las nuevas reglas de amortización y la desgravación a la inversión de 1962) y concluyen que movieron de forma apreciable la inversión, sobre todo la desgravación de 1962.
+\item Pero el modelo impone, con la función \autor{Cobb}-\autor{Douglas}, que el capital deseado responda igual a la producción que al coste de uso. Cuando se estiman por separado, la respuesta a la producción es mucho mayor que al coste de uso\nocite{EisnerNadiri1968Investment}, y, en general, la inversión responde poco a los precios en comparación con las cantidades\nocite{Chirinko1993Business}. Con datos de empresas, la elasticidad del capital al coste de uso ronda $-0{,}25$\nocite{ChirinkoFazzariMeyer1999}.
+\item Las estimaciones de la relación a largo plazo dan elasticidades del cociente capital-producto al coste del capital mucho mayores, cercanas a $-1$: en muestras cortas, los costes de ajuste sesgan las estimaciones hacia cero\nocite{Caballero1994Small}. Y cuando el incentivo es grande y fácil de identificar, la respuesta es clara: la amortización acelerada de Estados Unidos aumentó la inversión en los bienes que podían acogerse a ella, frente a los que no, un 10,4~\% en 2001-2004 y un 16,9~\% en 2008-2010\nocite{ZwickMahon2017Tax}.
 \end{itemize}
 
 \paragraph{e) Valoración}
@@ -421,9 +421,18 @@ En el cante (\tiempo{8,5}): el modelo (\tiempo{4}), con el problema una vez con 
   \mathcal{H}_t=B(K_t)\,\kappa_t-I_t-\Phi(I_t)+q_t\,I_t,
   \end{equation*}
   el coestado $q_t$ es el \concepto{precio sombra del capital}: lo que vale en $t$ una unidad más de capital instalado. Es el mismo papel que $\lambda_t$ en el modelo de \autor{Jorgenson}, y las condiciones de primer orden salen igual, con el principio del máximo.
+\item Las decisiones de la empresa se resumen en 3 ecuaciones:
+  \begin{itemize}
+  \item cuánto se \emph{invierte}:
+  \funcionclave[eq:q-inversion]{q_t=1+\Phi'(I_t)}
+  \item cuánto \emph{vale} el capital:
+  \funcionclave[eq:q-arbitraje]{r\,q_t=B(K_t)+\dot q_t}
+  \item y la \emph{condición de transversalidad}:
+  \funcionclave[eq:q-transversalidad]{\lim_{t\to\infty}e^{-r\,t}q_t\,\kappa_t=0}
+  \end{itemize}
 \end{itemize}
 
-\begin{anotaciones}
+\begin{anotaciones}[unbreakable]
 \textbf{Cómo se obtienen las condiciones de primer orden del modelo de la q.} Se aplica de nuevo el principio del máximo de \autor{Pontriaguin} (anexo~\ref{anexo:control-optimo}), ahora con un solo control, $I_t$, el estado $\kappa_t$ y el descuento $r$. La empresa toma como dado el capital de la industria, $K_t$: es pequeña frente a ella. El coestado en valor corriente, $q_t\equiv e^{r\,t}\lambda^0_t$, valora una unidad más de capital en el momento $t$ (y no en el 0, como $\lambda^0_t$): es la q de \autor{Tobin}.
 
 \medskip
@@ -442,15 +451,6 @@ La solución hacia delante de (2), la senda de silla, la versión con depreciaci
 \end{anotaciones}
 
 \begin{itemize}
-\item Las decisiones de la empresa se resumen en 3 ecuaciones:
-  \begin{itemize}
-  \item cuánto se \emph{invierte}:
-  \funcionclave[eq:q-inversion]{q_t=1+\Phi'(I_t)}
-  \item cuánto \emph{vale} el capital:
-  \funcionclave[eq:q-arbitraje]{r\,q_t=B(K_t)+\dot q_t}
-  \item y la \emph{condición de transversalidad}:
-  \funcionclave[eq:q-transversalidad]{\lim_{t\to\infty}e^{-r\,t}q_t\,\kappa_t=0}
-  \end{itemize}
 \item \emph{Primera condición: cuánto se invierte}. Se invierte hasta que el valor de una unidad más de capital, $q$, iguala lo que cuesta comprarla e instalarla, $1+\Phi'({I})$. Despejando, $I_t=\Phi'^{-1}(q_t-1)$, donde $\Phi'^{-1}$ es la función inversa del coste marginal (no $1/\Phi'$). Para la industria,
   \begin{equation*}
   \dot K_t=N\,\Phi'^{-1}(q_t-1)\equiv f(q_t),\qquad f(1)=0,\quad f'>0.
@@ -543,9 +543,7 @@ Dos vídeos del canal \emph{Understand Economics @Berkeley} desarrollan el model
 \item \emph{Desgravación a la inversión (política fiscal)}. Si el Estado devuelve una fracción $\theta$ del precio de cada bien de capital nuevo, comprar una unidad cuesta $1-\theta$ y la primera condición pasa a ser $q_t=1-\theta+\Phi'(I_t)$: el lugar $\dot K=0$ baja a $q=1-\theta$\nocite{Romer2019Advanced}. La desgravación no cambia el lugar $\dot q=0$.
   \begin{itemize}
   \item \emph{Desgravación permanente} (gráfico~\ref{fig:q-desgravacion-permanente}): el capital deseado aumenta (en el nuevo equilibrio $E'$, $B(K)=r\,(1-\theta)$); $q$ \emph{cae} de golpe hasta la nueva senda de silla, porque el capital ya instalado no se beneficia de la desgravación y tendrá que competir con el nuevo, más barato; pero cae menos que el umbral, que baja a $1-\theta$, así que la inversión aumenta y el capital crece hasta $E'$.
-  \item \emph{Desgravación temporal, hasta $T$} (gráfico~\ref{fig:q-desgravacion-temporal}): $q$ cae menos que con la permanente, porque el capital instalado sufrirá menos competencia futura, así que la distancia entre $q$ y $1-\theta$, y con ella la inversión, es \emph{mayor} que con la desgravación permanente. Además, $q$ sube a medida que se acerca $T$: las empresas adelantan la inversión para aprovechar la ayuda antes de que desaparezca. Cuando se retira, la inversión pasa a ser negativa y el capital vuelve poco a poco al equilibrio inicial.
   \end{itemize}
-\item \emph{Lección de política}: una desgravación temporal anima más la inversión a corto plazo que una permanente, porque la adelanta; la permanente aumenta más el capital a largo plazo\nocite{Abel1982Dynamic}. Por eso los incentivos fiscales temporales sirven como política anticíclica, siempre que su final sea creíble (apartado~\ref{sec:implicaciones}).
 \end{itemize}
 
 \begin{figure}[H]
@@ -554,6 +552,11 @@ Dos vídeos del canal \emph{Understand Economics @Berkeley} desarrollan el model
 \grafico[0.55\textwidth]{q-desgravacion-permanente}
 \fuente{elaboración propia a partir de \textcite[439-440]{Romer2019Advanced}.}
 \end{figure}
+
+\begin{itemize}
+\item \emph{Desgravación temporal, hasta $T$} (gráfico~\ref{fig:q-desgravacion-temporal}): $q$ cae menos que con la permanente, porque el capital instalado sufrirá menos competencia futura, así que la distancia entre $q$ y $1-\theta$, y con ella la inversión, es \emph{mayor} que con la desgravación permanente. Además, $q$ sube a medida que se acerca $T$: las empresas adelantan la inversión para aprovechar la ayuda antes de que desaparezca. Cuando se retira, la inversión pasa a ser negativa y el capital vuelve poco a poco al equilibrio inicial.
+\item \emph{Lección de política}: una desgravación temporal anima más la inversión a corto plazo que una permanente, porque la adelanta; la permanente aumenta más el capital a largo plazo\nocite{Abel1982Dynamic}. Por eso los incentivos fiscales temporales sirven como política anticíclica, siempre que su final sea creíble (apartado~\ref{sec:implicaciones}).
+\end{itemize}
 
 \begin{figure}[H]
 \centering
@@ -616,11 +619,7 @@ Dos vídeos del canal \emph{Understand Economics @Berkeley} desarrollan el model
 
 \begin{anotaciones}
 \textbf{\autor{Jorgenson} y la q de \autor{Tobin}, frente a frente.} Los 2 modelos resuelven el mismo problema dinámico bajo certidumbre; la q solo añade el coste de ajuste $\Phi({I})$. Esa diferencia cambia la respuesta de la inversión a una misma perturbación (gráfico~\ref{fig:jorgenson-q-comparacion}) y casi todas sus implicaciones (tabla~\ref{tab:jorgenson-q}).
-\begin{figuracaja}
-\caption{\autor{Jorgenson} y la q de \autor{Tobin} ante una bajada permanente del tipo de interés en $t_0$: gráficos de referencia, capital e inversión}\label{fig:jorgenson-q-comparacion}
-\grafico[0.92\linewidth]{jorgenson-q-comparacion}
-\fuente{elaboración propia a partir de \textcite{Jorgenson1963Capital} y \textcite[cap.~9]{Romer2019Advanced}; valores ilustrativos.}
-\end{figuracaja}
+
 \begin{tablacaja}
 \caption{\autor{Jorgenson} y la q de \autor{Tobin}: funciones e ideas}\label{tab:jorgenson-q}
 \footnotesize\renewcommand{\arraystretch}{1.25}%
@@ -641,6 +640,11 @@ Política & monetaria eficaz por $c_K$; fiscal por los impuestos en $c_K$ & mone
 \end{tabular}
 \fuente{elaboración propia.}
 \end{tablacaja}
+\begin{figuracaja}
+\caption{\autor{Jorgenson} y la q de \autor{Tobin} ante una bajada permanente del tipo de interés en $t_0$: gráficos de referencia, capital e inversión}\label{fig:jorgenson-q-comparacion}
+\grafico[0.8\linewidth]{jorgenson-q-comparacion}
+\fuente{elaboración propia a partir de \textcite{Jorgenson1963Capital} y \textcite[cap.~9]{Romer2019Advanced}; valores ilustrativos.}
+\end{figuracaja}
 \end{anotaciones}
 
 \begin{itemize}
@@ -716,7 +720,7 @@ En el cante (\tiempo{9}): los costes asimétricos y fijos (\tiempo{2}), con la b
 \item Con irreversibilidad, la empresa invierte con más cautela si teme que mañana le sobre capital: la forma de los costes importa, sobre todo, cuando el futuro es incierto.
 \end{itemize}
 
-\begin{table}[H]
+\begin{table}[tbp]
 \centering
 \caption{Dinámica de la inversión según la forma de los costes de ajuste}\label{tab:costes-ajuste-inversion}
 \small
@@ -738,21 +742,7 @@ Cuadráticos (q) & $\tfrac{\phi}{2}I^{2}$ & $q_t=1+\phi I_t$ \eqref{eq:q-inversi
 \fuente{elaboración propia a partir de \textcite{AbelEberly1994Unified} y \textcite[449-453]{Romer2019Advanced}.}
 \end{table}
 
-\begin{anotaciones}
-\textbf{Qué hace el capital con cada forma del coste de ajuste.} El gráfico~\ref{fig:costes-ajuste-casos} pone en imágenes la tabla~\ref{tab:costes-ajuste-inversion}. Cada fila es una forma del coste de ajuste: a la izquierda, su función $\Phi({I})$; en el centro, la senda del capital ante un aumento permanente del capital deseado, anunciado en $t^a$ y en vigor en $t_0$ (en la fila asimétrica, una caída, para ver la desinversión); a la derecha, ante una perturbación transitoria que sube y baja el capital deseado en ciclos.
-\begin{itemize}
-\item \emph{Sin costes}, el capital es siempre el deseado: salta y sigue el ciclo. Es la inversión infinita de \autor{Jorgenson}.
-\item \emph{Con costes fijos}, ajustar solo compensa si la distancia es grande: salto completo ante lo permanente y nada ante oscilaciones pequeñas.
-\item \emph{Con costes lineales}, la empresa solo se mueve hasta el borde de la banda de inacción y se queda quieta en los picos y en los valles del ciclo.
-\item \emph{Si revender cuesta más que comprar}, la banda es más ancha por abajo: ante una caída, apenas desinvierte; en el ciclo, el capital apenas baja, y por eso también sube menos en el siguiente.
-\item \emph{Con costes cuadráticos}, el ajuste es gradual, empieza con el anuncio, porque la q mira al futuro, y el ciclo llega amortiguado.
-\end{itemize}
-\begin{figuracaja}
-\caption{La senda del capital según la forma del coste de ajuste}\label{fig:costes-ajuste-casos}
-\grafico[0.95\linewidth]{costes-ajuste-casos}
-\fuente{elaboración propia a partir de \textcite{AbelEberly1994Unified} y \textcite[cap.~9]{Romer2019Advanced}; valores ilustrativos.}
-\end{figuracaja}
-\end{anotaciones}
+
 
 \paragraph{c) Evidencia empírica}
 
@@ -767,6 +757,23 @@ Cuadráticos (q) & $\tfrac{\phi}{2}I^{2}$ & $q_t=1+\phi I_t$ \eqref{eq:q-inversi
 \item \textcite{AbelEberly1994Unified} reúnen en un solo modelo los costes convexos, los quebrados y los fijos: la q sigue resumiendo la decisión, pero la inversión deja de ser una función lineal de ella.
 \item El modelo sigue suponiendo que la empresa conoce el futuro. Con irreversibilidad, lo que de verdad importa es el riesgo de equivocarse, y para eso hay que introducir la incertidumbre.
 \end{itemize}
+
+\begin{anotaciones}
+\textbf{Qué hace el capital con cada forma del coste de ajuste.} El gráfico~\ref{fig:costes-ajuste-casos} pone en imágenes la tabla~\ref{tab:costes-ajuste-inversion}. Cada fila es una forma del coste de ajuste: a la izquierda, su función $\Phi({I})$; en el centro, la senda del capital ante un aumento permanente del capital deseado, anunciado en $t^a$ y en vigor en $t_0$ (en la fila asimétrica, una caída, para ver la desinversión); a la derecha, ante una perturbación transitoria que sube y baja el capital deseado en ciclos.
+\begin{figuracaja}
+\caption{La senda del capital según la forma del coste de ajuste}\label{fig:costes-ajuste-casos}
+\grafico[0.76\linewidth]{costes-ajuste-casos}
+\fuente{elaboración propia a partir de \textcite{AbelEberly1994Unified} y \textcite[cap.~9]{Romer2019Advanced}; valores ilustrativos.}
+\end{figuracaja}
+\begin{itemize}
+\item \emph{Sin costes}, el capital es siempre el deseado: salta y sigue el ciclo. Es la inversión infinita de \autor{Jorgenson}.
+\item \emph{Con costes fijos}, ajustar solo compensa si la distancia es grande: salto completo ante lo permanente y nada ante oscilaciones pequeñas.
+\item \emph{Con costes lineales}, la empresa solo se mueve hasta el borde de la banda de inacción y se queda quieta en los picos y en los valles del ciclo.
+\item \emph{Si revender cuesta más que comprar}, la banda es más ancha por abajo: ante una caída, apenas desinvierte; en el ciclo, el capital apenas baja, y por eso también sube menos en el siguiente.
+\item \emph{Con costes cuadráticos}, el ajuste es gradual, empieza con el anuncio, porque la q mira al futuro, y el ciclo llega amortiguado.
+\end{itemize}
+
+\end{anotaciones}
 
 % --------------------------------------------------------------------------
 \subsection{La inversión bajo incertidumbre}\label{sec:incertidumbre}
