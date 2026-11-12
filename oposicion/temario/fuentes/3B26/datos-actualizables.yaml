@@ -1,0 +1,102 @@
+tema: 3B26
+fecha_inventario: 2026-11-12
+# Fase 2 (datos, 12/11/2026); fase 3 (integración, 12/11/2026): los «texto» son ya las frases
+# literales del 3B26.tex (sin las órdenes de LaTeX). Quedan fuera los hechos históricos cerrados (fechas de 2007-2008 y de
+# 2023, cifras del TARP y de las ayudas de Estado 2008-2017, umbrales del Comité de Basilea de 1996):
+# solo cambian si cambia la norma o se corrige el documento. Los CSV están en datos/.
+datos:
+  - id: vivienda-eeuu
+    texto: "en Estados Unidos, el precio de la vivienda casi se duplicó entre 2000 y mediados de 2006 y cayó después un 27 % hasta 2012, y un 35 % en las 20 mayores ciudades"
+    donde: [3B26.tex]
+    valor: [84.6, -27.4, -35.1, -35]
+    unidad: "% de variación del índice (enero de 2000 = 100)"
+    periodo: 2000-01 a 2012-03
+    fuente: [FRED2026CaseShiller, FRED2026IPCEEUU]
+    organismo: S&P Dow Jones Indices (vía FRED); BLS
+    serie: "CSUSHPINSA (nacional, sin desestacionalizar), SPCS20RNSA (20 ciudades), CPIAUCNS (deflactor). Comprobación: FHFA USSTHPI (otro índice: -19 %, 2007T1-2012T2)"
+    url: https://fred.stlouisfed.org/series/CSUSHPINSA
+    periodicidad: mensual (último martes de cada mes, con 2 meses de retraso); la parte 2000-2016 apenas se revisa
+    proxima: 2026-11
+    familia: case-shiller
+    depende: [datos/vivienda-eeuu.csv]
+    frase: "II.4 a) Las causas (literal en 3B26.tex) y gráfico de datos fig:vivienda-eeuu; tabla tab:cronologia del anexo (máximo de julio de 2006). Si se añade el nivel actual (agosto de 2026: 336,7, un 82 % por encima del máximo de 2006), actualizarlo cada mes"
+
+  - id: diferenciales-soberanos
+    texto: "en 2012, el diferencial a 10 años llegó a 555 puntos básicos en España y a más de 2.700 en Grecia"
+    donde: [3B26.tex]
+    valor: [2739, 1203, 971, 555, 519]
+    unidad: "puntos básicos (media mensual)"
+    periodo: 2007-01 a 2016-12
+    fuente: BCE2026IRS
+    organismo: BCE
+    serie: "IRS.M.{ES,IT,PT,IE,GR,FR,DE}.L.L40.CI.0000.EUR.N.Z (cálculo propio del diferencial). Comprobación: Eurostat irt_lt_mcby_m (mismos valores)"
+    url: https://data.ecb.europa.eu/data/datasets/IRS
+    periodicidad: "mensual (histórico: no cambia)"
+    proxima: null
+    familia: bce-tipos-largo-plazo
+    depende: [datos/diferenciales-soberanos.csv]
+    frase: "II.5 d) Evidencia empírica (literal en 3B26.tex), gráfico de datos fig:diferenciales-soberanos y tabla tab:cronologia del anexo (2.739 pb en Grecia, febrero de 2012). Histórico: no cambia"
+
+  - id: crisis-bancarias
+    texto: "entre 1970 y 2025 empezaron en el mundo 164 crisis bancarias sistémicas, y 24 de ellas lo hicieron en 2007-2008"
+    donde: [3B26.tex]
+    valor: [164, 24]
+    unidad: "número de crisis bancarias sistémicas"
+    periodo: 1970-2025
+    fuente: [LaevenValencia2026, LaevenValencia2020]
+    organismo: FMI (Laeven y Valencia)
+    serie: "WP 2026/094 (164 episodios, 13 nuevos); fichero MOESM1 de la edición de 2020, «Crisis Frequency» (2 en 2007 y 22 en 2008); comprobación: pestaña «Crisis Years» (mismos recuentos)"
+    url: https://www.imf.org/en/publications/wp/issues/2026/05/14/systemic-banking-crises-database-1970-2025-576036
+    periodicidad: irregular (ediciones 2008, 2013, 2018/2020, 2026)
+    proxima: null
+    familia: laeven-valencia
+    depende: [datos/crisis-bancarias.csv]
+    frase: "Introducción, Relevancia («Son frecuentes»; literal en 3B26.tex). El CSV solo hace falta si se dibuja el gráfico (el 3.B.17 ya tiene uno de frecuencia de crisis con la edición de 2020)"
+
+  - id: costes-crisis-bancarias
+    texto: "en los países de renta alta, una crisis bancaria cuesta de mediana un 32 % del PIB en producción perdida y un 6,7 % del PIB en ayudas públicas directas"
+    donde: [3B26.tex]
+    valor: [31.75, 6.7]
+    unidad: "% del PIB (medianas)"
+    periodo: 1970-2025
+    fuente: LaevenValencia2026
+    organismo: FMI (Laeven y Valencia)
+    serie: "WP 2026/094, texto (renta baja y media: 10,8 % y 7,5 %)"
+    url: https://www.imf.org/en/publications/wp/issues/2026/05/14/systemic-banking-crises-database-1970-2025-576036
+    periodicidad: irregular
+    proxima: null
+    familia: laeven-valencia
+    depende: []
+    frase: "I.1 Regularidades («Son caras»; literal en 3B26.tex)"
+
+  - id: nbfi-fsb
+    texto: "A finales de 2024, los intermediarios financieros no bancarios tenían el 51 % de los activos financieros del mundo y los bancos, el 38 %"
+    donde: [3B26.tex]
+    valor: [51.0, 256.8, 38.0]
+    unidad: "% de los activos financieros mundiales; billones de dólares"
+    periodo: 2024
+    fuente: FSB2025NBFI
+    organismo: Consejo de Estabilidad Financiera (FSB)
+    serie: "Global Monitoring Report on NBFI 2025, cuadro 1-1 / gráfico 1-1 (29 jurisdicciones). Comprobación: PDF del informe (mismas cifras)"
+    url: https://www.fsb.org/2025/12/global-monitoring-report-on-nonbank-financial-intermediation-2025/
+    periodicidad: anual (diciembre)
+    proxima: 2026-12
+    familia: fsb-nbfi
+    depende: []
+    frase: "Conclusión, Relevancia (literal en 3B26.tex). Actualizar con cada Global Monitoring Report (diciembre)"
+
+  - id: garantia-depositos
+    texto: "en Estados Unidos, 250.000 dólares por depositante y banco; en la Unión Europea, 100.000 euros por depositante y entidad ... con fondos nacionales que pagan las propias entidades y que tienen como objetivo el 0,8 % de los depósitos garantizados; El sistema europeo de garantía de depósitos, propuesto en 2015 como tercer pilar de la unión bancaria, sigue sin aprobarse"
+    donde: [3B26.tex]
+    valor: [100000, 250000]
+    unidad: "euros; dólares"
+    periodo: vigente (12/11/2026)
+    fuente: [UE2014DGSD, UE2026Dir804, FDIC2026Insurance, CE2015EDIS]
+    organismo: UE (EUR-Lex); FDIC; Comisión Europea
+    serie: "Directiva 2014/49/UE, art. 6; Directiva (UE) 2026/804; 12 U.S.C. § 1821(a)(1)(E); COM(2015) 586"
+    url: https://eur-lex.europa.eu/eli/dir/2014/49/oj
+    periodicidad: según cambios normativos (EDIS en negociación; límites revisables)
+    proxima: null
+    familia: garantia-depositos
+    depende: []
+    frase: "II.3 b) La garantía de depósitos (literal en 3B26.tex) y II.5 e) («falta el fondo europeo de garantía de depósitos»). Mismas cifras que el 3.A.10, el 3.B.16 y la 1D01"

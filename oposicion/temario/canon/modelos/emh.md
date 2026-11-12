@@ -21,6 +21,7 @@
 | 3.B.13 | Eficiencia del mercado de divisas | resumen | Las tres definiciones de Duffie aplicadas a divisas: PCI (no arbitraje), PNCI y paradoja del margen *forward* (eficiencia informativa) | Las tres formas de Fama completas (remitir) |
 | 3.A.6 | NMC | mención (hecho, 4/11/2026) | Aplicación de las expectativas racionales (Fama, 1970) | La hipótesis |
 | 3.A.1 | Economía conductual | mención (hecho, 4/11/2026) | Finanzas conductuales: 4 regularidades (prima de las acciones, exceso de volatilidad, efecto disposición, dividendos) y los límites al arbitraje, en anexo | Las definiciones de eficiencia |
+| 3.B.26 | Crisis financieras: burbujas | mención (hecho, 12/11/2026) | Introducción (el sistema financiero) e I.3 b): burbujas racionales con `eq:arbitraje` y `eq:burbuja` (Blanchard y Watson, 1982; $P^{\mathrm f}_t$, $P^{\mathrm b}_t$), Tirole (1982, 1985), los límites al arbitraje (Abreu y Brunnermeier, 2003: «no la pinchan: la cabalgan») y las conductuales (Shiller, 2000); `\vertema{3.B.23}` | Las formas de eficiencia |
 
 ## Divergencias encontradas en el temario actual
 - Las definiciones (Fama, Duffie) están en los dos temas con redacción similar. Llevar el desarrollo a 3.B.23 y dejar en 3.B.13 solo su aplicación.
