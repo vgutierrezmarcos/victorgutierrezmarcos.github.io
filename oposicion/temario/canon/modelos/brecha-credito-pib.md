@@ -1,7 +1,7 @@
 # Brecha crédito-PIB y colchón de capital anticíclico
 
 - **Área:** finanzas-empresa · **Tema de referencia:** **3.B.27** (regulación bancaria: el colchón anticíclico de Basilea III), con **3.A.42** para el ciclo financiero.
-- **Temas que lo usan:** 3.B.27 (desarrollo), 3.A.42 (resumen; hecho, 4/11/2026: III.1 `sec:cf-hechos`, la brecha como «versión financiera de la brecha de producción», HP de una cola con λ = 400 000, la regla de 2 y 10 puntos con `\vertema{3.B.27}`, las cifras de España y el colchón vigente; gráfico `brecha-credito-pib-espana`; ficha `ciclo-financiero`), 4.A.19 (resumen: el colchón del Banco de España), 4.A.18 (mención: colchón anticíclico sectorial), 1D01 (uso: III.2, política macroprudencial y `tab:indicadores-financiero`)
+- **Temas que lo usan:** 3.B.27 (desarrollo), 3.A.42 (resumen; hecho, 4/11/2026: III.1 `sec:cf-hechos`, la brecha como «versión financiera de la brecha de producción», HP de una cola con λ = 400 000, la regla de 2 y 10 puntos con `\vertema{3.B.27}`, las cifras de España y el colchón vigente; gráfico `brecha-credito-pib-espana`; ficha `ciclo-financiero`), 4.A.19 (resumen: el colchón del Banco de España), 4.A.18 (mención: colchón anticíclico sectorial), 1D01 (uso: III.2, política macroprudencial y `tab:indicadores-financiero`); 3.B.17 (mención; hecho, 12/11/2026: III.4, la brecha entre el crédito y su tendencia en relación con el PIB como indicador de alerta temprana, sin símbolo, `\vertema{3.A.42}`)
 - **Manuales de referencia:** BCBS (2010), *Guidance for national authorities operating the countercyclical capital buffer*; Drehmann y Tsatsaronis (2014), *BIS Quarterly Review*; Borio (2014), «The financial cycle and macroeconomics»; Banco de España, metodología del colchón de capital anticíclico; CERS (2014), recomendación ESRB/2014/1.
 
 ## Presentación de referencia
@@ -24,6 +24,7 @@
 | 3.A.42 | Ciclo financiero | resumen (hecho, 4/11/2026) | La brecha como medida del ciclo financiero, con datos de España, el umbral de 2 puntos y el colchón vigente (1 %); gráfico de referencia | La regla regulatoria en detalle (`\vertema{3.B.27}`) |
 | 4.A.19 | Sector bancario español | Resumen | Decisiones del Banco de España | La regla |
 | 1D01 | Dictamen de coyuntura | Uso | Definición, umbral de 2 puntos, qué hacer en cada fase | La estimación |
+| 3.B.17 | Crisis de BP | mención (hecho, 12/11/2026) | Un indicador más de vulnerabilidad en los sistemas de alerta temprana (III.4); `\vertema{3.A.42}` | El cálculo |
 
 ## Divergencias encontradas en el temario actual
 - La 1D01 remite la brecha crédito-PIB a `\vertema{3.A.42}` (cuerpo y anexo A); con esta ficha conviene añadir `\vertema{3.B.27}` (pendiente menor de la 1D01, ver `pendientes-coherencia.md`).

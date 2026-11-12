@@ -46,7 +46,7 @@ con **$\pi_{H,t}$ inflación de los bienes nacionales**, $\gamma_{E,t}$ deprecia
 
 ## Divergencias encontradas en el temario actual
 - `informe-repaso.md` (§ 8, l. 324) decía «OA-DA de 3.A.37»: el 3.A.37 revisado no tiene OA-DA (tiene la DA con codo de la NEK, `nek-limite-inferior`, que es otra cosa); la OA-DA cerrada está en el 3.A.5. Corregido el 11/11/2026 (CC7 del 3.A.32).
-- Notación de la producción natural: $Y_F$ (3.A.4, pleno empleo), $Y_n$ (Word del 3.B.17) frente a **$Y^n$** (3.A.5, 3.A.32; canon § 0).
+- Notación de la producción natural: $Y_F$ (3.A.4, pleno empleo), $Y_n$ (Word del 3.B.17) frente a **$Y^n$** (3.A.5, 3.A.32; canon § 0). **Resuelto** al revisar el 3.B.17 (12/11/2026): $Y^n$ e $Y^{\mathrm{obj}}$; corregida también la fila de § 9 de `notacion.md` (pendiente de confirmar, **[decidir]**).
 - Tebar (fuente de referencia del 3.A.32) llamaba a κ «pendiente de la brecha» con $\kappa=(1-\theta)(1-\beta\theta)/\theta$; es el coeficiente del coste marginal (ficha `nek-3-ecuaciones`).
 
 Autor: Víctor Gutiérrez Marcos

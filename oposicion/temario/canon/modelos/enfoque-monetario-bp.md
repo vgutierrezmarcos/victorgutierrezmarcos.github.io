@@ -30,13 +30,13 @@ $\mathrm{CI}$ y $R$ en redonda/cursiva como en el § 9; **$\Delta R$ es el saldo
 |---|---|---|---|---|
 | 3.B.12 | Mecanismos de ajuste de la BP | desarrollo (hecho, 11/11/2026) | II.2 a)-d) con `eq:oferta-monetaria` y la función clave `eq:enfoque-monetario`; el contraste con el flujo-especie en la Idea; la fila de `tab:mecanismos-ajuste`; con tipo flexible, una línea con `\vertema{3.B.14}` | — |
 | 3.B.22 | El FMI | mención | Enfoque monetario (Johnson, 1972) y absorción (Alexander, 1952) como fundamento del modelo de Polak y la programación financiera; techos de crédito interno | Derivación del modelo |
-| 3.B.17 | Crisis de BP | (implícito) | La 1.ª generación (Krugman, 1979; Flood-Garber, 1984) parte de $M = \mathrm{CI} + R$: remitir aquí | Volver a derivar $M = \mathrm{CI}+R$ |
+| 3.B.17 | Crisis de BP | supuesto (hecho, 12/11/2026) | La 1.ª generación parte de `eq:balance-bc` $M^S_t=\mathrm{CI}_t+R_t$ con el multiplicador igual a 1 sin letra y remite aquí (`\vertema{3.B.12}`); con la paridad, $\Delta R=-\Delta\mathrm{CI}$ automático (ficha `flood-garber`) | Volver a derivar $\Delta R=\Delta M^D-\Delta\mathrm{CI}$ |
 | 3.A.5 | Monetarismo (economía abierta) | mención (hecho, 3/11/2026) | Con tipo de cambio fijo, un desequilibrio exterior es un exceso de oferta o de demanda de dinero que se corrige con las reservas (Frenkel y Johnson, 1976), `\vertema{3.B.12}` | $M = \mathrm{CI} + R$ y la derivación |
 | 3.B.14 | Determinación del tipo de cambio | contraste (hecho, 11/11/2026) | Presentación del II: nace para la BP con tipo fijo (`FrenkelJohnson1976Monetary`): un exceso de oferta de dinero se va por la BP y se pierden reservas, `\vertema{3.B.12}`; con tipo flexible ajusta el tipo de cambio (ficha hermana `enfoque-monetario-tc`, referencia el 3.B.14) | El ajuste de las reservas |
 | 3.A.32 | OA-DA abierta | mención (hecho, 11/11/2026) | l. 185: fondos frente a flujos con `FrenkelJohnson1976Monetary`; falta `\vertema{3.B.12}` (pendiente C3 del 3.B.14) | La ecuación |
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.B.12 (11/11/2026):** $\mathrm{BP}\equiv R$ (*stock*) y las desigualdades con una identidad → $\Delta R$; $M^S=B^m\cdot m^m$ con $m^m=\frac{e+1}{e+q}=1$ → «multiplicador del dinero igual a 1», sin letra; $M^D=f(\overline P,\overline Y,\overline i)$ → $M^D=P\,L(Y,i)$; la implicación «la política monetaria no tiene efectos en la balanza de pagos» al revés → corregida; la regla del $k$ % atribuida a Phelps → Friedman (1960).
-- **3.B.17 (Word, sin revisar):** escribe también $M^S=M_0\cdot\frac{e+1}{e+q}=1$: al revisarlo, la notación de `multiplicador-monetario` (sin letra).
+- **3.B.17: resuelto** (revisado el 12/11/2026): el Word escribía $M^S=M_0\cdot\frac{e+1}{e+q}=1$; ahora «multiplicador del dinero igual a 1», sin letras.
 
 Autor: Víctor Gutiérrez Marcos

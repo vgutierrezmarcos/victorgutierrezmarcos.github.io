@@ -1,7 +1,7 @@
 # Fondo Monetario Internacional (FMI)
 
 - **Área:** historia-organismos · **Tema de referencia:** 3.B.22 (FMI: estructura, políticas, prevención y solución de crisis)
-- **Temas que lo usan:** 3.B.22 (desarrollo), 3.B.20 (resumen: FMI en Bretton Woods), 3.B.21 (resumen: FMI tras 1973 y en las crisis), 3.B.29 (mención: HIPC/MDRI; sin fuente), 3.B.42 (mención: la UE en el FMI), 3.B.17 (mención: crisis de BP), 4.A.18 (mención: seguimiento del FMI tras el MoU), 4.A.27 (mención: ingreso de España en 1958)
+- **Temas que lo usan:** 3.B.22 (desarrollo), 3.B.20 (resumen: FMI en Bretton Woods), 3.B.21 (resumen: FMI tras 1973 y en las crisis), 3.B.29 (mención: HIPC/MDRI; sin fuente), 3.B.42 (mención: la UE en el FMI), 3.B.17 (mención; hecho, 12/11/2026: la receta de subir los tipos en Asia y su crítica, Krugman, 1999, y Furman y Stiglitz, 1998; líneas de crédito de emergencia; la visión institucional de 2012 sobre los flujos de capital; el ejercicio de alerta temprana FMI-FSB desde 2009; `\vertema{3.B.22}`), 4.A.18 (mención: seguimiento del FMI tras el MoU), 4.A.27 (mención: ingreso de España en 1958)
 - **Manuales de referencia:** Convenio Constitutivo; FMI, *Annual Report*; Boughton, historia oficial del FMI; Krugman-Obstfeld-Melitz
 
 ## Presentación de referencia

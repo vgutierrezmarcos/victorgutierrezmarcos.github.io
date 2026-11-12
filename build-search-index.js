@@ -163,7 +163,7 @@ const tercerEjercicioParteB = [
   { num: 14, titulo: 'Teorías de la determinación del tipo de cambio.', disponible: true, file: '3B14.html' },
   { num: 15, titulo: 'Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio.', disponible: true, file: '3B15.pdf' },
   { num: 16, titulo: 'Teoría de la integración monetaria.', disponible: true, file: '3B16.html' },
-  { num: 17, titulo: 'Teorías explicativas de las crisis de balanza de pagos.', disponible: true, file: '3B17.pdf' },
+  { num: 17, titulo: 'Teorías explicativas de las crisis de balanza de pagos.', disponible: true, file: '3B17.html' },
   { num: 18, titulo: 'La nueva globalización económica y financiera. Determinantes y efectos de los movimientos internacionales de factores productivos: movilidad de trabajadores, inversión de cartera e inversión directa, con especial referencia a las cadenas globales de valor.', disponible: false },
   { num: 19, titulo: 'La coordinación internacional de políticas económicas. Aspectos teóricos y prácticos. El G-20, la OCDE y otros foros internacionales.', disponible: true, file: '3B19.pdf' },
   { num: 20, titulo: 'El sistema económico internacional desde el siglo XIX hasta la ruptura del sistema de Bretton-Woods.', disponible: true, file: '3B20.pdf' },
