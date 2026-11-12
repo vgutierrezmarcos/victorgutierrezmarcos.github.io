@@ -1,0 +1,78 @@
+% La creación de dinero al conceder un préstamo: balances del banco central,
+% de los bancos y de los hogares antes y después (McLeay, Radia y Thomas,
+% 2014, figura 2, «Money creation by the aggregate banking sector making
+% additional loans»). Simplificado: sin el efectivo en caja de los bancos.
+% Colores: reservas en verde, efectivo en azul, depósitos en rojo (como el
+% original); lo nuevo, con borde dorado.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee, x=1cm, y=0.62cm,
+    partida/.style={draw=black!70, thin, align=center, font=\footnotesize, inner sep=1pt},
+    nueva/.style={draw=tceedorado, line width=1.4pt},
+    rotcol/.style={font=\footnotesize, anchor=south},
+    rotfila/.style={font=\small},
+    cabecera/.style={font=\small, anchor=south},
+    llave/.style={decorate, decoration={brace, amplitude=4pt}, thick, tceegris},
+    paso/.style={->, thick, black}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.9,-0.4) rectangle (9.9,18.0);
+  % \caja{x}{y0}{y1}{relleno}{texto}
+  \newcommand{\caja}[5]{\fill[#4] (#1,#2) rectangle (#1+1.5,#3);
+    \draw[black!70, thin] (#1,#2) rectangle (#1+1.5,#3);
+    \node[font=\footnotesize, align=center] at (#1+0.75,{(#2+#3)/2}) {#5};}
+  \newcommand{\nuevacaja}[5]{\fill[#4] (#1,#2) rectangle (#1+1.5,#3);
+    \draw[nueva] (#1,#2) rectangle (#1+1.5,#3);
+    \node[font=\footnotesize, align=center] at (#1+0.75,{(#2+#3)/2}) {#5};}
+  \newcommand{\activopasivo}[2]{\node[rotcol] at (#1+0.75,#2) {Activo};
+    \node[rotcol] at (#1+2.45,#2) {Pasivo};}
+  % ================= ANTES (x = 0) =================
+  \capa{1}{\node[cabecera] at (1.6,17.2) {Antes del préstamo};}
+  % Banco central
+  \capa{1}{\node[rotfila] at (1.6,16.4) {Banco central};}
+  \capa{1}{\activopasivo{0}{15.4}}
+  \capa{1}{\caja{0}{12.4}{15.4}{white}{No\\monetarios}}
+  \capa{1}{\caja{1.7}{12.4}{13.6}{tceeazul!30}{Efectivo}}
+  \capa{1}{\caja{1.7}{13.6}{15.4}{tceeverde!30}{Reservas}}
+  \capa{1}{\draw[llave] (3.3,15.4) -- (3.3,12.4) node[midway, right=5pt, font=\footnotesize, align=left, text=black] {Base\\monetaria};}
+  % Bancos
+  \capa{1}{\node[rotfila] at (1.6,11.4) {Bancos};}
+  \capa{1}{\activopasivo{0}{8.4}}
+  \capa{1}{\caja{0}{6.4}{8.4}{tceeverde!30}{Reservas}}
+  \capa{1}{\caja{1.7}{6.4}{8.4}{tceerojo!25}{Depósitos}}
+  % Hogares
+  \capa{1}{\node[rotfila] at (1.6,5.45) {Hogares};}
+  \capa{1}{\activopasivo{0}{2.7}}
+  \capa{1}{\caja{0}{0}{0.8}{tceeazul!30}{Efectivo}}
+  \capa{1}{\caja{0}{0.8}{2.7}{tceerojo!25}{Depósitos}}
+  \capa{1}{\caja{1.7}{0}{2.7}{white}{No\\monetarios}}
+  \capa{1}{\draw[llave] (-0.1,0) -- (-0.1,2.7) node[midway, left=5pt, font=\footnotesize, align=right, text=black] {Dinero\\amplio};}
+  % ================= DESPUÉS (x = 6.2) =================
+  \capa{2}{\node[cabecera] at (7.8,17.2) {Después del préstamo};}
+  % Banco central: no cambia
+  \capa{2}{\draw[paso] (5.0,13.9) -- (5.95,13.9);}
+  \capa{2}{\node[rotfila] at (7.8,16.4) {Banco central};}
+  \capa{2}{\activopasivo{6.2}{15.4}}
+  \capa{2}{\caja{6.2}{12.4}{15.4}{white}{No\\monetarios}}
+  \capa{2}{\caja{7.9}{12.4}{13.6}{tceeazul!30}{Efectivo}}
+  \capa{2}{\caja{7.9}{13.6}{15.4}{tceeverde!30}{Reservas}}
+  % Bancos: préstamo nuevo (activo) y depósito nuevo (pasivo)
+  \capa{3}{\draw[paso] (3.6,7.4) -- (5.9,7.4);}
+  \capa{3}{\node[rotfila] at (7.8,11.4) {Bancos};}
+  \capa{3}{\activopasivo{6.2}{10.0}}
+  \capa{3}{\caja{6.2}{6.4}{8.4}{tceeverde!30}{Reservas}}
+  \capa{3}{\nuevacaja{6.2}{8.4}{10.0}{white}{Préstamos\\nuevos}}
+  \capa{3}{\caja{7.9}{6.4}{8.4}{tceerojo!25}{Depósitos}}
+  \capa{3}{\nuevacaja{7.9}{8.4}{10.0}{tceerojo!25}{Depósitos\\nuevos}}
+  % Hogares: depósito nuevo (activo) y préstamo nuevo (pasivo)
+  \capa{4}{\draw[paso] (3.6,1.35) -- (4.5,1.35);}
+  \capa{4}{\node[rotfila] at (7.8,5.45) {Hogares};}
+  \capa{4}{\activopasivo{6.2}{4.3}}
+  \capa{4}{\caja{6.2}{0}{0.8}{tceeazul!30}{Efectivo}}
+  \capa{4}{\caja{6.2}{0.8}{2.7}{tceerojo!25}{Depósitos}}
+  \capa{4}{\nuevacaja{6.2}{2.7}{4.3}{tceerojo!25}{Depósitos\\nuevos}}
+  \capa{4}{\caja{7.9}{0}{2.7}{white}{No\\monetarios}}
+  \capa{4}{\nuevacaja{7.9}{2.7}{4.3}{white}{Préstamos\\nuevos}}
+  \capa{4}{\draw[llave] (6.1,0) -- (6.1,4.3) node[midway, left=5pt, font=\footnotesize, align=right, text=black] {Dinero\\amplio};}
+\end{tikzpicture}
+\end{document}
