@@ -1,0 +1,43 @@
+% El modelo de demandas rivales de una economía abierta (Layard, Nickell y
+% Jackman, 1991; Carlin y Soskice, 2015) en el plano (Y, q): la curva de
+% demandas rivales EDR (la NAIRU abierta, decreciente: con q más alto el
+% salario de consumo que deja el margen es menor), la de equilibrio de la
+% balanza comercial BC y la de equilibrio del mercado de bienes DA (las 2
+% crecientes; la DA, más inclinada). Colores: EDR verde (oferta), BC azul,
+% DA morada, lo desplazado en rojo discontinuo.
+%   EDR: q = 3 - 0,6 (Y - 5);  BC: q = 3 + 0,35 (Y - 5);  DA: q = 3 + 0,9 (Y - 5)
+%   E = (5; 3)
+%   Encarecimiento de la energía importada: EDR' q = 3 - 0,6 (Y - 4);
+%   BC' q = 3,8 + 0,35 (Y - 5); E' = (3,526; 3,284); DA' q = 3 + 0,9 (Y - 4,4)
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    declare function={edr(\y)=3-0.6*(\y-5); bc(\y)=3+0.35*(\y-5); dda(\y)=3+0.9*(\y-5);
+      edrb(\y)=3-0.6*(\y-4); bcb(\y)=3.8+0.35*(\y-5); ddab(\y)=3+0.9*(\y-4.4);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.9) rectangle (10.6,6.4);
+  % 1: ejes (Y, q)
+  \capa{1}{\ejes{$Y$}{$q$}{9.0}{6.0}}
+  % 2: la EDR, decreciente, con las presiones a cada lado
+  \capa{2}{\draw[curva3] (1.2,{edr(1.2)}) -- (8.2,{edr(8.2)}) node[etiqueta, right, text=tceeverde] {EDR};}
+  \capa{2}{\node[etiqueta, text=tceegris, font=\footnotesize, align=center] at (7.3,3.3) {presiones\\inflacionistas};}
+  \capa{2}{\node[etiqueta, text=tceegris, font=\footnotesize, align=center] at (6.2,0.55) {presiones\\deflacionistas};}
+  % 3: la BC, creciente y poco inclinada
+  \capa{3}{\draw[curva2] (0.6,{bc(0.6)}) -- (8.4,{bc(8.4)}) node[etiqueta, right, text=tceeazul] {BC};}
+  % 4: la DA, creciente y más inclinada
+  \capa{4}{\draw[curva1] (2.6,{dda(2.6)}) -- (7.6,{dda(7.6)}) node[etiqueta, above, text=tceemorado] {DA};}
+  % 5: el equilibrio E
+  \capa{5}{\proyeccion{(5,3)}{$Y_0$}{$q_0$}}
+  \capa{5}{\node[punto] (E) at (5,3) {};}
+  \capa{5}{\node[etiqueta, anchor=north west] at (5.05,2.95) {$E$};}
+  % 6: encarecimiento de la energía: las 3 curvas se desplazan a la izquierda
+  \capa{6}{\draw[curvanueva, desplazada] (0.6,{edrb(0.6)}) -- (6.8,{edrb(6.8)}) node[etiqueta, right, text=tceerojo] {EDR$'$};}
+  \capa{6}{\draw[curvanueva, desplazada] (0.6,{bcb(0.6)}) -- (8.0,{bcb(8.0)}) node[etiqueta, right, text=tceerojo] {BC$'$};}
+  \capa{6}{\draw[curvanueva, desplazada] (2.2,{ddab(2.2)}) -- (6.8,{ddab(6.8)}) node[etiqueta, above, text=tceerojo] {DA$'$};}
+  % 7: el nuevo equilibrio E': menos producción y un tipo real más depreciado
+  \capa{7}{\proyeccion{(3.526,3.284)}{$Y_1$}{$q_1$}}
+  \capa{7}{\node[punto] (E1) at (3.526,3.284) {};}
+  \capa{7}{\node[etiqueta, anchor=south east] at (3.48,3.33) {$E'$};}
+\end{tikzpicture}
+\end{document}

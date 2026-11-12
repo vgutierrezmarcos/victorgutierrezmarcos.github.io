@@ -1,0 +1,30 @@
+% El trilema de la política monetaria en una economía abierta: los 3 objetivos
+% en los vértices y, en cada lado, el régimen que se queda con esos 2 y
+% renuncia al vértice opuesto (Obstfeld, Shambaugh y Taylor, 2005).
+% Colores: vértices en morado; lados en verde (los 3 regímenes posibles).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4.6,-1.4) rectangle (4.6,5.6);
+  \coordinate (F) at (-3,0);    % tipo de cambio fijo
+  \coordinate (K) at (3,0);     % movilidad del capital
+  \coordinate (M) at (0,4.6);   % autonomía monetaria
+  % 1: el triángulo
+  \capa{1}{\draw[very thick, tceemorado] (F) -- (K) -- (M) -- cycle;}
+  % 2: los 3 objetivos en los vértices
+  \capa{2}{\node[punto, fill=tceemorado] at (F) {};}
+  \capa{2}{\node[etiqueta, text=tceemorado, align=center, anchor=north] at ($(F)+(0,-0.15)$) {\textbf{Tipo de cambio}\\\textbf{fijo}};}
+  \capa{2}{\node[punto, fill=tceemorado] at (K) {};}
+  \capa{2}{\node[etiqueta, text=tceemorado, align=center, anchor=north] at ($(K)+(0,-0.15)$) {\textbf{Libre movilidad}\\\textbf{del capital}};}
+  \capa{2}{\node[punto, fill=tceemorado] at (M) {};}
+  \capa{2}{\node[etiqueta, text=tceemorado, align=center, anchor=south] at ($(M)+(0,0.15)$) {\textbf{Autonomía monetaria}};}
+  % 3: lado inferior: fijo + movilidad = unión monetaria (sin autonomía)
+  \capa{3}{\node[etiqueta, text=tceeverde, align=center, anchor=north] at (0,-0.12) {unión monetaria o\\caja de conversión};}
+  % 4: lado derecho: movilidad + autonomía = tipo flexible
+  \capa{4}{\node[etiqueta, text=tceeverde, align=left, anchor=south west] at (1.65,2.25) {tipo de cambio\\flexible};}
+  % 5: lado izquierdo: fijo + autonomía = controles de capitales
+  \capa{5}{\node[etiqueta, text=tceeverde, align=right, anchor=south east] at (-1.65,2.25) {controles de\\capitales};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,48 @@
+% Respuestas de la producción y del paro a una perturbación de demanda y a una
+% de oferta favorable en el VAR estructural de Blanchard y Quah (1989).
+% Esquema cualitativo (no son las estimaciones): eje horizontal en trimestres.
+%   a) demanda: y = 1,1 t e^{1 - t/4}/4 (joroba con máximo en t = 4, un año),
+%      u = -0,45 y (imagen especular); ambas vuelven a 0
+%   b) oferta: y = 1,3 (1 - e^{-t/5}) + 0,25 t e^{-t/4} (crece, máximo hacia
+%      los 2 años y meseta); u: sube algo al principio, baja y vuelve a 0
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.18cm,y=1.6cm,
+    declare function={
+      yd(\t)=1.1*\t*exp(1-\t/4)/4;
+      ud(\t)=-0.45*yd(\t);
+      ys(\t)=1.3*(1-exp(-\t/5))+0.25*\t*exp(-\t/4);
+      us(\t)=0.25*\t*exp(1-\t/2)/2-0.0875*(\t/6)^2*exp(2-\t/6);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4,-1.1) rectangle (96,2.15);
+  % 1: ejes de los 2 paneles
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (-3,1.9) {a) Perturbación de demanda};}
+  \capa{1}{\draw[eje] (0,0) -- (42,0);}
+  \capa{1}{\node[font=\footnotesize] at (38.5,-0.92) {trimestres};}
+  \capa{1}{\draw[eje] (0,-0.8) -- (0,1.75) node[left] {$y$, $u$};}
+  \capa{1}{\foreach \t in {8,16,24,32} {\draw (\t,0.04) -- (\t,-0.04); \node[font=\footnotesize] at (\t,-0.92) {\t};}}
+  \begin{scope}[xshift=50*0.18cm]
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (-3,1.9) {b) Perturbación de oferta favorable};}
+  \capa{1}{\draw[eje] (0,0) -- (42,0);}
+  \capa{1}{\node[font=\footnotesize] at (38.5,-0.92) {trimestres};}
+  \capa{1}{\draw[eje] (0,-0.8) -- (0,1.75) node[left] {$y$, $u$};}
+  \capa{1}{\foreach \t in {8,16,24,32} {\draw (\t,0.04) -- (\t,-0.04); \node[font=\footnotesize] at (\t,-0.92) {\t};}}
+  \end{scope}
+  % 2: demanda: la producción, en joroba, vuelve a 0
+  \capa{2}{\draw[curva1] plot[domain=0:40, samples=80, smooth] (\x,{yd(\x)});}
+  \capa{2}{\node[etiqueta, anchor=west, text=tceemorado] at (8,0.95) {producción};}
+  % 3: demanda: el paro, imagen especular
+  \capa{3}{\draw[curva2, dashed] plot[domain=0:40, samples=80, smooth] (\x,{ud(\x)});}
+  \capa{3}{\node[etiqueta, anchor=west, text=tceeazul] at (7,-0.55) {paro};}
+  \begin{scope}[xshift=50*0.18cm]
+  % 4: oferta: la producción crece y se queda en un nivel más alto
+  \capa{4}{\draw[curva1] plot[domain=0:40, samples=80, smooth] (\x,{ys(\x)});}
+  \capa{4}{\node[etiqueta, anchor=north, text=tceemorado] at (24,1.22) {producción};}
+  \capa{4}{\draw[guia] (0,1.3) -- (40,1.3);}
+  % 5: oferta: el paro sube un poco, baja y vuelve despacio a 0
+  \capa{5}{\draw[curva2, dashed] plot[domain=0:40, samples=80, smooth] (\x,{us(\x)});}
+  \capa{5}{\node[etiqueta, anchor=north, text=tceeazul] at (14,-0.45) {paro};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

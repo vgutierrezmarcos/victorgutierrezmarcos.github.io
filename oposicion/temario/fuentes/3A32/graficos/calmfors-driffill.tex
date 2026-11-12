@@ -1,0 +1,24 @@
+% La hipótesis de Calmfors y Driffill (1988): el salario real y el paro según
+% el grado de centralización de la negociación colectiva, en forma de joroba
+% (bajos en los 2 extremos, máximos en la negociación por sectores).
+%   Curva: 1 + 3 exp(-(c - 4)^2 / 4,5), con c de 0,6 a 7,4
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-1.6) rectangle (10.2,5.3);
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (8.6,0) node[below left=12pt and 0pt, align=right] {centralización};}
+  \capa{1}{\draw[eje] (0,0) -- (0,4.9) node[left] {$W/P$, $u$};}
+  \capa{1}{\node[etiqueta, below, font=\footnotesize] at (0.8,0) {empresa};}
+  \capa{1}{\node[etiqueta, below, font=\footnotesize] at (4,0) {sector};}
+  \capa{1}{\node[etiqueta, below, font=\footnotesize] at (7.2,0) {país};}
+  % 2: la joroba
+  \capa{2}{\draw[curva1] plot[domain=0.6:7.4, samples=80, smooth] (\x,{1+3*exp(-(\x-4)^2/4.5)});}
+  % 3: dónde funciona una política de rentas: en los extremos
+  \capa{3}{\node[etiqueta, text=tceeverde, font=\footnotesize, align=center] at (1.4,3.6) {competencia\\contiene\\los salarios};}
+  \capa{3}{\node[etiqueta, text=tceeverde, font=\footnotesize, align=center] at (6.6,3.6) {se internaliza\\el efecto\\agregado};}
+  \capa{3}{\node[etiqueta, text=tceerojo, font=\footnotesize] at (4,4.75) {máximo: ni lo uno ni lo otro};}
+\end{tikzpicture}
+\end{document}

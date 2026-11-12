@@ -1,0 +1,31 @@
+% Red de producción de 4 industrias (Acemoglu, Akcigit y Kerr, 2016): las
+% flechas van del proveedor al comprador, con el peso a_ij del insumo j en la
+% producción de i. La industria 1 compra a la 2 y a la 4 y vende a la 3 y a
+% la 4. Una perturbación de oferta en 1 viaja en el sentido de las flechas
+% (a 3 y 4); una de demanda, en sentido contrario (a 2 y 4).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle, draw=tceemorado, very thick, fill=tceesalvia, minimum size=9mm, font=\normalsize\bfseries},
+    enlace/.style={->, very thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4.2,-2.6) rectangle (4.2,2.4);
+  % 1: las 4 industrias
+  \capa{1}{\node[nodo] (n1) at (0,0) {1};}
+  \capa{1}{\node[nodo] (n2) at (-3,0) {2};}
+  \capa{1}{\node[nodo] (n3) at (3,0) {3};}
+  \capa{1}{\node[nodo] (n4) at (0,-2) {4};}
+  % 2: los flujos de insumos, del proveedor al comprador
+  \capa{2}{\draw[enlace] (n2) -- node[etiqueta, above, text=black] {$a_{12}$} (n1);}
+  \capa{2}{\draw[enlace] (n1) -- node[etiqueta, above, text=black] {$a_{31}$} (n3);}
+  \capa{2}{\draw[enlace] (n4) to[bend left=30] node[etiqueta, left, text=black] {$a_{14}$} (n1);}
+  \capa{2}{\draw[enlace] (n1) to[bend left=30] node[etiqueta, right, text=black] {$a_{41}$} (n4);}
+  % 3: perturbación de oferta en 1: aguas abajo, hacia 3 y 4
+  \capa{3}{\draw[flecha] (0.5,1.0) -- (2.6,1.0);}
+  \capa{3}{\node[etiqueta, text=tceerojo, font=\footnotesize, anchor=south, align=center] at (1.55,1.05) {oferta: a los\\clientes (3 y 4)};}
+  % 4: perturbación de demanda en 1: aguas arriba, hacia 2 y 4
+  \capa{4}{\draw[flecha, tceeazul] (-0.5,1.0) -- (-2.6,1.0);}
+  \capa{4}{\node[etiqueta, text=tceeazul, font=\footnotesize, anchor=south, align=center] at (-1.55,1.05) {demanda: a los\\proveedores (2 y 4)};}
+\end{tikzpicture}
+\end{document}
