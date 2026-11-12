@@ -161,7 +161,7 @@ const tercerEjercicioParteB = [
   { num: 12, titulo: 'Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.', disponible: true, file: '3B12.html' },
   { num: 13, titulo: 'Mercados de divisas: operaciones e instrumentos.', disponible: true, file: '3B13.html' },
   { num: 14, titulo: 'Teorías de la determinación del tipo de cambio.', disponible: true, file: '3B14.html' },
-  { num: 15, titulo: 'Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio.', disponible: true, file: '3B15.pdf' },
+  { num: 15, titulo: 'Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio.', disponible: true, file: '3B15.html' },
   { num: 16, titulo: 'Teoría de la integración monetaria.', disponible: true, file: '3B16.html' },
   { num: 17, titulo: 'Teorías explicativas de las crisis de balanza de pagos.', disponible: true, file: '3B17.html' },
   { num: 18, titulo: 'La nueva globalización económica y financiera. Determinantes y efectos de los movimientos internacionales de factores productivos: movilidad de trabajadores, inversión de cartera e inversión directa, con especial referencia a las cadenas globales de valor.', disponible: false },

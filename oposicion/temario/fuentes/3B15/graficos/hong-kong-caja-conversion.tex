@@ -1,0 +1,53 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+% Estilo común de las 7 series de tipos de cambio del anexo A del 3.B.15:
+% mismo tamaño, cuadrícula y rótulos; color del régimen (anclaje duro
+% tceeazul, anclaje blando tceedorado, flotación tceerojo). Capas «dic»
+% (tikz-tcee.tex): sombreados → ejes y referencias → serie → punto → rótulos.
+\pgfplotsset{
+  tcserie/.style={
+    scale only axis, width=9.5cm, height=4.6cm,
+    xmin=2000, xmax=2027, xtick={2000,2005,...,2025}, minor xtick={2001,...,2026},
+    ticklabel style={font=\footnotesize},
+    xticklabel style={/pgf/number format/1000 sep={}},
+    ylabel style={font=\footnotesize},
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+  },
+  tcdecimales/.style={yticklabel style={/pgf/number format/.cd, use comma, fixed, fixed zerofill, precision=#1}},
+}
+% \tcultimo[opciones del rótulo]{color}{x}{y}{texto}: punto y rótulo del último dato
+\newcommand{\tcultimo}[5][]{%
+  \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=#2] coordinates {(#3,#4)};
+  \dicrotulo[font=\footnotesize, anchor=west, xshift=3pt, align=left, text=#2, #1]{(#3,#4)}{#5}}
+\begin{document}
+% Caja de conversión: el dólar de Hong Kong, 2000-2026 (HKD por USD, media
+% mensual). Reserva Federal, H.10 (EXHKUS), vía FRED; banda de la HKMA
+% 7,75-7,85 desde mayo de 2005. Último dato: octubre de 2026, 7,846.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/tc-hong-kong-caja-conversion.csv}\datos
+\begin{tikzpicture}[tcee]
+  \begin{axis}[tcserie, tcdecimales=2,
+      ymin=7.70, ymax=7.90, ytick={7.70,7.75,...,7.90},
+      ylabel={HKD por USD}, dicapas]
+    % 1: banda sombreada 7,75-7,85 desde mayo de 2005 y sus bordes
+    \capa{1}{
+      \dicsombra[fill=tceeazul, fill opacity=0.12]{2005.333}{7.75}{2026.75}{7.85}
+      \dicraya[dicumbral]{(2005.333,7.85) (2026.75,7.85)}
+      \dicraya[dicumbral]{(2005.333,7.75) (2026.75,7.75)}
+    }
+    % 2: ejes (los dibuja el entorno axis)
+    % 3: serie HKD por USD
+    \capa{3}{
+      \addplot[diclinea=tceeazul] table[x=x, y=hkd_usd] {\datos};
+    }
+    % 4: rótulos de la banda y último dato
+    \capa{4}{
+      \dicrotulo[font=\footnotesize, anchor=south west, text=tceegris, inner sep=1pt]{(2005.5,7.85)}{7,85}
+      \dicrotulo[font=\footnotesize, anchor=north west, text=tceegris, inner sep=1pt]{(2005.5,7.75)}{7,75}
+      \dicrotulo[font=\footnotesize, anchor=north, text=tceegris, align=center]{(2016,7.745)}{banda de convertibilidad (desde 2005)}
+      \tcultimo{tceeazul}{2026.75}{7.8462}{oct.\ 2026\\7,846}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

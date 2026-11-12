@@ -1,0 +1,25 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% El dilema de Hélène Rey (2013): el mismo triángulo de trilema.tex (mismas
+% coordenadas y rótulos). Con libertad de capitales, el ciclo financiero
+% global condiciona la política monetaria también con tipo flexible: el
+% vértice del tipo fijo pierde peso y queda el lado inferior, un dilema.
+\begin{tikzpicture}[tcee]
+  \coordinate (A) at (0,5.196);   % tipo de cambio fijo
+  \coordinate (B) at (-3,0);      % libre movilidad del capital
+  \coordinate (C) at (3,0);       % política monetaria propia
+  % mismo marco en trilema y dilema-rey: salen a la misma escala en el tema
+  \useasboundingbox (-5.3,-1.05) rectangle (5.3,5.8);
+  \capa{1}{\draw[guia,thick] (B) -- (A) -- (C);
+    \draw[thick,tceegris] (B) -- (C);}
+  \capa{2}{\node[etiqueta,above=3pt,align=center,tceegris] at (A) {\textbf{Tipo de cambio fijo}};
+    \node[etiqueta,font=\footnotesize\itshape,tceegris,anchor=west] at ($(A)+(0.45,-0.45)$) {el régimen cambiario pesa menos};}
+  \capa{3}{\node[etiqueta,below=4pt,align=center] at (B) {\textbf{Libre movilidad}\\\textbf{del capital}};
+    \node[etiqueta,below=4pt,align=center] at (C) {\textbf{Política monetaria}\\\textbf{propia}};}
+  \capa{4}{\draw[curvanueva,line width=2pt,<->,>={Stealth[length=3.2mm]}] ($(B)+(0.12,0)$) -- ($(C)+(-0.12,0)$);}
+  \capa{5}{\node[etiqueta,tceerojo,above=4pt,font=\normalsize\bfseries] at ($(B)!0.5!(C)$) {dilema};
+    \node[etiqueta,font=\footnotesize,tceerojo,align=center] at (0,1.55)
+      {con libertad de capitales,\\el ciclo financiero global\\condiciona la política monetaria\\también con tipo flexible};}
+\end{tikzpicture}
+\end{document}

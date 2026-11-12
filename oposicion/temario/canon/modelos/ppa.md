@@ -1,7 +1,7 @@
 # Paridad del poder adquisitivo (PPA), absoluta y relativa
 
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.14 (Teorías de la determinación del tipo de cambio), **revisado el 11/11/2026**: es la teoría tradicional del tipo de cambio por el arbitraje de bienes y el tema la desarrolla en I.2.1 con a)-d), la evidencia y el anexo `anexo:ppa`. Ficha nueva del 11/11/2026 (CC3 del 3.B.14, D-4, **[decidir]**); recoge el id `ppa`, que estaba en el mapa sin fichero.
-- **Temas que la usan:** 3.B.14 (desarrollo; hecho, 11/11/2026), 1D01 (uso; aprobada), 3.B.11 (mención; hecho, 5/11/2026), 3.B.16 (mención; hecho, 11/11/2026), 3.B.13 (mención; hecho, 8/11/2026), 3.B.12 y 3.B.15 (supuesto o mención), 3.B.19 (no la usa; comprobado, 12/11/2026), 3.B.17 (supuesto; hecho, 12/11/2026), 4.A.22 (uso).
+- **Temas que la usan:** 3.B.14 (desarrollo; hecho, 11/11/2026), 1D01 (uso; aprobada), 3.B.11 (mención; hecho, 5/11/2026), 3.B.16 (mención; hecho, 11/11/2026), 3.B.13 (mención; hecho, 8/11/2026), 3.B.12 (supuesto o mención), 3.B.15 (supuesto; hecho, 12/11/2026: en Krugman, 1991, y en la demostración del trilema con precios flexibles; sin la PPA relativa como referencia de valoración), 3.B.19 (no la usa; comprobado, 12/11/2026), 3.B.17 (supuesto; hecho, 12/11/2026), 4.A.22 (uso).
 - **Manuales y fuentes de referencia:** Cassel (1918, `Cassel1918Abnormal`; 1922, págs. 138-139, `Cassel1922Money`); Azpilcueta (1556) y Grice-Hutchinson (1952) como origen salmantino; Rogoff (1996), «The Purchasing Power Parity Puzzle» (`Rogoff1996PPA`); Taylor y Taylor (2004), *JEP* (`TaylorTaylor2004PPP`); Taylor, Peel y Sarno (2001) (`TaylorPeelSarno2001Nonlinear`); Mussa (1984, 1986); Krugman, Obstfeld y Melitz, cap. 16; *The Economist*, índice Big Mac (`Economist2026BigMac`, `Economist2026BigMacDatos`).
 
 ## Presentación de referencia (3.B.14, I.2.1)
@@ -31,7 +31,7 @@
 | 3.B.13 | Mercado de divisas | mención (hecho, 8/11/2026) | La PPA *ex ante* de Roll (1979) en nota, l. 947, `\vertema{3.B.14}` | — |
 | 3.B.16 | Integración monetaria | mención (hecho, 11/11/2026) | Diferenciales de inflación de equilibrio (con Balassa-Samuelson), `\vertema{3.B.14}` | — |
 | 3.B.12 | Ajuste de la BP | supuesto (hecho, 11/11/2026) | Ley del precio único en el enfoque monetario de la BP ($P=\overline EP^*$, sin remisión: es un supuesto); $\gamma_q=0$ en la deuda en divisas «con la paridad del poder adquisitivo» (anexo D) | La evidencia |
-| 3.B.15 | Regímenes cambiarios | mención | La PPA relativa como referencia para valorar el régimen | La evidencia |
+| 3.B.15 | Regímenes cambiarios | supuesto (hecho, 12/11/2026) | La PPA en el enfoque monetario de las zonas objetivo (II.1.3) y en la `notaopositor` del trilema; el tipo real con `eq:apreciacion-real` (ficha `tipo-cambio-real`) | La evidencia |
 | 3.B.17 | Crisis cambiarias | supuesto (hecho, 12/11/2026) | 1.ª generación: PPA con el nivel de precios exterior normalizado a 1, $P_t=E_t$; 2.ª: PPA relativa con inflación exterior nula, escrita $\Delta E/E=\pi$ (no $\gamma_E=\pi$, para no juntar 2 γ con el peso de la pérdida); `\vertema{3.B.14}` | — |
 | 3.B.19 | Coordinación internacional | no la usa (comprobado, 12/11/2026) | El 3.B.19 revisado no nombra la PPA: Hamada usa el modelo monetario sin escribirla (ficha `enfoque-monetario-tc`) | — |
 | 4.A.22 | Sector exterior de España | uso | Competitividad-precio con el tipo real (la referencia es la ficha `tipo-cambio-real`, 3.B.13); la PPA como referencia, `uso: ampliar` | La teoría |

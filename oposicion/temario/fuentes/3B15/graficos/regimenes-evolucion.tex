@@ -1,0 +1,83 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Los regímenes cambiarios de los miembros del FMI, 2015-2026 (% de los
+% miembros a 30 de abril; clasificación de hecho). 2015-2023: AREAER 2023
+% (FMI, 2024), tabla 3; 2026: Informe Anual 2026 del FMI, apéndice II.9
+% (preliminar); 2024 y 2025 sin dato: tramo 2023-2026 discontinuo.
+% Paleta de los regímenes en todo el tema: anclaje duro tceeazul, anclaje
+% blando tceedorado, flotación tceerojo, otros gestionados tceegris.
+% Capas: ejes -> líneas (blando, flotación, duro, otros) -> tramo 2023-2026 y
+% punto de 2026 -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/areaer-regimenes-2015-2026.csv}\areaer
+\pgfplotsset{
+  % tramo con dato anual (2015-2023): línea continua con marcas
+  serie/.style={diclinea=#1, mark=*, mark size=1.6pt,
+    mark options={fill=white, draw=#1, line width=0.9pt, solid},
+    restrict x to domain=2015:2023},
+  % tramo sin dato (2023-2026): discontinuo, sin marcas
+  hueco/.style={diclinea=#1, dashed, forget plot, mark=none,
+    restrict x to domain=2023:2026},
+  % 2026, preliminar: marca rellena
+  ultimo/.style={on layer=dicpuntos, forget plot, only marks, mark=*,
+    mark size=2pt, mark options={fill=#1, draw=#1}, restrict x to domain=2025.5:2026.5},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=11cm, height=6cm,
+      xmin=2014.6, xmax=2026.4, xtick={2015,2016,...,2026},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ymin=0, ymax=55, ytick={0,10,...,50},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% de los miembros del FMI}, ylabel style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: los ejes (fuera de toda capa: se ven desde el principio)
+    % 2: anclaje blando
+    \capa{2}{
+      \addplot[serie=tceedorado] table[x=anio, y=blando] {\areaer};
+    }
+    % 3: flotación
+    \capa{3}{
+      \addplot[serie=tceerojo] table[x=anio, y=flotacion] {\areaer};
+    }
+    % 4: anclaje duro
+    \capa{4}{
+      \addplot[serie=tceeazul] table[x=anio, y=duro] {\areaer};
+    }
+    % 5: otros gestionados
+    \capa{5}{
+      \addplot[serie=tceegris] table[x=anio, y=otros] {\areaer};
+    }
+    % 6: 2024 y 2025 sin dato; 2026, preliminar
+    \capa{6}{
+      \addplot[hueco=tceedorado] table[x=anio, y=blando] {\areaer};
+      \addplot[hueco=tceerojo] table[x=anio, y=flotacion] {\areaer};
+      \addplot[hueco=tceeazul] table[x=anio, y=duro] {\areaer};
+      \addplot[hueco=tceegris] table[x=anio, y=otros] {\areaer};
+      \addplot[ultimo=tceedorado] table[x=anio, y=blando] {\areaer};
+      \addplot[ultimo=tceerojo] table[x=anio, y=flotacion] {\areaer};
+      \addplot[ultimo=tceeazul] table[x=anio, y=duro] {\areaer};
+      \addplot[ultimo=tceegris] table[x=anio, y=otros] {\areaer};
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=south, align=center]
+        {(2024.5,20)}{2024 y 2025:\\sin dato}
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=south east, inner sep=2pt]
+        {(2026.35,51.5)}{2026, preliminar}
+    }
+    % 7: rótulos de las series y de los últimos valores
+    \capa{7}{
+      \dicrotulo[font=\footnotesize, text=tceedorado!85!black, anchor=west, inner sep=4pt]
+        {(2026,47.2)}{\textbf{Anclaje blando} $47{,}2$}
+      \dicrotulo[font=\footnotesize, text=tceerojo, anchor=west, inner sep=4pt]
+        {(2026,33.3)}{\textbf{Flotación} $33{,}3$}
+      \dicrotulo[font=\footnotesize, text=tceeazul, anchor=west, inner sep=4pt]
+        {(2026,13.8)}{\textbf{Anclaje duro} $13{,}8$}
+      \dicrotulo[font=\footnotesize, text=tceegris, anchor=west, inner sep=4pt]
+        {(2026,5.6)}{\textbf{Otros gestionados} $5{,}6$}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

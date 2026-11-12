@@ -1,0 +1,45 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+% Estilo común de las 7 series de tipos de cambio del anexo A del 3.B.15:
+% mismo tamaño, cuadrícula y rótulos; color del régimen (anclaje duro
+% tceeazul, anclaje blando tceedorado, flotación tceerojo). Capas «dic»
+% (tikz-tcee.tex): sombreados → ejes y referencias → serie → punto → rótulos.
+\pgfplotsset{
+  tcserie/.style={
+    scale only axis, width=9.5cm, height=4.6cm,
+    xmin=2000, xmax=2027, xtick={2000,2005,...,2025}, minor xtick={2001,...,2026},
+    ticklabel style={font=\footnotesize},
+    xticklabel style={/pgf/number format/1000 sep={}},
+    ylabel style={font=\footnotesize},
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+  },
+  tcdecimales/.style={yticklabel style={/pgf/number format/.cd, use comma, fixed, fixed zerofill, precision=#1}},
+}
+% \tcultimo[opciones del rótulo]{color}{x}{y}{texto}: punto y rótulo del último dato
+\newcommand{\tcultimo}[5][]{%
+  \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=#2] coordinates {(#3,#4)};
+  \dicrotulo[font=\footnotesize, anchor=west, xshift=3pt, align=left, text=#2, #1]{(#3,#4)}{#5}}
+\begin{document}
+% Régimen similar al deslizamiento: el renminbi chino, 2000-2026 (CNY por
+% USD, media mensual). Reserva Federal, H.10 (EXCHUS), vía FRED. Último dato:
+% octubre de 2026, 6,68.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/tc-renminbi-crawl-like.csv}\datos
+\begin{tikzpicture}[tcee]
+  \begin{axis}[tcserie, tcdecimales=1,
+      ymin=5.5, ymax=8.5, ytick={5.5,6,...,8.5},
+      ylabel={CNY por USD}, dicapas]
+    % 1: ejes (los dibuja el entorno axis)
+    % 2: serie CNY por USD
+    \capa{2}{
+      \addplot[diclinea=tceedorado] table[x=x, y=cny_usd] {\datos};
+    }
+    % 3: rótulos (fin del ancla fija en julio de 2005; último dato)
+    \capa{3}{
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceegris, inner sep=1pt]{(2005.8,8.25)}{2005: fin del ancla fija al dólar}
+      \tcultimo{tceedorado}{2026.75}{6.6844}{oct.\ 2026\\6,68}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}
