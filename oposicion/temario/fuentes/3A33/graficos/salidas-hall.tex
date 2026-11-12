@@ -1,0 +1,52 @@
+% Las salidas al modelo de Hall (1978): cada pieza del problema que se cambia,
+% la salida que da la literatura y el hecho que explica (exceso de sensibilidad
+% o de suavidad). La última fila, el bloque III del tema: cambiar el bien
+% (duraderos) es otra pieza, pero no explica los fallos: añade un enigma.
+% Capas para el vídeo: 1, Hall y la evidencia; 2-6, una salida por pieza;
+% 7, los duraderos (bloque III).
+% Elaboración propia.
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  pieza/.style={draw=#1, fill=#1!14, rounded corners=2pt, line width=0.7pt, text width=2.7cm, align=center, minimum height=0.95cm, inner sep=2pt},
+  salida/.style={draw=#1, line width=0.7pt, rounded corners=2pt, text width=4.7cm, align=left, minimum height=0.95cm, inner sep=3pt},
+  explica/.style={text width=2.6cm, align=left, inner sep=1pt, text=#1!80!black},
+  sig/.style={-{Stealth[length=1.6mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.45,-4.1) rectangle (12.95,3.7);
+  % Cabeceras
+  \capa{1}{\node[font=\scriptsize\bfseries, text=tceegris] at (3.25,3.45) {Pieza que se cambia};
+    \node[font=\scriptsize\bfseries, text=tceegris] at (7.35,3.45) {Salida};
+    \node[font=\scriptsize\bfseries, text=tceegris, align=left, text width=2.6cm] at (11.4,3.45) {Qué explica};}
+  % 1: Hall y lo que dicen los datos
+  \capa{1}{\node[draw=tceemorado, fill=tceemorado, text=white, rounded corners=2pt, text width=2.3cm, align=center, minimum height=5.8cm] (hall) at (0,0.2) {\textbf{\textsc{Hall} (1978)}\\[3pt]$C_{t+1}=C_t+\varepsilon_{t+1}$\\[8pt]Los datos lo rechazan:\\[2pt]\textbf{exceso de sensibilidad}\\(a la renta prevista)\\[2pt]y \textbf{exceso de suavidad}\\(ante las sorpresas)};}
+  % 2-6: las salidas, una por pieza
+  \capa{2}{\node[pieza=tceeazul] (p1) at (3.25,2.6) {\textbf{1. La utilidad}\\cuadrática y separable};
+    \node[salida=tceeazul, right=0.25cm of p1] (s1) {Prudencia: \textbf{ahorro precautorio}\\ No separable: \textbf{hábitos}};
+    \node[explica=tceeazul, right=0.2cm of s1] {prudencia: los 2 excesos; hábitos: la suavidad};
+    \draw[sig] (hall.east |- p1) -- (p1.west);}
+  \capa{3}{\node[pieza=tceeverde] (p2) at (3.25,1.4) {\textbf{2. El tipo de interés}\\$r=\rho$ y seguro};
+    \node[salida=tceeverde, right=0.25cm of p2] (s2) {$r\neq\rho$: consumo con tendencia (ESI)\\ Rendimiento incierto: \textbf{C-CAPM}};
+    \node[explica=tceeverde, right=0.2cm of s2] {la tendencia del consumo y la prima de riesgo};
+    \draw[sig] (hall.east |- p2) -- (p2.west);}
+  \capa{4}{\node[pieza=tceedorado] (p3) at (3.25,0.2) {\textbf{3. La restricción}\\crédito sin límite, renta dada};
+    \node[salida=tceedorado, right=0.25cm of p3] (s3) {\textbf{Restricciones de liquidez}\\ \textbf{Renta endógena} (ocio y horas)};
+    \node[explica=tceedorado, right=0.2cm of s3] {el exceso de sensibilidad};
+    \draw[sig] (hall.east |- p3) -- (p3.west);}
+  \capa{5}{\node[pieza=tceenaranja] (p4) at (3.25,-1.0) {\textbf{4. El agente}\\representativo};
+    \node[salida=tceenaranja, right=0.25cm of p4] (s4) {\textbf{Hogares heterogéneos}: los que viven al día (\textsc{Hall} y \textsc{Mishkin}), \textsc{Deaton}, modelos HANK};
+    \node[explica=tceenaranja, right=0.2cm of s4] {los 2 excesos};
+    \draw[sig] (hall.east |- p4) -- (p4.west);}
+  \capa{6}{\node[pieza=tceerojo] (p5) at (3.25,-2.2) {\textbf{5. La optimización}\\plena y racional};
+    \node[salida=tceerojo, right=0.25cm of p5] (s5) {\textbf{Conducta}: reglas prácticas ($\lambda$ de \textsc{Campbell} y \textsc{Mankiw}), descuento cuasihiperbólico, contabilidad mental};
+    \node[explica=tceerojo, right=0.2cm of s5] {el exceso de sensibilidad};
+    \draw[sig] (hall.east |- p5) -- (p5.west);}
+  % 7: el bloque III, el bien
+  \capa{7}{\node[pieza=tceegris, dashed] (p6) at (3.25,-3.5) {\textbf{6. El bien}\\no duradero (bloque III)};
+    \node[salida=tceegris, dashed, right=0.25cm of p6] (s6) {\textbf{Duraderos}: coste de uso, \textsc{Mankiw} (1982), costes de ajuste y bandas $(S,s)$};
+    \node[explica=tceegris, right=0.2cm of s6] {no salva el paseo aleatorio: añade un enigma};
+    \draw[sig, dashed] (hall.south) |- (p6.west);}
+\end{tikzpicture}
+\end{document}
