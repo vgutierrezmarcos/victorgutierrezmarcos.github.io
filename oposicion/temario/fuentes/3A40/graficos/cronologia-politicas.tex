@@ -1,0 +1,44 @@
+% Cronología de las políticas monetaria (arriba) y fiscal (abajo) en las 4
+% grandes economías, 2008-2026 (3.A.40, III.3), con las 5 fases del texto.
+% Posición: años desde 2008 (dic. 2008 = 0,96). En cada fase, los hitos
+% monetarios encima del eje y los fiscales debajo, en orden. Fechas de las fuentes del texto (bancos
+% centrales, Comisión Europea, CBO, G-20) y del anexo de cronología.
+% Rehecho en TikZ propio.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.92cm,y=1cm,
+  fase/.style={font=\footnotesize\itshape,text=tceegris}]
+  \newcommand{\fase}[6]{% #1 capa, #2 inicio, #3 fin, #4 nombre, #5 hitos monetarios, #6 hitos fiscales
+    \capa{#1}{\fill[tceemorado,opacity=0.07] (#2+0.04,-4.0) rectangle (#3-0.04,4.25);}
+    \capa{#1}{\node[fase,anchor=north] at ({(#2+#3)/2},4.22) {#4};}
+    \capa{#1}{\node[font=\footnotesize,text=tceemorado,align=center,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000 },text width={(#3-#2-0.2)*0.92cm},anchor=south,inner sep=0pt] at ({(#2+#3)/2},0.35) {#5};}
+    \capa{#1}{\node[font=\footnotesize,text=tceeazul,align=center,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000 },text width={(#3-#2-0.2)*0.92cm},anchor=north,inner sep=0pt] at ({(#2+#3)/2},-0.5) {#6};}}
+  % 1: eje del tiempo con los años y los rótulos de las 2 franjas
+  \capa{1}{\draw[eje] (-0.1,0) -- (19.4,0) node[right,font=\footnotesize] {$t$};}
+  \capa{1}{\foreach \a in {2008,...,2026} {\draw (\a-2008,0.07) -- (\a-2008,-0.07);}}
+  \capa{1}{\foreach \a in {2008,2010,...,2026} {\node[font=\scriptsize,anchor=north] at (\a-2008,-0.06) {\a};}}
+  \capa{1}{\node[font=\footnotesize\bfseries,text=tceemorado,anchor=east,align=right] at (-0.3,1.5) {Política\\monetaria};}
+  \capa{1}{\node[font=\footnotesize\bfseries,text=tceeazul,anchor=east,align=right] at (-0.3,-1.6) {Política\\fiscal};}
+  % 2: 2008-2009, estímulo coordinado
+  \fase{2}{0}{2}{estímulo}
+    {Fed: tipos a 0 (dic.~2008)\\[3pt] BoE: 0,5~\% y compras (mar.~2009)}
+    {Plan Europeo de Recuperación (nov.~2008)\\[3pt] ARRA (feb.~2009)\\[3pt] G-20 de Londres (abr.~2009)}
+  % 3: 2010-2014, austeridad y crisis del euro
+  \fase{3}{2}{7}{austeridad}
+    {BCE: subidas de tipos (2011)\\[3pt] «Lo que sea necesario» (jul.~2012)\\[3pt] OMT y QE3 (sep.~2012)\\[3pt] BoJ: QQE (abr.~2013)\\[3pt] BCE: tipo negativo (jun.~2014)}
+    {Rescate de Grecia y G-20 de Toronto (2010)\\[3pt] \emph{Six-Pack} (dic.~2011) y TECG (mar.~2012)\\[3pt] Japón: impuesto sobre el consumo al 8~\% (2014)}
+  % 4: 2015-2019, tipos bajos
+  \fase{4}{7}{12}{tipos bajos}
+    {BCE: compras de deuda pública (2015)\\[3pt] BoJ: control de la curva (sep.~2016)\\[3pt] Fed: subidas (2015-2018)}
+    {Más flexibilidad en el Pacto de Estabilidad (2015)\\[3pt] Debate sobre $r{<}\gamma_Y$ (2019)}
+  % 5: 2020-2021, la Covid
+  \fase{5}{12}{14}{Covid}
+    {PEPP; compras sin límite (2020)}
+    {Reglas en suspenso; CARES (2020)\\[3pt] NGEU (jul.~2020)\\[3pt] Plan de Rescate (mar.~2021)}
+  % 6: 2022-2026, inflación y subida de tipos
+  \fase{6}{14}{19}{inflación}
+    {Subidas de tipos; TPI (2022)\\[3pt] BoJ deja los tipos negativos (mar.~2024)\\[3pt] Bajadas del BCE y la Fed (2024)\\[3pt] Fed: fin de la reducción del balance (dic.~2025)\\[3pt] Fed y BCE vuelven a subir (sep.~2026)}
+    {Nuevo marco fiscal de la UE (abr.~2024)\\[3pt] Freno de la deuda alemán reformado (mar.~2025)\\[3pt] OBBBA en EE.\,UU. (jul.~2025)\\[3pt] Fin del MRR (2026)}
+\end{tikzpicture}
+\end{document}

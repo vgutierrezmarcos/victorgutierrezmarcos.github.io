@@ -1,0 +1,34 @@
+% La orientación sobre los tipos futuros en el límite inferior (3.A.40, I.2),
+% a partir de la idea de Eggertsson y Woodford (2003). Plano (t, tipo).
+%   r^n: 1,5 hasta t_0 = 2; -1 entre t_0 y T = 6; 1,5 desde T
+%   i sin orientación: sigue a r^n cuando es positivo y queda en 0 entre t_0 y T
+%   i con orientación: en 0 hasta T+1 = 7,6; entre T y T+1, x > 0 y pi > 0
+% Rehecho en TikZ propio.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=1.1cm]
+  % 1: ejes y línea del cero (el límite inferior)
+  \capa{1}{\draw[eje] (0,-1.6) -- (0,2.4) node[left] {$i_t,\ r^n_t$};}
+  \capa{1}{\draw[eje] (0,0) -- (10.2,0) node[below left=2pt and 0pt] {$t$};}
+  \capa{1}{\node[etiqueta,left] at (0,0) {$0$};}
+  % 2: el tipo natural cae por debajo de cero entre t_0 y T
+  \capa{2}{\draw[curva4] (0.2,1.5) -- (2,1.5) -- (2,-1) -- (6,-1) -- (6,1.5) -- (9.8,1.5);}
+  \capa{2}{\node[etiqueta,below,text=tceedorado] at (4,-1) {$r^n_t<0$};}
+  \capa{2}{\node[etiqueta,above,text=tceedorado] at (1.0,1.5) {$r^n_t$};}
+  \capa{2}{\draw[guia] (2,-1) -- (2,-1.4) node[below,text=black] {$t_0$};}
+  \capa{2}{\draw[guia] (6,-1) -- (6,-1.4) node[below,text=black] {$T$};}
+  % 3: sin orientación: el tipo nominal se queda en el límite y sube en T
+  \capa{3}{\draw[curva2,desplazada] (2,0) -- (6,0) -- (6,1.35) -- (9.8,1.35);}
+  \capa{3}{\node[etiqueta,text=tceeazul,font=\footnotesize,anchor=south west] at (6.05,1.55) {$i_t$ sin orientación: sube en $T$};}
+  % 4: con orientación: se promete mantenerlo en el límite hasta T+1
+  \capa{4}{\draw[curvanueva] (2,0.05) -- (7.6,0.05) -- (7.6,1.2) -- (9.8,1.2);}
+  \capa{4}{\draw[guia] (7.6,0) -- (7.6,-1.4) node[below,text=black] {$T+1$};}
+  \capa{4}{\node[etiqueta,text=tceerojo,font=\footnotesize,anchor=north west] at (7.65,1.15) {$i_t$ con orientación};}
+  % 5: el precio de la promesa: una expansión con inflación entre T y T+1,
+  %    que, anticipada, baja el tipo real durante la crisis
+  \capa{5}{\fill[area2] (6,0.05) rectangle (7.6,1.2);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=center] at (6.8,0.62) {$x_t>0$\\$\pi_t>0$};}
+  \capa{5}{\draw[flecha] (5.85,0.6) to[bend right=25] node[midway,above,etiqueta,font=\footnotesize,text=tceerojo,align=center] {más $\pi^e$:\ el tipo real baja} (3.2,0.35);}
+\end{tikzpicture}
+\end{document}

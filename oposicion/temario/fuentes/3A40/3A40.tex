@@ -19,7 +19,7 @@
 
 \item \textbf{\emph{Relevancia}}:
   \begin{itemize}
-  \item \emph{Para la teoría}: el multiplicador fiscal es el parámetro que separa a las escuelas, de casi cero en el modelo clásico a más de 2 en el keynesiano. Y el límite inferior de los tipos de interés obligó a revisar el consenso de la nueva economía keynesiana: la política monetaria no siempre basta y, cuando no basta, la fiscal es más potente.
+  \item \emph{Para la teoría}: el multiplicador fiscal es el parámetro que separa a las escuelas, de casi cero en el modelo clásico a más de 2 en el keynesiano. En 2008 los Gobiernos descubrieron, en plena urgencia, que no había consenso sobre su valor, y la investigación fiscal, casi parada desde los 60, vivió un renacimiento\nocite{Ramey2019Ten}. Y el límite inferior de los tipos de interés obligó a revisar el consenso de la nueva economía keynesiana: la política monetaria no siempre basta y, cuando no basta, la fiscal es más potente.
   \item \emph{Para la política económica}: desde 2008 las economías desarrolladas han pasado por 2 recesiones profundas y por una inflación que no veían desde los 80. La deuda pública de la zona del euro era en 2025 el 87,7~\% del PIB\nocite{Eurostat2026EDP}: el margen fiscal es escaso y cada euro tiene que rendir.
   \item \emph{Para la actualidad}: en 2026 termina el Mecanismo de Recuperación y Resiliencia, el núcleo de la respuesta europea a la Covid\nocite{UE2021Reglamento241}; la Reserva Federal y el BCE han vuelto a subir los tipos en septiembre\nocite{FedNY2026EFFR,BCE2026Tipos}, y se discute si el tipo de interés seguirá por debajo del crecimiento, lo que decide cuánto cuesta la deuda.
   \end{itemize}
@@ -78,7 +78,7 @@ Conclusión\esqtiempo{1}
 \end{esquema}
 
 \begin{notaopositor}
-Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}; I.2, \tiempo{2}; I.3, \tiempo{2,5}); II, \tiempo{9,5} (II.1, \tiempo{1,5}; II.2, \tiempo{4}; II.3, \tiempo{4}); III, \tiempo{9} (III.1, \tiempo{2}; III.2, \tiempo{3}; III.3, \tiempo{4}), y conclusión, \tiempo{1}. Las 4 economías son siempre las mismas y en el mismo orden: Estados Unidos, la zona del euro, el Reino Unido y Japón. El hilo de la exposición es el tipo de interés natural: su caída explica el límite de la política monetaria, el multiplicador alto y la deuda barata. La derivación del multiplicador neokeynesiano, los métodos empíricos y la cronología por economías están en los anexos~\ref{anexo:derivacion-nek}, \ref{anexo:metodos} y~\ref{anexo:cronologia}.
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}; I.2, \tiempo{2}; I.3, \tiempo{2,5}); II, \tiempo{9,5} (II.1, \tiempo{1,5}; II.2, \tiempo{4}; II.3, \tiempo{4}); III, \tiempo{9} (III.1, \tiempo{2}; III.2, \tiempo{3}; III.3, \tiempo{4}), y conclusión, \tiempo{1}. Las 4 economías son siempre las mismas y en el mismo orden: Estados Unidos, la zona del euro, el Reino Unido y Japón. El hilo de la exposición es el tipo de interés natural: su caída explica el límite de la política monetaria, el multiplicador alto y la deuda barata. La derivación de los multiplicadores neoclásico y neokeynesiano, el modelo de \autor{Leeper}, los métodos empíricos y la cronología por economías están en los anexos~\ref{anexo:derivacion-nek}, \ref{anexo:leeper}, \ref{anexo:metodos} y~\ref{anexo:cronologia}.
 \end{notaopositor}
 
 % ==========================================================================
@@ -96,7 +96,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item \textcite{Hansen1939Economic} temió que, con una población que crecía menos y sin grandes inventos que absorbieran capital, la inversión no bastara para absorber el ahorro de pleno empleo. Llamó \concepto{estancamiento secular} a la insuficiencia crónica de demanda que resultaría. La guerra y la posguerra lo desmintieron.\footnote{\autor{Hansen} lo apoyaba además en una propensión media al consumo que caería con la renta, algo que \autor{Kuznets} refutó con datos de largo plazo \vertema{3.A.33}. El debate actual no se apoya en eso, sino en el tipo de interés natural.}
+\item \textcite{Hansen1939Economic} temió que, con una población que crecía menos y sin grandes inventos que absorbieran capital, la inversión no bastara para absorber el ahorro de pleno empleo. Llamó \concepto{estancamiento secular} (\emph{secular stagnation}) a la insuficiencia crónica de demanda que resultaría. La guerra y la posguerra lo desmintieron.\footnote{\autor{Hansen} lo apoyaba además en una propensión media al consumo que caería con la renta, algo que \autor{Kuznets} refutó con datos de largo plazo \vertema{3.A.33}. El debate actual no se apoya en eso, sino en el tipo de interés natural.}
 \item \autor{Summers} recuperó la idea en una conferencia del FMI en noviembre de 2013\nocite{Summers2013FMI} y la desarrolló después\nocite{Summers2014Secular}. Su argumento es otro: si el tipo de interés real que igualaría el ahorro y la inversión con pleno empleo es muy bajo, el banco central no puede llegar a él, y la economía se queda por debajo de su potencial durante años.
 \item Es la pieza que explica por qué la política monetaria perdió eficacia después de 2008.
 \end{itemize}
@@ -107,7 +107,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}
 
 \begin{itemize}
 \item El mercado de \emph{fondos prestables} con pleno empleo \vertema{3.A.4}: el ahorro crece con el tipo de interés real y la inversión decrece. El \concepto{tipo de interés natural}, $r^n$, es el tipo real que los iguala con la producción de pleno empleo, $Y_F$: $S(r^n,Y_F)=I(r^n)+G-T$.
-\item El tipo real esperado es $r=i-\pi^e$, y el tipo nominal no puede bajar de su \concepto{límite inferior efectivo}, $i^{\mathrm{ELB}}$: cero o algo por debajo, porque guardar efectivo tiene un coste.
+\item El tipo real esperado es $r=i-\pi^e$, y el tipo nominal no puede bajar de su \concepto{límite inferior efectivo} (\emph{effective lower bound}), $i^{\mathrm{ELB}}$: cero o algo por debajo, porque guardar efectivo tiene un coste.
 \item Las expectativas de inflación, $\pi^e$, están ancladas.
 \end{itemize}
 
@@ -121,8 +121,8 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}
   \end{itemize}
 \item \emph{El problema}: aparece cuando el tipo natural cae tanto que el banco central no puede alcanzarlo,
   \funcionclave[eq:estancamiento]{r^n<i^{\mathrm{ELB}}-\pi^e\;\leq\; r=i-\pi^e}
-  Al tipo real más bajo posible, el ahorro de pleno empleo supera a la inversión. No hay tipo de interés que vacíe el mercado, y lo que se ajusta es la renta: cae hasta que el ahorro baja al nivel de la inversión (fgráfico~\ref{fig:estancamiento-secular}).
-\item \emph{Pegatina}: «no hay mal que cien años dure», pero este puede durar décadas, porque sus causas son lentas: la demografía, la productividad y la desigualdad.
+  Al tipo real más bajo posible, el ahorro de pleno empleo supera a la inversión. No hay tipo de interés que vacíe el mercado, y lo que se ajusta es la renta: cae hasta que el ahorro baja al nivel de la inversión (gráfico~\ref{fig:estancamiento-secular}).
+\item \emph{Dicho}: «no hay mal que cien años dure», pero este puede durar décadas, porque sus causas son lentas: la demografía, la productividad y la desigualdad.
 \end{itemize}
 
 \begin{figure}[H]
@@ -152,7 +152,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}
 
 \begin{itemize}
 \item \textcite{RachelSummers2019Secular} estiman que el tipo real neutral de las economías avanzadas cayó al menos 300 puntos básicos en una generación.
-\item El tipo natural no se observa: se estima con filtros que combinan una curva IS y una curva de \autor{Phillips}\nocite{LaubachWilliams2003,HolstonLaubachWilliams2017Measuring} \vertema{3.A.42}. Con el modelo de \autor{Holston}, \autor{Laubach} y \autor{Williams} (que lo llaman $r^*$), el tipo natural pasó de 2,6~\% en 2007 a 1,0~\% a mediados de 2026 en Estados Unidos, y de 2,3~\% a 0,1~\% en la zona del euro (fgráfico~\ref{fig:tipo-natural})\nocite{HolstonLaubachWilliams2023Covid,FedNY2026HLW}.
+\item El tipo natural no se observa: se estima con filtros que combinan una curva IS y una curva de \autor{Phillips}\nocite{LaubachWilliams2003,HolstonLaubachWilliams2017Measuring} \vertema{3.A.42}. Con el modelo de \autor{Holston}, \autor{Laubach} y \autor{Williams} (que lo llaman $r^*$), el tipo natural pasó de 2,6~\% en 2007 a 1,0~\% a mediados de 2026 en Estados Unidos, y de 2,3~\% a 0,1~\% en la zona del euro (gráfico~\ref{fig:tipo-natural})\nocite{HolstonLaubachWilliams2023Covid,FedNY2026HLW}.
 \item \emph{Con mucha incertidumbre}: con el modelo anterior de \autor{Laubach} y \autor{Williams}, el de Estados Unidos sale hoy en 1,7~\%, y el BCE sitúa el de la zona del euro entre $-0{,}5$ y 1~\%\nocite{FedNY2026HLW,BrandLisackMazelis2025Natural}. Las estimaciones discrepan en el nivel, pero coinciden en la caída.
 \end{itemize}
 
@@ -175,7 +175,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}
 \subsection{El límite inferior y la respuesta no convencional}\label{sec:limite-inferior}
 
 \begin{itemize}
-\item \emph{El problema}: en la crisis de 2008 el tipo natural cayó de golpe y los 4 grandes bancos centrales llevaron sus tipos oficiales a cero o cerca de cero (fgráfico~\ref{fig:tipos-oficiales}):
+\item \emph{El problema}: en la crisis de 2008 el tipo natural cayó de golpe y los 4 grandes bancos centrales llevaron sus tipos oficiales a cero o cerca de cero (gráfico~\ref{fig:tipos-oficiales}):
   \begin{itemize}
   \item la Reserva Federal, al 0-0,25~\% de diciembre de 2008 a diciembre de 2015, y de nuevo de marzo de 2020 a marzo de 2022\nocite{FedNY2026EFFR};
   \item el BCE, más tarde: la facilidad de depósito llegó al 0~\% en julio de 2012 y fue negativa de junio de 2014 a julio de 2022, con un mínimo del $-0{,}50$~\%\nocite{BCE2026Tipos};
@@ -183,7 +183,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}
   \item el Banco de Japón ya estaba cerca de cero desde finales de los 90, y aplicó un tipo del $-0{,}1$~\% de 2016 a 2024\nocite{BoJ2016Negativo,BoJ2024Marco}.
   \end{itemize}
 \item \emph{Por qué es grave}: si el tipo real no puede bajar, la brecha se abre, la inflación cae, el tipo real \emph{sube} y la recesión se agrava. Es la trampa que \textcite{Krugman1998Baaack} describió para Japón: con el tipo natural negativo, el banco central necesitaría prometer inflación futura, y no resulta creíble \vertema{3.A.36} \vertema{3.A.41}.
-\item \emph{Pegatina}: «no se le pueden pedir peras al olmo». Al banco central no se le puede pedir que baje el tipo nominal por debajo de su límite; sí que actúe sobre lo que de verdad mueve el gasto.
+\item \emph{Dicho}: «no se le pueden pedir peras al olmo». Al banco central no se le puede pedir que baje el tipo nominal por debajo de su límite; sí que actúe sobre lo que de verdad mueve el gasto.
 \end{itemize}
 
 \begin{figure}[H]
@@ -200,10 +200,27 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3,5}
   \end{equation}
   Con el tipo corto en su límite, se puede actuar sobre los 2 sumandos:
   \begin{itemize}
-  \item sobre los \emph{tipos cortos esperados}: con la \concepto{orientación de la política} (\emph{forward guidance}), que promete tipos bajos durante más tiempo, y con los \emph{tipos negativos}, que bajan todo el tramo corto;
-  \item sobre la \emph{prima por plazo}: con las \concepto{compras de activos} a gran escala (expansión cuantitativa), que retiran del mercado bonos largos, y con el \emph{control de la curva de tipos}, que fija un tipo largo;
+  \item sobre los \emph{tipos cortos esperados}: con la \concepto{orientación sobre los tipos futuros} (\emph{forward guidance}), la comunicación del banco central sobre la senda futura del tipo oficial, que promete tipos bajos durante más tiempo, y con los \emph{tipos negativos}, que bajan todo el tramo corto;
+  \item sobre la \emph{prima por plazo}: con las \concepto{compras de activos} a gran escala, la \emph{expansión cuantitativa} (\emph{quantitative easing}), compras de deuda pública y otros activos largos pagadas con reservas, que retiran duración del mercado, y con el \emph{control de la curva de tipos} (\emph{yield curve control}), que fija un tipo largo;
   \item y, cuando el problema es el crédito, con \emph{préstamos a largo plazo a los bancos}, condicionados a que presten.
   \end{itemize}
+\item \emph{Por qué funciona la orientación}: el gasto depende de toda la senda esperada de tipos reales, no solo del tipo de hoy. En el límite inferior, la clave es gestionar las expectativas: un compromiso creíble de mantener los tipos bajos \emph{más allá} del fin de la crisis reduce buena parte del coste del límite\nocite{EggertssonWoodford2003Zero} (gráfico~\ref{fig:orientacion-tipos}):
+  \begin{itemize}
+  \item entre $t_0$ y $T$ el tipo natural es negativo y el nominal está en cero, por encima de lo que la economía necesitaría;
+  \item sin orientación, el banco central sube el tipo en cuanto el tipo natural vuelve a ser positivo, en $T$;
+  \item con orientación, promete mantenerlo en cero hasta $T+1$ y tolerar entonces una expansión con algo de inflación; al anticiparla, los hogares esperan más inflación y más renta durante la crisis, y el tipo real baja sin que el nominal se mueva.
+  \end{itemize}
+\item \emph{En la práctica}: la Reserva Federal pasó de una orientación por fechas («al menos hasta mediados de 2013», en agosto de 2011) a una orientación condicionada en diciembre de 2012: tipos en el suelo al menos mientras el paro superase el 6,5~\%\nocite{Bernanke2020New}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La orientación sobre los tipos futuros en el límite inferior}\label{fig:orientacion-tipos}
+\grafico[0.75\textwidth]{orientacion-tipos}
+\fuente{Elaboración propia a partir de \textcite{EggertssonWoodford2003Zero}. El tipo natural es negativo entre $t_0$ y $T$; con orientación, el banco central mantiene el tipo en cero hasta $T+1$ y tolera una expansión con inflación ($x_t>0$, $\pi_t>0$), que, anticipada, baja el tipo real durante la crisis.}
+\end{figure}
+
+\begin{itemize}
 \item El catálogo y el diseño de estos instrumentos son de la política monetaria del banco central \vertema{3.A.36}; sus canales de transmisión, \vertema{3.A.37}. Aquí interesa cómo los usaron las 4 grandes economías (tabla~\ref{tab:no-convencionales}).
 \end{itemize}
 
@@ -236,7 +253,7 @@ Control de la curva & no & no & no & 2016-2024\\
   \item el Banco de Inglaterra llegó a tener 895.000 millones de libras en bonos\nocite{BoE2026QE};
   \item el Banco de Japón se propuso en 2013 duplicar la base monetaria en 2 años y en 2016 fijó el tipo a 10 años en torno al 0~\%\nocite{BoJ2013QQE,BoJ2016YCC}.
   \end{itemize}
-\item \emph{El balance como instrumento}: desde mediados de 2007 hasta sus máximos de 2021, el activo de la Reserva Federal pasó del 6~\% al 37~\% del PIB; el del Eurosistema, del 13~\% al 68~\%; el del Banco de Inglaterra, del 5~\% al 48~\%, y el del Banco de Japón, del 18~\% al 129~\% (fgráfico~\ref{fig:balances})\nocite{BPI2026CBTA}.
+\item \emph{El balance como instrumento}: desde mediados de 2007 hasta sus máximos de 2021, el activo de la Reserva Federal pasó del 6~\% al 37~\% del PIB; el del Eurosistema, del 13~\% al 68~\%; el del Banco de Inglaterra, del 5~\% al 48~\%, y el del Banco de Japón, del 18~\% al 129~\% (gráfico~\ref{fig:balances})\nocite{BPI2026CBTA}.
 \end{itemize}
 
 \begin{figure}[H]
@@ -263,6 +280,7 @@ Control de la curva & no & no & no & 2016-2024\\
   \item \emph{Japón}: con las expectativas de inflación ancladas cerca de cero durante 2 décadas, la expansión cuantitativa y cualitativa de 2013 subió la inflación, pero no la llevó de forma duradera al 2~\%\nocite{DellAricciaRabanalSandri2018}: Japón no «salió» de la deflación solo con la política monetaria;
   \item \emph{el límite de la teoría}: si el tipo neutral es aún más bajo, los instrumentos nuevos no bastan; hace falta un objetivo de inflación algo mayor o más política fiscal\nocite{Bernanke2020New}.
   \end{itemize}
+\item \emph{La inflación, el objetivo final, es donde peor salió}: en la zona del euro la media anual estuvo entre el 0,2 y el 1,8~\% de 2013 a 2019, por debajo del objetivo\nocite{Eurostat2026IAPC}; en Japón, el gobernador del banco central admitía en 2016 que la economía ya no estaba en deflación, pero que el objetivo del 2~\% «no se ha alcanzado todavía»\nocite{Kuroda2016Comprehensive}.
 \item \emph{Los costes}:
   \begin{itemize}
   \item \emph{pérdidas de los bancos centrales}: compraron bonos largos a tipo fijo pagados con reservas que se remuneran al tipo oficial; cuando los tipos subieron en 2022-2023, el coste de las reservas superó el rendimiento de los bonos. El BCE perdió 7.944 millones de euros en 2024\nocite{BCE2025Cuentas2024};
@@ -271,6 +289,19 @@ Control de la curva & no & no & no & 2016-2024\\
   \item \emph{la frontera con la política fiscal}: al comprar deuda pública a gran escala, el banco central abarata la financiación del Estado y sus resultados acaban en el presupuesto. La política monetaria se acerca a la fiscal, y su independencia exige que suba los tipos cuando toque, aunque encarezca la deuda.
   \end{itemize}
 \item \emph{La normalización (2022-2026)}: con la inflación, los bancos centrales dejaron de comprar y empezaron a reducir sus balances: el Banco de Inglaterra, desde 2022; el BCE dejó de reinvertir el APP en 2023 y el PEPP a finales de 2024, y la Reserva Federal terminó la reducción el 1 de diciembre de 2025\nocite{BoE2026QE,BCE2026APP,BCE2026PEPP,Fed2025FOMCoct}. A mediados de 2026, los balances eran el 21, el 39, el 26 y el 94~\% del PIB\nocite{BPI2026CBTA}: mucho mayores que en 2007.
+\end{itemize}
+
+\begin{anotaciones}
+La evidencia sobre los instrumentos nuevos (los métodos, en el anexo~\ref{anexo:metodos}):
+\begin{itemize}
+\item \emph{Estudios de eventos}: los 8 anuncios de compras de la Reserva Federal de 2008-2009 bajaron en total 91 puntos básicos el rendimiento del bono a 10 años\nocite{GagnonEtAl2011Financial}; los de la segunda ronda, en 2010, ya anticipados, unos 18 el día del anuncio\nocite{KrishnamurthyVissingJorgensen2011}. Estos autores apenas encuentran efecto por el canal de la duración y sí por la señal, la escasez de activos seguros y la inflación esperada: comprar titulizaciones hipotecarias baja más los tipos de las hipotecas que comprar deuda pública.
+\item \emph{Reino Unido}: las compras de 200.000 millones de libras hasta febrero de 2010, casi todas de deuda pública, bajaron su rendimiento unos 100 puntos básicos, sobre todo por la recomposición de las carteras\nocite{JoyceEtAl2010Financial}.
+\item \emph{Zona del euro}: sin las medidas no convencionales de 2014-2018, el PIB habría sido en torno a un 2,7~\% menor a finales de 2018\nocite{RostagnoEtAl2021Monetary}.
+\item \emph{Con identificación de alta frecuencia}, la orientación y las compras movieron los mercados tanto como el tipo oficial en tiempos normales, y con efectos persistentes\nocite{Swanson2021Measuring}.
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
 \item \emph{Recapitulación del bloque}: el tipo natural cayó y la política monetaria tocó su límite; los instrumentos nuevos funcionaron, sobre todo para bajar los tipos largos y frenar las crisis de deuda, pero con menos fuerza y más costes que el tipo oficial. La política monetaria necesitaba ayuda, y la ayuda solo podía venir de la política fiscal: ¿cuánto vale un euro de gasto?
 \end{itemize}
 
@@ -297,7 +328,7 @@ Control de la curva & no & no & no & 2016-2024\\
   \funcionclave[eq:multiplicador-acumulado]{m^{\mathrm{acum}}_{t,k}=\frac{\sum_{j=0}^{k}\Delta Y_{t+j}}{\sum_{j=0}^{k}\Delta G_{t+j}}}
   \end{itemize}
 \item \emph{Interpretación}: con un multiplicador acumulado de 1, cada euro de gasto público añade un euro de PIB y deja igual el gasto privado; por encima de 1, lo arrastra; por debajo, lo expulsa en parte.
-\item \emph{Interpretación gráfica} (fgráfico~\ref{fig:multiplicadores-irf}): la respuesta del PIB a un aumento del gasto suele tener forma de joroba. El de impacto es el primer punto; el máximo, la cima; el acumulado compara las áreas bajo las 2 curvas. Es la medida que prefiere la literatura, porque el gasto también responde durante varios periodos.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:multiplicadores-irf}): la respuesta del PIB a un aumento del gasto suele tener forma de joroba. El de impacto es el primer punto; el máximo, la cima; el acumulado compara las áreas bajo las 2 curvas. Es la medida que prefiere la literatura, porque el gasto también responde durante varios periodos.
 \end{itemize}
 
 \begin{figure}[H]
@@ -312,7 +343,7 @@ Control de la curva & no & no & no & 2016-2024\\
 
 \begin{itemize}
 \item Una vez definido el multiplicador, veamos qué valor le da cada escuela. Los modelos forman una secuencia: cada uno añade una pieza al anterior (las expectativas, la rigidez de los precios y la respuesta del banco central, la heterogeneidad de los hogares).
-\item \emph{Pegatina}: «todo es según el color del cristal con que se mira», como escribió \autor{Campoamor}. El valor del multiplicador depende del modelo con que se mire y, en la realidad, de las circunstancias (tabla~\ref{tab:multiplicador-modelos}).
+\item \emph{Dicho}: «todo es según el color del cristal con que se mira», como escribió \autor{Campoamor}. El valor del multiplicador depende del modelo con que se mire y, en la realidad, de las circunstancias (tabla~\ref{tab:multiplicador-modelos}).
 \end{itemize}
 
 \subsubsection{El multiplicador keynesiano}\label{sec:keynesiano}
@@ -335,11 +366,9 @@ Control de la curva & no & no & no & 2016-2024\\
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{Con el tipo de interés dado}, en la cruz keynesiana (fgráfico~\ref{fig:cruz-keynesiana}, la misma que en otro tema \vertema{3.A.4}), el gasto se multiplica por la suma de las rondas sucesivas de consumo, y cada ronda se filtra en impuestos, ahorro e importaciones:
-  \begin{equation}
-  \frac{\Delta Y^*}{\Delta\overline{G}}=\frac{1}{1-c\,(1-t)}\qquad\text{y, en economía abierta,}\qquad \frac{\Delta Y^*}{\Delta\overline{G}}=\frac{1}{1-c\,(1-t)+m}, \label{eq:multiplicador-abierta}
-  \end{equation}
-  con $m$ la propensión marginal a importar.
+\item \emph{Con el tipo de interés dado}, en la cruz keynesiana (gráfico~\ref{fig:cruz-keynesiana}, la misma que en otro tema \vertema{3.A.4}), el gasto se multiplica por la suma de las rondas sucesivas de consumo, y cada ronda se filtra en impuestos, ahorro e importaciones:
+  \funcionclave[eq:multiplicador-abierta]{\frac{\Delta Y^*}{\Delta\overline{G}}=\frac{1}{1-c\,(1-t)+m}>1}
+  con $m$ la propensión marginal a importar ($m=0$ en economía cerrada, y $1/(1-c)$ si además los impuestos son de cuantía fija).
 \end{itemize}
 
 \begin{figure}[H]
@@ -354,7 +383,7 @@ Control de la curva & no & no & no & 2016-2024\\
   \begin{equation}
   \frac{\partial Y^*}{\partial\overline{G}}=\frac{1}{1-c\,(1-t)+b\,k/h}<\frac{1}{1-c\,(1-t)}. \label{eq:multiplicador-islm}
   \end{equation}
-  Cuanto más plana la LM ($h$ grande) y más vertical la IS ($b$ pequeño), menor es la expulsión: de ahí el debate entre keynesianos y monetaristas, que va de una expulsión casi nula a una casi total (fgráfico~\ref{fig:islm-escuelas}, la misma que en otro tema \vertema{3.A.39}) \vertema{3.A.5}.
+  Cuanto más plana la LM ($h$ grande) y más vertical la IS ($b$ pequeño), menor es la expulsión: de ahí el debate entre keynesianos y monetaristas, que va de una expulsión casi nula a una casi total (gráfico~\ref{fig:islm-escuelas}, la misma que en otro tema \vertema{3.A.39}) \vertema{3.A.5}.
 \end{itemize}
 
 \begin{figure}[H]
@@ -369,7 +398,8 @@ Control de la curva & no & no & no & 2016-2024\\
 \begin{itemize}
 \item El multiplicador es mayor que 1, y mayor cuanto mayor la propensión a consumir y menores los impuestos, las importaciones y la expulsión.
 \item \emph{La política monetaria importa}: si el banco central mantiene el tipo de interés, la LM se desplaza con la IS y el multiplicador vuelve al de la cruz. Es la primera forma de la interrelación (\ref{sec:interrelacion}).
-\item \emph{La financiación importa}: con impuestos de cuantía fija, un gasto financiado con impuestos tiene un multiplicador de 1 en la cruz, el del \concepto{presupuesto equilibrado}\nocite{Haavelmo1945Multiplier}; financiado con deuda es mayor, porque no resta renta disponible.
+\item \emph{La financiación importa}: con impuestos de cuantía fija, un gasto financiado con impuestos tiene un multiplicador de 1 en la cruz, el del \concepto{presupuesto equilibrado}, «sea cual sea la propensión marginal a consumir»\nocite{Haavelmo1945Multiplier}; financiado con deuda es mayor, porque no resta renta disponible.
+\item \emph{Haavelmo exige que el tipo no se mueva}: en el modelo IS-LM, el multiplicador del presupuesto equilibrado es $(1-c)/(1-c+bk/h)<1$, porque la subida del tipo de interés también expulsa inversión; solo vale 1 con la LM horizontal, en la trampa de la liquidez.
 \end{itemize}
 
 \paragraph{c) Evidencia empírica}
@@ -404,6 +434,9 @@ Control de la curva & no & no & no & 2016-2024\\
 
 \begin{itemize}
 \item Un aumento del gasto obliga a pagar más impuestos, hoy o mañana: el hogar es más pobre. Ese \emph{efecto riqueza negativo} reduce el consumo y el ocio: el hogar trabaja más, el salario real baja y la producción sube.
+\item \emph{La versión estática más sencilla}\nocite{Woodford2011Simple}: el hogar obtiene utilidad del consumo, $u(C)$, y desutilidad de producir, $v(Y)$, con $C=Y-G$. En el óptimo, la utilidad marginal del consumo iguala la desutilidad marginal de producir, $u'(Y-G)=v'(Y)$, y diferenciando (anexo~\ref{anexo:derivacion-nek}):
+  \funcionclave[eq:multiplicador-neoclasico]{\frac{dY}{dG}=\Gamma\equiv\frac{\eta_u}{\eta_u+\eta_v}\in(0,1)}
+  donde $\eta_u$ y $\eta_v$ son las elasticidades (en valor absoluto) de la utilidad marginal del consumo y de la desutilidad marginal de producir. La producción sube, pero menos que el gasto, porque el consumo cae: el multiplicador es positivo y menor que 1.
 \item El efecto depende de la persistencia del gasto\nocite{BaxterKing1993Fiscal}:
   \begin{itemize}
   \item si es \emph{transitorio}, la riqueza apenas cambia: el multiplicador es positivo, pero pequeño y menor que 1, y el consumo y la inversión privada caen;
@@ -418,10 +451,17 @@ Control de la curva & no & no & no & 2016-2024\\
 \item Si el gasto es productivo (infraestructuras, educación), puede elevar la producción y el crecimiento a largo plazo\nocite{Barro1990} \vertema{3.A.38}.
 \end{itemize}
 
-\paragraph{c) Valoración}
+\paragraph{c) Evidencia empírica}
 
 \begin{itemize}
-\item En los datos, el consumo privado no cae con el gasto público: sube o se queda igual\nocite{BlanchardPerotti2002,GaliLopezSalidoValles2007}. Hacen falta precios rígidos y hogares que no puedan endeudarse, las 2 piezas que añaden los modelos siguientes.
+\item \emph{Calibrado}: en el modelo de \textcite{BaxterKing1993Fiscal}, con impuestos de cuantía fija, un aumento permanente del gasto tiene un multiplicador algo menor que 1 a corto plazo y en torno a 1,2 a largo plazo, porque estimula la acumulación de capital; financiado con impuestos distorsionantes, puede ser negativo\nocite{Ramey2011JEL}.
+\item \emph{En los datos}, en cambio, el consumo privado no cae con el gasto público: sube o se queda igual\nocite{BlanchardPerotti2002,GaliLopezSalidoValles2007}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item El modelo explica por qué el gasto puede subir la producción sin crear demanda, pero no reproduce la respuesta del consumo. Hacen falta precios rígidos y hogares que no puedan endeudarse, las 2 piezas que añaden los modelos siguientes.
 \end{itemize}
 
 \subsubsection{El modelo neokeynesiano: el multiplicador depende del banco central}\label{sec:neokeynesiano}
@@ -466,7 +506,23 @@ Control de la curva & no & no & no & 2016-2024\\
   \item con una \emph{regla de \autor{Taylor}} ($i_t=\rho+\phi_\pi\pi_t$, $\phi_\pi>1$), el banco central sube el tipo real y el multiplicador queda entre $\Gamma$ y 1: más bajo cuanto más agresiva la regla y más flexibles los precios. Con valores habituales y un gasto persistente, en torno a 0,87;
   \item con los tipos en el \emph{límite inferior}, el tipo nominal no sube, el gasto eleva la inflación esperada y \emph{baja} el tipo real: el multiplicador supera 1 (\ref{sec:multiplicador-elb}).
   \end{itemize}
+\item \emph{El resultado clave}: con la regla de \autor{Taylor} y un gasto que se mantiene cada periodo con probabilidad $\rho_g$, el multiplicador es una media ponderada de 1 y de $\Gamma$:
+  \funcionclave[eq:multiplicador-taylor]{m=\frac{1+\Omega\,\Gamma}{1+\Omega},\qquad \Omega\equiv\frac{\kappa\,(\phi_\pi-\rho_g)}{\theta\,(1-\rho_g)(1-\beta\rho_g)}>0}
+  Cuanto más agresiva la regla ($\phi_\pi$ mayor) y más flexibles los precios ($\kappa$ mayor), mayor es $\Omega$ y más se acerca el multiplicador al neoclásico, $\Gamma$, porque el banco central neutraliza el estímulo; con un banco central que no reacciona, $\Omega=0$ y el multiplicador es 1.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:multiplicador-respuesta-monetaria}): en el plano de la producción y el tipo real, el gasto desplaza la IS hacia la derecha en $\Delta g$:
+  \begin{itemize}
+  \item si el banco central mantiene el tipo real, el equilibrio pasa de $E_0$ a $E_1$ y la producción sube tanto como el desplazamiento: el multiplicador es 1;
+  \item con la regla de \autor{Taylor}, el tipo real sube con la producción, el equilibrio se queda en $E_1'$ y el avance es menor: el multiplicador es menor que 1;
+  \item en el límite inferior (panel b), el tipo real tiene un suelo, $i^{\mathrm{ELB}}-\pi^e$; el gasto sube la inflación esperada y \emph{baja} el suelo, y la producción avanza más que el desplazamiento: el multiplicador es mayor que 1 (\ref{sec:multiplicador-limite}).
+  \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El multiplicador del gasto según la respuesta del banco central}\label{fig:multiplicador-respuesta-monetaria}
+\grafico[0.95\textwidth]{multiplicador-respuesta-monetaria}
+\fuente{Elaboración propia a partir de \textcite{Woodford2011Simple}. a) Con el tipo real constante, $\Delta y=\Delta g$ ($m=1$); con una regla de \autor{Taylor} (MP), $\Delta y<\Delta g$ ($m<1$). b) En el límite inferior, el gasto sube la inflación esperada y baja el suelo del tipo real: $\Delta y>\Delta g$ ($m>1$); $A$ es donde llegaría la economía si el suelo no se moviera.}
+\end{figure}
 
 \subparagraph{iii) Implicaciones}
 
@@ -475,7 +531,13 @@ Control de la curva & no & no & no & 2016-2024\\
 \item Una rebaja de impuestos financiada con deuda sigue sin efecto si los hogares son ricardianos; el gasto sí mueve la demanda.
 \end{itemize}
 
-\paragraph{c) Valoración}
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item En modelos neokeynesianos estimados, con una regla de \autor{Taylor}, el multiplicador ronda 1: 1,05 en el modelo básico de \textcite{ChristianoEichenbaumRebelo2011}, que advierten de que con parámetros razonables es difícil que pase de 1,2.
+\end{itemize}
+
+\paragraph{d) Valoración}
 
 \begin{itemize}
 \item El modelo predice que el consumo cae cuando sube el gasto, salvo con un banco central muy acomodaticio; en los datos no cae. Falta una pieza: los hogares que no pueden ahorrar ni endeudarse.
@@ -483,11 +545,46 @@ Control de la curva & no & no & no & 2016-2024\\
 
 \subsubsection{Hogares que viven al día y agentes heterogéneos}\label{sec:hank}
 
+\paragraph{a) Idea}
+
 \begin{itemize}
-\item \emph{Idea}: muchos hogares no pueden endeudarse ni tienen ahorro líquido, y gastan lo que ingresan. \textcite{CampbellMankiw1989Consumption} estiman que en torno a la mitad de la renta va a hogares así \vertema{3.A.33}.
-\item \emph{Con 2 tipos de hogares}\nocite{GaliLopezSalidoValles2007}: una parte, de \emph{regla de pulgar}, consume su renta corriente; el resto es ricardiano. Con precios rígidos, el gasto eleva el empleo y el salario real, y el consumo de los primeros sube. El consumo agregado aumenta con el gasto, como en los datos, la equivalencia ricardiana deja de cumplirse y el multiplicador es mayor.
-\item \emph{Con agentes heterogéneos (modelos HANK)}: lo que importa es la propensión marginal a consumir de cada hogar y cómo se reparte en el tiempo. \textcite{AuclertRognlieStraub2024} generalizan la cruz keynesiana a muchos periodos, la \emph{cruz keynesiana intertemporal}: con las propensiones a consumir que se observan en los datos, un gasto financiado con deuda tiene un multiplicador acumulado mayor que 1. En estos modelos, la política fiscal y la monetaria se mezclan, porque las 2 actúan sobre la renta de los hogares\nocite{KaplanMollViolante2018Monetary} \vertema{3.A.37}.
-\item \emph{Implicación}: importa \emph{a quién} llega el dinero. Las transferencias a hogares con restricciones de liquidez multiplican mucho más que las generales: en los modelos de los bancos centrales, hasta 2 frente a 0,2-0,6\nocite{Coenen2012Multiplicadores,Ramey2019Ten}; y también viven al día muchos hogares con riqueza ilíquida, como la vivienda\nocite{KaplanViolante2014Model}.
+\item Muchos hogares no pueden endeudarse ni tienen ahorro líquido, y gastan lo que ingresan. Si es así, el gasto público que eleva su renta eleva también su consumo, y el multiplicador es mayor que en los modelos de agente representativo.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Con 2 tipos de hogares}\nocite{GaliLopezSalidoValles2007}: una fracción $\lambda$, de \emph{regla de pulgar} (\emph{rule of thumb}), consume su renta corriente; el resto es ricardiano y suaviza su consumo. Precios rígidos, como en el modelo neokeynesiano.
+\item \emph{Con agentes heterogéneos} (modelos neokeynesianos con agentes heterogéneos, \emph{heterogeneous agent New Keynesian}, HANK): muchos hogares, con riesgos de renta no asegurables y restricciones de liquidez, y cada uno con su propensión marginal a consumir.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Con 2 tipos de hogares}: el gasto eleva el empleo y el salario real, y el consumo de los hogares de regla de pulgar sube. Si su fracción supera aproximadamente una cuarta parte y los salarios no se fijan de forma competitiva, el consumo agregado \emph{aumenta} con el gasto, como en los datos, y la equivalencia ricardiana deja de cumplirse.
+\item \emph{Con agentes heterogéneos}: lo que importa es la propensión marginal a consumir de cada hogar y cómo se reparte en el tiempo. En estos modelos, la propensión trimestral media es del 15-20~\%, frente a menos del 1~\% del agente representativo, y el gasto financiado con deuda tiene efectos mucho mayores\nocite{KaplanViolante2018Microeconomic}. \textcite{AuclertRognlieStraub2024} lo resumen en la \emph{cruz keynesiana intertemporal}, que generaliza la cruz a muchos periodos: con las propensiones a consumir que se observan en los datos, un gasto financiado con deuda tiene un multiplicador acumulado mayor que 1.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Importa a quién llega el dinero}: las transferencias a hogares con restricciones de liquidez multiplican mucho más que las generales: en los modelos de los bancos centrales, hasta 2 frente a 0,2-0,6\nocite{Coenen2012Multiplicadores,Ramey2019Ten}.
+\item \emph{Importa cómo se financia}: con deuda, el gasto multiplica más que con impuestos, porque los hogares que viven al día no anticipan los impuestos futuros.
+\item \emph{La política fiscal y la monetaria se mezclan}, porque las 2 actúan sobre la renta de los hogares\nocite{KaplanMollViolante2018Monetary} \vertema{3.A.37}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{CampbellMankiw1989Consumption} estiman que en torno a la mitad de la renta va a hogares que consumen su renta corriente \vertema{3.A.33}, y también viven al día muchos hogares con riqueza ilíquida, como la vivienda\nocite{KaplanViolante2014Model}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Los modelos con hogares heterogéneos reproducen la respuesta del consumo que los anteriores no reproducían, pero su multiplicador depende de supuestos difíciles de medir: la distribución de la riqueza líquida, la financiación y, de nuevo, la respuesta del banco central.
 \end{itemize}
 
 \begin{table}[H]
@@ -523,12 +620,13 @@ Hogares que viven al día y HANK & propensiones a consumir; a quién llega el ga
 \subsubsection{El problema y los métodos}\label{sec:metodos}
 
 \begin{itemize}
-\item \emph{El problema}: el gasto y los impuestos responden al ciclo (los estabilizadores automáticos, los planes de estímulo en las recesiones), y los hogares conocen muchas medidas antes de que se apliquen. Comparar sin más el gasto y el PIB mezcla causa y efecto.
+\item \emph{El problema de identificación}: el gasto y los impuestos responden al ciclo (los estabilizadores automáticos, los planes de estímulo en las recesiones), igual que el banco central baja los tipos cuando la economía se debilita. Comparar sin más el gasto y el PIB mezcla el efecto de la política sobre la economía con el de la economía sobre la política.
+\item \emph{La anticipación}: un aumento del gasto se debate y se aprueba meses antes de ejecutarse; cuando aparece en los datos, los hogares ya han reaccionado. Los pronósticos profesionales y las series narrativas se adelantan a las perturbaciones de gasto que identifican los VAR\nocite{Ramey2011Timing}: por eso los VAR encontraban que el gasto subía el consumo y los salarios reales, y las series narrativas, lo contrario.
 \item \emph{Los métodos} (detalle en el anexo~\ref{anexo:metodos}):
   \begin{itemize}
   \item los \emph{vectores autorregresivos estructurales}: \textcite{BlanchardPerotti2002} suponen que el gasto no reacciona al PIB dentro del mismo trimestre (las decisiones tardan) y descuentan la respuesta automática de los impuestos;
   \item el \emph{método narrativo}: se buscan en los documentos cambios no motivados por el ciclo, como los cambios de impuestos por razones de largo plazo\nocite{RomerRomer2010Tax} o las noticias de gasto militar\nocite{Ramey2011Timing};
-  \item las \emph{proyecciones locales}, que estiman la respuesta a cada horizonte y permiten que dependa del estado de la economía\nocite{AuerbachGorodnichenko2012,RameyZubairy2018};
+  \item las \emph{proyecciones locales} (\emph{local projections}), que estiman la respuesta a cada horizonte y permiten que dependa del estado de la economía\nocite{AuerbachGorodnichenko2012,RameyZubairy2018};
   \item los \emph{multiplicadores locales}, que comparan regiones que reciben más o menos gasto federal\nocite{NakamuraSteinsson2014}: miden un multiplicador \emph{relativo}, con la misma política monetaria y los mismos impuestos para todos, que no es el nacional;
   \item los \emph{modelos estimados}, como los de los bancos centrales y el FMI\nocite{Coenen2012Multiplicadores}.
   \end{itemize}
@@ -538,7 +636,8 @@ Hogares que viven al día y HANK & propensiones a consumir; a quién llega el ga
 
 \begin{itemize}
 \item \emph{La cifra de síntesis}\nocite{Ramey2019Ten}: la mayoría de las estimaciones del multiplicador medio del gasto están entre \textbf{0,6 y 1}, y las de los cambios de impuestos, entre \textbf{2 y 3 en valor absoluto}; por encima de 1 solo salen con una política monetaria acomodaticia (tabla~\ref{tab:evidencia-multiplicadores}).
-\item Las 2 cifras no son incoherentes: el gasto que se estudia es en buena parte transitorio, mientras que los cambios de impuestos suelen ser permanentes y cambian los incentivos a trabajar e invertir.
+\item \emph{Las demás síntesis coinciden}: en Estados Unidos, la mayoría de las estimaciones del gasto están entre 0,6 y 1,5\nocite{Ramey2016Macroeconomic}; un metaanálisis de 104 estudios sitúa el multiplicador del gasto cerca de 1, el de la inversión pública algo por encima y el de los impuestos y las transferencias algo por debajo\nocite{Gechert2015What}.
+\item Las 2 cifras de \autor{Ramey} no son incoherentes: el gasto que se estudia es en buena parte transitorio, mientras que los cambios de impuestos suelen ser permanentes y cambian los incentivos a trabajar e invertir.
 \end{itemize}
 
 \begin{table}[H]
@@ -560,10 +659,16 @@ Con datos de Estados Unidos desde 1889 & \textcite{RameyZubairy2018} & menor que
 \hline
 Regiones de una unión monetaria & \textcite{NakamuraSteinsson2014} & en torno a 1,5 (relativo)\\
 \hline
-Modelos de bancos centrales & \textcite{Coenen2012Multiplicadores} & menor que 1; de 2 a 3 con tipos fijos 2 años\\
+Modelos de bancos centrales & \textcite{Coenen2012Multiplicadores} & 0,7 a 1; de 1,2 a 2,2 con 2 años de acomodación\\
+\hline
+Metaanálisis de 104 estudios & \textcite{Gechert2015What} & gasto, cerca de 1; inversión, algo más; impuestos y transferencias, algo menos\\
+\hline
+Japón, en el límite inferior & \textcite{MiyamotoNguyenSergeyev2018} & 1,5 en el impacto (0,6 fuera del límite)\\
+\hline
+España, en crisis y en calma & \textcite{HernandezDeCosMoralBenito2013} & 1,4 en crisis; 0,6 en calma\\
 \hline
 \end{tabular}
-\fuente{Elaboración propia a partir de \textcite[tablas~1 y 2]{Ramey2019Ten}, que recoge las cifras de cada estudio (multiplicadores acumulados; el de \autor{Blanchard} y \autor{Perotti}, actualizado con datos de 1947 a 2015).}
+\fuente{Elaboración propia a partir de \textcite[tablas~1 y 2]{Ramey2019Ten}, que recoge las cifras de cada estudio (multiplicadores acumulados; el de \autor{Blanchard} y \autor{Perotti}, actualizado con datos de 1947 a 2015); las 3 últimas filas, de cada estudio (en Japón, multiplicador de impacto).}
 \end{table}
 
 \subsubsection{Los determinantes del multiplicador}\label{sec:determinantes}
@@ -571,10 +676,11 @@ Modelos de bancos centrales & \textcite{Coenen2012Multiplicadores} & menor que 1
 \begin{itemize}
 \item La literatura coincide en qué lo hace mayor o menor, aunque discrepa en cuánto (tabla~\ref{tab:determinantes}). 3 resultados merecen detalle:
   \begin{itemize}
-  \item \emph{el estado del ciclo}: \textcite{AuerbachGorodnichenko2012} encuentran multiplicadores mucho mayores en las recesiones, pero el resultado es frágil: con un siglo de datos de Estados Unidos y el multiplicador acumulado, \textcite{RameyZubairy2018} no hallan esa diferencia;
-  \item \emph{la política monetaria}: es el determinante más sólido. Cuando acompaña, o con los tipos en el límite inferior, las estimaciones superan 1: hasta 1,5 en Estados Unidos y de 1,5 a 2,5 en Japón\nocite{Ramey2019Ten};
+  \item \emph{el estado del ciclo}: \textcite{AuerbachGorodnichenko2012} encuentran multiplicadores mucho mayores en las recesiones, pero el resultado es frágil: con un siglo de datos de Estados Unidos y el multiplicador acumulado, \textcite{RameyZubairy2018} no hallan esa diferencia. La discrepancia viene sobre todo de un supuesto: el multiplicador de las recesiones se calculaba como si la economía siguiera en recesión 5 años, cuando las recesiones duran unos pocos trimestres;
+  \item \emph{la política monetaria}: es el determinante más sólido. Cuando acompaña, o con los tipos en el límite inferior, las estimaciones superan 1: hasta 1,5 en Estados Unidos y de 1,5 a 2,5 en Japón\nocite{Ramey2019Ten}. En Japón, con los tipos cerca de cero desde finales de los 90, el multiplicador de impacto es de 1,5 en el límite, frente a 0,6 fuera de él\nocite{MiyamotoNguyenSergeyev2018};
   \item \emph{la apertura, el tipo de cambio y la deuda}: con tipo de cambio flexible el multiplicador es casi nulo, porque la moneda se aprecia y el banco central sube los tipos; con tipo fijo es positivo; en las economías muy abiertas, menor, y en los países con una deuda superior al 60~\% del PIB, nulo en el impacto y negativo a largo plazo\nocite{IlzetzkiMendozaVegh2013}.
   \end{itemize}
+\item \emph{En España}, con datos hasta la crisis de la deuda, el multiplicador del gasto es de 1,4 en tiempos de crisis y de 0,6 en tiempos tranquilos; la debilidad de las finanzas públicas lo reduce y puede hacerlo negativo\nocite{HernandezDeCosMoralBenito2013}.
 \end{itemize}
 
 \begin{table}[H]
@@ -609,9 +715,15 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 \begin{itemize}
 \item \emph{La pregunta}: entre 2010 y 2013 casi toda Europa consolidó sus cuentas a la vez, con los tipos cerca de su límite. ¿Fue mayor el coste en producción de lo que se esperaba?
 \item \emph{El método}\nocite{BlanchardLeigh2013Growth}: comparan, en 26 economías europeas, el error de previsión del crecimiento de 2010-2011 con la consolidación fiscal que se preveía en la primavera de 2010. Si las previsiones hubieran usado el multiplicador correcto, el error no tendría que depender de la consolidación.
-\item \emph{El resultado} (fgráfico~\ref{fig:blanchard-leigh}): la pendiente es de $-1{,}095$. Por cada punto del PIB de consolidación prevista, el crecimiento fue en torno a un punto menor de lo previsto: los multiplicadores, que las previsiones suponían en torno a 0,5, fueron casi un punto mayores, muy superiores a 1 al principio de la crisis. Es el \emph{mea culpa} del FMI del enganche: los multiplicadores observados estaban entre 0,9 y 1,7\nocite{FMI2012WEOoct}.
-\item \emph{Los efectos no keynesianos}, por los que una consolidación creíble podría ser expansiva porque mejora la confianza y baja los tipos, no aparecieron cuando más se necesitaban \vertema{3.A.39}.
+\item \emph{El resultado} (gráfico~\ref{fig:blanchard-leigh}): la pendiente es de $-1{,}095$. Por cada punto del PIB de consolidación prevista, el crecimiento fue en torno a un punto menor de lo previsto: los multiplicadores, que las previsiones suponían en torno a 0,5, fueron casi un punto mayores, muy superiores a 1 al principio de la crisis. Es el \emph{mea culpa} del FMI del enganche: los multiplicadores observados estaban entre 0,9 y 1,7\nocite{FMI2012WEOoct}.
+\item \emph{La austeridad expansiva no apareció}: la \concepto{austeridad expansiva} es la hipótesis de que una consolidación creíble puede elevar la producción incluso a corto plazo, porque mejora la confianza, rebaja los impuestos esperados y baja las primas de riesgo \vertema{3.A.39}:
+  \begin{itemize}
+  \item su origen son Dinamarca e Irlanda en los 80, pero esos ajustes vinieron precedidos de una devaluación y acompañados de una fuerte caída de los tipos\nocite{GiavazziPagano1990Can}, 2 condiciones que no tenía la zona del euro de 2010, con los tipos en el suelo y sin moneda propia;
+  \item medidas con el método narrativo, las consolidaciones son contractivas: la medida habitual, el saldo ajustado del ciclo, sesga los resultados hacia el efecto expansivo\nocite{GuajardoLeighPescatori2014};
+  \item importa la composición: los planes basados en subidas de impuestos son mucho más recesivos que los basados en recortes del gasto\nocite{AlesinaFaveroGiavazzi2019Austerity}, aunque el multiplicador de los recortes del gasto puede ser mayor que el de los aumentos\nocite{BarnichonDebortoliMatthes2022}.
+  \end{itemize}
 \item \emph{El matiz}: con otros datos, los multiplicadores de las consolidaciones europeas no fueron mayores que los normales; el error estaba sobre todo en lo bajos que eran los supuestos\nocite{Ramey2019Ten}. El ajuste se hizo, en cualquier caso, en el peor momento: con la política monetaria sin margen para compensarlo.
+\item \emph{¿Pudo la consolidación subir la deuda?} Para que la ratio de deuda fuera mayor al cabo de 5 años, el multiplicador tendría que ser claramente superior a 1, y cercano a 3 para que lo fuera a los 10 años; con multiplicadores de 0,8 a 1,3, el ajuste empeora la ratio al principio, pero la reduce en pocos años\nocite{WarmedingerEtAl2015}. Con algo de histéresis, en cambio, el daño en la producción persiste años y el ajuste pudo acabar subiendo la deuda\nocite{FatasSummers2018Permanent}.
 \end{itemize}
 
 \begin{figure}[H]
@@ -637,8 +749,10 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 % --------------------------------------------------------------------------
 \subsection{El marco: combinación de políticas y dominación}\label{sec:policy-mix}
 
+\subsubsection{La combinación de políticas}\label{sec:cuadrantes}
+
 \begin{itemize}
-\item \emph{Los 4 cuadrantes}: con el tono de cada política definido en la introducción (el monetario por $r_t$ frente a $r^n$; el fiscal por el impulso, $-\Delta b^{pe}$), hay 4 combinaciones (fgráfico~\ref{fig:policy-mix}):
+\item \emph{Los 4 cuadrantes}: con el tono de cada política definido en la introducción (el monetario por $r_t$ frente a $r^n$; el fiscal por el impulso, $-\Delta b^{pe}$), hay 4 combinaciones (gráfico~\ref{fig:policy-mix}):
   \begin{itemize}
   \item \emph{las 2 expansivas}: en una recesión con inflación baja, como en 2009 y en 2020;
   \item \emph{las 2 contractivas}: con la economía sobrecalentada y la inflación alta, como en 2022-2023;
@@ -646,22 +760,89 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
   \item \emph{fiscal contractiva y monetaria expansiva}: la combinación clásica para consolidar con deuda alta sin hundir la demanda, como en la zona del euro desde 2012.
   \end{itemize}
 \item \emph{Coherente no significa del mismo signo}: una combinación es coherente si cada política ayuda a los objetivos de la otra según la situación (inflación, brecha y deuda). En los datos, el giro fue rápido: según el FMI, en 2020 el 77~\% de las economías combinó políticas monetaria y fiscal expansivas; en 2021, el 62~\%, una monetaria expansiva con una fiscal contractiva, y en 2022 el 74~\% aplicó las 2 contractivas\nocite{FMI2023FiscalMonitor}.
-\item \emph{Pegatina}: «juntos, pero no revueltos». Las 2 políticas deben ir en la misma dirección cuando la economía lo pide, pero cada una con su mandato y su responsable.
+\item \emph{Dicho}: «juntos, pero no revueltos». Las 2 políticas deben ir en la misma dirección cuando la economía lo pide, pero cada una con su mandato y su responsable.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \caption{La combinación de políticas (\emph{policy mix}): los 4 cuadrantes}\label{fig:policy-mix}
 \grafico[0.6\textwidth]{policy-mix}
-\fuente{Elaboración propia, adaptado del gráfico de la guía del dictamen. Ambas expansivas: 2009 y 2020; ambas contractivas: 2022-2023; fiscal expansiva y monetaria contractiva: Estados Unidos en los 80 y el Reino Unido en 2022; fiscal contractiva y monetaria expansiva: la zona del euro desde 2012. Coherente no significa del mismo signo.}
+\fuente{Elaboración propia. Ambas expansivas: 2009 y 2020; ambas contractivas: 2022-2023; fiscal expansiva y monetaria contractiva: Estados Unidos en los 80 y el Reino Unido en 2022; fiscal contractiva y monetaria expansiva: la zona del euro desde 2012. Coherente no significa del mismo signo.}
 \end{figure}
 
+\subsubsection{Dominación monetaria y dominación fiscal}\label{sec:dominacion}
+
+\paragraph{a) Idea}
+
 \begin{itemize}
-\item \emph{¿Quién cierra la restricción?} La restricción intertemporal del sector público tiene que cumplirse, y alguien tiene que ajustarse\nocite{SargentWallace1981Some,Leeper1991} \vertema{3.A.39}:
+\item Las 2 políticas comparten una restricción: el Tesoro emite la deuda y el banco central fija su coste y puede comprarla. La pregunta clásica es \emph{quién manda}: quién se ajusta para que la deuda se pague\nocite{SargentWallace1981Some,Leeper1991} \vertema{3.A.39}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Cada autoridad puede ser \emph{activa}, si fija su instrumento sin mirar la deuda, o \emph{pasiva}, si se ajusta a lo que decide la otra y a la deuda heredada\nocite{Leeper1991}:
   \begin{itemize}
-  \item con \concepto{dominación monetaria}, el banco central persigue la inflación sin mirar la deuda (política monetaria \emph{activa}) y la fiscal ajusta los superávits para estabilizarla (\emph{pasiva}): es el régimen de la Gran Moderación;
-  \item con \concepto{dominación fiscal}, los superávits están dados (política fiscal activa) y es la monetaria la que se ajusta: con señoreaje, como en la \emph{aritmética monetarista desagradable} de \textcite{SargentWallace1981Some}, o dejando que el nivel de precios reduzca el valor real de la deuda, como en la \emph{teoría fiscal del nivel de precios}. No es una defensa de la dominación fiscal, sino un argumento a favor de la disciplina fiscal.
+  \item la \emph{monetaria} es activa si sube el tipo más que la inflación (el principio de \autor{Taylor});
+  \item la \emph{fiscal} es pasiva si sube los superávits lo bastante para pagar al menos los intereses de la deuda adicional.
   \end{itemize}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La condición de equilibrio}: el valor real de la deuda nominal heredada, $B_{t-1}$, tiene que igualar el valor actual de los superávits primarios reales futuros, $s_{t+j}$, que la respaldan\nocite{LeeperLeith2016Understanding}:
+  \funcionclave[eq:valoracion-deuda]{\frac{B_{t-1}}{P_t}=\mathbb{E}_t\sum_{j=0}^{\infty}\beta^{j}\,s_{t+j}}
+  Si la autoridad fiscal no ajusta los superávits, la igualdad solo puede cumplirse si se ajusta el nivel de precios, $P_t$ (anexo~\ref{anexo:leeper}).
+\item \emph{Los 4 regímenes} (tabla~\ref{tab:regimenes}): solo dan un equilibrio único los que combinan una autoridad activa y otra pasiva:
+  \begin{itemize}
+  \item con \concepto{dominación monetaria} (\emph{monetary dominance}), el banco central fija la inflación y los superávits estabilizan la deuda: es el régimen de la Gran Moderación;
+  \item con \concepto{dominación fiscal} (\emph{fiscal dominance}), los superávits están dados y se ajusta la política monetaria: con señoreaje, como en la \emph{aritmética monetarista desagradable} de \textcite{SargentWallace1981Some}, o con el nivel de precios, que reduce el valor real de la deuda hasta el respaldo fiscal esperado, como en la \emph{teoría fiscal del nivel de precios} (\emph{fiscal theory of the price level}).
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Regímenes de política según \autor{Leeper} (1991)}\label{tab:regimenes}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{3.0cm}|>{\centering\arraybackslash}m{5.4cm}|>{\centering\arraybackslash}m{5.4cm}|}
+\hhline{~|-|-|}
+\rowcolor{tceeazulpalido} & \textbf{Política fiscal pasiva}\newline (ajusta los superávits) & \textbf{Política fiscal activa}\newline (superávits exógenos)\\
+\hline
+\textbf{Política monetaria activa}\newline (principio de \autor{Taylor}) & \cellcolor{tceesalvia}\textcolor{tceeverde}{\textbf{Dominación monetaria}}\newline el banco central fija la inflación y los superávits estabilizan la deuda & \textcolor{tceerojo}{Sin equilibrio estable}\newline nadie cede y la deuda es explosiva\\
+\hline
+\textbf{Política monetaria pasiva}\newline (acomoda) & \textcolor{tceedorado}{Indeterminación}\newline equilibrios múltiples del nivel de precios & \cellcolor{tceesalmon}\textcolor{tceeazul}{\textbf{Dominación fiscal}}\newline el nivel de precios se ajusta para respaldar la deuda\\
+\hline
+\end{tabular}
+\fuente{Elaboración propia a partir de \textcite{Leeper1991} y \textcite{LeeperLeith2016Understanding}.}
+\end{table}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El multiplicador depende del régimen}: con dominación monetaria, el gasto anuncia impuestos futuros y el banco central sube el tipo real; con dominación fiscal, el gasto no se respalda con impuestos, sube la inflación, baja el tipo real y estimula el consumo, y el multiplicador es mayor (\ref{sec:multiplicador-elb}).
+\item \emph{La inflación puede ser un fenómeno fiscal}: la noticia de menores superávits futuros sube el nivel de precios, aunque el banco central no cree dinero.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{La financiación monetaria del déficit} (el «dinero helicóptero», \emph{helicopter money}), un gasto o una rebaja de impuestos financiados de forma permanente con dinero, es la forma extrema de coordinación: con precios rígidos estimula con eficacia\nocite{Gali2020Effects}, pero rompe la independencia del banco central y en la Unión Europea la prohíbe el artículo 123 del Tratado de Funcionamiento de la Unión Europea \vertema{3.B.43}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Con reglas estimadas para Estados Unidos, el multiplicador en valor actual de la ARRA sería de unos 0,68 con dominación monetaria y de más de 3 con dominación fiscal\nocite{DavigLeeper2011Monetary}; el régimen de las políticas explica buena parte de las diferencias entre estimaciones del multiplicador\nocite{LeeperTraumWalker2017}, y la inflación de 2021-2022 se explica en parte por un gasto que el público no esperaba ver pagado con superávits futuros\nocite{BianchiFacciniMelosi2023} (\ref{sec:fase-inflacion}).
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item La aritmética de \autor{Sargent} y \autor{Wallace} no defiende la dominación fiscal: es un argumento a favor de la disciplina fiscal.
+\item Funciona también al revés, la «aritmética fiscal desagradable»: una desinflación aún poco creíble sube el tipo real de la deuda nominal durante la transición y obliga a subir el superávit primario; con una deuda del 50~\% del PIB y una inflación que baja del 6 al 2~\%, al menos 2 puntos del PIB\nocite{King1995Commentary}.
 \item De este marco salen las 2 preguntas que quedan: cuánto multiplica el gasto según el régimen monetario (\ref{sec:multiplicador-elb}) y cómo se han combinado las políticas desde 2008 (\ref{sec:experiencia}).
 \end{itemize}
 
@@ -679,14 +860,36 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 
 \subsubsection{El multiplicador en el límite inferior}\label{sec:multiplicador-limite}
 
+\paragraph{a) Idea}
+
 \begin{itemize}
-\item \emph{El supuesto}: una perturbación de demanda lleva el tipo natural por debajo del límite; el banco central deja el tipo nominal en su límite mientras dura la crisis, que continúa cada periodo con probabilidad $\rho_L$, y el gasto público dura lo mismo que la crisis.\footnote{$\rho_L$ es local: la probabilidad de que el episodio de tipos en el límite continúe el periodo siguiente; su duración esperada es $1/(1-\rho_L)$ periodos.}
-\item \emph{El mecanismo}: el gasto eleva la producción y la inflación \emph{esperada}; como el tipo nominal no sube, el tipo real \emph{baja}, y el consumo sube en lugar de caer. Con las ecuaciones del modelo canónico (derivación en el anexo~\ref{anexo:derivacion-nek}):
-  \begin{equation}
-  m^{\mathrm{ELB}}=\frac{(1-\rho_L)(1-\beta\rho_L)-\rho_L\,\kappa\,\Gamma/\theta}{(1-\rho_L)(1-\beta\rho_L)-\rho_L\,\kappa/\theta}>1, \label{eq:multiplicador-elb}
-  \end{equation}
-  mayor cuanto más dura el episodio y más flexibles son los precios. Con $\beta=0{,}99$, $\theta=\varphi=1$ ($\Gamma=0{,}5$) y $\kappa=0{,}02$, es 1 si el episodio dura un periodo, 1,31 si dura en promedio 5 trimestres ($\rho_L=0{,}8$) y 2,25 si dura en promedio 6,7 ($\rho_L=0{,}85$); con la regla de \autor{Taylor} y la misma persistencia del gasto, 0,87 (fgráfico~\ref{fig:multiplicador-politica-monetaria}).
-\item \emph{Interpretación gráfica} (fgráfico~\ref{fig:nek-limite-inferior}): en el plano de la brecha y la inflación, la demanda agregada tiene un codo. Por encima, el banco central sigue la regla y la demanda es decreciente; por debajo, con el tipo en su límite, es creciente, porque más inflación esperada baja el tipo real. En esa rama, el mismo desplazamiento de la demanda por el gasto mueve la producción \emph{más} que el desplazamiento: el multiplicador es mayor que 1; en la rama de \autor{Taylor}, menos.
+\item ¿Qué pasa cuando el banco central no puede bajar más los tipos, como le ocurrió a la Reserva Federal de 2008 a 2015? El gasto ya no se encuentra con un banco central que lo neutraliza, sino con uno que no puede moverse: es el caso en que la teoría da multiplicadores mayores y la razón de los estímulos de 2009 y 2020.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Las ecuaciones del modelo neokeynesiano canónico (\ref{sec:neokeynesiano}).
+\item Una perturbación de demanda lleva el tipo natural por debajo del límite; el banco central deja el tipo nominal en su límite mientras dura la crisis, que continúa cada periodo con probabilidad $\rho_L$.\footnote{$\rho_L$ es local: la probabilidad de que el episodio de tipos en el límite continúe el periodo siguiente; su duración esperada es $1/(1-\rho_L)$ periodos.}
+\item El gasto público dura lo mismo que la crisis.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{El mecanismo}: el gasto eleva la producción y la inflación \emph{esperada}; como el tipo nominal no sube, el tipo real \emph{baja}, y el consumo sube en lugar de caer.
+\item \emph{El resultado clave} (derivación en el anexo~\ref{anexo:derivacion-nek}):
+  \funcionclave[eq:multiplicador-elb]{m^{\mathrm{ELB}}=\frac{(1-\rho_L)(1-\beta\rho_L)-\rho_L\,\kappa\,\Gamma/\theta}{(1-\rho_L)(1-\beta\rho_L)-\rho_L\,\kappa/\theta}>1}
+  Como $\Gamma<1$, el numerador supera al denominador, que tiene que ser positivo para que el equilibrio esté acotado: el multiplicador es mayor que 1, y mayor cuanto más dura el episodio y más flexibles son los precios.
+\item \emph{Un ejemplo numérico}: con $\beta=0{,}99$, $\theta=\varphi=1$ ($\Gamma=0{,}5$) y $\kappa=0{,}02$, es 1 si el episodio dura un periodo, 1,31 si dura en promedio 5 trimestres ($\rho_L=0{,}8$) y 2,25 si dura en promedio 6,7 ($\rho_L=0{,}85$); con la regla de \autor{Taylor} y la misma persistencia del gasto, 0,87 (gráfico~\ref{fig:multiplicador-politica-monetaria}).
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:nek-limite-inferior}): en el plano de la brecha y la inflación, la demanda agregada tiene un codo:
+  \begin{itemize}
+  \item por encima del codo, el banco central sigue la regla y la demanda es decreciente;
+  \item por debajo, con el tipo en su límite, es creciente, porque más inflación esperada baja el tipo real;
+  \item en esa rama, el mismo desplazamiento de la demanda por el gasto mueve la producción \emph{más} que el desplazamiento: el multiplicador es mayor que 1; en la rama de \autor{Taylor}, menos.
+  \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
@@ -703,26 +906,36 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 \fuente{Elaboración propia a partir de \textcite{Woodford2011Simple}, con $\beta=0{,}99$, $\theta=\varphi=1$ ($\Gamma=0{,}5$), $\kappa=0{,}02$ y $\phi_\pi=1{,}5$. En el eje horizontal, la persistencia del gasto (con la regla de \autor{Taylor}) o del episodio de tipos en el límite ($\rho_L$): 1,31 con $\rho_L=0{,}8$ (5 trimestres en promedio) y 2,25 con $\rho_L=0{,}85$ (6,7).}
 \end{figure}
 
+\subparagraph{iii) Implicaciones}
+
 \begin{itemize}
-\item \emph{Implicaciones}:
-  \begin{itemize}
-  \item en el límite inferior el gasto puede multiplicar por 2 o 3: es el orden de magnitud de \textcite{ChristianoEichenbaumRebelo2011} y de los modelos de los bancos centrales cuando los tipos están fijos lo bastante\nocite{Coenen2012Multiplicadores,Ramey2019Ten};
-  \item lo que funciona es el gasto, no las rebajas de los impuestos sobre el trabajo, que bajan los costes y los precios, suben el tipo real y pueden ser contractivas\nocite{Eggertsson2011Fiscal};
-  \item es la razón teórica de los estímulos de 2009 y 2020 (\ref{sec:experiencia}).
-  \end{itemize}
-\item \emph{Valoración}:
-  \begin{itemize}
-  \item el resultado es tan fuerte que conviene desconfiar de su forma extrema: si el episodio dura mucho, el denominador de~\eqref{eq:multiplicador-elb} se acerca a cero y el multiplicador se dispara; es el mismo problema que la paradoja de la orientación (\emph{forward guidance puzzle}) \vertema{3.A.37};
-  \item el gasto tiene que llegar \emph{mientras} dura el límite: si llega tarde, cuando el banco central ya sube los tipos, el multiplicador vuelve a ser bajo\nocite{ChristianoEichenbaumRebelo2011};
-  \item y el límite tiene que apretar de verdad: en Estados Unidos los tipos a 1 y 2 años siguieron respondiendo a las noticias entre 2008 y 2010, gracias a la orientación de la Reserva Federal\nocite{SwansonWilliams2014}.
-  \end{itemize}
+\item \emph{El estímulo tiene que ser temporal}: si el gasto sigue después de salir del límite, el banco central lo neutraliza entonces, y esa expectativa reduce el multiplicador incluso durante la crisis; con un gasto que probablemente siga, puede quedar por debajo de 1\nocite{Woodford2011Simple}.
+\item \emph{No todo instrumento sirve}: una rebaja de los impuestos sobre el trabajo, expansiva en tiempos normales, se vuelve contractiva en el límite, porque abarata la producción, alimenta la deflación y sube el tipo real: es la \concepto{paradoja del esfuerzo} (\emph{paradox of toil})\nocite{Eggertsson2010Paradox}. En un modelo calibrado, el multiplicador del gasto pasa de 0,48 en tiempos normales a 2,3 en el límite, y el de esa rebaja, de 0,16 a $-1$\nocite{Eggertsson2011Fiscal}.
+\item Es la razón teórica de los estímulos de 2009 y 2020 (\ref{sec:experiencia}).
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{En los modelos}: con la calibración que reproduce la Gran Depresión, la ecuación~\eqref{eq:multiplicador-elb} da 2,3, ya cerca del valor de $\rho_L$ que anula el denominador\nocite{Woodford2011Simple}; \textcite{ChristianoEichenbaumRebelo2011} llegan a 3,7 en un modelo sin capital, unas 3 veces el multiplicador normal, y los modelos de los bancos centrales dan de 2 a 3 cuando los tipos están fijos lo bastante\nocite{Coenen2012Multiplicadores,Ramey2019Ten}.
+\item \emph{En los datos}: con datos históricos de Estados Unidos, en torno a 1,5, y en Japón, de 1,5 en el impacto a más de 2 después\nocite{Ramey2019Ten,MiyamotoNguyenSergeyev2018}: la evidencia a favor de la teoría es algo más sólida que la del estado del ciclo.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item El resultado es tan fuerte que conviene desconfiar de su forma extrema: si el episodio dura mucho, el denominador de~\eqref{eq:multiplicador-elb} se acerca a cero y el multiplicador se dispara; es el mismo problema que la paradoja de la orientación (\emph{forward guidance puzzle}) \vertema{3.A.37}.
+\item El gasto tiene que llegar \emph{mientras} dura el límite: si llega tarde, cuando el banco central ya sube los tipos, el multiplicador vuelve a ser bajo\nocite{ChristianoEichenbaumRebelo2011}.
+\item Y el límite tiene que apretar de verdad: en Estados Unidos los tipos a 1 y 2 años siguieron respondiendo a las noticias entre 2008 y 2010, gracias a la orientación de la Reserva Federal\nocite{SwansonWilliams2014}.
 \end{itemize}
 
 \subsubsection{En una unión monetaria}\label{sec:union-monetaria}
 
 \begin{itemize}
 \item El banco central común no responde al gasto de una región, que es pequeña en el conjunto: es como si los tipos estuvieran fijos para ella. Por eso el multiplicador \emph{relativo} de una región es alto: en torno a 1,5 entre los estados de Estados Unidos, con el gasto militar federal\nocite{NakamuraSteinsson2014}. No es el multiplicador nacional, pero distingue modelos: los de precios flexibles no lo generan y los neokeynesianos sí; \textcite{FarhiWerning2016} muestran cuándo es mayor o menor que el nacional.
+\item \emph{Una unión monetaria no es el límite inferior}: la subida de precios del país que gasta es transitoria y tendrá que deshacerse después, de modo que su tipo real a largo plazo no baja, sino que sube algo, y su consumo cae\nocite{NakamuraSteinsson2014}. Por eso el multiplicador de un país de la unión es mucho menor que el del límite inferior.
 \item Para un país de la zona del euro, la política fiscal es el único instrumento propio frente a perturbaciones propias \vertema{3.B.16}. Pero sin tipo de cambio y con deuda alta, su margen depende de la prima de riesgo, y el multiplicador de un país muy endeudado puede ser nulo (\ref{sec:determinantes}).
+\item \emph{El bucle diabólico entre bancos y soberanos} (\emph{doom loop}): en la periferia del euro, la caída del valor de la deuda pública en manos de los bancos nacionales redujo su solvencia y su crédito; la probabilidad de que el Estado tuviera que rescatarlos empeoró a su vez la del soberano, y la recesión por la falta de crédito bajó la recaudación\nocite{BrunnermeierEtAl2016Diabolic}. Romperlo exige que los bancos diversifiquen su deuda soberana o un activo seguro europeo \vertema{3.B.43}.
 \end{itemize}
 
 \subsubsection{La otra dirección: la política fiscal y la eficacia de la monetaria}\label{sec:otra-direccion}
@@ -740,8 +953,21 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 \subsection{La experiencia de las principales economías, por fases}\label{sec:experiencia}
 
 \begin{itemize}
-\item Con el marco y los multiplicadores, recorremos lo ocurrido en Estados Unidos, la zona del euro, el Reino Unido y Japón en 5 fases (la cronología detallada, en el anexo~\ref{anexo:cronologia}; el impulso fiscal y el diferencial entre el tipo de interés y el crecimiento, en la fgráfico~\ref{fig:impulso-fiscal-r-menos-g}).
+\item Con el marco y los multiplicadores, recorremos lo ocurrido en Estados Unidos, la zona del euro, el Reino Unido y Japón en 5 fases (gráfico~\ref{fig:cronologia-politicas}; la cronología por economías, en el anexo~\ref{anexo:cronologia}; el impulso fiscal y el diferencial entre el tipo de interés y el crecimiento, en el gráfico~\ref{fig:impulso-fiscal-r-menos-g}):
+  \begin{itemize}
+  \item en 2008-2009 las 2 políticas fueron en la misma dirección: tipos en el suelo, primeras compras de activos y planes de estímulo;
+  \item de 2010 a 2014 se separaron: la monetaria, cada vez más expansiva, y la fiscal, consolidando, sobre todo en Europa;
+  \item en 2020 volvieron a coincidir, con una intensidad sin precedentes;
+  \item desde 2022 la monetaria se endureció contra la inflación, y la fiscal se reordenó con reglas nuevas, más gasto en defensa y el final de los fondos europeos de recuperación.
+  \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Las políticas monetaria y fiscal en las 4 grandes economías, 2008-2026}\label{fig:cronologia-politicas}
+\grafico[\textwidth]{cronologia-politicas}
+\fuente{Elaboración propia a partir de las fuentes de los bancos centrales, la Comisión Europea y los Gobiernos citadas en este apartado y en el anexo~\ref{anexo:cronologia}.}
+\end{figure}
 
 \subsubsection{2008-2009: estímulo coordinado}\label{sec:fase-estimulo}
 
@@ -751,6 +977,7 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
   \begin{itemize}
   \item Estados Unidos aprobó en febrero de 2009 la Ley de Recuperación y Reinversión (ARRA), que costó unos 831.000 millones de dólares en 2009-2019\nocite{CBO2012ARRA};
   \item la Unión Europea, en noviembre de 2008, un Plan Europeo de Recuperación de 200.000 millones de euros, el 1,5~\% de su PIB\nocite{CE2008PERE};
+  \item la cumbre del G-20 de Londres, en abril de 2009, cifró la expansión fiscal conjunta en 5 billones de dólares hasta finales de 2010, con un aumento esperado de la producción del 4~\%, contando medidas ya en marcha\nocite{G202009Londres};
   \item en 2009 las 4 economías dieron un impulso fiscal de más de un punto del PIB potencial: 2,3 puntos Estados Unidos, 1,4 la zona del euro, 2,3 el Reino Unido y 2,4 Japón\nocite{FMI2026FMdatos}.
   \end{itemize}
 \item \emph{Lectura}: el cuadrante de las 2 expansivas, con los tipos en el límite: el caso en que la teoría da multiplicadores mayores (\ref{sec:multiplicador-limite}). Las comparaciones entre estados de los fondos de la ARRA dan multiplicadores relativos en torno a 2, que no son el nacional\nocite{ChodorowReich2019Geographic}.
@@ -759,11 +986,11 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 \subsubsection{2010-2014: austeridad y crisis del euro}\label{sec:fase-austeridad}
 
 \begin{itemize}
-\item \emph{Fiscal}: con la crisis griega, el G-20 se comprometió en Toronto, en junio de 2010, a reducir al menos a la mitad los déficits de las economías avanzadas antes de 2013\nocite{G202010Toronto}. La zona del euro retiró casi 4 puntos de impulso fiscal entre 2011 y 2013\nocite{FMI2026FMdatos} y endureció sus reglas fiscales \vertema{3.B.45}; Estados Unidos retiró impulso fiscal todos los años de 2011 a 2013, en torno a 2 puntos al año según el FMI, y el Reino Unido consolidó en 2011 y en 2013, con una pausa en 2012\nocite{FMI2026FMdatos,OCDE2026EOsaldos}.
+\item \emph{Fiscal}: con la crisis griega, el G-20 se comprometió en Toronto, en junio de 2010, a reducir al menos a la mitad los déficits de las economías avanzadas antes de 2013\nocite{G202010Toronto}. La zona del euro retiró casi 4 puntos de impulso fiscal entre 2011 y 2013\nocite{FMI2026FMdatos} y endureció sus reglas fiscales: el paquete de 6 medidas (\emph{Six-Pack}), en vigor desde diciembre de 2011, y el Tratado de Estabilidad, Coordinación y Gobernanza (TECG), firmado en marzo de 2012, que exige un déficit estructural no superior al 0,5~\% del PIB \vertema{3.B.45}; en el Reino Unido, el presupuesto de junio de 2010 añadió un ajuste de 40.000 millones de libras al año hasta 2014-2015, el 80~\% con recortes del gasto, y subió el IVA al 20~\%\nocite{HMT2010Budget}; Estados Unidos retiró impulso fiscal todos los años de 2011 a 2013, en torno a 2 puntos al año según el FMI, y el Reino Unido consolidó en 2011 y en 2013, con una pausa en 2012\nocite{FMI2026FMdatos,OCDE2026EOsaldos}.
 \item \emph{Monetaria}: el BCE subió los tipos 2 veces en 2011, en plena crisis de deuda\nocite{BCE2026Tipos}; la Reserva Federal y el Banco de Inglaterra siguieron comprando bonos.
 \item \emph{El error de los multiplicadores}: es el periodo de \autor{Blanchard} y \autor{Leigh} (\ref{sec:blanchard-leigh}). Se consolidó con los tipos en el límite y el banco central no podía compensar el ajuste: el cuadrante en el que el multiplicador es mayor. Fue el caso de España \vertema{4.B.26}.
 \item \emph{El giro}: el 26 de julio de 2012 \autor{Draghi} dijo que el BCE haría «lo que sea necesario» para preservar el euro\nocite{Draghi2012Speech}; el 2 de agosto anunció las operaciones monetarias de compraventa (OMT), compras de deuda sin límite previo de los países con un programa de ajuste, y el 6 de septiembre fijó sus condiciones\nocite{BCE2012OMTanuncio,BCE2012OMT}. Las primas de riesgo bajaron sin que se activaran nunca: la política monetaria respaldaba a la fiscal a cambio de condiciones. Es el cuadrante de la consolidación con política monetaria expansiva, y empieza a ser «juntos, pero no revueltos» \vertema{3.B.43}.
-\item \emph{Japón}: en 2013 la «abenomía» combinó la expansión cuantitativa y cualitativa\nocite{BoJ2013QQE} con estímulo fiscal, pero la subida del impuesto sobre el consumo de 2014, hasta el 8~\% (en 2019 pasó al 10~\%)\nocite{NTA2026Consumo}, frenó la recuperación: una combinación tensionada.
+\item \emph{Japón}: en enero de 2013 el Gobierno y el banco central firmaron una declaración conjunta para superar la deflación, dentro de las 3 flechas de la «abenomía» (política monetaria agresiva, política fiscal flexible y reformas); en abril llegó la expansión cuantitativa y cualitativa, con el objetivo de una inflación del 2~\% en unos 2 años\nocite{BoJ2013QQE}, pero la subida del impuesto sobre el consumo de 2014, hasta el 8~\% (en 2019 pasó al 10~\%)\nocite{NTA2026Consumo}, frenó la recuperación: una combinación tensionada.
 \end{itemize}
 
 \subsubsection{2015-2019: tipos bajos y \texorpdfstring{$r<\gamma_Y$}{r < gamma}}\label{sec:fase-tipos-bajos}
@@ -789,8 +1016,8 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 \item \emph{Monetaria}: los tipos volvieron al límite y las compras fueron masivas: la Reserva Federal anunció compras «en las cantidades necesarias»\nocite{Fed2020Compras}; el BCE, el programa de emergencia frente a la pandemia (PEPP), de hasta 1,85 billones de euros\nocite{BCE2026PEPP}; el Banco de Inglaterra bajó el tipo al 0,1~\% y amplió sus compras, y el Banco de Japón también compró más.
 \item \emph{Fiscal}:
   \begin{itemize}
-  \item en Estados Unidos, la ley CARES de marzo de 2020 aumentó el déficit en unos 1,7 billones de dólares\nocite{CBO2020CARES}, y el Plan de Rescate de marzo de 2021 añadió otro estímulo;
-  \item en Europa, se suspendieron las reglas fiscales; el instrumento SURE prestó 98.400 millones de euros, financiados con bonos sociales de la Unión, para sostener los expedientes de regulación temporal de empleo y sus equivalentes\nocite{CE2026SURE}, y \emph{Next Generation EU} podía llegar a 806.900 millones de euros, la primera deuda común a gran escala\nocite{CE2026NGEU} \vertema{3.B.45};
+  \item en Estados Unidos, la ley CARES de marzo de 2020 aumentó el déficit en unos 1,7 billones de dólares\nocite{CBO2020CARES}, la ley de diciembre de 2020 añadió unos 900.000 millones, y el Plan de Rescate de marzo de 2021, 1,9 billones; las medidas de gasto e ingresos de Estados Unidos sumaron el 25,5~\% del PIB de 2020, frente a solo el 2,4~\% en préstamos y avales, mientras que en Europa pesaron más los avales y la liquidez\nocite{FMI2021FMdatabase};
+  \item en Europa, se suspendieron las reglas fiscales; el instrumento SURE prestó 98.400 millones de euros, financiados con bonos sociales de la Unión, para sostener los expedientes de regulación temporal de empleo y sus equivalentes\nocite{CE2026SURE}, y \emph{Next Generation EU}, acordado en julio de 2020, podía llegar a 806.900 millones de euros corrientes (750.000 millones a precios de 2018: 390.000 en transferencias y 360.000 en préstamos), la primera deuda común a gran escala\nocite{CE2026NGEU} \vertema{3.B.45};
   \item en 2020 el impulso fiscal fue de 5,0 puntos en Estados Unidos, 3,4 en la zona del euro, 8,2 en el Reino Unido y 4,9 en Japón\nocite{FMI2026FMdatos}: el cuadrante de las 2 expansivas, el de 3 de cada 4 economías del mundo (\ref{sec:policy-mix}).
   \end{itemize}
 \item \emph{Por qué así}: la Covid fue una perturbación de oferta en unos sectores que se convirtió en una caída de demanda en el conjunto, una \emph{perturbación de oferta keynesiana}: con sectores cerrados, el gasto genérico multiplica poco, y lo eficaz son los seguros a las rentas de los trabajadores y a la liquidez de las empresas\nocite{GuerrieriEtAl2022}. Un año después de una crisis sanitaria, el multiplicador acumulado es el doble que en tiempos normales, sobre todo en las economías avanzadas\nocite{KindaLengyelChahande2022}.
@@ -801,14 +1028,17 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
 
 \begin{itemize}
 \item \emph{El estímulo de más}: en febrero de 2021, \autor{Summers} y \autor{Blanchard} advirtieron de que el Plan de Rescate, mucho mayor que la brecha de producción, podía recalentar la economía\nocite{Summers2021Biden,Blanchard2021Defense}. La inflación llegó al 9,1~\% en Estados Unidos en junio de 2022\nocite{BLS2026IPC} y al 10,6~\% en la zona del euro en octubre\nocite{Eurostat2026IAPC}. Vino sobre todo de la energía, los alimentos y los cuellos de botella, y después de un mercado de trabajo muy tenso\nocite{BernankeBlanchard2025What}; para la teoría fiscal del nivel de precios, una parte se debió a un gasto que el público no esperaba ver pagado con superávits futuros\nocite{BianchiFacciniMelosi2023}.
-\item \emph{Monetaria}: la Reserva Federal subió 525 puntos básicos entre marzo de 2022 y julio de 2023; el BCE, 450 en 14 meses; el Banco de Inglaterra, hasta el 5,25~\% en agosto de 2023, y el Banco de Japón dejó los tipos negativos y el control de la curva en marzo de 2024\nocite{FedNY2026EFFR,BCE2026Tipos,BoE2026BankRate,BoJ2024Marco}. Bajaron después y, en 2026, han vuelto a subir: la Reserva Federal tiene los fondos federales en el 3,75-4,00~\% desde el 17 de septiembre; el BCE, la facilidad de depósito en el 2,50~\% desde el 16 de septiembre; el Banco de Inglaterra, el tipo en el 3,75~\%, y el Banco de Japón, en el 1,25~\% desde el 24 de septiembre (fgráfico~\ref{fig:tipos-oficiales})\nocite{BoJ2026Octubre}.
+\item \emph{Monetaria}: la Reserva Federal subió 525 puntos básicos entre marzo de 2022 y julio de 2023; el BCE, 450 en 14 meses; el Banco de Inglaterra, hasta el 5,25~\% en agosto de 2023, y el Banco de Japón dejó los tipos negativos y el control de la curva en marzo de 2024\nocite{FedNY2026EFFR,BCE2026Tipos,BoE2026BankRate,BoJ2024Marco}. Bajaron después y, en 2026, han vuelto a subir: la Reserva Federal tiene los fondos federales en el 3,75-4,00~\% desde el 17 de septiembre; el BCE, la facilidad de depósito en el 2,50~\% desde el 16 de septiembre; el Banco de Inglaterra, el tipo en el 3,75~\%, y el Banco de Japón, en el 1,25~\% desde el 24 de septiembre (gráfico~\ref{fig:tipos-oficiales})\nocite{BoJ2026Octubre}.
 \item \emph{Una combinación tensionada}:
   \begin{itemize}
   \item en 2022 el 74~\% de las economías aplicó las 2 políticas contractivas\nocite{FMI2023FiscalMonitor}, y Estados Unidos retiró 6,6 puntos de impulso fiscal\nocite{FMI2026FMdatos};
   \item pero en Europa las ayudas a la energía fueron expansivas mientras los bancos centrales subían los tipos: restaron entre 1 y 2 puntos a la inflación europea de 2022, aunque pocas fueron selectivas\nocite{DaoEtAl2023Unconventional};
-  \item el caso extremo fue el Reino Unido: el 23 de septiembre de 2022, un plan de rebajas de impuestos sin financiar disparó los tipos de la deuda, y el Banco de Inglaterra, que estaba subiendo los tipos, tuvo que comprar deuda a largo plazo para frenar la crisis de los fondos de pensiones\nocite{BoE2022Gilts}: fiscal expansiva y monetaria contractiva, «revueltos».
+  \item las ayudas europeas a la energía costaron en torno al 1,2~\% del PIB de la Unión en 2022\nocite{CE2022Otono};
+  \item el caso extremo fue el Reino Unido: el 23 de septiembre de 2022, un plan de rebajas de impuestos sin financiar, junto a unas ayudas a la energía de unos 60.000 millones de libras en 6 meses, disparó los tipos de la deuda, y el Banco de Inglaterra, que estaba subiendo los tipos, tuvo que comprar deuda a largo plazo para frenar la crisis de los fondos de pensiones\nocite{BoE2022Gilts}: fiscal expansiva y monetaria contractiva, «revueltos».
   \end{itemize}
 \item \emph{Dominación monetaria, con red}: en julio de 2022 el BCE creó el instrumento para la protección de la transmisión (TPI), que permite comprar deuda de un país si su prima sube sin justificación y cumple las reglas\nocite{BCE2022TPI} \vertema{3.B.43}. Con él subió los tipos sin una crisis de deuda; la independencia se mantuvo, con el coste de las pérdidas de los bancos centrales (\ref{sec:eficacia-monetaria}).
+\item \emph{Reglas nuevas y gasto en defensa}: la cláusula general de salvaguardia se desactivó a finales de 2023, y en abril de 2024 entró en vigor un nuevo marco fiscal europeo, cuyo eje es una senda de gasto neto fijada en planes nacionales de 4 o 5 años\nocite{UE2024Marco} \vertema{3.B.45}. En marzo de 2025 Alemania reformó su freno de la deuda para dejar fuera el gasto en defensa por encima del 1~\% del PIB y crear un fondo de 500.000 millones de euros para infraestructuras y neutralidad climática, y en julio Estados Unidos aprobó la ley de reconciliación presupuestaria (\emph{One Big Beautiful Bill Act}), que hizo permanentes las rebajas fiscales de 2017.
+\item \emph{El resultado: mucha más deuda} (tabla~\ref{tab:deuda-2007-2025}). Con ella, la frontera entre la política fiscal y la monetaria ya no puede ignorarse.
 \item \emph{El diferencial cambia}: con el tipo implícito de la deuda, $r-\gamma_Y$ fue negativo en las 4 economías de 2021 a 2025, por la inflación, y en 2025 era de $-1{,}0$ puntos en Estados Unidos, $-1{,}6$ en la zona del euro y $-1{,}5$ en el Reino Unido; la Comisión prevé que en 2026 el Reino Unido vuelva a cero\nocite{CE2026AMECO}.\footnote{Con el coste medio de la deuda y el deflactor del PIB de AMECO, para tener la misma fuente en las 4 economías (Japón no tiene dato de 2025). Con los datos de Eurostat, el 3.A.39 da $-1{,}2$ para la zona del euro en 2025.}
 \item \emph{¿Ha terminado el estancamiento secular?} En el debate del PIIE del 7 de marzo de 2023\nocite{PIIE2023Debate}:
   \begin{itemize}
@@ -817,6 +1047,25 @@ Financiación & \textcolor{tceedorado}{con deuda, si los hogares no son ricardia
   \item parte del desacuerdo era de definición: \autor{Summers} compara el tipo con el neutral de antes, y \autor{Blanchard}, con el crecimiento. «No hay mal que cien años dure», pero las causas de este son lentas.
   \end{itemize}
 \end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Deuda bruta de las administraciones públicas, en porcentaje del PIB, 2007 y 2025}\label{tab:deuda-2007-2025}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{3.6cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.4cm}}
+\rowcolor{tceeazulpalido}\textbf{Economía} & \textbf{2007} & \textbf{2025} & \textbf{Variación (puntos)}\\
+\hline
+Estados Unidos & 65,0 & 124,4 & \textcolor{tceerojo}{+59,4}\\
+\hline
+Zona del euro & 65,8 & 87,3 & \textcolor{tceerojo}{+21,5}\\
+\hline
+Reino Unido & 43,1 & 102,1 & \textcolor{tceerojo}{+59,0}\\
+\hline
+Japón & 150,4 & 204,8 & \textcolor{tceerojo}{+54,4}\\
+\hline
+\end{tabular}
+\fuente{Elaboración propia a partir de \textcite{FMI2026DataMapper} (deuda bruta de las administraciones públicas del \emph{World Economic Outlook}; 2025 puede ser aún estimación). Con los datos de \textcite{Eurostat2026EDP}, la de la zona del euro en 2025 es el 87,7~\%.}
+\end{table}
 
 \begin{anotaciones}
 El debate entre \autor{Blanchard} y \autor{Summers} sobre el fin del estancamiento secular: la entrada de \autor{Blanchard}, \url{https://www.piie.com/blogs/realtime-economics/2023/secular-stagnation-not-over}; el debate en el PIIE del 7 de marzo de 2023, \url{https://www.piie.com/events/2023/summers-and-blanchard-debate-future-interest-rates}, y su vídeo: \autor{Blanchard}, \url{https://youtu.be/df5csVeBcrQ?t=538}; \autor{Summers}, \url{https://youtu.be/df5csVeBcrQ?t=1140}\nocite{Blanchard2023Secular,PIIE2023Debate}.
@@ -850,6 +1099,13 @@ El debate entre \autor{Blanchard} y \autor{Summers} sobre el fin del estancamien
 \item \textbf{\emph{Relevancia}}:
   \begin{itemize}
   \item Con deudas cercanas al 100~\% del PIB y tipos que vuelven a subir, el margen fiscal es escaso; saber cuándo multiplica el gasto decide cuándo gastarlo.
+  \item Quedan preguntas abiertas:
+    \begin{itemize}
+    \item si el tipo natural vuelve a ser bajo, la estabilización dependerá más de la política fiscal y de los estabilizadores automáticos;
+    \item en la zona del euro, sin una política fiscal común, la coordinación ha recaído en el BCE: ¿es \emph{Next Generation EU} el embrión de una capacidad fiscal común o un paréntesis?
+    \item para España, el fin del Mecanismo de Recuperación y Resiliencia en 2026 plantea cómo sostener la inversión pública, el instrumento que más multiplica, dentro de las reglas nuevas;
+    \item ¿están las economías avanzadas preparadas para la próxima recesión, con tipos bajos y deuda alta?
+    \end{itemize}
   \end{itemize}
 \item \textbf{\emph{Extensiones}}:
   \begin{itemize}
@@ -874,7 +1130,7 @@ El debate entre \autor{Blanchard} y \autor{Summers} sobre el fin del estancamien
 \clearpage
 \appendix
 
-\section{Anexo: el multiplicador del gasto en el modelo neokeynesiano}\label{anexo:derivacion-nek}
+\section{Anexo:\cortetitulo{} el multiplicador del gasto en el modelo neokeynesiano}\label{anexo:derivacion-nek}
 
 \begin{itemize}
 \item \emph{El modelo}: con el gasto en la demanda, $Y_t=C_t+G_t$, el hogar del modelo canónico \vertema{3.A.7} y un gasto medio pequeño respecto al PIB, el consumo en desviaciones es $y_t-\hat g_t$, con $y_t$ el logaritmo de la producción en desviaciones y $\hat g_t\equiv(G_t-\overline{G})/\overline{Y}$. Las ecuaciones son
@@ -884,52 +1140,118 @@ El debate entre \autor{Blanchard} y \autor{Summers} sobre el fin del estancamien
   \end{align}
   Escribiendo $y_t=x_t+y^n_t$, la primera es la IS dinámica del modelo canónico con el gasto dentro de $r^n_t$ (\ref{sec:neokeynesiano}).
 
-\item \emph{Paso 1, la producción natural}: con precios flexibles, el salario real es constante (el margen es fijo y la producción es lineal en el trabajo) e igual a la relación marginal de sustitución entre consumo y ocio, $C_t^{\theta}L_t^{\varphi}$. En logaritmos, $\theta\,(y^n_t-\hat g_t)+\varphi\,y^n_t=0$, y
-  \begin{equation}
-  y^n_t=\Gamma\,\hat g_t,\qquad \Gamma\equiv\frac{\theta}{\theta+\varphi}\in(0,1). \label{eq:anexo-natural}
-  \end{equation}
-  Es el multiplicador con precios flexibles: el gasto desplaza consumo ($1-\Gamma$ por unidad) y añade trabajo. \findemo
+\item \emph{Paso 1, el multiplicador neoclásico (la producción natural)}:
+  \begin{itemize}
+  \item \emph{En general}: en una economía estática, el hogar obtiene utilidad del consumo, $u(C)$, y desutilidad de producir, $v(Y)$, con $C=Y-G$ y el gasto pagado con impuestos de cuantía fija. En el óptimo, $u'(Y-G)=v'(Y)$. Diferenciando, $u''\,(dY-dG)=v''\,dY$, y con $\eta_u\equiv-u''\,\overline{Y}/u'$ y $\eta_v\equiv v''\,\overline{Y}/v'$ (y $u'=v'$ en el óptimo),
+    \begin{equation*}
+    \frac{dY}{dG}=\frac{-u''}{-u''+v''}=\frac{\eta_u}{\eta_u+\eta_v}\equiv\Gamma\in(0,1),
+    \end{equation*}
+    que es~\eqref{eq:multiplicador-neoclasico}: el hogar, más pobre, trabaja más, pero el consumo cae\nocite{Woodford2011Simple}.
+  \item \emph{Con las formas del modelo canónico}: con precios flexibles, el salario real es constante (el margen es fijo y la producción es lineal en el trabajo) e igual a la relación marginal de sustitución entre consumo y ocio, $C_t^{\theta}L_t^{\varphi}$. En logaritmos, $\theta\,(y^n_t-\hat g_t)+\varphi\,y^n_t=0$, y
+    \begin{equation}
+    y^n_t=\Gamma\,\hat g_t,\qquad \Gamma\equiv\frac{\theta}{\theta+\varphi}\in(0,1). \label{eq:anexo-natural}
+    \end{equation}
+    Es el caso $\eta_u=\theta$, $\eta_v=\varphi$: el gasto desplaza consumo ($1-\Gamma$ por unidad) y añade trabajo. \findemo
+  \end{itemize}
 
-\item \emph{Paso 2, banco central que mantiene el tipo real}: si $i_t-\mathbb{E}_t[\pi_{t+1}]=\rho$, la IS queda $y_t-\hat g_t=\mathbb{E}_t[y_{t+1}-\hat g_{t+1}]$; como el gasto es transitorio y la economía vuelve al estado estacionario, el consumo no cambia en ningún periodo y $y_t=\hat g_t$: el multiplicador es 1. \findemo
+\item \emph{Paso 2, banco central que mantiene el tipo real}:
+  \begin{itemize}
+  \item si $i_t-\mathbb{E}_t[\pi_{t+1}]=\rho$, la IS queda $y_t-\hat g_t=\mathbb{E}_t[y_{t+1}-\hat g_{t+1}]$;
+  \item como el gasto es transitorio y la economía vuelve al estado estacionario, el consumo no cambia en ningún periodo y $y_t=\hat g_t$: el multiplicador es 1. \findemo
+  \end{itemize}
 
-\item \emph{Paso 3, regla de \autor{Taylor}}: con $i_t=\rho+\phi_\pi\pi_t$ y un gasto persistente, $\hat g_t=\rho_g\hat g_{t-1}$ más una innovación, se prueban soluciones $y_t=a\,\hat g_t$, $\pi_t=c\,\hat g_t$.\footnote{$\rho_g$ es local: la persistencia del gasto, como $\rho_u$ y $\rho_m$ en otros temas. También $\Omega$ es local de este paso.} De~\eqref{eq:anexo-nkpc}, $c\,(1-\beta\rho_g)=\kappa\,(a-\Gamma)$; de~\eqref{eq:anexo-is}, $(1-\rho_g)(a-1)=-\frac1\theta(\phi_\pi-\rho_g)\,c$. Con $\Omega\equiv\kappa(\phi_\pi-\rho_g)/[\theta(1-\rho_g)(1-\beta\rho_g)]>0$,
-  \begin{equation}
-  a-1=-\Omega\,(a-\Gamma)\quad\Longrightarrow\quad a=\frac{1+\Omega\,\Gamma}{1+\Omega}\in(\Gamma,1). \label{eq:anexo-taylor}
-  \end{equation}
-  El multiplicador es una media ponderada de 1 (precios rígidos, $\kappa\to0$) y de $\Gamma$ (precios flexibles o regla muy agresiva, $\Omega\to\infty$), y el consumo cae, $a-1<0$. \findemo
+\item \emph{Paso 3, regla de \autor{Taylor}}:
+  \begin{itemize}
+  \item con $i_t=\rho+\phi_\pi\pi_t$ y un gasto persistente, $\hat g_t=\rho_g\hat g_{t-1}$ más una innovación, se prueban soluciones $y_t=a\,\hat g_t$, $\pi_t=c\,\hat g_t$;\footnote{$\rho_g$ es local: la persistencia del gasto, como $\rho_u$ y $\rho_m$ en otros temas. También $\Omega$ es local.}
+  \item de~\eqref{eq:anexo-nkpc}, $c\,(1-\beta\rho_g)=\kappa\,(a-\Gamma)$; de~\eqref{eq:anexo-is}, $(1-\rho_g)(a-1)=-\frac1\theta(\phi_\pi-\rho_g)\,c$;
+  \item con $\Omega\equiv\kappa(\phi_\pi-\rho_g)/[\theta(1-\rho_g)(1-\beta\rho_g)]>0$,
+    \begin{equation}
+    a-1=-\Omega\,(a-\Gamma)\quad\Longrightarrow\quad a=\frac{1+\Omega\,\Gamma}{1+\Omega}\in(\Gamma,1), \label{eq:anexo-taylor}
+    \end{equation}
+    que es~\eqref{eq:multiplicador-taylor}. El multiplicador es una media ponderada de 1 (precios rígidos, $\kappa\to0$) y de $\Gamma$ (precios flexibles o regla muy agresiva, $\Omega\to\infty$), y el consumo cae, $a-1<0$. Si el banco central responde también a la brecha, la respuesta se suma a $\Omega$ y el resultado es el mismo\nocite{Woodford2011Simple}. \findemo
+  \end{itemize}
 
-\item \emph{Paso 4, límite inferior}: una perturbación de demanda lleva el tipo natural sin gasto a $r^n_L<0$; el banco central deja el tipo en el límite ($i_t=0$, para simplificar) mientras dura, y cada periodo la crisis continúa con probabilidad $\rho_L$; cuando acaba, la política vuelve a cerrar la brecha y todo vuelve al estado estacionario. Si el gasto $\hat g_L$ dura lo mismo que la crisis, en el estado de crisis las expectativas son $\mathbb{E}_t[\pi_{t+1}]=\rho_L\pi_L$ y $\mathbb{E}_t[y_{t+1}-\hat g_{t+1}]=\rho_L(y_L-\hat g_L)$, y las 2 ecuaciones quedan
-  \begin{align*}
-  (1-\rho_L)(y_L-\hat g_L)&=\tfrac1\theta\left(\rho_L\pi_L+r^n_L\right),\\
-  (1-\beta\rho_L)\,\pi_L&=\kappa\,(y_L-\Gamma\hat g_L).
-  \end{align*}
-  Sustituyendo $\pi_L$ y agrupando,
+\item \emph{Paso 4, límite inferior}:
+  \begin{itemize}
+  \item una perturbación de demanda lleva el tipo natural sin gasto a $r^n_L<0$; el banco central deja el tipo en el límite ($i_t=0$, para simplificar) mientras dura, y cada periodo la crisis continúa con probabilidad $\rho_L$; cuando acaba, la política vuelve a cerrar la brecha y todo vuelve al estado estacionario;
+  \item si el gasto $\hat g_L$ dura lo mismo que la crisis, en el estado de crisis las expectativas son $\mathbb{E}_t[\pi_{t+1}]=\rho_L\pi_L$ y $\mathbb{E}_t[y_{t+1}-\hat g_{t+1}]=\rho_L(y_L-\hat g_L)$, y las 2 ecuaciones quedan
+    \begin{align*}
+    (1-\rho_L)(y_L-\hat g_L)&=\tfrac1\theta\left(\rho_L\pi_L+r^n_L\right),\\
+    (1-\beta\rho_L)\,\pi_L&=\kappa\,(y_L-\Gamma\hat g_L);
+    \end{align*}
+  \item sustituyendo $\pi_L$ y agrupando,
+    \begin{equation*}
+    y_L\left[(1-\rho_L)(1-\beta\rho_L)-\tfrac{\rho_L\kappa}{\theta}\right]=\hat g_L\left[(1-\rho_L)(1-\beta\rho_L)-\tfrac{\rho_L\kappa\Gamma}{\theta}\right]+\tfrac{1-\beta\rho_L}{\theta}\,r^n_L ,
+    \end{equation*}
+    de donde sale~\eqref{eq:multiplicador-elb};
+  \item como $\Gamma<1$, el numerador es mayor que el denominador, que tiene que ser positivo para que el equilibrio sea acotado: el multiplicador es mayor que 1, y crece sin límite cuando el denominador se acerca a cero (episodios largos, precios flexibles);
+  \item el último término muestra la otra cara: la misma perturbación provoca una recesión tanto mayor cuanto menor es el denominador, y una mayor flexibilidad de precios la agrava, la \emph{paradoja de la flexibilidad}\nocite{EggertssonKrugman2012Debt}. \findemo
+  \end{itemize}
+
+\item \emph{Interpretación gráfica}: de la primera ecuación, la demanda en la crisis es creciente en la inflación, con pendiente $\theta(1-\rho_L)/\rho_L$ en el plano $(y,\pi)$; la oferta lo es con pendiente $\kappa/(1-\beta\rho_L)$. Que el denominador sea positivo equivale a que la demanda sea más inclinada que la oferta: es la rama del límite del gráfico~\ref{fig:nek-limite-inferior}.
+
+\item \emph{Ejemplos numéricos} (gráfico~\ref{fig:multiplicador-politica-monetaria}):
+  \begin{itemize}
+  \item con $\beta=0{,}99$, $\theta=\varphi=1$ ($\Gamma=0{,}5$) y $\kappa=0{,}02$, el multiplicador en el límite es 1 si el episodio dura un periodo, 1,31 si dura en promedio 5 trimestres ($\rho_L=0{,}8$) y 2,25 si dura en promedio 6,7 ($\rho_L=0{,}85$); con la regla de \autor{Taylor} ($\phi_\pi=1{,}5$) y la misma persistencia del gasto, 0,87 y 0,82;
+  \item con la calibración de la Gran Depresión ($\beta=0{,}997$, $\kappa=0{,}00859$, $1/\theta=0{,}862$, $\Gamma=0{,}425$, $\rho_L=0{,}903$), es 2,29, y el denominador se anula con $\rho_L\approx0{,}919$\nocite{Woodford2011Simple,Eggertsson2011Fiscal}.
+  \end{itemize}
+\end{itemize}
+
+\section{Anexo: el modelo de \autor{Leeper}}\label{anexo:leeper}
+
+\begin{itemize}
+\item \emph{Supuestos}: una economía de dotación con precios flexibles. El banco central fija el tipo nominal bruto, $R_t$, y la autoridad fiscal el superávit primario real, $s_t$, con 2 reglas\nocite{LeeperLeith2016Understanding}:
   \begin{equation*}
-  y_L\left[(1-\rho_L)(1-\beta\rho_L)-\tfrac{\rho_L\kappa}{\theta}\right]=\hat g_L\left[(1-\rho_L)(1-\beta\rho_L)-\tfrac{\rho_L\kappa\Gamma}{\theta}\right]+\tfrac{1-\beta\rho_L}{\theta}\,r^n_L ,
+  \frac{1}{R_t}=\frac{1}{R^*}+\alpha_\pi\left(\frac{1}{\pi_t}-\frac{1}{\pi^*}\right)+\varepsilon^M_t,\qquad
+  s_t=s^*+\gamma\left(\frac{B_{t-1}}{R_{t-1}P_{t-1}}-\frac{b^*}{R^*}\right)+\varepsilon^F_t ,
   \end{equation*}
-  de donde sale~\eqref{eq:multiplicador-elb}. Como $\Gamma<1$, el numerador es mayor que el denominador, que tiene que ser positivo para que el equilibrio sea acotado: el multiplicador es mayor que 1, y crece sin límite cuando el denominador se acerca a cero (episodios largos, precios flexibles). El último término muestra la otra cara: la misma perturbación provoca una recesión tanto mayor cuanto menor es el denominador, y una mayor flexibilidad de precios la agrava, la \emph{paradoja de la flexibilidad}\nocite{EggertssonKrugman2012Debt}. \findemo
-
-\item \emph{Interpretación gráfica}: de la primera ecuación, la demanda en la crisis es creciente en la inflación, con pendiente $\theta(1-\rho_L)/\rho_L$ en el plano $(y,\pi)$; la oferta lo es con pendiente $\kappa/(1-\beta\rho_L)$. Que el denominador sea positivo equivale a que la demanda sea más inclinada que la oferta: es la rama del límite de la fgráfico~\ref{fig:nek-limite-inferior}.
-
-\item \emph{Ejemplo numérico} (fgráfico~\ref{fig:multiplicador-politica-monetaria}): con $\beta=0{,}99$, $\theta=\varphi=1$ ($\Gamma=0{,}5$) y $\kappa=0{,}02$, el multiplicador en el límite es 1 si el episodio dura un periodo, 1,31 si dura en promedio 5 trimestres ($\rho_L=0{,}8$) y 2,25 si dura en promedio 6,7 ($\rho_L=0{,}85$); con la regla de \autor{Taylor} ($\phi_\pi=1{,}5$) y la misma persistencia del gasto, 0,87 y 0,82.
+  donde $\alpha_\pi$ mide la respuesta del tipo a la inflación, $\pi_t$ (aquí, bruta), y $\gamma$ la del superávit a la deuda real, con objetivos $\pi^*$ y $b^*$.\footnote{$\alpha_\pi$, $\gamma$, $s_t$, $\varepsilon^M_t$ y $\varepsilon^F_t$ son locales de este anexo; $\gamma$ no es la tasa de crecimiento $\gamma_Y$.}
+\item \emph{Estabilidad}:
+  \begin{itemize}
+  \item la inflación es estable si $\alpha_\pi/\beta>1$: política monetaria \emph{activa};
+  \item la deuda es estable si $\gamma>\beta^{-1}-1$: política fiscal \emph{pasiva}, que sube el superávit lo bastante para pagar al menos los intereses de la deuda adicional.
+  \end{itemize}
+\item \emph{Dominación fiscal}: con $\gamma=0$, el nivel de precios sale directamente de la condición de valoración~\eqref{eq:valoracion-deuda}:
+  \begin{equation*}
+  P_t=\frac{B_{t-1}}{(1-\beta)^{-1}s^*+\sum_{j=0}^{\infty}\beta^{j}\,\mathbb{E}_t\,\varepsilon^F_{t+j}} .
+  \end{equation*}
+  La noticia de menores superávits futuros sube el nivel de precios, que reduce el valor real de la deuda hasta igualarlo con el respaldo fiscal esperado. Para que exista este equilibrio, la política monetaria tiene que ser pasiva, $\alpha_\pi/\beta<1$: el banco central renuncia a fijar la inflación. \findemo
 \end{itemize}
 
 \section{Anexo: los métodos empíricos en detalle}\label{anexo:metodos}
 
 \begin{itemize}
-\item \emph{Vector autorregresivo estructural}\nocite{BlanchardPerotti2002}: con un VAR trimestral del gasto $G_t$, los impuestos netos $T_t$ y el PIB $Y_t$, las innovaciones de forma reducida mezclan las perturbaciones estructurales. La identificación usa 2 supuestos institucionales:
+\item \emph{Vector autorregresivo estructural}\nocite{BlanchardPerotti2002}: con un VAR trimestral de los impuestos netos, $t_t$, el gasto, $g_t$, y la producción, $y_t$, las innovaciones de forma reducida mezclan las perturbaciones estructurales, $e^t_t$, $e^g_t$ y $e^y_t$:
+  \begin{equation*}
+  t_t=a_1\,y_t+a_2\,e^g_t+e^t_t,\qquad g_t=b_1\,y_t+b_2\,e^t_t+e^g_t,\qquad y_t=c_1\,t_t+c_2\,g_t+e^y_t .
+  \end{equation*}
+  La identificación usa supuestos institucionales:\footnote{Aquí $t_t$ son los impuestos netos (no el tipo impositivo $t$ del modelo keynesiano) y $a_i$, $b_i$, $c_i$, los coeficientes del sistema.}
   \begin{itemize}
-  \item dentro del trimestre, el gasto no responde al PIB, porque las decisiones de gasto tardan más;
-  \item la respuesta automática de los impuestos al PIB es la elasticidad que dan las leyes fiscales, de modo que la innovación de los impuestos, quitada esa respuesta, es una decisión discrecional.
+  \item dentro del trimestre, la política discrecional no reacciona a la producción, porque las decisiones tardan, y el gasto tampoco responde de forma automática: $b_1=0$;
+  \item la respuesta automática de los impuestos a la producción, $a_1$, se calcula fuera del modelo con las leyes fiscales: una elasticidad media de 2,08;
+  \item el orden entre gasto e impuestos apenas importa, porque sus perturbaciones casi no están correlacionadas.
   \end{itemize}
-\item \emph{Método narrativo}: \textcite{RomerRomer2010Tax} leen los documentos del Congreso y de la Presidencia de Estados Unidos y clasifican cada cambio de impuestos por su motivo; solo usan los no relacionados con el ciclo (déficits heredados, crecimiento a largo plazo). \textcite{Ramey2011Timing} construye una serie de noticias de gasto militar, el valor actual del gasto que se anuncia, a partir de la prensa: así recoge la \emph{anticipación}, que un VAR confunde con un efecto retrasado.
+  Con este método, el multiplicador del gasto es 0,84 en el impacto y llega a 1,29 a los 15 trimestres, y el de los impuestos toca fondo en $-0{,}78$ a los 5 trimestres: multiplicadores «pequeños, a menudo cercanos a 1».
+\item \emph{Restricciones de signo}: otra forma de identificar es exigir signos a las respuestas; con ella, el gasto financiado con déficit multiplica poco y una rebaja de impuestos financiada con déficit, mucho más\nocite{MountfordUhlig2009}.
+\item \emph{Método narrativo}: \textcite{RomerRomer2010Tax} leen los documentos del Congreso y de la Presidencia de Estados Unidos y clasifican cada cambio de impuestos por su motivo; solo usan los no relacionados con el ciclo (déficits heredados, crecimiento a largo plazo). Una subida de impuestos del 1~\% del PIB reduce la producción casi un 3~\% en los 3 años siguientes. \textcite{Ramey2011Timing} construye una serie de noticias de gasto militar, el valor actual del gasto que se anuncia, a partir de la prensa: así recoge la \emph{anticipación}, que un VAR confunde con un efecto retrasado; sus multiplicadores están entre 0,6 y 1,2.
+\item \emph{VAR con instrumentos narrativos}: la serie narrativa se usa como instrumento de las perturbaciones del VAR\nocite{MertensRavn2013Dynamic}. Con este método, la elasticidad de los impuestos a la producción sale en torno a 3, mucho mayor que la que suponían \autor{Blanchard} y \autor{Perotti}, y esa diferencia es la razón principal de la distancia entre los multiplicadores de impuestos del VAR y del método narrativo\nocite{MertensRavn2014Reconciliation}.
 \item \emph{Proyecciones locales}\nocite{Jorda2005Estimation}: para cada horizonte $h$ se estima por separado
   \begin{equation*}
-  Y_{t+h}=\alpha_h+\beta_h\,\text{perturbación}_t+\text{controles}_t+\varepsilon_{t+h},
+  y_{t+h}=\alpha_h+\beta_h\,\varepsilon_t+\text{controles}_{t-1}+u_{t+h},
   \end{equation*}
-  y la sucesión de $\beta_h$ es la respuesta.\footnote{Aquí $\alpha_h$, $\beta_h$ y $\varepsilon_{t+h}$ son los coeficientes y el error de la regresión; $\beta_h$ no es el factor de descuento.} Con la producción y el gasto acumulados e instrumentando el gasto con la perturbación, el coeficiente es directamente el multiplicador acumulado~\eqref{eq:multiplicador-acumulado}\nocite{RameyZubairy2018}. Permite que la respuesta dependa del estado de la economía.
-\item \emph{Multiplicadores locales}: \textcite{NakamuraSteinsson2014} comparan estados de Estados Unidos con más y menos gasto militar federal: miden cuánto crece un estado respecto a otro, con la misma política monetaria y los mismos impuestos federales (\ref{sec:union-monetaria}).
-\item \emph{Modelos estimados}: los bancos centrales y el FMI simulan el mismo estímulo en sus modelos; \textcite{Coenen2012Multiplicadores} comparan 7 de ellos y encuentran multiplicadores del gasto menores que 1 con la política monetaria normal y mucho mayores con 2 años de tipos fijos.
+  con $\varepsilon_t$ la perturbación identificada, y la sucesión de $\beta_h$ es la respuesta.\footnote{Aquí $\alpha_h$, $\beta_h$ y $u_{t+h}$ son los coeficientes y el error de la regresión; $\beta_h$ no es el factor de descuento.} Permite que la respuesta dependa del estado de la economía (recesión o expansión, límite inferior o tipos normales).
+\item \emph{El multiplicador en un solo paso}: con la producción y el gasto en proporción de la producción tendencial (en las mismas unidades), se estima
+  \begin{equation*}
+  \sum_{h=0}^{H}y_{t+h}=\alpha_H+m_H\sum_{h=0}^{H}g_{t+h}+\text{controles}_{t-1}+u_{t+H},
+  \end{equation*}
+  instrumentando el gasto acumulado con la perturbación. El coeficiente $m_H$ es directamente el multiplicador acumulado~\eqref{eq:multiplicador-acumulado}, con su error estándar, y se evita convertir elasticidades en multiplicadores con una ratio media $Y/G$ que cambia mucho en el tiempo\nocite{RameyZubairy2018,Ramey2016Macroeconomic}.
+\item \emph{Multiplicadores locales}: \textcite{NakamuraSteinsson2014} comparan estados de Estados Unidos con más y menos gasto militar federal: miden cuánto crece un estado respecto a otro, con la misma política monetaria y los mismos impuestos federales (\ref{sec:union-monetaria}). Con los fondos federales y otras fuentes, el multiplicador regional ronda 1,8, que se puede leer como una cota inferior aproximada del nacional sin respuesta monetaria\nocite{ChodorowReich2019Geographic}.
+\item \emph{Modelos estimados}: los bancos centrales y el FMI simulan el mismo estímulo en sus modelos; \textcite{Coenen2012Multiplicadores} comparan 7 de ellos y encuentran multiplicadores del consumo público de 0,7 a 1 el primer año con la política monetaria normal y de 1,2 a 2,2 con 2 años de acomodación monetaria; el de la ARRA, en cambio, sale de 1 o menos incluso con acomodación, porque buena parte del gasto llegó tarde. Su ventaja es que permiten simular lo que tiene pocos precedentes, como un límite inferior largo; su inconveniente, que el resultado depende de la estructura supuesta.
+\item \emph{La política monetaria}: desde 2008 el instrumento ya no es solo un tipo, sino anuncios y compras. 2 métodos han ganado peso:
+  \begin{itemize}
+  \item la \emph{identificación de alta frecuencia}: la variación de los futuros sobre tipos en una ventana estrecha (unos 30 minutos) en torno a cada anuncio se usa como instrumento de la perturbación monetaria\nocite{GertlerKaradi2015Monetary};
+  \item los \emph{estudios de eventos}: se suma la variación de los tipos largos en los días de anuncio de compras\nocite{GagnonEtAl2011Financial}; \textcite{Swanson2021Measuring} separa además cada anuncio en 3 componentes: el tipo oficial, la orientación y las compras.
+  \end{itemize}
 \end{itemize}
 
 \section{Anexo: cronología de las políticas, 2008-2026}\label{anexo:cronologia}
@@ -955,6 +1277,16 @@ El debate entre \autor{Blanchard} y \autor{Summers} sobre el fin del estancamien
 \fuente{Elaboración propia a partir de \textcite{FedNY2026EFFR}, \textcite{BCE2026Tipos}, \textcite{BoE2026BankRate}, \textcite{BoJ2024Marco}, \textcite{BoJ2026Octubre}, \textcite{Fed2025FOMCoct}, \textcite{FMI2026FMdatos}, \textcite{OCDE2026EOsaldos}, \textcite{NTA2026Consumo} y las demás referencias del apartado~\ref{sec:experiencia}.}
 \end{table}
 
+\begin{itemize}
+\item \emph{El BCE entre 2008 y 2014}, antes de las compras masivas de 2015, respondió sobre todo con préstamos a los bancos\nocite{BCE2026Tipos}:
+  \begin{itemize}
+  \item \emph{adjudicación plena}: desde el 15 de octubre de 2008, las operaciones principales se hicieron a tipo fijo, y cada banco obtenía toda la liquidez que pedía si aportaba garantías suficientes;
+  \item \emph{programa para los mercados de valores} (\emph{Securities Markets Programme}), de mayo de 2010: compras de deuda para corregir el mal funcionamiento de esos mercados, esterilizadas para no cambiar el tono de la política; terminó en septiembre de 2012, con las OMT;
+  \item \emph{subidas de 2011}: el tipo de las operaciones principales pasó del 1 al 1,25~\% en abril y al 1,50~\% en julio, y en diciembre ya había vuelto al 1~\%;
+  \item \emph{préstamos a 3 años} (LTRO), adjudicados el 21 de diciembre de 2011 y el 29 de febrero de 2012, con la rebaja del coeficiente de reservas del 2 al 1~\% y más garantías admitidas.
+  \end{itemize}
+\end{itemize}
+
 \section{Anexo: aspectos para el test}\label{anexo:test}
 
 \begin{anotaciones}
@@ -970,7 +1302,9 @@ Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarco
 \item \emph{Límite inferior}: el gasto multiplica más; una rebaja de los impuestos sobre el trabajo puede ser contractiva\nocite{Eggertsson2011Fiscal}. El trabajo es de \autor{Christiano}, \autor{Eichenbaum} y \autor{Rebelo} (2011), no «de Rebelo y otros».
 \item \emph{Tipo de cambio}: con tipo flexible, el multiplicador es casi nulo; con tipo fijo, positivo\nocite{IlzetzkiMendozaVegh2013}, como predice el modelo de \autor{Mundell} y \autor{Fleming} \vertema{3.A.32}.
 \item \emph{Estancamiento secular}: \autor{Hansen} (1939) lo formuló; \autor{Summers} lo recuperó en 2013; el tipo neutral cayó al menos 300 pb\nocite{RachelSummers2019Secular}.
-\item \emph{Dominación}: la aritmética monetarista desagradable\nocite{SargentWallace1981Some} describe lo que ocurre bajo dominación fiscal; no la defiende.
+\item \emph{Dominación}: la aritmética monetarista desagradable\nocite{SargentWallace1981Some} describe lo que ocurre bajo dominación fiscal; no la defiende. Con \autor{Leeper} (1991), el equilibrio es único con una autoridad activa y otra pasiva.
+\item \emph{Paradoja del esfuerzo}: en el límite inferior, una rebaja del impuesto sobre el trabajo puede ser contractiva\nocite{Eggertsson2010Paradox}.
+\item \emph{Multiplicador neoclásico}: $\Gamma=\eta_u/(\eta_u+\eta_v)$, entre 0 y 1\nocite{Woodford2011Simple}.
 \end{itemize}
 
 \bibliografia

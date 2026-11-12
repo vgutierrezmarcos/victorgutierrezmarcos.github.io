@@ -100,3 +100,16 @@ datos:
     familia: fmi-fiscal-monitor
     depende: [datos/impulso-fiscal-4-economias.csv, graficos/impulso-fiscal-r-menos-g.tex]
     frase: "las cifras de 2009, 2011-2013, 2020 y 2022 del texto son históricas, pero el FMI las revisa: comprobar al actualizar"
+  - id: deuda-4-economias-2007-2025
+    texto: "Deuda bruta de las administraciones públicas, 2007 y 2025: EE. UU. 65,0 y 124,4; zona del euro 65,8 y 87,3; Reino Unido 43,1 y 102,1; Japón 150,4 y 204,8 % del PIB (tabla tab:deuda-2007-2025)"
+    donde: [3A40.tex]
+    valor: [65.0, 124.4, 65.8, 87.3, 43.1, 102.1, 150.4, 204.8]
+    unidad: "% del PIB"
+    periodo: 2007 y 2025
+    fuente: FMI2026DataMapper
+    organismo: FMI (World Economic Outlook, IMF DataMapper)
+    serie: "GGXWDG_NGDP: USA, EURO, GBR, JPN"
+    url: https://www.imf.org/external/datamapper/GGXWDG_NGDP
+    periodicidad: semestral (WEO de abril y octubre)
+    proxima: 2027-04
+    familia: fmi-weo

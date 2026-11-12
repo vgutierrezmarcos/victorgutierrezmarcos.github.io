@@ -1,0 +1,73 @@
+% El multiplicador según la respuesta del banco central (3.A.40, II.2.3 y III.2):
+% plano (y_t, r_t) con expectativas dadas; la IS es la ecuación de Euler del
+% consumo, r = r^n - theta (c - c*), y el gasto la desplaza Delta g a la derecha.
+% a) Fuera del límite:
+%   IS_0: r = 4 - y; E_0 = (2; 2). IS_1: r = 5,2 - y (Delta g = 1,2).
+%   tipo real constante (r = 2): E_1 = (3,2; 2), Delta y = Delta g (m = 1)
+%   regla de Taylor (r = y): E_1' = (2,6; 2,6), Delta y = 0,6 < Delta g (m < 1)
+% b) En el límite inferior:
+%   suelo r = i^ELB - pi^e_0 = 1,2; IS_0: r = 3 - y; E_0 = (1,8; 1,2)
+%   IS_1: r = 4 - y (Delta g = 1); con el suelo fijo, A = (2,8; 1,2): Delta y = Delta g
+%   el gasto sube pi^e y baja el suelo a 0,6: E_1 = (3,4; 0,6), Delta y = 1,6 > Delta g (m > 1)
+% Rehecho en TikZ propio a partir de la idea de Woodford (2011).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=1.05cm]
+  % ---------------- a) Fuera del límite inferior ----------------
+  % 1: ejes y título del panel
+  \capa{1}{\draw[eje] (0,0) -- (5.2,0) node[below left=2pt and 0pt] {$y_t$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,4.2) node[left] {$r_t$};}
+  \capa{1}{\node[font=\footnotesize\bfseries,anchor=south] at (2.6,4.3) {a) Fuera del límite inferior};}
+  % 2: IS inicial y equilibrio E_0
+  \capa{2}{\draw[curva3] (0.4,3.6) -- (3.7,0.3) node[etiqueta,right,text=tceeverde] {IS$_0$};}
+  \capa{2}{\node[punto] (aE0) at (2,2) {};}
+  \capa{2}{\node[etiqueta,anchor=south west] at (2.0,2.02) {$E_0$};}
+  \capa{2}{\draw[guia] (aE0) -- (2,0) node[below,text=black] {$y_0$};}
+  % 3: más gasto: la IS se desplaza Delta g a la derecha
+  \capa{3}{\draw[curvanueva,desplazada] (1.6,3.6) -- (4.9,0.3) node[etiqueta,right,text=tceerojo] {IS$_1$};}
+  \capa{3}{\draw[flecha] (0.75,3.25) -- (1.9,3.25) node[midway,above,etiqueta,font=\footnotesize,text=tceerojo] {$\Delta g$};}
+  % 4: banco central que mantiene el tipo real: m = 1
+  \capa{4}{\draw[curva2] (0,2) -- (5.0,2) node[etiqueta,above left,text=tceeazul,font=\footnotesize] {$r$ constante};}
+  \capa{4}{\node[punto] (aE1) at (3.2,2) {};}
+  \capa{4}{\node[etiqueta,anchor=north east,inner sep=1pt] at (3.18,1.97) {$E_1$};}
+  \capa{4}{\draw[guia] (aE1) -- (3.2,0) node[below,text=black] {$y_1$};}
+  % 5: regla de Taylor: el tipo real sube con la producción: m < 1
+  \capa{5}{\draw[curva1] (0.7,0.7) -- (3.6,3.6) node[etiqueta,above,text=tceemorado,font=\footnotesize,align=center] {MP\\(regla de \textsc{Taylor})};}
+  \capa{5}{\node[punto] (aE2) at (2.6,2.6) {};}
+  \capa{5}{\node[etiqueta,anchor=east,inner sep=1pt] at (2.53,2.6) {$E_1'$};}
+  \capa{5}{\draw[guia] (aE2) -- (2.6,0) node[below,text=black] {$y_1'$};}
+  % 6: comparación de los 2 avances
+  \capa{6}{\draw[->,thick,tceeazul] (2,-0.6) -- (3.2,-0.6) node[right,etiqueta,font=\footnotesize] {$m=1$};}
+  \capa{6}{\draw[->,thick,tceemorado] (2,-0.95) -- (2.6,-0.95) node[right,etiqueta,font=\footnotesize] {$m<1$};}
+
+  % ---------------- b) En el límite inferior ----------------
+  \begin{scope}[xshift=6.6cm]
+  % 1: ejes y título del panel
+  \capa{1}{\draw[eje] (0,0) -- (5.7,0) node[below left=2pt and 0pt] {$y_t$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,4.2) node[left] {$r_t$};}
+  \capa{1}{\node[font=\footnotesize\bfseries,anchor=south] at (2.8,4.3) {b) En el límite inferior};}
+  % 2: el suelo del tipo real y la IS inicial, que lo corta en E_0
+  \capa{2}{\draw[curva2] (0,1.2) -- (5.5,1.2) node[etiqueta,above left,text=tceeazul,font=\footnotesize] {$r=i^{\mathrm{ELB}}-\pi^e_0$};}
+  \capa{2}{\draw[curva3] (0.2,2.8) -- (2.8,0.2) node[etiqueta,right,text=tceeverde] {IS$_0$};}
+  \capa{2}{\node[punto] (bE0) at (1.8,1.2) {};}
+  \capa{2}{\node[etiqueta,anchor=south west] at (1.8,1.22) {$E_0$};}
+  \capa{2}{\draw[guia] (bE0) -- (1.8,0) node[below,text=black] {$y_0$};}
+  % 3: más gasto: la IS se desplaza Delta g a la derecha
+  \capa{3}{\draw[curvanueva,desplazada] (1.2,2.8) -- (3.8,0.2) node[etiqueta,right,text=tceerojo] {IS$_1$};}
+  \capa{3}{\draw[flecha] (0.75,2.25) -- (1.75,2.25) node[midway,above,etiqueta,font=\footnotesize,text=tceerojo] {$\Delta g$};}
+  % 4: si el suelo no se moviera, la producción subiría lo mismo que el gasto (A)
+  \capa{4}{\node[punto,fill=tceegris] (bA) at (2.8,1.2) {};}
+  \capa{4}{\node[etiqueta,anchor=south west,text=tceegris] at (2.8,1.22) {$A$};}
+  % 5: el gasto sube la inflación esperada y baja el suelo: E_1, m > 1
+  \capa{5}{\draw[curva2,desplazada] (0,0.6) -- (5.5,0.6) node[etiqueta,above left,text=tceeazul,font=\footnotesize] {$r=i^{\mathrm{ELB}}-\pi^e_1$};}
+  \capa{5}{\draw[flecha] (0.75,1.15) -- (0.75,0.65) node[midway,left,etiqueta,font=\footnotesize,text=tceerojo] {$\pi^e\uparrow$};}
+  \capa{5}{\node[punto] (bE1) at (3.4,0.6) {};}
+  \capa{5}{\node[etiqueta,anchor=north east,inner sep=1pt] at (3.36,0.56) {$E_1$};}
+  \capa{5}{\draw[guia] (bE1) -- (3.4,0) node[below,text=black] {$y_1$};}
+  % 6: comparación: el avance supera el desplazamiento
+  \capa{6}{\draw[->,thick,tceegris] (1.8,-0.6) -- (2.8,-0.6) node[right,etiqueta,font=\footnotesize] {$\Delta g$};}
+  \capa{6}{\draw[->,thick,tceerojo] (1.8,-0.95) -- (3.4,-0.95) node[right,etiqueta,font=\footnotesize] {$m>1$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
