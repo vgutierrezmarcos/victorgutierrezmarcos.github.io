@@ -234,6 +234,12 @@ Todas las consultas se hicieron el 5/11/2026. Las URL están en `3B08.bib`.
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 4 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexo B: corte antes de «del equilibrio de Cournot», con `\cortetitulo`. Sin `c_K` en el tema. |
 
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: añadidas notas en la primera mención visible de Krugman (2008, en \textcite[132]{Krugman1987Passe} de la introducción), Nash (1994, con Harsanyi y Selten, en el ENPS) y Meade (1977, con Ohlin; como su primera mención está ya en una nota al pie, el premio se añade al final de esa nota). «Johnson» es Harry Johnson: sin nota.
+- **4.º ejercicio**: \vertema{4.A.9} (industria y política industrial en España en el contexto de la UE) tras la segunda Ley Europea de Chips, en la nueva carrera de subvenciones; ya había \vertema{4.A.24} y \vertema{4.A.25}.
+- **Dichos y refranes** (ninguno del temario antiguo): se conservan el del enganche, «arrieros somos y en el camino nos encontraremos», y, integrados en la frase, «poderoso caballero es don Dinero» (la subvención como compromiso creíble), «a caballo regalado no le mires el diente» (el tercer país), «muerto el perro, se acabó la rabia» (corregir el fallo en su origen) y «quien paga, manda» (captura). Quitado «dos no riñen si uno no quiere» (cooperación en el GATT; también de la ficha y de las instrucciones del vídeo): sugiere que basta con que uno se contenga, cuando lo que sostiene la cooperación es la amenaza de represalia.
+
 ## 7. Dudas abiertas
 
 - **D5, tachado y color en las fórmulas (10/11/2026)**: (a) raya diagonal (`\cancel`) en PDF, web y Word; (b) raya horizontal, como en el antiguo, que MathJax y Word no tienen. **Aplicada: (a)**. En Word las fórmulas no salen en rojo (solo el tachado); para tenerlo habría que pasar los términos a texto, que rompe la ecuación.
@@ -303,6 +309,6 @@ Todavía no hay vídeo: este tema se entrega sin guion ni escenas (entregas 1 y 
 - **Apoyo, no se escriben en la pizarra**: la caja del caso lineal simétrico, `industria-naciente-fpp` (anexo E; 3 paneles, que puede «moverse» por paneles), `represalias-oligopolio` y la matriz de la guerra de aranceles del anexo A.
 - **Ejemplo conductor**: Airbus y Boeing, en I.1 (por qué hace falta la teoría de juegos), I.2.3 (las matrices), I.4 (la variante de costes) y III.3 (la OMC y la tregua). Nunca se dice «hilo» en voz alta.
 - **Enganche e idea final**: «Arrieros somos y en el camino nos encontraremos». La pregunta es «¿Puede un país ganar ayudando a sus empresas a competir fuera, si los demás pueden hacer lo mismo?» y la idea final la responde con el refrán.
-- **Pegatinas**, que se apuntan al decirlas junto a su casilla: «Poderoso caballero es don Dinero» (compromiso), «A caballo regalado no le mires el diente» (el tercer país), «Muerto el perro, se acabó la rabia» (industria naciente), «Quien paga, manda» (captura) y «Dos no riñen si uno no quiere» (cooperación).
+- **Dichos**, que se apuntan al decirlos junto a su casilla: «Poderoso caballero es don Dinero» (compromiso), «A caballo regalado no le mires el diente» (el tercer país), «Muerto el perro, se acabó la rabia» (industria naciente) y «Quien paga, manda» (captura).
 - **Bloque II**: un esquema de 3 casillas (objetivos, justificación e instrumentos), sin cifras en la pizarra.
 - **Números de tema**: no se dicen en voz alta ni en la pizarra.

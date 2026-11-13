@@ -134,7 +134,7 @@ Víctor está fuera y el artifact de dudas no está disponible en esta sesión: 
 
 1. **D1 orden de los bloques**: aplicado el del original (estructura antes que dividendos), justificado en la introducción. Alternativa: el del título.
 2. **D2 enganche**: aplicada la gallina con Telefónica. Alternativa: la ampliación de capital de Iberdrola de 2025 (sin comprobar).
-3. **D3 «pájaro en mano»**: aplicado: se dice el nombre de la teoría, sin usarlo como pegatina (es el enganche del 3.A.10).
+3. **D3 «pájaro en mano»**: aplicado: se dice el nombre de la teoría, sin usarlo como dicho (es el enganche del 3.A.10).
 4. **D4 Holmström y Tirole**: aplicado: de palabra en las extensiones de agencia y el modelo en el anexo D.
 5. **D5 coste del capital**: aplicado: título de Víctor y recordatorio de 1′; la estimación, en el 3.B.2.
 6. **D6 bibliografía**: aplicado: fuera las 2 entradas de temas de clase.
@@ -148,7 +148,7 @@ Víctor está fuera y el artifact de dudas no está disponible en esta sesión: 
 3. **D3 símbolos locales**: aplicado: $a_{\mathrm A}$, $a_{\mathrm B}$, $\bar a$ y ν (Myers y Majluf), $c$ y $b^*$ (Lintner), $n_0$, $m$, $B_1$, $I_1$ (prueba de MM 1961) y $R_{\mathrm e}$ (lo que se queda el empresario, anexo D), locales.
 4. **D4 caja de Vernimmen**: aplicado: sin el título en inglés, redactada de nuevo con Durand (1952). Si Víctor confirma la sección en su ejemplar, se puede citar con página.
 5. **D5 orden de III.2 y III.3**: aplicado: el de Víctor, con la irrelevancia anticipada en la apertura del bloque.
-6. **D6 refrán**: no aplicado el de contenido: manda el del coordinador (la gallina); «el mismo perro» es pegatina.
+6. **D6 refrán**: no aplicado el de contenido: manda el del coordinador (la gallina); «el mismo perro» es dicho.
 7. **D7 Credit Suisse**: aplicado quitarlo (sin fuente primaria en el `.bib`); los CoCos remiten al 3.B.27.
 8. **D8 series de datos**: resuelto por datos (G1 y G2 del BCE y la Fed).
 9. **D9 Kaplan y Strömberg (2009)**: se mantiene la frase (la usa el 3.B.4); no se ha releído el artículo.
@@ -177,13 +177,19 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 
 ## Instrucciones para el vídeo
 
-- *Pizarra (sacado del texto del tema el 11/11/2026)*: funciones clave a la izquierda todo el tema; números de la empresa y pegatinas a la derecha; panel b de MM dibujado sobre los ejes del panel a tras borrar sus curvas.
+- *Pizarra (sacado del texto del tema el 11/11/2026)*: funciones clave a la izquierda todo el tema; números de la empresa y dichos a la derecha; panel b de MM dibujado sobre los ejes del panel a tras borrar sus curvas.
 
 - **Enganche**: «no hay que matar la gallina de los huevos de oro» y el recorte del dividendo de Telefónica, con la pregunta «¿se equivocó el mercado?». El dicho, en la esquina superior izquierda hasta el final. **Idea final**: la gallina se alimenta primero con lo de casa, se endeuda mientras el ahorro fiscal compense el riesgo de quiebra y solo conviene dejarle los huevos si los multiplica más deprisa de lo que exigen sus dueños; el recorte de Telefónica se juzgó por lo que decía de la gallina. La introducción y la conclusión, sin pizarra (modo guion); la conclusión empieza por «En conclusión,».
 - **Funciones clave** (columna izquierda, se conservan con `conservar:` de bloque en bloque): V = V_E + V_D con el balance financiero (II.1), `eq:mm` (II.3.2) y `eq:trade-off` (II.3.2 c). En el III se mantienen.
-- **Columna derecha**: los números de nuestra empresa (EBIT 100, r_A 10 %, deuda 400 al 5 %; V_U = 1.000, r_E = 13,3 %; con impuestos 750 → 850; con 800 de deuda, 830; en III, BPA 10, r_E 10 %, b = 0,4 → 115,4 / 100 / 88,2) y las pegatinas junto a su concepto.
+- **Columna derecha**: los números de nuestra empresa (EBIT 100, r_A 10 %, deuda 400 al 5 %; V_U = 1.000, r_E = 13,3 %; con impuestos 750 → 850; con 800 de deuda, 830; en III, BPA 10, r_E 10 %, b = 0,4 → 115,4 / 100 / 88,2) y las dichos junto a su concepto.
 - **Bloque I**: la matriz de fuentes en el centro (pizarra); la tabla propia/ajena y el gráfico de deuda en valores, como apoyo.
 - **Bloque II**: `fig:coste-capital` en el centro, **construido por partes** sobre los mismos ejes: panel a (tradicional) → se borran las curvas → panel b (MM, con la variante discontinua) → panel c (con IS) → panel d (U del equilibrio). Al acabar el II.3.2, la pizarra queda con `fig:valor-tradeoff` a la derecha y las 2 funciones clave a la izquierda. La escalera de `fig:jerarquia` se dibuja en el II.3.3. Las tablas `tab:supuestos-mm` y `tab:teorias-estructura`, los gráficos de datos (`sp-calificaciones-grado`, `deuda-snf-pib`) y la fórmula de Miller completa, como apoyo (en la pizarra, una línea).
 - **Bloque III**: a la derecha, la lista de las razones para pagar dividendos (una palabra cada una); `eq:lintner` en una línea; en el centro, `eq:walter` en una línea y `fig:walter` pequeño con los 3 puntos del ejemplo. `fig:dividendos-recompras-eeuu`, apoyo. Al final, la pizarra queda con las funciones clave, `fig:walter` y el dicho.
-- **Pegatinas**: «los mismos perros con distinto collar» (irrelevancia; se repite al hablar del dividendo casero), «ni tanto que queme al santo, ni tanto que no lo alumbre» (equilibrio), «la ocasión hace al ladrón» (flujo de caja libre; en III se recuerda sin volver a escribirla), «la ropa sucia se lava en casa» (jerarquía) y «despacito y buena letra» (Lintner).
+- **Dichos**: «los mismos perros con distinto collar» (irrelevancia; se repite al hablar del dividendo casero), «ni tanto que queme al santo, ni tanto que no lo alumbre» (equilibrio), «la ocasión hace al ladrón» (flujo de caja libre; en III se recuerda sin volver a escribirla) y «la ropa sucia se lava en casa» (jerarquía).
 - Los anexos y los gráficos `miller` y `factoring` no salen en el vídeo.
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel añadidos**: Friedman (1976), en su primera mención; Tobin (1981), en la nota de la cartera de Markowitz y Tobin; Akerlof, Spence y Stiglitz (2001), en la selección adversa de Myers y Majluf (cubre la señalización de Spence que viene después). Ya estaban Modigliani (1985), Miller-Markowitz-Sharpe (1990), Tirole (2014) y Holmström-Hart (2016). Kahneman, Thaler, Shiller, Fama, Bernanke, Diamond, Hart y Aghion solo salen en `\nocite` (no hay mención visible); «Johnson \& Johnson» es la empresa.
+- **4.º ejercicio**: \vertema{4.A.19} junto a la dependencia bancaria de las pymes (con 4.A.8); el impuesto sobre sociedades español remite ahora a \vertema{4.B.17} en vez de 4.B.10. Se mantienen 4.A.20, 4.A.8, 4.B.12 y el resto de 4.B.10 (efectos incentivo de la fiscalidad de la deuda).
+- **Dichos**: se conservan el enganche «no hay que matar la gallina de los huevos de oro» y los que están integrados y explicados: «los mismos perros con distinto collar» (MM), «ni tanto que queme al santo…» (óptimo interior), «la ocasión hace al ladrón» (flujo de caja libre) y «la ropa sucia se lava en casa» (jerarquía). Se quita «despacito y buena letra» (Lintner), suelto y sin relación clara, en el tema, la ficha y las instrucciones del vídeo.

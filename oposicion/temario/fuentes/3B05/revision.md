@@ -176,6 +176,12 @@ Revisión autónoma (Víctor fuera del 31/10 al 9/11/2026). La fuente nueva est�
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 11 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexos A (corte tras «Ricardo») y G (corte antes de «y su ventaja»), con `\cortetitulo`. Sin `c_K` en el tema. |
 
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: ya tenían nota Ohlin y Meade (1977), Samuelson (1970) y Leontief (1973). Añadidas notas en la primera mención visible de Krugman (2008, en «Krugman (1980)» de la valoración de Ricardo), Hicks (1972, con Arrow, en el criterio de Kaldor-Hicks) y Mundell (1999, en \textcite{Mundell1957}); entradas `Nobel2008Krugman`, `Nobel1972HicksArrow` y `Nobel1999Mundell` reutilizadas en el .bib. «Smith» es Adam Smith y «Johnson», Harry Johnson (diagrama de Samuelson-Johnson): no llevan nota. Ningún premio de 2015-2026 tiene aquí un papel central.
+- **4.º ejercicio**: \vertema{4.A.22} en el anexo de datos del comercio exterior de España (ya había \vertema{4.B.8}).
+- **Dichos y refranes** (ninguno viene del temario antiguo: el `original.md` no tiene refranes): se conservan el del enganche, «el que mucho abarca, poco aprieta», y, reescritos para explicar la relación, «a buen hambre no hay pan duro» (RRI de Mill), «no hay rosa sin espinas» (Stolper-Samuelson) y «si la montaña no va a Mahoma…» (igualación del precio de los factores). Quitados del tema y de la ficha: «donde menos se piensa, salta la liebre» (Leontief: no añadía nada) y «cada mochuelo a su olivo» (factores específicos: su sentido habitual, «cada uno a su casa», se presta a confusión).
+
 ## 7. Dudas abiertas
 
 1. **D1-D5 (estructura)**, aplicadas con la opción recomendada:
@@ -237,7 +243,7 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **Gráfico conjunto por partes**: la tabla `tab:modelos` (4 preguntas × 4 modelos).
   - Se dibuja vacía en una esquina al empezar el I y se rellena una fila al terminar Ricardo, Haberler, el H-O-S y los factores específicos (en este orden).
   - Se queda todo el cante y en la conclusión se señala, sin escribirla otra vez.
-  - Cada pegatina se apunta junto a su fila: Mill, igualación, Stolper-Samuelson, Leontief y factores específicos.
+  - Cada dicho se apunta junto a su fila: Mill, Stolper-Samuelson e igualación.
 - **Funciones clave que se conservan**:
   - `eq:ventaja-comparativa`, desde el I.2 hasta el final del II;
   - `eq:mill`, durante el II;

@@ -425,3 +425,9 @@ El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada
   - solo en el documento: `tab:dice-resultados` y las ecuaciones del anexo del DICE.
 - **No se dicen números de temas** en voz alta: «la teoría de las externalidades», «el modelo de
   Ramsey, Cass y Koopmans», «la teoría de juegos».
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: \autor{Nordhaus} 2018 ya estaba en la introducción, con su motivo, y su modelo DICE se desarrolla en el apartado II y en el anexo. Nuevas notas: \autor{Coase} 1991, \autor{Samuelson} 1970, \autor{Nash} 1994, \autor{Koopmans} 1975, \autor{Acemoglu} 2024 (cambio técnico dirigido; la nota añade que su coautor \autor{Aghion} lo recibió en 2025 con \autor{Howitt}), \autor{Frisch} 1969, \autor{Buchanan} 1986 y \autor{Arrow} 1972 (anexo); entradas copiadas al `.bib`.
+- **4.º ejercicio**: ya remitía al \vertema{4.A.6}, \vertema{4.B.6} y \vertema{4.B.13}; no se añaden más.
+- **Refranes**: se quedan el del enganche («quien siembra vientos recoge tempestades»), «pan para hoy, hambre para mañana» (descuento alto), «más vale prevenir que curar» (mitigación y adaptación) y «allá donde fueres, haz lo que vieres» (MAFC). Los dos últimos dejan el «…, dice el refrán» del principio de la viñeta y van integrados en la frase.

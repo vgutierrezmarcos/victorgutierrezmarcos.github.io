@@ -214,3 +214,9 @@ Todas con la opción recomendada aplicada.
 - **Datos** (V1-V37): aplicadas V1-V3, V5-V30, V32-V34; V4 con Lacey (B11-08); V31 (FMI, 2011) citada sin comprobar el contenido; V35-V37 (Muñoz Cidad, Feenstra y Taylor, Hausmann y Sturzenegger): citadas con los metadatos de contenido, sin comprobar en esta pasada. La cifra de 313 mm€ de TARGET no se usa (decisión 3).
 - **Pendientes** (P1-P53): todos resueltos (sección 3).
 - **Rechazadas**: el enganche de Marte, la cita a ICEX-CECO, `BdE2026PresbeAnual` y `BdE2022NotaMetodologica` (sustituidas por las claves del verificador), la cifra de Irlanda, los umbrales del TCER y los CLU, y la nota de 1941.
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: la nota de \autor{Kuznets} y \autor{Stone} pasa al formato habitual, con los motivos oficiales entre comillas; nuevas notas para \autor{Samuelson} 1970 (Balassa-Samuelson), \autor{Meade} 1977 (transacciones autónomas y compensatorias) y \autor{Mundell} 1999 (Mundell-Fleming); entradas copiadas al `.bib`.
+- **4.º ejercicio**: \vertema{4.A.22} tras la estructura de la balanza de bienes y servicios de España; la remisión al \vertema{4.A.21} de la PII deja de formar parte de la frase («la evolución desde el euro está en el…»).
+- **Refranes**: se quedan el del enganche («no se puede estirar el brazo más que la manga»), «toda moneda tiene dos caras» (partida doble), «de grano en grano hace la gallina el granero» (PII, ahora con la frase que lo explica) y «las cuentas de la lechera» (integrado en la frase del déficit que se justifica con rentas futuras). Se quita «las cuentas del Gran Capitán» (errores y omisiones), también de la ficha: el refrán alude a cuentas infladas a propósito y podía confundir.

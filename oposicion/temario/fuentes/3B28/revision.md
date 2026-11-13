@@ -261,3 +261,10 @@ Actualizadas el 11/11/2026 (4.ª tanda: estructura macro/micro, Kenia fuera del 
 - `3B28.bib`: Banerjee siempre «Abhijit V.», Sen y Karlan con una sola forma, y los DOI de Zhang, Yang y Wang (2011), Ghatak (1999) y Stiglitz (1990). Lo aplica también `scratchpad/b28/hacer_bib.py`, así que se mantiene si se vuelve a generar el fichero.
 - § 1: el tema tiene 30 págs.; § 4: URL completas (WEO del FMI, WDI y el documento del Banco Mundial de Vermeersch y Kremer; todas responden 200).
 - El coordinador cambió la etiqueta del gráfico de Lewis a «salario institucional» (`graficos/`, no tocado aquí).
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: la lista de premiados de la introducción lleva ahora una nota común con todos los motivos oficiales (Myrdal y Hayek 1974; Lewis y Schultz 1979; North y Fogel 1993; Sen 1998; Deaton 2015; Banerjee, Duflo y Kremer 2019; Acemoglu, Johnson y Robinson 2024), y se quitan las notas repetidas que había más adelante (Lewis, Myrdal, North, Sen, Deaton). Nuevas notas: \autor{Solow} 1987, \autor{Kuznets} 1971, \autor{Lucas} 1995 (dentro de la nota de la paradoja), \autor{Stiglitz} 2001 y \autor{Robert E. Hall} 2026, con \autor{Woodford} (Hall y Jones, 1999).
+- **Angrist, Imbens y Card (2021)**: en «Otras dificultades» del método experimental se añade el efecto medio local del tratamiento (LATE) de \textcite{ImbensAngrist1994Identification}, con nota del Nobel de 2021 (Angrist e Imbens, y Card por los experimentos naturales). Banerjee-Duflo-Kremer, Acemoglu-Johnson-Robinson y Deaton ya tenían su desarrollo en el cuerpo.
+- **4.º ejercicio**: ya remitía al \vertema{4.A.27}, \vertema{4.A.26} y \vertema{4.B.6}; no se añaden más.
+- **Refranes**: se quedan el del enganche («unos nacen con estrella y otros estrellados»), «una golondrina no hace verano» (gran empujón), «café para todos» (Consenso de Washington), «el hábito no hace al monje» (instituciones de segundo óptimo) y «ver para creer» (RCT), los tres últimos integrados en la frase. Se quitan «del dicho al hecho hay mucho trecho» y «obras son amores, que no buenas razones», del tema y de la ficha.

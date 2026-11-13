@@ -232,13 +232,13 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
 - **D4** (múltiplos): **aplicada la recomendada**: aquí solo el PER y el
   EV/EBIT; el esquema de Vernimmen y la tabla de ventajas e inconvenientes,
   en el 3.B.4.
-- **D5** (pegatina): **aplicada la recomendada**: «no poner todos los huevos
+- **D5** (dicho): **aplicada la recomendada**: «no poner todos los huevos
   en la misma cesta» se reutiliza para Markowitz (en el 3.A.35 es de Tobin),
   como «Cada loco con su tema».
 - **Machado**: «todo necio confunde valor y precio» no se ha podido
   localizar en *Proverbios y cantares*; se atribuye de forma prudente («en
   palabras que suelen atribuirse a Antonio Machado»). Si Víctor tiene la
-  fuente, se puede afirmar; si prefiere, otra pegatina.
+  fuente, se puede afirmar; si prefiere, otra dicho.
 - **Fuentes de III**: la página 390 de Vernimmen (se cita la obra sin
   página); el manual de Pablo Fernández que citaba la nota al opositor
   («Valoración de empresas y sensatez») no se cita: los métodos se apoyan en
@@ -289,9 +289,9 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
     columnas), la \eqref{eq:rentabilidad-accion} y, debajo, la varianza de la
     cartera recuadrada (`\funcionclave`), que se conserva todo el bloque;
   - centro: el gráfico `markowitz` por capas (frontera, MVG, curvas de los 2
-    inversores, tangencias) con la pegatina de los huevos y las gallinas; sin
+    inversores, tangencias) con el dicho de los huevos y las gallinas; sin
     borrar, sobre él se dibuja `cml` (r_f, una CAL, la tangente, T = M,
-    prestar y endeudarse) con «todos los caminos llevan a Roma». No se
+    prestar y endeudarse). No se
     escribe dos veces la frontera: el gráfico conjunto se construye por
     partes;
   - derecha: `diversificacion` y la \eqref{eq:riesgo-sistematico};
@@ -312,7 +312,7 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
   «todo necio confunde valor y precio» (dicho atribuido a Machado; en el
   vídeo, sin afirmar la obra); el PER, el EV/EBIT y el CAPE, de palabra. A la
   derecha, `soporte-resistencia` por capas (serie, soporte, resistencia,
-  ruptura, media móvil) con «quien tuvo, retuvo»; en la tabla de eficiencia se
+  ruptura, media móvil); en la tabla de eficiencia se
   marca qué forma desafía cada análisis (técnico, la débil; fundamental, la
   semifuerte). `sp500-soporte-medias` es de apoyo; `velas` y `cml-sml`, de
   los anexos, no salen.
@@ -320,3 +320,9 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
   SML (hasta el final) y la APT (hasta el final del bloque I).
 - Al terminar, la pizarra queda con la SML, la tabla de eficiencia, Gordon y
   el esquema técnico: el recorrido del tema de un vistazo.
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel añadidos o completados**: Tobin (1981), en su primera mención ($q$ de Tobin); Friedman (1976), en la nota de la tesis de Markowitz; Modigliani (1985) con su motivo; Thaler (2017) con su motivo y su cita; Koopmans (1975, con Kantoróvich) con su motivo; Kahneman (2002) en la teoría de las perspectivas; Stiglitz (2001) en la paradoja de Grossman y Stiglitz; Robert Merton (1997) en el anexo de fechas. Ya estaban Markowitz-Miller-Sharpe (1990) y Fama-Hansen-Shiller (2013).
+- **4.º ejercicio**: sin cambios; ya remite a \vertema{4.A.20} (mercados de valores en España).
+- **Dichos**: se conservan «nadie da nada por nada» (enganche, APT y cierre), «no poner todos los huevos en la misma cesta» (del temario antiguo), «cuando llueve, todos se mojan» (riesgo sistemático) y «a buenas horas, mangas verdes» (eficiencia), más la cita «todo necio confunde valor y precio». Se quitan «todos los caminos llevan a Roma» (separación de Tobin: forzado) y «quien tuvo, retuvo» (memoria del mercado: el refrán significa otra cosa), en el tema, la ficha y las instrucciones del vídeo.

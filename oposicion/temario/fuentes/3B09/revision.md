@@ -160,6 +160,13 @@ Título oficial: «Comercio internacional y crecimiento económico. Especial ref
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 6 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): anexo B: «el modelo centro-periferia:» + corte (la coma pasa a dos puntos), con `\cortetitulo`. Sin `c_K` en el tema. |
 
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: añadidas notas en la primera mención visible de Ohlin (1977) y Krugman (2008), en una nota común de la introducción; Solow (1987), Lucas (1995) y Romer (2018), en otra nota común tras el crecimiento endógeno de la introducción; Hicks (1972, progreso neutral; Arrow se recuerda en el texto como co-premiado); Samuelson (1970, Stolper-Samuelson); Stiglitz (2001, anexo centro-periferia).
+- **Premios recientes**: este es el tema donde más pesan. 2024 (Acemoglu, Johnson y Robinson): la cita de \textcite{AcemogluJohnsonRobinson2005Rise} sobre el comercio atlántico, que antes solo era \nocite, ahora se nombra en la evidencia (el comercio actúa a través de las instituciones) con su nota. 2025 (Aghion y Howitt; Mokyr): en «Escala frente a competencia», la U invertida de \textcite{AghionEtAl2005} se presenta como derivada del crecimiento por destrucción creativa de \textcite{AghionHowitt1992} (entrada nueva, copiada del 3A44), con nota que incluye a Mokyr y una frase sobre la circulación del conocimiento útil y el comercio como cauce. Romer (2018) ya se desarrollaba en el cuerpo (apartado de Romer y Rivera-Batiz).
+- **4.º ejercicio**: \vertema{4.A.27} tras la ISI aplicada en España de los 50 a los 70.
+- **Dichos y refranes** (ninguno del temario antiguo): se conservan el enganche, «¿qué fue antes, el huevo o la gallina?», y, integrados en la frase, «ir por lana y volver trasquilado» (crecimiento empobrecedor), «morir de éxito» (enfermedad holandesa), «todo se pega menos la hermosura» (externalidades) y «no hay que reinventar la rueda» (efecto redundancia). Quitados del tema, de la ficha, de la nota del cante y de las instrucciones del vídeo: «todo depende del cristal con que se mira» (Grossman-Helpman: el refrán habla de percepciones subjetivas, no de un efecto que depende del patrón de comercio), «de fuera vendrá quien de casa nos echará» (efecto competencia: solo recoge la mitad del mecanismo) y «quien no se arriesga no pasa la mar» (IOE: genérico).
+
 ## 7. Dudas abiertas
 
 - **D1 (enganche)**: se usa Corea del Sur, como decidió el coordinador; Ghana sale de la propuesta K1 porque su dato no se comprobó. Las cifras de Corea tienen una sola fuente (Banco Mundial).
@@ -202,7 +209,7 @@ Título oficial: «Comercio internacional y crecimiento económico. Especial ref
   - II.2: la tabla `tab:isi-ioe` en versión mínima (las 2 columnas y 4 filas), recomendada; Thirlwall, de palabra o en una línea;
   - apoyo (no se escribe): el *tomahawk* `fig:tomahawk`, la caja del test de Grossman y Helpman, los anexos;
   - II.4 sin pizarra: guion con la dificultad (huevo y gallina) y los 3 bloques de evidencia;
-  - pegatinas, junto a su concepto: «todo se pega menos la hermosura» (externalidades), «no hay que reinventar la rueda» (redundancia), «todo depende del cristal con que se mira» (Grossman y Helpman), «de fuera vendrá quien de casa nos echará» (efecto competencia), «quien no se arriesga no pasa la mar» (IOE);
+  - dichos, junto a su concepto: «todo se pega menos la hermosura» (externalidades) y «no hay que reinventar la rueda» (redundancia);
   - Corea vuelve 2 veces en su viñeta: de imitar a innovar (difusión) y la IOE desde los 60 (11 % → 44 % de exportaciones sobre el PIB).
 - **Conclusión** (1′, `modo: guion`, sin pizarra): empieza por «En conclusión,»; recapitulación en 3 ideas, relevancia con las caídas del comercio de 2009 y 2020, extensiones sin números de tema, opinión (condición necesaria, no suficiente) e **idea final**: «¿qué fue antes, el huevo o la gallina?… ninguno de los 2, porque se alimentan el uno al otro». Es la última frase; nada de agradecimientos.
 

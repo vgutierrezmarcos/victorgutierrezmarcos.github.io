@@ -267,7 +267,7 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 - **Bloque II** (11′30″):
   - `pagos-opciones` (al menos los 2 compradores), con «el que paga, manda»;
   - los 3 perfiles de `estrategias-opciones` a mano alzada;
-  - `paridad-put-call` construido por partes (bono + *call* a la izquierda; acción + *put* a la derecha; las 2 sumas iguales), con «dos caras de la misma moneda» junto a la función clave;
+  - `paridad-put-call` construido por partes (bono + *call* a la izquierda; acción + *put* a la derecha; las 2 sumas iguales) junto a la función clave;
   - la tabla de determinantes en versión mínima;
   - `arbol-binomial` con $\Delta=1/3$, $\pi=2/3$ y $c\approx9{,}09$, contado casi de palabra («la probabilidad real no aparece»);
   - Black-Scholes, solo la función clave; $N(d_2)$, $N(d_1)$, sonrisa y VIX van de palabra o en `apunte`.
@@ -280,3 +280,9 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 - **Gráfico conjunto por partes**: no hay un gráfico único del tema. Lo que se va completando es la columna del guion (con las 3 funciones clave a la derecha). Al final la pizarra queda con el guion y las 3 funciones clave.
 - **No se dicen números de tema en voz alta**: las extensiones se nombran por su contenido (opciones reales, estructura temporal de los tipos, crisis de 2008, regulación financiera).
 - **Anexos y notas**: son de profundización y no entran en el guion.
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel añadidos**: Arrow (1972, con Hicks), en los títulos de Arrow de la introducción (cubre a Hicks en la \emph{normal backwardation}); Sharpe (1990, con Markowitz y Miller), en el modelo binomial. Ya estaba Merton-Scholes (1997). Fama y Bernanke solo salen en `\nocite`.
+- **4.º ejercicio**: \vertema{4.A.20} junto a MEFF y BME Clearing.
+- **Dichos**: se conservan «cubrirse las espaldas» (enganche), «cada día tiene su afán» (liquidación diaria), «lo que se gana en los columpios se pierde en los tiovivos» (coste de mantenimiento) y «el que paga, manda» (asimetría de la opción). Se quita «dos caras de la misma moneda» (paridad \emph{put-call}: las 2 carteras pagan lo mismo, no son caras distintas), en el tema, la ficha y las instrucciones del vídeo.

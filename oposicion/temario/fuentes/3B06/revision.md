@@ -192,6 +192,12 @@ Consultas del 05/11/2026 (verificador de datos, salvo el enganche, que consultó
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Quitadas o reescritas 2 indicaciones de pizarra o de caja («se borra», «recuadrada en la esquina», «(caja gris)»…) en el texto del tema, conservando tiempos y orden del cante; su contenido va a «Instrucciones para el vídeo». Títulos largos (PDF actual): II.1: corte tras «Competencia en cantidades:», con `\cortetitulo`. Sin `c_K` en el tema. |
 
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: ya tenían nota Krugman (2008) y Frisch y Tinbergen (1969). Añadidas: Ohlin (1977) y Samuelson (1970), en una nota común en la introducción; Stiglitz (2001), en \textcite{DixitStiglitz1977Monopolistic}; Nash (1994), en el equilibrio de Cournot-Nash del dumping recíproco. Arrow y Romer solo aparecen en \nocite (sin nombre visible): sin nota.
+- **4.º ejercicio**: la nota al pie «Para ampliar, la internacionalización de la empresa española \vertema{4.A.24}» (frase que solo remitía, y a un tema de instrumentos financieros) se cambia por \vertema{4.A.8} (la empresa en España: internacionalización y tamaño) detrás del dato de concentración de las exportadoras.
+- **Dichos y refranes** (ninguno del temario antiguo): se conservan el del enganche, «no vendas miel al colmenero», y, integrados en la frase, «más vale ser cabeza de ratón que cola de león» (Krugman), «no todo el monte es orégano» (Melitz), «pagar con la misma moneda» (dumping recíproco) y «a quien madruga, Dios le ayuda» (economías externas). Quitado «cuantos más, mejor» (centro-periferia: genérico), también de la nota del cante y de las instrucciones del vídeo.
+
 ## 7. Dudas abiertas
 
 **Estructura (aplicada la opción recomendada por coherencia):**
@@ -288,12 +294,11 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **Gráfico conjunto por partes**:
   - Al empezar el I se dibuja en la esquina izquierda la **tabla 3 × 3 vacía**: filas, competencia perfecta, monopolística y oligopolio; columnas, homogéneo, vertical y horizontal; con H-O-S ya en su casilla.
   - Se rellena al presentar cada modelo: Krugman; «+ heterogeneidad: Melitz»; Brander-Krugman; Eaton-Kierzkowski; Shaked-Sutton; Falvey, en competencia perfecta-vertical. Se queda todo el cante y en la conclusión se señala.
-  - Junto a cada casilla, su pegatina:
+  - Junto a cada casilla, su dicho:
     - «más vale ser cabeza de ratón que cola de león» (Krugman);
     - «no todo el monte es orégano» (Melitz);
     - «pagar con la misma moneda» (dumping recíproco);
-    - «a quien madruga, Dios le ayuda» (economías externas);
-    - «cuantos más, mejor» (centro-periferia).
+    - «a quien madruga, Dios le ayuda» (economías externas).
 - **Funciones clave que se conservan**: `eq:precio-krugman` bajo la tabla, durante todo el cante; debajo se anota el margen de cada modelo (constante con CES, decreciente en Krugman, 1979, el mismo para cada φ en Melitz). `eq:umbrales-melitz` durante el I.3. `eq:reaccion-dumping` durante el II. `eq:dinamica-cp` durante el III.1.
 - **Gráficos imprescindibles, por capas** (en `graficos-pedidos.json`):
   - `krugman-ppzz`: PP, ZZ, E0, ZZ′ y E1;
