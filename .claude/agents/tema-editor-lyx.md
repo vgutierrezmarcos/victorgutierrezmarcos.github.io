@@ -86,12 +86,18 @@ sencillo y solo las órdenes de `tcee.sty`):
     conjunción; nunca una palabra sola) y márcalo con `\cortetitulo`
     (`\subsection{Los hechos:\cortetitulo ¿los reproduce el modelo?}`); en la
     web y en Word es un espacio. verificar-tema.py avisa de los largos con «:».
-  - **Gráfico o imagen**: lo dibujado (TikZ, pgfplots, infografías: hay
-    `graficos/x.tex`) va en `figure` con `\label{fig:…}` y se cita
-    «gráfico~\ref{fig:…}»; un fichero pegado tal cual (jpg, png, pdf sin
-    `.tex`: fotos, capturas, láminas) va en `\begin{imagen}…\end{imagen}` (o
-    `imagencaja` dentro de una caja) con `\label{img:…}` y se cita
-    «imagen~\ref{img:…}». Cada tipo tiene su numeración.
+  - **Gráfico, figura o imagen** (CRITERIOS §7): lo dibujado con ejes,
+    curvas o datos, o un diagrama analítico de un modelo (hay
+    `graficos/x.tex`), va en `figure` con `\label{fig:…}` y se cita
+    «gráfico~\ref{fig:…}»; un esquema o infografía dibujada que no es un
+    gráfico (mapa conceptual, cajas y flechas, cascada de cuentas, línea de
+    tiempo, cuadro comparativo dibujado) va en
+    `\begin{infografia}…\end{infografia}` (`infografiacaja` dentro de una
+    caja) con `\label{figu:…}` y se cita «la figura~\ref{figu:…}»; un
+    fichero pegado tal cual (jpg, png, pdf sin `.tex`: fotos, capturas,
+    láminas) va en `\begin{imagen}…\end{imagen}` (o `imagencaja`) con
+    `\label{img:…}` y se cita «imagen~\ref{img:…}». Cada tipo tiene su
+    numeración.
   - **El esquema enlaza solo**: cada línea lleva al apartado del mismo orden
     (I., II.…; «1.», «2.» sangrados = sus `\subsection` en orden), así que el
     número de cada línea es el orden real; no escribas `\hyperref` en él.
@@ -165,7 +171,10 @@ sencillo y solo las órdenes de `tcee.sty`):
   cópialas de `_trabajo/media/` a `D/graficos/` con un nombre descriptivo.
   Las tablas van en LaTeX (`tabular` con `booktabs`) dentro de `table`. Un
   gráfico o una tabla dentro de una caja (anotaciones, ideaclave…) va en
-  `figuracaja`/`tablacaja`, no en `figure`/`table` (CRITERIOS §7). Una
+  `figuracaja`/`tablacaja` (`infografiacaja` si es una figura), no en
+  `figure`/`table` (CRITERIOS §7). Un esquema o infografía que no es un
+  gráfico va en `\begin{infografia}[H]` con `\label{figu:<nombre>}`
+  («Figura n»). Una
   foto, captura o lámina (jpg/png, pdf sin `.tex`) no es un gráfico: va en
   `\begin{imagen}[H]` con `\label{img:<nombre>}` («Imagen n», numeración
   aparte; `imagencaja` dentro de una caja).

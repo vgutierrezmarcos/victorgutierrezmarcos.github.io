@@ -129,7 +129,7 @@ Paso al tiempo. Nadie sabe cuántas preguntas habrá ni cuánto pesará cada una
 
 [Aparece: cifras: 13 de 14 (dictámenes de 2011 a 2026) · 1.ª (casi siempre, la primera pregunta)] [A mano: rodea cae/cifra 1] Paso al primer bloque, el perfil cíclico. Es la pregunta más larga y la que casi siempre cae: en trece de los catorce dictámenes desde 2011, casi siempre la primera. ¿En qué fase está la economía y desde cuándo? ¿Qué tira del crecimiento? ¿Crece por encima o por debajo de su potencial?
 
-#### Tres pasos, siempre los mismos [slide · § I · gráfico 1 · pág. 4]
+#### Tres pasos, siempre los mismos [slide · § I · figura 1 · pág. 4]
 
 [Slide: gráfico `esquema-perfil-ciclico`, capa 1]
 
@@ -161,7 +161,7 @@ Paso al tiempo. Nadie sabe cuántas preguntas habrá ni cuánto pesará cada una
 
 ### I.2. Etapas: tendencia, ciclo y fases
 
-#### Tendencia y ciclo [pizarra entera · § I.2 · gráfico 2 · pág. 6]
+#### Tendencia y ciclo [pizarra entera · § I.2 · gráfico 1 · pág. 6]
 
 [Pizarra: gráfico `ciclo-tendencia`, capa 2] Para dividir la serie en fases hay que separar dos movimientos que el cuadro mezcla. Lo dibujo: en el eje horizontal, el tiempo; en el vertical, el PIB real en logaritmos. La tendencia, la línea recta, dice hacia dónde va la economía a largo plazo.
 
@@ -171,7 +171,7 @@ Paso al tiempo. Nadie sabe cuántas preguntas habrá ni cuánto pesará cada una
 
 [Pizarra: gráfico `ciclo-tendencia`, capa 6] Y la distancia vertical entre el PIB y su tendencia es la brecha de producción; aquí, negativa. Ojo: un salto de nivel que no se deshace no es una recesión pasajera, sino un cambio estructural.
 
-#### Las cuatro fases, según la brecha [slide · § I.2 · gráfico 3 · pág. 7]
+#### Las cuatro fases, según la brecha [slide · § I.2 · gráfico 2 · pág. 7]
 
 [Slide: gráfico `fases-ciclo-brecha`, capa 1]
 
@@ -233,7 +233,7 @@ En el dictamen se usan cuatro fases, que se reconocen con la brecha. Trazo su ej
 
 [Aparece: cuadro «Nota al opositor»: Un salto puntual del PIB sin la renta: multinacionales que trasladan activos (Irlanda, 2015).] [A mano: rodea rnb/celda 1,1] Tercer medidor: el PIB frente a la renta nacional bruta, que ya tenemos escrita. El PIB es lo que se produce dentro; la renta, lo que ganan los residentes. Si la renta es menor que el PIB, el país paga fuera más rentas de las que recibe: un deudor neto, o un país con mucha inversión extranjera que repatría beneficios. Si es mayor, un acreedor neto.
 
-#### Indicadores adelantados y de alta frecuencia [slide · § I.2 · gráfico 4 · pág. 8]
+#### Indicadores adelantados y de alta frecuencia [slide · § I.2 · gráfico 3 · pág. 8]
 
 [Slide: gráfico `comovimientos`]
 
@@ -251,7 +251,7 @@ En el dictamen se usan cuatro fases, que se reconocen con la brecha. Trazo su ej
 
 [Aparece: cuadro «La idea clave»: Las contribuciones se miden en puntos porcentuales: si el PIB crece un 3 % y la interna aporta 2 puntos, de los 3 puntos, 2 se deben a ella.] [Aparece: cuadro «Cálculo tipo (A.3)»: Si el consumo pesa el 55 % del PIB y crece un 2 %, contribuye 0,55 × 2 = 1,1 pp.] [A mano: subraya pp] La primera llave es la demanda interna: consumo, inversión y consumo público. La segunda, la externa: exportaciones menos importaciones, que restan. Y una idea que hay que decir sí o sí: las contribuciones se miden en puntos porcentuales, no en porcentaje. Si el PIB crece un tres y la interna aporta dos puntos, no ha crecido un dos por ciento: de los tres puntos, dos se deben a ella.
 
-#### Así se lee: la zona del euro [slide · § I.4 · gráfico 5 · pág. 14]
+#### Así se lee: la zona del euro [slide · § I.4 · gráfico 4 · pág. 14]
 
 [Slide: gráfico `contribuciones-pib-zona-euro`]
 
@@ -281,7 +281,7 @@ En el dictamen se usan cuatro fases, que se reconocen con la brecha. Trazo su ej
 
 [Aparece: cuadro «La idea clave»: Si suben con fuerza en una recesión, lo probable es una respuesta discrecional: se analiza en la política fiscal (V.3).] Las existencias pesan poco, pero son muy procíclicas: en las recesiones las empresas dejan de reponerlas, y una acumulación excesiva puede anunciar la fase bajista. El consumo y la inversión públicos responden a decisiones políticas: en las avanzadas son acíclicos o algo contracíclicos, en muchos emergentes procíclicos, y si suben con fuerza en una recesión, lo probable es una respuesta discrecional, que se analiza en la política fiscal.
 
-#### La demanda externa en el perfil cíclico [slide · § I.4 · gráfico 7 · pág. 19]
+#### La demanda externa en el perfil cíclico [slide · § I.4 · gráfico 6 · pág. 19]
 
 [Slide: gráfico `pib-comercio-mundial`]
 
@@ -367,7 +367,7 @@ En el dictamen se usan cuatro fases, que se reconocen con la brecha. Trazo su ej
 
 [Aparece: viñetas: Actividad: demografía, incorporación de la mujer, años de estudio, incentivos (jubilación, prestaciones, fiscalidad) / Empleo: a partir de qué crecimiento del PIB se crea, y con qué elasticidad] La tasa de actividad depende de la demografía, de la incorporación de la mujer, de los años de estudio y de los incentivos, como la jubilación, las prestaciones o la fiscalidad, y es clave para la sostenibilidad del Estado del bienestar. Y la variación del empleo dice a partir de qué crecimiento del PIB se crea empleo, y con qué elasticidad.
 
-#### Zona del euro: empleo y horas [slide · § II.1 · gráfico 9 · pág. 25]
+#### Zona del euro: empleo y horas [slide · § II.1 · gráfico 8 · pág. 25]
 
 [Slide: gráfico `empleo-horas-actividad-zona-euro`]
 
@@ -395,7 +395,7 @@ En el dictamen se usan cuatro fases, que se reconocen con la brecha. Trazo su ej
 
 [Aparece: cuadro «Umbrales»: PDM: CLU nominales +9 % en 3 años en el euro (+12 % fuera) / Referencia: salarios = productividad + objetivo de inflación (CLU reales estables)] [A mano: rodea calculo/fila 5] ¿Cómo se leen? Costes nominales que crecen más que la inflación anticipan presiones inflacionistas y menos beneficio; más que en los socios, pérdida de competitividad; y costes que crecen poco con mucho paro, una devaluación interna. El umbral del procedimiento de desequilibrios: un crecimiento de más del nueve por ciento en tres años en la zona del euro, doce fuera.
 
-#### Dos cautelas [slide · § II.1 · gráfico 10 · pág. 26]
+#### Dos cautelas [slide · § II.1 · gráfico 9 · pág. 26]
 
 [Slide: gráfico `pib-por-pet-espana`]
 
@@ -409,7 +409,7 @@ En el dictamen se usan cuatro fases, que se reconocen con la brecha. Trazo su ej
 
 ### II.1. Trabajo: qué tipo de paro hay
 
-#### Qué tipo de paro hay [slide · § II.1 · gráfico 12 · pág. 29]
+#### Qué tipo de paro hay [slide · § II.1 · figura 3 · pág. 29]
 
 [Slide: gráfico `esquema-tipos-paro`, capa 1]
 
@@ -487,7 +487,7 @@ La inflación se ha preguntado sola, sus factores o su cambio de tendencia, o co
 
 ### III.1. Precios: IPC, deflactor y subyacente
 
-#### IPC frente a deflactor [slide · § III.1 · gráfico 14 · pág. 34]
+#### IPC frente a deflactor [slide · § III.1 · figura 4 · pág. 34]
 
 [Slide: gráfico `esquema-ipc-deflactor`, capa 1]
 
@@ -505,7 +505,7 @@ La inflación es el aumento sostenido y generalizado del nivel de precios, no el
 
 [Aparece: gráfico `esquema-ipc-deflactor`, capa 6] [Aparece: cuadro «La idea clave»: IPC > deflactor: inflación importada / Salario real del trabajador: con el IPC / Coste real para la empresa: con el deflactor] De ahí la lectura que importa: un IPC por encima del deflactor apunta a inflación importada, energía, alimentos o depreciación; por debajo, a que suben más los precios de lo que el país produce y no consume, como sus exportaciones. Y el salario real del trabajador se deflacta con el IPC; el coste real para la empresa, con el deflactor.
 
-#### Inflación subyacente y efecto base [slide con panel de pizarra (34 %) · § III.1 · gráfico 15 · pág. 35]
+#### Inflación subyacente y efecto base [slide con panel de pizarra (34 %) · § III.1 · gráfico 11 · pág. 35]
 
 [Slide: gráfico `iapc-zona-euro`]
 
@@ -521,7 +521,7 @@ La inflación es el aumento sostenido y generalizado del nivel de precios, no el
 
 [Aparece: cuadro «Nota al opositor»: Shapiro (2022): con esa regla se descompone la inflación en la parte de oferta y la de demanda.] [A mano: rodea choque/celda 1,4] [A mano: rodea choque/celda 2,4] Antes de buscar el origen, se clasifica el choque. Un choque de demanda lleva precios y cantidades en el mismo sentido: más demanda, más producción y más inflación. Uno de oferta los lleva en sentido contrario: menos producción y más inflación. Precios y cantidades en el mismo sentido, demanda; en sentido contrario, oferta.
 
-#### De dónde viene: el triángulo de Gordon [pizarra entera · § III.1 · gráfico 16 · pág. 36]
+#### De dónde viene: el triángulo de Gordon [pizarra entera · § III.1 · figura 5 · pág. 36]
 
 [Pizarra: gráfico `esquema-origen-inflacion`, capa 1] Con eso se busca el origen en el triángulo de Gordon. Dibujo el triángulo con la inflación en el centro.
 
@@ -577,7 +577,7 @@ La inflación es el aumento sostenido y generalizado del nivel de precios, no el
 
 [Aparece: tabla (Efecto | Cuándo | Sobre la balanza; 2 filas)] [Pizarra: escribe «curva J»] Pero a corto plazo la balanza empeora antes de mejorar: es la curva jota. El efecto valor es inmediato, cada importación cuesta más; el efecto volumen tarda, porque hay contratos firmados. Al principio domina el primero; con el tiempo, el segundo.
 
-#### Una devaluación nunca se recomienda sola [slide · § III.2 · gráfico 17 · pág. 40]
+#### Una devaluación nunca se recomienda sola [slide · § III.2 · figura 6 · pág. 40]
 
 [Slide: gráfico `esquema-devaluacion`]
 
@@ -599,7 +599,7 @@ Del régimen cambiario, la intervención se ve en las reservas: si caen mientras
 
 [Aparece: cuadro «La idea clave»: Si la cuota crece aunque el tipo real se aprecie, la no precio es fuerte: paradoja de Kaldor.] La otra cara es la competitividad no precio: vender fuera por calidad, diferenciación, marca, contenido tecnológico, diversificación de productos y mercados, número y tamaño de las empresas exportadoras. Casi nunca viene en el cuadro, y se aproxima con la cuota de mercado de las exportaciones: si crece aunque el tipo real se aprecie, la competitividad no precio es fuerte, como en la paradoja de Kaldor.
 
-#### Perder cuota y los aranceles de un tercero [slide · § B.1 · gráfico 31 · pág. A-14]
+#### Perder cuota y los aranceles de un tercero [slide · § B.1 · figura 17 · pág. A-14]
 
 [Slide: viñetas: Pierde cuota sin perder precio: oferta exportadora o mercados de destino / Receta: I+D, tamaño, diversificación, promoción y acuerdos comerciales]
 
@@ -671,7 +671,7 @@ Y un déficit corriente no es malo en sí, ni un superávit bueno. Es razonable 
 
 ### IV.2. Financiación: cómo se financia
 
-#### De más estable a más volátil [slide · § IV.2 · gráfico 18 · pág. 46]
+#### De más estable a más volátil [slide · § IV.2 · figura 7 · pág. 46]
 
 [Slide: gráfico `esquema-cuenta-financiera`, capa 1]
 
@@ -731,7 +731,7 @@ Segunda pregunta: ¿cómo se financia? «Veamos cómo se financia esta economía
 
 [Aparece: cuadro «La idea clave»: Frenazo súbito: el déficit se cierra en meses, comprimiendo las importaciones: con un gran coste en actividad.] Si la financiación se corta de golpe, el déficit tiene que cerrarse en meses, y el ajuste llega comprimiendo las importaciones, es decir, hundiendo el consumo y la inversión. Ese es el coste de un frenazo súbito.
 
-#### Financiar o ajustar [slide · § IV.4 · gráfico 19 · pág. 51]
+#### Financiar o ajustar [slide · § IV.4 · figura 8 · pág. 51]
 
 [Slide: gráfico `arbol-deficit-corriente`, capa 2]
 
@@ -777,7 +777,7 @@ Segunda pregunta: ¿cómo se financia? «Veamos cómo se financia esta economía
 
 [Aparece: tabla (Si el banco central… | Persigue; 3 filas)] Si el cuadro no dice el objetivo, se deduce de la conducta. Si sube los tipos con fuerza cuando sube la inflación, persigue un objetivo de inflación; si los baja en plena estanflación, pesa la actividad; si mueve tipos o reservas para frenar la moneda, tiene un objetivo cambiario. Y en una unión monetaria, la política responde al ciclo del conjunto, no al del país.
 
-#### El tono: el tipo real frente al natural [slide · § V.1 · gráfico 20 · pág. 53]
+#### El tono: el tipo real frente al natural [slide · § V.1 · figura 9 · pág. 53]
 
 [Slide: gráfico `esquema-tono-politicas`, capa 1]
 
@@ -793,7 +793,7 @@ Segunda pregunta: ¿cómo se financia? «Veamos cómo se financia esta economía
 
 [Aparece: cuadro «Cálculo tipo (A.3)»: Un tipo nominal del 1 % con una inflación del 3 % da un tipo real de −2 %: expansiva aunque el nominal sea positivo.] [Pizarra: fórmula `\funcionclave{\begin{gathered}i_t=r^*+\pi^*+1{,}5\,(\pi_t-\pi^*)+0{,}5\,\mathrm{OG}_t\\ r^*=\pi^*=2~\%\end{gathered}}`] [A mano: rodea og] Como el tipo natural no se observa, se completa con la regla de Taylor: el tipo oficial debería ser el real natural, más el objetivo de inflación, más uno coma cinco veces la desviación de la inflación, más medio por la brecha de producción. Aquí vuelve la brecha de la esquina. Si el tipo oficial está muy por debajo del de la regla, la política es expansiva para lo que piden la inflación y la brecha.
 
-#### Tres matices y la cota cero [slide · § V.1 · gráfico 22 · pág. 55]
+#### Tres matices y la cota cero [slide · § V.1 · gráfico 12 · pág. 55]
 
 [Slide: gráfico `tipos-balance-bce`]
 
@@ -803,7 +803,7 @@ Segunda pregunta: ¿cómo se financia? «Veamos cómo se financia esta economía
 
 ### V.1. Monetaria: canales y eficacia
 
-#### Canales de transmisión [pizarra entera · § V.1 · gráfico 21 · pág. 54]
+#### Canales de transmisión [pizarra entera · § V.1 · figura 10 · pág. 54]
 
 [Pizarra: gráfico `esquema-canales-monetaria`, capa 1] ¿Por dónde llega la política a la economía? Dibujo a la izquierda el tipo oficial y el balance del banco central.
 
@@ -841,7 +841,7 @@ Y dos desequilibrios a vigilar. La dominancia fiscal: cuando el banco central ac
 
 [Aparece: cuadro «Ejemplo de redacción»: «La brecha crédito-PIB indica que la economía se halla por debajo de su tendencia desde 20xx. No hay, por tanto, sobrecalentamiento del crédito».] Del endeudamiento, la deuda de hogares, empresas y Estado, y el flujo de crédito; si buena parte es frente al exterior o en divisas, más vulnerabilidad. La herramienta del ciclo financiero es la brecha crédito-PIB, la versión financiera de la brecha de producción: positiva y creciente, auge del crédito; por encima de dos puntos se recomienda activar el colchón anticíclico.
 
-#### El semáforo de la banca [slide · § V.2 · gráfico 24 · pág. 59]
+#### El semáforo de la banca [slide · § V.2 · figura 11 · pág. 59]
 
 [Slide: gráfico `esquema-semaforo-banca`, capa 1]
 
@@ -913,7 +913,7 @@ La política macroprudencial limita el riesgo sistémico. En la fase alcista, co
 
 [Aparece: cuadro «Cálculo tipo (A.3)»: Saldo −4 %, brecha −2 % (ε = 0,5), intereses 2 %: saldo estructural primario = −4 + 1 + 2 = −1 %. Si el año anterior era −2 %, esfuerzo de +1 punto: contractivo.] [Pizarra: fórmula `\funcionclave{\begin{gathered}b^{pe}=b-\varepsilon\cdot\mathrm{OG}-\text{puntuales}+\text{intereses}\\ \text{esfuerzo}_t=\Delta b^{pe}_t\end{gathered}}`] El saldo tiene cinco variables, en porcentaje del PIB: el saldo público, ingresos menos gastos; el primario, sin intereses; el ajustado por el ciclo; el estructural, sin las medidas puntuales; y el estructural primario. Del total se llega al estructural primario quitando el ciclo, épsilon por la brecha, quitando las medidas puntuales y sumando los intereses.
 
-#### El tono fiscal [slide · § V.1 · gráfico 20 · pág. 53]
+#### El tono fiscal [slide · § V.1 · figura 9 · pág. 53]
 
 [Slide: gráfico `esquema-tono-politicas`]
 
@@ -965,7 +965,7 @@ Las reglas de la Unión mantienen los valores del tratado, un déficit del tres 
 
 [Aparece: cuadro «La idea clave»: Lo que decide: el tipo de interés frente al crecimiento nominal.] [Pizarra: fórmula `\funcionclave{\tau-g=\frac{i-\gamma^N}{1+\gamma^N}\,d}`] Y es lo que decide si la deuda se sostiene: la diferencia entre el tipo de interés y el crecimiento nominal. Igualando la variación a cero, el saldo primario que estabiliza la deuda es esa diferencia por la deuda.
 
-#### El efecto bola de nieve [slide · § V.3 · gráfico 26 · pág. 65]
+#### El efecto bola de nieve [slide · § V.3 · figura 12 · pág. 65]
 
 [Slide: gráfico `esquema-deuda-estabilizadora`]
 
@@ -1001,7 +1001,7 @@ Para enlazar los bloques, dos preguntas guía: ¿es la deuda pública también d
 
 La política fiscal en una crisis depende de su origen. Si la crisis es fiscal, si el problema es la deuda, hay que consolidar aunque cueste actividad. Si es financiera o empresarial con cuentas sanas, conviene dejar actuar a los estabilizadores o incluso estimular. Y ante un choque temporal, rápida al principio, focalizada después, y con un plan de retirada que se anuncia pronto.
 
-#### La inflación y las cuentas públicas [slide · § V.3 · gráfico 27 · pág. 67]
+#### La inflación y las cuentas públicas [slide · § V.3 · figura 13 · pág. 67]
 
 [Slide: gráfico `inflacion-cuentas-publicas`]
 
@@ -1085,7 +1085,7 @@ Recapitulando el bloque: el tono monetario se mide por el nivel del tipo real fr
 
 ### VI.1. Del dato a la recomendación
 
-#### Del dato a la recomendación [slide · § VI.1 · gráfico 29 · pág. 71]
+#### Del dato a la recomendación [slide · § VI.1 · figura 15 · pág. 71]
 
 [Slide: gráfico `esquema-dato-recomendacion`, capa 1]
 
@@ -1179,7 +1179,7 @@ Y la teoría, bloque a bloque. El perfil cíclico, con sus fases, su motor y un 
 
 [Aparece: viñetas: Las contribuciones, en puntos porcentuales / La brecha que no se cierra con mucho crecimiento / El tipo real frente al natural / El esfuerzo: la variación del saldo estructural primario / La bola de nieve: el tipo frente al crecimiento] ¿Por qué importa? Porque cada indicador tiene el mismo esquema: qué mide, cómo se calcula, a partir de qué umbral preocupa, cómo se lee y con qué se cruza. Y porque en cada bloque hay una idea que hay que decir sí o sí: las contribuciones en puntos, la brecha que no se cierra con mucho crecimiento, el tipo real frente al natural, el esfuerzo como variación del saldo estructural primario, la bola de nieve. Son las que separan un análisis de una descripción.
 
-#### Umbrales oficiales y orientativos [slide · § A · gráfico 30 · pág. A-1]
+#### Umbrales oficiales y orientativos [slide · § A · figura 16 · pág. A-1]
 
 [Slide: gráfico `esquema-umbrales-pdm`]
 

@@ -413,7 +413,7 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
         texto = re.sub(r'\\(?:autor|textsc)\{(?:[^{}]|\{[^{}]*\})*\}', r' \\AUTOR ', cuerpo)
         texto = re.sub(r'\\(?:\w*cites?|label|ref|eqref|hyperref|href|url|vertema|vertemacorto|includegraphics|grafico\w*|'
                        r'addbibresource|tcetema|bibliografia)\*?(?:\[[^\]]*\])?\{(?:[^{}]|\{[^{}]*\})*\}', ' ', texto)
-        texto = re.sub(r'\\begin\{(figure|figuracaja|table|tablacaja)\}.*?\\end\{\1\}', ' ', texto, flags=re.S)
+        texto = re.sub(r'\\begin\{(figure|figuracaja|infografia|infografiacaja|imagen|imagencaja|table|tablacaja)\}.*?\\end\{\1\}', ' ', texto, flags=re.S)
         sueltos = []
         texto = re.sub(r'«[^»]*»', ' ', texto)      # títulos de obras y citas literales
         for ap in sorted(apellidos):
@@ -432,38 +432,47 @@ def _linea(tex, pos):
 
 
 def comprobar_graficos_imagenes(tema, tex, errores, datos):
-    """Gráficos e imágenes con numeración propia (Víctor, 11/11/2026): en figure y
-    figuracaja («Gráfico n») solo lo dibujado, un graficos/x.pdf que sale de un
-    graficos/x.tex; en imagen e imagencaja («Imagen n») los ficheros pegados tal
-    cual (jpg, png, pdf sin .tex). Y el texto los cita con su nombre: «gráfico~\\ref»
-    a un gráfico e «imagen~\\ref» a una imagen."""
+    """Gráficos, figuras e imágenes con numeración propia (Víctor, 11 y 13/11/2026):
+    en figure y figuracaja («Gráfico n», fig:) y en infografia e infografiacaja
+    («Figura n», figu:) solo lo dibujado, un graficos/x.pdf que sale de un
+    graficos/x.tex; en imagen e imagencaja («Imagen n», img:) los ficheros pegados
+    tal cual (jpg, png, pdf sin .tex). Y el texto los cita con su nombre:
+    «gráfico~\\ref» a un gráfico, «figura~\\ref» a una figura e «imagen~\\ref» a
+    una imagen."""
     sin = re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), tex)
     tipo_de = {}
-    n_img = 0
-    for m in re.finditer(r'\\begin\{(figure|figuracaja|imagen|imagencaja)\}(.*?)\\end\{\1\}', sin, re.S):
-        es_imagen = m.group(1).startswith('imagen')
-        n_img += es_imagen
+    n_img = n_figu = 0
+    entorno = {'gráfico': 'figure', 'figura': 'infografia', 'imagen': 'imagen'}
+    prefijo = {'gráfico': 'fig:', 'figura': 'figu:', 'imagen': 'img:'}
+    for m in re.finditer(r'\\begin\{(figure|figuracaja|infografia|infografiacaja|imagen|imagencaja)\}(.*?)\\end\{\1\}', sin, re.S):
+        tipo = ('imagen' if m.group(1).startswith('imagen') else
+                'figura' if m.group(1).startswith('infografia') else 'gráfico')
+        n_img += tipo == 'imagen'
+        n_figu += tipo == 'figura'
         for e in re.findall(r'\\label\{([^}]+)\}', m.group(2)):
-            tipo_de[e] = 'imagen' if es_imagen else 'gráfico'
+            tipo_de[e] = tipo
+            if ':' in e and not e.startswith(prefijo[tipo]):
+                errores.append(f'l. {_linea(tex, m.start())}: etiqueta «{e}» en un{"a" if tipo != "gráfico" else ""} {tipo}: '
+                               f'empieza por «{prefijo[tipo]}»')
         for g in re.findall(r'\\(?:grafico|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', m.group(2)):
             base, ext = os.path.splitext(g)
             dibujado = os.path.exists(os.path.join(tema.graficos, os.path.basename(base) + '.tex'))
-            if es_imagen and dibujado:
+            if tipo == 'imagen' and dibujado:
                 errores.append(f'l. {_linea(tex, m.start())}: «{g}» sale de graficos/{os.path.basename(base)}.tex: '
-                               'es un gráfico (figure), no una imagen')
-            elif not es_imagen and not dibujado:
+                               'es un gráfico (figure) o una figura (infografia), no una imagen')
+            elif tipo != 'imagen' and not dibujado:
                 errores.append(f'l. {_linea(tex, m.start())}: «{g}» no tiene .tex fuente (foto, captura, lámina): '
-                               'va en \\begin{imagen} («Imagen n»), no en figure')
+                               f'va en \\begin{{imagen}} («Imagen n»), no en {entorno[tipo]}')
     datos['imagenes'] = n_img
+    datos['figuras_propias'] = n_figu
     for m in re.finditer(r'\b([Gg]r[áa]ficos?|[Ii]m[áa]gen(?:es)?|[Ff]iguras?)[~ ]*\\(?:ref|autoref|pageref)\{([^}]+)\}', sin):
         tipo = tipo_de.get(m.group(2))
         palabra = m.group(1).lower()
         if not tipo:
             continue
-        if palabra.startswith('fig'):
-            errores.append(f'l. {_linea(tex, m.start())}: «{m.group(1)}» → «{tipo}» (no se dice «figura»)')
-        elif (tipo == 'imagen') != palabra.startswith('im'):
-            errores.append(f'l. {_linea(tex, m.start())}: «{m.group(1)}~\\ref{{{m.group(2)}}}» cita un{"a" if tipo == "imagen" else ""} '
+        dice = 'imagen' if palabra.startswith('im') else 'figura' if palabra.startswith('fig') else 'gráfico'
+        if dice != tipo:
+            errores.append(f'l. {_linea(tex, m.start())}: «{m.group(1)}~\\ref{{{m.group(2)}}}» cita un{"a" if tipo != "gráfico" else ""} '
                            f'{tipo}: escribir «{tipo}~\\ref{{…}}»')
 
 
@@ -551,7 +560,7 @@ def verificar(tema):
         for m in re.finditer(patron, tex):
             linea = tex.count('\n', 0, m.start()) + 1
             errores.append(f'{texto} en {tema.archivo}.tex:{linea}: {m.group(0)[:60]}')
-    figuras = [f[1] for f in re.findall(r'\\begin\{(figure|figuracaja|imagen|imagencaja)\}(.*?)\\end\{\1\}', tex, re.S)]
+    figuras = [f[1] for f in re.findall(r'\\begin\{(figure|figuracaja|infografia|infografiacaja|imagen|imagencaja)\}(.*?)\\end\{\1\}', tex, re.S)]
     for i, fig in enumerate(figuras, 1):
         if '\\fuente{' not in fig:
             cap = re.search(r'\\caption\{([^}]*)', fig)

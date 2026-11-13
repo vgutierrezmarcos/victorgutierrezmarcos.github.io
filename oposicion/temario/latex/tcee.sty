@@ -21,6 +21,8 @@
 %   \grafico[ancho]{nombre}; cajas notaopositor, anotaciones, ideaclave y
 %   esquema; figuracaja y tablacaja (gráfico o tabla dentro de una caja);
 %   imagen e imagencaja (foto o fichero pegado: «Imagen n», numeración aparte);
+%   infografia e infografiacaja (esquema, diagrama de cajas y flechas o
+%   infografía propia que no es un gráfico: «Figura n», numeración aparte);
 %   \cortetitulo (punto de corte de un título largo; espacio en web y Word);
 %   \esqenlace (lo pone construir-tema.py en el esquema: no se escribe a mano).
 %   \minutos{2,5}   tras el título de un apartado; entrada decimal, se ve 2′30″.
@@ -415,16 +417,25 @@
   justification=centering,position=top,skip=4pt}
 \captionsetup[figure]{name=Gráfico}
 \captionsetup[table]{name=Tabla}
-% Gráficos e imágenes se numeran por separado (Víctor, 11/11/2026):
-%   figure → «Gráfico n»: todo lo dibujado (TikZ, pgfplots, infografías propias,
-%            es decir, los graficos/*.pdf que salen de un graficos/*.tex);
-%   imagen → «Imagen n»: solo archivos pegados tal cual (jpg, png, o un pdf sin
-%            .tex fuente: fotos, capturas, láminas, figuras de otros).
-% Se escriben igual (\caption, \label{img:…}, \grafico, \fuente) y se citan con
-% «imagen~\ref{img:…}». Dentro de una caja: imagencaja (como figuracaja).
-% En la web y en Word, construir-tema.py las convierte en figuras con la marca
-% tceeimagen y tcee.lua les pone «Imagen n.–».
+% Gráficos, figuras e imágenes se numeran por separado (Víctor, 11 y 13/11/2026):
+%   figure     → «Gráfico n»: gráficos de verdad, dibujados en graficos/*.tex
+%                (ejes, curvas, datos; diagramas analíticos: cruz keynesiana,
+%                caja de Edgeworth, árbol de decisión de un juego…);
+%   infografia → «Figura n»: esquemas e infografías propias, también dibujados
+%                en graficos/*.tex, que no son un gráfico: mapas conceptuales,
+%                cajas y flechas, cascadas de cuentas, líneas de tiempo, cuadros
+%                comparativos dibujados, esquemas de canales o de instituciones;
+%   imagen     → «Imagen n»: solo archivos pegados tal cual (jpg, png, o un pdf
+%                sin .tex fuente: fotos, capturas, láminas, figuras de otros).
+% Se escriben igual (\caption, \label, \grafico, \fuente); las etiquetas son
+% fig:… (gráfico), figu:… (figura) e img:… (imagen) y se citan con
+% «gráfico~\ref{fig:…}», «figura~\ref{figu:…}» e «imagen~\ref{img:…}».
+% Dentro de una caja: figuracaja (gráfico), infografiacaja e imagencaja.
+% En la web y en Word, construir-tema.py convierte figuras e imágenes en
+% figure con la marca tceefigura o tceeimagen y tcee.lua les pone «Figura n.–»
+% o «Imagen n.–».
 \DeclareCaptionType[fileext=loi,placement={htbp}]{imagen}[Imagen][Lista de imágenes]
+\DeclareCaptionType[fileext=lfg,placement={htbp}]{infografia}[Figura][Lista de figuras]
 \newcommand{\fuente}[1]{\par\vspace{2pt}{\centering\footnotesize\itshape Fuente: #1\par}}
 % (Víctor, 12/11/2026) Ningún gráfico se sale de la página ni deja una página
 % en blanco: la altura se limita al 78 % de la caja de texto (queda sitio para
@@ -446,6 +457,7 @@
 \newenvironment{figuracaja}{\tcee@encaja{figure}}{\tcee@fincaja}
 \newenvironment{tablacaja}{\tcee@encaja{table}}{\tcee@fincaja}
 \newenvironment{imagencaja}{\tcee@encaja{imagen}}{\tcee@fincaja}
+\newenvironment{infografiacaja}{\tcee@encaja{infografia}}{\tcee@fincaja}
 
 % --- Notas al pie ---------------------------------------------------------------
 \renewcommand{\footnoterule}{{\color{tceemorado}\hrule width 0.3\textwidth height 0.4pt}\vspace{3pt}}

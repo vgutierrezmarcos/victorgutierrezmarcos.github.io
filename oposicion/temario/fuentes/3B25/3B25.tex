@@ -105,7 +105,7 @@ Para entender los derivados en pocos minutos: en castellano, \url{https://youtu.
 \minutos{7}
 
 \begin{notaopositor}
-En el cante (\tiempo{7}): el guion de 5 pasos ordena todo el tema. I.1, \tiempo{0,5}: de palabra, con los 5 elementos del contrato. I.2, \tiempo{1,75}: la estrella de la cámara frente a la malla bilateral (gráfico~\ref{fig:ccp}), con «cada día tiene su afán» junto a la liquidación diaria, y la tabla~\ref{tab:organizados-otc} en versión mínima o de palabra. I.3, \tiempo{0,75}: el gráfico~\ref{fig:pago-futuro}, largo y corto, y la vuelta al WTI de abril de 2020. I.4, \tiempo{0,75}: de palabra. I.5, \tiempo{3,25}: la paridad \eqref{eq:spot-forward}, con «lo que se gana en los columpios se pierde en los tiovivos»; después, una sola extensión, la del coste de mantenimiento \eqref{eq:coste-mantenimiento}; y el gráfico~\ref{fig:contango} con las 3 trayectorias. La paridad cubierta de intereses, de palabra. La definición legal, la ratio de cobertura, el FRA y las notas son de profundización.
+En el cante (\tiempo{7}): el guion de 5 pasos ordena todo el tema. I.1, \tiempo{0,5}: de palabra, con los 5 elementos del contrato. I.2, \tiempo{1,75}: la estrella de la cámara frente a la malla bilateral (figura~\ref{figu:ccp}), con «cada día tiene su afán» junto a la liquidación diaria, y la tabla~\ref{tab:organizados-otc} en versión mínima o de palabra. I.3, \tiempo{0,75}: el gráfico~\ref{fig:pago-futuro}, largo y corto, y la vuelta al WTI de abril de 2020. I.4, \tiempo{0,75}: de palabra. I.5, \tiempo{3,25}: la paridad \eqref{eq:spot-forward}, con «lo que se gana en los columpios se pierde en los tiovivos»; después, una sola extensión, la del coste de mantenimiento \eqref{eq:coste-mantenimiento}; y el gráfico~\ref{fig:contango} con las 3 trayectorias. La paridad cubierta de intereses, de palabra. La definición legal, la ratio de cobertura, el FRA y las notas son de profundización.
 \end{notaopositor}
 
 \begin{itemize}
@@ -146,15 +146,15 @@ En el cante (\tiempo{7}): el guion de 5 pasos ordena todo el tema. I.1, \tiempo{
   \end{itemize}
 \item El número de contratos vivos en un momento dado es el \concepto{interés abierto} (\emph{open interest}). La mayoría de los contratos no llegan a entregarse: se cierran antes del vencimiento con la operación contraria (quien compró un futuro vende otro igual y se queda con la diferencia de precios).\footnote{Muchos, como los de índices bursátiles, se liquidan por diferencias porque la entrega sería imposible\nocite{Hull2022Options}. Si el tipo de interés no es aleatorio, el precio de un futuro y el de un \emph{forward} con el mismo vencimiento coinciden; si lo es, difieren por la liquidación diaria\nocite{CoxIngersollRoss1981Relation}.}
 \item \emph{Forwards}: se pactan en mercados no organizados u OTC (\emph{over the counter}), de forma bilateral y a medida de las partes. No hay cámara, así que hay \concepto{riesgo de contrapartida}, y la ganancia o la pérdida se liquida al vencimiento. Habitualmente, los futuros se usan para cubrir carteras de acciones y bonos, y los \emph{forwards}, el riesgo de tipo de cambio (seguros de cambio) y de tipo de interés (FRA). Tras 2008, la regulación ha llevado a compensar en una cámara buena parte de lo OTC (\ref{sec:mercados-derivados}).
-\item Las 2 formas conviven porque se complementan (gráfico~\ref{fig:ccp} y tabla~\ref{tab:organizados-otc}): el mercado organizado da liquidez y seguridad, y el OTC, flexibilidad.
+\item Las 2 formas conviven porque se complementan (figura~\ref{figu:ccp} y tabla~\ref{tab:organizados-otc}): el mercado organizado da liquidez y seguridad, y el OTC, flexibilidad.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{Compensación bilateral y compensación con una cámara de contrapartida central}\label{fig:ccp}
+\caption{Compensación bilateral y compensación con una cámara de contrapartida central}\label{figu:ccp}
 \grafico[0.8\textwidth]{ccp}
 \fuente{elaboración propia a partir de \textcite[82]{NunezValdeolivas2019CCP}.}
-\end{figure}
+\end{infografia}
 
 \begin{table}[H]
 \centering
@@ -813,7 +813,7 @@ El binomial se canta casi de palabra: se dibuja el árbol con la acción (100, 1
 \minutos{8}
 
 \begin{notaopositor}
-En el cante (\tiempo{8}): III.1, \tiempo{0,5}: de palabra, «un \emph{swap} es una cartera de \emph{forwards}». III.2, \tiempo{2,5}: el esquema del IRS (gráfico~\ref{fig:irs}) con el ejemplo del banco (\tiempo{1}); FX \emph{swaps} y \emph{currency swaps}, de palabra, con el dato de la Encuesta Trienal (\tiempo{0,5}); permutas de rentabilidad total y Archegos, en una frase (\tiempo{0,25}); CDS con $s\simeq\lambda(1-R)$ y AIG (\tiempo{0,75}). III.3, \tiempo{0,25}: de palabra. III.4, \tiempo{0,75}: cobertura y ventaja comparativa, con la crítica de \autor{Turnbull}, de palabra. III.5, \tiempo{1}: $V_{\mathrm{swap}}=B_{\mathrm{fl}}-B_{\mathrm{fix}}$, que vuelve a la ETTI. III.6, \tiempo{3}: 3 columnas, «tamaño», «reforma de 2009» y «riesgos», con 2 o 3 palabras en cada una; los gráficos de datos no se dibujan. La caja de las líneas \emph{swap} de la Reserva Federal, los otros derivados de crédito y los detalles de la regulación son de profundización.
+En el cante (\tiempo{8}): III.1, \tiempo{0,5}: de palabra, «un \emph{swap} es una cartera de \emph{forwards}». III.2, \tiempo{2,5}: el esquema del IRS (figura~\ref{figu:irs}) con el ejemplo del banco (\tiempo{1}); FX \emph{swaps} y \emph{currency swaps}, de palabra, con el dato de la Encuesta Trienal (\tiempo{0,5}); permutas de rentabilidad total y Archegos, en una frase (\tiempo{0,25}); CDS con $s\simeq\lambda(1-R)$ y AIG (\tiempo{0,75}). III.3, \tiempo{0,25}: de palabra. III.4, \tiempo{0,75}: cobertura y ventaja comparativa, con la crítica de \autor{Turnbull}, de palabra. III.5, \tiempo{1}: $V_{\mathrm{swap}}=B_{\mathrm{fl}}-B_{\mathrm{fix}}$, que vuelve a la ETTI. III.6, \tiempo{3}: 3 columnas, «tamaño», «reforma de 2009» y «riesgos», con 2 o 3 palabras en cada una; los gráficos de datos no se dibujan. La caja de las líneas \emph{swap} de la Reserva Federal, los otros derivados de crédito y los detalles de la regulación son de profundización.
 \end{notaopositor}
 
 \begin{itemize}
@@ -857,18 +857,18 @@ En el cante (\tiempo{8}): III.1, \tiempo{0,5}: de palabra, «un \emph{swap} es u
   \item el \emph{plain vanilla}, fijo contra variable: una parte paga un tipo fijo, el \concepto{tipo \emph{swap}} $R_s$, y la otra el Euríbor (o el €STR, en los \emph{overnight index swaps}, OIS);
   \item el de \emph{base} (\emph{basis swap}), variable contra variable (por ejemplo, el Euríbor a 3 meses contra el de 6).
   \end{itemize}
-\item \emph{Ejemplo de cobertura}: un banco tiene préstamos hipotecarios a tipo variable (Euríbor más un diferencial) y se financia con depósitos a tipo fijo. Si el Euríbor baja, sus ingresos caen y sus costes no. Para cubrirse entra en un IRS en el que paga variable y recibe fijo: si el Euríbor baja, paga menos en el \emph{swap}, y lo que pierde en el balance lo gana en la permuta (gráfico~\ref{fig:irs}).
+\item \emph{Ejemplo de cobertura}: un banco tiene préstamos hipotecarios a tipo variable (Euríbor más un diferencial) y se financia con depósitos a tipo fijo. Si el Euríbor baja, sus ingresos caen y sus costes no. Para cubrirse entra en un IRS en el que paga variable y recibe fijo: si el Euríbor baja, paga menos en el \emph{swap}, y lo que pierde en el balance lo gana en la permuta (figura~\ref{figu:irs}).
   \begin{itemize}
   \item Su contraparte, que paga fijo y recibe variable, puede ser una empresa con un préstamo a tipo variable que quiere fijar su coste. Cada una se cubre de un riesgo distinto: el banco, de las bajadas de tipos, y la empresa, de las subidas.
   \end{itemize}
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{Permuta de tipos de interés fijo contra variable}\label{fig:irs}
+\caption{Permuta de tipos de interés fijo contra variable}\label{figu:irs}
 \grafico[0.75\textwidth]{irs}
 \fuente{elaboración propia a partir de \textcite[cap.~7]{Hull2022Options}.}
-\end{figure}
+\end{infografia}
 
 \subsubsection{\emph{Swaps} de divisas}\label{sec:swaps-divisas}
 
@@ -1151,11 +1151,11 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
 \section{Anexo: funcionamiento y participantes\cortetitulo{} de las cámaras de contrapartida central}\label{anexo:ccp}
 
 \begin{itemize}
-\item Las \concepto{entidades de contrapartida central} (ECC) se interponen en nombre propio en las operaciones de compraventa de instrumentos financieros y se convierten en vendedoras frente a cada comprador y en compradoras frente a cada vendedor. Cuando una operación se registra en una ECC, da lugar a una compra y a una venta, y las 2 tienen a la ECC como contrapartida (gráfico~\ref{fig:ccp})\nocite{NunezValdeolivas2019CCP,Gregory2014Central}.
+\item Las \concepto{entidades de contrapartida central} (ECC) se interponen en nombre propio en las operaciones de compraventa de instrumentos financieros y se convierten en vendedoras frente a cada comprador y en compradoras frente a cada vendedor. Cuando una operación se registra en una ECC, da lugar a una compra y a una venta, y las 2 tienen a la ECC como contrapartida (figura~\ref{figu:ccp})\nocite{NunezValdeolivas2019CCP,Gregory2014Central}.
 \item Así, la posición abierta de la ECC es nula; si deja de serlo por el incumplimiento de un miembro, tiene que actuar enseguida para volver a la posición neta nula. Pero, al interponerse en todos los contratos, queda expuesta al riesgo de contrapartida con el comprador y con el vendedor originales.\footnote{El riesgo de contrapartida es el de que la contraparte no cumpla sus obligaciones. Frente a una ECC, esas obligaciones son depositar y reponer el margen inicial, depositar el margen de variación y las que resultan de la compra o la venta del subyacente al vencimiento.}
 \item \emph{Compensación}: uno de los principales beneficios de la compensación centralizada frente a la bilateral es facilitar el neteo de posiciones. Como la ECC es contraparte de todas las operaciones, las posiciones de signo contrario se netean automáticamente, lo que reduce o elimina la exposición del miembro.\footnote{Las ECC facilitan también la \emph{compresión de carteras}, una técnica por la que 2 o más contrapartes sustituyen sus posiciones por otras de menor nocional y el mismo riesgo de mercado. En la compensación bilateral, en cambio, una entidad puede tener un riesgo de mercado neto pequeño y, a la vez, un riesgo de contrapartida grande con cada una de las entidades con las que ha operado, porque las posiciones con contrapartes distintas no se compensan entre sí.}
-\item \emph{Miembros y clientes}: las ECC son sistemas cerrados que solo operan con sus \emph{miembros} y, a través de ellos, con sus \emph{clientes}. Si un miembro negocia con el cliente de otro, en la fase de compensación la ECC se interpone entre los 2 miembros, y el miembro del cliente hace con él una operación espejo (gráfico~\ref{fig:ccp-miembros}). Para ser miembro, la ECC exige requisitos de solvencia y de capacidad operativa, para reducir el riesgo de impago.
-\item \emph{La cascada ante incumplimientos} (\emph{default waterfall}): si un miembro incumple y su posición da pérdidas, la ECC las cubre por este orden (gráfico~\ref{fig:ccp-cascada}):
+\item \emph{Miembros y clientes}: las ECC son sistemas cerrados que solo operan con sus \emph{miembros} y, a través de ellos, con sus \emph{clientes}. Si un miembro negocia con el cliente de otro, en la fase de compensación la ECC se interpone entre los 2 miembros, y el miembro del cliente hace con él una operación espejo (figura~\ref{figu:ccp-miembros}). Para ser miembro, la ECC exige requisitos de solvencia y de capacidad operativa, para reducir el riesgo de impago.
+\item \emph{La cascada ante incumplimientos} (\emph{default waterfall}): si un miembro incumple y su posición da pérdidas, la ECC las cubre por este orden (figura~\ref{figu:ccp-cascada}):
   \begin{enumerate}
   \item el margen inicial del incumplidor y su aportación al fondo de garantía: «quien incumple paga», lo que reduce el riesgo moral;
   \item una parte del capital propio de la ECC (\emph{skin in the game}), que alinea sus incentivos con los de los miembros;
@@ -1165,19 +1165,19 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
 \item \emph{Canales de contagio}: si una ECC gestiona mal el incumplimiento de un miembro, o si ella misma incumple, las pérdidas y la escasez de liquidez pueden pasar a los demás miembros, a otras ECC vinculadas, a los mercados que compensa y a los bancos centrales y depositarios de valores con los que opera, y de ahí a otros mercados y zonas monetarias. Por eso EMIR las regula y supervisa, y exige que tengan planes de recuperación y resolución\nocite{NunezValdeolivas2019CCP} \vertema{3.B.27}.
 \end{itemize}
 
-\begin{figure}[tbp]
+\begin{infografia}[tbp]
 \centering
-\caption{Miembros y clientes de una cámara de contrapartida central}\label{fig:ccp-miembros}
+\caption{Miembros y clientes de una cámara de contrapartida central}\label{figu:ccp-miembros}
 \grafico[0.6\textwidth]{ccp-miembros}
 \fuente{elaboración propia a partir de \textcite[83]{NunezValdeolivas2019CCP}.}
-\end{figure}
+\end{infografia}
 
-\begin{figure}[tbp]
+\begin{infografia}[tbp]
 \centering
-\caption{La cascada de recursos de una cámara ante el incumplimiento de un miembro}\label{fig:ccp-cascada}
+\caption{La cascada de recursos de una cámara ante el incumplimiento de un miembro}\label{figu:ccp-cascada}
 \grafico[0.7\textwidth]{ccp-cascada}
 \fuente{elaboración propia a partir de \textcite[90]{NunezValdeolivas2019CCP}.}
-\end{figure}
+\end{infografia}
 
 % ==========================================================================
 \section{Anexo: expectativas, \emph{normal backwardation} y \emph{contango}}\label{anexo:contango}

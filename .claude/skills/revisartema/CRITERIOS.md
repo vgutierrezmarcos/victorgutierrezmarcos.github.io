@@ -639,17 +639,35 @@ el texto original y lo que se hizo.
      también es gris (o transparente), nunca una caja blanca encima.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
   capturas de tablas se convierten en tablas LaTeX.
-- **Gráficos e imágenes, con numeración propia** (Víctor, 11/11/2026, 4.ª
-  tanda). **Gráfico n** (`figure`, `figuracaja`, `\label{fig:…}`, «gráfico~\ref{fig:…}»):
-  todo lo dibujado (TikZ, pgfplots, infografías propias: un `graficos/x.pdf`
-  que sale de `graficos/x.tex`). **Imagen n** (`\begin{imagen}`, `imagencaja`,
-  `\label{img:…}`, «imagen~\ref{img:…}»): solo los ficheros pegados tal cual
-  (jpg, png o un pdf sin `.tex` fuente: fotos, capturas, láminas, figuras de
-  otros). Mismo `\caption`, `\grafico` y `\fuente`. `verificar-tema.py` da
-  error si un fichero sin `.tex` va en `figure` (o al revés) o si el texto
-  dice «gráfico» de una imagen.
+- **Gráficos, figuras e imágenes, cada uno con su numeración** (Víctor,
+  11/11/2026, 4.ª tanda, y 13/11/2026). Los tres se escriben igual
+  (`\caption`, `\label`, `\grafico`, `\fuente`):
+  - **Gráfico n** (`figure`, `figuracaja`, `\label{fig:…}`,
+    «gráfico~\ref{fig:…}»): gráficos de verdad, dibujados en `graficos/x.tex`:
+    con ejes, curvas o datos (pgfplots, series, barras, mapas de datos) y los
+    diagramas analíticos de un modelo (cruz keynesiana, caja de
+    Edgeworth, árbol de un juego o de una lotería, diagrama de fases).
+  - **Figura n** (`\begin{infografia}`, `infografiacaja` dentro de una caja,
+    `\label{figu:…}`, «figura~\ref{figu:…}», en femenino: «la figura»,
+    «esta figura»): esquemas e infografías propias, también dibujados en
+    `graficos/x.tex`, que no son un gráfico: mapas conceptuales, cajas y
+    flechas, cascadas y sucesiones de cuentas, balances en T, líneas de
+    tiempo y cronologías, cuadros comparativos dibujados, esquemas de canales,
+    de agentes o de pasos, escalas cualitativas, cuadrantes de texto sin
+    curvas, ilustraciones (urnas, velas, bañera). La prueba: si no tiene ejes
+    con magnitudes ni curvas de un modelo, es figura.
+  - **Imagen n** (`\begin{imagen}`, `imagencaja`, `\label{img:…}`,
+    «imagen~\ref{img:…}»): solo los ficheros pegados tal cual (jpg, png o un
+    pdf sin `.tex` fuente: fotos, capturas, láminas, figuras de otros).
+
+  `verificar-tema.py` da error si un fichero sin `.tex` va en `figure` o
+  `infografia` (o uno dibujado en `imagen`), si la etiqueta no lleva el
+  prefijo de su tipo o si el texto llama «gráfico» a una figura o a una
+  imagen (o al revés). En las notas del cante: «los gráficos y figuras
+  imprescindibles son…» cuando hay de los dos.
 - Si un gráfico o una tabla pertenecen a una caja (anotaciones, ejemplo…),
-  van dentro de ella (Víctor, 18/10/2026): con `figuracaja` o `tablacaja` de
+  van dentro de ella (Víctor, 18/10/2026): con `figuracaja`, `infografiacaja`,
+  `imagencaja` o `tablacaja` de
   `tcee.sty` en lugar de `figure`/`table` (mismo `\caption`, `\label` y
   `\fuente`, misma numeración; en la web y en Word salen dentro de la caja).
 

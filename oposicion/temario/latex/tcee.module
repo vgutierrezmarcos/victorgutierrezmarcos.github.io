@@ -5,8 +5,9 @@
 #ejercicio de la oposición TCEE: autor, concepto, referencia a otro tema,
 #fuente, minutos del cante (\minutos y \tiempo), gráfico en una nota al
 #pie (\graficonota) y cajas (nota al opositor, anotaciones, idea clave,
-#esquema; gráfico, imagen y tabla dentro de una caja) y el flotante «Imagen»
-#(jpg/png pegados tal cual; numeración aparte de los gráficos). \funcionclave y \optim llevan fórmulas como argumento: en LyX
+#esquema; gráfico, figura, imagen y tabla dentro de una caja) y los flotantes
+#«Figura» (esquemas e infografías propias) e «Imagen» (jpg/png pegados tal
+#cual), cada uno con su numeración, aparte de los gráficos. \funcionclave y \optim llevan fórmulas como argumento: en LyX
 #van en código TeX (ERT), como las deja tex2lyx. El documento carga tcee.sty en el preámbulo.
 #DescriptionEnd
 # Autor: Víctor Gutiérrez Marcos
@@ -160,6 +161,15 @@ InsetLayout Flex:Imagen_en_caja
 	MultiPar              true
 End
 
+InsetLayout Flex:Figura_en_caja
+	LyxType               custom
+	LabelString           "Figura en caja"
+	LatexType             environment
+	LatexName             infografiacaja
+	Decoration            classic
+	MultiPar              true
+End
+
 InsetLayout Flex:Tabla_en_caja
 	LyxType               custom
 	LabelString           "Tabla en caja"
@@ -191,4 +201,21 @@ Float
 	IsPredefined          true
 	UsesFloatPkg          false
 	RefPrefix             img
+End
+
+# Figura (tcee.sty, \DeclareCaptionType{infografia}): esquemas, mapas
+# conceptuales, cajas y flechas, cascadas de cuentas, líneas de tiempo e
+# infografías propias dibujadas en graficos/x.tex que no son un gráfico
+# (sin ejes ni datos); los gráficos analíticos y de datos van en figure
+Float
+	Type                  infografia
+	GuiName               Figura
+	Placement             H
+	Extension             lfg
+	NumberWithin          none
+	Style                 plain
+	ListName              "Lista de figuras"
+	IsPredefined          true
+	UsesFloatPkg          false
+	RefPrefix             figu
 End

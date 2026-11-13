@@ -480,7 +480,7 @@ PIB nominal & Reparte las perturbaciones de oferta & Datos tardíos y revisados;
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{3 ecuaciones} (gráfico~\ref{fig:nek-esquema}):
+\item \emph{3 ecuaciones} (figura~\ref{figu:nek-esquema}):
   \begin{align}
   x_t&=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big) \label{eq:is-dinamica}\\
   \pi_t&=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t \label{eq:nkpc}\\
@@ -493,12 +493,12 @@ PIB nominal & Reparte las perturbaciones de oferta & Datos tardíos y revisados;
   \end{itemize}
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{fig:nek-esquema}
+\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{figu:nek-esquema}
 \grafico[0.6\textwidth]{nek-esquema}
 \fuente{elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}.}
-\end{figure}
+\end{infografia}
 
 \begin{itemize}
 \item \emph{Objetivo del banco central}: la aproximación de segundo orden al bienestar de los hogares da la pérdida\nocite{RotembergWoodford1997Optimization,Woodford2003Interest}
@@ -751,7 +751,7 @@ Lecturas sobre este debate: \textcite[24 y ss.]{BlanchardSummers2017Rethinking},
 \begin{itemize}
 \item En «La creación de dinero en la economía moderna» (\emph{Money Creation in the Modern Economy}, \emph{Bank of England Quarterly Bulletin}), 3 economistas del Banco de Inglaterra sostienen que el multiplicador puede servir para introducir el dinero y la banca en los manuales, pero no describe cómo se crea el dinero hoy: los bancos centrales no fijan la cantidad de reservas, sino su precio, el tipo de interés\nocite{McLeayRadiaThomas2014Money}: \url{https://www.bankofengland.co.uk/quarterly-bulletin/2014/q1/money-creation-in-the-modern-economy}.
 \item \emph{La mayor parte del dinero son depósitos}: el 97~\% del dinero en sentido amplio en el Reino Unido\nocite{McLeayRadiaThomas2014Money}; en la zona del euro, el efectivo es solo el 9~\% de M3\nocite{BCE2026BSI} (anexo~\ref{anexo:agregados}).
-\item \emph{Los préstamos crean depósitos} (gráfico~\ref{fig:creacion-dinero}): cuando un banco concede una hipoteca, abona el importe en la cuenta del cliente. El banco tiene un activo nuevo (el préstamo) y un pasivo nuevo (el depósito); el hogar, un depósito nuevo y una deuda nueva. Ha nacido dinero, y el balance del banco central no ha cambiado. El dinero se destruye cuando se devuelve el préstamo.
+\item \emph{Los préstamos crean depósitos} (figura~\ref{figu:creacion-dinero}): cuando un banco concede una hipoteca, abona el importe en la cuenta del cliente. El banco tiene un activo nuevo (el préstamo) y un pasivo nuevo (el depósito); el hogar, un depósito nuevo y una deuda nueva. Ha nacido dinero, y el balance del banco central no ha cambiado. El dinero se destruye cuando se devuelve el préstamo.
 \item \emph{Los bancos no prestan sus reservas}, que solo circulan entre ellos y el banco central: las reservas se adaptan a los préstamos, y no al revés.
 \item \emph{Los límites}: los bancos no pueden crear dinero sin límite; los frenan 3 fuerzas:
   \begin{enumerate}
@@ -766,11 +766,11 @@ Lecturas sobre este debate: \textcite[24 y ss.]{BlanchardSummers2017Rethinking},
   \item por eso las compras de activos no crean por sí solas dinero de la economía real: cambian bonos por reservas en el balance de los intermediarios (anexo~\ref{anexo:compras-activos}).
   \end{itemize}
 \end{itemize}
-\begin{figuracaja}
-\caption{La creación de dinero al conceder un préstamo: los balances antes y después}\label{fig:creacion-dinero}
+\begin{infografiacaja}
+\caption{La creación de dinero al conceder un préstamo: los balances antes y después}\label{figu:creacion-dinero}
 \grafico[0.62\textwidth]{creacion-dinero}
 \fuente{elaboración propia a partir de \textcite[figura~2]{McLeayRadiaThomas2014Money}. Simplificado: sin el efectivo en caja de los bancos. Con borde dorado, lo nuevo.}
-\end{figuracaja}
+\end{infografiacaja}
 \end{anotaciones}
 
 % --------------------------------------------------------------------------
@@ -779,7 +779,7 @@ Lecturas sobre este debate: \textcite[24 y ss.]{BlanchardSummers2017Rethinking},
 \subsubsection{Esquema operativo}\label{sec:esquema-operativo}
 
 \begin{itemize}
-\item El \concepto{esquema operativo} es la cadena que va de lo que el banco central controla a lo que quiere conseguir (gráfico~\ref{fig:esquema-operativo}):
+\item El \concepto{esquema operativo} es la cadena que va de lo que el banco central controla a lo que quiere conseguir (figura~\ref{figu:esquema-operativo}):
   \begin{itemize}
   \item \emph{instrumentos}: lo que controla directamente: los tipos de sus facilidades y operaciones, el coeficiente de reservas, el tamaño y la composición de su balance;
   \item \emph{objetivo operativo}: la variable que puede fijar casi a diario con ellos: un tipo de interés a un día (en la zona del euro, el tipo a corto plazo del euro, €STR, \emph{euro short-term rate}) o una medida de las reservas;
@@ -789,12 +789,12 @@ Lecturas sobre este debate: \textcite[24 y ss.]{BlanchardSummers2017Rethinking},
 \item El esquema en 2 niveles, con un objetivo intermedio cuantitativo, es de los 70 y los 80 (\ref{sec:objetivo-dinero}). Hoy la cadena es más corta: el banco central fija un tipo a un día y lo mueve según sus previsiones de inflación y de actividad (\ref{sec:variable-objetivo}).
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{El esquema operativo de la política monetaria}\label{fig:esquema-operativo}
+\caption{El esquema operativo de la política monetaria}\label{figu:esquema-operativo}
 \grafico[0.95\textwidth]{esquema-operativo}
 \fuente{elaboración propia a partir de \textcite{MishkinMatthewsGiuliodori2013} y \textcite[cap.~11]{Walsh2017Monetary}.}
-\end{figure}
+\end{infografia}
 
 \subsubsection{El origen de las perturbaciones: \autor{Poole} (1970)}\label{sec:poole}
 

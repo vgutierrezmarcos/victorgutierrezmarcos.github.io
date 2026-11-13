@@ -727,7 +727,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10,5} (I.1, \tiempo{3
   r^n_t=\rho+\theta\,\mathbb{E}_t[\Delta y^n_{t+1}]+(1-\rho_z)\,z_t \label{eq:tipo-natural}
   \end{equation}
   \begin{itemize}
-  \item $z_t$ no aparece suelta en la IS: entra a través del tipo natural. Si los hogares quieren consumir más hoy ($z_t$ sube), con precios flexibles el tipo real tendría que subir para que siguieran consumiendo lo que se produce: sube $r^n_t$. Por eso la perturbación de demanda se representa con $r^n_t$ (gráficos~\ref{fig:nek-esquema} y~\ref{fig:nek-xpi}), que recoge cualquier perturbación de demanda (preferencias, gasto público) y se lee mejor: lo que importa es la distancia entre el tipo real y el natural.
+  \item $z_t$ no aparece suelta en la IS: entra a través del tipo natural. Si los hogares quieren consumir más hoy ($z_t$ sube), con precios flexibles el tipo real tendría que subir para que siguieran consumiendo lo que se produce: sube $r^n_t$. Por eso la perturbación de demanda se representa con $r^n_t$ (figuras~\ref{figu:nek-esquema} y~\ref{fig:nek-xpi}), que recoge cualquier perturbación de demanda (preferencias, gasto público) y se lee mejor: lo que importa es la distancia entre el tipo real y el natural.
   \item $r^n_t$ no depende de la política monetaria, solo de las preferencias y de la tecnología.
   \item Si el tipo real, $i_t-\mathbb{E}_t[\pi_{t+1}]$, supera al natural, los hogares aplazan consumo y la brecha cae; la sensibilidad es la elasticidad de sustitución intertemporal, $1/\theta$.\footnote{Es la lectura del tono de la política monetaria: expansiva si el tipo real está por debajo del natural y contractiva si está por encima. Es la idea de \textcite{Wicksell1898Geldzins}, con su tipo natural y su tipo monetario; por eso se llama también al modelo \emph{neowickselliano}, y \textcite{Woodford2003Interest} tituló su libro en homenaje al de \autor{Wicksell} \vertema{3.A.36}.}
   \item Es \emph{prospectiva}: resolviendo hacia delante, la brecha de hoy depende de toda la senda futura de tipos reales, $x_t=-\frac1\theta\sum_{k\geq0}\mathbb{E}_t[i_{t+k}-\pi_{t+k+1}-r^n_{t+k}]$. Por eso importan los anuncios del banco central.
@@ -756,15 +756,15 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10,5} (I.1, \tiempo{3
   \begin{itemize}
   \item La forma original la propuso \textcite{Taylor1993} en la conferencia Carnegie-Rochester de noviembre de 1992, como una regularidad que describía bien la política de la Reserva Federal: $i_t=2+\pi_t+0{,}5(\pi_t-2)+0{,}5\,x_t$ (en~\%), es decir, $i_t=1+1{,}5\,\pi_t+0{,}5\,x_t$. Sus ventajas e inconvenientes se discuten en el diseño de la política monetaria \vertema{3.A.36}.
   \end{itemize}
-\item \emph{El modelo cerrado}. Las 3 ecuaciones forman un sistema: la regla fija $i_t$, la IS da $x_t$ y la NKPC da $\pi_t$, que vuelve a la regla (gráfico~\ref{fig:nek-esquema}).
+\item \emph{El modelo cerrado}. Las 3 ecuaciones forman un sistema: la regla fija $i_t$, la IS da $x_t$ y la NKPC da $\pi_t$, que vuelve a la regla (figura~\ref{figu:nek-esquema}).
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{fig:nek-esquema}
+\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{figu:nek-esquema}
 \grafico[0.6\textwidth]{nek-esquema}
 \fuente{elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}.}
-\end{figure}
+\end{infografia}
 
 \begin{itemize}
 \item \emph{El equilibrio en el plano $(x_t,\pi_t)$}, con las expectativas dadas (gráfico~\ref{fig:nek-xpi}):
@@ -1193,7 +1193,7 @@ Para el test (marzo de 2025): con la regla $i_t=\alpha+\beta_y y_t+\beta_\pi\pi_
 \section{Anexo: una historia de la macroeconomía}\label{anexo:historia-macro}
 
 \begin{itemize}
-\item La macroeconomía puede contarse como una sucesión de episodios, de la \emph{Teoría general} a los EGDE (gráfico~\ref{fig:historia-macro})\nocite{DeVroey2016History}:
+\item La macroeconomía puede contarse como una sucesión de episodios, de la \emph{Teoría general} a los EGDE (figura~\ref{figu:historia-macro})\nocite{DeVroey2016History}:
   \begin{itemize}
   \item la \emph{macroeconomía keynesiana} (1936-finales de los 60): \autor{Keynes}, el IS-LM y la síntesis neoclásica, los modelos macroeconométricos y la curva de \autor{Phillips} \vertema{3.A.4} \vertema{3.A.5};
   \item las \emph{disidencias}: el monetarismo de \autor{Friedman} y los keynesianos del desequilibrio \vertema{3.A.5} \vertema{3.A.4};
@@ -1204,12 +1204,12 @@ Para el test (marzo de 2025): con la regla $i_t=\alpha+\beta_y y_t+\beta_\pi\pi_
 \item Para \autor{De Vroey}, la línea divisoria no está entre keynesianos y clásicos, sino entre la macroeconomía anterior a \autor{Lucas}, de modelos de pocas ecuaciones y equilibrio parcial, y la posterior, de modelos de equilibrio general dinámicos: la NEK de 1.ª generación todavía es de la primera; la de 2.ª, ya de la segunda.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{Las escuelas de la macroeconomía, de \autor{Keynes} a hoy}\label{fig:historia-macro}
+\caption{Las escuelas de la macroeconomía, de \autor{Keynes} a hoy}\label{figu:historia-macro}
 \grafico[0.95\textwidth]{historia-macro}
 \fuente{elaboración propia a partir de \textcite{DeVroey2016History}, recuadro~0.1.}
-\end{figure}
+\end{infografia}
 
 % ==========================================================================
 \section{Anexo: aspectos para el test}\label{anexo:test}

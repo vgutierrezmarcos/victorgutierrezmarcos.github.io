@@ -446,7 +446,7 @@ En el cante (\tiempo{14}). Los instrumentos (\tiempo{2}): la tabla~\ref{tab:rent
 \textbf{La beta.} Mide la sensibilidad de la rentabilidad de un activo a la del mercado y, en el CAPM, su riesgo sistemático, \eqref{eq:beta}. La de una cartera es la media ponderada de las de sus activos, $\beta_p=\sum_iw_i\beta_i$, y la del mercado vale 1, porque $\mathrm{Cov}(r_M,r_M)=\mathrm{Var}(r_M)$.
 \begin{itemize}
 \item \emph{Clasificación}, según la SML, $\mathbb{E}[r_i]-r_f=\beta_i\lambda_M$ (tabla~\ref{tab:beta}). Las acciones cíclicas suelen tener betas mayores que 1, y las defensivas, menores (anexo~\ref{anexo:acciones}).
-\item \emph{La beta no es la volatilidad}: por \eqref{eq:beta}, es la volatilidad relativa al mercado multiplicada por la correlación con él. Una acción muy volátil pero poco correlacionada con el mercado puede tener una beta baja. El riesgo total de un activo es la suma del sistemático y del específico, la \eqref{eq:riesgo-sistematico} para un solo activo: $\sigma_i^2=\beta_i^2\sigma_M^2+\sigma_{\varepsilon_i}^2$, un triángulo rectángulo de desviaciones típicas (gráfico~\ref{fig:triangulo-riesgo}).
+\item \emph{La beta no es la volatilidad}: por \eqref{eq:beta}, es la volatilidad relativa al mercado multiplicada por la correlación con él. Una acción muy volátil pero poco correlacionada con el mercado puede tener una beta baja. El riesgo total de un activo es la suma del sistemático y del específico, la \eqref{eq:riesgo-sistematico} para un solo activo: $\sigma_i^2=\beta_i^2\sigma_M^2+\sigma_{\varepsilon_i}^2$, un triángulo rectángulo de desviaciones típicas (figura~\ref{figu:triangulo-riesgo}).
 \item \emph{Determinantes}: el tipo de negocio (cuánto dependen sus ventas del ciclo), el apalancamiento operativo (el peso de los costes fijos) y el apalancamiento financiero: a más deuda, más beta de los fondos propios.
 \end{itemize}
 \begin{tablacaja}
@@ -470,12 +470,12 @@ $\beta_i<0$ & \textcolor{tceeverde}{Refugio} & Sube cuando el mercado cae; como 
 \end{tabular}
 \fuente{elaboración propia a partir de \textcite[caps.~8 y~9]{BodieKaneMarcus2021Investments}. La rentabilidad es la esperada, no la que se obtiene cada año.}
 \end{tablacaja}
-\begin{figuracaja}
+\begin{infografiacaja}
 \centering
-\caption{Riesgo total, sistemático y específico de un activo}\label{fig:triangulo-riesgo}
+\caption{Riesgo total, sistemático y específico de un activo}\label{figu:triangulo-riesgo}
 \grafico[0.45\textwidth]{triangulo-riesgo}
 \fuente{elaboración propia a partir de \textcite[cap.~8]{BodieKaneMarcus2021Investments}.}
-\end{figuracaja}
+\end{infografiacaja}
 \end{anotaciones}
 
 \subparagraph{iii) Implicaciones}
@@ -1080,7 +1080,7 @@ Este anexo no se canta: completa el apartado~\ref{sec:tecnico}.
 
 \begin{itemize}
 \item \emph{Fuentes de información}: el precio, el volumen negociado y, en los futuros y las opciones, el \concepto{interés abierto}, el número de contratos vivos: cada contrato tiene un comprador y un vendedor, y está abierto desde que se negocia hasta que se cierra \vertema{3.B.25}.
-\item \emph{Velas japonesas}: cada vela resume el precio de apertura, el de cierre, el máximo y el mínimo de una sesión; el cuerpo va del de apertura al de cierre, y las mechas, al máximo y al mínimo (gráfico~\ref{fig:velas}). De la forma de las velas y de su sucesión se infieren tendencias; hoy es el gráfico más usado por los analistas técnicos.
+\item \emph{Velas japonesas}: cada vela resume el precio de apertura, el de cierre, el máximo y el mínimo de una sesión; el cuerpo va del de apertura al de cierre, y las mechas, al máximo y al mínimo (figura~\ref{figu:velas}). De la forma de las velas y de su sucesión se infieren tendencias; hoy es el gráfico más usado por los analistas técnicos.
 \item \emph{Índice de fuerza relativa} (RSI) de \textcite{Wilder1978New}: $\mathrm{RSI}=100-100/(1+RS)$, con $RS$ la media de las subidas entre la media de las bajadas de las últimas 14 sesiones. Va de 0 a 100; por encima de 70 se dice que el valor está sobrecomprado y por debajo de 30, sobrevendido. No hay que confundirlo con la \emph{fuerza relativa} de una acción, su precio dividido entre un índice de su sector o del mercado, que mide si lo hace mejor o peor que este.
 \item \emph{Indicadores de sentimiento}, que se suelen leer al revés de la opinión dominante:
   \begin{itemize}
@@ -1093,12 +1093,12 @@ Este anexo no se canta: completa el apartado~\ref{sec:tecnico}.
   \item la de \emph{seguir al dinero inteligente}: hay inversores mejor informados que la media, que obtienen más rentabilidad, y conviene imitarlos.
   \end{enumerate}
 \end{itemize}
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{Anatomía de las velas japonesas}\label{fig:velas}
+\caption{Anatomía de las velas japonesas}\label{figu:velas}
 \grafico[0.55\textwidth]{velas}
 \fuente{elaboración propia a partir de \textcite{Murphy1999Technical}.}
-\end{figure}
+\end{infografia}
 
 % ==========================================================================
 \section{Anexo: preguntas de test}\label{anexo:test}

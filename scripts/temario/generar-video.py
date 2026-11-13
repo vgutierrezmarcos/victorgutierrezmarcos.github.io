@@ -3029,14 +3029,14 @@ def _limpiar_tex(t):
 
 
 class IndiceGuia:
-    """Apartados, párrafos, gráficos y tablas de la guía con su página impresa (la del .aux)."""
+    """Apartados, párrafos, gráficos, figuras, imágenes y tablas de la guía con su página impresa (la del .aux)."""
 
     def __init__(self, tema):
         aux = os.path.join(tema.trabajo, f'{tema.archivo}.aux')
         if not os.path.exists(aux):
             raise ErrorSlides(f'No existe {aux}: hay que compilar la guía para sacar las páginas')
         self.entradas = []
-        patron = re.compile(r'\\@writefile\{(toc|lof|lot)\}\{\\contentsline \{(\w+)\}\{(.*)\}\{([^{}]*)\}\{[^{}]*\}'
+        patron = re.compile(r'\\@writefile\{(toc|lof|lot|lfg|loi)\}\{\\contentsline \{(\w+)\}\{(.*)\}\{([^{}]*)\}\{[^{}]*\}'
                             r'\\protected@file@percent \}')
         for linea in open(aux, encoding='utf-8'):
             m = patron.match(linea.strip())
@@ -3049,12 +3049,12 @@ class IndiceGuia:
             self.entradas.append({'tipo': fichero, 'nivel': nivel, 'numero': numero, 'titulo': titulo, 'pagina': pagina})
 
     def buscar(self, ref):
-        """«I.3», «I.3 > Brecha de producción», «Gráfico 5», «Tabla 7» o «Introducción»
-        → (rótulo de la esquina, página)."""
+        """«I.3», «I.3 > Brecha de producción», «Gráfico 5», «Figura 2», «Imagen 1»,
+        «Tabla 7» o «Introducción» → (rótulo de la esquina, página)."""
         ref = str(ref).strip()
-        m = re.fullmatch(r'(Gráfico|Tabla)\s+(\d+)', ref, re.I)
+        m = re.fullmatch(r'(Gráfico|Figura|Imagen|Tabla)\s+(\d+)', ref, re.I)
         if m:
-            tipo = 'lof' if m.group(1).lower().startswith('g') else 'lot'
+            tipo = {'g': 'lof', 'f': 'lfg', 'i': 'loi', 't': 'lot'}[m.group(1)[0].lower()]
             for k, e in enumerate(self.entradas):
                 if e['tipo'] == tipo and e['numero'] == m.group(2):
                     sec = next((x for x in reversed(self.entradas[:k]) if x['tipo'] == 'toc' and x['numero']), None)

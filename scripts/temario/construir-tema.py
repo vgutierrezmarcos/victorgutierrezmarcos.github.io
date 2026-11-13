@@ -465,13 +465,15 @@ def preparar_pandoc(tema, tex, formato):
     # la web y en Word son figuras y tablas normales dentro del Div de la caja
     cuerpo = re.sub(r'\\(begin|end)\{figuracaja\}', r'\\\1{figure}', cuerpo)
     cuerpo = re.sub(r'\\(begin|end)\{tablacaja\}', r'\\\1{table}', cuerpo)
-    # Imágenes (entornos imagen e imagencaja de tcee.sty, «Imagen n», numeración
-    # aparte de los gráficos): figuras con la marca tceeimagen en el título, que
-    # tcee.lua quita al ponerles «Imagen n.–»
-    def imagen(m):
-        dentro = re.sub(r'\\caption(\[[^\]]*\])?\{', lambda c: '\\caption' + (c.group(1) or '') + '{\\textcolor{tceeimagen}{.}', m.group(2), count=1)
+    # Imágenes (entornos imagen e imagencaja de tcee.sty, «Imagen n») y figuras
+    # (infografia e infografiacaja, «Figura n»), cada una con su numeración,
+    # aparte de los gráficos: figuras con la marca tceeimagen o tceefigura en el
+    # título, que tcee.lua quita al ponerles «Imagen n.–» o «Figura n.–»
+    def marcar(m):
+        marca = 'tceeimagen' if m.group(1).startswith('imagen') else 'tceefigura'
+        dentro = re.sub(r'\\caption(\[[^\]]*\])?\{', lambda c: '\\caption' + (c.group(1) or '') + '{\\textcolor{' + marca + '}{.}', m.group(2), count=1)
         return f'\\begin{{figure}}{dentro}\\end{{figure}}'
-    cuerpo = re.sub(r'\\begin\{(imagen|imagencaja)\}(.*?)\\end\{\1\}', imagen, cuerpo, flags=re.S)
+    cuerpo = re.sub(r'\\begin\{(imagen|imagencaja|infografia|infografiacaja)\}(.*?)\\end\{\1\}', marcar, cuerpo, flags=re.S)
     # \ref*{x} (número sin enlace: el esquema enlazado lo usa dentro de su enlace)
     cuerpo = re.sub(r'\\ref\*\{([^}]+)\}', lambda m: numeros.get(m.group(1), '?'), cuerpo)
     # \grafico[\textwidth]: pandoc no entiende un ancho sin número y deja el
@@ -490,7 +492,7 @@ def preparar_pandoc(tema, tex, formato):
     def pagina(m):
         e = m.group(1)
         n = numeros.get(e)
-        tipo = {'eq': 'ecuación ', 'fig': 'gráfico ', 'img': 'imagen ', 'tab': 'tabla ', 'sec': 'apartado ', 'anexo': 'anexo '}
+        tipo = {'eq': 'ecuación ', 'fig': 'gráfico ', 'figu': 'figura ', 'img': 'imagen ', 'tab': 'tabla ', 'sec': 'apartado ', 'anexo': 'anexo '}
         prefijo = next((v for k, v in tipo.items() if e.startswith(k + ':')), None)
         texto = f'{prefijo}{n}' if n and prefijo else 'véase'
         if prefijo == 'ecuación ' and n:
@@ -900,8 +902,9 @@ def tachado_docx(partes):
 
 
 def cajas_docx(partes):
-    """Gráficos y tablas dentro de una caja (figuracaja, tablacaja): tcee.lua
-    deja marcas <!--tcee-caja-ini:Estilo--> … <!--tcee-caja-fin--> alrededor;
+    """Gráficos, figuras, imágenes y tablas dentro de una caja (figuracaja,
+    infografiacaja, imagencaja, tablacaja): tcee.lua deja marcas
+    <!--tcee-caja-ini:Estilo--> … <!--tcee-caja-fin--> alrededor;
     a sus párrafos (título, imagen, fuente) se les pone el borde y el fondo del
     estilo de la caja, para que Word los una a ella, y a las tablas, el fondo."""
     xml = partes['word/document.xml'].decode('utf-8')

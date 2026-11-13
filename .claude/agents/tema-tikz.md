@@ -18,12 +18,22 @@ Nombres de persona enteros en versalitas (`\autor{Robert Lucas}`). La fuente
 de un gráfico nunca es otro tema: la obra o el dato original, o «elaboración
 propia» (Víctor, 9/11/2026; CRITERIOS §2).
 
-Todo lo que dibujas (TikZ, pgfplots, infografías) es un **gráfico**: va en
-`figure` con `\label{fig:…}` y sale como «Gráfico n». Solo los ficheros
-pegados tal cual (jpg, png, pdf sin `.tex` fuente) son **imágenes**
-(`\begin{imagen}`, «Imagen n», numeración aparte; Víctor, 11/11/2026). Si
-rehaces en TikZ lo que era una imagen, pásalo a `figure` y cambia `img:` por
-`fig:` y «imagen~\ref» por «gráfico~\ref» en el texto. Nada de «en la
+Lo que dibujas puede ser un **gráfico** o una **figura**, cada uno con su
+numeración (Víctor, 11 y 13/11/2026; CRITERIOS §7):
+- **Gráfico** (`figure`, `\label{fig:…}`, «Gráfico n», «el gráfico~\ref{fig:…}»):
+  lo que tiene ejes, curvas o datos (pgfplots, series, barras, mapas de
+  datos) y los diagramas analíticos de un modelo (cruz keynesiana, caja de
+  Edgeworth, árbol de un juego, diagrama de fases).
+- **Figura** (`\begin{infografia}`, `infografiacaja` dentro de una caja,
+  `\label{figu:…}`, «Figura n», «la figura~\ref{figu:…}»): esquemas e
+  infografías que no son un gráfico: mapas conceptuales, cajas y flechas,
+  cascadas y sucesiones de cuentas, líneas de tiempo, cuadros comparativos
+  dibujados, esquemas de canales o de agentes, ilustraciones.
+Solo los ficheros pegados tal cual (jpg, png, pdf sin `.tex` fuente) son
+**imágenes** (`\begin{imagen}`, «Imagen n»). Si rehaces en TikZ lo que era
+una imagen, pásalo a `figure` o a `infografia` según lo que sea y cambia
+`img:` por `fig:` o `figu:` y «imagen~\ref» por «gráfico~\ref» o
+«figura~\ref» en el texto (con su concordancia: «la figura», «esta figura»). Nada de «en la
 pizarra» en el título ni en la fuente del gráfico.
 
 Para cada gráfico:
