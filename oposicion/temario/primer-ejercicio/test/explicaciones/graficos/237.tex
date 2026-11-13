@@ -1,0 +1,40 @@
+% Pregunta 237 (2021-julio-OEP2020, n.º 42): resultado al vencimiento de un bull spread con calls.
+% K1 = 100 (call comprada, prima 8), K2 = 120 (call vendida, prima 3): coste neto 5,
+% pérdida máxima -5 (S_T <= 100), ganancia máxima +15 (S_T >= 120), punto muerto en 105.
+% Escala: 1 unidad de S_T = 0,08 cm (70 a 150); 1 unidad de beneficio = 0,15 cm (-14 a +20).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.08cm,y=0.15cm]
+  \begin{scope}[shift={(-70,0)}]
+    % Ejes: horizontal en beneficio 0, vertical en S_T = 70
+    \draw[eje] (70,0) -- (153,0) node[right] {$S_T$};
+    \draw[eje] (70,-14) -- (70,23) node[above,align=center] {beneficio\\al vencimiento};
+    % Marcas del eje vertical
+    \foreach \v/\t in {15/{$+15$},-5/{$-5$}} {
+      \draw (69,\v) -- (71,\v);
+      \node[left,font=\footnotesize] at (69,\v) {\t};
+    }
+    \node[left,font=\footnotesize] at (69,0) {$0$};
+    % Guías de los strikes
+    \draw[guia] (100,-14) -- (100,23);
+    \draw[guia] (120,-14) -- (120,23);
+    \node[below,font=\footnotesize] at (100,-14) {$K_1=100$};
+    \node[below,font=\footnotesize] at (120,-14) {$K_2=120$};
+    \draw[guia] (70,15) -- (120,15);
+    % Call comprada de strike K1 (prima 8)
+    \draw[curva2,desplazada] (70,-8) -- (100,-8) -- (128,20) node[etiqueta,above,text=tceeazul,align=center] {call\\comprada};
+    % Call vendida de strike K2 (prima 3)
+    \draw[curva3,desplazada] (70,3) -- (120,3) -- (134,-11) node[etiqueta,right,text=tceeverde,align=left] {call\\vendida};
+    % Resultado total
+    \draw[curva1,ultra thick] (70,-5) -- (100,-5) -- (120,15) -- (150,15) node[etiqueta,above left,text=tceemorado] {bull spread};
+    % Punto muerto
+    \node[punto] at (105,0) {};
+    \node[etiqueta,above left,font=\footnotesize] at (105,0) {$105$};
+    % Anotaciones
+    \node[etiqueta,font=\footnotesize,text=tceemorado,align=center] at (85,-11) {pérdida máxima\\$-5$};
+    \node[etiqueta,font=\footnotesize,text=tceemorado,align=center,below] at (137,13.5) {ganancia máxima\\$+15$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

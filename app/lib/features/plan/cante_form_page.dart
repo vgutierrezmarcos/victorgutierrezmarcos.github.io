@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/analitica.dart';
+import '../../core/resenas.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/permiso_calendario.dart';
 import '../../core/cronograma_providers.dart';
@@ -18,6 +19,7 @@ import 'cantes_util.dart';
 import 'modalidad.dart';
 import '../preparador/coordinacion.dart';
 import '../preparador/red_widgets.dart';
+import '../preparador/reservas.dart' show CamposPeticionClase, pedirClaseConTemas, temasPorDefectoReserva;
 import '../inicio/permisos_sheet.dart';
 
 /// Alta o edición de un cante: cuándo es, con quién y qué temas entran.
@@ -61,6 +63,12 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   /// el texto) o el uid de uno de sus preparadores (se le pide la clase).
   static const _otraPersona = 'otro';
   late String _conQuien = (widget.cante?.titulo ?? '').isNotEmpty ? _otraPersona : '';
+
+  /// Al pedir la clase a un preparador: presencial u online y los temas que
+  /// se quieren cantar (null = los del cronograma para ese día).
+  Modalidad _modalidadPedida = Modalidad.sinIndicar;
+  List<String>? _temasPedidos;
+  List<String> get _temasPorDefecto => temasPorDefectoReserva(ref.read(cronogramaProvider), _fecha, noCantar: ref.read(ajustesProvider).noCantar);
 
   bool get _edicion => widget.cante != null;
   bool get _sesion => widget.alumnos != null;
@@ -174,8 +182,19 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
     }
     final nombre = p.nombre.isEmpty ? 'tu preparador' : p.nombre;
     try {
-      await red.pedirReserva(Reserva(id: nuevoId(), preparador: p.uid, alumno: uid, alumnoNombre: yo.displayName ?? '', fecha: _fecha, minutos: _minutos, nota: _notas.text.trim(), creada: DateTime.now()));
-      ref.invalidate(misReservasProvider);
+      await pedirClaseConTemas(
+          ref,
+          Reserva(
+              id: nuevoId(),
+              preparador: p.uid,
+              alumno: uid,
+              alumnoNombre: yo.displayName ?? '',
+              fecha: _fecha,
+              minutos: _minutos,
+              nota: _notas.text.trim(),
+              modalidad: _modalidadPedida,
+              temas: _temasPedidos ?? _temasPorDefecto,
+              creada: DateTime.now()));
       messenger.mostrar(SnackBar(content: Text('Pedida. Te avisaremos cuando $nombre la acepte; mientras tanto la ves en tu agenda como pendiente.')));
       nav.pop();
     } catch (_) {
@@ -243,7 +262,10 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       final nombre = _alumnos.length == 1 ? widget.alumnos!.where((a) => a.id == _alumnos.first).firstOrNull?.nombre : null;
       if (!mounted || !await confirmarChoques(context, choques, yo: ref.read(usuarioActualProvider)?.uid, quien: nombre ?? 'el alumno')) return;
       await ref.read(sesionesProvider.notifier).guardarVarias(sesiones);
-      if (!_edicion) Analitica.instancia.evento('clase_creada', parametros: {'clases': sesiones.length});
+      if (!_edicion) {
+        Analitica.instancia.evento('clase_creada', parametros: {'clases': sesiones.length});
+        Resenas.momento();
+      }
       nav.pop();
       return;
     }
@@ -341,6 +363,17 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
                 padding: const EdgeInsets.only(top: 6),
                 child: Text('A $nombrePreparador le llega una petición de clase para ese día y esa hora. Cuando la acepte, la clase sale en tu agenda y en la suya (con sus temas, el enlace y lo demás); si la rechaza, te avisamos.', style: context.textos.bodySmall),
               ),
+            if (preparador != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: CamposPeticionClase(
+                  modalidad: _modalidadPedida,
+                  onModalidad: (m) => setState(() => _modalidadPedida = m),
+                  temas: _temasPedidos ?? _temasPorDefecto,
+                  porDefecto: _temasPedidos == null,
+                  onTemas: (t) => setState(() => _temasPedidos = t),
+                ),
+              ),
           ],
           if (preparador == null) ...[
           const TituloSeccion('Presencial u online'),
@@ -420,7 +453,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             ]),
           ],
           TituloSeccion(preparador == null ? 'Notas' : 'Nota para $nombrePreparador'),
-          TextField(controller: _notas, minLines: 2, maxLines: 5, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Indicaciones para el alumno (las verá si está enlazado)' : (preparador == null ? 'Lo que quieras recordar para este cante (opcional)' : 'Qué quieres cantar, si prefieres online… (opcional)'))),
+          TextField(controller: _notas, minLines: 2, maxLines: 5, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Indicaciones para el alumno (las verá si está enlazado)' : (preparador == null ? 'Lo que quieras recordar para este cante (opcional)' : 'Si llegas tarde, qué quieres repasar… (opcional)'))),
         ],
       ),
     );

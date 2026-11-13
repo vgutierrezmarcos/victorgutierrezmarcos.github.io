@@ -111,7 +111,7 @@
 <body class="portada">
     <header class="site-header">
         <div class="header-content">
-            <p class="site-title"><a href="index.html">Víctor Gutiérrez Marcos</a></p>
+            <p class="site-title"><a href="./">Víctor Gutiérrez Marcos</a></p>
         </div>
     </header>
 
@@ -119,9 +119,9 @@
         <div class="nav-container">
             <ul class="nav-list">
                 <li class="nav-app"><a href="app/abrir/" title="Abrir la app" aria-label="Abrir la app Oposición TCEE y DCE"><img src="app/assets/icon/icon.svg" alt="" width="30" height="30"></a></li>
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="oposicion/index.html">Oposición</a></li>
-                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="./" class="active">Inicio</a></li>
+                <li><a href="oposicion/">Oposición</a></li>
+                <li><a href="blog/">Blog</a></li>
                 <!-- <li><a href="comunidad.html">Comunidad</a></li> -->
                 <li><a href="sobre-mi.html">Sobre mí</a></li>
             </ul>
@@ -138,7 +138,7 @@
         <!-- Cards Section -->
         <div class="home-cards">
             <div class="home-card home-card--primary">
-                <a href="oposicion/index.html">
+                <a href="oposicion/">
                     <div class="home-card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -152,7 +152,7 @@
                 </a>
             </div>
             <div class="home-card home-card--secondary">
-                <a href="blog/index.html">
+                <a href="blog/">
                     <div class="home-card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
@@ -205,8 +205,10 @@
                 <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
                 <a class="download-btn download-btn--sec" href="app/abrir/">Abrir en el navegador</a>
                 <a class="app-banner-more" href="app/instalar.html">Cómo instalarla: Android, iPhone y ordenador</a>
+                <!-- pcc --><template data-oculto="economia"><a class="app-banner-more" href="oposicion/economia.html">EconomIA: tu equipo de preparación en Claude, ChatGPT, Le Chat o Gemini, con tus datos de la app</a></template><!-- /pcc -->
                 <span id="app-play-pronto" class="pronto-play">Próximamente en Google Play</span>
             </div>
+            <p class="app-banner-exclusivos" id="exclusivos-portada" hidden></p>
             <p class="app-banner-note">Sin anuncios y sin pagar nada. Tus datos solo los ves tú.<span id="app-banner-note"> En Android se descarga un fichero APK: al abrirlo, el móvil pedirá permiso para instalar aplicaciones de origen desconocido.</span></p>
         </div>
 
@@ -214,9 +216,9 @@
             <div class="novedades-franja">
                 <p class="novedades-rotulo">Más novedades</p>
                 <ul class="novedades-lista">
+                <li class="novedad"><a href="app/"><time datetime="2026-10-29">29 oct.</time><span class="novedad-seccion">App</span><span class="novedad-texto">La app, en su versión 1.22.0 de Google Play: el test explica cada pregunta, aprende de tus fallos y dice cuántos fallan cada una; autoevaluación de los temas revisados, esquema a ciegas o con huecos, buscador por epígrafes, cuadro de coyuntura al día y «Hoy te toca» con racha opcional; para el preparador, invitación de un toque, deberes y valoración por criterios</span></a></li>
+                <li class="novedad"><a href="app/"><time datetime="2026-10-26">26 oct.</time><span class="novedad-seccion">App</span><span class="novedad-texto">La app ya está en Google Play, para TCEE y DCE: agenda de cantes y clases con tu preparador, cronograma, pizarra compartida, test con los exámenes oficiales, temario y avisos del proceso selectivo</span></a></li>
                 <li class="novedad"><a href="oposicion/cifras.html"><time datetime="2026-10-22">22 oct.</time><span class="novedad-seccion">Guía</span><span class="novedad-texto">La oposición a TCEE en cifras: plazas, admitidos y aprobados de cada ejercicio, convocatoria a convocatoria desde 1985, con gráficos</span></a></li>
-                <li class="novedad"><a href="index.html"><time datetime="2026-10-18">18 oct.</time><span class="novedad-seccion">Web</span><span class="novedad-texto">Nuevo diseño de la web</span></a></li>
-                <li class="novedad"><a href="oposicion/por-que-tcee.html"><time datetime="2026-10-15">15 oct.</time><span class="novedad-seccion">Guía</span><span class="novedad-texto">Guía de la oposición: qué es, requisitos, ejercicios y preguntas frecuentes</span></a></li>
                 </ul>
                 <a class="boton boton--texto novedades-todas" href="novedades.html">Todas las novedades</a>
             </div>
@@ -238,12 +240,12 @@
             <nav class="footer-col" aria-label="Secciones">
                 <p class="footer-col-titulo">Secciones</p>
                 <ul>
-                    <li><a href="oposicion/index.html">Oposición</a></li>
+                    <li><a href="oposicion/">Oposición</a></li>
                     <li><a href="oposicion/temario.html">Temario</a></li>
                     <li><a href="oposicion/temario/primer-ejercicio/test/simulador.html">Simulador de test</a></li>
                     <li><a href="oposicion/por-que-tcee.html">¿Por qué TCEE?</a></li>
                     <li><a href="app/">App TCEE y DCE</a></li>
-                    <li><a href="blog/index.html">Blog</a></li>
+                    <li><a href="blog/">Blog</a></li>
                     <li><a href="novedades.html">Novedades</a></li>
                     <li><a href="sobre-mi.html">Sobre mí</a></li>
                 </ul>
@@ -259,12 +261,13 @@
         </div>
         <div class="footer-licencia">
             <a class="footer-cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener" aria-label="Licencia Creative Commons BY-NC-ND 4.0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M10.4 9.7a2.7 2.7 0 1 0 0 4.6M16.4 9.7a2.7 2.7 0 1 0 0 4.6" transform="translate(-1.4 0)"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="12" cy="6.9" r="1.45" fill="currentColor" stroke="none"/><path d="M9.6 9.6h4.8v4.3h-1.25v4h-2.3v-4H9.6z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M14.5 9.7c-.5-.8-1.4-1.2-2.5-1.2-1.3 0-2.3.7-2.3 1.6 0 2.3 4.9 1.3 4.9 3.8 0 1-1.1 1.7-2.6 1.7-1.2 0-2.2-.5-2.7-1.4M12 6.7v1.7M12 15.6v1.7M4.8 4.8l14.4 14.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M7.6 10h8.8M7.6 14h8.8" stroke-width="1.8"/></svg></a>
-            <p>El temario y los artículos se publican con licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener">Creative Commons BY-NC-ND 4.0</a>: puedes copiarlos y compartirlos citando al autor y enlazando el original, pero no venderlos ni publicar versiones modificadas.</p>
+            <p>El temario y los artículos se publican con licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener">Creative Commons BY-NC-ND 4.0</a>: puedes copiarlos y compartirlos citando al autor y enlazando el original, pero no venderlos ni publicar versiones modificadas. Los materiales <span class="etiqueta-exclusivo">Exclusivo</span>, publicados o revisados desde el 1 de octubre de 2026, son de uso personal: ver las <a href="condiciones-materiales.html">condiciones</a>.</p>
         </div>
         <div class="footer-inf">
             <span>© Víctor Gutiérrez Marcos</span>
             <nav aria-label="Enlaces legales">
                 <a href="politica-cookies.html">Política de cookies</a>
+                <a href="condiciones-materiales.html">Condiciones de uso de los materiales</a>
                 <a href="sobre-mi.html">Contacto</a>
             </nav>
             <div class="footer-social">
@@ -285,6 +288,7 @@
     </div>
 </footer>
     <script src="app-banner.js" defer></script>
+    <script src="exclusivos.js" defer></script>
     <script src="search-engine.js"></script>
     <script src="search-ui.js"></script>
     <script src="cookie-consent.js"></script>

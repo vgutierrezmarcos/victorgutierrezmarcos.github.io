@@ -59,6 +59,7 @@ Lectura de las pendientes, con las mismas palabras que el 3.A.34: **b grande, IS
 | 3.A.7 | NEK | mención (hecho, 4/11/2026) | La IS de la síntesis frente a la IS dinámica, estructural; `\vertema{3.A.5}` | Las ecuaciones |
 | 3.A.36 | Instrumentación (Poole) | mención (hecho, 4/11/2026) | El IS-LM estocástico de Poole con $b$, $k$, $h$ y las perturbaciones $\varepsilon^{\mathrm{IS}}_t$, $\varepsilon^{\mathrm{LM}}_t$; el aviso de que el multiplicador del dinero no es `eq:multiplicador-monetario` | Los multiplicadores y los casos |
 | 3.A.35 | Demanda de dinero: eficacia de la política de estabilización | mención (hecho, 5/11/2026) | III.2, de palabra: con $h$ grande (Keynes) la LM es plana y la fiscal es más eficaz; con $h$ pequeño y demanda estable (Friedman), la monetaria es potente y la fiscal expulsa casi tanto como añade; la trampa; `\vertema{3.A.5}` y los 2 eslabones del 3.A.34. Baumol-Tobin fundamenta la LM con pendiente positiva y finita | Las ecuaciones, la DA y los casos extremos |
+| 3.A.32 | OA-DA en economía abierta | resumen (hecho, 11/11/2026) | La LM `eq:lm` $M/P=kY-h\,i$ con las mismas letras; la DA cerrada `eq:da` es el caso $\beta_K=0$ con tipo flexible de la DA abierta (I.2 y anexo A; ficha `oa-da`); con $\beta_K=0$, los multiplicadores de Mundell-Fleming son los del IS-LM cerrado; 7 `\vertema{3.A.5}`; equilibrios $Y_0$, $Y_1$ (no $Y^*$) | La derivación del IS-LM cerrado y de `eq:da` |
 
 ## Divergencias encontradas en el temario actual
 

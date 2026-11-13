@@ -815,17 +815,17 @@ Segunda pregunta: ¿cómo se financia? «Veamos cómo se financia esta economía
 
 [Slide: tabla (Si… | Lectura; 2 filas)]
 
-[A mano: rodea eficacia/celda 2,2] ¿Ha funcionado? Si tras las subidas baja la inflación, se frena el crédito y se aprecia la moneda, la transmisión funciona. Es menos eficaz con un sistema financiero poco desarrollado, con dominancia fiscal o con el canal del crédito roto: si el crédito cae año tras año aunque bajen los tipos, el problema está en la banca, y la receta es sanearla, no seguir bajando tipos.
+[A mano: rodea eficacia/celda 2,2] ¿Ha funcionado? Si tras las subidas baja la inflación, se frena el crédito y se aprecia la moneda, la transmisión funciona. Es menos eficaz con un sistema financiero poco desarrollado, con dominación fiscal o con el canal del crédito roto: si el crédito cae año tras año aunque bajen los tipos, el problema está en la banca, y la receta es sanearla, no seguir bajando tipos.
 
 [Aparece: cuadro «La idea clave»: Con hogares y empresas endeudados a tipo variable, la transmisión es más rápida y más dolorosa.] [Aparece: cifras: 2 → 8,8 (billones de euros: balance del Eurosistema, 2014 → 2022)] La deuda privada cambia la fuerza de la transmisión: con hogares y empresas muy endeudados a tipo variable, una subida de tipos se nota enseguida en la carga de la deuda y frena más el gasto. La política contractiva es entonces más eficaz, pero también más dolorosa. Y el balance del banco central crece con las compras de activos, los préstamos a los bancos y la compra de divisas: el del Eurosistema pasó de dos billones de euros en 2014 a ocho coma ocho en 2022.
 
 #### Desequilibrios a vigilar y qué debería hacer [slide · § V.1 · pág. 54]
 
-[Slide: cuadro «Desequilibrios a vigilar»: Dominancia fiscal: déficit y deuda altos, crédito al Estado, tipos reales muy negativos con inflación alta / Tensionamientos de liquidez: picos del interbancario que no decide el banco central (2007)]
+[Slide: cuadro «Desequilibrios a vigilar»: Dominación fiscal: déficit y deuda altos, crédito al Estado, tipos reales muy negativos con inflación alta / Tensionamientos de liquidez: picos del interbancario que no decide el banco central (2007)]
 
-Y dos desequilibrios a vigilar. La dominancia fiscal: cuando el banco central acaba financiando el déficit, directamente o con tipos bajos para que la deuda sea pagable, pierde el control de la inflación; sus indicios son déficit y deuda altos, crédito al Estado y tipos reales muy negativos con inflación alta. Y los tensionamientos de liquidez: picos de los tipos interbancarios que no decide el banco central, como en 2007.
+Y dos desequilibrios a vigilar. La dominación fiscal: cuando el banco central acaba financiando el déficit, directamente o con tipos bajos para que la deuda sea pagable, pierde el control de la inflación; sus indicios son déficit y deuda altos, crédito al Estado y tipos reales muy negativos con inflación alta. Y los tensionamientos de liquidez: picos de los tipos interbancarios que no decide el banco central, como en 2007.
 
-[Aparece: tabla (Si… | Entonces; 2 filas)] ¿Y qué debería hacer ahora? Es la pregunta con la que suele terminar el bloque: si la inflación está por encima del objetivo y la brecha es positiva, seguir endureciendo o mantener; si la inflación converge y la brecha se abre hacia abajo, empezar a relajar, con prudencia por los retardos. El tribunal ha pedido sobre todo el tono y si debe seguir, pero también los canales, la dominancia fiscal, la última milla de la desinflación y la eficacia sobre las variables nominales y reales.
+[Aparece: tabla (Si… | Entonces; 2 filas)] ¿Y qué debería hacer ahora? Es la pregunta con la que suele terminar el bloque: si la inflación está por encima del objetivo y la brecha es positiva, seguir endureciendo o mantener; si la inflación converge y la brecha se abre hacia abajo, empezar a relajar, con prudencia por los retardos. El tribunal ha pedido sobre todo el tono y si debe seguir, pero también los canales, la dominación fiscal, la última milla de la desinflación y la eficacia sobre las variables nominales y reales.
 
 ### V.2. Banca: endeudamiento y semáforo
 

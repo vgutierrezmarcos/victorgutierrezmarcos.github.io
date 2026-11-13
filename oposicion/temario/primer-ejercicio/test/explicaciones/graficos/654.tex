@@ -1,0 +1,53 @@
+% Pregunta 654 (2008-julio-OEP2008, n.º 6): el ingreso total es máximo donde IMg = 0 (elasticidad unitaria), no en el tramo inelástico; el máximo de beneficio (IMg = CMg) cae en el tramo elástico. Autor: Víctor Gutiérrez Marcos
+% A escala: p = 10 - x, IMg = 10 - 2x, CMg = 1 + x/2; x^M = 3,6, p^M = 6,4; x_U = 5; IT = x(10 - x), máximo 25.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm]
+  % ---------- Panel superior: demanda, IMg y CMg ----------
+  \begin{scope}[y=0.44cm]
+  \ejes{$x$}{$p$}{11.5}{11}
+  % Demanda
+  \draw[curva1] (0,10) -- (10,0);
+  \node[etiqueta,tceemorado,above right] at (9.0,1.0) {$D$};
+  % Ingreso marginal (negativo a la derecha de x_U)
+  \draw[curva2] (0,10) -- (5.6,-1.2);
+  \node[etiqueta,tceeazul,left] at (1.6,5.0) {$\mathit{IMg}$};
+  % Coste marginal
+  \draw[curva3] (0,1) -- (9,5.5);
+  \node[etiqueta,tceeverde,right] at (9,5.5) {$\mathit{CMg}$};
+  % Máximo de beneficio: IMg = CMg en x^M = 3,6
+  \draw[guia] (3.6,0) -- (3.6,6.4);
+  \draw[guia] (0,6.4) node[left] {$p^M$} -- (3.6,6.4);
+  \node[punto] at (3.6,2.8) {};
+  \node[punto] at (3.6,6.4) {};
+  \node[below] at (3.6,-0.1) {$x^M$};
+  % Elasticidad unitaria en x_U = 5
+  \draw[guia] (5,0) -- (5,5);
+  \node[punto] at (5,5) {};
+  \node[punto] at (5,0) {};
+  \node[etiqueta,right] at (5.15,5.3) {$|\varepsilon|=1$};
+  \node[above right] at (5.0,0.05) {$x_U$};
+  % Tramos
+  \node[etiqueta,font=\footnotesize,tceegris,right] at (4.5,8.3) {$|\varepsilon|>1$ (elástico)};
+  \node[etiqueta,font=\footnotesize,tceegris,right] at (7.6,3.4) {$|\varepsilon|<1$};
+  \node[etiqueta,font=\footnotesize,tceegris,right] at (7.6,2.5) {(inelástico)};
+  \node[etiqueta,font=\footnotesize,tceeazul,right] at (5.7,-1.3) {$\mathit{IMg}<0$};
+  \end{scope}
+  % ---------- Panel inferior: ingreso total ----------
+  \begin{scope}[yshift=-6.9cm,y=0.16cm]
+  \ejes{$x$}{$\mathit{IT}$}{11.5}{30}
+  \draw[curva1,domain=0:10,samples=60] plot (\x,{\x*(10-\x)});
+  \node[etiqueta,tceemorado,right] at (9.4,7.5) {$\mathit{IT}=p(x)\,x$};
+  \draw[guia] (5,0) -- (5,25);
+  \draw[guia] (0,25) node[left] {$\mathit{IT}^{\max}$} -- (5,25);
+  \node[punto] at (5,25) {};
+  \node[below] at (5,-0.3) {$x_U$};
+  \draw[guia] (3.6,0) -- (3.6,23.04);
+  \node[punto] at (3.6,23.04) {};
+  \node[below] at (3.6,-0.3) {$x^M$};
+  \node[etiqueta,font=\footnotesize,tceegris,align=center] at (2.2,6) {sube:\\$\mathit{IMg}>0$};
+  \node[etiqueta,font=\footnotesize,tceegris,align=center] at (8.0,26) {baja: $\mathit{IMg}<0$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

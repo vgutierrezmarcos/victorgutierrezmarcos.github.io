@@ -692,7 +692,7 @@ enum EstadoReserva { pedida, aceptada, rechazada, cancelada }
 /// Reserva de un alumno en un hueco de su preparador. El preparador la acepta
 /// (y entonces se crea la sesión) o la rechaza.
 class Reserva {
-  const Reserva({required this.id, required this.preparador, required this.alumno, this.alumnoNombre = '', required this.fecha, this.minutos = PerfilPreparador.minutosClasePorDefecto, this.nota = '', this.estado = EstadoReserva.pedida, this.creada, this.updatedAt});
+  const Reserva({required this.id, required this.preparador, required this.alumno, this.alumnoNombre = '', required this.fecha, this.minutos = PerfilPreparador.minutosClasePorDefecto, this.nota = '', this.modalidad = Modalidad.sinIndicar, this.temas = const [], this.estado = EstadoReserva.pedida, this.creada, this.updatedAt});
   final String id;
   final String preparador;
   final String alumno;
@@ -700,6 +700,10 @@ class Reserva {
   final DateTime fecha;
   final int minutos;
   final String nota;
+  /// Presencial u online, si el alumno lo dice al pedirla (p. ej., desde el conector de IA).
+  final Modalidad modalidad;
+  /// Temas que el alumno quiere cantar ('3.A.8'); al aceptarla, la clase los lleva propuestos.
+  final List<String> temas;
   final EstadoReserva estado;
   final DateTime? creada;
   final DateTime? updatedAt;
@@ -714,6 +718,8 @@ class Reserva {
         'fecha': fecha.toIso8601String(),
         'minutos': minutos,
         'nota': nota,
+        if (modalidad != Modalidad.sinIndicar) 'modalidad': modalidad.name,
+        if (temas.isNotEmpty) 'temas': temas,
         'estado': estado.name,
         'creada': (creada ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
@@ -727,6 +733,8 @@ class Reserva {
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
         minutos: (j['minutos'] as num?)?.toInt() ?? PerfilPreparador.minutosClasePorDefecto,
         nota: j['nota'] as String? ?? '',
+        modalidad: Modalidad.values.firstWhere((m) => m.name == j['modalidad'], orElse: () => Modalidad.sinIndicar),
+        temas: (j['temas'] as List?)?.map((t) => t.toString()).toList() ?? const [],
         estado: EstadoReserva.values.firstWhere((e) => e.name == j['estado'], orElse: () => EstadoReserva.pedida),
         creada: _fecha(j['creada']),
         updatedAt: _fecha(j['updatedAt']),

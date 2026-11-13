@@ -1,0 +1,35 @@
+% Hojas de balance (Krugman, 1999): inversión efectiva frente a esperada.
+% Curva en 3 tramos: nula (0 a 2), restringida por el crédito (pendiente 2 > 1,
+% de (2,0) a (5,6)) y fijada por la rentabilidad (6, de 5 a 8). Corta a la
+% de 45° en L=(0,0), U=(4,4) (2(x-2)=x) inestable y H=(6,6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
+  \path (-1.2,-1.0) rectangle (10.4,8.6);
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (8.8,0) node[below left=2pt and 0pt] {inversión esperada, $I^e$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,8.4) node[left,align=right] {inversión\\efectiva, $I$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: recta de 45°
+  \capa{2}{\draw[guia,thick] (0,0) -- (8,8) node[above right,etiqueta,text=tceegris] {$45^\circ$};}
+  % 3: curva de la inversión efectiva (esquinas suaves solo en los codos)
+  \capa{3}{\draw[curva1,rounded corners=3pt] (0,0) -- (2,0) -- (5,6) -- (8,6);}
+  \capa{3}{\node[etiqueta,text=tceemorado,right] at (8,6) {inversión efectiva};}
+  % 4: tramos
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris] at (1.1,0.45) {i)};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris,right] at (3.6,2.4) {ii)};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris] at (7.2,6.45) {iii)};}
+  % 5: equilibrios
+  \capa{5}{\node[punto] (L) at (0,0) {};}
+  \capa{5}{\node[etiqueta,above left] at (L) {$L$};}
+  \capa{5}{\node[punto,fill=white,draw=black] (U) at (4,4) {};}
+  \capa{5}{\node[etiqueta,above left] at (U) {$U$};}
+  \capa{5}{\node[punto] (H) at (6,6) {};}
+  \capa{5}{\node[etiqueta,above left] at (H) {$H$};}
+  % 6: dinámica a los 2 lados de U, sobre la recta de 45°
+  \capa{6}{\draw[flecha] (3.7,3.7) -- (2.4,2.4);}
+  \capa{6}{\draw[flecha] (4.3,4.3) -- (5.6,5.6);}
+\end{tikzpicture}
+\end{document}

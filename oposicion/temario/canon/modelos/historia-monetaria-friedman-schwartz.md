@@ -29,6 +29,7 @@
 | 3.A.37 | Transmisión | mención (hecho, 5/11/2026) | I.3: la historia monetaria como primer método de identificación (los cambios del dinero de origen monetario precedieron a los de la producción), `\vertema{3.A.5}`; anexo C; II.3: Bernanke (1983) y el canal del crédito como complemento (ficha `bernanke-gertler`) | — |
 | 3.B.20 | SMI hasta Bretton Woods | mención | La Gran Depresión y el patrón oro (lectura de Eichengreen) junto a la de Friedman y Schwartz | Las cifras del dinero |
 | 3.A.6 | Nueva macroeconomía clásica | mención (hecho, 4/11/2026) | Lucas (1994), reseña elogiosa, sin la frase atribuida (I.3); el análisis histórico de 1867-1960 y Romer y Romer (1989) contra la neutralidad del ciclo real (anexo D) | Las cifras de 1929-1933 |
+| 3.B.26 | Pánicos bancarios: evidencia | mención (hecho, 12/11/2026) | II.1 d): entre 1930 y 1933, oleadas de pánicos cerraron miles de bancos sin que la Reserva Federal actuara como prestamista de última instancia y la oferta monetaria se hundió (`FriedmanSchwartz1963Monetary`, sin la cifra de bancos, que no se comprobó); I.3 a): Bernanke (1983), el canal no monetario; `\vertema{3.A.5}` | Las cifras del dinero |
 
 ## Divergencias encontradas en el temario actual
 

@@ -1,0 +1,33 @@
+% Pregunta 256 (2018-enero-OEP2017, n.º 12): el impuesto pigouviano t* = DMg(q*) se suma al coste marginal privado de la cementera, que pasa a cortar el precio en el óptimo social q* y elimina la pérdida de eficiencia. Autor: Víctor Gutiérrez Marcos
+% Empresa competitiva: p = 2,5; CMg_P = 0,5 + 0,4q (q_P = 5); DMg = 0,4q; CMg_S = 0,5 + 0,8q (q* = 2,5); t* = DMg(2,5) = 1.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$q$}{$p$, costes}{6.6}{5}
+  % Pérdida de eficiencia: unidades entre q* y q_P, donde CMg_S > p
+  \fill[area] (2.5,2.5) -- (5,2.5) -- (5,4.5) -- cycle;
+  % Precio de mercado
+  \draw[curva4] (0,2.5) -- (6.2,2.5) node[etiqueta,right] {$p$};
+  % Coste marginal privado
+  \draw[curva1] (0,0.5) -- (6.2,2.98) node[etiqueta,right] {$CMg_P$};
+  % Coste marginal privado más el impuesto
+  \draw[curva2,desplazada] (0,1.5) -- (6.2,3.98) node[etiqueta,right] {$CMg_P+t^*$};
+  % Coste marginal social
+  \draw[curvanueva] (0,0.5) -- (5.5,4.9) node[etiqueta,right] {$CMg_S=CMg_P+DMg$};
+  % Impuesto en el óptimo
+  \draw[<->,thick,tceerojo] (2.5,1.5) -- (2.5,2.5);
+  \node[etiqueta,tceerojo,right] at (2.5,2.0) {$t^*$};
+  % Proyecciones
+  \proyeccion{(2.5,2.5)}{$q^*$}{}
+  \proyeccion{(5,2.5)}{$q_P$}{}
+  \node[punto] at (2.5,2.5) {};
+  \node[punto] at (5,2.5) {};
+  % Rótulo de la pérdida de eficiencia
+  \node[etiqueta,align=left] (pe) at (1.7,4.3) {pérdida de\\eficiencia};
+  \draw[thin] (pe.east) -- (4.7,2.95);
+  % Efecto del impuesto: la producción baja de q_P a q*
+  \draw[flecha] (4.75,-0.75) -- (2.75,-0.75);
+  \node[etiqueta,tceerojo,below] at (3.75,-0.75) {el impuesto reduce la producción};
+\end{tikzpicture}
+\end{document}

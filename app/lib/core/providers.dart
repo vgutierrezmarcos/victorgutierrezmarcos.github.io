@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'analitica.dart';
+import 'instalacion.dart';
+import 'invitacion.dart';
+import 'resenas.dart';
 import 'avisos_navegador.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,8 +17,15 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/models/temas_clase.dart';
 import '../features/cronograma/planificador.dart' show compararCodigos;
+import '../features/inicio/racha.dart';
+import '../data/models/reto.dart';
+import '../data/models/dificultad.dart';
+import '../data/models/coyuntura.dart';
+import '../data/models/autoevaluacion.dart';
+import '../features/test/motor_test.dart' show TestEnCurso;
 import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
+import '../data/models/explicacion.dart';
 import '../data/models/frecuencia_test.dart';
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
@@ -26,6 +36,7 @@ import '../data/models/preparador.dart';
 import '../data/models/temario.dart';
 import '../data/repos/contenido_repo.dart';
 import '../data/repos/descargas_repo.dart';
+import '../data/repos/oposicion_cuenta.dart';
 import '../data/repos/plan_repo.dart';
 import '../data/repos/preparador_repo.dart';
 import '../data/repos/usuario_repo.dart';
@@ -41,6 +52,45 @@ import 'red_providers.dart';
 import 'temas_anticipados.dart';
 
 /// Servicios creados en main() antes de arrancar la app.
+/// Por qué no se pudo iniciar Firebase en este arranque (null si se inició).
+/// Lo pone `main()` y lo enseñan Más → Cuenta y la sección del preparador.
+String? errorFirebase;
+
+/// En este arranque la sesión de Firebase se había perdido y se recuperó
+/// sola con la cuenta de Google del móvil (ver [recuperarSesion]).
+bool sesionRecuperada = false;
+
+/// El usuario está cerrando la sesión o eliminando la cuenta a propósito:
+/// no hay que recuperarla.
+bool saliendoAProposito = false;
+
+/// Al arrancar en el móvil sin sesión de Firebase pero con la cuenta de Google
+/// todavía elegida en los servicios de Google Play: vuelve a entrar sin
+/// preguntar. «Cerrar sesión» cierra también la de Google, así que quien salió
+/// a propósito no vuelve a entrar solo; esto cubre los móviles en los que la
+/// sesión guardada desaparece al cerrar la app del todo (visto en un Galaxy
+/// S24 con la 1.20.5, 28 oct. 2026). Cuenta las veces en la caja `app` para
+/// enseñarlo en Más → Cuenta. Devuelve si ha recuperado la sesión.
+Future<bool> recuperarSesion() async {
+  if (kIsWeb || saliendoAProposito) return false;
+  final auth = FirebaseAuth.instance;
+  if (auth.currentUser != null) return false;
+  try {
+    final google = await GoogleSignIn(scopes: const ['email']).signInSilently().timeout(const Duration(seconds: 8));
+    if (google == null) return false;
+    final a = await google.authentication;
+    if (a.idToken == null && a.accessToken == null) return false;
+    await auth.signInWithCredential(GoogleAuthProvider.credential(idToken: a.idToken, accessToken: a.idToken == null ? a.accessToken : null));
+    sesionRecuperada = true;
+    final caja = Hive.box(Cajas.app);
+    await caja.put(claveSesionesRecuperadas, ((caja.get(claveSesionesRecuperadas) as int?) ?? 0) + 1);
+    return true;
+  } catch (e) {
+    debugPrint('No se pudo recuperar la sesión: $e');
+    return false;
+  }
+}
+
 class Servicios {
   const Servicios({
     required this.oposicion,
@@ -68,6 +118,10 @@ class Servicios {
 final serviciosProvider = Provider<Servicios>((ref) => throw UnimplementedError('Se inyecta en main()'));
 
 final oposicionProvider = Provider<Oposicion>((ref) => ref.watch(serviciosProvider).oposicion);
+
+/// Invitación de un preparador pendiente de conectar (caja `app`); se
+/// invalida al conectar, al descartarla y cuando llega otro enlace.
+final invitacionPendienteProvider = Provider<Invitacion?>((ref) => Invitacion.pendiente());
 
 /// Cambia de oposición: se guarda y la app se vuelve a cargar con sus datos
 /// (lo pone RaizApp en main.dart).
@@ -103,9 +157,34 @@ final frecuenciaTestProvider = FutureProvider<FrecuenciaTest?>((ref) {
   ref.watch(versionContenidoProvider);
   return ref.watch(contenidoProvider).frecuenciaTest();
 });
+/// Qué temas revisados tienen autoevaluación.
+final indiceAutoevaluacionProvider = FutureProvider<IndiceAutoevaluacion>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).indiceAutoevaluacion();
+});
+/// Las preguntas de autoevaluación de un tema (por código), o null.
+final autoevaluacionProvider = FutureProvider.family<Autoevaluacion?, String>((ref, codigo) async {
+  final archivo = (await ref.watch(indiceAutoevaluacionProvider.future)).archivoDe(codigo);
+  return archivo == null ? null : ref.watch(contenidoProvider).autoevaluacion(archivo);
+});
+/// Cuadro de coyuntura de España (vacío sin datos).
+final coyunturaProvider = FutureProvider<Coyuntura>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).coyuntura();
+});
+/// Cuántos fallan cada pregunta, con los tests de todos (vacía sin datos).
+final dificultadProvider = FutureProvider<Dificultad>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).dificultad();
+});
 final temarioProvider = FutureProvider<Temario>((ref) {
   ref.watch(versionContenidoProvider);
   return ref.watch(contenidoProvider).temario();
+});
+/// Explicaciones de las preguntas de un examen (exclusivas de la app).
+final explicacionesProvider = FutureProvider.family<Map<int, Explicacion>, String>((ref, examen) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).explicaciones(examen);
 });
 /// Temas revisados, exclusivos de la app (manifiesto de la rama revision-temario).
 final revisadosProvider = FutureProvider<ManifiestoRevisados>((ref) {
@@ -153,6 +232,9 @@ final actualizacionProvider = FutureProvider<String?>((ref) async {
     return null;
   }
 });
+
+/// De dónde se instaló la app (Google Play, APK o navegador).
+final origenInstalacionProvider = FutureProvider<OrigenInstalacion>((ref) => origenInstalacion());
 
 /// Esta versión de la app es más antigua que `versionMinima` de
 /// app-config.json: ya no es compatible con los datos de las versiones nuevas
@@ -299,27 +381,77 @@ class SesionNotifier extends Notifier<bool> {
   }
 
   Future<void> cerrarSesion() async {
+    saliendoAProposito = true;
     try {
-      if (!kIsWeb) await GoogleSignIn().signOut();
-    } catch (_) {}
-    await FirebaseAuth.instance.signOut();
-    await programarAvisosEnSegundoPlano(activar: false);
-    ref.invalidate(historialProvider);
+      try {
+        if (!kIsWeb) await GoogleSignIn().signOut();
+      } catch (_) {}
+      await FirebaseAuth.instance.signOut();
+      await programarAvisosEnSegundoPlano(activar: false);
+      ref.invalidate(historialProvider);
+    } finally {
+      saliendoAProposito = false;
+    }
   }
 }
 
 final sesionProvider = NotifierProvider<SesionNotifier, bool>(SesionNotifier.new);
 
-/// Borra todos los datos del usuario en la nube y en este dispositivo y cierra
-/// la sesión. La cuenta de Google no se toca.
-Future<void> borrarTodosMisDatos(WidgetRef ref) async {
-  await ref.read(preparadorRepoProvider).romperTodosLosEnlaces();
-  await ref.read(usuarioRepoProvider).borrarTodoEnLaNube();
+/// Lo que hay que releer cuando cambian de golpe los datos de la oposición en curso.
+final _proveedoresDeDatos = <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, vinculosPreparadorProvider, solicitudesEnlaceProvider];
+
+/// Borra todos los datos del usuario en [o], y solo en ella: en la nube (si
+/// hay sesión) y en este dispositivo, y rompe sus enlaces con preparadores y
+/// alumnos de esa oposición. No cierra la sesión ni toca las demás
+/// oposiciones ni la cuenta. Deja una marca en la cuenta para que los demás
+/// dispositivos borren su copia en vez de volver a subirla.
+Future<void> borrarDatosDeOposicion(WidgetRef ref, Oposicion o) async {
+  final enCurso = o.id == ref.read(oposicionProvider).id;
+  final auth = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
+  final conNube = ref.read(serviciosProvider).firebaseDisponible && auth.currentUser != null;
+  final preparador = enCurso ? ref.read(preparadorRepoProvider) : await PreparadorRepo.crear(oposicion: o, firestore: conNube ? db : null, auth: conNube ? auth : null);
+  final usuario = enCurso ? ref.read(usuarioRepoProvider) : await UsuarioRepo.crear(oposicion: o, firestore: conNube ? db : null, auth: conNube ? auth : null);
+  final plan = enCurso ? ref.read(planRepoProvider) : await PlanRepo.crear(oposicion: o, firestore: conNube ? db : null, auth: conNube ? auth : null);
+  if (conNube) {
+    // La marca, antes: si otro dispositivo sincroniza a mitad, ya no resube.
+    await OposicionCuenta.marcarBorrado(o);
+    await preparador.romperTodosLosEnlaces();
+    await usuario.borrarTodoEnLaNube(temas: await _codigosDeTemas(ref, o));
+  }
+  await usuario.borrarDatosLocales();
+  await plan.borrarDatosLocales();
+  await preparador.borrarDatosLocales();
+  if (enCurso) {
+    for (final p in _proveedoresDeDatos) {
+      ref.invalidate(p);
+    }
+  }
+}
+
+/// Códigos de los temas de [o] (para encontrar las anotaciones a mano de cada
+/// uno). Sin red ni copia del temario, vacío: se borra todo lo demás.
+Future<List<String>> _codigosDeTemas(WidgetRef ref, Oposicion o) async {
+  try {
+    final temario = await ContenidoRepo(ref.read(serviciosProvider).http, o).temario();
+    return [for (final t in temario.todosLosTemas) t.codigo];
+  } catch (_) {
+    return const [];
+  }
+}
+
+/// Si los datos de la oposición en curso se han borrado en otro dispositivo o
+/// desde el conector de la IA, borra la copia de este dispositivo antes de
+/// sincronizar (si no, la volvería a subir).
+Future<void> aplicarBorradoRemoto(Ref ref) async {
+  final o = ref.read(oposicionProvider);
+  final marca = await OposicionCuenta.borradoPendiente(o);
+  if (marca == null) return;
   await ref.read(usuarioRepoProvider).borrarDatosLocales();
   await ref.read(planRepoProvider).borrarDatosLocales();
   await ref.read(preparadorRepoProvider).borrarDatosLocales();
-  await ref.read(sesionProvider.notifier).cerrarSesion();
-  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, vinculosPreparadorProvider, solicitudesEnlaceProvider]) {
+  await OposicionCuenta.borradoAplicado(o, marca);
+  for (final p in _proveedoresDeDatos) {
     ref.invalidate(p);
   }
 }
@@ -332,6 +464,7 @@ Future<void> borrarTodosMisDatos(WidgetRef ref) async {
 Future<String?> eliminarMiCuenta(WidgetRef ref) async {
   final auth = FirebaseAuth.instance;
   if (auth.currentUser == null) return 'No has iniciado sesión.';
+  saliendoAProposito = true;
   try {
     for (final o in Oposiciones.todas) {
       final db = FirebaseFirestore.instance;
@@ -339,11 +472,12 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
       final usuario = await UsuarioRepo.crear(oposicion: o, firestore: db, auth: auth);
       final plan = await PlanRepo.crear(oposicion: o, firestore: db, auth: auth);
       await preparador.romperTodosLosEnlaces();
-      await usuario.borrarTodoEnLaNube();
+      await usuario.borrarTodoEnLaNube(temas: await _codigosDeTemas(ref, o));
       await usuario.borrarDatosLocales();
       await plan.borrarDatosLocales();
       await preparador.borrarDatosLocales();
     }
+    await OposicionCuenta.borrar();
     try {
       await auth.currentUser!.delete();
     } on FirebaseAuthException catch (e) {
@@ -359,6 +493,7 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
       await auth.currentUser!.delete();
     }
   } on FirebaseException catch (e) {
+    saliendoAProposito = false;
     return e.message ?? e.code;
   }
   await ref.read(sesionProvider.notifier).cerrarSesion();
@@ -409,6 +544,7 @@ Future<void> avisarCambiosDeLaRed(PreparadorRepo preparador) async {
 Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
   // Una versión demasiado antigua no toca la nube (ver versionObsoletaProvider).
   if (versionObsoleta || await ref.read(versionObsoletaProvider.future)) return false;
+  await aplicarBorradoRemoto(ref);
   await ref.read(usuarioRepoProvider).sincronizarTodo();
   final ok = await ref.read(planRepoProvider).sincronizarTodo(delServidor: delServidor);
   final preparador = ref.read(preparadorRepoProvider);
@@ -442,7 +578,8 @@ Future<void> reprogramarRecordatorio(Ref ref) async {
     final hora = ref.read(usuarioRepoProvider).ajustes().horaRecordatorio;
     final hoy = Ajustes.claveDia(DateTime.now());
     final hecho = ref.read(usuarioRepoProvider).resultadosLocales().any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
-    await Notificaciones.programarRecordatorio(hora, hechoHoy: hecho);
+    final racha = ref.read(rachaProvider);
+    await Notificaciones.programarRecordatorio(hora, hechoHoy: hecho, pendientesRepaso: ref.read(usuarioRepoProvider).leitner().pendientes().length, racha: racha != null && racha.enJuego ? racha.dias : 0);
   } catch (_) {}
 }
 
@@ -470,6 +607,27 @@ class LeitnerNotifier extends Notifier<EstadoLeitner> {
 }
 
 final leitnerProvider = NotifierProvider<LeitnerNotifier, EstadoLeitner>(LeitnerNotifier.new);
+
+/// Test a medias guardado en este dispositivo (para «Continuar el test»).
+/// Se invalida al guardarlo, al terminarlo y al abandonarlo.
+final testEnCursoProvider = Provider<TestEnCurso?>((ref) => ref.watch(usuarioRepoProvider).testEnCurso());
+
+/// El agregado anónimo del test diario de hoy (null si no lo aporta, sin
+/// sesión o sin red). Se invalida al terminar el test diario.
+final retoDiarioProvider = FutureProvider<RetoDia?>((ref) async {
+  ref.watch(authStateProvider);
+  if (!ref.watch(ajustesProvider).aportarReto) return null;
+  return ref.watch(usuarioRepoProvider).leerReto();
+});
+
+/// Racha de días con actividad (null si el opositor no la tiene activada).
+final rachaProvider = Provider<Racha?>((ref) {
+  final ajustes = ref.watch(ajustesProvider);
+  if (!ajustes.racha) return null;
+  final repo = ref.watch(usuarioRepoProvider);
+  final tests = ref.watch(historialProvider).valueOrNull ?? repo.resultadosLocales();
+  return rachaDe(ajustes, tests: tests, cantes: ref.watch(cantesProvider), vueltas: ref.watch(agendasProvider).values.expand((a) => a.vueltas));
+});
 
 class AjustesNotifier extends Notifier<Ajustes> {
   @override
@@ -891,9 +1049,11 @@ class SesionesNotifier extends Notifier<List<Cante>> {
   /// Recordatorios de las próximas clases (si es preparador en esta oposición).
   Future<void> reprogramarAvisos() async {
     final perfil = ref.read(perfilPreparadorProvider);
-    final alumnos = {for (final a in ref.read(preparadorRepoProvider).alumnos()) a.id: a.nombre};
+    final lista = ref.read(preparadorRepoProvider).alumnos();
+    final alumnos = {for (final a in lista) a.id: a.nombre};
+    final sinApp = {for (final a in lista) if (!a.enlazado) a.id};
     try {
-      await Notificaciones.programarClases(perfil.activo ? state : const [], alumno: (c) => alumnos[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase);
+      await Notificaciones.programarClases(perfil.activo ? state : const [], alumno: (c) => alumnos[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase, sinApp: (c) => sinApp.contains(c.alumno));
     } catch (_) {}
   }
 }
@@ -917,6 +1077,7 @@ class MisPreparadoresNotifier extends Notifier<List<VinculoPreparador>> {
       await repo.enlazarConCodigo(codigo);
       state = repo.misPreparadores();
       Analitica.instancia.evento('preparador_conectado');
+      Resenas.momento();
       return null;
     } on ErrorEnlace catch (e) {
       return e.mensaje;

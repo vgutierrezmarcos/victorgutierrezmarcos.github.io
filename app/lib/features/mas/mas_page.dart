@@ -14,6 +14,8 @@ import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../plan/plan_page.dart';
+import '../plan/rubrica.dart';
+import '../../data/models/plan.dart';
 import '../preparador/calendario_google_tarjeta.dart';
 import '../preparador/red_widgets.dart';
 import '../../data/models/preparador.dart';
@@ -92,6 +94,10 @@ class MasPage extends ConsumerWidget {
           if (!ref.read(oposicionProvider).esPrincipal) _fila(context, Icons.public, 'Apuntes en la web', ref.read(oposicionProvider).dominio, () => abrirUrl(context, ref.read(oposicionProvider).web)),
           if (config.listaX != null) _fila(context, Icons.tag, 'Lista de X', 'Cuentas de referencia', () => abrirUrl(context, config.listaX)),
           ]),
+          const TituloSeccion('Con IA'),
+          GrupoFilas(children: [
+            _fila(context, Icons.auto_awesome_outlined, 'EconomIA', 'Tu IA corrige tus cantes, te organiza el cronograma y te pregunta como el tribunal. En Claude, Le Chat, ChatGPT y Gemini', () => context.go('/mas/economia')),
+          ]),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),
             for (final c in enlaces)
@@ -141,6 +147,37 @@ class MasPage extends ConsumerWidget {
                 trailing: Switch(value: avisosCante, onChanged: (_) => alternarAvisosCante(context, ref)),
               ),
               const FilasAvisosSistema(),
+              // Lo opcional de «Hoy te toca», para quien lo quiera.
+              if (papel != Papel.preparador) ...[
+                ListTile(
+                  leading: const Icon(Icons.local_fire_department_outlined),
+                  title: const Text('Racha de días en Hoy'),
+                  subtitle: Text(
+                    'Días seguidos con test, cante o vuelta a un tema. Un día suelto no la rompe y puedes congelarla si descansas más.${ajustes.mejorRacha > 0 ? ' Mejor racha: ${ajustes.mejorRacha} días.' : ''}',
+                    style: context.textos.labelSmall,
+                  ),
+                  trailing: Switch(value: ajustes.racha, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(racha: v))),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.ac_unit_outlined),
+                  title: const Text('El tema más frío, en Hoy'),
+                  subtitle: Text('Te sugiere el tema estudiado que lleves más tiempo sin repasar ni cantar.', style: context.textos.labelSmall),
+                  trailing: Switch(value: ajustes.temaFrio, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaFrio: v))),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.groups_outlined),
+                  title: const Text('Aportar mi nota del test diario'),
+                  subtitle: Text('Al agregado anónimo del día: verás cuántos lo han hecho, la nota media y tu posición. Solo cifras; nunca nombres ni ranking.', style: context.textos.labelSmall),
+                  trailing: Switch(value: ajustes.aportarReto, onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(aportarReto: v))),
+                ),
+                // Rúbrica para los cantes por su cuenta (la del preparador va en sus ajustes).
+                FilaRubrica(
+                  rubrica: ajustes.rubrica,
+                  porDefecto: (ref.watch(configProvider).valueOrNull?.rubrica ?? const []).isEmpty ? rubricaPorDefecto : ref.watch(configProvider).valueOrNull!.rubrica,
+                  onChanged: (r) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(rubrica: r)),
+                  texto: 'Para tus cantes por tu cuenta: además de las estrellas, esquema, rigor, tiempo, exposición y actualidad (o los tuyos). Opcional en cada cante.',
+                ),
+              ],
               if ((ref.watch(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles).length > 1)
                 ListTile(
                   leading: const Icon(Icons.school_outlined),

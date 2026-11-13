@@ -1,0 +1,608 @@
+// Enrutado de las herramientas con un Firestore simulado y un cliente MCP en memoria.
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { Contenido } from '../src/contenido';
+import { bancoPropioDe, temasDePreguntas } from '../src/datos';
+import type { AlmacenDatos, Consulta, Json } from '../src/firestore';
+import { type Contexto, crearServidor, ErrorSesion } from '../src/herramientas';
+
+type Obj = { [k: string]: Json };
+
+/** Firestore en memoria: documentos por ruta relativa a la raíz del opositor. */
+export class FirestoreSimulado implements AlmacenDatos {
+  docs = new Map<string, Obj>();
+  escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[] }> = [];
+
+  async leer(ruta: string) {
+    return this.docs.get(ruta) ?? null;
+  }
+  async listar(coleccion: string) {
+    const prefijo = `${coleccion}/`;
+    return [...this.docs.entries()]
+      .filter(([r]) => r.startsWith(prefijo) && !r.slice(prefijo.length).includes('/'))
+      .map(([r, datos]) => ({ id: r.slice(prefijo.length), datos }));
+  }
+  async consultar(coleccion: string, c: Consulta) {
+    let out = await this.listar(coleccion);
+    if (c.where) out = out.filter((d) => (c.where!.op === 'EQUAL' ? d.datos[c.where!.campo] === c.where!.valor : String(d.datos[c.where!.campo]) >= String(c.where!.valor)));
+    if (c.orderBy) out.sort((a, b) => String(a.datos[c.orderBy!]).localeCompare(String(b.datos[c.orderBy!])) * (c.descendente ? -1 : 1));
+    return out.slice(0, c.limite);
+  }
+  async escribir(ruta: string, datos: Obj, soloCampos?: string[]) {
+    this.escrituras.push({ ruta, datos, soloCampos });
+    if (!soloCampos) {
+      this.docs.set(ruta, datos);
+      return;
+    }
+    const actual = { ...(this.docs.get(ruta) ?? {}) };
+    for (const campo of soloCampos) {
+      const [a, b] = campo.split('.');
+      if (b) actual[a] = { ...((actual[a] as Obj) ?? {}), [b]: (datos[a] as Obj)[b] };
+      else actual[a] = datos[a];
+    }
+    this.docs.set(ruta, actual);
+  }
+  lotes = 0;
+  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[]; borrar?: boolean }>) {
+    this.lotes++;
+    for (const e of escrituras) {
+      if (e.borrar) this.docs.delete(e.ruta);
+      else await this.escribir(e.ruta, e.datos, e.soloCampos);
+    }
+  }
+}
+
+const kv = new Map<string, string>([
+  ['indice.json', JSON.stringify({ generado: 'hoy', temas: [{ codigo: '3A08', tema: '3.A.8', titulo: 'Demanda', ficha: true, guion: true, texto: true, aprobado: '2026-10-17', version: 'abc' }], dictamen: ['guia-1D01'], canon: ['notacion'] })],
+  ['temas/3A08/tema.md', '# Tema 3.A.8\n\n## Introducción (2′30″)\n\nHola.\n\n## I. Axiomas (11′)\n\nCompletitud.\n'],
+  ['temas/3A08/ficha.md', '# Ficha 3.A.8\n\nResumen.'],
+  ['dictamen/guia-1D01.md', '# Guía\n\n## 1. Qué es\n\nTexto.\n'],
+]);
+
+const opciones = { a: 'Una', b: 'Dos', c: 'Tres', d: 'Cuatro' };
+const banco = temasDePreguntas({
+  preguntas: [
+    { id: 1, temas: ['3.A.8'], respuesta: ['a'], examen: '2026-marzo', numero: 12, enunciado: '¿Primera?', opciones },
+    { id: 2, temas: ['3.A.8'], respuesta: ['b'], examen: '2026-marzo', numero: 13, enunciado: '¿Segunda?', opciones },
+    { id: 3, temas: ['3.A.8', '3.A.9'], respuesta: ['c'], examen: '2025-marzo-A', numero: 4, enunciado: '¿Tercera?', opciones },
+    { id: 4, temas: ['3.A.8'], respuesta: [], examen: '2025-marzo-A', numero: 5, enunciado: '¿Anulada?', opciones },
+    { id: 5, temas: ['3.B.1'], respuesta: ['d'], examen: '2025-marzo-A', numero: 6, enunciado: '¿De otro tema?', opciones },
+  ],
+});
+
+export async function cliente(ctx: Contexto) {
+  const servidor = crearServidor(ctx);
+  const [a, b] = InMemoryTransport.createLinkedPair();
+  await servidor.connect(a);
+  const c = new Client({ name: 'prueba', version: '0' });
+  await c.connect(b);
+  return c;
+}
+
+const texto = (r: Awaited<ReturnType<Client['callTool']>>) => (r.content as Array<{ type: string; text: string }>)[0].text;
+const json = (r: Awaited<ReturnType<Client['callTool']>>) => JSON.parse(texto(r)) as Obj;
+
+describe('herramientas', () => {
+  let db: FirestoreSimulado;
+  let dbDce: FirestoreSimulado;
+  let desconectado: boolean;
+  let ctx: Contexto;
+
+  beforeEach(() => {
+    db = new FirestoreSimulado();
+    dbDce = new FirestoreSimulado();
+    desconectado = false;
+    db.docs.set('progress/settings', { temasEstudiados: ['3.A.1'], rubrica: [] });
+    db.docs.set('progress/plan', { fechas: { '3': '2027-06-15T00:00:00.000' }, hitos: [] });
+    db.docs.set('notes/3_A_8', { tema: '3.A.8', texto: 'nota' });
+    db.docs.set('exam_results/r1', { timestamp: '2026-10-28T09:00:00Z', notaSobre10: 6, respuestas: { '1': 'a' }, tipo: 'test', origen: 'app' });
+    db.docs.set('exam_results/r0', { timestamp: '2026-09-01T09:00:00Z', notaSobre10: 4, tipo: 'test', origen: 'web' });
+    db.docs.set('cantes/c1', { id: 'c1', fecha: '2026-10-10T18:00:00.000', estado: 'hecho', temas: ['3.A.8'], resultado: { temaCantado: '3.A.8', valoracion: 2, comentarios: 'regular' }, updatedAt: '2026-10-10T19:00:00.000' });
+    db.docs.set('cantes/c2', { id: 'c2', fecha: '2026-10-20T18:00:00.000', estado: 'pendiente', temas: ['3.A.9'] });
+    db.docs.set('cronogramas/viejo', { id: 'viejo', archivado: false, creado: '2026-09-01T00:00:00.000', ejercicio: 3, semanas: [] });
+    dbDce.docs.set('progress/settings', { temasEstudiados: ['1.A.1'] });
+    ctx = {
+      uid: 'u1',
+      email: 'u1@example.org',
+      almacen: async (op) => (op === 'dce' ? dbDce : db),
+      almacenEn: async () => new FirestoreSimulado(),
+      banco: async () => banco,
+      contenido: new Contenido({ get: async (k) => kv.get(k) ?? null }),
+      fuentes: async () => ({
+        aviso: 'aviso',
+        bloques: [{ nombre: 'Modelo neoclásico básico', categoria: 'Microeconomía', temas: ['3.A.8'] }],
+        manuales: [{ bloque: 'Microeconomía y organización industrial', manuales: [{ cita: 'Varian' }] }, { bloque: 'Macroeconomía', manuales: [{ cita: 'Romer' }] }],
+        tcee: {
+          '3.A.8': { oposicion: 'tcee', titulo: 'Teoría de la demanda del consumidor (I)', ejercicio: 3, parte: 'A', bloque: 'Modelo neoclásico básico', categoria: 'Microeconomía', revisado: true, manuel: [], atcee: [] },
+          '3.B.26': { oposicion: 'tcee', titulo: 'Crisis financieras y pánicos bancarios', ejercicio: 3, parte: 'B', bloque: 'Economía Corporativa y Financiera', categoria: 'Microeconomía', revisado: false,
+            web: { pdf: null, disponible: false }, manuel: [], atcee: [{ autor: 'Tebar', promocion: 'LXXV', anio: 2026, numeracion: 'actual', fichero: 'B.26.docx', url: 'https://drive.google.com/file/d/1AAAAAAAAAAAAAAAAAAAAAAAA/view' }, { autor: 'Fuentes', promocion: 'LXXI', anio: 2022, numeracion: 'antigua', fichero: '26B.docx', url: 'https://drive.google.com/file/d/1BBBBBBBBBBBBBBBBBBBBBBBB/view' }] },
+        },
+        dce: { '1.A.4': { oposicion: 'dce', titulo: 'La oferta y la demanda', ejercicio: 1, parte: 'A · Economía general', manuel: 'https://manuelcabadogarcia.es/microeconomia/03-tema-a3.html' } },
+      }),
+      apuntes: async (id) => ({ formato: 'docx', esquema: ['I. Introducción'], texto: id === '1AAAAAAAAAAAAAAAAAAAAAAAA' ? 'uno dos tres cuatro' : '' }),
+      textos: async (tema) => (tema === '3.B.26' ? { web: { url: 'w', texto: 'I. Introducción a las crisis\nTexto del tema' }, atcee: { '1BBBBBBBBBBBBBBBBBBBBBBBB': { autor: 'Fuentes', fichero: '26B.pdf', texto: 'apuntes en pdf' } } } : null),
+      pagina: async () => ({ esquema: ['Tema 3'], texto: 'Texto de Manuel' }),
+      skill: async (ruta) =>
+        (({
+          'SKILL.md': '---\nname: prepara-oposicion\n---\n\n# EconomIA\n\nEres el equipo.\n\n## Cómo empezar\n\nTabla.\n\n## Reglas comunes a todos los agentes\n\n- Crítico.\n\n## Cómo termina toda entrega\n\nAviso.',
+          'references/agentes/dudas.md': '# Dudas',
+          'references/temario/indices-temas.md': '# Índices\n\n## parte_A.pdf\n\n- Curva de Phillips (p. 2)\n\n## 3.B.26. Crisis financieras y pánicos bancarios (3B26.pdf)\n\n- 1. MODELOS (p. 3)\n  - 1.1. Modelo de Diamond y Dybvig (p. 4)\n    - Pánicos bancarios en Diamond-Dybvig (p. 5)\n',
+          'references/agentes/corrector-cante.md': '# Corrector del cante',
+        }) as Record<string, string>)[ruta] ?? null,
+      cliente: async () => 'Le Chat',
+  explicaciones: async () => ({ '1': { clave: 'Porque sí.' } }),
+  proceso: async () => ({ actualizado: 'hoy', tcee: { procesos: [{ convocatoria: '2025', url: 'https://ministerio', documentos: [{ seccion: 'Tercer ejercicio', titulo: 'Convocatoria', url: 'https://doc', desde: '2026-10-07' }, { seccion: 'Convocatoria', titulo: 'BOE', url: 'https://boe', desde: null }] }] } }),
+      sello: async (t) => `sello-${t.length}-abcdefgh`,
+      desconectar: async () => {
+        desconectado = true;
+      },
+    };
+  });
+
+  it('lista las herramientas del diseño', async () => {
+    const c = await cliente(ctx);
+    const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
+    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'apuntar_test', 'reportar_pregunta', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
+  });
+
+  it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
+    const c = await cliente(ctx);
+    const texto = (r: unknown) => ((r as { content: Array<{ text: string }> }).content[0].text);
+    const s = texto(await c.callTool({ name: 'leer_skill', arguments: {} }));
+    expect(s).toContain('# EconomIA');
+    expect(s).toContain('leer_skill(ruta)');
+    expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: './references/agentes/dudas.md' } }))).toBe('# Dudas');
+    expect(texto(await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/temas/3A08/ficha.md' } }))).toMatch(/Material exclusivo[\s\S]*# Ficha 3\.A\.8/);
+    const malo = await c.callTool({ name: 'leer_skill', arguments: { ruta: '../../index.html' } });
+    expect(malo.isError).toBe(true);
+    const falta = await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/no-existe.md' } });
+    expect(falta.isError).toBe(true);
+    const info = c.getInstructions();
+    expect(info).toContain('leer_skill()');
+    expect(info).toContain('leer_metodo(tarea)');
+  });
+
+  it('leer_metodo da la lista de tareas y, para cada una, el agente con las reglas comunes', async () => {
+    const c = await cliente(ctx);
+    const texto = (r: unknown) => ((r as { content: Array<{ text: string }> }).content[0].text);
+    const lista = texto(await c.callTool({ name: 'leer_metodo', arguments: {} }));
+    expect(lista).toContain('`corregir_cante`');
+    expect(lista).toContain('`tribunal`');
+    const m = texto(await c.callTool({ name: 'leer_metodo', arguments: { tarea: 'corregir_cante' } }));
+    expect(m).toContain('Eres el equipo.');
+    expect(m).toContain('## Reglas comunes a todos los agentes');
+    expect(m).toContain('## Cómo termina toda entrega');
+    expect(m).not.toContain('## Cómo empezar');
+    expect(m).toContain('# Corrector del cante');
+    expect(m).not.toContain('name: prepara-oposicion');
+    const falta = await c.callTool({ name: 'leer_metodo', arguments: { tarea: 'tarjetas' } });
+    expect(falta.isError).toBe(true);
+    const malo = await c.callTool({ name: 'leer_metodo', arguments: { tarea: 'otra' } });
+    expect(malo.isError).toBe(true);
+  });
+
+  it('ofrece un prompt por tarea que manda cargar su método', async () => {
+    const c = await cliente(ctx);
+    const prompts = (await c.listPrompts()).prompts.map((p) => p.name);
+    expect(prompts).toContain('corregir_cante');
+    expect(prompts).toContain('simulacro');
+    const p = await c.getPrompt({ name: 'tribunal', arguments: { detalle: 'Tema 3.A.8' } });
+    const t = (p.messages[0].content as { text: string }).text;
+    expect(t).toContain('Tema 3.A.8');
+    expect(t).toContain('leer_metodo con tarea «tribunal»');
+  });
+
+  it('fuentes_tema reúne las fuentes y avisa de la numeración antigua; buscar_temario agrupa por bloque', async () => {
+    const c = await cliente(ctx);
+    const f = json(await c.callTool({ name: 'fuentes_tema', arguments: { tema: '3b26' } }));
+    expect(f.tema).toBe('3.B.26');
+    expect((f.atcee as Obj[])[1].ojo).toContain('numeración antigua');
+    expect((f.manuales as Obj[]).map((m) => m.bloque)).toEqual(['Microeconomía y organización industrial']);
+    const b = json(await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'teoría microeconómica' } }));
+    expect((b.bloques as Obj[])[0].bloque).toBe('Modelo neoclásico básico');
+    const a = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://drive.google.com/file/d/1AAAAAAAAAAAAAAAAAAAAAAAA/view', limite: 1000 } }));
+    expect(a.autor).toBe('Tebar');
+    expect(a.palabras).toBe(4);
+    const pdf = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://drive.google.com/file/d/1BBBBBBBBBBBBBBBBBBBBBBBB/view' } }));
+    expect(pdf.texto).toBe('apuntes en pdf');
+    const web = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B26.pdf' } }));
+    expect(web.esquema).toEqual(['I. Introducción a las crisis']);
+    const manuel = json(await c.callTool({ name: 'leer_fuente', arguments: { enlace: 'https://manuelcabadogarcia.es/microeconomia/03-tema-a3.html' } }));
+    expect(manuel.autor).toBe('Manuel Cabado García');
+    const ajeno = await c.callTool({ name: 'leer_fuente', arguments: { enlace: '1ZZZZZZZZZZZZZZZZZZZZZZZZ' } });
+    expect(ajeno.isError).toBe(true);
+    // Por contenido: lo que no está en ningún título sale por los apartados del PDF del tema
+    const dd = json(await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'Diamond Dybvig' } }));
+    expect((dd.porContenido as Obj[]).map((t) => t.codigo)).toEqual(['3.B.26']);
+    expect((dd.porContenido as Obj[])[0].apartados).toEqual(['1.1. Modelo de Diamond y Dybvig (p. 4)', 'Pánicos bancarios en Diamond-Dybvig (p. 5)']);
+    // DCE sin consulta: el programa por partes (antes daba error)
+    const dce = json(await c.callTool({ name: 'buscar_temario', arguments: { oposicion: 'dce' } }));
+    expect((dce.bloques as Obj[])[0]).toMatchObject({ bloque: 'A · Economía general', categoria: 'Ejercicio 1' });
+    const nada = await c.callTool({ name: 'buscar_temario', arguments: { consulta: 'astronomía' } });
+    expect(nada.isError).toBe(true);
+  });
+
+  it('empezar resume las dos oposiciones, elige la principal y trae las tareas de la última corrección', async () => {
+    db.docs.set('cantes/c1/informes/2026-10-11T10-00-00', { fecha: '2026-10-11T10:00:00.000Z', cliente: 'Claude', informe: 'x'.repeat(7000), valoracion: 2, tareas: ['Repasar la ecuación de Slutsky'] });
+    db.docs.set('cantes/c1', { ...db.docs.get('cantes/c1')!, tareas: [{ tipo: 'estudiar', tema: '3.A.9', hecha: false }, { tipo: 'libre', texto: 'Hecha', hecha: true }] });
+    const c = await cliente(ctx);
+    const e = json(await c.callTool({ name: 'empezar', arguments: {} }));
+    expect(e.oposicionPrincipal).toBe('tcee');
+    const [tcee, dce] = e.oposiciones as Obj[];
+    expect(tcee).toMatchObject({ oposicion: 'tcee', esOpositor: true, esPreparador: false, cantesHechos: 1, ultimaCorreccion: { tareas: ['Repasar la ecuación de Slutsky'] }, deberesPendientes: [{ texto: 'Estudiar 3.A.9', canteId: 'c1' }] });
+    expect((tcee.examenes as Obj[])[0]).toMatchObject({ ejercicio: '3', fecha: '2027-06-15' });
+    expect((tcee.ultimosCantes as Obj[])[0]).toMatchObject({ id: 'c1', valoracion: 2 });
+    expect(dce.oposicion).toBe('dce');
+    expect((e.contenido as Obj).temasRevisados).toEqual(['3.A.8']);
+    // Y las correcciones guardadas se pueden releer, recortadas salvo que se pida entero
+    const inf = json(await c.callTool({ name: 'leer_informes_cante', arguments: {} }));
+    expect((inf.informes as Obj[])[0]).toMatchObject({ canteId: 'c1', hechoPor: 'Claude', valoracion: 2 });
+    expect(String((inf.informes as Obj[])[0].informe)).toContain('recortado');
+    const entero = json(await c.callTool({ name: 'leer_informes_cante', arguments: { canteId: 'c1', completo: true } }));
+    expect(String((entero.informes as Obj[])[0].informe)).toHaveLength(7000);
+  });
+
+  it('el cronograma nuevo se guarda de una vez y conserva lo hecho y el compartir del anterior', async () => {
+    db.docs.set('cronogramas/viejo', { id: 'viejo', archivado: false, compartir: true, creado: '2026-09-01T00:00:00.000', ejercicio: 3, semanas: [], hechos: { '3.A.8': '2026-09-10T00:00:00.000', '3.A.1': '2026-09-03T00:00:00.000' }, desmarcados: ['3.A.9'] });
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'proponer_cronograma', arguments: { ejercicio: 3, diaCante: 7, semanas: [{ cante: '2027-01-10', temas: ['3.A.8', '3.A.9'] }] } }));
+    expect(r).toMatchObject({ guardado: true, sigueCompartido: true, temasYaHechosConservados: 1, archivados: ['viejo'] });
+    expect(db.lotes).toBe(1);
+    const nuevo = db.docs.get(`cronogramas/${r.id as string}`)!;
+    expect(nuevo).toMatchObject({ compartir: true, hechos: { '3.A.8': '2026-09-10T00:00:00.000' }, desmarcados: ['3.A.9'], archivado: false });
+    expect(String(nuevo.creado)).not.toMatch(/Z$/); // hora de Madrid sin zona, como la app
+    expect(db.docs.get('cronogramas/viejo')!.archivado).toBe(true);
+  });
+
+  it('guardar_informe_cante no pisa lo que ya había en el diario salvo que se pida, y apunta los deberes', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: 'Informe', valoracion: 4, comentarios: 'mejor', criterios: { Rigor: 3 }, tareas: ['Repasar Slutsky', 'Repasar Slutsky'] } }));
+    expect(r.yaHabia).toEqual({ valoracion: 2, comentarios: 'regular' });
+    expect(r.deberesApuntados).toBe(1);
+    const cante = db.docs.get('cantes/c1')!;
+    expect(cante.resultado).toMatchObject({ valoracion: 2, comentarios: 'regular', criterios: { Rigor: 3 } });
+    expect((cante.tareas as Obj[])[0]).toMatchObject({ tipo: 'libre', texto: 'Repasar Slutsky' });
+    const s = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: 'Informe', valoraciones: { '3.A.8': 4, '3.A.9': 5 }, sustituir: true } }));
+    expect(s.yaHabia).toBeUndefined();
+    expect(db.docs.get('cantes/c1')!.resultado).toMatchObject({ valoracion: 5, valoraciones: { '3.A.8': 4, '3.A.9': 5 } });
+  });
+
+  it('anotar_tema añade apuntes sin repetir y marca el tema', async () => {
+    db.docs.set('notes/3_A_8', { tema: '3.A.8', texto: 'nota', pendientes: [{ id: 'a', texto: 'Repasar Slutsky', creado: 'x', hecho: null, borrado: false }] });
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'anotar_tema', arguments: { tema: '3a8', pendientes: ['repasar slutsky', 'Preferencia revelada: axioma débil'], marcar: 'en_repaso' } }));
+    expect(r).toMatchObject({ tema: '3.A.8', apuntados: 1, yaEstaban: 1, marcado: 'en_repaso' });
+    const nota = db.docs.get('notes/3_A_8')!;
+    expect(nota.texto).toBe('nota');
+    expect((nota.pendientes as Obj[]).map((p) => p.texto)).toEqual(['Repasar Slutsky', 'Preferencia revelada: axioma débil']);
+    expect(db.docs.get('progress/settings')).toMatchObject({ temasEnRepaso: ['3.A.8'], temasEstudiados: ['3.A.1'] });
+    expect((await c.callTool({ name: 'anotar_tema', arguments: { tema: '3.A.8' } })).isError).toBe(true);
+  });
+
+  it('cada llamada se mide sin datos del usuario: herramienta, oposición, resultado y duración', async () => {
+    const medidas: Array<{ herramienta: string; oposicion: string; ok: boolean; ms: number }> = [];
+    const c = await cliente({ ...ctx, medir: (d) => medidas.push(d) });
+    await c.callTool({ name: 'leer_cantes', arguments: { oposicion: 'dce' } });
+    await c.callTool({ name: 'leer_tema', arguments: { tema: 'no-es-un-tema' } });
+    expect(medidas.map((m) => [m.herramienta, m.oposicion, m.ok])).toEqual([['leer_cantes', 'dce', true], ['leer_tema', '', false]]);
+    expect(Object.keys(medidas[0]).sort()).toEqual(['herramienta', 'ms', 'ok', 'oposicion']);
+  });
+
+  it('una lectura vacía avisa si los datos están en la otra oposición', async () => {
+    dbDce.docs.set('cantes/d1', { id: 'd1', fecha: '2026-10-10T18:00:00.000', estado: 'hecho', temas: ['1.A.1'] });
+    db.docs.clear();
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'leer_cantes', arguments: {} }));
+    expect(r.aviso).toContain('oposicion «dce»');
+    expect(json(await c.callTool({ name: 'leer_cantes', arguments: { oposicion: 'dce' } })).aviso).toBeUndefined();
+  });
+
+  it('preguntas_test elige por tema y por lo que el opositor ha fallado, con la explicación', async () => {
+    db.docs.set('progress/spaced_repetition', { sessionCount: 3, questions: { '1': { box: 1, timesFailed: 2, timesCorrect: 0 }, '2': { box: 5, timesFailed: 0, timesCorrect: 3 } } });
+    const c = await cliente(ctx);
+    const t = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3a8'], n: 5 } }));
+    const ps = t.preguntas as Obj[];
+    expect(ps.map((p) => p.id)).toEqual([1, 3]); // la fallada primero; la 2, dominada, fuera; la 4, anulada, fuera
+    expect(ps[0]).toMatchObject({ respuesta: ['a'], porQue: 'Porque sí.', historial: { aciertos: 0, fallos: 2 } });
+    expect(ps[1].historial).toBe('no la ha hecho');
+    expect(t.aviso).toContain('Solo hay 2');
+    const f = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'falladas' } }));
+    expect((f.preguntas as Obj[]).map((p) => p.id)).toEqual([1]);
+  });
+
+  it('leer_proceso agrupa los documentos por sección y da las últimas novedades', async () => {
+    const c = await cliente(ctx);
+    const p = json(await c.callTool({ name: 'leer_proceso', arguments: {} }));
+    const actual = (p.procesos as Obj[])[0];
+    expect(Object.keys(actual.documentos as Obj)).toEqual(['Tercer ejercicio', 'Convocatoria']);
+    expect((actual.ultimasNovedades as Obj[])[0]).toMatchObject({ desde: '2026-10-07', seccion: 'Tercer ejercicio' });
+    expect((await c.callTool({ name: 'leer_proceso', arguments: { oposicion: 'dce' } })).isError).toBe(true);
+  });
+
+  it('los textos largos salen por tramos con la indicación de cómo seguir', async () => {
+    kv.set('temas/3A08/ficha.md', `# Ficha 3.A.8\n\n${'Línea de la ficha.\n'.repeat(400)}`);
+    const c = await cliente(ctx);
+    const uno = texto(await c.callTool({ name: 'leer_ficha', arguments: { tema: '3.A.8', limite: 2000 } }));
+    expect(uno).toContain('Material exclusivo');
+    const sigue = Number(/desde: (\d+)/.exec(uno)![1]);
+    expect(sigue).toBeLessThanOrEqual(2000);
+    const dos = texto(await c.callTool({ name: 'leer_ficha', arguments: { tema: '3.A.8', desde: sigue, limite: 2000 } }));
+    expect(dos.startsWith('\nLínea de la ficha.') || dos.startsWith('Línea de la ficha.')).toBe(true);
+    expect(dos).not.toContain('Material exclusivo');
+    kv.set('temas/3A08/ficha.md', '# Ficha 3.A.8\n\nResumen.');
+  });
+
+  it('leer_progreso devuelve el formato de la skill y respeta la oposición', async () => {
+    const c = await cliente(ctx);
+    const p = json(await c.callTool({ name: 'leer_progreso', arguments: {} }));
+    expect(p.oposicion).toBe('tcee');
+    expect((p.temas as Obj).estudiados).toEqual(['3.A.1']);
+    expect((p.examen as Obj).fechas).toEqual({ '3': '2027-06-15' });
+    expect(p.notas).toEqual({ '3.A.8': 'nota' });
+    const d = json(await c.callTool({ name: 'leer_progreso', arguments: { oposicion: 'dce' } }));
+    expect((d.temas as Obj).estudiados).toEqual(['1.A.1']);
+  });
+
+  it('leer_resultados_test ordena, limita, filtra por fecha y calcula el acierto por tema', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'leer_resultados_test', arguments: { limite: 5 } })) as { tests: Obj[] };
+    expect(r.tests.map((t) => t.id)).toEqual(['r1', 'r0']);
+    expect(r.tests[0].porTema).toEqual({ '3.A.8': { correctas: 1, incorrectas: 0, sinResponder: 0 } });
+    const desde = json(await c.callTool({ name: 'leer_resultados_test', arguments: { desde: '2026-10-01' } })) as { tests: Obj[] };
+    expect(desde.tests.map((t) => t.id)).toEqual(['r1']);
+  });
+
+  it('leer_cantes y leer_cronograma', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'leer_cantes', arguments: { n: 5 } })) as { hechos: Obj[]; pendientes: Obj[] };
+    expect(r.hechos.map((x) => x.id)).toEqual(['c1']);
+    expect(r.pendientes).toEqual([]); // 2026-10-20 ya pasó respecto a «ahora» en la prueba (fecha real)
+    const cr = json(await c.callTool({ name: 'leer_cronograma', arguments: {} })) as { cronograma: Obj };
+    expect(cr.cronograma.id).toBe('viejo');
+  });
+
+  it('proponer_cronograma archiva el anterior y escribe el nuevo con manual:true', async () => {
+    const c = await cliente(ctx);
+    const r = await c.callTool({ name: 'proponer_cronograma', arguments: { ejercicio: 3, diaCante: 6, semanas: [{ cante: '2026-11-07', temas: ['3.A.8'] }] } });
+    expect(r.isError).toBeFalsy();
+    const salida = json(r);
+    expect(salida.guardado).toBe(true);
+    expect(salida.archivados).toEqual(['viejo']);
+    expect(db.escrituras[0]).toMatchObject({ ruta: 'cronogramas/viejo', soloCampos: ['archivado', 'updatedAt'] });
+    expect(db.escrituras[0].datos.archivado).toBe(true);
+    const nuevo = db.docs.get(`cronogramas/${salida.id as string}`)!;
+    expect(nuevo).toMatchObject({ manual: true, archivado: false, diaCante: 6, temas: ['3.A.8'], semanas: [{ lunes: '2026-11-01T00:00:00.000', temas: ['3.A.8'] }] });
+    expect(db.docs.get('cronogramas/viejo')!.archivado).toBe(true);
+    expect(nuevo.autorNombre).toBe('Le Chat');
+  });
+
+  it('proponer_cronograma no escribe nada si hay errores', async () => {
+    const c = await cliente(ctx);
+    const r = await c.callTool({ name: 'proponer_cronograma', arguments: { ejercicio: 3, diaCante: 6, semanas: [{ cante: '2026-11-08', temas: ['3.A.8'] }] } });
+    expect(r.isError).toBe(true);
+    expect(texto(r)).toContain('no cae en el día de cante');
+    expect(db.escrituras).toEqual([]);
+  });
+
+  it('las vistas interactivas: recursos ui:// con su página, y las herramientas que las declaran', async () => {
+    const c = await cliente(ctx);
+    const recursos = (await c.listResources()).resources;
+    expect(recursos.map((r) => r.uri).sort()).toEqual(['ui://economia/borrado.html', 'ui://economia/clase.html', 'ui://economia/cronograma.html', 'ui://economia/informe.html', 'ui://economia/test.html']);
+    expect(recursos.every((r) => r.mimeType === 'text/html;profile=mcp-app')).toBe(true);
+    const pagina = (await c.readResource({ uri: 'ui://economia/test.html' })).contents[0] as { text: string; mimeType: string; _meta?: { ui?: { csp?: { resourceDomains?: string[] } } } };
+    expect(pagina.mimeType).toBe('text/html;profile=mcp-app');
+    expect(pagina.text).toContain('<!doctype html>');
+    expect(pagina.text).toContain("pedir('ui/initialize'");
+    expect(pagina.text).toContain("Vista.llamar('test_interactivo'");
+    expect(pagina._meta?.ui?.csp?.resourceDomains).toContain('https://www.victorgutierrezmarcos.es');
+    const conVista = (await c.listTools()).tools.filter((t) => (t._meta as { ui?: { resourceUri?: string } } | undefined)?.ui?.resourceUri);
+    expect(Object.fromEntries(conVista.map((t) => [t.name, (t._meta as { ui: { resourceUri: string } }).ui.resourceUri]))).toEqual({
+      test_interactivo: 'ui://economia/test.html',
+      proponer_cronograma: 'ui://economia/cronograma.html',
+      guardar_informe_cante: 'ui://economia/informe.html',
+      agendar_clase: 'ui://economia/clase.html',
+      borrar_datos_oposicion: 'ui://economia/borrado.html',
+    });
+    // La clave antigua («ui/resourceUri») también, para los clientes que aún la leen.
+    expect(conVista.every((t) => (t._meta as Record<string, unknown>)['ui/resourceUri'] === (t._meta as { ui: { resourceUri: string } }).ui.resourceUri)).toBe(true);
+  });
+
+  it('test_interactivo da las mismas preguntas que preguntas_test, con la indicación de no copiarlas', async () => {
+    const c = await cliente(ctx);
+    const t = json(await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], modo: 'todas', n: 2 } }));
+    expect(String(t.vista)).toContain('NO las copies');
+    expect((t.preguntas as Obj[]).length).toBe(2);
+    expect((t.preguntas as Obj[])[0]).toHaveProperty('respuesta');
+    expect((await c.callTool({ name: 'test_interactivo', arguments: { temas: ['nada'] } })).isError).toBe(true);
+    // La figura que la vista no puede cargar de la web se la da el conector, y solo las del test.
+    const web = 'https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/';
+    const cf = await cliente({ ...ctx, figura: async (ruta) => (ruta === 'img/a_p01.webp' ? { mime: 'image/webp', base64: 'QUJD' } : null) });
+    expect((await cf.callTool({ name: 'figura_test', arguments: { url: `${web}img/a_p01.webp` } })).content).toEqual([{ type: 'image', data: 'QUJD', mimeType: 'image/webp' }]);
+    expect((await cf.callTool({ name: 'figura_test', arguments: { url: `${web}preguntas.json` } })).isError).toBe(true);
+    expect((await cf.callTool({ name: 'figura_test', arguments: { url: 'https://otro.example/img/a.webp' } })).isError).toBe(true);
+    const fig = (await cf.listTools()).tools.find((t) => t.name === 'figura_test')!;
+    expect((fig._meta as { ui: { visibility: string[] } }).ui.visibility).toEqual(['app']);
+  });
+
+  it('apuntar_test corrige contra el banco y deja el test en el historial y en el repaso, una sola vez', async () => {
+    const c = await cliente(ctx);
+    const t = json(await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], modo: 'todas', n: 2 } }));
+    const [p1, p2] = t.preguntas as Array<{ id: number; respuesta: string[]; opciones: Obj }>;
+    const mala = Object.keys(p2.opciones).find((l) => !p2.respuesta.includes(l))!;
+    db.docs.set('progress/spaced_repetition', { sessionCount: 4, questions: { [String(p1.id)]: { box: 2, lastSession: 1, timesCorrect: 1, timesFailed: 1 }, '999': { box: 3, lastSession: 2, timesCorrect: 2, timesFailed: 1 } } });
+    const args = { respuestas: { [String(p1.id)]: p1.respuesta[0].toUpperCase(), [String(p2.id)]: mala, '424242': 'a' }, clave: 'tabc123', segundos: 95 };
+    const r = json(await c.callTool({ name: 'apuntar_test', arguments: args }));
+    expect(r).toMatchObject({ apuntado: true, correctas: 1, incorrectas: 1, preguntas: 2 });
+    const doc = db.docs.get('exam_results/ia_tabc123')!;
+    expect(doc).toMatchObject({ correctas: 1, incorrectas: 1, sinResponder: 0, totalPreguntas: 2, maxPuntos: 2, puntosBrutos: 0.67, notaSobre10: 3.35, tiempoSeconds: 95, origen: 'ia', tipo: 'test' });
+    expect(doc.temas).toContain('3.A.8');
+    expect(doc.respuestas).toEqual({ [String(p1.id)]: p1.respuesta[0], [String(p2.id)]: mala });
+    expect(doc.timestamp).toEqual({ $marcaDeTiempo: expect.stringMatching(/^\d{4}-\d\d-\d\dT/) });
+    const l = db.docs.get('progress/spaced_repetition')! as { sessionCount: number; questions: Record<string, Obj> };
+    expect(l.sessionCount).toBe(5);
+    expect(l.questions[String(p1.id)]).toMatchObject({ box: 3, timesCorrect: 2, timesFailed: 1, lastSession: 4 });
+    expect(l.questions[String(p2.id)]).toMatchObject({ box: 1, timesCorrect: 0, timesFailed: 1, lastSession: 4 });
+    expect(l.questions['999']).toEqual({ box: 3, lastSession: 2, timesCorrect: 2, timesFailed: 1 });
+    // La vista puede repetir la llamada: no cuenta dos veces.
+    const otra = json(await c.callTool({ name: 'apuntar_test', arguments: args }));
+    expect(otra).toMatchObject({ apuntado: true, yaEstaba: true });
+    expect((db.docs.get('progress/spaced_repetition') as { sessionCount: number }).sessionCount).toBe(5);
+    // Sin preguntas del banco no se apunta nada.
+    expect((await c.callTool({ name: 'apuntar_test', arguments: { respuestas: { '424242': 'a' } } })).isError).toBe(true);
+    // Y leer_resultados_test lo enseña como hecho con la IA.
+    expect(JSON.stringify(json(await c.callTool({ name: 'leer_resultados_test', arguments: {} })))).toContain('"origen":"ia"');
+  });
+
+  it('tres tipos de pregunta: oficiales por defecto, el banco con su aviso y las generadas por la IA, que no cuentan', async () => {
+    const propio = bancoPropioDe({ preguntas: [
+      { id: 310801, temas: ['3.A.8'], enunciado: '¿Del banco?', opciones, respuesta: ['B'], explicacion: { clave: 'Por esto.' } },
+      { id: 310802, temas: ['3.A.8'], enunciado: '¿Otra del banco?', opciones, respuesta: ['c'], explicacion: { clave: 'Por aquello.' } },
+      { id: 7, temas: ['3.A.8'], enunciado: '¿Con id de oficial?', opciones, respuesta: ['a'] },
+    ] });
+    expect([...propio.keys()]).toEqual([310801, 310802]);
+    const red = new FirestoreSimulado();
+    const c = await cliente({ ...ctx, bancoPropio: async () => propio, almacenEn: async () => red });
+    // Por defecto, solo oficiales; si faltan, se ofrece el banco antes de inventar.
+    const o = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 5 } }));
+    expect((o.preguntas as Obj[]).every((p) => p.tipo === 'oficial')).toBe(true);
+    expect(o).toMatchObject({ oficialesDeEsosTemas: 3, delBancoDeEsosTemas: 2 });
+    expect(String(o.aviso)).toContain('oficiales_y_banco');
+    expect(String(o.tipos)).toContain('OFICIALES');
+    // Solo el banco: con su aviso y su explicación.
+    const b = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 5, tipo: 'banco' } }));
+    expect((b.preguntas as Obj[]).map((p) => p.id).sort()).toEqual([310801, 310802]);
+    expect((b.preguntas as Obj[])[0]).toMatchObject({ tipo: 'banco', aviso: 'No oficial · banco de EconomIA', cabecera: '[3.A.8 · banco de EconomIA]' });
+    expect((b.preguntas as Obj[]).map((p) => p.porQue).sort()).toEqual(['Por aquello.', 'Por esto.']);
+    // Las dos: primero las oficiales y se completa con el banco; las de la IA van al final, con id negativo.
+    const nueva = { tema: '3.A.8', enunciado: '¿Generada al vuelo?', opciones, respuesta: 'd', porQue: 'Porque lo digo yo.' };
+    const m = json(await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], modo: 'todas', n: 4, tipo: 'oficiales_y_banco', nuevas: [nueva] } }));
+    expect((m.preguntas as Obj[]).map((p) => p.tipo)).toEqual(['oficial', 'oficial', 'oficial', 'banco', 'ia']);
+    expect((m.preguntas as Obj[])[4]).toMatchObject({ id: -1, aviso: 'No oficial · generada por la IA, sin revisar', respuesta: ['d'] });
+    expect((await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], n: 0 } })).isError).toBe(true);
+    expect((await c.callTool({ name: 'test_interactivo', arguments: { temas: ['3.A.8'], n: 0, nuevas: [{ ...nueva, opciones: { a: 'Una', b: 'Dos' } }] } })).isError).toBe(true);
+    // Al apuntarlo, cada tipo va a su repaso y las respuestas del banco, aparte (la app busca las de «respuestas» en el banco oficial).
+    const r = json(await c.callTool({ name: 'apuntar_test', arguments: { respuestas: { '1': 'a', '310801': 'a', '310802': 'c' }, clave: 'tmixto1' } }));
+    expect(r).toMatchObject({ apuntado: true, correctas: 2, incorrectas: 1, preguntas: 3, fuente: 'mixto' });
+    const doc = db.docs.get('exam_results/ia_tmixto1')!;
+    expect(doc).toMatchObject({ respuestas: { '1': 'a' }, respuestasBanco: { '310801': 'a', '310802': 'c' }, banco: { correctas: 1, incorrectas: 1 }, fuente: 'mixto' });
+    expect(Object.keys((db.docs.get('progress/spaced_repetition_banco') as { questions: Obj }).questions)).toEqual(['310801']);
+    expect(JSON.stringify(db.docs.get('progress/spaced_repetition') ?? {})).not.toContain('310801');
+    // Reportar: las mismas claves que la app (las reglas no admiten otras), en la raíz de la base.
+    const rep = json(await c.callTool({ name: 'reportar_pregunta', arguments: { pregunta: 310801, motivo: 'respuesta', comentario: 'La correcta es la a.', elegida: 'A' } }));
+    expect(rep).toMatchObject({ reportado: true, tipo: 'banco' });
+    const [[ruta, reporte]] = [...red.docs.entries()];
+    expect(ruta).toMatch(/^reportesTest\/ia_/);
+    expect(Object.keys(reporte).sort()).toEqual(['comentario', 'correo', 'elegida', 'enviado', 'examen', 'motivo', 'nombre', 'numero', 'oposicion', 'pregunta', 'uid', 'version']);
+    expect(reporte).toMatchObject({ uid: 'u1', pregunta: 310801, examen: 'banco', numero: 1, elegida: 'a', enviado: false, motivo: 'respuesta' });
+    expect((await c.callTool({ name: 'reportar_pregunta', arguments: { pregunta: 424242, motivo: 'otro', comentario: 'No existe.' } })).isError).toBe(true);
+  });
+
+  it('nivel: en primera vuelta no salen las difíciles (del banco, por su dificultad; oficiales, por los aciertos de todos) y las figuras del banco las da el conector', async () => {
+    const propio = bancoPropioDe({ preguntas: [
+      { id: 310801, temas: ['3.A.8'], enunciado: '¿Fácil del banco?', opciones, respuesta: ['a'], dificultad: 1, imagenes: [{ src: 'banco:310801.webp', alt: 'Una recta.' }] },
+      { id: 310802, temas: ['3.A.8'], enunciado: '¿Difícil del banco?', opciones, respuesta: ['a'], dificultad: 3 },
+    ] });
+    const c = await cliente({
+      ...ctx,
+      bancoPropio: async () => propio,
+      dificultad: async () => ({ '1': { v: 10, a: 1 }, '2': { v: 10, a: 8 }, '3': { v: 2, a: 0 } }),
+      figura: async (ruta) => (ruta === 'banco:310801.webp' ? { mime: 'image/webp', base64: 'QkFOQ08=' } : null),
+    });
+    const ids = async (nivel: string) => (json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 10, tipo: 'oficiales_y_banco', nivel } })).preguntas as Obj[]).map((p) => p.id).sort();
+    expect(await ids('cualquiera')).toEqual([1, 2, 3, 310801, 310802]);
+    expect(await ids('primera_vuelta')).toEqual([2, 3, 310801]); // la 1 la acierta el 10 %; la 3 no tiene datos y entra
+    expect(await ids('avanzado')).toEqual([1, 3, 310802]);
+    const t = json(await c.callTool({ name: 'preguntas_test', arguments: { temas: ['3.A.8'], modo: 'todas', n: 10, tipo: 'oficiales_y_banco', nivel: 'primera_vuelta' } }));
+    const porId = Object.fromEntries((t.preguntas as Obj[]).map((p) => [p.id, p]));
+    expect(porId[2].dificultad).toBe('fácil');
+    expect(porId[3].dificultad).toBeUndefined();
+    expect(porId[310801]).toMatchObject({ dificultad: 'fácil', figuras: [{ url: 'banco:310801.webp', descripcion: 'Una recta.' }] });
+    expect((await c.callTool({ name: 'figura_test', arguments: { url: 'banco:310801.webp' } })).content).toEqual([{ type: 'image', data: 'QkFOQ08=', mimeType: 'image/webp' }]);
+    expect((await c.callTool({ name: 'figura_test', arguments: { url: 'banco:../indice.json' } })).isError).toBe(true);
+  });
+
+  it('con vistaPrevia, proponer_cronograma y guardar_informe_cante validan y enseñan, pero no escriben', async () => {
+    const c = await cliente(ctx);
+    const args = { ejercicio: 3, diaCante: 6, semanas: [{ cante: '2026-11-07', temas: ['3.A.8'] }, { cante: '2026-11-21', temas: ['3.A.9'] }] };
+    const p = json(await c.callTool({ name: 'proponer_cronograma', arguments: { ...args, vistaPrevia: true } }));
+    expect(p).toMatchObject({ guardado: false, vistaPrevia: true, oposicion: 'tcee' });
+    const semanas = (p.cronograma as Obj).semanas as Obj[];
+    expect(semanas.map((s) => s.cante)).toEqual(['2026-11-07', '2026-11-14', '2026-11-21']);
+    expect(semanas[1].descanso).toBe(true);
+    expect(String(p.siguiente)).toContain('Guardar en la app');
+    expect(db.escrituras).toEqual([]);
+    expect(db.docs.get('cronogramas/viejo')!.archivado).not.toBe(true);
+    // Un plan con errores tampoco pasa la vista previa.
+    expect((await c.callTool({ name: 'proponer_cronograma', arguments: { ...args, semanas: [{ cante: '2026-11-08', temas: ['3.A.8'] }], vistaPrevia: true } })).isError).toBe(true);
+    // Lo que hace el botón de la vista: la misma llamada sin vistaPrevia.
+    const g = json(await c.callTool({ name: 'proponer_cronograma', arguments: args }));
+    expect(g.guardado).toBe(true);
+    expect((g.cronograma as Obj).id).toBe(g.id);
+
+    const antes = db.escrituras.length;
+    const i = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: '# Informe', valoracion: 4, criterios: { Rigor: 3 }, tareas: ['Repasar Slutsky'], vistaPrevia: true } }));
+    expect(i).toMatchObject({ guardado: false, vistaPrevia: true, cante: { id: 'c1' }, propuesta: { valoracion: 4, criterios: { Rigor: 3 }, tareas: ['Repasar Slutsky'] } });
+    expect(db.escrituras.length).toBe(antes);
+    expect((await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'no-existe', informe: 'x', vistaPrevia: true } })).isError).toBe(true);
+  });
+
+  it('guardar_informe_cante escribe el informe y actualiza el resultado del cante hecho', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c1', informe: '# Informe', valoracion: 3, comentarios: 'Mejor', sustituir: true } }));
+    expect(r.guardado).toBe(true);
+    expect(r.diarioActualizado).toBe(true);
+    const informe = db.escrituras.find((e) => e.ruta.startsWith('cantes/c1/informes/'))!;
+    expect(informe.datos).toMatchObject({ origen: 'ia', cliente: 'Le Chat', informe: '# Informe', valoracion: 3, comentarios: 'Mejor' });
+    const cante = db.docs.get('cantes/c1')!;
+    expect(cante.resultado).toEqual({ temaCantado: '3.A.8', valoracion: 3, comentarios: 'Mejor' });
+    expect(cante.updatedAt).not.toBe('2026-10-10T19:00:00.000');
+  });
+
+  it('guardar_informe_cante en un cante pendiente guarda el informe pero no el diario; en uno inexistente, error', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'c2', informe: 'x', valoracion: 4 } }));
+    expect(r.diarioActualizado).toBe(false);
+    expect(db.docs.get('cantes/c2')!.resultado).toBeUndefined();
+    const e = await c.callTool({ name: 'guardar_informe_cante', arguments: { canteId: 'nada', informe: 'x' } });
+    expect(e.isError).toBe(true);
+  });
+
+  it('contenido exclusivo: índice, tema entero o por apartado, ficha, guía y errores claros', async () => {
+    const c = await cliente(ctx);
+    const i = json(await c.callTool({ name: 'listar_temas_revisados', arguments: {} })) as { temas: Obj[] };
+    expect(i.temas[0].codigo).toBe('3A08');
+    const t = texto(await c.callTool({ name: 'leer_tema', arguments: { tema: '3.A.8', apartado: 'I' } }));
+    expect(t).toContain('Material exclusivo');
+    expect(t).toContain('Completitud');
+    expect(t).not.toContain('Hola');
+    const entero = texto(await c.callTool({ name: 'leer_tema', arguments: { tema: '3A08' } }));
+    expect(entero).toContain('Apartados: Introducción (2′30″) · I. Axiomas (11′)');
+    const f = texto(await c.callTool({ name: 'leer_ficha', arguments: { tema: '3.A.8' } }));
+    expect(f).toContain('Resumen.');
+    const g = texto(await c.callTool({ name: 'leer_guia_dictamen', arguments: { seccion: '1' } }));
+    expect(g).toContain('Qué es');
+    const no = await c.callTool({ name: 'leer_tema', arguments: { tema: '3.A.9' } });
+    expect(no.isError).toBe(true);
+    expect(texto(no)).toContain('no está entre los revisados');
+    const canon = await c.callTool({ name: 'leer_canon', arguments: {} });
+    expect(canon.isError).toBe(true);
+  });
+
+  it('desconectar llama al contexto', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'desconectar', arguments: { confirmar: true } }));
+    expect(r.desconectado).toBe(true);
+    expect(desconectado).toBe(true);
+  });
+
+  it('una sesión caducada se explica sin romper', async () => {
+    ctx.almacen = async () => {
+      throw new ErrorSesion('token revocado');
+    };
+    const c = await cliente(ctx);
+    const r = await c.callTool({ name: 'leer_progreso', arguments: {} });
+    expect(r.isError).toBe(true);
+    expect(texto(r)).toContain('vuelva a conectar');
+  });
+});

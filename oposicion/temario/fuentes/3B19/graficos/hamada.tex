@@ -1,0 +1,51 @@
+% El diagrama de Hamada (1976): juego de política monetaria entre 2 países.
+% Plano (M_A, M_B). Puntos de felicidad F_B = (2,5; 2) y F_A = (5; 4), los 2 en
+% el rayo E_0 (M_B = 0,8 M_A). Curvas de indiferencia circulares alrededor de
+% cada punto de felicidad. Funciones de reacción: R_A, la vertical M_A = 5;
+% R_B, la horizontal M_B = 2. Nash: N = (5; 2), en el rayo E_N (M_B = 0,4 M_A,
+% moneda de A más depreciada). Por N pasan el círculo de A de radio 2 y el de B
+% de radio 2,5: la lente. Curva de contrato: el segmento F_A F_B; núcleo, el
+% tramo dentro de la lente, de (3,44; 2,75) a (4,45; 3,56).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \path (-0.9,-0.8) rectangle (9.2,6.3);
+  % 1: ejes
+  \capa{1}{\ejes{$M_A$}{$M_B$}{7.9}{6.0}}
+  % 2: rayo E_0 y puntos de felicidad
+  \capa{2}{\draw[curva3,thick,dashed] (0,0) -- (6.9,5.52) node[etiqueta,above right,text=tceeverde] {$E_0$};}
+  \capa{2}{\node[punto,fill=tceeazul] (FA) at (5,4) {};}
+  \capa{2}{\node[etiqueta,right,text=tceeazul] at (FA) {$F_A$};}
+  \capa{2}{\node[punto,fill=tceemorado] (FB) at (2.5,2) {};}
+  \capa{2}{\node[etiqueta,above left,text=tceemorado] at (FB) {$F_B$};}
+  % 3: curvas de indiferencia (círculos) de A y de B
+  \capa{3}{\begin{scope}\clip (0,0) rectangle (7.4,5.5);
+    \draw[thick,tceeazul] (5,4) circle (0.8);
+    \draw[thick,tceeazul] (5,4) circle (2);
+  \end{scope}}
+  \capa{3}{\begin{scope}\clip (0,0) rectangle (7.4,5.5);
+    \draw[thick,tceemorado] (2.5,2) circle (0.8);
+    \draw[thick,tceemorado] (2.5,2) circle (2.5);
+  \end{scope}}
+  % 4: funciones de reacción
+  \capa{4}{\draw[curva2] (5,0) node[below,text=black] {$M_A^N$} -- (5,5.75) node[etiqueta,above,text=tceeazul] {$R_A(M_B)$};}
+  \capa{4}{\draw[curva1] (0,2) node[left,text=black] {$M_B^N$} -- (7.4,2) node[etiqueta,right,text=tceemorado] {$R_B(M_A)$};}
+  % 5: equilibrio de Nash y su tipo de cambio
+  \capa{5}{\draw[curva3,thick,dashed] (0,0) -- (7.4,2.96) node[etiqueta,right,text=tceeverde] {$E_N$};}
+  \capa{5}{\node[punto,fill=tceerojo] (N) at (5,2) {};}
+  \capa{5}{\node[etiqueta,below right,text=tceerojo] at (N) {$N$};}
+  % 6: la lente
+  \capa{6}{\begin{scope}\clip (5,4) circle (2);
+    \fill[area,fill opacity=0.3] (2.5,2) circle (2.5);
+  \end{scope}}
+  \capa{6}{\node[etiqueta,font=\footnotesize] at (4.55,2.45) {lente};}
+  % 7: curva de contrato
+  \capa{7}{\draw[curva3,line width=1.6pt] (FB) -- (FA);}
+  \capa{7}{\draw[thin,tceeverde] (3.0,2.4) -- (1.7,3.55) node[etiqueta,above,font=\footnotesize,text=tceeverde] {curva de contrato};}
+  % 8: núcleo
+  \capa{8}{\draw[tceedorado,line width=3pt] (3.438,2.75) -- (4.452,3.562);}
+  \capa{8}{\path (3.438,2.75) -- (4.452,3.562) node[midway,sloped,above=1pt,etiqueta,font=\footnotesize,text=tceedorado!80!black] {núcleo};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,70 @@
+% Dinámica de la deuda exterior con r* > gamma_Y: b_t = [(1+r*)/(1+gamma_Y)] b_{t-1} + d_t.
+% Gráfico de referencia de la ficha «sostenibilidad-deuda-externa». Código base:
+% fuentes/3A39/graficos/dinamica-deuda.tex (mismos estilos, escalera, bisectriz,
+% capas y numeración de los casos 3 y 4), con las letras del §9 del canon
+% (b deuda exterior, d déficit comercial, r* tipo real exterior). Pendiente 1,6.
+%   a) Caso 3, déficit comercial: b_t = 0,5 + 1,6 b_{t-1}. Desde b_0 = 0,4:
+%      1,14; 2,324; 4,218; 7,25 (bola de nieve).
+%   b) Caso 4, superávit comercial: b_t = -1,8 + 1,6 b_{t-1}; b* = 1,8/0,6 = 3,
+%      inestable. Desde b_0 = 2,2: 1,72; 0,952 (baja). Desde b_0' = 3,6:
+%      3,96; 4,536; 5,458; 6,932 (sube).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{
+  bisectriz/.style={thick,tceegris},
+  paso/.style={-{Stealth[length=1.5mm]},semithick,#1},
+}
+% \escalera{color}{b_0, b_1, b_2, ...}: de b_0 en el eje sube a la recta y
+% va en horizontal a la bisectriz, una y otra vez
+\newcommand{\escalera}[2]{%
+  \def\prev{}%
+  \foreach \d [count=\k] in {#2}{%
+    \ifnum\k=1\relax\xdef\prev{\d}\xdef\prevy{0}\else
+      \draw[paso=#1] (\prev,\prevy) -- (\prev,\d);
+      \draw[paso=#1] (\prev,\d) -- (\d,\d);
+      \xdef\prev{\d}\xdef\prevy{\d}\fi}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.8,-3.0) rectangle (21.0,9.6);
+  % ---------------- a) Caso 3 ----------------
+  % 1: ejes y bisectriz
+  \capa{1}{\draw[eje] (0,0) -- (7.6,0) node[below left=2pt and 0pt] {$b_{t-1}$};}
+  \capa{1}{\draw[eje] (0,-2.4) -- (0,7.8) node[left] {$b_t$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (3.6,8.6) {a) Caso 3: déficit comercial, $\boldsymbol{r^*>\gamma_Y}$};}
+  \capa{1}{\draw[bisectriz] (0,0) -- (7.6,7.6) node[etiqueta, right, text=tceegris] {$b_t=b_{t-1}$};}
+  \capa{1}{\draw[tceegris] (0.9,0) arc[start angle=0, end angle=45, radius=0.9] node[etiqueta, right=1pt, font=\footnotesize, text=tceegris] at (0.85,0.35) {$45^\circ$};}
+  % 2: recta del caso 3, por encima de la bisectriz, y su ordenada en el origen
+  \capa{2}{\draw[curva1] (0,0.5) -- (4.4,7.54) node[etiqueta, above, text=tceemorado] {pendiente $\frac{1+r^*}{1+\gamma_Y}>1$};}
+  \capa{2}{\node[etiqueta, left, text=tceemorado] at (0,0.5) {$d>0$};}
+  % 3: escalera divergente desde b_0
+  \capa{3}{\node[below] at (0.4,0) {$b_0$};}
+  \capa{3}{\escalera{tceerojo}{0.4,1.14,2.324,4.218,7.25}}
+  \capa{3}{\node[etiqueta, text=tceerojo, anchor=west, align=left] at (4.3,3.0) {bola de nieve:\\la deuda crece\\sin límite};}
+  % ---------------- b) Caso 4 ----------------
+  \begin{scope}[xshift=7.4cm]
+  % 1: ejes y bisectriz
+  \capa{1}{\draw[eje] (0,0) -- (7.6,0) node[below left=2pt and 0pt] {$b_{t-1}$};}
+  \capa{1}{\draw[eje] (0,-2.4) -- (0,7.8) node[left] {$b_t$};}
+  \capa{1}{\node[above left] at (0,0) {$0$};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (3.6,8.6) {b) Caso 4: superávit comercial, $\boldsymbol{r^*>\gamma_Y}$};}
+  \capa{1}{\draw[bisectriz] (0,0) -- (7.6,7.6) node[etiqueta, right, text=tceegris] {$b_t=b_{t-1}$};}
+  % 4: recta del caso 4, que corta a la bisectriz en b*
+  \capa{4}{\draw[curva1] (0,-1.8) -- (5.75,7.4) node[etiqueta, left=2pt, text=tceemorado] {pendiente $\frac{1+r^*}{1+\gamma_Y}>1$};}
+  \capa{4}{\node[etiqueta, left, text=tceemorado] at (0,-1.8) {$d<0$};}
+  \capa{4}{\draw[guia] (3,3) -- (3,0);}
+  \capa{4}{\node[below] at (3,0) {$\overline b$};}
+  \capa{4}{\node[punto] at (3,3) {};}
+  \capa{4}{\node[etiqueta, anchor=south east] at (2.95,3.05) {$\overline b$};}
+  \capa{4}{\node[etiqueta, anchor=west] at (1.3,-1.75) {$\overline b=\dfrac{-d\,(1+\gamma_Y)}{r^*-\gamma_Y}>0$};}
+  % 5: escaleras a un lado y otro del umbral: por debajo la deuda baja; por encima, sube
+  \capa{5}{\node[below] at (2.2,0) {$b_0$};}
+  \capa{5}{\escalera{tceeverde}{2.2,1.72,0.952}}
+  \capa{5}{\node[below] at (3.6,0) {$b_0'$};}
+  \capa{5}{\escalera{tceerojo}{3.6,3.96,4.536,5.458,6.932}}
+  \capa{5}{\node[etiqueta, text=tceegris, anchor=west, align=left] at (4.6,1.6) {$\overline b$ inestable};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

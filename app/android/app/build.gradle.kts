@@ -63,6 +63,8 @@ android {
         val firma = signingConfigs.findByName("tcee") ?: signingConfigs.getByName("debug")
         release {
             signingConfig = firma
+            // Reglas para que R8 no rompa Firebase (ver proguard-rules.pro).
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
         debug {
             signingConfig = firma
@@ -72,6 +74,9 @@ android {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    // «referrer» de Google Play: el código del preparador si la app se instaló
+    // desde su enlace de invitación (MainActivity.leerReferrer).
+    implementation("com.android.installreferrer:installreferrer:2.2")
 }
 
 kotlin {

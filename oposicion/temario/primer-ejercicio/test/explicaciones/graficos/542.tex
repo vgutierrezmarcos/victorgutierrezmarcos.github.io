@@ -1,0 +1,44 @@
+% Pregunta 542 (2016-enero-OEP2015, n.º 30): unión aduanera de A con B (más caro que C); creación de comercio (dos triángulos) y desviación de comercio (rectángulo). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Oferta nacional: P = 0.4 + Q ; demanda: P = 5.2 - 0.6 Q
+  % P_C = 1, P_B = 1.8, P_C + t = 2.8
+  % Creación de comercio: producción ineficiente sustituida y más consumo
+  \fill[area] (1.4,1.8) -- (2.4,1.8) -- (2.4,2.8) -- cycle;
+  \fill[area] (4.0,2.8) -- (4.0,1.8) -- (5.667,1.8) -- cycle;
+  % Desviación de comercio: importaciones iniciales por (P_B - P_C)
+  \fill[area2] (2.4,1.0) rectangle (4.0,1.8);
+  \ejes{$Q$}{$P$}{7.4}{5.4}
+  % Precios horizontales
+  \draw[guia] (0,1.0) -- (7.0,1.0);
+  \draw[curvanueva] (0,1.8) -- (7.0,1.8);
+  \draw[curva4] (0,2.8) -- (7.0,2.8);
+  \node[left,tceedorado] at (0,2.8) {$P_C+t$};
+  \node[left,tceerojo] at (0,1.8) {$P_B$};
+  \node[left,tceegris] at (0,1.0) {$P_C$};
+  % Curvas
+  \draw[curva2] (0.2,0.6) -- (4.8,5.2) node[etiqueta,tceeazul,above] {$S_A$};
+  \draw[curva1] (0.3,5.02) -- (6.9,1.06) node[etiqueta,tceemorado,right] {$D_A$};
+  % Proyecciones de cantidades
+  \draw[guia] (1.4,1.8) -- (1.4,0);
+  \draw[guia] (2.4,2.8) -- (2.4,0);
+  \draw[guia] (4.0,2.8) -- (4.0,0);
+  \draw[guia] (5.667,1.8) -- (5.667,0);
+  \node[below] at (1.4,0) {$q_2^s$};
+  \node[below] at (2.4,0) {$q_1^s$};
+  \node[below] at (4.0,0) {$q_1^d$};
+  \node[below] at (5.667,0) {$q_2^d$};
+  \node[punto] at (2.4,2.8) {};
+  \node[punto] at (4.0,2.8) {};
+  \node[punto] at (1.4,1.8) {};
+  \node[punto] at (5.667,1.8) {};
+  % Rótulos de las zonas
+  \node[etiqueta,font=\footnotesize,align=center,tceemorado] (cp) at (1.2,3.9) {creación\\(producción)};
+  \draw[->,thin,tceemorado] (cp.south) -- (2.05,2.5);
+  \node[etiqueta,font=\footnotesize,align=center,tceemorado] (cc) at (6.2,3.3) {creación\\(consumo)};
+  \draw[->,thin,tceemorado] (cc.south) -- (4.6,2.2);
+  \node[etiqueta,font=\footnotesize,align=center] at (3.2,1.4) {desviación};
+\end{tikzpicture}
+\end{document}

@@ -43,6 +43,7 @@ Ejemplo canónico: si los colegios que piden libros de texto son los de padres m
 | 4.A.26 | Cooperación española | mención (prevista) | Evaluación de la ayuda | — |
 | 4.A.16 | Mercado de trabajo en España | mención (prevista) | Evaluaciones de políticas activas | — |
 | 3.A.45 | Evidencia empírica del crecimiento | mención (hecho, 1/11/2026) | AJR como variable instrumental | La técnica |
+| 3.B.29 | ¿Funciona la ayuda? | mención (hecho, 12/11/2026) | III.3.3: Banerjee, Duflo y Kremer (Nobel de 2019) **de palabra**, de «si funciona la ayuda» a «qué programa funciona» (desparasitación, transferencias, graduación); su límite con Deaton (2010), `\vertema{3.B.28}`, `\vertema{4.B.6}`; la pegatina canónica «ver para creer» (también en 3.A.1 y 3.B.28) | La descomposición del sesgo de selección |
 
 ## Divergencias encontradas en el temario actual
 - **3.B.28** (Word): «Método» vacío; ejemplos mal atribuidos o mezclados (vacunas 18 → 75 %, desayunos «sin mejora», microcréditos y fertilizantes juntos); cita de Deaton entre comillas que no aparece en ninguna fuente; «el enfoque experimental no está respaldado por una teoría». **Resuelto** (3/11/2026).

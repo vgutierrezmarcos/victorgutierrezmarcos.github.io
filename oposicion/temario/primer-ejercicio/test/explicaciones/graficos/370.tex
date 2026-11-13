@@ -1,0 +1,55 @@
+% Pregunta 370 (2020-enero-OEP2019, n.º 37): opciones europeas, valor intrínseco y valor temporal
+% de una call y una put con el mismo subyacente S, precio de ejercicio K = 2,5 y vencimiento.
+%   VI call = max(S-K,0)   VI put = max(K-S,0)
+%   Prima (ilustrativa): VI suavizado, prima = ((±(S-K)) + sqrt((S-K)^2 + 1,2^2))/2
+%   Valor temporal = prima - VI = (sqrt((S-K)^2+1,44) - |S-K|)/2: joroba con máximo 0,6 en S = K
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- Panel izquierdo: call ----------
+  \begin{scope}
+    \ejes{$S$}{Valor}{5}{3.6}
+    \node[font=\small\bfseries,text=tceemorado] at (2.5,4.1) {Opción de compra (call)};
+    \fill[area] plot[domain=0:4.6,samples=80] (\x,{((\x-2.5)+sqrt((\x-2.5)^2+1.44))/2})
+      -- plot[domain=4.6:0,samples=80] (\x,{max(\x-2.5,0)}) -- cycle;
+    \draw[curva1] (0,0) -- (2.5,0) -- (4.6,2.1) node[etiqueta,right,text=tceemorado,align=left] {VI\\[-2pt]$\max(S-K,0)$};
+    \draw[curva2] plot[domain=0:4.6,samples=80] (\x,{((\x-2.5)+sqrt((\x-2.5)^2+1.44))/2})
+      node[etiqueta,above left,text=tceeazul] {Prima};
+    \draw[guia] (2.5,0) -- (2.5,0.6);
+    \node[punto] at (2.5,0) {};
+    \node[below] at (2.5,0) {$K$};
+    \draw[<->,thick,tceerojo] (2.5,0.04) -- (2.5,0.56);
+    \node[etiqueta,font=\footnotesize,text=tceerojo,align=right,anchor=east] at (2.2,2.0)
+      {valor temporal\\[-2pt]máximo en $S=K$};
+    \draw[->,thin,tceerojo] (1.9,1.7) -- (2.42,0.32);
+    \node[font=\footnotesize,text=tceemorado] at (1.2,-0.35) {fuera};
+    \node[font=\footnotesize,text=tceemorado] at (3.8,-0.35) {dentro};
+  \end{scope}
+  % ---------- Panel derecho: put ----------
+  \begin{scope}[xshift=7.4cm]
+    \ejes{$S$}{Valor}{5}{3.6}
+    \node[font=\small\bfseries,text=tceemorado] at (2.5,4.1) {Opción de venta (put)};
+    \fill[area] plot[domain=0.4:5,samples=80] (\x,{((2.5-\x)+sqrt((\x-2.5)^2+1.44))/2})
+      -- plot[domain=5:0.4,samples=80] (\x,{max(2.5-\x,0)}) -- cycle;
+    \draw[curva1] (0.4,2.1) -- (2.5,0) -- (5,0);
+    \node[etiqueta,text=tceemorado,align=left,anchor=south west] at (0.3,2.15) {VI\\[-2pt]$\max(K-S,0)$};
+    \draw[curva2] plot[domain=0.4:5,samples=80] (\x,{((2.5-\x)+sqrt((\x-2.5)^2+1.44))/2});
+    \node[etiqueta,text=tceeazul] at (4.4,0.6) {Prima};
+    \draw[guia] (2.5,0) -- (2.5,0.6);
+    \node[punto] at (2.5,0) {};
+    \node[below] at (2.5,0) {$K$};
+    \draw[<->,thick,tceerojo] (2.5,0.04) -- (2.5,0.56);
+    \node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=west] at (2.8,2.0)
+      {valor temporal\\[-2pt]máximo en $S=K$};
+    \draw[->,thin,tceerojo] (3.1,1.7) -- (2.58,0.32);
+    \node[font=\footnotesize,text=tceemorado] at (1.2,-0.35) {dentro};
+    \node[font=\footnotesize,text=tceemorado] at (3.8,-0.35) {fuera};
+  \end{scope}
+  % Nota común
+  \node[font=\footnotesize,align=center,text=tceerojo] at (6.2,-1.0)
+    {Los VI de call y put solo coinciden en $S=K$ (los dos valen 0). Sombreado: valor temporal,\\
+     máximo cuando $S=K$ y menor cuanto más lejos están $S$ y $K$, en un sentido u otro.};
+\end{tikzpicture}
+\end{document}

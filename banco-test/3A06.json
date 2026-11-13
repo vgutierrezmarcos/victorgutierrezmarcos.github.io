@@ -1,0 +1,403 @@
+{
+ "tema": "3.A.6",
+ "preguntas": [
+  {
+   "id": 310601,
+   "estado": "publicada",
+   "enunciado": "La inflación de un país ha sido del 2 % durante muchos años y los agentes esperaban ese 2 %. A partir de entonces sube un punto cada año: 3 % en el año 1, 4 % en el año 2 y 5 % en el año 3. Los agentes forman expectativas adaptativas, $\\pi^e_t=\\pi^e_{t-1}+\\gamma\\,(\\pi_{t-1}-\\pi^e_{t-1})$, con $\\gamma=0{,}5$. ¿Qué inflación esperan para el año 3 y cómo son sus errores de previsión?",
+   "opciones": {
+    "a": "Un 4 %: esperan la inflación del año anterior y se equivocan en un punto cada año.",
+    "b": "Un 3,5 %: promedian la inflación de los dos años anteriores y el error se mantiene constante.",
+    "c": "Un 3,25 %: se quedan cortos los tres años y por una diferencia cada vez mayor (1, 1,5 y 1,75 puntos); el error es sistemático.",
+    "d": "Un 3,25 %: se equivocan cada año, pero los errores de un signo se compensan con los del contrario y su media es nula."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con $\\gamma=0{,}5$ la expectativa corrige cada año la mitad del error anterior: 2 %, 2,5 % y 3,25 %, frente a una inflación del 3 %, 4 % y 5 %. Mientras la inflación sube, la expectativa va siempre por detrás: el error tiene siempre el mismo signo, y es justo lo que las expectativas racionales descartan.",
+    "desarrollo": "Se aplica la regla año a año, partiendo de $\\pi^e_0=\\pi_0=2$:\n\n- año 1: $\\pi^e_1=2+0{,}5\\,(2-2)=2$; la inflación es 3 y el error, $+1$;\n- año 2: $\\pi^e_2=2+0{,}5\\,(3-2)=2{,}5$; la inflación es 4 y el error, $+1{,}5$;\n- año 3: $\\pi^e_3=2{,}5+0{,}5\\,(4-2{,}5)=3{,}25$; la inflación es 5 y el error, $+1{,}75$.\n\nComprobación por otra vía: las adaptativas son una media de la inflación pasada con pesos $\\gamma(1-\\gamma)^{i-1}$, de modo que $\\pi^e_3=0{,}5\\cdot4+0{,}25\\cdot3+0{,}25\\cdot2=3{,}25$ (el último 0,25 recoge todo el pasado al 2 %).\n\nEl error es siempre positivo y crece (tiende a $1/\\gamma=2$ puntos): los agentes aprenden, pero mirando solo al pasado de la propia variable, y cuando esta tiene tendencia se quedan cortos una y otra vez. Con expectativas racionales, si la subida responde a una regla conocida, la esperarían y solo fallarían en la perturbación imprevista de cada año, de media nula.\n\nPor qué fallan las demás:\n\n- a) Es lo que saldría con $\\gamma=1$ (expectativas estáticas, $\\pi^e_t=\\pi_{t-1}$), no con $\\gamma=0{,}5$.\n- b) La regla no promedia los dos últimos datos: pondera la última inflación y la expectativa anterior, que a su vez arrastra todo el pasado. Y el error no es constante.\n- d) La cifra es correcta, pero los errores no se compensan: son todos del mismo signo. Media nula y ausencia de autocorrelación son propiedades de las expectativas racionales, no de las adaptativas."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 La hipótesis de las expectativas racionales (adaptativas frente a racionales)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310602,
+   "estado": "publicada",
+   "enunciado": "Con los datos de una encuesta de previsiones de inflación se regresa el error de previsión (inflación observada menos inflación prevista) sobre la revisión que los propios encuestados acababan de hacer de esa previsión cuando la formularon. El coeficiente estimado es positivo y significativo. ¿Qué se deduce para la hipótesis de las expectativas racionales?",
+   "opciones": {
+    "a": "Que no se cumple en su versión fuerte: el error se puede anticipar con información que ya se conocía al prever, en contra de la ortogonalidad.",
+    "b": "Nada en su contra: la hipótesis solo exige que el error de previsión tenga media nula, y eso es compatible con que esté correlacionado con variables conocidas al prever.",
+    "c": "Que se cumple: el hecho de que los encuestados revisen sus previsiones demuestra que usan de forma eficiente toda la información nueva.",
+    "d": "Que no se cumple, porque con expectativas racionales los agentes conocen el modelo de la economía y el error de previsión debería ser nulo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con expectativas racionales el error de previsión no está correlacionado con nada de lo que se sabía al prever (ortogonalidad), y la revisión de la propia previsión se conocía. Si la revisión predice el error, las previsiones reaccionan menos de lo debido a las noticias: es la señal de rigideces de información que encuentran Coibion y Gorodnichenko (2015).",
+    "desarrollo": "Las propiedades del error de previsión racional, $\\varepsilon_t=x_t-\\mathbb{E}_{t-1}[x_t]$, son media nula, ortogonalidad ($\\mathbb{E}[\\varepsilon_t z_{t-1}]=0$ para toda variable $z_{t-1}$ conocida al prever), eficiencia y la ley de las expectativas iteradas. La revisión de la previsión forma parte de la información disponible, así que su coeficiente en la regresión debería ser cero.\n\nUn coeficiente positivo significa que, cuando los encuestados suben su previsión, la inflación acaba siendo todavía mayor: se quedan cortos al revisar. Es lo que ocurre si solo una parte de los agentes pone al día su información en cada periodo (información rígida, Mankiw y Reis) o si atender a las noticias cuesta (Sims). La evidencia de las encuestas rechaza así la versión fuerte en el agregado.\n\nMatiz que conviene conocer: para Lucas la hipótesis no se contrasta sola, sino junto con el modelo del que forma parte. Aquí el contraste es directo porque usa previsiones declaradas, no un modelo.\n\nPor qué fallan las demás:\n\n- b) La media nula es solo una de las propiedades. La ortogonalidad exige además que el error no se pueda predecir con ninguna variable conocida.\n- c) Revisar no basta: hay que revisar lo suficiente. La correlación positiva indica justamente que no se aprovecha toda la información nueva.\n- d) Las expectativas racionales no son previsión perfecta: el error puede ser grande; lo que no puede es ser previsible."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 La hipótesis de las expectativas racionales (propiedades del error y evidencia empírica)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310603,
+   "estado": "publicada",
+   "enunciado": "Para la nueva macroeconomía clásica (Lucas y Sargent, 1979), decir que una economía está «en equilibrio» significa que:",
+   "opciones": {
+    "a": "Ha alcanzado un estado de reposo del que no tiende a moverse, al que se llega solo a largo plazo.",
+    "b": "La producción coincide en todo momento con su nivel potencial y, por tanto, no hay fluctuaciones cíclicas que explicar.",
+    "c": "No hay perturbaciones imprevistas, de modo que las expectativas de los agentes se cumplen exactamente.",
+    "d": "En cada momento los mercados se vacían y los agentes optimizan, de modo que el ciclo es una sucesión de equilibrios."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En la nueva macroeconomía clásica el equilibrio no es un punto de llegada, sino una propiedad que se cumple siempre: mercados que se vacían y agentes que optimizan. Por eso el ciclo se explica como respuestas óptimas a perturbaciones, y no como un desequilibrio.",
+    "desarrollo": "Lucas y Sargent cambian el concepto de equilibrio. En la tradición keynesiana es un estado de reposo, al que la economía llega o no (y puede haber «equilibrio con paro» o desequilibrio). En la nueva macroeconomía clásica es un equilibrio intertemporal: en cada momento los precios vacían los mercados y los agentes eligen lo mejor dadas sus restricciones y su información. Las recesiones no son errores ni fallos de coordinación, sino respuestas óptimas a perturbaciones (monetarias imprevistas en Lucas, tecnológicas en Kydland y Prescott).\n\nEs también un instrumento del modelo, no una afirmación sobre la realidad: no tiene sentido preguntar si una economía «está» en equilibrio, sino si el modelo que lo supone predice bien.\n\nPor qué fallan las demás:\n\n- a) Es el concepto de equilibrio como estado de reposo, el de la macroeconomía keynesiana que la escuela abandona.\n- b) Equilibrio y ciclo son compatibles: la producción fluctúa precisamente como sucesión de equilibrios.\n- c) Confunde equilibrio con previsión perfecta. Con expectativas racionales hay errores de previsión; lo que no hay son errores sistemáticos."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Método y diferencias con sus predecesores (concepto de equilibrio)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310604,
+   "estado": "publicada",
+   "enunciado": "¿En qué se separa la nueva macroeconomía clásica del monetarismo de Friedman?",
+   "opciones": {
+    "a": "En que rechaza la tasa natural de paro: para Lucas, la política de demanda puede reducir el paro de forma permanente.",
+    "b": "En que sustituye las expectativas adaptativas por las racionales y el equilibrio parcial marshalliano por el general walrasiano.",
+    "c": "En que defiende la discrecionalidad: si los agentes son racionales, el banco central puede ajustar su política en cada momento sin coste.",
+    "d": "En que niega la neutralidad del dinero a largo plazo, que para Friedman sí se cumplía."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La nueva macroeconomía clásica hereda de Friedman la tasa natural, la neutralidad a largo plazo y las reglas, pero cambia el método: expectativas racionales en lugar de adaptativas y equilibrio general walrasiano. La consecuencia es más dura: ni siquiera a corto plazo se puede explotar de forma sistemática la curva de Phillips.",
+    "desarrollo": "Con las expectativas adaptativas de Friedman, una expansión monetaria reduce el paro mientras los agentes tardan en ajustar sus expectativas: hay un intercambio transitorio entre inflación y paro que la autoridad puede explotar acelerando la inflación. Con expectativas racionales, lo previsible de la política ya está descontado: solo las sorpresas mueven la producción, y no cabe sorprender de forma sistemática.\n\nEl segundo cambio es de método: Friedman razona en equilibrio parcial, a la manera de Marshall; Lucas construye modelos de equilibrio general con microfundamentos. De ahí la paradoja que subraya De Vroey: el sucesor del monetarismo no fue el monetarismo, sino la nueva macroeconomía clásica.\n\nPor qué fallan las demás:\n\n- a) La tasa natural es común a los dos; la nueva macroeconomía clásica refuerza la conclusión, no la abandona.\n- c) Es al revés: de las expectativas racionales salen la inefectividad de la política sistemática y la inconsistencia temporal, que son argumentos a favor de las reglas.\n- d) La neutralidad a largo plazo también es común. Lo que añade la escuela es que la parte anticipada de la política es neutral incluso a corto plazo."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Método y diferencias con sus predecesores (frente a Friedman)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310605,
+   "estado": "publicada",
+   "enunciado": "En el modelo de oferta de trabajo intertemporal de Lucas y Rapping (1969), $L_1/L_2=f(w_1/w_2,\\ r)$, con $f_1>0$ y $f_2>0$:",
+   "opciones": {
+    "a": "Una subida del salario percibida como transitoria aumenta mucho las horas trabajadas hoy, y una percibida como permanente apenas las cambia.",
+    "b": "Una subida permanente del salario aumenta las horas más que una transitoria, porque eleva más la riqueza del trabajador.",
+    "c": "Las horas trabajadas hoy dependen del salario relativo entre periodos, pero caen cuando sube el tipo de interés, porque el ahorro rinde más y hace falta trabajar menos.",
+    "d": "Los trabajadores tienen ya expectativas racionales e información imperfecta sobre el nivel general de precios, lo que da lugar a la curva de oferta de Lucas."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El trabajador decide cuándo trabajar: lo hace más cuando el salario es alto respecto del que espera después. Un salario alto transitorio encarece el ocio de hoy sin apenas cambiar la riqueza, y las horas responden mucho; uno permanente no cambia el salario relativo. Es la sustitución intertemporal del trabajo, con un mercado que se vacía.",
+    "desarrollo": "Lucas y Rapping derivan la oferta de trabajo de un agente que optimiza a lo largo del tiempo, como Friedman y Modigliani habían hecho con el consumo. Dejan dos ideas que la nueva macroeconomía clásica hará suyas:\n\n- la sustitución intertemporal: las horas de hoy frente a las de mañana crecen con el salario relativo ($f_1>0$) y con el tipo de interés ($f_2>0$). Si $w_1$ sube y $w_2$ no, conviene trabajar ahora; si suben los dos en la misma proporción, $w_1/w_2$ no cambia y solo queda el efecto renta, que juega en contra;\n- un mercado de trabajo que se vacía: quien no trabaja con un salario transitoriamente bajo está eligiendo ocio hoy y trabajo después, de modo que parte del paro medido es voluntario.\n\nLa respuesta a un salario transitorio la mide la elasticidad de Frisch.\n\nPor qué fallan las demás:\n\n- b) Es al revés: con una subida permanente el salario relativo no cambia y el efecto riqueza reduce la oferta de trabajo; las horas apenas se mueven.\n- c) $f_2>0$: un tipo de interés más alto hace que lo ganado hoy valga más en términos de consumo futuro, y lleva a trabajar más hoy, no menos.\n- d) Trabajan todavía con expectativas adaptativas. Las racionales y la confusión entre precios relativos y nivel general llegan con Lucas (1972)."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Oferta de trabajo intertemporal: Lucas y Rapping (1969)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310606,
+   "estado": "borrador",
+   "enunciado": "En el modelo de islas de Lucas (variables en logaritmos), la oferta agregada es $y_t=y^n+\\psi\\,(p_t-p^e_t)$, con $\\psi=\\omega\\,\\varepsilon_S$ y $\\omega=\\sigma^2_z/(\\sigma^2_z+\\sigma^2_p)$, y la demanda agregada, $y_t=m_t-p_t$. La varianza de las perturbaciones de precios relativos es $\\sigma^2_z=3$; la del nivel general de precios, $\\sigma^2_p=1$, y la elasticidad de la oferta de cada isla, $\\varepsilon_S=2$. Si la cantidad de dinero resulta un 5 % mayor de lo que el público esperaba, ¿cuánto se apartan la producción de su nivel natural y los precios de su nivel esperado?",
+   "opciones": {
+    "a": "La producción no cambia y los precios suben un 5 %: con expectativas racionales el dinero es neutral.",
+    "b": "La producción sube un 3,75 % y los precios, un 1,25 %.",
+    "c": "La producción sube un 7,5 % y los precios quedan un 2,5 % por debajo de lo esperado.",
+    "d": "La producción sube un 3 % y los precios, un 2 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$\\omega=3/4$ y $\\psi=0{,}75\\cdot2=1{,}5$. En equilibrio la sorpresa monetaria se reparte: $\\psi/(1+\\psi)=0{,}6$ va a la producción y $1/(1+\\psi)=0{,}4$ a los precios. Con una sorpresa del 5 %, la producción sube un 3 % y los precios un 2 % sobre lo esperado.",
+    "desarrollo": "Paso 1, la extracción de señales: $\\omega=\\dfrac{3}{3+1}=0{,}75$. El productor atribuye a su precio relativo tres cuartas partes de la subida inesperada que ve en su isla.\n\nPaso 2, la pendiente de la oferta: $\\psi=\\omega\\,\\varepsilon_S=0{,}75\\cdot2=1{,}5$.\n\nPaso 3, el equilibrio. En sorpresas, la demanda da $(y_t-y^n)=(m_t-\\mathbb{E}_{t-1}[m_t])-(p_t-p^e_t)$ y la oferta, $(y_t-y^n)=\\psi\\,(p_t-p^e_t)$. Despejando:\n\n$$p_t-p^e_t=\\frac{5}{1+1{,}5}=2,\\qquad y_t-y^n=\\frac{1{,}5}{2{,}5}\\cdot5=3.$$\n\nComprobación: $3+2=5$, la sorpresa de demanda nominal, y $3=1{,}5\\cdot2$, la oferta.\n\nPor qué fallan las demás:\n\n- a) Es el resultado para el dinero anticipado. El no anticipado sí mueve la producción, porque los productores confunden en parte la subida general con una subida de su precio relativo.\n- b) Sale de repartir la sorpresa con $\\omega$ (0,75 y 0,25), olvidando la elasticidad de la oferta y el equilibrio con la demanda.\n- c) Sale de aplicar $\\psi$ a la sorpresa monetaria ($1{,}5\\cdot5$) en lugar de a la sorpresa de precios. Además, los precios no pueden quedar por debajo de lo esperado con una sorpresa monetaria positiva."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.1-II.2.2 Curva de oferta de Lucas y equilibrio con dinero no anticipado",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310607,
+   "estado": "publicada",
+   "enunciado": "Considere el modelo de Sargent y Wallace: oferta $y_t=y^n+\\psi\\,(p_t-p^e_t)+u_t$, demanda $y_t=m_t-p_t$ y regla monetaria $m_t=\\mu_0+\\mu_1u_{t-1}+\\varepsilon_t$, con expectativas racionales. La perturbación de oferta $u_t$ y la sorpresa monetaria $\\varepsilon_t$ son ruidos blancos independientes, con varianzas $\\sigma^2_u=4$ y $\\sigma^2_\\varepsilon=4$, y $\\psi=1$. ¿Cuál es la varianza de la producción y qué puede hacer el banco central para reducirla?",
+   "opciones": {
+    "a": "Es 2 si $\\mu_1=0$, y el banco central puede reducirla eligiendo $\\mu_1<0$, es decir, contrayendo el dinero cuando la perturbación de oferta del periodo anterior fue positiva.",
+    "b": "Es 2 sea cual sea $\\mu_1$; lo único que puede hacer el banco central es dejar de sorprender ($\\sigma^2_\\varepsilon=0$), con lo que bajaría a 1.",
+    "c": "Es 8, la suma de las varianzas de las dos perturbaciones, y no depende de la política monetaria.",
+    "d": "Es 1 sea cual sea la regla, porque con expectativas racionales las sorpresas monetarias no afectan a la producción."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En equilibrio, $y_t-y^n=(\\psi\\,\\varepsilon_t+u_t)/(1+\\psi)=(\\varepsilon_t+u_t)/2$, con varianza $(4+4)/4=2$. El parámetro $\\mu_1$ no aparece: la parte sistemática de la regla se descuenta y va entera a los precios. Las sorpresas sí mueven la producción, pero solo añaden ruido: sin ellas la varianza sería $4/4=1$.",
+    "desarrollo": "Como $u_{t-1}$ se conoce en $t-1$, el público lo descuenta: $\\mathbb{E}_{t-1}[m_t]=\\mu_0+\\mu_1u_{t-1}$ y $p^e_t=\\mu_0+\\mu_1u_{t-1}-y^n$. En sorpresas:\n\n- demanda: $y_t-y^n=\\varepsilon_t-(p_t-p^e_t)$;\n- oferta: $y_t-y^n=\\psi\\,(p_t-p^e_t)+u_t$.\n\nSustituyendo, $(1+\\psi)(y_t-y^n)=\\psi\\,\\varepsilon_t+u_t$. Con $\\psi=1$:\n\n$$y_t-y^n=\\frac{\\varepsilon_t+u_t}{2},\\qquad \\mathrm{Var}(y_t)=\\frac{\\sigma^2_\\varepsilon+\\sigma^2_u}{4}=\\frac{4+4}{4}=2.$$\n\n$\\partial y_t/\\partial\\mu_1=0$: es la proposición de inefectividad (o irrelevancia) de la política sistemática. Lo mejor que puede hacer el banco central es ser previsible: con $\\sigma^2_\\varepsilon=0$ queda $\\mathrm{Var}(y_t)=\\sigma^2_u/4=1$.\n\nPor qué fallan las demás:\n\n- a) Es la intuición keynesiana de la regla contracíclica, que aquí no funciona: $\\mu_1$ solo cambia los precios, porque el público conoce la regla y $u_{t-1}$.\n- c) Olvida que la sorpresa y la perturbación de oferta se reparten entre producción y precios: cada una entra dividida por $1+\\psi$, y su varianza, por $(1+\\psi)^2$.\n- d) Confunde lo sistemático con lo imprevisto. Las sorpresas monetarias sí afectan a la producción; lo que no lo hace es la parte anticipada. La varianza sería 1 solo sin sorpresas."
+   },
+   "dificultad": 3,
+   "apartado": "II.2.2 Demanda, equilibrio e inefectividad de la política sistemática",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310608,
+   "estado": "publicada",
+   "enunciado": "Los modelos de contratos de Fischer (1977) y Taylor (1980), en los que los salarios se fijan antes de conocer las perturbaciones y los agentes tienen expectativas racionales, muestran que:",
+   "opciones": {
+    "a": "La proposición de inefectividad se mantiene siempre que las expectativas sean racionales, con independencia de cómo se fijen precios y salarios.",
+    "b": "La política monetaria sistemática recupera sus efectos reales solo si los contratos llevan a los agentes a formar expectativas adaptativas.",
+    "c": "La política monetaria sistemática puede estabilizar la producción aunque las expectativas sean racionales, si los precios o los salarios no son flexibles.",
+    "d": "Sigue siendo cierto que solo el dinero no anticipado tiene efectos reales, aunque esos efectos duran más que en el modelo de Lucas."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con salarios fijados de antemano, el banco central puede reaccionar a perturbaciones que los contratos ya firmados no pudieron tener en cuenta. Su respuesta es conocida y anticipada, y aun así tiene efectos reales. La inefectividad de Sargent y Wallace no depende de las expectativas racionales, sino del vaciado continuo con precios flexibles.",
+    "desarrollo": "La proposición de inefectividad junta dos supuestos: expectativas racionales y precios que vacían los mercados en cada momento. Fischer y Taylor conservan el primero y cambian el segundo: los salarios nominales se pactan por más de un periodo y de forma escalonada.\n\nSi llega una perturbación después de firmarse parte de los contratos, esos salarios no pueden recogerla. El banco central, que decide después, sí: una regla que responda a la perturbación cambia el salario real de los contratos vigentes y, con él, el empleo y la producción. El público conoce la regla; no hay engaño. Lo que hay es una ventaja de calendario, no de información.\n\nDe ahí la lectura de los nuevos keynesianos: lo que da la neutralidad es la flexibilidad de los precios, no las expectativas. La evidencia va en la misma dirección: Mishkin (1982) encuentra que también el dinero anticipado tiene efectos, frente a Barro (1977).\n\nPor qué fallan las demás:\n\n- a) Es justo lo que estos modelos refutan.\n- b) Los agentes siguen siendo racionales; no hace falta ningún error sistemático.\n- d) El resultado es más fuerte: con contratos, también la política anticipada (la regla) afecta a la producción."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.2 Inefectividad de la política sistemática (extensiones: contratos de Fischer y Taylor)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310609,
+   "estado": "publicada",
+   "enunciado": "En el modelo de islas de Lucas, la producción es $y_t=y^n+\\tilde\\psi\\,(m_t-\\mathbb{E}_{t-1}[m_t])$, con $\\tilde\\psi=\\psi/(1+\\psi)$ y $\\psi=1$. El banco central ha seguido la regla $m_t=\\mu+\\rho_m\\,m_{t-1}+\\varepsilon_t$ con $\\rho_m=0{,}8$, y un econometrista ha estimado con esos datos $y_t=\\beta_0+\\beta_1m_t+\\beta_2m_{t-1}$, con $\\hat\\beta_1=0{,}5$ y $\\hat\\beta_2=-0{,}4$. El banco central anuncia ahora una regla con $\\rho_m=0{,}4$, con el mismo $\\mu$ y la misma varianza de $\\varepsilon_t$, y el público la conoce. ¿Qué relación entre producción y dinero regirá con la nueva regla?",
+   "opciones": {
+    "a": "La misma, $\\beta_1=0{,}5$ y $\\beta_2=-0{,}4$: los coeficientes estimados reflejan las preferencias y la tecnología, que no han cambiado.",
+    "b": "$\\beta_1=0{,}25$ y $\\beta_2=-0{,}4$: cambia el efecto del dinero corriente, pero no el del dinero pasado.",
+    "c": "$\\beta_1=0$ y $\\beta_2=0$: con expectativas racionales, una vez anunciada la regla el dinero deja de tener relación con la producción.",
+    "d": "$\\beta_1=0{,}5$ y $\\beta_2=-0{,}2$: el coeficiente del dinero pasado depende de la regla y cambia con ella."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con la regla, $\\mathbb{E}_{t-1}[m_t]=\\mu+\\rho_m m_{t-1}$ y la forma reducida es $y_t=(y^n-\\tilde\\psi\\mu)+\\tilde\\psi\\,m_t-\\tilde\\psi\\rho_m\\,m_{t-1}$. Con $\\tilde\\psi=0{,}5$, $\\beta_2$ pasa de $-0{,}5\\cdot0{,}8=-0{,}4$ a $-0{,}5\\cdot0{,}4=-0{,}2$. Es la crítica de Lucas: los coeficientes estimados mezclan parámetros profundos con la regla de política.",
+    "desarrollo": "Sustituyendo la expectativa racional del dinero en la ecuación de la producción:\n\n$$y_t=y^n+\\tilde\\psi\\,(m_t-\\mu-\\rho_m m_{t-1})=\\underbrace{(y^n-\\tilde\\psi\\mu)}_{\\beta_0}+\\underbrace{\\tilde\\psi}_{\\beta_1}m_t\\underbrace{-\\tilde\\psi\\rho_m}_{\\beta_2}m_{t-1}.$$\n\nCon $\\psi=1$, $\\tilde\\psi=1/2$:\n\n- regla antigua ($\\rho_m=0{,}8$): $\\beta_1=0{,}5$, $\\beta_2=-0{,}4$, lo que estimó el econometrista;\n- regla nueva ($\\rho_m=0{,}4$): $\\beta_1=0{,}5$, $\\beta_2=-0{,}2$.\n\n$\\beta_1$ no cambia porque la varianza de las sorpresas es la misma y, con ella, $\\sigma^2_p$, $\\omega$ y $\\psi$. Si la política se volviera más errática, cambiaría también $\\beta_1$; y si cambiara $\\mu$, cambiaría $\\beta_0$ lo justo para que la producción media siguiera en $y^n$.\n\nQuien simule la nueva política con los coeficientes antiguos se equivoca. Los parámetros profundos son $y^n$, $\\varepsilon_S$ y $\\sigma^2_z$; los $\\beta$ son funciones de la política.\n\nPor qué fallan las demás:\n\n- a) Es la práctica que critica Lucas: tratar como invariantes unos coeficientes que dependen de la regla a través de las expectativas.\n- b) Confunde qué coeficiente lleva $\\rho_m$: es el del dinero retardado, que es el que sirve para predecir el dinero de hoy.\n- c) La crítica no dice que desaparezca la relación estadística entre dinero y producción, sino que no es estable ante cambios de política. Las sorpresas siguen moviendo la producción."
+   },
+   "dificultad": 3,
+   "apartado": "II.2.3 La crítica de Lucas (ejemplo con el modelo de islas)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310610,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Kydland y Prescott y de Barro y Gordon, la autoridad monetaria elige la inflación después de que el público fije sus expectativas, para minimizar $L=(U-U^*)^2+\\gamma\\,(\\pi-\\pi^*)^2$ sujeta a $U=U^n-\\alpha\\,(\\pi-\\pi^e)$. Los valores son $U^n=6\\ \\%$, $U^*=4\\ \\%$, $\\pi^*=2\\ \\%$, $\\alpha=0{,}5$ y $\\gamma=1$. Con expectativas racionales y sin posibilidad de compromiso, la inflación y el paro de equilibrio son:",
+   "opciones": {
+    "a": "$\\pi=2\\ \\%$ y $U=6\\ \\%$.",
+    "b": "$\\pi=3\\ \\%$ y $U=6\\ \\%$.",
+    "c": "$\\pi=2{,}8\\ \\%$ y $U=5{,}6\\ \\%$.",
+    "d": "$\\pi=3\\ \\%$ y $U=5{,}5\\ \\%$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con discrecionalidad, $\\pi^D=\\pi^*+\\frac{\\alpha}{\\gamma}(U^n-U^*)=2+0{,}5\\cdot2=3\\ \\%$. Como el público lo anticipa, $\\pi^e=\\pi$ y el paro es el natural, 6 %. La economía acaba con un punto más de inflación y ni una décima menos de paro: es el sesgo inflacionista.",
+    "desarrollo": "Sustituyendo la curva de Phillips en la pérdida y derivando respecto de $\\pi$, con $\\pi^e$ dada:\n\n$$-2\\alpha\\,(U-U^*)+2\\gamma\\,(\\pi-\\pi^*)=0\\ \\Longrightarrow\\ \\gamma\\,(\\pi-\\pi^*)=\\alpha\\,(U-U^*).$$\n\nCon expectativas racionales, $\\pi^e=\\pi$ y $U=U^n$:\n\n$$\\pi^D=\\pi^*+\\frac{\\alpha}{\\gamma}\\,(U^n-U^*)=2+\\frac{0{,}5}{1}\\cdot2=3.$$\n\nComprobación con la condición de primer orden: $1\\cdot(3-2)=0{,}5\\cdot(6-4)$. Ningún jugador quiere desviarse: es el equilibrio de Nash. La pérdida es $L^D=4+1=5$, mayor que la de la regla, $L^R=4$.\n\nPor qué fallan las demás:\n\n- a) Es el resultado con compromiso (la regla), el óptimo alcanzable. Sin compromiso no es creíble: si el público esperara un 2 %, la autoridad querría desviarse.\n- c) Es la tentación: lo que haría la autoridad si el público esperase un 2 %. Su mejor respuesta es $\\pi=(\\gamma\\pi^*+\\alpha^2\\pi^e+\\alpha(U^n-U^*))/(\\gamma+\\alpha^2)=3{,}5/1{,}25=2{,}8$, con $U=6-0{,}5\\cdot0{,}8=5{,}6$ y $L^T=3{,}2$. No es un equilibrio, porque el público no se deja engañar.\n- d) Supone que el punto de inflación por encima del objetivo reduce el paro en $\\alpha\\cdot1$. Solo la inflación no esperada lo reduce, y en equilibrio no la hay.\n\nEl sesgo exige $U^*<U^n$: con $U^*=U^n$ la inflación de equilibrio sería la objetivo."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Reglas frente a discrecionalidad: Kydland y Prescott (1977), Barro y Gordon (1983)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:310610.webp",
+     "alt": "Plano con el paro U en abscisas y la inflación π en ordenadas. Curva de Phillips a largo plazo vertical en U^n = 6. Punto de felicidad en (U*, π*) = (4, 2), rodeado de tres circunferencias de pérdida centradas en él. Dos curvas de Phillips de corto plazo, rectas decrecientes de pendiente −2, una para una inflación esperada baja y otra para una alta, sin cifras. No se marca ningún punto de equilibrio.",
+     "ancho": 580
+    }
+   ]
+  },
+  {
+   "id": 310611,
+   "estado": "borrador",
+   "enunciado": "Rogoff (1985) propone delegar la política monetaria en un banquero central «conservador», con más aversión a la inflación que la sociedad ($\\gamma'>\\gamma$ en la función de pérdida $L=(U-U^*)^2+\\gamma\\,(\\pi-\\pi^*)^2$). En el modelo de Barro y Gordon, esa delegación:",
+   "opciones": {
+    "a": "Reduce el sesgo inflacionista a $\\frac{\\alpha}{\\gamma'}(U^n-U^*)$, pero, si hay perturbaciones de oferta, al precio de estabilizar menos la producción.",
+    "b": "Elimina por completo el sesgo inflacionista, porque el banquero conservador tiene como objetivo de paro la tasa natural.",
+    "c": "Reduce el sesgo inflacionista porque rebaja la tasa natural de paro, al hacer creíble la política monetaria.",
+    "d": "No cambia la inflación de equilibrio, que solo depende de $\\alpha$ y de la distancia entre $U^n$ y $U^*$, aunque mejora la reputación del banco central."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El sesgo es $\\frac{\\alpha}{\\gamma}(U^n-U^*)$: cuanto más pesa la inflación en la pérdida de quien decide, menor es. Un banquero con $\\gamma'>\\gamma$ lo reduce sin eliminarlo, pero responde menos a las perturbaciones de oferta. El contrato de Walsh corrige el incentivo a inflar sin tocar la respuesta a las perturbaciones.",
+    "desarrollo": "En el equilibrio discrecional, $\\pi^D=\\pi^*+\\frac{\\alpha}{\\gamma}(U^n-U^*)$. Si decide alguien con $\\gamma'>\\gamma$, el sesgo baja a $\\frac{\\alpha}{\\gamma'}(U^n-U^*)$: sigue siendo positivo mientras $U^*<U^n$ y $\\gamma'$ sea finito.\n\nEl coste aparece cuando hay perturbaciones de oferta: lo deseable para la sociedad sería repartir su efecto entre inflación y paro según $\\gamma$, pero el banquero conservador deja que recaiga más sobre el paro y la producción. Hay un intercambio entre credibilidad y flexibilidad, y por eso el grado óptimo de conservadurismo es limitado.\n\nWalsh (1995) muestra que un contrato de incentivos que penaliza al banquero central de forma lineal con la inflación anula la ganancia marginal de la sorpresa y elimina el sesgo, manteniendo la respuesta óptima a las perturbaciones.\n\nPor qué fallan las demás:\n\n- b) El banquero de Rogoff tiene los mismos objetivos $U^*$ y $\\pi^*$; lo que cambia es el peso relativo. El sesgo se reduce, no desaparece.\n- c) La tasa natural depende de factores reales del mercado de trabajo, no de quién dirige la política monetaria.\n- d) La inflación de equilibrio depende también de $\\gamma$, que es precisamente el parámetro que cambia la delegación."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Reglas frente a discrecionalidad (independencia: banquero central conservador)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310612,
+   "estado": "publicada",
+   "enunciado": "En una economía en la que se cumplen los supuestos de la equivalencia ricardiana (Barro, 1974), el Gobierno reduce hoy los impuestos de suma fija en 100 y lo financia con deuda, sin cambiar la senda prevista de gasto público. Entonces:",
+   "opciones": {
+    "a": "El consumo privado aumenta en 100 multiplicado por la propensión marginal a consumir, y el ahorro privado, en el resto.",
+    "b": "El ahorro nacional cae en 100 y el tipo de interés sube, con lo que se expulsa inversión privada.",
+    "c": "El ahorro privado aumenta en 100; el consumo, el ahorro nacional y el tipo de interés no cambian.",
+    "d": "La producción no cambia, y tampoco cambiaría si lo que se financiara con deuda fuese un aumento del gasto público."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Dada la senda de gasto, la restricción presupuestaria intertemporal del Estado obliga a subir los impuestos futuros en el mismo valor actual. La riqueza de los hogares no cambia y ahorran la rebaja entera: el mayor ahorro privado compensa el menor ahorro público.",
+    "desarrollo": "La deuda es imposición pospuesta. Con hogares de horizonte infinito (o dinastías unidas por herencias altruistas), impuestos de suma fija y mercados de capitales perfectos, los hogares ven que los 100 de hoy vienen con impuestos futuros del mismo valor actual:\n\n- su riqueza no cambia, así que no cambian su consumo;\n- ahorran los 100, justo lo que necesita colocar el Estado: el ahorro público cae en 100, el privado sube en 100 y el nacional queda igual;\n- sin cambio en el ahorro nacional, no cambian el tipo de interés ni la inversión (ni, en economía abierta, la cuenta corriente).\n\nLos bonos del Estado no son riqueza neta.\n\nPor qué fallan las demás:\n\n- a) Es la respuesta keynesiana, la de un consumo que depende de la renta disponible corriente. Aparece si hay restricciones de liquidez o consumidores miopes, que son incumplimientos de los supuestos.\n- b) Es la visión convencional del déficit: efecto expulsión por caída del ahorro nacional. Con equivalencia ricardiana el ahorro nacional no cae.\n- d) La primera parte es cierta, pero la segunda no: la equivalencia se refiere a cómo se financia un gasto dado, no dice que el gasto público no tenga efectos. Un aumento del gasto sí los tiene (en un modelo de ciclo real, por el efecto riqueza), y son los mismos con deuda que con impuestos."
+   },
+   "dificultad": 1,
+   "apartado": "II.4 La equivalencia ricardiana (Barro, 1974)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310613,
+   "estado": "publicada",
+   "enunciado": "Según la «aritmética monetarista desagradable» de Sargent y Wallace (1981):",
+   "opciones": {
+    "a": "Con dominación monetaria, el banco central tiene que aportar el señoreaje que falte para financiar la senda de déficits que fija la autoridad fiscal.",
+    "b": "El resultado exige que el tipo de interés real sea inferior al crecimiento de la economía, de modo que la deuda sobre el PIB crezca sin límite.",
+    "c": "La inflación es un fenómeno exclusivamente monetario: si el banco central controla el crecimiento del dinero, la política fiscal no influye en ella.",
+    "d": "Con dominación fiscal y un tipo de interés real mayor que el crecimiento, financiar el déficit con deuda y no con dinero acaba exigiendo más inflación en el futuro."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Si la senda de déficits primarios está dada y la deuda no puede crecer sin límite, restringir hoy el dinero solo aplaza la monetización: llegará con más deuda e intereses acumulados y exigirá más inflación. Con expectativas racionales, y una demanda de dinero que depende de la inflación esperada, la inflación puede subir ya hoy.",
+    "desarrollo": "El argumento descansa en la restricción presupuestaria intertemporal del Estado: la deuda tiene que igualar el valor actual de los saldos primarios y del señoreaje. Todo depende de quién se ajusta:\n\n- con dominación monetaria, el banco central fija su senda de señoreaje y la autoridad fiscal ajusta el saldo primario;\n- con dominación fiscal, los saldos primarios están dados y el señoreaje es el residuo.\n\nEn el segundo caso, si $r>\\gamma_Y$, financiar con deuda hace crecer la deuda sobre el PIB como una bola de nieve hasta el límite que el público acepta. Entonces hay que monetizar, y sobre una deuda mayor: más dinero y más inflación que si se hubiera monetizado desde el principio. Los agentes lo prevén; como la demanda de dinero cae con la inflación esperada, los precios pueden subir desde hoy. De ahí lo «desagradable» para un monetarista: una política monetaria restrictiva puede no bajar la inflación ni siquiera a corto plazo.\n\nPor qué fallan las demás:\n\n- a) Describe la dominación fiscal, no la monetaria.\n- b) Es al revés: hace falta $r>\\gamma_Y$. Con $r<\\gamma_Y$ la deuda sobre el PIB no explotaría y no habría que acabar monetizando.\n- c) Es la tesis que el artículo matiza: bajo dominación fiscal, el banco central no controla a largo plazo el crecimiento del dinero y la inflación es, en último término, un fenómeno fiscal."
+   },
+   "dificultad": 2,
+   "apartado": "II.5 La aritmética monetarista desagradable (Sargent y Wallace, 1981)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310614,
+   "estado": "publicada",
+   "enunciado": "En el modelo de ciclo real (Kydland y Prescott, 1982), la respuesta de la economía a una mejora tecnológica depende de si es transitoria o permanente. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Si es transitoria, el consumo sube más que la inversión, porque los hogares aprovechan la renta extra mientras dura; si es permanente, ahorran la mayor parte.",
+    "b": "Si es transitoria, las horas y la inversión suben mucho y el consumo poco; si es permanente, el consumo salta y las horas apenas cambian.",
+    "c": "En los dos casos las horas trabajadas caen, porque los hogares son más ricos y demandan más ocio.",
+    "d": "En los dos casos, la persistencia de la producción se debe sobre todo a la acumulación de capital; la persistencia de la propia perturbación tecnológica apenas influye."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Una mejora transitoria eleva el salario y el rendimiento del capital solo por un tiempo: conviene trabajar más ahora (sustitución intertemporal) y ahorrar la renta extra para repartirla, de modo que la inversión sube mucho y el consumo poco. Si es permanente, la riqueza sube más: el consumo salta y el efecto renta frena las horas.",
+    "desarrollo": "El mecanismo combina la oferta de trabajo intertemporal de Lucas y Rapping con la renta permanente:\n\n- perturbación transitoria: el salario está alto respecto del futuro, y los hogares trabajan más hoy; la renta extra es pasajera y, para suavizar el consumo, se ahorra casi toda. La inversión es mucho más volátil que la producción y el consumo, más suave, como en los datos;\n- perturbación permanente: el salario relativo entre hoy y mañana no cambia, la riqueza aumenta mucho, el consumo sube casi tanto como la renta y el efecto renta sobre el ocio compensa el efecto sustitución: las horas apenas se mueven.\n\nPor qué fallan las demás:\n\n- a) Es al revés: con renta transitoria se suaviza el consumo y se ahorra; con renta permanente se consume.\n- c) Con una mejora transitoria domina el efecto sustitución y las horas suben; es lo que necesita el modelo para generar empleo procíclico.\n- d) El modelo tiene poca propagación propia: la inversión de hoy es capital de mañana, pero casi toda la persistencia viene de $\\rho_A$, la de la perturbación. Es una de las críticas habituales (Cogley y Nason, 1995)."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Modelo de ciclo real (mecanismo de transmisión)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310615,
+   "estado": "publicada",
+   "enunciado": "En la versión de McCallum (1989) del modelo de ciclo real (depreciación completa, utilidad logarítmica y trabajo inelástico), la desviación de la producción respecto de su estado estacionario sigue $\\hat y_{t+1}=\\alpha\\,\\hat y_t+\\ln A_{t+1}$, y la tecnología, $\\ln A_t=\\rho_A\\ln A_{t-1}+\\varepsilon^A_t$. Suponga $\\alpha=0{,}4$ y $\\rho_A=0{,}5$. La economía está en su estado estacionario y en $t$ hay una innovación tecnológica $\\varepsilon^A_t=1$, sin más innovaciones después (de modo que $\\hat y_t=1$). ¿Cuánto vale $\\hat y_{t+2}$?",
+   "opciones": {
+    "a": "0,16",
+    "b": "0,25",
+    "c": "0,61",
+    "d": "0,41"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\hat y_t=1$; $\\hat y_{t+1}=0{,}4\\cdot1+0{,}5=0{,}9$; $\\hat y_{t+2}=0{,}4\\cdot0{,}9+0{,}25=0{,}61$. La producción hereda la persistencia de dos fuentes: la del capital ($\\alpha$) y la de la propia perturbación ($\\rho_A$).",
+    "desarrollo": "La tecnología tras la innovación: $\\ln A_t=1$, $\\ln A_{t+1}=0{,}5$, $\\ln A_{t+2}=0{,}25$. La producción:\n\n- $\\hat y_t=\\alpha\\cdot0+1=1$;\n- $\\hat y_{t+1}=0{,}4\\cdot1+0{,}5=0{,}9$;\n- $\\hat y_{t+2}=0{,}4\\cdot0{,}9+0{,}25=0{,}36+0{,}25=0{,}61$.\n\nComprobación con la fórmula general, $\\hat y_{t+k}=\\dfrac{\\rho_A^{k+1}-\\alpha^{k+1}}{\\rho_A-\\alpha}$: para $k=2$, $\\dfrac{0{,}125-0{,}064}{0{,}1}=0{,}61$.\n\nEl término $\\alpha\\,\\hat y_t$ es la propagación interna del modelo: con depreciación completa, el hogar ahorra la fracción constante $\\alpha\\beta$ de la producción, de modo que más producción hoy es más capital mañana. El término $\\ln A_{t+1}$ es la persistencia que se impone desde fuera.\n\nPor qué fallan las demás:\n\n- a) Es $\\alpha^2$, la respuesta sin persistencia de la tecnología ($\\rho_A=0$): solo la propagación por el capital.\n- b) Es $\\rho_A^2$, lo que queda de la perturbación tecnológica, sin contar el capital acumulado.\n- d) Es $\\alpha^2+\\rho_A^2$: olvida el término cruzado, $\\alpha\\rho_A=0{,}2$, es decir, que la tecnología de $t+1$ también dejó más capital para $t+2$."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 y anexo B Modelo de ciclo real (solución cerrada de McCallum)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310616,
+   "estado": "publicada",
+   "enunciado": "Cuando el modelo de ciclo real estándar, calibrado con el residuo de Solow, se compara con los datos de Estados Unidos (Prescott, 1986; Hansen y Wright, 1992), su principal fallo está en que:",
+   "opciones": {
+    "a": "Las horas trabajadas varían menos que en los datos y su correlación con la productividad es casi perfecta, cuando en los datos es casi nula.",
+    "b": "Genera un consumo más volátil que la producción, cuando en los datos es más suave.",
+    "c": "Genera una inversión menos volátil que la producción, cuando en los datos lo es mucho más.",
+    "d": "Apenas genera fluctuaciones de la producción: las perturbaciones tecnológicas calibradas explican una parte insignificante de su volatilidad."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El modelo reproduce buena parte de la volatilidad de la producción, un consumo más suave y una inversión más volátil. Donde falla es en el mercado de trabajo: con una sola perturbación, la tecnológica, horas y productividad se mueven juntas (correlación de 0,93 en el modelo frente a valores ligeramente negativos en los datos), y las horas fluctúan la mitad de lo observado.",
+    "desarrollo": "En el modelo, una mejora tecnológica desplaza la demanda de trabajo a lo largo de una oferta estable: suben a la vez el salario (la productividad) y las horas, de ahí una correlación cercana a 1. En los datos hay además perturbaciones que desplazan la oferta de trabajo o la demanda agregada, y la correlación es ligeramente negativa en 1947-1991 y claramente negativa desde mediados de los 80.\n\nPara que las horas varíen tanto como en los datos con salarios poco variables haría falta una oferta de trabajo mucho más elástica de lo que estiman los estudios microeconómicos. El trabajo indivisible (Hansen, 1985; Rogerson, 1988) lo resuelve en parte: las horas agregadas varían por el margen extensivo aunque la elasticidad individual sea baja. Y Galí (1999) encuentra que, tras una mejora tecnológica bien identificada, las horas caen a corto plazo.\n\nPor qué fallan las demás:\n\n- b) El modelo genera un consumo más suave que la producción, como en los datos (incluso algo más suave de la cuenta).\n- c) La inversión del modelo es unas tres veces más volátil que la producción, en línea con los datos.\n- d) Con la calibración de Prescott, el modelo reproduce alrededor de dos tercios de la volatilidad de la producción. Otra cosa es que el residuo de Solow mida bien la tecnología, que es una crítica distinta."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Modelo de ciclo real (evidencia empírica)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310617,
+   "estado": "publicada",
+   "enunciado": "En el modelo de ciclo real básico, con competencia perfecta, precios flexibles y sin fallos de mercado:",
+   "opciones": {
+    "a": "Las recesiones reflejan una demanda agregada insuficiente, que la política monetaria puede corregir.",
+    "b": "El paro es involuntario, porque el salario real no baja lo suficiente cuando cae la productividad.",
+    "c": "El dinero no es neutral a corto plazo, porque los agentes confunden las variaciones del nivel general de precios con cambios de precios relativos.",
+    "d": "El equilibrio competitivo coincide con la solución del planificador: las fluctuaciones son respuestas óptimas y estabilizarlas reduciría el bienestar."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Sin fallos de mercado se cumple el primer teorema fundamental de la economía del bienestar: el equilibrio es óptimo de Pareto en cada momento. El ciclo es eficiente, el paro es voluntario y el dinero, neutral; estabilizar la producción alejaría a la economía de su respuesta óptima.",
+    "desarrollo": "El modelo de ciclo real es un modelo de crecimiento de Ramsey con perturbaciones tecnológicas y oferta de trabajo elástica, en competencia perfecta. Como no hay externalidades, poder de mercado ni rigideces, el equilibrio competitivo se puede hallar resolviendo el problema de un planificador (así se resuelve, de hecho). De ahí tres implicaciones:\n\n- el ciclo es eficiente: producir menos cuando la productividad es baja es lo óptimo;\n- las variaciones del empleo son sustitución intertemporal voluntaria;\n- el dinero no hace falta para explicar el ciclo, y es neutral.\n\nEs la conclusión de política más radical de la escuela, y el blanco principal de los nuevos keynesianos.\n\nPor qué fallan las demás:\n\n- a) Es la lectura keynesiana. En el ciclo real las perturbaciones son de oferta (tecnología) y no hay nada que corregir.\n- b) Precios y salarios son flexibles y el mercado de trabajo se vacía: no hay paro involuntario.\n- c) Es el mecanismo del modelo de islas de Lucas (1972), el ciclo monetario de equilibrio que el ciclo real sustituye."
+   },
+   "dificultad": 1,
+   "apartado": "III.3 Modelo de ciclo real (implicaciones)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

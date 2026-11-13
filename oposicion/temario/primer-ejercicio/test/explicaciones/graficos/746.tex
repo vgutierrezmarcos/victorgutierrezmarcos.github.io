@@ -1,0 +1,41 @@
+% Pregunta 746 (2006-septiembre-OEP2006, n.º 9): equivalente cierto de un averso al riesgo.
+% u(EC) = E[u] por definición (a); lo que supera a E[u] es u(E[x]), no u(EC) (trampa de b).
+% Esquemático: u(x) = 5 (1 - exp(-x/2,2)); lotería x_A = 0,8 y x_B = 5,2 con prob. 1/2.
+%   u(x_A) = 1,52 ; u(x_B) = 4,53 ; E[x] = 3 ; E[u] = 3,03 (cuerda) ; u(E[x]) = 3,72 ; EC = 2,05.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \ejes{$x$}{$u$}{6.3}{5.2}
+  % Utilidad cóncava (averso)
+  \draw[curva1] plot[domain=0:5.8,samples=80] (\x,{5*(1-exp(-\x/2.2))}) node[etiqueta,above] {$u(x)$};
+  % Premios de la lotería y cuerda
+  \draw[guia] (0.8,0) -- (0.8,1.524);
+  \draw[guia] (5.2,0) -- (5.2,4.530);
+  \node[below] at (0.8,0) {$x_A$};
+  \node[below] at (5.2,0) {$x_B$};
+  \draw[curva4] (0.8,1.524) -- (5.2,4.530);
+  \node[punto] at (0.8,1.524) {};
+  \node[punto] at (5.2,4.530) {};
+  % Valor esperado: u(E[x]) en la curva, E[u] en la cuerda
+  \draw[guia] (3,0) -- (3,3.721);
+  \draw[guia] (0,3.721) -- (3,3.721);
+  \node[left] at (0,3.721) {$u(\mathbb{E}[x])$};
+  \node[punto] at (3,3.721) {};
+  % E[u] y equivalente cierto: misma altura
+  \draw[curvanueva] (0,3.027) -- (3,3.027);
+  \node[left,tceerojo] at (0,3.027) {$\mathbb{E}[u]=u(EC)$};
+  \node[punto,fill=tceerojo] at (3,3.027) {};
+  \node[punto,fill=tceerojo] at (2.046,3.027) {};
+  \draw[guia] (2.046,0) -- (2.046,3.027);
+  \node[below] at (2.046,0) {$EC$};
+  \node[below] at (3,0) {$\mathbb{E}[x]$};
+  % Jensen: u(E[x]) > E[u]
+  \draw[<->,thick,tceegris] (3.25,3.06) -- (3.25,3.69);
+  \node[etiqueta,anchor=west,align=left,font=\footnotesize] at (3.42,3.37) {$u(\mathbb{E}[x])>\mathbb{E}[u]$\\(Jensen)};
+  % Prima de riesgo
+  \draw[curvanueva,decorate,decoration={brace,amplitude=4pt,mirror}] (2.046,-0.55) -- (3,-0.55);
+  \node[etiqueta,below,tceerojo] at (2.52,-0.7) {$\rho=\mathbb{E}[x]-EC>0$};
+\end{tikzpicture}
+\end{document}

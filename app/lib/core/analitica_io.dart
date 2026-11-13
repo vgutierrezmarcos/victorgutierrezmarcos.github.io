@@ -45,11 +45,12 @@ class _AnaliticaFirebase extends Analitica {
   }
 
   @override
-  void usuario({String? oposicion, String? papel}) {
+  void usuario({String? oposicion, String? papel, String? instalacion}) {
     if (!_activa) return;
     final a = FirebaseAnalytics.instance;
     if (oposicion != null) unawaited(a.setUserProperty(name: 'oposicion', value: oposicion).catchError((_) {}));
     if (papel != null) unawaited(a.setUserProperty(name: 'papel', value: papel).catchError((_) {}));
+    if (instalacion != null) unawaited(a.setUserProperty(name: 'instalacion', value: instalacion).catchError((_) {}));
   }
 
   @override

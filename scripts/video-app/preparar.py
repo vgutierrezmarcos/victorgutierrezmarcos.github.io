@@ -70,6 +70,13 @@ def main():
               'SourceSans3-Regular.ttf', 'SourceSans3-Medium.ttf', 'SourceSans3-Semibold.ttf'):
         shutil.copy(os.path.join(FUENTES, f), ASSETS)
     shutil.copy(os.path.join(RAIZ, 'app', 'assets', 'icon', 'icon.png'), os.path.join(ASSETS, 'icono.png'))
+    # Logos oficiales de las integraciones y el distintivo de Google Play.
+    os.makedirs(os.path.join(ASSETS, 'logos'), exist_ok=True)
+    logos = os.path.join(RAIZ, 'app', 'promo', 'logos')
+    for nombre in os.listdir(logos):
+        if nombre.endswith('.png'):
+            shutil.copy(os.path.join(logos, nombre), os.path.join(ASSETS, 'logos'))
+    shutil.copy(os.path.join(RAIZ, 'app', 'promo', 'google-play-es.png'), os.path.join(ASSETS, 'logos'))
 
     gsap = os.path.join(ASSETS, 'gsap.min.js')
     if not os.path.exists(gsap):

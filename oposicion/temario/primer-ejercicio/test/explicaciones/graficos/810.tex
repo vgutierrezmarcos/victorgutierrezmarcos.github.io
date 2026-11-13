@@ -1,0 +1,35 @@
+% Pregunta 810 (2005-septiembre-OEP2005, n.º 29): Mundell-Fleming con movilidad perfecta y tipo
+% flexible ante una subida de i*. Rectas a escala:
+%   LM: i = 0,4 + 0,6 Y   BP: i = 2   BP': i = 3   IS: i = 4,4 - 0,9 Y   IS': i = 6,9 - 0,9 Y
+%   E0 = (2,667; 2)   E1 = IS'∩LM∩BP' = (4,333; 3)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  \ejes{$Y$}{$i$}{6}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.4)
+    {Tipo flexible, movilidad perfecta: $i^*\uparrow$};
+  % Curvas iniciales
+  \draw[curva4] (0,2) -- (6,2) node[etiqueta,right,text=tceedorado] {$BP$};
+  \draw[curva1] (0.2,0.52) -- (5.6,3.76) node[etiqueta,right,text=tceemorado] {$LM$};
+  \draw[curva2] (0.6,3.86) -- (4.4,0.44) node[etiqueta,right,text=tceeazul] {$IS$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (0,3) -- (6,3) node[etiqueta,right,text=tceerojo] {$BP'$};
+  \draw[curvanueva,desplazada] (3.2,4.02) -- (6.0,1.5) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[flecha] (0.35,2.08) -- (0.35,2.92);
+  \node[etiqueta,right,font=\footnotesize,text=tceerojo] at (0.35,2.5) {$i^*\uparrow$};
+  \draw[flecha] (1.15,3.6) -- (3.3,3.6);
+  \node[etiqueta,above,font=\footnotesize,text=tceerojo] at (2.2,3.6) {depreciación: $XN\uparrow$};
+  % Proyecciones
+  \node[left] at (0,2) {$i^*$};
+  \node[left] at (0,3) {$i^{*\prime}$};
+  \draw[guia] (2.667,2) -- (2.667,0) node[below] {$Y_0$};
+  \draw[guia] (4.333,3) -- (4.333,0) node[below] {$Y_1$};
+  % Puntos
+  \node[punto] at (2.667,2) {};
+  \node[etiqueta,above=3pt] at (2.667,2) {$E_0$};
+  \node[punto] at (4.333,3) {};
+  \node[etiqueta,above=3pt] at (4.333,3) {$E_1$};
+\end{tikzpicture}
+\end{document}

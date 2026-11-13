@@ -1,0 +1,38 @@
+% El menú de regímenes cambiarios, del más rígido al más flexible, con la
+% clasificación de hecho del FMI (Habermeier et al., 2009) y el porcentaje de
+% los miembros en cada grupo a 30 de abril de 2023 (AREAER 2023, FMI, 2024).
+% Paleta de los regímenes en todo el tema: anclaje duro tceeazul, anclaje
+% blando tceedorado, flotación tceerojo, otros gestionados tceegris.
+% Bloques sin relleno blanco: borde y texto en su color.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    bloque/.style={draw=#1,text=#1,very thick,rounded corners=4pt,
+      minimum height=2.5cm,anchor=south west,align=center,inner sep=4pt}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4.6,-1.2) rectangle (16.0,4.25);
+  % 1: el eje de la flexibilidad
+  \capa{1}{\draw[eje] (0,0) -- (13.4,0) node[etiqueta,right] {más flexibilidad};}
+  % 2: en sentido contrario, credibilidad y renuncia a la autonomía monetaria
+  \capa{2}{\draw[eje,tceegris] (13.4,-0.6) -- (0,-0.6) node[etiqueta,left,align=right,text=black] {más credibilidad,\\menos autonomía monetaria};}
+  % 3: anclaje duro
+  \capa{3}{\node[bloque=tceeazul,text width=2.6cm] at (0,0.3)
+    {\mbox{\textbf{Anclaje duro}}\\[1pt]{\large 13,4~\%}\\[5pt]
+     \scriptsize \mbox{sin moneda propia}\\\mbox{caja de conversión}};}
+  \capa{3}{\node[etiqueta,font=\scriptsize,text=tceegris,align=right,anchor=east] at (-0.15,1.55) {unión monetaria,\\dolarización};}
+  % 4: anclaje blando
+  \capa{4}{\node[bloque=tceedorado,text width=5.2cm] at (3.2,0.3)
+    {\mbox{\textbf{Anclaje blando}}\\[1pt]{\large 44,8~\%}\\[5pt]
+     \scriptsize \mbox{convencional\,·\,estabilizado\,·\,deslizamiento}\\\mbox{similar al deslizamiento\,·\,bandas}};}
+  % 5: flotación
+  \capa{5}{\node[bloque=tceerojo,text width=3.4cm] at (9.1,0.3)
+    {\textbf{Flotación}\\[1pt]{\large 32,5~\%}\\[5pt]
+     \scriptsize \mbox{flotación\,·\,flotación libre}\\\phantom{x}};}
+  \capa{5}{\node[etiqueta,font=\scriptsize,text=tceegris,align=left,anchor=west] at (13.15,1.55) {flotación\\libre};}
+  % 6: otros gestionados, fuera del eje (residual)
+  \capa{6}{\node[bloque=tceegris,text width=3.4cm,minimum height=1.1cm,dashed] at (9.1,3.0)
+    {\mbox{\textbf{Otros gestionados}}\\9,3~\%~~{\scriptsize (residual)}};}
+\end{tikzpicture}
+\end{document}

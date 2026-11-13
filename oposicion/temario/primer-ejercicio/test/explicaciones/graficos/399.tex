@@ -1,0 +1,27 @@
+% Pregunta 399 (2011-octubre-OEP2011, n.º 20): Solow con f(k)=1,6*sqrt(k). Más ahorro (s=0,40 -> 0,55) sube sf(k) y k* pasa de 2,56 a 4,84; más n o delta (pendiente 0,40 -> 0,60) hace la recta más empinada y k baja a 1,14. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1.1cm]
+  \ejes{$k$}{$y$}{6.8}{4.4}
+  % Función de producción por trabajador
+  \draw[curva4,domain=0:6.3,samples=80] plot (\x,{1.6*sqrt(\x)}) node[etiqueta,right] {$f(k)$};
+  % Inversión con s = 0,40 y con s' = 0,55
+  \draw[curva1,domain=0:6.3,samples=80] plot (\x,{0.64*sqrt(\x)}) node[etiqueta,right] {$s f(k)$};
+  \draw[curvanueva,desplazada,domain=0:6.3,samples=80] plot (\x,{0.88*sqrt(\x)}) node[etiqueta,right] {$s' f(k)$};
+  % Inversión de reposición
+  \draw[curva2] (0,0) -- (6.3,2.52) node[etiqueta,right] {$(n+\delta)k$};
+  \draw[curva3,desplazada] (0,0) -- (3.4,2.04) node[etiqueta,above] {$(n'+\delta)k$};
+  % Estados estacionarios
+  \draw[guia] (2.56,1.024) -- (2.56,0) node[below] {$k^*$};
+  \draw[guia] (4.84,1.936) -- (4.84,0) node[below] {$k^{**}$};
+  \draw[guia] (1.1378,0.6827) -- (1.1378,0) node[below] {$k'$};
+  \node[punto] at (2.56,1.024) {};
+  \node[punto,tceerojo] at (4.84,1.936) {};
+  \node[punto,tceeverde] at (1.1378,0.6827) {};
+  \draw[flecha,tceerojo] (2.85,-0.55) -- (4.5,-0.55);
+  \node[etiqueta,tceerojo,font=\footnotesize] at (3.7,-0.82) {$s\uparrow$};
+  \draw[flecha,tceeverde] (2.25,-0.55) -- (1.45,-0.55);
+  \node[etiqueta,tceeverde,font=\footnotesize] at (1.85,-0.82) {$n,\delta\uparrow$};
+\end{tikzpicture}
+\end{document}

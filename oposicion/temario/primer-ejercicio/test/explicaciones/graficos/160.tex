@@ -1,0 +1,34 @@
+% Pregunta 160 (2022-julio, n.º 15): externalidad negativa; el monopolio produce justo el óptimo social y la competencia produce de más. Autor: Víctor Gutiérrez Marcos
+% A escala: P = 100 - Q, IMg = 100 - 2Q, CMg = 10 + Q, CMgS = 10 + 2Q, CMg + t = 40 + Q (t = 30).
+%   Óptimo: CMgS = P en Q = 30, P = 70. Competencia: CMg = P en Q = 45, P = 55. Monopolio: IMg = CMg en Q = 30, P = 70.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.1cm,y=0.048cm]
+  \ejes{$Q$}{$P$}{66}{112}
+  % Pérdida de eficiencia de la competencia (de 30 a 45, entre CMgS y demanda)
+  \fill[area] (30,70) -- (45,100) -- (45,55) -- cycle;
+  % Curvas
+  \draw[curva1] (0,100) -- (62,38) node[etiqueta,right] {$D$};
+  \draw[curva2] (0,100) -- (47,6) node[etiqueta,right] {$\mathit{IMg}$};
+  \draw[curva3] (0,10) -- (58,68) node[etiqueta,right] {$\mathit{CMg}$};
+  \draw[curva3,desplazada] (0,40) -- (56,96) node[etiqueta,right] {$\mathit{CMg}+t$};
+  \draw[curvanueva] (0,10) -- (46,102) node[etiqueta,above] {$\mathit{CMgS}$};
+  % Proyecciones
+  \draw[guia] (30,0) node[below] {$30$} -- (30,70);
+  \draw[guia] (0,70) node[left] {$70$} -- (30,70);
+  \draw[guia] (45,0) node[below] {$45$} -- (45,55);
+  \draw[guia] (0,55) node[left] {$55$} -- (45,55);
+  % t = 30 = CE(30): distancia entre CMg y CMgS en Q = 30
+  \draw[decorate,decoration={brace,amplitude=3pt,mirror},thick,tceerojo] (31,40) -- (31,70)
+    node[pos=0.72,right=2pt,etiqueta,text=tceerojo] {$t$};
+  % Puntos
+  \node[punto] at (30,40) {};
+  \node[punto,fill=tceerojo] at (30,70) {};
+  \node[punto] at (45,55) {};
+  \draw[thin,tceerojo] (21,103) -- (29.6,71.5);
+  \node[etiqueta,anchor=south,text=tceerojo] at (19,103) {óptimo $=$ monopolio};
+  \node[etiqueta,anchor=west] at (46,52) {competencia};
+  \node[etiqueta,anchor=north east,font=\footnotesize] at (29.5,39) {$\mathit{IMg}=\mathit{CMg}$};
+\end{tikzpicture}
+\end{document}

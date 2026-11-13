@@ -1,29 +1,70 @@
-# Áreas monetarias óptimas
+# Áreas monetarias óptimas (Mundell, McKinnon, Kenen; coste-beneficio de De Grauwe; Krugman frente a Frankel y Rose)
 
-- **Área:** macro-abierta · **Tema de referencia:** 3.B.16 (Teoría de la integración monetaria) — lo tiene en el título y es el único desarrollo.
-- **Temas que lo usan:** 3.B.16 (desarrollo), 3.B.40 (mención), 4.A.28 (mención), 4.A.30 (mención); relacionado con 3.B.43 (UEM)
-- **Manuales de referencia:** Mundell (1961), McKinnon (1963), Kenen (1969); De Grauwe, *Economics of Monetary Union*, caps. 1-3; Frankel y Rose (1998); Krugman (1993) «Lessons of Massachusetts for EMU»; Baldwin y Wyplosz, *The Economics of European Integration*, cap. 14.
+- **Área:** macro-abierta · **Tema de referencia:** **3.B.16** (Teoría de la integración monetaria), **revisado el 11/11/2026**: lo tiene en el título y es el único desarrollo (I costes y criterios, `sec:costes`; II coste-beneficio, endogeneidad, evidencia y credibilidad, `sec:coste-beneficio`; III uniones monetarias incompletas, `sec:incompletas`; anexo `anexo:logica-amo`; el centro-periferia, resumen del resultado, sin anexo, 12/11/2026).
+- **Alias** (CC1 del 3.B.16, 11/11/2026; `_inventario/alias.json`): `amo-criterios`, `amo-mundell`, `integracion-monetaria`, `zona-monetaria-optima` (fusión de la consolidación) y, desde el 3.B.16, **`de-grauwe-coste-beneficio`** y **`frankel-rose`** (solo los usaba el 3.B.16; son partes de esta ficha, no modelos aparte). La hipótesis de especialización de Krugman (1993) va aquí (D041); el modelo centro-periferia que la apoya, en `centro-periferia`.
+- **Temas que lo usan:** 3.B.16 (desarrollo; hecho, 11/11/2026), 3.A.32 (mención; hecho, 11/11/2026), 3.B.10 (mención: la unión monetaria en la escalera de la integración, «sus costes y beneficios se estudian con la teoría de las áreas monetarias óptimas», `\vertema{3.B.16}`; revisado en el otro *worktree*), 3.B.11 (mención; hecho, 5/11/2026: devaluación interna, $\gamma_q$), 3.A.38 (mención; hecho, 5/11/2026: l. 835, la unión monetaria con `\vertema{3.B.16}`), 3.A.40 (mención; hecho, 5/11/2026: la fiscal, único instrumento propio), 3.B.40 (mención), 3.B.15 (mención; hecho, 12/11/2026: la unión monetaria como extremo de los anclajes duros, II.1.1; los criterios de McKinnon, Mundell y Kenen entre los determinantes de I.3.1, `\vertema{3.B.16}`; Rose, 2000, en I.2.3) y 3.B.43 (mención prevista), 4.A.28 y 4.A.30 (mención; filas corregidas el 11/11/2026).
+- **Manuales de referencia:** Mundell (1961, `Mundell1961Theory`), McKinnon (1963, `McKinnon1963Optimum`), Kenen (1969, `Kenen1969Theory`), Ingram (1959 y 1973; **no 1962**, comprobado en Crossref), Magnifico (1971); De Grauwe, *Economics of Monetary Union* (**14.ª ed., 2022**, `DeGrauwe2022Economics`); Baldwin y Wyplosz, *The Economics of European Integration* (6.ª ed., 2020, `BaldwinWyplosz2020Economics`; la lógica de las AMO es su **fig. 15.15**, no el cap. 14 que decía esta ficha); Mongelli (2002); Krugman (1993, «Lessons of Massachusetts for EMU», `Krugman1993Lessons`); Frankel y Rose (**1998**, *Economic Journal*, `FrankelRose1998Endogeneity`); De Grauwe (2011, `DeGrauwe2011Governance`) para la fragilidad.
 
-## Presentación de referencia
-**Pregunta:** ¿cuándo compensa a un grupo de países renunciar al tipo de cambio propio?
+## Presentación de referencia (3.B.16)
 
-**Modelo base (Mundell, 1961):** dos países con OA-DA; shock asimétrico de demanda (del país A al B). Sin tipo de cambio, el ajuste exige flexibilidad salarial o movilidad del trabajo; si no las hay, paro en A e inflación en B.
+**Pregunta** (las palabras del 3.B.10 y del 3.B.16): ¿cuándo compensa a un país renunciar a su moneda y a su tipo de cambio propios? Y, si renuncia, ¿qué casa común hace falta? Enganche del 3.B.16: «El casado casa quiere» y Bulgaria (21 miembros de la zona del euro en 2026).
 
-**Criterios:** movilidad de factores (Mundell), apertura (McKinnon), diversificación productiva (Kenen), integración financiera (Ingram), transferencias fiscales, preferencias homogéneas de inflación; endogeneidad (Frankel y Rose, 1998: más comercio → ciclos más sincronizados) frente a especialización (Krugman, 1993: más integración → más especialización → shocks más asimétricos).
+**Definiciones** (introducción y I.1): unión monetaria según el Informe Werner (1970) y Delors (1989); **seudounión cambiaria** (paridades fijas, cada país con su política monetaria) frente a **unión cambiaria completa** (Corden, 1972); «unión **incompleta**» solo en el sentido de III (moneda y banco central comunes sin unión bancaria ni fiscal). Lo que se pierde: el tipo de cambio, la cantidad de dinero y el tipo de interés. Área monetaria y AMO según Mundell (1961), sin «erga intra / erga extra». «Zona del euro», nunca «Eurozona»; «perturbación» (asimétrica, de demanda, de solvencia).
 
-**Gráfico de referencia:** OA-DA de los dos países (equilibrio inicial; shock permanente; ajuste con flexibilidad salarial; ajuste con movilidad del trabajo). Complemento: recta de De Grauwe costes-beneficios frente a apertura / simetría.
+**I. Modelo base de Mundell (1961), con a)-e)** (`sec:mundell`): 2 países, **España y Alemania**, en una unión ($E\equiv1$ entre ellos, $q=P^*/P$); $\mathrm{DA}_{\mathrm{ES}}$, $\mathrm{DA}_{\mathrm{DE}}$ decrecientes por el efecto sustitución vía $q$; $\mathrm{OA}_{\mathrm{CP}}(W_0)$ y $\mathrm{OA}_{\mathrm{LP}}$ vertical en $Y^n$; puntos $A$ (equilibrio), $B$ (perturbación) y $C$ (ajuste). **Perturbación asimétrica y permanente de demanda** de España a Alemania: recesión y déficit en España, auge e inflación en Alemania. Ajuste sin tipo de cambio: **flexibilidad salarial** = **devaluación interna** (Schmitt-Grohé y Uribe, 2016; `\vertema{3.A.32}`, `\vertema{3.B.11}`) o **movilidad del trabajo** (OA′ e $Y^n$ se desplazan; vuelven a $P_0$); sin ninguno, inflación en Alemania y deflación en España. Extensiones: perturbaciones transitorias, sincronía («una talla para todos») y los escenarios **benigno y maligno** de De Grauwe (el maligno se desarrolla en III). Evidencia: Blanchard y Katz (1992), Decressin y Fatás (1995), movilidad intra-UE (<4 %), controles Schengen, carta del BCE de 2011.
+
+**Criterios, ordenados por las 3 dimensiones de De Grauwe** (`tab:criterios`, con columna «Dimensión»):
+
+| Criterio | Autor | Dimensión |
+|---|---|---|
+| Flexibilidad salarial o movilidad del trabajo | Mundell (1961) | flexibilidad |
+| Integración fiscal (seguro público; 3 funciones del federalismo fiscal en nota, sin atribuirlas) | Kenen (1969) | integración (seguro) |
+| Integración financiera (seguro privado; Asdrubali, Sørensen y Yosha, 1996: 39 % mercados, 23 % crédito, 13 % presupuesto federal) | Ingram (1959, 1973) | integración (seguro) |
+| Diversificación productiva | Kenen (1969) | simetría |
+| Propensiones a la inflación parecidas e instituciones laborales (Bruno y Sachs, 1985; Calmfors y Driffill, 1988; ficha `calmfors-driffill`) | Magnifico (1971) | simetría |
+| Apertura | McKinnon (1963) | integración (comercio) |
+| Criterios políticos (preferencias, transferencias, destino común) | Corden (1972), De Grauwe (1975), Kenen (1969), Oates (1972), Baldwin y Wyplosz | — |
+
+Orden de exposición: Mundell → Kenen (fiscal) → Ingram → Kenen (diversificación) → Magnifico con las instituciones laborales → McKinnon.
+
+**Ecuaciones (notación canónica):**
+$$\text{Magnifico (\texttt{eq:magnifico}):}\quad q\equiv\frac{E\,P^*}{P},\qquad \gamma_q\simeq\gamma_E+\gamma_{P^*}-\pi\;\xrightarrow{\;\gamma_E=0\;}\;\gamma_q\simeq\gamma_{P^*}-\pi$$
+con **$\gamma_{P^*}$ inflación de los socios** (no $\pi^*$, que en el mismo tema es el objetivo de Barro-Gordon; A32-08, **[decidir]**): una inflación mayor que la de los socios es una apreciación real.
+$$\text{McKinnon (\texttt{eq:mckinnon}):}\quad \Delta Y=\frac{\Delta\overline G}{1-c\,(1-t)+m},\qquad \Delta\mathrm{XN}=-m\,\Delta Y\;\Longrightarrow\;\frac{\Delta Y}{\Delta\mathrm{XN}}=-\frac{1}{m}$$
+con $\mathrm{XN}=x\,Y^*-m\,Y+\nu\,q$ (`eq:is-abierta` del 3.A.32): cada euro de mejora exterior cuesta $1/m$ de renta (nunca «ΔCC/ΔY = −mΔY», el Word antiguo).
+
+**Condiciones y línea AMO (I.3):** 3 dimensiones, **simetría, flexibilidad, integración**; la **línea AMO** en el plano simetría (vertical)-flexibilidad (horizontal), decreciente; la zona del euro **por debajo** y Estados Unidos por encima. **Valoración (I.4):** indeterminación (Tavlas); críticas de los 80 (neutralidad a largo plazo y Marshall-Lerner, Balassa-Samuelson, el tipo de cambio como fuente de perturbaciones y el sesgo inflacionista); «Mundell I» y «Mundell II» (Mundell, 1973; McKinnon, 2004).
+
+**II. Coste-beneficio (De Grauwe):** beneficios crecientes y costes decrecientes con la apertura frente a los socios; la unión compensa a partir del **umbral $T^*$** (más a la derecha con costes «keynesianos»); también frente al tamaño. **Endogeneidad**, cada una con a)-d): **Krugman (1993)**, la integración especializa y hace las perturbaciones más asimétricas (el resultado del centro-periferia, no el modelo: `\vertema{3.B.6}`; resumen del resultado, sin anexo), frente a **Frankel y Rose (1998)**, más comercio intraindustrial, ciclos más sincronizados (crítica de Lucas, `\vertema{3.A.6}`; BCE, 2018; Campos, Fidrmuc y Korhonen, 2019). En el plano **simetría-integración**, Frankel y Rose llevan a cruzar la línea AMO y Krugman puede impedirlo. **Evidencia:** Bayoumi y Eichengreen (1993), Rose (2000), Rose y Stanley (2005), Glick y Rose (2016), Polák (2019), Alesina, Ardagna y Galasso (2011); `tab:zona-euro-amo` (7 criterios, caja gris). **Otros beneficios y costes** (`tab:beneficios-costes`): eficiencia (costes de transacción «en torno al 0,4 % del PIB», Comisión, 1990), **credibilidad** (Barro-Gordon y «atarse las manos», desarrollados aquí: ficha `barro-gordon`), geopolíticos; costes: política monetaria propia, financiación monetaria, externalidades fiscales. Terceros países (Bayoumi, 1994).
+
+**III. Uniones monetarias incompletas:** **fragilidad** de De Grauwe (2011) con a)-d) (deuda en una moneda que no se emite; equilibrios múltiples, Calvo, 1988; Reino Unido frente a España; prestamista de última instancia, Draghi, 2012, OMT), con las palabras del 3.A.39; **círculo vicioso** bancos-Estado en 5 pasos y en los 2 sentidos (ficha `doom-loop`); contagio (balances, flujos y saldos TARGET, moneda común, reversibilidad); monetización (SMP, OMT, APP, PEPP, TPI; art. 123 TFUE; *Gauweiler* y *Weiss*). **Soluciones:** perfecta (unión bancaria —MUS, MUR con el FUR, EDIS sin aprobar—, Unión de Ahorros e Inversiones, unión fiscal de Kenen, NGEU, Bénassy-Quéré *et al.*, 2018) e imperfecta (Galí y Monacelli, 2008; Nakamura y Steinsson, 2014; devaluación fiscal; art. 125 TFUE; reglas de 2024 y Semestre).
+
+**Gráficos de referencia** (`oposicion/temario/fuentes/3B16/graficos/`):
+- **`mundell.tex`** (**imprescindible**): OA-DA de España y Alemania en 3 filas (a perturbación $A\to B$; b flexibilidad salarial, $C$ en $Y^n$; c movilidad, OA′ e $Y^n$ desplazadas, $C$ en $P_0$), con el estilo de `fuentes/3A32/graficos/da-oa-abierta.tex` y subíndices ES y DE en redonda.
+- **`mundell-devaluacion.tex`** (apoyo, caja gris): el ajuste con moneda propia ($E\uparrow$, $q\uparrow$).
+- **`amo-flexibilidad.tex`** (recomendable): la línea AMO en el plano simetría-flexibilidad.
+- **`costes-beneficios.tex`** (**imprescindible**): costes y beneficios frente a la apertura con el umbral $T^*$.
+- **`endogeneidad.tex`** (**imprescindible**): plano simetría-integración con la línea AMO y las 2 trayectorias (Frankel-Rose, Krugman).
+- **`logica-amo.tex`** (anexo, no se canta): el árbol de preguntas a partir de Baldwin y Wyplosz (2020, fig. 15.15).
+- Copiados sin cambios de su tema de referencia: `joroba.tex` (3.A.27) y `barro-gordon.tex` (3.A.6) (el `tomahawk.tex` del 3.B.6 ya no: resumen del resultado, sin anexo, 12/11/2026); `circulo-vicioso.tex` (propio; ficha `doom-loop`).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.16 | Integración monetaria | desarrollo | Mundell + criterios + endogeneidad frente a especialización; enlace con la NEG como argumento de especialización (resultado, no el modelo) | El modelo centro-periferia completo (remitir a 3.B.6) |
-| 3.B.40 | Política regional / cohesión UE | mención | La convergencia como condición de la UEM | Criterios |
-| 4.A.28 | Política monetaria y España | mención | «One size fits all»: asincronía de ciclos [ver tema 3.B.16] | — |
-| 4.A.30 | España en la UEM | mención | Costes de la pertenencia: shocks asimétricos | — |
+| 3.B.16 | Integración monetaria | desarrollo (hecho, 11/11/2026) | Todo lo anterior: Mundell con a)-e) y `fig:mundell`; criterios con las 3 dimensiones; `eq:magnifico`, `eq:mckinnon`; línea AMO; coste-beneficio con $T^*$; Krugman frente a Frankel y Rose en el plano simetría-integración; credibilidad; fragilidad y soluciones | El modelo centro-periferia (resumen del resultado, sin anexo, `\vertema{3.B.6}`); Barro-Gordon sin CPO ni pérdidas (`\vertema{3.A.36}`) |
+| 3.A.32 | Políticas en economía abierta | mención (hecho, 11/11/2026) | II.2-II.3: en una unión monetaria solo quedan la política fiscal nacional y la devaluación interna (Schmitt-Grohé y Uribe, 2016; Nakamura y Steinsson, 2014; Galí y Monacelli, 2008, `GaliMonacelli2008Optimal`), `\vertema{3.B.16}` | Mundell (1961), los criterios |
+| 3.B.10 | Integración económica | mención (revisado en el otro *worktree*) | La unión monetaria como peldaño de la escalera; «sus costes y beneficios se estudian con la teoría de las áreas monetarias óptimas», `\vertema{3.B.16}` | Los criterios |
+| 3.B.11 | Balanza de pagos | mención (hecho, 5/11/2026) | Devaluación interna frente a devaluación nominal; $\gamma_q\simeq\pi^*-\pi$ (allí $\pi^*$, sin choque) | El modelo |
+| 3.A.38, 3.A.40 | Política fiscal | mención (hecho, 5/11/2026) | La fiscal, único instrumento propio en la unión; el multiplicador nacional es mayor (Galí y Monacelli, 2008; Nakamura y Steinsson, 2014), `\vertema{3.B.16}` | Los criterios |
+| 3.B.15 | Regímenes cambiarios | mención (hecho, 12/11/2026) | La unión monetaria como el extremo de los anclajes duros y el FMI que clasifica a sus miembros por el régimen de la moneda común (II.1); los criterios de las AMO (tamaño y apertura, perturbaciones simétricas, otros mecanismos de ajuste, diversificación) como determinantes de la elección (I.3.1) con `Mundell1961Theory`, `McKinnon1963Optimum`, `Kenen1969Theory`; «atarse las manos» en una línea; `\vertema{3.B.16}` | Los criterios desarrollados y el gráfico de Giavazzi y Pagano |
+| 3.B.43 | Origen del euro y el BCE | mención (prevista) | La teoría como marco del SME y la UEM; criterios de convergencia nominal (ficha `criterios-convergencia-nominal`) | Los criterios |
+| 3.B.40 | Cohesión y convergencia real en la UE | mención | La convergencia real como condición de una unión que funcione; el presupuesto de la UE (≈1 % del PIB) como seguro pequeño frente a la unión fiscal de Kenen | Los criterios |
+| 4.A.28 | **Economía y política económica de España desde la constitución de la zona del euro hasta 2019; la crisis de 2008** | mención | «Una talla para todos»: tipos reales bajos con más inflación en España (1999-2008: +37 % frente a +18 % en Alemania), apreciación real y devaluación interna después (2008-2019); `\vertema{3.B.16}` | Los criterios y el modelo |
+| 4.A.30 | **Relaciones financieras de España con la UE; MFP 2021-2027; convergencia real de España con la UE** | mención (**[decidir]**) | La convergencia real como condición para que la unión funcione y el presupuesto de la UE como seguro pequeño (≈1 % del PIB frente al 23 % del federal de Estados Unidos); `\vertema{3.B.16}` solo para ampliar. *Alternativa*: quitar la fila | Los criterios y el modelo |
 
 ## Divergencias encontradas en el temario actual
-- 3.B.16 desarrolla además el modelo centro-periferia completo (ecuaciones de Dixit-Stiglitz, tomahawk) para justificar la hipótesis de especialización: basta su resultado y Krugman (1993) [ver `centro-periferia`].
-- 3.B.16 usa $\gamma$ como peso de las manufacturas, mientras en 3.B.12/3.B.14 $\gamma$ es tasa de variación: ver `_notacion/macro-abierta.md`.
-- Los ids fusionados (`amo-criterios`, `amo-mundell`, `integracion-monetaria`, `zona-monetaria-optima`) son el mismo contenido: fusión correcta.
+- **Resueltas en el 3.B.16 (11/11/2026):** el desarrollo completo del centro-periferia (ecuaciones de Dixit-Stiglitz) sale del cuerpo (D1, K24); γ ya no es el peso de las manufacturas (resumen del resultado, sin anexo; D019, D083); el tipo real $q$ y no $e$; Frankel y Rose 1998 y no 1999; Rose (2000) y no «Ross»; el federalismo fiscal de Kenen, no de Mundell; «unión incompleta» con un solo sentido.
+- **Filas del 4.º corregidas (11/11/2026):** la ficha describía el 4.A.28 como «política monetaria y España» y el 4.A.30 como «España en la UEM»; sus títulos actuales son otros (arriba). El 4.A.30 queda **[decidir]** (mención o fuera).
+- Las 3 funciones del presupuesto federal (igualadora, estabilizadora, aseguradora): sin atribuir. Pista: Eichengreen (1990, pp. 138-139) distingue redistribución y seguro (dudas 3 y 17 del 3.B.16).
 
 Autor: Víctor Gutiérrez Marcos

@@ -152,6 +152,8 @@ end
 
 -- Primera frase de un texto, como mucho unos 160 caracteres (sin cortar palabras)
 local function frase_corta(t)
+  -- Las remisiones «[ver tema …]» no van al texto alternativo (allí no hay hipervínculo)
+  t = t:gsub('%s*%[ver tema[^%]]*%]', '')
   local frase = (t:match('^(.-[%.:;])%s') or t):gsub('[:;]$', '')
   if utf8.len(frase) and utf8.len(frase) > 160 then
     local corte = utf8.offset(frase, 161)
@@ -235,6 +237,7 @@ local COLORES = {
 local ESTILO_COLOR = {
   tceemorado = 'Texto morado', tceeverde = 'Texto verde', tceeazul = 'Texto azul',
   tceenaranja = 'Texto naranja', tceerojo = 'Texto rojo', tceedorado = 'Texto dorado',
+  tceegris = 'Texto gris',
 }
 
 -- Fórmulas sencillas ($<0$, $\leq 0$, $i$, $\checkmark$, $\times$) como texto, para que en Word tomen
@@ -281,7 +284,9 @@ local function Span(s)
     s.attributes['style'] = nil
     s.classes:insert('nota-tabla')
     return s
-  elseif color == 'tceegris' then
+  elseif color == 'tceevertema' then
+    -- Remisión a otro tema (\vertema de pandoc-macros.tex); el gris normal
+    -- (\textcolor{tceegris}) sigue abajo como un color más
     s.attributes['style'] = nil
     s.classes:insert('vertema')
     if es_docx then s.attributes['custom-style'] = 'Referencia a tema' end

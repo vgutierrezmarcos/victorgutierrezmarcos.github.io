@@ -723,6 +723,43 @@ comprobación allí.
   el Word del 3.A.42 («más volátil»): contradicción anotada para cuando se revise ese tema.
 - Anexo de España remite a \vertema{4.A.29} y no repite su contenido.
 
+### Arreglos de coherencia con los temas revisados después (11/11/2026, pedido por Víctor)
+
+Son las entradas de `canon/pendientes-coherencia.md` que tocaban a la guía (aprobada). Se han aplicado con la
+opción que recomienda cada una y se han marcado «[hecho: 2026-11-11]». No se ha construido nada, porque se
+reconstruye todo de una vez; sí se ha comprobado que compila en una copia (pdflatex + biber, sin errores ni
+citas sin definir).
+
+| Dónde | Qué se ha cambiado | A raíz de |
+|---|---|---|
+| `sec:pib`, PIB por la renta | $W\to\mathrm{RA}$ y $(T-Sub)\to(\text{impuestos}-\text{subvenciones})_{\text{prod. e import.}}$, como `eq:pib-tres-vias` del 3.A.30 ($W$ es la remuneración por asalariado y $T$, los ingresos públicos) | 3.A.30, C2 |
+| PIB frente a RNB, «Cómo se lee» | Tras «típico de un deudor neto…»: «No es automático: en 2025 España, deudora neta, tuvo una RNB algo mayor que el PIB (un 0,2 %)», con `INE2026CNA2025` (nueva en el `.bib`, la del 3.A.30) y `Eurostat2026nasa10nftr`. En la tabla de indicadores del anexo: «a menudo, deudor neto o mucha IED» | 3.A.30, E2 |
+| Contribuciones (II.3 y anexo de cálculos) | «La suma no es exacta» → los componentes encadenados no suman el PIB en volumen (no aditividad); con los pesos nominales del año anterior la suma es exacta, o se usan las contribuciones del INE | 3.A.30, CC3 |
+| Determinantes del consumo | «por la aversión al riesgo» → «por prudencia ($u'''>0$; no basta la aversión al riesgo)», con \vertema{3.A.10} \vertema{3.A.33} | 3.A.33, K16 |
+| Deflactor, «Sesgo» | Infravalora la inflación «porque es un índice de Paasche (usa la cesta final, en la que pesan menos los bienes que más se encarecen)»; lo de las importaciones va detrás, introducido con «Además» | 3.A.30, C3 |
+| Tabla de medidores, «IPC frente a deflactor» | Remisión \vertema{3.A.30} → \vertema{3.A.9} \vertema{4.A.1} (el 3.A.30 no compara los 2 índices) | 3.A.30 |
+| Ley de Okun | El «medio punto» se cita con `Ball2017Okun`; se añade «Okun (1962) la daba al revés: unos 3 puntos de PIB por cada punto de paro» | 3.A.28, V9 |
+| Inflación de costes | «(inflación incorporada, *built-in*)» pasa de la viñeta de costes a la de la inercia, como en el triángulo de Gordon y en el gráfico `esquema-origen-inflacion` | 3.A.41 |
+| Política monetaria y fiscal (5 sitios) | «dominancia fiscal» → «dominación fiscal», con «(o dominancia)» una sola vez, en la definición | 3.A.39, 3.A.40 |
+| Efectos no keynesianos | \vertema{3.A.38} → \vertema{3.A.39} (el tema de referencia) | 3.A.38 |
+| Deuda pública, más impuestos | «impuestos menos distorsionadores» → «distorsionantes», la forma de 11 temas | 3.A.38 |
+| `fig:policy-mix` | Ahora es la versión del 3.A.40: 2009 y 2020 en las 2 expansivas; 2022-2023 en las 2 contractivas, como dice el texto con el FMI; EE. UU. en los 80 y R. U. en 2022 en la tensión; zona del euro desde 2012. Va a `0.6\textwidth` porque los rótulos son más largos. El gráfico anterior ponía 2022-2023 en la tensión, al revés que el texto | 3.A.40 |
+| `fig:brent` | `datos/brent.csv` ampliado a octubre de 2026 (123,93 dólares; 110,64 euros), con la misma fuente (EIA y BCE) y las mismas cifras que el 3.A.32. El rótulo pasa a «oct. 2026, 124 $» en lugar del de abril y septiembre. Pie: «117 dólares en abril y 124 en octubre, […] más que en 2022 en dólares, pero no en euros, 111, porque el euro está más fuerte». `datos-actualizables.yaml` y `EIA2026Brent` (publicación del 4/11/2026), al día | 3.A.32, V10 |
+| Bibliografía | `SargentWallace1981` → `SargentWallace1981Some` y `BlanchardLeigh2013` → `BlanchardLeigh2013Growth` (con DOI). `RegUE2024Preventivo` y `RegUE2024Correctivo` se borran y se citan como `UE2024Reglamento1263` y `UE2024Reglamento1264`, también en `examen-espana/solucion/secciones/p06.tex`, que usa este `.bib` (el PDF no cambia). Las 5 `@legislation` (`SEC2010`, `CRR3`, `BCE2020Dividendos` y los 2 reglamentos) pasan a `@online` con el Diario Oficial en `note`, como en el 3.A.30 y el 3.A.39. `BCE2021Estrategia` (no se cita; daba 404) lleva ahora la URL que funciona de la declaración de 2021 y una nota de que la sustituyó la de 2025; la que cita la guía es `BCE2025Estrategia`, que ya tenía la URL de 2025 | 3.A.39, 3.A.30, 3.A.6 |
+| Brecha crédito-PIB | Ya llevaba \vertema{3.B.27} en el texto y en la tabla: solo se marca como hecha | ficha `brecha-credito-pib` |
+
+**No aplicadas**, porque la entrada recomienda dejar la guía como está o porque dependen de una decisión que
+no se ha tomado:
+- «cota cero»: se recomienda dejarla en la guía;
+- «choques de oferta»: lo mismo;
+- la «norma salarial» de Watt: depende de una **[decidir]** del canon que sigue abierta, y la nota mantiene «la
+  "regla de oro" salarial de Watt», entre comillas, que el canon admite;
+- el coeficiente de Okun con ϑ: la guía lo cuenta con el número.
+
+**Sin tocar, para que lo mires**: la ficha de repaso (`repaso/1D01-repaso.tex`, l. 386 y 439) y el guion
+(`guion-cante.md`, l. 818-826) siguen diciendo «dominancia fiscal». Cambiarlo es sustituir una palabra. En
+cuanto a Okun, el repaso y el guion no citan la fuente: no hace falta cambiarlos.
+
 ## 7. Dudas abiertas
 
 1. **Frase cortada de Claves** («en estas estructuras, debe predominar la…», P127): no se ha usado. ¿Qué decía?

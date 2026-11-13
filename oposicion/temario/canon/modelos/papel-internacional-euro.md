@@ -1,7 +1,7 @@
 # Papel internacional del euro
 
 - **Área:** union-europea · **Tema de referencia:** **3.B.43** (origen y funcionamiento del euro; sin fuente), en desarrollo, como una dimensión de la moneda; 3.B.42 (relaciones económicas exteriores, que hoy lo desarrolla en extenso) en resumen, como instrumento de la acción exterior.
-- **Temas que lo usan:** 3.B.42 (desarrollo, fuera de sitio), 3.B.43 (desarrollo previsto), 3.B.39 (mención: UMC refuerza el euro), 3.B.21 (mención: sistema monetario internacional), 3.B.14 (mención: el euro como ancla)
+- **Temas que lo usan:** 3.B.42 (desarrollo, fuera de sitio), 3.B.43 (desarrollo previsto), 3.B.39 (mención: UMC refuerza el euro), 3.B.21 (mención: sistema monetario internacional), 3.B.14 (mención: el euro como ancla), 3.B.16 (mención; hecho, 11/11/2026: II.4.3 `sec:beneficios-geo`, beneficios geopolíticos de una moneda de uso internacional, `\vertema{3.B.43}`)
 - **Manuales de referencia:** BCE, *The international role of the euro* (informe anual, junio); FMI, COFER; Eichengreen, *Exorbitant Privilege*; Gopinath (2015), *dominant currency paradigm*
 - **Decisión D117 (13/10/2026):** ¿Cuál es el tema de referencia del papel internacional del euro? 3.B.43 (euro) en desarrollo y 3.B.42 en resumen
 
@@ -15,6 +15,7 @@ Gráfico de referencia: índice compuesto del BCE del papel internacional del eu
 | 3.B.43 | El euro y el SEBC | Desarrollo | Funciones, indicadores, determinantes, política de la UE | — |
 | 3.B.42 | Relaciones exteriores | Resumen | El euro como instrumento geoeconómico | Indicadores detallados |
 | 3.B.39 | Mercado único | Mención | — | — |
+| 3.B.16 | Beneficios de una unión monetaria | mención (hecho, 11/11/2026) | Beneficio geopolítico: más peso en las negociaciones, señoreaje frente al resto del mundo y deuda en la propia moneda; `\vertema{3.B.43}` | Indicadores |
 
 ## Divergencias encontradas en el temario actual
 - **Desplazado a 3.B.42**, que lo desarrolla en extenso («segunda divisa mundial», datos de reservas y pagos). Reparto: el de arriba.

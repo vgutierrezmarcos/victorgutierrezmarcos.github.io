@@ -1,0 +1,337 @@
+tema: 3B18
+fecha_inventario: 2026-11-12
+# Fase 3, parte 1 (12/11/2026): los «texto» de la introducción y el apartado I son ya literales del 3B18.tex.
+# Parte 2 (12/11/2026): los del II y el III, también literales del 3B18.tex.
+# Las cifras históricas cerradas (Lakner y Milanović 1988-2008, Card 1990, fechas de la guerra comercial)
+# no están: no caducan. Sí la actualización de Milanović (2024), por si sale otra.
+datos:
+  - id: comercio-pib-mundial
+    texto: "la suma de exportaciones e importaciones de bienes y servicios pasó del 26~\\% del PIB mundial en 1970 al 57~\\% en 2024, con un máximo del 62~\\% en 2022"
+    donde: [3B18.tex]
+    valor: 57
+    unidad: "% del PIB mundial"
+    periodo: 1970-2024
+    fuente: BancoMundial2026Apertura
+    organismo: Banco Mundial
+    serie: "WDI NE.TRD.GNFS.ZS (WLD); la misma que 3B09 (id comercio-pib-mundial)"
+    url: https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi-comercio
+    depende: [datos/indicadores-globalizacion.csv]
+    frase: "Mismo dato que el 3.B.9: cambiar los dos a la vez. El agregado de 2025 (68,5 %) está incompleto: no usarlo"
+
+  - id: exportaciones-mercancias-pib
+    texto: "Solo las exportaciones de mercancías equivalen a algo más de la quinta parte del PIB mundial"
+    donde: [3B18.tex]
+    valor: 22
+    unidad: "% del PIB mundial"
+    periodo: 2025
+    fuente: [OMC2026GTOS, BM2026WDIMercancias]
+    organismo: OMC y Banco Mundial
+    serie: "Exportaciones mundiales de mercancías (OMC, 26,26 billones de USD) / PIB mundial (NY.GDP.MKTP.CD); TG.VAL.TOTL.GD.ZS = 43,9 % (X+M)"
+    url: https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf
+    periodicidad: anual
+    proxima: 2027-04
+    familia: omc-gtos
+
+  - id: flujos-brutos-capital
+    texto: "Llegaron al 22~\\% del PIB mundial en 2007, se hundieron con la crisis financiera y desde entonces se mueven entre el 3 y el 9~\\%: el 6~\\% en 2024"
+    donde: [3B18.tex]
+    valor: [21.6, 6.1]
+    unidad: "% del PIB mundial"
+    periodo: 2007 y 2024
+    fuente: [FMI2026BOP, FMI2024ESR]
+    organismo: FMI (cálculo propio)
+    serie: "Suma de pasivos netos contraídos (L_NIL_T) D_F+P_F+O_F de todas las economías del dataset BOP / PIB mundial del Banco Mundial; guion /tmp/claude-1000/scripts/bop.py (rehacerlo si se actualiza)"
+    url: https://api.imf.org/external/sdmx/2.1/data/IMF.STA,BOP/.L_NIL_T.D_F+P_F+O_F.USD.A
+    periodicidad: "anual (el último año llega incompleto: esperar a que haya 185 economías o más)"
+    proxima: 2027-06
+    familia: fmi-bop
+    depende: [datos/flujos-capital-brutos.csv, datos/indicadores-globalizacion.csv]
+
+  - id: ied-pib-mundial
+    texto: "la inversión directa mundial llegó al 5~\\% del PIB en 2007 y ronda hoy el 1~\\%"
+    donde: [3B18.tex]
+    valor: [5.27, 1.21]
+    unidad: "% del PIB mundial"
+    periodo: 2007 y 2024 (2025 = 1,42)
+    fuente: BM2026WDIIED
+    organismo: Banco Mundial
+    serie: "WDI BX.KLT.DINV.WD.GD.ZS (WLD)"
+    url: https://data.worldbank.org/indicator/BX.KLT.DINV.WD.GD.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi-ied
+    depende: [datos/indicadores-globalizacion.csv]
+
+  - id: ied-mundial-unctad
+    texto: "la inversión directa mundial fue de 1,6 billones de dólares en 2025"
+    donde: [3B18.tex]
+    valor: [1.6, 6, 80]
+    unidad: "billones de USD; %; %"
+    periodo: 2025
+    fuente: UNCTAD2026WIR
+    organismo: UNCTAD
+    serie: "World Investment Report 2026, cap. I"
+    url: https://unctad.org/system/files/official-document/wir2026_ch01_en.pdf
+    periodicidad: "anual (WIR, junio-julio; avance en enero en el Global Investment Trends Monitor)"
+    proxima: 2027-01
+    familia: unctad-wir
+
+  - id: migrantes-mundo
+    texto: "en 2024 vivían fuera de su país de nacimiento 304 millones de personas, el doble que en 1990; pero son solo el 3,7~\\% de la población mundial, frente al 2,9~\\% de entonces"
+    donde: [3B18.tex]
+    valor: [304, 3.7, 154, 2.9]
+    unidad: "millones; % de la población mundial"
+    periodo: 1990 y 2024
+    fuente: [ONU2025MigrantStock, OIM2026WMR]
+    organismo: ONU DESA y OIM
+    serie: "International Migrant Stock (revisión cada 4-5 años; la siguiente, previsiblemente con datos de 2029)"
+    url: https://www.un.org/development/desa/pd/content/international-migrant-stock
+    periodicidad: quinquenal
+    proxima: 2029
+    familia: onu-migrantes
+    depende: [datos/indicadores-globalizacion.csv]
+
+  - id: migrantes-destinos
+    texto: "Estados Unidos es el primer destino, con 52 millones de inmigrantes, seguido de Alemania y Arabia Saudí"
+    donde: [3B18.tex]
+    valor: [52.4, 16.8, 13.7]
+    unidad: millones
+    periodo: 2024
+    fuente: ONU2025MigrantStock
+    organismo: ONU DESA
+    serie: "International Migrant Stock 2024, por destino"
+    url: https://www.un.org/development/desa/pd/content/international-migrant-stock
+    periodicidad: quinquenal
+    proxima: 2029
+    familia: onu-migrantes
+
+  - id: nacidos-extranjero-espana
+    texto: "En España, a mediados de 2026, uno de cada cinco residentes había nacido en el extranjero: 10,3 millones de 49,8"
+    donde: [3B18.tex]
+    valor: [10.29, 49.80]
+    unidad: millones de personas
+    periodo: 1 de julio de 2026 (provisional)
+    fuente: INE2026ECP2T
+    organismo: INE
+    serie: "Estadística Continua de Población, trimestral"
+    url: https://www.ine.es/dyngs/Prensa/ECP2T26.htm
+    periodicidad: trimestral
+    proxima: "2026-11 (1 de octubre de 2026)"
+    familia: ine-ecp
+
+  - id: remesas-pib-paises
+    texto: "En algunos países pequeños las remesas superan la quinta parte del PIB, y en Tayikistán casi la mitad"
+    donde: [3B18.tex]
+    valor: 47.2
+    unidad: "% del PIB"
+    periodo: 2024
+    fuente: BM2026WDIRemesas
+    organismo: Banco Mundial
+    serie: "WDI BX.TRF.PWKR.DT.GD.ZS"
+    url: https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi-remesas
+    depende: [datos/remesas-pib-paises.csv]
+
+  - id: remesas-lmy
+    texto: "los emigrantes enviaron a los países de renta baja y media unos 700.000 millones de dólares, más que la inversión directa que esos países reciben"
+    donde: [3B18.tex]
+    valor: [703.6, 728.6, 494.3]
+    unidad: miles de millones de USD
+    periodo: 2025
+    fuente: [BM2026WDIRemesas, FIDA2026Remesas]
+    organismo: Banco Mundial y FIDA
+    serie: "WDI BX.TRF.PWKR.CD.DT y BX.KLT.DINV.CD.WD (LMY); FIDA, Sending Money Home"
+    url: https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi-remesas
+    depende: [datos/remesas-ied-aod.csv]
+
+  - id: elefante-actualizacion
+    texto: "Entre 2008 y 2018, según \\textcite{Milanovic2024ThreeEras}, crecieron más las rentas cuanto más pobres eran, y el 1~\\% más rico perdió la trompa; la desigualdad mundial ha bajado de unos 70 a unos 60 puntos de Gini"
+    donde: [3B18.tex]
+    valor: [70, 60]
+    unidad: puntos de Gini
+    periodo: 2008-2018
+    fuente: Milanovic2024ThreeEras
+    organismo: (académico)
+    serie: "Curva de incidencia del crecimiento mundial; vigilar una nueva estimación con datos de 2023 (Stone Center)"
+    url: https://doi.org/10.1016/j.worlddev.2023.106516
+    periodicidad: irregular
+    proxima: sin fecha
+    familia: academico-desigualdad
+    depende: [datos/curva-elefante.csv]
+    frase: "El CSV es de 1988-2008 (cerrado); si sale una curva nueva, añadir columna"
+
+  - id: contenido-extranjero-exportaciones
+    texto: "En torno a una cuarta parte de lo que vale lo que España vende fuera es valor añadido de otros países: el 26,6~\\% en 2022, frente al 23,5~\\% de 2010"
+    donde: [3B18.tex]
+    valor: [26.6, 23.5, 30.4]
+    unidad: "% de las exportaciones brutas"
+    periodo: 2010 y 2022
+    fuente: OCDE2025TiVA
+    organismo: OCDE
+    serie: "TiVA EXGR_FVA (_T, W); ocde_media = media simple de 38 miembros (cálculo propio)"
+    url: https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINSH@DF_MAINSH,1.1/EXGR_FVA.._T.W..A
+    periodicidad: bienal (ediciones de TiVA)
+    proxima: 2027-11
+    familia: ocde-tiva
+    depende: [datos/contenido-extranjero-exportaciones.csv]
+    frase: "Mismas cifras que el 3.A.31 (A31-08, id equivalente allí): cambiar a la vez; FIGARO (Eurostat2026FIGAROcgv) e INE (INE2026TiVA2024) llegan a 2024"
+
+  - id: dhl-connectedness
+    texto: "El de conectividad de DHL, que combina comercio, capital, información y personas, estaba en 2025 en su máximo, el mismo de 2022, pese a los aranceles"
+    donde: [3B18.tex]
+    valor: 25
+    unidad: "% (escala 0-100 del índice DHL)"
+    periodo: 2025
+    fuente: DHL2026GCR
+    organismo: DHL y NYU Stern
+    serie: "DHL Global Connectedness Report"
+    url: https://www.stern.nyu.edu/experience-stern/faculty-research/research-highlights/globalization-holds-firm-record-level-while-us-and-china-continue-decouple-dhl-global-connectedness
+    periodicidad: anual
+    proxima: 2027-03
+    familia: dhl-gcr
+
+  - id: arancel-efectivo-eeuu
+    texto: "su arancel efectivo pasó del 2,4~\\% en 2024 al 7,6~\\% en 2025, y en agosto de 2026 era del 6,9~\\%"
+    donde: [3B18.tex]
+    valor: [2.4, 7.6, 6.9]
+    unidad: "% (derechos recaudados / importaciones)"
+    periodo: 2024, 2025 y agosto de 2026
+    fuente: USAFacts2026Arancel
+    organismo: USAFacts (Oficina del Censo)
+    serie: "La misma que el 3.B.7 (fig:arancel-efectivo-eeuu)"
+    url: https://usafacts.org/answers/what-is-the-average-us-tariff-rate-overall/country/united-states/
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: eeuu-aranceles
+    frase: "Cambiar a la vez que el 3.B.7"
+
+  - id: cgv-hacia-delante-espana
+    texto: "Y casi una quinta parte del valor que España exporta viaja dentro de las exportaciones de otros países"
+    donde: [3B18.tex]
+    valor: 19.9
+    unidad: "% de las exportaciones brutas"
+    periodo: 2024
+    fuente: Eurostat2026FIGAROcgv
+    organismo: Eurostat
+    serie: "FIGARO, naio_10_fggvcm (participación hacia delante); la misma cifra que el 3.A.31 (A31-08)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/naio_10_fggvcm/default/table
+    periodicidad: anual
+    proxima: 2027-07
+    familia: eurostat-figaro
+    frase: "Cambiar a la vez que el 3.A.31"
+
+  - id: ied-mundial-unctad-concentracion
+    texto: "La inversión directa mundial creció un 6~\\% en 2025, hasta 1,6 billones de dólares, tras dos años de caída, pero muy concentrada: los 20 primeros receptores se llevaron más del 80~\\% y Estados Unidos siguió siendo el primero"
+    donde: [3B18.tex]
+    valor: [1.6, 6, 80]
+    unidad: "billones de USD; %; %"
+    periodo: 2025
+    fuente: UNCTAD2026WIR
+    organismo: UNCTAD
+    serie: "World Investment Report 2026, cap. I"
+    url: https://unctad.org/system/files/official-document/wir2026_ch01_en.pdf
+    periodicidad: anual
+    proxima: 2027-01
+    familia: unctad-wir
+    frase: "Misma cifra que ied-mundial-unctad (introducción): cambiar las dos a la vez"
+
+  - id: ied-sectores-estrategicos
+    texto: "Los sectores estratégicos (centros de datos, semiconductores, minerales críticos, energías limpias) fueron el 44~\\% del valor de los proyectos nuevos, frente al 16~\\% de 2020"
+    donde: [3B18.tex]
+    valor: [44, 16]
+    unidad: "% del valor de los proyectos greenfield anunciados"
+    periodo: 2025 y 2020
+    fuente: UNCTAD2026WIR
+    organismo: UNCTAD
+    serie: "World Investment Report 2026, cap. I"
+    url: https://unctad.org/system/files/official-document/wir2026_ch01_en.pdf
+    periodicidad: anual
+    proxima: 2027-07
+    familia: unctad-wir
+
+  - id: ied-sin-flujos-de-paso
+    texto: "por eso la UNCTAD da también la cifra sin esos flujos de paso, que en 2025 creció un 4~\\%"
+    donde: [3B18.tex]
+    valor: 4
+    unidad: "% de variación anual"
+    periodo: 2025
+    fuente: UNCTAD2026WIR
+    organismo: UNCTAD
+    serie: "World Investment Report 2026, cap. I (IED sin flujos de tránsito por centros financieros)"
+    url: https://unctad.org/system/files/official-document/wir2026_ch01_en.pdf
+    periodicidad: anual
+    proxima: 2027-07
+    familia: unctad-wir
+
+  - id: remesas-lmy-ii
+    texto: "unos 700.000 millones de dólares en 2025, más que la inversión directa que reciben (desde 2022) y mucho más que la ayuda oficial al desarrollo"
+    donde: [3B18.tex]
+    valor: [703.6, 494.3, 251.9]
+    unidad: miles de millones de USD
+    periodo: "2025 (AOD, 2023); remesas > IED desde 2022 (591,4 frente a 588,0)"
+    fuente: [BM2026WDIRemesas, FIDA2026Remesas]
+    organismo: Banco Mundial y FIDA
+    serie: "WDI BX.TRF.PWKR.CD.DT, BX.KLT.DINV.CD.WD y DT.ODA.ODAT.CD (LMY)"
+    url: https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi-remesas
+    depende: [datos/remesas-ied-aod.csv]
+    frase: "Misma cifra que remesas-lmy (introducción) y que el 3.B.29"
+
+  - id: remesas-pib-cabeza
+    texto: "En 2024 lo hacían en 10 países, con Tayikistán (47~\\%), Tonga (39~\\%) y Nicaragua (27~\\%) a la cabeza"
+    donde: [3B18.tex]
+    valor: [47.2, 39.4, 26.6]
+    unidad: "% del PIB"
+    periodo: 2024
+    fuente: BM2026WDIRemesas
+    organismo: Banco Mundial
+    serie: "WDI BX.TRF.PWKR.DT.GD.ZS"
+    url: https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi-remesas
+    depende: [datos/remesas-pib-paises.csv]
+    frase: "Tonga: 39,4 en el CSV; el 39,2 de otra consulta queda sin confirmar"
+
+  - id: contenido-extranjero-exportaciones-iii
+    texto: "el 26,6~\\% en 2022 frente al 23,5~\\% de 2010, menos que la media de la OCDE (30,4~\\%) y mucho más que Estados Unidos (8,3~\\%) o China (17,0~\\%)"
+    donde: [3B18.tex]
+    valor: [26.6, 23.5, 30.4, 8.3, 17.0]
+    unidad: "% de las exportaciones brutas"
+    periodo: 2010 y 2022
+    fuente: OCDE2025TiVA
+    organismo: OCDE
+    serie: "TiVA EXGR_FVA (_T, W)"
+    url: https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINSH@DF_MAINSH,1.1/EXGR_FVA.._T.W..A
+    periodicidad: bienal (ediciones de TiVA)
+    proxima: 2027-11
+    familia: ocde-tiva
+    depende: [datos/contenido-extranjero-exportaciones.csv]
+    frase: "Misma cifra que contenido-extranjero-exportaciones (introducción) y el 3.A.31"
+
+  - id: cgv-figaro-espana
+    texto: "El 25,7~\\% del valor de sus exportaciones de 2024 era valor añadido extranjero, menos que la media simple de la Unión (38,4~\\%), y otro 19,9~\\% era valor añadido español que viaja en las exportaciones de otros países"
+    donde: [3B18.tex]
+    valor: [25.7, 38.4, 19.9]
+    unidad: "% de las exportaciones brutas"
+    periodo: 2024
+    fuente: Eurostat2026FIGAROcgv
+    organismo: Eurostat
+    serie: "FIGARO, naio_10_fggvcm; INE (INE2026TiVA2024) 27,7 % en la nota"
+    url: https://ec.europa.eu/eurostat/databrowser/view/naio_10_fggvcm/default/table
+    periodicidad: anual
+    proxima: 2027-07
+    familia: eurostat-figaro
+    depende: [datos/cgv-figaro-ue-2024.csv]
+    frase: "Mismas cifras, gráfico y CSV que el 3.A.31 (A31-08): cambiar a la vez"
+

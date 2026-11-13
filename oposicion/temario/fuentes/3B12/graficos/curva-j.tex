@@ -1,0 +1,32 @@
+% La curva J (Magee, 1973): saldo comercial frente al tiempo tras una
+% depreciación real en t_0. Gráfico de referencia de la ficha marshall-lerner.
+%   Nivel inicial XN_0 = 2,5; depreciación en t_0 = 1,6; mínimo hacia t = 2,8;
+%   vuelve al nivel inicial hacia t = 4,3 y sigue mejorando.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.95]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-0.8) rectangle (9.6,5.6);
+  % 1: ejes (tiempo, saldo comercial)
+  \capa{1}{\ejes{tiempo}{saldo comercial, $\mathrm{XN}$}{8.6}{5.2}}
+  % 2: el saldo de partida
+  \capa{2}{\draw[guia] (0,2.5) node[left,text=black] {$\mathrm{XN}_0$} -- (8.2,2.5);}
+  \capa{2}{\draw[curva1] (0.2,2.5) -- (1.6,2.5);}
+  % 3: la depreciación en t_0
+  \capa{3}{\draw[guia] (1.6,0) node[below,text=black] {$t_0$} -- (1.6,4.6)
+      node[etiqueta,above,text=tceerojo,align=center] {depreciación\\real ($q\uparrow$)};}
+  % 4: el saldo empeora y después mejora: la J
+  \capa{4}{\draw[curva1] plot[smooth,tension=0.6] coordinates
+      {(1.6,2.5) (2.05,1.55) (2.8,1.05) (3.5,1.5) (4.3,2.5) (5.6,3.55) (7.6,4.25)}
+      node[etiqueta,right,text=tceemorado] {$\mathrm{XN}$};}
+  \capa{4}{\node[punto] at (2.8,1.05) {};}
+  % 5: tramo en que domina el efecto valor
+  \capa{5}{\node[etiqueta,anchor=north,align=center,font=\footnotesize,text=tceerojo] at (2.75,0.85)
+      {domina el\\efecto valor ($-$)};}
+  % 6: tramo en que domina el efecto volumen
+  \capa{6}{\node[etiqueta,anchor=south west,align=left,font=\footnotesize,text=tceeverde] at (5.8,2.6)
+      {domina el\\efecto volumen ($+$)};}
+\end{tikzpicture}
+\end{document}

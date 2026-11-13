@@ -1,0 +1,30 @@
+% Pregunta 386 (2011-octubre-OEP2011, n.º 6): en X la RMS (2) es menor que p_A/p_B (4); moviéndose por la recta de balance hacia menos A y más B el consumidor sube a curvas de indiferencia más altas hasta la tangencia E. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.25cm]
+  \ejes{$A$}{$B$}{6.6}{22}
+  % Recta de balance: 4A + B = 20 (pendiente -p_A/p_B = -4)
+  \draw[curva1] (0,20) -- (5,0);
+  \node[etiqueta,tceemorado,anchor=north east] at (0.6,16.6) {$RB$};
+  \node[left] at (0,20) {$\frac{m}{p_B}$};
+  \node[below] at (5,0) {$\frac{m}{p_A}$};
+  % Curvas de indiferencia U = (sqrt A + sqrt B / 2)^2: B = 4 (sqrt U - sqrt A)^2
+  % U0 = 9 pasa por X = (4,4) con RMS = 2; U1 = 10 es tangente en E = (2.5,10) con RMS = 4
+  \draw[curva2,domain=0.72:5.6,samples=80] plot (\x,{4*(3-sqrt(\x))^2});
+  \node[etiqueta,tceeazul,anchor=west] at (5.6,{4*(3-sqrt(5.6))^2}) {$U_0$};
+  \draw[curvanueva,domain=1.0:6.1,samples=80] plot (\x,{4*(sqrt(10)-sqrt(\x))^2});
+  \node[etiqueta,tceerojo,anchor=west] at (6.1,{4*(sqrt(10)-sqrt(6.1))^2}) {$U_1$};
+  % Movimientos por la recta desde X
+  \draw[flecha,line width=1.2pt] (4.55,6.6) to[bend right=35] (2.9,11.6);
+  \node[etiqueta,tceerojo,align=left,anchor=west] at (4.2,10.2) {(b): más $B$,\\menos $A$};
+  \draw[->,thick,tceegris] (4.3,2.6) to[bend right=35] (4.75,0.5);
+  \node[etiqueta,tceegris,anchor=east] at (4.25,1.0) {(a)};
+  % Puntos
+  \node[punto,label={[etiqueta]below left:$X$}] at (4,4) {};
+  \node[punto,label={[etiqueta]above right:$E$}] at (2.5,10) {};
+  % Rótulo de la comparación
+  \node[etiqueta,align=left,anchor=north west,draw=tceegris,fill=white,rounded corners=2pt] at (2.7,21.5)
+    {En $X$: $RMS=2<\dfrac{p_A}{p_B}=4$\\[2pt]En $E$: $RMS=4=\dfrac{p_A}{p_B}$};
+\end{tikzpicture}
+\end{document}

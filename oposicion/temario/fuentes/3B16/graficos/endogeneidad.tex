@@ -1,0 +1,36 @@
+% La endogeneidad de los criterios en el plano integración-simetría
+% (De Grauwe, 2022): desde P_0, por debajo de la línea AMO, la integración
+% lleva al país hacia la derecha; con Frankel y Rose (1998), también hacia
+% arriba (ciclos más sincronizados) y cruza la línea; con Krugman (1993),
+% hacia abajo (más especialización) y no la cruza.
+%   Línea AMO: de (0,8; 7,6) a (9,2; 2,2), S = 7,6 - 0,643 (I - 0,8)
+%   P_0 = (1,8; 3) (la línea pasa por S = 6,96); Frankel y Rose acaba en
+%   (8; 6) (línea: 2,97); Krugman acaba en (8,4; 1,8) (línea: 2,71)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.7cm,y=0.7cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.4,-1.0) rectangle (12.6,9.6);
+  % 1: ejes «integración» y «simetría»
+  \capa{1}{\draw[eje] (0,0) -- (10.5,0) node[below left=2pt and 0pt] {integración (comercio con los socios)};}
+  \capa{1}{\draw[eje] (0,0) -- (0,8.8) node[above] {simetría};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: la línea AMO y, por encima, la unión compensa
+  \capa{2}{\draw[curva1] (0.8,7.6) -- (9.2,2.2) node[etiqueta, right, text=tceemorado] {AMO};}
+  \capa{2}{\node[etiqueta, font=\footnotesize, text=tceegris] at (3.4,7.9) {la unión compensa};}
+  % 3: punto de partida, por debajo de la línea
+  \capa{3}{\node[punto] (p0) at (1.8,3) {};}
+  \capa{3}{\node[etiqueta, left=2pt] at (p0) {$P_0$};}
+  % 4: Frankel y Rose: más comercio, ciclos más sincronizados; cruza la línea
+  \capa{4}{\draw[curva3, ->] (p0) .. controls (4.5,3.6) and (6.6,4.6) .. (8,6);}
+  \capa{4}{\node[etiqueta, anchor=south, align=center, font=\footnotesize, text=tceeverde] at (8,6.1)
+      {\autor{Jeffrey Frankel} y \autor{Andrew Rose}:\\más comercio, ciclos\\más sincronizados};}
+  % 5: Krugman: más especialización, perturbaciones más asimétricas; no la cruza
+  \capa{5}{\draw[curva2, ->] (p0) .. controls (4.5,2.8) and (6.6,2.2) .. (8.4,1.8);}
+  \capa{5}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize, text=tceeazul] at (2.0,1.75)
+      {\autor{Paul Krugman}: más especialización,\\perturbaciones más asimétricas};}
+\end{tikzpicture}
+\end{document}

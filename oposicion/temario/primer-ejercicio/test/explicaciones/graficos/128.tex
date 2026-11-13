@@ -1,0 +1,25 @@
+% Pregunta 128 (2023-junio-A, n.º 31): la curva J. Tras una depreciación real en t0 el saldo por cuenta corriente empeora primero (efecto valoración de las importaciones ya contratadas) y solo después mejora por encima del inicial, cuando reaccionan las cantidades (Marshall-Lerner). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$t$}{$\mathit{CC}$}{6.4}{5.2}
+  % Saldo inicial
+  \draw[guia] (0,3.0) node[left] {$\mathit{CC}_0$} -- (6.2,3.0);
+  % Depreciación real en t0
+  \draw[guia] (1.0,0) node[below] {$t_0$} -- (1.0,5.0);
+  \node[etiqueta,font=\small,align=left,right] at (1.05,4.75) {depreciación\\real};
+  % Trayectoria del saldo: la J
+  \draw[curva1] (0.2,3.0) -- (1.0,3.0)
+    .. controls (1.4,3.0) and (1.7,1.9) .. (2.3,1.9)
+    .. controls (2.9,1.9) and (3.3,3.0) .. (3.9,3.8)
+    .. controls (4.5,4.6) and (5.2,4.8) .. (5.9,4.8)
+    node[etiqueta,right] {$\mathit{CC}$};
+  \node[punto] at (1.0,3.0) {};
+  % Rótulos de los dos tramos
+  \node[etiqueta,font=\small,align=center,below] at (2.75,1.75) {efecto valoración:\\importaciones ya\\contratadas más caras};
+  \draw[flecha] (1.5,2.9) -- (1.75,2.35);
+  \node[etiqueta,font=\small,align=center] at (5.05,2.2) {reaccionan las\\cantidades\\(Marshall-Lerner)};
+  \draw[flecha] (4.6,2.95) .. controls (4.5,3.4) .. (4.25,3.95);
+\end{tikzpicture}
+\end{document}

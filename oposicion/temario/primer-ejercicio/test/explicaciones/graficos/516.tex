@@ -1,0 +1,38 @@
+% Pregunta 516 (2016-enero-OEP2015, n.º 3): sustituir un impuesto proporcional sobre la renta por uno de cuantía fija con la misma recaudación; la nueva recta pasa por A con la pendiente del salario bruto y el consumidor trabaja más y está mejor. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Ejemplo a escala: T = 6, w = 1, t = 1/2, u = l c  ->  A = (3; 1,5), R = 1,5, B = (2,25; 2,25)
+  \ejes{$l$}{$c$}{7}{5.2}
+  % Recta con el impuesto proporcional: c = (1-t)w(T-l)
+  \draw[curva1] (0,3) -- (6,0);
+  \node[left] at (0,3) {$(1-t)wT$};
+  % Recta con el impuesto de cuantía fija: c = w(T-l) - R
+  \draw[curvanueva] (0,4.5) -- (4.5,0);
+  \node[left] at (0,4.5) {$wT-R$};
+  % Leyenda
+  \draw[curva1] (3.2,4.75) -- (3.8,4.75);
+  \node[etiqueta,anchor=west,font=\small] at (3.85,4.75) {proporcional: pend. $-(1-t)w$};
+  \draw[curvanueva] (3.2,4.25) -- (3.8,4.25);
+  \node[etiqueta,anchor=west,font=\small] at (3.85,4.25) {cuantía fija: pend. $-w$};
+  % Curvas de indiferencia
+  \draw[curva2,domain=1.02:6.2,samples=60] plot (\x,{4.5/\x});
+  \node[etiqueta,tceeazul,right] at (6.2,0.73) {$U_A$};
+  \draw[curva3,domain=1.15:5.3,samples=60] plot (\x,{5.0625/\x});
+  \node[etiqueta,tceeverde,right] at (5.3,0.96) {$U_B$};
+  % Guías y puntos
+  \draw[guia] (3,0) -- (3,1.5);
+  \draw[guia] (2.25,0) -- (2.25,2.25);
+  \node[punto,label={[etiqueta]above right:$A$}] at (3,1.5) {};
+  \node[punto,label={[etiqueta]above right:$B$}] at (2.25,2.25) {};
+  % Cortes con el eje de ocio
+  \node[below] at (2.25,0) {$l_B$};
+  \node[below] at (3,0) {$l_A$};
+  \node[below] at (4.5,0) {$T-\frac{R}{w}$};
+  \node[below] at (6,0) {$T$};
+  % Más trabajo: el ocio baja de l_A a l_B
+  \draw[flecha,tceerojo] (3,-0.75) -- (2.25,-0.75);
+  \node[etiqueta,tceerojo,anchor=east,font=\small] at (2.2,-0.75) {más trabajo};
+\end{tikzpicture}
+\end{document}

@@ -1,33 +1,49 @@
 # Condición de Marshall-Lerner y curva J
 
-- **Área:** macro-abierta · **Tema de referencia:** **3.B.12** (I.1, «Enfoque de las elasticidades y condición Marshall-Lerner») — lo desarrolla.
-- **Temas que lo usan:** 3.B.12 (desarrollo), 3.B.14, 3.B.15, 3.B.19 y 3.A.37 (supuesto de Mundell-Fleming y de la transmisión por el tipo de cambio: mención; hecho, 5/11/2026: I.2, `\vertema{3.B.12}`, y anexo D), 3.B.5 (mención: estabilidad de la curva de oferta), 1D01 (uso: IV.2, cómo se comprueba en el cuadro; preguntado en 2022)
-- **Manuales de referencia:** Marshall (1923); Lerner (1944); Robinson (1937); Magee (1973) (curva J); Krugman, Obstfeld y Melitz, cap. 16 y apéndice; Gandolfo, *International Finance and Open-Economy Macroeconomics*, cap. 7.
+- **Área:** macro-abierta · **Tema de referencia:** **3.B.12** (I.1, «El enfoque de las elasticidades y la condición de Marshall-Lerner»), **revisado el 11/11/2026**: lo desarrolla con a)-e), la función clave `eq:marshall-lerner`, la curva J como gráfico propio y el anexo `anexo:marshall-lerner` (en divisas y con ofertas finitas).
+- **Temas que lo usan:** 3.B.12 (desarrollo; hecho, 11/11/2026), 3.B.14, 3.B.19 y 3.A.37 (supuesto de Mundell-Fleming y de la transmisión por el tipo de cambio: mención; hecho, 5/11/2026: I.2, `\vertema{3.B.12}`, y anexo D), 3.B.5 (mención; la condición de estabilidad del trueque, `eq:ml-trueque`, l. 463, remite al 3.B.12: cumplida en la nota de la Idea de I.1), 3.B.13 (mención; hecho, 8/11/2026: l. 599, la oferta de divisas con tramo decreciente y la estabilidad del mercado de divisas; el 3.B.12 lo recoge en una viñeta de I.1 con `\vertema{3.B.13}`), 1D01 (uso: IV.2, cómo se comprueba en el cuadro; preguntado en 2022), 3.B.11 (mención; hecho, 5/11/2026: III.2, una depreciación desvía el gasto si se cumple la condición, y el resumen de las políticas de ajuste al final del anexo E, con la suma de los valores absolutos de las elasticidades mayor que 1; `\vertema{3.B.12}`). También 3.A.32 (supuesto de Mundell-Fleming; hecho, 11/11/2026), 3.B.16 (mención; hecho, 11/11/2026: I.4, las críticas de los 80, la eficacia de una devaluación depende de la condición y de que no haya indexación, `\vertema{3.B.12}`), 3.B.14 (mención; hecho, 11/11/2026); 3.B.15 (no lo usa; comprobado, 12/11/2026: la depreciación amortigua de palabra, I.2.2, y la eficacia del tipo de cambio sobre el saldo con Gopinath, sin la condición).
+- **Fuentes de referencia** (fijadas en el 3.B.12): **Robinson (1937)** (`Robinson1937Foreign`, *Essays in the Theory of Employment*; «1947» es la 2.ª edición), **Lerner (1944, cap. 28)** (`Lerner1944`), Marshall (1923) (`Marshall1923`), **Bickerdike (1920)** (`Bickerdike1920Instability`, *EJ* 30(117); nunca «Bickerdicke»), Magee (1973) (`Magee1973`, curva J), **Gopinath et al. (2020)** (`Gopinath2020DCP`, *dominant currency pricing*), Hooper, Johnson y Márquez (2000) (`HooperJohnsonMarquez2000`), FMI (2015) (`FMI2015WEOoct`: una depreciación real efectiva del 10 % eleva las exportaciones netas reales en 1,5 puntos del PIB); traspaso con Taylor (2000), Campa y Goldberg (2005) y Burstein y Gopinath (2014). Manuales: Gandolfo, *International Finance and Open-Economy Macroeconomics*, cap. 7 (`Gandolfo2016International`); Krugman, Obstfeld y Melitz, cap. 16 y apéndice.
 
-## Presentación de referencia
+## Presentación de referencia (3.B.12, I.1)
 **Pregunta:** ¿mejora una depreciación real la balanza comercial?
 
-**Supuestos:** comercio inicialmente equilibrado, elasticidades de oferta infinitas, precios en moneda del productor; $q=EP^*/P$ (↑q = depreciación real, D015).
+**Idea:** 2 efectos de signo contrario: el **efecto valor (o precio)**, negativo (cada unidad importada cuesta más en moneda nacional), y el **efecto volumen**, positivo (se exporta más y se importa menos); los nombres de la 1D01. La depreciación mejora el saldo si el volumen domina.
 
-**Condición:**
-$$|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1 ,$$
-elasticidades-precio con su signo (D047) y en valor absoluto en la condición. Si el comercio no está equilibrado, se ponderan con $X/M$; con elasticidades de oferta finitas, condición de Bickerdike-Robinson-Metzler.
+**Supuestos:** precios fijos en la moneda del productor ($P$ en moneda nacional, $P^*$ en divisas: una devaluación nominal es real); recursos ociosos con ofertas de exportaciones e importaciones infinitamente elásticas (las cantidades las fijan las **demandas**; nunca «oferta de exportaciones»); equilibrio parcial (la BP es la balanza comercial; capitales controlados o esterilizados); país pequeño en las importaciones con algo de poder en las exportaciones; comercio inicialmente equilibrado. $q=EP^*/P$ (↑q = depreciación real, D015).
 
-**Curva J:** a corto plazo las cantidades reaccionan poco y el efecto precio domina: la balanza empeora antes de mejorar (Magee, 1973). Con comercio facturado en dólares (*dominant currency pricing*, Gopinath et al., 2020) la depreciación apenas abarata las exportaciones a corto plazo.
+**Ecuaciones (notación canónica):**
+$$\mathrm{XN}=X(q)-q\,M(q),\quad q\equiv\frac{EP^*}{P}\quad(\texttt{eq:saldo-comercial},\ \text{en unidades del bien nacional})$$
+$$\frac{\mathrm d\,\mathrm{XN}}{\mathrm dq}=M\Big(\frac{X}{qM}\,\varepsilon_{X,q}-\varepsilon_{M,q}-1\Big)\quad(\texttt{eq:ml-derivada})$$
+con $\varepsilon_{X,q}\equiv\frac{\mathrm dX}{\mathrm dq}\frac{q}{X}>0$ y $\varepsilon_{M,q}\equiv\frac{\mathrm dM}{\mathrm dq}\frac{q}{M}<0$ (con su signo, D047). Con $X=qM$, **función clave** `eq:marshall-lerner`:
+$$\frac{\mathrm d\,\mathrm{XN}}{\mathrm dq}>0\iff|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1 .$$
+- Con déficit inicial, en moneda nacional (`eq:ml-deficit`): $\frac{X}{qM}|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1$ (más exigente); en divisas, $|\varepsilon_{X,q}|+\frac{qM}{X}|\varepsilon_{M,q}|>1$ (menos exigente): decir siempre en qué moneda se mide. Con ofertas finitas, condición de **Bickerdike-Robinson-Metzler**, menos exigente (anexo A del 3.B.12).
+- **Paradoja de las elasticidades**: si no se cumple, sería una apreciación la que mejoraría el saldo.
+- Vista desde el mercado de divisas: con elasticidades bajas, la oferta de divisas tiene un tramo decreciente y el mercado puede ser inestable (`\vertema{3.B.13}`).
 
-**Traspaso (*pass-through*):** dos sentidos que conviene distinguir: el traslado de la depreciación a los **precios de exportación** en moneda extranjera (limita Marshall-Lerner) y a los **precios internos** (IPC; lo pregunta el dictamen de 2026).
+**Curva J (gráfico de referencia):** a corto plazo los volúmenes apenas cambian (contratos, cambiar de proveedor lleva tiempo) y domina el efecto valor: el saldo empeora antes de mejorar (Magee, 1973). Con comercio facturado en dólares (*dominant currency pricing*, Gopinath et al., 2020) la depreciación encarece enseguida las importaciones pero apenas abarata las exportaciones a corto plazo, y **la J es más profunda**.
 
-**Gráfico de referencia:** saldo comercial frente al tiempo tras una depreciación (curva J). Sin `.tex` aún.
+**Traspaso (*pass-through*), 2 sentidos:** (1) **a los precios de exportación en divisas**: si los exportadores suben márgenes en moneda nacional, el precio en divisas baja menos y el efecto volumen es menor (mayor traspaso con menos poder de mercado y depreciación que se cree duradera); (2) **a los precios interiores**, primero de importación y después al IPC: si pasa a precios y salarios, $q$ vuelve a apreciarse (si $P$ sube tanto como $E$, $q$ no cambia); mayor con inflación alta y poco creíble, mucho peso de las importaciones y salarios indexados (`\vertema{3.A.37}`; lo pregunta el dictamen de 2026).
+
+**Valoración:** precios fijos (la devaluación puede irse en inflación), reacciones del resto del mundo (empobrecer al vecino, devaluaciones competitivas de entreguerras, `\vertema{3.B.20}`) y equilibrio parcial (lo que añade el multiplicador). **Evidencia:** pesimismo y optimismo de las elasticidades (sesgo a la baja por simultaneidad); Hooper et al. (2000): el G-7 cumple la condición salvo Francia y Alemania; FMI (2015).
+
+**Gráfico de referencia:** **`oposicion/temario/fuentes/3B12/graficos/curva-j.tex`**: saldo comercial $\mathrm{XN}$ frente al tiempo, nivel inicial $\mathrm{XN}_0$, depreciación real en $t_0$ ($q\uparrow$), tramo que empeora (efecto valor, rojo) hasta un mínimo y tramo que mejora (efecto volumen, verde); 6 capas. Fuente: elaboración propia a partir de Magee (1973).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.12 | Mecanismos de ajuste de la BP | Desarrollo | Derivación, condición general, curva J, evidencia | — |
-| 3.B.14, 3.B.15, 3.B.19, 3.A.37 | Mundell-Fleming, regímenes, coordinación, transmisión | Mención | «Se cumple Marshall-Lerner» como supuesto, con `\vertema{3.B.12}` | La derivación |
+| 3.B.12 | Mecanismos de ajuste de la BP | desarrollo (hecho, 11/11/2026) | I.1 a)-e) con `eq:saldo-comercial`, `eq:ml-derivada`, la función clave `eq:marshall-lerner`, `eq:ml-deficit`, `curva-j.tex`, los 2 sentidos del traspaso, FMI (2015); la condición en divisas y Bickerdike-Robinson-Metzler en el anexo A; la fila de las elasticidades en `tab:mecanismos-ajuste` | — |
+| 3.B.14, 3.B.19, 3.A.37 | Mundell-Fleming, coordinación, transmisión | Mención | «Se cumple Marshall-Lerner» como supuesto, con `\vertema{3.B.12}` | La derivación |
+| 3.B.15 | Regímenes cambiarios | no lo usa (hecho, 12/11/2026) | — (el Word lo daba como supuesto de su IS-LM-BP, que pasa a resumen sin supuestos) | — |
 | 1D01 | Dictamen de coyuntura | Uso | La condición, la curva J y cómo se ve en el cuadro (saldo de bienes y servicios 1-2 años después de una depreciación real); los 2 sentidos del traspaso | La derivación |
+| 3.A.32 | OA-DA abierta | supuesto (hecho, 11/11/2026) | Supuesto de Mundell-Fleming: una depreciación real mejora el saldo comercial, `\vertema{3.B.12}` | La derivación |
+| 3.B.16 | Valoración de las AMO | mención (hecho, 11/11/2026) | Las críticas de los 80: la devaluación solo da competitividad mientras los salarios no la alcanzan, y si se cumple la condición; `\vertema{3.B.12}` | La derivación |
+| 3.B.5 | Relación real de intercambio (trueque) | mención (hecho) | l. 463: la condición de estabilidad del trueque (`eq:ml-trueque`) es la misma que, con dinero y tipo de cambio, dice si una depreciación mejora la balanza, `\vertema{3.B.12}`; el 3.B.12 lo dice en la nota de I.1 con `\vertema{3.B.5}` | La derivación |
+| 3.B.13 | Mercado de divisas | mención (hecho, 8/11/2026) | l. 599: la oferta de divisas con tramo decreciente si la demanda extranjera es inelástica | La derivación |
+| 3.B.14 | Determinación del tipo de cambio | mención (hecho, 11/11/2026) | I.1: la oferta de divisas solo crece con $E$ si $|\varepsilon_{X,q}|+|\varepsilon_{M,q}|>1$ (si no, el mercado de divisas puede ser inestable); II.2: la depreciación mejora la cuenta corriente en Branson; `\vertema{3.B.12}` | La derivación |
 
 ## Divergencias encontradas en el temario actual
-- 3.B.12 (Word) llama *pass-through* solo al traslado a los precios de exportación; definir los 2 sentidos al revisarlo (contradicción 5 de la 1D01).
-- Tipo real: $\varkappa$ en 3.B.12-3.B.19; canon $q$ (ficha `tipo-cambio-real`).
+- **Resuelto en el 3.B.12 (11/11/2026):** $\varkappa=EP_M/P_X$ y la condición sin valores absolutos → $q$, $\mathrm{XN}=X-qM$ y valores absolutos; *pass-through* solo a los precios de exportación → los 2 sentidos (contradicción 5 de la 1D01); efectos «precio y volumen» con numeración rota → efecto valor (o precio) y efecto volumen; «demanda de importaciones y **oferta** de exportaciones» → las 2 demandas; «Robinson (1947)» → 1937; «Bickerdicke» → Bickerdike (1920); la curva J como TikZ propio.
+- Tipo real: $\varkappa$ en 3.B.15-3.B.19 (sin revisar); canon $q$ (ficha `tipo-cambio-real`). **Resuelto en el 3.B.19** (12/11/2026): el supuesto «una depreciación real mejora el saldo comercial» con `\vertema{3.B.12}`, y $q$ y ν en la caja de las 4 ecuaciones.
+- El efecto **Harberger-Laursen-Metzler** (Harberger, 1950; Laursen y Metzler, 1950) va con el multiplicador (valoración de I.2 y anexo B del 3.B.12, ficha `mundell-fleming`, variante del multiplicador del comercio exterior) y con el enfoque intertemporal (Obstfeld, 1982; Svensson y Razin, 1983); el Word lo remitía al 3.B.5, que no lo trata. La forma $|\varepsilon_X|+|\varepsilon_M|>1+m+m^*$ no se publica hasta comprobarla en Gandolfo (duda 7 del 3.B.12).
 
 Autor: Víctor Gutiérrez Marcos

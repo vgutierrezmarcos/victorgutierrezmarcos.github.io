@@ -1,0 +1,39 @@
+% Pregunta 22 (2025-marzo-A, n.º 24): Solow con progreso técnico; sube g a g'.
+% Izquierda: la recta (n+g'+delta)k se hace más empinada y k* cae. Derecha: la tasa de
+% crecimiento de y salta en t0 a g+(1-alpha)(g'-g) y sube hasta g' sin pasarla (a, falsa).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- Panel izquierdo: Solow en trabajador efectivo ----------
+  \node[etiqueta,font=\small\bfseries] at (2.6,5.5) {Capital por trabajador efectivo};
+  \ejes{$\hat k$}{}{5.6}{4.6}
+  \draw[curva1,domain=0:5.4,samples=80] plot (\x,{1.8*sqrt(\x)}) node[etiqueta,right] {$s f(\hat k)$};
+  \draw[curva2] (0,0) -- (5.0,4.5) node[etiqueta,above] {$(n+g+\delta)\hat k$};
+  \draw[curvanueva] (0,0) -- (3.75,4.27) node[etiqueta,above left] {$(n+g'+\delta)\hat k$};
+  \draw[guia] (4,0) node[below,text=black] {$\hat k^*_0$} -- (4,3.6);
+  \draw[guia] (2.5,0) node[below,text=black] {$\hat k^*_1$} -- (2.5,2.846);
+  \node[punto] at (4,3.6) {};
+  \node[punto,fill=tceerojo] at (2.5,2.846) {};
+  \draw[flecha] (3.85,0.3) -- (2.65,0.3);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,above] at (3.25,0.32) {$\hat k$ cae};
+  % ---------- Panel derecho: tasa de crecimiento de y ----------
+  \begin{scope}[xshift=8.6cm]
+    \node[etiqueta,font=\small\bfseries] at (2.7,5.5) {Crecimiento de $y=Y/L$};
+    \ejes{$t$}{$\gamma_y$}{5.8}{4.6}
+    \draw[guia] (0,3.4) node[left,text=black] {$g'$} -- (5.6,3.4);
+    \draw[guia] (1.4,0) node[below,text=black] {$t_0$} -- (1.4,3.4);
+    \draw[guia] (0,2.27) node[left,text=black,font=\footnotesize] {$g+(1-\alpha)(g'-g)$} -- (1.4,2.27);
+    \draw[curva1] (0,1.2) -- (1.4,1.2);
+    \node[left] at (0,1.2) {$g$};
+    \draw[curva1,dotted,thin] (1.4,1.2) -- (1.4,2.27);
+    \draw[curvanueva,domain=1.4:5.6,samples=80] plot (\x,{3.4-1.13*exp(-(\x-1.4)/1.0)});
+    \node[punto,fill=tceerojo] at (1.4,2.27) {};
+    \node[etiqueta,font=\footnotesize,align=center,text=tceerojo] at (3.6,1.55)
+      {transición: sube hacia $g'$\\pero siempre por debajo\\(a es falsa)};
+    \node[etiqueta,font=\footnotesize,above] at (4.6,3.4) {nuevo e.e.: $g'>g$ (c)};
+    \node[etiqueta,font=\footnotesize,align=center] at (0.7,0.55) {e.e.\\inicial};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

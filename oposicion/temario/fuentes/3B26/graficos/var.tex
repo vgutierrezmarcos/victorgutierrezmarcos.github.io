@@ -1,0 +1,34 @@
+% Distribución de pérdidas y ganancias de una cartera con el VaR y el ES al 99 %
+% (normal tipificada) y una t de Student de 4 grados de libertad con varianza 1
+% (colas gruesas).
+%   f(x) = exp(-x^2/2)/sqrt(2 pi);  VaR_0,99 = 2,326 sigma;
+%   ES_0,99 = phi(2,326)/0,01 = 2,665 sigma (media de la cola del 1 %).
+%   t_4 con varianza 1: g(x) = sqrt(2) * 0,375 * (1 + x^2/2)^(-2,5); más allá de
+%   -2,326 deja el 1,5 % de la masa (frente al 1 %); corta a la normal en ±2,62.
+% Elaboración propia a partir de Hull (2023) y BCBS (2019).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=9cm,
+    declare function={f(\x)=exp(-\x*\x/2)/sqrt(2*pi); g(\x)=1.41421*0.375*(1+\x*\x/2)^(-2.5);}]
+  % marco fijo: todas las capas, del mismo tamaño
+  \path (-4.6,-0.08) rectangle (5.0,0.6);
+  % 1: eje horizontal: pérdidas a la izquierda, ganancias a la derecha
+  \capa{1}{\draw[eje] (-4.3,0) -- (4.4,0) node[right,text=black] {$\Delta\tilde\Pi$};}
+  \capa{1}{\draw (0,0.012) -- (0,-0.012) node[below] {$0$};}
+  \capa{1}{\node[below,font=\footnotesize] at (-3.7,-0.01) {pérdidas};}
+  \capa{1}{\node[below,font=\footnotesize] at (3.5,-0.01) {ganancias};}
+  % 2: la densidad normal
+  \capa{2}{\draw[curva1] plot[domain=-4.2:4.2,samples=140] (\x,{f(\x)}) node[etiqueta,right,font=\footnotesize] at (0.9,{f(0.9)}) {normal};}
+  % 3: la cola del 1 %, su rótulo y la línea de -VaR al 99 %
+  \capa{3}{\fill[tceerojo!30] plot[domain=-4.2:-2.326,samples=40] (\x,{f(\x)}) -- (-2.326,0) -- (-4.2,0) -- cycle;}
+  \capa{3}{\draw[curvanueva] (-2.326,0) -- (-2.326,0.22) node[above,etiqueta,text=tceerojo] {$-\mathrm{VaR}_{0{,}99}$};}
+  \capa{3}{\draw[thin,tceerojo] (-3.0,0.006) -- (-3.55,0.05) node[above,etiqueta,font=\footnotesize,text=tceerojo] {1~\%};}
+  % 4: la línea de -ES al 99 %, media de la cola
+  \capa{4}{\draw[curva4] (-2.665,0) -- (-2.665,0.13) node[above left=0pt and -6pt,etiqueta,text=tceedorado] {$-\mathrm{ES}_{0{,}99}$};}
+  % 5: colas gruesas: la t de Student deja más masa más allá del VaR
+  \capa{5}{\draw[curva2,dashed] plot[domain=-4.2:4.2,samples=140] (\x,{g(\x)});}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceeazul,align=left,anchor=south west] at (3.05,{g(3.05)+0.015}) {colas gruesas\\($t$ de Student)};}
+\end{tikzpicture}
+\end{document}

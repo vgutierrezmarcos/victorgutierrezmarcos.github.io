@@ -1,0 +1,27 @@
+% Pregunta 277 (2018-enero-OEP2017, n.º 33): zona objetivo de Krugman (1991). Con banda creíble la curva s(f) es una S más plana que la recta de 45 grados y tangente a los límites (luna de miel); sin credibilidad, más empinada (divorcio). Autor: Víctor Gutiérrez Marcos
+% Centro (3; 2,5), banda s = 2,5 ± 1,6. Creíble: s = 2,5 + u - 0,1492 sinh(u), u = f - 3, tangente a los límites en u = ±2,59 (smooth pasting).
+% No creíble (ilustrativa): s = 2,5 + u + 0,3 sinh(u), llega a los límites en u = ±1,17.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$f$ (fundamentos)}{$s$}{6.4}{5}
+  % Límites de la banda
+  \draw[curva4] (0,4.1) -- (6.2,4.1);
+  \draw[curva4] (0,0.9) -- (6.2,0.9);
+  \node[etiqueta,left] at (0,4.1) {$\bar{s}$};
+  \node[etiqueta,left] at (0,0.9) {$\underline{s}$};
+  % Flotación libre: recta de 45 grados
+  \draw[curva2,desplazada] (0.7,0.2) -- (5.1,4.6) node[etiqueta,above] {flotación libre (45°)};
+  % Banda no creíble: más empinada (divorcio)
+  \draw[curvanueva,desplazada] plot[domain=-1.17:1.17,samples=60] ({3+\x},{2.5+\x+0.3*sinh(\x)});
+  \node[etiqueta,tceerojo,align=right,left] at (3.3,3.5) {sin credibilidad:\\divorcio};
+  % Banda creíble: curva en S (luna de miel)
+  \draw[curva1] plot[domain=-2.59:2.59,samples=100] ({3+\x},{2.5+\x-0.1492*sinh(\x)});
+  \node[punto] at (0.41,0.9) {};
+  \node[punto] at (5.59,4.1) {};
+  \node[etiqueta,tceemorado,align=left,right] at (3.9,2.2) {banda creíble:\\luna de miel};
+  % Tangencia (smooth pasting)
+  \node[etiqueta,above] at (5.59,4.1) {tangente};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,426 @@
+{
+ "tema": "3.A.19",
+ "preguntas": [
+  {
+   "id": 311901,
+   "estado": "publicada",
+   "enunciado": "En un mercado de producto homogéneo compiten à la Cournot tres empresas con cuotas de mercado del 50 %, el 30 % y el 20 %. La elasticidad-precio de la demanda de mercado es $\\varepsilon_{Q,p}=-2$. El índice de Herfindahl-Hirschman (IHH) y el margen medio de la industria (la media de los índices de Lerner ponderada por las cuotas) son:",
+   "opciones": {
+    "a": "$\\mathrm{IHH}\\approx 3.333$ y margen medio de $0{,}167$.",
+    "b": "$\\mathrm{IHH}=3.800$ y margen medio de $0{,}38$.",
+    "c": "$\\mathrm{IHH}=3.800$ y margen medio de $0{,}19$.",
+    "d": "$\\mathrm{IHH}=5.000$ y margen medio de $0{,}25$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En Cournot, $\\mathcal{L}_i=s_i/|\\varepsilon_{Q,p}|$, de modo que el margen medio ponderado es $\\sum_i s_i^2/|\\varepsilon_{Q,p}|=\\mathrm{IHH}/(10.000\\,|\\varepsilon_{Q,p}|)$. Aquí $\\mathrm{IHH}=50^2+30^2+20^2=3.800$ y el margen medio es $0{,}38/2=0{,}19$.",
+    "desarrollo": "El IHH es la suma de los cuadrados de las cuotas en porcentaje: $2.500+900+400=3.800$.\n\nPor la condición de primer orden de Cournot, cada empresa carga $\\mathcal{L}_i=s_i/|\\varepsilon_{Q,p}|$: $0{,}25$, $0{,}15$ y $0{,}10$. Ponderando por las cuotas:\n\n$$\\sum_i s_i\\mathcal{L}_i=0{,}5\\cdot0{,}25+0{,}3\\cdot0{,}15+0{,}2\\cdot0{,}10=0{,}125+0{,}045+0{,}02=0{,}19,$$\n\nque coincide con $\\mathrm{IHH}/(10.000\\,|\\varepsilon_{Q,p}|)=3.800/20.000=0{,}19$ (resultado de Cowling y Waterson).\n\nPor qué fallan las demás:\n\n- a) Trata a las empresas como si fueran iguales: con tres empresas idénticas el IHH sería $10.000/3\\approx3.333$ y el margen $1/(n|\\varepsilon_{Q,p}|)=1/6$. Con cuotas desiguales la concentración es mayor.\n- b) Calcula bien el IHH, pero olvida dividir por la elasticidad: $0{,}38$ es $\\sum_i s_i^2$.\n- d) Toma solo la empresa mayor: $0{,}25$ es su índice de Lerner, no la media, y $5.000$ no es la suma de los cuadrados de las cuotas."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Cournot: implicaciones (IHH y margen medio de la industria)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311902,
+   "estado": "publicada",
+   "enunciado": "Dos empresas venden un producto homogéneo con demanda $p=20-Q$ y eligen a la vez sus cantidades. Sus costes marginales son constantes, $c_1=2$ y $c_2=5$, y no hay costes fijos. En el equilibrio de Cournot:",
+   "opciones": {
+    "a": "$p=9$, $q_1=7$ y $q_2=4$: producen las dos, y más la de menor coste.",
+    "b": "$p=9$ y $q_1=q_2=5{,}5$: las dos se reparten el mercado a partes iguales.",
+    "c": "$p$ queda justo por debajo de 5 y solo vende la empresa 1, que expulsa a la otra.",
+    "d": "$p=11$, $q_1=9$ y $q_2=0$: solo produce la empresa de menor coste."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Las funciones de reacción son $q_1=(18-q_2)/2$ y $q_2=(15-q_1)/2$, que se cortan en $q_1=7$, $q_2=4$; así $Q=11$ y $p=9$. La empresa de menor coste tiene más cuota y más margen, pero la otra no sale del mercado.",
+    "desarrollo": "Cada empresa maximiza $(20-q_i-q_j-c_i)\\,q_i$. Las condiciones de primer orden dan\n\n$$q_1=\\frac{18-q_2}{2},\\qquad q_2=\\frac{15-q_1}{2}.$$\n\nSustituyendo, $q_1=(18-7{,}5+q_1/2)/2\\Rightarrow \\tfrac34q_1=5{,}25\\Rightarrow q_1=7$ y $q_2=4$. Por la fórmula general, $q_1=(a-2c_1+c_2)/3b=(20-4+5)/3=7$ y $p=(a+c_1+c_2)/3=27/3=9$. Comprobación con el índice de Lerner: $(9-2)/9=7/9$ y $s_1/|\\varepsilon_{Q,p}|=(7/11)/(9/11)=7/9$.\n\nHay una ineficiencia productiva: los costes marginales no se igualan, y la producción total no se obtiene al menor coste.\n\nPor qué fallan las demás:\n\n- b) El precio es el correcto (solo depende de la suma de los costes), pero el reparto no: con costes distintos, la de menor coste produce más.\n- c) Es el resultado de Bertrand con costes distintos: con precios, la ventaja de costes se lleva todo el mercado; con cantidades, no.\n- d) Es el resultado del cártel (o del monopolio de la empresa 1): $\\mathrm{IMg}=20-2Q=2\\Rightarrow Q=9$, $p=11$."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Cournot: equilibrio con costes distintos (anexo A)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311903,
+   "estado": "publicada",
+   "enunciado": "En el equilibrio de Cournot de un duopolio con producto homogéneo, representado en el plano $(q_1,q_2)$ con las funciones de reacción y los isobeneficios de las dos empresas, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es un equilibrio en estrategias dominantes: cada empresa produciría esa misma cantidad produjera lo que produjera la otra.",
+    "b": "Los isobeneficios de las dos empresas son tangentes entre sí en el punto de equilibrio, de modo que ninguna puede ganar más sin que la otra gane menos.",
+    "c": "Cada empresa da su mejor respuesta a la cantidad de la otra, pero los isobeneficios se cortan: las dos ganarían más si redujeran a la vez su producción.",
+    "d": "La producción total es menor que la del monopolio, porque cada empresa tiene en cuenta la caída del precio sobre las unidades de su rival."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El equilibrio de Cournot es un equilibrio de Nash: está en el corte de las funciones de reacción. Allí los isobeneficios se cortan y forman una «lente» de combinaciones con menos producción en la que las dos empresas ganarían más: es un dilema del prisionero.",
+    "desarrollo": "En el corte de $R_1$ y $R_2$ cada empresa maximiza su beneficio dada la cantidad de la otra: el isobeneficio de la empresa 1 tiene allí su máximo (es horizontal) y el de la 2 es vertical. Como uno es horizontal y otro vertical, se cortan en lugar de ser tangentes, y entre los dos queda una «lente» de puntos con menos producción de ambas en la que las dos ganan más. El equilibrio no es eficiente para las propias empresas: todas ganarían produciendo menos, pero a cada una le conviene producir más.\n\nPor qué fallan las demás:\n\n- a) Es un equilibrio de Nash, no en estrategias dominantes: la mejor respuesta depende de lo que haga la otra (la función de reacción es decreciente, no vertical ni horizontal).\n- b) La tangencia de los isobeneficios define la curva de colusión (los repartos del cártel), no el equilibrio de Cournot, que queda fuera de ella.\n- d) Es al revés: $Q^M<Q^C<Q^c$. Cada empresa solo tiene en cuenta la caída del precio sobre sus unidades propias (su ingreso marginal es $p+p'(Q)\\,q_i$), y por eso entre las dos producen más que un monopolio."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Cournot: implicaciones (equilibrio de Nash, ineficiente para las empresas)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311904,
+   "estado": "publicada",
+   "enunciado": "Dos empresas compiten à la Cournot con demanda $p=12-q_1-q_2$. El coste marginal de la empresa 1 es $c=3$ y lo conocen las dos. El de la empresa 2 solo lo conoce ella: es alto, $c_{\\mathrm A}=6$, con probabilidad $1/2$, o bajo, $c_{\\mathrm B}=0$, con probabilidad $1/2$; todo lo demás es conocimiento común. En el equilibrio bayesiano de Nash, la cantidad de la empresa 1 y la de la empresa 2 cuando su coste es bajo son:",
+   "opciones": {
+    "a": "$q_1=2$ y $q_2(c_{\\mathrm B})=5$.",
+    "b": "$q_1=3$ y $q_2(c_{\\mathrm B})=3$.",
+    "c": "$q_1=4$ y $q_2(c_{\\mathrm B})=4$.",
+    "d": "$q_1=3$ y $q_2(c_{\\mathrm B})=4{,}5$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La empresa 1 responde a la cantidad esperada de la 2, como si se enfrentara a una rival de coste medio 3: $q_1=3$. Cada tipo de la empresa 2 responde a ese $q_1$ con su función de reacción: el de coste bajo produce $(12-3-0)/2=4{,}5$, menos de lo que produciría con información completa (5).",
+    "desarrollo": "Cada tipo de la empresa 2 maximiza $(12-q_1-q_2-c_j)\\,q_2$: $q_2(c_j)=(12-q_1-c_j)/2$. La empresa 1 maximiza su beneficio esperado y responde a la cantidad esperada: $q_1=(12-3-\\mathbb{E}[q_2])/2$, con $\\mathbb{E}[q_2]=(12-q_1-\\mathbb{E}[c_2])/2=(9-q_1)/2$.\n\nResolviendo: $q_1=(9-(9-q_1)/2)/2\\Rightarrow q_1=3$ (por la fórmula, $(a-2c+\\mathbb{E}[c_2])/3=(12-6+3)/3=3$). Entonces $q_2(c_{\\mathrm B})=(12-3-0)/2=4{,}5$ y $q_2(c_{\\mathrm A})=(12-3-6)/2=1{,}5$; la media es 3, coherente con lo que espera la empresa 1.\n\nCon información completa y coste bajo el equilibrio sería $q_1=(12-6+0)/3=2$ y $q_2=(12-0+3)/3=5$: la empresa informada de coste bajo produce menos (4,5) y gana menos cuando la rival no lo sabe, porque esta produce para el coste medio. De ahí su interés en señalizarlo.\n\nPor qué fallan las demás:\n\n- a) Es el equilibrio con información completa cuando el coste de la 2 es bajo: la empresa 1 no puede ajustar su cantidad a un coste que no observa.\n- b) Acierta con $q_1$, pero hace producir a la empresa 2 como si su coste fuera el medio; la empresa 2 sí conoce su coste y responde con él.\n- c) Supone que la empresa 1 produce como si la 2 fuera de coste alto con seguridad ($q_1=(12-6+6)/3=4$) y que la 2 responde a esa cantidad."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Cournot: extensiones (costes privados, equilibrio bayesiano; anexo C)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311905,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Stackelberg con producto homogéneo y dos empresas de costes iguales, la líder obtiene un beneficio mayor que en Cournot. Esa ventaja se debe a que:",
+   "opciones": {
+    "a": "Dispone de más información que la seguidora: conoce la demanda y los costes de su rival, y esta no conoce los de la líder.",
+    "b": "Su decisión es irreversible: si pudiera rectificar tras ver la cantidad de la seguidora, se volvería al resultado de Cournot.",
+    "c": "Decide después de observar a su rival, lo que le permite dar la mejor respuesta a una cantidad ya conocida.",
+    "d": "Se sitúa sobre su propia función de reacción, en el punto de esta que le da más beneficio dada la respuesta de la seguidora."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La ventaja del primero en mover es de compromiso, no de información: la líder elige una cantidad mayor que la de Cournot sabiendo que la seguidora, que la observa, reducirá la suya. Solo funciona si la líder no puede rectificar; por eso exige un compromiso creíble, como una inversión irreversible en capacidad.",
+    "desarrollo": "La líder maximiza su beneficio con la restricción $q_2=R_2(q_1)$: sabe que cada unidad que añade desplaza producción de la seguidora ($R_2'<0$) y por eso produce más que en Cournot. El punto elegido (la tangencia de su isobeneficio con $R_2$) no está sobre su propia función de reacción: dada la cantidad de la seguidora, a la líder le convendría producir menos. Si pudiera volver a decidir, lo haría, la seguidora lo anticiparía y se volvería a Cournot. La ventaja nace, pues, de que la decisión es irreversible y la seguidora lo sabe.\n\nPor qué fallan las demás:\n\n- a) El juego es de información completa: las dos conocen la demanda y los costes. De hecho, quien tiene más información al decidir es la seguidora, que ya ha visto $q_1$, y aun así gana menos.\n- c) Describe a la seguidora. Con cantidades (sustitutos estratégicos), observar y responder es una desventaja; con complementos estratégicos (precios con producto diferenciado) sí hay ventaja del segundo.\n- d) La líder elige sobre la función de reacción de la seguidora, no sobre la suya, que deja de importar porque decide antes."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Stackelberg: implicaciones (ventaja de compromiso)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311906,
+   "estado": "publicada",
+   "enunciado": "Dos empresas con el mismo coste marginal constante, $c=2$, y sin restricciones de capacidad venden un producto homogéneo con demanda $x(p)=10-p$ y eligen a la vez su precio, una sola vez (modelo de Bertrand). Si la empresa 1 esperase que su rival fuera a cobrar $p_2=8$, su mejor respuesta sería:",
+   "opciones": {
+    "a": "Cobrar $p_1=6$.",
+    "b": "Cobrar un precio justo por debajo de 8.",
+    "c": "Cobrar $p_1=2$, su coste marginal.",
+    "d": "Cobrar $p_1=8$ y repartirse el mercado."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El precio de monopolio es $p^M=6$ (maximiza $(p-2)(10-p)$). Si la rival cobra más que eso, la mejor respuesta es $p^M$: la empresa se queda con todo el mercado al mejor precio posible. Rebajar «un céntimo» solo es la mejor respuesta cuando $c<p_j\\leq p^M$.",
+    "desarrollo": "El monopolista maximiza $(p-2)(10-p)$: $12-2p=0\\Rightarrow p^M=6$, con un beneficio de $4\\cdot4=16$.\n\nLa mejor respuesta de Bertrand tiene tres tramos: si $p_j>p^M$, cobrar $p^M$; si $c<p_j\\leq p^M$, un poco menos que $p_j$; si $p_j\\leq c$, cualquier precio $p_i\\geq c$ (beneficio nulo). Con $p_2=8>6$ se está en el primer tramo.\n\nPor qué fallan las demás:\n\n- b) Con un precio justo por debajo de 8 también se queda con todo el mercado, pero gana casi $6\\cdot2=12<16$: está por encima del precio de monopolio, y bajarlo hasta 6 aumenta el beneficio.\n- c) $p=c$ es el precio del equilibrio de Nash, no la mejor respuesta a $p_2=8$: le daría un beneficio nulo.\n- d) Empatando a 8 se queda con la mitad de la demanda: $6\\cdot1=6$, mucho menos que 16."
+   },
+   "dificultad": 1,
+   "apartado": "I.4 Bertrand: desarrollo (mejor respuesta)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311907,
+   "estado": "publicada",
+   "enunciado": "Dos empresas con coste marginal nulo venden un producto homogéneo con demanda $x(p)=12-p$ y compiten en precios. Cada una puede producir como mucho $k=8$ unidades, y el racionamiento es eficiente: la más cara se enfrenta a la demanda residual $x(p)-k$. Según el análisis de Edgeworth, los precios oscilan entre un mínimo $\\underline{p}$ y un máximo $\\overline{p}$, que son:",
+   "opciones": {
+    "a": "$\\underline{p}=0$ y $\\overline{p}=6$.",
+    "b": "$\\underline{p}=0{,}5$ y $\\overline{p}=2$.",
+    "c": "$\\underline{p}=0$ y $\\overline{p}=2$.",
+    "d": "$\\underline{p}=0{,}5$ y $\\overline{p}=6$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "$\\overline{p}$ es el precio de monopolio sobre la demanda residual, $\\max_p\\,p\\,(4-p)\\Rightarrow\\overline{p}=2$, con beneficio 4. $\\underline{p}$ es el precio al que vender toda la capacidad da lo mismo que saltar a $\\overline{p}$: $8\\,\\underline{p}=4\\Rightarrow\\underline{p}=0{,}5$.",
+    "desarrollo": "Se cumplen las condiciones del modelo: $k=8<x(c)=12$ (ninguna puede atender sola el mercado al precio competitivo) y $2k=16\\geq12$ (entre las dos, sí).\n\n- $p=c=0$ no es un equilibrio: si una empresa sube el precio, la otra solo puede atender a 8 clientes y la primera vende a los que quedan, $x(p)-k=4-p$, con margen positivo.\n- La que sube elige el precio que maximiza $p\\,(4-p)$: $\\overline{p}=2$, vende 2 y gana 4.\n- A la rival le conviene entonces cobrar un poco menos y vender toda su capacidad (a esos precios se demandan más de 8 unidades); la otra responde igual y el precio baja rebaja a rebaja.\n- Hasta $\\underline{p}$, donde $(\\underline{p}-c)\\,k=(\\overline{p}-c)\\,[x(\\overline{p})-k]$: $8\\,\\underline{p}=2\\cdot2=4\\Rightarrow\\underline{p}=0{,}5$. Por debajo, compensa volver a $\\overline{p}$, y el ciclo empieza de nuevo.\n\nNo hay equilibrio en estrategias puras (sí en mixtas), y los precios quedan por encima del coste marginal.\n\nPor qué fallan las demás:\n\n- a) Son el precio competitivo y el de monopolio sobre la demanda de mercado ($\\max_p\\,p\\,(12-p)\\Rightarrow p=6$): ignora que la que sube solo conserva la demanda residual y que el precio no llega a bajar hasta el coste marginal.\n- c) Acierta con el máximo, pero el precio no baja hasta $c=0$: antes de llegar, a una de las dos le compensa saltar a $\\overline{p}$.\n- d) Acierta con el mínimo que correspondería a un beneficio de 4, pero toma como máximo el precio de monopolio del mercado entero, no el de la demanda residual."
+   },
+   "dificultad": 3,
+   "apartado": "I.4 Bertrand: salidas a la paradoja (capacidad limitada, ciclos de Edgeworth)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311908,
+   "estado": "publicada",
+   "enunciado": "En el juego en dos etapas de Kreps y Scheinkman (1983), las empresas eligen primero su capacidad, con un coste por unidad, y después, vistas las capacidades, compiten en precios con racionamiento eficiente. El resultado del equilibrio de Nash perfecto en subjuegos es:",
+   "opciones": {
+    "a": "El de Bertrand, $p=c$, porque la competencia de la última etapa es en precios y el producto es homogéneo.",
+    "b": "El de monopolio, porque elegir la capacidad antes permite a las empresas coordinarse sin necesidad de acuerdo.",
+    "c": "Ninguno en estrategias puras: los precios describen ciclos de Edgeworth entre un mínimo y un máximo.",
+    "d": "El de Cournot: elegir la capacidad equivale, en equilibrio, a elegir la cantidad que se va a vender."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Por inducción hacia atrás, en la segunda etapa el precio es el que vacía el mercado con las capacidades llenas; sabiéndolo, en la primera las empresas eligen las capacidades de Cournot. Cournot y Bertrand no son modelos rivales, sino de mercados distintos, según la capacidad sea rígida o sobre.",
+    "desarrollo": "En la segunda etapa, con capacidades pequeñas respecto al mercado, ninguna empresa vende más rebajando (ya está llena) ni le conviene subir: el precio de equilibrio es $p(k_1+k_2)$, el que vacía el mercado. En la primera etapa cada empresa elige su capacidad anticipando ese precio, que es exactamente el problema de Cournot con el coste de la capacidad: el único resultado del ENPS es el de Cournot. Por eso Cournot describe los mercados en que la capacidad se decide antes de vender y es cara de cambiar (acero, cemento, una ruta aérea).\n\nEl resultado depende del racionamiento eficiente: con racionamiento proporcional, la competencia es más dura que en Cournot (Davidson y Deneckere, 1986).\n\nPor qué fallan las demás:\n\n- a) La paradoja de Bertrand exige que cada empresa pueda atender todo el mercado; aquí las empresas eligen no instalar tanta capacidad, precisamente para suavizar la competencia en precios.\n- b) Cada empresa elige su capacidad maximizando su propio beneficio, no el conjunto: se instala más capacidad que la de monopolio.\n- c) Los ciclos aparecen con capacidades dadas e intermedias (Edgeworth); en el ENPS las empresas eligen capacidades con las que el subjuego de precios sí tiene equilibrio en puras."
+   },
+   "dificultad": 1,
+   "apartado": "I.4 Bertrand: salidas a la paradoja (Kreps y Scheinkman) y valoración",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311909,
+   "estado": "publicada",
+   "enunciado": "En un mercado de producto homogéneo con demanda $x(p)=20-p$ operan una empresa dominante, con coste marginal constante $\\mathrm{CMg}_L=2$, y una franja competitiva de empresas pequeñas y precio-aceptantes cuya oferta conjunta es $q_f(p)=p$. La empresa dominante fija el precio sabiendo cuánto venderá la franja a cada precio. En equilibrio:",
+   "opciones": {
+    "a": "$p=6$; la dominante vende 8 y la franja, 6.",
+    "b": "$p=11$; la dominante vende 9 y la franja no vende.",
+    "c": "$p=2$; la dominante vende 16 y la franja, 2.",
+    "d": "$p=6$; la dominante vende 14 y la franja no vende."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La dominante es monopolista de la demanda residual, $x_R(p)=x(p)-q_f(p)=20-2p$, es decir, $p=10-q_L/2$. Igualando el ingreso marginal residual al coste marginal, $10-q_L=2\\Rightarrow q_L=8$ y $p=6$; la franja vende $q_f(6)=6$.",
+    "desarrollo": "Demanda residual: $x_R(p)=20-p-p=20-2p$ (para $p\\leq10$, el precio al que la franja cubriría toda la demanda). Su inversa es $p=10-q_L/2$ y el ingreso marginal residual, $10-q_L$. Con $\\mathrm{IMg}_R=\\mathrm{CMg}_L$: $10-q_L=2\\Rightarrow q_L=8$, $p^*=6$. La franja ofrece $q_f(6)=6$ y el total, 14, coincide con la demanda $x(6)=14$. Por la otra vía, $\\max_p\\,(p-2)(20-2p)\\Rightarrow 24-4p=0\\Rightarrow p=6$.\n\nEl precio queda entre el competitivo y el de monopolio, y la franja vende cuanto quiere al precio que sostiene la dominante.\n\nPor qué fallan las demás:\n\n- b) Es el monopolio sobre la demanda de mercado ($\\max_p\\,(p-2)(20-p)\\Rightarrow p=11$), como si la franja no existiera; pero a ese precio la franja querría vender 11 unidades, más de las 9 que se demandan.\n- c) Iguala el precio al coste marginal de la dominante, como si esta fuera precio-aceptante: renuncia a su poder de mercado sobre la demanda residual.\n- d) Acierta con el precio, pero atribuye a la dominante toda la demanda de mercado: a $p=6$ la franja produce 6, y a la dominante le quedan 8."
+   },
+   "dificultad": 2,
+   "apartado": "I.5 Liderazgo en precios: empresa dominante y franja competitiva",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:311909.webp",
+     "alt": "Gráfico con la cantidad en abscisas y el precio p en ordenadas, ambos de 0 a 20. Tres rectas: la demanda de mercado, x(p) = 20 − p, que baja de (0, 20) a (20, 0); la oferta de la franja competitiva, q_f = p, que sube desde el origen hasta (20, 20); y la horizontal del coste marginal de la empresa dominante, en 2. No se dibuja la demanda residual ni ningún punto de equilibrio.",
+     "ancho": 540
+    }
+   ]
+  },
+  {
+   "id": 311910,
+   "estado": "publicada",
+   "enunciado": "Dos empresas con el mismo coste marginal constante $c$ y sin restricciones de capacidad venden un producto homogéneo y compiten en precios, à la Bertrand, durante 10 periodos; las dos saben desde el principio que el décimo es el último. Al final de cada periodo cada una observa el precio de la otra, y ambas descuentan el futuro con un factor $\\beta$ próximo a 1. Entonces:",
+   "opciones": {
+    "a": "Como $\\beta\\geq1/2$, la estrategia del gatillo sostiene el precio de monopolio en los 10 periodos.",
+    "b": "El único equilibrio de Nash perfecto en subjuegos es $p=c$ en los 10 periodos.",
+    "c": "Hay un equilibrio de Nash perfecto en subjuegos con el precio de monopolio en los 9 primeros periodos y $p=c$ en el último.",
+    "d": "Cualquier precio entre $c$ y el de monopolio puede sostenerse como equilibrio de Nash perfecto en subjuegos, por el teorema de tradición oral (folk theorem)."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con un final conocido y un único equilibrio de Nash en el juego de etapa, la inducción hacia atrás deshace la colusión: en el último periodo se juega $p=c$; en el penúltimo, lo que pase después ya está decidido y vuelve a jugarse $p=c$, y así hasta el primero.",
+    "desarrollo": "En el periodo 10 no hay futuro que proteger: se juega el único EN de la etapa, $p_1=p_2=c$. En el periodo 9 las empresas saben que en el 10 habrá $p=c$ hagan lo que hagan: ninguna amenaza creíble puede condicionar el futuro, y hoy se juega de nuevo el EN de la etapa. El argumento se repite hasta el primer periodo. La paciencia ($\\beta$) no interviene.\n\nPor qué fallan las demás:\n\n- a) La condición $\\beta\\geq1-1/n=1/2$ es la del juego repetido sin final conocido; con horizonte finito el castigo del gatillo no añade nada, porque de todos modos se va a jugar $p=c$.\n- c) Es el error habitual: si en el último periodo se compite pase lo que pase, en el noveno no hay castigo posible para quien rebaje, y la colusión se deshace hacia atrás.\n- d) El teorema de tradición oral exige un horizonte infinito o incierto. Con horizonte finito solo cabría sostener algo de cooperación si el juego de etapa tuviera varios EN (Benoît y Krishna, 1985), y el de Bertrand con costes iguales solo tiene uno."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Horizonte finito",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311911,
+   "estado": "publicada",
+   "enunciado": "En un mercado de producto homogéneo, $n$ empresas iguales compiten en precios, à la Bertrand, un periodo tras otro. Descuentan el futuro con un factor $\\beta=0{,}8$ y, además, en cada periodo hay una probabilidad de 0,9 de que el mercado siga existiendo en el siguiente. Las empresas usan estrategias del gatillo (volver a $p=c$ para siempre tras cualquier desviación). ¿Cuál es el número máximo de empresas con el que puede sostenerse el precio de monopolio?",
+   "opciones": {
+    "a": "2 empresas.",
+    "b": "5 empresas.",
+    "c": "3 empresas.",
+    "d": "4 empresas."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con Bertrand la colusión exige un factor de descuento de al menos $1-1/n$. Con horizonte incierto, el factor relevante es $\\beta$ por la probabilidad de continuar: $0{,}8\\cdot0{,}9=0{,}72$. Con $n=3$, $1-1/3\\approx0{,}67\\leq0{,}72$; con $n=4$, $0{,}75>0{,}72$.",
+    "desarrollo": "Coludiendo, cada empresa gana $B^{\\mathrm C}=B^M/n$ por periodo; desviándose, casi $B^{\\mathrm D}=B^M$ una vez y $B^{\\mathrm N}=0$ después. La condición del gatillo es\n\n$$\\beta_{\\text{ef}}\\geq\\frac{B^{\\mathrm D}-B^{\\mathrm C}}{B^{\\mathrm D}-B^{\\mathrm N}}=1-\\frac1n\\quad\\Longleftrightarrow\\quad n\\leq\\frac{1}{1-\\beta_{\\text{ef}}}.$$\n\nSi el juego continúa con probabilidad 0,9, un euro del periodo siguiente vale hoy $0{,}8\\cdot0{,}9=0{,}72$: ese es el factor efectivo. Entonces $n\\leq1/0{,}28\\approx3{,}57$, es decir, como mucho 3 empresas. Comprobación directa: $n=3$ exige $0{,}667$ (se cumple); $n=4$ exige $0{,}75$ (no se cumple).\n\nPor qué fallan las demás:\n\n- a) Con 2 empresas basta con $0{,}5$, y la colusión es sostenible, pero no es el máximo: con 3 también lo es.\n- b) Es el resultado si se olvida la probabilidad de que la relación termine: con $\\beta=0{,}8$, $n\\leq1/0{,}2=5$. Cuanto más probable es que el juego acabe, más difícil es coludir.\n- d) Con 4 empresas hace falta $0{,}75>0{,}72$: a cada una le compensa desviarse."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Horizonte infinito: gatillo con Bertrand y horizonte incierto (anexo D)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311912,
+   "estado": "publicada",
+   "enunciado": "Dos empresas iguales compiten en precios, à la Bertrand, indefinidamente, y sostienen el precio de monopolio con estrategias del gatillo. Los precios no se observan de inmediato: una rebaja se descubre al cabo de $\\tau=2$ periodos, de modo que quien se desvía se queda con todo el mercado durante 2 periodos antes de que empiece el castigo ($p=c$ para siempre). El factor de descuento mínimo que sostiene la colusión es, aproximadamente:",
+   "opciones": {
+    "a": "$0{,}50$.",
+    "b": "$0{,}25$.",
+    "c": "$0{,}75$.",
+    "d": "$0{,}71$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con retraso en la detección, la condición del gatillo pasa a ser $\\beta^{\\tau}\\geq(B^{\\mathrm D}-B^{\\mathrm C})/(B^{\\mathrm D}-B^{\\mathrm N})$. En el duopolio de Bertrand el cociente es $1/2$, así que $\\beta^2\\geq1/2$ y $\\beta\\geq1/\\sqrt2\\approx0{,}71$: cuanto más se tarda en reaccionar, más paciencia hace falta.",
+    "desarrollo": "Coludiendo siempre, cada empresa obtiene $(B^M/2)/(1-\\beta)$. Desviándose, obtiene $B^M$ en los periodos 0 y 1 y nada después: $B^M(1+\\beta)$. No conviene desviarse si\n\n$$\\frac{B^M/2}{1-\\beta}\\geq B^M(1+\\beta)\\quad\\Longleftrightarrow\\quad\\frac12\\geq1-\\beta^2\\quad\\Longleftrightarrow\\quad\\beta\\geq\\frac{1}{\\sqrt2}\\approx0{,}71.$$\n\nEs la fórmula general $\\beta^{\\tau}\\geq(B^{\\mathrm D}-B^{\\mathrm C})/(B^{\\mathrm D}-B^{\\mathrm N})$ con $\\tau=2$, $B^{\\mathrm C}=B^M/2$, $B^{\\mathrm D}=B^M$ y $B^{\\mathrm N}=0$. Por eso la frecuencia de la interacción y la transparencia del mercado facilitan la colusión.\n\nPor qué fallan las demás:\n\n- a) Es el umbral con detección inmediata ($\\tau=1$): ignora que el retraso alarga la ganancia de desviarse.\n- b) Eleva al cuadrado el umbral en lugar de extraer la raíz ($0{,}5^2$): el retraso haría la colusión más fácil, lo contrario de lo que ocurre.\n- c) Es el umbral de Bertrand con 4 empresas y detección inmediata ($1-1/4$); el retraso no equivale a duplicar el número de empresas."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Horizonte infinito: retraso en la detección (anexo D)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311913,
+   "estado": "publicada",
+   "enunciado": "En los modelos de colusión en juegos repetidos, sobre las guerras de precios señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "En Green y Porter hay guerras de precios tras las caídas de la demanda aunque nadie se haya desviado; en Rotemberg y Saloner el precio colusorio tiene que bajar en los auges.",
+    "b": "En Green y Porter una guerra de precios revela que alguna empresa ha rebajado en secreto: en equilibrio, las desviaciones ocurren cuando la demanda es baja.",
+    "c": "En Rotemberg y Saloner los márgenes son procíclicos: en los auges el castigo futuro es mayor que la ganancia de desviarse, y el precio colusorio puede subir.",
+    "d": "En los dos modelos las guerras de precios aparecen porque el castigo no es creíble, y por eso las estrategias no forman un equilibrio perfecto en subjuegos."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Green y Porter (1984): con información imperfecta, una caída del precio puede deberse a la demanda o a una trampa, y el acuerdo castiga siempre que el precio cae bajo un umbral; nadie se desvía, pero hay guerras. Rotemberg y Saloner (1986): con demanda observada y variable, en los picos se gana más desviándose y el castigo es el mismo, así que el precio colusorio baja en los auges (márgenes anticíclicos).",
+    "desarrollo": "Los dos modelos extienden el gatillo de Friedman, pero por vías distintas:\n\n- Green y Porter formalizan el problema de Stigler (detectar las rebajas secretas). Las empresas solo ven el precio de mercado, que también baja cuando cae la demanda. El acuerdo fija un precio umbral: si el precio cae por debajo, guerra de precios durante unos periodos y vuelta a coludir. En equilibrio nadie se desvía; las guerras son el coste de mantener creíble el castigo.\n- Rotemberg y Saloner suponen que la demanda fluctúa y se observa. En un pico, desviarse da más hoy y el castigo futuro es el mismo: para que nadie se desvíe, el precio colusorio debe bajar en las expansiones.\n\nPor qué fallan las demás:\n\n- b) En el equilibrio de Green y Porter nadie se desvía: la guerra la dispara la mala suerte (demanda baja), no una trampa. Si el castigo solo se aplicara cuando hay trampa probada, haría falta observarla.\n- c) Es al revés: márgenes anticíclicos, porque la tentación de desviarse es mayor en los picos.\n- d) En ambos las estrategias forman un equilibrio con castigos creíbles; las guerras de precios son parte del equilibrio, no un fallo de credibilidad."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Horizonte infinito: extensiones (Green y Porter; Rotemberg y Saloner)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311914,
+   "estado": "publicada",
+   "enunciado": "Dos empresas iguales, con coste marginal constante $c=2$, venden un producto homogéneo con demanda $p=10-Q$. Forman un cártel que maximiza el beneficio conjunto y asigna a cada una la mitad de la producción. Si una de ellas incumple y produce la cantidad que maximiza su beneficio, dado que la otra respeta su cuota, los beneficios de la que incumple y de la que cumple son, respectivamente:",
+   "opciones": {
+    "a": "16 y 0.",
+    "b": "$64/9\\approx7{,}1$ cada una.",
+    "c": "9 y 6.",
+    "d": "$80/9\\approx8{,}9$ y $60/9\\approx6{,}7$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El cártel produce $Q^M=4$ a $p=6$: cuota de 2 y beneficio de 8 para cada una. La mejor respuesta a $q_j=2$ es $R_i(2)=(8-2)/2=3$; entonces $Q=5$, $p=5$, y gana $3\\cdot3=9$ la que incumple y $3\\cdot2=6$ la que cumple. El acuerdo no es un equilibrio de Nash.",
+    "desarrollo": "Cártel: $\\mathrm{IMg}=10-2Q=2\\Rightarrow Q^M=4$, $p^M=6$; con cuotas iguales, $q_i=2$ y $B_i=(6-2)\\cdot2=8$.\n\nDesviación: la función de reacción es $R_i(q_j)=(a-c)/2b-q_j/2=4-q_j/2$, así que $R_i(2)=3$. Con $Q=5$, $p=5$ y margen 3: la que incumple gana $3\\cdot3=9>8$ y la que cumple, $3\\cdot2=6<8$. Comprobación con las fórmulas generales: $9(a-c)^2/64b=9\\cdot64/64=9$.\n\nCada empresa gana produciendo por encima de su cuota porque la bajada del precio la soporta en parte la otra: $\\partial B_i/\\partial q_i=-p'(Q)\\,q_j=2>0$ en el reparto del cártel. Con estos números, la colusión solo se sostiene con el gatillo si $\\beta\\geq(9-8)/(9-64/9)=9/17$.\n\nPor qué fallan las demás:\n\n- a) Quedarse con todo el beneficio de monopolio es lo que ocurre en Bertrand al rebajar el precio; con cantidades, la otra sigue vendiendo su cuota.\n- b) Es el beneficio de Cournot ($(a-c)^2/9b$): el resultado cuando las dos dejan de cumplir, no cuando solo lo hace una.\n- d) Es lo que se obtiene si la que incumple produce su cantidad de Cournot, $8/3$ ($Q=14/3$, $p=16/3$): gana más que cumpliendo, pero no es su mejor respuesta a una rival que produce 2."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 El cártel: implicaciones (el acuerdo no es un equilibrio de Nash)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311915,
+   "estado": "publicada",
+   "enunciado": "Dos empresas forman un cártel que maximiza el beneficio conjunto en un mercado con demanda $p=20-Q$. Sus costes son $C_1(q_1)=q_1^2$ y $C_2(q_2)=2q_2^2$. Con colusión perfecta, las cantidades y el precio son:",
+   "opciones": {
+    "a": "$q_1=q_2=3$ y $p=14$.",
+    "b": "$q_1=4$, $q_2=2$ y $p=14$.",
+    "c": "$q_1=6$, $q_2=0$ y $p=14$.",
+    "d": "$q_1=4$, $q_2=2$ y $p=8$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El cártel actúa como un monopolista con dos plantas: $\\mathrm{IMg}(Q)=\\mathrm{CMg}_1=\\mathrm{CMg}_2$. Con $20-2Q=2q_1=4q_2$ se obtiene $q_1=4$, $q_2=2$, $Q=6$ y $p=14$. Con costes marginales crecientes producen las dos, y más la más eficiente.",
+    "desarrollo": "$\\mathrm{CMg}_1=2q_1$ y $\\mathrm{CMg}_2=4q_2$. Igualarlos reparte la producción al menor coste: $q_1=2q_2$. Igualar el coste marginal común al ingreso marginal de mercado fija el total: $20-2(q_1+q_2)=4q_2\\Rightarrow20-6q_2=4q_2\\Rightarrow q_2=2$, $q_1=4$, $Q=6$, $p=14$. Por la otra vía, la suma horizontal de los costes marginales es $Q=m/2+m/4\\Rightarrow m=4Q/3$, y $20-2Q=4Q/3\\Rightarrow Q=6$, con $m=8=\\mathrm{CMg}_1=\\mathrm{CMg}_2$.\n\nPor qué fallan las demás:\n\n- a) El reparto a partes iguales no minimiza el coste: con $q_1=q_2=3$, $\\mathrm{CMg}_1=6<\\mathrm{CMg}_2=12$, y trasladar producción a la empresa 1 ahorra costes. Sería una colusión imperfecta.\n- c) Que solo produzca la más eficiente es el resultado con costes marginales constantes y distintos. Con costes marginales crecientes, la primera unidad de la empresa 2 cuesta menos que la sexta de la empresa 1.\n- d) Las cantidades son correctas, pero 8 es el coste marginal (igual al ingreso marginal), no el precio: el precio se lee en la demanda, $p=20-6=14$."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 El cártel como monopolista multiplanta",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311916,
+   "estado": "publicada",
+   "enunciado": "Dos empresas pueden firmar un acuerdo vinculante, con pagos entre ellas, que les daría un beneficio conjunto de 100. Sin acuerdo competirían à la Cournot y ganarían 40 la empresa 1 y 20 la empresa 2. Si el reparto es el de la solución de negociación de Nash, con un poder de negociación de la empresa 1 de $\\gamma=3/4$, los beneficios son:",
+   "opciones": {
+    "a": "$B_1=75$ y $B_2=25$.",
+    "b": "$B_1\\approx66{,}7$ y $B_2\\approx33{,}3$.",
+    "c": "$B_1=60$ y $B_2=40$.",
+    "d": "$B_1=70$ y $B_2=30$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Cada empresa recibe lo que ganaría sin acuerdo más una parte del excedente que crea el cártel, $100-40-20=40$, según su poder de negociación: $B_1=40+\\tfrac34\\cdot40=70$ y $B_2=20+\\tfrac14\\cdot40=30$.",
+    "desarrollo": "La solución de negociación de Nash maximiza $(B_1-B_1^0)^{\\gamma}(B_2-B_2^0)^{1-\\gamma}$ sujeto a $B_1+B_2=B^M$. Con utilidad transferible, la solución es\n\n$$B_1=B_1^0+\\gamma\\,(B^M-B_1^0-B_2^0)=40+0{,}75\\cdot40=70,\\qquad B_2=20+0{,}25\\cdot40=30.$$\n\nComprobación: con $B_1=40+x$ y $B_2=60-x$, se maximiza $x^{3/4}(40-x)^{1/4}$; la condición $\\tfrac34/x=\\tfrac14/(40-x)$ da $x=30$. Lo que se negocia es el excedente, no el total: el punto de desacuerdo (el equilibrio no cooperativo) fija lo que cada una puede exigir.\n\nPor qué fallan las demás:\n\n- a) Aplica $\\gamma$ al beneficio total y no al excedente: ignora el punto de desacuerdo.\n- b) Reparte el total en proporción a los beneficios sin acuerdo ($40:20$): es otra regla, que no tiene en cuenta el poder de negociación.\n- c) Es la solución simétrica, con $\\gamma=1/2$: cada una recibe 20 del excedente."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 El reparto de las ganancias: solución de negociación de Nash",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311917,
+   "estado": "publicada",
+   "enunciado": "Tres empresas iguales compiten à la Cournot con demanda $p=13-Q$ y coste marginal constante $c=1$. Dos de ellas se unen y pasan a actuar como una sola empresa, que sigue compitiendo à la Cournot con la tercera. Como referencia, si se unieran las tres en un cártel con reparto a partes iguales, cada una ganaría 12. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Las dos que se unen ganan 24 en conjunto y la tercera, 12: el cártel parcial se lleva dos tercios del beneficio de monopolio.",
+    "b": "Las dos que se unen ganan 16 en conjunto, menos que antes, y la tercera pasa de 9 a 16, más que en el cártel completo.",
+    "c": "Las dos que se unen ganan 32 en conjunto, 16 cada una, y la tercera sigue ganando 9, porque no ha cambiado su cantidad.",
+    "d": "Las dos que se unen ganan 18 en conjunto, lo mismo que antes, y la tercera pasa de 9 a 12, como en el cártel completo."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con $n$ empresas cada una gana $144/(n+1)^2$: 9 con tres y 16 con dos. Tras la unión hay dos competidores: el cártel parcial gana 16 (antes, $9+9=18$) y la empresa de fuera, 16. Es la paradoja de las fusiones: la de fuera se expande y se queda con la ganancia.",
+    "desarrollo": "Cournot con $n$ empresas iguales, $a-c=12$ y $b=1$: $q_i=12/(n+1)$ y $B_i=144/(n+1)^2$.\n\n- Antes ($n=3$): cada una produce 3 y gana 9; $p=4$.\n- Después ($n=2$): cada competidor produce 4 y gana 16; $p=5$. Las dos unidas reducen su producción conjunta de 6 a 4, y la de fuera aumenta la suya de 3 a 4 (las cantidades son sustitutos estratégicos).\n- Cártel completo: $B^M=36$, 12 cada una.\n\nDos conclusiones: los cárteles parciales no compensan ($16<18$; Salant, Switzer y Reynolds, 1983), y cada empresa prefiere que coludan las demás y quedarse fuera ($16>12$; Stigler, 1950). En términos de la función característica, $v(\\{i,j\\})=16<v(\\{i\\})+v(\\{j\\})=18$: por eso un reparto del cártel completo puede estar en el núcleo y, aun así, a cada empresa convenirle no cumplirlo.\n\nPor qué fallan las demás:\n\n- a) Supone que tras la unión se alcanza el beneficio de monopolio y se reparte por cabezas; pero la tercera no forma parte del acuerdo y compite.\n- c) Asigna 16 a cada una de las dos que se unen, cuando 16 es lo que gana la nueva empresa entera; y la tercera sí cambia su cantidad, porque responde a la menor producción de las otras.\n- d) La unión no es neutral para quienes la hacen: pierden 2 en conjunto; y la tercera gana 16, no los 12 que le daría el cártel completo."
+   },
+   "dificultad": 3,
+   "apartado": "III.1-III.2 Cárteles parciales: paradoja de las fusiones y ventaja de quedarse fuera",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311918,
+   "estado": "borrador",
+   "enunciado": "La colusión se sostiene con la estrategia del gatillo si $\\beta\\geq\\dfrac{B^{\\mathrm D}-B^{\\mathrm C}}{B^{\\mathrm D}-B^{\\mathrm N}}$, con $B^{\\mathrm C}$ el beneficio de coludir, $B^{\\mathrm D}$ el de desviarse y $B^{\\mathrm N}$ el del castigo. En esos términos, un programa de clemencia, que exime de la multa a la primera empresa que denuncia el cártel con pruebas, dificulta la colusión porque:",
+   "opciones": {
+    "a": "Reduce $B^{\\mathrm N}$: tras la denuncia, la competencia entre las empresas es más dura que en el equilibrio de Nash de la etapa.",
+    "b": "Aumenta $B^{\\mathrm C}$: las empresas que siguen en el cártel se reparten la cuota de la que denuncia.",
+    "c": "Reduce $B^{\\mathrm C}$, por la multa esperada, y aumenta $B^{\\mathrm D}$, porque quien se desvía y denuncia se ahorra la multa.",
+    "d": "Reduce el factor de descuento $\\beta$ de las empresas, que pasan a valorar menos los beneficios futuros del acuerdo."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La multa esperada resta valor a coludir ($B^{\\mathrm C}$ baja) y la exención añade a la ganancia de romper el acuerdo la de no pagar ($B^{\\mathrm D}$ sube). Las dos cosas elevan el cociente $(B^{\\mathrm D}-B^{\\mathrm C})/(B^{\\mathrm D}-B^{\\mathrm N})$. Además, convierte el cártel en un dilema del prisionero: si cada miembro teme que otro confiese, confesar es la mejor respuesta.",
+    "desarrollo": "El umbral $(B^{\\mathrm D}-B^{\\mathrm C})/(B^{\\mathrm D}-B^{\\mathrm N})$ crece cuando baja $B^{\\mathrm C}$ (aumenta el numerador) y cuando sube $B^{\\mathrm D}$ (su derivada respecto a $B^{\\mathrm D}$ es $(B^{\\mathrm C}-B^{\\mathrm N})/(B^{\\mathrm D}-B^{\\mathrm N})^2>0$). La clemencia actúa sobre los dos: la política sancionadora hace que coludir valga menos, y la exención premia al primero que rompe el acuerdo y denuncia. Los miembros del cártel compiten por llegar los primeros (Motta y Polo, 2003).\n\nPor qué fallan las demás:\n\n- a) Un castigo más duro (menor $B^{\\mathrm N}$) facilitaría la colusión, no la dificultaría: reduce el umbral. Y la clemencia no cambia cómo compiten las empresas tras la ruptura.\n- b) Un mayor $B^{\\mathrm C}$ haría la colusión más fácil de sostener; el efecto de la multa esperada es el contrario.\n- d) El factor de descuento recoge la paciencia de las empresas (el tipo de interés y la probabilidad de que la relación continúe): la clemencia no lo altera, sino que eleva el umbral con el que se compara."
+   },
+   "dificultad": 1,
+   "apartado": "III.3 Los límites de la cooperación: programas de clemencia",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

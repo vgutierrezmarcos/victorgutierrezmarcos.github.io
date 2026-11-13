@@ -1,0 +1,108 @@
+% Indicadores de la globalización, 1970-2024: pequeños múltiplos con el mismo
+% eje horizontal. Panel 1, comercio de bienes y servicios (X+M) en % del PIB
+% mundial (Banco Mundial, WDI); panel 2, flujos brutos de capital (entradas
+% brutas de ID + cartera + otra inversión, FMI BOP, cálculo propio, desde 1980)
+% e IED (entradas netas, WDI) en % del PIB mundial; panel 3, migrantes
+% internacionales en % de la población mundial (ONU DESA vía WDI; solo años
+% con dato). Datos: ../datos/indicadores-globalizacion.csv.
+% Valores de control: comercio 25,8 (1970), 60,3 (2008), 62,2 (2022, máximo),
+% 56,7 (2024); flujos brutos 21,6 (2007) y 6,1 (2024); IED 5,3 (2007) y 1,2
+% (2024); migrantes 2,9 (1990) y 3,7 (2024).
+% Paleta del tema: comercio en morado, capital en azules (flujos brutos azul
+% marino, IED azul medio discontinuo), personas en dorado.
+% Capas (CRITERIOS §7): sombreado 2008-2009 -> ejes y títulos -> comercio ->
+% capital -> migrantes -> puntos y rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/indicadores-globalizacion.csv}\indic
+\colorlet{glcomercio}{tceemorado}
+\colorlet{glbrutos}{dicze}
+\colorlet{glied}{dicopf}
+\colorlet{glpersonas}{tceedorado}
+\pgfplotsset{
+  panel/.style={
+    scale only axis, width=4.3cm, height=4.2cm,
+    xmin=1968, xmax=2026, xtick={1970,1990,2010},
+    minor xtick={1980,2000,2020},
+    xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+    yticklabel style={font=\footnotesize, /pgf/number format/.cd, use comma, 1000 sep=},
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+    unbounded coords=jump, dicapas,
+  },
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ------------------------------------------------------------------ panel 1
+  \begin{axis}[panel, name=p1, ymin=0, ymax=70, ytick={0,10,...,70}]
+    % 3: el comercio
+    \capa{3}{
+      \addplot[diclinea=glcomercio, forget plot] table[x=anio, y=comercio_pib] {\indic};
+    }
+    % 6: puntos y rótulos de 1970, 2008 y 2024
+    \capa{6}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=glcomercio]
+        coordinates {(1970,25.75) (2008,60.32) (2024,56.72)};
+      \dicrotulo[font=\footnotesize, text=glcomercio, anchor=north]{(1970,24.5)}{$25{,}8$}
+      \dicrotulo[font=\footnotesize, text=glcomercio, anchor=south east]{(2007.5,61)}{$60{,}3$ (2008)}
+      \dicrotulo[font=\footnotesize, text=glcomercio, anchor=west]{(2024.8,56.72)}{$56{,}7$}
+    }
+  \end{axis}
+  % ------------------------------------------------------------------ panel 2
+  \begin{axis}[panel, name=p2, at={($(p1.east)+(1.5cm,0)$)}, anchor=west,
+      ymin=0, ymax=24, ytick={0,4,...,24},
+      legend style={at={(0.02,0.80)}, anchor=north west, draw=none,
+        font=\footnotesize, row sep=-1pt},
+      legend cell align=left]
+    % 1: sombreado de la crisis financiera, 2008-2009
+    \capa{1}{
+      \dicsombra[fill=tceegris!18]{2007.5}{0}{2009.5}{24}
+    }
+    % 4: flujos brutos de capital e IED
+    \capa{4}{
+      \addplot[diclinea=glbrutos] table[x=anio, y=flujos_brutos_pib] {\indic};
+      \addlegendentry{flujos brutos}
+      \addplot[diclinea=glied, dash pattern=on 4pt off 2pt] table[x=anio, y=ied_pib] {\indic};
+      \addlegendentry{IED}
+    }
+    % 6: puntos y rótulos de 2007 y 2024
+    \capa{6}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=glbrutos]
+        coordinates {(2007,21.6) (2024,6.1)};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=glied]
+        coordinates {(2007,5.27) (2024,1.21)};
+      \dicrotulo[font=\footnotesize, text=glbrutos, anchor=east]{(2006.3,21.6)}{$21{,}6$ (2007)}
+      \dicrotulo[font=\footnotesize, text=glbrutos, anchor=west]{(2024.8,6.1)}{$6{,}1$}
+      \dicrotulo[font=\footnotesize, text=glied, anchor=south east, inner sep=1pt]{(2006.6,5.6)}{$5{,}3$}
+      \dicrotulo[font=\footnotesize, text=glied, anchor=west, inner sep=1pt]{(2024.8,1.21)}{$1{,}2$}
+    }
+  \end{axis}
+  % ------------------------------------------------------------------ panel 3
+  \begin{axis}[panel, name=p3, at={($(p2.east)+(1.5cm,0)$)}, anchor=west,
+      ymin=0, ymax=4.5, ytick={0,0.5,...,4.5},
+      yticklabel style={/pgf/number format/.cd, fixed, fixed zerofill, precision=1, use comma}]
+    % 5: los migrantes, solo en los años con dato
+    \capa{5}{
+      \addplot[diclinea=glpersonas, forget plot, unbounded coords=discard,
+          mark=*, mark size=1.6pt, mark options={fill=white, draw=glpersonas, line width=0.8pt}]
+        table[x=anio, y=migrantes_pob] {\indic};
+    }
+    % 6: rótulos de 1990 y 2024
+    \capa{6}{
+      \dicrotulo[font=\footnotesize, text=glpersonas!85!black, anchor=north]{(1990,2.7)}{$2{,}9$ (1990)}
+      \dicrotulo[font=\footnotesize, text=glpersonas!85!black, anchor=south]{(2024,3.9)}{$3{,}7$}
+    }
+  \end{axis}
+  % 2: títulos de los tres paneles
+  \capa{2}{
+    \node[anchor=south, align=center, font=\footnotesize\bfseries, text=glcomercio]
+      at ($(p1.north)+(0,0.15)$) {Comercio de bienes y servicios\\[-1pt]\mdseries (\% del PIB mundial)};
+    \node[anchor=south, align=center, font=\footnotesize\bfseries, text=glbrutos]
+      at ($(p2.north)+(0,0.15)$) {Flujos de capital\\[-1pt]\mdseries (\% del PIB mundial)};
+    \node[anchor=south, align=center, font=\footnotesize\bfseries, text=glpersonas!85!black]
+      at ($(p3.north)+(0,0.15)$) {Migrantes internacionales\\[-1pt]\mdseries (\% de la población mundial)};
+  }
+\end{tikzpicture}
+\end{document}

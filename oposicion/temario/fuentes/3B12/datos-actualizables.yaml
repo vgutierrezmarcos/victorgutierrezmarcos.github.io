@@ -1,0 +1,136 @@
+tema: 3B12
+fecha_inventario: 2026-11-11
+# Fase 2 (datos, 11/11/2026) y fase 3 (integración): los textos son los de 3B12.tex. Mismas cifras y fuentes que el 3.B.11 (familia bde-balanza).
+# Quedan fuera: los umbrales del PDM (son normas: cambian solo si la Comisión
+# revisa el cuadro; se anotan en la ficha semestre-europeo), los años cerrados
+# del ejemplo (2007, 2015, 2019: solo cambian con revisiones estadísticas) y las
+# fechas de las obras citadas.
+# Los CSV están en datos/.
+datos:
+  - id: cc-espana-2007
+    texto: "En 2007 España tuvo un déficit por cuenta corriente del 9,4~\\% del PIB, el mayor de su serie"
+    donde: [3B12.tex]
+    valor: [-9.4, -5.8]
+    unidad: "% del PIB"
+    periodo: 2007
+    fuente: BdE2026BE17
+    organismo: Banco de España
+    serie: "Boletín Estadístico, cap. 17 (cuadros 17.1-17.2), suma anual; % del PIB con Eurostat nama_10_gdp. Comprobación: Eurostat tipsbp11 (CA, GS)"
+    url: https://www.bde.es/webbe/es/estadisticas/compartido/datos/zip/be17.zip
+    periodicidad: histórico (revisiones anuales)
+    proxima: null
+    familia: bde-balanza
+    depende: [datos/cc-piin-espana.csv]
+    frase: "Enganche de la introducción y III.4 d) (con el 5,8 % de bienes y servicios). Mismo dato que 3.B.11 (enganche, l. 15) y 3.A.32 (id cuenta-corriente-espana)"
+
+  - id: cc-espana-2025-enganche
+    texto: "Desde 2012 tiene superávit por cuenta corriente: el 3,2~\\% del PIB en 2025"
+    donde: [3B12.tex]
+    valor: 3.2
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: BdE2026BE17
+    organismo: Banco de España
+    serie: "Boletín Estadístico, cap. 17, cuenta corriente anual en % del PIB. Comprobación: Eurostat tipsbp11 (CA)"
+    url: https://www.bde.es/webbe/es/estadisticas/compartido/datos/zip/be17.zip
+    periodicidad: anual
+    proxima: 2027-03
+    familia: bde-balanza
+    depende: [datos/cc-piin-espana.csv]
+    frase: "Enganche de la introducción; mismo dato que el 3.B.11 (l. 838). Con el año 2026 cerrado, cambiar «2025» y la cifra"
+
+  - id: sostenibilidad-espana-2007
+    texto: "Con una deuda exterior neta del 73~\\% del PIB a finales de 2006, un PIB nominal que creció un 7,2~\\% y un rendimiento implícito del 4,3~\\% […] Tuvo uno del 6,0~\\%, y la posición deudora neta pasó del 73~\\% al 85~\\% del PIB en un año. La ecuación sin otras variaciones daba un 77~\\%"
+    donde: [3B12.tex]
+    valor: {b_2006: 73.0, gN: 7.2, i_impl: 4.3, saldo_estab: -2.0, sx: -6.0, piin_2007: -85.0}
+    unidad: "% del PIB y %"
+    periodo: 2007
+    fuente: [Eurostat2026MIPExterior, Eurostat2026bopc6a, Eurostat2026nama10gdp, BdE2026BE17]
+    organismo: Eurostat y Banco de España
+    serie: "tipsii10 (MIO_NAC), bop_c6_a D4P__F (S1, mundo, BAL), nama_10_gdp B1GQ CP_MEUR; cálculo propio"
+    url: https://ec.europa.eu/eurostat/databrowser/view/tipsii10/default/table
+    periodicidad: histórico (revisiones anuales)
+    proxima: null
+    familia: bde-balanza
+    depende: [datos/sostenibilidad-espana.csv]
+    frase: "Ejemplo de la «Aplicación práctica para España»; rehacer si el INE o el BdE revisan 2006-2007"
+
+  - id: sostenibilidad-espana-2015-2019
+    texto: "Con superávits de bienes y servicios de en torno al 3~\\% del PIB, cuando bastaba con no pasar de un déficit de 3,8 y 2,2 puntos, la posición deudora bajó 7,5 y 6 puntos"
+    donde: [3B12.tex]
+    valor: {cc_2015: 2.0, bys_2015: 3.0, b_2014: 95.2, gN_2015: 4.6, i_2015: 0.5, estab_2015: -3.8, sx_2015: 3.1, piin_2015: -87.7, cc_2019: 2.1, b_2018: 78.0, gN_2019: 3.4, i_2019: 0.4, estab_2019: -2.2, piin_2019: -72.0}
+    unidad: "% del PIB y %"
+    periodo: [2015, 2019]
+    fuente: [BdE2026BE17, Eurostat2026MIPExterior, Eurostat2026bopc6a]
+    organismo: Banco de España y Eurostat
+    serie: "Igual que sostenibilidad-espana-2007"
+    url: https://ec.europa.eu/eurostat/databrowser/view/bop_c6_a/default/table
+    periodicidad: histórico (revisiones anuales)
+    proxima: null
+    familia: bde-balanza
+    depende: [datos/sostenibilidad-espana.csv]
+    frase: "Sustituye a los déficits de 2,4 % y 2,78 % del original (eran superávits)"
+
+  - id: sostenibilidad-espana-ultimo
+    texto: "con una deuda neta del 40~\\%, un crecimiento nominal del 5,7~\\% y un rendimiento implícito del 0,7~\\%, el saldo estabilizador era un déficit de 1,9 puntos, y hubo un superávit sin rentas de la inversión del 4,5~\\%. Aun así, la posición empeoró de $-39{,}9$~\\% a $-42{,}7$~\\%, porque las revalorizaciones restaron unos 10 puntos del PIB […] A mediados de 2026 era del $-40{,}7$~\\%"
+    donde: [3B12.tex]
+    valor: {cc_2025: 3.2, piin_2025: -42.7, piin_2t2026: -40.7, b_2024: 39.9, gN_2025: 5.7, i_2025: 0.7, estab_2025: -1.9, sx_2025: 4.5, revalorizaciones_2025: -10.0}
+    unidad: "% del PIB y %"
+    periodo: "2025 (anual) y 2T2026 (PIIN)"
+    fuente: [BdE2026BE17, BdE2026PII2T, Eurostat2026bopc6a, Eurostat2026MIPExterior]
+    organismo: Banco de España
+    serie: "BE cap. 17 (17.1, 17.21); nota trimestral de la PII; Eurostat tipsii10, bop_c6_a"
+    url: https://www.bde.es/wbe/es/noticias-eventos/actualidad-banco-espana/bop-pii-2t2026.html
+    periodicidad: trimestral (PII) y anual (cálculo)
+    proxima: 2026-12
+    familia: bde-balanza
+    depende: [datos/cc-piin-espana.csv, datos/sostenibilidad-espana.csv]
+    frase: "La PII del 3T2026 sale el 23/12/2026; el año 2026 completo, en marzo-junio de 2027 (rehacer el cálculo con 2026). Mismas cifras que el 3.B.11 (l. 618 y tab:pii-espana)"
+
+  - id: pdm-espana-exterior
+    texto: "España cumple el primer indicador exterior del procedimiento de desequilibrios (una media de 3 años del saldo corriente del 3,1~\\% en 2025) y no el segundo: su posición neta, del $-42{,}7$~\\%, sigue por debajo del $-35$~\\%"
+    donde: [3B12.tex]
+    valor: {cc_media3: 3.1, piin: -42.7, nendi: -9.6}
+    unidad: "% del PIB"
+    periodo: 2025
+    fuente: Eurostat2026MIPExterior
+    organismo: Eurostat (Comisión Europea, cuadro del PDM)
+    serie: "tipsbp10, tipsii10, tipsii50 (ES, WRL_REST)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/tipsii10/default/table
+    periodicidad: anual (con el IMA de otoño; Eurostat actualiza en octubre)
+    proxima: 2027-10
+    familia: eurostat-pdm
+    depende: []
+    frase: "Familia nueva propuesta (eurostat-pdm): indicadores del cuadro del PDM por país; los usan también 3.B.11 (V28) y 1D01. Si sale el IMA 2027 (finales de noviembre de 2026) con otro cuadro, revisar también la ficha semestre-europeo"
+
+  - id: grafico-cc-piin-espana
+    texto: "Gráfico: España, cuenta corriente y posición de inversión internacional neta (% del PIB), 1995-2025"
+    donde: [3B12.tex, graficos/cc-piin-espana.tex]
+    valor: null
+    unidad: "% del PIB"
+    periodo: 1995-2025
+    fuente: [BdE2026BE17, Eurostat2026MIPExterior, Eurostat2026nama10gdp]
+    organismo: Banco de España y Eurostat
+    serie: "BE cap. 17 (CC, bienes y servicios, capacidad); tipsbp10; tipsii10 (MIO_NAC) / nama_10_gdp"
+    url: https://www.bde.es/webbe/es/estadisticas/compartido/datos/zip/be17.zip
+    periodicidad: anual
+    proxima: 2027-03
+    familia: bde-balanza
+    depende: [datos/cc-piin-espana.csv]
+    frase: "Añadir 2026 cuando el BdE cierre el año (balanza de diciembre a finales de febrero; PII del 4T a finales de marzo). Las 3 primeras columnas deben coincidir con 3B11/datos/bp-espana-capacidad-cuenta-financiera.csv"
+
+  - id: fmi-marcos-dsa
+    texto: "Se revisó en septiembre de 2026, y el marco nuevo se aplicará desde el verano de 2027"
+    donde: [3B12.tex]
+    valor: null
+    unidad: null
+    periodo: "septiembre de 2026 (revisión); verano de 2027 (aplicación)"
+    fuente: [FMI2026LICDSF, FMI2022SRDSF]
+    organismo: FMI y Banco Mundial
+    serie: "Marcos de análisis de sostenibilidad de la deuda (LIC DSF y SRDSF)"
+    url: https://www.imf.org/en/About/Factsheets/Sheets/2023/IMF-World-Bank-debt-sustainability-framework-for-low-income-countries
+    periodicidad: irregular (revisiones cada 5-8 años)
+    proxima: 2027-07
+    familia: fmi-dsa
+    depende: []
+    frase: "Familia nueva propuesta (fmi-dsa); la usarán también 3.B.22 y 3.A.39. En el verano de 2027 cambiar «se aplicará desde 2027» por el marco ya en vigor y su nueva nota de orientación"

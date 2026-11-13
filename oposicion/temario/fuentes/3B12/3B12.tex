@@ -1,0 +1,1407 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B12.bib}
+\tcetema[Mecanismos de ajuste de la balanza de pagos]{3.B.12}{Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.}
+\tcefecha{11/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «De aquellos polvos, estos lodos», dice el refrán. En 2007 España tuvo un déficit por cuenta corriente del 9,4~\% del PIB, el mayor de su serie, y el resto del mundo se lo financió sin pedir explicaciones \parencites{BdE2026BE17}{Eurostat2026tipsbp11}.
+  \item Los lodos llegaron con la crisis: la financiación exterior se cortó y España, dentro del euro, no podía devaluar. Tuvo que ajustar por otras vías, con la renta, el gasto y los precios y salarios. Desde 2012 tiene superávit por cuenta corriente: el 3,2~\% del PIB en 2025 \parencite{BdE2026BE17}.
+  \item Detrás hay 3 preguntas, que son las del título de esta exposición: ¿cómo se corrige un desequilibrio exterior?, ¿era malo aquel déficit o la decisión razonable de un país que invertía?, ¿y hasta cuándo se puede financiar?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Los desequilibrios exteriores que no se corrigen a tiempo acaban en crisis de balanza de pagos, con ajustes bruscos que recaen sobre la producción y el empleo: América Latina en los 80, Asia en 1997, la periferia del euro en 2010-2012 \parencite{CataoMilesiFerretti2014} \vertema{3.B.17}.
+  \item Por eso el saldo exterior y la posición de inversión internacional están en el centro de la supervisión del Fondo Monetario Internacional (FMI) \vertema{3.B.22} y del procedimiento de desequilibrios macroeconómicos de la UE \vertema{3.B.45}.
+  \item Y la pregunta de quién debe ajustar, el deudor o el acreedor, sigue abierta desde Bretton Woods, donde \autor{John Maynard Keynes} propuso que ajustaran los 2 \parencite{Keynes1943Proposals} \vertema{3.B.19}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item La \concepto{balanza de pagos} registra las transacciones entre residentes y no residentes durante un periodo. Por la partida doble siempre cuadra, pero sus cuentas no tienen por qué estar equilibradas \vertema{3.B.11}.
+  \item Un \concepto{desequilibrio exterior} es un saldo de la cuenta corriente (o de la balanza básica, o del saldo global, según la época) que no se puede mantener sin perder reservas, recurrir a financiación excepcional o hacer un ajuste brusco. El \concepto{equilibrio externo} es, al revés, un saldo corriente que no pone en peligro la sostenibilidad exterior: la capacidad del país de hacer frente a sus obligaciones con el exterior en el futuro.
+  \item Un \concepto{mecanismo de ajuste} es el proceso, automático o inducido por la política económica, que corrige ese desequilibrio: a través de los precios relativos y el tipo de cambio, de la renta, de las reservas y la cantidad de dinero, o de los flujos de capital.
+  \item \emph{La evolución de las ideas}:
+    \begin{itemize}
+    \item Las teorías del ajuste nacieron con tipos de cambio fijos y poco capital móvil, porque con tipo flexible y sin capitales el tipo de cambio equilibraría por sí solo la cuenta corriente \vertema{3.B.13}. Durante décadas, un déficit se veía como algo preocupante que había que corregir.
+    \item Desde los 70, con la liberalización de los capitales, el foco pasa de los flujos de bienes a los \emph{stocks} de activos.
+    \item En los 80 llega el \concepto{enfoque intertemporal}, que ve la cuenta corriente como el resultado de decisiones óptimas de ahorro e inversión. Lo preocupante deja de ser el déficit en sí y pasa a ser su \concepto{sostenibilidad}.
+    \end{itemize}
+  \item \emph{Convención}: $E$ es el tipo de cambio nominal directo (unidades de moneda nacional por unidad de divisa), de modo que una subida de $E$ es una depreciación, y $q\equiv EP^*/P$ es el tipo de cambio real (una subida de $q$ es una depreciación real) \vertema{3.B.13}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Se corrigen solos los desequilibrios exteriores? ¿A través de qué variables: los precios relativos, la renta, las reservas o el capital?
+  \item ¿Es malo un déficit por cuenta corriente? ¿Quién debe prestar y quién pedir prestado?
+  \item ¿Cuándo es sostenible un déficit, y qué deuda exterior puede soportar un país?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición va de los flujos a los \emph{stocks} y de los \emph{stocks} a la elección intertemporal; cada enfoque relaja un supuesto del anterior.
+    \begin{itemize}
+    \item En el bloque~\ref{sec:flujos}, los mecanismos basados en el tipo de cambio y la renta: los enfoques keynesianos de las elasticidades, el multiplicador y la absorción, y, con capital móvil, el modelo IS-LM-BP.
+    \item En el bloque~\ref{sec:stocks}, los basados en las reservas: el flujo-especie, su antecedente más antiguo, y los enfoques monetario y de cartera.
+    \item En el bloque~\ref{sec:intertemporal}, el enfoque intertemporal, que pregunta si hay que ajustar, y el análisis de sostenibilidad, que pone el límite a la respuesta.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.12. Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior}\\[2pt]
+Introducción\esqtiempo{2,5}\\
+I. Mecanismos de ajuste basados en el tipo de cambio y la renta: enfoques keynesianos\esqtiempo{10}\\
+\hspace*{1.5em}1. El enfoque de las elasticidades y la condición de \autor{Marshall}-\autor{Lerner}\\
+\hspace*{1.5em}2. El enfoque del multiplicador\\
+\hspace*{1.5em}3. El enfoque de la absorción\\
+\hspace*{1.5em}4. Con movilidad del capital y tipo flexible: IS-LM-BP y asignación de \autor{Mundell}\\
+II. Mecanismos de ajuste basados en las reservas: enfoques de \emph{stocks}\esqtiempo{5}\\
+\hspace*{1.5em}1. El mecanismo flujo-especie\\
+\hspace*{1.5em}2. El enfoque monetario de la balanza de pagos\\
+\hspace*{1.5em}3. El enfoque de cartera\\
+III. El enfoque intertemporal de la balanza de pagos y la sostenibilidad exterior\esqtiempo{11,5}\\
+\hspace*{1.5em}1. Del ajuste a la elección: la idea del enfoque intertemporal\\
+\hspace*{1.5em}2. El modelo de 2 periodos\\
+\hspace*{1.5em}3. Valoración y extensiones del enfoque intertemporal\\
+\hspace*{1.5em}4. Análisis de sostenibilidad del déficit y de la deuda exterior\\
+Conclusión\esqtiempo{1}
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10} (I.1, \tiempo{4}; I.2, \tiempo{1,5}; I.3, \tiempo{2,5}; I.4, \tiempo{2}); II, \tiempo{5} (II.1, \tiempo{2}; II.2, \tiempo{2}; II.3, \tiempo{1}); III, \tiempo{11,5} (III.1, \tiempo{1}; III.2, \tiempo{4}; III.3, \tiempo{1,5}; III.4, \tiempo{5}), y conclusión, \tiempo{1}. Los modelos antiguos (bloques~\ref{sec:flujos} y~\ref{sec:stocks}) se cuentan deprisa y el peso va al enfoque intertemporal y a la sostenibilidad. Conviene decir al empezar la convención del tipo de cambio (directo: si sube, se deprecia la moneda): así el tribunal sigue sin dudas los signos de las elasticidades y de los desplazamientos. España vuelve como ejemplo en la absorción, en el modelo intertemporal y en la sostenibilidad, y el refrán del enganche cierra la idea final. Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+\end{notaopositor}
+
+% ==========================================================================
+\section{Mecanismos de ajuste basados en el tipo de cambio y la renta:\cortetitulo{} enfoques keynesianos}\label{sec:flujos}
+\minutos{10}
+
+\begin{notaopositor}
+En el cante (\tiempo{10}): las elasticidades con la condición de \autor{Marshall}-\autor{Lerner}, la curva J y el traspaso (\tiempo{4}); el multiplicador, de palabra y con una sola ecuación (\tiempo{1,5}); la absorción con su ecuación, los 2 efectos y las 2 políticas de \autor{Johnson} (\tiempo{2,5}); el IS-LM-BP, la asignación de \autor{Mundell} y el tipo flexible, de palabra (\tiempo{2}). Las derivaciones completas y los casos del multiplicador son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item Empezamos por los enfoques que miran los \emph{flujos} de bienes y servicios: cómo se corrige el saldo comercial cuando cambian los precios relativos o la renta.
+\item \emph{Conclusión anticipada}:
+  \begin{itemize}
+  \item Con precios rígidos y capital inmóvil, una devaluación mejora el saldo solo si las cantidades reaccionan lo suficiente (la condición de \autor{Marshall}-\autor{Lerner}), y a corto plazo puede empeorarlo.
+  \item El ajuste por la renta es incompleto.
+  \item Con pleno empleo, la devaluación solo funciona si se reduce el gasto interior.
+  \item Con capital móvil, el régimen cambiario decide qué variable hace el ajuste, y la política económica tiene que repartir sus instrumentos.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque de las elasticidades\cortetitulo{} y la condición de \autor{Marshall}-\autor{Lerner}}\label{sec:elasticidades}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Tras la Primera Guerra Mundial, la vuelta al patrón oro puso en duda el ajuste automático del flujo-especie, el mecanismo de \autor{David Hume} que se estudia con los enfoques de \emph{stocks} (\ref{sec:flujo-especie}).
+  \begin{itemize}
+  \item \autor{Keynes} se opuso a que la libra volviera al oro con la paridad de antes de la guerra, porque obligaba a un país con déficit como el Reino Unido a bajar precios y salarios, algo políticamente inviable con unos sindicatos cada vez más organizados \parencite{Keynes1925Economic}.
+  \item De ahí su defensa de que el Estado buscara a la vez el equilibrio interno y el externo, y de que, para el externo, pudiera ser mejor devaluar el tipo de cambio nominal que forzar una devaluación interna. La idea siguió viva con los tipos fijos pero ajustables y la escasa movilidad del capital de Bretton Woods.
+  \end{itemize}
+\item Gana fuerza así la idea de que el ajuste puede requerir medidas explícitas de política económica, sobre todo devaluaciones. Pero las devaluaciones sucesivas de los años 30 no dieron el resultado esperado, y la teoría se preguntó qué condiciones tienen que cumplirse para que una devaluación mejore la balanza.
+  \begin{itemize}
+  \item Las formularon por separado \textcite{Robinson1937Foreign} y \textcite[cap.~28]{Lerner1944}, a partir de \textcite{Marshall1923}.\footnote{La atribución a \autor{Marshall} es discutible: sus condiciones se refieren a la estabilidad del equilibrio en el trueque, con curvas de oferta neta, que no sirven para ver cómo influye el tipo de cambio en la balanza de una economía monetaria. Además, \autor{Joan Robinson} la trató antes que \autor{Lerner}, y antes aún \textcite{Bickerdike1920Instability} dio el primer tratamiento completo. Por eso se habla también de \concepto{condición crítica de las elasticidades} \parencite[cap.~7]{Gandolfo2016International}. La condición de estabilidad del equilibrio en el trueque es la misma \vertema{3.B.5}.}
+  \end{itemize}
+\item Una depreciación tiene 2 efectos de signo contrario sobre el saldo comercial:
+  \begin{enumerate}
+  \item el \concepto{efecto valor} (o precio), negativo: cada unidad importada cuesta más en moneda nacional;
+  \item el \concepto{efecto volumen}, positivo: se exporta más y se importa menos, porque lo nacional se abarata frente a lo extranjero.
+  \end{enumerate}
+\item La depreciación mejora el saldo si el efecto volumen supera al efecto valor, es decir, si las exportaciones y las importaciones son lo bastante sensibles al tipo de cambio real.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Precios fijos en la moneda del productor}: el precio de lo nacional, $P$, está fijo en moneda nacional y el de lo extranjero, $P^*$, en divisas. Una devaluación nominal es, por tanto, una depreciación real.
+\item \emph{Recursos ociosos}: la producción se adapta a la demanda. Las ofertas de exportaciones y de importaciones son infinitamente elásticas, y las cantidades las fijan las demandas.
+\item \emph{Equilibrio parcial}: el dinero y los capitales quedan en segundo plano y la balanza de pagos se reduce a la balanza comercial. La política monetaria está aislada del exterior, porque hay controles de capital o porque se esterilizan los movimientos de reservas.
+\item \emph{País pequeño en las importaciones, con algo de poder en las exportaciones}: su demanda de exportaciones tiene pendiente negativa.
+\item \emph{Comercio inicialmente equilibrado}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con $X(q)$ y $M(q)$ los volúmenes exportado e importado, el saldo comercial en unidades del bien nacional es
+  \begin{equation}\label{eq:saldo-comercial}
+  \mathrm{XN}=X(q)-q\,M(q),\qquad q\equiv\frac{E\,P^*}{P}.
+  \end{equation}
+  Con estos supuestos, $q$ es también la relación entre el precio de las importaciones y el de las exportaciones multiplicada por $E$.
+\item Derivando respecto a $q$, con las elasticidades al tipo real con su signo, $\varepsilon_{X,q}\equiv\frac{\mathrm dX}{\mathrm dq}\frac{q}{X}>0$ y $\varepsilon_{M,q}\equiv\frac{\mathrm dM}{\mathrm dq}\frac{q}{M}<0$:
+  \begin{equation}\label{eq:ml-derivada}
+  \frac{\mathrm d\,\mathrm{XN}}{\mathrm dq}=M\left(\frac{X}{q\,M}\,\varepsilon_{X,q}-\varepsilon_{M,q}-1\right).
+  \end{equation}
+\item Con comercio equilibrado, $X=q\,M$, la depreciación mejora el saldo si y solo si se cumple la \concepto{condición de \autor{Marshall}-\autor{Lerner}}:
+  \funcionclave[eq:marshall-lerner]{\frac{\mathrm d\,\mathrm{XN}}{\mathrm dq}>0\iff\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert>1}
+\item \emph{En palabras}: \uline{la suma de los valores absolutos de las elasticidades de las demandas de exportaciones y de importaciones al tipo de cambio real tiene que superar a 1}. Solo entonces el efecto volumen compensa el encarecimiento de lo que ya se importaba.
+\item \emph{Vista desde el mercado de divisas}: con elasticidades bajas, la oferta de divisas tiene un tramo decreciente (una depreciación reduce el valor en divisas de lo exportado), y el mercado de divisas puede ser inestable \vertema{3.B.13}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Si se cumple~\eqref{eq:marshall-lerner}, una devaluación corrige un déficit comercial: aumenta mucho las exportaciones y reduce mucho las importaciones.
+\item Las elasticidades dependen de:
+  \begin{itemize}
+  \item \emph{la estructura de los mercados de exportación}: cuanto más cerca de la competencia perfecta, más elástica es la demanda de las exportaciones de cada país;
+  \item \emph{la diferenciación de las exportaciones}: cuanto más diferenciadas, menos elásticas;
+  \item \emph{la sustituibilidad de las importaciones}: cuanto más fácil es sustituirlas por producción nacional, más elástica es su demanda;
+  \item \emph{el plazo}: a largo plazo las cantidades reaccionan más.
+  \end{itemize}
+\item Si no se cumple, aparece la \concepto{paradoja de las elasticidades}: si con elasticidades bajas una devaluación empeora el saldo, sería una \emph{apreciación} la que lo mejoraría.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Con déficit inicial} ($X<q\,M$), que es lo habitual cuando se devalúa, la condición en moneda nacional es más exigente:
+  \begin{equation}\label{eq:ml-deficit}
+  \frac{X}{q\,M}\,\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert>1 ,
+  \end{equation}
+  porque la elasticidad de las exportaciones se multiplica por un número menor que 1: con un déficit grande, la condición puede fallar aunque la suma de las elasticidades supere a 1.
+\item \emph{En divisas} la condición es menos exigente: $\lvert\varepsilon_{X,q}\rvert+\frac{q\,M}{X}\lvert\varepsilon_{M,q}\rvert>1$. Con déficit y la suma de las elasticidades igual a 1, una depreciación mejoraría el saldo en divisas y lo empeoraría en moneda nacional:\footnote{Con superávit inicial ocurriría lo contrario, pero no es el caso habitual de un país que devalúa.} hay que decir siempre en qué moneda se mide (anexo~\ref{anexo:marshall-lerner}).
+\item \emph{Con ofertas finitas} (condición de \autor{Bickerdike}-\autor{Robinson}-\autor{Metzler}) la condición es menos exigente que~\eqref{eq:marshall-lerner}, porque parte de la depreciación la absorben los precios de oferta (anexo~\ref{anexo:marshall-lerner}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Pesimismo y optimismo de las elasticidades}: las estimaciones de los años 30 y 40 daban elasticidades muy bajas y alimentaron el pesimismo; los optimistas sostenían lo contrario.
+  \begin{itemize}
+  \item El debate no se resolvió con datos, y no es raro: eran ecuaciones de equilibrio parcial, que ignoraban la simultaneidad entre la renta, los precios y el comercio, y sesgaban a la baja las elasticidades \parencite[cap.~7]{Gandolfo2016International}.
+  \end{itemize}
+\item Con métodos de cointegración, \textcite{HooperJohnsonMarquez2000} estiman las elasticidades a largo plazo de los países del G-7 y concluyen que, salvo en Francia y Alemania, cumplen la condición de \autor{Marshall}-\autor{Lerner}.\footnote{Su estudio empieza con una frase que resume por qué importa la cuestión: «One can hardly exaggerate the role played by trade elasticities in translating economic analysis into policy recommendations».}
+\item La evidencia reciente confirma que el tipo de cambio sigue importando: con datos de más de 50 economías, el FMI estima que una depreciación real efectiva del 10~\% eleva de media las exportaciones netas reales en 1,5 puntos del PIB, buena parte en el primer año \parencite{FMI2015WEOoct}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{La curva J}: a corto plazo los volúmenes apenas cambian, porque hay contratos firmados y cambiar de proveedor lleva tiempo, y domina el efecto valor. El saldo empeora antes de mejorar \parencite{Magee1973}.
+  \begin{itemize}
+  \item Con el comercio facturado en dólares (\emph{dominant currency pricing}), la depreciación encarece enseguida las importaciones pero apenas abarata las exportaciones a corto plazo, y la J es más profunda \parencite{Gopinath2020DCP}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La curva J}\label{fig:curva-j}
+\grafico[0.62\textwidth]{curva-j}
+\fuente{Elaboración propia a partir de \textcite{Magee1973}. Tras la depreciación, el saldo empeora mientras domina el efecto valor y mejora cuando las cantidades reaccionan.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{El traspaso} (\emph{pass-through}) tiene 2 sentidos que conviene distinguir:
+  \begin{itemize}
+  \item \emph{a los precios de exportación en divisas}: si los exportadores aprovechan la depreciación para subir sus márgenes en moneda nacional, el precio en divisas baja menos y el efecto volumen es menor. El traspaso es mayor cuanto menos poder de mercado tienen los exportadores y cuanto más duradera se cree que es la depreciación (si se cree temporal, no compensa pagar los costes de cambiar los precios);
+  \item \emph{a los precios interiores}, primero a los de importación y después al IPC: si la depreciación pasa a los precios y a los salarios, el tipo de cambio real vuelve a apreciarse (si $P$ sube tanto como $E$, $q=EP^*/P$ no cambia). Es mayor con inflación alta y poco creíble, mucho peso de las importaciones y salarios indexados \parencite{Taylor2000PassThrough,CampaGoldberg2005,BursteinGopinath2014} \vertema{3.A.37}.
+  \end{itemize}
+\item \emph{Los precios fijos}: el enfoque supone que una devaluación nominal es real. Si la devaluación genera inflación, algo frecuente en la práctica, el tipo de cambio real puede incluso apreciarse.
+\item \emph{Las reacciones del resto del mundo}: la devaluación funciona si los demás no la imitan. Es una política de empobrecimiento del vecino, y las devaluaciones competitivas de entreguerras se anularon unas a otras \vertema{3.B.20}.
+\item \emph{El equilibrio parcial}: el enfoque no tiene en cuenta que la mejora del saldo eleva la renta y, con ella, las importaciones. Es lo que añade el enfoque del multiplicador.
+\end{itemize}
+
+\begin{anotaciones}
+\begin{itemize}
+\item Una explicación del FMI sobre el tipo de cambio, el comercio y la facturación en dólares, en vídeo: \emph{Analyze This! Exchange Rates and Trade with Gita Gopinath}, \url{https://youtu.be/aApyiK-dDtc} \parencite{FMIAnalyzeThisGopinath}.
+\item Un ejemplo del traspaso a los precios interiores, el de Argentina: \textcite{Alvarez2022PassThrough}.
+\end{itemize}
+\end{anotaciones}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque del multiplicador}\label{sec:multiplicador}
+
+\begin{notaopositor}
+El multiplicador se cuenta de palabra, como una extensión de las elasticidades que añade los efectos sobre la renta: basta con la ecuación~\eqref{eq:multiplicador-xn} y la idea de que el ajuste es incompleto.
+\end{notaopositor}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Harrod1933International} introduce el \concepto{multiplicador del comercio exterior}, antes de que \autor{Keynes} hiciera del multiplicador una pieza de la \emph{Teoría general}\footnote{\autor{Richard Kahn} propuso el multiplicador en 1931, con 25 años; \autor{Keynes} lo usó en la \emph{Teoría general} (1936) \parencite{Kahn1931Relation}.}, y \textcite{Machlup1943International} lo desarrolla. La pregunta: ¿corrige la renta un desequilibrio comercial cuando los precios y el tipo de cambio están fijos?
+\item El enfoque importa por 2 motivos:
+  \begin{enumerate}
+  \item es la contrapartida, también de equilibrio parcial, del análisis basado solo en el tipo de cambio, y el primer paso para integrar los 2 mecanismos;\footnote{El efecto renta del multiplicador es el que \textcite{Ohlin1929Reparation} opuso a \textcite{Keynes1929German} en el debate sobre las reparaciones alemanas. Una transferencia reduce el gasto, y las importaciones, del país que paga y lo aumenta en el que recibe. Si las propensiones a importar de los 2 suman 1, los efectos renta bastan para que la transferencia se haga sin cambiar los precios; si suman menos, como pensaba \autor{Keynes}, la relación real de intercambio del país que paga tiene que empeorar \vertema{3.B.5}.}
+  \item vale por sí mismo cuando el tipo de cambio y los precios son rígidos.
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Modelo keynesiano de economía abierta}: recursos ociosos y precios, tipo de cambio y tipo de interés rígidos. La producción se ajusta al exceso de demanda, venga de donde venga.
+\item \emph{Sin movimientos de capital}: la balanza de pagos es la balanza comercial.
+\item \emph{País pequeño}: lo que pasa en el país no afecta a la renta del resto del mundo, de modo que sus exportaciones, $\overline X$, son exógenas.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con $\overline A\equiv\overline C+\overline I+\overline G$ el gasto autónomo, $c$ la propensión marginal a consumir, $z$ la propensión marginal a invertir (la inversión inducida por la renta, local de este tema), $b$ la sensibilidad de la inversión al tipo de interés y $m$ la \emph{propensión marginal a importar}, el equilibrio del mercado de bienes es
+  \begin{equation}\label{eq:multiplicador-comercio}
+  Y=\overline A-b\,i+(c+z)\,Y+\overline X-\left(\overline M+m\,Y\right)\quad\Longrightarrow\quad Y=\frac{\overline A-b\,i+\overline X-\overline M}{1-c-z+m},
+  \end{equation}
+  con $1-c-z+m>0$. Es el multiplicador sin impuestos; con ellos, $c$ pasa a ser $c\,(1-t)$, como en el modelo de \autor{Mundell}-\autor{Fleming} \vertema{3.A.32}.
+  \begin{itemize}
+  \item El multiplicador abierto es menor que el cerrado: parte del gasto se va en importaciones.
+  \end{itemize}
+\item El saldo comercial cambia por lo exógeno y por las importaciones inducidas por la renta, $m\,\Delta Y$. Con el gasto autónomo interior y el tipo de interés constantes:
+  \begin{equation}\label{eq:multiplicador-xn}
+  \Delta\mathrm{XN}=\left(\Delta\overline X-\Delta\overline M\right)\frac{1-c-z}{1-c-z+m}.
+  \end{equation}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Un aumento autónomo de las exportaciones} eleva la renta, y con ella las importaciones. Si la propensión marginal a gastar es menor que 1 ($c+z<1$), \uline{el ajuste por la renta es incompleto}: el saldo mejora, pero menos que el aumento inicial de las exportaciones, $0<\Delta\mathrm{XN}<\Delta\overline X$.
+  \begin{itemize}
+  \item Si $c+z>1$, las importaciones inducidas superan al aumento de las exportaciones y aparece un déficit: con más propensión a gastar, el multiplicador es mayor y la renta tira más de las importaciones. Es un caso poco realista.
+  \end{itemize}
+\item \emph{Un aumento autónomo de las importaciones} tiene 2 lecturas:
+  \begin{itemize}
+  \item si sustituye a gasto en bienes nacionales, la renta baja y el saldo empeora en $\Delta\overline M\,(1-c-z)/(1-c-z+m)$, menos que el aumento inicial;
+  \item si se suma al gasto interior sin reducir el de bienes nacionales, la renta no cambia y el saldo empeora en todo $\Delta\overline M$: no hay ajuste.
+  \end{itemize}
+\item Los casos, paso a paso, en el anexo~\ref{anexo:multiplicador}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Podría pensarse que el multiplicador está superado: la transmisión de la política fiscal se analiza hoy con modelos econométricos de varios países enlazados por sus sectores exteriores.
+\item Sin embargo, \textcite{DeardorffStern1979Linked} compararon las simulaciones fiscales de varios modelos enlazados con las de un multiplicador sencillo como~\eqref{eq:multiplicador-comercio}, y los resultados del multiplicador caían casi siempre dentro del rango de los modelos. \autor{Ferrara} y \autor{Rotondi} (1989) repitieron el ejercicio con otros periodos y resultados parecidos \parencite[cap.~8]{Gandolfo2016International}.
+\item \emph{En palabras}: el multiplicador abierto sigue siendo útil para una primera idea de la transmisión internacional de la política fiscal.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{Equilibrio parcial}: falta el mercado de dinero. Con una LM, $M/P=k\,Y-h\,i$, donde $k$ es la sensibilidad de la demanda de dinero a la renta y $h$ al tipo de interés, la mayor renta sube el tipo de interés y frena la inversión \vertema{3.A.32}.
+  \begin{itemize}
+  \item El efecto renta es menor, y la devaluación mejora más el saldo, cuanto más sensible es la inversión al tipo de interés ($b$) y cuanto mayor es $k$.
+  \item Es mayor, y la devaluación mejora menos el saldo, cuanto mayor es $h$: con una LM plana, cerca de la trampa de la liquidez, el efecto renta es máximo.
+  \end{itemize}
+\item \emph{País pequeño}: ignora la repercusión sobre el resto del mundo. Con 2 países, la depreciación que mejora el saldo de uno baja la renta del otro, que le compra menos. El signo del efecto lo sigue dando la condición de \autor{Marshall}-\autor{Lerner}, pero la mejora es menor: los efectos renta frenan el ajuste (anexo~\ref{anexo:multiplicador}).
+\item \emph{No da una condición sobre la depreciación}: solo dice qué parte de una mejora de las exportaciones netas llega al saldo. \textcite{Harberger1950Currency} y \textcite{LaursenMetzler1950} unieron las elasticidades y la renta con 2 países grandes: la depreciación empeora la relación real de intercambio y reduce la renta real; si el ahorro cae y la absorción baja menos que la renta, y la condición sobre las elasticidades se vuelve \emph{más exigente}. Es el efecto \autor{Harberger}-\autor{Laursen}-\autor{Metzler}, que el enfoque intertemporal revisará (\ref{sec:intertemporal-valoracion}).
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque de la absorción}\label{sec:absorcion}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El multiplicador supone recursos ociosos, de modo que la producción puede crecer. \textcite{Alexander1952Effects} escribe a principios de los 50, en la «edad dorada», cuando lo realista es el \emph{pleno empleo}, y estudia el ajuste cuando la producción no puede aumentar.\footnote{Para \autor{Sidney Alexander} el caso de pleno empleo era el más común, por la época en que escribía.}
+\item Con pleno empleo, la mayor demanda de exportaciones no se puede atender con los recursos disponibles: suben los precios y el tipo de cambio real se aprecia, lo que limita la eficacia de la devaluación. Para que funcione, tiene que mover otras variables.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del multiplicador, pero con la posibilidad de pleno empleo: los precios son rígidos mientras hay paro y flexibles en el pleno empleo, con una oferta agregada en forma de L invertida (gráfico~\ref{fig:absorcion-oa}).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La \concepto{absorción}, $A\equiv C+I+G$, es el gasto interior, incluido el que va a importaciones. Como $Y=A+\mathrm{XN}$,
+  \funcionclave[eq:absorcion]{\mathrm{XN}=Y-A}
+  \uline{el saldo exterior mejora solo si la renta sube más que la absorción}: hay déficit cuando el país gasta más de lo que produce. Es la identidad $\mathrm{CC}=S-I$ leída como teoría \vertema{3.B.11}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La oferta agregada del enfoque de la absorción: precios rígidos con paro y flexibles en el pleno empleo}\label{fig:absorcion-oa}
+\grafico[0.58\textwidth]{absorcion-oa}
+\fuente{Elaboración propia a partir de \textcite{Alexander1952Effects} y \textcite{Gandolfo2016International}. Con paro, la devaluación sube la renta sin subir los precios (de $A$ a $B$); en el pleno empleo, más demanda solo sube los precios (de $B$ a $C$).}
+\end{figure}
+
+\begin{itemize}
+\item Para mejorar el saldo hay 2 vías: \emph{aumentar la renta} (más productividad, más factores) o \emph{reducir la absorción} (por ejemplo, con una política fiscal contractiva).
+\item Con $A=\overline A-b\,i+(c+z)\,Y$, donde $c+z$ es la propensión marginal a absorber, el saldo es $\mathrm{XN}=\left[1-(c+z)\right]Y-\left(\overline A-b\,i\right)$, y una devaluación lo cambia en
+  \begin{equation}\label{eq:absorcion-devaluacion}
+  \mathrm d\,\mathrm{XN}=\underbrace{\left[1-(c+z)\right]\mathrm dY}_{\text{efecto renta}}\;-\;\underbrace{\mathrm d\left(\overline A-b\,i\right)}_{\text{efecto directo sobre la absorción}} .
+  \end{equation}
+\item \emph{El efecto renta}:
+  \begin{itemize}
+  \item \emph{con recursos ociosos}, la mayor demanda de bienes nacionales eleva la producción, y el saldo mejora en la parte de esa renta que no se absorbe. Si la propensión a absorber está cerca de 1, como creía \autor{Alexander}, apenas mejora;
+  \item \emph{con pleno empleo}, la producción no cambia y el efecto es nulo, salvo que la devaluación corrija un tipo de cambio desalineado o mejore la relación real de intercambio de un país con poder sobre sus precios de importación.
+  \end{itemize}
+\item \emph{El efecto directo sobre la absorción}: con pleno empleo, la devaluación sube los precios\footnote{Por 3 vías: sube el precio en moneda nacional de lo importado; la competencia exterior es menor y los márgenes suben; y los salarios reaccionan a la inflación (efectos de segunda ronda).}, y la subida reduce la absorción por varios mecanismos \parencite{Alexander1952Effects}:
+  \begin{itemize}
+  \item el \emph{efecto saldos reales} (\autor{Pigou}-\autor{Patinkin}): los saldos monetarios pierden valor real y, para reponerlos, se ahorra más y se consume menos \vertema{3.A.5};
+  \item el \emph{efecto \autor{Keynes}}: con menos saldos reales, $M/P$, hay exceso de demanda de dinero, sube el tipo de interés y cae la inversión;
+  \item la \emph{redistribución hacia el sector público}: la inflación reduce el valor real de la deuda pública y eleva la recaudación por la progresividad en frío;\footnote{Con los tramos del impuesto sobre la renta sin actualizar por la inflación, una misma renta real paga un tipo medio mayor: la presión fiscal sube aunque no se haya tocado la ley.} si el sector público no gasta más, la absorción cae;
+  \item la \emph{redistribución de los salarios a los beneficios}, si los salarios no están indexados y los perceptores de beneficios ahorran más;
+  \item la \emph{ilusión monetaria}, si los agentes reaccionan a los precios y no a su renta real.
+  \end{itemize}
+\item Estos mecanismos llegan íntegros al saldo solo con pleno empleo. Lejos de él, depende de qué parte de la menor absorción recae sobre la producción nacional.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El ajuste depende de si hay pleno empleo}: hay que tenerlo en cuenta para prever los efectos de una devaluación.
+\item \uline{Una devaluación sola puede no bastar}: con pleno empleo hay que acompañarla de políticas que \emph{reduzcan el gasto} (fiscal y monetaria contractivas), mientras la devaluación \emph{desvía el gasto} hacia lo nacional \parencite{Johnson1958}. La combinación depende del empleo y de las características del país (propensión a absorber, indexación de los salarios, efectos inflacionistas de la devaluación).
+\item Es la base de los programas de ajuste del FMI, que combinan devaluación, contención de la absorción y reformas \vertema{3.B.22}.
+\item Volvamos a España. Dentro del euro no podía devaluar, y el ajuste de 2008-2013 vino por las 2 vías de \autor{Johnson} sin tipo de cambio: la absorción se hundió (reducción del gasto) y los precios y salarios crecieron menos que los de los socios (una devaluación interna, que desvía el gasto) \parencite{BdE2026BE17} \vertema{3.B.16}.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item En los 50 hubo un intenso debate entre la absorción y las elasticidades, que acabó en una síntesis pobre: tomar el efecto de la devaluación como un cambio exógeno del saldo y aplicarle un multiplicador.
+\item Nadie entonces, ni su autor, pareció ver lo verdaderamente nuevo del enfoque: \uline{son los determinantes macroeconómicos de la absorción (las decisiones de ahorro e inversión) los que, en último término, deciden el saldo exterior}. Es la intuición que desarrollará el enfoque intertemporal (\ref{sec:intertemporal}).
+\item No presta atención a los flujos financieros que financian el saldo: se pensó cuando los capitales apenas se movían.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Con movilidad del capital y tipo flexible:\cortetitulo{} IS-LM-BP y asignación de \autor{Mundell}}\label{sec:is-lm-bp}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una vez vistos los enfoques que solo miran el comercio, pasamos al que añade los movimientos de capital: el modelo de \autor{Mundell}-\autor{Fleming} \parencite{Fleming1962Domestic,Mundell1963Capital}, que tiene su desarrollo propio \vertema{3.A.32}. Aquí interesa como mecanismo de ajuste.
+\item \emph{Conclusión anticipada}: cuando el capital se mueve, el régimen cambiario decide qué variable hace el ajuste (las reservas con tipo fijo, el tipo de cambio con flexible), y la política económica tiene que repartir sus instrumentos.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los de los enfoques keynesianos (precios fijos, recursos ociosos y la condición de \autor{Marshall}-\autor{Lerner}), en un país pequeño con expectativas estáticas sobre el tipo de cambio.
+\item Los flujos de capital responden al diferencial de tipos de interés: la cuenta financiera neta es $\beta_K\,(i-i^*)$, con $\beta_K$ la \concepto{movilidad del capital} (lleva subíndice porque $\beta$ es el factor de descuento del bloque~\ref{sec:intertemporal}).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La curva BP recoge las combinaciones de renta y tipo de interés con la balanza de pagos en equilibrio, sin variación de reservas:
+  \begin{equation}\label{eq:bp}
+  \underbrace{x\,Y^*-m\,Y+\nu\,q}_{\text{saldo comercial}}+\underbrace{\beta_K\,(i-i^*)}_{\text{cuenta financiera neta}}=0 ,
+  \end{equation}
+  con $x$ la propensión a exportar y $\nu$ la sensibilidad del saldo comercial al tipo real (positiva si se cumple~\eqref{eq:marshall-lerner}). Por encima de la BP hay superávit; por debajo, déficit. Es más plana cuanto mayor es la movilidad (gráfico~\ref{fig:is-lm-bp}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo IS-LM-BP: equilibrio y los 3 casos de movilidad del capital}\label{fig:is-lm-bp}
+\grafico[0.6\textwidth]{is-lm-bp}
+\fuente{Elaboración propia a partir de \textcite{Fleming1962Domestic} y \textcite{Mundell1963Capital}. Por encima de cada BP, superávit de la balanza de pagos; por debajo, déficit.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Con tipo fijo, el ajuste lo hacen las reservas}: un déficit hace perder reservas, baja la cantidad de dinero ($M=\mathrm{CI}+R$) y la LM se desplaza hasta cerrar el déficit. Cuanto mayor es la movilidad, más rápido; con movilidad perfecta, la política monetaria solo cambia las reservas. Es el enfoque monetario del bloque~\ref{sec:stocks}, ahora con la renta variable.
+\item \emph{Con tipo flexible, el ajuste lo hace el tipo de cambio}: el déficit deprecia la moneda, la IS y la BP se desplazan y la balanza de pagos se equilibra sin mover las reservas.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{2 objetivos, 2 instrumentos}: \textcite{Meade1951} planteó el conflicto entre el equilibrio interno (pleno empleo sin inflación) y el externo, y \textcite{Tinbergen1952Theory} mostró que hacen falta tantos instrumentos como objetivos.
+\item \textcite{Mundell1960Monetary} formuló el \concepto{principio de la clasificación eficaz de los mercados}: \uline{cada instrumento se asigna al objetivo sobre el que tiene más influencia relativa}. Con la asignación al revés, cada corrección aleja a la economía del otro objetivo y el sistema es inestable \parencite{Boughton2003Origins}.
+\item \emph{La asignación de \autor{Mundell}}: con tipo fijo y capital móvil, las 2 políticas suben la renta, pero la monetaria expansiva baja el tipo de interés y saca capital, y la fiscal expansiva lo sube y lo atrae. Por eso \textcite{Mundell1962Appropriate} asigna la \emph{política monetaria al equilibrio externo} y la \emph{fiscal al interno}.
+\item Qué régimen elegir depende de este reparto y de la movilidad del capital: con tipo fijo y libertad de capitales se renuncia a la política monetaria propia (el trilema) \vertema{3.B.15}.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item ¿Resuelve el tipo flexible el problema del ajuste? \textcite{Friedman1953Case} defendió el tipo flexible: ante una perturbación se mueve un solo precio, el tipo de cambio, en lugar de todos los precios y salarios, la economía queda aislada de las perturbaciones de demanda del exterior y el país recupera su política monetaria.
+\item Sin movimientos de capital, el tipo flexible equilibra la cuenta corriente: es el tipo que vacía el mercado de divisas; con tipo fijo, la diferencia entre la oferta y la demanda de divisas la cubren las reservas (gráfico~\ref{fig:oferta-demanda-divisas}) \vertema{3.B.13}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La oferta y la demanda de divisas con tipo flexible y con tipo fijo}\label{fig:oferta-demanda-divisas}
+\grafico[0.6\textwidth]{oferta-demanda-divisas}
+\fuente{Elaboración propia a partir de \textcite{KrugmanObstfeldMelitz2022International}. Con tipo flexible, el tipo de vaciado iguala la oferta y la demanda de divisas; con un tipo fijo por encima, hay exceso de oferta y el banco central compra divisas.}
+\end{figure}
+
+\begin{itemize}
+\item Pero el tipo flexible no garantiza el ajuste:
+  \begin{enumerate}
+  \item la depreciación nominal tiene que ser real: si se traslada a los precios interiores, la competitividad no cambia;
+  \item tiene que cumplirse~\eqref{eq:marshall-lerner}, y con el comercio facturado en dólares el efecto volumen es pequeño a corto plazo \parencite{Gopinath2020DCP};
+  \item con capital móvil, el tipo de cambio lo mueven sobre todo los flujos financieros, que pueden financiar durante años un déficit corriente o apreciar la moneda de un país con déficit; y si la deuda está en divisas, la depreciación la encarece.
+  \end{enumerate}
+\item Por eso con tipos flexibles ha habido desequilibrios corrientes grandes y persistentes, como el de Estados Unidos desde los 80 \vertema{3.B.11}. La respuesta completa a si el tipo flexible resuelve el ajuste, en el anexo~\ref{anexo:tipo-flexible}.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulando}: los enfoques keynesianos ajustan el saldo comercial con los precios relativos y la renta. La devaluación funciona si se cumplen las elasticidades, tarde (la curva J) y, con pleno empleo, solo si se reduce la absorción; con capital móvil, el régimen cambiario decide qué se ajusta.
+\item Todos miran los flujos de bienes. Con la liberalización de los capitales, el desequilibrio pasa a leerse desde los mercados de activos: es lo que hacen los enfoques de \emph{stocks}.
+\end{itemize}
+
+% ==========================================================================
+\section{Mecanismos de ajuste basados en las reservas:\cortetitulo{} enfoques de \emph{stocks}}\label{sec:stocks}
+\minutos{5}
+
+\begin{notaopositor}
+En el cante (\tiempo{5}): el flujo-especie con su circuito, las reglas del juego y la asimetría (\tiempo{2}); el enfoque monetario con su ecuación y sus 3 implicaciones (\tiempo{2}); la cartera, de palabra (\tiempo{1}). La tabla de los mecanismos se resume en la recapitulación.
+\end{notaopositor}
+
+\begin{itemize}
+\item Hasta los 70 se aceptaba que un desequilibrio exterior nacía en la cuenta corriente. Con la liberalización de los capitales, cada vez se ve en ellos su causa profunda.
+\item Es el enfoque de la balanza de pagos «cabeza abajo»: en lugar de mirar la cuenta corriente y ver la financiera como su consecuencia, se hace al revés. Los desequilibrios nacen en los mercados de activos, y los de las demás cuentas son su reflejo.
+  \begin{itemize}
+  \item Así, un superávit corriente se explicaría más por el deseo de ahorrar que por la atonía del consumo.
+  \item La balanza de pagos pasa a ser un fenómeno monetario y financiero, que se estudia con la teoría monetaria y no con la del comercio.
+  \item Por ejemplo, Tailandia tuvo un déficit corriente de en torno al 8~\% del PIB en 1995 y 1996, financiado con una entrada masiva de capital a corto plazo, antes de la crisis asiática de 1997 \parencite{FMI1997WEOdic} \vertema{3.B.17}.
+  \end{itemize}
+\item \emph{Conclusión anticipada}: con tipo fijo, el ajuste lo hacen las reservas y es automático. El banco central no controla la cantidad de dinero: lo que crea de más se va por la balanza de pagos. Si los activos no son sustitutos perfectos, el ajuste es parcial y la política monetaria recupera algo de autonomía.
+\item Veremos 2 modelos de \emph{stocks}: el monetario, con activos nacionales y extranjeros sustitutos perfectos, y el de cartera, con sustitutos imperfectos. Antes, su antecedente más antiguo, el flujo-especie, en el que el ajuste también pasa por las reservas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El mecanismo flujo-especie}\label{sec:flujo-especie}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El \concepto{mecanismo flujo-especie} es una de las principales aportaciones del filósofo y economista escocés \autor{David Hume} \parencite{Hume1752Balance} \vertema{3.A.2}. Sostiene que la balanza de pagos se ajusta sola, sin que cambie el tipo de cambio, y fue la base teórica del patrón oro \vertema{3.B.20}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Patrón oro con convertibilidad plena}, en sentido estricto: tipo de cambio fijo y una cantidad de dinero respaldada por completo por las reservas de oro. La cantidad de dinero se vuelve endógena: se mueve con la balanza.
+\item \emph{Teoría cuantitativa}, $M\,V=P\,Y$: demanda de dinero estable ($V$ constante) y pleno empleo, con precios y salarios flexibles, competencia perfecta y un tipo de interés que iguala ahorro e inversión. Los cambios de la cantidad de dinero pasan al nivel de precios.
+\item \emph{Solo comercio de bienes}: el saldo comercial se traslada entero a la variación de las reservas.
+\item \emph{Elasticidades suficientes}: el comercio responde a los precios relativos.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item En un país con \emph{déficit comercial} salen más reservas de las que entran: sale oro.
+\item Para mantener la paridad y la convertibilidad hay que reducir la cantidad de dinero, y el nivel de precios baja en proporción.
+\item Con el tipo nominal fijo, la caída de los precios internos es una depreciación real ($q=\overline EP^*/P$ sube): el país recupera competitividad, exporta más e importa menos.
+\item El proceso sigue hasta que el déficit desaparece. En el país con superávit ocurre lo contrario: entra oro, suben el dinero y los precios, y la moneda se aprecia en términos reales (gráfico~\ref{fig:flujo-especie}).\footnote{Otra forma de verlo: con la teoría cuantitativa, el nivel de precios de cada país depende del oro que tiene, y la balanza solo está en equilibrio con unos niveles de precios dados. Al equilibrio le corresponde, por tanto, una distribución precisa (la óptima) del oro mundial entre los países. Si algo la altera, cambian los precios, aparecen desequilibrios y flujos de oro que, por el mecanismo descrito, la restablecen.}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mecanismo flujo-especie}\label{fig:flujo-especie}
+\grafico[0.92\textwidth]{flujo-especie}
+\fuente{Elaboración propia a partir de \textcite{Hume1752Balance} y \textcite{MoosaBhatti2010}. El oro que sale del país con déficit entra en el que tiene superávit; los 2 circuitos se cierran cuando desaparece el desequilibrio.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \uline{La única variable de ajuste que necesita la balanza son los precios internos}, y el ajuste es automático: no hace falta mover el tipo de cambio. Por eso la teoría justificó los tipos fijos del patrón oro.
+\item Para que funcione, la convertibilidad tiene que entenderse en sentido estricto: poder atender la posibilidad, por pequeña que sea, de que todos quieran convertir su dinero en oro. Eso exige:
+  \begin{enumerate}
+  \item que la autoridad monetaria no cree dinero sin respaldo en reservas;
+  \item que tampoco se cree dinero en otros puntos de la economía, sobre todo en la banca privada. De ahí la Ley de \autor{Peel} (1844), que ató los billetes de banco al metal, y las propuestas de un coeficiente de reservas del 100~\%, como sugería el propio \autor{Hume} al elogiar un banco público que guardara todo lo depositado sin prestarlo.
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{Las «reglas del juego»}: el mecanismo exige que el banco central deje que el oro mueva la cantidad de dinero, sin esterilizar.
+  \begin{itemize}
+  \item \autor{John Stuart Mill} añadió que, cuando sale oro, el banco central sube el tipo de descuento, entra capital y el ajuste se acorta \vertema{3.A.2}.
+  \item En la práctica, los bancos centrales de antes de 1914 incumplieron a menudo esas reglas y esterilizaron los flujos de oro \parencite{Bloomfield1959Monetary} \vertema{3.B.20}.
+  \end{itemize}
+\item \emph{La asimetría}: el país con déficit pierde oro y tiene que contraer su dinero; el que tiene superávit puede acumular oro sin expandirlo, y dificulta el ajuste. Fue la preocupación de \autor{Keynes} en Bretton Woods, y la razón para buscar mecanismos de cooperación internacional \parencite{Keynes1943Proposals} \vertema{3.B.19}.
+\item \emph{Los precios rígidos}: si los precios no bajan, el ajuste llega por la renta y el paro, de forma más dolorosa y quizá no automática. Fue la lección de la Gran Depresión, que abrió paso a las devaluaciones y a los enfoques keynesianos (\ref{sec:elasticidades}).
+\item \emph{Solo bienes}: ignora los flujos de capital, muy grandes ya en el patrón oro. El enfoque monetario los incorpora y llega a conclusiones parecidas.
+\item \emph{Las variables agregadas}: el dinero no entra ni sale a la vez por todos los puntos de la economía, de modo que unos precios cambian antes que otros, como ya observó \autor{Richard Cantillon}. Se alteran los precios relativos y la estructura productiva, con reajustes costosos.
+\item \emph{Las elasticidades}: que más precios internos reduzcan las exportaciones y aumenten las importaciones exige una condición parecida a la de \autor{Marshall}-\autor{Lerner} (\ref{sec:elasticidades}).
+\item \emph{La historia}: los regímenes de tipo fijo han acabado en ataques especulativos o en desequilibrios persistentes. Los defensores del mecanismo lo atribuyen a que se violó la convertibilidad estricta y a la asimetría del ajuste.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque monetario de la balanza de pagos}\label{sec:enfoque-monetario}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \uline{Con tipo fijo, un desequilibrio de la balanza de pagos es un desequilibrio del mercado de dinero, y se corrige solo, a través de las reservas} \parencite{Johnson1972Monetary,FrenkelJohnson1976Monetary}.
+  \begin{itemize}
+  \item Es la versión de economía abierta del monetarismo \vertema{3.A.5} y la base de la programación financiera del FMI \vertema{3.B.22}.
+  \item Se parece al flujo-especie: tipo fijo, ajuste automático y dinero ligado a las reservas. La diferencia está en qué se ajusta: con precios fijados fuera (la ley del precio único), el tipo de cambio real no cambia y el ajuste lo hacen las reservas, no los precios \parencite[cap.~12]{Gandolfo2016International}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{País pequeño con tipo de cambio fijo}, $\overline E$: las variables extranjeras son exógenas.
+\item \emph{Pleno empleo}: $Y$ está dada.
+\item \emph{Ley del precio único en bienes y activos}, con sustituibilidad perfecta y libre circulación de capitales: $P=\overline E\,P^*$ e $i=i^*$.
+\item \emph{Demanda de dinero estable}, $M^D=P\,L(Y,i)$ \vertema{3.A.35}.
+\item \emph{Multiplicador del dinero igual a 1}: el dinero es la base monetaria \vertema{3.A.36}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La base monetaria tiene 2 contrapartidas en el activo del banco central, el crédito interno y las reservas, y con el multiplicador igual a 1 es la oferta monetaria:
+  \begin{equation}\label{eq:oferta-monetaria}
+  M^S=\mathrm{CI}+R .
+  \end{equation}
+\item La demanda de dinero es exógena, porque $P$, $Y$ e $i$ están dados. En equilibrio, $\mathrm{CI}+R=P\,L(Y,i)$, y en variaciones, con el saldo de la balanza de pagos medido por la variación de las reservas,
+  \funcionclave[eq:enfoque-monetario]{\Delta R=\Delta M^D-\Delta\mathrm{CI}}
+\item \emph{En palabras}: \uline{el saldo de la balanza de pagos es la diferencia entre lo que crece la demanda de dinero y lo que crea el banco central}. La cantidad de dinero la decide el público, no el banco central.\footnote{La balanza de pagos siempre cuadra. Lo que se ajusta es el saldo de las transacciones autónomas, por encima de la línea; las reservas son la partida que lo compensa, por debajo \vertema{3.B.11}.}
+\item \emph{Una expansión del crédito interno} ($\Delta\mathrm{CI}>0$, con $\Delta M^D=0$):
+  \begin{itemize}
+  \item el público tiene más dinero del que quiere, porque los precios no pueden subir: están fijados fuera;
+  \item cambia el exceso por bienes y activos; como la producción está en el pleno empleo, solo puede comprarlos fuera, con divisas;
+  \item hay un déficit, corriente o financiero, y salen reservas hasta que $\Delta R=-\Delta\mathrm{CI}$.\footnote{Lo normal es que el peso del ajuste recaiga en los movimientos de capital, que se hacen con más facilidad que el comercio de bienes.} La cantidad de dinero vuelve a su nivel: solo cambia su composición.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La balanza de pagos es un fenómeno monetario}: sus desequilibrios son la consecuencia, no la causa, de los del mercado de dinero, y son transitorios, porque duran lo que tarda en ajustarse el dinero.
+\item \emph{La política monetaria no controla la oferta monetaria}: \uline{una expansión del crédito interno sí afecta a la balanza de pagos, que pierde reservas por el mismo importe, pero no cambia ni la oferta monetaria ni la renta ni los precios}: solo la composición de la base monetaria.
+  \begin{itemize}
+  \item Con tipo fijo y capital libre, la política monetaria es ineficaz: es el trilema \vertema{3.B.15}.
+  \item Si se insiste, las reservas se agotan y llega la crisis de balanza de pagos \parencite{Krugman1979Model} \vertema{3.B.17}. Cerca de ese punto, una contracción del crédito equilibra antes el mercado de dinero y evita un ajuste más brusco.
+  \end{itemize}
+\item \emph{La regla de crédito}: para no perder reservas, el crédito interno tiene que crecer lo que crece la demanda de dinero, $\Delta\mathrm{CI}=\Delta M^D$.
+  \begin{itemize}
+  \item Si la demanda de dinero es proporcional a la renta nominal, la regla es la del $k$~\% de \textcite{Friedman1960Program}: el dinero crece al ritmo de la economía, con equilibrio externo y precios estables.
+  \item Para aplicarla no basta con controlar la base monetaria: hay que controlar también el dinero bancario, y algunos precursores del enfoque defendían un coeficiente de reservas del 100~\%.
+  \item Es lo que fijan los techos de crédito interno de los programas del FMI \vertema{3.B.22}.
+  \end{itemize}
+\item \emph{Una devaluación solo tiene efectos transitorios}: sube $P=\overline E\,P^*$ y con él la demanda de dinero; el público vende activos extranjeros, entran reservas ($\Delta R=\Delta M^D>0$) hasta que la oferta alcanza a la demanda, y la balanza vuelve al equilibrio.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Con tipo flexible, las reservas no se mueven y la misma condición de equilibrio monetario determina el tipo de cambio: es el enfoque monetario del tipo de cambio \vertema{3.B.14}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Supone pleno empleo, ajuste automático y variables agregadas.
+\item Su punto débil es la ley del precio único:
+  \begin{itemize}
+  \item \emph{en los bienes}, los no comerciables no tienen por qué cumplirla: su precio no está dado ni en un país pequeño, y sus cambios mueven la demanda de dinero, que deja de ser del todo exógena;
+  \item \emph{en los activos}, los nacionales y los extranjeros no son sustitutos perfectos: hay primas de riesgo y sesgo hacia lo nacional. Es lo que relaja el enfoque de cartera.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque de cartera}\label{sec:cartera}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{McKinnonOates1966} y \textcite{Branson1968Financial} llevan la teoría de carteras a la balanza de pagos, y \textcite{Branson1977Asset} formula el modelo de cartera que se usa hoy para el tipo de cambio \vertema{3.B.14}.
+\item Los activos nacionales y extranjeros son \emph{sustitutos imperfectos}, por el riesgo cambiario y político, la información asimétrica y la incertidumbre regulatoria: el sesgo hacia lo nacional (\emph{home bias}).
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Cada agente reparte su riqueza entre dinero, bonos nacionales y bonos extranjeros, $W=M+B+E\,B^*$.
+\item La demanda de cada activo crece con la riqueza y con su rendimiento y baja con el de los demás; el de los bonos extranjeros incluye la depreciación esperada.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Una expansión monetaria deja a los agentes con más dinero del que quieren, y recomponen la cartera comprando bonos nacionales y extranjeros.
+\item Mientras compran los extranjeros sale capital y hay déficit, hasta que la cartera vuelve a su composición deseada.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \uline{El ajuste sigue siendo automático, pero parcial y más lento}: parte del exceso de dinero lo absorben los bonos nacionales, cuyo tipo de interés puede separarse del exterior, y el desequilibrio monetario no se corrige solo con reservas.
+\item La política monetaria recupera algo de autonomía, porque sin sustituibilidad perfecta tampoco hay movilidad perfecta del capital. Pero esas barreras tácitas son difíciles de medir y cambian, y la autonomía queda en entredicho.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{La riqueza es exógena}: no se forma con el ahorro y la inversión, y el modelo no une los \emph{stocks} con la cuenta corriente. El modelo de \autor{Branson} del tipo de cambio sí lo hace: el exceso de activos puede gastarse y dar un déficit corriente en lugar de salidas de capital \vertema{3.B.14}.
+\item \emph{Supone mercados financieros eficientes}: las burbujas y las desviaciones de los precios de los activos dificultan el ajuste y lo hacen más brusco.
+\item \emph{Es estático}, y la balanza de pagos es un fenómeno dinámico: hay que completarlo con el enfoque intertemporal.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los mecanismos de ajuste de la balanza de pagos, de un vistazo}\label{tab:mecanismos-ajuste}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.6cm}>{\raggedright\arraybackslash}m{2.3cm}>{\raggedright\arraybackslash}m{2.7cm}>{\raggedright\arraybackslash}m{3.2cm}>{\raggedright\arraybackslash}m{2.8cm}}
+\toprule
+\rowcolor{tceeazulpalido} Enfoque & Qué se ajusta & Supuestos clave & Resultado & Política \\
+\midrule
+Elasticidades (\autor{Robinson}, \autor{Lerner}) & Precios relativos ($q$) & Precios fijos, paro, sin capitales & Mejora si $\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert>1$; curva J & Devaluación \\
+Multiplicador (\autor{Harrod}, \autor{Machlup}) & Renta ($Y$) & Precios y tipo fijos, paro & Ajuste incompleto & — \\
+Absorción (\autor{Alexander}) & Renta y gasto ($Y-A$) & Pleno empleo posible & Devaluación más menor absorción & Reducir y desviar el gasto \\
+IS-LM-BP (\autor{Mundell}, \autor{Fleming}) & Reservas (fijo) o $E$ (flexible) & Capital móvil, precios fijos & Depende del régimen & Monetaria al externo, fiscal al interno \\
+Flujo-especie (\autor{Hume}) & Precios internos ($P$) vía oro & Patrón oro, teoría cuantitativa & Ajuste automático & Ninguna (reglas del juego) \\
+Monetario (\autor{Johnson}) & Reservas ($R$) & Tipo fijo, precio único, pleno empleo & $\Delta R=\Delta M^D-\Delta\mathrm{CI}$ & Crédito interno al ritmo de $M^D$ \\
+Cartera (\autor{McKinnon}, \autor{Oates}, \autor{Branson}) & Reservas y composición de la cartera & Activos sustitutos imperfectos & Ajuste parcial y más lento & Algo de autonomía monetaria \\
+\bottomrule
+\end{tabular}
+\fuente{Elaboración propia a partir de \textcite{Gandolfo2016International}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulando}: los enfoques de \emph{stocks} ven en la balanza de pagos el reflejo de los mercados de activos. Con tipo fijo, el ajuste es automático y pasa por las reservas: el banco central no controla el dinero, y lo que crea de más se va por la balanza. Con activos imperfectamente sustituibles, el ajuste es parcial (tabla~\ref{tab:mecanismos-ajuste}).
+\item Todos estos mecanismos dan por hecho que un déficit hay que corregirlo. El enfoque intertemporal se pregunta antes si hay que hacerlo.
+\end{itemize}
+
+% ==========================================================================
+\section{El enfoque intertemporal de la balanza de pagos\cortetitulo{} y la sostenibilidad exterior}\label{sec:intertemporal}
+\minutos{11,5}
+
+\begin{notaopositor}
+En el cante (\tiempo{11,5}): la idea del enfoque y su origen (\tiempo{1}); el modelo de 2 periodos con su gráfico, las 2 condiciones y las implicaciones (\tiempo{4}); la suavización («lo temporal se financia; lo permanente se ajusta»), \autor{Feldstein}-\autor{Horioka} y los puzles, de palabra (\tiempo{1,5}); la sostenibilidad con la función clave, el saldo que estabiliza la deuda, los 2 casos del gráfico, los determinantes, 3 indicadores y España, y las extensiones como lista de títulos con una frase cada una (\tiempo{5}). Las derivaciones completas están en los anexos~\ref{anexo:intertemporal} y~\ref{anexo:sostenibilidad}.
+\end{notaopositor}
+
+\begin{itemize}
+\item Todos los mecanismos anteriores dan por hecho que un déficit exterior hay que corregirlo. Pasamos ahora al enfoque que pregunta antes si hay que hacerlo, y después al límite de su respuesta: la sostenibilidad.
+\item \emph{Conclusión anticipada}:
+  \begin{itemize}
+  \item La cuenta corriente es la diferencia entre el ahorro y la inversión que deciden de forma óptima los hogares y las empresas, y su contrapartida es la cuenta financiera.
+  \item Un déficit puede ser óptimo: financia inversión rentable o amortigua una perturbación temporal.
+  \item Pero óptimo no quiere decir sostenible: el superávit comercial futuro tiene que cubrir el coste de la deuda neto de lo que la diluye el crecimiento, y la moneda, la composición de la financiación y los efectos de valoración importan tanto como el saldo.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Del ajuste a la elección: la idea del enfoque intertemporal}\label{sec:intertemporal-idea}
+
+\begin{itemize}
+\item Tras la caída de Bretton Woods, la teoría se centró en 2 cuestiones: la determinación del tipo de cambio con tipos flexibles \vertema{3.B.14} y la determinación de la cuenta corriente desde un punto de vista intertemporal.
+\item \emph{El origen}: tras los choques del petróleo de los 70, \textcite{Sachs1981} observó que los déficits corrientes de la época acompañaban a aumentos de la inversión, no del consumo, y propuso leer la cuenta corriente como una decisión intertemporal de ahorro e inversión.
+  \begin{itemize}
+  \item \textcite{Obstfeld1982Aggregate} y \textcite{SvenssonRazin1983} reformularon con optimización el efecto \autor{Harberger}-\autor{Laursen}-\autor{Metzler}.
+  \item \textcite{ObstfeldRogoff1995Intertemporal,ObstfeldRogoff1996Foundations} sistematizaron el enfoque, que es hoy la forma estándar de pensar la cuenta corriente \parencite[cap.~18]{Gandolfo2016International}.
+  \end{itemize}
+\item \emph{2 novedades frente a los enfoques anteriores}:
+  \begin{enumerate}
+  \item \emph{la microfundamentación}: el consumo, la inversión y la demanda de activos salen de la optimización de los agentes, y el modelo permite juzgar el bienestar;
+  \item \emph{el tiempo}: la cuenta corriente deja de ser un saldo estático y pasa a ser una variable que reparte el gasto entre periodos.
+  \end{enumerate}
+\item \emph{Un modelo real}: no hay dinero, ni precios nominales, ni tipo de cambio; el único precio relativo es el tipo de interés real, el precio del consumo de hoy en términos del de mañana. Por eso sus conclusiones valen con cualquier régimen cambiario, fijo o flexible.
+\item \emph{La revolución en la política económica}: \uline{un déficit por cuenta corriente no tiene por qué ser malo}, porque puede ser el resultado de decisiones óptimas que aumentan el bienestar. Lo que hay que vigilar es su sostenibilidad.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El modelo de 2 periodos}\label{sec:intertemporal-modelo}
+
+\paragraph{a) Supuestos}
+
+\begin{itemize}
+\item \emph{Economía pequeña y abierta}, que toma como dado el tipo de interés real mundial, $r^*$, con 2 periodos, $t$ y $t+1$, y un solo bien, que se consume o se invierte.
+\item \emph{Producción con capital}, $Y_t=F(K_t)$, con $F'>0$ y $F''<0$ (rendimientos decrecientes): la frontera de posibilidades de producción intertemporal es cóncava.
+  \begin{itemize}
+  \item Sin depreciación, el capital se acumula con la inversión, $K_{t+1}=K_t+I_t$, y el proceso es reversible: al final de $t+1$ el capital se consume ($I_{t+1}=-K_{t+1}$).
+  \end{itemize}
+\item \emph{Un agente representativo}, productor y consumidor a la vez (\autor{Robinson Crusoe}), con previsión perfecta, sin activos exteriores al empezar y utilidad intertemporal
+  \begin{equation}\label{eq:utilidad-abierta}
+  U=u(C_t)+\beta\,u(C_{t+1}),\qquad \beta\equiv\frac{1}{1+\rho},
+  \end{equation}
+  con $u$ creciente y cóncava y $\rho$ la tasa de descuento \vertema{3.A.29}.
+\item \emph{Mercados competitivos y acceso perfecto al mercado internacional de capitales}: todo déficit se financia con deuda al tipo $r^*$.
+\end{itemize}
+
+\paragraph{b) Desarrollo}
+
+\begin{itemize}
+\item \emph{En autarquía}, el país solo puede pasar recursos al futuro invirtiendo: lo que no consume hoy lo convierte en capital. El equilibrio está donde la curva de indiferencia es tangente a la frontera de posibilidades de producción (punto $A$ del gráfico~\ref{fig:cc-intertemporal}), y la pendiente común define el \concepto{tipo de interés de autarquía}, $-(1+r^A)$.
+\item \emph{Con apertura}, el país puede prestar y pedir prestado al tipo $r^*$, y su restricción es que el valor actual de lo que gasta no supere al de lo que produce:
+  \begin{equation}\label{eq:problema-intertemporal}
+  \optim{\max}{C_t,\,C_{t+1},\,I_t}{u(C_t)+\beta\,u(C_{t+1})}{C_t+I_t+\dfrac{C_{t+1}}{1+r^*}=F(K_t)+\dfrac{F(K_{t+1})+K_{t+1}}{1+r^*}\\ K_{t+1}=K_t+I_t}
+  \end{equation}
+\item Salen 2 condiciones independientes (anexo~\ref{anexo:intertemporal}):
+  \begin{align}
+  u'(C_t)&=\beta\,(1+r^*)\,u'(C_{t+1}),\label{eq:euler-abierta}\\
+  F'(K_{t+1})&=r^*.\label{eq:inversion-abierta}
+  \end{align}
+  \begin{itemize}
+  \item La \emph{ecuación de \autor{Euler}}~\eqref{eq:euler-abierta} decide el reparto del consumo entre periodos.
+  \item La \emph{condición de inversión}~\eqref{eq:inversion-abierta} decide la inversión: se invierte hasta que el capital rinde lo que cuesta pedir prestado fuera, sin mirar las preferencias.
+  \item Es el \concepto{teorema de separación} de \autor{Irving Fisher}, aplicado a un país: primero se elige la producción que maximiza el valor actual de la riqueza y después se reparte el consumo prestando o pidiendo prestado al resto del mundo \vertema{3.A.29}.
+  \end{itemize}
+\item \emph{La cuenta corriente} es lo que se produce menos lo que se gasta, o el ahorro menos la inversión:
+  \begin{equation}\label{eq:cc-intertemporal}
+  \mathrm{CC}_t=Y_t-C_t-I_t=S_t-I_t .
+  \end{equation}
+  Como al final no queda deuda, $\mathrm{CC}_{t+1}=-\mathrm{CC}_t$, y el superávit comercial de $t+1$ devuelve el préstamo con sus intereses: $\mathrm{XN}_{t+1}=-(1+r^*)\,\mathrm{CC}_t$.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:cc-intertemporal}), con $r^*<r^A$ porque el país tiene poco capital, es impaciente o espera crecer:
+  \begin{itemize}
+  \item el país \emph{produce} en $P$ ($C^P_t$ y $C^P_{t+1}$ son sus coordenadas: aquí el superíndice marca el punto de producción, no un valor permanente), donde la frontera tiene la pendiente del mercado, $-(1+r^*)$: invierte más que en autarquía, porque el capital rinde dentro más de lo que cuesta fuera;
+  \item \emph{consume} en $C$, donde la curva de indiferencia es tangente a la recta del mercado, más alta que la de $A$;
+  \item en $t$ gasta más de lo que produce: tiene un \emph{déficit por cuenta corriente}, la distancia horizontal $C^C_t-C^P_t$, que se reparte entre más inversión y más consumo que en autarquía. Su contrapartida es una entrada neta de capital: la cuenta financiera es negativa y aumentan los pasivos netos frente al exterior;
+  \item en $t+1$ tiene un \emph{superávit comercial}, la distancia vertical $C^P_{t+1}-C^C_{t+1}$, con el que devuelve la deuda y sus intereses.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo intertemporal de la cuenta corriente: autarquía y apertura}\label{fig:cc-intertemporal}
+\grafico[0.66\textwidth]{cc-intertemporal}
+\fuente{Elaboración propia a partir de \textcite[cap.~1]{ObstfeldRogoff1996Foundations}. $A$ es la autarquía; con $r^*<r^A$, el país produce en $P$ y consume en $C$. $P$ es un punto del gráfico, no el nivel de precios.}
+\end{figure}
+
+\paragraph{c) Implicaciones}
+
+\begin{itemize}
+\item \emph{El mecanismo de ajuste es la cuenta financiera}: a diferencia de los enfoques anteriores, que ajustaban con el tipo de cambio real, la renta o las reservas, aquí el déficit corriente es la otra cara de una entrada de capital deseada, no un desequilibrio que haya que corregir.
+\item \emph{Un déficit no es malo en sí}: \uline{puede ser la decisión óptima de un país que invierte donde el capital rinde más que fuera o que reparte su consumo en el tiempo}. La apertura nunca reduce el bienestar: lo aumenta si $r^*\neq r^A$, y lo deja igual si $r^*=r^A$.
+\item \emph{Quién presta y quién pide prestado} lo decide la diferencia entre el tipo de autarquía y el mundial, y $r^A$ es mayor cuanto más productivo es el capital (menos capital, mejores oportunidades de inversión), cuanto más impaciente es el país ($\rho>r^*$) y cuanto más renta espera en el futuro.
+  \begin{itemize}
+  \item Los países pobres en capital deberían pedir prestado y crecer más deprisa con el ahorro ajeno, sin limitar su inversión a su ahorro.
+  \end{itemize}
+\item \emph{Política económica}: corregir un déficit óptimo reduce el bienestar. La política solo tendría que intervenir si el déficit nace de una distorsión (un déficit público excesivo, una garantía implícita, una burbuja) o si no es sostenible.
+\item Volviendo a España: el déficit de los 2000 financiaba sobre todo vivienda, con un crecimiento del crédito que descontaba que «el precio de la vivienda nunca baja», no capital productivo; era difícil defenderlo como una elección óptima.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración y extensiones del enfoque intertemporal}\label{sec:intertemporal-valoracion}
+
+\paragraph{a) Extensiones}
+
+\subparagraph{i) La cuenta corriente como amortiguador}
+
+\begin{itemize}
+\item Con un horizonte infinito, gasto público y $\beta\,(1+r^*)=1$, el consumo es constante y la cuenta corriente sale de comparar cada variable con su \emph{valor permanente} (el flujo constante con el mismo valor actual, que se marca con el superíndice $P$, como la renta permanente, $Y^P$) \parencite[cap.~2]{ObstfeldRogoff1996Foundations}:
+  \begin{equation}\label{eq:cc-fundamental}
+  \mathrm{CC}_t=\left(Y_t-Y^P_t\right)-\left(I_t-I^P_t\right)-\left(G_t-G^P_t\right).
+  \end{equation}
+  Es la \concepto{ecuación fundamental de la cuenta corriente} (anexo~\ref{anexo:intertemporal}).
+\item \emph{En palabras}: \uline{un país ahorra fuera cuando su renta está por encima de la permanente y pide prestado cuando está por debajo o cuando invierte más de lo normal}. Es la renta permanente aplicada a un país \vertema{3.A.33}.
+  \begin{itemize}
+  \item Una \emph{perturbación temporal} (una mala cosecha, una caída pasajera del precio de lo que exporta) se \emph{financia}: la cuenta corriente empeora y el consumo apenas se mueve.
+  \item Una \emph{perturbación permanente} se \emph{ajusta}: el consumo cae lo mismo que la renta y la cuenta corriente no cambia. Endeudarse frente a una caída permanente solo retrasa el ajuste y lo encarece.
+  \item Un aumento temporal del gasto público, como una guerra, empeora la cuenta corriente; uno permanente, no.
+  \item Un aumento de la productividad propio del país eleva la inversión y empeora la cuenta corriente; uno mundial apenas la mueve, porque sube el tipo de interés de todos \parencite{GlickRogoff1995Global}.
+  \end{itemize}
+\item \uline{Lo temporal se financia; lo permanente se ajusta}.
+\item \emph{La relación real de intercambio}: un empeoramiento \emph{temporal} reduce la renta de hoy más que la permanente y empeora la cuenta corriente, como decían \autor{Harberger}, \autor{Laursen} y \autor{Metzler}; uno \emph{permanente} apenas la mueve. Así reformulan ese efecto, con optimización, \textcite{Obstfeld1982Aggregate} y \textcite{SvenssonRazin1983}.
+\end{itemize}
+
+\subparagraph{ii) Restricciones de crédito y riesgo de impago}
+
+\begin{itemize}
+\item El país no puede endeudarse sin límite al tipo $r^*$: la prima de riesgo sube con la deuda, porque el deudor puede no pagar, y la financiación puede cortarse de golpe, en una \concepto{parada súbita} \parencite{Calvo1998SuddenStops} \vertema{3.B.17}.
+\item Con restricciones de crédito, el país impaciente vuelve a la autarquía y la separación de \autor{Fisher} falla: su inversión vuelve a depender de su ahorro \vertema{3.A.29}.
+\end{itemize}
+
+\subparagraph{iii) Precios rígidos y dinero}
+
+\begin{itemize}
+\item La nueva macroeconomía abierta introduce competencia monopolística y rigideces de precios en este marco intertemporal, y recupera el papel del tipo de cambio y de la política monetaria \parencite{ObstfeldRogoff1995Redux} \vertema{3.A.32}.
+\end{itemize}
+
+\paragraph{b) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{A favor}: los déficits de los 70 acompañaron a aumentos de la inversión \parencite{Sachs1981}, y la cuenta corriente amortigua las perturbaciones propias y temporales \parencite{GlickRogoff1995Global}.
+\item \emph{La paradoja de \autor{Feldstein} y \autor{Horioka}}: si el capital fuera perfectamente móvil, la inversión de cada país no dependería de su ahorro; en la OCDE la seguía casi punto por punto, con un coeficiente cercano a 0,9 \parencite{FeldsteinHorioka1980}. La correlación ha caído con la integración financiera, sobre todo en la zona del euro \parencite{BlanchardGiavazzi2002} \vertema{3.B.11}.
+\item \emph{La paradoja de \autor{Lucas}}: el capital no va de los países ricos a los pobres \parencite{Lucas1990Why}.
+  \begin{itemize}
+  \item Con la misma tecnología, una renta por persona 15 veces menor en la India que en Estados Unidos y una participación del capital de 0,4, el rendimiento del capital en la India debería ser 58 veces mayor.
+  \item Con el capital humano la diferencia baja a 5, y con sus externalidades prácticamente desaparece. Pesan también el riesgo país, las instituciones y la escasez de activos financieros seguros en los países pobres.\footnote{La demanda de activos seguros, también la regulatoria (los colchones de liquidez de Basilea III y el colateral que piden los bancos centrales), concentra el ahorro mundial en los pocos países que los emiten \parencite{CaballeroFarhiGourinchas2017Safe}. Las imperfecciones de los mercados de capitales de los países pobres, que nacen de la información asimétrica entre el deudor y el acreedor, también frenan el préstamo del Norte al Sur \parencite{GertlerRogoff1990}.}
+  \end{itemize}
+\item \emph{El puzle de la asignación}: entre los países en desarrollo, los que más crecen en productividad reciben menos capital neto, e incluso lo exportan, al revés de lo que predice el modelo; detrás están la acumulación de reservas y el ahorro público, no la inversión privada \parencite{GourinchasJeanne2013Capital} \vertema{3.B.29}.
+\item \emph{Los desequilibrios globales}: el mayor deudor del mundo es Estados Unidos, financiado por el ahorro de Asia y de los exportadores de petróleo, y sus pasivos rinden menos que sus activos \parencite{Bernanke2005Saving,GourinchasRey2014} \vertema{3.B.11}.
+\item \emph{Poco reparto del riesgo}: el consumo de los países está menos correlacionado entre sí que su producción, al revés de lo que predicen los modelos con mercados completos, y los inversores tienen casi toda su riqueza en activos nacionales \parencite{BackusKehoeKydland1992International,Lewis1999,ObstfeldRogoff2000Six}. Vuelve en las extensiones de la sostenibilidad (\ref{sec:sostenibilidad}).
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{Su aportación}: cambia la forma de ver los déficits, que ya no son necesariamente malos, y da una base de bienestar para juzgarlos.
+\item \emph{Sus supuestos}: el país no siempre es pequeño, el acceso al mercado de capitales no es perfecto y el riesgo de impago no se puede ignorar, sobre todo en los países en desarrollo.
+\item \emph{Sus resultados}: explica mal hacia dónde va el capital (las paradojas de \autor{Lucas} y de la asignación) y supone que todo el ajuste lo hace la cuenta financiera, sin efectos de valoración.
+\item Esto lleva a la última pregunta: aunque un déficit sea óptimo, ¿se puede pagar la deuda que deja?
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Análisis de sostenibilidad del déficit y de la deuda exterior}\label{sec:sostenibilidad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Un déficit puede ser la consecuencia de decisiones racionales de consumo e inversión que aumentan el bienestar. Pero \uline{que un déficit sea óptimo no quiere decir que sea sostenible}, por 3 razones:
+  \begin{enumerate}
+  \item una preferencia muy alta por el consumo presente puede llevar a un déficit que financia consumo en lugar de inversión;
+  \item los proyectos de inversión que se financian pueden no estar bien estudiados y no ser productivos;
+  \item el futuro es incierto y las expectativas pueden ser erróneas («el precio de la vivienda nunca baja»).
+  \end{enumerate}
+\item Hay que distinguir 3 conceptos \parencite{MilesiFerrettiRazin1996}:
+  \begin{enumerate}
+  \item \concepto{liquidez}: poder refinanciar los vencimientos de cada periodo. Un país solvente puede tener un problema de liquidez si se cierra la financiación;
+  \item \concepto{solvencia}: que el valor actual de los superávits futuros cubra la deuda exterior neta (la restricción intertemporal~\eqref{eq:solvencia-externa});
+  \item \concepto{sostenibilidad}: la capacidad de un país para seguir atendiendo el servicio de su deuda (principal e intereses) sin recurrir a financiación excepcional ni a un ajuste interno brusco \parencite{FMI2002Sustainability}.
+  \end{enumerate}
+\item La solvencia es una condición de largo plazo, que casi siempre se cumple sobre el papel. La sostenibilidad pregunta si el ajuste que exige la solvencia es creíble y viable, y en la práctica se mide con que la deuda en porcentaje del PIB no crezca sin límite. Es el mismo esquema que el de la deuda pública \vertema{3.A.39}.
+\end{itemize}
+
+\begin{anotaciones}
+\begin{itemize}
+\item Las estadísticas de balanza de pagos, posición de inversión internacional y deuda externa de España: \url{https://www.bde.es/webbe/es/estadisticas/temas/estadisticas-exteriores.html} \parencite{BdE2026EstadExteriores}.
+\item Los análisis de sostenibilidad de la deuda del FMI, con sus 2 marcos: \url{https://www.imf.org/external/pubs/ft/dsa/} \parencite{FMI2025DSA}, la nota de orientación de 2008 para los países con acceso a los mercados \parencite{FMI2008DSAMAC} y un resumen en castellano, \textcite{RodriguezDiez2013DSA}.
+\end{itemize}
+\end{anotaciones}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del modelo intertemporal, con todo el déficit financiado con deuda: sin cuenta de capital, sin rentas del trabajo ni transferencias y sin efectos de valoración.
+\item La deuda exterior neta, $B_t$, paga un tipo nominal único, $i^*$; el crecimiento real, $\gamma_Y$, y el tipo real que paga la deuda, $r^*$, son constantes.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{De dónde sale}: de la identidad de la balanza de pagos sin cuenta de capital ni rentas secundarias, $\mathrm{XN}_t+\mathrm{RP}_t=\mathrm{CF}_t$ \vertema{3.B.11}.
+  \begin{itemize}
+  \item Los intereses de la deuda son rentas primarias negativas, $\mathrm{RP}_t=-i^*B_{t-1}$.
+  \item La cuenta financiera es el aumento de la deuda cambiado de signo, $\mathrm{CF}_t=-(B_t-B_{t-1})$.
+  \item Con $D_t\equiv-\mathrm{XN}_t$ el \emph{déficit comercial} (el déficit exterior sin las rentas de la inversión, que hace el papel del déficit primario de la deuda pública), la deuda crece con el déficit y con los intereses:
+  \begin{equation}\label{eq:deuda-nivel}
+  B_t=(1+i^*)\,B_{t-1}+D_t .
+  \end{equation}
+  \end{itemize}
+\item \emph{En porcentaje del PIB}: con minúsculas para las ratios, $b_t\equiv B_t/(P_tY_t)$ y $d_t\equiv D_t/(P_tY_t)$, y con $1+\gamma^N=(1+\pi)(1+\gamma_Y)$ el crecimiento del PIB nominal, sale la forma nominal, que es la del 3.B.11 sin las otras variaciones \vertema{3.B.11}:
+  \begin{equation}\label{eq:deuda-nominal}
+  b_t=\frac{1+i^*}{1+\gamma^N}\,b_{t-1}+d_t .
+  \end{equation}
+\item \emph{En términos reales}: si la deuda está en moneda nacional (o el tipo de cambio real no cambia), con $1+r^*\equiv(1+i^*)/(1+\pi)$ el tipo real que paga la deuda, la dinámica de la deuda exterior es
+  \funcionclave[eq:deuda-externa]{b_t=\frac{1+r^*}{1+\gamma_Y}\,b_{t-1}+d_t}
+  La regla es no mezclar: el tipo nominal con el crecimiento nominal, o el real con el real.
+\item \emph{El saldo que estabiliza la deuda}: la ratio no cambia si $b_t=b_{t-1}=b$, es decir, si
+  \begin{equation}\label{eq:saldo-estabilizador}
+  -d=\frac{r^*-\gamma_Y}{1+\gamma_Y}\,b .
+  \end{equation}
+\item \emph{En palabras}: \uline{el superávit comercial tiene que cubrir el coste de la deuda viva neto de lo que la diluye el crecimiento}. El crecimiento «paga» parte de la deuda.\footnote{La condición se escribe con el saldo comercial y no con la cuenta corriente, que ya incluye los intereses, igual que la de la deuda pública se escribe con el saldo primario \vertema{3.A.39}. En la práctica, $r^*$ es el tipo real medio de la deuda viva, no el de mercado del momento.}
+  \begin{itemize}
+  \item Si $r^*>\gamma_Y$, hace falta un superávit comercial solo para que la ratio no suba, y mayor cuanto mayor es la deuda: es la \concepto{bola de nieve}.
+  \item Si $r^*<\gamma_Y$, se puede mantener un déficit comercial, pero no cualquiera: el que da~\eqref{eq:saldo-estabilizador}.
+  \item Si se ignora el denominador, que suele estar cerca de 1, el superávit necesario es la diferencia entre el tipo real y el crecimiento real multiplicada por la ratio de deuda.
+  \end{itemize}
+\item \emph{La solvencia}: encadenando~\eqref{eq:deuda-externa} hacia delante, con $r^*>\gamma_Y$ y la condición de que la deuda no crezca más deprisa que el tipo de interés (sin juego de \autor{Ponzi}), \uline{la deuda exterior de hoy tiene que ser igual al valor actual de los superávits comerciales futuros}:
+  \begin{equation}\label{eq:solvencia-externa}
+  b_{t-1}=\sum_{k=0}^{\infty}\left(\frac{1+\gamma_Y}{1+r^*}\right)^{k+1}\left(-d_{t+k}\right).
+  \end{equation}
+  Un país deudor tendrá que tener superávits comerciales algún día; uno acreedor podrá permitirse déficits. Es la misma ecuación que la de la deuda pública, con el saldo comercial en lugar del primario \vertema{3.A.39}.
+\item \emph{La dinámica}: en el plano $(b_{t-1},b_t)$, la ecuación~\eqref{eq:deuda-externa} es una recta de pendiente $(1+r^*)/(1+\gamma_Y)$ que corta al eje vertical en el déficit comercial (gráfico~\ref{fig:dinamica-deuda-externa}). Con $r^*>\gamma_Y$ la pendiente es mayor que 1:
+  \begin{itemize}
+  \item con un déficit comercial (caso 3), la deuda crece sin límite;
+  \item con un superávit comercial (caso 4), el punto en que la recta corta a la bisectriz, $\overline b$, es un umbral inestable: por debajo, la deuda baja; por encima, se dispara.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La dinámica de la deuda exterior con $r^*>\gamma_Y$}\label{fig:dinamica-deuda-externa}
+\grafico[0.86\textwidth]{dinamica-deuda-externa}
+\fuente{Elaboración propia a partir de \textcite[cap.~2]{ObstfeldRogoff1996Foundations}. A la izquierda, con déficit comercial, la deuda crece sin límite; a la derecha, con superávit comercial, $\overline b$ es un umbral inestable.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Si la deuda está en divisas}: al pasarla a moneda nacional aparece el tipo de cambio. Con $1+r^*\equiv(1+i^*)/(1+\pi^*)$ el tipo real en la moneda de la deuda y $\gamma_q$ la tasa de depreciación real (anexo~\ref{anexo:sostenibilidad}):
+  \begin{equation}\label{eq:deuda-divisas}
+  b_t=\frac{(1+r^*)(1+\gamma_q)}{1+\gamma_Y}\,b_{t-1}+d_t .
+  \end{equation}
+  \begin{itemize}
+  \item \uline{Una depreciación real sube la deuda en divisas}, y la inflación nacional solo ayuda a pagar la deuda emitida en moneda nacional.
+  \item Con $\gamma_q=0$ es la forma real~\eqref{eq:deuda-externa}. Es la ecuación del análisis de la deuda externa del FMI \parencite{FMI2008DSAMAC}.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Un país tiene más margen para mantener un déficit exterior sostenible cuanto menor es su deuda, más crece, menos interés real paga, menos absorbe y, si se endeuda en divisas, cuanto menos se deprecia su moneda en términos reales:
+  \[
+  \text{Sostenibilidad}=f\big(\overset{-}{\text{deuda}},\,\overset{+}{\gamma_Y},\,\overset{-}{i},\,\overset{?}{\pi},\,\overset{-}{\text{absorción}},\,\overset{-}{E},\,\overset{+}{\text{acceso a los mercados}}\big)
+  \]
+\item \emph{Cada determinante}:
+  \begin{itemize}
+  \item \emph{la deuda} ($-$): más deuda, más intereses y, en principio, una prima de riesgo mayor, de modo que el problema se retroalimenta;
+  \item \emph{el crecimiento} ($+$): de ahí la importancia del destino de la financiación exterior, inversión productiva mejor que consumo o vivienda;
+  \item \emph{el tipo de interés} ($-$): lo que cuenta es el tipo real que paga la deuda viva, y de ahí la importancia de la confianza de los mercados;
+  \item \emph{la inflación} (ambigua): solo licúa la deuda emitida en moneda nacional; con deuda en divisas no ayuda, y si deprecia la moneda, perjudica;
+  \item \emph{la absorción interna} ($-$): cuanto más se gasta dentro, menos queda para pagar;
+  \item \emph{el tipo de cambio} ($-$ si la deuda está en divisas): una depreciación real la encarece, por~\eqref{eq:deuda-divisas};
+  \item \emph{el acceso a los mercados} ($+$): sin él, el pago depende de la producción corriente.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\subparagraph{i) Los efectos de valoración}
+
+\begin{itemize}
+\item La posición de inversión internacional neta no cambia solo con la cuenta financiera, sino también con las revalorizaciones por precios y tipos de cambio y con los otros cambios de volumen, $\mathrm{OV}_t$:
+  \[
+  \mathrm{PIIN}_t-\mathrm{PIIN}_{t-1}=\mathrm{CF}_t+\mathrm{OV}_t ,
+  \]
+  y la dinámica de la deuda exterior lleva un término más, $-\mathrm{ov}_t$ \vertema{3.B.11}.
+\item Con posiciones brutas muy grandes, estos efectos pesan tanto como los flujos \parencite{LaneMilesiFerretti2007,LaneMilesiFerretti2018}.
+  \begin{itemize}
+  \item Si los pasivos están en moneda propia y los activos en divisas, una depreciación mejora la posición. Es el caso de Estados Unidos, donde las revalorizaciones han hecho en torno al 27~\% del ajuste exterior cíclico \parencite{GourinchasRey2007International}.
+  \item Si los pasivos están en divisas, una depreciación la empeora: es el pecado original.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{ii) Los indicadores}
+
+\begin{itemize}
+\item No basta con la deuda sobre el PIB: no todo el PIB se puede vender fuera para pagar, y la capacidad de pago se mide también contra las exportaciones y las reservas (tabla~\ref{tab:indicadores-externos}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Indicadores de sostenibilidad y vulnerabilidad exterior}\label{tab:indicadores-externos}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.4cm}>{\raggedright\arraybackslash}m{4.6cm}>{\raggedright\arraybackslash}m{4.6cm}}
+\toprule
+\rowcolor{tceeazulpalido} Indicador & Qué mide & Referencia \\
+\midrule
+Saldo por cuenta corriente / PIB (media de 3 años) & El flujo: si la deuda crece & PDM: entre el $-4$~\% y el $+6$~\% \\
+PIIN / PIB & El \emph{stock} neto & PDM: $-35$~\% \\
+Deuda externa bruta / PIB y / exportaciones & La carga bruta y la capacidad de generar divisas & Sin umbral universal \\
+Servicio de la deuda / exportaciones & La liquidez: cuánto de lo que se ingresa se va en pagar & Países de renta baja: 10, 15 o 21~\% \\
+Reservas / deuda a corto plazo (vencimiento residual) & El riesgo de refinanciación & 100~\% (regla de \autor{Greenspan}-\autor{Guidotti}) \\
+Tipo implícito, vida media, diferenciales soberanos & El coste y la estabilidad de la financiación & Saltos bruscos de los diferenciales \\
+Composición por moneda, plazo e instrumento & Los descalces & — \\
+\bottomrule
+\end{tabular}
+\fuente{Elaboración propia a partir de \textcite{MilesiFerrettiRazin1996}, \textcite{FMI2014DeudaExterna}, \textcite{CE2025AMR2026} y \textcite{FMI2018LICDSF}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{En la UE}, el procedimiento de desequilibrios macroeconómicos da la alerta cuando la media de 3 años del saldo corriente sale de la banda entre el $-4$~\% y el $+6$~\% del PIB o cuando la posición de inversión internacional neta baja del $-35$~\%: también un superávit grande puede ser un desequilibrio \parencites{CE2025AMR2026}{Eurostat2025MIP} \vertema{3.B.45}.
+\item \emph{No hay un umbral universal}: los países con historial de impagos tienen crisis con deudas mucho menores, la \concepto{intolerancia a la deuda} \parencite{Reinhart2003Intolerancia}, y la probabilidad de crisis sube con la deuda externa neta mucho más que con los pasivos en acciones o inversión directa \parencite{CataoMilesiFerretti2014}. Los indicadores de reservas se desarrollan con la balanza de pagos \vertema{3.B.11}.
+\end{itemize}
+
+\subparagraph{iii) El análisis de sostenibilidad de la deuda del FMI}
+
+\begin{itemize}
+\item El FMI sistematizó en 2002 el \emph{debt sustainability analysis} (DSA) y lo usa en la supervisión y en el diseño de sus programas \parencite{FMI2002Sustainability} \vertema{3.B.22}. Proyecta la deuda con ecuaciones como~\eqref{eq:deuda-divisas}, separa la contribución del tipo de interés, del crecimiento y del tipo de cambio, y la somete a perturbaciones. Tiene 2 marcos:
+  \begin{enumerate}
+  \item \emph{para los países con acceso a los mercados}, el marco de riesgo soberano y sostenibilidad de la deuda (SRDSF), aprobado en 2021 y aplicado desde 2022, se centra en la deuda pública: clasifica el riesgo de tensión en bajo, moderado o alto con gráficos de abanico de la deuda futura y de las necesidades brutas de financiación \parencites{FMI2021DSA}{FMI2022SRDSF}. La sostenibilidad exterior de estos países se valora en la evaluación del sector exterior;
+  \item \emph{para los países de renta baja}, el marco conjunto con el Banco Mundial analiza la deuda externa y la pública frente a umbrales que dependen de la capacidad de endeudamiento del país, como el valor actual de la deuda externa pública sobre el PIB (30, 40 o 55~\%) y sobre las exportaciones (140, 180 o 240~\%) \parencite{FMI2018LICDSF}. Se revisó en septiembre de 2026, y el marco nuevo se aplicará desde el verano de 2027 \parencite{FMI2026LICDSF} \vertema{3.B.29}.
+  \end{enumerate}
+\item \emph{Valoración}: es mucho más que la ecuación (escenarios, perturbaciones y juicio), pero depende de las previsiones de crecimiento y de tipos de interés.
+\end{itemize}
+
+\subparagraph{iv) ¿Se corrige sola la deuda?}
+
+\begin{itemize}
+\item \emph{Fuerzas que desestabilizan}: la deuda genera intereses, que son rentas primarias negativas y empeoran la cuenta corriente, que a su vez aumenta la deuda. Es la bola de nieve de~\eqref{eq:deuda-externa} cuando $r^*>\gamma_Y$, reforzada por la prima de riesgo.
+\item \emph{Fuerzas que estabilizan}: con tipo flexible, la salida de capital deprecia la moneda y, si se cumple~\eqref{eq:marshall-lerner}, mejora el saldo comercial; la caída de la demanda interior reduce las importaciones; y el crecimiento nominal diluye la deuda. Con deuda en divisas, la depreciación juega en contra.
+\end{itemize}
+
+\subparagraph{v) Cómo se financia el déficit}
+
+\begin{itemize}
+\item Hasta ahora todo el déficit era deuda. En la realidad, la composición de la financiación decide la vulnerabilidad. La presentación analítica de la balanza ordena las fuentes por encima y por debajo de la línea \vertema{3.B.11}; aquí importa cuánto riesgo trae cada una (tabla~\ref{tab:fuentes-financiacion}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Vulnerabilidad de cada fuente de financiación de un déficit exterior}\label{tab:fuentes-financiacion}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\raggedright\arraybackslash}m{3.4cm}>{\raggedright\arraybackslash}m{6.6cm}}
+\toprule
+\rowcolor{tceeazulpalido} Fuente & ¿Genera deuda? & Estabilidad \\
+\midrule
+Transferencias corrientes y de capital & No & Estables; las remesas, a menudo anticíclicas; las de capital (fondos europeos) financian inversión \\
+Inversión directa & No (salvo préstamos entre empresas del grupo) & La más estable; aumenta la capacidad productiva y reparte el riesgo, porque sus rentas caen en las malas épocas \\
+Inversión de cartera en acciones & No & Volátil, pero sus rentas caen en las crisis \\
+Inversión de cartera en bonos y otra inversión & Sí & Volátil, con pagos fijos aunque el país esté en crisis; riesgo de parada súbita y de efecto rebaño \\
+Reservas, FMI, atrasos y condonaciones & — & Financiación excepcional: señal de vulnerabilidad \\
+\bottomrule
+\end{tabular}
+\fuente{Elaboración propia a partir de \textcite{FMI2014DeudaExterna} y \textcite{Calvo1998SuddenStops}.}
+\end{table}
+
+\begin{itemize}
+\item En la crisis mexicana de 1994-1995, la mayor parte de la entrada de capital previa había sido de cartera, no inversión directa \vertema{3.B.17}.
+\item Tras la crisis de la deuda de los 80, el Plan \autor{Brady} (1989) cambió préstamos bancarios por bonos a largo plazo, con quitas y con la garantía de bonos del Tesoro de Estados Unidos \vertema{3.B.29}.
+\item \uline{Cuanto más estable es la financiación (inversión directa, deuda a largo plazo y en moneda propia), más sostenible es el déficit} y menor el riesgo de una parada súbita.
+\end{itemize}
+
+\subparagraph{vi) El tipo de cambio y la política monetaria exterior}
+
+\begin{enumerate}
+\item \emph{El tipo de cambio puede amortiguar}: con tipo flexible, la depreciación que sigue a una salida de capital mejora la competitividad.
+\item \emph{Con deuda en divisas, desestabiliza}: la depreciación aumenta la deuda y su servicio en moneda nacional, por~\eqref{eq:deuda-divisas}. Es el \concepto{pecado original}: muchos países no pueden endeudarse fuera en su propia moneda \parencite{EichengreenHausmann1999,EHP2005PecadoOriginal}.
+  \begin{itemize}
+  \item La subida de tipos de la Reserva Federal de \autor{Paul Volcker} (1979-1982) apreció el dólar, encareció la deuda en dólares de América Latina y desencadenó la crisis de la deuda de 1982 \vertema{3.B.29}.
+  \end{itemize}
+\item \emph{El tipo fijo puede animar el endeudamiento}: con la paridad como seguro implícito, bancos y empresas se endeudan en divisas y a corto plazo sin cubrirse. México en 1994, con deuda pública a corto indexada al dólar, sufrió a la vez una crisis cambiaria y de deuda \vertema{3.B.17}.
+\item \emph{El tipo fijo exige reservas}: con una política económica incoherente, se agotan y llega el ataque especulativo \parencite{Krugman1979Model}.
+\item \emph{El ciclo financiero mundial}: los precios de los activos con riesgo y los flujos de capital se mueven con la política monetaria de la Reserva Federal y la aversión al riesgo mundial. Cuando la Reserva Federal sube los tipos, se endurece la financiación de los emergentes, sea cual sea su régimen cambiario \parencite{Rey2013Dilema} \vertema{3.B.15}.
+\end{enumerate}
+
+\subparagraph{vii) Los mecanismos de reparto del riesgo}
+
+\begin{itemize}
+\item Una forma de no tener que ajustar el consumo ante una perturbación propia es repartir el riesgo con el resto del mundo, como un seguro. El \concepto{reparto internacional del riesgo} (\emph{risk sharing}) mide qué parte de una caída de la producción de un país no se traslada a su consumo. Con mercados completos, el consumo de todos los países se movería a la vez y no dependería de la producción propia.
+\item \emph{Los canales} \parencite{AsdrubaliSorensenYosha1996}:
+  \begin{enumerate}
+  \item \emph{el del capital}: tener acciones y empresas en otros países, y que los demás las tengan en el nuestro, hace que la renta nacional caiga menos que la producción;
+  \item \emph{el del crédito}: pedir prestado en las malas épocas y devolver en las buenas, que es la suavización del enfoque intertemporal; es el canal que se corta en las crisis;
+  \item \emph{el fiscal}: las transferencias de un presupuesto común.
+  \end{enumerate}
+\item \emph{En Estados Unidos}: en sus estados (1963-1990), el capital suavizaba el 39~\% de las perturbaciones, el crédito el 23~\% y el presupuesto federal el 13~\%; quedaba sin suavizar el 25~\% \parencite{AsdrubaliSorensenYosha1996}.
+\item \emph{En la zona del euro}, en torno al 80~\% de una perturbación de la producción de un país quedó sin suavizar entre 1999 y 2016, frente a como mucho el 40~\% en Estados Unidos: el canal del capital es débil y el del crédito se cortó en la crisis \parencite{CimadomoEtAl2018Risk}. De ahí la unión de los mercados de capitales \vertema{3.B.44} y los instrumentos fiscales comunes \vertema{3.B.16}.
+\item \emph{Por qué se reparte poco}: por el sesgo hacia los activos nacionales \parencite{Lewis1999}. El tipo de cambio real puede hacer de seguro, porque si un país produce más, su relación real de intercambio empeora y parte de la ganancia va al resto del mundo; con mercados incompletos puede ocurrir lo contrario \parencites{CorsettiDedolaLeduc2008}{CorsettiDedolaLeduc2004}.
+\item \emph{Instrumentos que reparten el riesgo}: financiarse con acciones e inversión directa antes que con deuda; endeudarse en moneda propia, que traslada al acreedor el riesgo de una depreciación; y los \emph{bonos indexados al PIB}, que pagan menos cuando el país crece menos \parencite{Shiller1993Macro,BorenszteinMauro2004}.
+\end{itemize}
+
+\subparagraph{viii) ¿Y los superávits excesivos?}
+
+\begin{itemize}
+\item El ajuste es cosa de 2. Un superávit grande y persistente también es un desequilibrio:
+  \begin{itemize}
+  \item puede reflejar una demanda interior débil (poca inversión, ahorro por precaución, salarios contenidos) que el país exporta al resto del mundo;
+  \item acumula activos exteriores que pueden perder valor o no cobrarse si el deudor no puede pagar;
+  \item alimenta los desequilibrios globales y las tensiones comerciales, con barreras contra los países con superávit \parencite{Bernanke2005Saving,BlanchardMilesiFerretti2012} \vertema{3.B.11}.
+  \end{itemize}
+\item Por eso el procedimiento de desequilibrios alerta también por encima del $+6$~\%, y el FMI compara cada año el saldo de las grandes economías con su norma y pide a los países con superávit que impulsen la demanda interior \parencite{FMI2026ESR} \vertema{3.B.19}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica: la aplicación a España}
+
+\begin{itemize}
+\item Volvamos al enganche. A mediados de los 90 la cuenta corriente española estaba cerca del equilibrio; desde 1998 el déficit creció hasta el 9,4~\% del PIB en 2007, el mayor de la serie, con un déficit de bienes y servicios del 5,8~\% \parencites{BdE2026BE17}{Eurostat2026tipsbp11} (gráfico~\ref{fig:cc-piin-espana}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{España: cuenta corriente y posición de inversión internacional neta, 1995-2025 (\% del PIB)}\label{fig:cc-piin-espana}
+\grafico[0.9\textwidth]{cc-piin-espana}
+\fuente{Banco de España, Boletín Estadístico, cap. 17 \parencite{BdE2026BE17}, y Eurostat (PIIN y PIB) \parencites{Eurostat2026MIPExterior}{Eurostat2026nama10gdp}. Consulta: 11/11/2026.}
+\end{figure}
+
+\begin{itemize}
+\item Con la forma nominal~\eqref{eq:deuda-nominal}, la deuda exterior neta al empezar el año ($b=-\mathrm{PIIN}/\mathrm{PIB}$, aunque la PIIN incluye también acciones), el rendimiento implícito de la posición neta (las rentas netas de la inversión sobre la PIIN del año anterior) y el crecimiento nominal, se puede calcular el saldo sin rentas de la inversión que habría mantenido estable la ratio y compararlo con el que hubo (tabla~\ref{tab:sostenibilidad-espana}).
+  \begin{itemize}
+  \item \emph{2007}: con una deuda exterior neta del 73~\% del PIB a finales de 2006, un PIB nominal que creció un 7,2~\% y un rendimiento implícito del 4,3~\%, España podía permitirse un déficit sin rentas de la inversión de unos 2 puntos del PIB sin que creciera la ratio:
+    \[
+    -d_{2007}=\frac{0{,}043-0{,}072}{1{,}072}\cdot0{,}73\approx-0{,}020 .
+    \]
+    Tuvo uno del 6,0~\%, y la posición deudora neta pasó del 73~\% al 85~\% del PIB en un año. La ecuación sin otras variaciones daba un 77~\%: el resto lo añadieron las revalorizaciones \parencites{BdE2026BE17}{Eurostat2026MIPExterior}{Eurostat2026bopc6a}{Eurostat2026nama10gdp}.
+  \item \emph{Por qué}: un crecimiento muy alto, unas expectativas que daban por hecho que la vivienda nunca bajaría y unos tipos de interés del Banco Central Europeo demasiado bajos para la fase del ciclo de España, que dentro de la unión monetaria no podía subirlos \vertema{3.B.16}.
+  \item \emph{2015 y 2019}: el signo ya había cambiado. Con superávits sin rentas de la inversión del 3,1 y el 2,8~\% del PIB, cuando bastaba con no pasar de un déficit de 3,8 y 2,2 puntos, la posición deudora bajó 7,5 y 6 puntos \parencites{BdE2026BE17}{Eurostat2026MIPExterior}.
+  \item \emph{2025}: con una deuda neta del 40~\%, un crecimiento nominal del 5,7~\% y un rendimiento implícito del 0,7~\%, el saldo estabilizador era un déficit de 1,9 puntos, y hubo un superávit sin rentas de la inversión del 4,5~\%. Aun así, la posición empeoró de $-39{,}9$~\% a $-42{,}7$~\%, porque las revalorizaciones restaron unos 10 puntos del PIB \parencites{BdE2026BE17}{BdE2026PII2T} \vertema{3.B.11}. A mediados de 2026 era del $-40{,}7$~\%.
+  \end{itemize}
+\item España cumple el primer indicador exterior del procedimiento de desequilibrios (una media de 3 años del saldo corriente del 3,1~\% en 2025) y no el segundo: su posición neta, del $-42{,}7$~\%, sigue por debajo del $-35$~\% \parencite{Eurostat2026MIPExterior}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La sostenibilidad de la posición exterior de España (\% del PIB y \%)}\label{tab:sostenibilidad-espana}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{1.0cm}>{\centering\arraybackslash}m{1.5cm}>{\centering\arraybackslash}m{2.1cm}>{\centering\arraybackslash}m{1.2cm}>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{2.1cm}>{\centering\arraybackslash}m{2.3cm}}
+\toprule
+\rowcolor{tceeazulpalido} Año & $b$ al empezar & Rendimiento implícito & $\gamma^N$ & Saldo que estabiliza ($-d$) & Saldo registrado & PIIN al acabar (variación) \\
+\midrule
+2007 & 73,0 & 4,3 & 7,2 & $-2{,}0$ & $-6{,}0$ & $-85{,}0$ ($-12{,}0$) \\
+2015 & 95,2 & 0,5 & 4,6 & $-3{,}8$ & $+3{,}1$ & $-87{,}7$ ($+7{,}5$) \\
+2019 & 78,0 & 0,4 & 3,4 & $-2{,}2$ & $+2{,}8$ & $-72{,}0$ ($+6{,}0$) \\
+2025 & 39,9 & 0,7 & 5,7 & $-1{,}9$ & $+4{,}5$ & $-42{,}7$ ($-2{,}8$) \\
+\bottomrule
+\end{tabular}
+\fuente{Elaboración propia con datos del Banco de España \parencite{BdE2026BE17} y de Eurostat (PIIN, rentas de la inversión y PIB) \parencites{Eurostat2026MIPExterior}{Eurostat2026bopc6a}{Eurostat2026nama10gdp}. Los saldos son sin las rentas de la inversión; un saldo estabilizador negativo es el déficit máximo compatible con una ratio estable, $-d=\frac{i^*-\gamma^N}{1+\gamma^N}\,b$. Consulta: 11/11/2026.}
+\end{table}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{Nivel frente a trayectoria}: el análisis dice qué saldo hace falta para que la ratio de deuda exterior no suba, pero no a qué nivel conviene estabilizarla. No es lo mismo el 20~\% que el 100~\%: con el 100~\%, cada punto de subida del tipo de interés exige un superávit 5 veces mayor. La deuda externa neta y su aumento ayudan a predecir las crisis exteriores \parencite{CataoMilesiFerretti2014}.
+\item \emph{No todo el déficit es deuda}: el modelo supone que todo se financia con pasivos que pagan intereses. Las rentas del trabajo, las transferencias corrientes (remesas, ayuda al desarrollo) y la cuenta de capital (la venta de activos no producidos, los fondos europeos) financian sin deuda, y la inversión directa y las acciones reparten el riesgo.
+\item \emph{Los efectos de valoración y la moneda}: la misma ecuación da resultados muy distintos según la moneda de la deuda y los precios de los activos, como muestra España en 2025 \parencite{BdE2026BE17}.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulando}: el enfoque intertemporal enseña que un déficit puede ser óptimo, y el análisis de sostenibilidad pone el límite: el superávit comercial futuro tiene que cubrir el coste de la deuda neto del crecimiento, y la moneda, la financiación y la valoración deciden la vulnerabilidad.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item Los mecanismos de ajuste clásicos corrigen el desequilibrio por los precios relativos y el tipo de cambio, si se cumple la condición de \autor{Marshall}-\autor{Lerner}; por la renta, de forma incompleta; o por las reservas y el dinero, de forma automática con tipo fijo.
+  \item La absorción recuerda que el saldo exterior es la diferencia entre lo que se produce y lo que se gasta, y con capital móvil el régimen cambiario decide qué variable hace el ajuste.
+  \item El enfoque intertemporal cambia la pregunta: un déficit puede ser óptimo si financia inversión rentable o amortigua una perturbación temporal.
+  \item Pero óptimo no es sostenible: el superávit comercial futuro tiene que cubrir el coste de la deuda neto del crecimiento, y la moneda, la composición de la financiación y los efectos de valoración importan tanto como el saldo.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Cuando un déficit no es sostenible, el ajuste combina 4 políticas: las que reducen el gasto y las que lo desvían hacia lo nacional \parencite{Johnson1958}, las reformas que elevan la productividad y atraen inversión directa, y la financiación oficial mientras el ajuste surte efecto.
+  \item Para que no haga falta, conviene crecer con inversión productiva, financiarse con fuentes estables (inversión directa, deuda a largo plazo y en moneda propia) y repartir mejor el riesgo con el resto del mundo. Es lo que vigilan el FMI y el procedimiento de desequilibrios de la UE, que mira también los superávits.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item La medición de la balanza de pagos y de la posición exterior \vertema{3.B.11}.
+  \item La determinación del tipo de cambio \vertema{3.B.14} y los regímenes cambiarios y el trilema \vertema{3.B.15}.
+  \item El ajuste sin tipo de cambio en una unión monetaria, con devaluación interna \vertema{3.B.16}.
+  \item Las crisis de balanza de pagos y las paradas súbitas \vertema{3.B.17}.
+  \item La coordinación entre países con superávit y con déficit \vertema{3.B.19}, el FMI y su análisis de sostenibilidad \vertema{3.B.22} y la deuda externa de los países en desarrollo \vertema{3.B.29}.
+  \item La posición exterior de España \vertema{4.A.21}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item Ningún enfoque basta solo: los keynesianos explican el corto plazo con precios rígidos, el monetario el papel de las reservas con tipo fijo y el intertemporal el largo plazo.
+  \item La lección más útil es la de la absorción: sin cambiar el ahorro o la inversión, ni una devaluación ni un arancel corrigen un déficit. Y la del enfoque intertemporal: antes de preguntar si un déficit es malo, hay que preguntar por qué existe y cómo se financia.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Un déficit no es malo en sí: lo es si financia lo que no se podrá devolver. Los polvos de 2007 eran un déficit que pagaba vivienda con deuda, y los lodos, un ajuste de una década sin poder devaluar. De aquellos polvos, estos lodos.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: \autor{Marshall}-\autor{Lerner} en divisas y con ofertas finitas}\label{anexo:marshall-lerner}
+
+\begin{itemize}
+\item \emph{En moneda nacional}: partiendo de~\eqref{eq:saldo-comercial},
+  \[
+  \frac{\mathrm d\,\mathrm{XN}}{\mathrm dq}=\frac{\mathrm dX}{\mathrm dq}-M-q\,\frac{\mathrm dM}{\mathrm dq}
+  =M\left(\frac{X}{q\,M}\,\varepsilon_{X,q}-1-\varepsilon_{M,q}\right),
+  \]
+  que es~\eqref{eq:ml-derivada}. Con comercio equilibrado ($X=q\,M$) es positiva si $\varepsilon_{X,q}-\varepsilon_{M,q}>1$, es decir, si $\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert>1$, que es~\eqref{eq:marshall-lerner}; con déficit inicial, si se cumple~\eqref{eq:ml-deficit}. \findemo
+\item \emph{En divisas}: el saldo es $\mathrm{XN}^{\$}\equiv X(q)/q-M(q)$. Derivando,
+  \[
+  \frac{\mathrm d\,\mathrm{XN}^{\$}}{\mathrm dq}=-\frac{X}{q^2}+\frac{1}{q}\frac{\mathrm dX}{\mathrm dq}-\frac{\mathrm dM}{\mathrm dq}=\frac{X}{q^2}\left(\varepsilon_{X,q}-1-\varepsilon_{M,q}\,\frac{q\,M}{X}\right),
+  \]
+  que es positiva si $\lvert\varepsilon_{X,q}\rvert+\frac{q\,M}{X}\lvert\varepsilon_{M,q}\rvert>1$. Con déficit inicial, $q\,M/X>1$, y la condición se cumple antes que en moneda nacional. \findemo
+\item \emph{Un ejemplo}: con $X=80$, $q\,M=100$ y las 2 elasticidades iguales a 0,5 en valor absoluto, la suma es 1. En moneda nacional, $0{,}8\cdot0{,}5+0{,}5=0{,}9<1$: la depreciación empeora el saldo. En divisas, $0{,}5+1{,}25\cdot0{,}5=1{,}125>1$: lo mejora.
+\item \emph{Con ofertas finitas}: con $\varepsilon^S_X$ y $\varepsilon^S_M$ las elasticidades de la oferta de exportaciones (del país) y de importaciones (del resto del mundo), locales de este anexo, y partiendo de comercio equilibrado, la depreciación mejora el saldo en divisas si se cumple la condición de \autor{Bickerdike}-\autor{Robinson}-\autor{Metzler}:
+  \[
+  \varepsilon^S_X\,\varepsilon^S_M\left(\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert-1\right)+\lvert\varepsilon_{X,q}\rvert\,\lvert\varepsilon_{M,q}\rvert\left(1+\varepsilon^S_X+\varepsilon^S_M\right)>0 .
+  \]
+  \begin{itemize}
+  \item Con ofertas infinitamente elásticas se reduce a~\eqref{eq:marshall-lerner}.
+  \item Con ofertas rígidas basta con que las demandas tengan alguna elasticidad: parte de la depreciación la absorben los precios de oferta \parencite[cap.~7]{Gandolfo2016International}.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el multiplicador, paso a paso}\label{anexo:multiplicador}
+
+\begin{itemize}
+\item \emph{El modelo}: con la notación de~\eqref{eq:multiplicador-comercio}, la producción se ajusta al exceso de demanda, venga de donde venga, y en variaciones
+  \[
+  \Delta Y=\frac{\Delta\overline A-b\,\Delta i+\Delta\overline X-\Delta\overline M}{1-c-z+m}.
+  \]
+\item \emph{El saldo comercial} cambia por lo exógeno y por las importaciones inducidas:
+  \[
+  \Delta\mathrm{XN}=\Delta\overline X-\left(\Delta\overline M+m\,\Delta Y\right).
+  \]
+  Con $\Delta\overline A=0$ y $\Delta i=0$,
+  \[
+  \Delta\mathrm{XN}=\left(\Delta\overline X-\Delta\overline M\right)\left(1-\frac{m}{1-c-z+m}\right)=\left(\Delta\overline X-\Delta\overline M\right)\frac{1-c-z}{1-c-z+m},
+  \]
+  que es~\eqref{eq:multiplicador-xn}. \findemo
+\end{itemize}
+
+\paragraph{Caso 1: más exportaciones autónomas}
+
+\begin{itemize}
+\item Con $\Delta\overline M=0$: $\Delta\mathrm{XN}=\Delta\overline X\,\frac{1-c-z}{1-c-z+m}$.
+\item Si la propensión marginal a gastar es menor que 1 ($c+z<1$), el cociente está entre 0 y 1: $0<\Delta\mathrm{XN}<\Delta\overline X$. El aumento inducido de las importaciones no alcanza al de las exportaciones y queda un superávit, menor que el inicial: el ajuste es incompleto.
+\item Si $c+z>1$, el cociente es negativo: las importaciones inducidas superan al aumento de las exportaciones y aparece un déficit.
+\end{itemize}
+
+\paragraph{Caso 2: importaciones que sustituyen a bienes nacionales}
+
+\begin{itemize}
+\item El gasto autónomo de los residentes, $\overline A$, incluye lo que gastan en bienes nacionales y en importados. Si sube $\overline M$ con $\overline A$ constante, el gasto en bienes nacionales cae lo mismo que suben las importaciones.
+\item Con $\Delta\overline X=0$ y $\Delta\overline A=0$: la renta baja, $\Delta Y=-\Delta\overline M/(1-c-z+m)$, las importaciones inducidas caen y
+  \[
+  \Delta\mathrm{XN}=-\Delta\overline M\,\frac{1-c-z}{1-c-z+m}.
+  \]
+  Con $c+z<1$, el saldo empeora menos que el aumento inicial de las importaciones.
+\end{itemize}
+
+\paragraph{Caso 3: importaciones que se suman al gasto}
+
+\begin{itemize}
+\item Si el gasto en bienes nacionales no cae, el gasto autónomo total sube lo mismo que las importaciones, $\Delta\overline A=\Delta\overline M$, y la renta no cambia: $\Delta Y=(\Delta\overline M-\Delta\overline M)/(1-c-z+m)=0$.
+\item Entonces $\Delta\mathrm{XN}=-\Delta\overline M$: no hay ajuste por las importaciones inducidas, y el saldo empeora en todo el aumento inicial.
+\end{itemize}
+
+\paragraph{Con 2 países}
+
+\begin{itemize}
+\item Si el país no es pequeño, lo que importa el país es lo que exporta el resto del mundo. Con $s\equiv1-c-z$ y $s^*$ y $m^*$ la propensión a ahorrar y a importar del resto del mundo (locales de este anexo), comercio inicialmente equilibrado y $q=1$ al empezar:
+  \begin{itemize}
+  \item en el país, $s\,\Delta Y=\Delta\mathrm{XN}$; en el resto del mundo, $s^*\,\Delta Y^*=-\Delta\mathrm{XN}$;
+  \item el saldo cambia por la depreciación y por las rentas: $\Delta\mathrm{XN}=M\left(\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert-1\right)\Delta q+m^*\Delta Y^*-m\,\Delta Y$.
+  \end{itemize}
+\item Sustituyendo las 2 primeras en la tercera:
+  \[
+  \Delta\mathrm{XN}=\frac{M\left(\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert-1\right)}{1+\dfrac{m}{s}+\dfrac{m^*}{s^*}}\;\Delta q .
+  \]
+  \findemo
+\item \emph{En palabras}: el signo lo sigue dando la condición de \autor{Marshall}-\autor{Lerner}, pero la mejora es menor que en equilibrio parcial: los efectos renta frenan el ajuste.
+\item \textcite{Harberger1950Currency} y \textcite{LaursenMetzler1950} añadieron el efecto de la relación real de intercambio sobre el gasto: la depreciación la empeora y reduce la renta real; si el ahorro cae y la absorción baja menos que la renta, y la condición sobre las elasticidades se vuelve más exigente. El enfoque intertemporal lo reformula con optimización (\ref{sec:intertemporal-valoracion}).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el modelo intertemporal paso a paso}\label{anexo:intertemporal}
+
+\begin{itemize}
+\item \emph{La restricción}: el último periodo se consume también el capital ($I_{t+1}=-K_{t+1}$), así que lo que se puede gastar en $t+1$ es $F(K_{t+1})+K_{t+1}$, y la restricción en valor actual es la de~\eqref{eq:problema-intertemporal}.
+\item \emph{Las condiciones}: con $K_{t+1}=K_t+I_t$, el lagrangiano es
+  \[
+  \mathcal L=u(C_t)+\beta\,u(C_{t+1})+\lambda\left[F(K_t)+\frac{F(K_t+I_t)+K_t+I_t}{1+r^*}-C_t-I_t-\frac{C_{t+1}}{1+r^*}\right].
+  \]
+  \begin{itemize}
+  \item Respecto a $C_t$ y a $C_{t+1}$: $u'(C_t)=\lambda$ y $\beta\,u'(C_{t+1})=\lambda/(1+r^*)$; dividiendo, la ecuación de \autor{Euler}~\eqref{eq:euler-abierta}.
+  \item Respecto a $I_t$: $-1+\frac{F'(K_{t+1})+1}{1+r^*}=0$, es decir, $F'(K_{t+1})=r^*$, la condición~\eqref{eq:inversion-abierta}, que no depende de las preferencias. \findemo
+  \end{itemize}
+\item \emph{La frontera de posibilidades de producción intertemporal}: sustituyendo $K_{t+1}=K_t+F(K_t)-C_t$ (lo que no se consume se invierte) en $C_{t+1}=F(K_{t+1})+K_{t+1}$:
+  \[
+  C_{t+1}=F\big(K_t+F(K_t)-C_t\big)+K_t+F(K_t)-C_t .
+  \]
+  Su pendiente es $-[1+F'(K_{t+1})]$, y es cóncava porque $F''<0$. Corta al eje horizontal en $F(K_t)+K_t$, cuando se consume todo el capital en $t$.
+\item \emph{En autarquía}, la pendiente común de la frontera y de la curva de indiferencia en $A$ define $1+r^A=1+F'(K^A_{t+1})$: el tipo de interés coordina el consumo y la inversión. Mientras consume menos de lo que produce, $C_t<F(K_t)$, el país invierte; si consume más, desinvierte.
+\item \emph{Con $r^*<r^A$, el país no puede tener superávit en $t$}: consumir a la izquierda de $C^P_t$ exigiría una curva de indiferencia que cortara a la de autarquía, y no maximizaría la utilidad.
+\item \emph{El déficit, por dentro}: en el gráfico~\ref{fig:cc-intertemporal}, el déficit de $t$ se reparte entre la mayor inversión ($C^A_t-C^P_t$) y el mayor consumo ($C^C_t-C^A_t$) frente a la autarquía.
+  \begin{itemize}
+  \item Si el préstamo financia sobre todo inversión, como en el gráfico, la producción de $t+1$ crece y el país devuelve la deuda sin esfuerzo.
+  \item Si financia sobre todo consumo (un país muy impaciente, con $C$ muy a la derecha y abajo), el superávit de $t+1$ exige consumir mucho menos mañana: es la diferencia entre un déficit que se paga solo y uno que se paga con ajuste.
+  \end{itemize}
+\item \emph{La ecuación fundamental de la cuenta corriente}: con horizonte infinito, deuda exterior neta $B_t$ y $\beta(1+r^*)=1$, el consumo es constante e igual a la renta permanente neta, $C_t=-r^*B_{t-1}+Y^P_t-I^P_t-G^P_t$, con $X^P_t\equiv\frac{r^*}{1+r^*}\sum_{s\geq t}X_s/(1+r^*)^{s-t}$ para cada variable $X$ (renta, inversión o gasto público). Como $\mathrm{CC}_t=-r^*B_{t-1}+Y_t-C_t-I_t-G_t$, los intereses se cancelan y sale~\eqref{eq:cc-fundamental} \parencite[cap.~2]{ObstfeldRogoff1996Foundations}. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la deuda exterior, paso a paso}\label{anexo:sostenibilidad}
+
+\begin{itemize}
+\item \emph{De la identidad a la deuda}: sin cuenta de capital, rentas secundarias ni errores y omisiones, $\mathrm{CC}_t=\mathrm{CF}_t$, y con la cuenta corriente partida en el saldo comercial y las rentas primarias de la deuda,
+  \[
+  \underbrace{-D_t}_{\mathrm{XN}_t}\;\underbrace{-\,i^*B_{t-1}}_{\mathrm{RP}_t}=\underbrace{-(B_t-B_{t-1})}_{\mathrm{CF}_t}
+  \quad\Longrightarrow\quad B_t=(1+i^*)\,B_{t-1}+D_t ,
+  \]
+  que es~\eqref{eq:deuda-nivel}.
+\item \emph{En porcentaje del PIB}: se divide por el PIB nominal \emph{del mismo periodo}, $P_tY_t$, y se usa $P_tY_t=(1+\pi)(1+\gamma_Y)\,P_{t-1}Y_{t-1}$:
+  \[
+  \frac{B_t}{P_tY_t}=(1+i^*)\,\frac{B_{t-1}}{P_{t-1}Y_{t-1}}\,\frac{P_{t-1}Y_{t-1}}{P_tY_t}+\frac{D_t}{P_tY_t}
+  \quad\Longrightarrow\quad b_t=\frac{1+i^*}{(1+\pi)(1+\gamma_Y)}\,b_{t-1}+d_t ,
+  \]
+  que es~\eqref{eq:deuda-nominal}, y con $1+r^*\equiv(1+i^*)/(1+\pi)$, la real~\eqref{eq:deuda-externa}. \findemo
+\item \emph{El saldo estabilizador}: con $b_t=b_{t-1}=b$, $b=\frac{1+r^*}{1+\gamma_Y}\,b+d$, y despejando,
+  \[
+  -d=b\left(\frac{1+r^*}{1+\gamma_Y}-1\right)=\frac{r^*-\gamma_Y}{1+\gamma_Y}\,b ,
+  \]
+  que es~\eqref{eq:saldo-estabilizador}. \findemo
+\item \emph{La solvencia}: de~\eqref{eq:deuda-externa}, $b_{t-1}=\frac{1+\gamma_Y}{1+r^*}\,(b_t-d_t)$. Sustituyendo $b_t$ de la misma forma una y otra vez,
+  \[
+  b_{t-1}=\sum_{k=0}^{K}\left(\frac{1+\gamma_Y}{1+r^*}\right)^{k+1}(-d_{t+k})+\left(\frac{1+\gamma_Y}{1+r^*}\right)^{K+1}b_{t+K},
+  \]
+  y con la condición de no juego de \autor{Ponzi}, que el último término tienda a 0 cuando $K\to\infty$, sale~\eqref{eq:solvencia-externa}. \findemo
+\item \emph{Con la deuda en divisas}: la deuda en divisas, $B^{\$}_t$, sigue $B^{\$}_t=(1+i^*)B^{\$}_{t-1}+D^{\$}_t$, y en moneda nacional vale $E_tB^{\$}_t$. Con $b_t\equiv E_tB^{\$}_t/(P_tY_t)$ y $\gamma_E$ la depreciación nominal,
+  \[
+  b_t=(1+i^*)\,\frac{E_t}{E_{t-1}}\,\frac{P_{t-1}Y_{t-1}}{P_tY_t}\,b_{t-1}+d_t=\frac{(1+i^*)(1+\gamma_E)}{(1+\pi)(1+\gamma_Y)}\,b_{t-1}+d_t .
+  \]
+  Como el tipo real es $q=EP^*/P$, $1+\gamma_q=(1+\gamma_E)(1+\pi^*)/(1+\pi)$, y con $1+r^*\equiv(1+i^*)/(1+\pi^*)$ sale~\eqref{eq:deuda-divisas}. Con la paridad del poder adquisitivo ($\gamma_q=0$) es la real~\eqref{eq:deuda-externa}. \findemo
+\item \emph{Un error frecuente}: dividir por el PIB nominal \emph{nacional} y deflactar el tipo con la inflación \emph{exterior}, $\pi^*$, solo es correcto si el tipo de cambio real no cambia. Por eso la inflación nacional no mejora la sostenibilidad de una deuda en divisas.
+\item \emph{España en 2007 con la forma real}: con el rendimiento implícito del 4,3~\%, un deflactor del PIB que subió un 3,6~\% y un crecimiento real del 3,5~\%, el tipo real era de en torno al 0,7~\% y
+  \[
+  -d_{2007}=\frac{0{,}007-0{,}035}{1{,}035}\cdot0{,}73\approx-0{,}020 ,
+  \]
+  el mismo resultado que con la forma nominal. Con un tipo real \emph{supuesto} del 3~\%, la conclusión no cambia: el déficit que estabilizaba la ratio era de menos de medio punto, muy lejos del 6~\% que hubo \parencites{Eurostat2026bopc6a}{Eurostat2026nama10gdp}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el ajuste con tipo flexible}\label{anexo:tipo-flexible}
+
+\paragraph{¿Resuelve el tipo flexible el problema del ajuste?}
+
+\begin{itemize}
+\item \emph{Sin movimientos de capital, sí}: la demanda de divisas nace de las importaciones y de las salidas de capital, y la oferta, de las exportaciones y de las entradas de capital. El tipo de cambio de vaciado iguala las 2 y asegura el equilibrio de la balanza en su conjunto, $X-M=\text{salidas}-\text{entradas de capital}$; sin capitales, equilibra la cuenta corriente (gráfico~\ref{fig:oferta-demanda-divisas}) \vertema{3.B.13}.
+  \begin{itemize}
+  \item Un choque que reduce las exportaciones reduce la oferta de divisas, deprecia la moneda y devuelve competitividad.
+  \item Por eso las teorías del ajuste se plantearon con tipo fijo: con poco capital móvil y tipo flexible, la cuenta corriente se equilibraba sola, y bajo Bretton Woods el régimen era fijo.
+  \item Con un tipo fijo distinto del de vaciado, la diferencia la cubren las reservas.
+  \end{itemize}
+\item \emph{Con movimientos de capital, no necesariamente}: el tipo de vaciado es compatible con un déficit corriente financiado desde fuera. La ecuación de flujos que une la cuenta corriente, la cuenta financiera y el tipo de cambio con sus determinantes se desarrolla con el mercado de divisas \parencite{Kallianiotis2013Exchange} \vertema{3.B.13}.
+\item \emph{Y aunque no haya capitales}, el tipo flexible solo garantiza el ajuste si:
+  \begin{enumerate}
+  \item la depreciación nominal se traslada a una depreciación real, lo que exige que sus efectos inflacionistas sean pequeños y que los exportadores fijen los precios en su propia moneda;
+  \item el efecto volumen supera al efecto valor, es decir, si se cumple la condición de \autor{Marshall}-\autor{Lerner}~\eqref{eq:marshall-lerner}.
+  \end{enumerate}
+\item Nada garantiza estas condiciones. En el comercio internacional es habitual fijar los precios en dólares, por liquidez y comparabilidad, y los efectos de una depreciación son parciales \parencite{Gopinath2020DCP}.
+\item \emph{Respuesta}: el tipo flexible es un mecanismo de ajuste imperfecto, y con él se han perpetuado desequilibrios grandes de la balanza de pagos.
+\end{itemize}
+
+\paragraph{La defensa del tipo flexible de \autor{Milton Friedman} (1953)}
+
+\begin{itemize}
+\item En \emph{The Case for Flexible Exchange Rates}, \textcite{Friedman1953Case} defiende el tipo de cambio de mercado, no las devaluaciones, como mecanismo de ajuste.
+\item \emph{El ajuste}: ante una expansión monetaria que saca capital, la demanda de divisas sube y la moneda se deprecia; ante un desequilibrio, la depreciación amortigua el impacto con ganancias de competitividad y corrige la balanza a través de las exportaciones netas. Se mueve un solo precio en lugar de todos los precios y salarios.
+\item \emph{El trilema}: el tipo flexible permite a la vez autonomía de la política monetaria para el equilibrio interno y libertad de capitales \vertema{3.B.15}.
+\item \emph{Los riesgos}:
+  \begin{itemize}
+  \item en un país con sesgo inflacionista, el tipo flexible puede agravar la inflación, porque encarece las importaciones, y anular la ganancia de competitividad;
+  \item con tipos flexibles se han producido desequilibrios corrientes grandes y persistentes, porque una depreciación nominal no lleva necesariamente a una real: si los precios se fijan en dólares y el traspaso es limitado, el tipo de cambio apenas cambia la competitividad.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\begin{itemize}
+\item Para ampliar los enfoques del ajuste con tipo flexible, la segunda parte de \textcite{Copeland2014Exchange} y el manual de \textcite{MoosaBhatti2010}.
+\end{itemize}
+\end{anotaciones}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas de test de exámenes anteriores, con su explicación: \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}.
+\end{anotaciones}
+
+\bibliografia
+
+\end{document}

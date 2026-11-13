@@ -38,6 +38,6 @@ con **L_U** la población activa urbana (ocupados del moderno, L_M, más parados
 
 ## Divergencias encontradas en el temario actual
 - **3.B.28** (Word): «¿Qué se necesita para la transición? Una expansión de la demanda de bienes industriales… un fallo de coordinación» (el motor es la acumulación del beneficio, por la oferta); «L^D = P·PMg_L»; «excedente del productor» (beneficio de los capitalistas); «desaparición del desempleo» (del subempleo). **Resuelto** (3/11/2026).
-- **4.A.27** (sin revisar): lo cita 2 veces sin gráfico y remite al 3.B.29 (financiación del desarrollo): debe ser **3.B.28**; «modelo dual de Lewis» sin año: con el año.
+- **4.A.27** (sin revisar): lo cita 2 veces sin gráfico y remite al 3.B.29 (financiación del desarrollo): debe ser **3.B.28**; «modelo dual de Lewis» sin año: con el año. **Confirmado** en la fase canon del 3.B.29 (12/11/2026): el 3.B.29 revisado no trata a Lewis.
 
 Autor: Víctor Gutiérrez Marcos

@@ -24,7 +24,9 @@ import '../cantar/pizarra_compartida.dart';
 import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
 import 'anotaciones.dart';
+import 'autoevaluacion_page.dart';
 import 'esquema_tema.dart';
+import '../cantar/esquema_ciegas_page.dart';
 import 'html_revisado.dart';
 import 'visor_html.dart';
 import 'visor_tema.dart';
@@ -39,8 +41,10 @@ import 'visor_tema.dart';
 /// con anotaciones propias, HTML, ficha de repaso y Word) y la anterior queda
 /// a un toque; sin sesión, la anterior con la invitación a entrar.
 class TemaPage extends ConsumerStatefulWidget {
-  const TemaPage({super.key, required this.tema, this.esRecurso = false, this.nombreDescarga, this.reemplazaDescarga});
+  const TemaPage({super.key, required this.tema, this.esRecurso = false, this.nombreDescarga, this.reemplazaDescarga, this.paginaInicial});
   final Tema tema;
+  /// Página del PDF en la que abrir (el buscador de epígrafes).
+  final int? paginaInicial;
   final bool esRecurso;
   /// Nombre del fichero descargado (y prefijo de sus versiones viejas), si no
   /// vale el de la URL: la ficha de repaso revisada.
@@ -61,6 +65,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   Object? _error;
   int _pagina = 1, _paginas = 0;
   final _visor = ControladorVisor();
+  bool _paginaInicialHecha = false;
   bool _anotando = false;
 
   /// Lo que hay cargado (o cargándose) en el visor: URL|nombre.
@@ -186,7 +191,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     if (clase == ClaseFichero.repaso) {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => TemaPage(
-          tema: Tema(codigo: '${rev.codigo}-repaso', titulo: 'Ficha de repaso del tema ${rev.codigo}', disponible: true, temarioAnterior: false, url: rev.url(f)),
+          tema: Tema(codigo: '${rev.codigo}-repaso', titulo: rev.esDictamen ? 'Resumen de repaso de la guía del dictamen' : 'Ficha de repaso del tema ${rev.codigo}', disponible: true, temarioAnterior: false, url: rev.url(f)),
           esRecurso: true,
           nombreDescarga: rev.nombreLocal(clase),
           reemplazaDescarga: rev.prefijoLocal(clase),
@@ -315,6 +320,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     // La revisada, si es la que se enseña.
     final TemaRevisado? rv = eleccion.esRevisada ? rev : null;
     final revisada = rv != null;
+    // Exclusivo (uso personal): se lee dentro de la app; sin compartir, sin Word y sin descargar anotado.
+    final exclusivo = rv?.exclusivo ?? false;
     // Con sesión, se espera al manifiesto antes de abrir nada (para no bajar
     // la versión anterior y luego la revisada).
     final listo = estadoRevisados == null || !conSesion || estadoRevisados.hasValue || estadoRevisados.hasError;
@@ -349,7 +356,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
 
     return Scaffold(
       appBar: BarraWeb(
-        title: Text(widget.esRecurso ? widget.tema.titulo : 'Tema ${widget.tema.codigo}', overflow: TextOverflow.ellipsis),
+        title: Text(widget.esRecurso ? widget.tema.titulo : (widget.tema.codigo == codigoDictamen ? 'Guía del dictamen' : 'Tema ${widget.tema.codigo}'), overflow: TextOverflow.ellipsis),
         actions: [
           if (!widget.esRecurso && !sinPdf)
             IconButton(
@@ -360,6 +367,13 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                 child: Icon(pendientes > 0 || conNota ? Icons.sticky_note_2 : Icons.sticky_note_2_outlined, color: pendientes > 0 || conNota ? context.colores.dorado : null),
               ),
               onPressed: _abrirAgenda,
+            ),
+          // Autoevaluación del tema revisado (preguntas cortas con Leitner).
+          if (!widget.esRecurso && !_anotando && ref.watch(indiceAutoevaluacionProvider).valueOrNull?.archivoDe(widget.tema.codigo) != null)
+            IconButton(
+              tooltip: 'Autoevalúate: preguntas cortas del tema',
+              icon: const Icon(Icons.quiz_outlined),
+              onPressed: () => abrirAutoevaluacion(context, widget.tema.codigo, widget.tema.titulo),
             ),
           if (rv?.html != null && !_anotando)
             IconButton(
@@ -375,7 +389,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               selectedIcon: const Icon(Icons.draw),
               onPressed: () => _alternarAnotar(anotaciones),
             ),
-          if (_ruta != null && !verHtml)
+          if (_ruta != null && !verHtml && !exclusivo)
             IconButton(
               tooltip: 'Compartir PDF',
               icon: const Icon(Icons.share_outlined),
@@ -400,7 +414,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             itemBuilder: (_) => [
               // El revisado no tiene página pública: no se abre fuera de la app.
               if (!revisada && widget.nombreDescarga == null) PopupMenuItem(value: 'web', child: Text(kIsWeb ? 'Abrir en otra pestaña' : 'Abrir en el navegador')),
-              if (_pdf != null && anotaciones != null) const PopupMenuItem(value: 'anotado', child: Text('Descargar con mis anotaciones')),
+              if (_pdf != null && anotaciones != null && !exclusivo) const PopupMenuItem(value: 'anotado', child: Text('Descargar con mis anotaciones')),
               if (ref.read(descargasProvider).guardaSinConexion) const PopupMenuItem(value: 'borrar', child: Text('Eliminar descarga')),
             ],
           ),
@@ -436,6 +450,12 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                       ),
                   ]),
                 ),
+                if (!preparador && listaControlDisponible(esquemaDelTema(ref, widget.tema)))
+                  IconButton(
+                    tooltip: 'Esquema a ciegas',
+                    icon: Icon(Icons.psychology_outlined, color: context.esquema.primary),
+                    onPressed: () => abrirEsquemaCiegas(context, widget.tema.codigo),
+                  ),
                 if (!preparador) IconButton(
                   tooltip: 'En repaso',
                   icon: Icon(Icons.replay, color: repaso ? context.esquema.primary : context.colores.textoClaro),
@@ -497,7 +517,14 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                         miUid: ref.read(usuarioActualProvider)?.uid ?? '',
                         controlador: _visor,
                         anotando: _anotando,
-                        alCargar: (n) => setState(() => _paginas = n),
+                        alCargar: (n) {
+                          setState(() => _paginas = n);
+                          final ir = widget.paginaInicial;
+                          if (ir != null && ir > 1 && ir <= n && !_paginaInicialHecha) {
+                            _paginaInicialHecha = true;
+                            WidgetsBinding.instance.addPostFrameCallback((_) => _visor.irAPagina(ir));
+                          }
+                        },
                         alCambiarPagina: (p) => setState(() => _pagina = p),
                         alAcabar: () => setState(() => _anotando = false),
                       ),
@@ -588,14 +615,19 @@ class _BarraRevisado extends StatelessWidget {
       final aprobado = revisado.aprobado;
       contenido = Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
         Wrap(spacing: 8, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
-          const Etiqueta('Revisado · exclusivo de la app'),
+          Etiqueta(revisado.exclusivo ? 'Exclusivo · uso personal' : 'Revisado · exclusivo de la app'),
           if (aprobado != null) Text('Versión del ${_fecha(aprobado)}', style: context.textos.labelSmall),
+          if (revisado.exclusivo)
+            Tooltip(
+              message: avisoExclusivo,
+              child: InkWell(onTap: () => abrirUrl(context, urlCondicionesMateriales, enApp: true), child: Text('Solo lectura en la app · condiciones', style: context.textos.labelSmall?.copyWith(decoration: TextDecoration.underline))),
+            ),
         ]),
         const SizedBox(height: 2),
         Wrap(spacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
           if (revisado.repaso != null)
-            TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.repaso), icon: const Icon(Icons.summarize_outlined, size: 18), label: const Text('Ficha de repaso')),
-          if (revisado.docx != null)
+            TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.repaso), icon: const Icon(Icons.summarize_outlined, size: 18), label: Text(revisado.esDictamen ? 'Resumen de repaso' : 'Ficha de repaso')),
+          if (revisado.docx != null && !revisado.exclusivo)
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.docx), icon: const Icon(Icons.description_outlined, size: 18), label: const Text('Word')),
           if (eleccion.puedeCambiar)
             TextButton.icon(style: compacto, onPressed: cambiar, icon: const Icon(Icons.history, size: 18), label: const Text('Ver versión anterior')),

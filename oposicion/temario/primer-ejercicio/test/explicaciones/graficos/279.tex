@@ -1,0 +1,32 @@
+% Pregunta 279 (2018-enero-OEP2017, n.º 35): call fuera de dinero, prima = valor temporal, que se reduce al acercarse el vencimiento. Autor: Víctor Gutiérrez Marcos
+% K = 3. Valor intrínseco: 1,6·max(S-K,0). Valor de la call (ilustrativo): 1,6·a·ln(1+e^{(S-K)/a}),
+% con a = 1,2 (mucho plazo, menos 0,1515·max(0,1-S/K) para que valga 0 en S = 0) y a = 0,6 (poco plazo);
+% en S0 = 2,2 valen 0,76 y 0,22.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$S$}{$c$}{6.2}{5}
+  % Zona fuera de dinero
+  \fill[tceegris,opacity=0.10] (0,0) rectangle (3,4.6);
+  \node[etiqueta,align=center,text=tceegris] at (1.5,4.2) {fuera de dinero\\$S<K$: $VI=0$};
+  % Valor intrínseco
+  \draw[curva2] (0,0) -- (3,0) -- (5.6,4.16);
+  \node[etiqueta,right,text=tceeazul] at (5.6,4.16) {$\max(S-K,0)$};
+  % Valor de la call con mucho plazo
+  \draw[curva1,domain=0:5.5,samples=80] plot (\x,{1.92*ln(1+exp((\x-3)/1.2))-0.1515*max(0,1-\x/3)});
+  \node[etiqueta,left,text=tceemorado,align=right] at (4.6,3.7) {mucho\\plazo};
+  % Valor de la call con poco plazo
+  \draw[curvanueva,desplazada,domain=0:5.6,samples=80] plot (\x,{0.96*ln(1+exp((\x-3)/0.6))});
+  \node[etiqueta,right,text=tceerojo,align=left] at (4.75,2.0) {poco\\plazo};
+  % K
+  \node[etiqueta,below] at (3,0) {$K$};
+  % S0 fuera de dinero
+  \node[punto] (A) at (2.2,0.76) {};
+  \node[punto] (B) at (2.2,0.22) {};
+  \draw[guia] (2.2,0) -- (A);
+  \node[etiqueta,below] at (2.2,0) {$S_0$};
+  \draw[flecha] (1.95,0.76) -- (1.95,0.26);
+  \node[etiqueta,above left,text=tceemorado] at (2.25,0.81) {prima $=VT$};
+\end{tikzpicture}
+\end{document}

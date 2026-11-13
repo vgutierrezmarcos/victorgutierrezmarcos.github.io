@@ -1,0 +1,87 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% El índice Big Mac de julio de 2026: desviación del tipo de cambio de mercado
+% respecto a la PPA Big Mac frente al dólar, en %, SIN ajustar por el PIB por
+% habitante (columna desviacion_usd). Positivo: moneda sobrevalorada.
+% Fuente: The Economist, big-mac-data (output-data/big-mac-full-index.csv,
+% actualización de julio de 2026; datos del 1/7/2026; consulta 11/11/2026).
+% Filas del CSV ya ordenadas de menor (Indonesia, −61,7) a mayor (Suiza,
+% +45,4), de arriba abajo. Paleta: infravaloradas en naranja, sobrevaloradas en
+% azul claro y la zona del euro en el azul marino de su familia (dicze), con
+% su nombre en negrita. Nombres junto a la línea del 0, al otro lado de la
+% barra; valores al final de cada barra, sin fondo.
+% Capas «dic» (tikz-tcee.tex): barras → eje y línea del 0 → etiquetas.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bigmac-2026-07.csv}\bigmac
+\colorlet{bminfra}{tceenaranja}
+\colorlet{bmsobre}{dicexterna}
+\colorlet{bmeuro}{dicze}
+% Los ejes salen en la capa 3, después de las barras
+\ifnum3>\tceepaso\relax
+  \pgfplotsset{ejesbm/.style={hide axis}}
+\else
+  \pgfplotsset{ejesbm/.style={}}
+\fi
+\pgfplotsset{
+  % solo las filas #1 a #2 del CSV
+  filas/.style 2 args={y filter/.expression={
+    and(\coordindex>=#1, \coordindex<=#2) ? y : nan}},
+  fila/.style={/pgfplots/table/y expr=\coordindex},
+  barra bm/.style={on layer=dicbarras, forget plot, dicbarra=#1, xbar, bar width=0.3cm},
+  % valor con coma decimal al final de la barra
+  valor bm/.style={on layer=axis descriptions, dicsuelto, draw=none,
+    nodes near coords={\pgfmathprintnumber[/pgf/number format/.cd,
+      use comma, fixed, fixed zerofill, precision=1]{\pgfplotspointmeta}},
+    nodes near coords style={font=\footnotesize, anchor=#1, fill=none, inner sep=2pt},
+    point meta=x},
+  % nombre junto a la línea del 0
+  nombre bm/.style={on layer=axis descriptions, dicsuelto, draw=none,
+    nodes near coords, point meta=explicit symbolic,
+    nodes near coords style={font=\footnotesize, anchor=#1, fill=none, inner sep=3pt}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9.5cm, height=9.2cm, scale only axis,
+      xmin=-75, xmax=58, xtick={-60,-40,...,40},
+      xticklabel={\pgfmathprintnumber{\tick}},
+      ymin=-0.7, ymax=20.7, y dir=reverse, ytick=\empty,
+      axis x line*=bottom, axis y line=none, tick align=outside,
+      ticklabel style={font=\footnotesize},
+      xlabel={desviación respecto a la PPA Big Mac (\%)},
+      xlabel style={font=\footnotesize},
+      xmajorgrids, grid style={tceegris!25},
+      clip=false,
+      dicapas, ejesbm]
+    % 1: barras de las monedas infravaloradas (filas 0 a 8)
+    \capa{1}{
+      \addplot[barra bm=bminfra, filas={0}{8}] table[x=desviacion_usd, fila] {\bigmac};
+    }
+    % 2: barras de las sobrevaloradas (filas 11 a 20), con la zona del euro
+    % (fila 14) destacada
+    \capa{2}{
+      \addplot[barra bm=bmsobre, filas={11}{13}] table[x=desviacion_usd, fila] {\bigmac};
+      \addplot[barra bm=bmeuro, filas={14}{14}] table[x=desviacion_usd, fila] {\bigmac};
+      \addplot[barra bm=bmsobre, filas={15}{20}] table[x=desviacion_usd, fila] {\bigmac};
+    }
+    % 3: eje horizontal (lo dibuja el entorno axis) y línea del 0, el dólar
+    \capa{3}{
+      \dicraya[thick]{(0,-0.7) (0,20.7)}
+    }
+    % 4: valores y nombres (las negativas, con el nombre a la derecha del 0;
+    % las demás, a la izquierda)
+    \capa{4}{
+      \addplot[valor bm=east, filas={0}{8}] table[x=desviacion_usd, fila] {\bigmac};
+      \addplot[valor bm=west, filas={9}{13}] table[x=desviacion_usd, fila] {\bigmac};
+      \addplot[valor bm=west, filas={15}{20}] table[x=desviacion_usd, fila] {\bigmac};
+      \addplot[valor bm=west, filas={14}{14}, nodes near coords style={font=\footnotesize\bfseries, text=bmeuro}]
+        table[x=desviacion_usd, fila] {\bigmac};
+      \addplot[nombre bm=west, filas={0}{8}] table[x expr=0, fila, meta=pais] {\bigmac};
+      \addplot[nombre bm=east, filas={9}{13}] table[x expr=0, fila, meta=pais] {\bigmac};
+      \addplot[nombre bm=east, filas={15}{20}] table[x expr=0, fila, meta=pais] {\bigmac};
+      \addplot[nombre bm=east, filas={14}{14}, nodes near coords style={font=\footnotesize\bfseries, text=bmeuro}]
+        table[x expr=0, fila, meta=pais] {\bigmac};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

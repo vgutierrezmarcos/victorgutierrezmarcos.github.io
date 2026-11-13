@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.11",
+ "archivo": "3A11",
+ "preguntas": [
+  {
+   "id": "3A11-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué tres tipos de restricciones afronta la empresa al transformar factores en productos y cuál estudia la teoría de la producción?",
+   "respuesta": "Restricciones técnicas, económicas (costes) y de mercado y organizativas. La teoría de la producción estudia las técnicas: qué puede producir la empresa con la tecnología disponible."
+  },
+  {
+   "id": "3A11-02",
+   "tipo": "definicion",
+   "apartado": "I.1. Conjunto tecnológico",
+   "pregunta": "¿Qué es el conjunto de posibilidades de producción $\\mathcal{Y}$ y qué es un vector de producción neta?",
+   "respuesta": "$\\mathcal{Y}\\subset\\mathbb{R}^S$ reúne todos los planes que permite la tecnología. Cada plan es un vector de producción neta (netput): los componentes negativos son factores y los positivos, productos; un mismo bien puede ser factor en un plan y producto en otro."
+  },
+  {
+   "id": "3A11-03",
+   "tipo": "formula",
+   "apartado": "I.2. La función de producción",
+   "pregunta": "¿Cómo se define la función de producción a partir del conjunto tecnológico cuando hay un solo producto?",
+   "respuesta": "$F(\\vec{z})=\\max\\{q\\geq0:(q,-\\vec{z})\\in\\mathcal{Y}\\}$: la máxima producción posible con cada vector de factores. Existe porque $\\mathcal{Y}$ es cerrado y solo recoge métodos técnicamente eficientes."
+  },
+  {
+   "id": "3A11-04",
+   "tipo": "vf",
+   "apartado": "I.2. La función de producción",
+   "pregunta": "Que la función de producción sea estrictamente cuasicóncava implica que tiene rendimientos a escala no crecientes.",
+   "verdadero": false,
+   "respuesta": "Falso: la cuasiconcavidad solo da isocuantas convexas y no impone nada sobre la escala. Los rendimientos no crecientes salen de la concavidad (con $F(0)=0$); una Cobb-Douglas con $\\alpha+\\beta>1$ es cuasicóncava y no cóncava."
+  },
+  {
+   "id": "3A11-05",
+   "tipo": "formula",
+   "apartado": "I.2. La función de producción",
+   "pregunta": "¿Qué dicen las condiciones de Inada?",
+   "respuesta": "$\\lim_{z_i\\to0}\\mathrm{PMg}_i=+\\infty$ y $\\lim_{z_i\\to\\infty}\\mathrm{PMg}_i=0$. Junto con RCE y productividades marginales positivas y decrecientes definen la función neoclásica de buen comportamiento."
+  },
+  {
+   "id": "3A11-06",
+   "tipo": "prediccion",
+   "apartado": "I.2. La función de producción",
+   "pregunta": "¿Qué ocurre con el problema de maximización del beneficio si la tecnología tiene rendimientos constantes a escala?",
+   "respuesta": "El beneficio es homogéneo de grado 1: o no está acotado, o lo mejor es no producir, o el máximo es cero con la escala indeterminada (la oferta es una correspondencia). La minimización de costes, en cambio, solo exige cuasiconcavidad."
+  },
+  {
+   "id": "3A11-07",
+   "tipo": "formula",
+   "apartado": "I.3. Las curvas isocuantas",
+   "pregunta": "¿Cómo se define la relación marginal de sustitución técnica entre trabajo y capital y a qué es igual?",
+   "respuesta": "$\\mathrm{RMST}_{LK}=-\\left.\\frac{dz_K}{dz_L}\\right|_{q=\\bar{q}}=\\frac{\\mathrm{PMg}_L}{\\mathrm{PMg}_K}$: capital que se libera al usar una unidad más de trabajo sin cambiar la producción. Decrece a lo largo de una isocuanta convexa y depende de las unidades."
+  },
+  {
+   "id": "3A11-08",
+   "tipo": "definicion",
+   "apartado": "I.3. Las curvas isocuantas",
+   "pregunta": "¿Qué es la elasticidad de sustitución y quién la introdujo?",
+   "respuesta": "$\\sigma=\\frac{d\\ln(z_K/z_L)}{d\\ln \\mathrm{RMST}_{LK}}\\geq0$: número puro que mide la curvatura de la isocuanta; cuanto mayor, más plana y más fácil sustituir. La propusieron por separado Hicks (1932) y Joan Robinson (1933)."
+  },
+  {
+   "id": "3A11-09",
+   "tipo": "prediccion",
+   "apartado": "I.3. Las curvas isocuantas",
+   "pregunta": "Si sube el salario relativo $w_L/w_K$ y la elasticidad de sustitución es menor que 1, ¿qué pasa con la participación del trabajo en la renta?",
+   "respuesta": "Aumenta: la proporción $z_K/z_L$ sube menos que el salario relativo, así que $w_Lz_L/(w_Kz_K)$ crece. Con $\\sigma>1$ caería y con $\\sigma=1$ no cambiaría (Hicks)."
+  },
+  {
+   "id": "3A11-10",
+   "tipo": "formula",
+   "apartado": "I.3.a) Cobb-Douglas",
+   "pregunta": "¿Cuánto vale la RMST de la Cobb-Douglas $q=Az_K^{\\alpha}z_L^{\\beta}$ y qué elasticidad de sustitución implica?",
+   "respuesta": "$\\mathrm{RMST}_{LK}=\\frac{\\beta}{\\alpha}\\frac{z_K}{z_L}$, proporcional a $z_K/z_L$, luego $\\sigma=1$. Además es homogénea de grado $\\alpha+\\beta$ y cada productividad marginal es el exponente por la productividad media."
+  },
+  {
+   "id": "3A11-11",
+   "tipo": "vf",
+   "apartado": "I.3.b) CES",
+   "pregunta": "La Cobb-Douglas y la función de Leontief son casos particulares de la CES para valores concretos de $\\rho$.",
+   "verdadero": false,
+   "respuesta": "Falso: son límites, no casos. Con $\\sigma=1/(1-\\rho)$, $\\rho\\to0$ da la Cobb-Douglas (en $\\rho=0$ la CES no está definida; se usa L\\'Hôpital), $\\rho\\to-\\infty$ la de Leontief y $\\rho\\to1$ la lineal."
+  },
+  {
+   "id": "3A11-12",
+   "tipo": "definicion",
+   "apartado": "II. Las leyes temporales de la producción",
+   "pregunta": "¿Qué distingue el corto, el largo y el muy largo plazo de Marshall en la teoría de la producción?",
+   "respuesta": "Son grados de libertad, no calendario. Corto: algún factor fijo (productividad). Largo: todos los factores variables (rendimientos a escala). Muy largo: cambia la propia tecnología (progreso técnico); cada uno es un corte o desplazamiento de la superficie de producción."
+  },
+  {
+   "id": "3A11-13",
+   "tipo": "vf",
+   "apartado": "II.1. Corto plazo: productividad",
+   "pregunta": "La función de rendimientos marginales mixtos de la ley de las proporciones variables incumple el axioma de eliminación gratuita.",
+   "verdadero": true,
+   "respuesta": "Verdadero: tiene un tramo con productividad marginal negativa, que la eliminación gratuita excluye. Se mantiene por razones históricas (Cassels, 1936, anterior a la axiomática) y didácticas: delimita la región económica."
+  },
+  {
+   "id": "3A11-14",
+   "tipo": "prediccion",
+   "apartado": "II.1. Corto plazo: productividad",
+   "pregunta": "Con rendimientos constantes a escala, ¿qué ocurre con la productividad marginal del factor fijo en la etapa I, donde $\\mathrm{PMg}_L>\\mathrm{PMe}_L$?",
+   "respuesta": "Es negativa: por Euler, $\\mathrm{PMe}_L=\\mathrm{PMg}_L+\\mathrm{PMg}_K\\,z_K/z_L$, así que $\\mathrm{PMg}_L>\\mathrm{PMe}_L$ exige $\\mathrm{PMg}_K<0$. Hay demasiado factor fijo y no es una zona racional de producción."
+  },
+  {
+   "id": "3A11-15",
+   "tipo": "definicion",
+   "apartado": "II.1. Corto plazo: productividad",
+   "pregunta": "¿Qué son las líneas de contorno y la región económica de la producción?",
+   "respuesta": "Las líneas de contorno son las isoclinas donde $\\mathrm{PMg}_K=0$ y $\\mathrm{PMg}_L=0$ (RMST infinita y nula). Entre ellas está la región económica, con ambas productividades marginales positivas; fuera se produce lo mismo con más de algún factor."
+  },
+  {
+   "id": "3A11-16",
+   "tipo": "formula",
+   "apartado": "II.2. Largo plazo: rendimientos a escala",
+   "pregunta": "¿Cómo se define la elasticidad de escala y con qué se relaciona en un punto?",
+   "respuesta": "$\\varepsilon_{q,\\lambda}=\\left.\\frac{d\\ln F(\\lambda z)}{d\\ln\\lambda}\\right|_{\\lambda=1}=\\frac{\\sum_i\\mathrm{PMg}_iz_i}{F(z)}=\\sum_i\\varepsilon_{q,z_i}$: la suma de las elasticidades-producto. Mayor, igual o menor que 1 indica rendimientos crecientes, constantes o decrecientes."
+  },
+  {
+   "id": "3A11-17",
+   "tipo": "vf",
+   "apartado": "II.2. Largo plazo: rendimientos a escala",
+   "pregunta": "Una función de producción puede tener productividades marginales decrecientes y, a la vez, rendimientos crecientes a escala.",
+   "verdadero": true,
+   "respuesta": "Verdadero: la Cobb-Douglas con $\\alpha<1$, $\\beta<1$ y $\\alpha+\\beta>1$. La productividad marginal decreciente es una propiedad del corto plazo (un factor) y los rendimientos a escala, del largo (todos a la vez)."
+  },
+  {
+   "id": "3A11-18",
+   "tipo": "definicion",
+   "apartado": "II.3. Muy largo plazo: progreso técnico",
+   "pregunta": "¿Qué es el progreso técnico neutral en el sentido de Harrod?",
+   "respuesta": "El aumentador del trabajo, $F(z_K,A_tz_L)$ (Harrod, 1948): deja constantes las participaciones de los factores para una relación capital-producto $z_K/q$ dada."
+  },
+  {
+   "id": "3A11-19",
+   "tipo": "prediccion",
+   "apartado": "II.3. Muy largo plazo: progreso técnico",
+   "pregunta": "Según el teorema de Uzawa (1961), ¿qué tipo de progreso técnico exige un crecimiento equilibrado con rendimientos constantes a escala?",
+   "respuesta": "Progreso técnico aumentador del trabajo (neutral de Harrod). Por eso el modelo de Solow lo supone."
+  },
+  {
+   "id": "3A11-20",
+   "tipo": "vf",
+   "apartado": "II.3. Muy largo plazo: progreso técnico",
+   "pregunta": "En una Cobb-Douglas, el progreso técnico neutral de Hicks es también neutral de Solow y de Harrod.",
+   "verdadero": true,
+   "respuesta": "Verdadero: $A_tz_K^{\\alpha}z_L^{\\beta}=(A_t^{1/\\alpha}z_K)^{\\alpha}z_L^{\\beta}=z_K^{\\alpha}(A_t^{1/\\beta}z_L)^{\\beta}$, así que las tres neutralidades coinciden. Fuera de la Cobb-Douglas son tres criterios distintos."
+  },
+  {
+   "id": "3A11-21",
+   "tipo": "prediccion",
+   "apartado": "III.1. Caja de Edgeworth: curva de contrato y FPP",
+   "pregunta": "En la caja de Edgeworth de la producción, ¿qué ocurre si las isocuantas de $X$ e $Y$ se cortan en el punto de asignación?",
+   "respuesta": "La asignación es ineficiente: reasignando factores se puede obtener más $X$ con igual $Y$ o más $Y$ con igual $X$. La eficiencia exige tangencia, $\\mathrm{RMST}^X_{LK}=\\mathrm{RMST}^Y_{LK}$, y el lugar de tangencias es la curva de contrato."
+  },
+  {
+   "id": "3A11-22",
+   "tipo": "prediccion",
+   "apartado": "III.1. Caja de Edgeworth: curva de contrato y FPP",
+   "pregunta": "¿Qué forma tiene la frontera de posibilidades de producción si ambos bienes tienen rendimientos constantes a escala e iguales intensidades factoriales?",
+   "respuesta": "Es lineal. Con RCE e intensidades distintas es cóncava, con rendimientos decrecientes estrictamente cóncava y con rendimientos crecientes puede ser convexa. Su pendiente es la RMT, el coste de oportunidad."
+  },
+  {
+   "id": "3A11-23",
+   "tipo": "definicion",
+   "apartado": "III.2. Empresa multiproducto y producción conjunta",
+   "pregunta": "¿Qué son las economías de alcance?",
+   "respuesta": "Panzar y Willig (1981): hay economías de alcance si $C(q_1,q_2)<C(q_1,0)+C(0,q_2)$, es decir, si producir juntos es más barato que por separado, por factores compartidos (instalaciones, marca, conocimiento). Con las de escala explican la subaditividad y el monopolio natural multiproducto."
+  },
+  {
+   "id": "3A11-24",
+   "tipo": "vf",
+   "apartado": "Conclusión",
+   "pregunta": "La caída de la participación del trabajo en la renta desde los años ochenta (Karabarbounis y Neiman, 2014) es fácil de explicar con una función agregada Cobb-Douglas.",
+   "verdadero": false,
+   "respuesta": "Falso: con Cobb-Douglas y competencia perfecta las participaciones son constantes ($\\sigma=1$), así que esa caída es difícil de explicar con ella: con RCE las participaciones dependen de $\\sigma$."
+  }
+ ]
+}

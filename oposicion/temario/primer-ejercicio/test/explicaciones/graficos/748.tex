@@ -1,0 +1,44 @@
+% Pregunta 748 (2006-septiembre-OEP2006, n.º 11): monopolio sin discriminar (Q^M < Q^C, pérdida irrecuperable) frente a discriminación perfecta (vende hasta Q^C, sin pérdida; todo el excedente es del productor). Autor: Víctor Gutiérrez Marcos
+% A escala: p = 10 - Q, IMg = 10 - 2Q, CMg = 2; Q^M = 4, p^M = 6, Q^C = 8.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm]
+  % ---------- Panel izquierdo: sin discriminar ----------
+  \begin{scope}
+    \node[etiqueta,font=\small\bfseries,anchor=south] at (5.5,11.4) {Sin discriminar};
+    \ejes{$Q$}{$p$}{11}{11}
+    % Pérdida irrecuperable
+    \fill[area2] (4,6) -- (4,2) -- (8,2) -- cycle;
+    \draw[curva2] (0,2) -- (10.6,2);
+    \node[etiqueta,tceeazul,above] at (9.9,2) {$\mathit{CMg}$};
+    \draw[curva1] (0,10) -- (10,0);
+    \node[etiqueta,tceemorado,right] at (9.4,1.0) {$D$};
+    \draw[curva3,thin,dashed] (0,10) -- (5,0);
+    \node[etiqueta,tceeverde,left] at (2.3,4.2) {$\mathit{IMg}$};
+    \draw[guia] (4,0) -- (4,6) -- (0,6) node[left] {$p^M$};
+    \draw[guia] (8,0) -- (8,2);
+    \node[below] at (4,-0.1) {$Q^M$};
+    \node[below] at (8,-0.1) {$Q^C$};
+    \node[punto] at (4,6) {};
+    \node[punto] at (4,2) {};
+    \node[etiqueta,font=\footnotesize,align=center,anchor=south west] at (6.2,4.3) {pérdida\\irrecuperable};
+    \draw[flecha] (6.9,4.3) -- (5.6,3.2);
+  \end{scope}
+  % ---------- Panel derecho: discriminación perfecta ----------
+  \begin{scope}[xshift=6.6cm]
+    \node[etiqueta,font=\small\bfseries,anchor=south] at (5.5,11.4) {Discriminación perfecta};
+    \ejes{$Q$}{$p$}{11}{11}
+    % Todo el excedente para el productor
+    \fill[area] (0,10) -- (0,2) -- (8,2) -- cycle;
+    \draw[curva2] (0,2) -- (10.6,2);
+    \node[etiqueta,tceeazul,above] at (9.9,2) {$\mathit{CMg}$};
+    \draw[curva1] (0,10) -- (10,0);
+    \node[etiqueta,tceemorado,right] at (9.4,1.0) {$D$};
+    \draw[curvanueva] (8,0) -- (8,2);
+    \node[below,tceerojo] at (8,-0.1) {$Q^C$};
+    \node[punto] at (8,2) {};
+    \node[etiqueta,font=\footnotesize,align=center,tceemorado] at (2.6,4.4) {excedente\\del productor\\(= total)};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

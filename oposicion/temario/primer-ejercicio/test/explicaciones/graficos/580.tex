@@ -1,0 +1,44 @@
+% Pregunta 580 (2016-noviembre-OEP2016, n.º 25): expansión fiscal en una economía abierta
+% grande con tipo de cambio flexible (IS-LM de Mankiw). Rectas a escala:
+%   LM: i = 0,8 Y - 0,4   IS: i = 4,4 - 0,8 Y   IS': i = 5,6 - 0,8 Y
+%   E0 = (3; 2)   E1 = IS'∩LM = (3,75; 2,6)
+%   Tipo fijo: el banco central amplía M para que i (y e) no suban: LM': i = 0,8 Y - 1,6,
+%   EF = IS'∩LM' = (4,5; 2)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  \ejes{$Y$}{$i$}{6.4}{5}
+  % Curvas iniciales
+  \draw[curva1] (1.0,4.4-0.8) -- (5.0,0.4) node[etiqueta,right,text=tceemorado] {$IS$};
+  \draw[curva2] (1.2,0.56) -- (5.6,4.08) node[etiqueta,above,text=tceeazul] {$LM$};
+  % La expansión fiscal
+  \draw[curvanueva,desplazada] (2.0,4.0) -- (6.0,0.8) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[flecha] (1.75,3.2) -- (2.85,3.2);
+  % Con tipo de cambio fijo
+  \draw[curva4,desplazada] (2.5,0.4) -- (6.0,3.2) node[etiqueta,above,text=tceedorado] {$LM'$};
+  % Proyecciones
+  \draw[guia] (3,2) -- (3,0) node[below] {$Y_0$};
+  \draw[guia] (3.75,2.6) -- (3.75,0) node[below] {$Y_1$};
+  \draw[guia] (4.5,2) -- (4.5,0) node[below] {$Y_F$};
+  \draw[guia] (3,2) -- (0,2) node[left] {$i_0$};
+  \draw[guia] (3.75,2.6) -- (0,2.6) node[left] {$i_1$};
+  \draw[guia] (3,2) -- (4.5,2);
+  % Puntos
+  \node[punto] at (3,2) {};
+  \node[etiqueta,above=3pt] at (3,2) {$E_0$};
+  \node[punto] at (3.75,2.6) {};
+  \node[etiqueta,right=3pt] at (3.75,2.6) {$E_1$};
+  \node[punto,fill=tceedorado] at (4.5,2) {};
+  \node[etiqueta,above=3pt,text=tceedorado] at (4.5,2) {$E_F$};
+  % Doble expulsión
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceerojo] (3.75,-0.55) -- (4.5,-0.55);
+  \node[etiqueta,font=\footnotesize,text=tceerojo,align=center,anchor=north] at (4.12,-0.7)
+    {doble expulsión:\\$I(i)\downarrow$ y $NX\downarrow$};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (0.15,5.0)
+    {Flexible: $E_0\to E_1$, $i$ sube, $Y$ sube algo};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west,text=tceedorado] at (0.15,4.6)
+    {Fijo: $M\uparrow$ ($LM'$), $i$ no sube, $Y_F>Y_1$};
+\end{tikzpicture}
+\end{document}

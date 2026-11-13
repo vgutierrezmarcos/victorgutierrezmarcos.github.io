@@ -1,0 +1,189 @@
+{
+ "tema": "3.A.7",
+ "preguntas": [
+  {
+   "id": 310701,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Ball y Romer (1990), en logaritmos, el precio que desea fijar la empresa $i$ es $p^*_i=\\chi\\,m+(1-\\chi)\\,p$, donde $m$ es la cantidad de dinero, $p$ el nivel general de precios y $\\chi>0$ la sensibilidad del precio relativo deseado a la producción. Cambiar el precio tiene un pequeño coste de menú. Suponga $\\chi=0{,}2$, que la cantidad de dinero cae un 10 % y que las demás empresas mantienen sus precios. ¿Cuánto querría bajar su precio la empresa $i$ y qué se deduce?",
+   "opciones": {
+    "a": "Un 10 %: cada empresa quiere bajar su precio en la misma proporción que el dinero, y por eso el dinero es neutral aunque haya costes de menú.",
+    "b": "Un 2 %: como lo que gana al ajustar es de segundo orden, un coste de menú pequeño basta para que no ajustar sea un equilibrio, y tanto más cuanto menor sea $\\chi$.",
+    "c": "Un 8 %: cuanto menor es $\\chi$, más quiere cada empresa seguir al dinero y menos a las demás, de modo que la rigidez real debilita la rigidez nominal.",
+    "d": "Un 2 %: la rigidez real basta por sí sola para que el dinero no sea neutral, aunque cambiar los precios no tuviera ningún coste para la empresa."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con los demás precios quietos, $\\Delta p^*_i=\\chi\\,\\Delta m=0{,}2\\cdot(-10)=-2\\ \\%$. La empresa quiere moverse poco si las demás no se mueven (complementariedad estratégica), y la ganancia de ajustar, proporcional a $(\\chi\\,\\Delta m)^2$, es pequeña. La rigidez real no crea la no neutralidad: amplifica una fricción nominal pequeña.",
+    "desarrollo": "Con $\\Delta p=0$, $\\Delta p^*_i=\\chi\\,\\Delta m+(1-\\chi)\\cdot0=0{,}2\\cdot(-10)=-2$. La empresa da un peso $1-\\chi=0{,}8$ a lo que hacen las demás y solo $0{,}2$ al dinero: sus precios son complementarios estratégicos.\n\nLa pérdida por no ajustar es de segundo orden: proporcional al cuadrado de la distancia entre el precio vigente y el deseado, $(\\chi\\,\\Delta m)^2$. Con $\\chi=0{,}2$ esa distancia es de 2 puntos; con $\\chi=1$ sería de 10 y la pérdida, 25 veces mayor. Por eso, cuanto menor es $\\chi$, más fácil es que la pérdida quede por debajo del coste de menú $z$ y que «nadie ajusta» sea un equilibrio. Entonces $p$ no cae, los saldos reales $m-p$ bajan un 10 % y la producción cae en primer orden.\n\nEs la respuesta de Ball y Romer al límite de los costes de menú: solos, con costes realistas, no bastan; con rigideces reales (salarios de eficiencia, mercados de clientes, márgenes contracíclicos), sí.\n\nPor qué fallan las demás:\n\n- a) Sería el caso $\\chi=1$, o el resultado si todas ajustaran a la vez. Con $\\chi<1$ y los demás quietos, la empresa quiere bajar mucho menos.\n- c) Confunde los pesos: 0,8 es el peso del nivel de precios, que no se ha movido. Y la conclusión es la contraria: la rigidez real refuerza la nominal.\n- d) La cifra es correcta, pero sin fricción nominal todas las empresas ajustarían y el único equilibrio sería $\\Delta p=\\Delta m$: el dinero sería neutral. Una rigidez real es compatible con precios nominales flexibles."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.2 Rigideces reales (Ball y Romer, 1990)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310702,
+   "estado": "publicada",
+   "enunciado": "Sobre las rigideces reales del mercado de trabajo que estudia la nueva economía keynesiana de primera generación, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Los contratos implícitos, en los que una empresa neutral al riesgo asegura a trabajadores aversos al riesgo, explican la estabilidad del salario real en el ciclo, pero no el paro involuntario.",
+    "b": "En el modelo de salarios de eficiencia de Solow (1979), la empresa fija el salario que iguala el producto marginal del trabajo, y por eso lo baja cuando cae la demanda.",
+    "c": "En el modelo de Shapiro y Stiglitz (1984), el salario que evita el escaqueo es tanto más bajo cuanto menor es el paro, porque los trabajadores temen menos el despido.",
+    "d": "Los salarios de eficiencia son una rigidez nominal: por sí solos bastan para que la política monetaria tenga efectos reales."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En los contratos implícitos la empresa da un seguro: salario estable a cambio de asumir ella el riesgo, y el ajuste se hace por el empleo, que es el eficiente en cada estado. Explican por qué el salario real no fluctúa, no por qué hay parados que querrían trabajar a ese salario. Eso lo explican los salarios de eficiencia.",
+    "desarrollo": "Las dos familias de modelos responden a la misma pregunta, por qué el salario real no baja aunque haya paro, con resultados distintos:\n\n- contratos implícitos (Baily, 1974; Gordon, 1974; Azariadis, 1975): reparto óptimo del riesgo entre una empresa neutral y trabajadores aversos. La información es incompleta pero simétrica. Dan rigidez del salario real, pero el empleo es el eficiente: no hay paro involuntario (salvo con información asimétrica sobre el estado). Y lo que estabilizan es el salario real, no el nominal;\n- salarios de eficiencia: como el esfuerzo depende del salario, a la empresa le conviene pagar por encima del salario que vacía el mercado. A ese salario hay trabajadores que querrían trabajar y no pueden: paro involuntario.\n\nPor qué fallan las demás:\n\n- b) En Solow la empresa minimiza el coste por unidad de trabajo efectivo, $w/e(w)$, y elige el salario para el que la elasticidad del esfuerzo es 1 (condición de Solow). Ese salario no depende de la demanda: por eso es una rigidez real. Lo que ajusta la empresa es el empleo.\n- c) Es al revés: con poco paro, perder el empleo cuesta poco y hay que pagar más para que no compense escaquearse. La condición de no escaqueo es creciente en el empleo; el paro es lo que disciplina.\n- d) Son una rigidez real: afectan al salario relativo, $W/P$. Una rigidez real sin rigidez nominal no da no neutralidad del dinero; lo que hace es amplificar las fricciones nominales."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.3 El modelo agregado: salarios de eficiencia y contratos implícitos",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310703,
+   "estado": "publicada",
+   "enunciado": "En el modelo de fijación de salarios y de precios de Layard y Nickell, con $W/P^e=F(U,Z)\\cdot\\mathrm{PAT}^e$ (curva WS, con $F_U<0$ y $F_Z>0$) y $P=(1+\\mu)\\,W/\\mathrm{PAT}$ (curva PS), ¿cuál de las siguientes medidas reduce la NAIRU de forma duradera?",
+   "opciones": {
+    "a": "Una política monetaria expansiva sostenida en el tiempo.",
+    "b": "Un aumento de las prestaciones por desempleo, que sostiene la demanda de consumo de los parados.",
+    "c": "Un aumento de la competencia en los mercados de bienes que reduzca el margen $\\mu$.",
+    "d": "Un aumento de los precios que esperan los trabajadores al negociar sus salarios."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La NAIRU es el paro que hace compatibles lo que reclaman los trabajadores y lo que permiten las empresas: $F(U^n,Z)=1/(1+\\mu)$. Si baja el margen, sube el salario real que las empresas pueden pagar y, como $F_U<0$, las dos curvas encajan con menos paro. La política de demanda no la cambia.",
+    "desarrollo": "Sin sorpresas ($P^e=P$, $\\mathrm{PAT}^e=\\mathrm{PAT}$), igualando el salario real de la WS, $F(U,Z)\\cdot\\mathrm{PAT}$, con el de la PS, $\\mathrm{PAT}/(1+\\mu)$:\n\n$$F(U^n,Z)=\\frac{1}{1+\\mu}.$$\n\nLa NAIRU depende solo de $Z$ (prestaciones, poder sindical, protección del empleo, impuestos sobre el trabajo) y de $\\mu$ (poder de mercado). Si $\\mu$ baja, el lado derecho sube; para que $F$ suba con $Z$ dado, $U^n$ tiene que bajar. En el gráfico, la PS (horizontal) se desplaza hacia arriba y corta a la WS (decreciente en el paro) con menos paro.\n\nEs la lectura del paro como conflicto distributivo: los trabajadores reclaman una parte del producto y las empresas otra, y el paro modera las pretensiones hasta que encajan. Bajarlo de forma duradera exige políticas de oferta y de competencia.\n\nPor qué fallan las demás:\n\n- a) La demanda solo baja el paro por debajo de la NAIRU de forma transitoria y a costa de una inflación creciente (salvo que haya histéresis, que es una extensión del modelo).\n- b) Las prestaciones son parte de $Z$: elevan el salario que se reclama para cada nivel de paro, desplazan la WS hacia arriba y suben la NAIRU.\n- d) Unos precios esperados más altos elevan el salario nominal pactado, pero en equilibrio $P^e=P$: no cambian la NAIRU. Si los precios resultan menores de lo esperado, el paro sube de forma transitoria."
+   },
+   "dificultad": 1,
+   "apartado": "I.2.3 El modelo agregado: la NAIRU y la histéresis",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310704,
+   "estado": "publicada",
+   "enunciado": "En el modelo canónico de la nueva economía keynesiana, los precios se fijan à la Calvo: cada trimestre, cada empresa mantiene su precio con probabilidad $\\eta$ y lo revisa con probabilidad $1-\\eta$. Si $\\eta=0{,}8$, la duración media de un precio y la curva de Phillips neokeynesiana, comparada con la que resultaría con $\\eta=0{,}5$, son:",
+   "opciones": {
+    "a": "1,25 trimestres, y una curva más inclinada.",
+    "b": "5 trimestres, y una curva más inclinada.",
+    "c": "1,25 trimestres, y una curva más plana.",
+    "d": "5 trimestres, y una curva más plana."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La duración media es $1/(1-\\eta)=1/0{,}2=5$ trimestres. Cuanto más rígidos son los precios (mayor $\\eta$), menor es $\\kappa=\\frac{(1-\\eta)(1-\\beta\\eta)}{\\eta}(\\theta+\\varphi)$: la curva es más plana, y la política monetaria mueve más la producción y menos la inflación.",
+    "desarrollo": "$\\eta$ es la probabilidad de no revisar. La duración de un precio sigue una distribución geométrica, con media $1/(1-\\eta)$: con $\\eta=0{,}8$, 5 trimestres; con $\\eta=0{,}5$, 2 trimestres; con el valor habitual, $\\eta=0{,}75$, un año.\n\nLa pendiente de la curva de Phillips, $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]+\\kappa\\,x_t+u_t$, es decreciente en $\\eta$. Tomando $\\beta\\approx1$, el factor $(1-\\eta)(1-\\beta\\eta)/\\eta$ vale $0{,}2\\cdot0{,}2/0{,}8=0{,}05$ con $\\eta=0{,}8$ y $0{,}5\\cdot0{,}5/0{,}5=0{,}5$ con $\\eta=0{,}5$: diez veces menos. Si pocas empresas revisan cada periodo, una brecha de producción dada se traslada poco a la inflación.\n\nPor qué fallan las demás:\n\n- a) y c) $1/\\eta=1{,}25$ sería la duración si $\\eta$ fuese la probabilidad de revisar. Es la confusión típica con la notación de Calvo.\n- b) Acierta en la duración, pero más rigidez da una curva más plana, no más inclinada. La curva se empina cuando los precios se revisan más a menudo, como ocurre con inflación alta (lo que predicen las reglas dependientes del estado y no Calvo, donde $\\eta$ es exógena)."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 El modelo canónico de la NEK (precios à la Calvo y pendiente de la NKPC)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310705,
+   "estado": "publicada",
+   "enunciado": "Considere la curva de Phillips neokeynesiana $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]+\\kappa\\,x_t$, sin perturbaciones de costes, con $\\kappa=0{,}5$ y, para simplificar, $\\beta=1$. La inflación es cero y la brecha de producción de hoy también ($x_t=0$). El banco central anuncia de forma creíble una política que llevará la brecha a $-2\\ \\%$ en el periodo siguiente ($\\mathbb{E}_t[x_{t+1}]=-2$) y a cero de ahí en adelante, cuando la inflación volverá también a cero. ¿Cuál es la inflación de hoy, $\\pi_t$?",
+   "opciones": {
+    "a": "$0\\ \\%$: la inflación solo responde a la brecha del periodo corriente, que es nula.",
+    "b": "$-1\\ \\%$: la inflación de hoy recoge ya la brecha negativa que se espera para mañana.",
+    "c": "$-2\\ \\%$: la inflación de hoy cae en la misma cuantía que la brecha esperada.",
+    "d": "$-0{,}5\\ \\%$: la inflación cae hoy la mitad de lo que caerá mañana."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Mañana, $\\pi_{t+1}=\\kappa\\,x_{t+1}=0{,}5\\cdot(-2)=-1$. Hoy, $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]+\\kappa\\,x_t=-1+0=-1$. La curva es prospectiva: la inflación es el valor presente de las brechas futuras, y los anuncios creíbles la mueven antes de que cambie la actividad.",
+    "desarrollo": "Se resuelve hacia delante. Desde $t+2$ la brecha y la inflación son cero. Entonces:\n\n- en $t+1$: $\\pi_{t+1}=1\\cdot0+0{,}5\\cdot(-2)=-1$;\n- en $t$: $\\pi_t=1\\cdot(-1)+0{,}5\\cdot0=-1$.\n\nPor la otra vía, la solución hacia delante es $\\pi_t=\\kappa\\sum_{k\\geq0}\\beta^k\\,\\mathbb{E}_t[x_{t+k}]=0{,}5\\cdot(0-2+0+\\dots)=-1$.\n\nLas empresas que revisan hoy su precio saben que durará varios periodos y lo fijan pensando en los costes marginales futuros: si esperan una brecha negativa, fijan ya precios más bajos. Es la diferencia con la curva aumentada de Friedman y Phelps, en la que cuenta la inflación que se esperaba para hoy, y es lo que da valor a la credibilidad y a la comunicación del banco central.\n\nTambién es el flanco débil de la curva pura: implica que una desinflación creíble anunciada baja la inflación antes que la producción (Ball, 1994), cuando en los datos las desinflaciones son graduales y costosas. De ahí la curva híbrida, con un término de inflación pasada.\n\nPor qué fallan las demás:\n\n- a) Sería así con una curva sin expectativas o con expectativas que miran al pasado. Aquí $\\mathbb{E}_t[\\pi_{t+1}]$ no es cero.\n- c) Olvida la pendiente: la brecha se traslada a la inflación multiplicada por $\\kappa=0{,}5$.\n- d) Aplica dos veces el coeficiente (o descuenta a la mitad la inflación de mañana): con $\\beta=1$, la inflación esperada entra uno a uno."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 El modelo canónico de la NEK (curva de Phillips neokeynesiana)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310706,
+   "estado": "borrador",
+   "enunciado": "Considere la curva IS dinámica del modelo canónico, $x_t=\\mathbb{E}_t[x_{t+1}]-\\frac{1}{\\theta}\\left(i_t-\\mathbb{E}_t[\\pi_{t+1}]-r^n_t\\right)$, con $\\theta=1$, en una economía que a largo plazo vuelve a una brecha nula. El banco central promete de forma creíble mantener el tipo de interés real un punto por debajo del natural durante un solo trimestre, e igual al natural en todos los demás. Compare el efecto sobre la brecha de producción de hoy si ese trimestre es el actual (caso A) o el octavo a partir de hoy (caso B):",
+   "opciones": {
+    "a": "En A la brecha sube 1 punto; en B, mucho menos, porque los hogares descuentan las promesas lejanas.",
+    "b": "En A la brecha sube 1 punto; en B no cambia hasta que llegue el trimestre de la bajada.",
+    "c": "Sube 1 punto en los dos casos; en B, además, se mantiene 1 punto por encima hasta el trimestre de la bajada.",
+    "d": "En A la brecha sube 1 punto; en B sube 8 puntos, porque el efecto de la promesa se acumula trimestre a trimestre hasta hoy."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Resolviendo hacia delante, $x_t=-\\frac1\\theta\\sum_{k\\geq0}\\mathbb{E}_t[i_{t+k}-\\pi_{t+k+1}-r^n_{t+k}]$: la brecha de hoy es la suma, sin descuento, de las desviaciones futuras del tipo real. Un punto en cualquier trimestre da 1 punto hoy. Y cuanto más lejana es la promesa, más trimestres dura la brecha y más sube la inflación: es la paradoja de la orientación de la política (forward guidance puzzle).",
+    "desarrollo": "Caso A: $x_t=\\mathbb{E}_t[x_{t+1}]-(-1)=0+1=1$, y cero después.\n\nCaso B: en el trimestre $t+8$, $x_{t+8}=0+1=1$. En $t+7$ el tipo real es igual al natural, así que $x_{t+7}=\\mathbb{E}[x_{t+8}]=1$; y lo mismo hacia atrás hasta hoy: $x_t=x_{t+1}=\\dots=x_{t+8}=1$. Los hogares, que suavizan el consumo según la ecuación de Euler, adelantan a hoy el mayor consumo futuro, y nada en la IS descuenta el futuro.\n\nLa brecha de hoy es la misma, pero en B dura nueve trimestres en lugar de uno. Como la inflación es el valor presente de las brechas futuras, $\\pi_t=\\kappa\\sum_k\\beta^k\\,\\mathbb{E}_t[x_{t+k}]$, sube mucho más en B. En el modelo canónico, las promesas sobre tipos futuros tienen así efectos desmesurados, mayores cuanto más lejana es la fecha, lo que no se ve en los datos. Es lo que da fuerza teórica a la orientación de la política en el límite inferior de los tipos (Eggertsson y Woodford, 2003) y, a la vez, una señal de que al modelo le falta algo.\n\nPor qué fallan las demás:\n\n- a) Es lo que ocurre en los datos y en los modelos con mercados incompletos y riesgo de paro (McKay, Nakamura y Steinsson, 2016), donde los hogares descuentan el futuro con más cautela; no en el modelo canónico.\n- b) Ignora que la IS es prospectiva: el consumo de hoy depende de toda la senda esperada de tipos reales.\n- d) Lo que se acumula con el horizonte es el efecto sobre la inflación, no sobre la brecha: la brecha es la suma de las desviaciones del tipo real, y solo hay una, de un punto."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 y II.4 Curva IS dinámica y orientación de la política (forward guidance)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310707,
+   "estado": "borrador",
+   "enunciado": "En el modelo canónico de la nueva economía keynesiana, sin perturbaciones de costes, se produce una mejora tecnológica transitoria: la productividad sube hoy y se espera que vuelva poco a poco a su nivel. ¿Qué debe hacer el banco central para mantener a la vez la inflación y la brecha de producción en cero?",
+   "opciones": {
+    "a": "Bajar el tipo de interés en la medida en que cae el tipo natural: como se espera que la producción natural vuelva a bajar, los hogares quieren ahorrar.",
+    "b": "Subir el tipo de interés, porque la producción aumenta y hay que evitar que la economía se recaliente.",
+    "c": "No puede lograrlo: una perturbación de oferta plantea siempre un dilema entre estabilizar la inflación y estabilizar la actividad.",
+    "d": "Mantener el tipo de interés: la tecnología cambia la producción natural, pero no el tipo natural, que solo responde a las perturbaciones de demanda."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Sin perturbaciones de costes hay divina coincidencia: basta con que el tipo real siga al natural. Una mejora tecnológica transitoria baja el tipo natural, $r^n_t=\\rho+\\theta\\,\\mathbb{E}_t[\\Delta y^n_{t+1}]+(1-\\rho_z)z_t$, porque se espera que la producción natural caiga. Si el banco central no baja el tipo, la producción sube menos que la natural: brecha negativa y desinflación.",
+    "desarrollo": "La producción natural sube con la tecnología, $y^n_t=\\psi\\,a_t-\\mu/(\\theta+\\varphi)$, y es la eficiente (salvo el margen). Lo deseable es que la producción efectiva la siga: $x_t=0$, y entonces la curva de Phillips da $\\pi_t=0$.\n\nPara eso el tipo real tiene que igualar al natural. Como la mejora es transitoria, $\\mathbb{E}_t[\\Delta y^n_{t+1}]<0$: los hogares esperan menos renta mañana que hoy y quieren ahorrar; con precios flexibles, el tipo real bajaría para que consumieran todo lo que se produce. Luego $r^n_t$ cae, y el banco central debe bajar $i_t$ con él.\n\nSi no lo hace, el tipo real queda por encima del natural: con precios rígidos, la demanda no crece tanto como la capacidad, la brecha es negativa y la inflación cae. La mejora tecnológica es una perturbación de oferta «buena», pero para la política monetaria se parece a una caída de la demanda relativa.\n\nPor qué fallan las demás:\n\n- b) Confunde producción con brecha. Lo que genera inflación es la brecha, y aquí la producción sube porque sube la natural.\n- c) El dilema aparece con las perturbaciones de costes ($u_t$, cambios en los márgenes o en los salarios deseados), con salarios reales rígidos o con fricciones de búsqueda; no con una perturbación tecnológica en el modelo básico.\n- d) El tipo natural depende de las preferencias y de la tecnología: de $z_t$ y del crecimiento esperado de la producción natural. Lo que no depende es de la política monetaria."
+   },
+   "dificultad": 3,
+   "apartado": "II.3.1 Política monetaria: la divina coincidencia y el tipo de interés natural",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310708,
+   "estado": "publicada",
+   "enunciado": "En el modelo de la nueva economía keynesiana ampliado con gasto público, el multiplicador del gasto es mayor:",
+   "opciones": {
+    "a": "Cuanto más flexibles son los precios, porque las empresas responden antes a la mayor demanda.",
+    "b": "Cuanto más enérgica es la respuesta del banco central a la inflación en su regla de tipos de interés.",
+    "c": "Si, con hogares ricardianos e impuestos de suma fija, el gasto se financia con deuda en lugar de con impuestos.",
+    "d": "Cuando el tipo de interés nominal está en su límite inferior y no responde al aumento del gasto público."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El gasto público actúa por tres vías: el efecto riqueza negativo, la rigidez de precios y la respuesta del banco central. Si este sigue su regla, sube el tipo real y expulsa consumo. En el límite inferior no lo sube; la inflación esperada baja el tipo real y el consumo acompaña al gasto: el multiplicador supera la unidad (Woodford, 2011; Christiano, Eichenbaum y Rebelo, 2011).",
+    "desarrollo": "En el modelo, un aumento del gasto:\n\n1. reduce la riqueza de los hogares, que anticipan los impuestos: consumen menos y trabajan más, como en el ciclo real;\n2. con precios rígidos, las empresas atienden la demanda adicional con más producción y empleo, y el margen cae;\n3. provoca la respuesta del banco central: con la regla de Taylor, sube el tipo real y expulsa consumo.\n\nEl multiplicador es mayor cuanto más rígidos son los precios y cuanto más acomodaticia es la política monetaria. El caso extremo es el límite inferior de los tipos: el tipo nominal no se mueve, la mayor inflación esperada reduce el tipo real y el consumo sube en lugar de caer. Lo que cuenta entonces es que el gasto dure mientras dure el límite.\n\nPor qué fallan las demás:\n\n- a) Es al revés: con precios flexibles el modelo se comporta como el del ciclo real, en el que el gasto expulsa consumo y el multiplicador es menor que 1.\n- b) Una respuesta más enérgica a la inflación significa una subida mayor del tipo real y más expulsión del consumo: el multiplicador es menor.\n- c) Con esos supuestos se cumple la equivalencia ricardiana: el efecto del gasto es el mismo con deuda que con impuestos. La financiación importa cuando hay hogares que no pueden ahorrar ni endeudarse (Galí, López-Salido y Vallés, 2007)."
+   },
+   "dificultad": 2,
+   "apartado": "II.3.2 Política fiscal en el modelo neokeynesiano",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

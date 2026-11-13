@@ -1,0 +1,53 @@
+% Modelo de Helpman, Melitz y Yeaple (2004): beneficio de vender en el propio
+% país, de exportar y de abrir una filial, frente a phi^(sigma-1). Mismas
+% letras y estilos que melitz-umbrales (3.B.6). Rectas en u = phi^(sigma-1)
+% (cualitativas, países simétricos; wF^d = 1, wF^x = 1,4, wF^I = 2,2):
+%   B^d = 0,4 u - 1    -> (phi*)^(sigma-1)   = 2,5
+%   B^x = 0,3 u - 1,4  -> (phi*_x)^(sigma-1) = 4,667 (pendiente tau^(1-sigma) = 0,75
+%                         la de la filial)
+%   B^I = 0,4 u - 2,2  -> misma pendiente que B^d (sin coste de transporte);
+%                         corta a B^x en u = 8 (B = 1): (phi*_I)^(sigma-1) = 8
+% Condición de ordenación: F^I > tau^(sigma-1) F^x > F^d
+%   (2,2 > 1,4/0,75 = 1,867 > 1): phi*_I > phi*_x > phi*.
+% 4 grupos: cierran; solo mercado interior; exportan; invierten (filial).
+% Elaboración propia a partir de Helpman, Melitz y Yeaple (2004).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=1.1cm,
+    llave/.style={decorate,decoration={brace,mirror,amplitude=5pt},thick,tceegris},
+    grupo/.style={etiqueta,font=\footnotesize,align=center,anchor=north}]
+  % 1: ejes; el beneficio B toma valores negativos
+  \capa{1}{\draw[eje] (0,0) -- (11.2,0) node[below left=2pt and 0pt] {$\varphi^{\sigma-1}$};}
+  \capa{1}{\draw[eje] (0,-2.45) -- (0,3.9) node[left] {$B$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: beneficio en el mercado interior, desde -wF^d, y su umbral
+  \capa{2}{\draw[curva1] (0,-1) node[left,text=black] {$-wF^d$} -- (10.5,3.2)
+    node[etiqueta,right] {$B^d$};}
+  \capa{2}{\node[punto] at (2.5,0) {};}
+  \capa{2}{\node[etiqueta,above left] at (2.5,0) {$(\varphi^*)^{\sigma-1}$};}
+  % 3: beneficio de exportar, desde -wF^x, y su umbral
+  \capa{3}{\draw[curva3] (0,-1.4) node[left,text=black] {$-wF^x$} -- (10.5,1.75)
+    node[etiqueta,below right] {$B^x$};}
+  \capa{3}{\node[punto] at (4.667,0) {};}
+  \capa{3}{\node[etiqueta,above,inner sep=1.5pt] at (4.667,0.04) {$(\varphi^*_x)^{\sigma-1}$};}
+  % 4: beneficio de la filial, desde -wF^I: más abajo, pero más empinada que B^x
+  \capa{4}{\draw[curva4] (0,-2.2) node[left,text=black] {$-wF^{\mathrm I}$} -- (10.5,2)
+    node[etiqueta,above right] {$B^{\mathrm I}$};}
+  % 5: a partir del corte con B^x, la filial da más que exportar
+  \capa{5}{\node[punto] at (8,1) {};}
+  \capa{5}{\draw[guia] (8,1) -- (8,0);}
+  \capa{5}{\node[punto] at (8,0) {};}
+  \capa{5}{\node[etiqueta,below] at (8,0) {$(\varphi^*_{\mathrm I})^{\sigma-1}$};}
+  % 6: los 4 grupos de empresas
+  \capa{6}{\draw[llave] (0.03,-2.55) -- (2.47,-2.55)
+    node[midway,below=5pt,grupo] {cierran};}
+  \capa{6}{\draw[llave] (2.53,-2.55) -- (4.64,-2.55)
+    node[midway,below=5pt,grupo] {solo mercado\\interior};}
+  \capa{6}{\draw[llave] (4.7,-2.55) -- (7.97,-2.55)
+    node[midway,below=5pt,grupo] {exportan};}
+  \capa{6}{\draw[llave] (8.03,-2.55) -- (10.5,-2.55)
+    node[midway,below=5pt,grupo] {invierten\\(filial)};}
+\end{tikzpicture}
+\end{document}

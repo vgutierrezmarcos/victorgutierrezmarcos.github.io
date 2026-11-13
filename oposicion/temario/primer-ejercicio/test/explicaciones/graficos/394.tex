@@ -1,0 +1,38 @@
+% Pregunta 394 (2011-octubre-OEP2011, n.º 15): IS-LM-BP con tipo de cambio fijo; la expansión monetaria (LM a LM') se deshace al perder reservas, con movilidad perfecta e imperfecta, y la renta vuelve a Y0. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % IS: i = 5,5 - Y; LM: i = Y - 0,5; LM': i = Y - 1,8; E = (3; 2,5); A = (3,65; 1,85)
+  % ---------- Izquierda: movilidad perfecta ----------
+  \begin{scope}
+    \node[font=\small\bfseries,tceemorado] at (3,5.6) {Movilidad perfecta};
+    \ejes{$Y$}{$i$}{6.4}{5}
+    \draw[curva1] (0.8,4.7) -- (5.4,0.1) node[etiqueta,right] {$IS$};
+    \draw[curva2] (0.2,2.5) -- (6.1,2.5) node[etiqueta,above left] {$BP$};
+    \draw[curva1] (1.0,0.5) -- (4.6,4.1) node[etiqueta,above] {$LM$};
+    \draw[curvanueva,desplazada] (2.3,0.5) -- (5.9,4.1) node[etiqueta,above,tceerojo] {$LM'$};
+    \draw[flecha] (5.3,3.5) -- (4.1,3.5);
+    \node[etiqueta,tceerojo,font=\footnotesize,align=center] at (4.7,4.6) {vuelve al instante};
+    \proyeccion{(3,2.5)}{$Y_0$}{$i^*$}
+    \node[punto,label={[etiqueta]above:$E$}] at (3,2.5) {};
+  \end{scope}
+  % ---------- Derecha: movilidad imperfecta ----------
+  \begin{scope}[xshift=8.2cm]
+    \node[font=\small\bfseries,tceemorado] at (3,5.6) {Movilidad imperfecta};
+    \ejes{$Y$}{$i$}{6.4}{5}
+    \draw[curva1] (0.8,4.7) -- (5.4,0.1) node[etiqueta,right] {$IS$};
+    % BP: i = 2,5 + 0,4 (Y - 3)
+    \draw[curva2] (0.3,1.42) -- (6.1,3.74) node[etiqueta,right] {$BP$};
+    \draw[curva1] (1.0,0.5) -- (4.6,4.1) node[etiqueta,above] {$LM$};
+    \draw[curvanueva,desplazada] (2.3,0.5) -- (5.9,4.1) node[etiqueta,above,tceerojo] {$LM'$};
+    \draw[flecha] (5.5,3.8) -- (4.4,3.8);
+    \node[etiqueta,tceerojo,font=\footnotesize,align=center] at (4.7,4.6) {vuelve poco a poco};
+    \node[punto,draw=tceerojo,fill=white,inner sep=1.4pt,label={[etiqueta,tceerojo,align=left]right:$A$ (déficit)}] at (3.65,1.85) {};
+    \draw[flecha] (3.55,1.95) -- (3.12,2.38);
+    \proyeccion{(3,2.5)}{$Y_0$}{$i_0$}
+    \node[punto,label={[etiqueta]above:$E$}] at (3,2.5) {};
+  \end{scope}
+  \node[etiqueta,align=center] at (7.1,-1.2) {Con tipo de cambio fijo, la renta final es $Y_0$ en ambos casos: la política monetaria es ineficaz};
+\end{tikzpicture}
+\end{document}

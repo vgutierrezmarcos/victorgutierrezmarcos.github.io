@@ -1,0 +1,35 @@
+% Pregunta 831 (2004-junio-OEP2004, n.º 4): equivalente cierto con utilidad cóncava (averso) y lineal (neutral).
+% Dibujo con u(x)=sqrt(x) (sin cifras en los ejes): premios x1=4 y x2=64 con prob. 1/2.
+%   E[x]=34; E[u]=(2+8)/2=5; u(E[x])=sqrt(34)=5,83 > 5; EC=25 < 34; prima de riesgo 9.
+%   Un neutral con u lineal por los mismos dos puntos (la cuerda) tiene EC = E[x]: la (iii) falla.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.085cm,y=0.55cm,declare function={u(\x)=sqrt(\x);}]
+  \ejes{$x$}{$u$}{74}{9.4}
+  % Utilidad cóncava (averso)
+  \draw[curva1] plot[domain=0.3:70,samples=90] (\x,{u(\x)}) node[etiqueta,above left] {$u$ cóncava};
+  % Premios
+  \node[punto] (A) at (4,2) {};
+  \node[punto] (B) at (64,8) {};
+  \draw[guia] (4,2) -- (4,0) node[below] {$x_1$};
+  \draw[guia] (64,8) -- (64,0) node[below] {$x_2$};
+  % Cuerda: utilidad esperada; también es la u lineal de un neutral
+  \draw[curva3] (A) -- (B) node[etiqueta,below right,text=tceeverde,align=left,pos=0.8,xshift=2pt] {neutral ($u$ lineal):\\$EC=E[x]$};
+  % Valor esperado y utilidades
+  \draw[guia] (34,0) -- (34,{u(34)});
+  \node[punto] at (34,{u(34)}) {};
+  \draw[guia] (34,{u(34)}) -- (0,{u(34)}) node[left] {$u(E[x])$};
+  \node[punto,fill=tceeverde] at (34,5) {};
+  \draw[guia] (34,5) -- (0,5) node[left] {$E[u]$};
+  % Equivalente cierto
+  \draw[guia] (25,5) -- (25,0);
+  \node[punto,fill=tceerojo] at (25,5) {};
+  \draw[flecha,tceerojo] (33,5.0) -- (26.2,5.0);
+  \node[below,inner sep=3pt] at (25,0) {$EC$};
+  \node[below,inner sep=3pt] at (34,0) {$E[x]$};
+  % Prima de riesgo
+  \draw[<->,thick,tceerojo] (25,-1.4) -- node[etiqueta,below,text=tceerojo] {prima de riesgo $>0$} (34,-1.4);
+\end{tikzpicture}
+\end{document}

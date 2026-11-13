@@ -1,0 +1,55 @@
+% El mecanismo flujo-especie (Hume, 1752): 2 circuitos simétricos, el del
+% país con déficit (morado) y el del país con superávit (azul), unidos por el
+% oro que pasa de uno a otro. Gráfico de referencia de la ficha flujo-especie.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    paso/.style={draw=#1,very thick,rounded corners=3pt,align=center,font=\footnotesize,
+      text width=3.0cm,inner sep=3pt,fill=white},
+    vuelta/.style={->,thick,#1,shorten <=2pt,shorten >=2pt}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-4.4,-3.3) rectangle (14.0,3.6);
+  % ---------------------------------------------- país con déficit
+  % 1: título y punto de partida
+  \capa{1}{\node[font=\small\bfseries,text=tceemorado] at (0,3.3) {País con déficit};}
+  \capa{1}{\node[paso=tceemorado] (d1) at (90:2.2) {déficit comercial};}
+  % 2: sale oro
+  \capa{2}{\node[paso=tceemorado] (d2) at (2.75,1.2) {sale oro:\\bajan las reservas};}
+  \capa{2}{\draw[vuelta=tceemorado] (d1) to[bend left=18] (d2);}
+  % 3: baja la cantidad de dinero
+  \capa{3}{\node[paso=tceemorado] (d3) at (2.75,-1.2) {baja la cantidad\\de dinero};}
+  \capa{3}{\draw[vuelta=tceemorado] (d2) -- (d3);}
+  % 4: bajan los precios (teoría cuantitativa)
+  \capa{4}{\node[paso=tceemorado] (d4) at (-90:2.2) {bajan los precios\\internos, $P\downarrow$};}
+  \capa{4}{\draw[vuelta=tceemorado] (d3) to[bend left=18] (d4);}
+  % 5: depreciación real
+  \capa{5}{\node[paso=tceemorado] (d5) at (-2.75,-1.2) {depreciación real,\\$q\uparrow$};}
+  \capa{5}{\draw[vuelta=tceemorado] (d4) to[bend left=18] (d5);}
+  % 6: más exportaciones y menos importaciones, y vuelta al equilibrio
+  \capa{6}{\node[paso=tceemorado] (d6) at (-2.75,1.2) {más exportaciones,\\menos importaciones};}
+  \capa{6}{\draw[vuelta=tceemorado] (d5) -- (d6);}
+  \capa{6}{\draw[vuelta=tceemorado] (d6) to[bend left=18] node[etiqueta,above left,font=\scriptsize,text=tceemorado] {se corrige} (d1);}
+  % ---------------------------------------------- país con superávit
+  \begin{scope}[xshift=9.6cm]
+  % 7: el circuito simétrico del país con superávit
+  \capa{7}{\node[font=\small\bfseries,text=tceeazul] at (0,3.3) {País con superávit};}
+  \capa{7}{\node[paso=tceeazul] (s1) at (90:2.2) {superávit comercial};}
+  \capa{7}{\node[paso=tceeazul] (s2) at (-2.75,1.2) {entra oro:\\suben las reservas};}
+  \capa{7}{\node[paso=tceeazul] (s3) at (-2.75,-1.2) {sube la cantidad\\de dinero};}
+  \capa{7}{\node[paso=tceeazul] (s4) at (-90:2.2) {suben los precios\\internos, $P\uparrow$};}
+  \capa{7}{\node[paso=tceeazul] (s5) at (2.75,-1.2) {apreciación real,\\$q\downarrow$};}
+  \capa{7}{\node[paso=tceeazul] (s6) at (2.75,1.2) {menos exportaciones,\\más importaciones};}
+  \capa{7}{\draw[vuelta=tceeazul] (s1) to[bend right=18] (s2);}
+  \capa{7}{\draw[vuelta=tceeazul] (s2) -- (s3);}
+  \capa{7}{\draw[vuelta=tceeazul] (s3) to[bend right=18] (s4);}
+  \capa{7}{\draw[vuelta=tceeazul] (s4) to[bend right=18] (s5);}
+  \capa{7}{\draw[vuelta=tceeazul] (s5) -- (s6);}
+  \capa{7}{\draw[vuelta=tceeazul] (s6) to[bend right=18] (s1);}
+  \end{scope}
+  % 8: el oro pasa del país con déficit al país con superávit
+  \capa{8}{\draw[->,very thick,tceedorado,dashed,shorten <=3pt,shorten >=3pt] (d2.east) to[bend left=12]
+      node[etiqueta,above,font=\footnotesize,text=tceedorado] {oro} (s2.west);}
+\end{tikzpicture}
+\end{document}

@@ -1,12 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../cantar/grabaciones.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/sincronizar.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
+import 'rubrica.dart';
 import '../cantes/nuevo_cante_sheet.dart';
 
 /// Diario de cantes (subpestaña de Cantes): cómo fue cada uno, estadísticas
@@ -62,6 +65,14 @@ class DiarioVista extends ConsumerWidget {
                   ),
                   Padding(padding: const EdgeInsets.only(top: 4), child: Text('Valorados por debajo de 3 de media. El sorteo de práctica puede darles prioridad.', style: context.textos.labelSmall)),
                 ],
+                EvolucionCriterios(cantes: diario),
+                if (!kIsWeb && Grabaciones.todas().isNotEmpty)
+                  FilaEnlace(
+                    icono: Icons.library_music_outlined,
+                    titulo: 'Mis grabaciones',
+                    subtitulo: '${Grabaciones.todas().length} en este móvil: escúchalas, mándalas a tu preparador o bórralas',
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MisGrabacionesPage())),
+                  ),
                 const TituloSeccion('Por tema'),
                 Tarjeta(
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -85,7 +96,7 @@ class DiarioVista extends ConsumerWidget {
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
                       child: ListTile(
                         title: Text(tituloCanteHecho(c, titulo), maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
-                        subtitle: Text('${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}${c.dePreparador ? ' · valorado por tu preparador' : ''}', style: context.textos.labelSmall),
+                        subtitle: Text('${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${c.titulo.isEmpty || c.esquema ? '' : ' · ${c.titulo}'}${c.dePreparador ? ' · valorado por tu preparador' : ''}${sufijoCobertura(c)}', style: context.textos.labelSmall),
                         trailing: Estrellas(valor: c.resultado?.valoracion ?? 0, tamano: 14),
                       ),
                     ),

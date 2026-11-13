@@ -1,0 +1,51 @@
+{
+ "tema": "3.A.15",
+ "preguntas": [
+  {
+   "id": 311501,
+   "estado": "publicada",
+   "enunciado": "Según la economía de los costes de transacción de Williamson, señale la afirmación CORRECTA sobre la elección entre mercado, formas híbridas y jerarquía:",
+   "opciones": {
+    "a": "La frecuencia encarece por sí misma las transacciones, de modo que las transacciones muy frecuentes se integran en la empresa aunque no exijan activos específicos.",
+    "b": "Las transacciones con activos poco específicos se organizan en el mercado aunque sean frecuentes; la integración se reserva para las de alta especificidad, sobre todo si además son frecuentes e inciertas.",
+    "c": "La jerarquía tiene los menores costes de gobierno para cualquier grado de especificidad, porque sustituye la negociación por la autoridad; si las empresas no lo integran todo es solo por restricciones financieras.",
+    "d": "Aunque los agentes no fueran oportunistas, la racionalidad limitada bastaría para que la integración vertical fuese necesaria, porque los contratos seguirían siendo incompletos."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El atributo decisivo es la especificidad de los activos: sin ella no hay cuasirrenta que expropiar y el mercado, con sus incentivos fuertes, es la estructura más barata. La frecuencia no encarece la transacción: solo hace que compense montar una estructura de gobierno especializada cuando ya hay activos específicos.",
+    "desarrollo": "Williamson compara tres estructuras de gobierno según la especificidad de los activos, $a$:\n\n- el mercado es la más barata con especificidad baja ($C_{\\text{mercado}}(0)<C_{\\text{híbrida}}(0)<C_{\\text{jerarquía}}(0)$), pero su coste crece más deprisa con $a$, porque protege mal las inversiones específicas frente al oportunismo (el hold-up);\n- la jerarquía tiene costes burocráticos e incentivos débiles, pero protege la inversión: es la más barata con especificidad alta;\n- las formas híbridas (contratos a largo plazo, franquicias, joint ventures) ocupan el tramo intermedio.\n\nPor eso actividades frecuentes pero poco específicas, como la limpieza o la contabilidad, se externalizan, y los componentes que exigen inversiones específicas se fabrican dentro.\n\nPor qué fallan las demás:\n\n- a) Es una trampa habitual: la frecuencia permite repartir el coste fijo de una estructura de gobierno especializada entre muchas transacciones, pero con activos poco específicos la transacción va al mercado sea cual sea su frecuencia.\n- c) La jerarquía es la estructura más cara cuando la especificidad es baja. Sus límites no son financieros: es la imposibilidad de la intervención selectiva (incentivos de baja potencia, falta de compromiso de la dirección, costes burocráticos).\n- d) Hacen falta los dos supuestos de comportamiento a la vez: sin racionalidad limitada bastaría un contrato completo; sin oportunismo, bastaría la palabra dada, y los huecos del contrato no serían un problema."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Williamson: especificidad de los activos, oportunismo y estructuras de gobierno",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311502,
+   "estado": "borrador",
+   "enunciado": "En un juego de entrada, la empresa instalada gana 10 si no hay entrada, 4 si acomoda la entrada y 1 si responde con una guerra de precios; el entrante gana 0 si no entra, 1 si entra y es acomodado y $-1$ si entra y hay guerra. Antes de que el entrante decida, la instalada puede invertir en capacidad con un coste hundido $\\mathrm{CH}$, que el entrante observa. La capacidad solo se usa en la guerra de precios: en caso de guerra la instalada gana 1, haya invertido o no; si invierte y no hay guerra, la capacidad queda ociosa y su pago se reduce en $\\mathrm{CH}$. ¿Para qué valores de $\\mathrm{CH}$ es la disuasión de la entrada mediante la inversión el único equilibrio de Nash perfecto en subjuegos?",
+   "opciones": {
+    "a": "Para cualquier $\\mathrm{CH}<6$: basta con que el monopolio, neto de la inversión, rinda más que el duopolio.",
+    "b": "Solo para $\\mathrm{CH}>6$: cuanto mayor es el coste hundido, más creíble es la amenaza.",
+    "c": "Para $3<\\mathrm{CH}<6$: la guerra es creíble y disuadir todavía compensa.",
+    "d": "Solo para $\\mathrm{CH}<3$: si el coste es mayor, a la instalada no le compensa invertir."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Por inducción hacia atrás: tras invertir, luchar es creíble si $1>4-\\mathrm{CH}$, es decir, $\\mathrm{CH}>3$; e invertir para disuadir compensa si $10-\\mathrm{CH}>4$, es decir, $\\mathrm{CH}<6$. La inversión debe ser lo bastante grande para comprometer y no tanto que cueste más que el monopolio que protege.",
+    "desarrollo": "Se resuelve de atrás hacia delante:\n\n- Sin inversión: si el entrante entra, la instalada compara acomodar (4) con luchar (1) y acomoda; luchar es una amenaza no creíble. El entrante entra (gana 1) y la instalada gana 4.\n- Con inversión: si el entrante entra, la instalada compara luchar (1) con acomodar dejando la capacidad ociosa ($4-\\mathrm{CH}$). Lucha si $1>4-\\mathrm{CH}$, es decir, si $\\mathrm{CH}>3$. Entonces el entrante, que ganaría $-1$, no entra, y la instalada gana $10-\\mathrm{CH}$.\n- Primera etapa: invertir compensa si $10-\\mathrm{CH}>4$, es decir, si $\\mathrm{CH}<6$.\n\nLa disuasión es un equilibrio perfecto en subjuegos si $B^{D}-B^{G}<\\mathrm{CH}<B^{M}-B^{D}$: aquí, $3<\\mathrm{CH}<6$. Es la lógica de «quemar las naves» de Schelling, aplicada por Spence y Dixit: lo que da credibilidad es el carácter hundido de la inversión, que cambia lo que a la instalada le conviene hacer después de la entrada.\n\nCasos frontera: con $\\mathrm{CH}=3$ la instalada que ha invertido es indiferente entre luchar y acomodar, y con $\\mathrm{CH}=6$ lo es entre invertir y no invertir. En esos dos valores la disuasión todavía puede sostenerse como equilibrio, pero convive con otro en el que hay entrada; solo en el intervalo abierto $3<\\mathrm{CH}<6$ es la disuasión el único equilibrio perfecto en subjuegos, y por eso la respuesta se da con desigualdades estrictas.\n\nPor qué fallan las demás:\n\n- a) Olvida la credibilidad: si $\\mathrm{CH}<3$, tras la entrada la instalada preferiría acomodar ($4-\\mathrm{CH}>1$); el entrante lo anticipa y entra, y la inversión se pierde.\n- b) Con $\\mathrm{CH}>6$ la amenaza es creíble, pero disuadir no compensa: $10-\\mathrm{CH}<4$, y la instalada prefiere no invertir y acomodar (entrada acomodada).\n- d) Es justo el tramo en el que la inversión no compromete a nada."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Barreras a la entrada: el compromiso de capacidad",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

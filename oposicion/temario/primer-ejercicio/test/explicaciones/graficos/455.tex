@@ -1,0 +1,51 @@
+% Pregunta 455 (2013-noviembre-OEP2013, n.º 33): misma bajada del precio (de P_W+t a P_U) con oferta y demanda
+% internas poco elásticas (izquierda) y muy elásticas (derecha). Los triángulos de creación de comercio
+% (efecto producción y efecto consumo) son mayores cuanto más elásticas son las curvas (c, correcta).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Panel izquierdo: poco elásticas. S: P=-1+2Q; D: P=9.4-2Q
+  \begin{scope}
+    \node[etiqueta,align=center,anchor=south] at (2.5,5.0) {Oferta y demanda\\\textbf{poco elásticas}};
+    \fill[area] (1.7,2.4) -- (2.1,3.2) -- (2.1,2.4) -- cycle;
+    \fill[area2] (3.1,3.2) -- (3.5,2.4) -- (3.1,2.4) -- cycle;
+    \draw[guia] (0,3.2) -- (4.6,3.2);
+    \draw[curvanueva] (0,2.4) -- (4.6,2.4);
+    \draw[guia] (1.7,2.4) -- (1.7,0) node[anchor=north east,inner xsep=1pt,font=\small,text=black] {$S_1$};
+    \draw[guia] (2.1,3.2) -- (2.1,0) node[anchor=north west,inner xsep=1pt,font=\small,text=black] {$S_0$};
+    \draw[guia] (3.1,3.2) -- (3.1,0) node[anchor=north east,inner xsep=1pt,font=\small,text=black] {$D_0$};
+    \draw[guia] (3.5,2.4) -- (3.5,0) node[anchor=north west,inner xsep=1pt,font=\small,text=black] {$D_1$};
+    \draw[curva1] (0.75,0.5) -- (2.75,4.5) node[etiqueta,above] {$S$};
+    \draw[curva1] (2.45,4.5) node[etiqueta,above] {$D$} -- (4.45,0.5);
+    \node[etiqueta,left] at (0,3.2) {$P_W{+}t$};
+    \node[etiqueta,left,text=tceerojo] at (0,2.4) {$P_U$};
+    \ejes{$Q$}{$P$}{5}{4.8}
+    \node[etiqueta,align=center,text=tceerojo] at (2.6,-1.0) {creación de comercio\\\textbf{pequeña}};
+  \end{scope}
+  % Panel derecho: muy elásticas. S: P=2.12+0.6Q; D: P=4.82-0.6Q
+  \begin{scope}[xshift=6.6cm]
+    \node[etiqueta,align=center,anchor=south] at (2.5,5.0) {Oferta y demanda\\\textbf{muy elásticas}};
+    \fill[area] (0.467,2.4) -- (1.8,3.2) -- (1.8,2.4) -- cycle;
+    \fill[area2] (2.7,3.2) -- (4.033,2.4) -- (2.7,2.4) -- cycle;
+    \draw[guia] (0,3.2) -- (4.6,3.2);
+    \draw[curvanueva] (0,2.4) -- (4.6,2.4);
+    \draw[guia] (0.467,2.4) -- (0.467,0) node[below,font=\small,text=black] {$S_1$};
+    \draw[guia] (1.8,3.2) -- (1.8,0) node[below,font=\small,text=black] {$S_0$};
+    \draw[guia] (2.7,3.2) -- (2.7,0) node[below,font=\small,text=black] {$D_0$};
+    \draw[guia] (4.033,2.4) -- (4.033,0) node[below,font=\small,text=black] {$D_1$};
+    \draw[curva1] (0,2.12) -- (4.4,4.76) node[etiqueta,right] {$S$};
+    \draw[curva1] (0.8,4.34) node[etiqueta,above] {$D$} -- (4.6,2.06);
+    \node[etiqueta,left] at (0,3.2) {$P_W{+}t$};
+    \node[etiqueta,left,text=tceerojo] at (0,2.4) {$P_U$};
+    \ejes{$Q$}{$P$}{5}{4.8}
+    \node[etiqueta,align=center,text=tceerojo] at (2.6,-1.0) {creación de comercio\\\textbf{grande}};
+  \end{scope}
+  % Leyenda
+  \fill[area] (1.8,-2.05) rectangle (2.2,-1.75);
+  \node[etiqueta,right,font=\small] at (2.2,-1.9) {efecto producción (se sustituye producción nacional cara)};
+  \fill[area2] (1.8,-2.55) rectangle (2.2,-2.25);
+  \node[etiqueta,right,font=\small] at (2.2,-2.4) {efecto consumo (aumenta la cantidad demandada)};
+\end{tikzpicture}
+\end{document}

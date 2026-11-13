@@ -1,0 +1,22 @@
+% Pregunta 258 (2018-enero-OEP2017, n.º 14): trayectoria temporal de k; salta en t0 a k0 y vuelve de forma monótona y asintótica al mismo k*. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \ejes{$t$}{$k$}{7}{4}
+  % Nivel de estado estacionario (no cambia)
+  \draw[guia] (0,2) -- (6.6,2);
+  \node[left] at (0,2) {$k^*$};
+  \node[left] at (0,3.2) {$k_0$};
+  \draw[guia] (0,3.2) -- (1.5,3.2);
+  % Trayectoria: k* hasta t0, salto a k0 y vuelta asintótica
+  \draw[curva1] (0,2) -- (1.5,2);
+  \draw[curvanueva,desplazada] (1.5,2) -- (1.5,3.2);
+  \draw[curvanueva,domain=1.5:6.6,samples=80] plot (\x,{2+1.2*exp(-0.85*(\x-1.5))});
+  \draw[guia] (1.5,0) -- (1.5,2);
+  \node[below] at (1.5,0) {$t_0$};
+  \node[etiqueta,font=\footnotesize,anchor=south] at (1.5,3.25) {regalo};
+  \node[etiqueta,tceerojo,font=\footnotesize,align=left,anchor=south west] at (2.6,2.65) {vuelve a $k^*$\\sin bajar de él};
+  \node[etiqueta,font=\footnotesize,anchor=north] at (5.2,1.9) {mismo $k^*$ (y mismo $y^*$)};
+\end{tikzpicture}
+\end{document}

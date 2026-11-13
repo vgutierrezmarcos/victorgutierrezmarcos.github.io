@@ -1,0 +1,150 @@
+{
+ "tema": "3.A.28",
+ "preguntas": [
+  {
+   "id": 312801,
+   "estado": "publicada",
+   "enunciado": "En un mercado de trabajo con fricciones de búsqueda, cada mes se destruye el 3 % de los empleos y cada parado encuentra empleo con una probabilidad del 27 %. Una mejora de los servicios de intermediación eleva esa probabilidad al 47 %, sin cambiar la tasa de separación. La tasa de paro de estado estacionario antes y después de la mejora es, respectivamente:",
+   "opciones": {
+    "a": "$11{,}1\\ \\%$ y $6{,}4\\ \\%$.",
+    "b": "$10\\ \\%$ y $6\\ \\%$.",
+    "c": "$10\\ \\%$ en los dos casos: la intermediación reduce el paro cíclico, pero no el de equilibrio.",
+    "d": "$3\\ \\%$ en los dos casos: en estado estacionario la tasa de paro coincide con la tasa de separación."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En estado estacionario, las entradas en el paro igualan a las salidas, $s(1-U)=f\\,U$, de donde $U^n=s/(s+f)$. Antes: $0{,}03/0{,}30=10\\ \\%$. Después: $0{,}03/0{,}50=6\\ \\%$. Un emparejamiento más eficiente baja el paro de equilibrio.",
+    "desarrollo": "El paro cambia con las entradas menos las salidas: $\\dot U=s\\,(1-U)-f\\,U$. Igualando a cero, $U^n=s/(s+f)$.\n\n- Antes: $U^n=0{,}03/(0{,}03+0{,}27)=0{,}10$. Comprobación con los flujos: entran $0{,}03\\cdot0{,}90=0{,}027$ y salen $0{,}27\\cdot0{,}10=0{,}027$.\n- Después: $U^n=0{,}03/(0{,}03+0{,}47)=0{,}06$. Comprobación: entran $0{,}03\\cdot0{,}94=0{,}0282$ y salen $0{,}47\\cdot0{,}06=0{,}0282$.\n\nEs la tasa natural de los modelos de búsqueda: sube con las separaciones y con todo lo que frena las salidas del paro. Las políticas activas de intermediación reducen el paro friccional, que forma parte del paro de equilibrio.\n\nPor qué fallan las demás:\n\n- a) Calcula $s/f$ ($0{,}03/0{,}27$ y $0{,}03/0{,}47$): olvida que las separaciones solo afectan a los ocupados, $1-U$, y no a toda la población activa.\n- c) El primer número es correcto, pero la intermediación actúa precisamente sobre el paro friccional, que es de equilibrio; el cíclico se combate con política de demanda.\n- d) La tasa de separación es un flujo de salida del empleo, no un stock de parados: el paro de equilibrio depende también de lo deprisa que se sale del paro."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Paro friccional y estructural: búsqueda y emparejamiento (tasa natural con flujos)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312802,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Barro y Gordon, el paro viene dado por $U_t=U^n-\\alpha\\,(\\pi_t-\\pi^e_t)$, con $U^n=8$ y $\\alpha=0{,}5$, y la autoridad monetaria elige la inflación, una vez fijadas las expectativas del público, para minimizar $L_t=(U_t-U^*)^2+\\gamma\\,(\\pi_t-\\pi^*)^2$, con $U^*=5$, $\\pi^*=2$ y $\\gamma=1$ (todo en puntos porcentuales). El público tiene expectativas racionales y la autoridad no puede comprometerse. En equilibrio, la inflación y el paro son:",
+   "opciones": {
+    "a": "$\\pi=3{,}5$ y $U=8$.",
+    "b": "$\\pi=2$ y $U=8$.",
+    "c": "$\\pi=3{,}2$ y $U=7{,}4$.",
+    "d": "$\\pi=3{,}5$ y $U=7{,}25$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con discreción y expectativas racionales, $\\pi^e=\\pi$, el paro es el natural y la inflación tiene un sesgo: $\\pi^D=\\pi^*+(\\alpha/\\gamma)(U^n-U^*)=2+0{,}5\\cdot3=3{,}5$. Más inflación sin ninguna ganancia de paro.",
+    "desarrollo": "La autoridad toma $\\pi^e$ como dada. Su condición de primer orden es $\\gamma\\,(\\pi-\\pi^*)=\\alpha\\,(U-U^*)$.\n\nEl público lo anticipa: $\\pi^e=\\pi$, luego $U=U^n=8$. Sustituyendo: $1\\cdot(\\pi-2)=0{,}5\\cdot(8-5)=1{,}5$, es decir, $\\pi^D=3{,}5$.\n\nComprobación con la función de reacción, $\\pi=[\\gamma\\pi^*+\\alpha^2\\pi^e+\\alpha(U^n-U^*)]/(\\gamma+\\alpha^2)$: con $\\pi^e=3{,}5$, $\\pi=(2+0{,}25\\cdot3{,}5+1{,}5)/1{,}25=4{,}375/1{,}25=3{,}5$. Es un punto fijo: la autoridad no quiere desviarse y el público no se equivoca.\n\nPor qué fallan las demás:\n\n- b) Es el resultado con la regla (compromiso creíble con $\\pi^*$). Sin compromiso no es un equilibrio: si el público esperara $\\pi^e=2$, a la autoridad le convendría sorprenderle.\n- c) Es justo esa tentación: con $\\pi^e=2$, la autoridad elige $\\pi^T=2+1{,}5/1{,}25=3{,}2$ y el paro baja a $8-0{,}5\\cdot1{,}2=7{,}4$. Pero exige que el público se equivoque, y con expectativas racionales no lo hace de forma sistemática.\n- d) Combina la inflación de la discreción con unas expectativas ancladas en el objetivo: $8-0{,}5\\cdot(3{,}5-2)=7{,}25$. En equilibrio la inflación está anticipada, $\\pi^e=3{,}5$, y no reduce el paro."
+   },
+   "dificultad": 2,
+   "apartado": "II.4 Nueva macroeconomía clásica: inconsistencia temporal (Kydland-Prescott, Barro-Gordon)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:312802.webp",
+     "alt": "Plano con el paro U en abscisas y la inflación π en ordenadas. Curva de Phillips a largo plazo vertical en U^n = 8. Punto de felicidad en (U*, π*) = (5, 2), rodeado de tres circunferencias de pérdida centradas en él. Dos curvas de Phillips de corto plazo, rectas decrecientes de pendiente −2, una para una inflación esperada baja y otra para una alta, sin cifras. No se marca ningún punto de equilibrio.",
+     "ancho": 580
+    }
+   ]
+  },
+  {
+   "id": 312803,
+   "estado": "publicada",
+   "enunciado": "En una economía, la inflación sigue la curva aceleracionista $\\pi_t-\\pi_{t-1}=-0{,}5\\,(U_t-U^n_t)$ y la tasa natural depende del paro pasado: $U^n_t=\\lambda_h\\,U_{t-1}+(1-\\lambda_h)\\,\\overline{U}^n$, con $\\overline{U}^n=6\\ \\%$. En el año 0 el paro es del 6 % y la inflación del 5 %. Una recesión eleva el paro al 10 % en el año 1, y ahí se mantiene en el año 2. Si la histéresis es pura ($\\lambda_h=1$), la inflación de los años 1 y 2 es, respectivamente:",
+   "opciones": {
+    "a": "$3\\ \\%$ y $1\\ \\%$.",
+    "b": "$5\\ \\%$ y $5\\ \\%$.",
+    "c": "$3\\ \\%$ y $5\\ \\%$.",
+    "d": "$3\\ \\%$ y $3\\ \\%$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con histéresis pura, la tasa natural de cada año es el paro del anterior, y la inflación depende de la variación del paro, no de su nivel: baja 2 puntos el año en que el paro sube 4 y deja de bajar cuando el paro se estabiliza, aunque sea en el 10 %.",
+    "desarrollo": "Con $\\lambda_h=1$, $U^n_t=U_{t-1}$ y la curva queda $\\pi_t-\\pi_{t-1}=-0{,}5\\,(U_t-U_{t-1})$.\n\n- Año 1: $U^n_1=U_0=6$; $\\pi_1=5-0{,}5\\,(10-6)=3$.\n- Año 2: $U^n_2=U_1=10$; $\\pi_2=3-0{,}5\\,(10-10)=3$.\n\nCualquier paro estable es compatible con una inflación estable: no hay un paro de equilibrio único, y la desinflación solo dura mientras el paro sube. Es el «límite de velocidad» que ya intuía Phillips, y la razón por la que con histéresis las desinflaciones salen más caras: el paro que causan no se va solo.\n\nPor qué fallan las demás:\n\n- a) Es el caso sin histéresis ($\\lambda_h=0$): la tasa natural sigue en el 6 % y, mientras el paro esté en el 10 %, la inflación cae 2 puntos cada año ($3\\ \\%$ y $1\\ \\%$).\n- b) Supone que la inflación no reacciona: pero en el año 1 el paro supera a la tasa natural de ese año (6 %), y la inflación baja.\n- c) Supone que la inflación vuelve a su nivel inicial cuando el paro deja de subir: con la curva aceleracionista, lo que se detiene es la caída de la inflación; para que volviera al 5 % el paro tendría que bajar."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 La persistencia del desempleo y la histéresis (curva de Phillips con histéresis)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312804,
+   "estado": "borrador",
+   "enunciado": "En un modelo de fijación de salarios y precios, la curva de salarios es $\\dfrac{W}{P^e}=(1-2\\,U+0{,}02)\\cdot\\mathrm{PAT}^e$ y las empresas fijan el precio con un margen del 25 % sobre el coste laboral unitario, $P=1{,}25\\,W/\\mathrm{PAT}$, donde $U$ es la tasa de paro (en tanto por uno) y $\\mathrm{PAT}$ la productividad del trabajo. A medio plazo las expectativas de precios y de productividad se cumplen. La NAIRU exacta (igualando las dos curvas, sin aproximaciones logarítmicas) y su respuesta a un aumento permanente y esperado del nivel de la productividad son:",
+   "opciones": {
+    "a": "$13{,}5\\ \\%$, y no cambia con el nivel de la productividad.",
+    "b": "$13{,}5\\ \\%$, y baja al aumentar la productividad.",
+    "c": "$11\\ \\%$, y no cambia con el nivel de la productividad.",
+    "d": "$11\\ \\%$, y baja al aumentar la productividad."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Igualando el salario real que se negocia y el que dejan las empresas, $1-2U^n+0{,}02=1/1{,}25=0{,}8$, luego $U^n=0{,}22/2=11\\ \\%$. Como el salario se negocia con la productividad esperada, un nivel mayor de productividad sube por igual las dos curvas y no mueve la NAIRU.",
+    "desarrollo": "La curva de precios deja un salario real $W/P=\\mathrm{PAT}/(1+\\mu)=0{,}8\\,\\mathrm{PAT}$. Con $P^e=P$ y $\\mathrm{PAT}^e=\\mathrm{PAT}$:\n\n$$(1-2\\,U^n+0{,}02)\\,\\mathrm{PAT}=0{,}8\\,\\mathrm{PAT}\\ \\Longrightarrow\\ 2\\,U^n=0{,}22\\ \\Longrightarrow\\ U^n=0{,}11.$$\n\nPor la fórmula general, $U^n=\\tfrac{1}{a}\\big(\\tfrac{\\mu}{1+\\mu}+Z\\big)=\\tfrac12\\,(0{,}2+0{,}02)=0{,}11$.\n\nLa productividad se cancela: los trabajadores reclaman una parte de lo que se espera producir y las empresas dejan una parte de lo que se produce; si las dos crecen igual, el conflicto distributivo no cambia. Solo las sorpresas de productividad ($\\mathrm{PAT}\\neq\\mathrm{PAT}^e$) mueven la NAIRU, y solo mientras las expectativas se ajustan. Por eso el crecimiento de la productividad no ha acabado con el paro a largo plazo.\n\nPor qué fallan las demás:\n\n- a) y b) Usan el margen $\\mu=0{,}25$ en lugar de la parte del producto que se quedan las empresas, $\\mu/(1+\\mu)=0{,}2$: $(0{,}25+0{,}02)/2=13{,}5\\ \\%$. Esa es solo la aproximación logarítmica para márgenes pequeños, $\\mu/(1+\\mu)\\approx\\mu$, con la que se llega a la curva de Phillips; el enunciado pide la NAIRU exacta y, con un margen del 25 %, la diferencia es de 2,5 puntos.\n- b) y d) La NAIRU bajaría con el nivel de la productividad si la curva de salarios no llevara la productividad esperada; aquí la lleva, y el aumento es esperado."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 La NAIRU: fijación de salarios y precios (forma lineal y productividad)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312805,
+   "estado": "publicada",
+   "enunciado": "La curva de Phillips, tal como la estimó A. W. Phillips en su artículo de 1958:",
+   "opciones": {
+    "a": "Relaciona la inflación de precios con la tasa de paro de Estados Unidos y se presenta como un menú de combinaciones entre las que puede elegir la política económica.",
+    "b": "Relaciona de forma lineal el crecimiento del salario real con la tasa de paro, de modo que cada punto adicional de paro reduce siempre lo mismo el crecimiento de los salarios.",
+    "c": "Relaciona de forma inversa y no lineal (convexa) el ritmo de variación de los salarios nominales con la tasa de paro del Reino Unido, sin tener en cuenta las expectativas de inflación.",
+    "d": "Relaciona el ritmo de variación de los salarios nominales con la tasa de paro y con la inflación esperada, por lo que a largo plazo es vertical."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Phillips estimó con datos británicos una relación inversa y convexa entre el crecimiento de los salarios nominales y la tasa de paro. El paso a precios y la lectura como menú son de Samuelson y Solow (1960), y las expectativas las añaden Friedman y Phelps.",
+    "desarrollo": "La curva original es una regularidad empírica del Reino Unido: cuando hay poco paro, los salarios nominales crecen deprisa, y la relación es convexa (los salarios se resisten a bajar aunque el paro sea alto).\n\nSu historia posterior tiene tres pasos que conviene no mezclar:\n\n- Lipsey (1960) le da un fundamento de exceso de demanda de trabajo;\n- Samuelson y Solow (1960) la pasan de salarios a precios (con un margen constante sobre el coste laboral unitario, $\\pi=\\gamma_W-\\gamma_{\\mathrm{PAT}}$), la estiman para Estados Unidos y la presentan como un menú;\n- Friedman y Phelps la amplían con expectativas, $\\pi_t=\\pi^e_t-a\\,(U_t-U^n)$: la disyuntiva es solo de corto plazo.\n\nPor qué fallan las demás:\n\n- a) Es la versión de Samuelson y Solow: precios, Estados Unidos y menú.\n- b) Phillips trabaja con salarios nominales, no reales (esa es precisamente la crítica de Friedman), y su curva no es lineal.\n- d) Es la curva aumentada con expectativas, de finales de los años 60; la original no las incluye, y esa es su principal limitación."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 La síntesis neoclásica y la curva de Phillips original",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312806,
+   "estado": "publicada",
+   "enunciado": "Sobre la curva de Phillips nuevo keynesiana, $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]+\\kappa\\,x_t+u_t$, donde $x_t$ es la brecha de producción y $u_t$ una perturbación de costes, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La inflación esperada que aparece en ella es, como en la curva de Friedman y Phelps, la que se esperaba en el periodo anterior para el periodo corriente; la única diferencia es que las expectativas son racionales.",
+    "b": "La inflación de hoy depende de la que se espera para el periodo siguiente y, resolviendo hacia delante, de las brechas de producción esperadas; sin perturbaciones de costes, estabilizar la inflación estabiliza también la brecha.",
+    "c": "Su pendiente, $\\kappa$, es mayor cuanto más rígidos son los precios, es decir, cuanto menor es la probabilidad de que una empresa pueda revisar su precio en cada periodo.",
+    "d": "Como las expectativas son racionales, la política monetaria anticipada por el público no afecta a la producción ni al empleo, tampoco a corto plazo."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La curva nace de empresas que fijan precios que durarán (Calvo) y por eso miran al futuro: $\\pi_t=\\kappa\\sum_{k\\geq0}\\beta^k\\,\\mathbb{E}_t[x_{t+k}]$ cuando $u_t=0$. De ahí la divina coincidencia: sin perturbaciones de costes, inflación estable equivale a brecha nula.",
+    "desarrollo": "En el modelo nuevo keynesiano, cada empresa solo puede revisar su precio con cierta probabilidad. La que revisa sabe que su precio durará y lo fija mirando a los costes futuros: la inflación de hoy depende de la esperada para mañana y de la brecha de hoy.\n\n- Resolviendo hacia delante con $u_t=0$, la inflación es el valor presente de las brechas esperadas.\n- Si el banco central mantiene la inflación estable, la brecha es nula y el paro está en su tasa natural: no tiene que elegir (divina coincidencia). Con $u_t\\neq0$ aparece un dilema a corto plazo.\n- A largo plazo, con inflación constante, $x=(1-\\beta)\\pi/\\kappa$: como $\\beta$ es casi 1, la curva es casi vertical.\n\nPor qué fallan las demás:\n\n- a) En la curva aumentada, la expectativa es $\\mathbb{E}_{t-1}[\\pi_t]$ (la inflación de hoy prevista ayer, al negociar los salarios); en la nuevo keynesiana es $\\mathbb{E}_t[\\pi_{t+1}]$, y sale de la optimización de las empresas. La diferencia no es solo cómo se forman las expectativas, sino de qué fecha son.\n- c) Al revés: cuanto más rígidos son los precios (menos empresas revisan), menos responde la inflación a la brecha y menor es $\\kappa$.\n- d) Es la proposición de ineficacia de la nueva macroeconomía clásica, con precios flexibles. Con precios rígidos, la política monetaria mueve la producción a corto plazo aunque sea anticipada."
+   },
+   "dificultad": 2,
+   "apartado": "II.5 Nueva economía keynesiana: la curva de Phillips nuevo keynesiana",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

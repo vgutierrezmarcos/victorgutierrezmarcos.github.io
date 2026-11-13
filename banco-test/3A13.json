@@ -1,0 +1,235 @@
+{
+ "tema": "3.A.13",
+ "preguntas": [
+  {
+   "id": 311301,
+   "estado": "publicada",
+   "enunciado": "En un mercado de coches usados, una proporción $\\lambda$ de los coches es de calidad alta y el resto, de calidad baja. Cada vendedor conoce la calidad de su coche y lo valora en 800 € si es bueno y en 400 € si es malo. Los compradores, neutrales al riesgo, valoran un coche bueno en 1.000 € y uno malo en 500 €, pero no distinguen la calidad antes de comprar y solo conocen $\\lambda$. ¿Cuál es la proporción mínima de coches buenos para que pueda haber un equilibrio en el que se vendan todos los coches?",
+   "opciones": {
+    "a": "El 50 %.",
+    "b": "El 60 %.",
+    "c": "El 80 %.",
+    "d": "Ninguna: con información asimétrica solo se venden los coches malos, sea cual sea $\\lambda$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Para que los dueños de coches buenos vendan, el precio debe ser al menos 800 €. Si se ofrecen todos los coches, los compradores pagan como mucho el valor esperado, $1.000\\lambda+500(1-\\lambda)$. Hace falta $500+500\\lambda\\geq 800$, es decir, $\\lambda\\geq 0{,}6$.",
+    "desarrollo": "Un equilibrio en el que se venden todos los coches necesita un precio $p$ que cumpla dos condiciones:\n\n- que los dueños de coches buenos quieran vender: $p\\geq 800$ (los de coches malos venden con más razón);\n- que los compradores quieran comprar un coche de calidad media: $p\\leq 1.000\\lambda+500(1-\\lambda)=500+500\\lambda$.\n\nLas dos son compatibles si $500+500\\lambda\\geq 800$, es decir, $\\lambda\\geq 0{,}6$. Con menos coches buenos, a cualquier precio que los compradores acepten pagar por la calidad media los dueños de coches buenos se retiran; los compradores lo anticipan y solo pagan hasta 500 €: se venden solo los limones (a un precio entre 400 y 500 €) y se pierden intercambios beneficiosos, porque los coches buenos valen 1.000 € para los compradores y 800 € para sus dueños.\n\nPor qué fallan las demás:\n\n- a) Con $\\lambda=0{,}5$, el valor esperado es 750 €, menos de lo que piden los dueños de coches buenos: es el ejemplo de Akerlof, en el que solo se venden limones.\n- c) Compara los 800 € del vendedor con los 1.000 € que vale un coche bueno para el comprador ($800/1.000$), olvidando que el comprador también valora los coches malos en 500 €.\n- d) La selección adversa no siempre destruye el mercado de la calidad alta: depende de la composición de la oferta y de la diferencia de valoraciones. Con suficientes coches buenos, el precio medio basta para retenerlos."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 The Market for «Lemons» (Akerlof, 1970)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311302,
+   "estado": "publicada",
+   "enunciado": "En un modelo de señalización como el de Spence, las empresas pagan 30 a quien creen de productividad alta y 20 a quien creen de productividad baja. Alcanzar un nivel de educación $y$, que no aumenta la productividad, cuesta $c_{\\mathrm{A}}(y)=y$ a los trabajadores de productividad alta y $c_{\\mathrm{B}}(y)=2y$ a los de productividad baja. Las empresas creen que es de productividad alta quien tiene al menos $\\hat y$. ¿Qué valores de $\\hat y$ sostienen un equilibrio separador, y cuál selecciona el criterio intuitivo de Cho y Kreps?",
+   "opciones": {
+    "a": "$5\\leq\\hat y\\leq 10$, y el criterio intuitivo selecciona $\\hat y=5$.",
+    "b": "$5\\leq\\hat y\\leq 10$, y el criterio intuitivo selecciona $\\hat y=10$, el que más aleja a los de productividad baja.",
+    "c": "$\\hat y\\leq 5$, y el criterio intuitivo selecciona $\\hat y=5$.",
+    "d": "$10\\leq\\hat y\\leq 30$, y el criterio intuitivo selecciona $\\hat y=10$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Hay separación si al productivo le compensa educarse y al poco productivo no le compensa imitarle: $c_{\\mathrm{A}}(\\hat y)\\leq w_{\\mathrm{A}}-w_{\\mathrm{B}}\\leq c_{\\mathrm{B}}(\\hat y)$, es decir, $\\hat y\\leq 10\\leq 2\\hat y$: $5\\leq\\hat y\\leq 10$. El criterio intuitivo deja solo el separador más barato, $\\hat y=5$.",
+    "desarrollo": "La diferencia salarial es $w_{\\mathrm{A}}-w_{\\mathrm{B}}=10$. Las dos restricciones de compatibilidad de incentivos:\n\n- $\\mathrm{IC}_{\\mathrm{A}}$: al tipo A le compensa educarse, $30-\\hat y\\geq 20$, es decir, $\\hat y\\leq 10$;\n- $\\mathrm{IC}_{\\mathrm{B}}$: al tipo B no le compensa imitarle, $20\\geq 30-2\\hat y$, es decir, $\\hat y\\geq 5$.\n\nCualquier $\\hat y$ entre 5 y 10 sostiene un equilibrio separador: hay infinitos. El criterio intuitivo descarta las creencias poco razonables: un trabajador de tipo B nunca elegiría una educación superior a 5, ni siquiera si con ella le tomaran por A (ganaría $30-2y<20$). Por tanto, quien elige algo más de 5 tiene que ser de tipo A, y exigirle más es injustificado: solo sobrevive el separador más barato, $\\hat y^{*}=5$, donde $c_{\\mathrm{B}}(\\hat y^{*})=w_{\\mathrm{A}}-w_{\\mathrm{B}}$. Con él, el tipo A obtiene $30-5=25$.\n\nPor qué fallan las demás:\n\n- b) El intervalo es correcto, pero el criterio intuitivo selecciona el separador menos costoso, no el más exigente: con $\\hat y=10$ los productivos gastarían en la señal toda la diferencia salarial.\n- c) Con $\\hat y<5$ también al tipo B le compensa educarse ($30-2\\hat y>20$): todos alcanzan $\\hat y$ y la educación no separa.\n- d) Compara los costes con los niveles salariales (20 y 30) en vez de con la diferencia salarial, que es lo que se gana con la señal."
+   },
+   "dificultad": 2,
+   "apartado": "I.3.1 Señalización (Spence, 1973)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311303,
+   "estado": "publicada",
+   "enunciado": "En un mercado de seguros competitivo como el de Rothschild y Stiglitz, cada individuo tiene una riqueza de 100 y puede sufrir una pérdida de 60. Los de alto riesgo la sufren con probabilidad 0,5 y los de bajo riesgo, con probabilidad 0,25. Todos son aversos al riesgo, y las aseguradoras, neutrales al riesgo, no distinguen a unos de otros. Si existe, el equilibrio separador consiste en:",
+   "opciones": {
+    "a": "Un único contrato de seguro completo a la prima del riesgo medio, con el que los dos tipos quedan con la misma riqueza pase lo que pase.",
+    "b": "Seguro completo para los de bajo riesgo, que quedan con una riqueza de 85 pase lo que pase, y seguro parcial para los de alto riesgo, a su prima justa.",
+    "c": "Seguro completo para los dos tipos, cada uno a su prima justa: los de alto riesgo quedan con 70 y los de bajo riesgo con 85 pase lo que pase.",
+    "d": "Seguro completo para los de alto riesgo, que quedan con una riqueza de 70 pase lo que pase, y seguro parcial para los de bajo riesgo, a su prima justa."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "No hay distorsión para el tipo que querría hacerse pasar por el otro: los de alto riesgo reciben seguro completo a su prima justa ($100-0{,}5\\times 60=70$ en los dos estados). Los de bajo riesgo cargan con la distorsión: un seguro parcial (con franquicia) a su prima justa, lo bastante incompleto para que los de alto riesgo no lo prefieran.",
+    "desarrollo": "En el equilibrio separador cada contrato tiene beneficio esperado nulo con el tipo que lo elige:\n\n- Alto riesgo: seguro completo a su prima actuarialmente justa. Paga $0{,}5\\times 60=30$ y queda con $100-30=70$ haya o no accidente.\n- Bajo riesgo: un contrato sobre su recta de isobeneficio nulo (prima justa de 0,25 por euro asegurado), pero con cobertura incompleta: la mayor que deja a los de alto riesgo indiferentes entre ese contrato y el suyo (su restricción de incentivos saturada). Quedan con más riqueza si no hay accidente que si lo hay.\n\nEl coste de la información lo pagan los de bajo riesgo, que soportan parte del riesgo aunque, a su prima justa, preferirían asegurarse del todo. Los de alto riesgo obtienen lo mismo que con información simétrica, y nadie subvenciona a nadie.\n\nPor qué fallan las demás:\n\n- a) Eso es un contrato agrupador, no un equilibrio separador; y en este modelo ningún agrupador es de equilibrio, porque otra aseguradora puede llevarse solo a los de bajo riesgo con un contrato con algo menos de cobertura y menos prima (descreme).\n- b) Invierte los papeles. Si los de bajo riesgo tuvieran seguro completo a su prima (riqueza de 85), los de alto riesgo lo elegirían también, y ese contrato daría pérdidas.\n- c) Es el resultado con información simétrica (first best). Con información asimétrica no se sostiene: los de alto riesgo prefieren 85 seguros a 70 seguros y se harían pasar por de bajo riesgo."
+   },
+   "dificultad": 2,
+   "apartado": "I.3.2 Autoselección (Rothschild y Stiglitz, 1976): equilibrio separador",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311304,
+   "estado": "publicada",
+   "enunciado": "En el modelo de seguros de Rothschild y Stiglitz, suponga que la proporción de individuos de bajo riesgo es tan alta que hay contratos agrupadores que los dos tipos prefieren a su contrato del menú separador y que dan beneficio a la aseguradora que los ofrece. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con el concepto de equilibrio de Rothschild y Stiglitz, el equilibrio es entonces un contrato agrupador a la prima del riesgo medio, porque los dos tipos lo prefieren al menú separador.",
+    "b": "Con el concepto de equilibrio de Rothschild y Stiglitz no hay equilibrio en estrategias puras; con el equilibrio de anticipación de Wilson puede sostenerse un contrato agrupador y con el equilibrio reactivo de Riley se sostiene el menú separador.",
+    "c": "Con el concepto de equilibrio de Rothschild y Stiglitz no hay equilibrio en estrategias puras; con el equilibrio de anticipación de Wilson se sostiene el menú separador y con el equilibrio reactivo de Riley, un contrato agrupador.",
+    "d": "El mercado se reduce, como en el modelo de Akerlof: los de bajo riesgo dejan de asegurarse y el equilibrio consiste en asegurar por completo a los de alto riesgo a su prima justa."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El contrato agrupador rompe el menú separador, pero ningún agrupador es de equilibrio, porque siempre puede descremarse a los de bajo riesgo: no hay equilibrio en estrategias puras. Si las aseguradoras anticipan que se retirarán los contratos con pérdidas (Wilson), el agrupador se sostiene; si anticipan que las demás reaccionarán con contratos nuevos (Riley), se sostiene el separador.",
+    "desarrollo": "Dos pasos:\n\n- El separador no se sostiene: con muchos individuos de bajo riesgo, la recta de isobeneficio nulo del riesgo medio queda cerca de la de los de bajo riesgo y pasa por encima de la curva de indiferencia que estos alcanzan con su contrato separador. Una aseguradora que entre con un contrato agrupador se lleva a todos y gana dinero.\n- El agrupador tampoco: en cualquier contrato común, la curva de indiferencia de los de bajo riesgo es más inclinada que la de los de alto riesgo (cruce único), así que hay contratos con algo menos de cobertura y menos prima que solo prefieren los de bajo riesgo. Quien los ofrezca se lleva a la buena clientela, y el contrato agrupador, que se queda con los de alto riesgo, da pérdidas.\n\nNingún conjunto de contratos es estable: no hay equilibrio en estrategias puras. Las respuestas cambian lo que anticipan las aseguradoras:\n\n- Wilson (1977): no se ofrece un contrato que daría pérdidas cuando las demás retiren los suyos. El descreme deja de ser rentable (al retirarse el agrupador, los de alto riesgo irían al contrato nuevo) y el agrupador se sostiene.\n- Riley (1979): cada aseguradora prevé que las demás responderán con contratos nuevos que le harán perder dinero. Eso disuade al contrato agrupador que rompía el separador, y el separador se sostiene siempre.\n\nPor qué fallan las demás:\n\n- a) Que los dos tipos prefieran el agrupador basta para romper el separador, no para que el agrupador sea un equilibrio: es vulnerable al descreme.\n- c) Intercambia los dos conceptos: Wilson sostiene el agrupador y Riley, el separador.\n- d) Si solo se ofreciera el seguro completo de los de alto riesgo, una aseguradora ganaría dinero ofreciendo a los de bajo riesgo un seguro parcial a una prima algo superior a la justa para ellos, que los de alto riesgo no querrían: tampoco es un equilibrio."
+   },
+   "dificultad": 3,
+   "apartado": "I.3.2 Autoselección (Rothschild y Stiglitz, 1976): inexistencia del equilibrio y equilibrios de Wilson y Riley",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311305,
+   "estado": "publicada",
+   "enunciado": "Una aseguradora de automóviles comprueba que, entre sus clientes, quienes eligen las pólizas con más cobertura tienen de media más siniestros que quienes eligen pólizas con franquicia. Esta correlación positiva entre cobertura y siniestralidad:",
+   "opciones": {
+    "a": "Demuestra que hay selección adversa y descarta el riesgo moral, porque los clientes eligieron la póliza antes de que ocurrieran los siniestros.",
+    "b": "Demuestra que hay riesgo moral y descarta la selección adversa, porque la aseguradora ya había tenido en cuenta el riesgo de cada cliente al fijar las primas.",
+    "c": "Es compatible tanto con la selección adversa (los de más riesgo eligen más cobertura) como con el riesgo moral (quien está más asegurado se cuida menos), y por sí sola no permite distinguirlos.",
+    "d": "Contradice las dos explicaciones: con selección adversa los de más riesgo eligen menos cobertura para pagar menos prima, y con riesgo moral la franquicia reduce el cuidado del asegurado."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La selección adversa predice que los de más riesgo eligen más cobertura (la causalidad va del riesgo a la cobertura); el riesgo moral, que más cobertura reduce el cuidado (de la cobertura al riesgo). Las dos dan la misma correlación positiva, y separarlas es el gran problema empírico de este campo.",
+    "desarrollo": "La correlación positiva entre cobertura y siniestralidad es la predicción contrastable de los modelos de información asimétrica en los seguros, pero tiene dos lecturas:\n\n- Selección adversa (información oculta, antes del contrato): los clientes saben más que la aseguradora sobre su propio riesgo, y los de más riesgo eligen más cobertura, como en el menú de Rothschild y Stiglitz (el «todo riesgo» para los temerarios y la franquicia para los prudentes).\n- Riesgo moral (acción oculta, después del contrato): quien está más asegurado soporta menos las consecuencias de un siniestro y se cuida menos.\n\nPara distinguirlas hace falta algo más que la correlación: variación exógena de la cobertura (como la asignación al azar de planes en el experimento de seguros de salud de la RAND, que aísla el riesgo moral), o seguir a los mismos clientes cuando cambian de contrato. Chiappori y Salanié (2000) no encuentran esa correlación entre los conductores noveles franceses; Finkelstein y Poterba (2004) sí la encuentran en las rentas vitalicias británicas.\n\nPor qué fallan las demás:\n\n- a) El orden temporal no descarta el riesgo moral: la póliza se elige antes, y el cuidado se decide después, ya con la cobertura.\n- b) La aseguradora solo puede tarificar con lo que observa; la selección adversa opera sobre lo que no observa. Que tarifique por riesgo no la descarta.\n- d) Es al revés en los dos casos: a igualdad de prima por euro asegurado, el de más riesgo quiere más cobertura, y la franquicia hace que el asegurado soporte parte del daño y se cuide más."
+   },
+   "dificultad": 1,
+   "apartado": "I.3.2 Autoselección: evidencia empírica (correlación entre cobertura y siniestralidad)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311306,
+   "estado": "publicada",
+   "enunciado": "Un principal neutral al riesgo contrata a un agente también neutral al riesgo, con utilidad $w-v(e)$ y utilidad de reserva $U^R=20$. Con el esfuerzo alto, que cuesta al agente $v(e^{\\mathrm{A}})=10$, el resultado es 100 con probabilidad 0,5 y 40 con probabilidad 0,5; con el esfuerzo bajo, que no le cuesta nada, el resultado es 100 con probabilidad 0,25 y 40 con probabilidad 0,75. El esfuerzo no es observable y el agente no tiene responsabilidad limitada. Si el principal le «vende el negocio» a cambio de un canon fijo $k$, ¿cuál es el mayor canon que el agente acepta y qué esfuerzo hace?",
+   "opciones": {
+    "a": "$k=50$, y el agente hace el esfuerzo alto.",
+    "b": "$k=35$, y el agente hace el esfuerzo bajo, porque nadie le vigila.",
+    "c": "$k=40$, y el agente hace el esfuerzo alto: el principal obtiene lo mismo que si el esfuerzo fuera observable.",
+    "d": "$k=40$, pero el agente hace el esfuerzo bajo, de modo que el principal tiene que añadir una prima por éxito para incentivarle."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con la venta del negocio el agente se queda con todo el resultado menos $k$ y elige el esfuerzo como lo haría el dueño: el alto le da $70-10-k$ y el bajo, $55-k$. Acepta si $60-k\\geq 20$: $k=40$, justo el beneficio del principal con esfuerzo observable ($70-30$). Sin aversión al riesgo del agente no hay coste de agencia.",
+    "desarrollo": "Resultado esperado: con esfuerzo alto, $0{,}5\\times 100+0{,}5\\times 40=70$; con esfuerzo bajo, $0{,}25\\times 100+0{,}75\\times 40=55$.\n\nCon el contrato $w(x)=x-k$, el agente es el «propietario residual»:\n\n- esfuerzo alto: $70-k-10=60-k$;\n- esfuerzo bajo: $55-k$.\n\nElige el alto para cualquier $k$ (la restricción de incentivos se cumple porque el esfuerzo alto es eficiente: sube el resultado esperado en 15 y cuesta 10). Acepta si $60-k\\geq 20$, de modo que el mayor canon es $k=\\mathbb{E}[x\\mid e^{\\mathrm{A}}]-v(e^{\\mathrm{A}})-U^R=70-10-20=40$.\n\nComparación con el esfuerzo observable: el principal exigiría el esfuerzo alto y pagaría de media $U^R+v(e^{\\mathrm{A}})=30$, con un beneficio de $70-30=40$. Es lo mismo: como el agente es neutral, cargarle todo el riesgo no cuesta nada, y la acción oculta no genera ineficiencia. El coste de agencia aparece cuando el agente es averso al riesgo (o tiene responsabilidad limitada y no puede pagar $k$).\n\nPor qué fallan las demás:\n\n- a) Olvida la desutilidad del esfuerzo: con $k=50$ el agente obtendría $70-50-10=10<20$ y rechazaría el contrato.\n- b) Es el canon que podría cobrarse si el agente hiciera el esfuerzo bajo ($55-20$). Pero quien se queda con todo el resultado no necesita vigilancia: se esfuerza por su propio interés, y el principal puede cobrar más.\n- d) Con la venta del negocio no hace falta ninguna prima adicional: el agente ya recibe el 100 % de la diferencia entre éxito y fracaso."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Modelo principal-agente: esfuerzo inobservable con agente y principal neutrales (venta del negocio)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311307,
+   "estado": "publicada",
+   "enunciado": "Un principal neutral al riesgo quiere que su agente haga el esfuerzo alto, que no es observable. La utilidad del agente es $\\sqrt{w}-v(e)$, con $v(e^{\\mathrm{A}})=2$ y $v(e^{\\mathrm{B}})=0$, y su utilidad de reserva es $U^R=4$. La probabilidad de éxito es 0,75 con el esfuerzo alto y 0,25 con el esfuerzo bajo. El contrato (pago con éxito, $w_{\\mathrm{E}}$, y con fracaso, $w_{\\mathrm{F}}$) que induce el esfuerzo alto con el menor coste esperado para el principal es:",
+   "opciones": {
+    "a": "$w_{\\mathrm{E}}=w_{\\mathrm{F}}=36$: un salario fijo que cumple la restricción de participación, con un coste de agencia nulo.",
+    "b": "$w_{\\mathrm{E}}=37$ y $w_{\\mathrm{F}}=33$, con un pago esperado de 36, el mismo que con esfuerzo observable.",
+    "c": "$w_{\\mathrm{E}}=49$ y $w_{\\mathrm{F}}=9$, con un pago esperado de 36, el mismo que con esfuerzo observable, porque el agente queda en su utilidad de reserva.",
+    "d": "$w_{\\mathrm{E}}=49$ y $w_{\\mathrm{F}}=9$, con un pago esperado de 39: 3 más que el salario fijo de 36 que bastaría si el esfuerzo fuera observable."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con las dos restricciones saturadas, $\\sqrt{w_{\\mathrm{E}}}-\\sqrt{w_{\\mathrm{F}}}=(2-0)/(0{,}75-0{,}25)=4$ y $0{,}75\\sqrt{w_{\\mathrm{E}}}+0{,}25\\sqrt{w_{\\mathrm{F}}}=4+2=6$: $\\sqrt{w_{\\mathrm{E}}}=7$ y $\\sqrt{w_{\\mathrm{F}}}=3$. El pago esperado es $0{,}75\\times 49+0{,}25\\times 9=39$, frente al fijo de $6^{2}=36$ con esfuerzo observable: la diferencia, 3, es el coste de agencia.",
+    "desarrollo": "Esfuerzo observable (referencia): el principal asegura por completo al agente averso con un salario fijo que satura la participación, $\\sqrt{w^{*}}=U^R+v(e^{\\mathrm{A}})=6$, es decir, $w^{*}=36$.\n\nEsfuerzo inobservable: con un agente averso se saturan la participación (PC) y la compatibilidad de incentivos (IC):\n\n- IC: $(0{,}75-0{,}25)\\big(\\sqrt{w_{\\mathrm{E}}}-\\sqrt{w_{\\mathrm{F}}}\\big)=2-0$, de donde $\\sqrt{w_{\\mathrm{E}}}-\\sqrt{w_{\\mathrm{F}}}=\\Delta=4$;\n- PC: $0{,}75\\sqrt{w_{\\mathrm{E}}}+0{,}25\\sqrt{w_{\\mathrm{F}}}-2=4$.\n\nSustituyendo, $\\sqrt{w_{\\mathrm{F}}}+0{,}75\\times 4=6$, así que $\\sqrt{w_{\\mathrm{F}}}=3$ y $\\sqrt{w_{\\mathrm{E}}}=7$: $w_{\\mathrm{F}}=9$ y $w_{\\mathrm{E}}=49$. (Con las fórmulas del tema: $u(w_{\\mathrm{E}})=U^R+v(e^{\\mathrm{A}})+(1-\\pi_{\\mathrm{A}})\\Delta=6+1=7$ y $u(w_{\\mathrm{F}})=6-0{,}75\\times 4=3$.)\n\nPago esperado: $0{,}75\\times 49+0{,}25\\times 9=36{,}75+2{,}25=39>36$. El agente obtiene la misma utilidad esperada que con el fijo, pero ahora soporta riesgo y, por ser averso, hay que pagarle de media más (desigualdad de Jensen): los 3 de diferencia son la prima de riesgo, el coste de agencia.\n\nPor qué fallan las demás:\n\n- a) El fijo de 36 cumple la participación, pero no los incentivos: si cobra lo mismo pase lo que pase, el agente elige el esfuerzo bajo, que le da $6-0=6>4$.\n- b) Trata la utilidad como si fuera lineal en el salario (una diferencia de 4 en euros). Con ese contrato, $\\sqrt{37}-\\sqrt{33}\\approx 0{,}34$, muy lejos del 4 que exige la IC: el agente no se esforzaría.\n- c) Los pagos son los correctos, pero su esperanza es 39, no 36. Que el agente quede en su utilidad de reserva no significa que cueste lo mismo: lo que se iguala es la utilidad esperada, no el pago esperado."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Modelo principal-agente: esfuerzo inobservable con agente averso (coste de agencia)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311308,
+   "estado": "publicada",
+   "enunciado": "Las ventas de un comercial dependen de su esfuerzo, que la empresa no observa, y de la coyuntura de su zona, que afecta por igual a todos los comerciales que trabajan en ella. Según el principio de informatividad de Holmström, la retribución óptima de ese comercial:",
+   "opciones": {
+    "a": "Debe depender también de las ventas de los demás comerciales de la zona, porque informan sobre la coyuntura común y permiten descontarla de su resultado.",
+    "b": "Debe depender solo de sus propias ventas, porque las de los demás no dependen de su esfuerzo y, por tanto, no deben entrar en su contrato.",
+    "c": "Debe ser un salario fijo, porque cuando el resultado depende del azar cualquier pago variable carga un riesgo inútil sobre el agente.",
+    "d": "Debe depender de las ventas totales de la zona y no de las suyas, para repartir el riesgo entre todos los comerciales."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El principio de informatividad dice que debe entrar en el contrato toda variable que aporte información sobre el esfuerzo, además del resultado. Las ventas de los compañeros no dependen del esfuerzo del comercial, pero revelan la coyuntura común: compararle con ellos filtra ese ruido. Es la base de la evaluación relativa.",
+    "desarrollo": "Con riesgo moral, el principal paga según el resultado porque es lo que le informa sobre el esfuerzo; pero el resultado mezcla esfuerzo y azar, y ese azar es un riesgo por el que hay que compensar al agente averso. Cualquier variable que ayude a separar el esfuerzo del azar abarata los incentivos.\n\nLas ventas de los demás comerciales de la zona son una de esas variables: si todos venden poco, lo probable es que la coyuntura haya sido mala y no que este comercial se haya esforzado poco. Dadas sus propias ventas, las de los demás sí informan sobre su esfuerzo. Pagar según las ventas relativas (evaluación relativa; en el extremo, torneos) elimina el ruido común y permite dar los mismos incentivos con menos riesgo, es decir, con menos coste de agencia.\n\nPor qué fallan las demás:\n\n- b) Confunde «no depender del esfuerzo» con «no informar sobre el esfuerzo». Lo que excluye el principio son las variables que no añaden información sobre el esfuerzo una vez conocido el resultado; las ventas de los compañeros sí la añaden, porque comparten el azar.\n- c) Un salario fijo asegura por completo al agente, pero elimina el incentivo a esforzarse: es el contrato óptimo solo si el esfuerzo es observable.\n- d) Pagar por las ventas totales desliga la retribución del esfuerzo propio (cada uno se beneficia del esfuerzo de los demás) y mantiene el riesgo común de la coyuntura: debilita los incentivos y no elimina el ruido."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Modelo principal-agente: principio de informatividad; II.3.1 Evaluación relativa",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311309,
+   "estado": "publicada",
+   "enunciado": "En el modelo de contrato lineal de Holmström y Milgrom, el resultado es $x=e+\\varepsilon$, con $\\varepsilon\\sim N(0,\\sigma^{2})$; el agente cobra $w=a+b\\,x$, tiene aversión absoluta al riesgo constante $r_A$ y un coste del esfuerzo $v(e)=e^{2}/2$, y el principal es neutral al riesgo. Si $r_A=2$ y $\\sigma^{2}=1{,}5$, la participación óptima del agente en el resultado y el esfuerzo que hace son:",
+   "opciones": {
+    "a": "$b^{*}=1$ y $e^{*}=1$: se vende el negocio al agente, que hace el esfuerzo eficiente.",
+    "b": "$b^{*}=0{,}25$ y $e^{*}=1$: el agente hace el esfuerzo eficiente, porque la parte fija $a$ le compensa por el riesgo que soporta.",
+    "c": "$b^{*}=0$ y $e^{*}=0$: con un agente averso y un resultado con ruido, lo óptimo es un salario fijo.",
+    "d": "$b^{*}=0{,}25$ y $e^{*}=0{,}25$: menos que el esfuerzo eficiente, $e=1$, porque más incentivos le cargarían demasiado riesgo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El agente elige el esfuerzo que iguala su coste marginal a lo que recibe por unidad de resultado, $e=b$. La potencia óptima de los incentivos es $b^{*}=1/(1+r_A\\sigma^{2})=1/(1+3)=0{,}25$, menor que 1 porque cada punto de $b$ carga sobre el agente un riesgo que hay que compensarle. El esfuerzo, $0{,}25$, queda por debajo del eficiente.",
+    "desarrollo": "Equivalente cierto del agente (utilidad exponencial y pago normal): $\\xi=a+b\\,e-\\dfrac{r_A}{2}b^{2}\\sigma^{2}-\\dfrac{e^{2}}{2}$.\n\n- Incentivos: el agente maximiza $\\xi$ respecto a $e$: $b-e=0$, es decir, $e=b$.\n- Participación: el principal ajusta $a$ para dejar al agente en su utilidad de reserva, de modo que se queda con el excedente total, $e-\\dfrac{e^{2}}{2}-\\dfrac{r_A}{2}b^{2}\\sigma^{2}$ (resultado esperado, menos coste del esfuerzo, menos prima de riesgo).\n- Con $e=b$: $\\max_b\\ b-\\dfrac{b^{2}}{2}-\\dfrac{r_A\\sigma^{2}}{2}b^{2}$, cuya condición de primer orden es $1-b-r_A\\sigma^{2}b=0$:\n\n$$b^{*}=\\frac{1}{1+r_A\\sigma^{2}}=\\frac{1}{1+2\\times 1{,}5}=0{,}25,\\qquad e^{*}=b^{*}=0{,}25.$$\n\nEl esfuerzo eficiente iguala el coste marginal del esfuerzo, $e$, a su producto marginal, 1: $e=1$. El contrato óptimo induce menos, porque subir $b$ aumenta el esfuerzo pero también el riesgo del agente: es el dilema entre incentivos y seguro. Cuanto más averso es el agente o más ruidoso el resultado, menor es $b^{*}$.\n\nPor qué fallan las demás:\n\n- a) La venta del negocio ($b=1$) solo es óptima si el agente es neutral ($r_A=0$) o no hay ruido ($\\sigma^{2}=0$). Aquí la prima de riesgo sería $\\tfrac12\\times 2\\times 1{,}5=1{,}5$, mayor que todo el excedente del esfuerzo eficiente ($1-\\tfrac12=0{,}5$).\n- b) La parte fija $a$ no afecta al esfuerzo: el agente decide comparando lo que gana por unidad de resultado, $b$, con su coste marginal, así que $e=b=0{,}25$.\n- c) Con $b=0$ el agente no se esfuerza. Partiendo de $b=0$, un poco de incentivo aumenta el excedente (el esfuerzo rinde 1 por unidad y el riesgo crece con $b^{2}$): el óptimo es interior."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Modelo principal-agente: extensiones (contrato lineal de Holmström y Milgrom)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311310,
+   "estado": "publicada",
+   "enunciado": "Un banco neutral al riesgo presta 100 a cada empresario con un contrato de deuda, con responsabilidad limitada y sin garantía: si el proyecto rinde menos que el reembolso pactado $D$, el banco se queda solo con lo que rinda. La mitad de los empresarios tiene un proyecto seguro, que rinde 130 con certeza, y la otra mitad, uno arriesgado, que rinde 200 o 60 con probabilidad 0,5 cada uno. El banco no los distingue, y cada empresario pide el préstamo solo si espera ganar algo con él. Si el banco sube el reembolso de $D=120$ a $D=140$, su cobro esperado por préstamo concedido:",
+   "opciones": {
+    "a": "Baja de 105 a 100: los empresarios con proyectos seguros dejan de pedir el préstamo y solo quedan los arriesgados.",
+    "b": "Sube de 105 a 115, porque el banco cobra más a todos los prestatarios que pueden pagar.",
+    "c": "Sube de 120 a 140, porque el reembolso pactado es el mismo para todos los prestatarios.",
+    "d": "No cambia: como los dos proyectos tienen el mismo rendimiento medio, 130, al banco le da igual a quién presta."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $D=120$ piden el préstamo los dos tipos y el banco cobra de media $0{,}5\\times 120+0{,}5\\times 90=105$. Con $D=140$, el proyecto seguro (130) ya no deja nada a su dueño, que se retira; solo quedan los arriesgados, de los que el banco cobra $0{,}5\\times 140+0{,}5\\times 60=100$. Es el efecto de selección adversa de Stiglitz y Weiss.",
+    "desarrollo": "Con $D=120$:\n\n- Empresario seguro: gana $130-120=10>0$ y pide el préstamo; el banco cobra 120.\n- Empresario arriesgado: gana $0{,}5\\times(200-120)+0{,}5\\times 0=40$ y lo pide; el banco cobra $0{,}5\\times 120+0{,}5\\times 60=90$.\n- Cobro esperado por préstamo: $0{,}5\\times 120+0{,}5\\times 90=105$.\n\nCon $D=140$:\n\n- Empresario seguro: su proyecto rinde 130, menos que el reembolso: no gana nada y no pide el préstamo.\n- Empresario arriesgado: gana $0{,}5\\times(200-140)=30>0$ y lo sigue pidiendo; el banco cobra $0{,}5\\times 140+0{,}5\\times 60=100$.\n- Cobro esperado por préstamo: 100.\n\nEl tipo más alto tiene un efecto directo positivo (se cobra más a quien paga) y un efecto de selección adversa negativo (empeora la cartera), y aquí domina el segundo. Por la responsabilidad limitada, el beneficio del prestatario es convexo en el rendimiento del proyecto y el cobro del banco, cóncavo: con la misma media, el riesgo beneficia al prestatario y perjudica al banco. Por eso el rendimiento esperado del banco tiene un máximo en el tipo de interés y, si a ese tipo hay exceso de demanda, el banco prefiere racionar a subirlo.\n\nPor qué fallan las demás:\n\n- b) Es lo que ocurriría si la composición de los prestatarios no cambiara y los seguros entregaran sus 130: $0{,}5\\times 130+0{,}5\\times 100=115$. Ignora que los seguros dejan de pedir el préstamo.\n- c) Confunde el reembolso pactado con el cobro esperado: los proyectos arriesgados fracasan la mitad de las veces y entonces el banco solo recupera 60.\n- d) El mismo rendimiento medio no implica el mismo cobro: el banco no participa de los resultados buenos por encima de $D$ y sí sufre los malos. Con $D=120$ cobra 120 del seguro y 90 del arriesgado."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Racionamiento del crédito (Stiglitz y Weiss, 1981): efecto de selección adversa",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

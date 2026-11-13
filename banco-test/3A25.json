@@ -1,0 +1,288 @@
+{
+ "tema": "3.A.25",
+ "preguntas": [
+  {
+   "id": 312501,
+   "estado": "publicada",
+   "enunciado": "Un individuo tiene preferencias $U(C,O)=C\\cdot O$ sobre el consumo $C$ (de precio 1) y el ocio $O$. Dispone de $O_0=16$ horas al día, que reparte entre ocio y trabajo ($L=O_0-O$), y de una renta no laboral $\\overline{W}=40$. Su salario de reserva $w^R$ y las horas que trabaja si el salario por hora es $w=5$ son:",
+   "opciones": {
+    "a": "$w^R=0$ (trabaja con cualquier salario positivo) y $L=8$.",
+    "b": "$w^R=2{,}5$ y $L=8$.",
+    "c": "$w^R=2{,}5$ y $L=4$.",
+    "d": "$w^R=5$ y $L=0$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El salario de reserva es la relación marginal de sustitución en el punto de dotación $(O_0,\\overline{W})$: $\\mathrm{RMS}_{OC}=C/O=40/16=2{,}5$. Con $w=5>w^R$ trabaja, y la tangencia $C/O=w$ con la restricción $C=5L+40$ da $L=4$.",
+    "desarrollo": "Con $U=C\\cdot O$, $U_O=C$ y $U_C=O$, así que $\\mathrm{RMS}_{OC}=U_O/U_C=C/O$.\n\n**Salario de reserva.** Es la RMS en el punto de dotación, donde no se trabaja: $O=O_0=16$ y $C=\\overline{W}=40$. Por tanto, $w^R=40/16=2{,}5$. Solo trabaja si el salario lo supera.\n\n**Horas con $w=5$.** Como $5>2{,}5$, la solución es interior: $C/O=5$ con $C=5L+40$ y $O=16-L$:\n\n$$5L+40=5\\,(16-L)\\ \\Rightarrow\\ 10L=40\\ \\Rightarrow\\ L=4.$$\n\nComprobación por otra vía: maximizar $(5L+40)(16-L)$ da $5(16-L)-(5L+40)=0$, es decir, $L=4$; entonces $C=60$, $O=12$ y $C/O=5=w$. También sale de la fórmula de la Cobb-Douglas con $\\alpha=1/2$: $L=\\alpha\\,O_0-(1-\\alpha)\\,\\overline{W}/w=8-20/5=4$.\n\nPor qué fallan las demás:\n\n- a) Olvida la renta no laboral. Sin ella, con estas preferencias se trabajaría siempre la mitad del tiempo (8 horas) y el salario de reserva sería nulo; pero con $\\overline{W}=40$ el individuo ya consume sin trabajar y exige al menos 2,5 por hora.\n- b) Calcula bien el salario de reserva, pero luego aplica $L=O_0/2=8$, que solo vale sin renta no laboral. La renta no laboral reduce las horas (el ocio es normal): $L=8-20/w$.\n- d) Divide la renta no laboral entre 8 horas en lugar de entre la dotación de 16. Si $w^R$ fuera 5, con $w=5$ no trabajaría; pero la RMS se evalúa en el punto de dotación, con $O=16$."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Oferta de trabajo: tangencia y salario de reserva",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312502,
+   "estado": "publicada",
+   "enunciado": "Un trabajador, para el que el ocio es un bien normal, elige libremente sus horas de trabajo $L$. Sobre los efectos de una subida de su salario por hora, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El efecto renta global (la suma del ordinario y del de dotación) reduce las horas y es proporcional a las horas trabajadas, de modo que pesa más cuanto más se trabaja.",
+    "b": "El efecto renta ordinario y el efecto renta dotación van en el mismo sentido, el de reducir las horas, y por eso el efecto total es ambiguo aunque el efecto sustitución las aumente.",
+    "c": "Para quien está justo en el umbral de participación ($w=w^R$ y $L=0$), el efecto de la subida sobre las horas es ambiguo, porque el efecto renta puede compensar al efecto sustitución.",
+    "d": "El efecto sustitución puede aumentar o reducir las horas, según lo convexas que sean las curvas de indiferencia entre consumo y ocio: si lo son mucho, las horas bajan."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Ecuación de Slutsky con dotación: $\\partial L/\\partial w=-\\partial h_O/\\partial w+L\\,\\partial L/\\partial\\overline{W}$. El efecto renta global es negativo si el ocio es normal y va multiplicado por $L$: quien vende muchas horas se enriquece mucho con la subida, y el efecto renta puede dominar.",
+    "desarrollo": "Una subida del salario tiene 3 efectos sobre el ocio:\n\n- **sustitución**: el ocio se encarece y, con la utilidad constante, siempre se consume menos ocio (más horas);\n- **renta ordinario**: con la misma renta completa, el ocio más caro reduce el poder adquisitivo; si el ocio es normal, se consume menos ocio (más horas): refuerza al de sustitución;\n- **renta dotación**: la subida revaloriza la dotación de tiempo; el individuo es más rico y, si el ocio es normal, consume más ocio (menos horas): va en contra de los otros 2.\n\nSumando los 2 efectos renta queda el efecto renta global, que en horas de trabajo es $L\\,\\partial L/\\partial\\overline{W}$: negativo si el ocio es normal y **proporcional a las horas trabajadas**, porque el individuo se enriquece en proporción a lo que vende de su dotación. Con pocas horas es pequeño y domina la sustitución (oferta creciente); con muchas horas y salarios altos puede dominar, y la oferta individual se vuelve hacia atrás.\n\nPor qué fallan las demás:\n\n- b) Los 2 efectos renta tienen signo contrario: el ordinario aumenta las horas y el de dotación las reduce. La ambigüedad viene de que el de dotación ($O_0\\,\\partial O/\\partial\\overline{W}$) pesa más que el ordinario ($O\\,\\partial O/\\partial\\overline{W}$), porque $O_0>O$ cuando se trabaja.\n- c) En el umbral, $L=0$ y el efecto renta global, que es proporcional a $L$, se anula (los 2 efectos renta se compensan exactamente): queda solo el efecto sustitución y la participación aumenta sin ambigüedad.\n- d) El efecto sustitución tiene siempre el mismo signo: con preferencias convexas, el ocio más caro se sustituye por consumo. La convexidad afecta a su tamaño, no a su signo."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Oferta de trabajo: efectos de una subida del salario (Slutsky con dotación)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312503,
+   "estado": "borrador",
+   "enunciado": "Con 2 factores, rendimientos constantes a escala, competencia y una oferta de capital perfectamente elástica, la elasticidad de la demanda de trabajo respecto al salario es $\\varepsilon_{L^D,w_L}=-(1-s_L)\\,\\sigma-s_L\\,|\\varepsilon_{q,p}|$, con $s_L$ la participación del trabajo en los costes, $\\sigma$ la elasticidad de sustitución entre factores y $|\\varepsilon_{q,p}|$ la elasticidad de la demanda del bien. En una industria, $s_L=0{,}25$, $\\sigma=2$ y $|\\varepsilon_{q,p}|=1$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La elasticidad es $-1{,}75$, y si la participación del trabajo en los costes fuera mayor, la demanda de trabajo sería más elástica: cuanto más pesan los salarios en el coste, más responde el empleo.",
+    "b": "La elasticidad es $-1{,}25$, y si la participación del trabajo en los costes fuera mayor, la demanda de trabajo sería menos elástica.",
+    "c": "La elasticidad es $-1{,}25$, y si la participación del trabajo en los costes fuera mayor, la demanda de trabajo sería más elástica.",
+    "d": "La elasticidad es $-1{,}75$, y si la participación del trabajo en los costes fuera mayor, la demanda de trabajo sería menos elástica."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$\\varepsilon=-(0{,}75)(2)-(0{,}25)(1)=-1{,}75$. Derivando respecto a $s_L$ queda $\\sigma-|\\varepsilon_{q,p}|$: un mayor peso del trabajo hace más elástica la demanda solo si $|\\varepsilon_{q,p}|>\\sigma$ (matización de Hicks a la regla de Marshall). Aquí $\\sigma=2>1$, y ocurre lo contrario.",
+    "desarrollo": "**Cálculo.** El primer término es el efecto sustitución (con la producción constante) y el segundo, el efecto escala:\n\n$$\\varepsilon_{L^D,w_L}=-(1-0{,}25)\\cdot 2-0{,}25\\cdot 1=-1{,}5-0{,}25=-1{,}75.$$\n\n**Qué pasa si sube $s_L$.** La elasticidad es una media ponderada de $\\sigma$ (con peso $1-s_L$) y de $|\\varepsilon_{q,p}|$ (con peso $s_L$), cambiada de signo. Aumentar $s_L$ quita peso a $\\sigma$ y se lo da a $|\\varepsilon_{q,p}|$: la demanda se hace más elástica si y solo si $|\\varepsilon_{q,p}|>\\sigma$. Aquí $\\sigma=2>|\\varepsilon_{q,p}|=1$, así que se hace menos elástica. Comprobación con $s_L=0{,}5$: $-(0{,}5)(2)-(0{,}5)(1)=-1{,}5$, menor en valor absoluto que $1{,}75$.\n\nEs la matización de Hicks a la tercera regla de Marshall («la importancia de no ser importante»): que los salarios pesen poco en el coste hace rígida la demanda de trabajo solo cuando los compradores del producto reaccionan más de lo que se sustituyen los factores.\n\nPor qué fallan las demás:\n\n- a) El cálculo es correcto, pero aplica la regla de Marshall sin la condición de Hicks: con $\\sigma>|\\varepsilon_{q,p}|$, más peso del trabajo significa menos elasticidad.\n- b) Intercambia las ponderaciones: $-(0{,}25)(2)-(0{,}75)(1)=-1{,}25$. La elasticidad de sustitución se pondera con la participación del otro factor, $1-s_L$, y la de la demanda del bien, con $s_L$.\n- c) Suma los 2 errores: ponderaciones intercambiadas y regla de Marshall sin matizar."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Demanda de trabajo: reglas de Marshall y Hicks de la demanda derivada",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312504,
+   "estado": "borrador",
+   "enunciado": "Una empresa es la única que contrata en una comarca. La oferta de trabajo a la que se enfrenta es $w_L=10+L$ y el valor del producto marginal del trabajo es $\\mathrm{VPMg}_L=70-L$ (vende su producto en un mercado competitivo). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Contrata $L=20$ y paga $w_L=50$; un salario mínimo de 36 no tendría ningún efecto, porque ya paga más.",
+    "b": "Contrata $L=20$ y paga $w_L=30$; con un salario mínimo de 36, el empleo subiría a 26.",
+    "c": "Contrata $L=20$ y paga $w_L=30$; con un salario mínimo de 36, el empleo subiría a 34.",
+    "d": "Contrata $L=30$ y paga $w_L=40$; un salario mínimo de 36 no tendría ningún efecto, porque es inferior al salario que paga."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El monopsonista iguala el valor del producto marginal al gasto marginal, $\\mathrm{GMg}_L=10+2L$: $L=20$, y paga lo que marca la oferta, $w=30$. Un salario mínimo de 36, entre el de monopsonio (30) y el competitivo (40), lo convierte en precio-aceptante hasta la oferta: emplea a los 26 que quieren trabajar a 36.",
+    "desarrollo": "**Monopsonio.** El gasto en salarios es $w_L(L)\\,L=(10+L)\\,L$, y el gasto marginal, $\\mathrm{GMg}_L=10+2L$ (misma ordenada en el origen que la oferta y doble pendiente). La condición $\\mathrm{VPMg}_L=\\mathrm{GMg}_L$ da\n\n$$70-L=10+2L\\ \\Rightarrow\\ L^M=20,$$\n\ny el salario lo da la oferta: $w^M=10+20=30$. El valor del producto marginal es 50: el trabajador cobra menos de lo que aporta en el margen.\n\n**Competencia.** $70-L=10+L$ da $L^c=30$ y $w^c=40$.\n\n**Salario mínimo de 36.** Está entre $w^M=30$ y $w^c=40$. Hasta $L=26$ (los que quieren trabajar a 36, porque $10+26=36$), la empresa paga 36 a todos y contratar uno más ya no sube el salario de los demás: su gasto marginal es 36. Como $\\mathrm{VPMg}_L(26)=44>36$, le compensa contratar a los 26. Para contratar al siguiente tendría que pagar más de 36 a todos, y el gasto marginal salta a $10+2\\cdot 26=62>44$: se queda en 26. El empleo sube de 20 a 26 y el salario, de 30 a 36.\n\nPor qué fallan las demás:\n\n- a) Confunde el salario con el valor del producto marginal. Con monopsonio, el salario se lee en la oferta (30), no en la curva del $\\mathrm{VPMg}_L$ (50).\n- c) Lee el empleo en la curva del $\\mathrm{VPMg}_L$ ($70-L=36$ da 34), pero a un salario de 36 solo quieren trabajar 26 personas: manda el lado corto, que aquí es la oferta.\n- d) Es el equilibrio competitivo, no el de monopsonio."
+   },
+   "dificultad": 2,
+   "apartado": "I.4 Valoración: monopsonio y salario mínimo (anexo C)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:312504.webp",
+     "alt": "Plano con el empleo L en abscisas (de 0 a 40) y el salario en ordenadas. Tres rectas: la oferta de trabajo, w = 10 + L, creciente desde 10; el gasto marginal, GMg, creciente desde la misma ordenada en el origen y con el doble de pendiente; y el valor del producto marginal, VPMg = 70 − L, decreciente desde 70. No se marcan puntos de corte ni se dibuja el salario mínimo.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 312505,
+   "estado": "publicada",
+   "enunciado": "En el modelo de oferta intertemporal de trabajo de Lucas y Rapping (1969), con una utilidad separable en el tiempo y entre consumo y ocio y unos salarios $w_t$ y $w_{t+1}$ dados, un aumento del tipo de interés real $r$:",
+   "opciones": {
+    "a": "Aumenta la oferta de trabajo de hoy en relación con la de mañana: el salario de hoy, ahorrado, rinde más, y el ocio de hoy se encarece frente al de mañana.",
+    "b": "Reduce la oferta de trabajo de hoy en relación con la de mañana, igual que un aumento de la tasa subjetiva de descuento $\\rho$.",
+    "c": "No altera la oferta relativa de trabajo entre periodos: el tipo de interés solo interviene en la ecuación de Euler del consumo.",
+    "d": "Solo altera la oferta relativa de trabajo si el salario de hoy es transitoriamente alto; con $w_t=w_{t+1}$ no hay sustitución intertemporal."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La condición intertemporal del ocio es $U_O(t)/U_O(t+1)=\\frac{1+r}{1+\\rho}\\cdot\\frac{w_t}{w_{t+1}}$. Si sube $r$, sube el precio relativo del ocio de hoy, $(1+r)\\,w_t/w_{t+1}$: se toma menos ocio hoy y más mañana, es decir, se trabaja más hoy en relación con mañana.",
+    "desarrollo": "Una hora de ocio hoy cuesta $w_t$, que ahorrado al tipo $r$ valdría $(1+r)\\,w_t$ mañana; una hora de ocio mañana cuesta $w_{t+1}$. El precio relativo del ocio de hoy es, por tanto, el salario relativo intertemporal, $(1+r)\\,w_t/w_{t+1}$, y la condición de primer orden lo iguala a la relación marginal de sustitución entre el ocio de hoy y el de mañana:\n\n$$\\frac{U_O(t)}{U_O(t+1)}=\\frac{1+r}{1+\\rho}\\cdot\\frac{w_t}{w_{t+1}}.$$\n\nSi sube $r$, sube el lado derecho. Como la utilidad marginal del ocio decrece con el ocio, tiene que bajar el ocio de hoy frente al de mañana: $L_t/L_{t+1}$ aumenta. Trabajar y ahorrar hoy rinde más.\n\nPor qué fallan las demás:\n\n- b) El tipo de interés y la impaciencia actúan en sentido contrario: $r$ está en el numerador y $\\rho$ en el denominador. Más impaciencia hace más valioso el ocio de hoy y reduce $L_t/L_{t+1}$; un tipo de interés más alto lo encarece y lo aumenta.\n- c) El tipo de interés aparece en la ecuación de Euler del consumo y también en la condición intertemporal del ocio, que sale de combinar la de Euler con la condición intratemporal de cada periodo.\n- d) El tipo de interés mueve el salario relativo intertemporal aunque $w_t=w_{t+1}$: lo que importa es $(1+r)\\,w_t/w_{t+1}$, no solo el cociente de salarios."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Lucas y Rapping: condición intertemporal del ocio e implicaciones",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312506,
+   "estado": "publicada",
+   "enunciado": "Un hogar vive 2 periodos, sin activos iniciales ni renta no laboral, con utilidad $\\ln C_t+b\\ln(1-L_t)$ en cada periodo y factor de descuento $\\beta$. Su oferta de trabajo del primer periodo es $L_1=1-\\dfrac{b}{(1+b)(1+\\beta)}\\left[1+\\dfrac{w_2}{(1+r)\\,w_1}\\right]$. Con $b=2$, $\\beta=1$, $r=10\\ \\%$, $w_1=10$ y $w_2=11$, trabaja $L_1=1/3$. ¿Cuánto trabaja en el primer periodo si (i) solo sube $w_1$ un 25 %, hasta 12,5, o si (ii) suben un 25 % los 2 salarios?",
+   "opciones": {
+    "a": "(i) $L_1=0{,}40$; (ii) $L_1=0{,}40$: las horas de hoy solo dependen del salario de hoy.",
+    "b": "(i) $L_1=1/3$; (ii) $L_1=0{,}40$: solo los cambios permanentes del salario mueven las horas.",
+    "c": "(i) $L_1=0{,}40$; (ii) $L_1=1/3$: el cambio transitorio mueve las horas y el permanente no.",
+    "d": "(i) $L_1=0{,}40$; (ii) $L_1$ baja de $1/3$, porque con una subida permanente domina el efecto riqueza."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En (i), $w_2/[(1+r)w_1]=11/13{,}75=0{,}8$ y $L_1=1-\\frac{1}{3}(1{,}8)=0{,}40$: sustitución intertemporal. En (ii) el cociente sigue siendo 1 y $L_1=1/3$: con utilidad logarítmica y sin renta no laboral, el efecto riqueza de una subida permanente compensa exactamente al de sustitución.",
+    "desarrollo": "Con $b=2$ y $\\beta=1$, el factor $b/[(1+b)(1+\\beta)]$ vale $2/(3\\cdot 2)=1/3$, y la oferta es $L_1=1-\\frac13\\left[1+\\frac{w_2}{(1+r)\\,w_1}\\right]$.\n\n**Situación inicial.** $w_2/[(1+r)\\,w_1]=11/(1{,}1\\cdot 10)=1$, y $L_1=1-\\frac13\\cdot 2=1/3$.\n\n**(i) Subida transitoria** ($w_1=12{,}5$, $w_2=11$): $(1+r)\\,w_1=13{,}75$ y $11/13{,}75=0{,}8$. Entonces $L_1=1-\\frac13\\cdot 1{,}8=1-0{,}6=0{,}40$. El salario de hoy sube frente al de mañana y se trabaja más hoy (y menos mañana: $L_2$ baja de $1/3$ a $0{,}25$).\n\n**(ii) Subida permanente** ($w_1=12{,}5$, $w_2=13{,}75$): $13{,}75/13{,}75=1$, y $L_1=1/3$, como al principio. La oferta solo depende del salario relativo intertemporal, que no ha cambiado.\n\nEs la implicación central del modelo: los cambios transitorios del salario mueven las horas mucho más que los permanentes. En general, una subida permanente deja igual la oferta relativa entre periodos y el nivel de las horas depende del efecto riqueza; con estas preferencias y sin renta no laboral, el efecto riqueza compensa exactamente al de sustitución y las horas no cambian en ningún periodo.\n\nPor qué fallan las demás:\n\n- a) Trata la oferta como si fuera estática. En el modelo, las horas de hoy dependen del salario de hoy en relación con el de mañana.\n- b) Invierte el resultado, quizá por analogía con el consumo y la renta permanente: en la oferta de trabajo son los cambios transitorios los que más mueven las horas, porque apenas cambian la riqueza y queda solo la sustitución.\n- d) El efecto riqueza no llega a dominar con estas preferencias: se compensa exactamente con el de sustitución y $L_1$ no cambia."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Lucas y Rapping: ejemplo con solución cerrada (anexo B)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312507,
+   "estado": "publicada",
+   "enunciado": "Sobre las elasticidades de la oferta de trabajo respecto al salario, y suponiendo que el ocio es un bien normal, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La elasticidad de Frisch mantiene constante el nivel de utilidad y, por eso, coincide con la hicksiana (compensada).",
+    "b": "La elasticidad de Frisch mantiene constante la utilidad marginal de la riqueza y es la mayor de las 3: $\\varepsilon^F_{L,w}\\geq\\varepsilon^h_{L,w}\\geq\\varepsilon_{L,w}$.",
+    "c": "La elasticidad marshalliana (no compensada) es la mayor de las 3, porque al efecto sustitución le suma el efecto renta, que también aumenta las horas.",
+    "d": "Con la utilidad $u=\\ln C-\\chi\\,L^{1+\\varphi}/(1+\\varphi)$, la elasticidad de Frisch es $\\varphi$: cuanto más convexa es la desutilidad del trabajo, más responden las horas al salario."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La elasticidad de Frisch mide la sustitución intertemporal pura: la respuesta de las horas con la utilidad marginal de la riqueza, $\\lambda$, constante, como ocurre con cambios transitorios o previstos del salario. Si el ocio es normal, es al menos tan grande como la hicksiana, y esta, como la marshalliana.",
+    "desarrollo": "Las 3 elasticidades se distinguen por lo que mantienen constante:\n\n- la **marshalliana**, la renta no laboral: recoge los efectos sustitución y renta;\n- la **hicksiana**, la utilidad: solo el efecto sustitución, dentro del periodo;\n- la de **Frisch**, la utilidad marginal de la riqueza, $\\lambda$: es la respuesta a un cambio del salario que no altera la riqueza de toda la vida (previsto o transitorio), y suma a la sustitución entre consumo y ocio la sustitución entre el ocio de hoy y el de mañana.\n\nSi el ocio es normal, $\\varepsilon^F_{L,w}\\geq\\varepsilon^h_{L,w}\\geq\\varepsilon_{L,w}$. La de Frisch es la que necesitan los modelos de ciclo real.\n\nPor qué fallan las demás:\n\n- a) Mantener constante la utilidad define a la hicksiana. La de Frisch mantiene constante $\\lambda$ y, con ocio normal, es mayor o igual.\n- c) Si el ocio es normal, el efecto renta global de una subida del salario reduce las horas: por eso la marshalliana es la menor de las 3 (y puede ser negativa), no la mayor.\n- d) Con esa utilidad, la condición de las horas es $\\chi L^{\\varphi}=\\lambda w$, de donde $\\ln L=\\frac{1}{\\varphi}\\ln w+\\text{constante}$ con $\\lambda$ dada: la elasticidad de Frisch es $1/\\varphi$. Cuanto más convexa es la desutilidad ($\\varphi$ mayor), menos responden las horas."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Extensiones: elasticidad de Frisch (y I.1 d, las 3 elasticidades)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312508,
+   "estado": "publicada",
+   "enunciado": "Una persona que ya ha terminado sus estudios puede estudiar un año más. Ese año pagaría 5.000 euros de matrícula y dejaría de ganar los 20.000 euros de salario que cobraría si trabajara; a cambio, su salario sería 2.000 euros más alto cada año durante una vida laboral que puede considerarse indefinida. Con un mercado de capitales perfecto, la tasa de rendimiento de ese año de estudio y la decisión son:",
+   "opciones": {
+    "a": "El 40 %: el rendimiento se obtiene comparando la ganancia anual con el coste de la matrícula.",
+    "b": "El 10 %: el rendimiento se obtiene comparando la ganancia anual con el salario al que se renuncia.",
+    "c": "El 8 %, y le conviene estudiar ese año solo si el tipo de interés es superior al 8 %.",
+    "d": "El 8 %, y le conviene estudiar ese año solo si el tipo de interés es inferior al 8 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El coste de estudiar es la matrícula más el salario al que se renuncia: 25.000 euros. La ganancia es una renta perpetua de 2.000 euros al año, así que el rendimiento es $2.000/25.000=8\\ \\%$, la tasa $w'(S)/[w(S)+c]$ de Becker. Compensa si rinde más que el mercado: $r<8\\ \\%$.",
+    "desarrollo": "En el modelo de Becker con una vida laboral larga, un año más de estudio rinde $w'(S)$ al año para siempre y cuesta $w(S)+c$: el salario perdido (coste de oportunidad) más el coste directo. La tasa marginal de rendimiento es\n\n$$\\rho(S)=\\frac{w'(S)}{w(S)+c}=\\frac{2.000}{20.000+5.000}=0{,}08.$$\n\nSe estudia mientras esa tasa supere al tipo de interés, es decir, mientras estudiar rinda más que prestar ese dinero en el mercado. Dicho con el valor actual neto: la renta perpetua de 2.000 euros vale $2.000/r$, que supera el coste de 25.000 si y solo si $r<8\\ \\%$. Con $r=5\\ \\%$, por ejemplo, vale 40.000 y compensa; con $r=10\\ \\%$, vale 20.000 y no.\n\nPor qué fallan las demás:\n\n- a) Olvida el coste de oportunidad, que es el coste principal de estudiar: «el saber no ocupa lugar», pero sí tiempo.\n- b) Olvida los costes directos. Sin ellos, la tasa sería $w'(S)/w(S)=10\\ \\%$, pero aquí hay una matrícula de 5.000 euros.\n- c) Calcula bien la tasa, pero invierte la regla: una inversión compensa cuando su rendimiento supera el coste de los fondos, no al revés. Un tipo de interés más alto reduce los años de estudio."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Becker: la decisión de cuánto estudiar",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312509,
+   "estado": "publicada",
+   "enunciado": "Una empresa puede formar a un trabajador en el primer periodo con un coste $c=30$. Sin formación, el trabajador produce $\\mathrm{VPMg}^0=100$ por periodo en cualquier empresa; con ella, en el segundo periodo produce $\\mathrm{VPMg}^1=140$. El mercado de trabajo es competitivo. Según el análisis de Becker, si la formación es general, la paga quien corresponde; si es específica, el trabajador asume una parte $\\gamma=1/4$ del coste y recibe esa misma parte de la renta. Los salarios son:",
+   "opciones": {
+    "a": "Formación general: $w_1=70$ y $w_2=140$. Formación específica: $w_2=110$.",
+    "b": "Formación general: $w_1=100$ y $w_2=100$. Formación específica: $w_2=140$.",
+    "c": "Formación general: $w_1=70$ y $w_2=140$. Formación específica: $w_2=100$.",
+    "d": "Formación general: $w_1=100$ y $w_2=140$. Formación específica: $w_2=110$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La formación general vale en todas las empresas: en el segundo periodo hay que pagar 140 o el trabajador se va, así que la paga él con un salario menor mientras se forma, $100-30=70$. La específica solo vale en la empresa y se reparte: $w_2=100+\\frac14(140-100)=110$.",
+    "desarrollo": "**Formación general.** Aumenta la productividad en cualquier empresa. En el segundo periodo, las demás ofrecerán $\\mathrm{VPMg}^1=140$, y la empresa que forma tiene que pagar eso o perder al trabajador: no recupera nada. Solo da la formación si el trabajador la paga con un salario menor mientras se forma:\n\n$$w_1=\\mathrm{VPMg}^0-c=100-30=70,\\qquad w_2=\\mathrm{VPMg}^1=140.$$\n\nEs el caso de los aprendices o de los médicos residentes.\n\n**Formación específica.** Fuera de la empresa, el trabajador sigue valiendo 100. Ninguna parte quiere pagarla sola (si paga la empresa, el trabajador puede irse sin perder nada; si paga el trabajador, la empresa puede despedirlo), y la solución es repartir el coste y la renta:\n\n$$w_2=\\mathrm{VPMg}^0+\\gamma\\,(\\mathrm{VPMg}^1-\\mathrm{VPMg}^0)=100+\\tfrac14\\cdot 40=110,$$\n\nmás de lo que cobraría fuera (100) y menos de lo que produce dentro (140). Por eso las 2 partes pierden si la relación se rompe.\n\nPor qué fallan las demás:\n\n- b) Supone que la empresa paga la formación general y la recupera pagando 100 en el segundo periodo: el trabajador se iría a otra empresa que le ofrece 140. Y con formación específica no hace falta pagar 140, porque fuera solo vale 100.\n- c) Acierta en la general, pero en la específica deja toda la renta a la empresa ($\\gamma=0$): el trabajador no tendría motivo para quedarse ni para pagar su parte del coste.\n- d) Con formación general, la empresa no puede pagar 100 en el primer periodo (asumiendo el coste) y 140 en el segundo: perdería los 30 de la formación sin recuperarlos. Becker concluye que la paga el trabajador."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Becker: formación general y formación específica",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312510,
+   "estado": "publicada",
+   "enunciado": "Con datos de una muestra de trabajadores se estima la función de ingresos de Mincer $\\ln w_i=6+0{,}08\\,S_i+0{,}05\\,X_i-0{,}001\\,X_i^2$, con $w$ el salario, $S$ los años de estudios y $X$ los años de experiencia. Según la estimación:",
+   "opciones": {
+    "a": "Un año más de estudios eleva el salario en torno a un 8 %, y el salario crece con la experiencia a un ritmo constante del 5 % por año.",
+    "b": "Un año más de estudios eleva el salario en torno a un 8 %, y el salario alcanza su máximo a los 50 años de experiencia.",
+    "c": "Un año más de estudios eleva el salario en torno a un 8 %, y el salario alcanza su máximo a los 25 años de experiencia.",
+    "d": "Un año más de estudios eleva el salario en 0,08 unidades monetarias, y el salario alcanza su máximo a los 25 años de experiencia."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El salario está en logaritmos: el coeficiente de los años de estudios es una semielasticidad, y un año más sube el salario en torno a un 8 %. El perfil es cóncavo en la experiencia y alcanza su máximo en $X=-\\beta_2/(2\\beta_3)=0{,}05/0{,}002=25$ años.",
+    "desarrollo": "**Años de estudios.** Como la variable dependiente es $\\ln w$, $\\beta_1=\\partial\\ln w/\\partial S=0{,}08$ es el aumento proporcional del salario por un año más de estudios: en torno a un 8 % (exactamente, $e^{0{,}08}-1\\approx 8{,}3\\ \\%$). Es el rendimiento privado de la educación.\n\n**Experiencia.** El efecto de un año más de experiencia es $\\partial\\ln w/\\partial X=0{,}05-0{,}002\\,X$: positivo al principio y cada vez menor (perfil cóncavo, con $\\beta_2>0$ y $\\beta_3<0$). Se anula en\n\n$$X=-\\frac{\\beta_2}{2\\beta_3}=\\frac{0{,}05}{2\\cdot 0{,}001}=25\\ \\text{años},$$\n\ndonde el salario es máximo. Comprobación: con $X=24$, $0{,}05\\cdot 24-0{,}001\\cdot 576=0{,}624$; con $X=25$, $1{,}25-0{,}625=0{,}625$; con $X=26$, $1{,}3-0{,}676=0{,}624$.\n\nPor qué fallan las demás:\n\n- a) Olvida el término cuadrático: el salario crece un 5 % solo con el primer año de experiencia, y cada vez menos después.\n- b) Divide $\\beta_2$ entre $|\\beta_3|$ sin el 2 de la derivada de $X^2$. A los 50 años de experiencia, el término de la experiencia vuelve a valer 0 ($2{,}5-2{,}5$): el salario sería el de quien empieza.\n- d) Lee el coeficiente como si el salario estuviera en niveles. En una ecuación semilogarítmica, el coeficiente es una variación porcentual, no en unidades monetarias."
+   },
+   "dificultad": 1,
+   "apartado": "III.3 Función de ingresos de Mincer: implicaciones",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312511,
+   "estado": "borrador",
+   "enunciado": "Se estima una función de ingresos para cada uno de 2 grupos de trabajadores: $\\ln w=2{,}0+0{,}10\\,S$ para el grupo A, cuya escolaridad media es de 12 años, y $\\ln w=1{,}9+0{,}08\\,S$ para el grupo B, cuya escolaridad media es de 10 años. En la descomposición de Oaxaca-Blinder de la diferencia entre las medias del logaritmo del salario, valorando las diferencias de características con los coeficientes del grupo A, la parte explicada y la parte no explicada son:",
+   "opciones": {
+    "a": "Explicada, 0,16; no explicada, 0,34.",
+    "b": "Explicada, 0,20; no explicada, 0,30.",
+    "c": "Explicada, 0,30; no explicada, 0,20.",
+    "d": "Toda la brecha, 0,50, es no explicada, porque los 2 grupos tienen ecuaciones de salarios distintas."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La brecha es $3{,}2-2{,}7=0{,}5$. La parte explicada valora la diferencia de escolaridad con los coeficientes de A: $(12-10)\\cdot 0{,}10=0{,}20$. La no explicada son las diferencias de coeficientes aplicadas a las características de B: $(2{,}0-1{,}9)+10\\cdot(0{,}10-0{,}08)=0{,}30$.",
+    "desarrollo": "**La brecha.** La media del logaritmo del salario de cada grupo es su ecuación evaluada en sus características medias: $2{,}0+0{,}10\\cdot 12=3{,}2$ para A y $1{,}9+0{,}08\\cdot 10=2{,}7$ para B. La diferencia es de 0,5 puntos logarítmicos.\n\n**La descomposición.** Con $\\bar{\\vec{x}}=(1,\\bar S)$ y $\\hat{\\vec{\\beta}}$ los coeficientes (constante incluida):\n\n$$\\overline{\\ln w}_A-\\overline{\\ln w}_B=\\underbrace{(\\bar{\\vec{x}}_A-\\bar{\\vec{x}}_B)\\cdot\\hat{\\vec{\\beta}}_A}_{\\text{explicada}}+\\underbrace{\\bar{\\vec{x}}_B\\cdot(\\hat{\\vec{\\beta}}_A-\\hat{\\vec{\\beta}}_B)}_{\\text{no explicada}}$$\n\n- Explicada (características distintas, pagadas como en A): $(12-10)\\cdot 0{,}10=0{,}20$.\n- No explicada (mismas características, pagadas de forma distinta): $1\\cdot(2{,}0-1{,}9)+10\\cdot(0{,}10-0{,}08)=0{,}10+0{,}20=0{,}30$.\n\nLa suma es 0,50. El 40 % de la brecha se debe a que A ha estudiado más y el 60 %, a que el mercado paga distinto la misma escolaridad; esta parte se asocia a la discriminación, aunque recoge también todo lo que no se observa.\n\nPor qué fallan las demás:\n\n- a) Valora la diferencia de escolaridad con los coeficientes de B: $2\\cdot 0{,}08=0{,}16$. Es la otra descomposición posible (el resultado depende del grupo de referencia), pero no la que pide el enunciado.\n- c) Intercambia las 2 partes.\n- d) Que las ecuaciones sean distintas no hace que toda la brecha sea no explicada: una parte se debe a que los grupos tienen características distintas. Aunque a los 2 se les pagara con la ecuación de A, B cobraría 0,20 menos por tener 2 años menos de estudios."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Extensiones: descomposición de Oaxaca-Blinder",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312512,
+   "estado": "publicada",
+   "enunciado": "Las estimaciones del rendimiento de la educación con variables instrumentales (el trimestre de nacimiento, la distancia a la universidad) suelen dar valores iguales o mayores que las de mínimos cuadrados ordinarios (MCO) de la ecuación de Mincer. ¿Cuál de las siguientes lecturas es coherente con ese resultado?",
+   "opciones": {
+    "a": "Confirma que el sesgo de habilidad es el problema dominante de MCO: como los más hábiles estudian más, MCO subestima el rendimiento de la educación.",
+    "b": "Demuestra que la educación actúa solo como señal de una habilidad previa, como en el modelo de Spence, y no aumenta la productividad: por eso el instrumento da un rendimiento mayor.",
+    "c": "Como la variable instrumental estima el rendimiento medio de toda la población, el resultado indica que el rendimiento de la educación es el mismo para todos los individuos.",
+    "d": "La variable instrumental mide el rendimiento de quienes cambian su decisión de estudiar por el instrumento, que puede ser alto, y el error de medida de los estudios sesga MCO a la baja."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El sesgo de habilidad haría que MCO sobreestimara el rendimiento, y las variables instrumentales darían menos. Que den igual o más se explica porque miden un efecto medio local (LATE), el de quienes estudian más gracias al instrumento, que suelen tener rendimientos altos, y porque el error de medida atenúa MCO.",
+    "desarrollo": "En la ecuación de Mincer, $\\beta_1$ solo mide el efecto causal de estudiar si los años de estudios no están correlacionados con lo que no se observa. Hay 2 sesgos de signo contrario:\n\n- el **sesgo de habilidad**: si los más hábiles estudian más y ganarían más de todos modos, MCO *sobreestima* el rendimiento;\n- el **error de medida** de los años de estudios: atenúa el coeficiente, y MCO lo *subestima*.\n\nSi dominara el primero, las estimaciones con instrumentos (que usan solo la variación de los estudios ajena a la habilidad) saldrían menores que las de MCO. Salen iguales o mayores (Angrist y Krueger, 1991; Card, 1995). La explicación habitual combina el error de medida con el resultado de Imbens y Angrist (1994): si el rendimiento cambia de una persona a otra, el instrumento mide el de quienes cambian su decisión por él (efecto medio local, LATE). Suelen ser personas a las que les costaba más estudiar, a menudo por falta de recursos, y para ellas el rendimiento marginal es alto. La conclusión es que la educación causa buena parte de la prima salarial.\n\nPor qué fallan las demás:\n\n- a) Acierta en que los más hábiles estudian más, pero se equivoca en el signo: eso hace que MCO sobreestime, no que subestime. Si el sesgo de habilidad dominara, los instrumentos darían menos que MCO.\n- b) Es al revés: un instrumento que cambia los años de estudios sin cambiar la habilidad y eleva el salario indica que estudiar tiene un efecto causal, aunque no permite descartar del todo la señal.\n- c) La variable instrumental no estima el rendimiento medio de la población, sino el de quienes responden al instrumento; y que supere al de MCO apunta a rendimientos distintos entre personas, no iguales."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Evidencia empírica: sesgo de habilidad y experimentos naturales",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

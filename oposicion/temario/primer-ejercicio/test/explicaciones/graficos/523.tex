@@ -1,0 +1,37 @@
+% Pregunta 523 (2016-enero-OEP2015, n.º 10): precios de equilibrio de Cournot, a/(2+b), y Bertrand, a(1-b)/(2-b), según el grado de sustituibilidad b; coinciden en a/2 con b=0 (máxima diferenciación) y se separan hasta a/3 y 0 con producto homogéneo. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee,x=6cm,y=9cm]
+  % Ejes: b (sustituibilidad) y precio en unidades de a
+  \draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$b$};
+  \draw[eje] (0,0) -- (0,0.6) node[left] {$p$};
+  \node[below left] at (0,0) {$0$};
+  % Marcas
+  \draw (1,0) -- (1,-0.012) node[below] {$1$};
+  \draw (0.5,0) -- (0.5,-0.012) node[below] {$0{,}5$};
+  \node[etiqueta,tceegris,align=center,anchor=north] at (0.13,-0.06) {máxima\\diferenciación};
+  \node[etiqueta,tceegris,align=center,anchor=north] at (1,-0.06) {producto\\homogéneo};
+  \draw (0,1/3) -- (-0.015,1/3) node[left] {$a/3$};
+  \draw (0,0.5) -- (-0.015,0.5) node[left] {$a/2$};
+  \draw[guia] (0,1/3) -- (1,1/3);
+  \draw[guia] (1,0) -- (1,1/3);
+  % Hueco entre los dos precios
+  \fill[area,domain=0:1,samples=60] plot (\x,{1/(2+\x)}) -- plot[domain=1:0] (\x,{(1-\x)/(2-\x)}) -- cycle;
+  % Curvas
+  \draw[curva1,domain=0:1,samples=60] plot (\x,{1/(2+\x)});
+  \draw[curva2,domain=0:1,samples=60] plot (\x,{(1-\x)/(2-\x)});
+  \node[etiqueta,tceemorado,anchor=south west] at (0.5,0.405) {Cournot: $p^C=\dfrac{a}{2+b}$};
+  \node[etiqueta,tceeazul,anchor=north west] at (0.03,0.285) {Bertrand: $p^B=\dfrac{a(1-b)}{2-b}$};
+  % Diferencia en b=1
+  \draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (1.03,1/3) -- (1.03,0)
+    node[midway,right=5pt,etiqueta,tceerojo,align=left] {diferencia $a/3$\\[2pt]($p^B=0$:\\paradoja\\de Bertrand)};
+  % Puntos
+  \node[punto,label={[etiqueta]above right:monopolio}] at (0,0.5) {};
+  \node[punto] at (1,1/3) {};
+  \node[punto] at (1,0) {};
+  % Sentido de la diferenciación
+  \draw[flecha] (0.75,0.555) -- (0.25,0.555) node[midway,above,etiqueta,tceerojo] {más diferenciación: convergen};
+\end{tikzpicture}
+\end{document}

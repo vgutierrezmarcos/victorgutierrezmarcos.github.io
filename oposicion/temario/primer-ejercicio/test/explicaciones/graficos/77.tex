@@ -1,0 +1,43 @@
+% Pregunta 77 (2024-junio-A, n.º 30): arancel en un país pequeño con externalidad positiva en la producción y negativa en el consumo de tabaco. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.34cm,y=0.5cm]
+  % Áreas: externalidades corregidas (verde), recaudación (dorado), pérdidas de eficiencia (rojo)
+  \filldraw[tceeverde,fill opacity=0.25,draw opacity=1,line width=1pt] (4,1) -- (6,2) -- (6,3) -- (4,2) -- cycle;
+  \filldraw[tceeverde,fill opacity=0.25,draw opacity=1,line width=1pt] (14,2) -- (14,3) -- (16,2) -- (16,1) -- cycle;
+  \fill[area2] (6,2) rectangle (14,3);
+  \fill[tceerojo,fill opacity=0.30] (4,2) -- (6,2) -- (6,3) -- cycle;
+  \fill[tceerojo,fill opacity=0.30] (14,2) -- (14,3) -- (16,2) -- cycle;
+  \ejes{$Q$}{$p$}{22.5}{10.6}
+  % Valoración social (discontinuas)
+  \draw[curva2,desplazada,thick] (2,0) -- (13,5.5) node[etiqueta,right,tceeazul] {$CMg_{\text{social}}$};
+  \draw[curva1,desplazada,thick] (7,5.5) -- (18,0) node[etiqueta,above right=0pt and -2pt,tceemorado] {};
+  \node[etiqueta,tceemorado,left] at (7,5.5) {$BMg_{\text{social}}$};
+  % Curvas privadas
+  \draw[curva1] (0,10) -- (20,0);
+  \node[etiqueta,tceemorado,right] at (1.2,9.6) {$D$};
+  \draw[curva2] (0,0) -- (19,9.5) node[etiqueta,right] {$S$};
+  % Precios
+  \draw[guia] (0,2) -- (20,2);
+  \draw[curvanueva] (0,3) -- (20,3) node[etiqueta,right] {$p^*+t$};
+  \node[etiqueta,right,tceegris] at (20,2) {$p^*$};
+  \node[left] at (0,2) {$2$};
+  \node[left] at (0,3) {$3$};
+  \node[left] at (0,10) {$10$};
+  % Proyecciones de las cantidades
+  \draw[guia] (4,0) -- (4,2) (6,0) -- (6,3) (14,0) -- (14,3) (16,0) -- (16,2);
+  \node[below] at (4,0) {$4$};
+  \node[below] at (6,0) {$6$};
+  \node[below] at (14,0) {$14$};
+  \node[below] at (16,0) {$16$};
+  \node[below] at (20,0) {$20$};
+  \foreach \q/\p in {4/2,6/3,14/3,16/2} \node[punto] at (\q,\p) {};
+  % Rótulos de las áreas
+  \node[etiqueta] at (10,2.5) {$+8$};
+  \node[etiqueta,tceerojo!80!black,font=\footnotesize,inner sep=0pt] at (5.35,2.3) {$-1$};
+  \node[etiqueta,tceerojo!80!black,font=\footnotesize,inner sep=0pt] at (14.65,2.3) {$-1$};
+  \draw[thin] (5.3,1.7) -- (8.2,1.0) node[right,etiqueta,tceeverde!80!black] {$+2$};
+  \draw[thin] (15.2,1.6) -- (17.8,2.5) node[right,etiqueta,tceeverde!80!black] {$+2$};
+\end{tikzpicture}
+\end{document}

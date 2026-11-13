@@ -1,0 +1,40 @@
+% Pregunta 714 (2007-julio-OEP2007, n.º 22): curva de Phillips ampliada con expectativas.
+% Sube pi^e: la curva de corto plazo se desplaza hacia arriba (A -> A' si nadie hace nada).
+% Para mantener pi0 el banco central reduce el crecimiento del dinero: B, con u1 > u_n (a, correcta).
+% Acomodar o no hacer nada (b, c) deja que la inflación suba por encima de pi0 (hacia A' o más).
+% Escala: pi = pi^e - 0,8 (u - u_n); u_n = 3,4; pi0 = 2,0; Delta pi^e = 1,4 -> u1 = 5,15.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  \draw[eje] (0,0) -- (7.2,0) node[right] {$u$};
+  \draw[eje] (0,0) -- (0,5.8) node[left] {$\pi$};
+  % Guías
+  \draw[guia] (0,2.0) -- (5.15,2.0);
+  \draw[guia] (0,3.4) -- (3.4,3.4);
+  \draw[guia] (3.4,0) -- (3.4,3.4);
+  \draw[guia] (5.15,0) -- (5.15,2.0);
+  \draw (0,2.0) -- (-0.08,2.0) node[left] {$\pi_0$};
+  \draw (0,3.4) -- (-0.08,3.4) node[left] {$\pi_0+\Delta\pi^e$};
+  \draw (3.4,0) -- (3.4,-0.08) node[below] {$u_n$};
+  \draw (5.15,0) -- (5.15,-0.08) node[below] {$u_1$};
+  % Curvas de corto plazo
+  \draw[curva1] (1.0,3.92) -- (5.6,0.24) node[etiqueta,right,text=tceemorado] {CPh$(\pi^e_0)$};
+  \draw[curvanueva] (1.0,5.32) -- (6.4,1.0) node[etiqueta,right,text=tceerojo] {CPh$(\pi^e_1)$};
+  % Desplazamiento
+  \draw[flecha,tceerojo] (1.8,3.32) -- (1.8,4.62);
+  \node[etiqueta,left,text=tceerojo,font=\footnotesize] at (1.75,4.0) {sube $\pi^e$};
+  % Puntos
+  \node[punto] at (3.4,2.0) {};
+  \node[etiqueta,below left] at (3.4,2.0) {$A$};
+  \node[punto] at (3.4,3.4) {};
+  \node[etiqueta,above right] at (3.4,3.4) {$A'$};
+  \node[punto] at (5.15,2.0) {};
+  \node[etiqueta,above right] at (5.15,2.0) {$B$};
+  % Movimiento a lo largo de la nueva curva
+  \draw[flecha] (3.75,3.5) -- (5.05,2.46);
+  \node[etiqueta,align=left,font=\footnotesize] at (5.9,3.6) {a) menos dinero:\\más paro, $\pi=\pi_0$};
+  \node[etiqueta,align=left,font=\footnotesize,text=tceerojo] at (5.9,4.9) {b), c): $\pi$ sube por\\encima de $\pi_0$ (hacia $A'$)};
+\end{tikzpicture}
+\end{document}

@@ -175,6 +175,12 @@ class PerfilPreparador {
     this.telefono = '',
     this.avisosSustitucion = true,
     this.avisosReservas = true,
+    this.avisoTemasClase = true,
+    this.avisoCantesPropios = false,
+    this.avisoEstudiados = false,
+    this.avisoInactividad = false,
+    this.avisoExamen = true,
+    this.rubrica = const [],
     this.reservas = false,
     this.huecos = const [],
     this.linkedin = '',
@@ -251,6 +257,17 @@ class PerfilPreparador {
   final bool avisosSustitucion;
   /// Avisar de las reservas de sus alumnos (activado por defecto).
   final bool avisosReservas;
+  /// Avisos de la actividad de cada alumno, siempre que él la comparta
+  /// (Ajustes.avisosPreparador): temas fijados para una clase y cercanía del
+  /// examen (activados), cantes por su cuenta, temas marcados como estudiados
+  /// y días sin usar la app (apagados por defecto).
+  final bool avisoTemasClase;
+  final bool avisoCantesPropios;
+  final bool avisoEstudiados;
+  final bool avisoInactividad;
+  final bool avisoExamen;
+  /// Criterios con los que valora los cantes (vacío = solo las estrellas).
+  final List<String> rubrica;
   /// Sus alumnos pueden reservar en sus huecos libres (desactivado por defecto).
   final bool reservas;
   /// Huecos semanales en los que acepta reservas.
@@ -259,13 +276,19 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, bool antelacionDelExamen = false, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle, int? minutosClase, int? temasPorClase, String? plataforma}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? avisoTemasClase, bool? avisoCantesPropios, bool? avisoEstudiados, bool? avisoInactividad, bool? avisoExamen, List<String>? rubrica, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, bool antelacionDelExamen = false, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle, int? minutosClase, int? temasPorClase, String? plataforma}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
         telefono: telefono ?? this.telefono,
         avisosSustitucion: avisosSustitucion ?? this.avisosSustitucion,
         avisosReservas: avisosReservas ?? this.avisosReservas,
+        avisoTemasClase: avisoTemasClase ?? this.avisoTemasClase,
+        avisoCantesPropios: avisoCantesPropios ?? this.avisoCantesPropios,
+        avisoEstudiados: avisoEstudiados ?? this.avisoEstudiados,
+        avisoInactividad: avisoInactividad ?? this.avisoInactividad,
+        avisoExamen: avisoExamen ?? this.avisoExamen,
+        rubrica: rubrica ?? this.rubrica,
         reservas: reservas ?? this.reservas,
         huecos: huecos ?? this.huecos,
         linkedin: linkedin ?? this.linkedin,
@@ -288,6 +311,12 @@ class PerfilPreparador {
         'telefono': telefono,
         'avisosSustitucion': avisosSustitucion,
         'avisosReservas': avisosReservas,
+        'avisoTemasClase': avisoTemasClase,
+        'avisoCantesPropios': avisoCantesPropios,
+        'avisoEstudiados': avisoEstudiados,
+        'avisoInactividad': avisoInactividad,
+        'avisoExamen': avisoExamen,
+        if (rubrica.isNotEmpty) 'rubrica': rubrica,
         'reservas': reservas,
         'huecos': huecos.map((h) => h.toJson()).toList(),
         'linkedin': linkedin,
@@ -312,6 +341,12 @@ class PerfilPreparador {
           telefono: j['telefono'] as String? ?? '',
           avisosSustitucion: j['avisosSustitucion'] as bool? ?? true,
           avisosReservas: j['avisosReservas'] as bool? ?? true,
+          avisoTemasClase: j['avisoTemasClase'] as bool? ?? true,
+          avisoCantesPropios: j['avisoCantesPropios'] as bool? ?? false,
+          avisoEstudiados: j['avisoEstudiados'] as bool? ?? false,
+          avisoInactividad: j['avisoInactividad'] as bool? ?? false,
+          avisoExamen: j['avisoExamen'] as bool? ?? true,
+          rubrica: ((j['rubrica'] as List?) ?? []).map((e) => e.toString()).toList(),
           reservas: j['reservas'] as bool? ?? false,
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           linkedin: j['linkedin'] as String? ?? '',
@@ -386,7 +421,10 @@ class SolicitudEnlace {
 /// Lo que un alumno enlazado comparte con su preparador: los temas que marca
 /// y sus cantes. No incluye tests, notas ni grabaciones.
 class ProgresoAlumno {
-  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.delCronograma = const {}, this.noCantar = const {}, this.temasClases = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false});
+  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.delCronograma = const {}, this.noCantar = const {}, this.temasClases = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false, this.ultimoUso});
+
+  /// Último día en que el alumno usó la app (clave de día), solo si lo comparte.
+  final String? ultimoUso;
   final Set<String> estudiados;
   final Set<String> enRepaso;
   /// Temas que lleva según su cronograma compartido (ver
@@ -441,6 +479,9 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
       'Tema $t${tituloDe == null || tituloDe(t).isEmpty ? '' : ' · ${tituloDe(t)}'}${(r!.valoraciones[t] ?? 0) > 0 ? ': ${'★' * r.valoraciones[t]!}${'☆' * (5 - r.valoraciones[t]!)}' : ''}',
     if ((r?.valoracion ?? 0) > 0) '${r!.valoraciones.isEmpty ? 'Valoración' : 'Valoración del cante'}: ${'★' * r.valoracion}${'☆' * (5 - r.valoracion)}',
     if ((r?.segundos ?? 0) > 0) 'Tiempo: ${r!.segundos ~/ 60}:${dos(r.segundos % 60)} (previsto: ${c.minutos} min)',
+    if (r?.textoCoberturaTotal case final cob?) 'Apartados tocados: $cob',
+    if (r != null && r.criterios.isNotEmpty) r.textoCriterios(separador: '\n'),
+    if (c.tareas.isNotEmpty) 'Deberes: ${c.tareas.map((t) => '${t.hecha ? '✓ ' : ''}${t.etiqueta(tituloDe: tituloDe)}').join('; ')}',
     if (r != null && r.sorteados.length > 1) 'Salieron en el sorteo: ${r.sorteados.join(', ')}',
     if (r != null && r.comentarios.isNotEmpty) ...['', r.comentarios],
   ];

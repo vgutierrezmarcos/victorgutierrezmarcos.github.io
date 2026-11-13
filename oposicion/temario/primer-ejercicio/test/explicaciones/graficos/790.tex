@@ -1,0 +1,47 @@
+% Pregunta 790 (2005-septiembre-OEP2005, n.º 9): empresa precio-aceptante a corto plazo con
+% C(x) = x^2 + x + 4 (CF = 4): CMg = 2x + 1, CVMe = x + 1 (mínimo 1 en x = 0, umbral de cierre),
+% CMe = x + 1 + 4/x (mínimo 5 en x = 2, umbral de rentabilidad). Con P = 3, x* = 1:
+% CVMe(1) = 2, CMe(1) = 6; cubre el CV y 1 de los 4 de CF (dorado); pierde 3 (morado). A escala.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.25cm,y=0.55cm,
+    declare function={CMg(\q)=2*\q+1; CVMe(\q)=\q+1; CMe(\q)=\q+1+4/\q;}]
+  % Áreas con P = 3 y x* = 1
+  \fill[area2] (0,2) rectangle (1,3);
+  \fill[area] (0,3) rectangle (1,6);
+  \node[font=\footnotesize,align=center] at (0.5,4.0) {pérdida\\$3$};
+  \node[font=\footnotesize,anchor=west] (cf) at (1.6,1.6) {cubre $1$ de CF};
+  \draw[->,thin] (cf.west) to[out=180,in=-30] (0.88,2.35);
+  % Ejes
+  \draw[eje] (0,0) -- (4.7,0) node[below left=2pt and 0pt] {$x$};
+  \draw[eje] (0,0) -- (0,9.8) node[left] {$P$, costes};
+  \node[below left] at (0,0) {$0$};
+  % Umbrales
+  \draw[guia] (0,5) -- (4.5,5) node[right,font=\footnotesize,text=black,align=left] {umbral de\\rentabilidad};
+  \draw[guia] (0,1) -- (4.5,1) node[right,font=\footnotesize,text=black,align=left] {umbral\\de cierre};
+  \node[left] at (0,5) {$5$};
+  \node[left] at (0,1) {$1$};
+  % Curvas de costes
+  \draw[curva3] plot[domain=0:4.2] (\x,{CVMe(\x)});
+  \node[etiqueta,text=tceeverde,below right] at (3.5,{CVMe(3.5)}) {CVMe};
+  \draw[curva2] plot[domain=0.52:4.2,samples=80,smooth] (\x,{CMe(\x)})
+    node[etiqueta,right] {CMe};
+  \draw[curva1] plot[domain=0:4.1] (\x,{CMg(\x)}) node[etiqueta,above] {CMg};
+  % Precio P = 3
+  \draw[curvanueva] (0,3) -- (4.5,3) node[etiqueta,right,text=tceerojo] {$P=3$};
+  \node[left] at (0,3) {$3$};
+  \node[left] at (0,2) {$2$};
+  \node[left] at (0,6) {$6$};
+  \draw[guia] (1,6) -- (0,6);
+  \draw[guia] (1,3) -- (1,0) node[below,text=black] {$x^*=1$};
+  % Puntos
+  \node[punto] at (1,3) {};
+  \node[punto] at (1,2) {};
+  \node[punto] at (1,6) {};
+  \node[punto] at (0,1) {};
+  \node[punto] at (2,5) {};
+  \draw[guia] (2,5) -- (2,0) node[below,text=black] {$2$};
+\end{tikzpicture}
+\end{document}

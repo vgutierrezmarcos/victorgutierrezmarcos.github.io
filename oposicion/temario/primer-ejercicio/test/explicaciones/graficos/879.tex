@@ -1,0 +1,31 @@
+% Pregunta 879 (2003-julio-OEP2003, n.º 7): discriminación de segundo grado con dos tipos; q_A eficiente, q_B por debajo del eficiente para reducir la renta informativa de A. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % D_A: p = 4,4 - 0,7q ; D_B: p = 3,2 - 0,8q ; c = 1
+  % q_A^e = 4,86 ; q_B^e = 2,75 ; q_B^* = 1,8 (D_B = 1,76 ; D_A = 3,14)
+  \fill[area] (0,0) -- (0,3.2) -- (1.8,1.76) -- (1.8,0) -- cycle;
+  \fill[area2] (0,3.2) -- (0,4.4) -- (1.8,3.14) -- (1.8,1.76) -- cycle;
+  \fill[tceerojo,fill opacity=0.35] (1.8,1.0) -- (1.8,1.76) -- (2.75,1.0) -- cycle;
+  \ejes{$q$}{$p$}{6.2}{5}
+  \draw[curva4] (0,1.0) -- (5.8,1.0) node[etiqueta,right] {$c$};
+  \draw[curva1] (0,4.4) -- (5.6,0.48) node[etiqueta,above right] {$D_A$};
+  \draw[curva2] (0,3.2) -- (3.8,0.16) node[etiqueta,right] {$D_B$};
+  \draw[curvanueva,desplazada] (1.8,0) -- (1.8,3.14);
+  \draw[guia] (2.75,0) -- (2.75,1.0);
+  \draw[guia] (4.857,0) -- (4.857,1.0);
+  \node[below,tceerojo] at (1.8,0) {$q_B^*$};
+  \node[below] at (2.8,0) {$q_B^e$};
+  \node[below] at (4.857,0) {$q_A^*=q_A^e$};
+  \node[punto,tceerojo] at (1.8,1.76) {};
+  \node[punto] at (2.75,1.0) {};
+  \node[punto] at (4.857,1.0) {};
+  \node at (0.75,0.55) {$T_B$};
+  \node[font=\footnotesize,align=center] at (0.85,3.25) {renta\\de $A$};
+  % Leyenda
+  \fill[area] (-0.2,-1.0) rectangle (0.1,-0.75); \node[anchor=base west] at (0.15,-0.97) {lo que paga $B$};
+  \fill[area2] (3.0,-1.0) rectangle (3.3,-0.75); \node[anchor=base west] at (3.35,-0.97) {renta informativa de $A$};
+  \fill[tceerojo,fill opacity=0.35] (-0.2,-1.5) rectangle (0.1,-1.25); \node[anchor=base west] at (0.15,-1.47) {excedente que se sacrifica en $B$ (de $q_B^e$ a $q_B^*$)};
+\end{tikzpicture}
+\end{document}

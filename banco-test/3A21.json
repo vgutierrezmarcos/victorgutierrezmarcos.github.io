@@ -1,0 +1,288 @@
+{
+ "tema": "3.A.21",
+ "preguntas": [
+  {
+   "id": 312101,
+   "estado": "publicada",
+   "enunciado": "En el modelo 2×2×2×2 de equilibrio general, las dos empresas producen con rendimientos constantes a escala. Sobre la curva de contrato de la caja de Edgeworth de la producción y la frontera de posibilidades de producción (FPP), señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La FPP es estrictamente cóncava en cualquier caso, porque las isocuantas de las dos empresas son convexas y la relación marginal de sustitución técnica es decreciente.",
+    "b": "La FPP es lineal en cualquier caso, porque con rendimientos constantes el coste marginal de cada bien no depende de la cantidad que produce su empresa.",
+    "c": "Con la misma intensidad factorial en los dos bienes, la curva de contrato es la diagonal de la caja y la FPP es lineal; con intensidades distintas, la FPP es estrictamente cóncava.",
+    "d": "Si las intensidades factoriales difieren, la curva de contrato es la diagonal de la caja, y por eso la FPP es estrictamente cóncava; si coinciden, la FPP es lineal."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con rendimientos constantes, la forma de la FPP depende de las intensidades factoriales. Si coinciden, los factores se reasignan de un bien a otro en la misma proporción, la curva de contrato es la diagonal y la relación marginal de transformación es constante (FPP lineal). Si difieren, la FPP es estrictamente cóncava.",
+    "desarrollo": "La FPP se obtiene llevando al plano de los bienes los puntos de la curva de contrato de la caja de la producción (donde $\\mathrm{RMST}^X_{LK}=\\mathrm{RMST}^Y_{LK}=w_L/w_K$). Su pendiente es $\\mathrm{RMT}_{XY}=\\mathrm{CMg}_X/\\mathrm{CMg}_Y$.\n\n- Con rendimientos constantes e intensidades iguales, las dos empresas usan la misma relación $K/L$, que es la de la dotación total: la curva de contrato es la diagonal. A lo largo de ella $w_L/w_K$ no cambia, los costes marginales tampoco y la RMT es constante: la FPP es una recta.\n- Con intensidades distintas, al producir más del bien intensivo en trabajo se encarece el trabajo ($w_L/w_K$ sube a lo largo de la curva de contrato, que ya no es la diagonal) y con él el coste relativo de ese bien: la RMT es creciente y la FPP, estrictamente cóncava.\n\nPor qué fallan las demás:\n\n- a) La convexidad de las isocuantas (relación marginal de sustitución técnica decreciente) no basta: con rendimientos constantes e intensidades iguales la FPP es lineal.\n- b) Es verdad que, a precios de los factores dados, el coste marginal de cada empresa es constante; pero al moverse por la FPP cambian los precios relativos de los factores si las intensidades difieren, y con ellos el cociente de costes marginales.\n- d) Acierta en la forma de la FPP, pero no en la curva de contrato: es la diagonal cuando las intensidades coinciden (y entonces la FPP es lineal); cuando difieren queda a un lado de la diagonal, y es eso lo que hace cóncava la FPP."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.1 Productores y oferta (curva de contrato y forma de la FPP)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312102,
+   "estado": "publicada",
+   "enunciado": "En un modelo de equilibrio general, un consumidor obtiene toda su renta de vender su dotación a los precios de mercado, $\\overline{W}_i=\\vec{p}\\cdot\\vec{\\omega}_i$. El bien $k$ es normal para él y el consumidor es vendedor neto de ese bien ($x_{ik}<\\omega_{ik}$). Si sube $p_k$ y los demás precios no cambian:",
+   "opciones": {
+    "a": "Su demanda del bien $k$ puede aumentar aunque el bien no sea Giffen: la subida del precio lo enriquece y, al ser normal el bien, el efecto renta-dotación se opone al efecto sustitución.",
+    "b": "Su demanda del bien $k$ cae necesariamente: al ser un bien normal, el efecto sustitución y el efecto renta actúan en el mismo sentido, como en la ecuación de Slutsky.",
+    "c": "Su demanda del bien $k$ aumenta necesariamente: en un vendedor neto el efecto renta-dotación domina siempre al efecto sustitución.",
+    "d": "Su demanda del bien $k$ solo puede aumentar si el bien es inferior, porque solo entonces el efecto renta contrarresta al efecto sustitución, que siempre reduce la demanda."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Cuando la renta sale de la dotación, $dx_{ik}/dp_k=S^i_{kk}-(x_{ik}-\\omega_{ik})\\,\\partial x_{ik}/\\partial\\overline{W}_i$. Para un vendedor neto de un bien normal el segundo término es positivo: la subida del precio lo enriquece. El signo total queda indeterminado, y la demanda puede crecer con el precio sin que el bien sea Giffen.",
+    "desarrollo": "Derivando $x_{ik}(\\vec{p},\\vec{p}\\cdot\\vec{\\omega}_i)$ respecto de $p_k$ y usando la ecuación de Slutsky:\n\n$$\\frac{dx_{ik}}{dp_k}=\\underbrace{S^i_{kk}}_{<0}-\\big(x_{ik}-\\omega_{ik}\\big)\\frac{\\partial x_{ik}}{\\partial\\overline{W}_i}.$$\n\nEl efecto renta ordinario ($-x_{ik}\\,\\partial x_{ik}/\\partial\\overline{W}_i$) se combina con el efecto renta-dotación ($+\\omega_{ik}\\,\\partial x_{ik}/\\partial\\overline{W}_i$): lo que cuenta es la posición neta. Si el consumidor es vendedor neto ($x_{ik}<\\omega_{ik}$) y el bien es normal, el segundo término es positivo y se opone al efecto sustitución. El resultado depende de cuál domine. Es una de las razones por las que el exceso de demanda agregado no tiene por qué ser decreciente en el precio propio (y de que la unicidad y la estabilidad del equilibrio sean difíciles de garantizar).\n\nPor qué fallan las demás:\n\n- b) Es el resultado de la ecuación de Slutsky en la teoría del consumidor con renta monetaria dada (o para un comprador neto). Con renta procedente de la dotación y un vendedor neto, el efecto renta total cambia de signo.\n- c) El efecto renta-dotación puede dominar, pero no tiene por qué: el signo es ambiguo.\n- d) Para un vendedor neto ocurre lo contrario: si el bien fuera inferior, el enriquecimiento reduciría su demanda y reforzaría al efecto sustitución. Es con un bien normal cuando la demanda puede aumentar."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.2 Consumidores y demanda (demanda de mercado y efecto renta-dotación)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312103,
+   "estado": "publicada",
+   "enunciado": "En una economía de intercambio con $n$ bienes y dinero, los consumidores agotan su restricción presupuestaria. A los precios vigentes, que no son de equilibrio, el valor de los excesos de demanda de los $n$ bienes suma $-100$ euros (hay un exceso de oferta de bienes en conjunto). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La situación es imposible: la ley de Walras excluye un exceso de oferta general de bienes, sea cual sea el vector de precios.",
+    "b": "No puede decirse nada del mercado de dinero, porque la ley de Walras solo se cumple a los precios de equilibrio y los vigentes no lo son.",
+    "c": "En el mercado de dinero hay un exceso de oferta de 100 euros: los agentes quieren desprenderse a la vez de bienes y de dinero.",
+    "d": "En el mercado de dinero hay un exceso de demanda de 100 euros: es la ley de Say, y no la de Walras, la que excluye un exceso de oferta general de bienes."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La ley de Walras es una identidad que abarca todos los mercados, también el de dinero: $\\sum_k p_kz_k+(M^D-\\overline{M})\\equiv 0$. Un exceso de oferta de bienes de 100 euros tiene como contrapartida un exceso de demanda de dinero de 100 euros. La ley de Say es la que niega que pueda haber un exceso de oferta general de bienes.",
+    "desarrollo": "Sumando las restricciones presupuestarias, $\\vec{p}\\cdot\\vec{x}_i+M^D_i=\\vec{p}\\cdot\\vec{\\omega}_i+\\overline{M}_i$, para todos los consumidores:\n\n$$\\sum_{k=1}^{n}p_k\\,z_k(\\vec{p})+\\big(M^D(\\vec{p})-\\overline{M}\\big)\\equiv 0.$$\n\nCon $\\sum_kp_kz_k=-100$, queda $M^D-\\overline{M}=+100$: los agentes ofrecen más bienes de los que demandan porque quieren mantener más dinero del que hay. La identidad se cumple a cualquier vector de precios, dentro o fuera del equilibrio, porque sale de las restricciones presupuestarias.\n\nPor qué fallan las demás:\n\n- a) Confunde la ley de Walras con la ley de Say. En la formulación de Lange, la ley de Say afirma que el valor de los excesos de demanda de los bienes (sin el dinero) es idénticamente nulo; es a ella a la que se dirige la crítica de Keynes.\n- b) La ley de Walras es una identidad, no una condición de equilibrio: se cumple a cualquier precio, también a los vigentes.\n- c) Tiene el signo cambiado: los excesos de demanda valorados deben sumar cero, de modo que al exceso de oferta de bienes le corresponde un exceso de demanda de dinero."
+   },
+   "dificultad": 1,
+   "apartado": "I.2.4 Ley de Walras (y su diferencia con la ley de Say; III.3 ley de Walras con dinero)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312104,
+   "estado": "publicada",
+   "enunciado": "En una economía de intercambio puro con dos bienes, $X$ e $Y$, el consumidor $A$ tiene la dotación $(\\overline{X}_A,\\overline{Y}_A)=(12,0)$ y la utilidad $U_A=X_A^{1/3}Y_A^{2/3}$; el consumidor $B$ tiene la dotación $(0,6)$ y la utilidad $U_B=X_B^{1/2}Y_B^{1/2}$. El subastador anuncia los precios $p_X=p_Y=1$. A esos precios:",
+   "opciones": {
+    "a": "Los dos mercados se vacían: $p_X/p_Y=1$ es el precio relativo de equilibrio.",
+    "b": "Hay un exceso de oferta de $X$ de 5 unidades y un exceso de demanda de $Y$ de 5 unidades; el tanteo reduce el precio relativo de $X$, y el equilibrio se alcanza con $p_X/p_Y=3/8$.",
+    "c": "Hay un exceso de demanda de $X$ de 5 unidades y un exceso de oferta de $Y$ de 5 unidades; el tanteo eleva el precio relativo de $X$, y el equilibrio se alcanza con $p_X/p_Y=8/3$.",
+    "d": "Hay un exceso de oferta de $X$ de 5 unidades y el mercado de $Y$ está vaciado; el tanteo reduce el precio relativo de $X$ hasta $p_X/p_Y=3/8$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con preferencias Cobb-Douglas cada consumidor gasta en cada bien una fracción fija de su renta. A $p_X=p_Y=1$, $z_X=4+3-12=-5$ y $z_Y=8+3-6=+5$ (suman cero en valor, como exige la ley de Walras). Sobra $X$: su precio relativo debe bajar, hasta $p_X/p_Y=3/8$.",
+    "desarrollo": "Rentas a $p_X=p_Y=1$: $\\overline{W}_A=12$ y $\\overline{W}_B=6$.\n\n- $A$ gasta 1/3 en $X$ y 2/3 en $Y$: $X_A=4$, $Y_A=8$.\n- $B$ gasta la mitad en cada bien: $X_B=3$, $Y_B=3$.\n\nExcesos de demanda: $z_X=4+3-12=-5$ y $z_Y=8+3-6=+5$. Comprobación con la ley de Walras: $p_Xz_X+p_Yz_Y=-5+5=0$.\n\nEquilibrio, con $p_Y=1$ y $p=p_X$: $\\overline{W}_A=12p$, $X_A=\\tfrac13\\cdot 12p/p=4$; $\\overline{W}_B=6$, $X_B=3/p$. Vaciado del mercado de $X$: $4+3/p=12\\Rightarrow p=3/8$. Comprobación en $Y$: $Y_A=\\tfrac23\\cdot 12\\cdot\\tfrac38=3$ e $Y_B=3$, que suman 6. La asignación de equilibrio es $A=(4,3)$ y $B=(8,3)$.\n\nPor qué fallan las demás:\n\n- a) A precios iguales $A$ solo quiere quedarse con 4 de sus 12 unidades de $X$ y $B$ solo demanda 3: sobran 5.\n- c) Tiene los signos (y el precio de equilibrio) invertidos: el bien abundante y relativamente poco deseado es $X$.\n- d) Viola la ley de Walras: con dos bienes y precios positivos, si un mercado tiene exceso de oferta el otro tiene necesariamente un exceso de demanda del mismo valor."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Equilibrio general competitivo (caja de intercambio, exceso de demanda y tanteo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312105,
+   "estado": "publicada",
+   "enunciado": "Sobre las demostraciones de la existencia del equilibrio general competitivo basadas en teoremas de punto fijo, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con rendimientos constantes a escala, la oferta de las empresas a unos precios dados puede no ser única (es una correspondencia), y la prueba recurre al teorema de Kakutani en lugar del de Brouwer.",
+    "b": "El teorema de Brouwer asegura que el punto fijo de una función continua es único, de modo que la prueba de existencia lo es también de la unicidad del equilibrio general competitivo.",
+    "c": "La prueba es constructiva: el punto fijo se obtiene como límite del tanteo walrasiano desde cualquier vector de precios inicial, de modo que demuestra a la vez que el equilibrio es estable.",
+    "d": "La convexidad de preferencias y tecnologías no interviene en la existencia, porque el exceso de demanda es continuo con cualesquiera preferencias racionales; solo se necesita para el primer teorema del bienestar."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El teorema de Brouwer se aplica a funciones continuas; sirve cuando demandas y ofertas son funciones (convexidad estricta). Si la convexidad no es estricta, como con rendimientos constantes, la oferta a unos precios dados no es única y se usa el teorema de Kakutani, para correspondencias hemicontinuas superiormente con valores no vacíos y convexos. Es el que emplean Arrow y Debreu (1954).",
+    "desarrollo": "La prueba busca un vector de precios que la regla de ajuste del subastador deje donde está. Con Brouwer hace falta un conjunto no vacío, compacto y convexo (el símplice de precios) y una función continua de ese conjunto en sí mismo. Con rendimientos constantes, a los precios de equilibrio el beneficio es nulo y la escala de la empresa queda indeterminada: la oferta es una correspondencia, y la generalización adecuada es la de Kakutani.\n\nPor qué fallan las demás:\n\n- b) Brouwer dice que existe al menos un punto fijo, no cuántos hay. La unicidad exige supuestos adicionales (sustitutivos brutos o axioma débil agregado); en general solo se sabe que, en las economías regulares, el número de equilibrios es finito e impar.\n- c) La prueba no es constructiva: dice que hay un vector que el subastador no cambia, no que el tanteo converja a él desde otros precios, y menos desde cualquier punto de partida (contraejemplo de Scarf). El cálculo efectivo llega con el algoritmo de Scarf (1967).\n- d) Es al revés. Sin convexidad la demanda o la oferta pueden dar saltos y el exceso de demanda deja de ser continuo, de modo que el equilibrio puede no existir; el primer teorema del bienestar, en cambio, no necesita convexidad, solo no saciedad local."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Existencia (teoremas de Brouwer y de Kakutani; anexo B)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312106,
+   "estado": "borrador",
+   "enunciado": "En una economía con dos bienes se toma $Y$ como numerario ($p_Y=1$). La función de exceso de demanda de $X$, $z_X(p_X,1)$, es continua, positiva para precios muy bajos y negativa para precios muy altos, y corta el eje en tres precios, $p^1<p^2<p^3$. Con el tanteo walrasiano $\\dot p_X=\\kappa\\,z_X(p_X,1)$, $\\kappa>0$, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Los tres equilibrios son localmente estables, porque en los tres $z_X=0$ y el precio deja de moverse. La situación es compatible con que los dos bienes sean sustitutivos brutos.",
+    "b": "Solo $p^2$ es localmente estable: es el único en el que el exceso de demanda aumenta con el precio. Si los dos bienes fueran sustitutivos brutos, esta situación no podría darse.",
+    "c": "$p^1$ y $p^3$ son localmente estables y $p^2$ es inestable. Si los dos bienes fueran sustitutivos brutos esta situación no podría darse, porque $z_X(p_X,1)$ sería decreciente y cortaría el eje una sola vez.",
+    "d": "$p^1$ y $p^3$ son localmente estables y $p^2$ es inestable. La situación es compatible con que los dos bienes sean sustitutivos brutos, porque la sustitución bruta garantiza la estabilidad del tanteo, pero no la unicidad del equilibrio."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El tanteo sube el precio donde $z_X>0$ y lo baja donde $z_X<0$. En $p^1$ y $p^3$ la función corta el eje de arriba abajo y los precios cercanos vuelven al equilibrio; en $p^2$ lo corta de abajo arriba y los repele. Con sustitutivos brutos $z_X(p_X,1)$ es decreciente: hay un solo equilibrio, globalmente estable.",
+    "desarrollo": "Como $z_X$ es positiva a precios bajos y negativa a precios altos, los cortes alternan: en $p^1$ pasa de positiva a negativa, en $p^2$ de negativa a positiva y en $p^3$ otra vez de positiva a negativa.\n\n- Cerca de $p^1$ (y de $p^3$): por debajo, $z_X>0$ y el precio sube; por encima, $z_X<0$ y el precio baja. El equilibrio atrae: es localmente estable (índice $+1$).\n- Cerca de $p^2$: por debajo, $z_X<0$ y el precio baja hacia $p^1$; por encima, $z_X>0$ y sube hacia $p^3$. El equilibrio repele: es inestable (índice $-1$).\n\nCon varios equilibrios, estables e inestables se alternan, y su número es impar (la suma de los índices es $+1$). Con sustitutivos brutos, subir $p_X$ con $p_Y=1$ equivale a abaratar $Y$ en términos relativos, lo que reduce la demanda de $X$: $z_X(p_X,1)$ es siempre decreciente, no puede tener el tramo creciente que da lugar a $p^2$ y hay un solo corte, que además es globalmente estable (Arrow, Block y Hurwicz, 1959).\n\nPor qué fallan las demás:\n\n- a) Que el precio no se mueva en el equilibrio no lo hace estable: la estabilidad pregunta qué ocurre tras una perturbación. Además, con sustitutivos brutos no puede haber tres equilibrios.\n- b) Invierte el criterio: con el ajuste walrasiano un equilibrio es estable si un precio superior genera exceso de oferta, es decir, si $z_X$ es decreciente en él. Lo que añade sobre los sustitutivos brutos es cierto, pero no salva la primera parte.\n- d) La sustitución bruta da a la vez unicidad y estabilidad global: la misma condición, $\\vec{p}^*\\cdot\\vec{z}(\\vec{p})>0$ fuera del equilibrio, asegura las dos."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Unicidad y estabilidad (equilibrios múltiples, sustitutivos brutos y tanteo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:312106.webp",
+     "alt": "Gráfico con el precio p_X en el eje horizontal y el exceso de demanda z_X(p_X, 1) en el vertical. La curva es continua: empieza positiva a precios bajos, corta el eje hacia abajo en p1, alcanza un mínimo negativo, corta el eje hacia arriba en p2, alcanza un máximo positivo y vuelve a cortarlo hacia abajo en p3, para quedar negativa a precios altos. Solo se rotulan los tres cortes, sin flechas de ajuste.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 312107,
+   "estado": "publicada",
+   "enunciado": "El teorema de Sonnenschein-Mantel-Debreu establece que:",
+   "opciones": {
+    "a": "El exceso de demanda agregado de una economía con consumidores racionales puede no ser continuo ni cumplir la ley de Walras, por lo que el equilibrio general competitivo puede no existir.",
+    "b": "El exceso de demanda agregado hereda de las demandas individuales el axioma débil de la preferencia revelada, y por eso el equilibrio es único salvo en un conjunto de economías de medida nula.",
+    "c": "Si las preferencias de todos los consumidores son estrictamente convexas, el exceso de demanda agregado de cada bien es decreciente en su propio precio, aunque el tanteo puede no converger.",
+    "d": "Cualquier función continua, homogénea de grado 0 y que cumpla la ley de Walras es, para precios estrictamente positivos, el exceso de demanda agregado de alguna economía de intercambio con consumidores racionales."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Al agregar, de las propiedades de la demanda individual solo sobreviven la continuidad, la homogeneidad de grado 0 y la ley de Walras. Bastan para la existencia, pero no dan ninguna forma al exceso de demanda: son posibles cualquier número (impar) de equilibrios y cualquier dinámica del tanteo. Unicidad y estabilidad exigen supuestos adicionales.",
+    "desarrollo": "La razón es que los efectos renta de cada consumidor dependen de su dotación y no se compensan al sumar: los cambios de precios redistribuyen la renta entre consumidores que gastan de forma distinta. Por eso la ley de la demanda, la simetría y semidefinición negativa de la matriz de Slutsky o el axioma débil, que valen para cada consumidor, no tienen por qué valer en el agregado. La consecuencia es que la unicidad y la estabilidad dependen de supuestos sobre la distribución de preferencias y dotaciones (sustitutivos brutos, axioma débil agregado), no de la teoría del consumidor.\n\nPor qué fallan las demás:\n\n- a) Precisamente la continuidad, la homogeneidad y la ley de Walras sí se conservan, y son las que garantizan la existencia. El teorema no la pone en cuestión.\n- b) El axioma débil no se hereda. Que, salvo en un conjunto de medida nula, el número de equilibrios sea finito (e impar) es el resultado de Debreu (1970) sobre las economías regulares, y no implica que haya uno solo.\n- c) La convexidad estricta hace que cada demanda individual sea una función continua, pero no da pendiente negativa al exceso de demanda agregado: es justo lo que el teorema descarta."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Unicidad (valoración: teorema de Sonnenschein-Mantel-Debreu)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312108,
+   "estado": "borrador",
+   "enunciado": "En un mercado aislado, con los demás precios dados, la curva de demanda es $p^D(q)=10-q$ y la curva de oferta de la industria, decreciente por la existencia de economías externas a la empresa, es $p^S(q)=8-\\tfrac12q$. El equilibrio ($q^*=4$, $p^*=6$) es:",
+   "opciones": {
+    "a": "Estable tanto con el ajuste walrasiano (por precios) como con el marshalliano (por cantidades).",
+    "b": "Inestable con el ajuste walrasiano (por precios) y estable con el marshalliano (por cantidades).",
+    "c": "Estable con el ajuste walrasiano (por precios) e inestable con el marshalliano (por cantidades).",
+    "d": "Inestable con los dos ajustes, porque la curva de oferta tiene pendiente negativa."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Ajuste walrasiano: $z(p)=x(p)-q(p)=(10-p)-(16-2p)=p-6$, creciente; un precio superior al de equilibrio genera exceso de demanda y el precio se aleja (inestable). Ajuste marshalliano: $p^D-p^S=2-\\tfrac12q$, decreciente; a la derecha del equilibrio el precio de demanda es menor que el de oferta y la cantidad vuelve (estable).",
+    "desarrollo": "Equilibrio: $10-q=8-\\tfrac12q\\Rightarrow q^*=4$, $p^*=6$.\n\n- Walras (se mueve el precio según el exceso de demanda, $\\dot p=f(z(p))$, $f'>0$). Cantidades en función del precio: demanda $x(p)=10-p$; oferta $q(p)=16-2p$. Entonces $z(p)=p-6$ y $z'(p)=1>0$. Con $p=7$, $x=3$ y $q=2$: hay exceso de demanda y el precio sigue subiendo. Con $p=5$, $x=5$ y $q=6$: exceso de oferta y el precio sigue bajando. Inestable.\n- Marshall (se mueve la cantidad según la diferencia entre precio de demanda y precio de oferta, $\\dot q=g(p^D-p^S)$, $g'>0$). $p^D(q)-p^S(q)=2-\\tfrac12q$, con derivada $-\\tfrac12<0$. Con $q=5$, $p^D=5<p^S=5{,}5$ y la cantidad se reduce; con $q=3$, $p^D=7>p^S=6{,}5$ y aumenta. Estable.\n\nEs el caso de dos curvas decrecientes con la oferta más plana que la demanda en el plano $(q,p)$: con pendientes $a=-1$ y $b=-\\tfrac12$, la condición walrasiana ($1/a<1/b$, es decir, $-1<-2$) no se cumple y la marshalliana ($a<b$) sí. Los dos criterios son incompatibles cuando ambas curvas tienen pendiente negativa.\n\nPor qué fallan las demás:\n\n- a) Solo coinciden (ambos estables) con oferta creciente y demanda decreciente.\n- c) Sería el caso contrario: oferta decreciente más inclinada que la demanda.\n- d) Con las dos curvas decrecientes siempre hay un ajuste estable y otro inestable, nunca los dos inestables."
+   },
+   "dificultad": 3,
+   "apartado": "Anexo D (y II.1 Estabilidad): estabilidad en un mercado, ajuste walrasiano y marshalliano",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312109,
+   "estado": "publicada",
+   "enunciado": "En una economía con mercados completos y agentes precio-aceptantes, las preferencias de algunos consumidores no son convexas, aunque todas son localmente no saciables. Suponga que, aun así, existe un equilibrio general competitivo. La asignación de ese equilibrio:",
+   "opciones": {
+    "a": "Es óptima en el sentido de Pareto: el primer teorema del bienestar solo exige la no saciedad local. La convexidad se necesita para garantizar la existencia del equilibrio y para el segundo teorema.",
+    "b": "No tiene por qué ser óptima en el sentido de Pareto: sin convexidad la igualdad de las relaciones marginales de sustitución con los precios no garantiza la eficiencia, y el primer teorema deja de cumplirse.",
+    "c": "Es óptima en el sentido de Pareto y, además, cualquier otro óptimo podría alcanzarse como equilibrio competitivo con transferencias de suma fija, porque ninguno de los dos teoremas del bienestar exige convexidad.",
+    "d": "Es óptima en el sentido de Pareto solo si el equilibrio es único; con varios equilibrios, a lo sumo uno de ellos es eficiente."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El primer teorema fundamental del bienestar dice que, con preferencias localmente no saciables, todo equilibrio competitivo es óptimo de Pareto, y su demostración no usa la convexidad. Esta hace falta para que el equilibrio exista y para el segundo teorema (que todo óptimo sea alcanzable como equilibrio).",
+    "desarrollo": "La prueba del primer teorema es por reducción al absurdo y solo usa que los precios son comunes y que todos los bienes tienen precio: si otra asignación factible mejorase a alguien sin empeorar a nadie, a los precios de equilibrio costaría más que las dotaciones totales (quien mejora no podía pagar su cesta; quien queda igual, por la no saciedad local, no podía pagarla por menos), lo que contradice que sea factible. No aparecen ni la convexidad ni las condiciones marginales.\n\nPor qué fallan las demás:\n\n- b) El primer teorema no se apoya en las condiciones de tangencia (vale con soluciones de esquina y sin diferenciabilidad): si el equilibrio existe, es eficiente. Lo que la no convexidad pone en peligro es la existencia.\n- c) El segundo teorema sí exige convexidad: sin ella puede no haber un vector de precios que sostenga un óptimo dado como equilibrio.\n- d) Los dos teoremas valen para cualquier equilibrio, sea único o no: si hay varios, todos son óptimos de Pareto (no comparables entre sí con ese criterio)."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Análisis normativo (teoremas fundamentales de la economía del bienestar; anexo C)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312110,
+   "estado": "publicada",
+   "enunciado": "En una economía de intercambio puro con preferencias estrictamente convexas y localmente no saciables, señale la afirmación CORRECTA sobre el núcleo:",
+   "opciones": {
+    "a": "Con dos consumidores, el núcleo se reduce a la asignación del equilibrio walrasiano, porque es la única que ninguno de los dos puede bloquear.",
+    "b": "El núcleo coincide con toda la curva de contrato, sea cual sea la dotación inicial y el número de consumidores.",
+    "c": "Al replicar la economía el núcleo se amplía, porque hay más coaliciones posibles y por tanto más acuerdos alcanzables.",
+    "d": "El equilibrio walrasiano pertenece al núcleo y, al replicar la economía, el núcleo se encoge hasta quedar reducido a los equilibrios walrasianos."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El núcleo es el conjunto de asignaciones factibles que ninguna coalición puede bloquear con sus propios recursos. El equilibrio walrasiano siempre está en él y, según el teorema del límite de Debreu y Scarf, al replicar la economía el núcleo converge al conjunto de equilibrios walrasianos: es la conjetura de Edgeworth.",
+    "desarrollo": "Una coalición bloquea una asignación si, repartiéndose sus propias dotaciones, mejora a alguno de sus miembros sin empeorar a ninguno. El equilibrio walrasiano no puede bloquearse: si una coalición pudiera mejorar con sus dotaciones, alguno de sus miembros habría podido comprar a los precios de equilibrio una cesta mejor que la que eligió. Al replicar la economía aparecen más coaliciones capaces de bloquear, y las asignaciones del núcleo distintas de la walrasiana van quedando excluidas. Aumann (1964) prueba que con un continuo de agentes el núcleo es exactamente el conjunto de equilibrios. La precio-aceptación pasa así de supuesto a resultado.\n\nPor qué fallan las demás:\n\n- a) No es la única asignación que ninguno de los dos puede bloquear. Con dos consumidores las coaliciones son cada uno por separado (racionalidad individual) y los dos juntos (eficiencia): el núcleo es todo el tramo de la curva de contrato situado dentro de la lente que forman las curvas de indiferencia que pasan por la dotación. El intercambio queda indeterminado (Edgeworth); el equilibrio walrasiano es solo uno de esos puntos.\n- b) La curva de contrato entera son los óptimos de Pareto; el núcleo excluye los que dejan a algún agente (o coalición) peor que con sus propios recursos, y depende por tanto de las dotaciones.\n- c) Más coaliciones significa más posibilidades de bloqueo, no más acuerdos estables: el núcleo se encoge."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Enfoque del núcleo (Debreu y Scarf, 1963)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312111,
+   "estado": "publicada",
+   "enunciado": "Sobre la introducción del dinero fiduciario en el modelo de equilibrio general y el análisis de Patinkin, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Los excesos de demanda de bienes son homogéneos de grado 0 en los precios monetarios y el nivel de precios lo determina por separado el mercado de dinero con una regla de tipo Cambridge: es la dicotomía clásica, que Patinkin demuestra que es coherente.",
+    "b": "El efecto saldos reales implica que el dinero no es neutral: duplicar la cantidad de dinero altera los precios relativos y la asignación real de equilibrio, aunque el sector real y el monetario se resuelvan por separado.",
+    "c": "Los excesos de demanda de bienes dependen de los precios relativos y de los saldos reales, de modo que no son homogéneos de grado 0 en los precios solos. El dinero es neutral, pero los sectores real y monetario no pueden separarse.",
+    "d": "Como la ley de Walras incluye el mercado de dinero, el nivel absoluto de precios sigue indeterminado aunque la demanda de bienes dependa de los saldos reales: solo quedan determinados los precios relativos."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Patinkin muestra que la dicotomía clásica es incoherente: si los excesos de demanda de bienes solo dependen de precios relativos, la ley de Walras deja el nivel de precios indeterminado. La solución es el efecto saldos reales: la demanda de bienes depende de $\\overline{M}/P$. Hay neutralidad (duplicar $\\overline{M}$ duplica los precios) sin dicotomía.",
+    "desarrollo": "El experimento: en un equilibrio $\\vec{p}^*$ se duplican todos los precios. Por el postulado de homogeneidad, los mercados de bienes siguen vaciados; por la ley de Walras, el de dinero también debería estarlo. Pero con la regla de Cambridge la demanda de dinero se ha duplicado y la oferta no: contradicción. Si un consumidor quiere el doble de dinero cuando los precios se duplican, tiene que vender más bienes o comprar menos: su demanda de bienes no puede ser la misma.\n\nCon el efecto saldos reales, una subida de precios reduce el poder de compra del dinero que se tiene, cae la demanda de bienes y el exceso de oferta empuja los precios a la baja: el nivel de precios queda determinado como aquel en que los saldos reales existentes, $\\overline{M}/P$, son los deseados. Si $(\\vec{p}^*,\\overline{M})$ es un equilibrio, $(2\\vec{p}^*,2\\overline{M})$ también: el dinero es neutral, pero actúa sobre la demanda de bienes durante el ajuste, de modo que los dos sectores no se resuelven por separado.\n\nPor qué fallan las demás:\n\n- a) Describe bien la dicotomía clásica, pero Patinkin (tras Lange) demuestra que es inválida, no coherente.\n- b) Confunde dicotomía con neutralidad y las invierte: Patinkin rechaza la primera (los dos sectores no se resuelven por separado) y mantiene la segunda.\n- d) La indeterminación del nivel de precios es la consecuencia de la dicotomía (identidad de Say); el efecto saldos reales es precisamente lo que la resuelve, y determina los precios absolutos además de los relativos."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Introducción del dinero en el modelo de equilibrio general (Patinkin)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312112,
+   "estado": "publicada",
+   "enunciado": "En una economía de intercambio con un solo bien físico hay dos estados de la naturaleza, 1 y 2, con probabilidades $\\pi_1=1/4$ y $\\pi_2=3/4$, y mercados completos de bienes contingentes. Todos los consumidores maximizan su utilidad esperada y son aversos al riesgo, y no hay riesgo agregado: la dotación total es de 120 unidades en los dos estados. Un consumidor tiene una dotación de 100 unidades en el estado 1 y de 20 en el estado 2. En el equilibrio de Arrow-Debreu, ese consumidor consume:",
+   "opciones": {
+    "a": "100 unidades en el estado 1 y 20 en el estado 2: sin riesgo agregado no hay ganancias del intercambio entre estados.",
+    "b": "40 unidades en cada estado.",
+    "c": "60 unidades en cada estado.",
+    "d": "80 unidades en cada estado."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Sin riesgo agregado, los precios de estado son proporcionales a las probabilidades, $p_1/p_2=\\pi_1/\\pi_2=1/3$, y los consumidores aversos al riesgo se aseguran por completo. El consumo constante es el valor de la dotación a esos precios: $\\tfrac14\\cdot100+\\tfrac34\\cdot20=40$.",
+    "desarrollo": "Condición de equilibrio de cada consumidor: $\\dfrac{\\pi_1u_i'(x_{i1})}{\\pi_2u_i'(x_{i2})}=\\dfrac{p_1}{p_2}$. Si la dotación total es la misma en los dos estados, el equilibrio tiene $p_1/p_2=\\pi_1/\\pi_2$ y entonces $u_i'(x_{i1})=u_i'(x_{i2})$, es decir, $x_{i1}=x_{i2}$ para todos (con $u_i$ estrictamente cóncava): seguro completo, que es factible porque los recursos totales no varían.\n\nNormalizando $p_1=1/4$ y $p_2=3/4$, la restricción presupuestaria es $\\tfrac14c+\\tfrac34c=\\tfrac14\\cdot100+\\tfrac34\\cdot20=25+15=40$, luego $c=40$. Comprobación: el resto de la economía tiene la dotación $(20,100)$, que vale $5+75=80$, y consume 80 en cada estado; $40+80=120$ en ambos estados, los mercados se vacían. El consumidor vende 60 unidades contingentes al estado 1 (barato, poco probable) y compra 20 contingentes al estado 2 (caro): $60\\cdot\\tfrac14=20\\cdot\\tfrac34=15$.\n\nPor qué fallan las demás:\n\n- a) Hay riesgo individual aunque no lo haya agregado: quedarse con la dotación deja las relaciones marginales de sustitución entre estados distintas de unos consumidores a otros, y quedan ganancias de asegurarse mutuamente.\n- c) Es la media simple de la dotación, $(100+20)/2$: ignora que los precios de estado ponderan por las probabilidades.\n- d) Pondera con las probabilidades cambiadas, $\\tfrac34\\cdot100+\\tfrac14\\cdot20=80$; es el consumo del resto de la economía, no el de este consumidor."
+   },
+   "dificultad": 2,
+   "apartado": "III.4 Equilibrio general en condiciones de incertidumbre (bienes contingentes y precios de estado)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

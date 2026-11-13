@@ -1,0 +1,41 @@
+% La oferta agregada del enfoque de la absorción (Alexander, 1952): precios
+% rígidos con paro y flexibles en el pleno empleo (OA en L invertida).
+% Mismos estilos y colores que da-oa-abierta del 3.A.32 (DA morada, OA azul,
+% lo desplazado en rojo discontinuo).
+%   OA: P = 2 hasta Y_F = 5; vertical en Y_F.
+%   DA:   P = 5,1 - Y      -> A = (3,1; 2)
+%   DA':  P = 7,0 - Y      -> B = (5; 2)
+%   DA'': P = 8,5 - Y      -> C = (5; 3,5)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.95]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.8) rectangle (9.8,6.2);
+  % 1: ejes (Y, P)
+  \capa{1}{\ejes{$Y$}{$P$}{8.6}{5.8}}
+  % 2: la OA en L invertida: horizontal con paro, vertical en el pleno empleo
+  \capa{2}{\draw[curva2] (0,2) -- (5,2) -- (5,5.5) node[etiqueta,above,text=tceeazul] {OA};}
+  \capa{2}{\draw[guia] (5,0) node[below,text=black] {$Y_F$} -- (5,2);}
+  \capa{2}{\node[etiqueta,anchor=south,font=\footnotesize,text=tceeazul] at (1.25,2.05) {precios rígidos (paro)};}
+  \capa{2}{\node[etiqueta,anchor=west,align=left,font=\footnotesize,text=tceeazul] at (5.1,4.6) {pleno empleo:\\precios flexibles};}
+  % 3: la DA de partida y el equilibrio A, con paro
+  \capa{3}{\draw[curva1] (0.6,4.5) -- (4.6,0.5) node[etiqueta,right,text=tceemorado] {DA};}
+  \capa{3}{\node[punto] (A) at (3.1,2) {};}
+  \capa{3}{\node[etiqueta,below left=1pt and 0pt] at (A) {$A$};}
+  \capa{3}{\draw[guia] (3.1,0) node[below,text=black] {$Y_0$} -- (3.1,2);}
+  \capa{3}{\node[left,text=black] at (0,2) {$P_0$};}
+  % 4: la devaluación desplaza la DA: sube la renta sin subir los precios (B)
+  \capa{4}{\draw[curvanueva,desplazada] (2.5,4.5) -- (6.5,0.5) node[etiqueta,right,text=tceerojo] {DA$'$};}
+  \capa{4}{\node[punto] (B) at (5,2) {};}
+  \capa{4}{\node[etiqueta,below right=1pt and 0pt] at (B) {$B$};}
+  \capa{4}{\draw[flecha,shorten <=3pt,shorten >=3pt] (A) -- (B);}
+  % 5: en el pleno empleo, más demanda solo sube los precios (C)
+  \capa{5}{\draw[curvanueva,desplazada] (4.0,4.5) -- (8.0,0.5) node[etiqueta,right,text=tceerojo] {DA$''$};}
+  \capa{5}{\node[punto] (C) at (5,3.5) {};}
+  \capa{5}{\node[etiqueta,left=2pt] at (C) {$C$};}
+  \capa{5}{\draw[guia] (0,3.5) node[left,text=black] {$P_1$} -- (5,3.5);}
+  \capa{5}{\draw[flecha,shorten <=3pt,shorten >=3pt] (B) -- (C);}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,48 @@
+% Pregunta 229 (2021-julio-OEP2020, n.º 34): enfoque intertemporal de la cuenta corriente.
+% Izquierda: caída temporal de la renta en t = 1; el consumo apenas baja (renta permanente
+% casi igual): déficit corriente en t = 1 y pequeños superávits después para devolver.
+% Derecha: caída permanente; el consumo baja lo mismo que la renta y la CC no cambia.
+% C (azul) es la misma curva en los dos paneles; a la derecha va discontinua sobre Y.
+% Cada periodo t ocupa el intervalo [t, t+1] del eje. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.82cm,y=0.95cm]
+  % ---------- Panel izquierdo: perturbación temporal ----------
+  \begin{scope}
+    \draw[eje] (0,0) -- (6.6,0) node[below left=2pt and 0pt] {$t$};
+    \draw[eje] (0,0) -- (0,5) node[left] {$Y,\ C$};
+    \node[font=\small\bfseries,text=tceemorado] at (3.2,5.5) {Perturbación temporal};
+    \foreach \t in {0,...,5} \node[font=\small] at (\t+0.5,-0.3) {\t};
+    % Áreas
+    \fill[area2,fill=tceerojo,fill opacity=0.2] (1,1.6) rectangle (2,3.35);
+    \fill[area2] (2,3.35) rectangle (6,3.6);
+    % Renta
+    \draw[curva1] (0,3.6) -- (1,3.6) -- (1,1.6) -- (2,1.6) -- (2,3.6) -- (6,3.6)
+      node[etiqueta,above right,text=tceemorado] {$Y$};
+    % Consumo
+    \draw[curva2] (0,3.6) -- (1,3.6) -- (1,3.35) -- (6,3.35)
+      node[etiqueta,below right,text=tceeazul] {$C$};
+    % Rótulos
+    \node[etiqueta,font=\small,align=center,text=tceerojo] at (1.5,0.85)
+      {déficit\\$CC<0$};
+    \draw[thin,tceerojo] (1.5,1.15) -- (1.5,1.85);
+    \node[etiqueta,font=\small,align=center,text=tceedorado!80!black] at (4,4.4)
+      {superávit: se devuelve\\lo prestado ($CC>0$)};
+    \draw[thin,tceedorado!80!black] (4,4.0) -- (4,3.5);
+  \end{scope}
+  % ---------- Panel derecho: perturbación permanente ----------
+  \begin{scope}[xshift=7.6cm]
+    \draw[eje] (0,0) -- (6.6,0) node[below left=2pt and 0pt] {$t$};
+    \draw[eje] (0,0) -- (0,5) node[left] {$Y,\ C$};
+    \node[font=\small\bfseries,text=tceemorado] at (3.2,5.5) {Perturbación permanente};
+    \foreach \t in {0,...,5} \node[font=\small] at (\t+0.5,-0.3) {\t};
+    \draw[curva1,line width=3.2pt] (0,3.6) -- (1,3.6) -- (1,1.6) -- (6,1.6)
+      node[etiqueta,above right,text=tceemorado] {$Y$};
+    \draw[curva2,desplazada,dash pattern=on 5pt off 4pt] (0,3.6) -- (1,3.6) -- (1,1.6) -- (6,1.6)
+      node[etiqueta,below right,text=tceeazul] {$C$};
+    \node[etiqueta,font=\small,align=center,text=tceeazul] at (3.8,2.7)
+      {$C$ baja lo mismo que $Y$:\\$CC=0$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Modify this file to customize your launch splash screen -->
+<!-- Arranque en Android 7-11: la diana quieta sobre el fondo del arranque
+     (en Android 12+ lo hace el sistema con arranque_animado.xml, ver values-v31) -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="?android:colorBackground" />
-
-    <!-- You can insert your own image assets here -->
-    <!-- <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@mipmap/launch_image" />
-    </item> -->
+    <item android:drawable="@color/arranque_fondo" />
+    <item android:drawable="@drawable/diana_arranque" android:gravity="center" android:width="240dp" android:height="240dp" />
 </layer-list>

@@ -1,0 +1,48 @@
+% Pregunta 613 (2009-octubre-OEP2009, n.º 10): caja de Edgeworth con U_i = ln x_i + ln y_i.
+% Caja X = 6, Y = 4: curva de contrato = diagonal y_1 = (2/3) x_1, de O_1 (alfa = 0) a O_2 (alfa = X) (b).
+% Dotación omega = (1,2; 3,2) fuera de la diagonal: U_1 = x_1 y_1 = 3,84 y U_2 = x_2 y_2 = 3,84 se cortan
+% (lente sombreada, que corta la diagonal entre C = (2,4; 1,6) y C' = (3,6; 2,4)): omega no es eficiente (c falsa).
+% En C, U_2 = 8,64 es tangente a U_1(omega); en C', U_1 = 8,64 es tangente a U_2(omega): RMS iguales en la diagonal.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm,
+    declare function={u1(\x,\k)=\k/\x; u2(\x,\k)=4-\k/(6-\x);},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % caja, orígenes y ejes de cada individuo
+  \draw[thick] (0,0) rectangle (6,4);
+  \draw[->,thin,tceeazul] (0.3,-0.3) -- (1.3,-0.3) node[right,etiqueta] {$x_1$};
+  \draw[->,thin,tceeazul] (-0.3,0.3) -- (-0.3,1.3) node[above,etiqueta] {$y_1$};
+  \draw[->,thin,tceeverde] (5.7,4.3) -- (4.7,4.3) node[left,etiqueta] {$x_2$};
+  \draw[->,thin,tceeverde] (6.3,3.7) -- (6.3,2.7) node[below,etiqueta] {$y_2$};
+  \draw[llave] (6,-0.75) -- (0,-0.75) node[midway,below=5pt,text=black] {$X$};
+  \draw[llave] (6.75,0) -- (6.75,4) node[midway,right=5pt,text=black] {$Y$};
+  % lente de mejoras desde la dotación
+  \fill[area] plot[domain=1.2:4.8,samples=80] (\x,{u1(\x,3.84)})
+    -- plot[domain=4.8:1.2,samples=80] (\x,{u2(\x,3.84)}) -- cycle;
+  % curva de contrato: la diagonal
+  \draw[curva1] (0,0) -- (6,4);
+  % curvas de indiferencia por la dotación (se cortan)
+  \draw[curva2] plot[domain=1.0:5.9,samples=120] (\x,{u1(\x,3.84)})
+    node[etiqueta,right,text=tceeazul] {$U_1(\vect{\omega})$};
+  \draw[curva3] plot[domain=4.95:0.1,samples=120] (\x,{u2(\x,3.84)})
+    node[etiqueta,left,text=tceeverde] {$U_2(\vect{\omega})$};
+  % curvas tangentes a las anteriores sobre la diagonal
+  \draw[curva2,desplazada,thick] plot[domain=2.2:5.9,samples=120] (\x,{u1(\x,8.64)})
+    node[etiqueta,right,text=tceeazul] {$U_1'$};
+  \draw[curva3,desplazada,thick] plot[domain=3.8:0.1,samples=120] (\x,{u2(\x,8.64)})
+    node[etiqueta,left,text=tceeverde] {$U_2'$};
+  % puntos
+  \node[punto,label={[etiqueta]below left:$O_1\ (\alpha=0)$}] at (0,0) {};
+  \node[punto,label={[etiqueta]above right:$O_2\ (\alpha=X)$}] at (6,4) {};
+  \node[punto,label={[etiqueta]above left:$\vect{\omega}$}] at (1.2,3.2) {};
+  \node[punto,label={[etiqueta,label distance=1pt]below:$C$}] at (2.4,1.6) {};
+  \node[punto] (Cp) at (3.6,2.4) {};
+  \node[etiqueta] (Ct) at (3.95,3.6) {$C'=(\alpha,\tfrac{Y}{X}\alpha)$};
+  \draw[thin] (Ct.south) -- (Cp);
+  \draw[guia] (3.6,2.4) -- (3.6,0) node[below,etiqueta] {$\alpha$};
+  \node[etiqueta,text=tceemorado,anchor=south,rotate=33.7] at (1.12,0.75) {curva de contrato};
+  \node[etiqueta,text=tceemorado,anchor=north,rotate=33.7] at (5.0,3.33) {$y_1/x_1=Y/X$};
+\end{tikzpicture}
+\end{document}

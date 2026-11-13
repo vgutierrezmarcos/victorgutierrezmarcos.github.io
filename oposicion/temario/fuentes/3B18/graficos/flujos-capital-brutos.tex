@@ -1,0 +1,87 @@
+% Entradas brutas de capital en el mundo por tipo, 1980-2024 (% del PIB
+% mundial): inversión directa, cartera y otra inversión (sobre todo préstamos
+% bancarios), suma de los pasivos netos contraídos de todas las economías de la
+% balanza de pagos del FMI (MBP6) entre el PIB mundial del Banco Mundial;
+% cálculo propio. Datos: ../datos/flujos-capital-brutos.csv (no se usa 2025:
+% provisional, con 161 economías).
+% La otra inversión negativa (2008, 2009, 2013, 2015) se dibuja por debajo del
+% 0, aparte de la pila positiva.
+% Valores de control: total 21,6 (2007; otra inversión 10,0) y 6,1 (2024);
+% otra inversión -1,4 (2008) y -3,3 (2009).
+% Paleta del tema: capital en azules (IED azul medio, cartera azul claro, otra
+% inversión gris azulado; total, azul marino como los flujos brutos del
+% gráfico de indicadores).
+% Capas (CRITERIOS §7): barras -> ejes y 0 -> total -> puntos -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/flujos-capital-brutos.csv}\brutos
+\colorlet{gbied}{dicopf}
+\colorlet{gbcartera}{dicfmc}
+\definecolor{gbotra}{HTML}{8C99A6}
+\colorlet{gbtotal}{dicze}
+\pgfplotsset{
+  solo80a24/.style={restrict x to domain=1979.5:2024.5},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=12cm, height=6cm,
+      ybar stacked, bar width=0.17cm,
+      xmin=1979, xmax=2025, ymin=-4, ymax=24,
+      xtick={1980,1985,...,2020,2024},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ytick={-4,0,4,...,24},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% del PIB mundial}, ylabel style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none,
+        font=\footnotesize},
+      legend cell align=left, dicapas,
+    ]
+    % 1: inversión directa
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=gbied, solo80a24]
+        table[x=anio, y=ied] {\brutos};
+      \addlegendentry{inversión directa}
+    }
+    % 2: cartera
+    \capa{2}{
+      \addplot[on layer=dicbarras, dicbarra=gbcartera, solo80a24]
+        table[x=anio, y=cartera] {\brutos};
+      \addlegendentry{cartera}
+    }
+    % 3: otra inversión (préstamos bancarios, sobre todo): la parte positiva
+    % encima de la pila y la negativa por debajo del 0
+    \capa{3}{
+      \addplot[on layer=dicbarras, dicbarra=gbotra, solo80a24]
+        table[x=anio, y expr={max(\thisrow{otra},0)}] {\brutos};
+      \addlegendentry{otra inversión (préstamos)}
+      \addplot[on layer=dicbarras, dicbarra=gbotra, solo80a24, forget plot,
+          stack plots=false, ybar, bar shift=0pt]
+        table[x=anio, y expr={min(\thisrow{otra},0)}] {\brutos};
+    }
+    % 4: ejes (los dibuja el axis) y la línea del 0
+    \capa{4}{
+      \dicraya{(1979,0) (2025,0)}
+    }
+    % 5: el total
+    \capa{5}{
+      \addplot[diclineahalo=gbtotal, stack plots=false, sharp plot, solo80a24,
+          legend image code/.code={\draw[very thick, gbtotal] (0cm,0cm) -- (0.3cm,0cm);}]
+        table[x=anio, y=total] {\brutos};
+      \addlegendentry{total}
+    }
+    % 6: puntos y rótulos de 2007 y 2024
+    \capa{6}{
+      \addplot[on layer=dicpuntos, forget plot, stack plots=false, dicpuntos=gbtotal]
+        coordinates {(2007,21.6) (2024,6.1)};
+      \dicrotulo[font=\footnotesize, text=gbtotal, anchor=east]{(2006.3,21.6)}{$21{,}6$ (2007)}
+      \dicrotulo[font=\footnotesize, text=gbtotal, anchor=south]{(2024,6.7)}{$6{,}1$}
+      \dicrotulo[font=\footnotesize, text=gbotra!70!black, anchor=west]{(2009.8,-2.6)}{los préstamos se retiran}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\pie}[1]{{\footnotesize #1}}
+\begin{document}
+% El efecto Balassa-Samuelson como cadena causal: 5 cajas en fila unidas por
+% flechas (morado del tema) y la última, la apreciación real, en verde; debajo,
+% la función clave del tema (q = EP*/P, ↑q = depreciación real).
+% Elaboración propia a partir de Balassa (1964) y Samuelson (1964).
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,fill=tceemorado!7,thick,rounded corners=3pt,
+      text width=2.45cm,align=center,minimum height=1.55cm,inner sep=3pt},
+    cajafin/.style={caja,draw=tceeverde,fill=tceeverde!10},
+    paso/.style={->,very thick,tceemorado}]
+  % 1: sube la productividad en los comerciables
+  \capa{1}{\node[caja] (c1) at (0,0) {$\uparrow A_T$\\[1pt]\pie{productividad en los comerciables}};}
+  % 2: sube el salario en los comerciables
+  \capa{2}{\node[caja] (c2) at (3.25,0) {$\uparrow W$ en $T$\\[1pt]\pie{($P_T$ fijo por el precio único)}};
+    \draw[paso] (c1) -- (c2);}
+  % 3: sube el salario en los no comerciables
+  \capa{3}{\node[caja] (c3) at (6.5,0) {$\uparrow W$ en $N$\\[1pt]\pie{(trabajo móvil entre sectores)}};
+    \draw[paso] (c2) -- (c3);}
+  % 4: sube el precio de los no comerciables
+  \capa{4}{\node[caja] (c4) at (9.75,0) {$\uparrow P_N$\\[1pt]\pie{(sin más productividad en $N$)}};
+    \draw[paso] (c3) -- (c4);}
+  % 5: sube el nivel de precios y se aprecia el tipo real
+  \capa{5}{\node[cajafin] (c5) at (13,0) {$\uparrow P$, $\downarrow q$\\[1pt]{\footnotesize\bfseries\color{tceeverde!80!black}apreciación real}};
+    \draw[paso] (c4) -- (c5);}
+  % 6: la fórmula de Balassa-Samuelson
+  \capa{6}{\node[etiqueta,text=tceegris] at (6.5,-1.45)
+      {$q=-\,\omega_N\big[(a_T-a_N)-(a^{*}_T-a^{*}_N)\big]$};}
+\end{tikzpicture}
+\end{document}

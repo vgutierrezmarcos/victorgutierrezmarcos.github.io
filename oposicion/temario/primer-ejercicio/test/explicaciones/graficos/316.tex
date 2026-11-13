@@ -1,0 +1,37 @@
+% Pregunta 316 (2019-febrero-OEP2018, n.º 28): unión aduanera de Viner; la creación de comercio (dos triángulos) es ganancia y la desviación de comercio (rectángulo) es pérdida, así que el saldo puede ser de cualquier signo. Autor: Víctor Gutiérrez Marcos
+% A escala: D: P = 7,5 - 0,4Q; S: P = 1 + 0,8Q; P_M = 2,2; P_S = 3,2; P_M + t = 4,4.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.42cm,y=0.62cm]
+  \ejes{$Q$}{$P$}{14.5}{8}
+  % Desviación de comercio: importaciones iniciales x (P_S - P_M)
+  \fill[area2] (4.25,2.2) rectangle (7.75,3.2);
+  % Creación de comercio: producción y consumo
+  \fill[area] (2.75,3.2) -- (4.25,3.2) -- (4.25,4.4) -- cycle;
+  \fill[area] (7.75,4.4) -- (7.75,3.2) -- (10.75,3.2) -- cycle;
+  % Precios: resto del mundo, socio y resto del mundo con arancel
+  \draw[curva4] (0,2.2) -- (13.6,2.2) node[etiqueta,right] {$P_M$};
+  \draw[curvanueva] (0,3.2) -- (13.6,3.2) node[etiqueta,right] {$P_S$};
+  \draw[curva4,desplazada] (0,4.4) -- (13.6,4.4) node[etiqueta,right] {$P_M+t$};
+  % Demanda y oferta nacionales
+  \draw[curva1] (0,7.5) -- (13.75,2.0) node[etiqueta,below] {$D$};
+  \draw[curva2] (0.3,1.24) -- (7.4,6.92) node[etiqueta,above] {$S$};
+  % Cantidades antes y después
+  \draw[guia] (4.25,0) node[below] {$Q_1$} -- (4.25,4.4);
+  \draw[guia] (7.75,0) node[below] {$Q_2$} -- (7.75,4.4);
+  \draw[guia] (2.75,0) node[below] {$Q_1'$} -- (2.75,3.2);
+  \draw[guia] (10.75,0) node[below] {$Q_2'$} -- (10.75,3.2);
+  \node[punto] at (4.25,4.4) {};
+  \node[punto] at (7.75,4.4) {};
+  \node[punto] at (2.75,3.2) {};
+  \node[punto] at (10.75,3.2) {};
+  % Rótulos de las áreas
+  \node[etiqueta,font=\footnotesize,tceemorado] (cp) at (2.2,5.7) {creación $(+)$};
+  \draw[flecha] (cp.south east) -- (3.85,3.6);
+  \node[etiqueta,font=\footnotesize,tceemorado] (cc) at (11.6,5.0) {creación $(+)$};
+  \draw[flecha] (cc.south west) -- (8.6,3.6);
+  \node[etiqueta,font=\footnotesize,tceedorado,align=center] (dv) at (6,1.0) {desviación\\$(-)$};
+  \draw[flecha] (dv.north) -- (6,2.55);
+\end{tikzpicture}
+\end{document}

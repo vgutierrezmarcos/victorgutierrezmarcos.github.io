@@ -1,0 +1,347 @@
+// Clases con el preparador: lógica pura (clases.ts) y las herramientas preparar_clase y
+// agendar_clase con un Firestore simulado que tiene la red, un preparador y un alumno.
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { ahoraMadrid, compararCodigos, construirReserva, construirSesion, copiaParaAlumno, fechaClase, fijarTemasClase, huecosLibres, temasDelCante } from '../src/clases';
+import { Contenido } from '../src/contenido';
+import { temasDePreguntas } from '../src/datos';
+import { type AlmacenDatos, type Consulta, ErrorFirestore, type Json } from '../src/firestore';
+import { type Contexto, crearServidor } from '../src/herramientas';
+
+type Obj = { [k: string]: Json };
+
+/** Toda la base en memoria, por ruta absoluta; cada almacén es una vista con su raíz. */
+class Base {
+  docs = new Map<string, Obj>();
+  /** Rutas (prefijos) en las que la regla niega la escritura, como haría Firestore con un 403. */
+  prohibidas: string[] = [];
+}
+class Vista implements AlmacenDatos {
+  constructor(private readonly base: Base, private readonly raiz: string) {}
+  private abs = (r: string) => [this.raiz, r].filter(Boolean).join('/');
+  async leer(ruta: string) {
+    return this.base.docs.get(this.abs(ruta)) ?? null;
+  }
+  async listar(coleccion: string) {
+    const prefijo = `${this.abs(coleccion)}/`;
+    return [...this.base.docs.entries()].filter(([r]) => r.startsWith(prefijo) && !r.slice(prefijo.length).includes('/')).map(([r, datos]) => ({ id: r.slice(prefijo.length), datos }));
+  }
+  async consultar(coleccion: string, c: Consulta) {
+    const out = await this.listar(coleccion);
+    return c.where ? out.filter((d) => d.datos[c.where!.campo] === c.where!.valor) : out;
+  }
+  async escribir(ruta: string, datos: Obj, soloCampos?: string[]) {
+    const abs = this.abs(ruta);
+    if (this.base.prohibidas.some((p) => abs.startsWith(p))) throw new ErrorFirestore(403, 'Missing or insufficient permissions.');
+    if (!soloCampos) return void this.base.docs.set(abs, datos);
+    const actual = { ...(this.base.docs.get(abs) ?? {}) };
+    for (const campo of soloCampos) {
+      const [a, b] = campo.split('.');
+      if (b) actual[a] = { ...((actual[a] as Obj) ?? {}), [b]: (datos[a] as Obj)[b] };
+      else actual[campo] = datos[campo];
+    }
+    this.base.docs.set(abs, actual);
+  }
+  async lote(escrituras: Array<{ ruta: string; datos: Obj; soloCampos?: string[]; borrar?: boolean }>) {
+    for (const e of escrituras) {
+      if (!e.borrar) await this.escribir(e.ruta, e.datos, e.soloCampos);
+      else if (this.base.prohibidas.some((p) => this.abs(e.ruta).startsWith(p))) throw new ErrorFirestore(403, 'Missing or insufficient permissions.');
+      else this.base.docs.delete(this.abs(e.ruta));
+    }
+  }
+}
+
+describe('clases.ts', () => {
+  it('fechaClase y ahoraMadrid dan horas de Madrid sin zona', () => {
+    expect(fechaClase('2026-11-04', '18:00')).toBe('2026-11-04T18:00:00.000');
+    expect(fechaClase('2026-11-04', '9.30')).toBe('2026-11-04T09:30:00.000');
+    expect(fechaClase('2026-02-30', '18:00')).toBeNull();
+    expect(fechaClase('2026-11-04', '25:00')).toBeNull();
+    expect(ahoraMadrid(new Date('2026-07-01T10:00:00Z'))).toBe('2026-07-01T12:00:00.000'); // verano: UTC+2
+    expect(ahoraMadrid(new Date('2026-12-01T10:00:00Z'))).toBe('2026-12-01T11:00:00.000'); // invierno: UTC+1
+  });
+
+  it('huecosLibres quita lo pasado, lo ocupado y lo ya pedido', () => {
+    // 2026-11-02 es lunes. Franja los lunes a las 18:00 (1080 min) de 120 minutos.
+    const pub = { activo: true, huecos: [{ diaSemana: 1, minutoDelDia: 1080, minutos: 120 }], ocupados: [{ inicio: '2026-11-09T18:30:00.000', minutos: 60 }] };
+    const libres = huecosLibres(pub, ['2026-11-16T18:00:00.000'], '2026-11-02T19:00:00.000', 4);
+    expect(libres.map((h) => h.inicio)).toEqual(['2026-11-23T18:00:00.000']);
+    expect(huecosLibres({ ...pub, activo: false }, [], '2026-11-01T00:00:00.000')).toEqual([]);
+  });
+
+  it('temasDelCante coge la semana cuyo cante cae más cerca y quita los desmarcados', () => {
+    const crono: Obj = { semanas: [{ lunes: '2026-11-02T00:00:00.000', temas: ['3.A.8', '3.A.9'] }, { lunes: '2026-11-09T00:00:00.000', temas: ['3.A.10'], descanso: true }], desmarcados: ['3.A.9'] };
+    expect(temasDelCante(crono, '2026-11-07')).toEqual(['3.A.8']); // cante el domingo 8
+    expect(temasDelCante(crono, '2026-11-15')).toBeNull(); // descanso
+    expect(temasDelCante(crono, '2026-12-20')).toBeNull(); // fuera
+  });
+
+  it('fijarTemasClase sustituye la de esa clase, ordena los códigos y guarda cuándo se fijaron', () => {
+    expect(['3.A.10', '3.A.2', '3.B.1'].sort(compararCodigos)).toEqual(['3.A.2', '3.A.10', '3.B.1']);
+    const r = fijarTemasClase(['res_x@2026-10-01T10:00:00.000@3.A.1', 'otra@2026-10-02T10:00:00.000@3.B.1'], 'res_x', '2026-10-30T12:00:00.000', ['3.A.10', '3.A.2']);
+    expect(r).toEqual(['otra@2026-10-02T10:00:00.000@3.B.1', 'res_x@2026-10-30T12:00:00.000@3.A.2,3.A.10']);
+  });
+
+  it('la reserva, la sesión y la copia del alumno llevan los campos de la app', () => {
+    const p = { fecha: '2026-11-04T18:00:00.000', minutos: 120, modalidad: 'online' as const, temas: ['3.A.8'], nota: 'ver Slutsky' };
+    const r = construirReserva('r1', p, 'prep', 'alu', 'Ana', '2026-10-30T11:00:00.000Z');
+    expect(r).toMatchObject({ id: 'r1', preparador: 'prep', alumno: 'alu', alumnoNombre: 'Ana', fecha: p.fecha, minutos: 120, nota: 'ver Slutsky', modalidad: 'online', temas: ['3.A.8'], estado: 'pedida' });
+    const s = construirSesion('s1', p, 'alu', 3, 30, { nombre: 'Víctor', minutosClase: 120, plataforma: '', numTemas: 1 }, '2026-10-30T11:00:00.000Z');
+    expect(s).toMatchObject({ id: 's1', modalidad: 'online', plataforma: 'meet', bolsa: 'estudiados', estado: 'pendiente', alumno: 'alu', numTemas: 1, exposicion: 30, temasPropuestos: ['3.A.8'] });
+    expect(s).not.toHaveProperty('lugar');
+    const c = copiaParaAlumno({ ...s, eventoGoogle: 'ev' }, 'prep', 'Víctor');
+    expect(c).toMatchObject({ titulo: 'Con Víctor', preparador: 'prep', preparadorNombre: 'Víctor' });
+    expect(c).not.toHaveProperty('alumno');
+    expect(c).not.toHaveProperty('eventoGoogle');
+  });
+});
+
+describe('preparar_clase y agendar_clase', () => {
+  let base: Base;
+  let ctx: (uid: string) => Contexto;
+  const llamar = async (uid: string, nombre: string, args: Obj) => {
+    const servidor = crearServidor(ctx(uid));
+    const [a, b] = InMemoryTransport.createLinkedPair();
+    await servidor.connect(a);
+    const c = new Client({ name: 'prueba', version: '0' });
+    await c.connect(b);
+    const r = await c.callTool({ name: nombre, arguments: args });
+    const t = (r.content as Array<{ text: string }>)[0].text;
+    return { error: r.isError === true, texto: t, datos: r.isError ? null : (JSON.parse(t) as Obj) };
+  };
+  const anio = new Date().getUTCFullYear() + 1;
+
+  beforeEach(() => {
+    base = new Base();
+    // Opositora «alu» enlazada con el preparador «prep» (TCEE)
+    base.docs.set('users/alu/preparadores/prep', { uid: 'prep', nombre: 'Víctor', aceptado: true });
+    base.docs.set('preparadores/prep/alumnos/alu', { uid: 'alu', nombre: 'Ana', aceptado: true });
+    base.docs.set('huecos/prep', { activo: true, nombre: 'Víctor', huecos: [1, 2, 3, 4, 5, 6, 7].map((d) => ({ diaSemana: d, minutoDelDia: 1080, minutos: 120 })), ocupados: [] });
+    base.docs.set('users/alu/cronogramas/c1', { archivado: false, compartir: true, creado: '2026-01-01T00:00:00.000', semanas: [{ lunes: `${anio}-03-01T00:00:00.000`, temas: ['3.A.8', '3.A.9'] }] });
+    base.docs.set('users/alu/progress/settings', { temasClases: [], temasEstudiados: ['3.A.1'] });
+    // El preparador, verificado, con la ficha de Ana
+    base.docs.set('users/prep/progress/preparador', { activo: true, nombre: 'Víctor', minutosClase: 90, plataforma: 'meet' });
+    base.docs.set('preparadoresVerificados/prep', { activo: true });
+    base.docs.set('users/prep/alumnos/alu', { id: 'alu', nombre: 'Ana', uid: 'alu', ejercicio: 3, borrado: false });
+    ctx = (uid) => ({
+      uid,
+      email: `${uid}@example.org`,
+      almacen: async (op) => new Vista(base, op === 'tcee' ? `users/${uid}` : `users/${uid}/oposiciones/${op}`),
+      almacenEn: async (raiz) => new Vista(base, raiz),
+      banco: async () => temasDePreguntas({ preguntas: [] }),
+      contenido: new Contenido({ get: async () => null }),
+      skill: async () => null,
+      explicaciones: async () => ({}),
+      proceso: async () => null,
+      fuentes: async () => ({ aviso: '', bloques: [], tcee: { '3.A.8': { oposicion: 'tcee', titulo: 'Demanda', ejercicio: 3, parte: 'A' } }, dce: {} }),
+      apuntes: async () => ({ formato: 'docx', esquema: [], texto: '' }),
+      textos: async () => null,
+      pagina: async () => null,
+      cliente: async () => 'Claude',
+      desconectar: async () => undefined,
+      sello: async (t) => `sello${[...t].reduce((n, c) => (n * 31 + c.charCodeAt(0)) >>> 0, 7)}abcdefgh`,
+    });
+  });
+
+  it('como opositor ve a su preparador con huecos y los temas del cronograma para ese día', async () => {
+    // El 1 de marzo de ${anio}+6 días es el cante de esa semana: los temas se piden para el día 6
+    const r = await llamar('alu', 'preparar_clase', { dia: `${anio}-03-06` });
+    expect(r.error).toBe(false);
+    const op = r.datos!.como_opositor as Obj;
+    const prep = (op.preparadores as Obj[])[0];
+    expect(prep).toMatchObject({ uid: 'prep', nombre: 'Víctor', aceptado: true, reservas_abiertas: true, minutos_por_defecto: 120 });
+    expect((prep.huecos_libres as Obj[]).length).toBeGreaterThan(10);
+    expect((op.temas_del_cronograma as Obj)[`${anio}-03-06`]).toEqual(['3.A.8', '3.A.9']);
+    expect(r.datos!.como_preparador).toBeUndefined();
+  });
+
+  it('como opositor pide la reserva con modalidad y temas y los fija en su agenda', async () => {
+    const r = await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online', temas: ['3.A.9', '3.A.8'], nota: 'Slutsky' });
+    expect(r.error).toBe(false);
+    const id = r.datos!.reserva as string;
+    expect(base.docs.get(`reservas/${id}`)).toMatchObject({ preparador: 'prep', alumno: 'alu', alumnoNombre: 'Ana', fecha: `${anio}-03-06T18:00:00.000`, minutos: 120, modalidad: 'online', temas: ['3.A.9', '3.A.8'], estado: 'pedida' });
+    const ajustes = base.docs.get('users/alu/progress/settings')!;
+    expect((ajustes.temasClases as string[])[0]).toMatch(new RegExp(`^res_${id}@.+@3\\.A\\.8,3\\.A\\.9$`));
+    expect(ajustes.temasEstudiados).toEqual(['3.A.1']); // el resto de los ajustes no se toca
+  });
+
+  it('con vistaPrevia enseña la clase (y si pisa otra) sin pedirla ni tocar la agenda', async () => {
+    const antes = [...base.docs.keys()].filter((k) => k.startsWith('reservas/')).length;
+    const ajustes = JSON.stringify(base.docs.get('users/alu/progress/settings'));
+    const r = await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online', temas: ['3.A.8'], vistaPrevia: true });
+    expect(r.error).toBe(false);
+    expect(r.datos).toMatchObject({ vistaPrevia: true, pedida: false, como: 'opositor', fecha: `${anio}-03-06T18:00`, minutos: 120, modalidad: 'online', temas: ['3.A.8'] });
+    expect(r.datos!.choques).toBeUndefined();
+    expect([...base.docs.keys()].filter((k) => k.startsWith('reservas/')).length).toBe(antes);
+    expect(JSON.stringify(base.docs.get('users/alu/progress/settings'))).toBe(ajustes);
+    base.docs.set('users/alu/cantes/x', { id: 'x', fecha: `${anio}-03-06T19:00:00.000`, minutos: 60, estado: 'pendiente', preparadorNombre: 'Otra' });
+    const choca = await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online', vistaPrevia: true });
+    expect(choca.error).toBe(false);
+    expect((choca.datos!.choques as string[])[0]).toContain('con Otra');
+    base.docs.delete('users/alu/cantes/x');
+    expect((await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'otro', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online', vistaPrevia: true })).error).toBe(true);
+  });
+
+  it('no pide clase a quien no es su preparador, ni en el pasado, ni si pisa otra suya sin confirmarlo', async () => {
+    expect((await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'otro', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'online' })).error).toBe(true);
+    expect((await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: '2020-03-06', hora: '18:00', modalidad: 'online' })).texto).toContain('futuras');
+    base.docs.set('users/alu/cantes/x', { id: 'x', fecha: `${anio}-03-06T19:00:00.000`, minutos: 60, estado: 'pendiente', preparadorNombre: 'Otra' });
+    const choque = await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'presencial' });
+    expect(choque.texto).toContain('Pisa otra clase');
+    expect((await llamar('alu', 'agendar_clase', { como: 'opositor', con: 'prep', dia: `${anio}-03-06`, hora: '18:00', modalidad: 'presencial', aunque_choque: true })).error).toBe(false);
+  });
+
+  it('como preparador ve a sus alumnos y el cronograma compartido del alumno', async () => {
+    const r = await llamar('prep', 'preparar_clase', { con: 'alu', dia: `${anio}-03-06` });
+    expect(r.error).toBe(false);
+    const p = r.datos!.como_preparador as Obj;
+    expect(p).toMatchObject({ nombre: 'Víctor', verificado: true, minutos_por_defecto: 90 });
+    expect((p.alumnos as Obj[])[0]).toMatchObject({ id: 'alu', nombre: 'Ana', enlazado: true });
+    expect(((p.alumno as Obj).temas_del_cronograma as Obj)[`${anio}-03-06`]).toEqual(['3.A.8', '3.A.9']);
+  });
+
+  it('como preparador crea la sesión y la copia en la agenda del alumno, con los temas propuestos', async () => {
+    const r = await llamar('prep', 'agendar_clase', { como: 'preparador', con: 'alu', dia: `${anio}-03-06`, hora: '17:30', modalidad: 'presencial', lugar: 'Despacho', temas: ['3.A.8'] });
+    expect(r.error).toBe(false);
+    expect(r.datos!.en_la_agenda_del_alumno).toBe(true);
+    const id = r.datos!.sesion as string;
+    expect(base.docs.get(`users/prep/sesiones/${id}`)).toMatchObject({ alumno: 'alu', fecha: `${anio}-03-06T17:30:00.000`, minutos: 90, modalidad: 'presencial', lugar: 'Despacho', temasPropuestos: ['3.A.8'], numTemas: 1, exposicion: 30 });
+    expect(base.docs.get(`users/alu/cantes/${id}`)).toMatchObject({ preparador: 'prep', preparadorNombre: 'Víctor', titulo: 'Con Víctor', temasPropuestos: ['3.A.8'] });
+  });
+
+  it('si la regla niega la copia, la clase queda en la agenda del preparador y lo avisa', async () => {
+    base.prohibidas.push('users/alu/cantes');
+    const r = await llamar('prep', 'agendar_clase', { como: 'preparador', con: 'alu', dia: `${anio}-03-06`, hora: '17:30', modalidad: 'online' });
+    expect(r.datos).toMatchObject({ creada: true, en_la_agenda_del_alumno: false });
+    expect(r.datos!.aviso as string).toContain('próxima vez');
+  });
+
+  it('quien no es preparador no puede crear sesiones', async () => {
+    const r = await llamar('alu', 'agendar_clase', { como: 'preparador', con: 'prep', dia: `${anio}-03-06`, hora: '17:30', modalidad: 'online' });
+    expect(r.texto).toContain('no eres preparador');
+  });
+  // ------------------------------------------------------------ Preparadores (fase 2 b)
+
+  it('leer_alumnos da los alumnos con su última y su próxima clase y las reservas por responder', async () => {
+    base.docs.set('users/prep/sesiones/s1', { id: 's1', alumno: 'alu', fecha: '2026-01-10T18:00:00.000', estado: 'hecho', temas: ['3.A.8'], resultado: { valoracion: 3, comentarios: 'justo de tiempo' }, notas: 'privadas' });
+    base.docs.set('users/prep/sesiones/s2', { id: 's2', alumno: 'alu', fecha: `${anio}-03-06T18:00:00.000`, estado: 'pendiente', temas: [], temasPropuestos: ['3.A.9'], minutos: 120 });
+    base.docs.set('reservas/r1', { id: 'r1', preparador: 'prep', alumno: 'alu', alumnoNombre: 'Ana', fecha: `${anio}-03-10T18:00:00.000`, minutos: 90, modalidad: 'online', temas: ['3.A.9'], nota: 'insistir en gráficos', estado: 'pedida' });
+    base.docs.set('reservas/r0', { id: 'r0', preparador: 'prep', alumno: 'alu', fecha: `${anio}-03-11T18:00:00.000`, estado: 'rechazada' });
+    const r = await llamar('prep', 'leer_alumnos', {});
+    expect(r.error).toBe(false);
+    expect((r.datos!.alumnos as Obj[])[0]).toMatchObject({ id: 'alu', nombre: 'Ana', enlazado: true, clasesHechas: 1, ultimaClase: { valoracion: 3 }, proximaClase: { id: 's2', temas: ['3.A.9'] } });
+    expect(r.datos!.reservasPorResponder).toEqual([{ id: 'r1', alumno: 'Ana', fecha: `${anio}-03-10T18:00`, minutos: 90, modalidad: 'online', temas: ['3.A.9'], nota: 'insistir en gráficos' }]);
+    expect((await llamar('alu', 'leer_alumnos', {})).error).toBe(true);
+  });
+
+  it('leer_alumno junta lo del preparador y lo que el alumno comparte, solo de las clases que firma él', async () => {
+    base.docs.set('users/prep/alumnos/alu', { id: 'alu', nombre: 'Ana', uid: 'alu', ejercicio: 3, borrado: false, notas: 'Arrastra la introducción' });
+    base.docs.set('users/prep/sesiones/s1', { id: 's1', alumno: 'alu', fecha: '2026-01-10T18:00:00.000', estado: 'hecho', temas: ['3.A.8'], resultado: { valoracion: 3 } });
+    base.docs.set('users/alu/cantes/s1', { id: 's1', preparador: 'prep', fecha: '2026-01-10T18:00:00.000', estado: 'hecho' });
+    base.docs.set('users/alu/cantes/s1/informes/i1', { fecha: '2026-01-11T10:00:00.000Z', cliente: 'Claude', informe: 'De la clase con Víctor', tareas: [] });
+    base.docs.set('users/alu/cantes/otro', { id: 'otro', preparador: 'otroPrep', fecha: '2026-01-12T18:00:00.000', estado: 'hecho' });
+    base.docs.set('users/alu/cantes/otro/informes/i2', { fecha: '2026-01-13T10:00:00.000Z', informe: 'De la clase con otro preparador' });
+    const r = await llamar('prep', 'leer_alumno', { alumno: 'alu' });
+    expect(r.error).toBe(false);
+    expect(r.datos!.alumno).toMatchObject({ nombre: 'Ana', enlazado: true, misNotas: 'Arrastra la introducción' });
+    expect((r.datos!.clases as Obj).totalHechas).toBe(1);
+    const comparte = r.datos!.loQueComparte as Obj;
+    expect(comparte.temasEstudiados).toEqual(['3.A.1']);
+    expect((comparte.cronograma as Obj).proximas).toHaveLength(1);
+    expect((comparte.correccionesDeSusClases as Obj[]).map((i) => i.informe)).toEqual(['De la clase con Víctor']);
+    expect(r.texto).not.toContain('otro preparador');
+    expect((await llamar('prep', 'leer_alumno', { alumno: 'nadie' })).error).toBe(true);
+  });
+
+  it('responder_reserva crea la clase en las dos agendas al aceptar y solo cambia el estado al rechazar', async () => {
+    base.docs.set('reservas/r1', { id: 'r1', preparador: 'prep', alumno: 'alu', alumnoNombre: 'Ana', fecha: `${anio}-03-10T18:00:00.000`, minutos: 90, modalidad: 'online', temas: ['3.A.9'], nota: 'gráficos', estado: 'pedida' });
+    base.docs.set('reservas/r2', { id: 'r2', preparador: 'prep', alumno: 'alu', alumnoNombre: 'Ana', fecha: `${anio}-03-12T18:00:00.000`, minutos: 90, estado: 'pedida' });
+    base.docs.set('reservas/ajena', { id: 'ajena', preparador: 'otro', alumno: 'alu', fecha: `${anio}-03-12T18:00:00.000`, estado: 'pedida' });
+    const r = await llamar('prep', 'responder_reserva', { reserva: 'r1', aceptar: true });
+    expect(r.datos).toMatchObject({ aceptada: true, sesion: 'res_r1', alumno: 'Ana', en_la_agenda_del_alumno: true });
+    expect(base.docs.get('users/prep/sesiones/res_r1')).toMatchObject({ alumno: 'alu', minutos: 90, modalidad: 'online', plataforma: 'meet', temasPropuestos: ['3.A.9'], notas: 'gráficos', estado: 'pendiente' });
+    expect(base.docs.get('users/alu/cantes/res_r1')).toMatchObject({ preparador: 'prep', preparadorNombre: 'Víctor' });
+    expect(base.docs.get('reservas/r1')!.estado).toBe('aceptada');
+    expect((await llamar('prep', 'responder_reserva', { reserva: 'r1', aceptar: true })).error).toBe(true); // ya contestada
+    const no = await llamar('prep', 'responder_reserva', { reserva: 'r2', aceptar: false });
+    expect(no.datos).toMatchObject({ rechazada: true });
+    expect(base.docs.get('reservas/r2')!.estado).toBe('rechazada');
+    expect(base.docs.has('users/prep/sesiones/res_r2')).toBe(false);
+    expect((await llamar('prep', 'responder_reserva', { reserva: 'ajena', aceptar: true })).error).toBe(true);
+  });
+
+  it('guardar_nota_alumno añade con fecha sin borrar, y guardar_deberes llega a la clase del alumno', async () => {
+    base.docs.set('users/prep/alumnos/alu', { id: 'alu', nombre: 'Ana', uid: 'alu', ejercicio: 3, borrado: false, notas: 'Primera' });
+    const n = await llamar('prep', 'guardar_nota_alumno', { alumno: 'alu', nota: 'Insistir en gráficos' });
+    expect(n.error).toBe(false);
+    expect(String(base.docs.get('users/prep/alumnos/alu')!.notas)).toMatch(/^Primera\n\d+\/\d+\/\d{4}: Insistir en gráficos$/);
+    base.docs.set('users/prep/sesiones/s2', { id: 's2', alumno: 'alu', fecha: `${anio}-03-06T18:00:00.000`, estado: 'pendiente', tareas: [{ id: 'x', tipo: 'libre', texto: 'Ya estaba', creada: 'antes' }] });
+    base.docs.set('users/alu/cantes/s2', { id: 's2', preparador: 'prep', fecha: `${anio}-03-06T18:00:00.000`, estado: 'pendiente' });
+    const d = await llamar('prep', 'guardar_deberes', { sesion: 's2', tareas: [{ tipo: 'esquema', tema: '3.A.9' }, { tipo: 'test', preguntas: 20 }] });
+    expect(d.datos).toMatchObject({ guardados: 2, deberesDeLaClase: 3, le_llegan_al_alumno: true });
+    expect((base.docs.get('users/alu/cantes/s2')!.tareas as Obj[]).map((t) => t.tipo)).toEqual(['libre', 'esquema', 'test']);
+    expect((await llamar('prep', 'guardar_deberes', { sesion: 's2', tareas: [{ tipo: 'estudiar' }] })).error).toBe(true); // falta el tema
+    expect((await llamar('alu', 'guardar_nota_alumno', { alumno: 'alu', nota: 'no soy preparador' })).error).toBe(true);
+  });
+  it('borrar_datos_oposicion pide la frase y el código, y borra solo esa oposición', async () => {
+    // Lo de «alu» en TCEE (con lo que cuelga de un cante), en DCE y en la cuenta
+    base.docs.set('users/alu/cantes/c1', { id: 'c1', estado: 'hecho' });
+    base.docs.set('users/alu/cantes/c1/informes/i1', { resumen: 'Bien' });
+    base.docs.set('users/alu/exam_results/t1', { notaSobre10: 7 });
+    // Las anotaciones de un tema cuelgan de un documento que no existe
+    base.docs.set('users/alu/anotaciones/3.A.8/paginas/p1', { trazos: [] });
+    base.docs.set('users/alu/anotaciones/3.A.8-revisado/paginas/p2', { trazos: [] });
+    base.docs.set('users/alu/oposiciones/dce/cantes/d1', { id: 'd1' });
+    base.docs.set('users/alu/cuenta/app', { oposicion: 'tcee' });
+    base.docs.set('reservas/r1', { id: 'r1', preparador: 'prep', alumno: 'alu', estado: 'pedida' });
+    base.docs.set('reservas/otra', { id: 'otra', preparador: 'prep', alumno: 'zoe', estado: 'pedida' });
+
+    const paso1 = await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee' });
+    expect(paso1.datos).toMatchObject({ borrado: false, frase: 'BORRAR TCEE' });
+    expect((paso1.datos!.seBorraria as Obj)['cantes y clases']).toBe(1);
+    expect(base.docs.has('users/alu/cantes/c1')).toBe(true); // el paso 1 no borra nada
+    const codigo = String(paso1.datos!.codigo);
+
+    // Sin la frase exacta, con el código de otra oposición o con uno inventado: nada
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo, frase: 'sí, adelante' })).error).toBe(true);
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo: 'ABCDEFGH', frase: 'BORRAR TCEE' })).error).toBe(true);
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'dce', codigo, frase: 'BORRAR DCE' })).error).toBe(true);
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', frase: 'BORRAR TCEE' })).error).toBe(true);
+    expect(base.docs.has('users/alu/cantes/c1')).toBe(true);
+    expect(base.docs.has('users/alu/oposiciones/dce/cantes/d1')).toBe(true);
+
+    const paso2 = await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo, frase: ' borrar tcee ' });
+    expect(paso2.datos).toMatchObject({ borrado: true, enlacesRotos: 1 });
+    const quedan = [...base.docs.keys()].filter((r) => r.startsWith('users/alu/'));
+    expect(quedan.sort()).toEqual(['users/alu/cuenta/app', 'users/alu/oposiciones/dce/cantes/d1']);
+    // La marca para que la app borre su copia local, sin perder lo que había en la cuenta
+    expect(base.docs.get('users/alu/cuenta/app')).toMatchObject({ oposicion: 'tcee' });
+    expect(typeof (base.docs.get('users/alu/cuenta/app')!.borrados as Obj).tcee).toBe('string');
+    // Su enlace y su reserva se van; lo del preparador y lo de otros, no
+    expect(base.docs.has('preparadores/prep/alumnos/alu')).toBe(false);
+    expect(base.docs.has('reservas/r1')).toBe(false);
+    expect(base.docs.has('reservas/otra')).toBe(true);
+    expect(base.docs.has('users/prep/alumnos/alu')).toBe(true);
+    expect(base.docs.has('huecos/prep')).toBe(true);
+    // Ya no hay nada: el paso 1 lo dice
+    expect((await llamar('alu', 'borrar_datos_oposicion', { oposicion: 'tcee' })).datos).toMatchObject({ borrado: false });
+  });
+
+  it('borrar_datos_oposicion de un preparador rompe los enlaces por los dos lados y sigue si la red niega algo', async () => {
+    base.docs.set('users/prep/progress/preparador', { activo: true, nombre: 'Víctor', codigo: 'ABC123' });
+    base.docs.set('codigos/ABC123', { uid: 'prep' });
+    base.docs.set('materiales/m1', { preparador: 'prep', titulo: 'Guion' });
+    base.docs.set('users/prep/sesiones/s1', { id: 's1', alumno: 'alu' });
+    base.docs.set('users/prep/sesiones/s1/notas/prep', { texto: 'Nota' });
+    base.prohibidas.push('huecos/');
+    const codigo = String((await llamar('prep', 'borrar_datos_oposicion', { oposicion: 'tcee' })).datos!.codigo);
+    const r = await llamar('prep', 'borrar_datos_oposicion', { oposicion: 'tcee', codigo, frase: 'BORRAR TCEE' });
+    expect(r.datos).toMatchObject({ borrado: true, enlacesRotos: 1 });
+    expect((r.datos!.avisos as string[]).join(' ')).toContain('huecos');
+    expect([...base.docs.keys()].filter((k) => k.startsWith('users/prep/') && !k.startsWith('users/prep/cuenta/'))).toEqual([]);
+    for (const ruta of ['preparadores/prep/alumnos/alu', 'users/alu/preparadores/prep', 'codigos/ABC123', 'materiales/m1']) expect(base.docs.has(ruta), ruta).toBe(false);
+    // Lo del alumno sigue siendo suyo
+    expect(base.docs.has('users/alu/progress/settings')).toBe(true);
+  });
+});

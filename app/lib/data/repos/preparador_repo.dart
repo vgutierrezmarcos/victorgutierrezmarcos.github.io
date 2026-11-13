@@ -551,7 +551,18 @@ class PreparadorRepo {
     final a = s.alumno == null ? null : alumno(s.alumno!);
     if (!conSesion || a?.uid == null) return EstadoCopia.enviada;
     try {
-      await oposicion.raizUsuario(_db!, a!.uid!).collection('cantes').doc(s.id).set(copiaParaAlumno(s));
+      final doc = oposicion.raizUsuario(_db!, a!.uid!).collection('cantes').doc(s.id);
+      var copia = s;
+      if (s.tareas.isNotEmpty) {
+        // Los deberes que el alumno ya ha tachado en su copia no se destachan
+        // al volver a escribirla.
+        try {
+          final suya = (await doc.get()).data();
+          final hechas = {for (final t in Tarea.listaDeJson(suya?['tareas'])) if (t.hecha) t.id: t};
+          if (hechas.isNotEmpty) copia = s.copyWith(tareas: [for (final t in s.tareas) hechas[t.id] == null || t.hecha ? t : t.copyWith(hecha: true, hechaEn: hechas[t.id]!.hechaEn)]);
+        } catch (_) {}
+      }
+      await doc.set(copiaParaAlumno(copia));
       await _anotarCopia(s.id, null);
       return EstadoCopia.enviada;
     } on FirebaseException catch (e) {
@@ -610,6 +621,20 @@ class PreparadorRepo {
       ((_perfil.get('vinculos') as List?) ?? []).map((e) => VinculoPreparador.fromJson(e as Map)).toList();
 
   Future<void> _guardarVinculos(List<VinculoPreparador> v) => _perfil.put('vinculos', v.map((e) => e.toJson()).toList());
+
+  /// Nombre del preparador de ese código («X te invita a conectar»), o null si
+  /// no hay sesión, no existe o no se puede leer.
+  Future<String?> nombrePorCodigo(String texto) async {
+    final codigo = normalizarCodigo(texto);
+    if (codigo == null || !conSesion) return null;
+    try {
+      final doc = await oposicion.red(_db!, 'codigos').doc(codigo).get();
+      final nombre = doc.data()?['nombre'] as String?;
+      return nombre == null || nombre.trim().isEmpty ? null : nombre.trim();
+    } catch (_) {
+      return null;
+    }
+  }
 
   /// Pide conectar la app del alumno con el preparador que tiene ese código.
   /// El enlace queda pendiente hasta que el preparador lo acepta: hasta
@@ -924,7 +949,9 @@ class PreparadorRepo {
       // Se guarda la lista para poder sortear sin conexión.
       final ordenados = ({...estudiados, ...delCronograma}..removeAll(noCantar.keys)).toList()..sort();
       if (ordenados.join(',') != (List.of(a.temas)..sort()).join(',')) await guardarAlumno(a.copyWith(temas: ordenados));
+      final comparte = ((ajustes['avisosPreparador'] as List?) ?? const []).map((e) => e.toString()).toSet();
       return ProgresoAlumno(
+        ultimoUso: comparte.contains('uso') ? ajustes['ultimoUso'] as String? : null,
         estudiados: estudiados,
         enRepaso: ((ajustes['temasEnRepaso'] as List?) ?? []).map((e) => e.toString()).toSet(),
         delCronograma: delCronograma,
@@ -1258,6 +1285,41 @@ class PreparadorRepo {
     } catch (_) {}
     final codigo = perfil().codigo;
     if (codigo != null) await oposicion.red(_db, 'codigos').doc(codigo).delete();
+    // Lo demás que tiene a su nombre en la red: reservas de clase (pedidas o
+    // recibidas), sus huecos, su solicitud de alta y las clases sueltas y
+    // búsquedas de preparador que abrió. Cada cosa por separado: lo que las
+    // reglas no dejan (o no existe) no impide el resto.
+    Future<void> intenta(Future<void> Function() f) async {
+      try {
+        await f();
+      } catch (_) {}
+    }
+
+    for (final campo in const ['alumno', 'preparador']) {
+      await intenta(() async {
+        for (final d in (await oposicion.red(_db, 'reservas').where(campo, isEqualTo: uid).get()).docs) {
+          await d.reference.delete();
+        }
+      });
+    }
+    await intenta(() => oposicion.red(_db, 'huecos').doc(uid).delete());
+    await intenta(() => oposicion.red(_db, 'solicitudesPreparador').doc(uid).delete());
+    await intenta(() async {
+      for (final d in (await oposicion.red(_db, 'sustituciones').where('alumno', isEqualTo: uid).get()).docs) {
+        await intenta(() => d.reference.collection('privado').doc('alumno').delete());
+        await d.reference.delete();
+      }
+    });
+    await intenta(() async {
+      for (final d in (await oposicion.red(_db, 'busquedas').where('alumno', isEqualTo: uid).get()).docs) {
+        await intenta(() async {
+          for (final i in (await d.reference.collection('interesados').get()).docs) {
+            await i.reference.delete();
+          }
+        });
+        await d.reference.delete();
+      }
+    });
   }
 
   // ------------------------------------------------------------- Clases fijas
@@ -1318,7 +1380,8 @@ class PreparadorRepo {
       a = Alumno(id: r.alumno, uid: r.alumno, nombre: r.alumnoNombre.isEmpty ? 'Alumno' : r.alumnoNombre, creado: DateTime.now(), updatedAt: DateTime.now());
       await guardarAlumno(a);
     }
-    final s = Cante(id: 'res_${r.id}', fecha: r.fecha, minutos: r.minutos, exposicion: Oposiciones.actual.minutosExposicion(a.ejercicio), ejercicio: a.ejercicio, bolsa: TipoBolsa.estudiados, alumno: a.id, notas: r.nota, updatedAt: DateTime.now());
+    // La modalidad y los temas que pidió el alumno pasan a la clase (los temas, como propuesta: él ya los tiene fijados)
+    final s = Cante(id: 'res_${r.id}', fecha: r.fecha, minutos: r.minutos, exposicion: Oposiciones.actual.minutosExposicion(a.ejercicio), ejercicio: a.ejercicio, bolsa: TipoBolsa.estudiados, alumno: a.id, notas: r.nota, modalidad: r.modalidad, plataforma: r.modalidad == Modalidad.online ? perfil().plataforma : '', temasPropuestos: r.temas, updatedAt: DateTime.now());
     await guardarSesion(s);
     return s;
   }

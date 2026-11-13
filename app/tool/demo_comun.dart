@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tcee_app/widgets/arranque.dart';
 import 'package:tcee_app/widgets/comunes.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -23,6 +24,7 @@ import 'package:pdfx/pdfx.dart';
 // La interfaz de la plataforma de pdfx no se exporta: hace falta para el PDF de demostración.
 // ignore: implementation_imports
 import 'package:pdfx/src/renderer/interfaces/platform.dart';
+import 'package:tcee_app/data/models/temas_clase.dart';
 import 'package:tcee_app/features/cantar/reloj_compartido.dart';
 import 'package:tcee_app/features/temario/anotaciones.dart';
 import 'package:tcee_app/data/models/revisado.dart';
@@ -31,6 +33,7 @@ import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/constants.dart';
 import 'package:tcee_app/features/guia/guia.dart';
 import 'package:tcee_app/features/inicio/para_empezar.dart';
+import 'package:tcee_app/features/inicio/calendario_dialogo.dart';
 import 'package:tcee_app/features/inicio/permisos_sheet.dart';
 import 'package:tcee_app/features/organizacion/organizacion_hub_page.dart';
 import 'package:tcee_app/core/providers.dart';
@@ -54,6 +57,13 @@ import 'package:tcee_app/data/repos/usuario_repo.dart';
 
 /// Lee un JSON de la web (rutas relativas a app/).
 Map<String, dynamic> leerJson(String ruta) => jsonDecode(File(ruta).readAsStringSync()) as Map<String, dynamic>;
+
+/// Capturas de tableta para la ficha de Google Play (`flutter test … --dart-define=TABLETA=true`):
+/// 1920 × 1080 a 1,5 de densidad (1280 × 720 puntos), en promo/capturas-tableta/.
+const capturasTableta = bool.fromEnvironment('TABLETA');
+const tamCaptura = capturasTableta ? Size(1920, 1080) : Size(1080, 2340);
+const densidadCaptura = capturasTableta ? 1.5 : 2.625;
+String rutaCaptura(String nombre) => '../promo/${capturasTableta ? 'capturas-tableta' : 'capturas'}/$nombre.png';
 
 /// Versión de pubspec.yaml, para el pie de la pantalla Más.
 String versionApp() => RegExp(r'^version:\s*([\d.]+)', multiLine: true).firstMatch(File('pubspec.yaml').readAsStringSync())!.group(1)!;
@@ -80,6 +90,8 @@ Future<void> cajaAppSinPrimerosPasos() async {
     clavePermisosPedidos: true,
     claveBateriaPedida: true,
     claveMasHerramientas: true,
+    // Sin la pregunta de Google Calendar de la 1.19.0 (salía tras el primer toque y tapaba la app).
+    claveCalendarioPreguntado: true,
     for (final o in Oposiciones.todas)
       for (final p in Papel.values) ...{claveGuiaVista(o.id, p): true, claveParaEmpezarOculta(o.id, p): true},
   });
@@ -362,6 +374,8 @@ class Demo {
             estudiados: preparador.alumno(id)!.temas.toSet(),
             enRepaso: const {'3.A.5', '3.B.3'},
             cantes: demo.cantesDeAlumno,
+            // Los temas que lleva a la clase s4 (desde la 1.19.2, la hoja de «Mandarle los temas» ofrece los de esa clase).
+            temasClases: {'s4': TemasClase(temas: const ['3.A.2', '3.A.3', '3.A.4', '3.B.1'], fecha: demo.dia(0))},
           )),
       revisadosProvider.overrideWith((ref) async => demo.revisados),
       // Las anotaciones de los temas van a la base falsa, como la pizarra.
@@ -508,8 +522,9 @@ class Recorrido {
 
   /// Pone la vista de un móvil de 1080 × 2340 a 2,625 de densidad (411 × 891 puntos).
   static void vistaMovil(WidgetTester tester) {
-    tester.view.physicalSize = const Size(1080, 2340);
-    tester.view.devicePixelRatio = 2.625;
+    Arranque.omitir = true;
+    tester.view.physicalSize = tamCaptura;
+    tester.view.devicePixelRatio = densidadCaptura;
     addTearDown(tester.view.reset);
     // En los tests las sombras se pintan como bloques negros si no se activan.
     debugDisableShadows = false;
@@ -546,8 +561,13 @@ class Recorrido {
   }
 
   Future<void> pestana(String nombre) async {
+    // La barra inferior siempre está a la vista: sin `ensureVisible`, que desde
+    // la 1.20.x dejaba el toque fuera de la barra (26 oct. 2026).
+    // En pantallas anchas (tableta) las pestañas van en un raíl lateral.
+    final barra = find.byWidgetPredicate((w) => w is NavigationBar || w is NavigationRail);
     for (var i = 0; i < 2; i++) {
-      await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
+      await tester.tap(find.descendant(of: barra, matching: find.text(nombre)).first);
+      await tester.pumpAndSettle();
     }
   }
 

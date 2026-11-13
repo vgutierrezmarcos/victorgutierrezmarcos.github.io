@@ -1,0 +1,166 @@
+{
+ "tema": "3.A.24",
+ "preguntas": [
+  {
+   "id": 312401,
+   "estado": "publicada",
+   "enunciado": "En el teorema de imposibilidad de Arrow, la condición de independencia de las alternativas irrelevantes (IAI) exige que:",
+   "opciones": {
+    "a": "Si dos loterías se mezclan con una tercera en la misma proporción, la ordenación entre ellas no cambie.",
+    "b": "La ordenación social entre dos alternativas $x$ e $y$ dependa solo de cómo ordena cada individuo $x$ e $y$, y no de dónde coloca las demás alternativas.",
+    "c": "La ordenación de cada individuo entre dos alternativas $x$ e $y$ no dependa de cómo las ordenan los demás individuos.",
+    "d": "La ordenación social entre dos alternativas $x$ e $y$ tenga en cuenta la intensidad con que cada individuo prefiere una a otra, medida por el número de alternativas que coloca entre ambas."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La IAI se refiere a la ordenación social de un par: si de un perfil a otro ningún individuo cambia su ordenación entre $x$ e $y$, la sociedad tampoco puede cambiar la suya. Impide usar información sobre otras alternativas, como la distancia que separa a $x$ de $y$ en la ordenación de cada uno.",
+    "desarrollo": "Formalmente, para dos perfiles cualesquiera: si $x\\succsim_iy\\iff x\\succsim'_iy$ para todo $i$, entonces $x\\succsim_Gy\\iff x\\succsim'_Gy$. En una comunidad que decide cuánto gastar, para ordenar «poco» frente a «algo» no debe importar dónde coloca cada vecino la opción «mucho».\n\nPor qué fallan las demás:\n\n- a) Es el axioma de independencia de la utilidad esperada de von Neumann y Morgenstern, que se refiere a preferencias individuales sobre loterías. Comparte nombre, pero es otro axioma.\n- c) La IAI es una condición sobre la regla de agregación (la ordenación social), no sobre las preferencias de los individuos, que son un dato.\n- d) Es justo lo que la IAI prohíbe. Usar la posición relativa de las alternativas como medida de intensidad es lo que hace el recuento de Borda, que por eso incumple la IAI."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Teorema de imposibilidad de Arrow (axiomas: IAI)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312402,
+   "estado": "publicada",
+   "enunciado": "Sen propone clasificar las reglas de agregación por su base informativa: qué puede medirse de la utilidad de cada individuo y qué puede compararse entre personas. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Basta con pasar de utilidades ordinales a cardinales, aunque no sean comparables entre personas, para escapar de la imposibilidad de Arrow.",
+    "b": "El criterio maximin (o leximin) de Rawls exige utilidades cardinales con unidades comparables, porque hay que saber cuánto gana el individuo peor situado.",
+    "c": "El utilitarismo exige comparar los niveles de utilidad de las personas, pero no sus ganancias y pérdidas, y por eso le bastan utilidades ordinales.",
+    "d": "Con utilidades ordinales de niveles comparables entre personas es posible el leximin; el utilitarismo exige utilidades cardinales con unidades comparables."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Mensurabilidad y comparabilidad son dimensiones independientes. Para el leximin basta saber quién está peor (comparar niveles), lo que es compatible con utilidades ordinales; para sumar utilidades hay que comparar ganancias y pérdidas (unidades), lo que exige cardinalidad. La cardinalidad sin comparaciones no evita la imposibilidad.",
+    "desarrollo": "Cada base informativa se define por las transformaciones de las utilidades que no cambian nada:\n\n- ordinal no comparable ($\\phi_i$ creciente, distinta para cada individuo): es el marco de Arrow; solo la dictadura;\n- cardinal no comparable ($a_i+b_iU_i$, con $b_i>0$ distintos): sigue la imposibilidad (Sen, 1970);\n- ordinal con comparabilidad de niveles (la misma $\\phi$ creciente para todos): se sabe quién está peor, no cuánto; es posible el maximin o leximin (Hammond; d'Aspremont y Gevers);\n- cardinal con comparabilidad de unidades ($a_i+bU_i$, con $b>0$ común): se comparan ganancias y pérdidas; utilitarismo, $W=\\sum_iU_i$.\n\nLa función de bienestar social no exige, por tanto, utilidades cardinales, sino comparables: la imposibilidad de Arrow es en el fondo un problema de información.\n\nPor qué fallan las demás:\n\n- a) Con utilidades cardinales no comparables cada individuo puede cambiar por separado su origen y su unidad, y no hay forma de sopesar lo que gana uno frente a lo que pierde otro: la imposibilidad se mantiene.\n- b) El maximin solo necesita identificar al peor situado en cada estado: comparaciones de niveles, que sobreviven a cualquier transformación creciente común. No necesita cardinalidad.\n- c) Es al revés: la suma de utilidades no cambia de ordenación si a cada individuo se le suma una constante distinta (los niveles no importan), pero sí si se cambian las unidades de unos y no de otros. Por eso no le bastan utilidades ordinales."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Función de bienestar social (mensurabilidad y comparabilidad: bases informativas; anexo C)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312403,
+   "estado": "publicada",
+   "enunciado": "Una sociedad está formada por dos personas con rentas de 10 y 40 euros. El índice de desigualdad de Atkinson con un parámetro de aversión a la desigualdad $\\epsilon=1$ es:",
+   "opciones": {
+    "a": "$A_1=0{,}20$: la renta equivalente igualmente distribuida es de 20 euros.",
+    "b": "$A_1=0{,}36$: la renta equivalente igualmente distribuida es de 16 euros.",
+    "c": "$A_1=0{,}60$: la renta equivalente igualmente distribuida es de 10 euros.",
+    "d": "$A_1=0$: la renta equivalente igualmente distribuida coincide con la renta media, 25 euros."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $\\epsilon=1$ la renta equivalente igualmente distribuida es la media geométrica de las rentas: $y_{EDE}=\\sqrt{10\\cdot40}=20$. Como la renta media es 25, $A_1=1-20/25=0{,}20$: la sociedad estaría dispuesta a sacrificar el 20 % de la renta total para repartir el resto por igual.",
+    "desarrollo": "El índice es $A_\\epsilon=1-y_{EDE}/\\overline{y}$, donde $y_{EDE}$ es la renta que, dada a todos por igual, daría el mismo bienestar social que la distribución observada con una función de bienestar social isoelástica de parámetro $\\epsilon$. Para $\\epsilon\\neq1$, $y_{EDE}=\\big[\\tfrac1I\\sum_iy_i^{1-\\epsilon}\\big]^{1/(1-\\epsilon)}$; para $\\epsilon=1$ (bienestar $\\sum_i\\ln y_i$) es la media geométrica.\n\nAquí $\\overline{y}=25$ e $y_{EDE}=\\sqrt{400}=20$ (comprobación: $\\ln20+\\ln20=\\ln400=\\ln10+\\ln40$). Luego $A_1=1-20/25=0{,}20$.\n\nPor qué fallan las demás:\n\n- b) Es el índice con $\\epsilon=2$: $y_{EDE}$ es entonces la media armónica, $2/(1/10+1/40)=16$, y $A_2=1-16/25=0{,}36$.\n- c) Es el caso límite rawlsiano, $\\epsilon\\to\\infty$: $y_{EDE}$ es la renta del más pobre, 10, y $A_\\infty=1-10/25=0{,}60$.\n- d) Es el caso utilitarista con utilidad lineal en la renta, $\\epsilon=0$: no hay aversión a la desigualdad, $y_{EDE}=\\overline{y}$ y $A_0=0$.\n\nLa serie $0<0{,}20<0{,}36<0{,}60$ muestra que el índice es normativo: crece con $\\epsilon$, porque cada $\\epsilon$ es una función de bienestar social distinta."
+   },
+   "dificultad": 2,
+   "apartado": "II.4 Criterios equitativos: Atkinson y la medida de la desigualdad",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312404,
+   "estado": "borrador",
+   "enunciado": "Hay que repartir una renta total de 100 entre dos individuos, $A$ y $B$, cuyas utilidades, comparables entre sí, son $U_A=\\sqrt{y_A}$ y $U_B=2\\sqrt{y_B}$. ¿Qué reparto $(y_A,y_B)$ maximiza una función de bienestar social utilitarista, $W=U_A+U_B$, y cuál una rawlsiana, $W=\\min\\{U_A,U_B\\}$?",
+   "opciones": {
+    "a": "Las dos eligen $(50,50)$, porque ambas funciones cumplen el anonimato.",
+    "b": "La utilitarista elige $(50,50)$ y la rawlsiana, $(80,20)$.",
+    "c": "La utilitarista elige $(20,80)$ y la rawlsiana, $(80,20)$.",
+    "d": "La utilitarista elige $(80,20)$ y la rawlsiana, $(20,80)$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El utilitarismo iguala las utilidades marginales de la renta, $1/(2\\sqrt{y_A})=1/\\sqrt{y_B}$, es decir, $y_B=4y_A$: da más renta a quien mejor la convierte en utilidad, $(20,80)$. La función rawlsiana iguala los niveles de utilidad, $\\sqrt{y_A}=2\\sqrt{y_B}$, es decir, $y_A=4y_B$: compensa a quien peor la convierte, $(80,20)$.",
+    "desarrollo": "Utilitarista: $\\max\\ \\sqrt{y_A}+2\\sqrt{100-y_A}$. Condición de primer orden: $\\dfrac{1}{2\\sqrt{y_A}}=\\dfrac{1}{\\sqrt{y_B}}\\Rightarrow y_B=4y_A$; con $y_A+y_B=100$, $y_A=20$, $y_B=80$. Utilidades: $U_A=4{,}47$, $U_B=17{,}89$; $W=22{,}36$ (con $(50,50)$ sería $7{,}07+14{,}14=21{,}21$).\n\nRawlsiana: como $U_A$ crece con $y_A$ y $U_B$ decrece, el mínimo es máximo donde se igualan: $\\sqrt{y_A}=2\\sqrt{y_B}\\Rightarrow y_A=4y_B$; $y_A=80$, $y_B=20$, con $U_A=U_B=8{,}94$ (con $(50,50)$ el mínimo sería $7{,}07$).\n\nEl ejemplo muestra que al utilitarismo le es indiferente el reparto de la utilidad, pero no el de la renta: solo iguala las rentas si todos tienen la misma función de utilidad cóncava (Edgeworth). Con funciones distintas, las dos filosofías pueden llevar a repartos opuestos.\n\nPor qué fallan las demás:\n\n- a) El anonimato se refiere a que da igual quién disfruta de cada nivel de utilidad; no implica igualar las rentas cuando las funciones de utilidad difieren.\n- b) El reparto igualitario de la renta sería la solución utilitarista solo con funciones de utilidad idénticas.\n- d) Invierte los dos resultados: es Rawls, no el utilitarismo, quien da más renta al que obtiene menos utilidad de ella."
+   },
+   "dificultad": 3,
+   "apartado": "II.3 Valores éticos: utilitarismo (Harsanyi) y Rawls",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312405,
+   "estado": "publicada",
+   "enunciado": "Tres vecinos deciden por mayoría simple, votando por parejas y de forma sincera, la cantidad $G$ de un bien público cuyo coste es de 6 euros por unidad y se paga a partes iguales. La valoración marginal del bien (en euros por unidad) es $5-G$ para el vecino 1, $6-G$ para el vecino 2 y $10-G$ para el vecino 3. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Se elige $G=5$, la media de las cantidades preferidas por los tres vecinos, que es además la cantidad eficiente según la condición de Samuelson.",
+    "b": "Se elige $G=4$, que es la cantidad eficiente: el teorema del votante mediano garantiza que se cumple la condición de Samuelson.",
+    "c": "No hay ganador de Condorcet: como el vecino 3 valora el bien mucho más que los otros dos, la votación por parejas da lugar a un ciclo.",
+    "d": "Se elige $G=4$, la cantidad preferida por el votante mediano, inferior a la eficiente ($G=5$): la mayoría no tiene en cuenta la intensidad de las preferencias."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Cada vecino prefiere la cantidad en la que su valoración marginal iguala su parte del coste (2 euros): $G=3$, $4$ y $8$. Las preferencias son unimodales y gana el pico mediano, $G=4$. La eficiencia exige que la suma de valoraciones marginales iguale el coste, $21-3G=6$, es decir, $G=5$. El votante mediano no garantiza la eficiencia.",
+    "desarrollo": "Cantidad preferida por cada vecino: $5-G=2\\Rightarrow G_1=3$; $6-G=2\\Rightarrow G_2=4$; $10-G=2\\Rightarrow G_3=8$. Como la valoración marginal es decreciente, el beneficio neto de cada uno tiene un solo pico: preferencias unimodales en una dimensión, tres votantes y voto sincero. Por el teorema del votante mediano (Black), la cantidad preferida por el vecino 2, $G=4$, gana por mayoría a cualquier otra: contra una cantidad menor la apoyan los vecinos 2 y 3; contra una mayor, los vecinos 1 y 2.\n\nCantidad eficiente (condición de Samuelson): $(5-G)+(6-G)+(10-G)=6\\Rightarrow G^*=5$. En $G^*=5$ la valoración marginal media es 2 (igual a la cuota) y la del mediano es 1: la media supera a la mediana y la mayoría provee menos de lo eficiente. Es el resultado de Bowen: mayoría y eficiencia coinciden solo si la valoración del mediano es igual a la media. La causa es que la mayoría cuenta cabezas, no intensidades.\n\nPor qué fallan las demás:\n\n- a) $G=5$ es la cantidad eficiente, la que cumple la condición de Samuelson (y, con estas valoraciones lineales, la media de los picos), pero pierde frente a $G=4$ por 2 votos a 1: los vecinos 1 y 2 prefieren menos gasto.\n- b) Acierta en lo que se elige, pero el votante mediano no asegura la condición de Samuelson.\n- c) La intensidad de las preferencias no genera ciclos; los ciclos exigen preferencias multimodales, y aquí todas tienen un solo pico."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Renuncia al dominio universal: votante mediano y eficiencia (Bowen)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312406,
+   "estado": "publicada",
+   "enunciado": "En el modelo de la mayoría óptima de Buchanan y Tullock, el ciudadano elige en la fase constitucional la mayoría $M$ que se exigirá para aprobar una decisión. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Al elevar $M$ bajan los costes externos (nulos con unanimidad) y suben los de decisión; la mayoría óptima minimiza su suma y es más alta en las decisiones más graves e irreversibles.",
+    "b": "Al elevar $M$ suben los costes externos y bajan los costes de decisión; por eso la regla óptima es siempre la mayoría simple, la más barata de alcanzar.",
+    "c": "Al elevar $M$ bajan tanto los costes externos como los de decisión; por eso la regla óptima es siempre la unanimidad, como propone Wicksell.",
+    "d": "Al elevar $M$ bajan los costes externos y suben los costes de decisión; la mayoría óptima es aquella en la que ambos costes se igualan, y es la misma para cualquier tipo de decisión."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Los costes externos son lo que pierde quien queda en minoría: bajan con la mayoría exigida y desaparecen con unanimidad, porque nadie puede salir perdiendo. Los costes de decisión (negociar hasta reunir la mayoría) suben con ella. La mayoría óptima minimiza la suma, y no es la misma para todas las decisiones.",
+    "desarrollo": "El ciudadano elige la regla sin saber si estará en la mayoría o en la minoría en cada votación futura, y minimiza $\\mathrm{CE}(M)+\\mathrm{CD}(M)$. Cuanto más graves e irreversibles son las decisiones (derechos fundamentales, reformas constitucionales), más pesan los costes externos y más alta es la mayoría óptima; para las decisiones ordinarias basta una mayoría menor. Es la lógica de las mayorías reforzadas de las constituciones.\n\nPor qué fallan las demás:\n\n- b) Invierte el comportamiento de los dos costes, y el modelo no privilegia la mayoría simple, que tampoco es la más barata de alcanzar (lo sería una regla con $M$ menor): no hay una mayoría óptima para todo.\n- c) Los costes de decisión suben con $M$: la unanimidad anula los costes externos, pero negociar hasta que nadie se oponga es muy caro y da a cada uno un derecho de veto.\n- d) El mínimo de la suma no está donde los dos costes se igualan en nivel (sino donde lo que baja uno al elevar $M$ compensa lo que sube el otro), y depende del tipo de decisión."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Otras reglas distintas de la mayoría simple: la mayoría óptima de Buchanan y Tullock",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 312407,
+   "estado": "publicada",
+   "enunciado": "Sobre el teorema de Gibbard-Satterthwaite, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Como el teorema de Arrow, se refiere a reglas que asignan a cada perfil una ordenación social completa, y necesita la independencia de las alternativas irrelevantes y la transitividad.",
+    "b": "Implica que en ningún entorno puede diseñarse un mecanismo en el que decir la verdad sea una estrategia dominante; por eso en el mecanismo de Clarke-Groves la verdad solo es un equilibrio de Nash.",
+    "c": "Con dominio universal y al menos tres alternativas elegibles, toda función de elección social no manipulable es dictatorial; con preferencias unimodales hay excepciones, como elegir la mediana de los picos declarados.",
+    "d": "Se cumple también cuando solo hay dos alternativas: la votación por mayoría simple entre dos opciones es manipulable, porque un votante puede ganar votando contra su opción preferida."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El teorema dice que, con dominio universal y al menos tres alternativas elegibles, la única función de elección social a prueba de estrategias es la dictatorial: toda regla de votación razonable es manipulable. Deja de aplicarse si se restringe el dominio: preferencias unimodales (regla de la mediana) o utilidad cuasilineal con pagos (Clarke-Groves).",
+    "desarrollo": "Una función de elección social asigna a cada perfil de preferencias declaradas una alternativa ganadora, y es no manipulable si decir la verdad es una estrategia dominante para todos. El teorema (Gibbard, 1973; Satterthwaite, 1975) implica que toda regla cumple una de tres cosas: es dictatorial, hay alternativas que nunca pueden ganar o es manipulable. Es el análogo del teorema de Arrow para los incentivos y se demuestra con la misma idea del votante pivote.\n\nCon preferencias unimodales, elegir la mediana de los picos declarados no es manipulable: mintiendo, un votante solo puede alejar la mediana de su propio pico (Moulin, 1980).\n\nPor qué fallan las demás:\n\n- a) Su objeto es elegir un ganador, no ordenar las alternativas: no pide ni la IAI ni la transitividad.\n- b) Con utilidad cuasilineal y pagos monetarios, el mecanismo de Clarke-Groves hace de la verdad una estrategia dominante (cada uno paga el daño que su declaración causa a los demás). No contradice el teorema porque el dominio de preferencias está restringido.\n- d) El teorema exige al menos tres alternativas. Con dos, la mayoría simple no es manipulable: votar contra la opción preferida nunca puede beneficiar al votante."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Problemas de información: teorema de Gibbard-Satterthwaite y diseño de mecanismos",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

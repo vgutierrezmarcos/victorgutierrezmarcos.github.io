@@ -1,0 +1,265 @@
+{
+ "tema": "3.A.16",
+ "preguntas": [
+  {
+   "id": 311601,
+   "estado": "publicada",
+   "enunciado": "En el modelo de equilibrio parcial, cada consumidor tiene una utilidad cuasilineal respecto al numerario, $U_i(n_i,x_i)=n_i+\\phi_i(x_i)$, con $\\phi_i'>0$ y $\\phi_i''<0$, y se admiten soluciones interiores. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La demanda del bien $x$ aumenta con la renta del consumidor, pero menos que proporcionalmente, porque $\\phi_i$ es cóncava.",
+    "b": "La demanda del bien $x$ no depende de la renta, y la variación del excedente del consumidor mide exactamente la variación del bienestar.",
+    "c": "La utilidad marginal de la renta es decreciente, y por eso el excedente del consumidor solo es una aproximación de la variación del bienestar.",
+    "d": "La demanda de mercado depende de cómo se reparte la renta entre los consumidores, y por eso no puede obtenerse sumando las demandas individuales."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con utilidad cuasilineal, el consumidor compra hasta que $\\phi_i'(x_i)=p$, condición en la que no aparece la renta: no hay efecto renta. Por eso las demandas marshalliana y hicksiana coinciden, y la variación del excedente del consumidor coincide con las variaciones compensatoria y equivalente.",
+    "desarrollo": "Sustituyendo la restricción presupuestaria, $n_i=\\overline W_i-p\\,x_i$, el consumidor maximiza $\\overline W_i-p\\,x_i+\\phi_i(x_i)$, y la condición de primer orden es $\\phi_i'(x_i)=p$. La renta $\\overline W_i$ no aparece: toda variación de la renta se va al numerario.\n\nConsecuencias:\n\n- la demanda $x_i(p)=(\\phi_i')^{-1}(p)$ solo depende del precio, y es decreciente porque $\\phi_i'$ lo es;\n- sin efecto renta, la demanda marshalliana y la hicksiana coinciden;\n- la utilidad marginal de la renta es constante e igual a 1 (el multiplicador de Lagrange es $\\lambda=1$), de modo que la utilidad se mide en numerario;\n- la variación del excedente del consumidor coincide con la variación compensatoria y con la equivalente: es una medida exacta del bienestar.\n\nPor eso el modelo cuasilineal justifica el análisis de equilibrio parcial: lo que pasa en este mercado no altera la demanda a través de la renta.\n\nPor qué fallan las demás:\n\n- a) La concavidad de $\\phi_i$ hace decreciente la demanda respecto al precio, no creciente respecto a la renta. El efecto renta sobre el bien es nulo: la curva de Engel del bien es vertical.\n- c) La utilidad marginal de la renta es constante (igual a 1), no decreciente. Precisamente por eso el excedente del consumidor es exacto y no una aproximación.\n- d) Como la demanda de cada consumidor no depende de su renta, la de mercado, que es la suma horizontal de las individuales, tampoco depende del reparto de la renta. Las preferencias cuasilineales respecto al mismo numerario son un caso de la forma polar de Gorman."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Modelo: consumidores y curva de demanda (utilidad cuasilineal)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311602,
+   "estado": "publicada",
+   "enunciado": "En un mercado competitivo hay 20 consumidores idénticos, cada uno con utilidad cuasilineal $U=n+10x-\\tfrac12x^2$, donde $n$ es el numerario (de precio 1) y $x$ el bien, y 40 empresas idénticas precio-aceptantes, cada una con costes $C(q)=q^2+2q$, sin costes fijos. El número de empresas está dado. ¿Cuánto vale el excedente total en el equilibrio competitivo?",
+   "opciones": {
+    "a": "160",
+    "b": "640",
+    "c": "320",
+    "d": "400"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Cada consumidor demanda $x_i=10-p$ y cada empresa ofrece $q_j=(p-2)/2$: la demanda de mercado es $200-20p$ y la oferta, $20p-40$. Se cortan en $p^*=6$, con 80 unidades. El excedente del consumidor es $\\tfrac12(10-6)\\cdot80=160$ y el del productor, $\\tfrac12(6-2)\\cdot80=160$: en total, 320.",
+    "desarrollo": "Demanda. Cada consumidor iguala la utilidad marginal del bien al precio: $10-x_i=p$, luego $x_i=10-p$. Sumando los 20 (suma horizontal): $x(p)=200-20p$, con demanda inversa $p^D=10-x/20$.\n\nOferta. Cada empresa iguala el precio al coste marginal: $p=2q_j+2$, luego $q_j=(p-2)/2$ para $p\\geq2$ (el coste es estrictamente convexo y $C(0)=0$, así que produce a cualquier precio por encima de $\\mathrm{CMg}(0)=2$). Sumando las 40: $q(p)=20(p-2)=20p-40$, con oferta inversa $p^S=2+q/20$.\n\nEquilibrio: $200-20p=20p-40$, $p^*=6$ y $x^*=q^*=80$. Cada consumidor compra 4 y cada empresa produce 2.\n\nExcedentes:\n\n- consumidor: $\\tfrac12\\,(10-6)\\cdot80=160$;\n- productor: $\\tfrac12\\,(6-2)\\cdot80=160$ (coincide con el beneficio, porque no hay costes fijos: cada empresa gana $6\\cdot2-(4+4)=4$, y son 40);\n- total: 320.\n\nComprobación directa, como suma de utilidades del bien menos costes: $20\\,\\phi(4)-40\\,C(2)=20\\cdot(40-8)-40\\cdot(4+4)=640-320=320$.\n\nPor qué fallan las demás:\n\n- a) 160 es solo el excedente del consumidor (o solo el del productor).\n- b) 640 es el área del rectángulo $(10-2)\\cdot80$, sin el $\\tfrac12$ del triángulo; también es la utilidad bruta del bien, $20\\,\\phi(4)$, sin restar los costes.\n- d) 400 es $\\tfrac12\\cdot10\\cdot80$: toma como base del triángulo la ordenada en el origen de la demanda y olvida que la oferta arranca en 2."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelo: agregación de la demanda y la oferta y equilibrio competitivo",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311603,
+   "estado": "publicada",
+   "enunciado": "En un mercado hay una única empresa, que se comporta como precio-aceptante y no tiene costes hundidos: $C(q)=16+q^2$ si $q>0$ y $C(0)=0$. La demanda de mercado es $x(p)=10-p$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El equilibrio competitivo es $p^*=8$ y $x^*=2$: el precio iguala el mínimo del coste medio y la empresa produce lo que se demanda a ese precio.",
+    "b": "El equilibrio competitivo es $p^*=20/3$ y $x^*=10/3$, donde la demanda corta a la curva de coste marginal.",
+    "c": "No existe equilibrio competitivo: la oferta de la empresa salta de 0 a 4 unidades en $p=8$, y la demanda pasa por ese hueco.",
+    "d": "El equilibrio competitivo es $p^*=6$ y $x^*=4$: la empresa produce en su escala mínima eficiente y la demanda absorbe exactamente esa cantidad."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El coste medio, $16/q+q$, es mínimo en $\\overline q=4$ y vale $\\overline c=8$. La empresa no produce si $p<8$ y ofrece $p/2\\geq4$ si $p\\geq8$: su oferta salta de 0 a 4. A precios de 8 o más la demanda es como mucho 2, y a precios menores es positiva pero la oferta es nula: no hay precio que vacíe el mercado.",
+    "desarrollo": "Oferta de la empresa. El coste marginal es $2q$ y el coste medio, $16/q+q$, tiene forma de U, con mínimo donde $-16/q^2+1=0$: $\\overline q=4$ y $\\overline c=8$. Como el coste fijo se evita no produciendo, la empresa solo produce si el precio cubre el coste medio:\n\n- si $p<8$, $q=0$;\n- si $p=8$, le da igual no producir o producir 4 (beneficio nulo en los dos casos);\n- si $p>8$, $q=p/2>4$.\n\nDemanda frente a oferta:\n\n- si $p<8$, se demandan $10-p>2$ unidades y no se ofrece ninguna: exceso de demanda;\n- si $p=8$, se demandan 2 unidades y la empresa ofrece 0 o 4, nunca 2;\n- si $p>8$, se demandan menos de 2 y se ofrecen más de 4: exceso de oferta.\n\nNo hay equilibrio competitivo. Es el fallo de existencia por no convexidades: con rendimientos crecientes al principio, la oferta no es continua y el teorema de Bolzano no puede aplicarse al exceso de demanda. En mercados así, con una escala mínima eficiente grande respecto a la demanda, no es razonable suponer empresas precio-aceptantes.\n\nPor qué fallan las demás:\n\n- a) Al precio 8, producir 2 no maximiza el beneficio: daría $8\\cdot2-(16+4)=-4$, cuando no producir o producir 4 dan 0. La empresa no está sobre su curva de oferta.\n- b) Es el corte de la demanda con el coste marginal ($10-p=p/2$), pero por debajo del mínimo del coste medio: con $p=20/3$ y $q=10/3$ el beneficio es $\\tfrac{200}{9}-16-\\tfrac{100}{9}\\approx-4{,}9$, y la empresa prefiere no producir.\n- d) Al precio 6 se demandan 4 unidades, pero la empresa no las ofrece: $6<\\overline c=8$, y produciéndolas perdería $6\\cdot4-32=-8$."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Análisis positivo: existencia del equilibrio (no convexidades)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311604,
+   "estado": "publicada",
+   "enunciado": "En un mercado, la demanda inversa es $p^D(q)=20-2q$ y la oferta inversa de la industria, decreciente por la presencia de economías externas, es $p^S(q)=14-q$. Se cortan en $q^*=6$ y $p^*=8$. Sobre la estabilidad de este equilibrio, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es estable tanto con el ajuste walrasiano (por precios) como con el marshalliano (por cantidades), porque la demanda es decreciente.",
+    "b": "Es inestable con los dos ajustes, porque la oferta tiene pendiente negativa.",
+    "c": "Es estable con el ajuste walrasiano e inestable con el marshalliano.",
+    "d": "Es inestable con el ajuste walrasiano y estable con el marshalliano."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En el plano $(q,p)$ la oferta ($-1$) es más plana que la demanda ($-2$). El exceso de demanda es $z(p)=\\tfrac{20-p}{2}-(14-p)=\\tfrac p2-4$, creciente en el precio: el ajuste walrasiano es inestable. La diferencia $p^D-p^S=6-q$ es decreciente en la cantidad: el marshalliano es estable.",
+    "desarrollo": "Ajuste walrasiano (por precios): el precio sube si hay exceso de demanda, y el equilibrio es estable si $z'(p^*)<0$. Con las curvas directas, $x(p)=(20-p)/2$ y $q(p)=14-p$:\n\n$z(p)=x(p)-q(p)=10-\\tfrac p2-14+p=\\tfrac p2-4$, con $z'(p)=\\tfrac12>0$.\n\nPor encima de $p^*=8$ hay exceso de demanda (por ejemplo, con $p=10$ se demandan 5 unidades y se ofrecen 4) y el precio sigue subiendo: inestable.\n\nAjuste marshalliano (por cantidades): la cantidad aumenta si el precio de demanda supera al de oferta, y el equilibrio es estable si $p^D-p^S$ decrece con $q$:\n\n$p^D(q)-p^S(q)=20-2q-14+q=6-q$, con derivada $-1<0$.\n\nA la izquierda de $q^*=6$ los compradores pagan más de lo que piden los vendedores y la producción aumenta; a la derecha, disminuye: estable.\n\nRegla general con las dos curvas decrecientes: si la oferta es más plana que la demanda en el plano $(q,p)$, Walras es inestable y Marshall estable; si es más inclinada, al revés. Las dos condiciones son incompatibles: lo que es estable para un ajuste es inestable para el otro.\n\nPor qué fallan las demás:\n\n- a) Que los dos ajustes sean estables solo está garantizado con oferta creciente y demanda decreciente. Con las dos decrecientes, nunca coinciden.\n- b) Una oferta decreciente no implica inestabilidad con los dos: siempre hay uno de los dos ajustes que es estable.\n- c) Sería el caso de una oferta más inclinada que la demanda (por ejemplo, $p^S=26-3q$). Aquí es más plana."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Análisis positivo: estabilidad (ajustes walrasiano y marshalliano)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:311604.webp",
+     "alt": "Plano con la cantidad q en abscisas (de 0 a 10) y el precio p en ordenadas (de 0 a 20). Dos rectas decrecientes: la demanda, p = 20 − 2q, más inclinada, que va de (0, 20) a (10, 0), y la oferta, p = 14 − q, más plana, que va de (0, 14) a (10, 4). Se cortan en el punto (6, 8), proyectado con líneas de puntos sobre los ejes. No hay flechas de ajuste.",
+     "ancho": 540
+    }
+   ]
+  },
+  {
+   "id": 311605,
+   "estado": "publicada",
+   "enunciado": "En un mercado agrario, la demanda es $x_t=120-4p_t$ y la oferta, que se decide un período antes con expectativas ingenuas, $q_t=3p_{t-1}-20$. Cada período el precio vacía el mercado. El precio de equilibrio estacionario es $p^*=20$. Si el precio de partida es $p_0=24$, los precios de los dos períodos siguientes son:",
+   "opciones": {
+    "a": "$p_1=17$ y $p_2=22{,}25$: el precio oscila alrededor del equilibrio con oscilaciones amortiguadas, porque la oferta reacciona al precio menos que la demanda.",
+    "b": "$p_1=23$ y $p_2=22{,}25$: el precio se acerca al equilibrio sin oscilar, porque la oferta reacciona al precio menos que la demanda.",
+    "c": "$p_1\\approx14{,}67$ y $p_2\\approx27{,}11$: el precio oscila con amplitud creciente, porque la oferta tiene pendiente positiva y la demanda negativa.",
+    "d": "$p_1=16$ y $p_2=24$: el precio oscila indefinidamente con la misma amplitud, como en cualquier telaraña con curvas lineales."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con expectativas ingenuas, $p_t-p^*=-\\dfrac{q'}{\\lvert x'\\rvert}\\,(p_{t-1}-p^*)=-\\dfrac34\\,(p_{t-1}-p^*)$. La desviación inicial, $+4$, pasa a $-3$ y a $+2{,}25$: $p_1=17$ y $p_2=22{,}25$. El signo menos hace oscilar el precio, y como $3<4$, las oscilaciones se amortiguan.",
+    "desarrollo": "Período 1: la producción se decidió con el precio $p_0=24$: $q_1=3\\cdot24-20=52$. El precio que vacía el mercado cumple $120-4p_1=52$: $p_1=17$.\n\nPeríodo 2: $q_2=3\\cdot17-20=31$, y $120-4p_2=31$ da $p_2=22{,}25$.\n\nCon la fórmula del modelo: $p_t-p^*=\\left(-\\dfrac{q'}{\\lvert x'\\rvert}\\right)^{t}(p_0-p^*)=\\left(-\\dfrac34\\right)^{t}\\cdot4$, es decir, $-3$ en $t=1$ y $+2{,}25$ en $t=2$.\n\nUn precio alto lleva a producir mucho, lo que hunde el precio del período siguiente; ese precio bajo lleva a producir poco, lo que lo vuelve a subir. La telaraña converge si la oferta reacciona al precio menos que la demanda, $q'<\\lvert x'\\rvert$ ($3<4$); en elasticidades medidas en el equilibrio ($x^*=q^*=40$), $\\varepsilon_S=3\\cdot\\tfrac{20}{40}=1{,}5<\\lvert\\varepsilon_D\\rvert=4\\cdot\\tfrac{20}{40}=2$; en el plano $(q,p)$, la oferta es más inclinada que la demanda.\n\nPor qué fallan las demás:\n\n- b) Olvida el signo menos: la desviación cambia de signo cada período. Un precio por encima del equilibrio lleva a producir de más, y el precio siguiente queda por debajo, no por encima. Una convergencia sin oscilaciones solo aparece con expectativas adaptativas que corrijan poco.\n- c) Invierte el factor ($4/3$ en lugar de $3/4$). Con oferta creciente y demanda decreciente la telaraña puede divergir, pero solo si la oferta reacciona más que la demanda, y aquí reacciona menos.\n- d) La oscilación de amplitud constante exige $q'=\\lvert x'\\rvert$ exactamente; no es una propiedad general de las curvas lineales."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Análisis positivo: estabilidad (modelo de la telaraña)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311606,
+   "estado": "publicada",
+   "enunciado": "En el modelo de equilibrio parcial con preferencias cuasilineales respecto al numerario y soluciones interiores, señale la afirmación CORRECTA sobre la eficiencia y los teoremas fundamentales de la economía del bienestar:",
+   "opciones": {
+    "a": "Una asignación es óptima en el sentido de Pareto si y solo si maximiza el excedente total; los óptimos solo se distinguen por el reparto del numerario.",
+    "b": "El primer teorema exige que la tecnología sea convexa: con costes medios en forma de U, el equilibrio competitivo con libre entrada no es eficiente.",
+    "c": "Para alcanzar otro óptimo con un reparto distinto, el segundo teorema exige gravar el bien y subvencionar a los consumidores que se quiere favorecer.",
+    "d": "El equilibrio competitivo maximiza el excedente del consumidor, pero no el excedente total, porque las empresas obtienen beneficios."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con utilidad cuasilineal, el numerario pasa de un agente a otro uno a uno: la frontera de posibilidades de utilidad es una recta de pendiente $-1$. Por eso una asignación es eficiente si y solo si maximiza el excedente total, lo que fija las cantidades del bien; los óptimos solo difieren en cómo se reparte el numerario.",
+    "desarrollo": "Con $U_i=n_i+\\phi_i(x_i)$, la suma de las utilidades es el numerario disponible más $\\sum_i\\phi_i(x_i)-\\sum_jC_j(q_j)$, el excedente total. Como una unidad de numerario vale lo mismo para todos, cualquier asignación que no maximice el excedente total puede mejorarse para todos: se pasa a las cantidades que lo maximizan y se reparte la ganancia con numerario. Y al revés: si lo maximiza, nadie puede mejorar sin que otro empeore. Los óptimos de Pareto tienen todos las mismas cantidades del bien y se distinguen solo por el reparto del numerario.\n\nDe ahí salen los dos teoremas en equilibrio parcial:\n\n- primero: las condiciones de primer orden de maximizar el excedente total, $\\phi_i'(x_i)=\\lambda=\\mathrm{CMg}_j(q_j)$, son las del equilibrio competitivo con $\\lambda=p^*$: el equilibrio es eficiente;\n- segundo: para alcanzar cualquier otro óptimo basta con redistribuir numerario mediante transferencias de suma fija, que no cambian ni la demanda (no hay efecto renta) ni la oferta.\n\nPor qué fallan las demás:\n\n- b) El primer teorema no necesita convexidad: sus supuestos son agentes precio-aceptantes, mercados para todos los bienes (sin externalidades) y un mismo precio para todos (sin impuestos), además de la no saciedad local. La convexidad es un supuesto de la existencia del equilibrio, y del segundo teorema en general. El equilibrio con libre entrada y costes en U es eficiente.\n- c) El segundo teorema se apoya en transferencias de suma fija, que no alteran los precios. Un impuesto sobre el bien separa el precio del consumidor del precio del productor y crea una pérdida irrecuperable de eficiencia: llevaría a una asignación no óptima.\n- d) El equilibrio maximiza el excedente total (el del consumidor más el del productor), no el del consumidor por separado: el excedente del consumidor sería mayor con un precio más bajo, pero a costa de una pérdida mayor para los productores. Que haya excedente del productor no es una ineficiencia."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Análisis normativo: excedentes y teoremas fundamentales del bienestar",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311607,
+   "estado": "borrador",
+   "enunciado": "En un mercado competitivo con demanda decreciente y oferta creciente, una mejora tecnológica reduce el coste marginal de todas las empresas y desplaza la curva de oferta hacia abajo. Respecto del equilibrio inicial:",
+   "opciones": {
+    "a": "Aumentan necesariamente el excedente del consumidor, el del productor y el total.",
+    "b": "Aumentan el excedente del consumidor y el total; el excedente del productor puede aumentar o disminuir.",
+    "c": "Aumentan el excedente del productor y el total; el excedente del consumidor puede aumentar o disminuir.",
+    "d": "El excedente del consumidor aumenta, pero el total puede disminuir si la demanda es muy inelástica, porque el precio cae mucho."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Baja el precio y sube la cantidad: los consumidores compran más y más barato, y su excedente aumenta. Los productores venden más y con menor coste, pero cobran menos por cada unidad: su excedente puede subir o bajar, según las pendientes y el tipo de desplazamiento. El excedente total aumenta, porque cada unidad cuesta menos.",
+    "desarrollo": "Estática comparativa positiva: la oferta se desplaza hacia abajo (a la derecha) a lo largo de una demanda decreciente; el precio de equilibrio baja y la cantidad sube.\n\nEstática comparativa normativa:\n\n- excedente del consumidor: aumenta siempre; los consumidores pagan menos por las unidades que ya compraban y compran unidades nuevas que valoran más de lo que les cuestan;\n- excedente del productor: hay dos efectos de signo contrario; las empresas producen con menor coste y venden más, pero a un precio más bajo. Con una demanda muy inelástica, el precio cae mucho, la cantidad apenas aumenta y el excedente del productor puede disminuir (es lo que ocurre a menudo con las mejoras de productividad en la agricultura); con una demanda elástica, aumenta;\n- excedente total: aumenta siempre; es el área entre la demanda y la oferta hasta la cantidad de equilibrio, y con la oferta más baja esa área es mayor.\n\nPor qué fallan las demás:\n\n- a) El excedente del productor no aumenta necesariamente: depende de las pendientes de las curvas y de cómo se desplace la oferta.\n- c) Intercambia los papeles: es lo que ocurre con un aumento de la demanda (el productor gana, y el resultado para el consumidor es ambiguo).\n- d) El excedente total no puede disminuir: las unidades que ya se producían cuestan menos y las nuevas valen más de lo que cuestan. Con demanda inelástica, quien puede perder es el productor, y lo que pierde lo gana, con creces, el consumidor."
+   },
+   "dificultad": 1,
+   "apartado": "II.3 Estática comparativa: cambios en la tecnología",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311608,
+   "estado": "publicada",
+   "enunciado": "En un mercado competitivo en equilibrio, la elasticidad-precio de la oferta es $\\varepsilon_S=2$ y la de la demanda, en valor absoluto, $\\lvert\\varepsilon_D\\rvert=0{,}5$. Se establece un impuesto unitario pequeño, que la ley obliga a ingresar a los consumidores. ¿Qué parte del impuesto soportan los consumidores, medida por la subida del precio que acaban pagando (impuesto incluido)?",
+   "opciones": {
+    "a": "El 20 %.",
+    "b": "El 50 %: el impuesto se reparte a medias entre los dos lados del mercado.",
+    "c": "El 100 %, porque son ellos quienes están legalmente obligados a pagarlo.",
+    "d": "El 80 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La incidencia económica no depende de quién ingrese el impuesto, sino de las elasticidades: $\\dfrac{dp_c}{dt}=\\dfrac{\\varepsilon_S}{\\varepsilon_S+\\lvert\\varepsilon_D\\rvert}=\\dfrac{2}{2{,}5}=0{,}8$. Los consumidores, el lado más inelástico, soportan el 80 %, y los vendedores, el 20 % restante (ley de Dalton).",
+    "desarrollo": "Un impuesto unitario $t$ abre una cuña entre el precio que pagan los consumidores y el que reciben los vendedores, $p_c=p_v+t$, y el equilibrio cumple $x(p_v+t)=q(p_v)$ lo ingrese quien lo ingrese. Derivando respecto a $t$ y pasando a elasticidades en el equilibrio inicial:\n\n$\\dfrac{dp_c}{dt}=\\dfrac{\\varepsilon_S}{\\varepsilon_S+\\lvert\\varepsilon_D\\rvert}=\\dfrac{2}{2+0{,}5}=0{,}8,\\qquad -\\dfrac{dp_v}{dt}=\\dfrac{\\lvert\\varepsilon_D\\rvert}{\\varepsilon_S+\\lvert\\varepsilon_D\\rvert}=\\dfrac{0{,}5}{2{,}5}=0{,}2.$\n\nLas dos partes suman 1. La incidencia se reparte entre compradores y vendedores en la razón de la elasticidad de la oferta a la de la demanda ($2:0{,}5$, es decir, $4:1$): el impuesto recae más sobre el lado más inelástico, aquí los consumidores, que tienen menos facilidad para dejar de comprar que los vendedores para dejar de vender.\n\nPor qué fallan las demás:\n\n- a) El 20 % es la parte de los vendedores: invierte las elasticidades en la fórmula.\n- b) El reparto a medias solo se da cuando las dos elasticidades son iguales (en valor absoluto).\n- c) Confunde la incidencia legal con la económica. Aunque los consumidores ingresen el impuesto, el precio que cobran los vendedores baja (un 20 % del impuesto), y con eso soportan parte de la carga. Los consumidores solo lo soportarían entero con una demanda perfectamente inelástica o una oferta perfectamente elástica."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Estática comparativa: incidencia de un impuesto",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311609,
+   "estado": "borrador",
+   "enunciado": "Una industria perfectamente competitiva, con libre entrada y empresas idénticas, tiene una curva de oferta a largo plazo decreciente. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Solo es posible si cada empresa tiene rendimientos crecientes a escala internos en todo el dominio, de modo que su coste medio baja al aumentar su propia producción.",
+    "b": "Se debe a economías externas a la empresa e internas a la industria. Si son tecnológicas, la industria produce menos de lo eficiente; si son pecuniarias, no causan ineficiencia.",
+    "c": "Se debe a economías externas a la empresa e internas a la industria. Si son pecuniarias, la industria produce menos de lo eficiente; si son tecnológicas, no causan ineficiencia.",
+    "d": "Contradice la competencia perfecta, porque exige que el coste marginal de cada empresa sea decreciente en el nivel de producción que elige."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La oferta decreciente de la industria procede de economías externas: al crecer la industria baja toda la curva de costes de cada empresa, que sigue produciendo en el mínimo de su coste medio con coste marginal creciente. Las tecnológicas son una externalidad positiva que las empresas no tienen en cuenta (se produce de menos); las pecuniarias actúan a través de los precios y no causan ineficiencia.",
+    "desarrollo": "La oferta a largo plazo de la industria une los equilibrios con libre entrada, $p=\\min\\mathrm{CMe}(q_j;\\,q)$, para cada nivel de demanda. Si el coste de cada empresa depende de la producción total de la industria, $q$:\n\n- con deseconomías externas (por ejemplo, un factor específico cuyo precio sube al crecer la industria), el mínimo del coste medio sube con $q$ y la oferta a largo plazo es creciente: industria de costes crecientes;\n- con economías externas (mercado de trabajo especializado, proveedores, difusión de conocimientos: los distritos industriales de Marshall), baja con $q$ y la oferta es decreciente: industria de costes decrecientes.\n\nEn los dos casos, cada empresa sigue siendo pequeña y precio-aceptante, tiene su coste marginal creciente y produce en el mínimo de su coste medio: lo que se mueve con la entrada es toda su curva de costes.\n\nEficiencia (Viner, 1931; Scitovsky, 1954):\n\n- las economías externas tecnológicas cambian la función de producción de las demás empresas: cada una ignora que, al producir más, abarata a las otras, y la industria produce menos de lo óptimo;\n- las pecuniarias operan a través de los precios de los factores: solo trasladan rentas entre agentes y, en mercados competitivos, no causan ineficiencia.\n\nPor qué fallan las demás:\n\n- a) y d) Los rendimientos crecientes internos en todo el dominio son incompatibles con la competencia perfecta: la empresa precio-aceptante querría producir sin límite y su problema no tiene solución. La oferta decreciente de la industria no exige nada de eso: es compatible con un coste marginal creciente en cada empresa.\n- c) Invierte los dos tipos: la ineficiencia viene de las tecnológicas, que son una externalidad en sentido propio; las pecuniarias pasan por el mercado."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Largo plazo con libre entrada: oferta de la industria y economías externas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311610,
+   "estado": "publicada",
+   "enunciado": "En una industria competitiva con libre entrada, todas las empresas tienen la función de costes a largo plazo $C(q)=q^2+16$ si $q>0$ y $C(0)=0$. La demanda es $x(p)=160-5p$ y la industria está en equilibrio a largo plazo. La demanda aumenta de forma permanente a $x(p)=200-5p$. A corto plazo no entran empresas, y el coste fijo de 16 de las que ya están es hundido. ¿Cuáles son el precio de equilibrio a corto plazo y el equilibrio a largo plazo tras el aumento de la demanda?",
+   "opciones": {
+    "a": "A corto plazo, $p=10$; a largo plazo, $p=8$, con 40 empresas.",
+    "b": "A corto plazo, $p=8$; a largo plazo, $p=8$, con 40 empresas.",
+    "c": "A corto plazo, $p=10$; a largo plazo, $p=10$, con las mismas 30 empresas, que producen 5 unidades cada una.",
+    "d": "A corto plazo, $p=10$; a largo plazo, $p=8$, con las mismas 30 empresas, que amplían su producción hasta cubrir la demanda."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El coste medio, $q+16/q$, es mínimo en $\\overline q=4$ y vale 8: al principio hay $120/4=30$ empresas. A corto plazo, las 30 ofrecen $q=p/2$ cada una: $15p=200-5p$ da $p=10$, con beneficios. A largo plazo entran empresas hasta que el precio vuelve a 8: se demandan 160 unidades y hay $160/4=40$ empresas.",
+    "desarrollo": "Equilibrio inicial a largo plazo. El coste marginal es $2q$ y el coste medio, $q+16/q$, con mínimo donde $1-16/q^2=0$: $\\overline q=4$ y $\\overline c=8$ (ahí $\\mathrm{CMg}=8=\\mathrm{CMe}$). Con libre entrada, $p^*=8$, $x(8)=160-40=120$ y $J^*=120/4=30$ empresas.\n\nCorto plazo. El número de empresas está fijo en 30 y el coste fijo es hundido, así que cada una ofrece donde $p=\\mathrm{CMg}$: $q=p/2$ (el coste variable medio, $q$, tiene su mínimo en 0, de modo que producen a cualquier precio positivo). Oferta de la industria: $30\\cdot p/2=15p$. Vaciado: $15p=200-5p$, $p=10$. Cada empresa produce 5 y gana $10\\cdot5-(25+16)=9$.\n\nLargo plazo. Los beneficios atraen empresas, que desplazan la oferta de corto plazo a la derecha hasta que el precio vuelve al mínimo del coste medio: $p=8$, $x(8)=200-40=160$ y $J=160/4=40$ empresas, que producen de nuevo 4 cada una con beneficio nulo.\n\nEl precio reacciona más a corto plazo y la cantidad, más a largo plazo: con costes constantes para la industria, todo el aumento duradero de la demanda se atiende con empresas nuevas, sin cambiar el precio.\n\nPor qué fallan las demás:\n\n- b) A corto plazo el número de empresas está dado: la industria solo puede producir más subiendo por la curva de coste marginal de las 30 existentes, y eso exige un precio mayor que 8.\n- c) Es el equilibrio a corto plazo, pero no se mantiene: con $p=10$ cada empresa gana 9, y con libre entrada eso atrae nuevas empresas.\n- d) Con 30 empresas y $p=8$, cada una querría producir 4 (120 en total), no las 160 unidades que se demandan a ese precio; para producir $160/30\\approx5{,}3$ necesitarían un precio de 10,7. El ajuste a largo plazo es en el número de empresas, no en su tamaño."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Largo plazo con libre entrada: del corto al largo plazo",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311611,
+   "estado": "publicada",
+   "enunciado": "Una empresa de un mercado perfectamente competitivo, en equilibrio a largo plazo con libre entrada, ingresa 1.000 al año. Sus costes explícitos (los pagos a terceros) son 700, y el coste de oportunidad de los recursos propios que emplea (el capital y el trabajo del propietario) es 300. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El equilibrio no puede ser de largo plazo: con libre entrada el beneficio contable tiene que ser nulo, y aquí es 300.",
+    "b": "La empresa obtiene un beneficio extraordinario de 300, que atraerá a nuevas empresas hasta que desaparezca.",
+    "c": "El beneficio contable es 300 y el beneficio económico es nulo: nadie tiene incentivos para entrar en el mercado ni para salir de él.",
+    "d": "El beneficio económico es nulo, lo que significa que al propietario le convendría cerrar, porque no obtiene nada por sus recursos."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El beneficio que la libre entrada anula es el económico, que descuenta también el coste de oportunidad de los recursos propios: $1.000-700-300=0$. El beneficio contable, $1.000-700=300$, es justo lo que esos recursos ganarían en su mejor uso alternativo: es un beneficio «normal», que no atrae entrada ni provoca salida.",
+    "desarrollo": "El coste económico de un factor es su coste de oportunidad: el valor de la mejor alternativa a la que se renuncia al usarlo. El coste contable solo recoge los pagos efectivos.\n\n- Beneficio contable: ingresos menos costes explícitos, $1.000-700=300$.\n- Beneficio económico: el contable menos el coste de oportunidad de los recursos propios, $300-300=0$.\n\nCon libre entrada, el equilibrio a largo plazo exige que el beneficio económico sea nulo ($p=\\mathrm{CMg}=\\min\\mathrm{CMe}$, con todos los costes medidos como costes de oportunidad): si fuera positivo, entrarían empresas; si fuera negativo, saldrían. Con beneficio económico nulo, el propietario obtiene por su capital y su trabajo exactamente lo que obtendría en su mejor alternativa.\n\nPor qué fallan las demás:\n\n- a) Lo que se anula es el beneficio económico, no el contable. Un beneficio contable nulo significaría que los recursos propios no reciben ninguna remuneración: sería una pérdida económica de 300, y la empresa saldría del mercado.\n- b) El beneficio extraordinario es el económico, y aquí es cero: los 300 de beneficio contable son la remuneración normal de los recursos propios, que no atrae a nadie.\n- d) Con beneficio económico nulo el propietario sí obtiene algo por sus recursos: 300, lo mismo que en su mejor alternativa. Le es indiferente seguir, y no tiene motivo para cerrar; le convendría salir si el beneficio económico fuera negativo."
+   },
+   "dificultad": 1,
+   "apartado": "III.3 Largo plazo con libre entrada: beneficio económico nulo",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

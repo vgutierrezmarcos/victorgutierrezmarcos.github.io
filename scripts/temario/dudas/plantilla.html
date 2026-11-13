@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dudas del temario</title>
+<style>
+:root{--papel:#E2EFD9;--tarjeta:#f6faf3;--tinta:#2a1f33;--suave:#5d5566;--morado:#5F2987;--oro:#b08d2a;--borde:#c9d9bd;--ok:#2f6b3a;--cambio:#a2461f;--prop:#f3e3b0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--papel:#1f1724;--tarjeta:#2a2030;--tinta:#efe8f3;--suave:#b6aabd;--morado:#c79be6;--oro:#d4b45a;--borde:#41354a;--ok:#7cc48a;--cambio:#f0a07a;--prop:#4a3d1a}}
+:root[data-theme="dark"]{--papel:#1f1724;--tarjeta:#2a2030;--tinta:#efe8f3;--suave:#b6aabd;--morado:#c79be6;--oro:#d4b45a;--borde:#41354a;--ok:#7cc48a;--cambio:#f0a07a;--prop:#4a3d1a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font:16px/1.5 "TeX Gyre Pagella","Palatino Linotype",Palatino,serif}
+.cab{position:sticky;top:0;z-index:5;background:var(--papel);border-bottom:2px solid var(--oro);padding:12px 16px}
+.cab h1{margin:0 0 4px;font-size:1.35rem;color:var(--morado);font-weight:600}
+.cab p{margin:0 0 8px;color:var(--suave);font-size:.92rem}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:14px system-ui,sans-serif}
+.ctl input[type=search]{flex:1 1 180px;padding:6px 8px;border:1px solid var(--borde);border-radius:6px;background:var(--tarjeta);color:var(--tinta)}
+.ctl select,.ctl button,.ctl label{font:inherit}
+.ctl select{padding:5px;border:1px solid var(--borde);border-radius:6px;background:var(--tarjeta);color:var(--tinta)}
+button{cursor:pointer;border:1px solid var(--morado);background:transparent;color:var(--morado);border-radius:6px;padding:5px 10px}
+button.lleno{background:var(--morado);color:var(--papel)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+main{max-width:1000px;margin:0 auto;padding:12px 16px 60px}
+details.tema{background:var(--tarjeta);border:1px solid var(--borde);border-radius:8px;margin:10px 0}
+summary{padding:10px 12px;cursor:pointer;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+summary .cod{font-weight:700;color:var(--morado)}
+summary .tit{flex:1 1 300px}
+.chip{font:12px system-ui,sans-serif;padding:1px 7px;border-radius:10px;border:1px solid var(--borde);color:var(--suave);font-variant-caps:all-small-caps}
+.chip.prop{background:var(--prop);color:var(--tinta)}
+.cuerpo{padding:0 12px 12px}
+.aprob{display:flex;gap:8px;align-items:center;margin:4px 0 10px;padding:8px;border:1px dashed var(--oro);border-radius:6px;font:14px system-ui,sans-serif}
+.intro{color:var(--suave);font-size:.93rem}
+h3{font-size:1rem;color:var(--morado);margin:14px 0 4px;font-variant-caps:all-small-caps}
+.duda{border-top:1px solid var(--borde);padding:8px 0}
+.duda.res{opacity:.6}.duda.res .tx::before{content:'Resuelta por tus comentarios · ';font:600 12px system-ui,sans-serif;color:var(--ok)}.duda.nueva .tx::before{content:'Nueva · ';font:600 12px system-ui,sans-serif;color:var(--cambio)}
+.duda.prop{background:linear-gradient(var(--prop),var(--prop)) left/4px 100% no-repeat;padding-left:10px}
+.duda .tx{overflow-wrap:anywhere}
+.duda .bt{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;font:13px system-ui,sans-serif}
+.duda.ok .b-ok{background:var(--ok);border-color:var(--ok);color:var(--papel)}
+.duda.cambio .b-cambio{background:var(--cambio);border-color:var(--cambio);color:var(--papel)}
+.b-ok{border-color:var(--ok);color:var(--ok)} .b-cambio{border-color:var(--cambio);color:var(--cambio)}
+textarea{width:100%;min-height:52px;margin-top:6px;padding:6px;border:1px solid var(--borde);border-radius:6px;background:var(--papel);color:var(--tinta);font:14px system-ui,sans-serif}
+code{font-size:.85em;background:rgba(95,41,135,.08);padding:0 3px;border-radius:3px}
+.oculto{display:none!important}
+#exp{white-space:pre-wrap;font:13px ui-monospace,monospace;background:var(--tarjeta);border:1px solid var(--borde);padding:10px;border-radius:6px;max-height:50vh;overflow:auto}
+</style></head><body>
+<div class="cab"><h1>Dudas de la revisión del temario</h1>
+<p id="res"></p>
+<div class="ctl"><input type="search" id="q" placeholder="Buscar en las dudas…" aria-label="Buscar">
+<select id="fc" aria-label="Cuenta"><option value="">Las dos cuentas</option><option value="trabajo">Cuenta del trabajo</option><option value="personal">Cuenta personal</option></select>
+<select id="fe" aria-label="Filtro"><option value="">Todas</option><option value="prop">Solo las que piden decisión</option><option value="nueva">Nuevas desde la última vez</option><option value="pend">Sin las resueltas</option><option value="sin">Sin contestar</option><option value="cambio">Marcadas «Cambiar»</option></select>
+<button id="abrir">Abrir todo</button><button class="lleno" id="exportar">Exportar respuestas</button></div></div>
+<main><div id="expbox" class="oculto"><p>Copia este texto y pégamelo en la conversación (ya está copiado si el navegador lo permite):</p><div id="exp"></div></div><div id="lista"></div></main>
+<script>
+const DATOS=__DATOS__;
+let R={};try{R=JSON.parse(localStorage.getItem('dudas-temario')||'{}')}catch(e){}
+function guardar(){try{localStorage.setItem('dudas-temario',JSON.stringify(R))}catch(e){}}
+const L=document.getElementById('lista');
+DATOS.forEach(t=>{
+ const nd=t.dudas.filter(d=>d.id).length,np=t.dudas.filter(d=>d.estado==='prop'||d.estado==='propuesta').length;
+ const el=document.createElement('details');el.className='tema';el.dataset.cuenta=t.cuenta;el.dataset.t=t.T;
+ el.innerHTML=`<summary><span class="cod">${t.cod}</span><span class="tit">${t.titulo}</span><span class="chip">${t.cuenta==='personal'?'cuenta personal':'cuenta del trabajo'}</span><span class="chip">${nd} dudas</span>${np?`<span class="chip prop">${np} piden decisión</span>`:''}<span class="chip est" data-t="${t.T}"></span></summary><div class="cuerpo"></div>`;
+ const c=el.querySelector('.cuerpo');
+ const ap=document.createElement('label');ap.className='aprob';ap.innerHTML=`<input type="checkbox" data-ap="${t.T}"> Apruebo el tema ${t.cod} (pasa a la app)`;c.appendChild(ap);
+ const cb=ap.querySelector('input');cb.checked=!!(R['aprob:'+t.T]);cb.onchange=()=>{R['aprob:'+t.T]=cb.checked;guardar();resumen()};
+ if(t.intro){const p=document.createElement('p');p.className='intro';p.innerHTML=t.intro;c.appendChild(p)}
+ t.dudas.forEach(d=>{
+  if(d.h){const h=document.createElement('h3');h.innerHTML=d.h;c.appendChild(h);return}
+  const r=R[d.id]||{};const dv=document.createElement('div');dv.className='duda'+(d.estado==='propuesta'?' prop':'')+(d.estado==='resuelta'?' res':'')+(d.nueva?' nueva':'')+(r.v?' '+r.v:'');dv.dataset.id=d.id;dv.dataset.estado=d.estado;
+  dv.innerHTML=`<div class="tx">${d.html}</div><div class="bt"><button class="b-ok">De acuerdo con lo aplicado</button><button class="b-cambio">Cambiar</button></div><textarea class="${r.v==='cambio'||r.n?'':'oculto'}" placeholder="Qué cambiar (o un comentario)"></textarea>`;
+  const ta=dv.querySelector('textarea');ta.value=r.n||'';
+  const set=v=>{const x=R[d.id]||{};x.v=(x.v===v?'':v);R[d.id]=x;dv.classList.remove('ok','cambio');if(x.v)dv.classList.add(x.v);if(x.v==='cambio'){ta.classList.remove('oculto');ta.focus()};guardar();resumen()};
+  dv.querySelector('.b-ok').onclick=()=>set('ok');dv.querySelector('.b-cambio').onclick=()=>set('cambio');
+  ta.oninput=()=>{const x=R[d.id]||{};x.n=ta.value;R[d.id]=x;guardar()};
+  c.appendChild(dv)});
+ L.appendChild(el)});
+function resumen(){
+ let tot=0,con=0,cam=0,ap=0;
+ DATOS.forEach(t=>{let tt=0,tc=0;t.dudas.forEach(d=>{if(!d.id)return;tot++;tt++;const r=R[d.id];if(r&&r.v){con++;tc++}if(r&&r.v==='cambio')cam++});if(R['aprob:'+t.T])ap++;
+  const ch=document.querySelector(`.chip.est[data-t="${t.T}"]`);ch.textContent=(R['aprob:'+t.T]?'aprobado · ':'')+`${tc}/${tt} contestadas`});
+ document.getElementById('res').textContent=`${DATOS.length} temas revisados sin aprobar (las dos cuentas) · actualizada el __FECHA__ · ${tot} dudas, todas con la opción recomendada ya aplicada · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.estado==='resuelta').length,0)} resueltas por tus comentarios · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.nueva).length,0)} nuevas · contestadas ${con}, a cambiar ${cam} · temas aprobados aquí: ${ap}. Las respuestas se guardan en este navegador; al terminar, «Exportar respuestas».`}
+function filtrar(){
+ const q=document.getElementById('q').value.toLowerCase().trim(),fc=document.getElementById('fc').value,fe=document.getElementById('fe').value;
+ document.querySelectorAll('details.tema').forEach(el=>{
+  let vis=0;const okc=!fc||el.dataset.cuenta===fc;
+  el.querySelectorAll('.duda').forEach(dv=>{const r=R[dv.dataset.id]||{};let ok=okc&&(!q||dv.textContent.toLowerCase().includes(q));
+   if(fe==='prop')ok=ok&&dv.dataset.estado==='propuesta';if(fe==='sin')ok=ok&&!r.v&&dv.dataset.estado!=='resuelta';if(fe==='nueva')ok=ok&&dv.classList.contains('nueva');if(fe==='pend')ok=ok&&dv.dataset.estado!=='resuelta';if(fe==='cambio')ok=ok&&r.v==='cambio';
+   dv.classList.toggle('oculto',!ok);if(ok)vis++});
+  const filtro=q||fe;el.classList.toggle('oculto',!okc||(filtro&&!vis));if(filtro&&vis)el.open=true})}
+['q','fc','fe'].forEach(i=>document.getElementById(i).addEventListener('input',filtrar));
+document.getElementById('abrir').onclick=e=>{const ab=e.target.textContent==='Abrir todo';document.querySelectorAll('details.tema').forEach(d=>d.open=ab);e.target.textContent=ab?'Cerrar todo':'Abrir todo'};
+document.getElementById('exportar').onclick=()=>{
+ let s='Respuestas a las dudas del temario\n';
+ const ap=DATOS.filter(t=>R['aprob:'+t.T]).map(t=>t.cod);s+='\nTemas aprobados: '+(ap.join(', ')||'ninguno')+'\n';
+ DATOS.forEach(t=>{const ls=[];t.dudas.forEach(d=>{if(!d.id)return;const r=R[d.id];if(!r||(!r.v&&!r.n))return;
+  const tx=document.createElement('div');tx.innerHTML=d.html;ls.push(`- [${r.v==='cambio'?'CAMBIAR':r.v==='ok'?'de acuerdo':'nota'}] ${tx.textContent.slice(0,140)}${r.n?'\n    → '+r.n.replace(/\n/g,'\n      '):''}`)});
+  if(ls.length)s+=`\n${t.cod} (${t.cuenta})\n`+ls.join('\n')+'\n'});
+ document.getElementById('exp').textContent=s;document.getElementById('expbox').classList.remove('oculto');
+ try{navigator.clipboard.writeText(s)}catch(e){}window.scrollTo(0,0)};
+resumen();
+</script></body></html>

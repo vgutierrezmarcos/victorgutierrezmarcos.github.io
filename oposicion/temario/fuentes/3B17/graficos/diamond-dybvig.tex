@@ -1,0 +1,47 @@
+% Autarquía, mercado y óptimo en el modelo de Diamond y Dybvig (1983).
+% Parámetros: pi = 0,5 (impacientes), R = 2, L = 0,6; u(c) = -1/c (aversión
+% relativa 2 > 1).
+%   Autarquía: invertir I y guardar 1 - I da (c_1, c_2) = (1 - I + L I, 1 - I + R I):
+%   segmento de (1, 1) (I = 0) a (L, R) = (0,6; 2) (I = 1).
+%   Mercado de bonos en T = 1: (c_1, c_2) = (1, R) = (1, 2).
+%   Planificador: pi c_1 + (1 - pi) c_2 / R = 1  ->  c_2 = 4 - 2 c_1 (pasa por (1, 2)).
+%   Óptimo: u'(c_1) = R u'(c_2)  ->  c_2 = sqrt(R) c_1; c_1* = 1/(0,5 + 0,5/sqrt 2)
+%   = 1,1716, c_2* = 1,6569 (1 < c_1* < c_2* < R).
+%   Curva de indiferencia: 0,5(-1/c_1) + 0,5(-1/c_2) = cte  ->  c_2 = 1/(K - 1/c_1),
+%   K = 1/c_1* + 1/c_2* = 1,45711; pendiente -(c_2/c_1)^2 = -2 en el óptimo:
+%   tangente a la recta del planificador.
+% Elaboración propia a partir de Diamond y Dybvig (1983), Freixas y Rochet (2008)
+% y Repullo (2022).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=2cm,y=2cm,
+    declare function={pl(\x)=4-2*\x; ci(\x)=1/(1.45711-1/\x);}]
+  % 1: ejes: consumo en T = 1 y en T = 2
+  \capa{1}{\ejes{$c_1$}{$c_2$}{2.5}{3.4}}
+  % 1: línea de certeza
+  \capa{1}{\draw[thick,tceegris] (0,0) -- (2.3,2.3) node[etiqueta,above right=-2pt,font=\footnotesize,text=black] {línea de certeza};}
+  % 2: frontera de autarquía, de (1, 1) (todo almacenado) a (L, R) (todo invertido)
+  \capa{2}{\draw[curva2] (1,1) -- (0.6,2);}
+  \capa{2}{\node[punto] (S) at (1,1) {};}
+  \capa{2}{\node[punto] (I) at (0.6,2) {};}
+  \capa{2}{\node[etiqueta,left,text=tceeazul,font=\footnotesize,align=right] at (0.78,1.42) {autarquía};}
+  \capa{2}{\draw[guia] (0.6,0) node[below,text=black] {$L$} -- (I);}
+  \capa{2}{\draw[guia] (S) -- (0,1) node[left,text=black] {$1$};}
+  % 3: con mercado de bonos en T = 1: (1, R)
+  \capa{3}{\node[punto] (M) at (1,2) {};}
+  \capa{3}{\node[etiqueta,below left] at (M) {$M$};}
+  \capa{3}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (S);}
+  \capa{3}{\draw[guia] (I) -- (M);}
+  \capa{3}{\draw[guia] (I) -- (0,2) node[left,text=black] {$R$};}
+  % 4: recta del planificador, que pasa por (1, R)
+  \capa{4}{\draw[curva4] plot[domain=0.45:1.9,samples=2] (\x,{pl(\x)}) node[etiqueta,right,text=tceedorado,font=\footnotesize] {$\pi c_1+\dfrac{(1-\pi)\,c_2}{R}=1$};}
+  % 5: curva de indiferencia ex ante tangente: el óptimo
+  \capa{5}{\draw[curva1] plot[domain=0.88:2.3,samples=80] (\x,{ci(\x)}) node[etiqueta,right,font=\footnotesize] {$\pi u(c_1)+(1-\pi)u(c_2)$};}
+  \capa{5}{\node[punto] (O) at (1.1716,1.6569) {};}
+  \capa{5}{\node[etiqueta,above right] at (O) {$O$};}
+  \capa{5}{\draw[guia] (O) -- (1.1716,0) node[below right=0pt and -3pt,text=black] {$c_1^*$};}
+  \capa{5}{\draw[guia] (O) -- (0,1.6569) node[left,text=black] {$c_2^*$};}
+\end{tikzpicture}
+\end{document}

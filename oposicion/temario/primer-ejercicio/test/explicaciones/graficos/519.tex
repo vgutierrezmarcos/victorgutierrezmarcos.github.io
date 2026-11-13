@@ -1,0 +1,50 @@
+% Pregunta 519 (2016-enero-OEP2015, n.º 6): utilidad cóncava, lotería entre W = 700 (accidente, prob. 2/3) y W = 1000; riqueza esperada 800 con E[u] sobre la cuerda, u(800) > E[u] (Jensen) y equivalente cierto EC < 800, así que la prima máxima 1000 - EC supera la pérdida esperada 200. Autor: Víctor Gutiérrez Marcos
+% Eje horizontal a escala desde W = 640 (1 cm = 70); u ilustrativa: u(W) = ln(W - 593), que da EC = 760.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Ejes sin el 0: el eje horizontal empieza en W = 640 (marca de corte)
+  \draw[eje] (0,0) -- (6.5,0) node[below left=2pt and 0pt] {$W$};
+  \draw[eje] (0,0) -- (0,5.3) node[left] {$u(W)$};
+  \draw[thick,fill=white,draw=white] (0.12,-0.12) rectangle (0.24,0.12);
+  \draw[thick] (0.06,-0.12) -- (0.14,0.12) (0.18,-0.12) -- (0.26,0.12);
+  % Utilidad estrictamente cóncava
+  \draw[curva1] plot[smooth] coordinates {(0.357,0.250) (0.571,0.704) (0.786,1.085) (1.000,1.414) (1.214,1.703) (1.429,1.961) (1.643,2.194) (1.857,2.406) (2.071,2.601) (2.286,2.781) (2.500,2.949) (2.714,3.105) (2.929,3.252) (3.143,3.391) (3.357,3.521) (3.571,3.646) (3.786,3.764) (4.000,3.876) (4.214,3.983) (4.429,4.086) (4.643,4.185) (4.857,4.279) (5.071,4.370) (5.286,4.458) (5.500,4.543) (5.714,4.624) (5.929,4.703)};
+  \node[etiqueta,tceemorado,above] at (5.929,4.703) {$u(W)$};
+  % Cuerda entre los dos resultados de la lotería
+  \draw[curva4,thick] (0.857,1.2) -- (5.143,4.4);
+  % Proyecciones
+  \draw[guia] (0.857,0) -- (0.857,1.2) -- (0,1.2);
+  \draw[guia] (5.143,0) -- (5.143,4.4) -- (0,4.4);
+  \draw[guia] (2.286,0) -- (2.286,2.781) -- (0,2.781);
+  \draw[guia] (0,2.267) -- (2.286,2.267);
+  \draw[guia] (1.714,0) -- (1.714,2.267);
+  % Puntos
+  \node[punto] at (0.857,1.2) {};
+  \node[punto] at (5.143,4.4) {};
+  \node[punto,fill=tceemorado] at (2.286,2.781) {};
+  \node[punto,fill=tceedorado!80!black] at (2.286,2.267) {};
+  \node[punto,fill=tceerojo] at (1.714,2.267) {};
+  % Etiquetas de los puntos
+  \node[etiqueta,right,tceedorado!70!black] at (2.35,2.15) {$E[u(W)]$};
+  \node[etiqueta,below right] at (0.857,1.2) {accidente ($\pi=\tfrac23$)};
+  \node[etiqueta,below right] at (5.143,4.4) {sin accidente};
+  % Eje vertical
+  \node[etiqueta,left] at (0,1.2) {$u(700)$};
+  \node[etiqueta,left] at (0,4.4) {$u(1000)$};
+  \node[etiqueta,left,tceemorado] at (0,2.85) {$u(800)$};
+  \node[etiqueta,left,tceedorado!70!black] at (0,2.2) {$E[u]$};
+  % Eje horizontal
+  \node[etiqueta,below] at (0.857,0) {$700$};
+  \node[etiqueta,below,tceerojo] at (1.714,0) {$EC$};
+  \node[etiqueta,below] at (2.286,0) {$800$};
+  \node[etiqueta,below] at (5.143,0) {$1000$};
+  % Llaves: prima justa y prima máxima
+  \draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceeverde] (2.286,-0.55) -- (5.143,-0.55)
+    node[etiqueta,midway,below=4pt,tceeverde] {pérdida esperada $=200$ (prima justa)};
+  \draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (1.714,-1.25) -- (5.143,-1.25)
+    node[etiqueta,midway,below=4pt,tceerojo] {prima máxima $=1000-EC>200$};
+\end{tikzpicture}
+\end{document}

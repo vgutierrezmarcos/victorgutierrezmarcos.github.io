@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'temas_clase_vista.dart';
 import '../../data/models/temas_clase.dart';
@@ -6,25 +7,32 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/analitica.dart';
+import '../../core/resenas.dart';
 import '../../core/calendario.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../cantar/grabaciones.dart';
 import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../cantar/pizarra_cante_vista.dart';
 import '../cantar/pizarra_page.dart';
 import '../cantar/relojes_alumnos.dart';
+import '../cantar/transcripcion.dart';
 import '../preparador/red_widgets.dart';
 import '../preparador/sustituciones.dart';
 import '../temario/agenda_tema_page.dart';
 import 'cante_form_page.dart';
 import 'cantes_util.dart';
+import 'informes_cante.dart';
 import 'modalidad.dart';
 import 'resultado_sheet.dart';
+import '../temario/esquema_tema.dart';
+import '../preparador/deberes.dart';
 import '../mas/ayuda_videos.dart';
 
 /// Detalle de un cante: cuenta atrás, temas que entran, apuntes pendientes
@@ -52,9 +60,10 @@ class CantePage extends ConsumerWidget {
     final temasRecibidos = c.dePreparador && c.temaA != null && !c.temaA!.isAfter(DateTime.now()) ? ref.watch(temaAnticipadoProvider(c.id)).valueOrNull : null;
 
     Future<void> anotar() async {
-      final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas);
+      final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas, esquemas: esquemasDe(ref, [...temas, ...?r?.temasCantados.map((t) => temario?.tema(t))]), criterios: ref.read(ajustesProvider).rubrica);
       if (res == null) return;
       Analitica.instancia.evento('cante_terminado', parametros: {'minutos': res.segundos ~/ 60, 'temas': (res.temaCantado == null ? 0 : 1) + res.otrosCantados.length});
+      if (res.valoracion > 0) Resenas.momento();
       await notifier.guardar(c.copyWith(estado: EstadoCante.hecho, resultado: res));
     }
 
@@ -347,6 +356,7 @@ class CantePage extends ConsumerWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 TemasValorados(resultado: r, titulo: (t) => temario?.tema(t)?.titulo ?? ''),
                 const SizedBox(height: 6),
+                if (r.criterios.isNotEmpty) Padding(padding: const EdgeInsets.only(bottom: 4), child: CriteriosValorados(resultado: r)),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),
                   const SizedBox(width: 12),
@@ -355,6 +365,26 @@ class CantePage extends ConsumerWidget {
                 if (r.comentarios.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(r.comentarios, style: context.textos.bodyMedium)),
                 if (r.sorteados.length > 1) Padding(padding: const EdgeInsets.only(top: 8), child: Text('Salieron: ${r.sorteados.join(', ')}', style: context.textos.labelSmall)),
               ]),
+            ),
+          ],
+          // La transcripción del cante (solo en este dispositivo), para la IA.
+          if (c.hecho) _TranscripcionDelCante(canteId: c.id),
+          // Los informes que ha guardado la IA con el conector (EconomIA).
+          if (usuario != null) SeccionInformesCante(uid: usuario.uid, canteId: c.id, propio: true),
+          // Las grabaciones de este cante (solo en este móvil).
+          if (!kIsWeb && Grabaciones.deCante(c.id).isNotEmpty) ...[
+            const TituloSeccion('Grabación'),
+            ListaGrabaciones(canteId: c.id),
+          ],
+          // Deberes que deja el preparador para esta clase.
+          if (c.dePreparador && c.tareas.isNotEmpty) ...[
+            TituloSeccion('${c.hecho ? 'Deberes para la próxima clase' : 'Deberes para esta clase'} · ${resumenDeberes(c)}'),
+            Tarjeta(
+              color: c.tareasHechas == c.tareas.length ? null : context.colores.primarioPalido,
+              child: ListaDeberes(
+                clase: c,
+                onTachar: (t, v) => notifier.guardar(c.copyWith(tareas: [for (final x in c.tareas) x.id == t.id ? x.copyWith(hecha: v, hechaEn: v ? DateTime.now() : null, borrarHechaEn: !v) : x])),
+              ),
             ),
           ],
           if (conApuntes.isNotEmpty) ...[
@@ -417,6 +447,105 @@ class CantePage extends ConsumerWidget {
         ],
       ),
     );
+  }
+}
+
+/// La transcripción y la pizarra guardadas con el cante (Cantar →
+/// «Transcribir» y la pizarra con el cronómetro en marcha): verlas, mandarlas
+/// juntas a la IA o borrarlas. Solo están en este dispositivo.
+class _TranscripcionDelCante extends StatefulWidget {
+  const _TranscripcionDelCante({required this.canteId});
+  final String canteId;
+  @override
+  State<_TranscripcionDelCante> createState() => _TranscripcionDelCanteState();
+}
+
+class _TranscripcionDelCanteState extends State<_TranscripcionDelCante> {
+  Future<bool> _confirmar(String titulo) async =>
+      await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: Text(titulo),
+          content: const Text('Se borra de este dispositivo. El cante y su valoración se quedan.'),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+            FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Borrar')),
+          ],
+        ),
+      ) ==
+      true;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Transcripciones.de(widget.canteId);
+    final p = PizarrasCante.de(widget.canteId);
+    if (t == null && p == null) return const SizedBox.shrink();
+    // «Enviar a la IA» manda los dos ficheros juntos (o el que haya).
+    final enviar = FilledButton.icon(onPressed: () => Transcripciones.enviarALaIa(widget.canteId), icon: const Icon(Icons.auto_awesome_outlined, size: 18), label: const Text('Enviar a la IA'));
+    final ficheros = [if (t != null) t.nombre, if (p != null) p.nombre];
+    final ayuda = Text(
+      ficheros.length == 2
+          ? '«Enviar a la IA» saca los ficheros ${ficheros[0]} y ${ficheros[1]}: adjúntalos los dos en el chat de tu IA y escribe «corrige este cante».'
+          : '«Enviar a la IA» saca el fichero ${ficheros.first}: adjúntalo en el chat de tu IA y escribe «corrige este cante».',
+      style: context.textos.labelSmall,
+    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      if (t != null) ...[
+        const TituloSeccion('Transcripción'),
+        Tarjeta(child: _transcripcion(context, t, enviar, ayuda)),
+      ],
+      if (p != null) ...[
+        const TituloSeccion('Pizarra del cante'),
+        Tarjeta(child: _pizarra(context, p.cronologia.paginas(fecha: p.fecha).length, t == null ? enviar : null, t == null ? ayuda : null)),
+      ],
+    ]);
+  }
+
+  Widget _transcripcion(BuildContext context, ({String nombre, String texto}) t, Widget enviar, Widget ayuda) {
+    final minutos = RegExp(r'^\[\d\d:\d\d\]', multiLine: true).allMatches(t.texto).length;
+    Future<void> ver() => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => Scaffold(
+            appBar: BarraWeb(title: const Text('Transcripción'), subtitulo: t.nombre),
+            body: ListaAdaptable(padding: const EdgeInsets.all(16), children: [SelectableText(t.texto, style: context.textos.bodyMedium)]),
+          ),
+        ));
+    Future<void> borrar() async {
+      if (!await _confirmar('¿Borrar la transcripción?')) return;
+      await Transcripciones.borrar(widget.canteId);
+      if (mounted) setState(() {});
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text('$minutos ${minutos == 1 ? 'minuto' : 'minutos'} con marca · solo en este dispositivo', style: context.textos.labelSmall),
+      const SizedBox(height: 8),
+      Wrap(spacing: 8, runSpacing: 6, children: [
+        enviar,
+        OutlinedButton(onPressed: ver, child: const Text('Ver')),
+        TextButton.icon(onPressed: borrar, icon: const Icon(Icons.delete_outline, size: 18), label: const Text('Borrar')),
+      ]),
+      const SizedBox(height: 6),
+      ayuda,
+    ]);
+  }
+
+  /// [enviar] y [ayuda] solo si no hay transcripción (si la hay, van con ella).
+  Widget _pizarra(BuildContext context, int paginas, Widget? enviar, Widget? ayuda) {
+    Future<void> borrar() async {
+      if (!await _confirmar('¿Borrar la pizarra del cante?')) return;
+      await PizarrasCante.borrar(widget.canteId);
+      if (mounted) setState(() {});
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text('$paginas ${paginas == 1 ? 'página' : 'páginas'} en PDF, una por minuto en que cambió, con su marca · solo en este dispositivo', style: context.textos.labelSmall),
+      const SizedBox(height: 8),
+      Wrap(spacing: 8, runSpacing: 6, children: [
+        if (enviar != null) enviar,
+        OutlinedButton(onPressed: () => verPizarraDelCante(context, widget.canteId), child: const Text('Ver la pizarra del cante')),
+        TextButton.icon(onPressed: borrar, icon: const Icon(Icons.delete_outline, size: 18), label: const Text('Borrar')),
+      ]),
+      if (ayuda != null) ...[const SizedBox(height: 6), ayuda],
+    ]);
   }
 }
 

@@ -1,0 +1,79 @@
+tema: 3B01
+fecha_inventario: 2026-11-12
+# Propuesta de la fase 2 (verificación de datos). Los textos son los de las frases nuevas de
+# _trabajo/propuestas-datos.md; si el revisor de contenido los cambia, actualizar «texto».
+datos:
+  - id: cbt-roa-total
+    texto: "la rentabilidad ordinaria del activo de las empresas de la Central de Balances Trimestral subió al 5,7~\\% en el primer semestre de 2026 (4,7~\\% un año antes), pero sin energía, refino y comercio de combustibles apenas pasó del 4,1 al 4,2~\\%"
+    donde: [3B01.tex]
+    valor: 5.7
+    unidad: "% (ratio R.1, rentabilidad ordinaria del activo neto)"
+    periodo: "primer semestre de 2026"
+    fuente: BdE2026CBT2T
+    organismo: Banco de España (Central de Balances Trimestral)
+    serie: "R.1, total CBT y total sin energía, refino y comercio mayorista de combustibles"
+    url: https://www.bde.es/wbe/es/noticias-eventos/actualidad-banco-espana/las-empresas-no-financieras-mejoraron-sus-ventas-beneficios-y-rentabilidad-en-la-primera-mitad-de-2026-impulsadas-por-el-sector-energetico.html
+    periodicidad: trimestral (nota de prensa en marzo, junio, septiembre y noviembre)
+    proxima: 2026-11
+    familia: bde-central-balances
+    frase: "conclusión (P74) o enganche; sustituye a «En 2021, persisten algunos riesgos…»"
+
+  - id: cbt-roa-sectores
+    texto: "gráfico pgfplots opcional (P39): R.1 por sectores, primer semestre de 2025 y de 2026"
+    donde: [3B01.tex, datos/roa-sectores-cbt.csv]
+    valor: null
+    unidad: "%"
+    periodo: "primer semestre de 2025 y de 2026"
+    fuente: BdE2026CBT2T
+    organismo: Banco de España (Central de Balances Trimestral)
+    serie: "R.1 por agrupaciones de actividad"
+    url: https://www.bde.es/wbe/es/noticias-eventos/actualidad-banco-espana/las-empresas-no-financieras-mejoraron-sus-ventas-beneficios-y-rentabilidad-en-la-primera-mitad-de-2026-impulsadas-por-el-sector-energetico.html
+    periodicidad: trimestral
+    proxima: 2026-11
+    familia: bde-central-balances
+    frase: "CSV en datos/roa-sectores-cbt.csv"
+
+  - id: cba-anual-ratios
+    texto: "pendiente: serie anual de R.1, R.2, R.3 y E.1 de la Central de Balances Integrada (no se pudo descargar ceba24.pdf, ver propuestas-datos.md V32)"
+    donde: []
+    valor: null
+    unidad: "%"
+    periodo: "2015-2024 (2025 sale a finales de noviembre de 2026)"
+    fuente: BdE2025CBA2024
+    organismo: Banco de España (Central de Balances Integrada, más de 650.000 sociedades)
+    serie: "R.1, R.2, R.1-R.2, R.3, E.1"
+    url: https://www.bde.es/wbe/es/publicaciones/informacion-estadistica/central-balances/resultados-anuales-de-las-empresas-no-financieras-2024.html
+    periodicidad: anual (finales de noviembre)
+    proxima: 2026-11
+    familia: bde-central-balances
+    frase: "solo si se hace el gráfico anual"
+
+  - id: umbrales-cuentas-abreviadas
+    texto: "balance abreviado: activo ≤ 4 M€, cifra de negocios ≤ 8 M€, ≤ 50 trabajadores; PyG abreviada: 11,4 M€, 22,8 M€ y 250; exención de auditoría: 2,85 M€, 5,7 M€ y 50 (dos de tres, dos ejercicios seguidos)"
+    donde: [3B01.tex]
+    valor: null
+    unidad: "euros y trabajadores"
+    periodo: "vigente a 12/11/2026"
+    fuente: LSC2010
+    organismo: BOE (arts. 257, 258 y 263 LSC)
+    serie: "umbrales de tamaño; la Directiva Delegada (UE) 2023/2775 los sube (pequeña: 5 M€ y 10 M€, hasta 7,5 M€ y 15 M€) y España no la ha transpuesto (proyecto 121/000075 caducado el 6/10/2026)"
+    url: https://www.boe.es/buscar/act.php?id=BOE-A-2010-10544
+    periodicidad: cuando se apruebe la transposición (nueva legislatura tras las elecciones del 29/11/2026)
+    proxima: 2027-03
+    familia: normativa-contable-espana
+    frase: "nota 14 del original"
+
+  - id: csrd-transposicion-espana
+    texto: "España no ha transpuesto la CSRD: el proyecto de Ley de información empresarial sobre sostenibilidad caducó con la disolución de las Cortes (Real Decreto 806/2026); siguen la Ley 11/2018 y el estado de información no financiera"
+    donde: [3B01.tex]
+    valor: null
+    unidad: null
+    periodo: "a 12/11/2026"
+    fuente: CNMVICAC2026Sostenibilidad
+    organismo: CNMV e ICAC; Congreso de los Diputados; BOE
+    serie: "transposición de las Directivas (UE) 2022/2464 y 2026/470 (plazo: 19/3/2027)"
+    url: https://www.cnmv.es/DocPortal/Publicaciones/OTROS/Com_Conjunto_ESRS_20_10_2026.pdf
+    periodicidad: cuando se apruebe la ley
+    proxima: 2027-03
+    familia: normativa-contable-espana
+    frase: "extensiones (P47)"

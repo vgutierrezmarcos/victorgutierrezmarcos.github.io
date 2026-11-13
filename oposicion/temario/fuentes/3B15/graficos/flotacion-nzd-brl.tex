@@ -1,0 +1,62 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+% Estilo común de las 7 series de tipos de cambio del anexo A del 3.B.15:
+% mismo tamaño, cuadrícula y rótulos; color del régimen (anclaje duro
+% tceeazul, anclaje blando tceedorado, flotación tceerojo). Capas «dic»
+% (tikz-tcee.tex): sombreados → ejes y referencias → serie → punto → rótulos.
+\pgfplotsset{
+  tcserie/.style={
+    scale only axis, width=9.5cm, height=4.6cm,
+    xmin=2000, xmax=2027, xtick={2000,2005,...,2025}, minor xtick={2001,...,2026},
+    ticklabel style={font=\footnotesize},
+    xticklabel style={/pgf/number format/1000 sep={}},
+    ylabel style={font=\footnotesize},
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+  },
+  tcdecimales/.style={yticklabel style={/pgf/number format/.cd, use comma, fixed, fixed zerofill, precision=#1}},
+}
+% \tcultimo[opciones del rótulo]{color}{x}{y}{texto}: punto y rótulo del último dato
+\newcommand{\tcultimo}[5][]{%
+  \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=#2] coordinates {(#3,#4)};
+  \dicrotulo[font=\footnotesize, anchor=west, xshift=3pt, align=left, text=#2, #1]{(#3,#4)}{#5}}
+\begin{document}
+% Flotación: el dólar neozelandés y el real brasileño, 2000-2026 (por USD,
+% medias mensuales). Reserva Federal, H.10 (EXUSNZ invertido y EXBZUS), vía
+% FRED. Dos paneles con la misma escala de años (pequeños múltiplos), los dos
+% en el color de la flotación. Últimos datos: octubre de 2026, 1,77 y 5,13.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/tc-flotacion-nzd-brl.csv}\datos
+\pgfplotsset{tcpanel/.style={tcserie, width=6cm,
+    xtick={2000,2010,2020}, minor xtick={2005,2015,2025},
+    title style={font=\small, yshift=-2pt}}}
+\begin{tikzpicture}[tcee]
+  % 1: ejes de los 2 paneles (los dibujan los entornos axis)
+  \begin{axis}[tcpanel, name=nzd, tcdecimales=1,
+      title={Dólar neozelandés},
+      ymin=1, ymax=2.6, ytick={1,1.4,...,2.6},
+      ylabel={NZD por USD}, dicapas]
+    % 2: serie NZD por USD
+    \capa{2}{
+      \addplot[diclinea=tceerojo] table[x=x, y=nzd_usd] {\datos};
+    }
+    % 4: último dato
+    \capa{4}{
+      \tcultimo{tceerojo}{2026.75}{1.774}{oct.\ 2026\\1,77}
+    }
+  \end{axis}
+  \begin{axis}[tcpanel, at={($(nzd.east)+(2.6cm,0)$)}, anchor=west, tcdecimales=0,
+      title={Real brasileño},
+      ymin=1, ymax=7, ytick={1,2,...,7},
+      ylabel={BRL por USD}, dicapas]
+    % 3: serie BRL por USD
+    \capa{3}{
+      \addplot[diclinea=tceerojo] table[x=x, y=brl_usd] {\datos};
+    }
+    % 4: último dato
+    \capa{4}{
+      \tcultimo{tceerojo}{2026.75}{5.1298}{oct.\ 2026\\5,13}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,46 @@
+% Primera generación (Krugman, 1979; Flood y Garber, 1984): tipo de cambio,
+% dinero y reservas en el tiempo. Ejemplo: l=2, Ebar=2, CI0=1, mu=0,5, h mu=1,
+% de modo que T=R0/mu-h/l=5 y el agotamiento sin ataque T_N=6.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  % ---- Panel superior: tipo de cambio ----
+  \begin{scope}[yshift=7.5cm]
+    \capa{1}{\draw[eje] (0,0) -- (8.8,0) node[below left=2pt and 0pt] {$t$};}
+    \capa{1}{\draw[eje] (0,0) -- (0,3.4) node[left] {$E$};}
+    \capa{2}{\draw[curva2] (0,2) -- (5,2) node[pos=0.15,above,etiqueta,text=tceeazul] {$\bar E$};}
+    \capa{3}{\draw[curva1,desplazada] (0,0.75) -- (5,2);}
+    \capa{3}{\node[etiqueta,text=tceemorado,below right] at (0.6,0.9) {$\tilde E_t$};}
+    \capa{4}{\draw[curva1] (5,2) -- (8,2.75);}
+    \capa{4}{\node[punto] at (5,2) {};}
+    \capa{4}{\draw[guia] (5,2) -- (5,0) node[below] {$T$};}
+  \end{scope}
+  % ---- Panel central: dinero y crédito interno ----
+  \begin{scope}[yshift=3.4cm]
+    \capa{5}{\draw[eje] (0,0) -- (8.8,0) node[below left=2pt and 0pt] {$t$};}
+    \capa{5}{\draw[eje] (0,0) -- (0,3.4) node[left] {$M$, CI};}
+    \capa{6}{\draw[curva3] (0,0.6) -- (8,3.0) node[right,etiqueta,text=tceeverde] {CI};}
+    \capa{7}{\draw[curva1] (0,2.4) -- (5,2.4);}
+    \capa{7}{\node[etiqueta,text=tceemorado,above] at (2,2.4) {$M=\ell\bar E$};}
+    \capa{8}{\draw[curva1,dotted] (5,2.4) -- (5,2.1);}
+    \capa{8}{\draw[curva1] (5,2.1) -- (8,3.0);}
+    \capa{8}{\draw[guia] (5,2.1) -- (5,0) node[below] {$T$};}
+    \capa{8}{\draw[guia] (6,2.4) -- (6,0) node[below] {$T_N$};}
+  \end{scope}
+  % ---- Panel inferior: reservas ----
+  \begin{scope}
+    \capa{9}{\draw[eje] (0,0) -- (8.8,0) node[below left=2pt and 0pt] {$t$};}
+    \capa{9}{\draw[eje] (0,0) -- (0,2.6) node[left] {$R$};}
+    \capa{10}{\draw[curva4] (0,1.8) -- (5,0.3);}
+    \capa{10}{\node[etiqueta,text=tceedorado,above right] at (0.4,1.7) {$R_t=\ell\bar E-\mathrm{CI}_t$};}
+    \capa{11}{\draw[curva4,desplazada] (5,0.3) -- (6,0);}
+    \capa{11}{\draw[flecha] (5,0.3) -- (5,0.02);}
+    \capa{11}{\node[etiqueta,text=tceerojo,left] at (4.9,0.14) {ataque};}
+    \capa{11}{\draw[curva4] (5,0) -- (8,0);}
+    \capa{11}{\node[below] at (5,0) {$T$};}
+    \capa{11}{\node[below] at (6,0) {$T_N$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

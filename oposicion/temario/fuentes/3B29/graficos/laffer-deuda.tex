@@ -1,0 +1,46 @@
+% Curva de Laffer de la deuda (Krugman, 1988; Sachs, 1989): valor esperado del
+% cobro V(B) frente a la deuda nominal B. Función usada:
+%   V(B) = B                     si B <= 2 (pago seguro, B_ = 2);
+%   V(B) = B - (B - 2)^2 / 8     si B > 2 (pendiente 1 en B = 2, sin pico).
+%   Máximo en B^max = 6, V = 4. Quita: B_1 = 8,5 (V = 3,219) -> B_2 = 7 (V = 3,875).
+%   Precio de la deuda en B_1: V/B = 0,379.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{
+  declare function={lafferV(\b)=(\b<=2)*\b+(\b>2)*(\b-(\b-2)^2/8);},
+  bisectriz/.style={thick,dashed,tceegris},
+}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-0.9) rectangle (13.6,7.6);
+  % 1: ejes, el 0 y el rótulo del eje vertical
+  \capa{1}{\draw[eje] (0,0) -- (10.6,0) node[right] {deuda nominal, $B$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,7) node[left] {$V(B)$};}
+  \capa{1}{\node[etiqueta, right, font=\footnotesize, text=tceegris] at (0.1,7) {valor esperado del cobro};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: bisectriz (se cobra todo) y tramo en que la deuda se paga entera
+  \capa{2}{\draw[bisectriz] (0,0) -- (6.6,6.6) node[etiqueta, right, text=tceegris, align=left] {$V(B)=B$\\{\footnotesize se cobra todo}};}
+  \capa{2}{\draw[curva1] (0,0) -- (2,2);}
+  \capa{2}{\draw[guia] (2,2) -- (2,0) node[below] {$\underline{B}$};}
+  % 3: la curva V(B): creciente, máximo y decreciente
+  \capa{3}{\draw[curva1] plot[domain=2:10,samples=81] (\x,{lafferV(\x)}) node[etiqueta, right, text=tceemorado] {$V(B)$};}
+  % 4: máximo, su proyección y los dos tramos
+  \capa{4}{\draw[guia] (6,{lafferV(6)}) -- (6,0) node[below] {$B^{\max}$};}
+  \capa{4}{\node[punto] at (6,{lafferV(6)}) {};}
+  \capa{4}{\node[etiqueta, text=tceeverde, rotate=33] at (3.95,2.5) {tramo creciente};}
+  \capa{4}{\node[etiqueta, text=tceerojo, anchor=north west] at (8.6,1.75) {sobreendeudamiento};}
+  % 5: B_1 y B_2 sobre el tramo decreciente, con sus proyecciones
+  \capa{5}{\draw[guia] (8.5,{lafferV(8.5)}) -- (8.5,0) node[below] {$B_1$};}
+  \capa{5}{\node[punto] at (8.5,{lafferV(8.5)}) {};}
+  \capa{5}{\draw[guia] (7,{lafferV(7)}) -- (7,0) node[below] {$B_2$};}
+  \capa{5}{\node[punto] at (7,{lafferV(7)}) {};}
+  % 6: la quita, de B_1 a B_2 a lo largo de la curva
+  \capa{6}{\draw[->, thick, tceeverde] plot[domain=8.3:7.2,samples=23] (\x,{lafferV(\x)+0.38});}
+  \capa{6}{\node[etiqueta, text=tceeverde, anchor=south west] at (7.75,4.05) {la quita sube el cobro};}
+  % 7: rayo desde el origen a B_1: su pendiente es el precio de la deuda
+  \capa{7}{\draw[thin, tceegris] (0,0) -- (8.5,{lafferV(8.5)});}
+  \capa{7}{\node[etiqueta, text=tceegris, font=\footnotesize, rotate=20.7, anchor=north] at (4.2,{0.3787*4.2-0.15}) {precio $=V(B)/B$};}
+\end{tikzpicture}
+\end{document}

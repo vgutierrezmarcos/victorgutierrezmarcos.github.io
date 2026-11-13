@@ -1,0 +1,58 @@
+% Entradas de remesas, IED y AOD neta en los países de renta baja y media
+% (agregado LMY del Banco Mundial), 1990-2025, miles de millones de dólares
+% corrientes. Datos: ../datos/remesas-ied-aod.csv (WDI, 11/11/2026; AOD hasta
+% 2023). Es la misma información que fuentes/3B29/graficos/flujos-desarrollo.tex
+% (sin la deuda), con la paleta de este tema.
+% Valores de control: remesas 703,6 (2025); IED 494,3 (2025); AOD 251,9 (2023);
+% IED 724,0 (2021, máximo); en 2022 remesas 591,4 > IED 588,0.
+% Paleta del tema: remesas (trabajo) en dorado, IED (capital) en azul, AOD en
+% gris.
+% Capas (CRITERIOS §7): ejes -> AOD -> IED -> remesas -> puntos y rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/remesas-ied-aod.csv}\remesas
+\colorlet{rmremesas}{tceedorado}
+\colorlet{rmied}{dicopf}
+\colorlet{rmaod}{tceegris}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=11cm, height=6cm,
+      xmin=1989, xmax=2026, xtick={1990,1995,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ymin=0, ymax=800, ytick={0,100,...,800},
+      yticklabel style={font=\footnotesize, /pgf/number format/1000 sep=},
+      ylabel={miles de millones de dólares}, ylabel style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      unbounded coords=discard,
+      dicapas,
+    ]
+    % 1: ejes (los dibuja el axis)
+    % 2: AOD neta recibida (hasta 2023)
+    \capa{2}{
+      \addplot[diclinea=rmaod, dash pattern=on 5pt off 2.5pt, forget plot]
+        table[x=anio, y=aod] {\remesas};
+    }
+    % 3: IED
+    \capa{3}{
+      \addplot[diclinea=rmied, forget plot] table[x=anio, y=ied] {\remesas};
+    }
+    % 4: remesas
+    \capa{4}{
+      \addplot[line width=1.8pt, rmremesas, forget plot] table[x=anio, y=remesas] {\remesas};
+    }
+    % 5: puntos y rótulos del último dato
+    \capa{5}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=rmremesas] coordinates {(2025,703.6)};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=rmied] coordinates {(2025,494.3)};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=rmaod] coordinates {(2023,251.9)};
+      \dicrotulo[font=\footnotesize, text=rmremesas!85!black, anchor=west, align=left]{(2025.5,703.6)}{\textbf{remesas}\\[-1pt]$703{,}6$}
+      \dicrotulo[font=\footnotesize, text=rmied, anchor=west, align=left]{(2025.5,494.3)}{\textbf{IED}\\[-1pt]$494{,}3$}
+      \dicrotulo[font=\footnotesize, text=rmaod!85!black, anchor=west, align=left]{(2023.5,251.9)}{\textbf{AOD}\\[-1pt]$251{,}9$ (2023)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

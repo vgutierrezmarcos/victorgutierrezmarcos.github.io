@@ -1,0 +1,25 @@
+% Pregunta 886 (2003-julio-OEP2003, n.º 14): Solow en unidades de trabajo eficiente; al subir la tasa de ahorro, s f(k) se desplaza hacia arriba y el estado estacionario pasa de k* a k**: cambia el nivel, no la tasa de crecimiento a largo plazo. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % s f(k) = 1.0 sqrt(k), s' f(k) = 1.35 sqrt(k); (n+g+delta)k con pendiente 0.6
+  % k* = (1/0.6)^2 = 2.78 ; k** = (1.35/0.6)^2 = 5.06
+  \ejes{$\tilde k$}{inversión}{6.6}{4.6}
+  \draw[curva2] (0,0) -- (6.2,3.72);
+  \node[etiqueta,tceeazul,anchor=west] at (6.2,3.72) {$(n{+}g{+}\delta)\tilde k$};
+  \draw[curva1,domain=0:6.2,samples=80] plot (\x,{1.0*sqrt(\x)});
+  \node[etiqueta,tceemorado,anchor=west] at (6.2,2.49) {$s\,f(\tilde k)$};
+  \draw[curvanueva,desplazada,domain=0:6.2,samples=80] plot (\x,{1.35*sqrt(\x)});
+  \node[etiqueta,tceerojo,anchor=west] at (6.2,3.18) {$s'f(\tilde k)$};
+  \draw[guia] (2.78,0) -- (2.78,1.667);
+  \draw[guia] (5.06,0) -- (5.06,3.04);
+  \node[punto] at (2.78,1.667) {};
+  \node[punto] at (5.06,3.04) {};
+  \node[below] at (2.78,0) {$\tilde k^*$};
+  \node[below] at (5.06,0) {$\tilde k^{**}$};
+  \draw[flecha] (3.0,-0.75) -- (4.8,-0.75);
+  \node[etiqueta,tceerojo,below] at (3.9,-0.8) {$\uparrow s$: sube el nivel};
+  \node[etiqueta,font=\footnotesize,align=left,tceegris,anchor=north west] at (0.25,4.5) {en los dos estados estacionarios\\$y$ por trabajador crece a $g$};
+\end{tikzpicture}
+\end{document}

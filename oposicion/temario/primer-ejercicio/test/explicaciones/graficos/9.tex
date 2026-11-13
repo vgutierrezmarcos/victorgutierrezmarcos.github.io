@@ -1,0 +1,35 @@
+% Pregunta 9 (2025-marzo-A, n.º 9): el impuesto específico desplaza 12 hacia arriba el coste marginal del monopolista; IMg = CMg + t da Q = 12 y el precio, leído en la demanda, pasa de 45 a 47 (sube 2, no 12). Autor: Víctor Gutiérrez Marcos
+% A escala, con el eje de precios cortado en 25 (coordenada vertical = P - 25): P = 50 - Q/4, IMg = 50 - Q/2, CMg = 20 + Q, CMg + t = 32 + Q.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.2cm,y=0.2cm]
+  % Ejes (precio cortado: empieza en 25)
+  \draw[eje] (0,0) -- (32,0) node[below left=2pt and 0pt] {$Q$};
+  \draw[eje] (0,0) -- (0,31) node[left] {$P$};
+  \node[below left] at (0,0) {$0$};
+  \draw[thick,white] (0,1.2) -- (0,2.2);
+  \draw[thick] (-0.6,0.9) -- (0.6,1.5);
+  \draw[thick] (-0.6,1.9) -- (0.6,2.5);
+  % Coste marginal sin impuesto y con impuesto
+  \draw[curva3] (5,0) -- (30,25) node[etiqueta,tceeverde,right] {$\mathit{CMg}$};
+  \draw[curvanueva,desplazada] (0,7) -- (23,30) node[etiqueta,tceerojo,right] {$\mathit{CMg}+t$};
+  \draw[flecha] (8,3.3) -- (8,14.7) node[etiqueta,midway,left,tceerojo] {$t=12$};
+  % Demanda e ingreso marginal
+  \draw[curva1] (0,25) -- (30,17.5) node[etiqueta,tceemorado,right] {$D$};
+  \draw[curva2] (0,25) -- (30,10) node[etiqueta,tceeazul,right] {$\mathit{IMg}$};
+  % Sin impuesto: IMg = CMg en Q = 20, P = 45
+  \draw[guia] (20,0) node[below] {$20$} -- (20,20);
+  \draw[guia] (0,20) node[left] {$45$} -- (20,20);
+  \node[punto] at (20,15) {};
+  \node[punto] at (20,20) {};
+  \node[etiqueta,above right] at (20,20) {$E_0$};
+  % Con impuesto: IMg = CMg + t en Q = 12, P = 47
+  \draw[thin,dashed,tceerojo] (12,0) node[below,tceerojo] {$12$} -- (12,22);
+  \draw[thin,dashed,tceerojo] (0,22) node[left,tceerojo] {$47$} -- (12,22);
+  \node[punto] at (12,19) {};
+  \node[punto,fill=tceerojo] at (12,22) {};
+  \node[etiqueta,above,tceerojo] at (12,22.2) {$E_1$};
+  \node[left] at (0,25) {$50$};
+\end{tikzpicture}
+\end{document}

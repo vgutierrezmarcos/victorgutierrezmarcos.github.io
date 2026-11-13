@@ -1,7 +1,7 @@
 # Semestre Europeo y Procedimiento de Desequilibrios Macroeconómicos (PDM)
 
 - **Área:** union-europea · **Tema de referencia:** 3.B.45 (lo tiene en el título) — **tema sin fuente**
-- **Temas que lo usan:** 3.B.45 (desarrollo previsto), 4.A.29 (desarrollo previsto del PDM aplicado a España; lo pide el título y hoy no está), 4.B.26 (resumen), 4.A.21 (mención: umbral de la PIIN del −35 %), 4.A.28 y 4.A.30 (mención), 3.B.40 (mención: Informe Conjunto sobre el Empleo), 3.B.37 (mención: condicionalidad del MRR ligada a las REP), 4.A.17 (mención), 1D01 (uso: umbrales del cuadro en cada indicador y en las tablas del anexo A)
+- **Temas que lo usan:** 3.B.45 (desarrollo previsto), 4.A.29 (desarrollo previsto del PDM aplicado a España; lo pide el título y hoy no está), 4.B.26 (resumen), 4.A.21 (mención: umbral de la PIIN del −35 %), 4.A.28 y 4.A.30 (mención), 3.B.40 (mención: Informe Conjunto sobre el Empleo), 3.B.37 (mención: condicionalidad del MRR ligada a las REP), 4.A.17 (mención), 1D01 (uso: umbrales del cuadro en cada indicador y en las tablas del anexo A), 3.B.16 (mención; hecho, 11/11/2026: III.3.2, la coordinación en el Semestre Europeo, que desde 2024 integra los planes fiscales-estructurales a medio plazo, `\vertema{3.B.45}`)
 - **Manuales de referencia:** Reglamentos 1175/2011 (Semestre, hoy integrado en el 2024/1263) y 1176/2011 (PDM); Comisión Europea, *Alert Mechanism Report* e *In-depth reviews* anuales; Baldwin y Wyplosz
 - **Decisión D118 (13/10/2026):** ¿Dónde van el Semestre Europeo y el procedimiento de desequilibrios macroeconómicos (PDM)? Diseño en 3.B.45; aplicación a España en 4.A.29
 
@@ -46,6 +46,8 @@ Sin ecuaciones; la tabla del cuadro de indicadores es el «gráfico» de referen
 | 4.A.21 | Sostenibilidad externa | Mención | Umbral −35 % de la PIIN | — |
 | 4.B.26 | Déficit y deuda | Resumen | REP fiscales a España | — |
 | 1D01 | Dictamen de coyuntura | Uso | El umbral de cada indicador como «referencia oficial», separado de las orientativas (D-03 de la 1D01) | El procedimiento |
+| 3.B.16 | Unión monetaria incompleta: solución imperfecta | mención (hecho, 11/11/2026) | La coordinación de las políticas fiscales nacionales; desde 2024, con los planes fiscales-estructurales a medio plazo; `\vertema{3.B.45}` | El procedimiento |
+| 3.B.12 | Sostenibilidad exterior | mención (hecho, 11/11/2026) | Los 2 indicadores exteriores del cuadro (CC media de 3 años entre −4 % y +6 %; PIIN −35 %) en `tab:indicadores-externos` y en el texto (también alerta por superávit), con `CE2025AMR2026`; España 2025: CC media 3,1 %, PIIN −42,7 %; `\vertema{3.B.45}` | El cuadro completo |
 
 ## Divergencias encontradas en el temario actual
 - **Esta ficha** daba el cuadro anterior a 2024 (deuda privada 133 %, crédito privado 14 %, vivienda real, pasivos financieros, sin cifras de TCER, cuotas y CLU): rehecho el 24/10/2026 con el cuadro del IMA 2025-2026 (C7 de la 1D01). Las cifras de `pendientes.md` de la 1D01 (P85, P93) y las del C7 de su `propuestas-coherencia.md` también eran las antiguas.

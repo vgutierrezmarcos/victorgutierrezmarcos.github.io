@@ -1,0 +1,56 @@
+% El ajuste con moneda propia en el modelo de Mundell (1961): tras la
+% perturbación asimétrica (fila a de mundell.tex, mismos valores), la
+% depreciación de la peseta frente al marco devuelve la demanda a España
+% (DA' -> DA) y la quita de Alemania; los 2 países vuelven a A en Y^n.
+%   Y^n = 7; DA: Y = 11/3 + 14/(P + 2); OA_CP(W_0): P = Y - 4,8; A = (7; 2,2)
+%   DA'_ES = DA - 2, B_ES = (6,018; 1,218); DA'_DE = DA + 4/3, B_DE = (7,8; 3)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm,
+    declare function={da(\p)=11/3+14/(\p+2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.2,-1.6) rectangle (33.2,10.0);
+  % 1: ejes de los 2 paneles y títulos
+  \capa{1}{\node[font=\bfseries] at (6.3,9.4) {España};}
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \begin{scope}[xshift=9.6cm]
+  \capa{1}{\node[font=\bfseries] at (6.3,9.4) {Alemania};}
+  \capa{1}{\ejes{$Y$}{$P$}{12.6}{7.6}}
+  \end{scope}
+  % 2: OA de largo plazo, OA de corto plazo y DA' (tras la perturbación) con B
+  \capa{2}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{2}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{2}{\draw[curvanueva, desplazada] plot[domain=5.6:0.4, samples=60, smooth] ({da(\x)-2},\x)
+      node[etiqueta, right, yshift=2pt, text=tceerojo] {DA$'_{\mathrm{ES}}$};}
+  \capa{2}{\node[punto] at (6.018,1.218) {};}
+  \capa{2}{\node[etiqueta, left=2pt] at (6.018,1.218) {$B$};}
+  \begin{scope}[xshift=9.6cm]
+  \capa{2}{\draw[curva3] (7,0) node[below, text=black] {$Y^n$} -- (7,7.6) node[etiqueta, above, text=tceeverde] {OA$_{\mathrm{LP}}$};}
+  \capa{2}{\draw[curva2] (5.3,0.5) -- (10.2,5.4) node[etiqueta, right, text=tceeazul] {OA$_{\mathrm{CP}}(W_0)$};}
+  \capa{2}{\draw[curvanueva, desplazada] plot[domain=6.3:1.0, samples=60, smooth] ({da(\x)+4/3},\x)
+      node[etiqueta, right, text=tceerojo] {DA$'_{\mathrm{DE}}$};}
+  \capa{2}{\node[punto] at (7.8,3) {};}
+  \capa{2}{\node[etiqueta, right=3pt] at (7.8,3) {$B$};}
+  \end{scope}
+  % 3: España: la peseta se deprecia, la demanda vuelve a la DA y la economía a A
+  \capa{3}{\draw[flecha] (3.75,5.0) -- (5.25,5.0);}
+  \capa{3}{\draw[curva1] plot[domain=6.2:1.2, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, right, text=tceemorado] {DA$_{\mathrm{ES}}$};}
+  \capa{3}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{3}{\node[punto] at (7,2.2) {};}
+  \capa{3}{\node[etiqueta, right=4pt] at (7,2.2) {$A$};}
+  \capa{3}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6) {$E\uparrow$, $q\uparrow$:\\depreciación de la peseta};}
+  % 4: Alemania: el marco se aprecia, la demanda vuelve a la DA y la economía a A
+  \begin{scope}[xshift=9.6cm]
+  \capa{4}{\draw[flecha] (6.65,5.0) -- (5.55,5.0);}
+  \capa{4}{\draw[curva1] plot[domain=1.2:6.2, samples=60, smooth] ({da(\x)},\x)
+      node[etiqueta, above, text=tceemorado] {DA$_{\mathrm{DE}}$};}
+  \capa{4}{\draw[guia] (7,2.2) -- (0,2.2) node[left, text=black] {$P_0$};}
+  \capa{4}{\node[punto] at (7,2.2) {};}
+  \capa{4}{\node[etiqueta] at (6.62,1.3) {$A$};}
+  \capa{4}{\node[etiqueta, anchor=north west, align=left, font=\footnotesize] at (0.3,7.6) {apreciación\\del marco};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,38 @@
+% Pregunta 699 (2007-julio-OEP2007, n.º 7): sube p1 y la renta se actualiza con Laspeyres (la utilidad sube), con la variación compensada (se mantiene) o con Paasche (baja). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.5cm,y=0.7cm]
+  % U = sqrt(x1 x2); p0 = (1,1), m0 = 4 -> x0 = (2,2), U0 = 2. p1 pasa a 3.
+  % Laspeyres: m = 8, xL = (4/3, 4), U_L^2 = 16/3.  VC: m = 4 sqrt 3, xC = (1,155; 3,464), U = 2.
+  % Paasche: m = 6, xP = (1,3), U_P^2 = 3; p0·xP = 4 = m0 (xP está en la recta inicial).
+  \draw[eje] (0,0) -- (4.6,0) node[below left=2pt and 0pt] {$x_1$};
+  \draw[eje] (0,0) -- (0,8.6) node[left] {$x_2$};
+  \node[below left] at (0,0) {$0$};
+  % curvas de indiferencia
+  \draw[thick,tceedorado,domain=0.68:3.6,samples=80,smooth] plot (\x,{16/3/\x});
+  \node[etiqueta,tceedorado,anchor=west] at (3.6,1.48) {$U_L$};
+  \draw[thick,tceemorado,domain=0.5:4.0,samples=80,smooth] plot (\x,{4/\x});
+  \node[etiqueta,tceemorado,anchor=west] at (4.0,1.0) {$U_0$};
+  \draw[thick,tceerojo,domain=0.38:4.4,samples=80,smooth] plot (\x,{3/\x});
+  \node[etiqueta,tceerojo,anchor=west] at (4.4,0.68) {$U_P$};
+  % rectas de balance
+  \draw[curva1] (0,4) -- (4,0);
+  \node[etiqueta,tceemorado,left] at (0,4) {inicial};
+  \draw[curva4] (0,8) -- (8/3,0);
+  \node[etiqueta,tceedorado,left] at (0,8) {Laspeyres};
+  \draw[curva3] (0,6.93) -- (2.31,0);
+  \node[etiqueta,tceeverde,left] at (0,6.93) {VC};
+  \draw[curvanueva,desplazada] (0,6) -- (2,0);
+  \node[etiqueta,tceerojo,left] at (0,6) {Paasche};
+  % puntos
+  \node[punto] at (2,2) {};
+  \node[etiqueta,anchor=west,inner sep=1pt] at (2.07,2.08) {$x^0$};
+  \node[punto,tceedorado] at (4/3,4) {};
+  \node[etiqueta,tceedorado,right=2pt] at (4/3,4) {$x_L$};
+  \node[punto,tceeverde] at (1.155,3.464) {};
+  \node[etiqueta,tceeverde,right=2pt] at (1.155,3.464) {$x_C$};
+  \node[punto,tceerojo] at (1,3) {};
+  \node[etiqueta,tceerojo,below left=0pt and 1pt] at (1,3) {$x_P$};
+\end{tikzpicture}
+\end{document}

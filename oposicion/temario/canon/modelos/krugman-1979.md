@@ -1,6 +1,7 @@
 # Competencia monopolística y comercio (Krugman 1979, 1980)
 
 - **Área:** comercio · **Tema de referencia:** 3.B.6 (Nueva teoría del comercio internacional) — lo tiene en el título (competencia imperfecta, rendimientos crecientes).
+- **No confundir** con Krugman (1979, *Journal of Money, Credit and Banking*), el modelo de crisis de balanza de pagos de primera generación (`Krugman1979Model`): ficha `flood-garber` (referencia el 3.B.17, revisado el 12/11/2026). Tampoco `Krugman1998What` (3.B.6, nueva geografía económica) con «What happened to Asia?» (`Krugman1998Asia`, 3.B.17).
 - **Temas que lo usan:** 3.B.6 (desarrollo), 3.A.18 (mención; hecho, 19/10/2026), 3.B.34 (mención), 3.B.39 (mención), 3.B.41 (mención)
 - **Manuales de referencia:** Krugman (1979, *JIE*; 1980, *AER*); Dixit y Stiglitz (1977); Helpman y Krugman, *Market Structure and Foreign Trade* (1985); Feenstra, *Advanced International Trade*, cap. 5; Krugman, Obstfeld y Melitz, cap. 8.
 

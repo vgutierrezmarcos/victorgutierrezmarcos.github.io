@@ -1,0 +1,290 @@
+tema: 3B16
+fecha_inventario: 2026-11-11
+# Textos literales de 3B16.tex (fase 3, partes 1 y 2, 11/11/2026).
+# Familias marcadas «nueva» no están todavía en _datos-familias.yaml (las propone esta revisión).
+datos:
+  - id: zona-euro-miembros
+    texto: "El 1 de enero de 2026 Bulgaria adoptó el euro, y la zona del euro pasó a tener 21 miembros"
+    donde: [3B16.tex]
+    valor: 21
+    unidad: "Estados miembros que usan el euro"
+    periodo: 1/1/2026
+    fuente: [CE2026PaisesEuro, BCE2026Bulgaria]
+    organismo: Comisión Europea / BCE
+    serie: "EU countries and the euro"
+    url: https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro_en
+    periodicidad: irregular (cada ampliación)
+    proxima: null
+    familia: ue-zona-euro-miembros
+    depende: [tab:zona-euro-amo]
+    frase: "Introducción, enganche (V1)"
+  - id: areaer-regimenes
+    texto: "a 30 de abril de 2023 el 44,8~\\% de sus miembros tenía un anclaje blando, el 32,5~\\% flotaba y el 13,4~\\% tenía un anclaje duro"
+    donde: [3B16.tex]
+    valor: [44.8, 32.5, 13.4, 9.3]
+    unidad: "% de 194 miembros y territorios del FMI"
+    periodo: 30/4/2023
+    fuente: FMI2024AREAER2023
+    organismo: FMI
+    serie: "AREAER, Overview, tablas 3 y 4"
+    url: https://www.elibrary.imf.org/fileasset/downloads/AEIEA2023001-S001.pdf
+    periodicidad: anual (irregular; el de 2023 salió el 19/12/2024)
+    proxima: null
+    familia: fmi-areaer   # nueva (la usa también 3A32, V16)
+    depende: []
+    frase: "Introducción (V2). Mismas cifras y clave que 3A32"
+  - id: uniones-monetarias-fmi
+    texto: "el FMI cuenta hoy 4 uniones monetarias: la zona del euro, que flota frente al resto del mundo, y 3 con un ancla cambiaria, la del Caribe Oriental (caja de conversión con el dólar) y las 2 del franco CFA (UEMOA y CEMAC, ancladas al euro)"
+    donde: [3B16.tex]
+    valor: 4
+    unidad: "uniones monetarias en la clasificación del FMI"
+    periodo: 30/4/2023
+    fuente: FMI2024AREAER2023
+    organismo: FMI
+    serie: "AREAER, tabla 4 y glosario"
+    url: https://www.elibrary.imf.org/fileasset/downloads/AEIEA2023001-S001.pdf
+    periodicidad: anual (irregular)
+    proxima: null
+    familia: fmi-areaer   # nueva
+    depende: []
+    frase: "Introducción (V3)"
+  - id: schengen-controles
+    texto: "en noviembre de 2026 lo hacían 8 del espacio Schengen, entre ellos Alemania y Francia"
+    donde: [3B16.tex]
+    valor: 8
+    unidad: "Estados Schengen con controles temporales en fronteras interiores en vigor"
+    periodo: 11/11/2026
+    fuente: CE2026ControlesSchengen
+    organismo: Comisión Europea (DG HOME)
+    serie: "Temporary Reintroduction of Border Control (lista de notificaciones)"
+    url: https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en
+    periodicidad: continua (notificaciones de 6 meses o menos)
+    proxima: 2027-03
+    familia: schengen-controles   # nueva
+    depende: [tab:zona-euro-amo]
+    frase: "I.2, Mundell, movilidad (V25, sustituye el amarillo P2)"
+  - id: movilidad-intra-ue
+    texto: "unos 10 millones de ciudadanos de la UE en edad de trabajar viven en otro Estado miembro, menos del 4~\\% de la población de 20 a 64 años"
+    donde: [3B16.tex]
+    valor: [9.9, 3.8]
+    unidad: "millones de personas y % de la población de 20-64 años"
+    periodo: 1/1/2023
+    fuente: Eurostat2026MigrPop
+    organismo: Eurostat
+    serie: "migr_pop1ctz, EU27_2020, citizen EU27_2020_FOR y TOTAL, tramos de 20 a 64 años"
+    url: https://ec.europa.eu/eurostat/databrowser/view/migr_pop1ctz/default/table
+    periodicidad: anual
+    proxima: 2027-03
+    familia: eurostat-movilidad-ue   # nueva
+    depende: [tab:zona-euro-amo]
+    frase: "I.2, Mundell, movilidad (V26)"
+  - id: comercio-intrazona-euro
+    texto: "casi la mitad del comercio de bienes de los países del euro es con otros países del euro (el 47,6~\\% de sus exportaciones en 2025, frente al 52-53~\\% de 2002-2007)"
+    donde: [3B16.tex]
+    valor: [47.6, 48.2]
+    unidad: "% de exportaciones e importaciones de bienes de EA21 con EA21"
+    periodo: 2025
+    fuente: Eurostat2026ExtStEasitc
+    organismo: Eurostat
+    serie: "ext_st_easitc, EA21, partner EA21 y EXT_EA21, TRD_VAL"
+    url: https://ec.europa.eu/eurostat/databrowser/view/ext_st_easitc/default/table
+    periodicidad: mensual (año cerrado en febrero-marzo)
+    proxima: 2027-03
+    familia: eurostat-comercio-zona-euro   # nueva
+    depende: [_trabajo/datos/comercio-intrazona-euro-2002-2025.csv, tab:zona-euro-amo]
+    frase: "I.2, McKinnon (V21, sustituye el dato de la UNCTAD de 2015)"
+  - id: apertura-espana-alemania
+    texto: "exportaciones e importaciones suman el 69~\\% del PIB en España y el 78~\\% en Alemania"
+    donde: [3B16.tex]
+    valor: [69.1, 78.0]
+    unidad: "% del PIB ((P6+P7)/B1GQ, precios corrientes)"
+    periodo: 2025
+    fuente: Eurostat2026Nama10gdp
+    organismo: Eurostat
+    serie: "nama_10_gdp, CP_MEUR, P6, P7, B1GQ, ES y DE"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: trimestral y anual (septiembre-octubre)
+    proxima: 2027-04
+    familia: eurostat-nama   # nueva
+    depende: [tab:zona-euro-amo]
+    frase: "I.2, McKinnon (V21). España: misma cifra que 3A32 (apertura del 69 %)"
+  - id: iapc-diferenciales-zona-euro
+    texto: "en los 10 primeros años del euro los precios subieron un 37~\\% en España y un 18~\\% en Alemania (un 24~\\% en la zona)… entre 2008 y 2019 (un 13~\\% frente a un 15~\\%)… en 2022 la inflación fue del 5,9~\\% en Francia y del 19,4~\\% en Estonia"
+    donde: [3B16.tex]
+    valor: [37.3, 18.2, 24.0, 12.8, 15.4, 5.9, 19.4]
+    unidad: "% de variación acumulada del IAPC y tasas medias anuales"
+    periodo: "1999-2022 (y 2025 en la tabla: 0,8 % Chipre, 4,8 % Estonia)"
+    fuente: Eurostat2026HICPaind
+    organismo: Eurostat
+    serie: "prc_hicp_aind, CP00, RCH_A_AVG e INX_A_AVG"
+    url: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_aind/default/table
+    periodicidad: anual (febrero) y mensual
+    proxima: 2027-02
+    familia: eurostat-iapc   # usada en 3A32; falta en _datos-familias.yaml
+    depende: [_trabajo/datos/iapc-dispersion-zona-euro-1999-2025.csv, tab:zona-euro-amo]
+    frase: "I.2, Magnifico (V22); la fila de 2025 de la tabla cambia cada año"
+  - id: sincronia-ciclos
+    texto: "un factor común explica más del 65~\\% de la varianza del crecimiento de los países del euro… Grecia (correlación de 0,3-0,5…, frente a 0,8 en España)"
+    donde: [3B16.tex]
+    valor: [65, 0.28, 0.46, 0.85, 0.83]
+    unidad: "% de varianza y coeficientes de correlación (elaboración propia)"
+    periodo: "1999-2019 (BCE: hasta 2018)"
+    fuente: [BCE2018Sincronizacion, Eurostat2026Nama10gdp]
+    organismo: BCE y Eurostat
+    serie: "nama_10_gdp, B1GQ, CLV_PCH_PRE"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table
+    periodicidad: anual (las correlaciones de 1999-2019 son históricas; la columna 2013-2025 cambia)
+    proxima: 2027-04
+    familia: eurostat-nama   # nueva
+    depende: [_trabajo/datos/correlacion-pib-zona-euro.csv, tab:zona-euro-amo]
+    frase: "I.2, sincronía de ciclos (V28)"
+  - id: presupuesto-ue-2026
+    texto: "en 2026 la UE gasta 190.100 millones de euros, en torno al 1~\\% de su PIB"
+    donde: [3B16.tex]
+    valor: [192.8, 190.1, 1.0]
+    unidad: "miles de millones de euros (compromisos, pagos) y % del PIB de la UE"
+    periodo: 2026
+    fuente: [PE2025Presupuesto2026, Eurostat2026Nama10gdp]
+    organismo: Parlamento Europeo y Consejo / Eurostat
+    serie: "Presupuesto anual de la UE"
+    url: https://www.europarl.europa.eu/news/en/press-room/20251120IPR31500/meps-adopt-2026-eu-budget-focus-on-competitiveness-research-and-security
+    periodicidad: anual (noviembre-diciembre)
+    proxima: 2026-12
+    familia: presupuesto-ue
+    depende: [tab:zona-euro-amo]
+    frase: "Kenen, integración fiscal (V30)"
+  - id: gasto-federal-eeuu
+    texto: "frente al 23~\\% del PIB del Gobierno federal de Estados Unidos"
+    donde: [3B16.tex]
+    valor: 22.9
+    unidad: "% del PIB (gasto federal total, ejercicio fiscal)"
+    periodo: ejercicio fiscal 2026 (octubre de 2025-septiembre de 2026)
+    fuente: CBO2026MBR
+    organismo: Congressional Budget Office
+    serie: "Monthly Budget Review: Summary for Fiscal Year"
+    url: https://www.cbo.gov/publication/61986
+    periodicidad: anual (noviembre)
+    proxima: 2027-11
+    familia: cbo-presupuesto-eeuu   # nueva
+    depende: [tab:zona-euro-amo]
+    frase: "Kenen, integración fiscal (V30)"
+  - id: fondo-unico-resolucion
+    texto: "con un fondo de más de 81.000 millones de euros"
+    donde: [3B16.tex]
+    valor: 81
+    unidad: "miles de millones de euros"
+    periodo: 31/12/2025
+    fuente: SRB2026FUR
+    organismo: Junta Única de Resolución
+    serie: "Verificación anual del nivel objetivo del FUR"
+    url: https://www.srb.europa.eu/en/content/2026-srf-contributions-cycle
+    periodicidad: anual (verificación a principios de año)
+    proxima: 2027-02
+    familia: srb-fur   # nueva
+    depende: []
+    frase: "III.3.1, unión bancaria (V34); también el anexo de la crisis del euro (supervisión única desde 2014, resolución única desde 2016)"
+  - id: bce-programas-compras
+    texto: "compró deuda en el mercado secundario con el programa para los mercados de valores (SMP, 2010)… las OMT (2012)… (APP, desde 2014; deuda pública desde 2015)… (PEPP, desde marzo de 2020)… dejó de reinvertir sus vencimientos en julio de 2023 y a finales de 2024… desde julio de 2022 tiene el instrumento para la protección de la transmisión (TPI)"
+    donde: [3B16.tex]
+    valor: null
+    unidad: "fechas de programas"
+    periodo: 2010-2026
+    fuente: [BCE2010SMP, BCE2012OMT, BCE2026APP, BCE2026PEPP, BCE2022TPI]
+    organismo: BCE
+    serie: "páginas de los programas de compras"
+    url: https://www.ecb.europa.eu/mopo/implement/app/html/index.en.html
+    periodicidad: irregular (cada decisión del Consejo de Gobierno)
+    proxima: 2026-12
+    familia: bce-compras-activos   # nueva
+    depende: []
+    frase: "III.2, peligro de monetización (V33). Mismas fechas que 3A36 y 3A39"
+  - id: reglas-fiscales-ue
+    texto: "Los valores de referencia del 3~\\% del PIB para el déficit y el 60~\\% para la deuda siguen en el Tratado, pero desde 2024 la regla operativa es una senda de gasto primario neto a 4-7 años"
+    donde: [3B16.tex]
+    valor: [3, 60]
+    unidad: "% del PIB"
+    periodo: desde el 30/4/2024
+    fuente: [UE2016Protocolo12, UE2024Reglamento1263]
+    organismo: Unión Europea (EUR-Lex)
+    serie: "Protocolo n.º 12; Reglamentos (UE) 2024/1263 y 2024/1264"
+    url: https://eur-lex.europa.eu/eli/reg/2024/1263/oj
+    periodicidad: irregular (reformas del marco)
+    proxima: null
+    familia: null
+    depende: []
+    frase: "II.4 y nota 18 (V31). Mismas cifras que 3A39"
+  - id: ngeu-mrr
+    texto: "750.000 millones de euros de 2018, cuyo programa central se cierra en 2026"
+    donde: [3B16.tex]
+    valor: 750
+    unidad: "miles de millones de euros (precios de 2018)"
+    periodo: 2020-2026
+    fuente: [CE2026NGEU, UE2021Reglamento241]
+    organismo: Comisión Europea
+    serie: "NextGenerationEU / Mecanismo de Recuperación y Resiliencia"
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/eu-borrower-investor-relations/nextgenerationeu_en
+    periodicidad: continua (el MRR paga hasta el 31/12/2026)
+    proxima: 2026-12
+    familia: ngeu
+    depende: []
+    frase: "III.3.1, primeros pasos de la unión fiscal (V36), y conclusión, relevancia («con el fin del Mecanismo de Recuperación y Resiliencia en 2026»). Mismo importe que 3A04"
+  - id: eda-stiglitz-2007-2015
+    texto: "el PIB real por habitante de la zona del euro era en 2015 prácticamente el de 2007, y el paro llegó al 12,2~\\% en 2013"
+    donde: [3B16.tex]
+    valor: [28800, 28930, 12.2]
+    unidad: "euros encadenados de 2010 por habitante; % de la población activa"
+    periodo: 2007-2015
+    fuente: [Eurostat2026Nama10pc, Eurostat2026UneRtA]
+    organismo: Eurostat
+    serie: "nama_10_pc CLV10_EUR_HAB EA21; une_rt_a Y15-74 EA21"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10_pc/default/table
+    periodicidad: histórico (solo revisiones)
+    proxima: null
+    familia: eurostat-nama   # nueva
+    depende: []
+    frase: "Anexo 2, Stiglitz (V40)"
+  - id: edis-sin-aprobar
+    texto: "propuesto en 2015, sigue sin aprobarse"
+    donde: [3B16.tex]
+    valor: null
+    unidad: "estado de la propuesta del sistema europeo de garantía de depósitos"
+    periodo: 11/11/2026
+    fuente: CE2015EDIS
+    organismo: Comisión Europea / Consejo
+    serie: "COM(2015) 586 final, procedimiento legislativo"
+    url: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:52015PC0586
+    periodicidad: al cambiar (negociación en el Consejo)
+    proxima: 2027-06
+    familia: union-bancaria   # nueva
+    depende: []
+    frase: "III.3.1, unión bancaria (V34). Mismo estado que 1D01"
+  - id: uniones-franco-cfa
+    texto: "8 Estados (Benín, Burkina Faso, Costa de Marfil, Guinea-Bisáu, Malí, Níger, Senegal y Togo)… 6 Estados (Camerún, Chad, Congo, Gabón, Guinea Ecuatorial y República Centroafricana)… anclado al euro a 655,957 francos por euro"
+    donde: [3B16.tex]
+    valor: [8, 6, 655.957]
+    unidad: "Estados miembros de la UMOA y de la CEMAC; francos CFA por euro"
+    periodo: 11/11/2026
+    fuente: [BCEAO2026Presentacion, BEAC2026Presentacion, FMI2024AREAER2023]
+    organismo: BCEAO / BEAC
+    serie: "Présentation de la BCEAO; página de inicio de la BEAC (cotizaciones)"
+    url: https://www.bceao.int/fr/content/presentation-de-la-bceao
+    periodicidad: al cambiar (adhesiones, salidas o reforma del ancla)
+    proxima: null
+    familia: fmi-areaer   # nueva
+    depende: []
+    frase: "Anexo de otras uniones monetarias"
+  - id: union-caribe-oriental
+    texto: "8 economías insulares (6 Estados y 2 territorios británicos) con un banco central común y un dólar del Caribe Oriental anclado al dólar estadounidense con una caja de conversión"
+    donde: [3B16.tex]
+    valor: 8
+    unidad: "miembros de la Unión Monetaria del Caribe Oriental"
+    periodo: 30/4/2023
+    fuente: FMI2024AREAER2023
+    organismo: FMI / ECCB
+    serie: "AREAER, tabla 4"
+    url: https://www.elibrary.imf.org/fileasset/downloads/AEIEA2023001-S001.pdf
+    periodicidad: anual (irregular)
+    proxima: null
+    familia: fmi-areaer   # nueva
+    depende: []
+    frase: "Anexo de otras uniones monetarias (la web del ECCB responde 403 a peticiones automáticas)"

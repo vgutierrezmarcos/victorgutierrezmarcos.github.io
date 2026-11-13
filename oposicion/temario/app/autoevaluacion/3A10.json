@@ -1,0 +1,180 @@
+{
+ "codigo": "3.A.10",
+ "archivo": "3A10",
+ "preguntas": [
+  {
+   "id": "3A10-01",
+   "tipo": "definicion",
+   "apartado": "Introducción",
+   "pregunta": "¿Qué distingue el riesgo de la incertidumbre según Knight (1921)?",
+   "respuesta": "En el riesgo las probabilidades de los resultados son conocidas y objetivas (una moneda, las tablas de mortalidad); en la incertidumbre no lo son y, a lo sumo, hay creencias subjetivas."
+  },
+  {
+   "id": "3A10-02",
+   "tipo": "definicion",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "¿Qué dice el axioma de independencia de la teoría de la utilidad esperada?",
+   "respuesta": "Que mezclar dos loterías con una tercera común no altera su orden: $\\tilde{x}^1\\succcurlyeq\\tilde{x}^2\\iff\\tau\\tilde{x}^1+(1-\\tau)\\tilde{x}^3\\succcurlyeq\\tau\\tilde{x}^2+(1-\\tau)\\tilde{x}^3$, con $\\tau\\in(0,1)$. Es el axioma propio del riesgo, porque solo ocurre una rama."
+  },
+  {
+   "id": "3A10-03",
+   "tipo": "formula",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "¿Qué forma tiene la función de utilidad esperada del teorema de von Neumann-Morgenstern?",
+   "respuesta": "$U(\\tilde{x})=\\mathbb{E}[u(\\tilde{x})]=\\sum_{s=1}^{S}\\pi_s\\,u(x_s)$, lineal en las probabilidades, donde $u$ es la utilidad de Bernoulli sobre resultados ciertos: esperanza de la utilidad, no utilidad de la esperanza."
+  },
+  {
+   "id": "3A10-04",
+   "tipo": "vf",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "La utilidad de Bernoulli es ordinal: admite cualquier transformación creciente.",
+   "verdadero": false,
+   "respuesta": "Falso: es única salvo transformaciones afines positivas $a\\,u+b$, y por eso es cardinal. Mide la actitud ante el riesgo, no la intensidad de las preferencias, y no permite comparaciones interpersonales."
+  },
+  {
+   "id": "3A10-05",
+   "tipo": "prediccion",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "En la paradoja de San Petersburgo, ¿qué equivalente cierto tiene el juego para alguien con $u=\\ln x$?",
+   "respuesta": "Aunque el valor esperado del premio es infinito ($2^k$ con probabilidad $1/2^k$), el equivalente cierto es de solo 4 ducados (unos 5,83 con $\\sqrt{x}$, según Cramer): lo que se maximiza es la esperanza de la utilidad."
+  },
+  {
+   "id": "3A10-06",
+   "tipo": "definicion",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "Defina el equivalente cierto y la prima de riesgo.",
+   "respuesta": "El equivalente cierto $\\xi$ es la cantidad segura que da la misma utilidad que la lotería, $u(\\xi)=\\mathbb{E}[u(\\tilde{x})]$. La prima de riesgo es $\\rho\\equiv\\mathbb{E}[\\tilde{x}]-\\xi$, lo que se sacrifica en valor esperado por librarse del riesgo; es positiva si y solo si se es averso."
+  },
+  {
+   "id": "3A10-07",
+   "tipo": "formula",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "Escriba las medidas de aversión absoluta y relativa de Arrow-Pratt y la aproximación de la prima de riesgo.",
+   "respuesta": "$r_A(x)\\equiv-\\frac{u''(x)}{u'(x)}$, $r_R(x)\\equiv x\\,r_A(x)$ y $\\rho\\approx\\frac{1}{2}\\sigma^2r_A(\\overline{W})$: miden la curvatura normalizada por la pendiente, invariante a transformaciones afines, y la prima es de segundo orden."
+  },
+  {
+   "id": "3A10-08",
+   "tipo": "prediccion",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "Con $u=\\sqrt{x}$, riqueza 64 y una pérdida de 48 con probabilidad 1/2, ¿cuál es la prima máxima que pagaría por asegurarse?",
+   "respuesta": "La utilidad esperada es 6, así que el equivalente cierto es 36 y la prima de riesgo 4. La prima justa es la pérdida esperada, 24, y la máxima, $64-36=28=24+4$: ese margen hace posible el negocio asegurador."
+  },
+  {
+   "id": "3A10-09",
+   "tipo": "vf",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "La función CRRA presenta aversión absoluta al riesgo decreciente con la riqueza.",
+   "verdadero": true,
+   "respuesta": "Verdadero: su aversión absoluta es $r_A=\\theta/x$, decreciente (DARA), y la relativa es constante e igual a $\\theta$. Con utilidad separable, la elasticidad de sustitución intertemporal es $1/\\theta$."
+  },
+  {
+   "id": "3A10-10",
+   "tipo": "definicion",
+   "apartado": "I.1. Fundamentos",
+   "pregunta": "¿Qué es la dominancia estocástica de primer y de segundo orden?",
+   "respuesta": "$F$ domina a $G$ en primer orden si $F(x)\\leq G(x)$ para todo $x$: la prefieren todos los que tienen $u$ no decreciente. En segundo orden, con la misma media, si $\\int_{-\\infty}^{x}F\\leq\\int_{-\\infty}^{x}G$: la prefieren todos los aversos; $G$ es una dispersión de $F$ que conserva la media (Rothschild-Stiglitz, 1970)."
+  },
+  {
+   "id": "3A10-11",
+   "tipo": "prediccion",
+   "apartado": "I.2. Aplicaciones: demanda de seguros (Mossin, 1968)",
+   "pregunta": "Según el teorema de Mossin, ¿cuánto seguro compra un averso al riesgo con prima justa y con prima recargada?",
+   "respuesta": "Con prima justa ($\\gamma=\\pi$) iguala la utilidad marginal en los dos estados y se asegura por completo ($S^*=L$). Con prima recargada ($\\gamma>\\pi$) compra un seguro parcial ($S^*<L$), lo que explica las franquicias."
+  },
+  {
+   "id": "3A10-12",
+   "tipo": "formula",
+   "apartado": "I.2. Aplicaciones: demanda de seguros (Mossin, 1968)",
+   "pregunta": "¿Qué condición de tangencia determina la cobertura óptima en el modelo de demanda de seguros?",
+   "respuesta": "$\\mathrm{RMSE}\\equiv\\frac{(1-\\pi)\\,u'(x_1)}{\\pi\\,u'(x_2)}=\\frac{1-\\gamma}{\\gamma}$: la relación marginal de sustitución estocástica se iguala a la pendiente de la recta de aseguramiento. En la línea de certeza vale $(1-\\pi)/\\pi$ sea cual sea $u$."
+  },
+  {
+   "id": "3A10-13",
+   "tipo": "vf",
+   "apartado": "I.2. Aplicaciones: demanda de seguros (Mossin, 1968)",
+   "pregunta": "Con prima recargada y aversión absoluta decreciente, el seguro es un bien normal.",
+   "verdadero": false,
+   "respuesta": "Falso: en ese caso el seguro es un bien inferior, porque al aumentar la riqueza disminuye la aversión absoluta y se compra menos cobertura."
+  },
+  {
+   "id": "3A10-14",
+   "tipo": "prediccion",
+   "apartado": "I.3. Extensiones",
+   "pregunta": "Con utilidad dependiente del estado y prima justa, ¿qué cobertura se elige si el accidente reduce la utilidad marginal de la riqueza (por ejemplo, en salud)?",
+   "respuesta": "Menos que un seguro completo: la condición $u_1'(x_1)=u_2'(x_2)$ ya no exige igualar la riqueza en los dos estados, y si en el estado malo la riqueza vale menos al margen, conviene trasladar menos a él (Karni, 1985)."
+  },
+  {
+   "id": "3A10-15",
+   "tipo": "definicion",
+   "apartado": "II.1. Limitaciones y críticas",
+   "pregunta": "¿Cómo explican Friedman y Savage (1948) que se compren a la vez seguros y lotería?",
+   "respuesta": "Con una utilidad cóncava-convexa-cóncava: la clase media estaría en el tramo convexo. La explicación es incompleta, porque predice que se aceptarían grandes apuestas justas; Markowitz (1952) propuso valorar los cambios respecto a la riqueza habitual."
+  },
+  {
+   "id": "3A10-16",
+   "tipo": "definicion",
+   "apartado": "II.1. Limitaciones y críticas",
+   "pregunta": "¿Qué muestra la paradoja de Allais (1953)?",
+   "respuesta": "Que la mayoría elige de forma incompatible con cualquier función $u$, porque viola el axioma de independencia: es el efecto certeza, pasar del 80 % al 100 % de probabilidad pesa más que pasar del 75 % al 95 %."
+  },
+  {
+   "id": "3A10-17",
+   "tipo": "vf",
+   "apartado": "II.1. Limitaciones y críticas",
+   "pregunta": "Según la calibración de Rabin (2000), la aversión a riesgos pequeños no puede atribuirse de forma razonable a la curvatura de la utilidad.",
+   "verdadero": true,
+   "respuesta": "Verdadero: quien rechazara siempre perder 100 o ganar 110 al 50 % rechazaría perder 1.000 frente a cualquier ganancia; la aversión a riesgos pequeños procede del punto de referencia."
+  },
+  {
+   "id": "3A10-18",
+   "tipo": "formula",
+   "apartado": "II.2. Teoría de las perspectivas",
+   "pregunta": "¿Cómo se valora una alternativa en la teoría de las perspectivas?",
+   "respuesta": "$V=\\sum_{s=1}^{S}w(\\pi_s)\\,v(x_s-r)$, con una función de valor $v$ sobre ganancias y pérdidas respecto al punto de referencia $r$ y pesos de decisión $w(\\pi)$. Con $r=0$, $w(\\pi)=\\pi$ y $v=u$ se vuelve a la utilidad esperada."
+  },
+  {
+   "id": "3A10-19",
+   "tipo": "formula",
+   "apartado": "II.2. Teoría de las perspectivas",
+   "pregunta": "Escriba la función de valor de Kahneman y Tversky con sus parámetros habituales.",
+   "respuesta": "$v(z)=z^{\\beta}$ si $z\\geq0$ y $v(z)=-\\lambda(-z)^{\\beta}$ si $z<0$, con $\\beta\\approx0,88$ y $\\lambda\\approx2,25$: cóncava en ganancias, convexa en pérdidas y con un quiebro en el punto de referencia (aversión a las pérdidas)."
+  },
+  {
+   "id": "3A10-20",
+   "tipo": "prediccion",
+   "apartado": "II.2. Teoría de las perspectivas",
+   "pregunta": "¿Qué predice el patrón cuádruple de la teoría de las perspectivas con probabilidades bajas?",
+   "respuesta": "Con probabilidades bajas se invierte la actitud: búsqueda de riesgo en ganancias (lotería) y aversión en pérdidas (seguro), porque $w$ sobrepondera lo improbable. Con probabilidades medias y altas, aversión en ganancias y búsqueda en pérdidas."
+  },
+  {
+   "id": "3A10-21",
+   "tipo": "definicion",
+   "apartado": "III.1. Teoría de la probabilidad subjetiva",
+   "pregunta": "¿Qué establece el teorema de la utilidad esperada subjetiva de Savage (1954)?",
+   "respuesta": "Que, con sus axiomas P1-P7 (entre ellos el principio de la cosa segura, la independencia subjetiva), existen una probabilidad subjetiva única $\\pi$ y una utilidad $u$, afín, tales que los actos se ordenan por $\\sum_s\\pi_s\\,u(x_s)$. Las probabilidades son creencias deducidas de las elecciones."
+  },
+  {
+   "id": "3A10-22",
+   "tipo": "prediccion",
+   "apartado": "III.1. Teoría de la probabilidad subjetiva",
+   "pregunta": "En la paradoja de Ellsberg, ¿qué implica preferir la urna conocida tanto para apostar a «roja» como a «negra»?",
+   "respuesta": "Que las probabilidades implícitas de la urna ambigua suman menos de uno, $\\pi(R)+\\pi(N)<1$: no existe probabilidad subjetiva que lo explique (aversión a la ambigüedad). El maxmin de Gilboa-Schmeidler (1989) sí lo recoge."
+  },
+  {
+   "id": "3A10-23",
+   "tipo": "vf",
+   "apartado": "III.2. Enfoques alternativos",
+   "pregunta": "El criterio maximin de Wald elige la alternativa con mayor pago medio.",
+   "verdadero": false,
+   "respuesta": "Falso: el de Wald elige la alternativa cuyo peor resultado es el mejor; el que elige por el pago medio, con probabilidades iguales por razón insuficiente, es el de Laplace."
+  },
+  {
+   "id": "3A10-24",
+   "tipo": "vf",
+   "apartado": "Conclusión",
+   "pregunta": "La utilidad esperada y la teoría de las perspectivas no compiten: la primera sirve como guía normativa y la segunda como descripción positiva.",
+   "verdadero": true,
+   "respuesta": "Verdadero: la utilidad esperada indica cómo se debería decidir y las perspectivas describen cómo se decide (ahorro insuficiente, sobreaseguro); hacen falta las dos."
+  }
+ ]
+}

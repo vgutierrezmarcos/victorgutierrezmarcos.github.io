@@ -1,0 +1,40 @@
+% Pregunta 582 (2016-noviembre-OEP2016, n.º 27): curva de Laffer. Por debajo de t* subir el tipo
+% eleva la recaudación (b, correcta); bajar el tipo por debajo del óptimo la reduce (d, falsa):
+% solo una rebaja desde la zona prohibitiva (t > t*) recauda más. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Zonas
+  \fill[area] (0,0) rectangle (2.5,4.9);
+  \fill[area2] (2.5,0) rectangle (5,4.9);
+  \node[etiqueta,align=center,font=\small] at (1.25,4.45) {zona normal\\$\varepsilon<1$};
+  \node[etiqueta,align=center,font=\small] at (3.75,4.45) {zona prohibitiva\\$\varepsilon>1$};
+  \ejes{$t$}{$R$}{6}{5}
+  % Curva de Laffer R = 0,6 t (5 - t), máximo en t* = 2,5
+  \draw[curva1,domain=0:5,samples=60] plot (\x,{0.6*\x*(5-\x)});
+  \node[etiqueta,text=tceemorado,anchor=west] at (4.75,1.35) {$R(t)$};
+  % Máximo
+  \draw[guia] (2.5,0) -- (2.5,3.75);
+  \node[punto] at (2.5,3.75) {};
+  \node[etiqueta,below] at (2.5,0) {$t^*$};
+  \node[etiqueta,below] at (5,0) {$1$};
+  \node[etiqueta,below,font=\small] at (5,-0.32) {(100\,\%)};
+  % Puntos ilustrativos
+  \draw[guia] (1.1,0) -- (1.1,2.574);
+  \draw[guia] (3.9,0) -- (3.9,2.574);
+  \node[punto] at (1.1,2.574) {};
+  \node[punto] at (3.9,2.574) {};
+  \node[etiqueta,below] at (1.1,0) {$t_1$};
+  \node[etiqueta,below] at (3.9,0) {$t_2$};
+  % b: subir el tipo desde t1 aumenta R
+  \draw[flecha,tceeverde] (1.25,2.95) -- (1.95,3.55);
+  \node[etiqueta,align=center,font=\small,text=tceeverde] at (0.8,3.5) {b) subir $t$\\$\Rightarrow R\uparrow$};
+  % rebaja desde la zona prohibitiva: aumenta R
+  \draw[flecha,tceeverde] (3.75,2.95) -- (3.05,3.55);
+  \node[etiqueta,align=center,font=\small,text=tceeverde] at (4.25,3.5) {bajar $t$\\$\Rightarrow R\uparrow$};
+  % d: bajar por debajo del óptimo reduce R
+  \draw[flecha] (2.25,3.15) -- (1.5,2.35);
+  \node[etiqueta,align=center,font=\small,text=tceerojo] at (1.8,1.55) {d) bajar $t$\\bajo $t^*$\\$\Rightarrow R\downarrow$};
+\end{tikzpicture}
+\end{document}

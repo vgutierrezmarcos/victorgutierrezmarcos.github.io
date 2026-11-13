@@ -1,0 +1,39 @@
+% Pregunta 901 (2003-julio-OEP2003, n.º 29): IS-LM-BP con tipo de cambio fijo y movilidad del capital
+% limitada (BP más inclinada que la LM). Expansión fiscal y monetaria a la vez desde un punto de
+% desempleo y déficit: la economía se aleja más de la BP y el déficit aumenta. Rectas a escala:
+%   BP: i = 1,6 Y - 2,2   LM: i = 0,5 + 0,5 Y   IS: i = 5 - 0,9 Y
+%   IS': i = 6,8 - 0,9 Y  LM': i = -0,1 + 0,5 Y
+%   E0 = (3,21; 2,11), BP a ese tipo en Y = 2,69 (distancia 0,52)
+%   E1 = (4,93; 2,36), BP a ese tipo en Y = 2,85 (distancia 2,08)   Ype = 5,55
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1.15cm]
+  % Zona de déficit (a la derecha y por debajo de la BP)
+  \fill[area] (1.375,0) -- (4.375,4.8) -- (6,4.8) -- (6,0) -- cycle;
+  \ejes{$Y$}{$i$}{6}{5}
+  \node[etiqueta,font=\small\bfseries,text=tceeverde] at (5.0,4.55) {Déficit};
+  \node[etiqueta,font=\small\bfseries,text=tceeverde] at (0.85,3.0) {Superávit};
+  % Pleno empleo
+  \draw[guia] (5.55,0) -- (5.55,3.75) node[above,text=tceegris] {$Y_{pe}$};
+  % Distancia a la BP (tamaño del déficit), a la altura de cada equilibrio
+  \draw[tceemorado,line width=2.2pt,opacity=0.55] (2.692,2.107) -- (3.214,2.107);
+  \draw[tceerojo,line width=2.2pt,opacity=0.55] (2.852,2.364) -- (4.929,2.364);
+  % Curvas iniciales
+  \draw[curva3] (1.375,0) -- (4.375,4.8) node[etiqueta,above,text=tceeverde] {$BP$};
+  \draw[curva1] (0.2,0.6) -- (5.6,3.3) node[etiqueta,right,text=tceemorado] {$LM$};
+  \draw[curva2] (0.6,4.46) -- (5.4,0.14) node[etiqueta,right,text=tceeazul] {$IS$};
+  % Lo que cambia
+  \draw[curvanueva,desplazada] (2.2,4.82) -- (6.0,1.4) node[etiqueta,right,text=tceerojo] {$IS'$};
+  \draw[curvanueva,desplazada] (0.4,0.1) -- (5.8,2.8) node[etiqueta,right,text=tceerojo] {$LM'$};
+  % Proyecciones
+  \draw[guia] (3.214,2.107) -- (3.214,0) node[below] {$Y_0$};
+  \draw[guia] (4.929,2.364) -- (4.929,0) node[below] {$Y_1$};
+  % Puntos
+  \node[punto] at (3.214,2.107) {};
+  \node[etiqueta,right=2pt] at (3.214,2.107) {$E_0$};
+  \node[punto] at (4.929,2.364) {};
+  \node[etiqueta,above=3pt] at (4.929,2.364) {$E_1$};
+\end{tikzpicture}
+\end{document}

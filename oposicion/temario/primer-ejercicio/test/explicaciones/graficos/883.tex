@@ -1,0 +1,32 @@
+% Pregunta 883 (2003-julio-OEP2003, n.º 11): subaditividad sin economías de escala.
+% CMe(q) = q + 1/q (C = 1 + q^2): mínimo en q_min = 1; C(q) < 2C(q/2) mientras q < q_s = raíz de 2.
+% En q^ = 1,2 el coste medio ya crece, pero CMe(q^) < CMe(q^/2): una empresa es más barata que dos (c correcta, d falsa).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Tramo subaditivo con coste medio creciente: [q_min, q_s]
+  \fill[area] (3.2,0) rectangle (4.525,4.3);
+  \node[etiqueta,font=\footnotesize,align=center,text=tceemorado] at (3.86,4.75) {subaditiva\\con CMe creciente};
+  \ejes{$q$}{$\mathit{CMe}$}{6.6}{5.4}
+  \draw[curva1,domain=0.32:1.88,samples=80,smooth] plot ({3.2*\x},{2.5*(\x+1/\x)-4.2}) node[etiqueta,right] {$\mathit{CMe}$};
+  % Mínimo y fin de la subaditividad
+  \draw[guia] (3.2,0) -- (3.2,0.8);
+  \node[anchor=base] at (3.2,-0.5) {$q_{\min}$};
+  \draw[guia] (4.525,0) -- (4.525,1.103);
+  \node[anchor=base] at (4.525,-0.5) {$q_s$};
+  % q^/2 y q^
+  \node[anchor=base] at (1.92,-0.5) {$\hat q/2$};
+  \draw[guia] (1.92,0) |- (0,1.467) node[left,text=black] {$\mathit{CMe}(\hat q/2)$};
+  \node[anchor=base] at (3.84,-0.5) {$\hat q$};
+  \draw[guia] (3.84,0) |- (0,0.883) node[left,text=black] {$\mathit{CMe}(\hat q)$};
+  \fill[tceeazul] (1.92,1.467) circle (2.2pt);
+  \fill[tceemorado] (3.84,0.883) circle (2.2pt);
+  \node[etiqueta,font=\footnotesize,tceeazul,anchor=south west] at (1.98,1.52) {dos empresas};
+  \node[etiqueta,font=\footnotesize,tceemorado,anchor=north west] at (4.6,0.75) {una empresa};
+  \draw[flecha,tceemorado,shorten >=3pt] (4.65,0.6) -- (3.9,0.86);
+  % Diferencia de coste medio
+  \draw[tceerojo,thick,<->,>={Stealth[length=1.6mm]}] (0.35,0.9) -- (0.35,1.45);
+\end{tikzpicture}
+\end{document}

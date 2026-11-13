@@ -1,0 +1,41 @@
+% Pregunta 801 (2005-septiembre-OEP2005, n.º 20): diagrama de fase de la ratio de deuda.
+% Con déficit primario (curva1) la ratio sube del 30 % al punto fijo b* = 46,6 % y nunca llega a cero (b falsa; c y d verdaderas).
+% Sin déficit (curvanueva) la recta pasa por el origen y la ratio baja hacia cero (a verdadera).
+% Pendiente 0,9957 y d exagerados (0,6) para que se vea; b0 y b* a escala entre sí. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$b_{t-1}$}{$b_t$}{6.8}{5.8}
+  % bisectriz
+  \draw[guia,thick] (0,0) -- (5.4,5.4) node[etiqueta,above left,text=tceegris] {$b_t=b_{t-1}$ (45°)};
+  % recta de partida: d>0, pendiente < 1
+  \draw[curva1] (0,1.8) -- (5.8,5.28) node[etiqueta,right,text=tceemorado] {$\bar d=0{,}2\,\%$};
+  \node[etiqueta,left,text=tceemorado] at (0,1.8) {$\bar d$};
+  % recta sin déficit
+  \draw[curvanueva,desplazada] (0,0) -- (5.8,3.48) node[etiqueta,right,text=tceerojo] {$\bar d=0$};
+  % escalera con déficit: de 30 % hacia 46,6 % (b0 a escala respecto de b*: 4,5·30/46,6 = 2,9)
+  \draw[->,thick,tceemorado] (2.9,2.9) -- (2.9,3.54);
+  \draw[->,thick,tceemorado] (2.9,3.54) -- (3.54,3.54) -- (3.54,3.924);
+  \draw[->,thick,tceemorado] (3.54,3.924) -- (3.924,3.924) -- (3.924,4.154);
+  % escalera sin déficit: de 30 % hacia 0
+  \draw[->,thick,tceerojo] (2.9,2.9) -- (2.9,1.74);
+  \draw[->,thick,tceerojo] (2.9,1.74) -- (1.74,1.74) -- (1.74,1.044);
+  \draw[->,thick,tceerojo] (1.74,1.044) -- (1.044,1.044) -- (1.044,0.626);
+  \draw[->,thick,tceerojo] (1.044,0.626) -- (0.626,0.626) -- (0.626,0.376);
+  % puntos
+  \draw[guia] (2.9,0) -- (2.9,1.74);
+  \node[punto] at (2.9,2.9) {};
+  \node[etiqueta,anchor=north east] at (3.15,-0.05) {$b_0=30\,\%$};
+  \draw[guia] (4.5,0) -- (4.5,4.5);
+  \node[punto,fill=tceemorado,inner sep=1.8pt] at (4.5,4.5) {};
+  \node[etiqueta,anchor=north west] at (4.0,-0.05) {$b^*=46{,}6\,\%$};
+  \node[punto,fill=tceerojo,inner sep=1.8pt] at (0,0) {};
+  % notas
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (-0.3,-0.75) {%
+    \textcolor{tceemorado}{Con déficit: sube al 46,6\,\% y se queda ahí,}\\
+    \textcolor{tceemorado}{nunca llega a cero (b falsa; c y d verdaderas)}\\
+    \textcolor{tceerojo}{Sin déficit: baja hacia cero (a verdadera)}\\
+    \textcolor{tceegris}{Pendiente real 0,9957 \(<1\) (aquí 0,6) y \(\bar d\) exagerados;}\\\textcolor{tceegris}{\(b_0\) y \(b^*\) sí están a escala}};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,26 @@
+% Pregunta 670 (2008-julio-OEP2008, n.º 22): condición de Solow. Función de esfuerzo en S
+%   e(w) = 4,4/(1+exp(-1,8(w-2,8))) - 0,166  (e = 0 en w = 1)
+%   Rayo desde el origen tangente en w* = 3,81, e* = 3,62 (pendiente e/w = 0,95, la máxima):
+%   elasticidad del esfuerzo = 1 y coste por unidad de esfuerzo w/e mínimo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \ejes{$w$}{$e$}{6}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3,5.45)
+    {Salario de eficiencia: condición de Solow};
+  % Función de esfuerzo
+  \draw[curva1,domain=1:5.6,samples=80] plot (\x,{4.4/(1+exp(-1.8*(\x-2.8)))-0.1658})
+    node[etiqueta,right,text=tceemorado] {$e(w)$};
+  % Rayo tangente desde el origen
+  \draw[curva2] (0,0) -- (4.9,4.66) node[etiqueta,right,text=tceeazul] {rayo};
+  \node[etiqueta,font=\footnotesize,align=left,text=tceeazul,anchor=south west] at (0.2,2.55) {rayo tangente:\\$e/w$ máxima};
+  % Tangencia
+  \proyeccion{(3.811,3.621)}{$w^*$}{$e^*$}
+  \node[punto] at (3.811,3.621) {};
+  \node[etiqueta,above left] at (3.811,3.621) {$E$};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (3.9,2.6)
+    {En $E$: $\dfrac{w\,e'(w)}{e(w)}=1$\\[2pt]$\Rightarrow\ w/e$ mínimo};
+\end{tikzpicture}
+\end{document}

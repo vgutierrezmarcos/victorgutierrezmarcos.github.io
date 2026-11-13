@@ -1,0 +1,33 @@
+% Pregunta 757 (2006-septiembre-OEP2006, n.º 20): demanda de trabajo con restricción de ventas.
+% A escala: Y = 3*sqrt(N), Y_M = 9 => N <= 9. Nocional N = 9/[4(w/p)^2], es decir w/p = 3/(2 sqrt N).
+% Demanda efectiva: vertical en N = 9 para w/p <= 1/2 y la nocional para w/p > 1/2. Punto (4; 0,75).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=5cm]
+  \draw[eje] (0,0) -- (13,0) node[right] {$N$};
+  \draw[eje] (0,0) -- (0,1.12) node[above] {$w/p$};
+  \node[below left] at (0,0) {$0$};
+  \foreach \t in {4,9,12} \draw (\t,0) -- (\t,-0.016) node[below] {$\t$};
+  \foreach \t/\e in {0.5/{0{,}5},0.75/{0{,}75},1/1} \draw (0,\t) -- (-0.16,\t) node[left] {$\e$};
+  % Guías
+  \draw[guia] (0,0.5) -- (9,0.5);
+  \draw[guia] (0,0.75) -- (4,0.75) -- (4,0);
+  % Límite de ventas
+  \draw[guia,thick] (9,0) -- (9,1.05) node[etiqueta,above] {$N=9$ (ventas $\le 9$)};
+  % Demanda nocional (tramo donde no rige, discontinuo)
+  \draw[curva2,desplazada,domain=9:12.4,samples=30] plot (\x,{1.5/sqrt(\x)});
+  \draw[curva2,domain=2.25:9,samples=60] plot (\x,{1.5/sqrt(\x)});
+  \node[etiqueta,text=tceeazul,right] at (12.4,{1.5/sqrt(12.4)}) {$N^d$ nocional};
+  % Demanda efectiva
+  \draw[curva1,line width=2.2pt,opacity=0.55] (9,0) -- (9,0.5);
+  \draw[curva1,line width=2.2pt,opacity=0.55,domain=2.25:9,samples=60] plot (\x,{1.5/sqrt(\x)});
+  \node[etiqueta,text=tceemorado,align=left,right] at (9,0.22) {demanda efectiva:\\$N=9$ si $w/p\le 1/2$\\(opción c)};
+  \node[etiqueta,text=tceemorado,align=left] at (6.6,0.93) {$N^d=\dfrac{9}{4(w/p)^2}$\\si $w/p>1/2$};
+  % Puntos
+  \node[punto] at (9,0.5) {};
+  \node[punto] at (4,0.75) {};
+  \node[etiqueta,below left] at (4,0.75) {$(4;\,0{,}75)$};
+\end{tikzpicture}
+\end{document}

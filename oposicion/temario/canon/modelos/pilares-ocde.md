@@ -1,7 +1,7 @@
 # Acuerdo OCDE/G-20 de dos pilares (2021)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.18 — título (modelo de la OCDE, erosión de bases y soluciones).
-- **Temas que lo usan:** 4.B.18 (debería ser desarrollo; hoy mención), 4.B.17 (aplicación prevista: impuesto complementario español), 4.B.12 (mención), 3.B.37 (recursos propios: recurso basado en el pilar 1)
+- **Temas que lo usan:** 4.B.18 (debería ser desarrollo; hoy mención), 4.B.17 (aplicación prevista: impuesto complementario español), 4.B.12 (mención), 3.B.37 (recursos propios: recurso basado en el pilar 1); 3.B.19 (mención; hecho, 12/11/2026: III.2.2 y conclusión, `\vertema{4.B.18}`).
 - **Manuales de referencia:** Marco Inclusivo OCDE/G-20, *Statement on a Two-Pillar Solution* (8 de octubre de 2021); *GloBE Model Rules* (2021) y guías administrativas; Directiva (UE) 2022/2523; Ley 7/2024 (impuesto complementario en España) [comprobar]; acuerdo «*side-by-side*» del G-7 (junio de 2025) y su desarrollo en el Marco Inclusivo [comprobar estado].
 
 ## Presentación de referencia
@@ -15,6 +15,7 @@
 | 4.B.18 | Soluciones a la erosión de bases | Desarrollo | Los dos pilares, estado y valoración | — |
 | 4.B.17 | IS en España | Aplicación | Impuesto complementario | El diseño GloBE completo |
 | 4.B.12 | Imposición directa | Mención | Tendencias | — |
+| 3.B.19 | Coordinación internacional | mención (hecho, 12/11/2026) | III.2.2 (OCDE): BEPS y el acuerdo de 2 pilares de octubre de 2021, respaldado en Roma (`G20Roma2021`): pilar 1, reparto de beneficios; pilar 2, mínimo del 15 % para grupos de al menos 750 M€, `\vertema{4.B.18}` | El diseño de los pilares |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.18 (viejo) solo lo menciona como antecedente del impuesto digital; tipos de IS citados anteriores al pilar 2 (Irlanda 12,5 %).

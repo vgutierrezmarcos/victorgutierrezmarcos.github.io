@@ -1,0 +1,78 @@
+% Crisis bancarias sistémicas, cambiarias y de deuda soberana que empiezan
+% cada año en el mundo, 1970-2017 (Laeven y Valencia, 2020; fuente y
+% comprobación en la cabecera de ../datos/crisis-frecuencia.csv).
+% Paleta del bloque de economía abierta: cambiarias = dorado (barras, la serie
+% protagonista), bancarias = morado (línea con puntos), deuda soberana = verde
+% (discontinua). Capas: barras → ejes → líneas → puntos → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Dorado de las barras (claro) y de sus rótulos (oscuro, legible)
+\colorlet{crisisbarra}{tceedorado!75}
+\colorlet{crisisdorado}{tceedorado!65!black}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/crisis-frecuencia.csv}\crisis
+% Los ejes salen en la capa 2 (después de las barras): antes, invisibles.
+\pgfplotsset{ejescrisis/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejescrisis/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7cm,
+      xmin=1968.8, xmax=2018.2, ymin=0, ymax=25,
+      xtick={1970,1975,...,2015}, ytick={0,5,...,25},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Número de crisis que empiezan},
+      xlabel={Año},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false,
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left,
+      ejescrisis, dicapas,
+    ]
+    % 1: crisis cambiarias (barras)
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, ybar, bar width=0.62,
+        dicbarra=crisisbarra] table[x=anio, y=cambiarias] {\crisis};
+    }
+    % 2: ejes (años y número de crisis): ver ejescrisis
+    % 3: crisis bancarias sistémicas (línea)
+    \capa{3}{
+      \addplot[forget plot, diclinea=tceemorado, mark=*, mark size=1.1pt,
+        mark options={fill=tceemorado, draw=tceemorado}]
+        table[x=anio, y=bancarias] {\crisis};
+    }
+    % 4: crisis de deuda soberana (discontinua)
+    \capa{4}{
+      \addplot[forget plot, very thick, tceeverde, dashed]
+        table[x=anio, y=deuda_soberana] {\crisis};
+    }
+    % 5: puntos de los picos
+    \capa{5}{
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=crisisdorado]
+        coordinates {(1983,12) (1994,20)};
+      \addplot[on layer=dicpuntos, forget plot, dicpuntos=tceemorado]
+        coordinates {(2008,22)};
+    }
+    % 6: etiquetas de los picos y leyenda
+    \capa{6}{
+      \dicrotulo[font=\footnotesize,text=crisisdorado,anchor=south,yshift=2pt]{(1983,12)}{1983: 12}
+      \dicrotulo[font=\footnotesize,text=crisisdorado,anchor=south east,xshift=-1pt,yshift=1pt]{(1994,20)}{1994: 20}
+      \dicrotulo[font=\footnotesize,text=tceemorado,anchor=west,xshift=3pt]{(2008,22)}{2008: 22}
+      \addlegendimage{area legend, dicbarra=crisisbarra}
+      \addlegendentry{Crisis cambiarias}
+      \addlegendimage{very thick, tceemorado, mark=*, mark size=1.1pt}
+      \addlegendentry{Crisis bancarias sistémicas}
+      \addlegendimage{very thick, tceeverde, dashed}
+      \addlegendentry{Crisis de deuda soberana}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

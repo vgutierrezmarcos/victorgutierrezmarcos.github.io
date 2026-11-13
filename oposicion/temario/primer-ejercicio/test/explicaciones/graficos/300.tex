@@ -1,0 +1,48 @@
+% Pregunta 300 (2019-febrero-OEP2018, n.º 11): caja de Edgeworth 100 x 100 a escala con U = xy para los dos agentes; desde la dotación W = (90, 30) la recta de precios p = 1 corta la curva de contrato (la diagonal) en E = (60, 60) para A, (40, 40) para B. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.055cm,y=0.055cm]
+  % Caja (1 unidad = 0,55 mm)
+  \draw[thick] (0,0) rectangle (100,100);
+  % Ejes de A (abajo a la izquierda) y de B (arriba a la derecha, invertidos)
+  \draw[eje] (0,0) -- (112,0) node[below] {$x_A$};
+  \draw[eje] (0,0) -- (0,112) node[left] {$y_A$};
+  \draw[eje] (100,100) -- (-12,100) node[above] {$x_B$};
+  \draw[eje] (100,100) -- (100,-12) node[right] {$y_B$};
+  \node[below left] at (0,0) {$O_A$};
+  \node[above right] at (100,100) {$O_B$};
+  % Curva de contrato: la diagonal (RMS = y/x igual para los dos)
+  \draw[guia,thick] (0,0) -- (100,100);
+  \node[etiqueta,tceegris,font=\footnotesize,rotate=45,anchor=south] at (22,22) {curva de contrato};
+  % Guías de E hacia los cuatro lados
+  \draw[guia] (60,0) -- (60,100);
+  \draw[guia] (0,60) -- (100,60);
+  \draw[guia] (90,0) -- (90,100);
+  \draw[guia] (0,30) -- (100,30);
+  % Curvas de indiferencia tangentes en E
+  \draw[curva1,domain=37:97,samples=60] plot (\x,{3600/\x});
+  \node[etiqueta,tceemorado] at (98,42) {$U_A$};
+  \draw[curva3,domain=3:63,samples=60] plot (\x,{100-1600/(100-\x)});
+  \node[etiqueta,tceeverde] at (6,72) {$U_B$};
+  % Recta de precios p_x/p_y = 1 por W: x + y = 120
+  \draw[curva2] (20,100) -- (100,20);
+  \node[etiqueta,tceeazul,anchor=north east] at (100,20) {$p=1$};
+  % Puntos (el centro de la caja no está en la recta de precios)
+  \node[circle,draw=tceegris,fill=white,inner sep=1.3pt,label={[etiqueta,tceegris,font=\footnotesize]left:$(50,50)$}] at (50,50) {};
+  \node[punto,label={[etiqueta]above right:$W$}] at (90,30) {};
+  \node[punto,fill=tceerojo,label={[etiqueta]above right:$E$}] at (60,60) {};
+  % Escala de A
+  \node[below] at (60,0) {$60$};
+  \node[below] at (90,0) {$90$};
+  \node[left] at (0,60) {$60$};
+  \node[left] at (0,30) {$30$};
+  % Escala de B
+  \node[above] at (60,100) {$40$};
+  \node[above] at (90,100) {$10$};
+  \node[right] at (100,30) {$70$};
+  % y_B = 40: de O_B hasta E, medido hacia abajo
+  \draw[tceerojo,very thick,decorate,decoration={brace,amplitude=4pt}] (104,100) -- (104,60)
+    node[midway,right=4pt,etiqueta,text=tceerojo] {$y_B=40$};
+\end{tikzpicture}
+\end{document}

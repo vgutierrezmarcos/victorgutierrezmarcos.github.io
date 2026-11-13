@@ -1,0 +1,257 @@
+tema: 3B15
+fecha_inventario: 2026-11-11
+# Propuesto en la fase 2 (verificación de datos). Las frases definitivas las
+# pone el revisor de contenido: al escribirlas, ajustar «texto» y «donde».
+# Los CSV están ahora en datos/; al pasar a D/datos/ cambiar «depende».
+datos:
+  - id: areaer-porcentajes
+    texto: "a 30 de abril de 2023, el 44,8~\\% de sus miembros tenía un anclaje blando, el 32,5~\\% flotaba, el 13,4~\\% tenía un anclaje duro y el 9,3~\\% otros regímenes gestionados"
+    donde: [3B15.tex, graficos/regimenes-espectro.tex]
+    valor: [44.8, 32.5, 13.4, 9.3]
+    unidad: "% de los miembros del FMI (y territorios)"
+    periodo: "30/4/2023"
+    fuente: FMI2024AREAER2023
+    organismo: FMI
+    serie: "AREAER, tablas 3 y 4 «Exchange Rate Arrangements»"
+    url: https://www.elibrary.imf.org/fileasset/downloads/AEIEA2023001-S001.pdf
+    periodicidad: anual (AREAER, con retraso de 1-2 años)
+    proxima: "AREAER 2024 sin fecha conocida"
+    familia: fmi-areaer
+    depende: [datos/areaer-regimenes-2015-2026.csv]
+    frase: "mismas cifras en 3A32 (l. 409) y 3B16 (l. 95); también en tab:areaer (columna «% (2023)», con los % de cada régimen) y en el gráfico regimenes-espectro. Al salir el AREAER definitivo de 2026, actualizar los tres temas a la vez (pendientes-coherencia, PC4)"
+
+  - id: areaer-preliminar-2026
+    texto: "La clasificación preliminar a 30 de abril de 2026 da un reparto parecido: el 47~\\%, el 33~\\%, el 14~\\% y el 6~\\%"
+    donde: [3B15.tex]
+    valor: [47.2, 33.3, 13.8, 5.6]
+    unidad: "% de 195 economías"
+    periodo: "30/4/2026 (preliminar)"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "Informe Anual del FMI, apéndice II.9 (preliminar)"
+    url: https://www.imf.org/annual-report/2026/pdfs/imf-annual-report-2026-appendices.pdf
+    periodicidad: anual (octubre)
+    proxima: 2027-10
+    familia: fmi-areaer
+    depende: [datos/areaer-regimenes-2015-2026.csv]
+    frase: "también «65 de 195 economías» flotan (II.2) y el gráfico regimenes-evolucion"
+
+  - id: areaer-ejemplos
+    texto: "ejemplos de cada régimen en tab:areaer, en II.1 y en el anexo A (Hong Kong, Arabia Saudí, Dinamarca, Macedonia del Norte, Bolivia, Nicaragua, Botsuana, China, Singapur, Vietnam, Marruecos, Brasil, Nueva Zelanda, Corea, Egipto, Argentina, Irán, Venezuela) y «Número de economías en cada régimen a 30 de abril de 2026»"
+    donde: [3B15.tex]
+    valor: "15, 12, 40, 1, 25, 1, 25, 11, 34, 31 economías"
+    unidad: número de economías por categoría
+    periodo: "30/4/2026 (preliminar)"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "Informe Anual del FMI, apéndice II.9, De Facto Classification of Exchange Rate Arrangements"
+    url: https://www.imf.org/annual-report/2026/pdfs/imf-annual-report-2026-appendices.pdf
+    periodicidad: anual
+    proxima: 2027-10
+    familia: fmi-areaer
+    frase: "Bulgaria aparece aún como caja de conversión pese a estar en el euro desde el 1/1/2026: comprobar en la versión definitiva"
+
+  - id: reservas-cofer
+    texto: "las de divisas de los bancos centrales suman 13,2 billones de dólares (junio de 2026), frente a 1,8 billones en 1999; el 56,7~\\% de las asignadas está en dólares y el 20,6~\\% en euros"
+    donde: [3B15.tex]
+    valor: 13.2
+    unidad: billones de USD
+    periodo: 2026-T2
+    fuente: FMI2026COFER
+    organismo: FMI
+    serie: "COFER, total foreign exchange holdings y cuotas de las reservas asignadas"
+    url: https://data.imf.org/en/datasets/IMF.STA:COFER
+    periodicidad: trimestral
+    proxima: 2026-12
+    familia: fmi-cofer
+    depende: [datos/cofer-reservas.csv]
+    frase: "III.1.3 y gráfico reservas-mundiales; mismas cifras que 3B11 y 3B13"
+
+  - id: reservas-china
+    texto: "China tiene unos 3,4 billones"
+    donde: [3B15.tex]
+    valor: 3.4
+    unidad: billones de USD
+    periodo: octubre 2026
+    fuente: SAFE2026Reservas
+    organismo: SAFE (China)
+    serie: "Official Reserve Assets, foreign currency reserves"
+    url: https://www.safe.gov.cn/en/2021/0203/2045.html
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: safe-reservas-china
+
+  - id: trienal-volumen
+    texto: "en abril de 2025 se negociaron 9,5 billones de dólares al día"
+    donde: [3B15.tex]
+    valor: 9.5
+    unidad: billones de USD diarios (neto-neto)
+    periodo: abril 2025
+    fuente: BIS2026TrienalDatos
+    organismo: BIS
+    serie: "Triennial Central Bank Survey, OTC FX turnover, total"
+    url: https://www.bis.org/statistics/rpfx25.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bis-trienal
+
+  - id: comercio-mundial
+    texto: "lo que el comercio mundial de bienes y servicios mueve en menos de 4 días"
+    donde: [3B15.tex]
+    valor: 34.65
+    unidad: billones de USD (2025)
+    periodo: "2025"
+    fuente: OMC2026GTOS
+    organismo: OMC
+    serie: "Global Trade Outlook and Statistics, exportaciones mundiales de bienes y servicios"
+    url: https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-comercio-mundial
+
+  - id: tc-hong-kong
+    texto: "gráfico del dólar de Hong Kong con la banda 7,75-7,85 (anexo A, fig:hong-kong)"
+    donde: [3B15.tex, graficos/]
+    valor: 7.8462
+    unidad: HKD por USD (media mensual)
+    periodo: 2026-10
+    fuente: Fed2026H10
+    organismo: Reserva Federal (H.10, vía FRED)
+    serie: "EXHKUS"
+    url: https://fred.stlouisfed.org/series/EXHKUS
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: tipos-cambio-bilaterales
+    depende: [datos/tc-hong-kong-caja-conversion.csv]
+
+  - id: tc-riyal
+    texto: "Arabia Saudí mantiene el riyal en 3,75 por dólar desde 1986 (II.1.2 y anexo A, fig:riyal)"
+    donde: [3B15.tex, graficos/]
+    valor: 3.75
+    unidad: SAR por USD
+    periodo: 2026-09
+    fuente: BIS2026TiposBilaterales
+    organismo: BPI
+    serie: "WS_XRU M.SA.SAR.A"
+    url: https://data.bis.org/topics/XRU
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: tipos-cambio-bilaterales
+    depende: [datos/tc-riyal-saudi-paridad-fija.csv]
+
+  - id: tc-cordoba
+    texto: "hasta fijarlo en 36,6243 por dólar el 1 de enero de 2024 (II.1.2 y anexo A, fig:cordoba)"
+    donde: [3B15.tex, graficos/]
+    valor: 36.6243
+    unidad: NIO por USD
+    periodo: 2026-09
+    fuente: BIS2026TiposBilaterales
+    organismo: BPI y Banco Central de Nicaragua
+    serie: "WS_XRU M.NI.NIO.A"
+    url: https://data.bis.org/topics/XRU
+    periodicidad: mensual (y anuncio anual del BCN)
+    proxima: 2026-12
+    familia: tipos-cambio-bilaterales
+    depende: [datos/tc-cordoba-nicaragua-crawling-peg.csv]
+
+  - id: tc-denar
+    texto: "mantiene el denar en torno a 61,5 por euro desde hace más de 20 años (II.1.2 y anexo A, fig:denar)"
+    donde: [3B15.tex, graficos/]
+    valor: 61.58
+    unidad: MKD por EUR (cociente de dos series en USD)
+    periodo: 2026-10
+    fuente: BIS2026TiposBilaterales
+    organismo: BPI
+    serie: "WS_XRU M.MK.MKD.A / M.XM.EUR.A"
+    url: https://data.bis.org/topics/XRU
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: tipos-cambio-bilaterales
+    depende: [datos/tc-denar-macedonio-euro-estabilizado.csv]
+
+  - id: tc-renminbi
+    texto: "gráfico del renminbi (anexo A, fig:renminbi)"
+    donde: [3B15.tex, graficos/]
+    valor: 6.6844
+    unidad: CNY por USD
+    periodo: 2026-10
+    fuente: Fed2026H10
+    organismo: Reserva Federal (H.10, vía FRED)
+    serie: "EXCHUS"
+    url: https://fred.stlouisfed.org/series/EXCHUS
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: tipos-cambio-bilaterales
+    depende: [datos/tc-renminbi-crawl-like.csv]
+
+  - id: tc-flotacion
+    texto: "gráfico del dólar neozelandés y del real brasileño (anexo A, fig:flotacion)"
+    donde: [3B15.tex, graficos/]
+    valor: [1.7740, 5.1298]
+    unidad: NZD y BRL por USD
+    periodo: 2026-10
+    fuente: Fed2026H10
+    organismo: Reserva Federal (H.10, vía FRED)
+    serie: "EXUSNZ (invertida) y EXBZUS"
+    url: https://fred.stlouisfed.org/series/EXBZUS
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: tipos-cambio-bilaterales
+    depende: [datos/tc-flotacion-nzd-brl.csv]
+
+  - id: tc-libra-egipcia
+    texto: "Egipto dejó flotar la libra en marzo de 2024 (II.2 y anexo A, fig:libra-egipcia)"
+    donde: [3B15.tex]
+    valor: 50.3017
+    unidad: EGP por USD
+    periodo: 2026-08
+    fuente: BIS2026TiposBilaterales
+    organismo: BPI
+    serie: "WS_XRU M.EG.EGP.A"
+    url: https://data.bis.org/topics/XRU
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: tipos-cambio-bilaterales
+    depende: [datos/tc-libra-egipcia.csv]
+
+  - id: irr-clasificacion
+    texto: "clasificación de hecho de Ilzetzki, Reinhart y Rogoff (versión de octubre de 2026, 1946-2025)"
+    donde: [3B15.tex]
+    valor: "1946-2025"
+    unidad: cobertura de la base
+    periodo: octubre 2026 (beta)
+    fuente: IRR2026Datos
+    organismo: Ilzetzki, Reinhart y Rogoff
+    serie: "Exchange Rate Arrangements data"
+    url: https://www.ilzetzki.com/irr-data
+    periodicidad: irregular
+    proxima: "irregular"
+    familia: irr-clasificacion
+
+  - id: japon-intervencion-2024
+    texto: "Japón compró yenes por unos 9,8 billones de yenes a finales de abril y principios de mayo de 2024, y por otros 5,5 billones en julio"
+    donde: [3B15.tex]
+    valor: [9.8, 5.5]
+    unidad: billones de yenes
+    periodo: 2024-T2 y julio 2024
+    fuente: MOF2024Intervencion
+    organismo: Ministerio de Finanzas de Japón
+    serie: "Foreign Exchange Intervention Operations (trimestral)"
+    url: https://www.mof.go.jp/english/policy/international_policy/reference/feio/quarter/2024_2Qe.html
+    periodicidad: trimestral
+    proxima: "si hay una intervención más reciente, sustituir el ejemplo"
+    familia: mof-intervenciones
+
+  - id: hong-kong-banda
+    texto: "desde 2005 su autoridad monetaria se compromete a comprar y vender dólares a 7,75 y 7,85 dólares de Hong Kong"
+    donde: [3B15.tex]
+    valor: [7.75, 7.85]
+    unidad: HKD por USD
+    periodo: desde mayo de 2005
+    fuente: HKMA2005Refinamientos
+    organismo: HKMA
+    serie: "Linked Exchange Rate System"
+    url: https://www.hkma.gov.hk/eng/news-and-media/press-releases/2005/05/20050518-4
+    periodicidad: estable (revisar si cambia)
+    proxima: "anual"
+    familia: hkma-lers

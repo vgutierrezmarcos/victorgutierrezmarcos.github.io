@@ -1,0 +1,56 @@
+% El modelo intertemporal de la cuenta corriente de 2 periodos (Obstfeld y
+% Rogoff, 1996, cap. 1). Código base: fuentes/3A29/graficos/robinson-crusoe.tex
+% (mismos ejes, escala, frontera, letras A, P, C, estilos y orden de capas),
+% con depreciación nula: la frontera corta el eje horizontal en F(K_t)+K_t.
+%   Frontera (cualitativa): C_{t+1} = 6 - 0,14201 C_t^2, corte en 6,5.
+%   Autarquía: A = (5,2; 2,160), pendiente -1,477 = -(1+r^A); U_0 tangente.
+%   Apertura con 1 + r* = 1,05 < 1 + r^A: P = (3,697; 4,059) (tangencia de la
+%   frontera con la recta mundial), recta C_{t+1} = 4,059 - 1,05 (C_t - 3,697),
+%   consumo C = (5,903; 1,743) con U_1 (más alta que U_0).
+%   Déficit corriente en t: C_t^C - C_t^P = 2,206 = ΔI (5,2 - 3,697 = 1,503)
+%   + ΔC (5,903 - 5,2 = 0,703): el país invierte más y consume más.
+%   Superávit comercial en t+1: C_{t+1}^P - C_{t+1}^C = 2,316 = 1,05 · 2,206.
+% Capas: 1-3 autarquía; 4-8 apertura.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.85,
+    declare function={fpp(\x)=6-0.14201*\x*\x; ia(\x)=2.160*(5.2/\x)^3.556;
+      ic(\x)=1.743*(5.903/\x)^3.556; recta(\x)=4.059-1.05*(\x-3.697);
+      tga(\x)=2.160-1.477*(\x-5.2);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.6,-2.9) rectangle (10.2,8.9);
+  % 1: ejes: consumo de hoy y de mañana
+  \capa{1}{\ejes{$C_t$}{$C_{t+1}$}{8.6}{8.6}}
+  % 2: frontera de posibilidades de producción intertemporal, cóncava
+  \capa{2}{\draw[curva1] plot[domain=0:6.5,samples=80] (\x,{fpp(\x)});}
+  \capa{2}{\node[etiqueta,font=\scriptsize,align=center,text=tceemorado] at (1.1,4.75) {frontera de\\posibilidades\\de producción};}
+  \capa{2}{\draw[thin] (6.5,0) -- (7.0,-0.55) node[etiqueta,anchor=north west,inner sep=1pt,font=\footnotesize] {$F(K_t)+K_t$};}
+  % 3: autarquía: tangencia de la curva de indiferencia con la frontera en A
+  \capa{3}{\draw[curva4] plot[domain=7.4:3.75,samples=80] (\x,{ia(\x)}) node[etiqueta,above] {$U_0$};}
+  \capa{3}{\draw[thick,tceegris,dashed] (4.25,{tga(4.25)}) -- (6.15,{tga(6.15)});}
+  \capa{3}{\draw[thin,tceegris] (6.0,{tga(6.0)}) -- (7.5,2.2) node[etiqueta,anchor=south west,inner sep=1pt,font=\footnotesize,text=tceegris] {pendiente $-(1+r^A)$};}
+  \capa{3}{\node[punto] (A) at (5.2,2.160) {};}
+  \capa{3}{\node[etiqueta,below left] at (A) {$A$};}
+  \capa{3}{\draw[guia] (5.2,2.160) -- (5.2,0) node[below,text=black] {$C_t^A$};}
+  % 4: apertura: recta de pendiente -(1+r*), tangente a la frontera en P
+  \capa{4}{\draw[curva2] (0,{recta(0)}) -- (7.563,0);}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (0.15,{recta(0)+0.25}) {pendiente $-(1+r^*)$};}
+  \capa{4}{\node[punto] (P) at (3.697,4.059) {};}
+  \capa{4}{\node[etiqueta,above right] at (P) {$P$};}
+  \capa{4}{\draw[guia] (0,4.059) node[left,text=black] {$C_{t+1}^P$} -| (3.697,0) node[below,text=black] {$C_t^P$};}
+  % 5: el consumo, sobre la recta, con las preferencias: tangencia en C
+  \capa{5}{\draw[curva3] plot[domain=4.05:8.2,samples=80] (\x,{ic(\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{5}{\node[punto] (C) at (5.903,1.743) {};}
+  \capa{5}{\node[etiqueta,above right] at (C) {$C$};}
+  \capa{5}{\draw[guia] (0,1.743) node[left,text=black] {$C_{t+1}^C$} -| (5.903,0) node[below,text=black] {$C_t^C$};}
+  % 6: el déficit corriente de t (distancia horizontal)
+  \capa{6}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (3.697,-0.75) -- (5.903,-0.75) node[midway,below=4pt,etiqueta,text=tceerojo,font=\footnotesize] {déficit corriente en $t$: $C_t^C-C_t^P$};}
+  % 7: se reparte entre más inversión y más consumo que en autarquía
+  \capa{7}{\draw[decorate,decoration={brace,mirror,amplitude=3pt},thick,tceegris] (3.697,-1.75) -- (5.2,-1.75) node[midway,below=3pt,etiqueta,text=tceegris,font=\footnotesize] {$\Delta I$};}
+  \capa{7}{\draw[decorate,decoration={brace,mirror,amplitude=3pt},thick,tceegris] (5.2,-1.75) -- (5.903,-1.75) node[midway,below=3pt,etiqueta,text=tceegris,font=\footnotesize] {$\Delta C$};}
+  % 8: el superávit comercial de t+1 (distancia vertical), que devuelve la deuda
+  \capa{8}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceeverde] (3.55,1.743) -- (3.55,4.059) node[midway,left=5pt,etiqueta,text=tceeverde,font=\footnotesize,align=right] {superávit\\comercial\\en $t+1$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,56 @@
+% Pregunta 315 (2019-febrero-OEP2018, n.º 26): teorema de Rybczynski. Aumenta K a precios de los bienes dados: en la caja de los factores el punto de producción se mueve sobre los mismos radios (K/L de cada bien constante) y en el plano de los bienes la FPP se desplaza sesgada hacia X (intensivo en capital), X sube e Y baja. Autor: Víctor Gutiérrez Marcos
+% Caja: L̄ = 5, K̄ = 4 -> 5,2. K_X/L_X = 1,6 (X intensivo en capital), K_Y/L_Y = 0,4.
+%   P: 1,6 L_X = 4 - 0,4 (5 - L_X) -> L_X = 1,667, K_X = 2,667 (L_Y = 3,333).
+%   P': 1,6 L_X = 5,2 - 0,4 (5 - L_X) -> L_X = 2,667, K_X = 4,267 (L_Y = 2,333).
+%   X sube un 60 % y L_Y, K_Y (e Y) bajan un 30 %.
+% FPP: elipses x = a cos t, y = b sin t; inicial a = b = 4, P en t = 45 grados (2,828; 2,828), pendiente -1;
+%   nueva a = 5,6, b = 4,2; con pendiente -1, tan t = 0,75 -> P' = (4,48; 2,52).
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % ---------- Panel izquierdo: caja de los factores ----------
+  \node[font=\small\bfseries] at (2.5,6.3) {Factores};
+  \draw[thick] (0,0) rectangle (5,4);
+  \draw[curvanueva] (0,4) -- (0,5.2) -- (5,5.2) -- (5,4);
+  \node[below left,text=tceemorado] at (0,0) {$O_X$};
+  \node[right,text=tceeverde] at (5,4) {$O_Y$};
+  \node[above right,text=tceerojo] at (5,5.2) {$O_Y'$};
+  \draw[llave] (5,-0.45) -- (0,-0.45) node[midway,below=5pt,text=black] {$\bar L$};
+  \draw[llave] (-0.6,0) -- (-0.6,4) node[midway,left=5pt,text=black] {$\bar K$};
+  \draw[llave,tceerojo] (-1.55,0) -- (-1.55,5.2) node[midway,left=5pt,text=tceerojo] {$\bar K'$};
+  % Radio de X desde O_X (pendiente 1,6)
+  \draw[curva1] (0,0) -- (3.0,4.8);
+  \node[etiqueta,text=tceemorado,anchor=west] at (0.95,0.75) {$K_X/L_X$};
+  % Radio de Y desde O_Y (pendiente 0,4) y paralelo desde O_Y'
+  \draw[curva3] (5,4) -- (1.667,2.667);
+  \draw[curvanueva,desplazada] (5,5.2) -- (2.667,4.267);
+  \node[etiqueta,text=tceeverde,anchor=north] at (3.9,3.45) {$K_Y/L_Y$};
+  \node[etiqueta,text=tceerojo,anchor=north] at (4.0,4.68) {$K_Y/L_Y$};
+  % Puntos
+  \node[punto,label={[etiqueta]left:$P$}] (P) at (1.667,2.667) {};
+  \node[punto,tceerojo,label={[etiqueta,text=tceerojo]left:$P'$}] (P2) at (2.667,4.267) {};
+  % ---------- Panel derecho: plano de los bienes ----------
+  \begin{scope}[xshift=7.6cm]
+    \node[font=\small\bfseries] at (3,6.3) {Bienes};
+    \ejes{$X$}{$Y$}{6.4}{5.2}
+    \draw[curva1,domain=0:90,samples=60] plot ({4*cos(\x)},{4*sin(\x)});
+    \node[etiqueta,text=tceemorado,anchor=east] at (3.62,0.9) {$FPP$};
+    \draw[curvanueva,domain=0:90,samples=60] plot ({5.6*cos(\x)},{4.2*sin(\x)});
+    \node[etiqueta,text=tceerojo,anchor=south] at (0.75,4.2) {$FPP'$};
+    % Rectas de precios paralelas (pendiente -1: p_X/p_Y dado)
+    \draw[curva4] (1.2,4.457) -- (4.457,1.2);
+    \draw[curva4] (2.9,4.1) -- (5.7,1.3);
+    \node[etiqueta,text=tceedorado,anchor=south west] at (5.6,1.35) {$p_X/p_Y$};
+    % Línea de Rybczynski
+    \draw[guia,thick,tceegris] (0.3,3.291) -- (5.6,2.303);
+    \node[etiqueta,text=tceegris,anchor=south west,font=\footnotesize,inner sep=1pt] at (0.08,3.36) {Rybczynski};
+    \node[punto,label={[etiqueta]above right:$P$}] (Q) at (2.828,2.828) {};
+    \node[punto,tceerojo,label={[etiqueta,text=tceerojo]below left:$P'$}] (Q2) at (4.48,2.52) {};
+    \proyeccion{(2.828,2.828)}{$X_0$}{$Y_0$}
+    \draw[guia,tceerojo] (4.48,0) node[below,text=tceerojo] {$X_1$} -- (4.48,2.52);
+    \draw[guia,tceerojo] (0,2.52) node[left,text=tceerojo] {$Y_1$} -- (4.48,2.52);
+  \end{scope}
+\end{tikzpicture}
+\end{document}

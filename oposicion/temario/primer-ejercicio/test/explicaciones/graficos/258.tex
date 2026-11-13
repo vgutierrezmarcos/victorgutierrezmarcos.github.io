@@ -1,0 +1,27 @@
+% Pregunta 258 (2018-enero-OEP2017, n.º 14): diagrama de Solow con n = 0; el regalo de capital lleva k de k* a k0 > k*, donde la depreciación supera al ahorro y k vuelve a k*. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \ejes{$k$}{}{7}{4.8}
+  % f(k) = 1,6 sqrt(k); s f(k) = 0,8 sqrt(k); delta k = 0,4 k; k* = 4
+  \draw[curva2,domain=0:6.5,samples=80] plot (\x,{1.6*sqrt(\x)}) node[etiqueta,right] {$f(k)$};
+  \draw[curva1,domain=0:6.5,samples=80] plot (\x,{0.8*sqrt(\x)}) node[etiqueta,right] {$s\,f(k)$};
+  \draw[curva4] (0,0) -- (6.5,2.6) node[etiqueta,right] {$\delta k$};
+  % Estado estacionario
+  \draw[guia] (4,0) -- (4,3.2);
+  \draw[guia] (0,1.6) -- (4,1.6) node[pos=0,left] {$s\,f(k^*)$};
+  \node[punto,label={[etiqueta]above left:$E$}] at (4,1.6) {};
+  \node[below] at (4,0) {$k^*$};
+  % Tras el regalo: k0 > k*
+  \draw[guia] (5.5,0) -- (5.5,2.2);
+  \node[below] at (5.5,0) {$k_0$};
+  \draw[curvanueva] (5.5,1.876) -- (5.5,2.2);
+  \node[punto,tceerojo,inner sep=1.1pt] at (5.5,1.876) {};
+  \node[punto,tceerojo,inner sep=1.1pt] at (5.5,2.2) {};
+  \node[etiqueta,tceerojo,align=left,anchor=west,font=\footnotesize] at (5.65,1.3) {$\delta k_0>s\,f(k_0)$\\$\Rightarrow\dot k<0$};
+  % Salto (regalo) y vuelta
+  \draw[flecha] (4.05,-0.75) -- (5.45,-0.75) node[midway,below,font=\footnotesize] {regalo};
+  \draw[->,very thick,tceemorado] (5.4,0.15) -- (4.1,0.15);
+\end{tikzpicture}
+\end{document}

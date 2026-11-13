@@ -1,0 +1,235 @@
+{
+ "tema": "3.A.12",
+ "preguntas": [
+  {
+   "id": 311201,
+   "estado": "publicada",
+   "enunciado": "La función de beneficio de una empresa precio-aceptante que produce un bien con un solo factor es $B(p,w)=\\dfrac{p^{2}}{4w}$, donde $p$ es el precio del producto y $w$ el del factor. Su función de oferta y su demanda (no condicionada) del factor son:",
+   "opciones": {
+    "a": "$q(p,w)=\\dfrac{p}{2w}$ y $z(p,w)=-\\dfrac{p^{2}}{4w^{2}}$",
+    "b": "$q(p,w)=\\dfrac{p^{2}}{4w^{2}}$ y $z(p,w)=\\dfrac{p}{2w}$",
+    "c": "$q(p,w)=\\dfrac{p}{2w}$ y $z(p,w)=\\dfrac{p^{2}}{4w^{2}}$",
+    "d": "$q(p,w)=\\dfrac{p}{4w}$ y $z(p,w)=\\dfrac{p^{2}}{4w^{2}}$"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Por el lema de Hotelling, la oferta es la derivada de la función de beneficio respecto al precio del producto, $q=\\partial B/\\partial p=p/(2w)$, y la demanda del factor es la derivada respecto a su precio con el signo cambiado, $z=-\\partial B/\\partial w=p^{2}/(4w^{2})$.",
+    "desarrollo": "El lema de Hotelling permite obtener la oferta y las demandas no condicionadas derivando la función de beneficio:\n\n$$q(p,w)=\\frac{\\partial B}{\\partial p}=\\frac{2p}{4w}=\\frac{p}{2w},\\qquad z(p,w)=-\\frac{\\partial B}{\\partial w}=-\\left(-\\frac{p^{2}}{4w^{2}}\\right)=\\frac{p^{2}}{4w^{2}}.$$\n\nComprobación por otra vía: el beneficio debe ser ingresos menos costes, $p\\,q-w\\,z=\\dfrac{p^{2}}{2w}-\\dfrac{p^{2}}{4w}=\\dfrac{p^{2}}{4w}$, que es $B(p,w)$. Además, $q=\\sqrt{z}$: es la función de beneficio de la tecnología $q=\\sqrt{z}$, cuya condición de primer orden, $p/(2\\sqrt{z})=w$, da esa misma demanda. Las dos funciones son homogéneas de grado cero en $(p,w)$, como debe ser.\n\nPor qué fallan las demás:\n\n- a) Olvida que en el lema de Hotelling la demanda del factor lleva signo menos, $z=-\\partial B/\\partial w$ (el que no lo lleva es el de Shephard). El resultado es una demanda negativa, que no tiene sentido.\n- b) Intercambia las dos funciones. Con ellas, $p\\,q-w\\,z=p^{3}/(4w^{2})-p/2$, que no es la función de beneficio dada.\n- d) Divide el beneficio por el precio en lugar de derivar. Con esa oferta, $p\\,q-w\\,z=p^{2}/(4w)-p^{2}/(4w)=0$: no reproduce $B(p,w)$."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.1 Maximización del beneficio: función de beneficio y lema de Hotelling",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311202,
+   "estado": "publicada",
+   "enunciado": "Una empresa minimiza costes con dos factores, trabajo y capital, cuyos precios le vienen dados. A los precios iniciales, el trabajo supone el 40 % de su coste total. Si el salario sube un 10 % y ni el precio del capital ni la producción cambian, el coste mínimo de obtener esa producción:",
+   "opciones": {
+    "a": "Aumenta como mucho un 4 %, que es lo que aumentaría con la combinación inicial de factores: sustituir trabajo por capital solo puede abaratar la producción.",
+    "b": "Aumenta exactamente un 4 % con cualquier tecnología, porque, por el lema de Shephard, la elasticidad del coste respecto al salario es la participación del trabajo en el coste.",
+    "c": "Aumenta al menos un 4 %, porque al sustituir trabajo por capital la empresa se aleja de la combinación que era óptima, y eso encarece la producción.",
+    "d": "Aumenta un 10 %, porque la función de costes es homogénea de grado uno en los precios de los factores."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La función de costes es cóncava en los precios de los factores: queda por debajo de su recta tangente. Si la empresa no cambiara de combinación, el coste subiría $0{,}4\\times 10\\,\\%=4\\,\\%$; como puede sustituir el factor que se encarece, el coste mínimo sube eso o menos. Solo sube exactamente un 4 % si no hay sustitución posible (proporciones fijas).",
+    "desarrollo": "Si la empresa mantuviera la combinación inicial $\\vec{z}(\\vec{w},q)$, su coste variaría linealmente con el salario: la parte del trabajo, el 40 % del coste, se encarece un 10 % y el coste total sube un 4 %. Pero esa combinación sigue produciendo $q$, así que el coste mínimo a los nuevos precios no puede ser mayor:\n\n$$C(\\vec{w}',q)\\leq \\vec{w}'\\cdot\\vec{z}(\\vec{w},q)=C(\\vec{w},q)+z_L(\\vec{w},q)\\,\\Delta w_L=1{,}04\\;C(\\vec{w},q).$$\n\nEs la concavidad de la función de costes en $\\vec{w}$: la función queda por debajo de su plano tangente, cuya pendiente es la demanda condicionada (lema de Shephard). Cuánto se separa depende de la elasticidad de sustitución. Por ejemplo, con una Cobb-Douglas en la que el trabajo recibe el 40 % del coste, $C$ es proporcional a $w_L^{0{,}4}$ y el coste sube $1{,}1^{0{,}4}-1\\approx 3{,}9\\,\\%$; con proporciones fijas (Leontief), exactamente un 4 %.\n\nPor qué fallan las demás:\n\n- b) El lema de Shephard da la respuesta del coste a un cambio infinitesimal del salario ($\\varepsilon_{C,w_L}=s_L=0{,}4$): es una aproximación de primer orden. Para un cambio discreto, el 4 % es una cota superior, que solo se alcanza si la tecnología no permite sustituir.\n- c) Invierte la desigualdad. La empresa solo cambia de combinación si con ello gasta menos que manteniendo la inicial: reoptimizar nunca encarece.\n- d) La homogeneidad de grado uno se refiere a un aumento de todos los precios de los factores en la misma proporción. Aquí sube uno solo."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.2 Minimización del coste: concavidad de la función de costes en los precios de los factores",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311203,
+   "estado": "publicada",
+   "enunciado": "Una empresa minimiza el coste de producir $q$ con dos factores, trabajo ($L$) y capital ($K$), y sus demandas condicionadas $z_L(\\vec{w},q)$ y $z_K(\\vec{w},q)$ son diferenciables. Sobre el efecto de los precios de los factores en esas demandas, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Si el trabajo es un factor inferior, su demanda condicionada puede aumentar cuando sube el salario.",
+    "b": "Los efectos cruzados solo son iguales, $\\partial z_L/\\partial w_K=\\partial z_K/\\partial w_L$, si la función de producción es homotética.",
+    "c": "Los dos factores pueden ser complementarios netos: una subida del precio del capital puede reducir la demanda condicionada de trabajo.",
+    "d": "Los dos factores son necesariamente sustitutivos netos: una subida del precio del capital no puede reducir la demanda condicionada de trabajo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La matriz de sustitución $S(\\vec{w},q)$ es simétrica, semidefinida negativa y cumple $S\\,\\vec{w}=\\vec{0}$. Con dos factores, $w_L\\,\\partial z_L/\\partial w_L+w_K\\,\\partial z_L/\\partial w_K=0$; como el efecto propio es no positivo, el cruzado es no negativo: los dos factores son sustitutivos netos.",
+    "desarrollo": "La matriz de sustitución, $S_{ij}=\\partial^2C/\\partial w_i\\partial w_j=\\partial z_i(\\vec{w},q)/\\partial w_j$ (lema de Shephard), tiene tres propiedades:\n\n- es simétrica (teorema de Schwarz o de Young), con cualquier tecnología;\n- es semidefinida negativa, porque $C$ es cóncava en $\\vec{w}$: su diagonal es no positiva, $\\partial z_i(\\vec{w},q)/\\partial w_i\\leq 0$;\n- cumple $S\\,\\vec{w}=\\vec{0}$, porque las demandas condicionadas son homogéneas de grado cero en $\\vec{w}$ (teorema de Euler).\n\nCon dos factores, la tercera propiedad aplicada al trabajo dice\n\n$$w_L\\frac{\\partial z_L}{\\partial w_L}+w_K\\frac{\\partial z_L}{\\partial w_K}=0\\quad\\Longrightarrow\\quad\\frac{\\partial z_L}{\\partial w_K}=-\\frac{w_L}{w_K}\\,\\frac{\\partial z_L}{\\partial w_L}\\geq 0.$$\n\nGeométricamente, la producción no cambia: sobre una isocuanta, si se usa menos de un factor hay que usar más del otro. La complementariedad neta solo puede aparecer con tres factores o más.\n\nPor qué fallan las demás:\n\n- a) Que un factor sea inferior se refiere a cómo responde su demanda a la producción ($\\partial z_L/\\partial q<0$), no a su precio. El efecto precio propio de la demanda condicionada es siempre no positivo: en la empresa no hay factores Giffen.\n- b) La simetría se debe a que el orden de derivación de $C$ no importa; no exige homoteticidad.\n- c) Es imposible con dos factores, por la relación anterior. Como mucho, el efecto cruzado es nulo (proporciones fijas)."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.2 Minimización del coste: matriz de sustitución de factores",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311204,
+   "estado": "publicada",
+   "enunciado": "Una empresa precio-aceptante en todos sus mercados tiene una función de producción homogénea de grado $1/3$, de modo que su función de costes es $C(\\vec{w},q)=q^{3}\\,c(\\vec{w})$. Cuando elige la producción que maximiza su beneficio, ¿qué parte de sus ingresos, $p\\,q$, es beneficio?",
+   "opciones": {
+    "a": "Una tercera parte.",
+    "b": "Dos terceras partes.",
+    "c": "Depende de los precios de los factores: no puede saberse sin conocer $c(\\vec{w})$.",
+    "d": "Ninguna: el beneficio es nulo, porque cada factor recibe el valor de su producto marginal y eso agota el ingreso."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En la segunda etapa, la empresa produce donde $p=\\mathrm{CMg}=3q^{2}c(\\vec{w})$. Entonces $C=q^{3}c(\\vec{w})=p\\,q/3$: los costes absorben un tercio del ingreso y el beneficio, los dos tercios restantes. En general, con una tecnología homogénea de grado $k<1$, $B=(1-k)\\,p\\,q$.",
+    "desarrollo": "La maximización del beneficio en dos etapas: primero se minimiza el coste de cada producción, lo que da $C(\\vec{w},q)=q^{3}c(\\vec{w})$, y después se elige $q$:\n\n$$\\max_{q}\\;p\\,q-q^{3}c(\\vec{w})\\quad\\Longrightarrow\\quad p=\\mathrm{CMg}=3q^{2}c(\\vec{w}),$$\n\ncon la condición de segundo orden cumplida ($\\partial^{2}C/\\partial q^{2}=6q\\,c(\\vec{w})>0$: coste marginal creciente). Multiplicando la condición de primer orden por $q$, $p\\,q=3q^{3}c(\\vec{w})=3\\,C$, de modo que\n\n$$C=\\tfrac13\\,p\\,q,\\qquad B=p\\,q-C=\\tfrac23\\,p\\,q.$$\n\nPor otra vía (teorema de Euler): con $F$ homogénea de grado $k$, $\\sum_i\\mathrm{PMg}_i\\,z_i=k\\,q$; como la empresa paga a cada factor el valor de su producto marginal, $w_i=p\\,\\mathrm{PMg}_i$, el coste es $\\sum_iw_iz_i=k\\,p\\,q$ y el beneficio, $(1-k)\\,p\\,q$. Con $k=1/3$, dos tercios.\n\nPor qué fallan las demás:\n\n- a) Un tercio es la parte del ingreso que se llevan los costes ($k$), no el beneficio ($1-k$).\n- c) Los precios de los factores determinan cuánto se produce, $q=\\big(p/(3c(\\vec{w}))\\big)^{1/2}$, y por tanto el nivel del beneficio, pero no su proporción sobre el ingreso, que solo depende del grado de homogeneidad.\n- d) El agotamiento del producto se da con rendimientos constantes a escala ($k=1$). Con rendimientos decrecientes, retribuir a los factores según su productividad marginal deja un excedente: el beneficio."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 «Dualidad» entre maximización del beneficio y minimización del coste: el problema en dos etapas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311205,
+   "estado": "publicada",
+   "enunciado": "Con los precios de los factores dados, la función de costes a largo plazo de una empresa es $C(q)=q^{3}-6q^{2}+15q$. Cuando produce $q=2$, la elasticidad de escala local de su tecnología, medida en la combinación de factores que minimiza el coste, es:",
+   "opciones": {
+    "a": "$3/7$: menor que 1, luego en ese punto hay rendimientos decrecientes a escala.",
+    "b": "$1$: en $q=2$ el coste medio está en su mínimo.",
+    "c": "No puede saberse a partir de la función de costes, salvo que la función de producción sea homotética.",
+    "d": "$7/3$: mayor que 1, luego en ese punto hay rendimientos crecientes a escala y economías de escala."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En la combinación de mínimo coste, la elasticidad de escala es la inversa de la elasticidad del coste respecto a la producción: $\\varepsilon_{q,\\lambda}=\\mathrm{CMe}/\\mathrm{CMg}=1/\\varepsilon_{C,q}$. En $q=2$, $\\mathrm{CMe}=7$ y $\\mathrm{CMg}=3$, así que $\\varepsilon_{C,q}=3/7$ y $\\varepsilon_{q,\\lambda}=7/3$.",
+    "desarrollo": "Coste medio y coste marginal:\n\n$$\\mathrm{CMe}(q)=q^{2}-6q+15,\\qquad\\mathrm{CMg}(q)=3q^{2}-12q+15.$$\n\nEn $q=2$: $\\mathrm{CMe}=4-12+15=7$ y $\\mathrm{CMg}=12-24+15=3$. La elasticidad del coste respecto a la producción es $\\varepsilon_{C,q}=\\mathrm{CMg}/\\mathrm{CMe}=3/7<1$: el coste crece menos que proporcionalmente, el coste medio es decreciente y hay economías de escala.\n\nEn la combinación que minimiza el coste, $w_i=\\mathrm{CMg}\\cdot\\mathrm{PMg}_i$, de donde $C=\\mathrm{CMg}\\cdot q\\cdot\\varepsilon_{q,\\lambda}$ y\n\n$$\\varepsilon_{q,\\lambda}=\\frac{\\mathrm{CMe}}{\\mathrm{CMg}}=\\frac{1}{\\varepsilon_{C,q}}=\\frac{7}{3}>1:$$\n\nrendimientos locales crecientes.\n\nPor qué fallan las demás:\n\n- a) $3/7$ es la elasticidad del coste, no la de escala. Y el sentido es el contrario: $\\varepsilon_{C,q}<1$ son economías de escala; $\\varepsilon_{q,\\lambda}<1$ serían rendimientos decrecientes.\n- b) El mínimo del coste medio está donde $\\mathrm{CMe}=\\mathrm{CMg}$: $q^{2}-6q+15=3q^{2}-12q+15$, es decir, $q=3$ (con $\\mathrm{CMe}=6$), no $q=2$.\n- c) La relación $\\varepsilon_{q,\\lambda}=1/\\varepsilon_{C,q}$ se cumple con cualquier tecnología, siempre que los rendimientos se midan localmente en la combinación de mínimo coste. La homoteticidad solo añade que la senda de expansión es un rayo."
+   },
+   "dificultad": 2,
+   "apartado": "II.1.1 Estática comparativa ante variaciones en la producción: economías de escala y rendimientos a escala",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311206,
+   "estado": "publicada",
+   "enunciado": "Una empresa precio-aceptante en todos sus mercados usa un factor $i$ que, en el entorno de su producción actual, es inferior: $\\partial z_i(\\vec{w},q)/\\partial q<0$. Si sube el precio de ese factor, $w_i$, y nada más cambia:",
+   "opciones": {
+    "a": "El coste total de cada nivel de producción aumenta, pero el coste marginal disminuye y la empresa produce más; aun así, su demanda no condicionada del factor disminuye.",
+    "b": "El coste marginal disminuye y la empresa produce más; como produce más, su demanda no condicionada del factor aumenta: es un factor Giffen.",
+    "c": "El coste total y el coste marginal aumentan, como con cualquier factor, y la empresa produce menos; el efecto escala compensa en parte al efecto sustitución.",
+    "d": "El coste total de cada nivel de producción disminuye, porque la empresa sustituye el factor por otros, y por eso produce más."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Por Shephard y Young, $\\partial\\mathrm{CMg}/\\partial w_i=\\partial z_i(\\vec{w},q)/\\partial q$: si el factor es inferior, encarecerlo baja el coste marginal y la empresa produce más. Pero al producir más usa menos factor inferior: el efecto escala refuerza al efecto sustitución y la demanda no condicionada cae. No hay factores Giffen.",
+    "desarrollo": "Tres efectos de la subida de $w_i$:\n\n- Coste total: por el lema de Shephard, $\\partial C/\\partial w_i=z_i(\\vec{w},q)>0$. Producir cualquier cantidad cuesta más.\n- Coste marginal: $\\dfrac{\\partial\\mathrm{CMg}}{\\partial w_i}=\\dfrac{\\partial^{2}C}{\\partial q\\,\\partial w_i}=\\dfrac{\\partial z_i(\\vec{w},q)}{\\partial q}<0$. Como el factor es inferior, el coste marginal baja, y la empresa, que produce donde $p=\\mathrm{CMg}$ con coste marginal creciente, produce más: $\\dfrac{\\partial q(p,\\vec{w})}{\\partial w_i}=-\\dfrac{\\partial z_i/\\partial q}{\\partial^{2}C/\\partial q^{2}}>0$.\n- Demanda no condicionada (ecuación de Slutsky de los factores):\n\n$$\\frac{\\partial z_i(p,\\vec{w})}{\\partial w_i}=\\underbrace{\\frac{\\partial z_i(\\vec{w},q)}{\\partial w_i}}_{\\text{sustitución}\\ \\leq 0}+\\underbrace{\\frac{\\partial z_i(\\vec{w},q)}{\\partial q}\\,\\frac{\\partial q(p,\\vec{w})}{\\partial w_i}}_{\\text{escala}}=\\frac{\\partial z_i(\\vec{w},q)}{\\partial w_i}-\\frac{\\big(\\partial z_i/\\partial q\\big)^{2}}{\\partial^{2}C/\\partial q^{2}}\\leq 0.$$\n\nEl efecto escala es negativo sea el factor normal o inferior: si es normal, se produce menos y se usa menos factor; si es inferior, se produce más y, precisamente por eso, se usa menos.\n\nPor qué fallan las demás:\n\n- b) Acierta en el coste marginal y en la producción, pero no en la demanda: producir más reduce el uso de un factor inferior. La función de beneficio es convexa, así que $\\partial z_i(p,\\vec{w})/\\partial w_i\\leq 0$ siempre.\n- c) Es lo que ocurre con un factor normal, salvo en el final: el efecto escala nunca compensa al de sustitución, sino que lo refuerza.\n- d) La función de costes es no decreciente en el precio de cada factor: encarecer un factor que se usa nunca abarata la producción. Lo que baja es el coste marginal, no el total."
+   },
+   "dificultad": 3,
+   "apartado": "II.1.2 Estática comparativa ante variaciones en el precio de los factores: factores inferiores, efecto sustitución y efecto escala",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311207,
+   "estado": "publicada",
+   "enunciado": "A corto plazo, una empresa produce con una planta dada y un único factor variable, el trabajo, que contrata a un salario $w_L=12$. En su nivel de producción actual, la productividad marginal del trabajo es 6 y su productividad media es 4. Entonces:",
+   "opciones": {
+    "a": "$\\mathrm{CMg}=3$ y $\\mathrm{CVMe}=2$: el coste marginal supera al coste variable medio, que es creciente.",
+    "b": "$\\mathrm{CMg}=2$ y $\\mathrm{CVMe}=3$: el coste variable medio es decreciente y la empresa produce menos que la cantidad de su mínimo de explotación.",
+    "c": "$\\mathrm{CMg}=2$ y $\\mathrm{CVMe}=3$: como el coste marginal es menor que el medio, la empresa tiene economías de escala.",
+    "d": "$\\mathrm{CMg}=72$ y $\\mathrm{CVMe}=48$: el coste marginal supera al coste variable medio, que es creciente."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "A corto plazo, $\\mathrm{CMg}=w_L/\\mathrm{PMg}_L=12/6=2$ y $\\mathrm{CVMe}=w_L/\\mathrm{PMe}_L=12/4=3$. Como el coste marginal es menor que el coste variable medio, este decrece: la empresa está en la etapa I de la producción, a la izquierda del mínimo del CVMe (mínimo de explotación).",
+    "desarrollo": "Con un solo factor variable, la cantidad de trabajo la fija la función de producción, de modo que los costes son la imagen invertida de las productividades:\n\n$$\\mathrm{CMg}=\\frac{w_L}{\\mathrm{PMg}_L}=\\frac{12}{6}=2,\\qquad\\mathrm{CVMe}=\\frac{w_L}{\\mathrm{PMe}_L}=\\frac{12}{4}=3.$$\n\nLa elasticidad del coste variable es $\\varepsilon_{\\mathrm{CV},q}=\\mathrm{CMg}/\\mathrm{CVMe}=\\mathrm{PMe}_L/\\mathrm{PMg}_L=2/3<1$. Con $\\mathrm{PMg}_L>\\mathrm{PMe}_L$, la productividad media crece (etapa I) y el coste variable medio decrece: la empresa está a la izquierda del mínimo del CVMe, el mínimo de explotación, que se alcanza cuando $\\mathrm{PMg}_L=\\mathrm{PMe}_L$. Una empresa competitiva no produciría ahí: si el precio fuera igual a ese coste marginal, no cubriría el coste variable medio.\n\nPor qué fallan las demás:\n\n- a) Intercambia las productividades: divide el salario por la media para el coste marginal y por la marginal para el medio.\n- c) Los valores son correctos, pero la conclusión no: las economías de escala son un concepto de largo plazo (todos los factores variables) y se refieren al coste medio total. A corto plazo, con la planta fija, la caída del CVMe se debe a la productividad media creciente del factor variable.\n- d) Multiplica el salario por las productividades en vez de dividir. Si un trabajador más aporta 6 unidades y cuesta 12, cada unidad adicional cuesta 2, no 72."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Análisis de plazos: costes a corto plazo y fases en términos de elasticidades",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311208,
+   "estado": "publicada",
+   "enunciado": "Con datos de las empresas de un sector se estima la función de costes $\\ln C=\\beta_0+0{,}8\\,\\ln q+0{,}6\\,\\ln w_L+0{,}4\\,\\ln w_K$, que procede de una tecnología Cobb-Douglas. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La tecnología tiene rendimientos decrecientes a escala, de grado 0,8, y el trabajo supone el 60 % del coste.",
+    "b": "La estimación incumple la teoría, porque una función de costes debe ser homogénea de grado uno y los tres coeficientes suman 1,8.",
+    "c": "La tecnología tiene rendimientos crecientes a escala, de grado $1/0{,}8=1{,}25$, y el trabajo supone el 60 % del coste.",
+    "d": "Hay economías de escala, tanto más intensas cuanto mayor es la empresa, porque el coeficiente de $\\ln q$ es menor que 1."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En la función de costes de una Cobb-Douglas, el coeficiente de $\\ln q$ es $1/k$, la inversa del grado de homogeneidad: $k=1/0{,}8=1{,}25$. El coeficiente de cada $\\ln w_i$ es la participación del factor en el coste (lema de Shephard), que es constante; suman 1, como exige la homogeneidad de grado uno en los precios.",
+    "desarrollo": "La función de costes dual de $q=A\\,z_K^{\\alpha}z_L^{\\beta}$, con $k=\\alpha+\\beta$, es en logaritmos\n\n$$\\ln C=\\beta_0+\\frac{1}{k}\\ln q+\\frac{\\alpha}{k}\\ln w_K+\\frac{\\beta}{k}\\ln w_L.$$\n\n- El coeficiente de $\\ln q$ es la elasticidad del coste respecto a la producción, $\\varepsilon_{C,q}=1/k=0{,}8<1$: hay economías de escala, y la tecnología es homogénea de grado $k=1{,}25$ (rendimientos crecientes).\n- El coeficiente de $\\ln w_L$ es $\\partial\\ln C/\\partial\\ln w_L=w_Lz_L/C=s_L=0{,}6$ (lema de Shephard): el trabajo supone el 60 % del coste y el capital el 40 %, sean cuales sean la producción y los precios.\n- Los coeficientes de los precios suman 1: la función es homogénea de grado uno en $\\vec{w}$.\n\nEs la forma que estima Nerlove (1963) para las eléctricas de Estados Unidos.\n\nPor qué fallan las demás:\n\n- a) Confunde la elasticidad del coste con la de escala, que son inversas: 0,8 es $\\varepsilon_{C,q}$, y el grado de rendimientos es 1,25.\n- b) La homogeneidad de grado uno se exige solo en los precios de los factores ($0{,}6+0{,}4=1$), no en la producción.\n- d) Hay economías de escala, pero la Cobb-Douglas impone el mismo grado a cualquier tamaño: $\\varepsilon_{C,q}=0{,}8$ es constante. Para que varíen con el tamaño hace falta una forma flexible, como la translog (con $\\beta_{qq}\\neq 0$)."
+   },
+   "dificultad": 1,
+   "apartado": "II.3 Estimación de funciones de costes por dualidad: forma Cobb-Douglas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311209,
+   "estado": "publicada",
+   "enunciado": "Una empresa obtiene su producción con un coste de 200. Las mejores prácticas del sector obtienen esa misma producción usando los factores en la misma proporción que ella con un coste de 160 y, eligiendo además la combinación de factores adecuada a sus precios, con un coste de 120. Según la descomposición de Farrell, sus eficiencias técnica, asignativa y económica (en costes) son, respectivamente:",
+   "opciones": {
+    "a": "0,8; 0,75 y 0,6",
+    "b": "0,8; 0,6 y 0,48",
+    "c": "0,8; 0,6 y 0,75",
+    "d": "0,2; 0,2 y 0,4"
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La eficiencia técnica es la proporción a la que podrían reducirse todos los factores sin producir menos, $160/200=0{,}8$; la asignativa compara el coste mínimo con el de la combinación técnicamente eficiente, $120/160=0{,}75$; la económica es el coste mínimo sobre el observado, $120/200=0{,}6$, el producto de las dos.",
+    "desarrollo": "En el gráfico de Farrell, la empresa está en $P$; $Q$ es el punto de la isocuanta eficiente en su mismo rayo (misma proporción de factores) y $R$, el punto de ese rayo que cuesta lo mismo que la combinación de mínimo coste. Como a lo largo de un rayo el coste es proporcional a la distancia al origen, las distancias pueden sustituirse por costes:\n\n$$\\mathrm{EfT}=\\frac{OQ}{OP}=\\frac{160}{200}=0{,}8,\\qquad\\mathrm{EfA}=\\frac{OR}{OQ}=\\frac{120}{160}=0{,}75,\\qquad\\mathrm{EfE}=\\frac{OR}{OP}=\\frac{120}{200}=0{,}6.$$\n\nComprobación: $\\mathrm{EfE}=\\mathrm{EfT}\\cdot\\mathrm{EfA}=0{,}8\\times 0{,}75=0{,}6$. La empresa gasta un 25 % más de lo técnicamente necesario con sus proporciones (ineficiencia técnica) y, además, sus proporciones no son las adecuadas a los precios de los factores (ineficiencia asignativa).\n\nPor qué fallan las demás:\n\n- b) Toma $120/200$ como eficiencia asignativa (es la económica) y vuelve a multiplicar.\n- c) Intercambia la asignativa y la económica: la económica es la global y no puede ser mayor que ninguna de las otras dos.\n- d) Da los ahorros posibles sobre el coste observado (40, 40 y 80 de 200), que no son las medidas de Farrell: estas son cocientes entre 0 y 1 que se multiplican, no se suman."
+   },
+   "dificultad": 2,
+   "apartado": "II.5 Medición de la eficiencia: eficiencia técnica, asignativa y económica de Farrell",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311210,
+   "estado": "publicada",
+   "enunciado": "En un mercado, cualquier empresa puede producir con la función de costes $C(q)=16+q^{2}$ si $q>0$, con $C(0)=0$. Para abastecer una demanda total de $q=5$ unidades:",
+   "opciones": {
+    "a": "El mercado no es un monopolio natural: en $q=5$ el coste medio ya es creciente, de modo que repartir la producción entre dos empresas la abarata.",
+    "b": "El mercado es un monopolio natural porque hay economías de escala: en $q=5$ el coste medio todavía es decreciente.",
+    "c": "El mercado es un monopolio natural aunque en $q=5$ haya deseconomías de escala: una sola empresa produce con un coste de 41 y dos empresas, con 44,5 como mínimo.",
+    "d": "Una empresa y dos empresas producen con el mismo coste total, porque $q=5$ es justo la producción a partir de la cual la función de costes deja de ser subaditiva."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El monopolio natural se define por la subaditividad de los costes, no por las economías de escala, que son suficientes pero no necesarias. Aquí el coste medio es mínimo en $q=4$ y en $q=5$ ya crece, pero una empresa ($41$) sigue siendo más barata que dos ($2\\times 16+2\\times 2{,}5^{2}=44{,}5$), porque dos pagarían dos veces el coste fijo.",
+    "desarrollo": "Coste medio: $\\mathrm{CMe}=16/q+q$, mínimo donde $\\mathrm{CMe}=\\mathrm{CMg}=2q$, es decir, en $q=4$ ($\\mathrm{CMe}=8$). En $q=5$, $\\mathrm{CMe}=8{,}2$ y $\\mathrm{CMg}=10>\\mathrm{CMe}$: el coste medio es creciente y hay deseconomías de escala.\n\nSubaditividad: una empresa produce las 5 unidades con $C(5)=16+25=41$. Dos empresas pagan dos costes fijos y, como el coste variable es convexo, lo más barato es repartir a partes iguales:\n\n$$2\\,C(2{,}5)=2\\,(16+6{,}25)=44{,}5>41.$$\n\nCon tres empresas sería todavía más caro ($3\\,C(5/3)\\approx 56{,}3$). Una sola empresa es la forma más barata de producir: la función de costes es subaditiva en $q=5$ y el mercado es un monopolio natural. En general, una empresa es más barata que dos mientras $16+q^{2}<32+q^{2}/2$, es decir, hasta $q=\\sqrt{32}\\approx 5{,}66$: entre $q=4$ y $q\\approx 5{,}66$ hay subaditividad con coste medio creciente.\n\nPor qué fallan las demás:\n\n- a) Identifica monopolio natural con economías de escala. Que el coste medio crezca no basta para que convenga dividir la producción: hay que comparar con el coste de duplicar el coste fijo.\n- b) Llega a la conclusión correcta por una razón falsa: en $q=5$ el coste medio ya es creciente (su mínimo está en $q=4$).\n- d) La producción en la que una y dos empresas cuestan lo mismo es $q=\\sqrt{32}\\approx 5{,}66$, no $q=5$."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 Implicaciones sobre la estructura de mercado: monopolio natural y subaditividad",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

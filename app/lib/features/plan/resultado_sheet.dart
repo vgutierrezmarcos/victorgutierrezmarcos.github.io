@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/esquema.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
@@ -15,13 +16,123 @@ Future<ResultadoCante?> pedirResultadoCante(
   List<Tema> opciones = const [],
   String? titulo,
   String? textoGuardar,
+  Map<String, List<EntradaEsquema>> esquemas = const {},
+  List<String> criterios = const [],
 }) =>
     showModalBottomSheet<ResultadoCante>(
       context: context,
       isScrollControlled: true,
       useRootNavigator: true,
-      builder: (_) => _ResultadoSheet(inicial: inicial, opciones: opciones, titulo: titulo ?? '¿Cómo ha ido el cante?', textoGuardar: textoGuardar ?? 'Guardar en el diario'),
+      builder: (_) => _ResultadoSheet(inicial: inicial, opciones: opciones, titulo: titulo ?? '¿Cómo ha ido el cante?', textoGuardar: textoGuardar ?? 'Guardar en el diario', esquemas: esquemas, criterios: criterios),
     );
+
+/// «Esquema ★★★★ · Rigor ★★…», una fila por criterio.
+class CriteriosValorados extends StatelessWidget {
+  const CriteriosValorados({super.key, required this.resultado, this.tamano = 14});
+  final ResultadoCante resultado;
+  final double tamano;
+  @override
+  Widget build(BuildContext context) => Wrap(spacing: 14, runSpacing: 2, children: [
+        for (final e in resultado.criterios.entries)
+          if (e.value > 0)
+            Row(mainAxisSize: MainAxisSize.min, children: [
+              Text(e.key, style: context.textos.labelSmall),
+              const SizedBox(width: 4),
+              Estrellas(valor: e.value, tamano: tamano),
+            ]),
+      ]);
+}
+
+/// Solo la lista de control (los apartados que va tocando), para marcarla
+/// durante la clase sin pasar por la valoración. Devuelve el resultado con
+/// [ResultadoCante.cubiertos] y [ResultadoCante.apartados] puestos, o null.
+Future<ResultadoCante?> marcarApartados(BuildContext context, {required ResultadoCante inicial, required List<String> temas, required Map<String, List<EntradaEsquema>> esquemas}) =>
+    showModalBottomSheet<ResultadoCante>(
+      context: context,
+      isScrollControlled: true,
+      useRootNavigator: true,
+      builder: (_) => _ApartadosSheet(inicial: inicial, temas: temas, esquemas: esquemas),
+    );
+
+/// Las casillas de los apartados de un tema, con el nivel como sangría.
+class ListaControl extends StatelessWidget {
+  const ListaControl({super.key, required this.esquema, required this.marcados, required this.onChanged, this.titulo});
+  final List<EntradaEsquema> esquema;
+  final Set<String> marcados;
+  final void Function(String titulo, bool marcado) onChanged;
+  final String? titulo;
+
+  @override
+  Widget build(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        if (titulo != null) Padding(padding: const EdgeInsets.only(bottom: 4), child: Text(titulo!, style: context.textos.labelMedium)),
+        for (final e in esquema)
+          Padding(
+            padding: EdgeInsets.only(left: 14.0 * e.nivel.clamp(0, 3)),
+            child: CheckboxListTile(
+              dense: true,
+              visualDensity: VisualDensity.compact,
+              contentPadding: EdgeInsets.zero,
+              controlAffinity: ListTileControlAffinity.leading,
+              value: marcados.contains(e.titulo),
+              onChanged: (v) => onChanged(e.titulo, v ?? false),
+              title: Text(e.titulo, style: e.nivel == 0 ? context.textos.titleSmall : context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+            ),
+          ),
+      ]);
+}
+
+class _ApartadosSheet extends StatefulWidget {
+  const _ApartadosSheet({required this.inicial, required this.temas, required this.esquemas});
+  final ResultadoCante inicial;
+  final List<String> temas;
+  final Map<String, List<EntradaEsquema>> esquemas;
+  @override
+  State<_ApartadosSheet> createState() => _ApartadosSheetState();
+}
+
+class _ApartadosSheetState extends State<_ApartadosSheet> {
+  late final Map<String, Set<String>> _cubiertos = {for (final t in widget.temas) t: {...?widget.inicial.cubiertos[t]}};
+
+  @override
+  Widget build(BuildContext context) {
+    final temas = widget.temas.where(widget.esquemas.containsKey).toList();
+    return Padding(
+      padding: EdgeInsets.fromLTRB(16, 16, 16, 16 + MediaQuery.of(context).viewInsets.bottom),
+      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text('Apartados que va tocando', style: context.textos.titleMedium),
+        Text('Marca cada apartado del esquema cuando lo cante. Queda en la valoración y en su ficha.', style: context.textos.labelSmall),
+        const SizedBox(height: 8),
+        Flexible(
+          child: SingleChildScrollView(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              for (final t in temas)
+                ListaControl(
+                  titulo: temas.length > 1 ? 'Tema $t · ${_cubiertos[t]!.length}/${widget.esquemas[t]!.length}' : '${_cubiertos[t]!.length} de ${widget.esquemas[t]!.length}',
+                  esquema: widget.esquemas[t]!,
+                  marcados: _cubiertos[t]!,
+                  onChanged: (a, v) => setState(() => v ? _cubiertos[t]!.add(a) : _cubiertos[t]!.remove(a)),
+                ),
+            ]),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Wrap(spacing: 8, children: [
+            TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar')),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, widget.inicial.copyWith(
+                    cubiertos: {for (final t in temas) t: (_cubiertos[t]!.toList())..sort()},
+                    apartados: {for (final t in temas) t: widget.esquemas[t]!.length},
+                  )),
+              child: const Text('Guardar'),
+            ),
+          ]),
+        ),
+      ]),
+    );
+  }
+}
 
 /// Los temas cantados de un resultado, uno por línea, con las estrellas de
 /// cada uno si se valoraron aparte.
@@ -42,18 +153,25 @@ class TemasValorados extends StatelessWidget {
 }
 
 class _ResultadoSheet extends StatefulWidget {
-  const _ResultadoSheet({required this.inicial, required this.opciones, required this.titulo, required this.textoGuardar});
+  const _ResultadoSheet({required this.inicial, required this.opciones, required this.titulo, required this.textoGuardar, this.esquemas = const {}, this.criterios = const []});
   final ResultadoCante inicial;
   final List<Tema> opciones;
   final String titulo;
   final String textoGuardar;
+  /// Esquemas (apartados) de los temas que pueden cantarse: la lista de control.
+  final Map<String, List<EntradaEsquema>> esquemas;
+  /// Rúbrica de quien valora (vacía = solo las estrellas). Los criterios son
+  /// opcionales: se puede dar la nota agregada, los criterios o las dos cosas.
+  final List<String> criterios;
   @override
   State<_ResultadoSheet> createState() => _ResultadoSheetState();
 }
 
 class _ResultadoSheetState extends State<_ResultadoSheet> {
   late final _comentarios = TextEditingController(text: widget.inicial.comentarios);
-  late final _minutos = TextEditingController(text: widget.inicial.segundos == 0 ? '' : (widget.inicial.segundos / 60).round().toString());
+  late final _minutos = TextEditingController(text: widget.inicial.segundos == 0 ? '' : textoDuracionCante(widget.inicial.segundos));
+  /// Estrellas de cada criterio de la rúbrica (0 = sin valorar).
+  late final Map<String, int> _criterios = {for (final c in {...widget.criterios, ...widget.inicial.criterios.keys}) c: widget.inicial.criterios[c] ?? 0};
 
   /// Los temas cantados, por orden (vacío si aún no se ha dicho cuál).
   late final List<String> _temas = List.of(widget.inicial.temasCantados);
@@ -61,6 +179,10 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
   /// Valoración de cada tema (con uno solo, la del cante).
   late final Map<String, int> _valoraciones = {for (final t in _temas) t: widget.inicial.valoracionDe(t)};
   late int _valoracion = widget.inicial.valoracion;
+
+  /// Lista de control: apartados marcados por tema (plegada por defecto).
+  late final Map<String, Set<String>> _cubiertos = {for (final e in widget.inicial.cubiertos.entries) e.key: {...e.value}};
+  final _desplegados = <String>{};
 
   @override
   void dispose() {
@@ -121,17 +243,24 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
   }
 
   ResultadoCante _resultado() {
-    final min = int.tryParse(_minutos.text.trim());
+    final seg = leerDuracionCante(_minutos.text);
     final porTema = _varios ? {for (final t in _temas) if ((_valoraciones[t] ?? 0) > 0) t: _valoraciones[t]!} : const <String, int>{};
+    final criterios = {for (final e in _criterios.entries) if (e.value > 0) e.key: e.value};
+    // Sin estrellas agregadas pero con criterios, la agregada es su media.
+    final agregada = _valoracion > 0 ? _valoracion : ResultadoCante.media(criterios.values);
     return ResultadoCante(
       sorteados: widget.inicial.sorteados,
       temaCantado: _temas.firstOrNull,
       otrosCantados: _temas.skip(1).toList(),
-      // Si no se tocan los minutos se conserva el tiempo exacto del cronómetro.
-      segundos: min == null ? 0 : (min == (widget.inicial.segundos / 60).round() ? widget.inicial.segundos : min * 60),
-      valoracion: _varios ? ResultadoCante.media(porTema.values) : _valoracion,
+      // Si no se toca el tiempo se conserva el exacto del cronómetro.
+      segundos: seg == null ? 0 : (_minutos.text.trim() == textoDuracionCante(widget.inicial.segundos) ? widget.inicial.segundos : seg),
+      valoracion: _varios ? ResultadoCante.media(porTema.values) : agregada,
       valoraciones: porTema,
+      criterios: criterios,
       comentarios: _comentarios.text.trim(),
+      // La lista de control de cada tema cantado con esquema (si se tocó alguna casilla o ya venía).
+      cubiertos: {for (final t in _temas) if (widget.esquemas.containsKey(t) && (_cubiertos[t]?.isNotEmpty ?? false)) t: (_cubiertos[t]!.toList()..sort())},
+      apartados: {for (final t in _temas) if (widget.esquemas.containsKey(t) && (_cubiertos[t]?.isNotEmpty ?? false)) t: widget.esquemas[t]!.length},
     );
   }
 
@@ -139,8 +268,12 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
   Widget build(BuildContext context) {
     final conBolsa = widget.opciones.isNotEmpty;
     final minutos = SizedBox(
-      width: 110,
-      child: TextField(controller: _minutos, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'Minutos', isDense: true)),
+      width: 120,
+      child: TextField(
+        controller: _minutos,
+        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+        decoration: const InputDecoration(labelText: 'Tiempo', hintText: 'mm:ss', isDense: true),
+      ),
     );
     return Padding(
       padding: EdgeInsets.fromLTRB(16, 16, 16, 16 + MediaQuery.of(context).viewInsets.bottom),
@@ -181,6 +314,40 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
                 child: ActionChip(avatar: const Icon(Icons.add, size: 18), label: const Text('Añadir tema'), onPressed: _anadir),
               ),
           ],
+          // Rúbrica (opcional): estrellas por criterio; la agregada, si no se
+          // toca, sale de su media.
+          if (_criterios.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Text(_varios ? 'Por criterios (del cante entero, opcional)' : 'Por criterios (opcional)', style: context.textos.labelMedium),
+            for (final c in _criterios.keys)
+              Row(children: [
+                Expanded(child: Text(c, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
+                Estrellas(valor: _criterios[c]!, tamano: 22, onChanged: (v) => setState(() => _criterios[c] = v)),
+              ]),
+          ],
+          // Lista de control: los apartados del esquema de cada tema cantado.
+          for (final t in _temas)
+            if (widget.esquemas[t] case final esquema?) ...[
+              const SizedBox(height: 6),
+              InkWell(
+                onTap: () => setState(() => _desplegados.contains(t) ? _desplegados.remove(t) : _desplegados.add(t)),
+                borderRadius: BorderRadius.circular(6),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Row(children: [
+                    Icon(_desplegados.contains(t) ? Icons.expand_less : Icons.expand_more, size: 20, color: context.esquema.primary),
+                    const SizedBox(width: 6),
+                    Expanded(child: Text('Apartados${_varios ? ' de $t' : ''}: ${_cubiertos[t]?.length ?? 0} de ${esquema.length}${(_cubiertos[t]?.isEmpty ?? true) ? ' · marca los que ha tocado' : ''}', style: context.textos.labelMedium)),
+                  ]),
+                ),
+              ),
+              if (_desplegados.contains(t))
+                ListaControl(
+                  esquema: esquema,
+                  marcados: _cubiertos[t] ??= {},
+                  onChanged: (a, v) => setState(() => v ? (_cubiertos[t] ??= {}).add(a) : _cubiertos[t]?.remove(a)),
+                ),
+            ],
           const SizedBox(height: 12),
           TextField(
             controller: _comentarios,

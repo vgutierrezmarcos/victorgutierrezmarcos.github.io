@@ -1,0 +1,59 @@
+name: Dificultad del test
+
+# Cada día recuenta, con los tests de todos los usuarios (app y simulador),
+# cuántos ven, aciertan, fallan y dejan en blanco cada pregunta y actualiza
+# oposicion/temario/primer-ejercicio/test/dificultad.json, que leen la app y
+# el simulador. Solo recuentos por pregunta: nada identificable sale del
+# script. Usa la cuenta de servicio de solo lectura (estadisticas-lectura)
+# guardada en el secreto ESTADISTICAS_CLAVE; sin él, no hace nada.
+on:
+  schedule:
+    - cron: '41 4 * * *'
+  push:
+    paths:
+      - 'scripts/dificultad-test.py'
+      - '.github/workflows/dificultad-test.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: dificultad-test
+  cancel-in-progress: false
+
+jobs:
+  recontar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Recontar
+        env:
+          CLAVE: ${{ secrets.ESTADISTICAS_CLAVE }}
+        run: |
+          if [ -z "$CLAVE" ]; then echo "Falta el secreto ESTADISTICAS_CLAVE: no se recuenta."; exit 0; fi
+          umask 077
+          printf '%s' "$CLAVE" > "$RUNNER_TEMP/clave.json"
+          ESTADISTICAS_CLAVE="$RUNNER_TEMP/clave.json" python3 scripts/dificultad-test.py
+          rm -f "$RUNNER_TEMP/clave.json"
+
+      - name: Commit si cambia
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add oposicion/temario/primer-ejercicio/test/dificultad.json
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "Dificultad del test: recuento del día [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 10
+          done
+          exit 1

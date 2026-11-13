@@ -1,0 +1,25 @@
+% Pregunta 580 (2016-noviembre-OEP2016, n.º 25): mercado de divisas de la economía grande
+% (Mankiw). e en $/€ (indirecto: sube = apreciación del euro). Rectas a escala:
+%   NX(e): e = 4,6 - 0,8 x   CF(i0) = 3,5 -> e0 = 1,8   CF(i1) = 2,3 -> e1 = 2,76
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  \ejes{$NX,\ CF$}{$e$ (\$/\texteuro)}{6}{5}
+  \draw[curva1] (0.75,4.0) -- (5.25,0.4) node[etiqueta,right,text=tceemorado] {$NX(e)$};
+  \draw[curva2] (3.5,0.2) -- (3.5,4.3) node[etiqueta,above,text=tceeazul] {$CF(i_0)$};
+  \draw[curvanueva,desplazada] (2.3,0.2) -- (2.3,4.3) node[etiqueta,above,text=tceerojo] {$CF(i_1)$};
+  \draw[flecha] (3.35,3.6) -- (2.45,3.6);
+  \draw[guia] (3.5,1.8) -- (0,1.8) node[left] {$e_0$};
+  \draw[guia] (2.3,2.76) -- (0,2.76) node[left] {$e_1$};
+  \node[punto] at (3.5,1.8) {};
+  \node[etiqueta,above right] at (3.5,1.8) {$E_0$};
+  \node[punto] at (2.3,2.76) {};
+  \node[etiqueta,above right] at (2.3,2.76) {$E_1$};
+  \node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=north west] at (3.65,4.0)
+    {$i\uparrow$: entra capital,\\$CF$ cae};
+  \node[etiqueta,font=\footnotesize,text=tceerojo,align=center,anchor=north] at (2.9,-0.45)
+    {$NX$ cae: expulsión 2\\(apreciación, $e_1>e_0$)};
+\end{tikzpicture}
+\end{document}

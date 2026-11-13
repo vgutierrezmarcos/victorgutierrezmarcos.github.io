@@ -1,0 +1,51 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+% Estilo común de las 7 series de tipos de cambio del anexo A del 3.B.15:
+% mismo tamaño, cuadrícula y rótulos; color del régimen (anclaje duro
+% tceeazul, anclaje blando tceedorado, flotación tceerojo). Capas «dic»
+% (tikz-tcee.tex): sombreados → ejes y referencias → serie → punto → rótulos.
+\pgfplotsset{
+  tcserie/.style={
+    scale only axis, width=9.5cm, height=4.6cm,
+    xmin=2000, xmax=2027, xtick={2000,2005,...,2025}, minor xtick={2001,...,2026},
+    ticklabel style={font=\footnotesize},
+    xticklabel style={/pgf/number format/1000 sep={}},
+    ylabel style={font=\footnotesize},
+    axis lines*=left, tick align=outside, clip=false,
+    ymajorgrids, grid style={tceegris!25},
+  },
+  tcdecimales/.style={yticklabel style={/pgf/number format/.cd, use comma, fixed, fixed zerofill, precision=#1}},
+}
+% \tcultimo[opciones del rótulo]{color}{x}{y}{texto}: punto y rótulo del último dato
+\newcommand{\tcultimo}[5][]{%
+  \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=#2] coordinates {(#3,#4)};
+  \dicrotulo[font=\footnotesize, anchor=west, xshift=3pt, align=left, text=#2, #1]{(#3,#4)}{#5}}
+\begin{document}
+% Deslizamiento: el córdoba de Nicaragua, 2000-2026 (NIO por USD, media
+% mensual). BPI, WS_XRU M.NI.NIO.A; deslizamiento del 0 % y tipo fijo de
+% 36,6243 desde el 1/1/2024 (Banco Central de Nicaragua). Último dato:
+% septiembre de 2026, 36,62.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/tc-cordoba-nicaragua-crawling-peg.csv}\datos
+\begin{tikzpicture}[tcee]
+  \begin{axis}[tcserie, tcdecimales=0,
+      ymin=10, ymax=40, ytick={10,15,...,40},
+      ylabel={NIO por USD}, dicapas]
+    % 1: ejes (los dibuja el entorno axis)
+    % 2: serie NIO por USD
+    \capa{2}{
+      \addplot[diclinea=tceedorado] table[x=x, y=nio_usd] {\datos};
+    }
+    % 3: línea vertical de enero de 2024 y su rótulo
+    \capa{3}{
+      \dicraya[dicumbral]{(2024,10) (2024,40)}
+      \dicrotulo[font=\footnotesize, anchor=south, text=tceegris, inner sep=2pt]{(2024,40)}{deslizamiento 0\,\% (1/1/2024)}
+    }
+    % 4: rótulos del ritmo y último dato
+    \capa{4}{
+      \dicrotulo[font=\footnotesize, anchor=south east, text=tceedorado]{(2007.5,19)}{5\,\% anual}
+      \tcultimo{tceedorado}{2026.667}{36.6243}{sept.\ 2026\\36,62}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

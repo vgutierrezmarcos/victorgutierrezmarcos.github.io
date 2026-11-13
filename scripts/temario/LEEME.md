@@ -88,6 +88,7 @@ de main antes de la revisión). Los SVG de la web se sirven desde `fuentes/<tema
 | `voz-todos.py [--voz '{…}']` | En el ordenador nuevo: genera la voz de todos los temas con el borrador aprobado y vuelve a montar cada vídeo. |
 | `publicar-tema.py T [T…]` | Enlaces en el índice, `temario.json` y buscador. |
 | `manifiesto-app.py [--comprobar]` | `oposicion/temario/app/revisados.json`: lo que la app ofrece en exclusiva (temas y fichas aprobados). |
+| `dudas/dudas-pagina.py [--marcar-vistas]` | Página común de dudas para Víctor (las dos cuentas): «Dudas abiertas» de los `revision.md` sin aprobar de todos los worktrees y `canon/dudas-generales.md` → `Downloads/dudas-temario.html`. |
 | `crear-reference-docx.py` | Plantilla de estilos de Word. |
 | `word-a-pdf.vbs` | Word → PDF con Microsoft Word, para revisar (PowerShell está bloqueado). |
 

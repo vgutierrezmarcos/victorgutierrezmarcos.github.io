@@ -1,0 +1,20 @@
+# Curva de tipos al contado (cupón cero) de la deuda pública de la zona del euro, modelo de Svensson, capitalización continua (% anual), en 3 fechas: última disponible (10/11/2026), invertida (03/07/2023) y negativa (30/12/2020). aaa = emisores con calificación AAA (G_N_A); todos = todos los emisores de la zona del euro (G_N_C). Fuente: BCE, ECB Data Portal, conjunto YC, series YC.B.U2.EUR.4F.{G_N_A|G_N_C}.SV_C_YM.SR_<plazo>, https://data.ecb.europa.eu/data/datasets/YC (API https://data-api.ecb.europa.eu/service/data/YC/). Parámetros de Svensson del 10/11/2026: AAA beta0=1.6436, beta1=0.7893, beta2=2.1208, beta3=6.2094, tau1=1.0069, tau2=14.0614; todos beta0=2.2904, beta1=0.3562, beta2=1.1130, beta3=6.7356, tau1=0.8457, tau2=14.2930 (reproducen las series al tercer decimal). 2.ª comprobación: media de septiembre de 2026 del 10 años AAA 3.489 frente al rendimiento de Alemania del criterio de convergencia 3.473 (Eurostat irt_lt_mcby_m); todos los emisores 3.953 frente a la zona del euro 3.928. Consulta: 12/11/2026.
+plazo,aaa_20261110,todos_20261110,aaa_20230703,todos_20230703,aaa_20201230,todos_20201230
+0.25,2.621,2.792,3.390,3.443,-0.746,-0.674
+0.5,2.754,2.898,3.490,3.580,-0.752,-0.663
+0.75,2.848,2.977,3.501,3.622,-0.757,-0.654
+1,2.913,3.036,3.459,3.608,-0.761,-0.647
+2,3.019,3.178,3.128,3.384,-0.767,-0.627
+3,3.038,3.276,2.844,3.196,-0.761,-0.605
+4,3.055,3.372,2.670,3.104,-0.746,-0.571
+5,3.085,3.471,2.573,3.074,-0.724,-0.525
+6,3.127,3.570,2.522,3.079,-0.697,-0.467
+7,3.177,3.666,2.498,3.101,-0.668,-0.403
+8,3.229,3.755,2.487,3.130,-0.636,-0.334
+9,3.281,3.838,2.484,3.162,-0.603,-0.264
+10,3.331,3.913,2.484,3.193,-0.570,-0.194
+12,3.420,4.043,2.488,3.249,-0.505,-0.064
+15,3.520,4.186,2.487,3.307,-0.414,0.104
+20,3.606,4.316,2.458,3.338,-0.289,0.306
+25,3.614,4.350,2.400,3.308,-0.196,0.439
+30,3.572,4.322,2.327,3.242,-0.128,0.530

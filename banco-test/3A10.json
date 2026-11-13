@@ -1,0 +1,403 @@
+{
+ "tema": "3.A.10",
+ "preguntas": [
+  {
+   "id": 311001,
+   "estado": "publicada",
+   "enunciado": "Las preferencias sobre loterías de un consumidor cumplen los axiomas de von Neumann y Morgenstern y se representan con la esperanza de la utilidad de Bernoulli $u(x)=\\sqrt{x}$. ¿Con cuál de las siguientes utilidades de Bernoulli se obtiene, al tomar esperanzas, la misma ordenación de todas las loterías?",
+   "opciones": {
+    "a": "$v(x)=\\ln x$, porque es una transformación creciente de $u$ y la utilidad solo tiene significado ordinal.",
+    "b": "$v(x)=x$, porque el orden de los resultados ciertos es el mismo.",
+    "c": "$v(x)=2\\sqrt{x}-7$, porque es una transformación afín positiva de $u$.",
+    "d": "$v(x)=10-\\sqrt{x}$, porque es una transformación afín de $u$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La utilidad de Bernoulli es única salvo transformaciones afines positivas, $a\\,u+b$ con $a>0$: la utilidad esperada se transforma igual y ordena igual las loterías. Una transformación creciente no afín conserva el orden de los resultados ciertos, pero cambia la curvatura y, con ella, el orden de las loterías.",
+    "desarrollo": "Si $v=a\\,u+b$ con $a>0$, entonces $\\mathbb{E}[v(\\tilde{x})]=a\\,\\mathbb{E}[u(\\tilde{x})]+b$: la utilidad esperada de todas las loterías cambia con la misma transformación creciente y el orden se mantiene. Con $v=2\\sqrt{x}-7$, $a=2$ y $b=-7$.\n\nPor eso se dice que la utilidad de von Neumann y Morgenstern es cardinal: lo que importa es su curvatura, que mide la actitud ante el riesgo.\n\nPor qué fallan las demás:\n\n- a) $\\ln x=2\\ln\\sqrt{x}$ es una transformación creciente de $u$, pero no afín, sino cóncava: representa a un consumidor más averso (teorema de Pratt). Ejemplo: la lotería $(1,\\,9;\\ \\tfrac12,\\tfrac12)$ tiene equivalente cierto $4$ con $\\sqrt{x}$ (utilidad esperada 2) y $3$ con $\\ln x$ ($\\sqrt{1\\cdot 9}$). Frente a 3,5 seguros, el primero prefiere la lotería y el segundo, el pago seguro. La utilidad ordinal es la de la elección con certidumbre.\n- b) $v(x)=x$ ordena igual los resultados ciertos, pero es la de un consumidor neutral al riesgo: ordenaría las loterías por su valor esperado.\n- d) Es afín, pero con $a=-1<0$: invierte el orden (preferiría menos riqueza a más)."
+   },
+   "dificultad": 1,
+   "apartado": "I.1.1 Teorema de la utilidad esperada (unicidad salvo transformaciones afines positivas)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311002,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con utilidad de Bernoulli $u(x)=\\sqrt{x}$ tiene una riqueza de 100 y, con probabilidad $1/4$, sufre una pérdida de 64. ¿Cuál es la prima total máxima que estaría dispuesto a pagar por un seguro que le cubra toda la pérdida?",
+   "opciones": {
+    "a": "3",
+    "b": "13",
+    "c": "16",
+    "d": "19"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La prima máxima es la que le deja indiferente con no asegurarse: la riqueza inicial menos el equivalente cierto. La utilidad esperada sin seguro es $\\tfrac34\\cdot 10+\\tfrac14\\cdot 6=9$, el equivalente cierto es $81$ y la prima máxima, $100-81=19$: la prima justa (16) más la prima de riesgo (3).",
+    "desarrollo": "Sin seguro, su riqueza es la lotería $(100,\\,36;\\ \\tfrac34,\\tfrac14)$:\n\n- valor esperado: $\\tfrac34\\cdot 100+\\tfrac14\\cdot 36=84$;\n- utilidad esperada: $\\tfrac34\\sqrt{100}+\\tfrac14\\sqrt{36}=7{,}5+1{,}5=9$;\n- equivalente cierto: $\\sqrt{\\xi}=9\\Rightarrow\\xi=81$;\n- prima de riesgo: $\\rho=84-81=3$.\n\nCon un seguro completo que cuesta $K$, su riqueza es $100-K$ con certeza. Lo compra si $\\sqrt{100-K}\\geq 9$, es decir, si $K\\leq 19$.\n\nComprobación por otra vía: la prima actuarialmente justa es la pérdida esperada, $\\tfrac14\\cdot 64=16$, y la prima máxima es la justa más la prima de riesgo: $16+3=19$.\n\nPor qué fallan las demás:\n\n- a) 3 es la prima de riesgo: lo que pagaría por encima de la pérdida esperada, no el total.\n- b) 13 resta la prima de riesgo a la prima justa en lugar de sumarla.\n- c) 16 es la prima actuarialmente justa: es lo máximo que pagaría un consumidor neutral al riesgo; el averso paga algo más."
+   },
+   "dificultad": 2,
+   "apartado": "I.1.2 Equivalente cierto y prima de riesgo (prima justa y prima máxima)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311003,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con utilidad de Bernoulli $u(x)=\\ln x$ y una riqueza de 100 afronta un riesgo que le hace ganar 10 o perder 10 con la misma probabilidad. Según la aproximación de Arrow-Pratt, la prima de riesgo que pagaría por librarse de él es, aproximadamente:",
+   "opciones": {
+    "a": "0,05",
+    "b": "0,5",
+    "c": "1",
+    "d": "5"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La aproximación de Arrow-Pratt es $\\rho\\approx\\tfrac12\\,\\sigma^2\\,r_A(\\overline{W})$. Aquí la varianza del riesgo es $10^2=100$ y, con utilidad logarítmica, $r_A(x)=1/x=1/100$: $\\rho\\approx\\tfrac12\\cdot 100\\cdot\\tfrac{1}{100}=0{,}5$.",
+    "desarrollo": "Para un riesgo pequeño de media cero y varianza $\\sigma^2$ en torno a una riqueza $\\overline{W}$, $\\rho\\approx\\tfrac12\\,\\sigma^2\\,r_A(\\overline{W})$.\n\n- Varianza: el riesgo vale $+10$ o $-10$ con probabilidad $\\tfrac12$, así que su media es 0 y $\\sigma^2=\\tfrac12\\cdot 10^2+\\tfrac12\\cdot(-10)^2=100$.\n- Aversión absoluta: con $u=\\ln x$, $u'=1/x$ y $u''=-1/x^2$, luego $r_A(x)=1/x$ y $r_A(100)=0{,}01$.\n- Prima: $\\rho\\approx\\tfrac12\\cdot 100\\cdot 0{,}01=0{,}5$.\n\nComprobación con la prima exacta: $\\ln\\xi=\\tfrac12\\ln 110+\\tfrac12\\ln 90$, luego $\\xi=\\sqrt{110\\cdot 90}=\\sqrt{9900}\\approx 99{,}499$ y $\\rho\\approx 0{,}501$. La aproximación es muy buena porque el riesgo es pequeño en relación con la riqueza.\n\nPor qué fallan las demás:\n\n- a) 0,05 sale de usar la desviación típica (10) en lugar de la varianza (100).\n- c) 1 olvida el factor $\\tfrac12$.\n- d) 5 confunde los coeficientes: usa la aversión relativa ($r_R=1$) con la desviación típica, $\\tfrac12\\cdot 10\\cdot 1$. La prima depende de la aversión absoluta cuando el riesgo está en euros."
+   },
+   "dificultad": 2,
+   "apartado": "I.1.2 Medidas de la aversión al riesgo (aproximación de Arrow-Pratt)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311004,
+   "estado": "publicada",
+   "enunciado": "Tres consumidores tienen las utilidades de Bernoulli $u_1(x)=-e^{-2x}$, $u_2(x)=\\ln x$ y $u_3(x)=x-0{,}01x^2$ (con $x<50$). Cada uno afronta un mismo riesgo pequeño, de media cero y cuantía fija en euros. Si la riqueza de los tres aumenta, la prima de riesgo que exige cada uno por soportarlo:",
+   "opciones": {
+    "a": "No cambia para el primero, disminuye para el segundo y aumenta para el tercero.",
+    "b": "Disminuye para el primero, no cambia para el segundo y aumenta para el tercero.",
+    "c": "No cambia para el primero, disminuye para el segundo y disminuye para el tercero.",
+    "d": "Aumenta para el primero, no cambia para el segundo y disminuye para el tercero."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Para un riesgo fijo en euros, la prima sigue a la aversión absoluta, $r_A=-u''/u'$. La exponencial la tiene constante ($r_A=2$, CARA); la logarítmica, decreciente ($r_A=1/x$, DARA), y la cuadrática, creciente ($r_A=0{,}02/(1-0{,}02x)$, IARA).",
+    "desarrollo": "La prima de un riesgo pequeño es $\\rho\\approx\\tfrac12\\sigma^2 r_A(\\overline{W})$: con $\\sigma^2$ fija, varía con la riqueza como lo haga $r_A$.\n\n- $u_1=-e^{-2x}$: $u_1'=2e^{-2x}$, $u_1''=-4e^{-2x}$, $r_A=2$. Constante (CARA): la prima no depende de la riqueza.\n- $u_2=\\ln x$: $r_A=1/x$. Decreciente (DARA): cuanto más rico, menos prima exige. Su aversión relativa es constante, $r_R=1$.\n- $u_3=x-0{,}01x^2$: $u_3'=1-0{,}02x$, $u_3''=-0{,}02$, $r_A=\\dfrac{0{,}02}{1-0{,}02x}$, que crece con $x$ (IARA): cuanto más rico, más prima exige. Es el principal defecto de la utilidad cuadrática, porque contradice la evidencia.\n\nPor qué fallan las demás:\n\n- b) Confunde los coeficientes: lo que es constante en la logarítmica es la aversión relativa ($r_R=1$), no la absoluta; y la exponencial tiene la absoluta constante, no decreciente.\n- c) Supone que la cuadrática, por ser cóncava, se comporta como la logarítmica; su aversión absoluta es creciente.\n- d) Describe la aversión relativa del primero ($r_R=2x$, creciente) y del segundo ($r_R=1$), no la absoluta, y se equivoca con el tercero."
+   },
+   "dificultad": 2,
+   "apartado": "I.1.2 Aversión al riesgo y riqueza (CARA, CRRA y cuadrática)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311005,
+   "estado": "borrador",
+   "enunciado": "Un consumidor decide cuánto ahorrar hoy sabiendo que mañana recibirá una renta incierta. Sobre el ahorro precautorio (el que aparece cuando la renta futura se vuelve más incierta sin cambiar su media), señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Todo consumidor averso al riesgo ($u''<0$) ahorra más cuando su renta futura se vuelve más incierta.",
+    "b": "Con utilidad cuadrática hay aversión al riesgo, pero no ahorro precautorio, porque $u'''=0$.",
+    "c": "Con utilidad CRRA no hay ahorro precautorio, porque la aversión relativa al riesgo es constante.",
+    "d": "Exige aversión absoluta creciente (IARA): solo quien se vuelve más averso al enriquecerse ahorra para protegerse."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El ahorro precautorio no depende de la aversión al riesgo ($u''<0$), sino de la prudencia: $u'''>0$, es decir, utilidad marginal convexa. La cuadrática tiene utilidad marginal lineal ($u'''=0$): el riesgo no altera la utilidad marginal esperada de mañana y el ahorro no cambia.",
+    "desarrollo": "La condición de primer orden del ahorro iguala la utilidad marginal de hoy a la utilidad marginal esperada de mañana: $u'(\\overline{W}-s)=\\mathbb{E}[u'(s+\\tilde{y})]$.\n\n- Si $u'$ es convexa ($u'''>0$), por la desigualdad de Jensen $\\mathbb{E}[u'(s+\\tilde{y})]>u'(s+\\mathbb{E}[\\tilde{y}])$: el riesgo eleva la utilidad marginal esperada de mañana y el consumidor ahorra más. Es la prudencia (Kimball), que se mide con $-u'''/u''$.\n- Con la cuadrática, $u'=1-bx$ es lineal: $\\mathbb{E}[u'(s+\\tilde{y})]=u'(s+\\mathbb{E}[\\tilde{y}])$ y el ahorro es el mismo que con certidumbre (equivalencia cierta), aunque $u''=-b<0$. Por eso el consumo de Hall, con utilidad cuadrática, no tiene motivo precaución.\n\nPor qué fallan las demás:\n\n- a) La aversión dice si pagaría por librarse del riesgo, no cómo reacciona su ahorro: la cuadrática es el contraejemplo.\n- c) Con la CRRA, $u'''=\\theta(\\theta+1)x^{-\\theta-2}>0$: sí hay ahorro precautorio.\n- d) Es al revés: la aversión absoluta decreciente (DARA) exige que la prudencia supere a la aversión, y por tanto $u'''>0$. La DARA implica ahorro precautorio; la cuadrática, que es IARA, no lo tiene."
+   },
+   "dificultad": 2,
+   "apartado": "I.1.2 Prudencia y ahorro precautorio",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311006,
+   "estado": "publicada",
+   "enunciado": "Considere las loterías $F=(10,\\,30;\\ \\tfrac12,\\tfrac12)$ y $G=(0,\\,20,\\,40;\\ \\tfrac14,\\tfrac12,\\tfrac14)$, con premios en euros. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "$F$ domina a $G$ en segundo orden, pero no en primer orden: la prefiere todo averso al riesgo, aunque no todo el que prefiera más a menos.",
+    "b": "$F$ domina a $G$ en primer orden, porque su peor resultado (10) es mejor que el peor resultado de $G$ (0).",
+    "c": "$G$ domina a $F$ en primer orden, porque su mejor resultado (40) es mejor que el mejor resultado de $F$ (30).",
+    "d": "Ninguna domina a la otra ni en primer ni en segundo orden: como tienen el mismo valor esperado, a todo consumidor averso al riesgo le son indiferentes."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Las dos tienen media 20 y $G$ es una dispersión de $F$ que conserva la media: sale de $F$ repartiendo cada resultado en $\\pm 10$ con igual probabilidad. Por eso todo averso prefiere $F$ (dominancia de segundo orden). No hay dominancia de primer orden, porque las funciones de distribución se cruzan.",
+    "desarrollo": "Medias: $\\mathbb{E}_F=\\tfrac12\\cdot 10+\\tfrac12\\cdot 30=20$ y $\\mathbb{E}_G=\\tfrac14\\cdot 0+\\tfrac12\\cdot 20+\\tfrac14\\cdot 40=20$.\n\nPrimer orden: exige $F(x)\\leq G(x)$ para todo $x$. Entre 0 y 10, $F(x)=0<G(x)=\\tfrac14$; pero entre 30 y 40, $F(x)=1>G(x)=\\tfrac34$. Las funciones de distribución se cruzan: ninguna domina en primer orden. Un amante del riesgo puede preferir $G$: con $u=x^2$, $\\mathbb{E}_F[u]=500$ y $\\mathbb{E}_G[u]=600$.\n\nSegundo orden: $G$ se obtiene de $F$ sustituyendo el 10 por la lotería $(0,20;\\tfrac12,\\tfrac12)$ y el 30 por $(20,40;\\tfrac12,\\tfrac12)$: resultan 0 con probabilidad $\\tfrac14$, 20 con $\\tfrac12$ y 40 con $\\tfrac14$. Es una dispersión que conserva la media (Rothschild y Stiglitz), así que toda $u$ cóncava da más utilidad esperada a $F$. Comprobación con $u=\\sqrt{x}$: $\\mathbb{E}_F[u]\\approx 4{,}32$ y $\\mathbb{E}_G[u]\\approx 3{,}82$.\n\nPor qué fallan las demás:\n\n- b) y c) La dominancia de primer orden compara las funciones de distribución en todos los puntos, no solo el peor o el mejor resultado. Además, implicaría una media mayor o igual, y distribuciones distintas con la misma media no pueden dominarse en primer orden.\n- d) Con la misma media solo el neutral al riesgo es indiferente; el averso prefiere estrictamente la menos dispersa."
+   },
+   "dificultad": 3,
+   "apartado": "I.1.2 Dominancia estocástica de primer y segundo orden",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311007,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con utilidad de Bernoulli $u(x)=\\ln x$ tiene una riqueza $\\overline{W}=100$ y sufre, con probabilidad $\\pi=1/4$, una pérdida $L=60$. Puede comprar la cobertura $S$ que quiera ($0\\leq S\\leq L$), que cobra si hay accidente, pagando una prima $\\gamma=1/3$ por euro asegurado (haya o no accidente). Su cobertura óptima es:",
+   "opciones": {
+    "a": "$S^*=0$: con una prima recargada no le compensa asegurarse.",
+    "b": "$S^*=30$",
+    "c": "$S^*=45$",
+    "d": "$S^*=60$: al ser averso al riesgo, se asegura por completo."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La prima está recargada ($\\gamma=1/3>\\pi=1/4$), así que el seguro es parcial (Mossin). La condición de tangencia, $\\frac{(1-\\pi)u'(x_1)}{\\pi u'(x_2)}=\\frac{1-\\gamma}{\\gamma}$, da con utilidad logarítmica $x_2=\\tfrac23x_1$; con $x_1=100-S/3$ y $x_2=40+2S/3$ resulta $S^*=30$.",
+    "desarrollo": "Riqueza en cada estado: $x_1=100-\\tfrac13S$ (sin accidente) y $x_2=100-60+\\tfrac23S=40+\\tfrac23S$ (con accidente).\n\nCondición de primer orden: $\\dfrac{(1-\\pi)\\,u'(x_1)}{\\pi\\,u'(x_2)}=\\dfrac{1-\\gamma}{\\gamma}$. Con $u'=1/x$:\n\n$$\\frac{\\tfrac34\\,x_2}{\\tfrac14\\,x_1}=\\frac{2/3}{1/3}=2\\ \\Longrightarrow\\ x_2=\\tfrac23\\,x_1 .$$\n\nSustituyendo: $40+\\tfrac23S=\\tfrac23\\big(100-\\tfrac13S\\big)=\\tfrac{200}{3}-\\tfrac29S\\Rightarrow\\tfrac89S=\\tfrac{80}{3}\\Rightarrow S^*=30$. Queda $x_1=90$ y $x_2=60$: se asegura la mitad de la pérdida.\n\nComprobación por otra vía: la utilidad esperada $\\tfrac34\\ln x_1+\\tfrac14\\ln x_2$ es una Cobb-Douglas con la restricción $\\tfrac23x_1+\\tfrac13x_2=\\tfrac23\\cdot 100+\\tfrac13\\cdot 40=80$. Las demandas son $x_1=\\tfrac34\\cdot 80/\\tfrac23=90$ y $x_2=\\tfrac14\\cdot 80/\\tfrac13=60$.\n\nPor qué fallan las demás:\n\n- a) El recargo no es tan grande como para no asegurarse: en $S=0$ la utilidad marginal de la cobertura es positiva, $-\\tfrac13\\cdot\\tfrac34\\cdot\\tfrac1{100}+\\tfrac23\\cdot\\tfrac14\\cdot\\tfrac1{40}>0$.\n- c) 45 sale de reducir la cobertura completa en la proporción $\\pi/\\gamma=3/4$, una regla que no se deduce del problema.\n- d) El seguro completo solo es óptimo con prima justa ($\\gamma=\\pi=1/4$). Con prima recargada, en $S=L$ reducir la cobertura aumenta la utilidad esperada."
+   },
+   "dificultad": 3,
+   "apartado": "I.2.1 Demanda de seguros (Mossin): seguro parcial con prima recargada",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311008,
+   "estado": "publicada",
+   "enunciado": "En el modelo de demanda de seguros se representa en abscisas la riqueza si no hay accidente, $x_1$, y en ordenadas la riqueza si lo hay, $x_2$. El accidente ocurre con probabilidad $\\pi=0{,}2$, el consumidor es averso al riesgo y maximiza su utilidad esperada, y la prima por euro asegurado es $\\gamma$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Sobre la línea de certeza, la pendiente de las curvas de indiferencia vale 4 en valor absoluto sea cual sea su utilidad de Bernoulli; por eso, con $\\gamma=0{,}2$ la tangencia con la recta de aseguramiento se da en esa línea.",
+    "b": "Sobre la línea de certeza, la pendiente de las curvas de indiferencia depende de su grado de aversión al riesgo: cuanto más averso, más inclinadas; por eso solo los muy aversos se aseguran del todo con $\\gamma=0{,}2$.",
+    "c": "Con $\\gamma=0{,}25$ la recta de aseguramiento es más inclinada que con $\\gamma=0{,}2$, y el óptimo queda por encima de la línea de certeza.",
+    "d": "Con $\\gamma=0{,}25$ el óptimo sigue estando en la línea de certeza, porque el consumidor averso al riesgo siempre prefiere eliminar todo el riesgo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La relación marginal de sustitución entre estados es $\\frac{(1-\\pi)u'(x_1)}{\\pi u'(x_2)}$. En la línea de certeza $x_1=x_2$ y las utilidades marginales se cancelan: vale $(1-\\pi)/\\pi=4$ para cualquier $u$. Con prima justa, la recta de aseguramiento tiene esa misma pendiente, $(1-\\gamma)/\\gamma=4$, y el óptimo es el seguro completo.",
+    "desarrollo": "A lo largo de una curva de indiferencia, $(1-\\pi)u'(x_1)\\,dx_1+\\pi u'(x_2)\\,dx_2=0$, luego su pendiente en valor absoluto es $\\dfrac{(1-\\pi)\\,u'(x_1)}{\\pi\\,u'(x_2)}$. Si $x_1=x_2$, $u'(x_1)=u'(x_2)$ y queda el cociente de probabilidades, $0{,}8/0{,}2=4$, con independencia de $u$.\n\nLa recta de aseguramiento pasa por el punto sin seguro y tiene pendiente $-(1-\\gamma)/\\gamma$:\n\n- con $\\gamma=0{,}2$ (prima justa, $\\gamma=\\pi$), $0{,}8/0{,}2=4$: es tangente a una curva de indiferencia justo en la línea de certeza. Seguro completo (primera parte del teorema de Mossin);\n- con $\\gamma=0{,}25$ (prima recargada), $0{,}75/0{,}25=3<4$: la recta es más plana. En la línea de certeza la curva de indiferencia es más inclinada que la recta, y el óptimo está por debajo de esa línea, con $x_1>x_2$: seguro parcial.\n\nPor qué fallan las demás:\n\n- b) La aversión determina la curvatura de las curvas de indiferencia, no su pendiente en la línea de certeza. Con prima justa, todo averso se asegura del todo, por poco averso que sea.\n- c) Con $\\gamma=0{,}25$ la recta es más plana, no más inclinada, y el óptimo queda por debajo de la línea de certeza (por encima sería sobreasegurarse).\n- d) Eliminar todo el riesgo solo es óptimo si la prima es justa; con recargo, el averso conserva parte del riesgo (franquicias)."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.1 Demanda de seguros (Mossin): recta de aseguramiento y RMSE",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:311008.webp",
+     "alt": "Plano con la riqueza si no hay accidente, x1, en abscisas y la riqueza si lo hay, x2, en ordenadas. Se dibuja la bisectriz, rotulada «línea de certeza, x1 = x2», y por debajo de ella el punto sin seguro, A, de coordenadas (W, W − L), proyectado con líneas de puntos sobre los ejes. No hay recta de aseguramiento ni curvas de indiferencia.",
+     "ancho": 520
+    }
+   ]
+  },
+  {
+   "id": 311009,
+   "estado": "borrador",
+   "enunciado": "Un consumidor averso al riesgo, que maximiza su utilidad esperada, reparte su riqueza entre un activo seguro y un activo con riesgo cuya rentabilidad esperada es mayor que la del activo seguro. Según el resultado de Arrow (1965), y sin restricciones a la cantidad que puede invertir:",
+   "opciones": {
+    "a": "No invierte nada en el activo con riesgo si su aversión al riesgo supera cierto umbral.",
+    "b": "Invierte toda su riqueza en el activo con riesgo, porque es el de mayor rentabilidad esperada.",
+    "c": "Solo invierte en el activo con riesgo si la diferencia de rentabilidad esperada supera la prima de riesgo que exigiría por soportar toda la varianza del activo.",
+    "d": "Invierte siempre una cantidad positiva en el activo con riesgo, por grande que sea su aversión; cuánto invierte sí depende de ella."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Partiendo de la certeza, la utilidad marginal de invertir el primer euro es $u'(W_0)\\,(\\mathbb{E}[\\tilde{r}]-r_f)>0$. Para riesgos pequeños, la ganancia esperada es de primer orden y el coste del riesgo, de segundo orden: todo averso toma algo de un riesgo con esperanza favorable.",
+    "desarrollo": "Con $\\alpha$ euros en el activo con riesgo, la riqueza final es $W_0+\\alpha\\tilde{z}$, donde $\\tilde{z}=\\tilde{r}-r_f$ es la rentabilidad en exceso. La derivada de la utilidad esperada en $\\alpha=0$ es\n\n$$\\frac{d\\,\\mathbb{E}[u]}{d\\alpha}\\bigg|_{\\alpha=0}=u'(W_0)\\,\\mathbb{E}[\\tilde{z}]>0 ,$$\n\nporque en $\\alpha=0$ la riqueza es cierta y $u'(W_0)$ sale de la esperanza. Como la utilidad esperada es cóncava en $\\alpha$, el máximo está en $\\alpha^*>0$.\n\nLa intuición es la de la aproximación de Arrow-Pratt: el coste del riesgo es proporcional a la varianza, es decir, a $\\alpha^2$, mientras que la ganancia esperada es proporcional a $\\alpha$. Para un $\\alpha$ suficientemente pequeño, gana lo segundo. Un consumidor más averso invierte menos, pero no cero.\n\nPor qué fallan las demás:\n\n- a) No hay umbral: la aversión reduce $\\alpha^*$, pero no lo anula mientras la prima de rentabilidad sea positiva.\n- b) Eso lo haría un consumidor neutral al riesgo, que solo mira la esperanza.\n- c) Compara la ganancia con el coste de asumir todo el riesgo; la decisión es marginal, y el primer euro invertido casi no añade riesgo."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Aplicaciones: decisión de cartera y demanda de un activo con riesgo (Arrow, 1965)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311010,
+   "estado": "borrador",
+   "enunciado": "Friedman y Savage (1948) explican que una misma persona compre seguros y juegue a la lotería con una utilidad de Bernoulli cóncava-convexa-cóncava sobre la riqueza. ¿Qué objeta Markowitz (1952) a esa función y qué propone?",
+   "opciones": {
+    "a": "Que viola el axioma de independencia; propone sustituir las probabilidades por pesos de decisión que sobreponderan los sucesos poco probables.",
+    "b": "Que no puede explicar a la vez el seguro y el juego; propone una utilidad cóncava en todo su recorrido, definida sobre la riqueza final y no sobre sus cambios.",
+    "c": "Que predice que los más ricos nunca jugarían; propone definir la utilidad sobre los cambios respecto a la riqueza habitual, con más peso para las pérdidas que para las ganancias iguales.",
+    "d": "Que predice que los más pobres nunca se asegurarían; propone una función de valor cóncava para las ganancias de cualquier tamaño y convexa para las pérdidas de cualquier tamaño."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con la función de Friedman y Savage, la conducta depende del nivel de riqueza: los ricos, en el tramo cóncavo final, no jugarían nunca, y se juega a todos los niveles. Markowitz define la utilidad sobre cambios respecto a la riqueza habitual (un punto de inflexión) y da más peso a las pérdidas: dos ideas que recupera la teoría de las perspectivas.",
+    "desarrollo": "Friedman y Savage: utilidad sobre niveles de riqueza con dos puntos de inflexión; aversión en rentas bajas y altas, amor por el riesgo en las intermedias. Explica el seguro y la lotería de quien está cerca del tramo convexo, pero no por qué se juega a todos los niveles de renta, y predice que quien está en el tramo convexo aceptaría grandes apuestas justas.\n\nMarkowitz: la utilidad depende de los cambios respecto a la riqueza habitual, que es el origen y un punto de inflexión. Con tres puntos de inflexión, el individuo es averso a las pérdidas pequeñas y a las ganancias grandes, y amante de las pérdidas grandes y de las ganancias pequeñas: compra lotería y seguro a cualquier nivel de riqueza. Además, las pérdidas pesan más que las ganancias iguales.\n\nPor qué fallan las demás:\n\n- a) Los dos trabajos se mantienen dentro de la utilidad esperada: discuten la forma de $u$, no los axiomas. Los pesos de decisión son de Kahneman y Tversky (1979).\n- b) Friedman y Savage sí explican las dos conductas a la vez (esa era su pregunta), y una utilidad cóncava en todo su recorrido no puede explicar el juego desfavorable.\n- d) La objeción se refiere a los ricos, no a los pobres. Y la forma que describe (cóncava en todas las ganancias, convexa en todas las pérdidas) es la función de valor de Kahneman y Tversky; la de Markowitz es convexa en las ganancias pequeñas y cóncava en las pérdidas pequeñas."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Críticas a la utilidad esperada: la forma de la utilidad (Friedman-Savage y Markowitz)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311011,
+   "estado": "publicada",
+   "enunciado": "A un individuo se le plantean dos juegos, con premios en euros. Juego 1: elegir entre $A$, 500 seguros, y $B$, 800 con probabilidad 0,75 (y nada en otro caso). Juego 2: elegir entre $C$, 500 con probabilidad 0,4, y $D$, 800 con probabilidad 0,3 (y nada en otro caso). Si sus preferencias son estrictas, ¿qué pares de elecciones son compatibles con la teoría de la utilidad esperada?",
+   "opciones": {
+    "a": "Solo $A$ y $C$: un maximizador de la utilidad esperada es averso al riesgo y elige en cada juego la lotería con mayor probabilidad de cobrar.",
+    "b": "$A$ y $C$, o bien $B$ y $D$; elegir $A$ y $D$, o $B$ y $C$, viola el axioma de independencia.",
+    "c": "$A$ y $D$, o bien $B$ y $C$; elegir $A$ y $C$, o $B$ y $D$, viola el axioma de independencia.",
+    "d": "Cualquiera de los cuatro pares: la elección en cada juego depende de la forma de la utilidad de Bernoulli, y no hay restricciones entre un juego y otro."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El juego 2 es el juego 1 con las probabilidades de cobrar multiplicadas por 0,4. Con $u(0)=0$, $A\\succ B\\iff u(500)>0{,}75\\,u(800)$ y $C\\succ D\\iff 0{,}4\\,u(500)>0{,}3\\,u(800)$, que es la misma condición. Quien elige $A$ debe elegir $C$, y quien elige $B$, $D$.",
+    "desarrollo": "Normalizando $u(0)=0$ (se puede, porque $u$ es única salvo transformaciones afines positivas):\n\n- Juego 1: $A\\succ B\\iff u(500)>0{,}75\\,u(800)$.\n- Juego 2: $C\\succ D\\iff 0{,}4\\,u(500)>0{,}3\\,u(800)\\iff u(500)>0{,}75\\,u(800)$.\n\nEs la misma desigualdad: las dos elecciones deben ir en el mismo sentido, sea cual sea $u$ (cóncava, lineal o convexa).\n\nCon el axioma de independencia: $C=0{,}4\\,A+0{,}6\\,\\delta_0$ y $D=0{,}4\\,B+0{,}6\\,\\delta_0$, donde $\\delta_0$ da 0 con certeza ($0{,}4\\cdot 0{,}75=0{,}3$). Mezclar $A$ y $B$ con la misma tercera lotería en la misma proporción no puede cambiar el orden entre ellas.\n\nEn los experimentos, la mayoría elige $A$ (el pago seguro) y $D$: es el efecto razón común, una versión de la paradoja de Allais, que se explica por el efecto certeza.\n\nPor qué fallan las demás:\n\n- a) La utilidad esperada no exige aversión al riesgo: un consumidor poco averso o neutral elige $B$ y $D$ (valores esperados 600 frente a 500, y 240 frente a 200), de forma perfectamente coherente.\n- c) Es justo al revés: esos son los pares incompatibles.\n- d) La forma de $u$ decide cuál de los dos pares coherentes se elige, pero no permite los pares cruzados."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Críticas a la utilidad esperada: paradoja de Allais (efecto razón común)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311012,
+   "estado": "borrador",
+   "enunciado": "Un individuo valora las ganancias y las pérdidas respecto a su situación actual con una función de valor como la de la teoría de las perspectivas, simplificada sin curvatura: $v(z)=z$ si $z\\geq 0$ y $v(z)=-2{,}25\\,(-z)$ si $z<0$. Pondera los resultados con sus probabilidades, $w(\\pi)=\\pi$. Se le ofrece una apuesta a cara o cruz con una moneda equilibrada: si sale cruz pierde 100 euros y si sale cara gana $G$ euros. Acepta la apuesta solo si $G$ es mayor que:",
+   "opciones": {
+    "a": "100",
+    "b": "125",
+    "c": "225",
+    "d": "325"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El valor de la apuesta es $0{,}5\\,G-0{,}5\\cdot 2{,}25\\cdot 100$, que es positivo solo si $G>225$. Es la aversión a las pérdidas: una pérdida duele 2,25 veces lo que alegra una ganancia del mismo importe, y por eso se rechazan apuestas equilibradas e incluso bastante favorables.",
+    "desarrollo": "No apostar deja al individuo en su punto de referencia, con valor $v(0)=0$. La apuesta vale\n\n$$V=0{,}5\\,v(G)+0{,}5\\,v(-100)=0{,}5\\,G-0{,}5\\cdot 2{,}25\\cdot 100=0{,}5\\,G-112{,}5 ,$$\n\nque es positivo si y solo si $G>225$.\n\nCon la curvatura estimada por Tversky y Kahneman ($\\beta\\approx 0{,}88$, la misma para ganancias y pérdidas) el umbral sería aún mayor, $100\\cdot 2{,}25^{1/0{,}88}\\approx 251$.\n\nPor qué fallan las demás:\n\n- a) 100 es el umbral de un individuo neutral al riesgo que maximiza el valor esperado: ignora la aversión a las pérdidas.\n- b) 125 multiplica la pérdida por el exceso del coeficiente sobre la unidad ($1{,}25$) en lugar de por el coeficiente entero ($2{,}25$).\n- d) 325 suma la pérdida a su valor ponderado ($100+225$), como si hubiera que compensar las dos cosas."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Teoría de las perspectivas: función de valor y aversión a las pérdidas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311013,
+   "estado": "publicada",
+   "enunciado": "Según el patrón cuádruple de actitudes ante el riesgo de la teoría de las perspectivas (Tversky y Kahneman, 1992), ¿cuál de las siguientes elecciones es la que cabe esperar de la mayoría de las personas?",
+   "opciones": {
+    "a": "Entre perder 900 euros con certeza y perder 1.000 euros con probabilidad 0,9, prefieren arriesgarse.",
+    "b": "Entre ganar 900 euros con certeza y ganar 1.000 euros con probabilidad 0,9, prefieren arriesgarse.",
+    "c": "Entre ganar 5 euros con certeza y ganar 5.000 euros con probabilidad 0,001, prefieren los 5 euros seguros.",
+    "d": "Entre perder 5 euros con certeza y perder 5.000 euros con probabilidad 0,001, prefieren arriesgarse."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con probabilidades medias y altas manda la forma de la función de valor: aversión al riesgo en las ganancias (es cóncava) y búsqueda del riesgo en las pérdidas (es convexa). Con probabilidades bajas, la sobreponderación invierte el patrón: se compra lotería y se compra seguro.",
+    "desarrollo": "En las cuatro opciones, la alternativa segura y la arriesgada tienen el mismo valor esperado. El patrón cuádruple combina la función de valor $v$ (en S) con la de ponderación $w$:\n\n- Ganancias con probabilidad alta: aversión al riesgo. $v$ es cóncava y $w$ infrapondera el 0,9: se prefieren los 900 seguros. La b) es falsa.\n- Pérdidas con probabilidad alta: búsqueda del riesgo. $v$ es convexa en las pérdidas («de perdidos, al río») y el 0,9 se infrapondera: se prefiere arriesgarse a perder 1.000 antes que perder 900 seguros. La a) es la correcta.\n- Ganancias con probabilidad baja: búsqueda del riesgo. $w$ sobrepondera el 0,001 y se prefiere el premio grande improbable: es la compra de lotería. La c) es falsa.\n- Pérdidas con probabilidad baja: aversión al riesgo. Se sobrepondera el accidente improbable y se prefiere pagar 5 euros seguros: es la compra de un seguro. La d) es falsa.\n\nComprobación con los parámetros estimados ($\\beta=0{,}88$, $\\lambda=2{,}25$, $\\delta=0{,}61$ en ganancias y $0{,}69$ en pérdidas): en a), $-2{,}25\\cdot 900^{0{,}88}\\approx -895$ frente a $w(0{,}9)\\cdot(-2{,}25\\cdot 1000^{0{,}88})\\approx -761$: la apuesta duele menos. En c), $5^{0{,}88}\\approx 4{,}1$ frente a $w(0{,}001)\\cdot 5000^{0{,}88}\\approx 26$.\n\nAsí responde la teoría a la pregunta de Friedman y Savage sin una utilidad con tramos: la misma persona sobrepondera el premio improbable y el accidente improbable."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Teoría de las perspectivas: función de ponderación y patrón cuádruple",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311014,
+   "estado": "publicada",
+   "enunciado": "Tversky y Kahneman (1992) reformulan la teoría de las perspectivas de 1979 como «teoría acumulativa de las perspectivas». ¿Qué problema de la versión original resuelve la reformulación y cómo lo hace?",
+   "opciones": {
+    "a": "La versión original no explicaba la paradoja de Allais; la acumulativa lo consigue restableciendo el axioma de independencia, que aplica a las probabilidades acumuladas y no a las de cada resultado.",
+    "b": "La versión original dejaba sin determinar el punto de referencia; la acumulativa lo fija en la riqueza esperada y define la función de valor sobre la riqueza final y no sobre sus cambios.",
+    "c": "La versión original admitía preferencias no transitivas, como la teoría del pesar; la acumulativa las elimina comparando cada resultado con el que se habría obtenido con la otra alternativa.",
+    "d": "La versión original, al transformar cada probabilidad por separado, podía preferir loterías dominadas en primer orden; la acumulativa pondera las probabilidades acumuladas (dependencia del rango, Quiggin) y respeta la dominancia."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Ponderar cada probabilidad por separado con una $w$ no lineal hace que los pesos no sumen 1 y puede dar más valor a una lotería dominada; en 1979 lo evitaba la fase de edición. La versión de 1992 transforma probabilidades acumuladas (dependencia del rango), con una ponderación para las ganancias y otra para las pérdidas.",
+    "desarrollo": "En 1979 el valor era $\\sum_s w(\\pi_s)\\,v(x_s-r)$. Como $w$ no es lineal, partir un resultado en dos casi iguales cambia la suma de los pesos: por ejemplo, si $w$ sobrepondera las probabilidades pequeñas, una lotería con muchos premios poco probables y algo peores puede valer más que el mejor de ellos con certeza. La teoría necesitaba que la fase de edición eliminara antes las alternativas dominadas.\n\nQuiggin (1982) propone ponderar cada resultado por la diferencia entre la probabilidad transformada de obtener al menos ese resultado y la de obtener uno mejor: los pesos dependen del orden (rango) de los resultados, suman 1 y la dominancia de primer orden se respeta. Tversky y Kahneman (1992) incorporan esa idea, con una función para las ganancias y otra para las pérdidas, manteniendo el punto de referencia y la aversión a las pérdidas. Así la teoría se aplica también a loterías con muchos resultados y a la incertidumbre.\n\nPor qué fallan las demás:\n\n- a) La versión de 1979 ya explicaba a Allais (efecto certeza), y ninguna de las dos versiones cumple el axioma de independencia: son teorías de utilidad no esperada.\n- b) El punto de referencia sigue sin estar determinado por la teoría (es uno de sus límites), y la función de valor sigue definida sobre ganancias y pérdidas.\n- c) Comparar con lo que se habría obtenido con la otra alternativa es la teoría del pesar (Loomes y Sugden; Bell), que es la que admite intransitividad."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Teoría de las perspectivas: teoría acumulativa y utilidad dependiente del rango",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311015,
+   "estado": "publicada",
+   "enunciado": "Hay dos urnas con 100 bolas rojas y negras: en la primera hay 50 de cada color; de la segunda no se conoce la proporción. Se gana el mismo premio si sale el color al que se apuesta. Un individuo prefiere estrictamente apostar en la primera urna tanto cuando apuesta a «roja» como cuando apuesta a «negra». Estas elecciones:",
+   "opciones": {
+    "a": "Son compatibles con la utilidad esperada subjetiva de Savage si el individuo es suficientemente averso al riesgo.",
+    "b": "Violan el axioma de completitud, porque el individuo no es capaz de comparar las apuestas de la segunda urna.",
+    "c": "Se explican por la sobreponderación de las probabilidades bajas de la teoría de las perspectivas de 1979.",
+    "d": "No son compatibles con ninguna probabilidad subjetiva sobre la segunda urna: revelan aversión a la ambigüedad."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Es la paradoja de Ellsberg. Preferir la urna conocida para «roja» exige creer que la probabilidad de roja en la otra es menor que $1/2$, y preferirla para «negra», que la de negra también es menor que $1/2$: las dos sumarían menos de 1. Ninguna probabilidad lo racionaliza.",
+    "desarrollo": "Con utilidad esperada subjetiva, y normalizando $u(\\text{premio})=1$ y $u(0)=0$, cada apuesta vale la probabilidad de ganar:\n\n- urna conocida: $0{,}5$ en los dos casos;\n- urna desconocida: $\\pi_R$ si se apuesta a roja y $\\pi_N=1-\\pi_R$ si se apuesta a negra.\n\nPreferir estrictamente la urna conocida en los dos casos exige $\\pi_R<0{,}5$ y $1-\\pi_R<0{,}5$, lo que es imposible. Se viola el principio de la cosa segura (P2 de Savage). La explicación es la aversión a la ambigüedad: se prefiere el riesgo conocido a la incertidumbre. La recogen los modelos de múltiples probabilidades (Gilboa y Schmeidler), de Choquet (Schmeidler) y de ambigüedad suave.\n\nPor qué fallan las demás:\n\n- a) La aversión al riesgo no interviene: todas las apuestas tienen los mismos dos resultados (premio o nada), así que la curvatura de $u$ es irrelevante y solo cuentan las probabilidades.\n- b) El individuo compara y elige sin problema: sus preferencias son completas. Lo que no existe es una probabilidad que las represente.\n- c) Los pesos de decisión de 1979 transforman probabilidades conocidas (es una teoría para el riesgo); aquí el problema es que la probabilidad no se conoce, y en la urna conocida las probabilidades no son bajas."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Probabilidad subjetiva: paradoja de Ellsberg y aversión a la ambigüedad",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311016,
+   "estado": "publicada",
+   "enunciado": "Una urna tiene 90 bolas: 30 son rojas y las otras 60 son negras o amarillas, en proporción desconocida. Un decisor cree posible cualquier número de bolas negras entre 10 y 50 y valora cada apuesta con el modelo de utilidad esperada con múltiples probabilidades de Gilboa y Schmeidler (1989), con $u(\\text{premio})=1$ y $u(0)=0$. ¿Cuánto valen para él las apuestas «sale negra» y «sale roja o amarilla»?",
+   "opciones": {
+    "a": "$1/3$ y $2/3$, respectivamente.",
+    "b": "$5/9$ y $8/9$, respectivamente.",
+    "c": "$1/9$ y $4/9$, respectivamente.",
+    "d": "$1/9$ y $8/9$, respectivamente."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El modelo valora cada acto con la peor de las probabilidades posibles para ese acto. Para «negra», la peor es que haya 10 negras: $10/90=1/9$. Para «roja o amarilla», la peor es que haya 50 negras y solo 10 amarillas: $(30+10)/90=4/9$.",
+    "desarrollo": "En el modelo de múltiples probabilidades (maxmin), $U(\\vec{x})=\\min_{\\vec{\\pi}\\in\\mathcal{P}}\\sum_s\\pi_s\\,u(x_s)$: el mínimo se toma acto por acto. Sea $n\\in[10,50]$ el número de negras; hay $60-n$ amarillas.\n\n- «Negra»: gana con probabilidad $n/90$; el mínimo se alcanza con $n=10$: $1/9$.\n- «Roja o amarilla»: gana con probabilidad $(30+60-n)/90=(90-n)/90$; el mínimo se alcanza con $n=50$: $40/90=4/9$.\n\nLas otras dos apuestas no tienen ambigüedad: «roja» vale $30/90=1/3$ y «negra o amarilla», $60/90=2/3$. El decisor prefiere «roja» a «negra» ($1/3>1/9$) y «negra o amarilla» a «roja o amarilla» ($2/3>4/9$): las elecciones de la paradoja de Ellsberg de tres colores, que ninguna probabilidad única racionaliza.\n\nPor qué fallan las demás:\n\n- a) $1/3$ y $2/3$ salen de suponer una sola probabilidad, con 30 negras y 30 amarillas (el criterio de Laplace): es la utilidad esperada subjetiva, sin ambigüedad.\n- b) $5/9$ y $8/9$ usan la mejor distribución para cada apuesta (50 negras en la primera, 10 en la segunda): sería un decisor optimista, no el maxmin.\n- d) Usa la misma distribución (10 negras) para las dos apuestas. El decisor no tiene una creencia pesimista fija: la distribución que minimiza cambia con el acto, y por eso sus «probabilidades» de negra y de roja o amarilla suman menos de 1."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Enfoques alternativos: utilidad esperada con múltiples probabilidades (maxmin)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311017,
+   "estado": "publicada",
+   "enunciado": "Un decisor que no tiene ninguna información sobre la probabilidad de los estados $s_1$, $s_2$ y $s_3$ debe elegir una de cuatro acciones, cuyos pagos en $(s_1,s_2,s_3)$ son: $A=(1,\\,12,\\,6)$, $B=(10,\\,3,\\,5)$, $C=(9,\\,9,\\,2)$ y $D=(11,\\,11,\\,0)$. ¿Qué acción elige con el criterio de Savage («minimax regret»)?",
+   "opciones": {
+    "a": "La acción $A$.",
+    "b": "La acción $B$.",
+    "c": "La acción $C$.",
+    "d": "La acción $D$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El pesar de una acción en un estado es lo que deja de ganar frente a la mejor acción en ese estado (11, 12 y 6). Los pesares máximos son 10 para $A$, 9 para $B$, 4 para $C$ y 6 para $D$: el criterio elige la acción con el menor pesar máximo, $C$.",
+    "desarrollo": "Mejor pago en cada estado: 11 en $s_1$ (acción $D$), 12 en $s_2$ ($A$) y 6 en $s_3$ ($A$). Pesares (mejor pago del estado menos pago de la acción):\n\n- $A$: $(10,\\,0,\\,0)$, máximo 10;\n- $B$: $(1,\\,9,\\,1)$, máximo 9;\n- $C$: $(2,\\,3,\\,4)$, máximo 4;\n- $D$: $(0,\\,1,\\,6)$, máximo 6.\n\nEl menor de los pesares máximos es 4: se elige $C$.\n\nPor qué fallan las demás (cada una es la elección de otro criterio):\n\n- a) $A$ es la elección del criterio maximax (optimista): su mejor resultado, 12, es el mayor de todos.\n- b) $B$ es la elección del criterio de Wald (maximin, pesimista): su peor resultado, 3, es el mejor de los peores (1, 3, 2 y 0).\n- d) $D$ es la elección del criterio de Laplace: su suma de pagos, 22, es la mayor (19, 18, 20 y 22; medias 6,33, 6, 6,67 y 7,33). También es la acción con menor suma de pesares (7, frente a 10, 11 y 9), pero el criterio de Savage no suma los pesares: mira el peor de cada acción."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Enfoques alternativos: criterios clásicos de decisión (Savage, Wald, maximax y Laplace)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

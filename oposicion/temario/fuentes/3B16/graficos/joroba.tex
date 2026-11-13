@@ -1,0 +1,24 @@
+% Hipótesis de la joroba de Calmfors y Driffill (1988): esquema teórico, sin
+% datos (rehace la imagen 13 del original, escaneada).
+% Elaboración propia a partir de Calmfors y Driffill (1988).
+%   curva  y = 1 + 3,4 exp(-(x - 3,5)^2 / 3,6), simétrica con máximo en «sector»
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={joroba(\x)=1+3.4*exp(-(\x-3.5)^2/3.6);}]
+  % 1: ejes con las 3 marcas de centralización
+  \capa{1}{\ejes{}{\shortstack[r]{salario real\\ y paro}}{7.6}{5.4}}
+  \capa{1}{\foreach \x/\t in {0.8/empresa,3.5/sector,6.2/nacional}
+    \draw (\x,0.08) -- (\x,-0.08) node[below] {\t};}
+  \capa{1}{\node[etiqueta,below=16pt] at (3.5,0) {grado de centralización de la negociación};}
+  % 2: curva en U invertida
+  \capa{2}{\draw[curva1] plot[domain=0.5:6.5,samples=80] (\x,{joroba(\x)});}
+  % 3: en los extremos se modera el salario
+  \capa{3}{\draw[flecha] (1.75,{joroba(1.75)+0.25}) -- (1.05,{joroba(1.05)+0.25});}
+  \capa{3}{\node[etiqueta,align=center,font=\footnotesize,text width=3.4cm] at (1.75,0.8) {se interioriza la pérdida\\ de empleo de la empresa};}
+  \capa{3}{\draw[flecha] (5.25,{joroba(5.25)+0.25}) -- (5.95,{joroba(5.95)+0.25});}
+  \capa{3}{\node[etiqueta,align=center,font=\footnotesize,text width=2.4cm] at (5.4,0.8) {se interioriza\\ la inflación};}
+\end{tikzpicture}
+\end{document}

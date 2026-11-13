@@ -1,0 +1,29 @@
+% Pregunta 257 (2018-enero-OEP2017, n.º 13): Cournot con costes distintos. Autor: Víctor Gutiérrez Marcos
+% A escala con A = 11, c_1 = 1, c_2 = 3:
+%   R_1: q_1 = (10 - q_2)/2, de (5,0) a (0,10);  R_2: q_2 = (8 - q_1)/2, de (0,4) a (8,0)
+%   Equilibrio E = (4, 2): q_1* - q_2* = c_2 - c_1 = 2; beneficios 16 y 4
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.5cm]
+  \ejes{$q_1$}{$q_2$}{11}{11}
+  % Recta de 45 grados: cantidades iguales
+  \draw[guia] (0,0) -- (9.5,9.5) node[etiqueta,above,text=tceegris] {$q_1=q_2$};
+  % Función de reacción de E1 (coste bajo)
+  \draw[curva1] (5,0) -- (0,10);
+  \node[etiqueta,right,text=tceemorado] at (0.6,9.3) {$R_1(q_2)$};
+  % Función de reacción de E2 (coste alto)
+  \draw[curva2] (0,4) -- (8,0);
+  \node[etiqueta,above,text=tceeazul] at (7.2,0.6) {$R_2(q_1)$};
+  % Cortes con los ejes
+  \node[etiqueta,left] at (0,10) {$10$};
+  \node[etiqueta,left] at (0,4) {$4$};
+  \node[etiqueta,below] at (5,0) {$5$};
+  \node[etiqueta,below] at (8,0) {$8$};
+  % Equilibrio de Cournot
+  \node[punto] (E) at (4,2) {};
+  \proyeccion{(E)}{$4$}{$2$}
+  \node[etiqueta,above right] at (E) {$E$};
+  \node[etiqueta,align=left,anchor=west] at (5.6,4.2) {$q_1^*=4$, \ $q_2^*=2$\\$\pi_1^*=16$, \ $\pi_2^*=4$};
+\end{tikzpicture}
+\end{document}

@@ -2,9 +2,9 @@
 \input{../../../latex/tikz-tcee}
 \usepackage{pgfplotstable}
 \begin{document}
-% Precio del Brent (media mensual, al contado), enero de 2005 a septiembre de
+% Precio del Brent (media mensual, al contado), enero de 2005 a octubre de
 % 2026, en dólares y en euros por barril. EIA (RBRTE); en euros con el tipo de
-% referencia del BCE (consulta 23/10/2026). Eje x: n.º de mes desde enero de
+% referencia del BCE (consulta 23/10/2026; octubre de 2026, 11/11/2026). Eje x: n.º de mes desde enero de
 % 2005 (fila del CSV); marcas en enero de cada año. Paleta «dictamen»: dólares
 % en el bermellón de la energía, euros en el azul de la zona del euro.
 % Capas «dic» (tikz-tcee.tex): cuadrícula → ejes → líneas → rótulos.
@@ -39,13 +39,13 @@
       \addplot[diclinea=dicze, leyenda linea corta] table[x expr=\coordindex, y=eur_barril] {\brent};
       \addlegendentry{Euros por barril}
     }
-    % 4: rótulos de los picos (jul. 2008, jun. 2022, abr. y sep. 2026)
+    % 4: rótulos de los picos (jul. 2008, jun. 2022, oct. 2026)
     \capa{4}{
       \dicrotulo[font=\footnotesize, anchor=south, align=center]{(42,133)}{jul.\ 2008\\\textcolor{dicenergia}{133\,\$}}
       \dicrotulo[font=\footnotesize, anchor=south, align=center]{(209,123)}{jun.\ 2022\\\textcolor{dicenergia}{123\,\$}}
       \addplot[on layer=axis descriptions, dicsuelto, guia, solid] coordinates {(210,116) (230,110)};
       \dicrotulo[font=\footnotesize, anchor=west, inner sep=1pt, text=dicze]{(230,110)}{116\,€}
-      \dicrotulo[font=\footnotesize, anchor=south, align=center]{(253,118)}{abr.\ y sep.\ 2026\\\textcolor{dicenergia}{117\,\$ y 114\,\$}}
+      \dicrotulo[font=\footnotesize, anchor=south, align=center]{(258,125)}{oct.\ 2026\\\textcolor{dicenergia}{124\,\$}}
     }
   \end{axis}
 \end{tikzpicture}

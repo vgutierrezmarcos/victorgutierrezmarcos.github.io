@@ -182,6 +182,27 @@ def datos_seo(tema):
 
 
 # --- 2. Gráficos -------------------------------------------------------------------
+def fecha_grafico(tex):
+    """Fecha del gráfico: la de su .tex o la de los datos que lee, si son más
+    recientes (los CSV de pgfplots, \\input de otro .tex de la carpeta). Así se
+    recompila cuando solo cambian los datos (../datos/*.csv). Los estilos comunes (latex/) no
+    cuentan: si cambian, se reconstruye todo con --forzar-graficos."""
+    fecha = os.path.getmtime(tex)
+    carpeta = os.path.dirname(tex)
+    try:
+        texto = re.sub(r'(?<!\\)%[^\n]*', '', open(tex, encoding='utf-8').read())
+    except OSError:
+        return fecha
+    for ref in re.findall(r'\{([^{}\s]+?\.(?:csv|dat|txt|tsv|tex))\}', texto) + \
+               [r + '.tex' for r in re.findall(r'\\input\{([^{}.\s]+)\}', texto)]:
+        if 'latex/' in ref or os.path.isabs(ref):
+            continue
+        ruta = os.path.join(carpeta, ref)
+        if os.path.exists(ruta):
+            fecha = max(fecha, os.path.getmtime(ruta))
+    return fecha
+
+
 def compilar_graficos(tema, forzar=False, solo=None):
     """Compila cada graficos/*.tex a PDF, SVG y PNG. Devuelve la lista de errores."""
     errores = []
@@ -191,7 +212,7 @@ def compilar_graficos(tema, forzar=False, solo=None):
         if solo and os.path.basename(base) not in solo:
             continue
         pdf, svg, png = base + '.pdf', base + '.svg', base + '.png'
-        if not forzar and all(os.path.exists(x) and os.path.getmtime(x) >= os.path.getmtime(tex)
+        if not forzar and all(os.path.exists(x) and os.path.getmtime(x) >= fecha_grafico(tex)
                               for x in (pdf, svg, png)):
             continue
         nombre = os.path.basename(tex)
@@ -508,9 +529,44 @@ def preparar_pandoc(tema, tex, formato):
             return f'\\tag{{{n}}}'
         return ''
 
+    def filas(texto):
+        # Filas de un align/gather separadas por «\\» de primer nivel (no las de
+        # matrices o cases de dentro)
+        trozos, nivel, actual, i = [], 0, '', 0
+        while i < len(texto):
+            if texto.startswith('\\begin{', i):
+                nivel += 1
+            elif texto.startswith('\\end{', i):
+                nivel -= 1
+            if nivel == 0 and texto.startswith('\\\\', i):
+                trozos.append(actual)
+                actual = ''
+                i += 2
+                continue
+            actual += texto[i]
+            i += 1
+        return trozos + [actual]
+
     def formula(m):
         # Las etiquetas de dentro se quitan (o pasan a \tag) y su ancla va delante
         anclas = ''.join(f'\\hypertarget{{{e}}}{{}}' for e in re.findall(r'\\label\{([^}]+)\}', m.group(1)))
+        entorno = re.match(r'\\begin\{(\w+)', m.group(1)).group(1)
+        if formato == 'html' and entorno in ('align', 'gather') and '\\label{' in m.group(1):
+            # pandoc convierte align en aligned y MathJax no admite \tag dentro de
+            # aligned (enseña el LaTeX en bruto): en la web, una ecuación por fila,
+            # cada una con su número
+            dentro = re.sub(r'^\\begin\{\w+\*?\}|\\end\{\w+\*?\}$', '', m.group(1).strip())
+            ecuaciones = []
+            for fila in filas(dentro):
+                fila = re.sub(r'\\label\{([^}]+)\}', etiqueta, fila)
+                fila = re.sub(r'^\s*\[[^\]]*\]', '', fila)  # «\\[2pt]»
+                # «&&» separa la fórmula de su comentario (\text{…}): sin él, en una
+                # ecuación suelta saldrían pegados; se deja un espacio ancho
+                fila = re.sub(r'(?<!\\)&\s*&', r'\\qquad ', fila)
+                fila = re.sub(r'\\(nonumber|notag)\b', '', fila).replace('&', '').strip()
+                if fila:
+                    ecuaciones.append(f'\\begin{{equation*}}\n{fila}\n\\end{{equation*}}')
+            return anclas + '\n'.join(ecuaciones)
         return anclas + re.sub(r'\\label\{([^}]+)\}', etiqueta, m.group(1))
     # Solo las etiquetas dentro de fórmulas; las de figuras y apartados las usa pandoc
     cuerpo = re.sub(r'(\\begin\{(equation|align|gather|multline)\*?\}.*?\\end\{\2\*?\})',

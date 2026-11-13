@@ -1,0 +1,22 @@
+% Pregunta 919 (2002-octubre-OEP2002, n.º 2): síntesis neoclásica con salario nominal rígido; bajar W desplaza la OA a la derecha, sube Y y baja P (opción b, la falsa). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Y$}{$P$}{6.4}{5}
+  % Demanda agregada (IS-LM)
+  \draw[curva1] (0.8,4.4) -- (5.4,0.8) node[etiqueta,right] {$DA$};
+  % Oferta agregada con salario nominal rígido
+  \draw[curva2] (0.8,0.8) -- (4.8,4.4) node[etiqueta,above] {$OA(\bar W_0)$};
+  % Oferta agregada tras la política de rentas
+  \draw[curvanueva,desplazada] (2.0,0.8) -- (6.0,4.4) node[etiqueta,above right] {$OA'(\bar W_1)$};
+  \draw[flecha] (4.05,3.6) -- (4.95,3.6);
+  % Equilibrios
+  \proyeccion{(2.940,2.726)}{$Y_0$}{$P_0$}
+  \node[punto] at (2.940,2.726) {};
+  \node[etiqueta,above] at (2.94,2.80) {$E_0$};
+  \proyeccion{(3.581,2.223)}{$Y_1$}{$P_1$}
+  \node[punto,fill=tceerojo] at (3.581,2.223) {};
+  \node[etiqueta,right] at (3.68,2.223) {$E_1$};
+\end{tikzpicture}
+\end{document}

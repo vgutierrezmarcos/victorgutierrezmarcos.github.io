@@ -1,0 +1,587 @@
+{
+ "tema": "3.A.9",
+ "preguntas": [
+  {
+   "id": 310901,
+   "estado": "publicada",
+   "enunciado": "La función de gasto $E(\\vec{p},\\overline{U})$ es cóncava en los precios. Económicamente, esta propiedad significa que:",
+   "opciones": {
+    "a": "Si todos los precios se multiplican por $\\kappa>1$, el gasto mínimo necesario para alcanzar $\\overline{U}$ aumenta en una proporción menor que $\\kappa$.",
+    "b": "Si cambian los precios, el gasto mínimo necesario para alcanzar $\\overline{U}$ es, como mucho, lo que costaría a los nuevos precios la cesta que era óptima a los precios iniciales, porque el consumidor puede sustituir unos bienes por otros.",
+    "c": "El gasto mínimo crece menos que proporcionalmente con el nivel de utilidad exigido.",
+    "d": "La demanda marshalliana de cada bien es decreciente en su propio precio."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Si el consumidor mantuviera la cesta inicial, su gasto variaría linealmente con los precios; como puede reoptimizar, gasta como mucho eso: $E(\\vec{p}\\,',\\overline{U})\\leq\\vec{p}\\,'\\cdot\\vec{h}(\\vec{p},\\overline{U})$. La función de gasto queda por debajo de su plano tangente, y eso es la concavidad.",
+    "desarrollo": "La cesta $\\vec{h}(\\vec{p},\\overline{U})$ sigue alcanzando $\\overline{U}$ cuando cambian los precios, así que es una de las candidatas del nuevo problema de minimización: el gasto mínimo a los precios $\\vec{p}\\,'$ no puede superar su coste, $\\vec{p}\\,'\\cdot\\vec{h}(\\vec{p},\\overline{U})=E(\\vec{p},\\overline{U})+\\vec{h}(\\vec{p},\\overline{U})\\cdot(\\vec{p}\\,'-\\vec{p})$, que es la aproximación lineal de $E$ (lema de Shephard). La diferencia es el ahorro que permite la sustitución (b, correcta). La a es falsa: $E$ es homogénea de grado uno en los precios, de modo que si todos se multiplican por $\\kappa$ el gasto se multiplica exactamente por $\\kappa$; la concavidad actúa cuando cambian los precios relativos. La c confunde la concavidad en los precios con una supuesta concavidad en la utilidad: respecto a $\\overline{U}$ solo se sabe que $E$ es estrictamente creciente, y su curvatura depende de la función de utilidad elegida para representar las preferencias (es ordinal). La d atribuye a la demanda marshalliana lo que la concavidad garantiza para la hicksiana: $\\partial h_i/\\partial p_i\\leq 0$ (ley de la demanda compensada). La marshalliana incluye el efecto renta y puede ser creciente en su precio (bien Giffen)."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.2 Problema dual: función de gasto (concavidad)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310902,
+   "estado": "publicada",
+   "enunciado": "¿Cuál de las siguientes funciones puede ser la función de gasto de un consumidor con preferencias continuas y monótonas (con $\\overline{U}>0$ y precios estrictamente positivos)?",
+   "opciones": {
+    "a": "$E(\\vec{p},\\overline{U})=\\overline{U}\\,\\dfrac{p_1}{p_2}$",
+    "b": "$E(\\vec{p},\\overline{U})=\\overline{U}\\,p_1\\,p_2$",
+    "c": "$E(\\vec{p},\\overline{U})=\\overline{U}\\,\\min\\{p_1,p_2\\}$",
+    "d": "$E(\\vec{p},\\overline{U})=\\overline{U}\\,\\max\\{p_1,p_2\\}$"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Una función de gasto es homogénea de grado uno, no decreciente y cóncava en los precios, y estrictamente creciente en la utilidad. Solo $\\overline{U}\\min\\{p_1,p_2\\}$ lo cumple todo: es la de unos sustitutivos perfectos, $U=x_1+x_2$, en los que se compra solo el bien más barato.",
+    "desarrollo": "Se comprueban las propiedades una a una. La a, $\\overline{U}p_1/p_2$, es homogénea de grado cero (si se duplican los dos precios no cambia) y decreciente en $p_2$: falla dos veces. La b, $\\overline{U}p_1p_2$, es homogénea de grado dos: si se duplican los precios, el gasto se multiplicaría por cuatro, cuando la cesta óptima no cambia y su coste solo se duplica. La d, $\\overline{U}\\max\\{p_1,p_2\\}$, es el distractor fino: es homogénea de grado uno y no decreciente en los precios, pero es convexa, no cóncava. Contraejemplo: con $\\vec{p}=(1,3)$ y $\\vec{p}\\,'=(3,1)$ vale $3\\overline{U}$ en los dos casos, y en el promedio $(2,2)$ vale $2\\overline{U}<3\\overline{U}$, cuando la concavidad exige que valga al menos la media. Económicamente, equivaldría a comprar siempre el bien más caro, que no minimiza nada. La c lo cumple todo: el mínimo de funciones lineales es cóncavo, es homogéneo de grado uno y no decreciente en cada precio. Es la función de gasto de $U=x_1+x_2$: para alcanzar $\\overline{U}$ se compran $\\overline{U}$ unidades del bien más barato. La concavidad, y no solo la homogeneidad, es lo que distingue a una función de gasto."
+   },
+   "dificultad": 3,
+   "apartado": "I.2.2 Problema dual: propiedades de la función de gasto",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310903,
+   "estado": "publicada",
+   "enunciado": "La función de gasto de un consumidor es $E(\\vec{p},\\overline{U})=\\overline{U}\\,\\big(p_1+2\\sqrt{p_1p_2}\\big)$. Con $p_1=1$, $p_2=4$ y $\\overline{U}=10$, si $p_1$ aumenta en 0,1 y se quiere mantener el nivel de utilidad, el gasto mínimo aumenta aproximadamente (en primer orden) en:",
+   "opciones": {
+    "a": "0,5",
+    "b": "1",
+    "c": "5",
+    "d": "3"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Por el lema de Shephard, $\\partial E/\\partial p_1=h_1(\\vec{p},\\overline{U})=\\overline{U}\\big(1+\\sqrt{p_2/p_1}\\big)=10\\,(1+2)=30$. Un aumento de 0,1 en $p_1$ eleva el gasto en unas $30\\times 0{,}1=3$ unidades monetarias.",
+    "desarrollo": "Derivando, $h_1=\\partial E/\\partial p_1=\\overline{U}\\big(1+\\sqrt{p_2/p_1}\\big)$, que con los datos vale $10\\,(1+\\sqrt{4})=30$. En primer orden, $\\Delta E\\approx h_1\\,\\Delta p_1=30\\times 0{,}1=3$ (d). Comprobación: $E(1;4)=10\\,(1+4)=50$ y $E(1{,}1;4)=10\\,(1{,}1+2\\sqrt{4{,}4})\\approx 52{,}95$; el aumento exacto, 2,95, es algo menor que 3 porque la función de gasto es cóncava (el consumidor sustituye). La a (0,5) usa la demanda del otro bien, $h_2=\\partial E/\\partial p_2=\\overline{U}\\sqrt{p_1/p_2}=5$. La b (1) deriva solo el primer sumando, $\\overline{U}p_1$, y olvida que $p_1$ también está en la raíz. La c (5) aplica el 10 % de subida de $p_1$ a todo el gasto ($50\\times 0{,}1$), como si hubieran subido todos los precios: solo entonces el gasto subiría en la misma proporción (homogeneidad de grado uno)."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.2 Problema dual: lema de Shephard",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310904,
+   "estado": "publicada",
+   "enunciado": "En la cesta óptima de un consumidor, el multiplicador de Lagrange del problema de maximización de la utilidad vale $\\lambda^*=0{,}25$. En el problema dual de minimización del gasto que tiene como solución esa misma cesta, el multiplicador $\\mu^*$:",
+   "opciones": {
+    "a": "Vale 4: es el coste marginal de la utilidad, $\\partial E/\\partial\\overline{U}$, el inverso de la utilidad marginal de la renta.",
+    "b": "Vale 0,25: al ser la misma cesta, los dos multiplicadores coinciden.",
+    "c": "Vale $-0{,}25$: al pasar de maximizar a minimizar, el multiplicador cambia de signo.",
+    "d": "No puede determinarse sin conocer los precios y el nivel de utilidad exigido."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En la cesta común a los dos problemas, $\\mu^*=1/\\lambda^*$: si una unidad monetaria más compra 0,25 útiles, un útil más cuesta $1/0{,}25=4$ unidades monetarias.",
+    "desarrollo": "$\\lambda^*=\\partial V/\\partial\\overline{W}$ es la utilidad marginal de la renta y $\\mu^*=\\partial E/\\partial\\overline{U}$, el coste marginal de la utilidad (teorema de la envolvente en cada problema). Derivando respecto a $\\overline{W}$ la identidad $E\\big(\\vec{p},V(\\vec{p},\\overline{W})\\big)=\\overline{W}$ se obtiene $\\frac{\\partial E}{\\partial\\overline{U}}\\cdot\\frac{\\partial V}{\\partial\\overline{W}}=1$, es decir, $\\mu^*\\lambda^*=1$ y $\\mu^*=4$ (a). También se ve en las condiciones de primer orden: en el primal $U_i/p_i=\\lambda$ y en el dual $p_i/U_i=\\mu$. La b confunde que la cesta coincida con que coincidan los multiplicadores, que miden cosas distintas (útiles por euro y euros por útil). La c es falsa: los dos multiplicadores son positivos, por la insaciabilidad local y la continuidad de $U$. La d es falsa porque la relación $\\mu^*=1/\\lambda^*$ se cumple en el óptimo común para cualesquiera precios y utilidad."
+   },
+   "dificultad": 1,
+   "apartado": "I.2.2 Problema dual: multiplicadores (anexo A)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310905,
+   "estado": "publicada",
+   "enunciado": "La función indirecta de utilidad de un consumidor es $V(\\vec{p},\\overline{W})=\\dfrac{\\overline{W}-2p_1}{\\sqrt{p_1p_2}}$ (para $\\overline{W}>2p_1$). Con $\\overline{W}=20$, $p_1=1$ y $p_2=4$, su demanda marshalliana del bien 1 es:",
+   "opciones": {
+    "a": "9",
+    "b": "10",
+    "c": "11",
+    "d": "5,5"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Por la identidad de Roy, $x_1=-\\dfrac{\\partial V/\\partial p_1}{\\partial V/\\partial\\overline{W}}=2+\\dfrac{\\overline{W}-2p_1}{2p_1}=2+9=11$: dos unidades «de subsistencia» más la mitad de la renta sobrante, gastada en el bien 1.",
+    "desarrollo": "Derivadas: $\\dfrac{\\partial V}{\\partial\\overline{W}}=\\dfrac{1}{\\sqrt{p_1p_2}}$ y $\\dfrac{\\partial V}{\\partial p_1}=-\\dfrac{2}{\\sqrt{p_1p_2}}-\\dfrac{\\overline{W}-2p_1}{2p_1\\sqrt{p_1p_2}}$. Con los datos, $\\sqrt{p_1p_2}=2$: $\\partial V/\\partial\\overline{W}=0{,}5$ y $\\partial V/\\partial p_1=-1-4{,}5=-5{,}5$. Por Roy, $x_1=5{,}5/0{,}5=11$ (c). Comprobación con la restricción presupuestaria: por Roy, $x_2=(\\overline{W}-2p_1)/(2p_2)=2{,}25$, y $1\\times 11+4\\times 2{,}25=20$. Es la función indirecta de una utilidad de Stone-Geary (sistema lineal de gasto) con $\\gamma_1=2$, $\\gamma_2=0$ y $\\alpha_1=\\alpha_2=1/2$: $p_1x_1=p_1\\gamma_1+\\alpha_1(\\overline{W}-p_1\\gamma_1)$. La a (9) olvida derivar el numerador respecto a $p_1$ y se queda con la mitad de la renta sobrante. La b (10) aplica la demanda Cobb-Douglas, $\\overline{W}/(2p_1)$, sin el consumo mínimo. La d (5,5) es $|\\partial V/\\partial p_1|$: falta dividir entre la utilidad marginal de la renta."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.1 Problema primal: identidad de Roy",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310906,
+   "estado": "publicada",
+   "enunciado": "Señale la afirmación FALSA sobre la función indirecta de utilidad $V(\\vec{p},\\overline{W})$ de un consumidor con preferencias continuas y localmente insaciables:",
+   "opciones": {
+    "a": "Si sube el precio de un bien que el consumidor no compra, $V$ puede no variar.",
+    "b": "Si todos los precios y la renta aumentan un 10 %, $V$ no varía.",
+    "c": "Donde es diferenciable, su derivada respecto a la renta es el multiplicador de Lagrange del problema de maximización de la utilidad.",
+    "d": "Es cuasiconvexa en $(\\vec{p},\\overline{W})$ solo si las preferencias del consumidor son convexas."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La cuasiconvexidad de $V$ no depende de la convexidad de las preferencias: toda cesta asequible con un presupuesto «promedio» es asequible con al menos uno de los dos extremos, así que con el promedio nunca se alcanza más utilidad que con el mejor de ellos.",
+    "desarrollo": "La d es la falsa. Si una cesta cumple $\\vec{p}\\,''\\cdot\\vec{x}\\leq\\overline{W}''$ con el presupuesto promedio, no puede incumplir a la vez las dos restricciones extremas (ponderando, incumpliría la promedio). Por tanto, $V(\\vec{p}\\,'',\\overline{W}'')\\leq\\max\\{V(\\vec{p},\\overline{W}),V(\\vec{p}\\,',\\overline{W}')\\}$, que es la cuasiconvexidad, sin usar en ningún momento la forma de las curvas de indiferencia. La a es verdadera: $V$ es no creciente en los precios, y no estrictamente decreciente, precisamente por las soluciones de esquina. La b es verdadera: $V$ es homogénea de grado cero en $(\\vec{p},\\overline{W})$, porque el conjunto presupuestario no cambia. La c es verdadera: por el teorema de la envolvente, $\\partial V/\\partial\\overline{W}=\\lambda^*$, la utilidad marginal de la renta."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.1 Problema primal: propiedades de la función indirecta de utilidad",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310907,
+   "estado": "publicada",
+   "enunciado": "Las preferencias de un consumidor se representan con la función de utilidad $U(\\vec{x})>0$. Si en su lugar se representan con $\\tilde{U}(\\vec{x})=[U(\\vec{x})]^3$, ¿cuál de los siguientes objetos NO cambia?",
+   "opciones": {
+    "a": "La función indirecta de utilidad, $V(\\vec{p},\\overline{W})$.",
+    "b": "El multiplicador de Lagrange del problema de maximización de la utilidad, $\\lambda^*$.",
+    "c": "La demanda marshalliana, $\\vec{x}(\\vec{p},\\overline{W})$.",
+    "d": "La función de gasto, $E(\\vec{p},\\overline{U})$, como función del nivel de utilidad $\\overline{U}$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Una transformación estrictamente creciente de la utilidad representa las mismas preferencias: la cesta elegida con cada presupuesto es la misma, y por tanto también la demanda marshalliana. Lo que cambia es todo lo que se mide en «útiles».",
+    "desarrollo": "La demanda es ordinal: depende de la ordenación de las cestas, no de los números que se les asignen (c). La función indirecta pasa a ser $\\tilde{V}=V^3$ (a): ordena los presupuestos igual, pero es otra función. El multiplicador pasa a ser $\\tilde{\\lambda}^*=3\\,[U(\\vec{x}^*)]^2\\lambda^*$ (b): la utilidad marginal de la renta no tiene un valor con significado propio. Y la función de gasto, como función del número $\\overline{U}$, pasa a ser $\\tilde{E}(\\vec{p},\\overline{U})=E(\\vec{p},\\overline{U}^{1/3})$ (d): el coste de alcanzar una curva de indiferencia dada no cambia, pero la etiqueta de esa curva sí. Por eso las medidas de bienestar se construyen con diferencias de gasto entre curvas de indiferencia (VC, VE) y no con diferencias de utilidad."
+   },
+   "dificultad": 1,
+   "apartado": "I.2.1 Problema primal: carácter ordinal de la utilidad",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310908,
+   "estado": "publicada",
+   "enunciado": "En un sistema casi ideal de demanda (AIDS) estimado con microdatos, la ecuación de la participación de los alimentos en el gasto tiene un coeficiente del logaritmo del gasto real $\\beta_i=-0{,}1$ y, en el punto de evaluación, esa participación es $s_i=0{,}25$. Según la estimación, los alimentos son:",
+   "opciones": {
+    "a": "Un bien necesario, con elasticidad-renta 0,6.",
+    "b": "Un bien inferior, con elasticidad-renta $-0{,}4$.",
+    "c": "Un bien de lujo, con elasticidad-renta 1,4.",
+    "d": "Un bien necesario, con elasticidad-renta 0,9."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En el AIDS, la elasticidad-renta es $1+\\beta_i/s_i=1-0{,}1/0{,}25=0{,}6$. Con $\\beta_i<0$, la participación cae al aumentar el gasto (ley de Engel): bien necesario, pero normal.",
+    "desarrollo": "De $s_i=\\alpha_i+\\sum_j\\gamma_{ij}\\ln p_j+\\beta_i\\ln(\\overline{W}/P)$ se obtiene $\\partial s_i/\\partial\\ln\\overline{W}=\\beta_i$ y, como $s_i=p_ix_i/\\overline{W}$, $\\varepsilon_{x_i,\\overline{W}}=1+\\beta_i/s_i=1-0{,}4=0{,}6$ (a): positiva y menor que uno. La b olvida el 1 de la fórmula y toma $\\beta_i/s_i=-0{,}4$ como elasticidad: $\\beta_i<0$ indica que cae el peso del bien en el gasto, no su cantidad. La c cambia el signo de $\\beta_i$: sería un bien de lujo si $\\beta_i>0$. La d suma $\\beta_i$ sin dividir entre la participación ($1+\\beta_i=0{,}9$)."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.1 Formas funcionales: AIDS (elasticidades)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310909,
+   "estado": "publicada",
+   "enunciado": "El sistema lineal de gasto (Stone, 1954) se obtiene de la utilidad de Stone-Geary, $U=\\sum_i\\alpha_i\\ln(x_i-\\gamma_i)$, con $\\alpha_i>0$, $\\sum_i\\alpha_i=1$ y algún $\\gamma_i>0$. Señale la afirmación correcta:",
+   "opciones": {
+    "a": "No admite bienes inferiores ni complementarios netos, porque las preferencias son aditivas y $\\alpha_i>0$.",
+    "b": "Impone que todas las elasticidades-renta sean iguales a uno.",
+    "c": "Sus curvas de Engel son rectas que pasan por el origen, de modo que no distingue entre bienes necesarios y de lujo.",
+    "d": "Al no partir de una función de gasto, sus demandas no cumplen la simetría de la matriz de Slutsky."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En el LES, $p_ix_i=p_i\\gamma_i+\\alpha_i\\big(\\overline{W}-\\sum_jp_j\\gamma_j\\big)$: la demanda de cada bien crece con la renta ($\\alpha_i>0$) y, por la aditividad, todos los bienes son sustitutivos netos entre sí. Es su principal límite.",
+    "desarrollo": "El consumidor compra primero las cantidades mínimas $\\gamma_i$ y reparte la renta sobrante en proporciones fijas $\\alpha_i$. Como $\\partial x_i/\\partial\\overline{W}=\\alpha_i/p_i>0$, no hay bienes inferiores; y la aditividad de la utilidad hace que todos los efectos sustitución cruzados sean positivos, de modo que tampoco hay complementarios netos (a). La b describe la Cobb-Douglas (el caso $\\gamma_i=0$ para todo $i$): con consumos mínimos, la elasticidad-renta es $\\alpha_i\\overline{W}/(p_ix_i)$, distinta de uno. La c es falsa por lo mismo: las curvas de Engel son rectas, pero no pasan por el origen, y por eso el sistema sí distingue bienes necesarios y de lujo (era su objetivo: recoger la ley de Engel). La d es falsa: el LES sale de maximizar una función de utilidad, así que cumple todas las restricciones de la teoría (agregación, homogeneidad, simetría y negatividad) por construcción."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.1 Formas funcionales: sistema lineal de gasto (LES)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310910,
+   "estado": "publicada",
+   "enunciado": "En el sistema casi ideal de demanda (AIDS), $s_i=\\alpha_i+\\sum_j\\gamma_{ij}\\ln p_j+\\beta_i\\ln(\\overline{W}/P)$, donde $P$ es un índice de precios, la restricción $\\sum_j\\gamma_{ij}=0$ en cada ecuación $i$ recoge:",
+   "opciones": {
+    "a": "La agregación: que las participaciones en el gasto sumen uno.",
+    "b": "La homogeneidad de grado cero de las demandas en precios y renta.",
+    "c": "La simetría de la matriz de Slutsky.",
+    "d": "La negatividad de la matriz de Slutsky."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Si todos los precios y el gasto se multiplican por $\\kappa$, $\\overline{W}/P$ no cambia y la participación varía en $\\ln\\kappa\\sum_j\\gamma_{ij}$: para que no haya ilusión monetaria, esa suma (sobre $j$, dentro de cada ecuación) debe ser cero.",
+    "desarrollo": "La homogeneidad exige que las participaciones no cambien cuando precios y gasto varían en la misma proporción. Como $\\ln(\\kappa p_j)=\\ln\\kappa+\\ln p_j$ y el gasto real $\\overline{W}/P$ no se altera, el cambio es $\\ln\\kappa\\sum_j\\gamma_{ij}$, que se anula si $\\sum_j\\gamma_{ij}=0$ (b). La a es la restricción que suma entre ecuaciones, no dentro de cada una: $\\sum_i\\alpha_i=1$, $\\sum_i\\gamma_{ij}=0$ y $\\sum_i\\beta_i=0$. La c es $\\gamma_{ij}=\\gamma_{ji}$. La d no es una restricción lineal sobre los parámetros: en el AIDS la negatividad no se impone globalmente, se comprueba con los datos (por eso el sistema es «casi» ideal). Históricamente, la homogeneidad es la restricción que más se rechazó con datos agregados (Barten; Deaton y Muellbauer)."
+   },
+   "dificultad": 1,
+   "apartado": "II.2.1 Formas funcionales: AIDS (restricciones)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310911,
+   "estado": "publicada",
+   "enunciado": "Para estimar un sistema de demanda con pocos grupos de bienes (alimentación, vivienda, transporte…) se supone que las preferencias son débilmente separables. Este supuesto significa que:",
+   "opciones": {
+    "a": "La utilidad total es la suma de las utilidades que proporciona cada grupo de bienes.",
+    "b": "Las elasticidades-renta de todos los bienes de un mismo grupo son iguales.",
+    "c": "La demanda de cada bien depende solo de su propio precio y de la renta total del consumidor.",
+    "d": "La relación marginal de sustitución entre dos bienes de un grupo no depende de las cantidades consumidas de los bienes de otros grupos, de modo que el gasto del grupo se reparte en función solo de ese gasto y de los precios del grupo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Separabilidad débil: $U=F\\big(u_1(\\vec{x}_1),\\dots,u_G(\\vec{x}_G)\\big)$, de modo que la RMS entre dos bienes de un grupo es independiente del consumo de los demás grupos. Justifica la segunda etapa de la presupuestación en dos etapas (Strotz, Gorman).",
+    "desarrollo": "Con separabilidad débil, una vez decidido cuánto gastar en un grupo, su reparto entre los bienes del grupo depende solo de ese gasto y de los precios del grupo (d): es lo que permite estimar un subsistema (por ejemplo, de alimentos) sin los precios de todo lo demás. La a describe la separabilidad aditiva (o fuerte), que es más restrictiva: es la del sistema lineal de gasto, y por eso este no admite inferiores ni complementarios netos. La b no se sigue de la separabilidad: dentro de un grupo puede haber bienes necesarios y de lujo. La c es falsa: dentro del grupo, la demanda de cada bien depende de todos los precios del grupo, y los precios de los demás grupos influyen a través del gasto asignado al grupo. Que la primera etapa pueda hacerse con un único índice de precios por grupo exige condiciones más fuertes (Gorman)."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.2 Sistema completo: separabilidad y presupuestación en dos etapas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310912,
+   "estado": "publicada",
+   "enunciado": "Según el teorema de integrabilidad (Hurwicz y Uzawa, 1971), un sistema de demandas $\\vec{x}(\\vec{p},\\overline{W})$ continuamente diferenciable procede de la maximización de una función de utilidad creciente y cuasicóncava si y solo si:",
+   "opciones": {
+    "a": "Es homogéneo de grado cero en precios y renta y la demanda de cada bien es decreciente en su propio precio.",
+    "b": "Cumple la ley de Walras y su matriz de Slutsky es simétrica y semidefinida negativa.",
+    "c": "Cumple la ley de Walras y el axioma débil de la preferencia revelada, cualquiera que sea el número de bienes.",
+    "d": "Cumple la ley de Walras y todas las elasticidades-renta son positivas."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Las condiciones de integrabilidad son la ley de Walras y la simetría y la negatividad de la matriz de Slutsky, calculada con observables: $S_{ij}=\\partial x_i/\\partial p_j+x_j\\,\\partial x_i/\\partial\\overline{W}$. Son necesarias y suficientes.",
+    "desarrollo": "Toda demanda que procede de maximizar una utilidad localmente insaciable cumple las tres condiciones (necesidad), y el teorema demuestra que bastan (suficiencia): con ellas puede recuperarse una función de gasto y, de ella, las preferencias (b). La homogeneidad de grado cero también es necesaria, pero se deduce de las anteriores. La a es falsa: la teoría no exige que la demanda marshalliana sea decreciente en su precio (bien Giffen); lo que exige es que lo sea la compensada, y además la simetría. La c es falsa con más de dos bienes: el axioma débil implica que la matriz de Slutsky es semidefinida negativa, pero no que sea simétrica; hace falta el axioma fuerte (Houthakker). La d es falsa: la teoría admite bienes inferiores."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Integrabilidad de las preferencias",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310913,
+   "estado": "publicada",
+   "enunciado": "En la demostración por dualidad del teorema de integrabilidad se busca una función $E$ que resuelva el sistema de ecuaciones en derivadas parciales $\\partial E(\\vec{p},\\overline{U})/\\partial p_i=x_i\\big(\\vec{p},E(\\vec{p},\\overline{U})\\big)$, $i=1,\\dots,n$. ¿Qué papel desempeña en ella cada propiedad de la matriz de Slutsky de las demandas?",
+   "opciones": {
+    "a": "La simetría garantiza que el sistema tenga solución (teorema de Frobenius), y la negatividad, que esa solución sea cóncava en los precios, como toda función de gasto.",
+    "b": "La negatividad garantiza que el sistema tenga solución (teorema de Frobenius), y la simetría, que esa solución sea cóncava en los precios, como toda función de gasto.",
+    "c": "La simetría garantiza que la solución sea homogénea de grado uno en los precios, y la negatividad, que sea creciente en la utilidad.",
+    "d": "Ninguno: ambas propiedades son consecuencia de la ley de Walras y de la homogeneidad de grado cero, cualquiera que sea el número de bienes."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El sistema tiene solución si y solo si las derivadas cruzadas de $E$ coinciden, y esa condición, desarrollada con la regla de la cadena, es la simetría de la matriz de Slutsky. La solución es una verdadera función de gasto si es cóncava, y su hessiana es la matriz de Slutsky: de ahí la negatividad.",
+    "desarrollo": "Paso 1: derivando $\\partial E/\\partial p_i=x_i(\\vec{p},E)$ respecto a $p_j$, $\\dfrac{\\partial^2E}{\\partial p_j\\partial p_i}=\\dfrac{\\partial x_i}{\\partial p_j}+\\dfrac{\\partial x_i}{\\partial\\overline{W}}\\,x_j=S_{ij}$. La condición de integrabilidad de Frobenius, $\\partial^2E/\\partial p_j\\partial p_i=\\partial^2E/\\partial p_i\\partial p_j$, es $S_{ij}=S_{ji}$. Paso 2: para que la solución sea una función de gasto debe ser cóncava en los precios, y su hessiana es $S$: hace falta que sea semidefinida negativa (a). La b intercambia los papeles. La c es falsa: la homogeneidad de grado uno y el crecimiento en los precios salen por construcción (de la ley de Walras y de que las demandas no sean negativas), no de la simetría ni de la negatividad. La d generaliza indebidamente lo que solo ocurre con dos bienes, donde la ley de Walras y la homogeneidad sí implican la simetría; con tres bienes o más, la simetría es una restricción adicional, y la negatividad nunca se deduce de ellas."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 Integrabilidad de las preferencias (demostración por dualidad)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310914,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con preferencias regulares consume dos bienes a los precios $p_1=2$ y $p_2=1$. Se sabe que el efecto sustitución propio del bien 1 es $S_{11}=\\partial h_1/\\partial p_1=-3$. Entonces, los demás elementos de su matriz de Slutsky son:",
+   "opciones": {
+    "a": "$S_{12}=S_{21}=6$ y $S_{22}=-12$.",
+    "b": "$S_{12}=S_{21}=1{,}5$ y $S_{22}=-0{,}75$.",
+    "c": "$S_{12}=S_{21}=3$ y $S_{22}=-3$.",
+    "d": "No pueden determinarse sin conocer la función de utilidad."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Como la demanda hicksiana es homogénea de grado cero en los precios, $S\\,\\vec{p}=\\vec{0}$ (teorema de Euler). Con dos bienes, eso y la simetría determinan toda la matriz: $2S_{11}+S_{12}=0$ da $S_{12}=6$, y $2S_{21}+S_{22}=0$ da $S_{22}=-12$.",
+    "desarrollo": "Primera fila: $p_1S_{11}+p_2S_{12}=0\\Rightarrow 2\\,(-3)+S_{12}=0\\Rightarrow S_{12}=6$. Simetría: $S_{21}=6$. Segunda fila: $p_1S_{21}+p_2S_{22}=0\\Rightarrow 12+S_{22}=0\\Rightarrow S_{22}=-12$ (a). Comprobación: la diagonal es no positiva y el determinante es $(-3)(-12)-6^2=0$, como corresponde a una matriz semidefinida negativa con $S\\,\\vec{p}=\\vec{0}$. La b pondera con los precios cambiados ($p_2S_{11}+p_1S_{12}=0$). La c hace que cada fila sume cero sin ponderar con los precios ($S_{11}+S_{12}=0$), lo que solo valdría si $p_1=p_2$. En todo caso, el signo del efecto cruzado está determinado: $S_{12}=-p_1S_{11}/p_2\\geq 0$, de modo que dos bienes son siempre sustitutivos netos (o, en el límite, independientes). La d es falsa: aunque la demanda hicksiana no se observa, las propiedades de la matriz bastan aquí para deducirla entera."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Ecuación de Slutsky: propiedades de la matriz de Slutsky",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310915,
+   "estado": "publicada",
+   "enunciado": "La demanda marshalliana de un bien es $x_1=\\overline{W}/(2p_1)$. Con $\\overline{W}=100$ y $p_1=5$, el efecto de una variación marginal de $p_1$ sobre $x_1$ es $\\partial x_1/\\partial p_1=-2$. La ecuación de Slutsky lo descompone en:",
+   "opciones": {
+    "a": "Efecto sustitución $-2$ y efecto renta 0.",
+    "b": "Efecto sustitución $-3$ y efecto renta $+1$.",
+    "c": "Efecto sustitución $-1{,}9$ y efecto renta $-0{,}1$.",
+    "d": "Efecto sustitución $-1$ y efecto renta $-1$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El efecto renta es $-x_1\\,\\partial x_1/\\partial\\overline{W}=-10\\times 0{,}1=-1$, y el efecto sustitución, la diferencia: $-2-(-1)=-1$. Los dos se calculan con la demanda observable, sin conocer la hicksiana.",
+    "desarrollo": "Con los datos, $x_1=100/10=10$, $\\partial x_1/\\partial p_1=-\\overline{W}/(2p_1^2)=-2$ y $\\partial x_1/\\partial\\overline{W}=1/(2p_1)=0{,}1$. Slutsky: $\\dfrac{\\partial x_1}{\\partial p_1}=\\dfrac{\\partial h_1}{\\partial p_1}-x_1\\dfrac{\\partial x_1}{\\partial\\overline{W}}$, de donde el efecto renta es $-10\\times 0{,}1=-1$ y el efecto sustitución $S_{11}=-2+1=-1$ (d). Es un bien normal: los dos efectos van en el mismo sentido. La a supone que no hay efecto renta, como si la demanda no dependiera de la renta. La b se equivoca en el signo del efecto renta (lo toma como $+x_1\\,\\partial x_1/\\partial\\overline{W}$), lo que correspondería a un bien inferior. La c olvida multiplicar la derivada respecto a la renta por la cantidad $x_1$: una subida de $p_1$ de una unidad monetaria equivale a perder $x_1=10$ unidades de renta, no una."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Ecuación de Slutsky: descomposición con datos observables",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310916,
+   "estado": "publicada",
+   "enunciado": "Un bien inferior tiene una elasticidad-renta de $-0{,}5$ y una elasticidad-precio propia compensada (hicksiana) de $-0{,}2$. Según la ecuación de Slutsky en elasticidades, el bien será Giffen si su participación en el gasto del consumidor:",
+   "opciones": {
+    "a": "Supera el 10 %.",
+    "b": "Supera el 40 %.",
+    "c": "Es inferior al 40 %.",
+    "d": "Tiene cualquier valor: todo bien inferior es un bien Giffen."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "$\\varepsilon_{x_i,p_i}=\\varepsilon^{h}_{i,p_i}-s_i\\,\\varepsilon_{x_i,\\overline{W}}=-0{,}2+0{,}5\\,s_i$, que es positiva si $s_i>0{,}4$. Para que el efecto renta domine al efecto sustitución, el bien inferior tiene que pesar mucho en el gasto.",
+    "desarrollo": "Un bien es Giffen si su elasticidad-precio marshalliana es positiva. Sustituyendo en la ecuación de Slutsky en elasticidades, $-0{,}2-s_i\\,(-0{,}5)>0\\iff s_i>0{,}2/0{,}5=0{,}4$ (b). La a multiplica las dos elasticidades ($0{,}2\\times 0{,}5=0{,}1$) en lugar de dividirlas. La c invierte la desigualdad: con una participación pequeña, el efecto renta, ponderado por $s_i$, no llega a compensar el efecto sustitución, y el bien es inferior pero ordinario. La d confunde las dos categorías: todo bien Giffen es inferior, pero no al revés."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Ecuación de Slutsky en elasticidades: bien Giffen",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310917,
+   "estado": "publicada",
+   "enunciado": "Un consumidor consume, entre otros, los bienes 1 y 2, en cantidades $x_1=10$ y $x_2=4$. Se ha estimado que $\\partial h_1/\\partial p_2=\\partial h_2/\\partial p_1=2$, $\\partial x_1/\\partial\\overline{W}=0{,}6$ y $\\partial x_2/\\partial\\overline{W}=0{,}1$, donde $h$ y $x$ son las demandas hicksiana y marshalliana. Llamando al bien $i$ sustitutivo (complementario) bruto del bien $j$ si $\\partial x_i/\\partial p_j$ es positiva (negativa), señale la afirmación correcta:",
+   "opciones": {
+    "a": "Son sustitutivos netos y sustitutivos brutos en los dos sentidos.",
+    "b": "Son sustitutivos netos; el bien 1 es complementario bruto del 2 y el bien 2 es sustitutivo bruto del 1.",
+    "c": "Son sustitutivos netos; el bien 1 es sustitutivo bruto del 2 y el bien 2 es complementario bruto del 1.",
+    "d": "Son sustitutivos netos y, como la matriz de Slutsky es simétrica, complementarios brutos en los dos sentidos."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Por Slutsky, $\\partial x_1/\\partial p_2=2-x_2\\times 0{,}6=2-2{,}4=-0{,}4<0$ y $\\partial x_2/\\partial p_1=2-x_1\\times 0{,}1=2-1=1>0$. La relación neta es simétrica; la bruta no, porque los efectos renta cruzados son distintos.",
+    "desarrollo": "El efecto sustitución cruzado es positivo ($S_{12}=S_{21}=2$): sustitutivos netos. El efecto total del precio del bien $j$ sobre el bien $i$ es $\\partial x_i/\\partial p_j=S_{ij}-x_j\\,\\partial x_i/\\partial\\overline{W}$: el efecto renta se pondera con la cantidad del bien cuyo precio cambia. Para el bien 1 ante $p_2$: $2-4\\times 0{,}6=-0{,}4$, complementario bruto. Para el bien 2 ante $p_1$: $2-10\\times 0{,}1=1$, sustitutivo bruto (b). La a ignora el efecto renta. La c sale de ponderar el efecto renta con la cantidad equivocada (la del propio bien en lugar de la del bien cuyo precio cambia) o de leer la relación al revés. La d traslada a las relaciones brutas la simetría, que solo tienen las netas."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Clasificación de los bienes según los precios cruzados",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310918,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con preferencias regulares (continuas, monótonas y estrictamente convexas) consume solo dos bienes, ambos en cantidades positivas. ¿Cuál de las siguientes situaciones es IMPOSIBLE?",
+   "opciones": {
+    "a": "Que los dos bienes sean complementarios netos.",
+    "b": "Que los dos bienes sean complementarios brutos.",
+    "c": "Que uno de los dos bienes sea inferior.",
+    "d": "Que el bien 1 sea complementario bruto del 2 y el bien 2 sea sustitutivo bruto del 1."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Como $S\\,\\vec{p}=\\vec{0}$, con dos bienes $S_{12}=-p_1S_{11}/p_2\\geq 0$: si sube $p_1$ y se mantiene la utilidad, la menor cantidad del bien 1 solo puede compensarse con más cantidad del bien 2. Todo bien tiene al menos un sustitutivo neto y, con dos bienes, es el otro.",
+    "desarrollo": "A lo largo de una curva de indiferencia con dos bienes, si se reduce uno debe aumentar el otro: el efecto sustitución cruzado no puede ser negativo (a es imposible). La b es posible: el efecto renta puede dominar al de sustitución en los dos sentidos, como ocurre con bienes poco sustituibles (preferencias próximas a las de Leontief). La c es posible: lo que no puede ocurrir es que los dos bienes sean inferiores a la vez, porque al aumentar la renta debe gastarse más en alguno (ley de Walras). La d es posible: la relación bruta no es simétrica, porque el efecto renta de un bien ante el precio del otro, $-x_j\\,\\partial x_i/\\partial\\overline{W}$, es distinto en cada sentido."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Propiedades de la matriz de Slutsky y clasificación de los bienes",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310919,
+   "estado": "publicada",
+   "enunciado": "Las preferencias de un consumidor se representan con $U(x_1,x_2)=x_2+2\\sqrt{x_1}$, de modo que, con $p_2=1$, su demanda del bien 1 es $x_1=1/p_1^2$ y no depende de la renta. Su renta es $\\overline{W}=10$. Si $p_1$ baja de 1 a 0,5, la variación compensatoria es:",
+   "opciones": {
+    "a": "0,5",
+    "b": "2",
+    "c": "1",
+    "d": "1,25"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Sin efecto renta, la demanda hicksiana coincide con la marshalliana y $\\mathrm{VC}=\\Delta\\mathrm{EC}=\\mathrm{VE}=\\int_{0{,}5}^{1}p_1^{-2}\\,dp_1=\\big[-1/p_1\\big]_{0{,}5}^{1}=-1+2=1$.",
+    "desarrollo": "Con preferencias cuasilineales el bien 1 no tiene efecto renta, así que las tres medidas coinciden con el área a la izquierda de la demanda entre los dos precios: $\\int_{0{,}5}^{1}p_1^{-2}dp_1=1$ (c). Comprobación con la función de gasto: $V=\\overline{W}+1/p_1$, luego $E(p_1,\\overline{U})=\\overline{U}-1/p_1$; $\\overline{U}^0=11$ y $\\mathrm{VC}=\\overline{W}-E(0{,}5;\\overline{U}^0)=10-(11-2)=1$. La a (0,5) es la variación de Laspeyres, $x_1^0\\,\\Delta p_1=1\\times 0{,}5$, que valora la bajada con la cesta inicial y queda por debajo de la VC. La b (2) es la de Paasche, $x_1^1\\,\\Delta p_1=4\\times 0{,}5$, que la valora con la cesta final y queda por encima de la VE. La d (1,25) es el área del trapecio que resulta de tratar la demanda como una recta entre las dos cestas, $0{,}5\\times(1+4)/2$. Aunque no haya efecto renta, las medidas de cesta fija difieren de las exactas, porque ignoran la sustitución."
+   },
+   "dificultad": 2,
+   "apartado": "III.3.2 Medidas de bienestar: VC, excedente y cestas fijas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:310919.webp",
+     "alt": "Plano con x1 en horizontal y p1 en vertical. Curva de demanda x1 = 1/p1^2, decreciente y convexa, que pasa por los puntos (1; 1) y (4; 0,5), marcados con líneas discontinuas hasta los ejes.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 310920,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con preferencias $U(x_1,x_2)=\\min\\{x_1,x_2\\}$ dispone de una renta $\\overline{W}=100$ y se enfrenta a los precios $p_1=p_2=1$. Se establece un impuesto unitario de 2 unidades monetarias sobre el bien 1, que se traslada íntegramente al precio ($p_1=3$). El exceso de gravamen del impuesto, medido con la variación equivalente (pérdida de bienestar menos recaudación), es:",
+   "opciones": {
+    "a": "25",
+    "b": "50",
+    "c": "100",
+    "d": "0"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con complementarios perfectos no hay sustitución: $E(\\vec{p},\\overline{U})=\\overline{U}(p_1+p_2)$. Con el impuesto, $x_1=x_2=25$ y la recaudación es $2\\times 25=50$; la pérdida de bienestar es $|\\mathrm{VE}|=100-E(1,1;25)=100-50=50$. El exceso de gravamen es $50-50=0$.",
+    "desarrollo": "Antes del impuesto, $x_1=x_2=100/2=50$ y $\\overline{U}^0=50$; después, $x_1=x_2=100/(3+1)=25$ y $\\overline{U}^1=25$. La variación equivalente es $E(\\vec{p}^0,\\overline{U}^1)-\\overline{W}=25\\times 2-100=-50$, y la recaudación, $T=2\\times 25=50$. $\\mathrm{EG}=-\\mathrm{VE}-T=0$ (d): el exceso de gravamen procede del efecto sustitución, y aquí la matriz de Slutsky es nula; el impuesto equivale a uno de suma fija de 50. La b (50) se queda en la pérdida de bienestar sin restar la recaudación. La c (100) es la variación compensatoria en valor absoluto, $E(\\vec{p}^1,\\overline{U}^0)-\\overline{W}=50\\times 4-100$, que además tampoco es un exceso de gravamen. La a (25) es el «triángulo» que se obtendría con la demanda marshalliana, $\\tfrac12\\times 2\\times(50-25)$: la caída de la cantidad se debe aquí solo al efecto renta, y el efecto renta no genera pérdida irrecuperable (es el aviso de Hausman sobre medirla con el excedente marshalliano)."
+   },
+   "dificultad": 3,
+   "apartado": "III.3.2 Medidas de bienestar: variación equivalente y exceso de gravamen",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310921,
+   "estado": "publicada",
+   "enunciado": "Un gobierno compara dos reformas alternativas, A y B, que parten de la misma situación inicial y llevan a vectores de precios finales distintos. Para ordenarlas según el bienestar de un consumidor, es preferible usar:",
+   "opciones": {
+    "a": "La variación compensatoria, porque valora cada reforma a los precios que regirán tras ella y por eso ordena siempre las reformas igual que la utilidad.",
+    "b": "La variación del excedente del consumidor, porque se calcula con la demanda observable y ordena siempre las reformas igual que la utilidad.",
+    "c": "La variación equivalente, porque valora las dos reformas a los mismos precios de referencia, los iniciales, y por eso las ordena igual que la utilidad.",
+    "d": "Cualquiera de las dos variaciones de Hicks, porque ambas ordenan siempre las reformas igual que la utilidad."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\mathrm{VE}=E(\\vec{p}^0,\\overline{U}^1)-\\overline{W}$ es una métrica monetaria con base fija, $\\vec{p}^0$: como $E$ es creciente en la utilidad, la reforma con mayor VE es la que da más utilidad. La VC usa los precios finales de cada reforma, distintos en cada caso, y puede ordenarlas mal.",
+    "desarrollo": "Con la VE, las dos reformas se comparan a través de $E(\\vec{p}^0,\\overline{U}^A)$ y $E(\\vec{p}^0,\\overline{U}^B)$: mismos precios, distinta utilidad, de modo que $\\mathrm{VE}_A>\\mathrm{VE}_B\\iff\\overline{U}^A>\\overline{U}^B$ (c). La a es falsa: $\\mathrm{VC}_A=\\overline{W}-E(\\vec{p}^A,\\overline{U}^0)$ y $\\mathrm{VC}_B=\\overline{W}-E(\\vec{p}^B,\\overline{U}^0)$ comparan el coste de la utilidad inicial a dos vectores de precios distintos, lo que no dice cuál de las dos utilidades finales es mayor; la VC es la medida adecuada para otra pregunta, la de cuánto hay que compensar por un cambio que se va a producir (criterio de Kaldor y Hicks). La b es falsa: el excedente marshalliano mezcla efecto sustitución y efecto renta y, con varios precios, depende del camino de integración. La d es falsa por lo dicho de la VC: las dos variaciones tienen siempre el mismo signo que el cambio de utilidad, pero solo la VE ordena bien más de una alternativa."
+   },
+   "dificultad": 2,
+   "apartado": "III.3.2 Medidas de bienestar: cuándo usar la VC y la VE",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310922,
+   "estado": "publicada",
+   "enunciado": "Una bajada del precio de un bien normal, cuya elasticidad-renta es 2, aumenta el excedente del consumidor de un hogar en $\\Delta\\mathrm{EC}=400$ euros; la renta del hogar es de 20.000 euros. Según la aproximación de Willig, la diferencia entre $\\Delta\\mathrm{EC}$ y cada una de las variaciones de Hicks es aproximadamente $\\varepsilon_{x,\\overline{W}}\\,(\\Delta\\mathrm{EC})^2/(2\\overline{W})$. Por tanto:",
+   "opciones": {
+    "a": "$\\mathrm{VC}\\approx 408$ euros y $\\mathrm{VE}\\approx 392$ euros.",
+    "b": "$\\mathrm{VC}\\approx 392$ euros y $\\mathrm{VE}\\approx 408$ euros.",
+    "c": "$\\mathrm{VC}\\approx 384$ euros y $\\mathrm{VE}\\approx 416$ euros.",
+    "d": "$\\mathrm{VC}=\\mathrm{VE}=400$ euros, porque el excedente del consumidor es exacto cuando el bien es normal."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La corrección es $2\\times 400^2/(2\\times 20.000)=8$ euros. Para un bien normal, ante una bajada del precio, $\\mathrm{VC}\\leq\\Delta\\mathrm{EC}\\leq\\mathrm{VE}$: $\\mathrm{VC}\\approx 392$ y $\\mathrm{VE}\\approx 408$. El error de usar el excedente es del 2 %.",
+    "desarrollo": "$\\varepsilon\\,(\\Delta\\mathrm{EC})^2/(2\\overline{W})=2\\times 160.000/40.000=8$. Como el bien es normal, la demanda hicksiana de la utilidad inicial queda a la izquierda de la marshalliana y la de la utilidad final, a su derecha: lo máximo que el hogar pagaría por la bajada (VC) es menor que el aumento del excedente, y lo mínimo que aceptaría por renunciar a ella (VE), mayor (b). El error relativo, $8/400=2\\,\\%$, es pequeño porque el cambio pesa poco en la renta: es lo que justifica usar el excedente en el equilibrio parcial. La a invierte el orden, que sería el de un bien inferior (o el de los valores absolutos ante una subida del precio). La c olvida el 2 del denominador y dobla la corrección. La d confunde bien normal con ausencia de efecto renta: el excedente solo es exacto si el efecto renta es nulo (preferencias cuasilineales)."
+   },
+   "dificultad": 2,
+   "apartado": "III.3.2 Medidas de bienestar: aproximación de Willig",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310923,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con preferencias $U(x_1,x_2)=\\sqrt{x_1x_2}$ y renta $\\overline{W}=100$ se enfrenta inicialmente a los precios $p_1=p_2=1$. Si $p_1$ sube a 4, ¿por cuánto habría que multiplicar su renta para que mantuviera exactamente su nivel de utilidad inicial (índice verdadero de coste de la vida)?",
+   "opciones": {
+    "a": "Por 2,5",
+    "b": "Por 1,6",
+    "c": "Por 2",
+    "d": "Por 4"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La función de gasto es $E=2\\overline{U}\\sqrt{p_1p_2}$, de modo que el índice de Konüs es $E(\\vec{p}^1,\\overline{U}^0)/E(\\vec{p}^0,\\overline{U}^0)=\\sqrt{4\\times 1}/\\sqrt{1\\times 1}=2$. El índice de Laspeyres daría 2,5: sobrecompensa, porque ignora la sustitución.",
+    "desarrollo": "Inicialmente, $x_1=x_2=50$ y $\\overline{U}^0=50$. A los precios nuevos, alcanzar $\\overline{U}^0$ cuesta $E=2\\times 50\\times\\sqrt{4}=200$: el doble de la renta (c). La cesta compensada es $(25,100)$: el consumidor sustituye el bien encarecido. La a (2,5) es el índice de Laspeyres, $\\vec{p}^1\\cdot\\vec{x}^0/\\vec{p}^0\\cdot\\vec{x}^0=(200+50)/100$: con esa renta podría volver a comprar la cesta inicial y, sustituyendo, quedar mejor que antes. La b (1,6) es el índice de Paasche: con renta 100 y los precios nuevos compra $(12{,}5;\\,50)$, y $\\vec{p}^1\\cdot\\vec{x}^1/\\vec{p}^0\\cdot\\vec{x}^1=100/62{,}5$; se quedaría corto. La d (4) aplica a toda la renta la subida de un solo precio. Como las preferencias son homotéticas, $I_P\\leq I_K\\leq I_L$ ($1{,}6<2<2{,}5$), y aquí el índice de Fisher, $\\sqrt{2{,}5\\times 1{,}6}=2$, coincide con el verdadero."
+   },
+   "dificultad": 2,
+   "apartado": "III.3.2 Índices de coste de la vida: Konüs, Laspeyres y Paasche",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310924,
+   "estado": "publicada",
+   "enunciado": "Sobre los índices de precios de Laspeyres ($I_L$) y de Paasche ($I_P$) y el índice verdadero de coste de la vida de Konüs ($I_K$), que compara el gasto mínimo necesario para alcanzar un mismo nivel de utilidad a los precios finales e iniciales, señale la afirmación correcta:",
+   "opciones": {
+    "a": "Para cualesquiera preferencias y cualquier nivel de utilidad de referencia, $I_P\\leq I_K\\leq I_L$.",
+    "b": "$I_L$ subestima el índice verdadero calculado con la utilidad inicial, porque valora a los precios finales una cesta que el consumidor ya no elegiría.",
+    "c": "$I_L$ es una cota superior del índice verdadero calculado con la utilidad inicial e $I_P$, una cota inferior del calculado con la utilidad final; si las preferencias son homotéticas, $I_K$ no depende de la utilidad y entonces $I_P\\leq I_K\\leq I_L$.",
+    "d": "Si no hay posibilidad de sustitución entre los bienes (preferencias de Leontief), la diferencia entre $I_L$ y el índice verdadero calculado con la utilidad inicial es máxima."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Laspeyres y Paasche acotan dos índices verdaderos distintos: $I_L\\geq I_K(\\overline{U}^0)$ e $I_P\\leq I_K(\\overline{U}^1)$. Solo cuando $I_K$ no depende del nivel de utilidad (preferencias homotéticas) quedan los dos a uno y otro lado del mismo índice.",
+    "desarrollo": "$I_L=\\vec{p}^1\\cdot\\vec{x}^0/\\overline{W}\\geq E(\\vec{p}^1,\\overline{U}^0)/\\overline{W}=I_K(\\overline{U}^0)$, porque mantener la cesta inicial cuesta al menos el gasto mínimo; e $I_P=\\overline{W}/(\\vec{p}^0\\cdot\\vec{x}^1)\\leq\\overline{W}/E(\\vec{p}^0,\\overline{U}^1)=I_K(\\overline{U}^1)$. Con preferencias homotéticas, $E(\\vec{p},\\overline{U})$ es el producto de una función de la utilidad por otra de los precios, la primera se cancela en el cociente y hay un único índice verdadero entre ambos (c). La a es la confusión habitual: con preferencias no homotéticas, $I_K(\\overline{U}^0)$ e $I_K(\\overline{U}^1)$ difieren, y nada garantiza que cada uno de ellos quede entre $I_P$ e $I_L$. La b invierte el sesgo: precisamente porque el consumidor ya no elegiría la cesta inicial (sustituye), valorarla a los precios nuevos sobrestima el coste de mantener la utilidad. La d es lo contrario de lo cierto: sin sustitución no hay sesgo de sustitución, y $I_L=I_K(\\overline{U}^0)$."
+   },
+   "dificultad": 3,
+   "apartado": "III.3.2 Índices de coste de la vida: Konüs, Laspeyres y Paasche",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310925,
+   "estado": "publicada",
+   "enunciado": "Se anuncia una subida del precio de la electricidad, de $\\vec{p}^0$ a $\\vec{p}^1$, que reducirá la utilidad de un consumidor con renta $\\overline{W}$ de $\\overline{U}^0$ a $\\overline{U}^1$. La cantidad máxima de dinero que este consumidor estaría dispuesto a pagar para evitar la subida es:",
+   "opciones": {
+    "a": "La variación compensatoria en valor absoluto: $E(\\vec{p}^1,\\overline{U}^0)-\\overline{W}$.",
+    "b": "La variación del excedente del consumidor en valor absoluto, cualquiera que sea el efecto renta.",
+    "c": "El aumento del coste de su cesta inicial: $(\\vec{p}^1-\\vec{p}^0)\\cdot\\vec{x}^0$.",
+    "d": "La variación equivalente en valor absoluto: $\\overline{W}-E(\\vec{p}^0,\\overline{U}^1)$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Pagar por evitar la subida es perder renta a los precios iniciales. El consumidor pagará como mucho la cantidad que lo deje igual que si la subida se produjera, es decir, en $\\overline{U}^1$: $\\overline{W}-E(\\vec{p}^0,\\overline{U}^1)$, la variación equivalente en valor absoluto.",
+    "desarrollo": "La VE usa los precios iniciales y la utilidad final: es el cambio de renta que «equivale» al cambio de precios (d). Si paga menos de $|\\mathrm{VE}|$ y la subida no se produce, queda por encima de $\\overline{U}^1$; si paga más, queda por debajo y prefiere la subida. La a es la variación compensatoria (precios finales, utilidad inicial): la compensación mínima que aceptaría una vez producida la subida, no lo que pagaría por evitarla; para un bien normal es mayor que $|\\mathrm{VE}|$. La b solo coincide con la respuesta si el efecto renta es nulo. La c es la variación de Laspeyres (en valor absoluto): lo que costaría seguir comprando la cesta inicial, que supera incluso a la compensación mínima porque ignora la sustitución."
+   },
+   "dificultad": 1,
+   "apartado": "III.3.2 Medidas de bienestar: variaciones compensatoria y equivalente",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

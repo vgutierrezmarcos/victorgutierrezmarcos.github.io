@@ -1,0 +1,34 @@
+% Pregunta 977 (2026-marzo, n.º 13): frontera de posibilidades de utilidad (FPU) y curvas de bienestar social.
+% FPU: (u1/5)^2 + (u2/4)^2 = 1, cóncava. W = u1·u2 (creciente en las utilidades): máximo en B = (5/√2, 4/√2), W* = 10.
+% A = (5cos80°, 4sen80°) ≈ (0,87; 3,94) es eficiente con W ≈ 3,42 < W*. C = (2,2; 1,2) es interior (ineficiente)
+% y tiene más u1 que A: A no es Pareto-superior a C. Sombreado: las mejoras paretianas de C (cuadrante noreste dentro de la FPU).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Mejoras paretianas de C
+  \fill[area] (2.2,1.2) -- (2.2,3.592) arc[x radius=5,y radius=4,start angle=63.9,end angle=17.46] -- cycle;
+  \ejes{$u_1$}{$u_2$}{6.4}{5}
+  % FPU
+  \draw[curva1] (5,0) arc[x radius=5,y radius=4,start angle=0,end angle=90];
+  \node[etiqueta,right,text=tceemorado] at (4.7,1.62) {FPU};
+  % Curvas de bienestar social W = u1·u2
+  \draw[curva2,domain=0.74:6.1,samples=60] plot (\x,{3.42/\x}) node[etiqueta,right,text=tceeazul] {$W_A$};
+  \draw[curva2,domain=2.06:6.1,samples=60] plot (\x,{10/\x}) node[etiqueta,right,text=tceeazul] {$W^*$};
+  % Líneas guía desde C: su cuadrante noreste
+  \draw[guia] (2.2,0) -- (2.2,3.592);
+  \draw[guia] (0,1.2) -- (4.77,1.2);
+  \draw[guia] (0.868,0) -- (0.868,3.939);
+  \node[below] at (0.868,0) {$u_1^A$};
+  \node[below] at (2.2,0) {$u_1^C$};
+  % Puntos
+  \node[punto] at (3.536,2.828) {};
+  \node[etiqueta,above right,align=left,yshift=3pt] at (3.536,2.828) {$B$: máximo\\de $W$};
+  \node[punto] at (0.868,3.939) {};
+  \node[etiqueta,above right,align=left] at (0.868,3.939) {$A$: óptimo de Pareto,\\$W$ menor};
+  \node[punto,fill=tceerojo] at (2.2,1.2) {};
+  \node[etiqueta,below left,text=tceerojo] at (2.2,1.2) {$C$};
+  \node[etiqueta,align=center,font=\footnotesize,text=tceemorado] at (3.2,2.05) {mejoras\\de Pareto\\sobre $C$};
+\end{tikzpicture}
+\end{document}

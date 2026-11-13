@@ -1,0 +1,71 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Las reservas de divisas de los bancos centrales, 1999-2026 (FMI, COFER;
+% consulta 05/11/2026, comprobada el 11/11/2026). Barras: total en billones de
+% dólares (eje izquierdo). Línea: % de las reservas asignadas en dólares (eje
+% derecho), en el verde del dólar de reservas-cofer.tex del 3.B.11.
+% En el CSV, x = fin del periodo en años: x = 2000 es 1999T4 (se rotula 1999)
+% y x = 2026,5 es 2026T2. Los ejes se rotulan con el año del dato (x - 1).
+% Capas (los ejes, siempre visibles): barras -> ejes -> línea del dólar -> puntos -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/cofer-reservas.csv}\cofer
+\colorlet{rsusd}{dicfbcf}
+\colorlet{rstotal}{dicrenta!40}
+\pgfplotsset{
+  marco/.style={
+    scale only axis, width=12cm, height=6.2cm,
+    xmin=1999.4, xmax=2027.1,
+    xtick={2001,2006,...,2026}, xticklabels={2000,2005,2010,2015,2020,2025},
+    xticklabel style={font=\footnotesize},
+    tick align=outside, clip=false},
+}
+\begin{tikzpicture}[tcee]
+  % Eje izquierdo: el total, en barras
+  \begin{axis}[marco,
+      ymin=0, ymax=25, ytick={0,5,...,25},
+      yticklabel style={font=\footnotesize},
+      ylabel={billones de dólares}, ylabel style={font=\footnotesize},
+      axis lines*=left, ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: el total de las reservas de divisas
+    \capa{1}{
+      \addplot[on layer=dicbarras, ybar, bar width=0.42, dicbarra=rstotal]
+        table[x=x, y=total_billones_usd] {\cofer};
+    }
+    % 3: rótulos de la primera y la última barra
+    \capa{3}{
+      \dicrotulo[font=\footnotesize, text=dicrenta, anchor=south, inner sep=2pt]
+        {(2000,1.783)}{$1{,}8$}
+      \dicrotulo[font=\footnotesize, text=dicrenta, anchor=south, inner sep=2pt]
+        {(2026.5,13.217)}{$13{,}2$}
+      \dicrotulo[font=\footnotesize, text=dicrenta, anchor=south west, inner sep=2pt, align=left]
+        {(2000.3,10.5)}{total de reservas\\de divisas (izquierda)}
+    }
+  \end{axis}
+  % Eje derecho: la cuota del dólar
+  \begin{axis}[marco,
+      axis x line=none, axis y line*=right,
+      ymin=0, ymax=75, ytick={0,15,...,75},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% de las reservas asignadas}, ylabel style={font=\footnotesize},
+      dicapas,
+    ]
+    % 2: la cuota del dólar
+    \capa{2}{
+      \addplot[diclinea=rsusd, mark=*, mark size=1.4pt,
+        mark options={fill=white, draw=rsusd, line width=0.8pt, solid}]
+        table[x=x, y=usd] {\cofer};
+    }
+    \capa{3}{
+      \dicrotulo[font=\footnotesize, text=rsusd, anchor=south west, inner sep=2pt]
+        {(2000,71.0)}{$71{,}0$~\%}
+      \dicrotulo[font=\footnotesize, text=rsusd, anchor=south, inner sep=4pt]
+        {(2026.5,56.7)}{$56{,}7$~\%}
+      \dicrotulo[font=\footnotesize, text=rsusd, anchor=south, inner sep=2pt]
+        {(2013,66)}{cuota del \textbf{dólar} (derecha)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

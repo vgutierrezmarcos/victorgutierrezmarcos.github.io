@@ -1,0 +1,119 @@
+tema: 3B17
+fecha_inventario: 2026-11-11
+# Fase 2 (datos, 11/11/2026); fase 3 (integración, 11/11/2026): los «texto» son ya frases literales de 3B17.tex.
+# Quedan fuera los hechos históricos cerrados (fechas de crisis, Soros, Tailandia 1997, PIB de 1998 de Asia,
+# Argentina 2001-2002, Grecia 2015): solo cambian con revisiones estadísticas y se anotan aquí solo si la cifra
+# viene de una base que se revisa (WEO).
+# Los CSV están en datos/.
+datos:
+  - id: crisis-frecuencia
+    texto: "Las cambiarias se multiplicaron con la libertad de capitales: 25 en los años 70, 74 en los 80 y 84 en los 90, con un máximo de 20 en 1994"
+    donde: [3B17.tex]
+    valor: [25, 74, 84, 20]
+    unidad: "número de crisis (inicios por año o década)"
+    periodo: 1970-2017
+    fuente: LaevenValencia2020
+    organismo: FMI (Laeven y Valencia)
+    serie: "Fichero de datos del artículo (MOESM1), pestaña «Crisis Frequency» (bancarias y cambiarias) y «Crisis Years» (deuda soberana). Comprobación: pestaña «Crisis Years» y réplica Rdatasets stevedata::SBCD"
+    url: https://static-content.springer.com/esm/art%3A10.1057%2Fs41308-020-00107-3/MediaObjects/41308_2020_107_MOESM1_ESM.xlsx
+    periodicidad: irregular (ediciones 2008, 2013, 2018/2020, 2026)
+    proxima: null
+    familia: laeven-valencia
+    depende: [datos/crisis-frecuencia.csv]
+    frase: "Introducción, Relevancia («Son frecuentes») y gráfico fig:crisis-frecuencia. La edición de 2026 (LaevenValencia2026, IMF WP 2026/094) solo amplía las bancarias a 1970-2025 (164 episodios): si una edición futura trae cambiarias y soberanas, rehacer el CSV y el gráfico"
+
+  - id: crisis-totales-1970-2017
+    texto: "entre 1970 y 2017 empezaron en el mundo 151 crisis bancarias sistémicas y 236 crisis cambiarias"
+    donde: [3B17.tex]
+    valor: [151, 236]
+    unidad: "número de crisis"
+    periodo: 1970-2017
+    fuente: LaevenValencia2020
+    organismo: FMI (Laeven y Valencia)
+    serie: "Resumen del artículo y pestaña «Crisis Frequency» del fichero de datos (MOESM1); comprobación: pestaña «Crisis Years»"
+    url: https://static-content.springer.com/esm/art%3A10.1057%2Fs41308-020-00107-3/MediaObjects/41308_2020_107_MOESM1_ESM.xlsx
+    periodicidad: irregular (ediciones 2008, 2013, 2018/2020, 2026)
+    proxima: null
+    familia: laeven-valencia
+    depende: [datos/crisis-frecuencia.csv]
+    frase: "Introducción, Relevancia («Son frecuentes»). La edición de 2026 da 164 bancarias en 1970-2025, pero no trae cambiarias: si una edición futura las trae, actualizar las 2 cifras a la vez"
+
+  - id: crisis-bancarias-2026
+    texto: "La actualización de 2026 amplía solo las crisis bancarias, hasta 2025"
+    donde: [3B17.tex]
+    valor: 164
+    unidad: "crisis bancarias sistémicas 1970-2025 (con 3 dudosas)"
+    periodo: 1970-2025
+    fuente: LaevenValencia2026
+    organismo: FMI (Laeven y Valencia)
+    serie: "IMF WP 2026/094, texto y cuadro A1 (151 de la edición de 2020 + 13 nuevas)"
+    url: https://www.imf.org/en/publications/wp/issues/2026/05/14/systemic-banking-crises-database-1970-2025-576036
+    periodicidad: irregular
+    proxima: null
+    familia: laeven-valencia
+    depende: [datos/crisis-frecuencia.csv]
+    frase: "Pie del gráfico de frecuencia de crisis"
+
+  - id: pib-asia-1998
+    texto: "en 1998 el PIB real cayó un 13,1~\\% en Indonesia, un 7,6~\\% en Tailandia, un 7,4~\\% en Malasia y un 4,9~\\% en Corea"
+    donde: [3B17.tex]
+    valor: [-13.1, -7.6, -7.4, -4.9]
+    unidad: "% de variación real"
+    periodo: 1998
+    fuente: FMI2026WEOdatos
+    organismo: FMI
+    serie: "WEO, NGDP_RPCH (IDN, THA, MYS, KOR). Comprobación: Banco Mundial WDI NY.GDP.MKTP.KD.ZG (iguales)"
+    url: https://www.imf.org/external/datamapper/NGDP_RPCH@WEO
+    periodicidad: histórico (revisiones con cada WEO, abril y octubre)
+    proxima: null
+    familia: fmi-weo
+    depende: []
+    frase: "Introducción, Relevancia («Son caras»; cita también BM2026WDIcrecimiento) y II.3 Evidencia empírica («Efectos reales», misma frase); Indonesia también en II.1. Corea aparecía antes con −5,5 % o −5,1 %: la cifra la revisa el WEO"
+
+  - id: pib-crisis-latam
+    texto: "en 1995, un 5,9~\\% en México, y en 2002, un 10,9~\\% en Argentina"
+    donde: [3B17.tex]
+    valor: [-5.9, -10.9, -7.7]
+    unidad: "% de variación real"
+    periodo: [1995, 2002, 2002]
+    fuente: FMI2026WEOdatos
+    organismo: FMI
+    serie: "WEO, NGDP_RPCH (MEX, ARG, URY). Comprobación: Banco Mundial WDI (iguales)"
+    url: https://www.imf.org/external/datamapper/NGDP_RPCH@WEO
+    periodicidad: histórico (revisiones con cada WEO)
+    proxima: null
+    familia: fmi-weo
+    depende: []
+    frase: "Introducción, Relevancia («Son caras»). México −5,9 % también en II.2.3 c); Argentina −10,9 % y Uruguay −7,7 % (2002) en III.2 a) y b)"
+
+  - id: turquia-2018
+    texto: "en 2018 la lira turca perdió un 28~\\% frente al dólar"
+    donde: [3B17.tex]
+    valor: 28
+    unidad: "% de pérdida de valor frente al dólar (fin de 2017 a fin de 2018: 3,79 → 5,29 TRY/USD)"
+    periodo: 2018
+    fuente: BCE2026EXR
+    organismo: BCE
+    serie: "EXR D.TRY.EUR.SP00.A y D.USD.EUR.SP00.A (cruce propio). Comprobación: BIS WS_XRU M.TR.TRY.E"
+    url: https://data.ecb.europa.eu/data/datasets/EXR
+    periodicidad: histórico (no cambia)
+    proxima: null
+    familia: tipos-cambio
+    depende: []
+    frase: "II.3 Evidencia empírica, «Las crisis siguen» (cita BCE2026EXR y BIS2026XRU); la conclusión nombra Turquía 2018 sin cifra"
+
+  - id: argentina-reciente
+    texto: "en 2018 el peso argentino perdió la mitad de su valor frente al dólar y el FMI concedió a Argentina el mayor préstamo de su historia, unos 56.300 millones de dólares; en diciembre de 2023 el tipo oficial pasó de 366,5 a 800 pesos por dólar, y en abril de 2025 el país firmó un nuevo programa de 20.000 millones"
+    donde: [3B17.tex]
+    valor: [56.3, 366.5, 800, 20]
+    unidad: "miles de millones de dólares; pesos por dólar"
+    periodo: 2018-2025
+    fuente: [FMI2018PR395, BIS2026XRU, FMI2025PR101]
+    organismo: FMI; BIS
+    serie: "Comunicados del FMI 18/245, 18/395 y 25/101; BIS WS_XRU D.AR.ARS.A"
+    url: https://www.imf.org/en/news/articles/2025/04/12/pr25101-argentina-imf-executive-board-approves-48-month-usd20-billion-extended-arrangement
+    periodicidad: según acontecimientos (nuevos programas o revisiones del FMI con Argentina)
+    proxima: null
+    familia: fmi-programas
+    depende: []
+    frase: "II.3 Evidencia empírica, «Las crisis siguen»; la conclusión nombra Argentina 2018 y 2023 sin cifras. Al actualizar, mirar si hay un programa nuevo o si el de 2025 se amplió"

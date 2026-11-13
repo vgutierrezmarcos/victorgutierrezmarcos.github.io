@@ -1,0 +1,38 @@
+% Pregunta 346 (2020-enero-OEP2019, n.º 13): economía de Robinson Crusoe, a escala.
+% Producción Y = 10*sqrt(L); indiferencia de E: Y(12-L) = 160; recta de precios Y = 10 + 2,5L,
+% tangente común en E = (4, 20): w/P = 2,5 (no 1) y beneficios 10. En L = 6, Y = 24,5 y U = 147 < 160.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.15cm]
+  \draw[eje] (0,0) -- (13.2,0) node[right,align=left] {$L$\\[-2pt](horas)};
+  \draw[eje] (0,0) -- (0,37) node[left] {$Y$};
+  \node[below left] at (0,0) {$0$};
+  \foreach \t in {4,6,12} \draw (\t,0) -- (\t,-0.6) node[below] {$\t$};
+  \foreach \t in {10,20,30} \draw (0,\t) -- (-0.15,\t) node[left] {$\t$};
+  % Tope de 12 horas
+  \draw[guia] (12,0) -- (12,35);
+  % Recta de precios (salario real y beneficios)
+  \draw[curva2] (0,10) -- (9.6,34) node[etiqueta,above,text=tceeazul] {pendiente $w/P=2{,}5$};
+  % Curva de indiferencia de E
+  \draw[curva3,domain=0:7.2,samples=60] plot (\x,{160/(12-\x)}) node[etiqueta,left,text=tceeverde] {$U=160$};
+  % Función de producción
+  \draw[curva1,domain=0:12,samples=200] plot (\x,{10*sqrt(\x)});
+  \node[etiqueta,text=tceemorado] at (10.4,28.5) {$Y=10\sqrt{L}$};
+  % Equilibrio
+  \draw[guia] (4,0) -- (4,20);
+  \draw[guia] (0,20) -- (4,20);
+  \node[punto] at (4,20) {};
+  \node[etiqueta,below right] at (4,20) {$E$};
+  % Beneficios: ordenada en el origen
+  \node[punto,fill=tceeazul] at (0,10) {};
+  \node[etiqueta,right,text=tceeazul,align=left,font=\footnotesize] at (0.5,4.6) {beneficios\\$=10$};
+  % Opción b)
+  \draw[guia] (6,0) -- (6,24.49);
+  \node[punto,fill=tceerojo] at (6,24.49) {};
+  \node[etiqueta,right,text=tceerojo,align=left,font=\footnotesize] at (6.2,20.5) {b) $L=6$: $Y\approx24{,}5$\\$U=147<160$};
+  % Ocio
+  \draw[<->,thin,tceegris] (4,-6.5) -- (12,-6.5) node[midway,below,font=\footnotesize,text=black] {ocio $=8$ h};
+\end{tikzpicture}
+\end{document}

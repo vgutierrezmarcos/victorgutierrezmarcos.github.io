@@ -1,0 +1,34 @@
+% Pregunta 612 (2009-octubre-OEP2009, n.º 9): duopolio de Cournot con costes marginales distintos.
+% Con a = 10, c1 = 1, c2 = 3 (a escala): R1: q1 = (9 - q2)/2, R2: q2 = (7 - q1)/2;
+% equilibrio (11/3, 5/3), por debajo de la bisectriz: q1* - q2* = c2 - c1 = 2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm]
+  \draw[eje] (0,0) -- (8.2,0) node[right] {$q_1$};
+  \draw[eje] (0,0) -- (0,9.8) node[above] {$q_2$};
+  \node[below left] at (0,0) {$0$};
+  % Bisectriz q1 = q2
+  \draw[guia] (0,0) -- (5.6,5.6) node[etiqueta,above,text=black!60] {$q_1=q_2$};
+  % Funciones de reacción
+  \draw[curva1] (0,9) -- (4.5,0);
+  \node[etiqueta,right,text=tceemorado,align=left] at (1.25,6.6) {$R_1$};
+  \draw[curva2] (0,3.5) -- (7,0);
+  \node[etiqueta,above,text=tceeazul,align=center] at (6.4,0.4) {$R_2$};
+  % Cortes con los ejes
+  \draw (0,9) -- (-0.1,9) node[left] {$a-c_1$};
+  \draw (0,3.5) -- (-0.1,3.5) node[left] {$\frac{a-c_2}{2}$};
+  \draw (4.5,0) -- (4.5,-0.1) node[below,xshift=7pt] {$\frac{a-c_1}{2}$};
+  \draw (7,0) -- (7,-0.1) node[below] {$a-c_2$};
+  % Equilibrio de Cournot
+  \draw[guia] (3.667,0) -- (3.667,1.667) -- (0,1.667);
+  \draw (3.667,0) -- (3.667,-0.1) node[below,xshift=-4pt] {$q_1^*$};
+  \draw (0,1.667) -- (-0.1,1.667) node[left] {$q_2^*$};
+  \node[punto] at (3.667,1.667) {};
+  \node[etiqueta,above right,align=left] at (3.9,1.7) {Cournot};
+  % Nota con los números
+  \node[etiqueta,align=left,font=\footnotesize,anchor=north west] at (3.3,10.0)
+    {$a=10$, $c_1=1$, $c_2=3$:\\[2pt]$q_1^*=11/3$, \ $q_2^*=5/3$\\[2pt]$q_1^*-q_2^*=c_2-c_1=2$\\[2pt]$\pi_i^*=(q_i^*)^2\Rightarrow\pi_1^*>\pi_2^*$};
+\end{tikzpicture}
+\end{document}

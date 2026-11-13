@@ -1,0 +1,36 @@
+% Pregunta 670 (2008-julio-OEP2008, n.º 22): mercado de trabajo con salario de eficiencia y paro.
+%   w* = 2 (fijado por la condición de Solow)
+%   L^d: w = 4,5 - 0,8 L  -> L0 = 3,125      L^d' (con la ayuda): w = 5,3 - 0,8 L -> L1 = 4,125
+%   L^s: w = 4 (L - 5)    -> 5,5 a w* (paro = L^s - L)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \ejes{$L$}{$w$}{6.4}{5}
+  \node[font=\small\bfseries,text=tceemorado,align=center] at (3.2,5.45)
+    {Ayuda a la contratación con paro};
+  % Oferta de trabajo
+  \draw[curva3] (5.0,0) -- (5.95,3.8) node[etiqueta,above,text=tceeverde] {$L^s$};
+  % Salario de eficiencia
+  \draw[curva4] (0,2) -- (6.2,2) node[etiqueta,above left,text=tceedorado] {$w^*$};
+  % Demanda inicial y desplazada
+  \draw[curva1] (0.6,4.02) -- (5.0,0.5) node[pos=0,etiqueta,above,text=tceemorado] {$L^d$};
+  \draw[curvanueva,desplazada] (1.6,4.02) -- (6.0,0.5) node[pos=0,etiqueta,above,text=tceerojo] {$L^{d}{}'$};
+  \draw[flecha] (2.0,3.0) -- (2.85,3.0);
+  % Empleo
+  \draw[guia] (3.125,2) -- (3.125,0) node[below] {$L_0$};
+  \draw[guia] (4.125,2) -- (4.125,0) node[below] {$L_1$};
+  \draw[guia] (5.5,2) -- (5.5,0) node[below] {$L^s$};
+  \node[punto] at (3.125,2) {};
+  \node[etiqueta,above right] at (3.125,2) {$A$};
+  \node[punto] at (4.125,2) {};
+  \node[etiqueta,above right] at (4.125,2) {$B$};
+  \node[punto] at (5.5,2) {};
+  % Paro tras la ayuda
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror},tceerojo,thick] (4.125,-0.45) -- (5.5,-0.45)
+    node[midway,below=4pt,text=tceerojo,font=\footnotesize] {paro};
+  \node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=north west] at (0.15,1.75)
+    {$w^*$ no cambia:\\sube el empleo};
+\end{tikzpicture}
+\end{document}

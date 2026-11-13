@@ -1,0 +1,633 @@
+{
+ "tema": "3.A.17",
+ "preguntas": [
+  {
+   "id": 311701,
+   "estado": "publicada",
+   "enunciado": "Un monopolista vende su producto a un precio de 30. En ese punto de la demanda la elasticidad-precio es, en valor absoluto, 3, y su coste marginal es 15. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Está maximizando el beneficio, porque el precio supera al coste marginal y se encuentra en el tramo elástico de la demanda.",
+    "b": "Su ingreso marginal es 20, mayor que el coste marginal: aumenta el beneficio si produce más y baja el precio.",
+    "c": "Su ingreso marginal es 10, menor que el coste marginal: aumenta el beneficio si produce menos y sube el precio.",
+    "d": "Su ingreso marginal es 20, pero, como la demanda es elástica, le conviene subir el precio hasta el punto de elasticidad unitaria."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "$\\mathrm{IMg}=p\\,(1-1/|\\varepsilon_{q,p}|)=30\\cdot(1-1/3)=20$, mayor que el coste marginal (15): la última unidad aporta más de lo que cuesta, así que conviene producir más, lo que exige bajar el precio. En el óptimo el margen relativo sería $1/|\\varepsilon_{q,p}|$, y aquí es $(30-15)/30=1/2>1/3$: el precio es demasiado alto.",
+    "desarrollo": "El ingreso marginal se escribe con la elasticidad de la demanda:\n\n$$\\mathrm{IMg}=p\\left(1-\\frac{1}{|\\varepsilon_{q,p}|}\\right)=30\\cdot\\frac{2}{3}=20.$$\n\nComo $\\mathrm{IMg}=20>\\mathrm{CMg}=15$, una unidad más añade al ingreso más de lo que añade al coste: el beneficio aumenta si se produce más, y para vender más hay que bajar el precio. La misma conclusión sale del índice de Lerner: en el óptimo, $(p-\\mathrm{CMg})/p=1/|\\varepsilon_{q,p}|$; aquí el margen relativo es $1/2$ y la inversa de la elasticidad es $1/3$, así que el margen es excesivo.\n\nPor qué fallan las demás:\n\n- a) Que $p>\\mathrm{CMg}$ y que la demanda sea elástica son condiciones necesarias del óptimo, no suficientes: hace falta $\\mathrm{IMg}=\\mathrm{CMg}$.\n- c) Calcula mal el ingreso marginal ($30/3=10$ es lo que se pierde en las unidades que ya se vendían, $p/|\\varepsilon_{q,p}|$, no el ingreso marginal).\n- d) El punto de elasticidad unitaria maximiza el ingreso ($\\mathrm{IMg}=0$), no el beneficio: con coste marginal positivo el monopolista se queda siempre en el tramo elástico, y aquí además debe moverse hacia precios más bajos, no más altos."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Equilibrio del monopolio (ingreso marginal y elasticidad)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311702,
+   "estado": "publicada",
+   "enunciado": "Suele decirse que el monopolista «no tiene curva de oferta». Con ello se quiere decir que:",
+   "opciones": {
+    "a": "Su curva de oferta es, como en competencia perfecta, el tramo del coste marginal situado por encima del mínimo del coste variable medio, pero no puede dibujarse sin conocer la demanda.",
+    "b": "Su curva de oferta es la curva de ingreso marginal, y no la de coste marginal, de modo que depende solo de la demanda y no de los costes.",
+    "c": "Solo carece de curva de oferta cuando produce con costes medios decrecientes; con costes marginales crecientes ofrece según $p=\\mathrm{CMg}$.",
+    "d": "No existe una relación única entre el precio y la cantidad ofrecida: esta depende también de la elasticidad de la demanda, y un mismo precio puede ir con cantidades distintas."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Una curva de oferta asocia a cada precio una única cantidad, con independencia de la demanda. El monopolista elige a la vez precio y cantidad con $\\mathrm{IMg}=\\mathrm{CMg}$, y el ingreso marginal depende de la forma (elasticidad) de la demanda: el mismo precio puede ir con cantidades distintas, y la misma cantidad con precios distintos.",
+    "desarrollo": "En competencia perfecta la empresa es precio-aceptante y $p=\\mathrm{CMg}(q)$ da, para cada precio, una única cantidad: esa relación es su curva de oferta y no depende de la demanda. El monopolista resuelve $\\mathrm{IMg}(q)=\\mathrm{CMg}(q)$ y después lee el precio en la demanda, $p^M=\\mathrm{CMg}\\cdot|\\varepsilon_{q,p}|/(|\\varepsilon_{q,p}|-1)$. El resultado depende de la elasticidad de la demanda en el equilibrio: si la demanda cambia de forma, a un mismo precio puede corresponderle otra cantidad. No hay, por tanto, una función que asocie a cada precio una cantidad ofrecida.\n\nPor qué fallan las demás:\n\n- a) El monopolista no produce donde $p=\\mathrm{CMg}$, sino donde $\\mathrm{IMg}=\\mathrm{CMg}$, con $p>\\mathrm{CMg}$.\n- b) El ingreso marginal es una característica de la demanda, no una relación entre el precio y la cantidad ofrecida.\n- c) La inexistencia de la curva de oferta no tiene que ver con la forma de los costes, sino con que el precio es endógeno: vale igual con costes marginales crecientes.\n\nPor la misma razón, el monopsonista no tiene curva de demanda del factor."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Equilibrio del monopolio (no hay curva de oferta)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311703,
+   "estado": "publicada",
+   "enunciado": "Un monopolista se enfrenta a la demanda $p=20-q$ y produce con la función de costes $C(q)=14q-\\tfrac12q^2$ (para $q<14$), de modo que su coste marginal es decreciente. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Maximiza el beneficio con $q=6$ y $p=14$: la condición de segundo orden se cumple porque el ingreso marginal decrece más deprisa que el coste marginal.",
+    "b": "$q=6$ cumple la condición de primer orden, pero es un mínimo del beneficio, porque el coste marginal es decreciente: el monopolista produce la mayor cantidad posible.",
+    "c": "No existe equilibrio: con coste marginal decreciente la condición de segundo orden no se cumple nunca, igual que le ocurre a una empresa competitiva.",
+    "d": "Maximiza el beneficio con $q=6$ y $p=8$, donde el precio iguala al coste marginal."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$\\mathrm{IMg}=20-2q$ y $\\mathrm{CMg}=14-q$ se igualan en $q=6$, con $p=14$. La condición de segundo orden es $\\mathrm{IMg}'<\\mathrm{CMg}'$, es decir, $-2<-1$: se cumple. A diferencia de la empresa competitiva, el monopolista puede maximizar en el tramo decreciente del coste marginal si este corta al ingreso marginal desde abajo.",
+    "desarrollo": "Beneficio: $B(q)=(20-q)\\,q-14q+\\tfrac12q^2=6q-\\tfrac12q^2$.\n\n- Condición de primer orden: $B'(q)=6-q=0\\Rightarrow q^M=6$; es lo mismo que $\\mathrm{IMg}=20-2q=14-q=\\mathrm{CMg}$. El precio se lee en la demanda: $p^M=20-6=14$; el coste marginal es 8.\n- Condición de segundo orden: $B''(q)=\\mathrm{IMg}'-\\mathrm{CMg}'=-2-(-1)=-1<0$. Es un máximo, con $B=36-18=18$.\n\nLas pendientes se comparan con su signo: basta que el ingreso marginal decrezca más deprisa que el coste marginal (que el coste marginal corte al ingreso marginal desde abajo).\n\nPor qué fallan las demás:\n\n- b) El beneficio $6q-\\tfrac12q^2$ es una parábola con máximo en $q=6$; producir más lo reduce.\n- c) Es lo que le ocurre a la empresa competitiva, cuyo ingreso marginal es constante ($p$): con coste marginal decreciente, $p=\\mathrm{CMg}$ es un mínimo. Al monopolista no, porque su ingreso marginal también decrece.\n- d) $p=8$ es el coste marginal en $q=6$, no el precio: el monopolista cobra lo que la demanda permite para esa cantidad, 14."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Equilibrio del monopolio (condición de segundo orden)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311704,
+   "estado": "publicada",
+   "enunciado": "Un monopolista se enfrenta a la demanda $p=40-q$ y tiene la función de costes $C(q)=300+10q$. A corto plazo, el coste fijo de 300 se paga aunque no produzca; a largo plazo, todos los costes son evitables. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Cierra ya a corto plazo, porque con la cantidad que iguala el ingreso marginal y el coste marginal tiene pérdidas.",
+    "b": "Produce 15 unidades a corto y a largo plazo, porque el precio supera al coste marginal.",
+    "c": "A corto plazo produce 15 unidades y las vende a 25, con una pérdida de 75; a largo plazo abandona el mercado.",
+    "d": "A corto plazo no produce, porque el precio es menor que el coste medio; a largo plazo entra, cuando el coste fijo pasa a ser variable."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\mathrm{IMg}=40-2q=10$ da $q=15$ y $p=25$. El precio cubre el coste variable medio (10), así que a corto plazo produce: pierde $375-450=-75$, menos que los 300 que perdería cerrando. A largo plazo exige $p\\geq\\mathrm{CMe}$, y $25<\\mathrm{CMe}(15)=30$: sale del mercado.",
+    "desarrollo": "- Óptimo: $\\mathrm{IMg}=40-2q=10=\\mathrm{CMg}\\Rightarrow q^M=15$, $p^M=25$.\n- Beneficio: ingreso $25\\cdot15=375$; coste $300+150=450$; $B=-75$. Por otra vía: margen sobre el coste variable $(25-10)\\cdot15=225$, menos el coste fijo, $225-300=-75$.\n- Corto plazo: se compara $B(q^M)=-75$ con $B(0)=-300$. Como $p=25\\geq\\mathrm{CVMe}=10$, produce: cada unidad aporta 15 a cubrir el coste fijo.\n- Largo plazo: todos los costes son evitables y la condición es $p(q^M)\\geq\\mathrm{CMe}(q^M)$. $\\mathrm{CMe}(15)=10+300/15=30>25$: no produce. (De hecho la demanda queda siempre por debajo del coste medio: $40-q=10+300/q$ no tiene solución real.)\n\nPor qué fallan las demás:\n\n- a) A corto plazo las pérdidas no bastan para cerrar: hay que compararlas con el coste fijo, que se paga igual.\n- b) $p>\\mathrm{CMg}$ se cumple siempre en el monopolio; la viabilidad a largo plazo exige $p\\geq\\mathrm{CMe}$.\n- d) Invierte los plazos: la condición $p\\geq\\mathrm{CMe}$ es la de largo plazo, y a corto basta $p\\geq\\mathrm{CVMe}$."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Equilibrio del monopolio (condición de viabilidad a corto y largo plazo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311705,
+   "estado": "publicada",
+   "enunciado": "Un monopolista con coste marginal constante igual a 16 y sin costes fijos se enfrenta a la demanda $p=100-q$. El gobierno establece un impuesto ad valorem del 20 % sobre el precio de venta, de modo que el monopolista ingresa el 80 % del precio que paga el consumidor. El precio que paga el consumidor tras el impuesto es:",
+   "opciones": {
+    "a": "58, el mismo que sin impuesto: un impuesto proporcional al precio no altera la condición de primer orden.",
+    "b": "59,6.",
+    "c": "60.",
+    "d": "69,6."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con el impuesto, el monopolista maximiza $0{,}8\\,(100-q)\\,q-16q$: la condición es $(1-\\tau)\\,\\mathrm{IMg}=\\mathrm{CMg}$, es decir, $0{,}8\\,(100-2q)=16$, de donde $q=40$ y $p=60$. Sin impuesto, $q=42$ y $p=58$: el precio sube 2.",
+    "desarrollo": "Sin impuesto: $\\mathrm{IMg}=100-2q=16\\Rightarrow q=42$, $p=58$.\n\nCon el impuesto ad valorem $\\tau=0{,}2$ el monopolista se queda con $(1-\\tau)\\,p$ por unidad:\n\n$$\\max_q\\ 0{,}8\\,(100-q)\\,q-16q\\ \\Rightarrow\\ 0{,}8\\,(100-2q)=16\\ \\Rightarrow\\ 100-2q=20\\ \\Rightarrow\\ q=40,\\quad p=60.$$\n\nComprobación por otra vía: dividir la condición por $0{,}8$ equivale a un monopolista sin impuesto con coste marginal $16/0{,}8=20$; con demanda lineal, $p=(a+c)/2=(100+20)/2=60$.\n\nPor qué fallan las demás:\n\n- a) El impuesto que no altera la condición de primer orden es el que recae sobre el beneficio (o el de suma fija). El ad valorem recae sobre el ingreso, no sobre el beneficio: multiplica el ingreso marginal por $(1-\\tau)$ y deja igual el coste marginal, así que reduce la cantidad.\n- b) 59,6 sale de tratarlo como un impuesto unitario del 20 % del coste marginal ($t=3{,}2$): $p=(100+16+3{,}2)/2$.\n- d) 69,6 sale de añadir el 20 % al precio inicial ($58\\cdot1{,}2$), como si el monopolista no reajustara la cantidad y la traslación fuera completa."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Equilibrio del monopolio (extensiones: impuestos sobre el monopolista)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311706,
+   "estado": "publicada",
+   "enunciado": "Un monopolista se enfrenta a la demanda $p=60-q$ y su función de costes es $C(q)=\\tfrac12q^2$. La pérdida irrecuperable de eficiencia respecto al equilibrio competitivo ($p=\\mathrm{CMg}$) es:",
+   "opciones": {
+    "a": "100.",
+    "b": "50.",
+    "c": "200.",
+    "d": "600."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Monopolio: $60-2q=q$, $q^M=20$, $p^M=40$, con coste marginal 20. Competencia: $60-q=q$, $q^c=30$. La pérdida es el triángulo entre la demanda y el coste marginal de 20 a 30 unidades: $\\tfrac12\\cdot(40-20)\\cdot(30-20)=100$.",
+    "desarrollo": "- Monopolio: $\\mathrm{IMg}=60-2q=q=\\mathrm{CMg}\\Rightarrow q^M=20$, $p^M=40$, $\\mathrm{CMg}(20)=20$.\n- Competencia: $p=\\mathrm{CMg}\\Rightarrow 60-q=q\\Rightarrow q^c=30$, $p^c=30$.\n- Pérdida irrecuperable: las unidades entre 20 y 30 valen para los consumidores más de lo que cuestan y no se producen. Es el área entre la demanda y el coste marginal:\n\n$$\\mathrm{PIE}=\\int_{20}^{30}\\big[(60-q)-q\\big]\\,dq=\\tfrac12\\cdot20\\cdot10=100.$$\n\nSe compone de dos triángulos de 50: el que era excedente del consumidor (entre la demanda y $p^c=30$) y el que era excedente del productor (entre $p^c=30$ y el coste marginal).\n\nPor qué fallan las demás:\n\n- b) 50 es solo uno de los dos triángulos: con coste marginal creciente se pierde también excedente del productor.\n- c) 200 es el rectángulo $(p^M-p^c)\\,q^M=10\\cdot20$: una transferencia de los consumidores al monopolista, no una pérdida.\n- d) 600 es el beneficio del monopolista ($40\\cdot20-200$). La regla $\\mathrm{PIE}=B/2$ solo es exacta con demanda lineal y coste marginal constante, y aquí no lo es."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Análisis de eficiencia y bienestar (triángulo de Harberger)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311707,
+   "estado": "publicada",
+   "enunciado": "Un monopolista sin costes fijos, con coste marginal constante igual a 20, se enfrenta a la demanda $p=100-q$. Si, como supone Posner, la competencia por conseguir el monopolio disipa todo su beneficio en actividades de búsqueda de rentas, el coste social total del monopolio (sin ineficiencia X) es:",
+   "opciones": {
+    "a": "800.",
+    "b": "1.600.",
+    "c": "3.200.",
+    "d": "2.400."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$q^M=40$, $p^M=60$, beneficio $40\\cdot40=1.600$ y triángulo de Harberger $\\tfrac12\\cdot40\\cdot40=800$ (la mitad del beneficio, con demanda lineal y coste marginal constante). Si todo el beneficio se disipa en la búsqueda de rentas, el rectángulo del beneficio se suma al triángulo: $800+1.600=2.400$.",
+    "desarrollo": "- Monopolio: $\\mathrm{IMg}=100-2q=20\\Rightarrow q^M=40$, $p^M=60$; $B=(60-20)\\cdot40=1.600$.\n- Competencia: $p=20$, $q^c=80$.\n- Triángulo de Harberger: $\\tfrac12\\,(60-20)\\,(80-40)=800=B/2$.\n- Búsqueda de rentas: para Harberger el rectángulo del beneficio es una mera transferencia. Tullock (1967) señala que los recursos gastados en conseguir y defender el monopolio (grupos de presión, litigios, licencias) son un coste social, y Posner (1975) supone que la competencia por el premio lo disipa entero. Coste social: $800+1.600=2.400$.\n\nPor qué fallan las demás:\n\n- a) 800 es solo el triángulo de Harberger: la cota inferior de la pérdida.\n- b) 1.600 es solo el beneficio disipado; el triángulo no desaparece por ello.\n- c) 3.200 es el excedente total del equilibrio competitivo ($\\tfrac12\\cdot80\\cdot80$): el monopolio no lo destruye entero, porque los consumidores conservan un excedente de $\\tfrac12\\cdot40\\cdot40=800$."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Análisis de eficiencia y bienestar (búsqueda de rentas)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311708,
+   "estado": "publicada",
+   "enunciado": "Un monopolista con la función de costes $C(q)=\\tfrac12q^2$ se enfrenta a la demanda $p=120-q$ y puede practicar una discriminación de precios de primer grado (perfecta). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Produce 40 unidades, las mismas que con precio uniforme, pero se apropia además del excedente de los consumidores: su beneficio es 3.200.",
+    "b": "Produce 60 unidades y obtiene un beneficio de 3.600; el excedente de los consumidores es nulo y el excedente total es mayor que con precio uniforme.",
+    "c": "Produce 60 unidades y las vende todas a un precio de 60, con un beneficio de 1.800 y un excedente de los consumidores de 1.800.",
+    "d": "Produce 60 unidades y obtiene un beneficio de 3.600, pero el excedente total es menor que con precio uniforme, porque desaparece el excedente de los consumidores."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con discriminación perfecta la demanda es el ingreso marginal: produce hasta $p=\\mathrm{CMg}$, $120-q=q$, $q=60$, la cantidad competitiva. Se queda con todo el excedente, $\\tfrac12\\cdot120\\cdot60=3.600$. Con precio uniforme, $q=40$, $p=80$, $B=2.400$ y excedente del consumidor 800: el excedente total es 3.200.",
+    "desarrollo": "Con discriminación perfecta cada unidad se vende a su precio de reserva sin bajar el de las demás, así que $\\mathrm{IMg}(q)=p(q)$ y se produce hasta que $p(q)=\\mathrm{CMg}(q)$:\n\n$$120-q=q\\ \\Rightarrow\\ q^{*}=60.$$\n\nEl monopolista se queda con toda el área entre la demanda y el coste marginal: $\\int_0^{60}(120-2q)\\,dq=7.200-3.600=3.600$. (Por otra vía: ingreso $\\int_0^{60}(120-q)\\,dq=5.400$, menos coste $\\tfrac12\\cdot60^2=1.800$.) El excedente del consumidor es nulo y la asignación es eficiente.\n\nCon precio uniforme: $120-2q=q\\Rightarrow q=40$, $p=80$, $B=3.200-800=2.400$, $\\mathrm{EC}=\\tfrac12\\cdot40\\cdot40=800$, excedente total 3.200. La diferencia, 400, es el triángulo de Harberger, que la discriminación perfecta elimina.\n\nPor qué fallan las demás:\n\n- a) Mantiene la cantidad del precio uniforme; pero, si puede cobrar a cada unidad su valoración, le conviene seguir vendiendo hasta que la valoración iguala el coste marginal.\n- c) Es el equilibrio competitivo: la cantidad coincide, pero el reparto no. El discriminador solo vende a 60 la última unidad.\n- d) El excedente del consumidor no desaparece: pasa al monopolista. El problema es de equidad, no de eficiencia."
+   },
+   "dificultad": 2,
+   "apartado": "II.1.1 Discriminación de primer grado",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311709,
+   "estado": "publicada",
+   "enunciado": "Un monopolista con coste marginal constante $c=1$ vende a dos tipos de consumidores, que no puede distinguir y que están en la misma proporción ($\\nu=1/2$). El tipo $i$ obtiene una utilidad $t_i\\,u(q)-T$ al comprar $q$ unidades por un pago total $T$, con $u(q)=2\\sqrt{q}$, $t_1=4$ y $t_2=6$; si no compra, obtiene 0. El menú de paquetes $\\{(q_1,T_1),(q_2,T_2)\\}$ que maximiza el beneficio es:",
+   "opciones": {
+    "a": "$(q_1,T_1)=(4,\\,16)$ y $(q_2,T_2)=(36,\\,64)$.",
+    "b": "$(q_1,T_1)=(16,\\,32)$ y $(q_2,T_2)=(36,\\,72)$.",
+    "c": "$(q_1,T_1)=(4,\\,16)$ y $(q_2,T_2)=(36,\\,72)$.",
+    "d": "$(q_1,T_1)=(16,\\,32)$ y $(q_2,T_2)=(36,\\,56)$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El tipo alto recibe la cantidad eficiente, $t_2u'(q_2)=c$: $6/\\sqrt{q_2}=1$, $q_2=36$. La del tipo bajo se distorsiona a la baja: $t_1u'(q_1)\\,[1-\\frac{1-\\nu}{\\nu}\\frac{t_2-t_1}{t_1}]=c$, es decir, $2/\\sqrt{q_1}=1$, $q_1=4$ (la eficiente sería 16). $T_1=t_1u(q_1)=16$ y $T_2=t_2u(q_2)-(t_2-t_1)\\,u(q_1)=72-8=64$.",
+    "desarrollo": "Se saturan la restricción de participación del tipo bajo y la de incentivos del alto:\n\n- $T_1=t_1u(q_1)$ (al tipo bajo se le extrae todo su excedente);\n- $T_2=t_2u(q_2)-(t_2-t_1)\\,u(q_1)$ (al alto se le deja su renta informativa).\n\nSustituyendo, el beneficio es $\\tfrac12\\,[4u(q_1)-q_1]+\\tfrac12\\,[6u(q_2)-2u(q_1)-q_2]$, con $u'(q)=1/\\sqrt{q}$:\n\n- respecto a $q_2$: $6/\\sqrt{q_2}=1\\Rightarrow q_2=36$ (no hay distorsión arriba);\n- respecto a $q_1$: $(4-2)/\\sqrt{q_1}=1\\Rightarrow q_1=4$ (distorsión abajo; la eficiente sería $4/\\sqrt{q_1}=1$, $q_1=16$).\n\nPagos: $u(4)=4$ y $u(36)=12$, así que $T_1=4\\cdot4=16$ y $T_2=6\\cdot12-2\\cdot4=64$. Comprobación de incentivos: el tipo alto obtiene $72-64=8$ con su paquete y $6\\cdot4-16=8$ con el del bajo (indiferente); el bajo obtiene 0 con el suyo y $4\\cdot12-64=-16$ con el del alto. Beneficio esperado: $\\tfrac12\\,(16-4)+\\tfrac12\\,(64-36)=20$. No conviene excluir al tipo bajo (se obtendría $\\tfrac12\\,(72-36)=18$), porque $\\nu\\,t_1=2>(1-\\nu)\\,(t_2-t_1)=1$.\n\nPor qué fallan las demás:\n\n- b) Es el menú de información completa (discriminación perfecta). Con información oculta no es compatible con los incentivos: el tipo alto elegiría $(16,32)$, con el que gana $6\\cdot8-32=16>0$.\n- c) Distorsiona bien la cantidad del bajo, pero olvida la renta informativa: con $T_2=72$ el alto prefiere el paquete del bajo (gana 8 frente a 0).\n- d) Es compatible con los incentivos ($T_2=72-2\\cdot8=56$), pero no distorsiona la cantidad del bajo y deja al alto una renta de 16: el beneficio es $\\tfrac12\\cdot16+\\tfrac12\\cdot20=18<20$."
+   },
+   "dificultad": 3,
+   "apartado": "II.1.2 Discriminación de segundo grado (autoselección con 2 tipos)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311710,
+   "estado": "borrador",
+   "enunciado": "Un monopolista con coste marginal constante $c=2$ y sin costes fijos vende a dos consumidores, con demandas $q_1=8-p$ y $q_2=12-p$. Debe ofrecer a ambos la misma tarifa en dos partes, $T(q)=A+p\\,q$, y no hay reventa; puede fijarla de modo que alguno de los dos no compre. La tarifa que maximiza su beneficio es:",
+   "opciones": {
+    "a": "$p=2$ y $A=18$: precio igual al coste marginal y cuota igual al excedente del consumidor de menor demanda.",
+    "b": "$p=4$ y $A=8$: precio por encima del coste marginal y cuota igual al excedente del consumidor de menor demanda.",
+    "c": "$p=4$ y $A=32$: precio por encima del coste marginal y cuota igual al excedente del consumidor de mayor demanda.",
+    "d": "$p=2$ y $A=50$: precio igual al coste marginal y cuota igual al excedente del consumidor de mayor demanda."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Sin excluir a nadie, lo mejor es $p=4$ y $A=\\mathrm{EC}_1(4)=8$, con beneficio $2\\cdot8+2\\cdot(4+8)=40$. Excluyendo al de menor demanda, $p=c=2$ y $A=\\mathrm{EC}_2(2)=\\tfrac12\\cdot10^2=50$, con beneficio 50. Como $50>40$, compensa excluir: hay que comparar siempre las dos alternativas.",
+    "desarrollo": "Excedente del consumidor $i$ a un precio $p$: $\\mathrm{EC}_1(p)=\\tfrac12\\,(8-p)^2$ y $\\mathrm{EC}_2(p)=\\tfrac12\\,(12-p)^2$.\n\n- Si atiende a los dos, la cuota no puede superar el excedente del de menor demanda: $A=\\mathrm{EC}_1(p)$. Beneficio: $B(p)=2\\cdot\\tfrac12\\,(8-p)^2+(p-2)\\,(20-2p)$; $B'(p)=-2\\,(8-p)+(20-2p)-2\\,(p-2)=8-2p=0\\Rightarrow p=4$, $A=8$, $B=16+2\\cdot12=40$. Es la regla de Oi: $p-c=n_2\\,(q_2-q_1)/[-(n_1q_1'+n_2q_2')]=4/2=2$.\n- Si atiende solo al de mayor demanda, lo mejor es extraerle todo su excedente al precio eficiente: $p=2$, $A=\\mathrm{EC}_2(2)=50$, $B=50$ (todo el excedente que ese consumidor puede generar). El otro no compra, porque $\\mathrm{EC}_1(2)=18<50$.\n\nComo $50>40$, la tarifa óptima es $p=2$ y $A=50$.\n\nPor qué fallan las demás:\n\n- a) Con $p=2$ y $A=18$ compran los dos, pero el beneficio es solo $2\\cdot18=36$.\n- b) Es la mejor tarifa entre las que no excluyen a nadie (40), pero no la mejor de todas.\n- c) Con $A=32=\\mathrm{EC}_2(4)$ solo compra el de mayor demanda y el beneficio es $32+2\\cdot8=48<50$: si se atiende a un solo tipo, no tiene sentido cobrar por encima del coste marginal.\n\nEl excedente que habría generado el consumidor excluido (18) se pierde."
+   },
+   "dificultad": 3,
+   "apartado": "II.1.2 Discriminación de segundo grado (extensiones: tarifa en dos partes)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311711,
+   "estado": "publicada",
+   "enunciado": "Un monopolista con coste marginal nulo vende en dos mercados separados, con demandas $q_1=24-p_1$ y $q_2=12-p_2$. Si pasa de cobrar el precio uniforme que maximiza su beneficio a discriminar precios en tercer grado:",
+   "opciones": {
+    "a": "La cantidad total vendida aumenta y, con ella, el excedente total.",
+    "b": "La cantidad total vendida no cambia y el excedente total tampoco: solo se redistribuye entre los consumidores y el monopolista.",
+    "c": "La cantidad total vendida no cambia (18 unidades), el beneficio aumenta de 162 a 180 y el excedente total disminuye de 279 a 270.",
+    "d": "La cantidad total vendida no cambia y, por tanto, tampoco el beneficio: al monopolista le es indiferente discriminar."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Precio uniforme: $Q=36-2p$, $p=9$, $Q=18$, $B=162$. Con discriminación: $p_1=12$, $q_1=12$; $p_2=6$, $q_2=6$; $Q=18$ y $B=180$. Con demandas lineales y los dos mercados servidos la cantidad total no cambia, pero se reparte peor entre los mercados (se valora distinto en cada uno): el excedente total baja de 279 a 270.",
+    "desarrollo": "Precio uniforme (sirviendo a los dos, $p<12$): demanda agregada $Q=36-2p$; $\\max\\,p\\,(36-2p)\\Rightarrow p=9$, $q_1=15$, $q_2=3$, $Q=18$, $B=162$. Servir solo al mercado 1 daría $p=12$ y $B=144<162$, así que sirve a los dos.\n\n- $\\mathrm{EC}_1=\\tfrac12\\cdot15^2=112{,}5$; $\\mathrm{EC}_2=\\tfrac12\\cdot3^2=4{,}5$; excedente total $=112{,}5+4{,}5+162=279$.\n\nTercer grado ($\\mathrm{IMg}_1=\\mathrm{IMg}_2=\\mathrm{CMg}=0$): $24-2q_1=0\\Rightarrow q_1=12$, $p_1=12$; $12-2q_2=0\\Rightarrow q_2=6$, $p_2=6$. $Q=18$, $B=144+36=180$.\n\n- $\\mathrm{EC}_1=\\tfrac12\\cdot12^2=72$; $\\mathrm{EC}_2=\\tfrac12\\cdot6^2=18$; excedente total $=72+18+180=270$.\n\nLa cantidad total es la misma, pero 3 unidades pasan del mercado 1, donde se valoran entre 9 y 12, al mercado 2, donde se valoran entre 6 y 9: la misma producción se reparte de forma ineficiente y el excedente total baja 9. Es el resultado de Robinson; en general, la discriminación de tercer grado solo puede aumentar el excedente total si aumenta la cantidad total (Schmalensee, Varian).\n\nPor qué fallan las demás:\n\n- a) Con demandas lineales y todos los mercados servidos la cantidad total no cambia.\n- b) El excedente total sí cambia, porque los precios distintos impiden que el bien vaya a quien más lo valora.\n- d) El beneficio no puede bajar (el precio uniforme sigue siendo posible) y aquí sube, porque las elasticidades de los dos mercados son distintas."
+   },
+   "dificultad": 2,
+   "apartado": "II.1.3 Discriminación de tercer grado (bienestar)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311712,
+   "estado": "publicada",
+   "enunciado": "Un monopolista con coste marginal nulo vende en dos mercados separados, con demandas $q_1=20-p_1$ y $q_2=4-p_2$. Con precio uniforme le conviene cobrar $p=10$, y el mercado 2 se queda sin atender. Si se le permite discriminar precios en tercer grado:",
+   "opciones": {
+    "a": "El excedente total disminuye, porque con demandas lineales la discriminación no altera la cantidad total y la reparte peor.",
+    "b": "Mantiene $p_1=10$ y vende además en el mercado 2 a $p_2=2$: su beneficio pasa de 100 a 104 y ningún consumidor pierde. Es una mejora en el sentido de Pareto.",
+    "c": "Sube el precio del mercado 1 por encima de 10 para compensar el precio bajo que cobra en el mercado 2: los consumidores del mercado 1 pierden.",
+    "d": "No le interesa discriminar: el beneficio que obtiene en el mercado 2 es exactamente lo que deja de ganar en el mercado 1."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con coste marginal constante los mercados son independientes: $p_1=10$ (como antes) y $p_2=2$, $q_2=2$. El beneficio sube 4, el mercado 2 gana un excedente de 2 y el mercado 1 queda igual. La discriminación abre un mercado que el precio uniforme dejaba sin atender: la cantidad total aumenta y nadie pierde.",
+    "desarrollo": "Precio uniforme: si sirve a los dos mercados ($p<4$), $B=p\\,(24-2p)$, creciente en ese tramo, con un máximo de 64 en $p=4$; si sirve solo al mercado 1, $\\max\\,p\\,(20-p)\\Rightarrow p=10$, $B=100$. Le conviene $p=10$, y a ese precio el mercado 2 no compra nada.\n\nTercer grado: con coste marginal constante (aquí, nulo) cada mercado se resuelve por separado, $\\mathrm{IMg}_k=\\mathrm{CMg}$:\n\n- mercado 1: $20-2q_1=0\\Rightarrow q_1=10$, $p_1=10$: sin cambios, con $\\mathrm{EC}_1=50$;\n- mercado 2: $4-2q_2=0\\Rightarrow q_2=2$, $p_2=2$: beneficio adicional 4 y $\\mathrm{EC}_2=\\tfrac12\\cdot2\\cdot2=2$.\n\nLa cantidad total pasa de 10 a 12 y el excedente total de 150 a 156, sin que nadie pierda. Es el caso favorable de la discriminación de tercer grado (el de los medicamentos más baratos en los países pobres).\n\nPor qué fallan las demás:\n\n- a) El resultado de Robinson (la cantidad total no cambia y el excedente total baja) exige que todos los mercados estén servidos con el precio uniforme; aquí no lo están.\n- c) Con coste marginal constante lo que ocurre en un mercado no afecta al otro: $p_1$ sigue siendo 10.\n- d) En el mercado 1 no deja de ganar nada; el beneficio no puede bajar al discriminar y aquí sube."
+   },
+   "dificultad": 2,
+   "apartado": "II.1.3 Discriminación de tercer grado (apertura de mercados)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311713,
+   "estado": "publicada",
+   "enunciado": "Sobre el monopolista de un bien duradero y la conjetura de Coase, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Si no puede comprometerse a mantener el precio y los consumidores son pacientes, estos esperan a que baje y el precio tiende al coste marginal; por eso le puede interesar alquilar el bien en lugar de venderlo.",
+    "b": "El monopolista de un bien duradero obtiene siempre más beneficio que el de uno perecedero, porque puede bajar el precio con el tiempo y discriminar sin límite entre los consumidores.",
+    "c": "La conjetura afirma que, sin costes de transacción, la negociación entre el monopolista y los consumidores conduce a la cantidad eficiente con independencia de la asignación inicial de los derechos.",
+    "d": "Al monopolista le conviene hacer el bien lo más duradero posible, porque así refuerza su poder de mercado frente a los compradores futuros y puede mantener el precio alto durante más tiempo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El monopolista de un bien duradero compite con su yo futuro: una vez que ha vendido a quienes más valoran el bien, le conviene bajar el precio, y los consumidores pacientes lo anticipan y esperan. Si puede revisar el precio con frecuencia, pierde su poder de mercado. Lo recupera comprometiéndose: alquilar, limitar la producción, garantizar el precio o reducir la durabilidad.",
+    "desarrollo": "Coase (1972): el bien dura, así que quien compra hoy no compra mañana, y las unidades vendidas en periodos distintos son sustitutivas. El monopolista querría vender caro hoy y barato mañana (discriminación intertemporal), pero no puede comprometerse a no bajar el precio. Es un problema de inconsistencia temporal: los consumidores pacientes anticipan la bajada y no pagan hoy el precio alto, de modo que, cuando el precio puede revisarse con mucha frecuencia, se acerca al coste marginal (Gul, Sonnenschein y Wilson, 1986).\n\nDe ahí que al monopolista le interese atarse las manos: alquilar en vez de vender (así es él quien soporta la bajada del precio), limitar la capacidad, prometer la devolución de la diferencia si baja el precio o hacer el bien menos duradero (obsolescencia, nuevas ediciones).\n\nPor qué fallan las demás:\n\n- b) Es justo al revés: la posibilidad de bajar el precio es su problema, no su ventaja; sin compromiso gana menos que si pudiera fijar el precio de una vez.\n- c) Describe el teorema de Coase sobre las externalidades y los derechos de propiedad, que es otra cosa.\n- d) La durabilidad es lo que crea la competencia con su yo futuro; reducirla (Bulow, 1982) es una de las formas de recuperar el poder de mercado."
+   },
+   "dificultad": 1,
+   "apartado": "II.1.4 Discriminación intertemporal (conjetura de Coase)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311714,
+   "estado": "publicada",
+   "enunciado": "Un monopolista produce con coste nulo dos bienes, A y B, y tiene dos clientes, que compran como mucho una unidad de cada bien. El cliente 1 valora A en 8 y B en 3; el cliente 2 valora A en 4 y B en 7. El monopolista no puede cobrar precios distintos a cada cliente. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Lo mejor que puede hacer es vender por separado, A a 8 y B a 7, con un ingreso de 15: un paquete no puede mejorar ese resultado.",
+    "b": "Le conviene vender los dos bienes en un paquete a 15, con un ingreso de 30.",
+    "c": "Le conviene vender los dos bienes en un paquete a 7, con un ingreso de 14.",
+    "d": "Le conviene vender los dos bienes en un paquete a 11, con un ingreso de 22, frente a un máximo de 15 vendiéndolos por separado."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Por separado, A da 8 (a un precio de 8 compra uno; a 4, los dos) y B da como mucho 7: en total, 15. Los dos clientes valoran el paquete en 11, así que a ese precio lo compran ambos: 22. Con valoraciones correlacionadas negativamente, la venta conjunta reduce la dispersión de la disposición a pagar y permite extraer más excedente.",
+    "desarrollo": "Venta por separado:\n\n- bien A: a 8 compra solo el cliente 1 (ingreso 8); a 4 compran los dos (ingreso 8). Máximo: 8.\n- bien B: a 7 compra solo el cliente 2 (ingreso 7); a 3 compran los dos (ingreso 6). Máximo: 7.\n- Total: 15.\n\nVenta conjunta: el cliente 1 valora el paquete en $8+3=11$ y el cliente 2 en $4+7=11$. A un precio de 11 lo compran los dos: ingreso 22, que es todo el excedente disponible.\n\nLa clave es la correlación negativa de las valoraciones (quien más valora A es quien menos valora B): las valoraciones del paquete son mucho más parecidas entre clientes que las de cada bien, y un único precio basta para extraerlas (Adams y Yellen, 1976).\n\nPor qué fallan las demás:\n\n- a) Calcula bien el ingreso por separado, pero el paquete lo mejora.\n- b) Nadie valora el paquete en 15: suma la valoración más alta de cada bien, que corresponden a clientes distintos. No lo compraría nadie.\n- c) Suma las valoraciones más bajas; lo compran los dos, pero se ingresan 14, menos que con el paquete a 11."
+   },
+   "dificultad": 1,
+   "apartado": "II.1.2 Discriminación de segundo grado (extensiones: venta conjunta)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311715,
+   "estado": "publicada",
+   "enunciado": "En una industria la función de costes de cualquier empresa es $C(q)=q^2+36$ (para $q>0$), y no hay costes hundidos. La demanda del mercado corta a la curva de coste medio de una sola empresa en $q=8$, a un precio de 12,5. Suponga, como Baumol, Panzar y Willig, que el incumbente mantiene su precio ante la entrada. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "No es un monopolio natural, porque en $q=8$ el coste medio ya es creciente y no hay economías de escala.",
+    "b": "Es un monopolio natural (8 unidades cuestan 100 con una empresa y 104 con dos), pero no es sostenible: un entrante puede vender 6 unidades por debajo de 12,5 con beneficio.",
+    "c": "Es un monopolio natural y, por tanto, sostenible: la subaditividad de los costes garantiza que ningún entrante puede obtener beneficios.",
+    "d": "No es un monopolio natural: dos empresas que produjeran 4 unidades cada una tendrían un coste marginal de 8, la mitad que el de una sola empresa, y por tanto un coste total menor."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El coste medio, $q+36/q$, es mínimo en $q^0=6$ (vale 12). En $q=8$ ya crece, pero los costes siguen siendo subaditivos: $C(8)=100<2\\,C(4)=104$. Es un monopolio natural sin economías de escala, y no es sostenible: un entrante que produce 6 con coste medio 12 puede vender algo por debajo de 12,5 y ganar.",
+    "desarrollo": "- Mínimo del coste medio: $\\mathrm{CMe}=q+36/q$; $1-36/q^2=0\\Rightarrow q^0=6$, $\\mathrm{CMe}(6)=12$.\n- Subaditividad en $q=8$: una empresa, $C(8)=64+36=100$; dos empresas a partes iguales (el reparto más barato, por la convexidad de $q^2$), $2\\,C(4)=2\\cdot52=104$. Como $100<104$, es más barato producir con una sola empresa: monopolio natural. En general, $q^2+36<q^2/2+72\\Leftrightarrow q<\\sqrt{72}\\approx8{,}5$: hay subaditividad hasta $q^1\\approx8{,}5$, más allá del mínimo del coste medio.\n- Sostenibilidad: el incumbente cubre costes vendiendo 8 unidades a $\\mathrm{CMe}(8)=8+4{,}5=12{,}5$. Un entrante con la misma tecnología puede producir 6 unidades con coste medio 12 y venderlas, por ejemplo, a 12,2, con beneficio. Si el incumbente no reacciona, el monopolio natural no es sostenible: es lo que ocurre cuando la demanda corta al coste medio entre $q^0$ y $q^1$.\n\nPor qué fallan las demás:\n\n- a) Las economías de escala son condición suficiente, no necesaria, de la subaditividad: la definición de monopolio natural es la subaditividad.\n- c) La subaditividad es necesaria para la sostenibilidad, pero no suficiente.\n- d) Compara costes marginales, no costes totales: repartir la producción duplica el coste fijo (36), y $104>100$.\n\n(Si el incumbente pudiera reaccionar, la sostenibilidad dependería de si la demanda queda por debajo del coste medio de dos empresas que se reparten el mercado; el enunciado lo excluye.)"
+   },
+   "dificultad": 3,
+   "apartado": "II.2.1 Monopolio natural uniproducto (subaditividad y sostenibilidad)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:311715.webp",
+     "alt": "Plano con la cantidad q en abscisas y el precio y los costes en ordenadas. Curva de coste medio de una empresa, CMe1, en forma de U, con el mínimo marcado en q = 6 (vale 12). Curva de coste medio de dos empresas que se reparten la producción, CMe1+2, por encima de la anterior hasta que se cruzan algo más allá de q = 8. Una demanda decreciente corta a CMe1 en q = 8, al precio 12,5, por debajo de CMe1+2.",
+     "ancho": 580
+    }
+   ]
+  },
+  {
+   "id": 311716,
+   "estado": "publicada",
+   "enunciado": "Una empresa regulada presta dos servicios. Prestarlos juntos cuesta 100; prestar solo el servicio 1 costaría 70, y prestar solo el servicio 2, 60. La empresa cubre exactamente sus costes. ¿Cuál de los siguientes repartos de los ingresos entre los dos servicios, $(I_1, I_2)$, está libre de subsidios cruzados en el sentido de Faulhaber?",
+   "opciones": {
+    "a": "$(75,\\ 25)$.",
+    "b": "$(35,\\ 65)$.",
+    "c": "$(55,\\ 45)$.",
+    "d": "$(72,\\ 28)$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Cada servicio debe ingresar como mucho su coste aislado (70 y 60) y como mínimo su coste incremental ($100-60=40$ y $100-70=30$). Con $I_1+I_2=100$, eso exige $40\\leq I_1\\leq70$ y $30\\leq I_2\\leq60$: solo lo cumple $(55,45)$.",
+    "desarrollo": "Pruebas de Faulhaber (1975):\n\n- Prueba del coste aislado: ningún servicio (ni grupo de servicios) debe ingresar más de lo que costaría prestarlo por separado: $I_1\\leq70$, $I_2\\leq60$. Si no, un entrante prestaría solo ese servicio más barato.\n- Prueba del coste incremental: cada servicio debe ingresar al menos lo que cuesta añadirlo a la producción del otro: $I_1\\geq100-60=40$, $I_2\\geq100-70=30$. Si no, el otro servicio lo está financiando.\n\nCuando la empresa cubre exactamente sus costes las dos pruebas son equivalentes: $I_1\\leq70\\Leftrightarrow I_2=100-I_1\\geq30$, e $I_2\\leq60\\Leftrightarrow I_1\\geq40$.\n\n- a) $(75,25)$: $I_1=75>70$ y $I_2=25<30$. El servicio 1 subvenciona al 2.\n- b) $(35,65)$: $I_1=35<40$ y $I_2=65>60$. El servicio 2 subvenciona al 1.\n- c) $(55,45)$: $40\\leq55\\leq70$ y $30\\leq45\\leq60$. Libre de subsidios cruzados.\n- d) $(72,28)$: $I_1=72>70$ y $I_2=28<30$. El servicio 1 subvenciona al 2, aunque por poco.\n\nNótese que hay economías de alcance ($100<70+60$), condición necesaria del monopolio natural multiproducto. Estar libre de subsidios cruzados es condición necesaria, no suficiente, de la sostenibilidad."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.2 Monopolio natural multiproducto (subsidios cruzados)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311717,
+   "estado": "publicada",
+   "enunciado": "Un monopolio natural tiene la función de costes $C(q)=300+10q$ y se enfrenta a la demanda $p=50-q$. Un regulador que conoce los costes y la demanda compara dos reglas de precios. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con precio igual al coste marginal se venden 40 unidades y la empresa pierde 300; con precio igual al coste medio (el más bajo que cubre costes), el precio es 20 y se venden 30 unidades.",
+    "b": "Con precio igual al coste marginal se venden 40 unidades y la empresa no tiene pérdidas, porque el coste marginal es constante.",
+    "c": "Con precio igual al coste medio, el regulador fija un precio de 40 y se venden 10 unidades: es la mayor cantidad compatible con que la empresa no tenga pérdidas.",
+    "d": "Con precio igual al coste medio se venden 20 unidades a un precio de 30, y el beneficio de la empresa es nulo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $p=\\mathrm{CMg}=10$ se venden 40 unidades y la empresa pierde el coste fijo (300), porque $\\mathrm{CMg}<\\mathrm{CMe}$. Con $p=\\mathrm{CMe}$: $50-q=10+300/q$, $q^2-40q+300=0$, $q=30$ (o 10); la mayor cantidad sin pérdidas es 30, a un precio de 20, con una pérdida de eficiencia de $\\tfrac12\\cdot10\\cdot10=50$.",
+    "desarrollo": "- Primer óptimo, $p=\\mathrm{CMg}$: $p=10$, $q=50-10=40$. Ingreso 400, coste $300+400=700$: pérdidas de 300, iguales a $(\\mathrm{CMe}-\\mathrm{CMg})\\,q=(17{,}5-10)\\cdot40$. Habría que cubrirlas con una subvención (o con una cuota fija, en una tarifa en dos partes).\n- Segundo óptimo, $p=\\mathrm{CMe}$: $50-q=10+300/q\\Rightarrow q^2-40q+300=0\\Rightarrow q=10$ o $q=30$. Las dos dan beneficio nulo, pero el regulador elige la de mayor cantidad: $q=30$, $p=20$ (comprobación: ingreso 600, coste $300+300=600$). Se dejan de producir 10 unidades que valen más de lo que cuestan: pérdida de eficiencia $\\tfrac12\\,(20-10)\\,(40-30)=50$.\n- Sin regular: $50-2q=10\\Rightarrow q=20$, $p=30$, $B=400-300=100$.\n\nPor qué fallan las demás:\n\n- b) Con coste marginal constante y coste fijo, el coste medio es decreciente y siempre mayor que el marginal: $p=\\mathrm{CMg}$ no cubre el coste fijo.\n- c) $q=10$ y $p=40$ también cumple $p=\\mathrm{CMe}$, pero es la raíz de menor cantidad: no es la mayor compatible con no tener pérdidas.\n- d) Es el equilibrio del monopolio sin regular, con beneficio de 100, no nulo."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.3 Regulación del monopolio natural (primer y segundo óptimo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311718,
+   "estado": "publicada",
+   "enunciado": "Un monopolio natural regulado vende dos bienes de demandas independientes, cuyas elasticidades-precio en el óptimo son, en valor absoluto, 2 (bien 1) y 5 (bien 2). El regulador fija precios de Ramsey-Boiteux, y el margen relativo sobre el coste marginal del bien 1 resulta ser del 25 %. Entonces:",
+   "opciones": {
+    "a": "El margen relativo del bien 2 es también del 25 %: la restricción de no tener pérdidas se reparte por igual entre los bienes.",
+    "b": "El margen relativo del bien 2 es del 62,5 %: se recarga más el bien de demanda más elástica.",
+    "c": "El margen relativo del bien 2 es del 10 %, el mismo que cargaría en ese bien un monopolista sin regular, que solo se diferencia en el margen del bien 1.",
+    "d": "El margen relativo del bien 2 es del 10 %: en los dos bienes, la mitad del que cargaría un monopolista sin regular (50 % y 20 %)."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Regla de Ramsey-Boiteux: $\\mathcal{L}_i=\\frac{\\lambda}{1+\\lambda}\\cdot\\frac{1}{|\\varepsilon_i|}$. Con $\\mathcal{L}_1=0{,}25$ y $|\\varepsilon_1|=2$, el número de Ramsey es $0{,}5$, es decir, $\\lambda=1$; y $\\mathcal{L}_2=0{,}5/5=0{,}10$. Los márgenes son la mitad de los de monopolio ($1/2$ y $1/5$): es la regla de Lerner amortiguada.",
+    "desarrollo": "$$\\frac{p_i-\\mathrm{CMg}_i}{p_i}=\\frac{\\lambda}{1+\\lambda}\\cdot\\frac{1}{|\\varepsilon_{q_i,p_i}|}.$$\n\n- Bien 1: $0{,}25=\\frac{\\lambda}{1+\\lambda}\\cdot\\frac12\\Rightarrow\\frac{\\lambda}{1+\\lambda}=0{,}5\\Rightarrow\\lambda=1$.\n- Bien 2: $\\mathcal{L}_2=0{,}5\\cdot\\frac15=0{,}10$.\n\nPor otra vía: los márgenes son inversamente proporcionales a las elasticidades, $\\mathcal{L}_2/\\mathcal{L}_1=|\\varepsilon_1|/|\\varepsilon_2|=2/5$, así que $\\mathcal{L}_2=0{,}25\\cdot0{,}4=0{,}10$.\n\nUn monopolista sin regular (el caso $\\lambda\\to\\infty$) cargaría $\\mathcal{L}_1=1/2$ y $\\mathcal{L}_2=1/5$. El regulador mantiene la estructura de márgenes del monopolista (más margen donde la demanda es menos elástica, porque ahí la subida del precio distorsiona menos la cantidad), pero solo en la medida necesaria para cubrir costes.\n\nPor qué fallan las demás:\n\n- a) Un margen uniforme no minimiza la pérdida de excedente: solo sería óptimo con elasticidades iguales.\n- b) Invierte la regla: se recarga más el bien de demanda menos elástica.\n- c) Acierta el margen, pero el monopolista sin regular cargaría en el bien 2 un 20 % ($1/5$), no un 10 %: el número de Ramsey, $\\lambda/(1+\\lambda)=0{,}5$, reduce en la misma proporción los márgenes de todos los bienes."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.3 Regulación del monopolio natural (precios de Ramsey-Boiteux)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311719,
+   "estado": "publicada",
+   "enunciado": "Un monopolista abastece un mercado con demanda $p=100-Q$ desde dos plantas, con costes $C_1(q_1)=q_1^2$ y $C_2(q_2)=2q_2^2$. Para maximizar el beneficio:",
+   "opciones": {
+    "a": "Reparte la producción a partes iguales, $q_1=q_2=15$, y vende a un precio de 70.",
+    "b": "Produce solo en la planta 1, la de menores costes: $q_1=25$, $q_2=0$ y $p=75$.",
+    "c": "Produce $q_1=20$ y $q_2=10$, y vende a un precio de 70.",
+    "d": "Produce $q_1=10$ y $q_2=20$, y vende a un precio de 70."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Condiciones: $\\mathrm{IMg}(Q)=\\mathrm{CMg}_1(q_1)=\\mathrm{CMg}_2(q_2)$. Igualar $2q_1=4q_2$ da $q_1=2q_2$; con $Q=3q_2$, $100-6q_2=4q_2$, $q_2=10$, $q_1=20$, $Q=30$ y $p=70$. Los tres valores marginales son 40.",
+    "desarrollo": "Son dos decisiones:\n\n- Cómo repartir: minimizar el coste exige igualar los costes marginales de las plantas, $2q_1=4q_2\\Rightarrow q_1=2q_2$.\n- Cuánto producir: $\\mathrm{IMg}(Q)=100-2Q$ igual al coste marginal común. Con $Q=q_1+q_2=3q_2$: $100-6q_2=4q_2\\Rightarrow q_2=10$, $q_1=20$, $Q=30$, $p=70$.\n\nComprobación: $\\mathrm{IMg}=100-60=40$, $\\mathrm{CMg}_1=2\\cdot20=40$, $\\mathrm{CMg}_2=4\\cdot10=40$. Por otra vía, con la suma horizontal de los costes marginales: $Q=m/2+m/4=3m/4\\Rightarrow\\mathrm{CMg}(Q)=4Q/3$; $100-2Q=4Q/3\\Rightarrow Q=30$. Beneficio: $2.100-400-200=1.500$.\n\nPor qué fallan las demás:\n\n- a) Con $q_1=q_2=15$ los costes marginales son 30 y 60: pasando producción de la planta 2 a la 1 se ahorra coste (el coste es $225+450=675$, frente a 600).\n- b) Con costes marginales crecientes que parten de cero conviene usar las dos plantas: las primeras unidades de la planta 2 cuestan menos que las últimas de la planta 1. Produciendo solo en la planta 1 el beneficio es $75\\cdot25-625=1.250<1.500$.\n- d) Invierte el reparto: se produce más en la planta cuyo coste marginal crece más despacio."
+   },
+   "dificultad": 2,
+   "apartado": "II.3.3 Monopolio multiplanta",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311720,
+   "estado": "publicada",
+   "enunciado": "Un monopolista obtiene dos bienes en proporciones fijas: cada unidad del proceso cuesta 4 y da una unidad del bien 1 y una del bien 2. Las demandas son $p_1=20-x_1$ y $p_2=8-x_2$, y puede desechar sin coste lo que no venda. Para maximizar el beneficio:",
+   "opciones": {
+    "a": "Realiza 6 unidades del proceso y vende todo lo que obtiene: $p_1=14$ y $p_2=2$.",
+    "b": "Realiza 8 unidades del proceso; vende las 8 unidades del bien 1 a $p_1=12$, y del bien 2 vende solo 4, a $p_2=4$, y desecha las otras 4.",
+    "c": "Realiza 8 unidades del proceso y vende todo lo que obtiene: $p_1=12$ y $p_2=0$.",
+    "d": "Realiza 10 unidades del proceso, la cantidad que maximiza el ingreso del bien 1, y vende 4 unidades del bien 2."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Si vendiera todo, $\\mathrm{IMg}_1+\\mathrm{IMg}_2=28-4q=4$ daría $q=6$, pero ahí $\\mathrm{IMg}_2=8-12<0$: vende demasiado del bien 2. Lo óptimo es vender del bien 2 solo hasta $\\mathrm{IMg}_2=0$ ($x_2=4$, $p_2=4$) y decidir el proceso con el bien 1: $20-2q=4$, $q=8$, $p_1=12$. Beneficio: $96+16-32=80$, frente a 72.",
+    "desarrollo": "Ingresos marginales: $\\mathrm{IMg}_1=20-2x_1$ e $\\mathrm{IMg}_2=8-2x_2$. La regla general es $\\sum_i\\max\\{\\mathrm{IMg}_i(q),0\\}=\\mathrm{CMg}(q)$.\n\n- Suponiendo que vende todo: $\\mathrm{IMg}_1(q)+\\mathrm{IMg}_2(q)=28-4q=4\\Rightarrow q=6$. Pero $\\mathrm{IMg}_2(6)=-4<0$: las últimas unidades del bien 2 reducen el ingreso. No es el óptimo.\n- Con desecho: del bien 2 vende hasta que su ingreso marginal es nulo (elasticidad unitaria), $x_2=4$, $p_2=4$, ingreso 16; el proceso se decide solo con el bien 1, $20-2q=4\\Rightarrow q=8$, $x_1=8$, $p_1=12$. Como $x_2=4<8$, desecha 4 unidades del bien 2.\n\nBeneficio: $12\\cdot8+4\\cdot4-4\\cdot8=80$. Vendiendo todo con $q=6$: $14\\cdot6+2\\cdot6-24=72$.\n\nPor qué fallan las demás:\n\n- a) Aplica la suma vertical de los ingresos marginales sin comprobar que los dos sean positivos.\n- c) Acierta en el nivel del proceso, pero vender las 8 unidades del bien 2 hunde su precio a cero: se pierden los 16 de ingreso que da vender solo 4.\n- d) Maximizar el ingreso del bien 1 ($\\mathrm{IMg}_1=0$) ignora el coste del proceso: las unidades de la 8 a la 10 aportan menos de 4.\n\nUn monopolista puede, por tanto, destruir producción útil, algo que en competencia no ocurre mientras el precio sea positivo."
+   },
+   "dificultad": 3,
+   "apartado": "II.3.2 Producción conjunta en proporciones fijas",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311721,
+   "estado": "publicada",
+   "enunciado": "Un monopolista vende dos bienes complementarios en la demanda (por ejemplo, impresoras y cartuchos), con costes separables. Frente a lo que harían dos monopolistas independientes, uno por cada bien:",
+   "opciones": {
+    "a": "Fija precios más bajos: el índice de Lerner de cada bien es menor que la inversa de su elasticidad-precio propia, y puede incluso ser negativo en uno de ellos.",
+    "b": "Fija precios más altos, porque los consumidores que dejan de comprar un bien no pueden «escapar» hacia el otro.",
+    "c": "Fija los mismos precios: el índice de Lerner de cada bien es igual a la inversa de su elasticidad propia, y las relaciones de demanda solo afectan a las cantidades.",
+    "d": "Si vende un bien por debajo de su coste marginal incurre en un subsidio cruzado en el sentido de Faulhaber, lo que hace insostenible su posición."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El monopolista multiproducto internaliza que bajar el precio de un bien aumenta las ventas del complementario. En su regla de Lerner aparece un término con la elasticidad cruzada, negativa entre complementarios, que reduce el margen por debajo de $1/|\\varepsilon_{q_i,p_i}|$; puede vender un bien por debajo de su coste marginal y rentabilizarlo con el otro.",
+    "desarrollo": "Con demandas dependientes y costes separables:\n\n$$\\mathcal{L}_i=\\frac{1}{|\\varepsilon_{q_i,p_i}|}+\\sum_{j\\neq i}\\frac{(p_j-\\mathrm{CMg}_j)\\,q_j}{p_i\\,q_i}\\cdot\\frac{\\varepsilon_{q_j,p_i}}{|\\varepsilon_{q_i,p_i}|}.$$\n\nSi los bienes son complementarios, $\\varepsilon_{q_j,p_i}<0$: el segundo término es negativo y el margen es menor que el de un monopolista que solo vendiera el bien $i$. Dos monopolistas independientes ignoran que su precio alto perjudica las ventas del otro; el monopolista conjunto lo internaliza y baja los precios, lo que beneficia también a los consumidores. Es la misma lógica que la de la doble marginalización. Si el término cruzado es grande, el margen puede ser negativo: impresoras o consolas baratas que se rentabilizan con los cartuchos o los juegos.\n\nPor qué fallan las demás:\n\n- b) Es el caso de los bienes sustitutivos ($\\varepsilon_{q_j,p_i}>0$): subir $p_i$ desvía ventas hacia el otro bien, que también es suyo, y fija precios más altos.\n- c) Solo vale con demandas independientes (y costes separables).\n- d) Un precio por debajo del coste marginal por complementariedad en la demanda no es un subsidio cruzado: ese término se reserva para los precios que no pasan las pruebas del coste aislado y del coste incremental."
+   },
+   "dificultad": 1,
+   "apartado": "II.3.1 Monopolio multiproducto (demandas dependientes)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311722,
+   "estado": "publicada",
+   "enunciado": "Una empresa precio-aceptante en el mercado de su producto es la única demandante de trabajo de una comarca. La oferta de trabajo es $w_L=10+L$ y el valor del producto marginal del trabajo es $\\mathrm{VPMg}_L=70-L$. En el equilibrio de monopsonio, el empleo, el salario y la pérdida irrecuperable de eficiencia son, respectivamente:",
+   "opciones": {
+    "a": "20, 50 y 100.",
+    "b": "30, 40 y 0.",
+    "c": "20, 30 y 200.",
+    "d": "20, 30 y 100."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El gasto marginal es $\\mathrm{GMg}_L=10+2L$. Igualándolo al valor del producto marginal, $10+2L=70-L$, $L^M=20$; el salario se lee en la oferta, $w^M=30$. En competencia, $10+L=70-L$, $L^c=30$. La pérdida es el triángulo entre el VPMg (50 en $L=20$) y la oferta (30), de 20 a 30: $\\tfrac12\\cdot20\\cdot10=100$.",
+    "desarrollo": "- Gasto total en trabajo: $w_L(L)\\,L=10L+L^2$; gasto marginal: $\\mathrm{GMg}_L=10+2L$ (misma ordenada en el origen que la oferta y doble pendiente).\n- Monopsonio: $\\mathrm{VPMg}_L=\\mathrm{GMg}_L\\Rightarrow70-L=10+2L\\Rightarrow L^M=20$. El salario es el que la oferta pide para esa cantidad: $w^M=10+20=30$. El valor del producto marginal es $70-20=50$: el último trabajador aporta 50 y cobra 30.\n- Competencia: $\\mathrm{VPMg}_L=w_L\\Rightarrow L^c=30$, $w^c=40$.\n- Pérdida irrecuperable: trabajo que vale más de lo que cuesta y no se contrata, $\\int_{20}^{30}\\big[(70-L)-(10+L)\\big]\\,dL=\\tfrac12\\cdot20\\cdot10=100$.\n\nComprobación con la regla de la elasticidad inversa: $\\varepsilon_{L,w_L}=(dL/dw_L)\\,(w_L/L)=30/20=1{,}5$, y $(\\mathrm{VPMg}_L-w_L)/w_L=20/30=1/1{,}5$.\n\nPor qué fallan las demás:\n\n- a) Lee el salario en la curva del valor del producto marginal (50), como si fuera una demanda; el monopsonista paga el salario de la oferta.\n- b) Es el equilibrio competitivo.\n- c) 200 es el rectángulo $(w^c-w^M)\\,L^M=10\\cdot20$: una transferencia de los trabajadores a la empresa, no una pérdida."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Monopsonio (equilibrio y bienestar)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311723,
+   "estado": "publicada",
+   "enunciado": "Una empresa monopsonista en el mercado de trabajo, precio-aceptante en el de su producto, paga un salario de 20. En el equilibrio, la elasticidad de la oferta de trabajo a la que se enfrenta es 4. El valor del producto marginal del último trabajador contratado es:",
+   "opciones": {
+    "a": "20.",
+    "b": "15.",
+    "c": "25.",
+    "d": "80."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El monopsonista iguala el valor del producto marginal al gasto marginal: $\\mathrm{VPMg}_L=w_L\\,(1+1/\\varepsilon_{L,w_L})=20\\cdot(1+1/4)=25$. La brecha relativa entre lo que aporta el último trabajador y lo que cobra es la inversa de la elasticidad de la oferta: $(25-20)/20=1/4$.",
+    "desarrollo": "Contratar un trabajador más cuesta su salario más la subida que hay que dar a todos los demás: $\\mathrm{GMg}_L=w_L+w_L'(L)\\,L=w_L\\,(1+1/\\varepsilon_{L,w_L})$. La condición de primer orden es\n\n$$\\mathrm{VPMg}_L=w_L\\Big(1+\\frac{1}{\\varepsilon_{L,w_L}}\\Big)=20\\cdot1{,}25=25\\ \\Longleftrightarrow\\ \\frac{\\mathrm{VPMg}_L-w_L}{w_L}=\\frac{1}{\\varepsilon_{L,w_L}}=0{,}25.$$\n\nEs el espejo del índice de Lerner: la brecha es mayor cuanto menos elástica es la oferta de trabajo.\n\nPor qué fallan las demás:\n\n- a) $\\mathrm{VPMg}_L=w_L$ es la condición de la empresa precio-aceptante en el mercado de trabajo (oferta perfectamente elástica).\n- b) Aplica la fórmula del ingreso marginal del monopolista, $w\\,(1-1/\\varepsilon)$: en el monopsonio el gasto marginal queda por encima de la oferta, no por debajo.\n- d) Multiplica el salario por la elasticidad, lo que no corresponde a ninguna condición de equilibrio."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Monopsonio (índice de poder de monopsonio)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311724,
+   "estado": "publicada",
+   "enunciado": "En un mercado de trabajo con un único empleador, precio-aceptante en el mercado de su producto, la oferta de trabajo es $w_L=5+L$ y el valor del producto marginal del trabajo es $\\mathrm{VPMg}_L=65-L$. Sin intervención, el monopsonista contrata 20 trabajadores a un salario de 25. Si el gobierno fija un salario mínimo de 40:",
+   "opciones": {
+    "a": "El empleo cae por debajo de 20, porque el salario mínimo supera al salario competitivo.",
+    "b": "El empleo sube a 25, más que en el monopsonio aunque menos que en competencia, y aparece un paro involuntario de 10 trabajadores.",
+    "c": "El empleo sube a 35, la cantidad de trabajo que se ofrece a ese salario, y no hay paro involuntario.",
+    "d": "El empleo sigue siendo 20 y solo sube el salario, porque el valor del producto marginal del vigésimo trabajador (45) supera al salario mínimo."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El salario competitivo es 35 ($5+L=65-L$, $L^c=30$). Con un salario mínimo de 40, superior, el empleo lo decide la empresa sobre el valor del producto marginal: $65-L=40$, $L=25$. A ese salario quieren trabajar $40-5=35$ personas: hay 10 parados involuntarios. Aun así el empleo supera al de monopsonio, porque 40 es menor que el VPMg en $L=20$ (45).",
+    "desarrollo": "- Monopsonio: $\\mathrm{GMg}_L=5+2L=65-L\\Rightarrow L^M=20$, $w^M=25$, $\\mathrm{VPMg}_L(20)=45$.\n- Competencia: $5+L=65-L\\Rightarrow L^c=30$, $w^c=35$.\n\nUn salario mínimo $\\underline{w}$ hace horizontal la oferta (y el gasto marginal) hasta $L^S(\\underline{w})$: contratar a un trabajador más ya no obliga a subir el salario de los demás.\n\n- Si $w^M<\\underline{w}\\leq w^c$, el empleo es el de la oferta, $L^S(\\underline{w})$, y sube con el salario mínimo, hasta 30 con $\\underline{w}=35$.\n- Si $\\underline{w}>w^c$, la empresa contrata hasta que $\\mathrm{VPMg}_L=\\underline{w}$. Con $\\underline{w}=40$: $L^D=65-40=25$. La oferta a ese salario es $L^S=40-5=35$: paro involuntario de $35-25=10$.\n\nEl empleo (25) es mayor que el de monopsonio (20) porque $\\underline{w}=40<45=\\mathrm{VPMg}_L(L^M)$; solo un salario mínimo superior a 45 lo reduciría por debajo de 20.\n\nPor qué fallan las demás:\n\n- a) Es lo que ocurriría partiendo de la competencia (o con un salario mínimo mayor que 45), no partiendo del monopsonio.\n- c) 35 es la cantidad ofrecida; la empresa no contrata trabajadores cuyo valor del producto marginal es menor que 40.\n- d) Con el gasto marginal horizontal en 40, a la empresa le conviene contratar a todos los trabajadores cuyo valor del producto marginal supera 40: hasta el vigésimo quinto."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Monopsonio (salario mínimo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311725,
+   "estado": "publicada",
+   "enunciado": "Un sindicato que representa a todos los trabajadores negocia con un empleador monopsonista, precio-aceptante en el mercado de su producto. El valor de la producción es $p\\,F(L)=70L-\\tfrac12L^2$ y la desutilidad agregada del trabajo es $v(L)=10L+\\tfrac12L^2$, de modo que $\\mathrm{VPMg}_L=70-L$ y la oferta de trabajo es $w_L=10+L$. Negocian a la vez el salario y el empleo según la solución de Nash, con un poder de negociación del sindicato $\\gamma=1/3$, pagos de desacuerdo nulos y un sindicato cuyo objetivo es $w\\,L-v(L)$. El resultado es:",
+   "opciones": {
+    "a": "$L=30$ y $w=35$.",
+    "b": "$L=30$ y $w=40$.",
+    "c": "$L=20$ y $w=30$.",
+    "d": "$L=20$ y $w\\approx36{,}7$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con negociación eficiente el empleo maximiza el excedente conjunto, $\\mathrm{VPMg}_L=w_L$: $70-L=10+L$, $L=30$, sea cual sea $\\gamma$. El excedente es $p\\,F(30)-v(30)=1.650-750=900$ y el sindicato recibe un tercio: $w\\cdot30-750=300$, $w=35$.",
+    "desarrollo": "La solución de Nash maximiza $(U_S)^{\\gamma}\\,(B)^{1-\\gamma}$, con $U_S=w\\,L-v(L)$ y $B=p\\,F(L)-w\\,L$ (pagos de desacuerdo nulos).\n\n- Empleo: las condiciones de primer orden llevan a $p\\,F'(L)=v'(L)$, es decir, $70-L=10+L\\Rightarrow L^{*}=30$: la cantidad competitiva, que no depende de $\\gamma$.\n- Excedente conjunto: $p\\,F(30)=2.100-450=1.650$; $v(30)=300+450=750$; $S=900$.\n- Reparto: $U_S=\\gamma\\,S=300\\Rightarrow w\\cdot30=750+300=1.050\\Rightarrow w^{*}=35$. Comprobación: $B=1.650-1.050=600=\\tfrac23\\,S$.\n\nPor qué fallan las demás:\n\n- b) $w=40$ es el salario competitivo, que aquí corresponde a un reparto a partes iguales ($\\gamma=1/2$: $w\\cdot30=750+450$). Con $\\gamma=1/3$ el sindicato obtiene menos.\n- c) Es la solución de monopsonio ($10+2L=70-L$): el extremo en que todo el poder es de la empresa y fija un salario lineal.\n- d) Interpola el salario entre el de monopsonio (30) y el del sindicato monopolista (50, con $70-2L=10+L$) manteniendo el empleo en 20: describe el intervalo de indeterminación de Bowley cuando solo se negocia el salario, no la negociación eficiente (y, a un salario de 36,7, la empresa tampoco elegiría $L=20$).\n\nEl salario negociado no vacía el mercado como un precio: reparte el excedente. Por eso el par $(L,w)=(30,35)$ queda fuera de la curva de oferta de trabajo."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Monopolio bilateral (negociación eficiente de Nash)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311726,
+   "estado": "publicada",
+   "enunciado": "Un fabricante monopolista produce un componente con coste marginal constante igual a 20 y lo vende, a un precio lineal $w$ por unidad, a un único montador, que transforma cada componente en una unidad del bien final sin más costes y es monopolista frente a la demanda $p=100-Q$. Compare esta cadena con una empresa integrada verticalmente:",
+   "opciones": {
+    "a": "La cadena separada vende la misma cantidad que la integrada, 40 unidades; solo cambia el reparto del beneficio entre el fabricante y el montador.",
+    "b": "La cadena separada vende 20 unidades a un precio de 80, y el beneficio conjunto es mayor que el de la empresa integrada, porque se suman dos márgenes.",
+    "c": "La cadena separada vende 20 unidades a un precio de 80, con un beneficio conjunto de 1.200; la integrada vende 40 unidades a 60 y gana 1.600.",
+    "d": "La cadena separada vende más y más barato que la integrada, porque el poder de mercado del montador compensa el del fabricante."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Integrada: $100-2Q=20$, $Q=40$, $p=60$, $B=1.600$. Separada: el montador vende $Q=(100-w)/2$; el fabricante maximiza $(w-20)\\,(100-w)/2$ y fija $w=60$; entonces $Q=20$ y $p=80$, con beneficios de 800 y 400. Es la doble marginalización: cada eslabón añade su margen y la cadena vende la mitad, más caro, y gana menos.",
+    "desarrollo": "- Integrada: $\\max\\,(100-Q-20)\\,Q\\Rightarrow Q=40$, $p=60$, $B=40\\cdot40=1.600$.\n- Separada, por inducción hacia atrás:\n  - el montador, con coste marginal $w$: $100-2Q=w\\Rightarrow Q=(100-w)/2$ (esta es la demanda de componentes);\n  - el fabricante: $\\max_w\\,(w-20)\\,(100-w)/2\\Rightarrow w=60$;\n  - resultado: $Q=20$, $p=80$; beneficio del fabricante $(60-20)\\cdot20=800$; del montador $(80-60)\\cdot20=400$; conjunto, 1.200.\n\nCon demanda lineal, la cadena separada vende la mitad que la integrada. Pierden todos: las empresas en conjunto (1.200 frente a 1.600) y los consumidores (precio 80 frente a 60). La integración vertical, o una tarifa en dos partes entre ellos (precio unitario igual a 20 y una cuota fija que reparta el beneficio), restablece la cantidad de monopolio (Spengler, 1950).\n\nPor qué fallan las demás:\n\n- a) Eso ocurriría con negociación eficiente o con una tarifa en dos partes, no con un precio lineal.\n- b) Dos márgenes sucesivos no suman beneficios: reducen la cantidad por debajo de la que maximiza el beneficio conjunto.\n- d) El poder compensatorio puede acercar el resultado al eficiente cuando un comprador con poder se enfrenta a un vendedor con poder y negocian; aquí cada uno ejerce su poder frente a un mercado distinto y los márgenes se acumulan."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Monopolio bilateral (extensiones: doble marginalización)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 311727,
+   "estado": "publicada",
+   "enunciado": "Sobre el monopolio bilateral entre un sindicato y un empleador monopsonista, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El resultado es siempre el competitivo, porque el poder de mercado de una parte compensa exactamente el de la otra.",
+    "b": "Con negociación eficiente (solución de Nash sobre salario y empleo), el empleo acordado es mayor cuanto mayor es el poder de negociación del sindicato, porque este valora el empleo además del salario.",
+    "c": "La teoría del monopolio y la del monopsonio determinan un único salario de equilibrio, situado en el punto medio entre el que fijaría el sindicato y el que fijaría la empresa.",
+    "d": "Si solo negocian el salario, este queda indeterminado entre el de monopsonio y el del sindicato monopolista; si negocian salario y empleo, el empleo es el eficiente y el poder de negociación solo reparte el excedente."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Bowley mostró que el salario queda indeterminado entre los dos extremos ($w^M$, si manda la empresa, y $w^S$, si manda el sindicato): lo decide el poder de negociación. Si negocian a la vez salario y empleo, les conviene maximizar el excedente conjunto (el empleo competitivo, que no depende de $\\gamma$) y repartírselo con el salario.",
+    "desarrollo": "En el monopolio bilateral ninguna de las partes es precio-aceptante:\n\n- si mandara la empresa, se obtendría la solución de monopsonio ($L^M$, $w^M$);\n- si mandara el sindicato, actuaría como un monopolista que vende trabajo frente a la demanda de la empresa y fijaría $w^S>w^c$, con paro involuntario.\n\nSi se negocia solo el salario y la empresa decide después el empleo, el salario queda en algún punto del intervalo $[w^M,w^S]$ y el empleo es ineficiente salvo en $w^c$. Si se negocian el salario y el empleo (solución de Nash), la condición es $\\mathrm{VPMg}_L(L^{*})=w_L(L^{*})$, de modo que $L^{*}=L^c$ con independencia de $\\gamma$; el salario reparte el excedente: cada parte recibe lo que tendría sin acuerdo más su cuota del excedente neto.\n\nPor qué fallan las demás:\n\n- a) El poder compensatorio (Galbraith) puede acercar el resultado al eficiente, pero no lo garantiza: depende de qué se negocie y de la fuerza de cada parte.\n- b) Con negociación eficiente el empleo no depende de $\\gamma$; lo que crece con el poder del sindicato es el salario.\n- c) Cada teoría da su propio salario y el resultado queda indeterminado entre ambos; no hay ninguna razón para que sea el punto medio."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Monopolio bilateral (indeterminación y negociación)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}

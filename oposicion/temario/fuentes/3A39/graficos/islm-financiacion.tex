@@ -1,6 +1,6 @@
 % Un aumento del gasto financiado con deuda y con dinero en el IS-LM
 % (Blinder y Solow, 1973). Mismas rectas, colores y escala que is-lm.tex del
-% 3.A.5 (IS morada, LM azul, IS' roja discontinua, LM' verde discontinua).
+% 3.A.5 (IS azul, LM morada, IS' roja discontinua, LM' verde discontinua).
 %   IS:  i = 9 - 0,75 Y        IS':  i = 11 - 0,75 Y   (más gasto)
 %   LM:  i = 0,75 Y - 1,5      LM':  i = 0,75 Y - 3,5  (más dinero, lo justo
 %                                                      para que i vuelva a i_0)
@@ -15,8 +15,8 @@
   % 1: ejes (Y, i)
   \capa{1}{\ejes{$Y$}{$i$}{14.6}{9.6}}
   % 2: la IS y la LM y el equilibrio inicial E_0
-  \capa{2}{\draw[curva1] (1.2,8.1) -- (10.8,0.9) node[etiqueta, below right=0pt and -2pt, text=tceemorado] {IS};}
-  \capa{2}{\draw[curva2] (2.4,0.3) -- (12,7.5) node[etiqueta, above right=0pt and -2pt, text=tceeazul] {LM};}
+  \capa{2}{\draw[curva2] (1.2,8.1) -- (10.8,0.9) node[etiqueta, below right=0pt and -2pt, text=tceeazul] {IS};}
+  \capa{2}{\draw[curva1] (2.4,0.3) -- (12,7.5) node[etiqueta, above right=0pt and -2pt, text=tceemorado] {LM};}
   \capa{2}{\proyeccion{(7,3.75)}{$Y_0$}{$i_0$}}
   \capa{2}{\node[punto] (E0) at (7,3.75) {};}
   \capa{2}{\node[etiqueta, above=4pt] at (E0) {$E_0$};}

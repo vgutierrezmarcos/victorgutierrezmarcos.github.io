@@ -1,0 +1,63 @@
+% Balance estilizado de un banco (cuenta en T, sin cifras): hilo conductor del
+% tema. Alturas de las cajas según su peso aproximado. Activo: reservas y deuda
+% pública (1), préstamos e hipotecas (3,2), cartera de negociación (1,8). Pasivo:
+% depósitos a la vista (3), financiación mayorista a corto (2), capital (1).
+% Capas: 1-4, II.1 (transformación de plazos); 5, II.4 (2007-2008: titulización
+% fuera de balance y dependencia de la financiación mayorista); 6, III.1 (los
+% riesgos junto a su partida). Paleta del bloque financiero: líquido en verde,
+% crédito en morado, mercado en azul, depósitos y mayorista en dorados, capital
+% en gris; riesgos en rojo.
+% Elaboración propia a partir de Freixas y Rochet (2008) y Hull (2023).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    partida/.style={draw=#1,fill=#1!14,thick,rounded corners=1pt},
+    titulo/.style={font=\small\bfseries,align=center},
+    detalle/.style={font=\footnotesize,align=center,text=tceegris!60!black},
+    riesgo/.style={font=\footnotesize\itshape,text=tceerojo,inner sep=1pt}]
+  \colorlet{mayorista}{tceedorado!65!black}
+  % marco fijo: todas las capas, del mismo tamaño
+  \path (-4.9,-1.05) rectangle (12.1,7.0);
+  % 1: la cuenta en T con «Activo» y «Pasivo»
+  \capa{1}{\draw[very thick] (0,6.15) -- (10,6.15);}
+  \capa{1}{\draw[very thick] (5,6.15) -- (5,-0.1);}
+  \capa{1}{\node[font=\normalsize\bfseries] at (2.5,6.55) {Activo};}
+  \capa{1}{\node[font=\normalsize\bfseries] at (7.5,6.55) {Pasivo};}
+  % 2: las 3 partidas del activo
+  \capa{2}{\draw[partida=tceeverde] (0.1,5.0) rectangle (4.85,6.0);
+    \node[titulo] at (2.475,5.62) {Reservas y deuda pública};
+    \node[detalle] at (2.475,5.25) {líquido};}
+  \capa{2}{\draw[partida=tceemorado] (0.1,1.85) rectangle (4.85,4.9);
+    \node[titulo] at (2.475,4.45) {Préstamos e hipotecas};
+    \node[detalle] at (2.475,4.05) {ilíquido, a largo plazo};}
+  \capa{2}{\draw[partida=tceeazul] (0.1,0.0) rectangle (4.85,1.75);
+    \node[titulo] at (2.475,1.2) {Cartera de negociación};
+    \node[detalle] at (2.475,0.8) {valores y derivados};}
+  % 3: las 3 partidas del pasivo
+  \capa{3}{\draw[partida=tceedorado] (5.15,3.1) rectangle (9.9,6.0);
+    \node[titulo] at (7.525,5.55) {Depósitos a la vista};}
+  \capa{3}{\draw[partida=mayorista] (5.15,1.1) rectangle (9.9,3.0);
+    \node[titulo] at (7.525,2.3) {Financiación mayorista a corto};
+    \node[detalle,align=center] at (7.525,1.7) {repos, papel comercial,\\interbancario};}
+  \capa{3}{\draw[partida=tceegris] (5.15,0.0) rectangle (9.9,1.0);
+    \node[titulo] at (7.525,0.5) {Capital};}
+  % 4: la transformación de plazos: pasivo a corto, activo a largo
+  \capa{4}{\draw[->,very thick,tceemorado] (7.5,5.1) to[out=225,in=0] (6.0,3.75) -- (4.2,3.75) to[out=180,in=60] (3.2,3.1);}
+  \capa{4}{\node[font=\footnotesize,align=center,text=tceemorado] at (2.3,2.62) {transformación de plazos:\\pasivo a corto, activo a largo};}
+  % 5: 2007-2008: el vehículo de titulización fuera de balance y la
+  % dependencia de la financiación mayorista
+  \capa{5}{\draw[partida=tceemorado,dashed,fill=none] (-4.7,2.2) rectangle (-2.0,3.9);
+    \node[titulo,font=\small\bfseries] at (-3.35,3.05) {Vehículo de\\titulización};}
+  \capa{5}{\draw[->,thick,tceemorado] (0.1,3.05) -- (-2.0,3.05) node[midway,above,font=\footnotesize,align=center,text=black] {originar\\para distribuir};}
+  \capa{5}{\draw[draw=tceerojo,line width=2pt,rounded corners=1pt] (5.15,1.1) rectangle (9.9,3.0);}
+  % 6: los riesgos junto a su partida
+  \capa{6}{\node[riesgo,anchor=south east] at (4.8,1.92) {crédito};}
+  \capa{6}{\node[riesgo,anchor=south east] at (4.8,0.06) {mercado};}
+  \capa{6}{\node[riesgo,anchor=west] at (10.0,4.55) {liquidez};}
+  \capa{6}{\node[riesgo,anchor=west] at (10.0,2.05) {liquidez};}
+  \capa{6}{\node[riesgo,anchor=north west] at (6.1,3.68) {tipo de interés};}
+  \capa{6}{\node[riesgo,align=center] at (5,-0.6) {operacional: en todo el balance (personas, procesos, sistemas)};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,63 @@
+% Expansión fiscal en A con 2 países grandes, tipo de cambio flexible y
+% movilidad perfecta del capital (Mundell-Fleming; efecto locomotora). Misma
+% familia, escala y marco que mundell-fleming-dos-paises.tex. Plano (Y, i).
+% Rectas (Y en el eje horizontal, i en el vertical); equilibrio inicial (3; 2,5)
+% en los 2 países:
+%   tipo mundial: i* = 2,5 -> i*' = 3,2 (sube porque A es grande)
+%   A: LM  i = 2,5 + 0,8 (Y - 3) (no cambia)
+%      IS  i = 2,5 - (Y - 3);  IS' (gasto, neto de la apreciación) i = 3,2 - (Y - 3,875)
+%      nuevo equilibrio (3,875; 3,2): la renta de A sube
+%   B: LM  i = 2,5 + 1,0 (Y - 3) (no cambia)
+%      IS  i = 2,5 - (Y - 3);  IS' (exportaciones a A y depreciación de B)
+%      i = 3,2 - (Y - 3,7); nuevo equilibrio (3,7; 3,2): la renta de B también sube
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm,
+    declare function={lmA(\y)=2.5+0.8*(\y-3); lmB(\y)=2.5+1.0*(\y-3);
+      is(\y)=2.5-(\y-3); isA(\y)=3.2-(\y-3.875); isB(\y)=3.2-(\y-3.7);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-1.5) rectangle (14.6,5.4);
+  % ---------------- País A ----------------
+  % 1: ejes de A
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,5.0) {a) País A (expansión fiscal)};}
+  \capa{1}{\ejes{$Y_A$}{$i$}{6.4}{4.7}}
+  % 2: IS, LM y tipo mundial en A
+  \capa{2}{\draw[curva2] (1.0,{is(1.0)}) -- (5.1,{is(5.1)}) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{2}{\draw[curva1] (1.5,{lmA(1.5)}) -- (5.0,{lmA(5.0)}) node[etiqueta,right,text=tceemorado] {LM};}
+  \capa{2}{\draw[curva3] (0,2.5) node[left,text=black] {$i^*$} -- (6.2,2.5);}
+  \capa{2}{\node[punto] (A0) at (3,2.5) {};}
+  \capa{2}{\draw[guia] (A0) -- (3,0) node[below,text=black] {$Y_{A0}$};}
+  % 3: expansión fiscal en A: IS a la derecha
+  \capa{3}{\draw[curva2,desplazada] (2.2,{isA(2.2)}) -- (5.8,{isA(5.8)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  % 4: sube el tipo mundial
+  \capa{4}{\draw[curva3,desplazada] (0,3.2) node[left,text=black] {$i^{*\prime}$} -- (6.2,3.2);}
+  % 6: nuevo equilibrio en A
+  \capa{6}{\node[punto,fill=tceerojo] (A1) at (3.875,3.2) {};}
+  \capa{6}{\draw[guia,tceerojo] (A1) -- (3.875,0) node[below,text=tceerojo] {$Y_{A1}$};}
+  \capa{6}{\draw[flecha] (3.1,-0.85) -- (3.8,-0.85);}
+  % ---------------- País B ----------------
+  \begin{scope}[xshift=7.9*0.95cm]
+  % 1: ejes de B
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,5.0) {b) País B};}
+  \capa{1}{\ejes{$Y_B$}{$i$}{6.4}{4.7}}
+  % 2: IS, LM y tipo mundial en B
+  \capa{2}{\draw[curva2] (1.0,{is(1.0)}) -- (5.1,{is(5.1)}) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{2}{\draw[curva1] (1.2,{lmB(1.2)}) -- (4.6,{lmB(4.6)}) node[etiqueta,right,text=tceemorado] {LM};}
+  \capa{2}{\draw[curva3] (0,2.5) node[left,text=black] {$i^*$} -- (6.2,2.5);}
+  \capa{2}{\node[punto] (B0) at (3,2.5) {};}
+  \capa{2}{\draw[guia] (B0) -- (3,0) node[below,text=black] {$Y_{B0}$};}
+  % 5: sube el tipo mundial; B exporta más a A y se deprecia: IS a la derecha
+  \capa{5}{\draw[curva3,desplazada] (0,3.2) node[left,text=black] {$i^{*\prime}$} -- (6.2,3.2);}
+  \capa{5}{\draw[curva2,desplazada] (2.1,{isB(2.1)}) -- (5.6,{isB(5.6)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  % 6: nuevo equilibrio en B
+  \capa{6}{\node[punto,fill=tceerojo] (B1) at (3.7,3.2) {};}
+  \capa{6}{\draw[guia,tceerojo] (B1) -- (3.7,0) node[below,text=tceerojo] {$Y_{B1}$};}
+  \capa{6}{\draw[flecha] (3.1,-0.85) -- (3.65,-0.85);}
+  \end{scope}
+  % 6: rótulos de los resultados
+  \capa{6}{\node[etiqueta,text=tceerojo,font=\footnotesize,anchor=west] at (3.95,-0.85) {sube la renta de A};}
+  \capa{6}{\node[etiqueta,text=tceerojo,font=\footnotesize,anchor=west,align=left] at (7.9+3.75,-0.85) {sube también la de B\\(locomotora)};}
+\end{tikzpicture}
+\end{document}

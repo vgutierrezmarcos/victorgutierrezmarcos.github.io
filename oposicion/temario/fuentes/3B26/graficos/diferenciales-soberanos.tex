@@ -1,0 +1,102 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+% Diferencial de la deuda pública a 10 años frente a Alemania, en puntos
+% básicos, media mensual, enero de 2007 a diciembre de 2016. BCE, tipos a largo
+% plazo a efectos de convergencia (IRS); diferencial, cálculo propio (fuente en
+% la cabecera de ../datos/diferenciales-soberanos.csv). Pequeños múltiplos:
+% Grecia (hasta 2.739 pb) va en un panel aparte con el mismo eje de años.
+% Grecia no tiene dato en julio de 2015: hueco sin interpolar.
+% Eje x: 2007 + n.º de mes/12 (fila del CSV). Líneas verticales: julio de 2012
+% («haré lo que sea necesario», 26/7/2012) y septiembre de 2012 (OMT, 6/9/2012).
+% Máximos: España 555 (jul. 2012), Italia 519 (nov. 2011), Portugal 1.203
+% (ene. 2012), Irlanda 971 (jul. 2011), Grecia 2.739 (feb. 2012).
+% Capas «dic» (tikz-tcee.tex): ejes y referencias → líneas → puntos → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/diferenciales-soberanos.csv}\dif
+\pgfplotsset{
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] (0cm,0cm) -- (0.6cm,0cm);}},
+  panel/.style={
+      width=14cm, xmin=2007, xmax=2017,
+      xtick={2007,2008,...,2017},
+      x tick label style={/pgf/number format/1000 sep={}},
+      y tick label style={/pgf/number format/1000 sep={.}},
+      ticklabel style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      unbounded coords=jump, dicapas},
+}
+\begin{tikzpicture}[tcee]
+  \begin{groupplot}[group style={group size=1 by 2, vertical sep=0.9cm,
+        x descriptions at=edge bottom}, panel]
+    % 1: ejes de los 2 paneles (los dibuja el entorno)
+    \nextgroupplot[height=7cm, ymin=0, ymax=1300, ytick={0,200,...,1200},
+      ylabel={Puntos básicos}, ylabel style={font=\footnotesize},
+      legend style={at={(0.99,0.99)}, anchor=north east, draw=none, font=\footnotesize, legend columns=1},
+      legend cell align=left]
+    % 2: julio («haré lo que sea necesario») y septiembre de 2012 (OMT)
+    \capa{2}{
+      \dicraya[dicumbral]{(2012.5,0) (2012.5,1360)}
+      \dicraya[dicumbral]{(2012.667,0) (2012.667,1360)}
+      \dicrotulo[font=\scriptsize, anchor=south east, text=tceegris!60!black]{(2012.47,1305)}{jul.\ 2012: «haré lo que sea necesario»}
+      \dicrotulo[font=\scriptsize, anchor=south west, text=tceegris!60!black]{(2012.70,1305)}{sep.\ 2012: OMT}
+    }
+    % 3: España
+    \capa{3}{
+      \addplot[line width=1.6pt, tceemorado, leyenda linea corta] table[x expr=2007+\coordindex/12, y=es] {\dif};
+      \addlegendentry{España}
+    }
+    % 4: Italia, Portugal, Irlanda y Francia
+    \capa{4}{
+      \addplot[thick, tceeazul, leyenda linea corta] table[x expr=2007+\coordindex/12, y=it] {\dif};
+      \addlegendentry{Italia}
+      \addplot[thick, tceeverde, leyenda linea corta] table[x expr=2007+\coordindex/12, y=pt] {\dif};
+      \addlegendentry{Portugal}
+      \addplot[thick, tceedorado, leyenda linea corta] table[x expr=2007+\coordindex/12, y=ie] {\dif};
+      \addlegendentry{Irlanda}
+      \addplot[thick, dashed, tceegris, leyenda linea corta] table[x expr=2007+\coordindex/12, y=fr] {\dif};
+      \addlegendentry{Francia}
+    }
+    % 6: máximos
+    \capa{6}{
+      \addplot[dicpuntos=tceemorado, forget plot] coordinates {(2012.5,555)};
+      \addplot[dicpuntos=tceeazul, forget plot] coordinates {(2011.833,519)};
+      \addplot[dicpuntos=tceeverde, forget plot] coordinates {(2012.0,1203)};
+      \addplot[dicpuntos=tceedorado, forget plot] coordinates {(2011.5,971)};
+    }
+    % 7: rótulos de los máximos
+    \capa{7}{
+      \dicrotulo[font=\footnotesize, anchor=south east, inner sep=1pt, text=tceemorado]{(2012.47,592)}{555}
+      \dicrotulo[font=\footnotesize, anchor=east, text=tceeazul]{(2011.78,535)}{519}
+      \dicrotulo[font=\footnotesize, anchor=east, text=tceeverde]{(2011.93,1203)}{1.203}
+      \dicrotulo[font=\footnotesize, anchor=east, text=tceedorado]{(2011.45,985)}{971}
+    }
+    \nextgroupplot[height=4.2cm, ymin=0, ymax=3000, ytick={0,1000,2000,3000},
+      ylabel={Puntos básicos}, ylabel style={font=\footnotesize},
+      xlabel={}]
+    % 2: las mismas líneas verticales en el panel de Grecia
+    \capa{2}{
+      \dicraya[dicumbral]{(2012.5,0) (2012.5,3000)}
+      \dicraya[dicumbral]{(2012.667,0) (2012.667,3000)}
+    }
+    % 5: Grecia (hueco en julio de 2015)
+    \capa{5}{
+      % (2 tramos: la celda vacía de julio de 2015 no se interpola)
+      \addplot[thick, tceerojo, restrict x to domain=2007:2015.45] table[x expr=2007+\coordindex/12, y=gr] {\dif};
+      \addplot[thick, tceerojo, restrict x to domain=2015.55:2017] table[x expr=2007+\coordindex/12, y=gr] {\dif};
+      \dicrotulo[font=\footnotesize\bfseries, anchor=north east, text=tceerojo]{(2016.9,2950)}{Grecia}
+    }
+    % 6: máximo de Grecia
+    \capa{6}{
+      \addplot[dicpuntos=tceerojo, forget plot] coordinates {(2012.083,2739)};
+    }
+    % 7: su rótulo
+    \capa{7}{
+      \dicrotulo[font=\footnotesize, anchor=east, text=tceerojo]{(2012.0,2760)}{2.739}
+    }
+  \end{groupplot}
+\end{tikzpicture}
+\end{document}

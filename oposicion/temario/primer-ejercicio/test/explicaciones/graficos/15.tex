@@ -1,0 +1,40 @@
+% Pregunta 15 (2025-marzo-A, n.º 17): modelo q con costes de ajuste (Abel-Hayashi), recorte permanente del impuesto sobre beneficios.
+% El locus qdot=0 se desplaza a la derecha; Kdot=0 sigue en q=1. q salta de E0 a P (sobre la nueva senda de silla)
+% y baja por ella hasta E1, con K1>K0 y q=1 de nuevo. Las sendas de silla son más planas que qdot=0.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$K$}{$q$}{7.3}{4.6}
+  % Kdot = 0
+  \draw[curva2] (0,1.5) -- (6.7,1.5) node[etiqueta,right,text=tceeazul] {$\dot K=0$};
+  \node[etiqueta,left] at (0,1.5) {$1$};
+  % qdot = 0 inicial y nuevo (pendiente -0,9)
+  \draw[curva1] (1.2,2.67) -- (3.61,0.5) node[etiqueta,right,text=tceemorado] {$\dot q=0$};
+  \draw[curvanueva] (3.3,2.85) -- (5.91,0.5) node[etiqueta,right,text=tceerojo] {$\dot q=0\,'$};
+  % Sendas de silla (pendiente -0,45, más planas)
+  \draw[curva3,desplazada] (0.6,2.355) -- (4.0,0.825);
+  \node[etiqueta,above,text=tceeverde] at (0.6,2.355) {$SS$};
+  \draw[curvanueva,desplazada] (1.6,2.94) -- (6.5,0.735);
+  \node[etiqueta,above left,text=tceerojo] at (1.6,2.94) {$SS'$};
+  % Guías
+  \draw[guia] (2.5,0) node[below] {$K_0$} -- (2.5,1.5);
+  \draw[guia] (4.8,0) node[below] {$K_1$} -- (4.8,1.5);
+  % Salto de q
+  \draw[flecha,line width=1.4pt] (2.5,1.56) -- (2.5,2.45);
+  \node[etiqueta,right,text=tceerojo,font=\footnotesize] at (2.53,1.74) {salto de $q$};
+  % Recorrido por la nueva senda
+  \draw[flecha,line width=1.4pt] (2.6,2.49) -- (3.6,2.04);
+  \draw[flecha,line width=1.4pt] (3.7,1.995) -- (4.7,1.545);
+  % Puntos
+  \node[punto] at (2.5,1.5) {};
+  \node[etiqueta,below left] at (2.5,1.5) {$E_0$};
+  \node[punto,fill=tceerojo] at (2.5,2.535) {};
+  \node[etiqueta,above right,text=tceerojo] at (2.5,2.535) {$P$};
+  \node[punto] at (4.8,1.5) {};
+  \node[etiqueta,below left] at (4.8,1.5) {$E_1$};
+  % Rótulo
+  \node[etiqueta,align=left,font=\footnotesize] at (5.4,3.9) {$q>1$: inversión $>0$, $K$ sube\\$q<1$: desinversión};
+\end{tikzpicture}
+\end{document}

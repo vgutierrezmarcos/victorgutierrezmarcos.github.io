@@ -1,0 +1,35 @@
+% Pregunta 169 (2022-julio, n.º 24): Solow con ahorro por encima de la regla de oro; k* queda a la derecha de k_oro, donde f'(k*) < a+n+delta (ineficiencia dinámica) y el consumo es menor que c_oro. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.95cm]
+  % f(k) = 2.008 sqrt(k); (a+n+delta)k con pendiente 0.6; s = 0.7 (s_oro = 0.5)
+  % k_oro = 2.8 ; k* = 5.47
+  \ejes{$k$}{$y$}{7.2}{5.7}
+  % Tangente a f en k_oro, paralela a la recta de reposición
+  \draw[guia] (0.6,2.04) -- (5.2,4.80);
+  % Producción, reposición y ahorro
+  \draw[curva1,domain=0:6.6,samples=80] plot (\x,{2.008*sqrt(\x)});
+  \node[etiqueta,tceemorado,anchor=west] at (6.6,5.16) {$f(k)$};
+  \draw[curva2] (0,0) -- (6.6,3.96);
+  \node[etiqueta,tceeazul,anchor=west] at (6.6,3.96) {$(a{+}n{+}\delta)k$};
+  \draw[curva3,domain=0:6.6,samples=80] plot (\x,{0.7*2.008*sqrt(\x)});
+  \node[etiqueta,tceeverde,anchor=west] at (6.6,3.45) {$s\,f(k)$};
+  % Consumo en la regla de oro (máximo) y en k*
+  \draw[guia] (2.8,0) -- (2.8,1.68);
+  \draw[tceedorado,line width=2.4pt] (2.8,1.68) -- (2.8,3.36);
+  \node[etiqueta,tceedorado,anchor=east] at (2.75,2.52) {$c_{oro}$};
+  \draw[guia] (5.47,0) -- (5.47,3.28);
+  \draw[tceerojo,line width=2.4pt] (5.47,3.28) -- (5.47,4.70);
+  \node[etiqueta,tceerojo,anchor=west] at (5.52,4.3) {$c^*$};
+  \node[punto] at (2.8,3.36) {};
+  \node[punto] at (5.47,3.28) {};
+  \node[below] at (2.8,0) {$k_{oro}$};
+  \node[below] at (5.47,0) {$k^*$};
+  % Pendientes
+  \node[etiqueta,font=\footnotesize,align=center,tceegris] at (1.45,4.15) {tangente con\\pendiente $a{+}n{+}\delta$};
+  \node[etiqueta,font=\footnotesize,align=left,tceerojo] at (4.13,0.9) {en $k^*$:\\$f'(k^*)<a{+}n{+}\delta$\\$\Rightarrow r<a+n$};
+  % Más ahorro aleja k* de k_oro
+  \draw[flecha] (4.9,-0.85) -- (5.9,-0.85) node[etiqueta,right,tceerojo] {$\uparrow s$};
+\end{tikzpicture}
+\end{document}

@@ -1,7 +1,7 @@
 # Consenso de Washington (Williamson, 1989-1990), sus críticas y el Consenso de Santiago
 
 - **Área:** historia-organismos · **Tema de referencia:** **3.B.28** (revisado el 3/11/2026): II.4 «Replanteamiento de la teoría del desarrollo: la escuela ortodoxa y el Consenso de Washington» (`sec:ortodoxa`), ordenado en el tiempo (60-70 → 70 → 80 → 1989 → 90), con a) Idea, b) Modelo (4 bloques) y c) Valoración; los 10 puntos en una tabla del anexo B (`anexo:clasicas`). Ficha creada en la fase canon del 3.B.28 (CC8, DK13, **[decidir]**).
-- **Temas que lo usan:** 3.B.28 (resumen, el más extenso; hecho, 3/11/2026), 3.A.45 (mención; hecho, 1/11/2026: nota en el contexto del enfoque institucional, l. 962, «los resultados decepcionantes del Consenso de Washington», con Williamson 1989/1990), 3.B.9 (mención prevista: apertura comercial), 3.B.29 (mención prevista: condicionalidad, crisis de la deuda), 3.B.30 (mención prevista: Banco Mundial y ajuste estructural), 3.B.20 y 3.B.21 (mención prevista: FMI y ajuste de los 80-90; el inventario del 3.B.21 lo cita).
+- **Temas que lo usan:** 3.B.28 (resumen, el más extenso; hecho, 3/11/2026), 3.A.45 (mención; hecho, 1/11/2026: nota en el contexto del enfoque institucional, l. 962, «los resultados decepcionantes del Consenso de Washington», con Williamson 1989/1990), 3.B.9 (mención prevista: apertura comercial), 3.B.29 (mención; hecho, 12/11/2026: II.2.1, el legado de la crisis de la deuda, «estabilidad macroeconómica, apertura y liberalización a cambio de financiación», `Williamson1990`, `\vertema{3.B.28}`), 3.B.30 (mención prevista: Banco Mundial y ajuste estructural), 3.B.20 y 3.B.21 (mención prevista: FMI y ajuste de los 80-90; el inventario del 3.B.21 lo cita).
 - **Manuales de referencia:** Williamson (1990), «What Washington Means by Policy Reform», en *Latin American Adjustment: How Much Has Happened?* (`Williamson1990`); Banco Mundial (1991), *Informe sobre el desarrollo mundial* (`BM1991Informe`); Banco Mundial (1993), *The East Asian Miracle* (`BM1993Milagro`); Stiglitz (1996), *WBRO* (`Stiglitz1996`); Burki y Perry (1998), *Beyond the Washington Consensus* (`BurkiPerry1998`); Wolfensohn (1998) (`Wolfensohn1998`); Rodrik (2006), *JEL*; Krueger (1974) y la contrarrevolución neoclásica.
 
 ## Presentación de referencia (3.B.28, II.4)
@@ -32,7 +32,7 @@
 | 3.B.28 | Replanteamiento de la teoría del desarrollo | resumen (hecho, 3/11/2026) | Lo de arriba, en orden cronológico | — |
 | 3.A.45 | Causas últimas: instituciones | mención (hecho, 1/11/2026) | Nota de contexto: los resultados decepcionantes del Consenso llevan a mirar a las instituciones | Los 10 puntos |
 | 3.B.9 | Comercio y crecimiento | mención (prevista) | La apertura como pieza del Consenso y la lectura de Asia, con `\vertema{3.B.28}` | Los 10 puntos |
-| 3.B.29 | Financiación exterior, deuda y ayuda | mención (prevista) | Ajuste estructural y condicionalidad tras la crisis de la deuda | Las críticas en detalle |
+| 3.B.29 | Financiación exterior, deuda y ayuda | mención (hecho, 12/11/2026) | Ajuste estructural y condicionalidad tras la crisis de la deuda (II.2.1, `Williamson1990`, `\vertema{3.B.28}`) | Las críticas en detalle |
 | 3.B.30 | Banco Mundial y bancos de desarrollo | mención (prevista) | *Market-friendly* (1991), *East Asian Miracle* (1993), reformas de segunda generación | — |
 | 3.B.20, 3.B.21 | FMI y sistema monetario | mención (prevista) | El FMI en el ajuste de los 80-90 | — |
 

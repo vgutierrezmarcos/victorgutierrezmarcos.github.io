@@ -1,0 +1,31 @@
+% La línea AMO en el plano flexibilidad-simetría (De Grauwe, 2022): las
+% combinaciones mínimas con las que los costes y los beneficios de la unión se
+% igualan. Recta decreciente S = 6,6 - 0,643 (F - 0,8); por encima, la unión
+% compensa. Los puntos de Estados Unidos y la zona del euro son solo una
+% ilustración cualitativa (como en De Grauwe).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.7cm,y=0.7cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.4,-1.0) rectangle (11.8,8.4);
+  % 1: ejes «flexibilidad» y «simetría»
+  \capa{1}{\draw[eje] (0,0) -- (10.5,0) node[below left=2pt and 0pt] {flexibilidad};}
+  \capa{1}{\draw[eje] (0,0) -- (0,7.8) node[above] {simetría};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: la línea AMO
+  \capa{2}{\draw[curva1] (0.8,6.6) -- (9.2,1.2) node[etiqueta, below right, text=tceemorado] {línea AMO};}
+  % 3: por encima, la unión compensa
+  \capa{3}{\fill[tceesalvia] (0.8,6.6) -- (9.2,1.2) -- (10.2,1.2) -- (10.2,7.4) -- (0.8,7.4) -- cycle;}
+  \capa{3}{\draw[curva1] (0.8,6.6) -- (9.2,1.2);}
+  \capa{3}{\node[etiqueta, align=center, font=\footnotesize, text=tceegris] at (7.3,5.6) {la unión compensa\\(beneficios $>$ costes)};}
+  % 4: por debajo, mejor moneda propia
+  \capa{4}{\node[etiqueta, align=center, font=\footnotesize, text=tceegris] at (2.7,1.6) {mejor moneda propia\\(costes $>$ beneficios)};}
+  % 5: ilustración: Estados Unidos y la zona del euro
+  \capa{5}{\node[punto, fill=tceegris] (eeuu) at (6.6,4.2) {};}
+  \capa{5}{\node[etiqueta, right=2pt, font=\footnotesize, text=tceegris] at (eeuu) {Estados Unidos};}
+  \capa{5}{\node[punto, fill=tceegris] (ze) at (4.6,3.2) {};}
+  \capa{5}{\node[etiqueta, below left=0pt and 1pt, font=\footnotesize, text=tceegris] at (ze) {zona del euro};}
+\end{tikzpicture}
+\end{document}

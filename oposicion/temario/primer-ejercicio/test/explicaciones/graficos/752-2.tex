@@ -1,0 +1,29 @@
+% Pregunta 752 (2006-septiembre-OEP2006, n.º 15): mercado de bienes; la OA vertical en
+% Y = F(N^d(w)) se desplaza a la izquierda al subir el salario real rígido.
+% Rectas a escala:  DA: P = 4,6 - 0,8 Y   OA: Y_0 = 3,5 (P_0 = 1,8)   OA': Y_1 = 2,5 (P_1 = 2,6)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  \ejes{$Y$}{$P$}{6.2}{5}
+  \node[font=\small\bfseries,text=tceemorado] at (3.1,5.4) {Mercado de bienes};
+  % Curvas
+  \draw[curva1] (0.5,4.2) -- (5.5,0.2) node[etiqueta,right,text=tceemorado] {$DA$};
+  \draw[curva2] (3.5,0.15) -- (3.5,4.5) node[etiqueta,above,text=tceeazul] {$OA$};
+  \draw[curvanueva,desplazada] (2.5,0.15) -- (2.5,4.5) node[etiqueta,above,text=tceerojo] {$OA'$};
+  \draw[flecha] (3.4,4.1) -- (2.6,4.1);
+  % Proyecciones
+  \draw[guia] (0,1.8) node[left] {$P_0$} -- (3.5,1.8);
+  \draw[guia] (0,2.6) node[left,text=tceerojo] {$P_1$} -- (2.5,2.6);
+  \node[below] at (3.5,0) {$Y_0$};
+  \node[below,text=tceerojo] at (2.5,0) {$Y_1$};
+  % Puntos
+  \node[punto] at (3.5,1.8) {};
+  \node[etiqueta,above right] at (3.5,1.8) {$E_0$};
+  \node[punto,fill=tceerojo] at (2.5,2.6) {};
+  \node[etiqueta,above right,text=tceerojo] at (2.5,2.6) {$E_1$};
+  \node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (3.75,3.6)
+    {$Y_0=F(N_0)$\\[2pt]\textcolor{tceerojo}{$Y_1=F(N_1)$}};
+\end{tikzpicture}
+\end{document}

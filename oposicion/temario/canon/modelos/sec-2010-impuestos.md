@@ -1,7 +1,7 @@
 # Clasificación de los impuestos en el SEC 2010
 
 - **Área:** sector público · **Tema de referencia:** 4.B.7 (el mapa proponía 4.B.12, que solo lo resume): la clasificación completa en 4.B.7 (ingresos públicos y clases de impuestos), con remisión desde 4.B.12 (directos) y 4.B.13 (indirectos); las cifras de España en 4.B.23.
-- **Temas que lo usan:** 4.B.7 (resumen hoy), 4.B.12 (resumen: D.5 y D.91), 4.B.13 (resumen: D.21 y D.29), 4.B.23 (aplicación prevista: estructura de ingresos)
+- **Temas que lo usan:** 4.B.7 (resumen hoy), 4.B.12 (resumen: D.5 y D.91), 4.B.13 (resumen: D.21 y D.29), 4.B.23 (aplicación prevista: estructura de ingresos), 3.A.30 (mención; hecho, 11/11/2026: caja de la valoración con D.21, D.29, D.31 y D.39 y `\vertema{4.B.7}`)
 - **Manuales de referencia:** Reglamento (UE) 549/2013, cap. 4; Eurostat, *Taxation trends in the European Union* (clasificación por función: consumo, trabajo, capital).
 - **Decisión D077 (13/10/2026):** ¿Dónde va la clasificación SEC 2010 de los impuestos? 4.B.7 (ingresos públicos y clases de impuestos), con remisión desde 4.B.12 y 4.B.13 y las cifras de España en 4.B.23
 
@@ -14,6 +14,7 @@
 | 4.B.7 | Clases de impuestos | Desarrollo (propuesta) | Tabla completa y relación con directos/indirectos | — |
 | 4.B.12 / 4.B.13 | Imposición directa / indirecta | Mención | Dónde caen sus figuras | La tabla |
 | 4.B.23 | Estructura de ingresos de España | Aplicación | Cifras por código y por función | — |
+| 3.A.30 | Contabilidad nacional | Mención (hecho, 11/11/2026) | Impuestos sobre los productos (D.21) frente a otros impuestos sobre la producción (D.29), con sus subvenciones (D.31, D.39), para la valoración (precios básicos y de mercado); el antiguo «VAB al coste de los factores» ya no es saldo del SEC 2010 | La tabla completa de D.2 y D.5 |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.7: etiquetas «transferencias de capital» e «impuestos sobre el capital» invertidas.

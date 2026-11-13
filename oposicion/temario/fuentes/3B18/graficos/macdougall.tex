@@ -1,0 +1,72 @@
+% Modelo de MacDougall (1960) con el trabajo como factor móvil: ejes enfrentados.
+% Eje horizontal: trabajo total Lbar = L_N + L_S; O_N a la izquierda, O_S a la
+% derecha (L_N se mide desde O_N; L_S = Lbar - L_N, desde O_S).
+%   PMg_{L,N}(L) = 8 - 0,6 L
+%   PMg_{L,S} medida desde O_N: 6 - 0,6 (10 - L) = 0,6 L
+% Reparto inicial L0 = 4: w0_N = 5,6 ; w0_S = 2,4.
+% Equilibrio: 8 - 0,6 L = 0,6 L -> L1 = 6,667 ; w1 = 4.
+% Áreas (las letras se explican en el texto):
+%   A (0..L0, w1..w0_N): lo que pierden los trabajadores nativos del Norte y
+%     ganan los propietarios del capital del Norte;
+%   B (triángulo sobre w1 bajo PMg_N, L0..L1): ganancia neta del Norte (el
+%     excedente de la inmigración, para el capital del Norte);
+%   C (triángulo bajo w1 sobre PMg_S, L0..L1): parte de la ganancia mundial que
+%     se llevan los emigrantes;  B + C = ganancia de eficiencia (eq:macdougall),
+%     1/2 (5,6 - 2,4) 2,667 = 4,27;
+%   D (L1..Lbar, w0_S..w1): lo que ganan los trabajadores que se quedan en el
+%     Sur y pierden los propietarios del capital del Sur;
+%   E (triángulo bajo PMg_S sobre w0_S, L0..L1): lo que pierde además el
+%     capital del Sur y ganan los emigrantes (C + E = (w1 - w0_S)(L1 - L0)).
+%   Comprobación: Norte -A + (A + B); Sur +D - (D + E); emigrantes C + E;
+%   total B + C.
+% Con el capital como factor móvil es el mismo gráfico con K y r (3.B.10).
+% Elaboración propia a partir de MacDougall (1960) y Borjas (2020, cap. 8).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.75cm,
+    areaverde/.style={fill=tceeverde,fill opacity=0.25,draw=none},
+    letra/.style={etiqueta,font=\footnotesize\bfseries}]
+  % 1: los 2 ejes verticales enfrentados y el horizontal común
+  \capa{1}{\draw[eje] (0,0) -- (0,9) node[left] {$w_{\mathrm N}$};}
+  \capa{1}{\draw[eje] (10,0) -- (10,9) node[right] {$w_{\mathrm S}$};}
+  \capa{1}{\draw[thick] (0,0) -- (10,0);}
+  \capa{1}{\node[below] at (0,0) {$O_{\mathrm N}$};}
+  \capa{1}{\node[below] at (10,0) {$O_{\mathrm S}$};}
+  \capa{1}{\draw[<->,tceegris] (0,-1.15) -- (10,-1.15)
+    node[midway,below,text=black] {$\overline{L}=L_{\mathrm N}+L_{\mathrm S}$};}
+  % 2: productividad marginal del trabajo en el Norte, desde O_N
+  \capa{2}{\draw[curva1] (0,8) -- (10,2);}
+  \capa{2}{\node[etiqueta,right,text=tceemorado] at (0.3,8.1) {$\mathrm{PMg}_{L,\mathrm N}$};}
+  % 3: productividad marginal del trabajo en el Sur, desde O_S
+  \capa{3}{\draw[curva2] (10,6) -- (0,0);}
+  \capa{3}{\node[etiqueta,left,text=tceeazul] at (9.7,6.1) {$\mathrm{PMg}_{L,\mathrm S}$};}
+  % 4: reparto inicial y salarios distintos (w0_N > w0_S)
+  \capa{4}{\draw[guia] (4,0) node[below,text=black] {$L^0_{\mathrm N}$} -- (4,5.6);}
+  \capa{4}{\draw[guia] (0,5.6) node[left,text=black] {$w^0_{\mathrm N}$} -- (4,5.6);}
+  \capa{4}{\draw[guia] (4,2.4) -- (10,2.4) node[right,text=black] {$w^0_{\mathrm S}$};}
+  \capa{4}{\node[punto] at (4,5.6) {};}
+  \capa{4}{\node[punto] at (4,2.4) {};}
+  % 5: los trabajadores emigran del Sur al Norte
+  \capa{5}{\draw[flecha] (6.3,0.55) -- (4.3,0.55)
+    node[midway,above,font=\footnotesize,text=tceerojo] {emigran};}
+  % 6: equilibrio con salarios iguales
+  \capa{6}{\draw[guia] (6.667,0) node[below,text=black] {$L^1_{\mathrm N}$} -- (6.667,4);}
+  \capa{6}{\draw[guia] (0,4) node[left,text=black] {$w^1$} -- (10,4) node[right,text=black] {$w^1$};}
+  \capa{6}{\node[punto] at (6.667,4) {};}
+  % 7: ganancia de eficiencia, el triángulo entre las 2 curvas (B + C)
+  \capa{7}{\fill[areaverde] (4,5.6) -- (6.667,4) -- (4,2.4) -- cycle;}
+  \capa{7}{\node[letra] at (4.85,4.5) {B};}
+  \capa{7}{\node[letra] at (4.85,3.5) {C};}
+  % 8: en el Norte, los nativos pierden A y el capital gana A + B
+  \capa{8}{\fill[area2] (0,4) rectangle (4,5.6);}
+  \capa{8}{\node[letra] at (2,4.8) {A};}
+  % 9: en el Sur, los que se quedan ganan D, que pierde el capital
+  \capa{9}{\fill[area2] (6.667,2.4) rectangle (10,4);}
+  \capa{9}{\node[letra] at (9.35,3.4) {D};}
+  % 10: el capital del Sur pierde además E, que ganan los emigrantes (C + E)
+  \capa{10}{\fill[area] (4,2.4) -- (6.667,4) -- (6.667,2.4) -- cycle;}
+  \capa{10}{\node[letra] at (5.85,2.9) {E};}
+\end{tikzpicture}
+\end{document}

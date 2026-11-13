@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -8,7 +9,9 @@ import '../../core/constants.dart';
 import '../models/temas_clase.dart';
 import '../models/oposicion.dart';
 import '../../features/test/leitner.dart';
+import '../../features/test/motor_test.dart' show TestEnCurso;
 import '../models/resultado.dart';
+import '../models/reto.dart';
 
 /// Ajustes del usuario (locales y, con sesión, en users/{uid}/progress/settings).
 class Ajustes {
@@ -23,8 +26,22 @@ class Ajustes {
     this.temasClases = const {},
     this.estadisticas,
     this.calendarioGoogle = false,
+    this.racha = false,
+    this.temaFrio = false,
+    this.mejorRacha = 0,
+    this.rachaCongelaciones = const [],
+    this.avisosPreparador = const {},
+    this.ultimoUso,
+    this.rubrica = const [],
+    this.aportarReto = false,
     this.updatedAt,
   });
+
+  /// Tipos de actividad de los que el preparador puede recibir aviso, si el
+  /// opositor los comparte (apagados por defecto): temas fijados para una
+  /// clase, cantes por su cuenta, temas marcados como estudiados, último día
+  /// de uso de la app (solo el día) y cercanía del examen.
+  static const avisosPreparadorTipos = ['temas', 'cantes', 'estudiados', 'uso', 'examen'];
 
   final DateTime? fechaConvocatoria;
   final Set<String> temasEstudiados;
@@ -47,6 +64,22 @@ class Ajustes {
   /// «Mis cantes en Google Calendar»: el opositor lleva sus cantes y las
   /// clases con su preparador a su propio calendario (solo en Android).
   final bool calendarioGoogle;
+  /// Racha de días con actividad en Hoy (la activa el opositor).
+  final bool racha;
+  /// En Hoy, el tema estudiado que lleva más tiempo sin repasar (lo activa el opositor).
+  final bool temaFrio;
+  final int mejorRacha;
+  /// Días en que la racha está congelada (descansos), como «desde|hasta» en
+  /// claves de día (ver features/inicio/racha.dart).
+  final List<String> rachaCongelaciones;
+  /// Qué avisos de su actividad recibe el preparador (ver [avisosPreparadorTipos]).
+  final Set<String> avisosPreparador;
+  /// Último día en que usó la app (clave de día), solo si comparte `uso`.
+  final String? ultimoUso;
+  /// Criterios con los que valora sus propios cantes (vacío = solo estrellas).
+  final List<String> rubrica;
+  /// Aportar la nota del test diario al agregado anónimo (y ver el de los demás).
+  final bool aportarReto;
   final DateTime? updatedAt;
 
   Ajustes copyWith({
@@ -62,6 +95,14 @@ class Ajustes {
     Map<String, TemasClase>? temasClases,
     bool? estadisticas,
     bool? calendarioGoogle,
+    bool? racha,
+    bool? temaFrio,
+    int? mejorRacha,
+    List<String>? rachaCongelaciones,
+    Set<String>? avisosPreparador,
+    String? ultimoUso,
+    List<String>? rubrica,
+    bool? aportarReto,
     DateTime? updatedAt,
   }) =>
       Ajustes(
@@ -75,6 +116,14 @@ class Ajustes {
         temasClases: temasClases ?? this.temasClases,
         estadisticas: estadisticas ?? this.estadisticas,
         calendarioGoogle: calendarioGoogle ?? this.calendarioGoogle,
+        racha: racha ?? this.racha,
+        temaFrio: temaFrio ?? this.temaFrio,
+        mejorRacha: mejorRacha ?? this.mejorRacha,
+        rachaCongelaciones: rachaCongelaciones ?? this.rachaCongelaciones,
+        avisosPreparador: avisosPreparador ?? this.avisosPreparador,
+        ultimoUso: ultimoUso ?? this.ultimoUso,
+        rubrica: rubrica ?? this.rubrica,
+        aportarReto: aportarReto ?? this.aportarReto,
         updatedAt: updatedAt ?? DateTime.now(),
       );
 
@@ -91,6 +140,14 @@ class Ajustes {
         'temasClases': TemasClase.aLista(temasClases),
         'estadisticas': estadisticas,
         'calendarioGoogle': calendarioGoogle,
+        'racha': racha,
+        'temaFrio': temaFrio,
+        'mejorRacha': mejorRacha,
+        'rachaCongelaciones': rachaCongelaciones,
+        'avisosPreparador': avisosPreparador.toList()..sort(),
+        if (ultimoUso != null) 'ultimoUso': ultimoUso,
+        'rubrica': rubrica,
+        'aportarReto': aportarReto,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -124,6 +181,14 @@ class Ajustes {
       temasClases: TemasClase.deLista(j['temasClases']),
       estadisticas: j['estadisticas'] as bool?,
       calendarioGoogle: j['calendarioGoogle'] == true,
+      racha: j['racha'] == true,
+      temaFrio: j['temaFrio'] == true,
+      mejorRacha: (j['mejorRacha'] as num?)?.toInt() ?? 0,
+      rachaCongelaciones: ((j['rachaCongelaciones'] as List?) ?? []).map((e) => e.toString()).toList(),
+      avisosPreparador: ((j['avisosPreparador'] as List?) ?? []).map((e) => e.toString()).toSet(),
+      ultimoUso: j['ultimoUso'] as String?,
+      rubrica: ((j['rubrica'] as List?) ?? []).map((e) => e.toString()).toList(),
+      aportarReto: j['aportarReto'] == true,
       updatedAt: f(j['updatedAt'] as String?),
     );
   }
@@ -174,6 +239,72 @@ class UsuarioRepo {
 
   DocumentReference<Map<String, dynamic>>? get _docUsuario =>
       uid == null || _db == null ? null : oposicion.raizUsuario(_db, uid!);
+
+  // ---------------------------------------------------------------- Reportes
+
+  /// «Reportar respuesta» en la revisión de un test: va a `reportesTest` (en la
+  /// raíz: el banco es común) y una Action se lo manda por correo al
+  /// administrador. Hace falta cuenta; sin red, Firestore lo envía al volver.
+  Future<void> reportarPregunta({required int pregunta, required String examen, required int numero, String? elegida, required String motivo, required String comentario}) async {
+    final usuario = _auth?.currentUser;
+    if (usuario == null || _db == null) throw StateError('Sin sesión');
+    await _db.collection('reportesTest').add({
+      'uid': usuario.uid,
+      'correo': usuario.email ?? '',
+      'nombre': usuario.displayName ?? '',
+      'oposicion': oposicion.id,
+      'pregunta': pregunta,
+      'examen': examen,
+      'numero': numero,
+      'elegida': elegida ?? '',
+      'motivo': motivo,
+      'comentario': comentario,
+      'version': (await PackageInfo.fromPlatform()).version,
+      'creado': FieldValue.serverTimestamp(),
+      'enviado': false,
+    });
+  }
+
+  // --------------------------------------------------------------- Reto diario
+
+  /// Suma la nota del test diario de [dia] al agregado anónimo (una vez por
+  /// persona y día: la marca `participantes/{uid}` y el contador van en la
+  /// misma transacción, como exigen las reglas). Sin sesión o ya aportada, no
+  /// hace nada. Devuelve si se ha aportado ahora.
+  Future<bool> aportarReto(double notaSobre10, {DateTime? dia}) async {
+    final uid = _auth?.currentUser?.uid;
+    if (uid == null || _db == null) return false;
+    final id = RetoDia.id(dia ?? DateTime.now());
+    final clave = 'reto_aportado_${oposicion.id}_$id';
+    if (_ajustes.get(clave) == true) return false;
+    final nota = RetoDia.cubo(notaSobre10);
+    final col = oposicion.red(_db, 'retoDiario');
+    try {
+      final lote = _db.batch()
+        ..set(col.doc(id).collection('participantes').doc(uid), {'nota': nota})
+        ..set(col.doc(id), {'hechos': FieldValue.increment(1), 'sumaNotas': FieldValue.increment(nota), 'c$nota': FieldValue.increment(1)}, SetOptions(merge: true));
+      await lote.commit();
+      await _ajustes.put(clave, true);
+      return true;
+    } on FirebaseException catch (e) {
+      // Ya aportada desde otro dispositivo: se recuerda para no insistir.
+      if (e.code == 'permission-denied') await _ajustes.put(clave, true);
+      return false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// El agregado de [dia] (null sin sesión o sin red).
+  Future<RetoDia?> leerReto({DateTime? dia}) async {
+    if (_auth?.currentUser == null || _db == null) return null;
+    try {
+      final d = await oposicion.red(_db, 'retoDiario').doc(RetoDia.id(dia ?? DateTime.now())).get();
+      return RetoDia.fromJson(d.data());
+    } catch (_) {
+      return null;
+    }
+  }
 
   // ---------------------------------------------------------------- Resultados
 
@@ -254,6 +385,22 @@ class UsuarioRepo {
 
   // ---------------------------------------------------------------- Leitner
 
+  // ------------------------------------------------------------ Test en curso
+
+  /// Test a medias guardado en este dispositivo (no se sincroniza: las
+  /// preguntas son las de este banco y el tiempo, el de este reloj).
+  TestEnCurso? testEnCurso() {
+    final m = _ajustes.get('test_en_curso') as Map?;
+    if (m == null) return null;
+    try {
+      return TestEnCurso.fromJson(m);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<void> guardarTestEnCurso(TestEnCurso? t) => t == null ? _ajustes.delete('test_en_curso') : _ajustes.put('test_en_curso', t.toJson());
+
   EstadoLeitner leitner() => EstadoLeitner.fromJson(_leitner.get('estado') as Map?);
 
   Future<void> guardarLeitner(EstadoLeitner e) async {
@@ -319,6 +466,9 @@ class UsuarioRepo {
       final fusion = ganador.copyWith(
         temasEstudiados: {...local.temasEstudiados, ...nube.temasEstudiados},
         temasEnRepaso: {...local.temasEnRepaso, ...nube.temasEnRepaso},
+        mejorRacha: local.mejorRacha > nube.mejorRacha ? local.mejorRacha : nube.mejorRacha,
+        rachaCongelaciones: {...local.rachaCongelaciones, ...nube.rachaCongelaciones}.toList()..sort(),
+        ultimoUso: [local.ultimoUso, nube.ultimoUso].whereType<String>().fold<String?>(null, (m, v) => m == null || v.compareTo(m) > 0 ? v : m),
       );
       await _ajustes.put('ajustes', fusion.toJson());
       return fusion;
@@ -379,25 +529,59 @@ class UsuarioRepo {
     await sincronizarNotas();
   }
 
-  /// Subcolecciones de users/{uid} (ver firestore.rules).
-  static const coleccionesUsuario = ['exam_results', 'progress', 'notes', 'cantes', 'alumnos', 'sesiones', 'preparadores', 'cronogramas'];
+  /// Colecciones del usuario en una oposición (bajo su raíz: users/{uid} en
+  /// TCEE, users/{uid}/oposiciones/{id} en las demás), con las colecciones que
+  /// cuelgan de cada documento (borrar un documento no borra lo de debajo).
+  /// La misma lista está en el conector (mcp/worker/src/borrado.ts): al añadir
+  /// una colección nueva, van las dos. «oposiciones» y «cuenta» no están a
+  /// propósito: son de la cuenta, no de una oposición.
+  static const coleccionesOposicion = <String, List<String>>{
+    'exam_results': [],
+    'progress': [],
+    'notes': [],
+    'cantes': ['reloj', 'pizarra', 'informes'],
+    'alumnos': [],
+    'sesiones': ['notas'],
+    'preparadores': [],
+    'cronogramas': [],
+    'cronogramasRecibidos': [],
+    'contactosPreparadores': [],
+    'notasPreparadores': [],
+    'tablon': [],
+    'coordinacion': [],
+    'anotaciones': ['paginas'],
+  };
 
-  /// Borra todo lo que el usuario tiene en la nube (users/{uid}/…). Los enlaces
-  /// con preparadores y alumnos se rompen antes en [PreparadorRepo].
-  Future<void> borrarTodoEnLaNube() async {
+  /// Ids de `anotaciones` de un tema: el del PDF de siempre y el del revisado.
+  /// (Los mismos que usa la página del tema; «/» no cabe en un id.)
+  static List<String> idsAnotaciones(String codigo) => [for (final c in [codigo, '$codigo-revisado']) c.replaceAll('/', '_')];
+
+  /// Borra todo lo que el usuario tiene en la nube en esta oposición. Los
+  /// enlaces con preparadores y alumnos se rompen antes en [PreparadorRepo].
+  ///
+  /// [temas] son los códigos del temario: las anotaciones a mano de un tema
+  /// están en `anotaciones/{tema}/paginas` y el documento `anotaciones/{tema}`
+  /// no existe, así que no salen al listar la colección: hay que ir tema a tema.
+  Future<void> borrarTodoEnLaNube({Iterable<String> temas = const []}) async {
     final doc = _docUsuario;
     if (doc == null) return;
-    for (final c in coleccionesUsuario) {
+    for (final MapEntry(key: c, value: debajo) in coleccionesOposicion.entries) {
       final snap = await doc.collection(c).get();
-      // Las clases de preparador llevan debajo el cronómetro y la pizarra
-      // compartidos: también se borran (borrar el documento no los borra).
       final refs = [
         for (final d in snap.docs) ...[
-          if (c == 'cantes' && d.data()['preparador'] != null)
-            for (final sub in const ['reloj', 'pizarra']) ...(await d.reference.collection(sub).get()).docs.map((x) => x.reference),
+          for (final sub in debajo) ...(await d.reference.collection(sub).get()).docs.map((x) => x.reference),
           d.reference,
         ],
       ];
+      if (c == 'anotaciones') {
+        final vistos = {for (final d in snap.docs) d.id};
+        final ids = [for (final t in temas) ...idsAnotaciones(t)].where((id) => !vistos.contains(id)).toSet().toList();
+        // De veinte en veinte: son dos lecturas por tema del temario.
+        for (var i = 0; i < ids.length; i += 20) {
+          final paginas = await Future.wait([for (final id in ids.skip(i).take(20)) doc.collection(c).doc(id).collection('paginas').get()]);
+          refs.addAll([for (final p in paginas) ...p.docs.map((x) => x.reference)]);
+        }
+      }
       // Un lote admite 500 operaciones.
       for (var i = 0; i < refs.length; i += 400) {
         final lote = _db!.batch();

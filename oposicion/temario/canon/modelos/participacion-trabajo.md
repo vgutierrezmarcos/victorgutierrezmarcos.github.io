@@ -31,7 +31,7 @@ $$\alpha=r\,v,\qquad v\;\to\;\frac{s}{\gamma_Y}\qquad(\texttt{eq:piketty})$$
 | 3.A.11 | Producción: σ y participaciones | mención (hecho, 13/10/2026) | Euler, Cobb-Douglas y CES con σ; la caída como problema para σ = 1 | La evidencia y sus explicaciones `\vertema{3.A.45}` |
 | 3.A.43 | Solow | mención (hecho, 31/10/2026) | La participación del trabajo de EE. UU. en la caja de Kaldor | Las explicaciones |
 | 3.A.15 | Teoría de la empresa y concentración | mención (hecho, 20/10/2026) | Superestrellas y márgenes crecientes como debate de la concentración | El reparto |
-| 3.A.30 | Contabilidad nacional | mención (prevista) | Remuneración de asalariados, renta mixta y EBE; la participación ajustada | La teoría |
+| 3.A.30 | Contabilidad nacional | mención (hecho, 11/11/2026; II.2, cuenta de explotación, con `\vertema{3.A.45}`) | Remuneración de asalariados (RA), renta mixta y EBE; la participación del 48,4 % y la ajustada del 56,6 % en 2025 (`Eurostat2026nama10gdp`, `CE2026AMECO`), las cifras de la ficha; Koh, Santaeulàlia-Llopis y Zheng (2020), de palabra, para la I+D en EE. UU. | La teoría |
 | 3.A.4 | Pensamiento (Kalecki, Kaldor, Pasinetti) | mención (hecho, 4/11/2026) | Teorías postkeynesianas de la distribución como alternativa a la productividad marginal: la participación salarial de Kalecki $WL/(PY)=1/[1+\mu(1+j)]$ (`eq:kalecki`), Kaldor (`eq:kaldor`) y Pasinetti (`eq:pasinetti`); regímenes de Bhaduri y Marglin (1990), con `\vertema{3.A.45}` (ficha `postkeynesianos`) | La evidencia |
 | 4.A.3 | Distribución de la renta en España | resumen aplicado (previsto) | Participación salarial de España (ajustada y sin ajustar) y enlace con la personal | La teoría `\vertema{3.A.45}` |
 

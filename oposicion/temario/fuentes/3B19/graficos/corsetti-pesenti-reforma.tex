@@ -1,0 +1,54 @@
+% Corsetti y Pesenti (2009) en el plano (l, C): reforma estructural en A que
+% reduce el poder de mercado (sigma sube). Variante de corsetti-pesenti.tex
+% (mismos estilos y números de partida).
+%   a) País A: O = (3; 2), AS C = (2/3) l. sigma sube: NR -> l-barra' = 3,6
+%      (NR = (sigma-1)/(sigma chi) crece con sigma); empeora la relación de
+%      intercambio de A (tau baja): AS' C = 0,6 l; AD' C = 2,16:
+%      nuevo punto O' = (3,6; 2,16): A trabaja y consume más.
+%   b) País B: NR_B igual; tau_B sube: AS_B' C = 0,75 l; AD_B' C = 2,25:
+%      O_B' = (3; 2,25): más consumo con el mismo trabajo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \path (-0.9,-1.0) rectangle (16.2,5.0);
+  % ---------------- a) País A ----------------
+  % 1: ejes
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,4.6) {a) País A: reforma estructural};}
+  \capa{1}{\ejes{$\ell$}{$C$}{6.0}{4.3}}
+  % 2: AS, AD, NR y O
+  \capa{2}{\draw[curva1] (0,0) -- (5.6,3.733) node[etiqueta,right,text=tceemorado] {AS};}
+  \capa{2}{\draw[curva3] (0,2) -- (5.6,2) node[etiqueta,below right,text=tceeverde] {AD};}
+  \capa{2}{\draw[curva4] (3,0) node[below,text=black] {$\bar\ell$} -- (3,4.1) node[etiqueta,above,text=tceedorado] {NR};}
+  \capa{2}{\node[punto] (O) at (3,2) {};}
+  \capa{2}{\node[etiqueta,above left] at (O) {$O$};}
+  % 3: sigma sube: NR a la derecha
+  \capa{3}{\draw[curva4,desplazada] (3.6,0) node[below,text=black] {$\bar\ell'$} -- (3.6,4.1) node[etiqueta,above,text=tceedorado] {NR$'$};}
+  \capa{3}{\draw[flecha,tceedorado] (3.05,-0.62) -- (3.55,-0.62);}
+  \capa{3}{\node[etiqueta,text=tceerojo,font=\footnotesize,anchor=west] at (3.9,-0.62) {$\sigma{\uparrow}$: más competencia en A};}
+  % 4: tau baja (AS' gira hacia abajo), AD' sube y nuevo punto
+  \capa{4}{\draw[curvanueva,desplazada] (0,0) -- (5.6,3.36) node[etiqueta,below right,text=tceerojo] {AS$'$: $\tau{\downarrow}$};}
+  \capa{4}{\draw[curvanueva,desplazada] (0,2.16) -- (5.6,2.16) node[etiqueta,above right,text=tceerojo] {AD$'$};}
+  \capa{4}{\node[punto,fill=tceerojo] (O1) at (3.6,2.16) {};}
+  \capa{4}{\draw[thin,tceerojo] (O1) -- (4.5,1.35) node[etiqueta,below right,text=tceerojo,inner sep=1pt] {$O'$};}
+  % ---------------- b) País B ----------------
+  \begin{scope}[xshift=9.3cm]
+  % 1: ejes
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,4.6) {b) País B};}
+  \capa{1}{\ejes{$\ell_B$}{$C_B$}{6.0}{4.3}}
+  % 2: AS_B, AD_B, NR_B y O_B
+  \capa{2}{\draw[curva1] (0,0) -- (5.6,3.733) node[etiqueta,right,text=tceemorado] {AS$_B$};}
+  \capa{2}{\draw[curva3] (0,2) -- (5.6,2) node[etiqueta,below right,text=tceeverde] {AD$_B$};}
+  \capa{2}{\draw[curva4] (3,0) node[below,text=black] {$\bar\ell_B$} -- (3,4.1) node[etiqueta,above,text=tceedorado] {NR$_B$};}
+  \capa{2}{\node[punto] (OB) at (3,2) {};}
+  \capa{2}{\node[etiqueta,below right] at (OB) {$O_B$};}
+  % 5: tau_B sube (AS_B' gira hacia arriba), AD_B' sube y nuevo punto
+  \capa{5}{\draw[curvanueva,desplazada] (0,0) -- (4.9,3.675) node[etiqueta,above,text=tceerojo] {AS$_B'$: $\tau_B{\uparrow}$};}
+  \capa{5}{\draw[curvanueva,desplazada] (0,2.25) -- (5.6,2.25) node[etiqueta,above right,text=tceerojo] {AD$_B'$};}
+  \capa{5}{\node[punto,fill=tceerojo] (OB1) at (3,2.25) {};}
+  \capa{5}{\node[etiqueta,above left,text=tceerojo] at (OB1) {$O_B'$};}
+  \capa{5}{\node[etiqueta,text=tceerojo,font=\footnotesize,anchor=west] at (0.2,-0.62) {B consume más con el mismo trabajo};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

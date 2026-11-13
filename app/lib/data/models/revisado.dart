@@ -73,7 +73,14 @@ class TemaRevisado {
     this.esquema = const [],
     this.raw = _rawPorDefecto,
     this.cdn = _cdnPorDefecto,
+    this.exclusivo = true,
   });
+
+  /// Materiales publicados o revisados desde el 1 de octubre de 2026: de uso
+  /// personal (sin licencia CC), solo lectura dentro de la app (sin compartir,
+  /// sin Word y sin descargar el PDF anotado). Lo dice el manifiesto
+  /// (`exclusivo`); si no lo trae, por la fecha de aprobación.
+  final bool exclusivo;
 
   /// Marcadores del PDF revisado (`esquema` en el manifiesto: [nivel, título,
   /// página]); vacío si el manifiesto aún no los trae.
@@ -123,7 +130,16 @@ class TemaRevisado {
   String prefijoLocal(ClaseFichero c) => '$archivo-revisado-${c.name}-';
 
   /// Nombre con el que se comparte o guarda el fichero.
-  String nombreVisible(ClaseFichero c) => switch (c) {
+  bool get esDictamen => codigo == codigoDictamen;
+
+  String nombreVisible(ClaseFichero c) => esDictamen
+      ? switch (c) {
+          ClaseFichero.pdf => 'Guía del dictamen (revisada).pdf',
+          ClaseFichero.docx => 'Guía del dictamen (revisada).docx',
+          ClaseFichero.html => 'Guía del dictamen (revisada).html',
+          ClaseFichero.repaso => 'Guía del dictamen - resumen de repaso.pdf',
+        }
+      : switch (c) {
         ClaseFichero.pdf => 'Tema $codigo (revisado).pdf',
         ClaseFichero.docx => 'Tema $codigo (revisado).docx',
         ClaseFichero.html => 'Tema $codigo (revisado).html',
@@ -134,14 +150,15 @@ class TemaRevisado {
   static TemaRevisado? fromJson(Object? j, {String raw = _rawPorDefecto, String cdn = _cdnPorDefecto}) {
     if (j is! Map) return null;
     final codigo = j['codigo'];
-    if (codigo is! String || !RegExp(r'^\d\.[A-Z]\.\d{1,2}$').hasMatch(codigo.trim())) return null;
+    // «Dictamen» es la guía del dictamen de coyuntura (clave `dictamen` del manifiesto).
+    if (codigo is! String || !(RegExp(r'^\d\.[A-Z]\.\d{1,2}$').hasMatch(codigo.trim()) || codigo.trim() == codigoDictamen)) return null;
     final pdf = FicheroRevisado.fromJson(j['pdf']);
     if (pdf == null) return null;
     final c = codigo.trim();
     final partes = c.split('.');
     final archivo = j['archivo'] is String && (j['archivo'] as String).isNotEmpty
         ? (j['archivo'] as String).replaceAll(RegExp(r'[^0-9A-Za-z]'), '')
-        : '${partes[0]}${partes[1]}${partes[2].padLeft(2, '0')}';
+        : (c == codigoDictamen ? '1D01' : '${partes[0]}${partes[1]}${partes[2].padLeft(2, '0')}');
     return TemaRevisado(
       codigo: c,
       archivo: archivo,
@@ -155,21 +172,39 @@ class TemaRevisado {
       esquema: EntradaEsquema.listaDeJson(j['esquema']),
       raw: raw,
       cdn: cdn,
+      exclusivo: j['exclusivo'] is bool ? j['exclusivo'] as bool : !(j['aprobado'] is String && DateTime.tryParse(j['aprobado'] as String) != null && DateTime.parse(j['aprobado'] as String).isBefore(corteExclusivo)),
     );
   }
 }
 
+/// Código con el que la app trata la guía del dictamen de coyuntura (1D01).
+const codigoDictamen = 'Dictamen';
+
+/// Desde cuándo lo revisado es exclusivo (uso personal).
+final corteExclusivo = DateTime(2026, 10, 1);
+
+/// Aviso de los materiales exclusivos (el mismo que llevan los ficheros).
+const avisoExclusivo = 'Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios.';
+const urlCondicionesMateriales = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html';
+
 /// revisados.json
 class ManifiestoRevisados {
-  const ManifiestoRevisados({this.temas = const {}, this.commit = ''});
+  const ManifiestoRevisados({this.temas = const {}, this.commit = '', this.condiciones = urlCondicionesMateriales, this.dictamen});
   final Map<String, TemaRevisado> temas;
+  /// La guía del dictamen de coyuntura revisada (clave `dictamen`), si está aprobada.
+  final TemaRevisado? dictamen;
   final String commit;
+  /// Página de condiciones de uso de los materiales (la trae el manifiesto).
+  final String condiciones;
+
+  /// Los temas exclusivos (uso personal).
+  Iterable<TemaRevisado> get exclusivos => [...temas.values, if (dictamen != null) dictamen!].where((t) => t.exclusivo);
 
   static const vacio = ManifiestoRevisados();
 
-  bool get isEmpty => temas.isEmpty;
+  bool get isEmpty => temas.isEmpty && dictamen == null;
 
-  TemaRevisado? de(String codigo) => temas[codigo];
+  TemaRevisado? de(String codigo) => codigo == codigoDictamen ? dictamen : temas[codigo];
 
   /// Tolerante: lo que no se entiende se ignora (una entrada mal escrita no
   /// tumba las demás) y, si el JSON entero no vale, queda vacío.
@@ -195,7 +230,10 @@ class ManifiestoRevisados {
         if (t != null) temas[t.codigo] = t;
       }
     }
-    return ManifiestoRevisados(temas: temas, commit: j['commit'] is String ? j['commit'] as String : '');
+    final condiciones = j['condiciones'];
+    final d = j['dictamen'];
+    final dictamen = d is Map ? TemaRevisado.fromJson({...d, 'codigo': codigoDictamen}, raw: raw, cdn: cdn) : null;
+    return ManifiestoRevisados(temas: temas, dictamen: dictamen, commit: j['commit'] is String ? j['commit'] as String : '', condiciones: condiciones is String && condiciones.startsWith('https://') ? condiciones : urlCondicionesMateriales);
   }
 }
 

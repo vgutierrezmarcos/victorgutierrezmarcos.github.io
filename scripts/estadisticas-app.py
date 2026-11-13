@@ -277,6 +277,13 @@ def ga(api, desde, hasta, dimensiones, metricas, filas=15, filtro=None):
     return salida
 
 
+def _instalacion(api, desde, hasta):
+    try:
+        return ga(api, desde, hasta, ['customUser:instalacion'], ['activeUsers'], 5)
+    except Exception as e:  # noqa: BLE001
+        return {'pendiente': f'Registra en GA4 (Administrar → Definiciones personalizadas) la propiedad de usuario «instalacion» como dimensión de usuario ({_error(e)}).'}
+
+
 def analytics_app(api, desde, hasta):
     ant_hasta, ant_desde = desde - timedelta(days=1), desde - timedelta(days=(hasta - desde).days + 1)
     try:
@@ -290,6 +297,10 @@ def analytics_app(api, desde, hasta):
             'total_anterior': (ga(api, ant_desde, ant_hasta, [], ['activeUsers', 'newUsers', 'sessions'], 1) or [{}])[0],
             'plataformas': ga(api, desde, hasta, ['platform'], ['activeUsers', 'sessions'], 5),
             'versiones': ga(api, desde, hasta, ['appVersion'], ['activeUsers'], 8),
+            # De dónde se instaló (play/apk/web; propiedad de usuario desde la
+            # 1.20.3): hay que registrarla en GA4 como dimensión personalizada
+            # de usuario «instalacion»; hasta entonces la API la rechaza.
+            'instalacion': _instalacion(api, desde, hasta),
             'pantallas': ga(api, desde, hasta, ['unifiedScreenName'], ['screenPageViews', 'activeUsers'], 15),
             'eventos': ga(api, desde, hasta, ['eventName'], ['eventCount', 'activeUsers'], 20,
                           {'filter': {'fieldName': 'eventName', 'inListFilter': {'values': list(EVENTOS)}}}),
@@ -387,6 +398,11 @@ def imprimir(f):
               f"{t.get('averageSessionDuration', 0)} s de media")
         print('  Plataformas: ' + ', '.join(f"{x['platform']} {x['activeUsers']}" for x in a['plataformas']))
         print('  Versiones: ' + ', '.join(f"{x['appVersion']} {x['activeUsers']}" for x in a['versiones']))
+        i = a.get('instalacion')
+        if isinstance(i, dict):
+            print('  Instalación: pendiente (' + i['pendiente'] + ')')
+        elif i:
+            print('  Instalación: ' + ', '.join(f"{x['customUser:instalacion']} {x['activeUsers']}" for x in i))
         print('  Pantallas: ' + ', '.join(f"{x['unifiedScreenName']} {x['screenPageViews']}" for x in a['pantallas'][:8]))
         print('  Eventos: ' + (', '.join(f"{x['eventName']} {x['eventCount']}" for x in a['eventos']) or 'ninguno'))
         if a.get('retención'):

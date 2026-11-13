@@ -1,0 +1,26 @@
+% Pregunta 526 (2016-enero-OEP2015, n.º 13): teorema de Coase. El óptimo social Y_A* iguala el beneficio marginal privado de A (IMg_A-CMg_A) al daño marginal de B; a su izquierda la compensación que exige A supera lo que B pagaría y a su derecha ocurre al revés. Autor: Víctor Gutiérrez Marcos
+% IMg_A-CMg_A = 3,6 - 0,75 Y ; DMg_B = 0,75 Y. Corte en Y = 2,4 (1,8). Óptimo privado en Y = 4,8.
+\documentclass[tikz,border=6pt]{standalone}
+\input{tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \ejes{$Y_A$}{euros por unidad}{6}{5}
+  % Zonas: a la izquierda A exige más de lo que B paga; a la derecha B paga más de lo que A exige
+  \fill[area] (0,3.6) -- (2.4,1.8) -- (0,0) -- cycle;
+  \fill[area2] (2.4,1.8) -- (4.8,3.6) -- (4.8,0) -- cycle;
+  % Curvas
+  \draw[curva1] (0,3.6) -- (4.8,0);
+  \node[etiqueta,tceemorado,anchor=south west] at (0.55,3.2) {$IMg_A-CMg_A$};
+  \draw[curva2] (0,0) -- (5.3,3.975) node[etiqueta,right] {$DMg_B$};
+  % Óptimo social y óptimo privado
+  \proyeccion{(2.4,1.8)}{$Y_A^*$}{}
+  \node[punto] at (2.4,1.8) {};
+  \node[punto] at (4.8,0) {};
+  \node[below] at (4.8,0) {$Y_A^{p}$};
+  % Comparación en un punto de cada lado
+  \draw[<->,thick,tceerojo] (1.2,0.9) -- (1.2,2.7);
+  \draw[<->,thick,tceerojo] (3.6,0.9) -- (3.6,2.7);
+  \node[etiqueta,align=center,tceerojo,font=\small] at (1.2,-0.95) {$Y_A<Y_A^*$: A exige\\más de lo que B paga};
+  \node[etiqueta,align=center,tceerojo,font=\small] at (3.6,4.6) {$Y_A>Y_A^*$: B paga\\más de lo que A exige};
+\end{tikzpicture}
+\end{document}

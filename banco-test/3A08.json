@@ -1,0 +1,509 @@
+{
+ "tema": "3.A.8",
+ "preguntas": [
+  {
+   "id": 310801,
+   "estado": "publicada",
+   "enunciado": "Sobre la existencia de una función de utilidad que represente las preferencias de un consumidor, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Basta con que las preferencias sean racionales (completas, reflexivas y transitivas): toda relación de preferencia racional puede representarse con una función de utilidad.",
+    "b": "Unas preferencias racionales y continuas pueden representarse con una función de utilidad continua, aunque no sean monótonas ni convexas.",
+    "c": "Además de la racionalidad y la continuidad, es imprescindible la monotonía: sin ella no puede asignarse un número a cada conjunto de indiferencia.",
+    "d": "Además de la racionalidad y la continuidad, es imprescindible la convexidad: sin ella la función de utilidad no sería cuasicóncava y no existiría."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Teorema de Debreu: con los axiomas de racionalidad (completitud, reflexividad y transitividad) y el de continuidad existe una función de utilidad continua. La monotonía y la convexidad no hacen falta para que exista: solo le dan propiedades (creciente y cuasicóncava).",
+    "desarrollo": "Los axiomas sobre las preferencias no sirven todos para lo mismo:\n\n- completitud, reflexividad y transitividad hacen de la relación un preorden completo (racionalidad);\n- añadiendo la continuidad ya existe una función de utilidad continua que representa las preferencias (teorema de Debreu, 1959);\n- la monotonía y la convexidad dan a esa función sus propiedades (creciente y cuasicóncava), y la convexidad estricta y la diferenciabilidad simplifican el análisis (demanda única, uso del cálculo).\n\nPor qué fallan las demás:\n\n- a) La racionalidad sola no basta. El contraejemplo clásico son las preferencias lexicográficas: son completas, reflexivas y transitivas, pero no continuas, y ninguna función de utilidad las representa.\n- c) La monotonía facilita la construcción habitual de la función (se asigna a cada cesta el punto de la diagonal que le es indiferente), pero no es necesaria: unas preferencias con un punto de saturación, por ejemplo, tienen función de utilidad.\n- d) La convexidad determina la forma de la función (cuasicóncava), no su existencia: unas preferencias con curvas de indiferencia cóncavas se representan sin problema, por ejemplo con $U=x_1^2+x_2^2$."
+   },
+   "dificultad": 1,
+   "apartado": "I.1.1 Axiomas sobre las preferencias (teorema de Debreu)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310802,
+   "estado": "publicada",
+   "enunciado": "Un consumidor ordena las cestas $(x_1,x_2)$ de forma lexicográfica: prefiere siempre la cesta que tiene más cantidad del bien 1 y, solo cuando dos cestas tienen la misma cantidad del bien 1, prefiere la que tiene más del bien 2. Estas preferencias:",
+   "opciones": {
+    "a": "No son completas, porque hay pares de cestas que el consumidor no puede comparar.",
+    "b": "No son transitivas, y por eso no existe una función de utilidad que las represente.",
+    "c": "Pueden representarse con la función $U=x_1+\\epsilon\\,x_2$, tomando un $\\epsilon>0$ suficientemente pequeño.",
+    "d": "Son completas, transitivas y monótonas, pero no continuas: cada conjunto de indiferencia se reduce a un punto y no existe una función de utilidad que las represente."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Las preferencias lexicográficas cumplen los axiomas de racionalidad y son monótonas, pero no son continuas. Como no hay dos cestas distintas indiferentes, no hay curvas de indiferencia, y no pueden representarse con ninguna función de utilidad.",
+    "desarrollo": "El orden lexicográfico funciona como el de un diccionario: primero se compara el bien 1 y solo en caso de empate se mira el bien 2.\n\n- Es completo: dos cestas cualesquiera siempre pueden compararse (o una tiene más bien 1, o tienen lo mismo y se compara el bien 2).\n- Es transitivo: si $A$ es mejor que $B$ y $B$ mejor que $C$, $A$ es mejor que $C$.\n- Es monótono (incluso estrictamente): más de cualquier bien, sin menos del otro, es mejor.\n- Dos cestas distintas nunca son indiferentes: cada conjunto de indiferencia es un único punto.\n- No es continuo. La sucesión de cestas $(1+1/n,\\ 0)$ es mejor que $(1,1)$ para todo $n$, pero su límite, $(1,0)$, es peor que $(1,1)$: el conjunto de cestas al menos tan buenas como $(1,1)$ no es cerrado. Hay un «salto» en las preferencias.\n\nSin continuidad falla el teorema de Debreu, y de hecho no existe ninguna función de utilidad (ni siquiera discontinua) que las represente: haría falta asignar a cada valor de $x_1$ un intervalo de números reales distinto y sin solaparse con los demás, y no hay «sitio» en la recta real para tantos intervalos.\n\nPor qué fallan las demás:\n\n- a) Son completas: siempre hay un criterio para decidir.\n- b) Son transitivas. Lo que falla es la continuidad.\n- c) Con $U=x_1+\\epsilon x_2$ hay sustitución entre bienes por pequeño que sea $\\epsilon$: la cesta $(0,\\ 2/\\epsilon)$ da utilidad 2 y sería preferida a $(1,0)$, que da 1, cuando el orden lexicográfico prefiere $(1,0)$."
+   },
+   "dificultad": 2,
+   "apartado": "I.1.1 Axiomas sobre las preferencias (preferencias lexicográficas)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310803,
+   "estado": "publicada",
+   "enunciado": "Considere las funciones de utilidad $U(x_1,x_2)=x_1x_2$ y $V(x_1,x_2)=\\sqrt{x_1x_2}$, definidas para cantidades positivas de ambos bienes. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Representan las mismas preferencias y dan lugar a las mismas funciones de demanda: $V$ es una transformación creciente de $U$ y la relación marginal de sustitución es $x_2/x_1$ en los dos casos.",
+    "b": "Representan preferencias distintas, porque con $V$ la utilidad marginal de cada bien es decreciente y con $U$ no lo es.",
+    "c": "Solo $V$ tiene curvas de indiferencia convexas, porque la convexidad exige que las utilidades marginales sean decrecientes.",
+    "d": "Representan las mismas preferencias, pero las funciones de demanda son distintas, porque la utilidad marginal de la renta no es la misma con $U$ que con $V$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La utilidad es ordinal: cualquier transformación creciente representa las mismas preferencias. $V=\\sqrt{U}$ ordena las cestas igual que $U$, tiene las mismas curvas de indiferencia y la misma RMS, y por tanto genera la misma demanda. Que la utilidad marginal sea o no decreciente no es una propiedad ordinal.",
+    "desarrollo": "$V=\\sqrt{U}$ y la raíz cuadrada es creciente para valores positivos, así que $V(\\vec{x})\\geq V(\\vec{y})\\Leftrightarrow U(\\vec{x})\\geq U(\\vec{y})$: las dos funciones ordenan las cestas igual. Sus curvas de indiferencia son las mismas (solo cambia el número que se asigna a cada una) y la RMS coincide:\n\n$$\\mathrm{RMS}^U_{12}=\\frac{U_1}{U_2}=\\frac{x_2}{x_1},\\qquad \\mathrm{RMS}^V_{12}=\\frac{V_1}{V_2}=\\frac{\\tfrac12 x_1^{-1/2}x_2^{1/2}}{\\tfrac12 x_1^{1/2}x_2^{-1/2}}=\\frac{x_2}{x_1}.$$\n\nComo la demanda sale de igualar la RMS al cociente de precios sobre la recta de balance, es la misma: $x_i=\\overline{W}/(2p_i)$.\n\nPor qué fallan las demás:\n\n- b) Es cierto que $U_{11}=0$ y $V_{11}<0$, pero la utilidad marginal decreciente no es una propiedad de las preferencias, sino de la función concreta que se elija para representarlas. No distingue preferencias.\n- c) Las dos tienen las mismas curvas de indiferencia, $x_2=k/x_1$, estrictamente convexas. La convexidad de las curvas equivale a que la RMS sea decreciente (cuasiconcavidad de la función), no a que las utilidades marginales lo sean: $U=x_1x_2$ tiene utilidades marginales constantes en cada bien y curvas convexas.\n- d) Acierta en que el multiplicador cambia con la transformación (por eso $\\lambda$ tampoco tiene significado ordinal), pero la cesta elegida no depende de él: las demandas son idénticas."
+   },
+   "dificultad": 1,
+   "apartado": "I.1.1 Función de utilidad (carácter ordinal)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310804,
+   "estado": "publicada",
+   "enunciado": "Las preferencias de un consumidor se representan con la función de utilidad $U(x_1,x_2)=\\left(x_1^{1/2}+x_2^{1/2}\\right)^{2}$. La elasticidad de sustitución entre los dos bienes es:",
+   "opciones": {
+    "a": "$1/2$",
+    "b": "$1$",
+    "c": "$2$",
+    "d": "Infinita"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La RMS es $(x_2/x_1)^{1/2}$, de modo que $\\ln(x_2/x_1)=2\\ln\\mathrm{RMS}_{12}$ y $\\sigma=2$. Es una CES con exponente $(\\sigma-1)/\\sigma=1/2$.",
+    "desarrollo": "La elasticidad de sustitución mide cuánto cambia, en porcentaje, la proporción en que se consumen los bienes cuando la RMS cambia un 1 %:\n\n$$\\sigma\\equiv\\frac{d\\ln(x_2/x_1)}{d\\ln\\mathrm{RMS}_{12}}.$$\n\nUtilidades marginales: $U_1=2\\left(x_1^{1/2}+x_2^{1/2}\\right)\\cdot\\tfrac12x_1^{-1/2}$ y $U_2=2\\left(x_1^{1/2}+x_2^{1/2}\\right)\\cdot\\tfrac12x_2^{-1/2}$. Por tanto,\n\n$$\\mathrm{RMS}_{12}=\\frac{U_1}{U_2}=\\left(\\frac{x_2}{x_1}\\right)^{1/2}\\ \\Longrightarrow\\ \\ln\\frac{x_2}{x_1}=2\\ln\\mathrm{RMS}_{12}\\ \\Longrightarrow\\ \\sigma=2.$$\n\nComprobación con la forma general de la CES, $U=\\left[\\sum_ia_ix_i^{(\\sigma-1)/\\sigma}\\right]^{\\sigma/(\\sigma-1)}$: el exponente interior es $(\\sigma-1)/\\sigma=1/2$, de donde $\\sigma=2$, y el exterior, $\\sigma/(\\sigma-1)=2$, que es el de la función. Los bienes son más fáciles de sustituir que con una Cobb-Douglas.\n\nPor qué fallan las demás:\n\n- a) $1/2$ es el exponente de la función (el parámetro $\\rho=(\\sigma-1)/\\sigma$), no la elasticidad de sustitución; también sale $1/2$ si se invierte la definición ($d\\ln\\mathrm{RMS}/d\\ln(x_2/x_1)$).\n- b) $\\sigma=1$ es el caso Cobb-Douglas, el límite de la CES cuando el exponente tiende a cero, no cuando vale $1/2$.\n- d) $\\sigma=\\infty$ corresponde a los sustitutivos perfectos, $U=ax_1+bx_2$, con RMS constante. Aquí la función es una suma de raíces, no lineal: la RMS varía con la proporción entre los bienes."
+   },
+   "dificultad": 2,
+   "apartado": "I.1.1 Relación marginal de sustitución y elasticidad de sustitución (CES)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310805,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con preferencias $U(x_1,x_2)=2x_1+x_2$ dispone de una renta $\\overline{W}=12$ y se enfrenta a los precios $p_1=3$ y $p_2=1$. La cesta que elige y la utilidad marginal de la renta en el óptimo (el multiplicador $\\lambda$ de la restricción presupuestaria) son:",
+   "opciones": {
+    "a": "$(x_1,x_2)=(4,0)$ y $\\lambda=2/3$",
+    "b": "$(x_1,x_2)=(0,12)$ y $\\lambda=1$",
+    "c": "$(x_1,x_2)=(0,12)$ y $\\lambda=2/3$",
+    "d": "$(x_1,x_2)=(2,6)$ y $\\lambda=1$"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con sustitutivos perfectos se compra solo el bien que da más utilidad por unidad monetaria: $U_1/p_1=2/3<U_2/p_2=1$, así que toda la renta va al bien 2. El multiplicador es la utilidad marginal por unidad monetaria del bien que sí se consume: $\\lambda=1$.",
+    "desarrollo": "La RMS es constante, $U_1/U_2=2$, y menor que el precio relativo, $p_1/p_2=3$: el consumidor valora una unidad del bien 1 en 2 unidades del bien 2, pero el mercado le pide 3. No le compensa comprar bien 1 a ningún nivel de consumo y la solución es de esquina: $x_1=0$, $x_2=\\overline{W}/p_2=12$, con $U=12$.\n\nCondiciones de Kuhn-Tucker:\n\n- para el bien que se consume ($x_2>0$): $U_2-\\lambda p_2=0\\Rightarrow\\lambda=U_2/p_2=1$;\n- para el que no se consume ($x_1=0$): $U_1-\\lambda p_1=2-3=-1\\leq 0$, que se cumple con desigualdad estricta.\n\nComprobación: la utilidad máxima es $V=\\overline{W}/p_2=\\overline{W}$, y $\\partial V/\\partial\\overline{W}=1=\\lambda$. Una unidad monetaria más permite comprar una unidad más del bien 2, que da 1 de utilidad.\n\nPor qué fallan las demás:\n\n- a) $(4,0)$ agota la renta, pero da $U=8<12$: gasta todo en el bien que rinde menos por unidad monetaria.\n- c) La cesta es la correcta, pero $2/3$ es $U_1/p_1$, la utilidad marginal por unidad monetaria del bien que no se compra. En una esquina, esa cifra queda por debajo de $\\lambda$ ($U_1/p_1\\leq\\lambda$); la igualdad $U_i/p_i=\\lambda$ solo vale para los bienes que se consumen.\n- d) $(2,6)$ reparte el gasto a medias y da $U=10<12$. Con curvas de indiferencia rectas no hay tangencia interior salvo que la RMS coincida con el precio relativo."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Problema de maximización de la utilidad (Kuhn-Tucker y solución de esquina)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310806,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con preferencias $U(x,y)=x^2y$ dispone de una renta $\\overline{W}=90$ y se enfrenta a los precios $p_x=3$ y $p_y=5$. Si $p_x$ sube a 6 y todo lo demás permanece constante, su nueva cesta óptima $(x,y)$ es:",
+   "opciones": {
+    "a": "$(10,\\ 6)$",
+    "b": "$(5,\\ 12)$",
+    "c": "$(7{,}5;\\ 9)$",
+    "d": "$(15,\\ 0)$"
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con una Cobb-Douglas el gasto en cada bien es una fracción fija de la renta: $2/3$ en $x$ (60) y $1/3$ en $y$ (30), sea cual sea el precio. Al duplicarse $p_x$, la cantidad de $x$ cae a la mitad (de 20 a 10) y la de $y$ no cambia (6).",
+    "desarrollo": "Para $U=x^{\\alpha}y^{\\beta}$ las demandas son\n\n$$x=\\frac{\\alpha}{\\alpha+\\beta}\\cdot\\frac{\\overline{W}}{p_x},\\qquad y=\\frac{\\beta}{\\alpha+\\beta}\\cdot\\frac{\\overline{W}}{p_y}.$$\n\nCon $\\alpha=2$, $\\beta=1$ y $\\overline{W}=90$: el consumidor gasta 60 en $x$ y 30 en $y$.\n\n- Antes: $x=60/3=20$, $y=30/5=6$.\n- Después: $x=60/6=10$, $y=30/5=6$.\n\nComprobación por la tangencia: $\\mathrm{RMS}=U_x/U_y=2y/x=p_x/p_y=6/5\\Rightarrow y=0{,}6x$; en la recta de balance, $6x+5(0{,}6x)=9x=90\\Rightarrow x=10$, $y=6$. El gasto, $60+30=90$, agota la renta.\n\nLa demanda de $y$ no depende de $p_x$ (elasticidad cruzada nula) y la de $x$ tiene elasticidad-precio $-1$: el gasto en $x$ no varía.\n\nPor qué fallan las demás:\n\n- b) $(5,12)$ está en la recta de balance, pero con las proporciones cruzadas: asigna $1/3$ de la renta a $x$ y $2/3$ a $y$ (equivale a plantear la tangencia con la RMS invertida).\n- c) $(7{,}5;\\ 9)$ reparte la renta a medias, como si los exponentes fueran iguales.\n- d) $(15,0)$ es una esquina. Con una Cobb-Douglas no hay soluciones de esquina: si falta uno de los bienes, la utilidad es cero."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Problema de maximización de la utilidad (solución interior; Cobb-Douglas)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310807,
+   "estado": "publicada",
+   "enunciado": "La función indirecta de utilidad de un consumidor es $V(p_1,p_2,\\overline{W})=\\dfrac{\\overline{W}^{2}}{4\\,p_1p_2}$. Su función de demanda marshalliana del bien 1 es:",
+   "opciones": {
+    "a": "$x_1=\\dfrac{\\overline{W}^{2}}{4\\,p_1^{2}\\,p_2}$",
+    "b": "$x_1=\\dfrac{\\overline{W}}{p_1}$",
+    "c": "$x_1=\\dfrac{\\overline{W}}{4\\,p_1}$",
+    "d": "$x_1=\\dfrac{\\overline{W}}{2\\,p_1}$"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Por la identidad de Roy, $x_1=-\\dfrac{\\partial V/\\partial p_1}{\\partial V/\\partial\\overline{W}}$. Aquí $\\partial V/\\partial p_1=-\\overline{W}^2/(4p_1^2p_2)$ y $\\partial V/\\partial\\overline{W}=\\overline{W}/(2p_1p_2)$, y el cociente da $\\overline{W}/(2p_1)$.",
+    "desarrollo": "La identidad de Roy permite obtener la demanda marshalliana derivando la función indirecta de utilidad:\n\n$$x_i(\\vec{p},\\overline{W})=-\\frac{\\partial V/\\partial p_i}{\\partial V/\\partial\\overline{W}}.$$\n\nDerivadas:\n\n$$\\frac{\\partial V}{\\partial p_1}=-\\frac{\\overline{W}^{2}}{4\\,p_1^{2}p_2},\\qquad\\frac{\\partial V}{\\partial\\overline{W}}=\\frac{2\\overline{W}}{4\\,p_1p_2}=\\frac{\\overline{W}}{2\\,p_1p_2}.$$\n\nCociente con el signo cambiado:\n\n$$x_1=\\frac{\\overline{W}^{2}}{4\\,p_1^{2}p_2}\\cdot\\frac{2\\,p_1p_2}{\\overline{W}}=\\frac{\\overline{W}}{2\\,p_1}.$$\n\nComprobación: es la demanda de una Cobb-Douglas simétrica, $U=x_1x_2$, que gasta la mitad de la renta en cada bien; sustituyendo $x_1=\\overline{W}/(2p_1)$ y $x_2=\\overline{W}/(2p_2)$ en $U$ se recupera $V=\\overline{W}^2/(4p_1p_2)$.\n\nPor qué fallan las demás:\n\n- a) Es solo $-\\partial V/\\partial p_1$: falta dividir por la utilidad marginal de la renta. Además, no puede ser una demanda: no es homogénea de grado cero en precios y renta.\n- b) Sale al olvidar el 2 al derivar $\\overline{W}^2$. Con dos bienes y precios positivos, gastar toda la renta en el bien 1 no es compatible con esta función indirecta, que es simétrica en los dos precios.\n- c) Sale al contar dos veces el factor $1/2$. Con ella el gasto en el bien 1 sería la cuarta parte de la renta, y por simetría otro tanto en el bien 2: no se cumpliría la ley de Walras."
+   },
+   "dificultad": 2,
+   "apartado": "I.3.2 Función indirecta de utilidad (identidad de Roy)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310808,
+   "estado": "publicada",
+   "enunciado": "En una economía hay dos consumidores, A y B, con preferencias $U_A=x^{1/2}y^{1/2}$ y $U_B=x^{1/4}y^{3/4}$. El precio del bien $x$ es $p_x=5$. Si se transfieren 100 unidades monetarias de renta de A (que dispone de más de 100) a B, sin que cambien los precios ni la renta total, la demanda de mercado del bien $x$:",
+   "opciones": {
+    "a": "No varía: las preferencias de ambos son homotéticas, sus curvas de Engel son rectas y la demanda agregada depende solo de la renta total.",
+    "b": "Aumenta en 5 unidades.",
+    "c": "Disminuye en 5 unidades.",
+    "d": "Disminuye en 10 unidades."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "A gasta la mitad de su renta en $x$ y B, la cuarta parte: sus curvas de Engel son rectas, pero no paralelas. A reduce su demanda en $50/5=10$ unidades y B la aumenta en $25/5=5$: la demanda de mercado cae en 5. La demanda agregada depende de cómo se reparte la renta, salvo que se cumpla la condición de Gorman.",
+    "desarrollo": "Las demandas individuales de $x$ (Cobb-Douglas) son\n\n$$x_A=\\frac12\\cdot\\frac{\\overline{W}_A}{p_x}=\\frac{\\overline{W}_A}{10},\\qquad x_B=\\frac14\\cdot\\frac{\\overline{W}_B}{p_x}=\\frac{\\overline{W}_B}{20}.$$\n\nCon la transferencia, $\\Delta\\overline{W}_A=-100$ y $\\Delta\\overline{W}_B=+100$:\n\n$$\\Delta x_A=-\\frac{100}{10}=-10,\\qquad\\Delta x_B=+\\frac{100}{20}=+5,\\qquad\\Delta X=-5.$$\n\nLa demanda de mercado es $X=\\overline{W}_A/10+\\overline{W}_B/20$: no puede escribirse como función de $\\overline{W}_A+\\overline{W}_B$ solamente. Para que la demanda agregada dependa solo de los precios y de la renta total, sea cual sea su reparto, hace falta la forma polar de Gorman: curvas de Engel rectas y paralelas entre consumidores, es decir, el mismo efecto renta $\\partial x_h/\\partial\\overline{W}_h$ para todos. Aquí los efectos renta son $1/10$ y $1/20$.\n\nPor qué fallan las demás:\n\n- a) Es la trampa conceptual. Las preferencias homotéticas dan curvas de Engel rectas que salen del origen, pero la condición de Gorman exige además que sean paralelas, lo que con preferencias homotéticas solo ocurre si son idénticas. Las de A y B no lo son.\n- b) Tiene el signo cambiado: la renta pasa del consumidor que más gasta en $x$ por unidad monetaria adicional (A) al que menos (B), así que la demanda agregada baja.\n- d) Recoge solo la caída de la demanda de A y olvida que B, con 100 unidades monetarias más, compra 5 unidades más."
+   },
+   "dificultad": 3,
+   "apartado": "I.3.3 Demanda de mercado: agregación y forma polar de Gorman",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310809,
+   "estado": "publicada",
+   "enunciado": "Un consumidor tiene preferencias $U(x_1,x_2)=(x_1-4)\\,x_2$, definidas para $x_1>4$, donde 4 es un consumo mínimo del bien 1. Con precios $p_1=p_2=1$ y renta $\\overline{W}=20$, en el óptimo:",
+   "opciones": {
+    "a": "El bien 1 es un bien necesario (elasticidad-renta $5/6$) y el bien 2, un bien de lujo (elasticidad-renta $5/4$).",
+    "b": "Los dos bienes tienen elasticidad-renta unitaria, porque la función es de tipo Cobb-Douglas y el gasto en cada bien es una fracción constante de la renta.",
+    "c": "El bien 1 es un bien de lujo (elasticidad-renta $5/4$) y el bien 2, un bien necesario (elasticidad-renta $5/6$).",
+    "d": "El bien 1 es independiente de la renta: el consumidor compra el mínimo de 4 unidades y gasta el resto de su renta en el bien 2."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Es una Stone-Geary: el consumidor cubre el mínimo de 4 unidades del bien 1 y reparte a medias la renta sobrante. Las demandas son $x_1=2+\\overline{W}/2=12$ y $x_2=(\\overline{W}-4)/2=8$, con elasticidades-renta $5/6$ (necesario) y $5/4$ (de lujo).",
+    "desarrollo": "Tangencia: $\\mathrm{RMS}_{12}=U_1/U_2=x_2/(x_1-4)=p_1/p_2=1\\Rightarrow x_2=x_1-4$. En la recta de balance, $x_1+(x_1-4)=20\\Rightarrow x_1=12$, $x_2=8$.\n\nEn general, con $p_1=p_2=1$: el consumidor compra primero el mínimo (4 unidades del bien 1) y reparte la renta sobrante, $\\overline{W}-4$, a medias:\n\n$$x_1=4+\\frac{\\overline{W}-4}{2}=2+\\frac{\\overline{W}}{2},\\qquad x_2=\\frac{\\overline{W}-4}{2}.$$\n\nLas dos curvas de Engel son rectas con pendiente $1/2$, pero no pasan por el origen. Elasticidades-renta en $\\overline{W}=20$:\n\n$$\\varepsilon_{x_1,\\overline{W}}=\\frac12\\cdot\\frac{20}{12}=\\frac56<1,\\qquad\\varepsilon_{x_2,\\overline{W}}=\\frac12\\cdot\\frac{20}{8}=\\frac54>1.$$\n\nEl bien con consumo mínimo es necesario (su peso en el gasto cae al subir la renta) y el otro, de lujo. Comprobación con la agregación de Engel: $s_1=12/20=0{,}6$ y $s_2=0{,}4$; $0{,}6\\cdot\\tfrac56+0{,}4\\cdot\\tfrac54=0{,}5+0{,}5=1$.\n\nPor qué fallan las demás:\n\n- b) Sería cierto con una Cobb-Douglas ($\\gamma=0$), que es homotética. El consumo mínimo rompe la homoteticidad: lo que es una fracción constante es el gasto de la renta sobrante, no el de la renta total.\n- c) Tiene las elasticidades cruzadas: el bien con mínimo de subsistencia es el necesario.\n- d) El consumidor no se queda en el mínimo: con $x_1=4$ la utilidad sería cero. De cada unidad monetaria adicional, la mitad va al bien 1."
+   },
+   "dificultad": 3,
+   "apartado": "II.1.2 Elasticidad-renta (bienes necesarios y de lujo; Stone-Geary)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310810,
+   "estado": "publicada",
+   "enunciado": "Un consumidor gasta toda su renta en dos bienes. Si, a los precios y la renta vigentes, el bien 1 es inferior, entonces el bien 2 es necesariamente:",
+   "opciones": {
+    "a": "Inferior también.",
+    "b": "Normal, y puede ser de primera necesidad o de lujo según su participación en el gasto.",
+    "c": "Un bien de lujo (elasticidad-renta mayor que uno).",
+    "d": "Independiente de la renta (elasticidad-renta nula)."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Por la agregación de Engel, $s_1\\varepsilon_{x_1,\\overline{W}}+s_2\\varepsilon_{x_2,\\overline{W}}=1$. Si $\\varepsilon_{x_1,\\overline{W}}<0$, entonces $s_2\\varepsilon_{x_2,\\overline{W}}>1$ y, como $s_2<1$, $\\varepsilon_{x_2,\\overline{W}}>1$: el bien 2 es de lujo.",
+    "desarrollo": "Si el consumidor agota su renta (ley de Walras), al derivar la restricción presupuestaria respecto a la renta se obtiene la agregación de Engel:\n\n$$s_1\\,\\varepsilon_{x_1,\\overline{W}}+s_2\\,\\varepsilon_{x_2,\\overline{W}}=1,\\qquad s_1+s_2=1.$$\n\nSi el bien 1 es inferior, $\\varepsilon_{x_1,\\overline{W}}<0$ y el primer sumando es negativo. Entonces\n\n$$s_2\\,\\varepsilon_{x_2,\\overline{W}}=1-s_1\\,\\varepsilon_{x_1,\\overline{W}}>1\\ \\Longrightarrow\\ \\varepsilon_{x_2,\\overline{W}}>\\frac{1}{s_2}>1.$$\n\nIntuición: al aumentar la renta en una unidad monetaria, el consumidor gasta menos en el bien 1; para agotar la renta, el gasto en el bien 2 tiene que aumentar en más de una unidad monetaria, y por tanto más que proporcionalmente.\n\nEjemplo: $s_1=0{,}4$ y $\\varepsilon_{x_1,\\overline{W}}=-0{,}5$ dan $\\varepsilon_{x_2,\\overline{W}}=(1+0{,}2)/0{,}6=2$.\n\nPor qué fallan las demás:\n\n- a) No todos los bienes pueden ser inferiores: si sube la renta y se gasta toda, no puede comprarse menos de todo.\n- b) Acierta en que es normal, pero con dos bienes no puede ser de primera necesidad: con $\\varepsilon_{x_2,\\overline{W}}<1$ la media ponderada no llegaría a uno.\n- d) Con $\\varepsilon_{x_2,\\overline{W}}=0$ la suma ponderada sería negativa, no uno."
+   },
+   "dificultad": 2,
+   "apartado": "II.1.3 Agregación de Engel",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310811,
+   "estado": "publicada",
+   "enunciado": "Un consumidor con preferencias $U(x_1,x_2)=x_1x_2$ y renta $\\overline{W}=120$ se enfrenta inicialmente a los precios $p_1=p_2=1$. El precio del bien 1 sube a $p_1=4$. Si la variación de la demanda del bien 1 se descompone con la compensación de Hicks (manteniendo la utilidad inicial), el efecto sustitución (ES) y el efecto renta (ER) son:",
+   "opciones": {
+    "a": "ES $=-22{,}5$ y ER $=-22{,}5$",
+    "b": "ES $=-15$ y ER $=-30$",
+    "c": "ES $=-45$ y ER $=0$",
+    "d": "ES $=-30$ y ER $=-15$"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La demanda pasa de 60 a 15 (efecto total $-45$). Manteniendo la utilidad inicial ($U=3.600$) a los nuevos precios, la demanda compensada es 30: el efecto sustitución es $30-60=-30$ y el efecto renta, $15-30=-15$.",
+    "desarrollo": "Demanda marshalliana de la Cobb-Douglas simétrica: $x_1=\\overline{W}/(2p_1)$, $x_2=\\overline{W}/(2p_2)$.\n\n1. Óptimo inicial ($A$): $x_1=60$, $x_2=60$, $U=3.600$.\n2. Óptimo final ($C$), con $p_1=4$: $x_1=120/8=15$, $x_2=60$. Efecto total: $15-60=-45$.\n3. Punto compensado ($B$): la cesta más barata que da $U=3.600$ a los precios $(4,1)$. Tangencia: $x_2/x_1=4\\Rightarrow x_2=4x_1$; con $x_1x_2=3.600$, $4x_1^2=3.600\\Rightarrow x_1=30$, $x_2=120$. (Esa cesta cuesta $4\\cdot30+120=240$: la renta que habría que dar al consumidor para compensarle.)\n\nPor tanto:\n\n$$\\text{ES}=30-60=-30,\\qquad\\text{ER}=15-30=-15,\\qquad\\text{ET}=-45.$$\n\nLos dos efectos son negativos: el bien es normal, de modo que el efecto renta refuerza al de sustitución.\n\nPor qué fallan las demás:\n\n- a) Es la descomposición con la compensación de Slutsky, que mantiene asequible la cesta inicial en lugar de la utilidad: renta compensada $4\\cdot60+60=300$, demanda $300/8=37{,}5$, ES $=-22{,}5$ y ER $=-22{,}5$. Para variaciones discretas del precio, las dos compensaciones no coinciden (sí lo hacen en el límite, para variaciones infinitesimales).\n- b) Tiene los dos efectos intercambiados.\n- c) Atribuye todo al efecto sustitución. Solo sería así sin efecto renta (preferencias cuasilineales); con una Cobb-Douglas la elasticidad-renta es uno."
+   },
+   "dificultad": 3,
+   "apartado": "II.2.2 Efecto sustitución y efecto renta: ecuación de Slutsky para el precio propio",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:310811.webp",
+     "alt": "Ejes x1 (horizontal) y x2 (vertical). Recta de balance inicial de (0,120) a (120,0), con el óptimo A sobre la curva de indiferencia U0. Recta final, más inclinada, de (0,120) a (30,0), con el óptimo C sobre la curva U1, más baja. Recta compensada discontinua, paralela a la final, de (0,240) a (60,0), tangente a U0 en B. A queda a la derecha, B arriba a la izquierda de A y C a la izquierda, a la altura de A.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 310812,
+   "estado": "publicada",
+   "enunciado": "Un bien absorbe el 40 % del gasto de un consumidor. Su elasticidad-renta es $-0{,}5$ y la elasticidad-precio propio de su demanda compensada (hicksiana) es $-0{,}1$. Según la ecuación de Slutsky expresada en elasticidades, la elasticidad-precio propio de su demanda marshalliana es:",
+   "opciones": {
+    "a": "$-0{,}3$, de modo que el bien es inferior pero ordinario.",
+    "b": "$+0{,}1$, de modo que es un bien Giffen.",
+    "c": "$-0{,}6$, de modo que su demanda ordinaria es más elástica que la compensada.",
+    "d": "$+0{,}4$, de modo que es un bien Giffen."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Slutsky en elasticidades: $\\varepsilon_{x_i,p_i}=\\varepsilon^{h}_{i,p_i}-s_i\\,\\varepsilon_{x_i,\\overline{W}}=-0{,}1-0{,}4\\cdot(-0{,}5)=+0{,}1$. El efecto renta ($+0{,}2$) supera al efecto sustitución ($-0{,}1$): el bien es Giffen.",
+    "desarrollo": "Multiplicando la ecuación de Slutsky por $p_i/x_i$ se obtiene su versión en elasticidades:\n\n$$\\varepsilon_{x_i,p_i}=\\underbrace{\\varepsilon^{h}_{i,p_i}}_{\\text{efecto sustitución}}\\ \\underbrace{-\\,s_i\\,\\varepsilon_{x_i,\\overline{W}}}_{\\text{efecto renta}},$$\n\ndonde $s_i$ es la participación del bien en el gasto. Con los datos:\n\n$$\\varepsilon_{x_i,p_i}=-0{,}1-0{,}4\\cdot(-0{,}5)=-0{,}1+0{,}2=+0{,}1.$$\n\nLa elasticidad es positiva: al subir el precio aumenta la cantidad demandada. Es un bien Giffen, y se dan las dos condiciones que hacen falta: es inferior y pesa mucho en el gasto (por eso el efecto renta, que va ponderado por $s_i$, llega a dominar a un efecto sustitución pequeño).\n\nPor qué fallan las demás:\n\n- a) Suma el efecto renta con el signo equivocado ($-0{,}1-0{,}2$), como si el bien fuera normal. En un bien inferior, el efecto renta de una subida del precio es positivo.\n- c) Suma la elasticidad-renta sin ponderar y con el signo de un bien normal ($-0{,}1-0{,}5$). La demanda ordinaria es más elástica que la compensada solo en los bienes normales.\n- d) Acierta el signo del efecto renta, pero olvida ponderarlo por la participación en el gasto ($-0{,}1+0{,}5$). El peso $s_i$ es precisamente lo que hace tan raros los bienes Giffen."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.2 Ecuación de Slutsky para el precio propio (en elasticidades; bien Giffen)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310813,
+   "estado": "publicada",
+   "enunciado": "Un consumidor tiene preferencias Cobb-Douglas, $U=x_1^{\\alpha}x_2^{1-\\alpha}$, con $0<\\alpha<1$. Atendiendo a cómo responde la demanda del bien 1 a una variación de $p_2$, los bienes 1 y 2 son:",
+   "opciones": {
+    "a": "Independientes tanto en términos brutos como en términos netos, porque la demanda de cada bien solo depende de su propio precio y de la renta.",
+    "b": "Sustitutivos brutos y sustitutivos netos.",
+    "c": "Independientes en términos brutos y sustitutivos netos: el efecto sustitución cruzado, positivo, se compensa exactamente con el efecto renta.",
+    "d": "Independientes en términos brutos y complementarios netos: el efecto sustitución cruzado, negativo, se compensa exactamente con el efecto renta."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La demanda marshalliana, $x_1=\\alpha\\overline{W}/p_1$, no depende de $p_2$: elasticidad cruzada nula (independientes brutos). Por la ecuación de Slutsky cruzada, $\\partial h_1/\\partial p_2=x_2\\,\\partial x_1/\\partial\\overline{W}>0$: son sustitutivos netos, como ocurre siempre con dos bienes.",
+    "desarrollo": "Relaciones brutas (demanda marshalliana, incluye el efecto renta): $x_1=\\alpha\\overline{W}/p_1$, de modo que $\\partial x_1/\\partial p_2=0$. Los bienes son independientes en términos brutos.\n\nRelaciones netas (demanda compensada, solo efecto sustitución). Ecuación de Slutsky para el precio cruzado:\n\n$$\\underbrace{\\frac{\\partial x_1}{\\partial p_2}}_{=0}=\\frac{\\partial h_1}{\\partial p_2}-x_2\\frac{\\partial x_1}{\\partial\\overline{W}}\\ \\Longrightarrow\\ \\frac{\\partial h_1}{\\partial p_2}=x_2\\cdot\\frac{\\alpha}{p_1}>0.$$\n\nEl efecto sustitución cruzado es positivo: son sustitutivos netos. Al subir $p_2$, el consumidor sustituye bien 2 por bien 1 (efecto sustitución, $+$), pero pierde poder adquisitivo y, como el bien 1 es normal, compra menos (efecto renta, $-$). En la Cobb-Douglas los dos efectos se cancelan exactamente.\n\nEs un resultado general: con solo dos bienes, estos son siempre sustitutivos netos (por la homogeneidad de grado cero de la demanda compensada, $p_1S_{11}+p_2S_{12}=0$ con $S_{11}<0$).\n\nPor qué fallan las demás:\n\n- a) Confunde las relaciones brutas con las netas: la demanda marshalliana no depende de $p_2$, pero la compensada sí, $h_1=\\overline{U}\\left(\\frac{\\alpha}{1-\\alpha}\\cdot\\frac{p_2}{p_1}\\right)^{1-\\alpha}$, creciente en $p_2$.\n- b) Serían sustitutivos brutos si $\\partial x_1/\\partial p_2>0$, lo que ocurre con una CES de $\\sigma>1$, no con la Cobb-Douglas ($\\sigma=1$).\n- d) Con dos bienes no caben los complementarios netos. Además, si el efecto sustitución cruzado fuera negativo y el bien normal, el efecto renta (también negativo) no podría compensarlo."
+   },
+   "dificultad": 2,
+   "apartado": "II.2.2 Elasticidad-precio cruzada: sustitutivos y complementarios brutos y netos",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310814,
+   "estado": "publicada",
+   "enunciado": "Un consumidor reparte toda su renta entre dos bienes y dedica al bien 1 la cuarta parte de su gasto. La elasticidad-precio propio de su demanda marshalliana del bien 1 es $-2$. Por la agregación de Cournot, la elasticidad de la demanda del bien 2 respecto al precio del bien 1 es:",
+   "opciones": {
+    "a": "$1/3$: el bien 2 es sustitutivo bruto del bien 1.",
+    "b": "$-1/3$: el bien 2 es complementario bruto del bien 1.",
+    "c": "$2/3$: el bien 2 es sustitutivo bruto del bien 1.",
+    "d": "$1$: el bien 2 es sustitutivo bruto del bien 1."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Agregación de Cournot: $s_1\\varepsilon_{x_1,p_1}+s_2\\varepsilon_{x_2,p_1}=-s_1$. Con $s_1=0{,}25$, $s_2=0{,}75$ y $\\varepsilon_{x_1,p_1}=-2$: $-0{,}5+0{,}75\\,\\varepsilon_{x_2,p_1}=-0{,}25$, de donde $\\varepsilon_{x_2,p_1}=1/3$.",
+    "desarrollo": "La agregación de Cournot sale de derivar la ley de Walras respecto a un precio: si sube $p_1$ y la renta no cambia, el consumidor tiene que reajustar sus compras para seguir gastando exactamente lo mismo.\n\n$$s_1\\,\\varepsilon_{x_1,p_1}+s_2\\,\\varepsilon_{x_2,p_1}=-s_1.$$\n\nSustituyendo $s_1=1/4$, $s_2=3/4$ y $\\varepsilon_{x_1,p_1}=-2$:\n\n$$\\frac14\\cdot(-2)+\\frac34\\,\\varepsilon_{x_2,p_1}=-\\frac14\\ \\Longrightarrow\\ \\frac34\\,\\varepsilon_{x_2,p_1}=\\frac14\\ \\Longrightarrow\\ \\varepsilon_{x_2,p_1}=\\frac13.$$\n\nInterpretación: la demanda del bien 1 es elástica, así que al subir $p_1$ el gasto en él disminuye (varía en $s_1(1+\\varepsilon_{x_1,p_1})=-0{,}25$ por cada 1 % de subida, en porcentaje de la renta). Ese gasto liberado va al bien 2, cuya demanda aumenta: el bien 2 es sustitutivo bruto del 1.\n\nComprobación con cifras: renta 100, gasto 25 y 75. Si $p_1$ sube un 1 %, $x_1$ cae un 2 % y el gasto en el bien 1 pasa a ser aproximadamente $25\\cdot(1+0{,}01-0{,}02)=24{,}75$. El gasto en el bien 2 sube a 75,25, un $0{,}25/75=1/3$ %.\n\nPor qué fallan las demás:\n\n- b) Tiene el signo cambiado: con demanda elástica del bien 1, la del bien 2 aumenta al subir $p_1$. Sería negativa si la demanda del bien 1 fuera inelástica.\n- c) Iguala la suma ponderada a cero, olvidando el término $-s_1$ (el encarecimiento directo de las unidades que se siguen comprando): $0{,}75\\,\\varepsilon=0{,}5$.\n- d) Olvida ponderar por las participaciones en el gasto: $\\varepsilon_{x_2,p_1}=-(1+\\varepsilon_{x_1,p_1})=1$ solo sería cierto si los dos bienes pesaran lo mismo."
+   },
+   "dificultad": 3,
+   "apartado": "II.2.3 Agregación de Cournot",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310815,
+   "estado": "publicada",
+   "enunciado": "Tras una subida del precio de un bien, con la renta y los demás precios constantes, se observa que el gasto total del consumidor en ese bien aumenta. De ello se deduce que, en ese tramo, la elasticidad-precio propio de su demanda marshalliana es:",
+   "opciones": {
+    "a": "Menor que $-1$: la demanda es elástica.",
+    "b": "Exactamente igual a $-1$.",
+    "c": "Necesariamente positiva: se trata de un bien Giffen.",
+    "d": "Mayor que $-1$: la cantidad demandada cae menos que proporcionalmente al precio, o no cae."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Como $\\partial(p_ix_i)/\\partial p_i=x_i(1+\\varepsilon_{x_i,p_i})$, el gasto aumenta con el precio si y solo si $\\varepsilon_{x_i,p_i}>-1$. Es el caso de una demanda inelástica (y también de una rígida o de un bien Giffen), pero no exige que el bien sea Giffen.",
+    "desarrollo": "El gasto en el bien es $p_ix_i(\\vec{p},\\overline{W})$. Derivando respecto a su precio:\n\n$$\\frac{\\partial(p_ix_i)}{\\partial p_i}=x_i+p_i\\frac{\\partial x_i}{\\partial p_i}=x_i\\,(1+\\varepsilon_{x_i,p_i}).$$\n\nEl gasto aumenta al subir el precio si $1+\\varepsilon_{x_i,p_i}>0$, es decir, si $\\varepsilon_{x_i,p_i}>-1$: la cantidad cae en menor proporción de lo que sube el precio (demanda inelástica, $-1<\\varepsilon<0$), no cae (demanda rígida, $\\varepsilon=0$) o incluso aumenta (bien Giffen, $\\varepsilon>0$).\n\nPor qué fallan las demás:\n\n- a) Con demanda elástica, la cantidad cae más que proporcionalmente y el gasto en el bien disminuye.\n- b) Con elasticidad $-1$ el gasto no varía: es el caso de la Cobb-Douglas, en la que el gasto en cada bien es una fracción fija de la renta.\n- c) Un bien Giffen cumple la condición, pero no es necesario: basta una demanda inelástica, que es lo habitual en bienes sin buenos sustitutivos. «Necesariamente» la hace falsa."
+   },
+   "dificultad": 1,
+   "apartado": "II.2.2 Elasticidad-precio propio (elasticidad y gasto)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310816,
+   "estado": "publicada",
+   "enunciado": "Se observan dos elecciones de un consumidor que gasta siempre toda su renta. A los precios $\\vec{p}^{\\,0}=(2,1)$ elige la cesta $\\vec{x}^{\\,0}=(3,1)$; a los precios $\\vec{p}^{\\,1}=(1,2)$ elige la cesta $\\vec{x}^{\\,1}=(1,3)$. Estas elecciones:",
+   "opciones": {
+    "a": "Cumplen el axioma débil de la preferencia revelada: en las dos situaciones el consumidor gasta 7 unidades monetarias y ninguna cesta se revela preferida a la otra.",
+    "b": "Violan el axioma débil de la preferencia revelada: cada cesta era asequible cuando se eligió la otra, de modo que cada una se revela preferida a la otra.",
+    "c": "Cumplen el axioma débil de la preferencia revelada: $\\vec{x}^{\\,0}$ se revela preferida a $\\vec{x}^{\\,1}$, pero no al revés.",
+    "d": "No permiten contrastar el axioma débil de la preferencia revelada, porque para ello habría que conocer la función de utilidad del consumidor."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "A los precios $\\vec{p}^{\\,0}$, $\\vec{x}^{\\,1}$ cuesta 5 y la renta es 7: era asequible y se eligió $\\vec{x}^{\\,0}$. A los precios $\\vec{p}^{\\,1}$, $\\vec{x}^{\\,0}$ cuesta 5 y la renta es 7: era asequible y se eligió $\\vec{x}^{\\,1}$. Cada cesta se revela preferida a la otra, lo que viola el axioma débil.",
+    "desarrollo": "Renta en cada situación (el consumidor la gasta toda):\n\n- situación 0: $\\vec{p}^{\\,0}\\cdot\\vec{x}^{\\,0}=2\\cdot3+1\\cdot1=7$;\n- situación 1: $\\vec{p}^{\\,1}\\cdot\\vec{x}^{\\,1}=1\\cdot1+2\\cdot3=7$.\n\nCoste de la cesta no elegida en cada situación:\n\n- $\\vec{p}^{\\,0}\\cdot\\vec{x}^{\\,1}=2\\cdot1+1\\cdot3=5\\leq7$: $\\vec{x}^{\\,1}$ era asequible cuando se eligió $\\vec{x}^{\\,0}$, luego $\\vec{x}^{\\,0}$ se revela directamente preferida a $\\vec{x}^{\\,1}$;\n- $\\vec{p}^{\\,1}\\cdot\\vec{x}^{\\,0}=1\\cdot3+2\\cdot1=5\\leq7$: $\\vec{x}^{\\,0}$ era asequible cuando se eligió $\\vec{x}^{\\,1}$, luego $\\vec{x}^{\\,1}$ se revela directamente preferida a $\\vec{x}^{\\,0}$.\n\nEl axioma débil exige que, si $\\vec{x}^{\\,0}$ se revela preferida a $\\vec{x}^{\\,1}$, entonces $\\vec{x}^{\\,0}$ no sea asequible cuando se elige $\\vec{x}^{\\,1}$: $\\vec{p}^{\\,1}\\cdot\\vec{x}^{\\,0}>\\vec{p}^{\\,1}\\cdot\\vec{x}^{\\,1}$, es decir, $5>7$, que no se cumple. Las elecciones son incoherentes: ningún consumidor que maximice unas preferencias las haría.\n\nOtra forma de verlo: en cada situación el consumidor compra sobre todo el bien que está caro (3 unidades del bien 1 cuando cuesta 2; 3 unidades del bien 2 cuando cuesta 2).\n\nPor qué fallan las demás:\n\n- a) Que el gasto coincida no dice nada. Lo que hay que comparar es el coste de cada cesta a los precios de la otra situación con la renta de esa situación.\n- c) La revelación se da en los dos sentidos, no en uno. Si solo se diera en uno, el axioma se cumpliría.\n- d) La gracia del enfoque de Samuelson es precisamente que el axioma se contrasta con precios y cantidades observados, sin conocer la utilidad."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Teoría de la preferencia revelada (axioma débil)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:310816.webp",
+     "alt": "Ejes x1 y x2. Recta RB0 (precios 2 y 1) de (0,7) a (3,5;0), con la cesta x0 = (3,1) sobre ella. Recta RB1 (precios 1 y 2) de (0;3,5) a (7,0), con la cesta x1 = (1,3) sobre ella. Las rectas se cortan en (7/3, 7/3). La cesta x1 queda por debajo de RB0 y la cesta x0, por debajo de RB1.",
+     "ancho": 520
+    }
+   ]
+  },
+  {
+   "id": 310817,
+   "estado": "publicada",
+   "enunciado": "Con precios $\\vec{p}^{\\,0}=(2,2)$ y renta $\\overline{W}^{0}=40$, un consumidor elige la cesta $\\vec{x}^{\\,0}=(10,10)$. El precio del bien 1 baja a 1 y, a la vez, se le reduce la renta hasta $\\overline{W}^{1}=30$, de modo que la cesta inicial le cuesta justo su nueva renta (compensación de Slutsky). Si el consumidor gasta toda su renta y cumple el axioma débil de la preferencia revelada, ¿cuál de las siguientes cestas NO puede elegir en la nueva situación?",
+   "opciones": {
+    "a": "$(10,\\ 10)$",
+    "b": "$(14,\\ 8)$",
+    "c": "$(6,\\ 12)$",
+    "d": "$(20,\\ 5)$"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La cesta $(6,12)$ costaba 36 a los precios iniciales: era asequible y no se eligió, luego $(10,10)$ se reveló preferida a ella. Elegirla ahora, cuando $(10,10)$ sigue siendo asequible, violaría el axioma débil. Es la ley de la demanda compensada: si baja $p_1$ y se compensa la renta, no puede consumirse menos del bien 1.",
+    "desarrollo": "Las cuatro cestas están en la nueva recta de balance, $x_1+2x_2=30$: $10+20$, $14+16$, $6+24$ y $20+10$. La cesta inicial, $(10,10)$, sigue siendo asequible (cuesta justo 30).\n\nSi el consumidor elige ahora una cesta distinta de $(10,10)$, esa cesta se revela preferida a $(10,10)$. El axioma débil exige entonces que esa cesta no fuera asequible en la situación inicial, es decir, que a los precios $(2,2)$ costara más de 40:\n\n- $(14,8)$: $28+16=44>40$. No era asequible: puede elegirse.\n- $(20,5)$: $40+10=50>40$. No era asequible: puede elegirse.\n- $(6,12)$: $12+24=36\\leq40$. Era asequible y el consumidor prefirió $(10,10)$. Elegirla ahora, con $(10,10)$ disponible, sería revelar lo contrario: viola el axioma débil.\n- $(10,10)$: repetir la elección inicial no plantea ningún problema.\n\nGráficamente, la nueva recta pasa por $\\vec{x}^{\\,0}$ y es más plana. El tramo situado a la izquierda de $\\vec{x}^{\\,0}$ (menos bien 1) queda dentro del conjunto presupuestario inicial; el de la derecha, fuera. El consumidor solo puede quedarse en $\\vec{x}^{\\,0}$ o moverse hacia la derecha: $\\Delta p_1\\,\\Delta x_1\\leq0$. Es la ley de la demanda compensada (efecto sustitución no positivo), obtenida sin hablar de utilidad.\n\nCon la fórmula: $(\\vec{p}^{\\,1}-\\vec{p}^{\\,0})\\cdot(\\vec{x}^{\\,1}-\\vec{x}^{\\,0})=(-1)\\cdot(6-10)=+4>0$ para $(6,12)$, lo que incumple la condición $\\leq0$; para $(14,8)$ da $-4$ y para $(20,5)$, $-10$."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 Teoría de la preferencia revelada (ley de la demanda compensada)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:310817.webp",
+     "alt": "Ejes x1 y x2. Recta RB0 (precios 2 y 2, renta 40) de (0,20) a (20,0). Recta RB1 (precios 1 y 2, renta 30) de (0,15) a (30,0). Se cortan en (10,10), la cesta inicial, marcada como a). Sobre RB1 están también b) (14,8) y d) (20,5), a la derecha del cruce y por encima de RB0, y c) (6,12), a la izquierda del cruce y por debajo de RB0.",
+     "ancho": 580
+    }
+   ]
+  },
+  {
+   "id": 310818,
+   "estado": "publicada",
+   "enunciado": "Siguiendo el enfoque de la producción doméstica de Becker (1965), un hogar puede obtener una comida de dos formas: cocinándola en casa, con ingredientes por valor de 5 euros y 1,5 horas de su tiempo, o encargándola ya preparada, por 20 euros y 0,5 horas (entre pedirla y recogerla). Si el hogar puede trabajar las horas que desee a un salario de $w$ euros por hora, la comida preparada tiene un precio sombra menor que la casera cuando:",
+   "opciones": {
+    "a": "En ningún caso: los ingredientes cuestan 5 euros y la comida preparada, 20.",
+    "b": "$w>10$",
+    "c": "$w>7{,}5$",
+    "d": "$w>15$"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El precio sombra de cada opción suma el gasto en bienes y el coste de oportunidad del tiempo: $5+1{,}5w$ en casa y $20+0{,}5w$ preparada. La preparada es más barata si $20+0{,}5w<5+1{,}5w$, es decir, si $w>15$.",
+    "desarrollo": "En el modelo de Becker el hogar produce lo que consume (aquí, una comida) con bienes de mercado y tiempo. Con coeficientes fijos, el precio sombra de cada forma de obtenerla es\n\n$$\\pi=p\\,b+w\\,\\ell,$$\n\nel gasto en bienes más las horas empleadas valoradas al salario, que es su coste de oportunidad (cada hora dedicada a cocinar es una hora que no se trabaja).\n\n- Comida casera: $\\pi_c=5+1{,}5\\,w$.\n- Comida preparada: $\\pi_p=20+0{,}5\\,w$.\n\n$$\\pi_p<\\pi_c\\iff20+0{,}5\\,w<5+1{,}5\\,w\\iff15<w.$$\n\nComprobación: con $w=10$, $\\pi_c=20$ y $\\pi_p=25$ (compensa cocinar); con $w=20$, $\\pi_c=35$ y $\\pi_p=30$ (compensa encargarla); con $w=15$ cuestan lo mismo, 27,5.\n\nEs la implicación central del modelo: al subir el salario se encarecen las actividades intensivas en tiempo y los hogares sustituyen tiempo por bienes (comida preparada, guarderías, electrodomésticos).\n\nPor qué fallan las demás:\n\n- a) Compara solo el gasto monetario, como en la teoría tradicional, e ignora el coste del tiempo.\n- b) Cuenta el tiempo de cocinar, pero no el de la comida preparada: $5+1{,}5w>20$ da $w>10$.\n- c) Divide la diferencia de gasto (15 euros) entre la suma de los tiempos (2 horas) en lugar de entre su diferencia (1 hora)."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 La producción doméstica (precio sombra y coste del tiempo)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310819,
+   "estado": "publicada",
+   "enunciado": "Con datos de compraventas de viviendas de una ciudad se estima la función hedónica $\\ln p=11{,}2+0{,}008\\,m+0{,}05\\,b$, donde $p$ es el precio en euros, $m$ la superficie en metros cuadrados y $b$ el número de baños. La interpretación correcta del coeficiente de la superficie es:",
+   "opciones": {
+    "a": "Un metro cuadrado más eleva el precio en torno a un 0,8 %, con el número de baños constante; el precio implícito del metro cuadrado, en euros, es por tanto mayor en las viviendas más caras.",
+    "b": "Un metro cuadrado más eleva el precio de la vivienda en 0,008 euros, con el número de baños constante.",
+    "c": "Un aumento del 1 % de la superficie eleva el precio un 0,008 %, con el número de baños constante.",
+    "d": "Un metro cuadrado más eleva el precio en torno a un 0,8 %, con el número de baños constante; el precio implícito del metro cuadrado, en euros, es por tanto el mismo en todas las viviendas."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En una forma semilogarítmica, el coeficiente mide la variación proporcional del precio por unidad adicional de la característica: $\\partial\\ln p/\\partial m=0{,}008$, un 0,8 % por metro cuadrado. El precio implícito en euros es $\\partial p/\\partial m=0{,}008\\,p$: crece con el precio de la vivienda.",
+    "desarrollo": "El precio implícito (o hedónico) de una característica es la derivada de la función hedónica respecto a ella, con las demás constantes. Con la variable dependiente en logaritmos y la característica en niveles:\n\n$$\\frac{\\partial\\ln p}{\\partial m}=0{,}008\\ \\Longrightarrow\\ \\frac{\\partial p}{\\partial m}=0{,}008\\cdot p.$$\n\n- En términos relativos, cada metro cuadrado adicional eleva el precio aproximadamente un 0,8 % (semielasticidad).\n- En euros, el precio implícito depende de la vivienda: unos 1.600 euros por metro cuadrado en una de 200.000 euros y unos 3.200 en una de 400.000.\n\nQue el precio implícito no sea constante es coherente con el modelo de Rosen: la función hedónica no tiene por qué ser lineal, porque las características se compran en «paquetes» que no pueden deshacerse.\n\nPor qué fallan las demás:\n\n- b) Sería la lectura de una función lineal ($p$ en niveles). Aquí la variable dependiente es $\\ln p$.\n- c) Sería la lectura de una función doble logarítmica ($\\ln p$ sobre $\\ln m$), en la que el coeficiente es una elasticidad. Además confunde 0,008 con un porcentaje: aun en ese caso sería un 0,008 % por cada 1 %.\n- d) Acierta en el 0,8 %, pero saca la conclusión contraria: si el efecto es un porcentaje constante del precio, en euros no puede ser igual para todas las viviendas. El precio implícito constante corresponde a la forma lineal."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Precios hedónicos (estimación: forma semilogarítmica)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310820,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Rosen (1974), la función hedónica $p(\\vec{z})$ de un mercado competitivo de productos diferenciados, donde $\\vec{z}$ es el vector de características de cada variedad:",
+   "opciones": {
+    "a": "Es la curva de demanda de características de los consumidores, de modo que, una vez estimada, permite recuperar directamente sus preferencias.",
+    "b": "Es la envolvente de las funciones de puja (bid) de los consumidores y de las funciones de oferta (offer) de los productores: en cada variedad que se intercambia, su pendiente es a la vez la valoración marginal del comprador y el coste marginal de la característica para el vendedor.",
+    "c": "Es la curva de coste marginal de producir características, porque en competencia perfecta los precios reflejan solo los costes y no las preferencias.",
+    "d": "Ha de ser lineal en las características, porque el arbitraje iguala el precio implícito de cada característica en todas las variedades."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En Rosen, $p(\\vec{z})$ es un lugar geométrico de equilibrios: la envolvente de las curvas de puja de compradores distintos y de las curvas de oferta de vendedores distintos. Su pendiente (el precio implícito) coincide en cada variedad con la valoración marginal de quien la compra y el coste marginal de quien la vende, pero no es ni una curva de demanda ni una de oferta.",
+    "desarrollo": "En el modelo de Rosen:\n\n- cada consumidor tiene una función de puja, $\\Theta(\\vec{z};\\overline{U},\\overline{W})$: lo máximo que pagaría por cada variedad manteniendo su utilidad. Elige la variedad en la que su curva de puja es tangente a $p(\\vec{z})$, donde su relación marginal de sustitución entre la característica y el numerario iguala el precio implícito, $\\partial p/\\partial z_j$;\n- cada productor tiene una función de oferta, $\\phi(\\vec{z};B)$: lo mínimo que aceptaría por cada variedad para un beneficio dado. Vende la variedad en la que su curva de oferta es tangente a $p(\\vec{z})$, donde su coste marginal de la característica iguala el precio implícito;\n- como consumidores y productores son heterogéneos, cada punto de $p(\\vec{z})$ es la tangencia de un comprador y un vendedor distintos. La función hedónica es la envolvente de todas esas curvas.\n\nDe ahí la implicación: los precios implícitos revelan la valoración marginal de cada característica, pero solo en el margen y para quien compra esa variedad.\n\nPor qué fallan las demás:\n\n- a) Cada punto de $p(\\vec{z})$ pertenece a un consumidor distinto, así que la función no describe la demanda de ninguno. Recuperar las preferencias exige una segunda etapa de estimación, que tiene un grave problema de identificación.\n- c) Es simétrica a la anterior: tampoco es una curva de oferta. En el equilibrio, el precio implícito refleja a la vez costes y preferencias.\n- d) El arbitraje igualaría los precios implícitos si las características pudieran comprarse por separado y recombinarse. Como se venden en «paquetes» indivisibles, $p(\\vec{z})$ es en general no lineal y el precio implícito varía de una variedad a otra."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Precios hedónicos (modelo de Rosen)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  },
+  {
+   "id": 310821,
+   "estado": "publicada",
+   "enunciado": "Un modelo de ordenador portátil se vendía a 1.000 euros. El modelo que lo sustituye en las tiendas cuesta 1.100 euros, y una regresión hedónica atribuye 80 euros de esa diferencia a sus mejores características (más memoria y más velocidad). Descontando del precio nuevo el valor de esas mejoras, la variación del precio, ajustada por calidad, que debería recoger el índice de precios es:",
+   "opciones": {
+    "a": "Un 10 %",
+    "b": "Un 8 %",
+    "c": "Un 2 %",
+    "d": "Un 0 %"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "De los 100 euros de diferencia, 80 pagan más calidad y no son inflación. La subida pura de precio es de 20 euros sobre 1.000: un 2 %.",
+    "desarrollo": "El ajuste hedónico por calidad separa, en la diferencia de precio entre el modelo antiguo y el nuevo, lo que corresponde a un cambio en las características (más «cantidad» de calidad) y lo que es variación pura del precio:\n\n$$\\underbrace{1.100-1.000}_{\\text{diferencia observada}=100}=\\underbrace{80}_{\\text{mejora de calidad}}+\\underbrace{20}_{\\text{variación pura del precio}}.$$\n\nEl índice debe comparar productos de la misma calidad. Hay dos formas equivalentes de verlo: el modelo nuevo, con las características del antiguo, costaría $1.100-80=1.020$ euros; o el modelo antiguo, con las características del nuevo, habría costado $1.000+80=1.080$. En el primer caso la variación es $20/1.000=2\\,\\%$ (en el segundo, $20/1.080\\approx1{,}9\\,\\%$: en cualquier caso, en torno al 2 %).\n\nEs la aplicación que Griliches (1961) dio a los precios hedónicos, y el motivo por el que el informe Boskin (1996) concluyó que el IPC de Estados Unidos sobrestimaba la inflación: sin corregir bien los cambios de calidad, parte de la mejora de los productos se registra como subida de precios.\n\nPor qué fallan las demás:\n\n- a) El 10 % es la variación observada, sin ajustar: trata toda la diferencia como inflación.\n- b) El 8 % es lo que representa la mejora de calidad, es decir, justo la parte que hay que descontar.\n- d) Solo sería cero si la regresión atribuyera a las características los 100 euros completos."
+   },
+   "dificultad": 1,
+   "apartado": "III.3 Precios hedónicos (índices de precios con ajuste de calidad)",
+   "creada": "2026-11-11",
+   "revisada": "2026-11-11",
+   "vigencia": "estable"
+  }
+ ]
+}
