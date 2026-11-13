@@ -1,0 +1,58 @@
+% Coordenadas finales: a) 1 = (4,3; 2,5), GE_c C = 0,581 Y; GE_l C = 0,712 Y; LE' C = 8,23/Y; 2 = (3,4; 2,42).
+% b) GE_l C = 0,661 Y; LE' C = 5,18/Y; 2 = (2,8; 1,85). U0: C = 2,5 + 0,4(Y-3) + 0,15(Y-3)^2.
+% Política fiscal en el modelo de Corsetti y Pesenti (2001) en el plano (Y, C)
+% del país propio. GE: equilibrio del mercado de bienes (rayo); LE: equilibrio
+% del mercado de trabajo (decreciente); ME: equilibrio monetario (horizontal,
+% solo cuenta a corto plazo, con salarios fijados por adelantado). La utilidad
+% crece hacia el noroeste; U0 es la curva de indiferencia que pasa por O.
+%   a) Expansión fiscal propia: 0 = (3; 2,5), GE0 C = 0,833 Y, LE0 C = 7,5/Y.
+%      Corto plazo: GE gira a la derecha (C = 0,625 Y) y la economía va a 1 = (4; 2,5)
+%      sobre ME: la producción sube lo que el gasto y el consumo no cambia.
+%      Largo plazo: la relación real de intercambio mejora (GE_L, C = 0,727 Y,
+%      entre las 2) y LE se desplaza a la derecha (C = 7,92/Y): 2 = (3,3; 2,4).
+%      1 y 2 quedan al sureste de U0: el bienestar propio cae (gasto que no da utilidad).
+%   b) Expansión fiscal del otro país, vista desde el propio (caso rho < 1):
+%      a corto plazo nada; a largo plazo empeora la relación real de intercambio
+%      propia: GE gira a la derecha (C = 0,7 Y) y LE se desplaza a la izquierda
+%      (C = 5,887/Y): 2 = (2,9; 2,03). Consumo menor; la producción puede bajar
+%      (aquí) o subir (rho > 1). Bienestar menor: transmisión de empobrecer al vecino.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \path (-0.9,-1.0) rectangle (16.6,5.0);
+  % ---------------- a) expansión fiscal propia ----------------
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,4.6) {a) Sube el gasto del país propio};}
+  \capa{1}{\ejes{$Y$}{$C$}{6.0}{4.3}}
+  \capa{2}{\draw[curva1] (0,0) -- (4.9,4.083) node[etiqueta,above,text=tceemorado] {GE};}
+  \capa{3}{\draw[curva2,domain=1.85:5.6,samples=40] plot (\x,{7.5/\x}) node[etiqueta,right,text=tceeazul] {LE};}
+  \capa{4}{\draw[curva3] (0,2.5) -- (5.6,2.5) node[etiqueta,right,text=tceeverde] {ME};}
+  \capa{5}{\node[punto] (O) at (3,2.5) {};}
+  \capa{5}{\node[etiqueta,left,xshift=-4pt] at (O) {$O$};}
+  \capa{6}{\draw[curva4,domain=1.8:5.3,samples=40] plot (\x,{2.5+0.4*(\x-3)+0.15*(\x-3)*(\x-3)}) node[etiqueta,above,text=tceedorado] {$U_0$};}
+  \capa{7}{\draw[curvanueva,desplazada] (0,0) -- (5.6,3.256) node[etiqueta,right,text=tceerojo] {GE$_{c}$};}
+  \capa{7}{\node[punto,fill=tceerojo] (U) at (4.3,2.5) {};}
+  \capa{7}{\node[etiqueta,below right] at (U) {$1$};}
+  \capa{7}{\draw[flecha,shorten <=3pt,shorten >=3pt] (O) -- (U);}
+  \capa{8}{\draw[curva1,desplazada] (0,0) -- (5.4,3.844) node[etiqueta,right,text=tceemorado] {GE$_{l}$};}
+  \capa{8}{\draw[curva2,desplazada,domain=5.6:2.05,samples=40] plot (\x,{8.23/\x}) node[etiqueta,above,text=tceeazul] {LE$'$};}
+  \capa{9}{\node[punto,fill=tceemorado] (D) at (3.4,2.42) {};}
+  \capa{9}{\node[etiqueta,below] at (D) {$2$};}
+  \capa{9}{\draw[flecha,shorten <=3pt,shorten >=3pt] (U) to[bend left=25] (D);}
+  % ---------------- b) expansión fiscal del otro país ----------------
+  \begin{scope}[xshift=9.6cm]
+  \capa{10}{\node[font=\small\bfseries, anchor=base west] at (0,4.6) {b) Sube el gasto del otro país};}
+  \capa{10}{\ejes{$Y$}{$C$}{6.0}{4.3}}
+  \capa{10}{\draw[curva1] (0,0) -- (4.9,4.083) node[etiqueta,above,text=tceemorado] {GE};}
+  \capa{10}{\draw[curva2,domain=1.85:5.6,samples=40] plot (\x,{7.5/\x}) node[etiqueta,right,text=tceeazul] {LE};}
+  \capa{10}{\node[punto] (OB) at (3,2.5) {};}
+  \capa{10}{\node[etiqueta,left,xshift=-6pt] at (OB) {$O=1$};}
+  \capa{10}{\draw[curva4,domain=1.8:5.3,samples=40] plot (\x,{2.5+0.4*(\x-3)+0.15*(\x-3)*(\x-3)}) node[etiqueta,above,text=tceedorado] {$U_0$};}
+  \capa{11}{\draw[curvanueva,desplazada] (0,0) -- (5.6,3.70) node[etiqueta,right,text=tceerojo] {GE$_{l}$};}
+  \capa{11}{\draw[curvanueva,desplazada,domain=1.5:5.6,samples=40] plot (\x,{5.18/\x}) node[etiqueta,below,text=tceerojo] {LE$'$};}
+  \capa{12}{\node[punto,fill=tceerojo] (DB) at (2.8,1.85) {};}
+  \capa{12}{\node[etiqueta,below left] at (DB) {$2$};}
+  \capa{12}{\draw[flecha,shorten <=3pt,shorten >=3pt] (OB) -- (DB);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,36 @@
+% Infografía: del modelo de ciclo real con Estado (I.2) a la base de la que
+% parte II.1, el modelo de Ramsey-Cass-Koopmans con política fiscal
+% (3.A.38, caja de II.1, fig:rck-base). 4 simplificaciones en cadena y el
+% sistema de 2 ecuaciones resultante, con lo que añade la política fiscal en rojo.
+% Notación: virgulilla = por unidad de trabajo eficiente (canon, 11/11/2026).
+% Elaboración propia a partir de Romer (2019, cap. 2) y Barro y Sala-i-Martín (2004, cap. 2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    paso/.style={draw=tceemorado,fill=tceemorado!7,thick,rounded corners=2pt,
+      text width=3.55cm,minimum height=2.15cm,align=center,font=\footnotesize,inner sep=3pt},
+    final/.style={draw=tceemorado,fill=white,very thick,rounded corners=2pt,
+      text width=15.6cm,align=center,font=\small,inner sep=5pt},
+    sigue/.style={->,very thick,tceemorado}]
+  % 1: punto de partida
+  \capa{1}{\node[paso] (a) at (0,0) {\textbf{Partida}\\ ciclo real con Estado:\\ $A_t$ y $G_t$ aleatorios,\\ horas elegidas,\\ tiempo discreto};}
+  % 2: primera simplificación
+  \capa{2}{\node[paso] (b) at (4.1,0) {\textbf{1. Sin perturbaciones}\\ $A_t=A_0e^{gt}$,\\ $L_t=L_0e^{nt}$:\\ previsión perfecta};
+    \draw[sigue] (a) -- (b);}
+  % 3: segunda simplificación
+  \capa{3}{\node[paso] (c) at (8.2,0) {\textbf{2. Trabajo inelástico}\\ $\chi=0$: el ocio no da\\ utilidad; cada persona\\ ofrece 1 unidad};
+    \draw[sigue] (b) -- (c);}
+  % 4: tercera simplificación
+  \capa{4}{\node[paso] (d) at (12.3,0) {\textbf{3. Tiempo continuo}\\ y variables por unidad\\ de trabajo eficiente:\\ $\tilde k=K/(AL)$, $\tilde c=C/(AL)$};
+    \draw[sigue] (c) -- (d);}
+  % 5: resultado: las 2 ecuaciones
+  \capa{5}{\node[final] (e) at (6.15,-3.2) {\textbf{4. El sistema en $(\tilde k,\tilde c)$}: la ecuación de \autor{Euler} y la de acumulación\\[3pt]
+      $\dfrac{\dot{\tilde c}_t}{\tilde c_t}=\dfrac{\textcolor{tceerojo}{(1-\tau_K)}\big(f'(\tilde k_t)-\delta\big)-\rho-\theta g}{\theta}\qquad\qquad
+      \dot{\tilde k}_t=f(\tilde k_t)-\tilde c_t-\textcolor{tceerojo}{\tilde G_t}-(n+g+\delta)\,\tilde k_t$\\[3pt]
+      {\footnotesize En rojo, lo que añade la política fiscal: el impuesto sobre el capital mueve $\dot{\tilde c}=0$; el gasto, $\dot{\tilde k}=0$.}};
+    \draw[sigue] (d.south) -- (d.south |- e.north);}
+\end{tikzpicture}
+\end{document}

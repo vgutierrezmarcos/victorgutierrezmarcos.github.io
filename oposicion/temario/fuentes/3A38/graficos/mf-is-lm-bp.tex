@@ -1,0 +1,35 @@
+% Modelo IS-LM-BP (Fleming, 1962; Mundell, 1963): equilibrio A y los 3 casos
+% de movilidad del capital (copiado del 3.A.32: mismo modelo, misma forma). Plano (Y, i). Colores como
+% mundell-fleming-dos-paises del 3.A.37: IS azul, LM morado, BP verde (las 3
+% BP con trazos distintos para que se distingan también en gris).
+%   IS:  i = 3 - 0,8 (Y - 5)        LM: i = 3 + 0,8 (Y - 5)
+%   BP con movilidad alta (más plana que la LM): i = 3 + 0,35 (Y - 5)
+%   BP con movilidad nula: Y = 5;   BP con movilidad perfecta: i = i* = 3
+%   A = (5; 3): las 5 rectas pasan por él
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.8cm,
+    declare function={is(\y)=3-0.8*(\y-5); lm(\y)=3+0.8*(\y-5); bp(\y)=3+0.35*(\y-5);}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.0,-0.9) rectangle (13.2,7.2);
+  % 1: ejes (Y, i)
+  \capa{1}{\ejes{$Y$}{$i$}{10.2}{6.8}}
+  % 2: la IS, decreciente
+  \capa{2}{\draw[curva2] (1.5,{is(1.5)}) -- (8.6,{is(8.6)}) node[etiqueta,right,text=tceeazul] {IS};}
+  % 3: la LM, creciente
+  \capa{3}{\draw[curva1] (1.5,{lm(1.5)}) -- (8.4,{lm(8.4)}) node[etiqueta,right,text=tceemorado] {LM};}
+  % 4: el equilibrio A y sus proyecciones
+  \capa{4}{\proyeccion{(5,3)}{$Y_0$}{$i^*$}}
+  \capa{4}{\node[punto,label={[etiqueta]155:$A$}] (A) at (5,3) {};}
+  % 5: movilidad perfecta: BP horizontal en i*
+  \capa{5}{\draw[curva3] (0,3) -- (9.6,3) node[etiqueta,right,text=tceeverde] {BP ($\beta_K\to\infty$)};}
+  % 6: movilidad imperfecta: BP creciente, más plana que la LM
+  \capa{6}{\draw[curva3,dashed] (0.4,{bp(0.4)}) -- (9.6,{bp(9.6)}) node[etiqueta,right,text=tceeverde] {BP ($0<\beta_K<\infty$)};}
+  % 7: movilidad nula: BP vertical en Y_0
+  \capa{7}{\draw[curva3,densely dotted] (5,0) -- (5,6.4) node[etiqueta,above,text=tceeverde] {BP ($\beta_K=0$)};}
+  % 8: por encima de la BP, superávit; por debajo, déficit
+  \capa{8}{\node[etiqueta,text=tceegris,font=\footnotesize,rotate=19.3,anchor=south] at (7.6,{bp(7.6)+0.08}) {superávit};}
+  \capa{8}{\node[etiqueta,text=tceegris,font=\footnotesize,rotate=19.3,anchor=north] at (7.6,{bp(7.6)-0.08}) {déficit};}
+\end{tikzpicture}
+\end{document}

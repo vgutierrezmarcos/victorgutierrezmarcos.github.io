@@ -1,0 +1,57 @@
+% El multiplicador del gasto en el modelo neokeynesiano según la respuesta del
+% banco central, descompuesto en la parte que sube la producción natural
+% (efecto riqueza, Gamma = theta/(theta+varphi)) y la que sube la brecha
+% (rigidez de precios y política monetaria). Sustituye a nek-xpi (Víctor,
+% 13/11/2026, 9.ª tanda: «uno que muestre lo relevante del gasto público»).
+% Valores (anexo del modelo neokeynesiano con política fiscal; los mismos
+% ejemplos que el 3.A.40): beta = 0,99, theta = varphi = 1 (Gamma = 0,5),
+% kappa = 0,02, phi_pi = 1,5, rho_G = 0,8.
+%   precios flexibles:            m = Gamma = 0,50
+%   regla de Taylor:              m = (1 + Omega Gamma)/(1 + Omega), Omega = 0,3365 -> 0,87
+%   tipo real constante:          m = 1
+%   límite inferior, rho_L = 0,8:  m = (D - q Gamma)/(D - q), D = (1-rho)(1-beta rho), q = rho kappa/theta -> 1,31
+%   límite inferior, rho_L = 0,85: -> 2,25
+% Variación del consumo por euro de gasto: m - 1.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=2.5cm,y=2.3cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.55,-0.6) rectangle (5.95,2.75);
+  \def\an{0.28}
+  % 1: la parte del efecto riqueza (producción natural, Gamma = 0,5), igual en todos
+  \capa{1}{\foreach \i in {1,...,5}{\fill[tceeverde!55] (\i-\an,0) rectangle (\i+\an,0.5);}}
+  \capa{1}{\draw[eje] (0.3,0) -- (5.75,0);}
+  \capa{1}{\draw[eje] (0.3,0) -- (0.3,2.6) node[above] {multiplicador, $\Delta Y/\Delta G$};}
+  \capa{1}{\foreach \v/\t in {0.5/0{,}5,1/1,1.5/1{,}5,2/2}{\draw (0.27,\v) -- (0.33,\v) node[left=3pt, font=\footnotesize] {$\t$};}}
+  \capa{1}{\node[font=\footnotesize, align=center, text width=2.2cm, anchor=north] at (1,-0.06) {precios\\ flexibles};}
+  \capa{1}{\node[etiqueta, text=tceeverde, anchor=south] at (1,0.5) {$\Gamma=\frac{\theta}{\theta+\varphi}=0{,}5$};}
+  % 2: la línea de 1 (el propio gasto): por encima, el consumo sube; por debajo, cae
+  \capa{2}{\draw[guia, thick] (0.3,1) -- (5.6,1);}
+  \capa{2}{\node[etiqueta, text=tceegris, font=\footnotesize, anchor=west] at (5.6,1.08) {$\Delta G$};}
+  \capa{2}{\node[etiqueta, text=tceegris, font=\scriptsize, anchor=west, align=left] at (5.6,0.82) {consumo\\ $\downarrow$ debajo};}
+  \capa{2}{\node[etiqueta, text=tceegris, font=\scriptsize, anchor=west, align=left] at (5.6,1.38) {consumo\\ $\uparrow$ encima};}
+  % 3: regla de Taylor: el banco central sube el tipo real, la brecha sube poco
+  \capa{3}{\fill[tceemorado!70] (2-\an,0.5) rectangle (2+\an,0.87);}
+  \capa{3}{\node[font=\footnotesize, align=center, text width=2.2cm, anchor=north] at (2,-0.06) {regla de\\ \textsc{Taylor}};}
+  \capa{3}{\node[etiqueta, anchor=north, text=white, font=\small\bfseries] at (2,0.87) {$0{,}87$};}
+  % 4: tipo real constante: el consumo no cambia y el multiplicador es 1
+  \capa{4}{\fill[tceemorado!70] (3-\an,0.5) rectangle (3+\an,1);}
+  \capa{4}{\node[font=\footnotesize, align=center, text width=2.2cm, anchor=north] at (3,-0.06) {tipo real\\ constante};}
+  \capa{4}{\node[etiqueta, anchor=north, text=white, font=\small\bfseries] at (3,1) {$1$};}
+  % 5: límite inferior de 5 trimestres: el tipo real baja con la inflación esperada
+  \capa{5}{\fill[tceemorado!70] (4-\an,0.5) rectangle (4+\an,1.31);}
+  \capa{5}{\node[font=\footnotesize, align=center, text width=2.2cm, anchor=north] at (4,-0.06) {límite inferior\\ (5 trimestres)};}
+  \capa{5}{\node[etiqueta, anchor=north, text=white, font=\small\bfseries] at (4,1.31) {$1{,}31$};}
+  % 6: límite inferior más largo (6,7 trimestres)
+  \capa{6}{\fill[tceemorado!70] (5-\an,0.5) rectangle (5+\an,2.25);}
+  \capa{6}{\node[font=\footnotesize, align=center, text width=2.2cm, anchor=north] at (5,-0.06) {límite inferior\\ (6,7 trimestres)};}
+  \capa{6}{\node[etiqueta, anchor=north, text=white, font=\small\bfseries] at (5,2.25) {$2{,}25$};}
+  % 7: leyenda: qué es cada parte de la barra
+  \capa{7}{\fill[tceeverde!55] (0.55,2.38) rectangle (0.7,2.48);}
+  \capa{7}{\node[etiqueta, font=\footnotesize, anchor=west] at (0.72,2.43) {sube la producción natural, $\Delta y^n$ (efecto riqueza)};}
+  \capa{7}{\fill[tceemorado!70] (0.55,2.16) rectangle (0.7,2.26);}
+  \capa{7}{\node[etiqueta, font=\footnotesize, anchor=west] at (0.72,2.21) {sube la brecha, $\Delta x$ (precios rígidos y banco central)};}
+\end{tikzpicture}
+\end{document}

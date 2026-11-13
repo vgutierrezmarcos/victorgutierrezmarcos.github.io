@@ -1,0 +1,31 @@
+% Mundell-Fleming: expansión fiscal con tipo de cambio flexible y movilidad
+% perfecta del capital (panel c) de mundell-fleming-politicas del 3.A.32,
+% mismas rectas). La apreciación devuelve la IS a su sitio: C = A.
+%   BP: i = 2,5;  IS: i = 2,5 - (Y - 3);  IS': i = 2,5 - (Y - 4,5)
+%   LM: i = 2,5 + 0,8 (Y - 3);  B = (3,833; 3,167)
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm,
+    declare function={is(\y)=2.5-(\y-3); isn(\y)=2.5-(\y-4.5); lm(\y)=2.5+0.8*(\y-3);},
+    explica/.style={etiqueta,text=tceerojo,font=\footnotesize,align=center}]
+  \path (-0.9,-1.6) rectangle (8.6,5.0);
+  % 1: ejes
+  \capa{1}{\ejes{$Y$}{$i$}{7.0}{4.7}}
+  % 2: BP horizontal en i*
+  \capa{2}{\draw[curva3] (0,2.5) node[left,text=black] {$i^*$} -- (6.7,2.5) node[etiqueta,right,text=tceeverde] {BP};}
+  % 3: IS y LM
+  \capa{3}{\draw[curva2] (1.0,{is(1.0)}) -- (5.2,{is(5.2)}) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{3}{\draw[curva1] (1.5,{lm(1.5)}) -- (4.85,{lm(4.85)}) node[etiqueta,right,text=tceemorado] {LM};}
+  % 4: equilibrio inicial A
+  \capa{4}{\draw[guia] (3,2.5) -- (3,0) node[below,text=black] {$Y_0$};}
+  \capa{4}{\node[punto,label={[etiqueta,label distance=0.2cm]270:$A{=}C$}] at (3,2.5) {};}
+  % 5: expansión fiscal: IS'
+  \capa{5}{\draw[curva2,desplazada] (2.5,{isn(2.5)}) -- (6.5,{isn(6.5)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  % 6: B, superávit: entra capital y la moneda se aprecia
+  \capa{6}{\node[punto,label={[etiqueta]90:$B$}] at (3.833,3.167) {};}
+  \capa{6}{\node[explica,anchor=north] at (3.6,-0.55) {apreciación: caen\\las exportaciones netas};}
+  % 7: la IS' vuelve a la IS: el equilibrio vuelve a A
+  \capa{7}{\draw[flecha] (5.65,1.25) -- (4.4,1.25);}
+\end{tikzpicture}
+\end{document}

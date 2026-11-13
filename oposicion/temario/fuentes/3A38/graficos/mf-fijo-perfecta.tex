@@ -1,0 +1,37 @@
+% Mundell-Fleming: expansión fiscal con tipo de cambio fijo y movilidad
+% perfecta del capital (panel a) de mundell-fleming-politicas del 3.A.32,
+% mismas rectas). Plano (Y, i); IS azul, LM morado, BP verde.
+%   BP: i = i* = 2,5;  IS: i = 2,5 - (Y - 3);  IS': i = 2,5 - (Y - 4,5)
+%   LM: i = 2,5 + 0,8 (Y - 3);  LM': i = 2,5 + 0,8 (Y - 4,5)
+%   A = (3; 2,5); B = IS' ∩ LM = (3,833; 3,167); C = (4,5; 2,5)
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm,
+    declare function={is(\y)=2.5-(\y-3); isn(\y)=2.5-(\y-4.5);
+      lm(\y)=2.5+0.8*(\y-3); lmn(\y)=2.5+0.8*(\y-4.5);},
+    explica/.style={etiqueta,text=tceerojo,font=\footnotesize,align=center}]
+  \path (-0.9,-1.6) rectangle (8.6,5.0);
+  % 1: ejes
+  \capa{1}{\ejes{$Y$}{$i$}{7.0}{4.7}}
+  % 2: BP horizontal en i*
+  \capa{2}{\draw[curva3] (0,2.5) node[left,text=black] {$i^*$} -- (6.7,2.5) node[etiqueta,right,text=tceeverde] {BP};}
+  % 3: IS y LM iniciales
+  \capa{3}{\draw[curva2] (1.0,{is(1.0)}) -- (5.2,{is(5.2)}) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{3}{\draw[curva1] (1.5,{lm(1.5)}) -- (4.85,{lm(4.85)}) node[etiqueta,right,text=tceemorado] {LM};}
+  % 4: equilibrio inicial A
+  \capa{4}{\draw[guia] (3,2.5) -- (3,0) node[below,text=black] {$Y_0$};}
+  \capa{4}{\node[punto,label={[etiqueta]135:$A$}] at (3,2.5) {};}
+  % 5: expansión fiscal: IS'
+  \capa{5}{\draw[curva2,desplazada] (2.5,{isn(2.5)}) -- (6.5,{isn(6.5)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  % 6: B, por encima de la BP: superávit, entra capital
+  \capa{6}{\node[punto,label={[etiqueta]90:$B$}] at (3.833,3.167) {};}
+  \capa{6}{\node[explica,anchor=north] at (3.6,-0.55) {entra capital: el banco\\central compra divisas};}
+  % 7: la base monetaria crece: LM'
+  \capa{7}{\draw[flecha] (4.45,3.45) -- (5.45,3.45);}
+  \capa{7}{\draw[curva1,desplazada] (2.4,{lmn(2.4)}) -- (6.2,{lmn(6.2)}) node[etiqueta,right,text=tceemorado] {LM$'$};}
+  % 8: equilibrio final C
+  \capa{8}{\draw[guia,tceerojo] (4.5,2.5) -- (4.5,0) node[below,text=tceerojo] {$Y_1$};}
+  \capa{8}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]60:$C$}] at (4.5,2.5) {};}
+\end{tikzpicture}
+\end{document}

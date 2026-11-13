@@ -1,4 +1,4 @@
-% Copiado sin cambios de fuentes/3A43/graficos/rck-gasto.tex (3.A.43, gráfico de referencia del canon, ficha ramsey-cass-koopmans), 5/11/2026.
+% Copiado sin cambios de fuentes/3A43/graficos/rck-gasto.tex (3.A.43, gráfico de referencia del canon, ficha ramsey-cass-koopmans), 5/11/2026. Recopiado el 13/11/2026 (notación con virgulilla).
 % Un aumento del gasto público permanente (izquierda) y temporal (derecha) (gráfico fig:rck-fiscal).
 % Diagrama de fases del modelo de Ramsey-Cass-Koopmans en (k, c), por unidad de
 % trabajo eficiente. Código base común de rck-fases, rck-theta, rck-rho, rck-gasto y
@@ -25,16 +25,16 @@
   \path (-0.9,-0.75) rectangle (20.0,6.9);
   % ---- Panel izquierdo: gasto permanente
   % 1: ejes: capital y consumo por unidad de trabajo eficiente
-  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$k$};
-    \draw[eje] (0,0) -- (0,6.6) node[left] {$c$};
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$\tilde k$};
+    \draw[eje] (0,0) -- (0,6.6) node[left] {$\tilde c$};
     \node[below left] at (0,0) {$0$};\end{scope}}
   % 1: lugar dk/dt = 0: c = f(k) - (n+g+delta) k, máximo en k_oro y corte en k_bar
   \capa{1}{\begin{scope}[xshift=0cm]\draw[curva2] plot[domain=0:8.0,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x});
-    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot k=0$};
+    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot{\tilde k}=0$};
     \node[below] at (8.0,0) {$\bar k$};\end{scope}}
   % 1: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
-  \capa{1}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$k^*$} -- (2.000,6.3)
-      node[etiqueta,anchor=south,text=tceemorado] {$\dot c=0$};\end{scope}}
+  \capa{1}{\begin{scope}[xshift=0cm]\draw[curva1] (2.000,0) node[below,text=black] {$\tilde k^*$} -- (2.000,6.3)
+      node[etiqueta,anchor=south,text=tceemorado] {$\dot{\tilde c}=0$};\end{scope}}
   % 1: estado estacionario E
   \capa{1}{\begin{scope}[xshift=0cm]\node[punto] (E) at (2.000,3.571) {};
     \node[etiqueta,above left=1pt] at (2.000,3.571) {$E$};\end{scope}}
@@ -42,23 +42,23 @@
   \capa{1}{\begin{scope}[xshift=0cm]\draw[curva3] plot[smooth] coordinates {(0.001,0.001) (0.069,0.135) (0.138,0.268) (0.207,0.401) (0.277,0.535) (0.347,0.668) (0.417,0.801) (0.488,0.933) (0.559,1.066) (0.630,1.198) (0.701,1.330) (0.774,1.463) (0.846,1.594) (0.919,1.727) (0.993,1.858) (1.067,1.990) (1.141,2.121) (1.216,2.251) (1.291,2.382) (1.366,2.512) (1.442,2.643) (1.518,2.772) (1.595,2.902) (1.672,3.031) (1.749,3.160) (1.827,3.288) (1.905,3.416) (1.983,3.544) (2.062,3.672) (2.141,3.799) (2.221,3.927) (2.302,4.054) (2.382,4.180) (2.464,4.308) (2.546,4.435) (2.628,4.561) (2.710,4.687) (2.793,4.813) (2.877,4.940) (2.961,5.065) (3.046,5.191) (3.131,5.317) (3.217,5.442) (3.302,5.567) (3.389,5.693) (3.478,5.819) (3.566,5.945) (3.653,6.069) (3.743,6.195) (3.818,6.300)};
     \node[etiqueta,text=tceeverde,anchor=west] at (3.87,6.30) {};\end{scope}}
   \capa{2}{\begin{scope}[xshift=0cm]\draw[curvanueva,desplazada] plot[domain=0.616:6.736,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x-1.620});
-    \node[etiqueta,text=tceerojo,anchor=north west,align=left] at (3.3, 1.85) {$\dot k=0'$};\end{scope}}
+    \node[etiqueta,text=tceerojo,anchor=north west,align=left] at (3.3, 1.85) {$\dot{\tilde k}=0'$};\end{scope}}
   \capa{2}{\draw[flecha,line width=1.2pt] (2.000,3.471) -- (2.000,2.051);
     \node[punto,fill=tceerojo] at (2.000,1.951) {};
     \node[etiqueta,text=tceerojo,anchor=west] at (2.080,1.901) {$E'$};
-    \node[etiqueta,text=tceerojo,anchor=west] at (2.100,2.861) {$c$ cae en $G$};}
+    \node[etiqueta,text=tceerojo,anchor=west] at (2.100,2.861) {$\tilde c$ cae en $G$};}
   % ---- Panel derecho: gasto temporal entre t_0 y t_1
   % 3: ejes: capital y consumo por unidad de trabajo eficiente
-  \capa{3}{\begin{scope}[xshift=10.0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$k$};
-    \draw[eje] (0,0) -- (0,6.6) node[left] {$c$};
+  \capa{3}{\begin{scope}[xshift=10.0cm]\draw[eje] (0,0) -- (9.0,0) node[below left=2pt and 0pt] {$\tilde k$};
+    \draw[eje] (0,0) -- (0,6.6) node[left] {$\tilde c$};
     \node[below left] at (0,0) {$0$};\end{scope}}
   % 3: lugar dk/dt = 0: c = f(k) - (n+g+delta) k, máximo en k_oro y corte en k_bar
   \capa{3}{\begin{scope}[xshift=10.0cm]\draw[curva2] plot[domain=0:8.0,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x});
-    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot k=0$};
+    \node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {$\dot{\tilde k}=0$};
     \node[below] at (8.0,0) {$\bar k$};\end{scope}}
   % 3: lugar dc/dt = 0: vertical en k* (f'(k*) = rho+delta+theta g)
-  \capa{3}{\begin{scope}[xshift=10.0cm]\draw[curva1] (2.000,0) node[below,text=black] {$k^*$} -- (2.000,6.3)
-      node[etiqueta,anchor=south,text=tceemorado] {$\dot c=0$};\end{scope}}
+  \capa{3}{\begin{scope}[xshift=10.0cm]\draw[curva1] (2.000,0) node[below,text=black] {$\tilde k^*$} -- (2.000,6.3)
+      node[etiqueta,anchor=south,text=tceemorado] {$\dot{\tilde c}=0$};\end{scope}}
   % 3: estado estacionario E
   \capa{3}{\begin{scope}[xshift=10.0cm]\node[punto] (E2) at (2.000,3.571) {};
     \node[etiqueta,above left=1pt] at (2.000,3.571) {$E$};\end{scope}}
@@ -66,7 +66,7 @@
   \capa{3}{\begin{scope}[xshift=10.0cm]\draw[curva3] plot[smooth] coordinates {(0.001,0.001) (0.069,0.135) (0.138,0.268) (0.207,0.401) (0.277,0.535) (0.347,0.668) (0.417,0.801) (0.488,0.933) (0.559,1.066) (0.630,1.198) (0.701,1.330) (0.774,1.463) (0.846,1.594) (0.919,1.727) (0.993,1.858) (1.067,1.990) (1.141,2.121) (1.216,2.251) (1.291,2.382) (1.366,2.512) (1.442,2.643) (1.518,2.772) (1.595,2.902) (1.672,3.031) (1.749,3.160) (1.827,3.288) (1.905,3.416) (1.983,3.544) (2.062,3.672) (2.141,3.799) (2.221,3.927) (2.302,4.054) (2.382,4.180) (2.464,4.308) (2.546,4.435) (2.628,4.561) (2.710,4.687) (2.793,4.813) (2.877,4.940) (2.961,5.065) (3.046,5.191) (3.131,5.317) (3.217,5.442) (3.302,5.567) (3.389,5.693) (3.478,5.819) (3.566,5.945) (3.653,6.069) (3.743,6.195) (3.818,6.300)};
     \node[etiqueta,text=tceeverde,anchor=west] at (3.87,6.30) {};\end{scope}}
   \capa{4}{\begin{scope}[xshift=10.0cm]\draw[curvanueva,desplazada] plot[domain=0.616:6.736,samples=80,smooth] (\x,{36*\x/(6.4+\x)-2.5*\x-1.620});
-    \node[etiqueta,text=tceerojo,anchor=north west,align=left] at (2.3, 1.85) {$\dot k=0'$\\de $t_0$ a $t_1$};\end{scope}}
+    \node[etiqueta,text=tceerojo,anchor=north west,align=left] at (2.3, 1.85) {$\dot{\tilde k}=0'$\\de $t_0$ a $t_1$};\end{scope}}
   \capa{4}{\begin{scope}[xshift=10.0cm]\draw[flecha,line width=1.2pt] (2.000,3.471) -- (2.000,2.230);
     \node[punto,fill=tceerojo] at (2.000,2.130) {};
     \node[etiqueta,text=tceerojo,anchor=west] at (2.150,2.080) {$t_0$};

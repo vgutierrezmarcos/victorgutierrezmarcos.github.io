@@ -1,9 +1,10 @@
-% Copiado sin cambios de fuentes/3A44/graficos/barro.tex (3.A.44, gráfico de referencia del canon, ficha barro-1990), 5/11/2026.
+% Copiado sin cambios de fuentes/3A44/graficos/barro.tex (3.A.44), 13/11/2026: versión con ahorro constante y los 2 efectos en color.
 % Barro (1990): tasa de crecimiento y tipo impositivo.
-% gamma(tau) = (1/theta)[(1-tau) alfa A^(1/alfa) tau^((1-alfa)/alfa) - delta - rho],
+% gamma(tau) = s (1-tau) A^(1/alfa) tau^((1-alfa)/alfa) - (n+delta) (ahorro constante;
+% con hogares de Ramsey la forma es la misma),
 % con alfa = 0,7: (1-alfa)/alfa = 3/7 y tau* = 1 - alfa = 0,3.
 % En el dibujo: x = 6 tau (cm); y = 6,7015 (1-tau) tau^(3/7) - 0,8, de modo que
-% gamma(0) = gamma(1) = -0,8 [= -(delta+rho)/theta] y el máximo, en tau* = 0,3,
+% gamma(0) = gamma(1) = -0,8 [= -(n+delta)] y el máximo, en tau* = 0,3,
 % vale 6,7015 * 0,7 * 0,3^(3/7) - 0,8 = 6,7015 * 0,41782 - 0,8 = 2,0.
 % Se dibuja con el parámetro u = tau^(1/7) (tau = u^7, tau^(3/7) = u^3) para que
 % el tramo vertical cerca de tau = 0 salga bien.
@@ -22,13 +23,13 @@
   % 2: la curva gamma(tau), en U invertida
   \capa{2}{\draw[curva1] plot[variable=\u,domain=0:1,samples=240]
       ({6*\u^7},{6.7015*(1-\u^7)*\u^3-0.8});
-    \draw[guia] (0,-0.8) node[left,text=black] {$-\dfrac{\delta+\rho}{\theta}$} -- (6,-0.8);}
+    \draw[guia] (0,-0.8) node[left,text=black] {$-(n+\delta)$} -- (6,-0.8);}
   % 3: el máximo, en tau* = 1 - alfa, y su proyección
   \capa{3}{\node[punto] (M) at (1.8,2.0) {};
     \draw[guia] (1.8,0) -- (M) -- (0,2.0) node[left,text=black] {$\gamma_{\text{máx}}$};
     \node[below] at (1.8,0) {$\tau^*=1-\alpha$};}
-  % 4: los 2 efectos del impuesto
-  \capa{4}{\node[etiqueta,anchor=west,text=tceemorado,align=left,font=\footnotesize] at (0.42,0.55) {efecto del\\gasto ($+$)};
-    \node[etiqueta,anchor=west,text=tceemorado,align=left,font=\footnotesize] at (4.1,1.45) {efecto del\\impuesto ($-$)};}
+  % 4: los 2 efectos del impuesto: positivo (gasto) en verde y negativo (impuesto) en rojo
+  \capa{4}{\node[etiqueta,anchor=west,text=tceeverde,align=left,font=\footnotesize] at (0.42,0.55) {efecto del\\gasto ($+$)};
+    \node[etiqueta,anchor=west,text=tceerojo,align=left,font=\footnotesize] at (4.1,1.45) {efecto del\\impuesto ($-$)};}
 \end{tikzpicture}
 \end{document}

@@ -1,0 +1,67 @@
+% Mundell-Fleming: expansión fiscal con tipo de cambio fijo y movilidad
+% imperfecta del capital: alta (BP más plana que la LM, izquierda) y baja
+% (BP más inclinada que la LM, derecha). Plano (Y, i); IS azul, LM morado,
+% BP verde. Mismas IS, IS' y LM que mf-fijo-perfecta.
+%   IS: i = 2,5 - (Y - 3); IS': i = 2,5 - (Y - 4,5); LM: i = 2,5 + 0,8 (Y - 3)
+%   BP alta: i = 2,5 + 0,35 (Y - 3);  BP baja: i = 2,5 + 1,6 (Y - 3)
+%   B = IS' ∩ LM = (3,833; 3,167)
+%   Alta: C = IS' ∩ BP = (4,111; 2,889); LM' por C (sube la base monetaria)
+%   Baja: C = IS' ∩ BP = (3,577; 3,423); LM' por C (baja la base monetaria)
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.85cm,
+    declare function={is(\y)=2.5-(\y-3); isn(\y)=2.5-(\y-4.5); lm(\y)=2.5+0.8*(\y-3);
+      bpa(\y)=2.5+0.35*(\y-3); bpb(\y)=2.5+1.6*(\y-3);
+      lma(\y)=2.889+0.8*(\y-4.111); lmb(\y)=3.423+0.8*(\y-3.577);},
+    titulo/.style={font=\small\bfseries,anchor=base west},
+    explica/.style={etiqueta,text=tceerojo,font=\footnotesize,align=center}]
+  \path (-0.9,-1.6) rectangle (17.0,5.4);
+  % ======== a) Movilidad alta ========
+  % 1: ejes y título
+  \capa{1}{\node[titulo] at (0,5.0) {a) Movilidad alta};}
+  \capa{1}{\ejes{$Y$}{$i$}{7.0}{4.7}}
+  % 2: BP, más plana que la LM
+  \capa{2}{\draw[curva3] (0.3,{bpa(0.3)}) -- (6.6,{bpa(6.6)}) node[etiqueta,right,text=tceeverde] {BP};}
+  % 3: IS y LM
+  \capa{3}{\draw[curva2] (1.0,{is(1.0)}) -- (5.2,{is(5.2)}) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{3}{\draw[curva1] (1.5,{lm(1.5)}) -- (4.85,{lm(4.85)}) node[etiqueta,right,text=tceemorado] {LM};}
+  % 4: A
+  \capa{4}{\draw[guia] (3,2.5) -- (3,0) node[below,text=black] {$Y_0$};}
+  \capa{4}{\node[punto,label={[etiqueta]150:$A$}] at (3,2.5) {};}
+  % 5: IS'
+  \capa{5}{\draw[curva2,desplazada] (2.5,{isn(2.5)}) -- (6.5,{isn(6.5)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  % 6: B, por encima de la BP: superávit
+  \capa{6}{\node[punto,label={[etiqueta]90:$B$}] at (3.833,3.167) {};}
+  \capa{6}{\node[explica,anchor=north] at (3.6,-0.55) {superávit: el banco central\\compra divisas y sube $M$};}
+  % 7: LM' por el corte de IS' y BP
+  \capa{7}{\draw[curva1,desplazada] (2.6,{lma(2.6)}) -- (5.9,{lma(5.9)}) node[etiqueta,right,text=tceemorado] {LM$'$};}
+  % 8: C
+  \capa{8}{\draw[guia,tceerojo] (4.111,2.889) -- (4.111,0) node[below,text=tceerojo] {$Y_1$};}
+  \capa{8}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]300:$C$}] at (4.111,2.889) {};}
+  % ======== b) Movilidad baja ========
+  \begin{scope}[shift={(9.2,0)}]
+  % 9: ejes y título
+  \capa{9}{\node[titulo] at (0,5.0) {b) Movilidad baja};}
+  \capa{9}{\ejes{$Y$}{$i$}{7.0}{4.7}}
+  % 10: BP, más inclinada que la LM
+  \capa{10}{\draw[curva3] (1.6,{bpb(1.6)}) -- (4.3,{bpb(4.3)}) node[etiqueta,above,text=tceeverde] {BP};}
+  % 11: IS y LM
+  \capa{11}{\draw[curva2] (1.0,{is(1.0)}) -- (5.2,{is(5.2)}) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{11}{\draw[curva1] (1.5,{lm(1.5)}) -- (4.85,{lm(4.85)}) node[etiqueta,right,text=tceemorado] {LM};}
+  % 12: A
+  \capa{12}{\draw[guia] (3,2.5) -- (3,0) node[below,text=black] {$Y_0$};}
+  \capa{12}{\node[punto,label={[etiqueta]180:$A$}] at (3,2.5) {};}
+  % 13: IS'
+  \capa{13}{\draw[curva2,desplazada] (2.5,{isn(2.5)}) -- (6.5,{isn(6.5)}) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  % 14: B, por debajo de la BP: déficit
+  \capa{14}{\node[punto,label={[etiqueta]270:$B$}] at (3.833,3.167) {};}
+  \capa{14}{\node[explica,anchor=north] at (3.6,-0.55) {déficit: el banco central\\vende divisas y baja $M$};}
+  % 15: LM' por el corte de IS' y BP
+  \capa{15}{\draw[curva1,desplazada] (1.9,{lmb(1.9)}) -- (5.0,{lmb(5.0)}) node[etiqueta,right,text=tceemorado] {LM$'$};}
+  % 16: C
+  \capa{16}{\draw[guia,tceerojo] (3.577,3.423) -- (3.577,0) node[below,text=tceerojo] {$Y_1$};}
+  \capa{16}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]150:$C$}] at (3.577,3.423) {};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
