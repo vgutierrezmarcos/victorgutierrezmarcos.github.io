@@ -1,0 +1,25 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Trilema de la economía abierta con la ruptura de Bretton Woods. Parte del
+% gráfico de referencia del canon (ficha trilema; fuentes/3B15/graficos/trilema.tex,
+% mismas coordenadas y rótulos) y añade la flecha del lado de Bretton Woods
+% (tipo fijo con controles) al de la flotación (1971-1973).
+\begin{tikzpicture}[tcee]
+  \coordinate (A) at (0,5.196);   % tipo de cambio fijo
+  \coordinate (B) at (-3,0);      % libre movilidad del capital
+  \coordinate (C) at (3,0);       % política monetaria propia
+  \useasboundingbox (-5.3,-1.6) rectangle (5.3,5.8);
+  \capa{1}{\draw[curva1] (A) -- (B) -- (C) -- cycle;}
+  \capa{2}{\node[etiqueta,above=3pt,align=center] at (A) {\textbf{Tipo de cambio fijo}};}
+  \capa{3}{\node[etiqueta,below=4pt,align=center] at (B) {\textbf{Libre movilidad}\\\textbf{del capital}};}
+  \capa{4}{\node[etiqueta,below=4pt,align=center] at (C) {\textbf{Política monetaria}\\\textbf{propia}};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,tceeazul,anchor=east,align=right]
+    at ($(A)!0.5!(B)+(-0.45,0.15)$) {Unión monetaria,\\caja de conversión,\\dolarización\\(sin política\\monetaria propia)};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,tceeverde,anchor=west,align=left]
+    at ($(A)!0.5!(C)+(0.45,0.15)$) {Tipo fijo con\\controles de capitales\\(Bretton Woods,\\1944-1971)};}
+  \capa{7}{\node[etiqueta,font=\footnotesize,tceerojo,below=4pt,align=center]
+    at ($(B)!0.5!(C)+(0,-0.05)$) {Flotación (no sistema,\\desde 1973)};}
+  \capa{8}{\draw[flecha,line width=1.2pt] ($(A)!0.5!(C)+(-0.35,-0.1)$) to[bend left=25] node[midway,left=1pt,font=\footnotesize,text=tceerojo] {1971-1973} ($(B)!0.5!(C)+(0.6,0.35)$);}
+\end{tikzpicture}
+\end{document}

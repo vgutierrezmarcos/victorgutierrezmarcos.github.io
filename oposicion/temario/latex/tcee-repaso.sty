@@ -60,12 +60,23 @@
 \newcommand{\tceeresumen}{\renewcommand{\tcee@tiporepaso}{Resumen}\renewcommand{\tcee@titulotrampa}{Ojo en el dictamen}}
 
 % --- Pie --------------------------------------------------------------------------
-\fancypagestyle{repaso}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}%
-  \fancyfoot[L]{\scriptsize\itshape\color{tceemorado}\tcee@codigo\ · \tcee@tiporepaso\ · \tcee@corto}%
-  \fancyfoot[R]{\scriptsize\itshape\color{tceemorado}\iftceeexclusivo
+\newcommand{\tcee@pieder}{\scriptsize\itshape\color{tceemorado}\iftceeexclusivo
     \href{\tcee@condicionesurl}{\color{tceemorado}\tcee@exclusivopie\ · uso personal}\else
     \textcopyright\,\tcee@anno\ Víctor Gutiérrez Marcos ·
-    \href{\tcee@licenciaurl}{CC BY-NC-ND 4.0} · victorgutierrezmarcos.es\fi\ · \thepage/\pageref*{LastPage}}}
+    \href{\tcee@licenciaurl}{CC BY-NC-ND 4.0} · victorgutierrezmarcos.es\fi\ · \thepage/\pageref*{LastPage}}
+% Si el título corto no cabe junto al pie derecho (títulos largos), el pie izquierdo
+% se queda en «código · tipo» para que no se monte sobre el © (13/11/2026)
+\newcommand{\tcee@pieizq}{%
+  \sbox\z@{\tcee@pieder}%
+  \sbox\tw@{\scriptsize\itshape\tcee@codigo\ · \tcee@tiporepaso\ · \tcee@corto}%
+  \ifdim\dimexpr\wd\z@+\wd\tw@+1.5em\relax>\textwidth
+    {\scriptsize\itshape\color{tceemorado}\tcee@codigo\ · \tcee@tiporepaso}%
+  \else
+    {\scriptsize\itshape\color{tceemorado}\tcee@codigo\ · \tcee@tiporepaso\ · \tcee@corto}%
+  \fi}
+\fancypagestyle{repaso}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[L]{\tcee@pieizq}%
+  \fancyfoot[R]{\tcee@pieder}}
 \pagestyle{repaso}
 
 % --- Cabecera (banda morada) -----------------------------------------------------------

@@ -1,0 +1,38 @@
+% 3.B.20: los puntos del oro en el patrón oro clásico (mercado de libras en
+% Nueva York, E en dólares por libra). Paridad de acuñación E0 = 4,8665;
+% punto de salida del oro de EE. UU. (E sup) y de entrada (E inf), a la
+% distancia del coste de mandar oro (flete, seguro, intereses).
+% Con E en E_sup, los arbitrajistas compran oro en Nueva York, lo envían a
+% Londres y venden las libras: la oferta de libras se vuelve horizontal.
+% Con E en E_inf, compran libras, las cambian por oro en Londres y lo traen:
+% la demanda de libras se vuelve horizontal.
+% Orden de la pizarra: ejes (1) → paridad y puntos del oro (2) → oferta (3) →
+% demanda (4) → equilibrio (5) → aumento de la demanda y salida de oro (6).
+% Fuente: elaboración propia a partir de Officer (1996) y Eichengreen (2019).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee, scale=1.05]
+  % 1: ejes
+  \capa{1}{\ejes{$Q_{\pounds}$ (libras)}{$E$ (\$/\pounds)}{8.2}{5.6}}
+  % 2: paridad y puntos del oro
+  \capa{2}{\draw[guia] (0,3) -- (7.8,3) node[right, font=\footnotesize] {$E_0=4{,}8665$ (paridad)};}
+  \capa{2}{\draw[thin, tceegris] (0,4) -- (7.8,4) node[right, font=\footnotesize, align=left] {$\overline E$: salida de oro de EE.\,UU.};}
+  \capa{2}{\draw[thin, tceegris] (0,2) -- (7.8,2) node[right, font=\footnotesize, align=left] {$\underline E$: entrada de oro en EE.\,UU.};}
+  \capa{2}{\draw[decorate, decoration={brace, amplitude=4pt, mirror}, tceegris] (-0.55,2) -- (-0.55,4)
+      node[midway, left=5pt, font=\footnotesize, align=right] {banda de\\los puntos\\del oro};}
+  % 3: oferta de libras, horizontal en el punto de salida
+  \capa{3}{\draw[curva2] (0.6,0.6) -- (4.4,4) -- (7.6,4) node[above, etiqueta] {$S_{\pounds}$};}
+  % 4: demanda de libras, horizontal en el punto de entrada
+  \capa{4}{\draw[curva1] (0.6,5.2) -- (4.4,2) -- (7.6,2) node[below, etiqueta] {$D_{\pounds}$};}
+  % 5: equilibrio dentro de la banda
+  \capa{5}{\node[punto] (A) at (3.25,2.97) {};
+    \node[etiqueta, right=3pt] at (A) {A};}
+  % 6: aumenta la demanda de libras: el tipo topa con E sup y sale oro de EE. UU.
+  \capa{6}{\draw[curvanueva, desplazada] (7.0,2.2) -- (3.2,5.4) node[right, etiqueta] {$D'_{\pounds}$};}
+  \capa{6}{\node[punto] (B) at (4.86,4) {};
+    \node[etiqueta, below left] at (B) {B};}
+  \capa{6}{\draw[flecha] (5.05,4.3) -- (6.8,4.3) node[midway, above, font=\footnotesize, text=tceerojo] {sale oro};}
+\end{tikzpicture}
+\end{document}

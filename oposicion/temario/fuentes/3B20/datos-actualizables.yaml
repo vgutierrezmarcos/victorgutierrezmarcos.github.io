@@ -1,0 +1,39 @@
+tema: 3B20
+fecha_inventario: 2026-11-13
+# Tema histórico (1815-1973): casi todas sus cifras son definitivas. Se anotan
+# las series de los gráficos de datos (pueden revisarse con nuevas versiones de
+# las bases) y la única cifra viva (la cesta del DEG).
+datos:
+  - id: comercio-mundial-pib
+    texto: "El comercio mundial pasó del 12~\\% del PIB mundial en 1870 al 21~\\% en 1913 ... hasta el 8~\\% del PIB en 1932"
+    donde: [3B20.tex, graficos/comercio-mundial.tex, datos/comercio-mundial-1870-1973.csv]
+    valor: 21.0
+    unidad: "% del PIB mundial"
+    periodo: "1870-1973"
+    fuente: KlasingMilionis2014
+    organismo: Klasing y Milionis (2014); Penn World Table (Feenstra, Inklaar y Timmer), vía Our World in Data
+    serie: "globalization-over-5-centuries (world_trade_based_on_maddison; trade_openness)"
+    url: https://ourworldindata.org/grapher/globalization-over-5-centuries
+    periodicidad: irregular (nueva versión de la Penn World Table)
+    familia: historica
+  - id: triffin-oro-pasivos
+    texto: "El oro monetario de Estados Unidos alcanzó su máximo en 1949 (24.600 millones de dólares a fin de año) ... lo superaron en 1961 ... En 1971 ... multiplicaban por más de 6"
+    donde: [3B20.tex, graficos/triffin.tex, datos/triffin-oro-pasivos.csv]
+    valor: 6.5
+    unidad: "cociente activos líquidos en dólares del resto del mundo / oro de EE. UU."
+    periodo: "1948-1973"
+    fuente: Fed2026Z1
+    organismo: Reserva Federal (Z.1), vía FRED; segunda comprobación NBER 14076c
+    serie: "BOGZ1LM313011203A, ROWTSEQ027S, BOGZ1FL263020005Q, ROWTDAQ027S, BOGZ1FL263061130Q"
+    url: https://fred.stlouisfed.org/series/BOGZ1LM313011203A
+    periodicidad: trimestral (revisiones de las cuentas financieras; los datos de 1948-1973 apenas cambian)
+    familia: historica
+  - id: deg-cesta
+    texto: "hoy, el dólar, el euro, el renminbi, el yen y la libra"
+    donde: [3B20.tex]
+    fuente: FMI2026DEG
+    organismo: FMI
+    url: https://www.imf.org/en/About/Factsheets/Sheets/2023/special-drawing-rights-sdr
+    periodicidad: quinquenal (revisión de la cesta del DEG)
+    proxima: 2027
+    familia: fmi-deg

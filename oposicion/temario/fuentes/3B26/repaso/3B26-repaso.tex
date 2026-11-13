@@ -1,0 +1,286 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Crisis financieras y pánicos bancarios]{3.B.26}{Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «el miedo es libre»}{2,5}
+\apartadocante{I. Crisis financieras: qué son y por qué}{7}
+\subcante{1. Concepto, tipos y regularidades}{2}
+\subcante{2. Anatomía (\autor{Kindleberger}, \autor{Minsky})}{1}
+\subcante{3. Teorías: deuda-deflación, burbujas, fricciones}{4}
+\apartadocante{II. Pánicos bancarios y la crisis de 2007-2008}{12,5}
+\subcante{1. \autor{Diamond} y \autor{Dybvig} (1983)}{4,5}
+\subcante{2. Extensiones}{1,5}
+\subcante{3. La red de seguridad y sus costes}{1,5}
+\subcante{4. La crisis de 2007-2008}{3,5}
+\subcante{5. El círculo vicioso banca-soberano}{1,5}
+\apartadocante{III. Gestión de riesgos}{7}
+\subcante{1. Los riesgos y su organización}{1,5}
+\subcante{2. Riesgo de mercado: VaR y ES}{2}
+\subcante{3. Riesgo de crédito}{2}
+\subcante{4. Liquidez y tipo de interés}{1,5}
+\apartadocante{Conclusión}{1}}
+Funciones clave: $u'(c_1^*)=R\,u'(c_2^*)$; $\Pr(\tilde\ell>\mathrm{VaR}_\alpha)=1-\alpha$; resultados de burbujas y de \autor{Merton}. Gráfico y figuras: \autor{Diamond}-\autor{Dybvig} con el pánico, VaR; figuras del balance (se completa a lo largo de la exposición) y del círculo vicioso.
+
+\emph{Pizarra}: introducción y conclusión sin pizarra. A la izquierda, el balance del banco, que se queda todo el cante y se va completando (transformación de plazos, banca en la sombra, riesgos de cada partida). I: las 5 fases de \autor{Kindleberger} en una columna. II: \autor{Diamond}-\autor{Dybvig} por capas (autarquía, mercado $M$, óptimo $O$, pánico $P$) y $u'(c_1^*)=R\,u'(c_2^*)$ en morado en una esquina; el círculo vicioso con sus 5 pasos. III: la campana de pérdidas con VaR y ES y $\mathrm{PE}=\mathrm{PD}\times\mathrm{LGD}\times\mathrm{EAD}$.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «el miedo es libre», y en un banco se cumple solo. Northern Rock (9/2007): colas. Silicon Valley Bank (9/3/2023): \dato{más de 40.000 M\$ en un día, $\approx$85\,\% de los depósitos con lo esperado al día siguiente}{Fed}; cerrado el 10. ¿Por qué un banco o un sistema puede hundirse por miedo, cómo pasó en 2007-2008 y qué hacen las entidades?
+\item \textbf{Relevancia}: \dato{164 crisis bancarias sistémicas 1970-2025, 24 en 2007-2008}{Laeven y Valencia}; caras: vivienda $-35$\,\% en 6 años, bolsa $-55$\,\%, paro +7 puntos, deuda pública +86\,\% (\autor{Reinhart}-\autor{Rogoff}, 2009); Nobel 2022 a \autor{Bernanke}, \autor{Diamond} y \autor{Dybvig}.
+\item \textbf{Contextualización}: \concepto{crisis financiera} (perturbación grave de la intermediación), \concepto{pánico bancario} (\emph{bank run}), \concepto{transformación de plazos}, \concepto{riesgo sistémico}, \concepto{gestión de riesgos}. La regulación, aparte \vertema{3.B.27}.
+\item \textbf{Problemática}: ¿por qué se repiten? ¿Por qué cae un banco sano y qué hacer sin fomentar riesgo? ¿Qué falló en 2007-2008 y cómo llegó a los Estados? ¿Cómo gestionan sus riesgos las entidades?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, crisis en general; \hyperref[rep:II]{II}, pánicos y 2007-2008; \hyperref[rep:III]{III}, gestión de riesgos.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7]{I. Crisis financieras: qué son y por qué\label{rep:I}}
+\begin{ideaclave}
+No son accidentes: se incuban en los auges del crédito y del precio de los activos, estallan cuando cambian las expectativas y se amplifican porque los balances de prestatarios y bancos se deterioran a la vez.
+\end{ideaclave}
+\sub{I.1. Concepto, tipos y regularidades\label{rep:I.1}}
+\begin{itemize}
+\item 4 tipos (\autor{Claessens}-\autor{Kose}, 2013): \concepto{cambiaria}, \concepto{parada súbita} (\emph{sudden stop}) \vertema{3.B.17}, \concepto{de deuda} \vertema{3.A.39}, \concepto{bancaria} (pasivo: retirada; activo: préstamos). Gemelas y triples (\autor{Kaminsky}-\autor{Reinhart}, 1999).
+\item \concepto{Crisis bancaria sistémica} (\autor{Laeven}-\autor{Valencia}): tensión grave + medidas públicas grandes.
+\item Regularidades: las precede un auge del crédito (\autor{Schularick}-\autor{Taylor}, 2012); «esta vez es distinto»; \dato{coste mediano en países ricos: 32\,\% del PIB perdido y 6,7\,\% en ayudas}{Laeven y Valencia, 2026}.
+\end{itemize}
+\sub{I.2. Anatomía de una crisis\label{rep:I.2}}
+\begin{itemize}
+\item \autor{Kindleberger} (1978), con \autor{Minsky}: \emph{desplazamiento} → \emph{auge del crédito} → \emph{euforia} → \emph{pánico} → \emph{crac}.
+\item \concepto{Hipótesis de la inestabilidad financiera} (\autor{Minsky}, 1986) \vertema{3.A.4}: cobertura → especulativa → Ponzi; la estabilidad es desestabilizadora. 2007-2008: «momento \autor{Minsky}»; deuda privada no financiera de EE.\,UU. \dato{125\,\% (1990) → 171\,\% del PIB (2007)}{BIS}.
+\end{itemize}
+\sub{I.3. Teorías\label{rep:I.3}}
+\begin{itemize}
+\item \textbf{Deflación por deudas} (\autor{Irving Fisher}, 1933): deudas nominales + sobreendeudamiento; ventas forzosas → depósitos $\downarrow$ y velocidad $\downarrow$ → precios $\downarrow$ → deuda real $\uparrow$ → quiebras → $r$ real $\uparrow$. «Cuanto más pagan los deudores, más deben»; salida: reflacionar \vertema{3.A.41}. Ext.: canal bancario (\autor{Bernanke}, 1983).
+\item \textbf{Burbujas}: precio > \concepto{valor fundamental}. Arbitraje $P_t=\mathbb{E}_t[D_{t+1}+P_{t+1}]/(1+r)$ tiene una familia de soluciones (\autor{Blanchard}-\autor{Watson}, 1982):
+\funcionclave{P_t=\underbrace{\textstyle\sum_{k\geq1}\frac{\mathbb{E}_t[D_{t+k}]}{(1+r)^k}}_{P^{\mathrm f}_t}+P^{\mathrm b}_t,\quad \mathbb{E}_t[P^{\mathrm b}_{t+1}]=(1+r)P^{\mathrm b}_t}
+Exigentes: agentes finitos racionales no compran (\autor{Tirole}, 1982); con generaciones solapadas, solo si $r<g$ (1985) \vertema{3.A.29}. Ext.: cabalgar la burbuja (\autor{Abreu}-\autor{Brunnermeier}, 2003); conductuales (\autor{Shiller}, 2000). Con crédito, crisis largas (\autor{Jordà} et al., 2015).
+\item \textbf{Fricciones financieras} \vertema{3.A.13}: selección adversa y racionamiento (\autor{Stiglitz}-\autor{Weiss}, 1981); riesgo moral (\autor{Holmström}-\autor{Tirole}, 1997); \concepto{acelerador financiero} (\autor{Bernanke}-\autor{Gertler}) \vertema{3.A.37}; ventas forzosas: \concepto{externalidad pecuniaria} (\autor{Korinek}) $\Rightarrow$ macroprudencial. Gato escaldado, del agua fría huye: tras las pérdidas, se raciona también a los sanos. Corea 1997-1998: la mitad de la caída (\autor{Gertler} et al., 2007).
+\end{itemize}
+
+% ==========================================================================
+\bloque[12,5]{II. Pánicos bancarios y la crisis de 2007-2008\label{rep:II}}
+\begin{ideaclave}
+La fragilidad es la otra cara del servicio: transformar plazos. Los remedios públicos evitan el pánico pero crean riesgo moral; 2007-2008 fue un pánico fuera de los bancos tradicionales que, en el euro, contagió a los Estados.
+\end{ideaclave}
+\graficorepaso[0.75\linewidth]{balance-banco}{Figura: el balance estilizado de un banco y sus riesgos}
+\sub{II.1. \autor{Diamond} y \autor{Dybvig} (1983)\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Supuestos} (\autor{Freixas}-\autor{Rochet}): $T=0,1,2$; dotación 1; prob.\ $\pi$ impaciente (privada, sin incertidumbre agregada); guardar rinde 1; invertir rinde $R>1$ en $T=2$ o $L\leq1$ en $T=1$; $u$ cóncava con aversión relativa $>1$.
+\item \emph{4 asignaciones}: autarquía (segmento $(1,1)$–$(L,R)$); mercado $M=(1,R)$; óptimo $\max\pi u(c_1)+(1-\pi)u(c_2)$ s.a.\ $\pi c_1+(1-\pi)c_2/R=1$:
+\funcionclave{u'(c_1^*)=R\,u'(c_2^*),\qquad 1<c_1^*<c_2^*<R}
+banco: depósito que paga $c_1^*$ o $c_2^*$ $\Rightarrow$ alcanza $O$ (compatible con incentivos: $c_2^*>c_1^*$).
+\item \emph{Pánico}: 2 equilibrios de Nash; recursos $\pi c_1^*+L(1-\pi c_1^*)<c_1^*$. Con $\pi=0{,}5$, $R=2$, $L=0{,}6$, $u=-1/c$: $c_1^*=1{,}17$, $c_2^*=1{,}66$; paga solo al \dato{71\,\%}{anexo}; a prorrata $P=(0{,}83;0{,}83)$.
+\end{itemize}
+\graficorepaso[0.8\linewidth]{diamond-dybvig}{Autarquía, mercado $M$, óptimo $O$ y pánico $P$}
+\begin{formula}
+\[U^{\text{pánico}}<U^{\text{autarquía}}<U^{\text{mercado}}<U^{\text{óptimo}}=U^{\text{banco}}\]
+\end{formula}
+\begin{itemize}
+\item Implicaciones: profecía autocumplida; cualquier señal coordina; abre la puerta a la política. Evidencia: 1930-1933 (\autor{Friedman}-\autor{Schwartz}, 1963), Northern Rock, Grecia 2015 (\dato{$\approx$40.000 M€}{BCE}), SVB; retiran los no garantizados (\autor{Iyer}-\autor{Puri}, 2012). Críticas: pánico aleatorio, sin probabilidad, ¿por qué a la vista?
+\end{itemize}
+\sub{II.2. Extensiones\label{rep:II.2}}
+\begin{itemize}
+\item Fundamentos: pánicos cerca de los picos (\autor{Gorton}, 1988; \autor{Allen}-\autor{Gale}, 1998). Información: colas como señal (\autor{Chari}-\autor{Jagannathan}, 1988). \emph{Juegos globales}: umbral único; más seguro de liquidez = más pánico (\autor{Goldstein}-\autor{Pauzner}, 2005). Contagio: red completa > anillo (\autor{Allen}-\autor{Gale}, 2000). Disciplina (\autor{Calomiris}-\autor{Kahn}, 1991; \autor{Diamond}-\autor{Rajan}, 2001). \concepto{Banca en la sombra} (\emph{shadow banking}).
+\end{itemize}
+\sub{II.3. La red de seguridad\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Suspensión} (\emph{corralito}): solo si $\pi$ se conoce.
+\item \emph{Garantía de depósitos}: creíble, no se usa. \dato{250.000 \$}{FDIC}; \dato{100.000 € por depositante y entidad; fondos objetivo 0,8\,\%}{UE}. Coste: \emph{put} regalada (\autor{Merton}, 1977); más crisis (\autor{Demirgüç-Kunt}-\autor{Detragiache}, 2002). EDIS sin aprobar \vertema{3.B.44}.
+\item \emph{CMDI 2026}: 3 actos de 30/3/2026, aplicación desde 5/2028: Directiva 2026/804 (garantía: 100.000 €, fondos para la resolución), Directiva 2026/806 (BRRD: resolución a bancos medianos, preferencia de todos los depositantes), Reglamento 2026/808 (MUR) \vertema{3.B.27}.
+\item \emph{Prestamista de última instancia} (\autor{Bagehot}, 1873): sin límite, a solventes, con garantías, a tipo de penalización; \emph{demasiado grande para caer}; \emph{ambigüedad constructiva}. SVB: \dato{94\,\% no garantizado}{Fed}; 12/3/2023, todos protegidos. Pagan justos por pecadores $\Rightarrow$ resolución con \emph{bail-in}.
+\end{itemize}
+\sub{II.4. La crisis de 2007-2008\label{rep:II.4}}
+\begin{itemize}
+\item 5 fases: titulización y desregulación → crédito hipotecario → vivienda → pánico (8/2007–9/2008) → Lehman y recesión.
+\item \emph{Causas}: Fed al 1\,\% hasta 2004 y 17 subidas hasta 5,25\,\% (6/2006); \concepto{exceso de ahorro mundial} (\autor{Bernanke}, 2005); vivienda ×2 (2000-2006) y $-27$\,\% hasta 2012; \emph{subprime} y \emph{originar para distribuir}: MBS y \concepto{CDO} por tramos \vertema{3.B.25}; menos evaluación (\autor{Keys} et al., 2010; \autor{Mian}-\autor{Sufi}, 2009); banca en la sombra con \emph{repos}; CDS (AIG); regulación eludible. FCIC (2011): se pudo evitar.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{vivienda-eeuu}{Precio de la vivienda en EE.\,UU., 2000-2016}
+\begin{itemize}
+\item \emph{Pánico}: 9/8/2007 BNP Paribas y \dato{95.000 M€ del BCE a un día}{BCE}; Bear Stearns (3/2008); Lehman 15/9/2008; AIG \dato{85.000 M\$}{Fed}; Reserve Primary Fund (\emph{broke the buck}). \concepto{Pánico mayorista}: \emph{haircuts} en \emph{repos} (\autor{Gorton}-\autor{Metrick}, 2012).
+\item \emph{Transmisión}: crédito, riqueza, confianza; paro de EE.\,UU. 10\,\% (10/2009); comercio y emergentes \vertema{3.B.17}.
+\item \emph{Respuesta}: liquidez y \emph{swaps}; Fed a 0-0,25\,\% (12/2008) y compras \vertema{3.A.40}; TARP (\dato{700.000 M\$; coste neto $\approx$31.000 M}{CBO}); SCAP (19 bancos, 2009); UE \dato{$\approx$665.000 M€ en recapitalizaciones}{CE}; G-20; FSB, Basilea~III \vertema{3.B.27}.
+\end{itemize}
+\sub{II.5. El círculo vicioso banca-soberano\label{rep:II.5}}
+\begin{itemize}
+\item \emph{Supuestos}: \concepto{sesgo doméstico} y garantía implícita; en el euro, Estado sin banco central propio (\autor{De Grauwe}) y rescates nacionales.
+\item \emph{Desarrollo}: bancos → Estado (Irlanda, 9/2008) y Estado → bancos; 5 pasos: dudas → bonos a los bancos nacionales → pérdidas → recapitalización → más deuda. España e Irlanda empezaron por los bancos \vertema{4.A.18}.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{circulo-vicioso}{Figura: el círculo vicioso banca-soberano (\emph{doom loop})}
+\begin{itemize}
+\item «Abrazo mortal» (\autor{Farhi}-\autor{Tirole}, 2018). Evidencia: CDS juntos (\autor{Acharya} et al., 2014); coste \dato{4,5\,\% EE.\,UU.; 37,6\,\% Irlanda}{Laeven y Valencia}; diferenciales \dato{555 pb España; >2.700 Grecia (2012)}{BCE}.
+\item Respuestas: Cumbre 29/6/2012; unión bancaria (MUS desde 2014); \autor{Draghi} 26/7/2012, OMT (6/9/2012), TPI (2022); MEDE (España, 2012) \vertema{4.A.18}. Sin romper del todo.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{diferenciales-soberanos}{Diferencial a 10 años frente a Alemania, 2007-2016}
+
+% ==========================================================================
+\bloque[7]{III. Gestión de riesgos\label{rep:III}}
+\begin{ideaclave}
+Cada riesgo tiene su medida y todas fallan en las colas: modelos + pruebas de resistencia + capital y liquidez, sin sustituir a la regulación.
+\end{ideaclave}
+\sub{III.1. Los riesgos y su organización\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Crédito}, \concepto{mercado}, \concepto{liquidez} (financiación y mercado), \concepto{tipo de interés de la cartera bancaria}, \concepto{operacional} (legal, cibernético); concentración, modelo, \concepto{climático} (físico y de transición) \vertema{3.B.31}.
+\item \concepto{Apetito de riesgo} (consejo); 3 líneas de defensa (negocio; riesgos y cumplimiento; auditoría interna). Gestionar antes de la tormenta: no acordarse de Santa Bárbara cuando truena.
+\end{itemize}
+\sub{III.2. Riesgo de mercado: VaR y ES\label{rep:III.2}}
+\funcionclave{\Pr\big(\tilde\ell>\mathrm{VaR}_\alpha\big)=1-\alpha,\qquad \tilde\ell\equiv-\Delta\tilde\Pi}
+\graficorepaso[0.75\linewidth]{var}{VaR y pérdida esperada en la cola}
+\begin{itemize}
+\item 3 métodos: paramétrico ($\mu_\ell+\sigma N^{-1}(\alpha)$; $N^{-1}(0{,}99)\simeq2{,}33$; $\sqrt h$), histórico, Montecarlo. Basilea 1996: VaR 99\,\%, 10 días, ×3.
+\item \concepto{Pérdida esperada en la cola} (ES) = media más allá del VaR; coherente y subaditiva (\autor{Artzner} et al., 1999); FRTB: ES 97,5\,\% ($\approx$ VaR 99\,\% con la normal). \concepto{Pruebas de resistencia} (SCAP 2009; ABE y BCE) e inversas; griegas.
+\item Críticas: nada más allá del umbral; no subaditivo; procíclico (\autor{Adrian}-\autor{Shin}, 2010); pasado. El suceso «del 1\,\%» llega, y con colas gruesas más a menudo.
+\end{itemize}
+\sub{III.3. Riesgo de crédito\label{rep:III.3}}
+\begin{formula}
+\[\mathrm{PE}=\mathrm{PD}\times\mathrm{LGD}\times\mathrm{EAD}\]
+\end{formula}
+\begin{itemize}
+\item Hipoteca de 200.000 € con PD 1\,\% y LGD 20\,\% $\Rightarrow$ PE = 400 €/año. PE: precio y \emph{provisiones} (NIIF~9 desde 2018); inesperada: \emph{capital} (IRB, 99,9\,\%, un factor: \autor{Vasicek}, \autor{Gordy}).
+\item Gestión: \emph{screening} (\autor{Altman}, 1968), garantías, \emph{covenants}, diversificar, CDS, titulizar (retención del 5\,\%) \vertema{4.A.19}.
+\item \textbf{\autor{Merton} (1974)}: acciones = \emph{call} sobre los activos:
+\funcionclave{V_E=V N(d_1)-\mathrm{VN}e^{-rT}N(d_2),\ \ d_2=d_1-\sigma_V\sqrt T}
+\concepto{Distancia al incumplimiento} $d_2$; PD neutral $N(-d_2)$ $\uparrow$ con apalancamiento y volatilidad ($V/\mathrm{VN}=1{,}25$: 1,5\,\% con $\sigma_V=10$\,\%, 15\,\% con 20\,\%).
+\end{itemize}
+\sub{III.4. Liquidez y tipo de interés\label{rep:III.4}}
+\begin{itemize}
+\item Espiral de liquidez (\autor{Brunnermeier}-\autor{Pedersen}, 2009); LCR y NSFR.
+\item \concepto{Brecha de duración}: $\Delta V_E\simeq-[D^{\mathrm{mod}}_{\mathrm A}-\tfrac{V_D}{V}D^{\mathrm{mod}}_{\mathrm P}]V\Delta i$; atípico si $>15$\,\% del nivel~1 (BCBS, 2016).
+\item SVB: depósitos tecnológicos en bonos largos; \dato{$\approx$15.000 M\$ de pérdidas latentes frente a $\approx$16.000 M de patrimonio}{10-K}; 94\,\% sin garantía; 8/3/2023 venta con pérdida → pánico. Credit Suisse: UBS, 19/3/2023, \dato{$\approx$16.000 M de francos de AT1}{FINMA}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: auges de crédito, deuda y fricciones; bancos frágiles por transformar plazos; red de seguridad a costa de riesgo moral; pánico en la sombra y círculo vicioso; medidas que fallan en las colas.
+\item \textbf{Relevancia}: SVB y Credit Suisse (2023); no bancos \dato{51\,\% de los activos financieros, bancos 38\,\%}{FSB, 2024}.
+\item \textbf{Extensiones}: \vertema{3.B.27} \vertema{3.B.44} \vertema{3.B.17} \vertema{3.A.37} \vertema{3.A.42} \vertema{4.A.18} \vertema{4.A.28}; no bancos, cripto, clima.
+\item \textbf{Opinión}: más capital y liquidez, misma regulación para lo mismo, resoluciones sin contribuyente.
+\item \textbf{Idea final}: el miedo es libre; lo que lo frena es que nadie tenga motivos: capital, liquidez, garantía creíble y prestamista que no haga falta usar.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Tipos de crisis}
+{\small\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}|>{\raggedright\arraybackslash}p{0.28\linewidth}|>{\raggedright\arraybackslash}p{0.19\linewidth}|>{\raggedright\arraybackslash}p{0.17\linewidth}@{}}
+\textbf{Tipo} & \textbf{Mecanismo} & \textbf{Ejemplos} & \textbf{Modelo}\\ \hline
+Bancaria (pánico) & retirada; equilibrios múltiples & 1930-33; Northern Rock; SVB & \autor{Diamond}-\autor{Dybvig}\\
+Bancaria (solvencia) & pérdidas tras un auge del crédito & España 2008-12 & acelerador\\
+Burbuja y deuda & caída de activos con deudas nominales & 1929; Japón 1990; EE.\,UU. 2007 & \autor{Fisher}; \autor{Minsky}\\
+Cambiaria, parada súbita & ataque, corte de capital, deuda en divisas & Asia 1997-98 & 3 generaciones\\
+Soberana & prima de riesgo con 2 equilibrios & euro 2010-12 & \autor{Calvo} (1988)\\
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Los riesgos de una entidad}
+{\small\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}|>{\raggedright\arraybackslash}p{0.25\linewidth}|>{\raggedright\arraybackslash}p{0.23\linewidth}|>{\raggedright\arraybackslash}p{0.19\linewidth}@{}}
+\textbf{Riesgo} & \textbf{Medida} & \textbf{Gestión} & \textbf{Requisito}\\ \hline
+Crédito & PD, LGD, EAD; PE e inesperada & selección, garantías, CDS & capital (estándar o IRB), provisiones\\
+Mercado & VaR, ES, griegas & límites, coberturas & capital por mercado\\
+Liquidez & salidas en tensión; desfases & colchón líquido, financiación estable & LCR y NSFR\\
+Tipo de interés & brechas de revisión y duración & permutas, plazos & valores atípicos\\
+Operacional & frecuencia y gravedad & control, seguros, continuidad & capital (estándar)\\
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Cronología de la crisis, 2007-2012}
+{\small\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}|>{\raggedright\arraybackslash}p{0.7\linewidth}@{}}
+\textbf{Fecha} & \textbf{Hecho}\\ \hline
+6/2004-6/2006 & Fed: del 1 al 5,25\,\% en 17 pasos\\
+7/2006 & Máximo del precio de la vivienda en EE.\,UU.\\
+9/8/2007 & BNP Paribas suspende 3 fondos; BCE: 95.000 M€ a un día\\
+14/9/2007 & Línea del Banco de Inglaterra a Northern Rock; colas\\
+3/2008 & Bear Stearns a JPMorgan, con la Fed\\
+7/9/2008 & Fannie Mae y Freddie Mac intervenidas\\
+15-16/9/2008 & Lehman; AIG; Reserve Primary Fund\\
+30/9/2008 & Garantía irlandesa\\
+3/10/2008 & TARP\\
+16/12/2008 & Fed al 0-0,25\,\%\\
+4-5/2009 & G-20 de Londres; resultados del SCAP\\
+2/2012 & Diferencial griego: 2.739 pb de media mensual\\
+29/6/2012 & Cumbre del Euro: romper el círculo vicioso\\
+26/7 y 6/9/2012 & \autor{Draghi}: «lo que sea necesario»; OMT\\
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Definiciones}
+\begin{itemize}
+\item \concepto{Riesgo sistémico}: que la quiebra de una entidad o una perturbación común interrumpa el sistema y dañe la economía real.
+\item \concepto{Valor fundamental}: valor actual de los pagos esperados del activo.
+\item \concepto{Acelerador financiero}: la prima externa sube cuando cae el patrimonio del prestatario.
+\item \concepto{Externalidad pecuniaria}: cada uno se endeuda sin tener en cuenta que sus ventas forzosas bajan el precio de los activos de todos.
+\item \concepto{Banca en la sombra}: intermediarios con pasivo retirable a corto y activos ilíquidos, sin garantía ni prestamista.
+\item \concepto{Sesgo doméstico}: los bancos tienen mucha deuda de su propio Estado.
+\item \concepto{Liquidez, solvencia}: poder pagar hoy; que el activo cubra el pasivo.
+\item \concepto{Distancia al incumplimiento}: desviaciones típicas que tienen que caer los activos para no cubrir la deuda.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item \dato{164 crisis sistémicas 1970-2025; 24 en 2007-2008}{Laeven y Valencia}. Coste fiscal directo: \dato{4,5\,\% EE.\,UU.; 37,6\,\% Irlanda}{Laeven y Valencia, 2020}.
+\item SVB: \dato{>40.000 M\$ retirados el 9/3/2023; 94\,\% no garantizado}{Fed}.
+\item TARP: \dato{700.000 M\$, 444.000 desembolsados, coste neto $\approx$31.000 M}{CBO}. UE: \dato{$\approx$665.000 M€ (2008-2017) y >800.000 M€ en garantías (2009)}{CE}.
+\item Paro de EE.\,UU.: \dato{10\,\% (10/2009)}{BLS}. Deuda privada no financiera de EE.\,UU.: \dato{171\,\% del PIB (2007)}{BIS}.
+\item No bancos: \dato{51\,\% de los activos financieros}{FSB, 2024}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1873}{\autor{Bagehot}: prestamista de última instancia}
+\hito{1933}{\autor{Fisher}: deflación por deudas}
+\hito{1963}{\autor{Friedman}-\autor{Schwartz}}
+\hito{1974}{\autor{Merton}: deuda como opción}
+\hito{1977}{\autor{Merton}: la garantía es una \emph{put}}
+\hito{1978}{\autor{Kindleberger}: manías y pánicos}
+\hito{1981}{\autor{Stiglitz}-\autor{Weiss}}
+\hito{1982}{\autor{Blanchard}-\autor{Watson}; \autor{Tirole}}
+\hito{1983}{\autor{Diamond}-\autor{Dybvig}; \autor{Bernanke}}
+\hito{1986}{\autor{Minsky}: inestabilidad financiera}
+\hito{1996}{Basilea: VaR para el riesgo de mercado}
+\hito{1999}{\autor{Artzner} et al.: medidas coherentes}
+\hito{2005}{\autor{Goldstein}-\autor{Pauzner}}
+\hito{2007}{Northern Rock; BNP Paribas}
+\hito{2008}{Lehman; AIG; TARP}
+\hito{2012}{\autor{Draghi}; OMT; MEDE a España}
+\hito{2022}{Nobel: \autor{Bernanke}, \autor{Diamond}, \autor{Dybvig}}
+\hito{2023}{SVB; Credit Suisse}
+\hito{2026}{CMDI: 2026/804, 2026/806, 2026/808}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué un banco sano puede caer?} El depósito tiene 2 equilibrios; si cada paciente cree que los demás retiran, retirar es su mejor respuesta.
+\item \textbf{¿Por qué el pánico es peor que la autarquía?} Con aversión relativa $>1$, no cobrar nada es catastrófico; a prorrata, $P$ queda bajo $(1,1)$.
+\item \textbf{¿Garantía o suspensión?} La suspensión solo vale si se conoce $\pi$; si no, mejor la garantía.
+\item \textbf{¿Por qué 2007-2008 fue un pánico bancario?} Transformación de plazos en la banca en la sombra sin garantía ni prestamista: \emph{haircuts} en los \emph{repos}.
+\item \textbf{¿Qué no dice el VaR?} Cuánto se pierde más allá; por eso la ES y las pruebas de resistencia.
+\item \textbf{¿Qué rompe el círculo vicioso?} Supervisión y resolución comunes, prestamista para los Estados (OMT) y, falta, el EDIS y el tratamiento de la deuda pública en balance.
+\item \textbf{¿Qué falló en SVB?} Brecha de duración sin cubrir con depósitos no garantizados; gestión y supervisión.
+\item \textbf{¿Por qué los depósitos son a la vista si eso crea pánicos?} La amenaza de retirada disciplina al banquero (\autor{Calomiris}-\autor{Kahn}; \autor{Diamond}-\autor{Rajan}).
+\item \textbf{¿La estabilidad de precios basta?} No: crédito y vivienda crecieron sin inflación antes de 2007 \vertema{3.A.36}.
+\item \textbf{¿Qué aporta \autor{Merton} a la gestión?} La PD de cualquier empresa cotizada a partir del precio y la volatilidad de sus acciones; y el coste de la garantía como \emph{put}.
+\item \textbf{¿Qué aportan los juegos globales?} Un solo equilibrio: los fundamentos deciden cuándo hay pánico y las expectativas lo amplifican; el contrato óptimo da menos seguro de liquidez.
+\item \textbf{¿Por qué la NIIF~9?} Provisionar la pérdida esperada desde la concesión, no cuando ya se ha producido: una lección de 2008.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item \autor{Diamond}-\autor{Dybvig}: $\pi$ impacientes; $1<c_1^*<c_2^*<R$; $L\leq1$.
+\item Garantía UE: 100.000 € por depositante \emph{y entidad}; EE.\,UU.: 250.000 \$. EDIS: \emph{sin aprobar}.
+\item CMDI: 3 actos (2 directivas y 1 reglamento), no solo la 2026/804.
+\item VaR 99\,\% a 10 días (1996) → ES 97,5\,\% (FRTB). El VaR no es subaditivo; la ES sí.
+\item IRB: 99,9\,\% a un año. NIIF~9: pérdida esperada desde la concesión (2018).
+\item Burbuja racional: $P^{\mathrm b}$ crece a $r$ en promedio; con generaciones solapadas, solo si $r<g$.
+\item Lehman: 15/9/2008; AIG y Reserve Primary Fund: 16/9/2008.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

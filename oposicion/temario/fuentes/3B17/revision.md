@@ -216,6 +216,10 @@ Tema traído de la rama `revision-temario`; puesto al nivel de los temas de `rev
 | NEK en (x, π), identidad cuantitativa | No salen (la demanda de dinero de Flood y Garber es una función de demanda, no la teoría cuantitativa). |
 | Ficha de repaso | El tema no tiene ficha (`repaso/` no existe); no se crea en esta puesta al día. |
 
+## Ficha de repaso (13/11/2026)
+
+Nueva: `repaso/3B17-repaso.tex`, con la estructura de las fichas del bloque (3B13, 3B28): esquema del cante con minutos e indicaciones de pizarra (solo en la ficha), introducción con sus 5 bloques, los 3 apartados con idea clave, subapartados con etiquetas `rep:`, conclusión, autores y fechas, datos clave, preguntas del tribunal y trampas del test. Solo resume el tema. Gráficos del tema: `crisis-frecuencia`, `primera-generacion`, `segunda-generacion-regiones`, `diamond-dybvig`, `hojas-balance`; juego del ataque con reservas 10 y tabla de las 3 generaciones. Funciones clave: momento del ataque, cláusula de escape y condición de colapso; bloque «Derivaciones para el tribunal» con los pasos del anexo A. Dichos: «Nadie escarmienta en cabeza ajena», «tanto va el cántaro…» y la frase de los banqueros, como en el tema. `construir-repaso.py 3B17 --no-publicar`: 4 páginas, 10,5 pt; última página llena al 92~%; `verificar-tema.py 3B17` sin errores de la ficha. Sin publicar: queda pendiente de la aprobación de Víctor.
+
 ## 7. Dudas abiertas
 
 Todas aplicadas ya con la opción indicada; basta confirmarlas o cambiarlas.

@@ -154,6 +154,10 @@ Tema traído de la rama `revision-temario`; puesto al nivel de los temas de `rev
 | NEK en (x, π), identidad cuantitativa | No salen en este tema (el gráfico de Barro-Gordon está en el plano (U, π) y no es la NEK). |
 | Ficha de repaso | El tema no tiene ficha (`repaso/` no existe); no se crea en esta puesta al día. |
 
+## Ficha de repaso (13/11/2026)
+
+Nueva: `repaso/3B16-repaso.tex`, con la estructura de las fichas del bloque (3B13, 3B28): esquema del cante con minutos e indicaciones de pizarra (solo en la ficha), introducción con sus 5 bloques, los 3 apartados con idea clave, subapartados con etiquetas `rep:`, conclusión, autores y fechas, datos clave, preguntas del tribunal y trampas del test. Solo resume el tema. Gráficos del tema: `mundell` (3 filas), `amo-flexibilidad` y `logica-amo` en pareja, `costes-beneficios` y `endogeneidad` en pareja, `barro-gordon`, `circulo-vicioso`. Funciones clave: $\pi^D$ (sesgo inflacionista); fórmulas de Magnifico y McKinnon. Dichos: solo «El casado casa quiere» (enganche e idea final) y «Arrímate a los buenos…» (credibilidad), como en el tema. `construir-repaso.py 3B16 --no-publicar`: 4 páginas, 10,5 pt; última página llena al 91~%; `verificar-tema.py 3B16` sin errores de la ficha. Sin publicar: queda pendiente de la aprobación de Víctor.
+
 ## 7. Dudas abiertas
 
 Cada una con la opción aplicada:

@@ -1,0 +1,58 @@
+% 3.B.20: el dilema de Triffin en los datos (gráfico de referencia que pide la
+% ficha triffin del canon: D_t frente a G_t, 1948-1973, con el cruce).
+% G: oro monetario de EE. UU. al precio oficial (dorado). D: activos líquidos
+% en dólares del resto del mundo (valores del Tesoro, depósitos a la vista y
+% efectivo, depósitos a plazo; morado). Valores del Tesoro en poder de
+% instituciones oficiales extranjeras (morado discontinuo). Miles de millones
+% de dólares a fin de año. Cruce de D y G en 1961 (17,0 frente a 16,9).
+% Datos: ../datos/triffin-oro-pasivos.csv (Reserva Federal, cuentas
+% financieras Z.1, vía FRED; segunda comprobación del oro con NBER 14076c).
+% Capas: ejes y referencias (1) → oro (2) → pasivos (3) → oficiales (4) →
+% cruce y rótulos (5) → hitos (6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\trdatos}{../datos/triffin-oro-pasivos.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=6.2cm, scale only axis,
+      xmin=1948, xmax=1974, xtick={1950,1955,...,1970,1973},
+      ymin=0, ymax=92, ytick={0,10,...,90},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize}, label style={font=\small},
+      ylabel={miles de millones de dólares},
+      legend style={draw=none, font=\footnotesize, at={(0.02,0.98)}, anchor=north west},
+      legend cell align=left,
+      dicapas]
+    % 1: líneas de referencia (suspensión de la convertibilidad)
+    \capa{1}{\dicraya[thin, dicreferencia, dashed]{(1971,0) (1971,92)}}
+    % 2: G, el oro de EE. UU.
+    \capa{2}{\addplot[diclinea=tceedorado, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x=anio, y=oro] {\trdatos};
+      \addlegendentry{$G_t$: oro monetario de EE.\,UU. (precio oficial)}}
+    % 3: D, los pasivos líquidos en dólares frente al resto del mundo
+    \capa{3}{\addplot[diclinea=tceemorado, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x=anio, y=pasivos] {\trdatos};
+      \addlegendentry{$D_t$: activos líquidos en dólares del resto del mundo}}
+    % 4: de ellos, valores del Tesoro en manos oficiales
+    \capa{4}{\addplot[diclinea=tceemorado, dashed] table[col sep=comma, comment chars={\#},
+        x=anio, y=oficiales] {\trdatos};
+      \addlegendentry{de ellos, valores del Tesoro en manos oficiales}}
+    % 5: el cruce
+    \capa{5}{\addplot[dicpuntos=tceerojo, forget plot] coordinates {(1961,16.95)};}
+    \capa{5}{\dicraya[thin, tceerojo]{(1961,18) (1959.6,29)}
+    \dicrotulo[anchor=south, font=\footnotesize, text=tceerojo, align=center]{(1959.6,29.3)}{1961: $D_t>G_t$}}
+    \capa{5}{\addplot[dicpuntos=tceedorado, forget plot] coordinates {(1949,24.56)};}
+    \capa{5}{\dicrotulo[anchor=south west, font=\footnotesize, text=tceedorado!75!black]{(1948.6,25.3)}{1949: 24,6}}
+    \capa{5}{\addplot[dicpuntos=tceemorado, forget plot] coordinates {(1971,66.47)};}
+    \capa{5}{\dicrotulo[anchor=east, font=\footnotesize, text=tceemorado]{(1970.7,67)}{1971: 66,5}}
+    \capa{5}{\addplot[dicpuntos=tceedorado, forget plot] coordinates {(1971,10.21)};}
+    \capa{5}{\dicrotulo[anchor=north east, font=\footnotesize, text=tceedorado!75!black]{(1970.8,9.4)}{10,2}}
+    % 6: hitos
+    \capa{6}{\dicrotulo[anchor=east, font=\footnotesize, text=dicreferencia, align=right]{(1970.8,84)}{agosto de 1971:\\fin de la convertibilidad}}
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize, text=dicreferencia, align=center]{(1966.3,40)}{1968: doble\\mercado del oro}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

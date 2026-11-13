@@ -214,3 +214,11 @@ Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 
 | Ficha de repaso | El tema no tiene ficha (`repaso/` no existe): nada que adaptar. |
 
 Compilación: `construir-tema.py 3B12 --solo pdf --no-publicar` correcto (36 páginas de tema, 6 de anexos, 6 de bibliografía; 30 minutos). `verificar-tema.py 3B12`: solo los errores esperables de PDF/HTML/Word publicados anteriores a la fuente y el aviso de las letras de III.3 (duda 18).
+
+## Ficha de repaso (13/11/2026)
+
+- Nueva: `repaso/3B12-repaso.tex`, con la estructura de las fichas de esta rama (3B13, 3B28): esquema del cante con los minutos del tema, indicaciones de pizarra (en la ficha sí caben), introducción, apartados con la idea clave, definiciones y funciones clave en morado, conclusión, autores y fechas, datos clave, preguntas del tribunal y «Ojo en el test». Solo resume el tema.
+- `construir-repaso.py 3B12 --no-publicar`: exactamente 4 páginas, letra de 10 pt, última página ocupada al 93 %. Se revisaron las 4 páginas a ojo, sin huecos grandes ni títulos al pie. `verificar-tema.py 3B12`: ningún error de la ficha.
+- Gráficos (los del tema): curva J, oferta agregada de la absorción, IS-LM-BP, flujo-especie, modelo intertemporal, dinámica de la deuda exterior y España (CC y PIIN), y la tabla de sostenibilidad de España.
+- Dichos: los mismos que en el tema, integrados en la frase; ninguno nuevo.
+- El título corto de la cabecera pasa a «Ajuste de la balanza de pagos» (`\tcetema[...]`) solo en la ficha, para que su pie no se solape con el copyright; el tema no cambia.

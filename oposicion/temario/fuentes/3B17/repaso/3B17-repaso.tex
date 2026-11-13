@@ -1,0 +1,249 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Crisis de balanza de pagos]{3.B.17}{Teorías explicativas de las crisis de balanza de pagos.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «nadie escarmienta en cabeza ajena»}{2,5}
+\apartadocante{I. Crisis cambiarias: 1.ª y 2.ª generación}{11}
+\subcante{1. Primera: crisis por los fundamentos}{5}
+\subcante{2. Segunda: crisis autocumplidas}{6}
+\apartadocante{II. Tercera generación: crisis gemelas}{9}
+\subcante{1. Idea}{1,5}
+\subcante{2. Modelos}{5,5}
+\subcante{3. Evidencia empírica}{1}
+\subcante{4. Valoración}{1}
+\apartadocante{III. Contagio, predicción y ¿4.ª generación?}{6,5}
+\subcante{1. Idea}{0,5}
+\subcante{2. Contagio por los fundamentos}{1,5}
+\subcante{3. Contagio puro}{1,5}
+\subcante{4. Alerta temprana}{1,5}
+\subcante{5. ¿Hacia una cuarta generación?}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: intro sin pizarra, con el refrán y «236 crisis cambiarias (1970-2017)» en una esquina. A la izquierda, los 3 bloques y la convención ($E$ directo: ↑$E$ = depreciación). I: los 3 paneles del ataque (tipo sombra, dinero, reservas) con $T$ en morado; las 3 regiones (cielo, purgatorio, infierno) con la cláusula de escape en morado. II: la espiral en 4 pasos y los 3 equilibrios ($L$, $U$, $H$) con la condición de colapso en morado; tabla de las 3 generaciones al cerrar. III: lista de canales; sin gráfico.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Nadie escarmienta en cabeza ajena». \autor{Reinhart}-\autor{Rogoff} (2009): 8 siglos, 66 países, siempre «\emph{esta vez es distinto}». México (1994), Asia (1997), Rusia (1998), Brasil (1999), Turquía (2001), Argentina (2001-2002): de recibir capital a perderlo en semanas. ¿Por qué un país sano deja en días de poder pagar fuera, y por qué no aprende de sus vecinos?
+\item \textbf{Relevancia}: \emph{frecuentes}: \dato{151 bancarias y 236 cambiarias}{\autor{Laeven}-\autor{Valencia}, 1970-2017}; cambiarias: 25 (70), 74 (80), 84 (90), máximo 20 en 1994. \emph{Caras}: PIB \dato{Indonesia $-13{,}1$~\%, Tailandia $-7{,}6$, Malasia $-7{,}4$, Corea $-4{,}9$}{1998}; México $-5{,}9$ (1995); Argentina $-10{,}9$ (2002). \emph{España}: devaluaciones de la peseta en 1992-1993 \vertema{4.A.27}; parada súbita de la periferia en 2010-2012, cubierta por el Eurosistema \vertema{4.A.28}. \emph{Política}: prevenir (reservas, régimen, regulación, FMI) \vertema{3.B.22}.
+\item \textbf{Contextualización}: \concepto{crisis de balanza de pagos}: no poder financiar el déficit o atender la deuda exterior a los precios vigentes $\Rightarrow$ ajuste brusco. 4 formas que se solapan: \concepto{cambiaria}, \concepto{bancaria}, \concepto{de deuda externa}, \concepto{parada súbita} (\emph{sudden stop}, \autor{Calvo}, 1998). \concepto{Crisis gemelas} (\emph{twin crises}): bancaria + cambiaria. \concepto{Ataque especulativo}; \concepto{tipo sombra} $\tilde E$ frente al fijo $\bar E$; \concepto{contagio}; \concepto{índice de presión cambiaria} (depreciación, pérdida de reservas, ↑ tipo de interés). \emph{Historia}: oleadas cuando el capital se mueve: Bretton Woods (1971-1973), deuda latinoamericana (1982), SME (1992-1993), México, Asia, Rusia, Argentina, 2007-2008 y el euro. \emph{Generaciones} (\autor{Eichengreen}-\autor{Rose}-\autor{Wyplosz}, 1995): cada oleada trae su modelo: 1.ª \autor{Krugman} (1979) y \autor{Flood}-\autor{Garber} (1984); 2.ª \autor{Obstfeld} (1994, 1996); 3.ª \autor{Krugman} (1999), \autor{Chang}-\autor{Velasco} (2001); y contagio, alerta temprana, ¿4.ª?
+\item \textbf{Problemática}: ¿por qué estallan: malas políticas, expectativas o fragilidad financiera? ¿Son inevitables? ¿Predecibles? ¿Por qué se contagian? ¿Qué política las previene?
+\item \textbf{Estructura}: cada generación nace de la crisis que la anterior no explicaba: \hyperref[rep:I]{I}, crisis de un tipo fijo (1.ª y 2.ª); \hyperref[rep:II]{II}, crisis gemelas; \hyperref[rep:III]{III}, contagio, predicción y crisis recientes.
+\end{itemize}
+\graficorepaso[\linewidth]{crisis-frecuencia}{Crisis bancarias, cambiarias y de deuda que empiezan cada año, 1970-2017}
+
+% ==========================================================================
+\bloque[11]{I. Crisis cambiarias: primera y segunda generación\label{rep:I}}
+\begin{ideaclave}
+Un tipo fijo cae cuando la política interna lo hace inviable (1.ª: inevitable y predecible) o cuando el mercado cree que el gobierno no querrá seguir pagando lo que cuesta defenderlo (2.ª: evitable, pero impredecible: la crisis cumple su propia profecía).
+\end{ideaclave}
+
+\sub{I.1. Primera generación (\autor{Krugman}, 1979; \autor{Flood}-\autor{Garber}, 1984)\label{rep:I.1}}
+\begin{itemize}
+\item \textbf{a) Idea}: \autor{Salant}-\autor{Henderson} (1978) sobre el oro, llevado a las divisas; \autor{Flood}-\autor{Garber} lo linealizan y fechan el ataque. Explica Bretton Woods (1971-1973) y América Latina en los 70 y 80 (México 1976 y 1982, Argentina 1981). Intuición en 3 pasos:
+  \begin{itemize}
+  \item \emph{Política incompatible}: el banco central financia el déficit con tipo fijo.
+  \item \emph{Las reservas se agotan}: el público cambia el dinero sobrante por divisas; $\tilde E$ se deprecia.
+  \item \emph{Ataque predecible}: cuando $\tilde E$ alcanza a $\bar E$.
+  \end{itemize}
+  «Tanto va el cántaro a la fuente que al final se rompe».
+\item \textbf{b) Modelo}. \emph{Supuestos}: economía pequeña y abierta, $\bar E$, capital móvil; PPA ($P=E$); PNCI ($i=i^*+\dot E/E$); $M/P=kY-hi$; $M^S=\mathrm{CI}+R$; $\dot{\mathrm{CI}}=\mu>0$; previsión perfecta.
+\item \emph{Desarrollo}: con $\ell\equiv kY-hi^*$, $M^S=\ell E-h\dot E$. Con paridad, $R=\ell\bar E-\mathrm{CI}$ cae al ritmo $\mu$; sin ataque, $T_N=R_0/\mu$. Tipo sombra $\tilde E=\mathrm{CI}/\ell+h\mu/\ell^2$. Por no arbitraje, ataque cuando $\tilde E_T=\bar E$:
+\end{itemize}
+\funcionclave{T=\frac{R_0}{\mu}-\frac{h}{\ell}<T_N}
+\begin{itemize}
+\item En $T$ se llevan las reservas que quedan, $h\mu/\ell$; el dinero cae y el tipo flota al ritmo $\mu/\ell$. Llega antes con menos $R_0$, más $\mu$, $\bar E$ más apreciado y más $h$.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{primera-generacion}{Tipo sombra, dinero y reservas: el ataque en $T<T_N$}
+\begin{itemize}
+\item \textbf{iii) Implicaciones}: la causa es la política; predecible e inevitable; el tipo fijo no disciplina: \concepto{dominación fiscal} (\autor{Sargent}-\autor{Wallace}, 1981) \vertema{3.A.39}; salida: renunciar a un vértice de la \concepto{trinidad imposible} \vertema{3.B.15}.
+\item \textbf{c) Extensiones}: incertidumbre (el «problema del peso»); esterilización (\autor{Flood}-\autor{Garber}-\autor{Kramer}, 1996: México 1994).
+\item \textbf{d) Evidencia}: México 1973-1982 (\autor{Blanco}-\autor{Garber}, 1986); Argentina y la \emph{tablita} (1979-1981); el \emph{pool} del oro (1968) y el dólar (1971).
+\item \textbf{e) Valoración}: predecía mal los 90; información perfecta; gobierno mecánico (sin subir tipos ni pedir prestado); sin efectos reales. Septiembre de 1992: caen monedas sin déficits monetizados.
+\end{itemize}
+
+\sub{I.2. Segunda generación (\autor{Obstfeld}, 1994, 1996)\label{rep:I.2}}
+\begin{itemize}
+\item \textbf{a) Idea}: SME 1992: tras la reunificación, el Bundesbank sube tipos; los socios, camino de la recesión; «no» danés (junio) y ataque a libra, lira y peseta en septiembre. 3 explicaciones (\autor{Eichengreen}-\autor{Wyplosz}, 1993): competitividad pasada, políticas futuras (autocumplida) y perturbación asimétrica. Lo nuevo: el Reino Unido tenía reservas y no monetizaba; defender costaba demasiado paro. 3 elementos: credibilidad, gobierno que optimiza, \concepto{equilibrios múltiples}.
+\item \textbf{b) Modelo} de la \concepto{cláusula de escape} (\emph{escape clause}; \autor{Obstfeld}, 1996, a partir de \autor{Barro}-\autor{Gordon}; síntesis de \autor{Jeanne}, 2000). \emph{Supuestos}: $L=(Y^{obj}-Y)^2+\gamma\pi^2\,(+\bar c$ si devalúa$)$; oferta de \autor{Lucas} $Y=Y^n+(\pi-\pi^e)+u$; $\Delta\equiv Y^{obj}-Y^n>0$; PPA relativa ($\Delta E/E=\pi$); el público fija $\pi^e$, se conoce $u$, decide el gobierno.
+\item \emph{Desarrollo}: con $x\equiv\Delta-u$ y $X\equiv x+\pi^e$: $L^{fijo}=X^2$, $\pi^{flex}=X/(1+\gamma)$, $L^{flex}=\frac{\gamma}{1+\gamma}X^2+\bar c$. Devalúa si
+\end{itemize}
+\funcionclave{L^{fijo}-L^{flex}=\frac{(x+\pi^e)^2}{1+\gamma}>\bar c}
+\begin{itemize}
+\item 3 regiones: \concepto{cielo} $x<x_1\equiv\gamma\sqrt{\bar c/(1+\gamma)}$ (aguanta siempre); \concepto{purgatorio} $x_1\le x\le x_2$ (cae si y solo si se espera); \concepto{infierno} $x>x_2\equiv\sqrt{(1+\gamma)\bar c}$ (cae siempre). Con devaluación, $\pi=x/\gamma$: el sesgo de \autor{Barro}-\autor{Gordon} \vertema{3.A.36}.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{segunda-generacion-regiones}{Cielo, purgatorio e infierno}
+\begin{itemize}
+\item \textbf{iii) Implicaciones}: fundamentos importan pero no deciden solos (↑$\Delta$, ↓$u$, ↓$\gamma$, ↓$\bar c$); evitables e impredecibles (manchas solares); defender cuesta más cuanto más se espera ($i-i^*\approx\gamma E^e+\rho$; Riksbank al \dato{500~\%}{16/9/1992}, flota el 19/11); inconsistencia temporal (\autor{Kydland}-\autor{Prescott}, 1977). \emph{Política}: fundamentos y reservas, atarse las manos (caja de conversión, unión \vertema{3.B.16}) o flotar.
+\item \textbf{c) Extensiones}: juego de 2 especuladores (6 unidades, coste 1, devaluación 50~\%): reservas 20, nadie ataca; 6, ataque dominante; 10, 2 equilibrios de \autor{Nash}, el purgatorio en pequeño:
+\begin{formula}
+\centering\small
+\begin{tabular}{c|c|c}
+& N & V\\ \hline
+N & $\mathbf{(0,0)}$ & $(0,-1)$\\
+V & $(-1,0)$ & $\mathbf{(\tfrac32,\tfrac32)}$\\
+\end{tabular}\\[1pt]
+{\scriptsize Reservas 10; en negrita, los equilibrios de \autor{Nash}}
+\end{formula} \concepto{Juegos globales} (\autor{Morris}-\autor{Shin}, 1998): umbral único. Deuda pública (\autor{Calvo}, 1988).
+\item \textbf{d) Evidencia}: SME (libra 16/9/1992, \autor{Soros}); franco francés (\autor{Jeanne}, 1997); México 1994, mixta.
+\item \textbf{e) Valoración}: predice poco; pérdida \emph{ad hoc}; sin balances ni devaluación contractiva; no explica Asia.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{II. Tercera generación: crisis gemelas\label{rep:II}}
+\begin{ideaclave}
+La crisis empieza en los balances de bancos y empresas, no en la política monetaria: la bancaria y la cambiaria se alimentan, y los efectos reales son mucho mayores.
+\end{ideaclave}
+
+\sub{II.1. Idea\label{rep:II.1}}
+\begin{itemize}
+\item Tailandia deja flotar el bat (2/7/1997); caen Filipinas, Malasia, Indonesia, Corea. 4 rasgos nuevos: buenos fundamentos, efectos reales enormes, huida del capital (no decisión del gobierno), crisis gemela.
+\item 3 pasos: \emph{debilidades ocultas} (supervisión débil, garantías implícitas); \emph{apertura financiera rápida} (capital a corto, en divisas) \vertema{3.B.18}; \emph{retroalimentación}. 3 nexos: bancaria $\to$ cambiaria (rescates), cambiaria $\to$ bancaria (balances), causa común (parada súbita).
+\end{itemize}
+
+\sub{II.2. Modelos\label{rep:II.2}}
+\textbf{a) Riesgo moral y fragilidad} (\autor{McKinnon}-\autor{Pill}, 1998; \autor{Krugman}, 1998). \emph{Idea}: garantías implícitas y tipo fijo $\Rightarrow$ endeudarse en exceso, en divisas y a corto. \emph{Modelo}: los rescates esperados son deuda pública oculta: lógica de 1.ª generación (\autor{Corsetti}-\autor{Pesenti}-\autor{Roubini}, 1999); iliquidez internacional (\autor{Chang}-\autor{Velasco}, 2001): el pánico de \autor{Diamond}-\autor{Dybvig} (1983; Nobel 2022 con \autor{Bernanke}) en economía abierta, sin prestamista en divisas. \emph{Implicaciones}: supervisar antes de abrir, reservas, flexibilidad (o dolarización). \emph{Valoración}: explica la deuda acumulada, no el momento ni la amplificación.
+
+\begin{itemize}
+\item \emph{\autor{Diamond}-\autor{Dybvig} en 4 líneas}: 3 fechas; depositantes impacientes ($\pi$) o pacientes; activo ilíquido ($R>1$ en $t=2$, $L\le1$ en $t=1$); el banco asegura liquidez ($1<c_1^*<c_2^*<R$, $u'(c_1^*)=Ru'(c_2^*)$); 2 equilibrios: esperar o pánico. Soluciones: garantía de depósitos, suspensión («corralito»), prestamista de última instancia, que fallan con depósitos en divisas. Grecia: \dato{$\approx$40.000 M€ de depósitos}{1.er sem.\ 2015}, cierre de bancos en junio. Gran Depresión: \autor{Friedman}-\autor{Schwartz} (1963).
+\end{itemize}
+\graficorepaso[0.7\linewidth]{diamond-dybvig}{Autarquía, mercado y óptimo: el banco asegura liquidez}
+\textbf{b) Hojas de balance (\autor{Krugman}, 1999)}. \emph{Supuestos}: $Y=K^\alpha L^{1-\alpha}$; trabajadores consumen $(1-\alpha)Y$; riqueza $W=\alpha Y-B-qB^*$; $I\le I_F\equiv(1+\theta)W$; $Y=(1-m)[(1-\alpha)Y+I]+qX$. \emph{Espiral}: ↓$I$ $\to$ ↑$q$ $\to$ ↓$W$ $\to$ ↓$I_F$ $\to$ ↓$I$. Se dispara si
+\funcionclave{\frac{\partial I_F}{\partial I}=\frac{(1+\theta)(1-m)B^*}{X}>1}
+más fácil con más apalancamiento $\theta$, más deuda en divisas frente a exportaciones, menos apertura $m$. 3 equilibrios: $L$ (inversión nula) y $H$ estables, $U$ inestable.
+\graficorepaso[0.85\linewidth]{hojas-balance}{Inversión esperada y efectiva: $L$, $U$ y $H$}
+\begin{itemize}
+\item \emph{Implicaciones}: origen financiero, efectos reales; menos predecibles; subir tipos cierra un canal y abre otro (\autor{Furman}-\autor{Stiglitz}, 1998) \vertema{3.B.22}; líneas de crédito y controles temporales; prevención término a término. \emph{Valoración}: estático, sin bancos, sin detonante.
+\end{itemize}
+\textbf{c) Paradas súbitas y pecado original}. «No es la velocidad lo que mata, es la parada súbita» (\autor{Dornbusch} et al., 1995). \emph{Supuestos}: déficit financiado con entradas; comerciables y no comerciables; deuda en divisas: \concepto{pecado original} (\emph{original sin}; \autor{Eichengreen}-\autor{Hausmann}, 1999). \emph{Desarrollo}: la cuenta corriente mejora de golpe lo que deja de entrar; depreciación real y recesión, mayores cuanto más cerrada; con deuda en divisas, crisis de balance. \emph{Implicaciones}: \concepto{miedo a flotar} (\autor{Calvo}-\autor{Reinhart}, 2002), autoseguro, no es solo culpa del país; no confundir con \concepto{intolerancia a la deuda} y descalce. \emph{Evidencia}: México 1994-1995 (\emph{tesobonos}). \emph{Valoración}: toma la parada como dada $\to$ contagio.
+
+\sub{II.3. Evidencia empírica\label{rep:II.3}}
+\begin{itemize}
+\item Tailandia, déficit $\approx$8~\% del PIB (1995-1996). Crisis gemelas: los problemas bancarios preceden a la cambiaria (\autor{Kaminsky}-\autor{Reinhart}, 1999). ¿Pánico (\autor{Radelet}-\autor{Sachs}, 1998) o fundamentos (\autor{Corsetti} et al., 1999)? Siguen: lira turca \dato{$-28$~\%}{2018}; Argentina, \dato{56.300 M\$ del FMI}{2018}, 366,5 $\to$ 800 pesos (dic.\ 2023), programa de 20.000 M\$ (2025).
+\end{itemize}
+
+\sub{II.4. Valoración\label{rep:II.4}}
+\begin{itemize}
+\item Una familia, no un modelo; vuelven los equilibrios múltiples; acelerador financiero abierto (\autor{Aghion}-\autor{Bacchetta}-\autor{Banerjee}, 2001) \vertema{3.A.42}.
+\end{itemize}
+\begin{formula}
+\small\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}p{0.2\linewidth}p{0.24\linewidth}p{0.24\linewidth}p{0.24\linewidth}@{}}
+& \textbf{1.ª} & \textbf{2.ª} & \textbf{3.ª}\\
+Origen & déficit monetizado & coste de la paridad y expectativas & balances\\
+Gobierno & pasivo & optimiza & rescata\\
+Fundamentos & malos & intermedios & buenos en apariencia\\
+¿Predecible? & sí & no & no\\
+Efectos reales & no & pequeños & grandes\\
+Ejemplo & América Latina & SME 1992 & Asia 1997\\
+\end{tabular}
+\end{formula}
+
+% ==========================================================================
+\bloque[6,5]{III. Contagio, predicción y ¿cuarta generación?\label{rep:III}}
+\begin{ideaclave}
+Se contagian por el comercio, por los acreedores comunes y por las expectativas; los indicadores dicen quién es vulnerable, no cuándo cae; las crisis recientes son de balance, sin tipo fijo que defender.
+\end{ideaclave}
+
+\sub{III.1. Idea\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Contagio}: la crisis de uno aumenta por sí misma la probabilidad de crisis en otro; no lo son los «efectos monzón» (choque común). 2 tipos (\autor{Kaminsky}-\autor{Reinhart}, 2000).
+\end{itemize}
+
+\sub{III.2. Contagio por los fundamentos\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Comercio}: bilateral (libra irlandesa, escudo; Argentina 2001-2002 y Mercosur); terceros mercados (EE.\,UU. en los 80; Japón en 1997).
+\item \emph{Finanzas}: bilateral (Uruguay 2002, PIB $-7{,}7$~\%); \concepto{prestamista común} (bancos japoneses en Asia; \autor{Van Rijckeghem}-\autor{Weder}, 2001).
+\end{itemize}
+
+\sub{III.3. Contagio puro\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Información imperfecta}: llamada de atención, errores al extraer señales, manchas solares (\emph{sunspots}), riesgo moral, régimen cambiario común. \emph{Dominó}: impago de la contraparte (1982), recomposición de carteras; \emph{subprime} y BNP Paribas (9/8/2007); Grecia 2010.
+\item \emph{Evidencia}: corregida la volatilidad, mucho «contagio» es interdependencia (\autor{Forbes}-\autor{Rigobon}, 2002); \emph{taper tantrum} 2013 (\autor{Eichengreen}-\autor{Gupta}, 2015).
+\end{itemize}
+
+\sub{III.4. Alerta temprana\label{rep:III.4}}
+\begin{itemize}
+\item Difícil: con equilibrios múltiples, dónde, no cuándo. \emph{Señales} (\autor{Kaminsky}-\autor{Lizondo}-\autor{Reinhart}, 1998): sobrevaloración real, crédito, reservas, M2/reservas, exportaciones. \emph{Probit-logit} (\autor{Frankel}-\autor{Rose}, 1996). Fuera de muestra, poco (\autor{Berg}-\autor{Pattillo}, 1999); en 2008-2009 sí, reservas y sobrevaloración. Indicadores: \autor{Greenspan}-\autor{Guidotti}, ARA del FMI, PII, descalces, brecha de crédito. FMI-FSB desde 2009.
+\end{itemize}
+
+\sub{III.5. ¿Hacia una cuarta generación?\label{rep:III.5}}
+\begin{itemize}
+\item \autor{Krugman} (2001): crisis financieras con otros activos en lugar del tipo de cambio. 2007-2008 le dio la razón (parada súbita en emergentes, líneas \emph{swap}). Euro 2010-2012: parada súbita sin crisis cambiaria, TARGET \vertema{4.A.21}. \autor{Rey} (2013): dilema, no trilema. Instituciones. Respuesta: red de seguridad, macroprudencial \vertema{3.B.27}, FMI acepta medidas de gestión de flujos (2012).
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: 3 maneras de caer: políticas incompatibles, expectativas autocumplidas y balances frágiles; contagio por comercio, prestamistas y expectativas; ningún modelo predice el momento.
+\item \textbf{Relevancia}: siguen (Turquía 2018, Argentina 2018 y 2023); por eso reservas, supervisión y FMI.
+\item \textbf{Extensiones}: \vertema{3.B.15}, \vertema{3.B.16}, \vertema{3.B.26}, \vertema{3.B.27}, \vertema{3.B.22}, \vertema{3.B.29}.
+\item \textbf{Opinión}: cada generación explicó la anterior, no la siguiente; la mejor defensa son políticas coherentes, banca supervisada, balances sanos y reservas.
+\item \textbf{Idea final}: nadie escarmienta en cabeza ajena: cuando todo va bien, siempre parece que esta vez es distinto.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1978}{\autor{Salant}-\autor{Henderson}: ataques al oro}
+\hito{1979}{\autor{Krugman}: 1.ª generación (Nobel 2008)}
+\hito{1983}{\autor{Diamond}-\autor{Dybvig}: pánicos bancarios}
+\hito{1984}{\autor{Flood}-\autor{Garber}: momento del ataque}
+\hito{1992}{SME: libra (16/9), lira, peseta}
+\hito{1994}{\autor{Obstfeld}: 2.ª generación; México}
+\hito{1996}{\autor{Obstfeld}: cláusula de escape}
+\hito{1997}{Asia (2/7, Tailandia)}
+\hito{1998}{\autor{Calvo}: paradas súbitas; \autor{Morris}-\autor{Shin}; KLR}
+\hito{1999}{\autor{Krugman}: hojas de balance; \autor{Kaminsky}-\autor{Reinhart}; pecado original}
+\hito{2001}{\autor{Chang}-\autor{Velasco}; \autor{Krugman}: ¿4.ª?; Argentina}
+\hito{2002}{\autor{Calvo}-\autor{Reinhart}: miedo a flotar}
+\hito{2009}{\autor{Reinhart}-\autor{Rogoff}: \emph{esta vez es distinto}}
+\hito{2013}{\autor{Rey}: dilema; \emph{taper tantrum}}
+
+% ==========================================================================
+\bloque{Derivaciones para el tribunal}
+\begin{itemize}
+\item \emph{Momento del ataque}: prueba $\tilde E=a+b\,\mathrm{CI}$ en $\mathrm{CI}=\ell\tilde E-h\dot{\tilde E}$ $\Rightarrow$ $b=1/\ell$, $a=h\mu/\ell^2$; $\tilde E_T=\bar E\iff\mathrm{CI}_0+\mu T=\ell\bar E-h\mu/\ell\iff T=R_0/\mu-h/\ell$. Ejemplo: $\ell=2$, $\bar E=2$, $\mathrm{CI}_0=1$, $\mu=0{,}5$, $h=2$: $R_0=3$, $T_N=6$, $T=5$, quedan 0,5 de reservas, el dinero cae de 4 a 3,5 y el tipo se deprecia 0,25 por periodo.
+\item \emph{Cláusula de escape}: $\min_\pi(X-\pi)^2+\gamma\pi^2$ $\Rightarrow$ $\pi^{flex}=X/(1+\gamma)$; con $\pi^e=0$, aguanta si $x\le x_2$; con $\pi^e=\pi^{flex}$, $\pi^e=x/\gamma$ y devalúa si $x>x_1$; $x_1/x_2=\gamma/(1+\gamma)<1$.
+\item \emph{Condición de colapso}: $\partial I_F/\partial I=\frac{\partial I_F}{\partial W}\frac{\partial W}{\partial q}\frac{\partial q}{\partial I}=(1+\theta)(-B^*)\bigl(-\frac{1-m}{X}\bigr)$.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item 1970-2017: 151 bancarias, 236 cambiarias (máx.\ 20 en 1994). PIB 1998: Indonesia $-13{,}1$~\%. Argentina: 56.300 M\$ (2018), 20.000 M\$ (2025). Riksbank: 500~\% (1992).
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué el ataque llega antes de agotar las reservas?} Por no arbitraje: cuando $\tilde E=\bar E$; antes, si $h>0$.
+\item \textbf{¿Qué diferencia la 2.ª de la 1.ª?} Gobierno que optimiza y equilibrios múltiples: evitable e impredecible.
+\item \textbf{¿Funcionó subir tipos en Asia?} Cierra la depreciación y abre la quiebra de balances (\autor{Krugman}, \autor{Stiglitz}).
+\item \textbf{¿Pecado original o intolerancia a la deuda?} No poder endeudarse en moneda propia frente a crisis con poca deuda por la historia.
+\item \textbf{¿Puede haber crisis en una unión monetaria?} Cambiaria no; parada súbita y de deuda sí (TARGET, \autor{De Grauwe}).
+\item \textbf{¿Se pueden predecir las crisis?} Se ve la vulnerabilidad (reservas, sobrevaloración real, crédito), no el momento; si la alerta fuera fiable, los inversores se adelantarían.
+\item \textbf{¿Qué es el contagio puro?} Cambios de expectativas sin cambios de fundamentos: información imperfecta, rebaño, manchas solares.
+\item \textbf{¿Qué es la dominación fiscal y qué tiene que ver?} La política fiscal no se ajusta y la monetaria cede: la 1.ª generación es su versión con tipo fijo.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $E$ directo: ↑$E$ = depreciación. 1.ª: inevitable y predecible; 2.ª: evitable e impredecible.
+\item En la 1.ª, el ataque es en $T=R_0/\mu-h/\ell$, \emph{antes} de $T_N$; con $h=0$ coinciden.
+\item Purgatorio: entre $x_1$ y $x_2$; la paridad cae solo si se espera.
+\item Generaciones: término de \autor{Eichengreen}-\autor{Rose}-\autor{Wyplosz} (1995).
+\item Contagio $\neq$ choque común («monzón»).
+\item Crisis gemelas: \autor{Kaminsky}-\autor{Reinhart} (1999); los problemas bancarios suelen \emph{preceder} a la cambiaria.
+\item Pecado original: \autor{Eichengreen}-\autor{Hausmann} (1999); miedo a flotar: \autor{Calvo}-\autor{Reinhart} (2002); intolerancia a la deuda: \autor{Reinhart} et al.\ (2003).
+\item Regla de \autor{Greenspan}-\autor{Guidotti}: reservas $\geq$ deuda exterior a corto plazo (hasta un año).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

@@ -1,0 +1,51 @@
+% 3.B.20: el comercio mundial en % del PIB mundial, 1870-1973, con las 3 etapas
+% del tema sombreadas (patrón oro clásico hasta 1914; guerras y entreguerras,
+% 1914-1945; Bretton Woods, 1945-1973).
+% Datos: ../datos/comercio-mundial-1870-1973.csv. Dos series que no se empalman
+% (distinta fuente de PIB y de comercio): Klasing y Milionis (2014), basada en
+% Maddison, 1870-1949 (morado), y Penn World Table, 1950-1973 (morado
+% discontinuo). Valores marcados: 1913, 21,0 %; 1932, 8,0 %; 1950, 19,9 %;
+% 1973, 29,6 %.
+% Orden de capas: sombreados (1) → ejes (2) → líneas (3-4) → puntos y rótulos (5).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\cmdatos}{../datos/comercio-mundial-1870-1973.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=13cm, height=6cm, scale only axis,
+      xmin=1870, xmax=1975, xtick={1870,1880,...,1970},
+      ymin=0, ymax=34, ytick={0,5,...,30},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize}, label style={font=\small},
+      ylabel={\% del PIB mundial},
+      legend style={draw=none, font=\footnotesize, at={(0.01,0.02)}, anchor=south west},
+      legend cell align=left,
+      unbounded coords=jump,
+      dicapas]
+    % 1: las 3 etapas del tema
+    \capa{1}{\dicsombra[fill=tceedorado, fill opacity=0.12]{1870}{0}{1914}{34}}
+    \capa{1}{\dicsombra[fill=dicotro, fill opacity=0.14]{1914}{0}{1945}{34}}
+    \capa{1}{\dicsombra[fill=tceeazul, fill opacity=0.10]{1945}{0}{1973}{34}}
+    \capa{1}{\dicrotulo[anchor=north, font=\footnotesize\itshape, text=tceedorado!70!black, align=center]{(1892,33.6)}{patrón oro clásico}}
+    \capa{1}{\dicrotulo[anchor=north, font=\footnotesize\itshape, text=dicotro!70!black, align=center]{(1929.5,33.6)}{guerras y entreguerras}}
+    \capa{1}{\dicrotulo[anchor=north, font=\footnotesize\itshape, text=tceeazul, align=center]{(1959,33.6)}{Bretton Woods}}
+    % 3: comercio mundial 1870-1949 (Klasing y Milionis)
+    \capa{3}{\addplot[diclinea=tceemorado, line width=1.5pt] table[col sep=comma, comment chars={\#},
+        x=anio, y=km] {\cmdatos};
+      \addlegendentry{1870-1949 (\textsc{Klasing} y \textsc{Milionis}, a partir de \textsc{Maddison})}}
+    % 4: apertura mundial 1950-1973 (Penn World Table)
+    \capa{4}{\addplot[diclinea=tceemorado, dashed, line width=1.5pt] table[col sep=comma, comment chars={\#},
+        x=anio, y=pwt] {\cmdatos};
+      \addlegendentry{1950-1973 (Penn World Table)}}
+    % 5: puntos y rótulos
+    \capa{5}{\addplot[dicpuntos=tceemorado, forget plot] coordinates {(1913,20.98) (1932,8.02) (1950,19.87) (1973,29.57)};}
+    \capa{5}{\dicrotulo[anchor=south, font=\footnotesize, text=tceemorado]{(1913,21.6)}{1913: 21~\%}}
+    \capa{5}{\dicrotulo[anchor=north, font=\footnotesize, text=tceemorado]{(1932,7.3)}{1932: 8~\%}}
+    \capa{5}{\dicrotulo[anchor=north west, font=\footnotesize, text=tceemorado]{(1950.5,19.3)}{1950: 20~\%}}
+    \capa{5}{\dicrotulo[anchor=east, font=\footnotesize, text=tceemorado]{(1972.4,29.6)}{1973: 30~\%}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

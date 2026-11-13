@@ -1,0 +1,49 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Cronología del SEI desde 1971: eje vertical del tiempo; a la izquierda, plano
+% monetario y financiero (morado); a la derecha, plano comercial (azul).
+% Fechas comprobadas en las fuentes del tema (13/11/2026).
+\begin{tikzpicture}[tcee, y=-0.42cm,
+  izq/.style={font=\footnotesize, text=tceemorado, anchor=east, align=right, text width=6.6cm},
+  der/.style={font=\footnotesize, text=tceeazul, anchor=west, align=left, text width=6.6cm},
+  anio/.style={font=\footnotesize\bfseries, fill=tceesalvia, inner sep=1.5pt}]
+  \capa{1}{\draw[eje] (0,-1) -- (0,52);
+    \node[font=\small\bfseries, text=tceemorado] at (-3.8,-1.2) {Monetario y financiero};
+    \node[font=\small\bfseries, text=tceeazul] at (3.8,-1.2) {Comercial};}
+  \newcommand{\mon}[4]{\capa{#1}{\node[anio] at (0,#2) {#3}; \node[izq] at (-0.6,#2) {#4};}}
+  \newcommand{\com}[4]{\capa{#1}{\node[anio] at (0,#2) {#3}; \node[der] at (0.6,#2) {#4};}}
+  \mon{2}{0.5}{1971}{Fin de la convertibilidad (agosto); Acuerdo del Smithsonian (diciembre)}
+  \mon{2}{2.5}{1973}{Flotación de las grandes monedas; primera crisis del petróleo}
+  \com{2}{2.5}{1973}{Ronda de Tokio (hasta 1979)}
+  \mon{2}{4.5}{1974}{Comité de Supervisión Bancaria de Basilea}
+  \mon{2}{6.5}{1976}{Acuerdos de Jamaica (Segunda Enmienda, en vigor en 1978)}
+  \mon{2}{8.5}{1979}{Sistema Monetario Europeo; giro de \textsc{Volcker}}
+  \mon{3}{10.5}{1982}{Crisis de la deuda latinoamericana}
+  \mon{3}{12.5}{1985}{Acuerdo del Plaza}
+  \com{3}{14.5}{1986}{Ronda Uruguay (hasta 1994)}
+  \mon{3}{16.5}{1987}{Acuerdo del Louvre}
+  \mon{3}{18.5}{1989}{Plan \textsc{Brady}}
+  \com{3}{18.5}{1989}{Caída del muro de Berlín}
+  \mon{3}{20.5}{1992}{Crisis del SME (1992-1993)}
+  \mon{3}{22.5}{1994}{Crisis de México}
+  \com{3}{22.5}{1994}{TLCAN}
+  \com{3}{24.5}{1995}{Nace la OMC}
+  \mon{3}{26.5}{1997}{Crisis asiática; Rusia (1998)}
+  \mon{3}{28.5}{1999}{Nace el euro; G-20 de ministros}
+  \com{3}{30.5}{2001}{China entra en la OMC; Ronda de Doha}
+  \mon{3}{30.5}{2001}{Argentina (2001-2002)}
+  \mon{4}{32.5}{2008}{Quiebra de Lehman; G-20 de líderes}
+  \com{4}{32.5}{2008}{Gran colapso del comercio (2009)}
+  \mon{4}{34.5}{2009}{Cumbre de Londres; nace el FSB}
+  \mon{4}{36.5}{2010}{Basilea III; crisis del euro (2010-2012)}
+  \com{4}{38.5}{2018}{Guerra comercial Estados Unidos-China}
+  \com{4}{40.5}{2019}{Bloqueo del Órgano de Apelación}
+  \mon{4}{42.5}{2020}{COVID-19; \emph{swaps} de la Reserva Federal}
+  \mon{4}{44.5}{2021}{Asignación de DEG; impuesto mínimo (pilar 2)}
+  \mon{5}{46.5}{2022}{Invasión de Ucrania; reservas rusas congeladas}
+  \com{5}{48.5}{2025}{Aranceles «recíprocos» de Estados Unidos}
+  \mon{5}{50.5}{2026}{Guerra con Irán y cierre de Ormuz}
+  \com{5}{50.5}{2026}{Sentencia IEEPA; CM14 sin acuerdo; sección 301}
+\end{tikzpicture}
+\end{document}

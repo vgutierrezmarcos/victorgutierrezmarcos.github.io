@@ -212,3 +212,11 @@ Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 
 | Ficha de repaso | El tema no tiene ficha (`repaso/` no existe). |
 
 Compilación: `construir-tema.py 3B15 --solo pdf --no-publicar` correcto (33 páginas de tema, 6 de anexos, 7 de bibliografía; 30 minutos). `verificar-tema.py 3B15`: solo los errores esperables de PDF/HTML/Word publicados anteriores a la fuente.
+
+## Ficha de repaso (13/11/2026)
+
+- Nueva: `repaso/3B15-repaso.tex`, con la estructura de las fichas de esta rama (3B13, 3B28): esquema del cante con los minutos del tema, indicaciones de pizarra (en la ficha sí caben), introducción, apartados con la idea clave, definiciones y funciones clave en morado, conclusión, autores y fechas, datos clave, preguntas del tribunal y «Ojo en el test». Solo resume el tema.
+- `construir-repaso.py 3B15 --no-publicar`: exactamente 4 páginas, letra de 10 pt, última página ocupada al 94 %. Se revisaron las 4 páginas a ojo, sin huecos grandes ni títulos al pie. `verificar-tema.py 3B15`: ningún error de la ficha.
+- Gráficos (los del tema): tabla de eficacia de Mundell-Fleming, trilema, dilema de Rey, menú de regímenes, 6 series de monedas (Hong Kong, riyal, renminbi, córdoba, dólar neozelandés y real, libra egipcia), zonas objetivo, evolución de los regímenes, reservas mundiales y controles de capitales.
+- Dichos: los mismos que en el tema, integrados en la frase; ninguno nuevo.
+- El título corto de la cabecera pasa a «Regímenes cambiarios» por el mismo motivo (pie de la ficha); el tema no cambia.

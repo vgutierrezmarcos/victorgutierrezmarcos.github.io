@@ -1,0 +1,36 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Composición por monedas de las reservas de divisas asignadas (%), 1999-2026T2.
+% FMI, COFER (IMF.STA:COFER 7.0.1, 30/09/2026); ../datos/reservas-monedas.csv
+% (consulta 13/11/2026). Dólar 71,0 (1999) -> 56,7 (2026T2); euro 17,9 -> 20,6;
+% renminbi 2,1; otras 11,0. Áreas apiladas: dólar (azul marino), euro (azul
+% claro), yen, libra, renminbi (dorado) y resto (gris claro).
+% Capas: áreas -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/reservas-monedas.csv}\res
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=7cm, xmin=2000, xmax=2026.5, ymin=0, ymax=100,
+      xtick={2000,2004,...,2024}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={\% de las reservas asignadas}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, stack plots=y, area style, clip=false, dicapas,
+      unbounded coords=jump]
+    \capa{1}{
+      \addplot[on layer=dicbarras, fill=dicze, draw=dicze!70!black] table[x=anio, y=usd] {\res} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicexterna, draw=dicexterna!70!black] table[x=anio, y=eur] {\res} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicotroclaro, draw=dicotro] table[x=anio, y=jpy] {\res} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicotromasclaro, draw=dicotro] table[x=anio, y=gbp] {\res} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicprestamos, draw=dicprestamos!70!black] table[x=anio, y=cny] {\res} \closedcycle;
+      \addplot[on layer=dicbarras, fill=white, draw=dicotro] table[x=anio, y=otras] {\res} \closedcycle;
+    }
+    \capa{2}{
+      \dicrotulo[font=\footnotesize, text=white, anchor=west]{(2001,35)}{dólar: 71,0 $\to$ 56,7}
+      \dicrotulo[font=\footnotesize, anchor=west]{(2001,79)}{euro: 17,9 $\to$ 20,6}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2026.6,78)}{yen 5,0}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2026.6,83.6)}{libra 4,6}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2026.6,89.6)}{renminbi 2,1}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2026.6,96.5)}{otras 11,0}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

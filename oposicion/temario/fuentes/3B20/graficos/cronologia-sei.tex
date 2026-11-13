@@ -1,0 +1,71 @@
+% 3.B.20: cronología del sistema económico internacional, 1815-1976 (figura;
+% el «cronograma» que pide la ficha bretton-woods del canon, ampliado a todo el
+% tema). Eje del tiempo en 2 escalas: 0,06 cm por año de 1815 a 1914 y 0,17 cm
+% por año desde 1914 (lo que más se cuenta). Encima, el plano comercial; en la
+% banda central, los regímenes monetarios; debajo, los hitos monetarios.
+% Fechas comprobadas en el texto del tema.
+% Capas: eje y etapas (1) → regímenes (2) → siglo XIX (3) → entreguerras (4) →
+% Bretton Woods (5) → ruptura (6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    arriba/.style={anchor=south, align=center, inner sep=1pt, font=\scriptsize},
+    abajo/.style={anchor=north, align=center, inner sep=1pt, font=\scriptsize},
+    hito/.style={thin, tceegris}]
+  \newcommand{\x}[1]{ifthenelse(#1<1914,(#1-1815)*0.06,5.94+(#1-1914)*0.17)}
+  % \reg{desde}{hasta}{color}{texto}
+  \newcommand{\reg}[4]{\draw[draw=#3!80!black, fill=#3!22, rounded corners=1pt]
+      ({\x{#1}},0.45) rectangle ({\x{#2}},1.0);
+    \node[font=\scriptsize] at ({(\x{#1}+\x{#2})/2},0.725) {#4};}
+  % \arr{año}{alto}{texto}: hito comercial; \aba{año}{bajo}{texto}: hito monetario
+  \newcommand{\arr}[4][]{\draw[hito, #1] ({\x{#2}},1.0) -- ({\x{#2}},#3) node[arriba, #1] {#4};}
+  \newcommand{\aba}[4][]{\draw[hito, #1] ({\x{#2}},-0.45) -- ({\x{#2}},-#3) node[abajo, #1] {#4};}
+  % 1: eje del tiempo y rótulos de las 3 etapas
+  \capa{1}{\draw[eje] ({\x{1813}},0) -- ({\x{1977}},0);}
+  \capa{1}{\foreach \a in {1820,1840,1860,1880,1900,1914,1920,1930,1940,1950,1960,1970}
+      {\draw ({\x{\a}},0.08) -- ({\x{\a}},-0.08) node[below, font=\scriptsize, text=tceegris] {\a};}}
+  \capa{1}{\draw[line width=3pt, tceedorado] ({\x{1815}},4.3) -- ({\x{1914}},4.3) node[midway, above=1pt, font=\footnotesize\bfseries, text=tceedorado!75!black] {I. 1815-1914};}
+  \capa{1}{\draw[line width=3pt, tceegris] ({\x{1914}},4.3) -- ({\x{1944}},4.3) node[midway, above=1pt, font=\footnotesize\bfseries, text=tceegris] {II. 1914-1944};}
+  \capa{1}{\draw[line width=3pt, tceeazul] ({\x{1944}},4.3) -- ({\x{1973}},4.3) node[midway, above=1pt, font=\footnotesize\bfseries, text=tceeazul] {III. 1944-1973};}
+  % 2: los regímenes monetarios
+  \capa{2}{\reg{1815}{1871}{tceegris}{bimetalismo y plata}}
+  \capa{2}{\reg{1871}{1914}{tceedorado}{patrón oro clásico}}
+  \capa{2}{\reg{1914}{1925}{tceerojo}{flotación}}
+  \capa{2}{\reg{1925}{1931}{tceenaranja}{\parbox{0.9cm}{\centering\tiny cambios-\\oro}}}
+  \capa{2}{\reg{1931}{1944}{tceerojo}{bloques y controles}}
+  \capa{2}{\reg{1944}{1971}{tceeazul}{Bretton Woods}}
+  \capa{2}{\reg{1971}{1973}{tceemorado}{}}
+  \capa{2}{\node[anchor=west, font=\scriptsize, text=tceegris, align=left] at ({\x{1974}},0.72) {régimen\\monetario};}
+  % 3: siglo XIX
+  \capa{3}{\arr{1815}{1.4}{1815\\Leyes de\\Granos}}
+  \capa{3}{\arr{1846}{2.5}{1846\\derogación}}
+  \capa{3}{\arr{1860}{1.4}{1860\\\textsc{Cobden}-\\\textsc{Chevalier}}}
+  \capa{3}{\arr{1879}{2.5}{1879\\arancel de\\\textsc{Bismarck}}}
+  \capa{3}{\aba{1821}{0.6}{1821\\libra\\convertible}}
+  \capa{3}{\aba{1844}{1.6}{1844\\Ley de\\\textsc{Peel}}}
+  \capa{3}{\aba{1872}{0.6}{1871-1873\\Alemania\\al oro}}
+  \capa{3}{\aba{1900}{1.6}{1879-1900\\EE.\,UU.\\al oro}}
+  % 4: guerras y entreguerras
+  \capa{4}{\arr{1919}{1.4}{1919\\Versalles}}
+  \capa{4}{\arr{1930}{2.5}{1930\\\textsc{Smoot}-\\\textsc{Hawley}}}
+  \capa{4}{\arr{1934}{1.4}{1934\\RTAA}}
+  \capa{4}{\aba{1922}{0.6}{1922\\Génova}}
+  \capa{4}{\aba{1925}{1.6}{1925\\la libra\\vuelve}}
+  \capa{4}{\aba{1931}{0.6}{1931\\la libra\\sale}}
+  \capa{4}{\aba{1936}{1.6}{1933-1936\\EE.\,UU. y el\\bloque oro}}
+  % 5: Bretton Woods
+  \capa{5}{\arr{1944}{2.5}{1944\\Bretton\\Woods}}
+  \capa{5}{\arr{1947}{1.4}{1947\\GATT}}
+  \capa{5}{\arr{1957}{2.5}{1957\\Tratados\\de Roma}}
+  \capa{5}{\arr{1965}{1.4}{1964-1967\\Ronda\\\textsc{Kennedy}}}
+  \capa{5}{\aba{1950}{0.6}{1950\\UEP}}
+  \capa{5}{\aba{1958}{2.6}{1958\\convertibilidad\\europea}}
+  \capa{5}{\aba{1961}{0.6}{1961\\\emph{pool}\\del oro}}
+  \capa{5}{\aba{1968}{1.6}{1968-1969\\doble mercado\\y DEG}}
+  % 6: la ruptura
+  \capa{6}{\aba[tceemorado]{1971}{0.6}{1971\\\textsc{Nixon} y\\Smithsonian}}
+  \capa{6}{\arr[tceemorado]{1973}{2.5}{1973\\flotación}}
+\end{tikzpicture}
+\end{document}

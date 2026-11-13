@@ -1,0 +1,34 @@
+% Estructura de gobierno del FMI: Junta de Gobernadores, comités ministeriales,
+% Directorio Ejecutivo, Gerencia y personal, y la Oficina de Evaluación
+% Independiente. Sustituye a las imágenes 1 y 2 del tema antiguo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    organo/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,
+      align=center,text width=5.2cm,inner sep=4pt,font=\footnotesize},
+    asesor/.style={draw=tceeazul,thick,fill=tceeazul!8,rounded corners=2pt,
+      align=center,text width=4.3cm,inner sep=4pt,font=\footnotesize},
+    control/.style={draw=tceedorado,thick,fill=tceedorado!10,rounded corners=2pt,
+      align=center,text width=4.3cm,inner sep=4pt,font=\footnotesize},
+    rel/.style={->,thick,tceegris}]
+  % 1: los 3 niveles de decisión
+  \capa{1}{\node[organo] (junta) at (0,0) {\textbf{Junta de Gobernadores}\\191 gobernadores (ministros o gobernadores de banco central)\\aumentos de cuota, DEG, miembros, enmiendas (85~\%)};}
+  \capa{1}{\node[organo] (directorio) at (0,-2.4) {\textbf{Directorio Ejecutivo}\\25 directores ejecutivos\\programas, supervisión, políticas (consenso)};}
+  \capa{1}{\node[organo] (gerencia) at (0,-4.8) {\textbf{Director gerente}\\primer subdirector y 3 subdirectores\\\textbf{personal}: unos 3.100, departamentos regionales y funcionales};}
+  \capa{1}{\draw[rel] (junta) -- node[right,font=\scriptsize] {delega} (directorio);}
+  \capa{1}{\draw[rel] (directorio) -- node[right,font=\scriptsize] {elige y preside} (gerencia);}
+  % 2: los comités que asesoran
+  \capa{2}{\node[asesor] (cmfi) at (-5.4,0.45) {\textbf{CMFI}\\25 gobernadores; orientación estratégica (primavera y otoño)};}
+  \capa{2}{\node[asesor] (desarrollo) at (-5.4,-1.25) {\textbf{Comité para el Desarrollo}\\conjunto con el Banco Mundial};}
+  \capa{2}{\draw[rel,dashed] (cmfi.east) -- (junta.west);}
+  \capa{2}{\draw[rel,dashed] (desarrollo.east) -- ++(0.35,0) |- (junta.west);}
+  % 3: el G-20 y la evaluación independiente
+  \capa{3}{\node[asesor] (g20) at (5.4,0.45) {\textbf{G-20 y G-7}\\no son órganos del FMI, pero impulsan sus reformas};}
+  \capa{3}{\draw[rel,dashed] (g20.west) -- (junta.east);}
+  \capa{3}{\node[control] (oei) at (5.4,-2.4) {\textbf{Oficina de Evaluación Independiente}\\evalúa al Fondo e informa al Directorio};}
+  \capa{3}{\draw[rel,dashed] (oei.west) -- (directorio.east);}
+\end{tikzpicture}
+\end{document}

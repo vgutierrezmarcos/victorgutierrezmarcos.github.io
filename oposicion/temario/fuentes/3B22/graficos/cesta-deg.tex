@@ -1,0 +1,53 @@
+% Ponderaciones de las monedas en la cesta del DEG en las revisiones de 2015
+% (en vigor desde el 1/10/2016) y de 2022 (desde el 1/08/2022)
+% (FMI; ../datos/cesta-deg.csv). Barras agrupadas: 2015 claro, 2022 oscuro.
+% Capas: barras -> ejes -> etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{deg2015}{tceeazul!35}
+\colorlet{deg2022}{tceeazul!85}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/cesta-deg.csv}\cesta
+\pgfplotsset{ejesdeg/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesdeg/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13.5cm, height=6.5cm, area legend,
+      ybar=2pt, bar width=15pt,
+      ymin=0, ymax=50, xmin=-0.6, xmax=4.6,
+      xtick={0,...,4}, xticklabels from table={\cesta}{moneda},
+      xticklabel style={font=\footnotesize},
+      ytick={0,10,...,50}, yticklabel style={font=\footnotesize},
+      ylabel={Ponderación (\%)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false,
+      legend style={at={(0.98,0.98)}, anchor=north east, draw=none, fill=none,
+        font=\footnotesize},
+      legend cell align=left,
+      ejesdeg, dicapas,
+      nodes near coords={\pgfmathprintnumber[fixed,precision=2,use comma]{\pgfplotspointmeta}},
+      nodes near coords style={font=\tiny, anchor=south},
+    ]
+    % 1: barras de 2015 y de 2022 (con sus valores)
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, dicbarra=deg2015] table[x expr=\coordindex, y=p2015] {\cesta};
+      \addplot[on layer=dicbarras, forget plot, dicbarra=deg2022] table[x expr=\coordindex, y=p2022] {\cesta};
+    }
+    % 2: ejes (ver ejesdeg)
+    % 3: leyenda
+    \capa{3}{
+      \addlegendimage{area legend, dicbarra=deg2015}
+      \addlegendentry{Revisión de 2015}
+      \addlegendimage{area legend, dicbarra=deg2022}
+      \addlegendentry{Revisión de 2022}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

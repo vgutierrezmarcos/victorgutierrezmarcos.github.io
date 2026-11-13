@@ -186,6 +186,13 @@ Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 
 - **D11. Dichos** (13/11/2026): se quedan 2 de los 3, integrados; fuera «ver para creer» (repetido en el 3.B.28 y el 3.A.1). Alternativa: quedarse solo con el refrán del enganche. **Aplicada: 2 integrados (recomendada).**
 - **D12. Acemoglu, Johnson y Robinson** (13/11/2026): frase nueva en I.2 con su nota de Nobel, sin cita de la obra (está en el 3.B.28). Alternativa: no mencionarlos aquí. **Aplicada: mencionarlos (recomendada, revisión transversal).**
 
+## Ficha de repaso (13/11/2026)
+
+- `repaso/3B29-repaso.tex`, nueva, con el modelo de las fichas de esta rama (3B27, 3B13, 3B28). `construir-repaso.py 3B29 --no-publicar`: **4 páginas, 10,5 pt; última página al 98 %**; `verificar-tema.py 3B29` sin errores de la ficha (solo los 3 de los formatos publicados anteriores a la fuente).
+- Contenido, todo sacado del tema: esquema con minutos y plan de pizarra; introducción; I con la brecha y las 2 brechas (en morado), el intertemporal (gráfico), la paradoja de Lucas y las fuentes (gráfico de flujos); II con la dinámica de la deuda y el saldo estabilizador en morado (gráfico), el impago, el sobreendeudamiento (curva de Laffer de la deuda), las 3 crisis y el marco institucional; III con la AOD, la donación equivalente, la evolución (gráfico de la AOD/RNB) y el debate sobre la eficacia; conclusión; tablas de fuentes, umbrales del LIC DSF y la PPME, respuestas a las crisis y concesionalidad; definiciones; datos clave; autores y fechas; 11 preguntas; «Ojo en el test».
+- Dichos: los 2 del tema, integrados («al que tiene, se le dará» y «quien presta, no cobra…»). Las indicaciones de pizarra van solo en la ficha (bloque «Pizarra» bajo el esquema del cante), no en el tema.
+- Común (no se toca): con un título largo, el pie de página de la ficha pisa el «© 2026 Víctor Gutiérrez Marcos» (se ve en las 4 páginas); es de `tcee-repaso.sty`, para quien mantenga la plantilla.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche e idea final**: tras leer el título, el refrán «Dale un pez a un hombre…» y Sevilla 2025 (4 billones al año de brecha, la AOD −23,1 %, 1,4 billones de servicio de la deuda) y la pregunta: «¿por qué el capital que necesitan los países pobres no llega, llega caro o llega regalado y no sirve?». La idea final la responde en 3 partes (no llega: rinde menos de lo que parece y prestar es arriesgado; llega caro: la deuda se come lo que se pesca; regalado: el pez no enseña a pescar) y cierra con «la mejor financiación del desarrollo es la que enseña a pescar». Introducción y conclusión en `modo: guion`, sin pizarra.

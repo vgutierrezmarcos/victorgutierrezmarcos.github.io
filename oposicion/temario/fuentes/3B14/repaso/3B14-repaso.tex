@@ -1,0 +1,239 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Determinación del tipo de cambio]{3.B.14}{Teorías de la determinación del tipo de cambio.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «el hombre propone y Dios dispone»}{2,5}
+\apartadocante{I. Teorías tradicionales: flujos y paridades}{6,5}
+\subcante{1. Modelo de la balanza de pagos}{1}
+\subcante{2. PPA y \autor{Balassa}-\autor{Samuelson}}{3,5}
+\subcante{3. Paridades de intereses (PCI y PNCI)}{1,5}
+\subcante{4. IS-LM-BP}{0,5}
+\apartadocante{II. Enfoque moderno: modelos de activos}{12,5}
+\subcante{Presentación}{0,5}
+\subcante{1. Monetario: precios flexibles y \autor{Dornbusch}}{6}
+\subcante{2. Cartera (\autor{Branson})}{3,5}
+\subcante{3. Contrastación: \autor{Mussa}, \autor{Meese} y \autor{Rogoff}}{2,5}
+\apartadocante{III. Desarrollos recientes}{7,5}
+\subcante{1. \autor{Taylor}, margen \emph{forward}, tipo real de equilibrio}{3,5}
+\subcante{2. NOEM, flujo de órdenes, intermediarios}{4}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: arriba a la izq., la convención ($E$ directo, ↑$E$ = depreciación). Recuadradas: \autor{Balassa}-\autor{Samuelson}, la ecuación del enfoque monetario y la condición de sobrerreacción, hasta el final. Paridades: el cuadro de las 4 paridades. \autor{Dornbusch}: los 2 paneles de los mercados de activos y las trayectorias. Cartera: solo $MM$ y $B^*B^*$ (por \autor{Walras}, la tercera no añade nada). Desarrollos recientes: casi todo de palabra.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «el hombre propone y Dios dispone»: los economistas proponen modelos y el mercado dispone otra cosa. El euro: \dato{1,1789 \$ (4/1/1999) $\to$ 0,8252 (26/10/2000) $\to$ 1,5990 (15/7/2008) $\to$ 0,9565 (28/9/2022)}{BCE}. Ni precios, ni dinero, ni producción se movieron así.
+\item \textbf{Relevancia}: el \concepto{tipo de cambio}, precio de una moneda en otra, se forma en el mayor mercado del mundo: \dato{9,5 billones de \$ al día}{BPI, abr.\ 2025}; el comercio de un año en < 4 días \vertema{3.B.13}. Canal de la política monetaria \vertema{3.A.37}; elección del régimen e intervención \vertema{3.B.15}; ¿apreciación real = pérdida de competitividad? Prueba más dura de la macro abierta.
+\item \textbf{Contextualización}: Escuela de Salamanca (s.\ XVI); PPA, \autor{Cassel} (1918); paridad de intereses, \autor{Keynes} (1923). Bretton Woods: teorías \emph{de flujos} \vertema{3.B.20}; desde 1973, precio relativo de 2 \emph{activos}: monetarios, \autor{Dornbusch} (1976), cartera. \autor{Mussa} (1979) y \autor{Meese}-\autor{Rogoff} (1983): ningún modelo bate al paseo aleatorio $\Rightarrow$ \emph{desconexión}. Respuestas: microfundamentos y nuevas líneas.
+\item \textbf{Problemática}: ¿de qué depende a largo plazo? ¿Y a corto? ¿Por qué más volátil que sus fundamentos? ¿Se puede predecir? ¿Por qué se aleja tanto y tanto tiempo de la PPA?
+\item \textbf{Estructura}: tipos \emph{flexibles}; orden histórico, cada teoría nace de los fallos de la anterior. \hyperref[rep:I]{I}, flujos y paridades; \hyperref[rep:II]{II}, activos y contraste; \hyperref[rep:III]{III}, desarrollos recientes.
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{I. Teorías tradicionales: flujos y paridades\label{rep:I}}
+\begin{ideaclave}
+Hasta 1973, el tipo de cambio se explica por la igualdad de unos flujos o por una condición de arbitraje. Son piezas de los modelos posteriores, pero ninguna basta: los flujos olvidan los saldos de activos, y la PPA solo se cumple a largo plazo.
+\end{ideaclave}
+
+\sub{I.1. Modelo de la balanza de pagos\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Demanda de divisas}: importaciones + salidas de capital (decreciente en $E$). \concepto{Oferta}: exportaciones + entradas (creciente si \autor{Marshall}-\autor{Lerner} \vertema{3.B.12}).
+\item \concepto{Tipo de vaciado}: $X-M=\text{salidas}-\text{entradas}$ ($\mathrm{CC}=\mathrm{CF}$). En logaritmos: $e=\beta_0+\beta_1(p-p^*)+\beta_2(y-y^*)+\beta_3(i-i^*)+\beta_4(z-z^*)$, $\beta_1,\beta_2>0$, $\beta_3,\beta_4<0$.
+\item Se deprecia con \emph{más inflación}, \emph{más crecimiento}, \emph{menos tipo de interés}. Con tipo fijo, el banco central cubre la diferencia; \concepto{tipo sombra} y crisis \vertema{3.B.17}.
+\item \emph{Valoración}: trata el capital como flujos permanentes, cuando son ajustes de \emph{stocks}; sin relación fuerte con la CC (\autor{Mussa}, 1984).
+\end{itemize}
+\graficorepaso[0.62\linewidth]{oferta-demanda-divisas}{Mercado de divisas: tipo flexible y tipo fijo}
+
+\sub{I.2. PPA y \autor{Balassa}-\autor{Samuelson}\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{PPA}: la misma cesta cuesta lo mismo en todas partes. \emph{Supuestos}: libre comercio, sin transporte, competencia perfecta, bienes homogéneos y comerciables, misma cesta. \emph{Ley del precio único} $P_k=EP^*_k$. \emph{Absoluta}: $E=P/P^*$, $q=1$. \emph{Relativa}:
+  \begin{formula}
+  \[\gamma_E=\pi-\pi^*\]
+  \end{formula}
+\item \emph{Evidencia}: a corto no (el nominal se mueve 3 veces más que los precios; el real, casi igual que el nominal); a largo, la relativa, despacio: \textbf{vida media de 3 a 5 años} (\autor{Rogoff}, 1996): hay que dar tiempo al tiempo. Hiperinflaciones: sí. \concepto{Paradoja de la PPA}: ¿tan volátil y tan lento? No linealidad (costes de transporte; \autor{Heckscher}, 1916; \autor{Taylor}-\autor{Peel}-\autor{Sarno}, 2001). Ancla de largo plazo.
+\item \emph{Big Mac} (jul.\ 2026): euro \dato{+13,8~\% sobrevalorado}{The Economist}; las monedas pobres salen «baratas».
+\item \textbf{\autor{Balassa}-\autor{Samuelson}} (1964; \autor{Harrod}, 1933): 2 sectores ($T$, $N$), trabajo móvil entre sectores, $W=P_TA_T=P_NA_N$ $\Rightarrow$ $p_N-p_T=a_T-a_N$:
+  \funcionclave{q=-\,\omega_N\big[(a_T-a_N)-(a^{*}_T-a^{*}_N)\big]}
+  Más productividad relativa en comerciables $\Rightarrow$ ↑salarios $\Rightarrow$ ↑$P_N$ $\Rightarrow$ \textbf{apreciación real}. Efecto Penn. Con tipo fijo, más inflación sin perder competitividad \vertema{3.B.16} \vertema{4.A.22}. Extensiones: capital, demanda (gasto público, servicios). Evidencia: corte transversal sí; series, más débil (\autor{Engel}, 1999).
+\end{itemize}
+\graficorepaso[\linewidth]{balassa-samuelson}{\autor{Balassa}-\autor{Samuelson}: de la productividad a la apreciación real}
+\graficorepaso[0.72\linewidth]{big-mac}{Índice Big Mac, jul.\ 2026 (\%; +, sobrevalorada)}
+
+\sub{I.3. Paridades de intereses\label{rep:I.3}}
+\begin{itemize}
+\item \autor{Keynes} (1923). \emph{Supuestos}: movilidad perfecta (PCI); + sustituibilidad perfecta, neutralidad al riesgo (PNCI).
+\begin{formula}
+\[\text{PCI: }i-i^*\approx\frac{F_t^{t+1}-E_t}{E_t}\qquad\text{PNCI: }i-i^*\approx\gamma E^e\]
+\end{formula}
+\item ↑$i$ con $E^e$ dado $\Rightarrow$ entra capital, aprecia hoy. Cuadro de las paridades: PCI, PNCI, \autor{Fisher} internacional, PPA relativa esperada: si todas, $F=E^e$ y $r=r^*$. Con prima: $i-i^*\approx\gamma E^e+\rho$ (cartera).
+\item \emph{Evidencia}: PCI casi exacta hasta 2008, después base de los \emph{swaps} (\autor{Du}-\autor{Tepper}-\autor{Verdelhan}, 2018); PNCI falla a corto (paradoja del margen \emph{forward}). Pieza de todos los modelos de activos.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{paridades}{El cuadro de las paridades}
+
+\sub{I.4. IS-LM-BP\label{rep:I.4}}
+\begin{itemize}
+\item \autor{Mundell} (1963), \autor{Fleming} (1962), sobre \autor{Meade} (1951) \vertema{3.A.32}: con movilidad perfecta y expectativas estáticas, $i=i^*$; expansión monetaria deprecia; fiscal aprecia sin mover la renta. Teoría de flujos, sin \emph{stocks} ni expectativas.
+\end{itemize}
+
+% ==========================================================================
+\bloque[12,5]{II. Enfoque moderno: modelos de activos\label{rep:II}}
+\begin{ideaclave}
+El tipo de cambio como precio relativo de 2 activos explica su ancla de largo plazo (dinero y precios) y su volatilidad (expectativas y rigidez de precios). Pero a corto plazo ningún modelo bate al paseo aleatorio.
+\end{ideaclave}
+\begin{itemize}
+\item Todos con \emph{movilidad perfecta}; se distinguen por la \emph{sustituibilidad}: perfecta (monetario, PNCI) o imperfecta (cartera, prima de riesgo). Del enfoque monetario de la balanza con tipo fijo \vertema{3.B.12} al del tipo de cambio con flexible. Cada modelo levanta un supuesto: \autor{Dornbusch}, precios flexibles; \autor{Branson}, sustituibilidad.
+\end{itemize}
+
+\sub{II.1.1. Monetario: precios flexibles\label{rep:II.1}}
+\begin{itemize}
+\item \autor{Frenkel} (1976), \autor{Mussa} (1976), \autor{Bilson} (1978): PPA + teoría cuantitativa (la ecuación de cambio $MV\equiv PY$ es una identidad; con supuestos causales, teoría: \autor{Fisher}). \emph{Supuestos}: PPA continua, PNCI, $m-p=ky-hi$ igual en los 2 países, $m$ e $y$ exógenas.
+  \funcionclave{e=(m-m^*)-k\,(y-y^*)+h\,(i-i^*)}
+\item Como activo: $e_t$ = valor descontado de los fundamentos esperados: lo mueven las \emph{noticias}.
+\item \emph{Implicaciones}: ↑$m$ relativo deprecia uno a uno; ↑$y$ relativo aprecia; ↑$i$ relativo \textbf{deprecia} (más inflación esperada): contra la intuición keynesiana.
+\item \emph{Evidencia}: hiperinflaciones sí; entre grandes monedas, no; \autor{Meese}-\autor{Rogoff}; a varios años algo (\autor{Mark}, 1995). \emph{Valoración}: ancla de largo, pero el real no se mueve y en los datos sí.
+\end{itemize}
+\graficorepaso[0.75\linewidth]{monetario-flexible}{↑ permanente del crecimiento del dinero en $t_0$}
+
+\sub{II.1.2. Precios rígidos: \autor{Dornbusch} (1976)\label{rep:dornbusch}}
+\begin{itemize}
+\item \emph{Idea}: precios de bienes lentos, de activos instantáneos + expectativas racionales $\Rightarrow$ \concepto{sobrerreacción} (\emph{overshooting}) sin irracionalidad.
+\item \emph{Supuestos}: país pequeño, $\bar y$, PNCI, precios rígidos a corto (PPA a largo), expectativas regresivas $\dot e^{\,e}=\theta(\bar e-e)$ (racionales con el $\theta$ adecuado).
+\item \emph{Desarrollo}: largo plazo neutral; activos: $e=\bar e-\frac{1}{h\theta}(p-\bar p)$. Expansión permanente no anticipada, $p$ fijo en el impacto:
+  \funcionclave{\frac{de}{dm}=1+\frac{1}{h\,\theta}>1}
+  ↓$i$ (efecto liquidez) $\Rightarrow$ $E_1$ por encima de $E_2$ ($A\to B$); suben los precios, $i$ vuelve, se aprecia hasta $E_2$ ($C$).
+\end{itemize}
+\graficorepaso[0.62\linewidth]{dornbusch-mercados}{Mercados de activos: PNCI (arriba) y dinero (abajo)}
+\begin{itemize}
+\item \emph{Implicaciones}: volatilidad coherente con los fundamentos; mayor si ↓$h$ y ↓$\theta$; la política monetaria mueve el tipo \emph{real} a corto. Anunciada: salta menos, sigue depreciándose y luego se aprecia (\autor{Wilson}, 1979).
+\item \emph{Extensiones}: \autor{Frankel} (1979), diferencial de intereses \emph{reales}: ↑$i$ que no refleja inflación aprecia; producción variable; NOEM: sí con precios en la moneda del comprador (\autor{Betts}-\autor{Devereux}, 2000).
+\item \emph{Evidencia}: el real más volátil al flotar (\autor{Mussa}, 1986); \concepto{sobrerreacción retardada} 2-3 años (\autor{Eichenbaum}-\autor{Evans}, 1995). \emph{Valoración}: de los artículos más influyentes (\autor{Rogoff}, 2002); predice tan mal como los demás.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{dornbusch-trayectorias}{Trayectorias tras ↑$m$ permanente y no anticipado en $t_0$}
+\begin{itemize}
+\item \emph{Diagrama de fases} (anexo del tema): $\dot e=0$ vertical en $p=\bar p$; $\dot p=0$ más inclinada que 45°; con $\theta$ racional, la curva de los activos es la \concepto{senda de silla}: $\theta=\frac{\psi}{2}(\nu+\frac{b}{h})+\sqrt{\frac{\psi^2}{4}(\nu+\frac{b}{h})^2+\frac{\psi\nu}{h}}$; ↑$\psi$ $\Rightarrow$ ↑$\theta$ $\Rightarrow$ menos sobrerreacción.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{dornbusch-fases}{Fases: de $A$ a $B$ (salto) y por la senda de silla a $C$}
+
+\sub{II.2. Cartera (\autor{Branson})\label{rep:II.2}}
+\begin{itemize}
+\item \autor{Tobin} (1958) en economía abierta; \autor{Branson} (1977), \autor{Branson}-\autor{Henderson} (1985). \emph{Supuestos}: $M$, $B$, $B^*$; sustituibilidad imperfecta; demandas como parte de la \emph{riqueza} $W=M+B+EB^*$; a corto, precios y saldos dados, expectativas estáticas.
+\item $i=i^*+\gamma E^e+\rho$, $\rho$ creciente con la oferta relativa de activos nacionales. Plano $(i,E)$: $MM$ creciente, $BB$ y $B^*B^*$ decrecientes ($B^*B^*$, menos inclinada).
+\item \emph{Implicaciones}: compra de bonos nacionales: ↓$i$, deprecia; de extranjeros: deprecia más; \textbf{intervención esterilizada funciona} \vertema{3.B.15}; dinámica con la CC y la riqueza (sobrerreacción sin precios rígidos); largo plazo $XN(q)=-i^*EB^*$.
+\item \emph{Evidencia}: la prima prevista no aparece (\autor{Frankel}, 1982); canal de cartera en la intervención (\autor{Dominguez}-\autor{Frankel}, 1993). \emph{Valoración}: rico en canales; sin optimización, expectativas estáticas, saldos difíciles de medir.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{branson}{Cartera: equilibrio y compras de bonos nacionales ($B$) y extranjeros ($C$)}
+
+\sub{II.3. Contrastación empírica\label{rep:II.3}}
+\begin{itemize}
+\item \textbf{Hechos de \autor{Mussa}} (1979): corto plazo: paseo aleatorio; contado y plazo juntos; el real se mueve como el nominal; sobrerreacción. Largo: PPA relativa; dinero solo con crecimiento monetario alto; sin relación con la CC.
+\item \textbf{\autor{Meese}-\autor{Rogoff}} (1983): \emph{fuera de la muestra}, \emph{frente a un paseo aleatorio}, \emph{con los fundamentos observados}: a 1, 6 y 12 meses ningún modelo gana: fallo de especificación. \concepto{Paradoja de la desconexión} (\autor{Obstfeld}-\autor{Rogoff}, 2000).
+\item \emph{Caos determinista}: otra lectura de lo aparentemente aleatorio (\autor{Lorenz}, 1963); en los tipos de cambio, las no linealidades son sobre todo volatilidad que cambia en el tiempo (\autor{Hsieh}, 1989).
+\item ¿Malos modelos? \autor{Engel}-\autor{West} (2005): con fundamentos con raíz unitaria y descuento próximo a 1, casi paseo aleatorio \emph{aunque el modelo sea correcto}; \autor{Rossi} (2013): éxitos parciales.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7,5]{III. Desarrollos recientes\label{rep:III}}
+\begin{ideaclave}
+La política monetaria como regla, la microestructura y los intermediarios que no pueden asumir todo el riesgo explican por qué una inflación inesperada aprecia, por qué el \emph{forward} predice mal y por qué el tipo se desconecta. Se entiende mejor por qué es imprevisible, pero sigue sin poder predecirse.
+\end{ideaclave}
+\begin{itemize}
+\item 2 reacciones a \autor{Meese}-\autor{Rogoff}: mejorar los modelos estructurales o \concepto{análisis técnico} (\emph{chartistas} frente a \emph{fundamentalistas}) \vertema{3.B.23}.
+\end{itemize}
+
+\sub{III.1. Nuevas líneas teóricas\label{rep:III.1}}
+\begin{itemize}
+\item \textbf{Regla de \autor{Taylor}}: \concepto{paradoja de la apreciación}: inflación inesperada \emph{aprecia} con objetivo de inflación (\autor{Clarida}-\autor{Waldman}, 2008). Política endógena, principio de \autor{Taylor} \vertema{3.A.36}:
+  \begin{formula}
+  \[i_t-i^*_t=\phi_\pi(\pi_t-\pi^*_t)+\phi_x(x_t-x^*_t)+\varepsilon_t,\ \ \phi_\pi>1\]
+  \end{formula}
+  Más inflación anuncia más tipos $\Rightarrow$ por la PNCI, aprecia hoy; depende de la credibilidad. Bate al paseo aleatorio a 1 mes (\autor{Molodtsova}-\autor{Papell}, 2009), no siempre.
+\item \textbf{Margen \emph{forward}}: con PCI, PNCI y expectativas racionales, en $\Delta e_{t+1}=\beta_0+\beta_1(f_t-e_t)+\varepsilon_{t+1}$ (\autor{Fama}, 1984) debería salir $\beta_1=1$; sale \textbf{negativa} (media $-0{,}88$; \autor{Froot}-\autor{Thaler}, 1990): gana el \emph{carry trade}. Salidas: prima de riesgo variable, \emph{peso problem}, expectativas heterogéneas (\autor{De Grauwe}-\autor{Grimaldi}, 2006).
+\item \textbf{Tipo real de equilibrio}: a largo, $S-I(r^*)=XN(q)$ (fiscal expansiva o arancel aprecian). Métodos: FEER (\autor{Williamson}, 1983), BEER (\autor{Clark}-\autor{MacDonald}, 1999), EBA (FMI, 2013). FMI 2026: España, China y Alemania más fuertes que sus fundamentos; EE.\,UU.\ más débil \vertema{4.A.21}. Orientan, no predicen.
+\end{itemize}
+\graficorepaso[0.8\linewidth]{paradoja-apreciacion}{Inflación inesperada: dinero exógeno frente a regla de \autor{Taylor}}
+
+\begin{itemize}
+\item \textbf{Teorías de las expectativas} (anexo del tema): \emph{noticias} (\autor{Mussa}, 1976; \autor{Frenkel}, 1981): solo la información nueva mueve el tipo; \emph{burbujas racionales} (\autor{Blanchard}-\autor{Watson}, 1982): $\mathbb{E}_t[b_{t+1}]=\frac{1+h}{h}b_t$, crece más si puede estallar; \emph{heterogéneas}: chartistas y fundamentalistas (\autor{Frankel}-\autor{Froot}, 1990); \emph{chivo expiatorio} (\autor{Bacchetta}-\autor{van Wincoop}, 2004): se culpa a un fundamento visible de lo que hacen otros.
+\end{itemize}
+
+\sub{III.2. Fundamentación microeconómica\label{rep:III.2}}
+\begin{itemize}
+\item \textbf{NOEM}: \emph{Redux} (\autor{Obstfeld}-\autor{Rogoff}, 1995); base neokeynesiana de \autor{Woodford} (2003); SIGMA (Fed), GEM (FMI). \autor{Corsetti}-\autor{Pesenti} (2009): $E=\mu/\mu^*$; con \emph{PCP}, sin sobrerreacción; con \emph{LCP}, vuelve \autor{Dornbusch}. Facturación en dólares (\autor{Gopinath}, 2020).
+\item \textbf{Flujo de órdenes} (\autor{Evans}-\autor{Lyons}, 2002): información privada dispersa; $\Delta e_t=\beta_0+\beta_1\Delta(i-i^*)+\beta_2\mathrm{FO}_t$: explica > 60~\% (marco) y > 40~\% (yen) diario; predice a 1 día-1 mes. ¿Qué mueve el flujo?
+\item \textbf{Intermediarios} (\autor{Gabaix}-\autor{Maggiori}, 2015; \autor{Itskhoki}-\autor{Mukhin}, 2021): balance limitado; $i_t-i^*_t=\mathbb{E}_t[e_{t+1}]-e_t+\rho_t$ reproduce desconexión, volatilidad, real como nominal y paradoja \emph{forward}; la intervención funciona. \emph{Reconexión} desde 2008 (\autor{Lilley} et al., 2022).
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: teorías complementarias, cada una para un horizonte. A largo, fundamentos: dinero e inflación (PPA relativa), renta, productividad (\autor{Balassa}-\autor{Samuelson}); ↑$i$ deprecia si es inflación esperada y aprecia si es política restrictiva (\autor{Frankel}). A corto, expectativas, noticias, prima y flujo de órdenes; volatilidad coherente con los fundamentos (\autor{Dornbusch}). \autor{Edgeworth}: las agujas del reloj.
+\item \textbf{Relevancia}: transmisión monetaria; la intervención esterilizada solo si no hay sustituibilidad perfecta; apreciación real $\neq$ pérdida de competitividad; el euro lejos de su PPA durante años.
+\item \textbf{Extensiones}: \vertema{3.B.13}, \vertema{3.B.15}, \vertema{3.B.16}, \vertema{3.B.17}, \vertema{3.B.19}, \vertema{3.B.22}.
+\item \textbf{Opinión}: que no predigan mañana no los hace inútiles: dicen hacia dónde tiende y por qué se mueve así.
+\item \textbf{Idea final}: el economista propone y el mercado dispone: a la larga, los fundamentos; a corto, sabemos por qué nadie predice el camino.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1918}{\autor{Cassel}: PPA}
+\hito{1923}{\autor{Keynes}: paridad de intereses}
+\hito{1963}{\autor{Mundell}; \autor{Fleming} (1962)}
+\hito{1964}{\autor{Balassa}; \autor{Samuelson}}
+\hito{1976}{\autor{Frenkel}, \autor{Mussa}: monetario; \autor{Dornbusch}}
+\hito{1977}{\autor{Branson}: cartera}
+\hito{1979}{\autor{Frankel}: intereses reales; \autor{Mussa}: hechos}
+\hito{1983}{\autor{Meese}-\autor{Rogoff}; \autor{Williamson}: FEER}
+\hito{1984}{\autor{Fama}: regresión del \emph{forward}}
+\hito{1990}{\autor{Froot}-\autor{Thaler}: $\beta_1<0$}
+\hito{1995}{\emph{Redux}; \autor{Eichenbaum}-\autor{Evans}}
+\hito{1996}{\autor{Rogoff}: paradoja de la PPA}
+\hito{2002}{\autor{Evans}-\autor{Lyons}: flujo de órdenes}
+\hito{2005}{\autor{Engel}-\autor{West}}
+\hito{2008}{\autor{Clarida}-\autor{Waldman}: paradoja de la apreciación}
+\hito{2013}{FMI: EBA; \autor{Rossi}: balance}
+\hito{2015}{\autor{Gabaix}-\autor{Maggiori}}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Mercado de divisas \dato{9,5 billones de \$ diarios}{BPI, 2025}; comercio mundial \dato{34,65 billones de \$}{OMC, 2025}. Big Mac: euro \dato{+13,8~\%}{jul.\ 2026}; ajustado por PIB, +29~\%. Vida media de las desviaciones de la PPA: 3-5 años.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué determina el tipo a largo plazo?} Los fundamentos: dinero e inflación relativos (PPA), renta, productividad en comerciables.
+\item \textbf{¿Por qué sobrerreacciona en \autor{Dornbusch}?} Precios rígidos y activos instantáneos: ↓$i$ exige esperar apreciación, así que hoy se deprecia más que a largo plazo.
+\item \textbf{¿Sube o baja la moneda si sube el tipo de interés?} Aprecia si es política restrictiva con precios rígidos; deprecia si refleja más inflación esperada (\autor{Frankel}, 1979).
+\item \textbf{¿Funciona la intervención esterilizada?} Solo con sustituibilidad imperfecta (cartera) o por señales.
+\item \textbf{¿Son malos los modelos si no baten al paseo aleatorio?} No necesariamente (\autor{Engel}-\autor{West}, 2005).
+\item \textbf{¿Qué es la paradoja del margen \emph{forward}?} La pendiente de \autor{Fama} sale negativa: la moneda de tipo alto no se deprecia lo que dice el margen; prima variable, \emph{peso problem} o expectativas no racionales.
+\item \textbf{¿Por qué una inflación inesperada aprecia?} Con regla de \autor{Taylor} creíble, anuncia tipos más altos y, por la PNCI, la moneda se aprecia hoy.
+\item \textbf{¿Qué aporta la microestructura?} Las causas del corto plazo están en las órdenes de los clientes, no en estadísticas que se publican tarde.
+\item \textbf{¿Es mala una apreciación real?} No si es \autor{Balassa}-\autor{Samuelson}: equilibrio que se mueve al converger.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $E$ directo: ↑$E$ = depreciación; ↑$q$ = depreciación real.
+\item Monetario flexible: ↑$i$ \emph{deprecia}; \autor{Dornbusch} y keynesianos: aprecia.
+\item Sobrerreacción mayor con ↓$h$ y ↓$\theta$; desaparece con precios flexibles.
+\item Cartera: más bonos nacionales $\Rightarrow$ efecto \emph{ambiguo} sobre $E$ (no depreciación).
+\item Burbujas de \autor{Blanchard}-\autor{Watson} \emph{compatibles} con expectativas racionales.
+\item Paradoja del \emph{forward}: falla la paridad \emph{no} cubierta.
+\item PPA absoluta $\Rightarrow$ relativa, no al revés.
+\item Paridades y tipo a plazo: la moneda de tipo alto cotiza con \emph{descuento} a plazo (PCI).
+\item Paridad de intereses reales ($r=r^*$): PNCI + PPA relativa esperada.
+\item \autor{Balassa}-\autor{Samuelson}: apreciación \emph{real}; con tipo fijo, vía inflación.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

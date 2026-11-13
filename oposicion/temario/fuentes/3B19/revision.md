@@ -180,6 +180,13 @@ Víctor está fuera: cada duda lleva aplicada la opción recomendada.
 18. **Dichos** (13/11/2026): se conserva «¿quién le pone el cascabel al gato?» integrado en la idea de Hamada y se quita «Mal de muchos, consuelo de tontos». Alternativas: (a) quitar también el del cascabel; (b) recuperar el segundo integrado en la guerra de divisas. **Aplicada: conservar uno (recomendada).**
 19. **La repetición como modelo** (13/11/2026): I.2.2 pasa a la estructura a)-c) (sin Extensiones ni Evidencia, que no tenía). Alternativa: dejarlo como aplicación de Hamada sin bloques. **Aplicada: estructura de modelo (recomendada, regla rígida de la 8.ª tanda).**
 
+## Ficha de repaso (13/11/2026)
+
+- `repaso/3B19-repaso.tex`, nueva, con el modelo de las fichas de esta rama (3B27, 3B13, 3B28). `construir-repaso.py 3B19 --no-publicar`: **4 páginas, 10 pt; última página al 90 %**; `verificar-tema.py 3B19` sin errores de la ficha (solo los 3 de los formatos publicados anteriores a la fuente).
+- Contenido, todo sacado del tema: esquema del cante con minutos y plan de pizarra; los 5 bloques de la introducción; I con Mundell-Fleming (pareja fiscal/monetaria y resumen en 4 ecuaciones), Corsetti-Pesenti (3 curvas en morado, gráfico de referencia, reforma y dólar), Hamada (pérdida en morado y diagrama) y la repetición (gatillo en morado); II con los episodios, obstáculos y formas; III con la figura de la escalera y los foros; conclusión; definiciones, datos clave (con el gráfico del anexo C), tablas de Mundell-Fleming, línea del tiempo, los 3 juegos de Frankel y los foros de un vistazo; autores y fechas; 12 preguntas del tribunal; «Ojo en el test».
+- Dicho: solo «quién le pone el cascabel al gato», integrado, como en el tema. En la tabla de foros solo hay datos del tema (OMC y UE sin año ni miembros, porque el tema no los da). Las indicaciones de pizarra van solo en la ficha (bloque «Pizarra» bajo el esquema del cante), no en el tema.
+- Común (no se toca): con un título largo, el pie de página de la ficha pisa el «© 2026 Víctor Gutiérrez Marcos» (se ve en las 4 páginas); es de `tcee-repaso.sty`, para quien mantenga la plantilla.
+
 ## 8. Instrucciones para el vídeo
 
 - **Introducción** (2′30″): sin pizarra, modo guion con los 5 bloques. Enganche: el refrán «Cada uno en su casa y Dios en la de todos» y las 2 cumbres (Londres 2009, Johannesburgo 2025); pregunta: «¿basta con que cada país ponga orden en su casa, o hay problemas que solo se arreglan entre todos?».

@@ -158,3 +158,10 @@ Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 
 | Ficha de repaso | El tema no tiene ficha (`repaso/` no existe). |
 
 Compilación: `construir-tema.py 3B14 --solo pdf --no-publicar` correcto (37 páginas de tema, 7 de anexos, 7 de bibliografía; 30 minutos). `verificar-tema.py 3B14`: solo los errores esperables de PDF/HTML/Word publicados anteriores a la fuente y los avisos de la lista de exámenes del anexo de test.
+
+## Ficha de repaso (13/11/2026)
+
+- Nueva: `repaso/3B14-repaso.tex`, con la estructura de las fichas de esta rama (3B13, 3B28): esquema del cante con los minutos del tema, indicaciones de pizarra (en la ficha sí caben), introducción, apartados con la idea clave, definiciones y funciones clave en morado, conclusión, autores y fechas, datos clave, preguntas del tribunal y «Ojo en el test». Solo resume el tema.
+- `construir-repaso.py 3B14 --no-publicar`: exactamente 4 páginas, letra de 10 pt, última página ocupada al 96 %. Se revisaron las 4 páginas a ojo, sin huecos grandes ni títulos al pie. `verificar-tema.py 3B14`: ningún error de la ficha.
+- Gráficos (los del tema): mercado de divisas, Balassa-Samuelson, índice Big Mac, cuadro de las paridades, monetario flexible, Dornbusch (mercados, trayectorias y diagrama de fases), cartera y paradoja de la apreciación.
+- Dichos: los mismos que en el tema, integrados en la frase; ninguno nuevo.

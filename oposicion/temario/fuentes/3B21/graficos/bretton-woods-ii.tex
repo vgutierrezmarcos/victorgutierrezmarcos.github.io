@@ -1,0 +1,17 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Bretton Woods II (Dooley, Folkerts-Landau y Garber, 2003): circuito entre
+% el centro (EE. UU.) y la periferia (Asia emergente, China). Pasos 1-4 del
+% texto, en el orden en que se dibujan.
+\begin{tikzpicture}[tcee, caja/.style={draw=tceemorado, thick, rounded corners, align=center, minimum width=4.3cm, minimum height=2.3cm, font=\small},
+  paso/.style={->, thick, >=stealth}, rot/.style={font=\footnotesize, align=center}]
+  \capa{1}{\node[caja, fill=tceesalvia] (P) at (0,0) {\textbf{Periferia}\\(Asia emergente, China)\\[2pt] $S>I$: superávit\\moneda infravalorada};}
+  \capa{1}{\node[caja, fill=tceesalvia] (C) at (8.4,0) {\textbf{Centro}\\(Estados Unidos)\\[2pt] $S<I$: déficit\\emite el activo seguro};}
+  \capa{2}{\draw[paso, tceeazul] ([yshift=0.75cm]P.east) -- node[above, rot, text=tceeazul] {1. exportaciones de bienes} ([yshift=0.75cm]C.west);}
+  \capa{3}{\node[draw=tceedorado, thick, rounded corners, font=\footnotesize, align=center, fill=white] (B) at (0,-2.9) {2. el banco central compra dólares:\\ reservas, $\Delta R>0$};
+           \draw[paso, tceedorado] (P.south) -- (B.north);}
+  \capa{4}{\draw[paso, tceedorado] (B.east) -| node[pos=0.25, below, rot, text=tceedorado] {3. compra deuda del Tesoro: financia el déficit\\ a tipos de interés bajos} (C.south);}
+  \capa{5}{\draw[paso, tceerojo] ([yshift=-0.35cm]C.west) -- node[below, rot, text=tceerojo] {4. inversión directa\\(las reservas, su garantía)} ([yshift=-0.35cm]P.east);}
+\end{tikzpicture}
+\end{document}

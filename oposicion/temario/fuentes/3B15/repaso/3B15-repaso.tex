@@ -1,0 +1,246 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Regímenes cambiarios]{3.B.15}{Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «cada uno sabe dónde le aprieta el zapato»}{2,5}
+\apartadocante{I. Diseño del régimen cambiario}{10,5}
+\subcante{1. Idea}{0,5}
+\subcante{2. Ventajas y desventajas de fijo y flexible}{7,5}
+\subcante{\hspace*{0.8em}Políticas de demanda y trilema}{3,5}
+\subcante{\hspace*{0.8em}Equilibrio interno}{1,5}
+\subcante{\hspace*{0.8em}Equilibrio externo}{1}
+\subcante{\hspace*{0.8em}Mercados financieros}{1}
+\subcante{\hspace*{0.8em}Economía política}{0,5}
+\subcante{3. Determinantes y evidencia}{2,5}
+\apartadocante{II. Implementación del régimen}{6}
+\subcante{1. Menú de regímenes}{4,5}
+\subcante{2. ¿Hacia qué régimen se tiende?}{1,5}
+\apartadocante{III. Intervención y regulación}{10}
+\subcante{1. Intervención}{4,5}
+\subcante{2. Controles de capitales}{5,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: arriba a la izq., la convención ($E$ directo, ↑$E$ = depreciación). El triángulo del trilema, recuadrado, hasta el final (y debajo, su versión del dilema). Diseño: la tabla fijo/flexible se va llenando por dimensiones. Implementación: el eje de los regímenes, de la unión monetaria a la flotación libre, con los 4 grupos y sus porcentajes; la \emph{S} de \autor{Krugman}. Controles: el gráfico intertemporal con $A$, $C$ y $D$.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «cada uno sabe dónde le aprieta el zapato». \autor{Hillel}: «lo que no quieras para ti… el resto es comentario». \autor{Michael Klein}: el trilema es toda la macro internacional; lo demás, comentario. ¿Hay un régimen mejor que los demás?
+\item \textbf{Relevancia}: el tipo de cambio mueve la \emph{inflación}, la \emph{competitividad} y la \emph{estabilidad financiera} (deuda en otra moneda); mercado de \dato{9,5 billones de \$ diarios}{BPI, 2025} \vertema{3.B.13}. El \concepto{régimen cambiario} decide quién fija ese precio y qué le queda a la política monetaria; mal elegido, crisis \vertema{3.B.17}.
+\item \textbf{Contextualización}: \concepto{régimen cambiario}: reglas para fijar el valor de la moneda; \concepto{fijo} (paridad defendida, revisable), \concepto{flexible} (oferta y demanda), \concepto{intermedios}; \emph{de jure} $\neq$ \emph{de facto} (FMI desde 1999; AREAER desde 1950). Historia: patrón oro; Bretton Woods (1944-1973, $\pm1$~\%; Smithsonian 1971, $\pm2{,}25$~\%) \vertema{3.B.20}; desde 1973, el «no sistema» (\autor{Williamson}, 1976), Segunda Enmienda (1978), flotación sucia \vertema{3.B.21}. Tras 2008: controles (2012, 2022), Marco de Política Integrado (2020), dilema (\autor{Rey}, 2013), facturación en dólares (\autor{Gopinath}, 2020). España: tipos múltiples hasta 1959 \vertema{4.A.27}, SME, euro \vertema{3.B.16}.
+\item \textbf{Problemática}: ¿qué gana y pierde un país al fijar o al flotar? ¿De qué depende y qué dicen los datos? ¿Qué hay entre los polos y hacia dónde van? ¿Para qué y cómo se interviene? ¿Cuándo limitar los capitales?
+\item \textbf{Estructura}: de lo que se elige a cómo se sostiene. \hyperref[rep:I]{I}, diseño; \hyperref[rep:II]{II}, implementación; \hyperref[rep:III]{III}, intervención y regulación.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10,5]{I. Diseño del régimen cambiario\label{rep:I}}
+\begin{ideaclave}
+Ningún régimen es superior. El fijo da credibilidad y estabilidad al comercio, pero deja el ajuste a precios y salarios y expone a ataques; el flexible absorbe las perturbaciones reales y deja la política monetaria libre, pero trae volatilidad. La elección depende de cada país.
+\end{ideaclave}
+
+\sub{I.1. Idea\label{rep:I.1}}
+\begin{itemize}
+\item 2 regímenes estilizados (fijo creíble, flotación libre), con libertad de capitales; 5 dimensiones: políticas de demanda, equilibrio interno, externo, mercados financieros, economía política. Sale una lista de disyuntivas (\emph{trade-offs}).
+\end{itemize}
+
+\sub{I.2. Ventajas y desventajas\label{rep:I.2}}
+\textbf{a) Políticas de demanda y trilema}
+\begin{itemize}
+\item \autor{Mundell}-\autor{Fleming} \vertema{3.A.32}: movilidad $\beta_K$ (BP vertical si $\beta_K=0$; horizontal si $\to\infty$). Con movilidad perfecta: \textbf{fijo $\Rightarrow$ fiscal eficaz, monetaria ineficaz} (dinero endógeno); \textbf{flexible $\Rightarrow$ monetaria eficaz, fiscal ineficaz}. Con tipo fijo, la monetaria no sirve con \emph{ninguna} movilidad.
+\item Con menos movilidad se matiza, pero el orden se mantiene:
+\end{itemize}
+{\centering\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+& & Perfecta & Alta & Baja & Nula\\
+\midrule
+Fiscal & Fijo & \textcolor{tceeverde}{muy eficaz} & \textcolor{tceeverde}{eficaz} & \textcolor{tceedorado}{poco} & \textcolor{tceerojo}{ineficaz}\\
+ & Flexible & \textcolor{tceerojo}{ineficaz} & \textcolor{tceedorado}{poco} & \textcolor{tceeverde}{eficaz} & \textcolor{tceeverde}{muy eficaz}\\
+Monetaria & Fijo & \textcolor{tceerojo}{ineficaz} & \textcolor{tceerojo}{ineficaz} & \textcolor{tceerojo}{ineficaz} & \textcolor{tceerojo}{ineficaz}\\
+ & Flexible & \textcolor{tceeverde}{muy eficaz} & \textcolor{tceeverde}{eficaz} & \textcolor{tceeverde}{eficaz} & \textcolor{tceeverde}{eficaz}\\
+\bottomrule
+\end{tabular}\par}
+{\footnotesize\color{tceegris} Eficacia en \autor{Mundell}-\autor{Fleming} según la movilidad del capital (\autor{Heijdra}, 2017).\par}
+\begin{itemize}
+\item Precio de la eficacia monetaria con flotación: volatilidad, \concepto{sobrerreacción} (\autor{Dornbusch}, 1976) \vertema{3.B.14}; el real más volátil al flotar (\autor{Mussa}, 1986).
+\item \concepto{Trilema} (\autor{Obstfeld}-\autor{Taylor}, 1997-1998; ya \autor{Keynes}, 1930): de \emph{tipo fijo}, \emph{libertad de capitales} y \emph{política monetaria propia}, solo 2: no se puede nadar y guardar la ropa. Regla de \autor{Tinbergen}. Con PNCI y $\rho=0$:
+  \funcionclave{i-i^*\approx\gamma E^e+\rho\ \Rightarrow\ i=i^*\ \text{si}\ \rho=0,\ \gamma E^e=0}
+  Lados: unión monetaria, caja de conversión o dolarización; flotación; Bretton Woods (controles). España en el euro: sin política monetaria propia \vertema{3.B.16}.
+\end{itemize}
+\graficorepaso[0.55\linewidth]{trilema}{El trilema: cada lado, un régimen}
+\begin{itemize}
+\item \emph{Extensiones}: esquinas redondeadas (\autor{Klein}-\autor{Shambaugh}, 2015). \emph{Evidencia}: más de un siglo de datos lo confirman (\autor{Obstfeld}-\autor{Shambaugh}-\autor{Taylor}, 2005).
+\item \textbf{¿Trilema o dilema?} (\autor{Rey}, 2013): \concepto{ciclo financiero global}, contrario al VIX, movido por la Fed (\autor{Miranda-Agrippino}-\autor{Rey}, 2020); canal: precios de activos, apalancamiento y riesgo: cuando EE.\,UU.\ estornuda, el mundo se resfría. Elección real: capitales o política monetaria propia. \emph{Evidencia}: matiza (más transmisión con tipo fijo, \autor{Obstfeld}-\autor{Ostry}-\autor{Qureshi}, 2019; valoración, \autor{Georgiadis}-\autor{Mehl}, 2016). \emph{Valoración}: la flotación aísla menos, pero más que el fijo; complementarla, no fijar.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{dilema-rey}{El dilema de \autor{Rey}}
+
+\textbf{b) Equilibrio interno}
+\begin{itemize}
+\item \emph{Perturbaciones reales}: \autor{Friedman} (1953): más fácil mover un precio que miles (horario de verano); con tipo flexible la economía se dobla para no quebrarse. Con fijo, subir tipos agrava (Argentina finales de los 90; Francia 1992-1993); libra fuera del SME (16/9/1992), peseta devaluada \vertema{3.B.17} \vertema{4.A.27}.
+\item \emph{Perturbaciones monetarias}: al revés: con fijo las absorben las reservas (\hyperref[rep:poole]{\autor{Poole}}).
+\item \emph{Inflación}: \concepto{sesgo inflacionista} (\autor{Barro}-\autor{Gordon}, 1983) \vertema{3.A.36}; fijo: credibilidad importada, «atarse las manos» (\autor{Giavazzi}-\autor{Pagano}, 1988); riesgo de apreciación real $\gamma_q\simeq\pi^*-\pi<0$; flexible: credibilidad propia (objetivo de inflación), efecto trinquete.
+\end{itemize}
+
+\textbf{c) Equilibrio externo}
+\begin{itemize}
+\item Fijo: sin riesgo de cambio; \autor{Rose} (2000): $\times3$ el comercio con moneda común (metaanálisis, mucho menos). Flexible: ventaja debilitada: depreciación del 1~\% $\Rightarrow$ 0,1~\% en la relación real de intercambio (facturación en dólares; \autor{Gopinath}).
+\item \emph{Crisis}: apuesta en un solo sentido; 3 generaciones \vertema{3.B.17}; intermedios más propensos; duros, colapsos del crecimiento; sobrevaloración real (\autor{Ghosh}-\autor{Ostry}-\autor{Qureshi}, 2015). \emph{Reservas}: el fijo exige muchas.
+\end{itemize}
+
+\textbf{d) Mercados financieros} (\autor{Eichengreen}-\autor{Hausmann}, 1999): \emph{riesgo moral} (el fijo como seguro implícito), \emph{pecado original} (\emph{original sin}: descalces de moneda y plazo; dolarización, la menos mala), \emph{problemas de compromiso} (solución institucional). Hoy, cierta «redención».
+
+\textbf{e) Economía política}: el fijo traslada las tensiones \emph{dentro} (salarios, no comerciables; patrón oro de entreguerras); la flotación, \emph{fuera} (devaluaciones competitivas \vertema{3.B.19}); el fijo como señal de integración (SME, euro).
+
+\begin{itemize}
+\item \emph{Resumen} (tabla del tema): políticas de demanda (fijo: fiscal; flexible: monetaria); perturbaciones reales (fijo: renta y empleo; flexible: el tipo); monetarias (fijo: reservas; flexible: llegan a la renta); inflación (fijo: credibilidad importada, riesgo de apreciación real; flexible: la del banco central); comercio (fijo: sin riesgo de cambio; flexible: volatilidad); crisis (fijo: ataques; flexible: sin crisis cambiaria, pero paradas súbitas); reservas (muchas / menos); sistema financiero (riesgo moral / efecto balance); economía política (tensiones dentro / fuera).
+\end{itemize}
+
+\sub{I.3. Determinantes y evidencia\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Determinantes}: integración con el ancla (áreas monetarias óptimas: \autor{Mundell}, 1961; \autor{McKinnon}, 1963; \autor{Kenen}, 1969 \vertema{3.B.16}); origen de las perturbaciones; credibilidad; desarrollo financiero (\concepto{miedo a flotar}, \emph{fear of floating}: \autor{Calvo}-\autor{Reinhart}, 2002); economía política; movilidad del capital.
+\item \textbf{\autor{Poole} en economía abierta}\label{rep:poole} (\autor{Poole}, 1970; \autor{Boyer}, 1978): \autor{Mundell}-\autor{Fleming}, $i=i^*$, perturbaciones $\varepsilon^{\mathrm{IS}}$ y $\varepsilon^{\mathrm{LM}}$; $\mathrm{Var}(Y)_{\text{fijo}}=\frac{\sigma^2_{\mathrm{IS}}}{[1-c(1-t)+m]^2}$, $\mathrm{Var}(Y)_{\text{flex}}=\frac{\sigma^2_{\mathrm{LM}}}{k^2}$:
+  \funcionclave{\text{fijar }E\iff\frac{\sigma^2_{\mathrm{LM}}}{k^2}>\frac{\sigma^2_{\mathrm{IS}}}{[1-c\,(1-t)+m]^2}}
+  Perturbaciones reales: flotar; monetarias: fijar. Extensiones: intermedios (\autor{Boyer}); neokeynesiano: flotar (\autor{Galí}-\autor{Monacelli}, 2005); con LCP, atender desalineamientos (\autor{Engel}, 2011). Deja fuera credibilidad y finanzas.
+\item \emph{Evidencia}: clasificaciones alternativas (\autor{Reinhart}-\autor{Rogoff}, 2004, «caída libre»; \autor{Ilzetzki}-\autor{Reinhart}-\autor{Rogoff}, 2019; \autor{Levy-Yeyati}-\autor{Sturzenegger}, 2005; \autor{Shambaugh}, 2004). Fijos: menos inflación; rígidos en desarrollo: menos crecimiento; con el desarrollo gana la flexibilidad (\autor{Rogoff} et al., 2004). Ningún régimen sirve a todos (\autor{Frankel}, 1999).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6]{II. Implementación del régimen\label{rep:II}}
+\begin{ideaclave}
+Entre los 2 polos hay un continuo, y la mayoría está en medio. La visión bipolar no se cumplió: sobreviven los intermedios que se defienden con reservas, intervención o credibilidad.
+\end{ideaclave}
+
+\sub{II.1. Menú de regímenes\label{rep:II.1}}
+\begin{itemize}
+\item AREAER: desde 2009, 10 regímenes en 4 grupos; criterios: \concepto{grado de fijación} y \concepto{grado de publicidad}. Más fijo y público: más credibilidad, menos autonomía.
+\item 30/4/2023: \dato{blando 44,8~\%, flotación 32,5~\%, duro 13,4~\%, otros 9,3~\%}{FMI}; 2026 preliminar: 47/33/14/6. Uniones monetarias por la moneda común (euro, libre flotación).
+\end{itemize}
+\graficorepaso[\linewidth]{regimenes-espectro}{El menú de regímenes: del más rígido al más flexible}
+\begin{itemize}
+\item \textbf{Duros}: \emph{sin moneda propia} (Ecuador, Panamá, El Salvador; Kosovo, Montenegro): máxima credibilidad, sin señoreaje ni prestamista de última instancia. \emph{Unión monetaria} \vertema{3.B.16}. \concepto{Caja de conversión}: $\mathrm{BM}=\mathrm{CI}+R$, $R\geq\mathrm{BM}$; Hong Kong desde 1983 (7,75-7,85 desde 2005); Estonia, Lituania, Bulgaria; Argentina 1991-2001.
+\item \textbf{Blandos}: \emph{convencional} (riyal 3,75 desde 1986; Dinamarca en el MTC~II \vertema{3.B.43}); \emph{estabilizado} (denar $\approx$61,5/€); \emph{deslizamiento} (\emph{crawling peg}; Nicaragua hasta 2024; hoy Botsuana); \emph{similar al deslizamiento} (China); \emph{bandas} (Marruecos; puntos del oro, Bretton Woods, SME).
+\item \textbf{Flotación} (Brasil, Nueva Zelanda, Egipto desde 2024; «ir contra el viento») y \textbf{libre} ($\leq$ 3 intervenciones en 6 meses, $\leq$ 3 días: EE.\,UU., euro, Japón, RU). \textbf{Otros} (Argentina, Irán, Venezuela).
+\item \textbf{Zonas objetivo de \autor{Krugman}} (1991): monetario flexible, $e_t=m_t+v_t+\alpha\,\mathbb{E}_t[\mathrm de_t]/\mathrm dt$; banda creíble, intervención solo en los bordes $\Rightarrow$ \emph{S} aplanada tangente (\emph{smooth pasting}): \concepto{luna de miel}. Sin credibilidad, \emph{S} invertida, \concepto{divorcio} (\autor{Bertola}-\autor{Caballero}, 1992). SME: peseta 1989, devaluaciones 1992-1993, bandas $\pm15$~\% (ago.\ 1993). Estabiliza la credibilidad, no la banda.
+\end{itemize}
+\begin{itemize}
+\item \emph{Caja de conversión, cuándo funciona}: ancla estable e integrada; paridad adecuada y reservas por encima del 100~\% de la base; caja independiente del Gobierno y banca sólida (sin prestamista de última instancia).
+\item \emph{Credibilidad frente a autonomía} (tabla del tema): unión y dolarización, máxima credibilidad, autonomía nula, no vulnerables; caja, muy alta y nula; convencional y bandas estrechas, media, escasa, muy vulnerables; deslizamiento, media y algo; flotación, la del banco central y alta; libre, plena.
+\end{itemize}
+\pareja{hong-kong-caja-conversion}{Caja: Hong Kong (HKD/USD)}{riyal-paridad-fija}{Convencional: riyal (SAR/USD)}
+\pareja{renminbi-crawl-like}{Similar al deslizamiento: renminbi}{cordoba-deslizamiento}{Deslizamiento: córdoba hasta 2024}
+\pareja{flotacion-nzd-brl}{Flotación: dólar neozelandés y real}{libra-egipcia-flotacion}{De anclaje a flotación: libra egipcia}
+\graficorepaso[0.8\linewidth]{zona-objetivo}{Zonas objetivo: luna de miel ($S$) y divorcio ($S$ invertida)}
+
+\sub{II.2. ¿Hacia qué régimen?\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Visión bipolar} (\autor{Eichengreen}, 1994; \autor{Obstfeld}-\autor{Rogoff}, 1995; \autor{Fischer}, 2001) frente a \emph{miedo a flotar} (bandas en secreto). Lo que pasó: blandos, casi la mitad; reparto estable 10 años; el dólar, ancla dominante (\autor{Ilzetzki}-\autor{Reinhart}-\autor{Rogoff}, 2019).
+\item Hechos (\autor{Rose}, 2011; \autor{Klein}-\autor{Shambaugh}, 2010): un tercio flota (65 de 195, 2026), casi todos con objetivo de inflación; los que fijan, pequeños (salvo China); regímenes más duraderos. Unificaciones: Egipto (mar.\ 2024), Argentina (abr.\ 2025).
+\end{itemize}
+\graficorepaso[0.78\linewidth]{regimenes-evolucion}{Regímenes de los miembros del FMI, 2015-2026 (\%)}
+
+% ==========================================================================
+\bloque[10]{III. Intervención y regulación\label{rep:III}}
+\begin{ideaclave}
+Las 2 funcionan, con límites. La intervención suaviza y funciona mejor creíble y pública, pero no sostiene un tipo contra los fundamentos. Los controles cuestan bienestar sin fricciones, pero pueden mejorarlo si corrigen una externalidad; cambian la composición de los flujos más que su volumen.
+\end{ideaclave}
+
+\sub{III.1. Intervención\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Intervenir}: comprar o vender divisas (o anunciarlo). Motivos: defender la paridad; suavizar; precaución (reservas frente a paradas súbitas); frenar la apreciación (manipulación, art.\ IV) \vertema{3.B.19}; materias primas y fondos soberanos.
+\item \concepto{No esterilizada}: ↑$R$ = ↑BM. \concepto{Esterilizada}: vender títulos, $\Delta\mathrm{CI}=-\Delta R$, BM igual. Otras: \concepto{persuasión} (\emph{jawboning}); coordinada (Plaza 1985, Louvre 1987); derivados y líneas \emph{swap} \vertema{3.B.43}. Japón 2024: \dato{9,8 + 5,5 billones de yenes}{MOF}.
+\item ¿Funciona la esterilizada? Con sustitutos perfectos, no. Canales: \concepto{cartera} (↑$\rho$; \autor{Branson}; \autor{Gabaix}-\autor{Maggiori}), \concepto{señales} (\autor{Mussa}, 1981), \concepto{coordinación} (\autor{Sarno}-\autor{Taylor}, 2001; flujo de órdenes). Evidencia: Plaza y Louvre (\autor{Dominguez}-\autor{Frankel}, 1993); > 80~\% de éxito con algunos criterios (\autor{Fratzscher} et al., 2019); frena apreciaciones en emergentes. No contra los fundamentos.
+\item \emph{Costes}: cuasifiscal (\autor{Calvo}, 1991); oportunidad, $\approx$1~\% del PIB (\autor{Rodrik}, 2006). Reservas: \dato{13,2 billones de \$ (jun.\ 2026), 56,7~\% en dólares}{FMI, COFER}; China $\approx$3,4 \vertema{3.B.11}.
+\item Compras de activos como intervención implícita (\autor{Draghi}-\autor{Mnuchin}, 2018). \concepto{Marco de Política Integrado} (FMI, 2020): monetaria, intervención, macroprudencial, flujos de capital; cada instrumento para una fricción; principios de 2023: complemento de la flotación.
+\end{itemize}
+\graficorepaso[0.8\linewidth]{reservas-mundiales}{Reservas de divisas, 1999-2026}
+\begin{itemize}
+\item \emph{Para qué sirven las reservas}: intervenir y dar confianza; pagar al exterior si se corta la financiación; gestionar la liquidez (garantía de \emph{swaps}); invertir el exceso (fondos soberanos). Cuántas bastan: indicadores y métrica del FMI \vertema{3.B.22}.
+\item \emph{Balance}: compra de 100 de divisas: no esterilizada, $\Delta R=+100$ y $\Delta\mathrm{BM}=+100$; esterilizada, $\Delta R=+100$, $\Delta\mathrm{CI}=-100$, $\Delta\mathrm{BM}=0$.
+\end{itemize}
+
+\sub{III.2. Controles de capitales\label{rep:III.2}}
+\begin{itemize}
+\item FMI: \concepto{medidas de gestión de los flujos} (según residencia) y \concepto{macroprudenciales} \vertema{3.B.27}. Formas: cuantitativas, de precio (\concepto{impuesto de \autor{Tobin}}, 1978; \concepto{encaje} chileno 1991-1998), \concepto{tipos múltiples} (art.\ VIII; España hasta 1959, 60 pts/\$ \vertema{4.A.27}; Chile 1973; Venezuela).
+\item \emph{Justificación} (segundo óptimo, \emph{second best} \vertema{3.A.22}): externalidad pecuniaria (\autor{Korinek}, 2011), sostenibilidad de la deuda, trilema, país grande. Marco: art.\ VI del FMI; visión institucional 2012 y revisión 2022 (preventiva); TFUE art.\ 63 \vertema{3.B.39}; Código de la OCDE (1961).
+\item \textbf{Modelo intertemporal con controles} (\autor{Schmitt-Grohé}-\autor{Uribe}-\autor{Woodford}, 2022) \vertema{3.B.12}: 2 periodos, dotaciones, $r^*$ < autarquía, impuesto $\tau$ devuelto en bloque:
+  \funcionclave{u'(C_t)=\beta\,(1+r^*+\tau)\,u'(C_{t+1})}
+  El país paga $r^*$: equilibrio $D$ entre $A$ y $C$. ↓$C_t$, ↓$I$, ↓ déficit; bienestar $U_0<U_2<U_1$: sin fricciones, distorsión. Con externalidad, mejora; país grande, como un arancel óptimo (salvo represalias).
+\item \emph{Experiencias}: Chile, Malasia (1998), Brasil (2009-2013), Islandia, Chipre, Grecia; España, Irlanda y Portugal (sept.\ 1992). \emph{Evidencia}: más autonomía y plazos más largos, no menos volumen neto (\autor{Magud}-\autor{Reinhart}-\autor{Rogoff}, 2018); poco efecto en el tipo (\autor{Forbes}-\autor{Fratzscher}-\autor{Straub}, 2015). Complemento, nunca sustituto.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{controles-capital}{Impuesto al endeudamiento exterior: de $C$ a $D$}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: el trilema obliga a elegir, y flotar no aísla del todo; fijo: credibilidad y comercio, ajuste interno y ataques; flexible: absorbe lo real, volatilidad y miedo a flotar; la mitad en medio; intervención y controles, complemento.
+\item \textbf{Relevancia}: España eligió con el euro: fijo dentro, flota fuera \vertema{3.B.16} \vertema{4.A.28}.
+\item \textbf{Extensiones}: \vertema{3.B.14}, \vertema{3.B.17}, \vertema{3.B.19}, \vertema{3.B.20}, \vertema{3.B.21}, \vertema{3.B.22}.
+\item \textbf{Opinión}: menos tipos fijos, pero el consenso acepta intervención y controles: el trilema tiene las esquinas redondeadas.
+\item \textbf{Idea final}: ningún régimen sirve a todos (\autor{Frankel}, 1999): cada uno sabe dónde le aprieta el zapato. Lo que no se puede es elegir un régimen y políticas que no casen con él: eso es el trilema; lo demás es comentario.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1953}{\autor{Friedman}: a favor de los tipos flexibles}
+\hito{1961}{\autor{Mundell}: áreas monetarias óptimas}
+\hito{1963}{\autor{Mundell}; \autor{Fleming} (1962)}
+\hito{1970}{\autor{Poole}; \autor{Boyer} (1978)}
+\hito{1971}{Acuerdo Smithsonian: $\pm2{,}25$~\%}
+\hito{1973}{Flotación generalizada (marzo)}
+\hito{1978}{Segunda Enmienda; \autor{Tobin}: impuesto}
+\hito{1983}{\autor{Barro}-\autor{Gordon}; Hong Kong, caja}
+\hito{1988}{\autor{Giavazzi}-\autor{Pagano}: atarse las manos}
+\hito{1991}{\autor{Krugman}: zonas objetivo}
+\hito{1992}{Crisis del SME (16/9); \autor{Bertola}-\autor{Caballero}}
+\hito{1998}{\autor{Obstfeld}-\autor{Taylor}: trilema}
+\hito{1999}{FMI: clasificación \emph{de facto}; \autor{Frankel}; \autor{Eichengreen}-\autor{Hausmann}}
+\hito{2001}{\autor{Fischer}: visión bipolar}
+\hito{2002}{\autor{Calvo}-\autor{Reinhart}: miedo a flotar}
+\hito{2009}{FMI: 10 regímenes en 4 grupos}
+\hito{2012}{FMI: visión institucional (revisada en 2022)}
+\hito{2013}{\autor{Rey}: dilema}
+\hito{2020}{Marco de Política Integrado; \autor{Gopinath}}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Regímenes (FMI, abr.\ 2023): blando 44,8~\%, flotación 32,5~\%, duro 13,4~\%, otros 9,3~\%; 2026: 47/33/14/6; 65 de 195 flotan. Reservas \dato{13,2 billones de \$}{jun.\ 2026}: dólar 56,7~\%, euro 20,6~\%.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué es el trilema?} De tipo fijo, capitales libres y política monetaria propia, solo 2; con PNCI, fijar es $i=i^*$.
+\item \textbf{¿Es un dilema?} \autor{Rey}: el ciclo financiero global limita también al que flota; la evidencia dice que la flotación aísla menos de lo pensado, pero más que el fijo.
+\item \textbf{¿Cuándo conviene fijar?} Si dominan las perturbaciones monetarias, hay integración con el ancla y falta credibilidad propia.
+\item \textbf{¿Funciona la intervención esterilizada?} Por cartera (sustitutos imperfectos), señales o coordinación; no contra los fundamentos.
+\item \textbf{¿Por qué la caja de conversión no es prestamista de última instancia?} Toda la base respaldada con divisas: solo presta el exceso.
+\item \textbf{¿Por qué fracasó la caja argentina?} Peso sobrevalorado, deuda en dólares y una política fiscal que no la sostenía: corralito y devaluación de 2002.
+\item \textbf{¿Qué dice el modelo de \autor{Krugman}?} Una banda creíble estabiliza sola (luna de miel); sin credibilidad, desestabiliza (divorcio): lo que estabiliza es la credibilidad.
+\item \textbf{¿Qué es el Marco de Política Integrado?} Monetaria, intervención, macroprudencial y gestión de flujos juntas, cada una para una fricción; complementan la flotación.
+\item \textbf{¿Están justificados los controles?} Sin fricciones no; con externalidades pecuniarias o vulnerabilidades, como complemento temporal y transparente (FMI 2012/2022).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item BP vertical = movilidad \emph{nula} ($\beta_K=0$), no perfecta.
+\item La zona del euro está en \emph{libre flotación}; la unión monetaria no es una categoría aparte.
+\item Montenegro y Kosovo: sin moneda propia (euro unilateral).
+\item Flotación libre: $\leq$ 3 intervenciones en 6 meses, de $\leq$ 3 días hábiles.
+\item Esterilizar una compra de divisas es \emph{vender} títulos.
+\item Cartera: con sustitutos imperfectos; señales: aunque sean perfectos.
+\item Con tipo fijo, la monetaria es ineficaz con \emph{cualquier} movilidad.
+\item Miembros de la UEMOA y la CEMAC: anclaje convencional al euro; Caribe Oriental: caja con el dólar.
+\item Tipos múltiples: exigen aprobación del FMI (art.\ VIII); los controles de capital, permitidos (art.\ VI).
+\item Encaje chileno: depósito sin remunerar de las \emph{entradas} (20-30~\%, un año).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

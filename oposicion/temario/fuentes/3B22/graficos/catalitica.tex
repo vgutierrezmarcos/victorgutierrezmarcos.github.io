@@ -1,0 +1,47 @@
+% Financiación catalítica (versión simplificada de Corsetti, Guimarães y Roubini,
+% 2006, y Morris y Shin, 2006). Eje de los fundamentos theta; 3 regiones:
+% insolvencia (rojo), pánico posible (dorado), sin crisis (verde), con los
+% mismos colores que las 3 regiones del 3.B.17. Ejemplo: D - R = 4, psi = 1/2:
+% sin FMI, theta_I = 4 y theta_S = 8; con L = 1,5, theta_I = 2,5 y theta_S = 5.
+% theta* (juegos globales) a mitad de la zona de pánico, a título ilustrativo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=1cm]
+  \path (-1.6,-3.2) rectangle (11.2,1.3);
+  % 1: sin FMI: las 3 regiones
+  \capa{1}{\fill[tceerojo,fill opacity=0.14] (0,0) rectangle (4,0.8);}
+  \capa{1}{\fill[tceedorado,fill opacity=0.22] (4,0) rectangle (8,0.8);}
+  \capa{1}{\fill[tceeverde,fill opacity=0.14] (8,0) rectangle (10.4,0.8);}
+  \capa{1}{\node[etiqueta,anchor=east,align=right] at (-0.15,0.4) {Sin\\el FMI};}
+  % 2: eje de los fundamentos (sin FMI)
+  \capa{2}{\draw[eje] (0,0) -- (10.8,0) node[below left=2pt and 0pt] {$\theta$};}
+  % 3: umbrales sin FMI
+  \capa{3}{\draw[guia] (4,0.8) -- (4,0) node[below] {$\theta_I$};}
+  \capa{3}{\draw[guia] (8,0.8) -- (8,0) node[below] {$\theta_S$};}
+  \capa{3}{\draw[curva1] (6,0) -- (6,0.8);}
+  \capa{3}{\node[below,text=tceemorado] at (6,0) {$\theta^*$};}
+  % 4: rótulos de las regiones
+  \capa{4}{\node[etiqueta,text=tceerojo] at (2,0.4) {insolvencia};}
+  \capa{4}{\node[etiqueta,text=tceedorado!70!black] at (5,0.4) {pánico};}
+  \capa{4}{\node[etiqueta,text=tceeverde] at (9.2,0.4) {sin crisis};}
+  % 5: con FMI: las 3 regiones desplazadas
+  \capa{5}{\fill[tceerojo,fill opacity=0.14] (0,-2.6) rectangle (2.5,-1.8);}
+  \capa{5}{\fill[tceedorado,fill opacity=0.22] (2.5,-2.6) rectangle (5,-1.8);}
+  \capa{5}{\fill[tceeverde,fill opacity=0.14] (5,-2.6) rectangle (10.4,-1.8);}
+  \capa{5}{\node[etiqueta,anchor=east,align=right] at (-0.15,-2.2) {Con un\\préstamo $L$};}
+  \capa{5}{\draw[eje] (0,-2.6) -- (10.8,-2.6) node[below left=2pt and 0pt] {$\theta$};}
+  \capa{5}{\draw[guia] (2.5,-1.8) -- (2.5,-2.6) node[below] {$\theta_I'$};}
+  \capa{5}{\draw[guia] (5,-1.8) -- (5,-2.6) node[below] {$\theta_S'$};}
+  \capa{5}{\draw[curva1] (3.75,-2.6) -- (3.75,-1.8);}
+  \capa{5}{\node[below,text=tceemorado] at (3.75,-2.6) {$\theta^{*\prime}$};}
+  \capa{5}{\node[etiqueta,text=tceerojo] at (1.25,-2.2) {insolvencia};}
+  \capa{5}{\node[etiqueta,text=tceedorado!70!black] at (3.75,-1.6) {pánico};}
+  \capa{5}{\node[etiqueta,text=tceeverde] at (7.7,-2.2) {sin crisis};}
+  % 6: flechas del desplazamiento
+  \capa{6}{\draw[flecha] (4,-0.75) -- (2.5,-1.45);}
+  \capa{6}{\draw[flecha] (8,-0.75) -- (5,-1.45);}
+  \capa{6}{\node[etiqueta,text=tceerojo,align=center] at (9.6,-1.1) {la zona de pánico\\se estrecha};}
+\end{tikzpicture}
+\end{document}

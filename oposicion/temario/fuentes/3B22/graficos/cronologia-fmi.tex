@@ -1,0 +1,30 @@
+% Cronología del FMI en 4 etapas (1944-2026): una banda por etapa con su
+% función dominante y los hitos debajo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},x=0.16cm,y=1cm,
+    etapa/.style={font=\scriptsize\bfseries,align=center},
+    hito/.style={font=\scriptsize,align=left,anchor=north west,text width=#1},
+    hito/.default=3cm]
+  % 1: eje del tiempo y bandas de las 4 etapas
+  \capa{1}{\fill[tceemorado,fill opacity=0.14] (1944,0) rectangle (1973,0.9);}
+  \capa{1}{\fill[tceeazul,fill opacity=0.14] (1973,0) rectangle (2008,0.9);}
+  \capa{1}{\fill[tceedorado,fill opacity=0.20] (2008,0) rectangle (2020,0.9);}
+  \capa{1}{\fill[tceeverde,fill opacity=0.14] (2020,0) rectangle (2027,0.9);}
+  \capa{1}{\draw[thick,->] (1943,0) -- (2028.5,0);}
+  \capa{1}{\foreach \a in {1944,1973,2008,2020}{\draw (\a,0.08) -- (\a,-0.12) node[below,font=\scriptsize] {\a};}}
+  % 2: nombres de las etapas
+  \capa{2}{\node[etapa,text=tceemorado] at (1958.5,0.45) {Bretton Woods:\\guardián de las paridades};}
+  \capa{2}{\node[etapa,text=tceeazul] at (1990.5,0.45) {Del no sistema a los emergentes:\\supervisor y bombero};}
+  \capa{2}{\node[etapa,text=tceedorado!70!black] at (2014,0.45) {Crisis global\\y euro};}
+  \capa{2}{\node[etapa,text=tceeverde] at (2023.5,0.45) {Pandemia\\y después};}
+  % 3: hitos
+  \capa{3}{\node[hito=2.3cm] at (1944,-0.55) {1944 Bretton Woods\\1947 empieza a operar\\1952 acuerdos Stand-By\\1958 entra España\\1969 nace el DEG\\1971 fin de la convertibilidad};}
+  \capa{3}{\node[hito=2.7cm] at (1974,-0.55) {1976-1978 segunda enmienda: flotación y supervisión\\1982 crisis de la deuda\\1986-1987 préstamos de favor\\1994-2002 México, Asia, Rusia, Argentina\\2002 acceso excepcional\\2003-2007 calma y devoluciones};}
+  \capa{3}{\node[hito=1.8cm] at (2008.3,-0.55) {2009 G-20: recursos ×3; LCF\\2010 troika y Grecia\\2016 en vigor la reforma de 2010};}
+  \capa{3}{\node[hito=1.95cm] at (2020.5,-0.55) {2020 préstamos urgentes\\2021 DEG récord\\2022 SRS (clima)\\2023 16.ª revisión\\2025-2026 Argentina, Ucrania};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,66 @@
+% Crédito vivo del FMI, 1970-2026 (miles de millones de DEG, 31 de diciembre;
+% 2026: octubre). Fuente y comprobación en la cabecera de ../datos/credito-fmi.csv
+% (FMI, Fund Accounts, API SDMX). Barras apiladas: Cuenta de Recursos Generales
+% (morado), concesional FFCLP y predecesores (dorado), FFRS (verde).
+% Capas: barras -> ejes -> puntos -> etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{credcra}{tceemorado!80}
+\colorlet{credcon}{tceedorado!70}
+\colorlet{credrst}{tceeverde!70}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/credito-fmi.csv}\credito
+\pgfplotsset{ejescredito/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejescredito/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14.5cm, height=7.2cm,
+      xmin=1968.8, xmax=2027.2, ymin=0, ymax=140,
+      xtick={1970,1975,...,2025}, ytick={0,20,...,140},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Miles de millones de DEG},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, ybar stacked, bar width=0.66,
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none, fill=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left,
+      ejescredito, dicapas,
+    ]
+    % 1: barras apiladas
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=credcra] table[x=anio, y=cra] {\credito};
+      \addplot[on layer=dicbarras, dicbarra=credcon] table[x=anio, y=concesional] {\credito};
+      \addplot[on layer=dicbarras, dicbarra=credrst] table[x=anio, y=rst] {\credito};
+    }
+    % 2: ejes (ver ejescredito)
+    % 3: puntos de los máximos y del mínimo
+    \capa{3}{
+      \addplot[on layer=dicpuntos, forget plot, dicsuelto, dicpuntos=black]
+        coordinates {(1984,37.675) (2003,71.913) (2007,9.833) (2012,95.809) (2026,122.717)};
+    }
+    % 4: rótulos de las oleadas
+    \capa{4}{
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=3pt,align=center]{(1984,37.675)}{Deuda\\de 1982}
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=3pt,align=center]{(2001,71.913)}{Crisis de\\los emergentes}
+      \draw[guia] (axis cs:2007,11.5) -- (axis cs:2007,45);
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=1pt,align=center]{(2007,45)}{Mínimo\\de 2007}
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=3pt,align=center]{(2012,95.809)}{Euro}
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=3pt,align=center]{(2023,122.717)}{Pandemia\\y después}
+      \addlegendimage{area legend, dicbarra=credcra}
+      \addlegendentry{Cuenta de Recursos Generales}
+      \addlegendimage{area legend, dicbarra=credcon}
+      \addlegendentry{Concesional (FFCLP)}
+      \addlegendimage{area legend, dicbarra=credrst}
+      \addlegendentry{Resiliencia y Sostenibilidad (FFRS)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

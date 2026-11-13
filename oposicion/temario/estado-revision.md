@@ -1,15 +1,15 @@
 # Estado de la revisión del temario (3.er ejercicio)
 
-Registro que lleva Claude y actualiza tras cada tanda. Última actualización: 13/11/2026 (ramas unificadas en revision-temario-2).
+Registro que lleva Claude y actualiza tras cada tanda. Última actualización: 13/11/2026 (3B20-3B22 hechos; temas traídos al día).
 
 | Estado | N.º | Temas |
 |---|---|---|
 | a) Publicados (versión revisada en la web, rama main) | 0 | Ninguno (en main siguen las versiones antiguas) |
 | b) Revisados y aprobados por Víctor | 22 | 3A02, 3A04, 3A08-3A16, 3A19, 3A21-3A26, 3A28, 3A43, 3A44, 3B31 (aprobado «por ahora») |
 | c) Con comentarios de Víctor (aplicados o en curso; pendientes de su relectura) | 32 | 3A01, 3A03, 3A05, 3A06, 3A07, 3A17, 3A18, 3A20, 3A27, 3A29, 3A30, 3A31, 3A32, 3A33, 3A34, 3A35, 3A36, 3A37, 3A38, 3A39, 3A40, 3A41, 3A42, 3A45, 3B05-3B11, 3B28 |
-| d) Hechos, pendientes de que Víctor los lea | 18 | 3B01, 3B02, 3B03, 3B04, 3B12, 3B13, 3B14-3B19, 3B23, 3B24, 3B25, 3B26, 3B27, 3B29 |
-| e) Pendientes de hacer | 18 | 3B20, 3B21, 3B22, 3B30, 3B32-3B45 |
+| d) Hechos, pendientes de que Víctor los lea | 21 | 3B01, 3B02, 3B03, 3B04, 3B12, 3B13, 3B14-3B19, 3B20, 3B21, 3B22, 3B23, 3B24, 3B25, 3B26, 3B27, 3B29 |
+| e) Pendientes de hacer | 15 | 3B30, 3B32-3B45 |
 | **Total** | **90** | 3.A (45) + 3.B (45) |
 
 3B01, 3B24 y 3B27 terminados el 13/11/2026 (tema y ficha; con las reglas de la 9.ª tanda). 3A32 reestructurado en 3 bloques el 13/11/2026.
-Revisión transversal del 13/11 (Nobel, 4.º ejercicio, dichos, figuras) hecha en los temas de 1D01, 3A y 3B02-3B31 de esta rama; falta en los traídos de la otra rama.
+Revisión transversal del 13/11 (Nobel, 4.º ejercicio, dichos, figuras) hecha en todos los temas; los traídos de la otra rama (3B12, 3B14-3B19, 3B26, 3B29) puestos al día y con ficha de repaso el 13/11. 3B20-3B22 hechos el 13/11.

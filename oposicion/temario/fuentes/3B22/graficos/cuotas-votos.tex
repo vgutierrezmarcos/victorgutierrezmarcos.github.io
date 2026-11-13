@@ -1,0 +1,61 @@
+% Porcentaje de los votos en el FMI de los 12 mayores miembros y España
+% (FMI, tabla de cuotas y votos de 17/06/2026; ../datos/cuotas-votos.csv).
+% Barras horizontales (Estados Unidos en morado, España en rojo, el resto en
+% gris azulado) y la línea del 15 %, la minoría de bloqueo.
+% Capas: barras -> ejes -> línea del 15 % -> etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{votoeeuu}{tceemorado!85}
+\colorlet{votoresto}{tceeazul!45}
+\colorlet{votoespana}{tceerojo!75}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/cuotas-votos.csv}\votos
+\pgfplotsset{ejesvotos/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesvotos/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=8.6cm,
+      xbar, bar width=9pt, bar shift=0pt,
+      xmin=0, xmax=19, ymin=-0.7, ymax=12.7,
+      y dir=reverse,
+      ytick={0,...,12}, yticklabels from table={\votos}{pais},
+      yticklabel style={font=\footnotesize},
+      xtick={0,5,10,15}, xticklabel style={font=\footnotesize},
+      xlabel={Porcentaje del total de votos},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      clip=false,
+      ejesvotos, dicapas,
+    ]
+    % 1: barras (Estados Unidos, el resto, España)
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, dicbarra=votoresto]
+        table[x=votos_pct, y expr=\coordindex] {\votos};
+      \addplot[on layer=dicbarras, forget plot, dicbarra=votoeeuu]
+        coordinates {(16.49,0)};
+      \addplot[on layer=dicbarras, forget plot, dicbarra=votoespana]
+        coordinates {(1.92,12)};
+    }
+    % 2: ejes (ver ejesvotos)
+    % 3: la minoría de bloqueo
+    \capa{3}{
+      \draw[dicumbral, thick, tceerojo] (axis cs:15,-0.7) -- (axis cs:15,12.7);
+    }
+    % 4: etiquetas de datos y rótulo de la línea
+    \capa{4}{
+      \addplot[forget plot, only marks, mark=none,
+        nodes near coords={\pgfmathprintnumber[fixed,precision=2,use comma]{\pgfplotspointmeta}},
+        nodes near coords style={font=\footnotesize, anchor=west, xshift=1pt},
+        point meta=explicit]
+        table[x=votos_pct, y expr=\coordindex, meta=votos_pct] {\votos};
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=west,align=left]{(15.3,6)}{15~\%: veto\\de las decisiones\\que exigen el 85~\%}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

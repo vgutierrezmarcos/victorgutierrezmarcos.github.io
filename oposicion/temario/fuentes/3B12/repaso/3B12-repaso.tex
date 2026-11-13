@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Ajuste de la balanza de pagos]{3.B.12}{Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «de aquellos polvos, estos lodos»}{2,5}
+\apartadocante{I. Tipo de cambio y renta: enfoques keynesianos}{10}
+\subcante{1. Elasticidades y \autor{Marshall}-\autor{Lerner}}{4}
+\subcante{2. Multiplicador}{1,5}
+\subcante{3. Absorción}{2,5}
+\subcante{4. IS-LM-BP y asignación de \autor{Mundell}}{2}
+\apartadocante{II. Reservas: enfoques de \emph{stocks}}{5}
+\subcante{1. Flujo-especie}{2}
+\subcante{2. Enfoque monetario}{2}
+\subcante{3. Cartera}{1}
+\apartadocante{III. Enfoque intertemporal y sostenibilidad}{11,5}
+\subcante{1. Del ajuste a la elección}{1}
+\subcante{2. Modelo de 2 periodos}{4}
+\subcante{3. Valoración y extensiones}{1,5}
+\subcante{4. Sostenibilidad del déficit y de la deuda}{5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: convención del tipo de cambio arriba a la izq.\ ($E$ directo, ↑$E$ = depreciación). Recuadradas y hasta el final de su bloque: \autor{Marshall}-\autor{Lerner}, $\mathrm{XN}=Y-A$, $\Delta R=\Delta M^D-\Delta\mathrm{CI}$ y la dinámica de la deuda. Elasticidades: curva J en 6 trazos. Flujo-especie: el circuito del déficit. Modelo de 2 periodos: gráfico por partes (autarquía, apertura, llaves). Sostenibilidad: los 2 paneles de la dinámica de la deuda y la lista de determinantes con signos.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «de aquellos polvos, estos lodos». España 2007: déficit corriente \dato{9,4~\% del PIB, máximo de la serie}{BdE}; la financiación se cortó y, dentro del euro, no podía devaluar: ajuste por renta, gasto, precios y salarios. Superávit desde 2012: \dato{3,2~\% en 2025}{BdE}. 3 preguntas: ¿cómo se corrige?, ¿era malo aquel déficit?, ¿hasta cuándo se financia?
+\item \textbf{Relevancia}: desequilibrios no corregidos $\Rightarrow$ crisis de balanza de pagos con ajustes bruscos (América Latina años 80, Asia 1997, periferia del euro 2010-2012) \vertema{3.B.17}; centro de la supervisión del FMI \vertema{3.B.22} y del PDM de la UE \vertema{3.B.45}; ¿quién ajusta, deudor o acreedor? (\autor{Keynes} en Bretton Woods: los 2) \vertema{3.B.19}.
+\item \textbf{Contextualización}: \concepto{balanza de pagos}: siempre cuadra, sus cuentas no tienen por qué \vertema{3.B.11}. \concepto{Desequilibrio exterior}: saldo que no se mantiene sin perder reservas, financiación excepcional o ajuste brusco. \concepto{Mecanismo de ajuste}: proceso, automático o inducido, por precios relativos y tipo de cambio, renta, reservas y dinero, o capital. \emph{Ideas}: tipos fijos y poco capital $\Rightarrow$ años 70, de flujos a \emph{stocks} $\Rightarrow$ años 80, \concepto{enfoque intertemporal}: lo que preocupa es la \concepto{sostenibilidad}. \emph{Convención}: $E$ directo; $q\equiv EP^*/P$, ↑$q$ = depreciación real \vertema{3.B.13}.
+\item \textbf{Problemática}: ¿se corrigen solos los desequilibrios y por qué variable? ¿Es malo un déficit; quién presta y quién pide? ¿Cuándo es sostenible y qué deuda puede soportar un país?
+\item \textbf{Estructura}: de los flujos a los \emph{stocks} y a la elección intertemporal; cada enfoque relaja un supuesto del anterior. \hyperref[rep:I]{I}, tipo de cambio y renta; \hyperref[rep:II]{II}, reservas; \hyperref[rep:III]{III}, si hay que ajustar y el límite (sostenibilidad).
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{I. Tipo de cambio y renta: enfoques keynesianos\label{rep:I}}
+\begin{ideaclave}
+Con precios rígidos y capital inmóvil, una devaluación mejora el saldo solo si las cantidades reaccionan lo bastante (\autor{Marshall}-\autor{Lerner}), y a corto plazo puede empeorarlo (curva J). El ajuste por la renta es incompleto. Con pleno empleo, la devaluación solo funciona si se reduce el gasto. Con capital móvil, el régimen cambiario decide qué variable ajusta.
+\end{ideaclave}
+
+\sub{I.1. Elasticidades y condición de \autor{Marshall}-\autor{Lerner}\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Idea}: entreguerras; \autor{Keynes} (1925) contra la vuelta de la libra al oro a la paridad de preguerra; devaluaciones de los años 30 sin éxito $\Rightarrow$ ¿cuándo mejora la balanza una devaluación? \autor{Robinson} (1937), \autor{Lerner} (1944), a partir de \autor{Marshall} (atribución discutible; \autor{Bickerdike}, 1920). 2 efectos: \concepto{efecto valor} ($-$, lo importado cuesta más) y \concepto{efecto volumen} (+).
+\item \emph{Supuestos}: precios fijos en moneda del productor (devaluación nominal = real), recursos ociosos y ofertas infinitamente elásticas, equilibrio parcial (balanza = balanza comercial), comercio inicialmente equilibrado.
+\item \emph{Desarrollo}: $\mathrm{XN}=X(q)-q\,M(q)$; derivando con $X=qM$:
+  \funcionclave{\frac{\mathrm d\,\mathrm{XN}}{\mathrm dq}>0\iff\lvert\varepsilon_{X,q}\rvert+\lvert\varepsilon_{M,q}\rvert>1}
+\item \emph{Implicaciones}: las elasticidades dependen de la estructura de los mercados, la diferenciación, la sustituibilidad y el plazo. Si no se cumple, \concepto{paradoja de las elasticidades}: mejoraría con una apreciación.
+\item \emph{Extensiones}: con déficit inicial, más exigente en moneda nacional, $\frac{X}{qM}\lvert\varepsilon_X\rvert+\lvert\varepsilon_M\rvert>1$; en divisas, menos (ej.: $X=80$, $qM=100$, elasticidades 0,5: 0,9 < 1 en €, 1,125 > 1 en divisas); con ofertas finitas, \autor{Bickerdike}-\autor{Robinson}-\autor{Metzler}, menos exigente.
+\item \emph{Evidencia}: pesimismo de los años 30-40 (sesgo a la baja); G-7 la cumple salvo Francia y Alemania (\autor{Hooper}-\autor{Johnson}-\autor{Marquez}, 2000); FMI (2015): depreciación real del 10~\% $\Rightarrow$ +1,5 p.\ del PIB de exportaciones netas.
+\item \emph{Valoración}: \concepto{curva J} (\autor{Magee}, 1973): a corto domina el efecto valor; más profunda con facturación en dólares (\autor{Gopinath}, 2020). \concepto{Traspaso} (\emph{pass-through}): a los precios de exportación en divisas y a los precios interiores (si $P$ sube como $E$, $q$ no cambia). Empobrecer al vecino y represalias \vertema{3.B.20}; falta el efecto renta.
+\end{itemize}
+\pareja{curva-j}{La curva J}{absorcion-oa}{OA en L invertida: paro ($A\to B$) y pleno empleo ($B\to C$)}
+
+\sub{I.2. El multiplicador\label{rep:I.2}}
+\begin{itemize}
+\item \autor{Harrod} (1933), \autor{Machlup} (1943): ¿corrige la renta un desequilibrio con precios y tipo fijos? Recursos ociosos, sin capitales, país pequeño ($\overline X$ exógenas).
+\item $Y=\frac{\overline A-b\,i+\overline X-\overline M}{1-c-z+m}$; con $\Delta\overline A=\Delta i=0$:
+  \begin{formula}
+  \[\Delta\mathrm{XN}=\left(\Delta\overline X-\Delta\overline M\right)\frac{1-c-z}{1-c-z+m}\]
+  \end{formula}
+\item \emph{Implicación}: con $c+z<1$, \textbf{ajuste incompleto}: $0<\Delta\mathrm{XN}<\Delta\overline X$. Importaciones que sustituyen a bienes nacionales: el saldo empeora menos que el impulso; si se suman al gasto, en todo.
+\item \emph{Evidencia}: el multiplicador cae dentro del rango de los modelos enlazados (\autor{Deardorff}-\autor{Stern}, 1979). \emph{Valoración}: sin mercado de dinero (con LM, efecto renta menor si ↑$b$, ↑$k$; mayor si ↑$h$); con 2 países, signo de \autor{Marshall}-\autor{Lerner} pero mejora menor; efecto \autor{Harberger}-\autor{Laursen}-\autor{Metzler} (1950).
+\end{itemize}
+
+\sub{I.3. La absorción\label{rep:I.3}}
+\begin{itemize}
+\item \autor{Alexander} (1952), en la «edad dorada»: con pleno empleo la producción no crece. \concepto{Absorción} $A\equiv C+I+G$:
+  \funcionclave{\mathrm{XN}=Y-A}
+  El saldo mejora solo si la renta sube más que la absorción: la identidad $\mathrm{CC}=S-I$ leída como teoría \vertema{3.B.11}.
+\item $\mathrm d\,\mathrm{XN}=[1-(c+z)]\,\mathrm dY-\mathrm d(\overline A-b\,i)$: \emph{efecto renta} (con paro; nulo en pleno empleo) y \emph{efecto directo sobre la absorción}: saldos reales (\autor{Pigou}-\autor{Patinkin}), efecto \autor{Keynes}, redistribución al sector público (progresividad en frío) y a los beneficios, ilusión monetaria.
+\item \emph{Implicación}: la devaluación sola puede no bastar: \textbf{reducir el gasto} (fiscal y monetaria) y \textbf{desviarlo} (devaluación) (\autor{Johnson}, 1958); base de los programas del FMI \vertema{3.B.22}. España 2008-2013: las 2 vías sin tipo de cambio (devaluación interna) \vertema{3.B.16} \vertema{4.A.28}.
+\item \emph{Valoración}: debate con las elasticidades y síntesis pobre; lo nuevo: el ahorro y la inversión deciden el saldo (lo retoma \hyperref[rep:III]{III}); ignora los flujos financieros.
+\end{itemize}
+
+\sub{I.4. Capital móvil: IS-LM-BP y \autor{Mundell}\label{rep:I.4}}
+\begin{itemize}
+\item \autor{Mundell}-\autor{Fleming} (1962-1963) \vertema{3.A.32}: cuenta financiera $\beta_K(i-i^*)$. BP: $xY^*-mY+\nu q+\beta_K(i-i^*)=0$; más plana cuanto más movilidad.
+\item \emph{Tipo fijo}: ajustan las reservas ($M=\mathrm{CI}+R$; la LM se desplaza). \emph{Flexible}: ajusta el tipo de cambio.
+\item \autor{Meade} (1951): equilibrio interno y externo; \autor{Tinbergen} (1952): tantos instrumentos como objetivos. \concepto{Clasificación eficaz de los mercados} (\autor{Mundell}, 1960): cada instrumento a su objetivo de mayor influencia relativa; con tipo fijo, \textbf{monetaria al externo, fiscal al interno} (1962). Trilema \vertema{3.B.15}.
+\item \emph{Tipo flexible} (\autor{Friedman}, 1953): sin capitales equilibra la CC; pero exige depreciación real, \autor{Marshall}-\autor{Lerner} y que los flujos financieros no dominen: desequilibrios persistentes (EE.\,UU. desde los 80).
+\end{itemize}
+\graficorepaso[0.62\linewidth]{is-lm-bp}{IS-LM-BP: equilibrio y los 3 casos de movilidad}
+
+% ==========================================================================
+\bloque[5]{II. Reservas: enfoques de \emph{stocks}\label{rep:II}}
+\begin{ideaclave}
+La balanza de pagos «cabeza abajo»: los desequilibrios nacen en los mercados de activos. Con tipo fijo, el ajuste es automático y pasa por las reservas: el banco central no controla el dinero, lo que crea de más se va por la balanza. Con activos imperfectamente sustituibles, ajuste parcial.
+\end{ideaclave}
+
+\sub{II.1. El flujo-especie\label{rep:II.1}}
+\begin{itemize}
+\item \autor{Hume} (1752) \vertema{3.A.2}: la balanza se ajusta sola, sin tocar el tipo de cambio; base del patrón oro \vertema{3.B.20}.
+\item \emph{Supuestos}: patrón oro estricto; \emph{teoría cuantitativa}: la ecuación de cambio $MV\equiv PY$ es una \emph{identidad}; se vuelve teoría con supuestos causales ($V$ estable, pleno empleo, causalidad del dinero a los precios); solo bienes; elasticidades suficientes.
+\item \emph{Desarrollo}: déficit $\Rightarrow$ sale oro $\Rightarrow$ ↓$M$ $\Rightarrow$ ↓$P$ $\Rightarrow$ depreciación real $\Rightarrow$ ↑X, ↓M $\Rightarrow$ se corrige. Al revés en el país con superávit.
+\item \emph{Valoración}: \concepto{reglas del juego} (no esterilizar; \autor{Mill}: subir el tipo de descuento) que se incumplieron (\autor{Bloomfield}, 1959); \concepto{asimetría} (el acreedor no expande: \autor{Keynes} en Bretton Woods \vertema{3.B.19}); precios rígidos (lección de 1929); solo bienes; efecto \autor{Cantillon}.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{flujo-especie}{El circuito del flujo-especie: país con déficit y con superávit}
+
+\sub{II.2. Enfoque monetario\label{rep:II.2}}
+\begin{itemize}
+\item \autor{Johnson} (1972), \autor{Frenkel}-\autor{Johnson} (1976): monetarismo abierto \vertema{3.A.5}, base de la programación financiera del FMI \vertema{3.B.22}.
+\item \emph{Supuestos}: país pequeño, $\overline E$, pleno empleo, ley del precio único en bienes y activos ($P=\overline EP^*$, $i=i^*$), demanda de dinero estable, multiplicador 1. $M^S=\mathrm{CI}+R$:
+  \funcionclave{\Delta R=\Delta M^D-\Delta\mathrm{CI}}
+\item \emph{Implicaciones}: la balanza es un fenómeno monetario y transitorio; ↑CI $\Rightarrow$ pierde reservas por el mismo importe, sin cambiar $M$, $Y$ ni $P$; si insiste, crisis (\autor{Krugman}, 1979) \vertema{3.B.17}; \textbf{regla de crédito} $\Delta\mathrm{CI}=\Delta M^D$ ($k$~\% de \autor{Friedman}; techos de crédito del FMI); la devaluación solo tiene efectos transitorios. Con tipo flexible: enfoque monetario del tipo de cambio \vertema{3.B.14}.
+\item \emph{Valoración}: falla la ley del precio único (no comerciables; activos no sustitutos perfectos).
+\end{itemize}
+
+\sub{II.3. Cartera\label{rep:II.3}}
+\begin{itemize}
+\item \autor{McKinnon}-\autor{Oates} (1966), \autor{Branson} (1968, 1977): activos \emph{sustitutos imperfectos} (\emph{home bias}); $W=M+B+EB^*$.
+\item Expansión monetaria $\Rightarrow$ compra de bonos nacionales y extranjeros $\Rightarrow$ ajuste \textbf{automático pero parcial y más lento}; algo de autonomía monetaria.
+\item \emph{Valoración}: riqueza exógena (sin cuenta corriente), mercados eficientes, estático.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11,5]{III. Enfoque intertemporal y sostenibilidad\label{rep:III}}
+\begin{ideaclave}
+La cuenta corriente es la diferencia entre el ahorro y la inversión óptimos, y su contrapartida es la cuenta financiera. Un déficit puede ser óptimo, pero óptimo no es sostenible: el superávit comercial futuro tiene que cubrir el coste de la deuda neto del crecimiento, y la moneda, la financiación y la valoración importan tanto como el saldo.
+\end{ideaclave}
+
+\sub{III.1. Del ajuste a la elección\label{rep:III.1}}
+\begin{itemize}
+\item \autor{Sachs} (1981): déficits de los 70 con ↑ inversión. \autor{Obstfeld} (1982), \autor{Svensson}-\autor{Razin} (1983); \autor{Obstfeld}-\autor{Rogoff} (1995, 1996). Microfundamentado, dinámico y \emph{real} (vale con cualquier régimen). \textbf{Un déficit no tiene por qué ser malo}: vigilar su sostenibilidad.
+\end{itemize}
+
+\sub{III.2. El modelo de 2 periodos\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Supuestos}: economía pequeña y abierta, $r^*$ dado, 2 periodos, un bien; $Y_t=F(K_t)$, $F''<0$, $K_{t+1}=K_t+I_t$; agente representativo, $U=u(C_t)+\beta\,u(C_{t+1})$, $\beta\equiv1/(1+\rho)$; acceso perfecto al capital mundial.
+\item \emph{Desarrollo}: autarquía en $A$ (tangencia FPP-indiferencia, $r^A$); con apertura, restricción en valor actual y 2 condiciones:
+  \funcionclave{u'(C_t)=\beta\,(1+r^*)\,u'(C_{t+1})}
+  \funcionclave{F'(K_{t+1})=r^*}
+  \concepto{Separación de \autor{Fisher}}: primero la producción, después el consumo \vertema{3.A.29}. $\mathrm{CC}_t=S_t-I_t$; $\mathrm{XN}_{t+1}=-(1+r^*)\mathrm{CC}_t$.
+\item \emph{Gráfico} ($r^*<r^A$): produce en $P$ (invierte más), consume en $C$ (más utilidad); déficit en $t$ (horizontal), superávit comercial en $t+1$ (vertical).
+\item \emph{Implicaciones}: ajusta la cuenta financiera; la apertura nunca reduce el bienestar; ↑$r^A$ con poco capital, impaciencia o renta futura alta; corregir un déficit óptimo reduce bienestar: intervenir solo ante distorsiones o falta de sostenibilidad. España años 2000: déficit para vivienda, difícil de defender como óptimo.
+\end{itemize}
+\graficorepaso[0.66\linewidth]{cc-intertemporal}{Autarquía ($A$) y apertura: produce en $P$, consume en $C$}
+
+\sub{III.3. Valoración y extensiones\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Extensiones}: \concepto{ecuación fundamental de la CC}, $\mathrm{CC}_t=(Y_t-Y^P_t)-(I_t-I^P_t)-(G_t-G^P_t)$ \vertema{3.A.33}: \textbf{lo temporal se financia; lo permanente se ajusta}; relación de intercambio (\autor{Harberger}-\autor{Laursen}-\autor{Metzler} con optimización); restricciones de crédito, prima de riesgo y \concepto{parada súbita} (\emph{sudden stop}; \autor{Calvo}, 1998); precios rígidos (\emph{Redux}).
+\item \emph{Evidencia}: a favor, \autor{Sachs} y \autor{Glick}-\autor{Rogoff} (1995). Paradojas: \autor{Feldstein}-\autor{Horioka} (1980, coef.\ $\approx$0,9; cae en el euro); \autor{Lucas} (1990: India $\times58$ $\Rightarrow$ $\times5$ con capital humano); \concepto{puzle de la asignación} (\autor{Gourinchas}-\autor{Jeanne}, 2013); desequilibrios globales y exceso de ahorro mundial (\autor{Bernanke}, 2005); poco reparto del riesgo.
+\item \emph{Valoración}: cambia la forma de ver el déficit; supuestos fuertes (país pequeño, acceso perfecto, sin impago); explica mal adónde va el capital $\Rightarrow$ ¿se puede pagar la deuda?
+\end{itemize}
+
+\sub{III.4. Sostenibilidad del déficit y de la deuda\label{rep:III.4}}
+\begin{itemize}
+\item 3 conceptos (\autor{Milesi-Ferretti}-\autor{Razin}, 1996): \concepto{liquidez} (refinanciar), \concepto{solvencia} (VA de superávits $\geq$ deuda), \concepto{sostenibilidad} (atender la deuda sin financiación excepcional ni ajuste brusco; FMI, 2002). Mismo esquema que la deuda pública \vertema{3.A.39}.
+\item $B_t=(1+i^*)B_{t-1}+D_t$ ($D$ = déficit comercial, el «primario»); en ratios reales:
+  \funcionclave{b_t=\frac{1+r^*}{1+\gamma_Y}\,b_{t-1}+d_t}
+  No mezclar: nominal con nominal, real con real. \textbf{Saldo estabilizador}:
+  \funcionclave{-d=\frac{r^*-\gamma_Y}{1+\gamma_Y}\,b}
+  Si $r^*>\gamma_Y$, hace falta superávit (\concepto{bola de nieve}); si $r^*<\gamma_Y$, cabe un déficit acotado. Solvencia: $b_{t-1}=\sum_k\left(\tfrac{1+\gamma_Y}{1+r^*}\right)^{k+1}(-d_{t+k})$ (sin juego de \autor{Ponzi}).
+\item \emph{Deuda en divisas}: $b_t=\frac{(1+r^*)(1+\gamma_q)}{1+\gamma_Y}b_{t-1}+d_t$: la depreciación real la sube; la inflación propia solo licúa la deuda en moneda nacional.
+\item \emph{Determinantes} (signo): deuda ($-$), crecimiento ($+$), tipo de interés ($-$), inflación (?: solo licúa la deuda en moneda nacional), absorción ($-$), depreciación con deuda en divisas ($-$), acceso a los mercados ($+$).
+\end{itemize}
+\graficorepaso[0.86\linewidth]{dinamica-deuda-externa}{$r^*>\gamma_Y$: con déficit comercial crece sin límite; con superávit, $\overline b$ umbral inestable}
+\begin{itemize}
+\item \emph{Extensiones}: \textbf{efectos de valoración} ($\Delta\mathrm{PIIN}=\mathrm{CF}+\mathrm{OV}$; EE.\,UU.: $\approx$27~\% del ajuste cíclico, \autor{Gourinchas}-\autor{Rey}, 2007); \textbf{indicadores} (CC media 3 años, PDM $-4/+6$~\%; PIIN $-35$~\%; servicio/exportaciones; reservas/deuda a corto 100~\%, \autor{Greenspan}-\autor{Guidotti}); \concepto{intolerancia a la deuda} (\autor{Reinhart}, 2003); \textbf{DSA del FMI} (2002): SRDSF (2021-2022) y marco de renta baja con el BM (umbrales 30/40/55~\% del PIB; revisado en sept.\ 2026, desde verano de 2027) \vertema{3.B.29}; ¿se corrige sola la deuda?; \textbf{financiación} (IED y acciones estables y reparten riesgo; bonos y préstamos volátiles; Plan \autor{Brady}, 1989); \concepto{pecado original} (\autor{Eichengreen}-\autor{Hausmann}, 1999; \autor{Volcker} y 1982); ciclo financiero mundial (\autor{Rey}, 2013); \concepto{reparto del riesgo}: EE.\,UU.\ capital 39~\%, crédito 23, fiscal 13, sin suavizar 25 (\autor{Asdrubali}-\autor{S\o{}rensen}-\autor{Yosha}, 1996); euro $\approx$80~\% sin suavizar; superávits excesivos (PDM +6~\%; FMI, \emph{External Sector Report}).
+\item \emph{España}: tabla de sostenibilidad abajo; cumple el indicador de CC (3,1~\%) pero no el de PIIN (\dato{$-42{,}7$~\%}{2025}) \vertema{4.A.21} \vertema{4.A.29}.
+\item \emph{Valoración}: dice qué saldo estabiliza la ratio, no a qué nivel conviene; no todo el déficit es deuda; la moneda y la valoración cambian el resultado.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{cc-piin-espana}{España: CC y PIIN, 1995-2025 (\% del PIB)}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: precios relativos (si \autor{Marshall}-\autor{Lerner}), renta (incompleto), reservas (automático con tipo fijo); absorción: $\mathrm{XN}=Y-A$; intertemporal: un déficit puede ser óptimo; pero óptimo no es sostenible.
+\item \textbf{Relevancia}: ajuste con 4 políticas: reducir y desviar el gasto, reformas que atraen IED, financiación oficial; crecer con inversión productiva y financiación estable; FMI y PDM, también superávits.
+\item \textbf{Extensiones}: \vertema{3.B.11}, \vertema{3.B.14}, \vertema{3.B.15}, \vertema{3.B.16}, \vertema{3.B.17}, \vertema{3.B.19}, \vertema{3.B.22}, \vertema{3.B.29}; España \vertema{4.A.21}.
+\item \textbf{Opinión}: ningún enfoque basta solo; sin cambiar ahorro o inversión ni una devaluación ni un arancel corrigen un déficit; preguntar por qué existe y cómo se financia.
+\item \textbf{Idea final}: un déficit es malo si financia lo que no se podrá devolver. 2007: vivienda con deuda; después, una década de ajuste sin devaluar. De aquellos polvos, estos lodos.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1752}{\autor{Hume}: flujo-especie}
+\hito{1925}{\autor{Keynes}: contra la paridad de preguerra}
+\hito{1933}{\autor{Harrod}: multiplicador del comercio exterior}
+\hito{1937}{\autor{J. Robinson}; \autor{Lerner} (1944): elasticidades}
+\hito{1950}{\autor{Harberger}; \autor{Laursen}-\autor{Metzler}}
+\hito{1951}{\autor{Meade}: equilibrio interno y externo}
+\hito{1952}{\autor{Alexander}: absorción; \autor{Tinbergen}: instrumentos}
+\hito{1953}{\autor{Friedman}: tipos flexibles}
+\hito{1958}{\autor{Johnson}: reducir y desviar el gasto}
+\hito{1962}{\autor{Mundell}: asignación; \autor{Fleming} (1962)}
+\hito{1972}{\autor{Johnson}: enfoque monetario}
+\hito{1973}{\autor{Magee}: curva J}
+\hito{1977}{\autor{Branson}: cartera}
+\hito{1980}{\autor{Feldstein}-\autor{Horioka}}
+\hito{1981}{\autor{Sachs}: enfoque intertemporal}
+\hito{1990}{\autor{Lucas}: paradoja}
+\hito{1996}{\autor{Obstfeld}-\autor{Rogoff}; \autor{Milesi-Ferretti}-\autor{Razin}}
+\hito{1999}{\autor{Eichengreen}-\autor{Hausmann}: pecado original}
+\hito{2002}{FMI: análisis de sostenibilidad (DSA)}
+\hito{2005}{\autor{Bernanke}: exceso de ahorro mundial}
+\hito{2020}{\autor{Gopinath}: facturación en dólares}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item España: CC \dato{$-9{,}4$~\% del PIB}{2007}; \dato{+3,2~\%}{2025}. PIIN \dato{$-85$~\% (2007); $-42{,}7$~\% (2025); $-40{,}7$~\% (mitad de 2026)}{BdE, Eurostat}.
+\end{itemize}
+{\centering\small
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Año & $b$ & Rend. & $\gamma^N$ & $-d$ estab.\ / registrado\\
+\midrule
+2007 & 73,0 & 4,3 & 7,2 & $-2{,}0$ / $-6{,}0$\\
+2015 & 95,2 & 0,5 & 4,6 & $-3{,}8$ / $+3{,}1$\\
+2019 & 78,0 & 0,4 & 3,4 & $-2{,}2$ / $+2{,}8$\\
+2025 & 39,9 & 0,7 & 5,7 & $-1{,}9$ / $+4{,}5$\\
+\bottomrule
+\end{tabular}\par}
+{\footnotesize\color{tceegris} España: sostenibilidad de la posición exterior (\% del PIB y \%; BdE y Eurostat).}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué la condición de \autor{Marshall}-\autor{Lerner} se escribe con comercio equilibrado?} Con déficit, en moneda nacional es más exigente; en divisas, menos: decir siempre en qué moneda se mide.
+\item \textbf{¿Qué aporta la absorción?} Que el saldo es lo que se produce menos lo que se gasta: sin cambiar ahorro o inversión, la devaluación no basta con pleno empleo.
+\item \textbf{¿Por qué es ineficaz la política monetaria en el enfoque monetario?} Con tipo fijo y precio único, el crédito de más se va en reservas: $\Delta R=-\Delta\mathrm{CI}$.
+\item \textbf{¿Es malo un déficit corriente?} No en sí: puede financiar inversión rentable o suavizar una perturbación temporal; la pregunta es si es sostenible.
+\item \textbf{¿Qué saldo estabiliza la deuda exterior?} $-d=\frac{r^*-\gamma_Y}{1+\gamma_Y}b$, con el saldo comercial (sin intereses), como el primario de la deuda pública.
+\item \textbf{¿Resuelve el tipo flexible el problema del ajuste?} Sin capitales, equilibra la CC; con capitales, el tipo de vaciado admite déficits persistentes, y exige depreciación real y \autor{Marshall}-\autor{Lerner}.
+\item \textbf{¿Qué es la paradoja de \autor{Feldstein}-\autor{Horioka}?} Con capital perfectamente móvil, la inversión no dependería del ahorro propio; en la OCDE lo seguía casi uno a uno (coef.\ $\approx$0,9).
+\item \textbf{¿Por qué preocupa la deuda en divisas?} La depreciación real la encarece (pecado original); la inflación propia no la licúa.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $E$ directo: ↑$E$ = depreciación; ↑$q$ = depreciación real = ↑ competitividad.
+\item \autor{Marshall}-\autor{Lerner}: suma de \emph{valores absolutos} > 1, con comercio inicialmente equilibrado.
+\item Multiplicador: ajuste \emph{incompleto} ($0<\Delta\mathrm{XN}<\Delta\overline X$ si $c+z<1$).
+\item Asignación de \autor{Mundell} (tipo fijo): monetaria al \emph{externo}, fiscal al \emph{interno}.
+\item Flujo-especie: ajustan los \emph{precios} internos; enfoque monetario: las \emph{reservas} (precios fijados fuera).
+\item Sostenibilidad con el saldo \emph{comercial}, no con la CC; nominal con nominal, real con real.
+\item PDM: CC media de 3 años entre $-4$ y $+6$~\%; PIIN, $-35$~\%.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

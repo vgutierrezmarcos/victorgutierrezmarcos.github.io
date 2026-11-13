@@ -1,0 +1,42 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Tipo de cambio efectivo real del dólar (índice estrecho del BPI, 2020=100),
+% mensual, 1970-2026 (julio). ../datos/dolar-tipo-efectivo.csv (FRED RNUSBIS,
+% consulta 13/11/2026). Hitos: flotación (marzo de 1973), máximo de marzo de
+% 1985 (116,3), Plaza (sep. 1985), Louvre (feb. 1987, 89,1), mínimo de julio de
+% 2011 (73,5), máximo de octubre de 2022 (111,9), julio de 2026 (104,4).
+% Capas: hitos verticales (umbral) -> serie -> puntos -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/dolar-tipo-efectivo.csv}\dol
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=13cm, height=6.6cm, xmin=1970, xmax=2027, ymin=65, ymax=125,
+      xtick={1970,1975,...,2025}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={índice, 2020=100}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \capa{1}{
+      \dicraya[dicumbral]{(1973.2,65) (1973.2,122)}
+      \dicraya[dicumbral]{(1985.7,65) (1985.7,122)}
+      \dicraya[dicumbral]{(1987.1,65) (1987.1,122)}
+      \dicraya[dicumbral]{(2008.7,65) (2008.7,122)}
+      \dicraya[dicumbral]{(2025.25,65) (2025.25,122)}
+    }
+    \capa{2}{\addplot[diclinea=dicze, thick] table[x=anio, y=indice] {\dol};}
+    \capa{3}{
+      \addplot[on layer=dicpuntos, dicsuelto, dicpuntos=dicespana] coordinates {(1985.2,116.27) (1987.1,89.11) (2011.5,73.48) (2022.8,111.93) (2026.54,104.40)};
+    }
+    \capa{4}{
+      \dicrotulo[font=\scriptsize, anchor=south, text=tceegris, align=center]{(1973.2,122)}{flotación\\(1973)}
+      \dicrotulo[font=\scriptsize, anchor=south east, text=tceegris, align=right, inner sep=1pt]{(1985.6,122)}{Plaza}
+      \dicrotulo[font=\scriptsize, anchor=south west, text=tceegris, align=left, inner sep=1pt]{(1987.2,122)}{Louvre}
+      \dicrotulo[font=\scriptsize, anchor=south, text=tceegris]{(2008.7,122)}{Lehman}
+      \dicrotulo[font=\scriptsize, anchor=south, text=tceegris, align=center]{(2025.25,122)}{aranceles}
+      \dicrotulo[font=\scriptsize, anchor=east]{(1984.9,117.5)}{116,3 (mar.~1985)}
+      \dicrotulo[font=\scriptsize, anchor=north]{(1987.6,88)}{89,1}
+      \dicrotulo[font=\scriptsize, anchor=north]{(2011.5,72.5)}{73,5 (2011)}
+      \dicrotulo[font=\scriptsize, anchor=south east]{(2022.6,112.5)}{111,9 (2022)}
+      \dicrotulo[font=\scriptsize, anchor=north]{(2026.4,103)}{104,4}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

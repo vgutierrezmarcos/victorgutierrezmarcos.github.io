@@ -188,6 +188,12 @@ Aplicada en cada una la opción recomendada o la que dio el coordinador.
 13. **Dichos** (13/11/2026): se quedan 3 de los 6, integrados («gato escaldado…», «pagan justos por pecadores», «acordarse de Santa Bárbara…»). Alternativas: (a) quedarse solo con el refrán del enganche; (b) recuperar alguno de los quitados. **Aplicada: 3 integrados (recomendada).**
 14. **CMDI: comprobación** (13/11/2026): las fechas y los títulos de la Directiva 2026/806 y del Reglamento 2026/808 se han comprobado con el 3.B.27 y con notas de despachos y del Parlamento Europeo (la página de EUR-Lex no devolvió el texto al programa): **[comprobar]** en EUR-Lex el título en español de las 2 entradas nuevas del `.bib`. **Aplicada: citar los 3 actos.**
 
+## Ficha de repaso (13/11/2026)
+
+- `repaso/3B26-repaso.tex`, nueva, con el modelo de las fichas de esta rama (3B27, 3B13, 3B28). `construir-repaso.py 3B26 --no-publicar`: **4 páginas, 9,5 pt; última página al 90 %**; `verificar-tema.py 3B26` sin errores de la ficha (solo los 3 de los formatos publicados anteriores a la fuente).
+- Contenido, todo sacado del tema: esquema con minutos y plan de pizarra (el balance a la izquierda todo el cante); introducción; I con tipos, anatomía y las 3 teorías (burbujas en morado); II con la figura del balance, Diamond-Dybvig (condición del óptimo en morado, gráfico y ordenación del bienestar), extensiones, red de seguridad con los 3 actos de la CMDI de 2026, la crisis de 2007-2008 (vivienda), el círculo vicioso (figura y diferenciales); III con el VaR en morado y su gráfico, la ES, la pérdida esperada y Merton en morado, liquidez, brecha de duración, SVB y Credit Suisse; conclusión; tablas de tipos de crisis, de riesgos y cronología 2007-2012; definiciones; datos clave; autores y fechas; 12 preguntas; «Ojo en el test».
+- Dichos: los 3 del tema, integrados («gato escaldado…», «pagan justos por pecadores», «Santa Bárbara»). Las indicaciones de pizarra van solo en la ficha (bloque «Pizarra» bajo el esquema del cante), no en el tema.
+
 ## 8. Instrucciones para el vídeo
 
 - **Introducción y conclusión, sin pizarra.** Enganche: «El miedo es libre», dice el refrán; las colas de Northern Rock (septiembre de 2007) y los más de 40.000 millones que salieron de Silicon Valley Bank en un día (9 de marzo de 2023), sin colas. Idea final: volver al refrán («el miedo es libre, y en un banco se convierte en realidad si nadie lo frena») y responder a la problemática: lo que impide el pánico no es que nadie tenga miedo, sino que nadie tenga motivos para tenerlo.

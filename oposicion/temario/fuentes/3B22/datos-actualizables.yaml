@@ -1,0 +1,248 @@
+tema: 3B22
+fecha_inventario: 2026-11-13
+datos:
+  - id: miembros-fmi
+    texto: "tiene 191 países miembros"
+    donde: [3B22.tex, graficos/gobierno-fmi.tex]
+    valor: 191
+    unidad: países miembros
+    periodo: "2026-11"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "IMF Annual Report 2026; Liechtenstein, n.º 191, el 21/10/2024"
+    url: https://www.imf.org/annual-report/2026/
+    periodicidad: cuando entra un miembro
+    proxima: sin fecha
+    familia: fmi-gobierno
+
+  - id: cargos-fmi
+    texto: "Kristalina Georgieva (segundo mandato desde octubre de 2024); primer subdirector Dan Katz (octubre de 2025); economista jefe Silvana Tenreyro (agosto de 2026); CMFI presidido por Mohammed Aljadaan (desde enero de 2024, prorrogado un año en Bangkok)"
+    donde: [3B22.tex]
+    valor: null
+    unidad: cargos
+    periodo: "2026-11"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "IMF Annual Report 2026, Executive Directors and Management Team"
+    url: https://www.imf.org/annual-report/2026/who-we-are/executive-directors-and-management-team/
+    periodicidad: cuando cambian
+    proxima: "2026-12 (relevo de Bo Li por Liao Min, según la prensa, sin confirmar)"
+    familia: fmi-gobierno
+    nota: "la silla de España (con México, Colombia, Costa Rica, El Salvador, Guatemala y Honduras) y su directora (Xiana Méndez) salen del blog del BdE de 27/02/2025 y del IA 2026"
+
+  - id: directorio-25
+    texto: "25 directores ejecutivos, desde noviembre de 2024"
+    donde: [3B22.tex, graficos/gobierno-fmi.tex]
+    valor: 25
+    unidad: sillas del Directorio Ejecutivo (y miembros del CMFI)
+    periodo: "2024-11"
+    fuente: FMI2024Silla25
+    organismo: FMI
+    serie: "PR 24/403"
+    url: https://www.imf.org/en/news/articles/2024/11/01/pr-24403-imf-expands-executive-board-with-addition-of-25th-chair
+    periodicidad: elecciones regulares cada 2 años
+    proxima: "2026-11"
+    familia: fmi-gobierno
+
+  - id: personal-fmi
+    texto: "unos 3.100 empleados (3.118 en abril de 2026)"
+    donde: [3B22.tex, graficos/gobierno-fmi.tex]
+    valor: 3118
+    unidad: empleados a 30 de abril
+    periodo: "2026-04"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "IMF Annual Report 2026, Web Table 3.2"
+    url: https://www.imf.org/annual-report/2026/pdfs/imf-annual-report-2026-web-tables.pdf
+    periodicidad: anual (informe anual, octubre)
+    proxima: "2027-10"
+    familia: fmi-informe-anual
+
+  - id: cuotas-votos
+    texto: "Estados Unidos tiene el 16,49~\\% de los votos; le siguen Japón (6,14~\\%), China (6,08~\\%), Alemania (5,31~\\%) y Francia y el Reino Unido (4,03~\\% cada uno). España, con una cuota de 9.535,5 millones de DEG (el 2~\\% del total), tiene el 1,92~\\%"
+    donde: [3B22.tex, repaso/3B22-repaso.tex]
+    valor: 16.49
+    unidad: "% del total de votos (Estados Unidos)"
+    periodo: "2026-06-17"
+    fuente: FMI2026Cuotas
+    organismo: FMI
+    serie: "IMF Members' Quotas and Voting Power (tabla dinámica; leída en web.archive.org)"
+    url: https://www.imf.org/en/about/executive-board/members-quotas
+    periodicidad: cuando cambian cuotas o miembros
+    proxima: "al entrar en vigor la 16.ª revisión"
+    familia: fmi-cuotas
+    depende: [datos/cuotas-votos.csv, graficos/cuotas-votos.tex]
+
+  - id: cuotas-avanzadas
+    texto: "Las economías avanzadas tienen el 61,6~\\% de las cuotas"
+    donde: [3B22.tex]
+    valor: 61.56
+    unidad: "% de las cuotas"
+    periodo: "2026-10"
+    fuente: FMI2026FA
+    organismo: FMI
+    serie: "Fund Accounts, IMFQ_XDR, G110 y G200"
+    url: https://api.imf.org/external/sdmx/2.1/data/IMF.STA,FA,8.0.0/G001+G110+G200.IMFQ_XDR.M
+    periodicidad: mensual
+    proxima: "al entrar en vigor la 16.ª revisión"
+    familia: fmi-cuotas
+    depende: [datos/cuotas-grupos.csv]
+
+  - id: revision-16-cuotas
+    texto: "la 16.ª (diciembre de 2023) aprobó un aumento del 50~\\% ... hasta 715.700 millones de DEG ... en abril de 2026 lo habían dado 149 con el 76,7~\\% ... prorrogado 4 veces, la última hasta el 15 de noviembre de 2026"
+    donde: [3B22.tex, repaso/3B22-repaso.tex]
+    valor: 76.66
+    unidad: "% de las cuotas que han dado su consentimiento"
+    periodo: "2026-04-29"
+    fuente: CRS2026FMI
+    organismo: FMI / Congressional Research Service
+    serie: "Policy Paper 2026/017 (prórroga) y CRS R49499"
+    url: https://www.imf.org/en/publications/policy-papers/issues/2026/05/13/extension-of-the-period-for-consent-to-increase-quotas-under-the-sixteenth-general-review-576053
+    periodicidad: cada prórroga (semestral)
+    proxima: "2026-11-15 (vence el plazo: comprobar si se prorroga o entra en vigor)"
+    familia: fmi-cuotas
+    nota: "si entra en vigor: cuotas 715.700 M de DEG, España 14.303,3 M, NAP a unos 303.000 M, límites de acceso entre 1,5 y fin de los acuerdos bilaterales"
+
+  - id: recursos-prestados
+    texto: "NAP: 40 participantes, por 364.000 millones de DEG para 2026-2030; acuerdos bilaterales: 39, por unos 136.600 millones de DEG"
+    donde: [3B22.tex]
+    valor: 364
+    unidad: miles de millones de DEG (NAP)
+    periodo: "2026-04"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "IMF Annual Report 2026, Resources"
+    url: https://www.imf.org/annual-report/2026/who-we-are/resources/
+    periodicidad: anual
+    proxima: "2027-10"
+    familia: fmi-informe-anual
+
+  - id: cesta-deg
+    texto: "dólar 43,38~\\%, euro 29,31~\\%, renminbi 12,28~\\%, yen 7,59~\\% y libra 7,44~\\% ... hasta el 31 de julio de 2027 ... un DEG valía 1,347 dólares"
+    donde: [3B22.tex, repaso/3B22-repaso.tex]
+    valor: 43.38
+    unidad: "% (peso del dólar)"
+    periodo: "2022-08 a 2027-07"
+    fuente: FMI2022DEG
+    organismo: FMI
+    serie: "Revisión del método de valoración del DEG (cada 5 años)"
+    url: https://www.imf.org/en/news/articles/2022/05/14/pr22153-imf-board-concludes-sdr-valuation-review
+    periodicidad: quinquenal
+    proxima: "2027-07 (nueva cesta desde el 1/08/2027)"
+    familia: fmi-deg
+    depende: [datos/cesta-deg.csv, graficos/cesta-deg.tex]
+
+  - id: tipo-deg
+    texto: "A mediados de noviembre de 2026 era del 3,119~\\%"
+    donde: [3B22.tex]
+    valor: 3.119
+    unidad: "% anual"
+    periodo: "2026-11-09/15"
+    fuente: FMI2026ValorDEG
+    organismo: FMI
+    serie: "SDR interest rate (semanal)"
+    url: https://www.imf.org/external/np/fin/data/sdr_ir.aspx
+    periodicidad: semanal
+    proxima: "en cada revisión del tema"
+    familia: fmi-deg
+
+  - id: asignaciones-deg
+    texto: "Se han asignado en total 660.800 millones de DEG ... 7 de cada 10, en la de agosto de 2021"
+    donde: [3B22.tex]
+    valor: 660.8
+    unidad: miles de millones de DEG
+    periodo: "2026-04"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "IMF Annual Report 2026"
+    url: https://www.imf.org/annual-report/2026/
+    periodicidad: cuando haya una asignación
+    proxima: sin fecha
+    familia: fmi-deg
+
+  - id: saldos-precautorios
+    texto: "En abril de 2026 sumaban 26.300 millones de DEG, por encima de su objetivo de 25.000 millones"
+    donde: [3B22.tex]
+    valor: 26.3
+    unidad: miles de millones de DEG
+    periodo: "2026-04"
+    fuente: FMI2026SaldosPrecautorios
+    organismo: FMI
+    serie: "PR 26/114 e IA 2026"
+    url: https://www.imf.org/en/news/articles/2026/04/09/pr-26114-imf-executive-board-discusses-the-adequacy-of-the-funds-precautionary-balances
+    periodicidad: bienal (revisión) y anual (saldo)
+    proxima: "2027-10"
+    familia: fmi-informe-anual
+
+  - id: oro-fmi
+    texto: "90,5 millones de onzas, unas 2.814 toneladas"
+    donde: [3B22.tex]
+    valor: 2814.1
+    unidad: toneladas
+    periodo: "2026"
+    fuente: FMI2026InformeAnual
+    organismo: FMI
+    serie: "Gold in the IMF (ficha)"
+    url: https://www.imf.org/en/about/factsheets/sheets/2022/gold-in-the-imf
+    periodicidad: solo cambia si vende oro
+    proxima: sin fecha
+    familia: fmi-informe-anual
+
+  - id: credito-fmi
+    texto: "de los 92.000 millones de DEG de la Cuenta de Recursos Generales, Argentina debía el 46~\\%, Ucrania el 11~\\%, y Pakistán, Egipto y Ecuador, en torno al 8~\\% cada uno ... unos 122.700 millones de DEG (unos 165.000 millones de dólares)"
+    texto_repaso: "Argentina, 46\\,\\% de la CRG"
+    donde: [3B22.tex, repaso/3B22-repaso.tex]
+    valor: 122.717
+    unidad: miles de millones de DEG (crédito vivo total)
+    periodo: "2026-10"
+    fuente: FMI2026FA
+    organismo: FMI
+    serie: "Fund Accounts: CLIMF_XDR, IMFOPGRA_XDR, F4PRGT_XDR (mundo y países)"
+    url: https://api.imf.org/external/sdmx/2.1/data/IMF.STA,FA,8.0.0/G001.IMFOPGRA_XDR+F4PRGT_XDR+CLIMF_XDR.A+M
+    periodicidad: mensual
+    proxima: "2027-01 (dato de diciembre de 2026)"
+    familia: fmi-credito
+    depende: [datos/credito-fmi.csv, datos/mayores-deudores.csv, graficos/credito-fmi.tex]
+    frase: "enganche (42.000 millones de DEG, «casi la mitad»), II.3.3 «A quién presta hoy», III.4 Argentina"
+
+  - id: argentina-saf-2025
+    texto: "En abril de 2025 el FMI aprobó para Argentina un préstamo de 20.000 millones de dólares, casi 5 veces su cuota ... que en 2026 ha superado 2 revisiones"
+    donde: [3B22.tex, repaso/3B22-repaso.tex]
+    valor: 20000
+    unidad: millones de USD (DEG 15.267 millones, 479 % de la cuota)
+    periodo: "2025-04-11"
+    fuente: FMI2025ArgentinaEFF
+    organismo: FMI
+    serie: "Notas de prensa del programa (2.ª revisión, PR 26/165)"
+    url: https://www.imf.org/en/news/articles/2026/05/21/pr26165-argentina-imf-completes-2nd-rev-of-extended-arr-under-eff-concludes-2026-aiv-consultation
+    periodicidad: en cada revisión
+    proxima: "2026-12 (tercera revisión en el Directorio)"
+    familia: fmi-programas
+
+  - id: acceso-cargos
+    texto: "hasta el 200~\\% de la cuota al año y el 600~\\% acumulado ... margen de 60 puntos básicos ... 200 puntos básicos sobre el crédito que supera el 300~\\% de la cuota y 75 más si dura más de 3 años ... 36~\\% ... 1.200 millones de dólares al año"
+    donde: [3B22.tex, repaso/3B22-repaso.tex]
+    valor: 200
+    unidad: "% de la cuota (límite anual)"
+    periodo: "2024-12"
+    fuente: FMI2024LimitesAcceso
+    organismo: FMI
+    serie: "PR 24/499 (límites) y PR 24/385 (cargos y recargos)"
+    url: https://www.imf.org/en/news/articles/2024/10/21/pr-24385-imf-concludes-the-review-of-charges-and-surcharge-policy-and-approves-reforms
+    periodicidad: revisiones periódicas
+    proxima: "al entrar en vigor la 16.ª revisión (límites entre 1,5)"
+    familia: fmi-programas
+
+  - id: fsap-jurisdicciones
+    texto: "Hoy son 47 jurisdicciones (32 cada 5 años y 15 cada 10) ... España ... 2006, 2012, 2017 y 2024"
+    donde: [3B22.tex]
+    valor: 47
+    unidad: jurisdicciones con FSAP obligatorio
+    periodo: "2026-09"
+    fuente: FMI2026FSAPRevision
+    organismo: FMI
+    serie: "PR 26/298 (revisión del FSAP de 2026)"
+    url: https://www.imf.org/en/news/articles/2026/09/21/pr26298-imf-concludes-periodic-review-the-fsap
+    periodicidad: revisión cada 5 años
+    proxima: "cuando se publique la nueva lista (la prensa habla de 42)"
+    familia: fmi-supervision

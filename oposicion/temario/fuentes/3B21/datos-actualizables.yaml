@@ -1,0 +1,189 @@
+tema: 3B21
+fecha_inventario: 2026-11-13
+datos:
+  - id: arancel-efectivo-eeuu
+    texto: "el arancel medio efectivo de su país pasó del 2,6~\\% en 2024 al 8~\\% en 2025, el más alto desde 1946"
+    texto_repaso: "\\dato{2,6\\,\\% (2024) $\\to$ 8\\,\\% (2025)}{BEA, 2026}"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 8.0
+    unidad: "% (derechos de aduana / importaciones de bienes)"
+    periodo: "2025 (y 2026T1-T3: 8,1; trimestres 2025T4 11,3, 2026T3 6,9)"
+    fuente: BEA2026Aranceles
+    organismo: U.S. Bureau of Economic Analysis (vía FRED)
+    serie: "B235RC1A027NBEA / A255RC1A027NBEA (anual); B235RC1Q027SBEA / A255RC1Q027SBEA (trimestral)"
+    url: https://fred.stlouisfed.org/series/B235RC1Q027SBEA
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: bea-nipa
+    depende: [datos/arancel-efectivo-eeuu.csv, graficos/arancel-eeuu.tex]
+    frase: "enganche; III.1 «el resultado» (2,6 → 8; 11,3 en 2025T4; ronda el 7 % en 2026); pie del gráfico; ficha (enganche, III.1, datos clave)"
+    nota: "segunda comprobación: Penn Wharton (7,1 % en agosto de 2026). El dato de 2026 cambiará con el cuarto trimestre y con las devoluciones de la IEEPA"
+
+  - id: reservas-dolar-cofer
+    texto: "el dólar sigue en el 56,7~\\% de las reservas de divisas del mundo"
+    texto_repaso: "\\dato{56,7\\,\\%}{FMI, COFER, jun. 2026}"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 56.7
+    unidad: "% de las reservas de divisas asignadas"
+    periodo: 2026T2
+    fuente: FMI2026COFER
+    organismo: FMI
+    serie: "IMF.STA:COFER 7.0.1, G001.AFXRA.CI_USD.SHRO_PT.Q (euro 20,6; renminbi 2,1; yen 5,0; libra 4,6)"
+    url: https://data.imf.org/en/datasets/IMF.STA:COFER
+    periodicidad: trimestral (final de marzo, junio, septiembre y diciembre)
+    proxima: 2026-12
+    familia: fmi-cofer
+    depende: [datos/reservas-monedas.csv, graficos/reservas-monedas.tex]
+    frase: "enganche; I.4 d) (1,8 → más de 6 billones); III.2; pie del gráfico; ficha (enganche, III.2, datos clave, preguntas)"
+
+  - id: dolar-mercado-divisas
+    texto: "en una de las 2 patas del 89~\\% de las operaciones de cambio"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 89.2
+    unidad: "% de las operaciones (sobre 200 %)"
+    periodo: abril de 2025
+    fuente: BIS2025Trienal
+    organismo: BPI
+    serie: "Encuesta trienal 2025 (renminbi 8,5 %, 5.ª moneda)"
+    url: https://www.bis.org/statistics/rpfx25_fx.htm
+    periodicidad: trienal
+    proxima: 2028-09
+    familia: bpi-trienal
+
+  - id: oro-reservas
+    texto: "el oro era a finales de 2025 el 27~\\% de las reservas oficiales, por delante de la deuda del Tesoro de Estados Unidos (22~\\%) y del euro (15~\\%)"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 27
+    unidad: "% de las reservas oficiales a precios de mercado"
+    periodo: final de 2025
+    fuente: BCE2026PapelEuro
+    organismo: BCE
+    url: https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html
+    periodicidad: anual (junio)
+    proxima: 2027-06
+    familia: bce-papel-euro
+
+  - id: apertura-comercial-mundo
+    texto: "el comercio mundial de bienes y servicios pasa del 37~\\% del PIB mundial en 1985 al 60~\\% en 2008"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 56.7
+    unidad: "% del PIB mundial"
+    periodo: "1970-2024 (60,3 en 2008; 56,7 en 2024)"
+    fuente: BM2026WDIComercio
+    organismo: Banco Mundial
+    serie: "WDI NE.TRD.GNFS.ZS, WLD"
+    url: https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/apertura-comercial-mundo.csv, graficos/apertura-comercial.tex]
+    nota: "el agregado de 2025 (68,5) se excluye: cobertura incompleta. Revisar en la próxima actualización"
+
+  - id: desequilibrios-globales
+    texto: "El déficit corriente de Estados Unidos llegó al 1,5~\\% del PIB mundial en 2006 ... el FMI prevé para 2026 un superávit chino del 0,67~\\% del PIB mundial"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 0.67
+    unidad: "% del PIB mundial"
+    periodo: "1997-2026 (2026 previsión)"
+    fuente: FMI2026DataMapperBCA
+    organismo: FMI
+    serie: "WEO octubre 2026, BCA / NGDPD WEOWORLD"
+    url: https://www.imf.org/external/datamapper/BCA@WEO
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/desequilibrios-globales.csv, graficos/desequilibrios-globales.tex]
+
+  - id: dolar-tipo-efectivo
+    texto: "aprecia el dólar un 50~\\% en términos reales entre 1978 y marzo de 1985 ... ya un 23~\\% por debajo de su máximo"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 104.4
+    unidad: "índice 2020=100 (julio de 2026)"
+    periodo: "1970-01 a 2026-07"
+    fuente: BPI2026TCEDolar
+    organismo: BPI (vía FRED)
+    serie: RNUSBIS
+    url: https://fred.stlouisfed.org/series/RNUSBIS
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: bpi-tce
+    depende: [datos/dolar-tipo-efectivo.csv, graficos/dolar-tipo-efectivo.tex]
+    nota: "históricos (78,1 en oct. 1978; 116,3 en mar. 1985; 89,1 en feb. 1987) no cambian salvo revisión del BPI"
+
+  - id: pib-mundial-weo
+    texto: "En 2009 el PIB mundial cayó un 0,4~\\% ... en 2020 el PIB mundial cae un 2,7~\\% ... un crecimiento mundial del 3,1~\\%"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 3.1
+    unidad: "% (2026, previsión)"
+    periodo: "2009, 2020, 2026p"
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "WEO octubre 2026, NGDP_RPCH WEOWORLD"
+    url: https://www.imf.org/en/publications/weo
+    periodicidad: semestral
+    proxima: 2027-04
+    familia: fmi-weo
+
+  - id: comercio-omc-volumen
+    texto: "el volumen del comercio mundial de mercancías creció un 4,6~\\% en 2025 ... y la OMC prevé un 3,9~\\% en 2026"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 3.9
+    unidad: "% (2026, previsión)"
+    periodo: "2025 y 2026p"
+    fuente: OMC2026PrensaOct
+    organismo: OMC
+    url: https://www.wto.org/english/news_e/news26_e/stat_08oct26_510_e.htm
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-perspectivas
+
+  - id: omc-miembros-mpia
+    texto: "166 miembros ... el MPIA, que hoy agrupa a 62 miembros con el 60~\\% del comercio mundial"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 166
+    unidad: miembros
+    periodo: noviembre de 2026
+    fuente: OMC2026Miembros
+    organismo: OMC; Comisión Europea (MPIA)
+    url: https://www.wto.org/english/thewto_e/whatis_e/tif_e/org6_e.htm
+    periodicidad: cuando cambie
+    familia: omc-miembros
+
+  - id: fmi-cuotas-16
+    texto: "la 16.ª revisión general de cuotas ... no ha entrado en vigor ... el plazo se ha prorrogado hasta el 15 de noviembre de 2026"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: null
+    unidad: estado
+    periodo: noviembre de 2026
+    fuente: FMI2026Cuotas
+    organismo: FMI
+    url: https://www.imf.org/en/publications/policy-papers/issues/2026/05/13/extension-of-the-period-for-consent-to-increase-quotas-under-the-sixteenth-general-review-576053
+    periodicidad: cuando cambie
+    proxima: 2026-11-15
+    familia: fmi-cuotas
+    nota: "el plazo vence 2 días después de la revisión: comprobar si hay nueva prórroga o entrada en vigor"
+
+  - id: aranceles-eeuu-legal
+    texto: "sección 301 ... del 10~\\% o el 12,5~\\% a 60 economías ... prorrogado hasta enero de 2027"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: null
+    unidad: estado normativo
+    periodo: noviembre de 2026
+    fuente: USTR2026Seccion301
+    organismo: USTR; Casa Blanca
+    url: https://www.federalregister.gov/documents/2026/07/28/2026-15181/
+    periodicidad: cuando cambie
+    proxima: 2027-01-10
+    familia: aranceles-eeuu
+    nota: "tregua con China hasta el 10/1/2027 (CNBC, sin documento oficial); devoluciones de la IEEPA en litigio"
+
+  - id: euro-paises
+    texto: "hoy, 21, con Bulgaria desde 2026"
+    donde: [3B21.tex]
+    valor: 21
+    unidad: países
+    fuente: BCE2026Euro
+    organismo: BCE
+    url: https://www.ecb.europa.eu/euro/intro/html/index.en.html
+    periodicidad: cuando cambie
+    familia: bce-euro

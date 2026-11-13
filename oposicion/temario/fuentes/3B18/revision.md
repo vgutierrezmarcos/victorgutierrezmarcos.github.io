@@ -114,6 +114,10 @@ Tema traído de la rama `revision-temario`; puesto al nivel de los temas de `rev
 | NEK en (x, π), identidad cuantitativa | No salen. |
 | Ficha de repaso | El tema no tiene ficha (`repaso/` no existe); no se crea en esta puesta al día. |
 
+## Ficha de repaso (13/11/2026)
+
+Nueva: `repaso/3B18-repaso.tex`, con la estructura de las fichas del bloque (3B13, 3B28): esquema del cante con minutos e indicaciones de pizarra (solo en la ficha), introducción con sus 5 bloques, los 3 apartados con idea clave, subapartados con etiquetas `rep:`, conclusión, autores y fechas, datos clave, preguntas del tribunal y trampas del test. Solo resume el tema. Gráficos del tema: `indicadores-globalizacion`, `flujos-capital-brutos` y `curva-elefante` (pareja), `macdougall`, `remesas-ied-aod` y `remesas-pib-paises` (pareja), `hmy`, `cgv-participacion` (figura), `curva-sonrisa`, `contenido-importado-ue`; tabla de 4 casillas de hacer o comprar. Funciones clave: igualdad de salarios de MacDougall, umbrales de HMY e índice de participación. Dichos: «El mundo es un pañuelo», «el dinero es cobarde» y «ver los toros desde la barrera», como en el tema. Título corto de la ficha, «Globalización y movimientos de factores», para que no pise el pie. `construir-repaso.py 3B18 --no-publicar`: 4 páginas, 10,5 pt; última página llena al 88~%; `verificar-tema.py 3B18` sin errores de la ficha. Sin publicar: queda pendiente de la aprobación de Víctor.
+
 ## 7. Dudas abiertas
 
 Aplicada en todas la opción recomendada:

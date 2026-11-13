@@ -1,0 +1,233 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Teoría de la integración monetaria]{3.B.16}{Teoría de la integración monetaria.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «el casado casa quiere»}{2,5}
+\apartadocante{I. Costes: el enfoque tradicional de las AMO}{11}
+\subcante{1. Idea}{1}
+\subcante{2. Enfoque por criterios}{7,5}
+\subcante{3. Condiciones: las 3 dimensiones}{1,5}
+\subcante{4. Valoración}{1}
+\apartadocante{II. Análisis coste-beneficio}{9}
+\subcante{1. La segunda fase}{2}
+\subcante{2. Endogeneidad de los criterios}{2,5}
+\subcante{3. Evidencia empírica}{1,5}
+\subcante{4. Otros beneficios y costes}{2,5}
+\subcante{5. ¿Óptimas para quién?}{0,5}
+\apartadocante{III. Uniones incompletas y cómo completarlas}{6,5}
+\subcante{1. Introducción}{0,5}
+\subcante{2. Problemas: fragilidad, círculo, contagio}{2,5}
+\subcante{3. Soluciones}{3,5}
+\apartadocante{Conclusión}{1}}
+\emph{Pizarra}: intro y conclusión sin pizarra, con el refrán y «21 miembros» en una esquina. A la izquierda, los 3 bloques y la convención ($E$ directo, $q\equiv EP^*/P$). I: OA-DA de España y Alemania en 3 filas (perturbación, salarios, emigración), tabla de criterios con su dimensión y línea AMO. II: costes y beneficios frente a la apertura, plano simetría-integración con las 2 flechas y \autor{Barro}-\autor{Gordon} por capas; $\pi^D$ en morado arriba a la derecha hasta el final. III: círculo vicioso en 5 pasos y lista de soluciones.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «El casado casa quiere». 1/1/2026: Bulgaria adopta el euro, \dato{21 miembros}{BCE, CE}: una moneda y un banco central, pero 21 presupuestos, mercados de trabajo y sistemas bancarios. Casi 3 décadas después, el euro suma socios y sigue amueblando la casa (unión bancaria a medias, capacidad fiscal pequeña). ¿Cuándo compensa renunciar a la moneda propia? Y, si se renuncia, ¿qué casa común hace falta?
+\item \textbf{Relevancia}: \emph{España}: sin tipo de cambio ni política monetaria propia desde 1999; las 2 caras: fin de las devaluaciones y de la prima cambiaria; crisis de 2010-2012 sin tipo de cambio \vertema{4.A.28}. \emph{Política económica}: qué instrumentos quedan (fiscal, reformas) y qué instituciones necesita la unión. \emph{Teoría}: cruce de la macro abierta \vertema{3.A.32}, la credibilidad \vertema{3.A.36} y la integración \vertema{3.B.10}. \emph{Fuera de Europa}: África Occidental y Central, Caribe Oriental.
+\item \textbf{Contextualización}: \concepto{integración monetaria}: fijar de forma irrevocable los tipos o adoptar moneda común, cediendo la política monetaria; peldaño alto de la integración. Negativa + positiva (\autor{Tinbergen}, 1954). \concepto{Informe Werner} (1970): convertibilidad total e irreversible, sin márgenes, paridades irrevocables y libertad de capitales; la moneda única da irreversibilidad. \concepto{Informe Delors} (1989): 3 etapas \vertema{3.B.43}. \autor{Corden} (1972): \concepto{seudounión cambiaria} (cada uno su banco central: frágil) vs. \concepto{unión cambiaria completa}. Unión = extremo de los \concepto{anclajes duros} \vertema{3.B.15}; el FMI cuenta 4 uniones (euro, que flota; Caribe Oriental; UMOA y CEMAC, ancladas al euro). Nace del debate fijos-flexibles; con capitales móviles, fijar = renunciar a la política monetaria (\concepto{trilema}) \vertema{3.A.32}. \emph{Convención}: $E$ directo, ↑$E$ = depreciación; ↑$q$ = ganancia de competitividad. Teoría iniciada por \autor{Mundell} (1961): ¿cuál es el dominio apropiado de una moneda?
+\item \textbf{Problemática}: ¿cuándo compensa renunciar al tipo propio, qué cuesta y de qué depende? ¿Qué se gana? ¿Se cumplen las condiciones antes o las crea (o destruye) la unión? ¿Qué instituciones evitan la fragilidad?
+\item \textbf{Estructura}: la historia de la teoría, de los costes a los beneficios y de ahí a las instituciones: \hyperref[rep:I]{I}, costes (AMO de los 60-70); \hyperref[rep:II]{II}, coste-beneficio, credibilidad y endogeneidad (80-90); \hyperref[rep:III]{III}, uniones incompletas (la crisis del euro).
+\end{itemize}
+
+% ==========================================================================
+\bloque[11]{I. Costes de una moneda común\label{rep:I}}
+\begin{ideaclave}
+El coste lo pagan las perturbaciones asimétricas. Es pequeño si hay con qué ajustarse sin tipo de cambio (salarios flexibles, trabajo móvil), con qué asegurarse (presupuesto común, mercados integrados) o si las perturbaciones son simétricas.
+\end{ideaclave}
+
+\sub{I.1. Idea\label{rep:I.1}}
+\begin{itemize}
+\item Se renuncia a 3 instrumentos: devaluar o revaluar, fijar la cantidad de dinero y el tipo de interés a corto. El banco central nacional sigue (Eurosistema), pero no decide.
+\item \concepto{Teoría de las AMO}: \autor{Mundell} (1961), \autor{McKinnon} (1963), \autor{Kenen} (1969); lado de los costes. \concepto{Área monetaria}: tipos fijos dentro, flotación fuera. \concepto{AMO}: mantiene equilibrio interno y externo sin variar los tipos entre sus miembros (para \autor{Mundell}, movilidad de factores dentro y no fuera).
+\end{itemize}
+
+\sub{I.2. Enfoque por criterios\label{rep:I.2}}
+\begin{itemize}
+\item Enfoque \emph{pesimista} (qué se pierde). Ordenados por las 3 dimensiones de \autor{De Grauwe}: \autor{Mundell}, \emph{flexibilidad}; \autor{Kenen} e \autor{Ingram}, \emph{integración} como seguro; \autor{Kenen}, \autor{Magnifico} e instituciones laborales, \emph{simetría}; \autor{McKinnon}, \emph{integración} comercial. Criterios políticos: preferencias compatibles (\autor{Corden}, \autor{De Grauwe}), transferencias federales (\autor{Kenen}, \autor{Oates}), destino común (\autor{Baldwin}-\autor{Wyplosz}).
+\end{itemize}
+\textbf{a) \autor{Mundell} (1961): flexibilidad de los factores}
+\begin{itemize}
+\item \emph{Idea}: perturbación asimétrica de demanda sin tipo de cambio: ¿hay mecanismo que devuelva el pleno empleo? Sí, salarios flexibles o trabajo móvil; si no, tipos flexibles.
+\item \emph{Supuestos}: España y Alemania en el euro, $E\equiv1$, $q=P^*/P$; DA de cada país decreciente en su precio (efecto sustitución); OA$_{CP}(W_0)$ y OA$_{LP}$ vertical en $Y^n$; equilibrio inicial $A$.
+\item \emph{Desarrollo}: la demanda pasa de lo español a lo alemán ($B$): recesión, paro y déficit en España; auge e inflación en Alemania. Con moneda propia, un solo instrumento: depreciar. En la unión: (1) \concepto{flexibilidad salarial}: OA española baja, alemana sube, ↑$q$, vuelven a $Y^n$ ($C$): \concepto{devaluación interna}, lenta y con paro (salarios nominales rígidos a la baja); (2) \concepto{movilidad del trabajo}: OA' e $Y^n$ a la izquierda en España y a la derecha en Alemania, vuelta a $P_0$; (3) sin ninguno, solo inflación alemana y recesión larga en España.
+\item \emph{Implicaciones}: salarios flexibles o trabajo móvil $\Rightarrow$ compartir moneda. \emph{Extensiones}: perturbaciones transitorias y sincronía (\emph{one size fits all}); escenario \emph{benigno} (los mercados financian) vs. \emph{maligno} (prima ↑, sale liquidez: fragilidad, \hyperref[rep:III]{III}).
+\item \emph{Evidencia}: menos movilidad en Europa (\autor{Blanchard}-\autor{Katz}, 1992; \autor{Decressin}-\autor{Fatás}, 1995: tasa de actividad); \dato{$\approx$10 M, < 4~\% de 20-64 años}{Eurostat} en otro Estado; \dato{8 países Schengen con controles}{CE, nov.\ 2026}; carta del BCE a España (5/8/2011) \vertema{4.A.16}. \emph{Valoración}: solo mira el trabajo; queda repartir el golpe.
+\end{itemize}
+\graficorepaso[\linewidth]{mundell}{Perturbación asimétrica (a) y ajuste por salarios (b) o por emigración (c)}
+\textbf{b) \autor{Kenen} (1969): integración fiscal}. Presupuesto común = \emph{seguro} (transferencias automáticas) y \emph{protección} (deuda de la unión, sin crisis de liquidez). Límites: soberanía y \concepto{riesgo moral} (\emph{moral hazard}). EE.\,UU.: el Gobierno federal absorbe el \dato{13~\%}{Asdrubali et al., 1996}; UE: \dato{190.100 M€, $\approx$1~\% del PIB}{2026} frente al 23~\% federal \vertema{4.B.14}.
+
+\textbf{c) \autor{Ingram} (1959, 1973): integración financiera}. Seguro privado: acciones y crédito reparten la pérdida. EE.\,UU.: capitales 39~\%, crédito 23~\%, sin suavizar 25~\%. Límites: \emph{home bias}, flujos que se dan la vuelta; solo asegura a quien tiene cartera $\Rightarrow$ unión de mercados de capitales \vertema{3.B.44}.
+
+\textbf{d) \autor{Kenen}: diversificación}. Producción diversificada: las perturbaciones sectoriales se compensan; en el euro, en general sí; \autor{Krugman} (1993) lo pondrá en duda.
+
+\textbf{e) \autor{Magnifico} (1971): propensiones a la inflación}
+\begin{formula}
+\[\gamma_q\simeq\underbrace{\gamma_E}_{=0}+\gamma_{P^*}-\pi\;\Rightarrow\;\gamma_q\simeq\gamma_{P^*}-\pi\]
+\end{formula}
+Más inflación que los socios = apreciación real año tras año. Instituciones laborales: \autor{Bruno}-\autor{Sachs} (1985), centralizado modera; \autor{Calmfors}-\autor{Driffill} (1988), \concepto{joroba}: lo peor, el nivel sectorial; hoy cuenta la coordinación (OCDE) \vertema{3.A.27}. Euro: 1999-2008, precios \dato{+37~\% España, +18~\% Alemania}{Eurostat}; 2008-2019, al revés (13 vs. 15~\%); 2022: Francia 5,9~\%, Estonia 19,4~\%.
+
+\textbf{f) \autor{McKinnon} (1963): apertura}. Cuanto más abierta, menos falta el tipo de cambio: corregir el déficit con política fiscal cuesta menos renta,
+\begin{formula}
+\[\Delta Y=\frac{\Delta\overline G}{1-c(1-t)+m},\ \ \Delta\mathrm{XN}=-m\Delta Y\Rightarrow\frac{\Delta Y}{\Delta\mathrm{XN}}=-\frac1m\]
+\end{formula}
+y la devaluación es menos eficaz (pasa al IPC). Euro: \dato{47,6~\% de las exportaciones, entre socios}{Eurostat, 2025}; apertura 69~\% España, 78~\% Alemania.
+
+\sub{I.3. Condiciones: las 3 dimensiones\label{rep:I.3}}
+\begin{itemize}
+\item Árbol de preguntas: abierta y diversificada $\to$ flexible $\to$ móvil $\to$ apoyo político (\autor{Baldwin}-\autor{Wyplosz}).
+\item \autor{De Grauwe}: \concepto{simetría}, \concepto{flexibilidad}, \concepto{integración}. \concepto{Línea AMO}: combinaciones mínimas de simetría y flexibilidad, pendiente negativa; encima compensa. Euro, debajo; EE.\,UU., encima.
+\end{itemize}
+\pareja{amo-flexibilidad}{La línea AMO}{logica-amo}{La lógica de las AMO (figura)}
+
+\sub{I.4. Valoración\label{rep:I.4}}
+\begin{itemize}
+\item Lista útil (pesó en el diseño del euro), pero \emph{indeterminada}: criterios sin marco común y contradictorios (\autor{Tavlas}, 1994).
+\item \emph{Críticas de los 80}: Phillips vertical (la devaluación solo dura hasta que suben los salarios; \autor{Marshall}-\autor{Lerner}) \vertema{3.B.12}; diferenciales de equilibrio (\autor{Balassa}-\autor{Samuelson}) \vertema{3.B.14}; el tipo de cambio como fuente de perturbaciones y sesgo inflacionista.
+\item \emph{\autor{Mundell} contra \autor{Mundell}} (1973): la moneda común reparte el riesgo (\autor{McKinnon}, 2004: «Mundell I» y «Mundell II»). Abierto: ¿cambia la unión los criterios? ¿Y los beneficios?
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{II. Análisis coste-beneficio\label{rep:II}}
+\begin{ideaclave}
+El coste baja y el beneficio sube con la integración: la unión compensa a partir de un umbral. Los criterios no son fijos: la unión los crea o los destruye. La credibilidad explica por qué Italia o España quisieron entrar.
+\end{ideaclave}
+
+\sub{II.1. La segunda fase\label{rep:II.1}}
+\begin{itemize}
+\item Años 90 (Delors, Maastricht): análisis \concepto{coste-beneficio} y batalla de paradigmas sobre la endogeneidad (\autor{Mongelli}, 2002).
+\item \emph{Frente a la apertura}: beneficios crecientes, costes decrecientes (\autor{McKinnon}); umbral $T^*$; más a la izquierda si la política monetaria es poco eficaz (monetarista), más a la derecha con salarios rígidos (keynesiana).
+\item \emph{Frente al tamaño}: el dinero es más útil cuantos más lo usan, pero más perturbaciones asimétricas: el área óptima no es ni el mundo ni cada región.
+\end{itemize}
+
+\sub{II.2. Endogeneidad de los criterios\label{rep:II.2}}
+\begin{itemize}
+\item ¿Se cumplen \emph{ex post} aunque no \emph{ex ante}?
+\item \textbf{\autor{Krugman} (1993), especialización}. \emph{Idea}: los estados de EE.\,UU., integrados, están muy especializados (Nueva Inglaterra, finales de los 80). \emph{Modelo}: centro-periferia (\autor{Krugman}, 1991) \vertema{3.B.6}: fuerzas de aglomeración (mercado doméstico, coste de la vida, economías externas de \autor{Marshall}) frente a dispersión; bajo el \concepto{punto de ruptura}, la industria se concentra. La moneda abarata comerciar $\Rightarrow$ especialización $\Rightarrow$ perturbaciones más asimétricas: la unión destruye la diversificación de \autor{Kenen}. \emph{Valoración}: el trabajo europeo apenas se mueve; los \emph{clusters} cruzan fronteras; el comercio europeo es intraindustrial.
+\item \textbf{\autor{Frankel}-\autor{Rose} (1998), endogeneidad}. \emph{Idea}: la Comisión (1990): comercio intraindustrial. \emph{Modelo}: sin riesgo cambiario, más comercio (intraindustrial) $\Rightarrow$ ciclos más sincronizados (30 años, 20 países). \emph{Implicación}: juzgar con datos previos subestima la unión (crítica de \autor{Lucas}) \vertema{3.A.6}. \emph{Evidencia}: factor común \dato{> 65~\% de la varianza}{BCE, 2018}; sincronía ↑ tras 1999 (metaanálisis); Grecia, correlación 0,3-0,5 vs. 0,8 España.
+\item \emph{Valoración}: teoría a favor de la Comisión, evidencia mixta (\autor{De Grauwe}).
+\end{itemize}
+\pareja{costes-beneficios}{A la derecha de $T^*$, compensa}{endogeneidad}{\autor{Frankel}-\autor{Rose} frente a \autor{Krugman}}
+
+\sub{II.3. Evidencia empírica\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Simetría}: centro y periferia (\autor{Bayoumi}-\autor{Eichengreen}, 1993). \emph{Comercio}: ×3 (\autor{Rose}, 2000); 30-90~\% (\autor{Rose}-\autor{Stanley}, 2005); menos con el euro (\autor{Glick}-\autor{Rose}, 2016; \autor{Polák}, 2019). \emph{Flexibilidad}: el euro aceleró la desregulación de bienes, no la laboral (\autor{Alesina} et al., 2011). \emph{Desequilibrios} 1999-2008 y devaluación interna \vertema{3.B.11}.
+\item \emph{Resumen}: comercio sí; simetría, inflación e integración financiera a medias; movilidad y seguro fiscal, no.
+\end{itemize}
+
+\sub{II.4. Otros beneficios y costes\label{rep:II.4}}
+\begin{itemize}
+\item \emph{Micro}: costes de transacción \dato{$\approx$0,4~\% del PIB}{CE, 1990}, transparencia, menos incertidumbre, menos reservas, integración financiera. \emph{Geopolíticos}: peso internacional, señoreaje frente al resto, deuda en moneda propia.
+\item \textbf{Credibilidad (\autor{Barro}-\autor{Gordon}, 1983)}. \emph{Idea}: renunciar a un banco central poco creíble baja la inflación sin más paro: «arrímate a los buenos y serás uno de ellos»; es la \concepto{inconsistencia temporal} de \autor{Kydland}-\autor{Prescott} (1977). \emph{Supuestos}: $U=U^n-\alpha(\pi-\pi^e)$; el público fija $\pi^e$ y luego el banco central elige; pérdida $L=(U-U^*)^2+\gamma(\pi-\pi^*)^2$, $U^*<U^n$.
+\end{itemize}
+\funcionclave{\pi^D=\pi^*+\frac{\alpha}{\gamma}\,(U^n-U^*)>\pi^*}
+\begin{itemize}
+\item \emph{Gráfico}: 0 = R (regla), 1 = T (tentación), 2 (suben expectativas), 3 (nueva tangencia), función de reacción, F = D en $U^n$ con más inflación. \emph{La unión}: con el $\gamma'$ alto del Bundesbank, el sesgo baja: «atarse las manos» (\autor{Giavazzi}-\autor{Pagano}, 1988) \vertema{3.A.36}.
+\item \emph{Extensiones}: con tipo fijo se puede devaluar (libra, 16/9/1992; peseta, 1992-1993 \vertema{3.B.17}); la unión sube el coste de salir. Banquero conservador (\autor{Rogoff}, 1985). \emph{Valoración}: gana el de menos credibilidad; se paga en flexibilidad.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{barro-gordon}{De la regla R al equilibrio discrecional F = D}
+\begin{itemize}
+\item \emph{Costes además del tipo de cambio}: sin política monetaria propia; sin financiación monetaria (el señoreaje se reparte; se pierde el impuesto inflacionario \vertema{3.A.39}); \emph{externalidades fiscales} $\Rightarrow$ reglas: 3~\% y 60~\%, senda de gasto primario neto desde 2024 \vertema{3.B.45}.
+\end{itemize}
+
+\sub{II.5. ¿Óptimas para quién?\label{rep:II.5}}
+\begin{itemize}
+\item Problema de los terceros países: la unión puede reducir el bienestar de los de fuera (\autor{Bayoumi}, 1994).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{III. Uniones monetarias incompletas\label{rep:III}}
+\begin{ideaclave}
+Moneda y banco central comunes sin unión bancaria ni fiscal = unión frágil: los Estados se endeudan en una moneda que no emiten. Completarla es la solución buena; la política fiscal nacional con reglas, la de segundo óptimo.
+\end{ideaclave}
+
+\sub{III.1. Introducción\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Unión monetaria incompleta}: sin unión bancaria ni fiscal (no es la seudounión de \autor{Corden}). Se ve con una \emph{perturbación de solvencia}. Tesis de \autor{Stiglitz} (2016): el euro, defectuoso al nacer.
+\end{itemize}
+
+\sub{III.2. Problemas\label{rep:III.2}}
+\begin{itemize}
+\item \textbf{Fragilidad (\autor{De Grauwe}, 2011)}. \emph{Supuestos}: Reino Unido y España con la misma deuda; inversores móviles; banco central común que no financia. \emph{Desarrollo}: con moneda propia, la libra se deprecia, el dinero se queda y el banco central puede comprar: el pánico no tiene sentido. En la unión, los euros salen; liquidez $\Rightarrow$ solvencia, como deuda en moneda extranjera; \emph{equilibrios múltiples} (\autor{Calvo}, 1988), la lógica de los pánicos de \autor{Diamond}-\autor{Dybvig} (1983). \emph{Implicaciones}: hace falta un \concepto{prestamista de última instancia}: \autor{Draghi}, 26/7/2012 («lo que sea necesario»), OMT (nunca usadas). \emph{Evidencia}: el Reino Unido, con más deuda, pagaba menos; las primas bajaron antes de comprar un bono. \emph{Valoración}: riesgo moral y financiación monetaria.
+\item \textbf{Círculo vicioso bancos-Estado}: 1. dudas $\to$ prima ↑; 2. la deuda va a los bancos nacionales; 3. pérdidas en los bancos; 4. el Estado los recapitaliza; 5. ↑ deuda. También empieza en los bancos (España, 2012 \vertema{4.A.18}).
+\item \textbf{Contagio}: balances, flujos (parada súbita dentro de la unión, saldos TARGET \vertema{4.A.21}), moneda común, reversibilidad.
+\item \textbf{Monetización}: SMP (2010), OMT (2012), APP (2014-2015), PEPP (2020), TPI (2022); art.~123 TFUE; TJUE (2015, 2018) \vertema{3.A.39}.
+\end{itemize}
+\graficorepaso[0.6\linewidth]{circulo-vicioso}{El círculo vicioso entre bancos y Estado (figura)}
+
+\sub{III.3. Soluciones\label{rep:III.3}}
+\begin{itemize}
+\item \textbf{Perfecta: completar la unión}. \emph{Unión bancaria} \vertema{3.B.44}: MUS (BCE desde nov.\ 2014), MUR (fondo \dato{> 81.000 M€}{JUR}), EDIS propuesto en 2015, sin aprobar. \emph{Unión de mercados de capitales} = Unión de Ahorros e Inversiones (2025). \emph{Unión fiscal}: presupuesto común y deuda común; primer paso, \dato{NextGenerationEU, 750.000 M€ de 2018}{CE}, temporal; 7+7 economistas (2018): reparto de riesgos + disciplina de mercado. Límites: soberanía y riesgo moral.
+\item \textbf{Imperfecta: política fiscal nacional con reglas}. \autor{Galí}-\autor{Monacelli} (2008), modelo NK (\autor{Woodford}; Nobel 2026 con \autor{Hall}): el BCE estabiliza la inflación media y cada gobierno su brecha. Multiplicador relativo \dato{$\approx$1,5}{\autor{Nakamura}-\autor{Steinsson}, 2014}; \concepto{devaluación fiscal} (↑ IVA, ↓ cotizaciones). Reglas: externalidades y riesgo moral (art.~125 TFUE); senda de gasto en planes de 4-7 años, Semestre Europeo \vertema{3.B.45}. Con deuda alta, el margen depende de la prima.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: un balance entre lo que se pierde (el tipo de cambio ante perturbaciones asimétricas) y lo que se gana (comercio y credibilidad). Los criterios cambian con la unión (\autor{Frankel}-\autor{Rose} frente a \autor{Krugman}). Sin unión bancaria ni fiscal, la unión es frágil.
+\item \textbf{Relevancia}: España, devaluación interna tras la crisis; fiscal y reformas como instrumentos. Fin del MRR en 2026: ¿capacidad fiscal permanente?
+\item \textbf{Extensiones}: \vertema{3.B.43}, \vertema{3.B.44}, \vertema{3.B.45}, \vertema{3.B.15}, \vertema{3.B.17}, \vertema{3.B.19}; otras uniones y la salida.
+\item \textbf{Opinión}: el euro no era AMO en 1999, pero se ha acercado por la endogeneidad y, sobre todo, por las instituciones de la crisis.
+\item \textbf{Idea final}: compensa si las perturbaciones son simétricas o hay con qué absorberlas; si no, las instituciones hacen de seguro. «El casado casa quiere»: compartir moneda exige compartir la casa.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1954}{\autor{Tinbergen}: integración negativa y positiva}
+\hito{1961}{\autor{Mundell}: áreas monetarias óptimas (Nobel 1999)}
+\hito{1963}{\autor{McKinnon}: apertura}
+\hito{1969}{\autor{Kenen}: integración fiscal y diversificación}
+\hito{1970}{Informe Werner}
+\hito{1971}{\autor{Magnifico}: propensiones a la inflación}
+\hito{1972}{\autor{Corden}: seudounión cambiaria}
+\hito{1983}{\autor{Barro}-\autor{Gordon}: sesgo inflacionista}
+\hito{1988}{\autor{Giavazzi}-\autor{Pagano}: atarse las manos; \autor{Calmfors}-\autor{Driffill}}
+\hito{1989}{Informe Delors}
+\hito{1993}{\autor{Krugman}: especialización; \autor{Bayoumi}-\autor{Eichengreen}}
+\hito{1998}{\autor{Frankel}-\autor{Rose}: endogeneidad}
+\hito{2000}{\autor{Rose}: el comercio ×3}
+\hito{2008}{\autor{Galí}-\autor{Monacelli}: política fiscal en la unión}
+\hito{2011}{\autor{De Grauwe}: fragilidad}
+\hito{2012}{\autor{Draghi}: «lo que sea necesario»; OMT}
+\hito{2014}{Supervisión única (BCE)}
+\hito{2020}{NextGenerationEU; PEPP}
+\hito{2024}{Nuevo marco fiscal}
+\hito{2026}{Bulgaria: 21 miembros}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item 21 miembros (2026). Comercio entre socios 47,6~\% de las exportaciones (2025). Movilidad < 4~\%. Presupuesto UE $\approx$1~\% del PIB vs. 23~\% federal EE.\,UU. Seguro EE.\,UU.: federal 13~\%, capitales 39~\%, crédito 23~\%. FMI (2023): 44,8~\% anclaje blando, 32,5~\% flotan, 13,4~\% anclaje duro.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Son cóncavas las isopérdidas?} No: elipses centradas en $(U^*,\pi^*)$; el conjunto mejor es convexo.
+\item \textbf{¿Qué hay detrás de la inconsistencia dinámica?} El sesgo inflacionista $\pi^D$.
+\item \textbf{¿Política monetaria común en una Europa a 2 velocidades?} Ciclos poco sincronizados; respuesta: endogeneidad y política fiscal nacional.
+\item \textbf{¿Papel de \autor{Draghi}?} El prestamista de última instancia que elimina el equilibrio malo.
+\item \textbf{¿Función aseguradora del federalismo fiscal?} \autor{Kenen}; transferencias automáticas; unión fiscal.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item El coste nace de perturbaciones \emph{asimétricas}; ante las simétricas basta la política común.
+\item «Incompleta» = sin unión bancaria ni fiscal; seudounión (\autor{Corden}) = sin banco central común.
+\item Federalismo fiscal: \autor{Kenen} (1969), no \autor{Mundell}. Frankel y Rose: 1998.
+\item El señoreaje no se pierde: se reparte según el capital del BCE.
+\item La unión quita el sesgo inflacionista, no la disyuntiva de corto plazo.
+\item OMT anunciadas en 2012 y nunca usadas; TPI desde julio de 2022.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
