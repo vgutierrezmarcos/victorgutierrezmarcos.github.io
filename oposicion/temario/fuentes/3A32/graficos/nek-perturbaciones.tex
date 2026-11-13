@@ -1,0 +1,103 @@
+% Modelo neokeynesiano canónico en el plano (x_t, pi_t), con expectativas
+% dadas (perturbaciones transitorias): las 4 situaciones de II (13/11/2026,
+% 9.ª tanda). Sustituye a nek-abierta (8.ª tanda): con pi_{H,t}, theta_alpha y
+% kappa_alpha es el mismo gráfico para la economía abierta (III.1).
+% Mismos valores y colores que nek-xpi (3.A.7): NKPC morada, DA verde.
+%   NKPC: pi = kappa x + u, con kappa = 0,5
+%   DA (IS dinámica + regla de Taylor): pi = -x + (r^n - rho - eps)/phi_pi
+%   E_0 = (0, 0)
+%   a) tecnológica: r^n baja, DA' pi = -x - 0,75; E_1 = (-0,5; -0,25); si el
+%      banco central baja i_t con r^n_t, la DA vuelve: E_0 (y = y^n más alta)
+%   b) costes: NKPC' pi = 0,5 x + 0,5; E_1 = (-1/3; 1/3) con la regla;
+%      E_pi = (-1; 0); E_x = (0; 0,5)
+%   c) política de oferta: NKPC'' pi = 0,5 x + 0,15; E_2 = (-0,1; 0,1)
+%   d) demanda: r^n sube, DA' pi = -x + 0,75; E_1 = (0,5; 0,25); si el banco
+%      central sube i_t con r^n_t, vuelve a E_0: divina coincidencia
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.75cm,y=1.75cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.75,-5.05) rectangle (5.05,1.8);
+  % ---------------- Panel a: perturbación tecnológica ----------------
+  % 1: ejes, NKPC, DA y E_0
+  \capa{1}{\node[font=\small\bfseries, anchor=base] at (0,1.55) {a) Tecnológica: $A_t\uparrow$, $r^n_t\downarrow$};}
+  \capa{1}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{1}{\draw[eje] (0,-1.15) -- (0,1.4) node[left] {$\pi_t$};}
+  \capa{1}{\draw[curva1] (-1.3,-0.65) -- (1.35,0.675) node[etiqueta, right, text=tceemorado] {NKPC};}
+  \capa{1}{\draw[curva3] (-1.1,1.1) -- (1.05,-1.05) node[etiqueta, right, text=tceeverde] {DA};}
+  \capa{1}{\node[punto] (Ea0) at (0,0) {};}
+  \capa{1}{\node[etiqueta, anchor=south west] at (0.03,0.03) {$E_0$};}
+  % 2: baja el tipo natural: la DA a la izquierda; E_1 con x < 0 y pi < 0
+  \capa{2}{\draw[curva3, desplazada] (0.3,-1.05) -- (-1.45,0.7) node[etiqueta, above, text=tceeverde] {DA$'$};}
+  \capa{2}{\node[punto] (Ea1) at (-0.5,-0.25) {};}
+  \capa{2}{\node[etiqueta, anchor=north east, inner sep=1pt] at (-0.55,-0.3) {$E_1$};}
+  \capa{2}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Ea0) to[bend right=35] (Ea1);}
+  % 3: si el banco central baja i_t con r^n_t, vuelve a E_0
+  \capa{3}{\draw[flecha, dashed, shorten <=3pt, shorten >=3pt] (Ea1) to[bend right=40] (Ea0);}
+  \capa{3}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=center] at (0.05,-1.37)
+      {$i_t$ sigue a $r^n_t$: vuelve a $E_0$\\($y_t=y^n_t$, más alta)};}
+  % ---------------- Panel b: perturbación de costes ----------------
+  \begin{scope}[xshift=3.45*1.75cm]
+  % 4: ejes, NKPC, DA y E_0
+  \capa{4}{\node[font=\small\bfseries, anchor=base] at (0,1.55) {b) De costes: $u_t>0$};}
+  \capa{4}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{4}{\draw[eje] (0,-1.15) -- (0,1.4) node[left] {$\pi_t$};}
+  \capa{4}{\draw[curva1] (-1.3,-0.65) -- (1.35,0.675) node[etiqueta, right, text=tceemorado] {NKPC};}
+  \capa{4}{\draw[curva3] (-1.1,1.1) -- (1.05,-1.05) node[etiqueta, right, text=tceeverde] {DA};}
+  \capa{4}{\node[punto] (Eb0) at (0,0) {};}
+  \capa{4}{\node[etiqueta, anchor=north west] at (0.03,-0.03) {$E_0$};}
+  % 5: la NKPC sube; con la regla, E_1: menos brecha y más inflación
+  \capa{5}{\draw[curva1, desplazada] (-1.3,-0.15) -- (1.2,1.1) node[etiqueta, right, text=tceemorado] {NKPC$'$};}
+  \capa{5}{\node[punto] (Eb1) at (-1/3,1/3) {};}
+  \capa{5}{\node[etiqueta, anchor=south east, inner sep=1pt] at (-0.38,0.36) {$E_1$};}
+  % 6: el dilema: E_pi (inflación en el objetivo) o E_x (brecha cerrada)
+  \capa{6}{\node[punto, fill=tceerojo] (Epi) at (-1,0) {};}
+  \capa{6}{\node[etiqueta, text=tceerojo, anchor=north] at (-1,-0.05) {$E_\pi$};}
+  \capa{6}{\node[punto, fill=tceerojo] (Ex) at (0,0.5) {};}
+  \capa{6}{\node[etiqueta, text=tceerojo, anchor=west] at (0.06,0.47) {$E_x$};}
+  \capa{6}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=center] at (0.05,-1.37)
+      {dilema: el banco central\\elige un punto de la NKPC$'$};}
+  \end{scope}
+  % ---------------- Panel c: política de oferta ----------------
+  \begin{scope}[yshift=-3.45*1.75cm]
+  % 7: ejes, DA, NKPC' y E_1 del panel b
+  \capa{7}{\node[font=\small\bfseries, anchor=base] at (0,1.55) {c) Política de oferta: $u_t\downarrow$};}
+  \capa{7}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{7}{\draw[eje] (0,-1.15) -- (0,1.4) node[left] {$\pi_t$};}
+  \capa{7}{\draw[curva3] (-1.1,1.1) -- (1.05,-1.05) node[etiqueta, right, text=tceeverde] {DA};}
+  \capa{7}{\draw[curva1] (-1.3,-0.15) -- (1.2,1.1) node[etiqueta, right, text=tceemorado] {NKPC$'$};}
+  \capa{7}{\node[punto] (Ec1) at (-1/3,1/3) {};}
+  \capa{7}{\node[etiqueta, anchor=south east, inner sep=1pt] at (-0.38,0.36) {$E_1$};}
+  % 8: la política de oferta baja la NKPC: más brecha y menos inflación a la vez
+  \capa{8}{\draw[curvanueva, desplazada] (-1.3,-0.5) -- (1.3,0.8) node[etiqueta, right, text=tceerojo] {NKPC$''$};}
+  \capa{8}{\node[punto] (Ec2) at (-0.1,0.1) {};}
+  \capa{8}{\draw[guia] (Ec2) -- (-0.55,-0.42);}
+  \capa{8}{\node[etiqueta, anchor=north east, inner sep=1pt] at (-0.55,-0.42) {$E_2$};}
+  \capa{8}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Ec1) to[bend right=30] (Ec2);}
+  \capa{8}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=center] at (0.05,-1.37)
+      {más producción y menos\\inflación: sin dilema};}
+  \end{scope}
+  % ---------------- Panel d: perturbación de demanda ----------------
+  \begin{scope}[xshift=3.45*1.75cm, yshift=-3.45*1.75cm]
+  % 9: ejes, NKPC, DA y E_0
+  \capa{9}{\node[font=\small\bfseries, anchor=base] at (0,1.55) {d) De demanda: $r^n_t\uparrow$};}
+  \capa{9}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{9}{\draw[eje] (0,-1.15) -- (0,1.4) node[left] {$\pi_t$};}
+  \capa{9}{\draw[curva1] (-1.3,-0.65) -- (1.35,0.675) node[etiqueta, right, text=tceemorado] {NKPC};}
+  \capa{9}{\draw[curva3] (-1.1,1.1) -- (1.05,-1.05) node[etiqueta, right, text=tceeverde] {DA};}
+  \capa{9}{\node[punto] (Ed0) at (0,0) {};}
+  \capa{9}{\node[etiqueta, anchor=north east] at (-0.03,-0.03) {$E_0$};}
+  % 10: sube el tipo natural: la DA a la derecha; E_1 con x > 0 y pi > 0
+  \capa{10}{\draw[curva3, desplazada] (-0.55,1.3) -- (1.45,-0.7) node[etiqueta, right, text=tceeverde] {DA$'$};}
+  \capa{10}{\node[punto] (Ed1) at (0.5,0.25) {};}
+  \capa{10}{\node[etiqueta, anchor=south west, inner sep=1pt] at (0.57,0.4) {$E_1$};}
+  \capa{10}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Ed0) to[bend left=35] (Ed1);}
+  % 11: si el banco central sube i_t con r^n_t, vuelve a E_0: divina coincidencia
+  \capa{11}{\draw[flecha, dashed, shorten <=3pt, shorten >=3pt] (Ed1) to[bend left=40] (Ed0);}
+  \capa{11}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=center] at (0.05,-1.37)
+      {$i_t$ sigue a $r^n_t$: vuelve a $E_0$\\(divina coincidencia)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

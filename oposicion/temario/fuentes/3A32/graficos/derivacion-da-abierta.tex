@@ -1,0 +1,90 @@
+% De la IS-LM-BP a la demanda agregada abierta, con movilidad perfecta del
+% capital (I.2, 9.ª tanda, 13/11/2026). Arriba, plano (Y, i); abajo, (Y, P).
+% Colores de is-lm-bp: IS azul (curva2), LM morada (curva1), BP verde
+% (curva3); la DA, morada como en da-oa-abierta.
+%   BP: i = i* = 2,5. A = (4; 2,5); B = (2,8; 2,5).
+%   a) tipo fijo: P sube => q = E P*/P baja => IS a la izquierda:
+%      IS(P_0): i = 2,5 - (Y - 4); IS(P_1): i = 2,5 - (Y - 2,8);
+%      la LM sigue a la IS (dinero endógeno): LM: i = 2,5 + 0,8 (Y - 4) y
+%      LM': i = 2,5 + 0,8 (Y - 2,8).
+%   b) tipo flexible: P sube => M/P baja => LM a la izquierda (mismas rectas);
+%      la apreciación lleva la IS al nuevo corte (IS': i = 2,5 - (Y - 2,8)).
+%   Abajo: DA: P = 0,55 + 3,8/Y; A = (4; 1,5), B = (2,8; 1,907).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \path (-0.9,-0.75) rectangle (14.3,9.3);
+  % ======================= a) Tipo de cambio fijo =======================
+  % 1: ejes y títulos de las 2 columnas
+  \capa{1}{\node[font=\small\bfseries, anchor=base] at (2.9,8.95) {a) Tipo fijo: $P\uparrow\Rightarrow q\downarrow$};}
+  \capa{1}{\draw[eje] (0,4.4) -- (5.9,4.4) node[below] {$Y$};}
+  \capa{1}{\draw[eje] (0,4.4) -- (0,8.6) node[left] {$i$};}
+  \capa{1}{\draw[eje] (0,0) -- (5.9,0) node[below] {$Y$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,3.5) node[left] {$P$};}
+  \begin{scope}[xshift=7.8cm]
+  \capa{1}{\node[font=\small\bfseries, anchor=base] at (2.9,8.95) {b) Tipo flexible: $P\uparrow\Rightarrow M/P\downarrow$};}
+  \capa{1}{\draw[eje] (0,4.4) -- (5.9,4.4) node[below] {$Y$};}
+  \capa{1}{\draw[eje] (0,4.4) -- (0,8.6) node[left] {$i$};}
+  \capa{1}{\draw[eje] (0,0) -- (5.9,0) node[below] {$Y$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,3.5) node[left] {$P$};}
+  \end{scope}
+  % Arriba, el origen del plano (Y, i) está en y = 4,4 (i = 0)
+  \begin{scope}[yshift=4.4cm]
+  % 2: panel a: BP, IS(P_0), LM y A
+  \capa{2}{\draw[curva3] (0,2.5) -- (5.6,2.5) node[etiqueta, right, text=tceeverde] {BP};}
+  \capa{2}{\node[etiqueta, left] at (0,2.5) {$i^*$};}
+  \capa{2}{\draw[curva2] (2.6,3.9) -- (5.6,0.9) node[etiqueta, right, text=tceeazul] {IS$(P_0)$};}
+  \capa{2}{\draw[curva1] (2.6,1.38) -- (5.2,3.46) node[etiqueta, above, text=tceemorado] {LM};}
+  \capa{2}{\node[punto] (fA) at (4,2.5) {};}
+  \capa{2}{\node[etiqueta, anchor=north] at (4,2.38) {$A$};}
+  % 3: panel a: P sube, la IS a la izquierda; la LM la sigue (reservas); B
+  \capa{3}{\draw[curva2, desplazada] (1.4,3.9) -- (4.4,0.9) node[etiqueta, below, text=tceeazul] {IS$(P_1)$};}
+  \capa{3}{\draw[curva1, desplazada] (1.4,1.38) -- (4.0,3.46) node[etiqueta, above, text=tceemorado] {LM$'$};}
+  \capa{3}{\node[punto] (fB) at (2.8,2.5) {};}
+  \capa{3}{\node[etiqueta, anchor=north] at (2.8,2.38) {$B$};}
+  \capa{3}{\node[etiqueta, font=\footnotesize, text=tceerojo, align=left, anchor=west] at (0.1,0.6)
+      {salen reservas:\\$M\downarrow$ (endógena)};}
+  \end{scope}
+  % 4: panel a, abajo: A y B y la DA (efecto competitividad)
+  \capa{4}{\draw[guia] (4,6.9) -- (4,0) node[below] {$Y_0$};}
+  \capa{4}{\draw[guia] (2.8,6.9) -- (2.8,0) node[below] {$Y_1$};}
+  \capa{4}{\draw[curva1, domain=1.9:5.6, samples=60] plot (\x, {0.55+3.8/\x}) node[etiqueta, right, text=tceemorado] {DA};}
+  \capa{4}{\node[punto] at (4,1.5) {};}
+  \capa{4}{\node[etiqueta, anchor=south west] at (4.05,1.55) {$A$};}
+  \capa{4}{\node[punto] at (2.8,1.907) {};}
+  \capa{4}{\node[etiqueta, anchor=south west] at (2.85,1.95) {$B$};}
+  \capa{4}{\draw[guia] (0,1.5) node[left, text=black] {$P_0$} -- (4,1.5);}
+  \capa{4}{\draw[guia] (0,1.907) node[left, text=black] {$P_1$} -- (2.8,1.907);}
+  % ======================= b) Tipo de cambio flexible =======================
+  \begin{scope}[xshift=7.8cm, yshift=4.4cm]
+  % 5: panel b: BP, IS, LM(P_0) y A
+  \capa{5}{\draw[curva3] (0,2.5) -- (5.6,2.5) node[etiqueta, right, text=tceeverde] {BP};}
+  \capa{5}{\node[etiqueta, left] at (0,2.5) {$i^*$};}
+  \capa{5}{\draw[curva2] (2.6,3.9) -- (5.6,0.9) node[etiqueta, right, text=tceeazul] {IS};}
+  \capa{5}{\draw[curva1] (2.6,1.38) -- (5.2,3.46) node[etiqueta, above, text=tceemorado] {LM$(P_0)$};}
+  \capa{5}{\node[punto] (xA) at (4,2.5) {};}
+  \capa{5}{\node[etiqueta, anchor=north] at (4,2.38) {$A$};}
+  % 6: panel b: P sube, la LM a la izquierda; la apreciación lleva la IS; B
+  \capa{6}{\draw[curva1, desplazada] (1.4,1.38) -- (4.0,3.46) node[etiqueta, above, text=tceemorado] {LM$(P_1)$};}
+  \capa{6}{\draw[curva2, desplazada] (1.4,3.9) -- (4.4,0.9) node[etiqueta, below, text=tceeazul] {IS$'$};}
+  \capa{6}{\node[punto] (xB) at (2.8,2.5) {};}
+  \capa{6}{\node[etiqueta, anchor=north] at (2.8,2.38) {$B$};}
+  \capa{6}{\node[etiqueta, font=\footnotesize, text=tceerojo, align=left, anchor=west] at (0.1,0.6)
+      {entra capital:\\apreciación, $E\downarrow$};}
+  \end{scope}
+  \begin{scope}[xshift=7.8cm]
+  % 7: panel b, abajo: A y B y la DA (efecto saldos reales)
+  \capa{7}{\draw[guia] (4,6.9) -- (4,0) node[below] {$Y_0$};}
+  \capa{7}{\draw[guia] (2.8,6.9) -- (2.8,0) node[below] {$Y_1$};}
+  \capa{7}{\draw[curva1, domain=1.9:5.6, samples=60] plot (\x, {0.55+3.8/\x}) node[etiqueta, right, text=tceemorado] {DA};}
+  \capa{7}{\node[punto] at (4,1.5) {};}
+  \capa{7}{\node[etiqueta, anchor=south west] at (4.05,1.55) {$A$};}
+  \capa{7}{\node[punto] at (2.8,1.907) {};}
+  \capa{7}{\node[etiqueta, anchor=south west] at (2.85,1.95) {$B$};}
+  \capa{7}{\draw[guia] (0,1.5) node[left, text=black] {$P_0$} -- (4,1.5);}
+  \capa{7}{\draw[guia] (0,1.907) node[left, text=black] {$P_1$} -- (2.8,1.907);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
