@@ -1,0 +1,52 @@
+% La equivalencia ricardiana en 2 periodos (anexo). Hogar con
+% U = ln c1 + ln c2 (beta = 1), y1 = 100, y2 = 110, r = 10 %.
+%   a) G1 = 40, G2 = 44: riqueza neta de impuestos 100 + 100 - (40 + 40) = 120;
+%      recta c2 = 1,1 (120 - c1); E = (60; 66), curva c1 c2 = 3.960.
+%      Presupuesto equilibrado (T1 = 40, T2 = 44): dotación neta A = (60; 66) = E.
+%      Rebaja hoy con deuda (T1 = 0, B2 = 44, T2 = 88): dotación B = (100; 22),
+%      en la misma recta: el consumo no cambia y el hogar ahorra 40.
+%   b) G1 = 60: riqueza 100; recta c2 = 1,1 (100 - c1); E' = (50; 55),
+%      curva c1 c2 = 2.750. Con impuestos (T1 = 60, T2 = 44): A' = (40; 66);
+%      con deuda (T1 = 40, B2 = 22, T2 = 66): B' = (60; 44). Las 2 en la misma recta.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.045cm,y=0.045cm]
+  \path (-30,-16) rectangle (305,158);
+  % ---------------- a) ----------------
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (70,150) {a) Rebaja de impuestos con deuda};}
+  \capa{1}{\ejes{$c_1$}{$c_2$}{140}{145}}
+  % 2: recta presupuestaria intertemporal (pendiente -(1+r))
+  \capa{2}{\draw[curva2] (0,132) -- (120,0) node[etiqueta, above right, text=tceeazul] {$-(1+r)$};}
+  % 3: curva de indiferencia y óptimo E, que es también la dotación A
+  \capa{3}{\draw[curva1, domain=29:135, samples=60] plot (\x,{3960/\x}) node[etiqueta, above, text=tceemorado] {$U_0$};}
+  \capa{3}{\proyeccion{(60,66)}{$c_1^*$}{$c_2^*$}}
+  \capa{3}{\node[punto] at (60,66) {};}
+  \capa{3}{\node[etiqueta, anchor=south west] at (61,68) {$E=A$};}
+  % 4: dotación con la rebaja financiada con deuda: misma recta, mismo E
+  \capa{4}{\node[punto, fill=tceerojo] at (100,22) {};}
+  \capa{4}{\node[etiqueta, anchor=south west, text=tceerojo] at (101,23) {$B$};}
+  \capa{4}{\draw[guia] (100,22) -- (100,0) node[below] {$y_1-T_1$};}
+  \capa{4}{\draw[flecha] (94,24.3) -- (60,61.7);}
+  \capa{4}{\node[etiqueta, text=tceerojo, anchor=east, align=right] at (56,32) {el hogar ahorra\\la rebaja};}
+  % ---------------- b) ----------------
+  \begin{scope}[xshift=7.4cm]
+  \capa{5}{\node[font=\normalsize\bfseries, anchor=base] at (70,150) {b) Más gasto hoy};}
+  \capa{5}{\ejes{$c_1$}{$c_2$}{140}{145}}
+  \capa{5}{\draw[curva2] (0,132) node[etiqueta, anchor=east, text=tceeazul] {$G_1=40$} -- (120,0);}
+  \capa{5}{\draw[curva1, domain=29:135, samples=60] plot (\x,{3960/\x});}
+  \capa{5}{\node[punto] at (60,66) {};}
+  \capa{5}{\node[etiqueta, anchor=south west] at (61,68) {$E$};}
+  % 6: la recta se desplaza hacia dentro en lo que vale el gasto
+  \capa{6}{\draw[curvanueva, desplazada] (0,110) node[etiqueta, anchor=north east, text=tceerojo] {$G_1=60$} -- (100,0);}
+  \capa{6}{\draw[curvanueva, domain=22:125, samples=60] plot (\x,{2750/\x});}
+  \capa{6}{\node[punto] at (50,55) {};}
+  \capa{6}{\node[etiqueta, anchor=north east] at (49,53) {$E'$};}
+  % 7: las 2 formas de financiarlo dejan la dotación en la misma recta
+  \capa{7}{\node[punto, fill=tceeverde] at (40,66) {};}
+  \capa{7}{\node[etiqueta, anchor=east, text=tceeverde] at (37,67) {$A'$ (impuestos)};}
+  \capa{7}{\node[punto, fill=tceeverde] at (60,44) {};}
+  \capa{7}{\node[etiqueta, anchor=north east, text=tceeverde] at (59,42) {$B'$ (deuda)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

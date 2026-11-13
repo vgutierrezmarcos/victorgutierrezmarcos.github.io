@@ -1,0 +1,149 @@
+% Efectos de un aumento del gasto según cómo se financie (filas: impuestos,
+% deuda, dinero) y según la escuela (columnas: clásicos, keynesianos,
+% monetaristas), en el IS-LM. Mismas rectas que islm-escuelas.tex; la IS se
+% desplaza 2,5 unidades con deuda o dinero y 1 con impuestos (presupuesto
+% equilibrado: solo la parte que no sale del consumo, 1 - c = 0,4).
+% Con dinero, la LM se desplaza lo justo para que el tipo no suba; en los
+% clásicos la renta está en su nivel de pleno empleo y el dinero solo sube P.
+% Generado con un guion de Python (rectas recortadas al recuadro de cada panel).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.3cm,y=0.3cm]
+  \path (-9.5,-34.5) rectangle (49.5,12.2);
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (5.5,11.0) {Clásicos};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (22.5,11.0) {Keynesianos};}
+  \capa{1}{\node[font=\normalsize\bfseries, anchor=base] at (39.5,11.0) {Monetaristas};}
+  \capa{1}{\node[font=\normalsize\bfseries, rotate=90, anchor=south] at (-3.6,5) {Con impuestos};}
+  \capa{2}{\node[font=\normalsize\bfseries, rotate=90, anchor=south] at (-3.6,-10) {Con deuda};}
+  \capa{3}{\node[font=\normalsize\bfseries, rotate=90, anchor=south] at (-3.6,-25) {Con dinero};}
+  % ---- Clásicos, con impuestos ----
+  \begin{scope}[shift={(0.0cm,0.0cm)}]
+  \capa{1}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{1}{\draw[curva2] (6.000,0.400) -- (6.000,9.200) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{1}{\draw[curva1] (0.400,8.700) -- (10.400,1.200) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{1}{\draw[curvanueva, desplazada] (0.733,9.200) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (10.400,1.950);}
+  \capa{1}{\draw[guia] (0,4.500) -| (6.000,0);}
+  \capa{1}{\draw[guia] (0,5.250) -| (6.000,0);}
+  \capa{1}{\node[punto] at (6.000,4.500) {};}
+  \capa{1}{\node[etiqueta, anchor=north east] at (5.900,4.400) {$E_0$};}
+  \capa{1}{\node[punto] at (6.000,5.250) {};}
+  \capa{1}{\node[etiqueta, anchor=south west] at (6.100,5.400) {$E_1$};}
+  \capa{1}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {expulsión total};}
+  \end{scope}
+  % ---- Keynesianos, con impuestos ----
+  \begin{scope}[shift={(5.1cm,0.0cm)}]
+  \capa{1}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{1}{\draw[curva2] (0.400,1.860) -- (10.400,3.360) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{1}{\draw[curva1] (2.400,9.200) -- (6.800,0.400) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{1}{\draw[curvanueva, desplazada] (3.400,9.200) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (7.800,0.400);}
+  \capa{1}{\draw[guia] (0,2.651) -| (5.674,0);}
+  \capa{1}{\draw[guia] (0,2.791) -| (6.605,0);}
+  \capa{1}{\node[punto] at (5.674,2.651) {};}
+  \capa{1}{\node[etiqueta, anchor=north east] at (5.574,2.551) {$E_0$};}
+  \capa{1}{\node[punto] at (6.605,2.791) {};}
+  \capa{1}{\node[etiqueta, anchor=south west] at (6.705,2.941) {$E_1$};}
+  \capa{1}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {$\Delta Y\approx\Delta G$};}
+  \end{scope}
+  % ---- Monetaristas, con impuestos ----
+  \begin{scope}[shift={(10.2cm,0.0cm)}]
+  \capa{1}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{1}{\draw[curva2] (4.200,0.400) -- (8.600,9.200) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{1}{\draw[curva1] (0.400,5.840) -- (10.400,1.840) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{1}{\draw[curvanueva, desplazada] (0.400,6.240) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (10.400,2.240);}
+  \capa{1}{\draw[guia] (0,3.667) -| (5.833,0);}
+  \capa{1}{\draw[guia] (0,4.000) -| (6.000,0);}
+  \capa{1}{\node[punto] at (5.833,3.667) {};}
+  \capa{1}{\node[etiqueta, anchor=north east] at (5.733,3.567) {$E_0$};}
+  \capa{1}{\node[punto] at (6.000,4.000) {};}
+  \capa{1}{\node[etiqueta, anchor=south west] at (6.100,4.150) {$E_1$};}
+  \capa{1}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {efecto mínimo};}
+  \end{scope}
+  % ---- Clásicos, con deuda ----
+  \begin{scope}[shift={(0.0cm,-4.5cm)}]
+  \capa{2}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{2}{\draw[curva2] (6.000,0.400) -- (6.000,9.200) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{2}{\draw[curva1] (0.400,8.700) -- (10.400,1.200) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{2}{\draw[curvanueva, desplazada] (2.233,9.200) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (10.400,3.075);}
+  \capa{2}{\draw[guia] (0,4.500) -| (6.000,0);}
+  \capa{2}{\draw[guia] (0,6.375) -| (6.000,0);}
+  \capa{2}{\node[punto] at (6.000,4.500) {};}
+  \capa{2}{\node[etiqueta, anchor=north east] at (5.900,4.400) {$E_0$};}
+  \capa{2}{\node[punto] at (6.000,6.375) {};}
+  \capa{2}{\node[etiqueta, anchor=south west] at (6.100,6.525) {$E_1$};}
+  \capa{2}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {expulsión total};}
+  \end{scope}
+  % ---- Keynesianos, con deuda ----
+  \begin{scope}[shift={(5.1cm,-4.5cm)}]
+  \capa{2}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{2}{\draw[curva2] (0.400,1.860) -- (10.400,3.360) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{2}{\draw[curva1] (2.400,9.200) -- (6.800,0.400) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{2}{\draw[curvanueva, desplazada] (4.900,9.200) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (9.300,0.400);}
+  \capa{2}{\draw[guia] (0,2.651) -| (5.674,0);}
+  \capa{2}{\draw[guia] (0,3.000) -| (8.000,0);}
+  \capa{2}{\node[punto] at (5.674,2.651) {};}
+  \capa{2}{\node[etiqueta, anchor=north east] at (5.574,2.551) {$E_0$};}
+  \capa{2}{\node[punto] at (8.000,3.000) {};}
+  \capa{2}{\node[etiqueta, anchor=south west] at (8.100,3.150) {$E_1$};}
+  \capa{2}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {expulsión casi nula};}
+  \end{scope}
+  % ---- Monetaristas, con deuda ----
+  \begin{scope}[shift={(10.2cm,-4.5cm)}]
+  \capa{2}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{2}{\draw[curva2] (4.200,0.400) -- (8.600,9.200) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{2}{\draw[curva1] (0.400,5.840) -- (10.400,1.840) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{2}{\draw[curvanueva, desplazada] (0.400,6.840) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (10.400,2.840);}
+  \capa{2}{\draw[guia] (0,3.667) -| (5.833,0);}
+  \capa{2}{\draw[guia] (0,4.500) -| (6.250,0);}
+  \capa{2}{\node[punto] at (5.833,3.667) {};}
+  \capa{2}{\node[etiqueta, anchor=north east] at (5.733,3.567) {$E_0$};}
+  \capa{2}{\node[punto] at (6.250,4.500) {};}
+  \capa{2}{\node[etiqueta, anchor=south west] at (6.350,4.650) {$E_1$};}
+  \capa{2}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {expulsión casi total};}
+  \end{scope}
+  % ---- Clásicos, con dinero ----
+  \begin{scope}[shift={(0.0cm,-9.0cm)}]
+  \capa{3}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{3}{\draw[curva2] (6.000,0.400) -- (6.000,9.200) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{3}{\draw[curva1] (0.400,8.700) -- (10.400,1.200) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{3}{\draw[curvanueva, desplazada] (2.233,9.200) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (10.400,3.075);}
+  \capa{3}{\draw[guia] (0,4.500) -| (6.000,0);}
+  \capa{3}{\draw[guia] (0,6.375) -| (6.000,0);}
+  \capa{3}{\node[punto] at (6.000,4.500) {};}
+  \capa{3}{\node[etiqueta, anchor=north east] at (5.900,4.400) {$E_0$};}
+  \capa{3}{\node[punto] at (6.000,6.375) {};}
+  \capa{3}{\node[etiqueta, anchor=south west] at (6.100,6.525) {$E_1$};}
+  \capa{3}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {solo sube $P$};}
+  \end{scope}
+  % ---- Keynesianos, con dinero ----
+  \begin{scope}[shift={(5.1cm,-9.0cm)}]
+  \capa{3}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{3}{\draw[curva2] (0.400,1.860) -- (10.400,3.360) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{3}{\draw[curva1] (2.400,9.200) -- (6.800,0.400) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{3}{\draw[curvanueva, desplazada] (4.900,9.200) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (9.300,0.400);}
+  \capa{3}{\draw[curva3, desplazada] (0.400,1.485) -- (10.400,2.985) node[etiqueta, below, text=tceeverde] {LM$'$};}
+  \capa{3}{\draw[guia] (0,2.651) -| (5.674,0);}
+  \capa{3}{\draw[guia] (0,2.651) -| (8.174,0);}
+  \capa{3}{\node[punto] at (5.674,2.651) {};}
+  \capa{3}{\node[etiqueta, anchor=north east] at (5.574,2.551) {$E_0$};}
+  \capa{3}{\node[punto] at (8.174,2.651) {};}
+  \capa{3}{\node[etiqueta, anchor=north east] at (8.024,2.351) {$E_1$};}
+  \capa{3}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {el mayor efecto};}
+  \end{scope}
+  % ---- Monetaristas, con dinero ----
+  \begin{scope}[shift={(10.2cm,-9.0cm)}]
+  \capa{3}{\ejes{$Y$}{$i$}{11.2}{9.8}}
+  \capa{3}{\draw[curva2] (4.200,0.400) -- (8.600,9.200) node[etiqueta, above, text=tceeazul] {LM};}
+  \capa{3}{\draw[curva1] (0.400,5.840) -- (10.400,1.840) node[etiqueta, right, text=tceemorado] {IS};}
+  \capa{3}{\draw[curvanueva, desplazada] (0.400,6.840) node[etiqueta, anchor=south west, xshift=1pt, text=tceerojo] {IS$'$} -- (10.400,2.840);}
+  \capa{3}{\draw[curva3, desplazada] (6.700,0.400) -- (10.400,7.800) node[etiqueta, above, text=tceeverde] {LM$'$};}
+  \capa{3}{\draw[guia] (0,3.667) -| (5.833,0);}
+  \capa{3}{\draw[guia] (0,3.667) -| (8.333,0);}
+  \capa{3}{\node[punto] at (5.833,3.667) {};}
+  \capa{3}{\node[etiqueta, anchor=north east] at (5.733,3.567) {$E_0$};}
+  \capa{3}{\node[punto] at (8.333,3.667) {};}
+  \capa{3}{\node[etiqueta, anchor=south west] at (8.433,3.817) {$E_1$};}
+  \capa{3}{\node[etiqueta, text=tceerojo, anchor=north] at (5.5,-1.2) {a corto plazo; a largo, solo $P$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
