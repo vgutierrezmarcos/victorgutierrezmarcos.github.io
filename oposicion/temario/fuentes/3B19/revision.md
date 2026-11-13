@@ -109,7 +109,7 @@ Todos los datos que caducan están en `datos-actualizables.yaml` (presidencias d
 
 **Datos (V)**: aplicados V1, V6-V8, V10, V12-V31, V33-V40, V44-V47, V49, V50. V2 desaparece con el recorte del modelo de un país. V9: McKibbin sin cifra. V32 (salidas de 2020): no se usa (el enganche cambió). V41 (Euro Plus): no se menciona (sin fuente primaria). V42: desaparece con la caja del cártel. V43: GEM citado con `Bayoumi2004GEM`. V48: fuera, sin fuente.
 
-**Coherencia (K)**: aplicadas K1-K7, K9-K22, con estos cambios: K12.2 sin el gráfico del policy mix (D-K12); K12.5 (gallina) fuera del todo; K13 sin la pegatina en el cuerpo de los obstáculos (va en la guerra de divisas, que es donde se usa); K14: amplitud, profundidad y tamaño en III.1 (no en II.3), como pide K14; K16: Brisbane, presupuesto de la OCDE y Rambouillet sin fecha (sin fuente); K18-K19: anexo A, B y C como propone K19, más el anexo D de test.
+**Coherencia (K)**: aplicadas K1-K7, K9-K22, con estos cambios: K12.2 sin el gráfico del policy mix (D-K12); K12.5 (gallina) fuera del todo; K13 sin el dicho en el cuerpo de los obstáculos (iba en la guerra de divisas; quitado el 13/11/2026); K14: amplitud, profundidad y tamaño en III.1 (no en II.3), como pide K14; K16: Brisbane, presupuesto de la OCDE y Rambouillet sin fecha (sin fuente); K18-K19: anexo A, B y C como propone K19, más el anexo D de test.
 
 - Control de calidad (12/11/2026): en III.2.3 (FMI), una línea sobre el ejercicio de alerta temprana del FMI y el FSB desde 2009 (`FMI2010EWE`, la misma clave del 3.B.17), porque el 3.B.17 remite aquí.
 
@@ -129,9 +129,31 @@ Todos los datos que caducan están en `datos-actualizables.yaml` (presidencias d
   - **`mapa.yaml`**: quitar `juego-coordinacion` (sin ficha) y añadir una fila 3.B.19 a `dilema-prisionero` (locomotora, disciplina y guerra de divisas con los pagos del canon); `g20-ocde` con 3.B.19 como referencia hecha; el `faltan` 3.A.32 dice «IS-LM-BP de dos países» (es de uno).
   - **Ficha `ciclo-financiero`**: referencia en el 3.B.15 (aplicado aquí: resumen y remisión).
   - **Ficha `hamada-coordinacion`** (o fila en `dilema-prisionero`): pendiente de decisión; el diagrama de aquí sería su referencia. Koichi Hamada frente a Robert Hamada (3.B.2, 3.B.3, 3.B.23): avisado en una nota al pie.
-  - **Refranes**: este tema usa «Cada uno en su casa y Dios en la de todos» (enganche), «¿Quién le pone el cascabel al gato?» y «Mal de muchos, consuelo de tontos» (pegatinas); añadirlos a CRITERIOS § 8 al aprobarse y comprobar que el 3.B.15 y el 3.B.17 no los usan.
+  - **Refranes**: este tema usa «Cada uno en su casa y Dios en la de todos» (enganche) y «¿quién le pone el cascabel al gato?» (integrado en la idea de Hamada; «Mal de muchos, consuelo de tontos» se quitó el 13/11/2026); añadirlos a CRITERIOS § 8 al aprobarse y comprobar que el 3.B.15 y el 3.B.17 no los usan.
 
 - Control de calidad (12/11/2026): en I.1.1 iii, la política monetaria con tipo flexible es un juego de «suma negativa» (no «suma cero»), como en el anexo B y en el 3.B.15; el título del II corta con `\cortetitulo` tras «La cooperación económica» para que «reciente» no quede sola.
+
+## Puesta al día con las reglas de esta rama (13/11/2026)
+
+Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 4.ª-9.ª y de la revisión transversal, sin quitar contenido.
+
+| Regla | Cómo se ha aplicado |
+|---|---|
+| Citas (5.ª y 7.ª tanda) | 112 `\parencite` pasan a `\nocite` (script); revisadas las frases. Los `\textcite` quedan solo donde el autor es sujeto; el de `Friedman1971Supergames` pasa a «\autor{James W. Friedman} (1971)» para no confundirlo con Milton Friedman |
+| Anexo de test (7.ª) | Caja estándar `anotaciones` con `?tema=3.B.19`; fuera la cita `GutierrezMarcos2026Simulador` y su entrada del `.bib` (8.ª, regla 1) |
+| Figura / Gráfico / Imagen | `escalera-cooperacion` es un esquema sin ejes: pasa a `infografia`, `figu:escalera`, «figura». Los otros 7 siguen como gráfico (ejes o datos). No hay imágenes pegadas |
+| Pegatinas y dichos (8.ª, 9.ª) | Se queda el refrán del enganche («Cada uno en su casa y Dios en la de todos»), que retoma la idea final. «¿Quién le pone el cascabel al gato?» se integra sin etiqueta en la idea de Hamada, explicando la relación (cada país espera a que se mueva el otro). «Mal de muchos, consuelo de tontos» (guerra de divisas) se quita: no estaba en el tema antiguo y repetía la frase anterior. Ninguno de los 3 venía del tema antiguo (`3B19-anterior.pdf`) |
+| Estructura rígida de modelo (8.ª) | Mundell-Fleming, Corsetti-Pesenti y Hamada ya tenían a)-e). «La repetición» (I.2.2) pasa a a) Idea, b) Modelo (i supuestos con la matriz de la locomotora, ii desarrollo con `eq:gatillo`, iii implicaciones) y c) Valoración, sin quitar nada |
+| Resultados clave en morado | Ya lo estaban: `eq:corsetti-pesenti`, `eq:hamada`, `eq:gatillo` |
+| Términos en inglés | NOEM: «(\emph{new open economy macroeconomics}, NOEM)»; FSB: «(\emph{Financial Stability Board}, FSB)»; el resto ya estaba |
+| Remisiones | La frase «(no confundir con las «generaciones» de crisis del \vertema{3.B.17})», gramaticalmente dependiente de la remisión y sin sentido aquí, se sustituye por la diferencia real con Hamada (funciones de pérdida postuladas) |
+| Nobel (transversal) | Notas nuevas en la primera mención: \autor{Nash} (1994), \autor{Milton Friedman} (1976), \autor{Mundell} (1999; estaba en el tema antiguo, nota 5, y se había perdido), \autor{Stiglitz} (2001, con \autor{Dixit}), \autor{Lucas} (1995), \autor{Nordhaus} (2018) y \autor{Woodford} (2026, con una frase en la idea de la NOEM: su modelo neokeynesiano con microfundamentos es el marco de Corsetti-Pesenti). Entradas copiadas de otros temas (`Nobel1994Nash`, `Nobel1976Friedman`, `Nobel2001AkerlofSpenceStiglitz`, `NobelPrize1995Lucas`, `Nobel2018Nordhaus`, `Nobel2026Prensa`) |
+| 4.º ejercicio | Relevancia para España: la respuesta fiscal de 2008-2009 dentro del estímulo concertado del G-20 \vertema{4.A.28}; ajuste simétrico: España vivió el lado deficitario tras 2008 \vertema{4.A.21}. Ya estaban \vertema{4.A.24} (Consenso de la OCDE) y \vertema{4.B.18} (2 pilares) |
+| Pizarra / vídeo en el texto | No había; las «pegatinas» de «Instrucciones para el vídeo» y de «Coherencia» se han reescrito |
+| NEK (x,π), identidad contable | No aparecen en el tema |
+| Compilación | `construir-tema.py 3B19 --solo pdf --no-publicar`: 28 páginas de tema, 5 de anexos, 7 de bibliografía. `verificar-tema.py`: solo los 3 errores de PDF/HTML/Word publicados anteriores a la fuente y avisos de «cifra sin cita» ya existentes |
+
+Dudas nuevas: 18 y 19 (abajo).
 
 ## 7. Dudas abiertas
 
@@ -155,6 +177,9 @@ Víctor está fuera: cada duda lleva aplicada la opción recomendada.
 16. **DSSI**: G-20 (12.700 M$, 50 países) y Banco Mundial (12.900 M$, 48 países) difieren; el texto dice «más de 12.000 millones de casi 50 países».
 17. **Sudáfrica en Miami**: se ha quitado «y no ha invitado a Sudáfrica a la de Miami» de los límites del G-20 (III.2.1): no hay en el `.bib` un anuncio oficial de EE. UU. (26-27/11/2025) ni una noticia de agencia que lo compruebe, y el G20 Research Group no basta. Si Víctor quiere recuperarlo, hace falta esa fuente.
 
+18. **Dichos** (13/11/2026): se conserva «¿quién le pone el cascabel al gato?» integrado en la idea de Hamada y se quita «Mal de muchos, consuelo de tontos». Alternativas: (a) quitar también el del cascabel; (b) recuperar el segundo integrado en la guerra de divisas. **Aplicada: conservar uno (recomendada).**
+19. **La repetición como modelo** (13/11/2026): I.2.2 pasa a la estructura a)-c) (sin Extensiones ni Evidencia, que no tenía). Alternativa: dejarlo como aplicación de Hamada sin bloques. **Aplicada: estructura de modelo (recomendada, regla rígida de la 8.ª tanda).**
+
 ## 8. Instrucciones para el vídeo
 
 - **Introducción** (2′30″): sin pizarra, modo guion con los 5 bloques. Enganche: el refrán «Cada uno en su casa y Dios en la de todos» y las 2 cumbres (Londres 2009, Johannesburgo 2025); pregunta: «¿basta con que cada país ponga orden en su casa, o hay problemas que solo se arreglan entre todos?».
@@ -162,9 +187,9 @@ Víctor está fuera: cada duda lleva aplicada la opción recomendada.
   - los 5 canales, 5 palabras en una columna estrecha;
   - Mundell-Fleming: solo se dibuja la **expansión fiscal** (`mundell-fleming-dos-paises-fiscal`), por partes: panel A (IS→IS′, sube $i^*$) y después panel B (IS′, sube la renta: locomotora); la monetaria (`mundell-fleming-dos-paises`) va de **apoyo**, y de la tabla solo se escribe la fila del tipo flexible;
   - Corsetti-Pesenti: el recuadro con las 3 curvas `eq:corsetti-pesenti` (**función clave**) y el gráfico de referencia por capas: panel a, $O\to R\to F$; panel b, $H$ con PCP y $L$ con LCP. El dólar, la reforma y τ (anexo A), solo de apoyo si el tiempo sobra.
-- **I.2** (4′): `eq:hamada` (**función clave**) y el diagrama por capas (rayo $E_0$, $F_A$ y $F_B$, círculos, reacciones, $N$, lente, curva de contrato, núcleo); pegatina «¿Quién le pone el cascabel al gato?» junto al diagrama. La matriz de la locomotora y `eq:gatillo` (**función clave**) se quedan en una esquina con `conservar:`.
+- **I.2** (4′): `eq:hamada` (**función clave**) y el diagrama por capas (rayo $E_0$, $F_A$ y $F_B$, círculos, reacciones, $N$, lente, curva de contrato, núcleo); el dicho «¿quién le pone el cascabel al gato?» se dice de palabra al presentar el polizón. La matriz de la locomotora y `eq:gatillo` (**función clave**) se quedan en una esquina con `conservar:`.
 - **II** (6′):
-  - II.1: la **línea del tiempo** (`tab:cronologia`) se dibuja como una flecha horizontal con los años (1944, 1978, 1985-1987, 1999, 2009, 2010, 2013, 2020-2021, 2025), que crece mientras se cuentan los episodios; sobre la matriz de la locomotora que se conservó se tachan los rótulos: Expandir → Consolidar / Gastar (disciplina) → Contener / Depreciar (guerra de divisas). Pegatina «Mal de muchos, consuelo de tontos» junto a la guerra de divisas. El ajuste simétrico de Keynes, de palabra;
+  - II.1: la **línea del tiempo** (`tab:cronologia`) se dibuja como una flecha horizontal con los años (1944, 1978, 1985-1987, 1999, 2009, 2010, 2013, 2020-2021, 2025), que crece mientras se cuentan los episodios; sobre la matriz de la locomotora que se conservó se tachan los rótulos: Expandir → Consolidar / Gastar (disciplina) → Contener / Depreciar (guerra de divisas). El ajuste simétrico de Keynes, de palabra;
   - II.2: los 5 obstáculos económicos en 5 palabras (polizón, contraproducente, incertidumbre, preferencias, reparto) y 2 políticos; II.3, de palabra.
 - **III** (8′):
   - III.1: la **escalera de la cooperación** (`escalera-cooperacion`), peldaño a peldaño, con los foros en cada uno; se queda en la pizarra para III.2;
