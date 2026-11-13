@@ -196,6 +196,26 @@ Referencias comprobadas además en Crossref el 11/11/2026 por esta fase: Cole y 
 
 3.A.14 (juego de coordinación: I.2 c y tabla), 3.A.22 (entradas masivas con sistemas débiles: II.1 y II.3), 3.A.32 (`Krugman1979Model` y el dilema del régimen: I.1), 3.A.39 (monetización con tipo fijo: I.1), 3.B.11 (ataque antes de agotar reservas, parada súbita, pecado original, `KaminskyReinhart1999`, `Obstfeld1996`: I.1, II.2.3, II.3, I.2), 3.B.12 (América Latina, Asia y el euro; Tailandia ≈8 %; `Krugman1979Model`; México con tesobonos: introducción, I.1, II.2.3, II.3, III.5), 3.B.13 (Soros, PNCI con prima, pecado original, peso de 1976: I.2, II.2.3, I.1), 3.B.14 ($\tilde E$, $\bar E$: I.1), 3.B.16 (16/9/1992, peseta, expectativas, «la crisis cambiaria que una unión evita»: I.2, III.5).
 
+## Puesta al día con las reglas de esta rama (13/11/2026)
+
+Tema traído de la rama `revision-temario`; puesto al nivel de los temas de `revision-temario-2` sin quitar contenido. PDF construido con `--solo pdf --no-publicar` (25 páginas de tema, 4 de anexos, 6 de bibliografía); `verificar-tema.py` sin errores propios (solo los de «anterior a la fuente» del PDF, HTML y Word publicados).
+
+| Regla | Cómo se ha aplicado |
+|---|---|
+| Citas (5.ª tanda) | 78 `\parencite` → `\nocite` con `quitar_citas.py`. En la introducción, la lista de generaciones perdía sus autores al quitar las citas: se dicen en el texto («de \autor{Krugman} (1979) y \autor{Flood} y \autor{Garber} (1984)»…). Frases revisadas; ninguna queda coja. `\textcite` solo de obras originales. |
+| Plantilla (7.ª tanda) | Anexo de test con la caja estándar (`tema=3.B.17`); fuera `GutierrezMarcos2026Simulador` del `.bib`. `tcefecha` a 13/11/2026. Títulos: «Segunda generación: crisis autocumplidas» con `\cortetitulo` antes de los autores (como la primera) y el anexo A acortado a «Anexo: derivaciones de las 2 primeras generaciones» (una línea); `verificar-tema.py` ya no avisa. |
+| Gráfico / Figura / Imagen | Los 5 son gráficos (ejes, curvas o datos); no hay figuras ni imágenes. |
+| Pegatinas y dichos (8.ª tanda y revisión transversal) | Fuera las 4 etiquetas «Pegatina:». Se quedan, integrados en la frase: el refrán del enganche («Nadie escarmienta en cabeza ajena», que vuelve en la idea final), «tanto va el cántaro a la fuente que al final se rompe» (la pérdida diaria de reservas hasta el ataque) y la frase de los banqueros que citan Dornbusch, Goldfajn y Valdés (1995), «no es la velocidad lo que mata, es la parada súbita». Fuera «la fe mueve montañas» (segunda generación: la creencia no mueve nada, la profecía se cumple sola; puede confundir) y «no hay dos sin tres» (crisis gemelas que «son triples»: forzado). Ninguno venía del tema antiguo. `notaopositor` y vídeo, al día (duda 19). |
+| Resultados clave en morado | Ya estaban `eq:momento-ataque`, `eq:escape` y `eq:krugman-condicion`; no se añaden más. |
+| Estructura a)-e) | Primera y segunda generación, completas. A los 3 modelos de la tercera generación les faltaba la valoración: se añaden «c) Valoración» al riesgo moral y a las hojas de balance y «d) Valoración» a las paradas súbitas (tras su evidencia), breves y escritas para enlazar con el modelo siguiente (riesgo moral → hojas de balance → paradas súbitas → contagio). La valoración de conjunto de II.4 se mantiene. |
+| Pasos con sangría | Las 2 «intuiciones en 3 pasos» (primera y tercera generación): el rótulo del paso en su viñeta y su contenido debajo, un nivel más adentro. |
+| Términos en inglés | Añadidos la primera vez: *sudden stop*, *twin crises*, *speculative attack*, *shadow exchange rate*, *exchange market pressure index*, *escape clause*, *time inconsistency*, *global games*, *moral hazard*, *original sin*, *fear of floating*, *debt intolerance*, *monsoonal effects*, *common lender effect*, *sunspots*, *early warning systems* (con una frase de definición nueva al principio de III.4). |
+| Nobel (revisión transversal) | Nota con el motivo oficial en la primera mención: Krugman (2008, en la lista de generaciones de la introducción, con su papel en el tema: 1.ª, 3.ª y la pregunta por la 4.ª), Sargent (2011, dominación fiscal), Lucas (1995, oferta de Lucas), Kydland y Prescott (2004, inconsistencia temporal, ahora nombrados en el texto), Nash (1994, juego del ataque), Stiglitz (2001, crítica a la receta del FMI), Friedman (1976, anexo de pánicos). La nota de Bernanke, Diamond y Dybvig (2022) ya existía: ahora cita `Nobel2022Bancos` además de Repullo (2022). Entradas copiadas: `Nobel1976Friedman`, `Nobel1994Nash`, `Nobel1995Lucas`, `Nobel2001AkerlofSpenceStiglitz`, `Nobel2004KydlandPrescott`, `Nobel2008Krugman`, `Nobel2011SargentSims`, `Nobel2022Bancos`. |
+| 4.º ejercicio | Añadidos `\vertema{4.A.27}` (devaluaciones de la peseta de 1992-1993), `\vertema{4.A.28}` (parada súbita de la periferia en 2010-2012) y `\vertema{4.A.21}` (saldos TARGET). |
+| Pizarra, vídeo, «lo que se suele preguntar», enlaces a otros formatos | No había ninguno. |
+| NEK en (x, π), identidad cuantitativa | No salen (la demanda de dinero de Flood y Garber es una función de demanda, no la teoría cuantitativa). |
+| Ficha de repaso | El tema no tiene ficha (`repaso/` no existe); no se crea en esta puesta al día. |
+
 ## 7. Dudas abiertas
 
 Todas aplicadas ya con la opción indicada; basta confirmarlas o cambiarlas.
@@ -219,6 +239,9 @@ Todas aplicadas ya con la opción indicada; basta confirmarlas o cambiarlas.
 17. **Sims (2019)**: la nueva dirección da 403 a clientes automáticos; comprobar en un navegador.
 18. **Turquía 2018 «con rasgos de la tercera generación»**: la clasificación es nuestra (datos del BCE y del BIS).
 
+19. **Dichos** (13/11/2026): se quitan «la fe mueve montañas» y «no hay dos sin tres» (duda 13). Opciones: (a) quitarlos y dejar el refrán del enganche, «tanto va el cántaro…» y la frase de los banqueros; (b) conservar los 4 integrados. **Aplicada: (a)**.
+20. **Bloques a)-d) del contagio** (13/11/2026): III.2 y III.3 usan `\paragraph{a) Vínculos comerciales}`, `\subparagraph{i) Bilaterales}`… para clasificar canales, no para los bloques de un modelo. Opciones: (a) dejarlos (no es un modelo); (b) pasarlos a viñetas para que las letras a)-e) solo marquen modelos. **Aplicada: (a)**.
+
 ## 8. Instrucciones para el vídeo
 
 - **Reparto**: introducción 2′30″; I 11′ (I.1 5′; I.2 6′); II 9′ (II.1 1′30″; II.2 5′30″, con II.2.1 1′30″, II.2.2 3′ y II.2.3 1′; II.3 1′; II.4 1′); III 6′30″ (III.1 30″; III.2-III.5 1′30″ cada uno); conclusión 1′.
@@ -229,6 +252,6 @@ Todas aplicadas ya con la opción indicada; basta confirmarlas o cambiarlas.
   - II.2.2 `hojas-balance` por capas (ejes y 45°, curva en 3 tramos, $L$, $U$, $H$, flechas), con $(1+\theta)(1-m)B^*/X>1$ recuadrada; antes, la espiral $\downarrow I\Rightarrow\uparrow q\Rightarrow\downarrow W\Rightarrow\downarrow I_F$ en una línea.
 - **Como apoyo, sin dibujar**: `crisis-frecuencia` (introducción), la tabla del juego de los 2 especuladores (I.2 c; si sobra tiempo, solo la matriz de reservas intermedias), `tab:tres-generaciones` (II.4: puede irse llenando con una palabra por casilla) y el gráfico de Diamond y Dybvig (no se canta).
 - **Gráfico conjunto por partes**: el de primera generación se dibuja en 3 pasos alineados en $T$ y $T_N$; el de hojas de balance, en 6 capas; los canales del contagio (III.2-III.3) se pueden ir escribiendo como árbol (fundamentos: comerciales/financieros; puro: información/dominó).
-- **Pegatinas**: «tanto va el cántaro a la fuente que al final se rompe» (I.1), «la fe mueve montañas» (I.2), «no hay dos sin tres» (II.1) y «no es la velocidad lo que mata, es la parada súbita» (II.2.3).
+- **Refranes y frases** (13/11/2026): «tanto va el cántaro a la fuente que al final se rompe» (I.1) y «no es la velocidad lo que mata, es la parada súbita» (II.2.3), integrados en el texto; «la fe mueve montañas» y «no hay dos sin tres» ya no están.
 - **Al empezar**, la convención del tipo de cambio (directo: si sube, se deprecia).
 - **No se canta**: los anexos A-C, la caja gris de la derivada de Krugman, las notas al pie (curiosidades para las preguntas del tribunal) y la tabla completa de los datos recientes de Turquía y Argentina (basta nombrarlos).

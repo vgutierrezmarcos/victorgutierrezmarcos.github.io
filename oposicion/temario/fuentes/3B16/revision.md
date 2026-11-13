@@ -134,6 +134,26 @@ Cambios en este tema: notación del canon ($q$, $\gamma_q$, $\gamma_{P^*}$, $\ma
 7. Opcionales: 3.A.6 (l. 740), «desaparece el *trade-off*» → «desaparece el sesgo inflacionista»; 3.B.10 (l. 778), la moneda común y la concentración de la industria.
 8. «Atarse las manos» se desarrolla aquí (D2): el 3.B.15, cuando se revise, lo resume en una línea con `\vertema{3.B.16}`.
 
+## Puesta al día con las reglas de esta rama (13/11/2026)
+
+Tema traído de la rama `revision-temario`; puesto al nivel de los temas de `revision-temario-2` sin quitar contenido. PDF construido con `--solo pdf --no-publicar` (31 páginas de tema, 4 de anexos, 7 de bibliografía); `verificar-tema.py` sin errores propios (solo los de «anterior a la fuente» del PDF, HTML y Word publicados).
+
+| Regla | Cómo se ha aplicado |
+|---|---|
+| Citas (5.ª tanda) | 105 `\parencite` → `\nocite` con `quitar_citas.py`; las 2 `\cite` de «cálculo propio con datos de Eurostat» (II.2.2 c y tabla de la zona del euro), también a `\nocite`; el `\parencite` del pie de `fig:credibilidad` pasa a «como muestran \textcite{GiavazziPagano1988Advantage}». Frases revisadas: ninguna queda coja. Los `\textcite` que quedan son obras originales (Mundell, McKinnon, Kenen, Krugman, Frankel y Rose…) o De Grauwe como autor de la idea (escenarios benigno/maligno, 3 dimensiones). |
+| Plantilla (7.ª tanda) | Anexo de test con la caja estándar (`tema=3.B.16`); fuera la entrada `GutierrezMarcos2026Simulador` del `.bib` (nunca se cita a Víctor). `tcefecha` a 13/11/2026. Títulos: ya tenían `\cortetitulo` donde hacía falta; `verificar-tema.py` no avisa. |
+| Gráfico / Figura / Imagen | `circulo-vicioso` y `logica-amo` (cajas y flechas, árbol de preguntas) pasan a `infografia` con `figu:` («la figura»). Los otros 7 son gráficos (ejes o curvas). No hay imágenes pegadas. |
+| Pegatina (8.ª tanda) | Fuera la etiqueta «Pegatina:»; el refrán «Arrímate a los buenos y serás uno de ellos» (aprobado por Víctor el 12/11/2026, duda 13) queda integrado en la frase que explica la credibilidad prestada. |
+| Resultados clave en morado | El sesgo inflacionista de Barro-Gordon (`eq:sesgo`) pasa a `\funcionclave`. McKinnon y Magnifico se quedan como ecuaciones corrientes (no son el resultado clave del tema). |
+| Estructura a)-e) | Los modelos con estructura (Mundell, Krugman, Frankel y Rose, credibilidad, fragilidad) ya la tenían, con letras seguidas. Los criterios de Kenen, Ingram, Magnifico y McKinnon siguen como criterios con «Idea / Mecanismo / En la zona del euro» (duda 19). |
+| Términos en inglés | Añadidos la primera vez: *pseudo exchange-rate union* y *complete exchange-rate union* (Corden), *moral hazard*, *home bias*, *cluster* (como «aglomeración industrial»), *trade-off* («disyuntiva»), *time inconsistency*, *lender of last resort*, *sudden stop*. |
+| Nobel (revisión transversal) | Nota con el motivo oficial en la primera mención: Tinbergen (1969, con Frisch), Samuelson (1970), Tobin (1981, dentro de la nota de Mundell), Ohlin (1977, dentro de la nota de la nueva geografía), Lucas (1995), Mundell (1999, nota reescrita con el motivo literal), Stiglitz (2001; fuera la aposición «premio Nobel en 2001» del anexo), Krugman (2008). Contribuciones de premiados añadidas donde encajan: Kydland y Prescott (2004; inconsistencia temporal en la idea de la credibilidad, con `KydlandPrescott1977Rules`), Diamond y Dybvig con Bernanke (2022; los pánicos bancarios como lógica de la fragilidad de la deuda, con `DiamondDybvig1983`) y Hall y Woodford (2026; nota en Galí y Monacelli: el modelo neokeynesiano de `Woodford2003Interest` extendido a la unión). Entradas copiadas de otros temas: `Nobel1969`, `Nobel1970Samuelson`, `Nobel1977MeadeOhlin`, `Nobel1981Tobin`, `Nobel1995Lucas`, `Nobel2001AkerlofSpenceStiglitz`, `Nobel2004KydlandPrescott`, `Nobel2008Krugman`, `Nobel2022Bancos`, `Nobel2026Prensa`. |
+| 4.º ejercicio | Añadidos `\vertema{4.B.14}` (federalismo fiscal, en Kenen), `\vertema{4.A.21}` (saldos TARGET y posición del Banco de España) y `\vertema{4.A.18}` (rescate bancario español de 2012, en el círculo vicioso). Ya estaban 4.A.28 y 4.A.16. |
+| Dichos | Se quedan «El casado casa quiere» (refrán inicial) y «Arrímate a los buenos…» (aprobado). No hay otros. |
+| Pizarra, vídeo, «lo que se suele preguntar», enlaces a otros formatos | No había ninguno en el texto. |
+| NEK en (x, π), identidad cuantitativa | No salen en este tema (el gráfico de Barro-Gordon está en el plano (U, π) y no es la NEK). |
+| Ficha de repaso | El tema no tiene ficha (`repaso/` no existe); no se crea en esta puesta al día. |
+
 ## 7. Dudas abiertas
 
 Cada una con la opción aplicada:
@@ -157,6 +177,9 @@ Cada una con la opción aplicada:
 17. **Pista para la duda 3** (control de calidad, 11/11/2026): Cabado (DCE 3.B.22, 22.A.1) cita a Eichengreen (1990, pp. 138-139), que distingue 2 justificaciones del federalismo fiscal en Estados Unidos (redistribución y seguro entre regiones), y de ahí saca las 3 funciones (igualadora, estabilizadora, aseguradora). Si se quiere atribuir, sería «a partir de Eichengreen (1990, pp. 138-139)», comprobando la página.
 18. **Metáfora de la casa** (control de calidad): Cabado tiene en una nota la de «compartir moneda es como compartir un piso». El enganche y la idea final del 3.B.16 («El casado casa quiere», «compartir moneda exige compartir también la casa») no la copian, pero la imagen se parece. ¿Le vale o prefiere otro refrán?
 
+19. **Criterios sin estructura a)-e)** (13/11/2026): Kenen (fiscal y diversificación), Ingram, Magnifico y McKinnon se quedan con «Idea / Mecanismo / Límites / En la zona del euro», porque son criterios y no modelos completos. Opciones: (a) dejarlos así; (b) darles a)-e) con títulos de nivel 4 y 5, lo que alarga I.2 unas 2 páginas. **Aplicada: (a)**.
+20. **Contribuciones de premiados añadidas** (13/11/2026): Kydland y Prescott, Diamond y Dybvig y Hall y Woodford entran en una frase o una nota, no en el cuerpo del cante. Opciones: (a) así; (b) quitarlas si se ven como relleno. **Aplicada: (a)**.
+
 ## 8. Instrucciones para el vídeo
 
 - **Introducción** (sin pizarra, `modo: guion`): enganche con el refrán «El casado casa quiere» y Bulgaria (21 miembros); la pregunta que recorre todo: «¿cuándo compensa a un país renunciar a su moneda y a su tipo de cambio propios? Y, si renuncia, ¿qué casa común hace falta?». Estructura con los 3 apartados.
@@ -171,10 +194,10 @@ Cada una con la opción aplicada:
 - **II.1**: `fig:costes-beneficios` con el umbral $T^*$, imprescindible.
 - **II.2**: `fig:endogeneidad` con las 2 trayectorias, imprescindible (es el gráfico conjunto del bloque: primero la línea AMO, luego el punto de partida, luego Frankel y Rose, luego Krugman).
 - **II.3**: de palabra; la tabla de la zona del euro, como apoyo.
-- **II.4**: `tab:beneficios-costes` en 3 filas; Barro-Gordon por capas (R, T, 2, 3, función de reacción, F = D) (el gráfico del 3.A.6, `fig:credibilidad`) y `eq:sesgo`; la pegatina «Arrímate a los buenos y serás uno de ellos» junto a la credibilidad.
+- **II.4**: `tab:beneficios-costes` en 3 filas; Barro-Gordon por capas (R, T, 2, 3, función de reacción, F = D) (el gráfico del 3.A.6, `fig:credibilidad`) y `eq:sesgo`; el refrán «Arrímate a los buenos y serás uno de ellos» junto a la credibilidad.
 - **III**:
   - III.1, de palabra.
-  - III.2: la fragilidad de palabra (el contraste Reino Unido-España, la cita de Draghi como apunte); `fig:circulo-vicioso` en la pizarra, por capas (las 3 cajas, la perturbación, Estado → bancos, bancos → Estado, la economía real); los programas del BCE, como apoyo (línea de tiempo 2010-2022).
+  - III.2: la fragilidad de palabra (el contraste Reino Unido-España, la cita de Draghi como apunte); la figura `figu:circulo-vicioso` en la pizarra, por capas (las 3 cajas, la perturbación, Estado → bancos, bancos → Estado, la economía real); los programas del BCE, como apoyo (línea de tiempo 2010-2022).
   - III.3: 2 columnas «perfecta / imperfecta», con 3 viñetas cada una (unión bancaria, unión fiscal, primeros pasos | Galí y Monacelli, devaluación fiscal, reglas de 2024). Es el esquema que queda al final del bloque.
 - **Funciones clave que se conservan**: ninguna `\funcionclave`; entre bloques no se deja nada salvo, de I.2 a I.3, `tab:criterios` (sus 3 dimensiones son los ejes de la línea AMO).
 - **Conclusión** (sin pizarra): empieza por «En conclusión,»; la idea final responde a la pregunta del enganche («compensa cuando las perturbaciones son simétricas o hay con qué absorberlas; si no, las instituciones tienen que hacer de seguro») y cierra con el refrán: «compartir moneda exige compartir también la casa».

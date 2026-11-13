@@ -95,6 +95,25 @@ Todo el tema es nuevo. Por propuesta:
 - **Otras**: 3.B.29 (su estructura atribuye la IED a «Antràs-Yeaple»: que cite HMY y remita aquí; remesas > IED desde 2022, mismas cifras); 3.B.21 (serie de flujos: usar la del FMI); 3.B.39 (Card «no concluyente»); 4.A.23 (UNCTAD de 2023): al revisarlos.
 - **Fichas nuevas** (DK2 a, aplicada): `cadenas-globales-valor`, `macdougall`, `empresa-multinacional` con el 3.B.18 de referencia (texto en § 6 de `propuestas-coherencia.md`; ajustar a N/S, $F^{\mathrm I}$ y `eq:umbrales-hmy`). Gráfico de referencia `fig:cgv-participacion`.
 
+## Puesta al día con las reglas de esta rama (13/11/2026)
+
+Tema traído de la rama `revision-temario`; puesto al nivel de los temas de `revision-temario-2` sin quitar contenido. PDF construido con `--solo pdf --no-publicar` (30 páginas de tema, 1 de anexos, 8 de bibliografía); `verificar-tema.py` sin errores propios (solo los de «anterior a la fuente» del PDF, HTML y Word publicados).
+
+| Regla | Cómo se ha aplicado |
+|---|---|
+| Citas (5.ª tanda) | 135 `\parencite`/`\parencites` → `\nocite` con `quitar_citas.py`; el `\parencite` del pie de `fig:contenido-importado`, también. Donde la cita era la única mención del autor original se nombra en el texto: «como mostró \autor{Mundell} (1957)» (comercio y factores sustitutivos) y «como mostró \autor{Harry Markowitz} (1952)» (diversificación). Frases revisadas; ninguna queda coja. |
+| Plantilla (7.ª tanda) | Anexo de test con la caja estándar y el enlace con `?tema=3.B.18` (antes, una URL desnuda y «exámenes anteriores»). `tcefecha` a 13/11/2026. Títulos sin avisos de `verificar-tema.py`. El `.bib` no tenía entradas de Víctor. |
+| Gráfico / Figura / Imagen | `cgv-participacion` (3 países en cajas con flechas y llaves, sin ejes) pasa a `infografia` con `figu:` («la figura»). Los otros 9 son gráficos (datos o curvas). No hay imágenes pegadas. |
+| Dichos (revisión transversal) | El tema no tiene original de Víctor, así que solo el refrán del enganche tiene sitio fijo: se queda «El mundo es un pañuelo» (enganche e idea final). Se quedan, porque casan muy bien y ya van integrados, «El dinero es cobarde» (factores *push*: la cartera sale a la vez de muchos países) y «Ver los toros desde la barrera» (exportar frente a invertir en HMY). Fuera: «Nadie es profeta en su tierra» (habla de reconocimiento, no de productividad), «Divide y vencerás» (habla de dividir al rival, no la producción) y «Más vale solo que mal acompañado» (sugiere autarquía, lo contrario del *friend-shoring*). Duda 13. |
+| Resultados clave en morado | Ya estaban `eq:macdougall`, `eq:umbrales-hmy` y `eq:participacion-cgv`; no se añaden más. |
+| Estructura a)-e) | MacDougall y HMY ya la tenían completa. Los bloques de cada factor (a) Determinantes, b) Efectos…) no son modelos y se dejan (duda 14). |
+| Términos en inglés | Añadidos la primera vez: *hyperglobalisation*, *servicification*, *immigration surplus*, *brain drain*, *brain gain*, *synthetic control*, *proximity-concentration trade-off*, *spillovers*, *trade in tasks*, *incomplete contracts*, *outsourcing*, *smile curve*. |
+| Nobel (revisión transversal) | Nota con el motivo oficial en la primera mención: Ohlin (1977, con Meade), Mundell (1999), Hicks (1972, con Arrow), Lucas (1995, dentro de la caja de los puzles, entre paréntesis, porque una nota al pie dentro de la caja no sale bien), Markowitz (1990, con Miller y Sharpe), Leontief (1973) y Hart (2016, con Holmström). Card (2021): la línea «recibió el Nobel… por estos métodos» pasa a nota con los 2 motivos oficiales (Card; Angrist e Imbens) y se cuenta su lección de método, el experimento natural, con `\vertema{4.B.6}`. Contribución de Hart añadida donde encaja: los contratos incompletos y la teoría de los derechos de propiedad de Grossman y Hart (1986) detrás de Antràs (2003). Entradas copiadas: `Nobel1972HicksArrow`, `Nobel1973Leontief`, `Nobel1977MeadeOhlin`, `Nobel1990Markowitz`, `Nobel1995Lucas`, `Nobel1999Mundell`, `Nobel2016HartHolmstrom`, `GrossmanHart1986Costs`. |
+| 4.º ejercicio | Ya estaban 4.A.22, 4.A.23 y 4.B.18; añadidos `\vertema{4.A.2}` (inmigrantes en España) y `\vertema{4.B.6}` (evaluación de impacto, con Card). |
+| Pizarra, vídeo, «lo que se suele preguntar», enlaces a otros formatos | No había. Las `notaopositor` «En el cante…» de cada apartado solo reparten minutos y se mantienen. |
+| NEK en (x, π), identidad cuantitativa | No salen. |
+| Ficha de repaso | El tema no tiene ficha (`repaso/` no existe); no se crea en esta puesta al día. |
+
 ## 7. Dudas abiertas
 
 Aplicada en todas la opción recomendada:
@@ -112,17 +131,20 @@ Aplicada en todas la opción recomendada:
 11. **Control de calidad (12/11/2026)**: devuelto al editor con 3 correcciones. Son estas: el recuadro de `eq:macdougall` queda al pie de la página 10; la cifra de la UNCTAD de los sectores estratégicos (44 % frente al 16 % de 2020) está en el cap. III del WIR 2026, no en el cap. I que enlaza el `.bib`; y la notación de los salarios en Sjaastad. Comprobado en la fuente: los autores del informe de DHL 2026 son Steven A. Altman y Caroline R. Bastian (nota de NYU Stern), así que ese punto sale de la duda 8. Solapamiento de 8-gramas con Tebar, Fuentes (3B_11, decodificado) y Cabado: 0 fuera del título oficial.
 12. **Correcciones del control de calidad (12/11/2026)**: `\needspace{8\baselineskip}` antes de «ii) Desarrollo» de MacDougall (el recuadro de `eq:macdougall` pasa a la pág. 11, con el apartado; el gráfico 4 cae en la pág. 12); la cifra de los sectores estratégicos se cita con `\parencite[cap.~III]{UNCTAD2026WIR}` y el `.bib` enlaza el informe completo (wir2026_en.pdf); los salarios de Sjaastad pasan a $w_{\mathrm N,t}$ y $w_{\mathrm S,t}$, como en MacDougall; quitado el «comprobar» de `DHL2026GCR`. No aplicado (opcional): i)-iii) de HMY como `\subparagraph`, porque HMY ya usa `\subparagraph` para a)-e) (va dentro de «b) Teorías» de II.4) y no hay un nivel más; se quedan con la sangría manual.
 
+13. **Dichos** (13/11/2026): de los 6 se quedan 3 (pañuelo, dinero cobarde, toros desde la barrera). Opciones: (a) así; (b) dejar solo el del enganche. **Aplicada: (a)**.
+14. **Letras en bloques que no son modelos** (13/11/2026): II.2-II.4 y III.3 usan `\paragraph{a) Determinantes}`, `b) Efectos`… y el modelo HMY va como `\paragraph` dentro de la IED, entre «b) Teorías» y «c) Efectos». Opciones: (a) dejarlo (patrón determinantes-efectos de los 3 factores, aprobado en DK1); (b) quitar las letras a esos bloques para que a)-e) marquen solo modelos. **Aplicada: (a)**.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche e idea final**: «El mundo es un pañuelo». Enganche: una cuarta parte del valor de lo que exporta España es extranjero (26,6 % en 2022) y casi una quinta parte de su valor viaja en exportaciones de otros; pero solo el 3,7 % de la población vive fuera de su país (el pañuelo es pequeño para las cosas, no para las personas). Idea final: el pañuelo se dobla por las costuras de los bloques; la pregunta no es si abrirse, sino cómo repartir lo que se gana. Introducción y conclusión en modo guion, sin pizarra.
-- **I** (parte 1): boceto de `fig:indicadores-globalizacion` en I.1; columna de 5 fechas y las 3 flechas de Baldwin en I.2; 5 palabras (tareas, finanzas, emergentes, desigualdad, bloques) en I.3 con la pegatina «Más vale solo que mal acompañado». Se borra al pasar al II.
+- **I** (parte 1): boceto de `fig:indicadores-globalizacion` en I.1; columna de 5 fechas y las 3 flechas de Baldwin en I.2; 5 palabras (tareas, finanzas, emergentes, desigualdad, bloques) en I.3 (sin refrán: «Más vale solo que mal acompañado» se quitó el 13/11/2026). Se borra al pasar al II.
 - **Tabla `tab:factores`**: a la izquierda durante todo el II; columna del trabajo en II.2, de la cartera en II.3 y de la IED en II.4; la fila «va a donde rinde más» ($w$, $r$, $B$) se escribe al empezar el II (es el hilo).
 - **II.1**: `fig:macdougall` imprescindible y por capas (ejes enfrentados, $\mathrm{PMg}_{L,\mathrm N}$, $\mathrm{PMg}_{L,\mathrm S}$, reparto inicial, flecha de emigrantes, equilibrio, triángulo B + C, áreas A, D y E); `eq:macdougall` en morado debajo; se mantiene durante el II.2 (los emigrantes y las áreas). Mundell y Markusen, de palabra.
-- **II.2**: `eq:sjaastad` escrita; la pegatina «Nadie es profeta en su tierra» junto al diferencial de salarios; el Mariel de palabra (fechas y cifras); `fig:remesas-ied-aod` y `fig:remesas-pib` solo como apoyo en pantalla, no se dibujan.
+- **II.2**: `eq:sjaastad` escrita; sin refrán (el de «Nadie es profeta en su tierra» se quitó el 13/11/2026); el Mariel de palabra (fechas y cifras); `fig:remesas-ied-aod` y `fig:remesas-pib` solo como apoyo en pantalla, no se dibujan.
 - **II.3**: sin gráfico; «El dinero es cobarde» junto a *push*/*pull*; la caja de los puzles, de palabra.
 - **II.4**: se borra MacDougall y se dibuja `fig:hmy` por capas (ejes, $B^d$ y su umbral, $B^x$ y el suyo, $B^{\mathrm I}$, corte y umbral $\varphi^*_{\mathrm I}$, 4 llaves); `eq:umbrales-hmy` en morado; «Ver los toros desde la barrera» junto a la llave de las filiales. OLI como 3 letras en columna.
-- **III.1**: se borra HMY y se dibuja `fig:cgv-participacion` (3 países, flechas, rótulos hacia atrás y hacia delante, índice); `eq:participacion-cgv` en morado.
-- **III.2**: «Divide y vencerás» al empezar; `tab:formas-organizacion` (2×2) bajo el esquema de los 3 países, con la casilla de la IED vertical marcada.
+- **III.1**: se borra HMY y se dibuja la figura `figu:cgv-participacion` (3 países, flechas, rótulos hacia atrás y hacia delante, índice); `eq:participacion-cgv` en morado.
+- **III.2**: (sin «Divide y vencerás», quitado el 13/11/2026); `tab:formas-organizacion` (2×2) bajo el esquema de los 3 países, con la casilla de la IED vertical marcada.
 - **III.3**: `fig:curva-sonrisa` en boceto (recomendable); `tab:cgv-tipos` solo de apoyo.
 - **III.4**: sin pizarra; `fig:contenido-importado` como apoyo en pantalla.
 - **Funciones clave que se conservan**: `eq:macdougall` (II.1-II.2), `eq:umbrales-hmy` (II.4) y `eq:participacion-cgv` (III).
