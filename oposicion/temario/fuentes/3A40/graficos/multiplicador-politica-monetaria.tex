@@ -1,7 +1,7 @@
 % El multiplicador del gasto en el modelo neokeynesiano según la política
 % monetaria (3.A.40, III.2 y anexo A). beta = 0,99, theta = varphi = 1
 % (Gamma = 0,5), kappa = 0,02, phi_pi = 1,5. Eje horizontal: persistencia
-% (rho_g con la regla de Taylor; rho_L en el límite inferior).
+% (rho_G con la regla de Taylor; rho_L en el límite inferior).
 %   límite: m = [(1-x)(1-0,99x) - 0,01x] / [(1-x)(1-0,99x) - 0,02x]
 %           x = 0: 1; 0,5: 1,021; 0,8: 1,313; 0,85: 2,255; 0,86: 3,386
 %           (el denominador se anula en x = 0,8722)
@@ -13,7 +13,7 @@
 \begin{document}
 \begin{tikzpicture}[tcee]
 \begin{axis}[width=10cm,height=7cm,axis lines=left,xmin=0,xmax=0.9,ymin=0,ymax=3.6,
-  xlabel={persistencia del gasto ($\rho_g$) o del límite inferior ($\rho_L$)},ylabel={multiplicador},
+  xlabel={persistencia del gasto ($\rho_G$) o del límite inferior ($\rho_L$)},ylabel={multiplicador},
   label style={font=\footnotesize},ticklabel style={font=\footnotesize},
   xtick={0,0.2,0.4,0.6,0.8},ytick={0,0.5,1,2,3},
   /pgf/number format/use comma,

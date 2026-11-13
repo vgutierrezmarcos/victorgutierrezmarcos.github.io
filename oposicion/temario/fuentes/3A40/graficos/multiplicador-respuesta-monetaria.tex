@@ -10,6 +10,9 @@
 %   IS_1: r = 4 - y (Delta g = 1); con el suelo fijo, A = (2,8; 1,2): Delta y = Delta g
 %   el gasto sube pi^e y baja el suelo a 0,6: E_1 = (3,4; 0,6), Delta y = 1,6 > Delta g (m > 1)
 % Rehecho en TikZ propio a partir de la idea de Woodford (2011).
+% Representación IS-MP (Romer, 2000) con expectativas y precios dados de un periodo:
+% más propia de un IS-LM estático con precios rígidos que del modelo de la NEK
+% (la caja del tema lo explica).
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
@@ -63,7 +66,7 @@
   \capa{5}{\draw[curva2,desplazada] (0,0.6) -- (5.5,0.6) node[etiqueta,above left,text=tceeazul,font=\footnotesize] {$r=i^{\mathrm{ELB}}-\pi^e_1$};}
   \capa{5}{\draw[flecha] (0.75,1.15) -- (0.75,0.65) node[midway,left,etiqueta,font=\footnotesize,text=tceerojo] {$\pi^e\uparrow$};}
   \capa{5}{\node[punto] (bE1) at (3.4,0.6) {};}
-  \capa{5}{\node[etiqueta,anchor=north east,inner sep=1pt] at (3.36,0.56) {$E_1$};}
+  \capa{5}{\node[etiqueta,anchor=south west,inner sep=1pt] at (3.45,0.63) {$E_1$};}
   \capa{5}{\draw[guia] (bE1) -- (3.4,0) node[below,text=black] {$y_1$};}
   % 6: comparación: el avance supera el desplazamiento
   \capa{6}{\draw[->,thick,tceegris] (1.8,-0.6) -- (2.8,-0.6) node[right,etiqueta,font=\footnotesize] {$\Delta g$};}

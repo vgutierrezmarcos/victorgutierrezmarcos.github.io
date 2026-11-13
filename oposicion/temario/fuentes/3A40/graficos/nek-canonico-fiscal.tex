@@ -1,0 +1,70 @@
+% Copiado sin cambios de fuentes/3A38/graficos/nek-canonico-fiscal.tex (3.A.38, II.2), 13/11/2026. Si cambia el original, copiar de nuevo.
+% Infografía: el modelo canónico de la NEK frente al modelo ampliado con
+% política fiscal (supuestos, ecuaciones e implicaciones). Víctor, 13/11/2026,
+% 9.ª tanda: «una página completa con una caja con infografía que compare el
+% modelo canónico de la NEK con el ampliado para política fiscal».
+% En rojo, lo que añade el modelo ampliado. Cada fila es una capa.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\nuevo}[1]{\textcolor{tceerojo}{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    rot/.style={draw=white, line width=1.2pt, fill=tceesalvia, text width=2.55cm, align=left, font=\footnotesize\bfseries, inner sep=4pt, anchor=north west},
+    can/.style={draw=white, line width=1.2pt, fill=tceegris!10, text width=6.25cm, align=left, font=\footnotesize, inner sep=4pt, anchor=north west},
+    amp/.style={draw=white, line width=1.2pt, fill=tceemorado!9, text width=7.25cm, align=left, font=\footnotesize, inner sep=4pt, anchor=north west}]
+  % \fila{capa}{y de arriba}{alto}{rótulo}{canónico}{ampliado}
+  \newcommand{\fila}[6]{%
+    \capa{#1}{\node[rot, minimum height=#3] at (0,#2) {#4};}
+    \capa{#1}{\node[can, minimum height=#3] at (2.95,#2) {#5};}
+    \capa{#1}{\node[amp, minimum height=#3] at (9.55,#2) {#6};}}
+  % 1: cabecera
+  \capa{1}{\node[rot, fill=white, minimum height=1.1cm] at (0,0) {};}
+  \capa{1}{\node[can, fill=tceegris!45, minimum height=1.1cm, font=\small\bfseries, align=center] at (2.95,0) {Modelo canónico\\ (3 ecuaciones)};}
+  \capa{1}{\node[amp, fill=tceemorado!45, minimum height=1.1cm, font=\small\bfseries, align=center] at (9.55,0) {Modelo ampliado con política fiscal\\ \normalfont\footnotesize(\nuevo{en rojo, lo que añade})};}
+  % 2: la pregunta
+  \fila{2}{-1.15}{1.25cm}{Pregunta}
+    {¿Cómo estabiliza el banco central la inflación y la brecha de producción?}
+    {\nuevo{¿Cuánto mueve la producción un aumento del gasto público, y de qué depende?}}
+  % 3: los hogares
+  \fila{3}{-2.45}{1.65cm}{Hogares}
+    {Uno representativo, de vida infinita y ricardiano: suaviza el consumo con la ecuación de \textsc{Euler}.}
+    {Ricardianos y, en la extensión, \nuevo{una fracción $\lambda$ que vive al día}: consume su renta corriente (restricciones de liquidez, miopía).}
+  % 4: el Estado
+  \fila{4}{-4.15}{1.95cm}{Estado}
+    {No hay gasto público: todo lo que se produce se consume, $Y_t=C_t$.}
+    {\nuevo{Compra $G_t$}, que no da utilidad ni produce; \nuevo{impuestos de suma fija $T_t$ y deuda $D_t$}, con su restricción intertemporal. Bienes: \nuevo{$Y_t=C_t+G_t$}.}
+  % 5: capital y perturbaciones
+  \fila{5}{-6.15}{1.65cm}{Capital y\\ perturbaciones}
+    {Sin capital ($Y_t=A_tL_t$). Tecnología $a_t$, demanda $z_t$, costes $u_t$ y política monetaria $\varepsilon_t$.}
+    {Sin capital, igual. Más \nuevo{el gasto, $g_t\equiv-\ln(1-G_t/Y_t)$, autorregresivo con persistencia $\rho_G$}.}
+  % 6: la IS dinámica
+  \fila{6}{-7.85}{1.95cm}{IS dinámica}
+    {$x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)$\\[2pt] $r^n_t$ se mueve con $a_t$ y $z_t$.}
+    {La misma forma, con \nuevo{el gasto dentro del tipo natural}: $r^n_t=\rho+\theta\,\mathbb{E}_t[\Delta y^n_{t+1}]\nuevo{-\theta\,\mathbb{E}_t[\Delta g_{t+1}]}$. Con $\lambda>0$, \nuevo{el gasto y los impuestos entran también directamente}.}
+  % 7: la producción natural
+  \fila{7}{-9.85}{1.55cm}{Producción\\ natural}
+    {$y^n_t=\psi\,a_t-\dfrac{\mu}{\theta+\varphi}$}
+    {$y^n_t=\psi\,a_t\nuevo{+\Gamma\,g_t}-\dfrac{\mu}{\theta+\varphi}$, \quad \nuevo{$\Gamma\equiv\dfrac{\theta}{\theta+\varphi}$}: el efecto riqueza.}
+  % 8: la curva de Phillips y la regla
+  \fila{8}{-11.45}{1.95cm}{Curva de \textsc{Phillips}\\ y regla}
+    {$\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t$\\[2pt] $i_t=\rho+\phi_\pi\pi_t+\phi_xx_t+\varepsilon_t$}
+    {Las mismas: el gasto mueve el coste marginal solo a través de la brecha. Lo decisivo es \nuevo{cómo responde el banco central al gasto}: regla de \textsc{Taylor}, tipo real constante o límite inferior.}
+  % 9: los canales del gasto
+  \fila{9}{-13.45}{1.65cm}{Canales\\ del gasto}
+    {No se plantean.}
+    {\nuevo{3 vías}: efecto riqueza (los hogares trabajan más y consumen menos), rigidez de precios (el margen cae) y respuesta del banco central.}
+  % 10: el multiplicador
+  \fila{10}{-15.15}{2.25cm}{Multiplicador}
+    {No se plantea.}
+    {\nuevo{Depende del banco central}: $\Gamma<1$ con precios flexibles; $\frac{1+\Omega\Gamma}{1+\Omega}\in(\Gamma,1)$ con una regla de \textsc{Taylor}; 1 con el tipo real constante; \nuevo{mayor que 1 en el límite inferior} o con muchos hogares que viven al día.}
+  % 11: la equivalencia ricardiana
+  \fila{11}{-17.45}{1.65cm}{Equivalencia\\ ricardiana}
+    {No se plantea: no hay deuda.}
+    {Se cumple con $\lambda=0$: da igual impuestos o deuda. \nuevo{Falla con $\lambda>0$}: el calendario de los impuestos importa.}
+  % 12: las implicaciones
+  \fila{12}{-19.15}{1.95cm}{Implicaciones\\ de política}
+    {La estabilización es cosa del banco central; ante perturbaciones de demanda, cerrar la brecha estabiliza también la inflación (divina coincidencia).}
+    {\nuevo{La política fiscal estabiliza cuando la monetaria no puede o no quiere}: límite inferior de los tipos, unión monetaria. Importa la combinación de las 2 (\emph{policy mix}).}
+\end{tikzpicture}
+\end{document}
