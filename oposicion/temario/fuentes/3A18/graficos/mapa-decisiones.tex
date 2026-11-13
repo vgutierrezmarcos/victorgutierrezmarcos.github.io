@@ -1,0 +1,56 @@
+% Mapa de las decisiones del bloque II del 3.A.18 (Víctor, 13/11/2026): las 5
+% decisiones en el orden de la exposición (precio, localización, entrada,
+% calidad, publicidad y marcas), el modelo de cada una, la pregunta que lleva
+% de un modelo al siguiente y las etapas de cada juego (el precio, siempre la
+% última). Infografía (figura): va en infografiacaja, con la tabla de las
+% decisiones, en la caja gris del principio de II.2.
+% Elaboración propia a partir de Tirole (1988, cap. 7).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    decision/.style={draw=tceemorado,fill=tceemorado!7,very thick,rounded corners=3pt,font=\footnotesize,
+      text width=2.6cm,minimum height=1.95cm,align=center,inner sep=3pt},
+    etapas/.style={draw=tceedorado,fill=tceedorado!12,rounded corners=2pt,
+      text width=2.6cm,minimum height=0.75cm,align=center,inner sep=2.5pt,font=\scriptsize},
+    pregunta/.style={text width=3cm,align=center,font=\scriptsize\itshape,text=tceemorado!80!black},
+    grupo/.style={font=\footnotesize,text=tceegris,align=center},
+    llave/.style={thick,tceegris,decorate,decoration={brace,amplitude=5pt}},
+    paso/.style={->,very thick,tceemorado}]
+  % Columnas: centros separados 3,25 cm
+  \def\xa{1.55}\def\xb{4.8}\def\xc{8.05}\def\xd{11.3}\def\xe{14.55}
+  % 1. Precio
+  \capa{1}{\node[decision] (d1) at (\xa,2.1) {\textbf{1. Precio}\\[2pt]{\scriptsize ciudad lineal de \textsc{Hotelling}, localización dada}};}
+  \capa{1}{\node[etapas] (e1) at (\xa,-0.3) {1 etapa: \textbf{precio}};}
+  % 2. Localización
+  \capa{2}{\node[decision] (d2) at (\xb,2.1) {\textbf{2. Localización}\\[2pt]{\scriptsize ciudad lineal en 2 etapas}};}
+  \capa{2}{\node[pregunta] at ({(\xa+\xb)/2},0.62) {¿Y si eligen dónde situarse?};}
+  \capa{2}{\draw[paso] (d1.east) -- (d2.west);}
+  \capa{2}{\node[etapas] (e2) at (\xb,-0.3) {localización $\to$ \textbf{precio}};}
+  % 3. Entrada
+  \capa{3}{\node[decision] (d3) at (\xc,2.1) {\textbf{3. Entrada}\\[2pt]{\scriptsize ciudad circular de \textsc{Salop}}};}
+  \capa{3}{\node[pregunta] at ({(\xb+\xc)/2},0.62) {¿Y si entran cuantas quieran?};}
+  \capa{3}{\draw[paso] (d2.east) -- (d3.west);}
+  \capa{3}{\node[etapas] (e3) at (\xc,-0.3) {entrada $\to$ \textbf{precio}};}
+  % 4. Calidad
+  \capa{4}{\node[decision] (d4) at (\xd,2.1) {\textbf{4. Calidad}\\[2pt]{\scriptsize \textsc{Shaked} y \textsc{Sutton}}};}
+  \capa{4}{\node[pregunta] at ({(\xc+\xd)/2},0.62) {¿Y si todos coinciden en qué es mejor?};}
+  \capa{4}{\draw[paso] (d3.east) -- (d4.west);}
+  \capa{4}{\node[etapas] (e4) at (\xd,-0.3) {calidad $\to$ \textbf{precio}};}
+  % 5. Publicidad y marcas
+  \capa{5}{\node[decision] (d5) at (\xe,2.1) {\textbf{5. Publicidad y marcas}\\[2pt]{\scriptsize \textsc{Dorfman}-\textsc{Steiner}; proliferación de marcas}};}
+  \capa{5}{\node[pregunta] at ({(\xd+\xe)/2},0.62) {¿Y sin cambiar el producto?};}
+  \capa{5}{\draw[paso] (d4.east) -- (d5.west);}
+  \capa{5}{\node[etapas] (e5) at (\xe,-0.3) {\textbf{precio} y publicidad, a la vez};}
+  % Grupos: horizontal, vertical, sin cambiar el producto
+  \capa{6}{\draw[llave] (\xa-1.42,3.2) -- node[grupo,above=5pt] {diferenciación horizontal (direcciones)} (\xc+1.42,3.2);}
+  \capa{6}{\draw[llave] (\xd-1.42,3.2) -- node[grupo,above=5pt] {vertical} (\xd+1.42,3.2);}
+  \capa{6}{\draw[llave] (\xe-1.42,3.2) -- node[grupo,above=5pt] {crear o proteger} (\xe+1.42,3.2);}
+  % Hilo común
+  \capa{7}{\node[draw=tceegris,rounded corners=2pt,fill=tceesalvia,text width=15.3cm,align=center,
+      inner sep=3pt,font=\footnotesize] at ({(\xa+\xe)/2},-1.3)
+      {En cada modelo, el \textbf{precio} es la última etapa y, por inducción hacia atrás, la primera que se resuelve;
+       el \textbf{consumidor indiferente} reparte el mercado, y el margen crece con lo distintas que son las variedades.};}
+\end{tikzpicture}
+\end{document}
