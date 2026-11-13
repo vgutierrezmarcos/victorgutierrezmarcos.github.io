@@ -864,6 +864,9 @@ Secciones obligatorias, en este orden:
 5. **Contenido añadido**: lo nuevo y de dónde sale.
 6. **Coherencia**: cambios por coherencia y contradicciones con otros temas.
 7. **Dudas abiertas**: lo que necesita la decisión de Víctor. Si no hay, decirlo.
+7 bis. **Sugerencias de usuarios** (solo si las hay; `scripts/sugerencias.py --tema T`):
+   cada una con su id, qué pedía, si tenía razón y qué se ha cambiado. Sin datos
+   de quien la mandó (la bandeja es anónima).
 8. **Instrucciones para el vídeo**: lo que el guionista debe tener en cuenta
    en este tema (qué gráficos van a la pizarra y cuáles como apoyo, el
    gráfico conjunto por partes, las funciones clave que se conservan, el

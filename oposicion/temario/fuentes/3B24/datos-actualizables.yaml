@@ -1,0 +1,205 @@
+tema: 3B24
+fecha_inventario: 2026-11-12
+# Propuesta de la fase 2 (verificación de datos). «texto» es la frase propuesta
+# en _trabajo/propuestas-datos.md (V*); el revisor de contenido la ajusta al
+# redactar y debe actualizar aquí «texto», «donde» y «frase».
+datos:
+  - id: curva-bce-zona-euro
+    texto: "gráfico de datos con la curva al contado de la zona del euro (Svensson) el 10/11/2026, el 03/07/2023 y el 30/12/2020"
+    donde: [3B24.tex, graficos/curva-bce-zona-euro]
+    valor: "10 años AAA 3,331 %; todos los emisores 3,913 % (10/11/2026)"
+    unidad: "% anual, capitalización continua"
+    periodo: 10/11/2026 (última fecha disponible)
+    fuente: BCE2026YC
+    organismo: BCE
+    serie: "YC.B.U2.EUR.4F.{G_N_A,G_N_C}.SV_C_YM.SR_{3M..30Y} y parámetros BETA0-3, TAU1-2"
+    url: https://data.ecb.europa.eu/data/datasets/YC
+    periodicidad: diaria (días hábiles de TARGET)
+    proxima: diaria (actualizar la última fecha al revisar el tema)
+    familia: bce-curva-tipos
+    depende: [datos/curva-bce-zona-euro.csv]
+    frase: "V6. Las fechas históricas (2023 y 2020) no cambian"
+
+  - id: curva-eeuu
+    texto: "gráfico de datos con la curva a la par del Tesoro de EE. UU. el 10/11/2026, el 03/07/2023 y el 31/12/2020"
+    donde: [3B24.tex, graficos/curva-eeuu]
+    valor: "3 meses 4,30 %; 2 años 4,73 %; 10 años 4,98 %; 30 años 5,35 % (10/11/2026)"
+    unidad: "% anual, base bono equivalente"
+    periodo: 10/11/2026
+    fuente: UST2026ParYield
+    organismo: Departamento del Tesoro de EE. UU.
+    serie: "Daily Treasury Par Yield Curve Rates (comprobación: FRED DGS3MO, DGS2, DGS10)"
+    url: https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026
+    periodicidad: diaria
+    proxima: diaria
+    familia: tesoro-eeuu-curva
+    depende: [datos/curva-eeuu.csv]
+    frase: "V5"
+
+  - id: inversion-curva-eeuu
+    texto: "el diferencial entre el bono a 10 años y la letra a 3 meses fue negativo sin interrupción del 25 de octubre de 2022 al 12 de diciembre de 2024, con un mínimo de −1,89 puntos el 1 de junio de 2023"
+    donde: [3B24.tex]
+    valor: -1.89
+    unidad: puntos porcentuales (10 años menos 3 meses)
+    periodo: 25/10/2022-12/12/2024
+    fuente: UST2026ParYield
+    organismo: Departamento del Tesoro de EE. UU.
+    serie: "Daily Treasury Par Yield Curve Rates, 10 Yr - 3 Mo (cálculo propio)"
+    url: https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2023
+    periodicidad: "diaria (histórico: no cambia; revisar si el NBER fecha una recesión)"
+    proxima: null
+    familia: tesoro-eeuu-curva
+    frase: "V29, junto a Estrella y Mishkin; depende también de NBER2026Fechado (ninguna recesión fechada después de 2020 a 12/11/2026)"
+
+  - id: curva-espana
+    texto: "gráfico de datos con la curva de la deuda del Estado en el mercado secundario en septiembre de 2026, julio de 2023 y diciembre de 2020"
+    donde: [3B24.tex, graficos/curva-espana]
+    valor: "letra a 12 meses 3,00 %; 10 años 3,93 %; 30 años 4,53 % (septiembre de 2026)"
+    unidad: "% anual, media mensual"
+    periodo: septiembre de 2026
+    fuente: BdE2026BE22
+    organismo: Banco de España
+    serie: "Boletín Estadístico, cuadros 22.6 (BE_22_6.7, 6.9, 6.11) y 22.7 (BE_22_7.10 a 7.14)"
+    url: https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be2207.csv
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: bde-deuda-secundario
+    depende: [datos/curva-espana.csv]
+    frase: "V4. Sustituye a la captura de worldgovernmentbonds.com (Imagen 7)"
+
+  - id: deuda-espanola-negativa-2020
+    texto: "En diciembre de 2020 la deuda del Estado rendía en negativo hasta el plazo de 5 años (−0,42~\\%) y el bono a 10 años, un 0,04~\\%"
+    donde: [3B24.tex]
+    valor: -0.42
+    unidad: "% anual"
+    periodo: diciembre de 2020
+    fuente: BdE2026BE22
+    organismo: Banco de España
+    serie: "BE_22_7.11 y 7.12"
+    url: https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be2207.csv
+    periodicidad: "mensual (histórico: no cambia)"
+    proxima: null
+    familia: bde-deuda-secundario
+    frase: "V3 (conclusión, «Opinión», ii)"
+
+  - id: prima-riesgo-2012
+    texto: "en julio de 2012 la prima de riesgo española frente al bono alemán a 10 años llegó a 555 puntos básicos de media mensual"
+    donde: [3B24.tex]
+    valor: 555
+    unidad: puntos básicos
+    periodo: julio de 2012
+    fuente: BCE2026IRS
+    organismo: BCE
+    serie: "IRS.M.ES.L.L40.CI.0000.EUR.N.Z menos IRS.M.DE.L.L40.CI.0000.EUR.N.Z (comprobación: Eurostat irt_lt_mcby_m)"
+    url: https://data.ecb.europa.eu/data/datasets/IRS
+    periodicidad: "mensual (histórico: no cambia)"
+    proxima: null
+    familia: bce-tipos-largo-plazo
+    depende: [datos/prima-riesgo-espana.csv]
+    frase: "V1. Sustituye a «649 puntos» (2 veces en la conclusión); misma cifra que el 3B26 (II.5 d)"
+
+  - id: prima-riesgo-actual
+    texto: "En septiembre de 2026 era de 45 puntos básicos (3,93~\\% frente a 3,47~\\%)"
+    donde: [3B24.tex]
+    valor: 45
+    unidad: puntos básicos
+    periodo: septiembre de 2026 (octubre, 65 pb, solo en el BCE a 12/11/2026)
+    fuente: BCE2026IRS
+    organismo: BCE (y Eurostat)
+    serie: "IRS.M.{ES,DE}.L.L40.CI.0000.EUR.N.Z; Eurostat irt_lt_mcby_m"
+    url: https://data.ecb.europa.eu/data/datasets/IRS
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: bce-tipos-largo-plazo
+    depende: [datos/prima-riesgo-espana.csv]
+    frase: "V2. Pasar a octubre (65 pb) cuando Eurostat lo confirme"
+
+  - id: rating-espana
+    texto: "A+ para S\\&P (desde el 12/9/2025) y Scope (11/9/2026), A3 para Moody's y A para Fitch (26/9/2025) y A (high) para DBRS (29/11/2024), todas con perspectiva estable"
+    donde: [3B24.tex]
+    valor: "S&P A+; Moody's A3; Fitch A; DBRS A (high); Scope A+"
+    unidad: calificación a largo plazo
+    periodo: a 12/11/2026
+    fuente: Tesoro2026Calificacion
+    organismo: Tesoro Público (y las agencias)
+    serie: "Calificación crediticia del Reino de España (comprobación DBRS: DBRS2024Espana)"
+    url: https://www.tesoro.es/deuda-publica/calificacion-crediticia
+    periodicidad: irregular (calendario de revisiones de cada agencia, 2 al año)
+    proxima: 2027-03
+    familia: rating-espana
+    frase: "V19 (nuevo apartado de calificación crediticia, P47)"
+
+  - id: bonos-verdes-cuota-mundial
+    texto: "los bonos verdes son el 4,3~\\% de las emisiones mundiales de deuda (enero-septiembre de 2025; 4,5~\\% en 2024)"
+    donde: [3B24.tex]
+    valor: 4.3
+    unidad: "% de la emisión mundial de deuda (sin municipales de EE. UU. ni titulizaciones)"
+    periodo: enero-septiembre de 2025
+    fuente: LSEG2025GreenDebt
+    organismo: LSEG / FTSE Russell
+    serie: "Green bond ratio"
+    url: https://www.lseg.com/en/insights/green-debt-market-passes-3-trillion-milestone
+    periodicidad: anual (informes trimestrales)
+    proxima: 2026-12
+    familia: bonos-verdes-mundo
+    frase: "V7 (sustituye a «aumentan en aproximadamente un 4 % la emisión de bonos»)"
+
+  - id: bonos-verdes-ngeu
+    texto: "la Comisión financia hasta el 30~\\% de NextGenerationEU con bonos verdes; en noviembre de 2026 tenía en circulación 86.240 millones de euros, de una deuda total de 874.670 millones"
+    donde: [3B24.tex]
+    valor: 86.24
+    unidad: miles de millones de euros (saldo vivo)
+    periodo: 10/11/2026
+    fuente: CE2026Sindicacion10
+    organismo: Comisión Europea
+    serie: "Notas de prensa de las sindicaciones de EU-Bonds; objetivo del 30 % en CE2026NGEUVerdes"
+    url: https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2384
+    periodicidad: con cada sindicación (casi mensual)
+    proxima: 2026-12
+    familia: ue-deuda-emisiones
+    frase: "V10 (sustituye a «un tercio de su paquete de estímulos»)"
+
+  - id: bonos-verdes-espana
+    texto: "el Tesoro emitió su primer bono verde el 7 de septiembre de 2021 (5.000 millones a 20 años) y a final de 2025 tenía en circulación 18.384 millones"
+    donde: [3B24.tex]
+    valor: 18384
+    unidad: millones de euros
+    periodo: fin de 2025
+    fuente: Tesoro2026Estrategia
+    organismo: Tesoro Público
+    serie: "Estrategia de financiación 2026, programa de bonos verdes"
+    url: https://www.tesoro.es/documents/d/tesoro/estrategia_tesoro_publico_2026_espanol
+    periodicidad: anual (Estrategia de enero)
+    proxima: 2027-01
+    familia: tesoro-estrategia
+    frase: "V9"
+
+  - id: estr-valor
+    texto: "el €STR estaba en el 2,439~\\% el 11 de noviembre de 2026"
+    donde: [3B24.tex]
+    valor: 2.439
+    unidad: "% anual"
+    periodo: 11/11/2026
+    fuente: BCE2026ESTRWeb
+    organismo: BCE
+    serie: "EST.B.EU000A2X2A25.WT"
+    url: https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html
+    periodicidad: diaria
+    proxima: diaria
+    familia: bce-estr
+    frase: "V11 (opcional: solo si el tema da el nivel)"
+
+  - id: mercado-deuda-bme
+    texto: "a final de 2025, el saldo vivo de deuda pública española en el mercado AIAF era de 1,56 billones de euros y el de renta fija privada, de 366.625 millones; en el MARF superó por primera vez los 10.000 millones"
+    donde: [3B24.tex]
+    valor: 1.56
+    unidad: billones de euros
+    periodo: 31/12/2025
+    fuente: BME2026InformeMercado
+    organismo: BME
+    serie: "Informe de Mercado de BME 2025 (capitalización y saldos vivos; MARF)"
+    url: https://www.bolsasymercados.es/dam/descargas/informes-de-mercado/informe-mercado-bme-2025-es.pdf
+    periodicidad: anual
+    proxima: 2027-02
+    familia: bme-informe-mercado
+    frase: "V20; el MARF, igual que el 3B03 (l. 292)"
