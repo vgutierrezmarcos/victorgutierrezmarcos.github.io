@@ -1,0 +1,50 @@
+% La cadena de cada canal de transmisión de una subida de tipos (3.A.37, I.2).
+% Complementa el esquema canales-transmision (gráfico 1, mismos colores y
+% orden) y la tabla de canales: una fila por canal, con sus eslabones y la
+% ecuación o relación que hay detrás de cada uno.
+% Colores: tipo de interés dicopf; crédito (bancario, balance, riesgos)
+% dicprestamos; activos dicpib; tipo de cambio dicexterna; expectativas
+% dicservicios; renta y empleo dicrenta.
+% Capas: subida de tipos → una fila por canal → producción e inflación.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  can/.style={draw=#1, fill=#1!22, rounded corners=2pt, line width=0.7pt, text width=2.0cm, align=center, minimum height=0.78cm, inner sep=2pt, font=\scriptsize\bfseries},
+  pas/.style={draw=#1, fill=#1!7, rounded corners=2pt, line width=0.5pt, text width=3.05cm, align=center, minimum height=0.78cm, inner sep=2pt},
+  sig/.style={-{Stealth[length=1.4mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.1,0.6) rectangle (17.2,-8.6);
+  % 1: la subida de tipos
+  \capa{1}{\node[draw=dicdeposito, fill=dicdeposito, text=white, rounded corners=2pt, text width=1.1cm, align=center, minimum height=8.5cm, font=\small\bfseries] (i) at (-0.45,-4.26) {$i\uparrow$\\[4pt]{\scriptsize subida del tipo oficial}};}
+  \capa{1}{\foreach \x/\t in {2.15/Canal,5.0/1.\textsuperscript{er} eslabón,8.55/2.º eslabón,12.1/Efecto sobre el gasto} \node[font=\scriptsize\bfseries, text=tceegris] at (\x,0.35) {\t};}
+  % Filas: #1 capa, #2 fila, #3 color, #4 canal, #5-#7 eslabones
+  \newcommand{\fila}[7]{%
+    \capa{#1}{%
+      \node[can=#3] (c#2) at (2.15,-#2*1.08+0.6) {#4};
+      \node[pas=#3] (a#2) at (5.0,-#2*1.08+0.6) {#5};
+      \node[pas=#3] (b#2) at (8.55,-#2*1.08+0.6) {#6};
+      \node[pas=#3] (d#2) at (12.1,-#2*1.08+0.6) {#7};
+      \draw[sig] (i.east |- c#2) -- (c#2.west);
+      \draw[sig] (c#2) -- (a#2); \draw[sig] (a#2) -- (b#2); \draw[sig] (b#2) -- (d#2);}}
+  % 2: tipo de interés
+  \fila{2}{1}{dicopf}{Tipo de interés}{tipo real $r=i-\mathbb{E}_t[\pi_{t+1}]\uparrow$ (precios rígidos)}{$F_K=r+\delta$: $K^*\downarrow$\\ \textsc{Euler}: consumir hoy, menos}{$I\downarrow$, $C\downarrow$, vivienda y duraderos $\downarrow$}
+  % 3-5: crédito
+  \fila{3}{2}{dicprestamos}{Crédito bancario}{financiación de los bancos $\uparrow$}{oferta de préstamos $\downarrow$}{$I$ y $C$ de quien solo tiene al banco $\downarrow$}
+  \fila{4}{3}{dicprestamos}{Balance}{flujo de caja y garantías $\downarrow$: RN $\downarrow$}{prima $s(\mathrm{RN})\uparrow$}{$I\downarrow$ (más en las pymes endeudadas)}
+  \fila{5}{4}{dicprestamos}{Toma de riesgos}{menos búsqueda de rentabilidad}{crédito a proyectos arriesgados $\downarrow$}{$I\downarrow$}
+  % 6: activos
+  \fila{6}{5}{dicpib}{Activos}{$P^A=D/(i+\text{prima}-\gamma_D)\downarrow$; vivienda $\downarrow$}{$q\downarrow$ (\textsc{Tobin}); riqueza $W\downarrow$}{$I\downarrow$, $C\downarrow$ (ciclo vital)}
+  % 7: tipo de cambio
+  \fila{7}{6}{dicexterna}{Tipo de cambio}{paridad de intereses: $E\downarrow$ (el euro se aprecia)}{$e=E\,P^*/P\downarrow$}{$X-M\downarrow$; precios de importación $\downarrow$}
+  % 8: expectativas
+  \fila{8}{7}{dicservicios}{Expectativas}{$\mathbb{E}_t[\pi_{t+1}]\downarrow$, $\mathbb{E}_t[i_{t+k}]\uparrow$ (si es creíble)}{tipos largos $\uparrow$; salarios y precios $\downarrow$}{$\pi\downarrow$ con menos pérdida de producción}
+  % 9: renta y empleo (hogares distintos)
+  \fila{9}{8}{dicrenta}{Renta y empleo}{empleo y salarios $\downarrow$}{renta de quien vive al día $\downarrow$}{$C\downarrow$ (propensión a consumir alta)}
+  % 10: producción e inflación, con retraso
+  \capa{10}{\node[draw=dicinflacion, line width=0.7pt, rounded corners=2pt, text width=2.1cm, align=center, minimum height=8.5cm] (y) at (15.85,-4.26) {\small\textbf{Demanda} $\downarrow$\\[6pt]$\Downarrow$\\[6pt]\textbf{Producción}, $Y\downarrow$\\[6pt]$\Downarrow$\\[6pt]\textbf{Inflación}, $\pi\downarrow$\\[3pt]{\scriptsize (con 1-2 años de retraso)}};
+    \foreach \k in {1,...,8} \draw[sig] (d\k.east) -- (y.west |- d\k);}
+\end{tikzpicture}
+\end{document}

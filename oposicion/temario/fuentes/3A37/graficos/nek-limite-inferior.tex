@@ -1,28 +1,29 @@
-% Copiado sin cambios de fuentes/3A40/graficos/nek-limite-inferior.tex (3.A.40, la NEK con el límite inferior: DA con codo), 5/11/2026. Si cambia el original, copiar de nuevo.
-% El multiplicador del gasto en el modelo neokeynesiano con el límite inferior
-% de los tipos (3.A.40, III.2). Mismo plano y estilos que el gráfico de
-% referencia del modelo (fuentes/3A07/graficos/nek-xpi.tex): (x_t, pi_t), con
-% expectativas dadas.
-%   NKPC: pi = kappa x, kappa = 0,5
-%   DA con codo en pi_k = -0,5 (inflación a la que la regla de Taylor lleva i a i^ELB):
+% El modelo neokeynesiano en el límite inferior de los tipos (3.A.37, III.2):
+% demanda con codo y salidas no convencionales. Parte de
+% fuentes/3A40/graficos/nek-limite-inferior.tex (mismos valores y estilos),
+% sin la comparación fiscal y con las salidas del modelo (13/11/2026).
+% Plano (x_t, pi_t) en el estado bajo de una perturbación con 2 estados que
+% persiste con probabilidad p (Eggertsson, 2011); pendientes ilustrativas.
+%   NKPC: pi = kappa/(1 - beta p) x, pendiente 0,5
+%   DA con codo en pi_k = -0,5 (inflación a la que la regla lleva i a i^ELB):
 %     rama de Taylor (pi > pi_k): pendiente -1; rama del límite (pi < pi_k):
-%     pendiente s = 1,5 > kappa (más inflación esperada baja el tipo real)
+%     pendiente theta(1-p)/p = 1,5 > 0,5 (condición de equilibrio único)
 %   DA inicial: codo (0,5; -0,5), equilibrio en el origen (rama de Taylor)
 %   cae r^n: la DA se desplaza 2,5 a la izquierda, codo (-2; -0,5), por encima
 %     de la NKPC: equilibrio en la rama del límite, E_0 = (-2,5; -1,25)
-%   más gasto: desplazamiento horizontal Delta = 0,6, codo (-1,4; -0,5):
-%     E_1 = (-1,6; -0,8); Delta x = 0,9 = s/(s - kappa) Delta = 1,5 Delta (m > 1)
-%   comparación, rama de Taylor: el mismo Delta desde el origen da
-%     E' = (0,4; 0,2); Delta x = 0,4 = Delta/(1 + kappa) (m < 1)
+%   salidas (menos i^ELB, menos omega, más inflación esperada): la rama del
+%     límite se desplaza 0,6 a la derecha, codo (-1,4; -0,5): E_1 = (-1,6; -0,8)
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
 \begin{tikzpicture}[tcee,x=1.9cm,y=1.9cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-3.9,-2.05) rectangle (2.5,1.55);
   % 1: ejes (origen en el estado estacionario)
   \capa{1}{\draw[eje] (-3.5,0) -- (2.2,0) node[below left=2pt and 0pt] {$x_t$};}
   \capa{1}{\draw[eje] (0,-1.95) -- (0,1.5) node[left] {$\pi_t$};}
-  % 2: curva de Phillips neokeynesiana, creciente (pendiente kappa)
+  % 2: curva de Phillips neokeynesiana en el estado bajo, creciente
   \capa{2}{\draw[curva1] (-3.3,-1.65) -- (1.75,0.875) node[etiqueta,right,text=tceemorado] {NKPC};}
   % 3: rama de Taylor de la DA, decreciente; equilibrio inicial en el origen
   \capa{3}{\draw[curva3] (-1.2,1.2) node[etiqueta,above,text=tceeverde] {DA} -- (0.5,-0.5);}
@@ -30,27 +31,19 @@
   % 4: el codo, donde la regla llevaría el tipo a i^ELB, y la rama del límite,
   %    creciente y más inclinada que la NKPC
   \capa{4}{\draw[guia] (-3.5,-0.5) -- (2.2,-0.5) node[etiqueta,below left,text=tceegris] {$i=i^{\mathrm{ELB}}$};}
-  \capa{4}{\draw[curva3] (0.5,-0.5) -- (-0.1,-1.4);}
+  \capa{4}{\draw[curva3] (0.5,-0.5) -- (-0.1,-1.4) node[etiqueta,anchor=north east,text=tceeverde,font=\footnotesize] {rama del límite};}
   % 5: cae el tipo natural: la DA se desplaza a la izquierda y el codo queda
   %    por encima de la NKPC: equilibrio en la rama del límite, x < 0 y pi < 0
-  \capa{5}{\draw[flecha] (-0.75,0.65) -- (-3.05,0.65) node[pos=0.45,above,etiqueta,font=\footnotesize,text=tceerojo] {cae $r^n$};}
-  \capa{5}{\draw[curva3,desplazada] (-3.15,0.65) node[etiqueta,above,text=tceeverde] {DA$_0$} -- (-2,-0.5) -- (-2.6,-1.4);}
+  \capa{5}{\draw[flecha] (-0.95,0.85) -- (-3.05,0.85) node[pos=0.45,above,etiqueta,font=\footnotesize,text=tceerojo] {cae $r^n$};}
+  \capa{5}{\draw[curva3,desplazada] (-3.15,0.65) node[etiqueta,left,text=tceeverde] {DA$_0$} -- (-2,-0.5) -- (-2.6,-1.4);}
   \capa{5}{\node[punto] (E0) at (-2.5,-1.25) {};}
-  \capa{5}{\node[etiqueta,anchor=west] at (-2.42,-1.22) {$E_0$};}
-  % 6: más gasto: la DA se desplaza Delta a la derecha y x sube más que Delta
-  \capa{6}{\draw[curvanueva,desplazada] (-2.2,0.3) node[etiqueta,above,text=tceerojo] {DA$_1$} -- (-1.4,-0.5) -- (-2,-1.4);}
+  \capa{5}{\node[etiqueta,anchor=east] at (-2.56,-1.22) {$E_0$};}
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize,text=tceerojo,align=left] at (-3.75,-1.75) {espiral deflacionista: $x_L<0$, $\pi_L<0$};}
+  % 6: las salidas no convencionales desplazan la rama del límite a la derecha
+  \capa{6}{\draw[curvanueva,desplazada] (-2.3,0.4) node[etiqueta,above,text=tceerojo] {DA$_1$} -- (-1.4,-0.5) -- (-2.0,-1.4);}
+  \capa{6}{\draw[flecha] (-2.25,-1.05) -- (-1.75,-1.05);}
   \capa{6}{\node[punto] (E1) at (-1.6,-0.8) {};}
   \capa{6}{\node[etiqueta,anchor=north west] at (-1.55,-0.84) {$E_1$};}
-  \capa{6}{\draw[guia] (E0) -- (-2.5,-1.82);}
-  \capa{6}{\draw[guia] (E1) -- (-1.6,-1.82);}
-  \capa{6}{\draw[->,thick,tceegris] (-2.5,-1.6) -- (-1.9,-1.6) node[right,etiqueta,font=\footnotesize,text=tceegris] {desplazamiento};}
-  \capa{6}{\draw[flecha] (-2.5,-1.8) -- (-1.6,-1.8) node[right,etiqueta,font=\footnotesize,text=tceerojo] {$\Delta x_t$:\ $m>1$};}
-  % 7: comparación en la rama de Taylor: el mismo desplazamiento sube x menos
-  \capa{7}{\draw[curvanueva,desplazada] (-0.3,0.9) node[etiqueta,above,text=tceerojo] {DA$'$} -- (1.1,-0.5);}
-  \capa{7}{\node[punto] (E2) at (0.4,0.2) {};}
-  \capa{7}{\node[etiqueta,anchor=south west,inner sep=1pt] at (0.42,0.24) {$E'$};}
-  \capa{7}{\draw[guia] (E2) -- (0.4,1.2);}
-  \capa{7}{\draw[->,thick,tceegris] (0,1.2) -- (0.6,1.2) node[right,etiqueta,font=\footnotesize,text=tceegris] {desplazamiento};}
-  \capa{7}{\draw[flecha] (0,1.02) -- (0.4,1.02) node[right,etiqueta,font=\footnotesize,text=tceerojo] {$\Delta x_t$:\ $m<1$};}
+  \capa{6}{\node[etiqueta,anchor=west,font=\footnotesize,text=tceerojo,align=left] at (0.4,-1.1) {salidas:\\ $i^{\mathrm{ELB}}\downarrow$ (tipos negativos)\\ $\mathbb{E}_t[\pi_{t+1}]\uparrow$ (orientación)\\ $\omega_L\downarrow$ (compras de activos)};}
 \end{tikzpicture}
 \end{document}

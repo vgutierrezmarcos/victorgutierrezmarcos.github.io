@@ -1,13 +1,14 @@
-% Instrumentos no convencionales, palancas y canales (3.A.37, III.1-III.4).
-% Gráfico de referencia de la ficha limite-inferior-tipos. En el centro, el
-% tipo largo (eq:tipo-largo, la del 3.A.40) con sus 2 sumandos en cajas y, debajo,
-% el crédito y las primas de riesgo; a la izquierda, los instrumentos; a la
-% derecha, los canales hasta la producción y la inflación.
-% Paleta del esquema de canales (canales-transmision): tipos esperados dicopf
-% (tipo de interés), prima por plazo dicpib (activos), crédito dicprestamos;
-% instrumentos y banco central dicdeposito.
-% Capas: tipo largo → rama de los tipos esperados → rama de la prima → rama del
-% crédito → canales → Y y π (se dibuja por partes en III.1-III.4).
+% Del límite inferior a la economía: salidas no convencionales, término del
+% modelo neokeynesiano en el límite (eq:elb) que mueve cada una y canales
+% (3.A.37, III.2). Rehecho el 13/11/2026: antes giraba en torno a la ecuación
+% del tipo largo; ahora, en torno al equilibrio del modelo en el límite.
+% A la izquierda, las medidas en 3 grupos (en el modelo, extensiones, comodín);
+% en el centro, los términos que mueven; a la derecha, los canales y Y, pi.
+% Paleta del esquema de canales (canales-transmision): suelo dicopf (tipo de
+% interés), expectativas dicservicios, primas dicpib (activos), demanda
+% dicrenta; medidas dicdeposito.
+% Capas: ecuación y términos → medidas del modelo → extensiones → comodín →
+% canales → Y y pi.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=3pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -15,49 +16,62 @@
 \hyphenpenalty=10000 \exhyphenpenalty=10000
 \begin{tikzpicture}[tcee, font=\footnotesize,
   ins/.style={draw=dicdeposito, fill=dicdeposito!12, rounded corners=2pt, line width=0.7pt,
-    text width=2.95cm, align=center, minimum height=0.62cm, font=\scriptsize, inner sep=2pt},
+    text width=3.1cm, align=center, minimum height=0.6cm, font=\scriptsize, inner sep=2pt},
   pal/.style={draw=#1, fill=#1!14, rounded corners=2pt, line width=0.7pt,
-    text width=2.75cm, align=center, minimum height=1.2cm, font=\scriptsize, inner sep=2pt},
+    text width=2.9cm, align=center, minimum height=1.25cm, font=\scriptsize, inner sep=2pt},
+  grupo/.style={font=\scriptsize\bfseries, text=dicdeposito, anchor=west},
   sig/.style={-{Stealth[length=1.6mm]}, thick, tceegris}]
   % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
-  \path (-1.65cm,-2.75cm) rectangle (13.2cm,3.8cm);
-  % 1: el tipo largo y sus 2 sumandos
-  \capa{1}{\node[font=\small] (eq) at (5.1,3.15)
-      {$i^{(n)}_t=\textcolor{dicopf!85!black}{\displaystyle\frac{1}{n}\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]}+\textcolor{dicpib}{\text{prima por plazo}_t}$};}
-  \capa{1}{\node[pal=dicopf] (p1) at (5.1,1.75) {\textbf{Tipos cortos esperados}\\ 1.\textsuperscript{er} sumando};
-    \node[pal=dicpib] (p2) at (5.1,0.15) {\textbf{Prima por plazo}\\ 2.º sumando};}
-  % 2: rama de los tipos esperados
-  \capa{2}{\node[ins] (i1) at (0,2.3) {Orientación de la política};
-    \node[ins] (i2) at (0,1.45) {Tipos negativos};
-    \draw[sig] (i1.east) -- (p1.west |- 5.1,1.95);
-    \draw[sig] (i2.east) -- (p1.west |- 5.1,1.55);}
-  % 3: rama de la prima por plazo (las compras también dan una señal)
-  \capa{3}{\node[ins] (i3) at (0,0.6) {Compras de activos};
-    \node[ins] (i4) at (0,-0.25) {Control de la curva};
-    \draw[sig] (i3.east) -- (p2.west |- 5.1,0.35);
-    \draw[sig] (i4.east) -- (p2.west |- 5.1,-0.05);
-    \draw[sig, dashed] (i3.east) -- (p1.south west);}
-  % 4: rama del crédito y las primas de riesgo
-  \capa{4}{\node[pal=dicprestamos] (p3) at (5.1,-1.6) {\textbf{Crédito y primas de riesgo}\\ bancos y deuda de cada país};
-    \node[ins] (i5) at (0,-1.13) {Préstamos condicionados (TLTRO)};
-    \node[ins] (i6) at (0,-2.12) {Protección de la transmisión (OMT, TPI)};
-    \draw[sig] (i5.east) -- (p3.west |- 5.1,-1.4);
-    \draw[sig] (i6.east) -- (p3.west |- 5.1,-1.8);}
+  \path (-1.75,-5.0) rectangle (14.3,4.75);
+  % 1: el equilibrio en el límite y los términos que se pueden mover
+  \capa{1}{\node[font=\small] (eq) at (6.2,4.1)
+      {$x_L=\dfrac{(1-\beta p)\,\big(r^n_L-\textcolor{dicpib}{\omega_L}-\textcolor{dicopf!85!black}{i^{\mathrm{ELB}}}\big)}{\theta(1-p)(1-\beta p)-p\,\kappa}$, \quad con \textcolor{dicservicios}{$\mathbb{E}_t[\pi_{t+1}]$, $\mathbb{E}_t[x_{t+1}]$} dentro de la IS};}
+  \capa{1}{\node[pal=dicopf] (t1) at (5.6,2.2) {\textbf{El suelo}, $i^{\mathrm{ELB}}\downarrow$};
+    \node[pal=dicservicios] (t2) at (5.6,0.55) {\textbf{Las expectativas}\\ $\mathbb{E}_t[\pi_{t+1}]\uparrow$, $\mathbb{E}_t[x_{t+1}]\uparrow$};
+    \node[pal=dicpib] (t3) at (5.6,-1.1) {\textbf{Las primas}, $\omega_L\downarrow$\\ por plazo, de crédito, de riesgo};
+    \node[pal=dicrenta] (t4) at (5.6,-2.75) {\textbf{La demanda}\\ desplaza la DA a la derecha};}
+  % 2: las medidas que salen del modelo
+  \capa{2}{\node[grupo] at (-1.6,3.05) {En el modelo};
+    \node[ins] (i1) at (0,2.5) {Tipos negativos};
+    \node[ins] (i2) at (0,1.7) {Orientación de la política};
+    \node[ins] (i3) at (0,0.9) {Compras de activos};
+    \node[ins] (i4) at (0,0.1) {Política fiscal (otro tema)};
+    \draw[sig] (i1.east) -- (t1.west |- 0,2.4);
+    \draw[sig] (i2.east) -- (t2.west |- 0,0.85);
+    \draw[sig] (i3.east) -- (t3.west |- 0,-0.8);
+    \draw[sig, dashed] (i3.east) -- (t2.west |- 0,0.45);
+    \draw[sig] (i4.east) -- (t4.west |- 0,-2.45);}
+  % 3: extensiones: medidas que el modelo no contiene
+  \capa{3}{\node[grupo] at (-1.6,-0.6) {Extensiones};
+    \node[ins] (i5) at (0,-1.1) {Préstamos condicionados (TLTRO)};
+    \node[ins] (i6) at (0,-1.85) {Protección de la transmisión (OMT, TPI)};
+    \node[ins] (i7) at (0,-2.6) {Control de la curva};
+    \node[ins] (i8) at (0,-3.35) {Dinero helicóptero};
+    \draw[sig] (i5.east) -- (t3.west |- 0,-1.0);
+    \draw[sig] (i6.east) -- (t3.west |- 0,-1.2);
+    \draw[sig] (i7.east) -- (t3.west |- 0,-1.4);
+    \draw[sig] (i8.east) -- (t4.west |- 0,-3.0);}
+  % 4: el comodín: quitar el suelo
+  \capa{4}{\node[grupo] at (-1.6,-3.95) {El comodín};
+    \node[ins, fill=dicdeposito!30] (i9) at (0,-4.5) {Suprimir el efectivo; CBDC remunerada};
+    \draw[sig, very thick, dashed, dicopf] (i9.east) -- (3.45,-4.5) -- (3.45,1.95) -- (t1.west |- 0,1.95);
+    \node[rotate=90, font=\scriptsize, text=dicopf!85!black, anchor=south] at (3.45,-3.0) {quita el suelo};}
   % 5: canales hasta la demanda
-  \capa{5}{\node[draw=dicinflacion, line width=0.7pt, rounded corners=2pt, text width=3.05cm,
-      align=left, minimum height=4.8cm, font=\scriptsize, inner sep=4pt] (can) at (9.25,0.1)
+  \capa{5}{\node[draw=dicinflacion, line width=0.7pt, rounded corners=2pt, text width=2.9cm,
+      align=left, minimum height=6.4cm, font=\scriptsize, inner sep=4pt] (can) at (9.75,-0.3)
       {\textbf{Canales}\\[3pt]
-       $\cdot$ señalización\\[2pt]
+       $\cdot$ tipos cortos esperados (señalización)\\[2pt]
        $\cdot$ reequilibrio de carteras y duración\\[2pt]
        $\cdot$ liquidez de los mercados\\[2pt]
        $\cdot$ capital de los bancos y crédito\\[2pt]
        $\cdot$ tipo de cambio\\[2pt]
-       $\cdot$ riqueza};
-    \foreach \p in {p1,p2,p3} \draw[sig] (\p.east) -- (can.west |- \p);}
+       $\cdot$ riqueza\\[2pt]
+       $\cdot$ renta y gasto público};
+    \foreach \p in {t1,t2,t3,t4} \draw[sig] (\p.east) -- (can.west |- \p);}
   % 6: producción e inflación
-  \capa{6}{\node[draw=dicinflacion, line width=0.7pt, rounded corners=2pt, text width=1.3cm,
-      align=center, minimum height=4.8cm] (obj) at (12.45,0.1)
-      {\textbf{Demanda}\\[4pt]$\Downarrow$\\[4pt]$Y$, $\pi$};
+  \capa{6}{\node[draw=dicinflacion, line width=0.7pt, rounded corners=2pt, text width=1.5cm,
+      align=center, minimum height=6.4cm] (obj) at (12.95,-0.3)
+      {\textbf{Demanda}\\[4pt]$\Downarrow$\\[4pt]$x_L\uparrow$, $\pi_L\uparrow$\\[4pt]{\scriptsize fuera de la espiral}};
     \draw[sig] (can.east) -- (obj.west);}
 \end{tikzpicture}
 \end{document}

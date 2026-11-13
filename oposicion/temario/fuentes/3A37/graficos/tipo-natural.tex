@@ -1,0 +1,59 @@
+% Copiado sin cambios de fuentes/3A40/graficos/tipo-natural.tex y de sus datos (3A40/datos/tipo-natural-hlw.csv), 13/11/2026. Si cambia el original, copiar de nuevo.
+% Tipo de interés natural real estimado (r*, % anual, estimación unilateral),
+% EE. UU. y zona del euro, 1990T1-2026T2 (3.A.40, I.1 d).
+% Datos: ../datos/tipo-natural-hlw.csv (Fed de Nueva York: Holston, Laubach y
+% Williams, 2023, y Laubach y Williams, 2003; consulta 5/11/2026). Trimestral,
+% sin huecos: x = 1990 + (fila)/4.
+% Cifras de control: HLW EE. UU. 2,61 (2007T4), 0,57 (2014T1), 1,01 (2026T2);
+%   HLW zona del euro 2,34 (2007T4), 0,09 (2026T2); LW EE. UU. 1,65 (2026T2).
+% Paleta de las 4 economías del tema (la misma en tipos-oficiales y
+% balances-bancos-centrales): EE. UU. tceedorado, zona del euro dicze, Reino
+% Unido tceeverde, Japón tceerojo.
+% Leyenda: HLW = Holston, Laubach y Williams (2023); LW = Laubach y Williams (2003).
+% Capas (CRITERIOS §7): ejes, 0 y marcas → HLW → LW → etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\rnatural}{../datos/tipo-natural-hlw.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=12cm,height=6.6cm,scale only axis=false,
+    xmin=1989.5,xmax=2027,ymin=-0.5,ymax=4.5,
+    axis x line*=bottom,axis y line*=left,tick align=outside,
+    xtick={1990,1995,...,2025},ytick={0,1,...,4},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    ticklabel style={font=\footnotesize},
+    /pgf/number format/use comma,
+    ylabel={\% anual},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.5,-0.11)},anchor=north,draw=none,font=\footnotesize,legend columns=3,/tikz/every even column/.append style={column sep=0.6cm}},
+    legend cell align=left,dicapas]
+  % 1: ejes, línea del 0 y marcas de 2007T4 y 2020T1
+  \capa{1}{
+    \dicraya{(1989.5,0) (2027,0)}
+    \dicraya[dicumbral]{(2007.75,-0.5) (2007.75,4.5)}
+    \dicraya[dicumbral]{(2020,-0.5) (2020,4.5)}
+    \dicrotulo[font=\scriptsize,text=dicreferencia,anchor=south east]{(2007.75,4.5)}{2007T4}
+    \dicrotulo[font=\scriptsize,text=dicreferencia,anchor=south west]{(2020,4.5)}{2020T1}
+  }
+  % 2: Holston, Laubach y Williams: EE. UU. y zona del euro
+  \capa{2}{
+    \addplot[diclinea=tceedorado] table[col sep=comma,comment chars={\#},x expr={1990+\coordindex/4},y=hlw_eeuu_rstar] {\rnatural};
+    \addlegendentry{EE. UU. (HLW)}
+    \addplot[diclinea=dicze] table[col sep=comma,comment chars={\#},x expr={1990+\coordindex/4},y=hlw_zona_euro_rstar] {\rnatural};
+    \addlegendentry{zona del euro (HLW)}
+  }
+  % 3: Laubach y Williams: EE. UU., discontinua
+  \capa{3}{
+    \addplot[diclinea=tceedorado,dashed,thick] table[col sep=comma,comment chars={\#},x expr={1990+\coordindex/4},y=lw_eeuu_rstar] {\rnatural};
+    \addlegendentry{EE. UU. (LW)}
+  }
+  % 4: etiquetas del último dato (2026T2)
+  \capa{4}{
+    \dicrotulo[font=\footnotesize,text=tceedorado,anchor=west]{(2026.4,1.0)}{1,0}
+    \dicrotulo[font=\footnotesize,text=dicze,anchor=west]{(2026.4,0.09)}{0,1}
+    \dicrotulo[font=\footnotesize,text=tceedorado,anchor=west]{(2026.4,1.65)}{1,7}
+  }
+\end{axis}
+\end{tikzpicture}
+\end{document}
