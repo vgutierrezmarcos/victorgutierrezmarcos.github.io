@@ -180,3 +180,9 @@ Las lleva `tema-canon`; no se ha tocado ningún otro tema.
 - **3.A.42** (revisado, cosmético): el anexo del filtro HP escribe las matrices en negrita y la traspuesta con prima; con CC1, cursiva y $^{\top}$.
 
 - **Canon, CC3 (11/11/2026, 7.ª tanda)**: `rasmussen-cuadrantes` ya no existe; el gráfico de referencia de los eslabonamientos es `rasmussen-espana` (4 áreas con las ramas de España 2022 y el grupo de Chenery-Watanabe de cada una). Nombre de las áreas: clave, impulsores, base o estratégicos, independientes.
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: la nota conjunta de Kuznets (1971) y Stone (1984) lleva ahora las motivaciones oficiales entre comillas (antes, parafraseadas); notas nuevas en la primera mención de Meade (1977, con Ohlin; antes solo un `\nocite`), de Herbert Simon (1978, condición de Hawkins-Simon), de Acemoglu (2024, redes de producción) y de Hayek (1974, con Myrdal; debate del cálculo socialista). Entradas `Nobel1978Simon`, `NobelPrize2024` y `Nobel1974` copiadas de otros temas. La de Leontief ya estaba bien.
+- **4.º ejercicio**: se añaden 4.A.9 (ramas clave de España, política industrial) y 4.A.13 (cuenta satélite del turismo); ya estaban 4.A.1 y 4.A.22.
+- **Refranes**: se quedan «Tirando del hilo se saca el ovillo» (enganche y cierre) y la frase de Heráclito sobre el río (los coeficientes envejecen). Se quita «Pagar los platos rotos» (precios; en el tema y en la ficha: sugería culpa ajena, encaje dudoso) y «Tirar del carro» deja de ir como etiqueta y queda integrado en la frase («qué ramas tiran del carro de la economía»). El temario antiguo no tenía refranes.

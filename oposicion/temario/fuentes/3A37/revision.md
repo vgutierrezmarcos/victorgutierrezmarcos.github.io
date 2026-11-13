@@ -221,3 +221,7 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - **Funciones clave que se conservan**: `eq:bgg` (II.3) y `eq:elb` (III.2). `eq:taylor-contratos` y `eq:tipo-largo` ya no van en morado: la primera se escribe y se borra con el gráfico; la segunda se escribe en I.2 en una línea.
 - **Ejemplo conductor**: la familia con hipoteca a Euríbor más 1 (la cuota de 530 a 890 euros, I.2) y la pyme de azulejos que exporta (I.2); en II, el convenio de 3 años y el local que vale menos como garantía; en III, el Euríbor negativo de 2016-2021. Nunca «hilo» en voz alta.
 - **Refranes**: «las cosas de palacio van despacio» (enganche, I.4 y cierre); integrados en una frase: «cuando Estados Unidos estornuda, el mundo se resfría» (ciclo financiero global, I.2), «el banco te presta el paraguas cuando hace sol y te lo quita cuando llueve» (acelerador, II.3) y «tanto va el cántaro a la fuente que al final se rompe» (tipo de reversión, III.2).
+
+## Clasificación Gráfico/Figura (13/11/2026)
+
+Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `canales-transmision`, `cadenas-canales`, `nek-esquema`, `acelerador-financiero` y `no-convencionales-canales` (esquemas de cajas y flechas; `nek-esquema` y `acelerador-financiero` ya eran Figura en 3A36/3A42). El resto, incluido `hank-efectos` (con ejes), sigue como Gráfico.

@@ -223,3 +223,10 @@ No restaurados:
 - En el II, a la derecha: «no rival + excluible ⇒ rendimientos crecientes ⇒ competencia imperfecta», el esquema de los 3 sectores de Romer (`romer-sectores`), $\gamma=\eta_Is_IL$ con ahorro constante y, con hogares, $\gamma^{\mathrm E}<\gamma^{\mathrm P}$; el arbitraje de Aghion-Howitt (`aghion-howitt-paso1` → completo con la escalera). En el III, `jones` en 3 pasos (Romer horizontal y su subida → curva de Jones y senda → desplazamiento) y $\gamma_N=\lambda n/(1-\phi)$ recuadrada bajo Euler; `efecto-escala` como apoyo.
 - Al final, la pizarra limpia con las 2 funciones clave y la columna de la izquierda completa.
 - Enganche y cierre: la vela de Jefferson y «más vale maña que fuerza»; la idea final responde a la pregunta del enganche y lo retoma.
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: Romer (2018) y Aghion, Howitt y Mokyr (2025) ya estaban en la relevancia, con el motivo oficial, y su contribución se desarrolla entera (modelos de Romer y de Aghion y Howitt; Mokyr en las condiciones del crecimiento sostenido). Nuevas notas en la primera mención: Solow (1987), Koopmans (1975), Arrow (1972, con Hicks), Lucas (1995), Phelps (2006, Nelson y Phelps), Angrist (2021) y Acemoglu (2024) en Acemoglu y Angrist (2000), Stiglitz (2001, Dixit-Stiglitz), Samuelson (1970, Stolper-Samuelson) y Kremer (2019, en la nota de Kremer, 1993). La nota de North y Fogel pasa al formato habitual, con el motivo oficial.
+- **4.º ejercicio**: ya tenía `\vertema{4.A.7}` (I+D) y `\vertema{4.A.15}` (competencia), bien colocadas; no se añaden más.
+- **Refranes**: se conservan «más vale maña que fuerza» (enganche), «quien guarda, halla» ($AK$), «a hombros de gigantes» (Newton, efecto de las ideas pasadas) y «rey muerto, rey puesto» (destrucción creativa). Se quita «quien a buen árbol se arrima, buena sombra le cobija» (externalidades): sugiere arrimarse a una empresa grande, no el desbordamiento del conocimiento agregado; fuera también de la nota del opositor y de la ficha. Ninguno venía del temario antiguo.
+- Compilado tema y ficha y verificado: sin errores nuevos.

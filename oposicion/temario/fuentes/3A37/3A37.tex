@@ -201,7 +201,7 @@ Nueva macroeconomía clásica & Sorpresas monetarias & \textcolor{tceedorado}{So
 \subsection{Los canales de transmisión}\label{sec:canales}
 
 \begin{itemize}
-\item Una vez vistas las razones de que haya efectos reales, pasamos a los caminos. Seguimos una subida de tipos, que es lo que el BCE hizo en 2022-2023 y ha vuelto a hacer en 2026\nocite{BCE2026TiposOficiales} (gráfico~\ref{fig:canales-transmision}).
+\item Una vez vistas las razones de que haya efectos reales, pasamos a los caminos. Seguimos una subida de tipos, que es lo que el BCE hizo en 2022-2023 y ha vuelto a hacer en 2026\nocite{BCE2026TiposOficiales} (figura~\ref{figu:canales-transmision}).
 \item \emph{El primer eslabón}: el tipo oficial pasa enseguida al mercado interbancario y, desde ahí, a toda la curva de tipos y a los tipos de los préstamos y de los depósitos. Un tipo a $n$ periodos es la media de los tipos a corto que se esperan hasta entonces más una prima por plazo \vertema{3.B.24}:\footnote{Es la hipótesis de las expectativas con prima, en logaritmos; la prima por plazo va sin letra.}
   \begin{equation}
   i^{(n)}_t=\frac{1}{n}\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]+\text{prima por plazo}_t \label{eq:tipo-largo}
@@ -209,12 +209,12 @@ Nueva macroeconomía clásica & Sorpresas monetarias & \textcolor{tceedorado}{So
   Por eso pesa tanto lo que el banco central anuncia que hará \vertema{3.A.36}: una subida que se espera que dure mueve los tipos largos, que son los que pagan las hipotecas y las empresas; una que se cree pasajera, apenas.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{Los canales de transmisión de la política monetaria}\label{fig:canales-transmision}
+\caption{Los canales de transmisión de la política monetaria}\label{figu:canales-transmision}
 \grafico[0.85\textwidth]{canales-transmision}
 \fuente{elaboración propia a partir de \textcite{BernankeGertler1995}, \textcite{BoivinKileyMishkin2010} y \textcite{Mishkin2021Economics}.}
-\end{figure}
+\end{infografia}
 
 \paragraph{El canal del tipo de interés}
 \begin{itemize}
@@ -271,7 +271,7 @@ Nueva macroeconomía clásica & Sorpresas monetarias & \textcolor{tceedorado}{So
 
 \begin{itemize}
 \item \emph{Los retardos}: todos los canales tardan, porque los precios y los salarios se revisan poco a poco, la inversión se planea con tiempo y las deudas vencen o se revisan de forma escalonada. Por eso el banco central mira a la inflación prevista a 1 o 2 años, no a la de hoy.
-\item \emph{Recapitulación}: los canales del tipo de interés, de los activos y del tipo de cambio existen porque los precios son rígidos; los del crédito, porque hay fricciones financieras; el de las expectativas, porque el público mira hacia delante; y, con hogares distintos, se añade el de la renta y el empleo (\ref{sec:heterogeneidad}). La tabla~\ref{tab:canales} los resume y el gráfico~\ref{fig:cadenas-canales} dibuja la cadena de cada uno.
+\item \emph{Recapitulación}: los canales del tipo de interés, de los activos y del tipo de cambio existen porque los precios son rígidos; los del crédito, porque hay fricciones financieras; el de las expectativas, porque el público mira hacia delante; y, con hogares distintos, se añade el de la renta y el empleo (\ref{sec:heterogeneidad}). La tabla~\ref{tab:canales} los resume y la figura~\ref{figu:cadenas-canales} dibuja la cadena de cada uno.
 \end{itemize}
 
 \begin{table}[H]
@@ -303,12 +303,12 @@ Expectativas & $i\uparrow$ creíble $\Rightarrow\pi^e\downarrow\ \Rightarrow$ sa
 \fuente{elaboración propia a partir de \textcite{BernankeGertler1995}, \textcite{Ireland2008Transmission}, \textcite{BoivinKileyMishkin2010} y \textcite{Mishkin2021Economics}.}
 \end{table}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{La cadena de cada canal: de una subida de tipos a la producción y la inflación}\label{fig:cadenas-canales}
+\caption{La cadena de cada canal: de una subida de tipos a la producción y la inflación}\label{figu:cadenas-canales}
 \grafico[\textwidth]{cadenas-canales}
-\fuente{elaboración propia a partir de \textcite{BernankeGertler1995}, \textcite{BoivinKileyMishkin2010} y \textcite{Mishkin2021Economics}. Mismos colores que el gráfico~\ref{fig:canales-transmision}.}
-\end{figure}
+\fuente{elaboración propia a partir de \textcite{BernankeGertler1995}, \textcite{BoivinKileyMishkin2010} y \textcite{Mishkin2021Economics}. Mismos colores que la figura~\ref{figu:canales-transmision}.}
+\end{infografia}
 
 % --------------------------------------------------------------------------
 \subsection{La transmisión en la zona del euro y en España}\label{sec:zona-euro}
@@ -415,15 +415,15 @@ Expectativas & $i\uparrow$ creíble $\Rightarrow\pi^e\downarrow\ \Rightarrow$ sa
   \pi_t&=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t \label{eq:nkpc}\\
   i_t&=\rho+\phi_\pi\,\pi_t+\phi_x\,x_t+\varepsilon_t \label{eq:taylor}
   \end{align}
-  con $\kappa$ la pendiente (menor cuanto mayor es $\eta$, cuanto más rígidos son los precios), $u_t$ las perturbaciones de costes\nocite{ClaridaGaliGertler1999Science} y $\varepsilon_t$ la perturbación monetaria.\footnote{La regla responde a la inflación con $\phi_\pi>1$, para que el tipo real suba cuando sube la inflación y el equilibrio sea único (el \emph{principio de \autor{Taylor}}), y a la brecha con $\phi_x\geq0$. La original de \textcite{Taylor1993} es $i_t=1+1{,}5\,\pi_t+0{,}5\,x_t$, en puntos porcentuales anuales \vertema{3.A.36}.} Las 3 ecuaciones se cierran entre sí: la regla fija $i_t$, la IS da $x_t$ y la curva de \autor{Phillips} da $\pi_t$, que vuelve a la regla (gráfico~\ref{fig:nek-esquema}).
+  con $\kappa$ la pendiente (menor cuanto mayor es $\eta$, cuanto más rígidos son los precios), $u_t$ las perturbaciones de costes\nocite{ClaridaGaliGertler1999Science} y $\varepsilon_t$ la perturbación monetaria.\footnote{La regla responde a la inflación con $\phi_\pi>1$, para que el tipo real suba cuando sube la inflación y el equilibrio sea único (el \emph{principio de \autor{Taylor}}), y a la brecha con $\phi_x\geq0$. La original de \textcite{Taylor1993} es $i_t=1+1{,}5\,\pi_t+0{,}5\,x_t$, en puntos porcentuales anuales \vertema{3.A.36}.} Las 3 ecuaciones se cierran entre sí: la regla fija $i_t$, la IS da $x_t$ y la curva de \autor{Phillips} da $\pi_t$, que vuelve a la regla (figura~\ref{figu:nek-esquema}).
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{fig:nek-esquema}
+\caption{El modelo canónico: 3 ecuaciones que se cierran entre sí}\label{figu:nek-esquema}
 \grafico[0.6\textwidth]{nek-esquema}
 \fuente{elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}.}
-\end{figure}
+\end{infografia}
 
 \begin{itemize}
 \item \emph{La clave de la transmisión}: resolviendo la IS hacia delante, la brecha de hoy depende de toda la senda esperada del tipo real frente al natural,
@@ -650,7 +650,7 @@ Expectativas & $i\uparrow$ creíble $\Rightarrow\pi^e\downarrow\ \Rightarrow$ sa
 
 \subparagraph{iii) Implicaciones}
 \begin{itemize}
-\item \emph{Amplificación y persistencia}: la inversión y la producción responden más y durante más tiempo, porque la riqueza neta tarda en reconstruirse (gráfico~\ref{fig:acelerador-financiero}, el mismo que en otro tema \vertema{3.A.42}).
+\item \emph{Amplificación y persistencia}: la inversión y la producción responden más y durante más tiempo, porque la riqueza neta tarda en reconstruirse (figura~\ref{figu:acelerador-financiero}, la misma que en otro tema \vertema{3.A.42}).
 \item \emph{Asimetría}: el efecto es mayor cuando el patrimonio es escaso, en las recesiones y en las empresas pequeñas.
 \item \emph{Deuda y deflación}: con deudas en nominal, la deflación sube su valor real y vuelve a encarecer el crédito: la deflación por deudas de \textcite{Fisher1933} \vertema{3.A.41}.
 \item Siguiendo con la pyme: con menos pedidos y un local que vale menos como garantía, el banco le pide más por el mismo crédito justo cuando más lo necesita. Es lo que recoge el dicho de que el banco te presta el paraguas cuando hace sol y te lo quita cuando llueve: el crédito se retira justo en la recesión.
@@ -663,12 +663,12 @@ Expectativas & $i\uparrow$ creíble $\Rightarrow\pi^e\downarrow\ \Rightarrow$ sa
 \item \emph{La toma de riesgos}: con tipos bajos durante mucho tiempo, los bancos relajan sus criterios\nocite{BorioZhu2012Capital}; en España, los bancos con menos capital prestaron más a empresas arriesgadas\nocite{JimenezEtAl2014Hazardous}.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{El acelerador financiero: la espiral entre el ciclo financiero y el real}\label{fig:acelerador-financiero}
+\caption{El acelerador financiero: la espiral entre el ciclo financiero y el real}\label{figu:acelerador-financiero}
 \grafico[0.65\textwidth]{acelerador-financiero}
 \fuente{elaboración propia a partir de \textcite{BernankeGertlerGilchrist1999} y \textcite{KiyotakiMoore1997Credit}.}
-\end{figure}
+\end{infografia}
 
 \paragraph{d) Evidencia empírica}
 \begin{itemize}
@@ -923,7 +923,7 @@ Expectativas & $i\uparrow$ creíble $\Rightarrow\pi^e\downarrow\ \Rightarrow$ sa
 \item \emph{A favor}: el modelo explica con 3 ecuaciones por qué el límite es peligroso (la espiral deflacionista y la paradoja de la flexibilidad) y ordena las salidas: cada medida mueve un término de \eqref{eq:elb}.
 \item \emph{En contra}: exagera el poder de las promesas lejanas (la paradoja de la orientación) y, sin fricciones, no da papel a las compras de activos, que han sido la medida más usada; para eso hay que añadir primas, bancos y hogares distintos (bloque~\ref{sec:rigideces}).
 \item \emph{La salida, ya recorrida}: el BCE dejó de reinvertir el APP en 2023 y el PEPP a finales de 2024\nocite{BieberLizarazo2026Liquidez} y señala desde 2024 el tono de su política con la facilidad de depósito, con reservas abundantes\nocite{BCE2024Marco}; la Reserva Federal redujo su balance entre junio de 2022 y diciembre de 2025\nocite{Fed2022Reduccion,Fed2025FOMCoct} y ahora compra letras para mantener amplias las reservas\nocite{Fed2025FOMCdic}. Reducir el balance ha subido los tipos largos mucho menos de lo que los bajó ampliarlo, porque se anuncia con antelación, se hace despacio y llega en mercados tranquilos, sin la señal ni la liquidez de las compras de crisis\nocite{DuForbesLuzzetti2024Quantitative}.
-\item \emph{Recapitulación}: con el tipo corto en su límite, el banco central sigue actuando sobre lo que mueve el gasto: el suelo, las expectativas y las primas. Los instrumentos no convencionales se han quedado en la caja de herramientas: la estrategia del BCE de 2025 los mantiene\nocite{BCE2025Estrategia}. La tabla~\ref{tab:no-convencional} y el gráfico~\ref{fig:no-convencionales-canales} resumen en una página las salidas del modelo, las extensiones y el comodín.
+\item \emph{Recapitulación}: con el tipo corto en su límite, el banco central sigue actuando sobre lo que mueve el gasto: el suelo, las expectativas y las primas. Los instrumentos no convencionales se han quedado en la caja de herramientas: la estrategia del BCE de 2025 los mantiene\nocite{BCE2025Estrategia}. La tabla~\ref{tab:no-convencional} y la figura~\ref{figu:no-convencionales-canales} resumen en una página las salidas del modelo, las extensiones y el comodín.
 \end{itemize}
 
 
@@ -963,12 +963,12 @@ Suprimir el efectivo; CBDC remunerada & Elimina $i^{\mathrm{ELB}}$ & Todos los d
 \fuente{elaboración propia a partir de \textcite{EggertssonWoodford2003Zero}, \textcite{Bernanke2020New} y \textcite{Rogoff2016Curse}.}
 \end{table}
 
-\begin{figure}[H]
+\begin{infografia}[H]
 \centering
-\caption{Del límite inferior a la economía: salidas, términos del modelo y canales}\label{fig:no-convencionales-canales}
+\caption{Del límite inferior a la economía: salidas, términos del modelo y canales}\label{figu:no-convencionales-canales}
 \grafico[0.8\textwidth]{no-convencionales-canales}
 \fuente{elaboración propia a partir de \textcite{EggertssonWoodford2003Zero}, \textcite{Bernanke2020New} y la ecuación~\eqref{eq:elb}.}
-\end{figure}
+\end{infografia}
 
 % ==========================================================================
 \section*{Conclusión}

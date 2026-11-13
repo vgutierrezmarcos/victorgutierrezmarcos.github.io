@@ -338,3 +338,10 @@ Rehechas el 11/11/2026 (4.ª tanda) con la estructura en 3 bloques; lo que antes
 - `.bib`: DOI o URL en Baumol1986 (JSTOR 1816469), DeLong1988 (JSTOR 1807174), CobbDouglas1928 (JSTOR 1811556), ByrneFernaldReinsdorf2016 (10.1353/eca.2016.0014, Crossref), KlenowRodriguezClare1997Neoclassical (10.1086/654324, Crossref), Hall1990 (versión de trabajo, NBER w3034) y Williamson1990 (PIIE); CBP2019Nogales sin la fecha en el título (salía el año 2 veces). Los identificadores de JSTOR de Baumol y Cobb-Douglas no se han podido abrir (JSTOR bloquea la consulta); el de De Long sale de OpenAlex.
 - `revision.md`: resumen en 5 líneas, fila de AJR, tamaño de la foto (A45-04) y numeración de las contradicciones de § 6.
 
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: ya estaban Lucas, Solow, North (con Fogel) y Acemoglu, Johnson y Robinson (2024, en la relevancia y en la valoración de AJR, cuya contribución se cuenta entera en el apartado de instituciones). Nuevas notas: Robert E. Hall (2026, con Woodford, en Hall y Jones, 1999), Hicks (1972, con Arrow, en la nota de la neutralidad), Krugman (2008), Paul Romer (2018) y Aghion, Howitt y Mokyr (2025) en la frase que presenta la tabla de teorías y convergencia (dentro de la tabla una nota no se puede poner), Kremer (2019, Kremer, Willis y You), Hayek (1974, con Myrdal) y Coase (1991, «teorema de Coase político»).
+- **4.º ejercicio**: ya tenía `\vertema{4.A.3}`, `\vertema{4.A.17}`, `\vertema{4.A.27}` y `\vertema{4.A.30}`; no se añaden más.
+- **Refranes**: se conservan «por sus frutos los conoceréis» (enganche), «unos cardan la lana y otros llevan la fama» (contabilidad frente a causalidad), «no se ganó Zamora en una hora» (convergencia lenta), «Dios los cría y ellos se juntan» (clubes de convergencia) y «árbol que nace torcido…» (persistencia de las instituciones, con el matiz de Corea); quitada la muletilla «Como dice el refrán» en los 3 primeros y explicada su relación con lo que se dice. Se quita «las apariencias engañan» (tigres asiáticos), genérico, del tema y de la ficha. Ninguno venía del temario antiguo.
+- Compilado tema y ficha y verificado: sin errores nuevos.

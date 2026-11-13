@@ -217,3 +217,7 @@ No restaurados:
 - **Contenido**: C21 (en II.2.1), C22-C31, C32 (sin las cifras del BdE, A42-15), C33 (sin la pegatina del cántaro y con los austriacos en una línea, porque ya estaban en I.4.2), C34, C35 (como bloque final de III.3), C36 (con el refrán del coordinador en vez de «No hay mal que cien años dure»), C37, C38 (con `hp-paso-banda` en vez de `hp-lambda`, porque el gráfico del cuerpo ya compara λ), C39, C40 (integrado en el anexo B, como en el 3.A.6), C41 (frase en III.3 con la edición de 2026), C42-C47. **Rechazadas**: el anexo D de neutralidad como anexo propio (va en el B) y `hp-lambda`.
 - **Datos**: V6, V25-V27, V29-V32, V35-V43 aplicadas en II y III. V4 no se usa.
 - **Gráficos**: 20 pedidos (9 copiados, 11 nuevos: los dibuja `tema-tikz`); `coste-fondos` del 3.A.34 no se usa.
+
+## Clasificación Gráfico/Figura (13/11/2026)
+
+Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `historia-ciclo` (línea de tiempo), `nek-esquema` (ya Figura en 3A07/3A36) y `acelerador-financiero` (ciclo de cajas y flechas). Se quedan como Gráfico `ciclo-financiero-esquema` (curvas estilizadas sobre un eje de años), `ciclos-superpuestos` y el resto (ejes, curvas o series).

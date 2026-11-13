@@ -235,3 +235,7 @@ No restaurados:
 - **Conclusión** sin pizarra: empieza por «En conclusión,», recorre las 3 lecturas de la solvencia y termina con la idea final («lo que no son cuentas, son cuentos» y quién paga el déficit).
 - **Enganche**: el refrán, los datos de 2025 (déficit 2,4 %, todo intereses; deuda 100,5 % frente a 87,7 %) y la pregunta. La idea final de la conclusión retoma el refrán y responde con las 4 respuestas de la solvencia.
 - Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas. A la izquierda, la pregunta del enganche, el refrán y los refranes, cada uno junto a su concepto: «no hay plazo que no se cumpla ni deuda que no se pague» (la equivalencia ricardiana), «lo que es de todos no es de nadie» (el fondo común), «quien debe y paga, no debe nada» (la sostenibilidad) y «nadie puede servir a dos señores» (la dominación). En el centro, los gráficos: las sendas de la suavización impositiva, el diagrama de fases de la deuda, la curva de \autor{Laffer} del señoreaje y la matriz de regímenes de \autor{Leeper}. A la derecha, recuadradas y conservadas hasta el final, la restricción en porcentaje del PIB \eqref{eq:restriccion-ratios} y la condición de solvencia \eqref{eq:solvencia}, a la que se vuelve en cada bloque.
+
+## Clasificación Gráfico/Figura (13/11/2026)
+
+Revisada: todos siguen como Gráfico (ejes, curvas o series); no hay esquemas sin ejes.

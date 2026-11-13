@@ -308,3 +308,9 @@ anotado); entradas en `datos-actualizables.yaml`.
   solo de pan vive el hombre».
 - **Conclusión** (sin pizarra): empieza por «En conclusión,»; la idea final vuelve al refrán («ya no se
   hace la política económica a ojo de buen cubero») y responde a la pregunta del principio.
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: la nota de Kuznets pasa a su primera mención (enganche) con la motivación oficial de 1971; nueva nota en la primera mención de Stone (1984) y Meade (1977, con Ohlin) con las motivaciones oficiales entre comillas (antes iban parafraseadas en una nota conjunta, que se queda con la historia de Kuznets, Nathan y Somervell); notas nuevas para Stiglitz (2001) y Sen (1998) en la comisión Stiglitz-Sen-Fitoussi, y para Tobin (1981) y Nordhaus (2018) en la medida del bienestar económico. Entradas `Nobel2001AkerlofSpenceStiglitz`, `NobelPrize1998`, `Nobel1981Tobin` y `Nobel2018Nordhaus` copiadas de otros temas al .bib.
+- **4.º ejercicio**: 4.A.1 (quién elabora las cuentas en España), 4.A.3 (participación del trabajo ajustada), 4.B.23 (déficit de las AA. PP. en contabilidad nacional; ya estaba 4.B.1 y 4.B.7).
+- **Refranes**: se quedan «A ojo de buen cubero» (enganche y cierre), «Gota a gota se llena la bota» (flujos y stocks) y «No solo de pan vive el hombre» (límites del PIB como medida del bienestar), integrados en su frase. Se quita «A buen entendedor, pocas palabras bastan» (*nowcasting*: encaje forzado) y, en la ficha, «No es de donde naces, sino de donde paces» (residencia: no estaba en el tema ni en el temario antiguo, que no tiene refranes).

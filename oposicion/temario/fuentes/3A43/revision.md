@@ -222,3 +222,10 @@ Restaurados:
 - Huecos de las págs. 12, 13 y A-3: resueltos reduciendo el ancho de `ineficiencia-dinamica` (0,72), `solow-tasas` (0,52), `solow-ahorro` (0,78), `hd-produccion` (0,45) y `hd-caso1` a `hd-caso3` (0,42); comprobado en una compilación de prueba con los gráficos reales.
 - Pies de los `rck-*`: sin «(curvas ilustrativas)», como recomienda A43-12.
 - Anexo D: documentado como copia literal del 3.A.34 salvo las 2 autorremisiones (Resumen, Coherencia y A43-07).
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel** (nota al pie en la primera mención, con el motivo oficial y su `\nocite`; entradas reutilizadas de otros temas en el `.bib`): la de Koopmans pasa de la sección del modelo de Ramsey a su primera mención (introducción); nuevas las de Leontief (1973, dentro de la nota de la respuesta de Solow), Paul Romer (2018, en los «nuevos hechos» de Jones y Romer, con aviso de que no es el David Romer de MRW), Hicks y Arrow (1972), Samuelson (1970), Phelps (2006), Robert E. Hall (2026, con Woodford, en Hall y Jones, 1999), Nordhaus (2018), Stiglitz (2001), Tobin y Mundell (1981 y 1999, efecto Mundell-Tobin), Friedman y Modigliani (1976 y 1985, en la nota del programa de microfundamentación) y Acemoglu, Johnson y Robinson (2024, anexo de causas últimas). Ya estaban Solow, Lucas y Koopmans.
+- **4.º ejercicio**: `\vertema{4.A.2}` (capital humano medido con Mincer), `\vertema{4.B.11}` (Chamley-Judd, imposición óptima del capital) y `\vertema{4.A.6}` (DICE y política climática).
+- **Refranes**: se conservan «poco a poco se llega lejos» (enganche), «la avaricia rompe el saco» (ineficiencia dinámica, con su explicación y su negación en Ramsey) y «al perro flaco todo son pulgas» (trampa de pobreza); los 2 últimos no venían del temario antiguo, pero casan con lo que explican y van integrados. «Maná caído del cielo» sí viene del antiguo. Ficha sin cambios.
+- Compilado (`--solo pdf`) y verificado: sin errores nuevos (solo «anterior a la fuente», por no publicar; los avisos de letras de bloques ya estaban).

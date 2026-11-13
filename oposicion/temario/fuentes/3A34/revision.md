@@ -223,3 +223,10 @@ Propuestas de datos: V1-V26 aplicadas (V24 y V25, sin poder comprobar: Sahuquill
 ## Enlaces del original (9/11/2026)
 
 Los 4 enlaces del original siguen en el tema (en el `.tex` o en el `.bib`): no se ha perdido ninguno.
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel** (el tema no tenía ninguna nota): nota al pie, en la primera mención en el cuerpo, para Tobin (1981), Leontief (1973), Samuelson (1970, dentro de la nota del multiplicador-acelerador), Friedman (1976), Robert E. Hall (2026, con Woodford, en la evidencia de Hall-Jorgenson), Akerlof (2001), Arrow (1972) y Bernanke (2022, en la que se recuerda que también es suyo el acelerador financiero), Modigliani (1985) y Miller (1990), Koopmans (1975, en el anexo de control óptimo) y Acemoglu (2024, en «Para profundizar»). Las entradas del .bib se han copiado de otros temas (marcadas como «REUTILIZADA»).
+- **4.º ejercicio**: \vertema{4.B.17} (impuesto sobre sociedades) en la política fiscal de la síntesis, junto al \vertema{4.B.10} que ya estaba; \vertema{4.A.8} (financiación de la empresa en España) en la política financiera (avales y líneas de liquidez).
+- **Refranes**: el temario antiguo no traía ninguno. Se quedan el del enganche y la idea final («antes de que te cases, mira lo que haces»), «no por mucho madrugar amanece más temprano» (opción de esperar) y «dinero llama a dinero» (riqueza neta y prima de financiación externa), porque los dos van en una frase que explica qué relación tienen con el modelo. No se ha quitado ninguno. Ficha sin cambios.
+- Duda (13/11/2026): la nota de Acemoglu va en una recomendación de manuales del anexo. Se ha puesto para cumplir la regla de «todo Nobel mencionado»; si sobra ahí, se puede quitar.
