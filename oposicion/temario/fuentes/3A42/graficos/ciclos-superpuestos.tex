@@ -1,0 +1,46 @@
+% Los ciclos regulares superpuestos (3.A.42, nota al pie de la definición de
+% Burns y Mitchell). Rehace en TikZ los 2 gráficos de la derecha de la
+% antigua nota al pie 9 (representaciones estilizadas, no datos).
+%   a) Las 4 ondas por separado, en años: Kondratieff (unos 54), Kuznets
+%      (unos 18), Juglar (unos 9) y Kitchin (unos 40 meses = 3,33 años).
+%   b) El esquema de 3 ciclos de Schumpeter (1939): 1 Kondratieff = 6 Juglar
+%      y 1 Juglar = 3 Kitchin (periodos de 54, 9 y 3 años), con amplitudes
+%      decrecientes (1; 0,45; 0,2), y su suma (la «serie observada»).
+% Funciones seno: y = A sin(360 t / periodo).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee, x=0.11cm, y=1cm]
+  % ---------------- Panel a: las 4 ondas por separado ----------------
+  \capa{1}{\node[font=\small\bfseries, anchor=west] at (-2,4.55) {a) Las 4 ondas, por separado};}
+  \capa{1}{\draw[eje] (0,-0.3) -- (63,-0.3) node[right, font=\footnotesize] {años};}
+  \capa{1}{\foreach \a in {0,10,...,60} \draw (\a,-0.3) -- (\a,-0.38) node[below, font=\scriptsize] {\a};}
+  \capa{2}{\draw[curva1, smooth, variable=\t, samples=120, domain=0:60] plot (\t,{3.7+0.35*sin(\t/54*360)});}
+  \capa{2}{\node[etiqueta, anchor=west, font=\footnotesize, text=tceemorado] at (61,3.7) {\autor{Kondratieff}, unos 54 años};}
+  \capa{3}{\draw[curva2, smooth, variable=\t, samples=200, domain=0:60] plot (\t,{2.6+0.35*sin(\t/18*360)});}
+  \capa{3}{\node[etiqueta, anchor=west, font=\footnotesize, text=tceeazul] at (61,2.6) {\autor{Kuznets}, unos 18 años};}
+  \capa{4}{\draw[curva3, smooth, variable=\t, samples=300, domain=0:60] plot (\t,{1.5+0.35*sin(\t/9*360)});}
+  \capa{4}{\node[etiqueta, anchor=west, font=\footnotesize, text=tceeverde] at (61,1.5) {\autor{Juglar}, de 7 a 11 años};}
+  \capa{5}{\draw[curva4, smooth, variable=\t, samples=500, domain=0:60] plot (\t,{0.4+0.35*sin(\t/3.333*360)});}
+  \capa{5}{\node[etiqueta, anchor=west, font=\footnotesize, text=tceedorado] at (61,0.4) {\autor{Kitchin}, unos 40 meses};}
+  % ---------------- Panel b: el esquema de 3 ciclos de Schumpeter ----------------
+  \begin{scope}[xshift=11.6cm]
+    \capa{6}{\node[font=\small\bfseries, anchor=west] at (-2,4.55) {b) Los 3 ciclos de \autor{Schumpeter} y su suma};}
+    \capa{6}{\draw[eje] (0,0.2) -- (57,0.2) node[right, font=\footnotesize] {años};}
+    \capa{6}{\draw[thin, dicreferencia, dashed] (0,2) -- (54,2);}
+    \capa{6}{\draw[eje] (0,0.2) -- (0,4.2);}
+    \capa{6}{\foreach \a in {0,9,...,54} \draw (\a,0.2) -- (\a,0.12) node[below, font=\scriptsize] {\a};}
+    \capa{7}{\draw[curva1, smooth, variable=\t, samples=150, domain=0:54] plot (\t,{2+1.0*sin(\t/54*360)});}
+    \capa{7}{\node[etiqueta, font=\footnotesize, text=tceemorado, anchor=west] at (60,3.9) {1. \autor{Kondratieff}};}
+    \capa{8}{\draw[curva3, dashed, smooth, variable=\t, samples=300, domain=0:54] plot (\t,{2+0.45*sin(\t/9*360)});}
+    \capa{8}{\node[etiqueta, font=\footnotesize, text=tceeverde, anchor=west] at (60,3.35) {2. \autor{Juglar}};}
+    \capa{9}{\draw[curva4, densely dotted, smooth, variable=\t, samples=500, domain=0:54] plot (\t,{2+0.2*sin(\t/3*360)});}
+    \capa{9}{\node[etiqueta, font=\footnotesize, text=tceedorado, anchor=west] at (60,2.8) {3. \autor{Kitchin}};}
+    \capa{10}{\draw[line width=1.6pt, black, smooth, variable=\t, samples=700, domain=0:54]
+        plot (\t,{2+1.0*sin(\t/54*360)+0.45*sin(\t/9*360)+0.2*sin(\t/3*360)});}
+    \capa{10}{\node[etiqueta, font=\footnotesize, anchor=west, align=left] at (60,2.1) {4. suma (1 + 2 + 3)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

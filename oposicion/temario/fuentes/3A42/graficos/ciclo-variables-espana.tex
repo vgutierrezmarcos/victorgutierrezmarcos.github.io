@@ -1,0 +1,94 @@
+% El ciclo de España variable a variable (3.A.42, anexo de hechos estilizados):
+% componente cíclico (filtro de Hodrick y Prescott, lambda = 1600) del PIB
+% (morado) y de otras 7 series trimestrales, 1995T1-2019T4 (sin la pandemia,
+% como la tabla de hechos estilizados). Rehace para España los 7 paneles de
+% Estados Unidos de la antigua nota al pie 14 (PIB frente a consumo,
+% inversión, gasto público, empleo, M2, inflación y producción industrial).
+% Datos: ../datos/ciclo-variables-espana.csv (Eurostat y Banco de España,
+% cálculo propio; detalle en su cabecera). En cada título, la volatilidad
+% relativa (sigma_X/sigma_Y) y la correlación contemporánea con el PIB, que
+% coinciden con la tabla de hechos estilizados (consumo 1,18 y 0,88;
+% inversión 2,89 y 0,82; consumo público 0,95 y 0,45; empleo 1,22 y 0,94);
+% M2 real 2,80 y 0,45 (va detrás: correlación máxima, 0,69, con 4 trimestres
+% de retraso); inflación, en puntos, 0,81 y 0,31; producción industrial 2,65 y
+% 0,75 (algo adelantada: 0,78 un trimestre antes).
+% Sombreado: recesiones de España fechadas por la AEE (2008T2-2009T4 y
+% 2010T4-2013T2).
+% Colores de la paleta de coyuntura (tikz-tcee): PIB dicpib, consumo privado
+% dicconspriv, inversión dicfbcf, consumo público dicconspub (oscurecido para
+% que se lea como línea), empleo dicempleo, M2 tceeazul, inflación
+% dicinflacion, producción industrial tceerojo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepgfplotslibrary{groupplots}
+\newcommand{\cvdatos}{../datos/ciclo-variables-espana.csv}
+\pgfplotsset{
+  cv/.style={width=3.4cm, height=2.5cm, scale only axis,
+    xmin=1995, xmax=2020, xtick={1995,2005,2015},
+    x tick label style={/pgf/number format/1000 sep={}},
+    /pgf/number format/use comma,
+    axis lines=left, tick align=outside, clip=false,
+    unbounded coords=jump,
+    ticklabel style={font=\scriptsize},
+    title style={font=\small, align=center, at={(rel axis cs:0.5,1)}, anchor=south, yshift=2pt},
+    dicapas},
+}
+% \cvrecesiones{ymin}{ymax}
+\newcommand{\cvrecesiones}[2]{%
+  \dicsombra[fill=dicreferencia, fill opacity=0.2]{2008.25}{#1}{2009.75}{#2}
+  \dicsombra[fill=dicreferencia, fill opacity=0.2]{2010.75}{#1}{2013.25}{#2}}
+% \cvserie{columna}{color}{grosor}
+\newcommand{\cvserie}[3]{\addplot[diclinea=#2, line width=#3] table[col sep=comma, comment chars={\#},
+    x expr=1995+\coordindex/4, y=#1] {\cvdatos};}
+\newcommand{\cvpib}{\cvserie{pib}{dicpib}{1.4pt}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{groupplot}[group style={group size=4 by 2, horizontal sep=1.05cm, vertical sep=2.15cm},
+      cv, label style={font=\footnotesize}]
+    \nextgroupplot[title={consumo privado\\[-1pt]{\scriptsize vol. 1,18 · corr. 0,88}}, ymin=-11, ymax=11, ylabel={ciclo (\%)}]
+      \capa{1}{\cvrecesiones{-11}{11}}
+      \capa{1}{\dicraya{(1995,0) (2020,0)}}
+      \capa{2}{\cvpib}
+      \capa{3}{\cvserie{consumo}{dicconspriv}{1pt}}
+    \nextgroupplot[title={inversión (FBCF)\\[-1pt]{\scriptsize vol. 2,89 · corr. 0,82}}, ymin=-11, ymax=11]
+      \capa{1}{\cvrecesiones{-11}{11}}
+      \capa{1}{\dicraya{(1995,0) (2020,0)}}
+      \capa{2}{\cvpib}
+      \capa{3}{\cvserie{inversion}{dicfbcf}{1pt}}
+    \nextgroupplot[title={consumo público\\[-1pt]{\scriptsize vol. 0,95 · corr. 0,45}}, ymin=-11, ymax=11]
+      \capa{1}{\cvrecesiones{-11}{11}}
+      \capa{1}{\dicraya{(1995,0) (2020,0)}}
+      \capa{2}{\cvpib}
+      \capa{3}{\cvserie{cpublico}{dicconspub!70!black}{1pt}}
+    \nextgroupplot[title={empleo (personas)\\[-1pt]{\scriptsize vol. 1,22 · corr. 0,94}}, ymin=-11, ymax=11]
+      \capa{1}{\cvrecesiones{-11}{11}}
+      \capa{1}{\dicraya{(1995,0) (2020,0)}}
+      \capa{2}{\cvpib}
+      \capa{3}{\cvserie{empleo}{dicempleo}{1pt}}
+    \nextgroupplot[title={M2 real (sin efectivo)\\[-1pt]{\scriptsize vol. 2,80 · corr. 0,45}}, ymin=-11, ymax=11, ylabel={ciclo (\%)}]
+      \capa{1}{\cvrecesiones{-11}{11}}
+      \capa{1}{\dicraya{(1995,0) (2020,0)}}
+      \capa{2}{\cvpib}
+      \capa{3}{\cvserie{m2}{tceeazul}{1pt}}
+    \nextgroupplot[title={inflación (puntos)\\[-1pt]{\scriptsize vol. 0,81 · corr. 0,31}}, ymin=-4, ymax=4, ytick={-4,-2,0,2,4}]
+      \capa{1}{\cvrecesiones{-4}{4}}
+      \capa{1}{\dicraya{(1995,0) (2020,0)}}
+      \capa{2}{\cvpib}
+      \capa{3}{\cvserie{inflacion}{dicinflacion}{1pt}}
+    \nextgroupplot[title={producción industrial\\[-1pt]{\scriptsize vol. 2,65 · corr. 0,75}}, ymin=-11, ymax=11]
+      \capa{1}{\cvrecesiones{-11}{11}}
+      \capa{1}{\dicraya{(1995,0) (2020,0)}}
+      \capa{2}{\cvpib}
+      \capa{3}{\cvserie{ipi}{tceerojo}{1pt}}
+  \end{groupplot}
+  % leyenda en el hueco del octavo panel
+  \capa{1}{\begin{scope}[shift={($(group c3r2.east)+(1.25cm,0.9cm)$)}, font=\footnotesize]
+    \draw[line width=1.4pt, dicpib] (0,0) -- (0.6,0) node[right, black] {PIB};
+    \draw[line width=1pt, dicreferencia] (0,-0.45) -- (0.6,-0.45) node[right, black] {la otra variable};
+    \fill[dicreferencia, opacity=0.2] (0,-1.05) rectangle (0.6,-0.8);
+    \node[right, black] at (0.6,-0.92) {recesiones (AEE)};
+    \node[right, black, align=left, font=\scriptsize] at (0,-1.75) {vol.: $\sigma_X/\sigma_Y$\\corr.: con el PIB};
+  \end{scope}}
+\end{tikzpicture}
+\end{document}
