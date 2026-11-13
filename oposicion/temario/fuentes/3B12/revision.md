@@ -163,9 +163,12 @@ Opción aplicada entre corchetes.
 12. **Crisis del Tequila**: la cifra «una quinta parte fue inversión directa» no tiene fuente. [Sin la cifra]
 13. **DSA**: la perturbación normalizada de una depreciación real del 30 % y que el SRDSF no tenga módulo de deuda externa (V15, deducido de la nota de 2022) no están comprobados. [Sin el 30 %; el SRDSF como marco de deuda pública y la exterior en la evaluación del sector exterior]
 14. **La ilusión monetaria** como mecanismo de Alexander: está en Alexander (1952), sin página comprobada.
-15. **Enganche** parecido al del 3.B.11 (mismas cifras de 2007 y 2025; aquí el ángulo es el ajuste sin devaluación). La pegatina «lo temporal se financia; lo permanente se ajusta» es de la 1D01 (frase, no refrán). [Aplicados] **Respuesta de Víctor (12/11/2026):** enganche «De aquellos polvos, estos lodos» aprobado.
+15. **Enganche** parecido al del 3.B.11 (mismas cifras de 2007 y 2025; aquí el ángulo es el ajuste sin devaluación). La frase «lo temporal se financia; lo permanente se ajusta» es de la 1D01 (frase, no refrán). [Aplicados] **Respuesta de Víctor (12/11/2026):** enganche «De aquellos polvos, estos lodos» aprobado.
 16. **Longitud**: el tema ocupa 35 páginas (el Word, 47 con anexos); el cante cuadra en 30′, pero III.4 c) tiene 8 extensiones que en el cante son solo títulos.
 17. **Fichas nuevas** `absorcion`, `multiplicador-comercio-exterior` (¿ficha propia o alias de `mundell-fleming`?) y `cuenta-corriente-intertemporal`.
+
+18. **Letras de III.2 y III.3** (13/11/2026): el modelo de 2 periodos se reparte entre III.2 y III.3 (estructura del original). Opciones: (a) III.2 con a) Idea y b) Modelo (i-iii) y III.3 con c) Extensiones, d) Evidencia empírica y e) Valoración, como un solo modelo; (b) reiniciar las letras en III.3 (a) Extensiones…), que rompe el orden rígido; (c) fundir III.2 y III.3. **Aplicada: (a)**; `verificar-tema.py` da un aviso (no error) por las letras c)-e) seguidas en III.3.
+19. **Krugman sin nota Nobel** (13/11/2026): solo sale nombrado en la fuente del gráfico de la oferta y la demanda de divisas (Krugman, Obstfeld y Melitz) y como `\nocite` del modelo de crisis de 1979; la nota al pie no cabe en un `\fuente`. Opciones: (a) sin nota; (b) nombrar a \autor{Krugman} en II.2 («el modelo de crisis de balanza de pagos de Krugman, 1979») con su nota. **Aplicada: (a)**.
 
 ## 8. Instrucciones para el vídeo
 
@@ -180,7 +183,7 @@ Opción aplicada entre corchetes.
 - **III** (11′30″):
   - III.1 (1′): de palabra.
   - III.2 (4′): **gráfico conjunto por partes** `cc-intertemporal`: primero la autarquía (capas 1-3: ejes, frontera, $U_0$ y $A$ con $-(1+r^A)$); después la apertura (capas 4-5: recta $-(1+r^*)$, $P$, $U_1$, $C$) y, al final, las llaves (capas 6-8: déficit en $t$, su reparto entre $\Delta I$ y $\Delta C$, superávit comercial en $t+1$). Al lado, `eq:euler-abierta` y `eq:inversion-abierta`. Decir una vez que $P$ es un punto y no el nivel de precios.
-  - III.3 (1′30″): de palabra; la pegatina «lo temporal se financia; lo permanente se ajusta» se escribe junto al gráfico intertemporal. `eq:cc-fundamental` como apoyo, no se escribe.
+  - III.3 (1′30″): de palabra; la frase «lo temporal se financia; lo permanente se ajusta» se escribe junto al gráfico intertemporal. `eq:cc-fundamental` como apoyo, no se escribe.
   - III.4 (5′): a la pizarra la función clave `eq:deuda-externa` y debajo `eq:saldo-estabilizador`; el gráfico `dinamica-deuda-externa` en sus 2 paneles (caso 3: capas 1-3; caso 4: capas 4-5); la lista de determinantes con sus signos. Las extensiones, como lista de títulos con una frase cada una (valoración, indicadores, DSA, fuentes de financiación, pecado original, *risk sharing*, superávits). España: se dicen las cifras de 2007 (estabilizador −2 %, déficit del 6 %) y de 2025; `cc-piin-espana` y las tablas `tab:indicadores-externos`, `tab:fuentes-financiacion` y `tab:sostenibilidad-espana`, como apoyo.
 - No se dicen números de temas en voz alta.
 
@@ -188,3 +191,26 @@ Opción aplicada entre corchetes.
 
 - Se mantiene el I.4 nuevo (IS-LM-BP, asignación de Mundell y ajuste con tipo flexible).
 - Enganche «De aquellos polvos, estos lodos» aprobado.
+
+## Puesta al día con las reglas de esta rama (13/11/2026)
+
+Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 4.ª-9.ª y de la revisión transversal sin quitar contenido.
+
+| Regla | Cómo se ha aplicado |
+|---|---|
+| Citas (5.ª tanda) | Los 81 `\parencite` del texto pasan a `\nocite` (script `quitar_citas.py`); se revisaron las frases. Quedan 2 en `\fuente{}` (gráfico de España y tabla de sostenibilidad), como en los demás temas. Los `\textcite` del cuerpo son obras originales con el autor como sujeto; Gandolfo, Krugman-Obstfeld-Melitz y Moosa-Bhatti solo en fuentes o en cajas de lecturas. |
+| Plantilla (7.ª tanda) | Anexo de test con la caja estándar (`?tema=3.B.12`). Títulos largos ya llevaban `\cortetitulo`. Sin «lo que se suele preguntar» ni enlaces a otros formatos. |
+| Gráfico/Figura/Imagen | `flujo-especie` (circuito de cajas y flechas) pasa a **Figura** (`infografia`, `figu:flujo-especie`); los otros 7 son gráficos. No hay imágenes pegadas. |
+| Estructura rígida (8.ª tanda) | III.2 pasa de «a) Supuestos, b) Desarrollo, c) Implicaciones» a «a) Idea; b) Modelo con i) Supuestos, ii) Desarrollo, iii) Implicaciones» (Idea nueva, breve); III.3 continúa el mismo modelo con c) Extensiones, d) Evidencia empírica y e) Valoración (duda 18). Los demás modelos ya cumplían. |
+| Resultados clave en morado | Las 2 condiciones del modelo intertemporal (ecuación de Euler y condición de inversión) y el saldo que estabiliza la deuda pasan a `\funcionclave`. No hay desarrollos «Paso n». |
+| Ejemplos sin nombres | Fuera «Robinson Crusoe» del agente representativo. |
+| Inglés entre paréntesis | Añadidos: *beggar-thy-neighbour*, *sudden stop*, *original sin*, *debt intolerance*, *debt sustainability analysis*, *global imbalances*, *global saving glut*. |
+| Remisiones vacías | Reescritas: los indicadores de reservas (ahora dice cuáles), el tipo flexible con capital móvil (anexo E) y el Mundell-Fleming de I.4. |
+| Nobel (revisión transversal) | Notas nuevas en la primera mención: Mundell (1999), Meade (1977, con Ohlin), Tinbergen (1969), Friedman (1976), Lucas (1995) y Bernanke (2022, nombrado ahora en los desequilibrios globales con el exceso de ahorro mundial); Ohlin, dentro de la nota del debate de las reparaciones (no admite nota anidada). Entradas copiadas al `.bib`. Krugman, sin nota (duda 19). |
+| 4.º ejercicio | `\vertema{4.A.28}` en el ajuste de España 2008-2013 (absorción) y `\vertema{4.A.21}` y `\vertema{4.A.29}` en los indicadores del PDM de España; ya estaba 4.A.21 en la conclusión. |
+| Identidad frente a teoría cuantitativa | En los supuestos del flujo-especie: $MV\equiv PY$ como identidad y la teoría cuantitativa como la identidad con supuestos causales ($V$ estable, pleno empleo, causalidad del dinero a los precios). |
+| Dichos | Se conserva el refrán del enganche y de la idea final («De aquellos polvos, estos lodos», aprobado por Víctor el 12/11/2026). «Lo temporal se financia; lo permanente se ajusta» es una regla de política, no un refrán: se queda integrada. No había otros. |
+| NEK en (x,π), pizarra | No aplica (no hay gráficos NEK ni indicaciones de pizarra en el texto). |
+| Ficha de repaso | El tema no tiene ficha (`repaso/` no existe): nada que adaptar. |
+
+Compilación: `construir-tema.py 3B12 --solo pdf --no-publicar` correcto (36 páginas de tema, 6 de anexos, 6 de bibliografía; 30 minutos). `verificar-tema.py 3B12`: solo los errores esperables de PDF/HTML/Word publicados anteriores a la fuente y el aviso de las letras de III.3 (duda 18).

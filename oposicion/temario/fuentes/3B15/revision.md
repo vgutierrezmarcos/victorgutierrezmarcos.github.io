@@ -145,7 +145,7 @@ K1-K26 en la parte 1 (K3 con los títulos del original; K6 aplicada como subapar
 ## 6. Coherencia
 
 - Notación del canon: $E$ directo, $q\equiv EP^*/P$, $\beta_K$ (movilidad) frente a $\beta$ (descuento), $i-i^*\approx\gamma E^e+\rho$, $\mathrm{BM}=\mathrm{CI}+R$, $e_t=\ln E_t$ y $\alpha$ de Cagan en Krugman, $\tau$ local (impuesto por unidad de deuda exterior), puntos $A$, $C$, $D$ y curvas $U_0<U_2<U_1$ como en el 3.B.12.
-- Mismas cifras y clave del AREAER que el 3.A.32 y el 3.B.16 (`FMI2024AREAER2023`), mismas palabras para el euro en libre flotación; COFER y China como el 3.B.11 y el 3.B.13; mercado de divisas como el 3.B.13; libra en 1992 con las claves del 3.B.16; pegatinas del 3.A.32 y del 3.A.37 a propósito; nuevas «ni chicha ni limonada» (intermedios) y «más vale una palabra a tiempo que cien a destiempo» (persuasión), sin usar en otros temas.
+- Mismas cifras y clave del AREAER que el 3.A.32 y el 3.B.16 (`FMI2024AREAER2023`), mismas palabras para el euro en libre flotación; COFER y China como el 3.B.11 y el 3.B.13; mercado de divisas como el 3.B.13; libra en 1992 con las claves del 3.B.16; frases para recordar del 3.A.32 y del 3.A.37 a propósito; nuevas «ni chicha ni limonada» (intermedios) y «más vale una palabra a tiempo que cien a destiempo» (persuasión), sin usar en otros temas.
 - Paleta de los regímenes común en tabla y gráficos: anclaje duro azul, blando dorado, flotación rojo, otros gris.
 - **Para `canon/pendientes-coherencia.md`** (no se tocan esos temas):
   - **PC1** [menor] **3.A.32, l. 403**: el dilema de Rey remite a `\vertema{3.A.37}`; debe remitir (o remitir también) a `\vertema{3.B.15}`, que lo desarrolla.
@@ -175,6 +175,10 @@ K1-K26 en la parte 1 (K3 con los títulos del original; K6 aplicada como subapar
 15. **Control de calidad (12/11/2026)**: la caída del córdoba en julio y agosto de 2001 (13,039 y 13,104) es un error de la serie de medias del BPI (M.NI.NIO.A): la serie de fin de mes del propio BPI (M.NI.NIO.E) sigue el deslizamiento sin saltos (13,4401 en junio, 13,5068 en julio, 13,5738 en agosto y 13,639 en septiembre). No se ha podido abrir la web del Banco Central de Nicaragua (la bloquea un antirrobots), así que no se ha cotejado con la fuente nacional. **Volcker**: con este tema aparece en 3 temas seguidos (el enganche del 3.B.13, una nota del 3.B.14 y la relevancia del 3.B.15). Se pide al editor que lo quite aquí; si Víctor prefiere conservarlo, basta con no aplicar esa corrección.
 16. **`CBE2024Flotacion`**: no se ha encontrado el comunicado en cbe.org.eg (la web del Banco Central de Egipto rechaza las peticiones automáticas y el Internet Archive estaba fuera de servicio); sigue la copia en Amwal Al Ghad. Falta cambiarla por el enlace oficial a mano.
 
+17. **Dichos** (13/11/2026): ninguno venía del temario antiguo (comprobado en `3B15-anterior.pdf`). Opciones: (a) conservar integrados los que casan muy bien con el modelo (nadar y guardar la ropa, el estornudo de Estados Unidos, doblarse para no quebrarse) y quitar «ni chicha ni limonada», que desprecia a los intermedios justo cuando el tema concluye que sobreviven, y «más vale una palabra a tiempo…», cuya relación con la persuasión es débil; (b) quitar todos salvo el refrán del enganche. **Aplicada: (a)**.
+18. **Anexo de test** (13/11/2026): tenía fechas, obras y trampas útiles para el test. Opciones: (a) mantenerlas y cerrar con la caja estándar; (b) dejar solo la caja. **Aplicada: (a)**.
+19. **Citas en las cajas de lecturas** (13/11/2026): al pasar los `\parencite` a `\nocite`, 8 viñetas de las cajas («El argumento del dilema, contado por su autora:») y una nota (el bitcóin en El Salvador) se quedaban sin la referencia. **Aplicado: `\textcite`**, que imprime «Autor (año)» con su enlace a la bibliografía, porque ahí la obra es el objeto de la frase.
+
 ## 8. Instrucciones para el vídeo
 
 - **Enganche**: el refrán «cada uno sabe dónde le aprieta el zapato» y Hillel a la pata coja / Klein («los Gobiernos se enfrentan al trilema; todo lo demás es comentario»). **Idea final**: Frankel (1999), el zapato otra vez y «eso es el trilema, y todo lo demás es comentario». Introducción y conclusión, sin pizarra.
@@ -188,4 +192,23 @@ K1-K26 en la parte 1 (K3 con los títulos del original; K6 aplicada como subapar
 - **Funciones clave que se conservan**: `eq:trilema` (PNCI con $\rho=0$) toda la exposición, porque vuelve en III.1.2 (canal de cartera, $\rho>0$); `eq:poole-abierta` en I.3. En III.2, la ecuación de Euler con $\tau$ junto al gráfico.
 - **Como apoyo (no se dibujan)**: `tab:mundell-fleming` (de palabra, 2 casillas), `tab:areaer`, `tab:intermedios`, `fig:regimenes-evolucion`, `fig:reservas-mundiales` y las 7 series del anexo A.
 - **España** vuelve como ejemplo en cada apartado con «Volvamos a España»: euro y trilema (I), SME y divorcio de la banda y el menú recorrido (II), tipos múltiples hasta 1959 y controles de 1992 (III), euro en la relevancia de la conclusión.
-- Pegatinas: «no se puede nadar y guardar la ropa» (trilema), «cuando Estados Unidos estornuda, el mundo se resfría» (dilema), «más vale doblarse que quebrarse» (Friedman), la de Poole, «ni chicha ni limonada» (intermedios) y «más vale una palabra a tiempo que cien a destiempo» (persuasión).
+- Dichos (13/11/2026): «no se puede nadar y guardar la ropa» (trilema), «cuando Estados Unidos estornuda, el mundo se resfría» (dilema) y «doblarse para no quebrarse» (Friedman), integrados en la frase sin etiqueta; la regla de Poole, como resumen del modelo. Se han quitado «ni chicha ni limonada» y «más vale una palabra a tiempo que cien a destiempo» (duda 18).
+
+## Puesta al día con las reglas de esta rama (13/11/2026)
+
+Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 4.ª-9.ª y de la revisión transversal sin quitar contenido.
+
+| Regla | Cómo se ha aplicado |
+|---|---|
+| Citas (5.ª tanda) | Los 125 `\parencite` del texto pasan a `\nocite` (`quitar_citas.py`); quedan 9 en los `\fuente{}` de los gráficos de datos. Las viñetas de lecturas y la nota del bitcóin, con `\textcite` (duda 19). La nota de la hipoteca de Rey ya no cita a *The Economist* como sujeto («Según The Economist…»): pasa a `\nocite`. |
+| Plantilla (7.ª tanda) | Anexo «para el test» → «preguntas de test», con la caja estándar (`?tema=3.B.15`) tras su lista (duda 18). Títulos ya con `\cortetitulo`. |
+| Gráfico/Figura/Imagen | `trilema`, `dilema-rey` (triángulos de objetivos) y `regimenes-espectro` (escala cualitativa de cajas) pasan a **Figura** (`figu:`); los demás son gráficos. La nota del cante dice «gráficos y figuras imprescindibles». |
+| Estructura rígida (8.ª tanda) | Ya la cumplían el trilema, el dilema, Poole, Krugman y el modelo con controles. |
+| Etiquetas de dichos | Fuera las 7 etiquetas; ver dichos (duda 17). |
+| Inglés entre paréntesis | Añadidos: disyuntivas (*trade-offs*), pecado original (*original sin*), paradas súbitas (*sudden stops*), miedo a flotar (*fear of floating*), segundo óptimo (*second best*), ir contra el viento (*leaning against the wind*). |
+| Nobel | Notas nuevas: Mundell (1999), Friedman (1976), Krugman (2008), Tobin (1981) y Woodford (2026, nombrado ahora como coautor del manual del modelo con controles). La de Tinbergen pasa al formato habitual (motivo oficial y `\nocite{Nobel1969}`). Entradas copiadas al `.bib`. |
+| 4.º ejercicio | Ya estaban 4.A.27 (1959 y el menú de España) y 4.A.28 (conclusión); se añade `\vertema{4.A.27}` en la crisis del SME de 1992-1993. |
+| Identidad frente a teoría cuantitativa, NEK, pizarra, nombres en ejemplos | No aplica. |
+| Ficha de repaso | El tema no tiene ficha (`repaso/` no existe). |
+
+Compilación: `construir-tema.py 3B15 --solo pdf --no-publicar` correcto (33 páginas de tema, 6 de anexos, 7 de bibliografía; 30 minutos). `verificar-tema.py 3B15`: solo los errores esperables de PDF/HTML/Word publicados anteriores a la fuente.
