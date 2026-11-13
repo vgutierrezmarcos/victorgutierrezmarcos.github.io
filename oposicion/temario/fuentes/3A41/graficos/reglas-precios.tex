@@ -1,0 +1,73 @@
+% Copiado sin cambios de fuentes/3A07/graficos/reglas-precios.tex (3.A.7), 13/11/2026. Si cambia el original, copiar de nuevo.
+% Cómo se fijan los precios (o los salarios) en cada modelo: Fischer (1977),
+% Taylor (1980), Calvo (1983) y Rotemberg (1982). Ilustración, no
+% calibración: en t = 0 la cantidad de dinero sube de forma permanente e
+% inesperada de 0 a 1, y el precio que cada empresa desea es 1.
+%   a) Fischer: contratos de 2 periodos firmados por mitades; el precio de
+%      cada periodo se fija al firmar y puede ser distinto en cada uno.
+%      Nivel: 0 (t=0), 0,5 (t=1), 1 desde t=2.
+%   b) Taylor: el precio es el mismo durante los 2 periodos y quien firma
+%      mira el precio de la otra mitad: x_t = 0,5 x_{t-1} + 0,5 (ilustrativo). El periodo t ocupa [t, t+1].
+%      Contratos nuevos 0,5; 0,75; 0,875; 0,94; 0,97; 0,98; 0,99.
+%      Nivel p_t = (x_t + x_{t-1})/2: 0,25; 0,63; 0,81; 0,91; 0,955; 0,975; 0,985.
+%   c) Calvo: cada periodo revisa al azar una fracción 1 - eta = 0,4.
+%      Nivel 1 - 0,6^{t+1}: 0,4; 0,64; 0,78; 0,87; 0,92; 0,95; 0,97.
+%      Empresa A revisa en t = 1; empresa B, en t = 4.
+%   d) Rotemberg: todas cambian cada periodo, poco a poco (coste cuadrático):
+%      todas siguen la misma senda, igual que el nivel de c).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee, x=0.62cm, y=1.5cm,
+    titulo/.style={font=\small\bfseries, anchor=base west},
+    nota/.style={font=\scriptsize, anchor=north west, align=left, inner sep=1pt},
+    individual/.style={thick, tceeazul},
+    individual2/.style={thick, tceedorado},
+    agregado/.style={very thick, tceemorado}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-4.8) rectangle (19.6,1.75);
+  % Ejes de un panel: #1 desplazamiento x, #2 desplazamiento y
+  \newcommand{\panel}[2]{%
+    \begin{scope}[shift={(#1,#2)}]
+      \draw[eje] (0,0) -- (7.6,0) node[below left=1pt and 0pt, font=\footnotesize] {$t$};
+      \draw[eje] (0,0) -- (0,1.35) node[left, font=\footnotesize] {$p$};
+      \foreach \t in {0,...,6} \draw (\t+0.5,0.04) -- (\t+0.5,-0.04) node[below, font=\scriptsize] {\t};
+      \draw[guia] (0,1) -- (7.4,1) node[right, font=\scriptsize, text=tceegris] {$m$};
+    \end{scope}}
+  % 1: los 4 paneles con sus ejes (en el periodo 0 sube el dinero de forma permanente)
+  \capa{1}{\panel{0}{0}\panel{11}{0}\panel{0}{-2.95}\panel{11}{-2.95}}
+  \capa{1}{\node[titulo] at (0,1.5) {a) \textsc{Fischer} (1977)};
+    \node[titulo] at (11,1.5) {b) \textsc{Taylor} (1980)};
+    \node[titulo] at (0,-1.45) {c) \textsc{Calvo} (1983)};
+    \node[titulo] at (11,-1.45) {d) \textsc{Rotemberg} (1982)};}
+  % 2: a) Fischer: cada mitad fija al firmar un precio para cada uno de sus 2 periodos
+  \capa{2}{\draw[individual] (0,0) -- (2,0) -- (2,1) -- (7.4,1);
+    \draw[individual2] (0,0.03) -- (1,0.03) -- (1,0.97) -- (7.4,0.97);
+    \draw[agregado] (0,0) -- (1,0) -- (1,0.5) -- (2,0.5) -- (2,1) -- (7.4,1);
+    \node[nota] at (0.2,-0.45) {quien firma después de la perturbación\\la recoge en cada periodo del contrato};}
+  % 3: b) Taylor: el precio queda fijo 2 periodos y mira el de la otra mitad
+  \capa{3}{\begin{scope}[shift={(11,0)}]
+    \draw[individual] (0,0.5) -- (2,0.5) -- (2,0.875) -- (4,0.875) -- (4,0.97) -- (6,0.97) -- (6,0.99) -- (7.4,0.99);
+    \draw[individual2] (0,0.03) -- (1,0.03) -- (1,0.75) -- (3,0.75) -- (3,0.94) -- (5,0.94) -- (5,0.98) -- (7.4,0.98);
+    \draw[agregado] (0,0.25) -- (1,0.25) -- (1,0.63) -- (2,0.63) -- (2,0.81) -- (3,0.81) -- (3,0.91) -- (4,0.91) -- (4,0.955) -- (5,0.955) -- (5,0.975) -- (6,0.975) -- (6,0.985) -- (7.4,0.985);
+    \node[nota] at (0.2,-0.45) {el ajuste dura más que los contratos};
+    \end{scope}}
+  % 4: c) Calvo: revisa una fracción al azar; cada empresa salta cuando le toca
+  \capa{4}{\begin{scope}[shift={(0,-2.95)}]
+    \draw[individual] (0,0) -- (1,0) -- (1,1) -- (7.4,1);
+    \draw[individual2] (0,0.03) -- (4,0.03) -- (4,0.97) -- (7.4,0.97);
+    \draw[agregado] (0,0.4) -- (1,0.4) -- (1,0.64) -- (2,0.64) -- (2,0.78) -- (3,0.78) -- (3,0.87) -- (4,0.87) -- (4,0.92) -- (5,0.92) -- (5,0.95) -- (6,0.95) -- (6,0.97) -- (7.4,0.97);
+    \node[nota] at (0.2,-0.45) {cada empresa revisa con probabilidad\\$1-\eta$, haga el tiempo que haga};
+    \end{scope}}
+  % 5: d) Rotemberg: todas cambian cada periodo, pero poco a poco
+  \capa{5}{\begin{scope}[shift={(11,-2.95)}]
+    \draw[agregado] (0,0.4) -- (1,0.4) -- (1,0.64) -- (2,0.64) -- (2,0.78) -- (3,0.78) -- (3,0.87) -- (4,0.87) -- (4,0.92) -- (5,0.92) -- (5,0.95) -- (6,0.95) -- (6,0.97) -- (7.4,0.97);
+    \node[nota] at (0.2,-0.45) {todas cambian cada periodo, poco a poco:\\el precio de cada empresa es el nivel};
+    \end{scope}}
+  % 6: leyenda común
+  \capa{6}{\draw[individual] (0.2,-4.6) -- (1,-4.6) node[right, font=\scriptsize, text=black] {precio de una empresa (o mitad)};
+    \draw[individual2] (7.6,-4.6) -- (8.4,-4.6) node[right, font=\scriptsize, text=black] {precio de otra};
+    \draw[agregado] (12.2,-4.6) -- (13,-4.6) node[right, font=\scriptsize, text=black] {nivel de precios};}
+\end{tikzpicture}
+\end{document}
