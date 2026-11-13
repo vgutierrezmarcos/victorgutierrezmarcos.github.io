@@ -659,6 +659,9 @@ def verificar(tema):
                 destacado = span['color'] in morados and (span['flags'] & 2 or span['flags'] & 16)
                 if re.search('[\U0001D400-\U0001D7FF]', texto):
                     continue
+                # una línea sin letras (p. ej. la flecha «↩→» de volver al esquema) no es un título
+                if not re.search(r'[^\W\d_]', texto):
+                    continue
                 if titulo.match(texto) or (destacado and len(texto) < 90 and not texto.endswith('.')):
                     errores.append(f'Título al pie de la página {n} del PDF: «{texto[:60]}»')
         except Exception as e:

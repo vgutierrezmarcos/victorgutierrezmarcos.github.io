@@ -184,18 +184,7 @@
   % el cierre queda fuera y todo el tema sale en morado)
   \setbox0\vbox{\begingroup\hsize=#1\relax\centering\tcee@formatotitulo\tcee@textotitulo\par
     \global\tcee@lineas=\prevgraf\endgroup}}
-\newcommand{\tceetitulo}{%
-  \thispagestyle{tceeprimera}%
-  \begingroup
-  \setlength{\tcee@maximo}{0.92\textwidth}%
-  \global\tcee@cortefalse
-  \sbox0{\def\cortetitulo{\global\tcee@cortetrue}\tcee@formatotitulo\tcee@textotitulo}%
-  \tcee@probar{\tcee@maximo}%
-  \ifnum\tcee@lineas>3 \renewcommand{\tcee@tamtitulo}{\normalsize}\tcee@probar{\tcee@maximo}\fi
-  \ifnum\tcee@lineas>3 \renewcommand{\tcee@tamtitulo}{\small}\tcee@probar{\tcee@maximo}\fi
-  \tcee@minimo=\tcee@lineas
-  \setlength{\tcee@ancho}{\tcee@maximo}%
-  \iftcee@corte\else\ifnum\tcee@minimo>1
+\newcommand{\tcee@buscarancho}{%
     \setlength{\tcee@bajo}{0.3\tcee@maximo}\setlength{\tcee@alto}{\tcee@maximo}%
     \loop\ifdim\dimexpr\tcee@alto-\tcee@bajo\relax>0.5pt
       \setlength{\tcee@ancho}{\dimexpr(\tcee@alto+\tcee@bajo)/2\relax}%
@@ -205,7 +194,21 @@
     % un poco de holgura sobre la anchura mínima, para que no quede apretado
     \setlength{\tcee@ancho}{\dimexpr\tcee@alto+0.8em\relax}%
     \ifdim\tcee@ancho>\tcee@maximo \setlength{\tcee@ancho}{\tcee@maximo}\fi
-  \fi\fi
+}
+\newcommand{\tceetitulo}{%
+  \thispagestyle{tceeprimera}%
+  \begingroup
+  \setlength{\tcee@maximo}{0.92\textwidth}%
+  \global\tcee@cortefalse
+  \sbox0{\protected\def\cortetitulo{\global\tcee@cortetrue}\tcee@formatotitulo\tcee@textotitulo}%
+  \tcee@probar{\tcee@maximo}%
+  \ifnum\tcee@lineas>3 \renewcommand{\tcee@tamtitulo}{\normalsize}\tcee@probar{\tcee@maximo}\fi
+  \ifnum\tcee@lineas>3 \renewcommand{\tcee@tamtitulo}{\small}\tcee@probar{\tcee@maximo}\fi
+  \tcee@minimo=\tcee@lineas
+  \setlength{\tcee@ancho}{\tcee@maximo}%
+  % (la búsqueda va en una macro: \repeat es \fi y desequilibra el condicional
+  % cuando se salta, p. ej. con \cortetitulo)
+  \iftcee@corte\else\ifnum\tcee@minimo>1 \tcee@buscarancho\fi\fi
   \tcee@probar{\tcee@ancho}%
   % altura reservada: tres líneas de \large
   {\large\global\tcee@reserva=\dimexpr 2\baselineskip+\ht\strutbox+\dp\strutbox\relax}%
