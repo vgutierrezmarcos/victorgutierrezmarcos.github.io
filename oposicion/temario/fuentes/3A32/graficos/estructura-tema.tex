@@ -1,7 +1,8 @@
-% La estructura del tema 3.A.32 en una página (9.ª tanda, 13/11/2026):
-% I. el marco (IS-LM-BP -> DA-OA abierta -> NEK), II. las perturbaciones de
-% oferta y de demanda (origen y propagación -> respuesta) y III. la extensión
-% a la economía abierta (Galí-Monacelli y el régimen cambiario).
+% La estructura del tema 3.A.32 en una página (reestructuración en 3 bloques,
+% 13/11/2026): I. modelo estático de economía abierta (IS-LM-BP -> DA-OA
+% abierta), II. modelo dinámico de economía cerrada (NEK; sus implicaciones:
+% perturbaciones de oferta y de demanda) y III. modelo dinámico de economía
+% abierta (Galí-Monacelli; perturbaciones externas y régimen cambiario).
 % Unos 16,4 x 19 cm: cabe en una cara con su título y su fuente.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
@@ -22,83 +23,66 @@
   \capa{1}{\node[banda=tceemorado] (preg) at (0,0)
     {\textbf{La pregunta}: ¿qué le ocurre a la renta y a la inflación de una economía abierta cuando la golpea una perturbación (de dónde viene, cómo se propaga, qué efectos de segunda ronda tiene) y qué pueden hacer la política monetaria, la fiscal y las políticas de oferta? \hfill \textit{Hilo: España, pequeña y abierta, con tipo fijo frente al euro y flotante frente al dólar; la energía cara de 2022 y 2026.}};}
 
-  % 2: bloque I, el marco
-  \capa{2}{\node[titulo=tceemorado, anchor=north west] at (0,-1.55) {I. El marco: de \autor{Mundell}-\autor{Fleming} a la oferta y la demanda agregadas neokeynesianas \hfill (11$'$30$''$)};}
-  \capa{2}{\node[caja=tceeazul, text width=4.75cm, minimum height=4.1cm] (m1) at (0,-2.15)
-    {\textbf{1. \autor{Mundell}-\autor{Fleming} (IS-LM-BP)}\\[2pt]
-     Precios fijos: renta y tipo de interés.\\ \textit{Límite: sin inflación} $\rightarrow$ 2.\\
-     IS con $XN$; LM; BP con movilidad $\beta_K$.\\[2pt]
-     \textbf{Qué se ajusta}: con tipo fijo, $M$;\\ con flexible, $E$.\\[2pt]
-     \textbf{Políticas} (movilidad perfecta):\\
-     fijo: fiscal \textcolor{tceeverde}{sí}, monetaria \textcolor{tceerojo}{no};\\
-     flexible: fiscal \textcolor{tceerojo}{no}, monetaria \textcolor{tceeverde}{sí}.\\[2pt]
-     Trilema; asignación de \autor{Mundell}.};}
-  \capa{2}{\node[caja=tceeazul, text width=4.75cm, minimum height=4.1cm] (m2) at (5.62,-2.15)
-    {\textbf{2. DA-OA abierta}\\[2pt]
-     DA = un equilibrio IS-LM-BP para cada $P$: efecto saldos reales y efecto competitividad.\\[2pt]
-     OA con la \textbf{cuña exterior}: insumos importados y salario de consumo ($q^{\alpha}$).\\[2pt]
-     \textbf{Políticas a medio plazo}: la monetaria solo deja precios; la fiscal desplaza $XN$; devaluación o devaluación interna.\\[2pt]
-     Inflación importada.\\ \textit{Límite: sin microfundamentos ni expectativas} $\rightarrow$ 3.};}
-  \capa{2}{\node[caja=tceeazul, text width=4.75cm, minimum height=4.1cm] (m3) at (11.24,-2.15)
-    {\textbf{3. El modelo neokeynesiano}\\[2pt]
-     IS dinámica + curva de \autor{Phillips} + regla de \autor{Taylor}: la DA y la OA en $(x_t,\pi_t)$, con microfundamentos y expectativas.\\[2pt]
-     \textbf{Demanda}: mueve la DA ($r^n_t$).\\
-     \textbf{Costes}: mueven la NKPC ($u_t$).\\[2pt]
-     Multiplicadores monetario y fiscal con el mismo denominador; divina coincidencia.};}
+  % 2: bloque I, modelo estático de economía abierta
+  \capa{2}{\node[titulo=tceemorado, anchor=north west] at (0,-1.55) {I. Un modelo estático de economía abierta: la renta y los precios \hfill (9$'$30$''$)};}
+  \capa{2}{\node[caja=tceeazul, text width=7.6cm, minimum height=4.25cm] (m1) at (0,-2.15)
+    {\textbf{1. \autor{Mundell}-\autor{Fleming} (IS-LM-BP): la renta con precios fijos}\\[2pt]
+     \textit{Punto de partida} (no se canta): IS-LM y DA-OA cerradas.\\
+     IS con $XN$; LM; BP con movilidad $\beta_K$. \textbf{Qué se ajusta}: con tipo fijo, $M$; con flexible, $E$.\\[2pt]
+     \textbf{Políticas} (movilidad perfecta): fijo, fiscal \textcolor{tceeverde}{sí} y monetaria \textcolor{tceerojo}{no}; flexible, fiscal \textcolor{tceerojo}{no} y monetaria \textcolor{tceeverde}{sí}.\\[2pt]
+     Trilema; aislamiento; asignación de \autor{Mundell}; déficits gemelos.\\[2pt]
+     \textit{Límite: precios fijos, sin inflación} $\rightarrow$ 2.};}
+  \capa{2}{\node[caja=tceeazul, text width=7.6cm, minimum height=4.25cm] (m2) at (8.4,-2.15)
+    {\textbf{2. DA-OA abierta: la renta y los precios}\\[2pt]
+     DA = un equilibrio IS-LM-BP para cada $P$: saldos reales y competitividad.\\
+     OA con la \textbf{cuña exterior}: insumos importados y salario de consumo ($q^{\alpha}$). Inflación importada.\\[2pt]
+     \textbf{Medio plazo}: la monetaria solo deja precios; la fiscal desplaza $XN$; devaluación o devaluación interna.\\[2pt]
+     \textbf{Energía cara}: estanflación; la política de oferta desplaza las 2 OA.\\[2pt]
+     \textit{Límite: estático, sin expectativas ni microfundamentos} $\rightarrow$ II.};}
   \capa{2}{\draw[paso] (m1.east) -- (m2.west);}
-  \capa{2}{\draw[paso] (m2.east) -- (m3.west);}
 
   % 3: paso a II
-  \capa{3}{\draw[paso] (8.2,-6.45) -- node[rotulo, right] {con el marco, cada perturbación: origen y propagación $\rightarrow$ respuesta de política} (8.2,-7.05);}
+  \capa{3}{\draw[paso] (8.2,-6.5) -- node[rotulo, right] {un modelo dinámico con expectativas racionales, primero en una economía cerrada} (8.2,-7.1);}
 
-  % 4: bloque II, perturbaciones de oferta y de demanda
-  \capa{4}{\node[titulo=tceerojo, anchor=north west] at (0,-7.15) {II. Las perturbaciones de oferta y de demanda y la respuesta de la política económica \hfill (10$'$)};}
-  \capa{4}{\node[caja=tceerojo, text width=7.6cm, minimum height=2.55cm] (o1) at (0,-7.75)
-    {\textbf{1. Oferta: origen y propagación}\\[2pt]
+  % 4: bloque II, el modelo neokeynesiano y las perturbaciones
+  \capa{4}{\node[titulo=tceerojo, anchor=north west] at (0,-7.2) {II. Un modelo dinámico de economía cerrada: el modelo neokeynesiano \hfill (12$'$)};}
+  \capa{4}{\node[caja=tceemorado, text width=15.95cm, minimum height=1.35cm] (n0) at (0,-7.8)
+    {\textbf{El modelo}: IS dinámica (DA) + curva de \autor{Phillips} neokeynesiana (OA) + regla de \autor{Taylor}, en $(x_t,\pi_t)$ con sus supuestos (AR(1), expectativas proporcionales). Demanda: mueve la DA ($r^n_t$); costes: mueven la NKPC ($u_t$). Multiplicadores monetario y fiscal con el mismo denominador; \textbf{divina coincidencia} si $u_t=0$.\\
+     \textit{Implicaciones}: cada perturbación, de su origen y su propagación a la respuesta de política.};}
+  \capa{4}{\node[caja=tceerojo, text width=7.6cm, minimum height=3.35cm] (o1) at (0,-9.45)
+    {\textbf{Oferta: origen, propagación y respuesta}\\[2pt]
      Tecnológicas ($r^n_t$, $y^n_t$), de costes ($u_t$: NKPC$\uparrow$) y externas (energía).\\
-     Efecto directo, indirecto y de \textbf{segunda ronda}; DA-OA abierta: estanflación.\\
-     Sectoriales: hipótesis granular y \textbf{redes} (aguas abajo).\\
-     Identificación: \autor{Blanchard}-\autor{Quah}, \autor{Galí}, \autor{Kilian}.};}
-  \capa{4}{\node[caja=tceerojo, text width=7.6cm, minimum height=2.55cm] (o2) at (0,-10.55)
-    {\textbf{2. Oferta: respuesta de política}\\[2pt]
-     \textbf{Dilema}: $E_\pi$ o $E_x$; con la regla, reparte el golpe.\\
-     Mirar a través del efecto directo; actuar ante la segunda ronda.\\
-     Fiscal temporal y focalizada.\\
-     \textbf{Políticas de oferta}: bajan la NKPC, sin dilema. Los 70 y los 2000.};}
-  \capa{4}{\node[caja=tceeazul, text width=7.6cm, minimum height=2.55cm] (d1) at (8.4,-7.75)
-    {\textbf{3. Demanda: origen, propagación e interacción}\\[2pt]
-     Preferencias, gasto público, crédito y riqueza: mueven $r^n_t$.\\
-     Multiplicador, acelerador financiero, hogares sin ahorro; redes (aguas arriba).\\
-     \textbf{Interacción}: la perturbación de oferta keynesiana (Covid) y la demanda que choca con los cuellos de botella (2021).};}
-  \capa{4}{\node[caja=tceeazul, text width=7.6cm, minimum height=2.55cm] (d2) at (8.4,-10.55)
-    {\textbf{4. Demanda: respuesta de política}\\[2pt]
-     \textbf{Divina coincidencia}: $i_t$ sigue a $r^n_t$ y cierra a la vez $x_t$ y $\pi_t$.\\
-     En el límite inferior, la fiscal: multiplicador mayor que 1.\\
-     Multiplicadores menores cuanto mayor $\phi_\pi$.\\
-     La combinación de políticas (\emph{policy mix}).};}
-  \capa{4}{\draw[paso] (o1.south) -- (o2.north);}
-  \capa{4}{\draw[paso] (d1.south) -- (d2.north);}
+     Efecto directo, indirecto y de \textbf{segunda ronda}; hipótesis granular y \textbf{redes} (aguas abajo).\\[2pt]
+     \textbf{Dilema}: $E_\pi$ o $E_x$; con la regla, reparte el golpe. Mirar a través del efecto directo; fiscal temporal y focalizada.\\
+     \textbf{Políticas de oferta}: bajan la NKPC, sin dilema; políticas de rentas.};}
+  \capa{4}{\node[caja=tceeazul, text width=7.6cm, minimum height=3.35cm] (d1) at (8.4,-9.45)
+    {\textbf{Demanda: origen, interacción y respuesta}\\[2pt]
+     Preferencias, gasto público, crédito y riqueza: mueven $r^n_t$. Multiplicador, acelerador financiero, hogares que viven al día; redes (aguas arriba).\\
+     \textbf{Interacción}: la perturbación de oferta keynesiana (Covid); la demanda de 2021 contra los cuellos de botella.\\[2pt]
+     \textbf{Divina coincidencia}: $i_t$ sigue a $r^n_t$. En el límite inferior, la fiscal. \emph{Policy mix}.};}
   \capa{4}{\draw[paso, tceerojo] (o1.east) -- (d1.west);}
+  \capa{4}{\node[rotulo, anchor=north west, text width=15.9cm, align=left] at (0,-12.9)
+    {Evidencia: identificación (\autor{Blanchard}-\autor{Quah}, \autor{Galí}, \autor{Kilian}); políticas de oferta en los datos; los 70 frente a los 2000.};}
 
   % 5: paso a III
-  \capa{5}{\draw[paso] (8.2,-13.25) -- node[rotulo, right] {abrimos la economía: muchas perturbaciones llegan de fuera} (8.2,-13.85);}
+  \capa{5}{\draw[paso] (8.2,-13.35) -- node[rotulo, right] {abrimos la economía: muchas perturbaciones llegan de fuera} (8.2,-13.95);}
 
-  % 6: bloque III, extensión a la economía abierta
-  \capa{6}{\node[titulo=tceeverde, anchor=north west] at (0,-13.95) {III. Extensión: las perturbaciones en una economía abierta \hfill (5$'$)};}
-  \capa{6}{\node[caja=tceeverde, text width=7.6cm, minimum height=2.75cm] (a1) at (0,-14.55)
-    {\textbf{1. El modelo neokeynesiano abierto (\autor{Galí}-\autor{Monacelli})}\\[2pt]
+  % 6: bloque III, Galí-Monacelli
+  \capa{6}{\node[titulo=tceeverde, anchor=north west] at (0,-14.05) {III. Un modelo dinámico de economía abierta: \autor{Galí}-\autor{Monacelli} \hfill (5$'$)};}
+  \capa{6}{\node[caja=tceeverde, text width=7.6cm, minimum height=2.75cm] (a1) at (0,-14.65)
+    {\textbf{El modelo}\\[2pt]
      2 inflaciones: la interna, $\pi_{H,t}$, y la de consumo, $\pi_t$.\\
      Misma estructura con otros coeficientes ($\theta_\alpha$, $\kappa_\alpha$): el gráfico de II con $\pi_{H,t}$.\\
-     El tipo de cambio como precio relativo, ahora con optimización: la versión moderna de \autor{Mundell}-\autor{Fleming}.};}
-  \capa{6}{\node[caja=tceeverde, text width=7.6cm, minimum height=2.75cm] (a2) at (8.4,-14.55)
-    {\textbf{2. Perturbaciones externas y régimen cambiario}\\[2pt]
+     El tipo de cambio como precio relativo, ahora con optimización: la versión dinámica de \autor{Mundell}-\autor{Fleming}.};}
+  \capa{6}{\node[caja=tceeverde, text width=7.6cm, minimum height=2.75cm] (a2) at (8.4,-14.65)
+    {\textbf{Implicaciones: perturbaciones externas y régimen}\\[2pt]
      Demanda exterior: aísla la flotación. Tipo mundial: dilema de \autor{Rey}. Energía y tipo de cambio: inflación importada.\\
      \textbf{Qué inflación estabilizar}: interna $>$ consumo $>$ tipo fijo.\\
-     Sin moneda propia: fiscal, devaluación interna o fiscal. 2022 y 2026.};}
+     Sin moneda propia: fiscal, devaluación interna o fiscal. Evidencia: 2022 y 2026.};}
   \capa{6}{\draw[paso] (a1.east) -- (a2.west);}
 
   % 7: la idea final
-  \capa{7}{\node[banda=tceemorado] at (0,-17.6)
+  \capa{7}{\node[banda=tceemorado] at (0,-17.65)
     {\textbf{La respuesta}: el origen de la perturbación decide la política. Ante la de demanda, la monetaria (o, sin ella, la fiscal) estabiliza a la vez renta e inflación; ante la de costes no hay divina coincidencia y la política de demanda solo reparte el golpe; las políticas de oferta son las únicas que mejoran las 2. En una economía abierta, el régimen cambiario decide qué instrumento queda.};}
 \end{tikzpicture}
 \end{document}
