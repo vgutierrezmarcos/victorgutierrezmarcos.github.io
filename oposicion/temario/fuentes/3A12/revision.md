@@ -327,3 +327,10 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 ## Retoques de coherencia del 17/10/2026
 
 A raíz de la revisión del 3.A.16: la oferta de la empresa es la inversa del coste marginal por encima del mínimo del coste medio «que puede evitar» (CVMe a corto, CMe a largo); grafía «Le Chatelier», sin acento, como firmaba el autor.
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: Stigler (1982) y Becker (1992), en la nota de las «tecnologías del consumo»; Leontief (1973), en la nota sobre la concavidad (proporciones fijas); McFadden (2000, con Heckman), en la generalización de la dualidad (entrada nueva `Nobel2000HeckmanMcFadden`). La de Samuelson (1970) ya estaba, en el principio de Le Chatelier.
+- **4.º ejercicio**: \vertema{4.A.5} tras el dato de la fotovoltaica en España (enganche); \vertema{4.A.15} junto a la regulación de redes por comparación de costes; \vertema{4.A.19} tras las economías de escala de la banca española.
+- **Refranes**: se conserva «la práctica hace al maestro» (enganche y conclusión); no había otros. La ficha no cambia.
+- **Dudas (13/11/2026)**: la motivación del Nobel de 2000 («por su desarrollo de la teoría y los métodos para analizar la elección discreta») no se ha podido comprobar hoy en nobelprize.org (devuelve 403); es la que recuerdo. El aviso de línea desbordada (4 pt, l. 887) no viene de estos cambios.

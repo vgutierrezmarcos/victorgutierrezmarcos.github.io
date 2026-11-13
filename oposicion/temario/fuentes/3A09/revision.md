@@ -337,3 +337,10 @@ No se recuperan:
 - **Negrita y cursiva.** Rótulos de viñeta en cursiva (Recapitulación, Aportaciones, Limitaciones, Relevancia, Usos, Intuición de la demostración, Propiedades de la matriz de Slutsky, Las tres medidas juntas, Cuál usar, Magnitud del sesgo de sustitución, Uso en la teoría de la demanda); en negrita los términos que se definen (excedente del consumidor, variaciones de Laspeyres y Paasche, teorema de integrabilidad, ahora tras el rótulo *Respuesta*).
 - **Otros temas.** No había «tema vecino» ni siglas de otros temas sin desarrollar; sin cambios.
 - Sin cambios en `\minutos` ni en el contenido. Fecha: 17/10/2026.
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel** (nota al pie en la primera mención; entradas copiadas al .bib con «% REUTILIZADA … (13/11/2026)»): Hicks y Arrow (1972), Hurwicz (2007, con Maskin y Myerson), Samuelson (1970) y Stone (1984), en la contextualización; Debreu (1983), en el teorema de representación; Leontief (1973), en las preferencias sin sustitución de los índices de precios. La de Deaton (2015) ya estaba en el texto de la contextualización, donde su obra es central; se conserva.
+- **4.º ejercicio**: ya había \vertema{4.B.11}, \vertema{4.A.1}, \vertema{4.B.6} y \vertema{4.B.9}; se añade \vertema{4.A.3} en la medición de la pobreza y la desigualdad con escalas de equivalencia.
+- **Dichos y refranes**: solo el del enganche, «A falta de pan, buenas son tortas»; se conserva. No hay otros ni en el tema ni en la ficha.
+- Dudas (13/11/2026): motivaciones tomadas de notas ya comprobadas en otros temas (nobelprize.org devuelve 403 a la descarga automática hoy).

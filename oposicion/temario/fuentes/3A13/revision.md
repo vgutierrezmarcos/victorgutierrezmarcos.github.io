@@ -223,3 +223,10 @@ Gráficos nuevos o rehechos, ya compilados:
 - bases: `spence`, `rothschild-stiglitz`, `rs-agrupador`, `rs-inexistencia`, `pa-neutrales`, `principal-agente` y `pa-aversos`.
 
 El tema pasa de 28 a 36 páginas de cuerpo por los 20 gráficos.
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: la lista de 6 premios de la relevancia ya estaba. Añadidos: Stigler (1982) y Becker (1992), en la nota de las «tecnologías del consumo»; Arrow (1972, con Hicks) y Debreu (1983), en los mercados contingentes; Harsanyi (1994, con Nash y Selten), en la nota sobre la terminología de la teoría de juegos; Aumann (2005, con Schelling), en la nota del conocimiento común.
+- **Nobel de 2022 (Diamond, Dybvig y Bernanke)**: nueva extensión del bloque del crédito, «Por qué existen los bancos»: la vigilancia delegada de Diamond (1984) (el banco como supervisor que diversifica y resuelve quién vigila al vigilante), con la nota del premio; enlaza con la pregunta del enganche (Silicon Valley Bank: si el depósito está garantizado, la vigilancia pasa al supervisor).
+- **4.º ejercicio**: \vertema{4.A.19} (sistema bancario) en esa extensión; \vertema{4.B.3} en el aseguramiento público de quienes el mercado excluye; \vertema{4.A.16} en la prestación por desempleo condicionada a la búsqueda. Se mantienen \vertema{4.A.24}, \vertema{4.B.2} y \vertema{4.B.11}.
+- **Refranes**: se conservan «dar gato por liebre» y «el ojo del amo engorda al caballo» (enganche, retoma en el riesgo moral y conclusión); no había otros. La ficha no cambia.

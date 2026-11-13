@@ -594,3 +594,13 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
   - «Elasticidad (economía)» (Wikipedia), en una nota nueva de la elasticidad-renta (Marshall introduce el concepto, con `Marshall1890Principles`).
   - Segunda parte de *Anatomy of a function* de Fuleky (copia de web.archive.org de 16/1/2026) y su versión en RPubs, en la nota de la cuasiconcavidad.
 - **Descartados**: ninguno.
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel** (nota al pie en la primera mención, con la motivación oficial y su `\nocite`; entradas copiadas al .bib con «% REUTILIZADA … (13/11/2026)»):
+  - Nuevas: Hicks y Arrow (1972) y Debreu (1983), en la contextualización; Stigler (1982), dentro de la nota de las «tecnologías del consumo»; Leontief (1973), en las preferencias de proporciones fijas (aclara que el premio no es por ellas); Friedman (1976), en la valoración; Simon (1978) y Kahneman (2002), en la nota de la economía conductual, junto a Thaler; Sen (1998), tras el «tonto racional»; Stone (1984), junto a Deaton; Frisch (1969), en la elasticidad de Frisch de las preferencias GHH; Markowitz (1990), en el anexo de Lancaster; Goldin (2023), en la producción doméstica (participación femenina).
+  - Movidas a la primera mención: Samuelson (de III.1 a la contextualización) y Becker (de III.2 a la contextualización; motivación ahora entre comillas y completa).
+  - Quitada la nota duplicada de Deaton del anexo de sistemas de demanda; Thaler, «economía conductual» (no «del comportamiento»), como en el resto del temario.
+- **4.º ejercicio**: participación femenina \vertema{4.A.16} (producción doméstica); IPC español \vertema{4.A.1} e índice de precios de vivienda del INE \vertema{4.A.11} (precios hedónicos); y la descomposición de Slutsky aplicada a los impuestos (exceso de gravamen) \vertema{4.B.9}, en «Extensiones».
+- **Dichos y refranes**: solo está el del enganche, «Sobre gustos no hay nada escrito» (retomado en la idea final); se conserva. No había otros ni en el tema ni en la ficha.
+- Dudas (13/11/2026): las motivaciones se han tomado de las notas ya comprobadas en otros temas (nobelprize.org devuelve 403 a la descarga automática hoy); la de Goldin, de memoria de la motivación oficial («for having advanced our understanding of women's labour market outcomes»), motivación no comprobada en web hoy. ¿Sobran las notas de los epónimos (Leontief, Frisch)? Se han puesto por la regla de «todo Nobel mencionado».

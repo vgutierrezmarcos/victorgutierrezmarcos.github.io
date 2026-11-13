@@ -242,3 +242,12 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 ## Instrucciones para el vídeo
 
 - Pizarra: izquierda refrán y 6 pegatinas; centro gráficos; derecha árbol keynesiano y demanda efectiva y preferencia por la liquidez recuadradas. (11/11/2026)
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel**: una nota al pie con los motivos oficiales de los premiados de la síntesis en su primera mención (I.1: Samuelson, Hicks, Meade, Klein, Tobin, Modigliani y Solow; Tobin faltaba en la lista anterior); la lista parafraseada del anexo de notas del tema anterior se reduce a Tinbergen-Frisch (con el motivo literal) y remite a esa nota. Añadidas también: Lucas (1995), Sargent (2011, en el anexo, entre paréntesis porque está dentro de una caja) y, como premios recientes, el de 2022 (Bernanke, Diamond y Dybvig, bancos y crisis financieras) en nota al «momento Minsky», y el de 2026 (Hall y Woodford, «por los fundamentos microeconómicos de la estabilización macroeconómica») en nota al legado de los teóricos del desequilibrio.
+- **4.º ejercicio** (`\vertema`): el déficit en la depresión como remedio \vertema{4.B.4}; el ciclo del crédito inmobiliario en España hasta la crisis bancaria de 2008-2012, tras el «momento Minsky» \vertema{4.A.18}.
+- **Refranes y dichos**: el original no traía ninguno. Se quedan el del enganche («pan para hoy, hambre para mañana») y 4 dichos, ya sin la etiqueta «Dicho:» y con una frase que explica su relación: «¿dónde va Vicente? Donde va la gente» (convenciones y concurso de belleza), «puedes llevar el caballo al río, pero no obligarlo a beber» (trampa de la liquidez), sumar «peras con manzanas» (controversia del capital) y «después de la calma viene la tempestad» (Minsky). Quitados (texto, nota del reparto y ficha): «desnudar a un santo para vestir a otro» (bajar salarios: encaje forzado) y «de donde no hay, no se puede sacar» (decisión dual: no añade nada).
+- Compilado (`--solo pdf`) y ficha; `verificar-tema.py`, ver abajo.
+- Duda (13/11/2026): el motivo del Nobel de Klein (1980) va traducido de memoria (nobelprize.org devuelve 403 a las consultas automáticas); la entrada `Nobel1980Klein` es nueva.
+- Quitada una entrada duplicada de `Lekachman1966Age` en el `.bib` (biber avisaba). La línea desbordada de 5,5 pt que señala LaTeX está en la bibliografía; el aviso «King» sin `\autor{}` es anterior.

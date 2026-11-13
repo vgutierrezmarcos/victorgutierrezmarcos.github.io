@@ -301,3 +301,10 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - `BoE2017Millennium`: nota «Hojas A2 (población) y A3 (producción agraria)».
 - `tab:lineas`: «Los 3 deberes…», «Los 3 casos…» y columnas más estrechas (13,2 cm en total) para el Word.
 - Peel deroga las Leyes de Granos «en plena hambruna irlandesa (1845-1849)»; las preguntas de `tab:test`, por fecha.
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel** (nota al pie con año y motivo oficial en la primera mención, y su `\nocite`; entradas copiadas al `.bib`): Gary Becker (1992, en la identidad e igualdad de Say), George Stigler (1982, el valor trabajo «del 93 %»), Robert Solow (1987, estado estacionario), James Buchanan (1986, añadido a la nota de la equivalencia ricardiana, porque ya estaba dentro de otra nota), Michael Kremer (2019, con Banerjee y Duflo; «más población, más ideas») y Paul Samuelson (1970, crítica de la transformación). Ninguno de los premios recientes tiene aquí su tema de referencia (Mokyr, 2025, va en el 3.A.44).
+- **4.º ejercicio**: 2 remisiones nuevas: las 4 máximas de Smith como base de los principios impositivos \vertema{4.B.7} y la transición demográfica que Malthus no previó \vertema{4.A.2}.
+- **Refranes y dichos** (el temario antiguo no traía ninguno): se conserva el refrán del enganche («cada uno habla de la feria…»), «donde comen dos, comen tres» (Malthus, al revés), «trabajar para el obispo» (plustrabajo) y «cría cuervos…» (la burguesía cría a sus sepultureros). «Aprendiz de mucho, maestro de nada» se queda, pero bien integrado: el texto decía «es lo contrario del refrán», cuando la división del trabajo le da la razón; ahora es el operario que hiciera las 18 operaciones. **Fuera** «quien tiene tierra tiene guerra» (Ricardo): el refrán habla de los problemas del propietario, y en Ricardo el terrateniente es quien gana, así que podía confundir. Mismos cambios en la ficha de repaso.
+- Compilados el PDF y la ficha (4 páginas); `verificar-tema.py` solo marca los ficheros publicados anteriores a la fuente (se publican aparte).

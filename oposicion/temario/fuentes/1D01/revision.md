@@ -809,3 +809,10 @@ Tras ver el borrador de 1 h 30 (sin renderizar de nuevo hasta que Víctor lo pid
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Las fórmulas que conviene llevar a la pizarra» → «que conviene recordar» (1 frase). Se mantienen «cómo se escribe» y «se tacha con una raya» (examen escrito). Títulos: sin cambios (títulos en una línea). Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel** (nota al pie con año y motivo oficial en la primera mención, `\nocite` y entrada copiada al `.bib`): Edward Prescott (2004, filtro de Hodrick-Prescott), Franco Modigliani (1985, ciclo vital), Milton Friedman (1976, renta permanente), Robert E. Hall (2026, con Michael Woodford, añadido a la nota del paseo aleatorio, con una frase sobre por qué importa para la política monetaria), Peter Diamond (2010, con Mortensen y Pissarides, curva de Beveridge), Paul Samuelson (1970, Balassa-Samuelson), James Tobin (1981, $q$), Ben Bernanke (2022, con Douglas Diamond y Philip Dybvig: canal del crédito, pánicos bancarios y garantía de depósitos), Thomas Sargent (2011, dominancia fiscal), Robert Shiller (2013, PER) y David Card (2021, políticas activas y salario mínimo, con Angrist e Imbens).
+- **4.º ejercicio**: sin remisiones nuevas: la guía ya lleva 49 `\vertema{4.…}`.
+- **Refranes**: solo el del enganche («Lo bueno, si breve, dos veces bueno», Gracián); no hay más dichos en la guía ni en la ficha. Sin cambios.
+- **Duda (13/11/2026)**: Paul Krugman (2008) solo aparece como autor del manual citado (Krugman, Obstfeld y Melitz, 2018) en la devaluación y en la fuente de un esquema; no se le pone nota porque no se habla de su obra. Las motivaciones se han tomado de las entradas ya comprobadas en otros temas (nobelprize.org no respondía hoy).

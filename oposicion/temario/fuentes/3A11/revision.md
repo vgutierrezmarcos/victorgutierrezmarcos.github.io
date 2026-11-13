@@ -288,3 +288,9 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **Ya estaba**: Fuleky, *Anatomy of C-D Production/Utility Functions* (`FulekyAnatomy`, copia de web.archive.org: www2.hawaii.edu no responde).
 - **Restaurado**: el artículo de JSTOR (`https://www.jstor.org/stable/4101869`) que el tema antiguo daba para la distinción entre rendimientos locales y globales a escala, junto con Jehle y Reny (pp. 133-134), en una nota al principio de «Rendimientos globales y locales a escala».
 - **Duda para Víctor**: JSTOR bloquea las consultas automáticas y no se ha podido ver qué artículo es (quizá Podinovski, 2004, «Local and global returns to scale in performance measurement», *Journal of the Operational Research Society*, 55: sin comprobar). Si se identifica, conviene pasarlo a una entrada del `.bib` con `\textcite`.
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel** (notas al pie con la motivación oficial traducida y su `\nocite`; entradas copiadas al .bib como «REUTILIZADA … (13/11/2026)»): Stigler (1982) y Becker (1992), en la nota de las «tecnologías del consumo»; Ohlin (1977, con Meade), en la relevancia para el comercio; Samuelson (1970) y Hicks (1972, con Arrow), en la «escuela paretiana»; Koopmans (1975) y Debreu (1983), en el conjunto de posibilidades de producción; Leontief (1973), en el índice del tema; Solow (1987), en la nota de la CES; Stiglitz (2001), en el agregador de Dixit-Stiglitz; Stone (1984), en el anexo de formas funcionales. Ningún premio de 2015-2026 tiene aquí su tema de referencia (Aghion-Howitt y Romer van al crecimiento, 3.A.44).
+- **4.º ejercicio**: \vertema{4.A.3} junto al dato de la participación del trabajo en la renta en España; \vertema{4.A.7} en las innovaciones de proceso y de producto.
+- **Refranes**: se conservan los 2 del enganche («la unión hace la fuerza» / «muchas manos en un plato hacen mucho garabato») y su retoma en la conclusión; no había otros. La ficha no cambia.

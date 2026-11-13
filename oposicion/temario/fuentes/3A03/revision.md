@@ -267,3 +267,11 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **V16-V61**: aplicadas; **V50, V68**: fuera; **V60** (Pigou 1933): con duda A03-16.
 - **K17-K21, K26-K30, K36-K38, K40, K43**: aplicadas. **K35** (anexo austriaco): no; el coordinador pidió anexo A de derivaciones, y lo austriaco va al cuerpo (II.2 c).
 - **P11-P24, P28-P46, P49, P51-P57**: resueltas (ver Marcas resueltas).
+
+## Revisión transversal (13/11/2026)
+
+- **Premios Nobel** (nota al pie con el motivo oficial; entradas `.bib` copiadas de otros temas): Samuelson (1970), Hicks-Arrow (1972) y Allais (1988), en el resurgimiento paretiano de la introducción; Stigler (1982); Debreu (1983); Modigliani (1985) y Miller (1990), en el teorema de separación de Fisher; Coase (1991); Solow (1987). La nota de Hayek-Myrdal (1974) pasa al formato habitual, con el motivo literal.
+- **Premio reciente**: Woodford (Nobel 2026, con Robert E. Hall, «por los fundamentos microeconómicos de la estabilización macroeconómica»): en el tipo natural de Wicksell se explica que su marco neowickselliano es el de los modelos nuevos keynesianos que usan los bancos centrales \vertema{3.A.7}, con la nota del premio.
+- **4.º ejercicio** (`\vertema`): paradoja de Jevons y efecto rebote en las políticas de eficiencia energética \vertema{4.A.6}; impuesto pigouviano como lógica de los impuestos medioambientales y del precio del carbono \vertema{4.A.6} \vertema{4.B.13}; ley de Pareto de las rentas altas \vertema{4.A.3}.
+- **Refranes y dichos**: el original no traía ninguno. Se quedan el del enganche («nadie sabe lo que vale el agua hasta que el pozo se seca»), «lo poco agrada y lo mucho enfada» (saturación de Gossen), «más vale un toma que dos te daré» (impaciencia de Fisher) y «a cada cual lo suyo» (Clark), los 3 integrados en su frase. Quitados (texto, nota del reparto y ficha): «cada loco con su tema» (Methodenstreit: tacha de locos a los 2 bandos) y «una mano lava la otra, y las dos, la cara» (sugiere cooperación, no la simultaneidad de las tijeras de Marshall, que ya lo dicen todo).
+- Compilado (`--solo pdf`) y ficha; `verificar-tema.py` sin errores propios. La ficha queda en 4 páginas con la última al 72 %: hay sitio si se quiere añadir algo.
