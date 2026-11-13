@@ -198,3 +198,10 @@ Se comparan las URL del Word original con las de `3A19.tex` y `3A19.bib` (CRITER
 - 20/10/2026: gráfico nuevo del reparto del cártel (`reparto-cartel`, 9 capas): a) negociación de Nash (frontera, $d$, excedente, $N$, más $\gamma$), en la pizarra; b) núcleo y valor de Shapley en el símplex, de apoyo.
 - 20/10/2026: enumeraciones en línea partidas en viñetas (regla «Enumeraciones dentro de un párrafo»), unas 30, en el cuerpo, las notas al opositor, la conclusión y los anexos.
 - 21/10/2026: tablas y gráficos en los anexos de juegos, con el ejemplo $p=13-Q$, $c=1$ (y el de Gibbons en el bayesiano): Cournot lineal, tabla con $n$ empresas (`tab:cournot-n`) y gráfico `cournot-lineal` (reacciones, $C=(4;4)$ y telaraña del ajuste); Stackelberg, tablas de la inducción hacia atrás (`tab:stackelberg-pasos`) y de los 4 resultados del duopolio (`tab:comparacion-lineal`) y gráfico `stackelberg-lineal` (tangencia en $S=(6;3)$); costes privados, gráfico `cournot-bayesiano` (3 funciones de reacción de la 2 y equilibrios); gatillo, tabla de la senda de beneficios con $\beta=0{,}5$ y $0{,}6$ (`tab:gatillo-senda`) y gráfico `colusion-beta-n` ($\beta$ mínima según $n$ en Bertrand y Cournot, con la fórmula de Cournot con $n$ empresas añadida al texto). Gráficos de apoyo, no van a la pizarra.
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: la nota de 1994 (\autor{Nash}, \autor{Harsanyi}, \autor{Selten}) pasa a la primera mención de \autor{Nash} (relevancia); la de 1994-2005 de la historia queda solo para \autor{Aumann} y \autor{Schelling}. Nuevas: \autor{Stigler} 1982 (cárteles), \autor{Tirole} 2014 (ahora nombrado como autor del manual que ordena la NOI) y \autor{Shapley} 2012 (valor de Shapley).
+- **4.º ejercicio**: ya tenía \vertema{4.A.15}; no se añade más.
+- **Dichos**: se conservan el del enganche («entre bomberos no se pisan la manguera») y «donde las dan, las toman», que es la traducción habitual de \emph{tit for tat} y nombra la estrategia.

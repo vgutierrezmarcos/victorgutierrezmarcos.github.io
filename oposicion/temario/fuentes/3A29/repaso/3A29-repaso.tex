@@ -64,7 +64,7 @@ Un problema es genuinamente dinámico cuando una variable de estado une los peri
 \centering $\dfrac{\dot C_t}{C_t}=\dfrac{r-\rho}{\theta}$
 \end{formula}
 \item[] Ventaja: coestado = \concepto{precio sombra} (q, regalía); diagramas de fases (RCK, inversión, empleo).
-\item \textbf{c) Programación dinámica} (\autor{Bellman}, 1957): \concepto{principio de optimalidad}: el resto de un plan óptimo es óptimo desde el estado al que lleva: «cada cosa a su tiempo». \concepto{Función de valor} $V(b_t)$ (indirecta, como $V(\vect p,\overline W)$):
+\item \textbf{c) Programación dinámica} (\autor{Bellman}, 1957): \concepto{principio de optimalidad}: el resto de un plan óptimo es óptimo desde el estado al que lleva. \concepto{Función de valor} $V(b_t)$ (indirecta, como $V(\vect p,\overline W)$):
 \funcionclave{V(b_t)=\max_{C_t}\{u(C_t)+\beta V(b_{t+1})\}}
 \item[] CPO $u'(C_t)=\beta V'(b_{t+1})$ + envolvente $V'(b_t)=(1+r)u'(C_t)$ $\Rightarrow$ \autor{Euler}. $V'$ = $\lambda$ = coestado.
 \item[] \emph{Ejemplo}: $Y_t=0$, $\ln C$, $T=\infty$; se prueba $V=A+B\ln b$: $B=1/(1-\beta)$,

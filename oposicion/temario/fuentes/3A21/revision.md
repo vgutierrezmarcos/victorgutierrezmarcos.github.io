@@ -325,3 +325,10 @@ A raíz de la revisión del 3.A.16 y del 3.A.17 (`canon/pendientes-coherencia.md
 ## Retoques de coherencia del 21/10/2026
 
 A raíz del 3.A.22 (`canon/pendientes-coherencia.md`): los supuestos del 1TFEB de II.2 añaden la información perfecta y simétrica (\vertema{3.A.13}), y los del anexo C siguen el orden de la tabla del 3.A.22 (no saciedad local, mercados completos, precio-aceptantes, precios comunes, información perfecta). Ficha de repaso (sigue en 4 páginas), guion y escenas ajustados con la misma frase.
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: la nota de \autor{Arrow} y \autor{Debreu} pasa a la primera mención (\textcite{ArrowHahn1971General}, en el enganche). Nuevas: \autor{Stigler} y \autor{Becker} (nota de las tecnologías del consumo), \autor{Ohlin} 1977, \autor{Myrdal} 1974 (nota de la escuela sueca), \autor{Samuelson} 1970, \autor{Hurwicz} 2007 (estabilidad, 1959; en el diseño de mecanismos se quita el paréntesis repetido), \autor{Nash} 1994 (nota del punto fijo), \autor{Aumann} 2005, \autor{Shapley} 2012, \autor{Shiller} 2013 y \autor{Leontief} 1973. Los paréntesis «(Premio Nobel de 2018/2017/1998)» de \autor{Nordhaus}, \autor{Thaler} y \autor{Sen} pasan a nota con el motivo oficial.
+- **4.º ejercicio** (no tenía ninguna): \vertema{4.B.8} en la incidencia de los impuestos y \vertema{4.A.6} en el DICE y el impuesto sobre el carbono.
+- **Dichos**: solo el del enganche («cada uno arrima el ascua a su sardina»); nada que quitar.

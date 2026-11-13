@@ -196,3 +196,10 @@ Se comparan las URL del Word original con las de `3A17.tex` y `3A17.bib` (CRITER
 - **No había otras π en el tema** (ni inflación ni probabilidades): todas las π del .tex y de la ficha eran esta proporción. Ningún gráfico la rotula (`autoseleccion` no lleva π) y el tema no tiene guion ni escenas todavía.
 - **Sin choque con el otro ν del tema**: ν solo aparecía en Laffont-Tirole (anexo A, probabilidad del tipo eficiente), en otro apartado. Matiz: allí ν pondera al tipo que cobra la renta (eficiente) y aquí al tipo distorsionado (bajo); el 3.A.13 llama a ν «proporción del tipo bueno». Es coherente si se lee ν como «proporción del primer tipo», pero la fila B/π de `notacion.md` (§ 1), la fila de la autoselección (§ 4) y la ficha `discriminacion-precios` del canon siguen diciendo π: hay que ponerlas al día en el canon (no se tocan desde aquí), y marcar como hecha la entrada condicional de `pendientes-coherencia.md`.
 
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: \autor{Stigler} y \autor{Becker} (nota de las tecnologías del consumo), \autor{Modigliani} (nota de la entrada), \autor{Coase} 1991, \autor{Maskin} 2007 y \autor{Tirole} 2014 (ahora nombrados con \textcite en la contextualización, antes solo \nocite), \autor{Hicks} 1972 (con \autor{Arrow}, en la «vida tranquila»), \autor{Robert Wilson} 2020 (conjetura de Coase), \autor{Nash} 1994 (monopolio bilateral) y \autor{Card} 2021 (Card-Krueger, con \autor{Angrist} e \autor{Imbens}). **Premio 2025**: la U invertida de la innovación se atribuye ahora a \autor{Aghion}, \autor{Howitt} y coautores, con su mecanismo en una frase y la nota del Nobel 2025.
+- **4.º ejercicio**: \vertema{4.A.15} en la relevancia de política económica y \vertema{4.A.16} tras el dato del SMI.
+- **Dichos**: solo el del enganche («quien parte y reparte…») y la cita de \autor{Hicks}; nada que quitar.

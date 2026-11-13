@@ -188,3 +188,10 @@ Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
 - Las notas de los Nobel, la tabla de la conclusión y los anexos no van al cante; pueden salir como apunte. No se dice «hilo» ni números de temas en voz alta.
 - Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas fijas, como en el modelo neoclásico del mercado de trabajo \vertema{3.A.25}. A la izquierda, los supuestos que se levantan (4, atomicidad; 2, información; 6, flexibilidad salarial; 7, movilidad sin costes) y los refranes pegatina de cada bloque: «hablando se entiende la gente» para la negociación, «lo barato sale caro» para los salarios de eficiencia y «a las duras y a las maduras» para los contratos implícitos. En el centro, los gráficos, que se borran al acabar cada bloque. A la derecha, las funciones clave, que se quedan: el producto de \autor{Nash} con $\gamma=\rho_B/(\rho_S+\rho_B)$, la utilidad del sindicato, la condición de \autor{Solow}, la condición de no escaqueo y el contrato implícito.
 
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: las notas de \autor{Hicks}, \autor{Nash} y \autor{Solow} pasan a su primera mención en el cuerpo; nuevas: \autor{Leontief} 1973 (derecho a gestionar) y, **premio 2026**, \autor{Robert Hall}, ahora nombrado con \textcite{Hall1982Importance} en los contratos implícitos, con su nota (con \autor{Woodford}).
+- **4.º ejercicio**: ya había 4.A.16 (6 veces); no se añade más.
+- **Dichos**: se conservan el del enganche («lo barato sale caro»), «hablando se entiende la gente» (negociación, en la nota del cante) y «a las duras y a las maduras» (contratos implícitos). Las 2 frases sueltas del cuerpo se integran: «Lo barato sale caro.» pasa a «Es donde el refrán del principio se cumple: a la empresa, el trabajo barato le puede salir caro»; «Es un contrato a las duras y a las maduras» se explica (mismo salario en los años buenos y malos porque la empresa asegura la renta).

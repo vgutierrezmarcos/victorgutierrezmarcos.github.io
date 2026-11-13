@@ -301,3 +301,10 @@ Correcciones aplicadas tras el control de calidad del coordinador:
 - **Refrán**: «Lo mejor es enemigo de lo bueno» pasa a «No hay mal que por bien no venga». Va solo en el enganche (primer ítem: si una distorsión no se puede quitar, añadir otra puede mejorar; el CBAM, un gravamen al comercio que compensa que el carbono no tenga precio fuera de la UE, es el ejemplo) y en la idea final. Se quita la nota de Voltaire. El esquema de la introducción pasa a «Introducción: el CBAM, un segundo óptimo»; la frase de la estructura («Es el hilo del refrán…»), el punto P/Q del gráfico del *second best* y el recapitulando de III.1 se reescriben sin «lo mejor/lo bueno». El refrán no sale en ningún otro tema de `fuentes/`.
 - **Joan Robinson**: se quita «El mapa imposible» de la valoración del *second best*; la idea (un modelo con todas las interdependencias sería inmanejable) pasa a la viñeta de exigencia de información, y «trabajar con mapas a escala» pasa a «simplificar el problema sin perder las interdependencias que importan». `Robinson1962Essays` sale de `3A22.bib`.
 - **Ficha de repaso**: los mismos cambios (esquema, enganche, III.1, III.4, idea final) y la etiqueta «Hilo» pasa a «Idea que guía».
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: \autor{Meade} 1977, \autor{Mirrlees} 1996 y \autor{Hurwicz} 2007 (una nota en la contextualización, que cubre también a \autor{Vickrey}), \autor{Allais} 1988 y \autor{Samuelson} 1970 (nota de la FPU), \autor{Nash} 1994 (nota del ultimátum), \autor{Akerlof} 2001 (\emph{tagging}), \autor{Peter Diamond} 2010 y \autor{Hart} 2016 (fechas del anexo). Las de \autor{Arrow}-\autor{Debreu}, \autor{Sen} y \autor{Vernon Smith} ya estaban.
+- **4.º ejercicio**: ya había 4.B.3, 4.B.9 y 4.B.11; no se añade más.
+- **Dichos**: solo el del enganche («no hay mal que por bien no venga»), que el \emph{second best} explica; nada que quitar.

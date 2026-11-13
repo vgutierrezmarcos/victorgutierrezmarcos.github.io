@@ -189,3 +189,10 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **Pronunciación** (si hace falta): Coase, Williamson, Grossman, Holmström, Sylos-Labini, Modigliani, Weizsäcker, Panzar, Willig, Penrose, Marris.
 - (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel** (notas al pie con el motivo oficial, en la primera mención; los de la «Relevancia» ya estaban): \autor{Becker} 1992 (en la nota de las tecnologías del consumo), \autor{Nash} 1994 (con \autor{Harsanyi} y \autor{Selten}, en la negociación de Grossman-Hart-Moore), \autor{Modigliani} 1985, \autor{Spence} 2001 (compromiso de capacidad), \autor{Hayek} 1974 y \autor{Arrow} 1972 (anexo austriaco). **Premio 2025**: nuevo punto en el anexo de \autor{Schumpeter}: \autor{Aghion} y \autor{Howitt} concilian \autor{Schumpeter} y \autor{Arrow} con la U invertida entre competencia e innovación (Aghion et al., 2005, bib copiada del 3.A.17), con su nota del Nobel 2025.
+- **4.º ejercicio**: \vertema{4.A.8} tras el dato de tamaño y productividad de las empresas españolas (ya había 4.A.12, 4.A.15, 4.B.2 y 4.B.15).
+- **Dichos**: se conservan el par del enganche («si quieres algo bien hecho…» / «zapatero, a tus zapatos»), que la conclusión retoma, y «quemar las naves» (Schelling), que es una locución bien integrada. No se quita ninguno; la ficha no cambia.

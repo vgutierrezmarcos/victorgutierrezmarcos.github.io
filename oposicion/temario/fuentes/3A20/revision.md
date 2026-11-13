@@ -614,3 +614,10 @@ Word anterior a la fuente», que se van al reconstruir). **Gráficos**: `algorit
 ProMarket, vídeo del Stigler Center, Energía y Sociedad, Sahuquillo, DOI de Braeutigam), con
 entrada en el .bib. **Canon**: `_trabajo/canon-pendiente.md` (números de apartado del 3.A.20 en
 las fichas). Las dudas abiertas 1-12 siguen abiertas: estos comentarios no las cierran.
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: la nota de \autor{Stigler} pasa a su primera mención (contextualización); nuevas: \autor{Coase} 1991, \autor{Myerson} 2007 (Baron-Myerson), \autor{Kydland} y \autor{Prescott} 2004 (inconsistencia temporal), \autor{Becker} 1992 (grupos de presión), \autor{Buchanan} 1986, \autor{Arrow} 1972, \autor{Nash} 1994 (anexo del yardstick), \autor{Milgrom} y \autor{Wilson} 2020 (precios predatorios) y \autor{Williamson} 2009 (fechas). \autor{Tirole} ya tenía la suya.
+- **4.º ejercicio**: ya había 4.A.5, 4.A.12, 4.A.15, 4.B.2, 4.B.6, 4.B.9, 4.B.13-15; no se añade más.
+- **Dichos**: se conservan los que recoge CRITERIOS (enganche «tener la sartén por el mango», «más sabe el loco en su casa…», «el que algo quiere, algo le cuesta», «las comparaciones son odiosas»), todos con su explicación; «poner al zorro a cuidar de las gallinas» pierde la etiqueta «dice el dicho» y queda integrado: «un regulador capturado es el zorro puesto a cuidar de las gallinas…».

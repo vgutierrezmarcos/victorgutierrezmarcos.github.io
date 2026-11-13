@@ -249,3 +249,10 @@ Se comparan las URL del Word original con las de `3A24.tex` y `3A24.bib` (CRITER
 - `.bib`: Scitovsky con la misma grafía en sus 2 obras (1941 y 1942); fuera las notas de edición de Robbins y la de «URL sin comprobar» del PNUD (responde 200).
 - Redacción nueva de 4 pasajes demasiado próximos a Cerezal (funciones de la economía del bienestar, Little y Bergson, utilitarismo).
 - Estructura: el votante mediano y Buchanan-Tullock con i) Supuestos, ii) Desarrollo, iii) Implicaciones como bloques con título; la unanimidad de Wicksell y la renuncia a Pareto o a la no dictadura con a) Idea y b) Valoración.
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: \autor{Stigler} y \autor{Becker} (nota de las tecnologías del consumo), \autor{Samuelson} 1970 (FBS), \autor{Harsanyi} 1994 (con \autor{Nash} y \autor{Selten}), \autor{Debreu} 1983, \autor{Robert Wilson} 2020 (\textcite{Wilson1972Social}, el teorema sin Pareto) y \autor{Shapley} 2012 (nota del índice de Shapley-Shubik). Se dejan donde estaban las notas de \autor{Arrow}, \autor{Buchanan}, \autor{Sen}, \autor{Hurwicz}-\autor{Maskin}-\autor{Myerson}, \autor{Thaler} y \autor{Kahneman}: la relevancia ya da sus años en la primera mención.
+- **4.º ejercicio**: ya había 4.A.3, 4.B.2, 4.B.3, 4.B.6 y 4.B.11; no se añade más.
+- **Dichos**: se conservan el del enganche («nunca llueve a gusto de todos»), «donde hay patrón no manda marinero» (dictador) y «cada cabeza es un mundo» (comparaciones interpersonales), que recoge CRITERIOS y van explicados.

@@ -221,3 +221,10 @@ Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
 
 - **A25-13. ¿Se conserva el ejemplo logarítmico de Lucas-Rapping?** Opciones: (a) anexo B corto con el ejemplo de 2 periodos, la solución cerrada y `lr-oferta` (aplicada: CRITERIOS dice que las derivaciones no se borran); (b) quitarlo del todo, gráfico incluido.
 - **A25-14. Símbolo de la prestación por desempleo**: $\overline{W}_d$ (una renta no laboral que solo se cobra sin trabajar), para no chocar con $S$ (años de estudio) ni $b_t$ (activos). Alternativa: $s$ o $B$.
+
+
+## Revisión transversal (13/11/2026)
+
+- **Nobel**: \autor{Goldin} (nota con el motivo oficial, además de la paráfrasis del enganche), \autor{Hicks} 1972, \autor{Schultz} 1979 y \autor{Becker} 1992 (la de \autor{Becker} se mueve a su primera mención), una nota con \autor{Friedman}, \autor{Modigliani}, \autor{Lucas} y \autor{Kydland}-\autor{Prescott} en la historia, \autor{Card}, \autor{Angrist} e \autor{Imbens} con los motivos (en la primera mención), \autor{Samuelson} 1970, \autor{Acemoglu} 2024, \autor{Spence} 2001, \autor{Phelps} 2006 y \autor{Heckman} 2000 (entrada nueva Nobel2000HeckmanMcFadden).
+- **4.º ejercicio**: ya había 4.A.2, 4.A.16 y 4.B.10; no se añade más.
+- **Dichos**: se conservan el del enganche («el tiempo es oro»), «hacer el agosto» (ya sin llamarlo refrán: «es lo que llamamos hacer el agosto») y «el saber no ocupa lugar…, pero sí tiempo» (sin la etiqueta «lo resume el dicho»); «el último en entrar, el primero en salir» es una regla de despidos, no un refrán.
