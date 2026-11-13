@@ -1,0 +1,43 @@
+% Rentabilidad ordinaria del activo neto (R.1) por sectores, primer semestre de
+% 2025 y de 2026. Banco de España, Central de Balances Trimestral (839 empresas),
+% nota del 24/09/2026; ../datos/roa-sectores-cbt.csv; consulta 12/11/2026.
+% Cifras (%, 2025 -> 2026): total 4,7 -> 5,7; sin energía, refino y comercio de
+% combustibles 4,1 -> 4,2; energía 8,4 -> 9,7; industria 3,7 -> 12,3; comercio y
+% hostelería 12,4 -> 13,8; información y comunicaciones 12,8 -> 10,8; resto 2,7 -> 2,8.
+% Paleta: 2025 claro, 2026 oscuro; total en dorado, sectores en morado.
+% Capas (CRITERIOS §7): barras de 2025 -> barras de 2026 -> ejes -> valores y leyenda.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/roa-sectores-cbt.csv}\roa
+\colorlet{roasector}{tceemorado}\colorlet{roatotal}{tceedorado}\colorlet{roasectorclaro}{tceemorado!35}\colorlet{roatotalclaro}{tceedorado!35}\colorlet{roaleyclaro}{tceegris!35}
+\pgfplotsset{
+  roabarra/.style={xbar,bar width=0.32,bar shift=0pt,forget plot,fill=#1,draw=#1!65!black,line width=0.3pt},
+  roavalor/.style={forget plot,draw=none,mark=none,nodes near coords={\pgfmathprintnumber[use comma,fixed,precision=1,fixed zerofill]{\pgfplotspointmeta}},
+    point meta=x,every node near coord/.append style={font=\scriptsize,anchor=west,inner sep=2pt,text=#1}},
+}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=11cm,height=8.6cm,scale only axis=false,
+      xmin=0,xmax=16,ymin=-6.6,ymax=0.6,
+      xtick={0,2,...,16},xticklabel style={font=\footnotesize},
+      ytick={0,-1,-2,-3,-4,-5,-6},
+      yticklabels={\textbf{total},{total sin energía, refino\\y comercio de combustibles},energía,industria,comercio y hostelería,{información\\y comunicaciones},resto de actividades},
+      yticklabel style={font=\footnotesize,align=right,text width=4.2cm},major y tick style={draw=none},
+      axis x line*=bottom,axis y line*=left,xlabel={\%},xlabel style={font=\footnotesize},
+      legend style={at={(0.97,0.03)},anchor=south east,draw=none,fill=none,font=\footnotesize},
+      legend cell align=left]
+    % 1: primer semestre de 2025 (barras claras)
+    \capa{1}{\addplot[roabarra=roatotalclaro] coordinates {(4.7,0.17) (4.1,-0.83)};
+      \addplot[roabarra=roasectorclaro] coordinates {(8.4,-1.83) (3.7,-2.83) (12.4,-3.83) (12.8,-4.83) (2.7,-5.83)};}
+    % 2: primer semestre de 2026 (barras oscuras)
+    \capa{2}{\addplot[roabarra=roatotal] coordinates {(5.7,-0.17) (4.2,-1.17)};
+      \addplot[roabarra=roasector] coordinates {(9.7,-2.17) (12.3,-3.17) (13.8,-4.17) (10.8,-5.17) (2.8,-6.17)};}
+    % 3: valores y leyenda
+    \capa{3}{\addplot[roavalor=tceegris] coordinates {(4.7,0.17) (4.1,-0.83) (8.4,-1.83) (3.7,-2.83) (12.4,-3.83) (12.8,-4.83) (2.7,-5.83)};
+      \addplot[roavalor=black] coordinates {(5.7,-0.17) (4.2,-1.17) (9.7,-2.17) (12.3,-3.17) (13.8,-4.17) (10.8,-5.17) (2.8,-6.17)};
+      \addlegendimage{area legend,fill=roaleyclaro,draw=roaleyclaro!65!black}\addlegendentry{1.\textsuperscript{er} semestre de 2025 (claro)}
+      \addlegendimage{area legend,fill=tceegris,draw=tceegris!65!black}\addlegendentry{1.\textsuperscript{er} semestre de 2026 (oscuro)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

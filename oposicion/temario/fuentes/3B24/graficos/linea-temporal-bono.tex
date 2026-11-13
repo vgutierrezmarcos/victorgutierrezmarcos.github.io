@@ -1,0 +1,25 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Figura (línea de tiempo): flujos de un bono con cupón. En 0 se paga el precio
+% P (flecha hacia abajo); en 1, ..., T-1 se cobra el cupón C; en T, el cupón y
+% el nominal, FC_T = C + VN. Sin escala.
+\begin{tikzpicture}[tcee]
+  % 1: eje del tiempo y fechas
+  \capa{1}{\draw[eje] (-0.3,0) -- (10.6,0) node[below left=2pt and 0pt] {$t$ (años)};
+    \foreach \x/\t in {0/0,2/1,4/2,6/3,9/T}{\draw (\x,0.1) -- (\x,-0.1) node[below] {$\t$};}
+    \node at (7.5,-0.32) {$\cdots$};}
+  % 2: el precio que se paga hoy
+  \capa{2}{\draw[->,very thick,tceerojo] (0,0) -- (0,-1.5) node[below] {$-P$};}
+  % 3: los cupones
+  \capa{3}{\foreach \x in {2,4,6}{\draw[->,very thick,tceeazul] (\x,0) -- (\x,1.1) node[above] {$C$};}}
+  % 4: el último pago, cupón y nominal
+  \capa{4}{\draw[->,very thick,tceeazul] (9,0) -- (9,1.1);
+    \draw[->,very thick,tceemorado] (9,1.1) -- (9,3.0) node[above] {$\mathrm{FC}_T=C+\mathrm{VN}$};
+    \node[etiqueta,right,text=tceeazul] at (9,0.6) {$C$};
+    \node[etiqueta,right,text=tceemorado] at (9,2.05) {$\mathrm{VN}$};}
+  % 5: rótulos de emisor y tenedor
+  \capa{5}{\node[etiqueta,align=left,font=\footnotesize,text=tceegris,anchor=west] at (0.25,-1.0) {el tenedor presta $P$\\al emisor};
+    \node[etiqueta,align=center,font=\footnotesize,text=tceegris] at (4,1.75) {el emisor paga $C=c\,\mathrm{VN}$ cada año};}
+\end{tikzpicture}
+\end{document}

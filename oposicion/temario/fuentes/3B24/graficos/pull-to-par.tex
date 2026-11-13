@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Precio (ex cupón) de 2 bonos a 30 años, nominal 100, TIR constante del 8 %,
+% cupones del 12 % (sobre la par) y del 4 % (bajo la par), en función del
+% tiempo transcurrido t (vida residual 30 - t). Fórmula del precio con cupones
+% anuales: P = C (1 - 1,08^{-(30-t)})/0,08 + 100 * 1,08^{-(30-t)}.
+% En t = 0: 145,03 y 54,97; en t = 30: 100.
+\begin{tikzpicture}[tcee,declare function={pr(\c,\n)=\c*(1-exp(-\n*ln(1.08)))/0.08+100*exp(-\n*ln(1.08));}]
+\begin{axis}[width=10cm,height=6.5cm,xmin=0,xmax=31,ymin=40,ymax=160,
+  axis lines=left,xlabel={Años transcurridos},ylabel={Precio (nominal $=100$)},
+  xtick={0,5,...,30},ytick={40,60,...,160},ticklabel style={font=\footnotesize},
+  ymajorgrids,grid style={tceegris!25},clip=false]
+  % 1: ejes (los dibuja el entorno) y la par
+  \capa{1}{\addplot[thin,dashed,tceegris,domain=0:30] {100};
+    \node[etiqueta,font=\footnotesize,text=tceegris,anchor=south west] at (axis cs:0.3,100) {a la par};}
+  % 2: bono sobre la par (cupón del 12 %)
+  \capa{2}{\addplot[curva1,domain=0:30,samples=31] {pr(12,30-x)};
+    \node[etiqueta,text=tceemorado,anchor=south west] at (axis cs:3,141) {cupón del 12~\%: sobre la par};}
+  % 3: bono bajo la par (cupón del 4 %)
+  \capa{3}{\addplot[curva4,domain=0:30,samples=31] {pr(4,30-x)};
+    \node[etiqueta,text=tceedorado,anchor=north west] at (axis cs:3,56) {cupón del 4~\%: bajo la par};}
+  % 4: convergencia al vencimiento
+  \capa{4}{\addplot[only marks,mark=*,mark size=1.8pt] coordinates {(30,100)};
+    \node[etiqueta,anchor=west] at (axis cs:30.3,100) {$\mathrm{VN}$};}
+\end{axis}
+\end{tikzpicture}
+\end{document}

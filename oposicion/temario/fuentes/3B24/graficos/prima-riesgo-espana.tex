@@ -1,0 +1,29 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Prima de riesgo de España frente a Alemania (10 años, media mensual, pb),
+% enero de 1993 a octubre de 2026. BCE, IRS (cabecera de ../datos/prima-riesgo-espana.csv).
+% Eje x: 1993 + n.º de mes/12. Máximo: julio de 2012, 555 pb (fila 234: 1993 + 234/12 = 2012,5).
+% Último dato con 2.ª comprobación: septiembre de 2026, 45 pb.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/prima-riesgo-espana.csv}\pr
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=14cm,height=6.2cm,xmin=1993,xmax=2027,ymin=-50,ymax=600,
+  axis lines*=left,tick align=outside,ylabel={Puntos básicos},
+  xtick={1995,2000,...,2025},ytick={0,100,...,600},
+  x tick label style={/pgf/number format/1000 sep={}},ticklabel style={font=\footnotesize},
+  ymajorgrids,grid style={tceegris!25},clip=false,dicapas]
+  % 1: cero y llegada del euro (enero de 1999)
+  \capa{1}{\dicraya{(1993,0) (2027,0)}
+    \dicraya[dicumbral]{(1999,-50) (1999,600)}
+    \dicrotulo[font=\scriptsize,anchor=north west,text=tceegris!60!black]{(1999.2,590)}{euro}}
+  % 2: la prima de riesgo
+  \capa{2}{\addplot[very thick,tceemorado] table[x expr=1993+\coordindex/12,y=prima_pb] {\pr};}
+  % 3: máximo y último dato
+  \capa{3}{\addplot[dicpuntos=tceemorado,forget plot] coordinates {(2012.5,555) (2026.667,45)};}
+  % 4: rótulos
+  \capa{4}{\dicrotulo[font=\footnotesize,anchor=west,text=tceemorado]{(2012.8,560)}{555 (julio de 2012)}
+    \dicrotulo[font=\footnotesize,anchor=south,text=tceemorado]{(2026.3,70)}{45}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

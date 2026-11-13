@@ -1,0 +1,61 @@
+% Los 4 equilibrios patrimoniales con el balance por masas (misma paleta que
+% balance-masas.tex): a) estabilidad total; b) estabilidad normal; c) desequilibrio
+% a corto plazo (FM < 0); d) quiebra técnica (PN < 0: las pérdidas se ven como
+% un hueco rojo en el lado del activo). Cada panel, 1 por capa.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    masa/.style={draw=#1,fill=#1!16,thick},
+    et/.style={font=\scriptsize\bfseries,align=center},
+    tit/.style={font=\small\bfseries,align=center,anchor=south}]
+  \colorlet{mANC}{tceemorado}\colorlet{mAC}{tceeverde}
+  \colorlet{mPN}{tceedorado}\colorlet{mPNC}{tceeazul}\colorlet{mPC}{tceenaranja}
+  \path (-0.2,-1.3) rectangle (16.4,5.2);
+  % \balance{x}{título}{alto ANC}{alto AC}{alto PN}{alto PNC}{alto PC}: altura total 4
+  % 1: estabilidad total
+  \capa{1}{\begin{scope}[xshift=0cm]
+    \node[tit] at (1.75,4.3) {a) Estabilidad total};
+    \draw[very thick] (0,4.15) -- (3.5,4.15); \draw[very thick] (1.75,4.15) -- (1.75,0);
+    \draw[masa=mANC] (0.05,1.6) rectangle (1.7,4.1); \node[et] at (0.875,2.85) {ANC};
+    \draw[masa=mAC] (0.05,0) rectangle (1.7,1.55); \node[et] at (0.875,0.78) {AC};
+    \draw[masa=mPN] (1.8,0) rectangle (3.45,4.1); \node[et] at (2.625,2.05) {PN};
+    \node[font=\scriptsize,align=center] at (1.75,-0.65) {sin deudas};
+  \end{scope}}
+  % 2: estabilidad normal
+  \capa{2}{\begin{scope}[xshift=4.2cm]
+    \node[tit] at (1.75,4.3) {b) Estabilidad normal};
+    \draw[very thick] (0,4.15) -- (3.5,4.15); \draw[very thick] (1.75,4.15) -- (1.75,0);
+    \draw[masa=mANC] (0.05,1.6) rectangle (1.7,4.1); \node[et] at (0.875,2.85) {ANC};
+    \draw[masa=mAC] (0.05,0) rectangle (1.7,1.55); \node[et] at (0.875,0.78) {AC};
+    \draw[masa=mPN] (1.8,1.9) rectangle (3.45,4.1); \node[et] at (2.625,3.0) {PN};
+    \draw[masa=mPNC] (1.8,0.75) rectangle (3.45,1.85); \node[et] at (2.625,1.3) {PNC};
+    \draw[masa=mPC] (1.8,0) rectangle (3.45,0.7); \node[et] at (2.625,0.35) {PC};
+    \node[font=\scriptsize,align=center] at (1.75,-0.65) {$\mathrm{PN}>0$, $\mathrm{FM}>0$};
+  \end{scope}}
+  % 3: desequilibrio a corto plazo
+  \capa{3}{\begin{scope}[xshift=8.4cm]
+    \node[tit] at (1.75,4.3) {c) Desequilibrio a corto};
+    \draw[very thick] (0,4.15) -- (3.5,4.15); \draw[very thick] (1.75,4.15) -- (1.75,0);
+    \draw[masa=mANC] (0.05,1.6) rectangle (1.7,4.1); \node[et] at (0.875,2.85) {ANC};
+    \draw[masa=mAC] (0.05,0) rectangle (1.7,1.55); \node[et] at (0.875,0.78) {AC};
+    \draw[masa=mPN] (1.8,2.6) rectangle (3.45,4.1); \node[et] at (2.625,3.35) {PN};
+    \draw[masa=mPNC] (1.8,2.1) rectangle (3.45,2.55); \node[et] at (2.625,2.33) {PNC};
+    \draw[masa=mPC] (1.8,0) rectangle (3.45,2.05); \node[et] at (2.625,1.0) {PC};
+    \draw[tceerojo,very thick,dashed] (0.05,1.575) -- (3.45,1.575);
+    \draw[tceerojo,very thick,dashed] (0.05,2.075) -- (3.45,2.075);
+    \node[font=\scriptsize,align=center] at (1.75,-0.65) {$\mathrm{PN}>0$, \textcolor{tceerojo}{$\mathrm{FM}<0$}};
+  \end{scope}}
+  % 4: quiebra técnica
+  \capa{4}{\begin{scope}[xshift=12.6cm]
+    \node[tit] at (1.75,4.3) {d) Quiebra técnica};
+    \draw[very thick] (0,4.15) -- (3.5,4.15); \draw[very thick] (1.75,4.15) -- (1.75,0);
+    \draw[masa=tceerojo] (0.05,3.1) rectangle (1.7,4.1); \node[et,text=tceerojo] at (0.875,3.6) {pérdidas};
+    \draw[masa=mANC] (0.05,1.3) rectangle (1.7,3.05); \node[et] at (0.875,2.2) {ANC};
+    \draw[masa=mAC] (0.05,0) rectangle (1.7,1.25); \node[et] at (0.875,0.63) {AC};
+    \draw[masa=mPNC] (1.8,1.9) rectangle (3.45,4.1); \node[et] at (2.625,3.0) {PNC};
+    \draw[masa=mPC] (1.8,0) rectangle (3.45,1.85); \node[et] at (2.625,0.93) {PC};
+    \node[font=\scriptsize,align=center] at (1.75,-0.65) {\textcolor{tceerojo}{$\mathrm{PN}<0$}: el activo no cubre el pasivo};
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

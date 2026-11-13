@@ -1,0 +1,24 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% 2 bonos con el mismo precio, la misma TIR y la misma duración en y_0 (misma
+% tangente) y distinta convexidad (esquema): A: 3 e^{-0,35 (x-3)};
+% B: 3 e^{-0,35 (x-3) + 0,04 (x-3)^2}, más convexo.
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$y$}{$P$}{7.2}{7.5}}
+  % 2: bono A, menos convexo
+  \capa{2}{\draw[curva2] plot[domain=1.0:6.6,samples=60,smooth] (\x,{3*exp(-0.35*(\x-3))});
+    \node[etiqueta,text=tceeazul,anchor=north east] at (6.6,0.82) {A};}
+  % 3: bono B, más convexo
+  \capa{3}{\draw[curva1] plot[domain=1.0:6.6,samples=60,smooth] (\x,{3*exp(-0.35*(\x-3)+0.04*(\x-3)^2)});
+    \node[etiqueta,text=tceemorado,anchor=south west] at (6.6,1.4) {B: más convexo};}
+  % 4: punto común y tangente común
+  \capa{4}{\node[punto] (A) at (3,3) {};
+    \proyeccion{(A)}{$y_0$}{$P_0$};
+    \draw[thin,tceegris] (0.8,{3+1.05*2.2}) -- (5.7,{3-1.05*2.7});}
+  % 5: B gana más si los tipos bajan y pierde menos si suben
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceemorado,align=left,anchor=west] at (2.2,6.8) {si $y$ baja, B gana más};
+    \node[etiqueta,font=\footnotesize,text=tceemorado,align=left,anchor=west] at (4.3,2.7) {si $y$ sube,\\B pierde menos};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,28 @@
+% El ciclo de explotación: tesorería -> compras -> existencias -> ventas ->
+% clientes -> cobro -> tesorería, con el periodo medio de almacén (PMA), el de
+% cobro (PMC) y, por dentro, el de pago a proveedores (PMP). Maduración
+% económica = PMA + PMC; financiera (ciclo de caja) = PMA + PMC - PMP.
+% Capas: 1 los 3 estados del activo corriente; 2 las flechas del ciclo con
+% PMA y PMC; 3 el pago a proveedores (PMP); 4 los periodos de maduración.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    est/.style={draw=#1,fill=#1!14,thick,rounded corners=3pt,align=center,minimum width=2.9cm,minimum height=1.0cm,font=\small\bfseries},
+    ciclo/.style={->,very thick,#1},
+    rot/.style={font=\footnotesize,align=center}]
+  \path (-4.8,-6.1) rectangle (4.8,4.2);
+  % 1: los 3 estados
+  \capa{1}{\node[est=tceeverde] (tes) at (0,3.2) {Tesorería};
+    \node[est=tceemorado] (exi) at (-3.2,-1.8) {Existencias};
+    \node[est=tceeazul] (cli) at (3.2,-1.8) {Clientes};}
+  % 2: el ciclo
+  \capa{2}{\draw[ciclo=tceemorado] (tes.west) to[out=180,in=90] node[rot,left,pos=0.5] {compra de\\mercancías} (exi.north);
+    \draw[ciclo=tceemorado] (exi.south) to[out=-60,in=-120] node[rot,below,pos=0.5] {venta a crédito\\\textbf{PMA}: días de almacén} (cli.south);
+    \draw[ciclo=tceeazul] (cli.north) to[out=90,in=0] node[rot,right,pos=0.5] {cobro\\\textbf{PMC}: días\\de cobro} (tes.east);}
+  % 3: el pago a proveedores
+  \capa{3}{\draw[->,thick,tceenaranja,dashed] (-0.3,2.6) to[out=-100,in=60] node[rot,right,pos=0.55,text=tceenaranja] {pago a proveedores:\\\textbf{PMP}} (-2.2,-1.2);}
+  % 4: los periodos de maduración
+  \capa{4}{\node[rot,draw=tceegris,rounded corners=2pt,fill=white,inner sep=4pt] at (0,-5.65) {maduración económica: $\mathrm{PMA}+\mathrm{PMC}$\\ciclo de caja: $\mathrm{PMA}+\mathrm{PMC}-\mathrm{PMP}$};}
+\end{tikzpicture}
+\end{document}

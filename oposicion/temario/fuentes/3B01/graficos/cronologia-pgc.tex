@@ -1,0 +1,44 @@
+% Línea de tiempo de la normativa contable española y su armonización:
+% 1973 PGC voluntario (Decreto 530/1973); 1988-1990 Ley de Auditoría, Ley 19/1989
+% y PGC de 1990 obligatorio (RD 1643/1990); 2002 Reglamento (CE) 1606/2002;
+% 2005 NIIF-UE en las consolidadas de las cotizadas; 2007 Ley 16/2007 y PGC
+% (RD 1514/2007, en vigor en 2008); 2010 NOFCAC; 2016 RD 602/2016; 2021 RD 1/2021;
+% 2024 Ley 7/2024; 2027 NIIF 18 en la UE. Fuentes: BOE (RD 1514/2007 y normas
+% citadas), Reglamento (UE) 2026/338. Capas: 1 el eje; 2 hasta 1990; 3 la
+% armonización con las NIIF (2002-2008); 4 las reformas (2010-2027).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    hito/.style={circle,fill=#1,inner sep=2.2pt},
+    arriba/.style={font=\footnotesize,align=center,anchor=south,text width=2.3cm},
+    abajo/.style={font=\footnotesize,align=center,anchor=north,text width=2.3cm},
+    anio/.style={font=\small\bfseries}]
+  \path (-0.6,-2.6) rectangle (16.6,2.7);
+  % 1: el eje del tiempo
+  \capa{1}{\draw[->,very thick,tceegris] (0,0) -- (16.3,0);}
+  % 2: los planes españoles
+  \capa{2}{\node[hito=tceegris] at (0.4,0) {}; \node[anio,below] at (0.4,-0.1) {1973};
+    \node[arriba] at (0.4,0.3) {primer PGC, voluntario};}
+  \capa{2}{\node[hito=tceegris] at (2.4,0) {}; \node[anio,above] at (2.4,0.1) {1989-1990};
+    \node[abajo] at (2.4,-0.45) {adaptación a las directivas; PGC de 1990, obligatorio};}
+  % 3: la armonización con las NIIF
+  \capa{3}{\node[hito=tceeazul] at (4.4,0) {}; \node[anio,below] at (4.4,-0.1) {2002};
+    \node[arriba] at (4.4,0.3) {Reglamento (CE) 1606/2002};}
+  \capa{3}{\node[hito=tceeazul] at (6.2,0) {}; \node[anio,above] at (6.2,0.1) {2005};
+    \node[abajo] at (6.2,-0.45) {NIIF-UE en las consolidadas de las cotizadas};}
+  \capa{3}{\node[hito=tceemorado] at (8.0,0) {}; \node[anio,below] at (8.0,-0.1) {2007};
+    \node[arriba,text=tceemorado] at (8.0,0.3) {\textbf{PGC vigente} y PGC de pymes (en vigor en 2008)};}
+  % 4: las reformas
+  \capa{4}{\node[hito=tceedorado] at (9.8,0) {}; \node[anio,above] at (9.8,0.1) {2010};
+    \node[abajo] at (9.8,-0.45) {normas de consolidación};}
+  \capa{4}{\node[hito=tceedorado] at (11.4,0) {}; \node[anio,below] at (11.4,-0.1) {2016};
+    \node[arriba] at (11.4,0.3) {el fondo de comercio se amortiza};}
+  \capa{4}{\node[hito=tceedorado] at (13.0,0) {}; \node[anio,above] at (13.0,0.1) {2021};
+    \node[abajo] at (13.0,-0.45) {NIIF 9, 13 y 15 en el PGC};}
+  \capa{4}{\node[hito=tceedorado] at (14.4,0) {}; \node[anio,below] at (14.4,-0.1) {2024};
+    \node[arriba] at (14.4,0.3) {impuesto mínimo global (pilar 2)};}
+  \capa{4}{\node[hito=tceeazul] at (15.8,0) {}; \node[anio,above] at (15.8,0.1) {2027};
+    \node[abajo] at (15.8,-0.45) {NIIF 18 en los grupos cotizados};}
+\end{tikzpicture}
+\end{document}

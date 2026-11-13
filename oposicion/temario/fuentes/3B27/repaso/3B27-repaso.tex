@@ -1,0 +1,279 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Regulación financiera bancaria y no bancaria]{3.B.27}{Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «cada palo que aguante su vela»}{2,5}
+\apartadocante{I. Fundamentos teóricos}{10}
+\subcante{1. ¿Qué es la regulación financiera?}{1,5}
+\subcante{2. Justificación de la intervención}{8,5}
+\subcante{\hspace*{0.8em}Fallos de mercado}{2,5}
+\subcante{\hspace*{0.8em}\autor{Stiglitz} y \autor{Weiss} (1981)}{2}
+\subcante{\hspace*{0.8em}\autor{Diamond} y \autor{Dybvig} (1983)}{2,5}
+\subcante{\hspace*{0.8em}Fallo de regulación}{1,5}
+\apartadocante{II. Instrumentos bancarios y no bancarios}{10}
+\subcante{1. Marco institucional}{2}
+\subcante{2. Implementación}{6}
+\subcante{\hspace*{0.8em}Basilea I, II y III}{2,5}
+\subcante{\hspace*{0.8em}Macroprudencial}{1,5}
+\subcante{\hspace*{0.8em}Supervisión}{1}
+\subcante{\hspace*{0.8em}Resolución}{1}
+\subcante{3. Regulación no bancaria}{2}
+\apartadocante{III. Evidencia empírica}{6,5}
+\subcante{1. Finanzas, crecimiento y desigualdad}{1,5}
+\subcante{2. Regulación, desarrollo y estabilidad}{2,5}
+\subcante{3. Política de la competencia}{1,5}
+\subcante{4. Capital humano de las cajas}{1}
+\apartadocante{Conclusión}{1}}
+Funciones clave: $\mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\Pr(\text{repago}\mid\hat r)$; $u'(c_1^*)=R\,u'(c_2^*)$; capital/APR; LCR y NSFR $\geq100$~\%. Gráficos: racionamiento, \autor{Diamond}-\autor{Dybvig}, requisitos de capital, brecha crédito-PIB.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «cada palo que aguante su vela». En una crisis bancaria de un país rico, el Estado pone de mediana \dato{6,7\,\% del PIB en ayudas}{Laeven y Valencia, 2026}. Credit Suisse (2023): absorbido por UBS con apoyo público, pero sus bonos convertibles perdieron \dato{16.000 M de francos}{FINMA}. ¿Por qué es el sector más regulado, cómo se regula a bancos y no bancos y sirve de algo?
+\item \textbf{Relevancia}: sector más regulado (la calidad importa más que la cantidad); \dato{164 crisis sistémicas 1970-2025; 32\,\% del PIB de producción perdida}{Laeven y Valencia}; CRR3 desde 1/1/2025; no bancos \dato{51\,\% de los activos financieros; bancos 38\,\%}{FSB, 2024}; Nobel 2022 (\autor{Bernanke}, \autor{Diamond}, \autor{Dybvig}).
+\item \textbf{Contextualización}: \concepto{regulación} (normas) y \concepto{supervisión} (vigilancia); \concepto{NBFI} y \concepto{banca en la sombra}; \concepto{riesgo sistémico}. Historia a golpe de crisis: Glass-Steagall (1933), BCBS (1974), Basilea~I (1988); tras 2008, G-20, FSB, Basilea~III, Dodd-Frank, SESF y unión bancaria.
+\item \textbf{Problemática}: ¿por qué regular más que otros sectores? ¿Qué, cómo y quién? ¿Límites? ¿Funciona?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, por qué; \hyperref[rep:II]{II}, cómo; \hyperref[rep:III]{III}, qué dicen los datos.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{I. Fundamentos teóricos\label{rep:I}}
+\begin{ideaclave}
+Las finanzas fallan más y con más daño que otros mercados: información asimétrica, externalidades de la quiebra y bancos frágiles por naturaleza. La red de seguridad evita los pánicos pero crea riesgo moral, que se corrige con capital. El regulador también falla.
+\end{ideaclave}
+
+\sub{I.1. ¿Qué es la regulación financiera?\label{rep:I.1}}
+\begin{itemize}
+\item 4 funciones del sistema financiero: transformar plazos, repartir riesgos, producir información y vigilar (\autor{Diamond}, 1984), pagos \vertema{3.B.23}.
+\item 3 objetivos: \concepto{microprudencial} (solvencia de cada entidad), \concepto{conducta} (protección del cliente), \concepto{macroprudencial} (estabilidad del sistema); y la competencia (CNMC).
+\item 3 modelos de supervisión: \emph{sectorial} (España: BdE, CNMV, DGSFP), \emph{picos gemelos} (Reino Unido, Países Bajos: solvencia y conducta separadas), \emph{integrado} (\autor{Kremers} et al., 2003).
+\end{itemize}
+
+\sub{I.2. Justificación de la intervención\label{rep:I.2}}
+\begin{itemize}
+\item \autor{Musgrave}: eficiencia, equidad, estabilidad \vertema{3.A.23}.
+\item \emph{Información asimétrica} \vertema{3.A.13}: crédito; depositantes que no vigilan: \concepto{hipótesis de representación} (\autor{Dewatripont} y \autor{Tirole}, 1994); venta de productos (MiFID~II); salud de emisores; \emph{too big to fail}: \dato{29 G-SIB, Santander incluido}{FSB, 2025}.
+\item \emph{Externalidades}: contagio, ventas forzosas (externalidad pecuniaria, \autor{Korinek}), pérdida de información (\autor{Bernanke}, 1983), coste fiscal; red en pagos.
+\item \emph{Poder de mercado} (\autor{Cournot}-\autor{Monti}-\autor{Klein}) y \emph{bien público global}. \emph{Equidad}: cuenta básica, acceso al crédito. \emph{Estabilidad}: prociclicidad y pánicos $\Rightarrow$ macroprudencial temporal y transversal (\autor{Borio}, 2003).
+\end{itemize}
+
+\textbf{\autor{Stiglitz} y \autor{Weiss} (1981)}. \emph{Supuestos}: igual media, distinto riesgo; responsabilidad limitada; el banco solo fija $\hat r$. \emph{3 efectos de subir} $\hat r$: directo, selección adversa, incentivos.
+\begin{formula}
+\[\mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\Pr(\text{repago}\mid\hat r),\quad \partial\Pr/\partial\hat r<0\]
+\end{formula}
+\graficorepaso[0.95\linewidth]{stiglitz-weiss}{Máximo en $\hat r^*$; la oferta se dobla hacia atrás: racionamiento}
+\begin{itemize}
+\item Soluciones: garantías, historial, CIRBE, avales e ICO, LTV; canal del crédito (TLTRO) \vertema{3.A.37}. Ext.: \autor{Bester} (1985), \autor{De Meza}-\autor{Webb} (1987), microcréditos. Evidencia: \autor{Jiménez} et al. (2012).
+\end{itemize}
+
+\textbf{\autor{Diamond} y \autor{Dybvig} (1983)} \vertema{3.B.26}. $T=0,1,2$; fracción $\pi$ impaciente; guardar rinde 1; invertir, $R>1$ en $T=2$ o $L\leq1$ en $T=1$; aversión relativa $>1$.
+\begin{formula}
+\[u'(c_1^*)=R\,u'(c_2^*),\qquad 1<c_1^*<c_2^*<R\]
+\end{formula}
+\graficorepaso[0.8\linewidth]{diamond-dybvig}{El depósito alcanza $O$; pánico $P$: peor que la autarquía}
+\begin{itemize}
+\item 2 equilibrios de Nash: bueno y \concepto{pánico} (recursos $\pi c_1^*+L(1-\pi c_1^*)<c_1^*$): $U^{\text{pánico}}<U^{\text{aut.}}<U^{\text{merc.}}<U^{\text{ópt.}}$.
+\item Red de seguridad: suspensión, \concepto{garantía de depósitos} (\dato{100.000 €; 250.000 \$}{UE, FDIC}), \concepto{prestamista de última instancia} (\autor{Bagehot}, 1873) $\Rightarrow$ riesgo moral (\emph{put} de \autor{Merton}, 1977; \autor{Kareken}-\autor{Wallace}, 1978) $\Rightarrow$ \textbf{capital}: \emph{skin in the game}.
+\end{itemize}
+
+\sub{Fallo de regulación\label{rep:I.3}}
+\begin{itemize}
+\item Captura (\autor{Stigler}, 1971) \vertema{3.A.20}; arbitraje regulatorio (vehículos fuera de balance; efecto cobra); complejidad; riesgo moral de la red.
+\item Abanico: austriacos (100\,\% de caja, Ley de Peel 1844; banca libre, \autor{Hayek}) $\to$ mínima (\autor{Benston}-\autor{Kaufman}, 1996) $\to$ extensa (la actual) $\to$ banca pública.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{II. Instrumentos bancarios y no bancarios\label{rep:II}}
+\begin{ideaclave}
+Tras 2008 se mira también al sistema: más y mejor capital, liquidez, colchones macroprudenciales y resolución con \emph{bail-in}. Fuera de los bancos: «mismo riesgo, misma regulación».
+\end{ideaclave}
+
+\sub{II.1. Marco institucional\label{rep:II.1}}
+\begin{itemize}
+\item Mundo: G-20 y FSB (2009; \autor{Andrew Bailey}); BCBS, IOSCO, IAIS, CPMI.
+\item UE: SESF (2011): ABE, AEVM, AESPJ, JERS. Unión bancaria \vertema{3.B.44}: MUS (BCE, \dato{109 significativas}{BCE, 9/2026}), MUR (JUR, \dato{FUR $>$81.000 M€}{JUR, 2025}), EDIS sin aprobar; código normativo único (CRR, CRD, BRRD, DGSD).
+\item España \vertema{4.A.19}: BdE, CNMV, DGSFP (Min.\ de Economía), FROB, FGD, AMCESFI (2019).
+\end{itemize}
+
+\sub{II.2. Implementación\label{rep:II.2}}
+\begin{formula}
+\[\frac{\text{capital}}{\mathrm{APR}}\geq\text{mínimo},\qquad \mathrm{APR}=\textstyle\sum_i w_iA_i\]
+\end{formula}
+\begin{itemize}
+\item \emph{Basilea~I} (1988): 8\,\%, 5 ponderaciones; riesgo de mercado en 1996. \emph{Basilea~II} (2004): 3 pilares, estándar o IRB, riesgo operacional. \emph{2.5} (2009).
+\item \emph{Basilea~III} (2010): CET1 4,5; nivel~1 6; total 8; conservación 2,5 (7/8,5/10,5); anticíclico 0-2,5; sistémicos (G-SIB 1-3,5; España 2026: Santander 1,25, BBVA 0,75, CaixaBank 0,5, Sabadell 0,25); apalancamiento 3\,\%; grandes exposiciones 25\,\%.
+\end{itemize}
+\begin{formula}
+\[\mathrm{LCR}=\frac{\text{activos líquidos}}{\text{salidas a 30 días}}\geq1,\quad \mathrm{NSFR}=\frac{\text{fin.\ estable disp.}}{\text{fin.\ estable req.}}\geq1\]
+\end{formula}
+\graficorepaso[0.9\linewidth]{requisitos-capital}{Pilar~1, Pilar~2 y colchones (CET1)}
+\begin{itemize}
+\item MUS: requisitos medios \dato{$\approx$11\,\% CET1, 16\,\% total}{SREP}; ratio CET1 \dato{16\,\%; España 13,5\,\%}{BCE, 2026T2}.
+\item \emph{Basilea~III final} (2017): estándar más sensible, límites a IRB, riesgo operacional único, \concepto{suelo de resultados} 72,5\,\%, FRTB. BCBS: 2023 (50\,\%) $\to$ 2028. UE: CRR3 desde 1/1/2025 (suelo hasta 2030, transitorios 2032), CRD~VI (transposición 10/1/2026), FRTB desde 2027 con alivios a 2030. RU: 1/1/2027. EE.\,UU.: nueva propuesta (3/2026).
+\item Otras: bonus $\leq$100\,\% del fijo; Volcker, \emph{ring-fencing} (2019), Liikanen (retirada); agencias de calificación (AEVM); NIIF~9 (pérdida esperada).
+\item \emph{Macroprudencial}: capital (CCyB, sistémicos), prestatarios (LTV, LTI, DSTI; Circular 5/2021), liquidez. Colchón anticíclico (BCBS, 2010): 0 si brecha $<2$; 2,5\,\% $\times(\text{brecha}-2)/8$; máx.\ con 10.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{brecha-credito-pib-espana}{España: \dato{+47 (2007T2), $-24$ (2026T1)}{BIS}; colchón 0,5\,\% (10/2025) y 1\,\% (10/2026)}
+\begin{itemize}
+\item Provisiones dinámicas (2000-2016). \emph{Leaning} frente a \emph{cleaning} \vertema{3.A.36}.
+\item \emph{Supervisión}: SREP (P2R, P2G), pruebas de resistencia (ABE, cada 2 años), JERS y AMCESFI.
+\item \emph{Resolución} (BRRD): FGD 100.000 € (0,8\,\%), CMDI 2026 (aplica 5/2028), planes, MREL/TLAC; venta (Popular, 7/6/2017, 1 €), banco puente, banco malo (Sareb), \concepto{bail-in} ($\geq$8\,\% del pasivo antes del FUR); respaldo del MEDE bloqueado (Italia, 2023); Credit Suisse no se resolvió.
+\end{itemize}
+
+\sub{II.3. Regulación no bancaria\label{rep:II.3}}
+\begin{itemize}
+\item \dato{256,8 billones de \$, 51\,\%}{FSB, 2024}. Valores: MiFID~II/MiFIR (2018), abuso de mercado, folletos \vertema{4.A.20}. Seguros: Solvencia~II (99,5\,\%), revisión e IRRD desde 30/1/2027; ICS de la IAIS (2024). Fondos: monetarios (2018), AIFMD~II (2026, herramientas de liquidez). IMF: PFMI (2012), EMIR (2012) y EMIR~3, T+1 el 11/10/2027 \vertema{3.B.25}. Titulización: retención del 5\,\%. MiCA (6/2024 y 12/2024; transitorio hasta 1/7/2026); DORA (17/1/2025).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{III. Evidencia empírica\label{rep:III}}
+\begin{ideaclave}
+Las finanzas ayudan a crecer hasta cierto tamaño; funciona la regulación que da información e incentivos y acumula colchones en los auges; la gobernanza importa tanto como las normas.
+\end{ideaclave}
+\begin{itemize}
+\item \emph{Crecimiento}: \autor{King}-\autor{Levine} (1993), \autor{Rajan}-\autor{Zingales} (1998), \autor{Levine} (2005); crédito $>$100\,\% del PIB, efecto negativo (\autor{Arcand} et al., 2015; \autor{Cecchetti}-\autor{Kharroubi}, 2012); bancos y mercados (\autor{Levine}-\autor{Zervos}, 1998; \autor{Gambacorta} et al., 2014: en crisis, el PIB cae 3 veces más con bancos). Desigualdad: liberalizar reduce el Gini (\autor{Delis} et al., 2014).
+\item \emph{\autor{Barth}, \autor{Caprio} y \autor{Levine} (2004)}: funciona la información y la vigilancia privada; más poder del supervisor no; garantía generosa y restricciones de actividad, más crisis; diversificar, menos; capital sin relación robusta. 2013: se reforzó el capital, no la vigilancia privada.
+\item \emph{Capital}: 3 efectos (\autor{Martynova}, 2015); covid: el estándar recortó menos el crédito que el IRB. \emph{Garantía}: el riesgo moral domina (\autor{Anginer} et al., 2014). \emph{Banca pública}: menos desarrollo (\autor{La Porta} et al., 2002), ciclo electoral (\autor{Sapienza}, \autor{Cole}, \autor{Englmaier}-\autor{Stowasser}).
+\item \emph{Macroprudencial}: reduce el crédito, mejor la de prestatarios (\autor{Cerutti} et al., 2017); provisiones dinámicas: amortiguan la caída (\autor{Jiménez}, \autor{Ongena}, \autor{Peydró} y \autor{Saurina}, 2017).
+\end{itemize}
+\graficorepaso[0.95\linewidth]{concentracion-bancaria-espana}{CR5: \dato{41\,\% (2007) $\to$ 69,6\,\% (2022) $\to$ 67,4\,\% (2025); UE 69,3\,\%}{BCE}}
+\begin{itemize}
+\item \emph{Competencia}: fusiones (escala, exceso de capacidad: no cerrar oficinas es un equilibrio de Nash, \autor{Vives}) frente a precios y exclusión. Competencia-fragilidad (\autor{Keeley}, 1990) frente a competencia-estabilidad (\autor{Boyd}-\autor{De Nicolò}, 2005): U de \autor{Martínez-Miera} y \autor{Repullo} (2010): efecto riesgo y efecto margen.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{competencia-estabilidad}{Probabilidad de quiebra en U frente al número de bancos}
+\begin{itemize}
+\item \emph{Cajas}: presidentes políticos sin experiencia ni posgrado, más crédito promotor y morosidad (\autor{Cuñat}-\autor{Garicano}, 2010); ciclos de crédito políticos (\autor{Fernández-Villaverde}, \autor{Garicano} y \autor{Santos}, 2013) \vertema{4.A.18}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: fallos graves (racionamiento, pánicos, externalidades); red de seguridad $\Rightarrow$ riesgo moral $\Rightarrow$ capital, liquidez, supervisión, resolución; macroprudencial; no bancos por actividades.
+\item \textbf{Relevancia}: Basilea~III con calendarios distintos; más de la mitad fuera de los bancos.
+\item \textbf{Extensiones}: \vertema{3.B.26} \vertema{3.B.44} \vertema{3.A.36} \vertema{3.A.42} \vertema{4.A.19} \vertema{4.A.20}; clima, cripto, euro digital, IA, presión desreguladora.
+\item \textbf{Opinión}: bancos más resistentes (la covid no acabó en crisis bancaria); el riesgo, en los bordes.
+\item \textbf{Idea final}: que cada palo aguante su vela: las pérdidas, en quien asume el riesgo, también fuera de los bancos.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Definiciones}
+\begin{itemize}
+\item \concepto{CET1}: acciones ordinarias y reservas; absorbe pérdidas con el banco en marcha. \concepto{AT1}: híbridos perpetuos (convertibles contingentes). \concepto{T2}: deuda subordinada a 5 años o más; absorbe en la liquidación.
+\item \concepto{APR}: exposiciones ponderadas por su riesgo de crédito, de mercado y operacional. \concepto{Suelo de resultados}: APR con modelos internos $\geq$ 72,5\,\% de los estándar.
+\item \concepto{P2R}: requisito de Pilar~2 de cada banco (obligatorio); \concepto{P2G}: recomendación. \concepto{Colchón combinado}: conservación + anticíclico + sistémicos; si se incumple, límites a dividendos y bonus.
+\item \concepto{Resolución}: procedimiento administrativo para el banco inviable cuya quiebra afecta al interés público. \concepto{\emph{Bail-in}}: amortizar o convertir capital y deuda por orden de prelación. \concepto{MREL/TLAC}: pasivos que pueden absorber pérdidas.
+\item \concepto{Brecha crédito-PIB}: crédito privado/PIB menos su tendencia (HP de una cola, $\lambda=400.000$), en puntos.
+\item \concepto{Arbitraje regulatorio}: llevar la actividad donde la norma es más laxa. \concepto{Mismo riesgo, misma regulación}: regular por actividades, no por entidades.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Crisis: \dato{164 sistémicas 1970-2025; mediana en países ricos: 32\,\% del PIB perdido y 6,7\,\% en ayudas}{Laeven y Valencia, 2026}.
+\item No bancos: \dato{256,8 billones de \$, 51\,\% (bancos 38\,\%); crecen 9,4\,\% frente a 4,7\,\%}{FSB, 2024}.
+\item G-SIB: \dato{29; Santander en el tramo del 1\,\%}{FSB, 11/2025}. MUS: \dato{109 entidades significativas}{BCE, 9/2026}. FUR: \dato{$>$81.000 M€}{JUR, 31/12/2025}.
+\item CET1: \dato{16,0\,\% MUS; 13,5\,\% España (la más baja)}{BCE, 2026T2}. Requisito medio \dato{$\approx$11\,\% CET1}{SREP 2025}.
+\item Brecha España: \dato{máx.\ +47,3 (2007T2); mín.\ $-55{,}6$ (2017T4); $-24{,}3$ (2026T1)}{BIS}. Colchón anticíclico: \dato{1\,\% desde 1/10/2026}{BOE-A-2025-19516}.
+\item Concentración: \dato{IHH 459 (2007) $\to$ 1.306 (2025)}{BCE}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Calendario de Basilea~III final}
+{\small\noindent\begin{tabular}{@{}l|l@{}}
+\textbf{Jurisdicción} & \textbf{Aplicación}\\ \hline
+BCBS & 1/1/2023; suelo 50\,\% $\to$ 72,5\,\% en 2028\\
+UE (CRR3) & 1/1/2025; suelo hasta 2030; transitorios 2032\\
+UE (FRTB) & 1/1/2027, alivios hasta 2030\\
+Reino Unido & 1/1/2027 (modelos de mercado, 2028)\\
+EE.\,UU. & propuesta de 3/2026, sin norma final\\
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{¿Quién regula?}
+\begin{itemize}
+\item \emph{Coordinación}: G-20 y FSB; Consejo y Comisión; Ministerio de Economía.
+\item \emph{Banca}: BCBS; ABE y BCE-MUS; Banco de España.
+\item \emph{Valores}: IOSCO; AEVM; CNMV. \emph{Seguros}: IAIS; AESPJ; DGSFP.
+\item \emph{Infraestructuras}: CPMI-IOSCO; AEVM y BCE; CNMV y Banco de España.
+\item \emph{Macroprudencial}: FSB y FMI; JERS y BCE; AMCESFI y Banco de España.
+\item \emph{Resolución}: FSB; JUR y FUR; FROB y FGD.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Orden de absorción de pérdidas (\emph{bail-in})}
+\begin{enumerate}
+\item Acciones (CET1) $\to$ 2. AT1 (convertibles contingentes) $\to$ 3. T2 (subordinada) $\to$ 4. deuda sénior no preferente $\to$ 5. deuda sénior y depósitos grandes no garantizados $\to$ 6. depósitos de personas y pymes por encima de 100.000 € $\to$ 7. depósitos garantizados: nunca (los cubre el FGD).
+\item Antes de usar el FUR: pérdidas de al menos el 8\,\% del pasivo total.
+\end{enumerate}
+
+% ==========================================================================
+\bloque{Basilea~I: ponderaciones}
+\begin{itemize}
+\item 0\,\%: efectivo, deuda pública OCDE; 10\,\%: otros entes públicos; 20\,\%: bancos OCDE y multilaterales; 50\,\%: hipotecas; 100\,\%: empresas y países fuera de la OCDE. Críticas: el 8\,\% como objetivo; todas las empresas iguales; sin derivados ni titulizaciones.
+\item Ejemplo: 100 de deuda pública (0\,\%) + 200 de hipotecas (35\,\%) + 300 de empresas (100\,\%) $\Rightarrow$ APR = 370: CET1 $\geq$ 25,9 (7\,\%), total $\geq$ 38,85 (10,5\,\%); apalancamiento sobre 600.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1844}{Ley de Peel}
+\hito{1873}{\autor{Bagehot}: prestamista de última instancia}
+\hito{1933}{Glass-Steagall; FDIC}
+\hito{1959}{\autor{Musgrave}: 3 motivos}
+\hito{1971}{\autor{Stigler}: captura}
+\hito{1974}{Comité de Basilea}
+\hito{1977}{\autor{Merton}: la garantía es una \emph{put}}
+\hito{1981}{\autor{Stiglitz}-\autor{Weiss}: racionamiento}
+\hito{1983}{\autor{Diamond}-\autor{Dybvig}; \autor{Bernanke}}
+\hito{1988}{Basilea~I}
+\hito{1994}{\autor{Dewatripont}-\autor{Tirole}: representación}
+\hito{1996}{\autor{Benston}-\autor{Kaufman}; riesgo de mercado}
+\hito{2000}{Provisiones dinámicas (España)}
+\hito{2004}{Basilea~II; \autor{Barth}-\autor{Caprio}-\autor{Levine}}
+\hito{2009}{FSB; Basilea~2.5}
+\hito{2010}{Basilea~III; Dodd-Frank; \autor{Martínez-Miera}-\autor{Repullo}}
+\hito{2011}{SESF}
+\hito{2014}{MUS; BRRD}
+\hito{2017}{Basilea~III final; Popular}
+\hito{2022}{Nobel: \autor{Bernanke}, \autor{Diamond}, \autor{Dybvig}}
+\hito{2023}{SVB y Credit Suisse}
+\hito{2025}{CRR3; DORA}
+\hito{2026}{CMDI; AIFMD~II}
+\hito{2027}{FRTB (UE), RU, Solvencia~II, T+1}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Más capital encarece el crédito?} Con \autor{Modigliani}-\autor{Miller}, no: la deuda se abarata; el coste privado viene de la deducción de intereses y la garantía implícita (\autor{Admati}-\autor{Hellwig}, 2013).
+\item \textbf{¿Por qué un colchón anticíclico positivo con brecha negativa?} Para tener capital que liberar en la próxima crisis (estigma de usar colchones en la covid).
+\item \textbf{¿Por qué la ratio de apalancamiento?} Respaldo que no depende de los modelos internos.
+\item \textbf{¿Garantía de depósitos: estabiliza o desestabiliza?} Evita pánicos, pero el riesgo moral domina en los años buenos; por eso tiene límite y va con capital.
+\item \textbf{¿Más competencia, menos estabilidad?} Depende: U de \autor{Martínez-Miera} y \autor{Repullo}.
+\item \textbf{¿Por qué regular a los no bancos?} Mismos riesgos (plazos, apalancamiento): fondos y monedas estables sufren pánicos como los de \autor{Diamond}-\autor{Dybvig}.
+\item \textbf{¿Por qué separar solvencia y conducta (picos gemelos)?} Evita que el supervisor tolere malas prácticas con clientes para no dañar la cuenta del banco; a cambio, exige coordinación.
+\item \textbf{¿Qué es la hipótesis de representación?} El supervisor actúa por los depositantes pequeños, que no pueden vigilar (\autor{Dewatripont}-\autor{Tirole}).
+\item \textbf{¿Por qué se fijó un suelo de resultados?} Los modelos internos daban ponderaciones muy distintas a riesgos parecidos.
+\item \textbf{¿Qué falló con Credit Suisse?} Tenía plan de resolución, pero se fusionó con UBS con garantías públicas: la resolución sin dinero público de un banco global no se ha probado.
+\item \textbf{¿Funcionan las provisiones dinámicas?} Apenas frenan el auge, pero sostienen el crédito en la crisis (\autor{Jiménez} et al., 2017).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item CET1 4,5; nivel~1 6; total 8; con conservación 7/8,5/10,5. El apalancamiento (3\,\%) es sobre la exposición \emph{sin ponderar}.
+\item LCR: 30 días; NSFR: 1 año. Colchón combinado = solo CET1.
+\item Suelo de resultados: 72,5\,\% de los APR \emph{estándar} (no del capital). BCBS 2028; UE 2030.
+\item G-SIB: tramos 1, 1,5, 2, 2,5 y 3,5 (no hay 3). EDIS: \emph{sin aprobar}. FGD: 100.000 € por depositante \emph{y entidad}.
+\item Stiglitz-Weiss: igual media, distinto riesgo; la oferta se dobla hacia atrás (no «cóncava»); $(1+\hat r)$.
+\item Diamond-Dybvig: $\pi$ impacientes (no $\tau$); pánico peor que la autarquía.
+\item Picos gemelos = solvencia/conducta (RU); España = sectorial.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

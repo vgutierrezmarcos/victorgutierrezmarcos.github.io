@@ -1,0 +1,46 @@
+% Grado de apalancamiento operativo frente a las ventas (p = 1: las ventas en
+% euros hacen de q). Empresa A, la del ejemplo: CF = 300, margen de contribución
+% del 40 % (c = 0,6), punto muerto en 750; empresa B: CF = 500, margen del 60 %
+% (c = 0,4), punto muerto en 833. Las 2 tienen EBIT = 100 con ventas de 1.000,
+% pero GAO de 4 (A) y 6 (B). GAO = MC/(MC - CF), asíntota vertical en el punto
+% muerto, negativo a su izquierda y tendente a 1.
+% Capas: 1 ejes y GAO = 1; 2 asíntotas (puntos muertos); 3 curva A; 4 curva B;
+% 5 las ventas de 1.000 con los 2 valores.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=10.5cm,height=7.5cm,scale only axis=false,
+      xmin=0,xmax=2100,ymin=-8,ymax=13,
+      axis lines=middle,axis line style={->,thick},
+      xlabel={ventas, $p\,q$},ylabel={GAO},
+      xlabel style={anchor=north east,at={(axis description cs:1,0.38)}},
+      ylabel style={anchor=south},
+      xtick={750,833.3,1000,2000},xticklabels={},
+      ytick={1,4,6},yticklabels={1,4,6},
+      tick label style={font=\footnotesize},clip=true]
+    % 1: GAO = 1
+    \capa{1}{\addplot[guia,domain=0:2100] {1};}
+    % 2: asíntotas en los puntos muertos
+    \capa{2}{\addplot[guia,tceemorado] coordinates {(750,-8) (750,13)};
+      \addplot[guia,tceeazul] coordinates {(833.3,-8) (833.3,13)};
+      \node[font=\footnotesize,text=tceemorado,anchor=north east,align=right] at (axis cs:740,12.8) {$q^{\mathrm{PM}}_A=750$};
+      \node[font=\footnotesize,text=tceeazul,anchor=south west,align=left] at (axis cs:845,-7.8) {$q^{\mathrm{PM}}_B=833$};}
+    % 3: empresa A
+    \capa{3}{\addplot[curva1,domain=0:730,samples=80] {0.4*x/(0.4*x-300)};
+      \addplot[curva1,domain=775:2100,samples=120] {0.4*x/(0.4*x-300)};
+      \node[font=\small\bfseries,text=tceemorado] at (axis cs:1150,2.15) {A};}
+    % 4: empresa B
+    \capa{4}{\addplot[curva2,domain=0:815,samples=80] {0.6*x/(0.6*x-500)};
+      \addplot[curva2,domain=860:2100,samples=120] {0.6*x/(0.6*x-500)};
+      \node[font=\small\bfseries,text=tceeazul] at (axis cs:1250,4.4) {B};
+      \node[font=\footnotesize,text=tceegris,align=left,anchor=west] at (axis cs:60,-4.5) {pérdidas:\\GAO $<0$};}
+    % 5: ventas de 1.000
+    \capa{5}{\addplot[guia] coordinates {(1000,0) (1000,6)};
+      \addplot[guia] coordinates {(0,4) (1000,4)};
+      \addplot[guia] coordinates {(0,6) (1000,6)};
+      \addplot[only marks,mark=*,mark size=1.8pt] coordinates {(1000,4) (1000,6)};
+      \node[font=\footnotesize,anchor=north] at (axis cs:1000,-0.2) {1.000};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

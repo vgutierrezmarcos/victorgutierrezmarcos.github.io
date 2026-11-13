@@ -1,0 +1,36 @@
+% Competencia y estabilidad bancaria: probabilidad de quiebra de un banco
+% frente al número de bancos n (Cournot en el mercado de préstamos).
+% Curvas ilustrativas (no calibradas), con x = n en unidades del eje:
+%   Boyd y De Nicolò (2005), solo el efecto riesgo: p(n) = 0,5 + 2,4/n
+%     (decreciente: más competencia, tipos más bajos, prestatarios más seguros);
+%   Martínez-Miera y Repullo (2010), efecto riesgo y efecto margen:
+%     p(n) = 0,5 + 2,4/n + 0,12 n, en forma de U, mínimo en n* = sqrt(20) = 4,47
+%     (p = 1,573); p(1) = 3,02; p(10) = 1,94.
+% La visión tradicional (competencia-fragilidad; Keeley, 1990) sería creciente.
+% Elaboración propia a partir de Boyd y De Nicolò (2005) y Martínez-Miera y Repullo (2010).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=1.3cm,
+    declare function={bdn(\n)=0.5+2.4/\n; mmr(\n)=0.5+2.4/\n+0.12*\n;}]
+  % 1: ejes: número de bancos y probabilidad de quiebra
+  \capa{1}{\draw[eje] (0,0) -- (11,0) node[right] {$n$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,3.4) node[left,align=right] {probabilidad\\de quiebra};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\node[below,font=\footnotesize,text=tceegris!80!black] at (1,0) {monopolio};}
+  \capa{1}{\node[below,font=\footnotesize,text=tceegris!80!black,align=center] at (9.6,0) {competencia};}
+  % 2: solo el efecto riesgo (Boyd y De Nicolò, 2005)
+  \capa{2}{\draw[curva2,desplazada] plot[domain=1:10.3,samples=60] (\x,{bdn(\x)})
+    node[etiqueta,right,align=left,text=tceeazul] {solo efecto\\riesgo};}
+  % 3: efecto riesgo y efecto margen (Martínez-Miera y Repullo, 2010)
+  \capa{3}{\draw[curva1] plot[domain=1:10.3,samples=80] (\x,{mmr(\x)})
+    node[etiqueta,right,align=left,text=tceemorado] {riesgo\\+ margen};}
+  % 4: mínimo en n*
+  \capa{4}{\node[punto] (M) at (4.472,1.573) {};}
+  \capa{4}{\draw[guia] (4.472,0) node[below,text=black] {$n^*$} -- (M);}
+  % 5: los 2 tramos
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=center,text=tceemorado] at (2.3,2.9) {domina el efecto riesgo:\\más competencia,\\menos quiebras};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=center,text=tceemorado] at (7.9,2.65) {domina el efecto margen:\\más competencia,\\más quiebras};}
+\end{tikzpicture}
+\end{document}

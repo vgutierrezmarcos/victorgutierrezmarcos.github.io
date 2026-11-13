@@ -1,0 +1,23 @@
+% Las 5 partes del Plan General de Contabilidad (RD 1514/2007), apiladas como
+% cimientos: obligatorias las 3 primeras (morado), voluntarias las 2 últimas
+% (gris), salvo en lo que afecte al registro o la valoración.
+% Capas: 1 las 3 obligatorias; 2 las 2 voluntarias; 3 las llaves.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    parte/.style={draw=#1,fill=#1!14,thick,minimum width=7.2cm,minimum height=0.95cm,align=center,font=\small},
+    llave/.style={very thick,decorate,decoration={brace,amplitude=6pt},#1}]
+  \path (-4.2,-0.6) rectangle (8.2,5.4);
+  % 1: obligatorias (de abajo arriba: los cimientos primero)
+  \capa{1}{\node[parte=tceemorado] at (0,0) {\textbf{1.ª Marco conceptual}: requisitos, principios, criterios};
+    \node[parte=tceemorado] at (0,1.1) {\textbf{2.ª Normas de registro y valoración}};
+    \node[parte=tceemorado] at (0,2.2) {\textbf{3.ª Cuentas anuales}: modelos normal y abreviado};}
+  % 2: voluntarias
+  \capa{2}{\node[parte=tceegris] at (0,3.3) {\textbf{4.ª Cuadro de cuentas}};
+    \node[parte=tceegris] at (0,4.4) {\textbf{5.ª Definiciones y relaciones contables}};}
+  % 3: llaves
+  \capa{3}{\draw[llave=tceemorado] (3.8,2.65) -- (3.8,-0.45) node[midway,right=8pt,font=\small\bfseries,text=tceemorado] {obligatorias};
+    \draw[llave=tceegris] (3.8,4.85) -- (3.8,2.85) node[midway,right=8pt,font=\small,text=tceegris,align=left] {voluntarias (salvo\\registro y valoración)};}
+\end{tikzpicture}
+\end{document}

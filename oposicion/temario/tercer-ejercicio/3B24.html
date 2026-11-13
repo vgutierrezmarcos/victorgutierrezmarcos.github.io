@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonos: precio, ETTI, duración y convexidad | Tema 3.B.24 TCEE</title>
+    <meta name="description" content="Renta fija: precio y TIR de los bonos, curva de tipos (expectativas, prima por liquidez, hábitat, Nelson-Siegel), duración, convexidad e inmunización.">
+    <meta name="keywords" content="renta fija, precio de un bono, rentabilidad a vencimiento (TIR), estructura temporal de los tipos de interés, curva de tipos, tipos a plazo, teoría de las expectativas, prima por liquidez, hábitat preferente, Nelson-Siegel-Svensson, Vasicek y CIR, duración de Macaulay, duración modificada, convexidad, inmunización, calificación crediticia, Economía financiera">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Bonos: precio, ETTI, duración y convexidad | Tema 3.B.24 TCEE">
+    <meta property="og:description" content="Renta fija: precio y TIR de los bonos, curva de tipos (expectativas, prima por liquidez, hábitat, Nelson-Siegel), duración, convexidad e inmunización.">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B24.html">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Google Académico (etiquetas Highwire Press) -->
+    <meta name="citation_title" content="Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad">
+    <meta name="citation_author" content="Gutiérrez Marcos, Víctor">
+    <meta name="citation_publication_date" content="2026/11/13">
+    <meta name="citation_online_date" content="2026/11/13">
+    <meta name="citation_pdf_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B24.pdf">
+    <meta name="citation_abstract_html_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B24.html">
+    <meta name="citation_language" content="es">
+    <meta name="citation_publisher" content="victorgutierrezmarcos.es">
+    <meta name="citation_keywords" content="renta fija, precio de un bono, rentabilidad a vencimiento (TIR), estructura temporal de los tipos de interés, curva de tipos, tipos a plazo, teoría de las expectativas, prima por liquidez, hábitat preferente, Nelson-Siegel-Svensson, Vasicek y CIR, duración de Macaulay, duración modificada, convexidad, inmunización, calificación crediticia, Economía financiera">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../search-styles.css">
+    <link rel="stylesheet" href="../../../cookie-consent.css">
+    <link rel="stylesheet" href="../latex/tema.css">
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B24.html">
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">
+    <script>
+    window.MathJax = {
+        tex: { tags: 'ams', macros: { R: '\\mathbb{R}' } },
+        chtml: { scale: 0.97 },
+        options: { enableMenu: false }
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+            {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+            {"@type": "ListItem", "position": 3, "name": "Temario", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario.html"},
+            {"@type": "ListItem", "position": 4, "name": "Tercer ejercicio", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio.html"},
+            {"@type": "ListItem", "position": 5, "name": "Tema 3.B.24"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LearningResource", "Article"],
+        "@id": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B24.html#tema",
+        "url": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B24.html",
+        "name": "Bonos: precio, ETTI, duración y convexidad",
+        "headline": "Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.",
+        "description": "Renta fija: precio y TIR de los bonos, curva de tipos (expectativas, prima por liquidez, hábitat, Nelson-Siegel), duración, convexidad e inmunización.",
+        "author": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos", "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"},
+        "datePublished": "2026-11-13",
+        "dateModified": "2026-11-13",
+        "inLanguage": "es",
+        "educationalLevel": "universitario",
+        "learningResourceType": "apuntes",
+        "about": {"@type": "Thing", "name": "Economía financiera"},
+        "keywords": "renta fija, precio de un bono, rentabilidad a vencimiento (TIR), estructura temporal de los tipos de interés, curva de tipos, tipos a plazo, teoría de las expectativas, prima por liquidez, hábitat preferente, Nelson-Siegel-Svensson, Vasicek y CIR, duración de Macaulay, duración modificada, convexidad, inmunización, calificación crediticia, Economía financiera",
+        "isAccessibleForFree": true,
+        "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "copyrightHolder": {"@id": "https://www.victorgutierrezmarcos.es/#victor"},
+        "copyrightYear": "2026",
+        "copyrightNotice": "© 2026 Víctor Gutiérrez Marcos · Licencia CC BY-NC-ND 4.0",
+        "image": "https://www.victorgutierrezmarcos.es/social-preview.png",
+        "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://www.victorgutierrezmarcos.es/oposicion/temario/tercer-ejercicio/3B24.pdf"},
+        "isPartOf": {"@type": "Course", "name": "Temario de la oposición a Técnico Comercial y Economista del Estado (TCEE)", "url": "https://www.victorgutierrezmarcos.es/oposicion/temario.html", "provider": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos"}}
+    }
+    </script>
+</head>
+<body class="pagina-tema">
+    <header class="site-header">
+        <div class="header-content">
+            <p class="site-title"><a href="../../../index.html">Víctor Gutiérrez Marcos</a></p>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../../../index.html">Inicio</a></li>
+                <li><a href="../../index.html" class="active">Oposición</a></li>
+                <li><a href="../../../blog/index.html">Blog</a></li>
+                <!-- <li><a href="../../../comunidad.html">Comunidad</a></li> -->
+                <li><a href="../../../sobre-mi.html">Sobre mí</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="sub-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../../index.html">Introducción</a></li>
+                <li><a href="../../temario.html" class="active">Temario</a></li>
+                <li><a href="../../organizacion.html">Organización</a></li>
+                <li><a href="../../enlaces.html">Enlaces</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="tema-layout">
+            <aside class="tema-indice">
+                <nav aria-label="Índice del tema">
+                <p class="tema-indice-titulo">Índice</p>
+<ul>
+<li><a href="#esq:0" id="toc-esq:0">Introducción<span class="minutos" aria-hidden="true">2′30″</span></a></li>
+<li><a href="#sec:instrumentos" id="toc-sec:instrumentos"><span class="numero">I.</span> Los instrumentos de renta fija: precio y rendimiento<span class="minutos" aria-hidden="true">8′</span></a>
+<ul>
+<li><a href="#sec:definicion" id="toc-sec:definicion"><span class="numero">I.1.</span> Definición: renta fija frente a renta variable</a></li>
+<li><a href="#sec:elementos" id="toc-sec:elementos"><span class="numero">I.2.</span> Elementos de un bono</a></li>
+<li><a href="#sec:tipos" id="toc-sec:tipos"><span class="numero">I.3.</span> Tipos de bono</a></li>
+<li><a href="#sec:precio" id="toc-sec:precio"><span class="numero">I.4.</span> Determinación del precio de los bonos</a></li>
+<li><a href="#sec:rendimiento" id="toc-sec:rendimiento"><span class="numero">I.5.</span> Determinación del rendimiento de los bonos</a></li>
+</ul></li>
+<li><a href="#sec:etti" id="toc-sec:etti"><span class="numero">II.</span> La estructura temporal de los tipos de interés<span class="minutos" aria-hidden="true">9′</span></a>
+<ul>
+<li><a href="#sec:etti-definicion" id="toc-sec:etti-definicion"><span class="numero">II.1.</span> Definición: tipos de contado, tipos a plazo y construcción de la curva</a></li>
+<li><a href="#sec:teorias" id="toc-sec:teorias"><span class="numero">II.2.</span> Teorías explicativas</a></li>
+<li><a href="#sec:formas" id="toc-sec:formas"><span class="numero">II.3.</span> Formas y movimientos de la curva</a></li>
+</ul></li>
+<li><a href="#sec:riesgo" id="toc-sec:riesgo"><span class="numero">III.</span> Valoración del riesgo y del rendimiento: duración y convexidad<span class="minutos" aria-hidden="true">9′30″</span></a>
+<ul>
+<li><a href="#sec:riesgos" id="toc-sec:riesgos"><span class="numero">III.1.</span> Riesgos de la inversión en bonos</a></li>
+<li><a href="#sec:riesgo-tipo" id="toc-sec:riesgo-tipo"><span class="numero">III.2.</span> Riesgo de tipo de interés</a></li>
+</ul></li>
+<li><a href="#esq:31" id="toc-esq:31">Conclusión<span class="minutos" aria-hidden="true">1′</span></a></li>
+<li><a href="#anexo:derivaciones" id="toc-anexo:derivaciones">A. Anexo: derivaciones</a>
+<ul>
+<li><a href="#a.1.-la-duración-y-la-convexidad" id="toc-a.1.-la-duración-y-la-convexidad">A.1. La duración y la convexidad</a></li>
+<li><a href="#a.2.-la-teoría-de-las-expectativas-en-logaritmos" id="toc-a.2.-la-teoría-de-las-expectativas-en-logaritmos">A.2. La teoría de las expectativas en logaritmos</a></li>
+</ul></li>
+<li><a href="#anexo:clasificaciones" id="toc-anexo:clasificaciones">B. Anexo: clasificaciones de los bonos</a>
+<ul>
+<li><a href="#b.1.-según-la-naturaleza-del-emisor" id="toc-b.1.-según-la-naturaleza-del-emisor">B.1. Según la naturaleza del emisor</a></li>
+<li><a href="#b.2.-según-el-mercado-y-el-procedimiento-de-emisión" id="toc-b.2.-según-el-mercado-y-el-procedimiento-de-emisión">B.2. Según el mercado y el procedimiento de emisión</a></li>
+<li><a href="#b.3.-según-la-divisa-y-el-lugar-de-emisión" id="toc-b.3.-según-la-divisa-y-el-lugar-de-emisión">B.3. Según la divisa y el lugar de emisión</a></li>
+<li><a href="#b.4.-según-el-cupón" id="toc-b.4.-según-el-cupón">B.4. Según el cupón</a></li>
+</ul></li>
+<li><a href="#anexo:verdes" id="toc-anexo:verdes">C. Anexo: bonos verdes, sociales y vinculados a la sostenibilidad</a></li>
+<li><a href="#anexo:ejemplos" id="toc-anexo:ejemplos">D. Anexo: ejemplos resueltos</a>
+<ul>
+<li><a href="#d.1.-el-precio-por-arbitraje" id="toc-d.1.-el-precio-por-arbitraje">D.1. El precio por arbitraje</a></li>
+<li><a href="#d.2.-la-teoría-de-las-expectativas-con-números-redondos" id="toc-d.2.-la-teoría-de-las-expectativas-con-números-redondos">D.2. La teoría de las expectativas con números redondos</a></li>
+<li><a href="#d.3.-la-duración-y-la-convexidad-del-bono-del-ejemplo" id="toc-d.3.-la-duración-y-la-convexidad-del-bono-del-ejemplo">D.3. La duración y la convexidad del bono del ejemplo</a></li>
+</ul></li>
+<li><a href="#anexo:test" id="toc-anexo:test">E. Anexo: para el test</a></li>
+<li><a href="#bibliografia" id="toc-bibliografia">Bibliografía</a></li>
+</ul>
+                </nav>
+            </aside>
+            <article class="tema-documento">
+                <nav class="breadcrumb"><a href="../../temario.html">Temario</a><span>›</span><a href="../tercer-ejercicio.html">Tercer ejercicio</a><span>›</span>Tema 3.B.24</nav>
+                <header class="tema-cabecera">
+                    <p class="tema-codigo">Tema 3.B.24</p>
+                    <h1 class="tema-titulo">Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.</h1>
+                    <p class="tema-meta">Última actualización: 13/11/2026 · Cante: 30 minutos</p>
+                    <p class="tema-meta tema-paginas">Tema: 31 págs. · Anexos: 5 · Bibliografía: 5 (PDF)</p>
+                    <div class="tema-descargas">
+                        <a href="3B24.pdf" target="_blank">Descargar PDF</a>
+                        <a href="3B24.docx" download>Descargar Word</a>
+                        <a href="3B24-repaso.pdf" target="_blank">Ficha de repaso (4 págs.)</a>
+                        <a href="3B24-anterior.pdf" target="_blank" rel="nofollow">Versión anterior (PDF)</a>
+                        <a href="3B24-anterior.docx" download rel="nofollow">Versión anterior (Word)</a>
+                    </div>
+                    <p class="tema-resumen">Renta fija: precio y TIR de los bonos, curva de tipos (expectativas, prima por liquidez, hábitat, Nelson-Siegel), duración, convexidad e inmunización.</p>
+                </header>
+                <p class="aviso-exclusivo"><strong class="etiqueta-exclusivo">Exclusivo</strong> Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. Puedes usarlo libremente para tu estudio personal. No se autoriza su incorporación a otras plataformas, aplicaciones o servicios. <a href="https://www.victorgutierrezmarcos.es/condiciones-materiales.html">Condiciones de uso</a>.</p>
+<section id="esq:0" class="level2 unnumbered" data-minutos="2′30″">
+<h2 class="unnumbered" data-minutos="2′30″">Introducción<span class="minutos" aria-hidden="true">2′30″</span></h2>
+<ul>
+<li><p><strong><em>Enganche</em></strong>:</p>
+<ul>
+<li><p>«¡Cuán largo me lo fiáis!», responde don Juan en <em>El burlador de Sevilla</em> cada vez que le recuerdan que todo se acaba pagando. Prestar a 100 años es fiar muy largo.</p></li>
+<li><p>En junio de 2020, Austria colocó un bono a 100 años con un cupón del 0,85 %. Quien lo compró se aseguraba cobrar cada año sus cupones y recuperar su dinero en 2120, de uno de los Estados más solventes del mundo.</p></li>
+<li><p>Cuando los tipos de interés subieron en 2022 y 2023, ese bono pasó de valer unos 139 euros por cada 100 de nominal a unos 33, sin que Austria dejara de pagar un solo cupón. Lo que perdió valor no fue la promesa, sino el plazo.</p></li>
+<li><p>¿Cómo puede perder tres cuartas partes de su valor un activo de «renta fija»? Detrás está la pregunta de esta exposición: ¿cuánto vale una promesa de pago futura, por qué se paga distinto según el plazo y cuánto riesgo tiene una inversión que parece segura?</p></li>
+</ul></li>
+<li><p><strong><em>Relevancia</em></strong>:</p>
+<ul>
+<li><p><em>Microeconómica</em>: los bonos permiten a los Estados y a las empresas financiarse sin ceder la propiedad, y a los ahorradores, trasladar renta en el tiempo con unos pagos conocidos de antemano; su precio fija el coste de la deuda de toda la economía <a data-app="3B03.pdf" href="3B03.html" class="vertema"><span class="vertema">[ver tema 3.B.3]</span></a>.</p></li>
+<li><p><em>Macroeconómica</em>: el déficit público se financia emitiendo renta fija <a data-app="3A39.pdf" href="3A39.html" class="vertema"><span class="vertema">[ver tema 3.A.39]</span></a>; la política monetaria compra y vende bonos y, a través de la curva de tipos, llega al consumo y a la inversión <a data-app="3A37.pdf" href="3A37.html" class="vertema"><span class="vertema">[ver tema 3.A.37]</span></a>; y la pendiente de esa curva es uno de los mejores indicadores adelantados del ciclo.</p></li>
+<li><p><em>Dimensión</em>: a finales de 2025 había en el mundo 160,7 billones de dólares en títulos de renta fija, más que el valor de todas las bolsas, 157,8 billones.</p></li>
+</ul></li>
+<li><p><strong><em>Contextualización</em></strong>:</p>
+<ul>
+<li><p><em>Inversión y sistema financiero</em>: una <strong>inversión</strong> es el compromiso presente de dinero o de otros recursos con la expectativa de obtener beneficios futuros, y tiene 2 dimensiones, el <em>tiempo</em> y el <em>riesgo</em>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> El <strong>sistema financiero</strong> canaliza el ahorro de quien gasta menos de lo que gana hacia quien quiere gastar más: un trabajador que ahorra para su jubilación puede prestar a la empresa que necesita comprar maquinaria, y los 2 salen ganando.</p></li>
+<li><p><em>Las 3 familias de activos financieros</em>:</p>
+<ul>
+<li><p>los de <strong>renta variable</strong>, que dan derechos de propiedad y cuya remuneración depende de los resultados del emisor <a data-app="3B23.pdf" href="3B23.html" class="vertema"><span class="vertema">[ver tema 3.B.23]</span></a>;</p></li>
+<li><p>los de <strong>renta fija</strong>, cuya remuneración fija un contrato: unos pagos determinados hasta un vencimiento;</p></li>
+<li><p>los <strong>derivados</strong>, cuyo valor depende del precio de otro activo, el subyacente <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>.</p></li>
+</ul></li>
+<li><p><em>El bono</em>: un <strong>bono</strong> es un título que representa una parte de un préstamo: el emisor (prestatario) se compromete a pagar al tenedor (prestamista) unas cantidades fijadas en unas fechas fijadas, los cupones y, al vencimiento, el principal.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Es el instrumento principal de la renta fija, junto con las letras, los pagarés y los depósitos.</p></li>
+<li><p><em>Evolución</em>: desde los años 70, la liberalización de los movimientos de capital y la innovación financiera multiplicaron los títulos negociables (cédulas, titulizaciones, papel comercial) frente al préstamo y al depósito tradicionales; tras 2008, los Estados y los bancos centrales pasaron a ser los mayores emisores y compradores de bonos <a data-app="3A40.pdf" href="3A40.html" class="vertema"><span class="vertema">[ver tema 3.A.40]</span></a>; y hoy crecen los bonos verdes y los ligados a la sostenibilidad (anexo <a href="#anexo:verdes">C</a>).</p></li>
+</ul></li>
+<li><p><strong><em>Problemática</em></strong>:</p>
+<ul>
+<li><p>¿Qué es un instrumento de renta fija y cómo se fijan su precio y su rentabilidad?</p></li>
+<li><p>¿Por qué un mismo emisor paga tipos distintos según el plazo, y qué dice esa diferencia sobre el futuro?</p></li>
+<li><p>Si los pagos de un bono son fijos, ¿por qué es arriesgado, y cómo se mide y se gestiona ese riesgo?</p></li>
+</ul></li>
+<li><p><strong><em>Estructura</em></strong>:</p>
+<ul>
+<li><p>La exposición tiene 3 partes, que siguen el orden del título y van de lo más sencillo (un bono, un tipo) a lo más general (muchos plazos, muchos tipos) y al riesgo de la cartera:</p>
+<ul>
+<li><p>en el bloque <a href="#sec:instrumentos">I</a>, el instrumento: qué es un bono, qué tipos hay y cómo se calculan su precio y su rentabilidad;</p></li>
+<li><p>en el bloque <a href="#sec:etti">II</a>, el plazo: la estructura temporal de los tipos de interés, cómo se construye, qué teorías explican su forma y qué dicen sus movimientos;</p></li>
+<li><p>en el bloque <a href="#sec:riesgo">III</a>, el riesgo: qué riesgos tiene un bono y cómo se miden y se gestionan los de tipo de interés con la duración y la convexidad.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="esquema">
+<p><strong>3.B.24. Renta fija: precio, curva de tipos, duración y convexidad</strong><br />
+<a href="#esq:0">Introducción</a><span class="esq-tiempo">2′30″</span><br />
+<a href="#sec:instrumentos">I. Los instrumentos de renta fija: precio y rendimiento</a><span class="esq-tiempo">8′</span><br />
+<a href="#sec:definicion">1. Definición: renta fija frente a renta variable</a><br />
+<a href="#sec:elementos">2. Elementos de un bono</a><br />
+<a href="#sec:tipos">3. Tipos de bono</a><br />
+<a href="#sec:precio">4. Determinación del precio de los bonos</a><br />
+<a href="#sec:rendimiento">5. Determinación del rendimiento de los bonos</a><br />
+<a href="#sec:etti">II. La estructura temporal de los tipos de interés</a><span class="esq-tiempo">9′</span><br />
+<a href="#sec:etti-definicion">1. Definición: tipos de contado, tipos a plazo y construcción</a><br />
+<a href="#sec:teorias">2. Teorías explicativas</a><br />
+<a href="#sec:formas">3. Formas y movimientos de la curva</a><br />
+<a href="#sec:riesgo">III. Valoración del riesgo y del rendimiento: duración y convexidad</a><span class="esq-tiempo">9′30″</span><br />
+<a href="#sec:riesgos">1. Riesgos de la inversión en bonos</a><br />
+<a href="#sec:riesgo-tipo">2. Riesgo de tipo de interés</a><br />
+<a href="#esq:31">Conclusión</a><span class="esq-tiempo">1′</span></p>
+</div>
+<div class="notaopositor">
+<p>Reparto del cante: introducción, 2′30″; I, 8′ (I.1, 1′; I.2, 1′; I.3, 1′30″; I.4, 2′30″; I.5, 2′); II, 9′ (II.1, 2′30″: tipos de contado y a plazo, 1′30″, y Nelson-Siegel-Svensson, 1′; II.2, 4′: expectativas, 1′30″, prima por liquidez, 1′, segmentación y hábitat, 1′, y modelos de <span class="smallcaps">Vasicek</span> y CIR, 0′30″; II.3, 2′30″); III, 9′30″ (III.1, 1′30″; III.2, 8′: <span class="smallcaps">Malkiel</span>, 1′30″, <span class="smallcaps">Macaulay</span>, 2′, modificada, 1′30″, convexidad, 1′30″, y gestión, 1′30″), y conclusión, 1′. Los 4 epígrafes del título están en los 3 apartados, en su orden: los 2 primeros, en el bloque <a href="#sec:instrumentos">I</a>. Las funciones clave son el precio del bono (<a href="#eq:precio-bono">2</a>), el tipo largo (<a href="#eq:tipo-largo">6</a>) y la aproximación de la variación del precio con la duración y la convexidad (<a href="#eq:precio-duracion-convexidad">8</a>). Un mismo bono a 2 años sirve de ejemplo en todo el tema. No se cantan las cajas grises, las notas al pie ni los anexos: son para las preguntas del tribunal.</p>
+</div>
+<div class="anotaciones">
+<p><strong>Notación.</strong> Como en el canon del temario: <span class="math inline">\(P\)</span> es el precio del bono, <span class="math inline">\(\mathrm{VN}\)</span> su nominal, <span class="math inline">\(c\)</span> la tasa de cupón y <span class="math inline">\(C_t=c\,\mathrm{VN}\)</span> el cupón; <span class="math inline">\(\mathrm{FC}_t\)</span> el flujo de la fecha <span class="math inline">\(t\)</span> (el cupón y, en el vencimiento <span class="math inline">\(T\)</span>, también el nominal). <span class="math inline">\(y\)</span> es la rentabilidad a vencimiento o TIR (en los temas de macroeconomía, <span class="math inline">\(y\)</span> es otra cosa: el logaritmo de la producción). <span class="math inline">\(r_t\)</span> es el tipo de contado a <span class="math inline">\(t\)</span> años y <span class="math inline">\(f_t\)</span> el tipo a plazo implícito para el año que va de <span class="math inline">\(t-1\)</span> a <span class="math inline">\(t\)</span>. En las teorías de la estructura temporal, como en los temas de política monetaria <a data-app="3A37.pdf" href="3A37.html" class="vertema"><span class="vertema">[ver tema 3.A.37]</span></a>, <span class="math inline">\(i_t\)</span> es el tipo a un periodo y <span class="math inline">\(i^{(n)}_t\)</span> el tipo a <span class="math inline">\(n\)</span> periodos en la fecha <span class="math inline">\(t\)</span>, de modo que <span class="math inline">\(r_n\equiv i^{(n)}_0\)</span>. <span class="math inline">\(D\)</span> es la duración de <span class="smallcaps">Macaulay</span>, <span class="math inline">\(D^{\mathrm{mod}}\)</span> la modificada, <span class="math inline">\(D^{\mathrm{mon}}\)</span> la monetaria y <span class="math inline">\(\mathrm{Conv}\)</span> la convexidad; <span class="math inline">\(\Delta y\)</span>, la variación de la TIR. Todo en tiempo discreto y con cupones anuales; los derivados se valoran a menudo en tiempo continuo, con <span class="math inline">\(e^{-r_tt}\)</span> <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>.</p>
+</div>
+<div class="anotaciones">
+<p>Para ampliar: las monografías de <span class="smallcaps">Juan Mascareñas</span> sobre la gestión de la renta fija, la duración y la convexidad, en <a href="http://www.juanmascarenas.eu/monograf.htm" class="uri">http://www.<wbr>juanmascarenas.<wbr>eu/<wbr>monograf.<wbr>htm</a>.</p>
+</div>
+</section>
+<section id="sec:instrumentos" class="level2" data-minutos="8′">
+<h2 data-minutos="8′"><span class="numero">I.</span> Los instrumentos de renta fija: precio y rendimiento<span class="minutos" aria-hidden="true">8′</span></h2>
+<ul>
+<li><p><em>Conclusión anticipada</em>: un bono es una promesa de pagos fijados; vale lo que valen esos pagos descontados, cada uno al tipo de su plazo, y su rentabilidad a vencimiento resume esos tipos en uno solo. Por eso precio y rentabilidad se mueven siempre en sentido contrario.</p></li>
+<li><p><em>Nexo</em>: empezamos por el instrumento: qué lo distingue de una acción, qué elementos tiene, qué tipos hay y cómo se calculan su precio y su rendimiento.</p></li>
+</ul>
+<section id="sec:definicion" class="level3">
+<h3><span class="numero">I.1.</span> Definición: renta fija frente a renta variable</h3>
+<ul>
+<li><p>Un <strong>instrumento de renta fija</strong> es un título de deuda cuya remuneración fija un contrato: el emisor se compromete a pagar unos cupones y a devolver el principal en unas fechas determinadas, pase lo que pase con sus resultados.</p></li>
+<li><p>Se diferencia de la renta variable en 5 rasgos (tabla <a href="#tab:renta-fija-variable">1</a>) <a data-app="3B23.pdf" href="3B23.html" class="vertema"><span class="vertema">[ver tema 3.B.23]</span></a>:</p>
+<ul>
+<li><p><em>Esquema de pagos</em>: los fija el contrato, no la decisión de repartir dividendos. Aun así, el instrumento no está libre de riesgo, porque el emisor puede impagar (<em>default</em>).</p></li>
+<li><p><em>Vencimiento</em>: casi siempre tiene uno, en el que se devuelve el principal; la excepción es la deuda perpetua.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Por eso el tiempo es un elemento central de estos instrumentos.</p></li>
+<li><p><em>Derechos</em>: el bonista es un acreedor, no un socio, y solo tiene derechos económicos.</p></li>
+<li><p><em>Prelación</em>: si el emisor se liquida, cobra antes que los accionistas; y, dentro de la deuda, la ordinaria antes que la subordinada, que por eso paga más.</p></li>
+<li><p><em>Contabilidad</em>: para el emisor, el bono es pasivo, y para el inversor, activo <a data-app="3B01.pdf" href="3B01.html" class="vertema"><span class="vertema">[ver tema 3.B.1]</span></a>.</p></li>
+</ul></li>
+</ul>
+<div id="tab:renta-fija-variable">
+<table>
+<caption><span class="etiqueta">Tabla 1.–</span> Renta variable frente a renta fija</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Renta variable (acciones)</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Renta fija (bonos y obligaciones)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><em>Pagos</em></td>
+<td style="text-align: left;">Dependen de los resultados y de la decisión de reparto (dividendos)</td>
+<td style="text-align: left;">Fijados por contrato (cupones y principal)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Vencimiento</em></td>
+<td style="text-align: left;">No tiene: se recupera vendiendo en el mercado secundario</td>
+<td style="text-align: left;">Casi siempre tiene (salvo la deuda perpetua)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Derechos</em></td>
+<td style="text-align: left;">Económicos y políticos: el accionista es socio</td>
+<td style="text-align: left;">Solo económicos: el bonista es acreedor</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Prelación</em></td>
+<td style="text-align: left;">Cobra el último, tras todos los acreedores</td>
+<td style="text-align: left;">Cobra antes que los accionistas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Contabilidad del emisor</em></td>
+<td style="text-align: left;">Patrimonio neto</td>
+<td style="text-align: left;">Pasivo</td>
+</tr>
+<tr>
+<td class="celda-tceesalvia" style="text-align: left;"><em>Riesgo</em></td>
+<td class="celda-tceesalvia" style="text-align: left;">Mayor: el accionista es el titular residual</td>
+<td class="celda-tceesalvia" style="text-align: left;">Menor, pero con riesgo de impago y de tipo de interés</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 2</a>)</span> y de la <span class="citation" data-cites="LSC2010"><span class="smallcaps">Jefatura del Estado</span> (<a href="#ref-LSC2010" role="doc-biblioref">2010</a>)</span>. En fondo salvia, la consecuencia de las 5 diferencias.</em></p>
+</section>
+<section id="sec:elementos" class="level3">
+<h3><span class="numero">I.2.</span> Elementos de un bono</h3>
+<ul>
+<li><p>Los elementos de un bono son (figura <a href="#figu:linea-temporal-bono">1</a>):</p>
+<ul>
+<li><p>el <em>emisor</em> o prestatario, que se financia, y el <em>tenedor</em> o prestamista, que invierte;</p></li>
+<li><p>el <strong>valor nominal</strong> <span class="math inline">\(\mathrm{VN}\)</span> (o facial), el principal sobre el que se calculan los cupones y que se devuelve al vencimiento;</p></li>
+<li><p>el <strong>cupón</strong> <span class="math inline">\(C_t=c\,\mathrm{VN}\)</span>, el pago periódico de intereses, con <span class="math inline">\(c\)</span> la tasa de cupón;<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+<li><p>el <strong>vencimiento</strong> <span class="math inline">\(T\)</span>, la fecha en que termina la vida del título y se <em>amortiza</em>, es decir, se devuelve el principal;</p></li>
+<li><p>el <strong>precio</strong> <span class="math inline">\(P\)</span>, lo que se paga hoy por el bono, que se suele expresar en porcentaje del nominal: el bono cotiza <em>a la par</em> si <span class="math inline">\(P=\mathrm{VN}\)</span>, <em>bajo la par</em> si <span class="math inline">\(P&lt;\mathrm{VN}\)</span> y <em>sobre la par</em> si <span class="math inline">\(P&gt;\mathrm{VN}\)</span>.</p></li>
+</ul></li>
+<li><p>Con estos elementos, el <strong>flujo del bono</strong> en cada fecha es <span class="math inline">\(\mathrm{FC}_t=C_t\)</span> si <span class="math inline">\(t&lt;T\)</span> y <span class="math inline">\(\mathrm{FC}_T=C_T+\mathrm{VN}\)</span> al vencimiento.</p></li>
+<li><p>Siguiendo con el ejemplo que acompaña todo el tema, un bono a 2 años con un nominal de 1.000 € y un cupón anual del 10 % paga 100 € dentro de un año y 1.100 € dentro de 2. Hoy cotiza a 922,6 €: bajo la par.</p></li>
+</ul>
+<figure id="figu:linea-temporal-bono">
+<figcaption><span class="etiqueta">Figura 1.–</span> Los flujos de un bono a lo largo de su vida</figcaption>
+<img src="../fuentes/3B24/graficos/linea-temporal-bono.svg" style="width:85.0%" loading="lazy" alt="Figura 1.– Los flujos de un bono a lo largo de su vida" />
+<div class="fuente">
+<p>Fuente: elaboración propia.</p>
+</div>
+</figure>
+</section>
+<section id="sec:tipos" class="level3">
+<h3><span class="numero">I.3.</span> Tipos de bono</h3>
+<ul>
+<li><p>Los bonos se clasifican con muchos criterios; 4 son los que importan para valorarlos (tabla <a href="#tab:tipos-bono">2</a>). El detalle de cada clasificación, y las de los mercados, la emisión y la divisa, está en el anexo <a href="#anexo:clasificaciones">B</a>.</p>
+<ul>
+<li><p><em>Por el emisor</em>: instituciones supranacionales, Estados soberanos, administraciones territoriales y agencias, empresas y bancos, y vehículos de titulización. Cuanto peor es la calidad crediticia del emisor, más rentabilidad exige el mercado (<a href="#sec:rating">I.3.1</a>).</p></li>
+<li><p><em>Por el cupón</em>: fijo; variable, con un tipo de referencia más un diferencial;<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> indexado a la inflación; y <strong>cupón cero</strong>, que no paga cupones y se emite al descuento.</p></li>
+<li><p><em>Por las opciones que lleva dentro</em> <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>:</p>
+<ul>
+<li><p>el <strong>bono amortizable anticipadamente</strong> (<em>callable</em>) da al <em>emisor</em> el derecho a recomprarlo a un precio fijado antes del vencimiento: lo ejercerá si los tipos bajan, para refinanciarse más barato. Como el inversor le vende esa opción, exige a cambio un cupón más alto;</p></li>
+<li><p>el <strong>bono con opción de venta</strong> (<em>putable</em>) da al <em>tenedor</em> el derecho a devolverlo al emisor a un precio fijado: lo ejercerá si los tipos suben, para reinvertir a tipos más altos. Como el inversor compra esa opción, acepta un cupón más bajo, y esa es la ventaja del emisor;</p></li>
+<li><p>el <strong>bono convertible</strong> da al tenedor el derecho a cambiarlo por acciones del emisor en una proporción fijada;</p></li>
+<li><p>los <strong>bonos convertibles contingentes</strong> (CoCos), propios de los bancos, se convierten en acciones o pierden su valor automáticamente, sin que lo decidan ni el emisor ni el inversor, si el capital ordinario de nivel 1 (CET1) del banco cae por debajo de un umbral, de al menos el 5,125 % de sus activos ponderados por riesgo <a data-app="3B03.pdf" href="3B03.html" class="vertema"><span class="vertema">[ver tema 3.B.3]</span></a> <a data-app="3B27.pdf" href="3B27.html" class="vertema"><span class="vertema">[ver tema 3.B.27]</span></a>.</p></li>
+</ul></li>
+<li><p><em>Por el vencimiento</em>: en el <strong>mercado monetario</strong> se negocian los títulos a corto plazo, hasta un año (letras del Tesoro, pagarés de empresa, certificados de depósito),<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> y en el <strong>mercado de capitales</strong>, los de más plazo. El Tesoro emite letras a 3, 6, 9 y 12 meses, <em>bonos</em> de 2 a 5 años (hoy, a 3 y 5) y <em>obligaciones</em> de más de 5 (hoy, a 10, 15, 30 y 50) <a data-app="../cuarto-ejercicio/4B26.pdf" href="../cuarto-ejercicio/4B26.pdf" class="vertema"><span class="vertema">[ver tema 4.B.26]</span></a>.</p></li>
+</ul></li>
+</ul>
+<div id="tab:tipos-bono">
+<table>
+<caption><span class="etiqueta">Tabla 2.–</span> Los tipos de bono que importan para valorarlos</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Criterio</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Tipos</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Qué cambia para valorarlo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><em>Emisor</em></td>
+<td style="text-align: left;">Supranacional, soberano, territorial y agencias, empresa y banco, titulización</td>
+<td style="text-align: left;">El diferencial de crédito sobre el tipo sin riesgo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Cupón</em></td>
+<td style="text-align: left;">Fijo, variable, indexado, cupón cero</td>
+<td style="text-align: left;">Si los flujos se conocen de antemano y cuánto se cobra pronto</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Opciones</em></td>
+<td style="text-align: left;"><em>Callable</em>, <em>putable</em>, convertible, CoCo</td>
+<td style="text-align: left;">Los flujos dependen de los tipos o de las acciones</td>
+</tr>
+<tr>
+<td style="text-align: left;"><em>Vencimiento</em></td>
+<td style="text-align: left;">Letras, pagarés, bonos, obligaciones, perpetua</td>
+<td style="text-align: left;">El tipo de contado del plazo y la sensibilidad a los tipos</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 14</a>)</span>.</em></p>
+<section id="sec:rating" class="level4">
+<h4><span class="numero">I.3.1.</span> La calificación crediticia</h4>
+<ul>
+<li><p>La <strong>calificación crediticia</strong> (<em>rating</em>) es la opinión de una agencia sobre la capacidad y la voluntad del emisor de pagar a tiempo los intereses y el principal: mide el <em>riesgo de crédito</em>. Las 3 grandes agencias son S&amp;P, Moody’s y Fitch.</p></li>
+<li><p><em>La escala</em>: va de AAA (Aaa en Moody’s), la máxima solvencia, a D, el impago. Hasta BBB<span class="math inline">\(-\)</span> (Baa3) se habla de <strong>grado de inversión</strong>; por debajo, de <strong>grado especulativo</strong> o de alto rendimiento (<em>high yield</em>). La frontera importa: muchos inversores institucionales solo pueden comprar grado de inversión <a data-app="3B03.pdf" href="3B03.html" class="vertema"><span class="vertema">[ver tema 3.B.3]</span></a>. España tiene hoy una A<span class="math inline">\(+\)</span> de S&amp;P y de Scope, una A3 de Moody’s, una A de Fitch y una A (<em>high</em>) de DBRS, todas con perspectiva estable: grado de inversión, 4 o 5 escalones por debajo de la AAA.</p></li>
+<li><p><em>El diferencial de crédito</em>: a igual plazo, un bono rinde más cuanto peor es su calificación. La diferencia con el bono sin riesgo del mismo plazo es el <strong>diferencial de crédito</strong>, que compensa la probabilidad de impago y la pérdida esperada, la menor liquidez y la aversión al riesgo de los inversores; junto con los impuestos, forma la <strong>estructura de riesgo de los tipos de interés</strong>.</p></li>
+<li><p><em>La prima de riesgo</em>: entre Estados de la zona del euro, el diferencial con el bono alemán a 10 años es la <strong>prima de riesgo</strong> (gráfico <a href="#fig:prima-riesgo-espana">1</a>). La española llegó a 555 puntos básicos de media en julio de 2012, el máximo desde la creación del euro, y era de 45 en septiembre de 2026 <a data-app="3A39.pdf" href="3A39.html" class="vertema"><span class="vertema">[ver tema 3.A.39]</span></a> <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=3.B.43" href="../tema-no-disponible.html?tema=3.B.43" class="vertema"><span class="vertema">[ver tema 3.B.43]</span></a>.</p></li>
+<li><p><em>La regulación</em>: tras su papel en la crisis de las titulizaciones, las agencias que operan en la Unión necesitan registro y supervisión de la Autoridad Europea de Valores y Mercados <a data-app="3B26.pdf" href="3B26.html" class="vertema"><span class="vertema">[ver tema 3.B.26]</span></a> <a data-app="3B27.pdf" href="3B27.html" class="vertema"><span class="vertema">[ver tema 3.B.27]</span></a>.</p></li>
+</ul>
+<figure id="fig:prima-riesgo-espana">
+<figcaption><span class="etiqueta">Gráfico 1.–</span> Prima de riesgo de España frente a Alemania, 1993-2026</figcaption>
+<img src="../fuentes/3B24/graficos/prima-riesgo-espana.svg" style="width:92.0%" loading="lazy" alt="Gráfico 1.– Prima de riesgo de España frente a Alemania, 1993-2026" />
+<div class="fuente">
+<p>Fuente: BCE, tipos de interés a largo plazo a efectos de convergencia; diferencial, cálculo propio. Media mensual del rendimiento a 10 años de España menos el de Alemania, en puntos básicos.</p>
+</div>
+</figure>
+</section>
+</section>
+<section id="sec:precio" class="level3">
+<h3><span class="numero">I.4.</span> Determinación del precio de los bonos</h3>
+<ul>
+<li><p><em>En el mercado primario</em>, el bono sale a la par si el cupón iguala la rentabilidad que exige el mercado (lo habitual en los bonos de empresa, que fijan el cupón para colocarse cerca de la par), bajo la par si el cupón es menor (siempre en las letras y en los bonos cupón cero, que no pagan cupón) y sobre la par si es mayor. Los bonos y obligaciones del Estado se subastan por precio y pueden salir por encima o por debajo de la par, sobre todo cuando se reabre una emisión antigua con otro cupón.</p></li>
+<li><p><em>En el mercado secundario</em>, el precio lo fija el arbitraje, en 2 pasos:</p>
+<ul>
+<li><p><em>Idea</em>: un bono es una cartera de pagos futuros, y cada pago vale hoy lo que vale un euro de su fecha. Por eso el precio es el <strong>valor actual de sus flujos</strong>, descontado cada uno con el <strong>tipo de contado</strong> (<em>spot</em>) <span class="math inline">\(r_t\)</span> de su plazo: el que rinde hoy un bono sin cupones que paga solo en <span class="math inline">\(t\)</span> (figura <a href="#figu:linea-temporal-bono">1</a>), <span id="eq:precio-contado"></span><span class="math display">\[\tag{1}
+    P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\frac{C_1}{1+r_1}+\frac{C_2}{(1+r_2)^2}+\dots+\frac{C_T+\mathrm{VN}}{(1+r_T)^T}.\]</span></p></li>
+<li><p><em>Por qué ese precio</em>: si el bono costara menos que la suma de sus pagos valorados uno a uno, bastaría comprarlo, separarlo en sus pagos y venderlos por separado para ganar sin riesgo; y al revés. El arbitraje lleva el precio a (<a href="#eq:precio-contado">1</a>). A ese precio, comprar el bono tiene un valor actual neto nulo, lo que no quiere decir que no rinda, sino que rinde exactamente lo que exige el mercado por ese plazo y ese riesgo.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p></li>
+</ul></li>
+<li><p><em>El tipo de descuento</em>: cada <span class="math inline">\(r_t\)</span> es el tipo sin riesgo de su plazo más una prima por el riesgo del emisor, la liquidez y el resto de riesgos (<a href="#sec:rating">I.3.1</a>, <a href="#sec:riesgos">III.1</a>).</p></li>
+<li><p>Siguiendo con nuestro bono a 2 años, que cuesta 922,6 €, supongamos que un bono cupón cero a 1 año que paga 100 € cuesta 90,9 €:</p>
+<ul>
+<li><p>el primer cupón del bono, de 100 €, vale hoy lo mismo que ese bono cupón cero: 90,9 €;</p></li>
+<li><p>por arbitraje, el pago de 1.100 € del segundo año vale el resto, <span class="math inline">\(922{,}6-90{,}9=831{,}7\)</span> €: es el precio de un bono cupón cero a 2 años con un nominal de 1.100 €;</p></li>
+<li><p>los tipos de contado salen de esos precios: <span class="math inline">\(r_1=100/90{,}9-1=10{,}01\)</span> % y <span class="math inline">\(r_2=(1.100/831{,}7)^{1/2}-1=15{,}00\)</span> %.</p></li>
+</ul></li>
+<li><p><em>Con un solo tipo</em>: en la práctica, los bonos se cotizan con un único tipo de descuento para todos sus flujos, la <strong>rentabilidad a vencimiento</strong> o TIR del bono, <span class="math inline">\(y\)</span> (<a href="#sec:rendimiento">I.5</a>):</p>
+<div class="funcionclave">
+<div id="eq:precio-bono">
+
+</div>
+<p><span class="math display">\[P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+y)^t}\tag{2}\]</span></p>
+</div>
+<p>La primera igualdad es la del arbitraje; la segunda define <span class="math inline">\(y\)</span>. Si el cupón iguala la TIR (<span class="math inline">\(c=y\)</span>), el bono vale la par; si es mayor, cotiza sobre la par, y si es menor, bajo la par.</p></li>
+<li><p><em>Evolución con el tiempo</em>: si la TIR no cambia, el precio converge al nominal a medida que se acerca el vencimiento (gráfico <a href="#fig:pull-to-par">2</a>). El bono sobre la par baja, porque cada año queda un año menos en que su cupón supera la rentabilidad del mercado; el bono bajo la par sube, porque se acerca el cobro del nominal. En los 2 casos, el cupón más la variación del precio dan cada año exactamente la TIR.</p></li>
+</ul>
+<figure id="fig:pull-to-par">
+<figcaption><span class="etiqueta">Gráfico 2.–</span> El precio de un bono converge a la par</figcaption>
+<img src="../fuentes/3B24/graficos/pull-to-par.svg" style="width:70.0%" loading="lazy" alt="Gráfico 2.– El precio de un bono converge a la par" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 14</a>)</span>. 2 bonos a 30 años, de nominal 100, con una TIR constante del 8 % y cupones del 12 % y del 4 %.</p>
+</div>
+</figure>
+<ul>
+<li><p><em>Entre 2 cupones</em>: quien vende un bono entre 2 fechas de pago tiene derecho a la parte del cupón que se ha devengado mientras lo tuvo, el <strong>cupón corrido</strong>: <span class="math display">\[\mathrm{CC}=C\cdot\frac{\text{días desde el último cupón}}{\text{días entre los 2 cupones}} .\]</span> Los bonos cotizan por su <strong>precio limpio</strong> (<em>ex cupón</em>), pero el comprador paga el <strong>precio sucio</strong>, el limpio más el cupón corrido. Así, la cotización no da un salto cada vez que se paga un cupón: el que lo da es el precio sucio, que sube día a día y cae el día del pago (gráfico <a href="#fig:precio-sucio">3</a>).</p></li>
+</ul>
+<figure id="fig:precio-sucio">
+<figcaption><span class="etiqueta">Gráfico 3.–</span> Precio limpio y precio sucio</figcaption>
+<img src="../fuentes/3B24/graficos/precio-sucio.svg" style="width:70.0%" loading="lazy" alt="Gráfico 3.– Precio limpio y precio sucio" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 14</a>)</span> y <span class="citation" data-cites="MorenoGutierrez2018RentaFija"><span class="smallcaps">Moreno</span> y <span class="smallcaps">Gutiérrez</span> (<a href="#ref-MorenoGutierrez2018RentaFija" role="doc-biblioref">2018</a>)</span>.</p>
+</div>
+</figure>
+</section>
+<section id="sec:rendimiento" class="level3">
+<h3><span class="numero">I.5.</span> Determinación del rendimiento de los bonos</h3>
+<ul>
+<li><p>A un inversor le interesa, más que el precio, cuánto rinde el bono. Precio y rendimiento son las 2 caras de la misma moneda, y hay 3 medidas principales, de la más sencilla a la más completa.</p></li>
+<li><p><em>La rentabilidad corriente</em> (<em>current yield</em>) es el cupón entre el precio, <span class="math inline">\(C/P\)</span>. Es sencilla, pero olvida la ganancia o la pérdida que se obtiene al cobrar el nominal y el valor temporal del dinero.</p></li>
+<li><p><em>La rentabilidad a vencimiento</em> (<em>yield to maturity</em>), <span class="math inline">\(y\)</span>, es el tipo de descuento único que iguala el valor actual de los flujos con el precio: el <span class="math inline">\(y\)</span> que resuelve (<a href="#eq:precio-bono">2</a>). Es la tasa interna de rentabilidad (TIR) del bono como proyecto de inversión <a data-app="3B02.pdf" href="3B02.html" class="vertema"><span class="vertema">[ver tema 3.B.2]</span></a>.</p>
+<ul>
+<li><p><em>Sus 3 supuestos</em>: la TIR es lo que se gana si se cumplen 3 condiciones:</p>
+<ol>
+<li><p>que se mantiene el bono hasta el final;</p></li>
+<li><p>que el emisor paga, en la cuantía y la fecha acordadas;</p></li>
+<li><p>que los cupones se reinvierten a esa misma tasa.</p></li>
+</ol></li>
+<li><p><em>Relación inversa con el precio</em>: para un bono ya emitido, con los flujos fijados, cuanto más alto el precio, más baja la TIR, y la relación es convexa (gráfico <a href="#fig:precio-rentabilidad">4</a>). Si los tipos de mercado suben, los bonos ya emitidos pierden valor, porque los nuevos pagan más <a data-app="3A35.pdf" href="3A35.html" class="vertema"><span class="vertema">[ver tema 3.A.35]</span></a>.</p></li>
+<li><p><em>Estática comparativa</em>: la TIR sube con el cupón y baja con el precio; con el vencimiento, depende: alargar el plazo sube la TIR de un bono sobre la par y la baja de uno bajo la par.</p></li>
+<li><p><em>Qué es y qué no es</em>: es un promedio de los tipos de contado de los plazos del bono, ponderado por sus flujos, no el tipo de interés de un plazo. En nuestro bono, la TIR es del 14,75 %: entre el 10,01 % del primer año y el 15,00 % del segundo, y muy cerca de este porque casi todo el valor se cobra al final. Por eso 2 bonos al mismo plazo y con cupones distintos tienen TIR distintas aunque la curva sea la misma (<strong>efecto cupón</strong>), y comparar bonos solo por su TIR puede engañar.</p></li>
+</ul></li>
+<li><p><em>Variantes</em>:</p>
+<ul>
+<li><p>si el bono es amortizable anticipadamente, la <strong>rentabilidad hasta la amortización</strong> (<em>yield to call</em>) es la TIR suponiendo que el emisor lo amortiza en la primera fecha posible, <span class="math inline">\(T_c\)</span>, al precio de amortización, <span class="math inline">\(P_c\)</span>; se compara con la TIR y se toma la menor;</p></li>
+<li><p>la <strong>rentabilidad realizada</strong> (al horizonte <span class="math inline">\(H\)</span>) es la que de verdad se obtiene con los tipos a los que se reinvierten los cupones y el precio al que se vende el bono en <span class="math inline">\(H\)</span>. Coincide con la TIR solo si se cumplen los 3 supuestos; es la que protege la inmunización (<a href="#sec:gestion">III.2.5</a>);</p></li>
+<li><p>las <strong>letras del Tesoro</strong> no pagan cupón: se emiten al descuento y, a un año o menos, su rentabilidad se calcula con interés simple y base 360, <span class="math inline">\(P=\mathrm{VN}/(1+y\,d/360)\)</span>, con <span class="math inline">\(d\)</span> los días hasta el vencimiento.</p></li>
+</ul></li>
+</ul>
+<figure id="fig:precio-rentabilidad">
+<figcaption><span class="etiqueta">Gráfico 4.–</span> La curva precio-rentabilidad: convexa y decreciente</figcaption>
+<img src="../fuentes/3B24/graficos/precio-rentabilidad.svg" style="width:68.0%" loading="lazy" alt="Gráfico 4.– La curva precio-rentabilidad: convexa y decreciente" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 16</a>)</span>. La recta es la aproximación de la duración modificada (<a href="#sec:duracion-modificada">III.2.3</a>) y la distancia vertical a la curva, el error que corrige la convexidad (<a href="#sec:convexidad">III.2.4</a>).</p>
+</div>
+</figure>
+<ul>
+<li><p><em>Con opciones</em>, el precio ya no depende solo de la TIR, sino también de la probabilidad de que se ejerza la opción (gráfico <a href="#fig:opciones-bono">5</a>):</p>
+<ul>
+<li><p>en el <em>callable</em>, si los tipos bajan mucho, el precio deja de subir y se queda cerca del precio de amortización, porque el emisor lo recomprará: la curva precio-rentabilidad se dobla hacia abajo y la convexidad se vuelve <em>negativa</em> (<a href="#sec:convexidad">III.2.4</a>); si los tipos son altos, se comporta como un bono ordinario;</p></li>
+<li><p>en el <em>putable</em>, si los tipos suben mucho, el precio deja de bajar, porque el tenedor lo devolverá al precio pactado: la curva tiene un suelo.</p></li>
+</ul></li>
+<li><p><em>Recapitulación</em>: el precio de un bono es el valor de sus flujos con los tipos de cada plazo, y la TIR los resume en uno. Para valorar bien hay que conocer esos tipos de cada plazo: la curva de tipos.</p></li>
+</ul>
+<figure id="fig:opciones-bono">
+<figcaption><span class="etiqueta">Gráfico 5.–</span> Bonos con opciones: <em>callable</em> y <em>putable</em> frente al bono ordinario</figcaption>
+<img src="../fuentes/3B24/graficos/opciones-bono.svg" style="width:95.0%" loading="lazy" alt="Gráfico 5.– Bonos con opciones: callable y putable frente al bono ordinario" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 14</a>)</span> y <span class="citation" data-cites="AnalystNotes2022Callable"><span class="smallcaps">AnalystNotes</span> (<a href="#ref-AnalystNotes2022Callable" role="doc-biblioref">2022</a>)</span>.</p>
+</div>
+</figure>
+</section>
+</section>
+<section id="sec:etti" class="level2" data-minutos="9′">
+<h2 data-minutos="9′"><span class="numero">II.</span> La estructura temporal de los tipos de interés<span class="minutos" aria-hidden="true">9′</span></h2>
+<ul>
+<li><p><em>Conclusión anticipada</em>: el tipo largo es la media de los tipos cortos que se esperan más una prima por plazo. Por eso la curva sirve a la vez para valorar los bonos, para leer lo que el mercado espera de los tipos y del ciclo y para que el banco central llegue a los tipos largos.</p></li>
+<li><p><em>Nexo</em>: una vez visto un bono con un solo tipo, pasamos a la relación entre los tipos y el plazo: cómo se define, cómo se construye, qué teorías la explican y qué dicen sus formas y sus movimientos.</p></li>
+</ul>
+<section id="sec:etti-definicion" class="level3">
+<h3><span class="numero">II.1.</span> Definición: tipos de contado, tipos a plazo y construcción de la curva</h3>
+<ul>
+<li><p>La <strong>estructura temporal de los tipos de interés</strong> (ETTI) es la relación, en una fecha, entre los tipos de contado y su plazo, <span class="math inline">\(r_1, r_2, \dots, r_T\)</span>, para títulos del mismo emisor o de la misma calidad crediticia. Su gráfico es la <strong>curva de tipos</strong>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
+<li><p><em>Por qué sirve para valorar</em>: cada flujo de un bono se descuenta con el tipo de su plazo (<a href="#eq:precio-contado">1</a>), y el tipo de contado de cada plazo es la rentabilidad de un bono cupón cero a ese plazo, que existe de verdad: los <strong><em>strips</em></strong>.</p>
+<ul>
+<li><p>Los bonos y obligaciones del Estado español son <em>segregables</em> desde julio de 1997: cada uno se puede separar en tantos bonos cupón cero como pagos tiene (un bono a 5 años da 6 <em>strips</em>, 5 de cupón y 1 del principal), negociarlos por separado y reconstituirlo después.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
+<li><p>Si el bono valiera algo distinto de la suma de sus <em>strips</em>, se ganaría sin riesgo separándolo o reconstituyéndolo: el arbitraje obliga a que la curva cupón cero valore a la vez todos los bonos del mismo emisor.</p></li>
+</ul></li>
+</ul>
+<section id="sec:forward" class="level4">
+<h4><span class="numero">II.1.1.</span> Tipos de contado y tipos a plazo</h4>
+<ul>
+<li><p>El <strong>tipo de contado</strong> es el que el mercado aplica hoy a un préstamo que empieza hoy; el <strong>tipo a plazo</strong> (<em>forward</em>) <span class="math inline">\(f_t\)</span>, el que se puede pactar hoy para un préstamo que empezará en <span class="math inline">\(t-1\)</span> y vencerá en <span class="math inline">\(t\)</span>. No hace falta un mercado de <em>forwards</em>: la curva de contado ya lo implica.</p></li>
+<li><p>Invertir 1 euro a <span class="math inline">\(t\)</span> años tiene que dar lo mismo, sin riesgo, que invertirlo a <span class="math inline">\(t-1\)</span> años y pactar hoy reinvertirlo el año siguiente al tipo a plazo: <span id="eq:forward"></span><span class="math display">\[\tag{3}
+  (1+r_t)^t=(1+r_{t-1})^{t-1}\,(1+f_t)
+  \quad\Longleftrightarrow\quad
+  1+f_t=\frac{(1+r_t)^t}{(1+r_{t-1})^{t-1}} .\]</span> Encadenando, <span class="math inline">\((1+r_n)^n=(1+r_1)(1+f_2)\cdots(1+f_n)\)</span>: el tipo de contado a <span class="math inline">\(n\)</span> años es la media geométrica del tipo a 1 año y de los tipos a plazo de los años siguientes. Si la curva es creciente, los tipos a plazo están por encima de los de contado.</p></li>
+<li><p>Con nuestro bono, <span class="math inline">\(1+f_2=1{,}15^2/1{,}1001\)</span>, así que <span class="math inline">\(f_2=20{,}22\)</span> %: la curva sube con fuerza porque el tipo implícito para el segundo año dobla al del primero. En aproximación lineal, <span class="math inline">\(f_2\simeq2r_2-r_1=20{,}0\)</span> %.</p></li>
+</ul>
+</section>
+<section id="sec:bootstrapping" class="level4">
+<h4><span class="numero">II.1.2.</span> Cómo se construye la curva: el <em>bootstrapping</em></h4>
+<ul>
+<li><p>Los <em>strips</em> y las letras no cubren todos los plazos ni son siempre líquidos, así que la curva se estima con los precios de los bonos con cupón. El método más sencillo es el <strong><em>bootstrapping</em></strong>:</p>
+<ul>
+<li><p><em>Paso 1</em>: el tipo a 1 año, <span class="math inline">\(r_1\)</span>, sale de una letra o de un bono que vence en un año.</p>
+<ul>
+<li><p>En nuestro ejemplo, <span class="math inline">\(r_1=10{,}01\)</span> %.</p></li>
+</ul></li>
+<li><p><em>Paso 2</em>: con <span class="math inline">\(r_1\)</span> conocido, el precio de un bono a 2 años da <span class="math inline">\(r_2\)</span>, que es la única incógnita de (<a href="#eq:precio-contado">1</a>).</p>
+<ul>
+<li><p>En nuestro ejemplo, <span class="math inline">\(r_2=15{,}00\)</span> %: es lo que se hizo en el apartado <a href="#sec:precio">I.4</a>.</p></li>
+</ul></li>
+<li><p><em>Paso 3</em>: con <span class="math inline">\(r_1\)</span> y <span class="math inline">\(r_2\)</span>, el bono a 3 años da <span class="math inline">\(r_3\)</span>, y así sucesivamente, de menor a mayor plazo.</p></li>
+</ul></li>
+<li><p>Es exacto, pero necesita un bono por plazo y la curva sale a saltos, sensible a cualquier precio raro. Por eso los bancos centrales ajustan una forma funcional a toda la curva.</p></li>
+</ul>
+</section>
+<section id="sec:nss" class="level4">
+<h4><span class="numero">II.1.3.</span> El modelo de Nelson-Siegel-Svensson</h4>
+<section id="a-idea" class="level5">
+<h5>a) Idea</h5>
+<ul>
+<li><p>En lugar de un tipo por bono, suponer que toda la curva tiene una forma suave que depende de muy pocos parámetros, y elegirlos para que los precios teóricos se parezcan lo más posible a los de mercado. Lo propusieron <span class="smallcaps">Charles Nelson</span> y <span class="smallcaps">Andrew Siegel</span> (1987) con 3 factores, y <span class="smallcaps">Lars Svensson</span> (1994) lo amplió con un cuarto.</p></li>
+</ul>
+</section>
+<section id="b-modelo" class="level5">
+<h5>b) Modelo</h5>
+<section id="i-supuestos" class="level6">
+<h6>i) Supuestos</h6>
+<ul>
+<li><p>El tipo de contado a <span class="math inline">\(n\)</span> años es una función suave del plazo, la misma para todos los bonos del emisor.</p></li>
+<li><p>Los tipos a muy largo plazo tienden a un nivel constante, y el tipo a plazo cero es el tipo más corto.</p></li>
+</ul>
+</section>
+<section id="ii-desarrollo" class="level6">
+<h6>ii) Desarrollo</h6>
+<ul>
+<li><p>La curva de <span class="smallcaps">Svensson</span>, con <span class="math inline">\(n\)</span> el plazo en años, es <span id="eq:svensson"></span><span class="math display">\[\tag{4}
+  r(n)=\beta_0+\beta_1\,\frac{1-e^{-n/\tau_1}}{n/\tau_1}+\beta_2\Big[\frac{1-e^{-n/\tau_1}}{n/\tau_1}-e^{-n/\tau_1}\Big]+\beta_3\Big[\frac{1-e^{-n/\tau_2}}{n/\tau_2}-e^{-n/\tau_2}\Big];\]</span> sin el último término es la de <span class="smallcaps">Nelson</span> y <span class="smallcaps">Siegel</span>. Las <span class="math inline">\(\beta\)</span> son locales de este modelo: no son la beta del CAPM.</p></li>
+<li><p><em>Qué es cada parámetro</em> (gráfico <a href="#fig:nss-factores">6</a>):</p>
+<ul>
+<li><p><span class="math inline">\(\beta_0\)</span> es el <em>nivel</em>, el tipo al que tiende la curva a muy largo plazo, porque los otros términos se anulan cuando <span class="math inline">\(n\)</span> crece;</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span> es la <em>pendiente</em>: su término pesa 1 en el plazo cero y se va apagando, así que el tipo más corto es <span class="math inline">\(\beta_0+\beta_1\)</span> y la curva sube si <span class="math inline">\(\beta_1&lt;0\)</span>;</p></li>
+<li><p><span class="math inline">\(\beta_2\)</span> y <span class="math inline">\(\beta_3\)</span> son la <em>curvatura</em>: sus términos valen cero en los 2 extremos y forman una joroba (o un valle, si son negativos) en los plazos intermedios, cerca de <span class="math inline">\(\tau_1\)</span> y de <span class="math inline">\(\tau_2\)</span>.</p></li>
+</ul></li>
+<li><p>Los parámetros se eligen cada día para que los precios que da (<a href="#eq:precio-contado">1</a>) con esa curva se acerquen lo más posible a los observados.</p></li>
+</ul>
+</section>
+<section id="iii-implicaciones" class="level6">
+<h6>iii) Implicaciones</h6>
+<ul>
+<li><p>Con 4 a 6 números se resume toda la curva, y se obtienen tipos de contado y a plazo para cualquier plazo, aunque no haya bonos de ese plazo.</p></li>
+<li><p>Los 3 factores son los 3 movimientos que se observan en la curva: nivel, pendiente y curvatura (<a href="#sec:movimientos">II.3.2</a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="c-extensiones" class="level5">
+<h5>c) Extensiones</h5>
+<ul>
+<li><p><span class="smallcaps">Francis Diebold</span> y <span class="smallcaps">Canlin Li</span> (2006) dejan fijo <span class="math inline">\(\tau_1\)</span> y tratan <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> y <span class="math inline">\(\beta_2\)</span> como factores de nivel, pendiente y curvatura que cambian cada día y siguen un proceso autorregresivo: así la curva se puede predecir.</p></li>
+</ul>
+</section>
+<section id="d-evidencia-empírica" class="level5">
+<h5>d) Evidencia empírica</h5>
+<ul>
+<li><p>El BCE publica cada día con el modelo de <span class="smallcaps">Svensson</span> la curva de la deuda de los Estados de la zona del euro con calificación AAA y la de todos ellos, y muchos bancos centrales usan <span class="smallcaps">Nelson</span> y <span class="smallcaps">Siegel</span> o <span class="smallcaps">Svensson</span>.</p></li>
+<li><p>El 10 de noviembre de 2026, la curva AAA daba un 2,62 % a 3 meses, un 3,02 % a 2 años, un 3,33 % a 10 y un 3,57 % a 30: suavemente creciente. El 3 de julio de 2023, en plena subida de los tipos oficiales, estaba invertida: 3,39 % a 3 meses, 3,13 % a 2 años y 2,48 % a 10. Y el 30 de diciembre de 2020 era negativa en todos los plazos hasta 30 años (gráfico <a href="#fig:curva-bce-zona-euro">7</a>). Con los parámetros que publica el BCE, (<a href="#eq:svensson">4</a>) reproduce sus tipos al tercer decimal.</p></li>
+</ul>
+</section>
+<section id="e-valoración" class="level5">
+<h5>e) Valoración</h5>
+<ul>
+<li><p>Es suave, parsimonioso y fácil de interpretar, y por eso es el estándar de los bancos centrales.</p></li>
+<li><p>Pero es una forma funcional, no una teoría: no impone la ausencia de arbitraje entre plazos ni dice por qué la curva tiene la forma que tiene. Para eso hacen falta las teorías.</p></li>
+</ul>
+<figure id="fig:nss-factores">
+<figcaption><span class="etiqueta">Gráfico 6.–</span> Los 3 factores de Nelson y Siegel: nivel, pendiente y curvatura</figcaption>
+<img src="../fuentes/3B24/graficos/nss-factores.svg" style="width:66.0%" loading="lazy" alt="Gráfico 6.– Los 3 factores de Nelson y Siegel: nivel, pendiente y curvatura" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="NelsonSiegel1987Parsimonious"><span class="smallcaps">Nelson</span> y <span class="smallcaps">Siegel</span> (<a href="#ref-NelsonSiegel1987Parsimonious" role="doc-biblioref">1987</a>)</span> y <span class="citation" data-cites="DieboldLi2006Forecasting"><span class="smallcaps">Diebold</span> y <span class="smallcaps">Li</span> (<a href="#ref-DieboldLi2006Forecasting" role="doc-biblioref">2006</a>)</span>, con <span class="math inline">\(\tau_1=1{,}5\)</span> años. Peso de cada factor en el tipo de contado de cada plazo.</p>
+</div>
+</figure>
+<figure id="fig:curva-bce-zona-euro">
+<figcaption><span class="etiqueta">Gráfico 7.–</span> Curva de tipos al contado de la zona del euro (Svensson, AAA)</figcaption>
+<img src="../fuentes/3B24/graficos/curva-bce-zona-euro.svg" style="width:88.0%" loading="lazy" alt="Gráfico 7.– Curva de tipos al contado de la zona del euro (Svensson, AAA)" />
+<div class="fuente">
+<p>Fuente: BCE, curvas de rendimiento de la zona del euro, deuda de los Estados con calificación AAA. Tipos cupón cero, capitalización continua.</p>
+</div>
+</figure>
+<div class="anotaciones">
+<p><strong>Las curvas de España y de Estados Unidos.</strong> El gráfico <a href="#fig:curvas-espana-eeuu">8</a> da las curvas de rentabilidades (TIR de bonos con cupón, no tipos cupón cero) en las mismas 3 situaciones:</p>
+<ul>
+<li><p>España, en septiembre de 2026, de un 2,45 % a 3 meses a un 4,53 % a 30 años: creciente; en julio de 2023, con el tramo corto invertido (la letra a 12 meses al 3,73 % y el bono a 5 años al 3,26 %); y en diciembre de 2020, negativa hasta 5 años (<span class="math inline">\(-0{,}42\)</span> %), con el bono a 10 años al 0,04 %;</p></li>
+<li><p>Estados Unidos, el 10 de noviembre de 2026, de un 4,30 % a 3 meses a un 4,98 % a 10 años; el 3 de julio de 2023, invertida (5,44 % a 3 meses y 3,86 % a 10 años); y el 31 de diciembre de 2020, con tipos casi nulos en el tramo corto.</p></li>
+</ul>
+</div>
+<figure id="fig:curvas-espana-eeuu">
+<figcaption><span class="etiqueta">Gráfico 8.–</span> Curvas de rentabilidades de España y de Estados Unidos</figcaption>
+<img src="../fuentes/3B24/graficos/curvas-espana-eeuu.svg" style="width:98.0%" loading="lazy" alt="Gráfico 8.– Curvas de rentabilidades de España y de Estados Unidos" />
+<div class="fuente">
+<p>Fuente: España: Banco de España, Boletín Estadístico, cuadros 22.6 y 22.7, medias mensuales del mercado secundario. Estados Unidos: Departamento del Tesoro, rendimientos a la par.</p>
+</div>
+</figure>
+</section>
+</section>
+</section>
+<section id="sec:teorias" class="level3">
+<h3><span class="numero">II.2.</span> Teorías explicativas</h3>
+<ul>
+<li><p>¿Por qué el tipo a 10 años es distinto del tipo a 1 año? Las teorías responden de 3 formas: por lo que se espera de los tipos futuros, por el riesgo de los plazos largos o por la oferta y la demanda de cada plazo.</p></li>
+<li><p>Las ordena una sola ecuación, la del tipo largo, con 2 sumandos: los tipos cortos esperados y una prima por plazo. Cada teoría es un supuesto sobre esa prima.</p></li>
+<li><p>Los hechos que tienen que explicar son 3:</p>
+<ol>
+<li><p>los tipos de todos los plazos se mueven juntos;</p></li>
+<li><p>cuando los tipos cortos están bajos, la curva suele ser creciente, y cuando están altos, a menudo se invierte;</p></li>
+<li><p>la curva es creciente casi siempre.</p></li>
+</ol></li>
+</ul>
+<section id="sec:expectativas" class="level4">
+<h4><span class="numero">II.2.1.</span> La teoría de las expectativas</h4>
+<section id="a-idea-1" class="level5">
+<h5>a) Idea</h5>
+<ul>
+<li><p>La curva refleja lo que el mercado espera de los tipos a corto plazo futuros: si espera que suban, los tipos largos están por encima de los cortos. La idea es de <span class="smallcaps">Irving Fisher</span> (1896), y la formularon <span class="smallcaps">John R. Hicks</span> (1939)<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> y <span class="smallcaps">Friedrich A. Lutz</span> (1940).</p></li>
+</ul>
+</section>
+<section id="b-modelo-1" class="level5">
+<h5>b) Modelo</h5>
+<section id="i-supuestos-1" class="level6">
+<h6>i) Supuestos</h6>
+<ul>
+<li><p>Los inversores son neutrales al riesgo: solo les importa la rentabilidad esperada.</p></li>
+<li><p>No hay costes de transacción ni restricciones para pasar de un plazo a otro: los bonos de plazos distintos son sustitutivos perfectos.</p></li>
+</ul>
+</section>
+<section id="ii-desarrollo-1" class="level6">
+<h6>ii) Desarrollo</h6>
+<ul>
+<li><p><em>Paso 1, la condición de no arbitraje</em>: si los bonos son sustitutivos perfectos, invertir un euro a <span class="math inline">\(n\)</span> periodos y encadenar <span class="math inline">\(n\)</span> inversiones a un periodo tienen que rendir lo mismo en esperanza; si no, todos irían a la mejor.</p>
+<ul>
+<li><p>Con la fecha explícita, el tipo a <span class="math inline">\(n\)</span> periodos en <span class="math inline">\(t\)</span> es <span class="math inline">\(i^{(n)}_t\)</span> (el <span class="math inline">\(r_n\)</span> de la curva de ese día) y el tipo a un periodo que regirá en <span class="math inline">\(t+k\)</span>, <span class="math inline">\(i_{t+k}\)</span>: <span id="eq:expectativas-exacta"></span><span class="math display">\[\tag{5}
+  \big(1+i^{(n)}_t\big)^n=(1+i_t)\,\big(1+\mathbb{E}_t[i_{t+1}]\big)\cdots\big(1+\mathbb{E}_t[i_{t+n-1}]\big).\]</span></p></li>
+<li><p>Comparada con (<a href="#eq:forward">3</a>), dice que cada tipo a plazo es el tipo corto esperado para ese periodo: <span class="math inline">\(f_{k+1}=\mathbb{E}_t[i_{t+k}]\)</span>.</p></li>
+</ul></li>
+<li><p><em>Paso 2, en logaritmos</em>: como <span class="math inline">\(\ln(1+x)\simeq x\)</span> para tipos pequeños, el tipo largo es la media aritmética de los cortos esperados (el detalle, en el anexo <a href="#anexo:derivaciones">A</a>).</p></li>
+<li><p><em>Paso 3, con una prima</em>: si los inversores exigen algo más por quedarse con el plazo largo, se suma una <strong>prima por plazo</strong>. Es la ecuación del tipo largo, la misma que se usa en la transmisión de la política monetaria <a data-app="3A37.pdf" href="3A37.html" class="vertema"><span class="vertema">[ver tema 3.A.37]</span></a> <a data-app="3A40.pdf" href="3A40.html" class="vertema"><span class="vertema">[ver tema 3.A.40]</span></a>:</p>
+<div class="funcionclave">
+<div id="eq:tipo-largo">
+
+</div>
+<p><span class="math display">\[i^{(n)}_t=\frac{1}{n}\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]+\text{prima por plazo}_t\tag{6}\]</span></p>
+</div>
+<p>La teoría de las expectativas puras supone que la prima es nula.</p></li>
+</ul>
+</section>
+<section id="iii-implicaciones-1" class="level6">
+<h6>iii) Implicaciones</h6>
+<ul>
+<li><p>Una curva <em>creciente</em> anuncia subidas de los tipos cortos; una <em>plana</em>, tipos constantes; una <em>invertida</em>, bajadas.</p></li>
+<li><p>Los tipos a plazo son predictores insesgados de los tipos futuros.</p></li>
+<li><p>Si el mercado espera que los tipos suban, nadie quiere bonos largos hoy: su precio baja y su rentabilidad sube hasta que rinden lo mismo que la cadena de cortos.</p></li>
+<li><p>Siguiendo con nuestro bono, el mercado esperaría un tipo a 1 año del 20,22 % dentro de un año, el doble del de hoy (el ejemplo con números redondos, en el anexo <a href="#anexo:ejemplos">D</a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="c-extensiones-1" class="level5">
+<h5>c) Extensiones</h5>
+<ul>
+<li><p>Las versiones de la teoría (igualar las rentabilidades al vencimiento, las rentabilidades a un periodo o los precios esperados) no son equivalentes cuando hay incertidumbre, por la desigualdad de <span class="smallcaps">Jensen</span>: no todas son compatibles con el equilibrio.</p></li>
+<li><p>La misma pregunta, aplicada a los futuros, es la de la <em>normal backwardation</em> de <span class="smallcaps">J. M. Keynes</span> y <span class="smallcaps">John R. Hicks</span>: ¿es el precio a plazo un predictor insesgado del precio esperado? <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>. Y en divisas, la de si el tipo de cambio a plazo predice el de contado, cuyo sesgo es la paradoja del <em>forward</em> <a data-app="3B13.pdf" href="3B13.html" class="vertema"><span class="vertema">[ver tema 3.B.13]</span></a>.</p></li>
+</ul>
+</section>
+<section id="d-evidencia-empírica-1" class="level5">
+<h5>d) Evidencia empírica</h5>
+<ul>
+<li><p>La pendiente de la curva predice bien los tipos cortos a varios años vista, en la dirección que dice la teoría, pero mal a corto plazo: cuando la curva es muy creciente, el tipo largo tiende a <em>bajar</em> en vez de subir, lo contrario de lo que predice la teoría pura.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p></li>
+<li><p>Los tipos a plazo predicen las rentabilidades extraordinarias de los bonos largos: hay una prima por plazo y cambia con el tiempo. Las estimaciones para el bono a 10 años de Estados Unidos la sitúan alta en los 80 y los 90 y negativa en buena parte de 2016-2021, con las compras de los bancos centrales.</p></li>
+</ul>
+</section>
+<section id="e-valoración-1" class="level5">
+<h5>e) Valoración</h5>
+<ul>
+<li><p>Explica los 2 primeros hechos: que los tipos se muevan juntos, porque una subida del tipo corto hace esperar más subidas, y que la curva sea creciente cuando los tipos cortos están bajos, porque se espera que suban.</p></li>
+<li><p>Pero no explica el tercero, que la curva sea creciente casi siempre: si fuera por las expectativas, los tipos tendrían que estar subiendo casi siempre. Y el supuesto de neutralidad al riesgo no se cumple. Las 2 cosas llevan a la prima por plazo.</p></li>
+</ul>
+</section>
+</section>
+<section id="sec:liquidez" class="level4">
+<h4><span class="numero">II.2.2.</span> La teoría de la prima por liquidez</h4>
+<section id="a-idea-2" class="level5">
+<h5>a) Idea</h5>
+<ul>
+<li><p>Los inversores son aversos al riesgo y un bono largo es más arriesgado que una cadena de cortos, porque su precio cambia más con los tipos (<a href="#sec:malkiel">III.2.1</a>). Para mantenerlo exigen una prima, mayor cuanto más largo el plazo.</p></li>
+<li><p>Se la llama también de la «preferencia por la liquidez», pero no es la de <span class="smallcaps">Keynes</span>, que explica la demanda de dinero <a data-app="3A35.pdf" href="3A35.html" class="vertema"><span class="vertema">[ver tema 3.A.35]</span></a>: aquí la liquidez es la del plazo corto, y su precio, la prima por plazo de (<a href="#eq:tipo-largo">6</a>).</p></li>
+</ul>
+</section>
+<section id="b-modelo-2" class="level5">
+<h5>b) Modelo</h5>
+<section id="i-supuestos-2" class="level6">
+<h6>i) Supuestos</h6>
+<ul>
+<li><p>Los inversores son aversos al riesgo y prefieren, en igualdad de rentabilidad esperada, los plazos cortos.</p></li>
+<li><p>Los bonos de plazos distintos son sustitutivos, pero no perfectos.</p></li>
+</ul>
+</section>
+<section id="ii-desarrollo-2" class="level6">
+<h6>ii) Desarrollo</h6>
+<ul>
+<li><p>Cada tipo a plazo es el tipo corto esperado más una prima positiva y creciente con el plazo, <span class="math inline">\(f_{k+1}=\mathbb{E}_t[i_{t+k}]+\text{prima}_{k+1}\)</span>, con <span class="math inline">\(0&lt;\text{prima}_2&lt;\text{prima}_3&lt;\dots\)</span>.</p></li>
+<li><p>En (<a href="#eq:tipo-largo">6</a>), la prima por plazo es positiva y crece con <span class="math inline">\(n\)</span>.</p></li>
+</ul>
+</section>
+<section id="iii-implicaciones-2" class="level6">
+<h6>iii) Implicaciones</h6>
+<ul>
+<li><p>La curva tiende a ser creciente aunque no se esperen subidas, porque se sitúa por encima de la de las expectativas puras (gráfico <a href="#fig:prima-liquidez">9</a>).</p></li>
+<li><p>Los tipos a plazo sobrestiman los tipos futuros.</p></li>
+<li><p>Una curva ligeramente creciente es compatible con tipos cortos constantes, y una plana, con ligeras bajadas que la prima compensa; solo una invertida anuncia bajadas con seguridad.</p></li>
+<li><p>Siguiendo con nuestro bono, si la prima del segundo año fuera de 1 punto, el tipo esperado para dentro de un año sería el 19,22 % y no el 20,22 %.</p></li>
+</ul>
+</section>
+</section>
+<section id="c-extensiones-2" class="level5">
+<h5>c) Extensiones</h5>
+<ul>
+<li><p>Para <span class="smallcaps">Reuben Kessel</span> (1965), en la llamada teoría de la sustitución del dinero, los bonos cortos rinden menos porque son sustitutos cercanos del dinero, y la prima que exigen los largos sube cuando los tipos son altos: por eso la pendiente cambia con el ciclo.</p></li>
+</ul>
+</section>
+<section id="d-valoración" class="level5">
+<h5>d) Valoración</h5>
+<ul>
+<li><p>Explica los 3 hechos: que los tipos se muevan juntos, que la curva sea más creciente cuando los tipos cortos están bajos y que sea creciente casi siempre.</p></li>
+<li><p>Pero supone que todos los inversores prefieren lo corto. Un fondo de pensiones, que debe pagar dentro de 30 años, corre más riesgo con una cadena de bonos a 1 año que con uno a 30: para él, lo arriesgado es lo corto. Esa es la puerta a las teorías de los segmentos.</p></li>
+</ul>
+<figure id="fig:prima-liquidez">
+<figcaption><span class="etiqueta">Gráfico 9.–</span> La prima por liquidez: la curva observada y la de las expectativas</figcaption>
+<img src="../fuentes/3B24/graficos/prima-liquidez.svg" style="width:95.0%" loading="lazy" alt="Gráfico 9.– La prima por liquidez: la curva observada y la de las expectativas" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="MishkinEakins2018Financial"><span class="smallcaps">Mishkin</span> y <span class="smallcaps">Eakins</span> (<a href="#ref-MishkinEakins2018Financial" role="doc-biblioref">2018, cap. 6</a>)</span>.</p>
+</div>
+</figure>
+</section>
+</section>
+<section id="sec:habitat" class="level4">
+<h4><span class="numero">II.2.3.</span> Segmentación del mercado y hábitat preferente</h4>
+<section id="a-idea-3" class="level5">
+<h5>a) Idea</h5>
+<ul>
+<li><p>Cada plazo tiene su clientela: los bancos prefieren lo corto, porque sus depósitos lo son, y los fondos de pensiones y las aseguradoras, lo largo, porque sus compromisos lo son. Si la clientela no se mueve de su plazo, cada tipo lo fijan la oferta y la demanda de ese plazo. Es lo que dice el refrán «cada mochuelo a su olivo»: cada inversor se queda en su plazo salvo que le paguen por moverse.</p></li>
+</ul>
+</section>
+<section id="b-modelo-3" class="level5">
+<h5>b) Modelo</h5>
+<section id="i-supuestos-3" class="level6">
+<h6>i) Supuestos</h6>
+<ul>
+<li><p><em>Segmentación</em> (<span class="smallcaps">John M. Culbertson</span>, 1957): los bonos de plazos distintos no son sustitutivos en absoluto, por la regulación, por la necesidad de cuadrar los plazos de activos y pasivos o por el coste de informarse sobre otro segmento.</p></li>
+<li><p><em>Hábitat preferente</em> (<span class="smallcaps">Franco Modigliani</span> y <span class="smallcaps">Richard Sutch</span>, 1966):<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> cada inversor tiene un plazo preferido, pero lo deja si le pagan una prima suficiente.</p></li>
+</ul>
+</section>
+<section id="ii-desarrollo-3" class="level6">
+<h6>ii) Desarrollo</h6>
+<ul>
+<li><p>Con la segmentación, cada tipo depende solo de la oferta y la demanda de su segmento, y la curva puede tener cualquier forma.</p></li>
+<li><p>Con el hábitat preferente, la prima por plazo de (<a href="#eq:tipo-largo">6</a>) puede tener cualquier signo: es positiva en los plazos con poca demanda propia y negativa en los muy demandados.</p></li>
+</ul>
+</section>
+<section id="iii-implicaciones-3" class="level6">
+<h6>iii) Implicaciones</h6>
+<ul>
+<li><p>Si alguien retira bonos de un plazo, su tipo baja, aunque no cambien las expectativas. Por eso <span class="smallcaps">Modigliani</span> y <span class="smallcaps">Sutch</span> estudiaron la operación <em>Twist</em> de 1961, con la que la Reserva Federal y el Tesoro quisieron bajar los tipos largos sin tocar los cortos (<a href="#sec:curva-politica">II.3.4</a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="c-extensiones-3" class="level5">
+<h5>c) Extensiones</h5>
+<ul>
+<li><p><span class="smallcaps">Dimitri Vayanos</span> y <span class="smallcaps">Jean-Luc Vila</span> (2021) lo formalizan: los inversores de hábitat demandan cada plazo, y unos <em>arbitrajistas</em> aversos al riesgo y con capital limitado conectan los plazos entre sí, pero solo a cambio de una prima, porque cargar con bonos largos les expone al riesgo de tipo de interés.</p>
+<ul>
+<li><p>La prima por plazo depende entonces de la oferta neta de bonos de cada plazo que tienen que absorber los arbitrajistas y de su aversión al riesgo.</p></li>
+<li><p>Si el banco central compra bonos largos, retira riesgo de duración del mercado, la prima baja, más en los plazos que compra, y el tipo largo también: es el canal de reequilibrio de carteras de las compras de activos <a data-app="3A37.pdf" href="3A37.html" class="vertema"><span class="vertema">[ver tema 3.A.37]</span></a> <a data-app="3A40.pdf" href="3A40.html" class="vertema"><span class="vertema">[ver tema 3.A.40]</span></a>.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="d-evidencia-empírica-2" class="level5">
+<h5>d) Evidencia empírica</h5>
+<ul>
+<li><p>En el Reino Unido, la reforma de las pensiones de 2004 llevó a los fondos a comprar bonos muy largos, y el tramo de 30 a 50 años de la curva se invirtió.</p></li>
+<li><p>En Estados Unidos, la Reserva Federal subió el tipo oficial del 1 al 5,25 % entre 2004 y 2006 mientras el tipo a 10 años apenas se movía, y la curva llegó a invertirse en buena parte de 2006 y 2007: el «enigma» de <span class="smallcaps">Alan Greenspan</span> (2005), que <span class="smallcaps">Ben S. Bernanke</span> (2005) atribuyó a la demanda de bonos largos del resto del mundo, el exceso de ahorro mundial.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p></li>
+</ul>
+</section>
+<section id="e-valoración-2" class="level5">
+<h5>e) Valoración</h5>
+<ul>
+<li><p>La segmentación pura explica que la curva sea creciente si hay más demanda de lo corto, pero no que los tipos de todos los plazos se muevan juntos, que es lo más visible en los datos.</p></li>
+<li><p>El hábitat preferente reúne las 3 teorías en (<a href="#eq:tipo-largo">6</a>): las expectativas son el primer sumando; la prima por liquidez, el caso en que la prima es positiva y creciente; y la segmentación, el caso límite en que la prima necesaria para cambiar de plazo es infinita (tabla <a href="#tab:teorias-curva">3</a>).</p></li>
+</ul>
+<div id="tab:teorias-curva">
+<table>
+<caption><span class="etiqueta">Tabla 3.–</span> Qué explica cada teoría de la curva de tipos</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"> <strong>Hecho</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Expectativas</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Prima por liquidez</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Segmentación</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Hábitat preferente</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. Los tipos se mueven juntos</td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-rojo">No</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">. Con tipos cortos bajos, curva creciente</td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-rojo">No</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">. Curva creciente casi siempre</td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-rojo">No</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="tcee-verde">Sí</span></td>
+</tr>
+<tr>
+<td class="celda-tceesalvia" style="text-align: left;"> Prima por plazo en (<a href="#eq:tipo-largo">6</a>)</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">Nula</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">Positiva y creciente</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">Sin conexión entre plazos</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">De cualquier signo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="MishkinEakins2018Financial"><span class="smallcaps">Mishkin</span> y <span class="smallcaps">Eakins</span> (<a href="#ref-MishkinEakins2018Financial" role="doc-biblioref">2018, cap. 6</a>)</span>, que compara las 3 primeras.</em></p>
+</section>
+</section>
+<section id="sec:vasicek" class="level4">
+<h4><span class="numero">II.2.4.</span> Los modelos de equilibrio: <span class="smallcaps">Vasicek</span> y <span class="smallcaps">Cox</span>, <span class="smallcaps">Ingersoll</span> y <span class="smallcaps">Ross</span></h4>
+<section id="a-idea-4" class="level5">
+<h5>a) Idea</h5>
+<ul>
+<li><p>En lugar de explicar la curva con las expectativas o con la oferta de cada plazo, se modela cómo se mueve el tipo corto en el tiempo, con incertidumbre, y se deriva de ahí, sin arbitraje, el precio de los bonos de todos los plazos. La curva entera sale de 3 o 4 parámetros con significado económico.</p></li>
+</ul>
+</section>
+<section id="b-modelo-4" class="level5">
+<h5>b) Modelo</h5>
+<section id="i-supuestos-4" class="level6">
+<h6>i) Supuestos</h6>
+<ul>
+<li><p>Un solo factor, el tipo instantáneo <span class="math inline">\(r\)</span>, mueve toda la curva, y sigue un proceso estocástico en tiempo continuo.</p></li>
+<li><p>El tipo vuelve hacia una media a largo plazo (reversión a la media), y no hay arbitraje entre bonos de distintos plazos.</p></li>
+</ul>
+</section>
+<section id="ii-desarrollo-4" class="level6">
+<h6>ii) Desarrollo</h6>
+<ul>
+<li><p>En el modelo de <span class="smallcaps">Oldřich Vasicek</span> (1977), el tipo sigue un proceso de <span class="smallcaps">Ornstein</span> y <span class="smallcaps">Uhlenbeck</span>: <span class="math display">\[\mathrm{d}r=a\,(b-r)\,\mathrm{d}t+\sigma\,\mathrm{d}W ,\]</span> con <span class="math inline">\(b\)</span> el nivel al que vuelve, <span class="math inline">\(a\)</span> la velocidad con que vuelve, <span class="math inline">\(\sigma\)</span> la volatilidad y <span class="math inline">\(W\)</span> un movimiento browniano (letras locales de este apartado).</p></li>
+<li><p>En el de <span class="smallcaps">John Cox</span>, <span class="smallcaps">Jonathan Ingersoll</span> y <span class="smallcaps">Stephen Ross</span> (1985), CIR, la volatilidad depende del nivel: <span class="math inline">\(\mathrm{d}r=a\,(b-r)\,\mathrm{d}t+\sigma\sqrt{r}\,\mathrm{d}W\)</span>.</p></li>
+<li><p>En los 2, el precio de un bono cupón cero que vence dentro de <span class="math inline">\(\tau\)</span> años tiene la forma <span class="math inline">\(P(\tau)=A(\tau)\,e^{-B(\tau)\,r}\)</span>, con <span class="math inline">\(B(\tau)=(1-e^{-a\tau})/a\)</span> en el de <span class="smallcaps">Vasicek</span>: el tipo de contado de cada plazo es una función lineal del tipo corto de hoy.</p></li>
+</ul>
+</section>
+<section id="iii-implicaciones-4" class="level6">
+<h6>iii) Implicaciones</h6>
+<ul>
+<li><p>La curva es creciente si el tipo corto está bastante por debajo de su nivel a largo plazo, invertida si está bastante por encima y con joroba en medio.</p></li>
+<li><p>Un cambio del tipo corto mueve más los tipos cortos que los largos, porque se espera que vuelva a la media: la volatilidad de los tipos baja con el plazo.</p></li>
+<li><p>En el de <span class="smallcaps">Vasicek</span>, los tipos pueden ser negativos; en el CIR, no bajan de cero si la reversión es lo bastante fuerte frente a la volatilidad.</p></li>
+</ul>
+</section>
+</section>
+<section id="c-extensiones-4" class="level5">
+<h5>c) Extensiones</h5>
+<ul>
+<li><p>Los modelos de <span class="smallcaps">Ho</span> y <span class="smallcaps">Lee</span> (1986), <span class="smallcaps">Hull</span> y <span class="smallcaps">White</span> (1990) y <span class="smallcaps">Heath</span>, <span class="smallcaps">Jarrow</span> y <span class="smallcaps">Morton</span> (1992) parten de la curva observada hoy y la reproducen exactamente; sirven sobre todo para valorar derivados de tipos de interés <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>.</p></li>
+</ul>
+</section>
+<section id="d-evidencia-empírica-3" class="level5">
+<h5>d) Evidencia empírica</h5>
+<ul>
+<li><p>Con un solo factor, todos los tipos se mueven a la vez y en el mismo sentido; en los datos, en cambio, la curva también gira y cambia de curvatura (<a href="#sec:movimientos">II.3.2</a>). Hacen falta al menos 3 factores.</p></li>
+</ul>
+</section>
+<section id="e-valoración-3" class="level5">
+<h5>e) Valoración</h5>
+<ul>
+<li><p>Imponen la ausencia de arbitraje y dan la prima por plazo a partir del precio del riesgo, algo que las teorías clásicas suponen; pero con un factor reproducen mal la curva observada, y por eso en la práctica se usan modelos de varios factores o ajustados a la curva de hoy.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="sec:formas" class="level3">
+<h3><span class="numero">II.3.</span> Formas y movimientos de la curva</h3>
+<section id="sec:formas-curva" class="level4">
+<h4><span class="numero">II.3.1.</span> Formas</h4>
+<ul>
+<li><p>La curva puede tener 4 formas (gráfico <a href="#fig:formas-curva">10</a>), y cada teoría las lee de un modo:</p>
+<ul>
+<li><p><em>Creciente</em>, la normal: con las expectativas, anuncia subidas de los tipos cortos, típicas del final de una recesión; con la prima por liquidez, puede ser solo la prima, sin subidas esperadas.</p></li>
+<li><p><em>Plana</em>: con las expectativas puras, tipos cortos constantes; con la prima por liquidez, ligeras bajadas esperadas que la prima compensa, y por eso una curva que se aplana suele anticipar un menor crecimiento. Suele aparecer al final de las expansiones, cuando el tipo oficial ya ha subido.</p></li>
+<li><p><em>Invertida</em>: con las expectativas y la prima por liquidez, el mercado espera bajadas de los tipos cortos, normalmente porque espera una recesión (<a href="#sec:ciclo">II.3.3</a>); con la segmentación o el hábitat, puede deberse a una gran demanda de bonos largos, como en el Reino Unido tras 2004.</p></li>
+<li><p><em>Jorobada</em> (con una joroba en los plazos intermedios): se esperan subidas de los tipos a corto plazo y bajadas después, por ejemplo cuando el banco central sube los tipos para frenar la inflación y el mercado ya descuenta que los bajará; en (<a href="#eq:svensson">4</a>), la recogen <span class="math inline">\(\beta_2\)</span> y <span class="math inline">\(\beta_3\)</span>.</p></li>
+</ul></li>
+</ul>
+<figure id="fig:formas-curva">
+<figcaption><span class="etiqueta">Gráfico 10.–</span> Las 4 formas de la curva de tipos</figcaption>
+<img src="../fuentes/3B24/graficos/formas-curva.svg" style="width:95.0%" loading="lazy" alt="Gráfico 10.– Las 4 formas de la curva de tipos" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 15</a>)</span>.</p>
+</div>
+</figure>
+</section>
+<section id="sec:movimientos" class="level4">
+<h4><span class="numero">II.3.2.</span> Movimientos</h4>
+<ul>
+<li><p>La curva se mueve de 3 formas, que explican la inmensa mayoría de sus cambios (gráfico <a href="#fig:movimientos-curva">11</a>):</p>
+<ul>
+<li><p>el <strong>desplazamiento paralelo</strong> sube o baja todos los tipos lo mismo; es el más frecuente y el que supone la duración (<a href="#sec:macaulay">III.2.2</a>);</p></li>
+<li><p>el <strong>giro</strong> (<em>twist</em>) cambia la pendiente: la curva se <em>aplana</em> si el diferencial entre el tipo largo y el corto se estrecha, y se <em>positiviza</em> si se amplía;</p></li>
+<li><p>la <strong>mariposa</strong> (<em>butterfly</em>) cambia la curvatura: los plazos intermedios se mueven distinto que los extremos.</p></li>
+</ul></li>
+<li><p>Son los 3 factores de (<a href="#eq:svensson">4</a>): nivel (<span class="math inline">\(\beta_0\)</span>), pendiente (<span class="math inline">\(\beta_1\)</span>) y curvatura (<span class="math inline">\(\beta_2\)</span> y <span class="math inline">\(\beta_3\)</span>).</p></li>
+</ul>
+<figure id="fig:movimientos-curva">
+<figcaption><span class="etiqueta">Gráfico 11.–</span> Los 3 movimientos de la curva: paralelo, giro y mariposa</figcaption>
+<img src="../fuentes/3B24/graficos/movimientos-curva.svg" style="width:98.0%" loading="lazy" alt="Gráfico 11.– Los 3 movimientos de la curva: paralelo, giro y mariposa" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="LittermanScheinkman1991Common"><span class="smallcaps">Litterman</span> y <span class="smallcaps">Scheinkman</span> (<a href="#ref-LittermanScheinkman1991Common" role="doc-biblioref">1991</a>)</span>.</p>
+</div>
+</figure>
+</section>
+<section id="sec:ciclo" class="level4">
+<h4><span class="numero">II.3.3.</span> La curva y el ciclo</h4>
+<ul>
+<li><p>La pendiente de la curva, el tipo a 10 años menos el de 3 meses, es uno de los mejores indicadores adelantados del ciclo: en Estados Unidos, las recesiones desde los años 60 han ido precedidas de una curva invertida, y la pendiente predice la actividad y las recesiones a 2-6 trimestres mejor que la mayoría de los indicadores <a data-app="3A42.pdf" href="3A42.html" class="vertema"><span class="vertema">[ver tema 3.A.42]</span></a>.</p></li>
+<li><p><em>Por qué</em>: cuando el banco central sube el tipo oficial para frenar una economía recalentada, el tipo corto sube y el mercado anticipa que tendrá que bajarlo cuando llegue la desaceleración, así que, por (<a href="#eq:tipo-largo">6</a>), el largo sube menos o baja: la curva se invierte.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p></li>
+<li><p><em>Las cautelas</em>: si la prima por plazo es muy baja, como con las compras de bonos de los bancos centrales, la curva se aplana sin que se espere una recesión. En Estados Unidos, la curva estuvo invertida, sin interrupción, del 25 de octubre de 2022 al 12 de diciembre de 2024, con un mínimo de <span class="math inline">\(-1{,}89\)</span> puntos el 1 de junio de 2023, y hasta noviembre de 2026 no se ha fechado ninguna recesión posterior: por ahora, una falsa alarma.</p></li>
+</ul>
+</section>
+<section id="sec:curva-politica" class="level4">
+<h4><span class="numero">II.3.4.</span> La curva y la política monetaria</h4>
+<ul>
+<li><p>El banco central fija el tipo más corto de la curva; el resto lo mueve a través de los 2 sumandos de (<a href="#eq:tipo-largo">6</a>): los tipos cortos esperados, con lo que anuncia, y la prima por plazo, con lo que compra <a data-app="3A37.pdf" href="3A37.html" class="vertema"><span class="vertema">[ver tema 3.A.37]</span></a>.</p></li>
+<li><p>Cuando el tipo corto ya no puede bajar, actúa sobre el resto de la curva:</p>
+<ul>
+<li><p>con la <em>operación Twist</em>: la Reserva Federal, entre septiembre de 2011 y finales de 2012, cambió letras por bonos largos para aplanar la curva sin ampliar su balance, un giro de manual; repetía la de 1961, que bajó los tipos largos unos 15 puntos básicos;</p></li>
+<li><p>con las <em>compras de activos</em>, que, según el hábitat preferente, bajan la prima por plazo (<a href="#sec:habitat">II.2.3</a>) <a data-app="3A40.pdf" href="3A40.html" class="vertema"><span class="vertema">[ver tema 3.A.40]</span></a>;</p></li>
+<li><p>con el <strong>control de la curva</strong>: el banco central se compromete a mantener el tipo de un plazo en un nivel y compra lo que haga falta. Lo hicieron la Reserva Federal entre 1942 y 1951, hasta el acuerdo con el Tesoro, y el Banco de Japón con el bono a 10 años entre septiembre de 2016 y marzo de 2024 <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>. Si el mercado deja de creer en el objetivo, todos venden a la vez y el banco central tiene que comprar sin límite o abandonarlo de golpe.</p></li>
+</ul></li>
+<li><p><em>Recapitulación</em>: la curva resume las expectativas sobre los tipos futuros más una prima por plazo. Pero el inversor que tiene un bono no solo quiere saber qué espera el mercado: quiere saber cuánto pierde si los tipos se mueven.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="sec:riesgo" class="level2" data-minutos="9′30″">
+<h2 data-minutos="9′30″"><span class="numero">III.</span> Valoración del riesgo y del rendimiento: duración y convexidad<span class="minutos" aria-hidden="true">9′30″</span></h2>
+<ul>
+<li><p><em>Conclusión anticipada</em>: los pagos de un bono son fijos, pero su valor no. El riesgo principal es el de tipo de interés: la duración mide cuánto pierde un bono si suben los tipos, la convexidad corrige el error de esa medida y, con las 2, se puede inmunizar una cartera.</p></li>
+<li><p><em>Nexo</em>: tras la curva, pasamos al riesgo: qué riesgos tiene un bono y cómo se miden y se gestionan los de tipo de interés.</p></li>
+</ul>
+<section id="sec:riesgos" class="level3">
+<h3><span class="numero">III.1.</span> Riesgos de la inversión en bonos</h3>
+<ul>
+<li><p>Un bono está expuesto a 8 riesgos:</p>
+<ol>
+<li><p><em>de tipo de interés</em> (o de mercado): si los tipos suben, el precio baja. No afecta a quien mantiene el bono hasta el vencimiento, salvo por el riesgo siguiente;</p></li>
+<li><p><em>de reinversión</em>: si los tipos bajan, los cupones se reinvierten a tipos más bajos. Va en sentido contrario al anterior, y esa es la base de la inmunización (<a href="#sec:gestion">III.2.5</a>); en un bono a tipo variable, el riesgo es de renta y no de precio, porque en cada revisión vale casi su nominal;</p></li>
+<li><p><em>de crédito</em>: que el emisor no pague, o que empeore su calificación y el precio baje (<a href="#sec:rating">I.3.1</a>);</p></li>
+<li><p><em>de liquidez</em>: no poder vender el bono rápido sin rebajar el precio; se mide por la horquilla entre los precios de compra y de venta;</p></li>
+<li><p><em>de amortización anticipada</em>: que el emisor amortice un <em>callable</em> cuando los tipos bajan, justo cuando reinvertir rinde menos;</p></li>
+<li><p><em>de inflación</em>: que la inflación reduzca el poder de compra de los pagos; lo evitan los bonos indexados;</p></li>
+<li><p><em>de tipo de cambio</em>: que se deprecie la moneda en que paga el bono;</p></li>
+<li><p><em>de sucesos y legal</em>: que una catástrofe, una fusión, una reestructuración o un cambio de ley cambie el valor del bono.</p></li>
+</ol></li>
+<li><p>Todos se traducen en una rentabilidad exigida mayor. Por eso, para valorar el riesgo, hay que saber cuánto cambia el precio cuando cambia la rentabilidad: es lo que miden la duración y la convexidad.</p></li>
+</ul>
+</section>
+<section id="sec:riesgo-tipo" class="level3">
+<h3><span class="numero">III.2.</span> Riesgo de tipo de interés</h3>
+<section id="sec:malkiel" class="level4">
+<h4><span class="numero">III.2.1.</span> Caracterización: las proposiciones de <span class="smallcaps">Malkiel</span></h4>
+<ul>
+<li><p>Cómo cambia el precio de un bono con los tipos lo resumen 6 proposiciones, las 5 primeras de <span class="smallcaps">Burton Malkiel</span> (1962) y la última de <span class="smallcaps">Sidney Homer</span> y <span class="smallcaps">Martin Leibowitz</span> (1972) (gráfico <a href="#fig:malkiel-bonos">12</a>):</p>
+<ol>
+<li><p>el precio y la rentabilidad se mueven en sentido contrario;</p></li>
+<li><p>una subida de la rentabilidad baja el precio menos de lo que lo sube una bajada igual: la relación es convexa;</p></li>
+<li><p>cuanto más largo el plazo, más sensible es el precio a la rentabilidad;</p></li>
+<li><p>esa sensibilidad crece con el plazo, pero cada vez menos;</p></li>
+<li><p>cuanto más alto el cupón, menos sensible es el precio, porque más valor se cobra pronto;</p></li>
+<li><p>cuanto más alta la rentabilidad de partida, menos sensible es el precio, porque los pagos lejanos pesan menos.</p></li>
+</ol></li>
+<li><p>Por tanto, el riesgo de tipo de interés depende del plazo (proposiciones 3 y 4), del cupón (5) y de la rentabilidad (6). Las letras del Tesoro, a muy corto plazo, están casi libres de él. La <em>duración</em> reúne los 3 determinantes en una sola cifra.</p></li>
+</ul>
+<figure id="fig:malkiel-bonos">
+<figcaption><span class="etiqueta">Gráfico 12.–</span> Variación del precio de 4 bonos ante cambios de la rentabilidad</figcaption>
+<img src="../fuentes/3B24/graficos/malkiel-bonos.svg" style="width:70.0%" loading="lazy" alt="Gráfico 12.– Variación del precio de 4 bonos ante cambios de la rentabilidad" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 16</a>)</span>. Bonos A (cupón del 12 %, 5 años, TIR inicial del 10 %), B (12 %, 30 años, 10 %), C (3 %, 30 años, 10 %) y D (3 %, 30 años, 6 %). A y B solo difieren en el plazo; B y C, en el cupón; C y D, en la rentabilidad de partida.</p>
+</div>
+</figure>
+</section>
+<section id="sec:macaulay" class="level4">
+<h4><span class="numero">III.2.2.</span> Duración de <span class="smallcaps">Macaulay</span></h4>
+<ul>
+<li><p><em>Idea</em>: el plazo no basta para medir el riesgo, porque un bono con cupones cobra parte de su valor antes del vencimiento. <span class="smallcaps">Frederick Macaulay</span> (1938) propuso medir el <em>plazo medio</em> de los pagos.</p></li>
+<li><p><em>Definición</em>: la <strong>duración</strong> de un bono es la media de los plazos de sus pagos, ponderada por la parte del precio que representa cada uno: <span id="eq:macaulay"></span><span class="math display">\[\tag{7}
+  D=\sum_{t=1}^{T}t\,w_t,\qquad w_t=\frac{\mathrm{FC}_t/(1+y)^t}{P} .\]</span> Los pesos suman 1, porque los flujos descontados a la TIR suman el precio (<a href="#eq:precio-bono">2</a>); el último incluye el nominal.</p></li>
+<li><p><em>Interpretación analítica</em>: con la curva plana (<span class="math inline">\(r_t=y\)</span> en todos los plazos), derivar (<a href="#eq:precio-bono">2</a>) da <span class="math display">\[D=-\frac{\mathrm{d}P}{\mathrm{d}(1+y)}\,\frac{1+y}{P} ,\]</span> la <em>elasticidad</em> del precio respecto a <span class="math inline">\(1+y\)</span>: si <span class="math inline">\(1+y\)</span> sube un 1 %, el precio baja aproximadamente un <span class="math inline">\(D\)</span> % (anexo <a href="#anexo:derivaciones">A</a>). <span class="smallcaps">Hicks</span> (1939) llegó por su cuenta a la misma medida. No es un plazo de recuperación de la inversión, sino un plazo medio ponderado por el valor.</p></li>
+<li><p><em>Interpretación gráfica</em>: es el punto de apoyo que equilibra una balanza en la que cada pago, descontado, es un peso colocado en su fecha (gráfico <a href="#fig:balanza-duracion">13</a>).</p></li>
+<li><p><em>Propiedades</em>:</p>
+<ul>
+<li><p>la duración de un bono cupón cero es su plazo; la de un bono con cupones, menor;</p></li>
+<li><p>es menor cuanto más alto el cupón y cuanto más alta la TIR, y casi siempre mayor cuanto más largo el plazo;<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p></li>
+<li><p>baja con el paso del tiempo y salta hacia arriba con cada cupón cobrado;</p></li>
+<li><p>la de una cartera es la media de las de sus bonos, ponderada por su valor.</p></li>
+</ul></li>
+<li><p>Siguiendo con nuestro bono, con una TIR del 14,75 %, el cupón del primer año pesa <span class="math inline">\(87{,}1/922{,}6=9{,}4\)</span> % del precio y el pago final, el 90,6 %: <span class="math inline">\(D=1\times0{,}094+2\times0{,}906=1{,}91\)</span> años, muy cerca de su plazo de 2 años.</p></li>
+</ul>
+<figure id="fig:balanza-duracion">
+<figcaption><span class="etiqueta">Gráfico 13.–</span> La duración, el fiel de la balanza de los flujos descontados</figcaption>
+<img src="../fuentes/3B24/graficos/balanza-duracion.svg" style="width:80.0%" loading="lazy" alt="Gráfico 13.– La duración, el fiel de la balanza de los flujos descontados" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="RodriguezGrana2014Duracion"><span class="smallcaps">Rodríguez Graña</span> (<a href="#ref-RodriguezGrana2014Duracion" role="doc-biblioref">2014</a>)</span>. Bono a 6 años con un cupón del 8 % y una TIR del 8 %: <span class="math inline">\(D=4{,}99\)</span> años.</p>
+</div>
+</figure>
+</section>
+<section id="sec:duracion-modificada" class="level4">
+<h4><span class="numero">III.2.3.</span> Duración modificada y duración monetaria</h4>
+<ul>
+<li><p><em>Idea</em>: al inversor no le interesa un plazo en años, sino cuánto cambia el precio de su bono si cambia la rentabilidad.</p></li>
+<li><p><em>Definición</em>: la <strong>duración modificada</strong> es la duración entre <span class="math inline">\(1+y\)</span> y mide la <em>semielasticidad</em> del precio respecto a la TIR: <span class="math display">\[D^{\mathrm{mod}}=\frac{D}{1+y}=-\frac{1}{P}\,\frac{\mathrm{d}P}{\mathrm{d}y}
+  \quad\Longrightarrow\quad
+  \frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\,\Delta y .\]</span> Si la TIR sube 1 punto, el precio baja aproximadamente un <span class="math inline">\(D^{\mathrm{mod}}\)</span> %.</p></li>
+<li><p><em>En euros</em>: la <strong>duración monetaria</strong>, <span class="math inline">\(D^{\mathrm{mon}}=P\,D^{\mathrm{mod}}\)</span>, da el cambio del precio en euros, <span class="math inline">\(\Delta P\simeq-D^{\mathrm{mon}}\,\Delta y\)</span>; su versión para 1 punto básico es el <strong>valor del punto básico</strong> (DV01), <span class="math inline">\(P\,D^{\mathrm{mod}}\times0{,}0001\)</span>, que usan los operadores para sumar el riesgo de bonos distintos.</p></li>
+<li><p><em>Interpretación gráfica</em>: <span class="math inline">\(-P\,D^{\mathrm{mod}}\)</span> es la pendiente de la tangente a la curva precio-rentabilidad en el punto de partida (gráfico <a href="#fig:precio-rentabilidad">4</a>).</p></li>
+<li><p>Siguiendo con nuestro bono, <span class="math inline">\(D^{\mathrm{mod}}=1{,}91/1{,}1475=1{,}66\)</span>:</p>
+<ul>
+<li><p>si la TIR sube del 14,75 al 15,75 %, el precio debería bajar un 1,66 %, unos 15,3 €; de verdad baja un 1,64 %;</p></li>
+<li><p>con una subida de 3 puntos, la duración predice un <span class="math inline">\(-4{,}98\)</span> % y el precio baja un <span class="math inline">\(-4{,}80\)</span> %: el error crece con el tamaño del cambio, porque la tangente es una recta y la curva no.</p></li>
+</ul></li>
+<li><p><em>Limitaciones</em>: es una aproximación lineal, buena solo para cambios pequeños; supone que la curva es plana y se desplaza en paralelo (otros movimientos exigen duraciones por tramos de la curva); y solo mide el riesgo de tipo de interés.</p></li>
+</ul>
+</section>
+<section id="sec:convexidad" class="level4">
+<h4><span class="numero">III.2.4.</span> Convexidad</h4>
+<ul>
+<li><p><em>Idea</em>: la duración modificada aproxima la curva precio-rentabilidad con una recta; la <strong>convexidad</strong> mide cuánto se curva y corrige el error de esa recta.</p></li>
+<li><p><em>Definición</em>: es la segunda derivada del precio respecto a la TIR, en proporción al precio: <span class="math display">\[\mathrm{Conv}=\frac{1}{P}\,\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\frac{1}{P\,(1+y)^2}\sum_{t=1}^{T}t\,(t+1)\,\frac{\mathrm{FC}_t}{(1+y)^t} .\]</span></p></li>
+<li><p><em>La aproximación de segundo orden</em>, con un desarrollo de <span class="smallcaps">Taylor</span> (anexo <a href="#anexo:derivaciones">A</a>):</p>
+<div class="funcionclave">
+<div id="eq:precio-duracion-convexidad">
+
+</div>
+<p><span class="math display">\[\frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\,\Delta y+\frac{1}{2}\,\mathrm{Conv}\,(\Delta y)^2\tag{8}\]</span></p>
+</div></li>
+<li><p><em>Interpretación</em>: en un bono sin opciones la convexidad es positiva, así que el segundo término suma siempre: la duración sola exagera las caídas del precio cuando la TIR sube y se queda corta en las subidas cuando la TIR baja (gráfico <a href="#fig:precio-rentabilidad">4</a>).</p></li>
+<li><p>Siguiendo con nuestro bono, la convexidad es 4,27: con una subida de 3 puntos, la aproximación pasa de <span class="math inline">\(-4{,}98\)</span> % a <span class="math inline">\(-4{,}98+\tfrac12\times4{,}27\times0{,}03^2\times100=-4{,}79\)</span> %, frente al <span class="math inline">\(-4{,}80\)</span> % exacto.</p></li>
+<li><p><em>Determinantes</em>: la convexidad es mayor cuanto más largo el plazo, cuanto más baja la TIR y, con el plazo dado, cuanto más bajo el cupón; con la duración dada, es mayor cuanto más dispersos están los pagos.</p></li>
+<li><p><em>Por qué se valora</em>: entre 2 bonos con la misma duración y la misma TIR, el más convexo gana más si los tipos bajan y pierde menos si suben (gráfico <a href="#fig:convexidad-bonos">14</a>). Por eso el inversor la quiere alta y la paga, y más cuanto más volátiles espera los tipos.</p></li>
+<li><p><em>Bonos con opciones</em>: si el bono lleva una opción, sus flujos dependen de los tipos y la fórmula de <span class="smallcaps">Macaulay</span> no sirve. Se usa la <strong>duración efectiva</strong>: se valora el bono, con un modelo que incluye la opción, con la TIR un poco más alta y un poco más baja, <span class="math inline">\(P_+\)</span> y <span class="math inline">\(P_-\)</span>, y se mide la pendiente, <span class="math inline">\(D^{\mathrm{ef}}=(P_--P_+)/(2P\,\Delta y)\)</span>. En el <em>callable</em>, cuando los tipos bajan hacia el nivel en que se amortizará, el precio deja de subir: la convexidad se vuelve <strong>negativa</strong>, y el inversor pierde con las subidas de tipos casi tanto como con un bono ordinario, pero gana menos con las bajadas (gráfico <a href="#fig:opciones-bono">5</a>). Es la otra cara del cupón más alto que cobra; lo mismo pasa con los bonos hipotecarios, que se amortizan antes cuando los tipos bajan y las familias refinancian.</p></li>
+</ul>
+<figure id="fig:convexidad-bonos">
+<figcaption><span class="etiqueta">Gráfico 14.–</span> 2 bonos con la misma duración y distinta convexidad</figcaption>
+<img src="../fuentes/3B24/graficos/convexidad-bonos.svg" style="width:62.0%" loading="lazy" alt="Gráfico 14.– 2 bonos con la misma duración y distinta convexidad" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 16</a>)</span>.</p>
+</div>
+</figure>
+</section>
+<section id="sec:gestion" class="level4">
+<h4><span class="numero">III.2.5.</span> Gestión del riesgo de tipo de interés</h4>
+<ul>
+<li><p>Medido el riesgo, queda gestionarlo. Hay 2 actitudes: protegerse de él (gestión pasiva, con la inmunización como herramienta central) o apostar con él (gestión activa).</p></li>
+</ul>
+<section id="sec:inmunizacion" class="level5">
+<h5>La inmunización</h5>
+<section id="a-idea-5" class="level6">
+<h6>a) Idea</h6>
+<ul>
+<li><p>El riesgo de precio y el de reinversión van en sentidos contrarios: si los tipos suben, el bono vale menos, pero los cupones se reinvierten a más. Hay un horizonte en que los 2 efectos se compensan, y es la duración. Quien tiene que pagar algo dentro de <span class="math inline">\(H\)</span> años y compra un bono, o una cartera, de duración <span class="math inline">\(D=H\)</span> está protegido frente a un cambio de los tipos: es la <strong>inmunización</strong> (<span class="smallcaps">Frank Redington</span>, 1952; <span class="smallcaps">Lawrence Fisher</span> y <span class="smallcaps">Roman Weil</span>, 1971). Es el lado del <em>rendimiento</em> de la duración.</p></li>
+</ul>
+</section>
+<section id="b-modelo-5" class="level6">
+<h6>b) Modelo</h6>
+<ul>
+<li><p><em>i) Supuestos</em>:</p>
+<ul>
+<li><p>la curva es plana y, si cambia, lo hace con un desplazamiento paralelo, una sola vez, justo después de comprar;</p></li>
+<li><p>el inversor tiene un compromiso conocido a <span class="math inline">\(H\)</span> años (una pensión, un seguro).</p></li>
+</ul></li>
+<li><p><em>ii) Desarrollo</em>:</p>
+<ul>
+<li><p><em>Paso 1</em>: lo que valdrá la inversión en <span class="math inline">\(H\)</span>, con los cupones reinvertidos a <span class="math inline">\(y\)</span>, es lo que vale hoy capitalizado: <span class="math inline">\(V_H=P(y)\,(1+y)^H\)</span>.</p></li>
+<li><p><em>Paso 2</em>: al derivar respecto a <span class="math inline">\(y\)</span> aparecen los 2 efectos, el de precio, <span class="math inline">\(P&#39;(y)\,(1+y)^H&lt;0\)</span>, y el de reinversión, <span class="math inline">\(H\,P\,(1+y)^{H-1}&gt;0\)</span>.</p></li>
+<li><p><em>Paso 3</em>: con la definición de la duración, <span class="math inline">\(P&#39;(y)=-D\,P/(1+y)\)</span>, y queda <span class="math display">\[\frac{\mathrm{d}V_H}{\mathrm{d}y}=(1+y)^{H-1}\,P\,\big(H-D\big) .\]</span></p></li>
+<li><p><em>Paso 4</em>: si <span class="math inline">\(H=D\)</span>, el valor final no cambia con los tipos; y como la duración baja cuando sube la TIR, <span class="math inline">\(V_H\)</span> tiene ahí un mínimo: cualquier cambio de los tipos lo sube (gráfico <a href="#fig:inmunizacion-horizonte">15</a>).</p></li>
+</ul></li>
+<li><p><em>iii) Implicaciones</em>:</p>
+<ul>
+<li><p>inmunizar no es comprar el bono del plazo del compromiso, sino uno, o una cartera, con su duración;</p></li>
+<li><p>para un balance con activos y pasivos, las 3 condiciones de <span class="smallcaps">Redington</span> son que el valor actual de los activos iguale el de los pasivos, que sus duraciones coincidan y que la convexidad de los activos sea mayor que la de los pasivos;</p></li>
+<li><p>siguiendo con nuestro bono, de duración 1,91 años, inmuniza un pago comprometido dentro de 1,91 años, no dentro de 2.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="c-extensiones-5" class="level6">
+<h6>c) Extensiones</h6>
+<ul>
+<li><p>El <strong>casamiento de flujos</strong> (<em>cash-flow matching</em> o <em>dedication</em>) compra bonos cuyos pagos coinciden exactamente con los compromisos, fecha a fecha. Elimina todo riesgo de tipo de interés y no exige reajustes, pero es caro y a menudo imposible: no hay bonos para todas las fechas y cantidades.</p></li>
+<li><p>La <em>inmunización contingente</em> deja gestionar la cartera libremente mientras su valor supere con margen el que asegura el compromiso, y la inmuniza si cae por debajo.</p></li>
+<li><p><em>La gestión de activos y pasivos de un banco</em>: un banco financia préstamos e hipotecas largas con depósitos cortos. Con las duraciones modificadas del activo y del pasivo, <span class="math inline">\(D^{\mathrm{mod}}_{\mathrm A}\)</span> y <span class="math inline">\(D^{\mathrm{mod}}_{\mathrm P}\)</span>, y una curva plana que se desplaza en <span class="math inline">\(\Delta y\)</span>, el valor económico de su capital, <span class="math inline">\(V_E=V-V_D\)</span>, cambia en <span id="eq:brecha-duracion"></span><span class="math display">\[\tag{9}
+  \Delta V_E\simeq-\Big[D^{\mathrm{mod}}_{\mathrm A}-\frac{V_D}{V}\,D^{\mathrm{mod}}_{\mathrm P}\Big]\,V\,\Delta y ,\]</span> y el corchete es la <strong>brecha de duración</strong>: inmunizarse es dejarla en cero. Fue el problema de Silicon Valley Bank en 2023 <a data-app="3B26.pdf" href="3B26.html" class="vertema"><span class="vertema">[ver tema 3.B.26]</span></a> <a data-app="../cuarto-ejercicio/4A19.pdf" href="../cuarto-ejercicio/4A19.pdf" class="vertema"><span class="vertema">[ver tema 4.A.19]</span></a>.</p></li>
+<li><p><em>Con derivados</em>: en lugar de vender bonos, se cambia la duración con permutas de tipos de interés (pagar fijo la acorta, recibir fijo la alarga) o con futuros sobre bonos <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>.</p></li>
+</ul>
+</section>
+<section id="d-valoración-1" class="level6">
+<h6>d) Valoración</h6>
+<ul>
+<li><p>La inmunización es una protección local: la duración cambia con los tipos y con el tiempo (más despacio que el horizonte), así que la cartera hay que reajustarla, y falla si la curva gira en lugar de desplazarse en paralelo.</p></li>
+</ul>
+<figure id="fig:inmunizacion-horizonte">
+<figcaption><span class="etiqueta">Gráfico 15.–</span> La inmunización: valor al horizonte según la TIR</figcaption>
+<img src="../fuentes/3B24/graficos/inmunizacion-horizonte.svg" style="width:66.0%" loading="lazy" alt="Gráfico 15.– La inmunización: valor al horizonte según la TIR" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="FisherWeil1971Coping">L. <span class="smallcaps">Fisher</span> y <span class="smallcaps">Weil</span> (<a href="#ref-FisherWeil1971Coping" role="doc-biblioref">1971</a>)</span>, con el bono del ejemplo (nominal 1.000 €, cupón del 10 %, 2 años, TIR del 14,75 %).</p>
+</div>
+</figure>
+</section>
+</section>
+<section id="sec:gestion-activa" class="level5">
+<h5>Gestión pasiva y gestión activa</h5>
+<ul>
+<li><p>La <strong>gestión pasiva</strong> acepta los precios de mercado y busca controlar el riesgo: replicar un índice de bonos, con una muestra que reproduzca su duración, su plazo y su calidad, porque comprarlos todos es caro, o inmunizar un compromiso. Tiene sentido si el mercado es eficiente <a data-app="3B23.pdf" href="3B23.html" class="vertema"><span class="vertema">[ver tema 3.B.23]</span></a>.</p></li>
+<li><p>La <strong>gestión activa</strong> apuesta a que el gestor sabe algo que el mercado no ha descontado:</p>
+<ul>
+<li><p>sobre los tipos: alargar la duración de la cartera si se espera que bajen y acortarla si se espera que suban;</p></li>
+<li><p>sobre la curva: concentrar la cartera en un plazo (<em>bullet</em>) o en los 2 extremos (<em>barbell</em>) según se espere que se aplane o se positivice; o <em>montar la curva</em> (<em>riding the yield curve</em>): comprar un bono algo más largo que el horizonte para venderlo antes de que venza, con la ganancia que da la caída de su tipo si la curva creciente no cambia;</p></li>
+<li><p>sobre los diferenciales: cambiar un bono por otro casi igual que cotiza más barato, o por otro de otro emisor o sector cuyo diferencial se espera que se estreche.</p></li>
+</ul></li>
+<li><p>El <em>análisis de horizonte</em> une las 2: se fija un plazo, se supone una curva para entonces y se calcula la rentabilidad realizada de cada bono (<a href="#sec:rendimiento">I.5</a>).</p></li>
+<li><p><em>Recapitulación</em>: la duración mide el riesgo de tipo de interés, la convexidad lo afina y la inmunización lo neutraliza igualando la duración con el horizonte.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="esq:31" class="level2 unnumbered" data-minutos="1′">
+<h2 class="unnumbered" data-minutos="1′">Conclusión<span class="minutos" aria-hidden="true">1′</span></h2>
+<ul>
+<li><p><strong><em>Recapitulación</em></strong>:</p>
+<ul>
+<li><p>En conclusión, un bono vale lo que valen sus pagos descontados con los tipos de cada plazo, y su TIR es la rentabilidad que da si se cumplen 3 supuestos que rara vez se cumplen a la vez; por eso precio y rentabilidad se mueven en sentido contrario.</p></li>
+<li><p>La curva de tipos resume las expectativas sobre los tipos cortos futuros más una prima por plazo, que cambia con el riesgo y con quién compra cada plazo.</p></li>
+<li><p>El riesgo de un bono es, sobre todo, de tipo de interés: la duración lo mide, la convexidad corrige el error de esa medida y la inmunización lo neutraliza.</p></li>
+</ul></li>
+<li><p><strong><em>Relevancia</em></strong>:</p>
+<ul>
+<li><p>Estas herramientas no son solo de los gestores: con ellas calcula el Tesoro el coste y el riesgo de su deuda <a data-app="../cuarto-ejercicio/4B26.pdf" href="../cuarto-ejercicio/4B26.pdf" class="vertema"><span class="vertema">[ver tema 4.B.26]</span></a>, vigila el supervisor la brecha de duración de los bancos y decide el banco central cuántos bonos comprar.</p></li>
+</ul></li>
+<li><p><strong><em>Extensiones</em></strong>:</p>
+<ul>
+<li><p>Los derivados de tipos de interés, que se valoran con la curva y permiten cambiar la duración sin vender bonos <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>.</p></li>
+<li><p>El riesgo de tipo de interés de los bancos y las crisis <a data-app="3B26.pdf" href="3B26.html" class="vertema"><span class="vertema">[ver tema 3.B.26]</span></a>, y su regulación <a data-app="3B27.pdf" href="3B27.html" class="vertema"><span class="vertema">[ver tema 3.B.27]</span></a>.</p></li>
+<li><p>La transmisión de la política monetaria a lo largo de la curva y las compras de activos <a data-app="3A37.pdf" href="3A37.html" class="vertema"><span class="vertema">[ver tema 3.A.37]</span></a> <a data-app="3A40.pdf" href="3A40.html" class="vertema"><span class="vertema">[ver tema 3.A.40]</span></a>; la deuda pública y su sostenibilidad <a data-app="3A39.pdf" href="3A39.html" class="vertema"><span class="vertema">[ver tema 3.A.39]</span></a>; y el mercado español de renta fija <a data-app="../cuarto-ejercicio/4A20.pdf" href="../cuarto-ejercicio/4A20.pdf" class="vertema"><span class="vertema">[ver tema 4.A.20]</span></a>.</p></li>
+</ul></li>
+<li><p><strong><em>Opinión</em></strong>:</p>
+<ul>
+<li><p>En 15 años, la renta fija europea ha vivido los 2 extremos. En julio de 2012, la prima de riesgo española llegó a 555 puntos básicos de media, con la ruptura del euro como un riesgo de suceso que ninguna duración mide. En diciembre de 2020, la deuda del Estado rendía en negativo hasta 5 años, con un BCE que compraba deuda y una prima por plazo bajo cero. Y en 2022 y 2023, la subida de los tipos dio a los bonos largos sus peores años en décadas.</p></li>
+<li><p>La lección es la del enganche: la renta fija es fija en sus pagos, no en su valor; quien la compra asume un riesgo de tipo de interés que se mide con la duración, y quien lo olvida lo descubre de golpe, como Silicon Valley Bank.</p></li>
+</ul></li>
+<li><p><strong><em>Idea final</em></strong>:</p>
+<ul>
+<li><p>«¡Cuán largo me lo fiáis!»: en la renta fija, el largo plazo se paga 2 veces, con la prima por plazo en el precio y con la duración en el riesgo. Medir las 2 es lo que permite que el ahorro de hoy financie, a 30, 50 o 100 años, la inversión de mañana.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="anexo:derivaciones" class="level2 unnumbered">
+<h2 class="unnumbered">A. Anexo: derivaciones</h2>
+<section id="a.1.-la-duración-y-la-convexidad" class="level3 unnumbered">
+<h3 class="unnumbered">A.1. La duración y la convexidad</h3>
+<ul>
+<li><p><em>Supuesto</em>: curva plana; todos los flujos se descuentan a la TIR, <span class="math inline">\(P=\sum_{t=1}^{T}\mathrm{FC}_t\,(1+y)^{-t}\)</span>, con <span class="math inline">\(\mathrm{FC}_T=C_T+\mathrm{VN}\)</span>.</p></li>
+<li><p><em>Paso 1, la primera derivada</em>: como <span class="math inline">\(\mathrm{d}(1+y)^{-t}/\mathrm{d}y=-t\,(1+y)^{-t-1}\)</span>, <span class="math display">\[\frac{\mathrm{d}P}{\mathrm{d}y}=-\sum_{t=1}^{T}t\,\frac{\mathrm{FC}_t}{(1+y)^{t+1}}=-\frac{1}{1+y}\sum_{t=1}^{T}t\,\frac{\mathrm{FC}_t}{(1+y)^{t}} .\]</span></p></li>
+<li><p><em>Paso 2, la duración de <span class="smallcaps">Macaulay</span></em>: multiplicando por <span class="math inline">\(-(1+y)/P\)</span>, y como <span class="math inline">\(\mathrm{d}(1+y)=\mathrm{d}y\)</span>, <span class="math display">\[D\equiv-\frac{\mathrm{d}P}{\mathrm{d}(1+y)}\,\frac{1+y}{P}=\sum_{t=1}^{T}t\,\frac{\mathrm{FC}_t/(1+y)^t}{P}=\sum_{t=1}^{T}t\,w_t ,
+  \qquad\sum_{t=1}^{T}w_t=1 .\]</span></p></li>
+<li><p><em>Paso 3, la duración modificada</em>: <span class="math inline">\(D^{\mathrm{mod}}\equiv-\dfrac{1}{P}\dfrac{\mathrm{d}P}{\mathrm{d}y}=\dfrac{D}{1+y}\)</span>.</p></li>
+<li><p><em>Paso 4, la segunda derivada</em>: como <span class="math inline">\(\mathrm{d}^2(1+y)^{-t}/\mathrm{d}y^2=t\,(t+1)\,(1+y)^{-t-2}\)</span>, <span class="math display">\[\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\sum_{t=1}^{T}t\,(t+1)\,\frac{\mathrm{FC}_t}{(1+y)^{t+2}}
+  \quad\Longrightarrow\quad
+  \mathrm{Conv}\equiv\frac{1}{P}\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\frac{1}{P\,(1+y)^2}\sum_{t=1}^{T}t\,(t+1)\,\frac{\mathrm{FC}_t}{(1+y)^{t}}&gt;0 .\]</span></p></li>
+<li><p><em>Paso 5, la aproximación de <span class="smallcaps">Taylor</span></em>: <span class="math inline">\(P(y+\Delta y)\simeq P(y)+\dfrac{\mathrm{d}P}{\mathrm{d}y}\Delta y+\dfrac12\dfrac{\mathrm{d}^2P}{\mathrm{d}y^2}(\Delta y)^2\)</span>; dividiendo por <span class="math inline">\(P\)</span>, sale (<a href="#eq:precio-duracion-convexidad">8</a>).</p></li>
+<li><p><em>Si la curva no es plana</em>, la derivada respecto a «la» rentabilidad no está definida: hay que decir qué se mueve. Con un desplazamiento paralelo de todos los tipos de contado, <span class="math inline">\(r_t+\Delta\)</span>, sale la duración de <span class="smallcaps">Fisher</span> y <span class="smallcaps">Weil</span>, la misma fórmula con cada flujo descontado a su <span class="math inline">\(r_t\)</span>.<span class="findemo">∎</span></p></li>
+</ul>
+</section>
+<section id="a.2.-la-teoría-de-las-expectativas-en-logaritmos" class="level3 unnumbered">
+<h3 class="unnumbered">A.2. La teoría de las expectativas en logaritmos</h3>
+<ul>
+<li><p><em>Paso 1</em>: se toman logaritmos en (<a href="#eq:expectativas-exacta">5</a>): <span class="math inline">\(n\ln\big(1+i^{(n)}_t\big)=\ln(1+i_t)+\sum_{k=1}^{n-1}\ln\big(1+\mathbb{E}_t[i_{t+k}]\big)\)</span>.</p></li>
+<li><p><em>Paso 2</em>: con <span class="math inline">\(\ln(1+x)\simeq x\)</span> para tipos pequeños, <span class="math inline">\(n\,i^{(n)}_t\simeq\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]\)</span>, y dividiendo por <span class="math inline">\(n\)</span>, <span class="math inline">\(i^{(n)}_t\simeq\frac1n\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]\)</span>: es (<a href="#eq:tipo-largo">6</a>) con la prima nula.</p></li>
+<li><p><em>Paso 3</em>: si los inversores exigen un rendimiento extra por el plazo largo, se suma a la derecha y aparece la prima por plazo. En sentido estricto, la aproximación ignora también la diferencia entre <span class="math inline">\(\ln\mathbb{E}[\cdot]\)</span> y <span class="math inline">\(\mathbb{E}[\ln\cdot]\)</span> (desigualdad de <span class="smallcaps">Jensen</span>), que queda dentro de la prima.<span class="findemo">∎</span></p></li>
+</ul>
+</section>
+</section>
+<section id="anexo:clasificaciones" class="level2 unnumbered">
+<h2 class="unnumbered">B. Anexo: clasificaciones de los bonos</h2>
+<section id="b.1.-según-la-naturaleza-del-emisor" class="level3 unnumbered">
+<h3 class="unnumbered">B.1. Según la naturaleza del emisor</h3>
+<ul>
+<li><p>Cualquier agente puede emitir renta fija si encuentra quien la compre y cumple los requisitos legales: en una emisión pública, normalmente, registrar el folleto ante el supervisor de valores (la CNMV en España); la Ley de Sociedades de Capital añade requisitos para las emisiones de las empresas.</p></li>
+<li><p><em>Renta fija pública</em>:</p>
+<ul>
+<li><p><em>Instituciones financieras internacionales</em> (supranacionales: Banco Mundial, BEI, BERD): emisores muy activos y de máxima calidad crediticia, porque cuentan con el respaldo, explícito o implícito, de sus Estados miembros.</p></li>
+<li><p><em>Estados soberanos</em>: dependen de la capacidad del Estado para recaudar, emitir moneda o, si se endeuda en divisa, acumular reservas. Por su uso en la política monetaria, por la demanda regulatoria y por el poder fiscal que tienen detrás, son la referencia del riesgo de cada país y, en las economías más sólidas, el activo libre de riesgo por excelencia.</p></li>
+<li><p><em>Administraciones territoriales y agencias</em> (ayuntamientos, comunidades autónomas, Instituto de Crédito Oficial): pagan con su recaudación, con los flujos del proyecto que financian o con el apoyo de otra administración; su calidad depende de la garantía del soberano, explícita (avales) o implícita.</p></li>
+</ul></li>
+<li><p><em>Renta fija privada</em>:</p>
+<ul>
+<li><p><em>Empresas</em>: pagan con los flujos de su actividad. Destacan las entidades financieras, que acuden de forma recurrente a los mercados para cubrir la diferencia entre préstamos y depósitos y para gestionar su tesorería.</p></li>
+<li><p><em>Vehículos de titulización</em>: transforman derechos de cobro (hipotecas, tarjetas, créditos al consumo) en bonos de distinta calidad, cupón y vencimiento según su lugar en la cascada de pagos (<em>tranching</em>) <a data-app="3B26.pdf" href="3B26.html" class="vertema"><span class="vertema">[ver tema 3.B.26]</span></a>.</p></li>
+</ul></li>
+<li><p>En España, a final de 2025, el mercado AIAF tenía 1,56 billones de euros de deuda pública y 366.625 millones de renta fija privada, y el MARF, el mercado alternativo para empresas medianas, superaba los 10.000 millones <a data-app="../cuarto-ejercicio/4A20.pdf" href="../cuarto-ejercicio/4A20.pdf" class="vertema"><span class="vertema">[ver tema 4.A.20]</span></a>.</p></li>
+</ul>
+</section>
+<section id="b.2.-según-el-mercado-y-el-procedimiento-de-emisión" class="level3 unnumbered">
+<h3 class="unnumbered">B.2. Según el mercado y el procedimiento de emisión</h3>
+<ul>
+<li><p><em>Mercado primario y secundario</em>: en el primario se venden los títulos nuevos, con los que el emisor capta financiación; en el secundario se revenden. El secundario importa por 2 razones: da liquidez a los títulos, sin la cual pocos los comprarían en la emisión, y sus cotizaciones informan sobre cómo valora el mercado al emisor, lo que fija las condiciones de sus emisiones futuras.</p></li>
+<li><p><em>Procedimientos de emisión</em>:</p>
+<ul>
+<li><p><em>Subasta</em>: la habitual en la deuda pública. El Tesoro publica un calendario y los inversores presentan peticiones competitivas (con importe y precio, en porcentaje del nominal; en las letras, en tipo de interés) o no competitivas (solo importe). Se ordenan de mayor a menor precio hasta cubrir el importe, lo que fija el precio mínimo. Las peticiones entre el precio mínimo y el precio medio ponderado pagan lo que ofrecieron, y las que lo superan y las no competitivas, el precio medio ponderado: es la subasta «convencional corregida» <a data-app="3A14.pdf" href="3A14.html" class="vertema"><span class="vertema">[ver tema 3.A.14]</span></a> <a data-app="../cuarto-ejercicio/4B26.pdf" href="../cuarto-ejercicio/4B26.pdf" class="vertema"><span class="vertema">[ver tema 4.B.26]</span></a>.</p></li>
+<li><p><em>Sindicación</em>: un grupo de entidades coloca la emisión, asegurándola a un precio (<em>underwriting</em>) o colocándola al mejor precio posible (<em>best effort</em>).</p></li>
+<li><p><em>Colocación privada</em>: emisiones a medida para pocos inversores.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="b.3.-según-la-divisa-y-el-lugar-de-emisión" class="level3 unnumbered">
+<h3 class="unnumbered">B.3. Según la divisa y el lugar de emisión</h3>
+<ul>
+<li><p>La mayoría de los bonos internacionales se emiten en dólares o en euros, porque los inversores prefieren monedas líquidas y libres. El dólar domina por las necesidades del Tesoro de Estados Unidos y de sus agencias hipotecarias, y porque muchos emergentes emiten en dólares para atraer a los inversores, que así no corren el riesgo de depreciación de la moneda local.</p></li>
+<li><p>Los <em>bonos de doble divisa</em> pagan los intereses en una moneda y el principal en otra, y los <em>bonos con opción de divisa</em> combinan un bono en moneda local con una opción sobre una divisa.</p></li>
+<li><p>Por la moneda y el lugar: el <em>mercado doméstico</em> (residentes y moneda nacional); el <em>segmento internacional del mercado doméstico</em> (emisores extranjeros, moneda y regulación del país, inversores sobre todo nacionales); y los <em>euromercados</em>, con <strong>eurobonos</strong>, bonos emitidos en una moneda distinta de la del país donde se colocan, por cualquier emisor, para inversores internacionales y con la ley pactada en el contrato, normalmente la inglesa <a data-app="3B03.pdf" href="3B03.html" class="vertema"><span class="vertema">[ver tema 3.B.3]</span></a>.</p></li>
+</ul>
+</section>
+<section id="b.4.-según-el-cupón" class="level3 unnumbered">
+<h3 class="unnumbered">B.4. Según el cupón</h3>
+<ul>
+<li><p><em>Cupón fijo</em> (<em>plain vanilla</em>): los más habituales. Si se mantienen hasta el vencimiento dan una rentabilidad conocida, salvo impago, y su sensibilidad a los tipos, la duración y la convexidad, es fácil de calcular.</p></li>
+<li><p><em>Cupón variable</em>: un tipo de referencia (Euríbor) más un diferencial, tanto menor cuanto mejor es la calidad del emisor; o un cupón que crece a una tasa fijada o se ajusta a la inflación.</p></li>
+<li><p><em>Cupón cero</em>: no pagan cupones y se emiten al descuento; el interés es la diferencia entre el nominal y el precio. Los títulos del mercado monetario son, en el fondo, bonos cupón cero.</p></li>
+<li><p><em>Bonos devengables</em> (<em>accrual</em>): devengan cupones que se pagan al vencimiento, con el nominal.</p></li>
+<li><p><em>Bonos con cupones diferidos</em>: devengan cupones, pero el primer pago, con los acumulados, se retrasa hasta una fecha fijada.</p></li>
+</ul>
+</section>
+</section>
+<section id="anexo:verdes" class="level2 unnumbered">
+<h2 class="unnumbered">C. Anexo: bonos verdes, sociales y vinculados a la sostenibilidad</h2>
+<ul>
+<li><p>Los <strong>bonos verdes</strong> son bonos ordinarios cuyo dinero se dedica a proyectos con beneficios ambientales: energías renovables, eficiencia energética, transporte limpio, agua, prevención de la contaminación o adaptación al cambio climático. El emisor responde con todo su balance, así que tienen la misma calificación que el resto de su deuda; lo distinto es el compromiso sobre el uso de los fondos y la obligación de informar de él, según los Principios de Bonos Verdes de la Asociación Internacional de Mercados de Capitales. Los <em>bonos sociales</em> hacen lo mismo con proyectos sociales, y los <em>azules</em>, con proyectos marinos y del agua.</p></li>
+<li><p>Los <strong>bonos vinculados a la sostenibilidad</strong> no financian un proyecto concreto: su cupón cambia si el emisor no cumple unos objetivos de sostenibilidad fijados de antemano, por ejemplo de reducción de emisiones. Los <strong>bonos de transición</strong> financian a emisores de sectores contaminantes que se comprometen a reducir sus emisiones.</p></li>
+<li><p><em>El mercado</em>: los bonos verdes eran el 4,3 % de las emisiones mundiales de deuda en enero-septiembre de 2025, una parte todavía pequeña del mercado de renta fija.</p></li>
+<li><p><em>Los emisores públicos</em>:</p>
+<ul>
+<li><p>Alemania emitió su primer bono verde el 2 de septiembre de 2020, 6.500 millones a 10 años, y España, el 7 de septiembre de 2021, 5.000 millones a 20 años con un cupón del 1 %; a final de 2025, el Tesoro tenía 18.384 millones en bonos verdes <a data-app="../cuarto-ejercicio/4B26.pdf" href="../cuarto-ejercicio/4B26.pdf" class="vertema"><span class="vertema">[ver tema 4.B.26]</span></a>.</p></li>
+<li><p>La Comisión Europea puede financiar hasta el 30 % de NextGenerationEU con bonos verdes: en noviembre de 2026 tenía en circulación 86.240 millones, una décima parte de su deuda <a data-app="3B37.pdf" href="3B37.pdf" class="vertema"><span class="vertema">[ver tema 3.B.37]</span></a>.</p></li>
+<li><p>Desde el 21 de diciembre de 2024 se aplica el estándar europeo de bonos verdes, voluntario y ligado a la taxonomía de la Unión <a data-app="3B31.pdf" href="3B31.html" class="vertema"><span class="vertema">[ver tema 3.B.31]</span></a>.</p></li>
+</ul></li>
+<li><p><em>¿Funcionan?</em>: un bono verde no garantiza que el emisor sea verde: puede ser una empresa muy contaminante que financia un proyecto limpio. Los primeros estudios no encontraron que las empresas que los emitían redujeran sus emisiones; con más datos, las emisiones sí caen tras el primer bono verde, sobre todo en los sectores más contaminantes. Los fondos de inversión sostenible defienden que la rentabilidad es compatible con esos criterios.</p></li>
+</ul>
+</section>
+<section id="anexo:ejemplos" class="level2 unnumbered">
+<h2 class="unnumbered">D. Anexo: ejemplos resueltos</h2>
+<section id="d.1.-el-precio-por-arbitraje" class="level3 unnumbered">
+<h3 class="unnumbered">D.1. El precio por arbitraje</h3>
+<ul>
+<li><p><em>Enunciado</em>: un bono cupón cero a 1 año de nominal 100 € cuesta 90,9 €, y un bono a 2 años de nominal 1.000 € y cupón anual del 10 % cuesta 922,6 €. ¿Cuánto vale un bono cupón cero a 2 años de nominal 1.100 €?</p></li>
+<li><p><em>Paso 1</em>: el bono a 2 años paga 100 € en un año y 1.100 € en 2; su primer pago vale lo que el cupón cero a 1 año, 90,9 €.</p></li>
+<li><p><em>Paso 2</em>: por arbitraje, el resto del precio es el valor del segundo pago: <span class="math inline">\(922{,}6-90{,}9=831{,}7\)</span> €. Si el cupón cero a 2 años costara otra cosa, se ganaría sin riesgo comprando lo barato y vendiendo lo caro.<span class="findemo">∎</span></p></li>
+</ul>
+</section>
+<section id="d.2.-la-teoría-de-las-expectativas-con-números-redondos" class="level3 unnumbered">
+<h3 class="unnumbered">D.2. La teoría de las expectativas con números redondos</h3>
+<ul>
+<li><p><em>Enunciado</em>: un inversor con 100 € y 2 años puede comprar un bono a 2 años al 10 % (<span class="math inline">\(i^{(2)}_t=10\)</span> %), que le da <span class="math inline">\(100\times1{,}1^2=121\)</span> €, o un bono a 1 año al 8 % (<span class="math inline">\(i_t=8\)</span> %) y reinvertir al tipo que haya dentro de un año (figura <a href="#figu:estrategias-expectativas">2</a>).</p></li>
+<li><p>Lo que obtiene con la segunda estrategia depende del tipo esperado para el segundo año, <span class="math inline">\(\mathbb{E}_t[i_{t+1}]\)</span>:</p>
+<ul>
+<li><p>si espera un 20 %, <span class="math inline">\(100\times1{,}08\times1{,}20=129{,}60\)</span> €: todos venden bonos a 2 años, su precio baja y su tipo sube;</p></li>
+<li><p>si espera un 11 %, <span class="math inline">\(100\times1{,}08\times1{,}11=119{,}88\)</span> €: todos compran bonos a 2 años, su precio sube y su tipo baja;</p></li>
+<li><p>solo si espera un 12,04 %, <span class="math inline">\(100\times1{,}08\times1{,}1204=121\)</span> €, le da igual: es el equilibrio.</p></li>
+</ul></li>
+<li><p>En equilibrio, <span class="math inline">\((1+i^{(2)}_t)^2=(1+i_t)\,(1+\mathbb{E}_t[i_{t+1}])\)</span> y, despreciando el producto de los tipos, <span class="math inline">\(i^{(2)}_t\simeq\frac12\big(i_t+\mathbb{E}_t[i_{t+1}]\big)\)</span>: 10 % <span class="math inline">\(\simeq\frac12(8+12)\)</span> %. Es (<a href="#eq:tipo-largo">6</a>) con <span class="math inline">\(n=2\)</span> y sin prima.<span class="findemo">∎</span></p></li>
+</ul>
+<figure id="figu:estrategias-expectativas">
+<figcaption><span class="etiqueta">Figura 2.–</span> 2 estrategias para invertir a 2 años</figcaption>
+<img src="../fuentes/3B24/graficos/estrategias-expectativas.svg" style="width:80.0%" loading="lazy" alt="Figura 2.– 2 estrategias para invertir a 2 años" />
+<div class="fuente">
+<p>Fuente: elaboración propia.</p>
+</div>
+</figure>
+</section>
+<section id="d.3.-la-duración-y-la-convexidad-del-bono-del-ejemplo" class="level3 unnumbered">
+<h3 class="unnumbered">D.3. La duración y la convexidad del bono del ejemplo</h3>
+<ul>
+<li><p><em>Datos</em>: bono a 2 años, nominal 1.000 €, cupón del 10 %, precio 922,6 €; su TIR, la <span class="math inline">\(y\)</span> que cumple <span class="math inline">\(922{,}6=100/(1+y)+1.100/(1+y)^2\)</span>, es del 14,75 %.</p></li>
+<li><p><em>Duración</em>: pesos <span class="math inline">\(w_1=87{,}1/922{,}6=0{,}094\)</span> y <span class="math inline">\(w_2=835{,}5/922{,}6=0{,}906\)</span>; <span class="math inline">\(D=1{,}91\)</span> años; <span class="math inline">\(D^{\mathrm{mod}}=1{,}91/1{,}1475=1{,}66\)</span>; DV01 <span class="math inline">\(=922{,}6\times1{,}66\times0{,}0001=0{,}15\)</span> €.</p></li>
+<li><p><em>Convexidad</em>: <span class="math inline">\(\mathrm{Conv}=\big[1\cdot2\cdot87{,}1+2\cdot3\cdot835{,}5\big]/\big[922{,}6\cdot1{,}1475^2\big]=4{,}27\)</span>.</p></li>
+<li><p><em>Comparación</em> (variación del precio, en %):</p></li>
+</ul>
+<div id="tab:aproximaciones">
+<table>
+<caption><span class="etiqueta">Tabla 4.–</span> Precio exacto y aproximaciones del bono del ejemplo</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong><span class="math inline">\(\Delta y\)</span></strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Exacto</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Duración</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Duración y convexidad</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+1\)</span> punto</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-1{,}64\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-1{,}66\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-1{,}64\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-1\)</span> punto</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+1{,}68\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+1{,}66\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+1{,}68\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+3\)</span> puntos</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-4{,}80\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-4{,}98\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-4{,}79\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(-3\)</span> puntos</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+5{,}18\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+4{,}98\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(+5{,}17\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia.</em></p>
+</section>
+</section>
+<section id="anexo:test" class="level2 unnumbered">
+<h2 class="unnumbered">E. Anexo: para el test</h2>
+<div class="anotaciones">
+<p>Preguntas tipo test del primer ejercicio: <a href="https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html?tema=3.B.24">simulador de test</a>.</p>
+</div>
+</section>
+<section id="bibliografia" class="level2 unnumbered">
+<h2 class="unnumbered">Bibliografía</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-AdrianCrumpMoench2013Pricing" class="csl-entry" role="listitem">
+Adrian, Tobias, Richard K. Crump y Emanuel Moench (2013). <span>«Pricing the Term Structure with Linear Regressions»</span>. <em>Journal of Financial Economics</em> 110 (1): 110-38. <a href="https://doi.org/10.1016/j.jfineco.2013.04.009">https://doi.<wbr>org/<wbr>10.<wbr>1016/<wbr>j.<wbr>jfineco.<wbr>2013.<wbr>04.<wbr>009</a>.
+</div>
+<div id="ref-AnalystNotes2022Callable" class="csl-entry" role="listitem">
+AnalystNotes (2022). <span>«Valuation of Default-Free Callable and Putable Bonds (CFA Level II)»</span>. 2022. <a href="https://analystnotes.com/study_los.php?lostitle=valuation-of-default-free-callable-and-putable-bonds">https://analystnotes.<wbr>com/<wbr>study_<wbr>los.<wbr>php?<wbr>lostitle=<wbr>valuation-<wbr>of-<wbr>default-<wbr>free-<wbr>callable-<wbr>and-<wbr>putable-<wbr>bonds</a>.
+</div>
+<div id="ref-BCE2026YC" class="csl-entry" role="listitem">
+Banco Central Europeo (2026a). <span>«Euro area yield curves. ECB Data Portal, conjunto YC (modelo de Svensson; emisores AAA y todos los emisores)»</span>. 2026. <a href="https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_area_yield_curves/html/index.en.html">https://www.<wbr>ecb.<wbr>europa.<wbr>eu/<wbr>stats/<wbr>financial_<wbr>markets_<wbr>and_<wbr>interest_<wbr>rates/<wbr>euro_<wbr>area_<wbr>yield_<wbr>curves/<wbr>html/<wbr>index.<wbr>en.<wbr>html</a>.
+</div>
+<div id="ref-BCE2026ESTRWeb" class="csl-entry" role="listitem">
+Banco Central Europeo (2026b). <span>«Euro short-term rate (€STR)»</span>. 2026. <a href="https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html">https://www.<wbr>ecb.<wbr>europa.<wbr>eu/<wbr>stats/<wbr>financial_<wbr>markets_<wbr>and_<wbr>interest_<wbr>rates/<wbr>euro_<wbr>short-<wbr>term_<wbr>rate/<wbr>html/<wbr>index.<wbr>en.<wbr>html</a>.
+</div>
+<div id="ref-BCE2026IRS" class="csl-entry" role="listitem">
+Banco Central Europeo (2026c). <span>«Long-term interest rate statistics for EU Member States (IRS): tipos a largo plazo a efectos de convergencia, tipos a 10 años por país»</span>. 2026. <a href="https://data.ecb.europa.eu/data/datasets/IRS">https://data.<wbr>ecb.<wbr>europa.<wbr>eu/<wbr>data/<wbr>datasets/<wbr>IRS</a>.
+</div>
+<div id="ref-BdE2026BE22" class="csl-entry" role="listitem">
+Banco de España (2026). <span>«Boletín Estadístico. Cuadros 22.6 (Letras del Tesoro) y 22.7 (Bonos y Obligaciones del Estado): mercado secundario, operaciones simples al contado, tipos de rendimiento medios por plazo»</span>. 2026. <a href="https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be2207.csv">https://www.<wbr>bde.<wbr>es/<wbr>webbe/<wbr>es/<wbr>estadisticas/<wbr>compartido/<wbr>datos/<wbr>csv/<wbr>be2207.<wbr>csv</a>.
+</div>
+<div id="ref-BoJ2016YCC" class="csl-entry" role="listitem">
+Banco de Japón (2016). <span>«New Framework for Strengthening Monetary Easing: «Quantitative and Qualitative Monetary Easing with Yield Curve Control»»</span>. 21 de septiembre de 2016. <a href="https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2016/k160921a.pdf">https://www.<wbr>boj.<wbr>or.<wbr>jp/<wbr>en/<wbr>mopo/<wbr>mpmdeci/<wbr>mpr_<wbr>2016/<wbr>k160921a.<wbr>pdf</a>.
+</div>
+<div id="ref-BoJ2024Marco" class="csl-entry" role="listitem">
+Banco de Japón (2024). <span>«Changes in the Monetary Policy Framework»</span>. 19 de marzo de 2024. <a href="https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2024/k240319a.pdf">https://www.<wbr>boj.<wbr>or.<wbr>jp/<wbr>en/<wbr>mopo/<wbr>mpmdeci/<wbr>mpr_<wbr>2024/<wbr>k240319a.<wbr>pdf</a>.
+</div>
+<div id="ref-BIS2005ZeroCoupon" class="csl-entry" role="listitem">
+Banco de Pagos Internacionales (2005). <span>«Zero-Coupon Yield Curves: Technical Documentation»</span>. BIS Papers 25. Basilea: Banco de Pagos Internacionales. <a href="https://www.bis.org/publ/bppdf/bispap25.htm">https://www.<wbr>bis.<wbr>org/<wbr>publ/<wbr>bppdf/<wbr>bispap25.<wbr>htm</a>.
+</div>
+<div id="ref-Bernanke2005Glut" class="csl-entry" role="listitem">
+Bernanke, Ben S. (2005). <span>«The Global Saving Glut and the U.S. Current Account Deficit. Sandridge Lecture, Virginia Association of Economists»</span>. 10 de marzo de 2005. <a href="https://www.federalreserve.gov/boarddocs/speeches/2005/200503102/">https://www.<wbr>federalreserve.<wbr>gov/<wbr>boarddocs/<wbr>speeches/<wbr>2005/<wbr>200503102/</a>.
+</div>
+<div id="ref-BodieKaneMarcus2021Investments" class="csl-entry" role="listitem">
+Bodie, Zvi, Alex Kane y Alan J. Marcus (2021). <em>Investments</em>. 12.ª ed. Nueva York: McGraw-Hill.
+</div>
+<div id="ref-BME2026InformeMercado" class="csl-entry" role="listitem">
+Bolsas y Mercados Españoles (2026). <span>«Informe de Mercado de BME 2025»</span>. 2026. <a href="https://www.bolsasymercados.es/dam/descargas/informes-de-mercado/informe-mercado-bme-2025-es.pdf">https://www.<wbr>bolsasymercados.<wbr>es/<wbr>dam/<wbr>descargas/<wbr>informes-<wbr>de-<wbr>mercado/<wbr>informe-<wbr>mercado-<wbr>bme-<wbr>2025-<wbr>es.<wbr>pdf</a>.
+</div>
+<div id="ref-Finanzagentur2020GreenBund" class="csl-entry" role="listitem">
+Bundesrepublik Deutschland – Finanzagentur (2020). <span>«First Green Federal bond successfully placed. Issuance volume amounts to 6.5 billion euro (nota de prensa n.º 9)»</span>. 2 de septiembre de 2020. <a href="https://www.deutsche-finanzagentur.de/fileadmin/user_upload/Pressemitteilung/en/2020/2020-09-02_pm09_First_Green_Federal_bond.pdf">https://www.<wbr>deutsche-<wbr>finanzagentur.<wbr>de/<wbr>fileadmin/<wbr>user_<wbr>upload/<wbr>Pressemitteilung/<wbr>en/<wbr>2020/<wbr>2020-<wbr>09-<wbr>02_<wbr>pm09_<wbr>First_<wbr>Green_<wbr>Federal_<wbr>bond.<wbr>pdf</a>.
+</div>
+<div id="ref-CampbellShiller1991Yield" class="csl-entry" role="listitem">
+Campbell, John Y. y Robert J. Shiller (1991). <span>«Yield Spreads and Interest Rate Movements: A Bird’s Eye View»</span>. <em>Review of Economic Studies</em> 58 (3): 495-514. <a href="https://doi.org/10.2307/2298008">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>2298008</a>.
+</div>
+<div id="ref-CochranePiazzesi2005Bond" class="csl-entry" role="listitem">
+Cochrane, John H. y Monika Piazzesi (2005). <span>«Bond Risk Premia»</span>. <em>American Economic Review</em> 95 (1): 138-60.
+</div>
+<div id="ref-CE2026NGEUVerdes" class="csl-entry" role="listitem">
+Comisión Europea (2026a). <span>«NextGenerationEU green bonds»</span>. 2026. <a href="https://commission.europa.eu/strategy-and-policy/eu-budget/eu-borrower-investor-relations/nextgenerationeu-green-bonds_en">https://commission.<wbr>europa.<wbr>eu/<wbr>strategy-<wbr>and-<wbr>policy/<wbr>eu-<wbr>budget/<wbr>eu-<wbr>borrower-<wbr>investor-<wbr>relations/<wbr>nextgenerationeu-<wbr>green-<wbr>bonds_<wbr>en</a>.
+</div>
+<div id="ref-CE2026Sindicacion10" class="csl-entry" role="listitem">
+Comisión Europea (2026b). <span>«Commission issues €8 billion in its 10th syndicated transaction of 2026 (IP/26/2384)»</span>. 10 de noviembre de 2026. <a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2384">https://ec.<wbr>europa.<wbr>eu/<wbr>commission/<wbr>presscorner/<wbr>detail/<wbr>en/<wbr>ip_<wbr>26_<wbr>2384</a>.
+</div>
+<div id="ref-CoxIngersollRoss1981Reexamination" class="csl-entry" role="listitem">
+Cox, John C., Jonathan E. Ingersoll y Stephen A. Ross (1981). <span>«A Re-examination of Traditional Hypotheses about the Term Structure of Interest Rates»</span>. <em>Journal of Finance</em> 36 (4): 769-99.
+</div>
+<div id="ref-CoxIngersollRoss1985Theory" class="csl-entry" role="listitem">
+Cox, John C., Jonathan E. Ingersoll y Stephen A. Ross (1985). <span>«A Theory of the Term Structure of Interest Rates»</span>. <em>Econometrica</em> 53 (2): 385-407. <a href="https://doi.org/10.2307/1911242">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1911242</a>.
+</div>
+<div id="ref-Culbertson1957Term" class="csl-entry" role="listitem">
+Culbertson, John M. (1957). <span>«The Term Structure of Interest Rates»</span>. <em>Quarterly Journal of Economics</em> 71 (4): 485-517. <a href="https://doi.org/10.2307/1885708">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1885708</a>.
+</div>
+<div id="ref-DemskiEtAl2025Green" class="csl-entry" role="listitem">
+Demski, Jakub, Yingwei Dong, Patrick McGuire y Benoit Mojon (2025). <span>«Growth of the Green Bond Market and Greenhouse Gas Emissions»</span>. <em>BIS Quarterly Review</em>, marzo. <a href="https://www.bis.org/publ/qtrpdf/r_qt2503d.htm">https://www.<wbr>bis.<wbr>org/<wbr>publ/<wbr>qtrpdf/<wbr>r_<wbr>qt2503d.<wbr>htm</a>.
+</div>
+<div id="ref-DieboldLi2006Forecasting" class="csl-entry" role="listitem">
+Diebold, Francis X. y Canlin Li (2006). <span>«Forecasting the Term Structure of Government Bond Yields»</span>. <em>Journal of Econometrics</em> 130 (2): 337-64.
+</div>
+<div id="ref-EhlersMojonPacker2020Green" class="csl-entry" role="listitem">
+Ehlers, Torsten, Benoît Mojon y Frank Packer (2020). <span>«Green Bonds and Carbon Emissions: Exploring the Case for a Rating System at the Firm Level»</span>. <em>BIS Quarterly Review</em>, septiembre. <a href="https://www.bis.org/publ/qtrpdf/r_qt2009c.htm">https://www.<wbr>bis.<wbr>org/<wbr>publ/<wbr>qtrpdf/<wbr>r_<wbr>qt2009c.<wbr>htm</a>.
+</div>
+<div id="ref-Esteve2023Perpetuo" class="csl-entry" role="listitem">
+Esteve, Vicente (2023). <span>«El bono de renta fija perpetuo vivo más antiguo: el bono del agua neerlandés de 1648»</span>. 2023. <a href="http://vicenteesteve.blogspot.com/2023/08/el-bono-de-renta-fija-perpetuo-vivo-mas.html">http://vicenteesteve.<wbr>blogspot.<wbr>com/<wbr>2023/<wbr>08/<wbr>el-<wbr>bono-<wbr>de-<wbr>renta-<wbr>fija-<wbr>perpetuo-<wbr>vivo-<wbr>mas.<wbr>html</a>.
+</div>
+<div id="ref-EstrellaHardouvelis1991Term" class="csl-entry" role="listitem">
+Estrella, Arturo y Gikas A. Hardouvelis (1991). <span>«The Term Structure as a Predictor of Real Economic Activity»</span>. <em>Journal of Finance</em> 46 (2): 555-76. <a href="https://doi.org/10.1111/j.1540-6261.1991.tb02674.x">https://doi.<wbr>org/<wbr>10.<wbr>1111/<wbr>j.<wbr>1540-<wbr>6261.<wbr>1991.<wbr>tb02674.<wbr>x</a>.
+</div>
+<div id="ref-EstrellaMishkin1998" class="csl-entry" role="listitem">
+Estrella, Arturo y Frederic S. Mishkin (1998). <span>«Predicting U.S. Recessions: Financial Variables as Leading Indicators»</span>. <em>Review of Economics and Statistics</em> 80 (1): 45-61. <a href="https://doi.org/10.1162/003465398557320">https://doi.<wbr>org/<wbr>10.<wbr>1162/<wbr>003465398557320</a>.
+</div>
+<div id="ref-EMMI2019Euribor" class="csl-entry" role="listitem">
+European Money Markets Institute (2019). <span>«EMMI completes the phase-in of all panel banks to the Euribor hybrid methodology»</span>. 28 de noviembre de 2019. <a href="https://www.emmi-benchmarks.eu/benchmarks/euribor/reforms">https://www.<wbr>emmi-<wbr>benchmarks.<wbr>eu/<wbr>benchmarks/<wbr>euribor/<wbr>reforms</a>.
+</div>
+<div id="ref-Fabozzi2021Bond" class="csl-entry" role="listitem">
+Fabozzi, Frank J. y Francesco A. Fabozzi (2021). <em>Bond Markets, Analysis, and Strategies</em>. 10.ª ed. Cambridge (Massachusetts): MIT Press.
+</div>
+<div id="ref-FamaBliss1987Information" class="csl-entry" role="listitem">
+Fama, Eugene F. y Robert R. Bliss (1987). <span>«The Information in Long-Maturity Forward Rates»</span>. <em>American Economic Review</em> 77 (4): 680-92.
+</div>
+<div id="ref-Fed2011Twist" class="csl-entry" role="listitem">
+Federal Open Market Committee (2011). <span>«Federal Reserve issues FOMC statement»</span>. 21 de septiembre de 2011. <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20110921a.htm">https://www.<wbr>federalreserve.<wbr>gov/<wbr>newsevents/<wbr>pressreleases/<wbr>monetary20110921a.<wbr>htm</a>.
+</div>
+<div id="ref-Fed2012Twist" class="csl-entry" role="listitem">
+Federal Open Market Committee (2012). <span>«Federal Reserve issues FOMC statement»</span>. 20 de junio de 2012. <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20120620a.htm">https://www.<wbr>federalreserve.<wbr>gov/<wbr>newsevents/<wbr>pressreleases/<wbr>monetary20120620a.<wbr>htm</a>.
+</div>
+<div id="ref-FedHistory2026Accord" class="csl-entry" role="listitem">
+Federal Reserve History (2026). <span>«The Treasury-Fed Accord»</span>. 2026. <a href="https://www.federalreservehistory.org/essays/treasury-fed-accord">https://www.<wbr>federalreservehistory.<wbr>org/<wbr>essays/<wbr>treasury-<wbr>fed-<wbr>accord</a>.
+</div>
+<div id="ref-FCA2026LIBOR" class="csl-entry" role="listitem">
+Financial Conduct Authority (2026). <span>«LIBOR»</span>. 2026. <a href="https://www.fca.org.uk/markets/libor">https://www.<wbr>fca.<wbr>org.<wbr>uk/<wbr>markets/<wbr>libor</a>.
+</div>
+<div id="ref-Fisher1896Appreciation" class="csl-entry" role="listitem">
+Fisher, Irving (1896). <em>Appreciation and Interest: A Study of the Influence of Monetary Appreciation and Depreciation on the Rate of Interest</em>. Publications of the American Economic Association. Nueva York: American Economic Association (Macmillan). <a href="https://archive.org/details/appreciationinte00fish">https://archive.<wbr>org/<wbr>details/<wbr>appreciationinte00fish</a>.
+</div>
+<div id="ref-FisherWeil1971Coping" class="csl-entry" role="listitem">
+Fisher, Lawrence y Roman L. Weil (1971). <span>«Coping with the Risk of Interest-Rate Fluctuations: Returns to Bondholders from Naïve and Optimal Strategies»</span>. <em>Journal of Business</em> 44 (4): 408-31.
+</div>
+<div id="ref-Forbes2021FondosESG" class="csl-entry" role="listitem">
+Forbes España (2021). <span>«Fondos ESG: la rentabilidad es compatible con la inversión sostenible»</span>. 2021. <a href="https://forbes.es/forbes-funds/117082/fondos-esg-cuando-la-rentabilidad-es-compatible-con-la-inversion-responsable/">https://forbes.<wbr>es/<wbr>forbes-<wbr>funds/<wbr>117082/<wbr>fondos-<wbr>esg-<wbr>cuando-<wbr>la-<wbr>rentabilidad-<wbr>es-<wbr>compatible-<wbr>con-<wbr>la-<wbr>inversion-<wbr>responsable/</a>.
+</div>
+<div id="ref-Garicano2020Reconstruction" class="csl-entry" role="listitem">
+Garicano, Luis (2020). <span>«Towards a European Reconstruction Fund»</span>. VoxEU (CEPR). 2020. <a href="https://cepr.org/voxeu/columns/towards-european-reconstruction-fund">https://cepr.<wbr>org/<wbr>voxeu/<wbr>columns/<wbr>towards-<wbr>european-<wbr>reconstruction-<wbr>fund</a>.
+</div>
+<div id="ref-Greenspan2005Testimony" class="csl-entry" role="listitem">
+Greenspan, Alan (2005). <span>«Federal Reserve Board’s Semiannual Monetary Policy Report to the Congress. Testimony before the Committee on Banking, Housing, and Urban Affairs, U.S. Senate»</span>. 16 de febrero de 2005. <a href="https://www.federalreserve.gov/boarddocs/hh/2005/february/testimony.htm">https://www.<wbr>federalreserve.<wbr>gov/<wbr>boarddocs/<wbr>hh/<wbr>2005/<wbr>february/<wbr>testimony.<wbr>htm</a>.
+</div>
+<div id="ref-GreenwoodVayanos2010Price" class="csl-entry" role="listitem">
+Greenwood, Robin y Dimitri Vayanos (2010). <span>«Price Pressure in the Government Bond Market»</span>. <em>American Economic Review</em> 100 (2): 585-90.
+</div>
+<div id="ref-Hicks1939Value" class="csl-entry" role="listitem">
+Hicks, John R. (1939). <em>Value and Capital: An Inquiry into Some Fundamental Principles of Economic Theory</em>. Oxford: Clarendon Press.
+</div>
+<div id="ref-HomerLiebowitz1972Inside" class="csl-entry" role="listitem">
+Homer, Sidney y Martin L. Leibowitz (1972). <em>Inside the Yield Book: New Tools for Bond Market Strategy</em>. Englewood Cliffs: Prentice-Hall.
+</div>
+<div id="ref-Hull2022Options" class="csl-entry" role="listitem">
+Hull, John C. (2022). <em>Options, Futures, and Other Derivatives</em>. 11.ª ed. Harlow: Pearson.
+</div>
+<div id="ref-ICMA2021GBP" class="csl-entry" role="listitem">
+International Capital Market Association (2021). <span>«Green Bond Principles: Voluntary Process Guidelines for Issuing Green Bonds»</span>. 2021. <a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/green-bond-principles-gbp/">https://www.<wbr>icmagroup.<wbr>org/<wbr>sustainable-<wbr>finance/<wbr>the-<wbr>principles-<wbr>guidelines-<wbr>and-<wbr>handbooks/<wbr>green-<wbr>bond-<wbr>principles-<wbr>gbp/</a>.
+</div>
+<div id="ref-ICMA2024SLBP" class="csl-entry" role="listitem">
+International Capital Market Association (2024). <span>«Sustainability-Linked Bond Principles»</span>. 2024. <a href="https://www.icmagroup.org/sustainable-finance/the-principles-guidelines-and-handbooks/sustainability-linked-bond-principles-slbp/">https://www.<wbr>icmagroup.<wbr>org/<wbr>sustainable-<wbr>finance/<wbr>the-<wbr>principles-<wbr>guidelines-<wbr>and-<wbr>handbooks/<wbr>sustainability-<wbr>linked-<wbr>bond-<wbr>principles-<wbr>slbp/</a>.
+</div>
+<div id="ref-Investopedia2026GreenBond" class="csl-entry" role="listitem">
+Investopedia (2026). <span>«Green Bond»</span>. 2026. <a href="https://www.investopedia.com/terms/g/green-bond.asp">https://www.<wbr>investopedia.<wbr>com/<wbr>terms/<wbr>g/<wbr>green-<wbr>bond.<wbr>asp</a>.
+</div>
+<div id="ref-LSC2010" class="csl-entry" role="listitem">
+Jefatura del Estado (2010). <span>«Real Decreto Legislativo 1/2010, de 2 de julio, por el que se aprueba el texto refundido de la Ley de Sociedades de Capital»</span>. <em>Boletín Oficial del Estado</em>, n.º 161 (julio). <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-10544">https://www.<wbr>boe.<wbr>es/<wbr>buscar/<wbr>act.<wbr>php?<wbr>id=<wbr>BOE-<wbr>A-<wbr>2010-<wbr>10544</a>.
+</div>
+<div id="ref-Kessel1965Cyclical" class="csl-entry" role="listitem">
+Kessel, Reuben A. (1965). <em>The Cyclical Behavior of the Term Structure of Interest Rates</em>. NBER Occasional Paper 91. Nueva York: National Bureau of Economic Research. <a href="https://www.nber.org/books-and-chapters/cyclical-behavior-term-structure-interest-rates">https://www.<wbr>nber.<wbr>org/<wbr>books-<wbr>and-<wbr>chapters/<wbr>cyclical-<wbr>behavior-<wbr>term-<wbr>structure-<wbr>interest-<wbr>rates</a>.
+</div>
+<div id="ref-Keynes1936" class="csl-entry" role="listitem">
+Keynes, John Maynard (1936). <em>The General Theory of Employment, Interest and Money</em>. Londres: Macmillan.
+</div>
+<div id="ref-Nobel2022Bancos" class="csl-entry" role="listitem">
+Kungl. Vetenskapsakademien (2022). <span>«The Prize in Economic Sciences 2022. Press release»</span>. 2022. <a href="https://www.nobelprize.org/prizes/economic-sciences/2022/press-release/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>2022/<wbr>press-<wbr>release/</a>.
+</div>
+<div id="ref-Moncloa2021BonoVerde" class="csl-entry" role="listitem">
+La Moncloa (2021). <span>«El éxito de la primera emisión de bonos verdes del Tesoro permite reducir el tipo de interés y ampliar la base inversora»</span>. 7 de septiembre de 2021. <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/asuntos-economicos/Paginas/2021/070921-bonos_verdes.aspx">https://www.<wbr>lamoncloa.<wbr>gob.<wbr>es/<wbr>serviciosdeprensa/<wbr>notasprensa/<wbr>asuntos-<wbr>economicos/<wbr>Paginas/<wbr>2021/<wbr>070921-<wbr>bonos_<wbr>verdes.<wbr>aspx</a>.
+</div>
+<div id="ref-LeibowitzWeinberger1982Contingent" class="csl-entry" role="listitem">
+Leibowitz, Martin L. y Alfred Weinberger (1982). <span>«Contingent Immunization. Part I: Risk Control Procedures»</span>. <em>Financial Analysts Journal</em> 38 (6): 17-31.
+</div>
+<div id="ref-LittermanScheinkman1991Common" class="csl-entry" role="listitem">
+Litterman, Robert y José Scheinkman (1991). <span>«Common Factors Affecting Bond Returns»</span>. <em>Journal of Fixed Income</em> 1 (1): 54-61.
+</div>
+<div id="ref-Lutz1940Structure" class="csl-entry" role="listitem">
+Lutz, Friedrich A. (1940). <span>«The Structure of Interest Rates»</span>. <em>Quarterly Journal of Economics</em> 55 (1): 36-63. <a href="https://doi.org/10.2307/1881657">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1881657</a>.
+</div>
+<div id="ref-Macaulay1938Some" class="csl-entry" role="listitem">
+Macaulay, Frederick R. (1938). <em>Some Theoretical Problems Suggested by the Movements of Interest Rates, Bond Yields and Stock Prices in the United States since 1856</em>. Nueva York: National Bureau of Economic Research. <a href="https://www.nber.org/books-and-chapters/some-theoretical-problems-suggested-movements-interest-rates-bond-yields-and-stock-prices-united">https://www.<wbr>nber.<wbr>org/<wbr>books-<wbr>and-<wbr>chapters/<wbr>some-<wbr>theoretical-<wbr>problems-<wbr>suggested-<wbr>movements-<wbr>interest-<wbr>rates-<wbr>bond-<wbr>yields-<wbr>and-<wbr>stock-<wbr>prices-<wbr>united</a>.
+</div>
+<div id="ref-Malkiel1962Expectations" class="csl-entry" role="listitem">
+Malkiel, Burton G. (1962). <span>«Expectations, Bond Prices, and the Term Structure of Interest Rates»</span>. <em>Quarterly Journal of Economics</em> 76 (2): 197-218. <a href="https://doi.org/10.2307/1880816">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1880816</a>.
+</div>
+<div id="ref-MarcoSanjuan2017PrecioCupon" class="csl-entry" role="listitem">
+Marco Sanjuán, Francisco Javier (2017). <span>«Precio con cupón (precio sucio)»</span>. Economipedia. 2017. <a href="https://economipedia.com/definiciones/precio-con-cupon.html">https://economipedia.<wbr>com/<wbr>definiciones/<wbr>precio-<wbr>con-<wbr>cupon.<wbr>html</a>.
+</div>
+<div id="ref-Mascarenas2026Monografias" class="csl-entry" role="listitem">
+Mascareñas, Juan (2026). <span>«Monografías de Juan Mascareñas sobre finanzas corporativas»</span>. 2026. <a href="http://www.juanmascarenas.eu/monograf.htm">http://www.<wbr>juanmascarenas.<wbr>eu/<wbr>monograf.<wbr>htm</a>.
+</div>
+<div id="ref-LSEG2025GreenDebt" class="csl-entry" role="listitem">
+Meng, Alan y Lee Clements (2025). <span>«Green debt market passes $3 trillion milestone»</span>. LSEG / FTSE Russell. 19 de noviembre de 2025. <a href="https://www.lseg.com/en/insights/green-debt-market-passes-3-trillion-milestone">https://www.<wbr>lseg.<wbr>com/<wbr>en/<wbr>insights/<wbr>green-<wbr>debt-<wbr>market-<wbr>passes-<wbr>3-<wbr>trillion-<wbr>milestone</a>.
+</div>
+<div id="ref-MishkinEakins2018Financial" class="csl-entry" role="listitem">
+Mishkin, Frederic S. y Stanley G. Eakins (2018). <em>Financial Markets and Institutions</em>. 9.ª ed. Harlow: Pearson.
+</div>
+<div id="ref-MishkinMatthewsGiuliodori2013" class="csl-entry" role="listitem">
+Mishkin, Frederic S., Kent Matthews y Massimo Giuliodori (2013). <em>The Economics of Money, Banking and Financial Markets</em>. European. Harlow: Pearson.
+</div>
+<div id="ref-ModiglianiSutch1966Innovations" class="csl-entry" role="listitem">
+Modigliani, Franco y Richard Sutch (1966). <span>«Innovations in Interest Rate Policy»</span>. <em>American Economic Review</em> 56 (1/2): 178-97.
+</div>
+<div id="ref-MorenoGutierrez2018RentaFija" class="csl-entry" role="listitem">
+Moreno, J. David y María Gutiérrez (2018). <span>«Tema 6: La gestión de activos de renta fija»</span>. Apuntes de Economía Financiera, Universidad Carlos III de Madrid.
+</div>
+<div id="ref-NBER2026Fechado" class="csl-entry" role="listitem">
+National Bureau of Economic Research (2026). <span>«Business Cycle Dating»</span>. 2026. <a href="https://www.nber.org/research/business-cycle-dating">https://www.<wbr>nber.<wbr>org/<wbr>research/<wbr>business-<wbr>cycle-<wbr>dating</a>.
+</div>
+<div id="ref-NelsonSiegel1987Parsimonious" class="csl-entry" role="listitem">
+Nelson, Charles R. y Andrew F. Siegel (1987). <span>«Parsimonious Modeling of Yield Curves»</span>. <em>Journal of Business</em> 60 (4): 473-89.
+</div>
+<div id="ref-Nobel1985Modigliani" class="csl-entry" role="listitem">
+Nobel Prize Outreach (1985). <span>«The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1985: Franco Modigliani»</span>. 1985. <a href="https://www.nobelprize.org/prizes/economic-sciences/1985/summary/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>1985/<wbr>summary/</a>.
+</div>
+<div id="ref-UE2009Agencias" class="csl-entry" role="listitem">
+Parlamento Europeo y Consejo (2009). <span>«Reglamento (CE) n.º 1060/2009, de 16 de septiembre de 2009, sobre las agencias de calificación crediticia»</span>. 2009. <a href="https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32009R1060">https://eur-<wbr>lex.<wbr>europa.<wbr>eu/<wbr>legal-<wbr>content/<wbr>ES/<wbr>TXT/<wbr>?<wbr>uri=<wbr>CELEX:32009R1060</a>.
+</div>
+<div id="ref-UE2013CRR" class="csl-entry" role="listitem">
+Parlamento Europeo y Consejo (2013). <span>«Reglamento (UE) n.º 575/2013, de 26 de junio de 2013, sobre los requisitos prudenciales de las entidades de crédito»</span>. 2013. <a href="https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32013R0575">https://eur-<wbr>lex.<wbr>europa.<wbr>eu/<wbr>legal-<wbr>content/<wbr>ES/<wbr>TXT/<wbr>?<wbr>uri=<wbr>CELEX:32013R0575</a>.
+</div>
+<div id="ref-UE2023EuGB" class="csl-entry" role="listitem">
+Parlamento Europeo y Consejo (2023). <span>«Reglamento (UE) 2023/2631, de 22 de noviembre de 2023, sobre los bonos verdes europeos»</span>. 2023. <a href="https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32023R2631">https://eur-<wbr>lex.<wbr>europa.<wbr>eu/<wbr>legal-<wbr>content/<wbr>ES/<wbr>TXT/<wbr>?<wbr>uri=<wbr>CELEX:32023R2631</a>.
+</div>
+<div id="ref-Redington1952Review" class="csl-entry" role="listitem">
+Redington, Frank M. (1952). <span>«Review of the Principles of Life-Office Valuations»</span>. <em>Journal of the Institute of Actuaries</em> 78 (3): 286-340. <a href="https://doi.org/10.1017/S0020268100052811">https://doi.<wbr>org/<wbr>10.<wbr>1017/<wbr>S0020268100052811</a>.
+</div>
+<div id="ref-RodriguezGrana2014Duracion" class="csl-entry" role="listitem">
+Rodríguez Graña, Óscar (2014). <span>«Manual explicativo para entender tres conceptos básicos en renta fija: duración, duración modificada y sensibilidad»</span>. FundsPeople. 16 de junio de 2014. <a href="https://fundspeople.com/es/glosario/manual-explicativo-para-entender-tres-conceptos-basicos-en-renta-fija-duracion-duracion-modificada-y-sensibilidad/">https://fundspeople.<wbr>com/<wbr>es/<wbr>glosario/<wbr>manual-<wbr>explicativo-<wbr>para-<wbr>entender-<wbr>tres-<wbr>conceptos-<wbr>basicos-<wbr>en-<wbr>renta-<wbr>fija-<wbr>duracion-<wbr>duracion-<wbr>modificada-<wbr>y-<wbr>sensibilidad/</a>.
+</div>
+<div id="ref-SIFMA2026FactBook" class="csl-entry" role="listitem">
+SIFMA (2026). <span>«10 Key Findings from SIFMA’s 2026 Capital Markets Fact Book»</span>. 19 de agosto de 2026. <a href="https://www.sifma.org/news/blog/2026-capital-markets-fact-book-key-findings">https://www.<wbr>sifma.<wbr>org/<wbr>news/<wbr>blog/<wbr>2026-<wbr>capital-<wbr>markets-<wbr>fact-<wbr>book-<wbr>key-<wbr>findings</a>.
+</div>
+<div id="ref-Saxo2024Century" class="csl-entry" role="listitem">
+Spinozzi, Althea (2024). <span>«The Most Infamous Bond Trade»</span>. Saxo Bank. 18 de enero de 2024. <a href="https://www.home.saxo/content/articles/bonds/the-most-infamous-bond-trade-18012024">https://www.<wbr>home.<wbr>saxo/<wbr>content/<wbr>articles/<wbr>bonds/<wbr>the-<wbr>most-<wbr>infamous-<wbr>bond-<wbr>trade-<wbr>18012024</a>.
+</div>
+<div id="ref-Svensson1994Estimating" class="csl-entry" role="listitem">
+Svensson, Lars E. O. (1994). <span>«Estimating and Interpreting Forward Interest Rates: Sweden 1992–1994»</span>. NBER Working Paper 4871. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w4871">https://doi.<wbr>org/<wbr>10.<wbr>3386/<wbr>w4871</a>.
+</div>
+<div id="ref-Swanson2011Twist" class="csl-entry" role="listitem">
+Swanson, Eric T. (2011). <span>«Let’s Twist Again: A High-Frequency Event-Study Analysis of Operation Twist and Its Implications for QE2»</span>. <em>Brookings Papers on Economic Activity</em> 2011 (1): 151-88. <a href="https://www.brookings.edu/wp-content/uploads/2011/03/2011a_bpea_swanson.pdf">https://www.<wbr>brookings.<wbr>edu/<wbr>wp-<wbr>content/<wbr>uploads/<wbr>2011/<wbr>03/<wbr>2011a_<wbr>bpea_<wbr>swanson.<wbr>pdf</a>.
+</div>
+<div id="ref-Tesoro2026BonosObligaciones" class="csl-entry" role="listitem">
+Tesoro Público (2026a). <span>«Bonos y Obligaciones del Estado»</span>. 2026. <a href="https://www.tesoro.es/deuda-publica/los-valores-del-tesoro/bonos-y-obligaciones-del-estado">https://www.<wbr>tesoro.<wbr>es/<wbr>deuda-<wbr>publica/<wbr>los-<wbr>valores-<wbr>del-<wbr>tesoro/<wbr>bonos-<wbr>y-<wbr>obligaciones-<wbr>del-<wbr>estado</a>.
+</div>
+<div id="ref-Tesoro2026Calificacion" class="csl-entry" role="listitem">
+Tesoro Público (2026b). <span>«Calificación crediticia del Reino de España»</span>. 2026. <a href="https://www.tesoro.es/deuda-publica/calificacion-crediticia">https://www.<wbr>tesoro.<wbr>es/<wbr>deuda-<wbr>publica/<wbr>calificacion-<wbr>crediticia</a>.
+</div>
+<div id="ref-Tesoro2026Estrategia" class="csl-entry" role="listitem">
+Tesoro Público (2026c). <span>«Estrategia de financiación 2026»</span>. Madrid: Secretaría General del Tesoro y Financiación Internacional. <a href="https://www.tesoro.es/documents/d/tesoro/estrategia_tesoro_publico_2026_espanol">https://www.<wbr>tesoro.<wbr>es/<wbr>documents/<wbr>d/<wbr>tesoro/<wbr>estrategia_<wbr>tesoro_<wbr>publico_<wbr>2026_<wbr>espanol</a>.
+</div>
+<div id="ref-Tesoro2026Subasta" class="csl-entry" role="listitem">
+Tesoro Público (2026d). <span>«La subasta»</span>. 2026. <a href="https://www.tesoro.es/deuda-publica/mercado/mercado-primario/procedimiento-de-emision-y-subasta-de-los-valores-del-tesoro/la-subasta">https://www.<wbr>tesoro.<wbr>es/<wbr>deuda-<wbr>publica/<wbr>mercado/<wbr>mercado-<wbr>primario/<wbr>procedimiento-<wbr>de-<wbr>emision-<wbr>y-<wbr>subasta-<wbr>de-<wbr>los-<wbr>valores-<wbr>del-<wbr>tesoro/<wbr>la-<wbr>subasta</a>.
+</div>
+<div id="ref-Tesoro2026Letras" class="csl-entry" role="listitem">
+Tesoro Público (2026e). <span>«Letras del Tesoro»</span>. 2026. <a href="https://www.tesoro.es/deuda-publica/los-valores-del-tesoro/letras-del-tesoro">https://www.<wbr>tesoro.<wbr>es/<wbr>deuda-<wbr>publica/<wbr>los-<wbr>valores-<wbr>del-<wbr>tesoro/<wbr>letras-<wbr>del-<wbr>tesoro</a>.
+</div>
+<div id="ref-Tesoro2026Strips" class="csl-entry" role="listitem">
+Tesoro Público (2026f). <span>«Strips»</span>. 2026. <a href="https://www.tesoro.es/deuda-publica/otras-formas-de-inversion/strips">https://www.<wbr>tesoro.<wbr>es/<wbr>deuda-<wbr>publica/<wbr>otras-<wbr>formas-<wbr>de-<wbr>inversion/<wbr>strips</a>.
+</div>
+<div id="ref-Nobel1972HicksArrow" class="csl-entry" role="listitem">
+The Nobel Prize (1972). <span>«The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 1972: John R. Hicks and Kenneth J. Arrow»</span>. 1972. <a href="https://www.nobelprize.org/prizes/economic-sciences/1972/summary/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>1972/<wbr>summary/</a>.
+</div>
+<div id="ref-Nobel2013FamaHansenShiller" class="csl-entry" role="listitem">
+The Nobel Prize (2013). <span>«The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2013: Eugene F. Fama, Lars Peter Hansen and Robert J. Shiller»</span>. 2013. <a href="https://www.nobelprize.org/prizes/economic-sciences/2013/summary/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>2013/<wbr>summary/</a>.
+</div>
+<div id="ref-UST2026ParYield" class="csl-entry" role="listitem">
+U.S. Department of the Treasury (2026). <span>«Daily Treasury Par Yield Curve Rates»</span>. 2026. <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&amp;field_tdr_date_value=2026">https://home.<wbr>treasury.<wbr>gov/<wbr>resource-<wbr>center/<wbr>data-<wbr>chart-<wbr>center/<wbr>interest-<wbr>rates/<wbr>TextView?<wbr>type=<wbr>daily_<wbr>treasury_<wbr>yield_<wbr>curve&amp;<wbr>field_<wbr>tdr_<wbr>date_<wbr>value=<wbr>2026</a>.
+</div>
+<div id="ref-Vasicek1977Equilibrium" class="csl-entry" role="listitem">
+Vasicek, Oldrich (1977). <span>«An Equilibrium Characterization of the Term Structure»</span>. <em>Journal of Financial Economics</em> 5 (2): 177-88. <a href="https://doi.org/10.1016/0304-405X(77)90016-2">https://doi.<wbr>org/<wbr>10.<wbr>1016/<wbr>0304-<wbr>405X(77)90016-<wbr>2</a>.
+</div>
+<div id="ref-VayanosVila2021Preferred" class="csl-entry" role="listitem">
+Vayanos, Dimitri y Jean-Luc Vila (2021). <span>«A Preferred-Habitat Model of the Term Structure of Interest Rates»</span>. <em>Econometrica</em> 89 (1): 77-112.
+</div>
+<div id="ref-BCE2019TransicionEONIA" class="csl-entry" role="listitem">
+Working Group on Euro Risk-Free Rates (2019). <span>«Factsheet: Transition from EONIA to the €STR»</span>. Banco Central Europeo. 2019. <a href="https://www.ecb.europa.eu/stats/euro-short-term-rates/interest_rate_benchmarks/WG_euro_risk-free_rates/shared/pdf/FactsheetTransitionEONIAtoEuroSTR.pdf">https://www.<wbr>ecb.<wbr>europa.<wbr>eu/<wbr>stats/<wbr>euro-<wbr>short-<wbr>term-<wbr>rates/<wbr>interest_<wbr>rate_<wbr>benchmarks/<wbr>WG_<wbr>euro_<wbr>risk-<wbr>free_<wbr>rates/<wbr>shared/<wbr>pdf/<wbr>FactsheetTransitionEONIAtoEuroSTR.<wbr>pdf</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Se distinguen 2 tipos de activos. Los <em>activos reales</em> (tierra, edificios, máquinas, conocimiento) determinan la capacidad productiva de una economía y no son el pasivo de nadie. Los <em>activos financieros</em> son derechos sobre los activos reales o sobre las rentas que generan: no contribuyen directamente a la capacidad productiva, y un activo financiero de un agente es siempre, a la vez, el pasivo (o el patrimonio neto) de otro, el emisor.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Es un pagaré que el prestatario entrega al prestamista a cambio de su dinero, con un contrato de préstamo detrás. Para el emisor, es una forma de financiarse que compite con el préstamo bancario y con las acciones, según su estructura óptima de capital <a data-app="3B03.pdf" href="3B03.html" class="vertema"><span class="vertema">[ver tema 3.B.3]</span></a>; para el inversor, una forma de obtener rentabilidad sin la incertidumbre de la renta variable.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>La <em>deuda perpetua</em> no se devuelve nunca: el emisor solo paga intereses, aunque suele reservarse el derecho a amortizarla cuando quiera. En 2020, <span class="smallcaps">Luis Garicano</span> propuso financiar un fondo europeo de reconstrucción de 1 billón de euros con deuda perpetua (<em>EU Consols</em>); la Unión prefirió emitir deuda a plazo para NextGenerationEU <a data-app="3B37.pdf" href="3B37.pdf" class="vertema"><span class="vertema">[ver tema 3.B.37]</span></a>. El bono perpetuo más antiguo que sigue pagando intereses es uno de 1648 de una autoridad del agua neerlandesa.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Se llama así porque los títulos en papel llevaban unos cupones que el tenedor cortaba y presentaba al cobro. El cupón es anual en la deuda del Estado español y semestral en la de Estados Unidos y en muchos bonos de empresa.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Los tipos de referencia más usados en euros son el <em>Euríbor</em>, al que los bancos de la zona del euro obtienen financiación sin garantía a 1 semana y a 1, 3, 6 y 12 meses, calculado desde noviembre de 2019 con una metodología híbrida que usa operaciones reales siempre que las hay, y el <em>€STR</em>, que publica el BCE desde el 2 de octubre de 2019 con las operaciones a un día sin garantía del día hábil anterior. El €STR sustituyó al EONIA, que desde esa fecha se calculó como el €STR más 8,5 puntos básicos hasta que dejó de publicarse el 3 de enero de 2022. En dólares, el LÍBOR dejó de publicarse con un panel de bancos el 30 de junio de 2023, y lo sustituyó el SOFR.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>En España se hablaba tradicionalmente de 18 meses, el plazo máximo habitual de los pagarés de empresa; las estadísticas europeas llaman de corto plazo a los valores con un vencimiento original de hasta un año.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Con <span class="math inline">\(m\)</span> cupones al año y tipos anuales, cada flujo se descuenta <span class="math inline">\(mt\)</span> periodos a <span class="math inline">\(r_t/m\)</span>, con el cupón <span class="math inline">\(C/m\)</span> por periodo.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>En sentido estricto, la ETTI es la <em>curva cupón cero</em> o curva pura: la de los <em>strips</em> y bonos cupón cero. La prensa suele dibujar la <em>curva de rentabilidades</em> de los bonos con cupón, la TIR de cada plazo, que no es lo mismo, porque cada TIR es un promedio de varios tipos de contado; la de los bonos recién emitidos, que cotizan cerca de la par, es la curva <em>par</em> u <em>on the run</em>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>La segregación transforma un activo de rendimiento explícito en varios de rendimiento implícito, atractivos para inversores que quieren cobrar en una fecha concreta, sin que el Tesoro tenga que emitir más clases de valores. Para los sujetos pasivos del impuesto sobre sociedades, ni el cupón de los bonos segregables ni el rendimiento implícito de los <em>strips</em> sufren retención; el resto de características (plazos, cupón, forma de emisión) son las de los bonos no segregables.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><span class="smallcaps">John Hicks</span> recibió el Premio Nobel de Economía en 1972, con <span class="smallcaps">Kenneth Arrow</span>, «por sus contribuciones pioneras a la teoría del equilibrio económico general y a la teoría del bienestar».<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><span class="smallcaps">Robert Shiller</span> recibió el Premio Nobel de Economía en 2013, con <span class="smallcaps">Eugene Fama</span> y <span class="smallcaps">Lars Peter Hansen</span>, «por su análisis empírico de los precios de los activos».<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><span class="smallcaps">Franco Modigliani</span> recibió el Premio Nobel de Economía en 1985 «por sus análisis pioneros del ahorro y de los mercados financieros».<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><span class="smallcaps">Ben S. Bernanke</span> recibió el Premio Nobel de Economía en 2022, con <span class="smallcaps">Douglas Diamond</span> y <span class="smallcaps">Philip Dybvig</span>, «por sus investigaciones sobre los bancos y las crisis financieras».<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Hay una razón más, por el lado de la demanda de crédito: si las expectativas de beneficios resultan demasiado optimistas, muchas empresas a la vez buscan refinanciarse a corto plazo para no tener que vender sus activos, el tipo corto sube y la curva se aplana o se invierte; después recortan sus planes de inversión. Los errores no se compensan entre empresas, como pediría la ley de los grandes números, porque están correlacionados: responden a un mismo estado de ánimo, los <em>animal spirits</em> de <span class="citation" data-cites="Keynes1936"><span class="smallcaps">Keynes</span> (<a href="#ref-Keynes1936" role="doc-biblioref">1936</a>)</span>, que lleva a todos a invertir de más o de menos a la vez <a data-app="3A34.pdf" href="3A34.html" class="vertema"><span class="vertema">[ver tema 3.A.34]</span></a>.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>Con bonos muy por debajo de la par y plazos muy largos, la duración puede llegar a bajar con el plazo. La de un bono perpetuo es <span class="math inline">\((1+y)/y\)</span>, finita: 21 años con una TIR del 5 %.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+                <footer class="tema-pie">
+                    <section class="tema-oposicion">
+                        <h2 class="tema-pie-titulo">Tema de la oposición TCEE</h2>
+                        <p>Este tema forma parte del temario de la oposición a Técnico Comercial y Economista del Estado: es el tema 3.B.24 del <a href="../tercer-ejercicio.html">Tercer ejercicio</a>. Tienes el resto del <a href="../../temario.html">temario</a>, el <a href="../primer-ejercicio/test/simulador.html">simulador de test</a> con preguntas de exámenes oficiales, una <a href="../../que-es-tcee.html">guía de la oposición</a> y la <a href="../../../app/">app</a> para organizar el estudio y cantar los temas.</p>
+                    </section>
+                    <section class="tema-cita">
+                        <h2 class="tema-pie-titulo">Cómo citar</h2>
+                        <p>Gutiérrez Marcos, V. (2026). <em>Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.</em> [Tema 3.B.24 del temario de la oposición a Técnico Comercial y Economista del Estado]. https://www.<wbr>victorgutierrezmarcos.<wbr>es/<wbr>oposicion/<wbr>temario/<wbr>tercer-<wbr>ejercicio/<wbr>3B24.<wbr>html</p>
+                        <p class="licencia-fin">© 2026 Víctor Gutiérrez Marcos · Todos los derechos reservados · <strong class="etiqueta-exclusivo">Exclusivo</strong> Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE, para tu estudio personal; no se autoriza su incorporación a otras plataformas, aplicaciones o servicios, ni la minería de textos y datos. <a href="https://www.victorgutierrezmarcos.es/condiciones-materiales.html">Condiciones de uso</a>.</p>
+                    </section>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-columnas">
+            <nav class="footer-col" aria-label="Secciones">
+                <p class="footer-col-titulo">Secciones</p>
+                <ul>
+                    <li><a href="../../../oposicion/index.html">Oposición</a></li>
+                    <li><a href="../../../oposicion/temario.html">Temario</a></li>
+                    <li><a href="../../../oposicion/temario/primer-ejercicio/test/simulador.html">Simulador de test</a></li>
+                    <li><a href="../../../oposicion/por-que-tcee.html">¿Por qué TCEE?</a></li>
+                    <li><a href="../../../app/">La app</a></li>
+                    <li><a href="../../../blog/index.html">Blog</a></li>
+                    <li><a href="../../../novedades.html">Novedades</a></li>
+                    <li><a href="../../../sobre-mi.html">Sobre mí</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Fuentes oficiales">
+                <p class="footer-col-titulo">Fuentes oficiales</p>
+                <ul>
+                    <li><a href="https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx" target="_blank" rel="noopener">Procesos selectivos del Ministerio</a></li>
+                    <li><a href="https://atcee.es/la-oposicion-tcee/" target="_blank" rel="noopener">Asociación de Técnicos Comerciales y Economistas del Estado</a></li>
+                    <li><a href="https://www.boe.es/" target="_blank" rel="noopener">Boletín Oficial del Estado</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-licencia">
+            <a class="footer-cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener" aria-label="Licencia Creative Commons BY-NC-ND 4.0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M10.4 9.7a2.7 2.7 0 1 0 0 4.6M16.4 9.7a2.7 2.7 0 1 0 0 4.6" transform="translate(-1.4 0)"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="12" cy="6.9" r="1.45" fill="currentColor" stroke="none"/><path d="M9.6 9.6h4.8v4.3h-1.25v4h-2.3v-4H9.6z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M14.5 9.7c-.5-.8-1.4-1.2-2.5-1.2-1.3 0-2.3.7-2.3 1.6 0 2.3 4.9 1.3 4.9 3.8 0 1-1.1 1.7-2.6 1.7-1.2 0-2.2-.5-2.7-1.4M12 6.7v1.7M12 15.6v1.7M4.8 4.8l14.4 14.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M7.6 10h8.8M7.6 14h8.8" stroke-width="1.8"/></svg></a>
+            <p>El temario y los artículos se publican con licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener">Creative Commons BY-NC-ND 4.0</a>: puedes copiarlos y compartirlos citando al autor y enlazando el original, pero no venderlos ni publicar versiones modificadas.</p>
+        </div>
+        <div class="footer-inf">
+            <span>© Víctor Gutiérrez Marcos</span>
+            <nav aria-label="Enlaces legales">
+                <a href="../../../politica-cookies.html">Política de cookies</a>
+                <a href="../../../sobre-mi.html">Contacto</a>
+            </nav>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/victorgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/i/lists/2013750304991268900" target="_blank" rel="noopener noreferrer" aria-label="Lista de X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                </a>
+                <a href="https://github.com/vgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="mailto:contacto@victorgutierrezmarcos.es" aria-label="Correo electrónico">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script>
+    // En la app, la página se abre desde jsDelivr (con <base> en el commit del
+    // manifiesto) y los enlaces a otros temas se abren fuera: jsDelivr da las
+    // páginas HTML como texto, así que cada [ver tema …] lleva al PDF del tema
+    // (data-app, lo pone construir-tema.py).
+    (function () {
+        if (!/^https:\/\/cdn\.jsdelivr\.net\//.test(document.baseURI)) return;
+        document.querySelectorAll('a.vertema[data-app]').forEach(function (a) {
+            a.setAttribute('href', a.getAttribute('data-app'));
+        });
+    })();
+    </script>
+    <script src="../../../search-engine.js"></script>
+    <script src="../../../search-ui.js"></script>
+    <script src="../../../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../../../firebase-config.js"></script>
+    <script src="../../../auth.js"></script>
+</body>
+</html>

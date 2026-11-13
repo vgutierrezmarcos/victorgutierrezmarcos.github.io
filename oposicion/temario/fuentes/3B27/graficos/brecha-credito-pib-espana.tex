@@ -1,0 +1,71 @@
+% 3.B.27: copia sin cambios del gráfico de referencia del 3.A.42 (fuentes/3A42/graficos/brecha-credito-pib-espana.tex), con los datos de fuentes/3B27/datos/ (misma serie, consulta del 12/11/2026).
+% Brecha crédito-PIB de España (3.A.42, III.1; ficha brecha-credito-pib del
+% canon: primer gráfico con .tex), 1980T1-2026T1. Arriba: crédito total al
+% sector privado no financiero en % del PIB y su tendencia (filtro HP
+% unilateral, lambda = 400 000); abajo: la brecha (ratio menos tendencia, en
+% puntos) en área, con el umbral de +2 puntos de Basilea III para empezar a
+% activar el colchón anticíclico.
+% Datos: ../datos/brecha-credito-pib-espana.csv (BIS, WS_CREDIT_GAP; colchón del
+% Banco de España; comprobación en su cabecera). Máximo de la ratio: 233,8 % en
+% 2010T2; brecha: máximo +47,3 en 2007T2, mínimo -55,6 en 2017T4, último dato
+% -24,3 en 2026T1. Colchón aplicable: 0,5 % desde el 1/10/2025 y 1 % desde el
+% 1/10/2026 (en un rótulo, no en un segundo eje).
+% Eje x: 1980 + \coordindex/4 (la tabla empieza en 1980T1).
+% Colores: el crédito, dorado (el del ciclo financiero en todo el tema);
+% tendencia, gris discontinua.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\bcdatos}{../datos/brecha-credito-pib-espana.csv}
+\pgfplotsset{bcejes/.style={width=14cm, scale only axis,
+    xmin=1980, xmax=2027, xtick={1980,1985,...,2025},
+    x tick label style={/pgf/number format/1000 sep={}},
+    /pgf/number format/use comma,
+    axis lines=left, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize}, label style={font=\small},
+    legend style={draw=none, font=\footnotesize}, legend cell align=left}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel superior: ratio y tendencia ----------------
+  % 1: ejes del panel superior (los dibuja pgfplots)
+  \begin{axis}[bcejes, name=arriba, height=4.4cm, ymin=60, ymax=250,
+      ytick={50,100,...,250}, xticklabels={},
+      ylabel={\% del PIB},
+      legend style={at={(0.01,0.99)}, anchor=north west},
+      dicapas]
+    % 2: ratio crédito/PIB
+    \capa{2}{\addplot[diclinea=tceedorado, line width=1.6pt] table[col sep=comma, comment chars={\#},
+        x expr=1980+\coordindex/4, y=credito_pib_pct] {\bcdatos};
+      \addlegendentry{crédito al sector privado no financiero}}
+    % 3: tendencia
+    \capa{3}{\addplot[diclinea=dicreferencia, dashed] table[col sep=comma, comment chars={\#},
+        x expr=1980+\coordindex/4, y=tendencia_hp_unilateral_pct] {\bcdatos};
+      \addlegendentry{tendencia (HP unilateral, $\lambda=400\,000$)}}
+    \capa{3}{\addplot[dicpuntos=tceedorado, forget plot] coordinates {(2010.25,233.79)};}
+    \capa{3}{\dicrotulo[anchor=south east, font=\footnotesize, text=tceedorado!75!black]{(2009.9,235)}{2010T2: $233{,}8$~\%}}
+  \end{axis}
+  % ---------------- Panel inferior: brecha ----------------
+  \begin{axis}[bcejes, name=abajo, at={(arriba.south west)}, anchor=north west, yshift=-0.35cm,
+      height=4.4cm, ymin=-62, ymax=55, ytick={-60,-40,...,40},
+      ylabel={brecha (puntos)},
+      dicapas]
+    % 4: la brecha en área, el 0 y el umbral de 2 puntos
+    \capa{4}{\addplot[on layer=dicbarras, fill=tceedorado, fill opacity=0.45, draw=tceedorado!70!black,
+        thin, forget plot] table[col sep=comma, comment chars={\#},
+        x expr=1980+\coordindex/4, y=brecha_pp] {\bcdatos} \closedcycle;}
+    \capa{4}{\dicraya{(1980,0) (2027,0)}}
+    \capa{4}{\dicraya[dicumbral, tceerojo, thick]{(1980,2) (2027,2)}}
+    \capa{4}{\dicrotulo[anchor=south west, font=\footnotesize, text=tceerojo]{(1980.3,2.5)}{umbral de Basilea III: $+2$}}
+    % 5: el máximo, el mínimo, el último dato y el colchón
+    \capa{5}{\addplot[dicpuntos=tceedorado!70!black, forget plot] coordinates {(2007.25,47.26) (2017.75,-55.65) (2026,-24.29)};}
+    \capa{5}{\dicrotulo[anchor=east, font=\footnotesize]{(2006.8,47.26)}{2007T2: $+47{,}3$}
+      \dicraya[thin, black]{(2015.4,-57.5) (2017.4,-56.2)}
+      \dicrotulo[anchor=east, font=\footnotesize]{(2015.3,-57.5)}{2017T4: $-55{,}6$}
+      \dicrotulo[anchor=south, font=\footnotesize]{(2025.6,-21.5)}{2026T1: $-24{,}3$}}
+    \capa{5}{\dicrotulo[anchor=north east, font=\footnotesize, align=right, text=tceegris!60!black]{(2026.8,52)}
+      {colchón anticíclico en España:\\$0{,}5$~\% desde 10/2025; 1~\% desde 10/2026}}
+  \end{axis}
+  % margen para los años del eje inferior
+  \path ($(abajo.south west)+(0,-0.75)$);
+\end{tikzpicture}
+\end{document}

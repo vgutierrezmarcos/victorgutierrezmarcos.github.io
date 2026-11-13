@@ -1,0 +1,24 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Duración como fiel de la balanza: bono a 6 años con cupón del 8 % y TIR del 8 %
+% (nominal 100). Valor actual de cada flujo: 7,41; 6,86; 6,35; 5,88; 5,45; 68,06
+% (suman 100). D = suma t * VA_t / 100 = 4,99 años. Escala: 1 año = 1,6 cm;
+% 1 € de valor actual = 0,04 cm de alto.
+\begin{tikzpicture}[tcee,x=1.6cm]
+  % 1: la regla del tiempo (el brazo de la balanza)
+  \capa{1}{\draw[very thick] (0,0) -- (6.4,0);
+    \foreach \t in {0,...,6}{\draw (\t,0.08) -- (\t,-0.08) node[below=1pt,font=\footnotesize] {\t};}
+    \node[font=\footnotesize,anchor=west] at (6.45,-0.2) {años};}
+  % 2: los cupones descontados
+  \capa{2}{\foreach \t/\v in {1/7.41,2/6.86,3/6.35,4/5.88,5/5.45}{
+      \fill[tceeazul!70] (\t-0.13,0) rectangle (\t+0.13,{0.04*\v});}
+    \node[etiqueta,font=\footnotesize,text=tceeazul,anchor=south] at (3,0.4) {cupones descontados};}
+  % 3: el último pago descontado (cupón y nominal)
+  \capa{3}{\fill[tceemorado!80] (6-0.13,0) rectangle (6+0.13,{0.04*68.06});
+    \node[etiqueta,font=\footnotesize,text=tceemorado,anchor=south] at (6,2.75) {$\mathrm{FC}_6/(1+y)^6$};}
+  % 4: el fiel de la balanza en la duración
+  \capa{4}{\fill[tceerojo,fill opacity=0.35] (4.99,0) -- (4.99-0.12,-0.75) -- (4.99+0.12,-0.75) -- cycle;
+    \node[etiqueta,text=tceerojo,anchor=north] at (4.99,-0.8) {$D=4{,}99$};}
+\end{tikzpicture}
+\end{document}

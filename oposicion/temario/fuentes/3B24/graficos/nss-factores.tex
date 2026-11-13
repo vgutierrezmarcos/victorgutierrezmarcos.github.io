@@ -1,0 +1,24 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Pesos de los 3 factores de Nelson y Siegel en el tipo de contado a n años,
+% con tau = 1,5: nivel (1), pendiente ((1-e^{-n/tau})/(n/tau)) y curvatura
+% ((1-e^{-n/tau})/(n/tau) - e^{-n/tau}), máxima hacia n = 1,8 tau.
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=10cm,height=6.2cm,xmin=0,xmax=30.5,ymin=0,ymax=1.15,
+  axis lines=left,xlabel={Plazo $n$ (años)},ylabel={Peso},
+  xtick={0,5,...,30},ytick={0,0.2,...,1},ticklabel style={font=\footnotesize},
+  y tick label style={/pgf/number format/.cd,fixed,precision=1,use comma},
+  clip=false]
+  % 1: nivel, beta_0
+  \capa{1}{\addplot[curva1,domain=0:30] {1};
+    \node[etiqueta,text=tceemorado,anchor=south west] at (axis cs:18,1.0) {nivel, $\beta_0$};}
+  % 2: pendiente, beta_1
+  \capa{2}{\addplot[curva2,domain=0.01:30,samples=120] {(1-exp(-x/1.5))/(x/1.5)};
+    \node[etiqueta,text=tceeazul,anchor=west] at (axis cs:5,0.52) {pendiente, $\beta_1$};}
+  % 3: curvatura, beta_2
+  \capa{3}{\addplot[curva4,domain=0.01:30,samples=120] {(1-exp(-x/1.5))/(x/1.5)-exp(-x/1.5)};
+    \node[etiqueta,text=tceedorado,anchor=south west] at (axis cs:2.6,0.03) {curvatura, $\beta_2$};}
+\end{axis}
+\end{tikzpicture}
+\end{document}

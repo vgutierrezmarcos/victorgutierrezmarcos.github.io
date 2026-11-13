@@ -1,0 +1,1319 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B01.bib}
+\tcetema[La información financiera de las empresas y su análisis]{3.B.1}{La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa.}
+\tcefecha{13/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «El papel lo aguanta todo», dice el refrán. También el papel de las cuentas anuales.
+  \item En junio de 2020, el auditor de Wirecard, una empresa alemana de pagos que cotizaba en el principal índice de la bolsa de Fráncfort, se negó a firmar sus cuentas de 2019: no podía confirmar que existieran 1.900 millones de euros de tesorería que el balance situaba en cuentas fiduciarias de 2 bancos filipinos. Una semana después, la empresa pidió el concurso de acreedores\nocite{OCCRP2020Wirecard}.
+  \item El balance lo había aguantado todo durante años. Quienes lo leyeron con ojo crítico, preguntándose por qué tanto beneficio se convertía en tan poca caja, llevaban tiempo avisando.
+  \item Detrás está la pregunta de esta exposición: ¿qué información financiera elaboran las empresas, con qué reglas, y cómo se analiza para saber si una empresa es líquida, solvente y rentable?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item La \concepto{información financiera} sirve a todos los que se relacionan con la empresa: a los \emph{usuarios internos} (directivos, empleados, accionistas de control) y a los \emph{externos} (inversores, bancos, proveedores, clientes, Hacienda, supervisores).\footnote{Los \emph{usuarios internos} están vinculados de forma directa y permanente con la empresa que elabora la información y pertenecen a ella, porque la gestionan, trabajan en ella o son sus accionistas. Los \emph{usuarios externos} no pertenecen a la empresa, pero se relacionan con ella de forma permanente o esporádica, o tienen con ella una vinculación indirecta.}
+  \item De ella depende que el ahorro llegue a las empresas que mejor lo usan: con lo que dicen las cuentas, un banco concede o no un préstamo, un inversor compra o vende y un proveedor vende a crédito o al contado.
+  \item Es también la materia prima de las estadísticas de empresas: la Central de Balances del Banco de España construye con ellas la rentabilidad, el endeudamiento y la carga financiera de las sociedades no financieras españolas \vertema{4.A.8}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{En el temario}: para la teoría microeconómica, la empresa combina factores para producir y maximiza su beneficio \vertema{3.A.12}. Para las finanzas corporativas, es un conjunto de decisiones de inversión \vertema{3.B.2} que exigen decisiones de financiación \vertema{3.B.3}, con el objetivo de crear valor para sus accionistas, como defendió \textcite{Friedman1970Social}.\footnote{\autor{Milton Friedman} recibió el Premio Nobel de Economía en 1976 «por sus logros en el análisis del consumo, la historia y la teoría monetarias y por demostrar la complejidad de la política de estabilización»\nocite{Nobel1976Friedman}. Para crear valor, la empresa tiene que cumplir 3 objetivos: el de \emph{liquidez}, que sus activos generen efectivo a tiempo; el de \emph{solvencia}, poder hacer frente a todas sus obligaciones, y el de \emph{rentabilidad}, que sus inversiones rindan más de lo que cuesta financiarlas.}
+  \item Esta exposición estudia un paso previo: para saber si se cumplen esos objetivos hay que registrar lo que hace la empresa y, después, interpretar ese registro con sentido crítico.
+  \item \emph{Definiciones}:
+    \begin{itemize}
+    \item La \concepto{contabilidad financiera} registra las operaciones de la empresa con normas comunes y las presenta a usuarios de fuera de ella; la \emph{contabilidad de gestión} es interna, sirve para decidir y no está regulada.\footnote{No toda la contabilidad se justifica por la información asimétrica: la contabilidad de gestión es para los propios directivos, y no tiene sentido que el Estado la fiscalice.}
+    \item Los \concepto{estados de situación} recogen \emph{fondos} (\emph{stocks}) en una fecha: el balance. Los \concepto{estados de circulación} recogen \emph{flujos} durante un periodo: la cuenta de pérdidas y ganancias, el estado de cambios en el patrimonio neto y el estado de flujos de efectivo.
+    \item El \concepto{análisis de estados financieros} interpreta esa información, con ratios y comparaciones, para juzgar la liquidez, la solvencia y la rentabilidad de la empresa.
+    \end{itemize}
+  \item La exposición se centra en las \emph{sociedades no financieras}.\footnote{Las entidades financieras tienen normas contables propias, adaptadas a su balance: las entidades de crédito, la Circular 4/2017 del Banco de España\nocite{BdE2017Circular4}; las instituciones de inversión colectiva, una circular de la Comisión Nacional del Mercado de Valores (CNMV), y las aseguradoras, su propio plan de contabilidad\nocite{RD1317_2008PCEA}. Sus indicadores también son otros: el ROA bancario, por ejemplo, es el resultado neto sobre el activo total medio, no el resultado de explotación sobre el activo de \eqref{eq:roa} \vertema{4.A.19}.}
+  \item \emph{Histórica}:
+    \begin{itemize}
+    \item La partida doble se difundió con la \emph{Summa de arithmetica} de \autor{Luca Pacioli} (1494), que describe el método de los mercaderes venecianos\nocite{Pacioli1494Summa}.
+    \item En el último medio siglo las normas han convergido: el Comité de Normas Internacionales de Contabilidad (\emph{International Accounting Standards Committee}, IASC) nació en 1973 y en 2001 lo sustituyó el Consejo de Normas Internacionales de Contabilidad (\emph{International Accounting Standards Board}, IASB), que emite las Normas Internacionales de Información Financiera (NIIF). La Unión Europea las exige desde 2005 en las cuentas consolidadas de las sociedades cotizadas, y España adaptó a ellas su Plan General de Contabilidad en 2007\nocite{IFRS2026Quienes,UE2002Reglamento1606,BOE2007PGC}.
+    \item Hoy el reto es doble: la información de sostenibilidad se suma a la financiera, y la NIIF~18 ordena desde 2027 la cuenta de resultados de los grupos cotizados para poner coto a las cifras «a medida» de cada empresa\nocite{UE2022CSRD,IASB2024NIIF18}.
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Por qué hace falta regular la información financiera y quién la regula?
+  \item ¿Qué documentos la componen y en qué se distinguen los estados de situación de los de circulación?
+  \item ¿Cómo se pasa de las cuentas a un juicio sobre la liquidez, la solvencia y la rentabilidad de la empresa?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición va de por qué hace falta la información financiera a cómo se elabora y cómo se lee:
+  \begin{itemize}
+  \item \concepto{I. Visión general} (\ref{sec:vision-general}): por qué el mercado no basta para que las empresas informen bien, y qué normas lo corrigen, del IASB al Plan General de Contabilidad.
+  \item \concepto{II. Estados de situación y de circulación} (\ref{sec:pgc}): el marco conceptual, las normas de registro y valoración y las cuentas anuales, del balance al estado de flujos de efectivo.
+  \item \concepto{III. Métodos de análisis} (\ref{sec:metodos}): la liquidez, la solvencia y la rentabilidad, que la descomposición de DuPont une en una sola cifra, el ROE.
+  \end{itemize}
+  \item El orden no es casual: primero la razón de ser de las normas, después lo que producen y, por último, cómo se convierte en decisiones.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.1. La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero}\\[2pt]
+Introducción\esqtiempo{2,5}\\
+I. Visión general de la información financiera de las empresas\esqtiempo{4}\\
+\hspace*{1.5em}1. Justificación teórica de la necesidad de la información financiera\\
+\hspace*{1.5em}2. Marco legal. Proceso de armonización internacional\\
+II. Estados de situación y de circulación: Plan General de Contabilidad\esqtiempo{10}\\
+\hspace*{1.5em}1. Marco conceptual de la contabilidad\\
+\hspace*{1.5em}2. Normas de registro y valoración\\
+\hspace*{1.5em}3. Cuentas anuales\\
+\hspace*{1.5em}4. Cuadro de cuentas\\
+\hspace*{1.5em}5. Definiciones y relaciones contables\\
+III. Métodos de análisis económico y financiero de la empresa\esqtiempo{12,5}\\
+\hspace*{1.5em}1. Análisis de la liquidez\\
+\hspace*{1.5em}2. Análisis de la solvencia\\
+\hspace*{1.5em}3. Análisis de la rentabilidad: análisis económico y financiero\\
+Conclusión\esqtiempo{1}
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{4} (I.1, \tiempo{2}; I.2, \tiempo{2}); II, \tiempo{10} (apertura, \tiempo{0,5}; II.1, \tiempo{1,5}; II.2, \tiempo{1,5}; II.3, \tiempo{6}: el balance, \tiempo{2,5}, la cuenta de pérdidas y ganancias, \tiempo{2}, y el resto, \tiempo{1,5}; II.4 y II.5, \tiempo{0,5} entre los 2); III, \tiempo{12,5} (el método, \tiempo{1}; III.1, \tiempo{3,5}; III.2, \tiempo{3}; III.3, \tiempo{5}), y conclusión, \tiempo{1}. El bloque~\ref{sec:vision-general} va deprisa: el peso está en las cuentas anuales y en el análisis. Basta con una o dos ratios por dimensión, bien definidas e interpretadas, y con la descomposición del ROE, que las une; el resto de ratios, con sus valores orientativos, está en el anexo~\ref{anexo:ratios} para las preguntas del tribunal. Las figuras imprescindibles son el balance por masas con el fondo de maniobra (figura~\ref{figu:balance-masas}), la cascada del resultado (figura~\ref{figu:cascada-resultados}) y el árbol de DuPont (figura~\ref{figu:dupont}); los gráficos, el del apalancamiento financiero (gráfico~\ref{fig:apalancamiento-financiero}) y el del apalancamiento operativo (gráfico~\ref{fig:gao}). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Notación.} Como en el resto del bloque de finanzas de la empresa: $AT$ es el activo total; AC y ANC, el activo corriente y el no corriente; PN, el patrimonio neto; PC y PNC, el pasivo corriente y el no corriente; FM, el fondo de maniobra, y NOF, las necesidades operativas de fondos, con $\mathrm{AC}_{\mathrm{op}}$ y $\mathrm{PC}_{\mathrm{op}}$ para la parte operativa del corriente. EBITDA es el resultado de explotación antes de amortizaciones y deterioros; EBIT, el resultado de explotación; EBT, el resultado antes de impuestos; BN, el beneficio neto (el resultado del ejercicio), y $\mathrm{EBIAT}\equiv\mathrm{EBIT}\,(1-t_{IS})$, el resultado de explotación después de impuestos, con $t_{IS}$ el tipo del impuesto sobre sociedades. $V_D$ es la deuda con coste y $V_E$ el patrimonio neto, aquí a valor contable (en la estructura de capital, a valor de mercado \vertema{3.B.3}), y $r_D$ el coste de la deuda. $\mathrm{ROA}\equiv\mathrm{EBIT}/AT$ y $\mathrm{ROE}\equiv\mathrm{BN}/\mathrm{PN}$. En el punto muerto, $p$, $q$, $c$ y CF son el precio, la cantidad, el coste variable unitario y los costes fijos, y MC el margen de contribución.
+\end{anotaciones}
+
+\begin{anotaciones}
+\textbf{Para saber más}
+\begin{itemize}
+\item \autor{Pascual Garrido Miralles} y \autor{Raúl Íñiguez Sánchez}, \emph{Análisis de estados contables}: manual completo y en castellano, del que salen la clasificación de los estados y las ratios del anexo~\ref{anexo:ratios}\nocite{GarridoIniguez2017Analisis}.
+\item \autor{María Avelina Besteiro Varela} y \autor{María Rosario Mazarracín Borreguero}, \emph{Contabilidad financiera superior}: el Plan General de Contabilidad parte por parte\nocite{BesteiroMazarracin2016Contabilidad}.
+\item \autor{Stephen Penman}, \emph{Financial Statement Analysis and Security Valuation}: el análisis de los estados financieros para valorar empresas, con la separación entre lo operativo y lo financiero\nocite{Penman2013Financial}.
+\end{itemize}
+\end{anotaciones}
+
+% ==========================================================================
+\section{Visión general de la información\cortetitulo financiera de las empresas}\label{sec:vision-general}
+\minutos{4}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la información financiera regulada existe porque la empresa sabe de sí misma más que quienes la financian, y el mercado por sí solo no garantiza que lo cuente bien. Por eso hay normas, y desde hace medio siglo esas normas tienden a ser las mismas en todo el mundo.
+\item \emph{Nexo}: empezamos por el porqué de la información financiera y seguimos con quién fija sus reglas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Justificación teórica de la necesidad\cortetitulo de la información financiera}\label{sec:justificacion}
+
+\begin{itemize}
+\item \emph{Para qué sirve}: con el análisis de los estados contables se busca un \emph{conocimiento profundo} de la empresa, una imagen fiel de su patrimonio, de su situación financiera y de sus resultados. Ese conocimiento sirve para 2 cosas:
+  \begin{itemize}
+  \item hacer \emph{pronósticos} sobre el comportamiento futuro de la empresa y confirmar o corregir las evaluaciones anteriores;
+  \item y \emph{tomar decisiones}: conceder o no un crédito, invertir o no, comprar o vender una empresa.
+  \end{itemize}
+\item \emph{En un mundo ideal}, inversores, bancos y consejeros confiarían plenamente en las cuentas:
+  \begin{itemize}
+  \item con ellas estimarían la cuantía, el calendario y el riesgo de los flujos de caja futuros, y juzgarían si el precio de la acción los refleja;
+  \item y asignarían el capital a sus mejores usos. Sería así si no hubiera \emph{fallos de mercado}.
+  \end{itemize}
+\item \emph{En el mundo real} fallan 2 cosas:
+  \begin{itemize}
+  \item hay \emph{incertidumbre}: las cuentas dependen de estimaciones (vidas útiles, deterioros, provisiones) que pueden errar aunque se hagan de buena fe;
+  \item y hay \emph{información asimétrica}: los directivos conocen la empresa mejor que los de fuera y, sin reglas, tendrían incentivos para presentarla mejor de lo que es. Es el problema de los «limones» de \textcite{Akerlof1970Market}, aplicado a las empresas que buscan financiación: si los inversores no distinguen las buenas de las malas, pagan por todas un precio medio y las buenas salen del mercado \vertema{3.A.13}.\footnote{\autor{George Akerlof} recibió el Premio Nobel de Economía en 2001, con \autor{Michael Spence} y \autor{Joseph Stiglitz}, «por sus análisis de los mercados con información asimétrica»\nocite{Nobel2001AkerlofSpenceStiglitz}.}
+  \end{itemize}
+\item \emph{Soluciones privadas}: la empresa buena tiene interés en distinguirse, y lo hace con información voluntaria, con auditores, analistas y agencias de calificación (\emph{rating}) que la certifican y con contratos, como las cláusulas de los préstamos, que se apoyan en las cuentas\nocite{HealyPalepu2001Information}.
+\item \emph{Regulación}: como esas soluciones son incompletas (la información es en parte un bien público y certificarla cuesta), hay un fallo de mercado que justifica que el Estado obligue a llevar contabilidad con normas comunes, a auditarla y a publicarla.\footnote{La contabilidad es derecho mercantil: la rama del ordenamiento jurídico que regula, dentro del derecho patrimonial privado, el estatuto de los empresarios mercantiles y los mercados en los que se negocian los bienes y servicios fruto de su actividad.}
+\item \emph{Dos cautelas}:
+  \begin{itemize}
+  \item el sector público también falla: hay que evitar la \concepto{falacia del nirvana}, que justifica la regulación comparando el mercado imperfecto con un regulador imaginario, competente, benevolente y con información perfecta \vertema{3.A.23}\nocite{Demsetz1969Information};
+  \item y una misma regulación no sirve igual en todos los países: las reglas de los mercados de valores, la protección del inversor y la calidad de la información contable varían mucho entre ellos, y adoptar las mismas normas no basta para que la información sea igual de buena. Por eso se discute si una armonización completa es alcanzable\nocite{Ball2006IFRS,LeuzWysocki2016Economics}.
+  \end{itemize}
+\item \emph{Recapitulación y nexo}: hace falta información financiera, y que sea relevante, fiable, íntegra, comparable y clara. Veamos quién fija las normas que lo buscan.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Marco legal. Proceso de armonización internacional}\label{sec:marco-legal}
+
+\begin{itemize}
+\item Las normas se ordenan en 3 niveles, cada vez más concretos:\footnote{Como en otras estadísticas económicas, la contabilidad nacional \vertema{3.A.30} y la balanza de pagos \vertema{3.B.11}, las normas comunes buscan que la información sea homogénea y comparable.}
+  \begin{itemize}
+  \item \textbf{Internacional}: el IASB, que en 2001 sustituyó al IASC, creado en 1973 por los organismos profesionales de contabilidad de 9 países, emite las \concepto{Normas Internacionales de Información Financiera} (NIIF), hoy exigidas en más de 140 jurisdicciones. Las normas del IASC (NIC) siguen vigentes mientras no las sustituya una NIIF\nocite{IFRS2026Quienes}.\footnote{El IASB depende de la Fundación IFRS, una organización privada sin ánimo de lucro que desde 2021 supervisa también al Consejo de Normas Internacionales de Sostenibilidad (\emph{International Sustainability Standards Board}, ISSB). Este publicó en junio de 2023 sus 2 primeras normas de información sobre sostenibilidad, NIIF~S1 (requisitos generales) y NIIF~S2 (clima)\nocite{ISSB2023S1S2}.}
+  \item \textbf{Unión Europea}:
+    \begin{itemize}
+    \item las \emph{directivas contables}, hoy la Directiva 2013/34/UE, armonizan las cuentas anuales de todas las sociedades de capital, con menos obligaciones cuanto menor es la empresa\nocite{UE2013Directiva34};
+    \item el Reglamento (CE) 1606/2002 obliga, desde los ejercicios iniciados en 2005, a las sociedades con valores admitidos a negociación en un mercado regulado de la Unión a presentar sus \emph{cuentas consolidadas} con las NIIF adoptadas por la Unión (NIIF-UE), que la Comisión incorpora una a una por reglamento\nocite{UE2002Reglamento1606};
+    \item y la Directiva (UE) 2022/2464 añade la información de sostenibilidad (apartado~\ref{sec:otra-informacion})\nocite{UE2022CSRD}.
+    \end{itemize}
+  \item \textbf{España}:\footnote{En Estados Unidos, las empresas cotizadas aplican los principios contables generalmente aceptados (\emph{US GAAP}), que emite un organismo privado, el \emph{Financial Accounting Standards Board} (FASB), y exige la \emph{Securities and Exchange Commission} (SEC); a los emisores extranjeros la SEC les acepta las NIIF desde 2007. La tradición anglosajona confía la norma a organismos profesionales y da más peso al criterio del profesional y a la jurisprudencia; la continental (Alemania, Francia, Italia, España), a la ley, y por eso la contabilidad está en el Código de Comercio y en reales decretos.}
+    \begin{itemize}
+    \item el \emph{Código de Comercio} y la \emph{Ley de Sociedades de Capital} fijan las obligaciones básicas: llevar contabilidad, formular las cuentas anuales, auditarlas y depositarlas\nocite{LSC2010};
+    \item el \concepto{Plan General de Contabilidad} (PGC) de 2007 las desarrolla, con un PGC de pymes y unas normas para formular las cuentas consolidadas\nocite{BOE2007PGC,BOE2007PGCPymes,BOE2010NOFCAC};\footnote{El primer Plan General de Contabilidad es de 1973 y era \emph{voluntario}. La entrada en la Comunidad Económica Europea obligó a adaptar la legislación mercantil a las directivas: Ley de Auditoría de Cuentas de 1988, Ley 19/1989 de reforma de la legislación mercantil y PGC de 1990, ya \emph{obligatorio}, con normas de consolidación en 1991. Cuando la Unión adoptó las NIIF para las cotizadas, España optó por no imponerlas en las cuentas individuales y adaptar a ellas su propia norma: la Ley 16/2007 reformó el Código de Comercio y el Real Decreto 1514/2007 aprobó el PGC vigente, que se aplica desde el 1 de enero de 2008\nocite{BOE2007PGC} (figura~\ref{figu:cronologia-pgc}).}
+    \item y el Instituto de Contabilidad y Auditoría de Cuentas (ICAC) lo interpreta con resoluciones y consultas, mientras la Ley de Auditoría de Cuentas regula su verificación\nocite{BOE2015Ley22}.
+    \end{itemize}
+  \end{itemize}
+\item El PGC adapta las NIIF a las cuentas individuales sin copiarlas: es un resumen más sencillo de ellas, que aumentó la cantidad y la calidad de la información que dan las empresas españolas.
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{Del primer Plan General de Contabilidad a la NIIF~18}\label{figu:cronologia-pgc}
+\grafico[0.95\textwidth]{cronologia-pgc}
+\fuente{elaboración propia a partir de \textcite{BesteiroMazarracin2016Contabilidad} y de las normas citadas en el texto.}
+\end{infografia}
+
+\begin{anotaciones}
+\textbf{Las reformas del PGC de 2007}
+\begin{itemize}
+\item \emph{Real Decreto 1159/2010}: aprueba las normas para formular las cuentas consolidadas y retoca el PGC en las combinaciones de negocios\nocite{BOE2010NOFCAC}.
+\item \emph{Real Decreto 602/2016}: tras la Directiva 2013/34/UE, el fondo de comercio vuelve a amortizarse durante su vida útil, que se presume de 10 años salvo prueba en contrario, y el estado de cambios en el patrimonio neto deja de ser obligatorio para quien puede formular balance abreviado\nocite{BOE2016RD602}.
+\item \emph{Real Decreto 1/2021}: adapta el PGC a la NIIF~9 (nuevas categorías de instrumentos financieros), a la NIIF~13 (nueva definición de valor razonable) y a la NIIF~15 (reconocimiento de ingresos), desde los ejercicios iniciados en 2021\nocite{BOE2021RD1}.
+\item \emph{Ley 7/2024}: crea el impuesto complementario que garantiza una tributación mínima del 15~\% a los grandes grupos (el «pilar 2» de la OCDE) y añade al PGC una excepción temporal: no se reconocen activos ni pasivos por impuesto diferido derivados de ese impuesto, y en la memoria solo se informa de su gasto corriente \vertema{4.B.18}\nocite{BOE2024Ley7}.
+\item \emph{NIIF~18}: el IASB la publicó en abril de 2024 y la Unión la adoptó en febrero de 2026; sustituye a la NIC~1 en las cuentas consolidadas de los grupos cotizados desde los ejercicios iniciados el 1 de enero de 2027 (apartado~\ref{sec:metodos})\nocite{IASB2024NIIF18,UE2026NIIF18}. No cambia el PGC.
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Recapitulación y nexo}: hay normas internacionales, europeas y españolas, cada vez más parecidas. Para concretar, el siguiente apartado estudia la información financiera tal como la define el PGC: el caso español, con una perspectiva jurídica, ilustra unas cuentas que en lo esencial son las mismas en todos los países que siguen las NIIF.
+\end{itemize}
+
+% ==========================================================================
+\section{Estados de situación y de circulación:\cortetitulo Plan General de Contabilidad}\label{sec:pgc}
+\minutos{10}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: las cuentas anuales combinan un \concepto{estado de situación}, el balance, que es una foto del patrimonio en una fecha, con 3 \concepto{estados de circulación} que explican cómo ha cambiado durante el año, cada uno desde un ángulo: el resultado, el patrimonio neto y el efectivo. La memoria los completa.
+\item \emph{La distinción del título}: los estados se clasifican según midan un \emph{stock} o un \emph{flujo} (tabla~\ref{tab:clasificacion-informacion}):
+  \begin{itemize}
+  \item el \emph{estado de situación}, el balance, recoge el patrimonio en una fecha, como una fotografía;
+  \item los \emph{estados de circulación} explican cómo se pasa de un balance al siguiente, como una película: la cuenta de pérdidas y ganancias (circulación económica: ingresos y gastos), el estado de cambios en el patrimonio neto y el estado de flujos de efectivo (circulación financiera: cobros y pagos).
+  \end{itemize}
+\item \emph{La norma}: en España, el \concepto{Plan General de Contabilidad} es el texto legal que regula la contabilidad de las empresas\nocite{BOE2007PGC}. Además de la introducción, tiene 5 partes (figura~\ref{figu:partes-pgc}):
+  \begin{itemize}
+  \item el \emph{marco conceptual}, los cimientos: requisitos, principios y criterios;
+  \item las \emph{normas de registro y valoración}, que aplican esos criterios a cada partida;
+  \item las \emph{cuentas anuales}, con sus modelos normal y abreviado;
+  \item el \emph{cuadro de cuentas}, la codificación de las cuentas;
+  \item y las \emph{definiciones y relaciones contables}, el contenido de cada cuenta y sus movimientos.
+  \end{itemize}
+\item Las 3 primeras son obligatorias; las 2 últimas, no, salvo en lo que afecte al registro o a la valoración.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Clasificación de la información financiera histórica}\label{tab:clasificacion-informacion}
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\centering\arraybackslash}m{1.9cm}>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{3.3cm}>{\raggedright\arraybackslash}m{5.9cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Periodo} & \textbf{Qué muestra} & \textbf{Estado} & \textbf{Formatos o contenido} \\
+\midrule
+Anual & \cellcolor{tceesalvia}Situación (fondos) & \cellcolor{tceesalvia}Balance & Unicolumnar o multicolumnar; información segmentada por categorías, vencimientos, actividades o zonas geográficas \\
+\cmidrule(l){2-4}
+ & Actividad (flujos) & Circulación económica & Cuenta de resultados, única o segmentada; estado de valor añadido \\
+ & & Circulación financiera & Estado de flujos de efectivo (antes del PGC de 2007, cuadro de financiación) \\
+ & & Movimientos de cuentas & Inmovilizado, inversiones financieras, fondos propios, deudas a largo plazo \\
+\cmidrule(l){2-4}
+ & Patrimonio neto & Cambios en el patrimonio neto & Ingresos y gastos reconocidos y operaciones con los socios \\
+\midrule
+Intermedia & \multicolumn{3}{>{\raggedright\arraybackslash}m{11.8cm}}{Mensual, trimestral o semestral (en las cotizadas, el informe semestral es obligatorio)} \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}, que la toman de Gonzalo, Pérez y Serrano (2000).}
+\end{table}
+
+\begin{infografia}[H]
+\centering
+\caption{Las 5 partes del Plan General de Contabilidad}\label{figu:partes-pgc}
+\grafico[0.62\textwidth]{partes-pgc}
+\fuente{elaboración propia a partir de \textcite{BOE2007PGC} y \textcite{BesteiroMazarracin2016Contabilidad}.}
+\end{infografia}
+
+% --------------------------------------------------------------------------
+\subsection{Marco conceptual de la contabilidad}\label{sec:marco-conceptual}
+
+\begin{itemize}
+\item El \concepto{marco conceptual} es la primera parte del PGC. Fija el objetivo de las cuentas anuales, la \concepto{imagen fiel} del patrimonio, de la situación financiera y de los resultados, y lo que hace falta para alcanzarlo: los requisitos de la información, los principios contables, los elementos de las cuentas (activo, pasivo, patrimonio neto, ingresos y gastos) y los criterios para registrarlos y valorarlos.
+\end{itemize}
+
+\paragraph{Requisitos de la información}
+
+\begin{itemize}
+\item Siguiendo el PGC, la información de las cuentas anuales debe cumplir 5 \emph{requisitos} (RFICC):
+  \begin{itemize}
+  \item \emph{Relevancia}: es útil para tomar decisiones económicas, porque ayuda a evaluar sucesos pasados, presentes o futuros.
+  \item \emph{Fiabilidad}: está libre de errores materiales y de sesgos, y representa fielmente lo que pretende representar.
+  \item \emph{Integridad}: es una cualidad derivada de la fiabilidad; la información es íntegra cuando contiene todos los datos que pueden influir en las decisiones, sin omisiones significativas.
+  \item \emph{Comparabilidad}: permite comparar las cuentas de una misma empresa en distintos periodos y las de distintas empresas en un mismo momento, porque las operaciones parecidas se tratan de forma parecida.
+  \item \emph{Claridad}: un usuario con un conocimiento razonable de la economía, la contabilidad y las finanzas puede, con un examen diligente, formarse un juicio que le ayude a decidir.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Principios contables}
+
+\begin{itemize}
+\item Los \concepto{principios contables} del PGC son 6 (EDUPNI):
+  \begin{itemize}
+  \item \emph{Empresa en funcionamiento}: se supone, salvo prueba en contrario, que la empresa seguirá con su actividad, así que las cuentas no reflejan su valor de liquidación.
+  \item \emph{Devengo}: los ingresos y gastos se imputan al ejercicio en que ocurren los hechos que los generan, con independencia de cuándo se cobren o se paguen.\footnote{Es el mismo principio que usa la contabilidad nacional, que para los impuestos admite la caja ajustada en el tiempo \vertema{3.A.30}. La caja propiamente dicha se recoge en el estado de flujos de efectivo.}
+  \item \emph{Uniformidad}: los criterios elegidos se mantienen en el tiempo y se aplican a todas las operaciones parecidas, mientras no cambien los supuestos que motivaron su elección.
+  \item \emph{Prudencia}: hay que ser prudente en las estimaciones bajo incertidumbre. Solo se contabilizan los beneficios obtenidos hasta el cierre, pero se tienen en cuenta todos los riesgos en cuanto se conocen. La prudencia no justifica que la valoración se aparte de la imagen fiel.
+  \item \emph{No compensación}: salvo que una norma lo permita, no se compensan partidas del activo y del pasivo ni de gastos e ingresos; cada elemento se valora por separado.
+  \item \emph{Importancia relativa}: se puede dejar de aplicar un principio o criterio si el efecto es poco significativo y no altera la imagen fiel.
+  \end{itemize}
+\item En caso de conflicto entre principios, prevalece el que mejor conduzca a la imagen fiel.
+\item El PGC de 2007 suprimió el principio del \emph{precio de adquisición} del plan de 1990 (el coste histórico pasa a ser un criterio de valoración más) y quitó a la prudencia su preferencia sobre los demás principios. La \emph{partida doble} no es un principio, sino el método de registro: cada operación se anota a la vez en el debe de una cuenta y en el haber de otra.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Normas de registro y valoración}\label{sec:normas-registro-valoracion}
+
+\paragraph{Normas de registro: fondos y flujos}
+
+\begin{itemize}
+\item La información financiera se registra con 2 tipos de variables, como el agua de un depósito (figura~\ref{figu:fondos-flujos}) \vertema{3.A.30}:
+  \begin{itemize}
+  \item las \concepto{variables fondo} (\emph{stock}) miden el nivel de los activos, los pasivos y el patrimonio neto en una fecha. Se registran en el balance, el estado de situación;
+  \item las \concepto{variables flujo} reflejan la creación, transformación, intercambio o extinción de valor durante un periodo, y cambian el volumen, la composición o el valor de los activos y pasivos. Se registran en los estados de circulación.
+  \end{itemize}
+\item Los 2 se conectan: el balance final es el inicial más los flujos del periodo.
+\item A diferencia de la contabilidad nacional, que valora los fondos a los precios de la fecha del balance, el PGC los valora sobre todo a coste histórico, con valor razonable solo para algunos instrumentos financieros.
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{Fondos y flujos: el nivel y lo que entra y sale}\label{figu:fondos-flujos}
+\grafico[0.5\textwidth]{fondos-flujos}
+\fuente{elaboración propia.}
+\end{infografia}
+
+\paragraph{Normas de valoración}
+
+\begin{itemize}
+\item La \concepto{valoración} asigna un importe monetario a cada elemento de las cuentas anuales. El marco conceptual define 10 criterios; los 4 principales son:
+  \begin{itemize}
+  \item \emph{Coste histórico}: el precio de adquisición del activo, si se compró, o su coste de producción, si lo produjo la empresa.
+  \item \emph{Valor razonable}: el precio que se recibiría por vender un activo o se pagaría por transferir o cancelar un pasivo en una transacción ordenada entre participantes en el mercado, en la fecha de valoración (es la definición de la NIIF~13, que incorporó el Real Decreto 1/2021). No se deducen los costes de transacción, y no lo es el de una operación forzada, urgente o de liquidación involuntaria\nocite{BOE2021RD1}.
+  \item \emph{Valor neto realizable}: lo que la empresa puede obtener al vender el activo en el curso normal del negocio, menos los costes de venderlo y, en las materias primas y productos en curso, de terminarlo. No es un precio de mercado, sino lo que la empresa espera obtener.
+  \item \emph{Coste amortizado}: el valor inicial de un activo o pasivo financiero menos lo reembolsado, más o menos la parte imputada a resultados, con el tipo de interés efectivo, de la diferencia entre el valor inicial y el de reembolso, y, en los activos, menos los deterioros.
+  \end{itemize}
+\item Los otros 6 son el \emph{valor actual}, el \emph{valor en uso}, los \emph{costes de venta}, los \emph{costes de transacción} de los instrumentos financieros, el \emph{valor contable} o en libros y el \emph{valor residual} (anexo~\ref{anexo:valoracion}).\footnote{En las existencias, cuando los bienes son intercambiables y no se puede identificar el coste de cada uno, el PGC adopta con carácter general el \emph{precio medio o coste medio ponderado} y acepta el FIFO (\emph{first in, first out}: sale primero lo que entró primero), pero no el LIFO\nocite{BOE2007PGC}. Con precios al alza, el FIFO valora las existencias finales a precios recientes y da un resultado mayor que el precio medio. Es además el criterio logístico natural de los productos perecederos, como explica \href{http://web.archive.org/web/20230321133427/https://www.stocklogistic.com/metodo-fifo-valoracion-stock-almacen/}{esta página sobre el método FIFO}\nocite{Stocklogistic2023FIFO}.}
+\item \emph{Recapitulación y nexo}: con los requisitos, los principios y los criterios ya se pueden formular las cuentas anuales, el núcleo de la información financiera.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Cuentas anuales}\label{sec:cuentas-anuales}
+
+\begin{itemize}
+\item Las \concepto{cuentas anuales} son 5 documentos que forman una unidad\nocite{LSC2010}:
+  \begin{itemize}
+  \item el \emph{balance}, el estado de situación;
+  \item la \emph{cuenta de pérdidas y ganancias}, el \emph{estado de cambios en el patrimonio neto} y el \emph{estado de flujos de efectivo}, los estados de circulación;
+  \item y la \emph{memoria}, que los explica.
+  \end{itemize}
+\item Se formulan para cada ejercicio, que dura 12 meses salvo en la constitución, el cambio de la fecha de cierre o la disolución de la sociedad. Los \emph{formulan los administradores}, que responden de ellas, en los 3 meses siguientes al cierre (el ciclo contable completo está en el anexo~\ref{anexo:ciclo-contable}).
+\item Todas las sociedades siguen los mismos modelos, pero las más pequeñas pueden usar \emph{modelos abreviados}, con menos partidas y una memoria más corta, y no están obligadas a presentar el estado de flujos de efectivo ni el de cambios en el patrimonio neto. Pueden aplicar, además, si quieren, el \emph{PGC de pymes}, más sencillo\nocite{BOE2007PGCPymes}.\footnote{Pueden formular \emph{balance} y \emph{memoria abreviados} las sociedades que durante 2 ejercicios consecutivos no superen 2 de estos 3 límites: 4 millones de euros de activo, 8 millones de cifra de negocios y 50 trabajadores de media; y \emph{cuenta de pérdidas y ganancias abreviada}, las que no superen 11,4 millones, 22,8 millones y 250 trabajadores. Quien puede formular balance abreviado no está obligado a presentar el estado de cambios en el patrimonio neto ni el de flujos de efectivo\nocite{LSC2010,BOE2007PGC}. La \emph{auditoría} tiene límites propios, más bajos: se libran de ella las que no superen 2 de estos 3: 2,85 millones de activo, 5,7 millones de cifra de negocios y 50 trabajadores. Una empresa con 3,5 millones de activo y 7 de ventas formula balance abreviado y tiene que auditarse. La Directiva Delegada (UE) 2023/2775 subió un 25~\% los umbrales europeos de tamaño para compensar la inflación, pero España no la ha traspuesto: el proyecto de ley decayó con la disolución de las Cortes en octubre de 2026\nocite{UE2023DirectivaDelegada2775,Congreso2026CriteriosTamano}.}
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{El balance: el estado de situación}\label{sec:balance}
+
+\begin{itemize}
+\item El \concepto{balance} recoge el patrimonio de la empresa en una fecha: sus bienes y derechos y las fuentes con que se financian. Es una radiografía de su estructura (figura~\ref{figu:balance-masas-paso1}), y con él se analizan la liquidez y la solvencia.
+\item La \emph{estructura económica} es el \concepto{activo}: los bienes, derechos y otros recursos que controla la empresa y de los que espera obtener rendimientos. Se ordena de menor a mayor \emph{liquidez}:
+  \begin{itemize}
+  \item el \emph{activo no corriente} (ANC) materializa la capacidad productiva: está vinculado a la empresa a medio y largo plazo, más allá del ciclo de explotación. Comprende el inmovilizado intangible (marcas, patentes, fondo de comercio),\footnote{Una \emph{patente} es el derecho exclusivo, concedido por un Estado, a explotar un invento durante un tiempo a cambio de divulgarlo. Una \emph{marca} es el signo con que se identifica en el mercado un producto o servicio. El \emph{fondo de comercio} es el valor de la clientela, la organización, el prestigio o la experiencia, que hacen que una empresa valga más que la suma de sus activos; solo se registra cuando se paga, al comprar una empresa. Desde 2016 se amortiza durante su vida útil, que se presume de 10 años salvo prueba en contrario, además de comprobarse cada año si se ha deteriorado\nocite{BOE2016RD602}; en las NIIF no se amortiza: solo se comprueba su deterioro.} el inmovilizado material (terrenos, construcciones, instalaciones), las inversiones inmobiliarias (inmuebles que no se usan en la actividad), las inversiones financieras a largo plazo, en empresas del grupo y fuera de él, los activos por impuesto diferido (deducciones y bases imponibles negativas pendientes de aplicar) y los deudores comerciales no corrientes;
+  \item el \emph{activo corriente} (AC) materializa el ciclo de explotación y no suele exceder el año: los activos no corrientes mantenidos para la venta, las existencias, los deudores comerciales, las inversiones financieras a corto plazo, las periodificaciones y el efectivo y otros activos líquidos equivalentes (caja, depósitos a la vista e inversiones convertibles en efectivo con vencimiento no superior a 3 meses desde su adquisición).
+  \end{itemize}
+\item La \emph{estructura financiera} dice de dónde salen los recursos invertidos en el activo. Se ordena de menor a mayor \emph{exigibilidad}:
+  \begin{itemize}
+  \item el \concepto{patrimonio neto} (PN), la financiación propia: lo que queda del activo una vez deducidos todos los pasivos. Lo forman los \emph{fondos propios} (capital, prima de emisión, reservas, acciones propias en negativo, resultados de ejercicios anteriores, otras aportaciones de socios, resultado del ejercicio y dividendo a cuenta en negativo), los \emph{ajustes por cambios de valor} y las \emph{subvenciones, donaciones y legados recibidos}. El beneficio que la empresa retiene aumenta sus fondos propios;
+  \item el \concepto{pasivo}, las obligaciones actuales surgidas de sucesos pasados que la empresa espera cancelar entregando recursos, incluidas las provisiones. Se divide en \emph{pasivo no corriente} (PNC), con vencimiento a más de un año (provisiones, deudas y deudas con empresas del grupo a largo plazo, pasivos por impuesto diferido, periodificaciones), y \emph{pasivo corriente} (PC), con vencimiento a menos de un año (provisiones y deudas a corto plazo, acreedores comerciales, periodificaciones y pasivos vinculados con activos mantenidos para la venta).
+  \end{itemize}
+\item Activo y estructura financiera cuadran siempre, por la partida doble: $AT\equiv\mathrm{PN}+\mathrm{PNC}+\mathrm{PC}$.
+\item La estructura del balance depende del negocio: una eléctrica tiene sobre todo inmovilizado; un supermercado, existencias y proveedores. Todo análisis tiene que tenerlo en cuenta.
+\item El balance es una foto: no dice cómo han evolucionado sus elementos. Para eso están los estados de circulación.
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{El balance por masas patrimoniales}\label{figu:balance-masas-paso1}
+\grafico[0.6\textwidth]{balance-masas-paso1}
+\fuente{elaboración propia a partir de \textcite{BOE2007PGC} y \textcite{GarridoIniguez2017Analisis}.}
+\end{infografia}
+
+% ..........................................................................
+\subsubsection{La cuenta de pérdidas y ganancias}\label{sec:pyg}
+
+\begin{itemize}
+\item La \concepto{cuenta de pérdidas y ganancias} es la relación ordenada y valorada de los ingresos y gastos del ejercicio: los \emph{flujos económicos}. Si los ingresos superan a los gastos, el patrimonio neto aumenta.
+\item Ingresos y gastos no son cobros y pagos: comprar un local reduce el efectivo y aumenta el inmovilizado, pero no cambia el patrimonio neto.\footnote{Al revés, si un incendio destruye un almacén que no estaba asegurado, el patrimonio neto baja, pero el efectivo no cambia.}
+\item Es el estado que mide la capacidad de la empresa para generar beneficios, su objetivo último. Distingue 2 tipos de operaciones (tabla~\ref{tab:pyg}):
+  \begin{itemize}
+  \item las \emph{operaciones continuadas}, el resultado recurrente, en 3 escalones:
+    \begin{itemize}
+    \item el \concepto{resultado de explotación}, el de la actividad: la cifra de negocios (ventas y prestaciones de servicios), la variación de existencias de productos terminados y en curso, los trabajos para el propio activo y otros ingresos de explotación, como las subvenciones, menos los \emph{aprovisionamientos} (el consumo de mercaderías y materias primas), los \emph{gastos de personal} (sueldos, salarios y cargas sociales), los \emph{otros gastos de explotación} (servicios exteriores, tributos, pérdidas por créditos comerciales) y la \emph{amortización del inmovilizado}, más otros resultados (deterioros y enajenaciones del inmovilizado, excesos de provisiones);\footnote{El IVA no es, en general, ni gasto ni ingreso: el que la empresa soporta y puede deducir es un derecho frente a Hacienda y el que repercute a sus clientes, una deuda. Solo el IVA no deducible se suma al coste de lo que se compra. Los tributos que sí son gasto de explotación, como el impuesto sobre bienes inmuebles o el de actividades económicas, van en «otros gastos de explotación», y el impuesto sobre sociedades, en «impuestos sobre beneficios», por debajo del resultado antes de impuestos.}\textsuperscript{,}\footnote{En inglés, \emph{depreciation} es la pérdida sistemática de valor del inmovilizado material y \emph{amortization}, la del intangible. El PGC llama a las 2 \emph{amortización} y reserva \emph{deterioro} para las pérdidas de valor no sistemáticas, que pueden revertir. Que se registren no es una consecuencia de la prudencia, sino del devengo: el coste del activo se reparte entre los ejercicios en que se usa. Son gastos que no son pagos.}
+    \item el \concepto{resultado financiero}: ingresos y gastos financieros, variación del valor razonable de los instrumentos financieros, diferencias de cambio y deterioros y enajenaciones de instrumentos financieros;
+    \item su suma es el \concepto{resultado antes de impuestos}; restando el impuesto sobre beneficios queda el resultado de las operaciones continuadas;
+    \end{itemize}
+  \item y las \emph{operaciones interrumpidas}: el resultado, neto de impuestos, de una línea de negocio o un área geográfica significativa que se ha vendido o se va a vender, y que no se repetirá.\footnote{Una \emph{actividad interrumpida} es un componente de la empresa que se ha enajenado o se ha clasificado como mantenido para la venta y que representa una línea de negocio o un área geográfica significativa y separable, forma parte de un plan para enajenarla o es una dependiente adquirida solo para venderla.}
+  \end{itemize}
+\item Su suma es el \concepto{resultado del ejercicio}, el beneficio neto.
+\item El resultado contable es también el punto de partida de la base imponible del impuesto sobre sociedades, que lo corrige con los ajustes que pide la ley fiscal \vertema{4.B.17}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Esquema de la cuenta de pérdidas y ganancias (modelo normal) y sus nombres en el análisis}\label{tab:pyg}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{>{\raggedright\arraybackslash}m{9.4cm}>{\centering\arraybackslash}m{4.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Partidas del PGC} & \textbf{En el análisis} \\
+\midrule
+Ingresos de explotación menos gastos de explotación salvo amortizaciones y deterioros & EBITDA \\
+$-$ Amortización del inmovilizado y deterioros & \\
+\rowcolor{tceesalvia}A.1) Resultado de explotación & EBIT \\
+$\pm$ Ingresos y gastos financieros y otros resultados financieros & \\
+\rowcolor{tceesalvia}A.2) Resultado financiero & \\
+\rowcolor{tceesalvia}A.3) Resultado antes de impuestos (A.1 + A.2) & EBT \\
+$-$ Impuestos sobre beneficios & \\
+\rowcolor{tceesalvia}A.4) Resultado de las operaciones continuadas & \\
+$\pm$ Resultado de las operaciones interrumpidas, neto de impuestos & \\
+\rowcolor{tceesalvia}A.5) Resultado del ejercicio & BN (beneficio neto) \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{BOE2007PGC}, tercera parte.}
+\end{table}
+
+\begin{itemize}
+\item El analista la resume en 4 escalones, de arriba abajo (figura~\ref{figu:cascada-resultados}):
+  \begin{itemize}
+  \item el \concepto{EBITDA} (\emph{earnings before interest, taxes, depreciation and amortization}), el resultado bruto de explotación: el resultado de explotación antes de amortizaciones y deterioros. No es una partida del PGC, sino una \emph{medida alternativa de rendimiento};
+  \item el \concepto{EBIT} (\emph{earnings before interest and taxes}), el resultado de explotación (A.1): el EBITDA menos amortizaciones y deterioros, lo que generan los activos para todos los que los financian;
+  \item el \concepto{EBT} (\emph{earnings before taxes}), el resultado antes de impuestos (A.3): el EBIT más el resultado financiero, lo que queda tras pagar a los acreedores;
+  \item y el \concepto{beneficio neto}, BN, el resultado del ejercicio (A.5): lo que queda para los accionistas tras el impuesto sobre beneficios.
+  \end{itemize}
+\item Una medida más: el \concepto{EBIAT}, el EBIT después de impuestos, $\mathrm{EBIT}\,(1-t_{IS})$, con el que se comparan empresas con regímenes fiscales distintos y que es el punto de partida del flujo de caja libre \vertema{3.B.4}.
+\item El PGC presenta los gastos \emph{por naturaleza} (personal, aprovisionamientos, amortización), no \emph{por funciones} (coste de las ventas, gastos comerciales y de administración), que es como lo hacen muchas empresas que aplican las NIIF. Por eso el \emph{margen bruto} no aparece en la cuenta: hay que calcularlo con el coste de las ventas.\footnote{Con las partidas de la cuenta de pérdidas y ganancias: el consumo de materias primas son las compras más o menos la variación de sus existencias; el coste de la producción, el consumo más la mano de obra y los demás costes de fabricación, y el coste de las ventas, el coste de la producción más o menos la variación de existencias de productos terminados y en curso.}
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{La cascada del resultado y a quién retribuye cada escalón}\label{figu:cascada-resultados}
+\grafico[0.88\textwidth]{cascada-resultados}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}. Cifras de la empresa del ejemplo (tabla~\ref{tab:ejemplo}).}
+\end{infografia}
+
+% ..........................................................................
+\subsubsection{El estado de cambios en el patrimonio neto}\label{sec:ecpn}
+
+\begin{itemize}
+\item No todo lo que cambia el patrimonio neto pasa por la cuenta de pérdidas y ganancias. El \concepto{estado de cambios en el patrimonio neto} (ECPN), obligatorio desde el PGC de 2007 para quien no puede formular balance abreviado, explica cómo ha variado el patrimonio neto durante el ejercicio. Tiene 2 partes:
+  \begin{itemize}
+  \item el \emph{estado de ingresos y gastos reconocidos}: el resultado de la cuenta de pérdidas y ganancias, más los ingresos y gastos imputados directamente al patrimonio neto (por ejemplo, ciertos cambios de valor razonable de activos financieros o las subvenciones de capital recibidas), menos las transferencias a la cuenta de pérdidas y ganancias de lo imputado antes;
+  \item y el \emph{estado total de cambios en el patrimonio neto}: del saldo inicial, con los ajustes por cambios de criterio y por errores, al saldo final, con el total de ingresos y gastos reconocidos, las operaciones con los socios (ampliaciones y reducciones de capital, dividendos, operaciones con acciones propias, conversión de pasivos en patrimonio) y otras variaciones.
+  \end{itemize}
+\item Se justifica porque hay partidas que cambian el patrimonio neto, a veces por importes grandes, sin pasar por el resultado del ejercicio.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{El estado de flujos de efectivo}\label{sec:efe}
+
+\begin{itemize}
+\item El \concepto{estado de flujos de efectivo} (EFE), obligatorio desde el PGC de 2007 salvo para quien puede formular balance abreviado, explica cómo ha variado el efectivo y sus equivalentes. Es necesario porque los proveedores, los bancos y Hacienda cobran en dinero, no en beneficios: una empresa con beneficios puede quebrar si no genera caja a tiempo.
+\item Clasifica los cobros y pagos en 3 bloques, más un ajuste:
+  \begin{itemize}
+  \item los \emph{flujos de las actividades de explotación}: los de las operaciones que forman el resultado. El PGC los presenta por el \emph{método indirecto}: parte del resultado antes de impuestos, suma lo que no es caja (amortizaciones, deterioros, provisiones), corrige los cambios en el capital corriente (existencias, clientes, proveedores) y los cobros y pagos de intereses, dividendos e impuestos;\footnote{Por eso el EFE depende menos de los criterios contables que el resultado: el método de amortización o de valoración de las existencias cambia el beneficio, pero no la caja.}
+  \item los \emph{flujos de las actividades de inversión}: pagos por inversiones y cobros por desinversiones en inmovilizado y activos financieros. Invertir es renunciar a una caja cierta hoy para aumentar los flujos de explotación futuros, más allá del ciclo actual \vertema{3.B.2};
+  \item los \emph{flujos de las actividades de financiación}: cobros y pagos por instrumentos de patrimonio (ampliaciones de capital, compra de acciones propias) y de pasivo financiero (emisión y devolución de deuda), y pagos de dividendos;
+  \item y el \emph{efecto de las variaciones de los tipos de cambio} sobre el efectivo en divisas.
+  \end{itemize}
+\item Su suma es el \emph{aumento o disminución neta del efectivo}, que cuadra con la variación de esa partida del balance.
+\end{itemize}
+
+% ..........................................................................
+\subsubsection{La memoria y otra información}\label{sec:otra-informacion}
+
+\begin{itemize}
+\item La \concepto{memoria} amplía, completa y comenta los otros documentos. Es la parte más larga y, para el analista, la más útil, porque dice cómo se han hecho las cifras. En el modelo normal incluye, entre otras cosas\nocite{BOE2007PGC}:
+  \begin{itemize}
+  \item la actividad de la empresa, las \emph{bases de presentación} (imagen fiel, cambios de criterio, errores) y la \emph{aplicación del resultado};
+  \item las \emph{normas de registro y valoración} que ha elegido la empresa donde el PGC deja opciones;
+  \item el detalle de las partidas (inmovilizado, arrendamientos, instrumentos financieros y sus riesgos, existencias, moneda extranjera, situación fiscal, provisiones y contingencias);
+  \item la información medioambiental, los hechos posteriores al cierre y las \emph{operaciones con partes vinculadas};
+  \item y otra información: plantilla, honorarios de los auditores, \emph{periodo medio de pago a proveedores} e información por actividades y mercados.
+  \end{itemize}
+\item Junto a las cuentas anuales, aunque no forman parte de ellas, hay otros 2 documentos:
+  \begin{itemize}
+  \item el \concepto{informe de auditoría}, en el que un auditor independiente opina si las cuentas expresan la imagen fiel;\footnote{La opinión puede ser \emph{favorable}, \emph{con salvedades}, \emph{desfavorable} o \emph{denegada}\nocite{BOE2015Ley22}. Para que sea independiente, la ley impide auditar a quien preste a la entidad servicios que amenacen su independencia, como llevarle la contabilidad o ciertos servicios de consultoría, y en las entidades de interés público prohíbe una lista de servicios distintos de la auditoría y obliga a rotar al auditor\nocite{UE2014Reglamento537}: quien asesora a una empresa y vive de ella no puede juzgar después con imparcialidad sus cuentas.}
+  \item y el \concepto{informe de gestión}, en el que los administradores explican la evolución del negocio, su situación, sus riesgos e incertidumbres y lo previsible. No lo necesitan las sociedades que pueden formular balance abreviado\nocite{LSC2010}.
+  \end{itemize}
+\item Cuando una sociedad controla a otras forma un \emph{grupo}, y la dominante formula además \concepto{cuentas consolidadas}, como si el grupo fuera una sola empresa\nocite{BOE2010NOFCAC}:
+  \begin{itemize}
+  \item las \emph{dependientes}, que controla, se integran partida a partida (\emph{integración global}), eliminando las operaciones internas y separando la parte de los socios externos;
+  \item las \emph{asociadas}, en las que tiene influencia significativa, se valoran por \emph{puesta en equivalencia}: en una sola línea, con la parte que le corresponde de su patrimonio neto.
+  \end{itemize}
+\item Las grandes empresas publican, además, \concepto{información de sostenibilidad}: cómo les afectan los riesgos ambientales, sociales y de gobernanza, y cómo afectan ellas a las personas y al medio ambiente (la \emph{doble materialidad}).
+  \begin{itemize}
+  \item En España la exige el \emph{estado de información no financiera}, dentro del informe de gestión, desde los ejercicios de 2017. Desde 2021 lo elaboran las sociedades de más de 250 trabajadores que sean entidades de interés público o superen 20 millones de euros de activo o 40 de cifra de negocios. Trata de medio ambiente, cuestiones sociales y de personal, derechos humanos, lucha contra la corrupción y diversidad, y lo verifica un tercero\nocite{BOE2018Ley11,LSC2010}.
+  \item La Unión lo sustituye por la \emph{Directiva sobre información corporativa en materia de sostenibilidad} (\emph{Corporate Sustainability Reporting Directive}, CSRD), con normas europeas comunes (las ESRS) y verificación obligatoria\nocite{UE2022CSRD,UE2023ESRS}. Su alcance se ha recortado: se aplazó en 2025 y la Directiva ómnibus de 2026 la limita, desde los ejercicios de 2027, a las empresas de más de 1.000 trabajadores y más de 450 millones de euros de cifra de negocios, con normas simplificadas \vertema{3.B.31}\nocite{UE2025StopClock,UE2026Omnibus,UE2026ESRSSet2}.
+  \item España no la ha traspuesto: el proyecto de ley decayó con la disolución de las Cortes en octubre de 2026, de modo que sigue el estado de información no financiera, con la recomendación de la CNMV y el ICAC de elaborarlo ya con las normas europeas\nocite{Congreso2026Sostenibilidad,BOE2026RD806,CNMVICAC2026Sostenibilidad}.
+  \end{itemize}
+\item \emph{Recapitulación}: un estado de situación, 3 de circulación y una memoria, verificados por un auditor y acompañados del informe de gestión.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Cuadro de cuentas}\label{sec:cuadro-cuentas}
+
+\begin{itemize}
+\item El \concepto{cuadro de cuentas}, cuarta parte del PGC, no es obligatorio. Codifica en forma decimal los grupos, subgrupos y cuentas, con un título que expresa su contenido.
+\item Tiene 9 grupos (tabla~\ref{tab:grupos}): los 5 primeros son cuentas de \emph{balance} (de situación) y los 4 últimos recogen \emph{flujos}: los grupos 6 y 7, los gastos e ingresos de la cuenta de pérdidas y ganancias, y los grupos 8 y 9, los gastos e ingresos imputados directamente al patrimonio neto, que forman el ECPN.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los 9 grupos del cuadro de cuentas}\label{tab:grupos}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{>{\centering\arraybackslash}m{1.3cm}>{\raggedright\arraybackslash}m{7.4cm}>{\centering\arraybackslash}m{4.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Grupo} & \textbf{Nombre} & \textbf{Estado} \\
+\midrule
+1 & Financiación básica & \\
+2 & Activo no corriente & \\
+3 & Existencias & Balance (situación) \\
+4 & Acreedores y deudores por operaciones comerciales & \\
+5 & Cuentas financieras & \\
+\midrule
+\rowcolor{tceesalvia}6 & Compras y gastos & \\
+\rowcolor{tceesalvia}7 & Ventas e ingresos & \multirow{-2}{=}{\centering Pérdidas y ganancias (circulación)} \\
+8 & Gastos imputados al patrimonio neto & \\
+9 & Ingresos imputados al patrimonio neto & \multirow{-2}{=}{\centering ECPN (circulación)} \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{BOE2007PGC}, cuarta parte.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Definiciones y relaciones contables}\label{sec:definiciones}
+
+\begin{itemize}
+\item La quinta parte del PGC tampoco es obligatoria, salvo en lo que afecta al registro o a la valoración. Define las partidas del balance, de la cuenta de pérdidas y ganancias y del ECPN y cada una de sus cuentas, con los motivos de cargo y abono: profundiza en el contenido de cada cuenta.
+\item \emph{Recapitulación y nexo}: las cuentas anuales son la vertiente descriptiva de la información financiera. Para comprenderla y comparar hacen falta métodos de análisis.
+\end{itemize}
+
+% ==========================================================================
+\section{Métodos de análisis económico\cortetitulo y financiero de la empresa}\label{sec:metodos}
+\minutos{12,5}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: las cuentas describen; el análisis interpreta. Una empresa está sana si puede pagar a corto plazo (\emph{liquidez}), si puede pagar todas sus deudas (\emph{solvencia}) y si remunera a quienes la financian por encima de lo que cuesta su dinero (\emph{rentabilidad}). El \concepto{análisis financiero} estudia las 2 primeras; el \concepto{análisis económico}, la rentabilidad de los activos, y los 2 se unen en la rentabilidad del accionista.
+\item \emph{El método} (tabla~\ref{tab:metodos-analisis}):
+  \begin{itemize}
+  \item \emph{Fases}: el análisis empieza por la pregunta (¿se le presta?, ¿se compra?, ¿se gestiona mejor?) y sigue con la recogida de la información (cuentas, memoria, auditoría, datos del sector), su depuración, el cálculo de indicadores, su interpretación y el diagnóstico.
+  \item \emph{Ajustes previos}: las cuentas se reclasifican para analizarlas. En el balance se separa lo \emph{operativo} (inmovilizado, existencias, clientes, proveedores) de lo \emph{financiero} (deuda con coste, tesorería e inversiones financieras); en la cuenta de resultados, lo recurrente de lo extraordinario y lo operativo de lo financiero\nocite{Penman2013Financial}.
+  \item \emph{Técnicas}: el \concepto{análisis vertical} o estático, que expresa cada partida en porcentaje del total; el \concepto{análisis horizontal} o dinámico, que sigue cada partida en el tiempo; las \concepto{ratios}, cocientes entre partidas relacionadas, y la \emph{comparación} con la propia empresa en el pasado, con el sector y con un valor de referencia. La Central de Balances del Banco de España publica las ratios sectoriales de las empresas españolas \vertema{4.A.8}.
+  \end{itemize}
+\item \emph{Límites}: no hay valores óptimos universales (un supermercado vive con fondo de maniobra negativo); el balance es una foto en una fecha que la empresa puede elegir o maquillar; las cifras dependen de los criterios contables y de la inflación, y una ratio sola no dice nada. Las cuentas no mienten, pero hay que saber leerlas.
+\item \emph{Medidas alternativas de rendimiento} (\emph{alternative performance measures}): las empresas publican magnitudes propias, como el EBITDA ajustado o la deuda neta, a veces en cuentas \emph{pro forma} que excluyen lo que consideran no recurrente. Son útiles, pero cada empresa las define a su manera:
+  \begin{itemize}
+  \item desde 2016, la Autoridad Europea de Valores y Mercados (ESMA) exige que las cotizadas las definan, las concilien con las cuentas y no les den más relieve que a estas\nocite{ESMA2015APM};
+  \item y la NIIF~18 obliga desde 2027 a presentar en la cuenta de resultados de los grupos cotizados un resultado de explotación y un resultado antes de financiación e impuestos con una definición común, y a conciliar en la memoria las \emph{medidas de rendimiento definidas por la dirección}\nocite{IASB2024NIIF18,UE2026NIIF18}.
+  \end{itemize}
+\item \emph{El orden} es el de los plazos: primero la liquidez (el corto plazo), después la solvencia (el largo) y, por último, la rentabilidad, que es la que sostiene a las otras 2.
+\item \emph{El ejemplo}: una misma empresa acompaña todo el análisis (tabla~\ref{tab:ejemplo}). Para simplificar, paga al contado a sus proveedores, así que todo su pasivo es deuda con coste.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las técnicas del análisis de estados financieros}\label{tab:metodos-analisis}
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.1cm}>{\raggedright\arraybackslash}m{5.6cm}>{\raggedright\arraybackslash}m{5.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Técnica} & \textbf{Qué hace} & \textbf{Qué dice} \\
+\midrule
+Análisis vertical & Cada partida en porcentaje del activo o de las ventas (estados porcentuales) & Cómo está hecha la empresa; compara empresas de distinto tamaño \\
+Análisis horizontal & Variación de cada partida entre ejercicios, en tasas o números índice & Hacia dónde va: las tendencias \\
+Ratios & Cocientes entre 2 partidas con sentido económico & Liquidez, solvencia y rentabilidad \\
+Comparación & Con el pasado, con el sector (Central de Balances) y con una referencia & Si la cifra es buena o mala \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{La empresa del ejemplo: balance y cuenta de resultados simplificados}\label{tab:ejemplo}
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.2cm}>{\raggedleft\arraybackslash}m{1.2cm}>{\raggedright\arraybackslash}m{4.6cm}>{\raggedleft\arraybackslash}m{1.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\multicolumn{2}{c}{\textbf{Balance}} & \multicolumn{2}{c}{\textbf{Cuenta de resultados}} \\
+\midrule
+Activo no corriente & 700 & Ventas & 1.000 \\
+Existencias & 100 & $-$ Costes variables (aprovisionamientos) & 600 \\
+Clientes & 125 & $-$ Costes fijos sin amortización & 250 \\
+Tesorería & 75 & \cellcolor{tceesalvia}EBITDA & \cellcolor{tceesalvia}150 \\
+\cellcolor{tceesalvia}Activo total & \cellcolor{tceesalvia}1.000 & $-$ Amortizaciones & 50 \\
+\cmidrule(r){1-2}
+Patrimonio neto & 600 & \cellcolor{tceesalvia}EBIT & \cellcolor{tceesalvia}100 \\
+Deuda bancaria a largo plazo & 250 & $-$ Intereses (5~\% de 400) & 20 \\
+Deuda bancaria a corto plazo & 150 & \cellcolor{tceesalvia}EBT & \cellcolor{tceesalvia}80 \\
+ & & $-$ Impuesto sobre sociedades (25~\%) & 20 \\
+\cellcolor{tceesalvia}Patrimonio neto y pasivo & \cellcolor{tceesalvia}1.000 & \cellcolor{tceesalvia}Beneficio neto & \cellcolor{tceesalvia}60 \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia. Los costes fijos suman 300, con la amortización.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Análisis de la liquidez}\label{sec:liquidez}
+
+\begin{itemize}
+\item La \concepto{liquidez} es la capacidad de la empresa para atender sus pagos a corto plazo. El riesgo aparece cuando los activos tardan más en convertirse en dinero que los pasivos en vencer.\footnote{Una explicación en vídeo de estas medidas, en \href{https://youtu.be/1lgrALWCkMs}{«Ratios de balance»}, del curso \emph{Finanzas para no financieros}\nocite{GonzalezGarcia2012Ratios}.}
+\item El activo y el pasivo corrientes no son homogéneos (tabla~\ref{tab:composicion-corriente}):
+  \begin{itemize}
+  \item el \emph{activo corriente} va del menos al más líquido: el realizable condicionado (las existencias, que primero hay que vender), el realizable cierto (clientes y otros deudores) y el disponible (la tesorería);
+  \item el \emph{pasivo corriente} va de la financiación \emph{espontánea}, que nace de la propia actividad y no tiene coste explícito (proveedores, Hacienda, Seguridad Social, anticipos de clientes), a la \emph{negociada}, que tiene coste (préstamos y créditos bancarios a corto plazo, pagarés).
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Composición del activo y del pasivo corrientes}\label{tab:composicion-corriente}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{>{\raggedright\arraybackslash}m{6.9cm}>{\raggedright\arraybackslash}m{6.9cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Activo corriente} & \textbf{Pasivo corriente} \\
+\midrule
+\textbf{Realizable condicionado}: activos no corrientes mantenidos para la venta; existencias & \textbf{Financiación espontánea}: proveedores, acreedores, administraciones públicas, remuneraciones pendientes de pago, anticipos de clientes \\
+\textbf{Realizable cierto}: clientes y otros deudores; inversiones financieras a corto plazo que no son tesorería & \textbf{Otra financiación sin coste explícito}: dividendos pendientes de pago, provisiones a corto plazo \\
+\textbf{Periodificaciones}: gastos pagados por anticipado & \textbf{Financiación negociada}: deudas con entidades de crédito, obligaciones y pagarés a corto plazo \\
+\textbf{Disponible}: efectivo y otros activos líquidos equivalentes & \textbf{Periodificaciones} y pasivos vinculados con activos mantenidos para la venta \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}.}
+\end{table}
+
+\subsubsection{Análisis de la liquidez basado en el balance}\label{sec:liquidez-balance}
+
+\paragraph{Fondo de maniobra}
+
+\begin{itemize}
+\item El \concepto{fondo de maniobra} (FM) es la parte del activo corriente que se financia con recursos permanentes, el patrimonio neto y el pasivo no corriente (figura~\ref{figu:balance-masas}):
+  \begin{equation}\label{eq:fm}
+  \mathrm{FM}\equiv\underbrace{(\mathrm{PN}+\mathrm{PNC})-\mathrm{ANC}}_{\text{por arriba del balance}}=\underbrace{\mathrm{AC}-\mathrm{PC}}_{\text{por abajo}}.
+  \end{equation}
+  \begin{itemize}
+  \item Un fondo de maniobra \emph{positivo} indica que la empresa tiene activos que vencen a corto con los que atender las deudas que vencen a corto.
+  \item Uno \emph{negativo} puede indicar un desequilibrio: deudas que vencen en el año financiando activos que no se convertirán en dinero en ese plazo. Pero no siempre es un problema: hay sectores que funcionan bien con fondo de maniobra negativo, como los supermercados, que cobran al contado y pagan a sus proveedores a plazo, y se financian así con ellos.
+  \item En la empresa del ejemplo (tabla~\ref{tab:ejemplo}), con un activo corriente de 300 y una deuda a corto de 150, el fondo de maniobra es de 150: lo mismo que la diferencia entre los recursos permanentes, $600+250$, y el activo no corriente, 700.
+  \end{itemize}
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{El fondo de maniobra sobre el balance por masas}\label{figu:balance-masas}
+\grafico[0.68\textwidth]{balance-masas}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}.}
+\end{infografia}
+
+\paragraph{Necesidades operativas de fondos}
+
+\begin{itemize}
+\item El fondo de maniobra que la empresa tiene hay que compararlo con el que \emph{necesita}: las \concepto{necesidades operativas de fondos} (NOF), la parte del activo corriente operativo que no financian los pasivos corrientes operativos o espontáneos (proveedores, administraciones públicas), que nacen de la propia actividad y no tienen coste:\footnote{Las NOF también se llaman inversión neta en circulante, capital circulante operativo o fondo de maniobra operativo (\emph{working capital requirements}).}
+  \begin{itemize}
+  \item suman las partidas que la empresa todavía no ha convertido en efectivo, como las existencias o los clientes;
+  \item y restan las que todavía no le han costado efectivo, como lo que debe a sus proveedores o los anticipos de clientes.
+  \end{itemize}
+\item Separando el corriente en su parte operativa y su parte financiera (tesorería, inversiones financieras y deuda a corto con coste):
+  \[
+  \left.\begin{aligned}
+  \mathrm{NOF}&\equiv\mathrm{AC}_{\mathrm{op}}-\mathrm{PC}_{\mathrm{op}}\\
+  \mathrm{FM}&=\big(\mathrm{AC}_{\mathrm{op}}+\mathrm{AC}_{\mathrm{fin}}\big)-\big(\mathrm{PC}_{\mathrm{op}}+\mathrm{PC}_{\mathrm{fin}}\big)
+  \end{aligned}\right\}
+  \;\Longrightarrow\;
+  \mathrm{NOF}-\mathrm{FM}=\mathrm{PC}_{\mathrm{fin}}-\mathrm{AC}_{\mathrm{fin}}.
+  \]
+  \begin{itemize}
+  \item Las NOF que no cubre el fondo de maniobra se financian con deuda a corto plazo neta de tesorería. Si $\mathrm{NOF}>\mathrm{FM}$, la empresa depende de renovar esa deuda: es una señal de tensión de liquidez. Si $\mathrm{NOF}<\mathrm{FM}$, le sobra tesorería, que da seguridad pero rinde poco.
+  \item Por eso, mientras un fondo de maniobra alto se suele ver como algo bueno, unas NOF altas se ven como algo malo: pueden indicar exceso de existencias o de tesorería ociosa, ventas a crédito largas o pagos al contado.
+  \item Muchas empresas tienen NOF \emph{negativas} y las usan como fuente de financiación: las de venta por internet, que cobran al contado y tienen pocas existencias, o las grandes superficies, que cobran al contado y pagan a plazo.
+  \item En la empresa del ejemplo, sin proveedores, las NOF son las existencias más los clientes, $100+125=225$, más que su fondo de maniobra, 150: los 75 de diferencia se financian con la deuda bancaria a corto, 150, menos la tesorería, 75.
+  \end{itemize}
+\item Las NOF dependen del \concepto{ciclo de explotación}: la empresa paga materias primas, las transforma, vende a crédito y cobra, y con lo cobrado vuelve a comprar (figura~\ref{figu:ciclo-explotacion}). Se mide con los \emph{periodos medios}, en días:\footnote{Se usa el año comercial de 360 días; con 365, las cifras apenas cambian. En una empresa industrial, el periodo de almacén se divide en el de las materias primas (sobre su consumo), el de fabricación (productos en curso sobre el coste de la producción) y el de venta (productos terminados sobre el coste de las ventas). La empresa quiere acortar el almacén y el cobro y alargar el pago, sin perjudicar a su actividad ni a su relación con clientes y proveedores.}
+  \begin{itemize}
+  \item de almacén, $\mathrm{PMA}=\text{existencias}/(\text{coste de las ventas}/360)$;
+  \item de cobro, $\mathrm{PMC}=\text{clientes}/(\text{ventas}/360)$;
+  \item y de pago, $\mathrm{PMP}=\text{proveedores}/(\text{compras}/360)$.
+  \end{itemize}
+\item $\mathrm{PMA}+\mathrm{PMC}$ es el \concepto{periodo medio de maduración económico}, los días que pasan desde que entra la mercancía hasta que se cobra; restando el PMP queda el \emph{financiero} o \emph{ciclo de caja}, los días que la empresa tiene que financiar por su cuenta. Las NOF son, aproximadamente, las ventas diarias por esos días (derivación en el anexo~\ref{anexo:derivaciones}).
+  \begin{itemize}
+  \item En la empresa del ejemplo, con ventas de 1.000 y un coste de las ventas de 600, las existencias de 100 equivalen a 60 días de almacén y los clientes de 125, a 45 días de cobro: un ciclo de 105 días que financia entera, porque paga al contado. Si negociara pagar a 90 días unas compras de 600, tendría 150 de proveedores, sus NOF bajarían a 75 y su fondo de maniobra, 150, le sobraría.
+  \end{itemize}
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{El ciclo de explotación y sus periodos medios}\label{figu:ciclo-explotacion}
+\grafico[0.58\textwidth]{ciclo-explotacion}
+\fuente{elaboración propia.}
+\end{infografia}
+
+\paragraph{Ratios de liquidez}
+
+\begin{itemize}
+\item La \concepto{ratio de liquidez general} compara lo que se convertirá en dinero a corto plazo con lo que hay que pagar a corto:\footnote{En algunos manuales recibe otros nombres: ratio de liquidez corriente, de circulante, de solvencia a corto o incluso de distancia a la suspensión de pagos (la suspensión de pagos desapareció con la Ley Concursal de 2003, que la sustituyó por el concurso).}
+  \[
+  \text{liquidez general}\equiv\frac{\mathrm{AC}}{\mathrm{PC}}.
+  \]
+  Si es mayor que 1, el fondo de maniobra es positivo. No hay un valor válido para todos los sectores, aunque se suele pedir que supere 1 con holgura. En el ejemplo, $300/150=2$.
+\item La \concepto{prueba ácida} (\emph{acid test}), que el original llamaba ratio de tesorería inmediata, quita del numerador lo que no se convierte pronto en dinero:
+  \[
+  \text{prueba ácida}\equiv\frac{\mathrm{AC}-\text{existencias}-\text{activos no corrientes mantenidos para la venta}}{\mathrm{PC}}.
+  \]
+  Los anticipos a proveedores ya están dentro de las existencias en el balance del PGC. Por debajo de 1 avisa de problemas de liquidez a corto plazo, salvo en los sectores que viven de sus proveedores. En el ejemplo, $(300-100)/150\simeq1{,}33$.
+\item La \concepto{ratio de tesorería} solo cuenta el disponible: $\text{efectivo y equivalentes}/\mathrm{PC}$. Un valor alto da seguridad, pero el dinero ocioso rinde poco: bien gestionada, puede ser pequeña. En el ejemplo, $75/150=0{,}5$.
+\end{itemize}
+
+\subsubsection{Análisis de la liquidez con el estado de flujos de efectivo}\label{sec:liquidez-efe}
+
+\begin{itemize}
+\item El balance da la liquidez en una fecha; el estado de flujos de efectivo, la capacidad de generarla durante el ejercicio, sin depender de los criterios de amortización ni de valoración:
+  \begin{itemize}
+  \item el \emph{flujo de explotación} frente al resultado mide la \concepto{calidad del beneficio}: un beneficio que no se convierte en caja, porque los clientes y las existencias crecen más que las ventas, es la primera señal de alarma del analista. \textcite{Sloan1996Do} muestra que los beneficios con mucho componente de devengo (\emph{accruals}) son menos persistentes que los que son caja, y que el mercado no lo descuenta del todo;
+  \item el \concepto{flujo de caja libre} (\emph{free cash flow}) es la caja que generan los activos después de impuestos y de las inversiones necesarias, como si la empresa no tuviera deuda, la que queda para pagar a accionistas y acreedores. Desde la cuenta de resultados, con el CAPEX como inversión en inmovilizado:
+    \[
+    \mathrm{FCL}_t=\mathrm{EBIT}_t\,(1-t_{IS})+\text{amortizaciones}_t-\mathrm{CAPEX}_t-\Delta\mathrm{NOF}_t.
+    \]
+    Es el flujo que se descuenta para valorar la empresa \vertema{3.B.4};
+  \item y el \emph{patrón} de los 3 flujos dice en qué fase está la empresa: una madura genera caja en la explotación y la usa para invertir, devolver deuda y pagar dividendos; una joven en expansión consume caja en la explotación y en la inversión, y la obtiene de la financiación.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{¿Qué hacer si hay problemas de liquidez?}\label{sec:problemas-liquidez}
+
+\begin{itemize}
+\item Si el análisis revela problemas de liquidez, la empresa puede:
+  \begin{itemize}
+  \item aplazar pagos y adelantar cobros, o ceder sus créditos a clientes a un tercero (\emph{factoring});
+  \item reducir las existencias;
+  \item renegociar la deuda a corto para pasarla a largo plazo;
+  \item reducir el dividendo y aumentar la autofinanciación;
+  \item o ampliar capital \vertema{3.B.3}.
+  \end{itemize}
+\item \emph{Recapitulación y nexo}: la liquidez mira al año que viene. La solvencia mira más lejos: si la empresa puede pagar todas sus deudas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Análisis de la solvencia}\label{sec:solvencia}
+
+\begin{itemize}
+\item La \concepto{solvencia} es la capacidad de la empresa para hacer frente a todas sus obligaciones. Tiene 2 caras: la \emph{estática}, si el activo cubre el pasivo (la garantía de los acreedores si la empresa se liquidara), que se mide con el balance, y la \emph{dinámica}, si el negocio genera recursos para devolver la deuda, que se mide con la cuenta de resultados.
+\end{itemize}
+
+\subsubsection{Análisis de la solvencia basado en el balance}\label{sec:solvencia-balance}
+
+\paragraph{Los equilibrios patrimoniales}
+
+\begin{itemize}
+\item El \emph{análisis de la estructura patrimonial} combina el patrimonio neto y el fondo de maniobra en 4 situaciones, de más a menos sana (figura~\ref{figu:equilibrios-patrimoniales}):
+  \begin{itemize}
+  \item \emph{estabilidad total}: todo el activo se financia con patrimonio neto, sin deudas; es poco frecuente y poco rentable;
+  \item \emph{estabilidad normal}: el patrimonio neto y el fondo de maniobra son positivos, de modo que los recursos permanentes cubren el activo no corriente y parte del corriente. Es la de la empresa del ejemplo;
+  \item \emph{desequilibrio a corto plazo}: el patrimonio neto es positivo, pero el fondo de maniobra es negativo; hay un problema de liquidez, salvo en los sectores que se financian con sus proveedores;
+  \item y \emph{quiebra técnica}: las pérdidas acumuladas han consumido el patrimonio neto, que es negativo: el activo no cubre el pasivo.
+  \end{itemize}
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{Los equilibrios patrimoniales}\label{figu:equilibrios-patrimoniales}
+\grafico[0.95\textwidth]{equilibrios-patrimoniales}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}.}
+\end{infografia}
+
+\paragraph{Ratios de solvencia}
+
+\begin{itemize}
+\item La \concepto{ratio de solvencia} o de garantía, $AT/\text{pasivo}$, es mayor que 1 si y solo si el patrimonio neto es positivo. Por debajo de 1 la empresa está en \emph{quiebra técnica}, pero eso no la lleva por sí solo al concurso de acreedores:
+  \begin{itemize}
+  \item el \emph{concurso} exige insolvencia, no poder cumplir con regularidad las obligaciones exigibles, actual o inminente: una empresa con patrimonio neto negativo que sigue pagando no tiene por qué entrar en concurso\nocite{BOE2020TRLC};
+  \item antes llega la \emph{causa de disolución}: las pérdidas que dejan el patrimonio neto por debajo de la mitad del capital social obligan a disolver la sociedad, salvo que se aumente o se reduzca el capital\nocite{LSC2010}. Los costes de una insolvencia limitan cuánta deuda conviene \vertema{3.B.3}.
+  \item En el ejemplo, $1.000/400=2{,}5$.
+  \end{itemize}
+\item La \concepto{ratio de financiación propia}, $\mathrm{PN}/AT$, mide qué parte del activo financian los propietarios. En el ejemplo, el 60~\%.
+\item La \concepto{ratio de endeudamiento} compara la financiación ajena con la propia:
+  \begin{itemize}
+  \item con todo el pasivo, $\text{pasivo}/\mathrm{PN}$, mide cuánto pesan las deudas frente a los recursos propios. Varía mucho entre sectores y épocas; por encima de 1, la financiación ajena supera a la propia y se suele considerar alta;
+  \item con la deuda con coste, $V_D/V_E$, es la que interviene en el apalancamiento financiero \eqref{eq:roe-roa} y en la estructura de capital \vertema{3.B.3}. En el ejemplo, $400/600=2/3$;
+  \item y es un indicador criticado: una eléctrica regulada, con ingresos estables, puede sostener más deuda que una tecnológica con flujos volátiles. Por eso la solvencia se mide también frente a lo que genera el negocio.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{La solvencia de los bancos}. En las entidades de crédito, el equivalente regulatorio de la ratio de financiación propia son los requisitos de capital de Basilea~III, que se miden sobre los \emph{activos ponderados por riesgo} (APR) y no sobre el activo total:
+\begin{itemize}
+\item al menos un 4,5~\% de capital ordinario de nivel~1 (CET1), un 6~\% de nivel~1 (Tier~1) y un 8~\% de capital total sobre los APR, más unos colchones;
+\item y una \emph{ratio de apalancamiento}, el capital de nivel~1 sobre la exposición total sin ponderar, de al menos el 3~\%: la más parecida a la ratio de financiación propia de una empresa\nocite{BCBS2011Basilea3,BCBS2017Basel3}.
+\end{itemize}
+En la Unión los aplican el Reglamento (UE) 575/2013 y su reforma de 2024, que incorpora el acuerdo final de Basilea~III desde 2025\nocite{RegUE2013CRR,RegUE2024CRR3}. Aquí no se tratan los colchones ni las ratios de liquidez bancarias \vertema{3.B.27}.
+\end{anotaciones}
+
+\subsubsection{Análisis de la solvencia basado\cortetitulo en la cuenta de pérdidas y ganancias}\label{sec:solvencia-pyg}
+
+\begin{itemize}
+\item La solvencia dinámica compara la deuda con los recursos que genera la actividad. Lo ideal sería proyectar los flujos de caja con el plan de negocio, pero es incierto y casi nunca está al alcance de un analista de fuera; por eso se usan aproximaciones.
+\end{itemize}
+
+\paragraph{Deuda neta sobre EBITDA}
+
+\begin{itemize}
+\item La \concepto{deuda neta} es la deuda financiera con coste (préstamos y créditos bancarios, obligaciones, arrendamientos y otras deudas financieras, a largo y a corto plazo) menos el efectivo y las inversiones financieras a corto plazo. No incluye los proveedores ni las provisiones. Si es negativa, la empresa tiene \emph{caja neta}.
+\item El EBITDA se acerca al flujo de caja de la explotación, pero no lo es: no descuenta los impuestos, la inversión en NOF ni la de reposición del inmovilizado.
+\item La ratio
+  \[
+  \frac{\text{deuda neta}}{\mathrm{EBITDA}}
+  \]
+  dice cuántos años de resultado bruto de explotación harían falta para devolver la deuda si todo se dedicara a ello: con 2,5, unos 2 años y medio. Es la que más usan los bancos en las cláusulas de los préstamos (\emph{covenants}) y las agencias de calificación; cuanto más alta, más dudas sobre la solvencia, aunque el umbral depende del sector.
+  \begin{itemize}
+  \item En el ejemplo, la deuda neta es $400-75=325$ y la ratio, $325/150\simeq2{,}2$ años.
+  \item Desde 2019, la NIIF~16 obliga a las empresas que aplican las NIIF a registrar casi todos los arrendamientos como deuda y su gasto como amortización e intereses: sube a la vez la deuda neta y el EBITDA, y la ratio deja de ser comparable con la de años anteriores o con la de empresas que aplican el PGC\nocite{IASB2016NIIF16}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Cobertura de intereses}
+
+\begin{itemize}
+\item La \concepto{ratio de cobertura de intereses}, $\mathrm{EBIT}/\text{gastos financieros}$, dice cuántas veces cubre el resultado de explotación los intereses (hay quien la calcula con el EBITDA). Por debajo de 1, el negocio no da para pagarlos; como referencia orientativa, por encima de 3 se considera holgada\nocite{GarridoIniguez2017Analisis}. En el ejemplo, $100/20=5$.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{De las ratios a la predicción de la insolvencia}. \textcite{Altman1968} combinó 5 ratios en un solo indicador con un análisis discriminante sobre empresas manufactureras cotizadas de Estados Unidos, la \emph{Z de Altman}: el fondo de maniobra, los beneficios retenidos y el EBIT, todos sobre el activo total; el valor de mercado de los fondos propios sobre la deuda total, y las ventas sobre el activo. Por debajo de un umbral, la probabilidad de quiebra en los 2 años siguientes era alta. Es el origen de los modelos de calificación (\emph{scoring}) que usan hoy los bancos \vertema{3.B.26}.
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Recapitulación y nexo}: una empresa solvente cubre sus deudas con lo que tiene y con lo que genera. Pero lo que genera depende de su rentabilidad, que es la que sostiene la liquidez y la solvencia.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Análisis de la rentabilidad:\cortetitulo análisis económico y financiero}\label{sec:rentabilidad}
+
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la empresa crea valor para sus accionistas si sus activos rinden más de lo que cuesta financiarlos, y la deuda amplifica tanto la rentabilidad como el riesgo.
+\item La cuenta de resultados se reordena para asignar cada resultado a quien financia lo que lo genera (figura~\ref{figu:cascada-resultados}):
+  \begin{itemize}
+  \item el EBIT retribuye a todos los que financian el activo, accionistas y acreedores: de él sale la rentabilidad económica, el ROA;
+  \item los intereses retribuyen a los acreedores: su coste, $r_D$;
+  \item y el beneficio neto, a los accionistas: de él sale la rentabilidad financiera, el ROE.
+  \end{itemize}
+\item Algunos manuales suman al resultado de explotación los ingresos financieros para obtener el \emph{resultado antes de intereses e impuestos}, lo que rinden todos los activos, también los financieros. Aquí, como en el resto del temario, el EBIT es el resultado de explotación.
+\end{itemize}
+
+\subsubsection{Análisis económico}\label{sec:analisis-economico}
+
+\paragraph{Márgenes}
+
+\begin{itemize}
+\item Un \emph{margen} es un resultado sobre las ventas. Hay 3 márgenes de la explotación:\footnote{Hay otros, como el \emph{margen de contribución} o margen variable, las ventas menos los costes variables, que es el que cubre los costes fijos (\ref{sec:riesgo-economico}).}
+  \begin{itemize}
+  \item el \emph{margen bruto}, $(\text{ventas}-\text{coste de las ventas})/\text{ventas}$;
+  \item el \emph{margen EBITDA}, $\mathrm{EBITDA}/\text{ventas}$;
+  \item y el \emph{margen operativo}, $\mathrm{EBIT}/\text{ventas}$. En el ejemplo, el 10~\%.
+  \end{itemize}
+\item Vender más no mejora por sí solo un margen, que es un cociente sobre las ventas. Mejora si sube el precio o bajan los costes unitarios y, con costes fijos, también si las ventas crecen, porque los costes fijos se reparten entre más unidades: es el apalancamiento operativo.
+\end{itemize}
+
+\paragraph{Rentabilidad económica}
+
+\begin{itemize}
+\item La \concepto{rentabilidad económica} (ROA, \emph{return on assets}) mide lo que rinden los activos con independencia de cómo se financien: la rentabilidad de accionistas y acreedores juntos. Es el resultado de explotación sobre el activo total \vertema{3.B.2}:\footnote{No se parte del beneficio neto, que solo es de los accionistas. Hay variantes: después de impuestos, con el EBIAT, o sobre el \emph{capital empleado} (\emph{return on capital employed}, ROCE), $\mathrm{EBIT}/(\mathrm{PN}+\mathrm{PNC})$, el activo menos el pasivo corriente. La Central de Balances la calcula sobre el \emph{activo neto}, el activo menos la financiación sin coste, que es el que hace exacta la relación con el ROE \eqref{eq:roe-roa}.}
+  \funcionclave[eq:roa]{\mathrm{ROA}\equiv\frac{\mathrm{EBIT}}{AT}=\underbrace{\frac{\mathrm{EBIT}}{\text{ventas}}}_{\text{margen}}\cdot\underbrace{\frac{\text{ventas}}{AT}}_{\text{rotación}}}
+  \begin{itemize}
+  \item El \emph{margen} es la rentabilidad comercial; la \emph{rotación} mide la eficiencia con que la empresa usa sus activos para vender.
+  \item Para subir su ROA, la empresa puede aumentar su margen (subir precios o reducir costes) o su rotación (vender más con el mismo activo). Son 2 estrategias: la del lujo, mucho margen y poca rotación, y la de las grandes superficies de alimentación, poco margen y mucha rotación.
+  \item En el ejemplo, con un margen del 10~\% y una rotación de 1, el ROA es del 10~\%.
+  \end{itemize}
+\item Las rentabilidades se juzgan comparándolas: en el primer semestre de 2026, la rentabilidad del activo de las grandes empresas no financieras españolas subió al 5,7~\%, pero casi todo por la energía y el refino; sin ellos apenas pasó del 4,1 al 4,2~\%, y la industria y la información y comunicaciones se movieron en sentidos opuestos (gráfico~\ref{fig:roa-sectores})\nocite{BdE2026CBT2T}. Una media agregada puede esconder mucho.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Rentabilidad ordinaria del activo por sectores, primer semestre de 2025 y de 2026}\label{fig:roa-sectores}
+\grafico[0.85\textwidth]{roa-sectores}
+\fuente{Banco de España, Central de Balances Trimestral (839 empresas), ratio R.1\nocite{BdE2026CBT2T}.}
+\end{figure}
+
+\paragraph{Riesgo económico: el punto muerto y el apalancamiento operativo}\label{sec:riesgo-economico}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item ¿Cuánto tiene que vender la empresa para no perder dinero, y cuánto cambia su resultado cuando cambian sus ventas? Las 2 respuestas dependen de cuántos de sus costes son fijos: el \concepto{riesgo económico} u operativo es la variabilidad del EBIT ante cambios en las ventas \vertema{3.B.2}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{i) Supuestos}:
+  \begin{itemize}
+  \item un precio $p$ y un coste variable unitario $c$ constantes, con $p>c$;
+  \item unos costes fijos, CF, dados, de modo que $C(q)=\mathrm{CF}+c\,q$;
+  \item el EBIT es, entonces, $\mathrm{EBIT}=(p-c)\,q-\mathrm{CF}$.
+  \end{itemize}
+\item \emph{ii) Desarrollo}, en 2 pasos:
+  \begin{itemize}
+  \item \emph{el punto muerto}: el \concepto{punto muerto} o umbral de rentabilidad (\emph{breakeven point}) es la cantidad con la que los ingresos igualan a los costes y el EBIT es cero:
+    \[
+    p\,q=c\,q+\mathrm{CF}\quad\Longrightarrow\quad q^{\mathrm{PM}}=\frac{\mathrm{CF}}{p-c}.
+    \]
+    El denominador es el \emph{margen de contribución unitario}, lo que deja cada unidad para cubrir los costes fijos. Por debajo del punto muerto hay pérdidas; por encima, beneficios;
+  \item \emph{el grado de apalancamiento operativo}: el \concepto{GAO} mide cuánto varía en porcentaje el EBIT cuando las ventas varían un 1~\%. Como $\Delta\mathrm{EBIT}=(p-c)\,\Delta q$,
+    \[
+    \mathrm{GAO}\equiv\frac{\Delta\mathrm{EBIT}/\mathrm{EBIT}}{\Delta q/q}=\frac{(p-c)\,q}{(p-c)\,q-\mathrm{CF}}=\frac{\mathrm{MC}}{\mathrm{EBIT}},\qquad \mathrm{MC}\equiv(p-c)\,q.
+    \]
+  \end{itemize}
+\item \emph{iii) Implicaciones}:
+  \begin{itemize}
+  \item el GAO es mayor cuanto mayores son los \emph{costes fijos}: con el mismo margen de contribución, una empresa con mucho inmovilizado tiene un EBIT menor y más sensible a las ventas;
+  \item y cuanto más cerca está la empresa del \emph{punto muerto}: en él, el GAO es infinito; a su izquierda, con pérdidas, es negativo, y a la derecha, positivo, y tiende a 1 a medida que las ventas crecen y los costes fijos pesan menos (gráfico~\ref{fig:gao});
+  \item no es, por tanto, una constante de la empresa, sino que depende del volumen de ventas;
+  \item en la empresa del ejemplo, con ventas de 1.000, costes variables de 600 y fijos de 300, el punto muerto está en unas ventas de $300/0{,}4=750$ y el $\mathrm{GAO}=400/100=4$: si las ventas suben un 10~\%, el EBIT sube un 40~\%, y si bajan, cae lo mismo. Otra empresa con el mismo EBIT, pero con costes fijos de 500 y variables de 400, tiene un GAO de 6.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El grado de apalancamiento operativo frente a las ventas}\label{fig:gao}
+\grafico[0.68\textwidth]{gao-ventas}
+\fuente{elaboración propia. Empresa A: costes fijos de 300 y margen de contribución del 40~\% de las ventas; empresa B: costes fijos de 500 y margen del 60~\%.}
+\end{figure}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{El margen de seguridad}: la distancia relativa entre las ventas y el punto muerto, $(q-q^{\mathrm{PM}})/q$, es la inversa del GAO. En el ejemplo, $(1.000-750)/1.000=25~\%=1/4$: las ventas pueden caer un 25~\% antes de entrar en pérdidas.
+\item \emph{Varios productos}: con más de un producto, el punto muerto se calcula con el margen de contribución medio, ponderado por la composición de las ventas.
+\end{itemize}
+
+\subparagraph{d) Valoración}
+
+\begin{itemize}
+\item Es sencillo y muy útil para decidir (precios, inversión en automatización, subcontratar), pero la división entre costes fijos y variables depende del plazo: a largo plazo todos los costes son variables, y una empresa incapaz de ajustar sus costes no es viable; en el muy corto plazo, casi todos son fijos.
+\item Supone precios y costes unitarios constantes, algo que solo vale en un intervalo de ventas.
+\item Un riesgo económico alto exige una financiación más prudente: con mucho apalancamiento operativo, añadir deuda multiplica el riesgo, y la empresa paga más por financiarse.
+\end{itemize}
+
+\subsubsection{Análisis financiero}\label{sec:analisis-financiero}
+
+\paragraph{Margen neto y rentabilidad financiera}
+
+\begin{itemize}
+\item El \emph{margen neto}, $\mathrm{BN}/\text{ventas}$, añade al margen operativo el resultado financiero y los impuestos. En el ejemplo, el 6~\%.
+\item La \concepto{rentabilidad financiera} (ROE, \emph{return on equity}) mide lo que rinden los fondos de los accionistas, después de intereses e impuestos: $\mathrm{ROE}\equiv\mathrm{BN}/\mathrm{PN}$. En el ejemplo, $60/600=10~\%$.
+\end{itemize}
+
+\paragraph{El apalancamiento financiero: la relación entre el ROE y el ROA}\label{sec:apalancamiento-financiero}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item ¿Le conviene al accionista que la empresa se endeude? Depende de si cada euro de deuda rinde en el activo más de lo que cuesta. Es la versión contable y \emph{ex post} de una pregunta central de las finanzas de la empresa \vertema{3.B.3}.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{i) Supuestos}:
+  \begin{itemize}
+  \item el activo se financia con deuda con coste, $V_D$, que cuesta $r_D$ (gastos financieros sobre deuda), y con patrimonio neto, $V_E$, los 2 a valor contable: $AT=V_D+V_E$;
+  \item el impuesto sobre beneficios es proporcional, al tipo $t_{IS}$.
+  \end{itemize}
+\item \emph{ii) Desarrollo}, en 3 pasos (derivación completa en el anexo~\ref{anexo:derivaciones}):
+  \begin{itemize}
+  \item \emph{el resultado de explotación}: el activo rinde el ROA, así que $\mathrm{EBIT}=\mathrm{ROA}\,(V_D+V_E)$;
+  \item \emph{el beneficio neto}: lo que queda tras pagar los intereses y el impuesto, $\mathrm{BN}=(\mathrm{EBIT}-r_D\,V_D)(1-t_{IS})$;
+  \item \emph{la rentabilidad del accionista}: dividiendo por $V_E$,
+  \funcionclave[eq:roe-roa]{\mathrm{ROE}=\Big[\mathrm{ROA}+\frac{V_D}{V_E}\,(\mathrm{ROA}-r_D)\Big](1-t_{IS})}
+  \end{itemize}
+\item \emph{iii) Implicaciones} (gráfico~\ref{fig:apalancamiento-financiero}):
+  \begin{itemize}
+  \item si $\mathrm{ROA}>r_D$, cada euro de deuda rinde más de lo que cuesta y la diferencia va al accionista: endeudarse sube el ROE. Es el \concepto{apalancamiento financiero} o efecto palanca. Si $\mathrm{ROA}<r_D$, la palanca juega en contra;
+  \item sin deuda, $\mathrm{ROE}=\mathrm{ROA}\,(1-t_{IS})$;
+  \item la deuda también amplifica las variaciones del ROA: la recta del ROE es más inclinada cuanto mayor es el endeudamiento;
+  \item en la empresa del ejemplo, con un ROA del 10~\%, 400 de deuda al 5~\% y 600 de patrimonio neto, $\mathrm{ROE}=[0{,}10+\tfrac{2}{3}\,(0{,}10-0{,}05)]\cdot0{,}75=10~\%$, más que el 7,5~\% que tendría sin deuda. Si la deuda costara un 12,5~\%, el ROE caería al 6,25~\%.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El apalancamiento financiero: el ROE frente al ROA según el endeudamiento}\label{fig:apalancamiento-financiero}
+\grafico[0.68\textwidth]{apalancamiento-financiero}
+\fuente{elaboración propia con la ecuación~\eqref{eq:roe-roa}, $r_D=5~\%$ y $t_{IS}=25~\%$.}
+\end{figure}
+
+\subparagraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{El grado de apalancamiento financiero}: los intereses son un coste fijo financiero que amplifica en el beneficio neto las variaciones del EBIT, igual que los costes fijos amplifican las de las ventas en el EBIT. El \concepto{GAF} mide cuánto varía en porcentaje el beneficio neto cuando el EBIT varía un 1~\%; como el impuesto proporcional se cancela,
+  \[
+  \mathrm{GAF}\equiv\frac{\Delta\mathrm{BN}/\mathrm{BN}}{\Delta\mathrm{EBIT}/\mathrm{EBIT}}=\frac{\mathrm{EBIT}}{\mathrm{EBIT}-\text{intereses}}=\frac{\mathrm{EBIT}}{\mathrm{EBT}}.
+  \]
+  \begin{itemize}
+  \item El \emph{apalancamiento total}, $\mathrm{GAT}=\mathrm{GAO}\cdot\mathrm{GAF}=\mathrm{MC}/\mathrm{EBT}$, mide cuánto varía el beneficio neto con las ventas.
+  \item En el ejemplo, $\mathrm{GAF}=100/80=1{,}25$ y $\mathrm{GAT}=4\cdot1{,}25=5$: si las ventas suben un 10~\%, el beneficio neto sube un 50~\%.
+  \end{itemize}
+\item \emph{La teoría}: es la versión contable de la proposición II de \autor{Franco Modigliani} y \autor{Merton Miller} (1958), $r_E=r_A+(r_A-r_D)\,V_D/V_E$: con mercados perfectos, la mayor rentabilidad esperada del accionista compensa exactamente su mayor riesgo, y el valor de la empresa no depende de cómo se financie \vertema{3.B.3}\nocite{ModiglianiMiller1958Cost}.\footnote{\autor{Franco Modigliani} recibió el Premio Nobel de Economía en 1985 «por sus análisis pioneros del ahorro y de los mercados financieros»\nocite{Nobel1985Modigliani}, y \autor{Merton Miller}, en 1990, con \autor{Harry Markowitz} y \autor{William Sharpe}, «por sus trabajos pioneros en la teoría de la economía financiera»\nocite{Nobel1990Markowitz}.} Por eso la beta de las acciones sube con la deuda \vertema{3.B.2}.
+\item \emph{El umbral}: que el ROE supere al ROA no basta; tiene que superar el coste de los fondos propios, $r_E$, la rentabilidad que exigen los accionistas por su riesgo \vertema{3.B.2}.
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La Central de Balances del Banco de España publica cada año la rentabilidad del activo neto (R.1), el coste de la financiación con coste (R.2) y su diferencia: es exactamente el término $\mathrm{ROA}-r_D$ de \eqref{eq:roe-roa}. Cuando es positiva, la rentabilidad de los recursos propios supera a la del activo, y la deuda empuja al alza la rentabilidad de las empresas españolas \vertema{4.A.8}\nocite{BdE2025CBA2024}.
+\item El efecto también tiene un lado macroeconómico: si muchas empresas se endeudan a la vez confiando en que el ROA seguirá por encima del coste de la deuda, la economía se vuelve frágil ante una subida de tipos o una caída de las ventas, como describe la hipótesis de inestabilidad financiera de \autor{Hyman Minsky} \vertema{3.A.42}\nocite{Minsky1992Financial}.
+\end{itemize}
+
+\subparagraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: resume en una línea la relación entre la decisión de inversión (el ROA) y la de financiación (el endeudamiento y su coste), y es exacta con las cifras contables.
+\item \emph{En contra}:
+  \begin{itemize}
+  \item es una identidad \emph{ex post}: no dice si el ROA futuro superará al coste de la deuda;
+  \item supone que todo el pasivo tiene coste; con pasivo sin coste, como los proveedores, el ROA hay que calcularlo sobre el activo neto;
+  \item $r_D$ no es constante: sube con el endeudamiento, porque crece el riesgo de insolvencia;
+  \item y mira solo la rentabilidad, no el riesgo: la deuda es un arma de doble filo, que amplifica tanto las ganancias como las pérdidas.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Indicadores de mercado}
+
+\begin{itemize}
+\item Si la empresa cotiza, sus cuentas se comparan con el precio de sus acciones, $P$:
+  \begin{itemize}
+  \item el \concepto{beneficio por acción}, BPA, el resultado del ejercicio entre el número de acciones;
+  \item el \concepto{PER} (\emph{price-earnings ratio}), $P/\mathrm{BPA}$: cuántas veces se paga en bolsa el beneficio anual;
+  \item la \emph{rentabilidad por dividendo}, el dividendo por acción entre el precio, y el \emph{pay-out}, los dividendos entre el beneficio, $1-b$, con $b$ la tasa de retención;
+  \item y el \emph{precio sobre valor contable} (\emph{price to book}), $P$ entre el patrimonio neto por acción, que es igual a $\mathrm{PER}\cdot\mathrm{ROE}$: un precio por encima del valor contable lo justifica una rentabilidad financiera alta o un crecimiento esperado alto.
+  \end{itemize}
+\item Un PER alto no significa por sí solo que la acción esté cara: refleja crecimiento esperado y poco riesgo. Son la base de la valoración por múltiplos y del análisis fundamental de las acciones \vertema{3.B.4} \vertema{3.B.23}.
+\end{itemize}
+
+\subsubsection{La descomposición de DuPont: del ROA al ROE}\label{sec:dupont}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿De dónde sale la rentabilidad del accionista? La \concepto{descomposición de DuPont}, que debe su nombre a la empresa química estadounidense en la que se empezó a usar a principios del siglo~XX, escribe el ROE como un producto de ratios, cada una ligada a una decisión de la empresa. Une en una sola cifra el análisis económico y el financiero.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Ninguno de comportamiento: es una identidad contable, que se obtiene multiplicando y dividiendo el ROE por las mismas magnitudes. Solo exige que el EBIT, el EBT y las ventas sean distintos de cero.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{La versión de 3 factores}: multiplicando y dividiendo por las ventas y por el activo total,
+  \[
+  \mathrm{ROE}=\underbrace{\frac{\mathrm{BN}}{\text{ventas}}}_{\text{margen neto}}\cdot\underbrace{\frac{\text{ventas}}{AT}}_{\text{rotación}}\cdot\underbrace{\frac{AT}{\mathrm{PN}}}_{\text{apalancamiento}}.
+  \]
+\item \emph{La versión de 5 factores}: separando en el margen neto lo que es del negocio, lo que es de la financiación y lo que es del fisco (figura~\ref{figu:dupont}),
+  \funcionclave[eq:dupont]{\mathrm{ROE}=\underbrace{\frac{\mathrm{BN}}{\mathrm{EBT}}}_{\text{efecto fiscal}}\cdot\underbrace{\frac{\mathrm{EBT}}{\mathrm{EBIT}}}_{\text{efecto de los intereses}}\cdot\underbrace{\frac{\mathrm{EBIT}}{\text{ventas}}\cdot\frac{\text{ventas}}{AT}}_{\mathrm{ROA}}\cdot\underbrace{\frac{AT}{\mathrm{PN}}}_{\text{apalancamiento}}}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Los 2 factores centrales son el ROA \eqref{eq:roa}, el \emph{análisis económico}: la gestión del negocio, con sus precios, sus costes y el uso de sus activos.
+\item Los otros 3 son el \emph{análisis financiero}: cuánto se queda el fisco, $1-t_{IS}$ con un impuesto proporcional; cuánto se quedan los acreedores, $\mathrm{EBT}/\mathrm{EBIT}=1/\mathrm{GAF}$, que baja al endeudarse; y cuánto multiplica la deuda, $AT/\mathrm{PN}$, que sube al endeudarse.
+\item La deuda mejora el ROE solo si gana el segundo efecto: el producto $(\mathrm{EBT}/\mathrm{EBIT})\cdot(AT/\mathrm{PN})$ es mayor que 1 si y solo si el ROA supera al coste de la deuda, la misma condición que en \eqref{eq:roe-roa}.
+\item En la empresa del ejemplo: $0{,}75\cdot0{,}8\cdot0{,}10\cdot1\cdot\tfrac{5}{3}=10~\%$. El efecto de los intereses por el apalancamiento da $0{,}8\cdot\tfrac53\simeq1{,}33$, mayor que 1: la deuda le suma rentabilidad.
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{El árbol de DuPont, con las cifras de la empresa del ejemplo}\label{figu:dupont}
+\grafico[0.92\textwidth]{dupont}
+\fuente{elaboración propia a partir de \textcite{Penman2013Financial}.}
+\end{infografia}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{El crecimiento sostenible}: con el ROE así descompuesto se calcula la tasa a la que puede crecer la empresa sin cambiar su endeudamiento ni ampliar capital, $g^*=b\cdot\mathrm{ROE}$, con $b$ la tasa de retención de beneficios \vertema{3.B.4}.
+\item \emph{La reformulación operativa y financiera}: los análisis modernos separan el balance en activos operativos netos y deuda financiera neta, y descomponen el ROE en la rentabilidad de las operaciones más el diferencial con el coste de la deuda neta, por el apalancamiento financiero neto\nocite{Penman2013Financial}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: ordena el diagnóstico (dice si un ROE bajo es un problema de precios, de uso de los activos, de deuda o de impuestos) y permite comparar empresas y sectores con estrategias distintas.
+\item \emph{En contra}: es contable e histórica, hereda todos los límites de las ratios y no dice nada del riesgo: un ROE alto conseguido con mucha deuda no es lo mismo que uno conseguido con mucho margen.
+\item \emph{Recapitulación}: liquidez, solvencia y rentabilidad responden a 3 preguntas distintas, pero la rentabilidad las sostiene, y DuPont la explica entera.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item En conclusión, la información financiera existe porque quien gestiona la empresa sabe más que quien la financia; las normas, del IASB al Plan General de Contabilidad, la hacen relevante, fiable, íntegra, comparable y clara.
+  \item El balance es su estado de situación; la cuenta de pérdidas y ganancias, el estado de cambios en el patrimonio neto y el de flujos de efectivo, sus estados de circulación, y la memoria los explica.
+  \item El análisis los convierte en 3 respuestas: si la empresa puede pagar mañana (liquidez), si puede pagarlo todo (solvencia) y si rinde más de lo que cuesta su dinero (rentabilidad), con la descomposición del ROE como síntesis.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Con esas cifras deciden los bancos a quién prestar, los inversores qué comprar, Hacienda cuánto recaudar y los supervisores qué riesgos vigilar en el conjunto de las empresas \vertema{4.A.8}.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item La transparencia fiscal: desde los ejercicios iniciados a partir del 22 de junio de 2024, los grupos que facturan más de 750 millones de euros publican, país por país, sus ingresos, beneficios e impuestos. Como se aprobó como norma contable y no fiscal, bastó la mayoría cualificada \vertema{4.B.18}\nocite{UE2021CBCR,BOE2022Ley28}.
+  \item La información de sostenibilidad, que se suma a la financiera aunque la Unión ha recortado su alcance \vertema{3.B.31}.
+  \item El uso de las cifras contables para valorar empresas y acciones \vertema{3.B.4} \vertema{3.B.23}, y para predecir las crisis de las empresas \vertema{3.B.26}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item La armonización ha hecho comparables las cuentas, pero la información sigue sujeta a un grado de discrecionalidad que modulan los incentivos de quien la prepara. Ni el informe del auditor basta: hace falta el examen crítico y desagregado del analista, y su capacidad de llegar a una opinión acertada es la que da utilidad a la información.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item El papel lo aguanta todo; el análisis, no. Cuando el beneficio no se convierte en caja ni la caja en solvencia, las ratios lo cuentan antes de que se hunda el balance.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: resumen de ratios}\label{anexo:ratios}
+
+\begin{itemize}
+\item Los valores de referencia son orientativos: dependen del sector y del modelo de negocio. Una relación positiva (+) indica que cuanto mayor es la ratio, mejor es la situación de la empresa; una negativa ($-$), lo contrario.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Ratios de liquidez}\label{tab:ratios-liquidez}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.1cm}>{\centering\arraybackslash}m{5.4cm}>{\centering\arraybackslash}m{0.9cm}>{\centering\arraybackslash}m{2.1cm}>{\centering\arraybackslash}m{2.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Nombre} & \textbf{Definición} & \textbf{Rel.} & \textbf{Referencia} & \textbf{Alerta} \\
+\midrule
+Fondo de maniobra & $\mathrm{AC}-\mathrm{PC}=(\mathrm{PN}+\mathrm{PNC})-\mathrm{ANC}$ & + & $>0$ & $<0$, salvo en algunos sectores \\
+Liquidez general & $\mathrm{AC}/\mathrm{PC}$ & + & A partir de 1,5 & $<1$, salvo en algunos sectores \\
+Prueba ácida & $(\mathrm{AC}-\text{existencias}-\text{ANC mantenidos para la venta})/\allowbreak \mathrm{PC}$ & + & A partir de 1 & $<0{,}5$, salvo en algunos sectores \\
+Tesorería & $\text{efectivo y equivalentes}/\allowbreak \mathrm{PC}$ & + & Pequeña, si se gestiona bien & Casi 0 \\
+Coeficiente básico de financiación & $(\mathrm{PN}+\mathrm{PNC})/(\mathrm{ANC}+\mathrm{NOF})$ & + & 1 & $<1$ \\
+Capacidad de devolución de la deuda bancaria & $\text{deuda bancaria}/\allowbreak \text{recursos generados}$ & $-$ & Cuanto más baja, mejor & Grande o negativa \\
+Capacidad de devolución del pasivo & $\text{pasivo}/\allowbreak \text{recursos generados}$ & $-$ & Cuanto más baja, mejor & Grande o negativa \\
+Conversión del activo en efectivo & $\text{recursos generados}/\allowbreak AT$ & + & Cuanto más alta, mejor & Pequeña o negativa \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}. Los \emph{recursos generados} por las operaciones son el resultado del ejercicio más las amortizaciones, los deterioros y las provisiones.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Ratios de solvencia}\label{tab:ratios-solvencia}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.1cm}>{\centering\arraybackslash}m{5.4cm}>{\centering\arraybackslash}m{0.9cm}>{\centering\arraybackslash}m{2.1cm}>{\centering\arraybackslash}m{2.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Nombre} & \textbf{Definición} & \textbf{Rel.} & \textbf{Referencia} & \textbf{Alerta} \\
+\midrule
+Solvencia o garantía & $AT/\allowbreak \text{pasivo}$ & + & En torno a 2 (más de 1,5) & $<1$ \\
+Autonomía financiera & $\mathrm{PN}/\allowbreak \text{pasivo}$ & + & Entre 0,7 y 1,5 & $<0{,}3$ \\
+Financiación propia & $\mathrm{PN}/AT$ & + & Según el sector & Baja o negativa \\
+Firmeza & $\mathrm{ANC}/\mathrm{PNC}$ & + & 2 & $<1{,}25$ \\
+Solidez & $\mathrm{PN}/\mathrm{ANC}$ & + & 0,5 & $<0{,}25$ \\
+Estabilidad & $(\mathrm{PN}+\mathrm{PNC})/\mathrm{ANC}$ & + & 1 & $<0{,}5$ \\
+Endeudamiento & $\text{pasivo}/\allowbreak \mathrm{PN}$ (con deuda con coste, $V_D/V_E$) & $-$ & En torno a 1 & $>2{,}5$ \\
+Endeudamiento bancario & $\text{deudas bancarias}/\allowbreak \mathrm{PN}$ & $-$ & Hasta 1 & $>1{,}75$ \\
+Deuda neta sobre EBITDA & $(\text{deuda financiera}-\text{efectivo e inversiones a corto})/\allowbreak \mathrm{EBITDA}$ & $-$ & Según el sector & Alta \\
+Cobertura de intereses & $\mathrm{EBIT}/\allowbreak \text{gastos financieros}$ & + & Más de 3 & $<1$ \\
+Capitalización del periodo & $\text{autofinanciación del ejercicio}/\allowbreak \text{resultado}$ & + & Cerca de 1 & 0 \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}. El manual define también los porcentajes de deuda a largo y a corto plazo sobre el pasivo total (que suman el 100~\%): lo deseable es que domine la deuda a largo.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Ratios de rentabilidad}\label{tab:ratios-rentabilidad}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.1cm}>{\centering\arraybackslash}m{5.4cm}>{\centering\arraybackslash}m{0.9cm}>{\centering\arraybackslash}m{2.1cm}>{\centering\arraybackslash}m{2.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Nombre} & \textbf{Definición} & \textbf{Rel.} & \textbf{Referencia} & \textbf{Alerta} \\
+\midrule
+Rentabilidad económica (ROA) & $\mathrm{EBIT}/AT$ & + & Más del 10~\% es excelente & $<0$ \\
+Rentabilidad financiera antes de impuestos & $\mathrm{EBT}/\mathrm{PN}$ & + & Más del 15~\% es excelente & $<0$ \\
+Rentabilidad financiera (ROE) & $\mathrm{BN}/\mathrm{PN}$ & + & Más del 10~\% es excelente & $<0$ \\
+Margen operativo & $\mathrm{EBIT}/\allowbreak \text{ventas}$ & + & Más del 5~\% es excelente & $<0$ \\
+Rotación del activo & $\text{ventas}/\allowbreak AT$ & + & Más de 1 es excelente & Pequeña \\
+Apalancamiento financiero & $(\mathrm{EBT}/\mathrm{PN})/(\mathrm{EBIT}/AT)=(\mathrm{EBT}/\mathrm{EBIT})\cdot(AT/\mathrm{PN})$ & + & $>1$ & $<1$ \\
+Coste medio de la deuda & $\text{gastos financieros}/\allowbreak \text{deuda con coste}$ & $-$ & Menor que el ROA & Alto \\
+Gastos financieros sobre ventas & $\text{gastos financieros}/\allowbreak \text{ventas}$ & $-$ & Lo más bajo posible & Alto \\
+Evolución de las ventas & $\text{ventas}_t/\allowbreak \text{ventas}_{t-1}$ & + & $>1$ & $<0{,}75$ \\
+Recursos generados sobre ventas & $\text{recursos generados}/\allowbreak \text{ventas}$ & + & Lo más alto posible & Bajos o negativos \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}. El manual calcula la rentabilidad económica y el margen con el resultado antes de intereses e impuestos, que incluye los ingresos financieros, y el coste medio de la deuda sobre todo el pasivo; aquí, como en el resto del temario, con el EBIT y con la deuda con coste.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Ratios de mercado}\label{tab:ratios-mercado}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.1cm}>{\centering\arraybackslash}m{5.4cm}>{\centering\arraybackslash}m{0.9cm}>{\centering\arraybackslash}m{2.1cm}>{\centering\arraybackslash}m{2.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Nombre} & \textbf{Definición} & \textbf{Rel.} & \textbf{Referencia} & \textbf{Alerta} \\
+\midrule
+Beneficio por acción (BPA) & $\text{resultado del ejercicio}/\allowbreak \text{número de acciones}$ & + & Lo más alto posible & Muy bajo o negativo \\
+Dividendo por acción & $\text{dividendo}/\allowbreak \text{número de acciones}$ & & --- & --- \\
+\emph{Cash flow} por acción & $\text{flujo de caja}/\allowbreak \text{número de acciones}$ & + & Lo más alto posible & Muy bajo o negativo \\
+\emph{Pay-out} & $\text{dividendos}/\allowbreak \text{resultado del ejercicio}$ & & --- & --- \\
+PER & $P/\mathrm{BPA}$ & * & Positivo & Negativo (pérdidas) \\
+Precio sobre valor contable & $P/\allowbreak \text{valor contable por acción}=\mathrm{PER}\cdot\mathrm{ROE}$ & * & Positivo & Negativo \\
+Precio sobre flujo de caja & $P/\allowbreak \text{flujo de caja por acción}$ & * & Positivo & Negativo \\
+Rentabilidad por dividendo & $\text{dividendo por acción}/\allowbreak P$ & & --- & --- \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{GarridoIniguez2017Analisis}. *: valores altos indican acciones caras en el mercado, y valores bajos, baratas, pero también reflejan el crecimiento esperado y el riesgo.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: derivaciones}\label{anexo:derivaciones}
+
+\subsection{La relación entre el ROE y el ROA}\label{anexo:roe-roa}
+
+\begin{itemize}
+\item Con valores contables y sin pasivo sin coste, el activo es $AT=V_D+V_E$, y el resultado de explotación, $\mathrm{EBIT}=\mathrm{ROA}\cdot(V_D+V_E)$.
+\item El beneficio neto es lo que queda tras pagar los intereses, $r_D\,V_D$, y el impuesto:
+  \[
+  \mathrm{BN}=\big[\mathrm{ROA}\,(V_D+V_E)-r_D\,V_D\big](1-t_{IS})=\big[\mathrm{ROA}\,V_E+(\mathrm{ROA}-r_D)\,V_D\big](1-t_{IS}).
+  \]
+\item Dividiendo por $V_E$ se obtiene \eqref{eq:roe-roa}. \findemo
+\item Si hay pasivo sin coste, $P_{sc}$ (proveedores, provisiones), con $AT=V_D+V_E+P_{sc}$, la misma cuenta da $\mathrm{ROE}=\big[\mathrm{ROA}\,(1+P_{sc}/V_E)+(V_D/V_E)(\mathrm{ROA}-r_D)\big](1-t_{IS})$: el pasivo sin coste es deuda a tipo cero, que también apalanca. Por eso la Central de Balances calcula la rentabilidad sobre el activo neto, $AT-P_{sc}$.
+\end{itemize}
+
+\subsection{El efecto de los intereses y el apalancamiento en DuPont}\label{anexo:dupont}
+
+\begin{itemize}
+\item Con todo el pasivo con coste, los intereses son $I=r_D\,(AT-\mathrm{PN})$. Entonces
+  \[
+  \frac{\mathrm{EBT}}{\mathrm{EBIT}}\cdot\frac{AT}{\mathrm{PN}}>1\iff(\mathrm{EBIT}-I)\,AT>\mathrm{EBIT}\cdot\mathrm{PN}\iff\mathrm{EBIT}\,(AT-\mathrm{PN})>I\cdot AT\iff\frac{\mathrm{EBIT}}{AT}>\frac{I}{AT-\mathrm{PN}}=r_D.
+  \]
+\item Es decir, el producto de los 2 factores financieros de \eqref{eq:dupont} supera 1 si y solo si $\mathrm{ROA}>r_D$, la condición del apalancamiento financiero positivo. \findemo
+\end{itemize}
+
+\subsection{Las necesidades operativas de fondos en días}\label{anexo:nof-dias}
+
+\begin{itemize}
+\item Despejando cada partida operativa de la definición de su periodo medio:
+  \[
+  \text{existencias}=\frac{\text{coste de las ventas}}{360}\,\mathrm{PMA},\qquad \text{clientes}=\frac{\text{ventas}}{360}\,\mathrm{PMC},\qquad \text{proveedores}=\frac{\text{compras}}{360}\,\mathrm{PMP}.
+  \]
+\item Si las únicas partidas operativas son esas 3, las NOF son
+  \[
+  \mathrm{NOF}\simeq\frac{\text{coste de las ventas}}{360}\,\mathrm{PMA}+\frac{\text{ventas}}{360}\,\mathrm{PMC}-\frac{\text{compras}}{360}\,\mathrm{PMP}.
+  \]
+\item Si el coste de las ventas y las compras se miden a precio de venta (o el margen es pequeño), $\mathrm{NOF}\simeq(\text{ventas}/360)\cdot(\mathrm{PMA}+\mathrm{PMC}-\mathrm{PMP})$: las ventas diarias por el periodo medio de maduración financiero. \findemo
+\end{itemize}
+
+\subsection{El grado de apalancamiento operativo y el margen de seguridad}\label{anexo:gao}
+
+\begin{itemize}
+\item Con $\mathrm{EBIT}=(p-c)\,q-\mathrm{CF}$ y $q^{\mathrm{PM}}=\mathrm{CF}/(p-c)$, el EBIT es $(p-c)\,(q-q^{\mathrm{PM}})$, y
+  \[
+  \mathrm{GAO}=\frac{(p-c)\,q}{(p-c)\,(q-q^{\mathrm{PM}})}=\frac{q}{q-q^{\mathrm{PM}}}=\frac{1}{\text{margen de seguridad}}.
+  \]
+\item El GAO tiende a infinito cuando $q\to q^{\mathrm{PM}}$, es negativo si $q<q^{\mathrm{PM}}$ y tiende a 1 cuando $q\to\infty$. \findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: los 10 criterios de valoración del PGC}\label{anexo:valoracion}
+
+\begin{itemize}
+\item \emph{Coste histórico}: el precio de adquisición del activo, si se compró, o su coste de producción, si lo produjo la empresa.
+\item \emph{Valor razonable}: el precio que se recibiría por vender un activo o se pagaría por transferir o cancelar un pasivo en una transacción ordenada entre participantes en el mercado, en la fecha de valoración. Se estima con una jerarquía de 3 niveles: precios cotizados de activos idénticos en mercados activos; otros datos observables, y, en último lugar, datos no observables\nocite{BOE2021RD1}.
+\item \emph{Valor neto realizable}: lo que la empresa puede obtener al vender el activo en el curso normal del negocio, menos los costes estimados de venderlo y, en las materias primas y productos en curso, de terminarlo.
+\item \emph{Valor actual}: los flujos de efectivo que se van a recibir o pagar en el curso normal del negocio, descontados a un tipo adecuado.
+\item \emph{Valor en uso}: el valor actual de los flujos de efectivo que se esperan del uso del activo (o de una unidad generadora de efectivo) y, en su caso, de su venta, descontados a un tipo sin riesgo ajustado por los riesgos del activo que no recojan los flujos. Las proyecciones se basan en hipótesis razonables, con probabilidades si hay incertidumbre.
+\item \emph{Costes de venta}: los costes incrementales directamente atribuibles a vender un activo, en los que no se habría incurrido sin la decisión de venderlo, salvo los gastos financieros y el impuesto sobre beneficios; incluyen los gastos legales de transmitir la propiedad y las comisiones de venta.
+\item \emph{Coste amortizado}: el valor inicial de un instrumento financiero menos los reembolsos del principal, más o menos la parte imputada a resultados, con el tipo de interés efectivo, de la diferencia entre el valor inicial y el de reembolso, y, en los activos, menos los deterioros reconocidos.
+\item \emph{Costes de transacción} de un activo o pasivo financiero: los incrementales directamente atribuibles a comprarlo, emitirlo o venderlo (honorarios y comisiones de agentes, asesores e intermediarios, gastos de fedatario público, impuestos sobre la transacción), sin primas ni descuentos, gastos financieros ni costes internos.
+\item \emph{Valor contable} o en libros: el importe neto por el que un activo o pasivo figura en el balance, deducidas, en los activos, la amortización acumulada y los deterioros.
+\item \emph{Valor residual}: lo que la empresa podría obtener hoy al vender el activo, menos los costes de venta, si tuviera ya la antigüedad y el estado esperados al final de su vida útil.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el ciclo contable}\label{anexo:ciclo-contable}
+
+\begin{itemize}
+\item La Ley de Sociedades de Capital fija las fases por las que pasan las cuentas anuales\nocite{LSC2010}:
+  \begin{itemize}
+  \item \emph{Formulación}: los administradores formulan las cuentas anuales, el informe de gestión y la propuesta de aplicación del resultado en los 3 meses siguientes al cierre del ejercicio, que dura 12 meses salvo en la constitución, el cambio de la fecha de cierre o la disolución, y las firman todos ellos.
+  \item \emph{Auditoría}, cuando es obligatoria: el auditor revisa las cuentas y el informe de gestión y emite su informe antes de la junta.
+  \item \emph{Aprobación}: la junta general ordinaria se reúne en los 6 primeros meses de cada ejercicio para aprobar la gestión social, las cuentas del ejercicio anterior y la aplicación del resultado. Las cuentas consolidadas se aprueban a la vez que las de la sociedad dominante.
+  \item \emph{Depósito}: en el mes siguiente a la aprobación, en el Registro Mercantil del domicilio social, donde cualquiera puede consultarlas.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: empresas según su forma jurídica}\label{anexo:formas-juridicas}
+
+\begin{table}[H]
+\centering
+\caption{Las principales formas jurídicas de la empresa en España}\label{tab:formas-juridicas}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.9cm}>{\raggedright\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{2.6cm}>{\raggedright\arraybackslash}m{3.1cm}>{\raggedright\arraybackslash}m{3.0cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Forma} & \textbf{Socios} & \textbf{Responsabilidad} & \textbf{Capital mínimo} & \textbf{Norma y fiscalidad} \\
+\midrule
+\multicolumn{5}{l}{\cellcolor{tceesalvia}\textbf{Empresa individual} (personalidad física)} \\
+Empresario individual & 1 & Ilimitada & No hay & Código de Comercio y Código Civil; IRPF \\
+Comunidad de bienes & Al menos 2 comuneros & Ilimitada & No hay (se aportan bienes) & Código Civil; IRPF de los comuneros \\
+\multicolumn{5}{l}{\cellcolor{tceesalvia}\textbf{Sociedades mercantiles personalistas} (personalidad jurídica)} \\
+Sociedad colectiva & Al menos 2 & Personal, solidaria e ilimitada & No hay & Código de Comercio; impuesto sobre sociedades \\
+Sociedad comanditaria simple & Al menos 2 (1 colectivo y 1 comanditario) & Ilimitada la de los colectivos; limitada la de los comanditarios & No hay & Código de Comercio; impuesto sobre sociedades \\
+\multicolumn{5}{l}{\cellcolor{tceesalvia}\textbf{Sociedades de capital}} \\
+Sociedad de responsabilidad limitada & 1 o más (unipersonal) & Limitada al capital aportado & 1~euro desde 2022; por debajo de 3.000~euros, reserva legal del 20~\% del beneficio y responsabilidad solidaria de los socios hasta 3.000 en la liquidación & Ley de Sociedades de Capital; impuesto sobre sociedades \\
+Sociedad anónima & 1 o más (unipersonal) & Limitada al capital aportado & 60.000~euros, desembolsado al menos en un 25~\% & Ley de Sociedades de Capital; impuesto sobre sociedades \\
+Sociedad comanditaria por acciones & Al menos 1 colectivo y comanditarios & Ilimitada la de los socios administradores; limitada la del resto & Como la anónima & Ley de Sociedades de Capital; impuesto sobre sociedades \\
+\multicolumn{5}{l}{\cellcolor{tceesalvia}\textbf{Sociedades mercantiles especiales}} \\
+Cooperativa & 3 en las de primer grado; 2 cooperativas en las de segundo & Limitada a lo aportado (salvo que los estatutos digan otra cosa) & El que fijen los estatutos & Ley 27/1999 y leyes autonómicas; al menos el 20~\% de los excedentes al fondo de reserva obligatorio y el 5~\% al de educación y promoción \\
+Sociedad laboral (limitada o anónima) & La mayoría del capital, de trabajadores indefinidos & Limitada al capital aportado & El de la limitada o la anónima & Ley 44/2015; ningún socio con más de un tercio del capital, con excepciones \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de la Ley de Sociedades de Capital, la Ley 18/2022, la Ley 27/1999 y la Ley 44/2015\nocite{LSC2010,BOE2022Ley18,BOE1999Ley27,BOE2015Ley44}. La sociedad limitada nueva empresa desapareció con la Ley 18/2022.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html?tema=3.B.1}{simulador de test}.
+\end{anotaciones}
+
+\bibliografia
+\end{document}

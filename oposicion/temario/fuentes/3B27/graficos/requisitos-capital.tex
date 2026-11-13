@@ -1,0 +1,71 @@
+% Requisitos de capital de Basilea III, en % de los activos ponderados por
+% riesgo (APR): gráfico de referencia de la ficha basilea-capital del canon
+% («barras apiladas de los requisitos (CET1, AT1, T2, colchones)»).
+% Barra izquierda, de abajo arriba (orden en que se exigen en la UE):
+%   Pilar 1: CET1 4,5 + AT1 1,5 + T2 2 = 8 (nivel 1: 6);
+%   Pilar 2 (P2R): según la entidad (altura ilustrativa de 1,5, rayada);
+%   colchón de conservación 2,5 (CET1);
+%   colchón anticíclico 0-2,5 (CET1; dibujado al máximo, con trama);
+%   colchón sistémico 0-3,5 (CET1; G-SIB de 1 a 3,5; dibujado al máximo, con trama).
+% Barra derecha: ratio de apalancamiento, nivel 1 >= 3 % de la exposición total
+%   sin ponderar (otra base: va aparte), más el colchón de los G-SIB (la mitad
+%   de su colchón sistémico; hasta 1,75).
+% Llaves: 8 % (mínimo de Pilar 1), 10,5 % (con la conservación) y hasta 16,5 %
+%   más el Pilar 2 (con todos los colchones al máximo).
+% Escala: 1 punto porcentual = 0,32 cm.
+% Elaboración propia a partir de BCBS (2010, 2017) y del Reglamento (UE) 575/2013 (CRR)
+% y la Directiva 2013/36/UE (CRD), con sus reformas de 2024 (CRR3 y CRD VI).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\colorlet{rcat1}{tceeazul!70}
+\colorlet{rct2}{tceeazul!35}
+\colorlet{rccons}{tceeverde!75}
+\colorlet{rcapal}{tceemorado!55}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.32cm,
+    caja/.style={draw=#1!60!black,fill=#1,line width=0.4pt},
+    trama/.style={draw=#1!60!black,fill=#1!35,line width=0.4pt,
+      postaction={pattern=north east lines,pattern color=#1!80!black}},
+    rot/.style={font=\footnotesize,align=center}]
+  % 1: eje vertical (% de los APR) y base
+  \capa{1}{\draw[eje] (0,0) -- (0,19) node[above] {\% de los APR};}
+  \capa{1}{\draw[thin] (0,0) -- (6.4,0);}
+  \capa{1}{\foreach \y in {0,2,...,18} {\draw[thin] (-0.08,\y) -- (0,\y) node[left,font=\footnotesize] {\y};}}
+  % 2: Pilar 1 (8 %): CET1, AT1 y T2
+  \capa{2}{\filldraw[caja=tceemorado] (0.6,0) rectangle (2.4,4.5);}
+  \capa{2}{\node[rot,text=white] at (1.5,2.25) {CET1\\4,5};}
+  \capa{3}{\filldraw[caja=rcat1] (0.6,4.5) rectangle (2.4,6);}
+  \capa{3}{\node[rot,text=white] at (1.5,5.25) {AT1 1,5};}
+  \capa{4}{\filldraw[caja=rct2] (0.6,6) rectangle (2.4,8);}
+  \capa{4}{\node[rot] at (1.5,7) {T2 2};}
+  % 5: Pilar 2, según la entidad
+  \capa{5}{\filldraw[trama=tceegris] (0.6,8) rectangle (2.4,9.5);}
+  \capa{5}{\node[rot,anchor=west] at (2.5,8.75) {Pilar 2 (P2R): según la entidad};}
+  % 6: colchón de conservación (CET1)
+  \capa{6}{\filldraw[caja=rccons] (0.6,9.5) rectangle (2.4,12);}
+  \capa{6}{\node[rot,text=white] at (1.5,10.75) {conservación\\2,5};}
+  % 7: colchón anticíclico (CET1), de 0 a 2,5
+  \capa{7}{\filldraw[trama=tceedorado] (0.6,12) rectangle (2.4,14.5);}
+  \capa{7}{\node[rot,anchor=west] at (2.5,13.25) {anticíclico: 0-2,5};}
+  % 8: colchones sistémicos (CET1), de 0 a 3,5
+  \capa{8}{\filldraw[trama=tceerojo] (0.6,14.5) rectangle (2.4,18);}
+  \capa{8}{\node[rot,anchor=west] at (2.5,16.25) {sistémico: 0-3,5};}
+  % 9: llaves de los totales (a la izquierda, fuera de las barras)
+  \capa{9}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick] (-0.75,0) -- (-0.75,8)
+    node[midway,left=5pt,rot] {Pilar 1\\8~\%};}
+  \capa{9}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceeverde!60!black] (-1.95,0) -- (-1.95,12)
+    node[midway,left=5pt,rot,text=tceeverde!60!black] {+ conservación\\10,5~\%\\+ P2R};}
+  \capa{9}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (5.0,9.5) -- (5.0,18)
+    node[midway,right=5pt,rot,text=tceerojo,align=left] {colchón combinado:\\solo CET1;\\si no se cubre,\\se limitan los\\dividendos};}
+  % 10: base de las barras
+  \capa{10}{\node[rot,below] at (1.5,0) {capital};}
+  % 11: ratio de apalancamiento (otra base: exposición sin ponderar)
+  \capa{11}{\filldraw[caja=rcapal] (3.6,0) rectangle (4.6,3);}
+  \capa{11}{\filldraw[trama=tceerojo] (3.6,3) rectangle (4.6,4.75);}
+  \capa{11}{\node[rot] at (4.1,1.5) {nivel 1\\3};}
+  \capa{11}{\node[rot,below,align=center] at (4.1,0) {apalanca-\\miento};}
+  \capa{11}{\node[rot,anchor=south,align=center] at (4.1,4.8) {+ G-SIB:\\hasta 1,75};}
+  \capa{11}{\node[rot,anchor=north,align=center,text=tceegris!80!black] at (4.1,-1.9) {\% de la exposición\\sin ponderar};}
+\end{tikzpicture}
+\end{document}

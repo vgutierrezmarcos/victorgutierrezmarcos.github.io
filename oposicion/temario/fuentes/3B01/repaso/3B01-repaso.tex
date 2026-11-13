@@ -1,0 +1,246 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[La información financiera de las empresas y su análisis]{3.B.1}{La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «el papel lo aguanta todo»}{2,5}
+\apartadocante{I. Visión general}{4}
+\subcante{1. Justificación teórica}{2}
+\subcante{2. Marco legal y armonización}{2}
+\apartadocante{II. Estados de situación y de circulación: PGC}{10}
+\subcante{Apertura: situación frente a circulación}{0,5}
+\subcante{1. Marco conceptual}{1,5}
+\subcante{2. Normas de registro y valoración}{1,5}
+\subcante{3. Cuentas anuales}{6}
+\subcante{4-5. Cuadro de cuentas; definiciones}{0,5}
+\apartadocante{III. Métodos de análisis}{12,5}
+\subcante{Apertura: el método}{1}
+\subcante{1. Liquidez}{3,5}
+\subcante{2. Solvencia}{3}
+\subcante{3. Rentabilidad: económica y financiera}{5}
+\apartadocante{Conclusión}{1}}
+\emph{Figuras del cante}: balance por masas con el FM, cascada del resultado y árbol de DuPont; \emph{gráficos}: apalancamiento financiero y GAO. \emph{Funciones clave}: el ROA, la relación ROE-ROA y DuPont (\hyperref[rep:III.3]{III.3}).
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «El papel lo aguanta todo». Wirecard (junio de 2020): el auditor no encontró 1.900 M€ de tesorería en 2 bancos filipinos; concurso una semana después. Tanto beneficio, tan poca caja. ¿Qué información elaboran las empresas, con qué reglas y cómo se analiza para saber si son líquidas, solventes y rentables?
+\item \textbf{Relevancia}: usuarios \emph{internos} (directivos, empleados, accionistas de control) y \emph{externos} (inversores, bancos, proveedores, Hacienda, supervisores); el ahorro llega a las mejores empresas; Central de Balances del BdE \vertema{4.A.8}.
+\item \textbf{Contextualización}: micro (máx. beneficio) \vertema{3.A.12} vs. finanzas corporativas (inversión y financiación para crear valor; \autor{Friedman}, 1970) \vertema{3.B.2} \vertema{3.B.3}: aquí, el paso previo. \concepto{Contabilidad financiera} (externa, regulada) vs. de gestión (interna). \concepto{Estados de situación} (\emph{stocks}: balance) vs. \concepto{de circulación} (flujos: PyG, ECPN, EFE). Sociedades no financieras. Partida doble: \autor{Luca Pacioli} (1494); IASC 1973 $\to$ IASB 2001; NIIF-UE en consolidadas de cotizadas desde 2005; PGC 2007. Retos: sostenibilidad y NIIF~18 (2027).
+\item \textbf{Problemática}: ¿por qué y quién regula? ¿Qué documentos y en qué se distinguen situación y circulación? ¿Cómo se pasa de las cuentas a un juicio sobre liquidez, solvencia y rentabilidad?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, por qué y quién (visión general); \hyperref[rep:II]{II}, qué (PGC); \hyperref[rep:III]{III}, cómo se analiza (liquidez, solvencia, rentabilidad; DuPont).
+\end{itemize}
+
+% ==========================================================================
+\bloque[4]{I. Visión general\label{rep:I}}
+\begin{ideaclave}
+La empresa sabe de sí misma más que quien la financia y el mercado no garantiza que lo cuente bien: hay normas, y cada vez son las mismas en todo el mundo.
+\end{ideaclave}
+
+\sub{I.1. Justificación teórica\label{rep:I.1}}
+\begin{itemize}
+\item Fin: \emph{pronósticos} y \emph{decisiones} (prestar, invertir, comprar).
+\item \emph{Mundo ideal}: confianza plena, asignación eficiente del capital. \emph{Mundo real}: \emph{incertidumbre} (estimaciones) e \emph{información asimétrica}: «limones» de \autor{Akerlof} (1970; Nobel 2001) \vertema{3.A.13}.
+\item \emph{Soluciones privadas}: información voluntaria, auditores, analistas, \emph{rating}, cláusulas (\autor{Healy}-\autor{Palepu}, 2001). Incompletas (bien público, coste) $\Rightarrow$ fallo de mercado $\Rightarrow$ \emph{regulación}: contabilidad común, auditada y pública.
+\item Cautelas: \concepto{falacia del nirvana} (\autor{Demsetz}, 1969) \vertema{3.A.23}; misma norma $\neq$ misma calidad entre países (\autor{Ball}, 2006).
+\end{itemize}
+
+\sub{I.2. Marco legal y armonización\label{rep:I.2}}
+\begin{itemize}
+\item \textbf{Internacional}: IASB (2001, sustituye al IASC de 1973) $\to$ \concepto{NIIF}, en más de 140 jurisdicciones; NIC vigentes. Fundación IFRS: también ISSB (2021; NIIF S1-S2, 2023).
+\item \textbf{UE}: Directiva 2013/34/UE (cuentas anuales, según tamaño); \concepto{Reglamento 1606/2002}: NIIF-UE en las \emph{consolidadas} de las \emph{cotizadas} desde 2005; CSRD (2022).
+\item \textbf{España}: Código de Comercio y LSC; \concepto{PGC 2007} (RD 1514/2007, en vigor en 2008) + PGC pymes + normas de consolidación (2010); ICAC; Ley 22/2015 de auditoría. Historia: PGC 1973 (voluntario) $\to$ 1990 (obligatorio) $\to$ 2007 (adaptado a las NIIF, sin copiarlas).
+\item Reformas: 2016 (fondo de comercio se amortiza, 10 años), 2021 (NIIF 9, 13 y 15), Ley 7/2024 (pilar 2: sin impuestos diferidos) \vertema{4.B.18}; NIIF~18 (2027, consolidadas cotizadas).
+\item EE.~UU.: US GAAP (FASB, SEC); tradición anglosajona (profesional) vs. continental (ley).
+\end{itemize}
+\graficorepaso[\linewidth]{cronologia-pgc}{Del PGC de 1973 a la NIIF 18}
+
+% ==========================================================================
+\bloque[10]{II. Estados de situación y de circulación: PGC\label{rep:II}}
+\begin{ideaclave}
+Un estado de \emph{situación} (balance: foto del patrimonio) y 3 de \emph{circulación} (PyG, ECPN, EFE: película del ejercicio), más la memoria.
+\end{ideaclave}
+\begin{itemize}
+\item PGC en 5 partes: marco conceptual, normas de registro y valoración, cuentas anuales (\emph{obligatorias}); cuadro de cuentas, definiciones y relaciones contables (\emph{voluntarias}, salvo registro y valoración).
+\end{itemize}
+\graficorepaso[0.7\linewidth]{partes-pgc}{Las 5 partes del PGC}
+
+\sub{II.1. Marco conceptual\label{rep:II.1}}
+\begin{itemize}
+\item Objetivo: \concepto{imagen fiel} del patrimonio, la situación financiera y los resultados.
+\item \textbf{Requisitos (RFICC)}: relevancia, fiabilidad, integridad, comparabilidad, claridad.
+\item \textbf{Principios (EDUPNI)}: empresa en funcionamiento, devengo, uniformidad, prudencia, no compensación, importancia relativa. Conflicto: prevalece el que mejor lleve a la imagen fiel. El PGC 2007 quitó el precio de adquisición como principio y la preferencia de la prudencia; la partida doble es método, no principio.
+\end{itemize}
+
+\sub{II.2. Registro y valoración\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Fondos} (\emph{stock}, balance) y \emph{flujos} (estados de circulación): el depósito de agua \vertema{3.A.30}. PGC: sobre todo coste histórico.
+\item 10 criterios; los 4 clave: \concepto{coste histórico}; \concepto{valor razonable} (NIIF~13 desde 2021: precio en transacción ordenada entre participantes; 3 niveles); \concepto{valor neto realizable}; \concepto{coste amortizado} (tipo de interés efectivo). Existencias: precio medio ponderado o FIFO; LIFO no.
+\end{itemize}
+
+\sub{II.3. Cuentas anuales\label{rep:II.3}}
+\begin{itemize}
+\item 5 documentos, una unidad; los formulan los administradores en 3 meses; abreviados para las pequeñas (sin EFE ni ECPN); PGC pymes optativo. Umbrales: balance abreviado 4/8 M€/50; PyG abreviada 11,4/22,8 M€/250; auditoría 2,85/5,7 M€/50 (2 de 3, 2 ejercicios).
+\item \textbf{Balance}: \emph{activo} por liquidez creciente (ANC: intangible, material, inversiones inmobiliarias y financieras a l/p, impuesto diferido; AC: mantenidos para la venta, existencias, deudores, inversiones a c/p, periodificaciones, efectivo $\leq$3 meses); \emph{PN y pasivo} por exigibilidad (PN: fondos propios, ajustes, subvenciones; PNC $>$1 año; PC $<$1 año). $AT\equiv\mathrm{PN}+\mathrm{PNC}+\mathrm{PC}$.
+\end{itemize}
+\graficorepaso[0.72\linewidth]{balance-masas}{Balance por masas: ANC y AC frente a PN, PNC y PC; el fondo de maniobra, en rojo}
+\begin{itemize}
+\item \textbf{PyG} (gastos por naturaleza): explotación (A.1) + financiero (A.2) = antes de impuestos (A.3) $-$ impuesto = continuadas (A.4) $\pm$ interrumpidas = \emph{resultado del ejercicio} (A.5). IVA: ni gasto ni ingreso (salvo no deducible); amortización por devengo, no por prudencia.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{cascada-resultados}{Cascada: EBITDA $\to$ EBIT (ROA) $\to$ EBT (acreedores) $\to$ BN (ROE)}
+\begin{itemize}
+\item \textbf{ECPN} (desde 2007): ingresos y gastos reconocidos (resultado + imputados al PN $-$ transferencias) y estado total (saldo inicial, socios, otras variaciones).
+\item \textbf{EFE} (desde 2007; sustituye al cuadro de financiación): explotación (método indirecto), inversión, financiación + tipo de cambio = variación del efectivo. Pagan en dinero, no en beneficios.
+\item \textbf{Memoria}: cómo se han hecho las cifras (criterios elegidos, partes vinculadas, periodo medio de pago\ldots).
+\item \emph{Fuera de las cuentas}: \concepto{informe de auditoría} (favorable, con salvedades, desfavorable o denegada; independencia, rotación en EIP); \concepto{informe de gestión}. \emph{Consolidadas}: integración global (dependientes) y puesta en equivalencia (asociadas).
+\item \emph{Sostenibilidad}: estado de información no financiera (Ley 11/2018; desde 2021, $>$250 trabajadores y EIP o $>$20 M€ de activo o $>$40 M€ de ventas); CSRD (doble materialidad, ESRS), aplazada (2025) y recortada por el ómnibus (2026): $>$1.000 trabajadores y $>$450 M€ desde 2027; España sin transponer (proyecto caducado, oct. 2026) \vertema{3.B.31}.
+\end{itemize}
+
+\sub{II.4-5. Cuadro de cuentas y definiciones\label{rep:II.4}}
+\begin{itemize}
+\item 9 grupos: 1-5 balance; 6-7 PyG; 8-9 imputados al PN (ECPN). Voluntarios.
+\end{itemize}
+
+% ==========================================================================
+\bloque[12,5]{III. Métodos de análisis\label{rep:III}}
+\begin{ideaclave}
+Las cuentas describen; el análisis interpreta. Sana = paga mañana (liquidez), lo paga todo (solvencia) y rinde más de lo que cuesta su dinero (rentabilidad), que sostiene a las otras 2.
+\end{ideaclave}
+\begin{itemize}
+\item \textbf{Método}: fases (pregunta, información, depuración, indicadores, diagnóstico); reclasificar operativo/financiero; \concepto{análisis vertical} (\% del total), \concepto{horizontal} (tendencias), \concepto{ratios} y comparación (pasado, sector: Central de Balances). Límites: sin óptimos universales, foto maquillable, criterios contables. \emph{Medidas alternativas de rendimiento}: ESMA (2016) y NIIF~18.
+\item \textbf{Ejemplo}: $AT=1.000$ (ANC 700; existencias 100, clientes 125, tesorería 75); PN 600, deuda 400 al 5\,\% (250 a l/p, 150 a c/p); ventas 1.000, CV 600, CF 300 (amortización 50); EBITDA 150, EBIT 100, EBT 80, BN 60 ($t_{IS}=25$\,\%).
+\end{itemize}
+
+\sub{III.1. Liquidez\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{FM} $\equiv(\mathrm{PN}+\mathrm{PNC})-\mathrm{ANC}=\mathrm{AC}-\mathrm{PC}$ (ej.: 150). Negativo: supermercados.
+\item \concepto{NOF} $\equiv\mathrm{AC}_{\mathrm{op}}-\mathrm{PC}_{\mathrm{op}}$; $\mathrm{NOF}-\mathrm{FM}=\mathrm{PC}_{\mathrm{fin}}-\mathrm{AC}_{\mathrm{fin}}$: si $\mathrm{NOF}>\mathrm{FM}$, depende de deuda a c/p (ej.: 225 frente a 150).
+\item Periodos medios: PMA (existencias/coste ventas diario), PMC (clientes/ventas diarias), PMP; maduración económica PMA+PMC; ciclo de caja $-$PMP. Ej.: 60 + 45 días.
+\item Ratios: liquidez general AC/PC (ej.: 2); \concepto{prueba ácida} (AC $-$ existencias)/PC (1,33); tesorería (0,5).
+\end{itemize}
+\graficorepaso[0.62\linewidth]{ciclo-explotacion}{Ciclo de explotación: PMA, PMC y PMP}
+\begin{itemize}
+\item EFE: \concepto{calidad del beneficio} (\autor{Sloan}, 1996); $\mathrm{FCL}=\mathrm{EBIT}(1-t_{IS})+\text{amort.}-\mathrm{CAPEX}-\Delta\mathrm{NOF}$ \vertema{3.B.4}.
+\item Remedios: aplazar pagos, adelantar cobros, \emph{factoring}, reducir existencias, deuda a l/p, menos dividendo, ampliar capital.
+\end{itemize}
+
+\sub{III.2. Solvencia\label{rep:III.2}}
+\begin{itemize}
+\item Estática (balance) y dinámica (lo que genera). Equilibrios: estabilidad total, normal, desequilibrio a corto (FM $<$ 0), \concepto{quiebra técnica} (PN $<$ 0).
+\end{itemize}
+\graficorepaso[\linewidth]{equilibrios-patrimoniales}{Los 4 equilibrios patrimoniales}
+\begin{itemize}
+\item Garantía $AT/\text{pasivo}$ (ej.: 2,5): $<$1 = quiebra técnica, no concurso (exige insolvencia, TRLC 2020); disolución si PN $<$ capital/2 (art. 363 LSC). Financiación propia PN/$AT$ (60\,\%); endeudamiento pasivo/PN y $V_D/V_E$ (2/3) \vertema{3.B.3}.
+\item Deuda neta (financiera $-$ efectivo; con arrendamientos, NIIF 16) / EBITDA (ej.: 2,2 años); cobertura EBIT/intereses (5; $<$1 alarma, $>$3 holgada).
+\item Bancos: Basilea III sobre APR (4,5/6/8\,\% + colchones; apalancamiento 3\,\%) \vertema{3.B.27}. Z de \autor{Altman} (1968) \vertema{3.B.26}.
+\end{itemize}
+
+\sub{III.3. Rentabilidad: económica y financiera\label{rep:III.3}}
+\begin{itemize}
+\item Márgenes: bruto, EBITDA, operativo (10\,\%), neto (6\,\%).
+\funcionclave{\mathrm{ROA}\equiv\frac{\mathrm{EBIT}}{AT}=\underbrace{\frac{\mathrm{EBIT}}{\text{ventas}}}_{\text{margen}}\cdot\underbrace{\frac{\text{ventas}}{AT}}_{\text{rotación}}}
+\item Ej.: 10\,\% $\times$ 1 = 10\,\%. Lujo (margen) vs. grandes superficies (rotación). BdE: R.1 5,7\,\% (1.\textsuperscript{er} sem. 2026), 4,2\,\% sin energía.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{roa-sectores}{Rentabilidad del activo por sectores (BdE, CBT): la media esconde mucho}
+\begin{itemize}
+\item \textbf{Punto muerto y GAO}: $q^{\mathrm{PM}}=\mathrm{CF}/(p-c)$; $\mathrm{GAO}=\mathrm{MC}/\mathrm{EBIT}=q/(q-q^{\mathrm{PM}})$: $\infty$ en el punto muerto, $<0$ con pérdidas, $\to1$. Ej.: ventas PM 750, GAO 4, margen de seguridad 25\,\%.
+\end{itemize}
+\graficorepaso[0.72\linewidth]{gao-ventas}{GAO frente a las ventas: B, más costes fijos, más riesgo}
+\begin{itemize}
+\item \textbf{Apalancamiento financiero} ($AT=V_D+V_E$, $t_{IS}$ proporcional):
+\funcionclave{\mathrm{ROE}=\Big[\mathrm{ROA}+\frac{V_D}{V_E}(\mathrm{ROA}-r_D)\Big](1-t_{IS})}
+\item $\mathrm{ROA}>r_D$: la deuda sube el ROE (ej.: 10\,\% frente a 7,5\,\% sin deuda; 6,25\,\% si $r_D=12{,}5$\,\%). \concepto{GAF} $=\mathrm{EBIT}/\mathrm{EBT}$ (1,25); GAT = GAO·GAF (5). Versión contable de MM II \vertema{3.B.3}; ROE $>r_E$ \vertema{3.B.2}; \autor{Minsky} \vertema{3.A.42}.
+\end{itemize}
+\graficorepaso[0.72\linewidth]{apalancamiento-financiero}{ROE frente a ROA: las rectas se cortan en $\mathrm{ROA}=r_D$}
+\begin{itemize}
+\item \textbf{DuPont} (identidad):
+\funcionclave{\mathrm{ROE}=\frac{\mathrm{BN}}{\mathrm{EBT}}\cdot\frac{\mathrm{EBT}}{\mathrm{EBIT}}\cdot\frac{\mathrm{EBIT}}{\text{ventas}}\cdot\frac{\text{ventas}}{AT}\cdot\frac{AT}{\mathrm{PN}}}
+\item Ej.: $0{,}75\cdot0{,}8\cdot0{,}10\cdot1\cdot\tfrac53=10$\,\%. Centro = ROA (económico); resto = fisco, acreedores, deuda (financiero). $g^*=b\cdot\mathrm{ROE}$ \vertema{3.B.4}.
+\item Mercado: BPA, PER, rentabilidad por dividendo, \emph{pay-out}; $P/\text{VC}=\mathrm{PER}\cdot\mathrm{ROE}$ \vertema{3.B.23}.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{dupont}{Árbol de DuPont con las cifras del ejemplo}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: «En conclusión,» asimetría $\Rightarrow$ normas (IASB $\to$ PGC); balance (situación) + PyG, ECPN y EFE (circulación) + memoria; liquidez, solvencia, rentabilidad, unidas en el ROE.
+\item \textbf{Relevancia}: bancos, inversores, Hacienda y supervisores \vertema{4.A.8}.
+\item \textbf{Extensiones}: país por país (Directiva 2021/2101, Ley 28/2022: $>$750 M€, desde jun. 2024) \vertema{4.B.18}; sostenibilidad \vertema{3.B.31}; valoración \vertema{3.B.4} \vertema{3.B.23}; crisis \vertema{3.B.26}.
+\item \textbf{Opinión}: la armonización no sustituye al examen crítico del analista.
+\item \textbf{Idea final}: el papel lo aguanta todo; el análisis, no.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1494}{\autor{Pacioli}: \emph{Summa}, partida doble}
+\hito{1958}{\autor{Modigliani}-\autor{Miller}: proposición II}
+\hito{1968}{\autor{Altman}: Z}
+\hito{1969}{\autor{Demsetz}: falacia del nirvana}
+\hito{1970}{\autor{Akerlof}: limones; \autor{Friedman}: beneficio}
+\hito{1973}{IASC; PGC voluntario}
+\hito{1990}{PGC obligatorio}
+\hito{1996}{\autor{Sloan}: devengos}
+\hito{2001}{IASB; \autor{Healy}-\autor{Palepu}}
+\hito{2002}{Reglamento 1606/2002 (NIIF-UE en 2005)}
+\hito{2007}{PGC y PGC pymes (en vigor en 2008)}
+\hito{2016}{RD 602/2016; ESMA: medidas alternativas}
+\hito{2018}{Ley 11/2018: información no financiera}
+\hito{2019}{NIIF 16: arrendamientos en el balance}
+\hito{2021}{RD 1/2021: NIIF 9, 13 y 15}
+\hito{2022}{CSRD; Ley 28/2022 (país por país)}
+\hito{2024}{NIIF 18 (IASB); Ley 7/2024}
+\hito{2026}{Ómnibus (Directiva 2026/470)}
+\hito{2027}{NIIF 18 y CSRD recortada en vigor}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Rentabilidad ordinaria del activo (R.1): \dato{5,7\,\% (1.\textsuperscript{er} sem. 2026), 4,7\,\% un año antes}{BdE, CBT}; sin energía \dato{4,1 $\to$ 4,2\,\%}{BdE}.
+\item Abreviadas: \dato{4/8 M€/50 (balance); 11,4/22,8 M€/250 (PyG)}{LSC}; auditoría \dato{2,85/5,7 M€/50}{art. 263 LSC}.
+\item Información no financiera: \dato{$>$250 trabajadores}{Ley 11/2018}; CSRD: \dato{$>$1.000 y $>$450 M€}{Dir. 2026/470}.
+\item País por país: \dato{$>$750 M€}{Dir. 2021/2101}. NIIF: \dato{$>$140 jurisdicciones}{IFRS}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué regular la contabilidad?} Información asimétrica (limones) y certificación costosa; cuidado con la falacia del nirvana.
+\item \textbf{¿Estado de situación o de circulación?} Fondo en una fecha (balance) vs. flujos del periodo (PyG, ECPN, EFE).
+\item \textbf{¿Beneficio o caja?} Devengo vs. cobros y pagos: por eso existe el EFE; calidad del beneficio.
+\item \textbf{¿FM negativo es malo?} No siempre: supermercados (NOF negativas).
+\item \textbf{¿Quiebra técnica = concurso?} No: el concurso exige insolvencia; antes, causa de disolución.
+\item \textbf{¿Cuándo conviene endeudarse?} Si $\mathrm{ROA}>r_D$; pero más riesgo (GAF) y $r_D$ sube.
+\item \textbf{¿ROA de un banco?} Resultado neto/activo medio, otro concepto \vertema{4.A.19}.
+\item \textbf{¿Qué es el EBITDA?} EBIT + amortizaciones y deterioros; medida alternativa, no PGC.
+\item \textbf{¿Qué aporta la NIIF 18?} Desde 2027, subtotales comunes en la cuenta de resultados (explotación; antes de financiación e impuestos) y conciliación de las medidas de la dirección.
+\item \textbf{¿Fondo de comercio?} Se amortiza en el PGC (10 años, salvo prueba en contrario) desde 2016; en las NIIF, solo deterioro.
+\item \textbf{¿Valor razonable?} Precio de salida en transacción ordenada (NIIF 13, en el PGC desde 2021), jerarquía de 3 niveles.
+\item \textbf{¿Por qué DuPont?} Dice si un ROE bajo es de margen, de rotación, de deuda o de impuestos.
+\item \textbf{¿Cómo se valoran las existencias?} Precio medio ponderado o FIFO; el LIFO no se admite.
+\item \textbf{¿Y si la empresa tiene proveedores?} Pasivo sin coste: el ROA, sobre el activo neto (Central de Balances).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item IASB: 2001 (el IASC es de 1973).
+\item Reglamento 1606/2002: NIIF solo en \emph{consolidadas} de \emph{cotizadas}; en España las individuales siguen el PGC.
+\item Principios: 6 (EDUPNI); la partida doble \emph{no} es principio; prudencia sin preferencia.
+\item Obligatorias: 3 primeras partes del PGC.
+\item Abreviadas \emph{sí} pueden tener que auditarse (umbrales distintos).
+\item Opiniones de auditoría: 4 (con salvedades incluida).
+\item EFE: 3 bloques (explotación, inversión, financiación) + tipo de cambio.
+\item Efectivo equivalente: vencimiento \emph{no superior} a 3 meses.
+\item ROA $=$ EBIT$/AT$ (antes de intereses e impuestos); ROE $=$ BN$/$PN.
+\item GAF $=$ EBIT$/$EBT; GAO infinito en el punto muerto.
+\item SL: capital mínimo 1 € desde 2022.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

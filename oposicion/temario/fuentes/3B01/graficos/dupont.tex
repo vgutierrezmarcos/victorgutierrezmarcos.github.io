@@ -1,0 +1,34 @@
+% Árbol de DuPont (5 factores) con las cifras de la empresa del ejemplo:
+% ROE 10 % = efecto fiscal 0,75 x efecto de los intereses 0,8 x ROA 10 %
+% x apalancamiento 5/3; ROA = margen 10 % x rotación 1.
+% Capas: 1 ROE; 2 los 4 factores; 3 el ROA desglosado; 4 los rótulos de
+% análisis económico y financiero.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=#1,fill=#1!14,thick,rounded corners=2pt,align=center,minimum width=3.0cm,minimum height=1.25cm,font=\small},
+    rama/.style={thick,tceegris}]
+  \path (-1.2,-5.6) rectangle (15.2,1.0);
+  % 1: ROE
+  \capa{1}{\node[caja=tceedorado,minimum width=3.6cm] (roe) at (7,0) {\textbf{ROE} $=\mathrm{BN}/\mathrm{PN}$\\10~\%};}
+  % 2: los 4 factores
+  \capa{2}{\node[caja=tceegris] (fis) at (1.5,-2.4) {\textbf{Efecto fiscal}\\$\mathrm{BN}/\mathrm{EBT}$\\$0{,}75$};
+    \node[caja=tceeazul] (int) at (5.2,-2.4) {\textbf{Efecto intereses}\\$\mathrm{EBT}/\mathrm{EBIT}$\\$0{,}8$};
+    \node[caja=tceemorado] (roa) at (8.9,-2.4) {\textbf{ROA}\\$\mathrm{EBIT}/AT$\\10~\%};
+    \node[caja=tceeazul] (apal) at (12.6,-2.4) {\textbf{Apalancamiento}\\$AT/\mathrm{PN}$\\$5/3$};
+    \foreach \n in {fis,int,roa,apal}{\draw[rama] (roe.south) -- (\n.north);}
+    \node[font=\Large] at (3.35,-2.4) {$\times$};
+    \node[font=\Large] at (7.05,-2.4) {$\times$};
+    \node[font=\Large] at (10.75,-2.4) {$\times$};}
+  % 3: el ROA, margen por rotación
+  \capa{3}{\node[caja=tceemorado] (mar) at (7.1,-4.8) {\textbf{Margen}\\$\mathrm{EBIT}/\text{ventas}$: 10~\%};
+    \node[caja=tceemorado] (rot) at (10.7,-4.8) {\textbf{Rotación}\\$\text{ventas}/AT$: 1};
+    \draw[rama] (roa.south) -- (mar.north);
+    \draw[rama] (roa.south) -- (rot.north);
+    \node[font=\Large] at (8.9,-4.8) {$\times$};}
+  % 4: económico y financiero
+  \capa{4}{\node[font=\footnotesize\itshape,text=tceemorado,anchor=east,align=right] at (5.1,-4.8) {análisis económico:\\el negocio};
+    \node[font=\footnotesize\itshape,text=tceeazul,anchor=north,align=center] at (2.4,-3.3) {análisis financiero: el fisco,\\los acreedores y la deuda};}
+\end{tikzpicture}
+\end{document}

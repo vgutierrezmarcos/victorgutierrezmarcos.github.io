@@ -1,0 +1,27 @@
+% Fondos y flujos como el agua de un depósito: el nivel es el fondo (el balance,
+% en una fecha); lo que entra por el grifo y sale por el desagüe son los flujos
+% (los estados de circulación, durante el periodo). Misma imagen que en la
+% contabilidad nacional. Capas: 1 el depósito y el nivel (fondo); 2 la entrada;
+% 3 la salida; 4 la identidad.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \path (-3.6,-1.9) rectangle (6.4,4.2);
+  % 1: el depósito y el nivel
+  \capa{1}{\fill[tceeazul!18] (0,0) rectangle (3,1.8);
+    \draw[very thick] (0,3) -- (0,0) -- (3,0) -- (3,3);
+    \draw[tceeazul,thick] (0,1.8) -- (3,1.8);
+    \node[font=\small,align=center,text=tceeazul] at (1.5,0.9) {\textbf{fondo}\\(\emph{stock}): balance};}
+  % 2: la entrada
+  \capa{2}{\draw[very thick] (-1.6,3.6) -- (0.6,3.6) -- (0.6,3.3);
+    \draw[->,very thick,tceeverde] (0.6,3.2) -- (0.6,2.0);
+    \node[font=\small,align=right,text=tceeverde,anchor=east] at (-0.2,2.7) {\textbf{flujo de entrada}\\ingresos, cobros};}
+  % 3: la salida
+  \capa{3}{\draw[very thick] (3,0.3) -- (3.6,0.3);
+    \draw[->,very thick,tceerojo] (3.6,0.3) -- (4.6,-0.7);
+    \node[font=\small,align=left,text=tceerojo,anchor=west] at (3.9,0.4) {\textbf{flujo de salida}\\gastos, pagos};}
+  % 4: la identidad
+  \capa{4}{\node[font=\footnotesize,align=center] at (1.5,-1.3) {fondo final $=$ fondo inicial $+$ entradas $-$ salidas del periodo};}
+\end{tikzpicture}
+\end{document}

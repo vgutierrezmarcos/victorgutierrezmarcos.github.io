@@ -1,0 +1,92 @@
+tema: 3B27
+fecha_inventario: 2026-11-13
+datos:
+  - id: crisis-bancarias-coste
+    texto: "un 6,7~\\% del PIB en ayudas directas ... 164 crisis bancarias sistémicas ... un 32~\\% del PIB en producción perdida"
+    donde: [3B27.tex]
+    fuente: LaevenValencia2026
+    organismo: FMI (Laeven y Valencia)
+    serie: "Systemic Banking Crises Database 1970-2025"
+    periodicidad: irregular
+    familia: laeven-valencia
+  - id: nbfi-cuota
+    texto: "los intermediarios no bancarios gestionaban 256,8 billones de dólares, el 51~\\% de los activos financieros del mundo (bancos, 38~\\%)"
+    donde: [3B27.tex]
+    valor: 51.0
+    unidad: "% de los activos financieros mundiales"
+    periodo: "2024"
+    fuente: FSB2025NBFI
+    organismo: FSB
+    url: https://www.fsb.org/2025/12/global-monitoring-report-on-nonbank-financial-intermediation-2025/
+    periodicidad: anual (diciembre)
+    proxima: 2026-12
+  - id: gsib-lista
+    texto: "en la lista de 2025 hay 29, entre ellos el Banco Santander (tramo del 1~\\%)"
+    donde: [3B27.tex]
+    fuente: FSB2025GSIB
+    organismo: FSB
+    periodicidad: anual (noviembre)
+    proxima: 2026-11
+  - id: oeis-espana
+    texto: "1,25~\\% Santander, 0,75~\\% BBVA, 0,5~\\% CaixaBank, 0,25~\\% Sabadell (2026)"
+    donde: [3B27.tex]
+    fuente: BdE2025OEIS
+    organismo: Banco de España
+    periodicidad: anual
+  - id: mus-entidades
+    texto: "109 en septiembre de 2026"
+    donde: [3B27.tex]
+    fuente: BCE2026MUSEntidades
+    organismo: BCE
+    periodicidad: continua
+  - id: fur
+    texto: "más de 81.000 millones de euros a finales de 2025"
+    donde: [3B27.tex]
+    fuente: SRB2026FUR
+    organismo: JUR
+    periodicidad: anual
+  - id: cet1-mus
+    texto: "ratio CET1 agregada del 16~\\%; España, 13,5~\\% (2026T2)"
+    donde: [3B27.tex]
+    fuente: BCE2026SupervisionSI
+    organismo: BCE
+    periodicidad: trimestral
+    proxima: 2026-12-16
+  - id: requisitos-srep
+    texto: "en torno al 11~\\% de CET1 y al 16~\\% de capital total"
+    donde: [3B27.tex]
+    fuente: BCE2025SREP
+    organismo: BCE
+    periodicidad: anual (noviembre-diciembre)
+  - id: brecha-credito-pib-espana
+    texto: "+47 puntos en 2007 ... unos -24 puntos a principios de 2026"
+    donde: [3B27.tex, repaso/3B27-repaso.tex]
+    valor: -24.3
+    unidad: puntos porcentuales
+    periodo: 2026T1
+    fuente: BIS2026CreditGap
+    organismo: BIS
+    url: https://data.bis.org/topics/CREDIT_GAPS
+    periodicidad: trimestral
+    familia: bis-credit-gap
+    depende: [datos/brecha-credito-pib-espana.csv, graficos/brecha-credito-pib-espana.tex]
+  - id: cca-espana
+    texto: "0,5~\\% desde octubre de 2025 y 1~\\% desde octubre de 2026"
+    donde: [3B27.tex, graficos/brecha-credito-pib-espana.tex]
+    fuente: BOE2025CCA
+    organismo: Banco de España
+    periodicidad: trimestral (revisión)
+  - id: concentracion-bancaria
+    texto: "CR5 del 41~\\% (2007) al 69,6~\\% (2022) y 67,4~\\% (2025); media UE 69,3~\\%; IHH 1.306"
+    donde: [3B27.tex, repaso/3B27-repaso.tex]
+    fuente: ECB2025SSI
+    organismo: BCE
+    url: https://data.ecb.europa.eu/data/datasets/SSI
+    periodicidad: anual (junio)
+    proxima: 2027-06
+    depende: [datos/concentracion-bancaria-espana.csv, graficos/concentracion-bancaria-espana.tex]
+  - id: calendario-regulatorio
+    texto: "FRTB desde 2027 con alivios hasta 2030; Basilea 3.1 en el Reino Unido el 1/1/2027; propuesta de EE. UU. de marzo de 2026; EDIS sin aprobar; MEDE sin ratificar por Italia"
+    donde: [3B27.tex]
+    fuente: [CE2026FRTB, PRA2026Basel31, Fed2026Propuestas, PE2026EDIS, MEDE2026InformeAnual]
+    periodicidad: irregular (normativa)

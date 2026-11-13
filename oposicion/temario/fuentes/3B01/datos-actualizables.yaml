@@ -1,11 +1,10 @@
 tema: 3B01
 fecha_inventario: 2026-11-12
-# Propuesta de la fase 2 (verificación de datos). Los textos son los de las frases nuevas de
-# _trabajo/propuestas-datos.md; si el revisor de contenido los cambia, actualizar «texto».
+# Integrado en el tema el 13/11/2026: los «texto» son los del 3B01.tex (y de la ficha de repaso).
 datos:
   - id: cbt-roa-total
-    texto: "la rentabilidad ordinaria del activo de las empresas de la Central de Balances Trimestral subió al 5,7~\\% en el primer semestre de 2026 (4,7~\\% un año antes), pero sin energía, refino y comercio de combustibles apenas pasó del 4,1 al 4,2~\\%"
-    donde: [3B01.tex]
+    texto: "en el primer semestre de 2026, la rentabilidad del activo de las grandes empresas no financieras españolas subió al 5,7~\\%, pero casi todo por la energía y el refino; sin ellos apenas pasó del 4,1 al 4,2~\\%"
+    donde: [3B01.tex, repaso/3B01-repaso.tex]
     valor: 5.7
     unidad: "% (ratio R.1, rentabilidad ordinaria del activo neto)"
     periodo: "primer semestre de 2026"
@@ -16,11 +15,11 @@ datos:
     periodicidad: trimestral (nota de prensa en marzo, junio, septiembre y noviembre)
     proxima: 2026-11
     familia: bde-central-balances
-    frase: "conclusión (P74) o enganche; sustituye a «En 2021, persisten algunos riesgos…»"
+    frase: "III.3.1, rentabilidad económica (párrafo antes del gráfico fig:roa-sectores); ficha, III.3 y datos clave"
 
   - id: cbt-roa-sectores
-    texto: "gráfico pgfplots opcional (P39): R.1 por sectores, primer semestre de 2025 y de 2026"
-    donde: [3B01.tex, datos/roa-sectores-cbt.csv]
+    texto: "gráfico roa-sectores (fig:roa-sectores): R.1 por sectores, primer semestre de 2025 y de 2026"
+    donde: [3B01.tex, graficos/roa-sectores.tex, datos/roa-sectores-cbt.csv, repaso/3B01-repaso.tex]
     valor: null
     unidad: "%"
     periodo: "primer semestre de 2025 y de 2026"
@@ -34,7 +33,7 @@ datos:
     frase: "CSV en datos/roa-sectores-cbt.csv"
 
   - id: cba-anual-ratios
-    texto: "pendiente: serie anual de R.1, R.2, R.3 y E.1 de la Central de Balances Integrada (no se pudo descargar ceba24.pdf, ver propuestas-datos.md V32)"
+    texto: "no se usa en el tema (la evidencia del apalancamiento financiero se cuenta sin cifras); si se consigue la serie R.1, R.2 y R.1-R.2, un gráfico la ilustraría"
     donde: []
     valor: null
     unidad: "%"
@@ -61,11 +60,11 @@ datos:
     periodicidad: cuando se apruebe la transposición (nueva legislatura tras las elecciones del 29/11/2026)
     proxima: 2027-03
     familia: normativa-contable-espana
-    frase: "nota 14 del original"
+    frase: "nota al pie de los modelos abreviados (II.3) y ficha (II.3, datos clave)"
 
   - id: csrd-transposicion-espana
-    texto: "España no ha transpuesto la CSRD: el proyecto de Ley de información empresarial sobre sostenibilidad caducó con la disolución de las Cortes (Real Decreto 806/2026); siguen la Ley 11/2018 y el estado de información no financiera"
-    donde: [3B01.tex]
+    texto: "España no la ha traspuesto: el proyecto de ley decayó con la disolución de las Cortes en octubre de 2026, de modo que sigue el estado de información no financiera"
+    donde: [3B01.tex, repaso/3B01-repaso.tex]
     valor: null
     unidad: null
     periodo: "a 12/11/2026"
@@ -76,4 +75,49 @@ datos:
     periodicidad: cuando se apruebe la ley
     proxima: 2027-03
     familia: normativa-contable-espana
-    frase: "extensiones (P47)"
+    frase: "II.3.5, la memoria y otra información (sostenibilidad)"
+
+  - id: csrd-umbrales-omnibus
+    texto: "la Directiva ómnibus de 2026 la limita, desde los ejercicios de 2027, a las empresas de más de 1.000 trabajadores y más de 450 millones de euros de cifra de negocios"
+    donde: [3B01.tex, repaso/3B01-repaso.tex]
+    valor: null
+    unidad: "trabajadores y euros"
+    periodo: "ejercicios desde 2027"
+    fuente: UE2026Omnibus
+    organismo: Unión Europea (DOUE)
+    serie: "Directiva (UE) 2026/470; transposición hasta el 19/3/2027"
+    url: https://eur-lex.europa.eu/eli/dir/2026/470/oj
+    periodicidad: cuando cambie la norma o se transponga
+    proxima: 2027-03
+    familia: normativa-contable-ue
+    frase: "II.3.5 (sostenibilidad)"
+
+  - id: einf-umbral-250
+    texto: "Desde 2021 lo elaboran las sociedades de más de 250 trabajadores que sean entidades de interés público o superen 20 millones de euros de activo o 40 de cifra de negocios"
+    donde: [3B01.tex, repaso/3B01-repaso.tex]
+    valor: 250
+    unidad: "trabajadores"
+    periodo: "vigente a 13/11/2026"
+    fuente: BOE2018Ley11
+    organismo: BOE (Ley 11/2018, disposición transitoria; art. 262.5 LSC)
+    serie: "comprobado en el BOE el 13/11/2026; cambia cuando se transponga la CSRD"
+    url: https://www.boe.es/buscar/doc.php?id=BOE-A-2018-17989
+    periodicidad: cuando se apruebe la transposición
+    proxima: 2027-03
+    familia: normativa-contable-espana
+    frase: "II.3.5 (sostenibilidad)"
+
+  - id: niif-jurisdicciones
+    texto: "hoy exigidas en más de 140 jurisdicciones"
+    donde: [3B01.tex, repaso/3B01-repaso.tex]
+    valor: 140
+    unidad: "jurisdicciones"
+    periodo: "consulta 12/11/2026"
+    fuente: IFRS2026Quienes
+    organismo: Fundación IFRS
+    serie: "jurisdicciones que exigen las NIIF"
+    url: https://www.ifrs.org/about-us/who-we-are/
+    periodicidad: irregular
+    proxima: 2027-11
+    familia: normativa-contable-internacional
+    frase: "I.2, nivel internacional"

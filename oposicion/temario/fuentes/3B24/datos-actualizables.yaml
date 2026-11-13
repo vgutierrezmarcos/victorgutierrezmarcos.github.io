@@ -1,11 +1,10 @@
 tema: 3B24
-fecha_inventario: 2026-11-12
-# Propuesta de la fase 2 (verificación de datos). «texto» es la frase propuesta
-# en _trabajo/propuestas-datos.md (V*); el revisor de contenido la ajusta al
-# redactar y debe actualizar aquí «texto», «donde» y «frase».
+fecha_inventario: 2026-11-13
+# Datos que caducan del 3.B.24 (fase de datos del 12/11/2026; textos ajustados
+# a la redacción del tema y de la ficha el 13/11/2026).
 datos:
   - id: curva-bce-zona-euro
-    texto: "gráfico de datos con la curva al contado de la zona del euro (Svensson) el 10/11/2026, el 03/07/2023 y el 30/12/2020"
+    texto: "El 10 de noviembre de 2026, la curva AAA daba un 2,62~\\% a 3 meses, un 3,02~\\% a 2 años, un 3,33~\\% a 10 y un 3,57~\\% a 30"
     donde: [3B24.tex, graficos/curva-bce-zona-euro]
     valor: "10 años AAA 3,331 %; todos los emisores 3,913 % (10/11/2026)"
     unidad: "% anual, capitalización continua"
@@ -38,7 +37,7 @@ datos:
 
   - id: inversion-curva-eeuu
     texto: "el diferencial entre el bono a 10 años y la letra a 3 meses fue negativo sin interrupción del 25 de octubre de 2022 al 12 de diciembre de 2024, con un mínimo de −1,89 puntos el 1 de junio de 2023"
-    donde: [3B24.tex]
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: -1.89
     unidad: puntos porcentuales (10 años menos 3 meses)
     periodo: 25/10/2022-12/12/2024
@@ -83,8 +82,8 @@ datos:
     frase: "V3 (conclusión, «Opinión», ii)"
 
   - id: prima-riesgo-2012
-    texto: "en julio de 2012 la prima de riesgo española frente al bono alemán a 10 años llegó a 555 puntos básicos de media mensual"
-    donde: [3B24.tex]
+    texto: "La española llegó a 555 puntos básicos de media en julio de 2012, el máximo desde la creación del euro"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: 555
     unidad: puntos básicos
     periodo: julio de 2012
@@ -99,8 +98,8 @@ datos:
     frase: "V1. Sustituye a «649 puntos» (2 veces en la conclusión); misma cifra que el 3B26 (II.5 d)"
 
   - id: prima-riesgo-actual
-    texto: "En septiembre de 2026 era de 45 puntos básicos (3,93~\\% frente a 3,47~\\%)"
-    donde: [3B24.tex]
+    texto: "y era de 45 en septiembre de 2026"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: 45
     unidad: puntos básicos
     periodo: septiembre de 2026 (octubre, 65 pb, solo en el BCE a 12/11/2026)
@@ -115,8 +114,8 @@ datos:
     frase: "V2. Pasar a octubre (65 pb) cuando Eurostat lo confirme"
 
   - id: rating-espana
-    texto: "A+ para S\\&P (desde el 12/9/2025) y Scope (11/9/2026), A3 para Moody's y A para Fitch (26/9/2025) y A (high) para DBRS (29/11/2024), todas con perspectiva estable"
-    donde: [3B24.tex]
+    texto: "España tiene hoy una A$+$ de S\\&P y de Scope, una A3 de Moody's, una A de Fitch y una A (\\emph{high}) de DBRS, todas con perspectiva estable"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: "S&P A+; Moody's A3; Fitch A; DBRS A (high); Scope A+"
     unidad: calificación a largo plazo
     periodo: a 12/11/2026
@@ -130,8 +129,8 @@ datos:
     frase: "V19 (nuevo apartado de calificación crediticia, P47)"
 
   - id: bonos-verdes-cuota-mundial
-    texto: "los bonos verdes son el 4,3~\\% de las emisiones mundiales de deuda (enero-septiembre de 2025; 4,5~\\% en 2024)"
-    donde: [3B24.tex]
+    texto: "los bonos verdes eran el 4,3~\\% de las emisiones mundiales de deuda en enero-septiembre de 2025"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: 4.3
     unidad: "% de la emisión mundial de deuda (sin municipales de EE. UU. ni titulizaciones)"
     periodo: enero-septiembre de 2025
@@ -145,8 +144,8 @@ datos:
     frase: "V7 (sustituye a «aumentan en aproximadamente un 4 % la emisión de bonos»)"
 
   - id: bonos-verdes-ngeu
-    texto: "la Comisión financia hasta el 30~\\% de NextGenerationEU con bonos verdes; en noviembre de 2026 tenía en circulación 86.240 millones de euros, de una deuda total de 874.670 millones"
-    donde: [3B24.tex]
+    texto: "en noviembre de 2026 tenía en circulación 86.240 millones, una décima parte de su deuda"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: 86.24
     unidad: miles de millones de euros (saldo vivo)
     periodo: 10/11/2026
@@ -160,8 +159,8 @@ datos:
     frase: "V10 (sustituye a «un tercio de su paquete de estímulos»)"
 
   - id: bonos-verdes-espana
-    texto: "el Tesoro emitió su primer bono verde el 7 de septiembre de 2021 (5.000 millones a 20 años) y a final de 2025 tenía en circulación 18.384 millones"
-    donde: [3B24.tex]
+    texto: "a final de 2025, el Tesoro tenía 18.384 millones en bonos verdes"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: 18384
     unidad: millones de euros
     periodo: fin de 2025
@@ -174,24 +173,10 @@ datos:
     familia: tesoro-estrategia
     frase: "V9"
 
-  - id: estr-valor
-    texto: "el €STR estaba en el 2,439~\\% el 11 de noviembre de 2026"
-    donde: [3B24.tex]
-    valor: 2.439
-    unidad: "% anual"
-    periodo: 11/11/2026
-    fuente: BCE2026ESTRWeb
-    organismo: BCE
-    serie: "EST.B.EU000A2X2A25.WT"
-    url: https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html
-    periodicidad: diaria
-    proxima: diaria
-    familia: bce-estr
-    frase: "V11 (opcional: solo si el tema da el nivel)"
 
   - id: mercado-deuda-bme
-    texto: "a final de 2025, el saldo vivo de deuda pública española en el mercado AIAF era de 1,56 billones de euros y el de renta fija privada, de 366.625 millones; en el MARF superó por primera vez los 10.000 millones"
-    donde: [3B24.tex]
+    texto: "En España, a final de 2025, el mercado AIAF tenía 1,56 billones de euros de deuda pública y 366.625 millones de renta fija privada, y el MARF, el mercado alternativo para empresas medianas, superaba los 10.000 millones"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
     valor: 1.56
     unidad: billones de euros
     periodo: 31/12/2025
@@ -203,3 +188,33 @@ datos:
     proxima: 2027-02
     familia: bme-informe-mercado
     frase: "V20; el MARF, igual que el 3B03 (l. 292)"
+
+  - id: renta-fija-mundial
+    texto: "a finales de 2025 había en el mundo 160,7 billones de dólares en títulos de renta fija, más que el valor de todas las bolsas, 157,8 billones"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
+    valor: 160.7
+    unidad: billones de dólares
+    periodo: 2025
+    fuente: SIFMA2026FactBook
+    organismo: SIFMA
+    serie: "Capital Markets Fact Book (renta fija mundial en circulación y capitalización bursátil mundial)"
+    url: https://www.sifma.org/news/blog/2026-capital-markets-fact-book-key-findings
+    periodicidad: anual (agosto)
+    proxima: 2027-08
+    familia: sifma-factbook
+    frase: "Sin segunda comprobación independiente (BIS, debt securities statistics): pendiente"
+
+  - id: plazos-tesoro
+    texto: "El Tesoro emite letras a 3, 6, 9 y 12 meses, bonos de 2 a 5 años (hoy, a 3 y 5) y obligaciones de más de 5 (hoy, a 10, 15, 30 y 50)"
+    donde: [3B24.tex, repaso/3B24-repaso.tex]
+    valor: "letras 3-12 meses; bonos 3 y 5 años; obligaciones 10, 15, 30 y 50 años"
+    unidad: plazos de emisión
+    periodo: 2026
+    fuente: Tesoro2026BonosObligaciones
+    organismo: Tesoro Público
+    serie: "Bonos y Obligaciones del Estado; Letras del Tesoro; Estrategia de financiación"
+    url: https://www.tesoro.es/deuda-publica/los-valores-del-tesoro/bonos-y-obligaciones-del-estado
+    periodicidad: anual (estrategia de financiación)
+    proxima: 2027-01
+    familia: tesoro-instrumentos
+

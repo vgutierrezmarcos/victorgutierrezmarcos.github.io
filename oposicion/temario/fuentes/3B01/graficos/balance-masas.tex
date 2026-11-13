@@ -1,0 +1,55 @@
+% Balance por masas patrimoniales (cuenta en T) con el fondo de maniobra.
+% Alturas proporcionales a la empresa del ejemplo del tema (activo total 1.000):
+% ANC 700, AC 300 | PN 600, PNC 250, PC 150. Escala: 1 cm = 100.
+% Paleta de las masas del 3.B.1 (igual en balance-masas, equilibrios-patrimoniales
+% y cascada): ANC morado, AC verde, PN dorado, PNC azul, PC naranja; FM en rojo.
+% Capas: 1 la T con «Activo» y «Patrimonio neto y pasivo»; 2 el activo (ANC
+% arriba, AC abajo: liquidez creciente); 3 la estructura financiera (PN, PNC,
+% PC: exigibilidad creciente); 4 el fondo de maniobra, por arriba y por abajo.
+% balance-masas-paso1.tex muestra las capas 1-3 (apartado II.3).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    masa/.style={draw=#1,fill=#1!14,thick},
+    titulo/.style={font=\small\bfseries,align=center},
+    detalle/.style={font=\footnotesize,align=center,text=tceegris!60!black}]
+  \colorlet{mANC}{tceemorado}\colorlet{mAC}{tceeverde}
+  \colorlet{mPN}{tceedorado}\colorlet{mPNC}{tceeazul}\colorlet{mPC}{tceenaranja}
+  % marco fijo para que todos los pasos tengan el mismo tamaño
+  \path (-3.4,-0.9) rectangle (12.6,11.2);
+  % 1: la cuenta en T
+  \capa{1}{\draw[very thick] (0,10.2) -- (11,10.2);}
+  \capa{1}{\draw[very thick] (5.5,10.2) -- (5.5,0);}
+  \capa{1}{\node[font=\normalsize\bfseries] at (2.75,10.65) {Activo};}
+  \capa{1}{\node[font=\normalsize\bfseries] at (8.25,10.65) {Patrimonio neto y pasivo};}
+  % 2: el activo, de menor a mayor liquidez
+  \capa{2}{\draw[masa=mANC] (0.15,3.05) rectangle (5.35,10.05);
+    \node[titulo] at (2.75,7.0) {Activo no corriente (ANC)};
+    \node[detalle] at (2.75,6.3) {inmovilizado, inversiones a largo plazo};
+    \node[detalle] at (2.75,5.8) {700};}
+  \capa{2}{\draw[masa=mAC] (0.15,0.05) rectangle (5.35,2.95);
+    \node[titulo] at (2.75,1.05) {Activo corriente (AC)};
+    \node[detalle] at (2.75,0.5) {existencias, clientes, tesorería: 300};}
+  \capa{2}{\draw[->,thick,tceegris] (-0.35,9.8) -- (-0.35,0.3) node[midway,sloped,above,font=\footnotesize,text=tceegris] {más liquidez};}
+  % 3: la estructura financiera, de menor a mayor exigibilidad
+  \capa{3}{\draw[masa=mPN] (5.65,4.05) rectangle (10.85,10.05);
+    \node[titulo] at (8.25,7.4) {Patrimonio neto (PN)};
+    \node[detalle] at (8.25,6.8) {fondos propios, ajustes, subvenciones};
+    \node[detalle] at (8.25,6.3) {600};}
+  \capa{3}{\draw[masa=mPNC] (5.65,1.55) rectangle (10.85,3.95);
+    \node[titulo] at (8.25,3.6) {Pasivo no corriente (PNC)};
+    \node[detalle] at (8.25,3.2) {deudas a más de un año: 250};}
+  \capa{3}{\draw[masa=mPC] (5.65,0.05) rectangle (10.85,1.45);
+    \node[titulo] at (8.25,0.95) {Pasivo corriente (PC)};
+    \node[detalle] at (8.25,0.4) {deudas a menos de un año: 150};}
+  \capa{3}{\draw[->,thick,tceegris] (11.35,9.8) -- (11.35,0.3) node[midway,sloped,below,font=\footnotesize,text=tceegris] {más exigibilidad};}
+  % 4: el fondo de maniobra: recursos permanentes que financian parte del AC
+  \capa{4}{\fill[tceerojo,opacity=0.18] (0.15,1.5) rectangle (10.85,2.95);
+    \draw[tceerojo,very thick,dashed] (0.15,2.95) -- (10.85,2.95);
+    \draw[tceerojo,very thick,dashed] (0.15,1.5) -- (10.85,1.5);}
+  \capa{4}{\draw[tceerojo,very thick,decorate,decoration={brace,amplitude=6pt}] (0.0,1.5) -- (0.0,2.95)
+      node[midway,left=8pt,font=\small\bfseries,text=tceerojo,align=center] {FM $=150$\\$=\mathrm{AC}-\mathrm{PC}$};
+    \node[font=\footnotesize,text=tceerojo,align=center,anchor=north] at (5.5,-0.15) {$\mathrm{FM}=(\mathrm{PN}+\mathrm{PNC})-\mathrm{ANC}=\mathrm{AC}-\mathrm{PC}$: la parte del activo corriente financiada con recursos permanentes};}
+\end{tikzpicture}
+\end{document}

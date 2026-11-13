@@ -1,0 +1,41 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+% Curvas de rentabilidades (TIR de bonos con cupón) de España (Banco de España,
+% medias mensuales del secundario: sept. 2026, jul. 2023, dic. 2020) y de
+% EE. UU. (Tesoro, rendimientos a la par: 10/11/2026, 03/07/2023, 31/12/2020).
+% Datos y fuentes en ../datos/curva-espana.csv y ../datos/curva-eeuu.csv.
+% España no tiene dato a 15 años en julio de 2023 (nan): se une 10 con 30.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/curva-espana.csv}\es
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/curva-eeuu.csv}\us
+\pgfplotsset{panel/.style={width=7.6cm,height=6.2cm,xmin=0,xmax=31,ymin=-1,ymax=6,
+  axis lines*=left,tick align=outside,xlabel={Plazo (años)},
+  xtick={0,5,...,30},ytick={-1,0,...,6},ticklabel style={font=\footnotesize},
+  ymajorgrids,grid style={tceegris!25},clip=false,unbounded coords=discard,dicapas,
+  legend style={at={(0.98,0.40)},anchor=south east,draw=none,font=\scriptsize},legend cell align=left,
+  title style={font=\normalsize}}}
+\begin{tikzpicture}[tcee]
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.3cm},panel]
+  % 1: panel de España
+  \nextgroupplot[title={España},ylabel={\%}]
+  \capa{1}{\dicraya{(0,0) (31,0)}}
+  \capa{2}{\addplot[very thick,tceemorado,mark=*,mark size=1.3pt] table[x=plazo,y=m_202609] {\es};
+    \addlegendentry{septiembre de 2026}
+    \addplot[very thick,tceedorado,mark=*,mark size=1.3pt] table[x=plazo,y=m_202307] {\es};
+    \addlegendentry{julio de 2023}
+    \addplot[very thick,tceeazul,mark=*,mark size=1.3pt] table[x=plazo,y=m_202012] {\es};
+    \addlegendentry{diciembre de 2020}}
+  % 3: panel de Estados Unidos
+  \nextgroupplot[title={Estados Unidos}]
+  \capa{3}{\dicraya{(0,0) (31,0)}}
+  \capa{4}{\addplot[very thick,tceemorado,mark=*,mark size=1.3pt] table[x=plazo,y=t_20261110] {\us};
+    \addlegendentry{10/11/2026}
+    \addplot[very thick,tceedorado,mark=*,mark size=1.3pt] table[x=plazo,y=t_20230703] {\us};
+    \addlegendentry{03/07/2023}
+    \addplot[very thick,tceeazul,mark=*,mark size=1.3pt] table[x=plazo,y=t_20201231] {\us};
+    \addlegendentry{31/12/2020}}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

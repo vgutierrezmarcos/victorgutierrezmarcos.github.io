@@ -1,0 +1,31 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Variación porcentual del precio frente a la variación de la TIR (de -4 a +4
+% puntos) para 4 bonos con cupones anuales (los de Bodie, Kane y Marcus, cap. 16):
+% A: cupón 12 %, 5 años, TIR 10 %; B: 12 %, 30 años, 10 %;
+% C: 3 %, 30 años, 10 %; D: 3 %, 30 años, 6 %.
+% pr(c, T, y) = c (1 - (1+y)^{-T})/y + 100 (1+y)^{-T}, y en tanto por uno.
+\begin{tikzpicture}[tcee,declare function={pr(\c,\T,\y)=\c*(1-exp(-\T*ln(1+\y)))/\y+100*exp(-\T*ln(1+\y));}]
+\begin{axis}[width=10cm,height=7.2cm,xmin=-4,xmax=4,ymin=-60,ymax=120,
+  axis lines=left,xlabel={$\Delta y$ (puntos)},ylabel={$\Delta P/P$ (\%)},
+  ymajorgrids,grid style={tceegris!25},
+  xtick={-4,-3,...,4},ytick={-60,-40,...,120},ticklabel style={font=\footnotesize},
+  clip=false]
+  % 1: ejes en el cero
+  \capa{1}{\addplot[thin,black,domain=-4:4] {0}; \addplot[thin,black] coordinates {(0,-60) (0,120)};}
+  % 1: bono A (5 años)
+  \capa{1}{\addplot[curva3,domain=-4:4,samples=60] {100*(pr(12,5,0.10+x/100)/pr(12,5,0.10)-1)};
+    \node[etiqueta,font=\footnotesize,text=tceeverde,anchor=south] at (axis cs:-3.3,17) {A};}
+  % 2: bono B (30 años, cupón alto)
+  \capa{2}{\addplot[curva2,domain=-4:4,samples=60] {100*(pr(12,30,0.10+x/100)/pr(12,30,0.10)-1)};
+    \node[etiqueta,font=\footnotesize,text=tceeazul,anchor=east] at (axis cs:-4,52) {B};}
+  % 3: bono C (30 años, cupón bajo)
+  \capa{3}{\addplot[curva1,domain=-4:4,samples=60] {100*(pr(3,30,0.10+x/100)/pr(3,30,0.10)-1)};
+    \node[etiqueta,font=\footnotesize,text=tceemorado,anchor=east] at (axis cs:-4,70) {C};}
+  % 4: bono D (30 años, cupón bajo, TIR baja)
+  \capa{4}{\addplot[curva4,domain=-4:4,samples=60] {100*(pr(3,30,0.06+x/100)/pr(3,30,0.06)-1)};
+    \node[etiqueta,font=\footnotesize,text=tceedorado,anchor=east] at (axis cs:-4,108) {D};}
+\end{axis}
+\end{tikzpicture}
+\end{document}

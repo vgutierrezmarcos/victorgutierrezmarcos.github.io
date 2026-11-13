@@ -1,0 +1,973 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3B27.bib}
+\AtBeginBibliography{\emergencystretch=1.5em}
+\tcetema[Regulación financiera bancaria y no bancaria]{3.B.27}{Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.}
+\tcefecha{13/11/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Cada palo que aguante su vela», dice el refrán: que cada uno cargue con las consecuencias de lo que hace. En las finanzas, durante mucho tiempo, no ha sido así.
+  \item Cuando estalla una crisis bancaria en un país de renta alta, el Estado pone de mediana un 6,7~\% del PIB en ayudas directas a los bancos\nocite{LaevenValencia2026}. Las pérdidas de quien asumió el riesgo acaban en el bolsillo del contribuyente.
+  \item En marzo de 2023, Credit Suisse, uno de los bancos de importancia sistémica mundial, perdió la confianza de sus clientes y fue absorbido por UBS con apoyo público. Pero esta vez los inversores en sus bonos convertibles contingentes perdieron unos 16.000 millones de francos\nocite{FINMA2023CSUBS}: una parte de la vela la aguantaron quienes cobraban por asumir ese riesgo.
+  \item Entre las 2 imágenes está la pregunta de esta exposición: \emph{¿por qué las finanzas son el sector más regulado de la economía, cómo se regula a los bancos y a quienes, sin serlo, hacen lo mismo que ellos, y sirve de algo?}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Es el sector más regulado}: en cualquier economía desarrollada, una entidad financiera necesita una licencia, un capital y una liquidez mínimos, supervisión continua y un régimen de quiebra propio. Los incentivos de sus gestores dependen tanto de la regulación como del mercado, y el debate no es si regular, sino cómo: la calidad de la regulación importa más que su cantidad.
+  \item \emph{Es cara cuando falla}: entre 1970 y 2025 empezaron en el mundo 164 crisis bancarias sistémicas, y en los países de renta alta cada una costó de mediana un 32~\% del PIB en producción perdida\nocite{LaevenValencia2026}.
+  \item \emph{Está cambiando ahora}: la Unión Europea aplica desde el 1 de enero de 2025 la versión final de Basilea~III, y a finales de 2024 los intermediarios financieros no bancarios ya tenían el 51~\% de los activos financieros del mundo, frente al 38~\% de los bancos\nocite{RegUE2024CRR3,FSB2025NBFI}.
+  \item \emph{Tiene su Premio Nobel}: \autor{Ben Bernanke}, \autor{Douglas Diamond} y \autor{Philip Dybvig} lo recibieron en 2022 por explicar por qué existen los bancos, por qué son frágiles y por qué su quiebra daña a toda la economía.\footnote{\autor{Ben Bernanke} recibió el Premio Nobel de Economía en 2022, con \autor{Douglas Diamond} y \autor{Philip Dybvig}, «por la investigación sobre los bancos y las crisis financieras»\nocite{Nobel2022}. \autor{Bernanke} (1983) mostró que la quiebra de los bancos convirtió la recesión de 1929 en la Gran Depresión, porque destruyó la información que tenían sobre sus clientes; \autor{Diamond} y \autor{Dybvig} (1983), que el depósito bancario es un seguro de liquidez que hace al banco vulnerable a los pánicos, y que una garantía de depósitos creíble los evita, y \autor{Diamond} (1984), que el banco existe porque vigila a los prestatarios por cuenta de muchos ahorradores\nocite{Bernanke1983Nonmonetary,DiamondDybvig1983Bank,Diamond1984Financial}. Juntos dan los fundamentos de la red de seguridad bancaria y de la regulación que la acompaña (apartado~\ref{sec:diamond-dybvig}).}
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Las definiciones de partida}:
+    \begin{itemize}
+    \item la \concepto{regulación financiera} es el conjunto de normas con que las autoridades ordenan la actividad de las entidades y de los mercados financieros para alcanzar objetivos públicos;
+    \item la \concepto{supervisión financiera} es el seguimiento de la situación y de la conducta de las entidades, con peticiones de información e inspecciones de las que pueden salir medidas correctoras y sanciones;
+    \item la \concepto{intermediación financiera no bancaria} (\emph{non-bank financial intermediation}, NBFI) es la que hacen los fondos de inversión, las aseguradoras, los fondos de pensiones, los vehículos de titulización y otros intermediarios que no captan depósitos; la parte que transforma plazos o se apalanca como un banco se llamó \concepto{banca en la sombra} (\emph{shadow banking});
+    \item el \concepto{riesgo sistémico} es el riesgo de que la quiebra de una entidad, o una perturbación común a muchas, interrumpa el funcionamiento del sistema financiero y dañe a la economía real.
+    \end{itemize}
+  \item \emph{La perspectiva histórica}: la regulación avanza a golpe de crisis.
+    \begin{itemize}
+    \item \emph{Los años 30}: tras la Gran Depresión, Estados Unidos aprobó en 1933 la Ley Glass-Steagall, que creó la garantía federal de depósitos (FDIC) y separó la banca comercial de la de inversión; en 1934 nació la Comisión de Valores (SEC) y la Reserva Federal fijó topes a los tipos de los depósitos (la \emph{Regulation~Q})\nocite{FedHist2026GlassSteagall}.\footnote{Algunos países ya habían empezado antes: en España, la Ley de Ordenación Bancaria de 1921. La \emph{banca comercial} capta depósitos y concede préstamos; la \emph{banca de inversión} gana dinero negociando y colocando valores en los mercados.} Las quiebras bancarias casi desaparecieron durante 4 décadas, con un sistema muy intervenido.
+    \item \emph{De los 70 a los 90}: la liberalización y la integración financiera llevaron la regulación al plano internacional: el Comité de Supervisión Bancaria de Basilea nació en 1974 y su primer acuerdo de capital es de 1988\nocite{BCBS2026Historia}.
+    \item \emph{La crisis de 2007-2009}: la respuesta fue, por primera vez, global. El G-20 creó en 2009 el Consejo de Estabilidad Financiera (FSB) y encargó Basilea~III; Estados Unidos aprobó la Ley Dodd-Frank en 2010, y la Unión Europea, el Sistema Europeo de Supervisión Financiera en 2011 y la unión bancaria desde 2014\nocite{FSB2026Historia,G20Londres2009}.
+    \item \emph{Los años 20 de este siglo}: la covid-19, la caída de Silicon Valley Bank y de Credit Suisse en 2023, el peso creciente de la intermediación no bancaria y los criptoactivos abren una nueva etapa.
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática}}:
+  \begin{itemize}
+  \item ¿Por qué hay que regular las finanzas más que cualquier otro sector?
+  \item ¿Qué se regula, con qué instrumentos y quién lo hace, dentro y fuera de los bancos?
+  \item ¿Qué límites tiene la regulación, y puede empeorar lo que quiere arreglar?
+  \item ¿Qué dice la evidencia: ha hecho la regulación más estable y más eficiente al sistema financiero?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}:
+  \begin{itemize}
+  \item La exposición sigue el título: primero por qué se regula, después cómo se regula y, al final, qué dicen los datos.
+    \begin{itemize}
+    \item \concepto{I. Fundamentos teóricos de la regulación financiera} (\ref{sec:fundamentos}): qué es la regulación financiera, los fallos de mercado que la justifican, con los modelos de \autor{Stiglitz} y \autor{Weiss} (1981) y de \autor{Diamond} y \autor{Dybvig} (1983), y los fallos del propio regulador.
+    \item \concepto{II. Instrumentos de regulación bancaria y no bancaria} (\ref{sec:instrumentos}): quién regula, Basilea~III y su aplicación en la Unión Europea, la política macroprudencial, la supervisión, la resolución de bancos y la regulación de los intermediarios no bancarios.
+    \item \concepto{III. Evidencia empírica} (\ref{sec:evidencia}): la importancia del sistema financiero para el crecimiento, los efectos de la regulación bancaria, la competencia y la gobernanza de las entidades.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.B.27. Regulación financiera bancaria y no bancaria. Fundamentos teóricos y evidencia empírica}\\[2pt]
+Introducción\esqtiempo{2,5}\\
+I. Fundamentos teóricos de la regulación financiera\esqtiempo{10}\\
+\hspace*{1.5em}1. ¿Qué es la regulación financiera?\\
+\hspace*{1.5em}2. Justificación de la intervención en el sector financiero\\
+II. Instrumentos de regulación bancaria y no bancaria\esqtiempo{10}\\
+\hspace*{1.5em}1. Marco institucional\\
+\hspace*{1.5em}2. Implementación de la regulación financiera\\
+\hspace*{1.5em}3. Regulación financiera no bancaria\\
+III. Evidencia empírica\esqtiempo{6,5}\\
+\hspace*{1.5em}1. Sistema financiero, crecimiento y desigualdad\\
+\hspace*{1.5em}2. Regulación bancaria, desarrollo y estabilidad\\
+\hspace*{1.5em}3. Política de la competencia\\
+\hspace*{1.5em}4. Capital humano de las cajas\\
+Conclusión\esqtiempo{1}
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10} (I.1, \tiempo{1,5}; I.2, \tiempo{8,5}: fallos de mercado, \tiempo{2,5}; \autor{Stiglitz} y \autor{Weiss}, \tiempo{2}; \autor{Diamond} y \autor{Dybvig}, \tiempo{2,5}; fallo de regulación, \tiempo{1,5}); II, \tiempo{10} (II.1, \tiempo{2}; II.2, \tiempo{6}; II.3, \tiempo{2}); III, \tiempo{6,5} (III.1, \tiempo{1,5}; III.2, \tiempo{2,5}; III.3, \tiempo{1,5}; III.4, \tiempo{1}), y conclusión, \tiempo{1}. Los 2 modelos son resúmenes: su desarrollo completo está en otros temas \vertema{3.A.13} \vertema{3.B.26}. Los gráficos imprescindibles son el racionamiento del crédito, el de \autor{Diamond} y \autor{Dybvig}, los requisitos de capital y la brecha crédito-PIB; las funciones clave, el rendimiento esperado del banco, la condición del contrato óptimo de depósito, la ratio de capital y las 2 ratios de liquidez. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+\end{notaopositor}
+
+\begin{anotaciones}
+\textbf{Notación y siglas.} APR: activos ponderados por riesgo; CET1 (\emph{common equity tier~1}): capital ordinario de nivel~1 (acciones y reservas); AT1: capital adicional de nivel~1; T2: capital de nivel~2. LCR y NSFR: las ratios de cobertura de liquidez y de financiación estable neta. En \autor{Stiglitz} y \autor{Weiss}, $\hat r$ es el tipo del préstamo; en \autor{Diamond} y \autor{Dybvig}, $\pi$ es la fracción de depositantes impacientes, $R$ el rendimiento de la inversión a largo plazo, $L$ su valor si se liquida antes y $c_1$, $c_2$ los consumos en $T=1$ y $T=2$, como en el resto del temario. Instituciones: BCBS (Comité de Supervisión Bancaria de Basilea), FSB (Consejo de Estabilidad Financiera), ABE, AEVM y AESPJ (autoridades europeas bancaria, de valores y de seguros y pensiones), JERS (Junta Europea de Riesgo Sistémico), MUS y MUR (mecanismos únicos de supervisión y de resolución), JUR y FUR (Junta y Fondo Únicos de Resolución), FGD (Fondo de Garantía de Depósitos), FROB (Fondo de Reestructuración Ordenada Bancaria), AMCESFI (Autoridad Macroprudencial Consejo de Estabilidad Financiera). Normas: CRR y CRD (reglamento y directiva de requisitos de capital), BRRD (directiva de reestructuración y resolución bancarias), DGSD (directiva de garantía de depósitos).
+\end{anotaciones}
+
+\begin{anotaciones}
+\textbf{Para saber más}
+\begin{itemize}
+\item \autor{Jakob de Haan}, \autor{Sander Oosterloo} y \autor{Dirk Schoenmaker}, \emph{Financial Markets and Institutions: A European Perspective}: el manual de referencia para este tema, con la teoría de la regulación y el marco europeo\nocite{DeHaanOosterlooSchoenmaker2012}.
+\item \autor{Anat Admati} y \autor{Martin Hellwig}, \emph{The Bankers' New Clothes}: por qué los bancos deberían tener mucho más capital\nocite{AdmatiHellwig2013}.
+\item \autor{Carmen Reinhart} y \autor{Kenneth Rogoff}, \emph{Esta vez es distinto}: ocho siglos de crisis financieras, y la creencia que se repite antes de cada una\nocite{ReinhartRogoff2009This}.
+\item \autor{Judith Arnal}, «Estabilidad financiera y estabilidad de precios: dos caras de la misma moneda», y, con \autor{Jorge Muñoz} y \autor{María Eugenia Menéndez-Morán}, «Quo vadis, Bitcoin?», en el Real Instituto Elcano\nocite{Arnal2023Elcano,ArnalMunozMenendez2021}; y, en Economipedia, «La economía no necesita regulación, necesita regulación eficiente»\nocite{Economipedia2023Regulacion}.
+\end{itemize}
+\end{anotaciones}
+
+
+% ==========================================================================
+\section{Fundamentos teóricos de la regulación financiera}\label{sec:fundamentos}
+\minutos{10}
+
+\begin{itemize}
+\item Empezamos por la pregunta de fondo: por qué intervenir en el sistema financiero.
+\item \emph{Conclusión anticipada}: la regulación financiera se justifica porque los mercados financieros fallan más que otros y con consecuencias más graves. La información es asimétrica, la quiebra de una entidad daña a terceros y los bancos son frágiles por naturaleza. Pero el regulador también falla, y por eso la mejor regulación no es la más extensa, sino la que corrige los incentivos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{¿Qué es la regulación financiera?}\label{sec:que-es}
+
+\paragraph{El sistema financiero y sus funciones}
+
+\begin{itemize}
+\item \emph{Para qué sirve}: el \concepto{sistema financiero} canaliza el ahorro hacia la inversión, y para ello cumple 4 funciones \vertema{3.B.23}:
+  \begin{itemize}
+  \item \emph{transforma plazos}: los bancos se financian a corto plazo, con depósitos, y prestan a largo. Así concilian el deseo de los ahorradores de tener su dinero disponible con el de los inversores de financiarse a largo plazo; ese desajuste de plazos (\emph{maturity mismatch}) es su servicio y su punto débil;
+  \item \emph{transfiere y reparte riesgos}: el riesgo de las inversiones pasa de los ahorradores a los intermediarios y a los agentes que lo toleran mejor, a cambio de un diferencial de tipos;
+  \item \emph{produce información y vigila a los prestatarios}: estudiar la solvencia de un prestatario es caro, y un banco lo hace por cuenta de muchos ahorradores\nocite{Diamond1984Financial};
+  \item \emph{gestiona los pagos}: los bancos y otras entidades permiten transferir poder de compra entre partes alejadas y aseguran que la transferencia se cumpla.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Regulación y supervisión: 3 objetivos}
+
+\begin{itemize}
+\item \emph{2 actividades que suelen ir juntas}: la regulación fija las normas y la supervisión vigila su cumplimiento. Como suele hacerlas la misma autoridad, a menudo se llama \emph{regulación financiera} a las 2.\footnote{\autor{David Llewellyn} distingue 3 actividades: la \emph{regulación} (establecer normas de conducta), el \emph{control} (comprobar que se cumplen) y la \emph{supervisión} (observar el comportamiento general de las entidades)\nocite{Llewellyn1999}.}
+\item \emph{Los objetivos}: la regulación financiera persigue 3, 2 microeconómicos y uno macroeconómico \nocite{DeHaanOosterlooSchoenmaker2012}:
+  \begin{itemize}
+  \item \emph{la solvencia de cada entidad}: que pueda pagar a sus acreedores (depositantes, tenedores de deuda, asegurados, partícipes de fondos). Es la \concepto{regulación microprudencial}, y su instrumento principal son los requisitos de capital;
+  \item \emph{la protección del cliente}: que la entidad le informe y le trate con lealtad. Son las \concepto{normas de conducta};\footnote{La regulación microprudencial mira a cómo son las entidades por dentro; las normas de conducta, a cómo se comportan con sus clientes.}
+  \item \emph{la estabilidad del sistema financiero en su conjunto}: que no se acumulen riesgos que puedan dañar a la economía. Es la \concepto{regulación macroprudencial}, que mira a todas las entidades y mercados a la vez y a su relación con el ciclo económico.\footnote{La crisis de 2008 mostró que ni la política monetaria ni la supervisión de cada entidad bastaban para garantizar la estabilidad del sistema. Desde entonces hay un reparto de tareas: la política monetaria vela por la estabilidad de precios, la supervisión microprudencial por la salud de cada entidad y la política macroprudencial por la del sistema en su conjunto, como primera línea de defensa frente al riesgo sistémico \vertema{3.A.36}.}
+  \end{itemize}
+\item \emph{Un cuarto objetivo, compartido con el resto de la economía}: la competencia, que vigilan las autoridades de defensa de la competencia (apartado~\ref{sec:competencia}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los objetivos de la regulación financiera}\label{tab:objetivos}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.7cm}|>{\raggedright\arraybackslash}m{3.4cm}|>{\raggedright\arraybackslash}m{4.4cm}|>{\raggedright\arraybackslash}m{3.6cm}}
+\rowcolor{tceeazulpalido}\textbf{Objetivo} & \textbf{Fallo que corrige} & \textbf{Instrumentos} & \textbf{En España}\\ \hline
+\textbf{\textcolor{tceemorado}{Microprudencial}} & información asimétrica con los depositantes; riesgo moral & capital, liquidez, grandes exposiciones, gobierno interno, supervisión & Banco de España (dentro del MUS), CNMV, DGSFP\\ \hline
+\textbf{\textcolor{tceeazul}{Conducta}} & información asimétrica con el cliente & información obligatoria, idoneidad de los productos, educación financiera & Banco de España, CNMV, DGSFP\\ \hline
+\textbf{\textcolor{tceerojo}{Macroprudencial}} & externalidades, prociclicidad, pánicos & colchones de capital, límites a los préstamos, red de seguridad & AMCESFI; Banco de España, CNMV y DGSFP\\ \hline
+\textbf{\textcolor{tceeverde}{Competencia}} & poder de mercado & control de concentraciones y de conductas & CNMC\\
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{DeHaanOosterlooSchoenmaker2012} y \textcite{BOE2019AMCESFI}.}
+\end{table}
+
+\paragraph{Cómo se organiza la supervisión: 3 modelos}
+
+\begin{itemize}
+\item \emph{Los modelos}: según cómo se repartan los objetivos entre autoridades, hay 3\nocite{KremersSchoenmakerWierts2003}:
+  \begin{itemize}
+  \item el \concepto{modelo sectorial}: un supervisor para cada tipo de entidad (bancos, valores, seguros), que vigila a la vez su solvencia y su conducta. Es el tradicional y el de España: el Banco de España para las entidades de crédito, la Comisión Nacional del Mercado de Valores (CNMV) para los valores y la Dirección General de Seguros y Fondos de Pensiones (DGSFP), del Ministerio de Economía, Comercio y Empresa, para los seguros y los fondos de pensiones\nocite{BOE2024DGSFP};
+  \item el \concepto{modelo funcional} o de \concepto{picos gemelos} (\emph{twin peaks}): un supervisor para la solvencia y otro para la conducta, sea cual sea la entidad. Es el del Reino Unido desde 2013, con la Autoridad de Regulación Prudencial dentro del Banco de Inglaterra y la Autoridad de Conducta Financiera, y el de los Países Bajos;
+  \item el \concepto{modelo integrado}: un único supervisor para todo, fuera del banco central (supervisor único estricto) o dentro de él.
+  \end{itemize}
+\item \emph{Cuál elegir}: depende de las sinergias y de los conflictos de intereses entre objetivos. Separar la solvencia de la conducta evita que el supervisor tolere malas prácticas con los clientes para no dañar la cuenta de resultados del banco, pero obliga a coordinarse\nocite{KremersSchoenmakerWierts2003}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Justificación de la intervención en el sector financiero}\label{sec:justificacion}
+
+\begin{itemize}
+\item Una vez visto qué es la regulación, pasamos a por qué hace falta.
+\item \emph{El marco general}: \textcite{Musgrave1959Theory} justifica la intervención del Estado por 3 motivos, \emph{eficiencia} (corregir fallos de mercado), \emph{equidad} (reducir desigualdades) y \emph{estabilidad} (suavizar el ciclo), y los 3 están en el sistema financiero \vertema{3.A.23}.
+\item \emph{El debate}: la visión pigouviana parte de que los fallos de mercado son inevitables y de que el Estado puede y debe corregirlos; la contraria sostiene que esos fallos son menores de lo que parecen o que el Estado, que también falla, no los arregla. Por eso este apartado recorre primero los fallos de mercado (\ref{sec:fallos}), desarrolla los 2 modelos que fundamentan la regulación bancaria (\ref{sec:stiglitz-weiss} y \ref{sec:diamond-dybvig}) y acaba con los fallos del regulador (\ref{sec:fallo-regulacion}).
+\end{itemize}
+
+\subsubsection{Condición necesaria: los fallos de mercado}\label{sec:fallos}
+
+\paragraph{Motivo eficiencia}
+
+\begin{itemize}
+\item \emph{La información asimétrica}: en las finanzas, una parte sabe casi siempre más que la otra, antes del contrato (\concepto{selección adversa}) o después (\concepto{riesgo moral}) \vertema{3.A.13}. Aparece en 5 frentes:
+  \begin{itemize}
+  \item \emph{En el crédito}: el banco no sabe cómo de arriesgado es el proyecto del prestatario ni qué hará con el dinero, y puede preferir racionar el crédito a subir el tipo (apartado~\ref{sec:stiglitz-weiss}).
+  \item \emph{Entre el banco y sus depositantes}: el depositante no puede vigilar al banco. Sus depósitos son pequeños, vigilar es caro y nadie quiere pagar por una vigilancia que aprovechan todos. La \concepto{hipótesis de representación} sostiene que el supervisor vigila por cuenta de los depositantes y hace lo que harían ellos si pudieran: exigir capital e intervenir cuando el capital se agota \nocite{DewatripontTirole1994}.\footnote{\autor{Jean Tirole} recibió el Premio Nobel de Economía en 2014 «por su análisis del poder de mercado y la regulación»\nocite{Nobel2014Tirole}.} Es el fundamento de la regulación microprudencial.
+  \item \emph{En la venta de productos financieros}: la entidad sabe más que el cliente sobre lo que vende. El problema es común a todos los servicios profesionales, pero aquí es más grave por la naturaleza fiduciaria del negocio (se paga hoy y el resultado se ve años después, como en un plan de pensiones) y por las cuantías en juego\nocite{Llewellyn1999}. La respuesta son las normas de conducta: información clara sobre costes y riesgos, productos adecuados al perfil del cliente y distinción entre clientes minoristas y profesionales (en la Unión Europea, la Directiva sobre los mercados de instrumentos financieros, MiFID~II) y la educación financiera\nocite{UE2014MiFID2} \vertema{4.A.20}.
+  \item \emph{Sobre la salud de las entidades y de los emisores}: el inversor no sabe si una entidad es solvente ni si las cuentas de un emisor son ciertas. Por eso hay licencias para operar, que exigen un plan de negocio, controles internos y gestores idóneos, y obligaciones de información: cuentas auditadas, folletos de emisión y comunicación de las participaciones significativas \vertema{3.B.1}. El falseamiento de las cuentas de Gowex, que la CNMV suspendió de cotización en 2014, muestra por qué hacen falta.
+  \item \emph{En las entidades demasiado grandes para caer} (\emph{too big to fail}): una entidad cuya quiebra dañaría a todo el sistema sabe que el Estado la rescatará, y sus acreedores también. Le prestan barato, se endeuda más y arriesga más: es riesgo moral. El FSB las llama bancos de importancia sistémica mundial (G-SIB): en la lista de 2025 hay 29, entre ellos el Banco Santander\nocite{FSB2025GSIB}. Las respuestas son 3: más capital (los colchones sistémicos), resoluciones en las que pierdan accionistas y acreedores (apartado~\ref{sec:resolucion}) y límites al tamaño o a las actividades.
+  \end{itemize}
+\item \emph{Las externalidades}: la quiebra de una entidad cuesta a la sociedad más que a sus dueños, y la entidad no lo tiene en cuenta al decidir cuánto arriesgar.
+  \begin{itemize}
+  \item \emph{El contagio}: la quiebra arrastra a otras entidades sanas por las exposiciones directas entre ellas (efecto dominó) o por la información (los depositantes de otros bancos parecidos retiran sus fondos: efecto rebaño).
+  \item \emph{Las ventas forzosas}: quien tiene que vender activos para pagar baja su precio y daña el balance de todos los que los tienen. Cada uno se endeuda sin tener en cuenta ese efecto sobre los demás, una \concepto{externalidad pecuniaria} que lleva a un endeudamiento excesivo en los auges\nocite{Korinek2011New}.
+  \item \emph{La destrucción de información}: con el banco desaparece lo que sabía de sus clientes, y el crédito se encarece para todos\nocite{Bernanke1983Nonmonetary}.
+  \item \emph{El coste fiscal}: si el Estado rescata, paga el contribuyente.
+  \item \emph{Las respuestas}: requisitos de capital, supervisión y fondos de garantía y de resolución pagados por el propio sector, para que internalice el coste.
+  \item \emph{Externalidades de red en los pagos}: un sistema de pagos vale más cuantos más participantes tiene. Por eso puede tener sentido regular sus precios, algo que en otros mercados suele ser mala idea: la Unión Europea obliga a que una transferencia inmediata no cueste más que una ordinaria, para que se generalicen.
+  \end{itemize}
+\item \emph{El poder de mercado}: las economías de escala en la información y en la reputación, las de red en los pagos y las propias barreras regulatorias concentran el sector. Un banco con poder de mercado fija tipos de los préstamos más altos y de los depósitos más bajos, como en el modelo de \autor{Cournot} aplicado a la banca \nocite{Klein1971} \vertema{3.A.19}. Lo corrige la defensa de la competencia \vertema{3.B.39} \vertema{4.A.15}, con un matiz: la relación entre competencia y estabilidad no es sencilla (apartado~\ref{sec:competencia}).
+\item \emph{El bien público global}: la estabilidad financiera es un bien público, porque nadie puede quedar excluido de ella y su disfrute por uno no reduce el de los demás, y con la libre circulación de capitales es global: la crisis de las hipotecas \emph{subprime} de Estados Unidos llegó a los bancos europeos en semanas. Por eso la regulación se coordina en el G-20 y en el FSB (apartado~\ref{sec:marco}).
+\end{itemize}
+
+\paragraph{Motivo equidad}
+
+\begin{itemize}
+\item \emph{La inclusión financiera}: sin una cuenta y un medio de pago no se puede cobrar un salario ni pagar un recibo. Por eso la Unión Europea reconoce el derecho a una cuenta de pago básica, y España la hace gratuita para las personas vulnerables.
+\item \emph{El acceso al crédito}: el racionamiento del crédito castiga a quien no tiene garantías ni historial, como las pymes, los jóvenes o los emprendedores, y justifica los avales y la banca pública, como el Instituto de Crédito Oficial (apartado~\ref{sec:stiglitz-weiss}).
+\end{itemize}
+
+\paragraph{Motivo estabilidad}
+
+\begin{itemize}
+\item \emph{La prociclicidad}: el crédito crece demasiado en los auges y se corta en las recesiones, y el sistema financiero amplifica el ciclo. En la expansión suben los precios de los activos y de las garantías, los bancos ganan dinero y su capital crece, y prestan más; en la recesión, todo se invierte y el crédito se contrae justo cuando más falta hace \vertema{3.A.42}. Hasta la propia regulación puede amplificarlo: un requisito de capital que depende del riesgo medido sube en las recesiones, cuando el riesgo parece mayor\nocite{KashyapStein2004}.
+\item \emph{La fragilidad de los bancos}: la transformación de plazos hace a los bancos vulnerables a pánicos que se cumplen solos (apartado~\ref{sec:diamond-dybvig}).
+\item \emph{La respuesta}: la \concepto{política macroprudencial}, con 2 dimensiones\nocite{Borio2003Macroprudential}:
+  \begin{itemize}
+  \item la \emph{temporal}: frenar la acumulación de riesgos en los auges y liberar capital en las recesiones (apartado~\ref{sec:macroprudencial});
+  \item la \emph{transversal}: vigilar las conexiones entre entidades y exigir más a las sistémicas.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Información asimétrica en el crédito: racionamiento (\autor{Stiglitz} y \autor{Weiss}, 1981)}\label{sec:stiglitz-weiss}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿Por qué un mercado de crédito puede quedar en equilibrio con exceso de demanda, sin que el tipo de interés suba para vaciarlo? \textcite{StiglitzWeiss1981Credit} responden que el tipo de interés hace 2 papeles: es el precio del préstamo y, a la vez, decide quién pide prestado y qué hace con el dinero.\footnote{\autor{Joseph Stiglitz} recibió el Premio Nobel de Economía en 2001, con \autor{George Akerlof} y \autor{Michael Spence}, «por sus análisis de los mercados con información asimétrica»\nocite{Nobel2001AkerlofSpenceStiglitz}.}
+\item Es la versión financiera del mercado de cacharros de \autor{George Akerlof} (1970): la información asimétrica destruye transacciones que convienen a las 2 partes\nocite{Akerlof1970Market} \vertema{3.A.13}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Cada prestatario pide un préstamo de la misma cuantía para un proyecto.
+\item Los proyectos tienen el \emph{mismo rendimiento medio y distinto riesgo}.
+\item Hay \emph{responsabilidad limitada}: si el proyecto fracasa, el prestatario no devuelve y solo pierde su garantía; si sale bien, devuelve $1+\hat r$ por unidad prestada.
+\item El banco no observa el riesgo de cada proyecto (selección adversa) ni el proyecto que se elige después (riesgo moral), y solo fija el tipo $\hat r$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Por qué al prestatario le gusta el riesgo}: se queda con todo lo que el proyecto rinda por encima de la deuda y, si fracasa, solo pierde la garantía. El banco, en cambio, cobra como mucho la deuda.
+\item \emph{Los 3 efectos de subir el tipo}:
+  \begin{itemize}
+  \item el \emph{directo}: cobra más a los que pagan;
+  \item el de \emph{selección adversa}: los prestatarios con proyectos más seguros dejan de pedir;
+  \item el de \emph{incentivos}: los que quedan eligen proyectos más arriesgados.
+  \end{itemize}
+\item \emph{El resultado}: los 2 últimos efectos reducen la probabilidad de cobrar, y el rendimiento esperado del banco deja de crecer con el tipo a partir de un tipo $\hat r^*$:
+  \funcionclave[eq:stiglitz-weiss]{\mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\cdot\Pr(\text{repago}\mid\hat r),\qquad \frac{\partial\Pr(\text{repago}\mid\hat r)}{\partial\hat r}<0}
+\item \emph{El racionamiento}: el banco no presta por encima de $\hat r^*$, y la oferta de crédito se dobla hacia atrás desde ese tipo. Si a $\hat r^*$ la demanda supera a la oferta, hay \concepto{racionamiento del crédito en equilibrio}: solicitantes iguales en apariencia reciben el préstamo o no, y el tipo que vaciaría el mercado no es un equilibrio (gráfico~\ref{fig:stiglitz-weiss}). Es el mismo gráfico con el que se desarrolla el modelo completo \vertema{3.A.13}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Racionamiento del crédito (\autor{Stiglitz} y \autor{Weiss}, 1981)}\label{fig:stiglitz-weiss}
+\grafico[0.92\textwidth]{stiglitz-weiss}
+\fuente{elaboración propia a partir de \textcite{StiglitzWeiss1981Credit} y \textcite{FreixasRochet2008Microeconomics}. A la izquierda, el rendimiento esperado del banco, máximo en $\hat r^*$; a la derecha, el mercado de préstamos con exceso de demanda a $\hat r^*$.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Ineficiencia}: proyectos rentables se quedan sin financiar, sobre todo los de las pymes y los nuevos, y el crecimiento se resiente.
+\item \emph{Las soluciones privadas} revelan información:
+  \begin{itemize}
+  \item las garantías y el historial de crédito, que separan a los prestatarios, aunque dejan fuera a quien no tiene ni lo uno ni lo otro;
+  \item la relación a largo plazo entre el banco y el cliente.
+  \end{itemize}
+\item \emph{Las soluciones públicas}:
+  \begin{itemize}
+  \item infraestructuras de información, como la Central de Información de Riesgos del Banco de España, que da a los bancos el endeudamiento de cada cliente;
+  \item avales públicos y banca pública, como las líneas del Instituto de Crédito Oficial, que comparten el riesgo con los bancos o prestan donde el mercado no llega;
+  \item límites al riesgo moral, como el del préstamo en relación con el valor de la garantía (\emph{loan to value}, LTV) en las hipotecas (apartado~\ref{sec:macroprudencial}).
+  \end{itemize}
+\item \emph{La política monetaria tiene efectos reales por el crédito}: si el banco central da más fondos a los bancos, la oferta de crédito se desplaza a la derecha y el racionamiento se reduce, como buscaban las operaciones de financiación a plazo más largo con objetivo específico del BCE desde 2014 \vertema{3.A.37}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{La dación en pago y el reparto del riesgo.} La exigencia de garantías amplias se ha usado para defender que la entrega de la vivienda no cancele la deuda hipotecaria (la \emph{dación en pago}), porque cancelarla reduciría los incentivos a pagar y encarecería el crédito. En España la Ley Hipotecaria permite pactarla, pero en la práctica el deudor responde con todo su patrimonio. A favor de la dación hay un argumento de reparto eficiente del riesgo: el hogar es más averso al riesgo que el banco, y en una crisis cargar todas las pérdidas sobre el deudor no es eficiente; por eso casi todos los países desarrollados limitan de algún modo su responsabilidad.
+\end{anotaciones}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Menús de tipo y garantía}: si el banco ofrece contratos con distintas combinaciones de tipo y garantía, cada prestatario elige el suyo y revela su riesgo, y el racionamiento puede desaparecer\nocite{Bester1985Screening}.
+\item \emph{Demasiado crédito}: si los proyectos difieren en el rendimiento medio y no en el riesgo, el resultado se invierte y se presta demasiado\nocite{DeMezaWebb1987Too}.
+\item \emph{Los microcréditos}: prestar a grupos cuyos miembros responden unos por otros aprovecha lo que saben los vecinos y la vigilancia entre ellos\nocite{Stiglitz1990Peer,Ghatak1999Group} \vertema{3.B.28}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item El racionamiento puro, con solicitantes iguales rechazados, es difícil de observar y parece escaso; lo que sí se observa es que las restricciones de crédito son mayores para las empresas pequeñas y opacas\nocite{BergerUdell1992Some}.
+\item Con las solicitudes de préstamo de la Central de Información de Riesgos, en España los bancos con menos capital o liquidez rechazaron más solicitudes cuando la política monetaria se endureció o la economía empeoró\nocite{JimenezEtAl2012Credit}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Explica un precio que no vacía el mercado sin que nadie quiera cambiarlo, y por qué el crédito reacciona más que el tipo de interés en las crisis.
+\item Depende de un contrato de deuda con responsabilidad limitada y de un banco que solo fija el tipo. Justifica que el regulador mejore la información, pero no dice cuánto capital debe tener un banco ni por qué los bancos pueden caer de golpe: eso lo explica el modelo siguiente.
+\end{itemize}
+
+\subsubsection{Estabilidad: pánicos bancarios (\autor{Diamond} y \autor{Dybvig}, 1983)}\label{sec:diamond-dybvig}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿Por qué existen los bancos y por qué pueden caer aunque estén sanos? \textcite{DiamondDybvig1983Bank} responden con un solo modelo: el depósito es un \concepto{seguro de liquidez} que mejora el reparto del riesgo, y ese mismo seguro abre la puerta a un segundo equilibrio, el pánico \vertema{3.A.10}.
+\item Para la regulación es el modelo central: justifica la red de seguridad (la garantía de depósitos y el prestamista de última instancia) y, por el riesgo moral que esta crea, los requisitos de capital y la supervisión. Su desarrollo completo está en el tema de crisis financieras \vertema{3.B.26}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Hay 3 periodos ($T=0,1,2$) y un continuo de depositantes idénticos, cada uno con una dotación de 1 en $T=0$\nocite{FreixasRochet2008Microeconomics}.
+\item En $T=1$, cada depositante descubre su tipo: con probabilidad $\pi$ es \emph{impaciente} (solo valora consumir en $T=1$) y con probabilidad $1-\pi$, \emph{paciente} (puede esperar a $T=2$). El tipo es información privada y no hay incertidumbre agregada: una fracción $\pi$ será impaciente.
+\item Hay 2 tecnologías: guardar, que rinde 1, y una inversión ilíquida, que rinde $R>1$ en $T=2$, pero solo $L\leq1$ si se liquida en $T=1$.
+\item Cada depositante maximiza $\pi\,u(c_1)+(1-\pi)\,u(c_2)$, con $u$ cóncava y una aversión relativa al riesgo mayor que 1.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Sin banco}: en autarquía, cada uno elige entre guardar, con $(c_1,c_2)=(1,1)$, e invertir, con $(L,R)$; con un mercado en $T=1$, todos invierten y obtienen $(1,R)$, el punto $M$, sin seguro: el impaciente sigue consumiendo 1.
+\item \emph{El óptimo}: un planificador repartiría el riesgo de ser impaciente; lo que se paga en $T=1$ se guarda y lo que se paga en $T=2$ se invierte:
+  $$\optim{\max}{c_1,\,c_2}{\pi\,u(c_1)+(1-\pi)\,u(c_2)}{\pi\,c_1+\dfrac{(1-\pi)\,c_2}{R}=1}$$
+  y la condición de primer orden es el resultado clave del modelo:
+  \funcionclave[eq:dd-optimo]{u'(c_1^*)=R\,u'(c_2^*),\qquad 1<c_1^*<c_2^*<R}
+\item \emph{El banco lo alcanza}: un depósito que paga $c_1^*$ a quien retira en $T=1$ y $c_2^*$ a quien espera reproduce el óptimo sin conocer los tipos, porque ningún paciente gana haciéndose pasar por impaciente ($c_2^*>c_1^*$). Es el punto $O$ del gráfico~\ref{fig:diamond-dybvig}, el mismo con el que se desarrolla el modelo completo \vertema{3.B.26}.
+\item \emph{Pero hay 2 equilibrios de Nash}:
+  \begin{itemize}
+  \item en el \emph{bueno}, solo retiran los impacientes y se alcanza el óptimo;
+  \item en el de \concepto{pánico}, cada paciente cree que los demás van a retirar. El banco, que atiende por orden de llegada, tendría que liquidar la inversión, y sus recursos en $T=1$, $\pi c_1^*+L\,(1-\pi c_1^*)$, no llegan para pagar $c_1^*$ a todos: a quien espere no le quedará nada, así que retirar es su mejor respuesta. Con los números del gráfico, solo cobra un 71~\% de los depositantes.
+  \end{itemize}
+\item \emph{La ordenación del bienestar}: con la aversión relativa mayor que 1, el pánico es peor incluso que la autarquía:
+  \begin{equation}\label{eq:dd-orden}
+  U^{\text{pánico}}<U^{\text{autarquía}}<U^{\text{mercado}}<U^{\text{óptimo}}=U^{\text{banco, equilibrio bueno}}.
+  \end{equation}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Autarquía, mercado, óptimo y pánico en el modelo de \autor{Diamond} y \autor{Dybvig}}\label{fig:diamond-dybvig}
+\grafico[0.66\textwidth]{diamond-dybvig}
+\fuente{elaboración propia a partir de \textcite{DiamondDybvig1983Bank}, \textcite{FreixasRochet2008Microeconomics} y \textcite{Repullo2022Nobel}. Parámetros: $\pi=0{,}5$, $R=2$, $L=0{,}6$ y $u(c)=-1/c$. $P$ es el pánico con reparto a prorrata: cada depositante recibe 0,83.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La fragilidad es la otra cara del servicio}: un banco solvente puede caer solo porque sus depositantes temen que caiga. El pánico es una profecía que se cumple sola, un equilibrio de «manchas solares» (\emph{sunspots}): cualquier señal que coordine las expectativas puede desatarlo.
+\item \emph{La red de seguridad elimina el equilibrio malo}:
+  \begin{itemize}
+  \item la \emph{suspensión de la convertibilidad}: si el banco deja de pagar cuando ha retirado sus depósitos una fracción $\pi$, ningún paciente teme quedarse sin nada; pero falla si $\pi$ es incierta y es costosa para quien de verdad necesita su dinero, como en el «corralito» griego de 2015;
+  \item la \concepto{garantía de depósitos}: si es creíble, ningún paciente tiene motivo para retirar y no hay que usarla nunca: en la Unión Europea cubre 100.000 euros por depositante y entidad, y en Estados Unidos 250.000 dólares\nocite{UE2014DGSD,FDIC2026Insurance};
+  \item el \concepto{prestamista de última instancia}: según la regla de \autor{Walter Bagehot} (1873), en un pánico el banco central debe prestar sin límite a los bancos solventes, contra buenas garantías y a un tipo de penalización\nocite{Bagehot1873}.
+  \end{itemize}
+\item \emph{Pero la red crea riesgo moral}, y de ahí sale la regulación prudencial:
+  \begin{itemize}
+  \item con depósitos garantizados, los depositantes dejan de vigilar, y la garantía equivale a una opción de venta que el Estado regala a los accionistas del banco, cuyo valor sube con el riesgo de los activos\nocite{Merton1977Analytic};\footnote{\autor{Robert Merton} recibió el Premio Nobel de Economía en 1997, con \autor{Myron Scholes}, «por un nuevo método para determinar el valor de los derivados»\nocite{Nobel1997Prensa}.}
+  \item con responsabilidad limitada y una garantía con prima fija, el banco gana arriesgando más: la garantía exige limitar ese riesgo con requisitos de capital\nocite{KarekenWallace1978};
+  \item \emph{el capital es la solución}: si los accionistas tienen mucho en juego (\emph{skin in the game}), cargan con las pérdidas y pierden el incentivo a arriesgar a costa del garante. «Cada palo que aguante su vela»: es la idea que ordena toda la regulación bancaria.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Pánicos por los fundamentos}: si el rendimiento de la inversión es incierto, los depositantes retiran cuando esperan pérdidas, y los pánicos llegan en las recesiones\nocite{AllenGale1998Optimal}.
+\item \emph{Un solo equilibrio}: si cada depositante observa el estado de la economía con un pequeño error, queda un umbral por debajo del cual todos retiran; la probabilidad del pánico sube con lo que promete el banco en $T=1$\nocite{GoldsteinPauzner2005}.
+\item \emph{Fuera de los bancos}: cualquier intermediario que se financie a corto plazo y tenga activos ilíquidos puede sufrir un pánico: los fondos del mercado monetario, los vehículos de titulización o, hoy, las monedas estables (\emph{stablecoins}). Por eso la regulación de la intermediación no bancaria vuelve a este modelo (apartado~\ref{sec:no-bancaria}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Entre 1930 y 1933, oleadas de pánicos cerraron miles de bancos en Estados Unidos sin que la Reserva Federal actuara como prestamista de última instancia; la garantía federal de 1933 acabó con ellos\nocite{FriedmanSchwartz1963Monetary}.
+\item Los pánicos son cada vez más rápidos: Northern Rock en 2007, con colas ante sus oficinas, y Silicon Valley Bank en 2023, que perdió más de 40.000 millones de dólares de depósitos en un solo día, a golpe de clic; el 94~\% de sus depósitos no estaba garantizado\nocite{FED2023SVB}.
+\item El riesgo moral también se ve: en 61 países entre 1980 y 1997, la garantía explícita hizo más probables las crisis bancarias, sobre todo donde la supervisión era débil\nocite{DemirgucKuntDetragiache2002} (apartado~\ref{sec:evidencia-regulacion}).
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \emph{A favor}: explica con un solo mecanismo por qué existen los bancos, por qué son frágiles y por qué la red de seguridad y la regulación prudencial van juntas.
+\item \emph{En contra}: el pánico es aleatorio, cuando en la historia llega en las recesiones y a los bancos débiles, y el modelo no dice con qué probabilidad ocurre; sus extensiones lo corrigen.
+\item Con estos 2 modelos sabemos por qué regular. Falta preguntarse si el regulador lo hará bien.
+\end{itemize}
+
+\subsubsection{Límite a la intervención: el fallo de regulación}\label{sec:fallo-regulacion}
+
+\begin{itemize}
+\item \emph{Definición}: hay un \concepto{fallo de regulación} cuando la intervención pública deja una asignación peor que la que habría sin ella. Los fallos del Estado hay que compararlos con los del mercado \vertema{3.A.23}.
+\item \emph{Sus fuentes en las finanzas}:
+  \begin{itemize}
+  \item \emph{la captura}: el regulador acaba sirviendo a la industria que regula, por la información que ella tiene, por la presión de los grupos organizados o por la expectativa de un empleo futuro en ella \nocite{Stigler1971Theory} \vertema{3.A.20};\footnote{\autor{George Stigler} recibió el Premio Nobel de Economía en 1982 «por sus estudios pioneros de las estructuras industriales, el funcionamiento de los mercados y las causas y los efectos de la regulación pública»\nocite{Nobel1982Stigler}.}
+  \item \emph{el arbitraje regulatorio}: la actividad se va donde la regulación es más laxa. Los bancos crearon antes de 2007 vehículos fuera de balance para conservar el riesgo sin tener que cubrirlo con capital\nocite{AcharyaSchnablSuarez2013}, y cuanto más se exige a los bancos, más crece la intermediación no bancaria. Es un caso del llamado \emph{efecto cobra}: una norma bien intencionada crea incentivos que agravan el problema;\footnote{El nombre viene de una anécdota de la India colonial: para acabar con las cobras se pagó por cada cobra muerta, y hubo quien empezó a criarlas para cobrar la recompensa. Explicación en \href{https://economipedia.com/definiciones/efecto-cobra.html}{Economipedia}.}
+  \item \emph{la complejidad}: nadie puede prever todos los riesgos de un sistema tan complejo, y las normas detalladas tienen costes de eficiencia y de cumplimiento;
+  \item \emph{el riesgo moral de la propia red de seguridad} (apartado~\ref{sec:diamond-dybvig}).
+  \end{itemize}
+\item \emph{El abanico de posiciones}, de menos a más intervención:
+  \begin{itemize}
+  \item la \emph{escuela austriaca}: la reserva fraccionaria es el origen de la inestabilidad. La Ley de Peel de 1844 exigió cubrir con oro los billetes, pero no los depósitos, y así abrió la puerta a que los bancos creen crédito sin ahorro previo y alimenten los ciclos. De ahí 2 propuestas: un coeficiente de caja del 100~\% sobre los depósitos a la vista\nocite{HuertaDeSoto1998Dinero} o la \emph{banca libre}, en la que bancos sin banco central ni red de seguridad compiten emitiendo su propio dinero y la competencia los disciplina\nocite{Hayek1976Denationalisation};\footnote{\autor{Friedrich Hayek} recibió el Premio Nobel de Economía en 1974, con \autor{Gunnar Myrdal}, «por su trabajo pionero en la teoría del dinero y de las fluctuaciones económicas y por su penetrante análisis de la interdependencia de los fenómenos económicos, sociales e institucionales»\nocite{Nobel1974}. El coeficiente del 100~\% no es solo austriaco: lo propusieron también los economistas de Chicago en los años 30, con \autor{Irving Fisher} (1935)\nocite{Fisher1935Money}.}
+  \item la \emph{intervención mínima}: \textcite{BenstonKaufman1996} limitan la regulación a unos mínimos de capital que hagan frente a las externalidades, y confían el resto a la disciplina del mercado;
+  \item la \emph{intervención extensa}: la que existe hoy, con capital, liquidez, supervisión, macroprudencial y resolución (apartado~\ref{sec:instrumentos});
+  \item la \emph{banca pública}: la propiedad estatal de los bancos, cuyos resultados recoge la evidencia (apartado~\ref{sec:evidencia-regulacion}).
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: el crédito sufre de información asimétrica, los bancos son frágiles por naturaleza y la quiebra de una entidad daña a terceros; la red de seguridad evita los pánicos, pero crea riesgo moral que hay que compensar con capital y supervisión. Y el regulador también falla. Con esos fundamentos, pasamos a los instrumentos.
+\end{itemize}
+
+% ==========================================================================
+\section{Instrumentos de regulación bancaria\cortetitulo y no bancaria}\label{sec:instrumentos}
+\minutos{10}
+
+\begin{itemize}
+\item Una vez visto por qué regular, pasamos a cómo se hace: quién regula y con qué instrumentos.
+\item \emph{Conclusión anticipada}: tras 2008, la regulación pasó de mirar a cada entidad a mirar también al sistema. Exige más capital y de más calidad, liquidez, colchones macroprudenciales y un régimen de resolución en el que pierdan los accionistas y los acreedores antes que el contribuyente. El reto de hoy es que lo que hace lo mismo que un banco, fuera de los bancos, tenga una regulación equivalente.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Marco institucional}\label{sec:marco}
+
+\begin{itemize}
+\item \emph{En el mundo}: las normas internacionales no obligan por sí mismas; las fijan foros de cooperación y cada jurisdicción las incorpora a su derecho.
+  \begin{itemize}
+  \item \emph{El G-20} da el impulso político: desde 2008 se reúne a nivel de jefes de Estado y de Gobierno, y en la cumbre de Londres de abril de 2009 creó el Consejo de Estabilidad Financiera\nocite{G20Londres2009}.
+  \item \emph{El Consejo de Estabilidad Financiera} (\emph{Financial Stability Board}, FSB), sucesor desde 2009 del Foro de Estabilidad Financiera de 1999, coordina a las autoridades financieras nacionales, a los organismos internacionales y a los que fijan las normas de cada sector; España es miembro y lo preside \autor{Andrew Bailey} desde julio de 2025\nocite{FSB2026Historia,FSB2026Miembros}. Su agenda: acabar con las entidades demasiado grandes para caer, hacer más seguros los mercados de derivados, vigilar la intermediación no bancaria y los criptoactivos.
+  \item \emph{Los que fijan las normas de cada sector}: el Comité de Supervisión Bancaria de Basilea (BCBS, 1974), en el Banco de Pagos Internacionales; la Organización Internacional de Comisiones de Valores (IOSCO), la Asociación Internacional de Supervisores de Seguros (IAIS), el Comité de Pagos e Infraestructuras de Mercado (CPMI) y la Asociación Internacional de Aseguradores de Depósitos.
+  \end{itemize}
+\item \emph{En la Unión Europea}, 2 bloques:
+  \begin{itemize}
+  \item el \concepto{Sistema Europeo de Supervisión Financiera} (2011), con un pilar microprudencial, las 3 autoridades europeas de supervisión (la Autoridad Bancaria Europea, ABE; la de Valores y Mercados, AEVM, y la de Seguros y Pensiones de Jubilación, AESPJ), su Comité Mixto y las autoridades nacionales, y un pilar macroprudencial, la Junta Europea de Riesgo Sistémico (JERS), que preside el presidente del BCE;
+  \item la \concepto{unión bancaria}, para la zona del euro y los países que se adhieran, que nació en 2012 para romper el círculo vicioso entre los bancos y sus Estados \vertema{3.B.44}:
+    \begin{itemize}
+    \item el \emph{Mecanismo Único de Supervisión} (MUS): desde noviembre de 2014, el BCE supervisa directamente a las entidades significativas, 109 en septiembre de 2026, y las autoridades nacionales al resto, con sus criterios\nocite{RegUE2013MUS,BCE2026MUSEntidades};
+    \item el \emph{Mecanismo Único de Resolución} (MUR): la Junta Única de Resolución decide la resolución de los bancos significativos y transfronterizos, con un Fondo Único de Resolución de más de 81.000 millones de euros a finales de 2025, financiado por los bancos\nocite{RegUE2014MUR,SRB2026FUR};
+    \item el \emph{Sistema Europeo de Garantía de Depósitos} (EDIS), propuesto en 2015, sigue sin aprobarse: la garantía sigue en fondos nacionales\nocite{CE2015EDIS,PE2026EDIS};
+    \item todo ello sobre un \concepto{código normativo único}: el reglamento y la directiva de requisitos de capital (CRR y CRD), la directiva de reestructuración y resolución (BRRD) y la de garantía de depósitos (DGSD).
+    \end{itemize}
+  \end{itemize}
+\item \emph{En España} \vertema{4.A.19}: el Banco de España supervisa las entidades de crédito dentro del MUS y es la autoridad macroprudencial de la banca; la CNMV, los mercados de valores y las gestoras; la DGSFP, los seguros y los fondos de pensiones; el FROB es la autoridad de resolución ejecutiva; el Fondo de Garantía de Depósitos protege a los depositantes, y la AMCESFI, creada en 2019, coordina la política macroprudencial de las 3 autoridades sectoriales con el Ministerio de Economía, con competencias consultivas\nocite{BOE2019AMCESFI}.
+\item \emph{En Estados Unidos}: muchos reguladores, la Reserva Federal, la FDIC y la Oficina del Interventor de la Moneda para la banca; la SEC y la CFTC para valores y derivados; los estados para los seguros, y, desde la Ley Dodd-Frank de 2010, un consejo de vigilancia de la estabilidad financiera (FSOC).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{¿Quién regula y supervisa?}\label{tab:marco}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.9cm}|>{\raggedright\arraybackslash}m{3.0cm}|>{\raggedright\arraybackslash}m{3.9cm}|>{\raggedright\arraybackslash}m{3.6cm}}
+\rowcolor{tceeazulpalido}\textbf{Ámbito} & \textbf{Mundo (normas)} & \textbf{Unión Europea} & \textbf{España}\\ \hline
+\textbf{Coordinación} & G-20, FSB & Consejo de la UE, Comisión & Ministerio de Economía\\ \hline
+\textbf{Banca} & BCBS & ABE (normas); BCE-MUS (supervisión) & Banco de España\\ \hline
+\textbf{Valores} & IOSCO & AEVM & CNMV\\ \hline
+\textbf{Seguros y pensiones} & IAIS & AESPJ & DGSFP\\ \hline
+\textbf{Infraestructuras} & CPMI-IOSCO & AEVM, BCE & CNMV, Banco de España\\ \hline
+\textbf{Macroprudencial} & FSB, FMI & JERS; BCE (zona del euro) & AMCESFI, Banco de España\\ \hline
+\textbf{Resolución y garantía} & FSB, IADI & JUR, FUR; EDIS pendiente & FROB, FGD\\
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{FSB2026Miembros}, \textcite{RegUE2013MUS}, \textcite{RegUE2014MUR} y \textcite{BOE2019AMCESFI}.}
+\end{table}
+
+% --------------------------------------------------------------------------
+\subsection{Implementación de la regulación financiera}\label{sec:implementacion}
+
+\begin{itemize}
+\item Con el marco claro, pasamos a los instrumentos, en el orden en que actúan: la regulación prudencial (\ref{sec:basilea}) y la macroprudencial (\ref{sec:macroprudencial}) previenen; la supervisión (\ref{sec:supervision}) vigila que se cumplan; la resolución (\ref{sec:resolucion}) gestiona la quiebra cuando la prevención falla.
+\end{itemize}
+
+\subsubsection{Regulación prudencial: de Basilea~I a Basilea~III}\label{sec:basilea}
+
+\begin{itemize}
+\item \emph{Por qué capital}: el capital absorbe las pérdidas antes de que lleguen a los depositantes y, sobre todo, pone en juego el dinero de los accionistas, lo que corrige el riesgo moral de la red de seguridad (apartado~\ref{sec:diamond-dybvig}). Sin fricciones, el teorema de \autor{Modigliani} y \autor{Miller} dice que más capital no encarece la financiación del banco, porque su deuda se vuelve más segura y más barata \vertema{3.B.3}.\footnote{\autor{Franco Modigliani} recibió el Premio Nobel de Economía en 1985 «por sus análisis pioneros del ahorro y de los mercados financieros»\nocite{Nobel1985Modigliani,ModiglianiMiller1958Cost}.} Si a los bancos les parece caro es por la deducción fiscal de los intereses y por la garantía implícita, que abaratan la deuda: son subvenciones privadas, no costes sociales\nocite{AdmatiHellwig2013}.
+\item \emph{El instrumento}: la ratio de capital, el capital sobre los activos ponderados por su riesgo:
+  \funcionclave[eq:ratio-capital]{\frac{\text{capital}}{\mathrm{APR}}\geq\text{mínimo},\qquad \mathrm{APR}=\sum_i w_i\,A_i}
+  donde $A_i$ es cada exposición y $w_i$ su ponderación de riesgo. La dificultad está en definir el numerador (qué cuenta como capital) y el denominador (cuánto pesa cada riesgo).
+\end{itemize}
+
+\paragraph{Basilea~I (1988) y Basilea~II (2004)}
+
+\begin{itemize}
+\item \emph{Basilea~I}: exigió a los bancos con actividad internacional un capital del 8~\% de los APR, con 5 ponderaciones según el tipo de deudor (del 0~\% para la deuda pública de la OCDE al 100~\% para las empresas), y solo por riesgo de crédito; en 1996 se añadió el riesgo de mercado, medido con el valor en riesgo de los propios modelos de los bancos \vertema{3.B.26}\nocite{BCBS2026Historia,BCBS1996MarketRisk}. Era simple, pero trataba igual a una empresa sólida que a una frágil y animaba a sacar riesgos del balance.\footnote{En la Unión Europea se aplicó desde el principio a todos los bancos y empresas de inversión, no solo a los que tenían actividad internacional, para evitar distorsiones de la competencia y el arbitraje regulatorio en el mercado único.}
+\item \emph{Basilea~II}: mantuvo el 8~\% y organizó la regulación en 3 pilares:
+  \begin{itemize}
+  \item el \emph{pilar~1}, los requisitos mínimos por riesgo de crédito, de mercado y, por primera vez, operacional (pérdidas por fallos internos o hechos externos). El riesgo de crédito se mide con un \emph{método estándar}, con ponderaciones según la calificación crediticia, o con \emph{modelos internos} (IRB), aprobados por el supervisor, en los que el banco estima la probabilidad de impago de sus clientes \vertema{3.B.26};
+  \item el \emph{pilar~2}, la revisión supervisora: cada banco evalúa su capital frente a todos sus riesgos y el supervisor puede exigirle más;
+  \item el \emph{pilar~3}, la disciplina de mercado: el banco publica información para que los inversores lo vigilen.
+  \end{itemize}
+\item \emph{Sus fallos, a la vista en 2008}: poco capital de verdad (contaban instrumentos que no absorbían pérdidas mientras el banco funcionaba), ningún límite al apalancamiento ni a la liquidez, una cartera de negociación con muy poco capital y requisitos procíclicos. En 2009, una primera reforma (Basilea~2.5) endureció el capital de la cartera de negociación y de las titulizaciones. El detalle de Basilea~I y de Basilea~II está en el anexo~\ref{anexo:basilea}.
+\end{itemize}
+
+\paragraph{Basilea~III (2010): más capital, mejor capital, apalancamiento y liquidez}
+
+\begin{itemize}
+\item \emph{Más capital y de más calidad}: el mínimo sigue en el 8~\%, pero el 4,5~\% tiene que ser CET1 (acciones ordinarias y reservas) y el 6~\%, capital de nivel~1, que absorbe pérdidas con el banco en funcionamiento; el resto, hasta el 8~\%, puede ser capital de nivel~2 (deuda subordinada a largo plazo), que solo las absorbe en la liquidación\nocite{BCBS2011Basilea3}.
+\item \emph{Colchones encima del mínimo}, todos de CET1 (gráfico~\ref{fig:requisitos-capital}):
+  \begin{itemize}
+  \item el de \emph{conservación}, del 2,5~\%, que lleva los mínimos al 7~\% de CET1 y al 10,5~\% de capital total; si el banco lo usa, puede seguir operando, pero con límites al reparto de dividendos y de retribución variable;
+  \item el \emph{anticíclico}, de 0 a 2,5~\%, que se acumula en los auges del crédito y se libera en las crisis (apartado~\ref{sec:macroprudencial});
+  \item los \emph{sistémicos}: para los G-SIB, de 1 a 3,5~\% según su importancia (el Banco Santander está en el tramo del 1~\%), y para otras entidades de importancia sistémica nacional, los que fije cada país: en España en 2026, el 1,25~\% para el Santander, el 0,75~\% para el BBVA, el 0,5~\% para CaixaBank y el 0,25~\% para el Sabadell\nocite{FSB2025GSIB,BdE2025OEIS}.
+  \end{itemize}
+\item \emph{Apalancamiento}: una \concepto{ratio de apalancamiento} mínima del 3~\%, el capital de nivel~1 sobre la exposición total \emph{sin ponderar}. Es un respaldo que no depende de los modelos de riesgo, que los bancos pueden manipular; los G-SIB tienen además un colchón de la mitad de su colchón sistémico.
+\item \emph{Liquidez}: por primera vez, 2 requisitos de liquidez\nocite{BCBS2013LCR,BCBS2014NSFR}:
+  \funcionclave[eq:lcr]{\mathrm{LCR}=\frac{\text{activos líquidos de alta calidad}}{\text{salidas netas de efectivo en 30 días de tensión}}\geq100~\%}
+  \funcionclave[eq:nsfr]{\mathrm{NSFR}=\frac{\text{financiación estable disponible}}{\text{financiación estable requerida}}\geq100~\%}
+  \begin{itemize}
+  \item la \concepto{ratio de cobertura de liquidez} (LCR) asegura que el banco aguante un mes de retiradas sin vender activos con pérdidas: es la respuesta al pánico de \autor{Diamond} y \autor{Dybvig};
+  \item la \concepto{ratio de financiación estable neta} (NSFR) limita la transformación de plazos a un año vista: los activos a largo plazo deben financiarse con pasivos estables.
+  \end{itemize}
+\item \emph{Grandes exposiciones}: ninguna exposición a un mismo cliente o grupo puede superar el 25~\% del capital de nivel~1, para que la quiebra de un solo deudor no hunda al banco.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Los requisitos de capital de Basilea~III}\label{fig:requisitos-capital}
+\grafico[0.78\textwidth]{requisitos-capital}
+\fuente{elaboración propia a partir de \textcite{BCBS2011Basilea3}, \textcite{BCBS2017Basel3}, \textcite{RegUE2013CRR} y \textcite{DirUE2013CRD}. El Pilar~2 (P2R) es propio de cada entidad: su altura es ilustrativa; los colchones anticíclico y sistémico se dibujan en su máximo. La ratio de apalancamiento se mide sobre otra base, la exposición sin ponderar.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{En la práctica}: con el Pilar~2 de cada banco, las entidades del MUS necesitan de media en torno al 11~\% de CET1 y al 16~\% de capital total\nocite{BCE2025SREP}. A mediados de 2026 su ratio CET1 agregada era del 16~\%, y la de España, la más baja de todas, del 13,5~\%\nocite{BCE2026SupervisionSI}.
+\end{itemize}
+
+\paragraph{Basilea~III final (2017) y su aplicación}
+
+\begin{itemize}
+\item \emph{El problema}: los modelos internos daban ponderaciones muy distintas a riesgos parecidos, y los bancos que los usaban necesitaban mucho menos capital\nocite{BCBS2017Basel3}.
+\item \emph{La reforma de 2017}:
+  \begin{itemize}
+  \item revisa el método estándar del riesgo de crédito para hacerlo más sensible (por ejemplo, las hipotecas pesan según la relación entre el préstamo y el valor de la vivienda);
+  \item limita los modelos internos (no se admiten para las acciones y tienen valores mínimos para los parámetros);
+  \item sustituye los métodos del riesgo operacional por uno estándar;
+  \item fija un \concepto{suelo de resultados} (\emph{output floor}): los APR de un banco con modelos internos no pueden bajar del 72,5~\% de los que le saldrían con el método estándar;
+  \item y rehace el riesgo de mercado con la revisión fundamental de la cartera de negociación (FRTB), que mide el riesgo con la pérdida esperada en la cola en lugar del valor en riesgo \vertema{3.B.26}.
+  \end{itemize}
+\item \emph{El calendario del BCBS}: por la covid-19 se aplazó a 2023, con el suelo subiendo del 50~\% en 2023 al 72,5~\% en 2028; en octubre de 2026, casi todos los miembros lo aplican o lo harán antes de abril de 2027\nocite{BCBS2020Aplazamiento,BCBS2023Output,BCBS2026Seguimiento}.
+\item \emph{En la Unión Europea}: el Reglamento (UE) 2024/1623 (CRR3) se aplica desde el 1 de enero de 2025, con el suelo del 50~\% en 2025 al 72,5~\% en 2030 y transitorios hasta 2032; la Directiva (UE) 2024/1619 (CRD~VI), que endurece la idoneidad de los gestores, regula las sucursales de bancos de terceros países e incorpora los riesgos ambientales, sociales y de gobernanza, debía transponerse antes del 10 de enero de 2026. El FRTB se aplica desde enero de 2027, con alivios temporales hasta 2030 para no poner a los bancos europeos en desventaja\nocite{RegUE2024CRR3,UE2024CRD6,ABE2024BaselMonitoring,CE2026FRTB}.
+\item \emph{En el resto}: el Reino Unido lo aplicará desde el 1 de enero de 2027\nocite{PRA2026Basel31}; en Estados Unidos, la propuesta de 2023 no prosperó y en marzo de 2026 los reguladores presentaron otra que reduciría ligeramente el capital total de los bancos\nocite{Fed2026Propuestas}. La regulación que tenía que ser global se aplica con calendarios y exigencias distintas.
+\end{itemize}
+
+\paragraph{Otras normas prudenciales}
+
+\begin{itemize}
+\item \emph{Gobierno y retribuciones}: la retribución ligada al beneficio a corto plazo lleva a ignorar los costes que la quiebra impondría a la sociedad. En la Unión Europea, la parte variable de la retribución de los directivos de los bancos no puede superar el 100~\% de la fija (el 200~\% con el acuerdo de la junta de accionistas), y una parte se difiere y se puede recuperar si hay pérdidas\nocite{DirUE2013CRD}.
+\item \emph{Separación de actividades}: separar la banca de depósitos de las actividades de mercado más arriesgadas, para que la garantía no subvencione la especulación:
+  \begin{itemize}
+  \item en Estados Unidos, la \emph{regla Volcker} de la Ley Dodd-Frank prohíbe a los bancos con depósitos garantizados negociar por cuenta propia e invertir más allá de un límite en fondos de capital riesgo y de cobertura (normas finales de 2013)\nocite{Fed2013Volcker};
+  \item en el Reino Unido, desde 2019, los bancos grandes aíslan su negocio minorista en una filial separada (\emph{ring-fencing}), siguiendo el informe Vickers\nocite{BoE2026RingFencing};
+  \item en la Unión Europea, el informe Liikanen (2012) propuso separar la negociación por encima de un umbral, pero la propuesta se retiró en 2018.
+  \end{itemize}
+\item \emph{Agencias de calificación}: la crisis mostró que sus calificaciones eran procíclicas, que se confiaba demasiado en ellas y que tenían un conflicto de intereses, porque les paga el emisor. Desde 2011 las registra y supervisa la AEVM, y la regulación reduce la dependencia de sus calificaciones.
+\item \emph{Provisiones}: la norma contable NIIF~9 obliga desde 2018 a provisionar la pérdida \emph{esperada} de los préstamos, y no solo la ya incurrida, para reconocer antes los problemas.
+\end{itemize}
+
+\subsubsection{Política macroprudencial}\label{sec:macroprudencial}
+
+\begin{itemize}
+\item \emph{Qué es}: la política que usa instrumentos prudenciales para prevenir el riesgo sistémico, haciendo al sistema más resistente y moderando el ciclo financiero\nocite{Borio2003Macroprudential,FreixasLaevenPeydro2015}. Es la respuesta a las externalidades y a la prociclicidad (apartado~\ref{sec:fallos}).
+\item \emph{Sus instrumentos}, en 3 grupos:
+  \begin{itemize}
+  \item \emph{sobre el capital}: el colchón anticíclico, los colchones sistémicos, el colchón contra riesgos sistémicos de un sector y las ponderaciones de riesgo más altas para un tipo de préstamo;
+  \item \emph{sobre los prestatarios}: límites a la relación entre el préstamo y el valor de la garantía (LTV), entre el préstamo y la renta (LTI) o entre el servicio de la deuda y la renta (DSTI), y al plazo; en España, el Banco de España puede fijarlos desde la Circular 5/2021\nocite{BdE2021Circular5};
+  \item \emph{sobre la liquidez}: requisitos de liquidez más estrictos o límites al descalce de monedas.
+  \end{itemize}
+\item \emph{El colchón anticíclico}: el BCBS propone una guía, la \concepto{brecha crédito-PIB}, la diferencia en puntos entre el crédito al sector privado sobre el PIB y su tendencia, estimada con un filtro de Hodrick-Prescott de una cola con $\lambda=400.000$. El colchón empieza a activarse cuando la brecha supera 2 puntos y llega al máximo con 10\nocite{BCBS2010Anticiclico}:
+  \begin{equation}\label{eq:cca}
+  \text{colchón}=
+  \begin{cases}
+  0 & \text{si brecha}<2,\\[2pt]
+  2{,}5~\%\times\dfrac{\text{brecha}-2}{8} & \text{si }2\leq\text{brecha}\leq10,\\[6pt]
+  2{,}5~\% & \text{si brecha}>10.
+  \end{cases}
+  \end{equation}
+\item \emph{El caso de España} (gráfico~\ref{fig:brecha}): la brecha llegó a $+47$ puntos en 2007, cuando el colchón aún no existía, y desde entonces es negativa (unos $-24$ puntos a principios de 2026) porque el crédito sigue por debajo de una tendencia que arrastra el auge anterior\nocite{BIS2026CreditGap}. Es el mismo gráfico con el que se mide el ciclo financiero, con los datos al día \vertema{3.A.42}. Aun así, el Banco de España fijó un colchón del 0,5~\% desde octubre de 2025 y del 1~\% desde octubre de 2026: como otros supervisores europeos, mantiene un colchón positivo cuando los riesgos son normales, para tener capital que liberar en la próxima crisis\nocite{BOE2025CCA,BdE2026CCA}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Brecha crédito-PIB de España y colchón anticíclico, 1980-2026}\label{fig:brecha}
+\grafico[0.95\textwidth]{brecha-credito-pib-espana}
+\fuente{elaboración propia a partir de \textcite{BIS2026CreditGap} (crédito total al sector privado no financiero, tendencia con un filtro de Hodrick-Prescott de una cola, $\lambda=400.000$; último dato, 2026T1) y \textcite{BOE2025CCA}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Los antecedentes españoles}: entre 2000 y 2016, el Banco de España exigió \emph{provisiones dinámicas}, que se acumulaban en los años buenos y se usaban en los malos. Fueron el primer instrumento macroprudencial anticíclico del mundo y su evidencia es la mejor que hay (apartado~\ref{sec:evidencia-regulacion}).
+\item \emph{El debate}: ¿debe la política monetaria «apoyarse contra el viento» (\emph{leaning against the wind}) y subir tipos para frenar las burbujas, o limpiar después (\emph{cleaning})? El consenso actual deja a la política macroprudencial como primera línea y a la monetaria con la estabilidad de precios \vertema{3.A.36} \vertema{3.A.42}.
+\end{itemize}
+
+\subsubsection{Supervisión financiera}\label{sec:supervision}
+
+\begin{itemize}
+\item \emph{Qué hace un supervisor}: autoriza a las entidades y a sus gestores, recibe información periódica, inspecciona en sus oficinas, revisa la calidad de los préstamos y sanciona.
+\item \emph{La revisión supervisora}: cada año, el BCE evalúa el modelo de negocio, el gobierno, el capital y la liquidez de cada banco significativo, y le fija un requisito de Pilar~2 (P2R), obligatorio, y una recomendación (P2G), que no lo es pero se espera que cumpla\nocite{BCE2025SREP}.
+\item \emph{Las pruebas de resistencia} (\emph{stress tests}): simulan un escenario adverso (recesión, caída de la bolsa y de la vivienda, subida de tipos) para ver cuánto capital perdería cada banco; la ABE coordina cada 2 años las de los grandes bancos europeos y sus resultados alimentan la recomendación de Pilar~2 \vertema{3.B.26}.
+\item \emph{Supervisión micro y macroprudencial}: la microprudencial mira a cada entidad; la macroprudencial, a los riesgos del conjunto, con la JERS en la Unión Europea, que emite avisos y recomendaciones, y la AMCESFI en España.
+\end{itemize}
+
+\subsubsection{Resolución de crisis bancarias}\label{sec:resolucion}
+
+\begin{itemize}
+\item \emph{Por qué un régimen propio}: el concurso de acreedores ordinario no sirve para un banco grande, porque es lento, interrumpe funciones esenciales (pagos, depósitos, crédito) y no tiene en cuenta la estabilidad financiera. Por eso existe la \concepto{resolución}: un procedimiento administrativo, rápido, que gestiona una autoridad especializada y no un juez\nocite{DirUE2014BRRD}.
+\end{itemize}
+
+\paragraph{Instrumentos previos a la crisis}
+
+\begin{itemize}
+\item \emph{La garantía de depósitos}: protege hasta 100.000 euros por depositante y entidad con fondos nacionales que pagan los bancos, y que deben llegar al 0,8~\% de los depósitos garantizados\nocite{UE2014DGSD,FGD2026Garantia}. Evita el equilibrio malo de \autor{Diamond} y \autor{Dybvig}, pero crea riesgo moral, y su diseño nacional ata la garantía a la solvencia de cada Estado: es la razón del EDIS, todavía sin aprobar\nocite{PE2026EDIS}.
+\item \emph{La reforma de la gestión de crisis y garantía de depósitos} de 2026 (Directivas (UE) 2026/804 y 2026/806 y Reglamento (UE) 2026/808) extiende la resolución a bancos medianos y permite usar los fondos de garantía para financiarla, con aplicación desde mayo de 2028\nocite{UE2026Dir804,SRB2026CMDI}.
+\item \emph{Los planes de recuperación y de resolución}: cada banco prepara cómo recuperarse si se deteriora (sigue en funcionamiento, \emph{going concern}), y la autoridad, cómo resolverlo de forma ordenada si deja de ser viable (\emph{gone concern}), manteniendo sus funciones esenciales.
+\item \emph{Pasivos que puedan absorber pérdidas}: los bancos deben mantener un mínimo de capital y de deuda que se pueda convertir o amortizar en la resolución (el MREL en la Unión Europea y la capacidad total de absorción de pérdidas, TLAC, del FSB para los G-SIB).
+\end{itemize}
+
+\paragraph{La resolución}
+
+\begin{itemize}
+\item \emph{Cuándo}: si el banco es inviable o lo será pronto, no hay alternativa privada y la resolución es de interés público; si no lo es, se liquida.
+\item \emph{Los instrumentos}:
+  \begin{itemize}
+  \item la \emph{venta del negocio} a otra entidad, como el Banco Popular, vendido al Santander por 1 euro el 7 de junio de 2017, la primera resolución de la unión bancaria;
+  \item el \emph{banco puente}, al que se traspasa lo viable mientras se busca comprador;
+  \item la \emph{segregación de activos} en una sociedad de gestión, un «banco malo», como la Sareb en 2012 \vertema{4.A.18};
+  \item la \concepto{recapitalización interna} (\emph{bail-in}): se amortizan o convierten en acciones las acciones y las deudas por orden de prelación, primero el capital, luego la deuda subordinada y la ordinaria, y los depósitos garantizados nunca. Antes de usar el Fondo Único de Resolución, los accionistas y acreedores tienen que haber absorbido al menos el 8~\% del pasivo total.
+  \end{itemize}
+\item \emph{El respaldo}: el Fondo Único de Resolución, con más de 81.000 millones; el respaldo común del Mecanismo Europeo de Estabilidad, acordado en 2021, no funciona porque Italia rechazó en diciembre de 2023 ratificar la reforma de su Tratado\nocite{SRB2026FUR,MEDE2026InformeAnual}.
+\item \emph{La lección de 2023}: Credit Suisse no se resolvió, pese a tener un plan de resolución: se fusionó con UBS con garantías públicas. La resolución de un banco global sin dinero público sigue sin haberse probado.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Regulación financiera no bancaria}\label{sec:no-bancaria}
+
+\begin{itemize}
+\item Una vez vistos los bancos, pasamos al resto del sistema financiero, que ya es más de la mitad: a finales de 2024, los intermediarios no bancarios gestionaban 256,8 billones de dólares, el 51~\% de los activos financieros del mundo, y crecían el doble que los bancos\nocite{FSB2025NBFI}.
+\item \emph{El principio}: \concepto{mismo riesgo, misma regulación}. Lo que importa no es cómo se llama una entidad, sino lo que hace: si transforma plazos, se apalanca o está muy conectada con los bancos, tiene sus mismos riesgos, aunque no capte depósitos.
+\end{itemize}
+
+\paragraph{Los sectores}
+
+\begin{itemize}
+\item \emph{Valores}: el objetivo principal es proteger al inversor y la integridad del mercado. En la Unión Europea, MiFID~II y su reglamento (2018) regulan cómo se venden los productos (a quién, con qué información y con qué conflictos de intereses), el Reglamento sobre abuso de mercado castiga el uso de información privilegiada y la manipulación, y el folleto informa de cada emisión\nocite{UE2014MiFID2} \vertema{4.A.20}.
+\item \emph{Seguros y pensiones}: Solvencia~II (2016) aplica a las aseguradoras la lógica de Basilea, con 3 pilares y un capital que cubre las pérdidas de un año con un 99,5~\% de confianza. Su revisión (Directiva (UE) 2025/2) y la nueva directiva de recuperación y resolución de aseguradoras (Directiva (UE) 2025/1) se aplican desde el 30 de enero de 2027, y la IAIS aprobó en diciembre de 2024 su primer estándar mundial de capital para las aseguradoras internacionales\nocite{EIOPA2026Solvencia,IAIS2024ICS}.
+\item \emph{Fondos de inversión}: los fondos que prometen reembolso diario e invierten en activos poco líquidos pueden sufrir un pánico como el de \autor{Diamond} y \autor{Dybvig}. Por eso:
+  \begin{itemize}
+  \item el Reglamento de fondos del mercado monetario (2017), aplicable desde 2018, exige liquidez y diversificación tras la crisis de 2008, cuando un fondo de este tipo no pudo devolver el dólar invertido\nocite{UE2017FMM};
+  \item la Directiva (UE) 2024/927 (AIFMD~II) obliga desde abril de 2026 a los fondos a tener herramientas de gestión de la liquidez (comisiones de reembolso, plazos de preaviso, suspensiones) y regula los fondos que conceden préstamos\nocite{UE2024AIFMD2}.
+  \end{itemize}
+\item \emph{Infraestructuras de los mercados financieros}: las cámaras de contrapartida central, los depositarios de valores y los sistemas de pagos son puntos por los que pasa todo el riesgo, y su caída sería sistémica. Siguen los 24 principios de CPMI-IOSCO de 2012\nocite{CPMIIOSCO2012PFMI}.
+  \begin{itemize}
+  \item En la cumbre de Pittsburgh de 2009, el G-20 acordó que los derivados extrabursátiles estandarizados se compensaran en una cámara de contrapartida central y se comunicaran a un registro. En la Unión Europea lo hace EMIR (2012), reformado por EMIR~3 (2024), que obliga a mantener una cuenta activa en cámaras de la Unión\nocite{UE2012EMIR,UE2024EMIR3} \vertema{3.B.25}.
+  \item La liquidación de las compraventas de valores pasará de 2 días a uno (T+1) el 11 de octubre de 2027\nocite{ESMA2026T1}.
+  \end{itemize}
+\item \emph{Titulización}: el reglamento de 2017 obliga al originador a retener al menos el 5~\% del riesgo, para que no conceda préstamos malos pensando en venderlos, y crea una etiqueta para las titulizaciones simples, transparentes y normalizadas\nocite{UE2017Titulizacion}.
+\end{itemize}
+
+\paragraph{Lo nuevo: criptoactivos y riesgos digitales}
+
+\begin{itemize}
+\item \emph{Criptoactivos}: el Reglamento (UE) 2023/1114 (MiCA) es el primer marco completo: se aplica desde el 30 de junio de 2024 a las fichas referenciadas a activos y a las de dinero electrónico (las monedas estables), que necesitan reservas líquidas para poder pagar a sus tenedores, y desde el 30 de diciembre de 2024 al resto; los proveedores de servicios ya autorizados por sus países pudieron seguir operando hasta el 1 de julio de 2026\nocite{UE2023MiCA,ESMA2026MiCA}. El BCBS fijó un tratamiento prudencial muy exigente para las exposiciones de los bancos a criptoactivos, que en 2026 está revisando\nocite{BCBS2026Cripto}.
+\item \emph{Resiliencia operativa digital}: desde el 17 de enero de 2025, el Reglamento DORA obliga a todas las entidades financieras a gestionar sus riesgos tecnológicos y de ciberseguridad y somete a supervisión a sus proveedores críticos de servicios en la nube\nocite{ABE2026DORA}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Regulación financiera no bancaria en la Unión Europea}\label{tab:no-bancaria}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.6cm}|>{\raggedright\arraybackslash}m{4.4cm}|>{\raggedright\arraybackslash}m{6.6cm}}
+\rowcolor{tceeazulpalido}\textbf{Sector} & \textbf{Riesgo principal} & \textbf{Norma y fecha}\\ \hline
+\textbf{Valores} & información asimétrica con el inversor & MiFID~II y MiFIR (2018), abuso de mercado, folletos\\ \hline
+\textbf{Seguros} & solvencia a largo plazo & Solvencia~II (2016), revisada desde el 30/1/2027\\ \hline
+\textbf{Fondos} & pánicos por reembolsos, apalancamiento & fondos monetarios (2018), AIFMD~II (2026)\\ \hline
+\textbf{Infraestructuras} & concentración del riesgo de contraparte & EMIR (2012) y EMIR~3 (2024), T+1 (2027)\\ \hline
+\textbf{Criptoactivos} & pánicos en las monedas estables, fraude & MiCA (2024)\\ \hline
+\textbf{Todos} & riesgo tecnológico & DORA (2025)\\
+\end{tabular}
+\fuente{elaboración propia a partir de las normas citadas en el texto.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulación}: la regulación prudencial y macroprudencial previene, la supervisión vigila, la resolución reparte las pérdidas entre quienes asumieron el riesgo, y fuera de los bancos se regula por actividades. Queda la pregunta decisiva: ¿funciona? A ella responde la evidencia empírica.
+\end{itemize}
+
+% ==========================================================================
+\section{Evidencia empírica}\label{sec:evidencia}
+\minutos{6,5}
+
+\begin{itemize}
+\item Una vez vistos los fundamentos y los instrumentos, pasamos a los datos. Aislar el efecto de una norma concreta es difícil, porque hay muchas a la vez y cambian con las crisis, pero hay resultados sólidos.
+\item \emph{Conclusión anticipada}: el sistema financiero importa para crecer, aunque a partir de cierto tamaño deja de ayudar; la regulación que mejor funciona es la que da información y pone en juego el dinero de los dueños, más que la que confía en el poder del supervisor; la competencia y la estabilidad no están reñidas hasta cierto punto, y la gobernanza de las entidades cuenta tanto como las normas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Sistema financiero, crecimiento y desigualdad}\label{sec:crecimiento}
+
+\begin{itemize}
+\item \emph{El sistema financiero favorece el crecimiento}: los países con sistemas financieros más desarrollados en 1960 crecieron más en los 30 años siguientes\nocite{KingLevine1993}, y las industrias que más dependen de la financiación externa crecen más en los países con más desarrollo financiero, lo que apunta a que la relación es causal\nocite{RajanZingales1998}. Las revisiones de la literatura lo confirman\nocite{Levine2005,Beck2012}. Si las finanzas importan para crecer, la regulación que las moldea también importa.
+\item \emph{Pero no siempre más es mejor}: cuando el crédito al sector privado supera aproximadamente el 100~\% del PIB, su efecto sobre el crecimiento se vuelve negativo\nocite{ArcandBerkesPanizza2015,CecchettiKharroubi2012}: el exceso de finanzas atrae talento y recursos de otros sectores y aumenta el riesgo de crisis.
+\item \emph{Bancos o mercados}: los 2 prestan servicios distintos y los 2 favorecen el crecimiento\nocite{LevineZervos1998}. A medida que un país se desarrolla, ganan peso los mercados de valores frente a los bancos\nocite{DemirgucKuntFeyenLevine2013}. Los sistemas basados en bancos amortiguan mejor las recesiones normales, pero en las que coinciden con una crisis financiera la caída del PIB es unas 3 veces mayor que en los basados en mercados\nocite{GambacortaYangTsatsaronis2014}: un argumento para la unión de los mercados de capitales en Europa \vertema{3.B.44}.
+\item \emph{La desigualdad}: en un panel de países, la liberalización financiera, sobre todo la supresión de los controles del crédito, redujo la desigualdad, porque facilitó el crédito a los más pobres\nocite{DelisHasanKazakis2014}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Regulación bancaria, desarrollo y estabilidad}\label{sec:evidencia-regulacion}
+
+\paragraph{¿Qué regulación funciona? (\autor{Barth}, \autor{Caprio} y \autor{Levine})}
+
+\begin{itemize}
+\item \textcite{BarthCaprioLevine2004} construyen una base de datos de la regulación de 107 países y la relacionan con el desarrollo, la eficiencia y la estabilidad de sus bancos. Encuentran 4 resultados:
+  \begin{itemize}
+  \item las normas que obligan a dar información fiable y dan incentivos a los inversores privados para vigilar a los bancos son las que mejor funcionan;
+  \item dar más poder al supervisor no mejora el desarrollo ni la estabilidad, y en los países con malas instituciones se asocia a más corrupción en el crédito;
+  \item una garantía de depósitos generosa se asocia a más crisis, y restringir las actividades de los bancos, a bancos menos desarrollados y más frágiles; diversificar los activos, en cambio, reduce la probabilidad de crisis;
+  \item la exigencia de capital no tiene una relación robusta con la estabilidad, y la propiedad pública de los bancos se asocia a menos desarrollo financiero.
+  \end{itemize}
+\item Con datos de 180 países entre 1999 y 2011, los mismos autores muestran que tras la crisis se reforzaron el capital y los poderes del supervisor, pero no los incentivos de los inversores privados para vigilar: no se puede decir que se reformara en la dirección que indica la evidencia\nocite{BarthCaprioLevine2013}.
+\end{itemize}
+
+\paragraph{Capital, garantía de depósitos y banca pública}
+
+\begin{itemize}
+\item \emph{El capital}: sus efectos van en direcciones opuestas\nocite{Martynova2015}:
+  \begin{itemize}
+  \item más capital reduce el crédito a corto plazo, sobre todo a quienes dependen de los bancos, como las pymes;
+  \item puede encarecer el crédito si el banco traslada al tipo el mayor coste del capital;
+  \item pero hace más estable el crédito y reduce la probabilidad y el coste de las crisis.
+  \end{itemize}
+  En conjunto, los efectos a largo plazo son positivos: los bancos con más capital prestan más en las crisis. En la covid-19, los bancos que calculaban su capital con el método estándar redujeron menos sus préstamos que los que usaban modelos internos, cuyos requisitos suben en las recesiones\nocite{FiordelisiEtAl2022}.
+\item \emph{La garantía de depósitos}: aumenta el riesgo de los bancos en los años buenos y lo reduce en las crisis, y el primer efecto domina: el riesgo moral pesa más que la estabilización\nocite{AnginerDemirgucKuntZhu2014,DemirgucKuntDetragiache2002}.
+\item \emph{La banca pública}: la propiedad estatal de los bancos se asocia a menos desarrollo financiero y menos crecimiento\nocite{LaPortaLopezShleifer2002}, y su crédito sigue el ciclo electoral: en Italia\nocite{Sapienza2004}, en la India\nocite{Cole2009}, en Brasil\nocite{Carvalho2014} y en las cajas de ahorros alemanas, que prestan más antes de unas elecciones reñidas\nocite{EnglmaierStowasser2017}.
+\end{itemize}
+
+\paragraph{La política macroprudencial}
+
+\begin{itemize}
+\item En 119 países entre 2000 y 2013, las medidas macroprudenciales redujeron el crecimiento del crédito, más en los países emergentes y cerrados que en los avanzados y abiertos, donde el crédito se va a entidades no reguladas o al exterior; los límites a los prestatarios (LTV, DSTI) funcionan mejor\nocite{CeruttiClaessensLaeven2017}.
+\item \emph{Las provisiones dinámicas españolas} son el mejor experimento: con los datos de cada préstamo, los bancos que tuvieron que provisionar más en el auge prestaron algo menos a las empresas, que encontraron crédito en otros bancos; pero en la crisis, los que tenían más colchón acumulado mantuvieron mejor el crédito, y las empresas que dependían de ellos invirtieron y emplearon más\nocite{JimenezOngenaPeydroSaurina2017}. Los colchones apenas frenan el auge, pero amortiguan la caída.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Política de la competencia}\label{sec:competencia}
+
+\begin{itemize}
+\item \emph{Los hechos}: la reestructuración de las cajas y las fusiones posteriores concentraron mucho la banca española. Las 5 mayores entidades pasaron del 41~\% de los activos en 2007 al 69,6~\% en 2022, y el índice de Herfindahl-Hirschman casi se triplicó (gráfico~\ref{fig:concentracion}); en 2025, con el 67,4~\%, España estaba cerca de la media de la Unión Europea, el 69,3~\%\nocite{ECB2025SSI,BCE2026NotaSSI}. ¿Se justifica esa concentración?
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Concentración bancaria en España, 1999-2025}\label{fig:concentracion}
+\grafico[0.92\textwidth]{concentracion-bancaria-espana}
+\fuente{elaboración propia a partir de \textcite{ECB2025SSI}: índice de Herfindahl-Hirschman (IHH, de 0 a 10.000) y cuota de las 5 mayores entidades (CR5) en los activos totales de las entidades de crédito.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{A favor de las fusiones}:
+  \begin{itemize}
+  \item las economías de escala y de red reducen los costes y mejoran una rentabilidad que fue muy baja tras la crisis\nocite{NadaEsGratisConcentracion};
+  \item el \emph{exceso de capacidad}: con la banca digital sobran oficinas, pero ningún banco quiere cerrar las suyas antes que sus competidores, porque espera quedarse con sus clientes cuando cierren ellos. No cerrar es un equilibrio de Nash ineficiente, y una fusión acelera los cierres porque internaliza esa externalidad\nocite{Vives2020Fusiones};
+  \item la estabilidad: menos competencia da más margen y menos incentivos a arriesgar.
+  \end{itemize}
+\item \emph{En contra}: precios menos competitivos, exclusión financiera de los clientes de las zonas que pierden oficinas y entidades más grandes, más cerca de ser demasiado grandes para caer.
+\item ¿Es verdad que menos competencia trae más estabilidad? La teoría ha pasado por 3 respuestas, que se resumen en un modelo.
+\end{itemize}
+
+\paragraph{Competencia y estabilidad (\autor{Martínez-Miera} y \autor{Repullo}, 2010)}
+
+\subparagraph{a) Idea}
+
+\begin{itemize}
+\item Hay 2 visiones opuestas. Para la de \emph{competencia-fragilidad}, la competencia reduce el margen y el valor de la licencia bancaria, y el banco, con menos que perder, arriesga más\nocite{Keeley1990}. Para la de \emph{competencia-estabilidad}, la competencia baja el tipo de los préstamos, los prestatarios eligen proyectos más seguros y quiebran menos bancos\nocite{BoydDeNicolo2005}. \textcite{MartinezMieraRepullo2010} muestran que las 2 tienen razón según el grado de competencia.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\begin{itemize}
+\item \emph{i) Supuestos}: $n$ bancos compiten a la \autor{Cournot} en el mercado de préstamos \vertema{3.A.19}; los impagos de los prestatarios están correlacionados (dependen de un factor común) y su probabilidad sube con el tipo del préstamo, como en \autor{Stiglitz} y \autor{Weiss}.
+\item \emph{ii) Desarrollo}: más bancos tienen 2 efectos sobre la probabilidad de quiebra de cada uno:
+  \begin{itemize}
+  \item el \emph{efecto riesgo}: el tipo baja y los prestatarios impagan menos (reduce la quiebra);
+  \item el \emph{efecto margen}: el banco gana menos con los préstamos que se pagan y tiene menos colchón para cubrir los impagos (aumenta la quiebra).
+  \end{itemize}
+  Con pocos bancos domina el primero; con muchos, el segundo: la probabilidad de quiebra tiene forma de U frente al número de bancos (gráfico~\ref{fig:competencia}).
+\item \emph{iii) Implicaciones}: no hay una respuesta única. En mercados muy concentrados, más competencia da más estabilidad; en mercados muy competitivos, menos.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Competencia y probabilidad de quiebra bancaria}\label{fig:competencia}
+\grafico[0.72\textwidth]{competencia-estabilidad}
+\fuente{elaboración propia a partir de \textcite{BoydDeNicolo2005} y \textcite{MartinezMieraRepullo2010}. Curvas ilustrativas.}
+\end{figure}
+
+\subparagraph{c) Valoración}
+
+\begin{itemize}
+\item Reconcilia las 2 visiones y aconseja juzgar las fusiones caso a caso. Su consecuencia para la política es que la defensa de la competencia y la regulación prudencial se complementan: el regulador puede limitar el riesgo con capital sin tener que limitar la competencia\nocite{Vives2016}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Capital humano de las cajas}\label{sec:cajas}
+
+\begin{itemize}
+\item \emph{La pregunta}: ¿por qué unas cajas de ahorros quebraron en la crisis de 2008 y otras no, si tenían la misma regulación?
+\item \emph{La respuesta, la gobernanza}: las cajas cuyo presidente venía de la política, sin experiencia bancaria previa ni formación de posgrado, concentraron más crédito en la promoción inmobiliaria y tuvieron más morosidad y peores calificaciones\nocite{CunatGaricano2010} \vertema{4.A.18}.
+\item \emph{El contexto}: la entrada de capitales en la periferia del euro relajó la disciplina y las reformas, y dejó crecer a las entidades peor gobernadas\nocite{FernandezVillaverdeGaricanoSantos2013}.
+\item \emph{La lección}: la idoneidad de los gestores es regulación prudencial. Hoy el supervisor evalúa la experiencia y la honorabilidad de los consejeros, y la Ley de cajas de ahorros y fundaciones bancarias de 2013 obligó a las cajas con negocio grande a transformarse en bancos.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación}: las finanzas importan para crecer; la regulación funciona mejor cuando da información, pone en juego el capital de los dueños y acumula colchones en los auges; la concentración no es buena ni mala en sí misma, y la gobernanza de las entidades importa tanto como las normas.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}:
+  \begin{itemize}
+  \item En conclusión, la regulación financiera se justifica por fallos de mercado especialmente graves: la información asimétrica raciona el crédito, la transformación de plazos hace a los bancos vulnerables a pánicos que se cumplen solos y la quiebra de una entidad daña a todo el sistema.
+  \item La red de seguridad evita los pánicos, pero crea riesgo moral; por eso va acompañada de capital, liquidez, supervisión y un régimen de resolución en el que pierdan primero los accionistas y los acreedores. Desde 2008 se añadió la política macroprudencial, y hoy se extiende a los intermediarios no bancarios con el principio de «mismo riesgo, misma regulación».
+  \item La evidencia dice que funciona mejor la regulación que da información e incentivos que la que confía solo en el poder del supervisor.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item Basilea~III termina de aplicarse en estos años con calendarios distintos en la Unión Europea, el Reino Unido y Estados Unidos, y más de la mitad de los activos financieros del mundo ya está fuera de los bancos.
+  \end{itemize}
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item Las crisis y la gestión de riesgos de las entidades \vertema{3.B.26}; la unión bancaria y la de los mercados de capitales \vertema{3.B.44}; la política monetaria y la estabilidad financiera \vertema{3.A.36}; el ciclo financiero \vertema{3.A.42}; el sistema bancario español y su regulación \vertema{4.A.19}, y la financiación no bancaria \vertema{4.A.20}.
+  \item Los retos que vienen: el riesgo climático, los criptoactivos y el euro digital, la inteligencia artificial y la presión para relajar la regulación en nombre de la competitividad.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}:
+  \begin{itemize}
+  \item La regulación de después de 2008 ha hecho a los bancos más resistentes: la covid-19 no acabó en crisis bancaria. Su punto débil está en los bordes: lo que se escapa del perímetro regulado y los bancos globales, cuya resolución sin dinero público aún no se ha probado.
+  \end{itemize}
+\item \textbf{\emph{Idea final}}:
+  \begin{itemize}
+  \item Volviendo al refrán, la regulación financiera busca que cada palo aguante su vela: que quien asume los riesgos cargue con sus pérdidas, con su capital y su deuda, y no el contribuyente.
+  \item Esa es la respuesta a la pregunta del principio: las finanzas se regulan más que ningún otro sector porque sus pérdidas no se quedan en quien las causa, y la regulación sirve en la medida en que consigue que se queden ahí, también fuera de los bancos.
+  \end{itemize}
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: Basilea~I y Basilea~II en detalle}\label{anexo:basilea}
+
+Este anexo no se canta: completa el apartado~\ref{sec:basilea}.
+
+\paragraph{a) Basilea~I (1988)}
+
+\begin{itemize}
+\item \emph{El capital}: al menos el 8~\% de los APR, la mitad como mínimo de nivel~1 (acciones ordinarias, acciones preferentes sin vencimiento y reservas) y el resto de nivel~2 (provisiones genéricas, instrumentos híbridos y deuda subordinada).\footnote{Las \emph{acciones preferentes} cobran un dividendo fijado al emitirlas, antes que las ordinarias, y no suelen tener derecho de voto; las ordinarias cobran según los beneficios y la política de dividendos de la empresa.}
+\item \emph{Las ponderaciones} (solo riesgo de crédito):
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Ponderaciones de riesgo de Basilea~I}\label{tab:basilea1}
+\small
+\begin{tabular}{>{\centering\arraybackslash}m{2cm}|>{\raggedright\arraybackslash}m{11cm}}
+\rowcolor{tceeazulpalido}\textbf{Ponderación} & \textbf{Activos}\\ \hline
+0~\% & efectivo, deuda pública en moneda nacional y de los países de la OCDE\\ \hline
+10~\% & deuda de entidades públicas distintas de la administración central (según el país)\\ \hline
+20~\% & deuda de bancos multilaterales de desarrollo y de bancos de la OCDE\\ \hline
+50~\% & préstamos con garantía hipotecaria sobre vivienda\\ \hline
+100~\% & deuda de empresas y de países de fuera de la OCDE\\
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{BCBS2026Historia}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Sus críticas}:
+  \begin{itemize}
+  \item el 8~\% se convirtió en un objetivo, no en un mínimo;
+  \item toda la deuda de empresas pesaba igual, fuera cual fuera su calidad, y los bancos tenían incentivos a quedarse con los préstamos más arriesgados de cada categoría;
+  \item contaban como capital elementos que no lo eran, como la deuda subordinada;
+  \item no recogía los derivados ni las titulizaciones, y en 1996 hubo que añadir el riesgo de mercado.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Basilea~II (2004)}
+
+\begin{itemize}
+\item \emph{El capital}: el mismo 8~\%, con al menos un 4~\% de nivel~1, del que al menos un 2~\% debía ser capital ordinario, y un nivel~2 que no podía superar al nivel~1.
+\item \emph{El riesgo de crédito}: con el método estándar, ponderaciones según la calificación externa; con el IRB, el banco estima la probabilidad de impago (método básico) o también la pérdida en caso de impago y la exposición (método avanzado), y una fórmula del supervisor da el capital \vertema{3.B.26}.
+\item \emph{El riesgo operacional}, 3 métodos:
+  \begin{itemize}
+  \item el del \emph{indicador básico}: el 15~\% de la media de los ingresos brutos positivos de los 3 últimos años;
+  \item el \emph{estándar}: un porcentaje distinto para cada una de 8 líneas de negocio;
+  \item el de \emph{medición avanzada}: los modelos del propio banco, con aprobación del supervisor.
+  \end{itemize}
+\item \emph{Basilea~2.5 (2009)}: tras comprobar en 2008 que los activos de la cartera de negociación, que se suponían fáciles de vender, no se podían vender, se les añadió capital por riesgo de crédito y por escenarios de tensión, y se endureció el de las retitulizaciones.
+\end{itemize}
+
+\paragraph{c) Un ejemplo de requisitos}
+
+\begin{itemize}
+\item Un banco tiene 100 millones en deuda pública española (ponderación del 0~\%), 200 millones en hipotecas sobre vivienda con una ponderación del 35~\% y 300 millones en préstamos a empresas sin calificación, al 100~\%. Sus APR son $0\times100+0{,}35\times200+1\times300=370$ millones.
+\item Con los mínimos de Basilea~III y el colchón de conservación necesita $0{,}07\times370=25{,}9$ millones de CET1 y $0{,}105\times370=38{,}85$ millones de capital total; con el colchón anticíclico español del 1~\%, 3,7 millones más de CET1.
+\item Su ratio de apalancamiento se mide sobre los 600 millones sin ponderar: con 30 millones de nivel~1, es del 5~\%, por encima del 3~\%. Es el respaldo que importa si el banco tiene muchos activos que pesan poco.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la respuesta regulatoria a la covid-19}\label{anexo:covid}
+
+Este anexo no se canta: recoge cómo se usó en 2020 el margen que había creado la regulación posterior a 2008.
+
+\begin{itemize}
+\item \emph{El punto de partida}: gracias a las reformas, los bancos europeos llegaron a la pandemia con más capital y liquidez que en 2008, y no hubo episodios graves de inestabilidad.
+\item \emph{Las medidas sobre el capital}:
+  \begin{itemize}
+  \item el BCE recomendó en marzo de 2020 no repartir dividendos para conservar el capital, y levantó la recomendación cuando vio que no había amenazas graves\nocite{BCE2020Dividendos};
+  \item se permitió operar por debajo del colchón de conservación y de la recomendación de Pilar~2, y se liberaron los colchones anticíclicos donde estaban activados (en España no lo estaba);
+  \item se permitió cubrir parte del requisito de Pilar~2 con capital distinto del CET1;
+  \item un ajuste rápido del CRR (\emph{quick fix}) excluyó temporalmente algunas exposiciones, como las reservas en el banco central, del cálculo de la ratio de apalancamiento, y adelantó tratamientos más favorables;
+  \item se permitió operar temporalmente por debajo de la LCR.
+  \end{itemize}
+\item \emph{Las medidas sobre el riesgo de crédito}: flexibilidad para clasificar como dudosos los préstamos con moratorias o garantías públicas, y un tratamiento favorable para los préstamos a pymes con aval público.
+\item \emph{El calendario}: el BCBS aplazó un año Basilea~III final, a 2023, y se suavizó el impacto de la NIIF~9 en el capital\nocite{BCBS2020Aplazamiento}.
+\item \emph{La paradoja del estigma}: muchos bancos no usaron sus colchones por miedo a la reacción del mercado; los colchones liberables (como el anticíclico) funcionan mejor que los que solo se pueden «usar», y por eso varios países, España entre ellos, fijan hoy un anticíclico positivo en tiempos normales (apartado~\ref{sec:macroprudencial}).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: cronología de la regulación financiera}\label{anexo:cronologia}
+
+\begin{table}[H]
+\centering
+\caption{Hitos de la regulación financiera}\label{tab:cronologia}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.2cm}|>{\raggedright\arraybackslash}m{12cm}}
+\rowcolor{tceeazulpalido}\textbf{Fecha} & \textbf{Hecho}\\ \hline
+1844 & Ley de Peel en el Reino Unido: los billetes, cubiertos con oro; los depósitos, no.\\ \hline
+1921 & Ley de Ordenación Bancaria en España.\\ \hline
+1933 & Ley Glass-Steagall: garantía federal de depósitos y separación de la banca comercial y la de inversión.\\ \hline
+1974 & Nace el Comité de Supervisión Bancaria de Basilea.\\ \hline
+1988 & Basilea~I: capital del 8~\% de los APR.\\ \hline
+1996 & Enmienda de riesgo de mercado de Basilea~I.\\ \hline
+1999 & Ley Gramm-Leach-Bliley en Estados Unidos: vuelve a permitir unir banca comercial y de inversión. Nace el Foro de Estabilidad Financiera.\\ \hline
+2000 & El Banco de España introduce las provisiones dinámicas.\\ \hline
+2004 & Basilea~II: 3 pilares y modelos internos.\\ \hline
+2009 & Cumbre del G-20 en Londres: nace el FSB. Basilea~2.5.\\ \hline
+2010 & Basilea~III; Ley Dodd-Frank en Estados Unidos.\\ \hline
+2011 & Sistema Europeo de Supervisión Financiera (ABE, AEVM, AESPJ, JERS).\\ \hline
+2014 & El BCE asume la supervisión (MUS); directivas de resolución (BRRD) y de garantía de depósitos (DGSD).\\ \hline
+2016 & Funciona el Mecanismo Único de Resolución.\\ \hline
+2017 & Basilea~III final. Resolución del Banco Popular.\\ \hline
+2019 & Se crea la AMCESFI en España. Separación de la banca minorista en el Reino Unido.\\ \hline
+2023 & Caída de Silicon Valley Bank y de Credit Suisse.\\ \hline
+2024 & MiCA, primeros tramos; CRR3 y CRD~VI aprobados.\\ \hline
+2025 & CRR3 se aplica en la Unión Europea; DORA.\\ \hline
+2026 & Reforma de la gestión de crisis y de la garantía de depósitos; AIFMD~II.\\ \hline
+2027 & FRTB en la Unión Europea, Basilea~3.1 en el Reino Unido, Solvencia~II revisada y T+1.\\
+\end{tabular}
+\fuente{elaboración propia a partir de las fuentes citadas en el texto.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html?tema=3.B.27}{simulador de test}.
+\end{anotaciones}
+
+\bibliografia
+\end{document}

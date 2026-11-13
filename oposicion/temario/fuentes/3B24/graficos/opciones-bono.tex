@@ -1,0 +1,37 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+% Bono ordinario a 10 años con cupón del 6 % frente a:
+%  callable: mínimo suave con el precio de amortización P_c = 105,
+%    -4 ln(e^{-P/4} + e^{-105/4}): se aplana al bajar la TIR (convexidad negativa);
+%  putable: máximo suave con el precio de venta P_p = 92,
+%    4 ln(e^{P/4} + e^{92/4}): tiene un suelo al subir la TIR.
+% Esquema ilustrativo (no es la valoración con un modelo de tipos).
+\begin{tikzpicture}[tcee,declare function={pb(\y)=6*(1-exp(-10*ln(1+\y/100)))/(\y/100)+100*exp(-10*ln(1+\y/100));}]
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.6cm},
+  width=7.4cm,height=6cm,xmin=1,xmax=13,ymin=50,ymax=150,
+  axis lines=left,xlabel={$y$ (TIR, \%)},ticklabel style={font=\footnotesize},
+  xtick={2,4,...,12},clip=false]
+  % 1: panel del callable
+  \nextgroupplot[ylabel={$P$},title={\emph{Callable}},title style={font=\normalsize}]
+  \capa{1}{\addplot[thin,dashed,tceegris,domain=1:13] {105};
+    \node[etiqueta,font=\footnotesize,text=tceegris,anchor=south east] at (axis cs:13,105) {precio de amortización};}
+  % 2: bono ordinario
+  \capa{2}{\addplot[curva2,dashed,domain=1:13,samples=60] {pb(x)};
+    \node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (axis cs:2.2,140) {ordinario};}
+  % 3: callable, con convexidad negativa a la izquierda
+  \capa{3}{\addplot[curva1,domain=1:13,samples=80] {-4*ln(exp(-pb(x)/4)+exp(-105/4))};
+    \node[etiqueta,font=\footnotesize,text=tceemorado,anchor=north west,align=left] at (axis cs:1.4,99) {\emph{callable}:\\convexidad negativa};}
+  % 4: panel del putable
+  \nextgroupplot[title={\emph{Putable}},title style={font=\normalsize}]
+  \capa{4}{\addplot[thin,dashed,tceegris,domain=1:13] {92};
+    \node[etiqueta,font=\footnotesize,text=tceegris,anchor=north east] at (axis cs:13,91) {precio de venta};}
+  \capa{4}{\addplot[curva2,dashed,domain=1:13,samples=60] {pb(x)};
+    \node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (axis cs:2.2,140) {ordinario};}
+  % 5: putable, con suelo a la derecha
+  \capa{5}{\addplot[curva3,domain=1:13,samples=80] {4*ln(exp(pb(x)/4)+exp(92/4))};
+    \node[etiqueta,font=\footnotesize,text=tceeverde,anchor=south west] at (axis cs:8.2,96) {\emph{putable}: suelo};}
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

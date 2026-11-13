@@ -1,0 +1,37 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Teoría de la prima por liquidez (Hicks, 1939): la curva observada es la de las
+% expectativas puras más una prima positiva y creciente con el plazo,
+% prima(n) = 0,9 (1 - e^{-n/2}). Panel izquierdo: tipos esperados constantes
+% (expectativas planas en 2): la curva observada sube. Panel derecho: tipos
+% esperados a la baja (expectativas 3,2 - 0,9 (1 - e^{-n/2})): la observada
+% queda plana. Esquema sin datos.
+\begin{tikzpicture}[tcee]
+  \newcommand{\panel}[1]{%
+    \draw[eje] (0,0) -- (6,0) node[below left=2pt and 0pt] {plazo $n$};
+    \draw[eje] (0,0) -- (0,4.4) node[left] {$i^{(n)}_t$};
+    \node[etiqueta,font=\normalsize] at (3,4.75) {#1};}
+  % 1: ejes del primer panel
+  \capa{1}{\panel{Tipos esperados constantes}}
+  % 2: curva de las expectativas puras (plana)
+  \capa{2}{\draw[curva2,dashed] (0.1,2) -- (5.6,2) node[etiqueta,below left,text=tceeazul] {expectativas puras};}
+  % 3: la prima y la curva observada
+  \capa{3}{\fill[area] plot[domain=0.1:5.6,samples=40,smooth] (\x,{2+0.9*(1-exp(-\x/2))}) -- (5.6,2) -- (0.1,2) -- cycle;
+    \draw[curva1] plot[domain=0.1:5.6,samples=40,smooth] (\x,{2+0.9*(1-exp(-\x/2))});
+    \node[etiqueta,text=tceemorado,anchor=south east] at (5.6,2.85) {curva observada};
+    \node[etiqueta,font=\footnotesize,text=tceemorado] at (4.2,2.42) {prima};}
+  \begin{scope}[xshift=7.8cm]
+    % 4: ejes del segundo panel
+    \capa{4}{\panel{Tipos esperados a la baja}}
+    % 5: curva de las expectativas puras (decreciente)
+    \capa{5}{\draw[curva2,dashed] plot[domain=0.1:5.6,samples=40,smooth] (\x,{3.2-0.9*(1-exp(-\x/2))});
+      \node[etiqueta,text=tceeazul,anchor=north east] at (5.6,2.25) {expectativas puras};}
+    % 6: la prima y la curva observada, casi plana
+    \capa{6}{\fill[area] plot[domain=0.1:5.6,samples=40,smooth] (\x,{3.2}) -- plot[domain=5.6:0.1,samples=40,smooth] (\x,{3.2-0.9*(1-exp(-\x/2))}) -- cycle;
+      \draw[curva1] (0.1,3.2) -- (5.6,3.2);
+      \node[etiqueta,text=tceemorado,anchor=south east] at (5.6,3.25) {curva observada};
+      \node[etiqueta,font=\footnotesize,text=tceemorado] at (4.2,2.75) {prima};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

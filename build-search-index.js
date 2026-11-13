@@ -147,7 +147,7 @@ const tercerEjercicioParteA = [
 // TERCER EJERCICIO - Parte B: Economía Financiera, Economía Internacional y Relaciones Económicas Internacionales
 // ============================================
 const tercerEjercicioParteB = [
-  { num: 1, titulo: 'La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa.', disponible: true, file: '3B01.pdf' },
+  { num: 1, titulo: 'La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa.', disponible: true, file: '3B01.html' },
   { num: 2, titulo: 'La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital.', disponible: true, file: '3B02.html' },
   { num: 3, titulo: 'La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital.', disponible: true, file: '3B03.html' },
   { num: 4, titulo: 'Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas.', disponible: true, file: '3B04.html' },
@@ -170,10 +170,10 @@ const tercerEjercicioParteB = [
   { num: 21, titulo: 'El sistema económico internacional desde la desaparición del sistema de Bretton-Woods.', disponible: true, file: '3B21.pdf' },
   { num: 22, titulo: 'El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis.', disponible: true, file: '3B22.pdf' },
   { num: 23, titulo: 'Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.', disponible: true, file: '3B23.html' },
-  { num: 24, titulo: 'Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.', disponible: true, file: '3B24.pdf' },
+  { num: 24, titulo: 'Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.', disponible: true, file: '3B24.html' },
   { num: 25, titulo: 'Análisis de los instrumentos y de los mercados de derivados.', disponible: true, file: '3B25.html' },
   { num: 26, titulo: 'Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras.', disponible: false },
-  { num: 27, titulo: 'Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.', disponible: true, file: '3B27.pdf' },
+  { num: 27, titulo: 'Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.', disponible: true, file: '3B27.html' },
   { num: 28, titulo: 'Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas.', disponible: true, file: '3B28.html' },
   { num: 29, titulo: 'La financiación exterior del desarrollo económico. El problema de la deuda externa. La ayuda al desarrollo.', disponible: false },
   { num: 30, titulo: 'El Grupo del Banco Mundial, los Bancos Regionales de Desarrollo y otras instituciones financieras multilaterales de desarrollo.', disponible: false },

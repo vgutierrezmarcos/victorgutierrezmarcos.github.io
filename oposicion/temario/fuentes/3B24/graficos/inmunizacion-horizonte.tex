@@ -1,0 +1,29 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Valor al horizonte H, V_H = P(y) (1+y)^H, del bono del ejemplo (flujos 100 y
+% 1.100, TIR inicial y_0 = 14,7456 %, D = 1,9055), en índice (V_H(y_0) = 100),
+% para H = 1, H = D y H = 2. Con H = D la curva es casi plana y tiene su mínimo
+% en y_0; con H < D baja con y (pesa el precio); con H > D sube (reinversión).
+% V_H(y_0): H = 1, 1.058,64; H = D, 1.199,07; H = 2, 1.214,75.
+\begin{tikzpicture}[tcee,declare function={pb(\y)=100/(1+\y)+1100/(1+\y)^2;}]
+\begin{axis}[width=10cm,height=6.5cm,xmin=4,xmax=26,ymin=90,ymax=110,
+  axis lines=left,xlabel={$y$ (TIR tras el cambio, \%)},ylabel={$V_H$ (índice)},
+  xtick={4,8,...,24},ytick={90,95,...,110},ticklabel style={font=\footnotesize},
+  clip=false]
+  % 1: ejes y referencia del valor prometido
+  \capa{1}{\addplot[thin,dashed,tceegris,domain=4:26] {100};}
+  % 2: horizonte H = 1 (menor que la duración)
+  \capa{2}{\addplot[curva4,domain=4:26,samples=60] {100*pb(x/100)*(1+x/100)/1058.64};
+    \node[etiqueta,font=\footnotesize,text=tceedorado,anchor=north west] at (axis cs:5,104) {$H=1<D$};}
+  % 3: horizonte H = 2 (mayor que la duración)
+  \capa{3}{\addplot[curva2,domain=4:26,samples=60] {100*pb(x/100)*(1+x/100)^2/1214.75};
+    \node[etiqueta,font=\footnotesize,text=tceeazul,anchor=south] at (axis cs:22,101.2) {$H=2>D$};}
+  % 4: horizonte igual a la duración: inmunizado
+  \capa{4}{\addplot[curva1,domain=4:26,samples=60] {100*pb(x/100)*exp(1.9055*ln(1+x/100))/1199.07};
+    \node[etiqueta,font=\footnotesize,text=tceemorado,anchor=south] at (axis cs:8,100.2) {$H=D=1{,}91$};
+    \addplot[only marks,mark=*,mark size=1.8pt] coordinates {(14.7456,100)};
+    \node[etiqueta,font=\footnotesize,anchor=north] at (axis cs:14.75,99.6) {$y_0$};}
+\end{axis}
+\end{tikzpicture}
+\end{document}

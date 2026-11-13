@@ -1,0 +1,261 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Renta fija, curva de tipos, duración y convexidad]{3.B.24}{Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.}
+\tcefecha{13/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «¡Cuán largo me lo fiáis!»}{2,5}
+\apartadocante{I. Instrumentos: precio y rendimiento}{8}
+\subcante{1. Renta fija frente a renta variable}{1}
+\subcante{2. Elementos de un bono}{1}
+\subcante{3. Tipos y calificación crediticia}{1,5}
+\subcante{4. Precio}{2,5}
+\subcante{5. Rendimiento}{2}
+\apartadocante{II. Estructura temporal de los tipos}{9}
+\subcante{1. Contado, plazo, Nelson-Siegel-Svensson}{2,5}
+\subcante{2. Teorías}{4}
+\subcante{\hspace*{0.8em}Expectativas}{1,5}
+\subcante{\hspace*{0.8em}Prima por liquidez}{1}
+\subcante{\hspace*{0.8em}Segmentación y hábitat}{1}
+\subcante{\hspace*{0.8em}\autor{Vasicek} y CIR}{0,5}
+\subcante{3. Formas, movimientos, ciclo, política}{2,5}
+\apartadocante{III. Riesgo: duración y convexidad}{9,5}
+\subcante{1. Riesgos de un bono}{1,5}
+\subcante{2. Riesgo de tipo de interés}{8}
+\subcante{\hspace*{0.8em}\autor{Malkiel}}{1,5}
+\subcante{\hspace*{0.8em}\autor{Macaulay}}{2}
+\subcante{\hspace*{0.8em}Modificada y monetaria}{1,5}
+\subcante{\hspace*{0.8em}Convexidad}{1,5}
+\subcante{\hspace*{0.8em}Gestión: inmunización}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Funciones clave} (se quedan hasta el final): el precio del bono, el tipo largo y $\Delta P/P$ con duración y convexidad. \emph{Ejemplo de todo el tema}: bono a 2 años, nominal 1.000~€, cupón del 10~\%, precio 922,6~€; cupón cero a 1 año de 100~€ a 90,9~€.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «¡Cuán largo me lo fiáis!» (\emph{El burlador de Sevilla}). Austria, bono a 100 años (junio de 2020, cupón 0,85~\%): de \dato{139 a 33 € por 100}{Saxo, 2024} con la subida de 2022-2023, sin dejar de pagar un cupón. ¿Cuánto vale una promesa futura, por qué cambia con el plazo y cuánto riesgo tiene lo «seguro»?
+\item \textbf{Relevancia}: \emph{micro}, financiarse sin ceder la propiedad y trasladar renta en el tiempo; \emph{macro}, déficit \vertema{3.A.39}, transmisión monetaria por la curva \vertema{3.A.37}, pendiente como indicador adelantado. Renta fija mundial \dato{160,7 billones de \$ frente a 157,8 en bolsa}{SIFMA, 2025}.
+\item \textbf{Contextualización}: \concepto{inversión} = compromiso presente de recursos con la expectativa de beneficios futuros: \emph{tiempo} y \emph{riesgo} (\autor{Bodie}, \autor{Kane} y \autor{Marcus}). 3 familias: renta variable \vertema{3.B.23}, \concepto{renta fija} (remuneración fijada por contrato), derivados \vertema{3.B.25}. \concepto{Bono}: parte de un préstamo con cupones y principal. Desde los 70, liberalización e innovación; tras 2008, Estados y bancos centrales; hoy, bonos verdes.
+\item \textbf{Problemática}: ¿cómo se fijan precio y rentabilidad? ¿Por qué el tipo cambia con el plazo y qué anuncia? Si los pagos son fijos, ¿por qué hay riesgo y cómo se mide y gestiona?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, el instrumento; \hyperref[rep:II]{II}, el plazo; \hyperref[rep:III]{III}, el riesgo.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{I. Instrumentos de renta fija: precio y rendimiento\label{rep:I}}
+\begin{ideaclave}
+Un bono vale lo que sus flujos descontados, cada uno al tipo de su plazo; la TIR los resume en uno: precio y rentabilidad van en sentido contrario.
+\end{ideaclave}
+
+\sub{I.1. Renta fija frente a renta variable\label{rep:I.1}}
+\begin{itemize}
+\item 5 rasgos: \emph{pagos} por contrato (puede haber impago); \emph{vencimiento} (salvo deuda perpetua); \emph{derechos} solo económicos (acreedor, no socio); \emph{prelación} antes que el accionista (ordinaria antes que subordinada); \emph{contabilidad}: pasivo del emisor \vertema{3.B.1}. Consecuencia: menos riesgo, pero de impago y de tipo de interés.
+\end{itemize}
+
+\sub{I.2. Elementos\label{rep:I.2}}
+\begin{itemize}
+\item Emisor y tenedor; \concepto{nominal} $\mathrm{VN}$; \concepto{cupón} $C_t=c\,\mathrm{VN}$ (anual en España, semestral en EE. UU.); \concepto{vencimiento} $T$ y amortización; \concepto{precio} $P$ (a la par, bajo, sobre). Flujo: $\mathrm{FC}_t=C_t$ y $\mathrm{FC}_T=C_T+\mathrm{VN}$.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{linea-temporal-bono}{Flujos de un bono: $-P$ hoy, $C$ cada año y $C+\mathrm{VN}$ en $T$}
+
+\sub{I.3. Tipos y calificación\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Emisor}: supranacional, soberano, territorial y agencias, empresa y banco, titulización. \emph{Cupón}: fijo, variable (Euríbor, €STR + diferencial), indexado, cupón cero. \emph{Opciones}: \emph{callable} (del emisor, cupón más alto), \emph{putable} (del tenedor, cupón más bajo), convertible, CoCos (conversión automática si el CET1 < 5,125~\%) \vertema{3.B.3}. \emph{Plazo}: monetario hasta 1 año; Tesoro: letras 3-12 meses, bonos 2-5 años, obligaciones > 5 (10, 15, 30, 50) \vertema{4.B.26}.
+\item \concepto{Rating}: S\&P, Moody's, Fitch; \concepto{grado de inversión} hasta BBB$-$. España: \dato{A+ S\&P, A3 Moody's, A Fitch}{Tesoro, 2026}. \concepto{Diferencial de crédito}; \concepto{prima de riesgo} frente al \emph{Bund}: \dato{555 pb (jul. 2012); 45 pb (sept. 2026)}{BCE}.
+\end{itemize}
+
+\sub{I.4. Precio\label{rep:I.4}}
+\begin{itemize}
+\item Primario: a la par si $c=y$; letras y cupón cero al descuento. Secundario, por arbitraje: cada flujo vale lo que un \emph{strip} de su plazo (tipo de contado $r_t$); con un solo tipo, la TIR $y$:
+  \funcionclave{P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+y)^t}}
+\item \emph{Ejemplo}: primer cupón = cupón cero = 90,9; segundo pago $922{,}6-90{,}9=831{,}7$; $r_1=10{,}01$~\%, $r_2=15{,}00$~\%.
+\item \emph{Pull to par}: con TIR constante, el precio converge al nominal. \concepto{Cupón corrido}; \concepto{precio limpio} (cotiza) + corrido = \concepto{sucio} (se paga).
+\end{itemize}
+\pareja{pull-to-par}{\emph{Pull to par}: cupones del 12 y del 4~\%, TIR del 8~\%}{precio-sucio}{Limpio y sucio (diente de sierra)}
+
+\sub{I.5. Rendimiento\label{rep:I.5}}
+\begin{itemize}
+\item \concepto{Corriente} $C/P$. \concepto{TIR} (\emph{yield to maturity}), la $y$ que iguala el precio con los flujos \vertema{3.B.2}: 3 supuestos, (1) mantener hasta el final, (2) que el emisor pague, (3) reinvertir a la TIR. Es un promedio de los $r_t$ (ejemplo: 14,75~\%), \concepto{efecto cupón}.
+\item \emph{Yield to call} (tomar la menor); \concepto{rentabilidad realizada} al horizonte; letras: $P=\mathrm{VN}/(1+y\,d/360)$.
+\item \emph{Callable}: techo, convexidad negativa; \emph{putable}: suelo.
+\end{itemize}
+\pareja{precio-rentabilidad}{Precio-rentabilidad, tangente y convexidad}{opciones-bono}{\emph{Callable} y \emph{putable}}
+
+% ==========================================================================
+\bloque[9]{II. La estructura temporal de los tipos de interés\label{rep:II}}
+\begin{ideaclave}
+Tipo largo = media de los cortos esperados + prima por plazo. La curva sirve para valorar, para leer expectativas y el ciclo y para que el banco central llegue al largo plazo.
+\end{ideaclave}
+
+\sub{II.1. Contado, plazo y construcción\label{rep:II.1}}
+\begin{itemize}
+\item \concepto{ETTI}: tipos de contado $r_1,\dots,r_T$ de un mismo emisor (curva cupón cero; la de rentabilidades lleva el efecto cupón). \emph{Strips} desde 1997.
+\item \concepto{Tipo a plazo} implícito: $(1+r_t)^t=(1+r_{t-1})^{t-1}(1+f_t)$. Ejemplo: $f_2=1{,}15^2/1{,}1001-1=20{,}22$~\% ($\simeq2r_2-r_1$).
+\item \concepto{\emph{Bootstrapping}}: $r_1$, luego $r_2$, luego $r_3$\dots
+\item \textbf{Nelson-Siegel-Svensson} (1987; 1994): a) suavizar toda la curva con pocos parámetros; b) $\beta_0$ \emph{nivel}, $\beta_1$ \emph{pendiente} (tipo instantáneo $\beta_0+\beta_1$), $\beta_2$, $\beta_3$ \emph{curvatura} ($\tau_1,\tau_2$); c) \autor{Diebold}-\autor{Li} (2006), dinámico; d) BCE diario: AAA \dato{2,62~\% (3 m), 3,33~\% (10 a)}{10/11/2026}, invertida en julio de 2023, negativa en 2020; e) forma funcional, no teoría.
+\end{itemize}
+\pareja{nss-factores}{Pesos de nivel, pendiente y curvatura}{curva-bce-zona-euro}{Curva AAA del BCE: 2026, 2023, 2020}
+\graficorepaso[0.95\linewidth]{curvas-espana-eeuu}{Curvas de rentabilidades de España y EE. UU. en 2026, 2023 y 2020}
+
+\sub{II.2. Teorías\label{rep:II.2}}
+3 hechos: los tipos se mueven juntos; con tipos bajos, curva creciente; creciente casi siempre.
+\begin{itemize}
+\item \textbf{Expectativas} (\autor{Fisher}, 1896; \autor{Hicks}, 1939; \autor{Lutz}, 1940). Supuestos: neutralidad al riesgo, sustitutivos perfectos. No arbitraje $(1+i^{(n)}_t)^n=(1+i_t)\prod(1+\mathbb{E}_t[i_{t+k}])$; en logaritmos y con prima:
+  \funcionclave{i^{(n)}_t=\frac{1}{n}\sum_{k=0}^{n-1}\mathbb{E}_t[i_{t+k}]+\text{prima por plazo}_t}
+  Prima nula; \emph{forwards} insesgados. Evidencia: \autor{Campbell}-\autor{Shiller} (1991), \autor{Fama}-\autor{Bliss} (1987): prima variable. Falla el hecho 3 \vertema{3.A.37}.
+\item \textbf{Prima por liquidez} (\autor{Hicks}, 1939; no es la de \autor{Keynes} \vertema{3.A.35}): aversos, prima $>0$ y creciente; curva creciente sin subidas; plana = ligeras bajadas. \autor{Kessel} (1965): la prima sube con los tipos. Explica los 3 hechos.
+\item \textbf{Segmentación} (\autor{Culbertson}, 1957) y \textbf{hábitat preferente} (\autor{Modigliani}-\autor{Sutch}, 1966): «cada mochuelo a su olivo»; prima de cualquier signo. \autor{Vayanos}-\autor{Vila} (2021): arbitrajistas aversos; las compras del banco central bajan la prima \vertema{3.A.40}. Evidencia: pensiones del Reino Unido (2004); enigma de \autor{Greenspan} (2005), exceso de ahorro (\autor{Bernanke}).
+\item \textbf{\autor{Vasicek}} (1977) $\mathrm{d}r=a(b-r)\mathrm{d}t+\sigma\mathrm{d}W$; \textbf{CIR} (1985) con $\sigma\sqrt r$ (sin tipos negativos): un factor, reversión a la media; precio $A(\tau)e^{-B(\tau)r}$; extensiones \autor{Ho}-\autor{Lee}, \autor{Hull}-\autor{White}, HJM.
+\end{itemize}
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Hecho} & \textbf{Expect.} & \textbf{Liquidez} & \textbf{Segm.} & \textbf{Hábitat}\\
+\midrule
+1. Juntos & Sí & Sí & No & Sí\\
+2. Tipos bajos, creciente & Sí & Sí & No & Sí\\
+3. Creciente casi siempre & No & Sí & Sí & Sí\\
+\rowcolor{tceesalvia}Prima & Nula & $>0$, crece & --- & $\pm$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\graficorepaso[0.85\linewidth]{estrategias-expectativas}{2 años al 10~\% = 1 año al 8~\% y reinvertir al 12,04~\%}
+\graficorepaso[0.85\linewidth]{prima-liquidez}{Prima por liquidez: con tipos esperados constantes y a la baja}
+
+\sub{II.3. Formas y movimientos\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Formas}: creciente, plana, invertida, jorobada, leídas con cada teoría. \emph{Movimientos} (\autor{Litterman}-\autor{Scheinkman}, 1991): paralelo (nivel), giro (aplanamiento/positivización), mariposa (curvatura) = factores de NSS.
+\item \emph{Ciclo}: pendiente 10 años - 3 meses, indicador adelantado (\autor{Estrella}-\autor{Mishkin}, 1998) \vertema{3.A.42}. EE. UU.: invertida \dato{25/10/2022-12/12/2024, mín.\ $-1{,}89$}{Tesoro}, sin recesión.
+\item \emph{Política}: \emph{Twist} (Fed, 2011-2012; la de 1961, $-15$ pb); compras de activos; \concepto{control de la curva}: Fed 1942-1951, Banco de Japón 2016-2024 \vertema{3.A.36}.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{formas-curva}{Creciente, plana, invertida y jorobada}
+\graficorepaso[0.95\linewidth]{movimientos-curva}{Paralelo, giro y mariposa}
+
+% ==========================================================================
+\bloque[9,5]{III. Riesgo y rendimiento: duración y convexidad\label{rep:III}}
+\begin{ideaclave}
+Pagos fijos, valor no. La duración mide la pérdida si suben los tipos, la convexidad corrige el error y la inmunización (duración = horizonte) lo neutraliza.
+\end{ideaclave}
+
+\sub{III.1. Riesgos\label{rep:III.1}}
+\begin{itemize}
+\item 8: tipo de interés (precio); reinversión (al revés: base de la inmunización); crédito; liquidez; amortización anticipada; inflación; tipo de cambio; sucesos y legal.
+\end{itemize}
+
+\sub{III.2. Riesgo de tipo de interés\label{rep:III.2}}
+\begin{itemize}
+\item \textbf{\autor{Malkiel}} (1962) + \autor{Homer}-\autor{Leibowitz} (1972): (1) relación inversa; (2) convexa; (3) más sensible a más plazo; (4) cada vez menos; (5) menos cuanto más cupón; (6) menos cuanto más TIR.
+\item \textbf{\autor{Macaulay}} (1938): plazo medio ponderado por valor, $D=\sum t\,w_t$, $w_t=\frac{\mathrm{FC}_t/(1+y)^t}{P}$; con curva plana, elasticidad respecto a $1+y$ (\autor{Hicks}). Cupón cero: $D=T$; perpetua: $(1+y)/y$. Ejemplo: $D=1\times0{,}094+2\times0{,}906=1{,}91$.
+\item \textbf{Modificada}: $D^{\mathrm{mod}}=D/(1+y)=-\frac1P\frac{\mathrm{d}P}{\mathrm{d}y}$, semielasticidad; $D^{\mathrm{mon}}=PD^{\mathrm{mod}}$; DV01 $=PD^{\mathrm{mod}}\times0{,}0001$. Ejemplo: 1,66; $+3$ puntos: predice $-4{,}98$~\%, real $-4{,}80$~\%.
+\item \textbf{Convexidad}: $\mathrm{Conv}=\frac{1}{P}\frac{\mathrm{d}^2P}{\mathrm{d}y^2}$; ejemplo 4,27, aproximación $-4{,}79$~\%:
+  \funcionclave{\frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\Delta y+\tfrac12\,\mathrm{Conv}\,(\Delta y)^2}
+  Mayor con plazo largo, TIR baja, cupón bajo; deseable. Con opciones: \concepto{duración efectiva}; \emph{callable}, convexidad negativa.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{malkiel-bonos}{Bonos A-D: plazo, cupón y TIR de partida}
+\pareja{balanza-duracion}{La duración, fiel de la balanza}{convexidad-bonos}{Misma duración, distinta convexidad}
+
+\sub{III.2.5. Gestión del riesgo\label{rep:III.2.5}}
+\begin{itemize}
+\item \textbf{Inmunización} (\autor{Redington}, 1952; \autor{Fisher}-\autor{Weil}, 1971): precio y reinversión se compensan en $H=D$. $V_H=P(1+y)^H$; $\frac{\mathrm{d}V_H}{\mathrm{d}y}=(1+y)^{H-1}P(H-D)$: mínimo en $y_0$. Redington: VA y duraciones iguales, convexidad del activo mayor. Ejemplo: inmuniza un pago a 1,91 años, no a 2. Local: reajustar; falla con giros.
+\item \emph{Cash-flow matching}; inmunización contingente; brecha de duración $\Delta V_E\simeq-[D^{\mathrm{mod}}_{\mathrm A}-\frac{V_D}{V}D^{\mathrm{mod}}_{\mathrm P}]V\Delta y$ (SVB) \vertema{3.B.26}; \emph{swaps} y futuros \vertema{3.B.25}.
+\item \emph{Pasiva} (índice, inmunizar) frente a \emph{activa} (duración, \emph{bullet}/\emph{barbell}, montar la curva, diferenciales).
+\end{itemize}
+\graficorepaso[0.62\linewidth]{inmunizacion-horizonte}{Valor al horizonte: plano en $H=D$}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: precio = flujos descontados; curva = expectativas + prima por plazo; riesgo = duración y convexidad, gestionado con inmunización.
+\item \textbf{Relevancia}: Tesoro \vertema{4.B.26}, supervisor (brecha de los bancos), banco central (compras).
+\item \textbf{Extensiones}: derivados \vertema{3.B.25}; bancos y crisis \vertema{3.B.26} \vertema{3.B.27}; transmisión \vertema{3.A.37} \vertema{3.A.40}; deuda \vertema{3.A.39}; mercado español \vertema{4.A.20}.
+\item \textbf{Opinión}: 2012, prima de 555 pb (riesgo de suceso); 2020, negativos hasta 5 años; 2022-2023, peores años de los bonos largos. Fija en pagos, no en valor (SVB).
+\item \textbf{Idea final}: «¡Cuán largo me lo fiáis!»: el largo plazo se paga 2 veces, con la prima en el precio y con la duración en el riesgo.
+\end{itemize}
+
+% ==========================================================================
+\bloque{El ejemplo en cifras}
+\begin{center}\small
+\begin{tabular}{cccc}
+\toprule
+\rowcolor{tceeazulpalido}$\Delta y$ & \textbf{Exacto} & \textbf{Duración} & \textbf{Dur.\ + conv.}\\
+\midrule
+$+1$ punto & $-1{,}64$~\% & $-1{,}66$~\% & $-1{,}64$~\%\\
+$-1$ punto & $+1{,}68$~\% & $+1{,}66$~\% & $+1{,}68$~\%\\
+$+3$ puntos & $-4{,}80$~\% & $-4{,}98$~\% & $-4{,}79$~\%\\
+$-3$ puntos & $+5{,}18$~\% & $+4{,}98$~\% & $+5{,}17$~\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item Bono a 2 años, nominal 1.000~€, cupón del 10~\%, $P=922{,}6$: $r_1=10{,}01$~\%, $r_2=15{,}00$~\%, $f_2=20{,}22$~\%, $y=14{,}75$~\%, $D=1{,}91$, $D^{\mathrm{mod}}=1{,}66$, $\mathrm{Conv}=4{,}27$, DV01 $=0{,}15$~€. La duración exagera las caídas y se queda corta en las subidas; la convexidad lo corrige.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Anexos: bonos verdes y clasificaciones}
+\begin{itemize}
+\item \concepto{Bonos verdes}: bono ordinario con uso de fondos ambiental (Principios de la ICMA); misma calificación que el resto de la deuda. \emph{Vinculados a la sostenibilidad}: el cupón cambia si no se cumplen objetivos. De transición. Alemania 2/9/2020 (6.500 M a 10 años); España 7/9/2021; NGEU hasta el 30~\%; estándar europeo desde el 21/12/2024 \vertema{3.B.31}. Evidencia: primeros estudios, sin menos emisiones (\autor{Ehlers}, \autor{Mojon} y \autor{Packer}, 2020); con más datos, caen (BIS, 2025).
+\item \emph{Subasta del Tesoro} «convencional corregida»: entre el mínimo y el precio medio ponderado, lo ofrecido; por encima y no competitivas, el medio \vertema{3.A.14}. Sindicación (\emph{underwriting}, \emph{best effort}); \concepto{eurobonos}: moneda distinta de la del país de colocación.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas\label{rep:autores}}
+\hito{1896}{\autor{Fisher}: expectativas}
+\hito{1938}{\autor{Macaulay}: duración}
+\hito{1939}{\autor{Hicks}: expectativas y prima por liquidez; \autor{Lutz}, 1940}
+\hito{1952}{\autor{Redington}: inmunización}
+\hito{1957}{\autor{Culbertson}: segmentación}
+\hito{1961}{Operación \emph{Twist}}
+\hito{1962}{\autor{Malkiel}: 5 proposiciones}
+\hito{1965}{\autor{Kessel}: sustitución del dinero}
+\hito{1966}{\autor{Modigliani}-\autor{Sutch}: hábitat}
+\hito{1971}{\autor{Fisher}-\autor{Weil}: duración = horizonte}
+\hito{1972}{\autor{Homer}-\autor{Leibowitz}}
+\hito{1977}{\autor{Vasicek}}
+\hito{1985}{\autor{Cox}-\autor{Ingersoll}-\autor{Ross}}
+\hito{1987}{\autor{Nelson}-\autor{Siegel}; \autor{Fama}-\autor{Bliss}}
+\hito{1991}{\autor{Campbell}-\autor{Shiller}; \autor{Litterman}-\autor{Scheinkman}}
+\hito{1994}{\autor{Svensson}}
+\hito{1998}{\autor{Estrella}-\autor{Mishkin}}
+\hito{2005}{Enigma de \autor{Greenspan}}
+\hito{2016}{Banco de Japón: control de la curva (hasta 2024)}
+\hito{2021}{\autor{Vayanos}-\autor{Vila}}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Curva AAA del BCE: \dato{2,62 / 3,02 / 3,33 / 3,57~\% a 3 m, 2, 10, 30 a}{10/11/2026}. España 10 años: \dato{3,93~\%}{BdE, sept.\ 2026}.
+\item Prima de riesgo: \dato{555 pb}{jul.\ 2012}; \dato{45 pb}{sept.\ 2026}. Diciembre de 2020: negativa hasta 5 años ($-0{,}42$~\%).
+\item Bonos verdes: \dato{4,3~\% de las emisiones}{LSEG, 2025}; España, primer bono verde \dato{5.000 M a 20 años}{2021}; NGEU hasta el 30~\%.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué la duración y no el plazo?} Porque el bono cobra antes del vencimiento; cupón cero: $D=T$.
+\item \textbf{¿La TIR es la rentabilidad?} Solo con los 3 supuestos; si no, rentabilidad realizada.
+\item \textbf{¿Predice la curva los tipos?} Con prima variable, mal a corto (\autor{Campbell}-\autor{Shiller}).
+\item \textbf{¿Por qué falló la inversión de 2022-2024?} Prima por plazo baja o negativa, compras de los bancos centrales.
+\item \textbf{¿Es mala la convexidad negativa?} Para el inversor sí: la paga con más cupón.
+\item \textbf{¿Qué pasó con SVB?} Brecha de duración: activos largos, depósitos cortos.
+\item \textbf{¿Por qué una curva plana puede anunciar menos crecimiento?} Con prima positiva, plana = bajadas esperadas que la prima compensa.
+\item \textbf{¿Qué aporta Nelson-Siegel frente al \emph{bootstrapping}?} Curva suave para todos los plazos y 3 factores interpretables; pero no es una teoría.
+\item \textbf{¿Cómo baja el banco central el tipo largo con el corto en cero?} Expectativas (anuncios) y prima por plazo (compras, \emph{Twist}, control de la curva).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $\Delta P/P\simeq-D^{\mathrm{mod}}\,\Delta y$: por la \emph{variación} de la TIR, con signo menos.
+\item $D^{\mathrm{mon}}=PD^{\mathrm{mod}}$ (sin $y$).
+\item La duración depende \emph{positivamente} del plazo (casi siempre) y negativamente del cupón y de la TIR.
+\item A plazo fijo, la convexidad depende \emph{negativamente} del cupón.
+\item \emph{Putable}: el tenedor tiene la opción y acepta menos cupón.
+\item Expectativas puras: no tienen en cuenta el riesgo; ETTI estricta = cupón cero.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
