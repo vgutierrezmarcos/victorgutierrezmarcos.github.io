@@ -1,0 +1,41 @@
+% Poder de voto en el BIRF a 30-6-2026: los 10 mayores accionistas y España
+% (barras horizontales). Datos: ../datos/votos-birf.csv (Banco Mundial, tabla
+% de suscripciones y poder de voto, emitida el 9-7-2026). Control: EE. UU.
+% 15,98; Japón 6,88; China 5,75; España 1,84 (puesto 14). Umbral del 15 %:
+% las enmiendas del convenio exigen el 85 %, de modo que EE. UU. tiene veto.
+% Orden de capas: barras -> ejes y umbral -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/votos-birf.csv}\votos
+\colorlet{barravotos}{tceemorado!70}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=12cm, height=8cm,
+      xbar, bar width=0.42cm,
+      xmin=0, xmax=19, ymin=-0.6, ymax=10.6,
+      ytick=data, yticklabels from table={\votos}{pais},
+      yticklabel style={font=\footnotesize},
+      xtick={0,5,10,15}, xticklabel style={font=\footnotesize},
+      xlabel={\% de los votos}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      clip=false, dicapas,
+    ]
+    % 1: las barras (España en rojo)
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=barravotos, bar shift=0pt,
+        nodes near coords={\pgfmathprintnumber[use comma,fixed,fixed zerofill,precision=2]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, anchor=west}, point meta=x] table[x=pct, y=orden] {\votos};
+      \addplot[on layer=dicbarras, dicbarra=dicespana, bar shift=0pt] coordinates {(1.84,0)};
+    }
+    % 2: el umbral del veto (15 %)
+    \capa{2}{
+      \dicraya[dicumbral]{(15,-0.6) (15,10.6)}
+      \dicrotulo[font=\scriptsize, anchor=north east, align=right]{(14.8,4.2)}{15~\%: veto en las\\enmiendas (85~\%)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Composición de las exportaciones mundiales de servicios comerciales (% del
+% total), 2005-último año. Banco Mundial, WDI (BX.GSR.TRAN.ZS, TRVL, INSF,
+% CCIS; WLD), a partir del FMI; ../datos/servicios-composicion.csv (consulta
+% 14/11/2026). 2005 -> 2025: TIC 7,1 -> 15,7; otros servicios (empresariales,
+% propiedad intelectual y resto) 33,4 -> 37,7; seguros y finanzas 11,5 -> 11,5;
+% viajes 26,1 -> 19,8; transporte 21,9 -> 15,4.
+% Paleta: modernos en azules (TIC marino, otros servicios azul claro,
+% seguros y finanzas medio); viajes naranja; transporte gris.
+% Capas: modernos -> tradicionales -> resto -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/servicios-composicion.csv}\sv
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=7cm, xmin=2005, xmax=2025, ymin=0, ymax=100,
+      xtick={2005,2010,...,2025}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={\% de los servicios comerciales}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, stack plots=y, area style, clip=false, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, fill=dicservicios, draw=dicservicios!70!black] table[x=anio, y=tic] {\sv} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicfmc, draw=dicopf] table[x=anio, y=resto] {\sv} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicopf, draw=dicopf!70!black] table[x=anio, y=seguros_finanzas] {\sv} \closedcycle;}
+    \capa{2}{\addplot[on layer=dicbarras, fill=dicconspriv, draw=dicconspriv!70!black] table[x=anio, y=viajes] {\sv} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicotroclaro, draw=dicotro] table[x=anio, y=transporte] {\sv} \closedcycle;}
+    \capa{3}{
+      \dicrotulo[font=\footnotesize, text=white, anchor=west]{(2014,6)}{TIC: 7,1 $\to$ 15,7}
+      \dicrotulo[font=\footnotesize, anchor=west]{(2006,28)}{empresariales, propiedad intelectual y otros}
+      \dicrotulo[font=\footnotesize, text=white, anchor=west]{(2006,47)}{seguros y finanzas}
+      \dicrotulo[font=\footnotesize, anchor=west]{(2006,71)}{viajes}
+      \dicrotulo[font=\footnotesize, anchor=west]{(2006,90)}{transporte}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

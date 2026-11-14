@@ -1,0 +1,239 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Banco Mundial y bancos multilaterales de desarrollo]{3.B.30}{El Grupo del Banco Mundial, los Bancos Regionales de Desarrollo y otras instituciones financieras multilaterales de desarrollo.}
+\tcefecha{14/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «quien a buen árbol se arrima…»}{2,5}
+\apartadocante{I. Los BMD: elementos comunes}{8,5}
+\subcante{1. Definición y razón de ser (3 modelos)}{5}
+\subcante{2-5. Rasgos, ventanillas, gobierno, actuaciones}{3,5}
+\apartadocante{II. El Grupo del Banco Mundial}{9,5}
+\subcante{1. Información general e historia}{2,5}
+\subcante{2. Estructura y estrategia}{2}
+\subcante{3. BIRF, AIF, CFI, MIGA, CIADI}{5}
+\apartadocante{III. Regionales y otras instituciones}{8}
+\subcante{1. Origen}{1}
+\subcante{2-6. BID, BAfD, BAsD, BERD, BEI}{3,5}
+\subcante{7-8. Otras y nuevas (BAII, NDB)}{1,5}
+\subcante{9. Reforma del sistema y España}{2}
+\apartadocante{Conclusión}{1,5}}
+Funciones clave: la palanca del capital, la condición de \autor{Samuelson} para los bienes globales y la condición del efecto catalizador. Gráficos: la palanca del capital y los bienes públicos globales.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «quien a buen árbol se arrima, buena sombra le cobija». Bretton Woods (1944) y el lema del Plan \autor{Marshall}. GBM, ejercicio 2026: \dato{123.500 M\$, el doble que hace 10 años}{BM}; reformas de capital: \dato{+792.000 M\$ en una década}{presidentes de los BMD, 10/2026}. ¿Por qué un banco de Estados para el desarrollo, y cuánto puede prestar a la sombra de sus accionistas?
+\item \textbf{Relevancia}: financiación larga y barata, y anticíclica; la AIF para los más pobres \vertema{3.B.29}; instrumento del G-20 para clima y ODS \vertema{3.B.19}; España accionista de todos; TCEE en los directorios y en el Tesoro; licitaciones \vertema{4.A.24}.
+\item \textbf{Contextualización}: \concepto{institución financiera multilateral de desarrollo} (CAD); \concepto{BMD} (se financia en el mercado con respaldo de los accionistas) frente a fondos de donaciones; el FMI no es de desarrollo \vertema{3.B.22}. 3 pilares de Bretton Woods \vertema{3.B.20}; regionales 1959-1966; BERD 1991; BAII y NDB, 2015-2016.
+\item \textbf{Problemática}: ¿por qué existen y cuánto pueden prestar? ¿Cómo es el GBM? ¿Qué aportan regionales y nuevos y cómo se reforma el sistema?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, lo común; \hyperref[rep:II]{II}, el mayor; \hyperref[rep:III]{III}, regionales, nuevos y reforma.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{I. Los BMD: elementos comunes\label{rep:I}}
+\begin{ideaclave}
+Un BMD presta barato y a largo plazo a quien el mercado no financia gracias a la garantía de sus accionistas; cuánto presta lo decide su capital, y para qué, sus votos.
+\end{ideaclave}
+\sub{I.1. Definición y razón de ser\label{rep:I.1}}
+\textbf{1. Intermediación con garantía de los accionistas}. Fallo: sin tribunal para Estados, información asimétrica, pecado original \vertema{3.B.29}. \emph{Supuestos}: patrimonio $E$ (desembolsado + reservas), préstamos $L=E+B$, capital exigible como garantía; se endeuda a $r_B$ (AAA), presta a $r_B+m$; mínimo $E/L\geq e^{\min}$.
+\funcionclave{L^{\max}=\frac{E}{e^{\min}}}
+\begin{itemize}
+\item Ahorro del prestatario: $(r^*+\rho)-(r_B+m)$. Beneficio $r_BE+(m-c)L$; sin capital nuevo, $g_L=r_B+(m-c)/e^{\min}$.
+\item \emph{Implicaciones}: 1 \$ de patrimonio $\to$ $1/e^{\min}$ de préstamos (20\,\%: 5; 18\,\%: 5,6); 3 palancas ($E$, $e^{\min}$, $m$); dilema préstamos frente a AAA; acreedor preferente.
+\item \emph{Extensiones}: revisión de los marcos de capital del G-20 (2022): apetito de riesgo, capital exigible, \concepto{capital híbrido} (cuenta como patrimonio), transferir riesgo, agencias. BIRF: 20 $\to$ 19\,\% (2023) $\to$ 18\,\% (2024); híbrido de 12 accionistas \dato{1.200 M\$}{BM}; BAfD, primer híbrido en el mercado (2024); FMI: comprarlo con DEG.
+\item \emph{Evidencia}: impagos muy bajos (\autor{Perraudin} et al., 2016); las agencias apenas valoran el capital exigible (\autor{Humphrey}, 2017). \emph{Valoración}: riesgo de cambio en el país; no explica los bienes globales.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{palanca-capital}{Bajar $e^{\min}$ mueve a lo largo de la curva; el capital híbrido la desplaza}
+\textbf{2. Bienes públicos globales} (\autor{Kaul} et al., 1999): clima, pandemias, estabilidad financiera. $N$ países, $G=\sum g_i$, bienestar $b_i(G)-c\,g_i$. Nash: $b_i'(G^N)=c$ (polizón) \vertema{3.A.23}. Óptimo:
+\funcionclave{\sum_{i=1}^N b_i'(G^*)=c}
+\begin{itemize}
+\item $G^*>G^N$; la brecha crece con $N$. Se financian con donaciones y fondos, no con préstamos. Agregación (\autor{Hirshleifer}, 1983): suma, eslabón más débil, mejor disparo. Clima de los BMD a renta baja y media: \dato{102.600 M\$}{2025}. Tensión con la pobreza («deriva del mandato», EE.\,UU., 2025).
+\end{itemize}
+\graficorepaso[0.9\linewidth]{bienes-publicos-globales}{Suma vertical de beneficios marginales: $G^*$ frente a $G^N$}
+\textbf{3. Efecto catalizador} (\autor{Rodrik}, 1995). Buenos ($p_A$) y malos ($p_B$), proporción $\lambda$; $\bar p=\lambda p_A+(1-\lambda)p_B$; el mercado se cierra si
+\funcionclave{p_A R\geq1+r^*>\bar p R}
+\begin{itemize}
+\item El banco examina, cofinancia y revela el tipo (\autor{Akerlof}; \autor{Stiglitz}-\autor{Weiss}) \vertema{3.A.13}. Ratio de movilización; adicionalidad; condicionalidad. «De miles de millones a billones» (2015) no se cumplió: \dato{108.700 M\$ movilizados}{2024}; 0,6 \$ por dólar. \autor{Wapenhans} (1992): cultura de aprobar. Versión macro: FMI \vertema{3.B.22}.
+\end{itemize}
+\sub{I.2-I.5. Rasgos, ventanillas, gobierno y actuaciones\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Rasgos}: accionistas Estados, sin lucro; capital suscrito = desembolsado + exigible; bonos (primer \emph{swap}, BM-IBM, 1981); reposiciones y fondos fiduciarios; préstamos de mercado o concesionales; casamiento de plazos; sin préstamos a quien está en atrasos.
+\item \emph{Ventanillas}: dura (BIRF), blanda (AIF), privada (CFI), garantías (MIGA); graduación y países \emph{blend}.
+\item \emph{Gobierno}: Junta de Gobernadores, Directorio (sillas), presidente; votos = básicos + acciones.
+\item \emph{Actuaciones}: proyectos, apoyo presupuestario, programas por resultados; ciclo del proyecto en 4 fases (licitación abierta); salvaguardias (Marco Ambiental y Social, 2018); asistencia técnica; conocimiento.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{II. El Grupo del Banco Mundial\label{rep:II}}
+\begin{ideaclave}
+De reconstruir Europa a la pobreza y, desde 2023, a un «planeta habitable»; 5 entidades, una por ventanilla; la reforma reciente: prestar más con el mismo capital.
+\end{ideaclave}
+\sub{II.1. Información general e historia\label{rep:II.1}}
+\begin{itemize}
+\item BIRF 1944 (189), CFI 1956 (186), AIF 1960 (175), CIADI 1966 (159), MIGA 1988 (182). Hay que ser antes miembro del FMI.
+\item 1947: Francia, 250 M\$; AAA en 1959. 60: AIF. 70: \autor{McNamara}, pobreza; informe \autor{Pearson}. 80: ajuste estructural, Consenso de Washington \vertema{3.B.28}. 90: \autor{Wapenhans}, Panel de Inspección, \autor{Wolfensohn}, PPME. 2000: ODM, IADM. 2010: voz y capital; objetivos gemelos (2013); capital (2018). 2020: hoja de ruta de la evolución, plataforma de garantías en MIGA, 22 indicadores, Misión 300.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{compromisos-gbm}{Compromisos del GBM, ejercicios 2016-2026: de 61.000 a 123.500 M\$}
+\sub{II.2. Estructura y estrategia\label{rep:II.2}}
+\begin{itemize}
+\item Junta, Directorio de 25, presidente estadounidense (\autor{Ajay Banga}, desde 2023), Comité para el Desarrollo con el FMI.
+\item Votos: 5,55\,\% básicos; EE.\,UU. \dato{15,98\,\%}{veto con el 85\,\%}; España \dato{1,84\,\%}{puesto 14}, silla con México, Venezuela y Centroamérica (4,59\,\%).
+\item 2010: +86.200 M\$ y 47,19\,\% para los países en desarrollo; 2018: 13.000 M desembolsados; revisión de 2025 sin aumento selectivo.
+\item Objetivos gemelos (2013): pobreza extrema (3 \$/día desde 2025) <3\,\% y renta del 40\,\% más pobre; misión 2023 «en un planeta habitable».
+\end{itemize}
+\graficorepaso[0.9\linewidth]{votos-birf}{Votos en el BIRF: EE.\,UU., único con veto}
+\sub{II.3. Las 5 entidades\label{rep:II.3}}
+\begin{itemize}
+\item \textbf{BIRF}: Estados de renta media; 332.500 M\$ suscritos, 23.600 desembolsados; bonos AAA; SOFR + margen, hasta 35 años (medio 20); \dato{50.200 M\$}{2026, récord}; $E/L$ 21,6\,\% (mínimo 18). Críticas: EE.\,UU., renta media, lentitud; préstamos en crisis (terreno del FMI).
+\item \textbf{AIF}: umbral \dato{1.365 \$}{ejercicio 2027}; 78 países (19 \emph{blend}); asignación por desempeño; créditos a 31 años, 0,75\,\%; 40 años al 0\,\%; donaciones si hay riesgo de deuda. Reposiciones y bonos desde 2018. \textbf{AIF21}: \dato{100.000 M\$ con 23.700 de donantes}{Seúl, 12/2024}; España \dato{400 M€ (+37\,\%)}{España}.
+\item \textbf{CFI}: sector privado, sin garantía estatal; hasta 25\,\% del coste, nunca mayoritaria; préstamos B. \dato{105.600 M\$ (32.000 propios)}{2026}.
+\item \textbf{MIGA}: seguro contra riesgo político; \dato{10.600 M\$}{2026}; plataforma de garantías del grupo.
+\item \textbf{CIADI}: marco de conciliación y arbitraje (Convenio de Washington, 1965); \dato{63 casos en 2025}{CIADI}; críticas y salidas (Bolivia, Venezuela; Ecuador volvió en 2021, Honduras en 2026).
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{III. Regionales y otras instituciones\label{rep:III}}
+\begin{ideaclave}
+Los regionales copian al BIRF más cerca de los prestatarios; los nuevos reflejan a los emergentes; el sistema aprende a prestar más con el mismo capital.
+\end{ideaclave}
+\sub{III.1. Origen\label{rep:III.1}}
+Motivos económicos (recursos y productos a medida), políticos (voz tras la descolonización) y estratégicos (EE.\,UU., Japón); prestan solo a la región, que tiene la mayoría del capital.
+\sub{III.2-III.6. Los grandes regionales\label{rep:III.2}}
+{\footnotesize\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.13\linewidth}|>{\raggedright\arraybackslash}p{0.1\linewidth}|>{\raggedright\arraybackslash}p{0.37\linewidth}|>{\raggedright\arraybackslash}p{0.17\linewidth}|>{\raggedright\arraybackslash}p{0.1\linewidth}@{}}
+\textbf{Banco} & \textbf{Año} & \textbf{Rasgo} & \textbf{2025} & \textbf{España}\\ \hline
+BID & 1959 & 48 (26 prestatarios); BID Invest, BID Lab; Madrid 1974 & 17.881 M\$ & 1,96\\
+BAfD & 1964 & 81 (54); FAD-17: 11.000 M\$; híbrido 2024 & 11.000 M\$ & 1,02 c\\
+BAsD & 1966 & 69 (50); fondo blando solo donaciones; sin límite de préstamos (2026) & 29.300 M\$ & 0,56\\
+BERD & 1991 & mandato político; $\geq$60\,\% privado; +4.000 M€ (2023) & 16.800 M€ & 3,65 c\\
+BEI & 1958 & banco de la UE; BEI Global; \autor{Calviño} & 100.000 M€ & 11,27 c\\
+\end{tabular}\par}
+c: \% del capital. Presidencias: \autor{Goldfajn}, \autor{Ould Tah}, \autor{Kanda}, \autor{Renaud-Basso}, \autor{Calviño}.
+\sub{III.7-III.8. Otras y nuevas\label{rep:III.7}}
+\begin{itemize}
+\item \emph{Otras}: CAF (1970; récord de \dato{$\approx$18.500 M\$}{2025}; España, accionista de la serie C), BCIE, BDCE, BIsD; fondos: FMAM, Fondo Verde (\dato{3.260 M\$}{2025}) \vertema{3.B.31}, FIDA. ONU sin préstamos: UNCTAD, PNUD.
+\item \emph{Nuevas}: \textbf{BAII} (2016, Pekín; 111 miembros; China 26,4\,\% y veto en el 75\,\%; España fundadora, 1,72\,\%; \autor{Zou Jiayi} desde 2026; 10.590 M\$). \textbf{NDB} (BRICS, 2015, Shanghái; 10 miembros; moneda local; \autor{Rousseff}; 3.171 M\$). Bancos chinos bilaterales \vertema{3.B.29}.
+\end{itemize}
+\sub{III.9. Reforma del sistema y España\label{rep:III.9}}
+\begin{itemize}
+\item \emph{Triple agenda} (\autor{Summers}-\autor{Singh}, 2023): triple mandato, triplicar hasta \dato{$\approx$390.000 M\$/año}{2030}, movilizar privado. Hoja de ruta del G-20 (Río, 2024). \dato{+792.000 M\$ en una década}{10/2026}. Sevilla (2025): «potencialmente triplicar». EE.\,UU.: volver a la misión, menos clima, graduar a China.
+\item \emph{España}: gobernador, el ministro de Economía; Tesoro (SG de Bancos Multilaterales de Desarrollo, FMI y G-20); SEC, ICEX y oficinas comerciales para las licitaciones \vertema{4.A.24}; FEDES (Ley 1/2023, gestionado por la AECID) \vertema{4.A.26}; BERD 137 M€ y BID Invest 140 M\$.
+\end{itemize}
+\graficorepaso[0.95\linewidth]{votos-espana}{España en los BMD (\% de votos o de capital)}
+
+% ==========================================================================
+\bloque[1,5]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: 3 razones de ser (garantía de los accionistas, bienes globales, catalizador); $L^{\max}=E/e^{\min}$; el GBM como modelo; regionales y nuevos.
+\item \textbf{Relevancia}: la palanca más barata: más de 5 \$ de préstamos por dólar de capital.
+\item \textbf{Extensiones}: \vertema{3.B.22} \vertema{3.B.29} \vertema{3.B.28} \vertema{3.B.31} \vertema{3.B.19} \vertema{3.B.42} \vertema{4.A.24} \vertema{4.A.26}.
+\item \textbf{Opinión}: reforma financiera hecha; faltan la voz y la operativa (rapidez, moneda local).
+\item \textbf{Idea final}: el país se arrima al árbol de los accionistas y se financia a su sombra; pero la sombra depende del árbol: ¿lo dejarán crecer, y decidir dónde da a quienes viven bajo él?
+\end{itemize}
+
+% ==========================================================================
+\bloque{Las ventanillas}
+{\small\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}|>{\raggedright\arraybackslash}p{0.34\linewidth}|>{\raggedright\arraybackslash}p{0.17\linewidth}|>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Ventanilla} & \textbf{A quién} & \textbf{Fondos} & \textbf{Ejemplos}\\ \hline
+Dura & Estados de renta media, a tipo de mercado & bonos y capital & BIRF, BID, BAsD, BAfD\\
+Blanda & Estados pobres: créditos muy favorables y donaciones & reposiciones (y bonos en la AIF) & AIF, FAD, FAsD\\
+Privada & empresas, sin garantía del Estado & bonos y capital & CFI, BID Invest, BERD\\
+Garantías & inversores extranjeros, riesgo político & capital y primas & MIGA\\
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Bretton Woods frente a los nuevos}
+{\small\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}|>{\raggedright\arraybackslash}p{0.33\linewidth}|>{\raggedright\arraybackslash}p{0.33\linewidth}@{}}
+ & \textbf{BIRF (1944)} & \textbf{BAII (2016) y NDB (2015)}\\ \hline
+Impulso & EE.\,UU. y Reino Unido & China; los BRICS\\
+Votos & EE.\,UU. 15,98\,\%, veto (85\,\%) & BAII: China 26,4\,\%, veto (75\,\%); NDB: fundadores a partes iguales\\
+Foco & pobreza y planeta habitable & infraestructuras; moneda local (NDB)\\
+Normas & salvaguardias y evaluación propias & BAII: normas parecidas y cofinanciación con el BM\\
+España & 1,84\,\% & BAII: fundadora, 1,72\,\%; NDB: no\\
+\end{tabular}\par}
+
+% ==========================================================================
+\bloque{Definiciones}
+\begin{itemize}
+\item \concepto{BMD}: institución financiera de Estados que capta en los mercados y de los donantes y presta, con conocimiento, a países en desarrollo.
+\item \concepto{Capital exigible}: suscrito y no desembolsado; garantía, no recurso para prestar.
+\item \concepto{Patrimonio sobre préstamos} ($E/L$, \emph{equity-to-loans}): la ratio que fija la palanca.
+\item \concepto{Capital híbrido}: perpetuo y subordinado; las agencias lo cuentan como patrimonio.
+\item \concepto{Acreedor preferente}: los países pagan antes al BMD que a otros acreedores.
+\item \concepto{Reposición}: aportación periódica de los donantes a una ventanilla blanda.
+\item \concepto{Graduación}: paso de la ventanilla blanda a la dura (inversa, al revés).
+\item \concepto{Adicionalidad}: financiar lo que el mercado no financiaría.
+\item \concepto{Ratio de movilización}: dinero privado por dólar del BMD.
+\item \concepto{Bien público global}: no rival ni excluible entre países.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item GBM: \dato{123.500 M\$}{ej. 2026}; BIRF \dato{50.200}{récord}; CFI \dato{105.600 con lo movilizado}{CFI}; MIGA \dato{10.600}{MIGA}; movilización privada del grupo \dato{112.000 M\$}{BM}.
+\item BIRF: suscrito \dato{332.500 M\$}{BM}, desembolsado \dato{23.600}{BM}; patrimonio utilizable \dato{59.700}{BM}; $E/L$ \dato{21,6\,\%}{mínimo 18}.
+\item AIF21: \dato{100.000 M\$}{23.700 de 57-59 donantes}; umbral \dato{1.365 \$}{78 países}.
+\item Clima BMD a renta baja y media: \dato{102.600 M\$}{2025}; movilización privada BMD: \dato{108.700 M\$}{2024}.
+\item Reformas de capital: \dato{792.000 M\$ más en 10 años}{presidentes de los BMD, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1944}{Bretton Woods: FMI y BIRF}
+\hito{1954}{\autor{Samuelson}: bienes públicos}
+\hito{1956}{CFI}
+\hito{1959}{BID; AAA del BIRF}
+\hito{1960}{AIF}
+\hito{1964}{BAfD}
+\hito{1966}{BAsD; CIADI}
+\hito{1969}{Informe \autor{Pearson}}
+\hito{1983}{\autor{Hirshleifer}: eslabón más débil}
+\hito{1988}{MIGA}
+\hito{1991}{BERD}
+\hito{1992}{Informe \autor{Wapenhans}}
+\hito{1995}{\autor{Rodrik}: ¿por qué préstamos multilaterales?}
+\hito{1999}{\autor{Kaul} et al.: bienes públicos globales}
+\hito{2010}{Voz y capital del GBM}
+\hito{2015}{NDB; «de miles de millones a billones»}
+\hito{2016}{BAII}
+\hito{2018}{Capital BIRF y CFI; bonos de la AIF}
+\hito{2022}{Revisión CAF del G-20}
+\hito{2023}{\autor{Banga}; triple agenda; BIRF 19\,\%}
+\hito{2024}{BIRF 18\,\%; híbrido del BAfD; AIF21; hoja de ruta}
+\hito{2025}{Sevilla; FAD-17}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué existe un BMD si hay mercados?} Fallos del crédito soberano, bienes globales, información (\autor{Rodrik}).
+\item \textbf{¿Qué limita lo que presta?} El patrimonio y el mínimo $e^{\min}$ que exige su AAA.
+\item \textbf{¿Qué es el capital híbrido?} Deuda perpetua y subordinada que las agencias cuentan como patrimonio.
+\item \textbf{¿Por qué el capital exigible no basta?} Las agencias apenas lo valoran: nunca se ha exigido.
+\item \textbf{¿AIF o BIRF?} Renta por debajo del umbral y sin solvencia, AIF; si cumple una sola condición, \emph{blend}.
+\item \textbf{¿Qué es la adicionalidad?} Financiar solo lo que el mercado no financiaría.
+\item \textbf{¿Por qué nació el BAII?} Lentitud de la reforma de voz y necesidad de infraestructuras; ha copiado las normas del BM.
+\item \textbf{¿El BEI es un BMD?} Sobre todo es el banco de la UE; fuera, como BEI Global.
+\item \textbf{¿Qué hace España?} Accionista de todos, Tesoro en los directorios, SEC e ICEX en las licitaciones.
+\item \textbf{¿Por qué no se dan préstamos para bienes globales a los más pobres?} Lo disfrutan todos: donaciones y fondos especiales.
+\item \textbf{¿Funcionó «de miles de millones a billones»?} No: movilización de unos 0,6 \$ por dólar, menos en renta baja.
+\item \textbf{¿Qué critica EE.\,UU.?} Deriva del mandato, clima, préstamos a China; pide graduar a los de renta media alta.
+\item \textbf{¿Por qué fracasó la revisión del accionariado de 2025?} Hace falta el 75\,\% para un aumento selectivo y el 85\,\% para más votos básicos.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item AIF = Asociación Internacional de \emph{Fomento} (no «de Desarrollo»); CIADI (no «CIEDI»).
+\item BIRF 1944 (primer préstamo, 1947); CFI 1956; AIF 1960; CIADI 1966; MIGA 1988.
+\item BAfD: convenio de 1963, opera desde 1964; BEI: Tratado de 1957, opera desde 1958; BAII: opera desde 2016.
+\item Mínimo del BIRF: 18\,\% (no 20); votos básicos 5,55\,\%; enmiendas 85\,\%.
+\item España en la CAF: accionista de la serie C, no país miembro de la serie A.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

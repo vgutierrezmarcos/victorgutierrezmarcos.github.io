@@ -1,0 +1,196 @@
+tema: 3B30
+fecha_inventario: 2026-11-14
+# Datos que caducan del 3.B.30 (CRITERIOS §4). Los CSV están en datos/. Quedan fuera las fechas
+# históricas (1944, 1947, 1956, 1959, 1960, 1966, 1988, 1991...) y las normas (umbral del 85 %, votos básicos del 5,55 %).
+datos:
+  - id: compromisos-gbm-fy2026
+    texto: "el Grupo del Banco Mundial comprometió 123.500 millones de dólares, el doble que 10 años antes"
+    donde: [3B30.tex]
+    valor: [123.5, 61.3]
+    unidad: "miles de millones de dólares"
+    periodo: "ejercicio 2026 (1-7-2025 a 30-6-2026)"
+    fuente: ["BM2026InformeAnual"]
+    organismo: "Banco Mundial"
+    serie: "Informe anual 2026, tablas 1 y 2 (BIRF 50,177; AIF 30,774; CFI 31,977; MIGA 10,551)"
+    url: https://openknowledge.worldbank.org/server/api/core/bitstreams/05a5e2d6-3aae-48cd-af02-e4c6d974ead4/content
+    periodicidad: "anual (informe anual, octubre)"
+    proxima: 2027-10
+    familia: bm-informe-anual
+    depende: ["datos/compromisos-gbm.csv"]
+    frase: "Enganche, II.1 y gráfico compromisos-gbm"
+
+  - id: birf-compromisos-ratios-fy2026
+    texto: "comprometió un récord de 50.200 millones de dólares en el ejercicio 2026 [...] su patrimonio sobre préstamos era del 21,6~\\%, por encima del mínimo del 18~\\%"
+    donde: [3B30.tex]
+    valor: {"birf": 50.2, "el": 21.6, "patrimonio_utilizable": 59.7, "capital_suscrito": 332.5, "desembolsado": 23.6}
+    unidad: "miles de millones de dólares y %"
+    periodo: "ejercicio 2026"
+    fuente: ["BM2026InformeAnual"]
+    organismo: "Banco Mundial"
+    serie: "Informe anual 2026, tabla 8"
+    url: https://openknowledge.worldbank.org/server/api/core/bitstreams/05a5e2d6-3aae-48cd-af02-e4c6d974ead4/content
+    periodicidad: "anual"
+    proxima: 2027-10
+    familia: bm-informe-anual
+    depende: []
+    frase: "II.3 BIRF y anexo B"
+
+  - id: cfi-miga-ciadi-fy2026
+    texto: "105.600 millones de dólares, de los que 32.000 por cuenta propia y 73.600 movilizados; MIGA 10.600 millones; CIADI 63 casos en 2025 y 1.085 desde su creación"
+    donde: [3B30.tex]
+    valor: {"cfi_total": 105.6, "cfi_propia": 32.0, "miga": 10.6, "ciadi_2025": 63, "ciadi_acum": 1085}
+    unidad: "miles de millones de dólares y casos"
+    periodo: "ejercicio 2026 y año 2025"
+    fuente: ["BM2026InformeAnual", "CIADI2026Casos"]
+    organismo: "Banco Mundial / CIADI"
+    serie: "Informe anual 2026; Carga de casos del CIADI 2026-1"
+    url: https://icsid.worldbank.org/sites/default/files/publications/2026-1_SPA_TheICSIDCaseloadStatistics.pdf
+    periodicidad: "anual / semestral"
+    proxima: 2027-02
+    familia: bm-informe-anual
+    depende: []
+    frase: "II.3"
+
+  - id: miembros-gbm
+    texto: "BIRF 189, AIF 175, CFI 186, MIGA 182, CIADI 159"
+    donde: [3B30.tex]
+    valor: {"birf": 189, "aif": 175, "cfi": 186, "miga": 182, "ciadi": 159}
+    unidad: "países"
+    periodo: "30-6-2026 (CIADI 16-8-2026)"
+    fuente: ["BM2026Miembros", "CIADI2026Estados"]
+    organismo: "Banco Mundial"
+    serie: "Página de miembros y lista ICSID/3"
+    url: https://www.worldbank.org/en/about/leadership/members
+    periodicidad: "cuando cambie"
+    proxima: 2027-07
+    familia: bm-miembros
+    depende: []
+    frase: "Tabla tab:entidades-gbm"
+
+  - id: votos-birf-2026
+    texto: "Estados Unidos tiene el 15,98~\\% [...] España tiene el 1,84~\\%, el puesto 14; silla de España 4,59~\\%"
+    donde: [3B30.tex]
+    valor: {"eeuu": 15.98, "espana": 1.84, "silla_espana": 4.59}
+    unidad: "% de votos"
+    periodo: "30-6-2026"
+    fuente: ["BM2026Votos", "BM2026Directores"]
+    organismo: "Banco Mundial"
+    serie: "IBRD Subscriptions and Voting Power of Member Countries"
+    url: https://thedocs.worldbank.org/en/doc/a16374a6cee037e274c5e932bf9f88c6-0330032021/original/IBRDCountryVotingTable.pdf
+    periodicidad: "trimestral"
+    proxima: 2027-01
+    familia: bm-votos
+    depende: ["datos/votos-birf.csv", "datos/votos-gbm.csv"]
+    frase: "II.2 y gráfico votos-birf"
+
+  - id: aif21
+    texto: "hasta 100.000 millones de dólares con solo 23.700 millones de los donantes [...] España aportó 400 millones de euros, un 37~\\% más"
+    donde: [3B30.tex]
+    valor: {"total": 100, "donantes": 23.7, "espana_meur": 400}
+    unidad: "miles de millones de dólares y millones de euros"
+    periodo: "AIF21 (ejercicios 2026-2028)"
+    fuente: ["AIF2025AIF21", "BM2024AIF21Espana"]
+    organismo: "AIF"
+    serie: "Informe de los directores ejecutivos de la AIF21"
+    url: https://documents1.worldbank.org/curated/en/099042525174542121/pdf/BOSIB-7a002896-02fc-42a9-b4f3-78737cf8b931.pdf
+    periodicidad: "trienal (AIF22: negociación 2027)"
+    proxima: 2027-12
+    familia: aif
+    depende: []
+    frase: "II.3 AIF"
+
+  - id: aif-umbral
+    texto: "1.365 dólares en el ejercicio 2027 [...] son 78, de ellos 19 de financiación mixta"
+    donde: [3B30.tex]
+    valor: {"umbral": 1365, "paises": 78, "blend": 19}
+    unidad: "dólares y países"
+    periodo: "ejercicio 2027"
+    fuente: ["AIF2026Paises"]
+    organismo: "AIF"
+    serie: "Borrowing countries"
+    url: https://ida.worldbank.org/en/about/borrowing-countries
+    periodicidad: "anual (1 de julio)"
+    proxima: 2027-07
+    familia: aif
+    depende: []
+    frase: "II.3 AIF y anexo C"
+
+  - id: bmd-compromisos-2025
+    texto: "tabla tab:regionales: BID 17.881; BAfD 11.000; BAsD 29.300; BERD 16.800 M€; BEI 100.000 M€; BAII 10.590; NDB 3.171; CAF 18.560"
+    donde: [3B30.tex]
+    valor: {"bid": 17881, "bafd": 11000, "basd": 29300, "berd_meur": 16800, "bei_meur": 100000, "baii": 10590, "ndb": 3171, "caf": 18560}
+    unidad: "millones de dólares (o euros)"
+    periodo: 2025
+    fuente: ["BID2026Negocio", "BAfD2026Informe", "BAsD2026Estados", "BERD2026Record", "BEI2026Resultados", "BAII2026Informe", "NDB2026Informe", "CAF2026Estados"]
+    organismo: "Cada banco"
+    serie: "Informes anuales 2025"
+    url: https://www.adb.org/sites/default/files/institutional-document/1137361/management-discussion-and-analysis-and-annual-financial-statements-2025.pdf
+    periodicidad: "anual"
+    proxima: 2027-06
+    familia: bmd-anual
+    depende: ["datos/compromisos-bmd.csv"]
+    frase: "III y tabla tab:regionales; CAF sin comunicado oficial localizado"
+
+  - id: votos-espana-bmd
+    texto: "España: BID 1,96 (2023); BAfD 1,02 (capital, 2023); BAsD 0,56; BERD 3,65; BEI 11,27; BAII 1,72; CAF 4,6"
+    donde: [3B30.tex]
+    valor: {}
+    unidad: "% de votos o de capital"
+    periodo: "2023-2026"
+    fuente: ["Espana2024CapitalExigible", "BAsD2026Estados", "BAII2026Miembros", "BERD2025Espana", "BEI2025Informe", "BIDInvest2026Espana"]
+    organismo: "Cada banco"
+    serie: "Tablas de voto y estados financieros"
+    url: https://www.aiib.org/en/about-aiib/governance/members-of-bank/index.html
+    periodicidad: "anual"
+    proxima: 2027-06
+    familia: bmd-votos
+    depende: ["datos/votos-espana.csv", "datos/votos-espana-grafico.csv"]
+    frase: "III, tabla tab:regionales y gráfico votos-espana (anexo C)"
+
+  - id: caf-sistema-792
+    texto: "las medidas adoptadas desde 2023 les permitirán prestar unos 792.000 millones de dólares más en la próxima década"
+    donde: [3B30.tex]
+    valor: [792]
+    unidad: "miles de millones de dólares"
+    periodo: "octubre de 2026"
+    fuente: ["BMD2026Declaracion"]
+    organismo: "Presidentes de los BMD"
+    serie: "Declaración conjunta de Manila"
+    url: https://www.adb.org/sites/default/files/news-release/1184496/MDB-Heads-Joint-Statement-October-2026-1.pdf
+    periodicidad: "semestral (declaraciones de los presidentes)"
+    proxima: 2027-04
+    familia: bmd-reforma
+    depende: []
+    frase: "Enganche, I.1.1 c) y III.9"
+
+  - id: clima-movilizacion-bmd
+    texto: "financiación climática de los BMD a renta baja y media 102.600 millones en 2025 (+21 %), 35.000 adaptación; movilización privada 108.700 millones en 2024"
+    donde: [3B30.tex]
+    valor: {"clima_2025": 102.6, "adaptacion": 35, "movilizacion_2024": 108.7}
+    unidad: "miles de millones de dólares"
+    periodo: "2025 y 2024"
+    fuente: ["MDB2026Clima", "MDB2026Movilizacion"]
+    organismo: "BMD (informes conjuntos)"
+    serie: "Joint Report on MDB Climate Finance 2025; Joint report on mobilization 2024"
+    url: https://coebank.org/documents/1882/2025_Joint_Report_on_Multilateral_Development_Banks_Climate_Finance.pdf
+    periodicidad: "anual"
+    proxima: 2027-07
+    familia: bmd-clima
+    depende: []
+    frase: "I.1.2 d) y I.1.3 d)"
+
+  - id: espana-aportaciones
+    texto: "BERD 137 millones de euros; BID Invest 140 millones de dólares"
+    donde: [3B30.tex]
+    valor: {"berd_meur": 137.15, "bidinvest_musd": 140.35}
+    unidad: "millones"
+    periodo: -1
+    fuente: ["Hacienda2024BERD", "Hacienda2025BIDInvest"]
+    organismo: "Ministerio de Economía (Consejo de Ministros)"
+    serie: "Referencias del Consejo de Ministros"
+    url: https://www.hacienda.gob.es/GabineteMinistro/Notas%20Prensa/2025/CONSEJO-MINISTROS/25-03-25-NP-CM-Ampliacion-capital-BID-Invest.pdf
+    periodicidad: "cuando haya ampliaciones"
+    proxima: null
+    familia: espana-bmd
+    depende: []
+    frase: "III.9"

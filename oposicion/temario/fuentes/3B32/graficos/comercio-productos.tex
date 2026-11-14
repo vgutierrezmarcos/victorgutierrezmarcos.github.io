@@ -1,0 +1,35 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Exportaciones mundiales de mercancías por productos según la CUCI (% del
+% total), 1995-2025. Banco Mundial, WDI a partir de UN Comtrade;
+% ../datos/comercio-productos.csv (consulta 14/11/2026). 1995 -> 2025:
+% manufacturas 75,1 -> 69,7; combustibles 6,7 -> 9,5 (14,5 en 2013 y 2022);
+% minerales y metales 3,3 -> 4,0; alimentos 9,8 -> 9,0; materias primas
+% agrícolas 2,6 -> 1,1; sin clasificar, el resto.
+% Paleta: manufacturas azul marino; combustibles bermellón; minerales gris;
+% alimentos amarillo; agrícolas verde; sin clasificar blanco.
+% Capas: manufacturas -> extractivas -> agrícolas -> sin clasificar -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/comercio-productos.csv}\pr
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=7cm, xmin=1995, xmax=2025, ymin=0, ymax=100,
+      xtick={1995,2000,...,2025}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={\% de las exportaciones de mercancías}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, stack plots=y, area style, clip=false, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, fill=dicze, draw=dicze!70!black] table[x=anio, y=manufacturas] {\pr} \closedcycle;}
+    \capa{2}{\addplot[on layer=dicbarras, fill=dicenergia, draw=dicenergia!70!black] table[x=anio, y=combustibles] {\pr} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicotroclaro, draw=dicotro] table[x=anio, y=minerales] {\pr} \closedcycle;}
+    \capa{3}{\addplot[on layer=dicbarras, fill=dicalimentos, draw=dicalimentos!70!black] table[x=anio, y=alimentos] {\pr} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicfbcf, draw=dicfbcf!70!black] table[x=anio, y=agricolas] {\pr} \closedcycle;}
+    \capa{4}{\addplot[on layer=dicbarras, fill=white, draw=dicotro] table[x=anio, y=sin_clasificar] {\pr} \closedcycle;}
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, text=white, anchor=west]{(1996,35)}{manufacturas: 75,1 $\to$ 69,7}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2025.3,73)}{combustibles 9,5}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2025.3,80)}{minerales y metales 4,0}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2025.3,86.6)}{alimentos 9,0}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2025.3,92)}{agrícolas 1,1}
+      \dicrotulo[font=\scriptsize, anchor=west]{(2025.3,97)}{sin clasificar 6,6}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

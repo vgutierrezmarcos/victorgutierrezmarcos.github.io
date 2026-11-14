@@ -1,0 +1,36 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Crecimiento del PIB real (%), 2000-2031: mundo, avanzadas y emergentes y en
+% desarrollo. FMI, WEO de octubre de 2026 (DataMapper NGDP_RPCH);
+% ../datos/crecimiento-mundial.csv (consulta 14/11/2026). Desde 2026, previsión.
+% Medias: mundo 3,7 (2000-2019) y 3,2 (2028-2031). 2009: -0,4; 2020: -2,7;
+% 2026: 3,1. Colores: mundo morado (dicpib), avanzadas azul marino (dicze),
+% emergentes dorado (dicprestamos).
+% Capas: previsión sombreada -> cero y media -> mundo -> avanzadas -> emergentes -> puntos y rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/crecimiento-mundial.csv}\crm
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=7cm, xmin=2000, xmax=2031.5, ymin=-4.5, ymax=9,
+      xtick={2000,2005,...,2030}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={\% anual}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!25}, clip=false, dicapas,
+      legend style={at={(0.5,-0.13)}, anchor=north, draw=none, font=\footnotesize, legend columns=3,
+        /tikz/every even column/.append style={column sep=10pt}}, legend cell align=left]
+    \capa{1}{\dicsombra[fill=tceegris!12]{2025.5}{-4.5}{2031.5}{9}
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=north]{(2028.5,8.9)}{previsión}}
+    \capa{2}{\dicraya{(2000,0) (2031.5,0)}
+      \dicraya[dicumbral]{(2000,3.7) (2019,3.7)}
+      \dicraya[dicumbral]{(2028,3.2) (2031.5,3.2)}}
+    \capa{3}{\addplot[diclinea=dicpib] table[x=anio, y=mundo] {\crm}; \addlegendentry{mundo}}
+    \capa{4}{\addplot[diclinea=dicze] table[x=anio, y=avanzadas] {\crm}; \addlegendentry{avanzadas}}
+    \capa{5}{\addplot[diclinea=dicprestamos] table[x=anio, y=emergentes] {\crm}; \addlegendentry{emergentes y en desarrollo}}
+    \capa{6}{\addplot[on layer=dicpuntos, dicsuelto, dicpuntos=dicpib] coordinates {(2009,-0.4) (2020,-2.7) (2026,3.1)};
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=west]{(2001,-3.6)}{-\,-\,- medias: 3,7 (2000-2019) y 3,2 (2028-2031)}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=west]{(2031.6,3.2)}{3,2}
+      \dicrotulo[font=\scriptsize, anchor=east]{(2008.7,-0.5)}{$-0{,}4$}
+      \dicrotulo[font=\scriptsize, anchor=north west]{(2020.2,-2.8)}{$-2{,}7$}
+      \dicrotulo[font=\scriptsize, anchor=north east]{(2025.9,3.05)}{3,1}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

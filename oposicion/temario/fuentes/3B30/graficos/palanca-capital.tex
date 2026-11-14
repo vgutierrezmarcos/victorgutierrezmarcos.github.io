@@ -1,0 +1,40 @@
+% La palanca del capital de un BMD: préstamos máximos L^max = E/e^min según el
+% mínimo de patrimonio sobre préstamos (e^min, en %). Patrimonio ilustrativo
+% E = 60 (miles de millones de dólares, del orden del patrimonio utilizable del
+% BIRF) y E + H = 65 con 5 de capital híbrido. Puntos: e^min = 20 % (L = 300),
+% 18 % (L = 333) y 18 % con capital híbrido (L = 361).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10.5cm, height=7.2cm,
+      xmin=12, xmax=31, ymin=150, ymax=520,
+      axis lines=left, axis line style={->,thick},
+      xlabel={$e^{\min}$ (\%)}, ylabel={$L^{\max}$},
+      xlabel style={at={(axis description cs:1.02,0)},anchor=west},
+      ylabel style={at={(axis description cs:0,1)},anchor=south east,rotate=-90},
+      xtick={14,16,18,20,22,24,26,28,30}, ytick={200,250,300,350,400,450,500},
+      tick label style={font=\footnotesize},
+      clip=false,
+    ]
+    % 1: la curva L = E/e
+    \capa{1}{\addplot[curva1,domain=12.5:30,samples=80] {6000/x};}
+    \capa{1}{\node[etiqueta,text=tceemorado,anchor=west] at (axis cs:30,200) {$L^{\max}=E/e^{\min}$};}
+    % 2: el mínimo del 20 %
+    \capa{2}{\addplot[guia] coordinates {(20,150) (20,300) (12,300)};}
+    \capa{2}{\addplot[only marks,mark=*,mark size=1.8pt,black] coordinates {(20,300)};}
+    % 3: baja al 18 %
+    \capa{3}{\addplot[guia] coordinates {(18,150) (18,333.3) (12,333.3)};}
+    \capa{3}{\addplot[only marks,mark=*,mark size=1.8pt,black] coordinates {(18,333.3)};}
+    \capa{3}{\draw[flecha] (axis cs:19.7,306) -- (axis cs:18.3,328);}
+    % 4: el capital híbrido desplaza la curva
+    \capa{4}{\addplot[curvanueva,desplazada,domain=12.5:30,samples=80] {6500/x};}
+    \capa{4}{\node[etiqueta,text=tceerojo,anchor=west] at (axis cs:30,232) {$(E+H)/e^{\min}$};}
+    \capa{4}{\addplot[only marks,mark=*,mark size=1.8pt,tceerojo] coordinates {(18,361.1)};}
+    \capa{4}{\draw[flecha] (axis cs:17.6,336) -- (axis cs:17.6,357);}
+    \capa{4}{\node[etiqueta,text=tceerojo,anchor=west,align=left] at (axis cs:18.6,385) {con capital\\híbrido};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

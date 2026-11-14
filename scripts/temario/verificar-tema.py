@@ -646,7 +646,22 @@ def verificar(tema):
                 pie = [y for y in pie if y > alto * 0.85]
                 limite = max(pie) - 8 if pie else alto - 60
                 cajas = [fitz.Rect(i['bbox']) for i in pag.get_image_info()]
-                cajas += [d['rect'] for d in pag.get_drawings() if d['rect'].height > 2 and d['rect'].width > 2]
+                # los dibujos recortados (p. ej. un mapa dentro de unos ejes) cuentan
+                # solo por la parte visible: se cruza su caja con los recortes activos
+                recortes = []
+                for d in pag.get_drawings(extended=True):
+                    nivel = d.get('level', 0)
+                    recortes = [(lv, r) for lv, r in recortes if lv < nivel]
+                    if d.get('type') == 'clip':
+                        recortes.append((nivel, fitz.Rect(d['scissor'])))
+                        continue
+                    if d.get('type') == 'group' or 'rect' not in d:
+                        continue
+                    caja = fitz.Rect(d['rect'])
+                    for _, r in recortes:
+                        caja = caja & r
+                    if caja.height > 2 and caja.width > 2:
+                        cajas.append(caja)
                 cajas = [c for c in cajas if c.y0 > 60 and c.y0 < limite]
                 if not lineas and not cajas and n < doc.page_count:
                     errores.append(f'Página {n} del PDF en blanco')

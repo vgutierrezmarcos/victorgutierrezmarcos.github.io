@@ -1,0 +1,63 @@
+% Solicitudes de consultas presentadas cada año en el sistema de solución de
+% diferencias de la OMC, 1995-2026 (2026: hasta el 14/11). Fuente en la cabecera
+% de ../datos/diferencias-anio.csv (OMC, base de datos de diferencias, lista
+% cronológica). Barras moradas (2026, más clara y tramada por incompleta) y
+% sombreado del periodo con el Órgano de Apelación bloqueado (desde el 11/12/2019).
+% Capas: barras -> ejes -> sombreado y su rótulo -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{difbarra}{tceemorado!80}
+\colorlet{difparcial}{tceemorado!35}
+\colorlet{difsombra}{tceerojo!8}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/diferencias-anio.csv}\diferencias
+\pgfplotsset{ejesdif/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesdif/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14.5cm, height=7.2cm,
+      xmin=1994.2, xmax=2026.8, ymin=0, ymax=62,
+      xtick={1995,2000,...,2025}, minor xtick={1995,...,2026},
+      ytick={0,10,...,60},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Solicitudes de consultas (número)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, ybar, bar width=0.68, bar shift=0pt,
+      ejesdif, dicapas,
+    ]
+    % 1: barras (2026, parcial, aparte)
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, dicbarra=difbarra,
+        restrict x to domain=1995:2025]
+        table[x=anio, y=solicitudes] {\diferencias};
+      \addplot[on layer=dicbarras, forget plot, dicbarratrama=difparcial]
+        coordinates {(2026,2)};
+    }
+    % 2: ejes (ver ejesdif)
+    % 3: Órgano de Apelación bloqueado (sombreado en dicfondo, bajo las barras)
+    \capa{3}{
+      \dicsombra[fill=difsombra]{2019.95}{0}{2026.5}{62}
+      \dicrotulo[font=\footnotesize,text=tceerojo!80!black,anchor=north,align=center]{(2023.22,61)}{Órgano de Apelación\\bloqueado (desde\\el 11/12/2019)}
+    }
+    % 4: rótulos
+    \capa{4}{
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=1pt,align=center]{(1997,50)}{Máximo: 50}
+      \dicrotulo[font=\footnotesize,anchor=south east,xshift=-1pt,yshift=2pt,align=right]{(2018,39)}{39: aranceles de EE.~UU.\\al acero y al aluminio\\y respuestas}
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=1pt]{(2020,5)}{5}
+      \dicrotulo[font=\footnotesize,anchor=south west,xshift=2pt,align=left]{(2020,24)}{MPIA\\(abril de 2020)}
+      \addplot[on layer=axis descriptions, dicsuelto, draw=tceegris, thin]
+        coordinates {(2020.35,24.5) (2020,10)};
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=1pt,align=center]{(2025,13)}{13: aranceles\\de EE.~UU.}
+      \dicrotulo[font=\scriptsize,anchor=south west,xshift=-2pt,yshift=1pt,align=left,text=tceegris]{(2026,2)}{hasta\\el 14/11}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

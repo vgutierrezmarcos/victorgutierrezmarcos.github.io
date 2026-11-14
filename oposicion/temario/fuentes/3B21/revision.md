@@ -136,3 +136,6 @@ Revisión completa del 13/11/2026 (entrega 1: tema y ficha de repaso; sin vídeo
 - **Apoyo** (no se dibujan): el dólar real (Plaza y Louvre), la apertura comercial, los desequilibrios, las reservas por monedas, el arancel efectivo de EE. UU. y la cronología; de cada uno, solo la cifra clave en la voz.
 - **Tabla de las crisis de los emergentes**: como apoyo, fila a fila mientras se nombra cada crisis.
 - **No decir números de temas** en voz alta: «la teoría de las crisis», «el tema del FMI», etc.
+
+## Coherencia con el 3.B.33 (14/11/2026)
+- La CM14 (Yaundé, marzo de 2026) no terminó «sin resultados»: aprobó tres decisiones menores (trato especial y diferenciado en MSF/OTC, entre otras), aunque sin acuerdos de calado. Corregido en el tema y en la ficha, en línea con el 3.B.33.

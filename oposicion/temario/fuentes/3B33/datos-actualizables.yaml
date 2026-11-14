@@ -1,0 +1,241 @@
+tema: 3B33
+fecha_inventario: 2026-11-14
+datos:
+  - id: miembros-omc
+    texto: "la OMC tiene 166 miembros [...] y 22 países negocian su adhesión"
+    donde: [3B33.tex, repaso/3B33-repaso.tex, graficos/estructura-omc.tex]
+    valor: 166
+    unidad: miembros
+    periodo: "2026-11"
+    fuente: OMC2026Miembros
+    organismo: OMC
+    serie: "countrylib.js (numMembers = 166; última adhesión 30/08/2024, Timor-Leste); tracker de adhesiones (22)"
+    url: https://www.wto.org/english/thewto_e/whatis_e/tif_e/org6_e.htm
+    periodicidad: cuando hay adhesiones (Uzbekistán y Etiopía, las más avanzadas)
+    proxima: sin fecha
+    familia: omc-institucion
+
+  - id: nmf-cuota-comercio
+    texto: "solo el 72 % del comercio mundial se hacía ya en condiciones de nación más favorecida, frente al 83 % de 2022"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: 72
+    unidad: "% del comercio mundial de mercancías"
+    periodo: "2026-02"
+    fuente: OMC2026Perspectivas
+    organismo: OMC
+    serie: "Global Trade Outlook, marzo de 2026 (72 %, finales de febrero de 2026); World Tariff Profiles 2025, tema especial (83 % a finales de 2022; 74 % en mayo de 2025)"
+    url: https://www.wto.org/english/news_e/news26_e/stat_19mar26_329_e.htm
+    periodicidad: irregular (perspectivas del comercio, abril y octubre)
+    proxima: "2027-04"
+    familia: omc-comercio
+
+  - id: rondas-gatt
+    texto: "gráfico rondas-gatt: participantes y recorte arancelario medio por ronda"
+    donde: [graficos/rondas-gatt.tex, datos/rondas-gatt.csv, 3B33.tex]
+    valor: null
+    unidad: "países; % de recorte"
+    periodo: "1947-1994"
+    fuente: OMC2026AniosGATT
+    organismo: OMC; Baldwin (2012)
+    serie: "tabla de rondas del GATT (fact4_e.htm); Baldwin (2012), sec. 1.5; Ronda Uruguay, agrm2_e.htm"
+    url: https://www.wto.org/english/thewto_e/whatis_e/tif_e/fact4_e.htm
+    periodicidad: histórico (no cambia)
+    proxima: sin fecha
+    familia: omc-historia
+
+  - id: aranceles-consolidados
+    texto: "la UE consolida y aplica de media el 5 %; Estados Unidos, el 3,4 y el 3,3 %; la India 50,8 y 16,2 %; Brasil 31,4 y 12 %"
+    donde: [3B33.tex, repaso/3B33-repaso.tex, graficos/aranceles-consolidados.tex, datos/aranceles-consolidados.csv]
+    valor: null
+    unidad: "% (media simple)"
+    periodo: "2024"
+    fuente: OMC2025PerfilesArancelarios
+    organismo: OMC, ITC y UNCTAD
+    serie: "World Tariff Profiles 2025, cuadro resumen «All products»"
+    url: https://www.wto.org/english/res_e/booksp_e/world_tariff_profiles25_e.pdf
+    periodicidad: anual (World Tariff Profiles, junio-julio)
+    proxima: "2027-07 (la edición de 2026, con datos de 2025, salió el 29/06/2026: UE 4,9; EE. UU. 3,3; China 7,5; India 16,0; Brasil 12,0; Japón 3,7; pasar el gráfico a esa edición en la próxima actualización)"
+    familia: omc-aranceles
+
+  - id: aranceles-mundo
+    texto: "la media simple de los aranceles NMF aplicados bajó del 13,1 % en 1996 al 8,9 % en 2024, y la ponderada, del 7 al 3,9 %"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: 8.9
+    unidad: "%"
+    periodo: "2024"
+    fuente: OMC2026BlogNMF
+    organismo: OMC
+    serie: "WTO data blog, 22/09/2026"
+    url: https://www.wto.org/english/blogs_e/data_blog_e/blog_dta_22sep26_491_e.htm
+    periodicidad: anual
+    proxima: "2027-09"
+    familia: omc-aranceles
+
+  - id: diferencias
+    texto: "646 solicitudes de consultas (1995-noviembre de 2026); de 20-40 al año antes de 2019 a 5-13 desde 2020"
+    donde: [3B33.tex, repaso/3B33-repaso.tex, graficos/diferencias-anio.tex, datos/diferencias-anio.csv]
+    valor: 646
+    unidad: solicitudes de consultas
+    periodo: "2026-11-14 (último caso DS646, 27/07/2026)"
+    fuente: OMC2026Diferencias
+    organismo: OMC
+    serie: "dispute_case_arrays_e.js (start_date)"
+    url: https://www.wto.org/english/tratop_e/dispu_e/dispu_status_e.htm
+    periodicidad: continua
+    proxima: "2027-01 (cerrar 2026)"
+    familia: omc-diferencias
+
+  - id: apelaciones-vacio-mpia
+    texto: "unas 30 apelaciones pendientes; MPIA: 62 miembros, el 60 % del comercio mundial"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: 62
+    unidad: miembros del MPIA (con los 27 de la UE)
+    periodo: "2026-09"
+    fuente: CE2026MPIA
+    organismo: Comisión Europea; OMC
+    serie: "nota de la Comisión (Camboya, 9/9/2026); 27 apelaciones pendientes desde el 11/12/2019 y 34 en total con estado «under appeal» en la base de datos de la OMC"
+    url: https://policy.trade.ec.europa.eu/news/eu-welcomes-cambodia-wto-appeal-arrangement-2026-09-09_en
+    periodicidad: cuando hay adhesiones al MPIA o apelaciones
+    proxima: sin fecha
+    familia: omc-diferencias
+
+  - id: defensa-comercial
+    texto: "desde 1995 se han abierto unas 7.500 investigaciones antidumping, 800 antisubvenciones y 450 de salvaguardias"
+    donde: [3B33.tex, repaso/3B33-repaso.tex, graficos/defensa-comercial.tex, datos/defensa-comercial.csv]
+    valor: null
+    unidad: investigaciones iniciadas
+    periodo: "1995-2025"
+    fuente: OMC2026DefensaComercial
+    organismo: OMC
+    serie: "AD_InitiationsByRepMem.xlsx, CV_InitiationsByRepMem.xlsx, SG_InitiationsByRepMember.xlsx (fila Total)"
+    url: https://www.wto.org/english/tratop_e/adp_e/adp_e.htm
+    periodicidad: semestral
+    proxima: "2027-05 (datos de 2026)"
+    familia: omc-defensa
+
+  - id: presupuesto-secretaria
+    texto: "El presupuesto de 2026 es de unos 205 millones de francos suizos, y la Secretaría tiene unas 620 personas. Estados Unidos dejó de pagar en 2025 y acumula atrasos"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: 204.9
+    unidad: millones de CHF
+    periodo: "2026"
+    fuente: OMC2026Secretaria
+    organismo: OMC (personal); prensa (presupuesto y atrasos)
+    serie: "secre_e/intro_e.htm; Reuters, mayo de 2026"
+    url: https://www.wto.org/english/thewto_e/secre_e/budget_e.htm
+    periodicidad: anual (presupuesto aprobado en diciembre)
+    proxima: "2026-12"
+    familia: omc-institucion
+    nota: "la página de la OMC solo tiene el presupuesto de 2025; la cifra de 2026 y los atrasos salen de la prensa (B33-07)"
+
+  - id: directora-general
+    texto: "Ngozi Okonjo-Iweala [...] segundo mandato de 4 años desde el 1 de septiembre de 2025"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: null
+    unidad: cargo
+    periodo: "2025-09 a 2029-08"
+    fuente: OMC2026DG
+    organismo: OMC
+    serie: "dg_e.htm"
+    url: https://www.wto.org/english/thewto_e/dg_e/dg_e.htm
+    periodicidad: cada 4 años
+    proxima: "2029-08"
+    familia: omc-institucion
+
+  - id: conferencias-ministeriales
+    texto: "CM14 (Yaundé, 26-30/3/2026): 3 decisiones; expiran las moratorias; CM15 sin sede (Riad, 2028, ofrecida)"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: null
+    unidad: resultados
+    periodo: "2026-11"
+    fuente: OMC2026CG0605
+    organismo: OMC
+    serie: "notas del Consejo General de 6/5, 14-15/7 y 5-6/10/2026"
+    url: https://www.wto.org/english/news_e/news26_e/gc_06may26_386_e.htm
+    periodicidad: Consejo General (diciembre de 2026) y CM15
+    proxima: "2026-12 (Consejo General del 11 y 14 de diciembre: moratoria, reforma, sede de la CM15)"
+    familia: omc-negociaciones
+
+  - id: pesca
+    texto: "en vigor desde el 15 de septiembre de 2025 [...] (más de 120 hoy)"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: 122
+    unidad: aceptaciones
+    periodo: "2026-07"
+    fuente: OMC2026Pesca
+    organismo: OMC
+    serie: "fish_e.htm (122 en julio de 2026 según la DG; 123 con la India según la prensa)"
+    url: https://www.wto.org/english/tratop_e/rulesneg_e/fish_e/fish_e.htm
+    periodicidad: continua
+    proxima: sin fecha
+    familia: omc-negociaciones
+
+  - id: plurilaterales
+    texto: "ATI: 84 participantes, 97 %; ACP: 22 partes, 49 miembros; Aeronaves civiles: 32 signatarios; Facilitación de Inversiones: 131; Comercio Electrónico: 66 en Yaundé"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: null
+    unidad: participantes
+    periodo: "2026-11"
+    fuente: OMC2026ATI
+    organismo: OMC
+    serie: "inftec_e.htm; gp_gpa_e.htm; civair_data.js; invfac_e.htm; mc14_28mar26_341_e.htm"
+    url: https://www.wto.org/english/tratop_e/inftec_e/inftec_e.htm
+    periodicidad: cuando hay adhesiones
+    proxima: sin fecha
+    familia: omc-plurilaterales
+
+  - id: afc-aplicacion
+    texto: "hoy se han cumplido el 89,6 % de los compromisos"
+    donde: [3B33.tex]
+    valor: 89.6
+    unidad: "% de los compromisos de aplicación"
+    periodo: "2026-11"
+    fuente: OMC2026AFC
+    organismo: OMC
+    serie: "TFA database"
+    url: https://www.tfadatabase.org/en
+    periodicidad: continua
+    proxima: sin fecha
+    familia: omc-negociaciones
+
+  - id: vigilancia-g20
+    texto: "las nuevas restricciones a la importación afectaban al 14,3 % de las importaciones del G-20 [...] y las acumuladas desde 2009, al 22 %"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: 14.3
+    unidad: "% de las importaciones del G-20"
+    periodo: "2024-10 a 2025-10"
+    fuente: OMC2025VigilanciaG20
+    organismo: OMC
+    serie: "informe de vigilancia del G-20, 13/11/2025"
+    url: https://www.wto.org/english/news_e/news25_e/tmg20_13nov25_196_e.htm
+    periodicidad: semestral (julio y noviembre)
+    proxima: "2026-11 (informe del G-20 de noviembre de 2026, aún no publicado el 13/11)"
+    familia: omc-comercio
+
+  - id: comercio-mundial
+    texto: "creció un 4,6 % en volumen en 2025 y la OMC prevé un 3,9 % en 2026"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: 3.9
+    unidad: "% volumen de comercio de mercancías"
+    periodo: "2026 (previsión de octubre)"
+    fuente: OMC2026PrensaOct
+    organismo: OMC
+    serie: "Global Trade Outlook, 8/10/2026"
+    url: https://www.wto.org/english/news_e/news26_e/stat_08oct26_510_e.htm
+    periodicidad: semestral (abril y octubre)
+    proxima: "2027-04"
+    familia: omc-comercio
+
+  - id: aranceles-eeuu
+    texto: "sección 122 (10 %, febrero-julio de 2026); sección 301 (10 o 12,5 % a 60 economías, desde el 24/7/2026); techo UE 15 %"
+    donde: [3B33.tex, repaso/3B33-repaso.tex]
+    valor: null
+    unidad: aranceles
+    periodo: "2026-11"
+    fuente: USTR2026Seccion301
+    organismo: USTR; Tribunal Supremo de EE. UU.
+    serie: "Federal Register 91 FR 47318; sentencia Learning Resources v. Trump (20/2/2026)"
+    url: https://ustr.gov/about/policy-offices/press-office/press-releases/2026/july/ustr-takes-action-forced-labor-section-301-investigations
+    periodicidad: cuando cambian
+    proxima: sin fecha
+    familia: aranceles-eeuu

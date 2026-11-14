@@ -1,0 +1,313 @@
+tema: 3B32
+fecha_inventario: 2026-11-14
+# Tema de datos: se pone al día cada año tras el WEO de octubre del FMI.
+# 1) python3 graficos/datos-3B32.py   (rehace datos/*.csv y graficos/centro-gravedad.tex)
+# 2) revisar las cifras de cada entrada en el .tex y en la ficha, y los rótulos y comentarios de los gráficos
+# 3) construir-tema.py 3B32 --solo graficos; después --solo pdf
+datos:
+  - id: weo-crecimiento
+    texto: "el 3,5~\\% en 2025, el 3,1~\\% en 2026 y el 3,4~\\% en 2027"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 3.1
+    unidad: "% (PIB real, mundo, pesos en PPA)"
+    periodo: "2025-2027 (avanzadas 2,0/2,1/1,8; EMED 4,5/3,7/4,4; EE. UU. 2,3; zona del euro 1,2/1,1/1,2; España 2,6/2,5/1,8; Japón 0,7; China 5,0/4,5/4,0; India 7,8/7,0/7,0; Oriente Medio y Asia Central 3,7/-0,3/6,3; Arabia Saudí -3,3; ASEAN-5 4,4; América Latina 2,3; África subsahariana 4,5)"
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "DataMapper NGDP_RPCH (WEOWORLD, ADVEC, OEMDC, AS5, WE, MECA, SSA y países)"
+    url: https://www.imf.org/external/datamapper/NGDP_RPCH
+    periodicidad: semestral (abril y octubre; actualizaciones en enero y julio)
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/crecimiento-mundial.csv, datos/crecimiento-regiones.csv, graficos/crecimiento-mundial.tex, graficos/crecimiento-regiones.tex]
+    frase: "enganche; I.1 «las cifras»; III.2 (China, India, ASEAN, Golfo, América Latina, África); conclusión; ficha"
+    nota: "segunda comprobación: cuadro 1.1 del capítulo 1 del WEO (copia previa a la publicación) y DataMapper. A tipos de mercado: 2,9/2,5/2,8"
+
+  - id: weo-medio-plazo
+    texto: "el FMI prevé un 3,2~\\% anual en 2028-2031, frente al 3,7~\\% de 2000-2019"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 3.2
+    unidad: "% anual"
+    periodo: 2028-2031
+    fuente: FMI2026WEO
+    organismo: FMI
+    url: https://www.imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026
+    periodicidad: semestral
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [graficos/crecimiento-mundial.tex]
+
+  - id: weo-inflacion-petroleo
+    texto: "la inflación mundial repunta del 4,1~\\% en 2025 al 4,7~\\% en 2026"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 4.7
+    unidad: "% (IPC, media anual)"
+    periodo: "2025-2027 (4,1/4,7/4,1); petróleo APSP 67,74/95,74/87,39 $ (+41,3 % en 2026); Ormuz: ~20 mb/d; reapertura supuesta en marzo de 2027; deuda pública avanzadas 108 → 115 % (2025-2031), EMED 74 → 84 %; IA +0,1-0,8 pp a medio plazo"
+    fuente: FMI2026WEO
+    organismo: FMI
+    serie: "DataMapper PCPIPCH; capítulo 1 del WEO"
+    url: https://www.imf.org/external/datamapper/PCPIPCH
+    periodicidad: semestral
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/inflacion-mundial.csv]
+
+  - id: otras-previsiones
+    texto: "la OCDE prevé un 2,9~\\% para 2026 y un 3~\\% para 2027, y el Banco Mundial, un 2,5~\\% para 2026"
+    donde: [3B32.tex]
+    valor: 2.9
+    unidad: "%"
+    periodo: "OCDE, informe intermedio de septiembre de 2026; Banco Mundial, GEP de junio de 2026"
+    fuente: [OCDE2026Interim, BM2026GEP]
+    organismo: OCDE y Banco Mundial
+    url: https://www.oecd.org/en/publications/oecd-economic-outlook-interim-report-september-2026_f751d02b-en.html
+    periodicidad: semestral (OCDE junio y diciembre, intermedios en marzo y septiembre; BM enero y junio)
+    proxima: 2026-12
+    familia: ocde-eo
+    nota: "las cifras de la OCDE, de prensa (Euronews): la nota oficial daba 403. Comprobar en la publicación de diciembre de 2026. BM: «casi una década de convergencia perdida» para EMED sin China ni India"
+
+  - id: peso-pib-ppa
+    texto: "en PPA, los avanzados pasan del 65~\\% del PIB mundial en 1980 al 39,5~\\% en 2025 (36,3~\\% en 2031)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 39.5
+    unidad: "% del PIB mundial en PPA"
+    periodo: "1980-2031 (China 2,1 → 19,6, supera a EE. UU. en 2016; EE. UU. 21,6 → 14,6; UE 27,4 → 14,0; India 2,7 → 8,2 → 10,2 en 2031; EMED superan a avanzadas en 2009; a tipos de mercado, 2025: EE. UU. 26,0, China 16,6, EMED 41,3; BRICS de 11 miembros, 40,5 % en PPA)"
+    fuente: FMI2026DataMapper
+    organismo: FMI
+    serie: "DataMapper PPPSH (y NGDPD para las cuotas a tipos de mercado)"
+    url: https://www.imf.org/external/datamapper/PPPSH
+    periodicidad: semestral
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/peso-pib-ppa.csv, graficos/peso-pib-ppa.tex]
+
+  - id: centro-gravedad
+    texto: "el centro estaba en 1980 en el Atlántico Norte, al este de Groenlandia (66\\textdegree{}~N, 16\\textdegree{}~O)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: "61,5 N; 65,4 E (2025)"
+    unidad: "coordenadas"
+    periodo: "1980, 1990, 2000, 2010, 2020, 2025 y 2031 (3.800 km recorridos 1980-2025; ~2.700 km de profundidad)"
+    fuente: [Quah2011Shifting, FMI2026DataMapper, NaturalEarth2026]
+    organismo: elaboración propia con datos del FMI
+    serie: "PPPGDP por país; centroides del polígono mayor de Natural Earth 1:110m"
+    url: https://www.imf.org/external/datamapper/PPPGDP
+    periodicidad: semestral
+    proxima: 2027-04
+    familia: fmi-weo
+    depende: [datos/centro-gravedad.csv, graficos/centro-gravedad.tex, graficos/datos-3B32.py]
+
+  - id: omc-comercio-2025
+    texto: "en 2025 las exportaciones mundiales de mercancías sumaron 26,3 billones de dólares (+7~\\%) y las de servicios comerciales, 9,6 billones (+8~\\%)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 26.26
+    unidad: "billones de dólares"
+    periodo: "2025 (servicios: transporte 1,54; viajes 1,89; otros 5,78, informáticos 1,22; digitales 5,26, 15,2 % de las exportaciones de bienes y servicios; Europa 53,4 %, Asia 23,3 %, América del Norte 17,6 %; Asia, 71 % del crecimiento del volumen; NMF 80 → 72 %)"
+    fuente: OMC2026GTOS
+    organismo: OMC
+    url: https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf
+    periodicidad: anual (abril; actualización en octubre)
+    proxima: 2027-04
+    familia: omc-gtos
+    nota: "segunda comprobación: UNCTAD, Global Trade Update de abril de 2026 (comercio total ~35 billones, +7,5 %; Sur-Sur +9 %)"
+
+  - id: omc-exportadores
+    texto: "China, primer exportador del mundo desde 2009, vende el 14,4~\\% del total"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 14.4
+    unidad: "% de las exportaciones mundiales de mercancías"
+    periodo: "2025 (tabla tab:exportadores: mercancías China 14,4, EE. UU. 8,3, Alemania 6,7, Países Bajos 3,8, Hong Kong 2,9, Japón 2,8, España 20.ª 1,7; importadores EE. UU. 13,2, China 9,7, Alemania 5,8, Reino Unido 3,6, Países Bajos 3,3, España 16.ª 1,9; servicios EE. UU. 12,7, Reino Unido 7,6, Irlanda 5,9, China 5,3, Alemania 5,3, India 4,3, España 10.ª 2,6; sin intra-UE: China 17,5, UE 13,8)"
+    fuente: OMC2026GTOS
+    organismo: OMC
+    url: https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf
+    periodicidad: anual
+    proxima: 2027-04
+    familia: omc-gtos
+
+  - id: omc-previsiones
+    texto: "el volumen del comercio mundial de mercancías creció un 4,2~\\% en 2025"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 3.9
+    unidad: "% (volumen de mercancías)"
+    periodo: "2025 4,2; 2026 3,9; 2027 4,1; bienes de IA 14,8 % del comercio en el 1.er semestre de 2026 (7-8 % en 2016-2023), 47 % del crecimiento; exportaciones de Asia +9,9 %, Oriente Medio -17,2 % en 2026"
+    fuente: OMC2026PerspectivasOct
+    organismo: OMC
+    url: https://www.wto.org/english/res_e/booksp_e/gtos1026_e.pdf
+    periodicidad: semestral (abril y octubre)
+    proxima: 2027-04
+    familia: omc-gtos
+
+  - id: comercio-pib
+    texto: "el volumen de las exportaciones mundiales creció un 6,2~\\% anual, casi el doble que el PIB (3,3~\\%)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 6.2
+    unidad: "% anual medio"
+    periodo: "1991-2007 (6,2 y 3,3); 2012-2019 (3,2 y 3,0); 2025: 4,9 y 2,9"
+    fuente: BM2026WDIComercio32
+    organismo: Banco Mundial
+    serie: "WDI NE.EXP.GNFS.KD.ZG y NY.GDP.MKTP.KD.ZG (WLD)"
+    url: https://data.worldbank.org/indicator/NE.EXP.GNFS.KD.ZG
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/comercio-pib.csv, graficos/comercio-pib.tex]
+
+  - id: comercio-productos
+    texto: "\\emph{manufacturas}: casi el 70~\\% de las exportaciones de mercancías (el 75~\\% en 1995)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 69.7
+    unidad: "% de las exportaciones de mercancías (CUCI)"
+    periodo: "1995-2025 (2025: combustibles 9,5; minerales y metales 4,0; alimentos 9,0; materias primas agrícolas 1,1; sin clasificar 6,6)"
+    fuente: BM2026WDIProductos
+    organismo: Banco Mundial (a partir de UN Comtrade)
+    serie: "WDI TX.VAL.MANF.ZS.UN, TX.VAL.FUEL.ZS.UN, TX.VAL.MMTL.ZS.UN, TX.VAL.FOOD.ZS.UN, TX.VAL.AGRI.ZS.UN"
+    url: https://data.worldbank.org/indicator/TX.VAL.MANF.ZS.UN
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/comercio-productos.csv, graficos/comercio-productos.tex]
+    nota: "agregado de los países que declaran a Comtrade: los combustibles salen algo por debajo de las cifras de la OMC"
+
+  - id: exportaciones-regiones
+    texto: "Asia oriental y el Pacífico (35~\\% de las exportaciones mundiales en 2025, frente al 22~\\% en 1990)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 35.0
+    unidad: "% de las exportaciones mundiales de mercancías"
+    periodo: "1990, 2000 y 2025 (Europa y Asia central 51,0 → 37,8; América del Norte 15,1 → 10,4; China 1,8 → 14,3; EE. UU. 11,4 → 8,3)"
+    fuente: BM2026WDIMercancias32
+    organismo: Banco Mundial (a partir de la OMC)
+    serie: "WDI TX.VAL.MRCH.CD.WT por regiones"
+    url: https://data.worldbank.org/indicator/TX.VAL.MRCH.CD.WT
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/exportaciones-regiones.csv, graficos/exportaciones-regiones.tex]
+
+  - id: servicios-composicion
+    texto: "Exportaciones mundiales de servicios comerciales por tipo, 2005-2025"
+    donde: [3B32.tex]
+    valor: 15.7
+    unidad: "% (servicios TIC sobre los servicios comerciales, 2025)"
+    periodo: "2005-2025 (TIC 7,1 → 15,7; viajes 26,1 → 19,8; transporte 21,9 → 15,4; seguros y finanzas 11,5)"
+    fuente: BM2026WDIServicios
+    organismo: Banco Mundial (a partir del FMI)
+    serie: "WDI BX.GSR.TRAN.ZS, BX.GSR.TRVL.ZS, BX.GSR.INSF.ZS, BX.GSR.CCIS.ZS"
+    url: https://data.worldbank.org/indicator/BX.GSR.CCIS.ZS
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/servicios-composicion.csv, graficos/servicios-composicion.tex]
+
+  - id: gravedad-espana
+    texto: "la pendiente frente a la distancia es $-1{,}29$ ($R^2=0{,}39$)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: -1.29
+    unidad: "elasticidad (MCO, 160 destinos)"
+    periodo: "exportaciones de 2024"
+    fuente: [UNComtrade2026, FMI2026DataMapper, NaturalEarth2026]
+    organismo: elaboración propia
+    serie: "Comtrade reporterCode=724, flowCode=X, cmdCode=TOTAL; NGDPD del destino"
+    url: https://comtradeplus.un.org/
+    periodicidad: anual
+    proxima: 2027-07
+    familia: comtrade
+    depende: [datos/gravedad-espana.csv, graficos/gravedad-espana.tex]
+    nota: "al rehacer la serie, recalcular la recta (constante 4,7535, pendiente -1,2872) y cambiarla en graficos/gravedad-espana.tex"
+
+  - id: ied-unctad
+    texto: "1,6 billones de dólares en 2025 (+6~\\%), la primera subida tras 2 años de caídas"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 1.624
+    unidad: "billones de dólares"
+    periodo: "2025 (desarrolladas 723 mm, +11 %; en desarrollo 901 mm, +2 %; Asia en desarrollo 644; AL 188, +14 %; África ~70; PMA 43; sectores estratégicos 44 % del greenfield, 16 % en 2020; F&A -7 %; renta baja y media-baja ~10 % de la inversión estratégica)"
+    fuente: UNCTAD2026WIR
+    organismo: UNCTAD
+    url: https://unctad.org/system/files/official-document/wir2026_overview_en.pdf
+    periodicidad: anual (junio-julio)
+    proxima: 2027-06
+    familia: unctad-wir
+
+  - id: ied-wdi
+    texto: "Entradas netas de inversión extranjera directa, 1990-2025"
+    donde: [3B32.tex]
+    valor: 1800.2
+    unidad: "miles de millones de dólares"
+    periodo: "1990-2025 (máximo 3.115 en 2007; renta baja y media 462 en 2024 y 494 en 2025)"
+    fuente: BM2026WDIIED
+    organismo: Banco Mundial (a partir del FMI)
+    serie: "WDI BX.KLT.DINV.CD.WD (WLD, HIC, LMY, CHN)"
+    url: https://data.worldbank.org/indicator/BX.KLT.DINV.CD.WD
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/ied-mundial.csv, graficos/ied-mundial.tex]
+
+  - id: bancos-transfronterizos
+    texto: "los activos transfronterizos de los bancos suman 49,5 billones de dólares a mediados de 2026"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 49.5
+    unidad: "billones de dólares"
+    periodo: "2026T2 (32,9 en 2007; frente a emergentes 4,8; crédito transfronterizo 40,7 billones, +11 % interanual; Asia emergente -2,9 %)"
+    fuente: [BPI2026LBS, BPI2026Comentario]
+    organismo: BPI
+    serie: "WS_LBS_D_PUB Q.S.C.A.TO1.A.5J.A.5A.A.{5J,5R,4T}.N"
+    url: https://data.bis.org/topics/LBS
+    periodicidad: trimestral
+    proxima: 2027-01
+    familia: bpi-lbs
+    depende: [datos/bancos-transfronterizos.csv, graficos/bancos-transfronterizos.tex]
+
+  - id: remesas
+    texto: "unos 685.000 millones de dólares llegaron en 2024 a los países de renta baja y media"
+    donde: [3B32.tex]
+    valor: 685
+    unidad: "miles de millones de dólares"
+    periodo: 2024
+    fuente: BM2026WDIRemesas
+    organismo: Banco Mundial y KNOMAD
+    url: https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT
+    periodicidad: anual (junio y diciembre)
+    proxima: 2026-12
+    familia: bm-wdi
+    nota: "la cifra de 2025 (≈704 mm según una fuente secundaria) no se pudo comprobar en fuente oficial"
+
+  - id: esr-desequilibrios
+    texto: "los saldos corrientes del mundo vuelven a crecer (3,8~\\% del PIB mundial en 2025)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 3.8
+    unidad: "% del PIB mundial"
+    periodo: "2025 (China +735 mm $, 3,8 % de su PIB; EE. UU. -1.116 mm $, -3,6 %; PIIN EE. UU. -27,5 billones; Alemania +4,3, China +4,1, Japón +3,7 billones)"
+    fuente: FMI2026ESR
+    organismo: FMI
+    url: https://www.imf.org/en/publications/esr/issues/2026/07/30/external-sector-report-2026
+    periodicidad: anual (julio)
+    proxima: 2027-07
+    familia: fmi-esr
+
+  - id: convergencia
+    texto: "con 189 países, la pendiente entre el logaritmo del PIB por habitante de 2000 y su crecimiento anual hasta 2024 es $-0{,}43$"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: -0.43
+    unidad: "puntos de crecimiento anual por unidad de log (R2 = 0,08)"
+    periodo: "2000-2024 (China 7,7 %; Vietnam 5,1 %; India 4,9 %)"
+    fuente: BM2026WDIPIBpc
+    organismo: Banco Mundial
+    serie: "WDI NY.GDP.PCAP.PP.KD"
+    url: https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi
+    depende: [datos/convergencia.csv, graficos/convergencia.tex]
+    nota: "al rehacer la serie, recalcular la recta (5,9175 - 0,4297 ln y) y cambiarla en graficos/convergencia.tex"
+
+  - id: brics
+    texto: "11 miembros, 10 socios; el 40,5~\\% del PIB mundial en PPA y casi la mitad de la población"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 40.5
+    unidad: "% del PIB mundial en PPA (2025)"
+    periodo: "2025-2026 (cumbre de Nueva Delhi, 12-13/9/2026; China preside en 2027)"
+    fuente: [BRICS2026Delhi, FMI2026DataMapper]
+    organismo: elaboración propia con datos del FMI
+    url: https://www.imf.org/external/datamapper/PPPSH
+    periodicidad: anual (cumbre)
+    proxima: 2027-09
+    familia: fmi-weo
+    nota: "Arabia Saudí contada como miembro (estatus ambiguo); población ≈3.930 millones de ~8.200"

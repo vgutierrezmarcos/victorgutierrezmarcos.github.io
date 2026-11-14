@@ -1,0 +1,63 @@
+% Etapas de una diferencia en la OMC según el Entendimiento sobre Solución de
+% Diferencias, con sus plazos: consultas, grupo especial, adopción, apelación
+% (y la rama del bloqueo del Órgano de Apelación desde 2019: apelación «al
+% vacío» o arbitraje del art. 25, MPIA), cumplimiento y, si no se cumple,
+% compensación o suspensión de concesiones. Plazos según OMC, «Entender la
+% OMC», cap. 3 (solución de diferencias), y el texto del ESD.
+% Sustituye a la imagen del anexo 3 del tema antiguo («Diversas etapas por las
+% que puede atravesar una diferencia», OMC).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+% cabecera de una etapa: número y nombre a la izquierda, plazo a la derecha
+\newcommand{\vineta}{\par\noindent\hangindent=0.8em\hangafter=1\makebox[0.8em][l]{\textbullet}}
+\newcommand{\etapa}[3]{{\bfseries\color{tceemorado}#1\quad #2}\hfill{\bfseries\color{tceedorado!70!black}#3}\par\vspace{1pt}}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    paso/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,
+      align=left,text width=8.6cm,inner sep=4pt,font=\footnotesize,anchor=north west},
+    bloqueo/.style={draw=tceerojo,thick,dashed,fill=tceerojo!6,rounded corners=2pt,
+      align=left,text width=3.55cm,inner sep=4pt,font=\footnotesize,anchor=north west},
+    sigue/.style={->,thick,tceegris},
+    tiempo/.style={font=\footnotesize,align=right,text width=1.85cm,anchor=east,
+      text=tceedorado!70!black}]
+  % 1: consultas
+  \capa{1}{\node[paso] (p1) at (2.6,0) {\etapa{1}{Consultas}{hasta 60 días}
+      Las partes negocian; el Director General puede ofrecer sus buenos oficios, conciliación o mediación.};}
+  % 2: grupo especial
+  \capa{2}{\node[paso] (p2) [below=0.45cm of p1.south west,anchor=north west] {\etapa{2}{Grupo especial}{45 días + 6 meses}
+      \textbf{Establecimiento} por el OSD a petición del reclamante, como muy tarde en su segunda reunión (consenso negativo).\par
+      \textbf{Composición}: 3 o 5 expertos, en unos 45 días.\par
+      \textbf{Informe} a las partes en 6 meses (3 si es urgente; 9 como máximo).};}
+  \capa{2}{\draw[sigue] (p1) -- (p2);}
+  % 3: adopción
+  \capa{3}{\node[paso] (p3) [below=0.45cm of p2.south west,anchor=north west] {\etapa{3}{Adopción por el OSD}{60 días}
+      El OSD adopta el informe salvo consenso en contra (consenso negativo) o apelación de una parte.};}
+  \capa{3}{\draw[sigue] (p2) -- (p3);}
+  % 4: apelación
+  \capa{4}{\node[paso] (p4) [below=0.45cm of p3.south west,anchor=north west] {\etapa{4}{Apelación}{60-90 días + 30}
+      Solo cuestiones de derecho. Resuelve el Órgano de Apelación (3 de sus 7 miembros) en 60 a 90 días; el OSD adopta su informe en 30 días (consenso negativo).};}
+  \capa{4}{\draw[sigue] (p3) -- (p4);}
+  % 5: la rama del bloqueo del Órgano de Apelación
+  \capa{5}{\node[bloqueo] (mpia) at ($(p4.north east)+(0.55,0.5)$) {{\bfseries\color{tceerojo}Desde el 11/12/2019} el Órgano de Apelación no puede resolver:
+      \vineta apelación «al vacío»: el informe queda en suspenso;
+      \vineta o arbitraje del art.~25 (MPIA) entre quienes lo han aceptado.\par};}
+  \capa{5}{\draw[->,thick,dashed,tceerojo] (p4.east) -- (p4.east -| mpia.west);}
+  % 6: cumplimiento
+  \capa{6}{\node[paso] (p5) [below=0.45cm of p4.south west,anchor=north west] {\etapa{5}{Cumplimiento}{plazo prudencial}
+      El miembro condenado dice cómo cumplirá; el plazo prudencial se fija por acuerdo o por arbitraje (orientación: no más de 15 meses). Si se discute si ha cumplido, grupo especial del art.~21.5.};}
+  \capa{6}{\draw[sigue] (p4) -- (p5);}
+  % 7: si no cumple
+  \capa{7}{\node[paso] (p6) [below=0.45cm of p5.south west,anchor=north west] {\etapa{6}{Si no cumple}{20 + 30 días}
+      \textbf{Compensación} negociada (20 días tras el plazo prudencial) o, si no hay acuerdo, \textbf{suspensión de concesiones} (represalias) autorizada por el OSD en los 30 días siguientes al fin del plazo prudencial (consenso negativo); arbitraje del art.~22.6 sobre su nivel.};}
+  \capa{7}{\draw[sigue] (p5) -- (p6);}
+  % 8: duración total
+  \capa{8}{\draw[->,very thick,tceedorado] (2.2,0) -- (p4.south -| 2.2,0);}
+  \capa{8}{\node[tiempo,anchor=north east] at (2.0,0) {solicitud de consultas};}
+  \capa{8}{\draw[thick,tceedorado] (p3.south -| 2.05,0) -- (p3.south -| 2.35,0);}
+  \capa{8}{\node[tiempo] at (p3.south -| 2.0,0) {\textbf{$\approx$\,1 año}\\sin apelación};}
+  \capa{8}{\draw[thick,tceedorado] (p4.south -| 2.05,0) -- (p4.south -| 2.35,0);}
+  \capa{8}{\node[tiempo] at (p4.south -| 2.0,0) {\textbf{$\approx$\,15 meses}\\con apelación};}
+\end{tikzpicture}
+\end{document}

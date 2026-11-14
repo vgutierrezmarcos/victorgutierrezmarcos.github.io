@@ -1,0 +1,81 @@
+% Media simple de los aranceles consolidados y de los NMF aplicados en 2024 en
+% doce economías (%). Fuente en la cabecera de ../datos/aranceles-consolidados.csv
+% (OMC, ITC y UNCTAD, World Tariff Profiles 2025). Por cada economía, dos barras:
+% el consolidado (morado claro) y el NMF aplicado (morado); la distancia entre
+% ambas es el excedente de consolidación (binding overhang).
+% Capas: barras del consolidado -> barras del aplicado -> ejes -> etiquetas de
+% datos (el aplicado, en blanco dentro de su barra) -> rótulo del excedente.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{arconsolidado}{tceemorado!35}
+\colorlet{araplicado}{tceemorado!85}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/aranceles-consolidados.csv}\aranceles
+\pgfplotsset{ejesaranceles/.style={}}
+\ifnum3>\tceepaso\relax
+  \pgfplotsset{ejesaranceles/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14.5cm, height=7.5cm,
+      xmin=0, xmax=56, ymin=-0.6, ymax=11.6,
+      y dir=reverse,
+      ytick={0,...,11}, yticklabels from table={\aranceles}{economia},
+      yticklabel style={font=\footnotesize},
+      major y tick style={draw=none},
+      xtick={0,10,...,50}, xticklabel style={font=\footnotesize},
+      xlabel={Media simple de los aranceles, 2024 (\%)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      clip=false,
+      legend style={at={(0.98,0.98)}, anchor=north east, draw=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left,
+      ejesaranceles, dicapas,
+    ]
+    % 1: consolidado
+    \capa{1}{
+      \addplot[on layer=dicbarras, xbar, bar width=5.6pt, bar shift=2.9pt, area legend,
+        dicbarra=arconsolidado]
+        table[x=consolidado, y expr=\coordindex] {\aranceles};
+      \addlegendentry{Consolidado}
+    }
+    % 2: NMF aplicado
+    \capa{2}{
+      \addplot[on layer=dicbarras, xbar, bar width=5.6pt, bar shift=-2.9pt, area legend,
+        dicbarra=araplicado]
+        table[x=aplicado, y expr=\coordindex] {\aranceles};
+      \addlegendentry{NMF aplicado}
+    }
+    % 3: ejes (ver ejesaranceles)
+    % 4: etiquetas de datos
+    \capa{4}{
+      \addplot[on layer=axis descriptions, dicsuelto, only marks, mark=none,
+        nodes near coords={\pgfmathprintnumber[fixed,fixed zerofill,precision=1,use comma]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, text=tceemorado!70!black,
+          anchor=west, xshift=1pt, yshift=2.9pt},
+        point meta=explicit]
+        table[x=consolidado, y expr=\coordindex, meta=consolidado] {\aranceles};
+      \addplot[on layer=axis descriptions, dicsuelto, only marks, mark=none,
+        nodes near coords={\pgfmathprintnumber[fixed,fixed zerofill,precision=1,use comma]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, text=white,
+          anchor=east, xshift=-0.5pt, yshift=-2.4pt},
+        point meta=explicit]
+        table[x=aplicado, y expr=\coordindex, meta=aplicado] {\aranceles};
+    }
+    % 5: el excedente de consolidación (México: carril vacío entre el aplicado y el consolidado)
+    \capa{5}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=tceedorado, thick,
+        yshift=-2.9pt, {Bar[width=4pt]}-{Bar[width=4pt]}]
+        coordinates {(7.6,9) (36,9)};
+      \addplot[on layer=axis descriptions, dicsuelto, draw=tceedorado, ->, yshift=-2.9pt, shorten >=1pt]
+        coordinates {(44,7.25) (31,9)};
+      \dicrotulo[font=\footnotesize,text=tceedorado,anchor=south,align=center]{(44,7.1)}{Excedente de\\consolidación}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

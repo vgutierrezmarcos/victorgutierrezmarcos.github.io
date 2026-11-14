@@ -1,0 +1,18 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% El ciclo financiero global (Rey, 2013; Miranda-Agrippino y Rey, 2020): un
+% circuito de 4 pasos, en el orden del texto. Fase expansiva en las flechas
+% moradas; la vuelta (paso 4) en rojo, discontinua.
+\begin{tikzpicture}[tcee, caja/.style={draw=tceemorado, thick, rounded corners, align=center, minimum width=4.6cm, minimum height=1.7cm, font=\small, fill=tceesalvia},
+  paso/.style={->, thick, >=stealth, tceemorado}, rot/.style={font=\footnotesize, align=center}]
+  \capa{1}{\node[caja] (F) at (0,0) {\textbf{1. Reserva Federal}\\tipos más bajos\\menos aversión al riesgo (VIX ↓)};}
+  \capa{2}{\node[caja] (I) at (7.6,0) {\textbf{2. Intermediarios globales}\\(bancos, fondos)\\se apalancan en dólares};
+           \draw[paso] (F.east) -- node[above, rot] {financiación barata} (I.west);}
+  \capa{3}{\node[caja] (M) at (7.6,-3.6) {\textbf{3. Resto del mundo}\\entran capitales: más crédito\\y precios de los activos más altos};
+           \draw[paso] (I.south) -- node[right, rot] {flujos brutos\\de capital} (M.north);}
+  \capa{4}{\node[caja, draw=tceerojo, fill=white] (R) at (0,-3.6) {\textbf{4. La vuelta}\\la Fed endurece o sube el VIX:\\salidas y paradas súbitas};
+           \draw[->, thick, >=stealth, tceerojo, dashed] (M.west) -- node[below, rot, text=tceerojo] {se invierte} (R.east);
+           \draw[->, thick, >=stealth, tceerojo, dashed] (R.north) -- node[left, rot, text=tceerojo] {nuevo ciclo} (F.south);}
+\end{tikzpicture}
+\end{document}

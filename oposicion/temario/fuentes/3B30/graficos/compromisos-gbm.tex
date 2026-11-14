@@ -1,0 +1,51 @@
+% Compromisos del Grupo del Banco Mundial por entidad, ejercicios 2016-2026
+% (barras apiladas; miles de millones de dólares). Datos:
+% ../datos/compromisos-gbm.csv (informes anuales de 2020, 2021 y 2026). Sin
+% fondos fiduciarios (el informe de 2026 ya no los suma). CFI 2016: solo largo
+% plazo por cuenta propia. Control: total 2016 = 61,3; 2026 = 123,5 (BIRF 50,2;
+% AIF 30,8; CFI 32,0; MIGA 10,6).
+% Orden de capas: barras -> ejes -> puntos -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/compromisos-gbm.csv}\gbm
+\colorlet{barraaif}{tceemorado!45}
+\colorlet{barramiga}{tceeverde!70}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7.5cm,
+      ybar stacked, bar width=0.62cm,
+      xmin=2015.4, xmax=2026.6, ymin=0, ymax=140,
+      xtick={2016,...,2026},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ytick={0,20,...,140}, yticklabel style={font=\footnotesize},
+      ylabel={miles de millones de dólares}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none, font=\footnotesize},
+      legend cell align=left, reverse legend, clip=false, dicapas,
+    ]
+    % 1-4: una entidad por capa, de abajo arriba
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=tceemorado] table[x=anio, y=birf] {\gbm}; \addlegendentry{BIRF}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=barraaif] table[x=anio, y=aif] {\gbm}; \addlegendentry{AIF}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=tceedorado] table[x=anio, y=cfi] {\gbm}; \addlegendentry{CFI (cuenta propia)}}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=barramiga] table[x=anio, y=miga] {\gbm}; \addlegendentry{MIGA (garantías)}}
+    % 5: total encima de cada barra (suma de las 4 columnas del CSV, redondeada)
+    \capa{5}{
+      \dicrotulo[font=\scriptsize, anchor=south]{(2016,61.3)}{61}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2017,65.3)}{65}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2018,71.3)}{71}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2019,65.4)}{65}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2020,79.9)}{80}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2021,92.4)}{92}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2022,98.0)}{98}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2023,107.0)}{107}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2024,108.6)}{109}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2025,118.5)}{118}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2026,123.5)}{123}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

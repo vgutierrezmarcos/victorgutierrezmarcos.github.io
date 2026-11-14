@@ -1,0 +1,40 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Peso en el PIB mundial en PPA (%), 1980-2031 (desde 2026, previsión).
+% FMI, WEO de octubre de 2026 (PPPSH); ../datos/peso-pib-ppa.csv (consulta
+% 14/11/2026). 1980 -> 2025: EE. UU. 21,6 -> 14,6; UE 27,4 -> 14,0; Japón
+% 7,9 -> 3,3; China 2,1 -> 19,6 (supera a EE. UU. en 2016); India 2,7 -> 8,2
+% (10,2 en 2031). El salto de 1992 es la entrada en la serie de las antiguas
+% repúblicas soviéticas (en «resto»). Los emergentes superan a los avanzados en 2009.
+% Paleta: avanzadas en azules (EE. UU. marino, UE claro, Japón más claro),
+% emergentes en cálidos (China dorado, India naranja), resto gris.
+% Capas: áreas de avanzadas -> áreas de emergentes -> resto -> línea de la previsión -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/peso-pib-ppa.csv}\pp
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=7.5cm, xmin=1980, xmax=2031, ymin=0, ymax=100,
+      xtick={1980,1985,...,2030}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={\% del PIB mundial (PPA)}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, stack plots=y, area style, clip=false, dicapas]
+    \capa{1}{
+      \addplot[on layer=dicbarras, fill=dicze, draw=dicze!70!black] table[x=anio, y=eeuu] {\pp} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicexterna, draw=dicexterna!70!black] table[x=anio, y=ue] {\pp} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicfmc, draw=dicexterna!70!black] table[x=anio, y=japon] {\pp} \closedcycle;}
+    \capa{2}{
+      \addplot[on layer=dicbarras, fill=dicprestamos, draw=dicprestamos!70!black] table[x=anio, y=china] {\pp} \closedcycle;
+      \addplot[on layer=dicbarras, fill=dicconspriv, draw=dicconspriv!70!black] table[x=anio, y=india] {\pp} \closedcycle;}
+    \capa{3}{
+      \addplot[on layer=dicbarras, fill=dicotromasclaro, draw=dicotro] table[x=anio, y=resto] {\pp} \closedcycle;}
+    \capa{4}{\dicraya[dicumbral, thick, white]{(2025.5,0) (2025.5,100)}
+      \dicrotulo[font=\scriptsize, anchor=south west]{(2025.6,100)}{previsión}}
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, text=white, anchor=west]{(1981,11)}{EE.\,UU.: 21,6 $\to$ 14,6}
+      \dicrotulo[font=\footnotesize, anchor=west]{(1981,34)}{UE: 27,4 $\to$ 14,0}
+      \dicrotulo[font=\scriptsize, anchor=west]{(1981,53)}{Japón}
+      \dicrotulo[font=\footnotesize, anchor=east]{(2024,43)}{China: 2,1 $\to$ 19,6}
+      \dicrotulo[font=\scriptsize, anchor=east]{(2024,56)}{India: 2,7 $\to$ 8,2}
+      \dicrotulo[font=\footnotesize, anchor=west]{(1981,80)}{resto del mundo}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

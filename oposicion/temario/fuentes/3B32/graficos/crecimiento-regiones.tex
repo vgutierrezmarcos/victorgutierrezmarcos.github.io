@@ -1,0 +1,33 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Crecimiento del PIB real (%) en 2025 y previsiones de 2026 y 2027 por
+% economías y regiones. FMI, WEO de octubre de 2026 (NGDP_RPCH);
+% ../datos/crecimiento-regiones.csv (consulta 14/11/2026).
+% Barras horizontales: 2025 gris, 2026 morado (el año del choque del
+% petróleo), 2027 morado claro. Avanzadas arriba, emergentes debajo.
+% El número es la previsión de 2026, a la derecha de cada grupo.
+% Capas: barras 2025 -> 2026 -> 2027 -> ejes y cero -> valores de 2026.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/crecimiento-regiones.csv}\rg
+\colorlet{dicpibclaro}{dicpib!40}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=11cm, height=11.5cm, xbar, bar width=4pt,
+      xmin=-4, xmax=9, ymin=-0.6, ymax=12.6, y dir=reverse, area legend,
+      ytick={0,...,12}, yticklabels from table={\rg}{nombre},
+      yticklabel style={font=\footnotesize}, major y tick style={draw=none},
+      xticklabel style={font=\footnotesize}, xlabel={\% anual}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, xmajorgrids, grid style={tceegris!25}, clip=false, dicapas,
+      legend style={at={(0.5,-0.08)}, anchor=north, draw=none, font=\footnotesize, legend columns=3,
+        /tikz/every even column/.append style={column sep=10pt}}, legend cell align=left]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicotroclaro, bar shift=4.5pt] table[x=c2025, y expr=\coordindex] {\rg}; \addlegendentry{2025}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicpib, bar shift=0pt] table[x=c2026, y expr=\coordindex] {\rg}; \addlegendentry{2026 (prev.)}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=dicpibclaro, bar shift=-4.5pt] table[x=c2027, y expr=\coordindex] {\rg}; \addlegendentry{2027 (prev.)}}
+    \capa{4}{\dicraya{(0,-0.6) (0,12.6)}
+      \dicraya[dicumbral]{(-4,9.5) (9,9.5)}}
+    \capa{5}{\addplot[on layer=axis descriptions, dicsuelto, draw=none, nodes near coords={\pgfmathprintnumber[use comma, fixed, precision=1, fixed zerofill]{\pgfplotspointmeta}}, point meta=explicit,
+        every node near coord/.append style={font=\scriptsize, anchor=west, text=dicpib, inner sep=1pt}]
+        table[x expr={max(\thisrow{c2026},\thisrow{c2025},\thisrow{c2027})+0.15}, y expr=\coordindex, meta=c2026] {\rg};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

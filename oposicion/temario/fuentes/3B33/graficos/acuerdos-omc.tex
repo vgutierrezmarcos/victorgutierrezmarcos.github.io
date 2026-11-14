@@ -1,0 +1,73 @@
+% Arquitectura del Acuerdo de Marrakech por el que se establece la OMC (1994):
+% el acuerdo de base y sus cuatro anexos, con el detalle del anexo 1A
+% (comercio de mercancías: el GATT de 1994 y los acuerdos específicos) y la
+% distinción entre acuerdos multilaterales (anexos 1 a 3, todo único) y
+% plurilaterales (anexo 4). Sustituye a la imagen 1 del tema antiguo
+% (cuadro «Panorama general» de la OMC).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+% subtítulo de un grupo y acuerdo dentro del anexo 1A
+\newcommand{\grupo}[1]{\par\vspace{3pt}\noindent{\bfseries\color{tceemorado}#1}}
+\newcommand{\acu}[1]{\par\noindent\hangindent=0.8em\hangafter=1\makebox[0.8em][l]{\textperiodcentered}#1}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    base/.style={draw=tceemorado,thick,fill=tceemorado!16,rounded corners=2pt,
+      align=center,text width=12.9cm,inner sep=5pt,font=\footnotesize},
+    mercancias/.style={draw=tceemorado,very thick,fill=tceemorado!8,rounded corners=2pt,
+      align=left,text width=7.2cm,inner sep=5pt,font=\footnotesize,anchor=north west},
+    neutro/.style={draw=tceegris,thick,fill=tceegris!8,rounded corners=2pt,
+      align=center,text width=4.95cm,inner sep=4pt,font=\footnotesize,anchor=north west},
+    institucion/.style={draw=tceeazul,thick,fill=tceeazul!8,rounded corners=2pt,
+      align=center,text width=4.95cm,inner sep=4pt,font=\footnotesize,anchor=north west},
+    pluri/.style={draw=tceedorado,thick,fill=tceedorado!10,rounded corners=2pt,
+      align=center,text width=12.9cm,inner sep=4pt,font=\footnotesize,anchor=north west},
+    rama/.style={thick,tceegris},
+    llave/.style={thick,decorate,decoration={brace,amplitude=5pt,mirror}},
+    rotulo/.style={font=\footnotesize,align=right,text width=2.25cm,anchor=east}]
+  % 1: el acuerdo de base
+  \capa{1}{\node[base] (marrakech) at (9.55,0) {\textbf{Acuerdo de Marrakech por el que se establece la Organización Mundial del Comercio (1994)}\\crea la organización: funciones, estructura, adopción de decisiones, adhesión};}
+  % 2: anexo 1A, comercio de mercancías
+  \capa{2}{\node[mercancias] (a1a) at (2.9,-1.0) {{\bfseries\color{tceemorado}Anexo 1A\quad Comercio de mercancías}\par\vspace{2pt}
+      \noindent\textbf{GATT de 1994} (el GATT de 1947 y sus decisiones) y los acuerdos específicos:\par
+      \begin{minipage}[t]{3.5cm}\raggedright
+        \grupo{Procedimientos aduaneros}
+        \acu{Valoración en aduana}
+        \acu{Inspección previa a la expedición}
+        \acu{Normas de origen}
+        \acu{Licencias de importación}
+        \acu{Facilitación del comercio (2017)}
+        \grupo{Reglamentos}
+        \acu{Medidas sanitarias y fitosanitarias (MSF)}
+        \acu{Obstáculos técnicos al comercio (OTC)}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{3.55cm}\raggedright
+        \grupo{Defensa comercial}
+        \acu{Antidumping}
+        \acu{Subvenciones y medidas compensatorias}
+        \acu{Salvaguardias}
+        \grupo{Sectores y otros}
+        \acu{Agricultura}
+        \acu{Medidas en materia de inversiones relacionadas con el comercio (MIC)}
+        \acu{Subvenciones a la pesca (2025)}
+        \acu{{\color{tceegris}\itshape Textiles y vestido (extinguido en 2005)}}
+      \end{minipage}};}
+  \capa{2}{\draw[rama] (marrakech.south -| 10.65,0) -- (10.65,-1.35) -- (a1a.east |- 0,-1.35);}
+  % 3: anexos 1B y 1C, servicios y propiedad intelectual
+  \capa{3}{\node[neutro] (a1b) at (10.9,-1.0) {\textbf{Anexo 1B\quad Comercio de servicios}\\Acuerdo General sobre el Comercio de Servicios (AGCS; GATS)};}
+  \capa{3}{\node[neutro] (a1c) [below=0.3cm of a1b.south west,anchor=north west] {\textbf{Anexo 1C\quad Propiedad intelectual}\\Acuerdo sobre los Aspectos de los Derechos de Propiedad Intelectual relacionados con el Comercio (ADPIC; TRIPS)};}
+  \capa{3}{\draw[rama] (10.65,-1.35) -- (a1c.west -| 10.65,0) -- (a1c.west) (10.65,-1.35) -- (a1b.west |- 0,-1.35);}
+  % 4: anexos 2 y 3, solución de diferencias y examen de políticas
+  \capa{4}{\node[institucion] (a2) [below=0.3cm of a1c.south west,anchor=north west] {\textbf{Anexo 2\quad Solución de diferencias}\\Entendimiento sobre Solución de Diferencias (ESD)};}
+  \capa{4}{\node[institucion] (a3) [below=0.3cm of a2.south west,anchor=north west] {\textbf{Anexo 3\quad Examen de las políticas}\\Mecanismo de Examen de las Políticas Comerciales (MEPC)};}
+  \capa{4}{\draw[rama] (a1c.west -| 10.65,0) -- (a3.west -| 10.65,0) -- (a3.west) (a2.west -| 10.65,0) -- (a2.west);}
+  % el anexo 4 va debajo de lo que llegue más abajo (anexo 1A o anexo 3)
+  \capa{4}{\path let \p1=(a1a.south), \p2=(a3.south) in coordinate (fondo) at (2.9,{min(\y1,\y2)-0.3cm});}
+  % 5: anexo 4 y la distinción entre multilaterales y plurilaterales
+  \capa{5}{\node[pluri] (a4) at (fondo) {\textbf{Anexo 4\quad Acuerdos comerciales plurilaterales}: Aeronaves civiles\quad·\quad Contratación pública\\{\color{tceegris}\itshape Carne de bovino y productos lácteos: terminados en 1997}};}
+  \capa{5}{\draw[rama] (a3.west -| 10.65,0) -- (fondo -| 10.65,0);}
+  \capa{5}{\draw[llave] (a1a.north west -| 2.7,0) -- node[left=7pt,rotulo] {\textbf{Multilaterales}\\(anexos 1 a 3)\\obligan a todos los miembros: \textit{todo único}} ($(fondo -| 2.7,0)+(0,0.12)$);}
+  \capa{5}{\draw[llave] ($(fondo -| 2.7,0)-(0,0.12)$) -- node[left=7pt,rotulo] {\textbf{Plurilaterales}\\solo obligan a quien los firma} (a4.south -| 2.7,0);}
+\end{tikzpicture}
+\end{document}

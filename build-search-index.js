@@ -179,7 +179,7 @@ const tercerEjercicioParteB = [
   { num: 30, titulo: 'El Grupo del Banco Mundial, los Bancos Regionales de Desarrollo y otras instituciones financieras multilaterales de desarrollo.', disponible: false },
   { num: 31, titulo: 'El cambio climático y su impacto en la economía. Evidencia y modelos integrados de evaluación. Acuerdos internacionales y principales medidas adoptadas para hacer frente al cambio climático.', disponible: false },
   { num: 32, titulo: 'Perspectivas económicas mundiales. Estructura sectorial y geográfica de los flujos comerciales y financieros internacionales. Las nuevas áreas emergentes.', disponible: false },
-  { num: 33, titulo: 'La OMC. Antecedentes y Organización actual. El GATT y los Acuerdos sobre el comercio de mercancías. Situación actual.', disponible: true, file: '3B33.pdf' },
+  { num: 33, titulo: 'La OMC. Antecedentes y Organización actual. El GATT y los Acuerdos sobre el comercio de mercancías. Situación actual.', disponible: true, file: '3B33.html' },
   { num: 34, titulo: 'La OMC. Los acuerdos distintos de los de mercancías.', disponible: true, file: '3B34.pdf' },
   { num: 35, titulo: 'Procesos de integración no comunitarios.', disponible: true, file: '3B35.pdf' },
   { num: 36, titulo: 'Tratados, orden jurídico e instituciones de la Unión Europea.', disponible: true, file: '3B36.pdf' },

@@ -1,0 +1,40 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Modelo de gravedad con datos de España: exportaciones de mercancías de 2024
+% a cada destino por cada 1.000 dólares de PIB del destino (escala log.)
+% frente a la distancia entre centroides (km, escala log.). UN Comtrade, FMI
+% (WEO de octubre de 2026) y Natural Earth; ../datos/gravedad-espana.csv
+% (consulta 14/11/2026), 160 destinos. Recta MCO: ln(X/Y) = 4,754 - 1,287 ln d
+% (R2 = 0,39). UE en azul marino; resto en gris.
+% Capas: puntos del resto -> puntos de la UE -> recta de gravedad -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/gravedad-espana.csv}\gv
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12cm, height=8cm, xmode=log, ymode=log, xmin=250, xmax=25000, ymin=0.003, ymax=300,
+      log basis x=10, log basis y=10,
+      xtick={300,1000,3000,10000,20000}, xticklabels={300, 1.000, 3.000, 10.000, 20.000},
+      ytick={0.01,0.1,1,10,100}, yticklabels={0{,}01, 0{,}1, 1, 10, 100},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={distancia a España (km)}, ylabel={exportaciones por cada 1.000 \$ de PIB del destino},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, grid=major, grid style={tceegris!20}, clip=false, dicapas]
+    \capa{1}{\addplot[only marks, mark=*, mark size=1.5pt, mark options={fill=dicotroclaro, draw=dicotro, line width=0.3pt}]
+      table[x=dist_km, y expr={1000*exp(\thisrow{ln_x_pib})}, restrict expr to domain={\thisrow{ue}}{0:0}] {\gv};}
+    \capa{2}{\addplot[only marks, mark=*, mark size=1.8pt, mark options={fill=dicze, draw=white, line width=0.3pt}]
+      table[x=dist_km, y expr={1000*exp(\thisrow{ln_x_pib})}, restrict expr to domain={\thisrow{ue}}{1:1}] {\gv};}
+    \capa{3}{\addplot[diclinea=dicpib, domain=300:22000, samples=20] {1000*exp(4.7535)*x^(-1.2872)};}
+    \capa{4}{
+      \dicrotulo[font=\scriptsize, anchor=west]{(386,106)}{Portugal}
+      \dicrotulo[font=\scriptsize, anchor=south]{(845,19.5)}{Francia}
+      \dicrotulo[font=\scriptsize, anchor=west]{(1242,77)}{Marruecos}
+      \dicrotulo[font=\scriptsize, anchor=east]{(1540,4.9)}{Alemania}
+      \dicrotulo[font=\scriptsize, anchor=east]{(7450,0.63)}{EE.\,UU.}
+      \dicrotulo[font=\scriptsize, anchor=north]{(8710,0.36)}{China}
+      \dicrotulo[font=\scriptsize, anchor=south]{(9021,3.6)}{México}
+      \dicrotulo[font=\scriptsize, anchor=south]{(11072,5.8)}{Chile}
+      \dicrotulo[font=\scriptsize, text=dicpib, anchor=south west]{(12500,1.5)}{pendiente $-1{,}29$}
+      \dicrotulo[font=\scriptsize, text=dicze, anchor=west]{(300,0.006)}{\textbullet\ UE}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

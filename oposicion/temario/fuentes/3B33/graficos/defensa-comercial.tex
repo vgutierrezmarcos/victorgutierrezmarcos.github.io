@@ -1,0 +1,66 @@
+% Investigaciones de defensa comercial iniciadas cada año en la OMC, 1995-2025:
+% antidumping (morado), derechos compensatorios (dorado) y salvaguardias (verde).
+% Fuente en la cabecera de ../datos/defensa-comercial.csv (OMC, estadísticas de
+% defensa comercial, iniciaciones por miembro informante, fila «Total»).
+% Barras apiladas; rótulos en los máximos (2001, 2020 y 2024) y en el mínimo (2022).
+% Capas: barras -> ejes -> rótulos -> leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{defad}{tceemorado!80}
+\colorlet{defcv}{tceedorado!75}
+\colorlet{defsg}{tceeverde!70}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/defensa-comercial.csv}\defensa
+\pgfplotsset{ejesdefensa/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesdefensa/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14.5cm, height=7.2cm,
+      xmin=1994.2, xmax=2025.8, ymin=0, ymax=520,
+      xtick={1995,2000,...,2025}, minor xtick={1995,...,2025},
+      ytick={0,100,...,500},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Investigaciones iniciadas (número)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, ybar stacked, bar width=0.68,
+      legend style={at={(axis cs:2003.6,515)}, anchor=north west, draw=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left,
+      ejesdefensa, dicapas,
+    ]
+    % 1: barras apiladas
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=defad] table[x=anio, y=antidumping] {\defensa};
+      \addplot[on layer=dicbarras, dicbarra=defcv] table[x=anio, y=compensatorias] {\defensa};
+      \addplot[on layer=dicbarras, dicbarra=defsg] table[x=anio, y=salvaguardias] {\defensa};
+    }
+    % 2: ejes (ver ejesdefensa)
+    % 3: rótulos de los máximos y del mínimo
+    \capa{3}{
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=2pt,align=center]{(2001,411)}{2001: 411\\(372 AD)}
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=2pt,align=center]{(2020,433)}{Pandemia\\(355 AD)}
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=2pt,align=center]{(2024,455)}{Máximo\\(375 AD)}
+      \addplot[on layer=axis descriptions, dicsuelto, draw=tceegris, thin]
+        coordinates {(2022,116) (2022,262)};
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=0pt,align=center]{(2022,262)}{Mínimo:\\112 en 2022}
+    }
+    % 4: leyenda
+    \capa{4}{
+      \addlegendimage{area legend, dicbarra=defad}
+      \addlegendentry{Antidumping (AD)}
+      \addlegendimage{area legend, dicbarra=defcv}
+      \addlegendentry{Derechos compensatorios}
+      \addlegendimage{area legend, dicbarra=defsg}
+      \addlegendentry{Salvaguardias}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

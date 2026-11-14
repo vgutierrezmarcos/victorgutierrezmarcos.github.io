@@ -1,0 +1,33 @@
+% Participación de España en los BMD: % de votos o, donde se indica, % del
+% capital suscrito (barras horizontales). Datos: ../datos/votos-espana-grafico.csv
+% (fuentes por fila en ../datos/votos-espana.csv). Control: BEI 11,27 (capital);
+% BIRF 1,84; BAsD 0,561. Los datos marcados (2023) proceden de la plantilla de
+% capital exigible de España. Orden de capas: barras -> ejes -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/votos-espana-grafico.csv}\espana
+\colorlet{barraespana}{dicespana!75}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=12cm, height=9.5cm,
+      xbar, bar width=0.36cm,
+      xmin=0, xmax=13, ymin=-0.6, ymax=13.6,
+      ytick=data, yticklabels from table={\espana}{institucion},
+      yticklabel style={font=\footnotesize},
+      xtick={0,2,...,12}, xticklabel style={font=\footnotesize},
+      xlabel={\%}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25}, clip=false, dicapas,
+    ]
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=barraespana, bar shift=0pt,
+        nodes near coords={\pgfmathprintnumber[use comma,fixed,fixed zerofill,precision=2]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, anchor=west}, point meta=x]
+        table[x=pct, y=orden] {\espana};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

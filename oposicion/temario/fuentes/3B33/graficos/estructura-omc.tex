@@ -1,0 +1,54 @@
+% Estructura de la OMC: Conferencia Ministerial, Consejo General con sus otras
+% dos funciones (Órgano de Solución de Diferencias, con los grupos especiales y
+% el Órgano de Apelación, y Órgano de Examen de las Políticas Comerciales), los
+% tres consejos sectoriales, los comités que informan al Consejo General, los
+% comités plurilaterales y el Director General con la Secretaría.
+% Sustituye a la imagen 3 del tema antiguo (organigrama de la OMC).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    caja/.style={thick,rounded corners=2pt,align=center,inner sep=4pt,
+      font=\footnotesize,anchor=north,text width=#1},
+    cumbre/.style={caja=#1,draw=tceemorado,fill=tceemorado!16},
+    organo/.style={caja=#1,draw=tceemorado,fill=tceemorado!8},
+    funcion/.style={caja=#1,draw=tceeazul,fill=tceeazul!8},
+    consejo/.style={caja=#1,draw=tceegris,fill=tceegris!8},
+    comite/.style={caja=#1,draw=tceedorado,fill=tceedorado!10},
+    apoyo/.style={caja=#1,draw=tceeverde,fill=tceeverde!8},
+    rel/.style={->,thick,tceegris},
+    rama/.style={thick,tceegris},
+    nota/.style={font=\footnotesize,align=center,text=tceegris}]
+  % 1: Conferencia Ministerial
+  \capa{1}{\node[cumbre=5.2cm] (cm) at (7,0) {\textbf{Conferencia Ministerial}\\todos los miembros (166)\\se reúne al menos cada 2 años};}
+  % 2: Consejo General y sus otras dos funciones
+  \capa{2}{\node[organo=5.2cm] (cg) at (7,-2.0) {\textbf{Consejo General}\\todos los miembros (embajadores en Ginebra); actúa entre conferencias};}
+  \capa{2}{\draw[rel] (cm) -- (cg);}
+  \capa{2}{\node[funcion=3.2cm] (osd) at (1.8,-2.0) {\textbf{Órgano de Solución de Diferencias}};}
+  \capa{2}{\node[funcion=5.2cm] (oepc) at (13.2,-2.0) {\textbf{Órgano de Examen de las Políticas Comerciales}\\examen periódico de cada miembro};}
+  \capa{2}{\draw[thick,dashed,tceeazul,rounded corners=4pt] ($(osd.north west)+(-0.12,0.42)$) rectangle ($(oepc.south east)+(0.12,-0.12)$);}
+  \capa{2}{\node[nota,anchor=south west] at ($(osd.north west)+(-0.12,0.42)$) {\textit{el mismo órgano, tres funciones}};}
+  \capa{2}{\node[funcion=3.2cm,fill=tceeazul!4] (ge) at (1.8,-4.15) {\textbf{Grupos especiales}\\3 o 5 expertos para cada diferencia};}
+  \capa{2}{\node[consejo=3.2cm,dashed,text=tceegris] (oa) at (1.8,-5.95) {\textbf{Órgano de Apelación}\\sin miembros desde 2020};}
+  \capa{2}{\draw[rel] (osd.south |- cg.south) ++(0,-0.12) -- node[right,font=\footnotesize] {establece} (ge);}
+  \capa{2}{\draw[rel,dashed] (ge) -- node[right,font=\footnotesize] {apelación} (oa);}
+  % 3: los tres consejos sectoriales
+  \capa{3}{\draw[rama] (cg.south) -- (7,-3.75) (5.95,-3.75) -- (14.35,-3.75) (5.95,-3.75) -- (5.95,-4.0) (10.75,-3.75) -- (10.75,-4.0) (14.35,-3.75) -- (14.35,-4.0);}
+  \capa{3}{\node[organo=3.9cm,very thick] (mercancias) at (5.95,-4.0) {\textbf{Consejo del Comercio de Mercancías}\par\vspace{2pt}
+      comités: Agricultura~· MSF~· OTC~· Subvenciones~· Antidumping~· Salvaguardias~· Valoración en aduana~· Normas de origen~· Licencias~· MIC~· Acceso a los mercados~· Facilitación del comercio~· Subvenciones a la pesca};}
+  \capa{3}{\node[consejo=3.0cm] (servicios) at (10.75,-4.0) {\textbf{Consejo del Comercio de Servicios}};}
+  \capa{3}{\node[consejo=2.9cm] (adpic) at (14.35,-4.0) {\textbf{Consejo de los ADPIC}\\(propiedad intelectual)};}
+  % 4: comités que informan al Consejo General
+  \capa{4}{\node[comite=6.6cm,anchor=north west] (comites) at (9.0,-5.35) {\textbf{Comités}: Comercio y Desarrollo~· Comercio y Medio Ambiente~· Restricciones por Balanza de Pagos~· Presupuesto~· Acuerdos Comerciales Regionales\\y grupos de trabajo sobre las adhesiones};}
+  \capa{4}{\draw[rama] (comites.west -| 8.6,0) -- (comites.west);}
+  \capa{4}{\node[comite=6.6cm,anchor=north west] (cnc) at ($(comites.south west)+(0,-0.3)$) {\textbf{Comité de Negociaciones Comerciales} (Ronda de Doha)};}
+  \capa{4}{\draw[rama] (8.6,-3.75) -- (cnc.west -| 8.6,0) -- (cnc.west);}
+  % 5: comités plurilaterales y Director General con la Secretaría
+  \capa{5}{\node[comite=6.6cm,anchor=north west,dashed] (pluri) at ($(cnc.south west)+(0,-0.3)$) {\textbf{Comités plurilaterales}: Aeronaves~civiles~· Contratación pública\\(solo sus signatarios; informan al Consejo General)};}
+  \capa{5}{\draw[rama,dashed] (cnc.west -| 8.6,0) -- (pluri.west -| 8.6,0) -- (pluri.west);}
+  \capa{5}{\node[apoyo=3.1cm] (dg) at (14.35,0) {\textbf{Director General y Secretaría}\\(Ginebra)};}
+  \capa{5}{\draw[thick,dotted,tceeverde] (dg.west |- cm.east) -- node[above,font=\footnotesize,align=center,text=tceeverde] {apoyo, sin poder\\de decisión} (cm.east);}
+\end{tikzpicture}
+\end{document}

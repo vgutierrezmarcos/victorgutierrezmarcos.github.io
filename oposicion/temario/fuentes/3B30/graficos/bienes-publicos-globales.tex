@@ -1,0 +1,34 @@
+% Bienes públicos globales: beneficios marginales de 3 países, b_i'(G)=a_i/(G+1)
+% con a = (3; 2; 1,5), su suma vertical (condición de Samuelson) y el coste
+% marginal c = 0,5. Equilibrio de Nash: lo fija el país 1, b_1'(G^N)=c -> G^N=5;
+% óptimo: suma = c -> 6,5/(G+1) = 0,5 -> G^*=12.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=1.25cm]
+  % 1: ejes
+  \capa{1}{\ejes{$G$}{$b_i'(G),\ c$}{14.2}{4.4}}
+  % 2: los beneficios marginales de cada país
+  \capa{2}{\draw[curva2,domain=0:13.6,samples=60] plot (\x,{1.5/(\x+1)});}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=east] at (-0.1,1.5) {$b_3'$};}
+  \capa{3}{\draw[curva3,domain=0:13.6,samples=60] plot (\x,{2/(\x+1)});}
+  \capa{3}{\node[etiqueta,text=tceeverde,anchor=east] at (-0.1,2) {$b_2'$};}
+  \capa{4}{\draw[curva4,domain=0:13.6,samples=60] plot (\x,{3/(\x+1)});}
+  \capa{4}{\node[etiqueta,text=tceedorado!80!black,anchor=east] at (-0.1,3) {$b_1'$};}
+  % 5: el coste marginal
+  \capa{5}{\draw[thick,tceerojo] (0,0.5) -- (14,0.5) node[right] {$c$};}
+  % 6: el equilibrio de Nash: lo decide el país que más valora el bien
+  \capa{6}{\node[punto] (N) at (5,0.5) {};}
+  \capa{6}{\draw[guia] (5,0.5) -- (5,0) node[below] {$G^N$};}
+  % 7: la suma vertical (Samuelson)
+  \capa{7}{\draw[curva1,domain=0.65:13.6,samples=80] plot (\x,{6.5/(\x+1)});}
+  \capa{7}{\node[etiqueta,text=tceemorado,anchor=south west] at (1.3,3.0) {$\sum_i b_i'$};}
+  % 8: el óptimo
+  \capa{8}{\node[punto] (O) at (12,0.5) {};}
+  \capa{8}{\draw[guia] (12,0.5) -- (12,0) node[below] {$G^*$};}
+  % 9: la brecha
+  \capa{9}{\draw[flecha,<->] (5.15,-0.62) -- (11.85,-0.62);}
+  \capa{9}{\node[etiqueta,text=tceerojo,below] at (8.5,-0.62) {producción insuficiente};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Entradas netas de IED (miles de millones de dólares), 1990-2025. Banco
+% Mundial, WDI (BX.KLT.DINV.CD.WD): renta alta y renta baja y media
+% (barras apiladas) y China (línea). ../datos/ied-mundial.csv (consulta
+% 14/11/2026). Mundo: 239 (1990), 3.115 (2007, máximo), 1.800 (2025).
+% Paleta: renta alta azul marino, renta baja y media dorado, China rojo.
+% Capas: barras renta alta -> renta baja y media -> cero -> línea de China -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/ied-mundial.csv}\ie
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=7cm, xmin=1989.3, xmax=2025.7, ymin=0, ymax=3400,
+      xtick={1990,1995,...,2025}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize, /pgf/number format/1000 sep={.}}, ylabel={miles de millones de dólares}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!25}, clip=false, dicapas,
+      legend style={at={(0.5,-0.13)}, anchor=north, draw=none, font=\footnotesize, legend columns=3,
+        /tikz/every even column/.append style={column sep=10pt}}, legend cell align=left]
+    \capa{1}{\addplot[on layer=dicbarras, ybar stacked, bar width=6pt, area legend, dicbarra=dicze] table[x=anio, y=renta_alta] {\ie}; \addlegendentry{renta alta}}
+    \capa{2}{\addplot[on layer=dicbarras, ybar stacked, bar width=6pt, area legend, dicbarra=dicprestamos] table[x=anio, y=renta_baja_media] {\ie}; \addlegendentry{renta baja y media}}
+    \capa{3}{\addplot[diclinea=dicespana, ybar=0pt, sharp plot, stack plots=false] table[x=anio, y=china] {\ie}; \addlegendentry{China}}
+    \capa{4}{\dicrotulo[font=\scriptsize, anchor=south]{(2007,3130)}{3.115 (2007)}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2025,1820)}{1.800}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

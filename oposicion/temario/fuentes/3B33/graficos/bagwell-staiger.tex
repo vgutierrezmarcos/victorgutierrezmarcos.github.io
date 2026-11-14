@@ -1,0 +1,53 @@
+% Teoría de los acuerdos comerciales (Bagwell y Staiger, 1999) en el espacio
+% de los aranceles (t, t*), con el ejemplo lineal-cuadrático del tema:
+%   W  = (pi t  - t^2/2)  + alpha (t - t*)     (país A)
+%   W* = (pi t* - t*^2/2) + alpha (t* - t)     (país B)
+% Valores: pi = 1, alpha = 2 (unidades arbitrarias de arancel).
+%   Mejores respuestas: t = pi + alpha = 3 (A) y t* = 3 (B): estrategias
+%   dominantes; equilibrio de Nash N = (3, 3).
+%   Óptimo político PO = (pi, pi) = (1, 1): RRI fija, dW/dt = pi - t = 0.
+%   Curva de contrato (eficiencia): (pi+alpha-t)(pi+alpha-t*) = alpha^2,
+%   es decir, (3 - t)(3 - t*) = 4; pasa por PO.
+%   Curva de isobienestar de A por N: t* = [W_N - (pi t - t^2/2) - alpha t]/(-alpha)
+%     W_N = pi*3 - 4,5 = -1,5  ->  t* = (3t - t^2/2 + 1,5)/2  (máximo en t = 3)
+%   Curva de isobienestar de A por PO: W_PO = 1 - 0,5 + 0 = 0,5
+%     ->  t* = (3t - t^2/2 - 0,5)/2, tangente a la de B en PO.
+%   Las de B son simétricas (se intercambian los ejes).
+%   La recta de RRI constante que pasa por N es la diagonal t = t*: la
+%   reciprocidad lleva de N a PO sin mover la relación real de intercambio.
+% Capas: ejes -> mejores respuestas y N -> isobienestar por N (lente de
+% mejora) -> curva de contrato y PO -> reciprocidad (diagonal y flecha).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.5cm,y=1.5cm,
+    declare function={isoA(\t,\w)=(3*\t-0.5*\t*\t-\w)/2;
+                      contrato(\t)=3-4/(3-\t);}]
+  % 1: ejes
+  \capa{1}{\ejes{$t$}{$t^*$}{4.7}{4.4}}
+  % 2: mejores respuestas (dominantes) y equilibrio de Nash
+  \capa{2}{\draw[curva1] (3,0) -- (3,4.1) node[etiqueta,right,text=tceemorado] {$R_A$};}
+  \capa{2}{\draw[curva2] (0,3) -- (4.25,3) node[etiqueta,right,text=tceeazul] {$R_B$};}
+  \capa{2}{\node[punto,label={[etiqueta]above right=0pt and 1pt:$N$}] (N) at (3,3) {};}
+  % 3: curvas de isobienestar que pasan por N (la lente de mejora)
+  \capa{3}{\draw[thick,tceemorado!60] plot[domain=0:4.3,samples=60] (\x,{isoA(\x,-1.5)});}
+  \capa{3}{\draw[thick,tceeazul!60] plot[domain=0:4.3,samples=60] ({isoA(\x,-1.5)},\x);}
+  \capa{3}{\fill[area] (0,0) -- plot[domain=0:3,samples=50] (\x,{isoA(\x,-1.5)}) -- plot[domain=3:0,samples=50] ({isoA(\x,-1.5)},\x) -- cycle;}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceemorado,anchor=west] at (4.3,{isoA(4.3,-1.5)}) {$W^N$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=east] at ({isoA(4.3,-1.5)},4.3) {$W^{*N}$};}
+  % 4: curva de contrato y óptimo político (tangencia de las isobienestar)
+  \capa{4}{\draw[curva3] plot[domain=0:1.6667,samples=50] (\x,{contrato(\x)});}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeverde,anchor=south west,align=left] at (0.05,1.72) {curva de\\contrato};}
+  \capa{4}{\draw[thin,tceemorado] plot[domain=0.2:2.2,samples=40] (\x,{isoA(\x,0.5)});}
+  \capa{4}{\draw[thin,tceeazul] plot[domain=0.2:2.2,samples=40] ({isoA(\x,0.5)},\x);}
+  \capa{4}{\node[punto,label={[etiqueta]below left=0pt and 0pt:$\mathit{PO}$}] (PO) at (1,1) {};}
+  \capa{4}{\proyeccion{(PO)}{$\pi$}{$\pi$}}
+  \capa{2}{\node[below] at (3,0) {$\pi+\alpha$};}
+  \capa{2}{\node[left] at (0,3) {$\pi+\alpha$};}
+  % 5: reciprocidad: la diagonal de RRI constante y el camino de N a PO
+  \capa{5}{\draw[guia,tceerojo] (0,0) -- (4.1,4.1) node[etiqueta,above right=-2pt,text=tceerojo,font=\footnotesize,align=left] {RRI constante\\($t=t^*$)};}
+  \capa{5}{\draw[flecha] (2.85,2.85) -- (1.17,1.17);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west,align=left] at (2.05,1.55) {reciprocidad:\\rebajas iguales};}
+\end{tikzpicture}
+\end{document}

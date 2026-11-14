@@ -1,0 +1,49 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Convergencia: PIB por habitante en PPA de 2000 (dólares constantes de 2021,
+% escala log.) y crecimiento medio anual del PIB por habitante en 2000-2024
+% (%). Banco Mundial, WDI (NY.GDP.PCAP.PP.KD); ../datos/convergencia.csv
+% (consulta 14/11/2026), 189 países. Recta MCO: g = 5,92 - 0,430 ln(y2000)
+% (R2 = 0,08). Colores por grupo de renta del Banco Mundial (vigente): alta
+% azul marino, media-alta azul claro, media-baja dorado, baja naranja.
+% Capas: cero -> puntos por grupos -> recta -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/convergencia.csv}\cv
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12cm, height=8cm, xmode=log, log basis x=10, xmin=600, xmax=150000, ymin=-3.5, ymax=10,
+      xtick={1000,3000,10000,30000,100000}, xticklabels={1.000, 3.000, 10.000, 30.000, 100.000},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={PIB por habitante en 2000 (dólares de 2021 en PPA)}, ylabel={crecimiento anual 2000-2024 (\%)},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, grid=major, grid style={tceegris!20}, clip=false, dicapas,
+      legend style={at={(0.5,-0.15)}, anchor=north, draw=none, font=\footnotesize, legend columns=4,
+        /tikz/every even column/.append style={column sep=8pt}}, legend cell align=left]
+    \capa{1}{\dicraya{(600,0) (150000,0)}}
+    \capa{2}{
+      \addplot[only marks, mark=*, mark size=1.7pt, mark options={fill=dicze, draw=white, line width=0.3pt}]
+        table[x=y2000, y=crec_anual, restrict expr to domain={\thisrow{grupo_n}}{1:1}] {\cv};
+      \addlegendentry{renta alta}
+      \addplot[only marks, mark=*, mark size=1.7pt, mark options={fill=dicexterna, draw=white, line width=0.3pt}]
+        table[x=y2000, y=crec_anual, restrict expr to domain={\thisrow{grupo_n}}{2:2}] {\cv};
+      \addlegendentry{media-alta}
+      \addplot[only marks, mark=*, mark size=1.7pt, mark options={fill=dicprestamos, draw=white, line width=0.3pt}]
+        table[x=y2000, y=crec_anual, restrict expr to domain={\thisrow{grupo_n}}{3:3}] {\cv};
+      \addlegendentry{media-baja}
+      \addplot[only marks, mark=*, mark size=1.7pt, mark options={fill=dicconspriv, draw=white, line width=0.3pt}]
+        table[x=y2000, y=crec_anual, restrict expr to domain={\thisrow{grupo_n}}{4:4}] {\cv};
+      \addlegendentry{baja}}
+    \capa{3}{\addplot[diclinea=dicpib, domain=650:140000, samples=20, forget plot] {5.9175-0.4297*ln(x)};}
+    \capa{4}{
+      \dicrotulo[font=\scriptsize, anchor=south]{(4066,7.75)}{China}
+      \dicrotulo[font=\scriptsize, anchor=east]{(4250,5.11)}{Vietnam}
+      \dicrotulo[font=\scriptsize, anchor=north]{(3010,4.75)}{India}
+      \dicrotulo[font=\scriptsize, anchor=south]{(810,5.5)}{Etiopía}
+      \dicrotulo[font=\scriptsize, anchor=north]{(39946,0.7)}{España}
+      \dicrotulo[font=\scriptsize, anchor=south]{(55046,1.4)}{EE.\,UU.}
+      \dicrotulo[font=\scriptsize, anchor=north]{(20470,0.2)}{México}
+      \dicrotulo[font=\scriptsize, anchor=north]{(4889,1.97)}{Nigeria}
+      \dicrotulo[font=\scriptsize, text=dicpib, anchor=south west]{(620,3.3)}{pendiente $-0{,}43$}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

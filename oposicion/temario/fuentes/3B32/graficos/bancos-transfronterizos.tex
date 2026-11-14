@@ -1,0 +1,28 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Activos transfronterizos de los bancos declarantes al BPI (billones de
+% dólares), cierre de 1999-2025 y 2026T2, por contraparte: economías
+% avanzadas, emergentes y en desarrollo, y resto (organismos internacionales
+% y sin asignar). BPI, estadísticas bancarias territoriales;
+% ../datos/bancos-transfronterizos.csv (consulta 14/11/2026). Total: 32,9
+% (2007, máximo antes de la crisis), 49,5 (2026T2).
+% Capas: áreas -> rótulos.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bancos-transfronterizos.csv}\bk
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=7cm, xmin=1999, xmax=2026.5, ymin=0, ymax=55,
+      xtick={2000,2004,...,2024}, xticklabel style={/pgf/number format/set thousands separator={}, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={billones de dólares}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, stack plots=y, area style, clip=false, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, fill=dicze, draw=dicze!70!black] table[x=anio, y=avanzadas] {\bk} \closedcycle;}
+    \capa{2}{\addplot[on layer=dicbarras, fill=dicprestamos, draw=dicprestamos!70!black] table[x=anio, y=emergentes] {\bk} \closedcycle;}
+    \capa{3}{\addplot[on layer=dicbarras, fill=dicotromasclaro, draw=dicotro] table[x=anio, y=resto] {\bk} \closedcycle;}
+    \capa{4}{
+      \dicrotulo[font=\footnotesize, text=white, anchor=west]{(2009,12)}{frente a economías avanzadas}
+      \dicrotulo[font=\footnotesize, anchor=south east]{(2026.3,49.6)}{49,5}
+      \dicrotulo[font=\scriptsize, anchor=west, text=dicprestamos!70!black]{(2026.6,45)}{emergentes 4,8}
+      \dicrotulo[font=\scriptsize, anchor=south]{(2007,33.5)}{32,9 (2007)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,30 @@
+% Protección administrada (Bagwell y Staiger, 1990) con el ejemplo del tema:
+% W = -t^2/2 + alpha*theta*(t - t*) (pi = 0), theta = volumen de comercio.
+%   Arancel de Nash (mejor respuesta): t^N(theta) = alpha*theta.
+%   Restricción de incentivos: (1/2)(alpha*theta - t^c)^2 <= K, con
+%   K = beta/(1-beta) * (pérdida esperada de volver a Nash).
+%   Arancel más cooperativo sostenible: t^c(theta) = max{0, alpha*theta - sqrt(2K)}.
+% Valores: alpha = 1, sqrt(2K) = 2 -> umbral theta_bar = 2.
+% Capas: ejes -> arancel de Nash -> arancel cooperativo -> umbral y zona de
+% salvaguardia -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.35cm,y=1.35cm]
+  % 1: ejes
+  \capa{1}{\ejes{$\theta$ (volumen de importaciones)}{$t$}{6.2}{4.6}}
+  % 2: arancel de Nash, que crece con el volumen
+  \capa{2}{\draw[curva2] (0,0) -- (4.3,4.3) node[etiqueta,above,text=tceeazul] {$t^N(\theta)=\alpha\theta$};}
+  % 3: arancel cooperativo sostenible
+  \capa{3}{\draw[curva1] (0,0.02) -- (2,0.02);}
+  \capa{3}{\draw[curva1] (2,0.02) -- (6,4) node[etiqueta,right,text=tceemorado] {$t^c(\theta)$};}
+  % 4: umbral y zona de salvaguardia
+  \capa{4}{\fill[area2] (2,0) -- (6,4) -- (6,0) -- cycle;}
+  \capa{4}{\draw[guia] (2,0) node[below] {$\bar\theta$} -- (2,2);}
+  \capa{4}{\draw[<->,thin,tceegris] (4.6,2.6) -- (4.6,4.6) node[midway,right,font=\footnotesize,text=black] {$\sqrt{2K}$};}
+  % 5: rótulos
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=center] at (1,0.55) {comercio normal:\\libre comercio};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=center,text=tceedorado!80!black] at (4.9,0.75) {oleada de importaciones:\\protección temporal\\(salvaguardia)};}
+\end{tikzpicture}
+\end{document}
