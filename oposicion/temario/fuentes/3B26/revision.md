@@ -208,3 +208,7 @@ Aplicada en cada una la opción recomendada o la que dio el coordinador.
 - **Dichos** (13/11/2026), dichos una vez dentro de la frase que explican: «gato escaldado, del agua fría huye» (fricciones), «pagan justos por pecadores» (riesgo moral del rescate, II.3) y «acordarse de Santa Bárbara cuando truena» (III.1). Los otros 3 se han quitado.
 - **Lo que no se canta**: los anexos A-C (cuentas de Diamond y Dybvig, cronología, ejemplo del VaR e IRB), la evidencia de Iyer y Puri y de Acharya y Steffen, las cifras de las ayudas de Estado y del TARP (basta con «700.000 millones»).
 - **Reparto**: introducción 2′30″; I 7′ (2′, 1′, 4′); II 12′30″ (II.1 4′30″, II.2 1′30″, II.3 1′30″, II.4 3′30″, II.5 1′30″); III 7′ (1′30″, 2′, 2′, 1′30″); conclusión 1′. Los números de tema no se dicen en voz alta.
+
+## Coherencia con el 3.B.44 (14/11/2026)
+
+- EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.

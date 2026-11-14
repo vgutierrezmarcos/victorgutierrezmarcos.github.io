@@ -1,0 +1,37 @@
+% Asistencia financiera a los Estados de la zona del euro (2010-2015) por
+% instrumento: préstamos bilaterales a Grecia (GLF), FEEF, MEEF y MEDE,
+% desembolsado (barras apiladas) y saldo vivo en 2026 (puntos).
+% Datos: ../datos/rescates-paises.csv. Cifras de control: Grecia 256,6
+% (vivo 204,5); Portugal 50,3; España 41,3 (vivo 7,3); Irlanda 40,2; Chipre 6,3.
+% Capas: barras por instrumento -> ejes -> puntos del saldo vivo -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/rescates-paises.csv}\res
+\colorlet{cglf}{tceegris!70}
+\colorlet{cfeef}{tceeazul!55}
+\colorlet{cmeef}{tceedorado!70}
+\colorlet{cmede}{tceemorado}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=12.5cm,height=6.4cm,xbar stacked,bar width=12pt,xmin=0,xmax=300,
+    ymin=-0.6,ymax=4.6,ytick={0,1,2,3,4},yticklabels={Chipre,Irlanda,España,Portugal,Grecia},
+    axis x line*=bottom,axis y line*=left,ticklabel style={font=\footnotesize},
+    xlabel={miles de millones de euros},xlabel style={font=\footnotesize},
+    xmajorgrids,grid style={tceegris!25},clip=false,
+    legend style={at={(0.98,0.03)},anchor=south east,draw=none,font=\footnotesize},legend cell align=left,dicapas]
+  \capa{1}{\addplot[on layer=dicbarras,dicbarra=cglf] table[x=glf,y=orden] {\res}; \addlegendentry{préstamos bilaterales (GLF)}}
+  \capa{2}{\addplot[on layer=dicbarras,dicbarra=cfeef] table[x=feef,y=orden] {\res}; \addlegendentry{FEEF}}
+  \capa{3}{\addplot[on layer=dicbarras,dicbarra=cmeef] table[x=meef,y=orden] {\res}; \addlegendentry{MEEF (presupuesto de la UE)}}
+  \capa{4}{\addplot[on layer=dicbarras,dicbarra=cmede] table[x=mede,y=orden] {\res}; \addlegendentry{MEDE}}
+  \capa{5}{\addplot[on layer=dicpuntos,dicpuntos=tceerojo,stack plots=false,forget plot] table[x=vivo,y=orden] {\res};
+    \addlegendimage{only marks,mark=*,mark options={fill=white,draw=tceerojo,line width=0.9pt}}\addlegendentry{saldo vivo en 2026}}
+  \capa{6}{\dicrotulo[font=\footnotesize,anchor=west]{(258,4)}{256,6}
+    \dicrotulo[font=\footnotesize,anchor=west]{(52,3)}{50,3}
+    \dicrotulo[font=\footnotesize,anchor=west]{(43,2)}{41,3 (vivo: 7,3)}
+    \dicrotulo[font=\footnotesize,anchor=west]{(42,1)}{40,2}
+    \dicrotulo[font=\footnotesize,anchor=west]{(8,0)}{6,3}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

@@ -139,3 +139,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **Funciones clave que se conservan**: `eq:samuelson-ue` (I.4-II), `eq:justo-retorno` (II.2-II.3), `eq:carga-ngeu` (III.3).
 - Nunca se dice el número de un tema en voz alta.
 - B37-08 resuelta por el coordinador (14/11/2026): comprobado en el texto del artículo; son ≈1,6 puntos más de crecimiento anual medio durante el periodo de programación. Se mantiene «al año»; el 3.B.40 dice lo mismo.
+
+## Coherencia con el 3.B.45 (14/11/2026)
+
+- SAFE: «los primeros pagos llegaron en junio de 2026» pasa a «el primer pago, a Polonia, llegó el 29 de mayo de 2026», según la fuente que comprobó el agente del 3.B.45.

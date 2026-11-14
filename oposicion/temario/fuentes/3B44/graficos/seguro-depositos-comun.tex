@@ -1,0 +1,32 @@
+% Seguro de depósitos común frente a fondos nacionales (gráfico del apartado
+% II.3): fondo necesario para cubrir las pérdidas con la misma probabilidad, en
+% proporción al de un fondo nacional, F_c/F_n = sqrt(rho + (1 - rho)/n), según
+% el número n de sistemas bancarios de igual tamaño que comparten el fondo y la
+% correlación rho de sus pérdidas (rho = 0; 0,25; 0,5).
+% Capas: ejes -> rho = 0 -> rho = 0,25 -> rho = 0,5 -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11.5cm, height=6.6cm,
+      xmin=1, xmax=21, ymin=0, ymax=1.05,
+      xtick={1,5,10,15,20}, ytick={0,0.25,0.5,0.75,1},
+      yticklabels={0;0,25;0,5;0,75;1},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={$n$: sistemas bancarios que comparten el fondo},
+      ylabel={$F_c/F_n$},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      clip=false]
+    \capa{2}{\addplot[curva2, domain=1:20, samples=60] {sqrt(0+(1-0)/x)};}
+    \capa{3}{\addplot[curva1, domain=1:20, samples=60] {sqrt(0.25+(1-0.25)/x)};}
+    \capa{4}{\addplot[curva4, domain=1:20, samples=60] {sqrt(0.5+(1-0.5)/x)};}
+    \capa{5}{
+      \node[etiqueta,tceedorado,anchor=west] at (axis cs:20.2,0.72) {$\rho=0{,}5$};
+      \node[etiqueta,tceemorado,anchor=west] at (axis cs:20.2,0.53) {$\rho=0{,}25$};
+      \node[etiqueta,tceeazul,anchor=west] at (axis cs:20.2,0.22) {$\rho=0$};
+      \node[etiqueta,font=\footnotesize,anchor=south west] at (axis cs:1.2,1.0) {fondo nacional ($n=1$)};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

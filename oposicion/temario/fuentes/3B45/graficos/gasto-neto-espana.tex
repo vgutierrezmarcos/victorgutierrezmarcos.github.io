@@ -1,0 +1,29 @@
+% Gasto primario neto de España: crecimiento máximo recomendado por el
+% Consejo (plan fiscal-estructural 2025-2028) frente al observado (2024-2025,
+% Comisión) y al previsto por la AIReF (2026-2027).
+% Datos: ../datos/gasto-neto-espana.csv. Cifras de control: 3,7/3,5/3,2/3,0
+% recomendados; 4,8 en 2025; 7,3 en 2026; 5,1 en 2027.
+% Capas: barras recomendadas -> barras observadas -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#},empty cells with={nan}]{../datos/gasto-neto-espana.csv}\gn
+\colorlet{crec}{tceemorado!70}
+\colorlet{cobs}{tceerojo!80}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=11.5cm,height=6.2cm,ybar,bar width=16pt,xmin=2023.4,xmax=2028.6,ymin=0,ymax=8.4,
+    axis x line*=bottom,axis y line*=left,xtick={2024,...,2028},
+    x tick label style={font=\footnotesize,/pgf/number format/.cd,set thousands separator={}},
+    yticklabel style={font=\footnotesize},ylabel={crecimiento anual, \%},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,unbounded coords=discard,
+    legend style={at={(0.5,-0.14)},anchor=north,draw=none,font=\footnotesize},legend cell align=left,legend columns=1,legend image code/.code={\draw[#1,draw=none] (0cm,-0.1cm) rectangle (0.4cm,0.12cm);},
+    nodes near coords,nodes near coords style={font=\scriptsize,/pgf/number format/.cd,use comma,fixed,fixed zerofill,precision=1},dicapas]
+  \capa{1}{\addplot[on layer=dicbarras,dicbarra=crec] table[x=anio,y=recomendado] {\gn};
+    \addlegendentry{máximo recomendado por el Consejo}}
+  \capa{2}{\addplot[on layer=dicbarras,dicbarra=cobs] table[x=anio,y=observado] {\gn};
+    \addlegendentry{observado (2024-2025) y previsto por la AIReF (2026-2027)}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

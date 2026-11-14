@@ -1,0 +1,43 @@
+% Ratio CET1 y ratio de préstamos dudosos (NPL) de las entidades significativas
+% del MUS, trimestral, 2015-T2 a 2026-T2. Datos y fuente en
+% ../datos/solvencia-morosidad.csv (BCE, Supervisory Banking Statistics).
+% Dos paneles: izquierda, CET1; derecha, NPL.
+% Capas: ejes -> línea CET1 -> rótulos CET1 -> línea NPL -> rótulos NPL.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/solvencia-morosidad.csv}\sm
+\begin{tikzpicture}[tcee]
+  \begin{axis}[name=izq,
+      width=7.6cm, height=6cm,
+      xmin=2015, xmax=2026.8, ymin=10, ymax=18,
+      xtick={2015,2018,...,2024,2026}, ytick={10,12,...,18},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      title={\small Ratio CET1 (\%)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \capa{2}{\addplot[diclinea=tceeazul, mark=none] table[x=x,y=cet1] {\sm};}
+    \capa{3}{
+      \dicrotulo[font=\footnotesize,text=tceeazul,anchor=north west]{(2015.3,12.6)}{2015: 12,7}
+      \dicrotulo[font=\footnotesize,text=tceeazul,anchor=south east]{(2026.5,16.3)}{2026: 16,0}}
+  \end{axis}
+  \begin{axis}[at={(izq.east)}, anchor=west, xshift=1.2cm,
+      width=7.6cm, height=6cm,
+      xmin=2015, xmax=2026.8, ymin=0, ymax=8,
+      xtick={2015,2018,...,2024,2026}, ytick={0,2,...,8},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      title={\small Préstamos dudosos (\% de los préstamos)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \capa{4}{\addplot[diclinea=tceerojo, mark=none] table[x=x,y=npl] {\sm};}
+    \capa{5}{
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=south west]{(2015.5,7.5)}{2015: 7,5}
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=south east]{(2026.5,2.1)}{2026: 1,9}}
+  \end{axis}
+  \path[use as bounding box] (-1.2,-1.0) rectangle (15.4,5.6);
+\end{tikzpicture}
+\end{document}

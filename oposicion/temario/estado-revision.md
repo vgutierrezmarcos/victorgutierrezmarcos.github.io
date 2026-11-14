@@ -7,8 +7,8 @@ Registro que lleva Claude y actualiza tras cada tanda. Última actualización: 1
 | a) Publicados (versión revisada en la web, rama main) | 0 | Ninguno (en main siguen las versiones antiguas) |
 | b) Revisados y aprobados por Víctor | 22 | 3A02, 3A04, 3A08-3A16, 3A19, 3A21-3A26, 3A28, 3A43, 3A44, 3B31 (aprobado «por ahora») |
 | c) Con comentarios de Víctor (aplicados o en curso; pendientes de su relectura) | 32 | 3A01, 3A03, 3A05, 3A06, 3A07, 3A17, 3A18, 3A20, 3A27, 3A29, 3A30, 3A31, 3A32, 3A33, 3A34, 3A35, 3A36, 3A37, 3A38, 3A39, 3A40, 3A41, 3A42, 3A45, 3B05-3B11, 3B28 |
-| d) Hechos, pendientes de que Víctor los lea | 33 | 3B01, 3B02, 3B03, 3B04, 3B12, 3B13, 3B14-3B19, 3B20, 3B21, 3B22, 3B23, 3B24, 3B25, 3B26, 3B27, 3B29, 3B30, 3B32, 3B33, 3B34, 3B35, 3B36, 3B37, 3B38, 3B39, 3B40, 3B41, 3B42 |
-| e) Pendientes de hacer | 3 | 3B43-3B45 |
+| d) Hechos, pendientes de que Víctor los lea | 36 | 3B01, 3B02, 3B03, 3B04, 3B12, 3B13, 3B14-3B19, 3B20, 3B21, 3B22, 3B23, 3B24, 3B25, 3B26, 3B27, 3B29, 3B30, 3B32, 3B33, 3B34, 3B35, 3B36, 3B37, 3B38, 3B39, 3B40, 3B41, 3B42, 3B43, 3B44, 3B45 |
+| e) Pendientes de hacer | 0 | |
 | **Total** | **90** | 3.A (45) + 3.B (45) |
 
 3B01, 3B24 y 3B27 terminados el 13/11/2026 (tema y ficha; con las reglas de la 9.ª tanda). 3A32 reestructurado en 3 bloques el 13/11/2026.
@@ -20,3 +20,5 @@ Revisión transversal del 13/11 (Nobel, 4.º ejercicio, dichos, figuras) hecha e
 3B37, 3B38 y 3B39 hechos el 14/11/2026 (tema y ficha), con material del disco D:. El refrán del 3B38 se cambió para no repetir el del 3B39.
 
 3B40, 3B41 y 3B42 hechos el 14/11/2026 (tema y ficha), con material del disco D:. 3B21, 3B33 y 3B35 corregidos para cuadrar con el 3B41 (Mercosur, México y otros acuerdos, salvaguardia del acero, SPG).
+
+- 14/11/2026: hechos desde cero 3B43 (euro, SEBC y política monetaria), 3B44 (unión bancaria y UMC) y 3B45 (gobernanza y reglas fiscales). Con ellos están hechos los 90 temas. Correcciones de coherencia en 3B37 (SAFE), 1D01, 3B16, 3B26 y 3B27 (EDIS retirado), 3B36 (Lagarde) y 3A36 (euro digital, €STR).

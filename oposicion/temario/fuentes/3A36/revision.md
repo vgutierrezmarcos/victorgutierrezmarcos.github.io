@@ -271,3 +271,8 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - **Nobel** (el tema no tenía ninguna nota): nota al pie en la primera mención en el cuerpo para Tobin (1981), Lucas (1995), Tinbergen (1969, con Frisch), Friedman (1976), Phelps (2006) y Sargent (2011), Koopmans (1975, dentro de la nota sobre RCK), Kydland y Prescott (2004), Woodford (2026, dentro de la nota sobre la pérdida), Nash (1994) y Bernanke (2022). **Woodford**: en la idea de la política óptima de la NEK se añade que es el programa de \textcite{Woodford2003Interest} (estabilización derivada de las decisiones de hogares y empresas) premiado en 2026. Ficha: corregido «Lucas, Nobel 1996» → 1995 (la conferencia es de 1995 y se publicó en 1996). Entradas del .bib copiadas de otros temas.
 - **4.º ejercicio**: \vertema{4.A.29} en el episodio de inflación de 2021-2023 y la evaluación de 2025; \vertema{4.A.28} en las OMT (crisis del euro de 2012).
 - **Refranes**: el temario antiguo no traía ninguno. Se quedan «lo prometido es deuda» (enganche e idea final), «el camino del infierno está empedrado de buenas intenciones» (sesgo inflacionista, explicado), «entre dos males, el menor» (dilema ante una perturbación de costes) y «a grandes males, grandes remedios» (no convencionales). **Quitado** del tema y de la ficha: «quien avisa no es traidor» (orientación sobre los tipos): iba suelto, sin explicar, y su sentido (eximirse de culpa tras avisar) no es el de la orientación.
+
+## Coherencia con el 3.B.43 (14/11/2026)
+
+- Euro digital: en julio de 2026 el Parlamento Europeo aprobó su mandato negociador, no «fijó su posición».
+- €STR: «unos 6» pasa a «unos 7 (6,8)» puntos básicos por debajo de la facilidad de depósito, la cifra de la fuente citada.

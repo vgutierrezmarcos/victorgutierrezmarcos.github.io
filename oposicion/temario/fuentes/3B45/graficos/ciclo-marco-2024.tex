@@ -1,0 +1,30 @@
+% El ciclo del marco fiscal de 2024: trayectoria de referencia y análisis de
+% sostenibilidad de la deuda, plan fiscal-estructural de medio plazo,
+% aprobación del Consejo (senda de gasto neto), informes anuales de progreso,
+% cuenta de control y procedimientos de déficit excesivo por déficit o por
+% deuda; al margen, las cláusulas de escape.
+% Fuente: Reglamentos 2024/1263 y 2024/1264.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    paso/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,align=left,text width=4.3cm,inner sep=4pt,font=\footnotesize,minimum height=1.55cm},
+    pde/.style={draw=tceerojo,thick,fill=tceerojo!7,rounded corners=2pt,align=left,text width=4.3cm,inner sep=4pt,font=\footnotesize,minimum height=1.55cm},
+    escape/.style={draw=tceegris,thick,dashed,fill=tceegris!6,rounded corners=2pt,align=left,text width=4.3cm,inner sep=4pt,font=\footnotesize},
+    sigue/.style={->,thick,tceegris}]
+  \capa{1}{\node[paso] (a) at (0,0) {\textbf{1. Trayectoria de referencia}\\la Comisión, con un análisis de sostenibilidad de la deuda (ASD), si la deuda $>60$~\% o el déficit $>3$~\%};}
+  \capa{2}{\node[paso] (b) at (5.2,0) {\textbf{2. Plan fiscal-estructural}\\de 4 o 5 años; ajuste en 4 años, o en 7 con reformas e inversiones};
+    \draw[sigue] (a) -- (b);}
+  \capa{3}{\node[paso] (c) at (10.4,0) {\textbf{3. Aprobación del Consejo}\\fija la senda de gasto primario neto, el único indicador operativo};
+    \draw[sigue] (b) -- (c);}
+  \capa{4}{\node[paso] (d) at (10.4,-2.3) {\textbf{4. Informe anual de progreso}\\cada 30 de abril: gasto neto observado, reformas e inversiones};
+    \draw[sigue] (c) -- (d);}
+  \capa{5}{\node[paso] (e) at (5.2,-2.3) {\textbf{5. Cuenta de control}\\acumula las desviaciones: alerta si superan 0,3 puntos del PIB en un año o 0,6 acumulados};
+    \draw[sigue] (d) -- (e);}
+  \capa{6}{\node[pde] (f) at (0,-2.3) {\textbf{6. PDE (art. 126)}\\por déficit ($>3$~\%) o por deuda (desviaciones con deuda $>60$~\%); multas de hasta el 0,05~\% del PIB por semestre};
+    \draw[sigue] (e) -- (f);}
+  \capa{7}{\node[escape,text width=14.6cm,anchor=north] at (5.2,-3.5) {\textbf{Cláusulas de escape}: \emph{general} (recesión grave de la zona del euro o de la UE) y \emph{nacional} (circunstancias excepcionales fuera del control del Estado con gran impacto en sus finanzas): permiten desviarse de la senda sin que cuente en la cuenta de control. La nacional se activó desde 2025 para el gasto en defensa (hasta el 1,5~\% del PIB al año, 2025-2028).};}
+\end{tikzpicture}
+\end{document}

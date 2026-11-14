@@ -1,0 +1,77 @@
+% La «talla única»: tipo que prescribe la regla de Taylor (1993),
+% i = 1 + 1,5·π + 0,5·brecha (r* = π* = 2), para Alemania, España, Italia,
+% Francia y la zona del euro, frente a la media anual de la facilidad de
+% depósito del BCE, 1999-2026 (medias anuales; 2026 provisional).
+% Datos: ../datos/taylor-paises.csv (Eurostat prc_hicp_aind y, para 2026,
+% media de enero-octubre de prc_hicp_minr; AMECO AVGDGP, previsión de
+% primavera de 2026; zona del euro y facilidad de depósito, del CSV del
+% 3.A.36; consulta 14/11/2026).
+%   2003: España 7,2, Alemania 1,9 (5,3 puntos de diferencia, el máximo);
+%   zona del euro 4,0; facilidad de depósito 1,26
+%   2022: zona del euro 14,2 (Italia 14,8; Alemania 14,5; España 13,9;
+%   Francia 9,8) con la facilidad de depósito en 0,08
+%   2026: España 7,5; Italia 5,6; zona del euro 5,1; Alemania 4,3;
+%   Francia 4,0; facilidad de depósito 2,16
+% Paleta: España dicespana, Alemania dorado (fuertes); Italia gris continua y
+% Francia gris discontinua (finas); zona del euro dicze gruesa; facilidad de
+% depósito en barras claras dicdeposito.
+% Capas (CRITERIOS §7): sombreado de 2002-2006 y año provisional → barras de
+% la facilidad de depósito → cero → Italia y Francia → zona del euro →
+% Alemania y España → puntos → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\taylor}{../datos/taylor-paises.csv}
+\pgfplotsset{leyenda linea corta/.style={legend image code/.code={%
+    \draw[#1] (0cm,0cm) -- (0.6cm,0cm);}}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11.5cm, height=6.6cm, scale only axis,
+      xmin=1998.3, xmax=2026.9, xtick={1999,2003,...,2023,2026},
+      ymin=-5, ymax=16, ytick={-4,-2,...,16},
+      axis lines=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!20},
+      ticklabel style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={\%}, label style={font=\footnotesize},
+      legend style={at={(0.5,-0.12)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=3, /tikz/every even column/.append style={column sep=10pt}},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: los años de máxima dispersión (2002-2006) y el año provisional (2026)
+    \capa{1}{\dicsombra[fill=dicreferencia, fill opacity=0.10]{2001.5}{-5}{2006.5}{16}
+      \dicrotulo[anchor=north, font=\scriptsize, text=dicreferencia, align=center]{(2004,15.9)}{la talla única: la regla\\pedía 7-8~\% para España\\y 2-4~\% para Alemania}
+      \dicsombra[fill=dicreferencia, fill opacity=0.15]{2025.5}{-5}{2026.5}{16}
+      \dicrotulo[rotate=90, anchor=west, font=\scriptsize, text=dicreferencia]{(2026.75,9.5)}{provisional}}
+    % 2: media anual de la facilidad de depósito (barras claras)
+    \capa{2}{\addplot[on layer=dicbarras, ybar, bar width=0.5, fill=dicdeposito!30, draw=dicdeposito!45, area legend] table[col sep=comma, comment chars={\#}, x=anio, y=facilidad_deposito] {\taylor};
+      \addlegendentry{Facilidad de depósito (media anual)}}
+    % 3: la línea del cero
+    \capa{3}{\dicraya{(1998.3,0) (2026.9,0)}}
+    % 4: Italia y Francia (finas, en gris)
+    \capa{4}{\addplot[thin, dicotro, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=anio, y=taylor_italia] {\taylor};
+      \addlegendentry{Italia}
+      \addplot[thin, dashed, dicotro, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=anio, y=taylor_francia] {\taylor};
+      \addlegendentry{Francia}}
+    % 5: zona del euro (la regla del BCE, gruesa)
+    \capa{5}{\addplot[diclinea=dicze, line width=2pt, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=anio, y=taylor_ze] {\taylor};
+      \addlegendentry{Zona del euro}}
+    % 6: Alemania y España
+    \capa{6}{\addplot[diclinea=tceedorado, line width=1.3pt, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=anio, y=taylor_alemania] {\taylor};
+      \addlegendentry{Alemania}
+      \addplot[diclinea=dicespana, line width=1.3pt, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=anio, y=taylor_espana] {\taylor};
+      \addlegendentry{España}}
+    % 7: puntos de 2003 (máxima diferencia España-Alemania) y de 2022
+    \capa{7}{\addplot[dicpuntos=dicespana, forget plot] coordinates {(2003,7.23)};
+      \addplot[dicpuntos=tceedorado, forget plot] coordinates {(2003,1.92)};
+      \addplot[dicpuntos=dicze, forget plot] coordinates {(2022,14.15)};}
+    % 8: rótulos
+    \capa{8}{\dicrotulo[anchor=south, font=\footnotesize, text=dicespana]{(2003,7.6)}{7,2}
+      \dicrotulo[anchor=north west, font=\footnotesize, text=tceedorado, inner sep=1pt]{(2003.12,1.85)}{1,9}
+      \dicrotulo[anchor=east, font=\footnotesize, text=dicze]{(2021.6,14.3)}{14,2 (2022)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

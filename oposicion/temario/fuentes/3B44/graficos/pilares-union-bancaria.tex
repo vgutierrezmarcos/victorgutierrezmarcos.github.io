@@ -1,0 +1,22 @@
+% Los pilares de la unión bancaria sobre el código normativo único (figura del
+% apartado II). Gráfico de referencia del canon (ficha union-bancaria): un
+% templete con la base (código normativo único, UE-27) y 3 columnas (MUS, MUR,
+% EDIS, esta última en gris discontinuo porque no existe), y el respaldo
+% común del MEDE, pendiente, dentro del MUR.
+% Capas: base -> MUS -> MUR -> EDIS -> frontón.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    col/.style={draw=#1,very thick,fill=#1!10,minimum width=3.3cm,minimum height=3.2cm,align=center,font=\footnotesize,text width=3.1cm},
+    pie/.style={font=\scriptsize,align=center,text width=3.2cm}]
+  \capa{1}{\node[draw=tceemorado,very thick,fill=tceemorado!15,minimum width=12.6cm,minimum height=1.05cm,align=center,font=\footnotesize] (base) at (0,0)
+    {\textbf{Código normativo único} (UE-27; ABE): CRR/CRD (Basilea~III), BRRD y DGSD\\manual único de supervisión, normas técnicas de la ABE};}
+  \capa{2}{\node[col=tceeazul] (mus) at (-4.3,2.2) {\textbf{1.\textsuperscript{er} pilar}\\[2pt]\textbf{Mecanismo Único de Supervisión}\\[2pt]BCE + autoridades nacionales\\Reglamento 1024/2013\\desde el 4/11/2014};}
+  \capa{3}{\node[col=tceeverde] (mur) at (0,2.2) {\textbf{2.º pilar}\\[2pt]\textbf{Mecanismo Único de Resolución}\\[2pt]Junta Única + Fondo Único\\Reglamento 806/2014\\desde el 1/1/2016\\respaldo del MEDE pendiente};}
+  \capa{4}{\node[col=tceegris,dashed,text=tceegris] (edis) at (4.3,2.2) {\textbf{3.\textsuperscript{er} pilar}\\[2pt]\textbf{Sistema Europeo de Garantía de Depósitos}\\[2pt]propuesto en 2015\\sin aprobar};}
+  \capa{5}{\fill[tceemorado!25,draw=tceemorado,very thick] (-6.3,3.85) -- (6.3,3.85) -- (0,5.9) -- cycle;
+    \node[font=\footnotesize\bfseries,tceemorado] at (0,4.3) {Unión bancaria (zona del euro + cooperación estrecha)};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,83 @@
+% Diferencial de la deuda pública a 10 años frente a Alemania (puntos básicos),
+% media mensual, enero de 1999-octubre de 2026: Italia, España, Portugal,
+% Grecia y Francia. Eje y recortado en 1.600 pb: Grecia se sale en 2011-2012
+% (máximo 2.739 pb en febrero de 2012) y lo dice un rótulo.
+% Datos: ../datos/diferenciales.csv (BCE, Data Portal, IRS; cálculo propio;
+% consulta 14/11/2026). Eje x en años decimales. Grecia sin dato en julio de
+% 2015 (hueco).
+%   máximos: Grecia 2.739 (2/2012), Portugal 1.203 (1/2012), España 555
+%   (7/2012), Italia 519 (11/2011), Francia 154 (11/2011)
+%   octubre de 2026: Italia 126, España 65, Portugal 50, Grecia 99, Francia 147
+% Rayas verticales: Deauville (18/10/2010), «lo que sea necesario»
+% (26/7/2012), PEPP (18/3/2020) y TPI (21/7/2022).
+% Paleta: España dicespana (como en todos los gráficos de datos); Italia
+% verde, Portugal azul, Grecia morado, Francia gris discontinua.
+% Capas (CRITERIOS §7): ejes, cero y rayas de los hitos → Francia → Grecia,
+% Portugal e Italia → España → puntos → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\dif}{../datos/diferenciales.csv}
+\pgfplotsset{leyenda linea corta/.style={legend image code/.code={%
+    \draw[#1] (0cm,0cm) -- (0.6cm,0cm);}}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11.5cm, height=6.2cm, scale only axis,
+      xmin=1998.8, xmax=2027.2, xtick={1999,2003,...,2027},
+      ymin=-100, ymax=1600, ytick={0,200,...,1600},
+      axis lines=left, tick align=outside, clip=true,
+      ymajorgrids, grid style={tceegris!20},
+      ticklabel style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      y tick label style={/pgf/number format/1000 sep={.}},
+      ylabel={puntos básicos}, label style={font=\footnotesize},
+      legend style={at={(0.5,-0.12)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=5, /tikz/every even column/.append style={column sep=8pt}},
+      legend cell align=left,
+      unbounded coords=jump,
+      dicapas,
+    ]
+    % 1: el cero y los hitos: Deauville, «lo que sea necesario», PEPP y TPI
+    % (los rótulos van encima del recuadro, fuera del axis, porque el axis recorta)
+    \capa{1}{\dicraya{(1998.8,0) (2027.2,0)}}
+    \capa{1}{\dicraya[dicumbral]{(2010.79,-100) (2010.79,1600)}
+      \coordinate (deauville) at (axis cs:2010.79,1600);}
+    \capa{2}{\dicraya[dicumbral]{(2012.57,-100) (2012.57,1600)}
+      \coordinate (draghi) at (axis cs:2012.57,1600);}
+    \capa{3}{\dicraya[dicumbral]{(2020.21,-100) (2020.21,1600)}
+      \coordinate (pepp) at (axis cs:2020.21,1600);
+      \dicraya[dicumbral]{(2022.55,-100) (2022.55,1600)}
+      \coordinate (tpi) at (axis cs:2022.55,1600);}
+    % 4: Francia (referencia del «núcleo»)
+    \capa{4}{\addplot[thick, dashed, dicotro, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=x, y=francia] {\dif};
+      \addlegendentry{Francia}}
+    % 5: Grecia, Portugal e Italia
+    \capa{5}{\addplot[thick, tceemorado, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=x, y=grecia] {\dif};
+      \addlegendentry{Grecia}
+      \addplot[thick, tceeazul, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=x, y=portugal] {\dif};
+      \addlegendentry{Portugal}
+      \addplot[thick, tceeverde, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=x, y=italia] {\dif};
+      \addlegendentry{Italia}}
+    % 6: España
+    \capa{6}{\addplot[diclinea=dicespana, line width=1.4pt, leyenda linea corta] table[col sep=comma, comment chars={\#}, x=x, y=espana] {\dif};
+      \addlegendentry{España}}
+    % 7: máximos
+    \capa{7}{\addplot[dicpuntos=dicespana, forget plot] coordinates {(2012.542,555)};
+      \addplot[dicpuntos=tceeverde, forget plot] coordinates {(2011.875,519)};
+      \addplot[dicpuntos=tceeazul, forget plot] coordinates {(2012.042,1203)};}
+    % 8: rótulos de los máximos y de Grecia fuera de escala
+    \capa{8}{\dicrotulo[anchor=west, font=\footnotesize, text=dicespana]{(2012.75,560)}{555}
+      \dicrotulo[anchor=east, font=\footnotesize, text=tceeverde]{(2011.75,519)}{519}
+      \dicrotulo[anchor=east, font=\footnotesize, text=tceeazul]{(2011.9,1203)}{1.203}
+      \dicrotulo[anchor=north east, font=\footnotesize, text=tceemorado, align=right]{(2010.5,1560)}{Grecia, fuera de escala:\\2.739 (feb.\ 2012)}}
+  \end{axis}
+  % rótulos de los hitos, encima del recuadro
+  \begin{scope}[font=\scriptsize, text=dicreferencia, inner sep=1.5pt, align=center]
+    \capa{1}{\node[anchor=south east] at ([yshift=1pt]deauville) {Deauville\\(oct.\ 2010)};}
+    \capa{2}{\node[anchor=south west] at ([yshift=1pt]draghi) {«lo que sea\\necesario»\\(jul.\ 2012)};}
+    \capa{3}{\node[anchor=south east] at ([yshift=1pt]pepp) {PEPP\\(mar.\ 2020)};
+      \node[anchor=south west] at ([yshift=1pt]tpi) {TPI\\(jul.\ 2022)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

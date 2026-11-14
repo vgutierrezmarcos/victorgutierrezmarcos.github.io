@@ -1,0 +1,53 @@
+% Inflación de la zona del euro: IAPC general y sin energía ni alimentos
+% («subyacente»), tasa interanual en %, enero de 1999-octubre de 2026
+% (octubre: avance del 4/11/2026), con el objetivo del 2 %.
+% Datos: ../datos/inflacion-zona-euro.csv (Eurostat prc_hicp_minr; la
+% subyacente anterior a 12/2000, BCE ICP; copia de las columnas de la zona del
+% euro del CSV del 3.A.41, comprobada el 14/11/2026). Eje x en años decimales.
+%   general: máximo 10,6 (10/2022); mínimos −0,7 (7/2009) y −0,6 (1/2015);
+%   último 4,0 (10/2026, avance); subyacente: 5,7 (3/2023), 2,5 (10/2026)
+% Paleta «dic»: inflación negra (general continua, subyacente discontinua);
+% objetivo, raya gris discontinua.
+% Capas (CRITERIOS §7): cero y objetivo → subyacente → general → puntos →
+% rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\iapc}{../datos/inflacion-zona-euro.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11.5cm, height=6.2cm, scale only axis,
+      xmin=1998.8, xmax=2027.2, xtick={1999,2003,...,2027},
+      ymin=-2, ymax=12, ytick={-2,0,...,12},
+      axis lines=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!20},
+      ticklabel style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={\%}, label style={font=\footnotesize},
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none, font=\footnotesize},
+      legend cell align=left,
+      dicapas,
+    ]
+    % 1: el cero y el objetivo del 2 %
+    \capa{1}{\dicraya{(1998.8,0) (2027.2,0)}}
+    \capa{1}{\dicraya[dicumbral, thick]{(1998.8,2) (2027.2,2)}}
+    \capa{1}{\dicrotulo[anchor=north west, font=\scriptsize, text=dicreferencia, align=left]{(2027.3,1.95)}{objetivo:\\2~\%}}
+    % 2: subyacente (sin energía ni alimentos)
+    \capa{2}{\addplot[diclinea=dicinflacion, thick, dashed] table[col sep=comma, comment chars={\#}, x=x, y=subyacente] {\iapc};
+      \addlegendentry{Sin energía ni alimentos}}
+    % 3: IAPC general
+    \capa{3}{\addplot[diclinea=dicinflacion] table[col sep=comma, comment chars={\#}, x=x, y=general] {\iapc};
+      \addlegendentry{IAPC general}}
+    % 4: máximo, mínimos y último dato
+    \capa{4}{\addplot[dicpuntos=dicinflacion, forget plot] coordinates {(2022.792,10.6) (2009.542,-0.7) (2015.042,-0.6) (2026.792,4.0) (2026.792,2.5)};}
+    % 5: rótulos
+    \capa{5}{\dicrotulo[anchor=east, font=\footnotesize]{(2022.4,10.6)}{10,6~\% (oct.\ 2022)}}
+    \capa{5}{\dicrotulo[anchor=north, font=\footnotesize]{(2009.542,-0.95)}{$-0{,}7$ (jul.\ 2009)}}
+    \capa{5}{\dicrotulo[anchor=north, font=\footnotesize]{(2015.042,-0.85)}{$-0{,}6$ (ene.\ 2015)}}
+    \capa{5}{\dicrotulo[anchor=west, font=\footnotesize]{(2026.95,4.1)}{4,0}}
+    \capa{5}{\dicrotulo[anchor=west, font=\footnotesize]{(2026.95,2.65)}{2,5}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

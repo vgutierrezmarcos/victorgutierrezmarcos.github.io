@@ -1,0 +1,81 @@
+% Criterios de convergencia de precios y de tipos de interés en el Informe de
+% Convergencia del BCE de junio de 2026 (Chequia, Hungría, Polonia, Rumanía y
+% Suecia): a) inflación media de 12 meses (IAPC, junio de 2025-mayo de 2026)
+% frente al valor de referencia del 2,7 %; b) tipo de interés a largo plazo
+% (media del mismo periodo) frente al valor de referencia del 5,1 %.
+% Datos: ../datos/convergencia-2026.csv (BCE, Convergence Report, June 2026,
+% tabla 3.1 y capítulo 4; consulta 14/11/2026).
+%   inflación: Chequia 1,9; Hungría 3,3; Polonia 2,9; Rumanía 8,4; Suecia 2,2
+%   tipo a largo plazo: Chequia 4,5; Hungría 6,7; Polonia 5,4; Rumanía 6,7;
+%   Suecia 2,6
+%   cumplen los dos: Chequia y Suecia (ninguno cumple la convergencia legal
+%   ni está en el MTC II; Hungría, Polonia y Rumanía, con PDE)
+% Paleta: barras de los que cumplen en gris claro (dicotroclaro), de los que
+% no cumplen en teja (dicparo); valor de referencia, raya gris discontinua.
+% Capas (CRITERIOS §7): barras → ejes y valor de referencia → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\conv}{../datos/convergencia-2026.csv}
+\pgfplotsset{
+  panel/.style={
+    width=4.8cm, height=4cm, scale only axis,
+    ymin=0.4, ymax=5.6, ytick={1,...,5},
+    axis x line*=bottom, axis y line*=left, tick align=outside, clip=false,
+    xmajorgrids, grid style={tceegris!20},
+    ticklabel style={font=\footnotesize},
+    /pgf/number format/use comma,
+    title style={font=\small, anchor=south west, at={(0,1)}, yshift=2pt},
+    xmin=0},
+  barra cumple/.style={xbar, bar width=0.55, bar shift=0pt, area legend, on layer=dicbarras, fill=dicotroclaro, draw=dicotroclaro!65!black, line width=0.3pt},
+  barra no cumple/.style={xbar, bar width=0.55, bar shift=0pt, area legend, on layer=dicbarras, fill=dicparo, draw=dicparo!65!black, line width=0.3pt},
+  valor/.style={on layer=axis descriptions, dicsuelto, only marks, mark=none, draw=none,
+    point meta=x,
+    nodes near coords={\pgfmathprintnumber[fixed, fixed zerofill, precision=1, use comma]{\pgfplotspointmeta}},
+    every node near coord/.append style={font=\footnotesize, anchor=west, inner sep=2pt}},
+  % valor: dentro de la barra si cumple (acaba antes de la referencia), fuera si no
+  valor dentro/.style={valor, every node near coord/.append style={anchor=east}},
+}
+% Capas «dic» para los dos paneles (con varios axis, antes de ellos; el
+% desplazamiento del segundo panel va en un punto aparte, como en el 1.D.1)
+\pgfplotsset{dicapas}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ------------------------------------------------ a) inflación
+  \begin{axis}[panel, name=inf, xmax=10, xtick={0,2,...,10},
+      legend style={at={(1.17,-0.17)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=2, /tikz/every even column/.append style={column sep=12pt}},
+      yticklabels={Suecia,Rumanía,Polonia,Hungría,Chequia},
+      title={a) Inflación media de 12 meses (\%)}]
+    % 1: barras (gris: cumple; teja: no cumple)
+    \capa{1}{\addplot[barra cumple] table[col sep=comma, comment chars={\#}, y=y,
+        x expr={\thisrow{cumple_inflacion}==1 ? \thisrow{inflacion} : nan}] {\conv};
+      \addlegendentry{Cumple el criterio}
+      \addplot[barra no cumple] table[col sep=comma, comment chars={\#}, y=y,
+        x expr={\thisrow{cumple_inflacion}==0 ? \thisrow{inflacion} : nan}] {\conv};
+      \addlegendentry{No lo cumple}}
+    % 2: valor de referencia (2,7 = media de Chipre, Francia y Dinamarca + 1,5)
+    \capa{2}{\dicraya[dicumbral, thick]{(2.7,0.4) (2.7,5.6)}
+      \dicrotulo[anchor=south, font=\scriptsize, text=dicreferencia]{(2.7,5.6)}{referencia: 2,7}}
+    % 3: valores
+    \capa{3}{\addplot[valor dentro] table[col sep=comma, comment chars={\#}, y=y, x expr={\thisrow{cumple_inflacion}==1 ? \thisrow{inflacion} : nan}] {\conv};
+      \addplot[valor] table[col sep=comma, comment chars={\#}, y=y, x expr={\thisrow{cumple_inflacion}==0 ? \thisrow{inflacion} : nan}] {\conv};}
+  \end{axis}
+  % ------------------------------------------------ b) tipo a largo plazo
+  \coordinate (panelb) at ([xshift=1.6cm]inf.east);
+  \begin{axis}[panel, at={(panelb)}, anchor=west, xmax=8, xtick={0,2,...,8},
+      yticklabels={}, title={b) Tipo de interés a largo plazo (\%)}]
+    % 4: barras
+    \capa{4}{\addplot[barra cumple] table[col sep=comma, comment chars={\#}, y=y,
+        x expr={\thisrow{cumple_tipo_largo}==1 ? \thisrow{tipo_largo} : nan}] {\conv};
+      \addplot[barra no cumple] table[col sep=comma, comment chars={\#}, y=y,
+        x expr={\thisrow{cumple_tipo_largo}==0 ? \thisrow{tipo_largo} : nan}] {\conv};}
+    % 5: valor de referencia (5,1 = media de los tres de mejor inflación + 2)
+    \capa{5}{\dicraya[dicumbral, thick]{(5.1,0.4) (5.1,5.6)}
+      \dicrotulo[anchor=south, font=\scriptsize, text=dicreferencia]{(5.1,5.6)}{referencia: 5,1}}
+    % 6: valores
+    \capa{6}{\addplot[valor dentro] table[col sep=comma, comment chars={\#}, y=y, x expr={\thisrow{cumple_tipo_largo}==1 ? \thisrow{tipo_largo} : nan}] {\conv};
+      \addplot[valor] table[col sep=comma, comment chars={\#}, y=y, x expr={\thisrow{cumple_tipo_largo}==0 ? \thisrow{tipo_largo} : nan}] {\conv};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

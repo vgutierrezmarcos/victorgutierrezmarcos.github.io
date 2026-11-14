@@ -1,0 +1,44 @@
+% Cronología de la unión bancaria y de la UMC, 2009-2027 (figura del apartado
+% I.1): unión bancaria arriba de la línea, mercados de capitales abajo.
+% Escala: 1 año = 1 cm desde 2009.
+% Capas: línea -> hitos de la unión bancaria hasta 2016 -> hitos de la unión
+% bancaria desde 2017 -> hitos de la UMC y la UAI.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    hito/.style={circle,fill=#1,inner sep=1.6pt},
+    texto/.style={font={\scriptsize\hyphenpenalty=10000 \exhyphenpenalty=10000 },align=center,text width=1.9cm,text=black,inner sep=1pt}]
+  % 1: línea del tiempo
+  \capa{1}{\draw[thick,->,tceegris] (-0.3,0) -- (18.6,0);
+    \foreach \a in {2010,2012,...,2026} {\draw[tceegris] ({\a-2009},-0.08) -- ({\a-2009},0.08) node[below=2pt,font=\tiny,text=tceegris] {\a};}
+    \node[font=\scriptsize\bfseries,tceemorado,anchor=west] at (-0.3,4.6) {Unión bancaria};
+    \node[font=\scriptsize\bfseries,tceeazul,anchor=west] at (-0.3,-3.0) {Mercados de capitales};}
+  % 2: unión bancaria hasta 2016
+  \capa{2}{\node[hito=tceemorado] at (0,0) {}; \draw[tceegris] (0,0) -- (0,0.5) node[above,texto] {\textbf{2009} Informe de Larosière};}
+  \capa{2}{\node[hito=tceemorado] at (2,0) {}; \draw[tceegris] (2,0) -- (2,1.9) node[above,texto] {\textbf{2011} SESF y ABE};}
+  \capa{2}{\node[hito=tceemorado] at (3,0) {}; \draw[tceegris] (3,0) -- (3,3.3) node[above,texto] {\textbf{2012} 4 presidentes; Cumbre del 29/6};}
+  \capa{2}{\node[hito=tceemorado] at (4,0) {}; \draw[tceegris] (4,0) -- (4,0.5) node[above,texto] {\textbf{2013} CRR/CRD~IV; Reglamento del MUS};}
+  \capa{2}{\node[hito=tceemorado] at (5,0) {}; \draw[tceegris] (5,0) -- (5,1.9) node[above,texto] {\textbf{2014} MUS (4/11); BRRD, DGSD, MUR};}
+  \capa{2}{\node[hito=tceemorado] at (6,0) {}; \draw[tceegris] (6,0) -- (6,3.3) node[above,texto] {\textbf{2015} 5 presidentes; EDIS};}
+  \capa{2}{\node[hito=tceemorado] at (7,0) {}; \draw[tceegris] (7,0) -- (7,0.5) node[above,texto] {\textbf{2016} JUR y FUR};}
+  % 3: unión bancaria desde 2017
+  \capa{3}{\node[hito=tceemorado] at (8,0) {}; \draw[tceegris] (8,0) -- (8,1.9) node[above,texto] {\textbf{2017} Banco Popular};}
+  \capa{3}{\node[hito=tceemorado] at (11,0) {}; \draw[tceegris] (11,0) -- (11,0.5) node[above,texto] {\textbf{2020} Bulgaria y Croacia, coop. estrecha};}
+  \capa{3}{\node[hito=tceemorado] at (12,0) {}; \draw[tceegris] (12,0) -- (12,1.9) node[above,texto] {\textbf{2021} reforma del MEDE (firma)};}
+  \capa{3}{\node[hito=tceemorado] at (14,0) {}; \draw[tceegris] (14,0) -- (14,0.5) node[above,texto] {\textbf{2023} FUR completo; Italia no ratifica};}
+  \capa{3}{\node[hito=tceemorado] at (16,0) {}; \draw[tceegris] (16,0) -- (16,1.9) node[above,texto] {\textbf{2025} CRR3; acuerdo CMDI};}
+  \capa{3}{\node[hito=tceemorado] at (17,0) {}; \draw[tceegris] (17,0) -- (17,0.5) node[above,texto] {\textbf{2026} CMDI publicado; EDIS retirado};}
+  \capa{3}{\node[hito=tceemorado] at (18,0) {}; \draw[tceegris] (18,0) -- (18,3.3) node[above,texto] {\textbf{2027} nuevas propuestas};}
+  % 4: UMC y UAI
+  \capa{4}{\node[hito=tceeazul] at (6,0) {}; \draw[tceegris] (6,0) -- (6,-0.55) node[below,texto] {\textbf{2015} plan de la UMC};}
+  \capa{4}{\node[hito=tceeazul] at (8,0) {}; \draw[tceegris] (8,0) -- (8,-1.95) node[below,texto] {\textbf{2017} folleto; titulización STS};}
+  \capa{4}{\node[hito=tceeazul] at (10,0) {}; \draw[tceegris] (10,0) -- (10,-0.55) node[below,texto] {\textbf{2019} PEPP};}
+  \capa{4}{\node[hito=tceeazul] at (11,0) {}; \draw[tceegris] (11,0) -- (11,-1.95) node[below,texto] {\textbf{2020} nuevo plan de la UMC};}
+  \capa{4}{\node[hito=tceeazul] at (15,0) {}; \draw[tceegris] (15,0) -- (15,-0.55) node[below,texto] {\textbf{2024} Listing Act; EMIR~3; Letta y Draghi};}
+  \capa{4}{\node[hito=tceeazul] at (16,0) {}; \draw[tceegris] (16,0) -- (16,-1.95) node[below,texto] {\textbf{2025} Unión de Ahorros e Inversiones};}
+  \capa{4}{\node[hito=tceeazul] at (17,0) {}; \draw[tceegris] (17,0) -- (17,-0.55) node[below,texto] {\textbf{2026} cinta consolidada; titulización};}
+  \capa{4}{\node[hito=tceeazul] at (18,0) {}; \draw[tceegris] (18,0) -- (18,-1.95) node[below,texto] {\textbf{2027} T+1; ESAP};}
+\end{tikzpicture}
+\end{document}

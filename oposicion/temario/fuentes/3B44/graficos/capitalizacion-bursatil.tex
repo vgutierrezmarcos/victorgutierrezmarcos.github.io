@@ -1,0 +1,30 @@
+% Capitalización bursátil en % del PIB: UE-27, Estados Unidos y Japón,
+% 2001-2025. Datos y fuente en ../datos/capitalizacion-bursatil.csv (Eurostat,
+% nasa_10_f_bs, y Banco Mundial, WDI).
+% Capas: ejes -> Japón -> EE. UU. -> UE-27 -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/capitalizacion-bursatil.csv}\cb
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=6.6cm,
+      xmin=2000.5, xmax=2026.5, ymin=0, ymax=250,
+      xtick={2001,2005,...,2021,2025}, ytick={0,50,...,250},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% del PIB},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \capa{2}{\addplot[diclinea=tceegris, dashed, mark=none] table[x=anio,y=japon] {\cb};}
+    \capa{3}{\addplot[diclinea=tceerojo, mark=none] table[x=anio,y=eeuu] {\cb};}
+    \capa{4}{\addplot[diclinea=tceeazul, mark=none] table[x=anio,y=ue27] {\cb};}
+    \capa{5}{
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=west]{(2025.2,224)}{EE.\,UU.: 224}
+      \dicrotulo[font=\footnotesize,text=tceegris,anchor=west]{(2025.2,172)}{Japón: 172}
+      \dicrotulo[font=\footnotesize,text=tceeazul,anchor=west]{(2025.2,71)}{UE-27: 71}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,25 @@
+% Préstamos SURE por Estado miembro, % del PIB de 2020 (barras) e importe en
+% millones de euros (rótulo). Datos: ../datos/sure-paises.csv (Comisión
+% Europea; PIB de Eurostat). Cifras de control: Grecia 3,70 %; España 1,89 %
+% (21.324 M€); Italia 27.438 M€; total 98.400 M€ a 19 Estados.
+% Capas: barras con su rótulo (miles de millones de euros).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/sure-paises.csv}\sure
+\colorlet{csure}{tceeazul!60}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=11cm,height=10cm,xbar,bar width=7pt,xmin=0,xmax=4.6,ymin=-0.7,ymax=18.7,
+    ytick={0,...,18},yticklabels from table={\sure}{pais},y dir=normal,
+    axis x line*=bottom,axis y line*=left,ticklabel style={font=\footnotesize},
+    xlabel={\% del PIB de 2020 (rótulos: miles de millones de euros)},xlabel style={font=\footnotesize},
+    xticklabel style={/pgf/number format/use comma},
+    xmajorgrids,grid style={tceegris!25},clip=false,
+    nodes near coords={\pgfmathprintnumber[fixed,fixed zerofill,use comma,precision=1]{\pgfplotspointmeta}},
+    point meta=explicit,nodes near coords style={font=\scriptsize,anchor=west},dicapas]
+  \capa{1}{\addplot[on layer=dicbarras,dicbarra=csure] table[x=pct_pib,y=orden,meta expr=\thisrow{millones}/1000] {\sure};}
+\end{axis}
+\end{tikzpicture}
+\end{document}

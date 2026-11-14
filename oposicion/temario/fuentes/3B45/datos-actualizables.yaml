@@ -1,0 +1,146 @@
+tema: 3B45
+fecha_inventario: 2026-11-14
+datos:
+  - id: deficit-deuda
+    texto: "déficit y deuda 2025: zona del euro 3,0 % y 87,7 %; España 2,4 % y 100,5 % (119,3 % en 2020); UE 3,1 % y 81,5 %"
+    donde: [3B45.tex, repaso/3B45-repaso.tex, datos/saldos-espana-zona-euro.csv, datos/deuda-pde-espana-zona-euro.csv, graficos/deficit-deuda.tex]
+    valor: null
+    unidad: "% del PIB"
+    periodo: "1999-2025 (previsión de deuda 2026-2027)"
+    fuente: Eurostat2026EDP
+    organismo: Eurostat; FMI (previsión)
+    serie: "gov_10dd_edpt1 (B9, GD); CSV compartidos con el 3.A.39"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table
+    periodicidad: semestral (notificaciones de abril y octubre)
+    proxima: "2027-04"
+    familia: finanzas-publicas
+  - id: pde-abiertos
+    texto: "10 PDE abiertos (AT, BE, BG, FI, FR, HU, IT, PL, RO, SK); 24 en 2010; 0 en 2019"
+    donde: [3B45.tex, repaso/3B45-repaso.tex, datos/pde-abiertos.csv, datos/pde-abiertos.py, graficos/pde-abiertos.tex]
+    valor: 10
+    unidad: procedimientos
+    periodo: "2002-2026"
+    fuente: CE2026PDE
+    organismo: Comisión Europea; Consejo
+    serie: "editar el diccionario de pde-abiertos.py y ejecutarlo"
+    url: https://economy-finance.ec.europa.eu/economic-governance-framework/stability-and-growth-pact/corrective-arm-excessive-deficit-procedure/excessive-deficit-procedures-overview_en
+    periodicidad: con cada paquete del Semestre (junio y noviembre)
+    proxima: "2026-11 (paquete de otoño) y 2027-06"
+    familia: gobernanza-ue
+  - id: clausula-defensa
+    texto: "cláusula nacional de escape para la defensa: 15 Estados (8/7/2025) + DE, AT, ES (12/6/2026); Italia pendiente; extensión a la energía (0,3 %)"
+    donde: [3B45.tex, repaso/3B45-repaso.tex]
+    valor: 18
+    unidad: Estados
+    periodo: "2025-2028"
+    fuente: Consejo2026ClausulaEspana
+    organismo: Consejo de la UE
+    serie: notas de prensa del Consejo
+    url: https://www.consilium.europa.eu/en/press/press-releases/2026/06/12/economic-governance-council-approves-flexibility-for-spain-to-increase-defence-spending/
+    periodicidad: irregular
+    proxima: "2026-11 (Italia)"
+    familia: gobernanza-ue
+  - id: gasto-neto-espana
+    texto: "gasto neto de España: senda 3,7/3,5/3,2/3,0 %; 2025: 4,8 %; AIReF: 7,3 % (2026) y 5,1 % (2027)"
+    donde: [3B45.tex, repaso/3B45-repaso.tex, datos/gasto-neto-espana.csv, graficos/gasto-neto-espana.tex]
+    valor: null
+    unidad: "% de crecimiento anual"
+    periodo: "2024-2028"
+    fuente: AIReF2026Lineas
+    organismo: Consejo; Comisión; AIReF
+    serie: "informe de país del Semestre (junio) e informes de la AIReF (mayo y octubre-noviembre)"
+    url: https://www.airef.es/es/la-airef-preve-el-incumplimiento-del-plan-fiscal-comprometido-con-europa-desde-2026-pese-a-los-mecanismos-de-flexibilidad/
+    periodicidad: semestral
+    proxima: "2027-04 (informe anual de progreso) y 2027-06"
+    familia: finanzas-publicas
+  - id: planes
+    texto: "21 sendas aprobadas el 21/1/2025; 8 con ajuste en 7 años (BE, DE, ES, FR, IT, AT, RO, FI)"
+    donde: [3B45.tex, repaso/3B45-repaso.tex]
+    valor: 8
+    unidad: Estados
+    periodo: "2025"
+    fuente: CE2026PaquetePrimavera
+    organismo: Consejo; Comisión
+    serie: "—"
+    url: https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1140/IP_26_1140_EN.pdf
+    periodicidad: con nuevos planes (cambio de gobierno)
+    proxima: "2027"
+    familia: gobernanza-ue
+  - id: pdm
+    texto: "PDM 2026: 7 exámenes; EL, NL, SE sin desequilibrios; IT, HU, SK con; RO excesivos; España sin desequilibrios desde 2024"
+    donde: [3B45.tex, repaso/3B45-repaso.tex]
+    valor: null
+    unidad: "—"
+    periodo: "ciclo 2026"
+    fuente: CE2026PaquetePrimavera
+    organismo: Comisión Europea
+    serie: "informe del mecanismo de alerta (noviembre) y paquete de primavera (junio)"
+    url: https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1140/IP_26_1140_EN.pdf
+    periodicidad: anual
+    proxima: "2026-11 (AMR 2027) y 2027-06"
+    familia: gobernanza-ue
+  - id: mede
+    texto: "MEDE: 21 miembros; capital 714.700/81.700 M€; capacidad 500.000 (432.000 disponibles); España vivo ≈7.300 M€ (fin 2027); reforma sin Italia"
+    donde: [3B45.tex, repaso/3B45-repaso.tex, datos/rescates-paises.csv, graficos/rescates-paises.tex]
+    valor: 500000
+    unidad: millones de euros
+    periodo: "2026"
+    fuente: MEDE2026Bulgaria
+    organismo: Mecanismo Europeo de Estabilidad
+    serie: "presentación a inversores (marzo y septiembre); páginas por país"
+    url: https://www.esm.europa.eu/explainer-bulgarias-accession-esm
+    periodicidad: semestral
+    proxima: "2027-03"
+    familia: gobernanza-ue
+  - id: sure
+    texto: "SURE: 98.400 M€ a 19 Estados; España 21.324 M€"
+    donde: [3B45.tex, repaso/3B45-repaso.tex, datos/sure-paises.csv, graficos/sure-paises.tex]
+    valor: 98400
+    unidad: millones de euros
+    periodo: "2020-2022 (cerrado)"
+    fuente: CE2026SUREpaises
+    organismo: Comisión Europea
+    serie: "página SURE (cifras definitivas)"
+    url: https://economy-finance.ec.europa.eu/eu-financial-assistance/sure_en
+    periodicidad: cerrado
+    proxima: "—"
+    familia: gobernanza-ue
+  - id: mrr-safe
+    texto: "MRR: 450.000 M€ pagados (79 %) a 1/10/2026; SAFE: 13.500 M€ desembolsados a 11 Estados (29/10/2026), 2.ª convocatoria 21.300"
+    donde: [3B45.tex, repaso/3B45-repaso.tex]
+    valor: null
+    unidad: millones de euros
+    periodo: "2026"
+    fuente: CE2026InformeMRR
+    organismo: Comisión Europea
+    serie: "informe anual del MRR; DG DEFIS (SAFE)"
+    url: https://defence-industry-space.ec.europa.eu/commission-invites-member-states-use-eur213-billion-under-safe-boost-defence-readiness-and-support-2026-10-29_en
+    periodicidad: irregular
+    proxima: "2027-01 (cierre del MRR)"
+    familia: ue-presupuesto
+  - id: semestre-six-pack
+    texto: "paquete de otoño del Semestre 2027 (no publicado a 14/11/2026); adopción por el Consejo de PE-CONS 41/26 (Six-Pack y Two-Pack)"
+    donde: [3B45.tex]
+    valor: null
+    unidad: "—"
+    periodo: "2026"
+    fuente: Consejo2026SixPack
+    organismo: Comisión; Consejo
+    serie: "—"
+    url: https://data.consilium.europa.eu/doc/document/PE-41-2026-INIT/en/pdf
+    periodicidad: anual
+    proxima: "2026-11/12"
+    familia: gobernanza-ue
+  - id: personas
+    texto: "Eurogrupo: Pierrakakis; Cumbre del Euro: Costa; MEDE: Gramegna; Consejo Fiscal Europeo: Hasekamp; AIReF: Olóndriz"
+    donde: [3B45.tex, repaso/3B45-repaso.tex, graficos/arquitectura-gobernanza.tex]
+    valor: null
+    unidad: "—"
+    periodo: "2026"
+    fuente: Eurogrupo2025Presidente
+    organismo: Consejo; MEDE; Comisión; AIReF
+    serie: "—"
+    url: https://www.consilium.europa.eu/en/press/press-releases/2025/12/11/kyriakos-pierrakakis-elected-eurogroup-president/
+    periodicidad: "con cada nombramiento (MEDE, mandato de Gramegna hasta finales de 2027)"
+    proxima: "2027-12"
+    familia: gobernanza-ue

@@ -1,0 +1,156 @@
+tema: 3B44
+fecha_inventario: 2026-11-14
+datos:
+  - id: entidades-significativas
+    texto: "109 entidades significativas a 1/9/2026, en torno al 85 % de los activos bancarios de los 21 países participantes; 1.828 menos significativas (3T 2025)"
+    donde: [3B44.tex, repaso/3B44-repaso.tex]
+    valor: 109
+    unidad: entidades
+    periodo: "1/9/2026"
+    fuente: BCE2026ListaEntidades
+    organismo: BCE (Supervisión Bancaria)
+    serie: "List of supervised entities"
+    url: https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.listofsupervisedentities202610.en.pdf
+    periodicidad: varias veces al año (lista con fecha de corte)
+    proxima: "2027 (lista de febrero, corte 1/1/2027)"
+    familia: ue-union-bancaria
+
+  - id: solvencia-morosidad-si
+    texto: "CET1 de las entidades significativas del 12,7 % (2015-T2) al 16,0 % (2026-T2); préstamos dudosos del 7,5 % al 1,89 % (2,17 % sin efectivo); ROE 10,7 %; activos 29,5 billones; España 13,5 %, Lituania 20,8 %"
+    donde: [3B44.tex, repaso/3B44-repaso.tex, datos/solvencia-morosidad.csv, graficos/solvencia-morosidad.tex]
+    valor: 16.0
+    unidad: "% de los APR"
+    periodo: "2015-T2 a 2026-T2"
+    fuente: BCE2026SBSDatos
+    organismo: BCE (Supervisory Banking Statistics)
+    serie: "SUP.Q.B01.W0._Z.I4008._T.SII._Z._Z._Z.PCT.C; SUP.Q.B01.W0._Z.I7000._T.SII._Z._Z._Z.PCT.C; SUP.Q.B01.W0._Z.A0000._T.SII._Z.ALL.LE.E.C"
+    url: https://data.ecb.europa.eu/data/datasets/SUP
+    periodicidad: trimestral (unos 2,5 meses de retraso)
+    proxima: "diciembre de 2026 (2026-T3)"
+    familia: ue-union-bancaria
+
+  - id: srep-2025
+    texto: "Para 2026, requerimiento y recomendación de CET1 del 11,2 % de los APR (15,6 % de capital total); P2R medio 1,2 % en CET1; 105 bancos"
+    donde: [3B44.tex, repaso/3B44-repaso.tex]
+    valor: 11.2
+    unidad: "% de los APR"
+    periodo: "ciclo PRES 2025 (requisitos para 2026)"
+    fuente: BCE2025SREPPrensa
+    organismo: BCE
+    serie: "Aggregated SREP results"
+    url: https://www.bankingsupervision.europa.eu/press/pr/date/2025/html/ssm.pr251118~fb9a8367f3.en.html
+    periodicidad: anual (noviembre-diciembre)
+    proxima: "finales de 2026 (ciclo 2026)"
+    familia: ue-union-bancaria
+
+  - id: fur-tamano
+    texto: "Fondo Único de Resolución: más de 81.000 millones a 31/12/2025; serie 2016-2025; sin aportaciones en 2024-2026"
+    donde: [3B44.tex, repaso/3B44-repaso.tex, datos/fondo-unico-resolucion.csv, graficos/fondo-unico-resolucion.tex]
+    valor: 81
+    unidad: miles de millones de euros
+    periodo: "2016-2025"
+    fuente: SRB2026FUR
+    organismo: Junta Única de Resolución
+    serie: "SRF contributions cycle; Annual Report"
+    url: https://www.srb.europa.eu/en/content/2026-srf-contributions-cycle
+    periodicidad: anual (febrero-julio)
+    proxima: "2027 (verificación del nivel objetivo)"
+    familia: ue-union-bancaria
+
+  - id: jur-ambito-mrel
+    texto: "115 bancos bajo la JUR en 2025, 92 con resolución prevista; objetivo medio de MREL 27,8 % de los APR y déficit de 200 millones (2S 2025)"
+    donde: [3B44.tex, repaso/3B44-repaso.tex]
+    valor: 27.8
+    unidad: "% de los APR"
+    periodo: "2025"
+    fuente: SRB2026MREL
+    organismo: Junta Única de Resolución
+    serie: "MREL dashboard; Annual Report"
+    url: https://www.srb.europa.eu/system/files/media/document/2026-07-20_MREL-dashboard-H2-2025.pdf
+    periodicidad: semestral
+    proxima: "enero de 2027 (1S 2026)"
+    familia: ue-union-bancaria
+
+  - id: sesgo-domestico
+    texto: "Deuda pública 9,3 % del activo de los bancos del MUS (170 % del CET1) a finales de 2025; parte del propio Estado del 39 % (2014) a en torno al 28 %"
+    donde: [3B44.tex, repaso/3B44-repaso.tex]
+    valor: 28
+    unidad: "% de la cartera de deuda pública"
+    periodo: "4T 2025"
+    fuente: Buch2026Soberana
+    organismo: BCE
+    serie: "discurso de la presidenta del Consejo de Supervisión"
+    url: https://www.bankingsupervision.europa.eu/press/speeches/date/2026/html/ssm.sp260519~eb90c081f4.en.html
+    periodicidad: irregular
+    proxima: "cuando se publique otra cifra"
+    familia: ue-union-bancaria
+
+  - id: capitalizacion-bursatil
+    texto: "Capitalización bursátil en % del PIB: UE-27 71 %, EE. UU. 224 %, Japón 172 % (2025)"
+    donde: [3B44.tex, repaso/3B44-repaso.tex, datos/capitalizacion-bursatil.csv, graficos/capitalizacion-bursatil.tex]
+    valor: 71
+    unidad: "% del PIB"
+    periodo: "2001-2025"
+    fuente: Eurostat2026Nasa
+    organismo: Eurostat y Banco Mundial
+    serie: "nasa_10_f_bs (F511, S1, LIAB, PC_GDP); CM.MKT.LCAP.GD.ZS"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nasa_10_f_bs/default/table
+    periodicidad: anual
+    proxima: "otoño de 2027 (dato de 2026)"
+    familia: ue-umc
+
+  - id: financiacion-empresas
+    texto: "Préstamos sobre la deuda de las sociedades no financieras: 73 % en la zona del euro (préstamos de IFM) y 37 % en EE. UU. (todos los préstamos; 12 % los de bancos), 2025"
+    donde: [3B44.tex, repaso/3B44-repaso.tex, datos/financiacion-empresas.csv, graficos/financiacion-empresas.tex]
+    valor: 73
+    unidad: "%"
+    periodo: "2000-2025"
+    fuente: BCE2026Portal
+    organismo: BCE y Reserva Federal
+    serie: "BSI.M.U2.N.A.A20.A.1.U2.2240.Z01.E; QSA.Q.N.I9.W0.S11.S1.N.L.LE.F3.T._Z.XDC._T.S.V.N._T; FRED BLNECLBSNNCB, OLALBSNNCB, MLBSNNCB, NCBDBIQ027S"
+    url: https://data.ecb.europa.eu
+    periodicidad: trimestral
+    proxima: "marzo de 2027 (dato de 2026)"
+    familia: ue-umc
+
+  - id: hogares-depositos
+    texto: "Depósitos: 31 % de los activos financieros de los hogares en la zona del euro frente al 14 % en EE. UU. (2025)"
+    donde: [3B44.tex, repaso/3B44-repaso.tex]
+    valor: 31
+    unidad: "% de los activos financieros"
+    periodo: "4T 2025"
+    fuente: BCE2026Portal
+    organismo: BCE y Reserva Federal
+    serie: "QSA S1M (F2/F); FRED CDCABSHNO+TSDABSHNO+MMF/TFAABSHNO"
+    url: https://data.ecb.europa.eu
+    periodicidad: trimestral
+    proxima: "marzo de 2027"
+    familia: ue-umc
+
+  - id: reparto-riesgos
+    texto: "Reparto de riesgos: EE. UU. 39/23/13, sin suavizar 25 %; zona del euro capital ~10, crédito ~30, fiscal ~0, sin suavizar ~60 % (1997-2022)"
+    donde: [3B44.tex, repaso/3B44-repaso.tex, datos/reparto-riesgos.csv, graficos/reparto-riesgos.tex]
+    valor: 60
+    unidad: "% de la perturbación"
+    periodo: "1997-2022"
+    fuente: Cimadomo2022RiskSharing
+    organismo: BCE
+    serie: "Boletín Económico 7/2022; ECB Occasional Paper 306"
+    url: https://www.ecb.europa.eu/press/economic-bulletin/articles/2022/html/ecb.ebart202207_01~f71f0eaa4a.en.html
+    periodicidad: irregular (estudios)
+    proxima: "informe del BCE sobre integración financiera (mayo de 2027)"
+    familia: ue-umc
+
+  - id: estado-legislativo-uai
+    texto: "Estado de la UAI: titulización (acuerdo 21/10/2026), integración y supervisión (posición del Consejo 9/10/2026), pensiones, inversión minorista, euro digital (trílogos), EDIS retirado (programa de trabajo 2027) y propuestas bancarias en el 1T 2027; respaldo del MEDE sin ratificar"
+    donde: [3B44.tex, repaso/3B44-repaso.tex, graficos/cronologia.tex]
+    valor: null
+    unidad: estado
+    periodo: "noviembre de 2026"
+    fuente: CE2026Programa2027
+    organismo: Comisión Europea, Consejo, Parlamento Europeo, MEDE
+    serie: "Legislative Train Schedule; comunicados del Consejo"
+    url: https://www.europarl.europa.eu/legislative-train/
+    periodicidad: continua
+    proxima: "cada trimestre"
+    familia: ue-umc

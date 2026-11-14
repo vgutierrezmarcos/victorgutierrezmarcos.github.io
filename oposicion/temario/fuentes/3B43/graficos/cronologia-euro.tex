@@ -1,0 +1,47 @@
+% Del Informe Werner al euro de 21 Estados: cronología 1970-2026, con las 4
+% etapas (cooperación cambiaria, SME, las 3 fases de la UEM y el euro).
+% Capas: eje y etapas -> hitos de la serpiente y del SME -> Delors y
+% Maastricht -> las 3 fases -> el euro y sus ampliaciones.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,x=0.28cm,y=1cm,every node/.append style={execute at begin node=\nocortar},
+    hito/.style={font=\scriptsize,align=center,text width=2.1cm},
+    marca/.style={thin,tceegris},
+    etapa/.style={font=\scriptsize\bfseries,text=white,align=center}]
+  \newcommand{\arriba}[3]{\draw[marca] (#1,0.17) -- (#1,#2); \node[hito,anchor=south] at (#1,#2) {#3};}
+  \newcommand{\abajo}[3]{\draw[marca] (#1,-0.55) -- (#1,-#2); \node[hito,anchor=north] at (#1,-#2) {#3};}
+  % 1: el eje del tiempo y las etapas (x = año - 1968)
+  \capa{1}{\fill[tceeazul!75] (1,-0.17) rectangle (11,0.17);}
+  \capa{1}{\fill[tceemorado!75] (11,-0.17) rectangle (21,0.17);}
+  \capa{1}{\fill[tceedorado!85] (21,-0.17) rectangle (31,0.17);}
+  \capa{1}{\fill[tceeverde!75] (31,-0.17) rectangle (59,0.17);}
+  \capa{1}{\node[etapa] at (6,0) {serpiente};}
+  \capa{1}{\node[etapa] at (16,0) {SME};}
+  \capa{1}{\node[etapa] at (26,0) {fases de la UEM};}
+  \capa{1}{\node[etapa] at (45,0) {el euro};}
+  \capa{1}{\foreach \a in {1970,1980,1990,2000,2010,2020} {\node[font=\scriptsize,text=tceegris] at (\a-1968,-0.38) {\a};}}
+  % 2: la cooperación cambiaria
+  \capa{2}{\arriba{2}{0.6}{1970\\Informe Werner}}
+  \capa{2}{\abajo{4}{0.75}{1972\\serpiente (Basilea)}}
+  \capa{2}{\arriba{11}{1.6}{13/3/1979\\SME: ECU y MTC}}
+  \capa{2}{\abajo{19}{1.7}{1987\\Basilea-Nyborg}}
+  % 3: Delors y Maastricht
+  \capa{3}{\arriba{21}{0.6}{1989\\Informe Delors}}
+  \capa{3}{\abajo{24}{2.7}{1992\\Maastricht; crisis del SME}}
+  \capa{3}{\arriba{25}{1.75}{1993\\bandas del ±15~\%}}
+  % 4: las fases
+  \capa{4}{\abajo{22}{0.75}{1/7/1990\\1.ª fase}}
+  \capa{4}{\arriba{26}{2.9}{1/1/1994\\2.ª fase: IME}}
+  \capa{4}{\abajo{30}{0.75}{1/6/1998\\BCE}}
+  % 5: el euro
+  \capa{5}{\arriba{31}{0.6}{1/1/1999\\3.ª fase: el euro (11)}}
+  \capa{5}{\abajo{34}{1.7}{2002\\billetes y monedas (12)}}
+  \capa{5}{\arriba{41}{0.6}{2007-2015\\de 13 a 19 Estados}}
+  \capa{5}{\abajo{44}{0.75}{2012\\«lo que sea necesario»}}
+  \capa{5}{\arriba{55}{0.6}{2023\\Croacia (20)}}
+  \capa{5}{\abajo{58}{0.75}{2026\\Bulgaria (21)}}
+\end{tikzpicture}
+\end{document}

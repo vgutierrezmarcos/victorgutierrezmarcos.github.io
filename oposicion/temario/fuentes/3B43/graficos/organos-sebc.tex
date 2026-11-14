@@ -1,0 +1,29 @@
+% El SEBC, el Eurosistema y los órganos rectores del BCE (noviembre de 2026):
+% izquierda, los círculos (SEBC = BCE + 27 bancos centrales; Eurosistema = BCE +
+% 21 de la zona del euro); derecha, quién se sienta en cada órgano.
+% Capas: SEBC -> Eurosistema -> BCE -> Comité Ejecutivo -> Consejo de Gobierno
+% -> Consejo General -> Consejo de Supervisión.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    organo/.style={thick,rounded corners=2pt,align=left,font=\footnotesize,text width=6.6cm,inner sep=5pt,anchor=north west}]
+  % 1: el SEBC
+  \capa{1}{\draw[thick,tceegris,fill=tceegris!8,rounded corners=6pt] (0,0) rectangle (6.4,5.6);}
+  \capa{1}{\node[font=\footnotesize,align=left,anchor=north west] at (0.15,5.5) {\textbf{SEBC} (art.~282 TFUE)\\BCE + bancos centrales\\de los 27 Estados};}
+  \capa{1}{\node[font=\footnotesize,align=left,anchor=south west,text=tceegris] at (0.15,0.12) {+ 6 bancos centrales de fuera del euro};}
+  % 2: el Eurosistema
+  \capa{2}{\draw[thick,tceemorado,fill=tceemorado!10,rounded corners=6pt] (0.5,0.75) rectangle (5.9,4.15);}
+  \capa{2}{\node[font=\footnotesize,align=left,anchor=north west,text=tceemorado] at (0.65,4.05) {\textbf{Eurosistema}\\BCE + 21 bancos centrales\\(entre ellos, el Banco de España)};}
+  % 3: el BCE
+  \capa{3}{\draw[thick,tceedorado,fill=tceedorado!15,rounded corners=6pt] (1.1,1.0) rectangle (5.3,2.3);}
+  \capa{3}{\node[font=\footnotesize,align=center] at (3.2,1.65) {\textbf{BCE}\\Fráncfort, desde 1/6/1998};}
+  % 4-7: órganos
+  \capa{4}{\node[organo,draw=tceedorado,fill=tceedorado!10] at (7.0,5.6) {\textbf{Comité Ejecutivo} (6): presidenta, vicepresidente y 4 miembros; mandato de 8 años no renovable. Aplica la política monetaria y gestiona el BCE.};}
+  \capa{5}{\node[organo,draw=tceemorado,fill=tceemorado!10] at (7.0,4.15) {\textbf{Consejo de Gobierno} (6 + 21 gobernadores): decide la política monetaria; los gobernadores votan por rotación: 6 + 15 = 21 votos.};}
+  \capa{6}{\node[organo,draw=tceegris,fill=tceegris!10] at (7.0,2.7) {\textbf{Consejo General} (presidenta, vicepresidente y 27 gobernadores): relación con los Estados de fuera del euro; existe mientras los haya.};}
+  \capa{7}{\node[organo,draw=tceeazul,dashed,fill=tceeazul!6] at (7.0,1.25) {\textbf{Consejo de Supervisión}: prepara las decisiones de supervisión bancaria (MUS, desde 2014), separado de la política monetaria.};}
+\end{tikzpicture}
+\end{document}

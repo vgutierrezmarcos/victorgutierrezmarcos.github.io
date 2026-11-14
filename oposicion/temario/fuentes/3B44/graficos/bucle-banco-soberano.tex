@@ -1,0 +1,27 @@
+% Bucle banco-soberano en forma reducida (gráfico del apartado I.2.1).
+% Plano (L, s): L, pérdidas bancarias que acaban en el Estado; s, diferencial
+% de la deuda pública. Recta del Estado: s = s0 + alpha L (s0 = 1, alpha = 0,5).
+% Recta de los bancos: L = L0 + beta s, es decir, s = (L - L0)/beta (L0 = 1,
+% beta = 1,2). Equilibrio E = (5,5; 3,75). Perturbación L0 = 2: E' = (8; 5).
+% Unión bancaria (alpha = 0,2): E'' = (4,21; 1,84).
+% Capas: ejes -> recta del Estado -> recta de los bancos -> E -> perturbación
+% -> E' -> recta del Estado con unión bancaria -> E''.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.8cm]
+  \capa{1}{\draw[eje] (0,0) -- (10.3,0) node[right] {$L$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,6.8) node[above] {$s$};}
+  \capa{2}{\draw[curva1] (0,1) -- (9.6,5.8) node[right,etiqueta,tceemorado] {Estado: $s=s_0+\alpha L$};}
+  \capa{3}{\draw[curva2] (1,0) -- (8.2,6) node[above,etiqueta,tceeazul] {Bancos: $L=L_0+\beta s$};}
+  \capa{4}{\node[punto] (E) at (5.5,3.75) {}; \node[etiqueta,above left] at (E) {$E$};
+    \proyeccion{(E)}{$L^*$}{$s^*$}}
+  \capa{5}{\draw[curvanueva,desplazada] (2,0) -- (9.2,6);
+    \draw[flecha] (1.75,0.55) -- (2.6,0.55) node[midway,below,etiqueta,font=\footnotesize,tceerojo] {$\Delta L_0$};}
+  \capa{6}{\node[punto] (E1) at (8,5) {}; \node[etiqueta,above left] at (E1) {$E'$};
+    \proyeccion{(E1)}{$L'$}{$s'$}}
+  \capa{7}{\draw[curva3,desplazada] (0,1) -- (9.6,2.92) node[right,etiqueta,tceeverde] {con unión bancaria: $\alpha\downarrow$};}
+  \capa{8}{\node[punto,fill=tceeverde] (E2) at (4.21,1.84) {}; \node[etiqueta,below right,tceeverde] at (E2) {$E''$};}
+\end{tikzpicture}
+\end{document}

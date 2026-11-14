@@ -1,0 +1,24 @@
+% El ciclo anual del Semestre Europeo desde 2025 (marco de 2024): paquete de
+% otoño, recomendación para la zona del euro, informes anuales de progreso,
+% paquete de primavera y recomendaciones específicas por país, y los
+% proyectos de planes presupuestarios de la zona del euro (15 de octubre).
+% Fuente: Reglamento 2024/1263, Reglamento 473/2013 y Comisión Europea.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    mes/.style={font=\footnotesize\bfseries,text=tceemorado},
+    caja/.style={draw=#1,thick,fill=#1!8,rounded corners=2pt,align=left,text width=2.5cm,inner sep=3pt,font=\scriptsize,anchor=north}]
+  \capa{1}{\draw[very thick,tceemorado,->] (0,0) -- (16.6,0);
+    \foreach \m/\x in {nov./0.9,dic.-feb./3.7,mar.-abr./6.5,may.-jun./9.3,jul./12.1,oct./14.9}
+      {\fill[tceemorado] (\x,0) circle (2.2pt); \node[mes,above=3pt] at (\x,0) {\m};}}
+  \capa{2}{\node[caja=tceeazul] at (0.9,-0.3) {\textbf{Paquete de otoño} (Comisión)\\estudio prospectivo anual\\informe del mecanismo de alerta (PDM)\\dictámenes sobre los proyectos de presupuesto\\recomendación para la zona del euro};}
+  \capa{3}{\node[caja=tceegris] at (3.7,-0.3) {\textbf{Eurogrupo y Ecofin}\\aprueban la recomendación para la zona del euro;\\el Consejo Europeo de primavera da orientaciones};}
+  \capa{4}{\node[caja=tceedorado] at (6.5,-0.3) {\textbf{Estados}\\30 de abril: informe anual de progreso del plan fiscal-estructural (gasto neto, reformas e inversiones)};}
+  \capa{5}{\node[caja=tceerojo] at (9.3,-0.3) {\textbf{Paquete de primavera} (Comisión)\\informes por país y exámenes exhaustivos\\propuestas de recomendaciones específicas (REP)\\pasos del PDE};}
+  \capa{6}{\node[caja=tceeverde] at (12.1,-0.3) {\textbf{Consejo}\\adopta las REP; el Consejo Europeo las respalda\\\textit{semestre nacional}: los Estados las aplican en sus presupuestos};}
+  \capa{7}{\node[caja=tceemorado] at (14.9,-0.3) {\textbf{Zona del euro}\\15 de octubre: proyectos de planes presupuestarios (Two-Pack)};}
+\end{tikzpicture}
+\end{document}

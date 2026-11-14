@@ -1,0 +1,56 @@
+% Activo del Eurosistema (billones de euros), último estado semanal de cada
+% mes, enero de 1999-noviembre de 2026, en áreas apiladas: valores mantenidos
+% con fines de política monetaria (A070100, desde julio de 2009), préstamos a
+% las entidades de crédito para política monetaria (A050000) y resto del
+% activo; encima, la línea del activo total.
+% Datos: ../datos/balance-eurosistema.csv (BCE, Data Portal, ILM; consulta
+% 14/11/2026; último estado: semana del 6/11/2026). Eje x en años decimales.
+%   activo total: 0,70 (1/1999); máximo 8,836 (24/6/2022); 5,913 (6/11/2026)
+%   préstamos: máximo 2,217 billones (25/6/2021, TLTRO III); 0,038 (6/11/2026)
+%   valores: 3,28 billones (6/11/2026)
+% Paleta «dic»: valores dicdeposito claro, préstamos dicprestamos, resto
+% dicresto (como en el 1.D.1); activo total, negro.
+% Capas (CRITERIOS §7): áreas → ejes → línea del activo total → puntos →
+% rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\balance}{../datos/balance-eurosistema.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11.5cm, height=6.2cm, scale only axis,
+      xmin=1998.8, xmax=2027.2, xtick={1999,2003,...,2027},
+      ymin=0, ymax=10, ytick={0,2,...,10},
+      axis lines=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!20},
+      ticklabel style={font=\footnotesize},
+      x tick label style={/pgf/number format/1000 sep={}},
+      /pgf/number format/use comma,
+      ylabel={billones de euros}, label style={font=\footnotesize},
+      legend style={at={(0.5,-0.12)}, anchor=north, draw=none, font=\footnotesize,
+        legend columns=2, /tikz/every even column/.append style={column sep=12pt}},
+      legend cell align=left,
+      stack plots=y, area style,
+      dicapas,
+    ]
+    % 1: valores mantenidos con fines de política monetaria (SMP, CBPP, APP, PEPP)
+    \capa{1}{\addplot[on layer=dicbarras, fill=dicdeposito!75, draw=none] table[col sep=comma, comment chars={\#}, x=x, y=valores_politica_monetaria] {\balance} \closedcycle;
+      \addlegendentry{Valores de política monetaria}}
+    % 2: préstamos a los bancos (OPF, OFPML, TLTRO)
+    \capa{2}{\addplot[on layer=dicbarras, fill=dicprestamos, draw=none] table[col sep=comma, comment chars={\#}, x=x, y=prestamos_politica_monetaria] {\balance} \closedcycle;
+      \addlegendentry{Préstamos de política monetaria}}
+    % 3: resto del activo
+    \capa{3}{\addplot[on layer=dicbarras, fill=dicresto, draw=none] table[col sep=comma, comment chars={\#}, x=x, y=resto] {\balance} \closedcycle;
+      \addlegendentry{Resto del activo}}
+    % 4: activo total (línea, encima de las áreas)
+    \capa{4}{\addplot[stack plots=false, sharp plot, diclinea=black, thick, legend image code/.code={\draw[black, thick] (0cm,0cm) -- (0.6cm,0cm);}] table[col sep=comma, comment chars={\#}, x=x, y=activo_total] {\balance};
+      \addlegendentry{Activo total}}
+    % 5: máximo y último dato
+    \capa{5}{\addplot[stack plots=false, dicpuntos=black, forget plot] coordinates {(2022.477,8.836) (2026.847,5.913)};}
+    % 6: rótulos
+    \capa{6}{\dicrotulo[anchor=east, font=\footnotesize]{(2022.2,8.95)}{8,8 (junio de 2022)}}
+    \capa{6}{\dicrotulo[anchor=south, font=\footnotesize]{(2026.847,6.15)}{5,9}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

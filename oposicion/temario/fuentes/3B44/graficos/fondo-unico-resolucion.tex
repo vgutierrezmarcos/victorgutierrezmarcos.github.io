@@ -1,0 +1,33 @@
+% Tamaño del Fondo Único de Resolución a final de año (barras) y aportaciones
+% anuales de los bancos (puntos), miles de millones de euros, 2016-2025. Datos y
+% fuente en ../datos/fondo-unico-resolucion.csv (JUR). 2017, estimado (trama).
+% Capas: barras del tamaño -> ejes -> puntos de las aportaciones -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/fondo-unico-resolucion.csv}\fur
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=6.4cm,
+      xmin=2015.4, xmax=2025.6, ymin=0, ymax=90,
+      xtick={2016,...,2025}, ytick={0,20,...,80},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={miles de millones de euros},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \capa{1}{\addplot[ybar, bar width=0.62, dicbarra=tceeverde] table[x=anio,y=tamano] {\fur};}
+    \capa{1}{\addplot[ybar, bar width=0.62, dicbarratrama=tceeverde, forget plot] coordinates {(2017,17.4)};}
+    \capa{2}{\draw[dicumbral] (axis cs:2015.4,0) -- (axis cs:2025.6,0);}
+    \capa{3}{\addplot[dicpuntos=tceedorado] table[x=anio,y=aportacion] {\fur};}
+    \capa{4}{
+      \dicrotulo[font=\footnotesize,text=tceeverde!70!black,anchor=south]{(2016,11.5)}{10,8}
+      \dicrotulo[font=\footnotesize,text=tceeverde!70!black,anchor=south]{(2023,78.3)}{77,6}
+      \dicrotulo[font=\footnotesize,text=tceeverde!70!black,anchor=south]{(2025,81.7)}{>81}
+      \dicrotulo[font=\footnotesize,text=tceedorado!80!black,anchor=south]{(2017.6,37)}{aportaciones anuales (puntos)}
+      \dicrotulo[font=\footnotesize,text=tceedorado!80!black,anchor=south]{(2024.5,3.5)}{0}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

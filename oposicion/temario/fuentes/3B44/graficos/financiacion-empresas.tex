@@ -1,0 +1,34 @@
+% Peso de los préstamos en la financiación con deuda de las sociedades no
+% financieras (préstamos / (préstamos + valores de deuda), %), zona del euro y
+% Estados Unidos, 2000-2025. Datos y fuente en ../datos/financiacion-empresas.csv.
+% Capas: ejes -> zona del euro -> EE. UU. (todos los préstamos) -> EE. UU.
+% (préstamos bancarios) -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/financiacion-empresas.csv}\fe
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=6.4cm,
+      xmin=1999.5, xmax=2026.5, ymin=0, ymax=100,
+      xtick={2000,2005,...,2025}, ytick={0,20,...,100},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% de la deuda de las empresas},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \capa{2}{\addplot[diclinea=tceeazul, mark=none] table[x=anio,y=zona_euro_prestamos_bancos] {\fe};}
+    \capa{3}{\addplot[diclinea=tceerojo, mark=none] table[x=anio,y=eeuu_todos_prestamos] {\fe};}
+    \capa{4}{\addplot[diclinea=tceerojo, dashed, mark=none] table[x=anio,y=eeuu_prestamos_bancos] {\fe};}
+    \capa{5}{
+      \dicrotulo[font=\footnotesize,text=tceeazul,anchor=south west]{(2000.3,87)}{Zona del euro: préstamos de bancos}
+      \dicrotulo[font=\footnotesize,text=tceeazul,anchor=west]{(2025.3,73)}{73}
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=south west]{(2000.3,46)}{EE.\,UU.: todos los préstamos}
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=west]{(2025.3,36.5)}{37}
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=south west]{(2000.3,25.5)}{EE.\,UU.: préstamos de bancos}
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=west]{(2025.3,12.3)}{12}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

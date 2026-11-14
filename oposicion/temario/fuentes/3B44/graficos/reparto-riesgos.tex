@@ -1,0 +1,30 @@
+% Canales de reparto de riesgos: % de una perturbación asimétrica suavizado por
+% cada canal en Estados Unidos (Asdrubali, Sørensen y Yosha, 1996) y en la zona
+% del euro (Cimadomo, Gordo Mora y Palazzo, 2022). Datos en
+% ../datos/reparto-riesgos.csv. Barras apiladas horizontales.
+% Capas: barras de capital -> crédito -> fiscal -> sin suavizar -> ejes -> etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.12cm,y=1cm,
+    seg/.style={draw=white,line width=0.6pt},
+    num/.style={font=\footnotesize\bfseries,text=white}]
+  % fila superior: EE. UU. (y entre 1,6 y 2,4); inferior: zona del euro (0,3 a 1,1)
+  \capa{1}{\fill[seg,fill=tceeazul] (0,1.6) rectangle (39,2.4); \fill[seg,fill=tceeazul] (0,0.3) rectangle (10,1.1);}
+  \capa{2}{\fill[seg,fill=tceeverde] (39,1.6) rectangle (62,2.4); \fill[seg,fill=tceeverde] (10,0.3) rectangle (40,1.1);}
+  \capa{3}{\fill[seg,fill=tceedorado] (62,1.6) rectangle (75,2.4);}
+  \capa{4}{\fill[seg,fill=tceegris!55] (75,1.6) rectangle (100,2.4); \fill[seg,fill=tceegris!55] (40,0.3) rectangle (100,1.1);}
+  \capa{5}{\draw[thin] (0,0) -- (100,0); \foreach \v in {0,25,50,75,100} {\draw (\v,0) -- (\v,-0.1) node[below,font=\footnotesize] {\v~\%};}
+    \draw[thin] (0,0) -- (0,2.7);}
+  \capa{6}{
+    \node[anchor=east,font=\small,align=right] at (-1,2.0) {EE.\,UU.\\(1963-1990)};
+    \node[anchor=east,font=\small,align=right] at (-1,0.7) {Zona del euro\\(1997-2022)};
+    \node[num] at (19.5,2.0) {39}; \node[num] at (50.5,2.0) {23}; \node[num] at (68.5,2.0) {13}; \node[num,text=black] at (87.5,2.0) {25};
+    \node[num] at (5,0.7) {10}; \node[num] at (25,0.7) {30}; \node[num,text=black] at (70,0.7) {60};
+    \node[font=\footnotesize,text=tceeazul,anchor=south] at (19.5,2.45) {mercados de capitales};
+    \node[font=\footnotesize,text=tceeverde,anchor=south] at (50.5,2.45) {crédito};
+    \node[font=\footnotesize,text=tceedorado!80!black,anchor=south] at (68.5,2.45) {fiscal};
+    \node[font=\footnotesize,text=tceegris,anchor=south] at (87.5,2.45) {sin suavizar};}
+\end{tikzpicture}
+\end{document}

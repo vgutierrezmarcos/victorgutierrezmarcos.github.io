@@ -1,0 +1,27 @@
+% Estabilización con una capacidad fiscal central (versión sencilla): 2 regiones
+% con perturbaciones asimétricas u_A = 2 sin t = -u_B. Sin capacidad fiscal,
+% x_i = u_i; con transferencias T_i = -phi*x_i y multiplicador m,
+% x_i = u_i/(1 + m*phi); con m = 1 y phi = 0,5, amplitud 1,33.
+% Capas: ejes -> región A sin -> región B sin -> región A con -> región B con.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm,height=6cm,xmin=0,xmax=12.3,ymin=-2.8,ymax=2.8,
+      axis x line=middle,axis y line=left,xtick=\empty,ytick={-2,-1,0,1,2},
+      ticklabel style={font=\footnotesize},
+      xlabel={tiempo},xlabel style={font=\footnotesize,anchor=north east,at={(1,0.5)}},
+      ylabel={brecha de producción},ylabel style={font=\footnotesize},
+      domain=0:11,samples=120,clip=false,legend style={at={(0.5,-0.06)},anchor=north,draw=none,font=\footnotesize},legend columns=2,legend cell align=left,dicapas]
+    \capa{1}{\addplot[diclinea=tceemorado,thin,dashed] {2*sin(deg(x))};
+      \addlegendentry{región A sin capacidad fiscal}}
+    \capa{2}{\addplot[diclinea=tceeverde,thin,dashed] {-2*sin(deg(x))};
+      \addlegendentry{región B sin capacidad fiscal}}
+    \capa{3}{\addplot[diclinea=tceemorado] {1.33*sin(deg(x))};
+      \addlegendentry{A con transferencias}}
+    \capa{4}{\addplot[diclinea=tceeverde] {-1.33*sin(deg(x))};
+      \addlegendentry{B con transferencias}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

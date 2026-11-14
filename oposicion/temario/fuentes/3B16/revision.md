@@ -219,3 +219,7 @@ Cada una con la opción aplicada:
 8. I.2.1 d): el BCE «anunció que aplicaría activamente su programa para los mercados de valores (en la práctica, compró deuda española e italiana)».
 9. I.3: la zona del euro queda por debajo de la línea AMO y Estados Unidos por encima.
 10. Gráfico `barro-gordon` (`fig:credibilidad`): el texto de II.4 explica los puntos en orden (0 = R, 1 = T, 2, 3, función de reacción, F = D) y el pie lo resume; el título es ahora «El sesgo inflacionista: de la regla, R, al equilibrio con discreción, F = D», sin «atado a un ancla creíble», porque el dibujo no lo muestra; el efecto del ancla (D baja por la vertical $U^n$ hacia R) va en el texto y en la fuente.
+
+## Coherencia con el 3.B.44 (14/11/2026)
+
+- EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.

@@ -1,0 +1,28 @@
+% Orden de absorción de pérdidas en la recapitalización interna (figura del
+% apartado II.2): pasivo del banco de arriba (pierde primero) abajo (pierde el
+% último), con el umbral del 8 % del pasivo total antes del FUR. Tras la
+% reforma CMDI (2026), preferencia de los depositantes en 3 niveles.
+% Capas: capital -> deuda -> depósitos -> flecha de pérdidas -> umbral del 8 %.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    capa/.style={draw=#1!70!black,fill=#1!22,minimum width=8.6cm,minimum height=0.62cm,font=\footnotesize,anchor=north west,text width=8.4cm,align=left,inner xsep=5pt}]
+  \capa{1}{\node[capa=tceerojo] at (0,0) {Acciones y reservas (CET1)};
+    \node[capa=tceerojo] at (0,-0.62) {Capital adicional de nivel~1 (AT1)};
+    \node[capa=tceerojo] at (0,-1.24) {Capital de nivel~2 (T2)};}
+  \capa{2}{\node[capa=tceedorado] at (0,-1.86) {Otra deuda subordinada};
+    \node[capa=tceedorado] at (0,-2.48) {Deuda sénior no preferente};
+    \node[capa=tceedorado] at (0,-3.10) {Deuda sénior ordinaria y otros pasivos no garantizados};}
+  \capa{3}{\node[capa=tceeazul] at (0,-3.72) {Depósitos de grandes empresas y de otras entidades};
+    \node[capa=tceeazul] at (0,-4.34) {Depósitos no garantizados de hogares, pymes y autoridades};
+    \node[capa=tceeverde] at (0,-4.96) {Depósitos garantizados (hasta 100.000~€): no pierden nunca};
+    \node[capa=tceegris] at (0,-5.58) {Excluidos: pasivos con garantía real, salarios, impuestos\ldots};}
+  \capa{4}{\draw[flecha,line width=1.4pt] (-0.5,0) -- (-0.5,-5.9);
+    \node[rotate=90,font=\footnotesize,tceerojo,anchor=south] at (-0.55,-2.95) {orden de absorción de pérdidas};}
+  \capa{5}{\draw[tceemorado,very thick,dashed] (-0.2,-3.72) -- (9.1,-3.72);
+    \node[font=\scriptsize,tceemorado,align=left,anchor=west] at (9.15,-3.4) {al menos el 8~\%\\del pasivo total:\\después, el FUR\\(hasta el 5~\%)};
+    \node[font=\scriptsize,tceeazul,align=left,anchor=west] at (9.15,-4.65) {preferencia\\de los depositantes\\(CMDI, 2026)};}
+\end{tikzpicture}
+\end{document}

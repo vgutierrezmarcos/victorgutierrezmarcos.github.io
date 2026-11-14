@@ -1,0 +1,28 @@
+% Regla de déficit frente a regla de gasto ante una perturbación de demanda
+% u_t = 2 sin(t) (puntos de PIB). Con la regla de déficit el gasto sigue a
+% los ingresos (G = tau*x) y la brecha se amplifica: x^D = u/(1 - m*tau),
+% con m = 1 y tau = 0,45 (amplitud 3,64). Con la regla de gasto el gasto
+% sigue su senda y la brecha es la perturbación: x^E = u (amplitud 2).
+% Gasto con la regla de déficit: tau*x^D (amplitud 1,64).
+% Capas: ejes -> brecha con regla de gasto -> brecha con regla de déficit ->
+% gasto con regla de déficit -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm,height=6.2cm,xmin=0,xmax=12.3,ymin=-4.6,ymax=4.6,
+      axis x line=middle,axis y line=left,xtick=\empty,ytick={-4,-2,0,2,4},
+      ticklabel style={font=\footnotesize},
+      xlabel={tiempo},xlabel style={font=\footnotesize,anchor=north east,at={(1,0.5)}},
+      ylabel={puntos de PIB potencial},ylabel style={font=\footnotesize},
+      domain=0:11,samples=120,clip=false,legend style={at={(0.5,-0.06)},anchor=north,draw=none,font=\footnotesize},legend columns=2,legend cell align=left,dicapas]
+    \capa{1}{\addplot[diclinea=tceeazul] {2*sin(deg(x))};
+      \addlegendentry{brecha con regla de gasto: $x^E=u$}}
+    \capa{2}{\addplot[diclinea=tceerojo] {3.64*sin(deg(x))};
+      \addlegendentry{brecha con regla de déficit: $x^D=u/(1-m\tau)$}}
+    \capa{3}{\addplot[diclinea=tceedorado,dashed] {1.64*sin(deg(x))};
+      \addlegendentry{gasto con regla de déficit (procíclico)}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

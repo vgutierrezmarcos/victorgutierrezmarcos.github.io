@@ -1,0 +1,31 @@
+% Simulación del análisis de sostenibilidad del marco de 2024 para un país
+% parecido a España (deuda de 100,5 % del PIB en 2025): sin ajuste, plan a 4
+% años y plan a 7 años, con la salvaguardia de -1 pp al año.
+% Datos: ../datos/simulacion-deuda.csv (simulacion-deuda.py).
+% Capas: periodo de ajuste -> ejes y 60 % -> salvaguardia -> sin ajuste ->
+% plan a 4 años -> plan a 7 años -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/simulacion-deuda.csv}\sim
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=11cm,height=7cm,xmin=2025,xmax=2041,ymin=60,ymax=112,
+    axis x line*=bottom,axis y line*=left,xtick={2025,2028,...,2040},
+    x tick label style={/pgf/number format/.cd,set thousands separator={}},
+    ticklabel style={font=\footnotesize},ylabel={deuda, \% del PIB},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,dicapas]
+  \capa{1}{\dicsombra[fill=tceegris,opacity=0.12]{2025}{60}{2032}{112}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north]{(2028.5,111.5)}{periodo de ajuste (7 años)}}
+  \capa{2}{\addplot[diclinea=tceegris,dashed,thick] table[x=anio,y=salvaguardia] {\sim};
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=south west]{(2034.6,90.8)}{salvaguardia: $-1$ punto al año}}
+  \capa{3}{\addplot[diclinea=tceerojo] table[x=anio,y=sin_ajuste] {\sim};
+    \dicrotulo[font=\footnotesize,text=tceerojo,anchor=west]{(2041.2,108.3)}{sin ajuste: 108~\%}}
+  \capa{4}{\addplot[diclinea=tceeazul] table[x=anio,y=plan4] {\sim};
+    \dicrotulo[font=\footnotesize,text=tceeazul,anchor=north west]{(2041.2,74.3)}{plan a 4 años: 73~\%}}
+  \capa{5}{\addplot[diclinea=tceemorado] table[x=anio,y=plan7] {\sim};
+    \dicrotulo[font=\footnotesize,text=tceemorado,anchor=south west]{(2041.2,75.3)}{plan a 7 años: 76~\%}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

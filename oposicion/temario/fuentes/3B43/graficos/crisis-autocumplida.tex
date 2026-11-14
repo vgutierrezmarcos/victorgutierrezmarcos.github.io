@@ -1,0 +1,42 @@
+% Crisis de deuda autocumplida en una unión monetaria (versión de Calvo, 1988,
+% y De Grauwe, 2011): la probabilidad de impago que resulta, p = kappa/(1-p^e),
+% frente a la esperada (bisectriz). Ejemplo kappa = 0,16: equilibrios
+% p_L = 0,2 (bueno, estable) y p_H = 0,8 (malo, inestable); kappa' = 0,30 > 1/4:
+% sin equilibrio. Con el respaldo del banco central a un tipo i_L, p no pasa de
+% p_L (raya horizontal dorada): solo queda el equilibrio bueno.
+% Capas: ejes -> bisectriz -> curva con kappa -> equilibrios -> huida -> curva
+% con kappa' -> respaldo -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=7cm,y=7cm]
+  \path (-0.22,-0.12) rectangle (1.32,1.12);
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (1.12,0) node[right] {$p^e$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,1.08) node[above] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below] {$1$} -- (1,1.02);}
+  % 2: bisectriz (expectativas que se cumplen)
+  \capa{2}{\draw[thick,tceegris] (0,0) -- (1.02,1.02) node[right,etiqueta,text=tceegris] {$p=p^e$};}
+  % 3: la curva con kappa = 0,16
+  \capa{3}{\draw[curva1,domain=0:0.845,samples=80] plot (\x,{0.16/(1-\x)});}
+  \capa{3}{\node[etiqueta,text=tceemorado,anchor=west] at (0.86,1.04) {$\dfrac{\kappa}{1-p^e}$};}
+  % 4: los 2 equilibrios
+  \capa{4}{\node[punto] at (0.2,0.2) {};}
+  \capa{4}{\draw[guia] (0.2,0.2) -- (0.2,0) node[below] {$p_L$};}
+  \capa{4}{\node[etiqueta,anchor=south east,text=tceeverde] at (0.19,0.21) {bueno};}
+  \capa{4}{\node[punto] at (0.8,0.8) {};}
+  \capa{4}{\draw[guia] (0.8,0.8) -- (0.8,0) node[below] {$p_H$};}
+  \capa{4}{\node[etiqueta,anchor=north west,text=tceerojo] at (0.81,0.79) {malo};}
+  % 5: la huida: por encima de p_H, la probabilidad crece sin freno
+  \capa{5}{\draw[flecha] (0.86,0.9) -- (0.93,0.98);}
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west,align=left,font=\footnotesize] at (0.93,0.88) {pérdida del\\acceso al mercado};}
+  % 6: fundamentos peores: kappa' = 0,30 > 1/4, sin equilibrio
+  \capa{6}{\draw[curvanueva,dashed,domain=0:0.71,samples=80] plot (\x,{0.30/(1-\x)});}
+  \capa{6}{\node[etiqueta,text=tceerojo,anchor=east] at (0.55,0.72) {$\kappa'>\tfrac14$};}
+  % 7: el respaldo del banco central: p no pasa de p_L
+  \capa{7}{\draw[curva4] (0.2,0.2) -- (1,0.2);}
+  \capa{7}{\node[etiqueta,text=tceedorado,anchor=north,align=center,font=\footnotesize] at (0.64,0.18) {respaldo creíble del banco central\\(compra al tipo $i_L$)};}
+\end{tikzpicture}
+\end{document}

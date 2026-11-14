@@ -122,3 +122,7 @@ Todas las cifras que caducan están en `datos-actualizables.yaml`.
 - Funciones que se conservan en la esquina: 𝔼[B_banco] durante I.2.2; u'(c₁*) = R u'(c₂*) hasta II.2 (enlaza con el capital: «cada palo que aguante su vela»); la ratio de capital y LCR/NSFR durante II.2.
 - Hilo: red de seguridad → riesgo moral → capital, liquidez, supervisión y resolución → no bancos («mismo riesgo, misma regulación»).
 - Tablas `tab:marco` y `tab:no-bancaria` como apoyo, nunca escritas.
+
+## Coherencia con el 3.B.44 (14/11/2026)
+
+- EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.

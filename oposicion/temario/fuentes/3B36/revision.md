@@ -142,3 +142,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III**: `mapa-instituciones` como apoyo que se va completando; `escanos-estados` y `grupos-pe` como apoyo; el modelo del poder de voto en la pizarra: la regla de la doble mayoría, la función clave `eq:shapley-shubik` y el gráfico `poder-voto` por capas (ejes, bisectriz, un Estado un voto, Shapley-Shubik, Banzhaf, rótulos).
 - **Funciones clave que se conservan**: `eq:asignacion` (II.2-II.3) y `eq:shapley-shubik` (III.3).
 - Nunca se dice el número de un tema en voz alta.
+
+## Coherencia con el 3.B.43 (14/11/2026)
+
+- Lagarde: «hasta octubre de 2027» pasa a «dejará el cargo el 7 de febrero de 2027», por el anuncio del BCE del 29/10/2026 que comprobó el agente del 3.B.43.

@@ -1,0 +1,28 @@
+% Número de procedimientos de déficit excesivo abiertos a 31 de diciembre,
+% 2002-2026 (2026: a 14 de noviembre). Datos: ../datos/pde-abiertos.csv
+% (pde-abiertos.py). Cifras de control: 24 en 2010, 0 en 2019, 10 en 2026.
+% Capas: bandas de los cambios de reglas -> barras -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pde-abiertos.csv}\pde
+\colorlet{cpde}{tceemorado!75}
+\begin{tikzpicture}[tcee]
+\begin{axis}[width=13cm,height=6.4cm,ybar,bar width=9pt,xmin=2001.3,xmax=2026.7,ymin=0,ymax=29,
+    axis x line*=bottom,axis y line*=left,xtick={2002,2004,...,2026},
+    x tick label style={font=\footnotesize,/pgf/number format/.cd,set thousands separator={}},
+    yticklabel style={font=\footnotesize},ylabel={procedimientos abiertos},ylabel style={font=\footnotesize},
+    ymajorgrids,grid style={tceegris!25},clip=false,dicapas]
+  \capa{1}{\dicsombra[fill=tceegris,opacity=0.13]{2019.5}{0}{2023.5}{29}
+    \dicrotulo[font=\scriptsize,text=tceegris,anchor=north,align=center]{(2021.5,28.6)}{cláusula general\\de salvaguardia}}
+  \capa{2}{\addplot[on layer=dicbarras,dicbarra=cpde] table[x=anio,y=abiertos] {\pde};}
+  \capa{3}{\dicrotulo[font=\scriptsize,anchor=south,align=center]{(2003,3.2)}{DE\\FR}
+    \dicrotulo[font=\footnotesize,anchor=south]{(2010,24.2)}{24}
+    \dicrotulo[font=\footnotesize,anchor=south]{(2019,0.3)}{0}
+    \dicrotulo[font=\footnotesize,anchor=south]{(2026,10.2)}{10}
+    \dicrotulo[font=\scriptsize,anchor=south,align=center]{(2024,8.4)}{nuevo\\marco}}
+\end{axis}
+\end{tikzpicture}
+\end{document}

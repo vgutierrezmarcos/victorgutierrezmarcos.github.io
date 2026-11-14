@@ -1,0 +1,142 @@
+tema: 3B43
+fecha_inventario: 2026-11-14
+datos:
+  - id: tipos-bce
+    texto: "facilidad de depósito 2,50 % (OPF 2,65; facilidad marginal 2,90) desde el 16/9/2026; 4,00 % del 20/9/2023 al 11/6/2024; −0,50 % del 18/9/2019 al 26/7/2022; lista de cambios 2008-2026"
+    donde: [3B43.tex, repaso/3B43-repaso.tex, datos/tipos-bce.csv, datos/tipo-un-dia.csv, graficos/tipos-bce.tex]
+    valor: 2.50
+    unidad: "%"
+    periodo: "vigente el 14/11/2026"
+    fuente: BCE2026TiposOficiales
+    organismo: Banco Central Europeo
+    serie: "FM.B.U2.EUR.4F.KR.DFR.LEV, MRR_FR.LEV, MRR_MBR.LEV, MLFR.LEV; €STR EST.B.EU000A2X2A25.WT; eonia FM.M.U2.EUR.4F.MM.EONIA.HSTA"
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+    periodicidad: cada reunión de política monetaria (seis semanas); €STR diario
+    proxima: "2026-12-17 (reunión del Consejo de Gobierno del 16-17/12/2026: añadir la fila si cambian y la media del €STR de noviembre)"
+    familia: bce-tipos
+
+  - id: balance-eurosistema
+    texto: "activo del Eurosistema: máximo 8,8 billones (junio de 2022); 5,9 billones (6/11/2026); valores de política monetaria 3,3 billones; préstamos 0,04 billones"
+    donde: [3B43.tex, repaso/3B43-repaso.tex, datos/balance-eurosistema.csv, graficos/balance-eurosistema.tex]
+    valor: 5.913
+    unidad: billones de euros
+    periodo: "semana del 6/11/2026"
+    fuente: BCE2026ILM
+    organismo: Banco Central Europeo
+    serie: "ILM.W.U2.C.T000000.Z5.Z01; ILM.W.U2.C.A050000.U2.EUR; ILM.W.U2.C.A070100.U2.EUR"
+    url: https://data.ecb.europa.eu/data/datasets/ILM
+    periodicidad: semanal (martes)
+    proxima: "con cada revisión del tema (rehacer con construir.py: último estado de cada mes)"
+    familia: bce-balance
+
+  - id: inflacion-zona-euro
+    texto: "IAPC de la zona del euro: máximo 10,6 % (octubre de 2022); mínimos −0,7 % (julio de 2009) y −0,6 % (enero de 2015); 4,0 % y subyacente 2,5 % en octubre de 2026 (avance)"
+    donde: [3B43.tex, repaso/3B43-repaso.tex, datos/inflacion-zona-euro.csv, graficos/inflacion-zona-euro.tex]
+    valor: 4.0
+    unidad: "%"
+    periodo: "2026-10 (avance)"
+    fuente: Eurostat2026IAPC
+    organismo: Eurostat
+    serie: "prc_hicp_minr (EA; TOTAL y TOT_X_NRG_FOOD; RCH_A)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table
+    periodicidad: mensual (avance a fin de mes; definitivo a mediados del siguiente)
+    proxima: "2026-11-17 (definitivo de octubre) y 2026-12-02 (avance de noviembre)"
+    familia: eurostat-iapc
+
+  - id: diferenciales-soberanos-1999-2026
+    texto: "máximos del diferencial frente a Alemania: Grecia 2.739 pb (2/2012), Portugal 1.203 (1/2012), España 555 (7/2012), Italia 519 (11/2011); octubre de 2026: Italia 126, España 65, Portugal 50, Grecia 99, Francia 147"
+    donde: [3B43.tex, repaso/3B43-repaso.tex, datos/diferenciales.csv, graficos/diferenciales.tex]
+    valor: 65
+    unidad: puntos básicos (España, octubre de 2026)
+    periodo: "1999-01 a 2026-10"
+    fuente: BCE2026IRS
+    organismo: Banco Central Europeo
+    serie: "IRS.M.{DE,IT,ES,PT,GR,FR}.L.L40.CI.0000.EUR.N.Z"
+    url: https://data.ecb.europa.eu/data/datasets/IRS
+    periodicidad: mensual
+    proxima: "2026-12 (dato de noviembre)"
+    familia: bce-tipos-largo-plazo
+
+  - id: taylor-paises
+    texto: "regla de Taylor (1993) por país: en 2003, España 7,2 % y Alemania 1,9 %; en 2026, España 7,5, Italia 5,6, zona del euro 5,1, Alemania 4,3, Francia 4,0 (facilidad de depósito 2,16 de media)"
+    donde: [3B43.tex, repaso/3B43-repaso.tex, datos/taylor-paises.csv, graficos/taylor-paises.tex]
+    valor: 5.10
+    unidad: "%"
+    periodo: "1999-2026 (2026 provisional)"
+    fuente: CE2026AMECOBrecha
+    organismo: Comisión Europea (AMECO) y Eurostat; cálculo propio
+    serie: "AVGDGP (DEU, ESP, ITA, FRA, IRL, EA21); prc_hicp_aind CP00 RCH_A_AVG; prc_hicp_minr TOTAL RCH_A (2026)"
+    url: https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.AVGDGP&countries=ESP
+    periodicidad: semestral (AMECO, previsiones de primavera y otoño); anual (IAPC)
+    proxima: "2026-11-17 (previsión de otoño de 2026 en AMECO: rehacer la brecha) y 2027-01 (IAPC anual de 2026); mantener igual que fuentes/3A36/datos/regla-taylor-zona-euro.csv"
+    familia: ameco
+
+  - id: convergencia-2026
+    texto: "Informe de Convergencia del BCE de junio de 2026: referencias 2,7 % (inflación) y 5,1 % (tipo a largo plazo); cumplen Chequia y Suecia; Hungría, Polonia y Rumanía con PDE; ninguno en el MTC II ni con convergencia legal"
+    donde: [3B43.tex, repaso/3B43-repaso.tex, datos/convergencia-2026.csv, graficos/convergencia-2026.tex]
+    valor: null
+    unidad: "%"
+    periodo: "junio de 2025-mayo de 2026 (datos hasta el 17/6/2026)"
+    fuente: BCE2026Convergencia
+    organismo: Banco Central Europeo
+    serie: "Convergence Report, June 2026, tabla 3.1 y capítulo 4"
+    url: https://www.ecb.europa.eu/press/other-publications/convergence/pdf/ecb.cr202606~30e75ae1c2.en.pdf
+    periodicidad: bienal (junio de los años pares) o a petición de un Estado
+    proxima: "2028-06 (siguiente informe ordinario)"
+    familia: bce-informe-convergencia   # nueva
+
+  - id: comite-ejecutivo-bce
+    texto: "Lagarde deja la presidencia el 7/2/2027; Vujčić vicepresidente desde el 1/6/2026; Schnabel al FMI el 3/1/2027; sin sucesores nombrados a 14/11/2026"
+    donde: [3B43.tex, repaso/3B43-repaso.tex, graficos/organos-sebc.tex]
+    valor: null
+    unidad: cargos
+    periodo: "2026-11"
+    fuente: BCE2026Mandatos
+    organismo: Banco Central Europeo
+    serie: "Executive Board: terms of office"
+    url: https://www.ecb.europa.eu/ecb/decisions/eb/html/executive-board-terms-of-office.en.html
+    periodicidad: cuando cambia un miembro
+    proxima: "2026-11-27 (Consejo Europeo: posibles nombramientos de presidente y de los sustitutos de Schnabel y Lane)"
+    familia: bce-instituciones
+
+  - id: capital-bce
+    texto: "capital suscrito 10.825 millones de euros; Banco de España 9,67 % (11,69 % del Eurosistema); pérdidas del BCE: 1.266 (2023), 7.944 (2024) y 1.254 millones (2025)"
+    donde: [3B43.tex, repaso/3B43-repaso.tex]
+    valor: 9.6690
+    unidad: "%"
+    periodo: "clave de 1/1/2024 ajustada el 1/1/2026; cuentas de 2025"
+    fuente: BCE2026Capital
+    organismo: Banco Central Europeo
+    serie: "Capital subscription; cuentas anuales (febrero)"
+    url: https://www.ecb.europa.eu/ecb/orga/capital/html/index.en.html
+    periodicidad: clave cada 5 años (próxima 1/1/2029) o con cada adhesión; resultados anuales (febrero)
+    proxima: "2027-02 (cuentas de 2026)"
+    familia: bce-instituciones
+
+  - id: papel-internacional-euro
+    texto: "euro: 20,2 % de las reservas (4T 2025) y 20,6 % (2T 2026, COFER; dólar 56,7 %); 24,6 % de la deuda internacional; 60 % de las exportaciones extra zona facturadas en euros"
+    donde: [3B43.tex]
+    valor: 20.6
+    unidad: "%"
+    periodo: "2025 (informe del BCE de junio de 2026); 2T 2026 (COFER)"
+    fuente: BCE2026PapelEuro
+    organismo: Banco Central Europeo; FMI (COFER)
+    serie: "The international role of the euro (anual, junio); COFER (trimestral)"
+    url: https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html
+    periodicidad: anual (BCE) y trimestral (COFER)
+    proxima: "2026-12-31 (COFER del 3T 2026) y 2027-06 (informe del BCE)"
+    familia: papel-internacional-euro
+
+  - id: euro-digital
+    texto: "Consejo: posición de 19/12/2025; Parlamento: mandato negociador de julio de 2026; trílogos sin acuerdo a 14/11/2026; piloto en 2027 y emisión en 2029 si la ley se aprueba en 2026"
+    donde: [3B43.tex, repaso/3B43-repaso.tex]
+    valor: null
+    unidad: fase
+    periodo: "2026-11"
+    fuente: PE2026EuroDigital
+    organismo: Parlamento Europeo (OEIL), Consejo, BCE
+    serie: "Procedimiento 2023/0212(COD)"
+    url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2023/0212(COD)
+    periodicidad: con cada paso del procedimiento
+    proxima: "2026-12 (posible acuerdo en trílogo)"
+    familia: euro-digital

@@ -1,0 +1,32 @@
+% Sesgo deficitario en una unión monetaria (versión sencilla de Beetsma y
+% Uhlig, 1999): beneficio marginal del déficit v'(b) = a - b y coste marginal
+% de la inflación común, nacional lambda*theta^2*b/n y de la unión
+% lambda*theta^2*b. Ejemplo: a = 6, lambda*theta^2 = 2, n = 4:
+% b^C = 6/3 = 2 (coste 4) y b^N = 6/1,5 = 4 (coste nacional 2; social 8).
+% Capas: ejes -> beneficio marginal -> coste para la unión y b^C ->
+% coste que ve cada Gobierno y b^N -> pérdida de bienestar.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.0cm,y=0.5cm]
+  % 1: ejes
+  \capa{1}{\ejes{$b_i$ (déficit)}{beneficio y coste marginal}{7.4}{10.6}}
+  % 2: beneficio marginal del déficit
+  \capa{2}{\draw[curva1] (0,6) -- (6.2,-0.2);
+    \node[etiqueta,tceemorado,anchor=west] at (5.4,1.4) {$v'(b_i)=a-b_i$};}
+  % 3: coste marginal para la unión (cooperación) y b^C
+  \capa{3}{\draw[curva2] (0,0) -- (4.9,9.8) node[above,etiqueta] {$\lambda\theta^2 b$ (la unión)};
+    \node[punto] at (2,4) {};
+    \draw[guia] (2,4) -- (2,0) node[below,etiqueta] {$b^{C}$};}
+  % 4: coste marginal que ve cada Gobierno y b^N
+  \capa{4}{\draw[curvanueva] (0,0) -- (7.2,3.6) node[right,etiqueta,align=left] {$\lambda\theta^2 b/n$\\(cada Gobierno)};
+    \node[punto] at (4,2) {};
+    \draw[guia] (4,2) -- (4,0) node[below,etiqueta] {$b^{N}$};}
+  % 5: pérdida de bienestar
+  \capa{5}{\fill[tceerojo,fill opacity=0.25] (2,4) -- (4,8) -- (4,2) -- cycle;
+    \draw[guia] (4,2) -- (4,8);
+    \node[etiqueta,font=\footnotesize,tceerojo,align=left,anchor=west] at (4.4,7.4) {coste de la inflación\\que paga el resto};
+    \draw[->,thin,tceerojo] (4.45,6.9) -- (3.75,5.7);}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,26 @@
+% Trilema financiero de Schoenmaker (2011) (figura del apartado I.2.2). Mismo
+% triángulo y mismas coordenadas que el trilema de la economía abierta
+% (fuentes/3B15/graficos/trilema.tex). Vértices: objetivos; lados: el arreglo
+% que consigue los 2 objetivos de sus extremos y renuncia al del vértice opuesto.
+% Capas: triángulo -> 3 vértices -> 3 lados.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \coordinate (A) at (0,5.196);   % estabilidad financiera
+  \coordinate (B) at (-3,0);      % integración financiera
+  \coordinate (C) at (3,0);       % políticas financieras nacionales
+  \useasboundingbox (-5.3,-1.05) rectangle (5.3,5.8);
+  \capa{1}{\draw[curva1] (A) -- (B) -- (C) -- cycle;}
+  \capa{2}{\node[etiqueta,above=3pt,align=center] at (A) {\textbf{Estabilidad financiera}};}
+  \capa{3}{\node[etiqueta,below=4pt,align=center] at (B) {\textbf{Integración}\\\textbf{financiera}};}
+  \capa{4}{\node[etiqueta,below=4pt,align=center] at (C) {\textbf{Políticas}\\\textbf{nacionales}};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,tceeazul,anchor=east,align=right]
+    at ($(A)!0.5!(B)+(-0.45,0.15)$) {Unión bancaria:\\supervisión, resolución\\y garantía comunes\\(sin políticas\\nacionales)};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,tceerojo,below=4pt,align=center]
+    at ($(B)!0.5!(C)$) {Zona del euro\\hasta 2012\\(sin estabilidad)};}
+  \capa{7}{\node[etiqueta,font=\footnotesize,tceeverde,anchor=west,align=left]
+    at ($(A)!0.5!(C)+(0.45,0.15)$) {Mercados nacionales\\fragmentados, con\\\emph{ring-fencing}\\(sin integración)};}
+\end{tikzpicture}
+\end{document}

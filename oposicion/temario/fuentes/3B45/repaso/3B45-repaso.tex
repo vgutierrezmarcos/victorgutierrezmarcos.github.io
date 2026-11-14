@@ -1,0 +1,216 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Gobernanza económica de la UE]{3.B.45}{La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento de Desequilibrios Macroeconómicos. El Mecanismo Europeo de Estabilidad. La respuesta común de política fiscal a partir de la covid-19.}
+\tcefecha{14/11/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción: «ayúdate y Dios te ayudará»}{2,5}
+\apartadocante{I. Fundamentos e instituciones}{7,5}
+\subcante{1. ¿Por qué reglas? (sesgo deficitario)}{3}
+\subcante{2. Marco jurídico e institucional}{2}
+\subcante{3. De Maastricht a 2024}{2,5}
+\apartadocante{II. Reglas fiscales, PDM y Semestre}{11}
+\subcante{1. Reglas fiscales (regla de gasto; ASD)}{7,5}
+\subcante{2. El PDM}{2}
+\subcante{3. El Semestre Europeo}{1,5}
+\apartadocante{III. Gestión de crisis y respuesta común}{8}
+\subcante{1. El MEDE}{3}
+\subcante{2. La respuesta desde la covid-19}{2,5}
+\subcante{3. ¿Capacidad fiscal central?}{2,5}
+\apartadocante{Conclusión}{1}}
+\emph{Gráficos del cante}: sesgo deficitario (\hyperref[rep:I.1]{I.1}); regla de déficit frente a gasto, simulación de la deuda y ciclo del marco (\hyperref[rep:II.1]{II.1}); rescates por país (\hyperref[rep:III.1]{III.1}); capacidad fiscal (\hyperref[rep:III.3]{III.3}). Fórmulas: $b^N>b^C$; $x^D=u/(1-m\tau)$; $\gamma_{GN}\approx\gamma^N_p-\Delta s/e$; $x_i=u_i/(1+m\phi)$.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Ayúdate y Dios te ayudará»: cada Estado responde de sus cuentas y la ayuda común llega con condiciones (MEDE a España en 2012, 41.333 M€; NGEU por reformas; 10 PDE abiertos y la AIReF prevé que España incumpla su senda). ¿Cómo se gobierna una moneda común sin un Tesoro común?
+\item \textbf{Relevancia}: 21 Estados en el euro (Bulgaria, 2026); déficit de la zona del euro 3,0\,\% y deuda 87,7\,\% (2025); España, deuda 100,5\,\% \vertema{4.B.26}; reforma de 2024 y cláusula de defensa (2025).
+\item \textbf{Contextualización}: \concepto{gobernanza económica}: reglas, procedimientos e instituciones para coordinar y vigilar las políticas fiscales y estructurales. UEM asimétrica: política monetaria única, fiscal nacional coordinada (art. 121). 3 piezas: prevención y corrección (reglas, PDM, Semestre), gestión de crisis (MEDE), respuesta común (SURE, NGEU, SAFE).
+\item \textbf{Problemática}: ¿por qué reglas y por qué fallaron?; ¿qué cambia en 2024?; ¿quién ayuda y a cambio de qué?; ¿hay ya política fiscal común?
+\item \textbf{Estructura}: \hyperref[rep:I]{I} fundamentos; \hyperref[rep:II]{II} reglas; \hyperref[rep:III]{III} crisis y respuesta común.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7,5]{I. Fundamentos e instituciones\label{rep:I}}
+\begin{ideaclave}
+En una unión monetaria el coste del déficit de cada Estado lo pagan en parte los demás: cada uno se endeuda de más. De ahí las reglas, el no rescate (art. 125) y la vigilancia común.
+\end{ideaclave}
+
+\sub{I.1. ¿Por qué reglas?\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Argumentos}: externalidades fiscales (tipo de interés, inflación, contagio) \vertema{3.B.16}; sesgo deficitario \vertema{3.A.39}; riesgo moral (arts. 123-125); la disciplina de mercado falla (diferenciales casi nulos en 1999-2007, pánico en 2010-2012; \autor{De Grauwe}).
+\item \emph{Modelo} (\autor{Beetsma} y \autor{Uhlig}, 1999; \autor{Chari} y \autor{Kehoe}, 2007): $n$ Estados, $v(b_i)=ab_i-b_i^2/2$, $\pi=\theta\bar b$, pérdida $\frac\lambda2\pi^2$. Nash: $a-b=\lambda\theta^2b/n$; unión: $a-b=\lambda\theta^2b$.
+\begin{formula}
+\funcionclave{b^{N}=\frac{a}{1+\lambda\theta^2/n}>b^{C}=\frac{a}{1+\lambda\theta^2}}
+\end{formula}
+Ejemplo: $a=6$, $\lambda\theta^2=2$, $n=4$: $b^N=4$, $b^C=2$. Con $n=1$ no hay sesgo adicional. Implica: reglas comunes creíbles; la independencia del BCE no basta (\autor{Kydland} y \autor{Prescott}, Nobel 2004). Extensiones: vía tipo de interés; disciplina de mercado; unión fiscal. Evidencia: 2003 (DE y FR); 24 PDE en 2010; previsiones optimistas (\autor{Frankel} y \autor{Schreger}, 2013); Grecia 2009.
+\end{itemize}
+
+\graficorepaso[0.95\linewidth]{sesgo-union-monetaria}{Cada Gobierno ve solo $1/n$ del coste de su deuda}
+
+\sub{I.2. Marco jurídico e institucional\label{rep:I.2}}
+\begin{itemize}
+\item \emph{TFUE}: 119 (principios), 121 (coordinación, supervisión multilateral), 126 + Protocolo 12 (\concepto{3\,\%} y \concepto{60\,\%}), 123-125 (no financiación ni rescate), 136 (zona del euro; 136.3, MEDE, 2011), 122 (MEEF, SURE, NGEU).
+\item \emph{Instituciones}: Comisión (vigila y propone), Ecofin (decide por mayoría cualificada; sin el afectado; 139.4), Eurogrupo (Protocolo 14; \autor{Pierrakakis} desde 12-12-2025), Cumbre del Euro (\autor{Costa}), PE (diálogo económico), Consejo Fiscal Europeo (\autor{Hasekamp}), AIReF (\autor{Olóndriz}, 2026) \vertema{4.B.21}.
+\item \emph{Coordinación}: monetaria única; fiscal estrecha (reglas); estructural débil (recomendaciones).
+\end{itemize}
+
+\graficorepaso[\linewidth]{arquitectura-gobernanza}{Orienta, propone, decide; prevenir, corregir, gestionar crisis}
+
+\sub{I.3. De Maastricht a 2024\label{rep:I.3}}
+\begin{itemize}
+\item 1992 Maastricht; 1997 PEC (1466/97 preventivo, 1467/97 correctivo); 2005 reforma flexible; 2011 Six-Pack (Semestre, regla de gasto, 1/20, mayoría cualificada inversa, PDM); 2012 TECG ($-0{,}5$\,\% estructural; art. 135 CE y LO 2/2012); 2013 Two-Pack (15 de octubre); 2015 flexibilidad y Cinco presidentes; 2020-2023 cláusula general; 2024 nuevo marco.
+\end{itemize}
+
+\graficorepaso[\linewidth]{cronologia-gobernanza}{Reglas arriba; crisis y respuesta común abajo}
+
+% ==========================================================================
+\bloque[11]{II. Reglas fiscales, PDM y Semestre\label{rep:II}}
+\begin{ideaclave}
+El PEC fue complejo, procíclico e incumplido. Desde 2024: 3\,\% y 60\,\%, pero el instrumento es una senda de gasto neto pactada con cada Estado a partir de un ASD.
+\end{ideaclave}
+
+\sub{II.1. Las reglas fiscales\label{rep:II.1}}
+\begin{itemize}
+\item \emph{PEC hasta 2024}: OMP estructural ($\geq-1$\,\%), 0,5 puntos/año, regla de gasto; PDE por déficit o deuda (1/20). Problemas: complejo, no observable (brecha), procíclico, incumplido (ninguna multa; 2016: cero a ES y PT).
+\item \emph{Modelo} (regla de déficit frente a gasto): $x=u+m\hat g$; ingresos $\tau x$. Déficit: $\hat g=\tau x$; gasto: $\hat g=0$.
+\begin{formula}
+\funcionclave{x^{D}=\frac{u}{1-m\tau}>x^{E}=u}
+\end{formula}
+Con $m=1$, $\tau=0{,}45$: amplifica por 1,8. Gasto: anticíclica y observable, pero necesita un ancla. Extensiones: medidas de ingresos, cláusulas de escape, estándares (\autor{Blanchard}, \autor{Leandro} y \autor{Zettelmeyer}, 2021). Evidencia: \autor{Cordes} et al. (2015).
+\item \emph{Marco de 2024} (Reglamentos 2024/1263 y 2024/1264, Directiva 2024/1265; en vigor el 30-4-2024): 1) ASD y trayectoria de referencia; 2) \concepto{gasto primario neto} (sin intereses, desempleo cíclico, fondos UE ni medidas de ingresos); 3) planes de 4-5 años, ajuste en 4 o 7; 4) salvaguardias: deuda $-1$ (si $>90$\,\%) o $-0{,}5$ (60-90\,\%) puntos/año; déficit estructural hasta 1,5\,\%; 5) cuenta de control (0,3/0,6) y PDE por deuda; 6) PDE: 0,5 puntos; multas 0,05\,\% del PIB por semestre. Cláusulas general y nacional.
+\item \emph{Modelo} (ASD): $d_t=\frac{1+i}{1+\gamma^N}d_{t-1}-s_t$; $s=\tau-e$:
+\begin{formula}
+\funcionclave{\gamma_{GN}\approx\gamma^N_p-\frac{\Delta s}{e}}
+\end{formula}
+4,5\,\% $-$ 0,4/0,41 $\approx$ 3,5\,\%. Simulación (deuda 100,5\,\%): sin ajuste, 108\,\% en 2041; plan a 4 años, 73\,\%; a 7 años, 76\,\%. Plan de España: 96,6\,\% (2028), 90,6\,\% (2031), 76,8\,\% (2041).
+\item \emph{Aplicación}: 21 sendas el 21-1-2025; 7 años: BE, DE, ES, FR, IT, AT, RO, FI. \concepto{10 PDE} (nov. 2026): AT, BE, BG, FI, FR, HU, IT, PL, RO, SK (7 en julio de 2024; AT 2025; FI y BG 2026; Malta cerrado en 2026). Cláusula de defensa (1,5\,\% al año, 2025-2028): 15 en julio de 2025 + DE, AT, ES (12-6-2026); energía, 0,3\,\%.
+\item \emph{España} \vertema{4.B.23}: plan 2025-2028, ajuste en 7 años; gasto neto 3,7/3,5/3,2/3,0\,\%; 2025: 4,8\,\% (desviación 0,4 puntos, dentro de la cláusula); AIReF (nov. 2026): 7,3\,\% en 2026 y 5,1\,\% en 2027, incumplimiento.
+\end{itemize}
+
+\graficorepaso[\linewidth]{deficit-deuda}{España: 119,3\,\% de deuda en 2020; 100,5\,\% en 2025}
+
+\graficorepaso[0.95\linewidth]{gasto-neto-espana}{2025: 4,8\,\% frente a 3,7\,\%; la AIReF prevé 7,3\,\% en 2026}
+
+\pareja{regla-deficit-gasto}{La regla de gasto deja actuar a los estabilizadores}{simulacion-deuda}{El plan a 7 años suaviza el ajuste}
+
+\graficorepaso[0.95\linewidth]{ciclo-marco-2024}{ASD $\to$ plan $\to$ senda $\to$ informe $\to$ cuenta de control $\to$ PDE}
+
+\graficorepaso[\linewidth]{pde-abiertos}{24 en 2010; 0 en 2019; 10 en 2026}
+
+\sub{II.2. El PDM\label{rep:II.2}}
+\begin{itemize}
+\item Six-Pack (Reglamentos 1176/2011 y 1174/2011): alerta (cuadro de indicadores) $\to$ examen exhaustivo $\to$ sin desequilibrios, desequilibrios o excesivos $\to$ procedimiento de desequilibrio excesivo (plan de acción; multa de hasta el 0,1\,\% en la zona del euro). Nunca abierto.
+\item \emph{Cuadro}: cuenta corriente $-4$/$+6$\,\%; PIIN $-35$\,\%; TCER $\pm3$\,\% (ZE); exportaciones $-3$\,\%; CLU $+9$\,\% (ZE); vivienda $+9$\,\%; deuda de hogares 55\,\%, empresas 85\,\%; crédito 14\,\%/13\,\%; deuda pública 60\,\%; paro 10\,\%; actividad $-0{,}2$ puntos.
+\item 2026: 7 exámenes; EL, NL y SE sin desequilibrios; IT, HU y SK con; RO excesivos. España: sin desequilibrios desde 2024 \vertema{4.A.29}.
+\end{itemize}
+
+\sub{II.3. El Semestre Europeo\label{rep:II.3}}
+\begin{itemize}
+\item Nov.: paquete de otoño (estudio anual, informe de alerta, dictámenes de presupuestos, recomendación para la zona del euro); 30-4: informes de progreso; junio: paquete de primavera y REP; julio: el Consejo las adopta; 15-10: proyectos de presupuesto (ZE). MRR (2021-2026): las REP con dinero detrás.
+\end{itemize}
+
+\graficorepaso[\linewidth]{semestre-europeo}{Recomendaciones antes de los presupuestos}
+
+% ==========================================================================
+\bloque[8]{III. Gestión de crisis y respuesta común\label{rep:III}}
+\begin{ideaclave}
+El MEDE presta con condiciones; ante las crisis comunes, la UE se endeuda en común (SURE, NGEU, SAFE). Falta una capacidad fiscal permanente.
+\end{ideaclave}
+
+\sub{III.1. El MEDE\label{rep:III.1}}
+\begin{itemize}
+\item 2010: préstamos bilaterales a Grecia (52.900), MEEF (art. 122.2; 60.000), FEEF (440.000). Tratado del MEDE: 2-2-2012, operativo el 8-10-2012; art. 136.3.
+\item Intergubernamental (Luxemburgo); 21 miembros (Bulgaria, 29-6-2026); \autor{Gramegna}; capital 714.700 (81.700 desembolsado); capacidad \concepto{500.000} (432.000 disponibles); urgencia 85\,\%; acreedor preferente tras el FMI. Instrumentos: préstamos con programa, líneas precautorias, compras, recapitalización indirecta y directa. MoU (troika); puerta de las OMT \vertema{3.B.43}.
+\item Programas: Grecia (3; 256.600), Irlanda, Portugal, Chipre (\emph{bail-in}), España. Línea pandémica (2\,\% del PIB, 240.000): sin usar.
+\item \emph{España}: hasta 100.000; \concepto{41.333} al FROB (MoU 20-7-2012); condiciones financieras; vivos $\approx$7.300 (fin: 2027) \vertema{4.A.28}.
+\item \emph{Reforma} (2021): respaldo común del FUR (68.000) \vertema{3.B.44}; sin Italia. Debate: Fondo Monetario Europeo, defensa.
+\end{itemize}
+
+\graficorepaso[\linewidth]{rescates-paises}{Grecia, 256.600 M€; España, 41.300 (vivo: 7.300)}
+
+\sub{III.2. La respuesta desde la covid-19\label{rep:III.2}}
+\begin{itemize}
+\item Perturbación común, sin riesgo moral \vertema{3.A.40}. Cláusula general (23-3-2020 a 2023). 4 redes: MEDE, SURE, BEI, NGEU (+ PEPP).
+\item \emph{SURE} (2020/672): 100.000; \concepto{98.400 a 19}, España 21.324; 31,5 millones de trabajadores; 9.000 M€ de intereses ahorrados.
+\item \emph{NGEU} \vertema{3.B.37}: deuda para \emph{transferir}; MRR ligado al Semestre; 450.000 pagados (79\,\%) al 1-10-2026; hasta +1,4\,\% del PIB en 2026; temporal.
+\item \emph{REPowerEU} (2022); \emph{ReArm Europe} (800.000): cláusula + \emph{SAFE} (150.000; 19 Estados; España 1.000; primer pago, Polonia, 29-5-2026; 2.ª convocatoria 21.300).
+\end{itemize}
+
+\graficorepaso[0.9\linewidth]{sure-paises}{SURE: España, 21.324 M€ (1,9\,\% del PIB)}
+
+\sub{III.3. ¿Capacidad fiscal central?\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Idea}: \autor{Kenen} \vertema{3.B.16}; \autor{Farhi} y \autor{Werning} (2017): externalidad de demanda agregada.
+\item \emph{Modelo}: $u_A=-u_B$; $T_i=-\phi x_i$; $x_i=u_i+mT_i$:
+\begin{formula}
+\funcionclave{x_i=\frac{u_i}{1+m\phi}}
+\end{formula}
+Se financia sola ante perturbaciones asimétricas; amortigua $m\phi/(1+m\phi)$. Extensiones: riesgo moral, unión de transferencias, seguro privado. Evidencia: EE.~UU. (\autor{Asdrubali}, \autor{Sørensen} y \autor{Yosha}, 1996): mercados 39\,\%, crédito 23\,\%, federal 13\,\%. Valoración: \autor{Draghi} (750.000-800.000 M€/año), \autor{Letta} (2024); MFP 2028-2034: Fondo de Competitividad (409.000) y mecanismo de crisis (395.000 en préstamos).
+\end{itemize}
+
+\graficorepaso[\linewidth]{capacidad-fiscal}{Las transferencias amortiguan un tercio del golpe}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: reglas porque cada Estado se endeuda de más; marco de 2024 (gasto neto y ASD); PDM y Semestre; MEDE con condiciones; deuda común ante crisis comunes.
+\item \textbf{Relevancia}: para España, ancla y restricción (2012, NGEU, senda hasta 2031) \vertema{4.B.26}.
+\item \textbf{Extensiones}: \vertema{3.B.16} \vertema{3.B.43} \vertema{3.B.44} \vertema{3.B.37} \vertema{3.A.39} \vertema{4.B.4} \vertema{4.B.23}.
+\item \textbf{Opinión}: mejor marco, credibilidad en juego (10 PDE, cláusula, incumplimientos); sin capacidad fiscal, la próxima crisis dependerá de una cumbre.
+\item \textbf{Idea final}: ¿moneda común sin Tesoro común? Hasta ahora, «ayúdate y Dios te ayudará»; la pandemia mostró que, ante un golpe común, la ayuda puede llegar antes y sin castigo.
+\end{itemize}
+
+
+\bloque{Datos clave (noviembre de 2026)}
+\begin{itemize}
+\item \emph{Zona del euro} (2025): déficit 3,0\,\%, deuda 87,7\,\%; UE: 3,1\,\% y 81,5\,\%. \emph{España}: déficit 2,4\,\%, deuda 100,5\,\% (119,3\,\% en 2020); PDE de 2009 a 2019.
+\item \emph{Planes}: 21 sendas (21-1-2025); 8 con ajuste en 7 años. \emph{PDE}: 10 abiertos; nunca una multa.
+\item \emph{Cláusula de defensa}: 18 Estados activada (julio de 2025-junio de 2026), hasta 1,5\,\% del PIB al año en 2025-2028.
+\item \emph{PDM}: 7 exámenes en 2026; Rumanía, desequilibrios excesivos; España, sin desequilibrios desde 2024.
+\item \emph{MEDE}: 21 miembros; 500.000 de capacidad; programas por $\approx$395.000 M€ (con FEEF, MEEF y préstamos bilaterales); España, 41.333.
+\item \emph{SURE}: 98.400 a 19; \emph{MRR}: 450.000 pagados (79\,\%); \emph{SAFE}: 150.000, 13.500 desembolsados (oct. 2026).
+\item \emph{Personas}: Eurogrupo, \autor{Pierrakakis}; Cumbre del Euro, \autor{Costa}; MEDE, \autor{Gramegna}; Consejo Fiscal Europeo, \autor{Hasekamp}; AIReF, \autor{Olóndriz}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\begin{itemize}
+\item 1977 \autor{Kydland} y \autor{Prescott}; 1992 Maastricht; 1996 \autor{Asdrubali} et al.; 1997 PEC; 1999 \autor{Beetsma} y \autor{Uhlig}; 2005 reforma; 2007 \autor{Chari} y \autor{Kehoe}; 2010 MEEF y FEEF; 2011 Six-Pack; 2012 MEDE, TECG y España; 2013 Two-Pack; 2015 Cinco presidentes; 2017 \autor{Farhi} y \autor{Werning}; 2020 cláusula, SURE y NGEU; 2021 reforma del MEDE; 2024 nuevo marco, \autor{Draghi} y \autor{Letta}; 2025 cláusula de defensa y SAFE; 2026 Bulgaria en el euro y el MEDE; fin del MRR.
+\end{itemize}
+
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué no basta la disciplina de mercado?} Diferenciales casi nulos hasta 2008 y pánico después; deuda en una moneda que no se emite.
+\item \textbf{¿Qué es el gasto primario neto?} Gasto sin intereses, desempleo cíclico, fondos UE ni medidas discrecionales de ingresos.
+\item \textbf{¿Cuándo se abre un PDE por deuda?} Deuda $>60$\,\% y desviaciones de la cuenta de control $>0{,}3$ en un año o $0{,}6$ acumuladas.
+\item \textbf{¿Qué diferencia la cláusula general de la nacional?} Recesión de la zona del euro o la UE frente a circunstancias excepcionales de un Estado (defensa, 2025).
+\item \textbf{¿Es el MEDE una institución de la UE?} No: organización intergubernamental (art. 136.3).
+\item \textbf{¿Por qué nadie usó la línea pandémica del MEDE?} Estigma.
+\item \textbf{¿El SURE es una transferencia?} No: préstamos con deuda de la UE.
+\item \textbf{¿Ha abierto alguien el procedimiento de desequilibrio excesivo?} Nunca.
+\item \textbf{¿Por qué una regla de gasto y no de saldo?} Observable y anticíclica: deja actuar a los estabilizadores ($x^D=u/(1-m\tau)$).
+\item \textbf{¿Qué vota quién en un PDE?} Mayoría cualificada sin el afectado; en 126.9 y 126.11, solo la zona del euro (139.4).
+\item \textbf{¿Qué es el respaldo común?} Línea del MEDE al FUR (68.000), bloqueada sin Italia.
+\item \textbf{¿Por qué el NGEU no viola el art. 125?} La UE no asume deudas de Estados: se endeuda ella para un fin común (art. 122).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Salvaguardia de deuda: \emph{1} punto si $>$\emph{90\,\%}; \emph{0,5} entre 60 y 90\,\%. Déficit estructural: margen hasta el \emph{1,5\,\%}.
+\item Cuenta de control: \emph{0,3} anual / \emph{0,6} acumulado. Multas: \emph{0,05\,\%} del PIB por semestre (antes, hasta 0,5\,\%).
+\item Planes: \emph{4-5} años; ajuste en \emph{4}, ampliable a \emph{7}. TECG: $-$\emph{0,5\,\%} estructural.
+\item MEDE: capacidad \emph{500.000}; España usó \emph{41.333} de \emph{100.000}. SURE: \emph{98.400} de \emph{100.000}, \emph{19} Estados.
+\item PDM: PIIN $-$\emph{35\,\%}; cuenta corriente $-$\emph{4}/$+$\emph{6\,\%} (media de 3 años).
+\item MEDE: \emph{intergubernamental} (no es institución de la UE); MEEF: de la \emph{UE} (art. 122, presupuesto); FEEF: sociedad de los Estados del euro.
+\item Gasto neto de España: \emph{3,7/3,5/3,2/3,0\,\%} (2025-2028); ajuste en \emph{7} años (2025-2031).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

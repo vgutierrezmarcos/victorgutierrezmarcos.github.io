@@ -1,0 +1,22 @@
+% Cronología de la gobernanza económica de la UE, 1992-2026: del Tratado de
+% Maastricht al marco fiscal de 2024 y la respuesta común desde 2020.
+% Arriba, reglas y coordinación; abajo, gestión de crisis y respuesta común.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,x=0.43cm,every node/.append style={execute at begin node=\nocortar},
+    arr/.style={font=\scriptsize,align=center,text width=2.1cm,anchor=south,text=tceeazul!80!black},
+    aba/.style={font=\scriptsize,align=center,text width=2.1cm,anchor=north,text=tceeverde!80!black}]
+  \def\x#1{(#1-1992)}
+  \capa{1}{\draw[very thick,tceemorado,->] (0,0) -- (35.5,0);
+    \foreach \a in {1992,1997,2002,2007,2012,2017,2022} {\draw[tceemorado] (\a-1992,-0.12) -- (\a-1992,0.12); \node[font=\scriptsize,below=2pt] at (\a-1992,-0.1) {};}}
+  \capa{2}{
+    \foreach \a/\t/\h in {1992/{Maastricht: arts. 121 y 126, 3~\% y 60~\%}/0.4, 1997/{Pacto de Estabilidad y Crecimiento}/1.6, 2005/{reforma flexible del PEC}/0.4, 2011/{Six-Pack, Semestre Europeo y PDM}/2.9, 2013/{TECG y\\Two-Pack}/0.4, 2015/{flexibilidad; Cinco presidentes}/1.6, 2020/{cláusula general de salvaguardia (2020-2023)}/1.6, 2024/{nuevo marco: gasto neto y planes}/0.4}
+      {\draw[tceeazul] (\a-1992,0.12) -- (\a-1992,\h); \fill[tceeazul] (\a-1992,0) circle (2pt); \node[arr] at (\a-1992,\h) {\textbf{\a}\\\t};}}
+  \capa{3}{
+    \foreach \a/\t/\h in {2010/{Grecia;\\FEEF y MEEF}/-0.4, 2012/{MEDE; España y Chipre; OMT}/-1.9, 2020/{SURE y NGEU; 2021: reforma del Tratado MEDE}/-1.9, 2025/{ReArm Europe y SAFE}/-0.4}
+      {\draw[tceeverde] (\a-1992,-0.12) -- (\a-1992,\h); \fill[tceeverde] (\a-1992,0) circle (2pt); \node[aba] at (\a-1992,\h) {\textbf{\a}\\\t};}}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,30 @@
+% Arquitectura de la gobernanza económica de la UE y de la zona del euro:
+% quién orienta, quién propone y vigila, quién decide, y los 3 pilares
+% (prevención, corrección y gestión de crisis), con las instituciones
+% fiscales independientes y el MEDE fuera del marco de la UE.
+% Fuente: arts. 121, 126 y 136 TFUE, Protocolo 14, Reglamentos 2024/1263,
+% 1176/2011 y Tratado MEDE.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    inst/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,align=center,text width=3.3cm,inner sep=4pt,font=\footnotesize,minimum height=1.35cm},
+    pilar/.style={draw=#1,thick,fill=#1!8,rounded corners=2pt,align=left,text width=4.0cm,inner sep=4pt,font=\scriptsize,anchor=north},
+    fuera/.style={draw=tceegris,thick,dashed,fill=tceegris!6,rounded corners=2pt,align=center,text width=3.3cm,inner sep=4pt,font=\footnotesize,minimum height=1.35cm},
+    sigue/.style={->,thick,tceegris}]
+  \capa{1}{\node[inst,text width=12.6cm,minimum height=0.9cm] (ce) at (4.4,3.1) {\textbf{Consejo Europeo} y \textbf{Cumbre del Euro} (jefes de Estado o de Gobierno; presidente: \textsc{António Costa}):\\orientaciones políticas y respaldo a las recomendaciones};}
+  \capa{2}{\node[inst] (com) at (0,1.2) {\textbf{Comisión}\\propone, vigila y evalúa\\(análisis, informes, alertas)};}
+  \capa{3}{\node[inst] (cons) at (4.4,1.2) {\textbf{Consejo (Ecofin)}\\decide y recomienda\\por mayoría cualificada};
+    \draw[sigue] (com) -- node[above,font=\scriptsize] {propone} (cons);}
+  \capa{4}{\node[inst] (eg) at (8.8,1.2) {\textbf{Eurogrupo}\\ministros de la zona del euro (21)\\presidente: \textsc{K. Pierrakakis}};
+    \draw[sigue] (eg) -- node[above,font=\scriptsize] {prepara} (cons);}
+  \capa{5}{\node[pilar=tceeazul] (p1) at (0,-0.1) {\textbf{Prevención}\\[1pt]reglas fiscales: senda de gasto neto (art. 121)\\PDM: alerta y examen exhaustivo\\Semestre Europeo: el calendario común};}
+  \capa{6}{\node[pilar=tceerojo] (p2) at (4.4,-0.1) {\textbf{Corrección}\\[1pt]procedimiento de déficit excesivo (art. 126, Protocolo 12)\\procedimiento de desequilibrio excesivo\\sanciones (zona del euro, art. 136)};}
+  \capa{7}{\node[pilar=tceeverde] (p3) at (8.8,-0.1) {\textbf{Gestión de crisis}\\[1pt]MEDE: préstamos con condicionalidad\\BCE: OMT y TPI con condiciones\\UE: MEEF, SURE, NGEU (arts. 122 y 143)};}
+  \capa{8}{\node[fuera,anchor=north] (ifi) at (0,-2.75) {\textbf{Instituciones fiscales}\\Consejo Fiscal Europeo (asesor)\\AIReF y las demás nacionales};
+    \node[fuera,anchor=north] (pe) at (4.4,-2.75) {\textbf{Parlamento Europeo}\\diálogo económico\\(no decide)};
+    \node[fuera,anchor=north] (mede) at (8.8,-2.75) {\textbf{MEDE}: organización intergubernamental, fuera del ordenamiento de la UE};}
+\end{tikzpicture}
+\end{document}

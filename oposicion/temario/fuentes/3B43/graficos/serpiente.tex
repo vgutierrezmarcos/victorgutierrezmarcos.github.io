@@ -1,0 +1,42 @@
+% La serpiente monetaria europea: «la serpiente en el túnel» (abril de 1972-
+% marzo de 1973) y «la serpiente en el lago» (desde marzo de 1973). Eje
+% vertical: tipo de cambio de las monedas europeas frente al dólar, en % de
+% desviación de la paridad central del Smithsonian. Túnel: ±2,25 % frente al
+% dólar (4,5 % de ancho); serpiente: 2,25 % como máximo entre la moneda europea
+% más fuerte y la más débil. Esquema, no datos. Rehecho a partir de la imagen
+% del tema antiguo (3.B.45, «Serpiente Monetaria Europea», elaboración propia).
+% Capas: ejes -> túnel -> centro de la serpiente -> sus 2 bordes -> anchos ->
+% fin del túnel -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=0.95cm,
+    declare function={c(\t)=0.55*sin(deg(1.3*\t))+0.25*sin(deg(3.1*\t))-0.1+(\t>5)*(0.5*(\t-5)+0.4*sin(deg(1.5*(\t-5))));}]
+  \path (-1.6,-3.6) rectangle (10.8,4.3);
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,-3.2) -- (0,3.9) node[left,align=right,font=\footnotesize] {tipo de cambio\\frente al dólar};}
+  \capa{1}{\draw[eje] (0,0) -- (10.2,0) node[below left,font=\footnotesize] {tiempo};}
+  \capa{1}{\node[below right,font=\footnotesize] at (0,0) {1972};}
+  % 2: el túnel del dólar (Smithsonian, ±2,25 %)
+  \capa{2}{\draw[curva4,dashed] (0,2.25) -- (5,2.25);}
+  \capa{2}{\draw[curva4,dashed] (0,-2.25) -- (5,-2.25);}
+  \capa{2}{\node[left,font=\footnotesize] at (0,2.25) {$+2{,}25$~\%};}
+  \capa{2}{\node[left,font=\footnotesize] at (0,-2.25) {$-2{,}25$~\%};}
+  \capa{2}{\node[etiqueta,text=tceedorado,anchor=south west] at (0.1,2.3) {túnel del dólar};}
+  % 3: centro de la serpiente
+  \capa{3}{\draw[thin,dashed,tceeazul,domain=0:9.6,samples=120] plot (\x,{c(\x)});}
+  % 4: los bordes de la serpiente (la moneda más fuerte y la más débil)
+  \capa{4}{\draw[curva2,domain=0:9.6,samples=120] plot (\x,{c(\x)+1.125});}
+  \capa{4}{\draw[curva2,domain=0:9.6,samples=120] plot (\x,{c(\x)-1.125});}
+  % 5: los anchos
+  \capa{5}{\draw[<->,thin,tceedorado] (1.0,-2.25) -- (1.0,2.25) node[pos=0.93,left,font=\footnotesize,text=tceedorado] {4,5~\%};}
+  \capa{5}{\draw[<->,thin,tceeazul] (4.2,{c(4.2)-1.125}) -- (4.2,{c(4.2)+1.125}) node[pos=0.5,right,font=\footnotesize,text=tceeazul] {2,25~\%};}
+  % 6: el fin del túnel (marzo de 1973)
+  \capa{6}{\draw[guia] (5,-3.2) -- (5,3.6);}
+  \capa{6}{\node[font=\footnotesize,align=center,anchor=north] at (5,-2.4) {marzo de 1973:\\flotación frente al dólar};}
+  % 7: rótulos de las 2 etapas
+  \capa{7}{\node[etiqueta,text=tceeazul,font=\small\itshape] at (2.5,3.5) {la serpiente en el túnel};}
+  \capa{7}{\node[etiqueta,text=tceeazul,font=\small\itshape] at (7.6,3.5) {la serpiente en el lago};}
+\end{tikzpicture}
+\end{document}

@@ -853,3 +853,11 @@ Tras ver el borrador de 1 h 30 (sin renderizar de nuevo hasta que Víctor lo pid
 - **4.º ejercicio**: sin remisiones nuevas: la guía ya lleva 49 `\vertema{4.…}`.
 - **Refranes**: solo el del enganche («Lo bueno, si breve, dos veces bueno», Gracián); no hay más dichos en la guía ni en la ficha. Sin cambios.
 - **Duda (13/11/2026)**: Paul Krugman (2008) solo aparece como autor del manual citado (Krugman, Obstfeld y Melitz, 2018) en la devaluación y en la fuente de un esquema; no se le pone nota porque no se habla de su obra. Las motivaciones se han tomado de las entradas ya comprobadas en otros temas (nobelprize.org no respondía hoy).
+
+## Coherencia con el 3.B.44 (14/11/2026)
+
+- EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.
+
+## Pendiente detectado por el agente del 3.B.43 (14/11/2026)
+
+- CSV `tipos-bce`: el tipo de las OPF queda fijo en 4,25 % entre 2000 y 2008, cuando debería seguir el tipo mínimo de puja. Sin corregir; hay que rehacer el gráfico.
