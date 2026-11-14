@@ -1,0 +1,62 @@
+% Modelo de bloques de Krugman (1991): bienestar mundial (utilidad de un hogar
+% representativo, en % de la de libre comercio mundial) según el número de
+% bloques B, con aranceles exteriores de Nash, para 3 elasticidades de
+% sustitución (sigma = 2, 4 y 8). Solución numérica propia en
+% ../datos/krugman-bloques.csv (script en _trabajo/krugman.py).
+% B = 1 es el libre comercio mundial (100 %); con B grande cada bloque tiene
+% poco poder de mercado y el arancel de Nash baja: el bienestar vuelve a subir.
+% El mínimo está en B = 3 para las 3 elasticidades.
+% Capas: ejes -> curva sigma = 4 -> mínimo -> curvas sigma = 2 y 8 -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/krugman-bloques.csv}\kb
+\pgfplotsset{kbejes/.style={}}
+\ifnum1>\tceepaso\relax
+  \pgfplotsset{kbejes/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=7.2cm,
+      xmin=0.5, xmax=15.5, ymin=84, ymax=101,
+      xtick={1,...,15}, ytick={85,90,95,100},
+      xticklabel style={font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      xlabel={Número de bloques ($B$)}, xlabel style={font=\small},
+      ylabel={Bienestar mundial (\% del de libre comercio)}, ylabel style={font=\small},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, kbejes, dicapas,
+    ]
+    % 1: ejes (kbejes) y la referencia del libre comercio mundial
+    \capa{1}{
+      \dicraya[dicumbral]{(0.5,100) (15.5,100)}
+      \dicrotulo[font=\scriptsize, anchor=south west, text=tceegris]{(5,100)}{libre comercio mundial ($B=1$)}
+    }
+    % 2: la curva de referencia (sigma = 4)
+    \capa{2}{
+      \addplot[curva1, mark=none] table[x=B, y=w4] {\kb};
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceemorado]{(15.2,97.97)}{$\sigma=4$}
+    }
+    % 3: el mínimo con 3 bloques
+    \capa{3}{
+      \addplot[on layer=dicpuntos, dicpuntos=tceemorado] coordinates {(3,94.57)};
+      \addplot[on layer=axis descriptions, dicsuelto, guia] coordinates {(3,84) (3,94.57)};
+      \dicrotulo[font=\footnotesize, anchor=north west, align=left, text=tceemorado]{(3.2,94.3)}{mínimo:\\$B=3$}
+    }
+    % 4: las otras elasticidades
+    \capa{4}{
+      \addplot[curva2, mark=none] table[x=B, y=w8] {\kb};
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceeazul]{(15.2,99.11)}{$\sigma=8$}
+      \addplot[curva4, mark=none] table[x=B, y=w2] {\kb};
+      \dicrotulo[font=\footnotesize, anchor=west, text=tceedorado]{(15.2,94.27)}{$\sigma=2$}
+      \addplot[on layer=dicpuntos, dicpuntos=tceeazul] coordinates {(3,97.52)};
+      \addplot[on layer=dicpuntos, dicpuntos=tceedorado] coordinates {(3,86.33)};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

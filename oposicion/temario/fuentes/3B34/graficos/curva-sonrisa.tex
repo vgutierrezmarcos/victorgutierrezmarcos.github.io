@@ -1,0 +1,28 @@
+% Curva de la sonrisa (Stan Shih, Acer, principios de los 90; Baldwin, 2016):
+% valor añadido de cada fase de la cadena de valor, de la concepción a la
+% posventa. Cualitativa. Sustituye a la imagen 5 del tema antiguo.
+% Capas: ejes -> fases de la cadena -> curva de los años 70 (más plana) ->
+% curva actual (más honda) -> rótulos de servicios y manufactura.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    fase/.style={font=\footnotesize,align=center,anchor=north,text width=1.55cm}]
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (11,0) node[right,align=left,font=\footnotesize] {fases de la\\cadena de valor};}
+  \capa{1}{\draw[eje] (0,0) -- (0,5) node[left,align=right,font=\footnotesize] {valor\\añadido};}
+  % 2: fases
+  \capa{2}{\foreach \x/\t in {1.1/{I+D}, 2.6/{diseño}, 4.1/{compras,\\logística}, 5.5/{fabricación\\y montaje}, 6.9/{distribución}, 8.4/{marca y\\márketing}, 9.9/{posventa}} {\draw (\x,0) -- (\x,-0.08); \node[fase] at (\x,-0.12) {\t};}}
+  % 3: la curva de los 70: más plana (la fabricación aportaba más)
+  \capa{3}{\draw[curva2,desplazada] plot[smooth,domain=0.8:10.2,samples=50] (\x,{1.9+0.055*(\x-5.5)^2});}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] at (10.25,3.1) {años 70};}
+  % 4: la curva actual: más honda (el valor está antes y después de fabricar)
+  \capa{4}{\draw[curva1] plot[smooth,domain=0.8:10.2,samples=50] (\x,{0.8+0.15*(\x-5.5)^2});}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceemorado,anchor=west] at (10.25,4.15) {hoy};}
+  % 5: dónde están los servicios
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceeverde,align=center] at (2.2,4.6) {servicios\\anteriores};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceeverde,align=center] at (8.8,4.6) {servicios\\posteriores};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceedorado!80!black,align=center] at (5.5,0.45) {manufactura};}
+\end{tikzpicture}
+\end{document}

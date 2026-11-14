@@ -1,0 +1,56 @@
+% De los tres pilares de Maastricht a los dos Tratados de Lisboa. A la
+% izquierda, el templo de Maastricht (1992-2009): la Unión Europea sin
+% personalidad jurídica sobre tres pilares (I, Comunidades Europeas, método
+% comunitario; II, PESC, y III, JAI, desde Ámsterdam cooperación policial y
+% judicial en materia penal, intergubernamentales) y las disposiciones comunes
+% del TUE. A la derecha, la Unión de Lisboa (desde el 1/12/2009): personalidad
+% jurídica (art. 47 TUE), TUE y TFUE con el mismo valor jurídico, la Carta de
+% los Derechos Fundamentales (art. 6 TUE) y el Tratado Euratom aparte.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    titulo/.style={font=\small\bfseries,align=center,text=tceemorado},
+    pilar/.style={thick,rounded corners=2pt,align=center,text width=2.25cm,
+      minimum height=4.9cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    supra/.style={pilar,draw=tceemorado,fill=tceemorado!10},
+    inter/.style={pilar,draw=tceeazul,fill=tceeazul!8},
+    caja/.style={thick,rounded corners=2pt,align=center,inner sep=4pt,
+      font=\footnotesize,anchor=north,text width=#1},
+    tratado/.style={caja=#1,draw=tceemorado,fill=tceemorado!8},
+    rama/.style={thick,tceegris}]
+  % 1: el frontón de Maastricht
+  \capa{1}{\node[titulo] at (3.85,0) {Tratado de Maastricht (1992-2009)};}
+  \capa{1}{\draw[thick,tceemorado,fill=tceemorado!16,rounded corners=2pt] (-0.15,-2.2) -- (3.85,-0.55) -- (7.85,-2.2) -- cycle;}
+  \capa{1}{\node[font=\footnotesize,align=center] at (3.85,-1.68) {\textbf{Unión Europea}\\(sin personalidad jurídica)};}
+  % 2-4: los tres pilares
+  \capa{2}{\node[supra] at (1.25,-2.3) {\textbf{I}\\[2pt]\textbf{Comunidades Europeas}\\[3pt]CE (antes CEE)\\CECA (hasta 2002)\\Euratom\\[5pt]\textit{método comunitario (supranacional)}};}
+  \capa{3}{\node[inter] at (3.85,-2.3) {\textbf{II}\\[2pt]\textbf{Política Exterior y de Seguridad Común (PESC)}\\[5pt]\textit{intergubernamental}};}
+  \capa{4}{\node[inter] at (6.45,-2.3) {\textbf{III}\\[2pt]\textbf{Justicia y Asuntos de Interior (JAI)}\\[3pt]desde Ámsterdam: Cooperación policial y judicial en materia penal\\[5pt]\textit{intergubernamental}};}
+  % 5: la base
+  \capa{5}{\node[caja=7.65cm,draw=tceegris,fill=tceegris!10] at (3.85,-7.3) {\textbf{Disposiciones comunes (TUE)}};}
+  % 6: la reforma de Lisboa
+  \capa{6}{\draw[->,line width=1.6pt,tceedorado] (8.0,-4.2) -- (9.75,-4.2);}
+  \capa{6}{\node[font=\footnotesize,align=center,text width=1.75cm,anchor=south,text=tceedorado!80!black] at (8.875,-4.05) {\textbf{Tratado de Lisboa}};}
+  \capa{6}{\node[font=\footnotesize,align=center,text width=1.75cm,anchor=north,text=tceedorado!80!black] at (8.875,-4.35) {(2007, en vigor el 1/12/2009)};}
+  % 7: la Unión de Lisboa
+  \capa{7}{\node[titulo] at (13.0,0) {Tratado de Lisboa (desde 2009)};}
+  \capa{7}{\node[caja=6.3cm,draw=tceemorado,fill=tceemorado!16] (ue) at (13.0,-0.55) {\textbf{Unión Europea}\\con personalidad jurídica (art.~47 TUE)};}
+  % 8: TUE
+  \capa{8}{\node[tratado=2.95cm,minimum height=2.3cm] (tue) at (11.35,-2.0) {\textbf{Tratado de la Unión Europea (TUE)}\\[2pt]principios, instituciones, cooperación reforzada, acción exterior y PESC};}
+  \capa{8}{\draw[rama] (ue.south -| tue.north) -- (tue.north);}
+  % 9: TFUE y el mismo valor jurídico
+  \capa{9}{\node[tratado=2.95cm,minimum height=2.3cm] (tfue) at (14.65,-2.0) {\textbf{Tratado de Funcionamiento de la UE (TFUE)}\\antes TCE\\[2pt]competencias y políticas};}
+  \capa{9}{\draw[rama] (ue.south -| tfue.north) -- (tfue.north);}
+  \capa{9}{\draw[thick,tceemorado,decorate,decoration={brace,amplitude=5pt,mirror}] ($(tue.south west)+(0.05,-0.1)$) -- ($(tfue.south east)+(-0.05,-0.1)$);}
+  \capa{9}{\node[font=\footnotesize,text=tceemorado,anchor=north] (valor) at ($(tue.south east)!0.5!(tfue.south west)+(0,-0.3)$) {el mismo valor jurídico};}
+  % 10: la Carta
+  \capa{10}{\node[caja=6.3cm,draw=tceedorado,fill=tceedorado!12] (carta) at ($(valor.south)+(0,-0.35)$) {\textbf{Carta de los Derechos Fundamentales de la UE}\\el mismo valor jurídico que los Tratados (art.~6 TUE)};}
+  % 11: Euratom
+  \capa{11}{\node[caja=6.3cm,draw=tceegris,dashed,fill=tceegris!8] (euratom) at ($(carta.south)+(0,-0.35)$) {\textbf{Tratado Euratom}: sigue separado};}
+  % 12: la PESC conserva reglas propias
+  \capa{12}{\node[font=\footnotesize\itshape,text=tceeazul,align=center,text width=6.4cm,anchor=north] at ($(euratom.south)+(0,-0.15)$) {la PESC sigue con reglas específicas (unanimidad)};}
+\end{tikzpicture}
+\end{document}

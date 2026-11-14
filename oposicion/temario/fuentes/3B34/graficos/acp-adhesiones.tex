@@ -1,0 +1,64 @@
+% Partes del Acuerdo sobre Contratación Pública de la OMC y miembros de la OMC
+% cubiertos, 1996-2026 (la UE cuenta como una parte que cubre a sus Estados
+% miembros). Fuente en la cabecera de ../datos/acp-adhesiones.csv y detalle en
+% ../datos/acp-adhesiones-detalle.csv (OMC).
+% Capas: ejes -> miembros cubiertos (escalera) -> partes (escalera) -> puntos
+% del último dato -> rótulos de las adhesiones y ampliaciones.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/acp-adhesiones.csv}\acp
+\pgfplotsset{ejesacp/.style={}}
+\ifnum1>\tceepaso\relax
+  \pgfplotsset{ejesacp/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=7.2cm,
+      xmin=1995.5, xmax=2026.8, ymin=0, ymax=56,
+      xtick={1996,2000,...,2024}, minor xtick={1996,...,2026},
+      ytick={0,10,...,50},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Número},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false,
+      legend style={at={(0.98,0.04)}, anchor=south east, draw=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left,
+      ejesacp, dicapas,
+    ]
+    % 2: miembros de la OMC cubiertos
+    \capa{2}{
+      \addplot[const plot, very thick, tceemorado] table[x=anio, y=miembros_cubiertos] {\acp};
+      \addlegendentry{Miembros de la OMC cubiertos}
+    }
+    % 3: partes
+    \capa{3}{
+      \addplot[const plot, very thick, tceedorado] table[x=anio, y=partes] {\acp};
+      \addlegendentry{Partes (la UE, una)}
+    }
+    % 4: último dato
+    \capa{4}{
+      \addplot[on layer=dicpuntos, dicsuelto, only marks, mark=*, mark size=1.8pt, tceemorado] coordinates {(2026,49)};
+      \addplot[on layer=dicpuntos, dicsuelto, only marks, mark=*, mark size=1.8pt, tceedorado] coordinates {(2026,22)};
+      \dicrotulo[font=\scriptsize,anchor=west,text=tceemorado]{(2026.2,49)}{49}
+      \dicrotulo[font=\scriptsize,anchor=west,text=tceedorado!80!black]{(2026.2,22)}{22}
+    }
+    % 5: rótulos
+    \capa{5}{
+      \dicrotulo[font=\scriptsize,anchor=south,align=center]{(2000.2,28.3)}{Corea, Hong Kong,\\Liechtenstein, Singapur}
+      \dicrotulo[font=\scriptsize,anchor=south,align=center]{(2004.5,39)}{ampliación\\de la UE}
+      \dicrotulo[font=\scriptsize,anchor=north,align=center]{(2013.2,42.3)}{ACP revisado\\(2014)}
+      \dicrotulo[font=\scriptsize,anchor=south,align=center]{(2016.5,47.6)}{Montenegro, Nueva Zelanda,\\Ucrania, Moldavia}
+      \dicrotulo[font=\scriptsize,anchor=north,align=center]{(2018.3,18.7)}{Australia}
+      \dicrotulo[font=\scriptsize,anchor=north,align=center]{(2023.6,20.7)}{Reino Unido (2021),\\Macedonia del Norte (2023)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

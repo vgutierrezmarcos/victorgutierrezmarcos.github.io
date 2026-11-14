@@ -1,0 +1,24 @@
+# Fuente: OCDE, Services Trade Restrictiveness Index (STRI) by services sector, medida STRI (índice total), unidad IX (0 = abierto; 1 = cerrado), dataflow OECD.TAD.TPD:DSD_STRI@DF_STRI_MAIN; 18 sectores (el dataflow SDMX ya no publica por separado arquitectura, ingeniería, transitarios y agentes de aduanas de la lista clásica de 22).
+# URL: https://sdmx.oecd.org/public/rest/data/OECD.TAD.TPD,DSD_STRI@DF_STRI_MAIN,/all?startPeriod=2014 (dataflow DSD_STRI@DF_STRI_MAIN, versión 1.0)
+# Fecha de consulta: 14/11/2026. Último dato: 2025 (situación regulatoria a 31/12/2025; 51 países: 38 de la OCDE y 13 no miembros).
+# Segunda comprobación: OCDE, «OECD Services Trade Restrictiveness Index 2026» (doi 10.1787/db87d74e-en) y nota de prensa de febrero de 2026: transporte aéreo, servicios jurídicos y contabilidad siguen siendo los sectores más restringidos (coincide con los tres primeros de este fichero). No se pudieron descargar las tablas numéricas de la publicación (el servidor de la OCDE devuelve 403 a descargas automáticas).
+# media = media simple de los 51 países; media_ocde = 38 miembros de la OCDE; minimo y maximo entre los 51; espana_2014 y media_2014 = primer año de la serie. Ordenado de más a menos restrictivo. n_paises: países con dato (sin transporte marítimo los países sin costa).
+sector,codigo_isic,media,media_ocde,minimo,maximo,pais_maximo,espana,espana_2014,media_2014,n_paises
+Transporte aéreo,H51,0.400,0.389,0.150,0.597,Rusia,0.350,0.359,0.415,51
+Servicios jurídicos,M691,0.348,0.292,0.089,1.000,Filipinas / Polonia,0.213,0.213,0.367,51
+Contabilidad y auditoría,M692,0.325,0.276,0.106,1.000,Corea / Tailandia,0.228,0.236,0.320,51
+Transporte ferroviario de mercancías,H4912,0.318,0.235,0.094,1.000,India / Israel / Kazajistán / Corea / Filipinas / Tailandia,0.159,0.156,0.317,49
+Radiodifusión,J60,0.305,0.257,0.103,0.631,Colombia,0.191,0.178,0.293,51
+Transporte marítimo,H50,0.267,0.237,0.123,0.510,Rusia,0.133,0.144,0.270,45
+Mensajería y correo urgente,H53,0.259,0.220,0.079,0.761,China,0.120,0.110,0.279,51
+Logística: manipulación de carga,H5224,0.238,0.193,0.086,1.000,Rusia,0.086,0.109,0.244,51
+Telecomunicaciones,J61,0.237,0.183,0.091,0.711,Vietnam,0.091,0.079,0.234,51
+Logística: almacenamiento y depósito,H521,0.230,0.189,0.105,1.000,Rusia,0.105,0.122,0.230,51
+Banca comercial,K64,0.229,0.191,0.061,0.472,Indonesia,0.061,0.043,0.224,51
+Construcción,F,0.226,0.211,0.109,0.474,Islandia,0.121,0.137,0.222,51
+Transporte de mercancías por carretera,H4923,0.219,0.210,0.104,0.478,México,0.157,0.157,0.216,51
+Seguros,K65,0.210,0.169,0.059,0.548,Tailandia,0.141,0.137,0.220,51
+Servicios informáticos,J62_63,0.204,0.190,0.071,0.435,Rusia,0.087,0.101,0.196,51
+Grabación sonora,J592,0.198,0.176,0.049,0.484,China,0.078,0.084,0.191,51
+Cine y vídeo,J591,0.198,0.172,0.039,0.516,China,0.101,0.099,0.192,51
+Distribución,G,0.196,0.167,0.083,0.547,Filipinas,0.128,0.127,0.201,51

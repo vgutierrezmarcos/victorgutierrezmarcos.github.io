@@ -1,0 +1,55 @@
+% Producción normativa de la UE, 2010-2025: (a) actos adoptados por el
+% procedimiento legislativo ordinario (reglamentos, directivas y decisiones
+% del Parlamento Europeo y del Consejo), con las elecciones europeas
+% señaladas; (b) actos delegados y actos de ejecución. Básicos y modificativos.
+% Datos en ../datos/actos-anuales.csv (EUR-Lex, estadísticas de actos).
+% Capas: barras del PLO → ejes → elecciones → actos de ejecución → actos
+% delegados → rótulos. Antes de 2011 (Reglamento 182/2011) EUR-Lex no
+% clasifica los actos de ejecución: el panel (b) empieza en 2011.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/actos-anuales.csv}\actos
+\colorlet{plobarra}{tceemorado!75}
+\pgfplotsset{ejesact/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesact/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, title style={opacity=0}, ymajorgrids=false}}
+\fi
+\pgfplotsset{comunact/.style={width=8.4cm, height=6.6cm, xmin=2009.3, xmax=2025.7,
+    xtick={2010,2013,...,2025}, minor xtick={2010,...,2025},
+    xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+    yticklabel style={/pgf/number format/1000 sep=., font=\footnotesize},
+    title style={font=\footnotesize\bfseries, align=center},
+    axis x line*=bottom, axis y line*=left, tick align=outside,
+    ymajorgrids, grid style={tceegris!20}, clip=false, ejesact, dicapas}}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[comunact, name=izq, ymin=0, ymax=170, ytick={0,25,...,150},
+      title={(a) Actos del Parlamento Europeo y del Consejo\\(procedimiento legislativo ordinario)},
+      ybar, bar width=0.62, bar shift=0pt]
+    % 1: barras
+    \capa{1}{\addplot[on layer=dicbarras, forget plot, dicbarra=plobarra] table[x=anio, y=plo] {\actos};}
+    % 3: elecciones europeas: picos de fin de legislatura
+    \capa{3}{
+      \dicrotulo[font=\scriptsize,anchor=south,yshift=1pt,align=center,text=tceemorado]{(2014,148)}{148\\(fin de\\legislatura)}
+      \dicrotulo[font=\scriptsize,anchor=south,yshift=1pt,text=tceemorado]{(2019,126)}{126}
+      \dicrotulo[font=\scriptsize,anchor=south,yshift=1pt,text=tceemorado]{(2024,146)}{146}
+      \dicrotulo[font=\scriptsize,anchor=south,yshift=1pt]{(2025,55)}{55}
+    }
+  \end{axis}
+  \begin{axis}[comunact, name=der, at={(izq.outer east)}, anchor=outer west, xshift=0.3cm,
+      ymin=0, ymax=1400, ytick={0,200,...,1200},
+      title={(b) Actos de la Comisión y del Consejo\\que desarrollan o ejecutan los actos legislativos}]
+    % 4: actos de ejecución
+    \capa{4}{\addplot[diclinea=tceedorado, mark=*, mark size=1.3pt, restrict x to domain=2011:2025] table[x=anio, y=ejecucion] {\actos};
+      \dicrotulo[font=\scriptsize,anchor=south east,text=tceedorado!85!black,align=right]{(2025,1203)}{De ejecución\\(art. 291 TFUE): 1.203}}
+    % 5: actos delegados
+    \capa{5}{\addplot[diclinea=tceeazul, mark=*, mark size=1.3pt, restrict x to domain=2011:2025] table[x=anio, y=delegados] {\actos};
+      \dicrotulo[font=\scriptsize,anchor=south east,text=tceeazul,align=right]{(2025,240)}{Delegados\\(art. 290 TFUE): 166}}
+  \end{axis}
+  \path (izq.outer south west) (der.outer north east) (der.outer south east) (izq.outer north west);
+\end{tikzpicture}
+\end{document}

@@ -152,3 +152,10 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III**: la tabla de conferencias como apoyo; el gráfico `diferencias-anio` en la pizarra por capas (barras, ejes, sombreado del bloqueo, rótulos).
 - **Funciones clave que se conservan**: `eq:bagwell-staiger` (desde I.1) y `eq:incentivos` (desde II.1.3).
 - Nunca se dice el número de un tema en voz alta.
+
+## Coherencia con el 3.B.34 (14/11/2026)
+- Exámenes de políticas comerciales cada 3 años: la OMC (página del MEPC) lista hoy a la UE, Estados Unidos, China y el **Reino Unido**, no Japón. Corregido.
+- Acuerdo de Facilitación de las Inversiones en Yaundé: la OMC no nombra a quien bloqueó; se dice «por falta de consenso» y que la prensa señala a la India (tema, tabla de conferencias y ficha).
+- Acuerdo sobre Comercio Electrónico: 66 miembros en Yaundé, 68 en noviembre de 2026 (tema y ficha).
+- Reforma: las 4 líneas de junio de 2026 salieron de una reunión de jefes de delegación (26/6), no del Consejo General.
+- Acuerdos regionales en vigor notificados: unos 390 (cifra del 3.B.35, base de la OMC a noviembre de 2026), no 380 (tema y ficha).

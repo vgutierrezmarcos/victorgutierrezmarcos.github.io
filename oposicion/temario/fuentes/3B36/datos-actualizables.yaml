@@ -1,0 +1,142 @@
+tema: 3B36
+fecha_inventario: 2026-11-14
+datos:
+  - id: poblacion-qmv
+    texto: "umbral de 293,9 millones de 452,2 (población para la mayoría cualificada en 2026); cuotas de población por Estado"
+    donde: [3B36.tex, repaso/3B36-repaso.tex, datos/consejo-poblacion-escanos.csv, graficos/poder-voto.tex, graficos/escanos-estados.tex]
+    valor: 452162974
+    unidad: habitantes
+    periodo: "2026"
+    fuente: Consejo2025Poblacion
+    organismo: Consejo de la UE (datos de Eurostat)
+    serie: "Anexo III del Reglamento interno del Consejo (decisión anual)"
+    url: https://eur-lex.europa.eu/eli/dec/2025/2427/oj
+    periodicidad: anual (decisión en noviembre-diciembre, aplicable desde el 1 de enero)
+    proxima: "2026-12 (cifras de 2027): rehacer datos/poder-voto.py, el gráfico poder-voto, la tabla tab:poder y la columna de población del anexo A"
+    familia: ue-instituciones
+
+  - id: indices-poder
+    texto: "Alemania: 18,5 / 17,5 / 12,0 %; España: 10,9 / 9,4 / 7,8 %; Malta: 0,13 / 0,87 / 1,73 %; probabilidad de aprobar 13,2 %"
+    donde: [3B36.tex, repaso/3B36-repaso.tex, datos/poder-voto.csv, graficos/poder-voto.tex]
+    valor: null
+    unidad: "%"
+    periodo: "2026"
+    fuente: Consejo2025Poblacion
+    organismo: cálculo propio
+    serie: "python3 datos/poder-voto.py (lee consejo-poblacion-escanos.csv)"
+    url: null
+    periodicidad: anual (con las cifras de población) o con cada ampliación
+    proxima: "2027-01"
+    familia: ue-instituciones
+
+  - id: escanos-pe
+    texto: "720 diputados (2024-2029); España 61; reparto por Estado"
+    donde: [3B36.tex, repaso/3B36-repaso.tex, datos/consejo-poblacion-escanos.csv, graficos/escanos-estados.tex, graficos/mapa-instituciones.tex]
+    valor: 720
+    unidad: escaños
+    periodo: "2024-2029"
+    fuente: ConsejoEuropeo2023Composicion
+    organismo: Consejo Europeo
+    serie: "Decisión (UE) 2023/2061"
+    url: https://eur-lex.europa.eu/eli/dec/2023/2061/oj
+    periodicidad: por legislatura (nueva decisión antes de las elecciones de 2029)
+    proxima: "2028"
+    familia: ue-instituciones
+
+  - id: grupos-pe
+    texto: "PPE 188, S&D 136, PfE 84, ECR 78, Renew 77, Verdes/ALE 53, La Izquierda 46, ESN 25, NI 33 (sesión constitutiva); julio de 2026: PPE 184, S&D 135, PfE 85, ECR 84, Renew 78"
+    donde: [3B36.tex, repaso/3B36-repaso.tex, datos/grupos-pe.csv, graficos/grupos-pe.tex]
+    valor: null
+    unidad: escaños
+    periodo: "2024-07 (gráfico); 2026-07 (nota)"
+    fuente: PE2024Constitutiva
+    organismo: Parlamento Europeo; SIEPS
+    serie: "Composición por grupos (europarl.europa.eu/meps)"
+    url: https://www.europarl.europa.eu/meps/es/home
+    periodicidad: continua (cambios de grupo)
+    proxima: "cuando se pueda descargar la lista oficial (la web bloqueó la descarga automática el 14/11/2026)"
+    familia: ue-instituciones
+
+  - id: actos-anuales
+    texto: "55-150 actos del PLO al año; 2025: 55 del PLO, 166 delegados, 1.203 de ejecución"
+    donde: [3B36.tex, repaso/3B36-repaso.tex, datos/actos-anuales.csv, graficos/actos-anuales.tex]
+    valor: null
+    unidad: actos
+    periodo: "2010-2025"
+    fuente: EURLex2026Estadisticas
+    organismo: EUR-Lex
+    serie: "Legal acts - statistics (básicos + modificativos, por año de adopción)"
+    url: https://eur-lex.europa.eu/statistics/2025/legislative-acts-statistics.html
+    periodicidad: anual
+    proxima: "2027-01 (añadir 2026)"
+    familia: ue-derecho
+
+  - id: estados-miembros
+    texto: "27 Estados; euro en 21 (Bulgaria desde 2026); Schengen 29; 9 candidatos y Kosovo"
+    donde: [3B36.tex, repaso/3B36-repaso.tex, datos/estados-miembros.csv, graficos/ampliaciones.tex, graficos/circulos-europa.tex]
+    valor: 27
+    unidad: Estados
+    periodo: "2026-11"
+    fuente: UE2026Instituciones
+    organismo: Unión Europea
+    serie: "Tratados de adhesión"
+    url: https://european-union.europa.eu/principles-countries-history/eu-countries_es
+    periodicidad: cuando hay adhesiones
+    proxima: sin fecha (Montenegro, la más avanzada)
+    familia: ue-ampliacion
+
+  - id: negociaciones-adhesion
+    texto: "Montenegro 21 de 33 capítulos cerrados (oct. 2026); Ucrania y Moldavia: bloques de fundamentales (junio de 2026), mercado interior y competitividad (octubre)"
+    donde: [3B36.tex, repaso/3B36-repaso.tex]
+    valor: 21
+    unidad: capítulos
+    periodo: "2026-10"
+    fuente: Consejo2026Conferencias
+    organismo: Consejo de la UE
+    serie: "Conferencias intergubernamentales de adhesión"
+    url: https://www.consilium.europa.eu/en/press/news/20261013-4-accession-conferences-more-progress-for-montenegro-albania-ukraine-and-moldova/
+    periodicidad: en cada conferencia de adhesión
+    proxima: "2026-12"
+    familia: ue-ampliacion
+
+  - id: cargos-ue
+    texto: "Von der Leyen (Comisión, desde 1-12-2024); Costa (Consejo Europeo, hasta 31-5-2027); Metsola (PE); Kallas (AR); Lagarde y Vujčić (BCE); Pierrakakis (Eurogrupo); Calviño (BEI); Ritter (Fiscalía Europea, desde 1-11-2026)"
+    donde: [3B36.tex, repaso/3B36-repaso.tex]
+    valor: null
+    unidad: cargos
+    periodo: "2026-11"
+    fuente: CE2024Colegio
+    organismo: instituciones de la UE
+    serie: "ficha canon/modelos/instituciones-ue.md"
+    url: https://op.europa.eu/es/web/who-is-who
+    periodicidad: con cada relevo
+    proxima: "2027-01 (presidencia del PE a mitad de legislatura); 2027-05 (Consejo Europeo); 2027-10 (BCE)"
+    familia: ue-instituciones
+
+  - id: presidencias-consejo
+    texto: "Chipre (enero-junio de 2026), Irlanda (julio-diciembre de 2026), Lituania y Grecia (2027)"
+    donde: [3B36.tex, repaso/3B36-repaso.tex]
+    valor: null
+    unidad: presidencias
+    periodo: "2026"
+    fuente: Consejo2026Presidencias
+    organismo: Consejo de la UE
+    serie: "Calendario de presidencias"
+    url: https://www.consilium.europa.eu/es/council-eu/presidency-council-eu/
+    periodicidad: semestral
+    proxima: "2027-01"
+    familia: ue-instituciones
+
+  - id: fiscalia-europea
+    texto: "25 Estados participantes (Hungría, julio de 2026)"
+    donde: [3B36.tex, repaso/3B36-repaso.tex]
+    valor: 25
+    unidad: Estados
+    periodo: "2026-07"
+    fuente: Eucrim2026Hungria
+    organismo: Comisión Europea
+    serie: "Decisiones de participación en la cooperación reforzada"
+    url: https://eucrim.eu/news/hungary-joins-eppo-eppo-regulation-now-eu-acquis/
+    periodicidad: irregular
+    proxima: sin fecha
+    familia: ue-instituciones

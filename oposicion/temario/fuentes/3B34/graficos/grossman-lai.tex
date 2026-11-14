@@ -1,0 +1,41 @@
+% Protección de la propiedad intelectual entre el Norte y el Sur, en el
+% espíritu de Grossman y Lai (2004), con el ejemplo lineal-cuadrático del tema:
+%   W_S = L_S n (v - (b+d) T_S),  W_N = L_N n (v - (b+d) T_N) + kappa b^2 Tbar^2 / 2,
+%   n = kappa b Tbar,  Tbar = L_N T_N + L_S T_S.
+% Valores: v = b = 1, d = 0,5, L_N = L_S = 1, kappa = 1.
+%   Mejor respuesta del Sur:   T_S = (1 - 1,5 T_N)/3   -> de (0, 1/3) a (2/3, 0)
+%   Mejor respuesta del Norte: T_N = (1 - 0,5 T_S)/2   -> de (0,5, 0) a (0,25, 1)
+%   Equilibrio de Nash E = (10/21, 2/21) = (0,476; 0,095); Tbar = 4/7 = 0,57
+%   Óptimo mundial: Tbar* = v (L_N + L_S)/(b + 2d) = 1 -> recta T_N + T_S = 1
+%   Armonización H = (0,5; 0,5): W_S 0,49 -> 0,25; W_N 0,33 -> 0,75
+%   El Norte carga con la subida, A = (19/21, 2/21) = (0,905; 0,095)
+% Capas: ejes -> mejor respuesta del Norte -> del Sur y equilibrio de Nash ->
+% recta de protección eficiente -> armonización (H) y alternativa (A).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=6.2cm,y=6.2cm]
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (1.13,0) node[below left=2pt and 0pt] {$T_N$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,1.1) node[left] {$T_S$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\foreach \x/\t in {0.5/{0{,}5},1/1} {\draw (\x,0) -- (\x,-0.012) node[below,font=\footnotesize] {$\t$};}}
+  \capa{1}{\foreach \y/\t in {0.5/{0{,}5},1/1} {\draw (0,\y) -- (-0.012,\y) node[left,font=\footnotesize] {$\t$};}}
+  % 2: mejor respuesta del Norte (casi vertical: protege mucho aunque el Sur no lo haga)
+  \capa{2}{\draw[curva1] (0.5,0) -- (0.25,1) node[etiqueta,above,text=tceemorado] {$R_N$};}
+  % 3: mejor respuesta del Sur (decreciente: se aprovecha de la protección del Norte) y Nash
+  \capa{3}{\draw[curva2] (0,0.3333) node[etiqueta,above right=0pt,text=tceeazul] {$R_S$} -- (0.6667,0);}
+  \capa{3}{\node[punto,label={[etiqueta]above right=0pt and 0pt:$E$}] (E) at (0.4762,0.0952) {};}
+  % 4: protección eficiente: cualquier punto con T_N + T_S = Tbar* = 1
+  \capa{4}{\draw[curva3] (0,1) -- (1,0);}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeverde,align=left,anchor=south west] at (0.62,0.42) {protección eficiente\\$L_NT_N+L_ST_S=\bar T^{\,*}$};}
+  % 5: dos formas de llegar: armonizar (H) o que el Norte cargue con la subida (A)
+  \capa{5}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]above right=0pt and 0pt:$H$}] (H) at (0.5,0.5) {};}
+  \capa{5}{\draw[flecha] (E) -- (0.49,0.48);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=east,align=right] at (0.47,0.36) {armonizar:\\el Sur pierde};}
+  \capa{5}{\node[punto,fill=tceedorado,label={[etiqueta,text=tceedorado]above right=0pt and 0pt:$A$}] (A) at (0.9048,0.0952) {};}
+  \capa{5}{\draw[->,thick,tceedorado] (0.50,0.0952) -- (0.885,0.0952);}
+  \capa{5}{\node[etiqueta,font=\scriptsize,text=tceedorado,anchor=south west,align=left] at (0.53,0.11) {el Norte protege más:\\el Norte pierde};}
+\end{tikzpicture}
+\end{document}

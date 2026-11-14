@@ -1,0 +1,93 @@
+% Acuerdos comerciales regionales (ACR) notificados al GATT/OMC: los que entran
+% en vigor cada año (barras, eje izquierdo) y los que están en vigor a final de
+% año (línea, eje derecho), 1958-2026 (2026: hasta el 14/11, dato parcial).
+% Fuente en la cabecera de ../datos/acr-anuales.csv (OMC, RTA-IS, exportación
+% de la lista completa, 14/11/2026; sin las adhesiones a acuerdos existentes).
+% Paleta del bloque de comercio (gama fría de tikz-tcee): barras en azul claro
+% (dicexterna), línea en azul marino (dicze).
+% Capas (CRITERIOS §7): barras -> ejes -> línea -> puntos -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{acrnuevos}{dicexterna}
+\colorlet{acrvigor}{dicze}
+\colorlet{acrparcial}{dicexterna!55}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/acr-anuales.csv}\acr
+\pgfplotsset{acrejes/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{acrejes/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\pgfplotsset{acrejes2/.style={}}
+\ifnum3>\tceepaso\relax
+  \pgfplotsset{acrejes2/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}}}
+\fi
+\begin{tikzpicture}[tcee]
+  % Eje izquierdo: ACR que entran en vigor cada año
+  \begin{axis}[
+      width=14.5cm, height=7.4cm,
+      xmin=1956.8, xmax=2027.2, ymin=0, ymax=60,
+      xtick={1960,1970,...,2020}, minor xtick={1958,...,2026},
+      ytick={0,10,...,60},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize, text=acrnuevos!80!black},
+      ylabel={\textcolor{acrnuevos!80!black}{Entran en vigor cada año}},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, ybar, bar width=0.62, bar shift=0pt,
+      acrejes, dicapas,
+    ]
+    % 1: barras (2026, parcial, con trama)
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, dicbarra=acrnuevos,
+        restrict x to domain=1958:2025]
+        table[x=anio, y=nuevos] {\acr};
+      \addplot[on layer=dicbarras, forget plot, dicbarratrama=acrparcial]
+        coordinates {(2026,7)};
+    }
+    % 2: ejes (acrejes)
+    % 5: rótulos de las barras
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=east, xshift=-2pt, align=center,
+        text=acrnuevos!80!black]{(1992.6,28)}{1993: 28\\{\scriptsize (OMC en ciernes,}\\[-2pt]{\scriptsize TLCAN, Europa}\\[-2pt]{\scriptsize del Este)}}
+      \dicrotulo[font=\footnotesize, align=center,
+        text=acrnuevos!80!black, anchor=east, xshift=-3pt]{(2020.4,51)}{2021: 46\\{\scriptsize (acuerdos de continuidad}\\[-2pt]{\scriptsize del Reino Unido)}}
+    }
+  \end{axis}
+  % Eje derecho: ACR en vigor a final de año
+  \begin{axis}[
+      width=14.5cm, height=7.4cm,
+      xmin=1956.8, xmax=2027.2, ymin=0, ymax=450,
+      ytick={0,50,...,450},
+      axis x line=none, axis y line*=right, tick align=outside,
+      yticklabel style={font=\footnotesize, text=acrvigor},
+      ylabel={\textcolor{acrvigor}{En vigor a final de año}},
+      ylabel style={rotate=180},
+      clip=false, acrejes2, dicapas,
+    ]
+    % 3: línea de los acuerdos en vigor
+    \capa{3}{
+      \addplot[diclinea=acrvigor, mark=none] table[x=anio, y=vigor] {\acr};
+    }
+    % 4: puntos de los hitos
+    \capa{4}{
+      \addplot[on layer=dicpuntos, dicpuntos=acrvigor] coordinates
+        {(1990,44) (1995,99) (2008,203) (2026,390)};
+    }
+    % 5: rótulos de la línea
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=south east, text=acrvigor]{(1990,48)}{1990: 44}
+      \dicrotulo[font=\footnotesize, anchor=south east, text=acrvigor]{(1995,103)}{1995: 99}
+      \dicrotulo[font=\footnotesize, anchor=south, text=acrvigor, align=center]{(2004.6,230)}{2004: 178\\{\scriptsize (ampliación de la UE:}\\[-2pt]{\scriptsize acuerdos inactivos)}}
+      \dicrotulo[font=\footnotesize, anchor=south east, text=acrvigor]{(2008,208)}{2008: 203}
+      \dicrotulo[font=\footnotesize, anchor=south, text=acrvigor, xshift=-6pt, yshift=3pt]{(2026,394)}{2026*: 390}
+      \dicrotulo[font=\scriptsize, anchor=north west, inner sep=0pt, text=tceegris]{(1958,440)}{* 2026: hasta el 14 de noviembre (dato parcial)}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

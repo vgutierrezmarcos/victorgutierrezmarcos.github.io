@@ -1,0 +1,62 @@
+% Modos de suministro de servicios con costes fijos regulatorios: el modelo de
+% Helpman, Melitz y Yeaple (2004) aplicado a los servicios (modo 1, suministro
+% transfronterizo, frente a modo 3, presencia comercial). Mismas letras y
+% estilos que melitz-umbrales (3.B.6) y hmy (3.B.18). Rectas en
+% u = phi^(sigma-1) (cualitativas, países simétricos; wF^d = 1,
+% wF^M1 = 1,4, wF^M3 = 2,2):
+%   B^d  = 0,4 u - 1    -> (phi*)^(sigma-1)    = 2,5
+%   B^M1 = 0,3 u - 1,4  -> (phi*_M1)^(sigma-1) = 4,667 (pendiente tau^(1-sigma)
+%                          = 0,75 la del modo 3)
+%   B^M3 = 0,4 u - 2,2  -> corta a B^M1 en u = 8 (B = 1): (phi*_M3)^(sigma-1) = 8
+% Liberalizar el modo 3 (compromiso de acceso a los mercados): R^M3 baja y
+% wF^M3' = 1,9: B^M3' = 0,4 u - 1,9 corta a B^M1 en u = 5 (B = 0,1).
+% Condición de ordenación: F^M3 > tau^(sigma-1) F^M1 > F^d
+%   (2,2 > 1,4/0,75 = 1,867 > 1; tras la rebaja, 1,9 > 1,867).
+% Elaboración propia a partir de Helpman, Melitz y Yeaple (2004) y Kox y
+% Nordås (2007).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=1.1cm,
+    llave/.style={decorate,decoration={brace,mirror,amplitude=5pt},thick,tceegris},
+    grupo/.style={etiqueta,font=\footnotesize,align=center,anchor=north}]
+  % 1: ejes; el beneficio B toma valores negativos
+  \capa{1}{\draw[eje] (0,0) -- (11.2,0) node[below left=2pt and 0pt] {$\varphi^{\sigma-1}$};}
+  \capa{1}{\draw[eje] (0,-2.45) -- (0,3.9) node[left] {$B$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: beneficio en el mercado interior, desde -wF^d, y su umbral
+  \capa{2}{\draw[curva1] (0,-1) node[left,text=black] {$-wF^d$} -- (10.5,3.2)
+    node[etiqueta,right] {$B^d$};}
+  \capa{2}{\node[punto] at (2.5,0) {};}
+  \capa{2}{\node[etiqueta,above left] at (2.5,0) {$(\varphi^*)^{\sigma-1}$};}
+  % 3: modo 1, prestar desde casa: desde -wF^M1 y más plana (coste iceberg)
+  \capa{3}{\draw[curva3] (0,-1.4) node[left,text=black] {$-wF^{\mathrm{M1}}$} -- (10.5,1.75)
+    node[etiqueta,below right] {$B^{\mathrm{M1}}$};}
+  \capa{3}{\node[punto] at (4.667,0) {};}
+  \capa{3}{\node[etiqueta,above,inner sep=1.5pt] at (4.75,0.04) {$(\varphi^*_{\mathrm{M1}})^{\sigma-1}$};}
+  % 4: modo 3, establecerse: más abajo, pero con la pendiente de B^d
+  \capa{4}{\draw[curva4] (0,-2.2) node[left,text=black] {$-wF^{\mathrm{M3}}$} -- (10.5,2)
+    node[etiqueta,above right] {$B^{\mathrm{M3}}$};}
+  \capa{4}{\node[punto] at (8,1) {};}
+  \capa{4}{\draw[guia] (8,1) -- (8,0);}
+  \capa{4}{\node[punto] at (8,0) {};}
+  \capa{4}{\node[etiqueta,below] at (8,0) {$(\varphi^*_{\mathrm{M3}})^{\sigma-1}$};}
+  % 5: los 4 grupos de empresas
+  \capa{5}{\draw[llave] (0.03,-2.55) -- (2.47,-2.55)
+    node[midway,below=5pt,grupo] {cierran};}
+  \capa{5}{\draw[llave] (2.53,-2.55) -- (4.64,-2.55)
+    node[midway,below=5pt,grupo] {solo mercado\\interior};}
+  \capa{5}{\draw[llave] (4.7,-2.55) -- (7.97,-2.55)
+    node[midway,below=5pt,grupo] {modo 1};}
+  \capa{5}{\draw[llave] (8.03,-2.55) -- (10.5,-2.55)
+    node[midway,below=5pt,grupo] {modo 3};}
+  % 6: liberalizar el modo 3 (baja R^M3): la recta sube y el umbral baja a u = 5
+  \capa{6}{\draw[curvanueva,desplazada] (0,-1.9) -- (10.5,2.3)
+    node[etiqueta,above,text=tceerojo] {$B^{\mathrm{M3}\prime}$};}
+  \capa{6}{\node[punto,fill=tceerojo] at (5,0.1) {};}
+  \capa{6}{\draw[guia,tceerojo] (5,0.1) -- (5,-0.85);}
+  \capa{6}{\draw[flecha] (7.8,-0.8) -- (5.2,-0.8);}
+  \capa{6}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=center,anchor=north] at (6.5,-0.88) {baja $R^{\mathrm{M3}}$:\\más empresas en modo 3};}
+\end{tikzpicture}
+\end{document}

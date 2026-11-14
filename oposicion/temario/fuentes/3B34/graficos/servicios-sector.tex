@@ -1,0 +1,71 @@
+% Exportaciones mundiales de servicios comerciales por sector, 2005-2025 (miles
+% de millones de dólares) y servicios prestados digitalmente (línea; se
+% solapan con los sectores, no se suman). Fuente en la cabecera de
+% ../datos/servicios-sector.csv (OMC, WTO-UNCTAD-ITC). Sustituye a la imagen 4
+% del tema antiguo (World Statistical Review 2022).
+% Capas: barras apiladas (transporte, viajes, relacionados con bienes, otros
+% servicios comerciales) -> ejes -> línea de servicios prestados digitalmente
+% -> puntos -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{sertransporte}{tceeazul!70}
+\colorlet{serviajes}{tceedorado!75}
+\colorlet{serbienes}{tceegris!45}
+\colorlet{serotros}{tceemorado!70}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/servicios-sector.csv}\servicios
+\pgfplotsset{ejesser/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesser/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14.5cm, height=7.6cm,
+      xmin=2004.3, xmax=2025.7, ymin=0, ymax=10500,
+      xtick={2005,2010,...,2025}, minor xtick={2005,...,2025},
+      ytick={0,2000,...,10000}, scaled y ticks=false,
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={/pgf/number format/1000 sep={.}, font=\footnotesize},
+      ylabel={Miles de millones de dólares},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, bar width=0.66,
+      legend style={at={(0.02,0.98)}, anchor=north west, draw=none, fill=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left, reverse legend,
+      ejesser, dicapas,
+    ]
+    % 1: barras apiladas por sector
+    \capa{1}{
+      \addplot[on layer=dicbarras, ybar stacked, dicbarra=sertransporte, area legend] table[x=anio, y=transporte] {\servicios};
+      \addlegendentry{Transporte}
+      \addplot[on layer=dicbarras, ybar stacked, dicbarra=serviajes, area legend] table[x=anio, y=viajes] {\servicios};
+      \addlegendentry{Viajes}
+      \addplot[on layer=dicbarras, ybar stacked, dicbarra=serbienes, area legend] table[x=anio, y=servicios_bienes] {\servicios};
+      \addlegendentry{Relacionados con bienes}
+      \addplot[on layer=dicbarras, ybar stacked, dicbarra=serotros, area legend] table[x=anio, y=otros_servicios_comerciales] {\servicios};
+      \addlegendentry{Otros servicios comerciales}
+    }
+    % 2: ejes (ver ejesser)
+    % 3: servicios prestados digitalmente
+    \capa{3}{
+      \addplot[dicsuelto, diclineahalo=tceerojo] table[x=anio, y=prestados_digitalmente] {\servicios};
+      \addlegendimage{very thick, tceerojo}
+      \addlegendentry{Prestados digitalmente (incluidos en los anteriores)}
+    }
+    % 4: puntos de la línea
+    \capa{4}{
+      \addplot[dicsuelto, only marks, mark=*, mark size=1.3pt, tceerojo] table[x=anio, y=prestados_digitalmente] {\servicios};
+    }
+    % 5: rótulos del último dato
+    \capa{5}{
+      \dicrotulo[font=\scriptsize,anchor=south]{(2025,9650)}{9.594}
+      \dicrotulo[font=\scriptsize,text=tceerojo,anchor=west]{(2025.45,5274)}{5.274}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

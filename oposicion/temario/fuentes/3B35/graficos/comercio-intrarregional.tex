@@ -1,0 +1,65 @@
+% Comercio intrarregional de los principales bloques: exportaciones de bienes
+% de los miembros a los demás miembros, en % de sus exportaciones totales, en
+% 2000 y en 2025 (composición actual de cada bloque). Fuente en la cabecera de
+% ../datos/comercio-intrarregional.csv (FMI, IMTS; cálculo propio).
+% La UE-27 va como referencia (otro color de etiqueta). Paleta del bloque de
+% comercio: 2000 en azul claro (dicexterna), 2025 en azul marino (dicze).
+% Capas: barras 2000 -> barras 2025 -> ejes -> rótulos -> leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{intra2000}{dicexterna}
+\colorlet{intra2025}{dicze}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/comercio-intrarregional.csv}\intra
+\pgfplotsset{intraejes/.style={}}
+\ifnum3>\tceepaso\relax
+  \pgfplotsset{intraejes/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=12.5cm, height=12.5cm,
+      xbar, bar width=5.2pt,
+      xmin=0, xmax=72, xtick={0,10,...,70},
+      ytick=data, yticklabels from table={\intra}{bloque},
+      y dir=reverse, enlarge y limits=0.04,
+      xticklabel style={font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      xlabel={Exportaciones dentro del bloque (\% de las exportaciones totales del bloque)},
+      xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      legend style={at={(0.97,0.03)}, anchor=south east, draw=none,
+        font=\footnotesize},
+      legend cell align=left, area legend,
+      clip=false, intraejes, dicapas,
+    ]
+    % 1: barras de 2000
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=intra2000, bar shift=3pt]
+        table[y expr=\coordindex, x=y2000] {\intra};
+    }
+    % 2: barras de 2025
+    \capa{2}{
+      \addplot[on layer=dicbarras, dicbarra=intra2025, bar shift=-3pt]
+        table[y expr=\coordindex, x=y2025] {\intra};
+    }
+    % 3: ejes (intraejes)
+    % 4: rótulos: valor de 2025 al final de cada barra
+    \capa{4}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none, bar shift=-3pt,
+        nodes near coords={\pgfmathprintnumber[fixed,precision=1,fixed zerofill,use comma]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, anchor=west, text=intra2025, xshift=1pt},
+        point meta=\thisrow{y2025}]
+        table[y expr=\coordindex, x expr={max(\thisrow{y2000},\thisrow{y2025})}] {\intra};
+    }
+    % 5: leyenda (sin caja)
+    \capa{5}{
+      \legend{2000, 2025}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

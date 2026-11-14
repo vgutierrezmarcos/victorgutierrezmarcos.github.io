@@ -1,0 +1,53 @@
+% Los 4 modos de suministro de servicios del AGCS (artículo I.2): quién cruza
+% la frontera en cada uno, con un ejemplo y su peso en el comercio mundial de
+% servicios (OMC, TISMOS; ver datos/servicios-modos.csv). Sustituye a la
+% imagen 6 del tema antiguo (diagramas de un blog).
+% Capas: la frontera y los 2 países -> modo 1 -> modo 2 -> modo 3 -> modo 4.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\pesoMuno}{34,7}
+\newcommand{\pesoMdos}{8,0}
+\newcommand{\pesoMtres}{56,1}
+\newcommand{\pesoMcuatro}{1,2}
+\begin{tikzpicture}[tcee,
+    pais/.style={draw=tceegris,thick,rounded corners=3pt,fill=tceegris!6,minimum width=3.3cm,minimum height=1.05cm,font=\footnotesize,align=center},
+    modo/.style={font=\footnotesize\bfseries,anchor=west,text=tceemorado},
+    ejemplo/.style={font=\footnotesize,anchor=west,align=left,text width=5.1cm},
+    peso/.style={font=\footnotesize\bfseries,anchor=west,text=tceedorado!80!black},
+    cruza/.style={->,very thick,tceerojo}]
+  % 1: los 2 países y la frontera
+  \capa{1}{\node[font=\footnotesize\bfseries] at (1.8,0.9) {País del proveedor};}
+  \capa{1}{\node[font=\footnotesize\bfseries] at (6.6,0.9) {País del consumidor};}
+  \capa{1}{\draw[thick,dashed,tceegris] (4.2,0.6) -- (4.2,-7.6) node[below,font=\footnotesize,text=tceegris] {frontera};}
+  % 2: modo 1, suministro transfronterizo: cruza el servicio
+  \capa{2}{\node[pais] at (1.8,0) {proveedor};}
+  \capa{2}{\node[pais] at (6.6,0) {consumidor};}
+  \capa{2}{\draw[cruza] (3.5,0) -- node[above,font=\scriptsize,text=tceerojo] {el servicio} (4.9,0);}
+  \capa{2}{\node[modo] at (8.6,0.25) {Modo 1: suministro transfronterizo};}
+  \capa{2}{\node[ejemplo] at (8.6,-0.25) {un informe jurídico enviado por correo electrónico};}
+  \capa{2}{\node[peso] at (14.0,0) {\pesoMuno~\%};}
+  % 3: modo 2, consumo en el extranjero: cruza el consumidor
+  \capa{3}{\node[pais] at (1.8,-2) {proveedor};}
+  \capa{3}{\node[pais,draw=tceegris!50,text=tceegris] at (6.6,-2) {(consumidor)};}
+  \capa{3}{\draw[cruza] (4.9,-2) -- node[above,font=\scriptsize,text=tceerojo] {el consumidor} (3.5,-2);}
+  \capa{3}{\node[modo] at (8.6,-1.75) {Modo 2: consumo en el extranjero};}
+  \capa{3}{\node[ejemplo] at (8.6,-2.25) {el turista, el estudiante que se matricula fuera};}
+  \capa{3}{\node[peso] at (14.0,-2) {\pesoMdos~\%};}
+  % 4: modo 3, presencia comercial: se establece la empresa
+  \capa{4}{\node[pais] at (1.8,-4) {empresa matriz};}
+  \capa{4}{\node[pais,fill=tceemorado!10] at (6.6,-4) {filial o sucursal\\y consumidor};}
+  \capa{4}{\draw[cruza] (3.5,-4) -- node[above,font=\scriptsize,text=tceerojo] {la empresa} (4.9,-4);}
+  \capa{4}{\node[modo] at (8.6,-3.75) {Modo 3: presencia comercial};}
+  \capa{4}{\node[ejemplo] at (8.6,-4.25) {un banco o una cadena hotelera con filial en el otro país};}
+  \capa{4}{\node[peso] at (14.0,-4) {\pesoMtres~\%};}
+  % 5: modo 4, presencia de personas físicas: cruza temporalmente una persona
+  \capa{5}{\node[pais] at (1.8,-6) {proveedor};}
+  \capa{5}{\node[pais,fill=tceemorado!10] at (6.6,-6) {profesional desplazado\\y consumidor};}
+  \capa{5}{\draw[cruza] (3.5,-6) -- node[above,font=\scriptsize,text=tceerojo] {una persona} (4.9,-6);}
+  \capa{5}{\node[modo] at (8.6,-5.75) {Modo 4: presencia de personas físicas};}
+  \capa{5}{\node[ejemplo] at (8.6,-6.25) {un consultor o un ingeniero que instala una máquina, por un tiempo};}
+  \capa{5}{\node[peso] at (14.0,-6) {\pesoMcuatro~\%};}
+\end{tikzpicture}
+\end{document}

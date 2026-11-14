@@ -1,0 +1,38 @@
+% Teorema de la descentralización (Oates, 1972) con 2 Estados: beneficio
+% marginal del bien público BMg_i(G) = a_i - G (a_1 = 4, a_2 = 8) y coste
+% marginal constante c = 2. Óptimos descentralizados G_1* = 2 y G_2* = 6;
+% provisión uniforme centralizada G^u = 4 (media). Pérdidas de bienestar: los
+% 2 triángulos, (Δ/2)^2/2 cada uno, con Δ = a_2 - a_1 = 4. Escala: 1 unidad =
+% 0,8 cm. Capas: ejes → coste marginal → Estado 1 → Estado 2 → provisión
+% uniforme → pérdidas → externalidad (BMg social del Estado 2 con e).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.8cm]
+  % 1: ejes
+  \capa{1}{\ejes{$G$}{euros}{9.4}{9.4}}
+  % 2: coste marginal
+  \capa{2}{\draw[curva4] (0,2) -- (9,2) node[right,etiqueta] {$c$};}
+  % 3: Estado 1 (demanda baja)
+  \capa{3}{\draw[curva1] (0,4) -- (4,0); \node[etiqueta,tceemorado,anchor=south west] at (0.25,3.75) {$\mathit{BMg}_1$};
+    \node[punto] at (2,2) {};
+    \proyeccion{(2,2)}{$G_1^{*}$}{}}
+  % 4: Estado 2 (demanda alta)
+  \capa{4}{\draw[curva2] (0,8) -- (8,0); \node[etiqueta,tceeazul,anchor=south west] at (0.25,7.75) {$\mathit{BMg}_2$};
+    \node[punto] at (6,2) {};
+    \proyeccion{(6,2)}{$G_2^{*}$}{}}
+  % 5: provisión uniforme centralizada
+  \capa{5}{\draw[thick,black] (4,0) -- (4,8.6);
+    \node[below,etiqueta] at (4,0) {$G^{u}$};}
+  % 6: pérdidas de bienestar
+  \capa{6}{\fill[tceemorado,fill opacity=0.30] (2,2) -- (4,2) -- (4,0) -- cycle;
+    \fill[tceeazul,fill opacity=0.30] (4,4) -- (4,2) -- (6,2) -- cycle;
+    \node[etiqueta,font=\footnotesize,align=center,tceemorado] at (2.6,0.75) {exceso};
+    \node[etiqueta,font=\footnotesize,align=center,tceeazul] at (4.65,2.6) {defecto};}
+  % 7: externalidad: el bien del Estado 2 beneficia también al 1
+  \capa{7}{\draw[desplazada,tceerojo] (0,9) -- (9,0); \node[etiqueta,tceerojo,anchor=south west] at (5.7,3.5) {$\mathit{BMg}_2+e$};
+    \node[punto,fill=tceerojo] at (7,2) {};
+    \draw[guia] (7,2) -- (7,0) node[below,etiqueta] {$G_2^{s}$};}
+\end{tikzpicture}
+\end{document}

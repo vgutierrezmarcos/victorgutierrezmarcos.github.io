@@ -1,0 +1,212 @@
+tema: 3B35
+fecha_inventario: 2026-11-14
+datos:
+  - id: acr-en-vigor
+    texto: "hay 390 acuerdos comerciales regionales (ACR [...]) notificados a la Organización Mundial del Comercio (OMC) y en vigor, y al menos otros 84 que no se han notificado"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: 390
+    unidad: acuerdos
+    periodo: "2026-11-14"
+    fuente: OMC2026RTAIS; OMC2026ComiteACR
+    organismo: OMC
+    serie: "RTA-IS, lista completa (ExportAllRTAList.aspx): estado In Force o In force for at least one Party, notificados, sin adhesiones (416 con ellas); sin notificar: WT/REG/W/200 (octubre de 2026)"
+    url: https://rtais.wto.org/UI/ExportAllRTAList.aspx
+    periodicidad: continua (cada notificación); el Comité de ACR se reúne 3 veces al año
+    proxima: "2027-02"
+    familia: comercio-acr
+
+  - id: acr-anuales
+    texto: "gráfico acr-anuales: ACR nuevos cada año y en vigor a final de año, 1958-2026; de 44 en vigor en 1990 a 99 en 1995 y 390 en noviembre de 2026"
+    donde: [graficos/acr-anuales.tex, datos/acr-anuales.csv, 3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: acuerdos
+    periodo: "1958-2026"
+    fuente: OMC2026RTAIS
+    organismo: OMC
+    serie: "RTA-IS, lista completa; cálculo propio (fecha de entrada en vigor más temprana entre bienes y servicios; inactivos por la fecha de inactividad)"
+    url: https://rtais.wto.org/UI/ExportAllRTAList.aspx
+    periodicidad: anual (rehacer el CSV con la exportación nueva)
+    proxima: "2027-01"
+    familia: comercio-acr
+
+  - id: acr-por-tipo
+    texto: "de los 390 ACR notificados y en vigor, 343 son zonas de libre comercio, 26 acuerdos de alcance parcial, 16 uniones aduaneras y 5 solo de servicios"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: [343, 26, 16, 5]
+    unidad: acuerdos
+    periodo: "2026-11-14"
+    fuente: OMC2026RTAIS
+    organismo: OMC
+    serie: "RTA-IS, campo Type (FTA, PSA, CU, EIA)"
+    url: https://rtais.wto.org/UI/ExportAllRTAList.aspx
+    periodicidad: continua
+    proxima: "2027-01"
+    familia: comercio-acr
+
+  - id: comercio-intrarregional
+    texto: "gráfico comercio-intrarregional; en el texto: UE 61 %, T-MEC 49 %, RCEP 38 %, MCCA 27 %, ASEAN 22 %, ZLECAf 17 %, CCG 13 %, Mercosur 12 % (21 % en 2000), CARICOM 6 % (16 % en 2000), SAFTA 6 %, CAN 5 %, Alianza del Pacífico 2 %, AELC 0,4 %, UEE 15 % (6 % en 2010)"
+    donde: [graficos/comercio-intrarregional.tex, datos/comercio-intrarregional.csv, 3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: "% de las exportaciones de bienes del bloque"
+    periodo: "2000, 2010, 2024 y 2025"
+    fuente: FMI2026IMTS
+    organismo: FMI
+    serie: "IMTS, XG_FOB_USD, anual; cálculo propio con la composición actual de cada bloque (script en _trabajo/intra.py; PIB y población, _trabajo/pib.py; ACR, _trabajo/rta3.py)"
+    url: https://data.imf.org/en/datasets/IMF.STA:IMTS
+    periodicidad: anual (el FMI revisa los datos del último año)
+    proxima: "2027-06"
+    familia: comercio-bloques
+
+  - id: bloques-pib-poblacion
+    texto: "gráfico bloques-pib-poblacion; en el texto: T-MEC casi el 30 % del PIB mundial (29,5); RCEP 27 % del PIB y 28 % de la población; CPTPP 14 %; ZLECAf 2,7 % del PIB y 18,8 % de la población; T-MEC + UE + RCEP 75 %"
+    donde: [graficos/bloques-pib-poblacion.tex, datos/bloques-pib-poblacion.csv, 3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: "% del total mundial"
+    periodo: "2025"
+    fuente: BM2026WDI
+    organismo: Banco Mundial
+    serie: "WDI, NY.GDP.MKTP.CD y SP.POP.TOTL (actualización del 11/11/2026); suma de los miembros actuales"
+    url: https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
+    periodicidad: anual
+    proxima: "2027-07"
+    familia: comercio-bloques
+
+  - id: nmf-cuota-comercio
+    texto: "la proporción del comercio mundial que se hace en condiciones NMF ha bajado del 83 % en 2022 al 72 % a principios de 2026; en 2022 solo el 17 % del comercio mundial aprovechaba una preferencia"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: 72
+    unidad: "% del comercio mundial de mercancías"
+    periodo: "2026-02"
+    fuente: OMC2026Perspectivas; OMC2025PerfilesArancelarios
+    organismo: OMC
+    serie: "Global Trade Outlook (marzo de 2026); World Tariff Profiles 2025 (tema especial). La misma cifra que el 3.B.33"
+    url: https://www.wto.org/english/res_e/booksp_e/world_tariff_profiles25_e.pdf
+    periodicidad: irregular
+    proxima: "2027-04"
+    familia: omc-comercio
+
+  - id: tmec-revision
+    texto: "en la revisión del 1 de julio de 2026, Estados Unidos no confirmó la prórroga: el T-MEC sigue en vigor, pero pasa a revisiones anuales [...] expira en 2036"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: estado
+    periodo: "2026-07-01"
+    fuente: IISD2026TMEC
+    organismo: USTR (vía IISD y Reuters)
+    serie: "revisión conjunta del art. 34.7; rondas bilaterales con México (julio y septiembre de 2026)"
+    url: https://www.iisd.org/itn/2026/09/09/united-states-declines-to-renew-usmca-at-first-joint-review-triggering-annual-reviews/
+    periodicidad: anual (revisiones hasta 2036)
+    proxima: "2027-07"
+    familia: bloques-america
+
+  - id: ue-mercosur
+    texto: "firmado el 17 de enero de 2026 [...] acuerdo comercial interino [...] provisional desde el 1 de mayo de 2026 [...] el Acuerdo de Asociación [...] espera al dictamen del Tribunal de Justicia"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: estado
+    periodo: "2026-11"
+    fuente: Consejo2026Mercosur; CE2026MercosurProvisional; PE2026Mercosur
+    organismo: Consejo de la UE; Comisión Europea; Parlamento Europeo
+    serie: "procedimiento 2025/0184(NLE); dictamen del TJUE pedido el 21/1/2026 (16-18 meses)"
+    url: https://www.europarl.europa.eu/legislative-train/theme-a-global-europe-leveraging-our-power-and-partnerships/file-eu-mercosur-association-agreement
+    periodicidad: cuando haya dictamen del TJUE o votación del PE
+    proxima: "2027-06"
+    familia: bloques-america
+
+  - id: aelc-mercosur-india
+    texto: "con la India, en vigor desde el 1 de octubre de 2025 [...]; y con el Mercosur, firmado en septiembre de 2025 y en vigor desde el 1 de octubre de 2026 para Islandia y Brasil"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: estado
+    periodo: "2026-10"
+    fuente: AELC2025India; AELC2026Mercosur
+    organismo: AELC
+    serie: "pendiente la entrada en vigor para Argentina, Paraguay, Uruguay, Noruega, Liechtenstein y Suiza"
+    url: https://www.efta.int/trade-relations/free-trade-network/mercosur
+    periodicidad: con cada ratificación
+    proxima: "2027-01"
+    familia: bloques-europa
+
+  - id: cptpp-adhesiones
+    texto: "la adhesión de Costa Rica se cerró en lo sustancial en mayo de 2026, y negocia la de Uruguay; han pedido entrar China y Taiwán (2021), Ecuador, Indonesia, Filipinas y los Emiratos"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: 12
+    unidad: miembros
+    periodo: "2026-06-26"
+    fuente: DFAT2026CPTPP
+    organismo: Comisión del CPTPP
+    serie: "declaración ministerial conjunta de 26/6/2026; próxima Comisión a finales de 2026"
+    url: https://www.dfat.gov.au/trade/agreements/in-force/cptpp/commission-meetings/
+    periodicidad: cada reunión de la Comisión
+    proxima: "2026-12"
+    familia: bloques-asia
+
+  - id: rcep-adhesiones
+    texto: "en septiembre de 2026 sus ministros crearon un grupo de trabajo para la adhesión de Hong Kong, Sri Lanka, Chile y Bangladés; Uruguay también ha mostrado interés, y en 2027 toca su primera revisión general"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: 15
+    unidad: miembros
+    periodo: "2026-09-21"
+    fuente: FE2026RCEP
+    organismo: Reunión de ministros del RCEP
+    serie: "5.ª reunión ministerial (Manila, 21/9/2026)"
+    url: https://thefinancialexpress.com.bd/trade/rcep-ministers-approve-bangladeshs-accession-advancement
+    periodicidad: anual (reunión ministerial de septiembre)
+    proxima: "2027-09"
+    familia: bloques-asia
+
+  - id: asean-miembros
+    texto: "la ASEAN tiene 11 miembros [...] desde el 26 de octubre de 2025, Timor Oriental"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: 11
+    unidad: miembros
+    periodo: "2025-10-26"
+    fuente: ASEAN2025TimorOriental
+    organismo: ASEAN
+    serie: "47.ª cumbre (Kuala Lumpur); ATIGA mejorado y ACFTA 3.0 firmados en octubre de 2025 (MTI2025ATIGA); DEFA pendiente de firma"
+    url: https://theaseanmagazine.asean.org/?p=7588
+    periodicidad: con cada cumbre
+    proxima: "2027-05"
+    familia: bloques-asia
+
+  - id: zlecaf-estado
+    texto: "la han firmado 54 de los 55 países de la Unión (todos menos Eritrea) y la han ratificado 50 [...]; en 2026, 26 países comercian ya con sus preferencias"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: 50
+    unidad: ratificaciones
+    periodo: "2026-07"
+    fuente: AfCFTA2026Consejo
+    organismo: Secretaría de la ZLECAf
+    serie: "18.º Consejo de Ministros (Abuja, julio de 2026); tralac (50 a finales de septiembre de 2026)"
+    url: https://au-afcfta.org/
+    periodicidad: con cada ratificación
+    proxima: "2027-02"
+    familia: bloques-africa
+
+  - id: reino-unido-acuerdos
+    texto: "CPTPP, en vigor desde el 15 de diciembre de 2024 [...] India, en vigor desde el 15 de julio de 2026 [...] Consejo de Cooperación del Golfo, firmado en mayo de 2026"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: estado
+    periodo: "2026-07"
+    fuente: ODI2026ReinoUnidoIndia; PwC2026ReinoUnidoCCG
+    organismo: Gobierno del Reino Unido
+    serie: "el de la CCG, pendiente de ratificación"
+    url: https://www.gov.uk/government/collections/the-uks-trade-agreements
+    periodicidad: con cada acuerdo
+    proxima: "2027-01"
+    familia: bloques-europa
+
+  - id: mexico-aranceles
+    texto: "desde enero de 2026 aplica aranceles de hasta el 50 % a unas 1.400 partidas de países con los que no tiene acuerdo"
+    donde: [3B35.tex]
+    valor: 50
+    unidad: "% (arancel máximo)"
+    periodo: "2026-01-01"
+    fuente: Expansion2026Aranceles
+    organismo: Gobierno de México (DOF de 29/12/2025)
+    serie: "1.463 fracciones arancelarias de la TIGIE"
+    url: https://expansion.mx/economia/2026/01/01/adios-gangas-chinas-mexico-activa-nuevos-aranceles
+    periodicidad: cuando cambie la TIGIE
+    proxima: sin fecha
+    familia: bloques-america

@@ -1,0 +1,71 @@
+% El procedimiento legislativo ordinario (art. 294 TFUE): propuesta de la
+% Comisión, primera lectura del Parlamento Europeo y del Consejo, segunda
+% lectura de ambos, Comité de Conciliación y tercera lectura, con sus plazos
+% (y sus prórrogas) y las mayorías; a la derecha, las salidas en que el acto
+% queda adoptado y, a la izquierda, aquellas en que no se adopta. Al margen,
+% los trílogos. Fuente: art. 294 TFUE.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+% cabecera de una etapa: nombre a la izquierda, plazo a la derecha
+\newcommand{\etapa}[2]{{\bfseries\color{tceemorado}#1}\hfill{\bfseries\color{tceedorado!70!black}#2}\par\vspace{1pt}}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    paso/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,
+      align=left,text width=6.7cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    si/.style={draw=tceeverde,thick,fill=tceeverde!10,rounded corners=2pt,
+      align=left,text width=3.45cm,inner sep=4pt,font=\footnotesize,anchor=west},
+    no/.style={draw=tceerojo,thick,fill=tceerojo!7,rounded corners=2pt,
+      align=left,text width=3.15cm,inner sep=4pt,font=\footnotesize,anchor=east},
+    nota/.style={draw=tceegris,thick,dashed,fill=tceegris!6,rounded corners=2pt,
+      align=left,text width=3.15cm,inner sep=4pt,font=\footnotesize,anchor=north east},
+    sigue/.style={->,thick,tceegris},
+    salesi/.style={->,thick,tceeverde},
+    saleno/.style={->,thick,tceerojo},
+    cond/.style={font=\footnotesize,align=left,anchor=west,text width=3.3cm,text=tceegris!70!black}]
+  % 1: propuesta de la Comisión
+  \capa{1}{\node[paso] (p1) at (8,0) {\etapa{Propuesta de la Comisión}{}
+      al Parlamento Europeo y al Consejo; los Parlamentos nacionales controlan la subsidiariedad (8 semanas)};}
+  % 2: primera lectura del Parlamento
+  \capa{2}{\node[paso] (p2) at ($(p1.south)+(0,-0.55)$) {\etapa{1.ª lectura del Parlamento Europeo}{sin plazo}
+      aprueba su posición, con o sin enmiendas};}
+  \capa{2}{\draw[sigue] (p1) -- (p2);}
+  % 3: primera lectura del Consejo
+  \capa{3}{\node[paso] (p3) at ($(p2.south)+(0,-0.55)$) {\etapa{1.ª lectura del Consejo}{sin plazo}
+      por mayoría cualificada};}
+  \capa{3}{\draw[sigue] (p2) -- (p3);}
+  \capa{3}{\node[si] (s3) at ($(p3.east)+(0.6,0)$) {\textbf{Adoptado}\\aprueba la posición del PE};}
+  \capa{3}{\draw[salesi] (p3) -- (s3);}
+  % 4: segunda lectura del Parlamento
+  \capa{4}{\node[paso] (p4) at ($(p3.south)+(0,-0.85)$) {\etapa{2.ª lectura del Parlamento Europeo}{3 meses (+1)}
+      sobre la posición del Consejo en primera lectura};}
+  \capa{4}{\draw[sigue] (p3) -- node[cond] {si no, adopta su posición en 1.ª lectura} (p4);}
+  \capa{4}{\node[si] (s4) at ($(p4.east)+(0.6,0)$) {\textbf{Adoptado}\\la aprueba o no se pronuncia};}
+  \capa{4}{\draw[salesi] (p4) -- (s4);}
+  \capa{4}{\node[no] (n4) at ($(p4.west)+(-0.6,0)$) {\textbf{No adoptado}\\la rechaza por mayoría de sus miembros};}
+  \capa{4}{\draw[saleno] (p4) -- (n4);}
+  % 5: segunda lectura del Consejo
+  \capa{5}{\node[paso] (p5) at ($(p4.south)+(0,-0.85)$) {\etapa{2.ª lectura del Consejo}{3 meses (+1)}
+      sobre las enmiendas del Parlamento};}
+  \capa{5}{\draw[sigue] (p4) -- node[cond] {la enmienda por mayoría de sus miembros} (p5);}
+  \capa{5}{\node[si,anchor=north west] (s5) at ($(p5.north east)+(0.6,0)$) {\textbf{Adoptado}\\aprueba todas las enmiendas (unanimidad para las que la Comisión rechace)};}
+  \capa{5}{\draw[salesi] (p5.east) -- (p5.east -| s5.west);}
+  % 6: Comité de Conciliación
+  \capa{6}{\node[paso] (p6) at ($(p5.south)+(0,-0.85)$) {\etapa{Comité de Conciliación}{6 semanas (+2)}
+      27 miembros del Consejo y 27 diputados buscan un texto conjunto};}
+  \capa{6}{\draw[sigue] (p5) -- node[cond] {si no, se convoca el Comité} (p6);}
+  \capa{6}{\node[no] (n6) at ($(p6.west)+(-0.6,0)$) {\textbf{No adoptado}\\sin texto conjunto};}
+  \capa{6}{\draw[saleno] (p6) -- (n6);}
+  % 7: tercera lectura
+  \capa{7}{\node[paso] (p7) at ($(p6.south)+(0,-0.85)$) {\etapa{3.ª lectura}{6 semanas (+2)}
+      el Parlamento por mayoría de los votos emitidos y el Consejo por mayoría cualificada};}
+  \capa{7}{\draw[sigue] (p6) -- node[cond] {texto conjunto} (p7);}
+  \capa{7}{\node[si] (s7) at ($(p7.east)+(0.6,0)$) {\textbf{Adoptado}\\si lo aprueban los dos};}
+  \capa{7}{\draw[salesi] (p7) -- (s7);}
+  \capa{7}{\node[no] (n7) at ($(p7.west)+(-0.6,0)$) {\textbf{No adoptado}\\si no};}
+  \capa{7}{\draw[saleno] (p7) -- (n7);}
+  % 8: los trílogos, al margen
+  \capa{8}{\node[nota] (tri) at ($(p1.north west)+(-0.6,0)$) {\textbf{Trílogos}: negociaciones informales entre el Parlamento, el Consejo y la Comisión; la gran mayoría de los actos se acuerdan en 1.ª~lectura};}
+\end{tikzpicture}
+\end{document}

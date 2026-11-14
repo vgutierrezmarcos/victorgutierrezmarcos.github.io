@@ -1,0 +1,71 @@
+% Número de Estados miembros de las Comunidades Europeas y de la UE,
+% 1952-2026 (función escalonada; ../datos/estados-miembros.csv) y fecha de
+% entrada en vigor de cada tratado (firma entre paréntesis). Capas: escalera →
+% ejes → tratados fundacionales → reformas → países de cada ampliación →
+% candidatos (2026).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/estados-miembros.csv}\miembros
+\pgfplotsset{ejesam/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesam/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\colorlet{amarea}{tceemorado!14}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=15.5cm, height=9.4cm,
+      xmin=1950, xmax=2028, ymin=0, ymax=46,
+      xtick={1950,1960,...,2020}, minor xtick={1950,1955,...,2025},
+      ytick={0,6,9,12,15,25,27}, 
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Estados miembros}, label style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!20},
+      clip=false, ejesam, dicapas,
+    ]
+    % 1: escalera de ampliaciones
+    \capa{1}{
+      \addplot[on layer=dicbarras, const plot, fill=amarea, draw=none, forget plot]
+        table[x=anio, y=estados] {\miembros} \closedcycle;
+      \addplot[const plot, very thick, tceemorado, mark=none]
+        table[x=anio, y=estados] {\miembros};
+    }
+    % 3: tratados fundacionales (entrada en vigor)
+    \capa{3}{
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90]{(1952.5,29.5)}{París (CECA), 1952}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90]{(1958,29.5)}{Roma (CEE, Euratom), 1958}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90]{(1967.5,29.5)}{Tratado de fusión, 1967}
+    }
+    % 4: reformas de los tratados
+    \capa{4}{
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90,text=tceeazul]{(1987.5,29.5)}{Acta Única, 1987}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90,text=tceeazul]{(1993.8,29.5)}{Maastricht, 1993}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90,text=tceeazul]{(1999.3,29.5)}{Ámsterdam, 1999}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90,text=tceeazul]{(2003.1,29.5)}{Niza, 2003}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90,text=tceerojo]{(2005.6,29.5)}{Constitución (fracasa)}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90,text=tceeazul]{(2009.9,29.5)}{Lisboa, 2009}
+      \dicrotulo[font=\scriptsize,anchor=west,rotate=90,text=tceerojo]{(2020.1,29.5)}{Brexit (art. 50), 2020}
+    }
+    % 5: países de cada ampliación
+    \capa{5}{
+      \dicrotulo[font=\scriptsize,anchor=north west,align=left,text=tceemorado]{(1973,8.6)}{RU, IE, DK}
+      \dicrotulo[font=\scriptsize,anchor=north west,align=left,text=tceemorado]{(1981,9.6)}{EL}
+      \dicrotulo[font=\scriptsize,anchor=north west,align=left,text=tceemorado]{(1986,11.6)}{ES, PT}
+      \dicrotulo[font=\scriptsize,anchor=north west,align=left,text=tceemorado]{(1995,14.6)}{AT, FI, SE}
+      \dicrotulo[font=\scriptsize,anchor=north west,align=left,text=tceemorado]{(2004.4,24.6)}{10 del centro,\\este y sur}
+      \dicrotulo[font=\scriptsize,anchor=north west,align=left,text=tceemorado]{(2007.2,20.4)}{BG, RO}
+      \dicrotulo[font=\scriptsize,anchor=north west,align=left,text=tceemorado]{(2013.6,27.4)}{HR}
+    }
+    % 6: candidatos en 2026
+    \capa{6}{
+      \dicrotulo[font=\scriptsize,anchor=south east,align=right,text=tceegris!80!black]{(2027.8,1)}{Candidatos (2026):\\ME, AL, UA, MD, RS, MK,\\BA, TR, GE; posible: XK}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

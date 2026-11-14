@@ -1,0 +1,37 @@
+% Las 4 olas del regionalismo, 1957-2026: línea de tiempo con los hitos de
+% cada ola (figura, no gráfico: no tiene magnitudes). Elaboración propia a
+% partir de OMC, RTA-IS (fechas de entrada en vigor), Baldwin (2011) y
+% Freund y Ornelas (2010).
+% Capas: eje del tiempo -> 1.ª ola -> 2.ª -> 3.ª -> 4.ª.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,x=0.205cm,y=1cm,
+    every node/.append style={execute at begin node=\nocortar},
+    banda/.style={rounded corners=2pt,draw=#1,fill=#1!12,thick},
+    titulo/.style={font=\footnotesize\bfseries,align=center,text width=3.4cm},
+    hitos/.style={font=\scriptsize,align=left,text width=3.45cm,anchor=north west,inner sep=2pt},
+    marca/.style={thin,#1}]
+  % 1: eje del tiempo (de 1955 a 2028)
+  \capa{1}{\draw[eje] (1955,0) -- (2029,0);}
+  \capa{1}{\foreach \a in {1960,1970,1980,1990,2000,2010,2020} {\draw (\a,0.08) -- (\a,-0.08) node[below,font=\scriptsize] {\a};}}
+  % 2: primera ola (1957-1973): regionalismo cerrado
+  \capa{2}{\draw[banda=tceeazul] (1957,0.25) rectangle (1974,1.25);}
+  \capa{2}{\node[titulo,text=tceeazul] at (1965.5,0.75) {1.ª ola (1957-1973)\\[-1pt]{\normalfont regionalismo cerrado}};}
+  \capa{2}{\node[hitos] at (1955.5,-0.55) {CEE (1957) y AELC (1960)\\ALALC y MCCA (1960)\\Pacto Andino (1969)\\CARICOM (1973)\\{\color{tceegris}sustitución de importaciones (CEPAL); tras ella, la crisis de la deuda de los 80}};}
+  % 3: segunda ola (1986-1995): regionalismo abierto
+  \capa{3}{\draw[banda=tceeverde] (1986,0.25) rectangle (1996,1.25);}
+  \capa{3}{\node[titulo,text=tceeverde,text width=2.1cm] at (1991,0.75) {2.ª ola\\[-1pt](1986-1995)\\[-1pt]{\normalfont abierto}};}
+  \capa{3}{\node[hitos] at (1974.5,-0.55) {Acta Única Europea (1986)\\APEC (1989)\\Mercosur (1991)\\AFTA (1992)\\TLCAN (1994)\\{\color{tceegris}el art.~XXIV, precisado en la Ronda Uruguay (1994)}};}
+  % 4: tercera ola (1996-2016): bilaterales cruzados y acuerdos profundos
+  \capa{4}{\draw[banda=tceedorado] (1996,0.25) rectangle (2017,1.25);}
+  \capa{4}{\node[titulo,text=tceedorado!80!black] at (2006.5,0.75) {3.ª ola (1996-2016)\\[-1pt]{\normalfont bilaterales y profundos}};}
+  \capa{4}{\node[hitos] at (1993.5,-0.55) {ALC de EE.~UU., la UE, la AELC, Chile o Singapur con medio mundo\\ASEAN+1 (China, 2010)\\Alianza del Pacífico (2012)\\Comunidad ASEAN y UEE (2015)\\TPP firmado (2016)};}
+  % 5: cuarta ola (2017-2026): megaacuerdos y fragmentación
+  \capa{5}{\draw[banda=tceerojo] (2017,0.25) rectangle (2028,1.25);}
+  \capa{5}{\node[titulo,text=tceerojo,text width=2.2cm] at (2022.5,0.75) {4.ª ola\\[-1pt](2017-2026)\\[-1pt]{\normalfont megaacuerdos}};}
+  \capa{5}{\node[hitos,text width=3.6cm] at (2012.5,-0.55) {EE.~UU. sale del TPP (2017)\\CPTPP (2018); ZLECAf (2019)\\T-MEC y \emph{Brexit} (2020)\\RCEP (2022); Reino Unido en el CPTPP (2024)\\UE-Mercosur provisional y T-MEC sin renovar (2026)};}
+\end{tikzpicture}
+\end{document}

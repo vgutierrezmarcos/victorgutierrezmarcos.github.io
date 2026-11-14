@@ -1,0 +1,75 @@
+% Las instituciones de la UE: quién elige a quién y quién legisla. Los
+% ciudadanos eligen el Parlamento Europeo; los Gobiernos forman el Consejo
+% Europeo y el Consejo de la UE; el Consejo Europeo elige a su presidente,
+% propone al presidente de la Comisión (que elige el Parlamento), nombra el
+% Colegio tras el voto de aprobación del Parlamento, al Alto Representante y
+% al Comité Ejecutivo del BCE; triángulo legislativo (iniciativa de la
+% Comisión, colegislación del Parlamento y el Consejo); moción de censura;
+% nombramiento de los miembros del TJUE y del Tribunal de Cuentas.
+% Fuentes: arts. 13 a 19 TUE y 223 a 287 TFUE.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    caja/.style={thick,rounded corners=2pt,align=center,inner sep=4pt,
+      font=\footnotesize,text width=#1},
+    inst/.style={caja=#1,draw=tceemorado,fill=tceemorado!10},
+    otro/.style={caja=#1,draw=tceegris,fill=tceegris!10},
+    elige/.style={->,thick,black!65},
+    rot/.style={font=\footnotesize,text=black!70,align=left,inner sep=2pt},
+    iniciativa/.style={->,very thick,tceedorado},
+    colegisla/.style={<->,very thick,tceemorado},
+    censura/.style={->,thick,tceerojo}]
+  % 1: ciudadanos
+  \capa{1}{\node[otro=2.7cm] (ciud) at (1.9,0) {\textbf{Ciudadanos de la UE}};}
+  % 2: Gobiernos
+  \capa{2}{\node[otro=2.9cm] (gob) at (9.9,0) {\textbf{Gobiernos de los Estados miembros}};}
+  % 3: Parlamento Europeo
+  \capa{3}{\node[inst=2.7cm] (pe) at (1.9,3.3) {\textbf{Parlamento Europeo}\\720 diputados};}
+  \capa{3}{\draw[elige] (ciud) -- node[rot,right] {eligen\\cada 5 años} (pe);}
+  % 4: Consejo Europeo y su presidente
+  \capa{4}{\node[inst=3.9cm] (ce) at (13.25,3.3) {\textbf{Consejo Europeo}\\jefes de Estado o de Gobierno + presidenta de la Comisión + su presidente, al que elige (MC; 2 años y medio, renovable una vez)};}
+  \capa{4}{\draw[elige] (gob.north east) ++(-0.4,0) -- node[rot,left,align=right,pos=0.45,xshift=-6pt] {sus jefes de Estado\\o de Gobierno} (ce.south -| 12.4,0);}
+  \capa{4}{\draw[elige] ($(ce.east)+(0,0.3)$) arc[start angle=90,end angle=-90,radius=0.3];}
+  % 5: Consejo de la UE
+  \capa{5}{\node[inst=2.7cm] (consejo) at (7.6,3.3) {\textbf{Consejo de la UE}\\un ministro por Estado};}
+  \capa{5}{\draw[elige] (gob.north west) ++(0.5,0) -- (consejo.south -| 8.3,0);}
+  % 6: Comisión
+  \capa{6}{\node[inst=2.9cm] (com) at (4.75,6.9) {\textbf{Comisión Europea}\\presidente y Colegio};}
+  % 7: el Consejo Europeo propone y nombra
+  \capa{7}{\draw[elige] (ce.north -| 12.0,0) -- (12.0,8.55) -- (com.north |- 0,8.55) -- (com.north);}
+  \capa{7}{\node[rot,anchor=south,align=center,text width=7cm] at (8.4,8.55) {propone al presidente (MC, teniendo en cuenta las elecciones) y nombra el Colegio (MC)};}
+  % 8: el Parlamento elige al presidente y aprueba el Colegio
+  \capa{8}{\draw[elige] (pe.north -| 0.9,0) -- (0.9,7.15) -- (com.west |- 0,7.15);}
+  \capa{8}{\node[rot,anchor=south west,text width=2.2cm] at (0.85,7.15) {elige al presidente (mayoría de sus miembros) y aprueba el Colegio};}
+  % 9: Alto Representante
+  \capa{9}{\node[otro=2.6cm] (ar) at (9.55,6.65) {\textbf{Alto Representante}\\de acuerdo con el presidente de la Comisión};}
+  \capa{9}{\draw[elige] (ce.north -| 11.5,0) -- node[rot,left,align=right,pos=0.45] {nombra\\(MC)} (11.5,6.65) -- (ar.east);}
+  % 10: triángulo legislativo: iniciativa de la Comisión
+  \capa{10}{\begin{pgfonlayer}{background}\fill[tceedorado,fill opacity=0.13] (pe.center) -- (com.center) -- (consejo.center) -- cycle;\end{pgfonlayer}}
+  \capa{10}{\draw[iniciativa] ($(com.south)+(-0.55,0)$) -- (pe.north east);}
+  \capa{10}{\draw[iniciativa] ($(com.south)+(0.55,0)$) -- (consejo.north west);}
+  \capa{10}{\node[font=\footnotesize\bfseries,text=tceedorado!80!black,align=center] at (4.75,5.15) {propuesta\\(iniciativa)};}
+  % 11: colegisladores
+  \capa{11}{\draw[colegisla] (pe) -- (consejo);}
+  \capa{11}{\node[font=\footnotesize\bfseries,text=tceemorado,anchor=south] at (4.75,3.38) {colegisladores};}
+  \capa{11}{\node[font=\footnotesize,text=tceemorado,anchor=north,align=center] at (4.75,3.2) {procedimiento\\legislativo ordinario};}
+  % 12: control: moción de censura
+  \capa{12}{\draw[censura] (pe.north -| 1.6,0) -- (1.6,6.65) -- (com.west |- 0,6.65);}
+  \capa{12}{\node[font=\footnotesize,text=tceerojo,anchor=north west,align=left,text width=1.6cm,inner sep=2pt] at (1.6,6.55) {moción de censura (2/3 de los votos emitidos y mayoría de los miembros)};}
+  % 13: Tribunal de Justicia
+  \capa{13}{\node[inst=2.7cm] (tjue) at (14.25,0) {\textbf{Tribunal de Justicia de la UE}\\jueces y abogados generales};}
+  \capa{13}{\draw[elige] (gob) -- (tjue);}
+  \capa{13}{\node[rot,anchor=north,align=center,text width=5.2cm] at (12.3,-0.75) {los nombran los Gobiernos de común acuerdo, previo dictamen del comité del art.~255 TFUE};}
+  % 14: Banco Central Europeo
+  \capa{14}{\node[inst=2.7cm] (bce) at (14.25,6.65) {\textbf{Banco Central Europeo}\\Comité Ejecutivo};}
+  \capa{14}{\draw[elige] (ce.north -| bce.south) -- node[rot,right] {nombra\\(MC)} (bce.south);}
+  % 15: Tribunal de Cuentas
+  \capa{15}{\node[inst=2.4cm] (tcu) at (5.75,0) {\textbf{Tribunal de Cuentas}};}
+  \capa{15}{\draw[elige] (consejo.south -| 6.9,0) -- node[rot,left,align=right] {nombra, previa\\consulta al PE} (tcu.north -| 6.4,0);}
+  % 16: leyenda
+  \capa{16}{\node[font=\footnotesize,align=left,anchor=north west,text width=8.3cm,inner sep=0pt] at (0.45,-0.75) {\textcolor{tceemorado}{\textbf{En morado, las 7 instituciones}} (art.~13 TUE). Flechas: \textcolor{black!65}{\textbf{gris}}, elección o nombramiento; \textcolor{tceedorado!80!black}{\textbf{dorada}}, iniciativa legislativa; \textcolor{tceemorado}{\textbf{morada}}, colegislación; \textcolor{tceerojo}{\textbf{roja}}, control. MC: mayoría cualificada.};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,39 @@
+% Teoría del dominó del regionalismo (Baldwin, 1993 y 1995): equilibrio
+% político del tamaño de un bloque. Eje horizontal: tamaño del bloque n
+% (número de miembros o su peso en el mercado mundial); eje vertical: presión
+% política. Formas funcionales ilustrativas (unidades arbitrarias):
+%   presión a favor de entrar de los exportadores de fuera:  P(n)  = 1 + 0,25 n
+%   resistencia del país marginal (países ordenados de menor a mayor
+%   resistencia a entrar):                                  R(n)  = 0,5 + 0,06 n^2
+%   equilibrio inicial: P = R  ->  n0 = 5,64; P0 = 2,41
+%   perturbación idiosincrásica (el bloque se profundiza: mercado único):
+%                                                            P'(n) = 2 + 0,25 n
+%   nuevo equilibrio: n1 = 7,50; P1 = 3,875
+%   efecto dominó (telaraña): de n0, P'(5,64) = 3,41 -> entran los países con
+%   R <= 3,41 -> n = 6,96; P'(6,96) = 3,74 -> n = 7,35; ... -> n1.
+% Capas: ejes -> R -> P y equilibrio E0 -> P' -> escalones del dominó -> E1.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=1.2cm,
+    declare function={R(\n)=0.5+0.06*\n*\n; P(\n)=1+0.25*\n; Pp(\n)=2+0.25*\n;}]
+  % 1: ejes
+  \capa{1}{\ejes{tamaño del bloque, $n$}{presión política}{12.6}{5.6}}
+  % 2: resistencia del país marginal
+  \capa{2}{\draw[curva2] plot[domain=0:9.2,samples=60] (\x,{R(\x)}) node[etiqueta,above,text=tceeazul,align=center] {$R(n)$\\[-2pt]{\footnotesize resistencia}};}
+  % 3: presión de los exportadores de fuera y equilibrio inicial
+  \capa{3}{\draw[curva1] (0,{P(0)}) -- (10.2,{P(10.2)}) node[etiqueta,right,text=tceemorado,align=left] {$P(n)$\\[-2pt]{\footnotesize presión}};}
+  \capa{3}{\node[punto,label={[etiqueta]below right=-1pt and 0pt:$E_0$}] (E0) at (5.64,2.41) {};}
+  \capa{3}{\proyeccion{(E0)}{$n_0$}{}}
+  % 4: perturbación: el bloque se profundiza y sube la presión
+  \capa{4}{\draw[curvanueva] (0,{Pp(0)}) -- (10.2,{Pp(10.2)}) node[etiqueta,right,text=tceerojo,align=left] {$P'(n)$};}
+  \capa{4}{\draw[flecha] (2,1.6) -- (2,2.4);}
+  % 5: escalones del dominó: cada entrada sube la presión sobre los que quedan
+  \capa{5}{\draw[thick,tceerojo!70,dashed] (5.64,2.41) -- (5.64,3.41) -- (6.96,3.41) -- (6.96,3.74) -- (7.35,3.74) -- (7.35,3.84) -- (7.5,3.875);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=east,align=right] at (5.4,4.25) {efecto\\dominó};}
+  % 6: nuevo equilibrio
+  \capa{6}{\node[punto,label={[etiqueta]below right=-1pt and 0pt:$E_1$}] (E1) at (7.5,3.875) {};}
+  \capa{6}{\proyeccion{(E1)}{$n_1$}{}}
+\end{tikzpicture}
+\end{document}

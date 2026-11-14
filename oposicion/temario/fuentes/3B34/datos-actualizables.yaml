@@ -1,0 +1,128 @@
+tema: 3B34
+fecha_inventario: 2026-11-14
+datos:
+  - id: servicios-mundo
+    texto: "en 2025 el mundo exportó 9,6 billones de dólares en servicios comerciales, más de la cuarta parte (el 27,5 %) del comercio total de bienes y servicios comerciales [...] aumentó un 8 % [...] prestados digitalmente 5,3 billones, el 55 %"
+    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/servicios-sector.tex, datos/servicios-sector.csv]
+    valor: 9594
+    unidad: miles de millones de dólares
+    periodo: "2025"
+    fuente: OMC2026EstadisticasServicios
+    organismo: OMC (WTO-UNCTAD-ITC)
+    serie: "ITS_CS_AX6, Mundo, sectores SC (transporte, viajes, relacionados con bienes, otros); servicios prestados digitalmente"
+    url: https://www.wto.org/english/res_e/statis_e/trade_datasets_e.htm
+    periodicidad: anual (avance en marzo-abril; revisión en julio)
+    proxima: "2027-04"
+    familia: omc-servicios
+
+  - id: servicios-modos
+    texto: "presencia comercial 56 %, transfronterizo 35 %, consumo en el extranjero 8 %, personas físicas 1 % (2022); el modo 1 era el 26 % en 2005"
+    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/modos-suministro.tex, datos/servicios-modos.csv]
+    valor: null
+    unidad: "% del comercio mundial de servicios"
+    periodo: "2022"
+    fuente: OMC2026TISMOS
+    organismo: OMC
+    serie: "TiSMoS, SOXSW, Mundo, modos 1 a 4"
+    url: https://www.wto.org/english/res_e/statis_e/gstdh_mode_supply_e.htm
+    periodicidad: irregular (la base no se ha ampliado desde 2022)
+    proxima: sin fecha
+    familia: omc-servicios
+
+  - id: stri
+    texto: "STRI 2025: los sectores más cerrados son el transporte aéreo (0,40), los servicios jurídicos (0,35) y la contabilidad (0,33); España, entre las más abiertas"
+    donde: [3B34.tex, graficos/stri-sectores.tex, datos/stri-sectores.csv, datos/stri-paises.csv]
+    valor: null
+    unidad: "índice 0-1"
+    periodo: "2025"
+    fuente: OCDE2026STRI
+    organismo: OCDE
+    serie: "OECD.TAD.TPD, DSD_STRI@DF_STRI_MAIN (18 sectores, 51 países)"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.TAD.TPD,DSD_STRI@DF_STRI_MAIN,/all
+    periodicidad: anual (febrero)
+    proxima: "2027-02"
+    familia: ocde-stri
+
+  - id: propiedad-intelectual
+    texto: "los cobros mundiales por el uso de la propiedad intelectual fueron de 607.000 millones de dólares en 2025, el 6 % de los servicios comerciales; EE. UU. saldo +133,9; Irlanda -190,6"
+    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/propiedad-intelectual.tex, datos/propiedad-intelectual.csv, datos/propiedad-intelectual-mundo.csv]
+    valor: 606.8
+    unidad: miles de millones de dólares
+    periodo: "2025"
+    fuente: OMC2026EstadisticasServicios
+    organismo: OMC; Banco Mundial (WDI) para cotejar
+    serie: "producto SH, ITS_CS_AX6 e ITS_CS_AM6; WDI BX.GSR.ROYL.CD y BM.GSR.ROYL.CD"
+    url: https://stats.wto.org/assets/UserGuide/services_annual_dataset.zip
+    periodicidad: anual
+    proxima: "2027-07"
+    familia: omc-servicios
+
+  - id: acp-partes
+    texto: "22 partes, que cubren 49 miembros de la OMC; últimas adhesiones Australia (2019), Reino Unido (2021) y Macedonia del Norte (2023)"
+    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/acp-adhesiones.tex, datos/acp-adhesiones.csv, graficos/acuerdos-mapa.tex]
+    valor: 22
+    unidad: partes
+    periodo: "2026-11"
+    fuente: OMC2026ACP
+    organismo: OMC
+    serie: "Parties, observers and accessions"
+    url: https://www.wto.org/english/tratop_e/gproc_e/memobs_e.htm
+    periodicidad: cuando hay adhesiones
+    proxima: sin fecha
+    familia: omc-plurilaterales
+
+  - id: ue-pi-pib
+    texto: "los sectores intensivos en derechos de propiedad intelectual generaban el 47 % del PIB y casi el 30 % del empleo directo en 2017-2019"
+    donde: [3B34.tex]
+    valor: 47
+    unidad: "% del PIB de la UE"
+    periodo: "2017-2019"
+    fuente: EPOEUIPO2022
+    organismo: EPO y EUIPO
+    serie: "IPR-intensive industries and economic performance in the EU (4.ª edición)"
+    url: https://euipo.europa.eu/ohimportal/en/web/observatory/ipr-contribution
+    periodicidad: cada 3-4 años
+    proxima: sin fecha
+    familia: ue-propiedad-intelectual
+
+  - id: falsificaciones
+    texto: "las falsificaciones suponían en torno al 2,3 % del comercio mundial de mercancías en 2021 y el 4,7 % de las importaciones de la UE"
+    donde: [3B34.tex]
+    valor: 2.3
+    unidad: "% del comercio mundial"
+    periodo: "2021"
+    fuente: OCDEEUIPO2025Falsificaciones
+    organismo: OCDE y EUIPO
+    serie: "Mapping Global Trade in Fakes 2025"
+    url: https://www.oecd.org/en/publications/mapping-global-trade-in-fakes-2025_94d3b29f-en.html
+    periodicidad: cada 3-4 años
+    proxima: sin fecha
+    familia: ue-propiedad-intelectual
+
+  - id: plurilaterales-participantes
+    texto: "ATI 84 participantes (97 %); IFD 131 participantes; Comercio Electrónico 66 en Yaundé (hoy 68), vigor con 45 aceptaciones; reglamentación nacional 73 participantes, rige para 57; art. 31 bis 142 aceptaciones"
+    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/acuerdos-mapa.tex]
+    valor: null
+    unidad: miembros
+    periodo: "2026-11"
+    fuente: OMC2026IniciativasConjuntas
+    organismo: OMC
+    serie: "inftec_e, invfac_e, ecom joint_statement_e, jsdomreg_e, trips amendment_e"
+    url: https://www.wto.org/english/tratop_e/jsi_e/jsi_e.htm
+    periodicidad: cuando hay adhesiones o aceptaciones
+    proxima: sin fecha
+    familia: omc-plurilaterales
+
+  - id: mepc-ue
+    texto: "el último examen de la UE fue en abril de 2023, y el siguiente está convocado para el 8 y el 10 de diciembre de 2026"
+    donde: [3B34.tex, repaso/3B34-repaso.tex]
+    valor: null
+    unidad: fecha
+    periodo: "2026-12"
+    fuente: OMC2026MEPC
+    organismo: OMC
+    serie: "Trade Policy Reviews"
+    url: https://www.wto.org/english/tratop_e/tpr_e/tpr_e.htm
+    periodicidad: cada 3 años (UE)
+    proxima: "2026-12 (actualizar tras el examen)"
+    familia: omc-institucion

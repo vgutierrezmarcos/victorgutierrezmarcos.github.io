@@ -1,0 +1,75 @@
+% La Europa de geometría variable: Consejo de Europa (46 Estados), Espacio
+% Económico Europeo (UE + Islandia, Liechtenstein y Noruega), AELC/EFTA
+% (Islandia, Liechtenstein, Noruega y Suiza), Unión Europea (27), zona del euro
+% (21 desde el 1/1/2026, con Bulgaria), espacio Schengen (29: la UE salvo
+% Irlanda y Chipre, más los cuatro de la AELC), unión aduanera con la UE
+% (Turquía, Andorra y San Marino) y países que usan el euro con acuerdo
+% monetario (Andorra, Mónaco, San Marino, Vaticano) o sin él (Montenegro,
+% Kosovo). Vaticano y Kosovo no son miembros del Consejo de Europa.
+% Códigos ISO de dos letras (EL para Grecia, como en la UE). Datos a 14/11/2026.
+% Sustituye al diagrama de Euler de Wikipedia del tema antiguo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% \zona[estilo del borde]{color}{esquina}{esquina}: fondo translúcido en la
+% capa de fondo (no tapa los códigos de los países) y borde en la principal
+\newcommand{\zona}[4][]{%
+  \begin{pgfonlayer}{background}\fill[rounded corners=6pt,#2,fill opacity=0.07,#1] #3 rectangle #4;\end{pgfonlayer}
+  \draw[thick,rounded corners=6pt,#2,#1] #3 rectangle #4;}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    zona/.style={thick,rounded corners=6pt},
+    rotulo/.style={font=\footnotesize\bfseries,anchor=north west,inner sep=2pt},
+    nota/.style={font=\footnotesize\itshape,text=tceegris,inner sep=2pt},
+    pais/.style={font=\footnotesize,inner sep=1pt}]
+  % 1: Consejo de Europa (marco exterior)
+  \capa{1}{\zona[fill opacity=0.04]{tceegris}{(0,0)}{(16,-9.3)}}
+  \capa{1}{\node[rotulo,text=tceegris] at (0.15,-0.12) {Consejo de Europa: 46 Estados};}
+  \capa{1}{\node[nota,anchor=north west] at (0.15,-0.5) {entre ellos Reino Unido, Turquía, Ucrania, Moldavia, Georgia, los Balcanes occidentales…};}
+  % 2: Unión Europea (27)
+  \capa{2}{\zona{tceemorado}{(0.7,-1.75)}{(10.4,-7.1)}}
+  \capa{2}{\node[rotulo,text=tceemorado] at (0.8,-1.8) {Unión Europea (27)};}
+  \capa{2}{\foreach \p [count=\i from 0] in {AT,BE,BG,HR,EE,FI,FR,DE,EL,IT,LV,LT,LU,MT,NL,PT,SK,SI,ES}
+      {\pgfmathtruncatemacro{\col}{mod(\i,5)}\pgfmathtruncatemacro{\fil}{div(\i,5)}
+       \node[pais] at (1.75+1.15*\col,-3.55-0.62*\fil) {\p};}}
+  \capa{2}{\node[pais] at (1.85,-6.45) {IE};}
+  \capa{2}{\node[pais] at (2.75,-6.45) {CY};}
+  \capa{2}{\foreach \p [count=\i from 0] in {CZ,DK,HU,PL,RO,SE}
+      {\pgfmathtruncatemacro{\col}{mod(\i,2)}\pgfmathtruncatemacro{\fil}{div(\i,2)}
+       \node[pais] at (8.15+1.15*\col,-3.55-0.62*\fil) {\p};}}
+  \capa{2}{\node[nota,anchor=north] at (8.72,-2.95) {fuera del euro};}
+  % 3: zona del euro (21)
+  \capa{3}{\zona{tceedorado}{(1.1,-2.85)}{(7.15,-6.9)}}
+  \capa{3}{\node[rotulo,text=tceedorado!80!black] at (1.2,-2.9) {Zona del euro (21; BG desde el 1/1/2026)};}
+  % 4: espacio Schengen (29)
+  \capa{4}{\zona{tceeazul}{(0.9,-2.3)}{(15.7,-6.0)}}
+  \capa{4}{\node[rotulo,text=tceeazul] at (0.95,-2.33) {Espacio Schengen (29)};}
+  \capa{4}{\node[nota,anchor=west] at (3.2,-6.45) {en el euro, fuera de Schengen};}
+  % 5: AELC/EFTA y Espacio Económico Europeo
+  \capa{5}{\zona{tceeverde}{(10.8,-3.0)}{(15.4,-5.65)}}
+  \capa{5}{\node[rotulo,text=tceeverde] at (10.9,-3.05) {AELC / EFTA (4)};}
+  \capa{5}{\node[pais] at (11.5,-4.1) {IS};}
+  \capa{5}{\node[pais] at (12.6,-4.1) {NO};}
+  \capa{5}{\node[pais] at (12.05,-4.85) {LI};}
+  \capa{5}{\node[pais] at (14.45,-4.3) {CH};}
+  \capa{5}{\zona[dashed,fill opacity=0]{tceeverde}{(0.4,-1.2)}{(13.45,-7.45)}}
+  \capa{5}{\node[rotulo,text=tceeverde] at (0.5,-1.25) {Espacio Económico Europeo (EEE): la UE más IS, LI y NO};}
+  \capa{5}{\node[nota] at (14.45,-4.9) {fuera del EEE};}
+  % 6: unión aduanera con la UE y países que usan el euro
+  \capa{6}{\zona{tceenaranja}{(0.5,-7.8)}{(6.7,-9.05)}}
+  \capa{6}{\node[rotulo,text=tceenaranja!85!black] at (0.6,-7.85) {Unión aduanera con la UE};}
+  \capa{6}{\node[pais] at (1.4,-8.6) {TR};}
+  \capa{6}{\zona[dashed]{tceedorado}{(4.3,-8.2)}{(9.7,-10.55)}}
+  \capa{6}{\node[pais] at (4.95,-8.7) {AD};}
+  \capa{6}{\node[pais] at (5.85,-8.7) {SM};}
+  \capa{6}{\node[pais] at (8.95,-8.7) {MC};}
+  \capa{6}{\node[pais] at (8.95,-10.0) {VA};}
+  \capa{6}{\node[font=\footnotesize,text=tceedorado!80!black,anchor=north west,align=left,inner sep=2pt] at (4.4,-9.5) {\textbf{usan el euro}\\por acuerdo con la UE};}
+  \capa{6}{\zona[dotted]{tceedorado}{(10.2,-8.2)}{(13.6,-10.55)}}
+  \capa{6}{\node[pais] at (12.95,-8.7) {ME};}
+  \capa{6}{\node[pais] at (12.95,-10.0) {XK};}
+  \capa{6}{\node[font=\footnotesize,text=tceedorado!80!black,anchor=north west,align=left,inner sep=2pt] at (10.3,-9.5) {\textbf{usan el euro}\\sin acuerdo};}
+  \capa{6}{\node[nota,anchor=north east,align=right] at (15.95,-9.45) {fuera del\\Consejo de Europa};}
+\end{tikzpicture}
+\end{document}

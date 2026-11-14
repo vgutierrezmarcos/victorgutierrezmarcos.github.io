@@ -1,0 +1,51 @@
+% Composición del Parlamento Europeo por grupos políticos al constituirse la
+% legislatura 2024-2029 (16/07/2024; 720 diputados), en un hemiciclo de
+% izquierda a derecha. Datos en ../datos/grupos-pe.csv (Parlamento Europeo).
+% Cada sector es proporcional a los escaños (180° = 720). Capas: un grupo por
+% capa, de izquierda a derecha → línea de la mayoría absoluta (361) → mayoría
+% de la Comisión (PPE + S&D + Renew).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\colorlet{gIzq}{tceerojo!60!black}
+\colorlet{gVer}{tceeverde}
+\colorlet{gSD}{tceerojo}
+\colorlet{gRen}{tceedorado}
+\colorlet{gPPE}{tceeazul}
+\colorlet{gECR}{tceeazul!45}
+\colorlet{gPfE}{tceemorado}
+\colorlet{gESN}{tceegris!70!black}
+\colorlet{gNI}{tceegris!35}
+\def\Rext{5.2}\def\Rint{2.5}
+% \sector{capa}{inicio (escaños acumulados)}{escaños}{color}{sigla}{escaños (texto)}
+\newcommand{\sector}[6]{%
+  \capa{#1}{%
+    \pgfmathsetmacro{\aI}{180-#2/4}\pgfmathsetmacro{\aF}{180-(#2+#3)/4}%
+    \pgfmathsetmacro{\aM}{(\aI+\aF)/2}%
+    \fill[#4,draw=white,line width=0.8pt] (\aI:\Rext) arc[start angle=\aI,end angle=\aF,radius=\Rext]
+      -- (\aF:\Rint) arc[start angle=\aF,end angle=\aI,radius=\Rint] -- cycle;
+    \node[font=\footnotesize,align=center,anchor=\aM+180] at (\aM:\Rext+0.12) {\textbf{#5}\\#6};}}
+\begin{tikzpicture}[tcee]
+  \sector{1}{0}{46}{gIzq}{La Izquierda}{46}
+  \sector{2}{46}{53}{gVer}{Verdes/ALE}{53}
+  \sector{3}{99}{136}{gSD}{S\&D}{136}
+  \sector{4}{235}{77}{gRen}{Renew}{77}
+  \sector{5}{312}{188}{gPPE}{PPE}{188}
+  \sector{6}{500}{78}{gECR}{ECR}{78}
+  \sector{7}{578}{84}{gPfE}{PfE}{84}
+  \sector{8}{662}{25}{gESN}{ESN}{25}
+  \sector{9}{687}{33}{gNI}{No inscritos}{33}
+  % 10: mayoría absoluta (361 de 720)
+  \capa{10}{
+    \pgfmathsetmacro{\aMay}{180-361/4}
+    \draw[thick,dashed,black] (\aMay:\Rint-0.3) -- (\aMay:\Rext+0.25);
+    \node[font=\footnotesize,align=center] at (0,1.25) {720 diputados\\[1pt]mayoría absoluta: 361};
+  }
+  % 11: mayoría de la Comisión (PPE + S&D + Renew = 401)
+  \capa{11}{
+    \draw[thick,tceemorado,<->] (180-99/4:\Rint-0.35) arc[start angle=180-99/4,end angle=180-500/4,radius=\Rint-0.35];
+    \node[font=\footnotesize,text=tceemorado,align=center] at (0,0.35) {PPE + S\&D + Renew = 401};
+  }
+\end{tikzpicture}
+\end{document}

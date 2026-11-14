@@ -1,0 +1,36 @@
+% Regla de asignación de competencias del modelo del texto: centralizar
+% (uniformidad en la UE) compensa si la externalidad entre Estados supera la
+% mitad de la heterogeneidad de preferencias, e > Δ/2; con un ahorro fijo F
+% al centralizar (economías de escala), la frontera baja: e^2 + F > Δ^2/4
+% (aquí F = 1,69: corta el eje en Δ = 2,6). Las
+% políticas se sitúan de forma orientativa (elaboración propia a partir de
+% Alesina, Angeloni y Schuknecht, 2005, y Tabellini, 2003).
+% Capas: ejes → frontera → zonas → economías de escala → políticas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % 1: ejes
+  \capa{1}{\ejes{\shortstack{heterogeneidad de\\preferencias, $\Delta$}}{\shortstack{externalidad entre\\Estados, $e$}}{10.2}{6.4}}
+  % 2: frontera e = Δ/2
+  \capa{2}{\draw[curva1] (0,0) -- (10,5) node[anchor=south west,etiqueta,tceemorado] {$e=\Delta/2$};}
+  % 3: zonas
+  \capa{3}{\fill[tceemorado,fill opacity=0.08] (0,0) -- (10,5) -- (10,6.2) -- (0,6.2) -- cycle;
+    \node[font=\footnotesize\bfseries,tceemorado,align=center] at (2.2,5.6) {centralizar en la UE};
+    \node[font=\footnotesize\bfseries,tceegris!80!black,align=center] at (9.0,0.55) {descentralizar\\en los Estados};}
+  % 4: economías de escala: la frontera baja
+  \capa{4}{\draw[desplazada,tceerojo,domain=2.6:10,samples=60] plot (\x,{sqrt(\x*\x/4-1.69)}) node[anchor=north west,etiqueta,tceerojo] {$e^2+F=\Delta^2/4$};
+    \draw[flecha] (6,3) -- (6.6,2.45);}
+  % 5: políticas (posiciones orientativas)
+  \capa{5}{
+    \foreach \x/\y/\t/\a in {1.0/5.2/{comercio exterior}/west, 1.4/4.4/{política monetaria\\(zona del euro)}/west,
+        3.3/5.4/{clima}/west, 6.6/5.9/{defensa}/west, 2.5/3.0/{competencia y\\mercado interior}/west,
+        4.6/0.7/{educación, cultura}/west, 8.4/2.7/{sanidad, protección\\social}/west}
+      {\node[punto,fill=tceeazul] at (\x,\y) {};
+       \node[anchor=\a,font=\scriptsize,align=left,tceeazul] at (\x+0.1,\y) {\t};}
+    \node[punto,fill=tceedorado] at (6.6,1.8) {};
+    \node[anchor=north,font=\scriptsize,align=center,tceedorado!85!black] at (6.6,1.7) {agricultura (PAC)};
+  }
+\end{tikzpicture}
+\end{document}

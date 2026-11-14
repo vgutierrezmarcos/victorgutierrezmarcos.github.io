@@ -1,0 +1,65 @@
+% Cobros y pagos por el uso de la propiedad intelectual (balanza de pagos) en
+% 2025, principales economías (miles de millones de dólares): cobros (barras a
+% la derecha), pagos (a la izquierda, en negativo) y saldo (rombo). UE-27:
+% solo comercio con terceros países. Fuente en la cabecera de
+% ../datos/propiedad-intelectual.csv (OMC, WTO-UNCTAD-ITC; cotejado con el WDI
+% del Banco Mundial).
+% Capas: barras de cobros y pagos -> ejes y cero -> saldo -> etiquetas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{picobros}{tceeazul!70}
+\colorlet{pipagos}{tceedorado!70}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/propiedad-intelectual.csv}\pinte
+\pgfplotsset{ejespi/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejespi/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=9.5cm,
+      xmin=-400, xmax=220, ymin=-0.6, ymax=14.6,
+      y dir=reverse,
+      ytick={0,...,14}, yticklabels from table={\pinte}{pais},
+      yticklabel style={font=\footnotesize},
+      major y tick style={draw=none},
+      xtick={-400,-300,...,200}, xticklabel style={font=\footnotesize},
+      xlabel={Miles de millones de dólares, 2025 (pagos en negativo)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      clip=false,
+      legend style={at={(0.02,0.03)}, anchor=south west, draw=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left,
+      ejespi, dicapas,
+    ]
+    % 1: cobros y pagos
+    \capa{1}{
+      \addplot[on layer=dicbarras, xbar, bar width=6.5pt, bar shift=0pt, dicbarra=picobros, area legend]
+        table[x=cobros, y expr=\coordindex] {\pinte};
+      \addlegendentry{Cobros}
+      \addplot[on layer=dicbarras, xbar, bar width=6.5pt, bar shift=0pt, dicbarra=pipagos, area legend]
+        table[x expr=-\thisrow{pagos}, y expr=\coordindex] {\pinte};
+      \addlegendentry{Pagos}
+    }
+    % 2: ejes y cero
+    \capa{2}{\dicraya{(0,-0.6) (0,14.6)}}
+    % 3: saldo
+    \capa{3}{
+      \addplot[on layer=dicpuntos, only marks, mark=diamond*, mark size=3pt,
+        draw=black, fill=tceemorado]
+        table[x=saldo, y expr=\coordindex] {\pinte};
+      \addlegendentry{Saldo}
+    }
+    % 4: etiquetas del saldo de los extremos
+    \capa{4}{
+      \dicrotulo[font=\scriptsize,anchor=west,text=tceemorado]{(140,0)}{+133,9}
+      \dicrotulo[font=\scriptsize,anchor=east,text=tceemorado]{(-196,5)}{$-$190,6}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+% Preferencia nacional en la contratación pública (Baldwin, 1970; Evenett y
+% Hoekman, 2005): país pequeño, bien homogéneo, oferta extranjera
+% perfectamente elástica a p* y oferta nacional S^d(p) = (p - 0,5)/0,6.
+%   p* = 2 -> S^d(p*) = 2,5
+%   G_1 = 1,5 < S^d(p*): la preferencia es neutral (solo reetiqueta)
+%   G_2 = 4   > S^d(p*): p_g = 0,5 + 0,6 * 4 = 2,9 > p*; coste para el
+%   contribuyente (p_g - p*) G_2 (rectángulo sombreado).
+% Capas: ejes -> oferta nacional -> precio mundial -> caso 1 (G_1) ->
+% caso 2 (G_2, p_g y el sobrecoste).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.25cm,y=1.25cm]
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{$p$}{6.4}{4.4}}
+  % 2: oferta nacional
+  \capa{2}{\draw[curva1] (0,0.5) -- (5.8,3.98) node[etiqueta,right,text=tceemorado] {$S^d$};}
+  % 3: precio mundial (oferta extranjera perfectamente elástica)
+  \capa{3}{\draw[curva2] (0,2) node[left,text=black] {$p^*$} -- (6.1,2) node[etiqueta,right,text=tceeazul,align=left,font=\footnotesize] {oferta\\extranjera};}
+  \capa{3}{\node[punto] (Q0) at (2.5,2) {};}
+  \capa{3}{\draw[guia] (2.5,2) -- (2.5,0) node[below,text=black] {$S^d(p^*)$};}
+  % 4: caso 1: la compra pública es menor que la producción nacional
+  \capa{4}{\draw[thick,tceeverde] (1.5,0) node[below,text=black] {$G_1$} -- (1.5,3.3);}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeverde,align=center,anchor=south] at (1.3,3.3) {neutral:\\$p$ y $M$ no cambian};}
+  % 5: caso 2: la compra pública supera la producción nacional
+  \capa{5}{\fill[area2] (0,2) rectangle (4,2.9);}
+  \capa{5}{\draw[thick,tceerojo] (4,0) node[below,text=black] {$G_2$} -- (4,3.4);}
+  \capa{5}{\node[punto,fill=tceerojo] at (4,2.9) {};}
+  \capa{5}{\draw[guia] (4,2.9) -- (0,2.9) node[left,text=black] {$p_g$};}
+  \capa{5}{\node[etiqueta,font=\scriptsize,text=tceedorado!70!black,align=center] at (0.72,2.45) {sobrecoste\\$(p_g-p^*)\,G_2$};}
+\end{tikzpicture}
+\end{document}

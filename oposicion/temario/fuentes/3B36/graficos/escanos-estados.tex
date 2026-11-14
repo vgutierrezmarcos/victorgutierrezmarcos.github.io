@@ -1,0 +1,61 @@
+% Escaños de cada Estado miembro en el Parlamento Europeo (legislatura
+% 2024-2029, 720 diputados; Decisión 2023/2061 del Consejo Europeo) y miles de
+% habitantes por escaño (población de 2026, Decisión 2025/2427 del Consejo):
+% la proporcionalidad decreciente del art. 14.2 TUE. Datos en
+% ../datos/consejo-poblacion-escanos.csv. España, resaltada.
+% Capas: barras → ejes → España → cifras de escaños → habitantes por escaño.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{escbarra}{tceemorado!50}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/consejo-poblacion-escanos.csv}\esc
+\pgfplotsset{ejesesc/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesesc/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13.5cm, height=13.2cm,
+      xbar, bar width=6.2pt, bar shift=0pt,
+      xmin=0, xmax=128, ymin=-0.7, ymax=26.7, y dir=reverse,
+      ytick={0,...,26}, yticklabels from table={\esc}{pais},
+      yticklabel style={font=\footnotesize},
+      xtick={0,20,...,100}, xticklabel style={font=\footnotesize},
+      xlabel={Escaños en el Parlamento Europeo (2024-2029)}, label style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      y axis line style={draw=none}, ytick style={draw=none},
+      xmajorgrids, grid style={tceegris!20},
+      clip=false, ejesesc, dicapas,
+    ]
+    % 1: barras
+    \capa{1}{
+      \addplot[on layer=dicbarras, forget plot, dicbarra=escbarra]
+        table[x=escanos, y expr=\coordindex] {\esc};
+    }
+    % 3: España
+    \capa{3}{
+      \addplot[on layer=dicbarras, forget plot, dicbarra=tceemorado]
+        coordinates {(61,3)};
+    }
+    % 4: escaños
+    \capa{4}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none,
+        nodes near coords, point meta=explicit symbolic,
+        every node near coord/.append style={font=\scriptsize, anchor=west, xshift=1pt}]
+        table[x=escanos, y expr=\coordindex, meta=escanos] {\esc};
+    }
+    % 5: miles de habitantes por escaño
+    \capa{5}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none,
+        nodes near coords, point meta=explicit symbolic,
+        every node near coord/.append style={font=\scriptsize, anchor=west, xshift=16pt, text=tceedorado!85!black}]
+        table[x=escanos, y expr=\coordindex, meta=milesporescano] {\esc};
+      \dicrotulo[font=\footnotesize,anchor=south west,align=left,text=tceedorado!85!black,yshift=2pt]{(98,-0.6)}{Miles de habitantes\\por escaño}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

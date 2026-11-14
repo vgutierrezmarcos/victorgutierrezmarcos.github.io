@@ -1,0 +1,71 @@
+% Peso de los principales bloques en el PIB mundial (dólares corrientes) y en
+% la población mundial, 2025, en %. Fuente en la cabecera de
+% ../datos/bloques-pib-poblacion.csv (Banco Mundial, WDI; cálculo propio).
+% Los bloques se solapan (p. ej., la ASEAN está dentro del RCEP; México y
+% Canadá, en el T-MEC y en el CPTPP): no se pueden sumar.
+% Paleta: PIB en morado (tceemorado), población en dorado (tceedorado), 2
+% gamas que se distinguen también en gris.
+% Capas: barras del PIB -> barras de la población -> ejes -> rótulos -> leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{bloquepib}{tceemorado!85}
+\colorlet{bloquepob}{tceedorado!80}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bloques-pib-poblacion.csv}\bloques
+\pgfplotsset{bloqejes/.style={}}
+\ifnum3>\tceepaso\relax
+  \pgfplotsset{bloqejes/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=12.5cm, height=12.5cm,
+      xbar, bar width=5.2pt,
+      xmin=0, xmax=35, xtick={0,5,...,35},
+      ytick=data, yticklabels from table={\bloques}{bloque},
+      y dir=reverse, enlarge y limits=0.04,
+      xticklabel style={font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      xlabel={\% del total mundial (2025)},
+      xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      legend style={at={(0.97,0.03)}, anchor=south east, draw=none,
+        font=\footnotesize},
+      legend cell align=left, area legend,
+      clip=false, bloqejes, dicapas,
+    ]
+    % 1: barras del PIB
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=bloquepib, bar shift=3pt]
+        table[y expr=\coordindex, x=pib_pct] {\bloques};
+    }
+    % 2: barras de la población
+    \capa{2}{
+      \addplot[on layer=dicbarras, dicbarra=bloquepob, bar shift=-3pt]
+        table[y expr=\coordindex, x=poblacion_pct] {\bloques};
+    }
+    % 3: ejes (bloqejes)
+    % 4: rótulos: PIB (arriba) y población (abajo) al final de cada barra
+    \capa{4}{
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none, bar shift=3pt,
+        nodes near coords={\pgfmathprintnumber[fixed,precision=1,fixed zerofill,use comma]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, anchor=west, text=tceemorado, xshift=1pt},
+        point meta=\thisrow{pib_pct}]
+        table[y expr=\coordindex, x=pib_pct] {\bloques};
+      \addplot[on layer=axis descriptions, dicsuelto, draw=none, bar shift=-3pt,
+        nodes near coords={\pgfmathprintnumber[fixed,precision=1,fixed zerofill,use comma]{\pgfplotspointmeta}},
+        nodes near coords style={font=\scriptsize, anchor=west, text=tceedorado!70!black, xshift=1pt},
+        point meta=\thisrow{poblacion_pct}]
+        table[y expr=\coordindex, x=poblacion_pct] {\bloques};
+    }
+    % 5: leyenda (sin caja)
+    \capa{5}{
+      \legend{PIB, Población}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

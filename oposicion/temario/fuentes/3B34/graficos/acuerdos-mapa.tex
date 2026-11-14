@@ -1,0 +1,47 @@
+% Mapa del tema 3.B.34: el Acuerdo de Marrakech por el que se establece la OMC
+% (1994) y sus anexos, resaltando los acuerdos distintos de los de mercancías
+% (anexos 1B, 1C, 2, 3 y 4) y las iniciativas conjuntas posteriores, que
+% quedan fuera de los anexos o piden entrar en el 4. Adaptado de
+% acuerdos-omc (3.B.33). Sustituye a la imagen 1 del tema antiguo.
+% Capas: acuerdo de base -> anexo 1A (en gris: otro tema) -> anexos 1B y 1C
+% -> anexos 2 y 3 -> anexo 4 -> iniciativas conjuntas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    base/.style={draw=tceemorado,thick,fill=tceemorado!16,rounded corners=2pt,
+      align=center,text width=14.2cm,inner sep=5pt,font=\footnotesize},
+    gris/.style={draw=tceegris,thick,fill=tceegris!8,rounded corners=2pt,
+      align=center,text width=3.6cm,inner sep=4pt,font=\footnotesize,text=tceegris!80!black},
+    tema/.style={draw=tceemorado,very thick,fill=tceemorado!8,rounded corners=2pt,
+      align=center,text width=4.6cm,inner sep=4pt,font=\footnotesize},
+    institucion/.style={draw=tceeazul,thick,fill=tceeazul!8,rounded corners=2pt,
+      align=center,text width=4.6cm,inner sep=4pt,font=\footnotesize},
+    pluri/.style={draw=tceedorado,thick,fill=tceedorado!10,rounded corners=2pt,
+      align=center,text width=14.2cm,inner sep=4pt,font=\footnotesize},
+    nueva/.style={draw=tceeverde,thick,dashed,fill=tceeverde!8,rounded corners=2pt,
+      align=left,text width=14.2cm,inner sep=4pt,font=\footnotesize},
+    rama/.style={thick,tceegris}]
+  % 1: el acuerdo de base
+  \capa{1}{\node[base] (marrakech) at (0,0) {\textbf{Acuerdo de Marrakech por el que se establece la Organización Mundial del Comercio (1994)}};}
+  % 2: anexo 1A, mercancías (otro tema)
+  \capa{2}{\node[gris,anchor=north] (a1a) at (-5.25,-0.85) {\textbf{Anexo 1A\quad Mercancías}\\GATT de 1994 y 13 acuerdos específicos, entre ellos las \textbf{MIC} (inversión)\\{\itshape tema 3.B.33}};}
+  % 3: anexos 1B y 1C
+  \capa{3}{\node[tema,anchor=north] (a1b) at (-0.55,-0.85) {\textbf{Anexo 1B\quad Servicios}\\Acuerdo General sobre el Comercio de Servicios (AGCS)\\{\itshape bloque I}};}
+  \capa{3}{\node[tema,anchor=north] (a1c) at (4.6,-0.85) {\textbf{Anexo 1C\quad Propiedad intelectual}\\Acuerdo sobre los ADPIC\\{\itshape bloque II}};}
+  \capa{3}{\draw[rama] (marrakech.south -| a1a.north) -- (a1a.north) (marrakech.south -| a1b.north) -- (a1b.north) (marrakech.south -| a1c.north) -- (a1c.north);}
+  % 4: anexos 2 y 3
+  \capa{4}{\path let \p1=(a1a.south), \p2=(a1b.south), \p3=(a1c.south) in coordinate (fila2) at (0,{min(\y1,\y2,\y3)-0.3cm});}
+  \capa{4}{\node[institucion,anchor=north,text width=6.75cm] (a2) at (fila2 -| -3.65,0) {\textbf{Anexo 2\quad Solución de diferencias} (ESD): represalias cruzadas, reclamaciones sin infracción\\{\itshape tema 3.B.33 y bloque III}};}
+  \capa{4}{\node[institucion,anchor=north,text width=6.75cm] (a3) at (fila2 -| 3.65,0) {\textbf{Anexo 3\quad Examen de las políticas comerciales} (MEPC)\\{\itshape bloque III}};}
+  % 5: anexo 4
+  \capa{5}{\path let \p1=(a2.south), \p2=(a3.south) in coordinate (fila3) at (0,{min(\y1,\y2)-0.3cm});}
+  \capa{5}{\node[pluri,anchor=north] (a4) at (fila3) {\textbf{Anexo 4\quad Acuerdos plurilaterales} (solo obligan a quien los firma): \textbf{Contratación Pública} (ACP)\quad·\quad Aeronaves civiles\quad {\itshape bloque III}};}
+  % 6: iniciativas conjuntas posteriores
+  \capa{6}{\node[nueva,anchor=north] (ic) at ($(a4.south)+(0,-0.3)$) {\textbf{\color{tceeverde}Fuera de los anexos: iniciativas entre grupos de miembros}\quad{\itshape bloques I y III}\\[1pt]
+    · en las listas, extendidas a todos por la NMF: Tecnología de la Información (ATI, 1996 y 2015), Reglamentación Nacional de los Servicios (2021)\\
+    · piden entrar en el anexo~4 (exige consenso): Facilitación de las Inversiones para el Desarrollo (2023), Comercio Electrónico (2024)};}
+\end{tikzpicture}
+\end{document}
