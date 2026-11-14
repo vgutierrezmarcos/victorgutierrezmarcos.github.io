@@ -1,0 +1,45 @@
+% Dotación del IVDCI-Europa Global 2021-2027 por partidas (millones de euros
+% corrientes, art. 6 del Reglamento (UE) 2021/947): programas geográficos en
+% morado y el resto en gris. Total 79.462 millones.
+% Datos: ../datos/ivdci.csv.
+% Orden de capas (CRITERIOS §7): barras → ejes → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/ivdci.csv}\ivd
+\colorlet{barrageo}{tceemorado!75}
+\colorlet{barraotra}{tceegris!60}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=12.5cm, height=7.5cm,
+      xbar, bar width=9pt, bar shift=0pt, xmin=0, xmax=34000,
+      ymin=-0.6, ymax=6.6,
+      ytick={0,...,6},
+      yticklabels from table={\ivd}{partida},
+      yticklabel style={font=\footnotesize},
+      xtick={0,5000,...,30000},
+      scaled x ticks=false,
+      xticklabel style={font=\footnotesize, /pgf/number format/.cd, 1000 sep={.}},
+      xlabel={millones de euros, 2021-2027},
+      axis lines*=left, tick align=outside, clip=false,
+      xmajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: programas geográficos
+    \capa{1}{\addplot[dicbarra=barrageo, forget plot] coordinates {(3395,1) (8489,3) (19323,5) (29181,6)};}
+    % 2: temáticos, respuesta rápida y colchón
+    \capa{2}{\addplot[dicbarra=barraotra, forget plot] coordinates {(3182,0) (6358,2) (9534,4)};}
+    % 3: rótulos
+    \capa{3}{
+      \addplot[forget plot, only marks, mark=none, nodes near coords, point meta=explicit,
+        every node near coord/.append style={font=\scriptsize, anchor=west, xshift=2pt,
+          /pgf/number format/.cd, fixed, 1000 sep={.}}]
+        table[x=importe, y=n, meta=importe] {\ivd};
+      \dicrotulo[font=\footnotesize, text=tceemorado, anchor=west]{(20500,1.2)}{programas geográficos: 60.388}
+      \dicrotulo[font=\footnotesize, text=tceegris!80!black, anchor=west]{(20500,0.4)}{total: 79.462}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

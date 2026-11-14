@@ -1,0 +1,41 @@
+% Antidumping y colusión inducida (Prusa, 1992): duopolio de Bertrand con
+% productos diferenciados, empresa de la UE (D) y extranjera (F).
+% Demanda q_i = 10 - p_i + 0,8 p_j; coste marginal c = 2.
+%   Funciones de reacción: p_i = (10 + 2 + 0,8 p_j)/2 = 6 + 0,4 p_j.
+%   Equilibrio de Nash N = (10, 10); beneficio de cada empresa 64.
+%   Compromiso de precios (precio mínimo) p_F = 12: la empresa de la UE
+%   responde con p_D = 6 + 0,4*12 = 10,8 -> C = (10,8; 12).
+%   Beneficios en C: pi_D = 8,8*8,8 = 77,4; pi_F = 10*(14,8 - 0,68*12) = 66,4.
+%   Las dos ganan frente a N (C está dentro de la lente de isobeneficio por N);
+%   la extranjera gana si 10 < p_F < 13,76.
+%   Isobeneficio de D por N: p_F = (64/(p_D - 2) - 10 + p_D)/0,8.
+%   Isobeneficio de F por N: p_D = (64/(p_F - 2) - 10 + p_F)/0,8.
+% Capas: ejes -> reacción de D -> reacción de F y N -> isobeneficios por N
+% (lente) -> precio mínimo y nuevo equilibrio C.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.48cm,y=0.48cm,
+    declare function={isoD(\p)=(64/(\p-2)-10+\p)/0.8;}]
+  % 1: ejes
+  \capa{1}{\ejes{$p_D$}{$p_F$}{17}{16.5}}
+  % 2: función de reacción de la empresa de la UE
+  \capa{2}{\draw[curva1] (6,0) -- (12.4,16) node[etiqueta,above left,text=tceemorado] {$R_D$};}
+  % 3: función de reacción de la extranjera y equilibrio de Nash
+  \capa{3}{\draw[curva2] (0,6) -- (16,12.4) node[etiqueta,below right,text=tceeazul] {$R_F$};}
+  \capa{3}{\node[punto,label={[etiqueta]below right=0pt and 0pt:$N$}] (N) at (10,10) {};}
+  \capa{3}{\proyeccion{(N)}{$10$}{$10$}}
+  % 4: isobeneficios que pasan por N
+  \capa{4}{\draw[thick,tceemorado!60] plot[domain=5.8:15.5,samples=80] (\x,{isoD(\x)});}
+  \capa{4}{\draw[thick,tceeazul!60] plot[domain=5.8:15.5,samples=80] ({isoD(\x)},\x);}
+  \capa{4}{\fill[area] plot[domain=10:15.5,samples=60] (\x,{isoD(\x)}) -- (15.5,15.5) -- plot[domain=15.5:10,samples=60] ({isoD(\x)},\x) -- cycle;}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceemorado,anchor=west] at (15.5,{isoD(15.5)}) {$\pi_D=\pi_D^N$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=east] at ({isoD(15.5)},15.5) {$\pi_F=\pi_F^N$};}
+  % 5: precio mínimo del compromiso y nuevo equilibrio
+  \capa{5}{\draw[curvanueva] (0,12) -- (16.5,12); \node[etiqueta,text=tceerojo,font=\footnotesize,anchor=south west] at (0.2,12) {precio mínimo $\bar p$};}
+  \capa{5}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]above left=0pt and 0pt:$C$}] (C) at (10.8,12) {};}
+  \capa{5}{\draw[flecha] (10.15,10.25) -- (10.7,11.75);}
+  \capa{5}{\draw[guia] (C) -- (10.8,0) node[below right=0pt and -1pt,text=black,font=\footnotesize] {$10{,}8$};}
+\end{tikzpicture}
+\end{document}

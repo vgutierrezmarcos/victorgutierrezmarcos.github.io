@@ -139,3 +139,6 @@ Revisión completa del 13/11/2026 (entrega 1: tema y ficha de repaso; sin vídeo
 
 ## Coherencia con el 3.B.33 (14/11/2026)
 - La CM14 (Yaundé, marzo de 2026) no terminó «sin resultados»: aprobó tres decisiones menores (trato especial y diferenciado en MSF/OTC, entre otras), aunque sin acuerdos de calado. Corregido en el tema y en la ficha, en línea con el 3.B.33.
+
+## Coherencia con el 3.B.41 (14/11/2026)
+- Corregido por el coordinador a partir del 3.B.41 (Mercosur: negociación cerrada en diciembre de 2024 y firma el 17/1/2026; México firmado; Indonesia, la India y Australia cerrados en 2025-2026; salvaguardia del acero sustituida el 1/7/2026 por el Reglamento 2026/1384; el SPG se trata en el 3.B.41).

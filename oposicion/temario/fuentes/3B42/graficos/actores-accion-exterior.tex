@@ -1,0 +1,56 @@
+% Quién decide la acción exterior de la UE: el Consejo Europeo fija las
+% orientaciones estratégicas; el Consejo de Asuntos Exteriores (con sus
+% formaciones de comercio y de desarrollo) decide los acuerdos y las
+% sanciones; la Alta Representante y vicepresidenta de la Comisión, con el
+% Servicio Europeo de Acción Exterior, une el Consejo y la Comisión (doble
+% sombrero); la Comisión, con sus direcciones generales, propone y negocia los
+% acuerdos; el Parlamento Europeo los aprueba (art. 218 TFUE), vota el
+% presupuesto y colegisla los instrumentos; el BEI y el BERD financian, y los
+% Estados miembros comparten la competencia en desarrollo (art. 4.4 TFUE) y
+% actúan con la UE como Team Europe. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    caja/.style={thick,rounded corners=2pt,align=left,inner sep=4pt,
+      font=\footnotesize,text width=#1},
+    inst/.style={caja=#1,draw=tceemorado,fill=tceemorado!10},
+    ar/.style={caja=#1,draw=tceeazul,fill=tceeazul!10},
+    otro/.style={caja=#1,draw=tceegris,fill=tceegris!10},
+    din/.style={caja=#1,draw=tceeverde,fill=tceeverde!10},
+    elige/.style={->,thick,black!65},
+    rot/.style={font=\footnotesize,text=black!70,align=left,inner sep=2pt}]
+  % 1: Consejo Europeo
+  \capa{1}{\node[inst=6.4cm,align=center] (ce) at (8,0) {\textbf{Consejo Europeo}\\orientaciones estratégicas; presidente: \autor{António Costa}; unanimidad en la PESC};}
+  % 2: Consejo de Asuntos Exteriores
+  \capa{2}{\node[inst=3.9cm,anchor=north] (cae) at (2.15,-1.4) {\textbf{Consejo de Asuntos Exteriores}\\preside la Alta Representante; formaciones de comercio y de desarrollo; decide acuerdos y sanciones};}
+  % 3: Alta Representante y SEAE
+  \capa{3}{\node[ar=3.2cm,align=center,anchor=north] (ar) at (7.6,-1.4) {\textbf{Alta Representante y vicepresidenta de la Comisión}\\\autor{Kaja Kallas}};}
+  \capa{3}{\node[ar=3.2cm,align=center,anchor=north] (seae) at ($(ar.south)+(0,-0.55)$) {\textbf{Servicio Europeo de Acción Exterior (SEAE)}\\unas 145 delegaciones};}
+  \capa{3}{\draw[thick,tceeazul] (ar) -- (seae);}
+  % 4: Comisión Europea y sus direcciones generales
+  \capa{4}{\node[inst=4.3cm,anchor=north] (com) at (13.75,-1.4) {\textbf{Comisión Europea}\\[1pt]
+      \textbf{DG TRADE}: comercio\\
+      \textbf{DG INTPA}: asociaciones internacionales, desarrollo\\
+      \textbf{DG ENEST}: ampliación y vecindad del Este\\
+      \textbf{DG MENA}: Oriente Próximo, norte de África y Golfo\\
+      \textbf{DG ECHO}: ayuda humanitaria\\
+      \textbf{DG ECFIN}: ayuda macrofinanciera};}
+  % 5: Parlamento Europeo
+  \capa{5}{\node[inst=3.9cm,anchor=north] (pe) at (2.15,-6.9) {\textbf{Parlamento Europeo}\\aprobación de acuerdos (art.~218 TFUE); presupuesto; colegislador de los instrumentos};}
+  % 6: BEI y BERD; Estados miembros
+  \capa{6}{\node[din=4.3cm,anchor=north] (bei) at (13.75,-6.9) {\textbf{BEI y BERD}\\financiación; Team Europe};}
+  \capa{6}{\node[otro=3.9cm,anchor=north] (em) at (7.6,-6.9) {\textbf{Estados miembros}\\competencia compartida en desarrollo (art.~4.4 TFUE); Team Europe};}
+  % 7: relaciones
+  \capa{7}{\draw[elige] (ce.west) -| node[rot,pos=0.25,above] {orientaciones} (cae.north);}
+  \capa{7}{\draw[<->,thick,dashed,tceeazul] (ar.west) -- node[rot,above,text=tceeazul] {preside} (ar.west -| cae.east);}
+  \capa{7}{\draw[<->,thick,dashed,tceeazul] (ar.east) -- node[rot,above,text=tceeazul] {vicepresidenta} (ar.east -| com.west);}
+  \capa{7}{\draw[elige] (com.south) -- (com.south |- 0,-6.15) -- (2.15,-6.15) -- (pe.north);}
+  \capa{7}{\draw[elige] (2.15,-6.15) -- (cae.south);}
+  \capa{7}{\node[rot,anchor=north,align=center] at (7.6,-6.2) {propone y negocia los acuerdos};}
+  \capa{7}{\draw[elige] (em.east) -- (bei.west);}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,63 @@
+% Defensa comercial de la UE: investigaciones antidumping (AD) y
+% antisubvenciones (AS) iniciadas cada año (barras apiladas) y medidas
+% definitivas impuestas (puntos), 1995-2025.
+% Fuente en la cabecera de ../datos/defensa-ue.csv (OMC, estadísticas de
+% defensa comercial, fila «European Union»).
+% Capas: barras -> ejes -> línea y puntos de medidas -> rótulos -> leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{defad}{tceemorado!80}
+\colorlet{defas}{tceedorado!75}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/defensa-ue.csv}\defensa
+\pgfplotstablecreatecol[expr={\thisrow{ad_medidas}+\thisrow{as_medidas}}]{medidas}{\defensa}
+\pgfplotsset{ejesdefensa/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesdefensa/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14.5cm, height=7cm,
+      xmin=1994.2, xmax=2025.8, ymin=0, ymax=95,
+      xtick={1995,2000,...,2025}, minor xtick={1995,...,2025},
+      ytick={0,20,...,80},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Número},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, ybar stacked, bar width=0.68,
+      legend style={at={(axis cs:2003,93)}, anchor=north west, draw=none,
+        font=\footnotesize, row sep=1pt, fill=none},
+      legend cell align=left,
+      ejesdefensa, dicapas,
+    ]
+    % 1: barras apiladas de investigaciones iniciadas
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=defad] table[x=anio, y=ad_iniciadas] {\defensa};
+      \addplot[on layer=dicbarras, dicbarra=defas] table[x=anio, y=as_iniciadas] {\defensa};
+    }
+    % 2: ejes (ver ejesdefensa)
+    % 3: medidas definitivas impuestas
+    \capa{3}{
+      \addplot[dicsuelto, diclinea=tceeverde, thick] table[x=anio, y=medidas] {\defensa};
+      \addplot[dicsuelto, dicpuntos=tceeverde] table[x=anio, y=medidas] {\defensa};
+    }
+    % 4: rótulos
+    \capa{4}{
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=2pt,align=center]{(1999,85)}{1999: 85}
+      \dicrotulo[font=\footnotesize,anchor=south,yshift=2pt,align=center]{(2024.6,33)}{2024-2025:\\32 cada año}
+    }
+    % 5: leyenda como rótulos directos
+    \capa{5}{
+      \dicrotulo[font=\footnotesize,anchor=west,text=tceemorado]{(2003.5,88)}{\textcolor{defad}{\rule{8pt}{6pt}}\ Antidumping iniciadas}
+      \dicrotulo[font=\footnotesize,anchor=west,text=tceedorado!80!black]{(2003.5,80)}{\textcolor{defas}{\rule{8pt}{6pt}}\ Antisubvenciones iniciadas}
+      \dicrotulo[font=\footnotesize,anchor=west,text=tceeverde]{(2003.5,72)}{$-\!\!\circ\!\!-$\ Medidas definitivas impuestas}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

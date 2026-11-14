@@ -1,0 +1,26 @@
+% La «escalera» de las preferencias comerciales de la UE: de menos a más
+% integración, con ejemplos (noviembre de 2026). Fuente: Comisión Europea,
+% DG Comercio; elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar}]
+  \newcommand{\escalon}[5]{% capa, x, y, color, texto
+    \capa{#1}{\node[draw=#4,thick,fill=#4!12,rounded corners=2pt,align=left,
+      text width=4.7cm,minimum height=1.0cm,inner sep=3pt,font=\footnotesize,anchor=south west]
+      at (#2,#3) {#5};}}
+  \capa{1}{\draw[eje] (-0.3,-0.3) -- (14.6,-0.3) node[below left,font=\footnotesize] {más preferencias};}
+  \capa{1}{\draw[eje] (-0.3,-0.3) -- (-0.3,8.4) node[below left,font=\footnotesize,align=right,rotate=90,anchor=south east] {más integración};}
+  \escalon{1}{0}{0}{tceegris}{\textbf{Nación más favorecida (NMF)}\\EE.\,UU. (con su pacto de 2025), China, Rusia (sanciones)}
+  \escalon{2}{1.2}{1.15}{tceedorado}{\textbf{Preferencias unilaterales (SPG)}\\SPG, SPG+ y Todo menos armas}
+  \escalon{3}{2.4}{2.3}{tceeazul}{\textbf{Acuerdos de libre comercio}\\Corea, Japón, CETA, Vietnam, Mercosur}
+  \escalon{4}{3.6}{3.45}{tceeverde}{\textbf{ALC amplios y profundos (DCFTA)}\\Ucrania, Moldavia, Georgia}
+  \escalon{5}{4.8}{4.6}{tceenaranja}{\textbf{Unión aduanera}\\Turquía (industriales), Andorra, San Marino}
+  \escalon{6}{6.0}{5.75}{tceemorado}{\textbf{Espacio Económico Europeo}\\Noruega, Islandia y Liechtenstein: mercado interior}
+  \capa{7}{\node[draw=tceemorado,very thick,fill=tceemorado!25,rounded corners=2pt,align=left,
+      text width=4.7cm,minimum height=1.0cm,inner sep=3pt,font=\footnotesize,anchor=south west]
+      at (7.2,6.9) {\textbf{Mercado único y política comercial común}\\los 27 Estados miembros};}
+\end{tikzpicture}
+\end{document}

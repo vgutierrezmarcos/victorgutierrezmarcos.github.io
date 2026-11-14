@@ -1,0 +1,68 @@
+% Arancel NMF aplicado medio simple de la UE por grupos de productos, 2024 (%).
+% Agrícolas en dorado y no agrícolas en morado; líneas de referencia en las
+% medias (agrícolas 10,5 %, no agrícolas 4,1 %).
+% Fuente en la cabecera de ../datos/aranceles-ue.csv (OMC, World Tariff
+% Profiles 2025).
+% Capas: barras -> ejes -> medias -> rótulos y leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{arag}{tceedorado!75}
+\colorlet{arnoag}{tceemorado!75}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/aranceles-ue.csv}\aranceles
+\pgfplotsset{ejesaranceles/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesaranceles/.style={axis line style={draw=none},
+    major tick style={draw=none}, xticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=12cm, height=12.5cm,
+      xbar, bar width=6.5pt, bar shift=0pt, xmin=0, xmax=31,
+      ytick={0,...,21}, y dir=reverse, ymin=-0.7, ymax=21.7,
+      yticklabels from table={\aranceles}{grupo},
+      yticklabel style={font=\footnotesize},
+      xticklabel style={font=\footnotesize},
+      xlabel={Arancel NMF aplicado medio simple (\%)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      clip=false, unbounded coords=discard,
+      legend style={at={(axis cs:16,15)}, anchor=north west, draw=none,
+        font=\footnotesize, row sep=1pt, fill=none},
+      legend cell align=left,
+      legend image code/.code={\draw[#1] (0cm,-0.1cm) rectangle (0.4cm,0.1cm);},
+      ejesaranceles, dicapas,
+    ]
+    % 1: barras
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=arag] table[x=agricola, y expr=\coordindex] {\aranceles};
+      \addplot[on layer=dicbarras, dicbarra=arnoag] table[x=noagricola, y expr=\coordindex] {\aranceles};
+    }
+    % 3: medias
+    \capa{3}{
+      \addplot[dicsuelto, dicumbral, draw=tceedorado!80!black] coordinates {(10.5,-0.7) (10.5,21.7)};
+      \addplot[dicsuelto, dicumbral, draw=tceemorado] coordinates {(4.1,-0.7) (4.1,21.7)};
+      \dicrotulo[font=\footnotesize,anchor=south west,text=tceedorado!70!black,align=left]{(10.6,-0.7)}{media agrícolas: 10,5}
+      \dicrotulo[font=\footnotesize,anchor=south east,text=tceemorado,align=right]{(4.0,-0.7)}{media no\\agrícolas: 4,1}
+    }
+    % 4: valores y leyenda
+    \capa{4}{
+      \addplot[dicsuelto, draw=none, nodes near coords, point meta=x,
+        nodes near coords style={font=\scriptsize,anchor=west,
+          /pgf/number format/.cd, fixed, fixed zerofill, precision=1, use comma}]
+        table[x=agricola, y expr=\coordindex] {\aranceles};
+      \addplot[dicsuelto, draw=none, nodes near coords, point meta=x,
+        nodes near coords style={font=\scriptsize,anchor=west,
+          /pgf/number format/.cd, fixed, fixed zerofill, precision=1, use comma}]
+        table[x=noagricola, y expr=\coordindex] {\aranceles};
+      \addlegendimage{dicbarra=arag}
+      \addlegendentry{Productos agrícolas}
+      \addlegendimage{dicbarra=arnoag}
+      \addlegendentry{Productos no agrícolas}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

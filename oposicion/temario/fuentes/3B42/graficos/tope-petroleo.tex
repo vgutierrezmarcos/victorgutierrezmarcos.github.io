@@ -1,0 +1,41 @@
+% El tope al precio del petróleo ruso: oferta rusa de exportación plana en el
+% coste marginal c = 1 hasta la capacidad Q̄ = 6 y vertical después; precio
+% mundial P* = 5. Sin tope, Rusia se queda la renta (P* - c) Q̄. Con el tope
+% P̄ = 2,6, la renta entre P̄ y P* pasa a los compradores y Rusia conserva la
+% de entre c y P̄. Con la flota en la sombra (coste k), Rusia vende fuera del
+% tope a P* - k = 4,2.
+% Capas: ejes → oferta → precio mundial → renta sin tope → tope → reparto
+% de la renta → flota en la sombra.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.6,-0.8) rectangle (11,7);
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (8,0);}
+  \capa{1}{\node[etiqueta,below] at (3,-0.3) {$Q$ (exportaciones rusas de crudo)};}
+  \capa{1}{\draw[eje] (0,0) -- (0,6.6) node[above right=0pt and -6pt] {$P$ (dólares por barril)};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: oferta rusa de exportación
+  \capa{2}{\draw[curva2] (0,1) -- (6,1) -- (6,6.2) node[etiqueta,right,text=tceeazul,align=left] {$S$ (coste marginal $c$\\y capacidad $\bar Q$)};}
+  \capa{2}{\node[left] at (0,1) {$c$};}
+  \capa{2}{\draw[guia] (6,1) -- (6,0) node[below] {$\bar Q$};}
+  % 3: precio mundial
+  \capa{3}{\draw[curva1] (0,5) -- (7.5,5) node[etiqueta,right,text=tceemorado] {$P^*$ (precio mundial)};}
+  \capa{3}{\node[punto] at (6,5) {};}
+  % 4: renta de Rusia sin tope
+  \capa{4}{\fill[area] (0,1) rectangle (6,5);}
+  \capa{4}{\node[etiqueta,text=tceemorado] at (3,4.6) {renta de Rusia sin tope};}
+  % 5: el tope
+  \capa{5}{\draw[curvanueva] (0,2.6) -- (7.5,2.6) node[etiqueta,right,text=tceerojo] {$\bar P$ (tope)};}
+  \capa{5}{\node[punto] at (6,2.6) {};}
+  % 6: reparto de la renta con el tope
+  \capa{6}{\fill[area2] (0,2.6) rectangle (6,5);}
+  \capa{6}{\node[etiqueta] at (3,3.4) {renta que pasa a los compradores};}
+  \capa{6}{\node[etiqueta] at (3,1.8) {renta que conserva Rusia};}
+  % 7: la flota en la sombra: Rusia vende fuera del tope a P* - k
+  \capa{7}{\draw[thin,dashed,tceerojo] (0,4.2) -- (7.5,4.2) node[etiqueta,right,text=tceerojo] {$P^*-k$: flota en la sombra};}
+\end{tikzpicture}
+\end{document}

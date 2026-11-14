@@ -138,3 +138,4 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III**: tabla de instrumentos como apoyo; `mrr-paises` como apoyo; la deuda común en la pizarra: `eq:carga-ngeu` y `deuda-ngeu` por capas (área de la deuda; línea de la carga).
 - **Funciones clave que se conservan**: `eq:samuelson-ue` (I.4-II), `eq:justo-retorno` (II.2-II.3), `eq:carga-ngeu` (III.3).
 - Nunca se dice el número de un tema en voz alta.
+- B37-08 resuelta por el coordinador (14/11/2026): comprobado en el texto del artículo; son ≈1,6 puntos más de crecimiento anual medio durante el periodo de programación. Se mantiene «al año»; el 3.B.40 dice lo mismo.

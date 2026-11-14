@@ -1,0 +1,184 @@
+tema: 3B41
+fecha_inventario: 2026-11-14
+datos:
+  - id: comercio-socios
+    texto: "gráfico comercio-socios; en el texto: exportaciones extra-UE de bienes 2,65 billones de euros e importaciones 2,54 (2025); EE. UU. 21 % de las exportaciones y superávit de casi 200.000 millones; China 574.000/199.000 millones, déficit de 375.000"
+    donde: [3B41.tex, graficos/comercio-socios.tex, datos/comercio-socios.csv, repaso/3B41-repaso.tex]
+    valor: null
+    unidad: miles de millones de euros
+    periodo: "2025"
+    fuente: Eurostat2026Socios
+    organismo: Eurostat
+    serie: "ext_lt_maineu (MIO_EXP_VAL, MIO_IMP_VAL), UE-27; estado de los acuerdos según CE2026Negociaciones"
+    url: https://ec.europa.eu/eurostat/databrowser/view/ext_lt_maineu/default/table
+    periodicidad: anual (datos del año anterior hacia marzo; revisiones mensuales)
+    proxima: "2027-04"
+    familia: comercio-ue
+
+  - id: servicios-socios
+    texto: "servicios extra-UE 2025: exportaciones 1,58 billones de euros e importaciones 1,43; EE. UU. 343/522, Reino Unido 309/249, Suiza 172/102, China 67/46, Japón 45/24, India 29/38, Canadá 29/20, Brasil 24/10; déficit con EE. UU. de 178.000 millones; superávit total con EE. UU. de unos 18.000 millones"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: null
+    unidad: miles de millones de euros
+    periodo: "2025"
+    fuente: Eurostat2026Servicios
+    organismo: Eurostat
+    serie: "bop_its6_det, bop_item=S, currency=MIO_EUR, geo=EU27_2020, CRE/DEB"
+    url: https://ec.europa.eu/eurostat/databrowser/view/bop_its6_det/default/table
+    periodicidad: anual
+    proxima: "2027-06"
+    familia: comercio-ue
+
+  - id: espana-extra-ue
+    texto: "España: el 61,8 % de sus exportaciones de bienes va a la UE; el 38,2 % restante (unos 151.000 millones de euros) y el 43,9 % de sus importaciones, fuera"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: [61.8, 38.2, 43.9]
+    unidad: "%"
+    periodo: "2025"
+    fuente: Eurostat2026Espana
+    organismo: Eurostat
+    serie: "ext_lt_intratrd, geo=ES, PC_TOT_EXP / PC_TOT_IMP"
+    url: https://ec.europa.eu/eurostat/databrowser/view/ext_lt_intratrd/default/table
+    periodicidad: anual
+    proxima: "2027-04"
+    familia: comercio-espana
+
+  - id: aranceles-ue
+    texto: "gráfico aranceles-ue; arancel NMF aplicado medio 5,0 % (agrícolas 10,5 %, no agrícolas 4,1 %); ponderado 2,8 %; lácteos 27,1 %"
+    donde: [3B41.tex, graficos/aranceles-ue.tex, datos/aranceles-ue.csv, repaso/3B41-repaso.tex]
+    valor: [5.0, 10.5, 4.1, 2.8]
+    unidad: "%"
+    periodo: "2024"
+    fuente: OMC2025PerfilesArancelarios
+    organismo: OMC, ITC y UNCTAD
+    serie: "World Tariff Profiles, ficha de la UE, partes A.1 y A.2"
+    url: https://www.wto.org/english/res_e/booksp_e/world_tariff_profiles25_e.pdf
+    periodicidad: anual (julio)
+    proxima: "2027-07"
+    familia: comercio-aranceles
+
+  - id: defensa-ue-serie
+    texto: "gráfico defensa-ue: investigaciones antidumping y antisubvenciones iniciadas por la UE y medidas definitivas impuestas, 1995-2025"
+    donde: [graficos/defensa-ue.tex, datos/defensa-ue.csv, 3B41.tex, repaso/3B41-repaso.tex]
+    valor: null
+    unidad: número
+    periodo: "1995-2025"
+    fuente: OMC2026DefensaUE
+    organismo: OMC
+    serie: "AD/CV_InitiationsByRepMem.xlsx y AD/CV_MeasuresByRepMem.xlsx, fila European Union"
+    url: https://www.wto.org/english/tratop_e/adp_e/adp_e.htm
+    periodicidad: semestral
+    proxima: "2027-05"
+    familia: comercio-defensa
+
+  - id: defensa-ue-vigor
+    texto: "232 medidas en vigor a finales de 2025 (199 un año antes): 159 antidumping, 25 antisubvenciones, 46 extensiones por elusión y 2 salvaguardias; 33 investigaciones nuevas en 2024 y 32 en 2025"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: 232
+    unidad: medidas
+    periodo: "2025-12-31"
+    fuente: CE2026DefensaComercial
+    organismo: Comisión Europea
+    serie: "Informe anual sobre las actividades antidumping, antisubvenciones y de salvaguardia (44.º, COM(2026) 475)"
+    url: https://www.cdep.ro/afaceri_europene/CE/2026/COM_2026_475_1_EN_ACT_part1_v3.pdf
+    periodicidad: anual (septiembre)
+    proxima: "2027-09"
+    familia: comercio-defensa
+
+  - id: red-acuerdos
+    texto: "44 acuerdos preferenciales con 76 socios a finales de 2025, que cubren el 46,3 % del comercio exterior de la UE (2,39 billones de euros); 53,3 % con los cerrados en 2025-2026; comercio con socios preferenciales +3,1 % frente a +1,4 %; CETA +71 % (2016-2023)"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: [44, 76, 46.3, 53.3]
+    unidad: "acuerdos, socios, %"
+    periodo: "2025"
+    fuente: CE2026Informe
+    organismo: Comisión Europea
+    serie: "Informe anual sobre la aplicación y el cumplimiento de la política comercial y de seguridad económica (COM(2026) 506)"
+    url: https://ec.europa.eu/transparency/documents-register/api/files/COM(2026)506_0/090166e5341f2523
+    periodicidad: anual (septiembre-octubre)
+    proxima: "2027-10"
+    familia: comercio-acuerdos
+
+  - id: estado-acuerdos
+    texto: "situación de los acuerdos: Mercosur (firma 17/1/2026, interino provisional 1/5/2026, dictamen 1/26 pendiente), México (firma 22/5/2026), India (cerrado 27/1/2026), Indonesia (cerrado 9/2025), Australia (cerrado 24/3/2026), Suiza (firmado 2/3/2026), CETA (17/27 ratificaciones)"
+    donde: [3B41.tex, repaso/3B41-repaso.tex, datos/comercio-socios.csv]
+    valor: null
+    unidad: fechas
+    periodo: "2026-11-14"
+    fuente: CE2026Negociaciones; CE2026MercosurProvisional; PE2026Mercosur; Euronews2026CETA
+    organismo: Comisión Europea
+    serie: "Negotiations and agreements"
+    url: https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/negotiations-and-agreements_en
+    periodicidad: continua
+    proxima: "2027-01"
+    familia: comercio-acuerdos
+
+  - id: eeuu-aranceles
+    texto: "techo del 15 % de EE. UU. a la UE (Turnberry 27/7/2025; declaración 21/8/2025); rebajas de la UE desde 1/7/2026 hasta 2029; contramedidas de 93.000 millones suspendidas sin fecha (julio de 2026); acero, aluminio y cobre al 50 %"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: 15
+    unidad: "%"
+    periodo: "2026-11-14"
+    fuente: UE2025DeclaracionEEUU; CE2026EEUU; CE2026Contramedidas; JonesDay2026IEEPA
+    organismo: Comisión Europea
+    serie: null
+    url: https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/united-states_en
+    periodicidad: continua
+    proxima: "2027-01"
+    familia: comercio-eeuu
+
+  - id: acero-medida
+    texto: "Reglamento 2026/1384 desde el 1/7/2026: contingentes de unos 18,3 millones de toneladas (−47 %) y derecho del 50 % fuera de contingente"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: [18.3, 47, 50]
+    unidad: "Mt, %, %"
+    periodo: "2026-07-01"
+    fuente: CE2026Salvaguardia
+    organismo: Comisión Europea
+    serie: null
+    url: https://trade.ec.europa.eu/access-to-markets/en/news/new-eu-safeguards-steel-imports-third-countries
+    periodicidad: revisión del ámbito antes del 30/6/2027
+    proxima: "2027-06"
+    familia: comercio-defensa
+
+  - id: spg-beneficiarios
+    texto: "SPG: unos 65 beneficiarios, 8 en el SPG+ (Bolivia, Cabo Verde, Filipinas, Kirguistán, Mongolia, Pakistán, Sri Lanka y Uzbekistán); nuevo Reglamento 2026/1395 desde 2027"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: [65, 8]
+    unidad: países
+    periodo: "2026"
+    fuente: CE2026SPGPagina; UE2026SPG
+    organismo: Comisión Europea
+    serie: null
+    url: https://policy.trade.ec.europa.eu/development-and-sustainability/generalised-scheme-preferences_en
+    periodicidad: anual (lista de beneficiarios cada 1 de enero)
+    proxima: "2027-01"
+    familia: comercio-spg
+
+  - id: mafc-precio
+    texto: "precio del certificado del MAFC en el tercer trimestre de 2026: 82,32 euros por tonelada"
+    donde: [3B41.tex]
+    valor: 82.32
+    unidad: euros por tonelada de CO2
+    periodo: "2026-T3"
+    fuente: CE2026PrecioCBAM
+    organismo: Comisión Europea
+    serie: "precio trimestral del certificado (media de las subastas del RCDE UE)"
+    url: https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism/price-cbam-certificates_en
+    periodicidad: trimestral (semanal desde 2027)
+    proxima: "2027-01"
+    familia: clima-mafc
+
+  - id: rusia-sanciones
+    texto: "más de 20 paquetes de sanciones a Rusia (el 21.º, en julio de 2026); Rusia, del 5.º socio (2021) al 19.º (2025)"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: 21
+    unidad: paquetes
+    periodo: "2026-07-23"
+    fuente: CONS2026Sanciones21; Eurostat2026Socios
+    organismo: Consejo de la UE; Eurostat
+    serie: null
+    url: https://www.eeas.europa.eu/delegations/ukraine/21st-package-sanctions-eu-hits-russian-energy-financial-services-and-crypto-hard_en
+    periodicidad: continua
+    proxima: "2027-01"
+    familia: comercio-sanciones

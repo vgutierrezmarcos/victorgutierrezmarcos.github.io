@@ -1,0 +1,49 @@
+% El efecto del mercado doméstico amplificado en el modelo de capital móvil
+% (Martin y Rogers, 1995; Baldwin et al., 2003, cap. 3): cuota de empresas
+% del centro s_n según la libertad comercial phi, con
+% s_n = 1/2 + (1+phi)/(1-phi) (s_E - 1/2), acotada en 1.
+% Curva 1: s_E = 0,6 (aglomeración total en phi = (1-s_E)/s_E = 2/3).
+% Curva nueva: tras una transferencia que baja s_E a 0,55 (phi = 9/11).
+% Capas: ejes -> referencias 1/2 y s_E -> curva con s_E = 0,6 -> punto de
+% aglomeración total -> flecha de la integración -> curva tras la
+% transferencia -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=7cm]
+  % 1: ejes
+  \capa{1}{%
+    \draw[eje] (0,0.4) -- (1.12,0.4) node[below left=2pt and 0pt] {$\phi$};
+    \draw[eje] (0,0.4) -- (0,1.1) node[left] {$s_n$};
+    \draw (1,0.4) -- ++(0,-0.012) node[below] {$1$};
+    \node[below left] at (0,0.4) {$0$};
+    \draw (0,1) -- ++(-0.012,0) node[left] {$1$};
+  }
+  % 2: referencias: reparto simétrico y cuota del gasto
+  \capa{2}{%
+    \draw[guia] (0,0.5) node[left,text=black] {$\tfrac12$} -- (1,0.5);
+    \draw[guia] (0,0.6) node[left,text=black] {$s_E$} -- (0.12,0.6);
+  }
+  % 3: la cuota de empresas del centro con s_E = 0,6
+  \capa{3}{%
+    \draw[curva1] plot[domain=0:0.6667,samples=60,smooth] (\x,{0.5+0.1*(1+\x)/(1-\x)}) -- (1,1);
+    \node[etiqueta,text=tceemorado,anchor=west] at (0.04,0.68) {$s_E=0{,}6$};
+  }
+  % 4: aglomeración total
+  \capa{4}{%
+    \node[punto] at (0.6667,1) {};
+    \draw[guia] (0.6667,1) -- (0.6667,0.4) node[below,text=black] {$\phi^{\mathrm{CP}}=\frac{1-s_E}{s_E}$};
+  }
+  % 5: la integración sube phi y lleva empresas al centro
+  \capa{5}{%
+    \draw[flecha] (0.20,0.86) -- node[etiqueta,above,sloped,text=tceerojo,font=\footnotesize] {integración} (0.48,0.86);
+  }
+  % 6: transferencia a la periferia: s_E baja a 0,55
+  \capa{6}{%
+    \draw[curvanueva,desplazada] plot[domain=0:0.8182,samples=60,smooth] (\x,{0.5+0.05*(1+\x)/(1-\x)}) -- (1,1);
+    \node[etiqueta,text=tceerojo,anchor=west] at (0.83,0.72) {$s_E'=0{,}55$};
+    \draw[guia] (0.8182,1) -- (0.8182,0.4) node[below=13pt,text=black] {$\phi^{\mathrm{CP}\prime}$};
+  }
+\end{tikzpicture}
+\end{document}

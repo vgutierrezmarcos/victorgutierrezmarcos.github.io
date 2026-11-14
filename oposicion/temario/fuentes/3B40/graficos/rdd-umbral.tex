@@ -1,0 +1,50 @@
+% Regresión en discontinuidad en el umbral del 75 % (Becker, Egger y von
+% Ehrlich, 2010): crecimiento posterior de cada región frente a su PIB por
+% habitante en PPA (% de la media de la UE) en los años de referencia.
+% Ilustrativo: puntos generados con una regla fija (no son datos), rectas
+% con la misma pendiente a los 2 lados y un salto tau en el umbral.
+% Capas: ejes -> umbral -> puntos -> recta de las no subvencionables ->
+% recta de las subvencionables -> salto tau -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.11cm,y=1.6cm]
+  % origen en (40, 0): x de 40 a 110; y de 0 a 4
+  % 1: ejes
+  \capa{1}{%
+    \draw[eje] (40,0) -- (114,0) node[below left=2pt and 0pt] {$x_i$};
+    \draw[eje] (40,0) -- (40,4.1) node[left] {$g_i$};
+    \foreach \t in {50,75,100} \draw (\t,0) -- ++(0,-0.06) node[below] {\t};
+  }
+  % 2: umbral de subvencionabilidad
+  \capa{2}{%
+    \draw[guia] (75,0) -- (75,3.9);
+    \node[etiqueta,font=\footnotesize,anchor=south] at (75,3.9) {umbral: 75~\%};
+  }
+  % 3: regiones (ilustrativas)
+  \capa{3}{%
+    \foreach \x/\e in {44/0.25,47/-0.2,50/0.15,53/-0.3,55/0.35,58/0.05,60/-0.25,62/0.3,64/-0.1,66/0.2,68/-0.35,70/0.1,72/0.25,73.5/-0.15}
+      \fill[tceeazul!60] (\x,{2.9-0.02*(\x-75)+\e}) circle (1.6pt);
+    \foreach \x/\e in {76.5/0.2,78/-0.25,80/0.1,83/0.3,85/-0.2,88/0.05,90/-0.3,93/0.25,95/-0.05,98/0.2,101/-0.25,104/0.1,107/-0.15}
+      \fill[tceegris!70] (\x,{1.9-0.02*(\x-75)+\e}) circle (1.6pt);
+  }
+  % 4: recta de las regiones no subvencionables (D = 0)
+  \capa{4}{%
+    \draw[curva4] (75,1.9) -- (110,1.2);
+    \node[etiqueta,text=tceedorado,anchor=west,font=\footnotesize] at (92,0.75) {$D_i=0$: sin objetivo 1};
+  }
+  % 5: recta de las subvencionables (D = 1)
+  \capa{5}{%
+    \draw[curva2] (42,3.56) -- (75,2.9);
+    \node[etiqueta,text=tceeazul,anchor=west,font=\footnotesize] at (44,3.85) {$D_i=1$: objetivo 1};
+  }
+  % 6: el salto es el efecto
+  \capa{6}{%
+    \node[punto,fill=tceeazul] at (75,2.9) {};
+    \node[punto,fill=tceedorado] at (75,1.9) {};
+    \draw[thick,tceerojo,decorate,decoration={brace,amplitude=5pt,mirror}] (76.2,1.92) -- (76.2,2.88)
+      node[etiqueta,midway,right=6pt,text=tceerojo] {$\tau$: efecto de los fondos};
+  }
+\end{tikzpicture}
+\end{document}

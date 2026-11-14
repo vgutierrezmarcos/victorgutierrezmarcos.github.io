@@ -159,3 +159,6 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - Acuerdo sobre Comercio Electrónico: 66 miembros en Yaundé, 68 en noviembre de 2026 (tema y ficha).
 - Reforma: las 4 líneas de junio de 2026 salieron de una reunión de jefes de delegación (26/6), no del Consejo General.
 - Acuerdos regionales en vigor notificados: unos 390 (cifra del 3.B.35, base de la OMC a noviembre de 2026), no 380 (tema y ficha).
+
+## Coherencia con el 3.B.41 (14/11/2026)
+- Corregido por el coordinador a partir del 3.B.41 (Mercosur: negociación cerrada en diciembre de 2024 y firma el 17/1/2026; México firmado; Indonesia, la India y Australia cerrados en 2025-2026; salvaguardia del acero sustituida el 1/7/2026 por el Reglamento 2026/1384; el SPG se trata en el 3.B.41).

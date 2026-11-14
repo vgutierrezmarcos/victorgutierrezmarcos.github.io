@@ -1,0 +1,60 @@
+% Comercio de bienes de la UE con sus 16 primeros socios, 2025: exportaciones
+% (morado) e importaciones (azul), en miles de millones de euros, con la
+% situación del acuerdo comercial en noviembre de 2026 a la derecha.
+% Fuente en la cabecera de ../datos/comercio-socios.csv (Eurostat).
+% Capas: barras -> ejes -> situación del acuerdo -> leyenda.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{soexp}{tceemorado!80}
+\colorlet{soimp}{tceeazul!60}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/comercio-socios.csv}\socios
+\pgfplotsset{ejessocios/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejessocios/.style={axis line style={draw=none},
+    major tick style={draw=none}, xticklabel style={opacity=0},
+    label style={opacity=0}, xmajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=12cm,
+      xbar, bar width=5.5pt, xmin=0, xmax=600,
+      ytick={0,...,15}, y dir=reverse, ymin=-0.7, ymax=15.7,
+      yticklabels from table={\socios}{socio},
+      yticklabel style={font=\footnotesize},
+      xticklabel style={font=\footnotesize},
+      xtick={0,100,...,600},
+      xlabel={Miles de millones de euros},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!25},
+      clip=false,
+      legend style={at={(axis cs:330,9.5)}, anchor=north west, draw=none,
+        font=\footnotesize, row sep=1pt, fill=none},
+      legend cell align=left,
+      legend image code/.code={\draw[#1] (0cm,-0.1cm) rectangle (0.4cm,0.1cm);},
+      ejessocios, dicapas,
+    ]
+    % 1: barras
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=soexp] table[x=exportaciones, y expr=\coordindex] {\socios};
+      \addplot[on layer=dicbarras, dicbarra=soimp] table[x=importaciones, y expr=\coordindex] {\socios};
+    }
+    % 3: situación del acuerdo comercial
+    \capa{3}{
+      \addplot[dicsuelto, draw=none, bar shift=0pt, nodes near coords, point meta=explicit symbolic,
+        nodes near coords style={font=\scriptsize, anchor=west, text=tceegris!80!black}]
+        table[x expr=610, y expr=\coordindex, meta=estado] {\socios};
+      \dicrotulo[font=\scriptsize\bfseries, anchor=south west, text=tceegris!80!black]{(610,-0.9)}{Acuerdo (nov. 2026)}
+    }
+    % 4: leyenda
+    \capa{4}{
+      \addlegendimage{dicbarra=soexp}
+      \addlegendentry{Exportaciones de la UE}
+      \addlegendimage{dicbarra=soimp}
+      \addlegendentry{Importaciones de la UE}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,60 @@
+% AOD de los 26 Estados de la UE con dato en 2025 (sin Chipre), en % de la
+% RNB: barras de 2025 (preliminar) y puntos de 2024, ordenados de menor a
+% mayor. España destacada. Meta del 0,7 % y media de los miembros UE del CAD
+% (0,42 %). Datos: ../datos/aod-ue-estados.csv (OCDE, DAC1, 14/11/2026).
+% Valores de control: Luxemburgo 0,99; Suecia 0,85; Dinamarca 0,72;
+% Alemania 0,56 (0,68 en 2024); España 0,27 (0,25).
+% Orden de capas (CRITERIOS §7): barras → ejes y referencias → puntos → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/aod-ue-estados.csv}\aod
+\colorlet{barraue}{tceemorado!70}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=13.5cm,
+      xbar, bar width=7pt, bar shift=0pt, xmin=0, xmax=1.1,
+      ymin=-0.7, ymax=25.7,
+      ytick={0,...,25},
+      yticklabels from table={\aod}{pais},
+      yticklabel style={font=\footnotesize},
+      xtick={0,0.1,...,1.1},
+      xticklabel style={font=\footnotesize, /pgf/number format/.cd,fixed,fixed zerofill,precision=1,use comma},
+      xlabel={\% de la renta nacional bruta},
+      axis lines*=left, tick align=outside, clip=false,
+      xmajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: barras de 2025 (España en dorado)
+    \capa{1}{
+      \addplot[forget plot, dicbarra=barraue] table[x=aod2025, y=n] {\aod};
+      \addplot[forget plot, dicbarra=tceedorado] coordinates {(0.27,14)};
+    }
+    % 2: ejes (los dibuja el axis), meta del 0,7 % y media UE del CAD
+    \capa{2}{
+      \dicraya[dashed, tceerojo, thick]{(0.7,-0.7) (0.7,25.7)}
+      \dicrotulo[font=\footnotesize, text=tceerojo, anchor=south west]{(0.705,25.75)}{meta del 0,7\,\%}
+      \dicraya[dashed, tceegris]{(0.42,-0.7) (0.42,25.7)}
+      \dicrotulo[font=\footnotesize, text=tceegris!80!black, anchor=south east]{(0.415,25.75)}{miembros UE del CAD: 0,42\,\%}
+    }
+    % 3: puntos de 2024
+    \capa{3}{
+      \addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.7pt, tceeazul, forget plot] table[x=aod2024, y=n] {\aod};
+    }
+    % 4: rótulos y leyenda
+    \capa{4}{
+      \addplot[forget plot, only marks, mark=none,
+        nodes near coords, point meta=explicit,
+        every node near coord/.append style={font=\scriptsize, anchor=west, xshift=2pt,
+          /pgf/number format/.cd, fixed, fixed zerofill, precision=2, use comma}]
+        table[x=lx, y=n, meta=aod2025] {\aod};
+      \fill[barraue, draw=barraue!65!black, line width=0.3pt] (axis cs:0.80,3.75) rectangle (axis cs:0.86,4.25);
+      \dicrotulo[font=\footnotesize, anchor=west]{(0.87,4)}{2025 (preliminar)}
+      \fill[tceeazul] (axis cs:0.83,2.6) circle (1.7pt);
+      \dicrotulo[font=\footnotesize, anchor=west]{(0.87,2.6)}{2024}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

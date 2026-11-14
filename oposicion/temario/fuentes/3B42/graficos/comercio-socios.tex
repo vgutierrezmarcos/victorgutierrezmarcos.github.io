@@ -1,0 +1,46 @@
+% Comercio de bienes de la UE-27 con sus 10 mayores socios en 2025:
+% exportaciones e importaciones (miles de millones de euros), barras
+% horizontales agrupadas, de mayor a menor comercio total.
+% Datos: ../datos/comercio-socios.csv (Eurostat, ext_st_eu27_2020sitc,
+% versión del 13/11/2026). Valores de control: EE. UU. 554,6/357,7;
+% China 199,5/574,4; Reino Unido 345,4/160,3.
+% Orden de capas (CRITERIOS §7): barras → ejes → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/comercio-socios.csv}\com
+\colorlet{barraexp}{tceemorado!75}
+\colorlet{barraimp}{tceedorado!80}
+\pgfplotsset{numeros/.style={nodes near coords, every node near coord/.append style={font=\scriptsize, anchor=west, xshift=1pt,
+  /pgf/number format/.cd, fixed, fixed zerofill, precision=1, use comma}}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=10cm,
+      xbar, bar width=6pt, xmin=0, xmax=680,
+      ymin=-0.6, ymax=9.6,
+      ytick={0,...,9},
+      yticklabels from table={\com}{socio},
+      yticklabel style={font=\footnotesize},
+      xtick={0,100,...,600},
+      xticklabel style={font=\footnotesize},
+      xlabel={miles de millones de euros},
+      axis lines*=left, tick align=outside, clip=false,
+      xmajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 1: exportaciones
+    \capa{1}{\addplot[dicbarra=barraexp, bar shift=3.2pt, numeros] table[x=exportaciones, y=n] {\com};}
+    % 2: importaciones
+    \capa{2}{\addplot[dicbarra=barraimp, bar shift=-3.2pt, numeros] table[x=importaciones, y=n] {\com};}
+    % 3: leyenda
+    \capa{3}{
+      \fill[barraexp] (axis cs:470,2.2) rectangle (axis cs:500,2.5);
+      \dicrotulo[font=\footnotesize, anchor=west]{(505,2.35)}{exportaciones de la UE}
+      \fill[barraimp] (axis cs:470,1.4) rectangle (axis cs:500,1.7);
+      \dicrotulo[font=\footnotesize, anchor=west]{(505,1.55)}{importaciones de la UE}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

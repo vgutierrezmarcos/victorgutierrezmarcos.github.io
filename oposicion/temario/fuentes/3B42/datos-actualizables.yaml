@@ -1,0 +1,212 @@
+tema: 3B42
+fecha_inventario: 2026-11-14
+datos:
+  - id: aod-ue-estados
+    texto: "AOD de los Estados de la UE en % de la RNB, 2024 y 2025 (Luxemburgo 0,99; Suecia 0,85; Dinamarca 0,72; Alemania 0,56; España 0,27); miembros UE del CAD 0,42 %; CAD 0,26 %"
+    donde: [3B42.tex, repaso/3B42-repaso.tex, datos/aod-ue-estados.csv, graficos/aod-ue-estados.tex]
+    valor: 0.42
+    unidad: "% de la RNB"
+    periodo: "2025 (preliminar)"
+    fuente: OCDE2026DAC1
+    organismo: OCDE (CAD)
+    serie: "DAC1, medida 11002 (AOD/RNB en donación equivalente)"
+    url: https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_DAC1%40DF_DAC1&df[ag]=OECD.DCD.FSD
+    periodicidad: anual (preliminar en abril; definitivo en diciembre)
+    proxima: "2026-12 (definitivos de 2025); 2027-04 (preliminares de 2026)"
+    familia: aod
+
+  - id: aod-ue-volumen
+    texto: "Estados de la UE: unos 87.000 millones de dólares de AOD en 2025 (0,41 % de la RNB, la mitad de la AOD del CAD); instituciones de la UE: 23.100 millones de euros (26.100 millones de dólares, −13,8 %)"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: 23100
+    unidad: millones de euros
+    periodo: "2025 (preliminar)"
+    fuente: OCDE2026AODPreliminar
+    organismo: OCDE (CAD)
+    serie: "DAC1; suma de los 27 (cálculo propio, sin Chipre)"
+    url: https://www.oecd.org/en/about/news/press-releases/2026/04/international-aid-fell-sharply-in-2025-says-oecd.html
+    periodicidad: anual
+    proxima: "2026-12"
+    familia: aod
+
+  - id: aod-espana
+    texto: "España: 4.554 millones de euros de AOD en 2025, 0,27 % de la RNB (0,25 % en 2024)"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: 4554
+    unidad: millones de euros
+    periodo: "2025 (preliminar)"
+    fuente: Exteriores2026AOD
+    organismo: OCDE (CAD) y MAEUEC
+    serie: "DAC1"
+    url: https://www.exteriores.gob.es/
+    periodicidad: anual
+    proxima: "2026-12"
+    familia: aod
+
+  - id: comercio-socios
+    texto: "Comercio de bienes de la UE con sus 10 mayores socios en 2025 (EE. UU. 554,6/357,7; China 199,5/574,4; Reino Unido 345,4/160,3 miles de millones); superávit con EE. UU. unos 197.000 millones y déficit con China unos 375.000 millones"
+    donde: [3B42.tex, repaso/3B42-repaso.tex, datos/comercio-socios.csv, graficos/comercio-socios.tex]
+    valor: null
+    unidad: miles de millones de euros
+    periodo: "2025"
+    fuente: Eurostat2026Socios
+    organismo: Eurostat
+    serie: "ext_st_eu27_2020sitc (TRD_VAL, SITC total), suma ene-dic"
+    url: https://ec.europa.eu/eurostat/web/international-trade-in-goods/database
+    periodicidad: anual (nota de prensa en marzo; revisiones posteriores)
+    proxima: "2027-03"
+    familia: comercio-ue
+
+  - id: peso-ue-mundo
+    texto: "UE 2025: 17,9 % del PIB mundial (14,0 % en PPA), 5,5 % de la población; 2.º exportador (13,8 %) e importador (12,9 %) de bienes y 1.º de servicios comerciales (22,7 %)"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: 17.9
+    unidad: "% del PIB mundial"
+    periodo: "2025"
+    fuente: BancoMundial2026PIB
+    organismo: Banco Mundial y OMC (OMC2026Estadisticas)
+    serie: "WDI NY.GDP.MKTP.CD, NY.GDP.MKTP.PP.CD, SP.POP.TOTL; OMC, Global Trade Outlook (apéndice)"
+    url: https://www.wto.org/english/res_e/booksp_e/gtos0326_e.pdf
+    periodicidad: anual
+    proxima: "2027-03 (OMC); 2027-07 (Banco Mundial)"
+    familia: comercio-ue
+
+  - id: ied-ue
+    texto: "Stock de IED de la UE fuera: 9,3 billones de euros (fin de 2024); de fuera en la UE: 7,0 billones"
+    donde: [3B42.tex]
+    valor: 9309
+    unidad: miles de millones de euros
+    periodo: "2024"
+    fuente: Eurostat2025IED
+    organismo: Eurostat
+    serie: "bop_fdi6_pos"
+    url: https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251105-1
+    periodicidad: anual (noviembre)
+    proxima: "2026-11 (datos de 2025)"
+    familia: comercio-ue
+
+  - id: euro-internacional
+    texto: "Euro: 20,2 % de las reservas (dólar 57 %), 24,6 % de la deuda internacional, 28,5 % del mercado de divisas, 23 % de SWIFT, 60,0 % y 53,1 % de la facturación de exportaciones e importaciones"
+    donde: [3B42.tex]
+    valor: 20.2
+    unidad: "%"
+    periodo: "2025"
+    fuente: BCE2026Euro
+    organismo: BCE
+    serie: "The international role of the euro (informe anual de junio)"
+    url: https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html
+    periodicidad: anual (junio)
+    proxima: "2027-06"
+    familia: euro
+
+  - id: ampliacion-estado
+    texto: "9 candidatos y Kosovo; Montenegro 21 de 33 capítulos cerrados; Albania 6 bloques abiertos; Ucrania y Moldavia, 4 bloques; hojas de ruta"
+    donde: [3B42.tex, repaso/3B42-repaso.tex, graficos/circulos-relaciones.tex]
+    valor: null
+    unidad: null
+    periodo: "noviembre de 2026"
+    fuente: CE2026PaqueteAmpliacion
+    organismo: Comisión Europea
+    serie: "Paquete de ampliación anual"
+    url: https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2325
+    periodicidad: anual (octubre-noviembre) y cada conferencia intergubernamental
+    proxima: "cada cierre de capítulos (Montenegro, finales de 2026)"
+    familia: ue-ampliacion
+
+  - id: ucrania-financiacion
+    texto: "Mecanismo para Ucrania: más de 32.000 millones pagados (octubre de 2026) de 50.000; Préstamo de Apoyo a Ucrania de 90.000 millones (2026-2027)"
+    donde: [3B42.tex]
+    valor: 32000
+    unidad: millones de euros
+    periodo: "octubre de 2026"
+    fuente: CE2026UcraniaDesembolso
+    organismo: Comisión Europea
+    serie: "Desembolsos del Ukraine Facility"
+    url: https://enlargement.ec.europa.eu/
+    periodicidad: trimestral
+    proxima: "cada tramo"
+    familia: ue-ampliacion
+
+  - id: sanciones-rusia
+    texto: "21 paquetes de sanciones (último, 23/7/2026); tope de 44,1 dólares congelado hasta julio de 2027; más de 550 buques; activos inmovilizados unos 210.000 millones"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: 21
+    unidad: paquetes
+    periodo: "noviembre de 2026"
+    fuente: CE2026Paquete21
+    organismo: Comisión Europea y Consejo
+    serie: "Paquetes de medidas restrictivas"
+    url: https://eu-sanctions-compliance-helpdesk.europa.eu/
+    periodicidad: irregular
+    proxima: "cada nuevo paquete; revisión del tope en julio de 2027"
+    familia: ue-sanciones
+
+  - id: ingresos-petroleo-rusia
+    texto: "Ingresos del petróleo y el gas rusos: 11,6 billones de rublos (2022), 8,8 (2023), 11,1 (2024), 8,5 (2025); 22,7 % de los ingresos federales en 2025"
+    donde: [3B42.tex]
+    valor: 8477
+    unidad: miles de millones de rublos
+    periodo: "2025"
+    fuente: MinfinRusia2026
+    organismo: Ministerio de Hacienda de Rusia
+    serie: "Ejecución del presupuesto federal"
+    url: https://minfin.gov.ru/ru/statistics/fedbud/
+    periodicidad: anual
+    proxima: "2027-02"
+    familia: ue-sanciones
+
+  - id: global-gateway
+    texto: "Global Gateway: 306.000 millones movilizados en 2021-2024 (objetivo 300.000 para 2021-2027; más de 400.000 esperados en 2027)"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: 306000
+    unidad: millones de euros
+    periodo: "2021-2024"
+    fuente: CE2025GlobalGatewayForo
+    organismo: Comisión Europea
+    serie: "Balance del Global Gateway Forum"
+    url: https://international-partnerships.ec.europa.eu/policies/global-gateway_en
+    periodicidad: anual (foro de octubre)
+    proxima: "2027-10"
+    familia: aod
+
+  - id: echo-presupuesto
+    texto: "Presupuesto humanitario inicial de 2026: 1.900 millones de euros"
+    donde: [3B42.tex]
+    valor: 1900
+    unidad: millones de euros
+    periodo: "2026"
+    fuente: ECHO2026
+    organismo: Comisión Europea (DG ECHO)
+    serie: "Presupuesto humanitario anual"
+    url: https://civil-protection-humanitarian-aid.ec.europa.eu/what/humanitarian-aid_en
+    periodicidad: anual (enero)
+    proxima: "2027-01"
+    familia: aod
+
+  - id: europa-global-2028
+    texto: "Propuesta Europa Global 2028-2034: unos 200.000 millones (0,14 % de la RNB), mínimo de AOD del 90 %, ayuda humanitaria hasta 25.000 millones; en negociación"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: 200000
+    unidad: millones de euros
+    periodo: "2028-2034"
+    fuente: CE2025EuropaGlobal
+    organismo: Comisión Europea
+    serie: "COM(2025) 551"
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/eu-budget-2028-2034_en
+    periodicidad: única (hasta el acuerdo del MFP)
+    proxima: "Consejo Europeo extraordinario de 26-27/11/2026"
+    familia: ue-presupuesto
+
+  - id: samoa
+    texto: "Acuerdo de Samoa: aplicado provisionalmente desde el 1/1/2024; no ha entrado en vigor (noviembre de 2026)"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: null
+    unidad: null
+    periodo: "noviembre de 2026"
+    fuente: PE2026Samoa
+    organismo: Parlamento Europeo
+    serie: "Legislative Train"
+    url: https://www.europarl.europa.eu/legislative-train/
+    periodicidad: irregular
+    proxima: "cuando se complete la ratificación"
+    familia: aod

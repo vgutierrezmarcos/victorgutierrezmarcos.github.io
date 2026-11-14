@@ -149,3 +149,6 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **I.4**: el gráfico `acr-anuales` como apoyo (o en la pizarra por capas si hay tiempo: barras, ejes, línea, puntos, rótulos).
 - **II**: patrón fijo por bloque, de palabra; en la pizarra solo una rejilla con los bloques que se van nombrando (forma y año). La tabla del plato de espaguetis de Asia-Pacífico, como apoyo en II.3. Nunca se dice el número de un tema en voz alta.
 - **III.1**: el gráfico `comercio-intrarregional` en la pizarra por capas (barras de 2000, de 2025, ejes, rótulos); el de PIB y población, como apoyo.
+
+## Coherencia con el 3.B.41 (14/11/2026)
+- Corregido por el coordinador a partir del 3.B.41 (Mercosur: negociación cerrada en diciembre de 2024 y firma el 17/1/2026; México firmado; Indonesia, la India y Australia cerrados en 2025-2026; salvaguardia del acero sustituida el 1/7/2026 por el Reglamento 2026/1384; el SPG se trata en el 3.B.41).

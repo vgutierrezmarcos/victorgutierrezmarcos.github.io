@@ -1,0 +1,37 @@
+% Los objetivos 2030 del plan de acción del Pilar Europeo de Derechos Sociales:
+% (a) tasa de empleo de 20 a 64 años, UE-27 y España, con el objetivo del 78 %;
+% (b) personas en riesgo de pobreza o exclusión social (AROPE) en la UE-27,
+% millones, con el objetivo de 15 millones menos que en 2019 (95,5 -> 80,5; serie sdg_01_10).
+% Datos: ../datos/pilar-social.csv (Eurostat, lfsi_emp_a e ilc_peps01n).
+% Capas: ejes y objetivo -> series -> puntos finales -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pilar-social.csv}\pil
+\begin{tikzpicture}[tcee]
+  \begin{groupplot}[group style={group size=2 by 1, horizontal sep=2.4cm},
+      width=6.6cm, height=5.8cm, xmin=2014.5, xmax=2030.5,
+      xtick={2015,2020,2025,2030},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \nextgroupplot[title={\small (a) tasa de empleo, 20-64 años (\%)}, ymin=60, ymax=80, ytick={60,65,...,80}]
+    \capa{1}{\dicraya[dicumbral]{(2015,78) (2030,78)}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=south east]{(2030,78)}{objetivo UE: 78}}
+    \capa{2}{\addplot[diclinea=dicempleo, mark=none, forget plot] table[x=anio, y=empleo_ue] {\pil};
+      \addplot[diclinea=dicespana, mark=none, forget plot] table[x=anio, y=empleo_es] {\pil};}
+    \capa{3}{\dicrotulo[font=\scriptsize, text=dicempleo, anchor=west]{(2025.3,76.1)}{UE: 76,1}
+      \dicrotulo[font=\scriptsize, text=dicespana, anchor=west]{(2025.3,72.4)}{España: 72,4}}
+    \nextgroupplot[title={\small (b) AROPE en la UE-27 (millones)}, ymin=70, ymax=110, ytick={70,80,...,110}]
+    \capa{1}{\dicraya[dicumbral]{(2019,80.5) (2030,80.5)}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=north east]{(2030,80.5)}{objetivo: 80,5}}
+    \capa{2}{\addplot[diclinea=dicparo, mark=none, forget plot] table[x=anio, y=arope_ue_mill] {\pil};}
+    \capa{3}{\dicrotulo[font=\scriptsize, text=dicparo, anchor=west]{(2025.3,92.7)}{2025: 92,7}
+      \dicrotulo[font=\scriptsize, text=dicparo, anchor=south]{(2019,96.3)}{2019: 95,5}}
+  \end{groupplot}
+\end{tikzpicture}
+\end{document}

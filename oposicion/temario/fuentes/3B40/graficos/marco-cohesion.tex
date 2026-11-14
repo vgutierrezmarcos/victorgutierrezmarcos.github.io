@@ -1,0 +1,50 @@
+% La arquitectura de la política de cohesión 2021-2027: un reglamento común
+% (RDC 2021/1060) y, debajo, los fondos (importe UE inicial, millones de euros
+% corrientes, cohesiondata), los objetivos políticos y las categorías de
+% regiones con su cofinanciación máxima.
+% Capas: reglamento común -> fondos -> objetivos -> regiones.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,font=\footnotesize,
+    caja/.style={draw=#1, fill=#1!10, rounded corners=2pt, align=left, inner sep=4pt, text width=4.35cm, anchor=north, execute at begin node={\hyphenpenalty=10000\relax}},
+    titulo/.style={font=\small\bfseries, text=#1, anchor=south}]
+  % 1: el reglamento común
+  \capa{1}{%
+    \node[draw=tceemorado, fill=tceemorado!10, rounded corners=2pt, text width=14.3cm, align=center, inner sep=5pt] (rdc) at (0,0)
+      {\textbf{Reglamento de disposiciones comunes (UE) 2021/1060}: programación, condiciones favorecedoras, gestión compartida, liberación de compromisos ($n{+}3$)};
+  }
+  % 2: los fondos
+  \capa{2}{%
+    \node[titulo=tceeazul] at (-4.85,-0.95) {Los fondos (millones de euros)};
+    \node[caja=tceeazul] at (-4.85,-1.0) {%
+      \textbf{FEDER}: 214.300\\[1pt]
+      \textbf{Fondo de Cohesión}: 39.000 (+ 11.300 al Mecanismo «Conectar Europa»)\\[1pt]
+      \textbf{FSE+}: 95.100\\[1pt]
+      \textbf{Fondo de Transición Justa}: 22.100\\[1pt]
+      \textbf{Interreg} (FEDER): 9.400\\[2pt]
+      \emph{Total: unos 392.000 millones de euros}};
+  }
+  % 3: los objetivos políticos
+  \capa{3}{%
+    \node[titulo=tceeverde] at (0,-0.95) {Los objetivos};
+    \node[caja=tceeverde] at (0,-1.0) {%
+      1. Europa más \textbf{competitiva e inteligente}\\[1pt]
+      2. más \textbf{verde} y baja en carbono\\[1pt]
+      3. más \textbf{conectada}\\[1pt]
+      4. más \textbf{social} e inclusiva\\[1pt]
+      5. más \textbf{próxima} a los ciudadanos\\[1pt]
+      + FTJ: afrontar los efectos de la \textbf{transición} climática};
+  }
+  % 4: las regiones
+  \capa{4}{%
+    \node[titulo=tceedorado] at (4.85,-0.95) {Las regiones};
+    \node[caja=tceedorado] at (4.85,-1.0) {%
+      \textbf{Menos desarrolladas}: PIB por hab. $<75$~\% de la media; cofinanciación UE hasta el 85~\%\\[2pt]
+      \textbf{En transición}: 75-100~\%; hasta el 60~\% (70~\% si antes eran menos desarrolladas)\\[2pt]
+      \textbf{Más desarrolladas}: $>100$~\%; hasta el 40~\% (50~\%)\\[2pt]
+      Fondo de Cohesión: Estados con RNB por hab. $<90$~\%};
+  }
+\end{tikzpicture}
+\end{document}

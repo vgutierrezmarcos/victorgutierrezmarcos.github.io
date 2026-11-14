@@ -186,9 +186,9 @@ const tercerEjercicioParteB = [
   { num: 37, titulo: 'Las finanzas de la Unión Europea y el presupuesto comunitario. El marco financiero plurianual actual.', disponible: true, file: '3B37.html' },
   { num: 38, titulo: 'La política agrícola de la Unión Europea. Problemas económicos y procesos de reforma. La política pesquera común.', disponible: false },
   { num: 39, titulo: 'El mercado único de la Unión Europea. El principio de libre circulación de mercancías, servicios, personas y capitales. La política de competencia.', disponible: true, file: '3B39.html' },
-  { num: 40, titulo: 'La Cohesión Económica y Social en la Unión Europea: política regional e instrumentos presupuestarios y financieros. Política social y de empleo. El proceso de convergencia real en la Unión Europea.', disponible: true, file: '3B40.pdf' },
-  { num: 41, titulo: 'La política comercial de la Unión Europea.', disponible: true, file: '3B41.pdf' },
-  { num: 42, titulo: 'Las relaciones económicas exteriores de la Unión Europea. La política de cooperación al desarrollo de la Unión Europea.', disponible: true, file: '3B42.pdf' },
+  { num: 40, titulo: 'La Cohesión Económica y Social en la Unión Europea: política regional e instrumentos presupuestarios y financieros. Política social y de empleo. El proceso de convergencia real en la Unión Europea.', disponible: true, file: '3B40.html' },
+  { num: 41, titulo: 'La política comercial de la Unión Europea.', disponible: true, file: '3B41.html' },
+  { num: 42, titulo: 'Las relaciones económicas exteriores de la Unión Europea. La política de cooperación al desarrollo de la Unión Europea.', disponible: true, file: '3B42.html' },
   { num: 43, titulo: 'El origen del euro: funcionamiento y evolución del Sistema Monetario Europeo. Los criterios de convergencia nominal. El Sistema Europeo de Bancos Centrales: objetivos e instrumentos. La política monetaria en la Eurozona desde 2009.', disponible: false },
   { num: 44, titulo: 'La Unión Bancaria: Pilares y Código normativo único. La Unión de Mercados de Capitales.', disponible: false },
   { num: 45, titulo: 'La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento de Desequilibrios Macroeconómicos. El Mecanismo Europeo de Estabilidad. La respuesta común de política fiscal a partir de la covid-19.', disponible: false }

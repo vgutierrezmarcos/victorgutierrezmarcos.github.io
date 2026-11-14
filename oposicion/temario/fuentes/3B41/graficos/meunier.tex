@@ -1,0 +1,36 @@
+% Economía política de la política comercial común (Meunier, 2005), caso
+% «conservador» (defensivo): el socio quiere que la UE abra su mercado.
+% Eje: grado de apertura x del mercado de la UE; statu quo SQ = 0.
+% Puntos ideales de 5 Estados: x1 = 1, x2 = 1,7, x3 = 2,5, x4 = 3, x5 = 4;
+% el socio (O) quiere x = 9. Con utilidad cuadrática, el Estado i acepta
+% cualquier x en [0, 2 x_i] (lo prefiere o le es indiferente frente a SQ).
+%   Unanimidad: decide el más conservador (x1 = 1) -> conjunto ganador
+%   [0, 2] y resultado U = 2.
+%   Mayoría cualificada (3 de 5): decide el pivote x3 = 2,5 -> conjunto
+%   ganador [0, 5] y resultado M = 5.
+% Capas: eje -> SQ y socio -> Estados -> unanimidad -> mayoría.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.25cm,y=1cm,
+    estado/.style={circle,fill=tceemorado,inner sep=1.6pt},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thick}]
+  % 1: eje de la apertura del mercado de la UE
+  \capa{1}{\draw[eje] (-0.3,0) -- (10.2,0) node[above left=2pt,font=\small] {apertura $x$};}
+  \capa{1}{\foreach \t in {0,1,...,10} \draw (\t,0.07) -- (\t,-0.07);}
+  % 2: statu quo y posición del socio
+  \capa{2}{\node[punto,label={[etiqueta]below:$\mathit{SQ}=0$}] at (0,0) {};}
+  \capa{2}{\node[punto,fill=tceeazul,label={[etiqueta,text=tceeazul,align=center]below:socio\\$x^{O}=9$}] at (9,0) {};}
+  % 3: puntos ideales de los Estados miembros
+  \capa{3}{\foreach \x/\n in {1/1,1.7/2,2.5/3,3/4,4/5} \node[estado,label={[etiqueta,text=tceemorado,font=\footnotesize]above:$x_{\n}$}] at (\x,0) {};}
+  \capa{3}{\node[etiqueta,text=tceemorado,font=\footnotesize,align=center] at (2.5,0.85) {Estados miembros};}
+  % 4: unanimidad: decide el más conservador
+  \capa{4}{\draw[llave,tceerojo] (0,-0.95) -- (2,-0.95) node[midway,below=6pt,etiqueta,text=tceerojo,align=center,font=\footnotesize] {unanimidad:\\$[0,\,2x_1]$};}
+  \capa{4}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]below:$U$}] at (2,0) {};}
+  % 5: mayoría cualificada: decide el pivote x3
+  \capa{5}{\draw[llave,tceeverde] (0,-2.05) -- (5,-2.05) node[midway,below=6pt,etiqueta,text=tceeverde,align=center,font=\footnotesize] {mayoría cualificada:\\$[0,\,2x_3]$};}
+  \capa{5}{\node[punto,fill=tceeverde,label={[etiqueta,text=tceeverde]below:$M$}] at (5,0) {};}
+  \capa{5}{\draw[flecha,tceeazul] (8.4,0.45) to[bend right=20] node[midway,above,etiqueta,font=\footnotesize,text=tceeazul] {el socio empuja} (5.2,0.45);}
+\end{tikzpicture}
+\end{document}

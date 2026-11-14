@@ -1,0 +1,42 @@
+% El reparto eficiente de la ayuda entre 2 países (Collier y Dollar, 2002):
+% ayuda total Ā = 10; la del país 1 se mide desde O_1 hacia la derecha y la del
+% país 2 desde O_2 hacia la izquierda. Reducción marginal de la pobreza:
+% m_1(A_1) = 8 - 0,6 A_1 (buenas políticas y más pobreza) y
+% m_2(A_2) = 6 - 0,6 A_2, que con A_2 = 10 - A_1 es 0,6 A_1. Óptimo E:
+% m_1 = m_2 en A_1* = 20/3 ≈ 6,67 (m = 4). El reparto igual (A_1 = 5, con
+% m_1 = 5 y m_2 = 3) pierde el triángulo entre las 2 curvas de 5 a A_1*.
+% Escala: 1 unidad = 0,9 cm en horizontal y 0,62 cm en vertical.
+% Capas: ejes → m_1 → m_2 → óptimo E → reparto igual y pérdida.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{declare function={mU(\x)=8-0.6*\x; mD(\x)=0.6*\x;}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.62cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.2,-2.6) rectangle (11.2,11);
+  % 1: eje horizontal (la ayuda total) y los 2 ejes verticales
+  \capa{1}{\draw[thick] (0,0) -- (10,0);}
+  \capa{1}{\draw[eje] (0,0) -- (0,9.5) node[above,align=center,font=\footnotesize] {reducción marginal\\de la pobreza};}
+  \capa{1}{\draw[eje] (10,0) -- (10,9.5) node[above,align=center,font=\footnotesize] {reducción marginal\\de la pobreza};}
+  \capa{1}{\node[below left] at (0,0) {$O_1$};}
+  \capa{1}{\node[below right] at (10,0) {$O_2$};}
+  \capa{1}{\node[etiqueta] at (1.2,-1.1) {$A_1\rightarrow$};}
+  \capa{1}{\node[etiqueta] at (8.8,-1.1) {$\leftarrow A_2$};}
+  \capa{1}{\draw[decorate,decoration={brace,mirror,amplitude=5pt},tceegris] (0,-1.7) -- (10,-1.7) node[midway,below=5pt,text=black] {$\bar A$};}
+  % 2: país 1
+  \capa{2}{\draw[curva1] (0,{mU(0)}) -- (10,{mU(10)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (0.15,8.05) {$m_1$ (buenas políticas, más pobreza)};}
+  % 3: país 2, medido desde O_2
+  \capa{3}{\draw[curva2] (0,{mD(0)}) -- (10,{mD(10)});}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=south east] at (9.85,6.05) {$m_2$};}
+  % 4: el óptimo E: igual reducción marginal de la pobreza
+  \capa{4}{\draw[guia] (20/3,4) -- (20/3,0) node[below] {$A_1^*$};}
+  \capa{4}{\node[punto] at (20/3,4) {};}
+  \capa{4}{\node[etiqueta,above right] at (20/3,4) {$E$};}
+  % 5: reparto igual y pérdida de reducción de la pobreza
+  \capa{5}{\draw[guia] (5,{mU(5)+1.2}) -- (5,0) node[below] {reparto igual};}
+  \capa{5}{\fill[area2] (5,{mU(5)}) -- (5,{mD(5)}) -- (20/3,4) -- cycle;}
+  \capa{5}{\draw[thin,tceegris] (5.6,4) -- (6.3,1.6) node[below,etiqueta,text=black] {pérdida};}
+\end{tikzpicture}
+\end{document}

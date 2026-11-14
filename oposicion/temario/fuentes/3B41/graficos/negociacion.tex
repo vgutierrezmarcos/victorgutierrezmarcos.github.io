@@ -1,0 +1,35 @@
+% Negociación entre la UE y Estados Unidos con la solución de Nash (1950):
+% frontera de bienestar de un acuerdo u_EEUU = 10 - u_UE^2/10 (u_UE en [0,10]).
+% Punto de desacuerdo (la guerra arancelaria):
+%   d  = (0, 0)   -> N  = (5,77; 6,67)
+%   d' = (-4, 0)  -> N' = (4,59; 7,89)   (la UE pierde más sin acuerdo)
+%   d''= (-4, -4) -> N''= (5,63; 6,83)   (represalias creíbles de la UE)
+% Cada solución maximiza (u_UE - d_UE)(u_EEUU - d_EEUU) sobre la frontera.
+% Capas: ejes -> frontera -> d y N -> d' y N' -> d'' y N''.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm,declare function={fr(\u)=10-\u*\u/10;}]
+  % 1: ejes (con el origen desplazado para que quepan los desacuerdos negativos)
+  \capa{1}{\draw[eje] (-5.5,0) -- (11.5,0) node[below left=2pt,font=\small] {$u_{\mathit{UE}}$};}
+  \capa{1}{\draw[eje] (0,-5) -- (0,11.5) node[below left=2pt,font=\small] {$u_{\mathit{EEUU}}$};}
+  % 2: frontera de los acuerdos posibles
+  \capa{2}{\draw[curva1] plot[domain=0:10,samples=60] (\x,{fr(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,font=\footnotesize,anchor=west] at (8.6,{fr(8.6)+0.9}) {frontera $F$};}
+  % 3: desacuerdo simétrico y solución de Nash
+  \capa{3}{\node[punto,label={[etiqueta]below left=0pt and 0pt:$d$}] (d) at (0,0) {};}
+  \capa{3}{\node[punto,label={[etiqueta]below right=0pt and 0pt:$N$}] (N) at (5.77,6.67) {};}
+  \capa{3}{\draw[guia] (d) -- (N);}
+  % 4: la UE pierde más sin acuerdo: d' a la izquierda
+  \capa{4}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]below:$d'$}] (d1) at (-4,0) {};}
+  \capa{4}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]above left=0pt and 0pt:$N'$}] (N1) at (4.59,7.89) {};}
+  \capa{4}{\draw[guia,tceerojo] (d1) -- (N1);}
+  \capa{4}{\draw[flecha] (5.55,7.25) to[bend right=25] (4.8,7.9);}
+  % 5: represalias creíbles: d'' baja también el desacuerdo de EE. UU.
+  \capa{5}{\node[punto,fill=tceeverde,label={[etiqueta,text=tceeverde]below:$d''$}] (d2) at (-4,-4) {};}
+  \capa{5}{\node[punto,fill=tceeverde,label={[etiqueta,text=tceeverde]left:$N''$}] (N2) at (5.63,6.83) {};}
+  \capa{5}{\draw[guia,tceeverde] (d2) -- (N2);}
+  \capa{5}{\draw[->,thick,tceeverde] (d1) -- (-4,-3.6);}
+\end{tikzpicture}
+\end{document}

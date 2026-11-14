@@ -1,0 +1,49 @@
+% PIB por habitante en PPA (UE-27 = 100), 1995-2025: España frente al Sur
+% (Italia, Portugal, Grecia) y al Este (Polonia, Chequia, Rumanía, Lituania).
+% Datos: ../datos/pib-pc-paises.csv (Eurostat, prc_ppp_ind_1, julio de 2026).
+% Pequeños múltiplos: España (rojo) en los 2 paneles como referencia.
+% Capas: ejes y línea de 100 -> España -> otros países -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pib-pc-paises.csv}\pib
+\begin{tikzpicture}[tcee]
+  \begin{groupplot}[group style={group size=2 by 1, horizontal sep=2.7cm},
+      width=7.4cm, height=6.4cm, xmin=1994, xmax=2026, ymin=20, ymax=130,
+      xtick={1995,2005,2015,2025}, ytick={20,40,...,120},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \nextgroupplot[title={\small el Sur}, ylabel={UE-27 = 100}, ylabel style={font=\footnotesize}]
+    \capa{1}{\dicraya[dicumbral]{(1994,100) (2026,100)}}
+    \capa{2}{\addplot[diclinea=dicespana, mark=none, forget plot] table[x=anio, y=ES] {\pib};}
+    \capa{3}{\addplot[diclinea=tceeazul, mark=none, forget plot] table[x=anio, y=IT] {\pib};
+      \addplot[diclinea=tceeverde, mark=none, forget plot] table[x=anio, y=PT] {\pib};
+      \addplot[diclinea=tceedorado, mark=none, forget plot] table[x=anio, y=EL] {\pib};}
+    \capa{4}{\dicrotulo[font=\scriptsize, text=dicespana, anchor=west]{(2025.3,92)}{España 92}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=west]{(2025.3,99)}{Italia 96}
+      \dicrotulo[font=\scriptsize, text=tceeverde, anchor=west]{(2025.3,81)}{Portugal 81}
+      \dicrotulo[font=\scriptsize, text=tceedorado, anchor=west]{(2025.3,68)}{Grecia 68}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=south]{(1996.5,126)}{126}
+      \dicrotulo[font=\scriptsize, text=dicespana, anchor=south]{(2006,105)}{105}}
+    \nextgroupplot[title={\small el Este}]
+    \capa{1}{\dicraya[dicumbral]{(1994,100) (2026,100)}}
+    \capa{2}{\addplot[diclinea=dicespana, mark=none, forget plot] table[x=anio, y=ES] {\pib};}
+    \capa{3}{\addplot[diclinea=tceeazul, mark=none, forget plot] table[x=anio, y=CZ] {\pib};
+      \addplot[diclinea=tceeverde, mark=none, forget plot] table[x=anio, y=LT] {\pib};
+      \addplot[diclinea=tceemorado, mark=none, forget plot] table[x=anio, y=PL] {\pib};
+      \addplot[diclinea=tceedorado, mark=none, forget plot] table[x=anio, y=RO] {\pib};}
+    \capa{4}{\dicrotulo[font=\scriptsize, text=dicespana, anchor=west]{(2025.3,96)}{España 92}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=west]{(2025.3,91)}{Chequia 92}
+      \dicrotulo[font=\scriptsize, text=tceeverde, anchor=west]{(2025.3,86)}{Lituania 87}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=west]{(2025.3,81)}{Polonia 81}
+      \dicrotulo[font=\scriptsize, text=tceedorado, anchor=west]{(2025.3,75)}{Rumanía 78}
+      \dicrotulo[font=\scriptsize, text=tceedorado, anchor=north]{(2000,25)}{26}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south]{(1995,45)}{44}}
+  \end{groupplot}
+\end{tikzpicture}
+\end{document}

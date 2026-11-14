@@ -1,0 +1,35 @@
+% Convergencia sigma en la UE-27, 2000-2024: desviación típica del ln del PIB
+% por habitante en PPA entre regiones NUTS 2 (224, panel equilibrado) y entre
+% los 27 Estados. Datos: ../datos/sigma-regional.csv (elaboración propia con
+% Eurostat, nama_10r_2gdp y prc_ppp_ind_1; preparar-datos.py).
+% Paleta: regiones morado (como la recta de convergencia beta); Estados azul.
+% Capas: ejes y sombra de la crisis -> regiones -> Estados -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/sigma-regional.csv}\sig
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=9.5cm, height=6.5cm, xmin=1999, xmax=2025, ymin=0.25, ymax=0.6,
+      xtick={2000,2004,...,2024}, ytick={0.25,0.3,...,0.6},
+      yticklabel style={font=\footnotesize,/pgf/number format/.cd,fixed,precision=2,use comma,fixed zerofill},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      ylabel={desviación típica de $\ln y$}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    % 1: ejes y sombra de la crisis del euro
+    \capa{1}{\dicsombra[fill=tceegris!12]{2008}{0.25}{2013}{0.6}
+      \dicrotulo[font=\scriptsize, text=tceegris, anchor=north]{(2010.5,0.595)}{crisis}}
+    % 2: regiones
+    \capa{2}{\addplot[diclinea=tceemorado, mark=none, forget plot] table[x=anio, y=regiones] {\sig};}
+    % 3: Estados
+    \capa{3}{\addplot[diclinea=tceeazul, mark=none, forget plot] table[x=anio, y=estados] {\sig};}
+    % 4: rótulos
+    \capa{4}{\dicrotulo[font=\scriptsize, text=tceemorado, anchor=west]{(2024.3,0.344)}{regiones: 0,34}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=west]{(2024.3,0.305)}{Estados: 0,31}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south]{(2000,0.468)}{0,46}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=south]{(2000,0.562)}{0,56}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

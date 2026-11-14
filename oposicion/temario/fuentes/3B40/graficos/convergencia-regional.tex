@@ -1,0 +1,54 @@
+% Convergencia beta entre las 232 regiones NUTS 2 de la UE-27, 2000-2024:
+% crecimiento medio anual del PIB por habitante en PPA relativo a la UE-27
+% frente a su nivel en 2000 (escala logarítmica), con la recta de MCO.
+% Datos: ../datos/convergencia-regional.csv y convergencia-ajuste.csv
+% (elaboración propia con Eurostat, nama_10r_2gdp; preparar-datos.py).
+% Paleta: regiones del Este en dorado, del resto (UE-14 con Chipre y Malta)
+% en azul, España en rojo.
+% Capas: ejes y cero -> recta -> puntos del resto -> puntos del Este ->
+% España -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/convergencia-ajuste.csv}\ajuste
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=11cm, height=8cm, xmode=log, xmin=20, xmax=300, ymin=-3, ymax=5,
+      xtick={25,50,75,100,150,250}, xticklabels={25,50,75,100,150,250},
+      ytick={-3,-2,...,5},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={PIB por habitante en PPA en 2000 (UE-27 = 100, escala log.)},
+      ylabel={crecimiento medio anual relativo, 2000-2024 (\%)},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    % 1: ejes, cero y umbral del 75 %
+    \capa{1}{\dicraya{(20,0) (300,0)}
+      \dicraya[dicumbral]{(75,-3) (75,5)}}
+    % 2: recta de regresión
+    \capa{2}{\addplot[diclinea=tceemorado, mark=none, forget plot] table[x=idx2000, y=g] {\ajuste};}
+    % 2b: recta solo con el resto de la UE (plana: sin convergencia)
+    \capa{2}{\addplot[diclinea=tceeazul, dashed, mark=none, forget plot] table[x=idx2000, y=g, col sep=comma, comment chars={\#}] {../datos/convergencia-ajuste-ue14.csv};}
+    % 3: regiones de la UE-14 (y Chipre y Malta)
+    \capa{3}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.4pt,
+        mark options={fill=tceeazul!45, draw=tceeazul!80, line width=0.3pt}, forget plot]
+        table[x=idx2000, y=g, col sep=comma, comment chars={\#}] {../datos/convergencia-resto.csv};}
+    % 4: regiones del Este
+    \capa{4}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.4pt,
+        mark options={fill=tceedorado!55, draw=tceedorado, line width=0.3pt}, forget plot]
+        table[x=idx2000, y=g, col sep=comma, comment chars={\#}] {../datos/convergencia-este.csv};}
+    % 5: regiones españolas
+    \capa{5}{\addplot[on layer=dicpuntos, only marks, mark=*, mark size=1.6pt,
+        mark options={fill=dicespana, draw=dicespana!70!black, line width=0.3pt}, forget plot]
+        table[x=idx2000, y=g, col sep=comma, comment chars={\#}] {../datos/convergencia-espana.csv};}
+    % 6: rótulos
+    \capa{6}{\dicrotulo[font=\scriptsize, text=tceemorado, anchor=west, align=left]{(24,-2.2)}{$\hat\beta_1=-1{,}99$ (0,12)\\$R^2=0{,}55$; $\lambda\simeq2{,}7$~\%}
+      \dicrotulo[font=\scriptsize, text=tceedorado!80!black, anchor=west]{(28,3.9)}{regiones del Este}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=west]{(150,1.4)}{resto de la UE}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=west]{(185,0.25)}{$\hat\beta_1\simeq0$}
+      \dicrotulo[font=\scriptsize, text=dicespana, anchor=north west, align=left]{(30,-0.6)}{regiones\\españolas}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=south west]{(75,4.6)}{75~\%}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

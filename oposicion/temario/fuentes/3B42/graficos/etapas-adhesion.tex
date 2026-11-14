@@ -1,0 +1,45 @@
+% El proceso de adhesión a la UE (art. 49 TUE), en siete pasos en dos filas
+% (en serpentina): solicitud al Consejo, dictamen de la Comisión, estatuto de
+% candidato, apertura de negociaciones, negociación por 6 bloques y 33
+% capítulos, tratado de adhesión y firma y ratificación. Debajo, los criterios
+% que se exigen: Copenhague (1993), Madrid (1995) y la capacidad de
+% integración de la Unión. Fuentes: art. 49 TUE; Consejo Europeo de
+% Copenhague (1993) y de Madrid (1995).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    paso/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,
+      align=left,inner sep=4pt,font=\footnotesize,text width=#1,minimum height=2.3cm},
+    num/.style={circle,fill=tceemorado,text=white,font=\footnotesize\bfseries,inner sep=1.5pt,minimum size=0.5cm},
+    sigue/.style={->,thick,tceegris}]
+  % 1-4: primera fila, de izquierda a derecha
+  \capa{1}{\node[paso=3.15cm,anchor=north west] (p1) at (0,0) {\textbf{Solicitud al Consejo} (art.~49 TUE): Estado europeo que respeta los valores del art.~2};}
+  \capa{1}{\node[num] at (p1.north west) {1};}
+  \capa{2}{\node[paso=3.15cm,anchor=north west] (p2) at (4.2,0) {\textbf{Dictamen de la Comisión}};}
+  \capa{2}{\node[num] at (p2.north west) {2};}
+  \capa{2}{\draw[sigue] (p1) -- (p2);}
+  \capa{3}{\node[paso=3.15cm,anchor=north west] (p3) at (8.4,0) {\textbf{Estatuto de candidato}: unanimidad del Consejo (Consejo Europeo)};}
+  \capa{3}{\node[num] at (p3.north west) {3};}
+  \capa{3}{\draw[sigue] (p2) -- (p3);}
+  \capa{4}{\node[paso=3.15cm,anchor=north west] (p4) at (12.6,0) {\textbf{Apertura de negociaciones}: marco de negociación, conferencia intergubernamental};}
+  \capa{4}{\node[num] at (p4.north west) {4};}
+  \capa{4}{\draw[sigue] (p3) -- (p4);}
+  % 5-7: segunda fila, de derecha a izquierda
+  \capa{5}{\node[paso=4.65cm,anchor=north east] (p5) at (15.95,-3.1) {\textbf{Negociación por 6 bloques y 33 capítulos}: criterios de apertura y cierre; los fundamentales, primero y últimos en cerrarse};}
+  \capa{5}{\node[num] at (p5.north west) {5};}
+  \capa{5}{\draw[sigue] (p4.south -| 14.3,0) -- (14.3,-3.1);}
+  \capa{6}{\node[paso=4.65cm,anchor=north east] (p6) at (10.45,-3.1) {\textbf{Tratado de adhesión}: dictamen de la Comisión, aprobación del Parlamento Europeo, unanimidad del Consejo};}
+  \capa{6}{\node[num] at (p6.north west) {6};}
+  \capa{6}{\draw[sigue] (p5) -- (p6);}
+  \capa{7}{\node[paso=4.65cm,anchor=north east] (p7) at (4.95,-3.1) {\textbf{Firma y ratificación} por todos los Estados y el candidato \textcolor{tceemorado}{$\rightarrow$ \textbf{adhesión}}};}
+  \capa{7}{\node[num] at (p7.north west) {7};}
+  \capa{7}{\draw[sigue] (p6) -- (p7);}
+  % 8: los criterios que se exigen
+  \capa{8}{\node[draw=tceedorado,thick,fill=tceedorado!12,rounded corners=2pt,align=left,
+      font=\footnotesize,inner sep=5pt,text width=15.75cm,anchor=north west] at (0,-6.1)
+      {\textbf{\color{tceedorado!70!black}Criterios}: \textbf{Copenhague (1993)}: políticos, económicos y del acervo; \textbf{Madrid (1995)}: capacidad administrativa; y \textbf{capacidad de integración} de la Unión};}
+\end{tikzpicture}
+\end{document}

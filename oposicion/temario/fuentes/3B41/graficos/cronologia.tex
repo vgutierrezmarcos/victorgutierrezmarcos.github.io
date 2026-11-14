@@ -1,0 +1,33 @@
+% Cronología de la política comercial común, 1957-2026: base jurídica
+% (arriba) y estrategias e instrumentos (abajo).
+% Fuente: Tratados; Comisión Europea, DG Comercio; elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,x=0.205cm,every node/.append style={execute at begin node=\nocortar},
+    hito/.style={font=\scriptsize,align=center,text width=1.9cm,inner sep=1pt}]
+  % 1: eje del tiempo
+  \capa{1}{\draw[eje] (1955,0) -- (2029,0);}
+  \capa{1}{\foreach \a in {1960,1970,...,2020} {\draw (\a,0.08) -- (\a,-0.08) node[below,font=\scriptsize] {\a};}}
+  % 2: base jurídica (arriba, en morado)
+  \newcommand{\arriba}[4]{\capa{2}{\draw[tceemorado,thin] (#1,0) -- (#1,#2); \node[hito,text=tceemorado,anchor=south] at (#1,#2) {\textbf{#3}\\#4};}}
+  \arriba{1957}{0.5}{1957}{Roma: PCC}
+  \arriba{1968}{1.7}{1968}{unión aduanera y arancel común}
+  \arriba{1994}{0.5}{1994}{dictamen 1/94}
+  \arriba{2001}{1.7}{2001}{Niza: servicios}
+  \arriba{2009}{0.5}{2009}{Lisboa: IED, PE}
+  \arriba{2017}{1.7}{2017}{dictamen 2/15}
+  \arriba{2018}{3.0}{2018}{nueva arquitectura}
+  % 3: estrategias e instrumentos (abajo, en dorado)
+  \newcommand{\abajo}[4]{\capa{3}{\draw[tceedorado,thin] (#1,-0.45) -- (#1,-#2); \node[hito,text=tceedorado!70!black,anchor=north] at (#1,-#2) {\textbf{#3}\\#4};}}
+  \abajo{1971}{0.7}{1971}{SPG}
+  \abajo{1995}{0.7}{1995}{OMC}
+  \abajo{2006}{1.9}{2006}{Europa Global}
+  \abajo{2015}{0.7}{2015}{Comercio para todos}
+  \abajo{2021}{1.9}{2021}{autonomía estratégica abierta}
+  \abajo{2023}{3.2}{2023}{seguridad económica; anticoerción}
+  \abajo{2026}{0.7}{2026}{Mercosur; MAFC}
+\end{tikzpicture}
+\end{document}

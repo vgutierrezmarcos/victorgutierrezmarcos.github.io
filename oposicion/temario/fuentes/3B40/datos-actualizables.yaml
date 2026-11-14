@@ -1,0 +1,142 @@
+tema: 3B40
+fecha_inventario: 2026-11-14
+datos:
+  - id: pib-pc-paises
+    texto: "PIB por habitante en PPA (UE-27 = 100), 1995-2025: España 92 (2025; 105 en 2006, 82 en 2020), Italia 96, Portugal 81, Grecia 68, Polonia 81, Chequia 92, Rumanía 78, Lituania 87"
+    donde: [3B40.tex, repaso/3B40-repaso.tex, datos/pib-pc-paises.csv, graficos/pib-pc-paises.tex]
+    valor: 92
+    unidad: "índice UE-27 = 100"
+    periodo: "1995-2025"
+    fuente: Eurostat2026PPA
+    organismo: Eurostat
+    serie: "prc_ppp_ind_1, VI_PPS_EU27_2020_HAB, GDP; rehacer con python3 datos/preparar-datos.py tras bajar ppp1.json a _trabajo/"
+    url: https://ec.europa.eu/eurostat/databrowser/view/prc_ppp_ind_1/default/table
+    periodicidad: anual (junio-julio, dato del año anterior)
+    proxima: "2027-07 (añadir 2026)"
+    familia: ue-convergencia
+
+  - id: convergencia-regional
+    texto: "232 regiones NUTS 2, 2000-2024: beta1 = -1,99 (0,12), R2 = 0,55, lambda 2,7 %; sin el Este, pendiente nula; 80 regiones por debajo del 75 % en 2024; Canarias 91->72, C. Valenciana 93->77, Andalucía 72->69, Extremadura 64->70, Madrid 129->125, Varsovia 105->157"
+    donde: [3B40.tex, repaso/3B40-repaso.tex, datos/convergencia-*.csv, graficos/convergencia-regional.tex]
+    valor: -1.99
+    unidad: "puntos porcentuales de crecimiento anual por unidad de ln"
+    periodo: "2000-2024"
+    fuente: Eurostat2026Regional
+    organismo: elaboración propia con Eurostat
+    serie: "nama_10r_2gdp, PPS_HAB_EU27_2020; gdp_nuts2.json en _trabajo/ y python3 datos/preparar-datos.py"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10r_2gdp/default/table
+    periodicidad: anual (febrero-marzo, dato de t-2)
+    proxima: "2027-02 (añadir 2025)"
+    familia: ue-convergencia
+
+  - id: sigma-regional
+    texto: "desviación típica del ln del PIB por habitante en PPA: Estados 0,56 (2000) -> 0,31 (2024); regiones 0,46 -> 0,34"
+    donde: [3B40.tex, repaso/3B40-repaso.tex, datos/sigma-regional.csv, graficos/sigma-regional.tex]
+    valor: 0.34
+    unidad: "desviación típica"
+    periodo: "2000-2024"
+    fuente: Eurostat2026Regional
+    organismo: elaboración propia con Eurostat
+    serie: "nama_10r_2gdp (224 regiones con todos los años) y prc_ppp_ind_1"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10r_2gdp/default/table
+    periodicidad: anual
+    proxima: "2027-02"
+    familia: ue-convergencia
+
+  - id: cohesion-estados
+    texto: "cohesión 2021-2027 por Estado (FEDER+FC+FSE++FTJ, programas vigentes): total 367.300 M€; Polonia 75.500, Italia 42.200, España 35.600 (724 €/hab.); 392.000 M€ con Interreg y la transferencia al MCE"
+    donde: [3B40.tex, repaso/3B40-repaso.tex, datos/cohesion-estados.csv, graficos/cohesion-estados.tex, graficos/marco-cohesion.tex]
+    valor: 392
+    unidad: miles de millones de euros corrientes
+    periodo: "2021-2027"
+    fuente: CE2026Cohesiondata
+    organismo: Comisión Europea
+    serie: "cohesiondata pbbz-hmfu y hgyj-gyin (actual_plan_eu_amt_latest_adop)"
+    url: https://cohesiondata.ec.europa.eu/d/pbbz-hmfu
+    periodicidad: diaria (cambia con las reprogramaciones)
+    proxima: "2027 (fin del periodo) o al aprobarse el MFP 2028-2034"
+    familia: ue-cohesion
+
+  - id: acuerdo-asociacion-espana
+    texto: "Acuerdo de Asociación de España 2021-2027: 36.700 M€ (FEDER 23.400, FSE+ 11.300, FTJ 870, FEMPA 1.120); categorías de regiones 5/9/5"
+    donde: [3B40.tex, repaso/3B40-repaso.tex]
+    valor: 36.7
+    unidad: miles de millones de euros
+    periodo: "2021-2027"
+    fuente: Hacienda2026FondosEuropeos
+    organismo: Ministerio de Hacienda; Comisión Europea (cohesiondata)
+    serie: "importes iniciales de la UE por fondo, ms=ES"
+    url: https://www.fondoseuropeos.hacienda.gob.es/
+    periodicidad: con cada periodo
+    proxima: "2028 (planes nacionales y regionales)"
+    familia: ue-cohesion
+
+  - id: revision-intermedia
+    texto: "revisión intermedia 2025: 34.600 M€ reasignados por 25 Estados en 186 programas (competitividad 15.200, defensa 11.900, vivienda 3.300, agua 3.100, energía 1.200); España 3.200; STEP 15.200"
+    donde: [3B40.tex, repaso/3B40-repaso.tex]
+    valor: 34.6
+    unidad: miles de millones de euros
+    periodo: "2025-2026"
+    fuente: CE2026RevisionIntermedia
+    organismo: Comisión Europea
+    serie: "factsheet-mtr26 (marzo de 2026); cohesiondata gsn7-zaih"
+    url: https://ec.europa.eu/regional_policy/sources/policy/how/programming-and-implementation/mid-term-review/factsheet-mtr26.pdf
+    periodicidad: puntual
+    proxima: "comprobar si la Comisión publica un balance nuevo en 2027"
+    familia: ue-cohesion
+
+  - id: ejecucion-cohesion
+    texto: "pagado el 30 % de lo programado en 2021-2027 (21 % sin anticipos); España 20 % (12 %); 2014-2020: 99,6 %"
+    donde: [3B40.tex, repaso/3B40-repaso.tex]
+    valor: 30.2
+    unidad: "% de lo programado"
+    periodo: "13-11-2026"
+    fuente: CE2026Cohesiondata
+    organismo: Comisión Europea
+    serie: "cohesiondata pbbz-hmfu y gayr-92qh"
+    url: https://cohesiondata.ec.europa.eu/
+    periodicidad: diaria
+    proxima: "cada actualización del tema"
+    familia: ue-cohesion
+
+  - id: propuesta-2028
+    texto: "propuesta de 16-7-2025: Fondo de 865.076 M€; planes nacionales y regionales 782.879; al menos 217.798 para regiones menos desarrolladas; el PE sin votar (nov. 2026)"
+    donde: [3B40.tex, repaso/3B40-repaso.tex]
+    valor: 865.1
+    unidad: miles de millones de euros corrientes
+    periodo: "2028-2034"
+    fuente: CE2025PropuestaFondo
+    organismo: Comisión Europea; Parlamento Europeo (OEIL)
+    serie: "COM(2025) 565; 2025/0240(COD)"
+    url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0240(COD)
+    periodicidad: puntual
+    proxima: "tras la cumbre del MFP (26-27-11-2026) y el voto del PE"
+    familia: ue-presupuesto
+
+  - id: pilar-social
+    texto: "empleo 20-64: UE 76,1 % (2025), España 72,4 % (objetivo 78 %; España 76 %); AROPE UE 92,7 M (20,9 %) frente a 95,5 M en 2019 (objetivo 80,5); España 25,7 %, niños 34 %; ninis 11 %"
+    donde: [3B40.tex, repaso/3B40-repaso.tex, datos/pilar-social.csv, graficos/pilar-social.tex]
+    valor: 76.1
+    unidad: "%"
+    periodo: "2015-2025"
+    fuente: Eurostat2026Empleo
+    organismo: Eurostat; Consejo (EMCO)
+    serie: "lfsi_emp_a; sdg_01_10; ilc_peps01n (emp.json, sdg.json, arope.json en _trabajo/)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/sdg_01_10/default/table
+    periodicidad: anual (empleo en abril; AROPE en abril-octubre)
+    proxima: "2027-04 (añadir 2026)"
+    familia: ue-social
+
+  - id: bei-cohesion
+    texto: "grupo BEI 2025: 42.800 M€, el 48 % de su financiación en la UE, en regiones de cohesión"
+    donde: [3B40.tex]
+    valor: 42.8
+    unidad: miles de millones de euros
+    periodo: "2025"
+    fuente: BEI2026Cohesion
+    organismo: Banco Europeo de Inversiones
+    serie: "página de prioridades: cohesión"
+    url: https://www.eib.org/en/about/priorities/cohesion/index.htm
+    periodicidad: anual
+    proxima: "2027-02 (resultados de 2026)"
+    familia: ue-cohesion

@@ -1,0 +1,35 @@
+% El efecto Bruselas de facto: una empresa que exporta a la UE mantiene 2
+% líneas de producción (coste fijo F) o aplica la norma de la UE a todo lo que
+% produce (coste c M_R, con M_R sus ventas fuera de la UE). Extiende la norma
+% a todo el mundo si F > c M_R (por encima de la bisectriz). A: producción
+% indivisible (protección de datos, química), F alto y c M_R bajo; B: producción
+% divisible (productos agrícolas), F bajo y c M_R alto.
+% Capas: ejes → bisectriz F = c M_R → zona de una sola línea → zona de 2
+% líneas → ejemplos A y B.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.4cm,y=1.1cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.4,-1.1) rectangle (7.2,7.2);
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (6.6,0);}
+  \capa{1}{\node[etiqueta,below] at (3.3,-0.25) {$c\,M_R$ (coste de aplicar la norma de la UE fuera de la UE)};}
+  \capa{1}{\draw[eje] (0,0) -- (0,6.6) node[above right=0pt and -6pt] {$F$ (coste de mantener 2 líneas de producción)};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: bisectriz: la empresa es indiferente
+  \capa{2}{\draw[curva1] (0,0) -- (6.2,6.2) node[etiqueta,right,text=tceemorado] {$F=c\,M_R$};}
+  % 3: por encima, una sola línea de producción con la norma de la UE
+  \capa{3}{\fill[area] (0,0) -- (6.2,6.2) -- (0,6.2) -- cycle;}
+  \capa{3}{\node[etiqueta,text=tceemorado,align=center] at (2.2,5.5) {una sola línea con la norma de la UE:\\efecto Bruselas de facto};}
+  % 4: por debajo, 2 líneas
+  \capa{4}{\fill[area2] (0,0) -- (6.2,0) -- (6.2,6.2) -- cycle;}
+  \capa{4}{\node[etiqueta,align=center] at (4.7,2.7) {2 líneas: norma de la UE\\solo en la UE};}
+  % 5: ejemplos
+  \capa{5}{\node[punto] at (0.8,4.4) {};}
+  \capa{5}{\node[etiqueta,right,align=left] at (0.85,4.4) {$A$: protección de datos,\\química};}
+  \capa{5}{\node[punto] at (4.8,1.5) {};}
+  \capa{5}{\node[etiqueta,below,align=center] at (4.8,1.45) {$B$: productos agrícolas\\(divisibles)};}
+\end{tikzpicture}
+\end{document}

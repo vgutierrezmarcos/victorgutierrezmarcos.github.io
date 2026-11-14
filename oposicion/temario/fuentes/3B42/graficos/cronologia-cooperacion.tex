@@ -1,0 +1,60 @@
+% La cooperación al desarrollo de la UE en el tiempo (1957-2028): línea de
+% tiempo con los hitos, alternados arriba y abajo, en tres etapas: la
+% asociación con las excolonias (Tratado de Roma, FED, Yaundé, SPG, Lomé), la
+% política propia (Maastricht, Cotonú, Todo menos armas, los Consensos) y las
+% asociaciones e inversión (IVDCI-Europa Global, Global Gateway, Samoa y la
+% propuesta de Europa Global 2028-2034). Los años del eje van a escala; los
+% rótulos, repartidos a intervalos iguales y unidos a su año por una guía.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+% posición de un año en el eje
+\newcommand{\ax}[1]{(0.3+(#1-1955)*15.3/74)}
+% \hito{color}{año}{hueco}{arriba (1) o abajo (-1)}{texto}
+\newcommand{\hito}[5]{%
+  \pgfmathsetmacro{\xa}{0.3+(#2-1955)*15.3/74}%
+  \pgfmathsetmacro{\xr}{0.75+#3*1.205}%
+  \fill[#1] (\xa,0) circle (2.2pt);
+  \draw[thin,#1] (\xa,#4*0.12) -- (\xa,#4*0.45) -- (\xr,#4*0.95) -- (\xr,#4*1.15);
+  \ifnum#4>0
+    \node[font=\footnotesize,anchor=south,align=center,text width=2.3cm,inner sep=1pt] at (\xr,1.15) {{\bfseries\color{#1}#2}\\#5};
+  \else
+    \node[font=\footnotesize,anchor=north,align=center,text width=2.3cm,inner sep=1pt] at (\xr,-1.15) {{\bfseries\color{#1}#2}\\#5};
+  \fi}
+\colorlet{etapa1}{tceedorado!85!black}
+\colorlet{etapa2}{tceemorado}
+\colorlet{etapa3}{tceeverde}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    banda/.style={font=\footnotesize\bfseries,align=center,inner sep=3pt,rounded corners=2pt,minimum height=0.85cm}]
+  % 1: eje del tiempo
+  \capa{1}{\draw[->,thick,black!70] (0,0) -- (16.2,0);}
+  \capa{1}{\foreach \a in {1960,1970,...,2020}
+      {\pgfmathsetmacro{\x}{0.3+(\a-1955)*15.3/74}
+       \draw[black!70] (\x,-0.08) -- (\x,0.08);}}
+  % 2: asociación con las excolonias
+  \capa{2}{\draw[line width=4pt,etapa1,opacity=0.5] ({0.3+2*15.3/74},0) -- ({0.3+35*15.3/74},0);}
+  \capa{2}{\hito{etapa1}{1957}{0}{1}{Tratado de Roma: asociación de los países y territorios de ultramar}}
+  \capa{2}{\hito{etapa1}{1959}{1}{-1}{1.\textsuperscript{er} Fondo Europeo de Desarrollo}}
+  \capa{2}{\hito{etapa1}{1963}{2}{1}{Convenio de Yaundé~I (18 Estados africanos)}}
+  \capa{2}{\hito{etapa1}{1971}{3}{-1}{Sistema de Preferencias Generalizadas}}
+  \capa{2}{\hito{etapa1}{1975}{4}{1}{Convenio de Lomé~I (46 ACP, STABEX)}}
+  \capa{2}{\node[banda,fill=etapa1!15,text=etapa1,minimum width=5.95cm] at ({0.75+2*1.205},-3.4) {Asociación con las excolonias (1957-1990)};}
+  % 3: política propia
+  \capa{3}{\draw[line width=4pt,etapa2,opacity=0.5] ({0.3+37*15.3/74},0) -- ({0.3+65*15.3/74},0);}
+  \capa{3}{\hito{etapa2}{1992}{5}{-1}{Maastricht: base jurídica propia}}
+  \capa{3}{\hito{etapa2}{2000}{6}{1}{Acuerdo de Cotonú}}
+  \capa{3}{\hito{etapa2}{2001}{7}{-1}{Todo menos armas}}
+  \capa{3}{\hito{etapa2}{2005}{8}{1}{Consenso Europeo sobre Desarrollo}}
+  \capa{3}{\hito{etapa2}{2017}{9}{-1}{Nuevo Consenso (Agenda~2030)}}
+  \capa{3}{\node[banda,fill=etapa2!12,text=etapa2,minimum width=5.95cm] at ({0.75+7*1.205},-3.4) {Política propia (1992-2020)};}
+  % 4: asociaciones e inversión
+  \capa{4}{\draw[line width=4pt,etapa3,opacity=0.5] ({0.3+66*15.3/74},0) -- ({0.3+73*15.3/74},0);}
+  \capa{4}{\hito{etapa3}{2021}{10}{1}{IVDCI-Europa Global (integra el FED) y Global Gateway}}
+  \capa{4}{\hito{etapa3}{2023}{11}{-1}{Acuerdo de Samoa}}
+  \capa{4}{\hito{etapa3}{2025}{12}{1}{propuesta de Europa Global 2028-2034}}
+  \capa{4}{\node[banda,fill=etapa3!15,text=etapa3,minimum width=3.55cm] at ({0.75+11*1.205},-3.4) {Asociaciones e\\inversión (2021-\,)};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,48 @@
+% Los círculos de las relaciones exteriores de la UE: áreas encajadas de
+% dentro afuera. En el centro, la UE-27 (mercado único, unión aduanera,
+% arancel común); a su alrededor, los candidatos (9) y el candidato potencial
+% (Kosovo), con la adhesión (art. 49 TUE) y sus instrumentos; la vecindad del
+% Este y del Sur (art. 8 TUE), y a su lado el Espacio Económico Europeo, Suiza
+% y el Reino Unido; los grandes socios; y los países en desarrollo. La flecha
+% de la derecha resume la lógica: de dentro afuera, menos integración y menos
+% condicionalidad (de la integración a la cooperación). Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% \zona{color}{esquina}{esquina}: fondo translúcido en la capa de fondo y borde
+\newcommand{\zona}[3]{%
+  \begin{pgfonlayer}{background}\fill[rounded corners=8pt,#1,fill opacity=0.07] #2 rectangle #3;\end{pgfonlayer}
+  \draw[thick,rounded corners=8pt,#1] #2 rectangle #3;}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    texto/.style={font=\footnotesize,anchor=north west,align=left,inner sep=2pt},
+    instr/.style={font=\footnotesize\itshape,anchor=north west,align=left,inner sep=2pt}]
+  % 1: la UE-27, en el centro
+  \capa{1}{\zona{tceemorado}{(1.6,-7.3)}{(10.4,-8.75)}}
+  \capa{1}{\node[texto,text width=8.4cm] at (1.75,-7.45) {\textbf{\color{tceemorado}UE-27}};}
+  \capa{1}{\node[instr,text width=8.4cm] at (1.75,-7.95) {mercado único, unión aduanera, arancel común};}
+  % 2: candidatos y candidato potencial
+  \capa{2}{\zona{tceeazul}{(1.2,-5.25)}{(10.8,-9.15)}}
+  \capa{2}{\node[texto,text width=9.3cm] at (1.35,-5.4) {\textbf{\color{tceeazul}Candidatos (9) y candidato potencial (Kosovo)}: Albania, Bosnia y Herzegovina, Georgia, Macedonia del Norte, Moldavia, Montenegro, Serbia, Turquía, Ucrania};}
+  \capa{2}{\node[instr,text width=9.3cm] at (1.35,-6.6) {adhesión (art.~49 TUE), IPA~III, Plan de Crecimiento, Mecanismo para Ucrania};}
+  % 3: vecindad y, al mismo nivel, el EEE, Suiza y el Reino Unido
+  \capa{3}{\zona{tceeverde}{(0.8,-3.15)}{(11.2,-9.55)}}
+  \capa{3}{\node[texto,text width=10.1cm] at (0.95,-3.3) {\textbf{\color{tceeverde}Vecindad}: Este (Armenia, Azerbaiyán, Bielorrusia ---suspendida---) y Sur (10 países del Mediterráneo y Oriente Próximo)};}
+  \capa{3}{\node[instr,text width=10.1cm] at (0.95,-4.15) {art.~8 TUE; acuerdos de asociación y ZLCAP; IVDCI-Europa Global; Pacto por el Mediterráneo (2025)};}
+  \capa{3}{\zona{tceedorado}{(11.55,-3.15)}{(14.6,-5.3)}}
+  \capa{3}{\node[texto,text width=2.85cm] at (11.65,-3.3) {\textbf{\color{tceedorado!80!black}Espacio Económico Europeo, Suiza, Reino Unido}};}
+  \capa{3}{\node[instr,text width=2.85cm] at (11.65,-4.45) {mercado interior o acuerdos amplios};}
+  % 4: grandes socios
+  \capa{4}{\zona{tceenaranja}{(0.4,-1.65)}{(15.0,-9.95)}}
+  \capa{4}{\node[texto,text width=14.4cm] at (0.55,-1.8) {\textbf{\color{tceenaranja!85!black}Grandes socios}: Estados Unidos, China, Japón, India, Canadá, Golfo…};}
+  \capa{4}{\node[instr,text width=14.4cm] at (0.55,-2.3) {acuerdos comerciales y de asociación estratégica, diálogos, cumbres; sanciones (art.~215 TFUE)};}
+  % 5: países en desarrollo
+  \capa{5}{\zona{tceegris}{(0,0)}{(15.4,-10.35)}}
+  \capa{5}{\node[texto,text width=15cm] at (0.15,-0.15) {\textbf{\color{tceegris!80!black}Países en desarrollo}: África, América Latina y Caribe, Asia-Pacífico, OEACP (Acuerdo de Samoa)};}
+  \capa{5}{\node[instr,text width=15cm] at (0.15,-0.65) {IVDCI-Europa Global, FEDS+, Global Gateway, ayuda humanitaria, SPG (Todo menos armas)};}
+  % 6: la lógica de los círculos
+  \capa{6}{\draw[->,very thick,tceerojo] (15.9,-9.8) -- (15.9,-0.4);}
+  \capa{6}{\node[font=\footnotesize\bfseries,text=tceerojo,rotate=90,anchor=south] at (15.95,-5.1) {de la integración a la cooperación: menos integración y menos condicionalidad};}
+\end{tikzpicture}
+\end{document}
