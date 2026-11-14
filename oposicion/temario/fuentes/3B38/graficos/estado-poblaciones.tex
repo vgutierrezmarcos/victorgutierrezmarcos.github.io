@@ -1,0 +1,37 @@
+% Presión pesquera en las aguas de la UE: mediana del indicador F/FMSY
+% (mortalidad por pesca respecto de la del rendimiento máximo sostenible) en
+% el Atlántico nororiental (2003-2024) y en el Mediterráneo y mar Negro
+% (2003-2023). Por encima de 1, se pesca más de lo que permite el RMS.
+% Datos y fuente en ../datos/estado-poblaciones.csv (CCTEP/STECF-Adhoc-26-01).
+% Capas: ejes y umbral del RMS -> Mediterráneo -> Atlántico -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/estado-poblaciones.csv}\pob
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13.5cm, height=6.6cm,
+      xmin=2002.3, xmax=2025, ymin=0, ymax=2.1,
+      xtick={2003,2006,...,2024}, minor xtick={2003,...,2024},
+      ytick={0,0.5,1,1.5,2},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize,/pgf/number format/use comma},
+      ylabel={$F/F_{\mathit{RMS}}$ (mediana)},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas,
+    ]
+    \capa{1}{\dicraya[dicumbral, thick]{(2002.3,1) (2025,1)}
+      \dicrotulo[font=\footnotesize,text=tceegris,anchor=south west]{(2002.4,1.0)}{RMS: $F=F_{\mathit{RMS}}$}}
+    \capa{2}{\addplot[diclinea=tceerojo, mark=none] table[x=anio,y=med_f_fmsy] {\pob};
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=south]{(2008.5,1.86)}{Mediterráneo y mar Negro}}
+    \capa{3}{\addplot[diclinea=tceeazul, mark=none] table[x=anio,y=nea_f_fmsy] {\pob};
+      \dicrotulo[font=\footnotesize,text=tceeazul,anchor=north east]{(2012,0.93)}{Atlántico nororiental}}
+    \capa{4}{
+      \dicrotulo[font=\footnotesize,text=tceerojo,anchor=west]{(2023.2,0.92)}{0,92}
+      \dicrotulo[font=\footnotesize,text=tceeazul,anchor=west]{(2024.2,0.70)}{0,70}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

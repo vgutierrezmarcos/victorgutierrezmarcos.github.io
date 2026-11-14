@@ -1,0 +1,34 @@
+# Capturas pesqueras (7 zonas marinas FAO cubiertas por Eurostat), UE-27 (composición desde 2020) y España, miles de toneladas de peso vivo.
+# Fuente: Eurostat, conjunto fish_ca_main (Catches - major fishing areas, from 2000 onwards), actualizado el 07/10/2026; https://ec.europa.eu/eurostat/databrowser/view/fish_ca_main/default/table?lang=en ; descargado por API el 14/11/2026.
+# ue27_miles_t: 2000-2015 = agregado oficial EU27_2020 de fish_ca_main (dato exacto). Desde 2016 Eurostat marca el agregado UE como confidencial (':' C) porque Irlanda, Letonia, Portugal y otros años Dinamarca/Grecia son confidenciales;
+#   para 2016-2025 se usa la estimación redondeada que Eurostat publica en Statistics Explained 'Fisheries - catches and landings' (datos extraídos en octubre de 2026, hoja Data 3 del Excel SE_Catches_and_landings_2026_v3.xlsx; en millones de t con un decimal), por eso esos valores van redondeados a 100.000 t.
+#   https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Fisheries_-_catches_and_landings (consultado el 14/11/2026). Nota de prensa Eurostat 19/10/2026: 3,3 millones de t en 2025.
+# espana_miles_t: dato oficial de España (geo=ES) en fish_ca_main. espana_pct_ue: España / UE-27 (para 2016-2025 sobre la estimación redondeada, por tanto aproximado; Eurostat da 21 % en 2023, 2024 y 2025).
+# No hay serie Eurostat comparable antes de 2000 en fish_ca_main.
+anio,ue27_miles_t,tipo_dato_ue27,espana_miles_t,espana_pct_ue
+2000,5740.0,oficial_exacto,986.7,17.2
+2001,5912.0,oficial_exacto,1041.2,17.6
+2002,5450.8,oficial_exacto,793.0,14.5
+2003,5076.6,oficial_exacto,798.4,15.7
+2004,5059.5,oficial_exacto,714.5,14.1
+2005,4830.7,oficial_exacto,716.8,14.8
+2006,4639.2,oficial_exacto,680.7,14.7
+2007,4301.0,oficial_exacto,687.1,16.0
+2008,4322.4,oficial_exacto,853.4,19.7
+2009,4223.9,oficial_exacto,685.6,16.2
+2010,4393.6,oficial_exacto,741.7,16.9
+2011,4238.1,oficial_exacto,798.6,18.8
+2012,3793.3,oficial_exacto,757.8,20.0
+2013,4211.4,oficial_exacto,904.1,21.5
+2014,4630.7,oficial_exacto,1108.8,23.9
+2015,4443.8,oficial_exacto,901.5,20.3
+2016,4300.0,estimacion_eurostat_redondeada,859.7,20.0
+2017,4600.0,estimacion_eurostat_redondeada,902.2,19.6
+2018,4600.0,estimacion_eurostat_redondeada,880.0,19.1
+2019,4100.0,estimacion_eurostat_redondeada,837.2,20.4
+2020,3800.0,estimacion_eurostat_redondeada,748.3,19.7
+2021,3500.0,estimacion_eurostat_redondeada,751.9,21.5
+2022,3400.0,estimacion_eurostat_redondeada,751.3,22.1
+2023,3300.0,estimacion_eurostat_redondeada,698.5,21.2
+2024,3200.0,estimacion_eurostat_redondeada,664.6,20.8
+2025,3300.0,estimacion_eurostat_redondeada,681.0,20.6

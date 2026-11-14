@@ -1,0 +1,52 @@
+% Compromiso de Williamson (1968) en el control de concentraciones
+% (3.B.39, III.2.3). Demanda inversa p = 8 - Q.
+%   Antes de la fusión: precio competitivo p_0 = CMe_0 = 4, Q_0 = 4.
+%   Después: la fusión baja el coste a CMe_1 = 3 y da poder de mercado:
+%   p_1 = 5, Q_1 = 3.
+%   A_1 (pérdida de eficiencia): 1/2 (5 - 4)(4 - 3) = 0,5.
+%   A_2 (ahorro de costes): (4 - 3) 3 = 3 > A_1: con bienestar total la
+%   fusión mejora; con el criterio del consumidor, no (el precio sube).
+%   Transferencia de los consumidores a la empresa: (5 - 4) 3 = 3.
+% Capas: ejes → demanda → coste y equilibrio antes → coste después →
+% precio y equilibrio después → pérdida A_1 → ahorro A_2 → transferencia.
+% Elaboración propia a partir de Williamson (1968).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.65cm,
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none},
+    ahorro/.style={fill=tceeverde,fill opacity=0.3,draw=none},
+    llamada/.style={->,thin,black,shorten >=1pt}]
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{$p$}{8.8}{9.0}}
+  % 2: demanda
+  \capa{2}{\draw[curva1] (0,8) -- (8,0) node[etiqueta,above right,text=tceemorado] {$p(Q)$};}
+  % 3: coste medio antes de la fusión = precio competitivo
+  \capa{3}{\draw[curva4] (0,4) -- (8.4,4) node[right,etiqueta] {$\mathrm{CMe}_0=p_0$};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$E_0$}] (E0) at (4,4) {};}
+  \capa{3}{\draw[guia] (4,0) node[below] {$Q_0$} -- (E0);}
+  % 4: coste medio después de la fusión
+  \capa{4}{\draw[curva3] (0,3) -- (8.4,3) node[right,etiqueta] {$\mathrm{CMe}_1$};}
+  % 5: precio y equilibrio después de la fusión
+  \capa{5}{\node[punto,label={[etiqueta]above right:$E_1$}] (E1) at (3,5) {};}
+  \capa{5}{\draw[guia] (3,0) node[below] {$Q_1$} -- (E1);}
+  \capa{5}{\draw[guia] (E1) -- (0,5) node[left] {$p_1$};}
+  % 6: pérdida de eficiencia A_1
+  \capa{6}{\begin{scope}[on background layer]
+    \fill[perdida] (3,5) -- (4,4) -- (3,4) -- cycle;
+  \end{scope}}
+  \capa{6}{\node[etiqueta,align=left,anchor=west] (A1) at (5.0,6.6) {$A_1$: pérdida de\\eficiencia};}
+  \capa{6}{\draw[llamada] (A1.south west) .. controls (4.3,5.6) .. (3.4,4.4);}
+  % 7: ahorro de costes A_2
+  \capa{7}{\begin{scope}[on background layer]
+    \fill[ahorro] (0,3) rectangle (3,4);
+  \end{scope}}
+  \capa{7}{\node[etiqueta,font=\footnotesize] at (1.5,3.5) {$A_2$: ahorro};}
+  % 8: transferencia de los consumidores a la empresa
+  \capa{8}{\begin{scope}[on background layer]
+    \fill[area2] (0,4) rectangle (3,5);
+  \end{scope}}
+  \capa{8}{\node[etiqueta,font=\footnotesize] at (1.5,4.5) {transferencia};}
+\end{tikzpicture}
+\end{document}

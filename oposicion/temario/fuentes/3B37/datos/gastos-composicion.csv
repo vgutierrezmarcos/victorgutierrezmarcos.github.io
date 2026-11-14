@@ -1,0 +1,41 @@
+# Organismo: Comisión Europea - DG Presupuestos (DG BUDG)
+# Título: Gasto ejecutado (pagos) del presupuesto de la UE por grandes áreas 2000-2025
+# Fuente: EU spending and revenue - data 2000-2025 (fichero eu_budget_spending_and_revenue_2000-2025.xlsx; hojas anuales; columna Total)
+# URL: https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/spending-and-revenue_en
+# Fecha de consulta: 14/11/2026
+# Último dato: 2025 (ejecución)
+# Unidades: miles de millones de euros corrientes salvo pct_rnb y pct_rnb_sin_ngeu (% de la RNB de la UE del año según la propia hoja; 2 decimales)
+# Correspondencia por rúbricas: 2000-2006 (Agenda 2000): agricultura = 1 Agricultura (FEOGA-Garantía con desarrollo rural de acompañamiento); cohesion = 2 Acciones estructurales (con FEOGA-Orientación e IFOP) y Fondo de Cohesión; competitividad = 3 Políticas internas; exterior = 4 Acciones exteriores + 7 Estrategia de preadhesión; admin = 5; otros = 6 Reservas + 8 Compensaciones
+# 2007-2013: agricultura = 2 Conservación y gestión de recursos naturales; cohesion = 1b; competitividad = 1a; exterior = 4 La UE como socio global; admin = 5; otros = 3 Ciudadanía libertad seguridad y justicia + 6 Compensaciones
+# 2014-2020: agricultura = 2 Crecimiento sostenible: recursos naturales; cohesion = 1b; competitividad = 1a; exterior = 4 Europa global; admin = 5; otros = 3 Seguridad y ciudadanía + 6 + 9 Instrumentos especiales
+# 2021-2025: agricultura = 3 Recursos naturales y medio ambiente; cohesion = 2a Cohesión económica social y territorial; competitividad = 1 Mercado único innovación y economía digital; exterior = 6 Vecindad y resto del mundo; admin = 7; otros = 2b Resiliencia y valores (sin el MRR) + 4 Migración y fronteras + 5 Seguridad y defensa + instrumentos especiales y gasto fuera del MFP
+# Desde 2021 agricultura cohesion y competitividad excluyen los pagos financiados con ingresos afectados externos de NGEU (REACT-EU en FEDER/FSE; Horizonte Europa e InvestEU; FEADER y FTJ; rescEU van a ngeu_otros); mrr = pagos de la línea del Mecanismo de Recuperación y Resiliencia (subvenciones; incluye el Instrumento de Apoyo Técnico y la parte de la línea financiada con otros ingresos afectados no NGEU -presumiblemente REPowerEU-; los préstamos del MRR no pasan por el presupuesto). otros incluye desde 2021 el coste de financiación de la deuda de NGEU (EURI; 5.0 mm en 2025)
+# total = todos los pagos incluidos NGEU; total_sin_ngeu = total - mrr - ngeu_otros
+# Rupturas: en 2007 el desarrollo rural de regiones objetivo 1 (FEOGA-Orientación) pasa de cohesión a agricultura (FEADER) y la educación sigue en competitividad (1a); desde 2021 Erasmus+ y la cultura pasan a otros (rúbrica 2b) y el Fondo de Transición Justa figura en agricultura (rúbrica 3). UE-15 2000-2003 / UE-25 2004-2006 / UE-27 2007-2012 / UE-28 2013-2020 / UE-27 desde 2021
+anio,agricultura,cohesion,competitividad,exterior,admin,otros,mrr,ngeu_otros,total,total_sin_ngeu,pct_rnb,pct_rnb_sin_ngeu
+2000,40.5,27.6,5.4,5.0,4.8,0.2,0.0,0.0,83.5,83.5,0.92,0.92
+2001,41.5,22.5,5.3,5.6,4.9,0.2,0.0,0.0,80.0,80.0,0.85,0.85
+2002,43.5,23.5,6.6,6.2,5.2,0.2,0.0,0.0,85.1,85.1,0.88,0.88
+2003,44.4,28.5,5.7,6.5,5.3,0.1,0.0,0.0,90.6,90.6,0.91,0.91
+2004,43.6,34.2,7.3,7.7,5.9,1.6,0.0,0.0,100.1,100.1,0.92,0.92
+2005,48.5,32.8,8.0,8.0,6.2,1.4,0.0,0.0,104.8,104.8,0.92,0.92
+2006,49.8,32.4,9.0,7.5,6.7,1.2,0.0,0.0,106.6,106.6,0.88,0.88
+2007,54.6,37.0,6.7,7.3,6.8,1.5,0.0,0.0,114.0,114.0,0.89,0.89
+2008,54.8,35.6,10.1,7.3,7.3,1.5,0.0,0.0,116.5,116.5,0.90,0.90
+2009,55.9,33.9,10.8,8.0,7.6,2.2,0.0,0.0,118.4,118.4,0.97,0.97
+2010,56.6,37.2,11.6,7.5,7.9,1.4,0.0,0.0,122.2,122.2,0.96,0.96
+2011,57.4,42.4,12.4,7.1,8.4,1.8,0.0,0.0,129.4,129.4,0.98,0.98
+2012,59.1,48.5,13.1,7.1,8.6,2.4,0.0,0.0,138.7,138.7,1.03,1.03
+2013,59.5,56.9,14.3,7.1,8.7,2.0,0.0,0.0,148.5,148.5,1.10,1.10
+2014,56.6,54.4,13.3,7.2,8.8,2.2,0.0,0.0,142.5,142.5,1.02,1.02
+2015,58.1,51.2,16.8,7.9,9.0,2.3,0.0,0.0,145.2,145.2,0.99,0.99
+2016,57.4,37.8,18.5,10.3,9.3,3.1,0.0,0.0,136.4,136.4,0.92,0.92
+2017,56.7,35.7,21.4,9.8,9.7,4.2,0.0,0.0,137.4,137.4,0.90,0.90
+2018,58.0,54.5,21.6,9.5,9.9,3.3,0.0,0.0,156.9,156.9,0.99,0.99
+2019,59.5,53.8,21.7,10.1,10.4,3.6,0.0,0.0,159.1,159.1,0.97,0.97
+2020,60.6,59.5,24.1,11.4,10.3,7.4,0.0,0.0,173.3,173.3,1.11,1.11
+2021,56.8,68.6,18.4,10.9,10.7,8.9,46.5,7.2,228.0,174.3,1.57,1.20
+2022,56.9,61.6,22.0,14.5,11.6,13.2,47.3,16.3,243.3,179.8,1.54,1.14
+2023,57.3,51.8,22.2,15.2,12.3,13.2,47.4,19.8,239.2,172.0,1.41,1.01
+2024,56.8,36.7,24.0,15.4,13.3,20.4,55.3,25.1,247.0,166.6,1.38,0.93
+2025,57.2,36.3,22.7,17.2,13.8,21.1,39.7,8.5,216.4,168.2,1.16,0.90

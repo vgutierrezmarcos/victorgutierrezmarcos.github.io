@@ -1,0 +1,226 @@
+tema: 3B38
+fecha_inventario: 2026-11-14
+datos:
+  - id: gasto-pac-serie
+    texto: "Gasto de la PAC por instrumento 1980-2024; 73 % del gasto de la UE en 1985 y 23 % en 2024; 0,66 % del PIB en 1993 y 0,31 % en 2024"
+    donde: [3B38.tex, repaso/3B38-repaso.tex, datos/gasto-pac.csv, graficos/gasto-pac.tex]
+    valor: 56.2
+    unidad: miles de millones de euros (2024)
+    periodo: "1980-2024"
+    fuente: CE2026GastoPAC
+    organismo: Comisión Europea (DG AGRI)
+    serie: "CAP expenditure and CAP reform path; CAP expenditure in total EU expenditure"
+    url: https://agriculture.ec.europa.eu/data-and-analysis/financing/cap-expenditure_en
+    periodicidad: anual (la DG AGRI añade el año con el informe financiero)
+    proxima: "2027 (dato de 2025)"
+    familia: ue-pac
+
+  - id: pac-mfp-2021-2027
+    texto: "386.600 millones en el MFP 2021-2027: FEAGA 291.100, FEADER 95.500 (8.100 del NGEU); casi un tercio del MFP"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: 386600
+    unidad: millones de euros corrientes
+    periodo: "2021-2027"
+    fuente: CE2026FondosPAC
+    organismo: Comisión Europea
+    serie: "CAP funds"
+    url: https://agriculture.ec.europa.eu/common-agricultural-policy/financing-cap/cap-funds_en
+    periodicidad: por marco (cambia con transferencias entre pilares y revisiones)
+    proxima: "2028 (MFP 2028-2034)"
+    familia: ue-presupuesto
+
+  - id: distribucion-pagos
+    texto: "5,8 millones de perceptores y 38.149 millones; el 25 % se lleva el 84,6 %; el 46,5 % cobra menos de 1.250 euros (4,2 %); el 0,5 % más de 100.000 (15,9 %); España: el 20,7 % se lleva el 75,9 %"
+    donde: [3B38.tex, repaso/3B38-repaso.tex, datos/distribucion-pagos.csv, datos/distribucion-pagos-grupos.csv, graficos/distribucion-pagos.tex]
+    valor: null
+    unidad: "%"
+    periodo: "ejercicio financiero 2023"
+    fuente: CE2025DistribucionPagos
+    organismo: Comisión Europea (DG AGRI)
+    serie: "Indicative figures on the distribution of aid ... direct aid"
+    url: https://agriculture.ec.europa.eu/common-agricultural-policy/financing-cap/beneficiaries/direct-aid-breakdown_en
+    periodicidad: anual (con unos 18 meses de retraso)
+    proxima: "2026-2027 (ejercicio 2024, primero de la PAC 2023-2027)"
+    familia: ue-pac
+
+  - id: pse-ocde
+    texto: "PSE de la UE: 38,5 % en 1986-1988 y 18,2 % en 2025 (OCDE 15,4 %)"
+    donde: [3B38.tex, repaso/3B38-repaso.tex, datos/pse-ue.csv, graficos/pse-ue.tex]
+    valor: 18.2
+    unidad: "% de los ingresos brutos agrarios"
+    periodo: "1986-2025"
+    fuente: OCDE2026Monitoring
+    organismo: OCDE
+    serie: "OECD.TAD.ARP:DSD_AGR_POLIND@DF_PSE (PSEP)"
+    url: https://sdmx.oecd.org/public/rest/data/OECD.TAD.ARP,DSD_AGR_POLIND@DF_PSE,1.3/all
+    periodicidad: anual (octubre-noviembre)
+    proxima: "2027-11"
+    familia: ue-pac
+
+  - id: explotaciones-edad
+    texto: "9,1 millones de explotaciones en 2020 y 8,8 en 2023 (casi un 40 % menos que en 2005; 63 % con menos de 5 ha); titulares <40 años 11,9 % y ≥65 años 33,2 % (España 7,7 % y 41,3 %); 156 millones de ha"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: 8.8
+    unidad: millones de explotaciones
+    periodo: "2020 (censo) y 2023 (encuesta)"
+    fuente: Eurostat2026Explotaciones
+    organismo: Eurostat
+    serie: "ef_m_farmang; Statistics Explained «Farms and farmland»"
+    url: https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Farms_and_farmland_in_the_European_Union_-_statistics
+    periodicidad: trienal (encuesta de estructuras) y decenal (censo)
+    proxima: "2028 (encuesta de 2026)"
+    familia: ue-pac
+
+  - id: precio-tierra
+    texto: "precio medio de la hectárea arable en la UE: unos 11.000 euros en 2018 y 15.200 en 2024"
+    donde: [3B38.tex]
+    valor: 15224
+    unidad: euros por hectárea
+    periodo: "2024"
+    fuente: Eurostat2026PrecioTierra
+    organismo: Eurostat
+    serie: "apri_lprc"
+    url: https://ec.europa.eu/eurostat/databrowser/view/apri_lprc/default/table
+    periodicidad: anual (julio)
+    proxima: "2027-07"
+    familia: ue-pac
+
+  - id: pepac-espana
+    texto: "PEPAC: 34.472 millones de gasto público 2023-2027 (31.508 UE); pagos directos 24.440; sectorial 1.712; desarrollo rural 8.320; ecorregímenes 5.553 (23 %)"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: 34472
+    unidad: millones de euros
+    periodo: "versión de diciembre de 2025"
+    fuente: CE2025PEPAC
+    organismo: Comisión Europea
+    serie: "CAP strategic plan at a glance: Spain"
+    url: https://agriculture.ec.europa.eu/document/download/337fcbc6-19a2-4c91-945b-248d63a0134c_es?filename=csp-a-a-glance-spain_es.pdf
+    periodicidad: con cada modificación del plan (anual)
+    proxima: "2026-12"
+    familia: espana-pac
+
+  - id: pagos-fega
+    texto: "FEGA 2025: FEAGA 5.719 millones (ayuda básica 2.414, ecorregímenes 1.114, redistributivo 491, asociada 662); FEADER parte UE ≈1.680; España ≈14 % del FEAGA; unos 7.400 millones al año"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: 5719
+    unidad: millones de euros
+    periodo: "ejercicio financiero 2025"
+    fuente: FEGA2026Informe
+    organismo: FEGA
+    serie: "Informe de actividades (resumen)"
+    url: https://www.fega.gob.es/sites/default/files/files/document/Informe_de_Actividades-RESUMEN_2025.pdf
+    periodicidad: anual (julio)
+    proxima: "2027-07"
+    familia: espana-pac
+
+  - id: pac-post-2027
+    texto: "Propuesta de 16/7/2025: fondo de planes nacionales y regionales de 865.000 millones; 300.000 reservados (293.700 renta, 6.300 crisis); degresividad 25/50/75 % y tope 100.000; PE pide 385.100; cajas del Consejo 261.000-265.000 (precios de 2025); Consejo Europeo 26-27/11/2026"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: null
+    unidad: millones de euros
+    periodo: "noviembre de 2026"
+    fuente: EPRS2026MFP
+    organismo: Comisión, Consejo y Parlamento Europeo
+    serie: "negociación del MFP 2028-2034"
+    url: https://eprs.europarl.europa.eu/home/topics/budgetary-affairs/BUDGET/mff-2028-2034.html
+    periodicidad: continua hasta el acuerdo
+    proxima: "2026-12 (resultado del Consejo Europeo de noviembre)"
+    familia: ue-presupuesto
+
+  - id: capturas-ue
+    texto: "capturas de la UE 3,3 millones de t en 2025 (5,9 en 2001); valor 5.500 millones; España 31 % del valor y 21 % del peso; 0,68 millones de t"
+    donde: [3B38.tex, repaso/3B38-repaso.tex, datos/capturas-ue.csv, graficos/capturas-ue.tex]
+    valor: 3.3
+    unidad: millones de toneladas
+    periodo: "2025"
+    fuente: Eurostat2026Capturas
+    organismo: Eurostat
+    serie: "fish_ca_main; Statistics Explained «Fisheries - catches and landings»"
+    url: https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Fisheries_-_catches_and_landings
+    periodicidad: anual (octubre)
+    proxima: "2027-10"
+    familia: ue-pesca
+
+  - id: flota-ue
+    texto: "flota de la UE unos 68.000 buques (2025); España 8.324 buques y 24 % del arqueo; empleo >155.000"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: 68318
+    unidad: buques
+    periodo: "2025"
+    fuente: Eurostat2026Flota
+    organismo: Eurostat y Comisión
+    serie: "fish_fleet_alt"
+    url: https://ec.europa.eu/eurostat/databrowser/view/fish_fleet_alt/default/table
+    periodicidad: anual
+    proxima: "2027"
+    familia: ue-pesca
+
+  - id: estado-poblaciones
+    texto: "F/FRMS Atlántico NE 1,51 (2003) → 0,70 (2024); sobrepescadas de ~2/3 a <1/3; 29 % cumple el art. 2.2; fuera de límites seguros 41 % (2021) → 47 % (2024); Mediterráneo sobrepescadas 83 % (2007) → 47 % (2023), F/FRMS 0,92; 81 % de las posibilidades de pesca atlánticas de 2026 en línea con el RMS"
+    donde: [3B38.tex, repaso/3B38-repaso.tex, datos/estado-poblaciones.csv, graficos/estado-poblaciones.tex]
+    valor: 0.70
+    unidad: F/FRMS (mediana)
+    periodo: "2003-2024"
+    fuente: STECF2026
+    organismo: CCTEP (STECF) y Comisión
+    serie: "Monitoring the performance of the CFP (STECF-Adhoc)"
+    url: https://stecf.jrc.ec.europa.eu/documents/d/stecf/stecf_26-01_adhoc
+    periodicidad: anual (marzo; comunicación de la Comisión en junio)
+    proxima: "2027-03"
+    familia: ue-pesca
+
+  - id: fao-poblaciones
+    texto: "37,6 % de las poblaciones mundiales no sostenibles en 2023 (10 % en 1974); Mediterráneo 45,7 % sostenibles"
+    donde: [3B38.tex, repaso/3B38-repaso.tex, datos/sofia-poblaciones.csv]
+    valor: 37.6
+    unidad: "%"
+    periodo: "2023"
+    fuente: FAO2026SOFIA
+    organismo: FAO
+    serie: "SOFIA; indicador ODS 14.4.1"
+    url: https://unstats.un.org/sdgapi/v1/sdg/Indicator/Data?indicator=14.4.1&areaCode=1
+    periodicidad: bienal
+    proxima: "2028"
+    familia: mundo-pesca
+
+  - id: tac-2026
+    texto: "TAC 2026: 81 % en línea con el RMS en el Atlántico; caballa 71 % por encima del ICES; arrastre del Mediterráneo occidental 143 días (Comisión: 9,7)"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: null
+    unidad: null
+    periodo: "2026"
+    fuente: CE2026Pesca2027
+    organismo: Consejo y Comisión
+    serie: "acuerdo anual de posibilidades de pesca (diciembre)"
+    url: https://data.consilium.europa.eu/doc/document/ST-10151-2026-INIT/en/pdf
+    periodicidad: anual (diciembre)
+    proxima: "2026-12 (posibilidades de 2027)"
+    familia: ue-pesca
+
+  - id: fempa-sfpa
+    texto: "FEMPA 6.108 millones (5.311 en gestión compartida); España 1.120 (21 %); 11 protocolos SFPA en vigor (Mauritania vence el 14/11/2026), 9 sin protocolo; 5 OROP atuneras y 13 no atuneras"
+    donde: [3B38.tex, repaso/3B38-repaso.tex]
+    valor: 6108
+    unidad: millones de euros
+    periodo: "2021-2027; noviembre de 2026"
+    fuente: UE2021FEMPA
+    organismo: Comisión Europea (DG MARE)
+    serie: "Reglamento 2021/1139; página de SFPA"
+    url: https://oceans-and-fisheries.ec.europa.eu/fisheries/international-agreements/sustainable-fisheries-partnership-agreements-sfpas_en
+    periodicidad: SFPA, cada vez que vence o se firma un protocolo
+    proxima: "2026-12 (protocolo de Mauritania)"
+    familia: ue-pesca
+
+  - id: consumo-pescado
+    texto: "consumo 22,9 kg por habitante (2023); autoabastecimiento 38 %; importaciones ~6 millones de t; España 40,7 kg"
+    donde: [3B38.tex]
+    valor: 22.89
+    unidad: kg por habitante
+    periodo: "2023"
+    fuente: EUMOFA2025
+    organismo: EUMOFA
+    serie: "The EU fish market"
+    url: https://fishery-aquaculture-market-observatory.ec.europa.eu/system/files/2026-05/The_EU_fish_market_2025.pdf
+    periodicidad: anual
+    proxima: "2027-05"
+    familia: ue-pesca

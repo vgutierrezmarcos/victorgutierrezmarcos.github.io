@@ -1,0 +1,38 @@
+% Composición de los ingresos del presupuesto de la UE, 1970-2025, en % del
+% total: contribuciones nacionales, recursos propios tradicionales, IVA, RNB,
+% plástico, otros ingresos y, desde 2021, préstamos del NextGenerationEU
+% (ingresos afectados externos). Datos en ../datos/ingresos-historico.csv
+% (Comisión Europea: Informe financiero 2008 y EU spending and revenue
+% 2000-2025). Capas: áreas de abajo arriba -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/ingresos-historico.csv}\ing
+\colorlet{icontrib}{tceegris!55}\colorlet{irpt}{tceedorado!75}\colorlet{iiva}{tceeazul!75}
+\colorlet{irnb}{tceemorado!80}\colorlet{iplast}{tceeverde!75}\colorlet{iotros}{tceegris!25}\colorlet{ideuda}{tceerojo!70}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=14cm, height=7.5cm, stack plots=y, area style,
+      xmin=1970, xmax=2025, ymin=0, ymax=100, enlarge x limits=false,
+      xtick={1970,1975,...,2025}, xticklabel style={/pgf/number format/1000 sep=,font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={\% de los ingresos}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=icontrib] table[x=anio,y=contrib] {\ing} \closedcycle;}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=irpt] table[x=anio,y=rpt] {\ing} \closedcycle;}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=iiva] table[x=anio,y=iva] {\ing} \closedcycle;}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=irnb] table[x=anio,y=rnb] {\ing} \closedcycle;}
+    \capa{5}{\addplot[on layer=dicbarras, dicbarra=iplast] table[x=anio,y=plastico] {\ing} \closedcycle;}
+    \capa{6}{\addplot[on layer=dicbarras, dicbarra=iotros] table[x=anio,y=otros] {\ing} \closedcycle;}
+    \capa{7}{\addplot[on layer=dicbarras, dicbarra=ideuda] table[x=anio,y=deuda] {\ing} \closedcycle;}
+    \capa{8}{
+      \dicrotulo[font=\scriptsize,align=center]{(1973.5,45)}{contribuciones\\nacionales}
+      \dicrotulo[font=\scriptsize,align=center]{(1981,25)}{recursos propios\\tradicionales}
+      \dicrotulo[font=\scriptsize,text=white,align=center]{(1988,70)}{IVA}
+      \dicrotulo[font=\scriptsize,text=white,align=center]{(2010,45)}{RNB}
+      \dicrotulo[font=\scriptsize,align=center]{(2003,94)}{otros}
+      \dicrotulo[font=\scriptsize,text=white,align=center]{(2022.5,85)}{deuda\\NGEU}
+      \dicrotulo[font=\scriptsize,anchor=east,align=right]{(2020.5,60)}{plástico$\rightarrow$}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

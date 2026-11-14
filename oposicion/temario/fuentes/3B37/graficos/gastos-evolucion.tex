@@ -1,0 +1,37 @@
+% Gasto ejecutado (pagos) de la UE por grandes áreas, 2000-2025, en miles de
+% millones de euros corrientes, con el gasto financiado por el
+% NextGenerationEU aparte (MRR y refuerzos de otros programas). Datos en
+% ../datos/gastos-composicion.csv (Comisión Europea, EU spending and revenue
+% 2000-2025; correspondencia de rúbricas en la cabecera del CSV).
+% Capas: barras por áreas de abajo arriba -> NGEU -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/gastos-composicion.csv}\gas
+\pgfplotstablecreatecol[expr={\thisrow{mrr}+\thisrow{ngeu_otros}}]{ngeu}{\gas}
+\colorlet{gagr}{tceeverde!75}\colorlet{gcoh}{tceeazul!75}\colorlet{gcomp}{tceedorado!75}
+\colorlet{gext}{tceenaranja!70}\colorlet{gadm}{tceegris!55}\colorlet{gotr}{tceegris!25}\colorlet{gngeu}{tceerojo!70}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=14cm, height=8cm, ybar stacked, bar width=7pt,
+      xmin=1999.3, xmax=2025.7, ymin=0, ymax=260,
+      xtick={2000,2005,...,2025}, minor xtick={2000,...,2025}, xticklabel style={/pgf/number format/1000 sep=,font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ylabel={miles de millones de euros}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!20},
+      legend style={at={(0.02,0.98)},anchor=north west,font=\scriptsize,draw=none,legend columns=2},
+      legend cell align=left, area legend, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=gagr] table[x=anio,y=agricultura] {\gas}; \addlegendentry{agricultura y pesca}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=gcoh] table[x=anio,y=cohesion] {\gas}; \addlegendentry{cohesión}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=gcomp] table[x=anio,y=competitividad] {\gas}; \addlegendentry{competitividad}}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=gext] table[x=anio,y=exterior] {\gas}; \addlegendentry{acción exterior}}
+    \capa{5}{\addplot[on layer=dicbarras, dicbarra=gadm] table[x=anio,y=admin] {\gas}; \addlegendentry{administración}}
+    \capa{6}{\addplot[on layer=dicbarras, dicbarra=gotr] table[x=anio,y=otros] {\gas}; \addlegendentry{otros}}
+    \capa{7}{\addplot[on layer=dicbarras, dicbarra=gngeu] table[x=anio,y=ngeu] {\gas}; \addlegendentry{NextGenerationEU}}
+    \capa{8}{\dicrotulo[font=\scriptsize,anchor=south]{(2000,83.5)}{0,92~\%}
+      \dicrotulo[font=\scriptsize,anchor=south]{(2013,148.5)}{1,10~\%}
+      \dicrotulo[font=\scriptsize,anchor=south]{(2022,243.3)}{1,54~\%}
+      \dicrotulo[font=\scriptsize,anchor=south]{(2025,216.4)}{1,16~\%}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

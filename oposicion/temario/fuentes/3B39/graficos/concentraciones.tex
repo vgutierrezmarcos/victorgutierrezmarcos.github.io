@@ -1,0 +1,41 @@
+% Concentraciones notificadas a la Comisión Europea, 1991-2025: notificaciones
+% por el procedimiento simplificado y ordinarias (barras apiladas); encima,
+% las fases II abiertas (línea). Se omiten 1990 (desde el 21 de septiembre) y
+% 2026 (hasta octubre). Datos en ../datos/concentraciones.csv (DG
+% Competencia, «Merger cases statistics», a 31/10/2026).
+% Capas: barras ordinarias → barras simplificadas → ejes → línea de fases II.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/concentraciones.csv}\conc
+\pgfplotstablecreatecol[expr={\thisrow{notificaciones}-\thisrow{simplificadas}}]{ordinarias}{\conc}
+\colorlet{barrafuerte}{tceemorado!75}\colorlet{barraclara}{tceemorado!30}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12cm, height=6.8cm, xmin=1990.4, xmax=2025.6, ymin=0, ymax=470,
+      xtick={1991,1995,...,2023}, minor xtick={1991,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ytick={0,100,...,400},
+      ylabel={notificaciones al año}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!20}, clip=false,
+      ybar stacked, bar width=0.62,
+      restrict x to domain=1991:2025,
+      legend style={font=\scriptsize, draw=none, at={(0.02,0.98)}, anchor=north west, legend cell align=left},
+      dicapas]
+    % 1: procedimiento ordinario
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=barrafuerte] table[x=anio, y=ordinarias] {\conc}; \addlegendentry{ordinarias}}
+    % 2: procedimiento simplificado
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=barraclara] table[x=anio, y=simplificadas] {\conc}; \addlegendentry{simplificadas}}
+  \end{axis}
+  \begin{axis}[width=12cm, height=6.8cm, xmin=1990.4, xmax=2025.6, ymin=0, ymax=47,
+      axis x line=none, axis y line*=right, tick align=outside,
+      yticklabel style={font=\footnotesize, text=tceerojo}, ytick={0,10,20},
+      ylabel={fases II abiertas}, ylabel style={font=\footnotesize, text=tceerojo},
+      restrict x to domain=1991:2025, clip=false, dicapas]
+    % 3: fases II
+    \capa{3}{\addplot[diclinea=tceerojo, mark=*, mark size=1.1pt] table[x=anio, y=fase2] {\conc};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

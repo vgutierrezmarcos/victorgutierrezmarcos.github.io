@@ -1,0 +1,32 @@
+% Multas de la Comisión Europea por cártel, por quinquenios (1990-2024) y
+% 2025, en millones de euros, ajustadas por las sentencias de los
+% tribunales; encima, el número de decisiones.
+% Datos en ../datos/multas-carteles.csv (DG Competencia, «Cartel
+% Statistics», actualizado a 26/02/2026). La DG Competencia ya no publica la
+% serie año a año antes de 2021.
+% Bajo cada barra, el número de decisiones (columna decisiones del CSV,
+% escrito a mano en las etiquetas: si cambia el CSV, cambiarlas).
+% Capas: barras → ejes → rótulo de los camiones.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/multas-carteles.csv}\multas
+\colorlet{barrafuerte}{tceemorado!75}\colorlet{barraclara}{tceemorado!30}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12cm, height=6.6cm, ymin=0, ymax=9800,
+      xtick=data, xticklabels={{1990-94\\10 dec.},{1995-99\\9 dec.},{2000-04\\29 dec.},{2005-09\\33 dec.},{2010-14\\31 dec.},{2015-19\\26 dec.},{2020-24\\20 dec.},{2025\\4 dec.}},
+      xticklabel style={font=\footnotesize, align=center},
+      yticklabel style={/pgf/number format/1000 sep=., font=\footnotesize},
+      ylabel={millones de euros}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!20}, clip=false, ybar, bar width=0.6, bar shift=0pt,
+      dicapas]
+    % 1: barras
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=barrafuerte, point meta=y, nodes near coords={\pgfmathprintnumber[fixed,precision=0,1000 sep=.]{\pgfplotspointmeta}}, nodes near coords style={font=\scriptsize, text=black}] table[x expr=\coordindex, y=multas_meur] {\multas};}
+    % 2: rótulo
+    \capa{2}{\dicrotulo[font=\scriptsize,anchor=center,align=center,text=white]{(5,4000)}{camiones\\3.807}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

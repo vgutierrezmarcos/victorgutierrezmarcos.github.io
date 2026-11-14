@@ -1,0 +1,26 @@
+% Justo retorno: lo que un Estado gana de verdad con el gasto en bienes
+% públicos europeos P, s_i (m - 1) P (con m = 1,8 y s_i = 1, pendiente 0,8),
+% frente a lo que percibe su gobierno si da peso lambda a los beneficios
+% difusos, s_i (lambda m - 1) P (lambda m = 0,6, pendiente -0,4). La brecha,
+% s_i (1 - lambda) m P, son los beneficios que no salen en el saldo neto.
+% Capas: ejes -> ganancia real -> ganancia percibida -> brecha -> rótulo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.8cm]
+  % 1: ejes (con parte negativa)
+  \capa{1}{\draw[eje] (0,0) -- (8.8,0) node[below left=2pt and 0pt] {$P$};
+    \draw[eje] (0,-3.8) -- (0,5.6) node[left] {euros};
+    \node[left] at (0,0) {$0$};}
+  % 2: lo que el Estado gana de verdad (lambda = 1)
+  \capa{2}{\draw[curva2] (0,0) -- (8,4.8);
+    \node[etiqueta,tceeazul,anchor=south east,align=right] at (7.9,4.9) {$s_i(m-1)\,P$: lo que gana de verdad};}
+  % 3: lo que percibe su gobierno (lambda m < 1)
+  \capa{3}{\draw[curva1] (0,0) -- (8,-3.2);
+    \node[etiqueta,tceemorado,anchor=north east,align=right] at (7.4,-3.2) {$s_i(\lambda m-1)\,P$: lo que percibe\\su gobierno};}
+  % 4: brecha: beneficios difusos que no salen en el saldo neto
+  \capa{4}{\fill[tceerojo,fill opacity=0.15] (0,0) -- (8,4.8) -- (8,-3.2) -- cycle;
+    \node[etiqueta,font=\footnotesize,tceerojo,align=center] at (5.9,0.8) {beneficios difusos\\que no salen\\en el saldo neto};}
+\end{tikzpicture}
+\end{document}

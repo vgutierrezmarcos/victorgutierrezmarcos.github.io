@@ -1,0 +1,37 @@
+% Saldos presupuestarios operativos de los Estados con la UE en 2025, en %
+% de la RNB, ordenados: barras sin el NextGenerationEU (contribución nacional
+% ajustada frente a gasto operativo asignado) y puntos con el gasto del
+% NGEU. España en rojo. Datos en ../datos/saldos-netos-2025.csv (de
+% saldos-netos.csv, elaboración propia con datos de la Comisión).
+% Capas: barras -> eje del cero -> puntos con NGEU -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/saldos-netos-2025.csv}\saldos
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12cm, height=13.5cm, xbar, bar width=6.5pt, bar shift=0pt,
+      xmin=-0.6, xmax=3.7, ymin=-0.7, ymax=26.7,
+      ytick={0,...,26}, yticklabels from table={\saldos}{pais},
+      yticklabel style={font=\scriptsize},
+      xticklabel style={font=\footnotesize,/pgf/number format/use comma},
+      xlabel={\% de la RNB}, xlabel style={font=\footnotesize},
+      axis y line*=left, axis x line*=bottom, xmajorgrids, grid style={tceegris!20},
+      legend style={at={(0.97,0.03)},anchor=south east,font=\scriptsize,draw=none},
+      legend cell align=left, dicapas]
+    % 1: barras (sin NGEU); España en rojo
+    \capa{1}{\addplot[on layer=dicbarras, forget plot, dicbarra=dicotroclaro, x filter/.expression={\thisrow{es}==1 ? nan : x}] table[x=saldo, y=n] {\saldos};}
+    \capa{1}{\addplot[on layer=dicbarras, forget plot, dicbarra=dicespana, x filter/.expression={\thisrow{es}==1 ? x : nan}] table[x=saldo, y=n] {\saldos};}
+    % 2: eje del cero
+    \capa{2}{\dicraya{(0,-0.7) (0,26.7)}}
+    % 3: con el NextGenerationEU
+    \capa{3}{\addplot[dicpuntos=tceemorado, forget plot] table[x=saldo_ngeu, y=n] {\saldos};}
+    % 4: rótulos
+    \capa{4}{\dicrotulo[font=\scriptsize,anchor=west,text=dicespana]{(0.45,9)}{España: $-$0,06 sin NGEU; +0,38 con él}
+      \dicrotulo[font=\scriptsize,anchor=west,align=left]{(0.35,3)}{$\leftarrow$ contribuyentes netos}
+      \dicrotulo[font=\scriptsize,anchor=west,align=left]{(1.9,1.2)}{barras: sin el NextGenerationEU\\círculos: con su gasto}
+      \dicrotulo[font=\scriptsize,anchor=west,align=left]{(2.0,18)}{receptores\\netos}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

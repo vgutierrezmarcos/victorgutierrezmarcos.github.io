@@ -1,0 +1,37 @@
+% La constitución financiera de la UE: 4 textos (Tratados, Decisión de
+% recursos propios, Reglamento del MFP, Reglamento financiero) y el
+% presupuesto anual que encajan uno dentro de otro, con qué fija cada uno y
+% cómo se aprueba. Fuente: arts. 310-325 TFUE.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\newcommand{\caja}[3]{{\bfseries\color{#1}#2}\par\vspace{1pt}#3}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    texto/.style={draw=#1,thick,fill=#1!8,rounded corners=2pt,align=left,
+      text width=5.2cm,inner sep=4pt,font=\footnotesize,anchor=north west},
+    aprob/.style={draw=tceegris,thin,fill=tceegris!6,rounded corners=2pt,align=left,
+      text width=5.6cm,inner sep=4pt,font=\footnotesize,anchor=west},
+    sigue/.style={->,thick,tceegris}]
+  % 1: los Tratados
+  \capa{1}{\node[texto=tceemorado] (t) at (0,0) {\caja{tceemorado}{Tratados (arts. 310-325 TFUE; art. 41 TUE)}{principios, procedimiento anual, ejecución y control}};
+    \node[aprob] (at) at ($(t.east)+(0.5,0)$) {reforma de los Tratados (art. 48 TUE): unanimidad y ratificación};}
+  % 2: la Decisión de recursos propios
+  \capa{2}{\node[texto=tceeazul] (d) at ($(t.south west)+(0,-0.45)$) {\caja{tceeazul}{Decisión de recursos propios (2020/2053)}{qué ingresa la UE y su techo: 1,40~\% de la RNB (+0,6 temporal)}};
+    \node[aprob] (ad) at ($(d.east)+(0.5,0)$) {Consejo por unanimidad, consulta al PE y aprobación por los 27 Estados (art. 311)};
+    \draw[sigue] (t.south) -- (t.south |- d.north);}
+  % 3: el Reglamento del MFP
+  \capa{3}{\node[texto=tceeverde] (m) at ($(d.south west)+(0,-0.45)$) {\caja{tceeverde}{Reglamento del MFP (2020/2093)}{techos de gasto anuales por rúbricas durante 7 años, por debajo del techo de ingresos}};
+    \node[aprob] (am) at ($(m.east)+(0.5,0)$) {Consejo por unanimidad con aprobación del PE (art. 312) + acuerdo interinstitucional};
+    \draw[sigue] (d.south) -- (d.south |- m.north);}
+  % 4: el Reglamento financiero
+  \capa{4}{\node[texto=tceedorado] (f) at ($(m.south west)+(0,-0.45)$) {\caja{tceedorado!80!black}{Reglamento financiero (2024/2509)}{cómo se elabora, ejecuta y controla el presupuesto: 9 principios}};
+    \node[aprob] (af) at ($(f.east)+(0.5,0)$) {procedimiento legislativo ordinario: PE y Consejo (art. 322)};
+    \draw[sigue] (m.south) -- (m.south |- f.north);}
+  % 5: el presupuesto anual
+  \capa{5}{\node[texto=tceerojo] (p) at ($(f.south west)+(0,-0.45)$) {\caja{tceerojo}{Presupuesto anual}{créditos de compromiso y de pago del año, dentro de los techos}};
+    \node[aprob] (ap) at ($(p.east)+(0.5,0)$) {procedimiento especial: Consejo y PE, que tiene la última palabra (art. 314)};
+    \draw[sigue] (f.south) -- (f.south |- p.north);}
+\end{tikzpicture}
+\end{document}

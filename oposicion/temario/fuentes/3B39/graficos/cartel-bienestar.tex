@@ -1,0 +1,46 @@
+% Coste social de un cártel y beneficio ilícito (3.B.39, III.2.1).
+% Demanda inversa p = 8 - Q, coste marginal constante c = 2.
+%   Competencia: Q^c = 6, p^c = c = 2.
+%   Cártel (actúa como un monopolista): IMg = 8 - 2Q; Q^K = 3, p^K = 5.
+%   Sobreprecio (beneficio ilícito, transferencia de los consumidores):
+%   (p^K - c) Q^K = 9. Pérdida irrecuperable de eficiencia (triángulo de
+%   Harberger): 1/2 (5 - 2)(6 - 3) = 4,5.
+% Capas: ejes → demanda → coste marginal y equilibrio competitivo → ingreso
+% marginal → equilibrio del cártel → sobreprecio → pérdida de eficiencia.
+% Elaboración propia a partir de Harberger (1954) y Landes (1983).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.6cm,
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none},
+    llamada/.style={->,thin,black,shorten >=1pt}]
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{$p$}{8.8}{9.3}}
+  % 2: demanda
+  \capa{2}{\draw[curva1] (0,8) -- (8,0) node[etiqueta,above right,text=tceemorado] {$p(Q)$};}
+  % 3: coste marginal y equilibrio competitivo
+  \capa{3}{\draw[curva4] (0,2) -- (8.4,2) node[right,etiqueta] {$c$};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$C$}] (C) at (6,2) {};}
+  \capa{3}{\draw[guia] (6,0) node[below] {$Q^c$} -- (C);}
+  % 4: ingreso marginal del cártel
+  \capa{4}{\draw[curva2] (0,8) -- (4.2,-0.4) node[etiqueta,right,text=tceeazul] {IMg};}
+  % 5: equilibrio del cártel
+  \capa{5}{\node[punto] (I) at (3,2) {};}
+  \capa{5}{\node[punto,label={[etiqueta]above right:$K$}] (K) at (3,5) {};}
+  \capa{5}{\draw[guia] (3,0) node[below] {$Q^K$} -- (K);}
+  \capa{5}{\draw[guia] (K) -- (0,5) node[left] {$p^K$};}
+  % 6: sobreprecio = beneficio ilícito
+  \capa{6}{\begin{scope}[on background layer]
+    \fill[area2] (0,2) rectangle (3,5);
+  \end{scope}}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=center] at (1.5,3.5) {sobreprecio\\$\Delta B$};}
+  % 7: pérdida irrecuperable de eficiencia
+  \capa{7}{\begin{scope}[on background layer]
+    \fill[perdida] (3,5) -- (6,2) -- (3,2) -- cycle;
+  \end{scope}}
+  \capa{7}{\node[etiqueta,font=\footnotesize] at (3.95,2.9) {PIE};}
+  \capa{7}{\node[etiqueta,align=left,anchor=west] (H) at (5.6,5.6) {pérdida irrecuperable\\de eficiencia};}
+  \capa{7}{\draw[llamada] (H.south west) .. controls (5.0,4.4) .. (4.2,3.2);}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+% MFP 2021-2027 (techos de compromiso tras la revisión de 2024, según el
+% ajuste técnico para 2027) y NextGenerationEU por rúbricas, en miles de
+% millones de euros corrientes. Datos en ../datos/mfp-2021-2027.csv
+% (Comisión Europea). Capas: barras del MFP -> barras del NGEU -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/mfp-2021-2027.csv}\mfp
+\pgfplotstablecreatecol[expr={7-\pgfplotstablerow}]{pos}{\mfp}
+\colorlet{bmfp}{tceemorado!75}\colorlet{bngeu}{tceerojo!60}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=13cm, height=7.5cm, xbar stacked, bar width=10pt,
+      xmin=0, xmax=1350, ymin=0.4, ymax=7.6, ytick={1,...,7},
+      yticklabels={7. Administración,6. Vecindad y mundo,5. Seguridad y defensa,4. Migración y fronteras,3. Recursos naturales,2. Cohesión y resiliencia,1. Mercado único},
+      yticklabel style={font=\footnotesize}, xticklabel style={font=\footnotesize,/pgf/number format/1000 sep=.},
+      xlabel={miles de millones de euros corrientes}, xlabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, xmajorgrids, grid style={tceegris!20},
+      legend style={at={(0.97,0.03)},anchor=south east,font=\scriptsize,draw=none},
+      legend cell align=left, area legend, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=bmfp] table[x=mfp,y=pos] {\mfp}; \addlegendentry{MFP (1.225,9)}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=bngeu] table[x=ngeu,y=pos] {\mfp}; \addlegendentry{NextGenerationEU (806,9)}}
+    \capa{3}{\dicrotulo[font=\scriptsize,anchor=west]{(1213,6)}{432 + 777}
+      \dicrotulo[font=\scriptsize,anchor=west]{(424,5)}{400 + 19}
+      \dicrotulo[font=\scriptsize,anchor=west]{(168,7)}{152 + 12}
+      \dicrotulo[font=\scriptsize,anchor=west]{(118,2)}{114}
+      \dicrotulo[font=\scriptsize,anchor=west]{(88,1)}{83}
+      \dicrotulo[font=\scriptsize,anchor=west]{(33,4)}{29}
+      \dicrotulo[font=\scriptsize,anchor=west]{(21,3)}{16}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

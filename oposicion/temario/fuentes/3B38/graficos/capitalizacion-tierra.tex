@@ -1,0 +1,47 @@
+% Capitalización de un pago por hectárea en la renta de la tierra (modelo
+% del apartado II.3.2). Demanda de tierra (valor del producto marginal):
+% R = 5 - 0,5 T; con un pago s = 1 por hectárea, R = 6 - 0,5 T.
+% Izquierda: oferta de tierra rígida T = 5: R_0 = 2,5 y R_1 = 3,5 (ΔR = s:
+%   capitalización total).
+% Derecha: oferta de tierra con pendiente R = 0,5 + 0,4 T: R_0 = 2,5 (T = 5);
+%   con el pago, T_1 = 5,5/0,9 = 6,11 y R_1 = 2,944: ΔR/s = 0,444 =
+%   |D'|/(|D'| + S') con D' = -2 y S' = 2,5 (en hectáreas por euro).
+% Capas: ejes -> oferta y demanda -> pago -> nueva renta y reparto (izq.),
+%   y lo mismo en el panel derecho.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.72cm,y=1.0cm,
+    declare function={dd(\x)=5-0.5*\x; dn(\x)=6-0.5*\x; ss(\x)=0.5+0.4*\x;},
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % ---------------- Oferta rígida ----------------
+  \begin{scope}
+    \capa{1}{\ejes{$T$}{$R$}{9.4}{5.6}}
+    \capa{1}{\node[titulo] at (4.7,5.65) {Oferta de tierra rígida};}
+    \capa{2}{\draw[curva3] (5,0) -- (5,5.2) node[etiqueta,above] {$\bar T$};}
+    \capa{2}{\draw[curva1] (0,{dd(0)}) -- (9,{dd(9)}) node[etiqueta,right] {$\mathit{VPMg}_T$};}
+    \capa{2}{\node[punto] at (5,2.5) {};}
+    \capa{2}{\draw[guia] (5,2.5) -- (0,2.5) node[left,text=black] {$R_0$};}
+    \capa{3}{\draw[curvanueva] (1.2,{dn(1.2)}) -- (9,{dn(9)}) node[etiqueta,right,text=tceerojo] {$\mathit{VPMg}_T+s$};}
+    \capa{3}{\node[punto] at (5,3.5) {};}
+    \capa{3}{\draw[guia] (5,3.5) -- (0,3.5) node[left,text=black] {$R_1$};}
+    \capa{3}{\draw[decorate,decoration={brace,amplitude=3pt},thick,tceerojo] (5.2,3.5) -- (5.2,2.5) node[midway,right=4pt,font=\footnotesize,text=tceerojo] {$\Delta R=s$};}
+  \end{scope}
+  % ---------------- Oferta con pendiente ----------------
+  \begin{scope}[xshift=8.4cm]
+    \capa{4}{\ejes{$T$}{$R$}{9.4}{5.6}}
+    \capa{4}{\node[titulo] at (4.7,5.65) {Oferta de tierra con pendiente};}
+    \capa{5}{\draw[curva3] (0,{ss(0)}) -- (9.4,{ss(9.4)}) node[etiqueta,above] {$T^S(R)$};}
+    \capa{5}{\draw[curva1] (0,{dd(0)}) -- (9,{dd(9)}) node[etiqueta,right] {$\mathit{VPMg}_T$};}
+    \capa{5}{\node[punto] at (5,2.5) {};}
+    \capa{5}{\draw[guia] (5,2.5) -- (0,2.5) node[left,text=black] {$R_0$};}
+    \capa{5}{\draw[guia] (5,2.5) -- (5,0) node[below,text=black] {$T_0$};}
+    \capa{6}{\draw[curvanueva] (1.2,{dn(1.2)}) -- (9,{dn(9)}) node[etiqueta,right,text=tceerojo] {$\mathit{VPMg}_T+s$};}
+    \capa{6}{\node[punto] at (6.111,2.944) {};}
+    \capa{6}{\draw[guia] (6.111,2.944) -- (0,2.944) node[left,text=black] {$R_1$};}
+    \capa{6}{\draw[guia] (6.111,2.944) -- (6.111,0) node[below,text=black] {$T_1$};}
+    \capa{6}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=west] at (4.4,5.25) {$\Delta R<s$: parte del pago\\se queda en el agricultor};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

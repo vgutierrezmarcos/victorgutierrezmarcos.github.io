@@ -1,0 +1,29 @@
+% Simulación de la devolución de la deuda del NextGenerationEU que
+% corresponde a las subvenciones (421.000 M€), 2027-2058: deuda en % de la
+% RNB de la UE (área) y carga anual de amortización e intereses en % de la
+% RNB (línea, eje derecho). Datos en ../datos/deuda-ngeu.csv (generados por
+% deuda-ngeu.py con los supuestos del texto). Capas: área de la deuda ->
+% línea de la carga -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/deuda-ngeu.csv}\deu
+\colorlet{adeuda}{tceemorado!35}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=6.5cm, xmin=2027, xmax=2058, ymin=0, ymax=2.5,
+      xtick={2028,2033,...,2058}, xticklabel style={/pgf/number format/1000 sep=,font=\footnotesize},
+      yticklabel style={font=\footnotesize,/pgf/number format/use comma}, ylabel={deuda, \% de la RNB}, ylabel style={font=\footnotesize,text=tceemorado},
+      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!20}, dicapas]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=adeuda, draw=tceemorado] table[x=anio,y=deuda_rnb] {\deu} \closedcycle;}
+    \capa{3}{\dicrotulo[font=\scriptsize,anchor=west,text=tceemorado,align=left]{(2029.3,0.55)}{deuda: 2,1~\% de la RNB en 2028,\\0 en 2058}}
+  \end{axis}
+  \begin{axis}[width=12.5cm, height=6.5cm, xmin=2027, xmax=2058, ymin=0, ymax=0.16,
+      axis x line=none, axis y line*=right, ytick={0,0.04,...,0.16},
+      yticklabel style={font=\footnotesize,/pgf/number format/use comma,/pgf/number format/fixed}, ylabel={carga anual, \% de la RNB}, ylabel style={font=\footnotesize,text=tceerojo}]
+    \capa{2}{\addplot[diclinea=tceerojo, restrict x to domain=2028:2058] table[x=anio,y=carga_rnb] {\deu};}
+    \capa{3}{\node[font=\scriptsize,text=tceerojo,anchor=south west,align=left] at (axis cs:2040,0.095) {carga anual: 0,14~\% de la RNB\\(27.500 M€) en 2028, 0,03~\% en 2058};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

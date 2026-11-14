@@ -1,0 +1,24 @@
+% Arquitectura verde de la PAC 2023-2027 (Reglamento 2021/2115): 3 escalones,
+% de la base obligatoria a los compromisos voluntarios mejor pagados, y la
+% flecha de la ambición ambiental. Figura del apartado II.2.2.
+% Capas: base (condicionalidad) -> ecorregímenes -> FEADER -> flecha y rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    escalon/.style={draw=#1!70!black,fill=#1!18,thick,rounded corners=2pt,minimum height=1.25cm,align=center,font=\small,inner sep=4pt},
+    nota/.style={font={\footnotesize\hyphenpenalty=10000 },align=left,anchor=west,text width=4.8cm}]
+  % 1: condicionalidad reforzada (base)
+  \capa{1}{\node[escalon=tceeverde,minimum width=10.5cm] (c) at (0,0) {\textbf{Condicionalidad reforzada}\\11 requisitos legales de gestión + 9 BCAM};}
+  \capa{1}{\node[nota] at (5.45,0) {obligatoria para todo perceptor; incumplirla reduce el pago};}
+  % 2: ecorregímenes
+  \capa{2}{\node[escalon=tceeazul,minimum width=8cm] (e) at (0,1.45) {\textbf{Ecorregímenes} (FEAGA, pago anual)\\al menos el 25~\% de los pagos directos};}
+  \capa{2}{\node[nota] at (5.45,1.45) {voluntarios para el agricultor, obligatorios de ofrecer para el Estado};}
+  % 3: compromisos del FEADER
+  \capa{3}{\node[escalon=tceemorado,minimum width=5.5cm] (f) at (0,2.9) {\textbf{Compromisos agroambientales}\\(FEADER, plurianuales)};}
+  \capa{3}{\node[nota] at (5.45,2.9) {al menos el 35~\% del FEADER para medio ambiente y clima};}
+  % 4: flecha de la ambición
+  \capa{4}{\draw[->,very thick,tceerojo] (-5.9,-0.6) -- (-5.9,3.5) node[midway,sloped,above,font=\footnotesize,text=tceerojo] {más ambición ambiental, más pago};}
+\end{tikzpicture}
+\end{document}

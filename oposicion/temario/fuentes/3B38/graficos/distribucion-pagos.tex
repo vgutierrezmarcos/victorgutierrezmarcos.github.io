@@ -1,0 +1,41 @@
+% Distribución de los pagos directos de la PAC por tramos de importe recibido
+% por perceptor (euros), ejercicio financiero 2023: % de perceptores y % del
+% importe en la UE-27 y en España. Datos: ../datos/distribucion-pagos-grupos.csv,
+% agregación de ../datos/distribucion-pagos.csv (DG AGRI, «Indicative figures
+% on the distribution of aid»). Perceptores en colores claros; importe, oscuros.
+% Capas: barras de perceptores -> barras de importe -> ejes -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{dmclaro}{tceemorado!35}
+\colorlet{ddclaro}{tceedorado!40}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/distribucion-pagos-grupos.csv}\dist
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=15cm, height=7cm,
+      ybar, bar width=0.17, xmin=0.4, xmax=6.6, ymin=0, ymax=52,
+      xtick={1,...,6},
+      xticklabels={{menos de 1.250},{1.250-5.000},{5.000-20.000},{20.000-50.000},{50.000-100.000},{más de 100.000}},
+      xticklabel style={font=\footnotesize},
+      xlabel={Pago recibido por perceptor (euros al año)}, xlabel style={font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={\%},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={at={(0.99,0.99)}, anchor=north east, font=\footnotesize, draw=none},
+      legend cell align=left, clip=false, dicapas,
+      nodes near coords, every node near coord/.append style={font=\tiny, /pgf/number format/use comma, /pgf/number format/fixed, /pgf/number format/precision=1, /pgf/number format/fixed zerofill},
+    ]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dmclaro, bar shift=-0.27] table[x=n,y=ue_benef] {\dist};
+      \addlegendentry{UE-27: \% de perceptores}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=tceemorado, bar shift=-0.09] table[x=n,y=ue_importe] {\dist};
+      \addlegendentry{UE-27: \% del importe}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=ddclaro, bar shift=0.09] table[x=n,y=es_benef] {\dist};
+      \addlegendentry{España: \% de perceptores}}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=tceedorado, bar shift=0.27] table[x=n,y=es_importe] {\dist};
+      \addlegendentry{España: \% del importe}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

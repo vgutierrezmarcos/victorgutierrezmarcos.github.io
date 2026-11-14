@@ -1,0 +1,55 @@
+% Ayuda acoplada frente a ayuda desacoplada (modelo del apartado II.1.2).
+% País pequeño: la producción se vende al precio mundial p^W = 3.
+% Oferta inversa p^S(q) = 0,5 + 0,5 q, de modo que q_0 = 5.
+% Izquierda: pago acoplado s = 1 por unidad: el productor recibe p^W + s = 4
+%   y produce q_1 = 7. Coste presupuestario s q_1 = 7; ganancia del productor
+%   (trapecio 0..7 entre 3 y 4) = 6; pérdida irrecuperable = triángulo de
+%   producción (5,3)-(7,4)-(7,3), área 1. Eficiencia de la transferencia 6/7.
+% Derecha: pago desacoplado de la misma cuantía (7), por hectárea o por
+%   referencia histórica: no cambia el precio marginal, q = q_0; sin pérdida.
+%   En la práctica, el desacoplamiento es imperfecto (efectos riqueza y
+%   seguro, exigencia de mantener la tierra): la oferta se desplaza algo a la
+%   derecha (línea discontinua, q'(p), desplazamiento ilustrativo de 0,6).
+% Capas: ejes -> oferta y precio mundial -> pago acoplado -> pérdida ->
+% panel derecho -> desacoplamiento imperfecto.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.72cm,y=1.0cm,
+    declare function={ps(\x)=0.5+0.5*\x;},
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none},
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % ---------------- Ayuda acoplada ----------------
+  \begin{scope}
+    \capa{1}{\ejes{$q$}{$p$}{9.2}{5.4}}
+    \capa{1}{\node[titulo] at (4.6,5.45) {Ayuda acoplada ($s$ por unidad)};}
+    \capa{2}{\draw[curva3] (0,{ps(0)}) -- (8.6,{ps(8.6)}) node[etiqueta,right] {$q(p)$};}
+    \capa{2}{\draw[curva2] (0,3) -- (8.8,3) node[etiqueta,right,text=tceeazul] {$p^W$};}
+    \capa{2}{\node[punto] at (5,3) {};}
+    \capa{2}{\draw[guia] (5,3) -- (5,0) node[below,text=black] {$q_0$};}
+    \capa{3}{\draw[curvanueva] (0,4) -- (8.8,4) node[etiqueta,right,text=tceerojo] {$p^W+s$};}
+    \capa{3}{\node[punto] at (7,4) {};}
+    \capa{3}{\draw[guia] (7,4) -- (7,0) node[below,text=black] {$q_1$};}
+    \capa{3}{\fill[area2] (0,3) -- (5,3) -- (7,4) -- (0,4) -- cycle;}
+    \capa{3}{\node[etiqueta,font=\footnotesize,text=tceedorado!80!black] at (2.6,3.5) {ganancia del productor};}
+    \capa{4}{\fill[perdida] (5,3) -- (7,4) -- (7,3) -- cycle;}
+    \capa{4}{\node[etiqueta,text=tceerojo,font=\footnotesize\bfseries] at (6.45,3.3) {$d$};}
+    \capa{4}{\draw[thick,dashed,tceerojo] (0,3) rectangle (7,4);}
+    \capa{4}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=center] at (4.2,1.2) {coste presupuestario $s\,q_1$\\(rectángulo discontinuo)};}
+  \end{scope}
+  % ---------------- Ayuda desacoplada ----------------
+  \begin{scope}[xshift=8.2cm]
+    \capa{5}{\ejes{$q$}{$p$}{9.2}{5.4}}
+    \capa{5}{\node[titulo] at (4.6,5.45) {Ayuda desacoplada (suma fija)};}
+    \capa{5}{\draw[curva3] (0,{ps(0)}) -- (8.6,{ps(8.6)}) node[etiqueta,right] {$q(p)$};}
+    \capa{5}{\draw[curva2] (0,3) -- (8.8,3) node[etiqueta,right,text=tceeazul] {$p^W$};}
+    \capa{5}{\node[punto] at (5,3) {};}
+    \capa{5}{\draw[guia] (5,3) -- (5,0) node[below,text=black] {$q_0$};}
+    \capa{5}{\node[etiqueta,font=\footnotesize,align=center] at (3.6,4.55) {el pago no cambia el precio\\que decide la producción:\\sin pérdida irrecuperable};}
+    \capa{6}{\draw[desplazada,tceeverde!70] (0.6,{ps(0)}) -- (9.0,{ps(8.2)}) node[etiqueta,below right,text=tceeverde] {$q'(p)$};}
+    \capa{6}{\node[punto,fill=tceegris] at (5.6,3) {};}
+    \capa{6}{\node[etiqueta,font=\footnotesize,text=tceegris,align=left,anchor=north west] at (5.7,2.85) {desacoplamiento\\imperfecto};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

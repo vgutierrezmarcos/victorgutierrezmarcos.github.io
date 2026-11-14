@@ -1,0 +1,52 @@
+% Ayudas de Estado en la UE-27: (a) serie 2000-2024 en % del PIB, con las
+% medidas de crisis (COVID-19 y Marco Temporal de Crisis y Transición)
+% separadas de la ayuda ordinaria; (b) por Estado miembro en 2024.
+% Datos en ../datos/ayudas-estado-serie.csv y ../datos/ayudas-estado-pib.csv
+% (DG Competencia, State aid Scoreboard 2025, datos de 2024; consulta del
+% 14/11/2026).
+% Capas: (a) barras ordinarias → barras de crisis → ejes → rótulos;
+% (b) barras por Estado → España y UE resaltadas → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/ayudas-estado-serie.csv}\serie
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/ayudas-estado-pib.csv}\paises
+\colorlet{ayudaord}{tceeazul!70}
+\colorlet{ayudacrisis}{tceenaranja!85}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[name=izq, width=7.6cm, height=7.4cm, xmin=1999.3, xmax=2024.7, ymin=0, ymax=2.7,
+      title={(a) UE-27, 2000-2024 (\% del PIB)}, title style={font=\footnotesize\bfseries},
+      xtick={2000,2004,...,2024}, xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={/pgf/number format/.cd, fixed, precision=1, use comma}, tick label style={font=\scriptsize},
+      ytick={0,0.5,...,2.5},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!20}, clip=false,
+      ybar stacked, bar width=0.62, legend style={font=\scriptsize, draw=none, at={(0.02,0.98)}, anchor=north west, legend cell align=left},
+      dicapas]
+    % 1: ayuda ordinaria
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=ayudaord] table[x=anio, y=ayuda_no_crisis_pib] {\serie}; \addlegendentry{ordinaria}}
+    % 2: ayuda de crisis
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=ayudacrisis] table[x=anio, y=ayuda_crisis_pib] {\serie}; \addlegendentry{crisis (COVID y Ucrania)}}
+    % 3: rótulos
+    \capa{3}{\dicrotulo[font=\scriptsize,anchor=south]{(2020,2.41)}{2,41}
+      \dicrotulo[font=\scriptsize,anchor=south]{(2024,0.94)}{0,94}}
+  \end{axis}
+  \begin{axis}[name=der, at={(izq.outer east)}, anchor=outer west, xshift=0.2cm,
+      width=7.6cm, height=9.4cm, xmin=0, xmax=1.62, ymin=-0.7, ymax=27.7,
+      title={(b) Por Estado, 2024 (\% del PIB)}, title style={font=\footnotesize\bfseries},
+      xbar stacked, bar width=4.6pt,
+      ytick=data, yticklabels from table={\paises}{nombre}, yticklabel style={font=\scriptsize},
+      xtick={0,0.5,1,1.5}, xticklabel style={/pgf/number format/.cd, fixed, precision=1, use comma}, tick label style={font=\scriptsize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      xmajorgrids, grid style={tceegris!20}, clip=false, dicapas]
+    % 4: barras por Estado
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=ayudaord] table[y=orden, x=ayuda_no_crisis_pib] {\paises};
+      \addplot[on layer=dicbarras, dicbarra=ayudacrisis] table[y=orden, x=ayuda_crisis_pib] {\paises};}
+    % 5: España y la UE
+    \capa{5}{\dicrotulo[font=\scriptsize\bfseries,anchor=west,text=dicespana]{(0.994,19)}{0,99}
+      \dicrotulo[font=\scriptsize\bfseries,anchor=west]{(0.937,15)}{0,94}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

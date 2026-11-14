@@ -1,0 +1,142 @@
+tema: 3B39
+fecha_inventario: 2026-11-14
+datos:
+  - id: comercio-intra-ue
+    texto: "comercio de bienes dentro de la UE del 17 % del PIB (2002) al 22 % (2025), pico del 26 % en 2022; servicios del 4,8 al 8 % (2010-2025)"
+    donde: [3B39.tex, repaso/3B39-repaso.tex, datos/comercio-intra-ue.csv, graficos/comercio-intra-ue.tex]
+    valor: 21.76
+    unidad: "% del PIB"
+    periodo: "2025"
+    fuente: Eurostat2026Comercio
+    organismo: Eurostat
+    serie: "ext_lt_intratrd (MIO_EXP_VAL, MIO_IMP_VAL, EU27_2020); bop_its6_det (S, EU27_2020); nama_10_gdp (B1GQ, CP_MEUR)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/ext_lt_intratrd/default/table
+    periodicidad: anual
+    proxima: "2027-03 (dato de 2026)"
+    familia: ue-mercado-unico
+
+  - id: multas-carteles
+    texto: "30.600 millones de euros en 162 decisiones (1990-2025), 2.323 en 2020-2024 y 860 en 2025 (4 decisiones); camiones 3.807"
+    donde: [3B39.tex, repaso/3B39-repaso.tex, datos/multas-carteles.csv, datos/multas-carteles-anual.csv, graficos/multas-carteles.tex]
+    valor: 859.5
+    unidad: millones de euros
+    periodo: "2025"
+    fuente: CE2026Carteles
+    organismo: Comisión Europea, DG Competencia
+    serie: "Cartel statistics (PDF cartels_cases_statistics.pdf)"
+    url: https://competition-policy.ec.europa.eu/antitrust-and-cartels/cartels-cases-and-statistics_en
+    periodicidad: varias veces al año
+    proxima: "2027-02 (cierre de 2026; añadir la barra 2025-2026 o rehacer los quinquenios)"
+    familia: ue-competencia
+
+  - id: concentraciones
+    texto: "10.200 notificaciones desde 1990, 311 fases II y 33 prohibiciones (última, 2023); 384 notificaciones en 2025"
+    donde: [3B39.tex, repaso/3B39-repaso.tex, datos/concentraciones.csv, graficos/concentraciones.tex]
+    valor: 33
+    unidad: prohibiciones
+    periodo: "1990-10/2026"
+    fuente: CE2026Concentraciones
+    organismo: Comisión Europea, DG Competencia
+    serie: "Merger statistics (PDF Merger_cases_statistics.pdf)"
+    url: https://competition-policy.ec.europa.eu/mergers/statistics_en
+    periodicidad: mensual
+    proxima: "2027-01 (año 2026 completo)"
+    familia: ue-competencia
+
+  - id: ayudas-estado
+    texto: "168.230 millones de euros, el 0,94 % del PIB de la UE en 2024 (2,41 % en 2020); España 0,99 %; Hungría 1,37 %; Portugal e Irlanda 0,40 %; Alemania una cuarta parte"
+    donde: [3B39.tex, repaso/3B39-repaso.tex, datos/ayudas-estado-pib.csv, datos/ayudas-estado-serie.csv, graficos/ayudas-estado.tex]
+    valor: 0.937
+    unidad: "% del PIB"
+    periodo: "2024"
+    fuente: CE2026Scoreboard
+    organismo: Comisión Europea, DG Competencia
+    serie: "State aid Scoreboard (cuadro de mando Qlik, elemento de ayuda)"
+    url: https://competition-policy.ec.europa.eu/state-aid/scoreboard_en
+    periodicidad: anual (enero-febrero, con datos de t-1)
+    proxima: "2027-01 (Scoreboard 2026, datos de 2025)"
+    familia: ue-competencia
+
+  - id: barreras-fmi
+    texto: "barreras dentro de Europa equivalentes a un arancel del 44 % (manufacturas) y del 110 % (servicios) en 2020; productividad casi un 7 % mayor a largo plazo"
+    donde: [3B39.tex, repaso/3B39-repaso.tex]
+    valor: 44
+    unidad: "% equivalente arancelario"
+    periodo: "2020"
+    fuente: FMI2024REO
+    organismo: FMI
+    serie: "REO Europe, octubre de 2024, nota 1, recuadro 1.2"
+    url: https://www.imf.org/-/media/files/publications/reo/eur/2024/october/english/reoeurnote1.pdf
+    periodicidad: irregular
+    proxima: "revisar cuando el FMI actualice la estimación"
+    familia: ue-mercado-unico
+
+  - id: mercado-unico-cifras
+    texto: "450 millones de consumidores, 26 millones de empresas, PIB de 18 billones; el mercado único eleva el PIB al menos un 3-4 % y ha creado 3,6 millones de empleos; servicios 75 % del PIB"
+    donde: [3B39.tex, repaso/3B39-repaso.tex]
+    valor: null
+    unidad: varias
+    periodo: "2025"
+    fuente: CE2025EstrategiaFicha
+    organismo: Comisión Europea
+    serie: "Estrategia del mercado único (21/5/2025) y ficha"
+    url: https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1274
+    periodicidad: irregular
+    proxima: "próximo informe anual del mercado único (enero de 2027)"
+    familia: ue-mercado-unico
+
+  - id: movilidad
+    texto: "14 millones de ciudadanos de la UE viven o trabajan en otro Estado; 1,9 millones de fronterizos; 3,6 millones de desplazados (documentos A1 de 2024)"
+    donde: [3B39.tex, repaso/3B39-repaso.tex]
+    valor: 14
+    unidad: millones de personas
+    periodo: "2024"
+    fuente: CE2026Movilidad
+    organismo: Comisión Europea
+    serie: "Annual report on intra-EU labour mobility; informe de documentos A1"
+    url: https://employment-social-affairs.ec.europa.eu/annual-report-intra-eu-labour-mobility_en
+    periodicidad: anual
+    proxima: "2027-02"
+    familia: ue-mercado-unico
+
+  - id: schengen-controles
+    texto: "29 miembros de Schengen; controles interiores notificados en noviembre de 2026 por Alemania, Austria, Dinamarca, Francia, Italia, Polonia, Suecia y Noruega"
+    donde: [3B39.tex]
+    valor: 29
+    unidad: Estados
+    periodo: "2026-11"
+    fuente: CE2026Schengen
+    organismo: Comisión Europea (DG HOME)
+    serie: "Temporary reintroduction of border control"
+    url: https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en
+    periodicidad: continua (notificaciones de 6 meses)
+    proxima: "en cada revisión; decisión sobre Chipre prevista en 2027"
+    familia: ue-mercado-unico
+
+  - id: dma-dsa
+    texto: "DMA: 7 guardianes de acceso, 23 servicios; multas Apple 500, Meta 200 (2025), Google 890 (2026). DSA: 25 plataformas y 3 buscadores muy grandes; multas X 120, Temu 200, AliExpress 550"
+    donde: [3B39.tex, repaso/3B39-repaso.tex]
+    valor: 7
+    unidad: guardianes de acceso
+    periodo: "2026-11"
+    fuente: CE2026DMA
+    organismo: Comisión Europea
+    serie: "Listas de guardianes de acceso y de VLOP/VLOSE"
+    url: https://digital-markets-act.ec.europa.eu/gatekeepers_en
+    periodicidad: continua
+    proxima: "designación de la nube (AWS, Azure) pendiente"
+    familia: ue-competencia
+
+  - id: subvenciones-extranjeras
+    texto: "273 notificaciones del Reglamento de subvenciones extranjeras hasta mayo de 2026; JD.com/Ceconomy autorizada con compromisos (3/11/2026)"
+    donde: [3B39.tex]
+    valor: 273
+    unidad: notificaciones
+    periodo: "2026-05"
+    fuente: CE2026Subvenciones
+    organismo: Comisión Europea
+    serie: "Informe de revisión COM(2026) 368"
+    url: https://competition-policy.ec.europa.eu/foreign-subsidies-regulation_en
+    periodicidad: irregular
+    proxima: "2027"
+    familia: ue-competencia

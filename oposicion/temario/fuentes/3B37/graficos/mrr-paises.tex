@@ -1,0 +1,33 @@
+% Fondos del MRR recibidos por cada Estado entre 2020 y 2025 (subvenciones y
+% préstamos, incluida la prefinanciación), en % del PIB de 2025, ordenados.
+% España en rojo. Datos en ../datos/mrr-paises-orden.csv (Eurostat,
+% gov_rrf_fa, y nama_10_gdp).
+% Capas: subvenciones -> préstamos -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/mrr-paises-orden.csv}\mrr
+\colorlet{mrrsubv}{tceeazul!70}\colorlet{mrrprest}{tceedorado!60}\colorlet{mrrespprest}{dicespana!45}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12cm, height=13.5cm, xbar stacked, bar width=6.5pt,
+      xmin=0, xmax=10.6, ymin=-0.7, ymax=26.7,
+      ytick={0,...,26}, yticklabels from table={\mrr}{pais},
+      yticklabel style={font=\scriptsize},
+      xticklabel style={font=\footnotesize,/pgf/number format/use comma},
+      xlabel={\% del PIB de 2025}, xlabel style={font=\footnotesize},
+      axis y line*=left, axis x line*=bottom, xmajorgrids, grid style={tceegris!20},
+      dicapas]
+    % 1: subvenciones (España en rojo)
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=mrrsubv, x filter/.expression={\thisrow{es}==1 ? 0 : x}] table[x=subv_pib, y=n] {\mrr};}
+    % 2: préstamos
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=mrrprest, x filter/.expression={\thisrow{es}==1 ? 0 : x}] table[x=prest_pib, y=n] {\mrr};}
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dicespana, x filter/.expression={\thisrow{es}==1 ? x : 0}] table[x=subv_pib, y=n] {\mrr};}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=mrrespprest, x filter/.expression={\thisrow{es}==1 ? x : 0}] table[x=prest_pib, y=n] {\mrr};}
+    % 3: rótulos
+    \capa{3}{\dicrotulo[font=\scriptsize,anchor=west,text=dicespana]{(4.4,21)}{España: 4,2~\% del PIB (71.400 M€)}
+      \dicrotulo[font=\scriptsize,anchor=west,align=left]{(5.2,6)}{\textcolor{tceeazul}{$\blacksquare$} subvenciones\\\textcolor{tceedorado}{$\blacksquare$} préstamos}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

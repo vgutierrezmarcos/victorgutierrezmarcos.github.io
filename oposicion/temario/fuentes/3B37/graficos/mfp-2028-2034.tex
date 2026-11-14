@@ -1,0 +1,29 @@
+% La propuesta de MFP 2028-2034 (Comisión, 16-7-2025): de 7 rúbricas y más
+% de 50 programas a 4 grandes bloques, con lo que agrupa cada uno; fuera de
+% los techos, la Reserva para Ucrania y el mecanismo de crisis (préstamos);
+% abajo, los ingresos (nuevos recursos propios). Miles de millones de euros
+% corrientes. Fuentes: Comisión Europea (2025) y TCE, dictamen 04/2026.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\newcommand{\caja}[3]{{\bfseries\color{#1}#2}\par\vspace{1pt}#3}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    bloque/.style={draw=#1,thick,fill=#1!8,rounded corners=2pt,align=left,
+      text width=3.55cm,inner sep=4pt,font=\footnotesize,anchor=north west,minimum height=3.3cm},
+    ancho/.style={draw=#1,thick,fill=#1!8,rounded corners=2pt,align=left,
+      text width=16.25cm,inner sep=4pt,font=\footnotesize,anchor=north west}]
+  % 1: cabecera: tamaño
+  \capa{1}{\node[ancho=tceemorado] (t) at (0,0) {\caja{tceemorado}{MFP 2028-2034 propuesto: unos 1.980 (1,26~\% de la RNB)}{frente a 1.211 + 807 del NGEU en 2021-2027; incluye unos 24-25 al año para devolver el NextGenerationEU}};}
+  % 2: los 4 bloques
+  \capa{2}{\node[bloque=tceeverde] (a) at ($(t.south west)+(0,-0.3)$) {\caja{tceeverde}{Planes nacionales y regionales: 865}{un plan por Estado: PAC (con mínimo para la renta agraria), cohesión, pesca, migración y seguridad; pagos ligados a reformas e inversiones}};}
+  \capa{3}{\node[bloque=tceeazul] (b) at ($(a.north east)+(0.4,0)$) {\caja{tceeazul}{Competitividad: 409 + Horizonte 175}{Fondo Europeo de Competitividad (transición limpia y digital, salud, defensa y espacio: 131) e investigación}};}
+  \capa{4}{\node[bloque=tceedorado] (c) at ($(b.north east)+(0.4,0)$) {\caja{tceedorado!80!black}{Europa Global: 200}{toda la acción exterior en un instrumento; ampliación y vecindad}};}
+  \capa{5}{\node[bloque=tceegris] (d) at ($(c.north east)+(0.4,0)$) {\caja{tceegris!80!black}{Administración y otros}{instituciones, reembolso del NextGenerationEU}};}
+  % 6: fuera de los techos
+  \capa{6}{\node[ancho=tceerojo] (f) at ($(a.south west)+(0,-0.3)$) {\caja{tceerojo}{Fuera de los techos}{Reserva para Ucrania; mecanismo de crisis: hasta 395 en préstamos con deuda de la Unión}};}
+  % 7: ingresos
+  \capa{7}{\node[ancho=tceemorado] (g) at ($(f.south west)+(0,-0.3)$) {\caja{tceemorado}{Ingresos: 5 nuevos recursos propios, 58,5 al año}{RCDE 30~\% (9,6); MAFC 75~\% (1,4); residuos electrónicos (15,0); tabaco, TEDOR (11,2); empresas grandes, CORE (6,8). Fin de las correcciones; techo al 1,75~\% de la RNB}};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,43 @@
+% Capturas de la UE-27 (composición desde 2020) y de España, 2000-2025, en
+% millones de toneladas de peso vivo (7 zonas FAO de Eurostat). Desde 2016 el
+% total de la UE es la estimación redondeada que publica Eurostat (barras
+% tramadas). Datos y fuente en ../datos/capturas-ue.csv (Eurostat fish_ca_main
+% y Statistics Explained).
+% Capas: barras de la UE -> barras de España -> ejes -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{cue}{tceeazul!45}
+\colorlet{ces}{tceedorado}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/capturas-ue.csv}\cap
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13.5cm, height=6.4cm,
+      ybar, bar width=0.62, bar shift=0pt,
+      xmin=1999.3, xmax=2025.7, ymin=0, ymax=6.6,
+      xtick={2000,2005,...,2025}, minor xtick={2000,...,2025},
+      ytick={0,1,...,6},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Millones de toneladas},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false,
+      legend style={at={(0.99,0.99)}, anchor=north east, font=\footnotesize, draw=none},
+      legend cell align=left, dicapas,
+    ]
+    \capa{1}{\addplot[on layer=dicbarras, dicbarra=cue, restrict x to domain=2000:2015] table[x=anio,y expr=\thisrow{ue27_miles_t}/1000] {\cap};
+      \addlegendentry{UE-27}
+      \addplot[on layer=dicbarras, dicbarratrama=cue, forget plot, restrict x to domain=2016:2025] table[x=anio,y expr=\thisrow{ue27_miles_t}/1000] {\cap};}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=ces] table[x=anio,y expr=\thisrow{espana_miles_t}/1000] {\cap};
+      \addlegendentry{España}}
+    \capa{3}{
+      \dicrotulo[font=\footnotesize,anchor=south]{(2001,5.95)}{5,9}
+      \dicrotulo[font=\footnotesize,anchor=south]{(2025,3.32)}{3,3}
+      \dicrotulo[font=\footnotesize,text=tceedorado!80!black,anchor=south]{(2025,0.70)}{0,68}
+      \dicrotulo[font=\scriptsize,text=tceegris,anchor=south,align=center]{(2020.5,4.1)}{estimación\\de Eurostat}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

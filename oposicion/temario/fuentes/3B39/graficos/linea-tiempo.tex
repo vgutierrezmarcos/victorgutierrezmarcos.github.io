@@ -1,0 +1,35 @@
+% Línea de tiempo del mercado único (3.B.39, I.2): de Roma (1957) a la
+% estrategia de 2025. Hitos arriba (jurídicos y políticos) y abajo
+% (informes y resultados).
+% Capas: eje del tiempo → construcción (1957-1993) → relanzamientos
+% (2010-2026).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.21cm,y=1cm,
+    hito/.style={circle,fill=tceemorado,inner sep=1.6pt},
+    texto/.style={font=\scriptsize,align=center,text width=2.4cm,inner sep=1pt,text=black,execute at begin node={\hyphenpenalty=10000\relax}},
+    palo/.style={thin,tceegris}]
+  % 1: eje del tiempo
+  \capa{1}{\draw[->,thick] (1955,0) -- (2029,0);
+    \foreach \a in {1960,1970,...,2020} {\draw (\a,-0.08) -- (\a,0.08); \node[font=\scriptsize,text=tceegris,below] at (\a,-0.08) {\a};}}
+  % 2: la construcción
+  \capa{2}{
+    \node[hito] at (1957,0) {}; \draw[palo] (1957,0) -- (1957,1.0) node[texto,above] {\textbf{1957} Tratado de Roma: mercado común};
+    \node[hito] at (1968,0) {}; \draw[palo] (1968,0) -- (1968,-1.0) node[texto,below] {\textbf{1968} unión aduanera};
+    \node[hito] at (1979,0) {}; \draw[palo] (1979,0) -- (1979,1.0) node[texto,above] {\textbf{1979} \emph{Cassis de Dijon}: reconocimiento mutuo};
+    \node[hito] at (1985,0) {}; \draw[palo] (1985,0) -- (1985,-1.0) node[texto,below] {\textbf{1985} Libro Blanco (\textsc{Delors}-\textsc{Cockfield})};
+    \node[hito] at (1987,0) {}; \draw[palo] (1987,0) -- (1987,2.25) node[texto,above] {\textbf{1986-87} Acta Única: mayoría cualificada};
+    \node[hito] at (1988,0) {}; \draw[palo] (1988,0) -- (1988,-2.15) node[texto,below] {\textbf{1988} informe \textsc{Cecchini}};
+    \node[hito] at (1993,0) {}; \draw[palo] (1993,0) -- (1993,1.0) node[texto,above] {\textbf{1993} mercado único};}
+  % 3: los relanzamientos
+  \capa{3}{
+    \node[hito] at (2006,0) {}; \draw[palo] (2006,0) -- (2006,-1.0) node[texto,below] {\textbf{2006} Directiva de servicios};
+    \node[hito] at (2010,0) {}; \draw[palo] (2010,0) -- (2010,1.0) node[texto,above] {\textbf{2010} informe \textsc{Monti}};
+    \node[hito] at (2015,0) {}; \draw[palo] (2015,0) -- (2015,-2.15) node[texto,below] {\textbf{2015} mercado único digital y unión de mercados de capitales};
+    \node[hito] at (2022,0) {}; \draw[palo] (2022,0) -- (2022,2.25) node[texto,above] {\textbf{2022} DMA y DSA};
+    \node[hito] at (2024,0) {}; \draw[palo] (2024,0) -- (2024,-1.0) node[texto,below] {\textbf{2024} informes \textsc{Letta} y \textsc{Draghi}; IMERA};
+    \node[hito] at (2025,0) {}; \draw[palo] (2025,0) -- (2025,1.0) node[texto,above] {\textbf{2025} estrategia del mercado único y UAI};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,36 @@
+% Comercio dentro de la UE-27 en porcentaje del PIB, 2002-2025: bienes
+% (media de exportaciones e importaciones intra-UE), servicios (desde 2010) y,
+% como referencia, exportaciones de bienes fuera de la UE.
+% Datos en ../datos/comercio-intra-ue.csv (Eurostat: ext_lt_intratrd,
+% bop_its6_det y nama_10_gdp; consulta del 14/11/2026).
+% Capas: ejes → bienes intra-UE → servicios intra-UE → bienes extra-UE →
+% rótulos (crisis de 2009 y pico de precios de la energía de 2022).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/comercio-intra-ue.csv}\comercio
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12cm, height=6.8cm, xmin=2001.5, xmax=2025.5, ymin=0, ymax=29,
+      xtick={2002,2005,...,2023}, minor xtick={2002,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize}, ytick={0,5,...,25},
+      ylabel={\% del PIB de la UE}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!20}, clip=false, unbounded coords=jump, dicapas]
+    % 1: bienes intra-UE
+    \capa{1}{\addplot[diclinea=tceemorado, mark=*, mark size=1.2pt] table[x=anio, y=bienes_pib] {\comercio};
+      \dicrotulo[font=\scriptsize,anchor=south west,text=tceemorado,align=left]{(2025,21.76)}{Bienes\\intra-UE: 21,8}}
+    % 2: servicios intra-UE
+    \capa{2}{\addplot[diclinea=tceeazul, mark=*, mark size=1.2pt] table[x=anio, y=servicios_pib] {\comercio};
+      \dicrotulo[font=\scriptsize,anchor=west,text=tceeazul,align=left]{(2025,8.01)}{Servicios\\intra-UE: 8,0}}
+    % 3: bienes extra-UE (exportaciones)
+    \capa{3}{\addplot[diclinea=tceedorado, dashed, mark=none] table[x=anio, y=extra_bienes_pib] {\comercio};
+      \dicrotulo[font=\scriptsize,anchor=west,text=tceedorado!85!black,align=left]{(2025,14.02)}{Exportaciones\\extra-UE: 14,0}}
+    % 4: rótulos
+    \capa{4}{\dicrotulo[font=\scriptsize,anchor=north,align=center]{(2009,17.0)}{crisis\\financiera}
+      \dicrotulo[font=\scriptsize,anchor=south,align=center]{(2022,26.1)}{precios de\\la energía}}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

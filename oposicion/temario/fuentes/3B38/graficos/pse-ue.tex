@@ -1,0 +1,34 @@
+% Estimación del apoyo al productor (PSE) en % de los ingresos brutos de las
+% explotaciones: Unión Europea y conjunto de la OCDE, 1986-2025. Datos y
+% fuente en ../datos/pse-ue.csv (OCDE, Agricultural Policy Monitoring and
+% Evaluation 2026). La UE de la OCDE cambia de composición con las ampliaciones.
+% Capas: ejes -> línea de la OCDE -> línea de la UE -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/pse-ue.csv}\pse
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=14cm, height=6.8cm,
+      xmin=1985, xmax=2026.5, ymin=0, ymax=45,
+      xtick={1986,1990,...,2022,2025},
+      ytick={0,10,...,40},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={\% de los ingresos brutos},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas,
+    ]
+    \capa{2}{\addplot[diclinea=tceegris, dashed, mark=none] table[x=anio,y=pse_pct_ocde] {\pse};}
+    \capa{3}{\addplot[diclinea=tceemorado, mark=none] table[x=anio,y=pse_pct_ue] {\pse};}
+    \capa{4}{
+      \dicrotulo[font=\footnotesize,text=tceemorado,anchor=south]{(1987,41.5)}{UE: 41,1~\%}
+      \dicrotulo[font=\footnotesize,text=tceegris,anchor=north east]{(1991,29)}{OCDE}
+      \dicrotulo[font=\footnotesize,text=tceemorado,anchor=south east]{(2025,19)}{UE 2025: 18,2~\%}
+      \dicrotulo[font=\footnotesize,text=tceegris,anchor=north east]{(2025,11)}{OCDE 2025: 15,4~\%}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

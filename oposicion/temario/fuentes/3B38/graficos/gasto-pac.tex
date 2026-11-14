@@ -1,0 +1,83 @@
+% Gasto de la PAC por tipo de instrumento, 1980-2024, en miles de millones de
+% euros corrientes (barras apiladas) y en porcentaje del PIB de la UE (línea,
+% eje derecho, desde 1990). Datos y fuente en ../datos/gasto-pac.csv (DG AGRI,
+% «CAP expenditure and CAP reform path»). Paleta: apoyo al mercado en rojos
+% (restituciones, rojo; otro apoyo, naranja), pagos directos en verdes y
+% dorado (acoplados, dorado; desacoplados, verde), desarrollo rural azul,
+% % del PIB morado.
+% Capas: barras -> ejes -> línea del % del PIB -> rótulos de las reformas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{gnaranja}{tceenaranja!80}
+\colorlet{gdorado}{tceedorado!85}
+\colorlet{gverde}{tceeverde!85}
+\colorlet{gazul}{tceeazul!80}
+\colorlet{grotulo}{tceegris!80!black}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/gasto-pac.csv}\gasto
+\pgfplotsset{ejesgasto/.style={}}
+\ifnum2>\tceepaso\relax
+  \pgfplotsset{ejesgasto/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=15cm, height=8.8cm,
+      xmin=1978.8, xmax=2025.2, ymin=0, ymax=70,
+      xtick={1980,1985,...,2020,2024}, minor xtick={1980,...,2024},
+      ytick={0,10,...,70},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Miles de millones de euros},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      ybar stacked, bar width=0.72,
+      clip=false,
+      legend style={at={(0.5,-0.13)}, anchor=north, font=\footnotesize,
+        draw=none, legend columns=3, /tikz/every even column/.append style={column sep=6pt}},
+      legend cell align=left,
+      ejesgasto, dicapas,
+    ]
+    \capa{1}{
+      \addplot[on layer=dicbarras, dicbarra=tceerojo] table[x=anio,y=restituciones_exportacion] {\gasto};
+      \addlegendentry{Restituciones a la exportación}
+      \addplot[on layer=dicbarras, dicbarra=gnaranja] table[x=anio,y=otro_apoyo_mercado] {\gasto};
+      \addlegendentry{Otro apoyo al mercado}
+      \addplot[on layer=dicbarras, dicbarra=gdorado] table[x=anio,y=pagos_directos_acoplados] {\gasto};
+      \addlegendentry{Pagos directos acoplados}
+      \addplot[on layer=dicbarras, dicbarra=gverde] table[x=anio,y=pagos_directos_desacoplados] {\gasto};
+      \addlegendentry{Pagos directos desacoplados}
+      \addplot[on layer=dicbarras, dicbarra=gazul] table[x=anio,y=desarrollo_rural] {\gasto};
+      \addlegendentry{Desarrollo rural}
+    }
+    % 3: rótulos de las reformas
+    \capa{3}{
+      \dicrotulo[font=\scriptsize,anchor=south,text=grotulo,align=center]{(1984,19.6)}{cuotas\\lecheras}
+      \dicrotulo[font=\scriptsize,anchor=south,text=grotulo,align=center]{(1992,42.5)}{MacSharry}
+      \dicrotulo[font=\scriptsize,anchor=south,text=grotulo,align=center]{(2000,48)}{Agenda\\2000}
+      \dicrotulo[font=\scriptsize,anchor=south,text=grotulo,align=center]{(2005,57.5)}{Fischler}
+      \dicrotulo[font=\scriptsize,anchor=south,text=grotulo,align=center]{(2014,60.5)}{reforma\\de 2013}
+      \dicrotulo[font=\scriptsize,anchor=south,text=grotulo,align=center]{(2023,61.5)}{PAC\\2023-2027}
+    }
+  \end{axis}
+  \begin{axis}[
+      width=15cm, height=8.8cm,
+      xmin=1978.8, xmax=2025.2, ymin=0, ymax=1.4,
+      axis x line=none, axis y line*=right, tick align=outside,
+      ytick={0,0.1,...,0.7},
+      yticklabel style={font=\footnotesize,text=tceemorado},
+      y tick label style={/pgf/number format/.cd,fixed,fixed zerofill,precision=1,use comma},
+      ylabel={\% del PIB de la UE}, ylabel style={text=tceemorado},
+      y axis line style={tceemorado},
+      clip=false, ejesgasto,
+    ]
+    \capa{2}{
+      \addplot[diclineahalo=tceemorado, mark=none, restrict x to domain=1990:2024] table[x=anio,y=pac_pct_pib_ue] {\gasto};
+      \node[font=\footnotesize,text=tceemorado,anchor=east] at (axis cs:1989.6,0.68) {\% del PIB};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

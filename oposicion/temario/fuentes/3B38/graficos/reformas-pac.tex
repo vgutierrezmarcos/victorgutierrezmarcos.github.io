@@ -1,0 +1,46 @@
+% Línea de tiempo de la PAC, 1957-2028 (figura del apartado II.1): hitos
+% arriba y abajo de la línea y, debajo, la banda del instrumento dominante.
+% Escala: 1 año = 0,205 cm desde 1955.
+% Capas: línea -> bandas de instrumentos -> hitos hasta 1992 -> hitos
+% 1999-2013 -> hitos 2021-2028.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.205cm,y=1cm,
+    hito/.style={circle,fill=tceemorado,inner sep=1.6pt},
+    texto/.style={font={\scriptsize\hyphenpenalty=10000 \exhyphenpenalty=10000 },align=center,text width=2.3cm,inner sep=1pt},
+    banda/.style={draw=none,minimum height=0.55cm,font=\scriptsize\bfseries,text=white,inner sep=0pt}]
+  \def\an#1{(#1-1955)}
+  % 1: línea del tiempo
+  \capa{1}{\draw[thick,->,tceegris] (0,0) -- (76,0);}
+  \capa{1}{\foreach \a in {1960,1970,...,2020} {\draw[tceegris] ({\a-1955},-0.08) -- ({\a-1955},0.08) node[above=-1pt,font=\tiny,text=tceegris] {\a};}}
+  % 2: bandas del instrumento dominante
+  \capa{2}{\fill[tceerojo!80] (7,-1.75) rectangle (37,-1.2);}
+  \capa{2}{\node[font=\scriptsize\bfseries,text=white] at (22,-1.475) {Precios garantizados};}
+  \capa{2}{\fill[tceedorado!90] (37,-1.75) rectangle (50,-1.2);}
+  \capa{2}{\node[font=\scriptsize\bfseries,text=white] at (43.5,-1.475) {Pagos acoplados};}
+  \capa{2}{\fill[tceeverde!85] (50,-1.75) rectangle (68,-1.2);}
+  \capa{2}{\node[font=\scriptsize\bfseries,text=white,align=center] at (59,-1.475) {Desacoplados + condiciones};}
+  \capa{2}{\fill[tceeazul!85] (68,-1.75) rectangle (73,-1.2);}
+  \capa{2}{\node[font=\tiny\bfseries,text=white,align=center] at (70.5,-1.475) {Planes};}
+  \capa{2}{\fill[tceemorado!60] (73,-1.75) rectangle (76,-1.2);}
+  \capa{2}{\node[font=\tiny\bfseries,text=white] at (74.5,-1.475) {?};}
+  % 3: hitos hasta 1992
+  \capa{3}{\node[hito] at (3,0) {}; \draw[tceegris] (3,0) -- (3,0.55) node[above,texto] {\textbf{1958} Stresa};}
+  \capa{3}{\node[hito] at (7,0) {}; \draw[tceegris] (7,0) -- (7,-0.45) node[below,texto] {\textbf{1962} OCM y FEOGA};}
+  \capa{3}{\node[hito] at (13,0) {}; \draw[tceegris] (13,0) -- (13,0.55) node[above,texto] {\textbf{1968} Plan Mansholt};}
+  \capa{3}{\node[hito] at (29,0) {}; \draw[tceegris] (29,0) -- (29,0.55) node[above,texto] {\textbf{1984} cuotas lecheras};}
+  \capa{3}{\node[hito] at (33,0) {}; \draw[tceegris] (33,0) -- (33,-0.45) node[below,texto] {\textbf{1988} estabilizadores};}
+  \capa{3}{\node[hito] at (37,0) {}; \draw[tceegris] (37,0) -- (37,1.35) node[above,texto] {\textbf{1992} MacSharry: precios~$\downarrow$, pagos por ha};}
+  % 4: hitos 1999-2013
+  \capa{4}{\node[hito] at (44,0) {}; \draw[tceegris] (44,0) -- (44,-0.45) node[below,texto] {\textbf{1999} Agenda 2000: 2.º pilar};}
+  \capa{4}{\node[hito] at (48,0) {}; \draw[tceegris] (48,0) -- (48,0.55) node[above,texto] {\textbf{2003} Fischler: pago único};}
+  \capa{4}{\node[hito] at (53,0) {}; \draw[tceegris] (53,0) -- (53,1.35) node[above,texto] {\textbf{2008} chequeo médico};}
+  \capa{4}{\node[hito] at (58,0) {}; \draw[tceegris] (58,0) -- (58,-0.45) node[below,texto] {\textbf{2013} pago básico y verde};}
+  % 5: hitos 2021-2028
+  \capa{5}{\node[hito] at (66,0) {}; \draw[tceegris] (66,0) -- (66,0.55) node[above,texto] {\textbf{2021} planes estratégicos (2023)};}
+  \capa{5}{\node[hito] at (69,0) {}; \draw[tceegris] (69,0) -- (69,-0.45) node[below,texto] {\textbf{2024-2025} simplificación};}
+  \capa{5}{\node[hito] at (73,0) {}; \draw[tceegris] (73,0) -- (73,1.35) node[above,texto] {\textbf{2028} ¿fondo único?};}
+\end{tikzpicture}
+\end{document}

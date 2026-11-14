@@ -1,0 +1,48 @@
+% Efecto procompetitivo y de racionalización del mercado único (3.B.39, I.3).
+% Oligopolio de Cournot con libre entrada en un mercado de tamaño S:
+%   demanda inversa p = a - Q/S (b = 1/S), coste C(q) = CF + c q,
+%   CMe(q) = c + CF/q. En el equilibrio con libre entrada la demanda residual
+%   de cada empresa (pendiente -b) es tangente a CMe:
+%   q* = sqrt(CF S), p* - c = sqrt(CF/S).
+% Números: c = 1, CF = 4.
+%   Mercado nacional (S = 1): q_N = 2, p_N = 3; demanda residual p = 5 - q.
+%   Mercado único (S = 2): q_U = 2,828, p_U = 2,414; demanda residual
+%   p = 3,828 - q/2 (más plana: la empresa percibe una demanda más elástica).
+% d_N y d_U: demandas residuales de cada empresa en el mercado nacional y en
+% el mercado único.
+% Capas: ejes → coste marginal → coste medio → mercado nacional (demanda
+% residual, equilibrio y proyecciones) → mercado único → flechas de los 2
+% efectos.
+% Elaboración propia a partir de Smith y Venables (1988) y del modelo de
+% Cournot con libre entrada.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm,
+    declare function={cme(\q)=1+4/\q;},
+    llamada/.style={->,thin,black,shorten >=1pt}]
+  \def\qN{2}\def\pN{3}\def\qU{2.8284}\def\pU{2.4142}
+  % 1: ejes
+  \capa{1}{\ejes{$q_j$}{$p$}{7.2}{6.2}}
+  % 2: coste marginal constante
+  \capa{2}{\draw[curva4] (0,1) -- (6.8,1) node[right,etiqueta] {$c$};}
+  % 3: coste medio
+  \capa{3}{\draw[curva1] plot[domain=0.85:6.8,samples=80] (\x,{cme(\x)}) node[right,etiqueta,text=tceemorado] {CMe};}
+  % 4: mercado nacional: demanda residual tangente y equilibrio
+  \capa{4}{\draw[curva2] (0.3,4.7) -- (4.6,0.4);}
+  \capa{4}{\node[etiqueta,text=tceeazul,anchor=west] at (4.6,0.4) {$d_N$};}
+  \capa{4}{\node[punto,label={[etiqueta]above right:$E_N$}] (EN) at (\qN,\pN) {};}
+  \capa{4}{\proyeccion{(EN)}{$q_N$}{$p_N$}}
+  % 5: mercado único: demanda residual más plana y nuevo equilibrio
+  \capa{5}{\draw[curvanueva] (0.6,3.528) -- (6.6,0.528);}
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west] at (6.6,0.528) {$d_U$};}
+  \capa{5}{\node[punto,label={[etiqueta]above right:$E_U$}] (EU) at (\qU,\pU) {};}
+  \capa{5}{\proyeccion{(EU)}{$q_U$}{$p_U$}}
+  % 6: los 2 efectos
+  \capa{6}{\draw[flecha] (-1.0,2.95) -- (-1.0,2.47);}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=right,anchor=east] at (-1.05,2.71) {menor\\margen};}
+  \capa{6}{\draw[flecha] (2.25,3.35) .. controls (2.7,3.1) .. (3.0,2.75);}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=left,anchor=west] at (3.0,3.6) {más escala y\\menor coste medio};}
+\end{tikzpicture}
+\end{document}

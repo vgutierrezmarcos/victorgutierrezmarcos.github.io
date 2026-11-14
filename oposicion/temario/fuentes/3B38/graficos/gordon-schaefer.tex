@@ -1,0 +1,67 @@
+% Modelo de Gordon-Schaefer (apartado III.1.3). Parámetros normalizados:
+% crecimiento logístico G(X) = gamma X (1 - X/Xbar) con gamma = 1, Xbar = 1;
+% captura H = theta E X con theta = 1; precio p = 1; coste por unidad de
+% esfuerzo c = 0,3.
+%   Estado estacionario: X(E) = Xbar (1 - theta E/gamma) = 1 - E.
+%   Captura sostenible: Y(E) = theta Xbar E (1 - theta E/gamma) = E (1 - E).
+%   RMS: E = 0,5, X = 0,5, Y = 0,25.
+%   Libre acceso (renta nula): Y(E) = 0,3 E -> E = 0,7, X = 0,3, Y = 0,21.
+%   MRE: p Y'(E) = c -> 1 - 2E = 0,3 -> E = 0,35 (= E_LA/2), X = 0,65,
+%        Y = 0,2275; renta = 0,2275 - 0,105 = 0,1225.
+% Izquierda: plano (X, G): crecimiento y rectas de captura de los 3 esfuerzos.
+% Derecha: plano (E, ingreso y coste): ingreso sostenible y coste total.
+% Capas: ejes y crecimiento -> RMS -> libre acceso -> MRE (en los 2 paneles).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=6.2cm,y=15cm,
+    declare function={G(\x)=\x*(1-\x);},
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % ---------------- Biología: crecimiento y captura ----------------
+  \begin{scope}
+    \capa{1}{\draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$X$};}
+    \capa{1}{\draw[eje] (0,0) -- (0,0.33) node[left] {$G,H$};}
+    \capa{1}{\node[below left] at (0,0) {$0$};}
+    \capa{1}{\node[titulo] at (0.55,0.335) {Biología: población y captura};}
+    \capa{1}{\draw[curva3] plot[domain=0:1,samples=60] (\x,{G(\x)});}
+    \capa{1}{\node[etiqueta,text=tceeverde,anchor=west] at (0.86,0.14) {$G(X)$};}
+    \capa{1}{\node[below] at (1,0) {$\bar X$};}
+    % 2: RMS
+    \capa{2}{\draw[curva2] (0,0) -- (0.62,0.31) node[etiqueta,right,text=tceeazul] {$\theta E_{\mathit{RMS}}X$};}
+    \capa{2}{\node[punto] at (0.5,0.25) {};}
+    \capa{2}{\draw[guia] (0.5,0.25) -- (0.5,0) node[below,text=black] {$\tfrac{\bar X}{2}$};}
+    % 3: libre acceso
+    \capa{3}{\draw[curvanueva] (0,0) -- (0.44,0.308) node[etiqueta,left,text=tceerojo] {$\theta E_{\mathit{LA}}X$};}
+    \capa{3}{\node[punto] at (0.3,0.21) {};}
+    \capa{3}{\draw[guia] (0.3,0.21) -- (0.3,0) node[below,text=black] {$X_{\mathit{LA}}$};}
+    % 4: MRE
+    \capa{4}{\draw[curva1] (0,0) -- (0.86,0.301) node[etiqueta,right,text=tceemorado] {$\theta E_{\mathit{MRE}}X$};}
+    \capa{4}{\node[punto] at (0.65,0.2275) {};}
+    \capa{4}{\draw[guia] (0.65,0.2275) -- (0.65,0) node[below,text=black] {$X_{\mathit{MRE}}$};}
+  \end{scope}
+  % ---------------- Economía: ingreso y coste ----------------
+  \begin{scope}[xshift=8.4cm]
+    \capa{1}{\draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$E$};}
+    \capa{1}{\draw[eje] (0,0) -- (0,0.33) node[left] {$pY,\ cE$};}
+    \capa{1}{\node[below left] at (0,0) {$0$};}
+    \capa{1}{\node[titulo] at (0.55,0.335) {Economía: ingreso y coste};}
+    \capa{1}{\draw[curva3] plot[domain=0:1,samples=60] (\x,{G(\x)});}
+    \capa{1}{\node[etiqueta,text=tceeverde,anchor=west] at (0.9,0.105) {$pY(E)$};}
+    \capa{1}{\draw[curva4] (0,0) -- (1.0,0.3) node[etiqueta,right,text=tceedorado] {$cE$};}
+    % 2: RMS
+    \capa{2}{\node[punto] at (0.5,0.25) {};}
+    \capa{2}{\draw[guia] (0.5,0.25) -- (0.5,0) node[below,text=tceeazul] {$E_{\mathit{RMS}}$};}
+    % 3: libre acceso
+    \capa{3}{\node[punto] at (0.7,0.21) {};}
+    \capa{3}{\draw[guia] (0.7,0.21) -- (0.7,0) node[below,text=tceerojo] {$E_{\mathit{LA}}$};}
+    % 4: MRE: pendiente del ingreso igual a c; renta máxima
+    \capa{4}{\draw[thin,tceemorado] (0.17,0.1735) -- (0.53,0.2815);}
+    \capa{4}{\node[punto] at (0.35,0.2275) {};}
+    \capa{4}{\draw[guia] (0.35,0.105) -- (0.35,0) node[below,text=tceemorado] {$E_{\mathit{MRE}}$};}
+    \capa{4}{\draw[decorate,decoration={brace,amplitude=3pt,mirror},thick,tceemorado] (0.36,0.105) -- (0.36,0.2275);}
+    \capa{4}{\node[etiqueta,font=\footnotesize,text=tceemorado] (rm) at (0.2,0.315) {renta máxima};}
+    \capa{4}{\draw[guia,solid,->,tceemorado] (rm.south) -- (0.36,0.17);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

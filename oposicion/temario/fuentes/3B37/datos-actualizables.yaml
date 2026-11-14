@@ -1,0 +1,156 @@
+tema: 3B37
+fecha_inventario: 2026-11-14
+datos:
+  - id: ingresos-composicion
+    texto: "estructura de los ingresos 1970-2025; 2025: RPT 23.000 (15 %), IVA 23.900 (15 %), RNB 101.700 (65 %), plástico 6.900 (4 %) de los recursos propios"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, datos/ingresos-historico.csv, datos/ingresos-composicion.csv, graficos/ingresos-composicion.tex]
+    valor: null
+    unidad: "% y millones de euros"
+    periodo: "1970-2025"
+    fuente: CE2026GastosIngresos
+    organismo: Comisión Europea (DG BUDG); TCE (informe anual 2025)
+    serie: "EU spending and revenue - Data 2000-2025 (xlsx); Financial Report 2008, anexo 3 (1970-1999)"
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/spending-and-revenue_en
+    periodicidad: anual (septiembre-octubre)
+    proxima: "2027-10 (añadir 2026)"
+    familia: ue-presupuesto
+
+  - id: gastos-composicion
+    texto: "pagos por áreas 2000-2025 y % de la RNB (0,92 % en 2000; 1,54 % en 2022; 1,16 % en 2025; 0,90 % sin NGEU)"
+    donde: [3B37.tex, datos/gastos-composicion.csv, graficos/gastos-evolucion.tex]
+    valor: null
+    unidad: "miles de millones de euros; % de la RNB"
+    periodo: "2000-2025"
+    fuente: CE2026GastosIngresos
+    organismo: Comisión Europea (DG BUDG)
+    serie: "EU spending and revenue - Data 2000-2025"
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/spending-and-revenue_en
+    periodicidad: anual
+    proxima: "2027-10"
+    familia: ue-presupuesto
+
+  - id: saldos-netos
+    texto: "saldos operativos 2025: Alemania -14.855 M€ (-0,32 % RNB); Polonia +6.674; Letonia +2,7 %; España -0,06 % (+0,38 % con NGEU; 2024: +0,14 % y +1,21 %)"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, datos/saldos-netos.csv, datos/saldos-netos-2025.csv, datos/espana-saldo-ue.csv, graficos/saldos-netos.tex]
+    valor: null
+    unidad: "millones de euros y % de la RNB"
+    periodo: "2025"
+    fuente: CE2026GastosIngresos
+    organismo: elaboración propia con datos de la Comisión (metodología tradicional)
+    serie: "gasto operativo asignado menos contribución nacional ajustada; rehacer saldos-netos-2025.csv con python3 datos/saldos-ordenar.py"
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/spending-and-revenue_en
+    periodicidad: anual
+    proxima: "2027-10"
+    familia: ue-presupuesto
+
+  - id: mfp-2021-2027
+    texto: "1.074.300 M€ de 2018 (1.210.900 corrientes; 1.225.900 tras la revisión de 2024); rúbricas 152,0 / 432,2 / 400,3 / 28,9 / 16,4 / 113,7 / 82,5; NGEU 806.900"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, datos/mfp-2021-2027.csv, graficos/mfp-2021-2027.tex]
+    valor: 1225.9
+    unidad: miles de millones de euros corrientes
+    periodo: "2021-2027"
+    fuente: CE2026Rubricas
+    organismo: Comisión Europea
+    serie: "Ajuste técnico del MFP para 2027, COM(2026) 299"
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/spending/headings_en
+    periodicidad: anual (ajuste técnico) hasta 2027
+    proxima: "2027 (cierre del marco)"
+    familia: ue-presupuesto
+
+  - id: mfp-historia
+    texto: "tamaño de cada marco en % de la RNB (Delors I 1,20; ...; 2021-2027 1,02; propuesta 2028-2034 1,26)"
+    donde: [datos/mfp-historia.csv]
+    valor: null
+    unidad: "% de la RNB"
+    periodo: "1988-2034"
+    fuente: CE2014Finance
+    organismo: Comisión Europea; Parlamento Europeo
+    serie: "European Union Public Finance (5.ª ed.), COM(2026) 299, COM(2025) 571"
+    url: https://www.europarl.europa.eu/factsheets/es/sheet/29/el-marco-financiero-plurianual
+    periodicidad: con cada marco
+    proxima: "acuerdo del MFP 2028-2034"
+    familia: ue-presupuesto
+
+  - id: presupuesto-anual
+    texto: "2026: 192.768 M€ compromisos, 190.092 pagos; ingresos RNB 133.600 (70 %), IVA 24.800, RPT 21.400, plástico 6.800; 2027: acuerdo de conciliación 199.708 / 211.520 (10-11-2026)"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, datos/presupuesto-2026-gastos.csv, datos/presupuesto-2026-ingresos.csv]
+    valor: 192.8
+    unidad: miles de millones de euros
+    periodo: "2026"
+    fuente: UE2026Presupuesto2026
+    organismo: Parlamento Europeo y Consejo
+    serie: "Aprobación definitiva del presupuesto (DO L 2026/72)"
+    url: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=OJ:L_202600072
+    periodicidad: anual (noviembre-diciembre)
+    proxima: "2026-11-24 (voto del presupuesto de 2027): comprobar y pasar el texto a «presupuesto de 2027»"
+    familia: ue-presupuesto
+
+  - id: mfp-2028-2034
+    texto: "propuesta 16-7-2025: 1,763 billones de 2025 (≈1,98 corrientes; 1,26 % RNB); caja irlandesa 1,622 billones (-8 %); cumbre 26-27-11-2026"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, graficos/mfp-2028-2034.tex]
+    valor: null
+    unidad: billones de euros
+    periodo: "2026-11"
+    fuente: EPRS2026MFP
+    organismo: Comisión Europea; Consejo; Parlamento Europeo
+    serie: "Estado de la negociación (EPRS)"
+    url: https://eprs.europarl.europa.eu/home/topics/budgetary-affairs/BUDGET/mff-2028-2034.html
+    periodicidad: continua hasta el acuerdo
+    proxima: "2026-11-27 (resultado de la cumbre extraordinaria) y 2026-12-18"
+    familia: ue-presupuesto
+
+  - id: control
+    texto: "TCE 2025: error 3,8 %, opinión desfavorable sobre el gasto, MRR con reservas; Fiscalía Europea: 3.602 investigaciones, 67.270 M€; RAL 501.100 M€"
+    donde: [3B37.tex, repaso/3B37-repaso.tex]
+    valor: 3.8
+    unidad: "%"
+    periodo: "2025"
+    fuente: TCE2026InformeAnual
+    organismo: Tribunal de Cuentas Europeo; Fiscalía Europea
+    serie: "Informe anual del TCE; informe anual de la Fiscalía Europea"
+    url: https://www.eca.europa.eu/ECAPublications/AR-2025-AIB/AR-2025-AIB_EN.pdf
+    periodicidad: anual (TCE en octubre-noviembre; Fiscalía en febrero-marzo)
+    proxima: "2027-03 (Fiscalía) y 2027-10 (TCE)"
+    familia: ue-presupuesto
+
+  - id: mrr-ejecucion
+    texto: "MRR: 573.000 M€ (360.000 subvenciones, 213.000 préstamos); 450.000 pagados a 1-10-2026 (79 %), 68 % de hitos; por países, recibido 2020-2025 en % del PIB (España 4,2 %)"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, datos/mrr-paises.csv, datos/mrr-paises-orden.csv, graficos/mrr-paises.tex]
+    valor: 450
+    unidad: miles de millones de euros
+    periodo: "2026-10-01"
+    fuente: CE2026InformeMRR
+    organismo: Comisión Europea; Eurostat (gov_rrf_fa)
+    serie: "Informe anual del MRR; gov_rrf_fa (rehacer el orden con python3 datos/mrr-ordenar.py)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/gov_rrf_fa/default/table
+    periodicidad: anual; fin del MRR el 31-12-2026
+    proxima: "2027-04 (Eurostat con 2026; cierre del MRR)"
+    familia: ue-ngeu
+
+  - id: deuda-ue
+    texto: "deuda de la UE 836.800 M€ (30-6-2026), ≈875.000 (nov. 2026); plan 2026 180.000; coste NGEU 3,32 %; AAA (S&P AA+)"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, datos/deuda-ngeu.py, datos/deuda-ngeu.csv, graficos/deuda-ngeu.tex]
+    valor: 836.8
+    unidad: miles de millones de euros
+    periodo: "2026-06-30"
+    fuente: CE2026Emisor
+    organismo: Comisión Europea
+    serie: "Informe semestral de endeudamiento; simulación propia con D0 = 421.000 M€, i = 3,3 %, crecimiento 3,5 %"
+    url: https://commission.europa.eu/strategy-and-policy/eu-budget/eu-borrower-investor-relations_en
+    periodicidad: semestral
+    proxima: "2027-04"
+    familia: ue-ngeu
+
+  - id: espana-prtr
+    texto: "plan final 102.000 M€ (79.000 subvenciones + 21.400 préstamos); 6 pagos, 77.600 M€ recibidos; 7.º pago de 25.861 pedido el 30-9-2026; SURE 21.324"
+    donde: [3B37.tex, repaso/3B37-repaso.tex]
+    valor: 77.6
+    unidad: miles de millones de euros
+    periodo: "2026-10"
+    fuente: Gobierno2026PRTR
+    organismo: Gobierno de España; Comisión Europea
+    serie: "Notas del Plan de Recuperación"
+    url: https://planderecuperacion.gob.es/
+    periodicidad: con cada pago
+    proxima: "2026-12 (último pago)"
+    familia: ue-ngeu
