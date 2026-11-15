@@ -238,3 +238,7 @@ No restaurados:
 ## Clasificación Gráfico/Figura (13/11/2026)
 
 Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `esquema-inflacion` (triángulo de Gordon, ya Figura en 1D01) e `inflacion-cuentas-publicas` (cajas y flechas, ya Figura en 1D01). El resto sigue como Gráfico.
+
+## Listas en las notas al pie (15/11/2026)
+
+Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota lo necesitaba: no hay ninguna que enumere conceptos o casos paralelos de forma que una lista ayude a leerla.

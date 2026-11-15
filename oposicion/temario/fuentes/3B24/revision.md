@@ -112,7 +112,7 @@ Fecha de todas: 13/11/2026. En todas se ha aplicado la opción recomendada.
 - **R24-07 (P1, C20). Los apuntes de la UC3M.**
   - Aplicada (a): se citan como en el original (Moreno y Gutiérrez, 2018), sin URL, solo en la fuente del gráfico del precio sucio.
   - Alternativa (b): quitar la cita y dejar solo Bodie, Kane y Marcus.
-- **R24-08. Vasicek y CIR en el cuerpo.**
+- **R24-08. Vasicek y CIR en el cuerpo.** (Resuelta el 15/11/2026: Víctor los lleva al anexo B.)
   - Aplicada (a): subapartado con a)-e) en II.2 (30″ del cante, sin fórmulas del precio en la pizarra).
   - Alternativa (b): caja gris o anexo, sin cantar.
 - **R24-09. Extensión.** El tema ocupa 31 páginas (más que los vecinos): se ha preferido no perder nada del Word ni de lo pedido (NSS, Vasicek/CIR, desarrollos por pasos). Si Víctor lo quiere más corto, lo primero que puede pasar a anexo: Vasicek y CIR, la caja de las curvas de España y EE. UU. y la gestión activa.
@@ -125,9 +125,46 @@ Se conservan con entrada en el `.bib`: Economipedia (precio sucio), AnalystNotes
 ## Instrucciones para el vídeo
 
 - **Enganche e idea final**: «¡Cuán largo me lo fiáis!» y el bono austriaco a 100 años; la idea final lo retoma: el largo plazo se paga 2 veces, con la prima por plazo en el precio y con la duración en el riesgo.
-- **Funciones clave que se conservan** en una esquina de la rejilla: `eq:precio-bono` (desde I.4), `eq:tipo-largo` (desde II.2) y `eq:precio-duracion-convexidad` (desde III.2.4).
+- **Funciones clave que se conservan** en una esquina de la rejilla: `eq:precio-contado` (desde I.4), `eq:tipo-largo` (desde II.2), `eq:macaulay` (III.2.2), `eq:duracion-modificada` (III.2.3) y `eq:precio-duracion-convexidad` (desde III.2.4). La fórmula con la TIR (`eq:precio-bono`) va en caja gris desde el 15/11/2026.
 - **Gráficos y figuras imprescindibles en la pizarra**: la figura `linea-temporal-bono` (I.2); el gráfico `precio-rentabilidad` por capas, que se dibuja en I.5 (curva y punto) y se completa en III.2.3 (tangente, $-P_0D^{\mathrm{mod}}$) y III.2.4 (error que corrige la convexidad), así que conviene no borrarlo entre I y III o volver a trazarlo deprisa; `prima-liquidez` (II.2); `movimientos-curva` o `formas-curva` (II.3, mejor movimientos); `balanza-duracion` (III.2.2).
 - **Como apoyo** (no se dibujan): `pull-to-par`, `precio-sucio`, `opciones-bono`, `nss-factores`, `curva-bce-zona-euro`, `curvas-espana-eeuu`, `prima-riesgo-espana`, `malkiel-bonos`, `convexidad-bonos`, `inmunizacion-horizonte`, la figura `estrategias-expectativas` y las tablas.
 - **Ejemplo conductor en la pizarra**: el bono a 2 años (1.000 €, 10 %, 922,6 €) y el cupón cero (100 € a 90,9 €): en I.4, el arbitraje (831,7; $r_1$, $r_2$); en II.1, $f_2=20{,}22$ %; en II.2, el tipo esperado; en III.2, $D=1{,}91$, $D^{\mathrm{mod}}=1{,}66$, $+3$ puntos: $-4{,}98$ % frente a $-4{,}80$ %, y con convexidad $-4{,}79$ %; en III.2.5, inmuniza a 1,91 años. Repetir los datos cada vez (no obligar a recordarlos).
-- **Desarrollos por pasos**: no arbitraje → logaritmos → prima (II.2); *bootstrapping* en 3 pasos (II.1); inmunización en 4 pasos (III.2.5).
-- **No se cantan**: notas al pie, cajas grises (notación, lecturas, curvas de España y EE. UU.), las fórmulas de Vasicek y CIR (solo la idea), las clasificaciones del anexo B y las derivaciones del anexo A.
+- **Desarrollos por pasos**: no arbitraje → logaritmos → prima (II.2); inmunización en 4 pasos (III.2.5). El *bootstrapping* está en caja gris desde el 15/11/2026.
+- **No se cantan**: notas al pie, cajas grises (notación, lecturas, precio con la TIR, construcción de la curva, curvas de España y EE. UU.), el anexo A (derivaciones) y el anexo B (Nelson-Siegel-Svensson y Vasicek-CIR).
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de inversión y sistema financiero: activos reales y financieros, en itemize.
+- Nota del cupón variable: el Euríbor y el €STR (con el EONIA), en itemize; el LÍBOR y el SOFR siguen en párrafo aparte.
+- Nota de la ETTI: «Hay que distinguir 3 curvas:» (cupón cero, de rentabilidades, par), en itemize.
+
+## Comentarios de Víctor a la parte B (15/11/2026)
+
+Números de ecuaciones, gráficos y apartados: los del PDF de la rama antes de estos cambios (comprobados con el `.aux` de `_trabajo/`, el de las 00:11 del 15/11/2026). Páginas del tema: 31 antes y 31 después (anexos: 5 → 6).
+
+- «En el cuerpo del tema al hablar de la clasificación según la naturaleza del emisor quiero que quede claro que cualquier agente económico puede emitir títulos de renta fija […] una clasificación organizada en la que se mencionen conceptos como mercados de renta fija pública y privada o corporate.» → I.3 empieza la clasificación por el emisor con «**cualquier agente económico puede emitir títulos de renta fija**» (los requisitos, en nota) y 2 mercados en lista anidada: **renta fija pública** (supras, soberanos, territoriales y agencias) y **renta fija privada o *corporate*** (empresas, con las financieras, y vehículos de titulización), con una línea por emisor (no la tabla del tema antiguo) y el dato de AIAF/MARF.
+- «En estas clasificaciones en general me gustaría que usaras un pelín más los subpárrafos indexados y que incorpores la información del anexo B en el cuerpo del tema.» → Todo el anexo B (clasificaciones) pasa a I.3, cada criterio con sus subpárrafos: emisor, cupón (fijo, variable, indexado, cupón cero y aplazado: devengables y diferidos), opciones, vencimiento (monetario y de capitales), **mercado y forma de emisión** (primario y secundario; subasta, sindicación, colocación privada; el detalle de la subasta «convencional corregida», en nota) y **divisa y lugar de emisión** (doméstico, segmento internacional, euromercados; dólar y euro, doble divisa y opción de divisa, en nota). Se suprime el anexo; I.3 pasa de 1′30″ a 2′. La tabla 2 se adelanta al principio de I.3 y su fila del emisor dice «público […] y privado o *corporate*».
+- «Por la coyuntura actual quiero que donde está el gráfico 1 representes también la prima de riesgo de Francia frente a Alemania en el mismo gráfico.» → Gráfico 1 con las 2 primas (España en morado, Francia en naranja, rotuladas en el gráfico, con los máximos y el último dato). Datos del BCE, IRS (`IRS.M.FR.L.L40.CI.0000.EUR.N.Z`, junto a las de España y Alemania ya usadas), descargados el 15/11/2026 y comprobados con Eurostat `irt_lt_mcby_m` (actualizado el 12/11/2026: julio-octubre iguales). `datos/prima-riesgo-espana.csv` añade las columnas `francia` y `prima_fr_pb` (las de España no cambian). El último dato mensual publicado en noviembre de 2026 es **octubre de 2026**: España, 65 pb (antes el tema decía 45 en septiembre); Francia, 147 pb, cerca de su máximo de 154 (noviembre de 2011) y por encima de la española todos los meses desde octubre de 2024. El texto de I.3.1 lo cuenta en 2 subpárrafos (España y Francia), y la ficha y `datos-actualizables.yaml` (nuevo `prima-riesgo-francia`) también.
+- «En el primer párrafo del bloque I.4, utiliza párrafos indexados para que se siga de manera más simple.» → «En el mercado primario» queda en 4 subpárrafos: a la par, bajo la par, sobre la par y la deuda del Estado subastada.
+- «Marca en morado la fórmula (1) y no la (2), de hecho esta última la metería en una caja gris con su explicación.» → (1), el precio con los tipos de contado, en `\funcionclave`; (2), el precio con la TIR, en una caja gris «El precio con un solo tipo de descuento» con su explicación (qué es cada igualdad, la par, para qué sirve). En el cuerpo queda una línea que remite a la TIR. Nota del opositor, ficha e instrucciones del vídeo, con las nuevas funciones clave.
+- «Al mencionar este párrafo: "A un inversor le interesa […]", quiero que menciones ahí las 3 medidas principales en subpárrafos indentados y que cada una tenga su apartado usando títulos de menor nivel.» → Las 3 medidas en subpárrafos y 3 subapartados: I.5.1 la rentabilidad corriente (con el ejemplo: 10,84 %), I.5.2 la rentabilidad a vencimiento (con la *yield to call*, las letras y los bonos con opciones) y I.5.3 la rentabilidad realizada (con su fórmula al horizonte, nueva, y la recapitulación). I.5 pasa a 2′30″.
+- «Los apartados II.1.2 y II.1.3 llévatelos a anexos o a cajas grises […]. Reordena el II.1 porque tras esto no va a ser necesario que ahí haya títulos de 3er nivel.» → El *bootstrapping* (II.1.2) va a una caja gris «Cómo se construye la curva», que menciona NSS y remite al anexo; NSS (II.1.3, con sus a)-e) y el gráfico de los 3 factores) va al nuevo **anexo B, «Modelos de la curva de tipos»**. II.1 se titula «Definición: tipos de contado y tipos a plazo», sin subapartados: ETTI y *strips*, tipos de contado y a plazo (lo que era II.1.1, en subpárrafos) y la curva observada del BCE, que sigue en el cuerpo con su gráfico. II.1 pasa de 2′30″ a 1′30″.
+- «Mete el gráfico 8 en su caja gris.» → Las curvas de España y EE. UU. van con `figuracaja` dentro de su caja (ahora gráfico 7).
+- «Lleva el apartado II.2.4 a anexos.» → Vasicek y CIR, al anexo B (B.2), con sus a)-e). Sus 30″ pasan a la teoría de las expectativas (2′).
+- «En el gráfico 12 mete la explicación de cada bono en la propia figura como estaba en la gráfica de Bodie et al. y quítala de la nota al pie de gráfico.» → El gráfico de Malkiel (ahora 11) lleva en la esquina superior derecha la tabla «Bono, cupón, plazo, TIR inicial» con cada letra en el color de su curva, como la figura 16.1 de Bodie, Kane y Marcus; la fuente queda solo con la referencia. Lo de «A y B difieren en el plazo…» pasa al texto de las proposiciones.
+- «Marca la ecuación (7) en morado porque tiene que estar en la exposición. Lo mismo con la función de la duración modificada D_mod (y numérala).» → La duración de Macaulay y la duración modificada (con $\Delta P/P\simeq-D^{\mathrm{mod}}\Delta y$), en `\funcionclave` y numeradas (ahora 6 y 7; también en la ficha).
+- «También la primera función de convexidad (la (8)) llévala a una nota a pie de página.» → La definición desarrollada de la convexidad ($\frac{1}{P(1+y)^2}\sum t(t+1)\ldots$) va a nota al pie; en el texto queda $\mathrm{Conv}=(\mathrm{d}^2P/\mathrm{d}y^2)/P$. Ver duda R24-10.
+- \minutos: 30 (I, 8 → 9; II, 9 → 8). Ficha de repaso rehecha con todo lo anterior (esquema y minutos, funciones en morado, I.3, I.5, II.1, prima de Francia, anexos); 4 páginas, letra de 10,5.
+
+### Dudas nuevas (15/11/2026)
+
+- **R24-10. «La primera función de convexidad (la (8))».** En el PDF, la (8) era la aproximación de Taylor con duración y convexidad (función clave en morado), y la primera fórmula de la convexidad, sin número, su definición.
+  - Aplicada (a): la definición desarrollada va a la nota y la (8) sigue en morado en el cuerpo, porque es la función clave del bloque III.
+  - Alternativa (b): llevar también la aproximación de Taylor a la nota.
+- **R24-11. Prima de riesgo «actualizada a noviembre de 2026».** El BCE y Eurostat publican medias mensuales; a 15/11/2026 el último mes es octubre.
+  - Aplicada (a): datos hasta octubre de 2026 (publicados en noviembre), dicho así en la fuente del gráfico.
+  - Alternativa (b): añadir un dato diario de noviembre de otra fuente (no oficial del BCE).
+- **R24-12. La curva del BCE en el cuerpo.** Con NSS en el anexo, el gráfico de la curva AAA del BCE (2026, 2023, 2020) podía ir también al anexo.
+  - Aplicada (a): se queda en II.1 como «la curva observada», porque enseña la ETTI con datos y la usan las formas y la conclusión.
+  - Alternativa (b): llevarla al anexo B con NSS.
+

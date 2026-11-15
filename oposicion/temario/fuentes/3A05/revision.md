@@ -270,3 +270,12 @@ Tiempos: esquema, `\minutos`, reparto de la `notaopositor` y esquema del cante d
 - **4.º ejercicio**: el marco fiscal de 1948 (estabilizadores automáticos, presupuesto equilibrado en pleno empleo) se enlaza con el saldo cíclico y el estructural (4.B.4); las reformas para bajar la tasa natural, con el paro estructural en España (4.A.16).
 - **Dichos**: se queda el refrán del enganche («cada maestrillo tiene su librillo»). Ninguno de los 4 dichos venía del temario antiguo. Se quita «una de cal y otra de arena» (significa alternar lo bueno y lo malo, no repartir el corto y el largo plazo: se prestaba a malentendidos). Los otros 3 casan bien y quedan integrados en la frase, sin la etiqueta «Dicho:»: «tropieza dos veces en la misma piedra» (errores sistemáticos de las expectativas adaptativas), «no se puede engañar a todo el mundo todo el tiempo» (curva de Phillips vertical a largo plazo) y «más vale paso que dure que trote que canse» (regla del k %). Ficha de repaso: quitado el mismo dicho (ahora «refrán y 3 dichos»).
 - **Duda (13/11/2026)**: nobelprize.org rechazó hoy las consultas automáticas (403); las motivaciones son las ya comprobadas en otros temas, salvo la de Klein (1980), traducida de la oficial («for the creation of econometric models and the application to the analysis of economic fluctuations and economic policies») sin comprobarla hoy en la web.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los otros 2 motivos de Schumpeter (l. 25, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

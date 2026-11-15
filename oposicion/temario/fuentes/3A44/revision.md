@@ -230,3 +230,10 @@ No restaurados:
 - **4.º ejercicio**: ya tenía `\vertema{4.A.7}` (I+D) y `\vertema{4.A.15}` (competencia), bien colocadas; no se añaden más.
 - **Refranes**: se conservan «más vale maña que fuerza» (enganche), «quien guarda, halla» ($AK$), «a hombros de gigantes» (Newton, efecto de las ideas pasadas) y «rey muerto, rey puesto» (destrucción creativa). Se quita «quien a buen árbol se arrima, buena sombra le cobija» (externalidades): sugiere arrimarse a una empresa grande, no el desbordamiento del conocimiento agregado; fuera también de la nota del opositor y de la ficha. Ninguno venía del temario antiguo.
 - Compilado tema y ficha y verificado: sin errores nuevos.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 49: Smith, Ricardo y Malthus.
+- l. 1161: las 3 razones de Jones.

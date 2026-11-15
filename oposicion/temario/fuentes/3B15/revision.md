@@ -220,3 +220,8 @@ Compilación: `construir-tema.py 3B15 --solo pdf --no-publicar` correcto (33 pá
 - Gráficos (los del tema): tabla de eficacia de Mundell-Fleming, trilema, dilema de Rey, menú de regímenes, 6 series de monedas (Hong Kong, riyal, renminbi, córdoba, dólar neozelandés y real, libra egipcia), zonas objetivo, evolución de los regímenes, reservas mundiales y controles de capitales.
 - Dichos: los mismos que en el tema, integrados en la frase; ninguno nuevo.
 - El título corto de la cabecera pasa a «Regímenes cambiarios» por el mismo motivo (pie de la ficha); el tema no cambia.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la globalización financiera (Georgiadis y Mehl): los 2 rasgos de los balances exteriores (tamaño y exposición neta a las divisas) en itemize; el resumen, en párrafo aparte.
+- No se convierten: la del trilema y la regla de Tinbergen (un argumento) ni las de Nobel.

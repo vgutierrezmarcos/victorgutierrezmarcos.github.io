@@ -196,3 +196,9 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **III**: la fórmula `eq:proteccion-efectiva` en la pizarra con el ejemplo del coche (100, 60 de piezas; 25 %, 17,5 % y $-5$ %) y el dicho «desnudar a un santo para vestir a otro»; las medias simple y ponderada, de palabra, señalando el gráfico de los aranceles medios como apoyo; III.2 sin pizarra (`modo: guion` o apoyo en texto).
 - **Conclusión**: sin pizarra; empieza por «En conclusión,» y la idea final retoma la pregunta y el refrán del enganche («al campo se le pueden poner puertas…, pero casi siempre las paga quien se queda dentro»). Al llegar, la pizarra queda limpia salvo la función clave.
 - Las notas al pie, las cajas grises y los anexos no se cantan.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de los nuevos modelos cuantitativos (métodos): se probó a poner en itemize lo que estiman para España los CGE, la gravedad y los nuevos modelos, pero la nota se partía con el último ítem solo en la página siguiente; se deja en prosa.
+- Nota de la FPP (supuestos del modelo general): los 3 casos según los rendimientos a escala en itemize.
+- No se convierten: la de los efectos sustitución y renta (ya lleva tabla), la de los aranceles a la exportación ni las de Nobel.

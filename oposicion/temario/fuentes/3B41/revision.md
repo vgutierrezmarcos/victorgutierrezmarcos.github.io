@@ -136,3 +136,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III.2**: la escalera de preferencias en la pizarra, de abajo arriba, de palabra con los ejemplos; las generaciones, en una línea de tiempo corta.
 - **III.4, imprescindible**: la negociación de Nash por capas (ejes; frontera; $d$ y $N$; $d'$ y $N'$; $d''$ y $N''$). `eq:nash` recuadrada y conservada (`conservar:`) hasta la idea final, que vuelve a ella. Las 3 funciones clave se dejan en la esquina de la rejilla entre bloques.
 - Nunca se dice el número de un tema en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

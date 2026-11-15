@@ -312,3 +312,8 @@ Todavía no hay vídeo: este tema se entrega sin guion ni escenas (entregas 1 y 
 - **Dichos**, que se apuntan al decirlos junto a su casilla: «Poderoso caballero es don Dinero» (compromiso), «A caballo regalado no le mires el diente» (el tercer país), «Muerto el perro, se acabó la rabia» (industria naciente) y «Quien paga, manda» (captura).
 - **Bloque II**: un esquema de 3 casillas (objetivos, justificación e instrumentos), sin cifras en la pizarra.
 - **Números de tema**: no se dicen en voz alta ni en la pizarra.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de los tipos de economías de escala: externas, internas y dinámicas en itemize; Meade, Kemp y Baldwin y el Nobel de Meade, en párrafo aparte.
+- No se convierten: la del tercer mercado frente a los mercados recíprocos (un razonamiento seguido) ni las de Nobel.

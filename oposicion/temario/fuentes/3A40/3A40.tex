@@ -340,7 +340,12 @@ La evidencia sobre los instrumentos nuevos (los métodos, en el anexo~\ref{anexo
 
 \begin{itemize}
 \item \emph{Por instrumento}: hay un multiplicador por instrumento: el del \emph{gasto} (consumo o inversión pública), el de las \emph{transferencias} y el de los \emph{impuestos} (negativo: una subida resta producción).
-\item \emph{Por horizonte}: como el gasto y la producción responden durante varios periodos, se distinguen 4 medidas:\footnote{Aquí $m$ con índices es el multiplicador, con la notación del canon del temario; sin índices, en la ecuación~\eqref{eq:multiplicador-abierta}, es la propensión marginal a importar. En $m^{\,t}_t$ y $m^{\,t+k}_t$, $t$ es el periodo, no el tipo impositivo $t$ del modelo keynesiano.}
+\item \emph{Por horizonte}: como el gasto y la producción responden durante varios periodos, se distinguen 4 medidas:\footnote{Aquí $m$ tiene 2 significados:
+\begin{itemize}
+\item con índices, es el multiplicador, con la notación del canon del temario;
+\item sin índices, en la ecuación~\eqref{eq:multiplicador-abierta}, es la propensión marginal a importar.
+\end{itemize}
+En $m^{\,t}_t$ y $m^{\,t+k}_t$, $t$ es el periodo, no el tipo impositivo $t$ del modelo keynesiano.}
   \begin{itemize}
   \item el \emph{de impacto}, $m^{\,t}_t=\Delta Y_t/\Delta G_t$, en el periodo del gasto;
   \item el \emph{a $k$ periodos}, $m^{\,t+k}_t=\Delta Y_{t+k}/\Delta G_t$, la respuesta de la producción en $t+k$ al gasto de $t$;
@@ -609,17 +614,8 @@ La evidencia sobre los instrumentos nuevos (los métodos, en el anexo~\ref{anexo
   \item de la \emph{persistencia del gasto}: un gasto más duradero sube más la inflación esperada y la respuesta del banco central, y con la regla de \autor{Taylor} el multiplicador de impacto baja algo.
   \end{itemize}
 \item Una rebaja de impuestos financiada con deuda sigue sin efecto si los hogares son ricardianos; el gasto sí mueve la demanda.
-\item Qué cambia respecto del modelo canónico, en la figura~\ref{figu:nek-canonico-fiscal}.
+\item Qué cambia respecto del modelo canónico, en la figura~\ref{figu:nek-canonico-fiscal}, al final del apartado.
 \end{itemize}
-
-\begin{anotaciones}
-\textbf{El modelo canónico de la NEK frente al ampliado con política fiscal} (el mismo cuadro que en el 3.A.38). En la columna de la derecha, en rojo, lo que cambia al introducir el gasto público, los impuestos y la deuda.
-\begin{infografiacaja}
-\caption{El modelo neokeynesiano canónico y el ampliado con política fiscal}\label{figu:nek-canonico-fiscal}
-\grafico[\linewidth]{nek-canonico-fiscal}
-\fuente{Elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}, \textcite{Woodford2011Simple} y \textcite{GaliLopezSalidoValles2007}.}
-\end{infografiacaja}
-\end{anotaciones}
 
 \paragraph{c) Evidencia empírica}
 
@@ -635,6 +631,15 @@ La evidencia sobre los instrumentos nuevos (los métodos, en el anexo~\ref{anexo
 \item \emph{En contra}: no tiene capital ni gasto productivo, y predice que el consumo cae cuando sube el gasto, salvo con un banco central muy acomodaticio; en los datos no cae. Falta una pieza: los hogares que no pueden ahorrar ni endeudarse.
 \end{itemize}
 
+\begin{anotaciones}
+\textbf{El modelo canónico de la NEK frente al ampliado con política fiscal} (el mismo cuadro que en el 3.A.38). En gris (\textsf{C}), el modelo canónico; en rojo (+), lo que cambia al introducir el gasto público, los impuestos y la deuda: los supuestos, las ecuaciones, qué hace un aumento del gasto y lo que se deduce para la política económica.
+\begin{infografiacaja}
+\caption{El modelo neokeynesiano canónico y el ampliado con política fiscal}\label{figu:nek-canonico-fiscal}
+\grafico[\linewidth]{nek-canonico-fiscal}
+\fuente{Elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}, \textcite{Woodford2011Simple} y \textcite{GaliLopezSalidoValles2007}.}
+\end{infografiacaja}
+\end{anotaciones}
+
 \subsubsection{Hogares que viven al día y agentes heterogéneos}\label{sec:hank}
 
 \paragraph{a) Idea}
@@ -648,14 +653,19 @@ La evidencia sobre los instrumentos nuevos (los métodos, en el anexo~\ref{anexo
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item \emph{Con 2 tipos de hogares}\nocite{GaliLopezSalidoValles2007}: una fracción $\lambda$, de \emph{regla de pulgar} (\emph{rule of thumb}), consume su renta corriente; el resto es ricardiano y suaviza su consumo. Precios rígidos, como en el modelo neokeynesiano.
+\item \emph{Con 2 tipos de hogares}\nocite{GaliLopezSalidoValles2007}: una fracción $\lambda$, \emph{rule of thumb}, consume su renta corriente; el resto es ricardiano y suaviza su consumo. Precios rígidos, como en el modelo neokeynesiano.
 \item \emph{Con agentes heterogéneos} (modelos neokeynesianos con agentes heterogéneos, \emph{heterogeneous agent New Keynesian}, HANK): muchos hogares, con riesgos de renta no asegurables y restricciones de liquidez, y cada uno con su propensión marginal a consumir.
 \end{itemize}
 
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{Con 2 tipos de hogares}: el gasto eleva el empleo y el salario real, y el consumo de los hogares de regla de pulgar sube.\footnote{Los hogares ricardianos pueden ahorrar o endeudarse y suavizan su consumo; los no ricardianos, sin acceso al crédito, consumen cada periodo su renta salarial, de modo que no sufren el efecto riqueza negativo del gasto. Con competencia monopolística y precios rígidos, el salario real puede subir cuando sube el gasto, y con él la renta y el consumo de los no ricardianos\nocite{GaliLopezSalidoValles2007}.} Si su fracción supera aproximadamente una cuarta parte y los salarios no se fijan de forma competitiva, el consumo agregado \emph{aumenta} con el gasto, como en los datos, y la equivalencia ricardiana deja de cumplirse.
+\item \emph{Con 2 tipos de hogares}: el gasto eleva el empleo y el salario real, y el consumo de los hogares \emph{rule of thumb} sube.\footnote{Hay 2 tipos de hogares:
+\begin{itemize}
+\item los \emph{ricardianos} pueden ahorrar o endeudarse y suavizan su consumo;
+\item los \emph{no ricardianos}, sin acceso al crédito, consumen cada periodo su renta salarial, de modo que no sufren el efecto riqueza negativo del gasto.
+\end{itemize}
+Con competencia monopolística y precios rígidos, el salario real puede subir cuando sube el gasto, y con él la renta y el consumo de los no ricardianos\nocite{GaliLopezSalidoValles2007}.} Si su fracción supera aproximadamente una cuarta parte y los salarios no se fijan de forma competitiva, el consumo agregado \emph{aumenta} con el gasto, como en los datos, y la equivalencia ricardiana deja de cumplirse.
 \item \emph{Con agentes heterogéneos}: lo que importa es la propensión marginal a consumir de cada hogar y cómo se reparte en el tiempo. En estos modelos, la propensión trimestral media es del 15-20~\%, frente a menos del 1~\% del agente representativo, y el gasto financiado con deuda tiene efectos mucho mayores\nocite{KaplanViolante2018Microeconomic}. \textcite{AuclertRognlieStraub2024} lo resumen en la \emph{cruz keynesiana intertemporal}, que generaliza la cruz a muchos periodos: con las propensiones a consumir que se observan en los datos, un gasto financiado con deuda tiene un multiplicador acumulado mayor que 1.
 \end{itemize}
 

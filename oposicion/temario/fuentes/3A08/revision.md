@@ -604,3 +604,16 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **4.º ejercicio**: participación femenina \vertema{4.A.16} (producción doméstica); IPC español \vertema{4.A.1} e índice de precios de vivienda del INE \vertema{4.A.11} (precios hedónicos); y la descomposición de Slutsky aplicada a los impuestos (exceso de gravamen) \vertema{4.B.9}, en «Extensiones».
 - **Dichos y refranes**: solo está el del enganche, «Sobre gustos no hay nada escrito» (retomado en la idea final); se conserva. No había otros ni en el tema ni en la ficha.
 - Dudas (13/11/2026): las motivaciones se han tomado de las notas ya comprobadas en otros temas (nobelprize.org devuelve 403 a la descarga automática hoy); la de Goldin, de memoria de la motivación oficial («for having advanced our understanding of women's labour market outcomes»), motivación no comprobada en web hoy. ¿Sobran las notas de los epónimos (Leontief, Frisch)? Se han puesto por la regla de «todo Nobel mencionado».
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de las «tecnologías del consumo» (l. 20, introducción): 3 enfoques en viñetas (Lancaster, Becker y Gronau, Stigler); el Nobel de Stigler en párrafo aparte.
+- La nota de Pareto y la ofelimidad (l. 298): marginalistas y utilitaristas en 2 viñetas.
+- La nota de las condiciones del conjunto presupuestario (l. 422): no vacío, cerrado y acotado en 3 viñetas.
+- La nota de la diferenciabilidad de la demanda (l. 556): las condiciones (i)-(iii) pasan a 3 viñetas.
+- La nota de las 2 formas de definir la renta real constante (l. 798): Hicks y Slutsky en 2 viñetas.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

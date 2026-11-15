@@ -213,3 +213,9 @@ No restaurados:
 - **Nobel añadidos** (nota al pie, motivo oficial, `\nocite` y entrada en el `.bib`): Friedman (1976), en su primera mención (I, responsabilidad social); Tobin (1981), en el modelo de Baumol-Tobin; Theodore Schultz (1979, con Arthur Lewis), unido a la nota de Becker, que pasa al formato habitual. Ya estaban: Modigliani y Miller-Markowitz-Sharpe (1985 y 1990), Becker (1992), Tirole (2014), Holmström y Hart (2016). Wilson (lote económico) es R. H. Wilson, no el Nobel de 2020; Arrow y Acemoglu solo salen en `\nocite`.
 - **4.º ejercicio**: \vertema{4.A.2} junto al capital humano; el escudo fiscal de la deuda remite ahora a \vertema{4.B.17} (impuesto sobre sociedades) en vez de 4.B.10; se mantiene \vertema{4.B.6} (VAN social, tasa social de descuento).
 - **Dichos**: se conservan «más vale un hoy que dos mañanas» (enganche y cierre), «borrón y cuenta nueva» (costes hundidos), «no por mucho madrugar amanece más temprano» (ahora con la frase que lo explica: invertir en cuanto el VAN es positivo hace perder el valor de esperar) y «en el término medio está la virtud» (Baumol-Tobin). Se quitan «lo bueno, si breve, dos veces bueno» (TIR: decía lo contrario de lo que se explica) y «renovarse o morir» (MAPI: lo que importa es el momento, no renovar), también en la ficha y en las instrucciones del vídeo.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota del objetivo de la empresa (contextualización): los 3 objetivos (rentabilidad, solvencia, liquidez) en itemize.
+- Nota de Holmström y Tirole (liquidez como seguro): «De ahí salen 3 consecuencias:» en itemize; los impuestos, en párrafo aparte.
+- No se convierten: la de los costes hundidos y efectos sobre otros negocios (un ejemplo seguido) ni las de Nobel.

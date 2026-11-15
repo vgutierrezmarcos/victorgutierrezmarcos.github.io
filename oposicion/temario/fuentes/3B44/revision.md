@@ -130,3 +130,7 @@ Todos consultados el 14/11/2026. Las fuentes completas están en `datos-actualiz
 ## Material de trabajo
 
 `_trabajo/`: `icex-3B44.txt` (OCR), `antiguo-3B46-2023.txt` y `a46.txt`, `afi-*.txt`, `cinco-presidentes.txt`, `notas-ub.md`, `notas-umc.md` (verificaciones de datos de 14/11/2026), `parte1-3.tex` (borradores), `canon-pendiente.md`.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

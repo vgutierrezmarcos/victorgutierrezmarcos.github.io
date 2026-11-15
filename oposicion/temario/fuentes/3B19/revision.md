@@ -62,7 +62,7 @@ No había texto rojo, oculto ni «No cantar» (P8).
 
 | Dato | Anterior | Nuevo | Fuente (clave) | URL | Consulta | 2.ª comprobación |
 |---|---|---|---|---|---|---|
-| Enganche | Flujos de capital de 2020 | Johannesburgo, 22-23/11/2025, sin EE. UU. | `G20Johannesburgo2025` | g20.utoronto.ca/2025/251122-declaration.html | 11/11/2026 | Agencias (`G202025Johannesburgo`, CBS) |
+| Enganche | Flujos de capital de 2020 | Johannesburgo, 22-23/11/2025, sin EE. UU. | `G20Johannesburgo2025` | g20.utoronto.ca/2025/251122-declaration.html | 11/11/2026 | Agencias (`CBS2025G20Johannesburgo`, CBS) |
 | Bonn 1978 | Sin cifras | Alemania hasta el 1 % del PNB; Francia 0,5; Japón +1,5 puntos | `G7Bonn1978Declaration` | g7.utoronto.ca/summit/1978bonn | 11/11/2026 | Frankel (2016) |
 | Plaza / Louvre | Solo años | 22/9/1985 (G-5); 22/2/1987 (G-6); Tokio, mayo de 1986 | `G51985Plaza`, `G61987Louvre` | g7.utoronto.ca/finance | 11/11/2026 | Frankel (2016) |
 | Londres 2009 | Sin cifras | 5 billones de dólares de expansión; 1,1 billones adicionales; FMI ×3 hasta 750.000 M | `G20Londres2009` | g20.utoronto.ca/2009 | 11/11/2026 | Frankel (2016) |
@@ -204,3 +204,7 @@ Víctor está fuera: cada duda lleva aplicada la opción recomendada.
 - **Al final**, la pizarra queda con la escalera completa, la matriz con sus rótulos tachados y las 3 funciones clave.
 - **Conclusión** (1′): sin pizarra; empieza por «A modo de conclusión,» e **idea final** que retoma el refrán: poner orden en la propia casa es la primera regla, pero cuando la casa de uno ocupa media calle, la de todos también es suya.
 - Lo que no se canta: anexos A-D, la caja de las 4 ecuaciones, el tipo fijo, la evidencia de M-F, las extensiones de C-P, Stackelberg, el detalle de los órganos e instrumentos de la OCDE y los foros menores (BPI, Club de París, RIC, Davos, ASEM).
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

@@ -184,3 +184,7 @@ Todo el tema es nuevo. Lo que no estaba en ninguna referencia:
 - `1. Materiales por temas\...\Tema 3.B.33\3B-33.pdf` (tema de otro preparador, 2021: solo contraste), `Comercio.xlsx` (datos de 2019, no usados), `Economía mundial by Jaime Requeijo.pdf` (4.ª ed., citado) y `Lecciones de Economía Mundial…` (Alonso, dir., 9.ª ed., 2019, citado).
 - `Preparación oposición a TCEE\01_Oposicion_Estudio\Nuevos temas oposición a TCEE - ICEX-CECO\3B\3B32i.pdf` (ICEX-CECO, 2023: contraste de estructura y del concepto de emergente).
 - No se usaron (no aportan a la fotografía de 2026): los documentos de Granell Trias sobre el SEI de 1999-2020, Calvo Hornero, Stutz, los informes de 2018-2020 de la OMC, la UNCTAD y el FMI.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

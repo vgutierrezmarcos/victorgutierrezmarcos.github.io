@@ -454,7 +454,7 @@ def comprobar_graficos_imagenes(tema, tex, errores, datos):
             if ':' in e and not e.startswith(prefijo[tipo]):
                 errores.append(f'l. {_linea(tex, m.start())}: etiqueta «{e}» en un{"a" if tipo != "gráfico" else ""} {tipo}: '
                                f'empieza por «{prefijo[tipo]}»')
-        for g in re.findall(r'\\(?:grafico|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', m.group(2)):
+        for g in re.findall(r'\\(?:grafico|graficopagina|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', m.group(2)):
             base, ext = os.path.splitext(g)
             dibujado = os.path.exists(os.path.join(tema.graficos, os.path.basename(base) + '.tex'))
             if tipo == 'imagen' and dibujado:
@@ -575,7 +575,7 @@ def verificar(tema):
     comprobar_esquema_enlazado(tex, avisos)
     datos['citas'] = len(re.findall(r'\\(?:foot|auto|text|paren)?cites?\b', tex))
     datos['notas_al_pie'] = len(re.findall(r'\\footnote\b', tex)) + len(re.findall(r'\\footcite\b', tex))
-    graficos_usados = set(re.findall(r'\\(?:grafico|graficonota|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', tex))
+    graficos_usados = set(re.findall(r'\\(?:grafico|graficopagina|graficonota|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', tex))
     for g in graficos_usados:
         base = os.path.join(tema.graficos, os.path.splitext(g)[0])
         if not any(os.path.exists(base + ext) for ext in ('.tex', '.png', '.jpg', '.jpeg', '.pdf', '.svg')):

@@ -572,3 +572,34 @@ def enlazar_esquema(texto):
     for ini, fin, nuevo in sorted(cambios, key=lambda c: c[0], reverse=True):
         texto = texto[:ini] + nuevo + texto[fin:]
     return texto
+
+
+def recortar_vertical(pdf, margen=3.0):
+    """Quita el blanco de arriba y de abajo de un gráfico compilado (Víctor,
+    14/11/2026: no debe quedar hueco hasta la fuente). Solo en vertical: el ancho
+    no cambia, así que los pasos de un mismo gráfico (\\tceepaso) mantienen la
+    escala, aunque conserven el marco horizontal del gráfico completo.
+    Devuelve True si ha recortado."""
+    import fitz
+    doc = fitz.open(pdf)
+    pag = doc[0]
+    alto = pag.rect.height
+    pix = pag.get_pixmap(dpi=72, alpha=False)
+    w, h, n, s = pix.width, pix.height, pix.n, pix.samples
+    fila = w * n
+    filas = [y for y in range(h) if min(s[y * fila:(y + 1) * fila]) < 250]
+    if not filas:
+        doc.close()
+        return False
+    esc = alto / h
+    y0 = max(0.0, filas[0] * esc - margen)
+    y1 = min(alto, (filas[-1] + 1) * esc + margen)
+    if y0 < 2 and alto - y1 < 2:
+        doc.close()
+        return False
+    mb = pag.mediabox
+    pag.set_mediabox(fitz.Rect(mb.x0, mb.y0 + (alto - y1), mb.x1, mb.y0 + (alto - y0)))
+    doc.save(pdf + '.tmp', garbage=3, deflate=True)
+    doc.close()
+    os.replace(pdf + '.tmp', pdf)
+    return True

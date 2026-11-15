@@ -861,7 +861,7 @@ Cambios del canon a raíz de la revisión del 3.A.39 (`fuentes/3A39/revision.md`
 - **Comprobado sin cambios:**
   - **3.A.2** (l. 523): Ricardo, cap. 17, con su duda, Barro (1974) y Buchanan (1976), la misma clave `Ricardo1821Principles` y `\vertema{3.A.39}`: el 3.A.39 lo cuenta igual.
   - **3.A.5** (l. 249): «financiar el gasto con dinero o con deuda no da lo mismo» (Blinder y Solow, 1973): el 3.A.39 lo cumple en I.2 y el anexo B, con `eq:multiplicador-fiscal` del 3.A.5 y la misma clave `BlinderSolow1973Analytical`.
-  - **3.A.7** (l. 722): la ER con hogares ricardianos e impuestos de suma fija y su fallo con hogares de regla de pulgar (`GaliLopezSalidoValles2007`): igual en I.3.1 c).
+  - **3.A.7** (l. 722): la ER con hogares ricardianos e impuestos de suma fija y su fallo con hogares *rule of thumb* (`GaliLopezSalidoValles2007`): igual en I.3.1 c).
   - **3.A.23** (l. 1157): el sesgo deficitario con Persson y Svensson, Alesina y Tabellini y el fondo común, con las mismas claves (`PerssonSvensson1989Why`, `AlesinaTabellini1990Positive`, `WeingastShepsleJohnsen1981Political`).
   - **3.A.29** (l. 444, 517, 678-679): la dinastía de Barro (sin repetir «de tal palo, tal astilla»), el fallo con OLG salvo herencias, la deuda que desplaza capital y $r<\gamma_Y$ con Blanchard (2019).
   - **3.A.33** (l. 360 y 914) y **3.A.43** (l. 832): la renta permanente frente a la ER con la misma frase; λ y Galí, López-Salido y Vallés; la ER en el RCK.
@@ -917,7 +917,7 @@ Cambios del canon a raíz de la revisión del 3.A.38 (`fuentes/3A38/revision.md`
 - **Comprobado sin cambios:**
   - **3.A.5** (l. 496): Friedman-Heller (1969) con la misma clave; `eq:multiplicador-fiscal` copiada; `islm-escuelas` del 3.A.39.
   - **3.A.6** (l. 646, 988, 1118): el efecto riqueza del gasto en el ciclo real y $K_{t+1}=(1-\delta)K_t+Y_t-C_t-G_t$, con `BaxterKing1993Fiscal`.
-  - **3.A.7** (l. 716-722): las 3 vías del gasto con sus palabras, el margen contracíclico, los hogares de regla de pulgar (salvo el `nek-xpi` de arriba).
+  - **3.A.7** (l. 716-722): las 3 vías del gasto con sus palabras, el margen contracíclico, los hogares *rule of thumb* (salvo el `nek-xpi` de arriba).
   - **3.A.29** (l. 683): reparto con $(1+n)(1+g)$, Aaron, «la avaricia rompe el saco» (reutilizada, A38-03), «no se puede prestar a quien no ha nacido»; `diamond.tex` y `demografia-pensiones` con sus mismas unidades y cifras (el 3.A.38 da la dependencia del *Ageing Report*, 65+/20-64, y el gráfico la de Eurostat, 65+/15-64: el pie lo dice, A38-19).
   - **3.A.33** y **3.A.1**: λ de Campbell y Mankiw y el empujón con sus remisiones.
   - **3.A.34** (l. 24, 933): la inversión pública complementaria y la empresa sin problema intertemporal salvo costes de ajuste (`\vertema{3.A.34}`, no 3.A.29).

@@ -256,3 +256,11 @@ Se comparan las URL del Word original con las de `3A24.tex` y `3A24.bib` (CRITER
 - **Nobel**: \autor{Stigler} y \autor{Becker} (nota de las tecnologías del consumo), \autor{Samuelson} 1970 (FBS), \autor{Harsanyi} 1994 (con \autor{Nash} y \autor{Selten}), \autor{Debreu} 1983, \autor{Robert Wilson} 2020 (\textcite{Wilson1972Social}, el teorema sin Pareto) y \autor{Shapley} 2012 (nota del índice de Shapley-Shubik). Se dejan donde estaban las notas de \autor{Arrow}, \autor{Buchanan}, \autor{Sen}, \autor{Hurwicz}-\autor{Maskin}-\autor{Myerson}, \autor{Thaler} y \autor{Kahneman}: la relevancia ya da sus años en la primera mención.
 - **4.º ejercicio**: ya había 4.A.3, 4.B.2, 4.B.3, 4.B.6 y 4.B.11; no se añade más.
 - **Dichos**: se conservan el del enganche («nunca llueve a gusto de todos»), «donde hay patrón no manda marinero» (dictador) y «cada cabeza es un mundo» (comparaciones interpersonales), que recoge CRITERIOS y van explicados.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 40: las 3 etapas de la economía del bienestar.
+- l. 558: los 2 principios de la justicia de Rawls, por orden de prioridad (se quitan los «1)» y «2)»; los a) y b) del segundo quedan dentro del ítem).
+- l. 858: manipulación de la agenda, el ganador según el orden de votación (3 casos).

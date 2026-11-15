@@ -255,3 +255,8 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **Gráficos de apoyo**, sin escribirlos: `ricardo-fpp-conjunto` (nota), `dfs`, `meade` (caja gris), `samuelson-johnson` (caja gris, 5 capas), `rybczynski-fpp` (nota), `especificos-ky` y `especificos-l` (caja gris). Los de los anexos (`frontera-mundial`, `cadena-ventaja`, `viner`, `ricardo-oferta-exportacion`, `ricardo-oferta-relativa`, `reversion-intensidades`, `fpp-coeficientes-fijos`) y los 2 de datos, nunca a mano.
 - **De palabra**: Eaton-Kortum, la evidencia de Ricardo salvo MacDougall y Japón, Harrigan, Prebisch-Singer, la evidencia de los factores específicos salvo Magee, el HOV (solo «el comercio que falta» de Trefler) y los otros levantamientos de supuestos del H-O-S.
 - **Nunca** se dice en voz alta el número de un tema.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la FPP cóncava (modelo de Heckscher-Ohlin): los 3 casos según los rendimientos a escala en itemize.
+- No se convierten: la del sesgo de demanda, la de la reversión de intensidades y las demás (un solo argumento) ni las de Nobel.

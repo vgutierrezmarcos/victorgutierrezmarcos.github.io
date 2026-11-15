@@ -203,3 +203,12 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - **Nobel**: Deaton pasa de una mención en el cuerpo («recibió el Premio Nobel de 2015 por su análisis del consumo») a nota al pie con la motivación oficial completa. Notas nuevas en la primera mención de Samuelson (1970, descuento exponencial), Lucas (1995, crítica de Lucas), Arrow (1972, con Hicks; aversión absoluta), Lars Peter Hansen (2013, con Fama y Shiller; Hansen y Singleton), Prescott (2004, con Kydland; enigma de la prima de riesgo), Bernanke (2022, con Diamond y Dybvig; irreversibilidad) y Sargent (2011, con Sims; añadido a la nota del anexo donde se le cita, porque no cabe una nota dentro de otra). Entradas copiadas de otros temas al .bib. Ya estaban bien Kuznets, Friedman, Modigliani, Thaler y el Nobel 2026 de Hall y Woodford (en el cuerpo, con la motivación oficial).
 - **4.º ejercicio**: se añaden 4.A.2 (envejecimiento y ahorro), 4.A.3 (riqueza inmobiliaria y consumo de los hogares) y 4.B.16 (deducción de 400 euros en el IRPF); ya estaba 4.B.24.
 - **Refranes**: se quedan «En tiempo de vacas gordas, guarda para las flacas» (enganche y cierre), «Hombre prevenido vale por dos» (ahorro precautorio) y «lo comido por lo servido» (hogares que viven al día); los 2 últimos dejan de ir pegados al final como etiqueta y quedan integrados en una frase que explica la relación. El temario antiguo no tenía refranes. La ficha no cambia.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 164: en la nota de Hansen y el estancamiento secular, las 3 fuerzas del crecimiento (se quitan los \emph{i}), \emph{ii}), \emph{iii})). La nota sigue cabiendo en su página.
+- l. 1316: neutralidad, superneutralidad y dicotomía clásica (como la nota 7 del 3A35).
+- l. 1355 (anexo): la misma nota de las restricciones intertemporales que en el 3A29.
+- Probada y descartada: la nota del alisamiento del consumo (sus 3 rasgos, l. 298); como lista se partía y el gráfico de las sendas pasaba a la página siguiente, así que se deja en prosa.

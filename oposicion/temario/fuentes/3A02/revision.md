@@ -308,3 +308,13 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **4.º ejercicio**: 2 remisiones nuevas: las 4 máximas de Smith como base de los principios impositivos \vertema{4.B.7} y la transición demográfica que Malthus no previó \vertema{4.A.2}.
 - **Refranes y dichos** (el temario antiguo no traía ninguno): se conserva el refrán del enganche («cada uno habla de la feria…»), «donde comen dos, comen tres» (Malthus, al revés), «trabajar para el obispo» (plustrabajo) y «cría cuervos…» (la burguesía cría a sus sepultureros). «Aprendiz de mucho, maestro de nada» se queda, pero bien integrado: el texto decía «es lo contrario del refrán», cuando la división del trabajo le da la razón; ahora es el operario que hiciera las 18 operaciones. **Fuera** «quien tiene tierra tiene guerra» (Ricardo): el refrán habla de los problemas del propietario, y en Ricardo el terrateniente es quien gana, así que podía confundir. Mismos cambios en la ficha de repaso.
 - Compilados el PDF y la ficha (4 páginas); `verificar-tema.py` solo marca los ficheros publicados anteriores a la fuente (se publican aparte).
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los otros 2 motivos de Schumpeter (l. 25, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
+- La nota de las revoluciones que se reclamaron de Marx (l. 1233): 3 viñetas (Lenin, Stalin, Mao).
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

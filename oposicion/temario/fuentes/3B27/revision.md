@@ -126,3 +126,8 @@ Todas las cifras que caducan están en `datos-actualizables.yaml`.
 ## Coherencia con el 3.B.44 (14/11/2026)
 
 - EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de las 2 actividades (regulación y supervisión): las 3 actividades de Llewellyn (regulación, control, supervisión), en itemize.
+- Nota de la regulación macroprudencial: el reparto de tareas tras 2008 (política monetaria, supervisión microprudencial, política macroprudencial), en itemize.

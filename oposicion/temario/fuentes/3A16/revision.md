@@ -199,3 +199,12 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **Nobel**: \autor{Samuelson} 1970 (principio de correspondencia), \autor{Tinbergen} 1969 (con \autor{Frisch}, telaraña), \autor{Hayek} 1974 (valoración); \autor{Stigler} 1982 y \autor{Becker} 1992 añadidos a la nota de las tecnologías del consumo, y \autor{Arrow} 1972 y \autor{Debreu} 1983 a la nota de los teoremas del bienestar. Nuevo punto en la opinión: los experimentos de subasta doble de \textcite{Smith1962Experimental}, que convergen al equilibrio competitivo, con la nota del Nobel de \autor{Vernon Smith} (2002).
 - **4.º ejercicio**: \vertema{4.A.4} en la telaraña (mercados agrarios).
 - **Dichos**: solo el refrán del enganche («a río revuelto, ganancia de pescadores»), que el tema retoma en la libre entrada y en la idea final. Nada que quitar.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de las «tecnologías del consumo» (l. 20, introducción): 3 enfoques en viñetas (Lancaster, Becker y Gronau, Stigler); el resto de la nota (otros agentes, Nobel) en párrafo aparte.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

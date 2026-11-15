@@ -122,3 +122,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III.1**: `rescates-paises` como apoyo; III.2: `sure-paises` como apoyo; III.3: `eq:capacidad` y `capacidad-fiscal` en la pizarra por capas (A sin; B sin; A con; B con).
 - **Funciones clave que se conservan**: `eq:sesgo-union` (I), `eq:gasto-neto` (II.1-II.3), `eq:capacidad` (III.3).
 - Nunca se dice el número de un tema en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

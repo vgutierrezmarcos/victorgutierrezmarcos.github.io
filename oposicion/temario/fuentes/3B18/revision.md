@@ -152,3 +152,7 @@ Aplicada en todas la opción recomendada:
 - **III.3**: `fig:curva-sonrisa` en boceto (recomendable); `tab:cgv-tipos` solo de apoyo.
 - **III.4**: sin pizarra; `fig:contenido-importado` como apoyo en pantalla.
 - **Funciones clave que se conservan**: `eq:macdougall` (II.1-II.2), `eq:umbrales-hmy` (II.4) y `eq:participacion-cgv` (III).
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

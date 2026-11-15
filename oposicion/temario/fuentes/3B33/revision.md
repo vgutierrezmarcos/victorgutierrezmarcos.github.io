@@ -162,3 +162,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 
 ## Coherencia con el 3.B.41 (14/11/2026)
 - Corregido por el coordinador a partir del 3.B.41 (Mercosur: negociación cerrada en diciembre de 2024 y firma el 17/1/2026; México firmado; Indonesia, la India y Australia cerrados en 2025-2026; salvaguardia del acero sustituida el 1/7/2026 por el Reglamento 2026/1384; el SPG se trata en el 3.B.41).
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la moratoria del comercio electrónico: «El debate enfrenta 2 argumentos:» los de quienes la rechazan y quienes la defienden, en itemize.

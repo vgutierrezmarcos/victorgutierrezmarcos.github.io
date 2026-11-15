@@ -135,3 +135,12 @@ Todas del 13/11/2026, aplicadas con la opción recomendada.
 - **Premios Nobel** (nota con el motivo oficial en la primera mención): Akerlof (2001, con Spence y Stiglitz), Friedman (1976), Modigliani (1985) y Miller (1990, con Markowitz y Sharpe). No sale ningún otro premiado.
 - **4.º ejercicio**: 4.A.8 (Central de Balances, empresa española), 4.A.19 (ROA bancario), 4.B.17 (el resultado contable, punto de partida de la base imponible del impuesto sobre sociedades) y 4.B.18 (pilar 2 e información país por país).
 - **Refranes**: solo el del enganche, «El papel lo aguanta todo», retomado en la idea final. No se han puesto las pegatinas que proponían las fases 2 (K10, K14, K21, K26) ni se conserva el aforismo del original (es el enganche del 3.A.30 y no tiene fuente). La ficha de repaso tampoco lleva otros.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la información financiera (introducción): usuarios internos y externos, «Los usuarios son de 2 tipos:» + itemize.
+- Nota de Friedman (contextualización): tras el Nobel, en párrafo aparte, los 3 objetivos (liquidez, solvencia, rentabilidad) en itemize.
+- Nota de las sociedades no financieras: las normas propias de entidades de crédito, IIC y aseguradoras en itemize; lo del ROA bancario sigue en párrafo aparte.
+- Nota del inmovilizado intangible (balance): «Hay que distinguir 3 conceptos:» patente, marca y fondo de comercio; la amortización del fondo de comercio, en párrafo aparte.
+- Nota del margen bruto (cuenta de pérdidas y ganancias): consumo de materias primas, coste de la producción y coste de las ventas en itemize.
+- No se convierten: la de los umbrales de las cuentas abreviadas y la auditoría (con ejemplo, mejor seguida), la de los tipos de opinión de auditoría (lista corta), la de actividad interrumpida ni las de Nobel.

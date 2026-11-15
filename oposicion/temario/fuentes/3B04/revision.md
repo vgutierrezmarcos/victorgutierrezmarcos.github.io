@@ -232,3 +232,9 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **Nobel añadidos**: Friedman (1976); Stigler (1982), en su flexibilidad de 1939; Tobin (1981), en la $q$ de Marris; Modigliani (1985) y Miller (1990, con Markowitz y Sharpe), en la irrelevancia del dividendo; Scholes y Merton (1997), en Black-Scholes de las opciones reales; Tirole (2014), en la nota del ingreso comprometible. Ya estaban Coase, Williamson-Ostrom, Hart-Holmström y Fama-Hansen-Shiller. «Hall» es Bronwyn Hall (Gibrat), no el Nobel de 2026.
 - **4.º ejercicio**: \vertema{4.A.8} tras la ley de Gibrat (tamaño de la empresa); se mantiene \vertema{4.A.15} (control de concentraciones).
 - **Dichos**: se conservan el enganche «Roma no se hizo en un día» y «no estires más el brazo que la manga» (crecimiento sostenible), «no vendas la piel del oso antes de cazarlo» (prima y sinergias) y «juntos, pero no revueltos» (alianzas), todos explicados en su frase; en la ficha, este último lleva ahora la frase que lo explica. «El precio es lo que pagas…» es una cita, no un dicho.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota del objetivo de la empresa (contextualización): los 3 objetivos intermedios en itemize.
+- Nota de la fusión por absorción: los 4 requisitos (proyecto común, informe de expertos, acuerdo de cada junta, oposición de acreedores) en itemize; la relación de canje, en párrafo aparte.
+- No se convierten: la del CAPE, la de Monte Carlo, la de sinergias ni las de Nobel.

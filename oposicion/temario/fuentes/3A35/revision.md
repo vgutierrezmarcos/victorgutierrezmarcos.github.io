@@ -193,3 +193,10 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - **4.º ejercicio**: \vertema{4.A.20} (innovación financiera) en las monedas estables y el Reglamento MiCA.
 - **Refranes**: el temario antiguo no traía ninguno. Se quedan los versos de Quevedo del enganche, «puedes llevar el caballo al río…» (trampa de la liquidez), «en el término medio está la virtud» (Baumol-Tobin), «por si las moscas» (precaución), «el dinero no da la felicidad» (MIU, con la ironía explicada) y «no poner todos los huevos en la misma cesta» (Tobin). «Cuando seas padre, comerás huevos» (Samuelson) se queda, pero ahora la frase explica la relación: el joven entrega bienes a cambio de dinero y consume de viejo. **Quitados** del tema y de la ficha: «juntarse el hambre con las ganas de comer» (en el uso común es despectivo y puede confundir; en su lugar se explica la doble coincidencia), «por dinero baila el perro» (CIA: habla de soborno, no de pagar por adelantado) y «ojos que no ven, corazón que no siente» (relación forzada con el atesoramiento y el fraude).
 - Regla 6 (identidad frente a teoría cuantitativa): ya está separada en el tema («con los supuestos, la identidad se vuelve teoría»); no se ha tocado.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- La nota 7 (neutralidad, superneutralidad y dicotomía) ya estaba hecha.
+- l. 235: los 3 motivos de Keynes para demandar dinero (transacción, precaución, especulación).

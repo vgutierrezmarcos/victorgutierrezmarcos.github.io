@@ -223,3 +223,9 @@ Cada una con la opción aplicada:
 ## Coherencia con el 3.B.44 (14/11/2026)
 
 - EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la flexibilidad salarial: los 2 efectos secundarios sobre la demanda (competitividad y renta) en itemize.
+- Nota del mecanismo asegurador: las 3 funciones de un presupuesto común (igualadora, estabilizadora, aseguradora) en itemize; el ejemplo y Eichengreen, en párrafo aparte.
+- No se convierten: la de la nueva geografía económica (mezclada con el Nobel de Ohlin) ni las de Nobel.

@@ -230,3 +230,13 @@ El tema pasa de 28 a 36 páginas de cuerpo por los 20 gráficos.
 - **Nobel de 2022 (Diamond, Dybvig y Bernanke)**: nueva extensión del bloque del crédito, «Por qué existen los bancos»: la vigilancia delegada de Diamond (1984) (el banco como supervisor que diversifica y resuelve quién vigila al vigilante), con la nota del premio; enlaza con la pregunta del enganche (Silicon Valley Bank: si el depósito está garantizado, la vigilancia pasa al supervisor).
 - **4.º ejercicio**: \vertema{4.A.19} (sistema bancario) en esa extensión; \vertema{4.B.3} en el aseguramiento público de quienes el mercado excluye; \vertema{4.A.16} en la prestación por desempleo condicionada a la búsqueda. Se mantienen \vertema{4.A.24}, \vertema{4.B.2} y \vertema{4.B.11}.
 - **Refranes**: se conservan «dar gato por liebre» y «el ojo del amo engorda al caballo» (enganche, retoma en el riesgo moral y conclusión); no había otros. La ficha no cambia.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de las «tecnologías del consumo» (l. 19, introducción): 4 enfoques en viñetas (Lancaster, Becker, Gronau, Stigler); el resto de la nota (otros agentes, Nobel) en párrafo aparte.
+- La nota de la terminología de teoría de juegos (l. 65): información incompleta e imperfecta en 2 viñetas (la frase introductoria acaba ahora en «Un juego es de:»).
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

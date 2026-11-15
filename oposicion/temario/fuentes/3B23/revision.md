@@ -281,15 +281,16 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
 
 - *Pizarra (sacado del texto del tema el 11/11/2026)*: 3 columnas en I; la SML recuadrada pasa a la esquina; tabla de eficiencia que sigue en III.
 
-- **Enganche e idea final**: «Nadie da nada por nada» y el 52 % de fondos
+- **Enganche e idea final**: «Nadie da duros a cuatro pesetas» (15/11/2026) y el 52 % de fondos
   indexados; vuelve en la APT (no arbitraje) y en la idea final. Introducción
   y conclusión sin pizarra, con el refrán apuntado en una esquina.
 - **Bloque I, pizarra en 3 columnas** (`rejilla: "30|40|30"`):
   - izquierda: la tabla mínima de renta fija y variable (5 filas × 2
     columnas), la \eqref{eq:rentabilidad-accion} y, debajo, la varianza de la
     cartera recuadrada (`\funcionclave`), que se conserva todo el bloque;
-  - centro: el gráfico `markowitz` por capas (frontera, MVG, curvas de los 2
-    inversores, tangencias) con el dicho de los huevos y las gallinas; sin
+  - centro: el problema anidado del inversor y, debajo, `markowitz-paso1`
+    (etapa objetiva: activos, frontera, MVG) completado en `markowitz`
+    (etapa subjetiva: curvas de los 2 inversores, tangencias) con el dicho de los huevos y las gallinas; sin
     borrar, sobre él se dibuja `cml` (r_f, una CAL, la tangente, T = M,
     prestar y endeudarse). No se
     escribe dos veces la frontera: el gráfico conjunto se construye por
@@ -314,8 +315,8 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
   derecha, `soporte-resistencia` por capas (serie, soporte, resistencia,
   ruptura, media móvil); en la tabla de eficiencia se
   marca qué forma desafía cada análisis (técnico, la débil; fundamental, la
-  semifuerte). `sp500-soporte-medias` es de apoyo; `velas` y `cml-sml`, de
-  los anexos, no salen.
+  semifuerte). `sp500-soporte-medias` es de apoyo; `velas` (ya en el cuerpo, 15/11/2026),
+  de palabra o de apoyo; `cml-sml`, del anexo, no sale.
 - Funciones clave que se conservan: la varianza de la cartera (bloque I), la
   SML (hasta el final) y la APT (hasta el final del bloque I).
 - Al terminar, la pizarra queda con la SML, la tabla de eficiencia, Gordon y
@@ -326,3 +327,26 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
 - **Nobel añadidos o completados**: Tobin (1981), en su primera mención ($q$ de Tobin); Friedman (1976), en la nota de la tesis de Markowitz; Modigliani (1985) con su motivo; Thaler (2017) con su motivo y su cita; Koopmans (1975, con Kantoróvich) con su motivo; Kahneman (2002) en la teoría de las perspectivas; Stiglitz (2001) en la paradoja de Grossman y Stiglitz; Robert Merton (1997) en el anexo de fechas. Ya estaban Markowitz-Miller-Sharpe (1990) y Fama-Hansen-Shiller (2013).
 - **4.º ejercicio**: sin cambios; ya remite a \vertema{4.A.20} (mercados de valores en España).
 - **Dichos**: se conservan «nadie da nada por nada» (enganche, APT y cierre), «no poner todos los huevos en la misma cesta» (del temario antiguo), «cuando llueve, todos se mojan» (riesgo sistemático) y «a buenas horas, mangas verdes» (eficiencia), más la cita «todo necio confunde valor y precio». Se quitan «todos los caminos llevan a Roma» (separación de Tobin: forzado) y «quien tuvo, retuvo» (memoria del mercado: el refrán significa otra cosa), en el tema, la ficha y las instrucciones del vídeo.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la definición de inversión (apartado de definiciones, «Se distinguen 2 tipos de activos»): activos reales y financieros, en itemize.
+- Nota de la OPS y la OPV (mercado primario): «Hay que distinguir 2 operaciones:» + itemize; lo demás (SPAC, ventajas de salir a bolsa) sigue en párrafo aparte.
+- Nota de la correlación perfecta negativa (¿varianza nula?): los 3 casos de correlación (hmBc1$, $, intermedia), en itemize.
+- No se convierten: la de Treynor y Sharpe, la del PER, la del análisis fundamental y la de las medias móviles (cortas o un solo argumento) ni las de Nobel.
+
+## Comentarios de Víctor a la parte B (15/11/2026)
+
+- «El refrán es "nadie da duros a cuatro pesetas", pero manteniendo esa introducción igual puedes encontrar algún refrán mejor.» → La introducción queda igual y el refrán pasa a ser **«Nadie da duros a cuatro pesetas»** en el enganche, la APT («un arbitraje sería justo eso»), la idea final, la nota del cante y la ficha (título de la introducción, enganche, APT e idea final). Se valoraron «El que algo quiere, algo le cuesta» (ya es de 3.A.20), «No hay rosa sin espinas» y «Más vale pájaro en mano…»: ninguno casa mejor con la pregunta del enganche (¿se puede ganar más de lo que corresponde al riesgo?) ni con el no arbitraje. Anotado en refranes-tanda.txt. Ver D-B1.
+- «Mete en una caja gris la información de la antigua nota al pie 8 sin perjuicio de lo que ya hay en el tema.» → Nueva caja tras el gráfico de las correlaciones, «¿Se puede obtener una cartera de varianza nula con 2 activos con riesgo?», con la tabla de la nota 8 antigua (correlación 1, −1 e intermedia × con y sin ventas en corto) y el porqué de cada caso (los pesos que anulan la varianza). La nota al pie actual se conserva.
+- «No puedes quitar del tema el problema de optimización que había al comienzo de la página 8/41 del tema antiguo.» → Recuperado antes de las 2 etapas como «El problema del inversor»: máx. $U(\mathbb{E}[r_p]^{+},\sigma_p^{2\,-})$ s. a. estar en la frontera eficiente, y la frontera como máx. $\mathbb{E}[r_p]$ s. a. $\sigma_p^2=\bar\sigma^2$, $\sum w_i=1$, $w_i\geq0$ (con \optim). Se explica que el problema anidado tiene una parte objetiva y otra subjetiva, y por eso las 2 etapas; la primera etapa conserva el cálculo dual (mín. varianza para cada $\bar r$), presentado como equivalente. También en la ficha.
+- «El gráfico 2 divídelo en las 2 etapas existentes…» → Nuevo `markowitz-paso1.tex` (`\tceepaso{4}` con `\tceefantasma`: activos, frontera de mínima varianza, MVG y frontera eficiente) junto al texto de la primera etapa, y `markowitz` completo (curvas de indiferencia y óptimos) junto a la segunda. Los 2 al 50 % del ancho (antes 65 %). La primera etapa y la segunda son ahora viñetas de primer nivel, cada una seguida de su gráfico.
+- «… Quiero un diagrama infográfico que explique lo que se va a ir viendo…» → Nueva figura `mapa-analisis` (figura 1) tras «Tres maneras de analizar una acción»: a la izquierda, la cadena Markowitz → Tobin → Sharpe → CAPM → APT con lo que aporta cada uno y, en rojo, la limitación que lleva al siguiente; a la derecha, el bloque II (¿respetan los precios esa rentabilidad?, gestión pasiva o activa) y debajo el análisis fundamental y el técnico, con qué forma de eficiencia desafía cada uno; una flecha dorada lleva la $r_E$ del CAPM al fundamental. En el cante sirve de guion (no se dibuja).
+- «Me gusta el cuadro gris de la beta, pero es necesario explicar bien lo que es la beta en el cuerpo del tema…» → En el desarrollo del CAPM, nueva viñeta «Qué es la beta» con 5 subviñetas: definición (y regresión), interpretación con un ejemplo numérico, medida del riesgo sistemático, la referencia 1 con la clasificación (agresivo, defensivo, beta cero, refugio) y «la beta no es la volatilidad». La caja conserva la tabla de clasificación (tabla 3, antes 2), el triángulo (figura 2, antes 1) y lo no cantable: clasificación por la SML con las cíclicas y defensivas, riesgo total como suma y determinantes. En la ficha, la línea de la beta añade definición e interpretación.
+- «Lleva la figura 2 y la explicación de las velas japonesas al cuerpo del tema.» → La explicación pasa a las herramientas del análisis técnico (con alcista/bajista) y la figura `velas` (ahora figura 3, al 70 % del ancho) va tras el gráfico de soporte y resistencia; se quitan del anexo de indicadores, que se queda con el RSI, el sentimiento y las 2 posturas. En la ficha, las velas se explican en una línea.
+- Notas del cante actualizadas (figura guion, problema y 2 etapas, beta, velas). \minutos suma 30. Páginas del tema: 32 → 35 (total 44 → 46). Ficha: 4 páginas.
+
+### Dudas (15/11/2026)
+
+- **D-B1** (refrán): «nadie da duros a cuatro pesetas» ya sale en 3.A.06 como dicho secundario (expectativas racionales, también en su ficha). **Aplicada la recomendada**: aquí es el refrán del enganche, porque es el que propone Víctor y el que mejor casa con el no arbitraje; se podría cambiar el dicho de 3.A.06 (no se ha tocado: no es de este encargo). Alternativa: «El que algo quiere, algo le cuesta», pero ya está en 3.A.20.
+

@@ -222,3 +222,8 @@ Compilación: `construir-tema.py 3B12 --solo pdf --no-publicar` correcto (36 pá
 - Gráficos (los del tema): curva J, oferta agregada de la absorción, IS-LM-BP, flujo-especie, modelo intertemporal, dinámica de la deuda exterior y España (CC y PIIN), y la tabla de sostenibilidad de España.
 - Dichos: los mismos que en el tema, integrados en la frase; ninguno nuevo.
 - El título corto de la cabecera pasa a «Ajuste de la balanza de pagos» (`\tcetema[...]`) solo en la ficha, para que su pie no se solape con el copyright; el tema no cambia.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota del efecto directo sobre la absorción: las 3 vías por las que la devaluación sube los precios, en itemize.
+- No se convierten: la de la condición de Marshall-Lerner (historia de la atribución), la del debate de las reparaciones ni las de Nobel.

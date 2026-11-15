@@ -308,3 +308,9 @@ Correcciones aplicadas tras el control de calidad del coordinador:
 - **Nobel**: \autor{Meade} 1977, \autor{Mirrlees} 1996 y \autor{Hurwicz} 2007 (una nota en la contextualización, que cubre también a \autor{Vickrey}), \autor{Allais} 1988 y \autor{Samuelson} 1970 (nota de la FPU), \autor{Nash} 1994 (nota del ultimátum), \autor{Akerlof} 2001 (\emph{tagging}), \autor{Peter Diamond} 2010 y \autor{Hart} 2016 (fechas del anexo). Las de \autor{Arrow}-\autor{Debreu}, \autor{Sen} y \autor{Vernon Smith} ya estaban.
 - **4.º ejercicio**: ya había 4.B.3, 4.B.9 y 4.B.11; no se añade más.
 - **Dichos**: solo el del enganche («no hay mal que por bien no venga»), que el \emph{second best} explica; nada que quitar.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 107: optimalidad débil y fuerte; «Aquí se trabaja con la fuerte…» queda como párrafo aparte.

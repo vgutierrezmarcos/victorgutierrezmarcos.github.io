@@ -621,3 +621,14 @@ las fichas). Las dudas abiertas 1-12 siguen abiertas: estos comentarios no las c
 - **Nobel**: la nota de \autor{Stigler} pasa a su primera mención (contextualización); nuevas: \autor{Coase} 1991, \autor{Myerson} 2007 (Baron-Myerson), \autor{Kydland} y \autor{Prescott} 2004 (inconsistencia temporal), \autor{Becker} 1992 (grupos de presión), \autor{Buchanan} 1986, \autor{Arrow} 1972, \autor{Nash} 1994 (anexo del yardstick), \autor{Milgrom} y \autor{Wilson} 2020 (precios predatorios) y \autor{Williamson} 2009 (fechas). \autor{Tirole} ya tenía la suya.
 - **4.º ejercicio**: ya había 4.A.5, 4.A.12, 4.A.15, 4.B.2, 4.B.6, 4.B.9, 4.B.13-15; no se añade más.
 - **Dichos**: se conservan los que recoge CRITERIOS (enganche «tener la sartén por el mango», «más sabe el loco en su casa…», «el que algo quiere, algo le cuesta», «las comparaciones son odiosas»), todos con su explicación; «poner al zorro a cuidar de las gallinas» pierde la etiqueta «dice el dicho» y queda integrado: «un regulador capturado es el zorro puesto a cuidar de las gallinas…».
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los motivos de la tabla (l. 132): las letras a)-c) pasan a 3 viñetas (rentas de escasez, competencia destructiva, paternalismo).
+- La nota de la gestión independiente de la red (l. 695): los 3 casos en viñetas.
+- La nota de la presunción de guardián de acceso de la DMA (l. 1371): las letras a)-c) pasan a 3 viñetas (tamaño, usuarios, duración).
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

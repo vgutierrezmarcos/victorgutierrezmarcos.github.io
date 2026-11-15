@@ -268,3 +268,7 @@ Actualizadas el 11/11/2026 (4.ª tanda: estructura macro/micro, Kenia fuera del 
 - **Angrist, Imbens y Card (2021)**: en «Otras dificultades» del método experimental se añade el efecto medio local del tratamiento (LATE) de \textcite{ImbensAngrist1994Identification}, con nota del Nobel de 2021 (Angrist e Imbens, y Card por los experimentos naturales). Banerjee-Duflo-Kremer, Acemoglu-Johnson-Robinson y Deaton ya tenían su desarrollo en el cuerpo.
 - **4.º ejercicio**: ya remitía al \vertema{4.A.27}, \vertema{4.A.26} y \vertema{4.B.6}; no se añaden más.
 - **Refranes**: se quedan el del enganche («unos nacen con estrella y otros estrellados»), «una golondrina no hace verano» (gran empujón), «café para todos» (Consenso de Washington), «el hábito no hace al monje» (instituciones de segundo óptimo) y «ver para creer» (RCT), los tres últimos integrados en la frase. Se quitan «del dicho al hecho hay mucho trecho» y «obras son amores, que no buenas razones», del tema y de la ficha.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

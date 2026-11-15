@@ -322,3 +322,14 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **4.º ejercicio**: la NAIRU y la histéresis se enlazan con el paro estructural de España (4.A.16); ya estaba el saldo estructural y los multiplicadores (4.B.4) en la conclusión.
 - **Dichos**: se queda el refrán del enganche («muchos pocos hacen un mucho»). Ninguno venía del temario antiguo. Se quita «más vale tarde que nunca» (Calvo: no explica nada del modelo; estaba solo en la ficha y en la nota del cante). Se quedan, integrados en una frase que dice qué ilustran y sin «Dicho:», «entre todos la mataron y ella sola se murió» (externalidad de demanda agregada de Blanchard y Kiyotaki), «si no puedes con tu enemigo, únete a él» (método de la 2.ª generación), «más vale pasarse que quedarse corto» (principio de Taylor) y «matar dos pájaros de un tiro» (divina coincidencia). Ficha de repaso, igual.
 - **Duda (13/11/2026)**: nobelprize.org rechazó hoy las consultas automáticas (403); motivaciones tomadas de las ya comprobadas en el temario y de Nobel2026Prensa/Nobel2026Cientifico (3A33).
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los otros 2 motivos de Schumpeter (l. 28, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
+- La nota de los 3 matices sobre fricciones y rigideces (l. 155): 3 viñetas.
+- La nota de la información como nexo entre las 2 familias (l. 535): 2 viñetas (contratos implícitos, salarios de eficiencia); la frase de Azariadis en párrafo aparte.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

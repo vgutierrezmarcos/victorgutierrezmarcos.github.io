@@ -134,3 +134,9 @@ Todas las cifras de los gráficos están en `datos-actualizables.yaml`.
 - A la pizarra: los puntos del oro (capas 1-6: ejes, paridad y banda, oferta, demanda, equilibrio, aumento de la demanda y salida de oro) y el dilema de Triffin como boceto (2 líneas que se cruzan hacia 1960-1961); el gráfico de datos de Triffin y el del comercio mundial, como apoyo.
 - Funciones que se conservan en la esquina: la paridad de acuñación y la banda de los puntos del oro durante I; $D_t>G_t$ desde III.1.3 hasta el final.
 - Tablas `tab:white-keynes` y `tab:tres-ordenes` como apoyo, nunca escritas. La tabla de los 3 órdenes cierra la recapitulación.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota del sesgo deflacionista del patrón oro: las 3 razones por las que la liquidez no fue un problema grave, en itemize.
+- Nota de los 2 planes de Bretton Woods: el de White y el de Keynes en itemize.
+- No se convierten: la de las crisis de primera y segunda generación, la de los 2 precios del oro (cortas) ni las de Nobel.

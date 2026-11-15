@@ -168,3 +168,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III.2-III.4**: de palabra.
 - **Funciones clave que se conservan**: `eq:umbrales-servicios` (bloque I), `eq:grossman-lai` (bloque II), `eq:neutralidad` (III.1).
 - Nunca se dice el número de un tema en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

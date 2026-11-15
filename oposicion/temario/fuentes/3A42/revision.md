@@ -221,3 +221,9 @@ No restaurados:
 ## Clasificación Gráfico/Figura (13/11/2026)
 
 Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `historia-ciclo` (línea de tiempo), `nek-esquema` (ya Figura en 3A07/3A36) y `acelerador-financiero` (ciclo de cajas y flechas). Se quedan como Gráfico `ciclo-financiero-esquema` (curvas estilizadas sobre un eje de años), `ciclos-superpuestos` y el resto (ejes, curvas o series).
+
+## Comentarios de Víctor a la parte A (15/11/2026)
+
+- **«Los ciclos regulares del gráfico 2 mételo en un cuadro gris.»** Los ciclos regulares superpuestos (Kitchin, Juglar, Kuznets, Kondratieff y el esquema de Schumpeter) salen de la nota al pie del rasgo «recurrente, pero no periódico» de la definición de Burns y Mitchell y pasan a una caja gris (`anotaciones`) detrás del gráfico 1: «*Los ciclos regulares superpuestos.*» con los 4 ciclos en lista (duración y autor), el esquema de Schumpeter (6 Juglar por Kondratieff, 3 Kitchin por Juglar) y por qué se abandonó la idea; el gráfico 2 (`ciclos-superpuestos`) va dentro de la caja con `figuracaja` (mismo título, etiqueta y fuente). La nota del Nobel de Kuznets se queda, dentro de la caja, en su ítem. La caja cabe entera en la página 5, sin cortes ni huecos.
+- **Listas en las notas al pie**: la nota de la sobreinversión (Spiethoff y Robertson) pasa a «Dentro de esta tradición, 2 matices:» con un ítem por autor. Las demás notas son un solo argumento, citas o notas de Nobel y se quedan como estaban. La ficha de repaso no tiene notas.
+- Páginas del tema: 34 antes y 34 después (anexos 13; bibliografía 10). `verificar-tema.py`: sin errores propios (solo los de HTML y Word sin reconstruir, porque se compila solo el PDF).

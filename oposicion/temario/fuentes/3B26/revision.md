@@ -212,3 +212,7 @@ Aplicada en cada una la opción recomendada o la que dio el coordinador.
 ## Coherencia con el 3.B.44 (14/11/2026)
 
 - EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

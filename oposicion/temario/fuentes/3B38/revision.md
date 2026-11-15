@@ -167,3 +167,7 @@ Todas se han aplicado con la opción recomendada (14/11/2026); están pendientes
   - `capturas-ue` y `estado-poblaciones` como apoyo.
 - **Funciones clave que se conservan**: `eq:perdida-precios` (I-II.1), `eq:capitalizacion` (II.3) y `eq:gordon-schaefer` (III).
 - Nunca se dice el número de un tema en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

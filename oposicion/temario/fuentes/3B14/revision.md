@@ -165,3 +165,7 @@ Compilación: `construir-tema.py 3B14 --solo pdf --no-publicar` correcto (37 pá
 - `construir-repaso.py 3B14 --no-publicar`: exactamente 4 páginas, letra de 10 pt, última página ocupada al 96 %. Se revisaron las 4 páginas a ojo, sin huecos grandes ni títulos al pie. `verificar-tema.py 3B14`: ningún error de la ficha.
 - Gráficos (los del tema): mercado de divisas, Balassa-Samuelson, índice Big Mac, cuadro de las paridades, monetario flexible, Dornbusch (mercados, trayectorias y diagrama de fases), cartera y paradoja de la apreciación.
 - Dichos: los mismos que en el tema, integrados en la frase; ninguno nuevo.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba (la del análisis técnico y chartista es una sola distinción en una frase).

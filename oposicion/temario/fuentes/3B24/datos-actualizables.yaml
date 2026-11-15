@@ -98,20 +98,36 @@ datos:
     frase: "V1. Sustituye a «649 puntos» (2 veces en la conclusión); misma cifra que el 3B26 (II.5 d)"
 
   - id: prima-riesgo-actual
-    texto: "y era de 45 en septiembre de 2026"
-    donde: [3B24.tex, repaso/3B24-repaso.tex]
-    valor: 45
+    texto: "y era de 65 en octubre de 2026"
+    donde: [3B24.tex, repaso/3B24-repaso.tex, graficos/prima-riesgo-espana]
+    valor: 65
     unidad: puntos básicos
-    periodo: septiembre de 2026 (octubre, 65 pb, solo en el BCE a 12/11/2026)
+    periodo: octubre de 2026 (último mes publicado a 15/11/2026)
     fuente: BCE2026IRS
     organismo: BCE (y Eurostat)
-    serie: "IRS.M.{ES,DE}.L.L40.CI.0000.EUR.N.Z; Eurostat irt_lt_mcby_m"
+    serie: "IRS.M.{ES,DE}.L.L40.CI.0000.EUR.N.Z; Eurostat irt_lt_mcby_m (octubre confirmado el 12/11/2026)"
     url: https://data.ecb.europa.eu/data/datasets/IRS
     periodicidad: mensual
     proxima: 2026-12
     familia: bce-tipos-largo-plazo
     depende: [datos/prima-riesgo-espana.csv]
-    frase: "V2. Pasar a octubre (65 pb) cuando Eurostat lo confirme"
+    frase: "V2. Actualizado el 15/11/2026 (antes, 45 pb en septiembre)"
+
+  - id: prima-riesgo-francia
+    texto: "la francesa, que desde 1993 solo había superado a la española por unos pocos puntos en 2003-2007, está por encima de ella todos los meses desde octubre de 2024, y en octubre de 2026 llegó a 147 puntos, cerca de su máximo de 154 de noviembre de 2011"
+    donde: [3B24.tex, repaso/3B24-repaso.tex, graficos/prima-riesgo-espana]
+    valor: 147
+    unidad: puntos básicos (Francia menos Alemania, 10 años)
+    periodo: octubre de 2026 (máximo histórico, noviembre de 2011, 154)
+    fuente: BCE2026IRS
+    organismo: BCE (y Eurostat)
+    serie: "IRS.M.FR.L.L40.CI.0000.EUR.N.Z menos IRS.M.DE.L.L40.CI.0000.EUR.N.Z; Eurostat irt_lt_mcby_m"
+    url: https://data.ecb.europa.eu/data/datasets/IRS
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: bce-tipos-largo-plazo
+    depende: [datos/prima-riesgo-espana.csv]
+    frase: "Comentario de Víctor del 15/11/2026 (coyuntura de Francia). Si cambia el orden Francia-España, revisar la frase"
 
   - id: rating-espana
     texto: "España tiene hoy una A$+$ de S\\&P y de Scope, una A3 de Moody's, una A de Fitch y una A (\\emph{high}) de DBRS, todas con perspectiva estable"

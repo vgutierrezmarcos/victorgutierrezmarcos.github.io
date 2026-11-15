@@ -3414,23 +3414,35 @@ status collapsed
 
 
 \begin_layout Standard
-Formalmente, la demanda es el 
+Formalmente, hay que distinguir dos objetos: 
+\end_layout
+
+\begin_layout Itemize
+la demanda, el 
 \emph on
 argumento
 \emph default
- que maximiza y la funciÃ³n indirecta de utilidad, que se define enseguida, el 
+ que maximiza: 
+\begin_inset Formula $\vect{x}(\vect{p},\overline{W})\equiv\arg\max_{\vect{x}}\{U(\vect{x}):\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+la funciÃ³n indirecta de utilidad, que se define enseguida, el 
 \emph on
 valor
 \emph default
  de ese mÃ¡ximo: 
-\begin_inset Formula $\vect{x}(\vect{p},\overline{W})\equiv\arg\max_{\vect{x}}\{U(\vect{x}):\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\}$
-\end_inset
-
- y 
 \begin_inset Formula $V(\vect{p},\overline{W})\equiv\max_{\vect{x}}\{U(\vect{x}):\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\}$
 \end_inset
 
-. Con preferencias que no sean estrictamente convexas, el 
+. 
+\end_layout
+
+\begin_layout Standard
+Con preferencias que no sean estrictamente convexas, el 
 \begin_inset Formula $\arg\max$
 \end_inset
 
@@ -4566,23 +4578,35 @@ status collapsed
 
 
 \begin_layout Standard
-Como en el primal, la demanda es el 
+Como en el primal, hay que distinguir dos objetos: 
+\end_layout
+
+\begin_layout Itemize
+la demanda, el 
 \emph on
 argumento
 \emph default
- que minimiza y la funciÃ³n de gasto, que se define enseguida, el 
+ que minimiza: 
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})\equiv\arg\min_{\vect{h}}\{\vect{p}\cdot\vect{h}:U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+la funciÃ³n de gasto, que se define enseguida, el 
 \emph on
 valor
 \emph default
  del mÃ­nimo: 
-\begin_inset Formula $\vect{h}(\vect{p},\overline{U})\equiv\arg\min_{\vect{h}}\{\vect{p}\cdot\vect{h}:U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\}$
-\end_inset
-
- y 
 \begin_inset Formula $E(\vect{p},\overline{U})\equiv\min_{\vect{h}}\{\vect{p}\cdot\vect{h}:U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\}$
 \end_inset
 
-. La restricciÃ³n se escribe con desigualdad, aunque en el Ã³ptimo se cumpla con igualdad (no hay exceso de utilidad): asÃ­ el conjunto factible es cerrado y convexo con preferencias convexas.
+. 
+\end_layout
+
+\begin_layout Standard
+La restricciÃ³n se escribe con desigualdad, aunque en el Ã³ptimo se cumpla con igualdad (no hay exceso de utilidad): asÃ­ el conjunto factible es cerrado y convexo con preferencias convexas.
 \end_layout
 
 \end_inset
@@ -6836,7 +6860,11 @@ status collapsed
 
 
 \begin_layout Standard
-Â«InvertirÂ» significa aquÃ­ manipular la ecuaciÃ³n para despejar una variable independiente, que pasa a ser funciÃ³n de las demÃ¡s: de 
+Â«InvertirÂ» significa aquÃ­ manipular la ecuaciÃ³n para despejar una variable independiente, que pasa a ser funciÃ³n de las demÃ¡s: 
+\end_layout
+
+\begin_layout Itemize
+de 
 \begin_inset Formula $E\big(\vect{p},V(\vect{p},\overline{W})\big)=\overline{W}$
 \end_inset
 
@@ -6844,15 +6872,19 @@ status collapsed
 \begin_inset Formula $V(\vect{p},\overline{W})=E^{-1}(\vect{p},\overline{W})$
 \end_inset
 
-, y de 
+; 
+\end_layout
+
+\begin_layout Itemize
+de 
 \begin_inset Formula $V\big(\vect{p},E(\vect{p},\overline{U})\big)=\overline{U}$
 \end_inset
 
-, 
+ se despeja 
 \begin_inset Formula $E(\vect{p},\overline{U})=V^{-1}(\vect{p},\overline{U})$
 \end_inset
 
-.
+. 
 \end_layout
 
 \end_inset
@@ -6975,6 +7007,58 @@ Shephard
 \end_inset
 
  y con las relaciones de dualidad. 
+\end_layout
+
+\begin_layout Itemize
+La figura
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figu:infografia-dualidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ del anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:infografia-dualidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ amplÃ­a este esquema en una sola pÃ¡gina: aÃ±ade los dos problemas en tres dimensiones (la superficie de utilidad cortada por la restricciÃ³n de gasto y el plano del gasto cortado por la curva de indiferencia exigida), los multiplicadores, las propiedades de las cuatro funciones y lo que se hace con ellas en el bloque
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:aplicaciones-dualidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Standard
@@ -16331,6 +16415,20 @@ status collapsed
 
 \begin_layout Standard
 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Hicks
+\end_layout
+
+\end_inset
+
+ las desarrolla en tres pasos: 
+\end_layout
+
+\begin_layout Itemize
+
 \begin_inset ERT
 status collapsed
 
@@ -16343,6 +16441,10 @@ textcite{Hicks1939Value,Hicks1941Rehabilitation}
 \end_inset
 
  las introduce al reconstruir el excedente del consumidor con curvas de indiferencia; 
+\end_layout
+
+\begin_layout Itemize
+
 \begin_inset ERT
 status collapsed
 
@@ -16354,7 +16456,11 @@ textcite{Hicks1943Four}
 
 \end_inset
 
- distingue las Â«cuatroÂ» medidas (variaciones y excedentes compensatorios y equivalentes), y las sistematiza en 
+ distingue las Â«cuatroÂ» medidas (variaciones y excedentes compensatorios y equivalentes); 
+\end_layout
+
+\begin_layout Itemize
+y 
 \begin_inset ERT
 status collapsed
 
@@ -16366,7 +16472,11 @@ textcite{Hicks1956Revision}
 
 \end_inset
 
-. 
+ las sistematiza. 
+\end_layout
+
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
@@ -17619,11 +17729,15 @@ status collapsed
 
 
 \begin_layout Standard
-Por eso, si la renta se actualiza con 
+Los dos Ã­ndices fallan en sentidos opuestos: 
+\end_layout
+
+\begin_layout Itemize
+con 
 \begin_inset Formula $I_L$
 \end_inset
 
-, el consumidor puede volver a comprar la cesta inicial 
+: si la renta se actualiza con Ã©l, el consumidor puede volver a comprar la cesta inicial 
 \begin_inset Formula $\vect{x}^0$
 \end_inset
 
@@ -17635,7 +17749,11 @@ mayor
 \begin_inset Formula $\overline{U}^0$
 \end_inset
 
-: queda sobrecompensado. Con 
+: queda sobrecompensado; 
+\end_layout
+
+\begin_layout Itemize
+con 
 \begin_inset Formula $I_P$
 \end_inset
 
@@ -17663,7 +17781,7 @@ findemo
 
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -21472,6 +21590,145 @@ status collapsed
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Anexo: la dualidad en una figura
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:infografia-dualidad"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float infografia
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La dualidad en la decisiÃ³n de consumo: el primal y el dual en tres dimensiones, las cuatro funciones y las relaciones entre ellas
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "figu:infografia-dualidad"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+graficopagina
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+infografia-dualidad
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia. Paneles en 3D con 
+\begin_inset Formula $U=\sqrt{x_1x_2}$
+\end_inset
+
+, 
+\begin_inset Formula $p_1=p_2=1$
+\end_inset
+
+ y 
+\begin_inset Formula $\overline{W}=3{,}5$
+\end_inset
+
+: 
+\begin_inset Formula $\vect{x}^*=\vect{h}^*=(1{,}75;\,1{,}75)$
+\end_inset
+
+, 
+\begin_inset Formula $U^*=\overline{U}=1{,}75$
+\end_inset
+
+ y 
+\begin_inset Formula $E^*=\overline{W}=3{,}5$
+\end_inset
+
+; el eje vertical del panel dual va a otra escala.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Newpage clearpage
 \end_inset
 
 

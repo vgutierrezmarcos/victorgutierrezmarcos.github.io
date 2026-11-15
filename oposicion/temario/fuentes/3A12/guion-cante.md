@@ -45,7 +45,7 @@ De ahí, las preguntas clave. ¿Cómo elige la empresa la forma más barata de p
 
 La exposición sigue tres bloques: la «dualidad» entre maximizar el beneficio y minimizar el coste, de la que sale la función de costes; su análisis, con la estática comparativa, los plazos y las aplicaciones empíricas, que van juntas porque se estima esa misma función, y sus extensiones y críticas.
 
-## I. «Dualidad» entre maximización de beneficios y minimización de costes. Obtención de la función de costes. Análisis de largo plazo (9′)
+## I. «Dualidad» entre maximización de beneficios y minimización de costes. Obtención de la función de costes. Análisis de largo plazo (10′30″)
 
 ### I.1. Ingredientes comunes del problema primal y el dual
 
@@ -151,7 +151,7 @@ Recapitulando: basta resolver un problema para obtener todas las funciones de la
 
 > Apunte: Idea clave: minimizar el coste y elegir después p = CMg es maximizar el beneficio
 
-## II. Análisis de los costes: estática comparativa, plazos y aplicaciones empíricas (14′)
+## II. Análisis de los costes: estática comparativa, plazos y aplicaciones empíricas (12′)
 
 ### II.1. Estática comparativa: variaciones en la producción
 
@@ -309,7 +309,7 @@ Recapitulando el bloque: la función de costes responde a la producción, a los 
 
 > Apunte: Idea clave: la dualidad convierte la teoría de los costes en un instrumento empírico
 
-## III. Extensiones y críticas a la teoría de los costes (3′30″)
+## III. Extensiones y críticas a la teoría de los costes (4′)
 
 ### III.1. Implicaciones sobre la estructura de mercado
 

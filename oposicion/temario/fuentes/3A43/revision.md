@@ -229,3 +229,12 @@ Restaurados:
 - **4.º ejercicio**: `\vertema{4.A.2}` (capital humano medido con Mincer), `\vertema{4.B.11}` (Chamley-Judd, imposición óptima del capital) y `\vertema{4.A.6}` (DICE y política climática).
 - **Refranes**: se conservan «poco a poco se llega lejos» (enganche), «la avaricia rompe el saco» (ineficiencia dinámica, con su explicación y su negación en Ramsey) y «al perro flaco todo son pulgas» (trampa de pobreza); los 2 últimos no venían del temario antiguo, pero casan con lo que explican y van integrados. «Maná caído del cielo» sí viene del antiguo. Ficha sin cambios.
 - Compilado (`--solo pdf`) y verificado: sin errores nuevos (solo «anterior a la fuente», por no publicar; los avisos de letras de bloques ya estaban).
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 64: Smith, Ricardo y Malthus (cada uno destacó una fuerza).
+- l. 710: las 3 aportaciones de Ramsey; lo que sigue (el artículo de 1928, la biografía) queda como párrafo aparte.
+- l. 773: los 3 efectos de una subida del tipo de interés (sustitución, renta, riqueza).
+- verificar-tema da un aviso «Cifra sin cita» en el párrafo que sigue a esta lista («En tiempo discreto, la ecuación de Euler es…»): es un falso positivo (la «cifra» es el 1 de $\beta(1+r)$; antes el \nocite de Obstfeld y Rogoff estaba en el mismo párrafo).

@@ -152,3 +152,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 
 ## Nota del coordinador (14/11/2026)
 - B40-01 resuelta: el texto del artículo (versión de trabajo de 2008, SIRE/Stirling) dice que el objetivo 1 eleva el crecimiento del PIB por habitante «by about 1.6 percentage points within the same programming period», medido como tasa de crecimiento anual media («by 1.6% … per annum in the average treated region and programming period»). Se escribe «1,6 puntos más de crecimiento anual medio durante el periodo de programación», coherente con el 3.B.37.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

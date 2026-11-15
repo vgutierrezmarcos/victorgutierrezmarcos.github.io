@@ -445,6 +445,10 @@
 % el título y la fuente) y se conserva la proporción.
 \newcommand{\grafico}[2][0.75\textwidth]{%
   \includegraphics[width=#1,height=0.78\textheight,keepaspectratio]{#2}}
+% Figura de página entera (sola en su página, con [p]): hasta el 90 % de la
+% altura, para que quepan el título y la fuente (Víctor, 15/11/2026, figura 7 del 3A30).
+\newcommand{\graficopagina}[2][\textwidth]{%
+  \includegraphics[width=#1,height=0.9\textheight,keepaspectratio]{#2}}
 \graphicspath{{graficos/}{../graficos/}}
 % Gráfico o tabla dentro de una caja (anotaciones, ideaclave…): los flotantes
 % (figure, table) no pueden ir dentro de una tcolorbox, así que se usan
@@ -465,6 +469,17 @@
 % --- Notas al pie ---------------------------------------------------------------
 \renewcommand{\footnoterule}{{\color{tceemorado}\hrule width 0.3\textwidth height 0.4pt}\vspace{3pt}}
 \setlength{\footnotesep}{0.8\baselineskip}
+% Listas dentro de las notas al pie (Víctor, 14/11/2026): cuando una nota
+% distingue varios conceptos, van en viñetas sangradas con el formato de la
+% nota (letra pequeña, sangría corta, sin espacio extra). Se escriben con un
+% itemize normal dentro de \footnote{…}.
+\newcommand{\tcee@listasnota}{%
+  \@listdepth\z@ \@itemdepth\z@ \@enumdepth\z@ % la nota puede salir de dentro de una lista
+  \setlist[itemize,1]{label={\color{tceemorado}\tiny$\blacksquare$},leftmargin=1.1em,labelsep=0.4em,topsep=1pt,itemsep=0pt,parsep=0pt,partopsep=0pt}%
+  \setlist[itemize,2]{label={\color{tceemorado}--},leftmargin=1.1em,labelsep=0.4em,topsep=0pt,itemsep=0pt,parsep=0pt}%
+  \setlist[enumerate,1]{label={\color{tceemorado}\alph*)},leftmargin=1.3em,labelsep=0.4em,topsep=1pt,itemsep=0pt,parsep=0pt,partopsep=0pt}}
+\AtBeginDocument{\let\tcee@makefntextorig\@makefntext
+  \long\def\@makefntext#1{\tcee@makefntextorig{\tcee@listasnota#1}}}
 % Nota que sigue en la página siguiente: flecha morada en el margen, al final de
 % la parte que queda en esta (como en los Word antiguos). En la rutina de salida,
 % \insertpenalties cuenta las notas (o trozos de nota) que pasan a la página siguiente.
@@ -498,6 +513,9 @@
 % numbered: los marcadores llevan el número del apartado («I. …», «I.1. …»,
 % «A. …»), como la web y el Word (Víctor, 19/10/2026)
 \RequirePackage[numbered]{bookmark}
+% Todos los niveles en los marcadores del PDF, hasta \paragraph (a) Idea, b) Modelo…)
+% y \subparagraph (i) Supuestos, ii) Desarrollo…); plegados (Víctor, 14/11/2026)
+\bookmarksetup{depth=10,open=false}
 % En los marcadores del PDF, el \newline con que se cortan los títulos largos
 % es un espacio (si no, hyperref lo quita y pega las palabras: «empresasy») y
 % el número va seguido de punto y espacio

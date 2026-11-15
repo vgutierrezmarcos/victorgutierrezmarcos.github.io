@@ -9,7 +9,7 @@
 % ==========================================================================
 \bloque{Esquema del cante}
 \esquemacante{%
-\apartadocante{Introducción: «nadie da nada por nada»}{2,5}
+\apartadocante{Introducción: «nadie da duros a cuatro pesetas»}{2,5}
 \apartadocante{I. Renta variable, cartera y valoración}{14}
 \subcante{1. Los instrumentos de renta variable}{2}
 \subcante{2. Elección de cartera}{5,5}
@@ -27,12 +27,12 @@
 \subcante{1. Análisis fundamental}{4}
 \subcante{2. Análisis técnico}{3,5}
 \apartadocante{Conclusión}{1}}
-\emph{Pizarra} (solo en I-III) en 3 columnas: izq., tabla mínima renta fija/variable, $r_i$ y $\sigma_p^2$ recuadrada; centro, \autor{Markowitz} por capas y encima la recta de \autor{Tobin}; dcha., riesgo frente a n.º de títulos y $\beta_p^2\sigma_M^2+\sum w_i^2\sigma_{\varepsilon_i}^2$. En \hyperref[rep:I.3]{I.3} se borra el centro: SML con un activo encima y otro debajo; la SML recuadrada pasa a la esquina sup. dcha. hasta el final y la APT debajo. En II, tabla de las 3 formas de eficiencia (se queda para III).
+\emph{Pizarra} (solo en I-III) en 3 columnas: izq., tabla mínima renta fija/variable, $r_i$ y $\sigma_p^2$ recuadrada; centro, \autor{Markowitz} en sus 2 etapas (frontera eficiente; después, curvas de indiferencia) y encima la recta de \autor{Tobin}; dcha., riesgo frente a n.º de títulos y $\beta_p^2\sigma_M^2+\sum w_i^2\sigma_{\varepsilon_i}^2$. En \hyperref[rep:I.3]{I.3} se borra el centro: SML con un activo encima y otro debajo; la SML recuadrada pasa a la esquina sup. dcha. hasta el final y la APT debajo. En II, tabla de las 3 formas de eficiencia (se queda para III).
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: «Nadie da nada por nada». Fondos indexados en EE.\,UU.: \dato{52\,\% de los fondos a largo plazo (2025) frente a 19\,\% (2010)}{ICI, 2026}. ¿Se puede ganar en bolsa, de forma sistemática, más de lo que corresponde al riesgo?
+\item \textbf{Enganche}: «Nadie da duros a cuatro pesetas». Fondos indexados en EE.\,UU.: \dato{52\,\% de los fondos a largo plazo (2025) frente a 19\,\% (2010)}{ICI, 2026}. ¿Se puede ganar en bolsa, de forma sistemática, más de lo que corresponde al riesgo?
 \item \textbf{Relevancia}: \emph{micro}, financiar sin obligación de devolver ni pagar renta fija; trasladar renta y repartir riesgo \vertema{3.B.3}. \emph{Macro}: efecto riqueza \vertema{3.A.33}, $q$ de \autor{Tobin} \vertema{3.A.34}, transmisión monetaria \vertema{3.A.37}; los precios asignan el capital. \emph{Dimensión}: cotizadas en BME \dato{1,10 billones de €, $\approx$2/3 del PIB, +40\,\%}{BME, 2025}; IBEX \dato{+49\,\%}{2025}; bolsas del mundo \dato{$\approx$152 billones de \$}{WFE, 2025}.
 \item \textbf{Contextualización}: \concepto{inversión} = compromiso presente de recursos esperando beneficios futuros (tiempo y riesgo). 3 familias: \concepto{renta variable} (propiedad, remuneración según resultados), \concepto{renta fija} (contrato) \vertema{3.B.24}, \concepto{derivados} (subyacente) \vertema{3.B.25}. Hitos: cartera (\autor{Markowitz}, 1952; \autor{Tobin}, 1958); equilibrio (CAPM, 1964-66; APT, 1976); eficiencia (\autor{Fama}, 1970) y conductuales; fundamental antes de todos (\autor{Graham}-\autor{Dodd}, 1934). Nobel 1990, 2013, 2017.
 \item \textbf{Problemática}: ¿qué es la renta variable y cómo se miden rentabilidad y riesgo? ¿Cómo elige cartera un averso al riesgo y qué riesgo paga el mercado? ¿Qué rentabilidad exigir a cada acción? ¿Se puede batir al mercado?
@@ -73,6 +73,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
 \end{itemize}
 \pareja{correlaciones}{Combinaciones de 2 activos según la correlación}{markowitz}{Frontera eficiente y óptimo de 2 inversores}
 \begin{itemize}
+\item \emph{Problema}: máx.\ $U(\overset{+}{\mathbb{E}[r_p]},\overset{-}{\sigma_p^2})$ s.\,a. estar en la frontera eficiente, que a su vez es máx.\ $\mathbb{E}[r_p]$ s.\,a. $\sigma_p^2=\bar\sigma^2$, $\sum w_i=1$, $w_i\geq0$. Por eso, 2 etapas.
 \item \emph{2 etapas}: (1) \emph{objetiva}, igual para todos: \concepto{frontera de mínima varianza} (mín.\ $\sigma_p^2$ s.\,a. $\sum w_i\mathbb{E}[r_i]=\bar r$, $\sum w_i=1$, $w_i\geq0$); su tramo sobre la cartera de mínima varianza global = \concepto{frontera eficiente}. (2) \emph{subjetiva}: tangencia con la curva de indiferencia más alta; el más averso, más a la izquierda.
 \item \emph{Implicaciones}: diversificar reduce riesgo sin reducir rentabilidad esperada (si corr $<1$); $\sigma_p\leq$ media ponderada de $\sigma_i$; importa la contribución: $\partial\sigma_p^2/\partial w_i=2\,\mathrm{Cov}(r_i,r_p)$.
 \item \emph{Límites}: (1) no ordena las eficientes (\autor{Tobin}); (2) $n(n+3)/2$ parámetros: (665 para 35 títulos; 125.750 para 500) (diagonal); (3) muy sensible a errores en las medias (\autor{Michaud}, 1989); (4) normativo: no dice qué rentabilidad exigir a un activo (CAPM).
@@ -129,7 +130,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
   \concepto{Línea del mercado de títulos} (SML):
   \funcionclave{\mathbb{E}[r_i]=r_f+\beta_i\,\lambda_M,\qquad \lambda_M\equiv\mathbb{E}[r_M]-r_f}
   Argumento de \emph{equilibrio}, no de arbitraje; no exige normalidad.
-\item \emph{Beta}: $\beta_M=1$; $\beta_p=\sum w_i\beta_i$. $>1$ agresivo; $=1$ neutro (mismo riesgo \emph{sistemático}); $0<\beta<1$ defensivo; $=0$ rinde $r_f$ aunque varíe; $<0$ refugio, rinde \emph{menos} que $r_f$. Determinantes: negocio, apalancamiento operativo y financiero.
+\item \emph{Beta}: pendiente de la regresión de $r_i$ sobre $r_M$; cuánto se mueve el activo con el mercado ($\beta=1{,}5$: 10 puntos de sorpresa del mercado, 15 del activo); mide el riesgo \emph{sistemático}, no la volatilidad. $\beta_M=1$; $\beta_p=\sum w_i\beta_i$. $>1$ agresivo; $=1$ neutro (mismo riesgo \emph{sistemático}); $0<\beta<1$ defensivo; $=0$ rinde $r_f$ aunque varíe; $<0$ refugio, rinde \emph{menos} que $r_f$. Determinantes: negocio, apalancamiento operativo y financiero.
 \item \emph{Implicaciones}: todo activo bien valorado está en la SML; igual para todos el \emph{precio} del riesgo $\lambda_M$, distinta la prima $\beta_i\lambda_M$. \concepto{Alfa de \autor{Jensen}} (1968) $\alpha_i=\mathbb{E}[r_i]-r_f-\beta_i\lambda_M$: $>0$ infravalorado (se compra, $P\uparrow$, $\mathbb{E}[r]\downarrow$ hasta la recta). 115 fondos 1945-64: alfa medio neto \emph{negativo}. «Cuando llueve, todos se mojan»: solo se paga el sistemático.
 \end{itemize}
 \pareja{sml}{SML: $A$ infravalorado ($\alpha_A>0$), $B$ sobrevalorado}{cml-sml}{CML y SML: $P$ eficiente en las 2; $i$ solo en la SML}
@@ -146,7 +147,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
 \item \concepto{Crítica de \autor{Roll}} (1977): la SML se cumple por aritmética si la cartera de referencia es eficiente; solo se contrasta la eficiencia de $M$, que no se observa (inmuebles, no cotizadas, capital humano). Salida: correlación mínima índice-mercado (\autor{Shanken}, 1987); España 1963-82, rechazado con corr.\ $\geq0{,}5$ (\autor{Rubio}, 1986).
 \end{itemize}
 
-\textbf{b) APT (\autor{Ross}, 1976)}. Sin supuestos de preferencias (salvo más es mejor): factores comunes + \concepto{no arbitraje} (estrategia sin coste ni riesgo con beneficio positivo). «Nadie da nada por nada»; bastan unos pocos arbitrajistas.
+\textbf{b) APT (\autor{Ross}, 1976)}. Sin supuestos de preferencias (salvo más es mejor): factores comunes + \concepto{no arbitraje} (estrategia sin coste ni riesgo con beneficio positivo). «Nadie da duros a cuatro pesetas»: eso sería un arbitraje; bastan unos pocos arbitrajistas.
 \begin{itemize}
 \item \emph{Supuestos}: modelo factorial lineal ($J$ factores con sorpresas de media nula; específico sin correlación); muchos activos (carteras sin riesgo específico); sin fricciones, ventas en corto; no arbitraje. Ni media-varianza, ni $r_f$ ilimitado, ni cartera de mercado.
 \item \emph{Generador}: $r_i=\mathbb{E}[r_i]+\beta_{i1}F_1+\dots+\beta_{iJ}F_J+\varepsilon_i$.
@@ -228,7 +229,7 @@ El fundamental estima el valor intrínseco y apuesta a que el precio converge (e
 \item \concepto{Análisis técnico}: prever precios con precios y volúmenes, sin estudiar la empresa; \concepto{chartismo} = solo gráficos.
 \item \emph{Premisas} (\autor{Murphy}, 1999): (1) el precio lo descuenta todo; (2) tendencias, con soportes y resistencias; (3) la historia se repite. (1) suena a eficiencia; (2) y (3) niegan el paseo aleatorio, la forma \emph{débil}.
 \item \emph{Teoría de \autor{Dow}}: tendencia primaria (años), secundaria (semanas-meses), menores (días); se confirma con volumen y otros índices.
-\item \concepto{Soporte} (mínimo previo donde la compra frena la caída) y \concepto{resistencia}; resistencia rota $\Rightarrow$ soporte. \concepto{Medias móviles}: cruce \emph{dorado} (la de 50 cruza al alza la de 200: compra) y \emph{de la muerte}. Velas, RSI (\autor{Wilder}, 1978; $>70$ sobrecomprado, $<30$ sobrevendido), sentimiento.
+\item \concepto{Soporte} (mínimo previo donde la compra frena la caída) y \concepto{resistencia}; resistencia rota $\Rightarrow$ soporte. \concepto{Medias móviles}: cruce \emph{dorado} (la de 50 cruza al alza la de 200: compra) y \emph{de la muerte}. \concepto{Velas japonesas}: apertura, cierre (cuerpo), máximo y mínimo (mechas) de cada sesión; alcista si cierra por encima de la apertura. RSI (\autor{Wilder}, 1978; $>70$ sobrecomprado, $<30$ sobrevendido), sentimiento.
 \end{itemize}
 \pareja{soporte-resistencia}{Soporte, resistencia y media móvil}{sp500-soporte-medias}{S\&P 500: cruces de 2025 y soporte de 6.980}
 \begin{itemize}
@@ -244,7 +245,7 @@ El fundamental estima el valor intrínseco y apuesta a que el precio converge (e
 \item \textbf{Relevancia}: enfoques complementarios: cartera (si conviene), fundamental (cuánto vale), técnico (cuándo); la diversidad de valoraciones da liquidez y profundidad.
 \item \textbf{Extensiones}: \vertema{3.B.24} \vertema{3.B.25} \vertema{3.B.2} \vertema{3.B.4} \vertema{3.B.3} \vertema{3.A.33} \vertema{3.A.34} \vertema{3.A.37} \vertema{3.B.26} \vertema{3.B.27} \vertema{4.A.20}.
 \item \textbf{Opinión}: la gestión pasiva tiene un límite lógico (\autor{Grossman}-\autor{Stiglitz}): los activos hacen eficiente el mercado del que viven los pasivos.
-\item \textbf{Idea final}: «nadie da nada por nada»: prima solo por el riesgo no diversificable; lo único gratis, diversificar; la bolsa canaliza ahorro a inversión y reparte riesgo.
+\item \textbf{Idea final}: «nadie da duros a cuatro pesetas»: prima solo por el riesgo no diversificable; lo único gratis, diversificar; la bolsa canaliza ahorro a inversión y reparte riesgo.
 \end{itemize}
 
 % ==========================================================================

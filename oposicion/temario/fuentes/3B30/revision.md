@@ -123,3 +123,7 @@ Consulta: 14/11/2026. Todos en `datos-actualizables.yaml`.
 - `3. Materiales de otros preparadores\Parte B\Mis temas\Tema 3.B.31 - v.2 -2024.docx` (igual salvo el presidente).
 - `Preparación oposición a TCEE\01_Oposicion_Estudio\Nuevos temas oposición a TCEE - ICEX-CECO\3B\3B30.pdf` (contraste de estructura; escaneado, leído con OCR).
 - `1. Materiales por temas\Parte B\Tema 3.B.31\3B-31.pdf` (Miguel Fabián Salazar, 2021; contraste).
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

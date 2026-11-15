@@ -280,3 +280,12 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **4.º ejercicio**: la garantía de depósitos, con el Fondo de Garantía de Depósitos de Entidades de Crédito \vertema{4.A.19}, en la valoración.
 - **Dichos y refranes**: los 2 del enganche («más vale pájaro en mano que ciento volando» y «de perdidos, al río»), que la teoría de las perspectivas reconcilia en la idea final; se conservan en el tema y en la ficha. No hay otros.
 - Dudas (13/11/2026): motivaciones tomadas de notas ya comprobadas en otros temas (nobelprize.org devuelve 403 a la descarga automática hoy); la de 2026, de la entrada `Nobel2026Prensa` de 3A33.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de por qué la aseguradora puede comportarse como neutral al riesgo (l. 571): 2 viñetas (risk pooling, risk spreading); el reparto óptimo del riesgo en párrafo aparte.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

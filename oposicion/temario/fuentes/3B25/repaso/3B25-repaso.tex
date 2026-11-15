@@ -10,33 +10,33 @@
 \bloque{Esquema del cante}
 \esquemacante{%
 \apartadocante{Introducción: «cubrirse las espaldas»}{2,5}
-\apartadocante{I. Futuros y \emph{forwards}}{7}
+\apartadocante{I. Futuros y \emph{forwards}}{7,5}
 \subcante{1. Definición}{0,5}
-\subcante{2. Tipos: mercado (cámara) y subyacente}{1,75}
+\subcante{2. Tipos: organizado u OTC (todos) y subyacente}{2,25}
 \subcante{3. Pago a vencimiento}{0,75}
 \subcante{4. Cobertura, especulación, arbitraje}{0,75}
 \subcante{5. Valoración}{3,25}
 \subcante{\hspace*{0.8em}Paridad \emph{spot-forward}}{1,5}
 \subcante{\hspace*{0.8em}Expectativas y \emph{contango}}{1,25}
 \subcante{\hspace*{0.8em}Paridad cubierta de intereses}{0,5}
-\apartadocante{II. Opciones}{11,5}
+\apartadocante{II. Opciones}{12}
 \subcante{1. Definición}{0,5}
 \subcante{2. Tipos}{1}
 \subcante{3. Pago y beneficio}{1,5}
-\subcante{4. Estrategias}{1,5}
+\subcante{4. Estrategias: 4 familias y \emph{put} protectora}{2}
 \subcante{5. Valoración}{7}
 \subcante{\hspace*{0.8em}Paridad \emph{put-call}}{1,5}
 \subcante{\hspace*{0.8em}Valor intrínseco y temporal}{1}
 \subcante{\hspace*{0.8em}Binomial}{2}
 \subcante{\hspace*{0.8em}\autor{Black}-\autor{Scholes}}{2}
 \subcante{\hspace*{0.8em}Opciones reales}{0,5}
-\apartadocante{III. \emph{Swaps} y mercados}{8}
+\apartadocante{III. \emph{Swaps} y mercados OTC}{7}
 \subcante{1. Definición}{0,5}
 \subcante{2. Tipos: IRS, divisas, TRS, CDS}{2,5}
 \subcante{3. Pagos}{0,25}
 \subcante{4. Estrategias}{0,75}
-\subcante{5. Valoración}{1}
-\subcante{6. Tamaño, participantes, regulación, estabilidad}{3}
+\subcante{5. Valoración: suma de \emph{forwards}}{1}
+\subcante{6. OTC tras 2008: tamaño, regulación, estabilidad}{2}
 \apartadocante{Conclusión}{1}}
 \emph{Pizarra}: intro y conclusión sin pizarra, con «cubrirse las espaldas» arriba. A la izq., en columna, el guion de 5 pasos (definición, tipos, pago, estrategias, valoración), todo el tema. Funciones clave recuadradas en morado en la esquina sup. dcha. hasta el final: $F_0=S_0e^{rT}$, $c+Ke^{-rT}=p+S_0$ y \autor{Black}-\autor{Scholes}. I: cámara, pago del futuro, \emph{contango}. II: pagos, 3 perfiles, árbol binomial. III: IRS; «tamaño», «reforma», «riesgos».
 
@@ -47,11 +47,11 @@
 \item \textbf{Relevancia}: \emph{micro}, separan el riesgo del activo y lo trasladan a quien lo quiere; \emph{completan los mercados} (\autor{Ross}, 1976; títulos de \autor{Arrow}) \vertema{3.A.21}. \emph{Macro}: mayor mercado por importe, nocional OTC \dato{845 billones de \$, valor bruto 22,8}{BIS, dic.\ 2025}; centro de 2008 y de la reforma \vertema{3.B.26} \vertema{3.B.27}. \emph{Teórica}: Nobel 1997 a \autor{Merton} y \autor{Scholes} (\autor{Black} murió en 1995).
 \item \textbf{Contextualización}: \concepto{derivado} = contrato cuyo valor depende del precio de otro activo, el \concepto{subyacente} (financiero o real). 3.ª familia con renta variable \vertema{3.B.23} y fija \vertema{3.B.24}. 3 rasgos: vencimiento; suma cero en pagos (no en bienestar); no financian $\Rightarrow$ \concepto{apalancamiento}. Tipos: \emph{forwards}/futuros (obligación), opciones (derecho), \emph{swaps} (cartera de \emph{forwards}), derivados de crédito. Usos: cubrir, especular, arbitrar. Historia: \hyperref[rep:autores]{cronología}.
 \item \textbf{Problemática}: ¿qué derivados hay y qué pagan? ¿Cubrir, especular o arbitrar? ¿Cuánto valen? (lo que cuesta replicarlos) ¿y por qué no dependen de expectativas ni de aversión al riesgo? ¿Sus mercados estabilizan o desestabilizan?
-\item \textbf{Estructura}: mismo guion para las 3 familias (definición, tipos, pago, estrategias, valoración). \hyperref[rep:I]{I}, futuros y su mercado (cámara, márgenes); \hyperref[rep:II]{II}, opciones (paridad, binomial, \autor{Black}-\autor{Scholes}); \hyperref[rep:III]{III}, \emph{swaps}, crédito y mercados tras 2008.
+\item \textbf{Estructura}: mismo guion para las 3 familias (definición, tipos, pago, estrategias, valoración). \hyperref[rep:I]{I}, futuros y lo común a todos: mercado organizado u OTC, cámara, participantes; \hyperref[rep:II]{II}, opciones (paridad, binomial, \autor{Black}-\autor{Scholes}); \hyperref[rep:III]{III}, \emph{swaps} y crédito, y al final los mercados OTC tras 2008 (tamaño, regulación, estabilidad). Grueso: los instrumentos.
 \end{itemize}
 
 % ==========================================================================
-\bloque[7]{I. Mercados de futuros y \emph{forwards}\label{rep:I}}
+\bloque[7,5]{I. Mercados de futuros y \emph{forwards}\label{rep:I}}
 \begin{ideaclave}
 Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo deciden las expectativas sino lo que cuesta comprar el subyacente hoy y mantenerlo: $F_0=S_0e^{rT}$; si no, alguien ganaría sin riesgo.
 \end{ideaclave}
@@ -67,9 +67,11 @@ Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo dec
 \item \emph{Futuro}: contrato \emph{normalizado} en \concepto{mercado organizado}; la \concepto{entidad de contrapartida central} (ECC) se interpone por \emph{novación}: compradora frente a cada vendedor y viceversa; posición neta nula.
 \item \emph{Cómo se protege la cámara}: (1) \concepto{margen inicial}; (2) \concepto{liquidación diaria} (\emph{mark-to-market}): \concepto{margen de variación}; bajo el de mantenimiento, \emph{margin call} o cierre. Futuro = \emph{forward} que se liquida y se vuelve a firmar cada día: «cada día tiene su afán»; (3) cascada de recursos (incumplidor, capital de la cámara, fondo de garantía, resto).
 \item \concepto{Interés abierto}: contratos vivos. Casi nunca se entrega: se cierra con la operación contraria; índices, por diferencias.
-\item \emph{Forward}: OTC, bilateral, a medida, \concepto{riesgo de contrapartida}, liquidación al vencimiento (seguros de cambio, FRA). Organizado: liquidez, coste, seguridad; OTC: flexibilidad $\Rightarrow$ conviven.
+\item \emph{Forward}: OTC, bilateral, a medida, \concepto{riesgo de contrapartida}, liquidación al vencimiento (seguros de cambio, FRA). Organizado: liquidez, coste, seguridad; OTC: flexibilidad $\Rightarrow$ conviven. \emph{La distinción vale para todos los derivados} (opciones cotizadas u OTC; \emph{swaps} en cámara o bilaterales).
+\item \emph{Participantes}: usuarios finales (empresas, gestoras, aseguradoras, bancos, Tesoros); \concepto{creadores de mercado} (\emph{dealers}): concentrado e interconectado. \emph{Infraestructuras}: ECC (reducen y concentran el riesgo), registros de operaciones, contrato marco ISDA.
+\item \emph{Organizados}: \dato{119.000 M de contratos, $-42$\,\%}{FIA, 2025} (India); NSE y BSE, B3, CME, ICE; MEFF 34.º. \emph{España}: \concepto{MEFF} (BME, de SIX desde 2020), \concepto{BME Clearing}, CNMV: \dato{35 M de contratos, +22,6\,\%}{BME, 2025}.
 \end{itemize}
-\pareja{ccp}{Bilateral frente a cámara (estrella)}{pago-futuro}{Pago del largo y del corto}
+\pareja{ccp}{Bilateral frente a cámara (estrella)}{pago-futuro}{Pago del largo y del corto ($F_0=100$: $S_T=140$, $\pm40$)}
 \begin{itemize}
 \item \emph{Por subyacente}: financieros (IBEX, acciones, \emph{Bund}, Euríbor/€STR, divisas); materias primas (petróleo, gas, electricidad, CO$_2$). \concepto{FRA}: \emph{forward} OTC sobre un tipo; fija $R_K$ para $[T_1,T_2]$; el nominal no se presta; en $T_1$ se liquida la diferencia:
   \begin{formula}
@@ -129,7 +131,7 @@ Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo dec
 \end{itemize}
 
 % ==========================================================================
-\bloque[11,5]{II. Mercados de opciones\label{rep:II}}
+\bloque[12]{II. Mercados de opciones\label{rep:II}}
 \begin{ideaclave}
 La opción separa el lado bueno del malo a cambio de una prima, que se calcula replicándola con el subyacente y un bono, sin probabilidades reales ni aversión al riesgo: depende de la volatilidad, no de lo que cada uno espere.
 \end{ideaclave}
@@ -157,14 +159,20 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
   Beneficio = pago $-$ prima (capitalizada). Comprador de \emph{call}: pierde como mucho $c$, gana sin límite si $S_T>K+c$. De \emph{put}: pierde máx.\ $p$, gana máx.\ $K-p$. Vendedor de \emph{call}: gana máx.\ $c$, pérdida ilimitada; de \emph{put}: gana máx.\ $p$, pierde máx.\ $K-p$.
 \item «El que paga, manda»: la asimetría no hace mejor negocio al comprador; la prima compensa el riesgo del vendedor.
 \end{itemize}
-\graficorepaso[0.56\linewidth]{pagos-opciones}{Pago (gris) y beneficio (color) de las 4 posiciones simples}
+\graficorepaso[0.62\linewidth]{pagos-opciones}{Pago (gris) y beneficio (color) de las 4 posiciones simples, con sus fórmulas}
 
 \sub{II.4. Estrategias\label{rep:II.4}}
 \begin{itemize}
-\item \emph{Especulación}: simples (al alza, comprar \emph{call} o vender \emph{put}); combinaciones = apuesta por la \emph{volatilidad}: \concepto{cono} (\emph{straddle}): \emph{call} + \emph{put} mismo $K$; diferenciales: \concepto{diferencial alcista}: comprar \emph{call} $K_1$ y vender $K_2>K_1$.
-\item \emph{Cobertura}: \concepto{\emph{put} protectora}: activo + \emph{put} $=\max(S_T,K)$: seguro con franquicia $S_0-K$. \emph{Call} cubierta: activo $-$ \emph{call}. Ambas: \emph{collar}. Futuro elimina pérdidas y ganancias; opción solo pérdidas (por eso cuesta prima).
+\item \emph{Especulación}, 4 familias según lo que se combina:
+  \begin{itemize}
+  \item \emph{simples}: una opción; al alza, comprar \emph{call} o vender \emph{put}; a la baja, al revés;
+  \item \emph{complejas} (combinaciones): \emph{calls} y \emph{puts}, mismo $K$ y $T$, todas compradas o vendidas = apuesta por la \emph{volatilidad}: \concepto{cono} (\emph{straddle}); cuna, \emph{strap}, \emph{strip};
+  \item \emph{del diferencial}: mismo tipo, distinto $K$, unas compradas y otras vendidas; expectativa moderada: \concepto{diferencial alcista} (compra $K_1$, vende $K_2>K_1$); bajista, mariposa;
+  \item \emph{sintéticas}: opción + futuro = otra opción (futuro comprado + \emph{put} comprada = \emph{call} comprada, si $K=F_0$).
+  \end{itemize}
+\item \emph{Cobertura}: \concepto{\emph{put} protectora}: activo + \emph{put}, cuesta $S_0+p$; en $T$, $K$ si $S_T<K$ y $S_T$ si no: $\max(S_T,K)$. Seguro con franquicia $S_0-K$ y prima $p$; pérdida máx.\ $S_0-K+p$. Mismo pago que \emph{call} + bono que paga $K$ $\Rightarrow$ paridad. \emph{Call} cubierta: activo $-$ \emph{call}; ambas, \emph{collar}.
 \end{itemize}
-\graficorepaso{estrategias-opciones}{Cono, diferencial alcista y \emph{put} protectora}
+\pareja{estrategias-opciones}{Cono y diferencial alcista}{put-protectora}{\emph{Put} protectora: $\max(S_T,K)$}
 
 \sub{II.5. Valoración\label{rep:II.5}}
 \textbf{a) Paridad \emph{put-call}} (europeas, sin dividendos, mismo $K$ y $T$). \concepto{\emph{Call} fiduciaria} (\emph{call} + bono cupón cero que paga $K$) y \emph{put} protectora (\emph{put} + acción) valen $\max(S_T,K)$ en todo estado.
@@ -178,7 +186,6 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
 \textbf{b) Valor intrínseco y temporal}. Prima = \concepto{valor intrínseco} ($\max(S_0-K,0)$ en la \emph{call}) + \concepto{valor temporal} (posibilidad de moverse a favor; máximo en el dinero; 0 al vencer).
 \begin{itemize}
 \item \emph{Cotas}: $\max(S_0-Ke^{-rT},0)\leq c\leq S_0$; $\max(Ke^{-rT}-S_0,0)\leq p\leq Ke^{-rT}$. \emph{Call} americana sin dividendos nunca se ejerce antes: $C=c$ (\autor{Merton}, 1973). \emph{Put} europea muy dentro: valor temporal negativo.
-\item \emph{Signos} (\emph{call}/\emph{put} europeas): $S_0$ $+/-$; $K$ $-/+$; $T$ ?/? (americanas $+/+$); $\sigma$ $+/+$; $r$ $+/-$; dividendos $-/+$.
 \end{itemize}
 
 \textbf{c) Binomial} (\autor{Sharpe}, 1978; \autor{Cox}-\autor{Ross}-\autor{Rubinstein}, 1979; \autor{Rendleman}-\autor{Bartter}, 1979). $S_0\to uS_0$ o $dS_0$, $d<1+r<u$. Réplica con $\Delta$ acciones y deuda $B$:
@@ -188,7 +195,7 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
   \[c=\frac{\pi\,c_u+(1-\pi)\,c_d}{1+r},\qquad \pi=\frac{(1+r)-d}{u-d}\]
   \end{formula}
 \end{itemize}
-\graficorepaso[0.8\linewidth]{arbol-binomial}{$S_0=100$, $u=1{,}25$, $d=0{,}8$, $K=110$, $r=10$~\%: $\Delta=1/3$, $\pi=2/3$, $c\approx9{,}09$}
+\graficorepaso[0.95\linewidth]{arbol-binomial}{$S_0=100$, $u=1{,}25$, $d=0{,}8$, $K=110$, $r=10$~\%: $\Delta=1/3$, $\pi=2/3$, $c\approx9{,}09$}
 \begin{itemize}
 \item \emph{Implicaciones}: «la probabilidad real no aparece»; $\pi$ = \concepto{probabilidad neutral al riesgo} (la acción rinde $r$ en promedio). Volatilidad vía $u$, $d$ (CRR: $u=e^{\sigma\sqrt{\Delta t}}$, $d=1/u$). $\Delta$ = ratio de cobertura. Mismo árbol que la opción de esperar \vertema{3.A.34} \vertema{3.B.2}.
 \item Varios periodos, hacia atrás: americanas. $n\to\infty$: TCL, lognormal $\to$ \autor{Black}-\autor{Scholes}.
@@ -202,8 +209,8 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
   \begin{formula}
   \[d_1=\frac{\ln(S_0/K)+(r+\sigma^2/2)\,T}{\sigma\sqrt{T}},\quad d_2=d_1-\sigma\sqrt{T}\]
   \end{formula}
-  $p=Ke^{-rT}N(-d_2)-S_0N(-d_1)$.
-\item \emph{Lectura}: $N(d_2)=\mathbb{Q}(S_T>K)$; $N(d_1)$ = delta. Muy dentro: $c\to S_0-Ke^{-rT}$. $c(S_0,K,T,r,\sigma)$: todo observable salvo $\sigma$; ni $\mu$ ni aversión. Griegas $\Delta$, $\Gamma$, $\mathcal{V}$, $\Theta$, $\rho$ \vertema{3.B.26}.
+  $p=Ke^{-rT}N(-d_2)-S_0N(-d_1)$. \emph{Como la paridad}: $c=e^{-rT}\int_K^\infty(S_T-K)g(S_T)dS_T$ = acción $\times N(d_1)$ $-$ bono $Ke^{-rT}\times N(d_2)$; muy dentro, $c=S_0-Ke^{-rT}$; $c-p=S_0-Ke^{-rT}$.
+\item \emph{Lectura}: $N(d_2)=\mathbb{Q}(S_T>K)$; $N(d_1)$ = delta. Muy dentro: $c\to S_0-Ke^{-rT}$. $c(S_0,K,T,r,\sigma)$: todo observable salvo $\sigma$; ni $\mu$ ni aversión. \emph{Signos y griega} (\emph{call}/\emph{put}): $S_0$ $+/-$ ($\Delta=N(d_1)$, $\Gamma$); $K$ $-/+$; $T$ $+$/? ($\Theta<0$; americanas $+/+$); $\sigma$ $+/+$ ($\mathcal{V}$); $r$ $+/-$ ($\rho$); dividendos $-/+$ \vertema{3.B.26}.
 \item \concepto{Volatilidad implícita}: la $\sigma$ que justifica el precio; se cotiza en volatilidad; VIX, VIBEX \dato{media 15,1\,\%}{BME, 2025}.
 \item \emph{Evidencia}: bien en el dinero y a corto; \emph{sonrisa} (mueca) desde 1987 (\autor{Rubinstein}, 1994); colas gruesas (\autor{Mandelbrot}, 1963). \emph{Críticas}: $\sigma$ no constante, rendimientos no independientes, no normales. Aun así, lenguaje del mercado. Riesgo de modelo: LTCM, rescate en sept.\ 1998.
 \end{itemize}
@@ -211,7 +218,7 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
 \textbf{e) Opciones reales}. Derecho a esperar, ampliar, abandonar o hacer por fases. Proyecto aplazable = \emph{call} americana ($S_0=V_0$, $K=I$): con incertidumbre puede convenir esperar aunque VAN $>0$ \vertema{3.A.34} \vertema{3.B.2}. Acciones de empresa endeudada = \emph{call} sobre los activos con $K$ = deuda (\autor{Merton}, 1974) \vertema{3.B.4}.
 
 % ==========================================================================
-\bloque[8]{III. Mercados de \emph{swaps}\label{rep:III}}
+\bloque[7]{III. Mercados de \emph{swaps}\label{rep:III}}
 \begin{ideaclave}
 Un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: vale cero al firmarse y se valora por arbitraje. Con los OTC y los derivados de crédito llegamos al centro de 2008: los derivados reparten el riesgo, pero con apalancamiento y opacidad lo amplifican.
 \end{ideaclave}
@@ -249,20 +256,17 @@ Un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: 
 
 \sub{III.5. Valoración\label{rep:III.5}}
 \begin{itemize}
-\item Vale 0 al firmar; $R_s$ iguala los 2 lados. Para quien recibe fijo, diferencia de 2 bonos:
+\item Vale 0 al firmar. \emph{Idea general}: sucesión de \emph{forwards}, uno por intercambio; se cambia cada flujo desconocido por su precio a plazo de hoy y se descuenta:
   \begin{formula}
-  \[V_{\mathrm{swap}}=B_{\mathrm{fix}}-B_{\mathrm{fl}},\qquad R_s=\frac{1-e^{-r_nt_n}}{\sum_{i}\tau_i\,e^{-r_it_i}}\]
+  \[V_{\mathrm{swap}}=\sum_i (F_i-K_i)\,e^{-r_it_i}\]
   \end{formula}
-  El variable vale el nominal en cada revisión; $R_s$ hace que el fijo también (ETTI) \vertema{3.B.24}. Para quien paga fijo, $B_{\mathrm{fl}}-B_{\mathrm{fix}}$.
-\item O como cartera de FRA con los tipos a plazo de la ETTI: mismo resultado. Si los tipos suben, gana quien paga fijo.
+\item \emph{IRS}: serie de FRA con los tipos a plazo de la ETTI; o, igual, diferencia de 2 bonos (quien recibe fijo): $V_{\mathrm{swap}}=B_{\mathrm{fix}}-B_{\mathrm{fl}}$; el variable vale el nominal en cada revisión, y $R_s=\frac{1-e^{-r_nt_n}}{\sum_{i}\tau_i\,e^{-r_it_i}}$ hace que el fijo también \vertema{3.B.24}. Si los tipos suben, gana quien paga fijo.
+\item \emph{Currency swap}: \emph{forwards} de divisas (PCI) o 2 bonos en cada moneda.
 \end{itemize}
 
-\sub{III.6. Los mercados de derivados\label{rep:III.6}}
+\sub{III.6. Los mercados OTC tras 2008\label{rep:III.6}}
 \begin{itemize}
 \item \emph{Tamaño OTC}: nocional \dato{95 billones (2000) $\to$ 673 (2008) $\to$ 845 (dic.\ 2025)}{BIS}; tipos 669,5 y divisas 148,7; \dato{78,7\,\% del nocional de tipos con ECC}{BIS}. \emph{Nocional no es riesgo}: valor bruto \dato{22,8 billones (2,7\,\%)}{BIS}; exposición neta 3,35.
-\item \emph{Organizados}: \dato{119.000 M de contratos, $-42$\,\%}{FIA, 2025} (India); NSE y BSE, B3, CME, ICE; MEFF 34.º.
-\item \emph{Participantes}: usuarios finales (empresas, gestoras, aseguradoras, bancos, Tesoros); \concepto{creadores de mercado} (\emph{dealers}): concentrado e interconectado. \emph{Infraestructuras}: ECC (reducen y concentran el riesgo: sistémicas; \autor{Duffie}-\autor{Zhu}, 2011); \concepto{registros de operaciones}; ISDA con \emph{close-out netting}.
-\item \emph{España}: \concepto{MEFF} (BME, de SIX desde 2020), \concepto{BME Clearing}, CNMV: \dato{35 M de contratos, +22,6\,\%}{BME, 2025}.
 \item \emph{Regulación}: G-20 Pittsburgh (2009): plataformas, ECC, registros, más capital a lo no compensado. UE: \concepto{EMIR} (2012; REFIT 2019; EMIR~3, 2024: cuenta activa en ECC de la Unión), \concepto{MiFIR} (plataformas), ventas en corto (CNMV, mar.-may.\ 2020) \vertema{3.B.27}. EE.\,UU.: Dodd-Frank, título VII (2010). Resultado: menos riesgo bilateral y más transparencia; ECC «demasiado importantes para quebrar», márgenes procíclicos.
 \item \emph{A favor}: reparten el riesgo; completan mercados (\autor{Arrow}, 1964; \autor{Ross}, 1976); revelan información (expectativas para bancos centrales); abaratan transacciones. \emph{En contra}: apalancamiento (Archegos, WTI); interconexión y opacidad (AIG; \autor{Bernanke}, 2018); prociclicidad (marzo 2020); riesgo de modelo (LTCM, CDO).
 \item \emph{Balance}: neutrales como instrumento; importa quién, cuánto apalancamiento y cuánta transparencia. La reforma atacó opacidad y contrapartida, no apalancamiento ni concentración en las cámaras.

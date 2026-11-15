@@ -1,0 +1,78 @@
+% Mapa de la exposición: las 3 maneras de analizar una acción y qué aporta
+% cada modelo. A la izquierda, la cadena de la teoría de la cartera y los
+% modelos de valoración (bloque I), con la limitación que lleva de cada modelo
+% al siguiente; arriba a la derecha, la eficiencia de los mercados (bloque II),
+% que decide si cabe la gestión activa; abajo a la derecha, el análisis
+% fundamental y el técnico (bloque III), con la tasa de descuento que el
+% fundamental toma del CAPM.
+% Elaboración propia.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    cabecera/.style={draw=tceedorado,thick,fill=white,align=center,
+      font=\footnotesize\bfseries,text width=#1,minimum height=9mm},
+    cabecera/.default=5.6cm,
+    modelo/.style={draw=tceemorado,thick,rounded corners=3pt,fill=tceesalvia,
+      align=flush left,font=\footnotesize,text width=5.6cm,inner sep=4pt},
+    puente/.style={draw=tceemorado,thick,rounded corners=3pt,fill=tceeazul!14,
+      align=flush left,font=\footnotesize,text width=#1,inner sep=4pt},
+    puente/.default=8.4cm,
+    porque/.style={etiqueta,font=\scriptsize\itshape,text=tceerojo,align=flush left,
+      text width=2.9cm},
+    paso/.style={->,thick,tceemorado}]
+  % 1: la pregunta y las 3 maneras
+  \capa{1}{\node[font=\small\bfseries] at (7.3,1.15) {¿Cómo se analiza una acción?};}
+  \capa{1}{\node[cabecera] (C1) at (2.95,0) {1. Por lo que aporta a una cartera\\[-1pt]
+      \normalfont(bloque I)};}
+  \capa{1}{\node[cabecera=4.0cm] (C2) at (9.0,0) {2. Por su valor intrínseco\\[-1pt]
+      \normalfont(III.1, fundamental)};}
+  \capa{1}{\node[cabecera=4.0cm] (C3) at (13.4,0) {3. Por la historia de su precio\\[-1pt]
+      \normalfont(III.2, técnico)};}
+  % 2: Markowitz
+  \capa{2}{\node[modelo,anchor=north] (M) at (2.95,-0.9) {\textbf{\emph{Markowitz} (1952)}:
+      importa la covarianza, no la varianza suelta; diversificar reduce el riesgo
+      sin reducir la rentabilidad: \emph{frontera eficiente}};
+    \draw[paso] (C1) -- (M);}
+  % 3: Tobin
+  \capa{3}{\node[modelo,anchor=north] (T) at (2.95,-3.1) {\textbf{\emph{Tobin} (1958)}:
+      con un activo sin riesgo, una sola cartera con riesgo para todos
+      (\emph{separación}); la mezcla depende de la aversión};
+    \draw[paso] (M) -- node[porque,right=3pt] {no dice cuál de las eficientes elegir} (T);}
+  % 4: Sharpe
+  \capa{4}{\node[modelo,anchor=north] (S) at (2.95,-5.3) {\textbf{\emph{Sharpe} (1963)}:
+      un solo factor, el mercado: pocos parámetros; riesgo
+      \emph{sistemático} (beta) y \emph{específico}, que se diversifica};
+    \draw[paso] (T) -- node[porque,right=3pt] {demasiadas covarianzas que estimar} (S);}
+  % 5: CAPM
+  \capa{5}{\node[modelo,anchor=north] (K) at (2.95,-7.5) {\textbf{CAPM} (1964):
+      en equilibrio solo se paga la beta;
+      $\mathbb{E}[r_i]=r_f+\beta_i\lambda_M$, la rentabilidad exigida};
+    \draw[paso] (S) -- node[porque,right=3pt] {es normativo: ¿qué rentabilidad exigir a cada activo?} (K);}
+  % 6: APT
+  \capa{6}{\node[modelo,anchor=north] (A) at (2.95,-9.7) {\textbf{APT} (1976):
+      sin arbitraje, varias betas (factores); el CAPM es el caso de un solo factor};
+    \draw[paso] (K) -- node[porque,right=3pt] {supuestos fuertes; la cartera de mercado no se observa} (A);}
+  % 7: la eficiencia de los mercados (bloque II)
+  \capa{7}{\node[puente,anchor=north] (H) at (11.2,-0.9) {\textbf{Bloque II. ¿Respetan los
+      precios esa rentabilidad?} La hipótesis de los mercados eficientes: si los
+      precios ya recogen la información, ningún activo tiene alfa y basta la
+      \emph{gestión pasiva}. Las finanzas conductuales y la evidencia dejan
+      un margen estrecho a la \emph{gestión activa}, con 2 técnicas:};
+    \draw[paso] (A.east) -- ++(0.55,0) |- (H.west);}
+  % 8: análisis fundamental
+  \capa{8}{\node[puente=3.8cm,fill=tceesalvia,anchor=north] (F) at (9.0,-4.6) {\textbf{Análisis
+      fundamental}: estima el valor intrínseco (\emph{Gordon}, PER) y lo compara
+      con el precio. Descuenta con la $r_E$ del CAPM. Solo bate al mercado si
+      no hay eficiencia \emph{semifuerte}};
+    \draw[paso] (H.south -| F.north) -- (F.north);
+    \draw[paso,tceedorado,dashed] (K.east) -| node[pos=0.36,align=center,etiqueta,font=\scriptsize,above,
+      tceedorado!70!black] {$r_E$, tasa\\de descuento} (F.south);}
+  % 9: análisis técnico
+  \capa{9}{\node[puente=3.8cm,fill=tceesalvia,anchor=north] (Te) at (13.4,-4.6) {\textbf{Análisis
+      técnico}: busca pautas en los precios y volúmenes pasados (soportes,
+      resistencias, medias móviles, velas). Solo funciona si no hay eficiencia
+      \emph{débil}};
+    \draw[paso] (H.south -| Te.north) -- (Te.north);}
+\end{tikzpicture}
+\end{document}

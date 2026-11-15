@@ -22,7 +22,11 @@
   \begin{itemize}
   \item \emph{Para la teoría}: en la política fiscal se encuentran la macroeconomía del ciclo y la del crecimiento. Sus efectos dependen del horizonte de los hogares, de cómo se financia el gasto (impuestos de suma fija o distorsionantes, deuda) y de si el gasto es productivo.
   \item \emph{Para la política económica}: el gasto de las Administraciones Públicas fue en 2025 el 45,3~\% del PIB en España y el 49,8~\% en la zona del euro\nocite{Eurostat2026GovMain}. Las reglas fiscales europeas, reformadas en 2024, se apoyan en una senda de gasto neto a medio plazo\nocite{RegUE2024Preventivo} \vertema{3.A.39}, y el envejecimiento obliga a decidir cuánto ahorra el país a través del Estado \vertema{4.B.24}.
-  \item \emph{Para España}: en 2025 las Administraciones Públicas cerraron con un déficit del 2,4~\% del PIB y una deuda del 100,5~\%\nocite{Eurostat2026EDP}; a la vez, el ahorro nacional bruto llegó al 25,0~\% del PIB, el más alto desde que empieza la serie, en 1995, y las propias Administraciones volvieron a ahorrar (un 0,3~\% del PIB), algo que no ocurría desde 2008\nocite{Eurostat2026nasa10nftr,Eurostat2026Nama10gdp}.\footnote{No hay contradicción entre ahorrar y tener déficit: el ahorro público es la diferencia entre los ingresos y el gasto corriente; el déficit resta además la inversión pública y las transferencias de capital.}
+  \item \emph{Para España}: en 2025 las Administraciones Públicas cerraron con un déficit del 2,4~\% del PIB y una deuda del 100,5~\%\nocite{Eurostat2026EDP}; a la vez, el ahorro nacional bruto llegó al 25,0~\% del PIB, el más alto desde que empieza la serie, en 1995, y las propias Administraciones volvieron a ahorrar (un 0,3~\% del PIB), algo que no ocurría desde 2008\nocite{Eurostat2026nasa10nftr,Eurostat2026Nama10gdp}.\footnote{No hay contradicción entre ahorrar y tener déficit:
+\begin{itemize}
+\item el \emph{ahorro público} es la diferencia entre los ingresos y el gasto corriente;
+\item el \emph{déficit} resta además la inversión pública y las transferencias de capital.
+\end{itemize}}
   \end{itemize}
 
 \item \textbf{\emph{Contextualización}}:
@@ -137,7 +141,10 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9,5} (I.1, \tiempo{1}
 
 \begin{itemize}
 \item Los del modelo de ciclo real \vertema{3.A.42}: economía cerrada, un solo bien, tiempo discreto y horizonte infinito; un hogar y una empresa representativos, competencia perfecta, precios y salarios flexibles y expectativas racionales; tecnología \emph{Cobb-Douglas} con una perturbación tecnológica persistente. El bien es el numerario: $w_t$ es el salario real y $r_t+\delta$, el alquiler del capital.
-\item \emph{Un Estado} que compra bienes, $G_t$, que no dan utilidad ni aumentan la producción,\footnote{Si dieran utilidad de forma separable, $u(C_t,L_t)+v(G_t)$, las decisiones del hogar no cambiarían. Si el gasto fuera inversión productiva, cambiaría la producción: es la extensión de \textcite{BaxterKing1993Fiscal} (c) y, con el gasto como flujo, el modelo de \textcite{Barro1990} (\ref{sec:barro}).} y que sigue un proceso autorregresivo propio,
+\item \emph{Un Estado} que compra bienes, $G_t$, que no dan utilidad ni aumentan la producción,\footnote{Con otros supuestos sobre el gasto:
+\begin{itemize}
+\item si diera utilidad de forma separable, $u(C_t,L_t)+v(G_t)$, las decisiones del hogar no cambiarían;
+\item si fuera inversión productiva, cambiaría la producción: es la extensión de \textcite{BaxterKing1993Fiscal} (c) y, con el gasto como flujo, el modelo de \textcite{Barro1990} (\ref{sec:barro}).\end{itemize}} y que sigue un proceso autorregresivo propio,
   \begin{equation}\label{eq:rbc-gasto}
   \ln G_t=(1-\rho_G)\ln\overline{G}+\rho_G\ln G_{t-1}+\varepsilon^G_t,\qquad 0\le\rho_G<1,
   \end{equation}
@@ -382,16 +389,14 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9,5} (I.1, \tiempo{1}
 \item La comparación entre el modelo canónico y el ampliado con política fiscal está en la figura~\ref{figu:nek-canonico-fiscal}, y el modelo ampliado, paso a paso, en el anexo~\ref{anexo:nek-fiscal}.
 \end{itemize}
 
-\clearpage
 \begin{anotaciones}
-\textbf{El modelo canónico de la NEK frente al ampliado con política fiscal.} En la columna de la derecha, en rojo, lo que cambia al introducir el gasto público, los impuestos y la deuda: los supuestos, las ecuaciones y lo que se deduce para la política económica.
+\textbf{El modelo canónico de la NEK frente al ampliado con política fiscal.} En gris (\textsf{C}), el modelo canónico; en rojo (+), lo que cambia al introducir el gasto público, los impuestos y la deuda: los supuestos, las ecuaciones, qué hace un aumento del gasto y lo que se deduce para la política económica.
 \begin{infografiacaja}
 \caption{El modelo neokeynesiano canónico y el ampliado con política fiscal}\label{figu:nek-canonico-fiscal}
 \grafico[\linewidth]{nek-canonico-fiscal}
 \fuente{Elaboración propia a partir de \textcite[cap.~3]{Gali2015Monetary}, \textcite{Woodford2011Simple} y \textcite{GaliLopezSalidoValles2007}.}
 \end{infografiacaja}
 \end{anotaciones}
-\clearpage
 
 \paragraph{c) Evidencia empírica: el valor del multiplicador}
 
@@ -1204,12 +1209,12 @@ Tipo de cambio flexible & \textcolor{tceerojo}{Ineficaz} & \textcolor{tceedorado
 \paragraph{c) Extensiones: hogares que viven al día}
 
 \begin{itemize}
-\item \textcite{GaliLopezSalidoValles2007} añaden una fracción $\lambda$ de hogares de \concepto{regla de pulgar} (\emph{rule of thumb}), que no ahorran ni se endeudan y consumen cada periodo su renta neta de impuestos; el resto, $1-\lambda$, son ricardianos y siguen la ecuación de \autor{Euler}.
+\item \textcite{GaliLopezSalidoValles2007} añaden una fracción $\lambda$ de hogares \concepto{\emph{rule of thumb}}, que no ahorran ni se endeudan y consumen cada periodo su renta neta de impuestos; el resto, $1-\lambda$, son ricardianos y siguen la ecuación de \autor{Euler}.
   \begin{itemize}
-  \item El consumo agregado es la media de los 2: $C_t=\lambda\,C^r_t+(1-\lambda)\,C^o_t$, con $C^r_t=(W_t/P_t)\,L^r_t-T^r_t$ ($r$ de regla de pulgar y $o$ de optimizadores, locales).
+  \item El consumo agregado es la media de los 2: $C_t=\lambda\,C^r_t+(1-\lambda)\,C^o_t$, con $C^r_t=(W_t/P_t)\,L^r_t-T^r_t$ ($r$ de \emph{rule of thumb} y $o$ de optimizadores, locales).
   \item La IS agregada deja de depender solo de los tipos de interés: entran directamente la renta corriente y los impuestos de hoy. Por eso el \emph{calendario} de los impuestos importa y la equivalencia ricardiana falla: financiar el gasto con deuda y no con impuestos sostiene la renta de los que viven al día.
   \end{itemize}
-\item \emph{El resultado}: con precios rígidos, el gasto sube la demanda de trabajo y el salario real; los hogares de regla de pulgar consumen más, y, si $\lambda$ es alto y el gasto se financia sobre todo con deuda, el consumo agregado \emph{sube} y el multiplicador supera 1, como en los datos. Para que ocurra hace falta, además, que el empleo lo determine la demanda (salarios que no se ajustan al instante); con un mercado de trabajo competitivo, el efecto riqueza de los ricardianos sigue dominando.
+\item \emph{El resultado}: con precios rígidos, el gasto sube la demanda de trabajo y el salario real; los hogares \emph{rule of thumb} consumen más, y, si $\lambda$ es alto y el gasto se financia sobre todo con deuda, el consumo agregado \emph{sube} y el multiplicador supera 1, como en los datos. Para que ocurra hace falta, además, que el empleo lo determine la demanda (salarios que no se ajustan al instante); con un mercado de trabajo competitivo, el efecto riqueza de los ricardianos sigue dominando.
 \item Su versión moderna son los modelos con agentes heterogéneos (\emph{heterogeneous agent New Keynesian}, HANK), en los que cada hogar tiene su propia propensión marginal a consumir \vertema{3.A.40}.
 \end{itemize}
 

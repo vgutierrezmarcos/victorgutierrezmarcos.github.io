@@ -275,3 +275,13 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **4.º ejercicio** (`\vertema`): paradoja de Jevons y efecto rebote en las políticas de eficiencia energética \vertema{4.A.6}; impuesto pigouviano como lógica de los impuestos medioambientales y del precio del carbono \vertema{4.A.6} \vertema{4.B.13}; ley de Pareto de las rentas altas \vertema{4.A.3}.
 - **Refranes y dichos**: el original no traía ninguno. Se quedan el del enganche («nadie sabe lo que vale el agua hasta que el pozo se seca»), «lo poco agrada y lo mucho enfada» (saturación de Gossen), «más vale un toma que dos te daré» (impaciencia de Fisher) y «a cada cual lo suyo» (Clark), los 3 integrados en su frase. Quitados (texto, nota del reparto y ficha): «cada loco con su tema» (Methodenstreit: tacha de locos a los 2 bandos) y «una mano lava la otra, y las dos, la cara» (sugiere cooperación, no la simultaneidad de las tijeras de Marshall, que ya lo dicen todo).
 - Compilado (`--solo pdf`) y ficha; `verificar-tema.py` sin errores propios. La ficha queda en 4 páginas con la última al 72 %: hay sitio si se quiere añadir algo.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los otros 2 motivos de Schumpeter (l. 28, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
+- La nota de las reglas de Marshall en la carta a Bowley (l. 545): 4 viñetas.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

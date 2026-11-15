@@ -262,3 +262,12 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **4.º ejercicio**: la disciplina fiscal que exige la aritmética desagradable se enlaza con las reglas fiscales y la estabilidad presupuestaria en España (4.B.21); la equivalencia ricardiana, con el debate sobre la política fiscal anticíclica (4.B.4).
 - **Dichos**: se queda el refrán del enganche («si me engañas una vez…»). Ninguno de los 4 dichos venía del temario antiguo. Se quitan «cría fama y échate a dormir» (sugiere que, ganada la reputación, el banco central puede relajarse, cuando en Barro-Gordon la reputación se pierde en cuanto se desvía) y «al mal tiempo, buena cara» (habla de ánimo, no de la respuesta óptima a una perturbación: se prestaba a malentendidos). Se quedan, integrados en la frase y sin «Dicho:», «nadie da duros a cuatro pesetas» (expectativas racionales: ningún error previsible queda sin aprovechar) y «otros tiempos, otras costumbres» (crítica de Lucas). Ficha de repaso y nota del cante, igual.
 - **Duda (13/11/2026)**: nobelprize.org rechazó hoy las consultas automáticas (403); las motivaciones son las ya comprobadas en otros temas del temario (Klein, 1980, traducida de la oficial sin comprobarla hoy en la web).
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los otros 2 motivos de Schumpeter (l. 27, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

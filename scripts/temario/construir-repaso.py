@@ -29,7 +29,7 @@ import sys
 import fitz  # PyMuPDF
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, MIKTEX, LATEX, entorno_tex, ejecutar, errores_log, ruta_windows, escribir_destinos_tex  # noqa: E402
+from comun import Tema, recortar_vertical, MIKTEX, LATEX, entorno_tex, ejecutar, errores_log, ruta_windows, escribir_destinos_tex  # noqa: E402
 
 TAMANOS = (10.5, 10, 9.5, 9, 8.75, 8.5, 8.25, 8)
 PAGINAS = 4                # ficha de repaso de un tema: exactamente cuatro
@@ -69,6 +69,7 @@ def compilar_graficos_repaso(tema):
                            os.path.basename(tex)], cwd=carpeta, env=env, timeout=300, comprobar=False)
         if cod != 0:
             raise RuntimeError(f'Error en {os.path.basename(tex)}:\n' + '\n'.join(errores_log(tex[:-4] + '.log')))
+        recortar_vertical(pdf)
         for ext in ('.aux', '.log'):
             if os.path.exists(tex[:-4] + ext):
                 os.remove(tex[:-4] + ext)

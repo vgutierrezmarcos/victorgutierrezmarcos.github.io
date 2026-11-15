@@ -228,3 +228,9 @@ Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
 - **Nobel**: \autor{Goldin} (nota con el motivo oficial, además de la paráfrasis del enganche), \autor{Hicks} 1972, \autor{Schultz} 1979 y \autor{Becker} 1992 (la de \autor{Becker} se mueve a su primera mención), una nota con \autor{Friedman}, \autor{Modigliani}, \autor{Lucas} y \autor{Kydland}-\autor{Prescott} en la historia, \autor{Card}, \autor{Angrist} e \autor{Imbens} con los motivos (en la primera mención), \autor{Samuelson} 1970, \autor{Acemoglu} 2024, \autor{Spence} 2001, \autor{Phelps} 2006 y \autor{Heckman} 2000 (entrada nueva Nobel2000HeckmanMcFadden).
 - **4.º ejercicio**: ya había 4.A.2, 4.A.16 y 4.B.10; no se añade más.
 - **Dichos**: se conservan el del enganche («el tiempo es oro»), «hacer el agosto» (ya sin llamarlo refrán: «es lo que llamamos hacer el agosto») y «el saber no ocupa lugar…, pero sí tiempo» (sin la etiqueta «lo resume el dicho»); «el último en entrar, el primero en salir» es una regla de despidos, no un refrán.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- Ninguna nota se cambia. Se probó la de la prestación por desempleo (sus 3 implicaciones), pero como lista la nota se partía y su gráfico pasaba solo a la página siguiente; en prosa cabe entera con el gráfico, así que se deja como estaba.

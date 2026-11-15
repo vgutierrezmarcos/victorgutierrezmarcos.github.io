@@ -1,0 +1,53 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Infografía: efecto de cada variable de la fórmula de Black y Scholes sobre
+% la call y la put europeas (ceteris paribus) y su griega. En el centro, las
+% 2 fórmulas; alrededor, una tarjeta por variable (signo en la call y en la
+% put, griega y por qué). Signos: Hull (2022), tabla 11.1.
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[tcee,
+    tarjeta/.style={draw=tceemorado!70,thick,rounded corners=3pt,fill=tceesalvia!55,
+      text width=7.3cm,inner sep=5pt,align=left,font=\small,anchor=north},
+    centro/.style={draw=tceemorado,very thick,rounded corners=3pt,fill=tceemorado!7,
+      align=center,inner sep=6pt,font=\normalsize},
+    une/.style={thick,tceemorado!60}]
+  \newcommand{\mas}{\textcolor{tceeverde}{\textbf{+}}}
+  \newcommand{\menos}{\textcolor{tceerojo}{\textbf{$-$}}}
+  % 1: las 2 fórmulas en el centro
+  \capa{1}{\node[centro] (F) at (0,0) {%
+    $c=S_0\,N(d_1)-K\,e^{-rT}N(d_2)$\qquad
+    $p=K\,e^{-rT}N(-d_2)-S_0\,N(-d_1)$\\[3pt]
+    {\small 5 variables, todas observables salvo $\sigma$: $c=c(S_0,K,T,r,\sigma)$; no dependen de $\mu$ ni de la aversión al riesgo}};}
+  % 2: precio del subyacente
+  \capa{2}{\node[tarjeta] (S) at (-4.0,-1.0) {%
+    \textbf{Precio del subyacente, $S_0$\,$\uparrow$}\hfill \emph{call} \mas\ \ \emph{put} \menos\\[2pt]
+    \emph{Griegas}: delta, \mbox{$\Delta_c=N(d_1)\in(0,1)$} y \mbox{$\Delta_p=N(d_1)-1\in(-1,0)$}; gamma, \mbox{$\Gamma=\partial\Delta/\partial S>0$}\\[2pt]
+    \emph{Por qué}: el derecho a comprar vale más si el activo vale más; el de vender, menos};}
+  % 3: precio de ejercicio
+  \capa{3}{\node[tarjeta] (K) at (4.0,-1.0) {%
+    \textbf{Precio de ejercicio, $K$\,$\uparrow$}\hfill \emph{call} \menos\ \ \emph{put} \mas\\[2pt]
+    \emph{Griega}: sin nombre propio; \mbox{$\partial c/\partial K=-e^{-rT}N(d_2)<0$}\\[2pt]
+    \emph{Por qué}: se compra más caro (la \emph{call}) o se vende más caro (la \emph{put}); es el espejo de $S_0$};}
+  % 4: plazo
+  \capa{4}{\node[tarjeta,below=4mm of S] (T) {%
+    \textbf{Plazo, $T$\,$\uparrow$}\hfill \emph{call} \mas\ \ \emph{put} ?\\[2pt]
+    \emph{Griega}: theta, \mbox{$\Theta=\partial c/\partial t<0$}: lo que pierde la opción cada día que pasa\\[2pt]
+    \emph{Por qué}: más tiempo, más posibilidades de acabar dentro de dinero; pero la \emph{put} europea cobra $K$ más tarde. En las americanas, más plazo siempre suma};}
+  % 5: volatilidad
+  \capa{5}{\node[tarjeta,below=4mm of K] (V) {%
+    \textbf{Volatilidad, $\sigma$\,$\uparrow$}\hfill \emph{call} \mas\ \ \emph{put} \mas\\[2pt]
+    \emph{Griega}: vega, $\mathcal{V}=S_0\sqrt{T}\,\phi(d_1)>0$, igual en la \emph{call} y en la \emph{put}\\[2pt]
+    \emph{Por qué}: la pérdida está limitada a la prima y la ganancia no: más dispersión, más valor temporal. La única variable que no se observa};}
+  % 6: tipo sin riesgo
+  \capa{6}{\node[tarjeta,below=4mm of T] (R) {%
+    \textbf{Tipo sin riesgo, $r$\,$\uparrow$}\hfill \emph{call} \mas\ \ \emph{put} \menos\\[2pt]
+    \emph{Griega}: rho, \mbox{$\rho_c=KTe^{-rT}N(d_2)>0$} y \mbox{$\rho_p=-KTe^{-rT}N(-d_2)<0$}\\[2pt]
+    \emph{Por qué}: baja el valor actual de $K$, $Ke^{-rT}$: abarata lo que paga la \emph{call} y lo que cobra la \emph{put}};}
+  % 7: dividendos
+  \capa{7}{\node[tarjeta,below=4mm of V] (D) {%
+    \textbf{Dividendos, $D$ o $q$\,$\uparrow$}\hfill \emph{call} \menos\ \ \emph{put} \mas\\[2pt]
+    \emph{Griega}: sin nombre propio; en la fórmula, $S_0$ pasa a \mbox{$S_0e^{-qT}$}\\[2pt]
+    \emph{Por qué}: al pagarse, la acción baja en esa cuantía: actúan como una bajada de $S_0$};}
+\end{tikzpicture}
+\end{document}

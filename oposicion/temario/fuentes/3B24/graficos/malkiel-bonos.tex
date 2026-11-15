@@ -26,6 +26,15 @@
   % 4: bono D (30 años, cupón bajo, TIR baja)
   \capa{4}{\addplot[curva4,domain=-4:4,samples=60] {100*(pr(3,30,0.06+x/100)/pr(3,30,0.06)-1)};
     \node[etiqueta,font=\footnotesize,text=tceedorado,anchor=east] at (axis cs:-4,108) {D};}
+  % 5: características de cada bono, en el propio gráfico (como en Bodie, Kane y Marcus, fig. 16.1)
+  \capa{5}{\node[anchor=north east,font=\scriptsize,inner sep=2pt] at (axis cs:4,118) {%
+    \begin{tabular}{@{}c@{\hspace{5pt}}c@{\hspace{5pt}}c@{\hspace{5pt}}c@{}}
+    Bono & Cupón & Plazo & TIR inicial\\[1pt]\hline\rule{0pt}{10pt}%
+    \textcolor{tceeverde}{A} & 12\,\% & 5 años & 10\,\%\\
+    \textcolor{tceeazul}{B} & 12\,\% & 30 años & 10\,\%\\
+    \textcolor{tceemorado}{C} & 3\,\% & 30 años & 10\,\%\\
+    \textcolor{tceedorado}{D} & 3\,\% & 30 años & 6\,\%
+    \end{tabular}};}
 \end{axis}
 \end{tikzpicture}
 \end{document}

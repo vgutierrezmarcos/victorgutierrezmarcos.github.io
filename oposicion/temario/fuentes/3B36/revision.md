@@ -146,3 +146,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 ## Coherencia con el 3.B.43 (14/11/2026)
 
 - Lagarde: «hasta octubre de 2027» pasa a «dejará el cargo el 7 de febrero de 2027», por el anuncio del BCE del 29/10/2026 que comprobó el agente del 3.B.43.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la iniciativa legislativa: los 3 casos en que la tienen otros (un cuarto de los Estados, el BCE, el Tribunal de Justicia), en itemize.

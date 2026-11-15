@@ -206,3 +206,7 @@ Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 
 - **III.3** (3′30″): 2 columnas, «más ayuda» (Sachs, gran empujón) y «mejor ayuda» (Easterly, Deaton, Moyo, experimentos aleatorios), que se llenan con el debate; la lectura «efecto positivo pero pequeño» en `apunte:`.
 - **Al final**, la pizarra queda limpia, con la curva de Laffer de la deuda y las 2 columnas de la ayuda si caben; si no, solo las 2 columnas.
 - No decir números de temas en voz alta (se nombran los enfoques: «el enfoque intertemporal», «la teoría de las crisis», «el Fondo Monetario»).
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

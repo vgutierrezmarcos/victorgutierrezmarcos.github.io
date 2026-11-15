@@ -248,7 +248,12 @@ Función valor & función indirecta de utilidad $V(\vect{p},\overline{W})$ & fun
 \subparagraph{iii) Implicaciones: la demanda marshalliana y la función indirecta de utilidad}
 
 \begin{itemize}
-\item La solución del PMU es la cesta que da la mayor utilidad con un presupuesto dado. Por las características del sistema de condiciones de primer orden, sus cantidades pueden expresarse como funciones de los parámetros, lo que permite el análisis de estática comparativa: es el \concepto{sistema completo de ecuaciones de demanda marshalliana} u ordinaria (también llamada walrasiana) (SCEDM),\footnote{Formalmente, la demanda es el \emph{argumento} que maximiza y la función indirecta de utilidad, que se define enseguida, el \emph{valor} de ese máximo: $\vect{x}(\vect{p},\overline{W})\equiv\arg\max_{\vect{x}}\{U(\vect{x}):\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\}$ y $V(\vect{p},\overline{W})\equiv\max_{\vect{x}}\{U(\vect{x}):\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\}$. Con preferencias que no sean estrictamente convexas, el $\arg\max$ puede tener varios elementos y la demanda es una correspondencia; el valor, en cambio, es siempre único.}
+\item La solución del PMU es la cesta que da la mayor utilidad con un presupuesto dado. Por las características del sistema de condiciones de primer orden, sus cantidades pueden expresarse como funciones de los parámetros, lo que permite el análisis de estática comparativa: es el \concepto{sistema completo de ecuaciones de demanda marshalliana} u ordinaria (también llamada walrasiana) (SCEDM),\footnote{Formalmente, hay que distinguir dos objetos:
+\begin{itemize}
+\item la demanda, el \emph{argumento} que maximiza: $\vect{x}(\vect{p},\overline{W})\equiv\arg\max_{\vect{x}}\{U(\vect{x}):\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\}$;
+\item la función indirecta de utilidad, que se define enseguida, el \emph{valor} de ese máximo: $V(\vect{p},\overline{W})\equiv\max_{\vect{x}}\{U(\vect{x}):\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\}$.
+\end{itemize}
+Con preferencias que no sean estrictamente convexas, el $\arg\max$ puede tener varios elementos y la demanda es una correspondencia; el valor, en cambio, es siempre único.}
   \begin{equation}
   \vect{x}^*=\vect{x}(\vect{p},\overline{W})=\begin{pmatrix} x_1(p_1,\dots,p_n,\overline{W})\\ \vdots\\ x_n(p_1,\dots,p_n,\overline{W})\end{pmatrix}. \label{eq:marshalliana}
   \end{equation}
@@ -363,7 +368,12 @@ Función valor & función indirecta de utilidad $V(\vect{p},\overline{W})$ & fun
 \subparagraph{iii) Implicaciones: la demanda hicksiana y la función de gasto}
 
 \begin{itemize}
-\item La solución del PMG es la cesta más barata que da $\overline{U}$. Como sus cantidades pueden expresarse en función de los parámetros, se obtiene el \concepto{sistema completo de ecuaciones de demanda compensada o hicksiana} (SCEDC),\footnote{Como en el primal, la demanda es el \emph{argumento} que minimiza y la función de gasto, que se define enseguida, el \emph{valor} del mínimo: $\vect{h}(\vect{p},\overline{U})\equiv\arg\min_{\vect{h}}\{\vect{p}\cdot\vect{h}:U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\}$ y $E(\vect{p},\overline{U})\equiv\min_{\vect{h}}\{\vect{p}\cdot\vect{h}:U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\}$. La restricción se escribe con desigualdad, aunque en el óptimo se cumpla con igualdad (no hay exceso de utilidad): así el conjunto factible es cerrado y convexo con preferencias convexas.}
+\item La solución del PMG es la cesta más barata que da $\overline{U}$. Como sus cantidades pueden expresarse en función de los parámetros, se obtiene el \concepto{sistema completo de ecuaciones de demanda compensada o hicksiana} (SCEDC),\footnote{Como en el primal, hay que distinguir dos objetos:
+\begin{itemize}
+\item la demanda, el \emph{argumento} que minimiza: $\vect{h}(\vect{p},\overline{U})\equiv\arg\min_{\vect{h}}\{\vect{p}\cdot\vect{h}:U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\}$;
+\item la función de gasto, que se define enseguida, el \emph{valor} del mínimo: $E(\vect{p},\overline{U})\equiv\min_{\vect{h}}\{\vect{p}\cdot\vect{h}:U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\}$.
+\end{itemize}
+La restricción se escribe con desigualdad, aunque en el óptimo se cumpla con igualdad (no hay exceso de utilidad): así el conjunto factible es cerrado y convexo con preferencias convexas.}
   \begin{equation}
   \vect{h}^*=\vect{h}(\vect{p},\overline{U})=\begin{pmatrix} h_1(p_1,\dots,p_n,\overline{U})\\ \vdots\\ h_n(p_1,\dots,p_n,\overline{U})\end{pmatrix}. \label{eq:hicksiana}
   \end{equation}
@@ -494,7 +504,11 @@ Identidad de \autor{Roy}: $x_i(\vect{p},\overline{W})=-\dfrac{\partial V/\partia
   \end{equation}
   \begin{itemize}
   \item \emph{Entre funciones de demanda}: la marshalliana se obtiene de la hicksiana sustituyendo la utilidad por la FIU, y la hicksiana de la marshalliana sustituyendo la renta por la FG. Es la extensión natural del teorema básico a las funciones de demanda.
-  \item \emph{Entre funciones valor}: para unos precios dados, la FIU y la FG son \emph{inversas} respecto a su segundo argumento: a cada utilidad máxima le corresponde un gasto mínimo, y viceversa. Hallada una de ellas, la otra se obtiene con una sustitución y despejando, sin resolver su problema.\footnote{«Invertir» significa aquí manipular la ecuación para despejar una variable independiente, que pasa a ser función de las demás: de $E\big(\vect{p},V(\vect{p},\overline{W})\big)=\overline{W}$ se despeja $V(\vect{p},\overline{W})=E^{-1}(\vect{p},\overline{W})$, y de $V\big(\vect{p},E(\vect{p},\overline{U})\big)=\overline{U}$, $E(\vect{p},\overline{U})=V^{-1}(\vect{p},\overline{U})$.}
+  \item \emph{Entre funciones valor}: para unos precios dados, la FIU y la FG son \emph{inversas} respecto a su segundo argumento: a cada utilidad máxima le corresponde un gasto mínimo, y viceversa. Hallada una de ellas, la otra se obtiene con una sustitución y despejando, sin resolver su problema.\footnote{«Invertir» significa aquí manipular la ecuación para despejar una variable independiente, que pasa a ser función de las demás:
+\begin{itemize}
+\item de $E\big(\vect{p},V(\vect{p},\overline{W})\big)=\overline{W}$ se despeja $V(\vect{p},\overline{W})=E^{-1}(\vect{p},\overline{W})$;
+\item de $V\big(\vect{p},E(\vect{p},\overline{U})\big)=\overline{U}$ se despeja $E(\vect{p},\overline{U})=V^{-1}(\vect{p},\overline{U})$.
+\end{itemize}}
   \end{itemize}
 \item \emph{Ejemplo} (\autor{Cobb}-\autor{Douglas}, $U=x_1^{\alpha}x_2^{1-\alpha}$ \vertema{3.A.8}): $x_1(\vect{p},\overline{W})=\alpha\overline{W}/p_1$ y $V(\vect{p},\overline{W})=\overline{W}\,\big(\tfrac{\alpha}{p_1}\big)^{\alpha}\big(\tfrac{1-\alpha}{p_2}\big)^{1-\alpha}$. Invirtiendo, $E(\vect{p},\overline{U})=\overline{U}\,\big(\tfrac{p_1}{\alpha}\big)^{\alpha}\big(\tfrac{p_2}{1-\alpha}\big)^{1-\alpha}$ y, por \autor{Shephard}, $h_1(\vect{p},\overline{U})=\alpha E(\vect{p},\overline{U})/p_1$: la misma forma que la marshalliana, con el gasto en lugar de la renta.
 \end{itemize}
@@ -503,6 +517,7 @@ Identidad de \autor{Roy}: $x_i(\vect{p},\overline{W})=-\dfrac{\partial V/\partia
 
 \begin{itemize}
 \item Todas estas relaciones se resumen en la figura~\ref{figu:esquema-dualidad}: para obtener las cuatro funciones (dos demandas y dos funciones valor) basta resolver \emph{uno} de los dos problemas; las demás se obtienen con las identidades de \autor{Roy} y \autor{Shephard} y con las relaciones de dualidad.
+\item La figura~\ref{figu:infografia-dualidad} del anexo~\ref{anexo:infografia-dualidad} amplía este esquema en una sola página: añade los dos problemas en tres dimensiones (la superficie de utilidad cortada por la restricción de gasto y el plano del gasto cortado por la curva de indiferencia exigida), los multiplicadores, las propiedades de las cuatro funciones y lo que se hace con ellas en el bloque~\ref{sec:aplicaciones-dualidad}.
 \end{itemize}
 
 \begin{infografia}[H]
@@ -1203,7 +1218,13 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
   m(\bar{\vect{p}};\vect{p},\overline{W})\equiv E\big(\bar{\vect{p}},V(\vect{p},\overline{W})\big) \label{eq:money-metric}
   \end{equation}
   es lo que costaría, a los precios $\bar{\vect{p}}$, alcanzar la utilidad que se obtiene con el presupuesto $(\vect{p},\overline{W})$. Como $E$ es estrictamente creciente en $\overline{U}$, $m$ es una transformación creciente de $V$: una función indirecta de utilidad más, que ordena los presupuestos igual que $V$, pero medida en euros. Así, sus diferencias sí tienen sentido económico.
-\item Las dos medidas de \autor{Hicks} son la variación de la métrica monetaria con dos elecciones de los precios de referencia.\footnote{\textcite{Hicks1939Value,Hicks1941Rehabilitation} las introduce al reconstruir el excedente del consumidor con curvas de indiferencia; \textcite{Hicks1943Four} distingue las «cuatro» medidas (variaciones y excedentes compensatorios y equivalentes), y las sistematiza en \textcite{Hicks1956Revision}. \textcite{Willig1976Surplus} no las introduce: muestra cuándo el excedente marshalliano las aproxima.} Las dos son positivas si el bienestar mejora, y por el lema de \autor{Shephard}, como $E$ es la integral de la demanda hicksiana, pueden leerse como áreas a la izquierda de una hicksiana. Si solo cambia $p_1$, y como $E(\vect{p}^0,\overline{U}^0)=E(\vect{p}^1,\overline{U}^1)=\overline{W}$:
+\item Las dos medidas de \autor{Hicks} son la variación de la métrica monetaria con dos elecciones de los precios de referencia.\footnote{\autor{Hicks} las desarrolla en tres pasos:
+\begin{itemize}
+\item \textcite{Hicks1939Value,Hicks1941Rehabilitation} las introduce al reconstruir el excedente del consumidor con curvas de indiferencia;
+\item \textcite{Hicks1943Four} distingue las «cuatro» medidas (variaciones y excedentes compensatorios y equivalentes);
+\item y \textcite{Hicks1956Revision} las sistematiza.
+\end{itemize}
+\textcite{Willig1976Surplus} no las introduce: muestra cuándo el excedente marshalliano las aproxima.} Las dos son positivas si el bienestar mejora, y por el lema de \autor{Shephard}, como $E$ es la integral de la demanda hicksiana, pueden leerse como áreas a la izquierda de una hicksiana. Si solo cambia $p_1$, y como $E(\vect{p}^0,\overline{U}^0)=E(\vect{p}^1,\overline{U}^1)=\overline{W}$:
 \end{itemize}
 
 \begin{itemize}
@@ -1300,7 +1321,11 @@ Si el tribunal pregunta por aplicaciones: la VE mide la pérdida de bienestar de
   I_L=\frac{\vect{p}^1\cdot\vect{x}^0}{\vect{p}^0\cdot\vect{x}^0}\geq I_K(\overline{U}^0),\qquad I_P=\frac{\vect{p}^1\cdot\vect{x}^1}{\vect{p}^0\cdot\vect{x}^1}\leq I_K(\overline{U}^1). \label{eq:laspeyres-paasche}
   \end{equation}
   \begin{itemize}
-  \item El de \emph{\autor{Laspeyres}} es la aproximación de primer orden de $E(\vect{p}^1,\overline{U}^0)$ en torno a $\vect{p}^0$ (por \autor{Shephard} y porque $\vect{h}(\vect{p}^0,\overline{U}^0)=\vect{x}^0$, $E(\vect{p}^0,\overline{U}^0)+\vect{h}(\vect{p}^0,\overline{U}^0)\cdot(\vect{p}^1-\vect{p}^0)=\vect{p}^1\cdot\vect{x}^0$) y, por la concavidad de $E$, una \emph{cota superior}: \emph{sobrestima} el aumento del coste de la vida porque supone que el consumidor no sustituye los bienes que se encarecen por los que se abaratan (\emph{sesgo de sustitución}).\footnote{Por eso, si la renta se actualiza con $I_L$, el consumidor puede volver a comprar la cesta inicial $\vect{x}^0$ y, sustituyendo los bienes que se han encarecido por los que se han abaratado, alcanzar una utilidad \emph{mayor} que $\overline{U}^0$: queda sobrecompensado. Con $I_P$ ocurre lo contrario: la cesta final valorada a los precios iniciales cuesta al menos lo necesario para alcanzar $\overline{U}^1$ con esos precios, $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$, de modo que $I_P=\overline{W}/(\vect{p}^0\cdot\vect{x}^1)\leq\overline{W}/E(\vect{p}^0,\overline{U}^1)=I_K(\overline{U}^1)$: ignorar la sustitución lleva a subestimar el encarecimiento medido con la utilidad final.\findemo} En el gráfico~\ref{fig:indice-konus-laspeyres}, la distancia entre la recta de precios $\vect{p}^1$ que pasa por $\vect{x}^0$ y su paralela tangente a $\overline{U}^0$ es ese sesgo.
+  \item El de \emph{\autor{Laspeyres}} es la aproximación de primer orden de $E(\vect{p}^1,\overline{U}^0)$ en torno a $\vect{p}^0$ (por \autor{Shephard} y porque $\vect{h}(\vect{p}^0,\overline{U}^0)=\vect{x}^0$, $E(\vect{p}^0,\overline{U}^0)+\vect{h}(\vect{p}^0,\overline{U}^0)\cdot(\vect{p}^1-\vect{p}^0)=\vect{p}^1\cdot\vect{x}^0$) y, por la concavidad de $E$, una \emph{cota superior}: \emph{sobrestima} el aumento del coste de la vida porque supone que el consumidor no sustituye los bienes que se encarecen por los que se abaratan (\emph{sesgo de sustitución}).\footnote{Los dos índices fallan en sentidos opuestos:
+\begin{itemize}
+\item con $I_L$: si la renta se actualiza con él, el consumidor puede volver a comprar la cesta inicial $\vect{x}^0$ y, sustituyendo los bienes que se han encarecido por los que se han abaratado, alcanzar una utilidad \emph{mayor} que $\overline{U}^0$: queda sobrecompensado;
+\item con $I_P$ ocurre lo contrario: la cesta final valorada a los precios iniciales cuesta al menos lo necesario para alcanzar $\overline{U}^1$ con esos precios, $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$, de modo que $I_P=\overline{W}/(\vect{p}^0\cdot\vect{x}^1)\leq\overline{W}/E(\vect{p}^0,\overline{U}^1)=I_K(\overline{U}^1)$: ignorar la sustitución lleva a subestimar el encarecimiento medido con la utilidad final.\findemo
+\end{itemize}} En el gráfico~\ref{fig:indice-konus-laspeyres}, la distancia entre la recta de precios $\vect{p}^1$ que pasa por $\vect{x}^0$ y su paralela tangente a $\overline{U}^0$ es ese sesgo.
   \item El de \emph{\autor{Paasche}} es una \emph{cota inferior} del índice verdadero con la utilidad final: lo \emph{subestima}.
   \item Atención a una confusión habitual: \autor{Laspeyres} y \autor{Paasche} acotan dos índices verdaderos \emph{distintos}. Solo con preferencias homotéticas $I_K$ no depende de $\overline{U}$, y entonces $I_P\leq I_K\leq I_L$. Las igualdades se dan únicamente si no hay posibilidad de sustitución (preferencias de \autor{Leontief}).\footnote{\autor{Wassily Leontief} recibió el Premio Nobel de Economía en 1973 «por el desarrollo del método \emph{input-output} y por su aplicación a importantes problemas económicos»\nocite{Nobel1973Leontief}. Sin posibilidad de sustitución, la matriz de \autor{Slutsky} es nula, $S=0$. Que todos los pares de bienes sean independientes netos lleva a lo mismo: si $S_{ij}=0$ para todo $i\neq j$, la condición $S\,\vect{p}=\vect{0}$ obliga a que también $S_{ii}=0$, y no queda ningún efecto sustitución.\findemo}
   \end{itemize}
@@ -1584,6 +1609,18 @@ Frontera (efecto renta nulo) & $L\leq \mathrm{VC}=\Delta\mathrm{EC}=\mathrm{VE}\
 \item El resultado formal, con las cotas del error, está en \textcite{Willig1976Surplus}; la discusión de su precisión para la pérdida irrecuperable, en \textcite{Hausman1981Exact}.
 \end{itemize}
 
+% ==========================================================================
+\clearpage
+\section{Anexo: la dualidad en una figura}\label{anexo:infografia-dualidad}
+
+\begin{infografia}[H]
+\centering
+\caption{La dualidad en la decisión de consumo: el primal y el dual en tres dimensiones, las cuatro funciones y las relaciones entre ellas}\label{figu:infografia-dualidad}
+\graficopagina{infografia-dualidad}
+\fuente{elaboración propia. Paneles en 3D con $U=\sqrt{x_1x_2}$, $p_1=p_2=1$ y $\overline{W}=3{,}5$: $\vect{x}^*=\vect{h}^*=(1{,}75;\,1{,}75)$, $U^*=\overline{U}=1{,}75$ y $E^*=\overline{W}=3{,}5$; el eje vertical del panel dual va a otra escala.}
+\end{infografia}
+
+\clearpage
 % ==========================================================================
 \section{Anexo: aspectos relevantes para el test}\label{anexo:test}
 

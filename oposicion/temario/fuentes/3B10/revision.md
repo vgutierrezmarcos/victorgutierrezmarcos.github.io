@@ -192,3 +192,9 @@ Propuestas: todas las de coherencia (K1-K35), contenido (C1-C46) y datos (V1-V17
 - **Nobel** (notas al pie con el motivo oficial y su `\nocite`; entradas copiadas al `.bib`): \autor{Tinbergen} 1969 (al final de la nota de integración negativa y positiva), \autor{Meade} 1977 con \autor{Ohlin} (primera mención, contextualización), \autor{Krugman} 2008 (número de bloques), \autor{Mundell} 1999 (país grande), \autor{Romer} 2018 (crecimiento endógeno), \autor{Samuelson} 1970 y \autor{Ohlin} 1977 (Stolper-Samuelson), \autor{Stiglitz} 2001 (anexo centro-periferia).
 - **4.º ejercicio**: \vertema{4.A.27} tras el efecto de la entrada de España en la Comunidad (Sanz, 2000) y \vertema{4.A.17} tras las políticas de cohesión.
 - **Refranes**: se quedan el del enganche («dime con quién andas…»), «para este viaje no se necesitaban alforjas», ahora integrado en el texto de \autor{Cooper} y \autor{Massell}), y «cuando las barbas de tu vecino veas pelar…», integrado en el efecto dominó. Se quitan «quien da primero da dos veces», «arrimarse al sol que más calienta» y «el roce hace el cariño» (solo estaban en las notas del cante y no venían del temario antiguo).
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de Tinbergen (definición de integración): integración negativa y positiva en itemize; el Nobel, en párrafo aparte. Es una nota larga en la página 1 y se parte entre los 2 ítems (con la flecha); en prosa también se partía.
+- Nota de la nueva geografía económica: los antecedentes (von Thünen, Hotelling, Ohlin) en itemize; la definición de Krugman, en párrafo aparte.
+- No se convierten: la del segundo óptimo, la del artículo XXIV del GATT ni las de Nobel.

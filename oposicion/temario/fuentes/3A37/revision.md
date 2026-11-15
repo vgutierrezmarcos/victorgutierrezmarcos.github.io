@@ -225,3 +225,7 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 ## Clasificación Gráfico/Figura (13/11/2026)
 
 Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `canales-transmision`, `cadenas-canales`, `nek-esquema`, `acelerador-financiero` y `no-convencionales-canales` (esquemas de cajas y flechas; `nek-esquema` y `acelerador-financiero` ya eran Figura en 3A36/3A42). El resto, incluido `hank-efectos` (con ejes), sigue como Gráfico.
+
+## Listas en las notas al pie (15/11/2026)
+
+Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota lo necesitaba: no hay ninguna que enumere conceptos o casos paralelos de forma que una lista ayude a leerla.

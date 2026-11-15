@@ -196,3 +196,15 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **Nobel** (notas al pie con el motivo oficial, en la primera mención; los de la «Relevancia» ya estaban): \autor{Becker} 1992 (en la nota de las tecnologías del consumo), \autor{Nash} 1994 (con \autor{Harsanyi} y \autor{Selten}, en la negociación de Grossman-Hart-Moore), \autor{Modigliani} 1985, \autor{Spence} 2001 (compromiso de capacidad), \autor{Hayek} 1974 y \autor{Arrow} 1972 (anexo austriaco). **Premio 2025**: nuevo punto en el anexo de \autor{Schumpeter}: \autor{Aghion} y \autor{Howitt} concilian \autor{Schumpeter} y \autor{Arrow} con la U invertida entre competencia e innovación (Aghion et al., 2005, bib copiada del 3.A.17), con su nota del Nobel 2025.
 - **4.º ejercicio**: \vertema{4.A.8} tras el dato de tamaño y productividad de las empresas españolas (ya había 4.A.12, 4.A.15, 4.B.2 y 4.B.15).
 - **Dichos**: se conservan el par del enganche («si quieres algo bien hecho…» / «zapatero, a tus zapatos»), que la conclusión retoma, y «quemar las naves» (Schelling), que es una locución bien integrada. No se quita ninguno; la ficha no cambia.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de las «tecnologías del consumo» (l. 21, introducción): 4 enfoques en viñetas (Lancaster, Becker, Gronau, Stigler); el resto de la nota (otros agentes, Nobel) en párrafo aparte.
+- La nota de selección adversa y riesgo moral (l. 354): 2 viñetas.
+- La nota del IHH y los umbrales de concentraciones (l. 741): Estados Unidos y Unión Europea en 2 viñetas.
+- La nota de ejemplos de barreras regulatorias (l. 772): agencias de calificación y licencias VTC en 2 viñetas.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

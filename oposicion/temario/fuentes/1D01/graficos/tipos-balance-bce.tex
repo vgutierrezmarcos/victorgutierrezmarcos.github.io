@@ -3,7 +3,8 @@
 \usepackage{pgfplotstable}
 \usepgfplotslibrary{dateplot}
 \begin{document}
-% Izquierda: tipos oficiales del BCE (%), 1/1/1999-16/9/2026, en escalón.
+% Izquierda: tipos oficiales del BCE (%), 1/1/1999-16/9/2026, en escalón; OPF
+% a tipo fijo salvo del 28/6/2000 al 14/10/2008 (tipo variable: tipo mínimo de puja).
 % Derecha: balance del Eurosistema (billones de euros), último dato de cada
 % trimestre 2014-2026 (último: semana 41 de 2026). BCE, Data Portal (FM e ILM;
 % consulta 23/10/2026). Resto del activo = activo total − valores − préstamos.
@@ -56,8 +57,14 @@
         table[x=fecha, y=facilidad_marginal] {\tipos};
       \addlegendentry{Facilidad marginal de crédito}
     }
-    % 4: rótulo del último tipo de la facilidad de depósito
+    % 4: rótulo del último tipo de la facilidad de depósito y aviso de que,
+    % del 28/6/2000 al 14/10/2008, las OPF fueron a tipo variable (la línea
+    % sigue el tipo mínimo de puja)
     \capa{4}{
+      \addplot[on layer=axis descriptions, dicsuelto, dicopf, thin]
+        coordinates {(2000-06-28,-0.35) (2000-06-28,-0.5) (2008-10-15,-0.5) (2008-10-15,-0.35)};
+      \dicrotulo[font=\tiny, text=dicopf, anchor=north, inner sep=1.5pt]
+        {(2004-08-15,-0.5)}{OPF: tipo mínimo de puja}
       \dicrotulo[font=\scriptsize, text=dicdeposito, anchor=west, inner sep=2pt]
         {(2026-10-01,2.5)}{2,50}
     }

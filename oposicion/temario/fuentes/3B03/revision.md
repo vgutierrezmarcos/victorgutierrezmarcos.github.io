@@ -193,3 +193,10 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - **Nobel añadidos**: Friedman (1976), en su primera mención; Tobin (1981), en la nota de la cartera de Markowitz y Tobin; Akerlof, Spence y Stiglitz (2001), en la selección adversa de Myers y Majluf (cubre la señalización de Spence que viene después). Ya estaban Modigliani (1985), Miller-Markowitz-Sharpe (1990), Tirole (2014) y Holmström-Hart (2016). Kahneman, Thaler, Shiller, Fama, Bernanke, Diamond, Hart y Aghion solo salen en `\nocite` (no hay mención visible); «Johnson \& Johnson» es la empresa.
 - **4.º ejercicio**: \vertema{4.A.19} junto a la dependencia bancaria de las pymes (con 4.A.8); el impuesto sobre sociedades español remite ahora a \vertema{4.B.17} en vez de 4.B.10. Se mantienen 4.A.20, 4.A.8, 4.B.12 y el resto de 4.B.10 (efectos incentivo de la fiscalidad de la deuda).
 - **Dichos**: se conservan el enganche «no hay que matar la gallina de los huevos de oro» y los que están integrados y explicados: «los mismos perros con distinto collar» (MM), «ni tanto que queme al santo…» (óptimo interior), «la ocasión hace al ladrón» (flujo de caja libre) y «la ropa sucia se lava en casa» (jerarquía). Se quita «despacito y buena letra» (Lintner), suelto y sin relación clara, en el tema, la ficha y las instrucciones del vídeo.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota del objetivo de la empresa (contextualización): los 3 objetivos en itemize.
+- Nota de las amortizaciones: métodos lineal y acelerados en itemize.
+- Nota de los valores de mercado: ROA → WACC, ROE → $r_E$, coste contable de la deuda → $r_D$, en itemize (el cierre del itemize va en la línea del último ítem para que verificar-tema no tome por separada la fórmula $V=V_E+V_D$ que sigue).
+- No se convierten: las demás (un solo argumento) ni las de Nobel.

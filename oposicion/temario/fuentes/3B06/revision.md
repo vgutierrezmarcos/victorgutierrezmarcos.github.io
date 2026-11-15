@@ -313,3 +313,7 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
   - Datos: `concentracion-exportadoras-espana` (2019; 2025; puntos; rótulos) y `concentracion-exportadoras-ue` (caja gris).
   - Nuevo orden: el I empieza por los antecedentes (I.1), de palabra con la tabla de las 4 preguntas; la casilla de Falvey de la tabla de modelos se rellena al principio del I.
 - **Nunca** se dice en voz alta el número de un tema.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba (la de los antecedentes de la nueva geografía económica es una enumeración corta dentro de una frase).

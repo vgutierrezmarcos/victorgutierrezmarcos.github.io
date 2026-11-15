@@ -4,8 +4,12 @@
 % Una cuenta en T: #1 nombre, #2 punto superior central, #3 título (color),
 % #4 cabecera izquierda, #5 cabecera derecha, #6 cuerpo izquierdo,
 % #7 primer recurso (el saldo que llega), #8 resto de la derecha, #9 saldo.
-% \alto es la altura del cuerpo (cm) y \colorT el color del título.
+% \semi es la anchura de cada lado de la T y \colorT el color del título.
+% Cada cuenta guarda en \fondo<nombre> la ordenada de su punto más bajo, y
+% \fila calcula dónde empieza la fila siguiente (las cuentas se colocan solas
+% unas debajo de otras, sin coordenadas verticales a mano).
 \newcommand{\colorT}{tceemorado}
+\newcommand{\semi}{4.2cm}
 \newcommand{\cuentaT}[9]{%
   \node[titulo, text=\colorT] (#1-t) at (#2) {#3};
   \node[cab, anchor=north east] (#1-hl) at ($(#2)+(0,-0.05)$) {#4};
@@ -14,123 +18,132 @@
   \path (#1-hr.south); \pgfgetlastxy{\xg}{\yg}%
   \pgfmathsetmacro\ycab{min(\yh,\yg)}%
   \path (#2); \pgfgetlastxy{\xc}{\yc}%
-  \draw[\colorT, line width=0.7pt] (\xc-3.8cm,\ycab pt) -- (\xc+3.8cm,\ycab pt);
-  \node[cuerpo, anchor=north west] (#1-l) at (\xc-3.8cm,\ycab pt-1pt) {#6};
+  \draw[\colorT, line width=0.8pt] (\xc-\semi,\ycab pt) -- (\xc+\semi,\ycab pt);
+  \node[cuerpo, anchor=north west] (#1-l) at (\xc-\semi,\ycab pt-1pt) {#6};
   \node[cuerpo, anchor=north west] (#1-r) at (\xc,\ycab pt-1pt) {#7};
   \node[cuerpo, anchor=north west] (#1-r2) at (#1-r.south west) {#8};
   \path (#1-l.south); \pgfgetlastxy{\xa}{\ya}%
   \path (#1-r2.south); \pgfgetlastxy{\xb}{\yb}%
   \pgfmathsetmacro\ymin{min(\ya,\yb)-2}%
-  \draw[tceegris] (\xc-3.8cm,\ymin pt) -- (\xc,\ymin pt);
-  \node[cuerpo, anchor=north west, font=\tiny\bfseries, text=tceemorado] (#1-s) at (\xc-3.8cm,\ymin pt) {#9};
+  \draw[tceegris] (\xc-\semi,\ymin pt) -- (\xc,\ymin pt);
+  \node[cuerpo, anchor=north west, font=\scriptsize\bfseries, text=tceemorado] (#1-s) at (\xc-\semi,\ymin pt) {#9};
   \path (#1-s.south); \pgfgetlastxy{\xs}{\ys}%
-  \draw[\colorT, line width=0.7pt] (\xc,\ycab pt) -- (\xc,\ys);
+  \draw[\colorT, line width=0.8pt] (\xc,\ycab pt) -- (\xc,\ys);
+  \pgfmathsetmacro\yfondo{\ys}%
+  \expandafter\xdef\csname fondo#1\endcsname{\yfondo}%
 }
+% \fila{a}{b}: ordenada (en pt) del título de la fila que va debajo de las
+% cuentas a y b (la misma cuenta dos veces si solo hay una encima).
+\newcommand{\fila}[2]{%
+  \pgfmathsetmacro\yfila{min(\csname fondo#1\endcsname,\csname fondo#2\endcsname)-24}%
+  \xdef\yfila{\yfila}}
 \begin{document}
 \hyphenpenalty=10000 \exhyphenpenalty=10000
 % La sucesión de cuentas del total de la economía en forma de T, solo con los nombres
-% de las partidas (sin cifras, como en el tema antiguo). Misma estructura que el gráfico de la
+% de las partidas (sin los códigos del SEC dentro de las T: Víctor, 15/11/2026;
+% los números de cuenta siguen en el título). Misma estructura que la figura de la
 % cascada (sucesion-cuentas): columna izquierda con la cadena principal,
 % columna derecha con las cuentas en paralelo (II.3 y II.4.2) y, abajo, el
 % balance inicial y el final. Cada flecha lleva el saldo de una cuenta a la
-% siguiente, donde es el primer recurso.
+% siguiente, donde es el primer recurso. Letra grande y proporción de página
+% entera (ancho de texto y casi toda la altura).
 % Cuadre: PIB = 900 + 100 = 1.000 = 750 + 200 + 350 - 300; RNB = 992;
 % RNDB = 985; ahorro = 235; B.9 = 233 - 200 = 33 = 133 - 100
 % = (X - M) + rentas y transferencias netas del exterior = 50 - 8 - 7 - 2;
 % patrimonio neto: 4.800 + (235 - 150 + 20 - 22) + (-5 + 40 - 15) = 4.903.
 % Capas: una por cuenta, en el orden de la cascada.
 \begin{tikzpicture}[tcee, font=\scriptsize,
-  titulo/.style={font=\scriptsize\bfseries, anchor=south, inner sep=1pt},
-  cab/.style={font=\tiny\itshape, text width=3.5cm, align=center, inner sep=1pt},
-  cuerpo/.style={text width=3.6cm, align=left, inner sep=1.5pt, font=\tiny},
+  titulo/.style={font=\small\bfseries, anchor=south, inner sep=1.5pt},
+  cab/.style={font=\scriptsize\itshape, text width=4cm, align=center, inner sep=1.5pt},
+  cuerpo/.style={text width=4cm, align=left, inner sep=1.5pt, font=\scriptsize},
   flecha/.style={->, thick, tceegris!80!black, rounded corners=4pt}]
-  \coordinate (gL) at (4.15,0);
-  \coordinate (gR) at (13.25,0);
+  \coordinate (gL) at (4.55,0);
+  \coordinate (gR) at (13.85,0);
   % 0: cuenta de bienes y servicios (a la derecha de la de producción)
   \capa{1}{\renewcommand{\colorT}{tceegris}
-  \cuentaT{c0}{8.9,0}{0. Bienes y servicios}{Empleos}{Recursos}
-   {P.2 Consumos intermedios\\ P.3 Consumo final\\ P.5 Formación bruta de capital\\ P.6 Exportaciones}
-   {P.1 Producción}{D.21$-$D.31 Imp. netos productos\\ P.7 Importaciones}
+  \cuentaT{c0}{9.3cm,0pt}{0. Bienes y servicios}{Empleos}{Recursos}
+   {Consumos intermedios\\ Consumo final\\ Formación bruta de capital\\ Exportaciones}
+   {Producción}{Imp. netos sobre los productos\\ Importaciones}
    {\textcolor{tceegris!80!black}{sin saldo}}}
   % I: producción
   \capa{2}{\renewcommand{\colorT}{tceemorado}
-  \cuentaT{c1}{0,0}{I. Producción}{Empleos}{Recursos}
-   {P.2 Consumos intermedios}
-   {P.1 Producción}{D.21$-$D.31 Imp. netos productos}
-   {B.1 PIB (VAB $+$ impuestos)}}
+  \cuentaT{c1}{0cm,0pt}{I. Producción}{Empleos}{Recursos}
+   {Consumos intermedios}
+   {Producción}{Imp. netos sobre los productos}
+   {PIB (VAB $+$ impuestos)}}
   % II.1.1: explotación
-  \capa{3}{\renewcommand{\colorT}{tceemorado}
-  \cuentaT{c211}{0,-2.0}{II.1.1 Explotación}{Empleos}{Recursos}
-   {D.1 Remuneración asalariados\\ D.2$-$D.3 Imp. netos prod. e import.}
-   {B.1 PIB}{}
-   {B.2 $+$ B.3 EBE y renta mixta}}
+  \capa{3}{\renewcommand{\colorT}{tceemorado}\fila{c1}{c1}
+  \cuentaT{c211}{0cm,\yfila pt}{II.1.1 Explotación}{Empleos}{Recursos}
+   {Remuneración de asalariados\\ Imp. netos s/ producción e import.}
+   {PIB}{}
+   {Excedente y renta mixta}}
   \capa{3}{\draw[flecha] (c1-s.east) -- (c1-s.east -| gL) |- (c211-r.east);}
   % II.1.2: asignación de la renta primaria
-  \capa{4}{\renewcommand{\colorT}{tceemorado}
-  \cuentaT{c212}{0,-3.9}{II.1.2 Asignación de la renta primaria}{Empleos}{Recursos}
-   {D.4 Rentas de la propiedad}
-   {B.2 $+$ B.3 EBE y renta mixta}{D.1 Remuneración asalariados\\ D.2$-$D.3 Imp. netos prod. e import.\\ D.4 Rentas de la propiedad}
-   {B.5 Saldo de rentas primarias (RNB)}}
+  \capa{4}{\renewcommand{\colorT}{tceemorado}\fila{c211}{c211}
+  \cuentaT{c212}{0cm,\yfila pt}{II.1.2 Asignación de la renta primaria}{Empleos}{Recursos}
+   {Rentas de la propiedad}
+   {Excedente y renta mixta}{Remuneración de asalariados\\ Imp. netos s/ producción e import.\\ Rentas de la propiedad}
+   {Saldo de rentas primarias (RNB)}}
   \capa{4}{\draw[flecha] (c211-s.east) -- (c211-s.east -| gL) |- (c212-r.east);}
   % II.2: distribución secundaria
-  \capa{5}{\renewcommand{\colorT}{tceemorado}
-  \cuentaT{c22}{0,-6.3}{II.2 Distribución secundaria de la renta}{Empleos}{Recursos}
-   {D.5 Imp. corrientes s/ renta\\ D.61 Cotizaciones sociales\\ D.62 Prestaciones sociales\\ D.7 Otras transferencias}
-   {B.5 Saldo de rentas primarias}{D.5 Imp. corrientes s/ renta\\ D.61 Cotizaciones sociales\\ D.62 Prestaciones sociales\\ D.7 Otras transferencias}
-   {B.6 Renta disponible (RNDB)}}
+  \capa{5}{\renewcommand{\colorT}{tceemorado}\fila{c212}{c212}
+  \cuentaT{c22}{0cm,\yfila pt}{II.2 Distribución secundaria de la renta}{Empleos}{Recursos}
+   {Imp. corrientes sobre la renta\\ Cotizaciones sociales\\ Prestaciones sociales\\ Otras transferencias corrientes}
+   {Saldo de rentas primarias}{Imp. corrientes sobre la renta\\ Cotizaciones sociales\\ Prestaciones sociales\\ Otras transferencias corrientes}
+   {Renta disponible (RNDB)}}
   \capa{5}{\draw[flecha] (c212-s.east) -- (c212-s.east -| gL) |- (c22-r.east);}
   % II.4.1: utilización de la renta disponible
-  \capa{6}{\renewcommand{\colorT}{tceemorado}
-  \cuentaT{c241}{0,-8.8}{II.4.1 Utilización de la renta disponible}{Empleos}{Recursos}
-   {P.3 Gasto en consumo final\\ D.8 Ajuste por pensiones}
-   {B.6 Renta disponible}{D.8 Ajuste por pensiones}
-   {B.8 Ahorro}}
+  \capa{6}{\renewcommand{\colorT}{tceemorado}\fila{c22}{c22}
+  \cuentaT{c241}{0cm,\yfila pt}{II.4.1 Utilización de la renta disponible}{Empleos}{Recursos}
+   {Gasto en consumo final\\ Ajuste por pensiones}
+   {Renta disponible}{Ajuste por pensiones}
+   {Ahorro}}
   \capa{6}{\draw[flecha] (c22-s.east) -- (c22-s.east -| gL) |- (c241-r.east);}
   % II.3: redistribución de la renta en especie (en paralelo)
-  \capa{7}{\renewcommand{\colorT}{tceemorado}
-  \cuentaT{c23}{8.9,-8.8}{II.3 Redistribución de la renta en especie}{Empleos}{Recursos}
-   {D.63 Transferencias sociales en especie}
-   {B.6 Renta disponible}{D.63 Transf. sociales en especie}
-   {B.7 Renta disponible ajustada}}
+  \capa{7}{\renewcommand{\colorT}{tceemorado}\fila{c22}{c22}
+  \cuentaT{c23}{9.3cm,\yfila pt}{II.3 Redistribución de la renta en especie}{Empleos}{Recursos}
+   {Transferencias sociales en especie}
+   {Renta disponible}{Transferencias sociales en especie}
+   {Renta disponible ajustada}}
   \capa{7}{\draw[flecha] (c22-s.east) -- (c22-s.east -| gR) |- (c23-r.east);}
   % II.4.2: utilización de la renta disponible ajustada (en paralelo)
-  \capa{8}{\renewcommand{\colorT}{tceemorado}
-  \cuentaT{c242}{8.9,-10.7}{II.4.2 Utilización de la renta disp. ajustada}{Empleos}{Recursos}
-   {P.4 Consumo final efectivo\\ D.8 Ajuste por pensiones}
-   {B.7 Renta disponible ajustada}{D.8 Ajuste por pensiones}
-   {B.8 Ahorro (el mismo)}}
+  \capa{8}{\renewcommand{\colorT}{tceemorado}\fila{c241}{c23}
+  \cuentaT{c242}{9.3cm,\yfila pt}{II.4.2 Utilización de la renta disp. ajustada}{Empleos}{Recursos}
+   {Consumo final efectivo\\ Ajuste por pensiones}
+   {Renta disponible ajustada}{Ajuste por pensiones}
+   {Ahorro (el mismo)}}
   \capa{8}{\draw[flecha] (c23-s.east) -- (c23-s.east -| gR) |- (c242-r.east);}
   % III.1: capital
-  \capa{9}{\renewcommand{\colorT}{tceeverde}
-  \cuentaT{c31}{0,-10.7}{III.1 Capital}{Var. de los activos}{Var. de pasivos y patrimonio neto}
-   {P.51g FBC fija\\ \hspace*{0.6em}(consumo de capital fijo: 150)\\ P.52$+$P.53 Existencias y obj. valiosos}
-   {B.8 Ahorro}{D.9 Transf. de capital a cobrar\\ D.9 Transf. de capital a pagar}
-   {B.9 Capacidad de financiación}}
+  \capa{9}{\renewcommand{\colorT}{tceeverde}\fila{c241}{c23}
+  \cuentaT{c31}{0cm,\yfila pt}{III.1 Capital}{Var. de los activos}{Var. de pasivos y patrimonio neto}
+   {Formación bruta de capital fijo\\ \hspace*{0.6em}(consumo de capital fijo: 150)\\ Existencias y objetos valiosos}
+   {Ahorro}{Transf. de capital a cobrar\\ Transf. de capital a pagar}
+   {Capacidad de financiación}}
   \capa{9}{\draw[flecha] (c241-s.east) -- (c241-s.east -| gL) |- (c31-r.east);}
   % III.2: financiera
-  \capa{10}{\renewcommand{\colorT}{tceeverde}
-  \cuentaT{c32}{0,-12.9}{III.2 Financiera}{Var. de los activos}{Var. de los pasivos}
-   {F Adquisición neta de activos financieros}
-   {F Contracción neta de pasivos}{}
-   {B.9F $=133-100$}}
-  \capa{10}{\draw[flecha, dashed] (c31-s.east) -- (c31-s.east -| gL) |- node[pos=0.75, below, font=\tiny, text=tceemorado] {igual saldo} (c32-s.east);}
+  \capa{10}{\renewcommand{\colorT}{tceeverde}\fila{c31}{c242}
+  \cuentaT{c32}{0cm,\yfila pt}{III.2 Financiera}{Var. de los activos}{Var. de los pasivos}
+   {Adquisición neta de activos financieros}
+   {Contracción neta de pasivos}{}
+   {Cap. de financiación $=133-100$}}
+  \capa{10}{\draw[flecha, dashed] (c31-s.east) -- (c31-s.east -| gL) |- node[pos=0.75, below, font=\scriptsize, text=tceemorado] {igual saldo} (c32-s.east);}
   % III.3: otras variaciones (en paralelo)
-  \capa{11}{\renewcommand{\colorT}{tceeverde}
-  \cuentaT{c33}{8.9,-12.9}{III.3 Otras variaciones de los activos}{Var. de los activos}{Var. de pasivos y patrimonio neto}
-   {K.1-K.6 Volumen (catástrofe)\\ K.7 Revalorización}
-   {K.7 Revalorización}{}
-   {B.10.2$+$B.10.3 Var. del patrimonio neto}}
+  \capa{11}{\renewcommand{\colorT}{tceeverde}\fila{c31}{c242}
+  \cuentaT{c33}{9.3cm,\yfila pt}{III.3 Otras variaciones de los activos}{Var. de los activos}{Var. de pasivos y patrimonio neto}
+   {Volumen (catástrofes)\\ Revalorización}
+   {Revalorización}{}
+   {Variación del patrimonio neto}}
   % IV: balances inicial y final
+  \capa{12}{\renewcommand{\colorT}{tceeazul}\fila{c32}{c33}
+  \cuentaT{c41}{0cm,\yfila pt}{IV.1 Balance inicial}{Activos}{Pasivos y patrimonio neto}
+   {No financieros\\ Financieros}
+   {Pasivos}{}
+   {Patrimonio neto}}
   \capa{12}{\renewcommand{\colorT}{tceeazul}
-  \cuentaT{c41}{0,-14.8}{IV.1 Balance inicial}{Activos}{Pasivos y patrimonio neto}
-   {AN No financieros\\ AF Financieros}
-   {AF Pasivos}{}
-   {B.90 Patrimonio neto}}
-  \capa{12}{\renewcommand{\colorT}{tceeazul}
-  \cuentaT{c43}{8.9,-14.8}{IV.3 Balance final}{Activos}{Pasivos y patrimonio neto}
-   {AN No financieros\\ AF Financieros}
-   {AF Pasivos}{}
-   {B.90 Patrimonio neto}}
-  \capa{12}{\draw[flecha, tceeazul] (c41-s.east) -- node[pos=0.72, below, font=\tiny\bfseries, align=center, text=tceeazul] {$+$ IV.2 variaciones del balance:\\ $(235-150+20-22)+20=103$} (c43-s.west);}
+  \cuentaT{c43}{9.3cm,\yfila pt}{IV.3 Balance final}{Activos}{Pasivos y patrimonio neto}
+   {No financieros\\ Financieros}
+   {Pasivos}{}
+   {Patrimonio neto}}
+  \capa{12}{\draw[flecha, tceeazul] (c41-s.east) -- node[pos=0.65, below, font=\scriptsize\bfseries, align=center, text=tceeazul] {$+$ IV.2 variaciones del balance:\\ $(235-150+20-22)+20=103$} (c43-s.west);}
 \end{tikzpicture}
 \end{document}

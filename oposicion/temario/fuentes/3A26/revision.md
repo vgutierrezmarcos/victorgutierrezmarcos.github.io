@@ -205,3 +205,9 @@ Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
 - **Nobel**: la nota de \autor{Hicks} y la de \autor{Stigler} pasan a su primera mención; nuevas: \autor{Lucas} 1995 y \autor{Prescott} 2004 (nota de las islas), \autor{Stiglitz} 2001 y \autor{Tobin} 1981 (nota de la notación de $q$), \autor{Nash} 1994 (nota de la negociación), \autor{Sargent} 2011 (excedente fundamental) y, **premio 2026**, \autor{Robert Hall}: la respuesta de los salarios rígidos al puzle de \autor{Shimer} se atribuye ahora con \textcite{Hall2005Employment}, con la nota del Nobel 2026 (con \autor{Woodford}).
 - **4.º ejercicio**: ya había 4.A.16 (4 veces); no se añade más.
 - **Dichos**: se conservan el del enganche («cada oveja con su pareja»), «quien busca, halla» (salario de reserva), «ni tanto ni tan calvo» (condición de Hosios), «vísteme despacio, que tengo prisa» (costes cuadráticos) y «más vale malo conocido que bueno por conocer» (banda de inacción), todos explicados en su sitio; se quita la repetición de «ni tanto ni tan calvo» en el anexo.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 526: las 3 perturbaciones de Blanchard y Diamond (actividad agregada, reasignación, población activa).

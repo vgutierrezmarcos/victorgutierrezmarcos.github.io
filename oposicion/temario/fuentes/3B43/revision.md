@@ -151,3 +151,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III**: `tipos-bce` vuelve como apoyo al empezar; `diferenciales` como apoyo; el modelo de la crisis en la pizarra: los pasos 1-3 como fórmulas, la función clave `eq:autocumplida` recuadrada y `crisis-autocumplida` por capas (ejes, bisectriz, curva, equilibrios, huida, $\kappa'$, respaldo); `inflacion-zona-euro` como apoyo; la talla única: `eq:talla-unica` recuadrada y `taylor-paises` como apoyo.
 - **Funciones clave que se conservan**: `eq:asimetria` (I.2), `eq:autocumplida` (III.1-III.2) y `eq:talla-unica` (III.4).
 - Nunca se dice el número de un tema en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de las funciones básicas del Eurosistema: las otras 5 funciones del BCE, en itemize; la del tipo de cambio sigue en párrafo aparte.

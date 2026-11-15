@@ -170,3 +170,7 @@ Todas aplicadas con la opción recomendada (13/11/2026); para que Víctor las co
 - **III.3**: las 4 ecuaciones de Polak en una columna y el techo de crédito `eq:techo-credito` recuadrado, que se queda hasta el final (`conservar:`); las identidades de la cuenta corriente, apoyo.
 - **Funciones clave que se conservan**: `eq:techo-credito` (desde III.3) y `eq:catalitica` (desde III.1, en una esquina).
 - Nunca se dice el número de un tema en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba (la de las aportaciones monetarias y fiscales es un solo contraste en una frase).

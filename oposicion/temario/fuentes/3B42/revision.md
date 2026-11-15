@@ -43,7 +43,7 @@ Revisión completa del 14/11/2026 (entrega 1: tema y ficha de repaso; sin vídeo
 | Amarillo (anexo 4: datos del CAD 2017, esfuerzo de ayuda, cuadro 5, ODM y Compromiso de Barcelona) | Bloque | Datos actualizados en III.2.1 (gráfico de la AOD por Estados 2025); los ODM, Monterrey, el Compromiso de Barcelona y la Agenda 2030 pasan al anexo C, corregidos |
 | Apartados vacíos: FSB, «Acuerdos en vigor con países europeos/americanos/…», Relevancia, Opinión e Idea final de la conclusión | — | Escritos (II.2 por socios; conclusión completa) |
 | Imágenes 1-7 y cuadros 1-5 | Capturas (BIS, BCE, Wikipedia, OCDE, Camarero et al.) | Rehechas como gráficos y figuras TikZ con datos de 2025 o como tablas |
-| Enlaces del original (Fichas del PE sobre socios comerciales; Comisión, papel internacional del euro; BIS; BCE; europa.eu adhesión) | — | Sustituidos por las páginas vigentes en la bibliografía (`CE2026PosicionComercio`, `BCE2026Euro`, `CE2020Metodologia`…); Wikipedia y Europa Press se quitan |
+| Enlaces del original (Fichas del PE sobre socios comerciales; Comisión, papel internacional del euro; BIS; BCE; europa.eu adhesión) | — | Sustituidos por las páginas vigentes en la bibliografía (`CE2026PosicionComercio`, `BCE2026PapelEuro`, `CE2020Metodologia`…); Wikipedia y Europa Press se quitan |
 | Anexo 2 (tipo de cambio del euro) | 2 páginas | Resumido en una viñeta del anexo A, con el art. 219 TFUE |
 | Bibliografía (Camarero et al., tema de J. L. Cordero, página de la Comisión) | — | Los temas de preparadores no se citan; Camarero et al. no se cita porque sus cuadros se sustituyen por datos oficiales |
 | Enlace de test | — | Caja estándar del simulador (`tema=3.B.42`) |
@@ -110,3 +110,7 @@ Revisión completa del 14/11/2026 (entrega 1: tema y ficha de repaso; sin vídeo
   - III: el gráfico del reparto de la ayuda en la pizarra (5 capas: caja, $m_1$, $m_2$, $E$, reparto igual y pérdida) con $m_1=m_2$; los gráficos de la AOD por Estados, del IVDCI y la cronología, como apoyo.
 - **Funciones clave que se conservan**: $F>c\,M_R$ (en I), $C\leq g+p\,\delta^T B$ (en II.1), $m_1=m_2$ (en III).
 - No se dicen números de temas en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

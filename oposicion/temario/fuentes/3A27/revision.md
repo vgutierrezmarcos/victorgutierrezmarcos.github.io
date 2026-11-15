@@ -195,3 +195,9 @@ Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
 - **Nobel**: las notas de \autor{Hicks}, \autor{Nash} y \autor{Solow} pasan a su primera mención en el cuerpo; nuevas: \autor{Leontief} 1973 (derecho a gestionar) y, **premio 2026**, \autor{Robert Hall}, ahora nombrado con \textcite{Hall1982Importance} en los contratos implícitos, con su nota (con \autor{Woodford}).
 - **4.º ejercicio**: ya había 4.A.16 (6 veces); no se añade más.
 - **Dichos**: se conservan el del enganche («lo barato sale caro»), «hablando se entiende la gente» (negociación, en la nota del cante) y «a las duras y a las maduras» (contratos implícitos). Las 2 frases sueltas del cuerpo se integran: «Lo barato sale caro.» pasa a «Es donde el refrán del principio se cumple: a la empresa, el trabajo barato le puede salir caro»; «Es un contrato a las duras y a las maduras» se explica (mismo salario en los años buenos y malos porque la empresa asegura la renta).
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 572: la pendiente de la curva de contratos con afiliados neutrales y amantes del riesgo (2 casos).

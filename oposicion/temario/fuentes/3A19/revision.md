@@ -205,3 +205,13 @@ Se comparan las URL del Word original con las de `3A19.tex` y `3A19.bib` (CRITER
 - **Nobel**: la nota de 1994 (\autor{Nash}, \autor{Harsanyi}, \autor{Selten}) pasa a la primera mención de \autor{Nash} (relevancia); la de 1994-2005 de la historia queda solo para \autor{Aumann} y \autor{Schelling}. Nuevas: \autor{Stigler} 1982 (cárteles), \autor{Tirole} 2014 (ahora nombrado como autor del manual que ordena la NOI) y \autor{Shapley} 2012 (valor de Shapley).
 - **4.º ejercicio**: ya tenía \vertema{4.A.15}; no se añade más.
 - **Dichos**: se conservan el del enganche («entre bomberos no se pisan la manguera») y «donde las dan, las toman», que es la traducción habitual de \emph{tit for tat} y nombra la estrategia.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los mercados en los que la estructura dicta la variable (l. 574): Cournot y Bertrand en 2 viñetas.
+- La nota de los 4 pilares de la política de competencia de la UE (l. 1105): 4 viñetas; las competencias exclusivas en párrafo aparte.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

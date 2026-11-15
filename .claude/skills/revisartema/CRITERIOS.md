@@ -431,6 +431,13 @@ que cargan `tcee.sty` y `tcee-repaso.sty`.
   en el mismo párrafo o dentro de la misma viñeta, nunca tras una línea en
   blanco ni tras `\end{itemize}`. Lo comprueba `verificar-tema.py`.
 
+
+### Revisión de la parte A de Víctor (14/11/2026)
+
+- **«Rule of thumb» en inglés**, nunca «regla del pulgar» ni «regla de pulgar»: «hogares \emph{rule of thumb}».
+- **Listas en las notas al pie**: si una nota distingue varios conceptos (p. ej., neutralidad, superneutralidad y dicotomía clásica), van en un `itemize` dentro de la `\footnote{…}`; `tcee.sty` les da viñetas pequeñas y sangría corta, con el formato de la nota.
+- **Marcadores del PDF**: salen todos los niveles, hasta `\paragraph` (a) Idea…) y `\subparagraph` (i) Supuestos…). No hace falta hacer nada; los títulos de esos niveles tienen que ser cortos.
+
 ## 3. Qué hacer con cada marca del Word original
 
 | Marca | Qué hacer |
@@ -670,6 +677,10 @@ el texto original y lo que se hizo.
   `imagencaja` o `tablacaja` de
   `tcee.sty` en lugar de `figure`/`table` (mismo `\caption`, `\label` y
   `\fuente`, misma numeración; en la web y en Word salen dentro de la caja).
+
+
+- **Figuras de página entera**: `\graficopagina{x}` (hasta el 90 % de la altura; `\grafico` se limita al 78 %), en un flotante solo en su página o tras un título de anexo (Víctor, 15/11/2026).
+- **Sin hueco hasta la fuente** (Víctor, 14/11/2026): `construir-tema.py` recorta el blanco de arriba y de abajo de cada gráfico compilado (`comun.recortar_vertical`), sin tocar el ancho, para que los pasos de un gráfico conserven la escala. No dibujar nodos invisibles que alarguen el gráfico en vertical.
 
 ## 8. Guion del cante y vídeo
 

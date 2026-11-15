@@ -259,3 +259,8 @@ Todas aplicadas ya con la opción indicada; basta confirmarlas o cambiarlas.
 - **Refranes y frases** (13/11/2026): «tanto va el cántaro a la fuente que al final se rompe» (I.1) y «no es la velocidad lo que mata, es la parada súbita» (II.2.3), integrados en el texto; «la fe mueve montañas» y «no hay dos sin tres» ya no están.
 - **Al empezar**, la convención del tipo de cambio (directo: si sube, se deprecia).
 - **No se canta**: los anexos A-C, la caja gris de la derivada de Krugman, las notas al pie (curiosidades para las preguntas del tribunal) y la tabla completa de los datos recientes de Turquía y Argentina (basta nombrarlos).
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la iliquidez internacional: «Hay que distinguir 2 descalces:» de plazos y de monedas, en itemize.
+- No se convierten: las demás (un solo argumento) ni las de Nobel.

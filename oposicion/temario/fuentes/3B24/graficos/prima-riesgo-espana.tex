@@ -2,10 +2,11 @@
 \input{../../../latex/tikz-tcee}
 \usepackage{pgfplotstable}
 \begin{document}
-% Prima de riesgo de España frente a Alemania (10 años, media mensual, pb),
-% enero de 1993 a octubre de 2026. BCE, IRS (cabecera de ../datos/prima-riesgo-espana.csv).
-% Eje x: 1993 + n.º de mes/12. Máximo: julio de 2012, 555 pb (fila 234: 1993 + 234/12 = 2012,5).
-% Último dato con 2.ª comprobación: septiembre de 2026, 45 pb.
+% Primas de riesgo de España y de Francia frente a Alemania (10 años, media
+% mensual, pb), enero de 1993 a octubre de 2026. BCE, IRS (cabecera de
+% ../datos/prima-riesgo-espana.csv). Eje x: 1993 + n.º de mes/12.
+% España: máximo en julio de 2012, 555 pb (fila 234: 1993 + 234/12 = 2012,5); octubre de 2026, 65 pb.
+% Francia: máximo en noviembre de 2011, 154 pb (fila 226); octubre de 2026, 147 pb (fila 405).
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/prima-riesgo-espana.csv}\pr
 \begin{tikzpicture}[tcee]
 \begin{axis}[width=14cm,height=6.2cm,xmin=1993,xmax=2027,ymin=-50,ymax=600,
@@ -17,13 +18,20 @@
   \capa{1}{\dicraya{(1993,0) (2027,0)}
     \dicraya[dicumbral]{(1999,-50) (1999,600)}
     \dicrotulo[font=\scriptsize,anchor=north west,text=tceegris!60!black]{(1999.2,590)}{euro}}
-  % 2: la prima de riesgo
+  % 2: la prima de riesgo de España
   \capa{2}{\addplot[very thick,tceemorado] table[x expr=1993+\coordindex/12,y=prima_pb] {\pr};}
-  % 3: máximo y último dato
-  \capa{3}{\addplot[dicpuntos=tceemorado,forget plot] coordinates {(2012.5,555) (2026.667,45)};}
-  % 4: rótulos
-  \capa{4}{\dicrotulo[font=\footnotesize,anchor=west,text=tceemorado]{(2012.8,560)}{555 (julio de 2012)}
-    \dicrotulo[font=\footnotesize,anchor=south,text=tceemorado]{(2026.3,70)}{45}}
+  % 3: la prima de riesgo de Francia
+  \capa{3}{\addplot[very thick,tceenaranja] table[x expr=1993+\coordindex/12,y=prima_fr_pb] {\pr};}
+  % 4: máximos y último dato
+  \capa{4}{\addplot[dicpuntos=tceemorado,forget plot] coordinates {(2012.5,555) (2026.75,65)};
+    \addplot[dicpuntos=tceenaranja,forget plot] coordinates {(2011.833,154) (2026.75,147)};}
+  % 5: rótulos (sin leyenda: cada serie rotulada en el hueco de 2001-2009)
+  \capa{5}{\dicrotulo[font=\footnotesize,anchor=west,text=tceemorado]{(2001,470)}{España}
+    \dicrotulo[font=\footnotesize,anchor=west,text=tceenaranja]{(2001,410)}{Francia}
+    \dicrotulo[font=\footnotesize,anchor=west,text=tceemorado]{(2012.8,560)}{555 (julio de 2012)}
+    \dicrotulo[font=\footnotesize,anchor=south west,text=tceenaranja]{(2011.9,158)}{154}
+    \dicrotulo[font=\footnotesize,anchor=west,text=tceemorado]{(2027.1,55)}{65}
+    \dicrotulo[font=\footnotesize,anchor=west,text=tceenaranja]{(2027.1,150)}{147}}
 \end{axis}
 \end{tikzpicture}
 \end{document}

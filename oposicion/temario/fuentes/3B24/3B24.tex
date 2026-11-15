@@ -27,7 +27,11 @@
 
 \item \textbf{\emph{Contextualización}}:
   \begin{itemize}
-  \item \emph{Inversión y sistema financiero}: una \concepto{inversión} es el compromiso presente de dinero o de otros recursos con la expectativa de obtener beneficios futuros, y tiene 2 dimensiones, el \emph{tiempo} y el \emph{riesgo}\nocite{BodieKaneMarcus2021Investments}.\footnote{Se distinguen 2 tipos de activos. Los \emph{activos reales} (tierra, edificios, máquinas, conocimiento) determinan la capacidad productiva de una economía y no son el pasivo de nadie. Los \emph{activos financieros} son derechos sobre los activos reales o sobre las rentas que generan: no contribuyen directamente a la capacidad productiva, y un activo financiero de un agente es siempre, a la vez, el pasivo (o el patrimonio neto) de otro, el emisor.} El \concepto{sistema financiero} canaliza el ahorro de quien gasta menos de lo que gana hacia quien quiere gastar más: un trabajador que ahorra para su jubilación puede prestar a la empresa que necesita comprar maquinaria, y los 2 salen ganando.
+  \item \emph{Inversión y sistema financiero}: una \concepto{inversión} es el compromiso presente de dinero o de otros recursos con la expectativa de obtener beneficios futuros, y tiene 2 dimensiones, el \emph{tiempo} y el \emph{riesgo}\nocite{BodieKaneMarcus2021Investments}.\footnote{Se distinguen 2 tipos de activos:
+\begin{itemize}
+\item los \emph{activos reales} (tierra, edificios, máquinas, conocimiento) determinan la capacidad productiva de una economía y no son el pasivo de nadie;
+\item los \emph{activos financieros} son derechos sobre los activos reales o sobre las rentas que generan: no contribuyen directamente a la capacidad productiva, y un activo financiero de un agente es siempre, a la vez, el pasivo (o el patrimonio neto) de otro, el emisor.
+\end{itemize}} El \concepto{sistema financiero} canaliza el ahorro de quien gasta menos de lo que gana hacia quien quiere gastar más: un trabajador que ahorra para su jubilación puede prestar a la empresa que necesita comprar maquinaria, y los 2 salen ganando.
   \item \emph{Las 3 familias de activos financieros}:
     \begin{itemize}
     \item los de \concepto{renta variable}, que dan derechos de propiedad y cuya remuneración depende de los resultados del emisor \vertema{3.B.23};
@@ -50,7 +54,7 @@
   \item La exposición tiene 3 partes, que siguen el orden del título y van de lo más sencillo (un bono, un tipo) a lo más general (muchos plazos, muchos tipos) y al riesgo de la cartera:
     \begin{itemize}
     \item en el bloque~\ref{sec:instrumentos}, el instrumento: qué es un bono, qué tipos hay y cómo se calculan su precio y su rentabilidad;
-    \item en el bloque~\ref{sec:etti}, el plazo: la estructura temporal de los tipos de interés, cómo se construye, qué teorías explican su forma y qué dicen sus movimientos;
+    \item en el bloque~\ref{sec:etti}, el plazo: la estructura temporal de los tipos de interés, qué teorías explican su forma y qué dicen sus movimientos;
     \item en el bloque~\ref{sec:riesgo}, el riesgo: qué riesgos tiene un bono y cómo se miden y se gestionan los de tipo de interés con la duración y la convexidad.
     \end{itemize}
   \end{itemize}
@@ -59,14 +63,14 @@
 \begin{esquema}
 \textbf{3.B.24. Renta fija: precio, curva de tipos, duración y convexidad}\\[2pt]
 Introducción\esqtiempo{2,5}\\
-I. Los instrumentos de renta fija: precio y rendimiento\esqtiempo{8}\\
+I. Los instrumentos de renta fija: precio y rendimiento\esqtiempo{9}\\
 \hspace*{1.5em}1. Definición: renta fija frente a renta variable\\
 \hspace*{1.5em}2. Elementos de un bono\\
 \hspace*{1.5em}3. Tipos de bono\\
 \hspace*{1.5em}4. Determinación del precio de los bonos\\
 \hspace*{1.5em}5. Determinación del rendimiento de los bonos\\
-II. La estructura temporal de los tipos de interés\esqtiempo{9}\\
-\hspace*{1.5em}1. Definición: tipos de contado, tipos a plazo y construcción\\
+II. La estructura temporal de los tipos de interés\esqtiempo{8}\\
+\hspace*{1.5em}1. Definición: tipos de contado y tipos a plazo\\
 \hspace*{1.5em}2. Teorías explicativas\\
 \hspace*{1.5em}3. Formas y movimientos de la curva\\
 III. Valoración del riesgo y del rendimiento: duración y convexidad\esqtiempo{9,5}\\
@@ -76,7 +80,7 @@ Conclusión\esqtiempo{1}
 \end{esquema}
 
 \begin{notaopositor}
-Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{1}; I.2, \tiempo{1}; I.3, \tiempo{1,5}; I.4, \tiempo{2,5}; I.5, \tiempo{2}); II, \tiempo{9} (II.1, \tiempo{2,5}: tipos de contado y a plazo, \tiempo{1,5}, y Nelson-Siegel-Svensson, \tiempo{1}; II.2, \tiempo{4}: expectativas, \tiempo{1,5}, prima por liquidez, \tiempo{1}, segmentación y hábitat, \tiempo{1}, y modelos de \autor{Vasicek} y CIR, \tiempo{0,5}; II.3, \tiempo{2,5}); III, \tiempo{9,5} (III.1, \tiempo{1,5}; III.2, \tiempo{8}: \autor{Malkiel}, \tiempo{1,5}, \autor{Macaulay}, \tiempo{2}, modificada, \tiempo{1,5}, convexidad, \tiempo{1,5}, y gestión, \tiempo{1,5}), y conclusión, \tiempo{1}. Los 4 epígrafes del título están en los 3 apartados, en su orden: los 2 primeros, en el bloque~\ref{sec:instrumentos}. Las funciones clave son el precio del bono \eqref{eq:precio-bono}, el tipo largo \eqref{eq:tipo-largo} y la aproximación de la variación del precio con la duración y la convexidad \eqref{eq:precio-duracion-convexidad}. Un mismo bono a 2 años sirve de ejemplo en todo el tema. No se cantan las cajas grises, las notas al pie ni los anexos: son para las preguntas del tribunal.
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9} (I.1, \tiempo{1}; I.2, \tiempo{1}; I.3, \tiempo{2}; I.4, \tiempo{2,5}; I.5, \tiempo{2,5}: rentabilidad corriente, \tiempo{0,5}, TIR, \tiempo{1,5}, y rentabilidad realizada, \tiempo{0,5}); II, \tiempo{8} (II.1, \tiempo{1,5}; II.2, \tiempo{4}: expectativas, \tiempo{2}, prima por liquidez, \tiempo{1}, y segmentación y hábitat, \tiempo{1}; II.3, \tiempo{2,5}); III, \tiempo{9,5} (III.1, \tiempo{1,5}; III.2, \tiempo{8}: \autor{Malkiel}, \tiempo{1,5}, \autor{Macaulay}, \tiempo{2}, modificada, \tiempo{1,5}, convexidad, \tiempo{1,5}, y gestión, \tiempo{1,5}), y conclusión, \tiempo{1}. Los 4 epígrafes del título están en los 3 apartados, en su orden: los 2 primeros, en el bloque~\ref{sec:instrumentos}. Las funciones clave son el precio del bono con los tipos de contado \eqref{eq:precio-contado}, el tipo largo \eqref{eq:tipo-largo}, la duración de \autor{Macaulay} \eqref{eq:macaulay}, la duración modificada \eqref{eq:duracion-modificada} y la aproximación de la variación del precio con la duración y la convexidad \eqref{eq:precio-duracion-convexidad}. Un mismo bono a 2 años sirve de ejemplo en todo el tema. No se cantan las cajas grises, las notas al pie ni los anexos: son para las preguntas del tribunal.
 \end{notaopositor}
 
 \begin{anotaciones}
@@ -89,7 +93,7 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 
 % ==========================================================================
 \section{Los instrumentos de renta fija:\cortetitulo{} precio y rendimiento}\label{sec:instrumentos}
-\minutos{8}
+\minutos{9}
 
 \begin{itemize}
 \item \emph{Conclusión anticipada}: un bono es una promesa de pagos fijados; vale lo que valen esos pagos descontados, cada uno al tipo de su plazo, y su rentabilidad a vencimiento resume esos tipos en uno solo. Por eso precio y rentabilidad se mueven siempre en sentido contrario.
@@ -162,19 +166,7 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \subsection{Tipos de bono}\label{sec:tipos}
 
 \begin{itemize}
-\item Los bonos se clasifican con muchos criterios; 4 son los que importan para valorarlos (tabla~\ref{tab:tipos-bono}). El detalle de cada clasificación, y las de los mercados, la emisión y la divisa, está en el anexo~\ref{anexo:clasificaciones}.
-  \begin{itemize}
-  \item \emph{Por el emisor}: instituciones supranacionales, Estados soberanos, administraciones territoriales y agencias, empresas y bancos, y vehículos de titulización. Cuanto peor es la calidad crediticia del emisor, más rentabilidad exige el mercado (\ref{sec:rating}).
-  \item \emph{Por el cupón}: fijo; variable, con un tipo de referencia más un diferencial;\footnote{Los tipos de referencia más usados en euros son el \emph{Euríbor}, al que los bancos de la zona del euro obtienen financiación sin garantía a 1 semana y a 1, 3, 6 y 12 meses, calculado desde noviembre de 2019 con una metodología híbrida que usa operaciones reales siempre que las hay\nocite{EMMI2019Euribor}, y el \emph{€STR}, que publica el BCE desde el 2 de octubre de 2019 con las operaciones a un día sin garantía del día hábil anterior\nocite{BCE2026ESTRWeb}. El €STR sustituyó al EONIA, que desde esa fecha se calculó como el €STR más 8,5 puntos básicos hasta que dejó de publicarse el 3 de enero de 2022\nocite{BCE2019TransicionEONIA}. En dólares, el LÍBOR dejó de publicarse con un panel de bancos el 30 de junio de 2023, y lo sustituyó el SOFR\nocite{FCA2026LIBOR}.} indexado a la inflación; y \concepto{cupón cero}, que no paga cupones y se emite al descuento.
-  \item \emph{Por las opciones que lleva dentro} \vertema{3.B.25}:
-    \begin{itemize}
-    \item el \concepto{bono amortizable anticipadamente} (\emph{callable}) da al \emph{emisor} el derecho a recomprarlo a un precio fijado antes del vencimiento: lo ejercerá si los tipos bajan, para refinanciarse más barato. Como el inversor le vende esa opción, exige a cambio un cupón más alto;
-    \item el \concepto{bono con opción de venta} (\emph{putable}) da al \emph{tenedor} el derecho a devolverlo al emisor a un precio fijado: lo ejercerá si los tipos suben, para reinvertir a tipos más altos. Como el inversor compra esa opción, acepta un cupón más bajo, y esa es la ventaja del emisor;
-    \item el \concepto{bono convertible} da al tenedor el derecho a cambiarlo por acciones del emisor en una proporción fijada;
-    \item los \concepto{bonos convertibles contingentes} (CoCos), propios de los bancos, se convierten en acciones o pierden su valor automáticamente, sin que lo decidan ni el emisor ni el inversor, si el capital ordinario de nivel 1 (CET1) del banco cae por debajo de un umbral, de al menos el 5,125~\% de sus activos ponderados por riesgo\nocite{UE2013CRR} \vertema{3.B.3} \vertema{3.B.27}.
-    \end{itemize}
-  \item \emph{Por el vencimiento}: en el \concepto{mercado monetario} se negocian los títulos a corto plazo, hasta un año (letras del Tesoro, pagarés de empresa, certificados de depósito),\footnote{En España se hablaba tradicionalmente de 18 meses, el plazo máximo habitual de los pagarés de empresa; las estadísticas europeas llaman de corto plazo a los valores con un vencimiento original de hasta un año.} y en el \concepto{mercado de capitales}, los de más plazo. El Tesoro emite letras a 3, 6, 9 y 12 meses\nocite{Tesoro2026Letras}, \emph{bonos} de 2 a 5 años (hoy, a 3 y 5) y \emph{obligaciones} de más de 5 (hoy, a 10, 15, 30 y 50)\nocite{Tesoro2026BonosObligaciones} \vertema{4.B.26}.
-  \end{itemize}
+\item Los bonos se clasifican con muchos criterios: 4 importan para valorarlos (el emisor, el cupón, las opciones y el vencimiento; tabla~\ref{tab:tipos-bono}) y otros 2 sirven para situarlos en el mercado (la forma de emisión y la divisa).
 \end{itemize}
 
 \begin{table}[H]
@@ -185,9 +177,9 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \toprule
 \rowcolor{tceeazulpalido}\textbf{Criterio} & \textbf{Tipos} & \textbf{Qué cambia para valorarlo}\\
 \midrule
-\emph{Emisor} & Supranacional, soberano, territorial y agencias, empresa y banco, titulización & El diferencial de crédito sobre el tipo sin riesgo\\
+\emph{Emisor} & Público (supranacional, soberano, territorial y agencias) y privado o \emph{corporate} (empresa, titulización) & El diferencial de crédito sobre el tipo sin riesgo\\
 \addlinespace[0.2em]
-\emph{Cupón} & Fijo, variable, indexado, cupón cero & Si los flujos se conocen de antemano y cuánto se cobra pronto\\
+\emph{Cupón} & Fijo, variable, indexado, cupón cero, aplazado & Si los flujos se conocen de antemano y cuánto se cobra pronto\\
 \addlinespace[0.2em]
 \emph{Opciones} & \emph{Callable}, \emph{putable}, convertible, CoCo & Los flujos dependen de los tipos o de las acciones\\
 \addlinespace[0.2em]
@@ -197,34 +189,106 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \fuente{elaboración propia a partir de \textcite[cap.~14]{BodieKaneMarcus2021Investments}.}
 \end{table}
 
+\begin{itemize}
+\item \emph{Por la naturaleza del emisor}: \textbf{cualquier agente económico puede emitir títulos de renta fija}, siempre que encuentre quien los compre y cumpla los requisitos legales y de supervisión.\footnote{En una emisión pública, normalmente, registrar el folleto ante el supervisor de valores (la CNMV en España); la Ley de Sociedades de Capital añade requisitos para las emisiones de las empresas\nocite{LSC2010}.} Los emisores forman 2 grandes mercados:
+  \begin{itemize}
+  \item el de \concepto{renta fija pública}, con 3 tipos de emisores:
+    \begin{itemize}
+    \item las \emph{instituciones financieras internacionales} (\emph{supras}: Banco Mundial, BEI, BERD), de máxima calidad crediticia por el respaldo, explícito o implícito, de sus Estados miembros;
+    \item los \emph{Estados soberanos} (\emph{sovereigns}), que pagan con su capacidad de recaudar, de emitir moneda o, si se endeudan en divisa, de acumular reservas. Su deuda es la referencia del riesgo de cada país y, en las economías más sólidas, el activo libre de riesgo por excelencia;
+    \item las \emph{administraciones territoriales y agencias} (\emph{agencies}: comunidades autónomas, ayuntamientos, Instituto de Crédito Oficial), que pagan con su recaudación, con los flujos del proyecto que financian o con el apoyo de otra administración, y cuya calidad depende de la garantía, explícita (avales) o implícita, del soberano;
+    \end{itemize}
+  \item el de \concepto{renta fija privada} o \emph{corporate}, con 2:
+    \begin{itemize}
+    \item las \emph{empresas}, que pagan con los flujos de su actividad; destacan las entidades financieras, que acuden de forma recurrente a los mercados para cubrir la diferencia entre préstamos y depósitos y gestionar su tesorería;
+    \item los \emph{vehículos de titulización}, que transforman derechos de cobro (hipotecas, tarjetas, créditos al consumo) en bonos de distinta calidad, cupón y vencimiento según su lugar en la cascada de pagos (\emph{tranching}) \vertema{3.B.26}.
+    \end{itemize}
+  \end{itemize}
+  Cuanto peor es la calidad crediticia del emisor, más rentabilidad exige el mercado (\ref{sec:rating}). En España, a final de 2025, el mercado AIAF tenía 1,56 billones de euros de deuda pública y 366.625 millones de renta fija privada, y el MARF, el mercado alternativo para empresas medianas, superaba los 10.000 millones\nocite{BME2026InformeMercado} \vertema{4.A.20}.
+\item \emph{Por el cupón}:
+  \begin{itemize}
+  \item de \emph{cupón fijo} (\emph{plain vanilla}), los más habituales: mantenidos hasta el vencimiento dan una rentabilidad conocida, salvo impago, y su sensibilidad a los tipos es fácil de calcular;
+  \item de \emph{cupón variable}, con un tipo de referencia más un diferencial, tanto menor cuanto mejor es la calidad del emisor,\footnote{Los tipos de referencia más usados en euros son 2:
+\begin{itemize}
+\item el \emph{Euríbor}, al que los bancos de la zona del euro obtienen financiación sin garantía a 1 semana y a 1, 3, 6 y 12 meses, calculado desde noviembre de 2019 con una metodología híbrida que usa operaciones reales siempre que las hay\nocite{EMMI2019Euribor};
+\item el \emph{€STR}, que publica el BCE desde el 2 de octubre de 2019 con las operaciones a un día sin garantía del día hábil anterior\nocite{BCE2026ESTRWeb}. Sustituyó al EONIA, que desde esa fecha se calculó como el €STR más 8,5 puntos básicos hasta que dejó de publicarse el 3 de enero de 2022\nocite{BCE2019TransicionEONIA}.
+\end{itemize}
+En dólares, el LÍBOR dejó de publicarse con un panel de bancos el 30 de junio de 2023, y lo sustituyó el SOFR\nocite{FCA2026LIBOR}.} o con un cupón que crece a una tasa fijada;
+  \item de cupón \emph{indexado a la inflación}, que protege del riesgo de inflación;
+  \item de \concepto{cupón cero}, que no pagan cupones y se emiten al descuento: el interés es la diferencia entre el nominal y el precio. Los títulos del mercado monetario son, en el fondo, bonos cupón cero;
+  \item de \emph{cupón aplazado}: los \emph{devengables} (\emph{accrual}) pagan todos los cupones al vencimiento, con el nominal, y los de \emph{cupones diferidos} retrasan el primer pago, con los acumulados, hasta una fecha fijada.
+  \end{itemize}
+\item \emph{Por las opciones que lleva dentro} \vertema{3.B.25}:
+    \begin{itemize}
+    \item el \concepto{bono amortizable anticipadamente} (\emph{callable}) da al \emph{emisor} el derecho a recomprarlo a un precio fijado antes del vencimiento: lo ejercerá si los tipos bajan, para refinanciarse más barato. Como el inversor le vende esa opción, exige a cambio un cupón más alto;
+    \item el \concepto{bono con opción de venta} (\emph{putable}) da al \emph{tenedor} el derecho a devolverlo al emisor a un precio fijado: lo ejercerá si los tipos suben, para reinvertir a tipos más altos. Como el inversor compra esa opción, acepta un cupón más bajo, y esa es la ventaja del emisor;
+    \item el \concepto{bono convertible} da al tenedor el derecho a cambiarlo por acciones del emisor en una proporción fijada;
+    \item los \concepto{bonos convertibles contingentes} (CoCos), propios de los bancos, se convierten en acciones o pierden su valor automáticamente, sin que lo decidan ni el emisor ni el inversor, si el capital ordinario de nivel 1 (CET1) del banco cae por debajo de un umbral, de al menos el 5,125~\% de sus activos ponderados por riesgo\nocite{UE2013CRR} \vertema{3.B.3} \vertema{3.B.27}.
+    \end{itemize}
+\item \emph{Por el vencimiento}:
+  \begin{itemize}
+  \item en el \concepto{mercado monetario} se negocian los títulos a corto plazo, hasta un año (letras del Tesoro, pagarés de empresa, certificados de depósito);\footnote{En España se hablaba tradicionalmente de 18 meses, el plazo máximo habitual de los pagarés de empresa; las estadísticas europeas llaman de corto plazo a los valores con un vencimiento original de hasta un año.}
+  \item en el \concepto{mercado de capitales}, los de más plazo. El Tesoro emite letras a 3, 6, 9 y 12 meses\nocite{Tesoro2026Letras}, \emph{bonos} de 2 a 5 años (hoy, a 3 y 5) y \emph{obligaciones} de más de 5 (hoy, a 10, 15, 30 y 50)\nocite{Tesoro2026BonosObligaciones} \vertema{4.B.26}.
+  \end{itemize}
+\item \emph{Por el mercado y la forma de emisión}:
+  \begin{itemize}
+  \item en el \emph{mercado primario} se venden los títulos nuevos, con los que el emisor se financia, y en el \emph{secundario} se revenden. El secundario da liquidez a los títulos, sin la cual pocos los comprarían en la emisión, y sus cotizaciones dicen cómo valora el mercado al emisor, lo que fija las condiciones de sus emisiones futuras;
+  \item se emite por 3 procedimientos:
+    \begin{itemize}
+    \item la \emph{subasta}, la habitual en la deuda pública: el Tesoro publica un calendario y los inversores presentan peticiones competitivas (importe y precio) o no competitivas (solo importe);\footnote{Las peticiones competitivas se ordenan de mayor a menor precio hasta cubrir el importe, lo que fija el precio mínimo. Las que quedan entre el precio mínimo y el precio medio ponderado pagan lo que ofrecieron, y las que lo superan y las no competitivas, el precio medio ponderado\nocite{Tesoro2026Subasta}: es la subasta «convencional corregida» \vertema{3.A.14} \vertema{4.B.26}. En las letras, las ofertas se hacen en tipo de interés.}
+    \item la \emph{sindicación}: un grupo de entidades coloca la emisión, asegurándola a un precio (\emph{underwriting}) o al mejor precio posible (\emph{best effort});
+    \item la \emph{colocación privada}, a medida, para pocos inversores.
+    \end{itemize}
+  \end{itemize}
+\item \emph{Por la divisa y el lugar de emisión}:\footnote{La mayoría de los bonos internacionales se emiten en dólares o en euros, porque los inversores prefieren monedas líquidas y libres; el dólar domina por las necesidades del Tesoro de Estados Unidos y de sus agencias hipotecarias, y porque muchos emergentes emiten en dólares para que los inversores no corran el riesgo de depreciación de la moneda local. Hay además 2 híbridos:
+\begin{itemize}
+\item los \emph{bonos de doble divisa} pagan los intereses en una moneda y el principal en otra;
+\item los \emph{bonos con opción de divisa} combinan un bono en moneda local con una opción sobre una divisa.
+\end{itemize}}
+  \begin{itemize}
+  \item el \emph{mercado doméstico}: emisores residentes y moneda nacional;
+  \item el \emph{segmento internacional del mercado doméstico}: emisores extranjeros, con la moneda y la regulación del país y, sobre todo, inversores nacionales;
+  \item los \emph{euromercados}, con los \concepto{eurobonos}: bonos emitidos en una moneda distinta de la del país donde se colocan, por cualquier emisor, para inversores internacionales y con la ley pactada en el contrato, normalmente la inglesa \vertema{3.B.3}.
+  \end{itemize}
+\end{itemize}
+
+
 \subsubsection{La calificación crediticia}\label{sec:rating}
 
 \begin{itemize}
 \item La \concepto{calificación crediticia} (\emph{rating}) es la opinión de una agencia sobre la capacidad y la voluntad del emisor de pagar a tiempo los intereses y el principal: mide el \emph{riesgo de crédito}. Las 3 grandes agencias son S\&P, Moody's y Fitch.
 \item \emph{La escala}: va de AAA (Aaa en Moody's), la máxima solvencia, a D, el impago. Hasta BBB$-$ (Baa3) se habla de \concepto{grado de inversión}; por debajo, de \concepto{grado especulativo} o de alto rendimiento (\emph{high yield}). La frontera importa: muchos inversores institucionales solo pueden comprar grado de inversión \vertema{3.B.3}. España tiene hoy una A$+$ de S\&P y de Scope, una A3 de Moody's, una A de Fitch y una A (\emph{high}) de DBRS, todas con perspectiva estable\nocite{Tesoro2026Calificacion}: grado de inversión, 4 o 5 escalones por debajo de la AAA.
 \item \emph{El diferencial de crédito}: a igual plazo, un bono rinde más cuanto peor es su calificación. La diferencia con el bono sin riesgo del mismo plazo es el \concepto{diferencial de crédito}, que compensa la probabilidad de impago y la pérdida esperada, la menor liquidez y la aversión al riesgo de los inversores; junto con los impuestos, forma la \concepto{estructura de riesgo de los tipos de interés}\nocite{MishkinEakins2018Financial}.
-\item \emph{La prima de riesgo}: entre Estados de la zona del euro, el diferencial con el bono alemán a 10 años es la \concepto{prima de riesgo} (gráfico~\ref{fig:prima-riesgo-espana}). La española llegó a 555 puntos básicos de media en julio de 2012, el máximo desde la creación del euro, y era de 45 en septiembre de 2026\nocite{BCE2026IRS} \vertema{3.A.39} \vertema{3.B.43}.
+\item \emph{La prima de riesgo}: entre Estados de la zona del euro, el diferencial con el bono alemán a 10 años es la \concepto{prima de riesgo} (gráfico~\ref{fig:prima-riesgo-espana})\nocite{BCE2026IRS} \vertema{3.A.39} \vertema{3.B.43}:
+  \begin{itemize}
+  \item la española llegó a 555 puntos básicos de media en julio de 2012, el máximo desde la creación del euro, y era de 65 en octubre de 2026\nocite{BCE2026IRS};
+  \item la francesa, que desde 1993 solo había superado a la española por unos pocos puntos en 2003-2007, está por encima de ella todos los meses desde octubre de 2024, y en octubre de 2026 llegó a 147 puntos, cerca de su máximo de 154 de noviembre de 2011\nocite{BCE2026IRS}.
+  \end{itemize}
 \item \emph{La regulación}: tras su papel en la crisis de las titulizaciones, las agencias que operan en la Unión necesitan registro y supervisión de la Autoridad Europea de Valores y Mercados\nocite{UE2009Agencias} \vertema{3.B.26} \vertema{3.B.27}.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{Prima de riesgo de España frente a Alemania, 1993-2026}\label{fig:prima-riesgo-espana}
-\grafico[0.92\textwidth]{prima-riesgo-espana}
-\fuente{BCE, tipos de interés a largo plazo a efectos de convergencia\nocite{BCE2026IRS}; diferencial, cálculo propio. Media mensual del rendimiento a 10 años de España menos el de Alemania, en puntos básicos.}
+\caption{Primas de riesgo de España y de Francia frente a Alemania, 1993-2026}\label{fig:prima-riesgo-espana}
+\grafico[0.86\textwidth]{prima-riesgo-espana}
+\fuente{BCE, tipos de interés a largo plazo a efectos de convergencia\nocite{BCE2026IRS}; diferenciales, cálculo propio. Media mensual del rendimiento a 10 años de España y de Francia menos el de Alemania, en puntos básicos, de enero de 1993 a octubre de 2026, último mes publicado en noviembre de 2026.}
 \end{figure}
 
 % --------------------------------------------------------------------------
 \subsection{Determinación del precio de los bonos}\label{sec:precio}
 
 \begin{itemize}
-\item \emph{En el mercado primario}, el bono sale a la par si el cupón iguala la rentabilidad que exige el mercado (lo habitual en los bonos de empresa, que fijan el cupón para colocarse cerca de la par), bajo la par si el cupón es menor (siempre en las letras y en los bonos cupón cero, que no pagan cupón) y sobre la par si es mayor. Los bonos y obligaciones del Estado se subastan por precio y pueden salir por encima o por debajo de la par, sobre todo cuando se reabre una emisión antigua con otro cupón.
+\item \emph{En el mercado primario}, el precio de salida depende de cómo es el cupón frente a la rentabilidad que exige el mercado:
+  \begin{itemize}
+  \item si la iguala, el bono sale \emph{a la par}: es lo habitual en los bonos de empresa, que fijan el cupón para colocarse cerca de la par;
+  \item si es menor, sale \emph{bajo la par}: siempre en las letras y en los bonos cupón cero, que no pagan cupón;
+  \item si es mayor, sale \emph{sobre la par};
+  \item los bonos y obligaciones del Estado se subastan por precio y pueden salir de cualquiera de las 3 formas, sobre todo cuando se reabre una emisión antigua con otro cupón.
+  \end{itemize}
 \item \emph{En el mercado secundario}, el precio lo fija el arbitraje, en 2 pasos:
   \begin{itemize}
   \item \emph{Idea}: un bono es una cartera de pagos futuros, y cada pago vale hoy lo que vale un euro de su fecha. Por eso el precio es el \concepto{valor actual de sus flujos}, descontado cada uno con el \concepto{tipo de contado} (\emph{spot}) $r_t$ de su plazo: el que rinde hoy un bono sin cupones que paga solo en $t$ (figura~\ref{figu:linea-temporal-bono}),
-    \begin{equation}\label{eq:precio-contado}
-    P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\frac{C_1}{1+r_1}+\frac{C_2}{(1+r_2)^2}+\dots+\frac{C_T+\mathrm{VN}}{(1+r_T)^T}.
-    \end{equation}
+    \funcionclave[eq:precio-contado]{P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\frac{C_1}{1+r_1}+\frac{C_2}{(1+r_2)^2}+\dots+\frac{C_T+\mathrm{VN}}{(1+r_T)^T}}
   \item \emph{Por qué ese precio}: si el bono costara menos que la suma de sus pagos valorados uno a uno, bastaría comprarlo, separarlo en sus pagos y venderlos por separado para ganar sin riesgo; y al revés. El arbitraje lleva el precio a \eqref{eq:precio-contado}. A ese precio, comprar el bono tiene un valor actual neto nulo, lo que no quiere decir que no rinda, sino que rinde exactamente lo que exige el mercado por ese plazo y ese riesgo.\footnote{Con $m$ cupones al año y tipos anuales, cada flujo se descuenta $mt$ periodos a $r_t/m$, con el cupón $C/m$ por periodo.}
   \end{itemize}
 \item \emph{El tipo de descuento}: cada $r_t$ es el tipo sin riesgo de su plazo más una prima por el riesgo del emisor, la liquidez y el resto de riesgos (\ref{sec:rating}, \ref{sec:riesgos}).
@@ -234,9 +298,18 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
   \item por arbitraje, el pago de 1.100~€ del segundo año vale el resto, $922{,}6-90{,}9=831{,}7$~€: es el precio de un bono cupón cero a 2 años con un nominal de 1.100~€;
   \item los tipos de contado salen de esos precios: $r_1=100/90{,}9-1=10{,}01$~\% y $r_2=(1.100/831{,}7)^{1/2}-1=15{,}00$~\%.
   \end{itemize}
-\item \emph{Con un solo tipo}: en la práctica, los bonos se cotizan con un único tipo de descuento para todos sus flujos, la \concepto{rentabilidad a vencimiento} o TIR del bono, $y$ (\ref{sec:rendimiento}):
-  \funcionclave[eq:precio-bono]{P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+y)^t}}
-  La primera igualdad es la del arbitraje; la segunda define $y$. Si el cupón iguala la TIR ($c=y$), el bono vale la par; si es mayor, cotiza sobre la par, y si es menor, bajo la par.
+\item \emph{Con un solo tipo}: en la práctica, los bonos se cotizan con un único tipo de descuento para todos sus flujos, la \concepto{rentabilidad a vencimiento} o TIR, $y$ (\ref{sec:tir}).
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{El precio con un solo tipo de descuento.} Si en \eqref{eq:precio-contado} se sustituyen los tipos de contado de cada plazo por un único tipo, la TIR del bono, $y$, el precio es
+\begin{equation}\label{eq:precio-bono}
+P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+y)^t} .
+\end{equation}
+La primera igualdad es la del arbitraje; la segunda define $y$: es el tipo único que da el mismo precio que los tipos de cada plazo. Si el cupón iguala la TIR ($c=y$), el bono vale la par; si es mayor, cotiza sobre la par, y si es menor, bajo la par. Es la forma en que se cotizan los bonos y la base de las medidas de rendimiento del apartado~\ref{sec:rendimiento} y de las de riesgo del bloque~\ref{sec:riesgo}.
+\end{anotaciones}
+
+\begin{itemize}
 \item \emph{Evolución con el tiempo}: si la TIR no cambia, el precio converge al nominal a medida que se acerca el vencimiento (gráfico~\ref{fig:pull-to-par}). El bono sobre la par baja, porque cada año queda un año menos en que su cupón supera la rentabilidad del mercado; el bono bajo la par sube, porque se acerca el cobro del nominal. En los 2 casos, el cupón más la variación del precio dan cada año exactamente la TIR.
 \end{itemize}
 
@@ -266,26 +339,34 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \subsection{Determinación del rendimiento de los bonos}\label{sec:rendimiento}
 
 \begin{itemize}
-\item A un inversor le interesa, más que el precio, cuánto rinde el bono. Precio y rendimiento son las 2 caras de la misma moneda, y hay 3 medidas principales, de la más sencilla a la más completa.
-\item \emph{La rentabilidad corriente} (\emph{current yield}) es el cupón entre el precio, $C/P$. Es sencilla, pero olvida la ganancia o la pérdida que se obtiene al cobrar el nominal y el valor temporal del dinero.
-\item \emph{La rentabilidad a vencimiento} (\emph{yield to maturity}), $y$, es el tipo de descuento único que iguala el valor actual de los flujos con el precio: el $y$ que resuelve \eqref{eq:precio-bono}. Es la tasa interna de rentabilidad (TIR) del bono como proyecto de inversión \vertema{3.B.2}.
+\item A un inversor le interesa, más que el precio, cuánto rinde el bono. Precio y rendimiento son las 2 caras de la misma moneda, y hay 3 medidas principales, de la más sencilla a la más completa:
   \begin{itemize}
-  \item \emph{Sus 3 supuestos}: la TIR es lo que se gana si se cumplen 3 condiciones:
-    \begin{enumerate}
-    \item que se mantiene el bono hasta el final;
-    \item que el emisor paga, en la cuantía y la fecha acordadas;
-    \item que los cupones se reinvierten a esa misma tasa.
-    \end{enumerate}
-  \item \emph{Relación inversa con el precio}: para un bono ya emitido, con los flujos fijados, cuanto más alto el precio, más baja la TIR, y la relación es convexa (gráfico~\ref{fig:precio-rentabilidad}). Si los tipos de mercado suben, los bonos ya emitidos pierden valor, porque los nuevos pagan más \vertema{3.A.35}.
-  \item \emph{Estática comparativa}: la TIR sube con el cupón y baja con el precio; con el vencimiento, depende: alargar el plazo sube la TIR de un bono sobre la par y la baja de uno bajo la par.
-  \item \emph{Qué es y qué no es}: es un promedio de los tipos de contado de los plazos del bono, ponderado por sus flujos, no el tipo de interés de un plazo. En nuestro bono, la TIR es del 14,75~\%: entre el 10,01~\% del primer año y el 15,00~\% del segundo, y muy cerca de este porque casi todo el valor se cobra al final. Por eso 2 bonos al mismo plazo y con cupones distintos tienen TIR distintas aunque la curva sea la misma (\concepto{efecto cupón}), y comparar bonos solo por su TIR puede engañar.
+  \item la \emph{rentabilidad corriente}, que solo mira el cupón;
+  \item la \emph{rentabilidad a vencimiento} o TIR, que resume todos los flujos en un solo tipo;
+  \item la \emph{rentabilidad realizada}, la que de verdad obtiene el inversor en su horizonte.
   \end{itemize}
-\item \emph{Variantes}:
-  \begin{itemize}
-  \item si el bono es amortizable anticipadamente, la \concepto{rentabilidad hasta la amortización} (\emph{yield to call}) es la TIR suponiendo que el emisor lo amortiza en la primera fecha posible, $T_c$, al precio de amortización, $P_c$; se compara con la TIR y se toma la menor;
-  \item la \concepto{rentabilidad realizada} (al horizonte $H$) es la que de verdad se obtiene con los tipos a los que se reinvierten los cupones y el precio al que se vende el bono en $H$. Coincide con la TIR solo si se cumplen los 3 supuestos; es la que protege la inmunización (\ref{sec:gestion});
-  \item las \concepto{letras del Tesoro} no pagan cupón: se emiten al descuento y, a un año o menos, su rentabilidad se calcula con interés simple y base 360, $P=\mathrm{VN}/(1+y\,d/360)$, con $d$ los días hasta el vencimiento.
-  \end{itemize}
+\end{itemize}
+
+\subsubsection{La rentabilidad corriente}\label{sec:rent-corriente}
+
+\begin{itemize}
+\item La \concepto{rentabilidad corriente} (\emph{current yield}) es el cupón entre el precio, $C/P$.
+\item Es sencilla, pero olvida la ganancia o la pérdida que se obtiene al cobrar el nominal y el valor temporal del dinero. En nuestro bono es $100/922{,}6=10{,}84$~\%, por debajo de su TIR, porque no cuenta lo que se gana al cobrar 1.000~€ por un bono comprado bajo la par.
+\end{itemize}
+
+\subsubsection{La rentabilidad a vencimiento}\label{sec:tir}
+
+\begin{itemize}
+\item La \concepto{rentabilidad a vencimiento} (\emph{yield to maturity}), $y$, es el tipo de descuento único que iguala el valor actual de los flujos con el precio: el $y$ que resuelve \eqref{eq:precio-bono}. Es la tasa interna de rentabilidad (TIR) del bono como proyecto de inversión \vertema{3.B.2}.
+\item \emph{Sus 3 supuestos}: la TIR es lo que se gana si se cumplen 3 condiciones:
+  \begin{enumerate}
+  \item que se mantiene el bono hasta el final;
+  \item que el emisor paga, en la cuantía y la fecha acordadas;
+  \item que los cupones se reinvierten a esa misma tasa.
+  \end{enumerate}
+\item \emph{Relación inversa con el precio}: para un bono ya emitido, con los flujos fijados, cuanto más alto el precio, más baja la TIR, y la relación es convexa (gráfico~\ref{fig:precio-rentabilidad}). Si los tipos de mercado suben, los bonos ya emitidos pierden valor, porque los nuevos pagan más \vertema{3.A.35}.
+\item \emph{Estática comparativa}: la TIR sube con el cupón y baja con el precio; con el vencimiento, depende: alargar el plazo sube la TIR de un bono sobre la par y la baja de uno bajo la par.
+\item \emph{Qué es y qué no es}: es un promedio de los tipos de contado de los plazos del bono, ponderado por sus flujos, no el tipo de interés de un plazo. En nuestro bono, la TIR es del 14,75~\%: entre el 10,01~\% del primer año y el 15,00~\% del segundo, y muy cerca de este porque casi todo el valor se cobra al final. Por eso 2 bonos al mismo plazo y con cupones distintos tienen TIR distintas aunque la curva sea la misma (\concepto{efecto cupón}), y comparar bonos solo por su TIR puede engañar.
 \end{itemize}
 
 \begin{figure}[H]
@@ -296,12 +377,16 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \end{figure}
 
 \begin{itemize}
+\item \emph{Variantes}:
+  \begin{itemize}
+  \item si el bono es amortizable anticipadamente, la \concepto{rentabilidad hasta la amortización} (\emph{yield to call}) es la TIR suponiendo que el emisor lo amortiza en la primera fecha posible, $T_c$, al precio de amortización, $P_c$; se compara con la TIR y se toma la menor;
+  \item las \concepto{letras del Tesoro} no pagan cupón: se emiten al descuento y, a un año o menos, su rentabilidad se calcula con interés simple y base 360, $P=\mathrm{VN}/(1+y\,d/360)$, con $d$ los días hasta el vencimiento.
+  \end{itemize}
 \item \emph{Con opciones}, el precio ya no depende solo de la TIR, sino también de la probabilidad de que se ejerza la opción (gráfico~\ref{fig:opciones-bono})\nocite{AnalystNotes2022Callable}:
   \begin{itemize}
   \item en el \emph{callable}, si los tipos bajan mucho, el precio deja de subir y se queda cerca del precio de amortización, porque el emisor lo recomprará: la curva precio-rentabilidad se dobla hacia abajo y la convexidad se vuelve \emph{negativa} (\ref{sec:convexidad}); si los tipos son altos, se comporta como un bono ordinario;
   \item en el \emph{putable}, si los tipos suben mucho, el precio deja de bajar, porque el tenedor lo devolverá al precio pactado: la curva tiene un suelo.
   \end{itemize}
-\item \emph{Recapitulación}: el precio de un bono es el valor de sus flujos con los tipos de cada plazo, y la TIR los resume en uno. Para valorar bien hay que conocer esos tipos de cada plazo: la curva de tipos.
 \end{itemize}
 
 \begin{figure}[H]
@@ -311,118 +396,54 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \fuente{elaboración propia a partir de \textcite[cap.~14]{BodieKaneMarcus2021Investments} y \textcite{AnalystNotes2022Callable}.}
 \end{figure}
 
+\subsubsection{La rentabilidad realizada}\label{sec:rent-realizada}
+
+\begin{itemize}
+\item La \concepto{rentabilidad realizada} (al horizonte $H$) es la que de verdad se obtiene con los tipos a los que se reinvierten los cupones y el precio al que se vende el bono en $H$, $P_H$. Si los cupones se reinvierten a un tipo $\rho$, es la $R_H$ que cumple
+  \[
+  P\,(1+R_H)^H=\sum_{t=1}^{H}C_t\,(1+\rho)^{H-t}+P_H .
+  \]
+\item Coincide con la TIR solo si se cumplen sus 3 supuestos: que $\rho=y$ y que el bono se vende en $H$ al precio que da la TIR de partida, o se mantiene hasta el vencimiento. Es la medida más completa, pero exige suponer cómo serán los tipos futuros, y es la que protege la inmunización (\ref{sec:gestion}).
+\item \emph{Recapitulación}: el precio de un bono es el valor de sus flujos con los tipos de cada plazo, y la TIR los resume en uno. Para valorar bien hay que conocer esos tipos de cada plazo: la curva de tipos.
+\end{itemize}
+
 % ==========================================================================
 \section{La estructura temporal de los tipos de interés}\label{sec:etti}
-\minutos{9}
+\minutos{8}
 
 \begin{itemize}
 \item \emph{Conclusión anticipada}: el tipo largo es la media de los tipos cortos que se esperan más una prima por plazo. Por eso la curva sirve a la vez para valorar los bonos, para leer lo que el mercado espera de los tipos y del ciclo y para que el banco central llegue a los tipos largos.
-\item \emph{Nexo}: una vez visto un bono con un solo tipo, pasamos a la relación entre los tipos y el plazo: cómo se define, cómo se construye, qué teorías la explican y qué dicen sus formas y sus movimientos.
+\item \emph{Nexo}: una vez visto un bono con un solo tipo, pasamos a la relación entre los tipos y el plazo: cómo se define, qué teorías la explican y qué dicen sus formas y sus movimientos.
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{Definición: tipos de contado, tipos a plazo\cortetitulo{} y construcción de la curva}\label{sec:etti-definicion}
+\subsection{Definición: tipos de contado y tipos a plazo}\label{sec:etti-definicion}
 
 \begin{itemize}
-\item La \concepto{estructura temporal de los tipos de interés} (ETTI) es la relación, en una fecha, entre los tipos de contado y su plazo, $r_1, r_2, \dots, r_T$, para títulos del mismo emisor o de la misma calidad crediticia. Su gráfico es la \concepto{curva de tipos}.\footnote{En sentido estricto, la ETTI es la \emph{curva cupón cero} o curva pura: la de los \emph{strips} y bonos cupón cero. La prensa suele dibujar la \emph{curva de rentabilidades} de los bonos con cupón, la TIR de cada plazo, que no es lo mismo, porque cada TIR es un promedio de varios tipos de contado; la de los bonos recién emitidos, que cotizan cerca de la par, es la curva \emph{par} u \emph{on the run}.}
+\item La \concepto{estructura temporal de los tipos de interés} (ETTI) es la relación, en una fecha, entre los tipos de contado y su plazo, $r_1, r_2, \dots, r_T$, para títulos del mismo emisor o de la misma calidad crediticia. Su gráfico es la \concepto{curva de tipos}.\footnote{Hay que distinguir 3 curvas:
+\begin{itemize}
+\item en sentido estricto, la ETTI es la \emph{curva cupón cero} o curva pura: la de los \emph{strips} y bonos cupón cero;
+\item la prensa suele dibujar la \emph{curva de rentabilidades} de los bonos con cupón, la TIR de cada plazo, que no es lo mismo, porque cada TIR es un promedio de varios tipos de contado;
+\item la de los bonos recién emitidos, que cotizan cerca de la par, es la curva \emph{par} u \emph{on the run}.
+\end{itemize}}
 \item \emph{Por qué sirve para valorar}: cada flujo de un bono se descuenta con el tipo de su plazo \eqref{eq:precio-contado}, y el tipo de contado de cada plazo es la rentabilidad de un bono cupón cero a ese plazo, que existe de verdad: los \concepto{\emph{strips}}.
   \begin{itemize}
   \item Los bonos y obligaciones del Estado español son \emph{segregables} desde julio de 1997: cada uno se puede separar en tantos bonos cupón cero como pagos tiene (un bono a 5 años da 6 \emph{strips}, 5 de cupón y 1 del principal), negociarlos por separado y reconstituirlo después.\footnote{La segregación transforma un activo de rendimiento explícito en varios de rendimiento implícito, atractivos para inversores que quieren cobrar en una fecha concreta, sin que el Tesoro tenga que emitir más clases de valores. Para los sujetos pasivos del impuesto sobre sociedades, ni el cupón de los bonos segregables ni el rendimiento implícito de los \emph{strips} sufren retención; el resto de características (plazos, cupón, forma de emisión) son las de los bonos no segregables\nocite{Tesoro2026Strips}.}
   \item Si el bono valiera algo distinto de la suma de sus \emph{strips}, se ganaría sin riesgo separándolo o reconstituyéndolo: el arbitraje obliga a que la curva cupón cero valore a la vez todos los bonos del mismo emisor.
   \end{itemize}
-\end{itemize}
-
-\subsubsection{Tipos de contado y tipos a plazo}\label{sec:forward}
-
-\begin{itemize}
-\item El \concepto{tipo de contado} es el que el mercado aplica hoy a un préstamo que empieza hoy; el \concepto{tipo a plazo} (\emph{forward}) $f_t$, el que se puede pactar hoy para un préstamo que empezará en $t-1$ y vencerá en $t$. No hace falta un mercado de \emph{forwards}: la curva de contado ya lo implica.
-\item Invertir 1 euro a $t$ años tiene que dar lo mismo, sin riesgo, que invertirlo a $t-1$ años y pactar hoy reinvertirlo el año siguiente al tipo a plazo:
+\item \emph{Tipos de contado y tipos a plazo}: el \concepto{tipo de contado} es el que el mercado aplica hoy a un préstamo que empieza hoy; el \concepto{tipo a plazo} (\emph{forward}) $f_t$, el que se puede pactar hoy para un préstamo que empezará en $t-1$ y vencerá en $t$. No hace falta un mercado de \emph{forwards}: la curva de contado ya lo implica.
+  \begin{itemize}
+  \item Invertir 1 euro a $t$ años tiene que dar lo mismo, sin riesgo, que invertirlo a $t-1$ años y pactar hoy reinvertirlo el año siguiente al tipo a plazo:
   \begin{equation}\label{eq:forward}
   (1+r_t)^t=(1+r_{t-1})^{t-1}\,(1+f_t)
   \quad\Longleftrightarrow\quad
   1+f_t=\frac{(1+r_t)^t}{(1+r_{t-1})^{t-1}} .
   \end{equation}
-  Encadenando, $(1+r_n)^n=(1+r_1)(1+f_2)\cdots(1+f_n)$: el tipo de contado a $n$ años es la media geométrica del tipo a 1 año y de los tipos a plazo de los años siguientes. Si la curva es creciente, los tipos a plazo están por encima de los de contado.
-\item Con nuestro bono, $1+f_2=1{,}15^2/1{,}1001$, así que $f_2=20{,}22$~\%: la curva sube con fuerza porque el tipo implícito para el segundo año dobla al del primero. En aproximación lineal, $f_2\simeq2r_2-r_1=20{,}0$~\%.
-\end{itemize}
-
-\subsubsection{Cómo se construye la curva: el \emph{bootstrapping}}\label{sec:bootstrapping}
-
-\begin{itemize}
-\item Los \emph{strips} y las letras no cubren todos los plazos ni son siempre líquidos, así que la curva se estima con los precios de los bonos con cupón. El método más sencillo es el \concepto{\emph{bootstrapping}}:
-  \begin{itemize}
-  \item \emph{Paso 1}: el tipo a 1 año, $r_1$, sale de una letra o de un bono que vence en un año.
-    \begin{itemize}
-    \item En nuestro ejemplo, $r_1=10{,}01$~\%.
-    \end{itemize}
-  \item \emph{Paso 2}: con $r_1$ conocido, el precio de un bono a 2 años da $r_2$, que es la única incógnita de \eqref{eq:precio-contado}.
-    \begin{itemize}
-    \item En nuestro ejemplo, $r_2=15{,}00$~\%: es lo que se hizo en el apartado~\ref{sec:precio}.
-    \end{itemize}
-  \item \emph{Paso 3}: con $r_1$ y $r_2$, el bono a 3 años da $r_3$, y así sucesivamente, de menor a mayor plazo.
+  \item Encadenando, $(1+r_n)^n=(1+r_1)(1+f_2)\cdots(1+f_n)$: el tipo de contado a $n$ años es la media geométrica del tipo a 1 año y de los tipos a plazo de los años siguientes. Si la curva es creciente, los tipos a plazo están por encima de los de contado.
+  \item Con nuestro bono, $1+f_2=1{,}15^2/1{,}1001$, así que $f_2=20{,}22$~\%: la curva sube con fuerza porque el tipo implícito para el segundo año dobla al del primero. En aproximación lineal, $f_2\simeq2r_2-r_1=20{,}0$~\%.
   \end{itemize}
-\item Es exacto, pero necesita un bono por plazo y la curva sale a saltos, sensible a cualquier precio raro. Por eso los bancos centrales ajustan una forma funcional a toda la curva.
+\item \emph{La curva observada}: los bancos centrales estiman y publican la curva cada día (anexo~\ref{anexo:modelos-curva}). El 10 de noviembre de 2026, la curva de la deuda AAA de la zona del euro daba un 2,62~\% a 3 meses, un 3,02~\% a 2 años, un 3,33~\% a 10 y un 3,57~\% a 30: suavemente creciente\nocite{BCE2026YC}. El 3 de julio de 2023, en plena subida de los tipos oficiales, estaba invertida (3,39~\% a 3 meses y 2,48~\% a 10 años), y el 30 de diciembre de 2020 era negativa en todos los plazos hasta 30 años (gráfico~\ref{fig:curva-bce-zona-euro}).
 \end{itemize}
-
-\subsubsection{El modelo de Nelson-Siegel-Svensson}\label{sec:nss}
-
-\paragraph{a) Idea}
-\begin{itemize}
-\item En lugar de un tipo por bono, suponer que toda la curva tiene una forma suave que depende de muy pocos parámetros, y elegirlos para que los precios teóricos se parezcan lo más posible a los de mercado. Lo propusieron \autor{Charles Nelson} y \autor{Andrew Siegel} (1987)\nocite{NelsonSiegel1987Parsimonious} con 3 factores, y \autor{Lars Svensson} (1994)\nocite{Svensson1994Estimating} lo amplió con un cuarto.
-\end{itemize}
-
-\paragraph{b) Modelo}
-\subparagraph{i) Supuestos}
-\begin{itemize}
-\item El tipo de contado a $n$ años es una función suave del plazo, la misma para todos los bonos del emisor.
-\item Los tipos a muy largo plazo tienden a un nivel constante, y el tipo a plazo cero es el tipo más corto.
-\end{itemize}
-
-\subparagraph{ii) Desarrollo}
-\begin{itemize}
-\item La curva de \autor{Svensson}, con $n$ el plazo en años, es
-  \begin{equation}\label{eq:svensson}
-  r(n)=\beta_0+\beta_1\,\frac{1-e^{-n/\tau_1}}{n/\tau_1}+\beta_2\Big[\frac{1-e^{-n/\tau_1}}{n/\tau_1}-e^{-n/\tau_1}\Big]+\beta_3\Big[\frac{1-e^{-n/\tau_2}}{n/\tau_2}-e^{-n/\tau_2}\Big];
-  \end{equation}
-  sin el último término es la de \autor{Nelson} y \autor{Siegel}. Las $\beta$ son locales de este modelo: no son la beta del CAPM.
-\item \emph{Qué es cada parámetro} (gráfico~\ref{fig:nss-factores}):
-  \begin{itemize}
-  \item $\beta_0$ es el \emph{nivel}, el tipo al que tiende la curva a muy largo plazo, porque los otros términos se anulan cuando $n$ crece;
-  \item $\beta_1$ es la \emph{pendiente}: su término pesa 1 en el plazo cero y se va apagando, así que el tipo más corto es $\beta_0+\beta_1$ y la curva sube si $\beta_1<0$;
-  \item $\beta_2$ y $\beta_3$ son la \emph{curvatura}: sus términos valen cero en los 2 extremos y forman una joroba (o un valle, si son negativos) en los plazos intermedios, cerca de $\tau_1$ y de $\tau_2$.
-  \end{itemize}
-\item Los parámetros se eligen cada día para que los precios que da \eqref{eq:precio-contado} con esa curva se acerquen lo más posible a los observados.
-\end{itemize}
-
-\subparagraph{iii) Implicaciones}
-\begin{itemize}
-\item Con 4 a 6 números se resume toda la curva, y se obtienen tipos de contado y a plazo para cualquier plazo, aunque no haya bonos de ese plazo.
-\item Los 3 factores son los 3 movimientos que se observan en la curva: nivel, pendiente y curvatura (\ref{sec:movimientos}).
-\end{itemize}
-
-\paragraph{c) Extensiones}
-\begin{itemize}
-\item \autor{Francis Diebold} y \autor{Canlin Li} (2006)\nocite{DieboldLi2006Forecasting} dejan fijo $\tau_1$ y tratan $\beta_0$, $\beta_1$ y $\beta_2$ como factores de nivel, pendiente y curvatura que cambian cada día y siguen un proceso autorregresivo: así la curva se puede predecir.
-\end{itemize}
-
-\paragraph{d) Evidencia empírica}
-\begin{itemize}
-\item El BCE publica cada día con el modelo de \autor{Svensson} la curva de la deuda de los Estados de la zona del euro con calificación AAA y la de todos ellos\nocite{BCE2026YC}, y muchos bancos centrales usan \autor{Nelson} y \autor{Siegel} o \autor{Svensson}\nocite{BIS2005ZeroCoupon}.
-\item El 10 de noviembre de 2026, la curva AAA daba un 2,62~\% a 3 meses, un 3,02~\% a 2 años, un 3,33~\% a 10 y un 3,57~\% a 30: suavemente creciente\nocite{BCE2026YC}. El 3 de julio de 2023, en plena subida de los tipos oficiales, estaba invertida: 3,39~\% a 3 meses, 3,13~\% a 2 años y 2,48~\% a 10. Y el 30 de diciembre de 2020 era negativa en todos los plazos hasta 30 años (gráfico~\ref{fig:curva-bce-zona-euro}). Con los parámetros que publica el BCE, \eqref{eq:svensson} reproduce sus tipos al tercer decimal.
-\end{itemize}
-
-\paragraph{e) Valoración}
-\begin{itemize}
-\item Es suave, parsimonioso y fácil de interpretar, y por eso es el estándar de los bancos centrales.
-\item Pero es una forma funcional, no una teoría: no impone la ausencia de arbitraje entre plazos ni dice por qué la curva tiene la forma que tiene. Para eso hacen falta las teorías.
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\caption{Los 3 factores de Nelson y Siegel: nivel, pendiente y curvatura}\label{fig:nss-factores}
-\grafico[0.66\textwidth]{nss-factores}
-\fuente{elaboración propia a partir de \textcite{NelsonSiegel1987Parsimonious} y \textcite{DieboldLi2006Forecasting}, con $\tau_1=1{,}5$ años. Peso de cada factor en el tipo de contado de cada plazo.}
-\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -432,19 +453,31 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \end{figure}
 
 \begin{anotaciones}
+\textbf{Cómo se construye la curva.} Los \emph{strips} y las letras no cubren todos los plazos ni son siempre líquidos, así que la curva se estima con los precios de los bonos con cupón, de 2 formas:
+\begin{itemize}
+\item el \concepto{\emph{bootstrapping}}, de menor a mayor plazo:
+  \begin{itemize}
+  \item \emph{Paso 1}: el tipo a 1 año, $r_1$, sale de una letra o de un bono que vence en un año (en nuestro ejemplo, $r_1=10{,}01$~\%);
+  \item \emph{Paso 2}: con $r_1$ conocido, el precio de un bono a 2 años da $r_2$, que es la única incógnita de \eqref{eq:precio-contado} (en nuestro ejemplo, $r_2=15{,}00$~\%: es lo que se hizo en el apartado~\ref{sec:precio});
+  \item \emph{Paso 3}: con $r_1$ y $r_2$, el bono a 3 años da $r_3$, y así sucesivamente.
+  \end{itemize}
+  Es exacto, pero necesita un bono por plazo y la curva sale a saltos, sensible a cualquier precio raro;
+\item por eso los bancos centrales ajustan a toda la curva una forma funcional suave con pocos parámetros, la de \autor{Nelson} y \autor{Siegel} (1987) o la de \autor{Svensson} (1994): el BCE publica así cada día la curva de la deuda AAA de la zona del euro (gráfico~\ref{fig:curva-bce-zona-euro}). El modelo, en el anexo~\ref{anexo:modelos-curva}.
+\end{itemize}
+\end{anotaciones}
+
+\begin{anotaciones}
 \textbf{Las curvas de España y de Estados Unidos.} El gráfico~\ref{fig:curvas-espana-eeuu} da las curvas de rentabilidades (TIR de bonos con cupón, no tipos cupón cero) en las mismas 3 situaciones:
 \begin{itemize}
 \item España, en septiembre de 2026, de un 2,45~\% a 3 meses a un 4,53~\% a 30 años: creciente; en julio de 2023, con el tramo corto invertido (la letra a 12 meses al 3,73~\% y el bono a 5 años al 3,26~\%); y en diciembre de 2020, negativa hasta 5 años ($-0{,}42$~\%), con el bono a 10 años al 0,04~\%\nocite{BdE2026BE22};
 \item Estados Unidos, el 10 de noviembre de 2026, de un 4,30~\% a 3 meses a un 4,98~\% a 10 años; el 3 de julio de 2023, invertida (5,44~\% a 3 meses y 3,86~\% a 10 años); y el 31 de diciembre de 2020, con tipos casi nulos en el tramo corto\nocite{UST2026ParYield}.
 \end{itemize}
-\end{anotaciones}
-
-\begin{figure}[H]
-\centering
+\begin{figuracaja}
 \caption{Curvas de rentabilidades de España y de Estados Unidos}\label{fig:curvas-espana-eeuu}
 \grafico[0.98\textwidth]{curvas-espana-eeuu}
 \fuente{España: Banco de España, Boletín Estadístico, cuadros 22.6 y 22.7, medias mensuales del mercado secundario\nocite{BdE2026BE22}. Estados Unidos: Departamento del Tesoro, rendimientos a la par\nocite{UST2026ParYield}.}
-\end{figure}
+\end{figuracaja}
+\end{anotaciones}
 
 % --------------------------------------------------------------------------
 \subsection{Teorías explicativas}\label{sec:teorias}
@@ -629,53 +662,6 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \fuente{elaboración propia a partir de \textcite[cap.~6]{MishkinEakins2018Financial}, que compara las 3 primeras.}
 \end{table}
 
-\subsubsection{Los modelos de equilibrio:\cortetitulo{} \autor{Vasicek} y \autor{Cox}, \autor{Ingersoll} y \autor{Ross}}\label{sec:vasicek}
-
-\paragraph{a) Idea}
-\begin{itemize}
-\item En lugar de explicar la curva con las expectativas o con la oferta de cada plazo, se modela cómo se mueve el tipo corto en el tiempo, con incertidumbre, y se deriva de ahí, sin arbitraje, el precio de los bonos de todos los plazos. La curva entera sale de 3 o 4 parámetros con significado económico.
-\end{itemize}
-
-\paragraph{b) Modelo}
-\subparagraph{i) Supuestos}
-\begin{itemize}
-\item Un solo factor, el tipo instantáneo $r$, mueve toda la curva, y sigue un proceso estocástico en tiempo continuo.
-\item El tipo vuelve hacia una media a largo plazo (reversión a la media), y no hay arbitraje entre bonos de distintos plazos.
-\end{itemize}
-
-\subparagraph{ii) Desarrollo}
-\begin{itemize}
-\item En el modelo de \autor{Oldřich Vasicek} (1977)\nocite{Vasicek1977Equilibrium}, el tipo sigue un proceso de \autor{Ornstein} y \autor{Uhlenbeck}:
-  \[
-  \mathrm{d}r=a\,(b-r)\,\mathrm{d}t+\sigma\,\mathrm{d}W ,
-  \]
-  con $b$ el nivel al que vuelve, $a$ la velocidad con que vuelve, $\sigma$ la volatilidad y $W$ un movimiento browniano (letras locales de este apartado).
-\item En el de \autor{John Cox}, \autor{Jonathan Ingersoll} y \autor{Stephen Ross} (1985)\nocite{CoxIngersollRoss1985Theory}, CIR, la volatilidad depende del nivel: $\mathrm{d}r=a\,(b-r)\,\mathrm{d}t+\sigma\sqrt{r}\,\mathrm{d}W$.
-\item En los 2, el precio de un bono cupón cero que vence dentro de $\tau$ años tiene la forma $P(\tau)=A(\tau)\,e^{-B(\tau)\,r}$, con $B(\tau)=(1-e^{-a\tau})/a$ en el de \autor{Vasicek}: el tipo de contado de cada plazo es una función lineal del tipo corto de hoy.
-\end{itemize}
-
-\subparagraph{iii) Implicaciones}
-\begin{itemize}
-\item La curva es creciente si el tipo corto está bastante por debajo de su nivel a largo plazo, invertida si está bastante por encima y con joroba en medio.
-\item Un cambio del tipo corto mueve más los tipos cortos que los largos, porque se espera que vuelva a la media: la volatilidad de los tipos baja con el plazo.
-\item En el de \autor{Vasicek}, los tipos pueden ser negativos; en el CIR, no bajan de cero si la reversión es lo bastante fuerte frente a la volatilidad.
-\end{itemize}
-
-\paragraph{c) Extensiones}
-\begin{itemize}
-\item Los modelos de \autor{Ho} y \autor{Lee} (1986), \autor{Hull} y \autor{White} (1990) y \autor{Heath}, \autor{Jarrow} y \autor{Morton} (1992) parten de la curva observada hoy y la reproducen exactamente; sirven sobre todo para valorar derivados de tipos de interés\nocite{Hull2022Options} \vertema{3.B.25}.
-\end{itemize}
-
-\paragraph{d) Evidencia empírica}
-\begin{itemize}
-\item Con un solo factor, todos los tipos se mueven a la vez y en el mismo sentido; en los datos, en cambio, la curva también gira y cambia de curvatura (\ref{sec:movimientos}). Hacen falta al menos 3 factores.
-\end{itemize}
-
-\paragraph{e) Valoración}
-\begin{itemize}
-\item Imponen la ausencia de arbitraje y dan la prima por plazo a partir del precio del riesgo, algo que las teorías clásicas suponen; pero con un factor reproducen mal la curva observada, y por eso en la práctica se usan modelos de varios factores o ajustados a la curva de hoy.
-\end{itemize}
-
 % --------------------------------------------------------------------------
 \subsection{Formas y movimientos de la curva}\label{sec:formas}
 
@@ -687,7 +673,7 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
   \item \emph{Creciente}, la normal: con las expectativas, anuncia subidas de los tipos cortos, típicas del final de una recesión; con la prima por liquidez, puede ser solo la prima, sin subidas esperadas.
   \item \emph{Plana}: con las expectativas puras, tipos cortos constantes; con la prima por liquidez, ligeras bajadas esperadas que la prima compensa, y por eso una curva que se aplana suele anticipar un menor crecimiento. Suele aparecer al final de las expansiones, cuando el tipo oficial ya ha subido.
   \item \emph{Invertida}: con las expectativas y la prima por liquidez, el mercado espera bajadas de los tipos cortos, normalmente porque espera una recesión (\ref{sec:ciclo}); con la segmentación o el hábitat, puede deberse a una gran demanda de bonos largos, como en el Reino Unido tras 2004.
-  \item \emph{Jorobada} (con una joroba en los plazos intermedios): se esperan subidas de los tipos a corto plazo y bajadas después, por ejemplo cuando el banco central sube los tipos para frenar la inflación y el mercado ya descuenta que los bajará; en \eqref{eq:svensson}, la recogen $\beta_2$ y $\beta_3$.
+  \item \emph{Jorobada} (con una joroba en los plazos intermedios): se esperan subidas de los tipos a corto plazo y bajadas después, por ejemplo cuando el banco central sube los tipos para frenar la inflación y el mercado ya descuenta que los bajará; en la curva de \autor{Svensson} \eqref{eq:svensson}, la recogen $\beta_2$ y $\beta_3$ (anexo~\ref{anexo:modelos-curva}).
   \end{itemize}
 \end{itemize}
 
@@ -707,7 +693,7 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
   \item el \concepto{giro} (\emph{twist}) cambia la pendiente: la curva se \emph{aplana} si el diferencial entre el tipo largo y el corto se estrecha, y se \emph{positiviza} si se amplía;
   \item la \concepto{mariposa} (\emph{butterfly}) cambia la curvatura: los plazos intermedios se mueven distinto que los extremos.
   \end{itemize}
-\item Son los 3 factores de \eqref{eq:svensson}: nivel ($\beta_0$), pendiente ($\beta_1$) y curvatura ($\beta_2$ y $\beta_3$).
+\item Son los 3 factores del modelo de \autor{Nelson}, \autor{Siegel} y \autor{Svensson} \eqref{eq:svensson} (anexo~\ref{anexo:modelos-curva}): nivel ($\beta_0$), pendiente ($\beta_1$) y curvatura ($\beta_2$ y $\beta_3$).
 \end{itemize}
 
 \begin{figure}[H]
@@ -780,14 +766,14 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
   \item cuanto más alto el cupón, menos sensible es el precio, porque más valor se cobra pronto;
   \item cuanto más alta la rentabilidad de partida, menos sensible es el precio, porque los pagos lejanos pesan menos.
   \end{enumerate}
-\item Por tanto, el riesgo de tipo de interés depende del plazo (proposiciones 3 y 4), del cupón (5) y de la rentabilidad (6). Las letras del Tesoro, a muy corto plazo, están casi libres de él. La \emph{duración} reúne los 3 determinantes en una sola cifra.
+\item Por tanto, el riesgo de tipo de interés depende del plazo (proposiciones 3 y 4), del cupón (5) y de la rentabilidad (6): en el gráfico, A y B solo difieren en el plazo; B y C, en el cupón, y C y D, en la rentabilidad de partida. Las letras del Tesoro, a muy corto plazo, están casi libres de él. La \emph{duración} reúne los 3 determinantes en una sola cifra.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \caption{Variación del precio de 4 bonos ante cambios de la rentabilidad}\label{fig:malkiel-bonos}
 \grafico[0.7\textwidth]{malkiel-bonos}
-\fuente{elaboración propia a partir de \textcite[cap.~16]{BodieKaneMarcus2021Investments}. Bonos A (cupón del 12~\%, 5 años, TIR inicial del 10~\%), B (12~\%, 30 años, 10~\%), C (3~\%, 30 años, 10~\%) y D (3~\%, 30 años, 6~\%). A y B solo difieren en el plazo; B y C, en el cupón; C y D, en la rentabilidad de partida.}
+\fuente{elaboración propia a partir de \textcite[cap.~16]{BodieKaneMarcus2021Investments}.}
 \end{figure}
 
 \subsubsection{Duración de \autor{Macaulay}}\label{sec:macaulay}
@@ -795,9 +781,7 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \begin{itemize}
 \item \emph{Idea}: el plazo no basta para medir el riesgo, porque un bono con cupones cobra parte de su valor antes del vencimiento. \autor{Frederick Macaulay} (1938)\nocite{Macaulay1938Some} propuso medir el \emph{plazo medio} de los pagos.
 \item \emph{Definición}: la \concepto{duración} de un bono es la media de los plazos de sus pagos, ponderada por la parte del precio que representa cada uno:
-  \begin{equation}\label{eq:macaulay}
-  D=\sum_{t=1}^{T}t\,w_t,\qquad w_t=\frac{\mathrm{FC}_t/(1+y)^t}{P} .
-  \end{equation}
+  \funcionclave[eq:macaulay]{D=\sum_{t=1}^{T}t\,w_t,\qquad w_t=\frac{\mathrm{FC}_t/(1+y)^t}{P}}
   Los pesos suman 1, porque los flujos descontados a la TIR suman el precio \eqref{eq:precio-bono}; el último incluye el nominal.
 \item \emph{Interpretación analítica}: con la curva plana ($r_t=y$ en todos los plazos), derivar \eqref{eq:precio-bono} da
   \[
@@ -827,11 +811,9 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \begin{itemize}
 \item \emph{Idea}: al inversor no le interesa un plazo en años, sino cuánto cambia el precio de su bono si cambia la rentabilidad.
 \item \emph{Definición}: la \concepto{duración modificada} es la duración entre $1+y$ y mide la \emph{semielasticidad} del precio respecto a la TIR:
-  \[
-  D^{\mathrm{mod}}=\frac{D}{1+y}=-\frac{1}{P}\,\frac{\mathrm{d}P}{\mathrm{d}y}
+  \funcionclave[eq:duracion-modificada]{D^{\mathrm{mod}}=\frac{D}{1+y}=-\frac{1}{P}\,\frac{\mathrm{d}P}{\mathrm{d}y}
   \quad\Longrightarrow\quad
-  \frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\,\Delta y .
-  \]
+  \frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\,\Delta y}
   Si la TIR sube 1 punto, el precio baja aproximadamente un $D^{\mathrm{mod}}$~\%.
 \item \emph{En euros}: la \concepto{duración monetaria}, $D^{\mathrm{mon}}=P\,D^{\mathrm{mod}}$, da el cambio del precio en euros, $\Delta P\simeq-D^{\mathrm{mon}}\,\Delta y$; su versión para 1 punto básico es el \concepto{valor del punto básico} (DV01), $P\,D^{\mathrm{mod}}\times0{,}0001$, que usan los operadores para sumar el riesgo de bonos distintos\nocite{Fabozzi2021Bond}.
 \item \emph{Interpretación gráfica}: $-P\,D^{\mathrm{mod}}$ es la pendiente de la tangente a la curva precio-rentabilidad en el punto de partida (gráfico~\ref{fig:precio-rentabilidad}).
@@ -847,10 +829,10 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 
 \begin{itemize}
 \item \emph{Idea}: la duración modificada aproxima la curva precio-rentabilidad con una recta; la \concepto{convexidad} mide cuánto se curva y corrige el error de esa recta.
-\item \emph{Definición}: es la segunda derivada del precio respecto a la TIR, en proporción al precio:
+\item \emph{Definición}: es la segunda derivada del precio respecto a la TIR, en proporción al precio, $\mathrm{Conv}=(\mathrm{d}^2P/\mathrm{d}y^2)/P$.\footnote{Derivando 2 veces \eqref{eq:precio-bono} (anexo~\ref{anexo:derivaciones}),
   \[
   \mathrm{Conv}=\frac{1}{P}\,\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\frac{1}{P\,(1+y)^2}\sum_{t=1}^{T}t\,(t+1)\,\frac{\mathrm{FC}_t}{(1+y)^t} .
-  \]
+  \]}
 \item \emph{La aproximación de segundo orden}, con un desarrollo de \autor{Taylor} (anexo~\ref{anexo:derivaciones}):
   \funcionclave[eq:precio-duracion-convexidad]{\frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\,\Delta y+\frac{1}{2}\,\mathrm{Conv}\,(\Delta y)^2}
 \item \emph{Interpretación}: en un bono sin opciones la convexidad es positiva, así que el segundo término suma siempre: la duración sola exagera las caídas del precio cuando la TIR sube y se queda corta en las subidas cuando la TIR baja (gráfico~\ref{fig:precio-rentabilidad}).
@@ -939,7 +921,7 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
   \item sobre la curva: concentrar la cartera en un plazo (\emph{bullet}) o en los 2 extremos (\emph{barbell}) según se espere que se aplane o se positivice; o \emph{montar la curva} (\emph{riding the yield curve}): comprar un bono algo más largo que el horizonte para venderlo antes de que venza, con la ganancia que da la caída de su tipo si la curva creciente no cambia;
   \item sobre los diferenciales: cambiar un bono por otro casi igual que cotiza más barato, o por otro de otro emisor o sector cuyo diferencial se espera que se estreche.
   \end{itemize}
-\item El \emph{análisis de horizonte} une las 2: se fija un plazo, se supone una curva para entonces y se calcula la rentabilidad realizada de cada bono (\ref{sec:rendimiento}).
+\item El \emph{análisis de horizonte} une las 2: se fija un plazo, se supone una curva para entonces y se calcula la rentabilidad realizada de cada bono (\ref{sec:rent-realizada}).
 \item \emph{Recapitulación}: la duración mide el riesgo de tipo de interés, la convexidad lo afina y la inmunización lo neutraliza igualando la duración con el horizonte.
 \end{itemize}
 
@@ -1014,54 +996,113 @@ Para ampliar: las monografías de \autor{Juan Mascareñas} sobre la gestión de 
 \end{itemize}
 
 % ==========================================================================
-\section{Anexo: clasificaciones de los bonos}\label{anexo:clasificaciones}
+\section{Anexo: modelos de la curva de tipos}\label{anexo:modelos-curva}
 
-\subsection{Según la naturaleza del emisor}
+\subsection{El modelo de Nelson-Siegel-Svensson}\label{sec:nss}
 
+\paragraph{a) Idea}
 \begin{itemize}
-\item Cualquier agente puede emitir renta fija si encuentra quien la compre y cumple los requisitos legales: en una emisión pública, normalmente, registrar el folleto ante el supervisor de valores (la CNMV en España); la Ley de Sociedades de Capital añade requisitos para las emisiones de las empresas.
-\item \emph{Renta fija pública}:
-  \begin{itemize}
-  \item \emph{Instituciones financieras internacionales} (supranacionales: Banco Mundial, BEI, BERD): emisores muy activos y de máxima calidad crediticia, porque cuentan con el respaldo, explícito o implícito, de sus Estados miembros.
-  \item \emph{Estados soberanos}: dependen de la capacidad del Estado para recaudar, emitir moneda o, si se endeuda en divisa, acumular reservas. Por su uso en la política monetaria, por la demanda regulatoria y por el poder fiscal que tienen detrás, son la referencia del riesgo de cada país y, en las economías más sólidas, el activo libre de riesgo por excelencia.
-  \item \emph{Administraciones territoriales y agencias} (ayuntamientos, comunidades autónomas, Instituto de Crédito Oficial): pagan con su recaudación, con los flujos del proyecto que financian o con el apoyo de otra administración; su calidad depende de la garantía del soberano, explícita (avales) o implícita.
-  \end{itemize}
-\item \emph{Renta fija privada}:
-  \begin{itemize}
-  \item \emph{Empresas}: pagan con los flujos de su actividad. Destacan las entidades financieras, que acuden de forma recurrente a los mercados para cubrir la diferencia entre préstamos y depósitos y para gestionar su tesorería.
-  \item \emph{Vehículos de titulización}: transforman derechos de cobro (hipotecas, tarjetas, créditos al consumo) en bonos de distinta calidad, cupón y vencimiento según su lugar en la cascada de pagos (\emph{tranching}) \vertema{3.B.26}.
-  \end{itemize}
-\item En España, a final de 2025, el mercado AIAF tenía 1,56 billones de euros de deuda pública y 366.625 millones de renta fija privada, y el MARF, el mercado alternativo para empresas medianas, superaba los 10.000 millones\nocite{BME2026InformeMercado} \vertema{4.A.20}.
+\item En lugar de un tipo por bono, suponer que toda la curva tiene una forma suave que depende de muy pocos parámetros, y elegirlos para que los precios teóricos se parezcan lo más posible a los de mercado. Lo propusieron \autor{Charles Nelson} y \autor{Andrew Siegel} (1987)\nocite{NelsonSiegel1987Parsimonious} con 3 factores, y \autor{Lars Svensson} (1994)\nocite{Svensson1994Estimating} lo amplió con un cuarto.
 \end{itemize}
 
-\subsection{Según el mercado y el procedimiento de emisión}
-
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
 \begin{itemize}
-\item \emph{Mercado primario y secundario}: en el primario se venden los títulos nuevos, con los que el emisor capta financiación; en el secundario se revenden. El secundario importa por 2 razones: da liquidez a los títulos, sin la cual pocos los comprarían en la emisión, y sus cotizaciones informan sobre cómo valora el mercado al emisor, lo que fija las condiciones de sus emisiones futuras.
-\item \emph{Procedimientos de emisión}:
+\item El tipo de contado a $n$ años es una función suave del plazo, la misma para todos los bonos del emisor.
+\item Los tipos a muy largo plazo tienden a un nivel constante, y el tipo a plazo cero es el tipo más corto.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item La curva de \autor{Svensson}, con $n$ el plazo en años, es
+  \begin{equation}\label{eq:svensson}
+  r(n)=\beta_0+\beta_1\,\frac{1-e^{-n/\tau_1}}{n/\tau_1}+\beta_2\Big[\frac{1-e^{-n/\tau_1}}{n/\tau_1}-e^{-n/\tau_1}\Big]+\beta_3\Big[\frac{1-e^{-n/\tau_2}}{n/\tau_2}-e^{-n/\tau_2}\Big];
+  \end{equation}
+  sin el último término es la de \autor{Nelson} y \autor{Siegel}. Las $\beta$ son locales de este modelo: no son la beta del CAPM.
+\item \emph{Qué es cada parámetro} (gráfico~\ref{fig:nss-factores}):
   \begin{itemize}
-  \item \emph{Subasta}: la habitual en la deuda pública. El Tesoro publica un calendario y los inversores presentan peticiones competitivas (con importe y precio, en porcentaje del nominal; en las letras, en tipo de interés) o no competitivas (solo importe). Se ordenan de mayor a menor precio hasta cubrir el importe, lo que fija el precio mínimo. Las peticiones entre el precio mínimo y el precio medio ponderado pagan lo que ofrecieron, y las que lo superan y las no competitivas, el precio medio ponderado\nocite{Tesoro2026Subasta}: es la subasta «convencional corregida» \vertema{3.A.14} \vertema{4.B.26}.
-  \item \emph{Sindicación}: un grupo de entidades coloca la emisión, asegurándola a un precio (\emph{underwriting}) o colocándola al mejor precio posible (\emph{best effort}).
-  \item \emph{Colocación privada}: emisiones a medida para pocos inversores.
+  \item $\beta_0$ es el \emph{nivel}, el tipo al que tiende la curva a muy largo plazo, porque los otros términos se anulan cuando $n$ crece;
+  \item $\beta_1$ es la \emph{pendiente}: su término pesa 1 en el plazo cero y se va apagando, así que el tipo más corto es $\beta_0+\beta_1$ y la curva sube si $\beta_1<0$;
+  \item $\beta_2$ y $\beta_3$ son la \emph{curvatura}: sus términos valen cero en los 2 extremos y forman una joroba (o un valle, si son negativos) en los plazos intermedios, cerca de $\tau_1$ y de $\tau_2$.
   \end{itemize}
+\item Los parámetros se eligen cada día para que los precios que da \eqref{eq:precio-contado} con esa curva se acerquen lo más posible a los observados.
 \end{itemize}
 
-\subsection{Según la divisa y el lugar de emisión}
-
+\subparagraph{iii) Implicaciones}
 \begin{itemize}
-\item La mayoría de los bonos internacionales se emiten en dólares o en euros, porque los inversores prefieren monedas líquidas y libres. El dólar domina por las necesidades del Tesoro de Estados Unidos y de sus agencias hipotecarias, y porque muchos emergentes emiten en dólares para atraer a los inversores, que así no corren el riesgo de depreciación de la moneda local.
-\item Los \emph{bonos de doble divisa} pagan los intereses en una moneda y el principal en otra, y los \emph{bonos con opción de divisa} combinan un bono en moneda local con una opción sobre una divisa.
-\item Por la moneda y el lugar: el \emph{mercado doméstico} (residentes y moneda nacional); el \emph{segmento internacional del mercado doméstico} (emisores extranjeros, moneda y regulación del país, inversores sobre todo nacionales); y los \emph{euromercados}, con \concepto{eurobonos}, bonos emitidos en una moneda distinta de la del país donde se colocan, por cualquier emisor, para inversores internacionales y con la ley pactada en el contrato, normalmente la inglesa \vertema{3.B.3}.
+\item Con 4 a 6 números se resume toda la curva, y se obtienen tipos de contado y a plazo para cualquier plazo, aunque no haya bonos de ese plazo.
+\item Los 3 factores son los 3 movimientos que se observan en la curva: nivel, pendiente y curvatura (\ref{sec:movimientos}).
 \end{itemize}
 
-\subsection{Según el cupón}
-
+\paragraph{c) Extensiones}
 \begin{itemize}
-\item \emph{Cupón fijo} (\emph{plain vanilla}): los más habituales. Si se mantienen hasta el vencimiento dan una rentabilidad conocida, salvo impago, y su sensibilidad a los tipos, la duración y la convexidad, es fácil de calcular.
-\item \emph{Cupón variable}: un tipo de referencia (Euríbor) más un diferencial, tanto menor cuanto mejor es la calidad del emisor; o un cupón que crece a una tasa fijada o se ajusta a la inflación.
-\item \emph{Cupón cero}: no pagan cupones y se emiten al descuento; el interés es la diferencia entre el nominal y el precio. Los títulos del mercado monetario son, en el fondo, bonos cupón cero.
-\item \emph{Bonos devengables} (\emph{accrual}): devengan cupones que se pagan al vencimiento, con el nominal.
-\item \emph{Bonos con cupones diferidos}: devengan cupones, pero el primer pago, con los acumulados, se retrasa hasta una fecha fijada.
+\item \autor{Francis Diebold} y \autor{Canlin Li} (2006)\nocite{DieboldLi2006Forecasting} dejan fijo $\tau_1$ y tratan $\beta_0$, $\beta_1$ y $\beta_2$ como factores de nivel, pendiente y curvatura que cambian cada día y siguen un proceso autorregresivo: así la curva se puede predecir.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item El BCE publica cada día con el modelo de \autor{Svensson} la curva de la deuda de los Estados de la zona del euro con calificación AAA y la de todos ellos\nocite{BCE2026YC}, y muchos bancos centrales usan \autor{Nelson} y \autor{Siegel} o \autor{Svensson}\nocite{BIS2005ZeroCoupon}.
+\item Con los parámetros que publica el BCE, \eqref{eq:svensson} reproduce sus tipos al tercer decimal: la curva AAA del 10 de noviembre de 2026, suavemente creciente, la invertida del 3 de julio de 2023 (3,39~\% a 3 meses, 3,13~\% a 2 años y 2,48~\% a 10) y la negativa del 30 de diciembre de 2020 (gráfico~\ref{fig:curva-bce-zona-euro})\nocite{BCE2026YC}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item Es suave, parsimonioso y fácil de interpretar, y por eso es el estándar de los bancos centrales.
+\item Pero es una forma funcional, no una teoría: no impone la ausencia de arbitraje entre plazos ni dice por qué la curva tiene la forma que tiene. Para eso hacen falta las teorías.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Los 3 factores de Nelson y Siegel: nivel, pendiente y curvatura}\label{fig:nss-factores}
+\grafico[0.66\textwidth]{nss-factores}
+\fuente{elaboración propia a partir de \textcite{NelsonSiegel1987Parsimonious} y \textcite{DieboldLi2006Forecasting}, con $\tau_1=1{,}5$ años. Peso de cada factor en el tipo de contado de cada plazo.}
+\end{figure}
+
+\subsection{Los modelos de equilibrio:\cortetitulo{} \autor{Vasicek} y \autor{Cox}, \autor{Ingersoll} y \autor{Ross}}\label{sec:vasicek}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item En lugar de explicar la curva con las expectativas o con la oferta de cada plazo, se modela cómo se mueve el tipo corto en el tiempo, con incertidumbre, y se deriva de ahí, sin arbitraje, el precio de los bonos de todos los plazos. La curva entera sale de 3 o 4 parámetros con significado económico.
+\end{itemize}
+
+\paragraph{b) Modelo}
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item Un solo factor, el tipo instantáneo $r$, mueve toda la curva, y sigue un proceso estocástico en tiempo continuo.
+\item El tipo vuelve hacia una media a largo plazo (reversión a la media), y no hay arbitraje entre bonos de distintos plazos.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item En el modelo de \autor{Oldřich Vasicek} (1977)\nocite{Vasicek1977Equilibrium}, el tipo sigue un proceso de \autor{Ornstein} y \autor{Uhlenbeck}:
+  \[
+  \mathrm{d}r=a\,(b-r)\,\mathrm{d}t+\sigma\,\mathrm{d}W ,
+  \]
+  con $b$ el nivel al que vuelve, $a$ la velocidad con que vuelve, $\sigma$ la volatilidad y $W$ un movimiento browniano (letras locales de este apartado).
+\item En el de \autor{John Cox}, \autor{Jonathan Ingersoll} y \autor{Stephen Ross} (1985)\nocite{CoxIngersollRoss1985Theory}, CIR, la volatilidad depende del nivel: $\mathrm{d}r=a\,(b-r)\,\mathrm{d}t+\sigma\sqrt{r}\,\mathrm{d}W$.
+\item En los 2, el precio de un bono cupón cero que vence dentro de $\tau$ años tiene la forma $P(\tau)=A(\tau)\,e^{-B(\tau)\,r}$, con $B(\tau)=(1-e^{-a\tau})/a$ en el de \autor{Vasicek}: el tipo de contado de cada plazo es una función lineal del tipo corto de hoy.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item La curva es creciente si el tipo corto está bastante por debajo de su nivel a largo plazo, invertida si está bastante por encima y con joroba en medio.
+\item Un cambio del tipo corto mueve más los tipos cortos que los largos, porque se espera que vuelva a la media: la volatilidad de los tipos baja con el plazo.
+\item En el de \autor{Vasicek}, los tipos pueden ser negativos; en el CIR, no bajan de cero si la reversión es lo bastante fuerte frente a la volatilidad.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+\begin{itemize}
+\item Los modelos de \autor{Ho} y \autor{Lee} (1986), \autor{Hull} y \autor{White} (1990) y \autor{Heath}, \autor{Jarrow} y \autor{Morton} (1992) parten de la curva observada hoy y la reproducen exactamente; sirven sobre todo para valorar derivados de tipos de interés\nocite{Hull2022Options} \vertema{3.B.25}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item Con un solo factor, todos los tipos se mueven a la vez y en el mismo sentido; en los datos, en cambio, la curva también gira y cambia de curvatura (\ref{sec:movimientos}). Hacen falta al menos 3 factores.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item Imponen la ausencia de arbitraje y dan la prima por plazo a partir del precio del riesgo, algo que las teorías clásicas suponen; pero con un factor reproducen mal la curva observada, y por eso en la práctica se usan modelos de varios factores o ajustados a la curva de hoy.
 \end{itemize}
 
 % ==========================================================================

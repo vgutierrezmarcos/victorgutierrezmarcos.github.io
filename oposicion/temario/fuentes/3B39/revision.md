@@ -146,3 +146,7 @@ Todas aplicadas con la opción recomendada (14/11/2026).
 - **III.2**: `pilares-competencia` como apoyo; en la pizarra, `cartel-bienestar` por capas (ejes; demanda; c y C; IMg; K; sobreprecio; PIE) y `eq:multa-disuasoria`; `multas-carteles` como apoyo; `williamson` por capas (ejes; demanda; CMe₀ y E₀; CMe₁; E₁ y p₁; A₁; A₂; transferencia) y `eq:williamson`; `concentraciones` y `ayudas-estado` como apoyo; la matriz de subvenciones en la pizarra (4 celdas, se marca el equilibrio).
 - **Funciones clave que se conservan**: `eq:margen-tamano` (I y III.1), `eq:multa-disuasoria` (III.2) y `eq:williamson` (III.2).
 - Nunca se dice el número de un tema en voz alta.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de los 2 principios para gravar el comercio entre Estados: origen y destino, en itemize; la resistencia de los Estados al origen sigue en párrafo aparte.

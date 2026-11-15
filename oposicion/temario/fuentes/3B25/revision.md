@@ -236,6 +236,11 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 - **Imagen de la tulipomanía**: quitada por derechos desconocidos. Si se quiere, la acuarela del *Semper Augustus* (dominio público, Wikimedia Commons).
 - **Control de calidad (8/11/2026): capítulos de Hull.** Contrastados con el índice de la 11.ª ed. (sin el libro delante), cuadran caps. 1-5, 7, 10-12, 19, 25-26 y la tabla 11.1. Quedan 2 dudosos: la aproximación $s\simeq\lambda(1-R)$ está en el cap. 24 («Credit risk»), no en el 25; y la evidencia de la paridad *put-call* (costes de transacción y venta en corto), citada a Hull, cap. 11, que no parece tratarla. Hay que comprobar los dos en el libro.
 
+- **D9 (15/11/2026). Estructura del tema: dónde va lo común a todos los derivados (el antiguo apartado 0 y el III.6).**
+  - (a) *Fundamentos, instrumentos y mercados*: I. Fundamentos comunes (qué es un derivado, para qué sirve, dónde se negocia, cómo se valora); II. Los instrumentos uno a uno (futuros, opciones, *swaps* y crédito); III. Riesgos, regulación y evidencia. Pros: sigue el título («instrumentos y mercados») y lo común sale una sola vez. Contras: II tendría unos 19-20′ de los 26′30″ y I y III serían muy cortos; obliga a bajar un nivel cada familia (II.2.5.x), que no existe en la plantilla (los modelos a)-e) con i)-iii) ya usan los 5 niveles), y rompe la estructura de bloques del tema antiguo (futuros, opciones, *swaps*).
+  - (b) *Derivados lineales y no lineales*: I. Futuros, *forwards* y *swaps* (todos lineales, carteras de *forwards*); II. Opciones; III. Derivados de crédito y mercados OTC tras 2008. Pros: los *swaps* van junto a lo que son (*forwards*), y el III enlaza los CDS con 2008 y la regulación. Contras: rompe el guion de 5 pasos por familia, cambia mucho el tema antiguo y deja los CDS, que son *swaps*, separados de ellos.
+  - (c) **Aplicada**: se mantienen las 3 familias como apartados (el grueso del tema son los instrumentos) y lo común se reparte en 2 anclas fijas, una al principio y otra al final. Al principio, en I.2.1, «Según el mercado: organizados u OTC», que ahora dice expresamente que la distinción vale para todos los derivados y recoge los participantes, las infraestructuras (cámaras, registros, ISDA), el tamaño de los mercados organizados (FIA, gráfico movido) y MEFF/BME Clearing, que antes estaban en III.6. Al final, el III.6 pasa a ser «Los mercados OTC tras 2008: tamaño, regulación y estabilidad», presentado como cierre del tema (el grueso de lo OTC son *swaps* y la reforma nació de los CDS). La introducción (contextualización y estructura) anuncia las 2 anclas. Las remisiones a III.6 en el cuerpo pasan de 2 (introducción y *forwards*) a ninguna; solo queda una a III.6.1 desde I.2.1 (el tamaño de los OTC). Contras: III.6 sigue colgando del bloque de *swaps*; si se prefiere, se puede titular el III «Mercados de *swaps* y mercados OTC».
+
 ## Enlaces del original (9/11/2026)
 
 - **Restaurados**:
@@ -258,25 +263,25 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
   - `eq:spot-forward`, en I.5;
   - `eq:put-call`, en II.5;
   - `eq:black-scholes`, en II.5.
-- **Bloque I** (7′):
-  - `ccp` pequeño (estrella frente a malla), con «cada día tiene su afán»;
-  - `pago-futuro`, largo y corto, con la vuelta al WTI;
+- **Bloque I** (7′30″):
+  - `ccp` pequeño (estrella frente a malla), con «cada día tiene su afán», diciendo que la distinción organizado/OTC vale para todos los derivados;
+  - `pago-futuro`, largo y corto, con el ejemplo $F_0=100$, $S_T=140$ (±40) y la suma cero, y la vuelta al WTI;
   - la paridad, con «lo que se gana en los columpios se pierde en los tiovivos», y debajo solo `eq:coste-mantenimiento`;
   - `contango` por capas (expectativas, *backwardation*, *contango*).
   - Como apoyo: la tabla organizados/OTC, la ratio de cobertura y el FRA.
-- **Bloque II** (11′30″):
-  - `pagos-opciones` (al menos los 2 compradores), con «el que paga, manda»;
-  - los 3 perfiles de `estrategias-opciones` a mano alzada;
+- **Bloque II** (12′):
+  - `pagos-opciones` (al menos los 2 compradores, con su fórmula de pago), con «el que paga, manda»;
+  - las 4 familias de especulación (simples, complejas, del diferencial, sintéticas) en una columna; los 2 perfiles de `estrategias-opciones` (cono y diferencial alcista) a mano alzada;
+  - `put-protectora` (panel izquierdo, $\max(S_T,K)$), que enlaza con la paridad; `sintetica` solo como `apoyo:`;
   - `paridad-put-call` construido por partes (bono + *call* a la izquierda; acción + *put* a la derecha; las 2 sumas iguales) junto a la función clave;
-  - la tabla de determinantes en versión mínima;
   - `arbol-binomial` con $\Delta=1/3$, $\pi=2/3$ y $c\approx9{,}09$, contado casi de palabra («la probabilidad real no aparece»);
-  - Black-Scholes, solo la función clave; $N(d_2)$, $N(d_1)$, sonrisa y VIX van de palabra o en `apunte`.
+  - Black-Scholes, la función clave y, debajo, «acción × $N(d_1)$ − bono × $N(d_2)$» frente a la paridad; la figura `determinantes-bs` en versión mínima (6 filas: variable, *call*, *put*, griega); $N(d_2)$, $N(d_1)$, sonrisa y VIX van de palabra o en `apunte`.
   - `valor-call` va como apoyo, solo si cabe.
-- **Bloque III** (8′):
+- **Bloque III** (7′):
   - `irs` (banco y empresa);
-  - $V_{\mathrm{swap}}=B_{\mathrm{fl}}-B_{\mathrm{fix}}$ en una línea;
-  - III.6 en 3 columnas, «tamaño», «reforma de 2009» y «riesgos», con 2-3 palabras en cada una.
-  - Los gráficos de datos (`bis-otc-derivados` y `fia-bolsas-2025`) van solo como `apoyo:`, nunca se dibujan.
+  - la valoración en una línea: «suma de *forwards*», $V=\sum(F_i-K_i)e^{-r_it_i}$, y, para el IRS, serie de FRA o $B_{\mathrm{fix}}-B_{\mathrm{fl}}$;
+  - III.6 (mercados OTC tras 2008) en 3 columnas, «tamaño», «reforma de 2009» y «riesgos», con 2-3 palabras en cada una.
+  - Los gráficos de datos (`bis-otc-derivados` en III.6 y `fia-bolsas-2025`, ahora en I.2) van solo como `apoyo:`, nunca se dibujan.
 - **Gráfico conjunto por partes**: no hay un gráfico único del tema. Lo que se va completando es la columna del guion (con las 3 funciones clave a la derecha). Al final la pizarra queda con el guion y las 3 funciones clave.
 - **No se dicen números de tema en voz alta**: las extensiones se nombran por su contenido (opciones reales, estructura temporal de los tipos, crisis de 2008, regulación financiera).
 - **Anexos y notas**: son de profundización y no entran en el guion.
@@ -286,3 +291,28 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 - **Nobel añadidos**: Arrow (1972, con Hicks), en los títulos de Arrow de la introducción (cubre a Hicks en la \emph{normal backwardation}); Sharpe (1990, con Markowitz y Miller), en el modelo binomial. Ya estaba Merton-Scholes (1997). Fama y Bernanke solo salen en `\nocite`.
 - **4.º ejercicio**: \vertema{4.A.20} junto a MEFF y BME Clearing.
 - **Dichos**: se conservan «cubrirse las espaldas» (enganche), «cada día tiene su afán» (liquidación diaria), «lo que se gana en los columpios se pierde en los tiovivos» (coste de mantenimiento) y «el que paga, manda» (asimetría de la opción). Se quita «dos caras de la misma moneda» (paridad \emph{put-call}: las 2 carteras pagan lo mismo, no son caras distintas), en el tema, la ficha y las instrucciones del vídeo.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota del Reglamento de ventas en corto: «Hay que distinguir 2 operaciones:» venta en corto y venta en corto al descubierto, en itemize.
+
+## Comentarios de Víctor a la parte B (15/11/2026)
+
+Números de gráficos, tablas y ecuaciones del PDF de la rama (tercer-ejercicio/3B25.pdf, 13/11/2026), comprobados antes de cambiar nada: gráfico 1 = pago del futuro; gráfico 3 = las 4 posiciones simples; gráfico 7 = árbol binomial; ecuación 14 = Black-Scholes. Tras los cambios, la numeración se desplaza (el gráfico de la FIA pasa a I.2 y es el gráfico 1; el pago del futuro es el 2).
+
+| Comentario | Qué se ha hecho |
+|---|---|
+| «Mejora el gráfico 1 para que sea más explicativo.» | `pago-futuro` rehecho: zonas de ganancia (verde) y pérdida (roja), fórmula del pago encima de cada panel, ejemplo numérico con proyecciones ($F_0=100$; $S_T=140$ da +40 al largo y −40 al corto; $S_T=60$, al revés), rótulo «pendiente ±1», umbrales y la suma cero escrita debajo. En el texto, un ejemplo con esas cifras y la fuente explica los colores. |
+| «El gráfico 3 no puede ocupar una página entera… o mete fórmulas con los pagos en medio haciendo una infografía más completa…» | Se ha optado por la infografía de página entera (`\graficopagina`, flotante solo en su página): cada uno de los 4 paneles lleva debajo una ficha con el pago, el beneficio, cuándo gana, la ganancia y la pérdida máximas y la expectativa; entre comprador y vendedor, la flecha de «suma cero»; leyenda común pago/beneficio. |
+| Estrategias simples, complejas, del diferencial y sintéticas; sintéticas en caja gris; ordenar con párrafos, subpárrafos y gráficos; desarrollo a anexos | II.4 reorganizado: tabla nueva «Familias de estrategias con opciones» (familia, qué se combina, para qué expectativa, ejemplo) y II.4.1 con las 4 familias como viñetas con subviñetas sangradas (simples; complejas: cono; del diferencial: diferencial alcista; sintéticas: «con una combinación que lleve un futuro se obtiene una opción sintética»). Caja gris de las sintéticas con la tabla de las 4 combinaciones (movida del anexo), el gráfico nuevo `sintetica` (call sintética) y la condición $K=F_0$. El gráfico de estrategias del cuerpo se queda con cono y diferencial alcista. Anexo D: mismas familias con sus nombres; la *put* sintética sustituye a la *call* sintética en el gráfico del anexo, para no repetir. |
+| «En estrategias de cobertura del riesgo desarrolla la put protectora porque luego sirve para explicar la paridad put-call.» | II.4.2 desarrolla la *put* protectora: construcción y coste ($S_0+p$), valor estado a estado ($K$ o $S_T$, $\max(S_T,K)$), interpretación como seguro con franquicia, ejemplo numérico (acción a 100, $K=90$, prima 3: si cae a 60 se pierden 13 en vez de 40; si sube a 130 se ganan 27) y «por qué importa»: el mismo pago que *call* + bono, que es la paridad. Gráfico nuevo `put-protectora` (valor al vencimiento y beneficio). La paridad remite a esta estrategia. |
+| Gráfico 7: probabilidades 2/3 y 1/3 también en la acción; cálculo por el que se llega a 15 y 0 | `arbol-binomial`: $\pi=2/3$ y $1-\pi=1/3$ en las ramas de la acción, con el cálculo de $\pi$ y la comprobación $\tfrac23\cdot125+\tfrac13\cdot80=110=100(1+r)$; en la *call*, $c_u=\max(125-110,0)=15$ y $c_d=\max(80-110,0)=0$, y debajo el precio por las 2 vías (fórmula y réplica). Más ancho en el PDF. |
+| Derivación de Black-Scholes como en el tema antiguo, en caja gris, viéndose las similitudes con la paridad | Caja gris tras el desarrollo: pasos 1-3 del tema antiguo (el pago esperado como integral sobre la densidad de $S_T$, solo los estados en que se ejerce; separar lo que se recibe y lo que se paga, con $Ke^{-rT}$ como el bono de la *call* fiduciaria; resolver las integrales: $N(d_2)$ y $S_0N(d_1)$). Corregido un desliz del antiguo, que descontaba $K$ dentro del máximo. Tabla nueva «los mismos 2 ladrillos» (paridad, Black-Scholes y caso muy dentro de dinero) y 3 viñetas: la *call* es $N(d_1)$ acciones con $N(d_2)$ bonos; muy dentro de dinero la fórmula es la paridad; restando *call* y *put* sale la paridad exacta. |
+| En (14), diagrama infográfico de cómo afecta cada parámetro a *call* y *put*, con la griega | Figura nueva `determinantes-bs` en las implicaciones: las 2 fórmulas en el centro y una tarjeta por variable ($S_0$, $K$, $T$, $\sigma$, $r$, dividendos) con el signo en la *call* y en la *put*, la griega con su expresión ($\Delta$, $\Gamma$, $\Theta$, $\mathcal{V}$, $\rho$; $\partial c/\partial K$) y el porqué. Sustituye a la antigua tabla de determinantes (las americanas van en la fuente de la figura). En el texto, 3 viñetas que agrupan los signos. |
+| Valoración del *swap* (III.5): no se entendían «como diferencia de 2 bonos» ni «como cartera de FRA» | Reescrita en genérico y con listas sangradas: al firmar vale cero; *idea general*: un *swap* es una sucesión de contratos a plazo y vale la suma de lo que vale cada uno (ecuación nueva $V=\sum(F_i-K_i)e^{-r_it_i}$, con el valor de un *forward* ya firmado de I.5), en 3 pasos; *ejemplo 1*, el IRS como serie de FRA con los tipos a plazo de la ETTI; *ejemplo 2*, el mismo IRS como diferencia de 2 bonos, con el tipo *swap*; *ejemplo 3*, el *currency swap* como *forwards* de divisas (PCI). Nota al pie: «sucesión de futuros» vale como idea, pero en sentido estricto son contratos a plazo. |
+| Estructura (apartado 0 y III.6) | Ver la duda D9 (15/11/2026): alternativas (a) fundamentos-instrumentos-mercados, (b) lineales/no lineales y (c) la aplicada, 2 anclas fijas. Estructura antes: I.2 «Según el mercado en el que se negocian»; III.6 «Los mercados de derivados: tamaño, participantes, regulación y estabilidad» (tamaño OTC y organizados, participantes e infraestructura, regulación, eficiencia y estabilidad). Después: I.2.1 «Según el mercado: organizados u OTC» (con «una distinción para todos los derivados», participantes, infraestructuras, tamaño de los organizados con el gráfico de la FIA, MEFF); III.6 «Los mercados OTC tras 2008: tamaño, regulación y estabilidad» (tamaño OTC, regulación, eficiencia y estabilidad). Introducción: la estructura anuncia las 2 anclas y que el grueso son los instrumentos. |
+| `\minutos` y ficha | Siguen sumando 30: I 7′ → 7′30″ (I.2 1′45″ → 2′15″), II 11′30″ → 12′ (II.4 1′30″ → 2′), III 8′ → 7′ (III.6 3′ → 2′). Esquema, notas al opositor e instrucciones del vídeo actualizados. Ficha: esquema y minutos, I.2 con participantes y MEFF, II.4 con las 4 familias y la *put* protectora (2 gráficos nuevos), Black-Scholes con su parecido con la paridad y los signos con su griega, III.5 con la valoración genérica y III.6 renombrado; 4 páginas a 8,75 pt. |
+
+- Páginas del tema: 35 → 39 (anexos 8, bibliografía 5). Crece por la infografía de página entera, la *put* protectora, la caja de las sintéticas y la de Black-Scholes; lo que no se canta va en cajas grises y anexos.
+- Notas nuevas: una (la de «sucesión de futuros» en III.5); es un solo argumento, sin lista.
+

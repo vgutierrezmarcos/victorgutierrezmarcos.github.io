@@ -107,7 +107,7 @@
 | T2 | «TARGET» | T2 desde el 20/3/2023 | `BCE2023T2` | https://www.ecb.europa.eu/press/pr/date/2023/html/ecb.pr230321~f5c7bddf6d.en.html | 05/11/2026 | Nota del BdE (V18) |
 | Reservas mundiales | 17 billones $ (2022, Wikipedia) | 13,2 billones de divisas (2026T2) | `FMI2026COFER` | https://data.imf.org/en/datasets/IMF.STA:COFER | 05/11/2026 | *Data Brief* del FMI (V14) |
 | Composición por monedas | 59/21/6/5 % (2022) | 56,7/20,6/5,0/4,6 % (2026T2); 71 % en 1999 | `FMI2026COFER` | ídem | 05/11/2026 | *Data Brief* y Central Banking (V16) |
-| Tenedores | Cuotas de Wikipedia | China, una cuarta parte de las divisas; Japón y Suiza siguen | `SAFE2026Reservas`, `BM2026WDIReservas` | https://data.worldbank.org/indicator/FI.RES.TOTL.CD | 05/11/2026 | SAFE frente a WDI (V15) |
+| Tenedores | Cuotas de Wikipedia | China, una cuarta parte de las divisas; Japón y Suiza siguen | `SAFE2026Reservas2025`, `BM2026WDIReservas` | https://data.worldbank.org/indicator/FI.RES.TOTL.CD | 05/11/2026 | SAFE frente a WDI (V15) |
 | Servicios en el comercio mundial | 20 % y 23 % | 9,6 de 34,7 billones $ (2025) | `OMC2026GTO` | https://www.wto-ilibrary.org/content/books/9789287090812 | 05/11/2026 | Nota UNCTAD-OMC (V11; PDF no descargado) |
 | *Doing Business* y B-READY | 2004, 2021, 2023 | Suspendido 16/9/2021; B-READY 50 (2024) y 101 (2025) economías | `BM2021DoingBusiness`, `BM2025BREADY` | https://www.worldbank.org/en/businessready | 05/11/2026 | Repositorio del BM (V13) |
 | Desequilibrios globales | 2015 | EE. UU. ≈ −3,7 %; China 3,7 %; Alemania 4,5 %; Japón 4,9 %; saldos globales 4,0 → 4,4 billones $ (≈ 3,7 % del PIB mundial); 2/3 excesivos | `FMI2026ESR`, `FMI2025ESR`, `FMI2026WEOdatos` | https://www.imf.org/en/publications/esr/issues/2026/07/30/external-sector-report-2026 | 05/11/2026 | BEA y SAFE (V25, V27) |
@@ -220,3 +220,8 @@ Todas con la opción recomendada aplicada.
 - **Nobel**: la nota de \autor{Kuznets} y \autor{Stone} pasa al formato habitual, con los motivos oficiales entre comillas; nuevas notas para \autor{Samuelson} 1970 (Balassa-Samuelson), \autor{Meade} 1977 (transacciones autónomas y compensatorias) y \autor{Mundell} 1999 (Mundell-Fleming); entradas copiadas al `.bib`.
 - **4.º ejercicio**: \vertema{4.A.22} tras la estructura de la balanza de bienes y servicios de España; la remisión al \vertema{4.A.21} de la PII deja de formar parte de la frase («la evolución desde el euro está en el…»).
 - **Refranes**: se quedan el del enganche («no se puede estirar el brazo más que la manga»), «toda moneda tiene dos caras» (partida doble), «de grano en grano hace la gallina el granero» (PII, ahora con la frase que lo explica) y «las cuentas de la lechera» (integrado en la frase del déficit que se justifica con rentas futuras). Se quita «las cuentas del Gran Capitán» (errores y omisiones), también de la ficha: el refrán alude a cuentas infladas a propósito y podía confundir.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de las rentas primarias: las 2 cuentas de renta primaria de la contabilidad nacional (explotación y asignación) en itemize; la correspondencia con la balanza, en párrafo aparte.
+- No se convierten: las demás (un solo argumento) ni las de Nobel.

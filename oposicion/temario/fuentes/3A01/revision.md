@@ -259,3 +259,14 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - **Refranes y dichos**: el original no traía ninguno (solo el «todo vale» de Feyerabend, que es cita). Se quedan el del enganche («a toro pasado, todos somos Manolete») y los que casan con su concepto y van explicados: «quien mucho abarca poco aprieta» (imperialismo), «a todo cerdo le llega su San Martín» (pollo de Russell), «la excepción confirma la regla» (Popper), «sostenella y no enmendalla» (heurística negativa), «los árboles no dejan ver el bosque» (equilibrio parcial), «gato blanco o gato negro» (Friedman), «una cosa es predicar y otra dar trigo» (descuento cuasihiperbólico), «ver para creer» (RCT); «mucho ruido y pocas nueces» (mathiness) y «el que calla otorga» (inscripción automática) se integran en una frase que explica la relación. Quitados (texto y ficha): «al pan, pan, y al vino, vino» (no define la economía positiva), «cada loco con su tema» (Methodenstreit: llama locos a los 2 bandos), «virgencita, que me quede como estoy» (statu quo) y «el que se quema con leche, ve una vaca y llora» (no es la heurística de disponibilidad, sino el miedo tras una mala experiencia).
 - Compilado (`--solo pdf`) y ficha; `verificar-tema.py` sin errores propios (solo los de PDF/HTML/Word publicados anteriores a la fuente, porque no se publica).
 - Dudas (13/11/2026): (1) motivo del Nobel de Klein (1980) traducido de memoria, sin comprobarlo hoy en nobelprize.org (la web devuelve 403 a las consultas automáticas); (2) LaTeX avisa de una línea desbordada 5 pt en la bibliografía, probablemente una URL de las entradas nuevas.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los otros 2 motivos de Schumpeter (l. 24, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
+- La nota del debate del cálculo socialista (l. 156): 3 viñetas (Mises, Lange, Hayek); «Es uno de los orígenes…» en párrafo aparte.
+- La nota de las reglas de Marshall en la carta a Bowley (l. 633): 6 pasos en lista a)-f) (enumerate); «si no se conseguía lo cuarto, quemar lo tercero» pasa a «lo de la d)… lo de la c)» para que remita a las letras.
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

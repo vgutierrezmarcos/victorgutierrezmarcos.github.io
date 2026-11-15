@@ -32,7 +32,7 @@ import sys
 import fitz  # PyMuPDF
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import (Tema, guardar_pdf_anterior, guardar_docx_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
+from comun import (Tema, recortar_vertical, guardar_pdf_anterior, guardar_docx_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
                    errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas,
                    licencia_corta, licencia_larga, LICENCIA_URL_LEGAL, destinos_temas, primer_tema,
                    escribir_destinos_tex, es_exclusivo, AVISO_EXCLUSIVO, CONDICIONES_URL, enlazar_esquema)
@@ -221,6 +221,7 @@ def compilar_graficos(tema, forzar=False, solo=None):
         if cod != 0:
             errores.append(f'{nombre}:\n' + '\n'.join(errores_log(base + '.log')))
             continue
+        recortar_vertical(pdf)
         ejecutar([PDFTOCAIRO, '-svg', os.path.basename(pdf), os.path.basename(svg)], cwd=tema.graficos)
         titular_svg(svg)
         doc = fitz.open(pdf)

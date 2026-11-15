@@ -1,0 +1,183 @@
+% Infografía de la dualidad en una cara (Víctor, 15/11/2026): amplía el esquema de
+% dualidad (figura esquema-dualidad) con dos paneles en 3D, en la perspectiva del
+% gráfico pmu-r3 del 3.A.8 (acimut 30°, elevación 28°):
+%  - primal: superficie de utilidad U = (x1 x2)^(1/2), recta de balance en el suelo y
+%    plano vertical de la restricción de gasto; la utilidad recorrida sobre la recta
+%    alcanza su máximo en x* (U* = V(p,W));
+%  - dual: el gasto p·h como plano inclinado, la curva de indiferencia exigida U-barra
+%    en el suelo y su «cortina» hasta el plano; el gasto recorrido sobre la curva
+%    alcanza su mínimo en h* (E* = E(p,U)).
+% Debajo, el esquema ampliado: problemas, demandas, funciones valor, Roy, Shephard,
+% identidades de dualidad, Slutsky, multiplicadores, propiedades y aplicaciones.
+% Datos: p1 = p2 = 1, W = 3,5; x* = h* = (1,75; 1,75); U* = U-barra = 1,75; E* = 3,5.
+% Primal (marshalliana) en morado y dual (hicksiana) en verde, como el esquema.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\pgfplotsset{
+  supu/.style={surf,z buffer=sort,shader=faceted,fill opacity=0.40,draw=tceemorado!35,line width=0.12pt,
+    colormap={tceeu}{rgb255=(226,239,217) rgb255=(167,137,189)}},
+  supg/.style={surf,z buffer=sort,shader=faceted,fill opacity=0.30,draw=tceeverde!35,line width=0.12pt,
+    colormap={tceeg}{rgb255=(240,246,236) rgb255=(140,190,138)}},
+  tresd/.style={x={(1.0cm,-0.275cm)},y={(0.575cm,0.467cm)},z={(0cm,1.0cm)},axis lines=none,
+    xmin=0,xmax=4,ymin=0,ymax=4,zmin=0,zmax=4.4,clip=false,anchor=origin},
+  % en el dual, el eje vertical (gasto) va a escala 0,6 para que el plano quepa
+  tresdg/.style={tresd,z={(0cm,0.6cm)},zmax=7.6},
+}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    cajap/.style={draw=tceemorado,very thick,fill=tceemorado!8,rounded corners=3pt,align=center,
+                  minimum width=4.3cm,minimum height=1.05cm,inner sep=4pt},
+    cajad/.style={cajap,draw=tceeverde,fill=tceeverde!8},
+    cajaa/.style={draw=tceegris,thick,rounded corners=3pt,align=left,text width=5.15cm,
+                  font=\footnotesize,inner sep=4pt,anchor=north},
+    une/.style={->,thick},
+    rel/.style={->,thick,tceegris},
+    nota/.style={font=\footnotesize,inner sep=2pt},
+    notag/.style={nota,text=tceegris},
+    prop/.style={font=\footnotesize,align=left,inner sep=3pt,text width=5.5cm}]
+
+  % ======================= cabeceras =======================
+  \capa{1}{\node[text=tceemorado,align=center] at (4.4,0.75) {\textbf{Problema primal}\\ \footnotesize maximizar la utilidad con la renta $\overline{W}$ dada};}
+  \capa{5}{\node[text=tceeverde,align=center] at (13.6,0.75) {\textbf{Problema dual}\\ \footnotesize minimizar el gasto con la utilidad $\overline{U}$ exigida};}
+
+  % ======================= panel primal (3D) =======================
+  \begin{axis}[tresd,at={(1.55cm,-5.1cm)}]
+    % 1: ejes
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below] {$x_1$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,4.0,0) coordinate (finx2p);}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.3) node[above] {$U(\vect{x})$};}
+    % 2: conjunto presupuestario y curva de indiferencia alcanzada (proyección en el suelo)
+    \capa{2}{\addplot3[fill=tceedorado,fill opacity=0.25,draw=tceedorado,thick] coordinates {(0,0,0) (3.5,0,0) (0,3.5,0) (0,0,0)};}
+    \capa{2}{\addplot3[tceemorado,thick,dashed,domain=1.0:3.06,samples=40,samples y=0] (x,{3.0625/x},0);}
+    % 3: superficie de utilidad
+    \capa{3}{\addplot3[supu,domain=0:3.6,y domain=0:3.6,samples=13,samples y=13] {sqrt(x*y)};}
+    \capa{1}{\node[right] at (finx2p) {$x_2$};}
+    % 4: restricción de gasto: plano vertical sobre la recta de balance
+    \capa{4}{\addplot3[fill=tceedorado,fill opacity=0.22,draw=tceedorado,thin] coordinates {(3.5,0,0) (0,3.5,0) (0,3.5,2.35) (3.5,0,2.35) (3.5,0,0)};}
+    % 5: la utilidad recorrida sobre la recta de balance y su máximo
+    \capa{5}{\addplot3[tceemorado,line width=1.6pt,domain=0:3.5,samples=50,samples y=0] (x,{3.5-x},{sqrt(x*(3.5-x))});}
+    \capa{5}{\draw[guia] (axis cs:1.75,1.75,1.75) -- (axis cs:1.75,1.75,0);}
+    \capa{5}{\draw[guia] (axis cs:1.75,1.75,1.75) -- (axis cs:0,0,1.75);}
+    \capa{5}{\node[punto,fill=tceemorado] at (axis cs:1.75,1.75,1.75) {};}
+    \capa{5}{\node[punto,fill=tceemorado] at (axis cs:1.75,1.75,0) {};}
+    \capa{5}{\node[nota,left,text=tceemorado] at (axis cs:0,0,1.75) {$U^*=V(\vect{p},\overline{W})$};}
+    \capa{5}{\node[nota,left,text=tceemorado,inner sep=3pt] at (axis cs:1.75,1.75,0) {$\vect{x}^*$};}
+    \capa{2}{\node[nota,text=tceedorado!80!black,anchor=north east] at (axis cs:2.1,0.9,0) {$\vect{p}\cdot\vect{x}\leq\overline{W}$};}
+  \end{axis}
+
+  % ======================= panel dual (3D) =======================
+  \begin{axis}[tresdg,at={(10.75cm,-5.1cm)}]
+    % 6: ejes
+    \capa{6}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below] {$x_1$};}
+    \capa{6}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,4.0,0) coordinate (finx2d);}
+    \capa{6}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,7.4) node[above] {$\vect{p}\cdot\vect{h}$};}
+    % 7: curva de indiferencia exigida en el suelo y recta isogasto tangente
+    \capa{7}{\addplot3[tceeverde,very thick,domain=1.0:3.06,samples=40,samples y=0] (x,{3.0625/x},0);}
+    \capa{7}{\addplot3[tceeverde,thick,dashed,domain=0.6:2.9,samples=2,samples y=0] (x,{3.5-x},0);}
+    % 8: plano del gasto
+    \capa{8}{\addplot3[supg,domain=0:3.6,y domain=0:3.6,samples=9,samples y=9] {x+y};}
+    \capa{6}{\node[right] at (finx2d) {$x_2$};}
+    % 9: restricción de utilidad: «cortina» vertical sobre la curva de indiferencia
+    % (camino de ida por el suelo y de vuelta por el plano, relleno)
+    \capa{9}{\addplot3[fill=tceedorado,fill opacity=0.22,draw=none,domain=0:2,samples=121,samples y=0]
+      ({x<1 ? 1.0+2.06*x : 1.0+2.06*(2-x)},{3.0625/(x<1 ? 1.0+2.06*x : 1.0+2.06*(2-x))},
+       {x<1 ? 0 : (1.0+2.06*(2-x))+3.0625/(1.0+2.06*(2-x))});}
+    % 10: el gasto recorrido sobre la curva de indiferencia y su mínimo
+    \capa{10}{\addplot3[tceeverde,line width=1.6pt,domain=1.0:3.06,samples=50,samples y=0] (x,{3.0625/x},{x+3.0625/x});}
+    \capa{10}{\draw[guia] (axis cs:1.75,1.75,3.5) -- (axis cs:1.75,1.75,0);}
+    \capa{10}{\draw[guia] (axis cs:1.75,1.75,3.5) -- (axis cs:0,0,3.5);}
+    \capa{10}{\node[punto,fill=tceeverde] at (axis cs:1.75,1.75,3.5) {};}
+    \capa{10}{\node[punto,fill=tceeverde] at (axis cs:1.75,1.75,0) {};}
+    \capa{10}{\node[nota,left,text=tceeverde] at (axis cs:0,0,3.5) {$E^*=E(\vect{p},\overline{U})$};}
+    \capa{10}{\node[nota,left,text=tceeverde,inner sep=3pt] at (axis cs:1.75,1.75,0) {$\vect{h}^*$};}
+    \capa{7}{\node[nota,text=tceeverde,anchor=west] at (axis cs:3.1,1.0,0) {$U(\vect{h})=\overline{U}$};}
+  \end{axis}
+
+  % lectura de cada panel
+  \capa{5}{\node[nota,align=center,text width=6.4cm] at (4.4,-7.4) {sobre la recta de balance, la utilidad alcanza\\ su \emph{máximo} en $\vect{x}^*$: tangencia con $\overline{U}=U^*$};}
+  \capa{10}{\node[nota,align=center,text width=6.4cm] at (13.6,-7.4) {sobre la curva de indiferencia $\overline{U}$, el gasto alcanza\\ su \emph{mínimo} en $\vect{h}^*$: tangencia con la isogasto $E^*$};}
+
+  % ======================= esquema ampliado =======================
+  % columnas: primal en x = 4,4; dual en x = 13,6
+  \capa{11}{
+    \node[cajap] (P) at (4.4,-8.65) {$\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\vect{x}} & U(\vect{x})\\[1pt] \text{s.a.} & \vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\end{array}$};
+    \node[nota,text=tceemorado,anchor=north] at (P.south) {$\mathcal{L}^{\mathrm{P}}=U(\vect{x})+\lambda(\overline{W}-\vect{p}\cdot\vect{x})$};
+  }
+  \capa{12}{
+    \node[cajad] (D) at (13.6,-8.65) {$\begin{array}{@{}r@{\quad}l@{}}\displaystyle\min_{\vect{h}} & \vect{p}\cdot\vect{h}\\[1pt] \text{s.a.} & U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\end{array}$};
+    \node[nota,text=tceeverde,anchor=north] at (D.south) {$\mathcal{L}^{\mathrm{D}}=\vect{p}\cdot\vect{h}+\mu\big(\overline{U}-U(\vect{h})\big)$};
+  }
+  % teorema básico
+  \capa{13}{
+    \draw[<->,very thick] (P.east) -- node[above,align=center,nota] {\textbf{teorema básico de la dualidad}\\ $\overline{W}=E^*,\ \overline{U}=U^*\ \Rightarrow\ \vect{x}^*=\vect{h}^*$} node[below,align=center,nota] {misma tangencia: $\dfrac{U_1}{U_2}=\dfrac{p_1}{p_2}$} (D.west);
+  }
+  % demandas
+  \capa{14}{
+    \node[cajap] (X) at (4.4,-11.6) {\textbf{Demanda marshalliana}\\ $\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};
+    \draw[une] ([yshift=-0.42cm]P.south) -- node[right,nota] {resolviendo} (X.north);
+  }
+  \capa{15}{
+    \node[cajad] (H) at (13.6,-11.6) {\textbf{Demanda hicksiana}\\ $\vect{h}^*=\vect{h}(\vect{p},\overline{U})$};
+    \draw[une] ([yshift=-0.42cm]D.south) -- node[left,nota] {resolviendo} (H.north);
+  }
+  % funciones valor
+  \capa{16}{
+    \node[cajap] (V) at (4.4,-14.9) {\textbf{Función indirecta de utilidad}\\ $V(\vect{p},\overline{W})=U\big(\vect{x}(\vect{p},\overline{W})\big)$};
+    \draw[une] ([xshift=0.6cm]X.south) -- node[right,nota,align=left] {función\\ valor} ([xshift=0.6cm]V.north);
+  }
+  \capa{17}{
+    \node[cajad] (E) at (13.6,-14.9) {\textbf{Función de gasto}\\ $E(\vect{p},\overline{U})=\vect{p}\cdot\vect{h}(\vect{p},\overline{U})$};
+    \draw[une] ([xshift=-0.6cm]H.south) -- node[left,nota,align=right] {función\\ valor} ([xshift=-0.6cm]E.north);
+  }
+  % Roy y Shephard (por fuera)
+  \capa{18}{
+    \draw[une,tceemorado] ([xshift=-1.3cm]V.north) -- ([xshift=-1.3cm]X.south);
+    \node[nota,text=tceemorado,align=right,anchor=east] at (2.95,-13.25) {Identidad\\ de \textsc{Roy}\\[2pt] $x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$};
+  }
+  \capa{19}{
+    \draw[une,tceeverde] ([xshift=1.3cm]E.north) -- ([xshift=1.3cm]H.south);
+    \node[nota,text=tceeverde,align=left,anchor=west] at (15.05,-13.25) {Lema de\\ \textsc{Shephard}\\[2pt] $h_i=\dfrac{\partial E}{\partial p_i}$};
+  }
+  % Slutsky entre las demandas
+  \capa{20}{
+    \draw[<->,thick] (X.east) -- (H.west);
+    \node[nota,above] at (9,-11.55) {$\dfrac{\partial x_i}{\partial p_j}=\underbrace{\dfrac{\partial h_i}{\partial p_j}}_{\text{ES}}\underbrace{-\,x_j\dfrac{\partial x_i}{\partial\overline{W}}}_{\text{ER}}$};
+    \node[notag,below] at (9,-11.65) {ecuación de \textsc{Slutsky}};
+  }
+  % funciones valor inversas
+  \capa{21}{
+    \draw[rel,black] ([yshift=2.5mm]E.west) -- node[above,nota] {$V\big(\vect{p},E(\vect{p},\overline{U})\big)\equiv\overline{U}$} ([yshift=2.5mm]V.east);
+    \draw[rel,black] ([yshift=-2.5mm]V.east) -- node[below,nota] {$E\big(\vect{p},V(\vect{p},\overline{W})\big)\equiv\overline{W}$} ([yshift=-2.5mm]E.west);
+  }
+  % identidades entre demandas (diagonales)
+  \capa{22}{
+    \draw[rel,dashed] (V.north east) -- node[pos=0.93,sloped,notag,anchor=north east,inner sep=1pt,font=\scriptsize,align=center] {$\vect{x}(\vect{p},\overline{W})\equiv{}$\\ $\vect{h}\big(\vect{p},V(\vect{p},\overline{W})\big)$} (H.south west);
+    \draw[rel,dashed,<-] (X.south east) -- node[pos=0.07,sloped,notag,anchor=north west,inner sep=1pt,font=\scriptsize,align=center] {$\vect{h}(\vect{p},\overline{U})\equiv{}$\\ $\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big)$} (E.north west);
+  }
+  % propiedades y multiplicadores
+  \capa{23}{
+    \node[prop,text=tceemorado,anchor=north west] at (1.25,-15.55) {%
+      $\vect{x}$ y $V$: grado 0 en $(\vect{p},\overline{W})$;\\
+      \textsc{Walras}: $\vect{p}\cdot\vect{x}(\vect{p},\overline{W})=\overline{W}$;\\
+      $V$: creciente en $\overline{W}$, no creciente en $\vect{p}$ y cuasiconvexa;\\
+      $\lambda^*=\partial V/\partial\overline{W}$: utilidad marginal de la renta.};
+  }
+  \capa{24}{
+    \node[prop,text=tceeverde,anchor=north east] at (16.75,-15.55) {%
+      $\vect{h}$: grado 0 en $\vect{p}$; $E$: grado 1 en $\vect{p}$;\\
+      sin exceso de utilidad: $U\big(\vect{h}(\vect{p},\overline{U})\big)=\overline{U}$;\\
+      $E$: creciente en $\overline{U}$, no decreciente y cóncava en $\vect{p}$;\\
+      $\mu^*=\partial E/\partial\overline{U}=1/\lambda^*$: coste marginal de la utilidad.};
+    \node[nota,align=center,anchor=north] at (9,-15.75) {matriz de \textsc{Slutsky}\\[2pt] $S=\Big[\dfrac{\partial h_i}{\partial p_j}\Big]=D^2_{\vect{p}}E$\\[2pt] simétrica, semidefinida\\ negativa y con $S\vect{p}=\vect{0}$};
+  }
+  % aplicaciones (bloque III del tema)
+  \capa{25}{
+    \draw[tceegris,thin] (0.1,-18.45) -- (17.9,-18.45);
+    \node[notag,anchor=south west] at (0.1,-18.45) {\itshape Para qué sirve (bloque III)};
+    \node[cajaa] at (3.0,-18.65) {\textbf{Integrabilidad.} El esquema al revés: de $\vect{x}$ a $E$ (\textsc{Shephard} y dualidad entre demandas: un sistema de ecuaciones en derivadas parciales) y de $E$ a las preferencias. Exige \textsc{Walras} y $S$ simétrica y semidefinida negativa.};
+    \node[cajaa] at (9.0,-18.65) {\textbf{Ecuación de \textsc{Slutsky}.} Derivar $h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big)$ respecto a $p_j$ separa el efecto sustitución ($\leq0$ si $j=i$) del efecto renta: bienes normales, inferiores y \textsc{Giffen}; sustitutivos y complementarios.};
+    \node[cajaa] at (15.0,-18.65) {\textbf{Medidas de bienestar.} $E$ traduce la utilidad a euros:\\ $\mathrm{VC}=\overline{W}-E(\vect{p}^1,\overline{U}^0)$,\\ $\mathrm{VE}=E(\vect{p}^0,\overline{U}^1)-\overline{W}$,\\ áreas bajo las hicksianas; índice de \textsc{Konüs}, $E(\vect{p}^1,\overline{U})/E(\vect{p}^0,\overline{U})$.};
+  }
+\end{tikzpicture}
+\end{document}

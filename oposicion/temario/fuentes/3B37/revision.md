@@ -143,3 +143,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 ## Coherencia con el 3.B.45 (14/11/2026)
 
 - SAFE: «los primeros pagos llegaron en junio de 2026» pasa a «el primer pago, a Polonia, llegó el 29 de mayo de 2026», según la fuente que comprobó el agente del 3.B.45.
+
+## Listas en las notas al pie (15/11/2026)
+
+Ninguna nota lo necesitaba.

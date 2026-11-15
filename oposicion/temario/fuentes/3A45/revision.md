@@ -345,3 +345,10 @@ Rehechas el 11/11/2026 (4.ª tanda) con la estructura en 3 bloques; lo que antes
 - **4.º ejercicio**: ya tenía `\vertema{4.A.3}`, `\vertema{4.A.17}`, `\vertema{4.A.27}` y `\vertema{4.A.30}`; no se añaden más.
 - **Refranes**: se conservan «por sus frutos los conoceréis» (enganche), «unos cardan la lana y otros llevan la fama» (contabilidad frente a causalidad), «no se ganó Zamora en una hora» (convergencia lenta), «Dios los cría y ellos se juntan» (clubes de convergencia) y «árbol que nace torcido…» (persistencia de las instituciones, con el matiz de Corea); quitada la muletilla «Como dice el refrán» en los 3 primeros y explicada su relación con lo que se dice. Se quita «las apariencias engañan» (tigres asiáticos), genérico, del tema y de la ficha. Ninguno venía del temario antiguo.
 - Compilado tema y ficha y verificado: sin errores nuevos.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 54: Smith, Ricardo y Malthus; la frase sobre lo que se ha multiplicado la renta queda como párrafo aparte.
+- l. 148: los 3 grupos de Panagariya; «Los 2 extremos…» queda como párrafo aparte.

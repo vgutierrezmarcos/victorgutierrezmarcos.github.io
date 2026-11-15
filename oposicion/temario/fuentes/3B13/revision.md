@@ -305,3 +305,8 @@ El artifact de dudas no está disponible en esta sesión: en cada duda se ha apl
 - **Nobel**: la mención de \autor{Fama} en el texto pasa a nota al pie con el formato habitual, unida a la nota de las críticas a la HME; nuevas notas para \autor{Thaler} 2017 (Froot y Thaler, 1990), \autor{Mundell} 1999 (Mundell-Fleming) y \autor{Tobin} 1981 (impuesto de Tobin); entradas copiadas al `.bib`. (\autor{John Williamson} y Rohan Williamson no son el Nobel de 2009.)
 - **4.º ejercicio**: ya remitía al \vertema{4.A.22} y al \vertema{4.B.18}; no se añaden más.
 - **Refranes**: se quedan el del enganche («quien no arriesga, no gana»), «ande yo caliente, y ríase la gente» (cobertura, ahora con la frase que explica la relación), «lo que no puede ser no puede ser, y además es imposible» (PCI) y «sube por la escalera y baja en ascensor» (\emph{carry trade}, dicho de operadores). Se quitan «camarón que se duerme, se lo lleva la corriente» y «en todas partes cuecen habas», del tema y de la ficha.
+
+## Listas en las notas al pie (15/11/2026)
+
+- Nota de la paridad cubierta: «Hay que distinguir 2 supuestos:» movilidad perfecta y sustituibilidad perfecta, en itemize.
+- No se convierten: la de la ECC, la de los creadores de mercado y las demás (un solo argumento) ni las de Nobel.

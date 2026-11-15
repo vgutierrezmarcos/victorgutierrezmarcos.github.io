@@ -251,3 +251,14 @@ Revisados los enlaces del tema original que no estaban en la versión revisada (
 - Compilado (`--solo pdf`) y ficha; `verificar-tema.py`, ver abajo.
 - Duda (13/11/2026): el motivo del Nobel de Klein (1980) va traducido de memoria (nobelprize.org devuelve 403 a las consultas automáticas); la entrada `Nobel1980Klein` es nueva.
 - Quitada una entrada duplicada de `Lekachman1966Age` en el `.bib` (biber avisaba). La línea desbordada de 5,5 pt que señala LaTeX está en la bibliografía; el aviso «King» sin `\autor{}` es anterior.
+
+
+## Listas en las notas al pie (15/11/2026)
+
+Víctor: «En las notas a pie de página también puede haber párrafos indentados […] que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie.» Notas convertidas a lista (itemize dentro de \footnote, frase introductoria con dos puntos, ítems en minúscula con «;» y el último con «.»; sin cambiar la redacción):
+
+- La nota de los otros 2 motivos de Schumpeter (l. 27, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
+- La nota de las clases de paro del capítulo 2 (l. 119): 2 viñetas (friccional, voluntario); el paro involuntario en párrafo aparte.
+- La nota de los 3 sentidos de «demanda efectiva» (l. 848): 3 viñetas (Keynes, Clower, Chamberlin).
+
+No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.

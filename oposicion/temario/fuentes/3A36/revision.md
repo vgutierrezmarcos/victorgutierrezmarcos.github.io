@@ -276,3 +276,7 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 
 - Euro digital: en julio de 2026 el Parlamento Europeo aprobó su mandato negociador, no «fijó su posición».
 - €STR: «unos 6» pasa a «unos 7 (6,8)» puntos básicos por debajo de la facilidad de depósito, la cifra de la fuente citada.
+
+## Listas en las notas al pie (15/11/2026)
+
+Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota lo necesitaba: no hay ninguna que enumere conceptos o casos paralelos de forma que una lista ayude a leerla.

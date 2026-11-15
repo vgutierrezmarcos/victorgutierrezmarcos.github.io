@@ -332,3 +332,11 @@ A raíz del 3.A.22 (`canon/pendientes-coherencia.md`): los supuestos del 1TFEB d
 - **Nobel**: la nota de \autor{Arrow} y \autor{Debreu} pasa a la primera mención (\textcite{ArrowHahn1971General}, en el enganche). Nuevas: \autor{Stigler} y \autor{Becker} (nota de las tecnologías del consumo), \autor{Ohlin} 1977, \autor{Myrdal} 1974 (nota de la escuela sueca), \autor{Samuelson} 1970, \autor{Hurwicz} 2007 (estabilidad, 1959; en el diseño de mecanismos se quita el paréntesis repetido), \autor{Nash} 1994 (nota del punto fijo), \autor{Aumann} 2005, \autor{Shapley} 2012, \autor{Shiller} 2013 y \autor{Leontief} 1973. Los paréntesis «(Premio Nobel de 2018/2017/1998)» de \autor{Nordhaus}, \autor{Thaler} y \autor{Sen} pasan a nota con el motivo oficial.
 - **4.º ejercicio** (no tenía ninguna): \vertema{4.B.8} en la incidencia de los impuestos y \vertema{4.A.6} en el DICE y el impuesto sobre el carbono.
 - **Dichos**: solo el del enganche («cada uno arrima el ascua a su sardina»); nada que quitar.
+
+## Listas en las notas al pie (15/11/2026)
+
+Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
+
+- l. 26: clasificación de los modelos de equilibrio general (2 criterios: poder de mercado y origen de los bienes).
+- l. 769: la teoría de la negociación y sus 2 caminos (axiomático, de Nash; estratégico, de Rubinstein); lo que sigue (Binmore, Rubinstein y Wolinsky; relación con el núcleo) queda como párrafo aparte.
+- Probada y descartada: la nota de la forma de la FPP según los rendimientos (l. 232); como lista empujaba el apartado I.2.2 a la página siguiente y dejaba un cuarto de página en blanco, así que se deja en prosa.
