@@ -271,3 +271,13 @@ Víctor: «En las notas a pie de página también puede haber párrafos indentad
 - La nota de los otros 2 motivos de Schumpeter (l. 27, introducción): «Los otros 2:» + 2 viñetas (fuente de ideas; fronteras de la ciencia), y el resto de la nota en párrafo aparte.
 
 No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.
+
+## Refranes únicos (15/11/2026)
+
+- Regla de Víctor: un refrán o dicho no se repite en temas distintos. «Nadie da duros a cuatro pesetas» pasa a ser el refrán del 3.B.23 y se quita de aquí (nota del cante, desarrollo de las expectativas racionales y ficha).
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «lo pasado, pasado» (objetivo de inflación frente a nivel de precios, tema y ficha): se queda en el 3.A.36 (política monetaria). La frase dice directamente que el nivel de precios no vuelve a su senda.

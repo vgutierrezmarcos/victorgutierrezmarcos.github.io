@@ -238,3 +238,9 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - Nota del objetivo de la empresa (contextualización): los 3 objetivos intermedios en itemize.
 - Nota de la fusión por absorción: los 4 requisitos (proyecto común, informe de expertos, acuerdo de cada junta, oposición de acreedores) en itemize; la relación de canje, en párrafo aparte.
 - No se convierten: la del CAPE, la de Monte Carlo, la de sinergias ni las de Nobel.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitados «no estires más el brazo que la manga» (variante del refrán inicial del 3.B.11) y «juntos, pero no revueltos» (refrán inicial del 3.B.35), en el tema, la nota del cante y la ficha. Se conservan el inicial («Roma no se hizo en un día») y «no vendas la piel del oso antes de cazarlo».

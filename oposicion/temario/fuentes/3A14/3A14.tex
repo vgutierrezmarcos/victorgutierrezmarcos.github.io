@@ -531,7 +531,7 @@ Son de profundización el ciempiés, la otra nomenclatura de los juegos dinámic
   \end{itemize}
 \item \emph{Otras estrategias condicionadas}, más indulgentes que el gatillo (tabla~\ref{tab:estrategias-repetidas} y comprobación de cada una con el principio de la desviación única, en el anexo~\ref{anexo:test}):
   \begin{itemize}
-  \item «donde las dan, las toman» (\emph{tit for tat}), que repite lo que el otro hizo en la etapa anterior: su castigo solo es creíble con un valor concreto de $\beta$;
+  \item la reciprocidad (\emph{tit for tat}), que repite lo que el otro hizo en la etapa anterior: su castigo solo es creíble con un valor concreto de $\beta$;
   \item la que solo castiga tras 2 desviaciones seguidas (\emph{tit for two tats}), que perdona una desviación aislada, pero invita a desviarse una etapa sí y otra no, y
   \item «si gano, repito; si pierdo, cambio» (\emph{win-stay, lose-shift}), que estudiaron \textcite{NowakSigmund1993Strategy}: es un ENPS si $\beta$ es alto (aquí, $\beta\geq1/4$).
   \end{itemize}
@@ -559,7 +559,7 @@ Son de profundización el ciempiés, la otra nomenclatura de los juegos dinámic
 \paragraph{d) Evidencia empírica}
 
 \begin{itemize}
-\item En los torneos de dilemas del prisionero repetidos de \textcite{Axelrod1984Evolution}, la estrategia ganadora fue una de las más sencillas, «donde las dan, las toman»: cooperar al principio y después hacer lo que hizo el otro en la jugada anterior. Con errores (alguien se desvía sin querer), «donde las dan, las toman» encadena represalias, y en las simulaciones de \textcite{NowakSigmund1993Strategy} la supera «si gano, repito; si pierdo, cambio», que vuelve a cooperar tras un castigo. En el laboratorio, la cooperación es más frecuente cuanto más probable es que el juego continúe, como predice \eqref{eq:gatillo}\nocite{DalBo2005Cooperation}.
+\item En los torneos de dilemas del prisionero repetidos de \textcite{Axelrod1984Evolution}, la estrategia ganadora fue una de las más sencillas, la reciprocidad (\emph{tit for tat}): cooperar al principio y después hacer lo que hizo el otro en la jugada anterior. Con errores (alguien se desvía sin querer), la reciprocidad encadena represalias, y en las simulaciones de \textcite{NowakSigmund1993Strategy} la supera «si gano, repito; si pierdo, cambio», que vuelve a cooperar tras un castigo. En el laboratorio, la cooperación es más frecuente cuanto más probable es que el juego continúe, como predice \eqref{eq:gatillo}\nocite{DalBo2005Cooperation}.
 \end{itemize}
 
 \paragraph{e) Valoración}
@@ -1599,7 +1599,7 @@ Incondicionada & no cooperar nunca (el EN de la etapa), pase lo que pase & sí, 
 \addlinespace[0.3em]
 Gatillo (\emph{grim trigger}) & cooperar mientras todos cooperen; si alguien se desvía, no cooperar nunca más & sí, si $\beta\geq1/5$ \eqref{eq:gatillo}\\
 \addlinespace[0.3em]
-«Donde las dan, las toman» (\emph{tit for tat}) & cooperar al principio y después hacer lo que hizo el otro en la etapa anterior & solo con un valor concreto de $\beta$ (aquí, $\beta=1/5$ exactamente)\\
+Reciprocidad (\emph{tit for tat}) & cooperar al principio y después hacer lo que hizo el otro en la etapa anterior & solo con un valor concreto de $\beta$ (aquí, $\beta=1/5$ exactamente)\\
 \addlinespace[0.3em]
 Castigo tras 2 desviaciones (\emph{tit for two tats}) & cooperar salvo que el otro se haya desviado en las 2 etapas anteriores & no: al otro le conviene desviarse una etapa sí y otra no\\
 \addlinespace[0.3em]
@@ -1611,7 +1611,7 @@ Castigo tras 2 desviaciones (\emph{tit for two tats}) & cooperar salvo que el ot
 
 \begin{itemize}
 \item \emph{Gatillo}: tras una historia de cooperación, desviarse da 6 hoy y 1 para siempre; cooperar, 5 para siempre: compensa cooperar si $\beta\geq1/5$. Tras una desviación, el castigo es el EN de la etapa, y nadie gana saliéndose de él.
-\item \emph{«Donde las dan, las toman»}: tras cooperar los 2, desviarse lleva a alternar 6 y 0, y no compensa si $5(1+\beta)\geq6$, es decir, si $\beta\geq1/5$. Pero tras una desviación del otro, castigarle también lleva a alternar 6 y 0, mientras que perdonarle devuelve el 5 para siempre, y castigar solo compensa si $\beta\leq1/5$. Las 2 condiciones solo se cumplen a la vez con $\beta=1/5$: en general, el castigo no es creíble\nocite{KalaiSametStanford1988Note}.
+\item \emph{Reciprocidad} (\emph{tit for tat}): tras cooperar los 2, desviarse lleva a alternar 6 y 0, y no compensa si $5(1+\beta)\geq6$, es decir, si $\beta\geq1/5$. Pero tras una desviación del otro, castigarle también lleva a alternar 6 y 0, mientras que perdonarle devuelve el 5 para siempre, y castigar solo compensa si $\beta\leq1/5$. Las 2 condiciones solo se cumplen a la vez con $\beta=1/5$: en general, el castigo no es creíble\nocite{KalaiSametStanford1988Note}.
 \item \emph{Castigo tras 2 desviaciones}: el otro puede desviarse una etapa sí y otra no sin ser castigado nunca, y gana 6 y 5 alternos en lugar de 5 siempre: ni siquiera es un EN.
 \item \emph{«Si gano, repito; si pierdo, cambio»}: tras cooperar los 2, desviarse da 6 hoy, 1 mañana (los 2 bajan el precio) y vuelta a cooperar; cooperar da 5 y 5. No compensa si $5+5\beta\geq6+\beta$, es decir, si $\beta\geq1/4$. Tras una desviación, los 2 castigan una etapa y vuelven a cooperar, y nadie gana adelantando la vuelta. Exige que cooperar valga más que la media de desviarse y ser castigado ($2\cdot5>6+1$).
 \end{itemize}

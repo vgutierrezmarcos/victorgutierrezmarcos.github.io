@@ -227,3 +227,9 @@ Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `historia-ciclo` (l�
 - **«Los ciclos regulares del gráfico 2 mételo en un cuadro gris.»** Los ciclos regulares superpuestos (Kitchin, Juglar, Kuznets, Kondratieff y el esquema de Schumpeter) salen de la nota al pie del rasgo «recurrente, pero no periódico» de la definición de Burns y Mitchell y pasan a una caja gris (`anotaciones`) detrás del gráfico 1: «*Los ciclos regulares superpuestos.*» con los 4 ciclos en lista (duración y autor), el esquema de Schumpeter (6 Juglar por Kondratieff, 3 Kitchin por Juglar) y por qué se abandonó la idea; el gráfico 2 (`ciclos-superpuestos`) va dentro de la caja con `figuracaja` (mismo título, etiqueta y fuente). La nota del Nobel de Kuznets se queda, dentro de la caja, en su ítem. La caja cabe entera en la página 5, sin cortes ni huecos.
 - **Listas en las notas al pie**: la nota de la sobreinversión (Spiethoff y Robertson) pasa a «Dentro de esta tradición, 2 matices:» con un ítem por autor. Las demás notas son un solo argumento, citas o notas de Nobel y se quedan como estaban. La ficha de repaso no tiene notas.
 - Páginas del tema: 34 antes y 34 después (anexos 13; bibliografía 10). `verificar-tema.py`: sin errores propios (solo los de HTML y Word sin reconstruir, porque se compila solo el PDF).
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «después de la calma viene la tempestad» (Minsky, tema y ficha): se queda en el 3.A.4, de donde venía (el coordinador lo puso allí). La idea («la calma misma prepara la crisis») se conserva.

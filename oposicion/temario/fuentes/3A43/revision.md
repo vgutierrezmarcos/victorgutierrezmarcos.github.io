@@ -238,3 +238,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - l. 710: las 3 aportaciones de Ramsey; lo que sigue (el artículo de 1928, la biografía) queda como párrafo aparte.
 - l. 773: los 3 efectos de una subida del tipo de interés (sustitución, renta, riqueza).
 - verificar-tema da un aviso «Cifra sin cita» en el párrafo que sigue a esta lista («En tiempo discreto, la ecuación de Euler es…»): es un falso positivo (la «cifra» es el 1 de $\beta(1+r)$; antes el \nocite de Obstfeld y Rogoff estaba en el mismo párrafo).
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «la avaricia rompe el saco» (ineficiencia dinámica en Solow y su negación en Ramsey; tema, nota del cante y ficha): se queda en el 3.A.29 (Diamond), de donde venía y donde cierra la idea final. Ahora «se ahorra de más».

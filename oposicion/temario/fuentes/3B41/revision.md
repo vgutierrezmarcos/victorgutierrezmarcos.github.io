@@ -140,3 +140,9 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «la unión hace la fuerza» (poder de negociación de la UE): es el refrán inicial del 3.A.11. Ahora «la intuición de que juntos se negocia mejor». «Donde las dan, las toman» queda solo aquí (se quita como nombre del *tit for tat* en el 3.A.14 y el 3.A.19).

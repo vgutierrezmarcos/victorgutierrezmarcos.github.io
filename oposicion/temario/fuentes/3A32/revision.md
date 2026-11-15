@@ -289,3 +289,9 @@ Propuestas para `tema-canon` (no se ha tocado ningún fichero fuera de `fuentes/
 ## Listas en las notas al pie (15/11/2026)
 
 Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota lo necesitaba: no hay ninguna que enumere conceptos o casos paralelos de forma que una lista ayude a leerla.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «no se puede nadar y guardar la ropa» (trilema, tema y ficha): se queda en el 3.B.15, donde el trilema es central. Se conserva «más vale doblarse que quebrarse» (flotación como amortiguador), que se quita del 3.B.15.

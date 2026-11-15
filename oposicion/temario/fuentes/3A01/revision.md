@@ -270,3 +270,11 @@ Víctor: «En las notas a pie de página también puede haber párrafos indentad
 - La nota de las reglas de Marshall en la carta a Bowley (l. 633): 6 pasos en lista a)-f) (enumerate); «si no se conseguía lo cuarto, quemar lo tercero» pasa a «lo de la d)… lo de la c)» para que remita a las letras.
 
 No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «quien mucho abarca poco aprieta» (imperialismo económico, tema y ficha): es el refrán inicial del 3.B.5. La crítica queda dicha sin el refrán.
+- Quitado «ver para creer» (RCT, tema y ficha): se queda en el 3.B.28, de donde venía.
+- En la caja «Para ver», el enlace a Wikipedia se conserva (venía del original), pero el texto ya no dice «a hombros de gigantes», que se queda en el 3.A.44 (Romer): «la idea de que la ciencia avanza apoyándose en lo que descubrieron otros antes».

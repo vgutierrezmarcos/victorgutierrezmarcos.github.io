@@ -215,3 +215,9 @@ Víctor: «En las notas a pie de página también puede haber párrafos indentad
 - La nota de los 4 pilares de la política de competencia de la UE (l. 1105): 4 viñetas; las competencias exclusivas en párrafo aparte.
 
 No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- «Donde las dan, las toman» deja de ser el nombre del *tit for tat* (texto, nota de los torneos de Axelrod, tabla de estrategias y ficha): es el refrán inicial del 3.B.41. Se llama «reciprocidad (*tit for tat*)», como en el 3.A.14.

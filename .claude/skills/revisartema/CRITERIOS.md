@@ -434,6 +434,8 @@ que cargan `tcee.sty` y `tcee-repaso.sty`.
 
 ### Revisión de la parte A de Víctor (14/11/2026)
 
+- **Refranes y dichos únicos** (Víctor, 15/11/2026): un refrán o dicho nunca se repite en temas distintos. Antes de usar uno, grep en `fuentes/*/*.tex` y `fuentes/*/repaso/*.tex`.
+- **Preguntas a Víctor, en el HTML de dudas** (15/11/2026): toda pregunta va como duda en `revision.md`, en una sección cuyo título lleve «Dudas», para que salga en el HTML.
 - **«Rule of thumb» en inglés**, nunca «regla del pulgar» ni «regla de pulgar»: «hogares \emph{rule of thumb}».
 - **Listas en las notas al pie**: si una nota distingue varios conceptos (p. ej., neutralidad, superneutralidad y dicotomía clásica), van en un `itemize` dentro de la `\footnote{…}`; `tcee.sty` les da viñetas pequeñas y sangría corta, con el formato de la nota.
 - **Marcadores del PDF**: salen todos los niveles, hasta `\paragraph` (a) Idea…) y `\subparagraph` (i) Supuestos…). No hace falta hacer nada; los títulos de esos niveles tienen que ser cortos.

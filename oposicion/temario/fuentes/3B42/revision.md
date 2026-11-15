@@ -114,3 +114,9 @@ Revisión completa del 14/11/2026 (entrega 1: tema y ficha de repaso; sin vídeo
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «antes de meter, prometo; y una vez metido, olvido lo prometido» (inconsistencia temporal tras la adhesión, tema y ficha): se queda en el 3.A.23, donde lo vio Víctor (B42-07 lo había repetido aquí). La idea queda: lo que se promete para entrar deja de convenir cumplirlo una vez dentro.

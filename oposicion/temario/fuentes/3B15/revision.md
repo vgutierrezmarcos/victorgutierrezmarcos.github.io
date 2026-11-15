@@ -225,3 +225,10 @@ Compilación: `construir-tema.py 3B15 --solo pdf --no-publicar` correcto (33 pá
 
 - Nota de la globalización financiera (Georgiadis y Mehl): los 2 rasgos de los balances exteriores (tamaño y exposición neta a las divisas) en itemize; el resumen, en párrafo aparte.
 - No se convierten: la del trilema y la regla de Tinbergen (un argumento) ni las de Nobel.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Se conserva «no se puede nadar y guardar la ropa» (trilema), que se quita del 3.A.32.
+- Quitados «cuando Estados Unidos estornuda, el mundo se resfría» (dilema de Rey; se queda en el 3.A.37) y «la economía se dobla para no quebrarse» (Friedman; se queda en el 3.A.32 como «más vale doblarse que quebrarse»), en el tema y la ficha.

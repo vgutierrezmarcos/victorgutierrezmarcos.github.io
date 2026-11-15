@@ -435,3 +435,9 @@ El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitados «pan para hoy, hambre para mañana» (descuento de Stern; es el refrán inicial del 3.A.4) y «más vale prevenir que curar» (mitigación; es el refrán inicial del 3.B.22), en el tema, la nota del cante y la ficha. Se conservan el inicial («quien siembra vientos recoge tempestades») y «allá donde fueres, haz lo que vieres» (MAFC).

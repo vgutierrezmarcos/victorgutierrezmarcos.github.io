@@ -348,5 +348,5 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
 
 ### Dudas (15/11/2026)
 
-- **D-B1** (refrán): «nadie da duros a cuatro pesetas» ya sale en 3.A.06 como dicho secundario (expectativas racionales, también en su ficha). **Aplicada la recomendada**: aquí es el refrán del enganche, porque es el que propone Víctor y el que mejor casa con el no arbitraje; se podría cambiar el dicho de 3.A.06 (no se ha tocado: no es de este encargo). Alternativa: «El que algo quiere, algo le cuesta», pero ya está en 3.A.20.
+- **D-B1** (refrán): «nadie da duros a cuatro pesetas» ya sale en 3.A.06 como dicho secundario (expectativas racionales, también en su ficha). **Aplicada la recomendada**: aquí es el refrán del enganche, porque es el que propone Víctor y el que mejor casa con el no arbitraje; se podría cambiar el dicho de 3.A.06 (no se ha tocado: no es de este encargo). Alternativa: «El que algo quiere, algo le cuesta», pero ya está en 3.A.20. **Resuelta por Víctor (15/11/2026)**: un refrán no se repite en temas distintos; se queda aquí y se quita del 3.A.6.
 

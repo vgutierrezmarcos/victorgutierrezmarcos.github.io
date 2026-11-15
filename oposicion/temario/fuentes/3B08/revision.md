@@ -317,3 +317,9 @@ Todavía no hay vídeo: este tema se entrega sin guion ni escenas (entregas 1 y 
 
 - Nota de los tipos de economías de escala: externas, internas y dinámicas en itemize; Meade, Kemp y Baldwin y el Nobel de Meade, en párrafo aparte.
 - No se convierten: la del tercer mercado frente a los mercados recíprocos (un razonamiento seguido) ni las de Nobel.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitados «poderoso caballero es don Dinero» (refrán inicial del 3.A.35) y «quien paga, manda» (se queda en el 3.B.25 como «el que paga, manda», opciones), en el tema, la nota del cante y la ficha. Se conservan el inicial, «a caballo regalado…» y «muerto el perro…».

@@ -219,3 +219,9 @@ No restaurados:
 - Nota del objetivo de la empresa (contextualización): los 3 objetivos (rentabilidad, solvencia, liquidez) en itemize.
 - Nota de Holmström y Tirole (liquidez como seguro): «De ahí salen 3 consecuencias:» en itemize; los impuestos, en párrafo aparte.
 - No se convierten: la de los costes hundidos y efectos sobre otros negocios (un ejemplo seguido) ni las de Nobel.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitados «no por mucho madrugar amanece más temprano» (opción de esperar; se queda en el 3.A.34) y «en el término medio está la virtud» (Baumol-Tobin; se queda en el 3.A.35), en el tema, las notas del cante y la ficha. Se conserva «borrón y cuenta nueva».

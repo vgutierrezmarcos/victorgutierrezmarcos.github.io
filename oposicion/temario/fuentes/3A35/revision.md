@@ -200,3 +200,10 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - La nota 7 (neutralidad, superneutralidad y dicotomía) ya estaba hecha.
 - l. 235: los 3 motivos de Keynes para demandar dinero (transacción, precaución, especulación).
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitados «puedes llevar el caballo al río, pero no obligarlo a beber» (trampa de la liquidez; se queda en el 3.A.4, Keynes), «cuando seas padre, comerás huevos» (Samuelson; se queda en el 3.A.29, generaciones solapadas) y «no poner todos los huevos en la misma cesta» (Tobin; se queda en el 3.B.23, de su temario antiguo), en el tema, la nota de pizarra de la ficha y la ficha. La idea de cada uno queda dicha sin el refrán.
+- Se conservan el inicial («poderoso caballero es don Dinero», que se quita del 3.B.8) y «en el término medio está la virtud» (Baumol-Tobin, que se quita del 3.B.2).

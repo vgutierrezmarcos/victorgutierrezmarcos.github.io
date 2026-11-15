@@ -235,3 +235,9 @@ El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada
 - **Listas en las notas al pie**: revisadas las 10 notas. Pasa a lista la de la terminología del mercado de deuda («subasta holandesa» / «americana»). Las demás son un solo argumento o notas de Nobel. La ficha no tiene notas.
 - **Ficha de repaso**: sin cambios. Sigue resumiendo también lo que ha pasado a los anexos (minimax, evidencia, España y la UE), que puede preguntar el tribunal; no se marca «anexo» porque `verificar-tema.py` no admite remisiones escritas a mano en la ficha. Sigue en 4 páginas.
 - Títulos: acortados los de 2 apartados del anexo y añadido `\cortetitulo` al del golfo de México (aviso de `verificar-tema.py`).
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- «Donde las dan, las toman» deja de ser el nombre del *tit for tat* (I.3, tabla y anexo de estrategias): es el refrán inicial del 3.B.41. La estrategia se llama ahora «reciprocidad (*tit for tat*)». Se conserva «quemar las naves» (compromiso, Cortés), que se quita del 3.A.15.

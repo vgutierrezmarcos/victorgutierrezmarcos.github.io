@@ -208,3 +208,9 @@ Víctor: «En las notas a pie de página también puede haber párrafos indentad
 - La nota de ejemplos de barreras regulatorias (l. 772): agencias de calificación y licencias VTC en 2 viñetas.
 
 No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «quemar las naves» (compromiso de capacidad, tema y ficha): se queda en el 3.A.14 (Cortés y el compromiso). En el tema, «es la lógica del compromiso estratégico» (con la misma cita a Schelling).

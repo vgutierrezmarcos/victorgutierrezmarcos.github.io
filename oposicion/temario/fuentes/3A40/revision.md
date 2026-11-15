@@ -250,7 +250,7 @@ Aplicada en cada una la opción recomendada:
 - **A40-25** (13/11/2026) El antiguo 3.A.38 atribuía a «Blanchard y Portugal» que el Gobierno puede elevar el multiplicador con el destino del gasto y reformas, y a Christiano un multiplicador de impacto de 1,2-1,3 con el límite inferior: no se han podido identificar las obras. Se cuenta la idea sin atribución (II.3.3 y tabla de determinantes, con Barro, 1990) y sin la cifra de Christiano. **Aplicada así**; si Víctor recuerda la fuente, se añade.
 - **A40-26** (13/11/2026) Se mantiene el gráfico IS-MP con caja de avisos en vez de sustituirlo por el plano $(x_t,\pi_t)$. Opciones: (a) mantenerlo con la caja; (b) quitarlo y dejar solo `nek-gasto`. **Aplicada: (a)**.
 - **A40-27** (13/11/2026) El tema pasa de 35 a 43 páginas de cuerpo. El cante sigue en 30′ (II.2 sube a 4′30″ y II.3 baja a 3′30″); los desarrollos del 3.A.38 se remiten a él con \vertema. Opciones: (a) dejarlo; (b) pasar la caja del IS-MP y el cuadro canónico/ampliado a un anexo. **Aplicada: (a)**.
-- **A40-28** (15/11/2026) La figura 1 (`nek-canonico-fiscal`) no cabe en lo que queda de la pág. 21 tras iii) Implicaciones. Opciones: (a) pasar la caja al final de II.2.3, tras d) Valoración, como resumen (quedan unos 3 cm libres al pie de la pág. 21); (b) dejarla en iii) y aceptar media página en blanco; (c) partir la infografía en 2 imágenes (supuestos y ecuaciones / efectos e implicaciones), con lo que el 3.A.40 tendría una versión distinta del 3.A.38. **Aplicada: (a).** Sustituye a A40-24.
+- **A40-28** (15/11/2026) La figura 1 (`nek-canonico-fiscal`) no cabe en lo que queda de la pág. 21 tras iii) Implicaciones. Opciones: (a) pasar la caja al final de II.2.3, tras d) Valoración, como resumen (quedan unos 3 cm libres al pie de la pág. 21); (b) dejarla en iii) y aceptar media página en blanco; (c) partir la infografía en 2 imágenes (supuestos y ecuaciones / efectos e implicaciones), con lo que el 3.A.40 tendría una versión distinta del 3.A.38. **Aplicada: (a).** Sustituye a A40-24. **Resuelta por Víctor (15/11/2026)**: le vale la figura al final de II.2.3.
 
 ## 8. Instrucciones para el vídeo
 
@@ -273,3 +273,10 @@ Aplicada en cada una la opción recomendada:
 ## Enlaces del original (9/11/2026)
 
 El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada que restaurar.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «juntos, pero no revueltos» (refrán inicial del 3.B.35) de todo el tema (II.2, cronología 2012, Covid, Reino Unido 2022, idea final) y de la ficha: ahora «coordinadas, pero no confundidas».
+- Quitado «no hay mal que cien años dure» (variante del refrán inicial del 3.B.20): «Ningún mal es eterno, pero las causas de este son lentas».

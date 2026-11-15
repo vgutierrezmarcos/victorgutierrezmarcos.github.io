@@ -229,3 +229,9 @@ Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `canales-transmision
 ## Listas en las notas al pie (15/11/2026)
 
 Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota lo necesitaba: no hay ninguna que enumere conceptos o casos paralelos de forma que una lista ayude a leerla.
+
+## Refranes únicos (15/11/2026)
+
+Regla de Víctor: un refrán o dicho no se repite en temas distintos.
+
+- Quitado «tanto va el cántaro a la fuente que al final se rompe» (tipo de reversión): se queda en el 3.B.17 (crisis de 1.ª generación). Se conserva «cuando Estados Unidos estornuda, el mundo se resfría» (ciclo financiero global), que se quita del 3.B.15.
