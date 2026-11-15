@@ -434,7 +434,7 @@ que cargan `tcee.sty` y `tcee-repaso.sty`.
 
 ### Revisión de la parte A de Víctor (14/11/2026)
 
-- **Refranes y dichos únicos** (Víctor, 15/11/2026): un refrán o dicho nunca se repite en temas distintos. Antes de usar uno, grep en `fuentes/*/*.tex` y `fuentes/*/repaso/*.tex`.
+- **Refrán inicial único** (Víctor, 15/11/2026): los 90 temas tienen 90 refranes iniciales distintos; el refrán inicial de un tema no puede ser el inicial de otro. En el resto del cuerpo los refranes sí pueden repetirse (también si en un tema es el inicial y en otro sale en el cuerpo).
 - **Preguntas a Víctor, en el HTML de dudas** (15/11/2026): toda pregunta va como duda en `revision.md`, en una sección cuyo título lleve «Dudas», para que salga en el HTML.
 - **«Rule of thumb» en inglés**, nunca «regla del pulgar» ni «regla de pulgar»: «hogares \emph{rule of thumb}».
 - **Listas en las notas al pie**: si una nota distingue varios conceptos (p. ej., neutralidad, superneutralidad y dicotomía clásica), van en un `itemize` dentro de la `\footnote{…}`; `tcee.sty` les da viñetas pequeñas y sangría corta, con el formato de la nota.

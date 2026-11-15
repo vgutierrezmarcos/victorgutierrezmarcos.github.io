@@ -146,3 +146,5 @@ Ninguna nota lo necesitaba.
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitado «la unión hace la fuerza» (poder de negociación de la UE): es el refrán inicial del 3.A.11. Ahora «la intuición de que juntos se negocia mejor». «Donde las dan, las toman» queda solo aquí (se quita como nombre del *tit for tat* en el 3.A.14 y el 3.A.19).
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

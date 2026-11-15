@@ -120,3 +120,5 @@ Ninguna nota lo necesitaba.
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitado «antes de meter, prometo; y una vez metido, olvido lo prometido» (inconsistencia temporal tras la adhesión, tema y ficha): se queda en el 3.A.23, donde lo vio Víctor (B42-07 lo había repetido aquí). La idea queda: lo que se promete para entrar deja de convenir cumplirlo una vez dentro.
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

@@ -280,3 +280,5 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitado «juntos, pero no revueltos» (refrán inicial del 3.B.35) de todo el tema (II.2, cronología 2012, Covid, Reino Unido 2022, idea final) y de la ficha: ahora «coordinadas, pero no confundidas».
 - Quitado «no hay mal que cien años dure» (variante del refrán inicial del 3.B.20): «Ningún mal es eterno, pero las causas de este son lentas».
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

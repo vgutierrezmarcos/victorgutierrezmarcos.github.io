@@ -235,3 +235,5 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitado «tanto va el cántaro a la fuente que al final se rompe» (tipo de reversión): se queda en el 3.B.17 (crisis de 1.ª generación). Se conserva «cuando Estados Unidos estornuda, el mundo se resfría» (ciclo financiero global), que se quita del 3.B.15.
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

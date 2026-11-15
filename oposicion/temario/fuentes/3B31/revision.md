@@ -441,3 +441,5 @@ Ninguna nota lo necesitaba.
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitados «pan para hoy, hambre para mañana» (descuento de Stern; es el refrán inicial del 3.A.4) y «más vale prevenir que curar» (mitigación; es el refrán inicial del 3.B.22), en el tema, la nota del cante y la ficha. Se conservan el inicial («quien siembra vientos recoge tempestades») y «allá donde fueres, haz lo que vieres» (MAFC).
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

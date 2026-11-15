@@ -233,3 +233,5 @@ Pasan a Figura (`infografia`, `figu:`, «la figura~\ref»): `historia-ciclo` (l�
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitado «después de la calma viene la tempestad» (Minsky, tema y ficha): se queda en el 3.A.4, de donde venía (el coordinador lo puso allí). La idea («la calma misma prepara la crisis») se conserva.
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

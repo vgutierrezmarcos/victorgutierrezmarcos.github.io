@@ -244,3 +244,5 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitados «no estires más el brazo que la manga» (variante del refrán inicial del 3.B.11) y «juntos, pero no revueltos» (refrán inicial del 3.B.35), en el tema, la nota del cante y la ficha. Se conservan el inicial («Roma no se hizo en un día») y «no vendas la piel del oso antes de cazarlo».
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

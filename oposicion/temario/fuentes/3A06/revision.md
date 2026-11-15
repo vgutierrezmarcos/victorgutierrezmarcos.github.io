@@ -281,3 +281,5 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitado «lo pasado, pasado» (objetivo de inflación frente a nivel de precios, tema y ficha): se queda en el 3.A.36 (política monetaria). La frase dice directamente que el nivel de precios no vuelve a su senda.
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

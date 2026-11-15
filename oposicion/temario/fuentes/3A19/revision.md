@@ -221,3 +221,5 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - «Donde las dan, las toman» deja de ser el nombre del *tit for tat* (texto, nota de los torneos de Axelrod, tabla de estrategias y ficha): es el refrán inicial del 3.B.41. Se llama «reciprocidad (*tit for tat*)», como en el 3.A.14.
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

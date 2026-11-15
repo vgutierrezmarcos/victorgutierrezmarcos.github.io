@@ -323,3 +323,5 @@ Todavía no hay vídeo: este tema se entrega sin guion ni escenas (entregas 1 y 
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitados «poderoso caballero es don Dinero» (refrán inicial del 3.A.35) y «quien paga, manda» (se queda en el 3.B.25 como «el que paga, manda», opciones), en el tema, la nota del cante y la ficha. Se conservan el inicial, «a caballo regalado…» y «muerto el perro…».
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

@@ -244,3 +244,5 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Quitado «la avaricia rompe el saco» (ineficiencia dinámica en Solow y su negación en Ramsey; tema, nota del cante y ficha): se queda en el 3.A.29 (Diamond), de donde venía y donde cierra la idea final. Ahora «se ahorra de más».
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.

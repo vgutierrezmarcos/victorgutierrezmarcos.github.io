@@ -232,3 +232,5 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Se conserva «no se puede nadar y guardar la ropa» (trilema), que se quita del 3.A.32.
 - Quitados «cuando Estados Unidos estornuda, el mundo se resfría» (dilema de Rey; se queda en el 3.A.37) y «la economía se dobla para no quebrarse» (Friedman; se queda en el 3.A.32 como «más vale doblarse que quebrarse»), en el tema y la ficha.
+
+- Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.
