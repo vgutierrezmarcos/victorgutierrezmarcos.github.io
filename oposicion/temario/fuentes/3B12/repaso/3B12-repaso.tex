@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Ajuste de la balanza de pagos]{3.B.12}{Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.}
-\tcefecha{13/11/2026}
+\tcefecha{16/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -12,20 +12,19 @@
 \apartadocante{Introducción: «de aquellos polvos, estos lodos»}{2,5}
 \apartadocante{I. Tipo de cambio y renta: enfoques keynesianos}{10}
 \subcante{1. Elasticidades y \autor{Marshall}-\autor{Lerner}}{4}
-\subcante{2. Multiplicador}{1,5}
-\subcante{3. Absorción}{2,5}
+\subcante{2. Multiplicador (\autor{Harrod}, \autor{Machlup})}{1,5}
+\subcante{3. Absorción (\autor{Alexander})}{2,5}
 \subcante{4. IS-LM-BP y asignación de \autor{Mundell}}{2}
 \apartadocante{II. Reservas: enfoques de \emph{stocks}}{5}
-\subcante{1. Flujo-especie}{2}
-\subcante{2. Enfoque monetario}{2}
-\subcante{3. Cartera}{1}
+\subcante{1. Flujo-especie (\autor{Hume})}{2}
+\subcante{2. Enfoque monetario (\autor{Johnson})}{2}
+\subcante{3. Cartera (\autor{McKinnon}-\autor{Oates}, \autor{Branson})}{1}
 \apartadocante{III. Enfoque intertemporal y sostenibilidad}{11,5}
 \subcante{1. Del ajuste a la elección}{1}
-\subcante{2. Modelo de 2 periodos}{4}
-\subcante{3. Valoración y extensiones}{1,5}
-\subcante{4. Sostenibilidad del déficit y de la deuda}{5}
+\subcante{2. Modelo intertemporal (\autor{Obstfeld}-\autor{Rogoff})}{5,5}
+\subcante{3. Sostenibilidad del déficit y de la deuda}{5}
 \apartadocante{Conclusión}{1}}
-\emph{Pizarra}: convención del tipo de cambio arriba a la izq.\ ($E$ directo, ↑$E$ = depreciación). Recuadradas y hasta el final de su bloque: \autor{Marshall}-\autor{Lerner}, $\mathrm{XN}=Y-A$, $\Delta R=\Delta M^D-\Delta\mathrm{CI}$ y la dinámica de la deuda. Elasticidades: curva J en 6 trazos. Flujo-especie: el circuito del déficit. Modelo de 2 periodos: gráfico por partes (autarquía, apertura, llaves). Sostenibilidad: los 2 paneles de la dinámica de la deuda y la lista de determinantes con signos.
+\emph{Pizarra}: convención del tipo de cambio arriba a la izq.\ ($E$ directo, ↑$E$ = depreciación). Recuadradas y hasta el final de su bloque: \autor{Marshall}-\autor{Lerner}, $\mathrm{XN}=Y-A$, $\Delta R=\Delta M^D-\Delta\mathrm{CI}$ y la dinámica de la deuda. Elasticidades: curva J en 6 trazos. Flujo-especie: el circuito del déficit. Modelo intertemporal: gráfico en 3 pasos (autarquía: $A$ y $r^A$; apertura: $r^*$, $P$ y $C$; cuenta corriente: llaves). Cartera: las 3 demandas con sus signos y la cadena lógica. Sostenibilidad: los 2 paneles de la dinámica de la deuda y la lista de determinantes con signos.
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -52,7 +51,7 @@ Con precios rígidos y capital inmóvil, una devaluación mejora el saldo solo s
 \item \emph{Implicaciones}: las elasticidades dependen de la estructura de los mercados, la diferenciación, la sustituibilidad y el plazo. Si no se cumple, \concepto{paradoja de las elasticidades}: mejoraría con una apreciación.
 \item \emph{Extensiones}: con déficit inicial, más exigente en moneda nacional, $\frac{X}{qM}\lvert\varepsilon_X\rvert+\lvert\varepsilon_M\rvert>1$; en divisas, menos (ej.: $X=80$, $qM=100$, elasticidades 0,5: 0,9 < 1 en €, 1,125 > 1 en divisas); con ofertas finitas, \autor{Bickerdike}-\autor{Robinson}-\autor{Metzler}, menos exigente.
 \item \emph{Evidencia}: pesimismo de los años 30-40 (sesgo a la baja); G-7 la cumple salvo Francia y Alemania (\autor{Hooper}-\autor{Johnson}-\autor{Marquez}, 2000); FMI (2015): depreciación real del 10~\% $\Rightarrow$ +1,5 p.\ del PIB de exportaciones netas.
-\item \emph{Valoración}: \concepto{curva J} (\autor{Magee}, 1973): a corto domina el efecto valor; más profunda con facturación en dólares (\autor{Gopinath}, 2020). \concepto{Traspaso} (\emph{pass-through}): a los precios de exportación en divisas y a los precios interiores (si $P$ sube como $E$, $q$ no cambia). Empobrecer al vecino y represalias \vertema{3.B.20}; falta el efecto renta.
+\item \emph{Valoración}: elasticidades bajas en los años 30-40 $\Rightarrow$ paradoja; 5 supuestos que fallan: (1) represalias, empobrecer al vecino \vertema{3.B.20}; (2) \concepto{curva J} (\autor{Magee}, 1973): a corto domina el efecto valor; más profunda con facturación en dólares (\autor{Gopinath}, 2020); (3) inflación: la devaluación nominal puede no ser real; (4) \concepto{traspaso} (\emph{pass-through}) a los precios de exportación en divisas y a los interiores (si $P$ sube como $E$, $q$ no cambia); (5) falta el efecto renta.
 \end{itemize}
 \pareja{curva-j}{La curva J}{absorcion-oa}{OA en L invertida: paro ($A\to B$) y pleno empleo ($B\to C$)}
 
@@ -103,17 +102,20 @@ La balanza de pagos «cabeza abajo»: los desequilibrios nacen en los mercados d
 
 \sub{II.2. Enfoque monetario\label{rep:II.2}}
 \begin{itemize}
-\item \autor{Johnson} (1972), \autor{Frenkel}-\autor{Johnson} (1976): monetarismo abierto \vertema{3.A.5}, base de la programación financiera del FMI \vertema{3.B.22}.
-\item \emph{Supuestos}: país pequeño, $\overline E$, pleno empleo, ley del precio único en bienes y activos ($P=\overline EP^*$, $i=i^*$), demanda de dinero estable, multiplicador 1. $M^S=\mathrm{CI}+R$:
-  \funcionclave{\Delta R=\Delta M^D-\Delta\mathrm{CI}}
+\item \autor{Johnson} (1972), \autor{Frenkel}-\autor{Johnson} (1976), con \autor{Mundell}; antecedente: \autor{Polak} (1957), base de la programación financiera del FMI \vertema{3.B.22}. Monetarismo abierto \vertema{3.A.5}.
+\item \emph{Supuestos}: país pequeño, $\overline E$, pleno empleo, ley del precio único en bienes y activos ($P=\overline EP^*$, $i=i^*$), demanda de dinero estable, \textbf{multiplicador 1} ($c_R=1$).
+\item \emph{Desarrollo en 4 pasos}: $M^S=\frac{1+c_E}{c_E+c_R}\mathrm{BM}=\mathrm{BM}$; $\mathrm{BM}=\mathrm{CI}+R$; $M^D=P\,L(Y,i)$ exógena; $M^S=M^D\Rightarrow R=M^D-\mathrm{CI}$, y en variaciones:
+  \funcionclave{\mathrm{BP}\equiv\Delta R=\Delta M^D-\Delta\mathrm{CI}}
+  ↑CI $\Rightarrow$ $M^S>M^D$ $\Rightarrow$ compras fuera $\Rightarrow$ déficit, ↓$R$ hasta $\Delta R=-\Delta\mathrm{CI}$.
 \item \emph{Implicaciones}: la balanza es un fenómeno monetario y transitorio; ↑CI $\Rightarrow$ pierde reservas por el mismo importe, sin cambiar $M$, $Y$ ni $P$; si insiste, crisis (\autor{Krugman}, 1979) \vertema{3.B.17}; \textbf{regla de crédito} $\Delta\mathrm{CI}=\Delta M^D$ ($k$~\% de \autor{Friedman}; techos de crédito del FMI); la devaluación solo tiene efectos transitorios. Con tipo flexible: enfoque monetario del tipo de cambio \vertema{3.B.14}.
 \item \emph{Valoración}: falla la ley del precio único (no comerciables; activos no sustitutos perfectos).
 \end{itemize}
 
 \sub{II.3. Cartera\label{rep:II.3}}
 \begin{itemize}
-\item \autor{McKinnon}-\autor{Oates} (1966), \autor{Branson} (1968, 1977): activos \emph{sustitutos imperfectos} (\emph{home bias}); $W=M+B+EB^*$.
-\item Expansión monetaria $\Rightarrow$ compra de bonos nacionales y extranjeros $\Rightarrow$ ajuste \textbf{automático pero parcial y más lento}; algo de autonomía monetaria.
+\item \autor{McKinnon}-\autor{Oates} (1966), \autor{Branson} (1968, 1977): activos \emph{sustitutos imperfectos} (\emph{home bias}); $W=M+B+EB^*$, con
+  $M^D=f_M(\underset{-}{i},\underset{-}{i^*+\gamma E^e},\underset{+}{W})$, $B^D=f_B(\underset{+}{i},\underset{-}{i^*+\gamma E^e},\underset{+}{W})$, $EB^{*D}=f_{B^*}(\underset{-}{i},\underset{+}{i^*+\gamma E^e},\underset{+}{W})$.
+\item \emph{Cadena}: ↑$M^S$ $\Rightarrow$ exceso de dinero $\Rightarrow$ compra de $B$ (↓$i$) y de $B^*$ $\Rightarrow$ salida de capital, déficit, ↓$R$ $\Rightarrow$ ajuste \textbf{automático pero parcial y más lento}; algo de autonomía monetaria.
 \item \emph{Valoración}: riqueza exógena (sin cuenta corriente), mercados eficientes, estático.
 \end{itemize}
 
@@ -128,29 +130,28 @@ La cuenta corriente es la diferencia entre el ahorro y la inversión óptimos, y
 \item \autor{Sachs} (1981): déficits de los 70 con ↑ inversión. \autor{Obstfeld} (1982), \autor{Svensson}-\autor{Razin} (1983); \autor{Obstfeld}-\autor{Rogoff} (1995, 1996). Microfundamentado, dinámico y \emph{real} (vale con cualquier régimen). \textbf{Un déficit no tiene por qué ser malo}: vigilar su sostenibilidad.
 \end{itemize}
 
-\sub{III.2. El modelo de 2 periodos\label{rep:III.2}}
+\sub{III.2. El modelo intertemporal (\autor{Obstfeld}-\autor{Rogoff}, 1996)\label{rep:III.2}}
 \begin{itemize}
 \item \emph{Supuestos}: economía pequeña y abierta, $r^*$ dado, 2 periodos, un bien; $Y_t=F(K_t)$, $F''<0$, $K_{t+1}=K_t+I_t$; agente representativo, $U=u(C_t)+\beta\,u(C_{t+1})$, $\beta\equiv1/(1+\rho)$; acceso perfecto al capital mundial.
-\item \emph{Desarrollo}: autarquía en $A$ (tangencia FPP-indiferencia, $r^A$); con apertura, restricción en valor actual y 2 condiciones:
+\item \emph{Paso 1, autarquía}: tangencia FPP-indiferencia en $A$; la pendiente común da $1+r^A=1+F'(K^A_{t+1})$: $r$ es endógeno y coordina ahorro e inversión. \emph{Paso 2, apertura}: $r$ pasa a $r^*$; restricción en valor actual y 2 condiciones:
   \funcionclave{u'(C_t)=\beta\,(1+r^*)\,u'(C_{t+1})}
   \funcionclave{F'(K_{t+1})=r^*}
   \concepto{Separación de \autor{Fisher}}: primero la producción, después el consumo \vertema{3.A.29}. $\mathrm{CC}_t=S_t-I_t$; $\mathrm{XN}_{t+1}=-(1+r^*)\mathrm{CC}_t$.
-\item \emph{Gráfico} ($r^*<r^A$): produce en $P$ (invierte más), consume en $C$ (más utilidad); déficit en $t$ (horizontal), superávit comercial en $t+1$ (vertical).
+\item Con $r^*<r^A$: $F'(K_{t+1})=r^*<r^A$ $\Rightarrow$ ↑$K_{t+1}$: produce en $P$ (invierte más); consume en $C$ (sustitución y riqueza; más utilidad). \emph{Paso 3}: déficit en $t$ (horizontal, $\Delta I+\Delta C$), superávit comercial en $t+1$ (vertical).
 \item \emph{Implicaciones}: ajusta la cuenta financiera; la apertura nunca reduce el bienestar; ↑$r^A$ con poco capital, impaciencia o renta futura alta; corregir un déficit óptimo reduce bienestar: intervenir solo ante distorsiones o falta de sostenibilidad. España años 2000: déficit para vivienda, difícil de defender como óptimo.
 \end{itemize}
 \graficorepaso[0.66\linewidth]{cc-intertemporal}{Autarquía ($A$) y apertura: produce en $P$, consume en $C$}
 
-\sub{III.3. Valoración y extensiones\label{rep:III.3}}
 \begin{itemize}
 \item \emph{Extensiones}: \concepto{ecuación fundamental de la CC}, $\mathrm{CC}_t=(Y_t-Y^P_t)-(I_t-I^P_t)-(G_t-G^P_t)$ \vertema{3.A.33}: \textbf{lo temporal se financia; lo permanente se ajusta}; relación de intercambio (\autor{Harberger}-\autor{Laursen}-\autor{Metzler} con optimización); restricciones de crédito, prima de riesgo y \concepto{parada súbita} (\emph{sudden stop}; \autor{Calvo}, 1998); precios rígidos (\emph{Redux}).
 \item \emph{Evidencia}: a favor, \autor{Sachs} y \autor{Glick}-\autor{Rogoff} (1995). Paradojas: \autor{Feldstein}-\autor{Horioka} (1980, coef.\ $\approx$0,9; cae en el euro); \autor{Lucas} (1990: India $\times58$ $\Rightarrow$ $\times5$ con capital humano); \concepto{puzle de la asignación} (\autor{Gourinchas}-\autor{Jeanne}, 2013); desequilibrios globales y exceso de ahorro mundial (\autor{Bernanke}, 2005); poco reparto del riesgo.
 \item \emph{Valoración}: cambia la forma de ver el déficit; supuestos fuertes (país pequeño, acceso perfecto, sin impago); explica mal adónde va el capital $\Rightarrow$ ¿se puede pagar la deuda?
 \end{itemize}
 
-\sub{III.4. Sostenibilidad del déficit y de la deuda\label{rep:III.4}}
+\sub{III.3. Sostenibilidad del déficit y de la deuda\label{rep:III.3}}
 \begin{itemize}
 \item 3 conceptos (\autor{Milesi-Ferretti}-\autor{Razin}, 1996): \concepto{liquidez} (refinanciar), \concepto{solvencia} (VA de superávits $\geq$ deuda), \concepto{sostenibilidad} (atender la deuda sin financiación excepcional ni ajuste brusco; FMI, 2002). Mismo esquema que la deuda pública \vertema{3.A.39}.
-\item $B_t=(1+i^*)B_{t-1}+D_t$ ($D$ = déficit comercial, el «primario»); en ratios reales:
+\item \emph{Cadena}: identidad $\mathrm{XN}+\mathrm{RP}=\mathrm{CF}$ $\Rightarrow$ $B_t=(1+i^*)B_{t-1}+D_t$ ($D$ = déficit comercial, el «primario») $\Rightarrow$ ÷PIB nominal: $b_t=\frac{1+i^*}{1+\gamma^N}b_{t-1}+d_t$ $\Rightarrow$ $1+\gamma^N=(1+\pi)(1+\gamma_Y)$, en ratios reales:
   \funcionclave{b_t=\frac{1+r^*}{1+\gamma_Y}\,b_{t-1}+d_t}
   No mezclar: nominal con nominal, real con real. \textbf{Saldo estabilizador}:
   \funcionclave{-d=\frac{r^*-\gamma_Y}{1+\gamma_Y}\,b}

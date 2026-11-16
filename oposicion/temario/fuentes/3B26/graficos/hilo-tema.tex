@@ -1,0 +1,91 @@
+% Infografía del hilo conductor del 3.B.26 (Víctor, 16/11/2026): la pregunta
+% del tema arriba; un bloque por banda (I, II y III), con la pregunta de la
+% problemática que responde cada uno; en cada banda, los modelos en el orden
+% de la exposición, cada uno con la pregunta a la que responde, su respuesta y
+% lo que deja abierto, que es lo que lleva al siguiente; entre bandas, el
+% puente de un bloque a otro, y al pie, la salida a la regulación (3.B.27).
+% Paleta: bloque I en morado, II en azul, III en verde, lo que deja abierto y
+% los puentes en dorado, la pregunta del tema en rojo.
+% Capas: 1, pregunta del tema; 2-7, bloque I; 8, puente I-II; 9-14, bloque
+% II; 15, puente II-III; 16-20, bloque III; 21, salida.
+% Elaboración propia a partir de las fuentes del tema.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    banda/.style={draw=#1, fill=#1!14, rounded corners=2pt, text width=15.9cm,
+      align=center, inner sep=3.5pt, font=\small},
+    modelo/.style={draw=#1, fill=#1!5, rounded corners=2pt, thick, text width=2.85cm,
+      align=center, inner sep=3pt, anchor=north},
+    modelo/.default=tceemorado,
+    ancho/.style={text width=3.75cm},
+    paso/.style={-Latex, line width=1.4pt, #1},
+    puente/.style={draw=tceedorado, fill=tceedorado!10, rounded corners=2pt,
+      text width=13.5cm, align=center, inner sep=4pt},
+    pregunta/.style={draw=tceerojo, fill=tceerojo!6, rounded corners=2pt, line width=0.9pt,
+      text width=15.9cm, align=center, inner sep=5pt, font=\small}]
+  \newcommand{\resp}[3]{{\itshape\color{tceegris!70!black}#1}\\[2pt]#2\\[2pt]{\color{tceedorado!80!black}\textbf{Deja abierto}: #3}}
+  % 1: la pregunta del tema
+  \capa{1}{\node[pregunta] (pt) at (6.6,1.0) {\textbf{¿Por qué un banco, o un sistema financiero entero, puede hundirse por miedo, cómo se convirtió ese miedo en una crisis mundial en 2007-2008 y qué hacen las entidades para medir y gestionar sus riesgos?}};}
+  % ---------------- Bloque I ----------------
+  \capa{2}{\node[banda=tceemorado, anchor=north] (b1) at ($(pt.south)+(0,-0.45)$) {\textbf{I. Crisis financieras: qué son y por qué ocurren}\quad{\itshape ¿por qué se repiten, si todas se parecen?}};
+    \draw[paso=tceerojo] (pt.south) -- (b1.north);}
+  \capa{3}{\node[modelo=tceemorado, minimum height=5.35cm] (m11) at ($(b1.south)+(-6.6,-0.3)$) {\textbf{1. Tipos y regularidades}\\ \autor{Claessens} y \autor{Kose} (2013); \autor{Reinhart} y \autor{Rogoff} (2009)\\[2pt]
+      \resp{¿Qué es una crisis y qué tipos hay?}{4 tipos, a menudo juntos; casi siempre tras un auge del crédito: «esta vez es distinto»}{¿qué secuencia siguen?}};}
+  \capa{4}{\node[modelo=tceemorado, minimum height=5.35cm] (m12) at ($(b1.south)+(-3.3,-0.3)$) {\textbf{2. Anatomía}\\ \autor{Kindleberger} (1978); \autor{Minsky} (1986)\\[2pt]
+      \resp{¿Qué pasos siguen casi todas?}{Desplazamiento, auge, euforia, pánico y crac: la estabilidad es desestabilizadora}{¿qué mueve esa secuencia?}};
+    \draw[paso=tceemorado] ($(m11.north east)+(0,-0.7)$) -- ($(m12.north west)+(0,-0.7)$);}
+  \capa{5}{\node[modelo=tceemorado, minimum height=5.35cm] (m13) at ($(b1.south)+(0.0,-0.3)$) {\textbf{3. Deuda-deflación}\\ \autor{Fisher} (1933); \autor{Bernanke} (1983)\\[2pt]
+      \resp{¿Cómo convierte la deuda una caída de precios en una depresión?}{«Cuanto más pagan los deudores, más deben»}{la deflación que importa es la de los activos}};
+    \draw[paso=tceemorado] ($(m12.north east)+(0,-0.7)$) -- ($(m13.north west)+(0,-0.7)$);}
+  \capa{6}{\node[modelo=tceemorado, minimum height=5.35cm] (m14) at ($(b1.south)+(3.3000000000000007,-0.3)$) {\textbf{3. Burbujas}\\ \autor{Blanchard} y \autor{Watson} (1982); \autor{Tirole} (1985)\\[2pt]
+      \resp{¿Por qué se aleja el precio de su valor?}{Una burbuja racional crece al tipo de interés; es grave si la financia el crédito}{¿cómo transmite la caída el sistema?}};
+    \draw[paso=tceemorado] ($(m13.north east)+(0,-0.7)$) -- ($(m14.north west)+(0,-0.7)$);}
+  \capa{7}{\node[modelo=tceemorado, minimum height=5.35cm] (m15) at ($(b1.south)+(6.6,-0.3)$) {\textbf{3. Fricciones financieras}\\ \autor{Stiglitz} y \autor{Weiss} (1981); \autor{Bernanke} y \autor{Gertler} (1989)\\[2pt]
+      \resp{¿Por qué amplifica el sistema financiero?}{Selección adversa, riesgo moral, acelerador financiero y ventas forzosas}{¿por qué se rompe un banco?}};
+    \draw[paso=tceemorado] ($(m14.north east)+(0,-0.7)$) -- ($(m15.north west)+(0,-0.7)$);}
+  % 8: puente I-II
+  \capa{8}{\node[puente, anchor=north] (p1) at ($(m13.south)+(0,-0.45)$) {El crédito incuba la crisis, las burbujas la inflan y las fricciones la amplifican. Falta el eslabón débil: \textbf{¿por qué cae un banco, incluso solvente, de un día para otro?}};
+    \draw[paso=tceedorado] (m15.south) |- (p1.east);}
+  % ---------------- Bloque II ----------------
+  \capa{9}{\node[banda=tceeazul, anchor=north] (b2) at ($(p1.south)+(0,-0.45)$) {\textbf{II. Pánicos bancarios y la crisis de 2007-2008}\quad{\itshape ¿por qué cae un banco sano y qué falló en 2007-2008?}};
+    \draw[paso=tceedorado] (p1.south) -- (b2.north);}
+  \capa{10}{\node[modelo=tceeazul, minimum height=4.95cm] (m21) at ($(b2.south)+(-6.6,-0.3)$) {\textbf{1. Pánicos bancarios}\\ \autor{Diamond} y \autor{Dybvig} (1983)\\[2pt]
+      \resp{¿Por qué existen los bancos y por qué sufren pánicos?}{El depósito es un seguro de liquidez, y el mismo contrato tiene un 2.º equilibrio: el pánico}{¿cuándo hay pánico?}};}
+  \capa{11}{\node[modelo=tceeazul, minimum height=4.95cm] (m22) at ($(b2.south)+(-3.3,-0.3)$) {\textbf{2. Extensiones}\\ \autor{Allen} y \autor{Gale}; \autor{Goldstein} y \autor{Pauzner} (2005); \autor{Diamond} y \autor{Rajan}\\[2pt]
+      \resp{¿Qué responde a sus críticas?}{Fundamentos, información, un solo equilibrio, contagio, disciplina y banca en la sombra}{¿cómo se evita el pánico?}};
+    \draw[paso=tceeazul] ($(m21.north east)+(0,-0.7)$) -- ($(m22.north west)+(0,-0.7)$);}
+  \capa{12}{\node[modelo=tceeazul, minimum height=4.95cm] (m23) at ($(b2.south)+(0.0,-0.3)$) {\textbf{3. Red de seguridad}\\ \autor{Bagehot} (1873); \autor{Merton} (1977)\\[2pt]
+      \resp{¿Cómo se elimina el equilibrio malo?}{Suspensión, garantía de depósitos y prestamista de última instancia, a costa de riesgo moral}{¿qué pasa donde no llega?}};
+    \draw[paso=tceeazul] ($(m22.north east)+(0,-0.7)$) -- ($(m23.north west)+(0,-0.7)$);}
+  \capa{13}{\node[modelo=tceeazul, minimum height=4.95cm] (m24) at ($(b2.south)+(3.3000000000000007,-0.3)$) {\textbf{4. La crisis de 2007-2008}\\ \autor{Gorton} y \autor{Metrick} (2012); \autor{Brunnermeier} (2009)\\[2pt]
+      \resp{¿Qué falló?}{Una burbuja con deuda y un pánico mayorista en la banca en la sombra, sin red}{¿por qué en Europa llegó a los Estados?}};
+    \draw[paso=tceeazul] ($(m23.north east)+(0,-0.7)$) -- ($(m24.north west)+(0,-0.7)$);}
+  \capa{14}{\node[modelo=tceeazul, minimum height=4.95cm] (m25) at ($(b2.south)+(6.6,-0.3)$) {\textbf{5. Círculo vicioso banca-soberano}\\ \autor{Brunnermeier} \emph{et al.} (2016); \autor{Farhi} y \autor{Tirole} (2018)\\[2pt]
+      \resp{¿Cómo pasó la crisis a la deuda pública?}{Los bancos y su Estado se sostienen y se hunden juntos}{¿quién frena antes el riesgo?}};
+    \draw[paso=tceeazul] ($(m24.north east)+(0,-0.7)$) -- ($(m25.north west)+(0,-0.7)$);}
+  % 15: puente II-III
+  \capa{15}{\node[puente, anchor=north] (p2) at ($(m23.south)+(0,-0.45)$) {Los remedios públicos evitan el pánico, pero crean riesgo moral: la primera línea de defensa es la propia entidad. \textbf{¿Cómo mide y gestiona sus riesgos?}};
+    \draw[paso=tceedorado] (m25.south) |- (p2.east);}
+  % ---------------- Bloque III ----------------
+  \capa{16}{\node[banda=tceeverde, anchor=north] (b3) at ($(p2.south)+(0,-0.45)$) {\textbf{III. Gestión de riesgos de las instituciones financieras}\quad{\itshape ¿cómo se protegen las entidades y por qué no bastó en 2008?}};
+    \draw[paso=tceedorado] (p2.south) -- (b3.north);}
+  \capa{17}{\node[modelo=tceeverde, ancho, minimum height=5.0cm] (m31) at ($(b3.south)+(-6.15,-0.3)$) {\textbf{1. Los riesgos de un banco}\\ el balance del banco\\[2pt]
+      \resp{¿Qué riesgos asume y cómo se organiza?}{Crédito, mercado, liquidez, tipo de interés y operacional; apetito de riesgo y 3 líneas de defensa}{¿cuánto puede perder?}};}
+  \capa{18}{\node[modelo=tceeverde, ancho, minimum height=5.0cm] (m32) at ($(b3.south)+(-1.90,-0.3)$) {\textbf{2. Riesgo de mercado}\\ VaR; \autor{Artzner} \emph{et al.} (1999)\\[2pt]
+      \resp{¿Cuánto se pierde en un mal día?}{El VaR no mira la cola: pérdida esperada en la cola y pruebas de resistencia}{¿y si no pagan los prestatarios?}};
+    \draw[paso=tceeverde] ($(m31.north east)+(0,-0.7)$) -- ($(m32.north west)+(0,-0.7)$);}
+  \capa{19}{\node[modelo=tceeverde, ancho, minimum height=5.0cm] (m33) at ($(b3.south)+(2.35,-0.3)$) {\textbf{3. Riesgo de crédito}\\ \autor{Merton} (1974); \autor{Vasicek} (2002)\\[2pt]
+      \resp{¿Cuánto se pierde por impagos?}{PE $=$ PD$\times$LGD$\times$EAD, con provisiones; la inesperada, con capital}{¿y si falta la financiación?}};
+    \draw[paso=tceeverde] ($(m32.north east)+(0,-0.7)$) -- ($(m33.north west)+(0,-0.7)$);}
+  \capa{20}{\node[modelo=tceeverde, ancho, minimum height=5.0cm] (m34) at ($(b3.south)+(6.60,-0.3)$) {\textbf{4. Liquidez y tipo\\ de interés}\\ \autor{Brunnermeier} y \autor{Pedersen} (2009)\\[2pt]
+      \resp{¿Qué hundió a Silicon Valley Bank?}{Una brecha de duración sin cubrir y depósitos sin garantía: el pánico de \autor{Diamond} y \autor{Dybvig} visto desde el balance}{lo prudente para un banco no lo es para el sistema}};
+    \draw[paso=tceeverde] ($(m33.north east)+(0,-0.7)$) -- ($(m34.north west)+(0,-0.7)$);}
+  % 21: la salida
+  \capa{21}{\node[pregunta, draw=tceegris, fill=tceegris!8, anchor=north] (sal) at ($(m33.south)+(-2.35,-0.45)$) {Todas las medidas fallan en las colas: la gestión de riesgos combina modelos, pruebas de resistencia, capital y liquidez, y no sustituye a la \textbf{regulación y la supervisión} [3.B.27]};
+    \draw[paso=tceegris] (m32.south) -- (m32.south |- sal.north);}
+\end{tikzpicture}
+\end{document}

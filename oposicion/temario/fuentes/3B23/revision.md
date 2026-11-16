@@ -350,3 +350,10 @@ aplicado la opción recomendada, y Víctor puede cambiarla.
 
 - **D-B1** (refrán): «nadie da duros a cuatro pesetas» ya sale en 3.A.06 como dicho secundario (expectativas racionales, también en su ficha). **Aplicada la recomendada**: aquí es el refrán del enganche, porque es el que propone Víctor y el que mejor casa con el no arbitraje; se podría cambiar el dicho de 3.A.06 (no se ha tocado: no es de este encargo). Alternativa: «El que algo quiere, algo le cuesta», pero ya está en 3.A.20. **Resuelta por Víctor (15/11/2026)**: lo que no se repite es el refrán inicial; aquí es el inicial y en el 3.A.6 puede seguir como dicho secundario.
 
+
+## Comentarios de Víctor (16/11/2026)
+
+- «En la figura 1 quiero que se distingan de alguna manera los modelos de la teoría de la elección de cartera de los de valoración de activos (manteniendo la estructura que me gusta).» → En `mapa-analisis` (figura 1) se mantiene toda la estructura (las 3 maneras, la cadena Markowitz → Tobin → Sharpe → CAPM → APT con las limitaciones en rojo, el bloque II y los análisis fundamental y técnico), y se distinguen los 2 grupos de dos formas: Markowitz, Tobin y Sharpe en verde salvia, con una barra morada a la izquierda rotulada «Teoría de la elección de cartera (I.2)»; el CAPM y la APT en dorado claro, con una barra dorada rotulada «Valoración (I.3)». La fuente de la figura lo explica.
+- «En el apartado I.2.1 el problema del inversor debe estar al comienzo del desarrollo.» → En I.2.1 b) ii) Desarrollo, el problema del inversor (la utilidad sujeta a la frontera eficiente y la frontera como problema de optimización) pasa a ser la primera viñeta, con una frase de enlace hacia la media y la varianza de la cartera; después vienen la media y la varianza, los 2 activos y las 2 etapas (con una frase de enlace «Con estas piezas se resuelve el problema del inversor en sus 2 etapas»). La nota del cante y la ficha de repaso siguen el mismo orden.
+- Regla general 1 (series de títulos completas): comprobado; el tema no tiene series rotas.
+- Páginas: cuerpo 35 (total 46), igual que antes. \minutos sigue en 30. Ficha: 4 páginas.

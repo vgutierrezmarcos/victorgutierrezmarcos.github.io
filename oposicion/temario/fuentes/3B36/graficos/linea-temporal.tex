@@ -1,0 +1,94 @@
+% Línea temporal de la integración europea, 1945-2026 (recupera, rehecha, la
+% «imagen 2» del tema antiguo; Víctor, 16/11/2026). Eje vertical de años; a la
+% izquierda, los tratados (firma y entrada en vigor) y los hitos
+% institucionales; a la derecha, las ampliaciones (con las banderas de los
+% Estados que entran, dibujadas en banderas.tikz) y los hitos económicos. Rojo:
+% fracasos, crisis y la retirada británica. Datos a 16/11/2026.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\input{banderas.tikz}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+% posición vertical de un año (1945 arriba)
+\newcommand{\anio}[1]{\pgfmathsetmacro{\yA}{-(#1-1945)*0.29}}
+\newcommand{\pos}[2]{\anio{#1}\pgfmathsetmacro{\yL}{\yA+#2}}
+% \izq{año}{desplazamiento del rótulo}{color}{texto}: hito a la izquierda
+\newcommand{\izq}[4]{\pos{#1}{#2}%
+  \fill[#3] (8.15,\yA) circle (0.07);
+  \draw[#3!70,line width=0.4pt] (8.15,\yA) -- (7.75,\yL) -- (7.55,\yL);
+  \node[rotizq,text=#3] at (7.5,\yL) {#4};}
+% \der{año}{desplazamiento}{color}{texto}: hito a la derecha
+\newcommand{\der}[4]{\pos{#1}{#2}%
+  \fill[#3] (8.85,\yA) circle (0.07);
+  \draw[#3!70,line width=0.4pt] (8.85,\yA) -- (9.25,\yL) -- (9.45,\yL);
+  \node[rotder,text=#3] at (9.5,\yL) {#4};}
+% \amp{año}{desplazamiento}{banderas}{texto}: ampliación, con las banderas
+\newcommand{\amp}[4]{\pos{#1}{#2}%
+  \fill[tceeverde] (8.85,\yA) circle (0.08);
+  \draw[tceeverde!70,line width=0.4pt] (8.85,\yA) -- (9.25,\yL) -- (9.45,\yL);
+  \foreach \cb [count=\k from 0] in {#3}{\pgfmathsetmacro{\xb}{9.78+0.6*\k}\bandera[0.17]{(\xb,\yL)}{\cb}}
+  \node[rotder,text=tceeverde!85!black,font=\footnotesize\bfseries] at (9.5,\yL-0.38) {#4};}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    rotizq/.style={anchor=east,align=right,font=\footnotesize,inner sep=1pt},
+    rotder/.style={anchor=west,align=left,font=\footnotesize,inner sep=1pt}]
+  % 1: el eje de los años
+  \capa{1}{\fill[tceegris!15] (8.15,0.3) rectangle (8.85,-23.6);
+    \foreach \a in {1945,...,2026}{\anio{\a}\draw[tceegris!60,line width=0.3pt] (8.15,\yA) -- (8.27,\yA) (8.73,\yA) -- (8.85,\yA);}
+    \foreach \a in {1945,1950,...,2025}{\anio{\a}\node[font=\scriptsize\bfseries,text=tceegris,fill=white,inner sep=1pt,rounded corners=1pt] at (8.5,\yA) {\a};}
+    \node[font=\scriptsize\bfseries,text=tceemorado,fill=white,inner sep=1pt,rounded corners=1pt] at (8.5,-23.42) {2026};
+    \node[font=\small\bfseries,text=tceemorado,anchor=south east] at (7.6,0.35) {Tratados e instituciones};
+    \node[font=\small\bfseries,text=tceeverde!85!black,anchor=south west] at (9.4,0.35) {Ampliaciones y economía};}
+  % 2: de la posguerra a los Tratados de Roma (1945-1958)
+  \capa{2}{\izq{1948.4}{0.15}{tceeazul}{Congreso de La Haya (1948)}
+    \izq{1949.35}{-0.05}{tceeazul}{Consejo de Europa (1949)}
+    \izq{1950.35}{-0.25}{tceemorado}{\textbf{Declaración Schuman} (9 de mayo de 1950)}
+    \izq{1951.3}{-0.55}{tceemorado}{\textbf{Tratado de París}: CECA (en vigor, 1952)}
+    \izq{1954.6}{-0.25}{tceerojo}{Fracasa la Comunidad Europea de Defensa (1954)}
+    \izq{1957.2}{-0.15}{tceemorado}{\textbf{Tratados de Roma}: CEE y Euratom (en vigor, 1958)}
+    \der{1948.3}{0.1}{tceedorado}{Plan Marshall y OECE (1948)}
+    \amp{1952.5}{0.05}{FR,DE,IT,BE,NL,LU}{Los Seis fundan la CECA (1952)}}
+  % 3: la expansión de los 60 y la primera ampliación (1958-1973)
+  \capa{3}{\izq{1965.3}{0.2}{tceemorado}{\textbf{Tratado de fusión} de los ejecutivos (en vigor, 1967)}
+    \izq{1965.5}{-0.35}{tceerojo}{Crisis de la silla vacía (1965) y Compromiso de Luxemburgo (1966)}
+    \izq{1970.3}{0.05}{tceemorado}{Tratado de Luxemburgo: recursos propios (1970)}
+    \der{1960.3}{0}{tceedorado}{Nace la AELC/EFTA (1960)}
+    \der{1968.5}{0.15}{tceedorado}{Unión aduanera completa (1 de julio de 1968)}
+    \der{1972.3}{0.12}{tceedorado}{Serpiente monetaria (1972)}
+    \amp{1973}{-0.2}{GB,IE,DK}{1.ª ampliación (1973): 9 Estados}}
+  % 4: crisis y relanzamiento (1973-1990)
+  \capa{4}{\izq{1974.9}{-0.05}{tceeazul}{Nace el Consejo Europeo (1974)}
+    \izq{1975.55}{-0.4}{tceemorado}{Tratado de Bruselas: Tribunal de Cuentas (1975)}
+    \izq{1979.45}{-0.1}{tceeazul}{Primeras elecciones directas al Parlamento (1979)}
+    \izq{1985.45}{0.15}{tceedorado}{Libro Blanco del mercado interior (\textsc{Delors}, 1985)}
+    \izq{1986.15}{-0.3}{tceemorado}{\textbf{Acta Única Europea} (en vigor, 1987)}
+    \der{1979.2}{0.1}{tceedorado}{Sistema Monetario Europeo (1979)}
+    \amp{1981}{-0.15}{GR}{2.ª ampliación (1981): 10}
+    \amp{1986}{-0.15}{ES,PT}{3.ª ampliación (1986): 12}
+    \der{1990.75}{0.05}{tceeazul}{Caída del Muro (1989) y reunificación alemana (1990)}}
+  % 5: de la Comunidad a la Unión (1990-2007)
+  \capa{5}{\izq{1992.1}{0.1}{tceemorado}{\textbf{Tratado de Maastricht}: la UE y sus 3 pilares (en vigor, 1993)}
+    \izq{1997.8}{0.1}{tceemorado}{\textbf{Tratado de Ámsterdam} (en vigor, 1999)}
+    \izq{2001.1}{0.05}{tceemorado}{\textbf{Tratado de Niza} (en vigor, 2003)}
+    \izq{2004.8}{0}{tceerojo}{Constitución Europea (2004), rechazada en 2005}
+    \izq{2007.95}{-0.1}{tceemorado}{\textbf{Tratado de Lisboa}: TUE, TFUE y Carta (en vigor, 2009)}
+    \der{1993}{0.15}{tceedorado}{Mercado interior (1993) y EEE (1994)}
+    \amp{1995}{-0.05}{AT,FI,SE}{4.ª ampliación (1995): 15}
+    \der{1999}{-0.1}{tceedorado}{Nace el euro (1999; billetes en 2002)}
+    \amp{2004.33}{0.35}{CZ,EE,CY,LV,LT}{}\bandera[0.17]{(9.78,\yL-0.42)}{HU}\bandera[0.17]{(10.38,\yL-0.42)}{MT}\bandera[0.17]{(10.98,\yL-0.42)}{PL}\bandera[0.17]{(11.58,\yL-0.42)}{SI}\bandera[0.17]{(12.18,\yL-0.42)}{SK}\node[rotder,text=tceeverde!85!black,font=\footnotesize\bfseries] at (9.5,\yL-0.8) {5.ª ampliación (2004): 25};
+    \amp{2007}{-0.35}{BG,RO}{Bulgaria y Rumanía (2007): 27}}
+  % 6: crisis, Brexit y ampliación pendiente (2008-2026)
+  \capa{6}{\izq{2012.2}{0.1}{tceeazul}{Tratado del MEDE y pacto fiscal (TECG, 2012)}
+    \izq{2016.5}{0.05}{tceerojo}{Referéndum del Brexit (2016)}
+    \izq{2020.1}{0.05}{tceerojo}{El Reino Unido sale de la Unión (31 de enero de 2020)}
+    \izq{2023.9}{0.1}{tceeazul}{El Parlamento propone reformar los Tratados (2023)}
+    \izq{2026.75}{-0.05}{tceeazul}{La Comisión propone «Preparar una Unión más amplia» (2026)}
+    \der{2010}{-0.55}{tceerojo}{Crisis financiera (2008) y del euro (2010-2012)}
+    \amp{2013.5}{0.15}{HR}{Croacia (2013): 28}
+    \der{2020.5}{0.45}{tceedorado}{\emph{NextGenerationEU} (2020)}
+    \amp{2020.08}{0}{GB}{Brexit (2020): 27}
+    \amp{2022.5}{-0.3}{UA,MD}{Ucrania y Moldavia, candidatas (2022)}
+    \der{2026.1}{-0.2}{tceedorado}{Bulgaria entra en el euro (2026)}
+    \der{2026.5}{-0.65}{tceeverde!85!black}{Capítulos abiertos con Ucrania y Moldavia (2026)}}
+\end{tikzpicture}
+\end{document}

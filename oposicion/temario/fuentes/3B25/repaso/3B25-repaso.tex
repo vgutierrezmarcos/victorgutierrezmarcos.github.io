@@ -10,9 +10,9 @@
 \bloque{Esquema del cante}
 \esquemacante{%
 \apartadocante{Introducción: «cubrirse las espaldas»}{2,5}
-\apartadocante{I. Futuros y \emph{forwards}}{7,5}
+\apartadocante{I. Futuros y \emph{forwards}}{8}
 \subcante{1. Definición}{0,5}
-\subcante{2. Tipos: organizado u OTC (todos) y subyacente}{2,25}
+\subcante{2. Tipos: organizado u OTC (todos) y subyacente}{2,75}
 \subcante{3. Pago a vencimiento}{0,75}
 \subcante{4. Cobertura, especulación, arbitraje}{0,75}
 \subcante{5. Valoración}{3,25}
@@ -30,15 +30,14 @@
 \subcante{\hspace*{0.8em}Binomial}{2}
 \subcante{\hspace*{0.8em}\autor{Black}-\autor{Scholes}}{2}
 \subcante{\hspace*{0.8em}Opciones reales}{0,5}
-\apartadocante{III. \emph{Swaps} y mercados OTC}{7}
+\apartadocante{III. \emph{Swaps}}{6}
 \subcante{1. Definición}{0,5}
-\subcante{2. Tipos: IRS, divisas, TRS, CDS}{2,5}
+\subcante{2. Tipos: IRS, divisas, TRS, CDS}{3}
 \subcante{3. Pagos}{0,25}
 \subcante{4. Estrategias}{0,75}
-\subcante{5. Valoración: suma de \emph{forwards}}{1}
-\subcante{6. OTC tras 2008: tamaño, regulación, estabilidad}{2}
-\apartadocante{Conclusión}{1}}
-\emph{Pizarra}: intro y conclusión sin pizarra, con «cubrirse las espaldas» arriba. A la izq., en columna, el guion de 5 pasos (definición, tipos, pago, estrategias, valoración), todo el tema. Funciones clave recuadradas en morado en la esquina sup. dcha. hasta el final: $F_0=S_0e^{rT}$, $c+Ke^{-rT}=p+S_0$ y \autor{Black}-\autor{Scholes}. I: cámara, pago del futuro, \emph{contango}. II: pagos, 3 perfiles, árbol binomial. III: IRS; «tamaño», «reforma», «riesgos».
+\subcante{5. Valoración: suma de \emph{forwards}}{1,5}
+\apartadocante{Conclusión: + mercados OTC tras 2008}{1,5}}
+\emph{Pizarra}: intro y conclusión sin pizarra, con «cubrirse las espaldas» arriba. A la izq., en columna, el guion de 5 pasos (definición, tipos, pago, estrategias, valoración), todo el tema. Funciones clave recuadradas en morado en la esquina sup. dcha. hasta el final: $F_0=S_0e^{rT}$, $c+Ke^{-rT}=p+S_0$ y \autor{Black}-\autor{Scholes}. I: cámara, pago del futuro, \emph{contango}. II: pagos, 3 perfiles, árbol binomial. III: IRS. Los mercados OTC (tamaño, reforma, riesgos), de palabra en la conclusión.
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -47,11 +46,11 @@
 \item \textbf{Relevancia}: \emph{micro}, separan el riesgo del activo y lo trasladan a quien lo quiere; \emph{completan los mercados} (\autor{Ross}, 1976; títulos de \autor{Arrow}) \vertema{3.A.21}. \emph{Macro}: mayor mercado por importe, nocional OTC \dato{845 billones de \$, valor bruto 22,8}{BIS, dic.\ 2025}; centro de 2008 y de la reforma \vertema{3.B.26} \vertema{3.B.27}. \emph{Teórica}: Nobel 1997 a \autor{Merton} y \autor{Scholes} (\autor{Black} murió en 1995).
 \item \textbf{Contextualización}: \concepto{derivado} = contrato cuyo valor depende del precio de otro activo, el \concepto{subyacente} (financiero o real). 3.ª familia con renta variable \vertema{3.B.23} y fija \vertema{3.B.24}. 3 rasgos: vencimiento; suma cero en pagos (no en bienestar); no financian $\Rightarrow$ \concepto{apalancamiento}. Tipos: \emph{forwards}/futuros (obligación), opciones (derecho), \emph{swaps} (cartera de \emph{forwards}), derivados de crédito. Usos: cubrir, especular, arbitrar. Historia: \hyperref[rep:autores]{cronología}.
 \item \textbf{Problemática}: ¿qué derivados hay y qué pagan? ¿Cubrir, especular o arbitrar? ¿Cuánto valen? (lo que cuesta replicarlos) ¿y por qué no dependen de expectativas ni de aversión al riesgo? ¿Sus mercados estabilizan o desestabilizan?
-\item \textbf{Estructura}: mismo guion para las 3 familias (definición, tipos, pago, estrategias, valoración). \hyperref[rep:I]{I}, futuros y lo común a todos: mercado organizado u OTC, cámara, participantes; \hyperref[rep:II]{II}, opciones (paridad, binomial, \autor{Black}-\autor{Scholes}); \hyperref[rep:III]{III}, \emph{swaps} y crédito, y al final los mercados OTC tras 2008 (tamaño, regulación, estabilidad). Grueso: los instrumentos.
+\item \textbf{Estructura}: mismo guion para las 3 familias (definición, tipos, pago, estrategias, valoración). \hyperref[rep:I]{I}, futuros y lo común a todos: mercado organizado u OTC, cámara, participantes; \hyperref[rep:II]{II}, opciones (paridad, binomial, \autor{Black}-\autor{Scholes}); \hyperref[rep:III]{III}, \emph{swaps} y crédito. Grueso: los instrumentos; los mercados OTC tras 2008 (tamaño, regulación, estabilidad), en la conclusión.
 \end{itemize}
 
 % ==========================================================================
-\bloque[7,5]{I. Mercados de futuros y \emph{forwards}\label{rep:I}}
+\bloque[8]{I. Mercados de futuros y \emph{forwards}\label{rep:I}}
 \begin{ideaclave}
 Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo deciden las expectativas sino lo que cuesta comprar el subyacente hoy y mantenerlo: $F_0=S_0e^{rT}$; si no, alguien ganaría sin riesgo.
 \end{ideaclave}
@@ -218,9 +217,9 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
 \textbf{e) Opciones reales}. Derecho a esperar, ampliar, abandonar o hacer por fases. Proyecto aplazable = \emph{call} americana ($S_0=V_0$, $K=I$): con incertidumbre puede convenir esperar aunque VAN $>0$ \vertema{3.A.34} \vertema{3.B.2}. Acciones de empresa endeudada = \emph{call} sobre los activos con $K$ = deuda (\autor{Merton}, 1974) \vertema{3.B.4}.
 
 % ==========================================================================
-\bloque[7]{III. Mercados de \emph{swaps}\label{rep:III}}
+\bloque[6]{III. Mercados de \emph{swaps}\label{rep:III}}
 \begin{ideaclave}
-Un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: vale cero al firmarse y se valora por arbitraje. Con los OTC y los derivados de crédito llegamos al centro de 2008: los derivados reparten el riesgo, pero con apalancamiento y opacidad lo amplifican.
+Un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: vale cero al firmarse y se valora por arbitraje. Con los OTC y los derivados de crédito llegamos al centro de 2008.
 \end{ideaclave}
 
 \sub{III.1. Definición\label{rep:III.1}}
@@ -264,21 +263,14 @@ Un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: 
 \item \emph{Currency swap}: \emph{forwards} de divisas (PCI) o 2 bonos en cada moneda.
 \end{itemize}
 
-\sub{III.6. Los mercados OTC tras 2008\label{rep:III.6}}
-\begin{itemize}
-\item \emph{Tamaño OTC}: nocional \dato{95 billones (2000) $\to$ 673 (2008) $\to$ 845 (dic.\ 2025)}{BIS}; tipos 669,5 y divisas 148,7; \dato{78,7\,\% del nocional de tipos con ECC}{BIS}. \emph{Nocional no es riesgo}: valor bruto \dato{22,8 billones (2,7\,\%)}{BIS}; exposición neta 3,35.
-\item \emph{Regulación}: G-20 Pittsburgh (2009): plataformas, ECC, registros, más capital a lo no compensado. UE: \concepto{EMIR} (2012; REFIT 2019; EMIR~3, 2024: cuenta activa en ECC de la Unión), \concepto{MiFIR} (plataformas), ventas en corto (CNMV, mar.-may.\ 2020) \vertema{3.B.27}. EE.\,UU.: Dodd-Frank, título VII (2010). Resultado: menos riesgo bilateral y más transparencia; ECC «demasiado importantes para quebrar», márgenes procíclicos.
-\item \emph{A favor}: reparten el riesgo; completan mercados (\autor{Arrow}, 1964; \autor{Ross}, 1976); revelan información (expectativas para bancos centrales); abaratan transacciones. \emph{En contra}: apalancamiento (Archegos, WTI); interconexión y opacidad (AIG; \autor{Bernanke}, 2018); prociclicidad (marzo 2020); riesgo de modelo (LTCM, CDO).
-\item \emph{Balance}: neutrales como instrumento; importa quién, cuánto apalancamiento y cuánta transparencia. La reforma atacó opacidad y contrapartida, no apalancamiento ni concentración en las cámaras.
-\end{itemize}
-
 % ==========================================================================
-\bloque[1]{Conclusión}
+\bloque[1,5]{Conclusión}
 \begin{itemize}
 \item \textbf{Recapitulación}: mismo guion y misma idea: un derivado vale lo que cuesta replicarlo. Futuro, $F_0=S_0e^{rT}$; opción, réplica (paridad, binomial, \autor{Black}-\autor{Scholes}) sin expectativas ni aversión; \emph{swap}, cartera de \emph{forwards}.
-\item \textbf{Relevancia}: mayor mercado por nocional; bancos centrales leen sus precios; gestión de la deuda pública (el Tesoro cubre con \emph{swaps} emisiones en divisas); regulación europea.
+\item \textbf{Mercados OTC} (detalle en el anexo del tema): \emph{tamaño}, nocional \dato{845 billones de \$ (dic.\ 2025)}{BIS}, casi 4/5 de tipos; \emph{nocional no es riesgo}: valor bruto \dato{22,8 billones (2,7\,\%)}{BIS}. \emph{Reforma}: G-20 Pittsburgh (2009): plataformas, ECC, registros; UE: \concepto{EMIR} y \concepto{MiFIR}; EE.\,UU.: Dodd-Frank \vertema{3.B.27}; \dato{78,7\,\% del nocional de tipos con ECC}{BIS}. \emph{Estabilidad}: reparten el riesgo, completan mercados, revelan información; pero apalancamiento, interconexión (AIG) y márgenes procíclicos (marzo 2020) amplifican las crisis.
+\item \textbf{Relevancia}: bancos centrales leen sus precios; gestión de la deuda pública (el Tesoro cubre con \emph{swaps} emisiones en divisas); regulación europea.
 \item \textbf{Extensiones}: opciones reales \vertema{3.A.34} \vertema{3.B.2} \vertema{3.B.4}; ETTI \vertema{3.B.24}; CAPM y la prima del futuro \vertema{3.B.23}; divisas y PCI \vertema{3.B.13}; 2008 y gestión de riesgos \vertema{3.B.26}; regulación \vertema{3.B.27}.
-\item \textbf{Opinión}: el riesgo no está en el instrumento sino en el apalancamiento y la opacidad; en 2020 ninguna cámara cayó con el WTI negativo, pero el riesgo se concentra en ellas y sus márgenes obligan a vender cuando todos venden.
+\item \textbf{Opinión}: el riesgo no está en el instrumento sino en el apalancamiento y la opacidad; la reforma funcionó (en 2020 ninguna cámara cayó con el WTI negativo), pero el riesgo se concentra en ellas y sus márgenes obligan a vender cuando todos venden.
 \item \textbf{Idea final}: los derivados no crean ni destruyen el riesgo: lo cambian de manos y le ponen precio. Con márgenes, cámaras y transparencia sirven para «cubrirse las espaldas»; sin ellos, multiplican el riesgo. Por eso el título habla de instrumentos \emph{y} mercados.
 \end{itemize}
 

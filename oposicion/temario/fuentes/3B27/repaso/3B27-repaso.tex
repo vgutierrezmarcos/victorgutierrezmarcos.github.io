@@ -10,13 +10,13 @@
 \bloque{Esquema del cante}
 \esquemacante{%
 \apartadocante{Introducción: «cada palo que aguante su vela»}{2,5}
-\apartadocante{I. Fundamentos teóricos}{10}
+\apartadocante{I. Fundamentos teóricos}{11,5}
 \subcante{1. ¿Qué es la regulación financiera?}{1,5}
-\subcante{2. Justificación de la intervención}{8,5}
-\subcante{\hspace*{0.8em}Fallos de mercado}{2,5}
+\subcante{2. Justificación de la intervención}{10}
+\subcante{\hspace*{0.8em}Los 3 motivos y su intervención}{3,5}
 \subcante{\hspace*{0.8em}\autor{Stiglitz} y \autor{Weiss} (1981)}{2}
 \subcante{\hspace*{0.8em}\autor{Diamond} y \autor{Dybvig} (1983)}{2,5}
-\subcante{\hspace*{0.8em}Fallo de regulación}{1,5}
+\subcante{\hspace*{0.8em}Condición suficiente: fallo de regulación}{2}
 \apartadocante{II. Instrumentos bancarios y no bancarios}{10}
 \subcante{1. Marco institucional}{2}
 \subcante{2. Implementación}{6}
@@ -25,13 +25,13 @@
 \subcante{\hspace*{0.8em}Supervisión}{1}
 \subcante{\hspace*{0.8em}Resolución}{1}
 \subcante{3. Regulación no bancaria}{2}
-\apartadocante{III. Evidencia empírica}{6,5}
-\subcante{1. Finanzas, crecimiento y desigualdad}{1,5}
-\subcante{2. Regulación, desarrollo y estabilidad}{2,5}
+\apartadocante{III. Evidencia empírica}{5}
+\subcante{1. Finanzas, crecimiento y desigualdad}{1}
+\subcante{2. Regulación: 5 preguntas}{2}
 \subcante{3. Política de la competencia}{1,5}
-\subcante{4. Capital humano de las cajas}{1}
+\subcante{4. Capital humano de las cajas}{0,5}
 \apartadocante{Conclusión}{1}}
-Funciones clave: $\mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\Pr(\text{repago}\mid\hat r)$; $u'(c_1^*)=R\,u'(c_2^*)$; capital/APR; LCR y NSFR $\geq100$~\%. Gráficos: racionamiento, \autor{Diamond}-\autor{Dybvig}, requisitos de capital, brecha crédito-PIB.
+Funciones clave: $\mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\Pr(\text{repago}\mid\hat r)$; $u'(c_1^*)=R\,u'(c_2^*)$; capital/APR; LCR y NSFR $\geq100$~\%. Gráficos: por qué se interviene (motivos $\to$ intervención $\to$ condición suficiente), racionamiento, \autor{Diamond}-\autor{Dybvig}, requisitos de capital, brecha crédito-PIB.
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -44,7 +44,7 @@ Funciones clave: $\mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\Pr(\text{repago}\mid
 \end{itemize}
 
 % ==========================================================================
-\bloque[10]{I. Fundamentos teóricos\label{rep:I}}
+\bloque[11,5]{I. Fundamentos teóricos\label{rep:I}}
 \begin{ideaclave}
 Las finanzas fallan más y con más daño que otros mercados: información asimétrica, externalidades de la quiebra y bancos frágiles por naturaleza. La red de seguridad evita los pánicos pero crea riesgo moral, que se corrige con capital. El regulador también falla.
 \end{ideaclave}
@@ -58,10 +58,11 @@ Las finanzas fallan más y con más daño que otros mercados: información asim�
 
 \sub{I.2. Justificación de la intervención\label{rep:I.2}}
 \begin{itemize}
-\item \autor{Musgrave}: eficiencia, equidad, estabilidad \vertema{3.A.23}.
-\item \emph{Información asimétrica} \vertema{3.A.13}: crédito; depositantes que no vigilan: \concepto{hipótesis de representación} (\autor{Dewatripont} y \autor{Tirole}, 1994); venta de productos (MiFID~II); salud de emisores; \emph{too big to fail}: \dato{29 G-SIB, Santander incluido}{FSB, 2025}.
+\item \autor{Musgrave}: 3 motivos, \emph{condición necesaria}; \emph{condición suficiente}: que el regulador corrija más de lo que estropea \vertema{3.A.23}. Los fallos de mercado son solo el motivo eficiencia.
+\item \emph{Eficiencia} $\Rightarrow$ \concepto{regulación correctora} (información, licencias, capital, conducta, competencia, FSB). \emph{Equidad} $\Rightarrow$ \concepto{garantía de acceso} (cuenta básica, avales, ICO). \emph{Estabilidad} $\Rightarrow$ \concepto{visión de sistema} (macroprudencial y red de seguridad).
+\item \emph{Información asimétrica} \vertema{3.A.13}: crédito; depositantes que no vigilan: \concepto{hipótesis de representación} (\autor{Dewatripont} y \autor{Tirole}, 1994); venta de productos (MiFID~II); salud de emisores (licencias, \emph{fintech}; información fiable: Gowex); \emph{too big to fail}: \dato{29 G-SIB, Santander incluido}{FSB, 2025}.
 \item \emph{Externalidades}: contagio, ventas forzosas (externalidad pecuniaria, \autor{Korinek}), pérdida de información (\autor{Bernanke}, 1983), coste fiscal; red en pagos.
-\item \emph{Poder de mercado} (\autor{Cournot}-\autor{Monti}-\autor{Klein}) y \emph{bien público global}. \emph{Equidad}: cuenta básica, acceso al crédito. \emph{Estabilidad}: prociclicidad y pánicos $\Rightarrow$ macroprudencial temporal y transversal (\autor{Borio}, 2003).
+\item \emph{Poder de mercado} (\autor{Cournot}-\autor{Monti}-\autor{Klein}): 3 problemas, cárteles (Euribor, \dato{1.710 M€}{CE, 2013}), concentración, \emph{too big to fail}. \emph{Bien público global} (\autor{Stiglitz}): FSB. \emph{Equidad}: cuenta básica, efectivo, acceso al crédito. \emph{Estabilidad}: prociclicidad y pánicos $\Rightarrow$ macroprudencial temporal y transversal (\autor{Borio}, 2003).
 \end{itemize}
 
 \textbf{\autor{Stiglitz} y \autor{Weiss} (1981)}. \emph{Supuestos}: igual media, distinto riesgo; responsabilidad limitada; el banco solo fija $\hat r$. \emph{3 efectos de subir} $\hat r$: directo, selección adversa, incentivos.
@@ -133,17 +134,19 @@ Tras 2008 se mira también al sistema: más y mejor capital, liquidez, colchones
 \end{itemize}
 
 % ==========================================================================
-\bloque[6,5]{III. Evidencia empírica\label{rep:III}}
+\bloque[5]{III. Evidencia empírica\label{rep:III}}
 \begin{ideaclave}
-Las finanzas ayudan a crecer hasta cierto tamaño; funciona la regulación que da información e incentivos y acumula colchones en los auges; la gobernanza importa tanto como las normas.
+Las finanzas ayudan a crecer hasta cierto tamaño; funciona la regulación que da información e incentivos; el capital cuesta crédito a corto plazo pero abarata las crisis; la supervisión exigente reduce el riesgo sin frenar el crecimiento.
 \end{ideaclave}
 \begin{itemize}
 \item \emph{Crecimiento}: \autor{King}-\autor{Levine} (1993), \autor{Rajan}-\autor{Zingales} (1998), \autor{Levine} (2005); crédito $>$100\,\% del PIB, efecto negativo (\autor{Arcand} et al., 2015; \autor{Cecchetti}-\autor{Kharroubi}, 2012); bancos y mercados (\autor{Levine}-\autor{Zervos}, 1998; \autor{Gambacorta} et al., 2014: en crisis, el PIB cae 3 veces más con bancos). Desigualdad: liberalizar reduce el Gini (\autor{Delis} et al., 2014).
-\item \emph{\autor{Barth}, \autor{Caprio} y \autor{Levine} (2004)}: funciona la información y la vigilancia privada; más poder del supervisor no; garantía generosa y restricciones de actividad, más crisis; diversificar, menos; capital sin relación robusta. 2013: se reforzó el capital, no la vigilancia privada.
-\item \emph{Capital}: 3 efectos (\autor{Martynova}, 2015); covid: el estándar recortó menos el crédito que el IRB. \emph{Garantía}: el riesgo moral domina (\autor{Anginer} et al., 2014). \emph{Banca pública}: menos desarrollo (\autor{La Porta} et al., 2002), ciclo electoral (\autor{Sapienza}, \autor{Cole}, \autor{Englmaier}-\autor{Stowasser}).
-\item \emph{Macroprudencial}: reduce el crédito, mejor la de prestatarios (\autor{Cerutti} et al., 2017); provisiones dinámicas: amortiguan la caída (\autor{Jiménez}, \autor{Ongena}, \autor{Peydró} y \autor{Saurina}, 2017).
+\item \emph{a) En conjunto}: \autor{Barth}, \autor{Caprio} y \autor{Levine} (2004): funciona la información y la vigilancia privada; más poder del supervisor no; garantía generosa, más crisis. 2013: se reforzó el capital, no la vigilancia privada.
+\item \emph{b) Capital}: menos crédito a corto plazo (\autor{Gropp} et al., 2019; \autor{Fraisse}, \autor{Lé} y \autor{Thesmar}, 2020: \dato{$-2{,}3$ a $-4{,}5$\,\% por punto}{Francia}); modelos internos procíclicos (\autor{Behn} et al., 2016); no evita crisis pero acelera la salida (\autor{Jordà} et al., 2021).
+\item \emph{c) Macroprudencial}: frena el crédito, mejor la de prestatarios (\autor{Cerutti} et al., 2017; \autor{Akinci}-\autor{Olmstead-Rumsey}, 2018); se escapa a los no regulados (\autor{Aiyar} et al., 2014); provisiones dinámicas amortiguan la caída (\autor{Jiménez} et al., 2017); costes y reasignación (\autor{Richter} et al., 2019; \autor{Acharya} et al., 2022).
+\item \emph{d) Garantía de depósitos}: riesgo moral (\autor{Demirgüç-Kunt}-\autor{Detragiache}, 2002; \autor{Calomiris}-\autor{Jaremski}, 2019); los no asegurados huyen primero (\autor{Iyer}-\autor{Puri}, 2012; SVB: \autor{Jiang} et al., 2024).
+\item \emph{e) Supervisión}: más horas, menos riesgo sin menos crecimiento (\autor{Hirtle} et al., 2020; \autor{Granja}-\autor{Leuz}, 2024); supervisores inconsistentes (\autor{Agarwal} et al., 2014); MUS: más crédito en países con tensión, menos a zombis (\autor{Altavilla} et al., 2026). Banca pública: ciclo electoral (\autor{Sapienza}, \autor{Cole}).
 \end{itemize}
-\graficorepaso[0.95\linewidth]{concentracion-bancaria-espana}{CR5: \dato{41\,\% (2007) $\to$ 69,6\,\% (2022) $\to$ 67,4\,\% (2025); UE 69,3\,\%}{BCE}}
+\graficorepaso[0.95\linewidth]{concentracion-bancaria-espana}{CR5 España \dato{41\,\% (2007) $\to$ 67,4\,\% (2025); zona del euro 71,3\,\%}{BCE}}
 \begin{itemize}
 \item \emph{Competencia}: fusiones (escala, exceso de capacidad: no cerrar oficinas es un equilibrio de Nash, \autor{Vives}) frente a precios y exclusión. Competencia-fragilidad (\autor{Keeley}, 1990) frente a competencia-estabilidad (\autor{Boyd}-\autor{De Nicolò}, 2005): U de \autor{Martínez-Miera} y \autor{Repullo} (2010): efecto riesgo y efecto margen.
 \end{itemize}
@@ -181,7 +184,7 @@ Las finanzas ayudan a crecer hasta cierto tamaño; funciona la regulación que d
 \item G-SIB: \dato{29; Santander en el tramo del 1\,\%}{FSB, 11/2025}. MUS: \dato{109 entidades significativas}{BCE, 9/2026}. FUR: \dato{$>$81.000 M€}{JUR, 31/12/2025}.
 \item CET1: \dato{16,0\,\% MUS; 13,5\,\% España (la más baja)}{BCE, 2026T2}. Requisito medio \dato{$\approx$11\,\% CET1}{SREP 2025}.
 \item Brecha España: \dato{máx.\ +47,3 (2007T2); mín.\ $-55{,}6$ (2017T4); $-24{,}3$ (2026T1)}{BIS}. Colchón anticíclico: \dato{1\,\% desde 1/10/2026}{BOE-A-2025-19516}.
-\item Concentración: \dato{IHH 459 (2007) $\to$ 1.306 (2025)}{BCE}.
+\item Concentración: \dato{IHH 459 (2007) $\to$ 1.306 (2025); zona del euro 1.511}{BCE}; de 45 cajas (2009) a 2.
 \end{itemize}
 
 % ==========================================================================

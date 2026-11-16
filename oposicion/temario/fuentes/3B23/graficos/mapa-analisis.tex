@@ -4,7 +4,10 @@
 % al siguiente; arriba a la derecha, la eficiencia de los mercados (bloque II),
 % que decide si cabe la gestión activa; abajo a la derecha, el análisis
 % fundamental y el técnico (bloque III), con la tasa de descuento que el
-% fundamental toma del CAPM.
+% fundamental toma del CAPM. Los modelos de la teoría de la elección de cartera
+% (Markowitz, Tobin y Sharpe, I.2) y los de valoración (CAPM y APT, I.3) se
+% distinguen por el relleno (salvia y dorado claro) y por una barra con su
+% nombre a la izquierda.
 % Elaboración propia.
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -15,6 +18,10 @@
     cabecera/.default=5.6cm,
     modelo/.style={draw=tceemorado,thick,rounded corners=3pt,fill=tceesalvia,
       align=flush left,font=\footnotesize,text width=5.6cm,inner sep=4pt},
+    valoracion/.style={modelo,fill=tceedorado!16},
+    grupo/.style={line width=2.2pt,#1},
+    grupoetq/.style={midway,rotate=90,anchor=south,inner sep=3pt,
+      font=\footnotesize\bfseries,text=#1},
     puente/.style={draw=tceemorado,thick,rounded corners=3pt,fill=tceeazul!14,
       align=flush left,font=\footnotesize,text width=#1,inner sep=4pt},
     puente/.default=8.4cm,
@@ -43,16 +50,20 @@
   \capa{4}{\node[modelo,anchor=north] (S) at (2.95,-5.3) {\textbf{\emph{Sharpe} (1963)}:
       un solo factor, el mercado: pocos parámetros; riesgo
       \emph{sistemático} (beta) y \emph{específico}, que se diversifica};
-    \draw[paso] (T) -- node[porque,right=3pt] {demasiadas covarianzas que estimar} (S);}
+    \draw[paso] (T) -- node[porque,right=3pt] {demasiadas covarianzas que estimar} (S);
+    \draw[grupo=tceemorado] ([xshift=-0.3cm]M.north west) -- ([xshift=-0.3cm]S.south west)
+      node[grupoetq=tceemorado] {Teoría de la elección de cartera (I.2)};}
   % 5: CAPM
-  \capa{5}{\node[modelo,anchor=north] (K) at (2.95,-7.5) {\textbf{CAPM} (1964):
+  \capa{5}{\node[valoracion,anchor=north] (K) at (2.95,-7.5) {\textbf{CAPM} (1964):
       en equilibrio solo se paga la beta;
       $\mathbb{E}[r_i]=r_f+\beta_i\lambda_M$, la rentabilidad exigida};
     \draw[paso] (S) -- node[porque,right=3pt] {es normativo: ¿qué rentabilidad exigir a cada activo?} (K);}
   % 6: APT
-  \capa{6}{\node[modelo,anchor=north] (A) at (2.95,-9.7) {\textbf{APT} (1976):
+  \capa{6}{\node[valoracion,anchor=north] (A) at (2.95,-9.7) {\textbf{APT} (1976):
       sin arbitraje, varias betas (factores); el CAPM es el caso de un solo factor};
-    \draw[paso] (K) -- node[porque,right=3pt] {supuestos fuertes; la cartera de mercado no se observa} (A);}
+    \draw[paso] (K) -- node[porque,right=3pt] {supuestos fuertes; la cartera de mercado no se observa} (A);
+    \draw[grupo=tceedorado] ([xshift=-0.3cm]K.north west) -- ([xshift=-0.3cm]A.south west)
+      node[grupoetq=tceedorado!70!black] {Valoración (I.3)};}
   % 7: la eficiencia de los mercados (bloque II)
   \capa{7}{\node[puente,anchor=north] (H) at (11.2,-0.9) {\textbf{Bloque II. ¿Respetan los
       precios esa rentabilidad?} La hipótesis de los mercados eficientes: si los

@@ -6,6 +6,11 @@
 % moneda de A más depreciada). Por N pasan el círculo de A de radio 2 y el de B
 % de radio 2,5: la lente. Curva de contrato: el segmento F_A F_B; núcleo, el
 % tramo dentro de la lente, de (3,44; 2,75) a (4,45; 3,56).
+% Detalles recuperados del gráfico del tema antiguo (Corden, 1994): los ángulos
+% de los rayos en el origen (cada tipo de cambio es una pendiente), las
+% funciones de reacción como flechas que salen de cada punto de felicidad y
+% pasan por N, y la tentación del polizón: si A cumple el acuerdo en C =
+% (4; 3,2), a B le conviene volver a su función de reacción, (4; 2).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -19,6 +24,8 @@
   \capa{2}{\node[punto,fill=tceeazul] (FA) at (5,4) {};}
   \capa{2}{\node[etiqueta,right,text=tceeazul] at (FA) {$F_A$};}
   \capa{2}{\node[punto,fill=tceemorado] (FB) at (2.5,2) {};}
+  \capa{2}{\draw[thin,tceeverde] (0.95,0) arc[start angle=0,end angle=38.66,radius=0.95];}
+  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceeverde] at (1.1,0.66) {$E_0$};}
   \capa{2}{\node[etiqueta,above left,text=tceemorado] at (FB) {$F_B$};}
   % 3: curvas de indiferencia (círculos) de A y de B
   \capa{3}{\begin{scope}\clip (0,0) rectangle (7.4,5.5);
@@ -29,12 +36,17 @@
     \draw[thick,tceemorado] (2.5,2) circle (0.8);
     \draw[thick,tceemorado] (2.5,2) circle (2.5);
   \end{scope}}
-  % 4: funciones de reacción
-  \capa{4}{\draw[curva2] (5,0) node[below,text=black] {$M_A^N$} -- (5,5.75) node[etiqueta,above,text=tceeazul] {$R_A(M_B)$};}
-  \capa{4}{\draw[curva1] (0,2) node[left,text=black] {$M_B^N$} -- (7.4,2) node[etiqueta,right,text=tceemorado] {$R_B(M_A)$};}
+  % 4: funciones de reacción: haga lo que haga el otro, cada uno elige la
+  % oferta monetaria de su punto de felicidad (flechas desde F_A y F_B)
+  \capa{4}{\draw[thick,tceeazul] (5,0) node[below,text=black] {$M_A^N$} -- (5,5.75) node[etiqueta,above,text=tceeazul] {$R_A(M_B)$};}
+  \capa{4}{\draw[->,very thick,tceeazul] (5,3.85) -- (5,0.75);}
+  \capa{4}{\draw[thick,tceemorado] (0,2) node[left,text=black] {$M_B^N$} -- (7.4,2) node[etiqueta,right,text=tceemorado] {$R_B(M_A)$};}
+  \capa{4}{\draw[->,very thick,tceemorado] (2.65,2) -- (6.6,2);}
   % 5: equilibrio de Nash y su tipo de cambio
   \capa{5}{\draw[curva3,thick,dashed] (0,0) -- (7.4,2.96) node[etiqueta,right,text=tceeverde] {$E_N$};}
   \capa{5}{\node[punto,fill=tceerojo] (N) at (5,2) {};}
+  \capa{5}{\draw[thin,tceeverde] (1.9,0) arc[start angle=0,end angle=21.8,radius=1.9];}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceeverde] at (2.15,0.38) {$E_N$};}
   \capa{5}{\node[etiqueta,below right,text=tceerojo] at (N) {$N$};}
   % 6: la lente
   \capa{6}{\begin{scope}\clip (5,4) circle (2);
@@ -46,6 +58,11 @@
   \capa{7}{\draw[thin,tceeverde] (3.0,2.4) -- (1.7,3.55) node[etiqueta,above,font=\footnotesize,text=tceeverde] {curva de contrato};}
   % 8: núcleo
   \capa{8}{\draw[tceedorado,line width=3pt] (3.438,2.75) -- (4.452,3.562);}
-  \capa{8}{\path (3.438,2.75) -- (4.452,3.562) node[midway,sloped,above=1pt,etiqueta,font=\footnotesize,text=tceedorado!80!black] {núcleo};}
+  \capa{8}{\path (3.438,2.75) -- (4.452,3.562) node[pos=0.72,sloped,above=1pt,etiqueta,font=\footnotesize,text=tceedorado!80!black] {núcleo};}
+  % 9: la solución cooperativa C y la tentación del polizón
+  \capa{9}{\node[circle,draw=tceedorado!80!black,fill=white,thick,inner sep=1.5pt] (C) at (3.7,2.96) {};}
+  \capa{9}{\node[etiqueta,below right,text=tceedorado!80!black] at (C) {$C$};}
+  \capa{10}{\draw[->,thick,tceerojo,shorten <=3pt] (C) -- (3.7,2.08);}
+  \capa{10}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=west] at (5.2,1.1) {si A cumple en $C$,\\a B le conviene\\volver a $R_B$};}
 \end{tikzpicture}
 \end{document}

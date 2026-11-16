@@ -1,0 +1,75 @@
+% Barro y Gordon (1983) en economía abierta con 2 países, como en la figura
+% 2.14 de De Grauwe (2022, cap. 2, «The Barro-Gordon model in open
+% economies»), con las implicaciones de Giavazzi y Pagano (1988): atarse las
+% manos. Plano (U, pi) y estilos del canon (fuentes/3A06/graficos/barro-gordon.tex
+% y 3B16/graficos/barro-gordon.tex): vertical U^n verde, curvas de Phillips
+% azules, curvas de pérdida moradas (elipses centradas en (U*, pi*)).
+%   U* = 2, pi* = 2, U^n = 5, alpha = 1: CP pi = pi^e + 5 - U
+%   Pérdida L = (U - U*)^2 + gamma (pi - pi*)^2; discreción pi^D = 2 + 3/gamma
+%   Ancla (Alemania, «dura»), gamma_A = 3: D_A = (5; 3), L = 12
+%     (elipse rx = 3,464, ry = 2), tangente a la CP de pi^e = 3: pi = 8 - U
+%   País con sesgo (Italia, «blanda»), gamma_I = 0,75:
+%     D_I = (5; 6), L = 21 (rx = 4,583, ry = 5,292), tangente a pi = 11 - U
+%     F = (5; 3) (tipo fijo creíble: pi_I = pi_A), L = 9,75 (rx = 3,122, ry = 3,606)
+%     G = tangencia con la CP de pi^e = 3 (pi = 8 - U): U - 2 = 0,75 (pi - 2)
+%       -> (3,714; 4,286), L = 6,857 (rx = 2,619, ry = 3,024)
+%   U_I: L(D_I) = 21 > L(F) = 9,75 > L(G) = 6,857 (la tentación de devaluar)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.6cm,
+    titulo/.style={font=\small\bfseries,anchor=base west},
+    perdida/.style={curva1, thin},
+    nota/.style={etiqueta, font=\footnotesize, text=tceerojo, align=center}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.3,-2.6) rectangle (23.4,9.0);
+  % ================= panel izquierdo: el país ancla =================
+  % 1: ejes y título
+  \capa{1}{\node[titulo] at (0,8.4) {a) País ancla (Alemania): $\gamma_A$ alto};}
+  \capa{1}{\ejes{$U$}{$\pi_A$}{8.6}{7.8}}
+  % 2: vertical de largo plazo y punto de felicidad
+  \capa{2}{\draw[curva3] (5,0) -- (5,7.6) node[etiqueta, above, text=tceeverde] {$U^n$};}
+  \capa{2}{\draw[thick] (1.85,1.85) -- (2.15,2.15) (1.85,2.15) -- (2.15,1.85);}
+  \capa{2}{\node[etiqueta, below left=0pt and 0pt, font=\footnotesize] at (2,2) {$(U^*,\pi^*)$};}
+  % 3: discreción del ancla: tangencia de su pérdida con la CP de pi^e = 3
+  \capa{3}{\draw[curva2] (2.2,5.8) -- (7.6,0.4) node[etiqueta, right, text=tceeazul] {CP};}
+  \capa{3}{\begin{scope}\clip (0,0) rectangle (8.4,7.6);
+      \draw[perdida] (2,2) ellipse [x radius=3.464, y radius=2];\end{scope}}
+  \capa{3}{\node[punto] (DA) at (5,3) {};}
+  \capa{3}{\node[etiqueta, above right] at (DA) {$D_A$};}
+  \capa{3}{\node[nota, text=tceemorado] at (4.3,-1.7) {elipses aplanadas: le pesa la inflación;\\sesgo inflacionista pequeño};}
+  % ================= panel derecho: el país con sesgo =================
+  \begin{scope}[xshift=13.2*0.6cm]
+    % 4: ejes, vertical y punto de felicidad
+    \capa{4}{\node[titulo] at (0,8.4) {b) País con sesgo (Italia): $\gamma_I$ bajo};}
+    \capa{4}{\ejes{$U$}{$\pi_I$}{8.6}{7.8}}
+    \capa{4}{\draw[curva3] (5,0) -- (5,7.6) node[etiqueta, above, text=tceeverde] {$U^n$};}
+    \capa{4}{\draw[thick] (1.85,1.85) -- (2.15,2.15) (1.85,2.15) -- (2.15,1.85);}
+    % 5: discreción sin ancla: D_I, con mucha más inflación
+    \capa{5}{\draw[curva2] (4.1,6.9) -- (8.2,2.8) node[etiqueta, below, text=tceeazul] {CP$(\pi^e=\pi^D_I)$};}
+    \capa{5}{\begin{scope}\clip (0,0) rectangle (8.4,7.6);
+        \draw[perdida] (2,2) ellipse [x radius=4.583, y radius=5.292];\end{scope}}
+    \capa{5}{\node[punto] (DI) at (5,6) {};}
+    \capa{5}{\node[etiqueta, left] at (DI) {$D_I$};}
+  \end{scope}
+  % 6: el tipo fijo: con la PPA y gamma_E = 0, pi_I = pi_A (la horizontal de D_A a F)
+  \capa{6}{\draw[guia, tceerojo, semithick] (5,3) -- (13.2+5,3);}
+  \capa{6}{\node[nota, anchor=south] at (10.2,3.05) {tipo fijo: $\gamma_E=0\Rightarrow\pi_I=\pi_A$};}
+  \begin{scope}[xshift=13.2*0.6cm]
+    \capa{6}{\begin{scope}\clip (0,0) rectangle (8.4,7.6);
+        \draw[perdida] (2,2) ellipse [x radius=3.122, y radius=3.606];\end{scope}}
+    \capa{6}{\node[punto, tceerojo] (F) at (5,3) {};}
+    \capa{6}{\node[etiqueta, right=2pt, text=tceerojo] at (F) {$F$};}
+    % 7: la tentación: con pi^e = pi_A, devaluar por sorpresa lleva a G
+    \capa{7}{\draw[curva2, desplazada] (1.0,7.0) -- (7.6,0.4) node[etiqueta, right, text=tceeazul] {CP$(\pi^e=\pi_A)$};}
+    \capa{7}{\begin{scope}\clip (0,0) rectangle (8.4,7.6);
+        \draw[perdida, dashed] (2,2) ellipse [x radius=2.619, y radius=3.024];\end{scope}}
+    \capa{7}{\node[punto] (G) at (3.714,4.286) {};}
+    \capa{7}{\node[etiqueta, above right] at (G) {$G$};}
+    \capa{7}{\draw[flecha] (4.85,3.25) -- (3.9,4.1);}
+    % 8: la conclusión
+    \capa{8}{\node[nota] at (4.3,-1.7) {solo si salir del ancla es imposible (unión,\\dolarización) es $F$ creíble: si no, vuelve a $D_I$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

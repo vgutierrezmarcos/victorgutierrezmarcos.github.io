@@ -1,0 +1,34 @@
+% Primera generación (Krugman, 1979; Flood y Garber, 1984): la cadena de 4
+% eslabones, de la política al ataque, cada uno con su ecuación del tema:
+% crédito interno que crece (monetización), reservas que caen (balance del
+% banco central con multiplicador 1), tipo sombra que sube y ataque cuando el
+% tipo sombra alcanza la paridad, antes del agotamiento T_N.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{
+  eslabon/.style={draw=tceemorado, thick, fill=tceemorado!7, rounded corners=3pt,
+    align=center, text width=3.3cm, minimum height=2.5cm, inner sep=4pt, font=\small},
+  paso/.style={->, very thick, tceemorado, shorten <=2pt, shorten >=2pt},
+  nota/.style={etiqueta, font=\small, align=center, text=tceegris},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-2.1,-2.75) rectangle (14.4,1.6);
+  % 1: la política incompatible con la paridad
+  \capa{1}{\node[eslabon] (e1) at (0,0) {\textbf{1. Política}\\[2pt] el déficit se monetiza con $\bar E$ fijo\\[3pt] $\dot{\mathrm{CI}}=\mu>0$};}
+  % 2: las reservas caen
+  \capa{2}{\node[eslabon] (e2) at (4.1,0) {\textbf{2. Reservas}\\[2pt] el público cambia el dinero que le sobra por divisas\\[3pt] $R_t=\ell\bar E-\mathrm{CI}_t\downarrow$};}
+  \capa{2}{\draw[paso] (e1) -- (e2);}
+  % 3: el tipo sombra sube
+  \capa{3}{\node[eslabon] (e3) at (8.2,0) {\textbf{3. Tipo sombra}\\[2pt] los fundamentos empeoran día a día\\[3pt] $\tilde E_t=\dfrac{\mathrm{CI}_t}{\ell}+\dfrac{h\mu}{\ell^{2}}\uparrow$};}
+  \capa{3}{\draw[paso] (e2) -- (e3);}
+  % 4: el ataque
+  \capa{4}{\node[eslabon, draw=tceerojo, fill=tceerojo!7] (e4) at (12.3,0) {\textbf{4. Ataque}\\[2pt] cuando $\tilde E_T=\bar E$, antes de agotar las reservas\\[3pt] $T=\dfrac{R_0}{\mu}-\dfrac{h}{\ell}<T_N$};}
+  \capa{4}{\draw[paso] (e3) -- (e4);}
+  % 5: lo que sostiene cada paso (supuestos)
+  \capa{5}{\node[nota] at (2.05,-2.05) {balance con multiplicador 1:\\ $M^S=\mathrm{CI}+R$, así que $\Delta R=-\Delta\mathrm{CI}$};}
+  \capa{5}{\node[nota] at (10.25,-2.05) {competencia entre especuladores:\\ nadie gana atacando antes ni espera a después};}
+\end{tikzpicture}
+\end{document}

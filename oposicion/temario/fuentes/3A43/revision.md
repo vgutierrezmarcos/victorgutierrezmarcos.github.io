@@ -246,3 +246,14 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Quitado «la avaricia rompe el saco» (ineficiencia dinámica en Solow y su negación en Ramsey; tema, nota del cante y ficha): se queda en el 3.A.29 (Diamond), de donde venía y donde cierra la idea final. Ahora «se ahorra de más».
 
 - Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.
+
+## Comentarios de Víctor (16/11/2026)
+
+- Regla general 1 (series de títulos completas; el modelo de Solow se partía entre I.1, I.2 y I.3, con «b) Modelo» bajo I.2 sin a) y «c) Evidencia empírica» bajo I.3; y en III, «iii) Implicaciones» quedaba debajo de los `\paragraph` del desarrollo) → Solo cambian títulos:
+  - *Bloque I (Solow)*: los subapartados I.1 «Idea», I.2 «El modelo» e I.3 «Evidencia empírica y valoración» hacen ya de bloques del modelo, así que se quitan las letras: fuera «a) Idea» (I.1 ya lo dice) y «b) Modelo»; en I.2, «Supuestos», «Desarrollo» e «Implicaciones» pasan a I.2.1, I.2.2 e I.2.3 (los 6 `\paragraph` del desarrollo, de la ley fundamental a la dinámica de transición, quedan dentro de I.2.2, un nivel por debajo, como deben); en I.3, «Evidencia empírica» y «Valoración» pasan a I.3.1 e I.3.2. El esquema del tema (1. Idea, 2. Modelo, 3. Evidencia y valoración) no cambia.
+  - *Bloque III (Ramsey-Cass-Koopmans)*: se mantienen a)-e) e i)-iii); los 4 títulos del desarrollo («El problema del hogar y la ecuación de Euler», «El equilibrio», «El estado estacionario y el diagrama de fases» y «Estática comparativa: una caída de la tasa de descuento») dejan de ser `\paragraph` (el nivel de a)-e)) y pasan a rótulos sangrados dentro de «ii) Desarrollo». Así i)-iii) y a)-e) quedan completos.
+- Páginas: cuerpo 37 (total 55), igual que antes. \minutos sigue en 30. La ficha no cambia.
+
+### Dudas (16/11/2026)
+
+- **A43-16N-1. Orden de los bloques en el modelo de Ramsey-Cass-Koopmans.** En III, «c) Evidencia empírica» va antes de «d) Extensiones», al revés que el orden del temario (Idea, Modelo, Extensiones, Evidencia, Valoración). Opción recomendada aplicada: no tocarlo, porque el tema está aprobado y el encargo pide cambiar solo títulos. Alternativa: intercambiar los 2 bloques (y su reparto en el esquema y en la nota del cante).

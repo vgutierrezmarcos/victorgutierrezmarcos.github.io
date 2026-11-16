@@ -2131,7 +2131,7 @@ status collapsed
 
 \end_inset
 
-): la media y la varianza de la cartera, con la 
+): el problema del inversor (la utilidad sujeta a la frontera eficiente, que es a su vez un problema de optimizaciÃ³n); la media y la varianza de la cartera, con la 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:varianza-cartera"
@@ -2158,7 +2158,7 @@ nolink "false"
 
 \end_inset
 
- solo si da tiempo; el problema del inversor (la utilidad sujeta a la frontera eficiente, que es a su vez un problema de optimizaciÃ³n) y sus 2 etapas, con el grÃ¡fico
+ solo si da tiempo; y las 2 etapas, con el grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -3560,7 +3560,39 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-elaboraciÃ³n propia. A la izquierda, en rojo, la limitaciÃ³n de cada modelo que lleva al siguiente; la eficiencia de los mercados (bloque
+elaboraciÃ³n propia. A la izquierda, los modelos de la teorÃ­a de la elecciÃ³n de cartera (en verde, barra morada; apartado
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:eleccion-cartera"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) y los de valoraciÃ³n de activos (en dorado; apartado
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:valoracion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), y en rojo la limitaciÃ³n de cada modelo que lleva al siguiente; la eficiencia de los mercados (bloque
 \begin_inset space ~
 
 \end_inset
@@ -4012,6 +4044,34 @@ venta en corto
 
 \begin_layout Subparagraph
 ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El problema del inversor
+\emph default
+: elige los pesos 
+\begin_inset Formula $w_1,\dots,w_n$
+\end_inset
+
+ que maximizan su utilidad, creciente en la rentabilidad esperada de la cartera y decreciente en su riesgo, pero solo entre las carteras de la frontera eficiente: 
+\begin_inset Formula \[
+  \optim{\max}{w_1,\dots,w_n}{U\big(\overset{+}{\mathbb{E}[r_p]},\overset{-}{\sigma_p^2}\big)}{(\sigma_p,\mathbb{E}[r_p])\ \text{en la frontera eficiente}}
+  \]
+\end_inset
+
+Y la frontera eficiente es, a su vez, la soluciÃ³n de otro problema de optimizaciÃ³n: las carteras que dan la mÃ¡xima rentabilidad esperada para cada nivel de riesgo 
+\begin_inset Formula $\bar\sigma^2$
+\end_inset
+
+, 
+\begin_inset Formula \[
+  \optim{\max}{w_1,\dots,w_n}{\mathbb{E}[r_p]=\sum_{i=1}^{n}w_i\,\mathbb{E}[r_i]}{\sigma_p^2=\sum_{i=1}^{n}\sum_{j=1}^{n}w_iw_j\,\sigma_{ij}=\bar\sigma^2\\ \sum_{i=1}^{n}w_i=1\\ w_i\geq0}
+  \]
+\end_inset
+
+El problema anidado tiene, por tanto, 2 partes: una que no depende de las preferencias (la frontera) y otra que sÃ­ (la elecciÃ³n en ella). Por eso se resuelve en 2 etapas, que se dibujan una tras otra en el mismo grÃ¡fico. Antes, hace falta saber cÃ³mo dependen la media y la varianza de la cartera de los pesos. 
 \end_layout
 
 \begin_layout Itemize
@@ -5122,31 +5182,7 @@ textcite[cap.~7]{BodieKaneMarcus2021Investments}
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-El problema del inversor
-\emph default
-: elige los pesos 
-\begin_inset Formula $w_1,\dots,w_n$
-\end_inset
-
- que maximizan su utilidad, creciente en la rentabilidad esperada de la cartera y decreciente en su riesgo, pero solo entre las carteras de la frontera eficiente: 
-\begin_inset Formula \[
-  \optim{\max}{w_1,\dots,w_n}{U\big(\overset{+}{\mathbb{E}[r_p]},\overset{-}{\sigma_p^2}\big)}{(\sigma_p,\mathbb{E}[r_p])\ \text{en la frontera eficiente}}
-  \]
-\end_inset
-
-Y la frontera eficiente es, a su vez, la soluciÃ³n de otro problema de optimizaciÃ³n: las carteras que dan la mÃ¡xima rentabilidad esperada para cada nivel de riesgo 
-\begin_inset Formula $\bar\sigma^2$
-\end_inset
-
-, 
-\begin_inset Formula \[
-  \optim{\max}{w_1,\dots,w_n}{\mathbb{E}[r_p]=\sum_{i=1}^{n}w_i\,\mathbb{E}[r_i]}{\sigma_p^2=\sum_{i=1}^{n}\sum_{j=1}^{n}w_iw_j\,\sigma_{ij}=\bar\sigma^2\\ \sum_{i=1}^{n}w_i=1\\ w_i\geq0}
-  \]
-\end_inset
-
-El problema anidado tiene, por tanto, 2 partes: una que no depende de las preferencias (la frontera) y otra que sÃ­ (la elecciÃ³n en ella). Por eso se resuelve en 2 etapas, que se dibujan una tras otra en el mismo grÃ¡fico. 
+Con estas piezas se resuelve el problema del inversor en sus 2 etapas. 
 \end_layout
 
 \begin_layout Itemize

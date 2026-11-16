@@ -1,0 +1,45 @@
+% De la identidad de la balanza de pagos al saldo que estabiliza la deuda exterior:
+% la cadena de ecuaciones eq:deuda-nivel -> eq:deuda-nominal -> eq:deuda-externa -> eq:saldo-estabilizador del tema (sin números, que cambian), con la operación que
+% lleva de cada una a la siguiente. Notación del §9 del canon (b deuda exterior neta,
+% d déficit comercial, i* tipo nominal, r* tipo real, γ_Y crecimiento real, γ^N nominal).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    ec/.style={draw=#1,very thick,rounded corners=3pt,align=center,font=\small,
+      text width=5.6cm,inner sep=4pt,fill=white,minimum height=1.05cm},
+    ec/.default=tceemorado,
+    op/.style={align=left,font=\footnotesize,text width=7.6cm,anchor=west,inner sep=2pt},
+    paso/.style={->,very thick,tceegris,shorten <=2pt,shorten >=2pt}]
+  % 1: la identidad de partida
+  \capa{1}{\node[ec=tceegris] (e0) at (0,0) {\textbf{Identidad de la balanza de pagos}\\[2pt]
+    $\mathrm{XN}_t+\mathrm{RP}_t=\mathrm{CF}_t$};}
+  \capa{1}{\node[op] at (3.3,0) {Sin cuenta de capital, rentas secundarias ni errores y omisiones: el saldo comercial más las rentas primarias es la cuenta financiera.};}
+  % 2: de la identidad a (18)
+  \capa{2}{\node[ec] (e1) at (0,-2.45) {\textbf{La deuda, en nivel}\\[2pt]
+    $B_t=(1+i^*)\,B_{t-1}+D_t$};}
+  \capa{2}{\draw[paso] (e0) -- (e1);}
+  \capa{2}{\node[op] at (3.3,-1.225) {Se sustituye cada partida: $\mathrm{RP}_t=-i^*B_{t-1}$ (intereses), $\mathrm{CF}_t=-(B_t-B_{t-1})$ (más deuda) y $\mathrm{XN}_t=-D_t$ (déficit comercial):\\[2pt]
+    $-D_t-i^*B_{t-1}=-(B_t-B_{t-1})$, y se despeja $B_t$.};}
+  % 3: de (18) a (19)
+  \capa{3}{\node[ec] (e2) at (0,-4.9) {\textbf{En \% del PIB, forma nominal}\\[2pt]
+    $b_t=\dfrac{1+i^*}{1+\gamma^N}\,b_{t-1}+d_t$};}
+  \capa{3}{\draw[paso] (e1) -- (e2);}
+  \capa{3}{\node[op] at (3.3,-3.675) {Se divide por el PIB nominal del mismo año, $P_tY_t$, y se multiplica y divide $B_{t-1}$ por $P_{t-1}Y_{t-1}$:\\[2pt]
+    $\dfrac{B_t}{P_tY_t}=(1+i^*)\,\dfrac{B_{t-1}}{P_{t-1}Y_{t-1}}\,\dfrac{P_{t-1}Y_{t-1}}{P_tY_t}+\dfrac{D_t}{P_tY_t}$,\\[2pt]
+    con $P_tY_t=(1+\gamma^N)\,P_{t-1}Y_{t-1}$.};}
+  % 4: de (19) a (20)
+  \capa{4}{\node[ec] (e3) at (0,-7.35) {\textbf{En términos reales}\\[2pt]
+    $b_t=\dfrac{1+r^*}{1+\gamma_Y}\,b_{t-1}+d_t$};}
+  \capa{4}{\draw[paso] (e2) -- (e3);}
+  \capa{4}{\node[op] at (3.3,-6.125) {Se separa el crecimiento nominal en precios y cantidades, $1+\gamma^N=(1+\pi)(1+\gamma_Y)$, y se agrupa el tipo nominal con la inflación, $1+r^*\equiv\dfrac{1+i^*}{1+\pi}$:\\[2pt]
+    $\dfrac{1+i^*}{(1+\pi)(1+\gamma_Y)}=\dfrac{1+r^*}{1+\gamma_Y}$.};}
+  % 5: de (20) a (21)
+  \capa{5}{\node[ec=tceerojo] (e4) at (0,-9.8) {\textbf{El saldo que estabiliza la deuda}\\[2pt]
+    $-d=\dfrac{r^*-\gamma_Y}{1+\gamma_Y}\,b$};}
+  \capa{5}{\draw[paso] (e3) -- (e4);}
+  \capa{5}{\node[op] at (3.3,-8.575) {Se impone que la ratio no cambie, $b_t=b_{t-1}=b$, y se despeja el déficit:\\[2pt]
+    $-d=b\left(\dfrac{1+r^*}{1+\gamma_Y}-1\right)=\dfrac{r^*-\gamma_Y}{1+\gamma_Y}\,b$.};}
+\end{tikzpicture}
+\end{document}

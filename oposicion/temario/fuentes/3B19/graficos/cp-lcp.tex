@@ -1,0 +1,69 @@
+% Corsetti y Pesenti (2005, 2009): efectos internacionales de la estabilización
+% en A con fijación de precios en la moneda del comprador (LCP, traspaso nulo a
+% corto plazo). Mismos números de partida y colores que cp-pcp.tex (negro,
+% inicial; azul, exógeno; rojo, endógeno).
+%   A: (1) Z sube: AS' C = l.  (2) mu sube: como los precios de consumo no
+%      cambian (no hay inflación importada), la AD sube tanto como mu: C = 3,3.
+%      (3) los exportadores de A cobran lo mismo en moneda de B, que ahora vale
+%      más: tau sube, AS'' C = 1,1 l. L = (3; 3,3), sobre la NR.
+%   B: (4) su relación de intercambio empeora: tau_B baja, AS_B' C = 0,55 l;
+%      la AD_B no se mueve (sus precios de consumo están fijos): L_B = (3,636; 2),
+%      mismo consumo con más trabajo: empobrecimiento del vecino.
+% Capas: 1 ejes; 2 curvas iniciales; 3-5 país A; 6-7 país B.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=1.15cm,
+    ini/.style={very thick,black!80},
+    exo/.style={very thick,dashed,tceeazul},
+    endo/.style={very thick,dashed,tceerojo},
+    paso/.style={circle,draw=#1,fill=white,text=#1,font=\scriptsize\bfseries,inner sep=0.8pt,minimum size=11pt},
+    paso/.default=tceerojo,
+    titulo/.style={font=\small\bfseries,anchor=base west},
+    explica/.style={etiqueta,font=\footnotesize,anchor=west}]
+  \path (-0.9,-1.15) rectangle (19.6,4.95);
+  % ---------------- a) País A ----------------
+  \capa{1}{\node[titulo] at (0,4.6) {a) País A (zona del euro)};}
+  \capa{1}{\ejes{$\ell$}{$C$}{6.0}{4.3}}
+  \capa{2}{\draw[ini] (0,0) -- (5.6,3.733) node[etiqueta,right] {AS: $C=Z\ell\tau$};}
+  \capa{2}{\draw[ini] (0,2) -- (5.6,2) node[etiqueta,right] {AD: $C=\mu/P$};}
+  \capa{2}{\draw[ini] (3,0) node[below] {$\bar\ell$} -- (3,4.2) node[etiqueta,above] {NR};}
+  \capa{2}{\node[punto] (O) at (3,2) {};}
+  \capa{2}{\node[etiqueta,below right] at (O) {$O$};}
+  % 3: (1) sube la productividad en A
+  \capa{3}{\draw[exo] (0,0) -- (3.95,3.95) node[etiqueta,right,text=tceeazul] {$Z\!\uparrow$};}
+  \capa{3}{\draw[->,thick,tceeazul] (4.6,3.07) -- (4.05,3.62);}
+  \capa{3}{\node[paso=tceeazul] at (4.75,3.55) {1};}
+  % 4: (2) mu sube y la AD sube con él: sin inflación importada
+  \capa{4}{\draw[endo] (0,3.3) -- (5.6,3.3) node[etiqueta,right,text=tceerojo] {AD$'$: $\textcolor{tceeazul}{\mu\!\uparrow}/P$};}
+  \capa{4}{\draw[->,thick,tceerojo] (1.0,2.03) -- (1.0,3.25);}
+  \capa{4}{\node[paso=tceeazul] at (0.5,3.6) {2};}
+  % 5: (3) mejora la relación de intercambio de A: tau sube
+  \capa{5}{\draw[endo] (0,0) -- (3.75,4.125) node[etiqueta,left,text=tceerojo] {$\tau\!\uparrow$};}
+  \capa{5}{\draw[->,thick,tceerojo] (3.75,3.75) -- (3.45,3.95);}
+  \capa{5}{\node[paso] at (2.35,3.95) {3};}
+  \capa{5}{\node[punto,fill=tceerojo] (L) at (3,3.3) {};}
+  \capa{5}{\node[etiqueta,below right,text=tceerojo] at (L) {$L$};}
+  \capa{5}{\node[explica,text=tceerojo] at (0.2,-0.8) {A vuelve a $\bar\ell$ y consume más que con PCP};}
+  % ---------------- b) País B ----------------
+  \begin{scope}[xshift=10.2*0.95cm]
+  \capa{1}{\node[titulo] at (0,4.6) {b) País B (Estados Unidos)};}
+  \capa{1}{\ejes{$\ell_B$}{$C_B$}{6.0}{4.3}}
+  \capa{2}{\draw[ini] (0,0) -- (5.6,3.733) node[etiqueta,right] {AS$_B$: $C_B=Z_B\ell_B\tau_B$};}
+  \capa{2}{\draw[ini] (0,2) -- (5.6,2) node[etiqueta,right] {AD$_B$: $C_B=\mu_B/P_B$};}
+  \capa{2}{\draw[ini] (3,0) node[below] {$\bar\ell_B$} -- (3,4.2) node[etiqueta,above] {NR$_B$};}
+  \capa{2}{\node[punto] (OB) at (3,2) {};}
+  \capa{2}{\node[etiqueta,above left] at (OB) {$O_B$};}
+  % 6: (4) empeora la relación de intercambio de B: tau_B baja; la AD_B no se mueve
+  \capa{6}{\draw[endo] (0,0) -- (5.6,3.08) node[etiqueta,below right,text=tceerojo] {$\tau_B\!\downarrow$};}
+  \capa{6}{\draw[->,thick,tceerojo] (4.9,3.27) -- (5.15,2.9);}
+  \capa{6}{\node[paso] at (5.5,3.35) {4};}
+  \capa{7}{\node[punto,fill=tceerojo] (LB) at (3.636,2) {};}
+  \capa{7}{\node[etiqueta,below right,text=tceerojo] at (LB) {$L_B$};}
+  \capa{7}{\draw[guia,tceerojo] (LB) -- (3.636,0);}
+  \capa{7}{\draw[->,thick,tceerojo] (3.05,0.35) -- (3.6,0.35);}
+  \capa{7}{\node[explica,text=tceerojo] at (0.2,-0.8) {B trabaja más para consumir lo mismo};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

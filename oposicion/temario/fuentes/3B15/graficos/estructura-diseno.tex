@@ -1,0 +1,105 @@
+% La organización del apartado I del 3.B.15 (diseño del régimen cambiario) en
+% una página (Víctor, 16/11/2026): I.1 la idea; I.2 los argumentos teóricos,
+% ordenados por las 5 dimensiones, con su modelo, su autor y a qué régimen
+% favorecen; I.3 los determinantes de la elección, Poole en economía abierta y
+% la evidencia. Mismo lenguaje que fuentes/3A32/graficos/estructura-tema.tex.
+% Colores de los regímenes en todo el tema: tipo fijo tceeazul (como el
+% anclaje duro), tipo flexible tceerojo (como la flotación).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\newcommand{\fijo}[1]{\textcolor{tceeazul}{\textbf{fijo}: #1}}
+\newcommand{\flex}[1]{\textcolor{tceerojo}{\textbf{flexible}: #1}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    banda/.style={fill=#1, text=white, draw=none, rounded corners=3pt, anchor=north west,
+      text width=16.0cm, inner sep=4pt, align=left, font=\footnotesize},
+    caja/.style={fill=#1!10, draw=#1, line width=0.7pt, rounded corners=3pt, anchor=north west,
+      inner sep=4pt, align=left, font=\scriptsize},
+    titulo/.style={font=\footnotesize\bfseries, text=#1, anchor=north west},
+    paso/.style={->, very thick, tceegris},
+    rotulo/.style={font=\scriptsize\itshape, text=tceegris, align=left, inner sep=1pt}]
+  \path (-0.25,0.35) rectangle (16.65,-19.8);
+
+  % 1: la pregunta del apartado
+  \capa{1}{\node[banda=tceemorado] at (0,0)
+    {\textbf{La pregunta}: ¿qué gana y qué pierde un país al fijar su tipo de cambio, y qué al dejarlo flotar? ¿Hay un régimen mejor que los demás?\\
+     \textit{Leyenda}: \textbf{fijo} (en azul) y \textbf{flexible} (en rojo) dicen qué supone cada argumento para cada régimen, a favor o en contra.};}
+
+  % 2: I.1, la idea
+  \capa{2}{\node[titulo=tceemorado] at (0,-1.35) {I.1. Idea: cómo se compara};}
+  \capa{2}{\node[caja=tceemorado, text width=15.95cm] at (0,-1.9)
+    {2 regímenes \textbf{estilizados} (un tipo fijo creíble y una flotación libre), con \textbf{libertad de capitales} (con controles: III.2), comparados en \textbf{5 dimensiones}. No sale un ganador, sino una lista de disyuntivas (\emph{trade-offs}): la tabla de I.2.};}
+  \capa{3}{\draw[paso] (8.2,-2.85) -- node[rotulo, right] {los argumentos teóricos, dimensión a dimensión} (8.2,-3.4);}
+
+  % 3: I.2, los argumentos teóricos, en 5 dimensiones
+  \capa{3}{\node[titulo=tceeazul] at (0,-3.45) {I.2. Ventajas y desventajas: los argumentos teóricos};}
+  % fila 1: las 3 primeras dimensiones
+  \capa{4}{\node[caja=tceeazul, text width=5.05cm, minimum height=4.4cm] (d1) at (0,-4.0)
+    {\textbf{1. Políticas de demanda y trilema}\\[3pt]
+     \textbf{\autor{Mundell}-\autor{Fleming}} (IS-LM-BP), movilidad perfecta:\\
+     \fijo{fiscal eficaz, monetaria inútil}\\
+     \flex{monetaria eficaz, fiscal inútil}\\[3pt]
+     \textbf{Trilema} (\autor{Obstfeld}-\autor{Taylor}): de tipo fijo, capital libre y política monetaria propia, solo 2.\\[3pt]
+     \textbf{Dilema} (\autor{Rey}): el ciclo financiero global limita también al que flota; aun así, \flex{aísla más}.\\[3pt]
+     \textbf{Sobrerreacción} (\autor{Dornbusch}): \flex{volatilidad}.};}
+  \capa{5}{\node[caja=tceeazul, text width=5.05cm, minimum height=4.4cm] (d2) at (5.45,-4.0)
+    {\textbf{2. Equilibrio interno}\\[3pt]
+     \textbf{Perturbaciones reales} (\autor{Friedman}): mover un precio, no miles: \flex{las absorbe el tipo de cambio}.\\[3pt]
+     \textbf{Perturbaciones monetarias}: \fijo{las absorben las reservas} (\autor{Poole}, en I.3).\\[3pt]
+     \textbf{Credibilidad} (\autor{Barro}-\autor{Gordon}; \autor{Giavazzi}-\autor{Pagano}): \fijo{atarse las manos, importar la credibilidad del ancla}; riesgo: apreciación real si la inflación converge despacio.\\[3pt]
+     \flex{la credibilidad tiene que nacer dentro} (banco central independiente).};}
+  \capa{6}{\node[caja=tceeazul, text width=5.05cm, minimum height=4.4cm] (d3) at (10.9,-4.0)
+    {\textbf{3. Equilibrio externo}\\[3pt]
+     \textbf{Comercio e inversión} (\autor{Rose}): \fijo{sin riesgo de cambio}, aunque se puede cubrir.\\[3pt]
+     \textbf{Moneda dominante} (\autor{Gopinath}): la depreciación mueve poco las exportaciones netas; \flex{su ventaja se debilita}.\\[3pt]
+     \textbf{Crisis} (3 generaciones, \autor{Krugman}…): \fijo{apuesta en un solo sentido}; los intermedios, los más frágiles.\\[3pt]
+     \textbf{Reservas}: \fijo{muchas, con su coste}.};}
+  % fila 2: las 2 últimas y el resumen
+  \capa{7}{\node[caja=tceeazul, text width=5.05cm, minimum height=4.0cm] (d4) at (0,-8.8)
+    {\textbf{4. Mercados financieros}\\[3pt]
+     \autor{Eichengreen}-\autor{Hausmann}: 3 hipótesis, 3 regímenes.\\[2pt]
+     \textbf{Riesgo moral}: el fijo es un seguro implícito; \flex{que todos se cubran} o dolarizar.\\[2pt]
+     \textbf{Pecado original}: no se puede deber en moneda propia; descalces; la menos mala, la \fijo{dolarización}.\\[2pt]
+     \textbf{Compromiso}: la solución es institucional; el régimen importa menos.};}
+  \capa{8}{\node[caja=tceeazul, text width=5.05cm, minimum height=4.0cm] (d5) at (5.45,-8.8)
+    {\textbf{5. Economía política}\\[3pt]
+     \autor{Frieden}: el régimen reparte ganancias y pérdidas.\\[3pt]
+     \fijo{las tensiones van dentro}: salarios y no comerciables; patrón oro de entreguerras.\\[3pt]
+     \flex{las tensiones van fuera}: devaluaciones competitivas (empobrecer al vecino).\\[3pt]
+     El fijo, también una \textbf{señal} de integración (SME, euro).};}
+  \capa{9}{\node[caja=tceemorado, text width=5.05cm, minimum height=4.0cm] (res) at (10.9,-8.8)
+    {\textbf{Recapitulación: ningún régimen gana en todo}\\[3pt]
+     \fijo{credibilidad, comercio, absorbe lo monetario}; a cambio, ajuste interno doloroso, ataques y reservas.\\[3pt]
+     \flex{absorbe lo real, política monetaria propia}; a cambio, volatilidad y, con deuda en dólares, miedo a flotar.\\[3pt]
+     \textit{Tabla fijo frente a flexible.}};}
+  \capa{9}{\draw[paso] (d5.east) -- (res.west);}
+  \capa{10}{\draw[paso] (8.2,-13.0) -- node[rotulo, right] {¿qué régimen debe elegir cada país? Depende de sus características} (8.2,-13.55);}
+
+  % 4: I.3, determinantes, Poole y evidencia
+  \capa{10}{\node[titulo=tceeverde] at (0,-13.6) {I.3. ¿Qué régimen arroja un mejor resultado? Determinantes y evidencia};}
+  \capa{11}{\node[caja=tceeverde, text width=5.05cm, minimum height=3.4cm] (e1) at (0,-14.15)
+    {\textbf{1. Determinantes de la elección}\\[3pt]
+     \textbf{Integración con el ancla} (áreas monetarias óptimas: \autor{Mundell}, \autor{McKinnon}, \autor{Kenen}): pequeño, abierto, perturbaciones simétricas $\Rightarrow$ \textcolor{tceeazul}{\textbf{fijo}}\\[2pt]
+     Origen de las perturbaciones; credibilidad; desarrollo financiero (miedo a flotar, \autor{Calvo}-\autor{Reinhart}); economía política; movilidad del capital.};}
+  \capa{12}{\node[caja=tceeverde, text width=5.05cm, minimum height=3.4cm] (e2) at (5.45,-14.15)
+    {\textbf{2. El origen de las perturbaciones: \autor{Poole} en economía abierta} (\autor{Boyer})\\[3pt]
+     Fijar $E$ es fijar $i=i^*$:\\
+     perturbaciones \textbf{reales} $\Rightarrow$ \textcolor{tceerojo}{\textbf{flexible}}\\
+     perturbaciones \textbf{monetarias} $\Rightarrow$ \textcolor{tceeazul}{\textbf{fijo}}\\[2pt]
+     Con las 2: un régimen intermedio.\\
+     Con optimización (\autor{Galí}-\autor{Monacelli}): \textcolor{tceerojo}{\textbf{flexible}}};}
+  \capa{13}{\node[caja=tceeverde, text width=5.05cm, minimum height=3.4cm] (e3) at (10.9,-14.15)
+    {\textbf{3. Evidencia empírica}\\[3pt]
+     \emph{De jure} frente a \emph{de facto} (\autor{Reinhart}-\autor{Rogoff}…): según la clasificación, el mismo país es fijo o flotante.\\[2pt]
+     \fijo{menos inflación}; en desarrollo, \flex{más crecimiento}; los intermedios, más crisis.\\[2pt]
+     \autor{Frankel}: ningún régimen sirve a todos ni siempre.};}
+  \capa{13}{\draw[paso] (e1.east) -- (e2.west);}
+  \capa{13}{\draw[paso] (e2.east) -- (e3.west);}
+
+  % 5: la respuesta
+  \capa{14}{\node[banda=tceemorado] at (0,-17.9)
+    {\textbf{La respuesta}: ningún régimen es superior a los demás. El fijo da credibilidad y estabilidad al comercio, pero deja el ajuste a precios y salarios y expone a ataques; el flexible absorbe las perturbaciones reales y deja libre la política monetaria, pero trae volatilidad. Cada uno sabe dónde le aprieta el zapato $\rightarrow$ II, el menú real de regímenes.};}
+\end{tikzpicture}
+\end{document}

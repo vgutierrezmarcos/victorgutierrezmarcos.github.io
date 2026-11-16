@@ -1,0 +1,98 @@
+% El análisis de Poole (1970) en economía abierta (Boyer, 1978): variabilidad
+% de la renta con tipo de cambio fijo o flexible, con movilidad perfecta del
+% capital (BP horizontal en i*), ante perturbaciones reales (epsilon^IS: la IS
+% oscila) o monetarias (epsilon^LM: la LM oscila).
+% Mismo lenguaje gráfico que el Poole de economía cerrada del 3.A.36
+% (fuentes/3A36/graficos/poole.tex: tabla 2x2, tramo rojo en el eje = lo que
+% varía la renta) y colores del IS-LM-BP del 3.A.32 (is-lm-bp.tex,
+% mundell-fleming-politicas.tex): IS azul, LM morada, BP verde.
+%   BP: i = i* = 3,5
+%   IS: i = 8 - y; IS+: i = 9,5 - y; IS-: i = 6,5 - y
+%   LM: i = y - 1; LM+: i = y + 0,5; LM-: i = y - 2,5
+%   a) fijo, IS±: y en [3; 6] (la LM la mueven las reservas)
+%   b) flexible, IS±: y = 4,5 (el tipo de cambio devuelve la IS)
+%   c) fijo, LM±: y = 4,5 (las reservas devuelven la LM)
+%   d) flexible, LM±: y en [3; 6] (el tipo de cambio lleva la IS al nuevo punto)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\rango}[2]{\draw[line width=2.2pt, tceerojo] (#1,0) -- (#2,0);}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm,
+    cabecera/.style={font=\small, align=center, text width=4.2cm},
+    cabfila/.style={font=\small, align=center, text width=2.1cm},
+    letra/.style={font=\small, anchor=north west, inner sep=0pt},
+    nota/.style={etiqueta, font=\footnotesize, text=tceerojo, align=center},
+    rejilla/.style={semithick, black}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.3,-3.6) rectangle (28.8,23.4);
+  % ---------- la tabla: cabeceras y rejilla ----------
+  \capa{1}{\node[cabecera] at (10.8,22.3) {Tipo de cambio fijo};}
+  \capa{1}{\node[cabecera] at (22.8,22.3) {Tipo de cambio flexible};}
+  \capa{1}{\node[cabfila] at (2.35,16) {Perturbación real\\($\varepsilon^{\mathrm{IS}}$)};}
+  \capa{1}{\node[cabfila] at (2.35,4.5) {Perturbación monetaria\\($\varepsilon^{\mathrm{LM}}$)};}
+  \capa{1}{\draw[rejilla] (-0.3,21.2) -- (28.8,21.2);}
+  \capa{1}{\draw[rejilla] (-0.3,9.6) -- (28.8,9.6);}
+  \capa{1}{\draw[rejilla] (5.0,-3.6) -- (5.0,23.4);}
+  \capa{1}{\draw[rejilla] (16.7,-3.6) -- (16.7,23.4);}
+  % ---------- a) perturbación real, tipo fijo ----------
+  \begin{scope}[xshift=6.2*0.42cm, yshift=12.4*0.42cm]
+    \capa{2}{\node[letra] at (9.2,8.6) {a)};}
+    \capa{2}{\ejes{$y$}{$i$}{8.8}{8}}
+    \capa{2}{\draw[curva3] (0,3.5) -- (8.6,3.5) node[etiqueta, above left, text=tceeverde] {BP};}
+    \capa{2}{\node[etiqueta, left] at (0,3.5) {$i^*$};}
+    \capa{2}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{3}{\draw[curva2, desplazada] (2.5,7) -- (8.5,1) node[etiqueta, anchor=west, text=tceeazul] {IS$^+$};}
+    \capa{3}{\draw[curva2, desplazada] (0.5,6) -- (5,1.5) node[etiqueta, anchor=north, xshift=-0.19cm, text=tceeazul] {IS$^-$};}
+    \capa{4}{\draw[guia] (3,3.5) -- (3,0); \draw[guia] (6,3.5) -- (6,0);}
+    \capa{4}{\node[punto] at (3,3.5) {}; \node[punto] at (6,3.5) {};}
+    \capa{4}{\rango{3}{6}}
+    \capa{4}{\node[nota] at (4.5,-2.1) {las reservas mueven la LM:\\toda la perturbación a la renta};}
+  \end{scope}
+  % ---------- b) perturbación real, tipo flexible ----------
+  \begin{scope}[xshift=17.9*0.42cm, yshift=12.4*0.42cm]
+    \capa{5}{\node[letra] at (9.2,8.6) {b)};}
+    \capa{5}{\ejes{$y$}{$i$}{8.8}{8}}
+    \capa{5}{\draw[curva3] (0,3.5) -- (8.6,3.5) node[etiqueta, above left, text=tceeverde] {BP};}
+    \capa{5}{\node[etiqueta, left] at (0,3.5) {$i^*$};}
+    \capa{5}{\draw[curva1] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceemorado] {LM};}
+    \capa{5}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{6}{\draw[curva2, desplazada] (2.5,7) -- (8.5,1) node[etiqueta, anchor=west, text=tceeazul] {IS$^+$};}
+    \capa{6}{\draw[curva2, desplazada] (0.5,6) -- (5,1.5) node[etiqueta, anchor=north, xshift=-0.19cm, text=tceeazul] {IS$^-$};}
+    \capa{7}{\draw[flecha] (7.2,6.1) -- (5.9,6.1);}
+    \capa{7}{\draw[flecha] (1.3,3.0) -- (2.6,3.0);}
+    \capa{8}{\draw[guia] (4.5,3.5) -- (4.5,0); \node[punto] at (4.5,3.5) {}; \node[punto, tceerojo] at (4.5,0) {};}
+    \capa{8}{\node[nota] at (4.5,-2.1) {el tipo de cambio devuelve la IS:\\sin variación};}
+  \end{scope}
+  % ---------- c) perturbación monetaria, tipo fijo ----------
+  \begin{scope}[xshift=6.2*0.42cm, yshift=0.8*0.42cm]
+    \capa{9}{\node[letra] at (9.2,8.6) {c)};}
+    \capa{9}{\ejes{$y$}{$i$}{8.8}{8}}
+    \capa{9}{\draw[curva3] (0,3.5) -- (8.6,3.5) node[etiqueta, above left, text=tceeverde] {BP};}
+    \capa{9}{\node[etiqueta, left] at (0,3.5) {$i^*$};}
+    \capa{9}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{9}{\draw[curva1] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceemorado] {LM};}
+    \capa{10}{\draw[curva1, desplazada] (0.3,0.8) -- (6.8,7.3) node[etiqueta, above, text=tceemorado] {LM$^+$};}
+    \capa{10}{\draw[curva1, desplazada] (3,0.5) -- (8.5,6) node[etiqueta, right, text=tceemorado] {LM$^-$};}
+    \capa{11}{\draw[flecha] (2.0,5.6) -- (3.0,4.6);}
+    \capa{11}{\draw[flecha] (7.4,2.6) -- (6.4,3.6);}
+    \capa{12}{\draw[guia] (4.5,3.5) -- (4.5,0); \node[punto] at (4.5,3.5) {}; \node[punto, tceerojo] at (4.5,0) {};}
+    \capa{12}{\node[nota] at (4.5,-2.1) {las reservas devuelven la LM:\\sin variación};}
+  \end{scope}
+  % ---------- d) perturbación monetaria, tipo flexible ----------
+  \begin{scope}[xshift=17.9*0.42cm, yshift=0.8*0.42cm]
+    \capa{13}{\node[letra] at (9.2,8.6) {d)};}
+    \capa{13}{\ejes{$y$}{$i$}{8.8}{8}}
+    \capa{13}{\draw[curva3] (0,3.5) -- (8.6,3.5) node[etiqueta, above left, text=tceeverde] {BP};}
+    \capa{13}{\node[etiqueta, left] at (0,3.5) {$i^*$};}
+    \capa{13}{\draw[curva2] (1,7) -- (7,1) node[etiqueta, below, text=tceeazul] {IS};}
+    \capa{13}{\draw[curva1] (1.5,0.5) -- (8,7) node[etiqueta, right, text=tceemorado] {LM};}
+    \capa{14}{\draw[curva1, desplazada] (0.3,0.8) -- (6.8,7.3) node[etiqueta, above, text=tceemorado] {LM$^+$};}
+    \capa{14}{\draw[curva1, desplazada] (3,0.5) -- (8.5,6) node[etiqueta, right, text=tceemorado] {LM$^-$};}
+    \capa{15}{\draw[guia] (3,3.5) -- (3,0); \draw[guia] (6,3.5) -- (6,0);}
+    \capa{15}{\node[punto] at (3,3.5) {}; \node[punto] at (6,3.5) {};}
+    \capa{15}{\rango{3}{6}}
+    \capa{15}{\node[nota] at (4.5,-2.1) {el tipo de cambio lleva la IS\\al nuevo punto: la renta varía};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

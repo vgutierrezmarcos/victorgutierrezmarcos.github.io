@@ -1,0 +1,71 @@
+% Infografía: Mundell-Fleming con 2 países frente a Corsetti y Pesenti, en qué
+% se parecen y en qué difieren (supuestos, desarrollo, implicaciones y
+% valoración). Cabecera con un esquema de cada modelo (IS-LM-BP en (Y, i);
+% AD-AS-NR en (l, C)), cuerpo en tabla por bloques y franja final con lo común.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{array,colortbl}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    cab/.style={draw=#1,fill=#1!8,rounded corners=4pt,line width=1pt,minimum width=7.1cm,minimum height=3.6cm},
+    rotulo/.style={font=\bfseries\normalsize,text=#1}]
+  % 1: cabeceras de los 2 modelos con su esquema
+  \capa{1}{\node[cab=tceemorado] (mf) at (-4.6,0) {};}
+  \capa{1}{\node[rotulo=tceemorado,anchor=north] at ([yshift=-3pt]mf.north) {\textsc{Mundell}-\textsc{Fleming} con 2 países};}
+  \capa{1}{\node[font=\footnotesize,anchor=north] at ([yshift=-20pt]mf.north) {\textsc{Fleming} (1962), \textsc{Mundell} (1963, 1964)};}
+  \capa{1}{\begin{scope}[shift={(-6.6,-1.45)},x=0.55cm,y=0.48cm]
+    \draw[->,thick] (0,0) -- (4.6,0) node[below,font=\scriptsize] {$Y$};
+    \draw[->,thick] (0,0) -- (0,4.2) node[left,font=\scriptsize] {$i$};
+    \draw[thick,tceeazul] (0.6,3.6) -- (3.9,0.3) node[right,font=\scriptsize] {IS};
+    \draw[thick,tceemorado] (0.8,0.6) -- (3.9,3.7) node[right,font=\scriptsize] {LM};
+    \draw[thick,tceeverde] (0,2.1) -- (4.4,2.1) node[right,font=\scriptsize] {BP};
+  \end{scope}}
+  \capa{1}{\node[font=\scriptsize,align=left,anchor=west] at (-3.6,-0.85) {plano $(Y,i)$\\$i=i^*$ común\\expectativas estáticas\\precios fijos};}
+  \capa{1}{\node[cab=tceeazul] (cp) at (4.6,0) {};}
+  \capa{1}{\node[rotulo=tceeazul,anchor=north] at ([yshift=-3pt]cp.north) {\textsc{Corsetti} y \textsc{Pesenti}};}
+  \capa{1}{\node[font=\footnotesize,anchor=north] at ([yshift=-20pt]cp.north) {(2005, 2009), sobre el \emph{Redux} (1995)};}
+  \capa{1}{\begin{scope}[shift={(2.6,-1.45)},x=0.55cm,y=0.48cm]
+    \draw[->,thick] (0,0) -- (4.6,0) node[below,font=\scriptsize] {$\ell$};
+    \draw[->,thick] (0,0) -- (0,4.2) node[left,font=\scriptsize] {$C$};
+    \draw[thick] (0,0) -- (3.9,3.2) node[right,font=\scriptsize] {AS};
+    \draw[thick] (0,1.8) -- (4.3,1.8) node[right,font=\scriptsize] {AD};
+    \draw[thick] (2.2,0) -- (2.2,3.5) node[above,font=\scriptsize,inner sep=1pt] {NR};
+    \draw[thick,dotted] plot[domain=0.3:3.6,samples=20] (\x,{1.8*exp(0.33*(\x-2.2))});
+  \end{scope}}
+  \capa{1}{\node[font=\scriptsize,align=left,anchor=west] at (5.5,-0.85) {plano $(\ell,C)$\\$E=\mu/\mu^*$\\expectativas\\racionales\\precios rígidos\\un periodo};}
+  \capa{1}{\node[font=\bfseries\small,text=black!70] at (0,0.3) {frente a};}
+  % 2: el cuerpo: las diferencias por bloques (tabla)
+  \capa{2}{\node[anchor=north,inner sep=0pt] (tab) at (0,-2.1) {%
+    \footnotesize
+    \renewcommand{\arraystretch}{1.25}%
+    \begin{tabular}{>{\raggedright\arraybackslash}p{6.55cm}>{\centering\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{6.55cm}}
+    \multicolumn{3}{>{\columncolor{tceemorado!85}}c}{\color{white}\bfseries Supuestos}\\
+    \cellcolor{tceemorado!7}Relaciones agregadas postuladas (consumo, demanda de dinero, exportaciones netas) & \bfseries Agentes & \cellcolor{tceeazul!7}Hogares que maximizan $U=\ln C-\chi\ell$; empresas en competencia monopolística (\textsc{Dixit}-\textsc{Stiglitz})\\
+    \cellcolor{tceemorado!7}Fijos ($P=P^*=1$), sin plazo & \bfseries Precios & \cellcolor{tceeazul!7}Rígidos un periodo; con precios flexibles, el empleo natural $\bar\ell$\\
+    \cellcolor{tceemorado!7}Estáticas & \bfseries Expectativas & \cellcolor{tceeazul!7}Racionales\\
+    \cellcolor{tceemorado!7}Activos sustitutos perfectos y movilidad perfecta ($i=i^*$) & \bfseries Mercados financieros & \cellcolor{tceeazul!7}Mercados completos (reparto del riesgo)\\
+    \cellcolor{tceemorado!7}Monetaria y fiscal, exógenas & \bfseries Política & \cellcolor{tceeazul!7}Monetaria ($\mu$), elegida por un banco central benevolente\\
+    \multicolumn{3}{>{\columncolor{tceedorado!85}}c}{\color{white}\bfseries Desarrollo}\\
+    \cellcolor{tceemorado!7}IS, LM y BP de cada país; se resuelven $Y_A$, $Y_B$, $i$ y $q$ & \bfseries Curvas & \cellcolor{tceeazul!7}AD: $C=\mu/P$; AS: $C=Z\ell\tau$; NR: $\bar\ell$; $E=\mu/\mu^*$\\
+    \cellcolor{tceemorado!7}Renta, tipo de interés y tipo de cambio: \emph{exportaciones netas} & \bfseries Canal exterior & \cellcolor{tceeazul!7}\emph{Relación real de intercambio} $\tau$: cuánto consume un país con lo que produce\\
+    \cellcolor{tceemorado!7}Una expansión monetaria o fiscal en A & \bfseries Perturbación típica & \cellcolor{tceeazul!7}Una subida de la productividad en A y la respuesta de su banco central\\
+    \cellcolor{tceemorado!7}El régimen cambiario y el tamaño del país & \bfseries Lo decide & \cellcolor{tceeazul!7}La moneda en que se fijan los precios: PCP, LCP o dólar\\
+    \multicolumn{3}{>{\columncolor{tceeazul!85}}c}{\color{white}\bfseries Implicaciones}\\
+    \cellcolor{tceemorado!7}Con tipo flexible, \textcolor{tceerojo}{empobrece al vecino}: la renta de B baja & \bfseries Expansión monetaria en A & \cellcolor{tceeazul!7}PCP: \textcolor{tceeverde}{beneficia} a B; LCP: \textcolor{tceerojo}{le empobrece}; dólar: el emisor no lo nota\\
+    \cellcolor{tceemorado!7}Fiscal: \textcolor{tceeverde}{locomotora}, sube la renta de B & \bfseries Otra política & \cellcolor{tceeazul!7}Reforma estructural ($\sigma\!\uparrow$): \textcolor{tceeverde}{beneficia} a B\\
+    \cellcolor{tceemorado!7}La renta $Y$ & \bfseries Se mide & \cellcolor{tceeazul!7}El bienestar (utilidad de los hogares)\\
+    \cellcolor{tceemorado!7}No lo dice: solo que hay desbordamientos & \bfseries ¿Compensa coordinar? & \cellcolor{tceeazul!7}PCP y LCP: no; dólar: sí, pero solo cambia el emisor\\
+    \multicolumn{3}{>{\columncolor{tceerojo!80}}c}{\color{white}\bfseries Valoración}\\
+    \cellcolor{tceemorado!7}Sencillo y didáctico; muestra los canales de renta, interés y cambio & \bfseries Ventaja & \cellcolor{tceeazul!7}Microfundamentos y criterio de bienestar en un gráfico de 3 curvas\\
+    \cellcolor{tceemorado!7}Estático, sin microfundamentos, crítica de \textsc{Lucas}; la evidencia contradice el signo monetario & \bfseries Inconveniente & \cellcolor{tceeazul!7}Resultados frágiles: dependen de la moneda de facturación, los mercados completos y las preferencias logarítmicas\\
+    \end{tabular}};}
+  % 3: la franja final: en qué se parecen
+  \capa{3}{\node[draw=tceeverde,fill=tceeverde!8,rounded corners=4pt,line width=1pt,text width=16.1cm,align=left,anchor=north,font=\footnotesize] at ([yshift=-8pt]tab.south) {%
+    {\bfseries\color{tceeverde} En qué se parecen}\\[2pt]
+    \textbullet\ 2 países grandes y los mismos en todo el tema: A, la zona del euro, y B, Estados Unidos.\\
+    \textbullet\ Una rigidez nominal a corto plazo: por eso la política monetaria tiene efectos reales y se transmite fuera.\\
+    \textbullet\ Hay \emph{efectos desbordamiento} (la condición necesaria de la coordinación) y su signo depende de supuestos: el régimen cambiario en uno, la fijación de precios en otro.\\
+    \textbullet\ Ninguno explica por sí solo por qué se coordina tan poco: para eso hace falta la teoría de juegos (\textsc{Hamada}).};}
+\end{tikzpicture}
+\end{document}

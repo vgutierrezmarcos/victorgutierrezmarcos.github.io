@@ -73,6 +73,7 @@
   \item En el bloque~\ref{sec:activos}, el enfoque moderno, que trata el tipo de cambio como el precio de un activo: el enfoque monetario, con precios flexibles y con la sobrerreacción de \autor{Dornbusch}; el enfoque de cartera de \autor{Branson}, y su contrastación empírica.
   \item En el bloque~\ref{sec:recientes}, los desarrollos recientes: las nuevas líneas teóricas (la regla de \autor{Taylor}, la paradoja del margen \emph{forward} y el tipo de cambio real de equilibrio) y los modelos con fundamentación microeconómica.
   \end{itemize}
+  \item La figura~\ref{figu:evolucion} resume el recorrido: de qué teoría nace cada una y cómo la evidencia de \autor{Mussa} y de \autor{Meese} y \autor{Rogoff} separa los modelos de activos de los desarrollos recientes.
   \end{itemize}
 \end{itemize}
 
@@ -101,6 +102,13 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{6,5} (I.1, \tiempo{1}
 \begin{anotaciones}[unbreakable]
 \textbf{Notación.} $E_t$ es el tipo de cambio nominal \emph{directo} al contado (euros por dólar para España; $\uparrow E$ = depreciación del euro), $F_t^{t+1}$ el tipo a plazo pactado en $t$ para $t+1$ y $E^e_{t+1}$ el tipo de contado que se espera en $t$ para $t+1$, con $\gamma E^e\equiv(E^e_{t+1}-E_t)/E_t$ la depreciación esperada; $\gamma_E$ es la depreciación observada. $i$ e $i^{*}$ son los tipos de interés nacional y extranjero; $P$, $P^*$, $Y$, $Y^*$, $\pi$ y $\pi^*$, los precios, las rentas y las inflaciones nacionales y extranjeras (el asterisco es siempre el resto del mundo). $q\equiv EP^{*}/P$ es el tipo de cambio real ($\uparrow q$ = depreciación real) \vertema{3.B.13}. En los modelos en logaritmos, las minúsculas $e$, $f$, $m$, $p$, $y$ y $q$ son los logaritmos de las mayúsculas (salvo los tipos de interés), $\bar e$ y $\bar p$ los valores de largo plazo y $\mathbb{E}_t[\cdot]$ la esperanza con lo que se sabe en $t$. $\rho$ es la prima de riesgo cambiaria.
 \end{anotaciones}
+
+\begin{infografia}[H]
+\centering
+\caption{La evolución de las teorías del tipo de cambio y el papel de la evidencia empírica}\label{figu:evolucion}
+\graficopagina[\textwidth]{evolucion-teorias}
+\fuente{elaboración propia. Las flechas moradas indican de qué teoría nace cada una (en discontinua, una relación más indirecta); las rojas, a qué modelos afecta la evidencia de \textcite{Mussa1979Empirical} y de \textcite{MeeseRogoff1983} y qué respuestas provoca.}
+\end{infografia}
 
 % ==========================================================================
 \section{Teorías tradicionales: flujos y condiciones de paridad}\label{sec:tradicionales}
@@ -350,26 +358,41 @@ Datos y método: \href{https://www.economist.com/interactive/big-mac-index}{econ
   1+i=(1+i^{*})\,\frac{E^e_{t+1}}{E_t}\quad\Longrightarrow\quad i-i^{*}\approx\underbrace{\frac{E^e_{t+1}-E_t}{E_t}}_{\text{depreciación esperada}}\equiv\gamma E^e .
   \end{equation}
   Las aproximaciones salen de tomar logaritmos, que convierte el producto en una suma, $\ln(1+i)=\ln(1+i^*)+\ln E^e_{t+1}-\ln E_t$, y de $\ln(1+x)\approx x$ para $x$ pequeño.
-\end{itemize}
-
-\subparagraph{iii) Implicaciones}
-\begin{itemize}
-\item \emph{Como teoría del tipo de cambio}: despejando $E_t$ de \eqref{eq:pnci}, el tipo de contado de hoy depende del diferencial de intereses y del tipo esperado. Si sube $i$ con $i^*$ y $E^e_{t+1}$ dados, entran capitales y la moneda se aprecia hoy ($\downarrow E_t$) hasta que la depreciación esperada compense el diferencial. Es el canal del tipo de cambio de la política monetaria \vertema{3.A.37}.
-\item \emph{El cuadro de las paridades} (figura~\ref{figu:paridades}): la PCI, la PNCI, el efecto \autor{Fisher} internacional ($i-i^*=\pi^e-\pi^{*e}$) y la PPA relativa esperada ($\gamma E^e=\pi^e-\pi^{*e}$) unen 4 diferenciales.
+\item La figura~\ref{figu:dos-caminos} lo resume con los 2 caminos que tiene un inversor con 1 euro entre $t$ y $t+1$:
   \begin{itemize}
-  \item Si se cumplen todas, el tipo a plazo es un predictor insesgado del contado futuro ($F_t^{t+1}=E^e_{t+1}$) y los tipos de interés reales se igualan entre países ($r=r^*$).
-  \item Algunos autores convierten las paridades en un modelo del tipo de cambio: si el tipo a plazo predice sin sesgo, basta conocer el tipo esperado y los tipos de interés para tener el de contado\nocite{HelliwellBoothe1983,Gandolfo2002International}.
+  \item invertirlo en euros, al tipo $i$ (arriba);
+  \item o cambiarlo a dólares al contado, invertirlo al tipo $i^*$ y volver a euros (abajo): al tipo a plazo pactado hoy, si cubre el riesgo (en morado), o al contado de $t+1$, si no lo cubre (en dorado).
   \end{itemize}
-\item Con expectativas estáticas ($\gamma E^e=0$), la PNCI se reduce a $i=i^*$, la balanza de pagos horizontal del modelo de \autor{Mundell}-\autor{Fleming} (\ref{sec:mundell-fleming}).\footnote{\autor{Robert Mundell} recibió el Premio Nobel de Economía en 1999 «por su análisis de la política monetaria y fiscal con distintos regímenes cambiarios y su análisis de las áreas monetarias óptimas»\nocite{Nobel1999Mundell}.}
-\item Si los activos no son sustitutos perfectos, aparece una \concepto{prima de riesgo}, $i-i^*\approx\gamma E^e+\rho$, que es la base del enfoque de cartera (\ref{sec:cartera}).
+  La PCI iguala el camino de arriba con el cubierto, y la PNCI, con lo que se espera del que no se cubre.
 \end{itemize}
 
 \begin{infografia}[H]
 \centering
+\caption{Los 2 caminos del inversor: cubierto (PCI) y sin cubrir (PNCI)}\label{figu:dos-caminos}
+\grafico[0.85\textwidth]{dos-caminos}
+\fuente{elaboración propia a partir de \textcite{Keynes1923Tract}.}
+\end{infografia}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item \emph{Como teoría del tipo de cambio}: despejando $E_t$ de \eqref{eq:pnci}, el tipo de contado de hoy depende del diferencial de intereses y del tipo esperado. Si sube $i$ con $i^*$ y $E^e_{t+1}$ dados, entran capitales y la moneda se aprecia hoy ($\downarrow E_t$) hasta que la depreciación esperada compense el diferencial. Es el canal del tipo de cambio de la política monetaria \vertema{3.A.37}.
+\item Las 2 paridades se combinan con las de los precios en el cuadro de las paridades (recuadro siguiente).
+\item Con expectativas estáticas ($\gamma E^e=0$), la PNCI se reduce a $i=i^*$, la balanza de pagos horizontal del modelo de \autor{Mundell}-\autor{Fleming} (\ref{sec:mundell-fleming}).\footnote{\autor{Robert Mundell} recibió el Premio Nobel de Economía en 1999 «por su análisis de la política monetaria y fiscal con distintos regímenes cambiarios y su análisis de las áreas monetarias óptimas»\nocite{Nobel1999Mundell}.}
+\item Si los activos no son sustitutos perfectos, aparece una \concepto{prima de riesgo}, $i-i^*\approx\gamma E^e+\rho$, que es la base del enfoque de cartera (\ref{sec:cartera}).
+\end{itemize}
+
+\begin{anotaciones}[unbreakable]
+\textbf{El cuadro de las paridades.} La PCI, la PNCI, el efecto \autor{Fisher} internacional ($i-i^*=\pi^e-\pi^{*e}$) y la PPA relativa esperada ($\gamma E^e=\pi^e-\pi^{*e}$) unen 4 diferenciales: el de tipos de interés, el margen a plazo, la depreciación esperada y el de inflaciones esperadas (figura~\ref{figu:paridades}).
+\begin{itemize}
+\item Si se cumplen todas, el tipo a plazo es un predictor insesgado del contado futuro ($F_t^{t+1}=E^e_{t+1}$) y los tipos de interés reales se igualan entre países ($r=r^*$).
+\item Algunos autores convierten las paridades en un modelo del tipo de cambio: si el tipo a plazo predice sin sesgo, basta conocer el tipo esperado y los tipos de interés para tener el de contado\nocite{HelliwellBoothe1983,Gandolfo2002International}.
+\end{itemize}
+\begin{infografiacaja}
 \caption{El cuadro de las paridades}\label{figu:paridades}
 \grafico[0.6\textwidth]{paridades}
 \fuente{elaboración propia a partir de \textcite[cap.~4]{Gandolfo2002International} y \textcite[cap.~2]{SarnoTaylor2002Economics}.}
-\end{infografia}
+\end{infografiacaja}
+\end{anotaciones}
 
 \paragraph{c) Evidencia empírica}
 \begin{itemize}
@@ -558,10 +581,10 @@ Expectativas & racionales & regresivas (racionales con el $\theta$ adecuado) & e
   Si el nivel de precios está por debajo del de largo plazo, el tipo de interés está por debajo de $i^*$, y la moneda tiene que estar más depreciada que a largo plazo, para que se espere una apreciación que compense el menor interés.
 \item \emph{Una expansión monetaria permanente y no anticipada} ($dm>0$): $\bar e$ y $\bar p$ suben en $dm$, pero en el impacto $p$ no se mueve. De \eqref{eq:dornbusch-activos}:
   \funcionclave[eq:sobrerreaccion]{\frac{de}{dm}=1+\frac{1}{h\,\theta}>1}
-\item \emph{Gráficamente} (gráfico~\ref{fig:dornbusch-mercados}: en el panel superior, la PNCI en el plano $(i,E)$; en el inferior, el mercado de dinero, con los saldos reales hacia abajo):
+\item \emph{Gráficamente} (gráfico~\ref{fig:dornbusch-mercados}), con 2 gráficos que comparten el tipo de interés en el eje vertical: a la izquierda, el mercado de dinero, en el plano $(M/P,i)$; a la derecha, el de divisas, con la PNCI en el plano $(E,i)$, decreciente porque a un tipo de cambio más depreciado hoy le corresponde una menor depreciación esperada:
   \begin{itemize}
   \item con los precios fijos, la oferta real de dinero sube y el tipo de interés baja de $i_0$ a $i_1$ (efecto liquidez);
-  \item los agentes saben que a largo plazo el tipo de cambio será más alto, y la curva de la PNCI se desplaza \emph{hacia arriba}: a cada tipo de interés le corresponde una moneda más depreciada;
+  \item los agentes saben que a largo plazo el tipo de cambio será más alto, y la curva de la PNCI se desplaza \emph{hacia la derecha}: a cada tipo de interés le corresponde una moneda más depreciada;
   \item al nuevo tipo de interés, más bajo, le corresponde un tipo de cambio $E_1$ aún más alto que el de largo plazo, $E_2$: la moneda sobrerreacciona (del punto $A$ al $B$);
   \item a medida que suben los precios, los saldos reales vuelven a su nivel inicial, el tipo de interés vuelve a $i_0$ y la moneda se aprecia hasta $E_2$ (punto $C$).
   \end{itemize}
@@ -570,7 +593,7 @@ Expectativas & racionales & regresivas (racionales con el $\theta$ adecuado) & e
 \begin{figure}[H]
 \centering
 \caption{El modelo de \autor{Dornbusch}: los mercados de activos tras un aumento permanente de la oferta monetaria}\label{fig:dornbusch-mercados}
-\grafico[0.62\textwidth]{dornbusch-mercados}
+\grafico[0.95\textwidth]{dornbusch-mercados}
 \fuente{elaboración propia a partir de \textcite[cap.~15]{KrugmanObstfeldMelitz2022International}.}
 \end{figure}
 
@@ -618,6 +641,26 @@ Expectativas & racionales & regresivas (racionales con el $\theta$ adecuado) & e
 \item La volatilidad que explica es uno de los costes de la flotación que se pesan al elegir el régimen cambiario \vertema{3.B.15}.
 \end{itemize}
 
+\begin{anotaciones}[unbreakable]
+\textbf{Un mismo aumento del dinero en 3 mundos.} El gráfico~\ref{fig:dornbusch-comparacion} compara un aumento permanente del \emph{nivel} de la oferta monetaria, el mismo en los 3 casos, con las trayectorias del gráfico~\ref{fig:monetario-flexible} a la izquierda y los mercados de activos del gráfico~\ref{fig:dornbusch-mercados} a la derecha:
+\begin{itemize}
+\item \emph{(i) Precios flexibles}, el modelo de \autor{Frenkel} y \autor{Mussa}\nocite{Frenkel1976Monetary,Mussa1976Exchange}: los precios suben a la vez que el dinero, los saldos reales no cambian y el tipo de interés tampoco. La PNCI se desplaza y el tipo de cambio salta de una vez de $A$ a $C$, en la misma proporción que el dinero: no hay sobrerreacción.
+\item \emph{(ii) Precios rígidos y aumento no anunciado}, el caso de \autor{Dornbusch}: con los precios fijos, suben los saldos reales y baja el tipo de interés; la moneda salta más allá de su nuevo nivel de largo plazo (de $A$ a $B$) y después se aprecia hasta $C$ mientras los precios suben.
+\item \emph{(iii) Precios rígidos y aumento anunciado en $t_0$ y aplicado en $t_1$}, el caso de \autor{Wilson}\nocite{Wilson1979Anticipated}:
+  \begin{itemize}
+  \item en el anuncio, el dinero y los precios no se mueven, pero la moneda salta, menos que en (ii), de $A$ a $A'$;
+  \item entre $t_0$ y $t_1$ la moneda se sigue depreciando y, con ella, sube la demanda de bienes: los precios empiezan a subir, los saldos reales bajan y el tipo de interés \emph{sube} por encima de $i^*$, lo que la PNCI exige para que se espere esa depreciación (de $A'$ a $B'$);
+  \item en $t_1$ aumenta el dinero, el tipo de interés cae por debajo de $i^*$ ($B$) y, desde entonces, la moneda se aprecia hasta $C$, como en (ii).
+  \end{itemize}
+\end{itemize}
+Los 3 casos acaban en el mismo largo plazo, $C$: el dinero es neutral. Lo que cambia es el camino, y la rigidez de los precios es lo que hace que el tipo de cambio se pase de largo.
+\begin{figuracaja}
+\caption{Un aumento permanente de la oferta monetaria con precios flexibles, con precios rígidos sin anunciar y con precios rígidos anunciado}\label{fig:dornbusch-comparacion}
+\grafico[0.9\textwidth]{dornbusch-comparacion}
+\fuente{elaboración propia a partir de \textcite{Dornbusch1976Expectations}, \textcite{Wilson1979Anticipated} y \textcite[caps.~15 y 16]{KrugmanObstfeldMelitz2022International}.}
+\end{figuracaja}
+\end{anotaciones}
+
 % --------------------------------------------------------------------------
 \subsection{Enfoque de cartera (\autor{Branson}):\cortetitulo{} dinero y otros activos financieros}\label{sec:cartera}
 
@@ -638,38 +681,59 @@ Expectativas & racionales & regresivas (racionales con el $\theta$ adecuado) & e
 
 \subparagraph{ii) Desarrollo}
 \begin{itemize}
-\item La riqueza financiera ($W$, local de este modelo) y el equilibrio de los 3 mercados son:
-  \begin{align}
-  W&=M+B+E\,B^{*},\label{eq:riqueza-branson}\\
-  M&=w_{\mathrm M}\big(\underset{-}{i},\,\underset{-}{i^{*}+\gamma E^e}\big)\,W,\qquad
-  B=w_{\mathrm B}\big(\underset{+}{i},\,\underset{-}{i^{*}+\gamma E^e}\big)\,W,\nonumber\\
-  E\,B^{*}&=w_{\mathrm B^*}\big(\underset{-}{i},\,\underset{+}{i^{*}+\gamma E^e}\big)\,W,\label{eq:demandas-branson}
-  \end{align}
-  con $w_{\mathrm M}+w_{\mathrm B}+w_{\mathrm B^*}=1$ las partes de la riqueza en cada activo (las de la cartera de \autor{Tobin}: aquí $w$ no es el salario). Por la ley de \autor{Walras}, si 2 mercados están en equilibrio, también el tercero.
-\item La sustituibilidad imperfecta se resume en una prima de riesgo, $i=i^*+\gamma E^e+\rho$, con $\rho$ creciente en la oferta relativa de activos nacionales: para que los inversores tengan más bonos nacionales, hay que pagarles más.
-\item \emph{Gráficamente}, en el plano $(i,E)$, con $i$ en abscisas, el mismo que el de \autor{Dornbusch} (gráfico~\ref{fig:branson}). Una depreciación ($\uparrow E$) sube el valor en moneda nacional de $B^*$ y, con él, la riqueza; por eso:
+\item \emph{Las ecuaciones}: el modelo tiene 6, que se agrupan en 4 bloques. Las de las 3 demandas son las que se suelen escribir juntas, pero cada una es el equilibrio de un mercado y lleva su propio número:
   \begin{itemize}
-  \item $MM$ (dinero) tiene pendiente \emph{positiva}: la mayor riqueza aumenta la demanda de dinero, y $i$ tiene que subir para reducirla;
-  \item $BB$ (bonos nacionales) tiene pendiente \emph{negativa}: aumenta la demanda de bonos, y $i$ tiene que bajar;
-  \item $B^*B^*$ (bonos extranjeros) tiene pendiente \emph{negativa} y es \emph{menos inclinada} que $BB$: si sube $i$, se demandan menos bonos extranjeros, y hace falta una apreciación que reduzca su valor. La demanda de bonos nacionales responde más a $i$ que la de extranjeros.
-  \end{itemize}
-  Las pendientes, con su derivación, están en el anexo~\ref{anexo:cartera}.
-\item \emph{A medio plazo}, la cuenta corriente en moneda nacional es el saldo comercial, que depende del tipo real, más las rentas de los bonos extranjeros. Con tipo flexible y sin intervención, el superávit corriente es la acumulación de bonos extranjeros:
+  \item \emph{la riqueza financiera} de los residentes ($W$, local de este modelo), con los bonos extranjeros valorados en moneda nacional:
+  \begin{equation}\label{eq:riqueza-branson}
+  W=M+B+E\,B^{*} ;
+  \end{equation}
+  \item \emph{el equilibrio de los 3 mercados de activos}: la oferta de cada uno, dada, es igual a la parte de la riqueza que los residentes quieren tener en él, que depende de su rendimiento ($i$) y del de los demás ($i^*+\gamma E^e$ para los bonos extranjeros):
+  \begin{align}
+  M&=w_{\mathrm M}\big(\underset{-}{i},\,\underset{-}{i^{*}+\gamma E^e}\big)\,W &&\text{dinero (curva $MM$),}\label{eq:branson-mm}\\
+  B&=w_{\mathrm B}\big(\underset{+}{i},\,\underset{-}{i^{*}+\gamma E^e}\big)\,W &&\text{bonos nacionales (curva $BB$),}\label{eq:branson-bb}\\
+  E\,B^{*}&=w_{\mathrm B^*}\big(\underset{-}{i},\,\underset{+}{i^{*}+\gamma E^e}\big)\,W &&\text{bonos extranjeros (curva $B^*B^*$);}\label{eq:branson-bbe}
+  \end{align}
+  \item \emph{la restricción de balance}: las partes de la riqueza (las de la cartera de \autor{Tobin}: aquí $w$ no es el salario) suman 1, de modo que, por la ley de \autor{Walras}, si 2 mercados están en equilibrio, también el tercero:
+  \begin{equation}\label{eq:branson-suma}
+  w_{\mathrm M}+w_{\mathrm B}+w_{\mathrm B^*}=1 ;
+  \end{equation}
+  \item \emph{la dinámica a medio plazo}: la cuenta corriente en moneda nacional es el saldo comercial, que depende del tipo real, más las rentas de los bonos extranjeros, y con tipo flexible y sin intervención es la acumulación de bonos extranjeros:
   \begin{equation}\label{eq:acumulacion-branson}
   E\,\dot B^{*}=\mathrm{CC}=XN(q)+i^{*}E\,B^{*} .
   \end{equation}
+  \end{itemize}
+\item \emph{La prima de riesgo}: la sustituibilidad imperfecta se resume en $i=i^*+\gamma E^e+\rho$, con $\rho$ creciente en la oferta relativa de activos nacionales: para que los inversores tengan más bonos nacionales, hay que pagarles más. No es una ecuación más, sino lo que implican \eqref{eq:branson-bb} y \eqref{eq:branson-bbe}.
+\item \emph{El equilibrio a corto plazo}, antes de los ejercicios de estática comparativa:
+  \begin{itemize}
+  \item \emph{Qué está dado y qué se determina}: a corto plazo, los saldos $M$, $B$ y $B^*$, los precios, la renta e $i^*$ están dados, y las expectativas son estáticas ($\gamma E^e=0$). Quedan 3 incógnitas, $W$, $i$ y $E$, y 4 ecuaciones, \eqref{eq:riqueza-branson}-\eqref{eq:branson-bbe}, de las que por \eqref{eq:branson-suma} solo 3 son independientes: el sistema está determinado.
+  \item \emph{Gráficamente}, cada mercado da una curva en el plano $(i,E)$, con $i$ en abscisas y $E$ en ordenadas (al revés que en el gráfico~\ref{fig:dornbusch-mercados} de \autor{Dornbusch}), y el equilibrio $A$ está donde se cortan (gráfico~\ref{fig:branson-equilibrio}). Una depreciación ($\uparrow E$) sube el valor en moneda nacional de $B^*$ y, con él, la riqueza; por eso:
+    \begin{itemize}
+    \item $MM$ (dinero) tiene pendiente \emph{positiva}: la mayor riqueza aumenta la demanda de dinero, y $i$ tiene que subir para reducirla;
+    \item $BB$ (bonos nacionales) tiene pendiente \emph{negativa}: aumenta la demanda de bonos, y $i$ tiene que bajar;
+    \item $B^*B^*$ (bonos extranjeros) tiene pendiente \emph{negativa} y es \emph{menos inclinada} que $BB$: si sube $i$, se demandan menos bonos extranjeros, y hace falta una apreciación que reduzca su valor. La demanda de bonos nacionales responde más a $i$ que la de extranjeros.
+    \end{itemize}
+    Las pendientes, con su derivación, están en el anexo~\ref{anexo:cartera}.
+  \item \emph{Cómo se llega a $A$}: si la moneda estuviera más depreciada que en $A$, con el tipo de interés de $A$, la riqueza sería mayor, habría exceso de demanda de dinero y de bonos nacionales y exceso de oferta de bonos extranjeros; al venderlos para comprar moneda nacional, los residentes apreciarían la moneda hasta $E_0$.
+  \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{El modelo de cartera: equilibrio a corto plazo, compra de bonos nacionales y compra de bonos extranjeros}\label{fig:branson}
+\caption{El modelo de cartera: el equilibrio a corto plazo}\label{fig:branson-equilibrio}
+\grafico[0.62\textwidth]{branson-equilibrio}
+\fuente{elaboración propia a partir de \textcite{Branson1977Asset} y \textcite{BransonHenderson1985}. Plano $(i,E)$; $\uparrow E$ es depreciación.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de cartera: compra de bonos nacionales ($B$) y compra de bonos extranjeros ($C$)}\label{fig:branson}
 \grafico[0.62\textwidth]{branson}
 \fuente{elaboración propia a partir de \textcite{Branson1977Asset} y \textcite{BransonHenderson1985}. Plano $(i,E)$; $\uparrow E$ es depreciación.}
 \end{figure}
 
 \subparagraph{iii) Implicaciones}
 \begin{itemize}
-\item El tipo de cambio se mueve no solo con las perturbaciones del mercado de dinero, sino también con las de los mercados de bonos, porque los agentes recomponen su cartera hasta la diversificación deseada. La tabla~\ref{tab:branson} resume las perturbaciones habituales.
+\item El tipo de cambio se mueve no solo con las perturbaciones del mercado de dinero, sino también con las de los mercados de bonos, porque los agentes recomponen su cartera hasta la diversificación deseada. La tabla~\ref{tab:branson} resume las perturbaciones habituales, y el anexo~\ref{anexo:cartera} dibuja una a una las que no están en el gráfico~\ref{fig:branson}.
 \item \emph{La regla para mover las curvas}: a cada $E$, ¿qué $i$ vacía el mercado? ($MM$ y $BB$ se desplazan a izquierda o derecha); a cada $i$, ¿qué $E$? ($B^*B^*$, arriba o abajo).
   \begin{itemize}
   \item \emph{Expansión monetaria por compra de bonos nacionales}: $MM$ y $BB$ se desplazan a la izquierda; baja $i$ y se deprecia la moneda (punto $B$ del gráfico).
@@ -777,15 +841,18 @@ Cartera & ofertas de activos, riqueza y cuenta corriente & corto y medio & \text
 \subsubsection{\autor{Meese} y \autor{Rogoff} (1983) y la desconexión}\label{sec:meese-rogoff}
 
 \begin{itemize}
-\item \emph{Idea}: si un modelo predice mal, ¿es porque no conocemos bien las condiciones iniciales o porque el modelo está mal especificado? Es la pregunta metodológica de \textcite{Blaug1992Methodology}, y el tipo de cambio es un buen ejemplo.
+\item \emph{Idea}: si un modelo predice mal, ¿es porque no conocemos bien las condiciones iniciales o porque el modelo está mal especificado? Es la pregunta metodológica de \textcite{Blaug1980Methodology}: «cuando se nos da una explicación que no nos provee de una predicción, ¿es porque no podemos estar seguros de toda la información relevante acerca de las condiciones iniciales, o es porque nos están dando gato por liebre?».
+  \begin{itemize}
+  \item El tipo de cambio es un buen ejemplo del dilema, y nadie contrastó con rigor la capacidad de predicción de los modelos de activos hasta \autor{Meese} y \autor{Rogoff}.
+  \end{itemize}
 \item \emph{El contraste} de \textcite{MeeseRogoff1983} tiene 3 ideas:
   \begin{itemize}
   \item \emph{fuera de la muestra}: se estiman los modelos (el monetario flexible, el de \autor{Dornbusch} y \autor{Frankel} y uno con la cuenta corriente) con una parte de los datos y se predice el resto, porque ajustarse bien dentro de la muestra no prueba nada;
   \item \emph{frente a un paseo aleatorio}: la predicción ingenua de que el tipo de mañana será el de hoy;\footnote{Comparar con un paseo aleatorio no supone que el tipo de cambio lo siga: es tomar como referencia el modelo de predicción más simple, el de un agente que no tiene idea de lo que va a pasar y da la misma probabilidad a una apreciación que a una depreciación.}
   \item \emph{con los fundamentos observados} (predicciones \emph{ex post}): se da a los modelos el valor que de verdad tuvieron el dinero, la renta o los tipos de interés, para que no fallen por predecirlos mal.\footnote{Por ejemplo, con datos de 1970 a 2020, se estiman las ecuaciones con los de 1970 a 1995 y se predice de 1996 a 2020 con los valores observados de las variables exógenas en esos años. La muestra de \autor{Meese} y \autor{Rogoff} iba de marzo de 1973 a junio de 1981.}
   \end{itemize}
-\item \emph{Resultado}: a 1, 6 y 12 meses, ningún modelo predice mejor que el paseo aleatorio. El fallo no es de estimación sino de especificación: los modelos, o la estabilidad de sus parámetros, están mal. El error de un paseo aleatorio crece con el horizonte, y aun así no lo superan; solo a varios años los fundamentos monetarios recuperan algo de capacidad\nocite{Mark1995}.
-\item Es la manifestación más conocida de lo que \textcite{ObstfeldRogoff2000Puzzles} llaman la \concepto{paradoja de la desconexión} (\emph{exchange rate disconnect puzzle}): el tipo de cambio apenas se relaciona con los fundamentos macroeconómicos a corto y medio plazo.\footnote{Otra lectura posible de un comportamiento que parece aleatorio es el \emph{caos determinista}: un sistema dinámico determinista con dependencia sensible de las condiciones iniciales genera series que pasan por aleatorias\nocite{Lorenz1963Deterministic}. La economía empezó a contrastarlo en los años 80, más de 20 años después\nocite{Brock1986Distinguishing}. En los tipos de cambio, las no linealidades que se encuentran las explica sobre todo una volatilidad que cambia en el tiempo y se agrupa, no el caos\nocite{Hsieh1989Testing}: que el residuo de un modelo no sea ruido blanco no prueba que haya caos.}
+\item \emph{Resultado}: a 1, 6 y 12 meses, ningún modelo predice mejor que el paseo aleatorio. El fallo no es de estimación sino de especificación: los modelos, o la estabilidad de sus parámetros, están mal: con la pregunta de \autor{Blaug}, nos estarían dando gato por liebre. El error de un paseo aleatorio crece con el horizonte, y aun así no lo superan; solo a varios años los fundamentos monetarios recuperan algo de capacidad\nocite{Mark1995}.
+\item Es la manifestación más conocida de lo que \textcite{ObstfeldRogoff2000Puzzles} llaman la \concepto{paradoja de la desconexión} (\emph{exchange rate disconnect puzzle}): el tipo de cambio apenas se relaciona con los fundamentos macroeconómicos a corto y medio plazo.\footnote{Otra lectura posible de un comportamiento que parece aleatorio es el \emph{caos determinista}, que se desarrolla en el recuadro del final de este apartado.}
 \end{itemize}
 
 \begin{notaopositor}
@@ -802,6 +869,27 @@ Cartera & ofertas de activos, riqueza y cuenta corriente & corto y medio & \text
   \end{itemize}
 \item Las explicaciones de la desconexión y las nuevas líneas teóricas son el objeto del bloque~\ref{sec:recientes}.
 \end{itemize}
+
+\begin{anotaciones}[unbreakable]
+\textbf{El caos determinista: ¿aleatorio o solo imprevisible?} Si el tipo de cambio parece un paseo aleatorio, puede ser que lo muevan perturbaciones aleatorias, o que lo mueva un sistema determinista que \emph{parece} aleatorio. Es la idea del \emph{caos determinista}: un comportamiento aparentemente aleatorio generado por un sistema dinámico sin ningún elemento aleatorio. La teoría matemática es compleja, y basta con 3 ideas:
+\begin{itemize}
+\item \emph{Parece aleatorio}: la trayectoria no se distingue a simple vista de la de una variable aleatoria. El ejemplo de siempre es el generador de números aleatorios de un ordenador: un algoritmo determinista produce una serie que pasa cualquier contraste de aleatoriedad.
+\item \emph{Es imprevisible}: parece una contradicción, porque un sistema determinista se puede simular y calcular para cualquier fecha futura. La clave es la \emph{dependencia sensible de las condiciones iniciales}: 2 trayectorias que empiezan casi en el mismo punto acaban sin parecerse en nada, mientras que en un sistema determinista «normal» siguen juntas. Como las condiciones iniciales nunca se conocen con precisión infinita, a partir de cierto horizonte el sistema no se puede predecir.
+\item \emph{Un ejemplo}: la aplicación logística de \textcite{May1976Simple}, $x_{t+1}=4\,x_t(1-x_t)$, es una sola ecuación sin perturbaciones. Desde $x_0=0{,}3$ y desde $x_0=0{,}3001$, las 2 series coinciden durante unos 10 periodos y después van cada una por su lado (gráfico~\ref{fig:caos-logistica}).
+\end{itemize}
+\begin{figuracaja}
+\caption{La aplicación logística $x_{t+1}=4\,x_t(1-x_t)$ desde 2 condiciones iniciales casi iguales}\label{fig:caos-logistica}
+\grafico[0.85\textwidth]{caos-logistica}
+\fuente{elaboración propia a partir de \textcite{May1976Simple}.}
+\end{figuracaja}
+\emph{En la economía y en los tipos de cambio}:
+\begin{itemize}
+\item la física lo descubrió con \textcite{Lorenz1963Deterministic}, y la economía empezó a contrastarlo más de 20 años después, con \textcite{Brock1986Distinguishing}. El contraste de referencia, el BDS\nocite{BrockDechertScheinkmanLeBaron1996}, comprueba si los residuos de un modelo son independientes: si no lo son, queda una dependencia no lineal que el modelo no recoge;
+\item en el mercado de divisas, la interacción de chartistas y fundamentalistas puede generar dinámicas caóticas en modelos deterministas muy sencillos\nocite{DeGrauweDewachterEmbrechts1993}: el tipo de cambio se movería sin perturbaciones y sería imprevisible a corto plazo aunque se conociera el modelo;
+\item pero en los datos, las no linealidades de los tipos de cambio diarios las explica sobre todo una volatilidad que cambia en el tiempo y se agrupa (modelos GARCH), no el caos\nocite{Hsieh1989Testing}: que el residuo de un modelo no sea ruido blanco no prueba que haya caos.
+\end{itemize}
+La conclusión vuelve a \autor{Meese} y \autor{Rogoff}: que el tipo de cambio sea imprevisible no implica que no tenga causas.
+\end{anotaciones}
 
 \begin{itemize}
 \item \emph{Recapitulación del bloque~\ref{sec:activos}}: el modelo monetario da el ancla de largo plazo; \autor{Dornbusch} explica la volatilidad con precios rígidos; el de cartera añade la prima de riesgo, la riqueza y la cuenta corriente. Los 3 explican el largo plazo, pero ninguno predice el corto.
@@ -1051,6 +1139,30 @@ EBA (FMI, 2013) & el que da la cuenta corriente que corresponde a los fundamento
 \item Lo que hace el tipo de cambio ante la política monetaria, y cuánto traspasa a los precios, depende de la moneda en que se facturan las exportaciones: la sobrerreacción no es un resultado general.
 \end{itemize}
 
+\begin{anotaciones}[unbreakable]
+\textbf{Los ejemplos de \autor{Corsetti} y \autor{Pesenti}: una expansión monetaria del 10~\%.} El banco central del país, España en la zona del euro, aumenta un 10~\% el gasto nominal que sostiene ($\mu$), con la política extranjera, la de Estados Unidos, dada. En la versión simple, $E=\mu/\mu^*$: el euro se deprecia un 10~\% frente al dólar en los 3 casos. Lo que cambia es lo que pasa con los precios y con la producción, según en qué moneda fijen los precios los exportadores\nocite{CorsettiPesenti2009,BettsDevereux2000,Gopinath2020DCP}:
+\begin{itemize}
+\item \emph{PCP, precios en la moneda del productor}:
+  \begin{itemize}
+  \item un vino español de 10 euros pasa de costar 11,44 a 10,40 dólares en Nueva York (con $E$ de 0,874 a 0,961 euros por dólar), y un ordenador estadounidense de 1.000 dólares pasa de 874 a 961 euros en Madrid;
+  \item el gasto de los 2 países se desvía hacia los bienes españoles (\emph{desviación del gasto}): la producción española sube y la estadounidense pierde demanda, aunque los consumidores estadounidenses ganan, porque compran más barato. La relación real de intercambio de España empeora;
+  \item como la depreciación nominal pasa entera a los precios, es real desde el primer día, y el tipo de cambio no necesita pasarse de largo: no hay sobrerreacción.
+  \end{itemize}
+\item \emph{LCP, precios en la moneda del comprador}:
+  \begin{itemize}
+  \item el vino sigue costando 11,44 dólares en Nueva York y el ordenador, 874 euros en Madrid: la depreciación no cambia los precios que pagan los consumidores, y no hay desviación del gasto;
+  \item el bodeguero español ingresa ahora 11 euros por cada botella (11,44 dólares a 0,961), y el fabricante estadounidense, solo 909 dólares por cada ordenador: la relación real de intercambio de España \emph{mejora}, y la expansión beneficia a España a costa de Estados Unidos (\emph{empobrecer al vecino}, como en \autor{Betts} y \autor{Devereux});
+  \item como los precios de importación no se mueven, el tipo de cambio tiene que moverse más para que los mercados de activos absorban el mismo aumento del dinero: vuelve la sobrerreacción de \autor{Dornbusch}.
+  \end{itemize}
+\item \emph{DCP, precios en dólares} (la «moneda dominante» de \autor{Gopinath} y otros):
+  \begin{itemize}
+  \item si una empresa coreana factura en dólares sus ventas a España, su producto se encarece un 10~\% en euros aunque el won no se haya movido frente al euro; y si el vino español se factura en dólares en Corea, su precio allí no cambia;
+  \item la depreciación frente al dólar reduce las importaciones españolas, pero apenas aumenta las exportaciones: el ajuste llega casi todo por el lado de las importaciones, y lo que importa es el tipo de cambio frente al dólar, no el bilateral\nocite{Gopinath2020DCP}.
+  \end{itemize}
+\end{itemize}
+Los precios de este ejemplo son ilustrativos (0,874 euros por dólar era el tipo de julio de 2026, el del índice Big Mac). Cuanto mayor es la parte del comercio facturada en la moneda del comprador o en dólares, menor es el traspaso del tipo de cambio a los precios de importación y más tiene que moverse el tipo de cambio \vertema{3.A.32} \vertema{3.A.37}.
+\end{anotaciones}
+
 \paragraph{c) Valoración}
 \begin{itemize}
 \item Aportan rigor microeconómico y permiten analizar el bienestar y la política óptima, y explican el traspaso incompleto del tipo de cambio a los precios.
@@ -1221,39 +1333,78 @@ Cada respuesta a la desconexión mira a un sitio distinto: la regla de \autor{Ta
 \section{Anexo: el modelo de \autor{Dornbusch} completo}\label{anexo:dornbusch}
 
 \begin{itemize}
-\item \emph{Ecuaciones}: las de \eqref{eq:dornbusch-pnci}-\eqref{eq:dornbusch-precios}, en logaritmos (salvo los tipos de interés), con los precios extranjeros normalizados a 1 ($p^*=0$) y la renta en su nivel de pleno empleo, $\bar y$:
+\item Este anexo deriva el modelo de \textcite{Dornbusch1976Expectations} en el plano $(p,e)$ en 4 pasos: las ecuaciones, el estado estacionario, el diagrama de fases, que se construye curva a curva (gráfico~\ref{fig:dornbusch-fases-construccion}), y, solo entonces, el ejercicio de estática comparativa (gráfico~\ref{fig:dornbusch-fases}).
+\end{itemize}
+
+\paragraph{a) Las ecuaciones}
+\begin{itemize}
+\item Son las de \eqref{eq:dornbusch-pnci}-\eqref{eq:dornbusch-precios}, en logaritmos (salvo los tipos de interés), con los precios extranjeros normalizados a 1 ($p^*=0$) y la renta en su nivel de pleno empleo, $\bar y$:
   \begin{align*}
-  m-p&=k\,\bar y-h\,i,\\
-  i&=i^{*}+\dot e^{\,e},\qquad \dot e^{\,e}=\theta\,(\bar e-e),\\
-  \dot p&=\psi\,\big[\bar a+\nu\,(e-p)-b\,i-\bar y\big] .
+  m-p&=k\,\bar y-h\,i &&\text{mercado de dinero,}\\
+  i&=i^{*}+\dot e^{\,e},\qquad \dot e^{\,e}=\theta\,(\bar e-e) &&\text{PNCI y expectativas regresivas,}\\
+  \dot p&=\psi\,\big[\bar a+\nu\,(e-p)-b\,i-\bar y\big] &&\text{ajuste lento de los precios.}
   \end{align*}
-  Los precios suben si la demanda de bienes supera a la producción, a una velocidad $\psi>0$; la demanda crece con el tipo real ($\nu>0$) y baja con el tipo de interés ($b>0$).
-\item \emph{Estado estacionario} ($\dot p=0$, $\dot e=0$, $i=i^*$): $\bar p=m-k\,\bar y+h\,i^*$ y $\bar e=\bar p+(\bar y+b\,i^*-\bar a)/\nu$. Por tanto, $d\bar p/dm=d\bar e/dm=1$: el dinero es neutral, y los estados estacionarios posibles están sobre una recta de pendiente 1, la de la PPA a largo plazo.
-\item \emph{Curva de los activos}: restando el equilibrio monetario de largo plazo del de corto, $i-i^*=(p-\bar p)/h$, y con la PNCI y las expectativas, $\theta(\bar e-e)=(p-\bar p)/h$:
-  \[
-  e=\bar e-\frac{1}{h\,\theta}\,(p-\bar p),
-  \]
-  decreciente en el plano $(p,e)$.
-\item \emph{Curva $\dot e=0$}: con previsión perfecta, la depreciación es el diferencial de intereses, $\dot e=i-i^*=(p-\bar p)/h$, que es nulo en $p=\bar p$: una vertical. A su derecha, la moneda se deprecia; a su izquierda, se aprecia.
-\item \emph{Curva $\dot p=0$}: restando el estado estacionario y con $i-i^*=(p-\bar p)/h$,
-  \[
-  \dot p=\psi\Big[\nu\,(e-\bar e)-\Big(\nu+\frac{b}{h}\Big)(p-\bar p)\Big],
-  \]
-  y $\dot p=0$ es la recta $e-\bar e=\big(1+\tfrac{b}{\nu h}\big)(p-\bar p)$, más inclinada que la de 45°. Por encima de ella, los precios suben; por debajo, bajan.
-\item \emph{Expectativas racionales}: a lo largo de la curva de los activos, $\dot p=-\psi\big(\tfrac{\nu}{h\theta}+\nu+\tfrac{b}{h}\big)(p-\bar p)$ y la depreciación que ocurre es $\dot e=-\dot p/(h\theta)$. Para que coincida con la esperada, $(p-\bar p)/h$, tiene que cumplirse $\psi\big(\tfrac{\nu}{h\theta}+\nu+\tfrac{b}{h}\big)=\theta$, es decir, $\theta^2-\psi\big(\nu+\tfrac{b}{h}\big)\theta-\tfrac{\psi\nu}{h}=0$, cuya raíz positiva es
+\item Los precios suben si la demanda de bienes supera a la producción, a una velocidad $\psi>0$; la demanda crece con el tipo real ($\nu>0$) y baja con el tipo de interés ($b>0$).
+\end{itemize}
+
+\paragraph{b) El estado estacionario}
+\begin{itemize}
+\item Con $\dot p=0$, $\dot e=0$ e $i=i^*$: $\bar p=m-k\,\bar y+h\,i^*$ y $\bar e=\bar p+(\bar y+b\,i^*-\bar a)/\nu$.
+\item Por tanto, $d\bar p/dm=d\bar e/dm=1$: el dinero es neutral, y los estados estacionarios posibles están sobre una recta de pendiente 1, la de la PPA a largo plazo.
+\end{itemize}
+
+\paragraph{c) El diagrama de fases, paso a paso}
+\begin{itemize}
+\item El diagrama se construye con 2 curvas, una por mercado, que dicen dónde no se mueve cada variable, y con las flechas que dicen hacia dónde se mueve fuera de ellas (gráfico~\ref{fig:dornbusch-fases-construccion}):
+  \begin{itemize}
+  \item \emph{paso 1, los mercados de activos y la curva $\dot e=0$} (panel a):
+    \begin{itemize}
+    \item restando el equilibrio monetario de largo plazo del de corto, el diferencial de intereses depende de lo lejos que están los precios de su largo plazo: $i-i^*=(p-\bar p)/h$;
+    \item con previsión perfecta, la depreciación es ese diferencial, $\dot e=i-i^*=(p-\bar p)/h$, que es nulo en $p=\bar p$: la curva $\dot e=0$ es una vertical;
+    \item a su derecha, los precios son altos, los saldos reales bajos y el tipo de interés mayor que $i^*$, y la moneda se deprecia (flecha hacia arriba); a su izquierda, se aprecia (hacia abajo);
+    \end{itemize}
+  \item \emph{paso 2, el mercado de bienes y la curva $\dot p=0$} (panel b):
+    \begin{itemize}
+    \item restando el estado estacionario y con $i-i^*=(p-\bar p)/h$,
+      \[
+      \dot p=\psi\Big[\nu\,(e-\bar e)-\Big(\nu+\frac{b}{h}\Big)(p-\bar p)\Big];
+      \]
+    \item $\dot p=0$ es la recta $e-\bar e=\big(1+\tfrac{b}{\nu h}\big)(p-\bar p)$, más inclinada que la de 45°: si suben los precios, hace falta una depreciación mayor que compense a la vez el encarecimiento de los bienes nacionales y la subida del tipo de interés;
+    \item por encima de ella, la moneda está depreciada, hay exceso de demanda de bienes y los precios suben (flecha hacia la derecha); por debajo, bajan (hacia la izquierda);
+    \end{itemize}
+  \item \emph{paso 3, las 2 curvas juntas} (panel c): se cortan en el estado estacionario, $A$, sobre la recta de la PPA, y dividen el plano en 4 regiones, cada una con su par de flechas;
+  \item \emph{paso 4, la senda de silla} (panel d):
+    \begin{itemize}
+    \item las flechas muestran que el sistema es un \emph{punto de silla}: en 2 de las regiones las flechas llevan hacia $A$ y en las otras 2 se alejan;
+    \item solo una trayectoria, decreciente, llega a $A$: la senda de silla $SS$. Cualquier otra acaba alejándose sin límite (en discontinua), con una moneda que se deprecia o se aprecia sin fin, algo que unos agentes que miran hacia delante no esperarían;
+    \item la senda de silla es la curva de los activos del texto, $e=\bar e-\frac{1}{h\theta}(p-\bar p)$, con el $\theta$ de las expectativas racionales.
+    \end{itemize}
+  \end{itemize}
+\item \emph{Las expectativas racionales}: a lo largo de la curva de los activos, $\dot p=-\psi\big(\tfrac{\nu}{h\theta}+\nu+\tfrac{b}{h}\big)(p-\bar p)$ y la depreciación que ocurre es $\dot e=-\dot p/(h\theta)$. Para que coincida con la esperada, $(p-\bar p)/h$, tiene que cumplirse $\psi\big(\tfrac{\nu}{h\theta}+\nu+\tfrac{b}{h}\big)=\theta$, es decir, $\theta^2-\psi\big(\nu+\tfrac{b}{h}\big)\theta-\tfrac{\psi\nu}{h}=0$, cuya raíz positiva es
   \begin{equation}\label{eq:theta-racional}
   \theta=\frac{\psi}{2}\Big(\nu+\frac{b}{h}\Big)+\sqrt{\frac{\psi^2}{4}\Big(\nu+\frac{b}{h}\Big)^2+\frac{\psi\,\nu}{h}} .
   \end{equation}
   \begin{itemize}
-  \item Con este $\theta$, la curva de los activos es la \emph{senda de silla}: la única que lleva al estado estacionario. Las demás trayectorias se alejan de él.
+  \item Con este $\theta$, la curva de los activos es la senda de silla: la única que lleva al estado estacionario.
   \item Cuanto más rápido se ajustan los precios (mayor $\psi$), mayor es $\theta$ y menor la sobrerreacción, $1/(h\theta)$ en \eqref{eq:sobrerreaccion}; con precios flexibles ($\psi\to\infty$), no la hay.
   \item Sin el efecto del tipo de interés en la demanda ($b=0$), $\theta=\psi\nu/2+\sqrt{\psi^2\nu^2/4+\psi\nu/h}$.
   \end{itemize}
-\item \emph{Una expansión monetaria permanente y no anticipada} (gráfico~\ref{fig:dornbusch-fases}):
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Cómo se construye el diagrama de fases del modelo de \autor{Dornbusch}}\label{fig:dornbusch-fases-construccion}
+\grafico[0.95\textwidth]{dornbusch-fases-construccion}
+\fuente{elaboración propia a partir de \textcite{Dornbusch1976Expectations} y \textcite[cap.~9]{ObstfeldRogoff1996Foundations}.}
+\end{figure}
+
+\paragraph{d) Estática comparativa: una expansión monetaria permanente y no anticipada}
+\begin{itemize}
+\item Con el diagrama ya construido, el ejercicio se lee en 3 pasos (gráfico~\ref{fig:dornbusch-fases}):
   \begin{itemize}
-  \item el estado estacionario pasa de $A$ a $C$ por la recta de la PPA, y la senda de silla se desplaza de $SS_0$ a $SS_1$;
-  \item en el impacto, $p$ no se mueve, y el tipo de cambio salta hasta la nueva senda de silla, al punto $B$, por encima de $\bar e_1$: es la sobrerreacción;
-  \item después, la economía baja por la senda de $B$ a $C$: los precios suben y la moneda se aprecia hasta $\bar e_1$. \findemo
+  \item \emph{el largo plazo se desplaza}: con más dinero, $\bar p$ y $\bar e$ suben en la misma proporción; la vertical $\dot e=0$ se desplaza a $\bar p_1$, la recta $\dot p=0$ la acompaña, y el estado estacionario pasa de $A$ a $C$ por la recta de la PPA. La senda de silla se desplaza de $SS_0$ a $SS_1$;
+  \item \emph{el impacto}: $p$ no se mueve, porque los precios son rígidos, y el tipo de cambio salta hasta la nueva senda de silla, al punto $B$, por encima de $\bar e_1$: es la sobrerreacción;
+  \item \emph{el ajuste}: después, la economía baja por la senda de $B$ a $C$: los precios suben y la moneda se aprecia hasta $\bar e_1$. \findemo
   \end{itemize}
 \end{itemize}
 
@@ -1264,16 +1415,21 @@ Cada respuesta a la desconexión mira a un sitio distinto: la regla de \autor{Ta
 \fuente{elaboración propia a partir de \textcite{Dornbusch1976Expectations} y \textcite[cap.~9]{ObstfeldRogoff1996Foundations}.}
 \end{figure}
 
+\paragraph{e) Extensiones}
 \begin{itemize}
-\item \emph{Una expansión anunciada}: en el anuncio, $p$ tampoco se mueve, y el tipo de cambio salta, menos que si no se anticipa, a una trayectoria que, siguiendo la dinámica con el dinero inicial, llega a la nueva senda de silla justo cuando la expansión se aplica. Hasta entonces la moneda se sigue depreciando, y después se aprecia hacia su nuevo nivel de largo plazo\nocite{Wilson1979Anticipated}.
-\item \emph{Producción variable}: si la renta responde a corto plazo a la demanda, la expansión monetaria sube también la renta y, con ella, la demanda de dinero, y el tipo de interés cae menos. Como $e-\bar e=(i-i^*)/\theta$, la moneda sobrerreacciona solo si el tipo de interés baja, es decir, si el aumento de la demanda de dinero que causa la mayor renta es menor que el de la oferta; si es mayor, el tipo de interés sube y la moneda se deprecia menos que a largo plazo\nocite{Dornbusch1976Expectations}.
+\item El mismo diagrama sirve para 2 casos que se preguntan a menudo:
+  \begin{itemize}
+  \item \emph{una expansión anunciada}: en el anuncio, $p$ tampoco se mueve, y el tipo de cambio salta, menos que si no se anticipa, a una trayectoria que, siguiendo la dinámica con el dinero inicial, llega a la nueva senda de silla justo cuando la expansión se aplica. Hasta entonces la moneda se sigue depreciando, y después se aprecia hacia su nuevo nivel de largo plazo\nocite{Wilson1979Anticipated} (caso iii del gráfico~\ref{fig:dornbusch-comparacion});
+  \item \emph{producción variable}: si la renta responde a corto plazo a la demanda, la expansión monetaria sube también la renta y, con ella, la demanda de dinero, y el tipo de interés cae menos. Como $e-\bar e=(i-i^*)/\theta$, la moneda sobrerreacciona solo si el tipo de interés baja, es decir, si el aumento de la demanda de dinero que causa la mayor renta es menor que el de la oferta; si es mayor, el tipo de interés sube y la moneda se deprecia menos que a largo plazo\nocite{Dornbusch1976Expectations}.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
-\section{Anexo: las pendientes del modelo de cartera}\label{anexo:cartera}
+\section{Anexo: el modelo de cartera: pendientes y más ejemplos}\label{anexo:cartera}
 
+\paragraph{a) Las pendientes de las 3 curvas}
 \begin{itemize}
-\item Con $W=M+B+E\,B^*$ \eqref{eq:riqueza-branson}, una depreciación sube la riqueza en $dW=B^*\,dE$. Diferenciando las 3 condiciones de equilibrio \eqref{eq:demandas-branson} con las ofertas de activos dadas, $i^*$ fijo y expectativas estáticas:
+\item Con $W=M+B+E\,B^*$ \eqref{eq:riqueza-branson}, una depreciación sube la riqueza en $dW=B^*\,dE$. Diferenciando las 3 condiciones de equilibrio, \eqref{eq:branson-mm}-\eqref{eq:branson-bbe}, con las ofertas de activos dadas, $i^*$ fijo y expectativas estáticas:
   \begin{align*}
   MM:&\quad 0=w'_{\mathrm M}\,W\,di+w_{\mathrm M}\,B^*\,dE &&\Longrightarrow\quad \left.\frac{dE}{di}\right|_{MM}=-\frac{w'_{\mathrm M}\,W}{w_{\mathrm M}\,B^*}>0,\\
   BB:&\quad 0=w'_{\mathrm B}\,W\,di+w_{\mathrm B}\,B^*\,dE &&\Longrightarrow\quad \left.\frac{dE}{di}\right|_{BB}=-\frac{w'_{\mathrm B}\,W}{w_{\mathrm B}\,B^*}<0,\\
@@ -1284,6 +1440,45 @@ Cada respuesta a la desconexión mira a un sitio distinto: la regla de \autor{Ta
 \item $BB$ es más inclinada que $B^*B^*$ si $w'_{\mathrm B}/w_{\mathrm B}>|w'_{\mathrm B^*}|/(1-w_{\mathrm B^*})$. Basta con que la demanda de bonos nacionales responda a $i$ al menos tanto como la de extranjeros, $w'_{\mathrm B}\geq|w'_{\mathrm B^*}|$, porque $w_{\mathrm B}<1-w_{\mathrm B^*}$ (la diferencia es $w_{\mathrm M}>0$).
 \item Como $w_{\mathrm M}+w_{\mathrm B}+w_{\mathrm B^*}=1$ para todo $i$, también $w'_{\mathrm M}+w'_{\mathrm B}+w'_{\mathrm B^*}=0$: si 2 mercados se vacían, el tercero también (ley de \autor{Walras}). \findemo
 \end{itemize}
+
+\paragraph{b) Más ejemplos de estática comparativa}
+\begin{itemize}
+\item Todos se resuelven con la misma regla que en el texto: a cada tipo de cambio, ¿qué tipo de interés vacía el mercado? ($MM$ y $BB$, a izquierda o derecha); a cada tipo de interés, ¿qué tipo de cambio? ($B^*B^*$, arriba o abajo). Basta con 2 curvas, $MM$ y $B^*B^*$; $BB$ pasa por el mismo punto (gráfico~\ref{fig:branson-ejemplos}):
+  \begin{itemize}
+  \item \emph{intervención esterilizada}: el banco central compra divisas y vende bonos nacionales, sin cambiar la cantidad de dinero ($dB=-E\,dB^*$ en manos del público).
+    \begin{itemize}
+    \item $MM$ no se mueve: ni el dinero ni la riqueza cambian;
+    \item $BB$ se desplaza a la derecha (hay más bonos nacionales que colocar y $i$ tiene que subir) y $B^*B^*$, hacia arriba (hay menos bonos extranjeros en manos del público y la moneda tiene que depreciarse para que se quieran tener menos);
+    \item resultado: sube $i$ y se deprecia la moneda. En el modelo monetario no tendría ningún efecto, porque los bonos de los 2 países son el mismo activo;
+    \end{itemize}
+  \item \emph{déficit público financiado con deuda} ($\uparrow B$):
+    \begin{itemize}
+    \item aumenta la riqueza, y con ella la demanda de dinero: $MM$ a la derecha;
+    \item hay más bonos nacionales: $BB$ a la derecha;
+    \item la mayor riqueza aumenta la demanda de bonos extranjeros: $B^*B^*$ hacia arriba;
+    \item resultado: sube $i$, y el efecto sobre $E$ es ambiguo: depende de si los bonos nacionales sustituyen más al dinero (se deprecia) o a los bonos extranjeros (se aprecia). En el gráfico apenas cambia;
+    \end{itemize}
+  \item \emph{superávit corriente} ($\uparrow B^*$), la dinámica a medio plazo de \eqref{eq:acumulacion-branson}:
+    \begin{itemize}
+    \item aumenta la riqueza: $MM$ a la derecha y $BB$ a la izquierda;
+    \item hay más bonos extranjeros que colocar: $B^*B^*$ hacia abajo;
+    \item resultado: la moneda se aprecia, y el efecto sobre $i$ es ambiguo. Es el mecanismo por el que, tras una depreciación, la acumulación de activos exteriores devuelve poco a poco el tipo de cambio;
+    \end{itemize}
+  \item \emph{subida del tipo de interés extranjero} ($\uparrow i^*$):
+    \begin{itemize}
+    \item los bonos extranjeros rinden más y se demandan más: $B^*B^*$ hacia arriba;
+    \item se demandan menos dinero y menos bonos nacionales: $MM$ a la izquierda y $BB$ a la derecha;
+    \item resultado: la moneda se deprecia, y el efecto sobre $i$ es ambiguo. Lo mismo ocurre si se espera una depreciación ($\uparrow\gamma E^e$), que sube igual el rendimiento de los bonos extranjeros: las expectativas se cumplen a sí mismas.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo de cartera: 4 ejemplos más de estática comparativa}\label{fig:branson-ejemplos}
+\grafico[0.95\textwidth]{branson-ejemplos}
+\fuente{elaboración propia a partir de \textcite{BransonHenderson1985} y \textcite{Gandolfo2002International}. Plano $(i,E)$; $\uparrow E$ es depreciación. En continua, las curvas iniciales; en discontinua, las nuevas; en rojo, el nuevo equilibrio, $A'$.}
+\end{figure}
 
 % ==========================================================================
 \section{Anexo: otros factores reales a largo plazo}\label{anexo:mishkin}

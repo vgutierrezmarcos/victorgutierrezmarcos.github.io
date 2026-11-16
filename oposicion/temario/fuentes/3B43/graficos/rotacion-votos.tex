@@ -1,0 +1,56 @@
+% El sistema de rotación de votos del Consejo de Gobierno del BCE (2026, 21
+% gobernadores tras la entrada de Bulgaria): el Comité Ejecutivo vota siempre (6);
+% grupo 1, los 5 mayores, 4 votos (vota cada uno el 80 % de los meses); grupo 2,
+% los otros 16, 11 votos (el 69 %). Ejemplo: noviembre de 2026 (calendario del BCE).
+% Los gobernadores se ordenan como en el calendario del BCE (por el nombre del país
+% en su lengua): cada mes deja de votar 1 del grupo 1 y un bloque de 5 del grupo 2,
+% que avanza 3 puestos al mes.
+% Idea de la infografía: la del manual de Baldwin y Wyplosz, que usaba el tema antiguo.
+% Capas: Comité Ejecutivo -> grupo 1 -> grupo 2 -> rotación -> total.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    vota/.style={circle,draw=#1,fill=#1!25,thick,minimum size=8.6mm,inner sep=0pt,font=\scriptsize\bfseries},
+    novota/.style={circle,draw=tceegris,dashed,fill=white,thick,minimum size=8.6mm,inner sep=0pt,font=\scriptsize,text=tceegris},
+    caja/.style={thick,rounded corners=4pt},
+    rotulo/.style={font=\footnotesize,align=left,anchor=north west},
+    cifra/.style={font=\footnotesize,align=center}]
+  % --- 1: Comité Ejecutivo ---------------------------------------------------
+  \capa{1}{\draw[caja,draw=tceedorado,fill=tceedorado!8] (0,6.3) rectangle (15.6,8.1);}
+  \capa{1}{\node[rotulo] at (0.15,8.0) {\textbf{Comité Ejecutivo}\\votos permanentes};}
+  \capa{1}{\foreach \i in {1,...,6} {\node[vota=tceedorado] at (3.6+1.05*\i,7.2) {};}}
+  \capa{1}{\node[cifra] at (13.4,7.2) {\textbf{6 votos}\\siempre};}
+  % --- 2: grupo 1 ---------------------------------------------------------------
+  \capa{2}{\draw[caja,draw=tceemorado,fill=tceemorado!6] (0,3.9) rectangle (15.6,6.0);}
+  \capa{2}{\node[rotulo] at (0.15,5.9) {\textbf{Grupo 1}\\los 5 mayores\\(economía y\\sector financiero)};}
+  \capa{2}{\foreach \c [count=\i] in {DE,ES,FR,IT,NL} {
+      \ifnum\i=4 \node[novota] (g1\i) at (2.75+1.05*\i,4.95) {\c};
+      \else \node[vota=tceemorado] (g1\i) at (2.75+1.05*\i,4.95) {\c};\fi}}
+  \capa{2}{\node[cifra] at (13.4,4.95) {\textbf{4 votos}\\cada uno vota\\el 80~\% de los meses};}
+  % --- 3: grupo 2 ---------------------------------------------------------------
+  \capa{3}{\draw[caja,draw=tceeazul,fill=tceeazul!5] (0,0.3) rectangle (15.6,3.6);}
+  \capa{3}{\node[rotulo] at (0.15,3.5) {\textbf{Grupo 2}\\los otros 16};}
+  \capa{3}{\foreach \c [count=\i] in {BE,BG,EE,IE,GR,HR,CY,LV} {
+      \node[vota=tceeazul] (g2\i) at (1.85+1.05*\i,2.6) {\c};}}
+  \capa{3}{\foreach \c [count=\i] in {LT,LU,MT,AT,PT,SI,SK,FI} {
+      \pgfmathtruncatemacro{\k}{\i+8}
+      \ifnum\i>2 \ifnum\i<8 \node[novota] (g2\k) at (1.85+1.05*\i,1.45) {\c};
+        \else \node[vota=tceeazul] (g2\k) at (1.85+1.05*\i,1.45) {\c};\fi
+      \else \node[vota=tceeazul] (g2\k) at (1.85+1.05*\i,1.45) {\c};\fi}}
+  \capa{3}{\node[cifra] at (13.4,2.05) {\textbf{11 votos}\\cada uno vota\\el 69~\% de los meses};}
+  % --- 4: la rotación -------------------------------------------------------------
+  \capa{4}{\draw[thick,tceerojo,rounded corners=3pt,dashed] ($(g211.north west)+(-0.08,0.08)$) rectangle ($(g215.south east)+(0.08,-0.08)$);}
+  \capa{4}{\node[font=\scriptsize,text=tceerojo,align=center,anchor=north] at ($(g213.south)+(1.05,-0.1)$) {noviembre: no votan estos 5; en diciembre el bloque avanza 3 puestos};}
+  \capa{4}{\draw[->,thick,tceerojo] ($(g14.south)+(0,-0.08)$) to[bend right=40] ($(g15.south)+(0,-0.08)$);}
+  \capa{4}{\node[font=\scriptsize,text=tceerojo,anchor=west,align=left] at ($(g15.east)+(0.15,-0.25)$) {en diciembre no vota NL:\\cada mes, el siguiente};}
+  % --- 5: el total ------------------------------------------------------------------
+  \capa{5}{\node[font=\small,align=center] at (7.8,-0.15) {\textbf{6 + 4 + 11 = 21 votos} en cada reunión; los 27 miembros hablan, solo 21 votan; mayoría simple, la presidenta desempata};}
+  % leyenda
+  \capa{2}{\node[vota=tceegris,minimum size=4mm] at (0.35,8.5) {};}
+  \capa{2}{\node[font=\scriptsize,anchor=west] at (0.6,8.5) {vota};}
+  \capa{2}{\node[novota,minimum size=4mm] at (1.75,8.5) {};}
+  \capa{2}{\node[font=\scriptsize,anchor=west] at (2.0,8.5) {no vota (noviembre de 2026)};}
+\end{tikzpicture}
+\end{document}

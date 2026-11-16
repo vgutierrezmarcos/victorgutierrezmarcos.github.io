@@ -1,48 +1,65 @@
-% Concentración bancaria en España, 1999-2025: índice de Herfindahl-Hirschman
-% de los activos (barras, eje izquierdo, 0-10.000) y cuota de las 5 mayores
-% entidades (CR5, línea, eje derecho, %).
+% Concentración bancaria en España frente a la zona del euro, 1999-2025, en 2
+% paneles: izquierda, cuota de las 5 mayores entidades en los activos (CR5, %);
+% derecha, índice de Herfindahl-Hirschman de los activos (IHH, 0-10.000).
 % Datos: ../datos/concentracion-bancaria-espana.csv (BCE, SSI; consulta del
-% 12/11/2026). 1999: IHH 427 y CR5 40,3 %; 2007: 459 y 41,0 %; máximo del IHH
-% 1.331 en 2023; CR5 máxima 69,6 % en 2022; 2025: 1.306 y 67,4 %.
-% Sombreado: la reestructuración del sector, 2010-2015 (rótulo, no dato del CSV).
-% Orden de capas: sombreado -> barras -> ejes -> línea -> puntos -> rótulos.
-% Colores: IHH dorado claro (barras), CR5 morado (línea).
+% 16/11/2026). España: 2007, CR5 41,0 % e IHH 459; 2025, 67,4 % y 1.306.
+% Zona del euro (media simple de los 20 países): 2007, 61,6 % y 1.231; 2025,
+% 71,3 % y 1.511.
+% Sombreado: la reestructuración del sector en España, 2010-2015 (rótulo, no
+% dato del CSV).
+% Orden de capas: sombreado -> ejes -> líneas -> puntos -> rótulos, panel a panel.
+% Colores: España morado (como en el resto del tema), zona del euro dorado.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \newcommand{\cbdatos}{../datos/concentracion-bancaria-espana.csv}
-\pgfplotsset{cbejes/.style={width=12.5cm, height=6cm, scale only axis=false,
-    xmin=1998.3, xmax=2025.7, xtick={1999,2003,...,2023,2025},
+\pgfplotsset{cbejes/.style={width=7.6cm, height=5.6cm, scale only axis=false,
+    xmin=1998.3, xmax=2026.2, xtick={1999,2007,2015,2025},
     x tick label style={/pgf/number format/1000 sep={}},
     /pgf/number format/use comma, /pgf/number format/1000 sep={.},
-    tick align=outside, clip=false,
-    ticklabel style={font=\footnotesize}, label style={font=\small}}}
-\colorlet{cbihh}{tceedorado!45}
+    axis lines*=left, tick align=outside, clip=false,
+    ticklabel style={font=\footnotesize}, label style={font=\small},
+    title style={font=\small\bfseries}}}
+\colorlet{cbes}{tceemorado}
+\colorlet{cbea}{tceedorado}
 \begin{document}
 \begin{tikzpicture}[tcee]
-  % 1-2: eje izquierdo (IHH), sombreado de la reestructuración y barras
-  \begin{axis}[cbejes, axis y line*=left, axis x line*=bottom,
-      ymin=0, ymax=1600, ytick={0,400,...,1600},
-      ylabel={IHH (0-10.000)}, dicapas]
-    \capa{1}{\dicsombra[fill=tceegris!15]{2009.5}{0}{2015.5}{1600}}
-    \capa{1}{\dicrotulo[anchor=north, font=\footnotesize, text=tceegris!80!black, align=center]{(2012.5,1590)}{reestructuración\\2010-2015}}
-    \capa{2}{\addplot[on layer=dicbarras, ybar, bar width=0.55, dicbarra=cbihh, forget plot]
-      table[col sep=comma, comment chars={\#}, x=anio, y=ihh_activos] {\cbdatos};}
-    \capa{2}{\dicrotulo[anchor=south, font=\footnotesize, text=tceedorado!60!black]{(1999,427)}{427}}
-  \end{axis}
-  % 3-5: eje derecho (CR5), línea, puntos y rótulos
-  \begin{axis}[cbejes, axis y line*=right, axis x line=none,
-      ymin=0, ymax=80, ytick={0,20,...,80},
-      ylabel={CR5 (\% de los activos)}, dicapas]
-    \capa{3}{\addplot[diclinea=tceemorado, line width=1.6pt]
+  % Panel izquierdo: CR5
+  \begin{axis}[cbejes, name=cr5, ymin=0, ymax=85, ytick={0,20,...,80},
+      title={Cuota de las 5 mayores (CR5, \% de los activos)}, dicapas]
+    \capa{1}{\dicsombra[fill=tceegris!15]{2009.5}{0}{2015.5}{85}}
+    \capa{1}{\dicrotulo[anchor=north, font=\scriptsize, text=tceegris!80!black, align=center]{(2012.5,84)}{reestructuración\\en España}}
+    \capa{2}{\addplot[diclinea=cbea, line width=1.4pt, dashed]
+      table[col sep=comma, comment chars={\#}, x=anio, y=cr5_euro_pct] {\cbdatos};}
+    \capa{3}{\addplot[diclinea=cbes, line width=1.6pt]
       table[col sep=comma, comment chars={\#}, x=anio, y=cr5_activos_pct] {\cbdatos};}
-    \capa{4}{\addplot[dicpuntos=tceemorado, forget plot] coordinates {(1999,40.3) (2007,41.0) (2022,69.6) (2025,67.4)};}
-    \capa{5}{\dicrotulo[anchor=south east, font=\footnotesize, text=tceemorado]{(1999.2,41.5)}{40,3~\%}}
-    \capa{5}{\dicrotulo[anchor=north, font=\footnotesize, text=tceemorado]{(2007,39.5)}{41,0~\%}}
-    \capa{5}{\dicrotulo[anchor=south, font=\footnotesize, text=tceemorado]{(2021.6,70.8)}{69,6~\%}}
-    \capa{5}{\dicrotulo[anchor=south, font=\footnotesize, text=tceemorado]{(2025,69.3)}{67,4~\%}}
-    \capa{5}{\dicrotulo[anchor=west, font=\footnotesize, text=tceemorado]{(1999.2,57)}{CR5: cuota de las 5 mayores (eje dcho.)}}
-    \capa{5}{\dicrotulo[anchor=west, font=\footnotesize, text=tceedorado!60!black]{(1999.2,51.5)}{IHH de los activos (barras, eje izdo.)}}
+    \capa{4}{\addplot[dicpuntos=cbes, forget plot] coordinates {(2007,41.0) (2025,67.4)};}
+    \capa{4}{\addplot[dicpuntos=cbea, forget plot] coordinates {(2007,61.6) (2025,71.3)};}
+    \capa{5}{\dicrotulo[anchor=north, font=\footnotesize, text=cbes]{(2007,39.5)}{41,0}}
+    \capa{5}{\dicrotulo[anchor=south, font=\footnotesize, text=cbea!70!black]{(2007,63)}{61,6}}
+    \capa{5}{\dicrotulo[anchor=north west, font=\footnotesize, text=cbes]{(2025.1,67.2)}{67,4}}
+    \capa{5}{\dicrotulo[anchor=south west, font=\footnotesize, text=cbea!70!black]{(2025.1,71.5)}{71,3}}
+    \capa{5}{\dicrotulo[anchor=west, font=\footnotesize, text=cbes]{(1999,22)}{España}}
+    \capa{5}{\dicrotulo[anchor=west, font=\footnotesize, text=cbea!70!black]{(1999,13)}{Zona del euro (media de 20 países)}}
   \end{axis}
+  % Panel derecho: IHH
+  \begin{axis}[cbejes, name=ihh, at={(cr5.east)}, anchor=west, xshift=1.6cm,
+      ymin=0, ymax=1700, ytick={0,400,...,1600},
+      title={Índice de Herfindahl-Hirschman (0-10.000)}, dicapas]
+    \capa{6}{\dicsombra[fill=tceegris!15]{2009.5}{0}{2015.5}{1700}}
+    \capa{7}{\addplot[diclinea=cbea, line width=1.4pt, dashed]
+      table[col sep=comma, comment chars={\#}, x=anio, y=ihh_euro] {\cbdatos};}
+    \capa{8}{\addplot[diclinea=cbes, line width=1.6pt]
+      table[col sep=comma, comment chars={\#}, x=anio, y=ihh_activos] {\cbdatos};}
+    \capa{9}{\addplot[dicpuntos=cbes, forget plot] coordinates {(2007,459) (2025,1306)};}
+    \capa{9}{\addplot[dicpuntos=cbea, forget plot] coordinates {(2007,1231) (2025,1511)};}
+    \capa{10}{\dicrotulo[anchor=north, font=\footnotesize, text=cbes]{(2007,430)}{459}}
+    \capa{10}{\dicrotulo[anchor=south, font=\footnotesize, text=cbea!70!black]{(2007,1265)}{1.231}}
+    \capa{10}{\dicrotulo[anchor=north west, font=\footnotesize, text=cbes]{(2025.1,1300)}{1.306}}
+    \capa{10}{\dicrotulo[anchor=south west, font=\footnotesize, text=cbea!70!black]{(2025.1,1520)}{1.511}}
+  \end{axis}
+  % Caja de los 2 paneles (las capas no amplían solas la del segundo)
+  \path (cr5.south west) ++(14.5,0) coordinate (cbfin);
+  \path (cbfin) ++(0,6.2);
 \end{tikzpicture}
 \end{document}

@@ -240,6 +240,7 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
   - (a) *Fundamentos, instrumentos y mercados*: I. Fundamentos comunes (qué es un derivado, para qué sirve, dónde se negocia, cómo se valora); II. Los instrumentos uno a uno (futuros, opciones, *swaps* y crédito); III. Riesgos, regulación y evidencia. Pros: sigue el título («instrumentos y mercados») y lo común sale una sola vez. Contras: II tendría unos 19-20′ de los 26′30″ y I y III serían muy cortos; obliga a bajar un nivel cada familia (II.2.5.x), que no existe en la plantilla (los modelos a)-e) con i)-iii) ya usan los 5 niveles), y rompe la estructura de bloques del tema antiguo (futuros, opciones, *swaps*).
   - (b) *Derivados lineales y no lineales*: I. Futuros, *forwards* y *swaps* (todos lineales, carteras de *forwards*); II. Opciones; III. Derivados de crédito y mercados OTC tras 2008. Pros: los *swaps* van junto a lo que son (*forwards*), y el III enlaza los CDS con 2008 y la regulación. Contras: rompe el guion de 5 pasos por familia, cambia mucho el tema antiguo y deja los CDS, que son *swaps*, separados de ellos.
   - (c) **Aplicada**: se mantienen las 3 familias como apartados (el grueso del tema son los instrumentos) y lo común se reparte en 2 anclas fijas, una al principio y otra al final. Al principio, en I.2.1, «Según el mercado: organizados u OTC», que ahora dice expresamente que la distinción vale para todos los derivados y recoge los participantes, las infraestructuras (cámaras, registros, ISDA), el tamaño de los mercados organizados (FIA, gráfico movido) y MEFF/BME Clearing, que antes estaban en III.6. Al final, el III.6 pasa a ser «Los mercados OTC tras 2008: tamaño, regulación y estabilidad», presentado como cierre del tema (el grueso de lo OTC son *swaps* y la reforma nació de los CDS). La introducción (contextualización y estructura) anuncia las 2 anclas. Las remisiones a III.6 en el cuerpo pasan de 2 (introducción y *forwards*) a ninguna; solo queda una a III.6.1 desde I.2.1 (el tamaño de los OTC). Contras: III.6 sigue colgando del bloque de *swaps*; si se prefiere, se puede titular el III «Mercados de *swaps* y mercados OTC».
+  - **Resuelta por Víctor (16/11/2026)**: «El apartado III.6 me sigue sin convencer como apartado aparte. Creo conveniente integrarlo en la conclusión (de manera corta y yendo a lo relevante y llevar lo demás a anexos).» III.6 deja de ser apartado: lo esencial (tamaño de los OTC, reforma tras 2008 y efectos sobre la estabilidad) va en 3 viñetas de la recapitulación de la conclusión, y el resto, al anexo nuevo «Los mercados OTC tras 2008. Tamaño, regulación y estabilidad» (`anexo:otc`). I.2.1 (organizados frente a OTC) se mantiene como estaba.
 
 ## Enlaces del original (9/11/2026)
 
@@ -263,7 +264,7 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
   - `eq:spot-forward`, en I.5;
   - `eq:put-call`, en II.5;
   - `eq:black-scholes`, en II.5.
-- **Bloque I** (7′30″):
+- **Bloque I** (8′):
   - `ccp` pequeño (estrella frente a malla), con «cada día tiene su afán», diciendo que la distinción organizado/OTC vale para todos los derivados;
   - `pago-futuro`, largo y corto, con el ejemplo $F_0=100$, $S_T=140$ (±40) y la suma cero, y la vuelta al WTI;
   - la paridad, con «lo que se gana en los columpios se pierde en los tiovivos», y debajo solo `eq:coste-mantenimiento`;
@@ -277,11 +278,11 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
   - `arbol-binomial` con $\Delta=1/3$, $\pi=2/3$ y $c\approx9{,}09$, contado casi de palabra («la probabilidad real no aparece»);
   - Black-Scholes, la función clave y, debajo, «acción × $N(d_1)$ − bono × $N(d_2)$» frente a la paridad; la figura `determinantes-bs` en versión mínima (6 filas: variable, *call*, *put*, griega); $N(d_2)$, $N(d_1)$, sonrisa y VIX van de palabra o en `apunte`.
   - `valor-call` va como apoyo, solo si cabe.
-- **Bloque III** (7′):
+- **Bloque III** (6′):
   - `irs` (banco y empresa);
   - la valoración en una línea: «suma de *forwards*», $V=\sum(F_i-K_i)e^{-r_it_i}$, y, para el IRS, serie de FRA o $B_{\mathrm{fix}}-B_{\mathrm{fl}}$;
-  - III.6 (mercados OTC tras 2008) en 3 columnas, «tamaño», «reforma de 2009» y «riesgos», con 2-3 palabras en cada una.
-  - Los gráficos de datos (`bis-otc-derivados` en III.6 y `fia-bolsas-2025`, ahora en I.2) van solo como `apoyo:`, nunca se dibujan.
+  - Los gráficos de datos (`bis-otc-derivados`, ahora en el anexo de los mercados OTC, y `fia-bolsas-2025`, en I.2) van solo como `apoyo:`, nunca se dibujan.
+- **Conclusión** (1′30″, desde el 16/11/2026): además de la recapitulación de los 3 instrumentos, los mercados OTC tras 2008 de palabra, en 3 ideas (tamaño, reforma de 2009, riesgos para la estabilidad), en `modo: guion`.
 - **Gráfico conjunto por partes**: no hay un gráfico único del tema. Lo que se va completando es la columna del guion (con las 3 funciones clave a la derecha). Al final la pizarra queda con el guion y las 3 funciones clave.
 - **No se dicen números de tema en voz alta**: las extensiones se nombran por su contenido (opciones reales, estructura temporal de los tipos, crisis de 2008, regulación financiera).
 - **Anexos y notas**: son de profundización y no entran en el guion.
@@ -316,3 +317,14 @@ Números de gráficos, tablas y ecuaciones del PDF de la rama (tercer-ejercicio/
 - Páginas del tema: 35 → 39 (anexos 8, bibliografía 5). Crece por la infografía de página entera, la *put* protectora, la caja de las sintéticas y la de Black-Scholes; lo que no se canta va en cajas grises y anexos.
 - Notas nuevas: una (la de «sucesión de futuros» en III.5); es un solo argumento, sin lista.
 
+## Comentarios de Víctor (16/11/2026)
+
+| Comentario | Qué se ha hecho |
+|---|---|
+| «El apartado III.6 me sigue sin convencer como apartado aparte. Creo conveniente integrarlo en la conclusión (de manera corta y yendo a lo relevante y llevar lo demás a anexos).» | III.6 eliminado como apartado. En la conclusión, la recapitulación añade un párrafo («Queda la otra mitad del título, los mercados. De los OTC, el grueso, importan 3 cosas…») con 3 viñetas sangradas: tamaño (845 billones de nocional, casi 4/5 de tipos; valor bruto 22,8 billones, 2,7 %), reforma tras 2008 (Pittsburgh 2009: plataformas, cámaras y registros; EMIR, MiFIR y Dodd-Frank; casi el 80 % del nocional de tipos en cámara) y efectos sobre la estabilidad (reparten el riesgo y dan información, pero con apalancamiento, interconexión y márgenes procíclicos amplifican las crisis: AIG, marzo de 2020). Se quita de la relevancia «son el mayor mercado por nocional» (ya está en el tamaño) y la opinión dice ahora «la reforma de 2009 ha funcionado» sin repetir en qué consistió. El contenido completo de III.6 (tamaño y estructura, con el gráfico del BIS; regulación, con su nota de las ventas en corto; eficiencia y estabilidad, con el balance) pasa al anexo nuevo «Los mercados OTC tras 2008. Tamaño, regulación y estabilidad» (`anexo:otc`, antes del de test), con un párrafo de entrada que dice que desarrolla lo que la conclusión resume. I.2.1 sigue igual; su remisión al tamaño de los OTC apunta ahora a la conclusión y al anexo. |
+| Enlaces | La estructura de la introducción ya no anuncia III.6: dice que lo común se cuenta al principio (dónde se negocian, quién participa) y en la conclusión (balance de los OTC tras 2008), con el detalle en un anexo. La conclusión anticipada de III remite a la conclusión, y la recapitulación del bloque III termina con un nexo hacia ella (los mercados: cuánto pesan, cómo se regularon, si estabilizan). |
+| Minutos (siguen sumando 30) | Los 2′ de III.6 se reparten así: conclusión 1′ → 1′30″ (los mercados OTC; el verificador no deja pasar de 1′30″, CRITERIOS § 2); III.5 (valoración del *swap*) 1′ → 1′30″, con los 3 pasos de la idea general; III.2 2′30″ → 3′ (los CDS 45″ → 1′15″, con AIG y la reforma que provocaron, que enlaza con la conclusión); I.2 2′15″ → 2′45″ (participantes, tamaño de los organizados y MEFF, único sitio del cuerpo en que se habla de los mercados como tales). Bloques: I 7′30″ → 8′, III 7′ → 6′. Esquema, notas al opositor (general, de I y de III) e instrucciones del vídeo actualizados. |
+| Ficha | Esquema del cante (I 8′, I.2 2′45″, III «*Swaps*» 6′, III.2 3′, III.5 1′30″, sin III.6, «Conclusión: + mercados OTC tras 2008» 1′30″), pizarra, estructura de la introducción, idea clave de III sin el balance, sub III.6 quitado y, en la conclusión, una viñeta «Mercados OTC» con tamaño, reforma y estabilidad; la opinión, sin repetir la reforma. 4 páginas, a 9 pt. |
+
+- Páginas del tema (sin anexos ni bibliografía): 39 → 37; anexos 8 → 10; bibliografía 5; total del PDF, 52 en los 2 casos.
+- Sin dudas nuevas.

@@ -97,7 +97,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{14} (I.1, \tiempo{2};
 \minutos{14}
 
 \begin{notaopositor}
-En el cante (\tiempo{14}). Los instrumentos (\tiempo{2}): la tabla~\ref{tab:renta-fija-variable} en versión mínima (5 filas y 2 columnas), la rentabilidad de una acción \eqref{eq:rentabilidad-accion} y los 3 enfoques de análisis, de palabra, con la figura~\ref{figu:mapa-analisis} como guion (no se dibuja); los tipos de acciones y los mercados no se cantan. \autor{Markowitz} (\tiempo{2,75}): la media y la varianza de la cartera, con la \eqref{eq:varianza-cartera}; los 3 casos de correlación de palabra, con el gráfico~\ref{fig:correlaciones} solo si da tiempo; el problema del inversor (la utilidad sujeta a la frontera eficiente, que es a su vez un problema de optimización) y sus 2 etapas, con el gráfico~\ref{fig:markowitz-a} (etapa objetiva) completado en el~\ref{fig:markowitz} (etapa subjetiva), con el dicho «no poner todos los huevos en la misma cesta» y su giro: más que de cestas, se trata de qué gallinas se llevan bien. \autor{Tobin} (\tiempo{1,75}): sobre el mismo gráfico, $r_f$ y la recta tangente (gráfico~\ref{fig:cml}), la \eqref{eq:cml} y la separación. \autor{Sharpe} (\tiempo{1}): el gráfico~\ref{fig:diversificacion} y la \eqref{eq:riesgo-sistematico}; el límite y la diversificación internacional no se cantan. CAPM (\tiempo{4}): los supuestos, la derivación en 3 frases, la \eqref{eq:sml}, qué es la beta (definición, interpretación, referencia 1 y que no es la volatilidad) y el gráfico~\ref{fig:sml} con el alfa de \autor{Jensen}, con «cuando llueve, todos se mojan»; las extensiones en \tiempo{0,5} (solo el C-CAPM y el enigma de la prima); la evidencia y la crítica de \autor{Roll}, de palabra. APT (\tiempo{2,5}): la idea del arbitraje, la \eqref{eq:apt} bajo la SML y el CAPM como caso particular; de \autor{Fama} y \autor{French} se dice «mercado, tamaño y valor». La caja de la beta (clasificación, triángulo del riesgo y determinantes), la caja de la varianza nula, la tabla~\ref{tab:capm-apt} y las derivaciones del anexo~\ref{anexo:derivaciones} no se cantan.
+En el cante (\tiempo{14}). Los instrumentos (\tiempo{2}): la tabla~\ref{tab:renta-fija-variable} en versión mínima (5 filas y 2 columnas), la rentabilidad de una acción \eqref{eq:rentabilidad-accion} y los 3 enfoques de análisis, de palabra, con la figura~\ref{figu:mapa-analisis} como guion (no se dibuja); los tipos de acciones y los mercados no se cantan. \autor{Markowitz} (\tiempo{2,75}): el problema del inversor (la utilidad sujeta a la frontera eficiente, que es a su vez un problema de optimización); la media y la varianza de la cartera, con la \eqref{eq:varianza-cartera}; los 3 casos de correlación de palabra, con el gráfico~\ref{fig:correlaciones} solo si da tiempo; y las 2 etapas, con el gráfico~\ref{fig:markowitz-a} (etapa objetiva) completado en el~\ref{fig:markowitz} (etapa subjetiva), con el dicho «no poner todos los huevos en la misma cesta» y su giro: más que de cestas, se trata de qué gallinas se llevan bien. \autor{Tobin} (\tiempo{1,75}): sobre el mismo gráfico, $r_f$ y la recta tangente (gráfico~\ref{fig:cml}), la \eqref{eq:cml} y la separación. \autor{Sharpe} (\tiempo{1}): el gráfico~\ref{fig:diversificacion} y la \eqref{eq:riesgo-sistematico}; el límite y la diversificación internacional no se cantan. CAPM (\tiempo{4}): los supuestos, la derivación en 3 frases, la \eqref{eq:sml}, qué es la beta (definición, interpretación, referencia 1 y que no es la volatilidad) y el gráfico~\ref{fig:sml} con el alfa de \autor{Jensen}, con «cuando llueve, todos se mojan»; las extensiones en \tiempo{0,5} (solo el C-CAPM y el enigma de la prima); la evidencia y la crítica de \autor{Roll}, de palabra. APT (\tiempo{2,5}): la idea del arbitraje, la \eqref{eq:apt} bajo la SML y el CAPM como caso particular; de \autor{Fama} y \autor{French} se dice «mercado, tamaño y valor». La caja de la beta (clasificación, triángulo del riesgo y determinantes), la caja de la varianza nula, la tabla~\ref{tab:capm-apt} y las derivaciones del anexo~\ref{anexo:derivaciones} no se cantan.
 \end{notaopositor}
 
 \begin{itemize}
@@ -186,7 +186,7 @@ Las salidas a bolsa combinan a menudo las 2. Una vía reciente son las sociedade
 \centering
 \caption{Las 3 maneras de analizar una acción: qué aporta cada modelo y por qué se pasa al siguiente}\label{figu:mapa-analisis}
 \grafico[0.95\textwidth]{mapa-analisis}
-\fuente{elaboración propia. A la izquierda, en rojo, la limitación de cada modelo que lleva al siguiente; la eficiencia de los mercados (bloque~\ref{sec:emh-bloque}) decide si tiene sentido la gestión activa, y el análisis fundamental toma del CAPM su tasa de descuento.}
+\fuente{elaboración propia. A la izquierda, los modelos de la teoría de la elección de cartera (en verde, barra morada; apartado~\ref{sec:eleccion-cartera}) y los de valoración de activos (en dorado; apartado~\ref{sec:valoracion}), y en rojo la limitación de cada modelo que lleva al siguiente; la eficiencia de los mercados (bloque~\ref{sec:emh-bloque}) decide si tiene sentido la gestión activa, y el análisis fundamental toma del CAPM su tasa de descuento.}
 \end{infografia}
 
 % --------------------------------------------------------------------------
@@ -222,6 +222,15 @@ Las salidas a bolsa combinan a menudo las 2. Una vía reciente son las sociedade
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
+\item \emph{El problema del inversor}: elige los pesos $w_1,\dots,w_n$ que maximizan su utilidad, creciente en la rentabilidad esperada de la cartera y decreciente en su riesgo, pero solo entre las carteras de la frontera eficiente:
+  \[
+  \optim{\max}{w_1,\dots,w_n}{U\big(\overset{+}{\mathbb{E}[r_p]},\overset{-}{\sigma_p^2}\big)}{(\sigma_p,\mathbb{E}[r_p])\ \text{en la frontera eficiente}}
+  \]
+  Y la frontera eficiente es, a su vez, la solución de otro problema de optimización: las carteras que dan la máxima rentabilidad esperada para cada nivel de riesgo $\bar\sigma^2$,
+  \[
+  \optim{\max}{w_1,\dots,w_n}{\mathbb{E}[r_p]=\sum_{i=1}^{n}w_i\,\mathbb{E}[r_i]}{\sigma_p^2=\sum_{i=1}^{n}\sum_{j=1}^{n}w_iw_j\,\sigma_{ij}=\bar\sigma^2\\ \sum_{i=1}^{n}w_i=1\\ w_i\geq0}
+  \]
+  El problema anidado tiene, por tanto, 2 partes: una que no depende de las preferencias (la frontera) y otra que sí (la elección en ella). Por eso se resuelve en 2 etapas, que se dibujan una tras otra en el mismo gráfico. Antes, hace falta saber cómo dependen la media y la varianza de la cartera de los pesos.
 \item \emph{Media y varianza de una cartera}: con pesos $w_i$ que suman 1, la rentabilidad esperada de la cartera es la media ponderada de las de sus activos, pero su riesgo no: depende de las covarianzas.
   \begin{equation}\label{eq:media-cartera}
   \mathbb{E}[r_p]=\sum_{i=1}^{n}w_i\,\mathbb{E}[r_i],\qquad \sum_{i=1}^{n}w_i=1
@@ -274,15 +283,7 @@ $-1<\mathrm{corr}(r_A,r_B)<1$ & \textcolor{tceerojo}{No} & \textcolor{tceerojo}{
 \end{tablacaja}
 \end{anotaciones}
 \begin{itemize}
-\item \emph{El problema del inversor}: elige los pesos $w_1,\dots,w_n$ que maximizan su utilidad, creciente en la rentabilidad esperada de la cartera y decreciente en su riesgo, pero solo entre las carteras de la frontera eficiente:
-  \[
-  \optim{\max}{w_1,\dots,w_n}{U\big(\overset{+}{\mathbb{E}[r_p]},\overset{-}{\sigma_p^2}\big)}{(\sigma_p,\mathbb{E}[r_p])\ \text{en la frontera eficiente}}
-  \]
-  Y la frontera eficiente es, a su vez, la solución de otro problema de optimización: las carteras que dan la máxima rentabilidad esperada para cada nivel de riesgo $\bar\sigma^2$,
-  \[
-  \optim{\max}{w_1,\dots,w_n}{\mathbb{E}[r_p]=\sum_{i=1}^{n}w_i\,\mathbb{E}[r_i]}{\sigma_p^2=\sum_{i=1}^{n}\sum_{j=1}^{n}w_iw_j\,\sigma_{ij}=\bar\sigma^2\\ \sum_{i=1}^{n}w_i=1\\ w_i\geq0}
-  \]
-  El problema anidado tiene, por tanto, 2 partes: una que no depende de las preferencias (la frontera) y otra que sí (la elección en ella). Por eso se resuelve en 2 etapas, que se dibujan una tras otra en el mismo gráfico.
+\item Con estas piezas se resuelve el problema del inversor en sus 2 etapas.
 \item \emph{Primera etapa, objetiva}, igual para todos los inversores que comparten las estimaciones: la \concepto{frontera de mínima varianza}. En la práctica se calcula al revés que en el problema anterior, con el mismo resultado: las carteras de menor riesgo para cada rentabilidad esperada $\bar r$,
   \[
   \optim{\min}{w_1,\dots,w_n}{\sigma_p^2=\sum_{i=1}^{n}\sum_{j=1}^{n}w_iw_j\,\sigma_{ij}}{\sum_{i=1}^{n}w_i\,\mathbb{E}[r_i]=\bar r\\ \sum_{i=1}^{n}w_i=1\\ w_i\geq0}

@@ -29,6 +29,20 @@ datos:
     proxima: "2027-10"
     familia: ue-presupuesto
 
+  - id: gastos-historico
+    texto: "pagos por áreas 1958-2025 y % de la RNB (0,1 % en 1965; 0,67 % en 1970; 1,13 % en 1993; 1,57 % en 2021; 1,16 % en 2025)"
+    donde: [3B37.tex, repaso/3B37-repaso.tex, datos/gastos-historico.csv, graficos/gastos-evolucion.tex]
+    valor: null
+    unidad: "miles de millones de euros; % de la RNB"
+    periodo: "1958-2025"
+    fuente: CE2009InformeFinanciero
+    organismo: Comisión Europea (DG BUDG)
+    serie: "Financial Report 2008, anexos 2 y 3 (1958-1999; % de la RNB 1970-1999, cálculo propio) y gastos-composicion.csv (2000-2025)"
+    url: https://commission.europa.eu/publications/financial-report-2008_en
+    periodicidad: anual (solo cambia el último año)
+    proxima: "2027-10 (añadir 2026 desde gastos-composicion.csv)"
+    familia: ue-presupuesto
+
   - id: saldos-netos
     texto: "saldos operativos 2025: Alemania -14.855 M€ (-0,32 % RNB); Polonia +6.674; Letonia +2,7 %; España -0,06 % (+0,38 % con NGEU; 2024: +0,14 % y +1,21 %)"
     donde: [3B37.tex, repaso/3B37-repaso.tex, datos/saldos-netos.csv, datos/saldos-netos-2025.csv, datos/espana-saldo-ue.csv, graficos/saldos-netos.tex]

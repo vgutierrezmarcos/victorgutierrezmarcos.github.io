@@ -1,0 +1,83 @@
+% Expansión fiscal en A con 2 países grandes, tipo de cambio fijo y movilidad
+% perfecta del capital (Mundell-Fleming, Mundell 1964; anexo de escenarios del
+% 3.B.19). Plano (Y, i). Misma escala que mundell-fleming-dos-paises.
+% Paso a paso:
+%   1. G_A sube: la IS de A a la derecha.
+%   2. Sube el tipo de A, entra capital; para sostener el tipo de cambio, el
+%      banco central de A compra divisas: su dinero sube y la LM va a la derecha.
+%   3. El tipo mundial sube, i* = 2,5 -> 3,0.
+%   4. B pierde reservas (su dinero baja: LM a la izquierda) y A le compra más
+%      (IS de B algo a la derecha).
+%   5. La renta de A sube; la de B, ambigua: aquí domina la subida del tipo y baja.
+% Rectas; A_0 = B_0 = (3; 2,5):
+%   A: IS Y = 5,5 - i; IS' Y = 7,5 - i; LM i = 2,5 + 0,8 (Y - 3); LM'' i = 3 + 0,8 (Y - 4,5)
+%      B (IS' y LM) = (4,111; 3,389); final (4,5; 3). Flecha 1 a i = 1,2: IS 4,3 -> IS' 6,3.
+%      Flecha 2 a i = 2: LM 2,375 -> LM'' 3,25.
+%   B: IS Y = 5,5 - i; IS' Y = 5,75 - i; LM i = 2,5 + 0,8 (Y - 3); LM'' i = 3 + 0,8 (Y - 2,75)
+%      final (2,75; 3): la subida de i* (0,5 a lo largo de la IS) pesa más que el
+%      desplazamiento de la IS (0,25): renta de B menor. Flecha 4a a i = 3,6: LM 4,375 -> LM'' 3,5.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.95cm,
+    declare function={lm(\y)=2.5+0.8*(\y-3); lmA(\y)=3+0.8*(\y-4.5); lmB(\y)=3+0.8*(\y-2.75);},
+    paso/.style={circle,draw=tceerojo,text=tceerojo,font=\scriptsize\bfseries,inner sep=1pt,minimum size=11pt,fill=white},
+    leyenda/.style={font=\footnotesize,anchor=west,inner sep=1pt}]
+  \newcommand{\pasoley}[4]{\node[paso] at (#1,#2) {#3}; \node[leyenda] at ({#1+0.25},#2) {#4};}
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-0.9,-2.95) rectangle (14.6,5.4);
+  % ---------------- País A ----------------
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,5.0) {a) País A (expansión fiscal)};}
+  \capa{1}{\ejes{$Y_A$}{$i$}{6.4}{4.7}}
+  \capa{2}{\draw[curva2] (1.0,4.5) -- (5.1,0.4) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{2}{\draw[curva1] (1.5,{lm(1.5)}) -- (5.0,{lm(5.0)}) node[etiqueta,right,text=tceemorado] {LM};}
+  \capa{2}{\draw[curva3] (0,2.5) node[left,text=black] {$i^*$} -- (6.2,2.5);}
+  \capa{2}{\node[punto] (A0) at (3,2.5) {};}
+  \capa{2}{\draw[guia] (A0) -- (3,0) node[below,text=black] {$Y_{A0}$};}
+  \capa{3}{\draw[curva2,desplazada] (3.0,4.5) -- (6.6,0.9) node[etiqueta,right,text=tceeazul] {IS$'$};}
+  \capa{3}{\draw[flecha] (4.4,1.2) -- (6.2,1.2);}
+  \capa{3}{\node[paso] at (5.3,1.2) {1};}
+  \capa{3}{\pasoley{0.15}{-0.95}{1}{$G_A\uparrow$: la IS de A, a la derecha}}
+  \capa{4}{\draw[curva1,desplazada] (2.4,{lmA(2.4)}) node[etiqueta,below,text=tceemorado] {LM$''$} -- (5.4,{lmA(5.4)});}
+  \capa{4}{\draw[flecha] (2.4,2.0) -- (3.2,2.0);}
+  \capa{4}{\node[paso] at (2.75,2.0) {2};}
+  \capa{4}{\pasoley{0.15}{-1.4}{2}{entra capital, A compra divisas: LM a la dcha.}}
+  \capa{5}{\draw[curva3,desplazada] (0,3.0) node[left,text=black] {$i^{*\prime}$} -- (6.2,3.0);}
+  \capa{5}{\draw[flecha] (0.55,2.55) -- (0.55,2.95);}
+  \capa{5}{\node[paso] at (0.95,2.75) {3};}
+  \capa{5}{\pasoley{0.15}{-1.85}{3}{el tipo mundial sube}}
+  % ---------------- País B ----------------
+  \begin{scope}[xshift=7.9*0.95cm]
+  \capa{1}{\node[font=\small\bfseries, anchor=base west] at (0,5.0) {b) País B};}
+  \capa{1}{\ejes{$Y_B$}{$i$}{6.4}{4.7}}
+  \capa{2}{\draw[curva2] (1.0,4.5) -- (5.1,0.4) node[etiqueta,right,text=tceeazul] {IS};}
+  \capa{2}{\draw[curva1] (1.5,{lm(1.5)}) -- (5.0,{lm(5.0)}) node[etiqueta,right,text=tceemorado] {LM};}
+  \capa{2}{\draw[curva3] (0,2.5) node[left,text=black] {$i^*$} -- (6.2,2.5);}
+  \capa{2}{\node[punto] (B0) at (3,2.5) {};}
+  \capa{2}{\draw[guia] (B0) -- (3,0) node[below,text=black] {$Y_{B0}$};}
+  \capa{5}{\draw[curva3,desplazada] (0,3.0) node[left,text=black] {$i^{*\prime}$} -- (6.2,3.0);}
+  \capa{5}{\draw[flecha] (0.55,2.55) -- (0.55,2.95);}
+  \capa{5}{\node[paso] at (0.95,2.75) {3};}
+  \capa{6}{\draw[curva1,desplazada] (1.0,{lmB(1.0)}) node[etiqueta,left,text=tceemorado] {LM$'$} -- (4.0,{lmB(4.0)});}
+  \capa{6}{\draw[flecha] (4.3,3.6) -- (3.55,3.6);}
+  \capa{6}{\node[paso] at (4.75,3.6) {4};}
+  \capa{6}{\draw[curva2,desplazada] (1.25,4.5) -- (5.35,0.4) node[etiqueta,right=10pt,text=tceeazul] {IS$'$};}
+  \capa{6}{\draw[flecha] (4.3,1.2) -- (4.6,1.2);}
+  \capa{6}{\node[paso] at (4.25,0.8) {4};}
+  \capa{6}{\pasoley{0.15}{-0.95}{4}{B pierde reservas: LM a la izq.; A le}}
+  \capa{6}{\node[leyenda] at (0.4,-1.35) {compra más: la IS de B, algo a la dcha.};}
+  \end{scope}
+  % 7: paso 5, nuevos equilibrios
+  \capa{7}{\node[punto,fill=tceerojo] (A1) at (4.5,3.0) {};}
+  \capa{7}{\draw[guia,tceerojo] (A1) -- (4.5,0) node[below,text=tceerojo] {$Y_{A1}$};}
+  \capa{7}{\pasoley{0.15}{-2.3}{5}{\textcolor{tceerojo}{sube la renta de A}}}
+  \begin{scope}[xshift=7.9*0.95cm]
+  \capa{7}{\node[punto,fill=tceerojo] (B1) at (2.75,3.0) {};}
+  \capa{7}{\draw[guia,tceerojo] (B1) -- (2.75,0) node[below left=0pt and 2pt,text=tceerojo] {$Y_{B1}$};}
+  \capa{7}{\pasoley{0.15}{-1.85}{5}{\textcolor{tceerojo}{aquí domina la subida de $i^*$: baja la}}}
+  \capa{7}{\node[leyenda,text=tceerojo] at (0.4,-2.25) {renta de B (si dominara la demanda de A,};}
+  \capa{7}{\node[leyenda,text=tceerojo] at (0.4,-2.65) {subiría: el efecto es ambiguo)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,49 +1,81 @@
+% 3.B.21: cronología del sistema económico internacional, 1971-2026 (figura).
+% Mismo lenguaje visual que la del 3.B.20 (1815-1973), que termina donde
+% empieza esta: eje horizontal del tiempo (0,31 cm por año); encima, el plano
+% comercial; en la banda central, el régimen del sistema monetario; debajo, los
+% hitos monetarios y financieros. Arriba, las barras de los 3 apartados del
+% tema, y cada hito en el color del apartado en que se cuenta (I verde,
+% II naranja, III rojo); la ruptura (1971-1973), en morado, como al final de la
+% del 3.B.20. Posiciones de los rótulos comprobadas para que ninguna línea
+% cruce un rótulo. Fechas comprobadas en las fuentes del tema (16/11/2026).
+% Capas: eje y apartados (1) → régimen (2) → apartado I (3) → II (4) → III (5).
+% Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-% Cronología del SEI desde 1971: eje vertical del tiempo; a la izquierda, plano
-% monetario y financiero (morado); a la derecha, plano comercial (azul).
-% Fechas comprobadas en las fuentes del tema (13/11/2026).
-\begin{tikzpicture}[tcee, y=-0.42cm,
-  izq/.style={font=\footnotesize, text=tceemorado, anchor=east, align=right, text width=6.6cm},
-  der/.style={font=\footnotesize, text=tceeazul, anchor=west, align=left, text width=6.6cm},
-  anio/.style={font=\footnotesize\bfseries, fill=tceesalvia, inner sep=1.5pt}]
-  \capa{1}{\draw[eje] (0,-1) -- (0,52);
-    \node[font=\small\bfseries, text=tceemorado] at (-3.8,-1.2) {Monetario y financiero};
-    \node[font=\small\bfseries, text=tceeazul] at (3.8,-1.2) {Comercial};}
-  \newcommand{\mon}[4]{\capa{#1}{\node[anio] at (0,#2) {#3}; \node[izq] at (-0.6,#2) {#4};}}
-  \newcommand{\com}[4]{\capa{#1}{\node[anio] at (0,#2) {#3}; \node[der] at (0.6,#2) {#4};}}
-  \mon{2}{0.5}{1971}{Fin de la convertibilidad (agosto); Acuerdo del Smithsonian (diciembre)}
-  \mon{2}{2.5}{1973}{Flotación de las grandes monedas; primera crisis del petróleo}
-  \com{2}{2.5}{1973}{Ronda de Tokio (hasta 1979)}
-  \mon{2}{4.5}{1974}{Comité de Supervisión Bancaria de Basilea}
-  \mon{2}{6.5}{1976}{Acuerdos de Jamaica (Segunda Enmienda, en vigor en 1978)}
-  \mon{2}{8.5}{1979}{Sistema Monetario Europeo; giro de \textsc{Volcker}}
-  \mon{3}{10.5}{1982}{Crisis de la deuda latinoamericana}
-  \mon{3}{12.5}{1985}{Acuerdo del Plaza}
-  \com{3}{14.5}{1986}{Ronda Uruguay (hasta 1994)}
-  \mon{3}{16.5}{1987}{Acuerdo del Louvre}
-  \mon{3}{18.5}{1989}{Plan \textsc{Brady}}
-  \com{3}{18.5}{1989}{Caída del muro de Berlín}
-  \mon{3}{20.5}{1992}{Crisis del SME (1992-1993)}
-  \mon{3}{22.5}{1994}{Crisis de México}
-  \com{3}{22.5}{1994}{TLCAN}
-  \com{3}{24.5}{1995}{Nace la OMC}
-  \mon{3}{26.5}{1997}{Crisis asiática; Rusia (1998)}
-  \mon{3}{28.5}{1999}{Nace el euro; G-20 de ministros}
-  \com{3}{30.5}{2001}{China entra en la OMC; Ronda de Doha}
-  \mon{3}{30.5}{2001}{Argentina (2001-2002)}
-  \mon{4}{32.5}{2008}{Quiebra de Lehman; G-20 de líderes}
-  \com{4}{32.5}{2008}{Gran colapso del comercio (2009)}
-  \mon{4}{34.5}{2009}{Cumbre de Londres; nace el FSB}
-  \mon{4}{36.5}{2010}{Basilea III; crisis del euro (2010-2012)}
-  \com{4}{38.5}{2018}{Guerra comercial Estados Unidos-China}
-  \com{4}{40.5}{2019}{Bloqueo del Órgano de Apelación}
-  \mon{4}{42.5}{2020}{COVID-19; \emph{swaps} de la Reserva Federal}
-  \mon{4}{44.5}{2021}{Asignación de DEG; impuesto mínimo (pilar 2)}
-  \mon{5}{46.5}{2022}{Invasión de Ucrania; reservas rusas congeladas}
-  \com{5}{48.5}{2025}{Aranceles «recíprocos» de Estados Unidos}
-  \mon{5}{50.5}{2026}{Guerra con Irán y cierre de Ormuz}
-  \com{5}{50.5}{2026}{Sentencia IEEPA; CM14 sin acuerdo; sección 301}
+\begin{tikzpicture}[tcee, font=\footnotesize,
+    rot/.style={inner sep=1pt, font=\scriptsize},
+    hito/.style={thin},
+    ac/.style={anchor=south, align=center}, ae/.style={anchor=south east, align=right},
+    aw/.style={anchor=south west, align=left}, bc/.style={anchor=north, align=center},
+    be/.style={anchor=north east, align=right}, bw/.style={anchor=north west, align=left}]
+  \newcommand{\x}[1]{(#1-1971)*0.31}
+  \colorlet{bI}{tceeverde}\colorlet{bII}{tceenaranja}\colorlet{bIII}{tceerojo}
+  % \reg{desde}{hasta}{relleno}{texto}
+  \newcommand{\reg}[4]{\draw[draw=black!35, fill=#3, rounded corners=1pt]
+      ({\x{#1}},0.45) rectangle ({\x{#2}},1.0);
+    \node[font=\scriptsize, align=center] at ({(\x{#1}+\x{#2})/2},0.725) {#4};}
+  % \arr{color}{año}{alto}{c|e|w}{texto}: hito comercial (encima)
+  % \aba{color}{año}{bajo}{c|e|w}{texto}: hito monetario o financiero (debajo)
+  \newcommand{\arr}[5]{\draw[hito, #1] ({\x{#2}},1.0) -- ({\x{#2}},#3)
+      node[rot, a#4, text=#1!80!black] {#5};}
+  \newcommand{\aba}[5]{\draw[hito, #1] ({\x{#2}},-0.45) -- ({\x{#2}},-#3)
+      node[rot, b#4, text=#1!80!black] {#5};}
+  % 1: eje del tiempo y barras de los 3 apartados del tema
+  \capa{1}{\draw[eje] ({\x{1970}},0) -- ({\x{2027.5}},0);}
+  \capa{1}{\foreach \a in {1975,1980,...,2025}
+      {\draw ({\x{\a}},0.08) -- ({\x{\a}},-0.08) node[below, font=\scriptsize, text=tceegris] {\a};}}
+  \capa{1}{\draw[line width=3pt, bI] ({\x{1971}},3.7) -- ({\x{2007}},3.7) node[midway, above=1pt, font=\footnotesize\bfseries, text=bI!80!black] {I. 1971-2007};}
+  \capa{1}{\draw[line width=3pt, bII] ({\x{2007}},3.7) -- ({\x{2021}},3.7) node[midway, above=1pt, font=\footnotesize\bfseries, text=bII!80!black] {II. 2007-2021};}
+  \capa{1}{\draw[line width=3pt, bIII] ({\x{2021}},3.7) -- ({\x{2026}},3.7) node[midway, above=1pt, font=\footnotesize\bfseries, text=bIII!80!black] {III. 2021-2026};}
+  % 2: el régimen del sistema monetario
+  \capa{2}{\reg{1971}{1973}{tceemorado!22}{}}
+  \capa{2}{\reg{1973}{1985}{bI!10}{flotación sin coordinación}}
+  \capa{2}{\reg{1985}{2003}{bI!22}{coordinación y objetivos de inflación}}
+  \capa{2}{\reg{2003}{2007}{bI!38}{\parbox{1.1cm}{\centering\tiny Bretton\\[-2pt]Woods~II}}}
+  \capa{2}{\reg{2007}{2021}{bII!22}{G-20, Basilea III y \emph{swaps} de la Fed}}
+  \capa{2}{\reg{2021}{2026}{bIII!22}{\parbox{1.4cm}{\centering\tiny fragmentación}}}
+  \capa{2}{\node[anchor=west, font=\scriptsize, text=tceegris, align=left] at ({\x{2026.3}},0.72) {régimen\\monetario};}
+  % 3: apartado I (1971-2007)
+  \capa{3}{\aba{tceemorado}{1971}{0.6}{c}{1971\\\textsc{Nixon} y\\Smithsonian}}
+  \capa{3}{\arr{bI}{1973}{1.4}{c}{1973-1979\\Ronda\\de Tokio}}
+  \capa{3}{\aba{bI}{1974}{1.6}{e}{1974\\Comité\\de Basilea}}
+  \capa{3}{\aba{bI}{1976}{1.6}{w}{1976\\Jamaica}}
+  \capa{3}{\aba{bI}{1979}{0.6}{c}{1979\\SME; giro\\de \textsc{Volcker}}}
+  \capa{3}{\aba{bI}{1982}{2.6}{c}{1982-1989\\deuda y\\Plan \textsc{Brady}}}
+  \capa{3}{\aba{bI}{1985}{2.6}{w}{1985\\Acuerdo\\del Plaza}}
+  \capa{3}{\arr{bI}{1986}{1.4}{c}{1986-1994\\Ronda\\Uruguay}}
+  \capa{3}{\aba{bI}{1987}{0.6}{w}{1987\\Acuerdo\\del Louvre}}
+  \capa{3}{\arr{bI}{1989}{1.4}{w}{1989\\caída\\del muro}}
+  \capa{3}{\aba{bI}{1992}{1.6}{e}{1992-1993\\crisis\\del SME}}
+  \capa{3}{\arr{bI}{1994}{2.5}{c}{1994\\TLCAN}}
+  \capa{3}{\aba{bI}{1994}{2.6}{c}{1994-1995\\México}}
+  \capa{3}{\arr{bI}{1995}{1.4}{w}{1995\\nace\\la OMC}}
+  \capa{3}{\aba{bI}{1997}{2.6}{w}{1997-1998\\Asia\\y Rusia}}
+  \capa{3}{\aba{bI}{1999}{1.6}{w}{1999\\euro; G-20\\de ministros}}
+  \capa{3}{\arr{bI}{2001}{1.4}{w}{2001\\China en la\\OMC; Doha}}
+  \capa{3}{\aba{bI}{2001}{0.6}{w}{2001-2002\\Argentina}}
+  % 4: apartado II (2007-2021)
+  \capa{4}{\aba{bII}{2008}{2.6}{c}{2008-2009\\Lehman;\\G-20 y FSB}}
+  \capa{4}{\arr{bII}{2009}{1.4}{c}{2009\\gran colapso\\del comercio}}
+  \capa{4}{\aba{bII}{2010}{1.6}{w}{2010\\Basilea III;\\crisis del euro}}
+  \capa{4}{\aba{bII}{2012}{0.6}{w}{2012\\«lo que sea\\necesario»}}
+  \capa{4}{\arr{bII}{2018}{1.4}{e}{2018\\guerra\\EE.\,UU.-China}}
+  \capa{4}{\arr{bII}{2019}{1.4}{w}{2019\\Apelación\\bloqueada}}
+  \capa{4}{\aba{bII}{2020}{1.6}{e}{2020-2021\\COVID-19;\\\emph{swaps}; DEG}}
+  % 5: apartado III (2021-2026)
+  \capa{5}{\aba{bIII}{2022}{1.6}{w}{2022\\Ucrania:\\sanciones}}
+  \capa{5}{\arr{bIII}{2025}{2.5}{c}{2025\\aranceles\\«recíprocos»}}
+  \capa{5}{\arr{bIII}{2026}{1.4}{w}{2026\\IEEPA;\\CM14}}
+  \capa{5}{\aba{bIII}{2026}{0.6}{c}{2026\\Irán\\y Ormuz}}
 \end{tikzpicture}
 \end{document}

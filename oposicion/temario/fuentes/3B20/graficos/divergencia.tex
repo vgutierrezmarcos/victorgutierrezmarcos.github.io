@@ -1,0 +1,49 @@
+% 3.B.20: la gran divergencia (rehace la «Imagen 1» del tema antiguo, tomada
+% de Robert Allen, Global Economic History, con datos actualizados). PIB por
+% habitante en dólares internacionales de 2011 (PPA), 1500-2022, escala
+% logarítmica. Reino Unido (morado), Estados Unidos (azul), Italia (verde),
+% Japón (dorado), China (rojo), India (naranja). Banda gris: 1870-1913
+% (primera globalización); línea discontinua: 1820.
+% Datos: ../datos/divergencia-pib-pc.csv (Maddison Project Database 2023).
+% Capas: banda y referencias (1) → países ricos (2) → Japón (3) → China e
+% India (4) → rótulos (5).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\dvdatos}{../datos/divergencia-pib-pc.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=6.2cm, scale only axis,
+      ymode=log, log basis y=10,
+      xmin=1500, xmax=2030, xtick={1500,1600,1700,1800,1900,2000},
+      x tick label style={/pgf/number format/1000 sep={}},
+      ymin=400, ymax=80000,
+      ytick={500,1000,2000,5000,10000,20000,50000},
+      yticklabels={500,{1.000},{2.000},{5.000},{10.000},{20.000},{50.000}},
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize}, label style={font=\small},
+      ylabel={dólares de 2011 (PPA), escala log.},
+      unbounded coords=discard]
+    % 1: primera globalización y 1820
+    \capa{1}{\fill[tceegris, opacity=0.15] (axis cs:1870,400) rectangle (axis cs:1913,80000);}
+    \capa{1}{\node[font=\footnotesize, text=tceegris, align=center, anchor=north] at (axis cs:1891.5,78000) {primera\\globalización};}
+    \capa{1}{\draw[guia] (axis cs:1820,400) -- (axis cs:1820,80000) node[below left, font=\footnotesize, text=tceegris] {1820};}
+    % 2: Reino Unido, Estados Unidos, Italia
+    \capa{2}{\addplot[very thick, tceemorado] table[col sep=comma, comment chars={\#}, x=anio, y=reino_unido] {\dvdatos};}
+    \capa{2}{\addplot[very thick, tceeazul] table[col sep=comma, comment chars={\#}, x=anio, y=estados_unidos] {\dvdatos};}
+    \capa{2}{\addplot[very thick, tceeverde] table[col sep=comma, comment chars={\#}, x=anio, y=italia] {\dvdatos};}
+    % 3: Japón
+    \capa{3}{\addplot[very thick, tceedorado] table[col sep=comma, comment chars={\#}, x=anio, y=japon] {\dvdatos};}
+    % 4: China e India
+    \capa{4}{\addplot[very thick, tceerojo, densely dashed] table[col sep=comma, comment chars={\#}, x=anio, y=china] {\dvdatos};}
+    \capa{4}{\addplot[very thick, tceenaranja, densely dotted] table[col sep=comma, comment chars={\#}, x=anio, y=india] {\dvdatos};}
+    % 5: rótulos al final de cada serie (2022)
+    \capa{5}{\node[font=\footnotesize, text=tceeazul, anchor=west] at (axis cs:2024,58487) {EE.\,UU.};}
+    \capa{5}{\node[font=\footnotesize, text=tceemorado, anchor=west] at (axis cs:2024,44500) {R.\,Unido};}
+    \capa{5}{\node[font=\footnotesize, text=tceedorado, anchor=west] at (axis cs:2024,35000) {Japón};}
+    \capa{5}{\node[font=\footnotesize, text=tceeverde, anchor=west] at (axis cs:2024,27500) {Italia};}
+    \capa{5}{\node[font=\footnotesize, text=tceerojo, anchor=west] at (axis cs:2024,19238) {China};}
+    \capa{5}{\node[font=\footnotesize, text=tceenaranja, anchor=west] at (axis cs:2024,7766) {India};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

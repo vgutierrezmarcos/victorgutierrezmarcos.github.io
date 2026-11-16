@@ -1,0 +1,99 @@
+% Infografía de la evolución de las teorías del tipo de cambio (Víctor,
+% 16/11/2026): antes del bloque I, máximo una página. 3 columnas por lo que
+% mira cada teoría (bienes y precios; dinero y política monetaria; activos
+% financieros y riesgo) y 3 bandas por bloque del tema (dorado, morado y
+% verde), con la evidencia empírica de Mussa (1979) y de Meese y Rogoff
+% (1983) en rojo entre los bloques II y III: qué modelos confirma o tumba y
+% qué respuestas provoca. Flechas moradas: de qué teoría nace cada una.
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\aut}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=#1,fill=white,thick,rounded corners=2pt,text width=4.75cm,
+      align=center,font=\footnotesize,inner sep=3pt,minimum height=1.05cm},
+    banda/.style={fill=#1,draw=none,rounded corners=4pt},
+    tbanda/.style={etiqueta,anchor=north west,font=\small\bfseries,text=#1},
+    col/.style={etiqueta,font=\small\itshape,text=tceegris,align=center},
+    nace/.style={->,thick,tceemorado},
+    nacel/.style={->,thick,tceemorado,dashed},
+    evid/.style={->,very thick,tceerojo},
+    nota/.style={etiqueta,font=\scriptsize,align=center}]
+  \def\L{2.75}\def\M{8.4}\def\R{14.05}
+  % 1: cabeceras de las columnas y bandas
+  \capa{1}{%
+    \node[col] at (\L,0) {bienes y precios};
+    \node[col] at (\M,0) {dinero y política monetaria};
+    \node[col] at (\R,0) {activos financieros y riesgo};
+    \fill[banda=tceedorado!12] (-0.2,-0.4) rectangle (17.0,-5.5);
+    \node[tbanda=tceedorado!75!black] at (-0.05,-0.5) {I. Teorías tradicionales (hasta 1973): flujos y condiciones de paridad};
+    \fill[banda=tceemorado!9] (-0.2,-6.5) rectangle (17.0,-11.2);
+    \node[tbanda=tceemorado] at (-0.05,-6.6) {II. Modelos de activos (años 70): el tipo de cambio como precio de un activo};
+    \fill[banda=tceerojo!9] (-0.2,-11.6) rectangle (17.0,-14.75);
+    \node[tbanda=tceerojo] at (-0.05,-11.7) {Evidencia empírica: el largo plazo sí, el corto no};
+    \fill[banda=tceeverde!11] (-0.2,-15.25) rectangle (17.0,-21.2);
+    \node[tbanda=tceeverde!80!black] at (-0.05,-15.35) {III. Desarrollos recientes: ¿por qué no se puede predecir?};}
+  % 2: bloque I
+  \capa{2}{%
+    \node[caja=tceedorado] (ppa) at (\L,-1.95) {\textbf{PPA}: el tipo de cambio iguala el poder de compra\\Escuela de Salamanca (s.~XVI), \aut{Cassel} (1918)};
+    \node[caja=tceedorado] (bs) at (\L,-4.3) {\textbf{\aut{Balassa} y \aut{Samuelson}} (1964): la productividad en los comerciables aprecia el tipo real};
+    \node[caja=tceedorado] (bp) at (\M,-1.95) {\textbf{Balanza de pagos}: oferta y demanda de divisas (flujos de bienes y de capitales)};
+    \node[caja=tceedorado] (mf) at (\M,-4.3) {\textbf{IS-LM-BP}: \aut{Mundell} (1963) y \aut{Fleming} (1962), sobre \aut{Meade} (1951)};
+    \node[caja=tceedorado] (par) at (\R,-1.95) {\textbf{Paridades de intereses} (PCI y PNCI): \aut{Keynes} (1923)};
+    \node[caja=tceedorado,text=tceegris] (pri) at (\R,-4.3) {si los activos no son sustitutos perfectos, aparece una \textbf{prima de riesgo}};
+    \draw[nace] (ppa) -- node[nota,right,text=tceegris] {¿por qué falla?} (bs);
+    \draw[nace] (bp) -- node[nota,right,text=tceegris] {+ renta y política} (mf);
+    \draw[nace] (par) -- (pri);
+    \draw[nace] (par.west) -- (bp.east);}
+  % 3: 1973
+  \capa{3}{%
+    \node[etiqueta,font=\footnotesize,text=tceegris,align=center,text width=4.1cm] at (8.4,-6.0)
+      {1973: cae Bretton Woods, flotación y capitales móviles: cuentan los \emph{saldos} de activos};}
+  % 4: bloque II
+  \capa{4}{%
+    \node[caja=tceemorado] (mon) at (\M,-7.75) {\textbf{Monetario con precios flexibles}: \aut{Frenkel} (1976), \aut{Mussa} (1976), \aut{Bilson} (1978)};
+    \node[caja=tceemorado] (dor) at (\M,-10.05) {\textbf{Sobrerreacción con precios rígidos}: \aut{Dornbusch} (1976); \aut{Frankel} (1979)};
+    \node[caja=tceemorado] (car) at (\R,-8.9) {\textbf{Cartera}: \aut{Branson} (1977), \aut{Branson} y \aut{Henderson} (1985): prima de riesgo, riqueza y cuenta corriente};
+    \node[caja=tceemorado,text=tceegris] (ancla) at (\L,-8.9) {la PPA queda como \textbf{ancla de largo plazo} de los modelos de activos};
+    \draw[nace] (ppa.south west) to[out=-110,in=110] (ancla.north west);
+    \draw[nace] (ancla) -- (mon);
+    \draw[nace] (par.south west) -- (mon.north east);
+    \draw[nace] (pri) -- (car);
+    \draw[nace] (mon) -- node[nota,right,text=tceegris] {+ precios rígidos} (dor);
+    \draw[nace] (mf.south west) to[out=-95,in=180] (dor.west);}
+  % 5: evidencia empírica
+  \capa{5}{%
+    \node[caja=tceerojo,text width=6.4cm] (mus) at (3.85,-13.05) {\textbf{\aut{Mussa} (1979): 7 hechos de la flotación}\\[1pt]
+      {\scriptsize \textcolor{tceeverde!80!black}{sí}: sobrerreacción (\aut{Dornbusch}), PPA relativa a largo plazo\\
+      \textcolor{tceerojo}{no}: PPA a corto plazo (monetario flexible); relación con la cuenta corriente (flujos, cartera)}};
+    \node[caja=tceerojo,text width=7.4cm] (mr) at (12.0,-13.05) {\textbf{\aut{Meese} y \aut{Rogoff} (1983): ningún modelo predice mejor que un paseo aleatorio}\\[1pt]
+      {\scriptsize fuera de la muestra y con los fundamentos observados: \textcolor{tceerojo}{no} el monetario, \textcolor{tceerojo}{no} \aut{Dornbusch}-\aut{Frankel}, \textcolor{tceerojo}{no} la cuenta corriente\\$\Rightarrow$ la \emph{desconexión} (\aut{Obstfeld} y \aut{Rogoff}, 2000)}};
+    \draw[evid,<-] (dor.south) -- (dor.south |- mr.north);
+    \draw[evid,<-] (car.south) -- (car.south |- mr.north);}
+  % 6: bloque III
+  \capa{6}{%
+    \node[caja=tceeverde] (feer) at (\L,-16.6) {\textbf{Tipo real de equilibrio}: FEER (\aut{Williamson}, 1983), BEER (1999), EBA del FMI (2013)};
+    \node[caja=tceeverde] (nl) at (\L,-18.8) {\textbf{PPA no lineal}: con costes de arbitraje, el tipo real vuelve antes (\aut{Taylor}, \aut{Peel} y \aut{Sarno}, 2001)};
+    \node[caja=tceeverde] (ew) at (\M,-16.6) {\textbf{\aut{Engel} y \aut{West}} (2005): paseo aleatorio aunque el modelo sea correcto};
+    \node[caja=tceeverde] (tay) at (\M,-18.35) {\textbf{Regla de \aut{Taylor}}: la paradoja de la apreciación (\aut{Engel} y \aut{West}, 2006; \aut{Clarida} y \aut{Waldman}, 2008)};
+    \node[caja=tceeverde] (noem) at (\M,-20.2) {\textbf{NOEM}: \aut{Obstfeld} y \aut{Rogoff} (1995), \aut{Corsetti} y \aut{Pesenti}: la moneda de los precios};
+    \node[caja=tceeverde] (fwd) at (\R,-16.6) {\textbf{Paradoja del margen \emph{forward}}: \aut{Fama} (1984); expectativas heterogéneas (\aut{Frankel} y \aut{Froot}, 1990)};
+    \node[caja=tceeverde] (fo) at (\R,-18.35) {\textbf{Flujo de órdenes}: \aut{Evans} y \aut{Lyons} (2002)};
+    \node[caja=tceeverde] (int) at (\R,-20.2) {\textbf{Intermediarios}: \aut{Gabaix} y \aut{Maggiori} (2015), \aut{Itskhoki} y \aut{Mukhin} (2021)};
+    \draw[evid] (mus.south) -- (mus.south |- feer.north) node[nota,pos=0.45,right,text=tceerojo] {paradoja de la PPA};
+    \draw[evid] (mr.south -| ew.north) -- (ew.north);
+    \draw[evid] (mr.south -| fwd.north) -- (fwd.north);
+    \draw[nacel] (bs.south) -- (ancla.north);
+    \draw[nace] (ew) -- (tay);
+    \draw[nace] (tay) -- (noem);
+    \draw[nace] (fwd) -- (fo);
+    \draw[nace] (fo) -- (int);
+    \draw[nace] (feer) -- (nl);
+    \draw[nacel] (car.east) to[out=-20,in=20] node[nota,pos=0.5,left,text=tceegris,align=right] {la prima de\\riesgo vuelve} (int.east);
+
+    % los títulos de las bandas, encima de las flechas que los cruzan
+    \node[tbanda=tceemorado,fill=tceemorado!9] at (-0.05,-6.6) {II. Modelos de activos (años 70): el tipo de cambio como precio de un activo};
+    \node[tbanda=tceerojo,fill=tceerojo!9] at (-0.05,-11.7) {Evidencia empírica: el largo plazo sí, el corto no};
+    \node[tbanda=tceeverde!80!black,fill=tceeverde!11] at (-0.05,-15.35) {III. Desarrollos recientes: ¿por qué no se puede predecir?};}
+\end{tikzpicture}
+\end{document}

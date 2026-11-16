@@ -1,0 +1,79 @@
+% 3.B.20: el ajuste asimétrico del patrón oro (nota del tema antiguo, que lo
+% dibujaba a mano: «Ajuste asimétrico»). Tres paneles con el mismo eje de
+% tipos de interés:
+%  (a) país con déficit, mercado de dinero (M/P, i): la renta cae y la demanda
+%      de dinero pasa de L(Y_0) a L(Y_1);
+%  (b) país con superávit, mercado de dinero (M*/P*, i*);
+%  (c) paridad de intereses (e, i): i = i* + (e^e - e)/e, decreciente en e
+%      (e: precio de la moneda del país fuerte; sube = depreciación del débil).
+% Funciones (unidades del dibujo):
+%   L0(x) = 0,4 + 4,5/(x+0,6); L1(x) = 0,4 + 4,5/(x+1,5); M0/P = 2,6
+%   i0 = 1,806 (punto 0); sin reacción, i1' = L1(2,6) = 1,497 (punto 1')
+%   ajuste asimétrico: L1(M1/P) = i0  -> M1/P = 1,7 (punto 1)
+%   ajuste simétrico: i2 = 1,65 -> M2/P = 2,1 (débil) y M*'/P* = 3,0 (fuerte)
+%   paridad: i = i* + 1,2 (1,6/e - 1); e0 = 1,6; con i = i1' e i* = i0, e1 = 2,155
+% Capas: ejes y títulos (1) → curvas y punto 0 (2) → cae la demanda de dinero
+% del débil y se depreciaría (3) → ajuste asimétrico (4) → ajuste simétrico (5).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={Lc(\x)=0.4+4.5/(\x+0.6); Ld(\x)=0.4+4.5/(\x+1.5);
+      par(\e,\s)=\s+1.2*(1.6/\e-1);},
+    titulo/.style={font=\small\bfseries,text=tceemorado}]
+  \def\iO{1.806}\def\iU{1.497}\def\iD{1.65}
+  % ---------------- 1: ejes y títulos
+  \capa{1}{\begin{scope}
+    \draw[eje] (0,0) -- (4.2,0) node[below left=2pt and 0pt] {$M/P$};
+    \draw[eje] (0,0) -- (0,3.4) node[left] {$i$};
+    \node[titulo] at (2.1,4.15) {a) País con déficit};
+  \end{scope}}
+  \capa{1}{\begin{scope}[xshift=5.3cm]
+    \draw[eje] (0,0) -- (4.2,0) node[below left=2pt and 0pt] {$M^*/P^*$};
+    \draw[eje] (0,0) -- (0,3.4) node[left] {$i^*$};
+    \node[titulo] at (2.1,4.15) {b) País con superávit};
+  \end{scope}}
+  \capa{1}{\begin{scope}[xshift=10.6cm]
+    \draw[eje] (0,0) -- (3.6,0) node[below left=2pt and 0pt] {$e$};
+    \draw[eje] (0,0) -- (0,3.4) node[left] {$i$};
+    \node[titulo] at (1.8,4.15) {c) Paridad de intereses};
+  \end{scope}}
+  % ---------------- 2: situación inicial
+  \capa{2}{\draw[curva2,domain=1.07:4.0,samples=40] plot (\x,{Lc(\x)}) node[etiqueta,right,text=tceeazul] {$L(Y_0)$};}
+  \capa{2}{\draw[curva1] (2.6,0.15) -- (2.6,3.2) node[etiqueta,above right=0pt and -4pt,text=tceemorado] {$M_0/P$};}
+  \capa{2}{\begin{scope}[xshift=5.3cm]
+    \draw[curva2,domain=1.07:4.0,samples=40] plot (\x,{Lc(\x)}) node[etiqueta,right,text=tceeazul] {$L^*$};
+    \draw[curva1] (2.6,0.15) -- (2.6,3.2) node[etiqueta,above left=0pt and -4pt,text=tceemorado] {$M^*_0/P^*$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[xshift=10.6cm]
+    \draw[curva3,domain=0.95:3.4,samples=40] plot (\x,{par(\x,\iO)}) node[etiqueta,right,text=tceeverde] {$i^*_0$};
+    \draw[guia] (1.6,\iO) -- (1.6,0) node[below,text=black] {$e_0$};
+  \end{scope}}
+  \capa{2}{\draw[guia] (0,\iO) node[left,text=black] {$i_0$} -- (14.0,\iO);}
+  \capa{2}{\node[punto,label={[etiqueta]45:$0$}] at (2.6,\iO) {};
+    \node[punto,label={[etiqueta]45:$0$}] at (7.9,\iO) {};
+    \node[punto,label={[etiqueta]45:$0$}] at (12.2,\iO) {};}
+  % ---------------- 3: el débil pierde renta: L(Y_1); sin reacción, i baja a 1' y se depreciaría a e_1
+  \capa{3}{\draw[curvanueva,domain=0.17:3.6,samples=40] plot (\x,{Ld(\x)}) node[etiqueta,below right,text=tceerojo] {$L(Y_1)$};}
+  \capa{3}{\draw[guia,tceerojo] (2.6,\iU) -- (14.0,\iU);
+    \node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]-45:$1'$}] at (2.6,\iU) {};
+    \node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]45:$1'$}] at (12.755,\iU) {};
+    \draw[guia,tceerojo] (12.755,\iU) -- (12.755,0) node[below] {$e_1$};}
+  % ---------------- 4: ajuste asimétrico: el débil contrae su dinero hasta M_1/P (punto 1)
+  \capa{4}{\draw[curva1,desplazada] (1.7,0.15) -- (1.7,3.2) node[etiqueta,above left=0pt and -4pt,text=tceemorado] {$M_1/P$};
+    \node[punto,label={[etiqueta]135:$1$}] at (1.7,\iO) {};}
+  % ---------------- 5: ajuste simétrico: el fuerte expande (M*_1/P*), i* baja a i_2 y el débil contrae menos (M_2/P)
+  \capa{5}{\begin{scope}[xshift=5.3cm]
+    \draw[curva1,desplazada,tceedorado] (3.0,0.15) -- (3.0,3.2) node[etiqueta,above right=0pt and -4pt,text=tceedorado] {$M^*_1/P^*$};
+    \node[punto,fill=tceedorado,label={[etiqueta,text=tceedorado]-45:$2$}] at (3.0,\iD) {};
+  \end{scope}}
+  \capa{5}{\begin{scope}[xshift=10.6cm]
+    \draw[curva4,desplazada,domain=0.95:3.4,samples=40] plot (\x,{par(\x,\iD)}) node[etiqueta,below right,text=tceedorado] {$i^*_1$};
+    \node[punto,fill=tceedorado,label={[etiqueta,text=tceedorado]-135:$2$}] at (1.6,\iD) {};
+  \end{scope}}
+  \capa{5}{\draw[guia,tceedorado] (2.1,\iD) -- (12.2,\iD);
+    \draw[curva4,desplazada] (2.1,2.75) -- (2.1,0.6) node[etiqueta,below,text=tceedorado] {$M_2/P$};
+    \node[punto,fill=tceedorado,label={[etiqueta,text=tceedorado]-135:$2$}] at (2.1,\iD) {};}
+\end{tikzpicture}
+\end{document}

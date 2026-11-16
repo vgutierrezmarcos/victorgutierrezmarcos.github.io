@@ -220,3 +220,19 @@ datos:
     proxima: 2027-01
     familia: tesoro-eeuu-divisas
     nota: "no es cifra; es la conclusión del último informe"
+
+  - id: bis-tcer
+    texto: "desde enero de 1994 hasta septiembre de 2026, último dato publicado"
+    donde: [3B13.tex]
+    valor: 107.11
+    unidad: "índice 2020 = 100 (subida = apreciación real); valor de EE. UU. en el último mes"
+    periodo: septiembre 2026
+    fuente: BIS2026EER
+    organismo: BIS
+    serie: "Effective exchange rate indices, broad, real (CPI-based), monthly (WS_EER M.R.B.{US,XM,CN,JP,GB,ES})"
+    url: https://stats.bis.org/api/v2/data/dataflow/BIS/WS_EER/1.0/M.R.B.US+XM+CN+JP+GB+ES?startPeriod=1994-01&format=csv
+    periodicidad: mensual
+    proxima: 2026-12
+    familia: bis-tcer
+    depende: [datos/bis-tcer.csv, graficos/tcer-bis.tex]
+    frase: "anexo «el tipo de cambio efectivo real de las principales economías»: último dato (EE. UU. 107, zona del euro 103, Japón 67 —mínimo de la serie en julio de 2026, 65—, Reino Unido 111, España 104, China 92) en los rótulos del gráfico y en el texto; los máximos y mínimos históricos (yen 194 en 1995, dólar 78 en 2011 y 114,5 en ene. 2025, euro 88 en 2000 y 118 en 2008, renminbi 53 en 1994 y 107 en mar. 2022, libra 135 en 2000 y 94 en oct. 2016, España 90 en 2000, 109 en 2008 y 97 en 2015) solo cambian si el BPI revisa la base o los pesos; el texto del dólar en 2025 y del yen como mínimo de la serie hay que revisarlos con cada dato"

@@ -1,0 +1,27 @@
+% Caos determinista: la aplicación logística x_{t+1} = 4 x_t (1 - x_t)
+% (May, 1976) desde x_0 = 0,3 (morado) y x_0 = 0,3001 (dorado, discontinua).
+% Valores calculados con Python (40 periodos). Las 2 series coinciden a simple
+% vista hasta t ≈ 11 y luego no se parecen en nada: dependencia sensible de
+% las condiciones iniciales. Caja del caos determinista (Víctor, 16/11/2026).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[scale only axis, width=11cm, height=3.6cm,
+      xmin=0, xmax=40, ymin=0, ymax=1.05, xtick={0,10,...,40}, ytick={0,0.5,1},
+      yticklabel style={/pgf/number format/use comma,font=\footnotesize},
+      xticklabel style={font=\footnotesize},
+      xlabel={$t$}, ylabel={$x_t$}, xlabel style={font=\small}, ylabel style={font=\small},
+      axis lines*=left, tick align=outside, clip=false]
+    % 1: x_0 = 0,3
+    \capa{1}{\addplot[very thick,tceemorado,mark=none] coordinates {(0,0.3000) (1,0.8400) (2,0.5376) (3,0.9943) (4,0.0225) (5,0.0879) (6,0.3208) (7,0.8716) (8,0.4476) (9,0.9890) (10,0.0434) (11,0.1661) (12,0.5542) (13,0.9883) (14,0.0464) (15,0.1770) (16,0.5826) (17,0.9727) (18,0.1061) (19,0.3794) (20,0.9418) (21,0.2193) (22,0.6848) (23,0.8633) (24,0.4720) (25,0.9969) (26,0.0125) (27,0.0495) (28,0.1884) (29,0.6115) (30,0.9502) (31,0.1892) (32,0.6136) (33,0.9484) (34,0.1957) (35,0.6296) (36,0.9328) (37,0.2507) (38,0.7514) (39,0.7472) (40,0.7557)};}
+    % 2: x_0 = 0,3001
+    \capa{2}{\addplot[thick,tceedorado,dashed,mark=none] coordinates {(0,0.3001) (1,0.8402) (2,0.5372) (3,0.9945) (4,0.0220) (5,0.0860) (6,0.3143) (7,0.8621) (8,0.4755) (9,0.9976) (10,0.0096) (11,0.0381) (12,0.1465) (13,0.5002) (14,1.0000) (15,0.0000) (16,0.0000) (17,0.0000) (18,0.0000) (19,0.0001) (20,0.0004) (21,0.0017) (22,0.0070) (23,0.0276) (24,0.1075) (25,0.3836) (26,0.9458) (27,0.2049) (28,0.6516) (29,0.9081) (30,0.3340) (31,0.8897) (32,0.3924) (33,0.9537) (34,0.1766) (35,0.5817) (36,0.9733) (37,0.1041) (38,0.3730) (39,0.9354) (40,0.2416)};}
+    % 3: el momento en que se separan
+    \capa{3}{\draw[guia] (axis cs:11,0) -- (axis cs:11,1.05);
+      \node[etiqueta,font=\footnotesize,anchor=south west,text=tceegris] at (axis cs:11,1.0) {se separan};
+      \node[etiqueta,font=\footnotesize,anchor=north east,text=tceemorado] at (axis cs:40,-0.2) {$x_0=0{,}3$};
+      \node[etiqueta,font=\footnotesize,anchor=north west,text=tceedorado!85!black] at (axis cs:0,-0.2) {$x_0=0{,}3001$};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

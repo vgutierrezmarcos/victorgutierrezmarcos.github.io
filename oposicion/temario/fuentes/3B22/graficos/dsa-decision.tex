@@ -1,0 +1,63 @@
+% Del análisis de sostenibilidad de la deuda a la decisión de préstamo y a la
+% reestructuración: los 2 marcos (SRDSF para los países con acceso a los
+% mercados, LIC-DSF para los de renta baja), la valoración de la
+% sostenibilidad en 3 zonas y lo que hace el FMI en cada una, con los pasos
+% del Marco Común del G-20 cuando la deuda es insostenible.
+% Capas: 1 los 2 marcos; 2 las 3 zonas; 3 lo que hace el FMI; 4 el Marco Común.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    marco/.style={draw=tceemorado,thick,fill=tceemorado!6,rounded corners=2pt,
+      align=left,text width=7.6cm,inner sep=5pt,font=\footnotesize,anchor=north},
+    zona/.style={draw=#1,thick,fill=#1!14,rounded corners=2pt,align=center,
+      text width=4.75cm,inner sep=4pt,font=\small,anchor=north},
+    accion/.style={draw=#1,thick,fill=white,rounded corners=2pt,align=left,
+      text width=4.75cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    paso/.style={draw=tceerojo,fill=tceerojo!6,rounded corners=2pt,align=left,
+      text width=2.35cm,inner sep=3pt,font=\footnotesize,anchor=north west,minimum height=2.5cm},
+    rel/.style={->,thick,tceegris},
+    titulo/.style={font=\small\bfseries,text=tceemorado,anchor=west}]
+  % 1: los 2 marcos
+  \capa{1}{\node[titulo] at (-8.1,0.45) {1. El análisis: el riesgo de la deuda (en cada art.~IV y en cada programa)};}
+  \capa{1}{\node[marco] (mac) at (-4.0,0) {%
+    \textbf{Países con acceso a los mercados: SRDSF (2021)}\\[2pt]
+    -- \emph{corto plazo} (1-2 años): señal de un modelo de alerta temprana\\
+    -- \emph{medio plazo} (3-5 años): módulo del \textbf{abanico} (anchura, probabilidad de que la deuda no se estabilice, nivel final) y módulo de \textbf{necesidades brutas de financiación} en un escenario de tensión\\
+    -- \emph{largo plazo} (más de 5 años): amortizaciones, clima, envejecimiento, recursos naturales\\[2pt]
+    $\Rightarrow$ riesgo de \textbf{tensión soberana}: bajo, moderado o alto};}
+  \capa{1}{\node[marco] (lic) at (4.0,0) {%
+    \textbf{Renta baja: LIC-DSF (2018, con el Banco Mundial)}\\[2pt]
+    -- \emph{capacidad de endeudamiento} (débil, media, fuerte) por un indicador compuesto (calidad institucional, crecimiento, reservas, remesas\ldots)\\
+    -- 4 \emph{umbrales} de deuda externa (valor actual sobre PIB y sobre exportaciones; servicio sobre exportaciones y sobre ingresos) y una referencia de deuda pública total (35, 55 o 70~\% del PIB)\\
+    -- horizonte de 10 años; escenarios de tensión estándar y a medida\\[2pt]
+    $\Rightarrow$ riesgo de \textbf{sobreendeudamiento}: bajo, moderado, alto o en sobreendeudamiento};}
+  % 2: las 3 zonas
+  \coordinate (z) at (0,-4.35);
+  \capa{2}{\node[titulo] at (-8.1,-5.2) {2. La valoración, cuando el país pide dinero: ¿es sostenible la deuda?};}
+  \capa{2}{\node[zona=tceeverde] (verde) at (-5.4,-5.7) {\textbf{Sostenible con alta probabilidad}};}
+  \capa{2}{\node[zona=tceedorado] (gris) at (0,-5.7) {\textbf{Sostenible, pero no con alta probabilidad}};}
+  \capa{2}{\node[zona=tceerojo] (roja) at (5.4,-5.7) {\textbf{Insostenible}\\(trayectoria explosiva)};}
+  % 3: lo que hace el FMI
+  \capa{3}{\node[accion=tceeverde] (a1) at ([yshift=-0.35cm]verde.south) {%
+    \textbf{Presta}; con acceso normal basta con que sea sostenible, y por encima de los límites (\emph{acceso excepcional}) exige la alta probabilidad (criterio 2)};}
+  \capa{3}{\node[accion=tceedorado] (a2) at ([yshift=-0.35cm]gris.south) {%
+    \textbf{Presta si otros ayudan}: un \emph{reperfilamiento} (se alargan los vencimientos sin quita) u otra financiación que devuelva la probabilidad alta};}
+  \capa{3}{\node[accion=tceerojo] (a3) at ([yshift=-0.35cm]roja.south) {%
+    \textbf{No presta sin reestructuración}: el análisis fija cuánto alivio hace falta y los acreedores dan \emph{garantías de financiación}};}
+  \capa{3}{\foreach \z/\a in {verde/a1,gris/a2,roja/a3}{\draw[rel] (\z.south) -- (\a.north);}}
+  % 4: el Marco Común
+  \capa{4}{\node[titulo] at (-8.1,-10.1) {3. Si hay que reestructurar: el Marco Común del G-20 (2020), paso a paso};}
+  \capa{4}{\node[paso] (p1) at (-8.1,-10.5) {\textbf{1.} El país pide tratamiento y negocia un programa con el FMI};}
+  \capa{4}{\node[paso] (p2) at (-5.35,-10.5) {\textbf{2.} El DSA del FMI y del BM fija los \emph{objetivos} de deuda: el tamaño del alivio};}
+  \capa{4}{\node[paso] (p3) at (-2.6,-10.5) {\textbf{3.} El comité de acreedores oficiales da \emph{garantías de financiación}};}
+  \capa{4}{\node[paso] (p4) at (0.15,-10.5) {\textbf{4.} El Directorio aprueba el programa y el primer desembolso};}
+  \capa{4}{\node[paso] (p5) at (2.9,-10.5) {\textbf{5.} Acuerdo con los oficiales, con los objetivos del DSA};}
+  \capa{4}{\node[paso] (p6) at (5.65,-10.5) {\textbf{6.} \emph{Comparabilidad de trato}: bonistas y otros acreedores, en condiciones parecidas};}
+  \capa{4}{\foreach \a/\b in {p1/p2,p2/p3,p3/p4,p4/p5,p5/p6}{\draw[rel] (\a.east) -- (\b.west);}}
+  \capa{4}{\node[font=\footnotesize,align=left,anchor=north west,text width=16.2cm] at (-8.1,-13.2) {%
+    \textbf{Casos}: Chad (2022), Zambia (oficiales en 2023, bonistas en 2024), Ghana (objetivos del DSA: deuda pública del 55~\% del PIB en valor actual y servicio de la deuda externa del 18~\% de los ingresos en 2028; riesgo rebajado a moderado en julio de 2026) y Etiopía (casi cerrado). El análisis no es neutral: un escenario base optimista reduce la quita, uno pesimista la agranda.};}
+\end{tikzpicture}
+\end{document}

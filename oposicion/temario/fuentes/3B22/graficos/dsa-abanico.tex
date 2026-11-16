@@ -1,0 +1,51 @@
+% Gráfico de abanico (fan chart) del análisis de sostenibilidad de la deuda,
+% ilustrativo: deuda pública en % del PIB, histórico 2019-2025 y proyección a
+% 5 años (2026-2030) con las bandas de los percentiles 5-95 y 25-75, el
+% escenario base y un escenario de tensión combinado. Datos inventados para
+% explicar cómo se lee: no corresponden a ningún país.
+% Capas: 1 histórico y ejes; 2 escenario base; 3 abanico; 4 tensión y
+% lecturas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13.5cm, height=7.4cm,
+      xmin=2018.6, xmax=2033.6, ymin=50, ymax=100,
+      xtick={2020,2022,...,2030}, ytick={50,60,...,100},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      ylabel={Deuda pública, \% del PIB},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false]
+    % 3: abanico (P5-P95 y P25-P75)
+    \ifnum3>\tceepaso\relax\else
+    \addplot[draw=none,fill=tceemorado!15] coordinates {(2025,71.0) (2026,80.1) (2027,84.5) (2028,87.9) (2029,90.7) (2030,93.1) (2030,59.2) (2029,60.6) (2028,62.1) (2027,63.8) (2026,65.7) (2025,71.0)} -- cycle;
+    \addplot[draw=none,fill=tceemorado!35] coordinates {(2025,71.0) (2026,76.0) (2027,78.7) (2028,80.8) (2029,82.5) (2030,84.0) (2030,68.3) (2029,68.8) (2028,69.2) (2027,69.5) (2026,69.7) (2025,71.0)} -- cycle;
+    \node[font=\scriptsize,text=tceemorado,anchor=west] at (axis cs:2030.15,93.1) {percentil 95};
+    \node[font=\scriptsize,text=tceemorado,anchor=west] at (axis cs:2030.15,84.0) {percentil 75};
+    \node[font=\scriptsize,text=tceemorado,anchor=west] at (axis cs:2030.15,68.3) {percentil 25};
+    \node[font=\scriptsize,text=tceemorado,anchor=west] at (axis cs:2030.15,59.2) {percentil 5};
+    \fi
+    % 1: histórico
+    \addplot[thick,black,mark=*,mark size=1.2pt] coordinates {(2019,58) (2020,72) (2021,70) (2022,67) (2023,68) (2024,70) (2025,71)};
+    \draw[tceegris,dashed] (axis cs:2025.5,50) -- (axis cs:2025.5,100);
+    \node[font=\scriptsize,text=tceegris,anchor=north east] at (axis cs:2025.4,99) {histórico};
+    \node[font=\scriptsize,text=tceegris,anchor=north west] at (axis cs:2025.6,99) {proyección a 5 años};
+    % 2: escenario base
+    \ifnum2>\tceepaso\relax\else
+    \addplot[very thick,tceemorado] coordinates {(2025,71.0) (2026,72.6) (2027,73.5) (2028,74.1) (2029,74.5) (2030,74.7)};
+    \fi
+    % 4: escenario de tensión y lecturas
+    \ifnum4>\tceepaso\relax\else
+    \draw[tceerojo,thin] (axis cs:2025.3,86) -- (axis cs:2026.9,85.0);
+    \addplot[thick,tceerojo,dashed] coordinates {(2025,71.0) (2026,79.5) (2027,85.5) (2028,87.0) (2029,88.0) (2030,88.6)};
+    \node[font=\scriptsize,text=tceerojo,anchor=east,align=right] at (axis cs:2025.3,86) {escenario de tensión\\(crecimiento, tipos y\\tipo de cambio a la vez)};
+    \node[font=\scriptsize,text=tceemorado,anchor=north west,align=left] at (axis cs:2026.4,72.2) {escenario base};
+    \draw[decorate,decoration={brace,amplitude=4pt},thick,tceegris] (axis cs:2032.0,93.1) -- node[right=5pt,font=\scriptsize,align=left,text=black] {anchura del\\abanico:\\la incertidumbre} (axis cs:2032.0,59.2);
+    \fi
+  \end{axis}
+\end{tikzpicture}
+\end{document}

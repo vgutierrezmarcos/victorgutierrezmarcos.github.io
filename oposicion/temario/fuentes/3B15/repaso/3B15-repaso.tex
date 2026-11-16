@@ -84,7 +84,7 @@ Monetaria & Fijo & \textcolor{tceerojo}{ineficaz} & \textcolor{tceerojo}{inefica
 \begin{itemize}
 \item \emph{Perturbaciones reales}: \autor{Friedman} (1953): más fácil mover un precio que miles (horario de verano); con tipo flexible la economía se dobla para no quebrarse. Con fijo, subir tipos agrava (Argentina finales de los 90; Francia 1992-1993); libra fuera del SME (16/9/1992), peseta devaluada \vertema{3.B.17} \vertema{4.A.27}.
 \item \emph{Perturbaciones monetarias}: al revés: con fijo las absorben las reservas (\hyperref[rep:poole]{\autor{Poole}}).
-\item \emph{Inflación}: \concepto{sesgo inflacionista} (\autor{Barro}-\autor{Gordon}, 1983) \vertema{3.A.36}; fijo: credibilidad importada, «atarse las manos» (\autor{Giavazzi}-\autor{Pagano}, 1988); riesgo de apreciación real $\gamma_q\simeq\pi^*-\pi<0$; flexible: credibilidad propia (objetivo de inflación), efecto trinquete.
+\item \emph{Inflación}: \concepto{sesgo inflacionista} (\autor{Barro}-\autor{Gordon}, 1983) \vertema{3.A.36}; fijo: credibilidad importada, «atarse las manos» (\autor{Giavazzi}-\autor{Pagano}, 1988), creíble solo si salir del ancla es carísimo (unión, dolarización): si no, tentación de devaluar y vuelta al sesgo; riesgo de apreciación real $\gamma_q\simeq\pi^*-\pi<0$; flexible: credibilidad propia (objetivo de inflación), efecto trinquete.
 \end{itemize}
 
 \textbf{c) Equilibrio externo}
@@ -104,9 +104,11 @@ Monetaria & Fijo & \textcolor{tceerojo}{ineficaz} & \textcolor{tceerojo}{inefica
 \sub{I.3. Determinantes y evidencia\label{rep:I.3}}
 \begin{itemize}
 \item \emph{Determinantes}: integración con el ancla (áreas monetarias óptimas: \autor{Mundell}, 1961; \autor{McKinnon}, 1963; \autor{Kenen}, 1969 \vertema{3.B.16}); origen de las perturbaciones; credibilidad; desarrollo financiero (\concepto{miedo a flotar}, \emph{fear of floating}: \autor{Calvo}-\autor{Reinhart}, 2002); economía política; movilidad del capital.
-\item \textbf{\autor{Poole} en economía abierta}\label{rep:poole} (\autor{Poole}, 1970; \autor{Boyer}, 1978): \autor{Mundell}-\autor{Fleming}, $i=i^*$, perturbaciones $\varepsilon^{\mathrm{IS}}$ y $\varepsilon^{\mathrm{LM}}$; $\mathrm{Var}(Y)_{\text{fijo}}=\frac{\sigma^2_{\mathrm{IS}}}{[1-c(1-t)+m]^2}$, $\mathrm{Var}(Y)_{\text{flex}}=\frac{\sigma^2_{\mathrm{LM}}}{k^2}$:
+\item \textbf{\autor{Poole} en economía abierta}\label{rep:poole} (\autor{Poole}, 1970; \autor{Boyer}, 1978): IS-LM-BP con $i=i^*$ (fijar $E$ = fijar $i$): con \emph{fijo} se mueve la LM (reservas) y la renta la dan IS y BP: lo real pasa entero, lo monetario no; con \emph{flexible} se mueve la IS (tipo de cambio) y la renta la dan LM y BP: lo real no pasa, lo monetario sí:
   \funcionclave{\text{fijar }E\iff\frac{\sigma^2_{\mathrm{LM}}}{k^2}>\frac{\sigma^2_{\mathrm{IS}}}{[1-c\,(1-t)+m]^2}}
-  Perturbaciones reales: flotar; monetarias: fijar. Extensiones: intermedios (\autor{Boyer}); neokeynesiano: flotar (\autor{Galí}-\autor{Monacelli}, 2005); con LCP, atender desalineamientos (\autor{Engel}, 2011). Deja fuera credibilidad y finanzas.
+  Perturbaciones reales: flotar; monetarias: fijar.
+  \graficorepaso[0.62\linewidth]{poole-abierta}{\autor{Poole} abierto: el tramo rojo, lo que varía la renta}
+  Extensiones: intermedios (\autor{Boyer}); neokeynesiano: flotar (\autor{Galí}-\autor{Monacelli}, 2005); con LCP, atender desalineamientos (\autor{Engel}, 2011). Deja fuera credibilidad y finanzas.
 \item \emph{Evidencia}: clasificaciones alternativas (\autor{Reinhart}-\autor{Rogoff}, 2004, «caída libre»; \autor{Ilzetzki}-\autor{Reinhart}-\autor{Rogoff}, 2019; \autor{Levy-Yeyati}-\autor{Sturzenegger}, 2005; \autor{Shambaugh}, 2004). Fijos: menos inflación; rígidos en desarrollo: menos crecimiento; con el desarrollo gana la flexibilidad (\autor{Rogoff} et al., 2004). Ningún régimen sirve a todos (\autor{Frankel}, 1999).
 \end{itemize}
 
@@ -121,7 +123,7 @@ Entre los 2 polos hay un continuo, y la mayoría está en medio. La visión bipo
 \item AREAER: desde 2009, 10 regímenes en 4 grupos; criterios: \concepto{grado de fijación} y \concepto{grado de publicidad}. Más fijo y público: más credibilidad, menos autonomía.
 \item 30/4/2023: \dato{blando 44,8~\%, flotación 32,5~\%, duro 13,4~\%, otros 9,3~\%}{FMI}; 2026 preliminar: 47/33/14/6. Uniones monetarias por la moneda común (euro, libre flotación).
 \end{itemize}
-\graficorepaso[\linewidth]{regimenes-espectro}{El menú de regímenes: del más rígido al más flexible}
+\graficorepaso[\linewidth]{regimenes-espectro}{El menú del FMI: \emph{hard pegs}, \emph{soft pegs}, \emph{floating} y \emph{other managed}, con sus subtipos}
 \begin{itemize}
 \item \textbf{Duros}: \emph{sin moneda propia} (Ecuador, Panamá, El Salvador; Kosovo, Montenegro): máxima credibilidad, sin señoreaje ni prestamista de última instancia. \emph{Unión monetaria} \vertema{3.B.16}. \concepto{Caja de conversión}: $\mathrm{BM}=\mathrm{CI}+R$, $R\geq\mathrm{BM}$; Hong Kong desde 1983 (7,75-7,85 desde 2005); Estonia, Lituania, Bulgaria; Argentina 1991-2001.
 \item \textbf{Blandos}: \emph{convencional} (riyal 3,75 desde 1986; Dinamarca en el MTC~II \vertema{3.B.43}); \emph{estabilizado} (denar $\approx$61,5/€); \emph{deslizamiento} (\emph{crawling peg}; Nicaragua hasta 2024; hoy Botsuana); \emph{similar al deslizamiento} (China); \emph{bandas} (Marruecos; puntos del oro, Bretton Woods, SME).

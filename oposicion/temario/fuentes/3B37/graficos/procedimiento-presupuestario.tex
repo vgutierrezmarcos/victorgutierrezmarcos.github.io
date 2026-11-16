@@ -1,10 +1,13 @@
-% El procedimiento presupuestario anual (art. 314 TFUE): proyecto de la
-% Comisión, posición del Consejo, lectura del Parlamento, Comité de
-% Conciliación y votación del texto conjunto, con sus plazos y mayorías; a la
+% El ciclo presupuestario anual de la Unión: a la izquierda, el mes en que
+% ocurre cada paso según el calendario pragmático que pactan cada año el
+% Consejo, el Parlamento y la Comisión (infografía de la Secretaría General
+% del Consejo, 2022); en el centro, los pasos del art. 314 TFUE con su plazo
+% legal (proyecto de la Comisión, posición del Consejo, lectura del
+% Parlamento, Comité de Conciliación y votación del texto conjunto); a la
 % derecha, las salidas en que el presupuesto queda adoptado y, a la
 % izquierda, aquellas en que la Comisión presenta un nuevo proyecto. Al
-% margen, las doceavas partes provisionales (art. 315). Fuente: arts. 314 y
-% 315 TFUE.
+% final, las doceavas partes provisionales (art. 315). Fuente: arts. 314 y
+% 315 TFUE; Secretaría General del Consejo (2022).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -14,50 +17,73 @@
 \begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
     paso/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,
       align=left,text width=6.7cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    previo/.style={paso,draw=tceemorado!55,dashed,fill=white},
     si/.style={draw=tceeverde,thick,fill=tceeverde!10,rounded corners=2pt,
       align=left,text width=3.45cm,inner sep=4pt,font=\footnotesize,anchor=west},
     no/.style={draw=tceerojo,thick,fill=tceerojo!7,rounded corners=2pt,
       align=left,text width=3.15cm,inner sep=4pt,font=\footnotesize,anchor=east},
     nota/.style={draw=tceegris,thick,dashed,fill=tceegris!6,rounded corners=2pt,
-      align=left,text width=3.15cm,inner sep=4pt,font=\footnotesize,anchor=north east},
+      align=left,text width=6.7cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    mes/.style={circle,draw=tceedorado,thick,fill=white,inner sep=1pt,minimum size=15pt,
+      font=\scriptsize\bfseries,text=tceedorado!70!black},
+    meslab/.style={font=\footnotesize\bfseries,text=tceemorado,anchor=east,align=right},
+    guia/.style={densely dotted,tceedorado!80!black},
     sigue/.style={->,thick,tceegris},
     salesi/.style={->,thick,tceeverde},
     saleno/.style={->,thick,tceerojo},
     cond/.style={font=\footnotesize,align=left,anchor=west,text width=3.3cm,text=tceegris!70!black}]
-  % 1: proyecto de la Comisión
-  \capa{1}{\node[paso] (p1) at (8,0) {\etapa{Proyecto de la Comisión}{antes del 1-IX}
-      dentro de los techos del MFP; en la práctica, en junio};}
-  % 2: posición del Consejo
-  \capa{2}{\node[paso] (p2) at ($(p1.south)+(0,-0.55)$) {\etapa{Posición del Consejo}{antes del 1-X}
-      por mayoría cualificada};}
-  \capa{2}{\draw[sigue] (p1) -- (p2);}
-  % 3: lectura del Parlamento
-  \capa{3}{\node[paso] (p3) at ($(p2.south)+(0,-0.55)$) {\etapa{Lectura del Parlamento Europeo}{42 días}
-      sobre la posición del Consejo};}
-  \capa{3}{\draw[sigue] (p2) -- (p3);}
-  \capa{3}{\node[si] (s3) at ($(p3.east)+(0.6,0)$) {\textbf{Adoptado}\\la aprueba o no se pronuncia};}
-  \capa{3}{\draw[salesi] (p3) -- (s3);}
-  % 4: el Consejo ante las enmiendas
-  \capa{4}{\node[paso] (p4) at ($(p3.south)+(0,-0.85)$) {\etapa{El Consejo ante las enmiendas}{10 días}
-      puede aprobarlas todas};}
-  \capa{4}{\draw[sigue] (p3) -- node[cond] {enmiendas por mayoría de sus miembros} (p4);}
-  \capa{4}{\node[si] (s4) at ($(p4.east)+(0.6,0)$) {\textbf{Adoptado}\\aprueba todas las enmiendas};}
-  \capa{4}{\draw[salesi] (p4) -- (s4);}
-  % 5: Comité de Conciliación
-  \capa{5}{\node[paso] (p5) at ($(p4.south)+(0,-0.85)$) {\etapa{Comité de Conciliación}{21 días}
-      27 miembros del Consejo y 27 diputados buscan un texto conjunto; la Comisión media};}
-  \capa{5}{\draw[sigue] (p4) -- node[cond] {si no, se convoca el Comité} (p5);}
-  \capa{5}{\node[no] (n5) at ($(p5.west)+(-0.6,0)$) {\textbf{Nuevo proyecto}\\sin texto conjunto};}
-  \capa{5}{\draw[saleno] (p5) -- (n5);}
-  % 6: votación del texto conjunto
-  \capa{6}{\node[paso] (p6) at ($(p5.south)+(0,-0.85)$) {\etapa{Votación del texto conjunto}{14 días}
-      el Parlamento (mayoría de los votos emitidos) y el Consejo (mayoría cualificada)};}
-  \capa{6}{\draw[sigue] (p5) -- node[cond] {texto conjunto} (p6);}
-  \capa{6}{\node[si,anchor=north west] (s6) at ($(p6.north east)+(0.6,0)$) {\textbf{Adoptado}\\lo aprueban los 2, o uno y el otro no se pronuncia; o lo rechaza solo el Consejo y el PE confirma sus enmiendas (mayoría de miembros y 3/5 de los votos)};}
-  \capa{6}{\draw[salesi] (p6.east) -- (p6.east -| s6.west);}
-  \capa{6}{\node[no,anchor=north east] (n6) at ($(p6.north west)+(-0.6,0)$) {\textbf{Nuevo proyecto}\\lo rechazan los 2, o solo el Parlamento};}
-  \capa{6}{\draw[saleno] (p6.west) -- (p6.west -| n6.east);}
-  % 7: sin presupuesto el 1 de enero
-  \capa{7}{\node[nota] (dz) at ($(p1.north west)+(-0.6,0)$) {\textbf{Si el 1 de enero no hay presupuesto}: doceavas partes provisionales (art. 315): cada mes, hasta 1/12 de los créditos del año anterior};}
+  % 1: leyenda de las 2 columnas
+  \capa{1}{\node[font=\footnotesize\bfseries,text=tceedorado!70!black,align=right,anchor=south east] (cab1) at (-0.35,0.25) {calendario\\pragmático};
+    \node[font=\footnotesize\bfseries,text=tceemorado,anchor=south] (cab2) at (8,0.25) {pasos del Tratado (plazo legal a la derecha de cada paso)};}
+  % 2: pasos previos, fuera del Tratado
+  \capa{2}{\node[previo] (p1) at (8,0) {\etapa{Orientaciones}{sin plazo legal}
+      el Consejo (Ecofin) y el Parlamento aprueban cada uno sus orientaciones para el presupuesto del año siguiente};
+    \node[previo] (p2) at ($(p1.south)+(0,-0.45)$) {\etapa{Reunión a 3 (diálogo tripartito)}{sin plazo legal}
+      el Consejo, el Parlamento y la Comisión se presentan sus prioridades y pactan el calendario de las fechas clave};
+    \draw[sigue] (p1) -- (p2);}
+  % 3: proyecto de la Comisión
+  \capa{3}{\node[paso] (p3) at ($(p2.south)+(0,-0.45)$) {\etapa{Proyecto de la Comisión}{TFUE: antes del 1-IX}
+      dentro de los techos del MFP, a partir de las previsiones de cada institución; lo envía al Consejo y al Parlamento};
+    \draw[sigue] (p2) -- (p3);}
+  % 4: posición del Consejo
+  \capa{4}{\node[paso] (p4) at ($(p3.south)+(0,-0.45)$) {\etapa{Posición del Consejo}{TFUE: antes del 1-X}
+      acordada en julio y adoptada formalmente en septiembre, por mayoría cualificada; se transmite al Parlamento};
+    \draw[sigue] (p3) -- (p4);}
+  % 5: lectura del Parlamento
+  \capa{5}{\node[paso] (p5) at ($(p4.south)+(0,-0.45)$) {\etapa{Lectura del Parlamento Europeo}{42 días}
+      sobre la posición del Consejo};
+    \draw[sigue] (p4) -- (p5);
+    \node[si] (s5) at ($(p5.east)+(0.6,0)$) {\textbf{Adoptado}\\la aprueba o no se pronuncia};
+    \draw[salesi] (p5) -- (s5);}
+  % 6: el Consejo ante las enmiendas
+  \capa{6}{\node[paso] (p6) at ($(p5.south)+(0,-0.85)$) {\etapa{El Consejo ante las enmiendas}{10 días}
+      puede aprobarlas todas};
+    \draw[sigue] (p5) -- node[cond] {enmiendas por mayoría de sus miembros} (p6);
+    \node[si] (s6) at ($(p6.east)+(0.6,0)$) {\textbf{Adoptado}\\aprueba todas las enmiendas};
+    \draw[salesi] (p6) -- (s6);}
+  % 7: Comité de Conciliación
+  \capa{7}{\node[paso] (p7) at ($(p6.south)+(0,-0.85)$) {\etapa{Comité de Conciliación}{21 días}
+      27 miembros del Consejo y 27 diputados buscan un texto conjunto; la Comisión media y, con una \emph{nota rectificativa}, actualiza el proyecto con sus últimas previsiones};
+    \draw[sigue] (p6) -- node[cond] {si no, se convoca el Comité} (p7);
+    \node[no] (n7) at ($(p7.west)+(-0.6,0)$) {\textbf{Nuevo proyecto}\\sin texto conjunto};
+    \draw[saleno] (p7) -- (n7);}
+  % 8: votación del texto conjunto
+  \capa{8}{\node[paso] (p8) at ($(p7.south)+(0,-0.85)$) {\etapa{Votación del texto conjunto}{14 días}
+      el Parlamento (mayoría de los votos emitidos) y el Consejo (mayoría cualificada)};
+    \draw[sigue] (p7) -- node[cond] {texto conjunto} (p8);
+    \node[si,anchor=north west] (s8) at ($(p8.north east)+(0.6,0)$) {\textbf{Adoptado}\\lo aprueban los 2, o uno y el otro no se pronuncia; o lo rechaza solo el Consejo y el PE confirma sus enmiendas (mayoría de miembros y 3/5 de los votos)};
+    \draw[salesi] (p8.east) -- (p8.east -| s8.west);
+    \node[no,anchor=north east] (n8) at ($(p8.north west)+(-0.6,0)$) {\textbf{Nuevo proyecto}\\lo rechazan los 2, o solo el Parlamento};
+    \draw[saleno] (p8.west) -- (p8.west -| n8.east);}
+  % 9: sin presupuesto el 1 de enero
+  \capa{9}{\node[nota] (p9) at ($(p8.south)+(0,-1.3)$) {\textbf{Si el 1 de enero no hay presupuesto}: doceavas partes provisionales (art. 315 TFUE): cada mes, hasta 1/12 de los créditos del año anterior por capítulo};
+    \draw[sigue,dashed] (p8.south) -- (p9.north);}
+  % 10: la columna del calendario pragmático
+  \capa{10}{\draw[tceedorado,line width=1.6pt] (0,0 |- p1.north) ++(0,-0.1) -- (0,0 |- p9.south);
+    \foreach \p/\n/\m in {p1/1/febrero, p2/2/marzo, p3/3/finales de mayo, p4/4/julio y septiembre,
+        p5/5/octubre, p6/6/octubre, p7/7/octubre-\\noviembre, p8/8/noviembre, p9/9/enero}{
+      \node[mes] (m\n) at (0,0 |- \p.center) {\n};
+      \node[meslab] at ($(m\n.west)+(-0.12,0)$) {\m};}
+    \foreach \p/\n in {p1/1,p2/2,p3/3,p4/4,p5/5,p6/6,p9/9}{\draw[guia] (m\n.east) -- (\p.west);}}
 \end{tikzpicture}
 \end{document}

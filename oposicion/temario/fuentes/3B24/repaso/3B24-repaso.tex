@@ -32,7 +32,7 @@
 \subcante{\hspace*{0.8em}Convexidad}{1,5}
 \subcante{\hspace*{0.8em}Gestión: inmunización}{1,5}
 \apartadocante{Conclusión}{1}}
-\emph{Funciones clave} (se quedan hasta el final): el precio del bono con los tipos de contado, el tipo largo, la duración de \autor{Macaulay}, la modificada y $\Delta P/P$ con duración y convexidad. \emph{Ejemplo de todo el tema}: bono a 2 años, nominal 1.000~€, cupón del 10~\%, precio 922,6~€; cupón cero a 1 año de 100~€ a 90,9~€.
+\emph{Funciones clave} (se quedan hasta el final): el precio del bono con los tipos de contado, el tipo largo, la duración de \autor{Macaulay}, la modificada, la convexidad y $\Delta P/P$ con duración y convexidad. \emph{Ejemplo de todo el tema}: bono a 2 años, nominal 1.000~€, cupón del 10~\%, precio 922,6~€; cupón cero a 1 año de 100~€ a 90,9~€.
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -158,7 +158,8 @@ Pagos fijos, valor no. La duración mide la pérdida si suben los tipos, la conv
 \item \textbf{Modificada}, semielasticidad:
   \funcionclave{D^{\mathrm{mod}}=\frac{D}{1+y}=-\frac1P\frac{\mathrm{d}P}{\mathrm{d}y}\ \Rightarrow\ \frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\Delta y}
   $D^{\mathrm{mon}}=PD^{\mathrm{mod}}$; DV01 $=PD^{\mathrm{mod}}\times0{,}0001$. Ejemplo: 1,66; $+3$ puntos: predice $-4{,}98$~\%, real $-4{,}80$~\%.
-\item \textbf{Convexidad}: $\mathrm{Conv}=\frac{1}{P}\frac{\mathrm{d}^2P}{\mathrm{d}y^2}$; ejemplo 4,27, aproximación $-4{,}79$~\%:
+\item \textbf{Convexidad}: ejemplo 4,27, aproximación $-4{,}79$~\%:
+  \funcionclave{\mathrm{Conv}=\frac{1}{P}\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\frac{1}{P(1+y)^2}\sum_{t=1}^{T}t(t+1)\frac{\mathrm{FC}_t}{(1+y)^t}}
   \funcionclave{\frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\Delta y+\tfrac12\,\mathrm{Conv}\,(\Delta y)^2}
   Mayor con plazo largo, TIR baja, cupón bajo; deseable. Con opciones: \concepto{duración efectiva}; \emph{callable}, convexidad negativa.
 \end{itemize}

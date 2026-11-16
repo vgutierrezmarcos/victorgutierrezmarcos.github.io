@@ -208,3 +208,8 @@ Víctor: «En las notas a pie de página también puede haber párrafos indentad
 - La nota de las «tecnologías del consumo» (l. 20, introducción): 3 enfoques en viñetas (Lancaster, Becker y Gronau, Stigler); el resto de la nota (otros agentes, Nobel) en párrafo aparte.
 
 No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.
+
+## Comentarios de Víctor (16/11/2026)
+
+- Regla general 1 (series de títulos completas; en I.2, «iii) Implicaciones» quedaba debajo de «Productores: curva de oferta…», sin i) ni ii) bajo ese título) → Los 2 bloques del desarrollo, «Consumidores: curva de demanda individual y de mercado» y «Productores: curva de oferta individual y de mercado», dejan de ser `\subparagraph` (el mismo nivel que i)-iii)) y pasan a rótulos sangrados dentro de «ii) Desarrollo». Así i) Supuestos, ii) Desarrollo y iii) Implicaciones quedan seguidos en el mismo nivel bajo I.2 «Modelo». Solo cambian esos 2 títulos; el contenido, igual. Comprobadas las demás series del tema: completas.
+- Páginas: cuerpo 37, igual que antes. \minutos sigue en 30. La ficha no cambia.

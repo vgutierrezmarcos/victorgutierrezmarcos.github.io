@@ -156,3 +156,11 @@ Aplicada en todas la opción recomendada:
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Comentarios de Víctor (16/11/2026)
+
+- Regla general 1 (ninguna serie de títulos con letra que no empiece por a)): en II.4 «Inversión directa» la serie era a) Determinantes, b) Teorías, «El modelo de Helpman, Melitz y Yeaple (2004)» (sin letra) y c) Efectos, y dentro del modelo había otra serie a)-e). Ahora es a) Determinantes, b) Teorías, c) El modelo de HMY (2004), d) Efectos, y los apartados del modelo pasan a i) Idea, ii) Modelo, iii) Extensiones, iv) Evidencia empírica, v) Valoración, como en II.1 (letras en el \paragraph, romanos en el \subparagraph). En la ficha, «HMY (2004)» → «c) HMY (2004)» y «c) Efectos» → «d) Efectos». Sin cambios de contenido. Revisadas las demás series del tema: todas empiezan por a) o i). Páginas: cuerpo 30, total 39 (sin cambios); ficha 4.
+
+### Dudas (16/11/2026)
+
+- **¿Se hizo con el tema nuevo de ICEX-CECO (numeración nueva)?** Pendiente de contrastar con ICEX-CECO 3B18 cuando se conecte el D:. No está en las copias de `AppData/Local/Temp/tcee-d/copias/` y el disco D: no estaba conectado el 16/11/2026. **Aplicada: dejar el tema como está hasta poder compararlo (recomendada).**

@@ -1,0 +1,76 @@
+% Por qué se interviene en el sistema financiero (figura del apartado I.2).
+% Ordena el apartado: condición necesaria (los 3 motivos de Musgrave, con los
+% problemas de cada uno y el modelo que los fundamenta) -> la intervención que
+% justifica cada motivo -> condición suficiente (que el regulador no falle más
+% que el mercado) -> regulación eficiente.
+% Colores: eficiencia morado, equidad verde, estabilidad rojo (los mismos que
+% en la tabla de objetivos); condición suficiente en dorado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    motivo/.style={draw=#1,fill=#1!12,very thick,rounded corners=3pt,align=center,
+      text width=4.7cm,minimum height=1.15cm,inner sep=4pt,font=\small},
+    problema/.style={draw=#1,thick,rounded corners=2pt,align=left,text width=4.7cm,
+      minimum height=3.1cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    medida/.style={draw=#1,fill=#1!6,thick,rounded corners=2pt,align=left,text width=4.7cm,
+      minimum height=2.35cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    flecha/.style={->,thick,#1},
+    rotulo/.style={font=\footnotesize\itshape,text=tceegris!80!black,align=center}]
+  % Capa 1: la condición necesaria (rótulo)
+  \capa{1}{
+    \node[font=\small\bfseries,text=tceegris!70!black] (nec) at (8,7.45) {Condición necesaria: un motivo para intervenir (\textsc{Musgrave})};
+  }
+  % Capa 2: los 3 motivos
+  \capa{2}{
+    \node[motivo=tceemorado] (efi) at (2.6,6.45) {\textbf{Eficiencia}\\corregir fallos de mercado};
+    \node[motivo=tceeverde] (equ) at (8,6.45) {\textbf{Equidad}\\repartir el acceso};
+    \node[motivo=tceerojo] (est) at (13.4,6.45) {\textbf{Estabilidad}\\suavizar el ciclo, evitar crisis};
+  }
+  % Capa 3: los problemas de cada motivo
+  \capa{3}{
+    \node[problema=tceemorado] (pefi) at (2.6,5.55) {\textbf{Problemas}\\[1pt]
+      $\bullet$ información asimétrica: crédito, depositantes, productos, entidades, \emph{too big to fail}\\
+      $\bullet$ externalidades: contagio, ventas forzosas; de red en los pagos\\
+      $\bullet$ poder de mercado\\
+      $\bullet$ bien público global\\[1pt]
+      \emph{Modelo: \textsc{Stiglitz} y \textsc{Weiss} (I.2.2)}};
+    \node[problema=tceeverde] (pequ) at (8,5.55) {\textbf{Problemas}\\[1pt]
+      $\bullet$ exclusión financiera: cuenta, pagos, efectivo\\
+      $\bullet$ racionamiento del crédito a quien no tiene garantías ni historial\\[1pt]
+      \emph{Modelo: \textsc{Stiglitz} y \textsc{Weiss} (I.2.2)}};
+    \node[problema=tceerojo] (pest) at (13.4,5.55) {\textbf{Problemas}\\[1pt]
+      $\bullet$ prociclicidad del crédito\\
+      $\bullet$ fragilidad de los bancos: pánicos que se cumplen solos\\[1pt]
+      \emph{Modelo: \textsc{Diamond} y \textsc{Dybvig} (I.2.3)}};
+  }
+  % Capa 4: la intervención que justifica cada motivo
+  \capa{4}{
+    \node[medida=tceemorado] (iefi) at (2.6,1.75) {\textbf{Regulación correctora}\\[1pt]
+      información obligatoria, licencias, capital (microprudencial), normas de conducta, competencia, coordinación global (FSB)};
+    \node[medida=tceeverde] (iequ) at (8,1.75) {\textbf{Garantía de acceso}\\[1pt]
+      cuenta de pago básica, avales públicos, banca pública (ICO), educación financiera};
+    \node[medida=tceerojo] (iest) at (13.4,1.75) {\textbf{Visión de sistema}\\[1pt]
+      política macroprudencial (colchones anticíclicos, límites LTV) y red de seguridad (prestamista de última instancia, garantía de depósitos, resolución)};
+  }
+  % Capa 5: flechas de cada motivo a su intervención, con el verbo «justifica»
+  \capa{5}{
+    \foreach \p/\i/\c in {pefi/iefi/tceemorado,pequ/iequ/tceeverde,pest/iest/tceerojo}
+      \draw[flecha=\c] (\p.south) -- node[right,font=\scriptsize\itshape,text=\c] {justifica} (\i.north);
+  }
+  % Capa 6: la condición suficiente
+  \capa{6}{
+    \node[draw=tceedorado,fill=tceedorado!12,very thick,rounded corners=3pt,align=center,
+      text width=15.2cm,inner sep=5pt,font=\small] (suf) at (8,-1.4)
+      {\textbf{Condición suficiente: que el regulador corrija más de lo que estropea} (I.2.4)\\
+      \footnotesize fallos de regulación: captura, arbitraje regulatorio, complejidad, riesgo moral de la propia red de seguridad};
+    \foreach \n in {iefi,iequ,iest} \draw[flecha=tceedorado] (\n.south) -- (\n.south |- suf.north);
+  }
+  % Capa 7: la conclusión
+  \capa{7}{
+    \node[font=\small\bfseries,text=tceemorado] (fin) at (8,-2.65) {Regulación eficiente: corregir los incentivos, no multiplicar las normas};
+    \draw[flecha=tceemorado] (suf.south) -- (fin.north);
+  }
+\end{tikzpicture}
+\end{document}

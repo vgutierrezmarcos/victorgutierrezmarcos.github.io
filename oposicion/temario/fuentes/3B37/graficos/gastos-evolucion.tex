@@ -1,37 +1,75 @@
-% Gasto ejecutado (pagos) de la UE por grandes áreas, 2000-2025, en miles de
-% millones de euros corrientes, con el gasto financiado por el
-% NextGenerationEU aparte (MRR y refuerzos de otros programas). Datos en
-% ../datos/gastos-composicion.csv (Comisión Europea, EU spending and revenue
-% 2000-2025; correspondencia de rúbricas en la cabecera del CSV).
-% Capas: barras por áreas de abajo arriba -> NGEU -> rótulos.
+% Gasto ejecutado (pagos) del presupuesto general de la UE por grandes áreas,
+% 1958-2025, en miles de millones de euros corrientes (barras, eje izquierdo),
+% y gasto total en % de la RNB de la Unión (línea, eje derecho). Datos en
+% ../datos/gastos-historico.csv (Comisión Europea: Financial Report 2008,
+% anexos 2 y 3, para 1958-1999; EU spending and revenue 2000-2025 desde 2000;
+% correspondencia de rúbricas en la cabecera del CSV).
+% Capas: sombreado de los marcos plurianuales -> barras por áreas de abajo
+% arriba -> NGEU -> línea del % de la RNB (eje derecho) -> puntos -> rótulos.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \usepackage{pgfplotstable}
 \begin{document}
-\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/gastos-composicion.csv}\gas
-\pgfplotstablecreatecol[expr={\thisrow{mrr}+\thisrow{ngeu_otros}}]{ngeu}{\gas}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/gastos-historico.csv}\gas
 \colorlet{gagr}{tceeverde!75}\colorlet{gcoh}{tceeazul!75}\colorlet{gcomp}{tceedorado!75}
 \colorlet{gext}{tceenaranja!70}\colorlet{gadm}{tceegris!55}\colorlet{gotr}{tceegris!25}\colorlet{gngeu}{tceerojo!70}
+\pgfplotsset{
+  gasto/.style={width=14.5cm, height=8.2cm, xmin=1957, xmax=2026,
+    xtick={1960,1970,...,2020}, minor xtick={1958,...,2025},
+    xticklabel style={/pgf/number format/1000 sep=,font=\footnotesize},
+    yticklabel style={font=\footnotesize}, tick align=outside, clip=false},
+  leyenda linea corta/.style={legend image code/.code={%
+    \draw[##1] plot coordinates {(0cm,0cm) (0.3cm,0cm) (0.6cm,0cm)};}},
+}
+\pgfplotsset{dicapas}
 \begin{tikzpicture}[tcee]
-  \begin{axis}[width=14cm, height=8cm, ybar stacked, bar width=7pt,
-      xmin=1999.3, xmax=2025.7, ymin=0, ymax=260,
-      xtick={2000,2005,...,2025}, minor xtick={2000,...,2025}, xticklabel style={/pgf/number format/1000 sep=,font=\footnotesize},
-      yticklabel style={font=\footnotesize}, ylabel={miles de millones de euros}, ylabel style={font=\footnotesize},
-      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!20},
-      legend style={at={(0.02,0.98)},anchor=north west,font=\scriptsize,draw=none,legend columns=2},
-      legend cell align=left, area legend, dicapas]
-    \capa{1}{\addplot[on layer=dicbarras, dicbarra=gagr] table[x=anio,y=agricultura] {\gas}; \addlegendentry{agricultura y pesca}}
-    \capa{2}{\addplot[on layer=dicbarras, dicbarra=gcoh] table[x=anio,y=cohesion] {\gas}; \addlegendentry{cohesión}}
-    \capa{3}{\addplot[on layer=dicbarras, dicbarra=gcomp] table[x=anio,y=competitividad] {\gas}; \addlegendentry{competitividad}}
-    \capa{4}{\addplot[on layer=dicbarras, dicbarra=gext] table[x=anio,y=exterior] {\gas}; \addlegendentry{acción exterior}}
-    \capa{5}{\addplot[on layer=dicbarras, dicbarra=gadm] table[x=anio,y=admin] {\gas}; \addlegendentry{administración}}
-    \capa{6}{\addplot[on layer=dicbarras, dicbarra=gotr] table[x=anio,y=otros] {\gas}; \addlegendentry{otros}}
-    \capa{7}{\addplot[on layer=dicbarras, dicbarra=gngeu] table[x=anio,y=ngeu] {\gas}; \addlegendentry{NextGenerationEU}}
-    \capa{8}{\dicrotulo[font=\scriptsize,anchor=south]{(2000,83.5)}{0,92~\%}
-      \dicrotulo[font=\scriptsize,anchor=south]{(2013,148.5)}{1,10~\%}
-      \dicrotulo[font=\scriptsize,anchor=south]{(2022,243.3)}{1,54~\%}
-      \dicrotulo[font=\scriptsize,anchor=south]{(2025,216.4)}{1,16~\%}}
+  % Eje izquierdo: pagos por áreas
+  \begin{axis}[gasto, ybar stacked, bar width=3.6pt, ymin=0, ymax=290, ytick={0,50,...,250},
+      ylabel={miles de millones de euros (barras)}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, ymajorgrids, grid style={tceegris!20}]
+    % 1: los marcos plurianuales (desde 1988), sombreados alternos
+    \capa{1}{\dicsombra[fill=tceedorado, opacity=0.08]{1987.5}{0}{1992.5}{290}
+      \dicsombra[fill=tceedorado, opacity=0.08]{1999.5}{0}{2006.5}{290}
+      \dicsombra[fill=tceedorado, opacity=0.08]{2013.5}{0}{2020.5}{290}}
+    \capa{2}{\addplot[on layer=dicbarras, dicbarra=gagr] table[x=anio,y=agricultura] {\gas};}
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=gcoh] table[x=anio,y=cohesion] {\gas};}
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=gcomp] table[x=anio,y=competitividad] {\gas};}
+    \capa{5}{\addplot[on layer=dicbarras, dicbarra=gext] table[x=anio,y=exterior] {\gas};}
+    \capa{6}{\addplot[on layer=dicbarras, dicbarra=gadm] table[x=anio,y=admin] {\gas};}
+    \capa{7}{\addplot[on layer=dicbarras, dicbarra=gotr] table[x=anio,y=otros] {\gas};}
+    \capa{8}{\addplot[on layer=dicbarras, dicbarra=gngeu] table[x=anio,y=ngeu] {\gas};}
+    % 9: rótulos de las etapas, arriba
+    \capa{9}{\dicrotulo[font=\scriptsize,anchor=south,text=tceegris!80!black,align=center]{(1990,258)}{Delors I}
+      \dicrotulo[font=\scriptsize,anchor=south,text=tceegris!80!black,align=center]{(1996,258)}{Delors II}
+      \dicrotulo[font=\scriptsize,anchor=south,text=tceegris!80!black,align=center]{(2003,258)}{Agenda\\2000}
+      \dicrotulo[font=\scriptsize,anchor=south,text=tceegris!80!black,align=center]{(2010,258)}{2007-\\2013}
+      \dicrotulo[font=\scriptsize,anchor=south,text=tceegris!80!black,align=center]{(2017,258)}{2014-\\2020}
+      \dicrotulo[font=\scriptsize,anchor=south,text=tceegris!80!black,align=center]{(2023.3,258)}{2021-\\2027}
+      \dicrotulo[font=\scriptsize,anchor=south,text=tceegris!80!black,align=center]{(1966,150)}{sin marco\\plurianual}}
+  \end{axis}
+  % Eje derecho: gasto total en % de la RNB (se dibuja después: queda encima)
+  \begin{axis}[gasto, ymin=0, ymax=2.03, ytick={0,0.2,...,1.6},
+      yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=1,use comma},
+      ylabel={\% de la RNB de la Unión (línea)}, ylabel style={font=\footnotesize},
+      axis x line=none, axis y line*=right, unbounded coords=jump,
+      legend style={at={(0.5,-0.11)}, anchor=north, legend columns=4, draw=none,
+        font=\scriptsize, /tikz/every even column/.append style={column sep=6pt}},
+      legend cell align=left]
+    \capa{10}{
+      \addlegendimage{area legend, dicbarra=gagr}\addlegendentry{agricultura y pesca}
+      \addlegendimage{area legend, dicbarra=gcoh}\addlegendentry{cohesión}
+      \addlegendimage{area legend, dicbarra=gcomp}\addlegendentry{investigación y competitividad}
+      \addlegendimage{area legend, dicbarra=gext}\addlegendentry{acción exterior}
+      \addlegendimage{area legend, dicbarra=gadm}\addlegendentry{administración}
+      \addlegendimage{area legend, dicbarra=gotr}\addlegendentry{otros}
+      \addlegendimage{area legend, dicbarra=gngeu}\addlegendentry{NextGenerationEU}
+      \addplot[diclineahalo=tceemorado, leyenda linea corta] table[x=anio,y=pct_rnb] {\gas};
+      \addlegendentry{gasto total, \% de la RNB (eje dcho.)}}
+    % 11: rótulos de la línea
+    \capa{11}{\dicrotulo[font=\scriptsize,anchor=south east,text=tceemorado,inner sep=1pt]{(1970,0.69)}{0,67}
+      \dicrotulo[font=\scriptsize,anchor=south,text=tceemorado,inner sep=2pt]{(1993,1.15)}{1,13}
+      \dicrotulo[font=\scriptsize,anchor=east,text=tceemorado,inner sep=2pt]{(2020.6,1.59)}{1,57}}
   \end{axis}
 \end{tikzpicture}
 \end{document}

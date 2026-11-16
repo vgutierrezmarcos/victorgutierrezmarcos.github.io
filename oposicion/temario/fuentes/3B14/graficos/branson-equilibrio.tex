@@ -1,0 +1,28 @@
+% Modelo de cartera (Branson, 1977): solo el equilibrio a corto plazo, antes de
+% la estática comparativa (Víctor, 16/11/2026). Plano (i, E), i en abscisas,
+% las mismas rectas que branson.tex:
+%   MM: E = 2,5 + 0,9 (i - 3); BB: E = 8,5 - 2 i; B*B*: E = 3,85 - 0,45 i;
+%   A = (3; 2,5): las 3 se cortan en el mismo punto (ley de Walras).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nota/.style={etiqueta,font=\footnotesize,align=left,text=tceegris}]
+  % 1: ejes (i, E)
+  \capa{1}{\ejes{$i$}{$E$}{6}{5.2}}
+  % 2: MM, creciente
+  \capa{2}{\draw[curva1] (0.9,0.61) -- (5.2,4.48) node[etiqueta,right] {$MM$};
+    \node[nota,text=tceemorado,anchor=west] at (5.0,3.7) {dinero:\\$\uparrow E\Rightarrow\uparrow W\Rightarrow\uparrow i$};}
+  % 3: B*B*, decreciente y poco inclinada
+  \capa{3}{\draw[curva3] (0.4,3.67) -- (5.4,1.42) node[etiqueta,right] {$B^*B^*$};
+    \node[nota,text=tceeverde,anchor=west] at (5.0,0.85) {bonos extranjeros:\\$\uparrow i\Rightarrow\downarrow E$};}
+  % 4: BB, decreciente e inclinada
+  \capa{4}{\draw[curva2,thick] (2.05,4.4) -- (3.9,0.7) node[etiqueta,below] {$BB$};
+    \node[nota,text=tceeazul,anchor=west] at (0.3,5.0) {bonos nacionales: $\uparrow E\Rightarrow\uparrow W\Rightarrow\downarrow i$};}
+  % 5: equilibrio A
+  \capa{5}{%
+    \node[punto] (A) at (3,2.5) {};
+    \node[etiqueta,right=2pt] at (A) {$A$};
+    \proyeccion{(A)}{$i_0$}{$E_0$}}
+\end{tikzpicture}
+\end{document}

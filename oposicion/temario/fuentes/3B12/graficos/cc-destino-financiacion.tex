@@ -1,0 +1,66 @@
+% El destino de la financiación exterior en el modelo intertemporal (Obstfeld y Rogoff,
+% 1996, cap. 1): el mismo país (misma frontera y misma autarquía A) con 2 casos.
+% Recupera los 2 gráficos de la nota 37 del tema antiguo. Código base: cc-intertemporal.tex
+% (misma frontera C_{t+1} = 6 - 0,14201 C_t^2, mismo A = (5,2; 2,160), pendiente -1,477).
+%   a) El préstamo financia sobre todo inversión: 1 + r* = 1,05, P = (3,697; 4,059),
+%      C = (5,903; 1,743) con curvas C_{t+1} = k C_t^{-3,556}: ΔI = 1,503 > ΔC = 0,703.
+%   b) El préstamo financia sobre todo consumo: 1 + r* = 1,30 (r* algo menor que r^A),
+%      P = (4,577; 3,025), preferencias CES muy sustituibles (σ = 10,
+%      U = C_t^0,9 + 0,6201 C_{t+1}^0,9): U_0 tangente en A, C = (6,338; 0,735):
+%      ΔI = 0,623 < ΔC = 1,138.
+% Capas: 1 los 2 paneles con la autarquía; 2 la apertura; 3 los repartos del déficit.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.62,
+    declare function={fpp(\x)=6-0.14201*\x*\x;
+      iaL(\x)=2.160*(5.2/\x)^3.556; icL(\x)=1.743*(5.903/\x)^3.556;
+      rectaL(\x)=4.059-1.05*(\x-3.697);
+      iaR(\x)=((5.6498941-\x^0.9)/0.6201457)^(1/0.9);
+      icR(\x)=((5.7398360-\x^0.9)/0.6201457)^(1/0.9);
+      rectaR(\x)=3.02486-1.30*(\x-4.57714);}]
+  % ---------------- a) el préstamo financia sobre todo inversión
+  \begin{scope}
+  \capa{1}{\node[etiqueta,font=\small\bfseries,anchor=south west] at (-0.8,8.9) {a) Financia sobre todo inversión};}
+  \capa{1}{\ejes{$C_t$}{$C_{t+1}$}{8.4}{8.4}}
+  \capa{1}{\draw[curva1] plot[domain=0:6.5,samples=80] (\x,{fpp(\x)});}
+  \capa{1}{\draw[curva4] plot[domain=7.2:3.8,samples=80] (\x,{iaL(\x)}) node[etiqueta,above] {$U_0$};}
+  \capa{1}{\node[punto,fill=tceegris] (A) at (5.2,2.160) {};}
+  \capa{1}{\node[etiqueta,below left,text=tceegris] at (A) {$A$};}
+  \capa{2}{\draw[curva2] (0,{rectaL(0)}) -- (7.563,0);}
+  \capa{2}{\node[punto] (P) at (3.697,4.059) {};}
+  \capa{2}{\node[etiqueta,above right] at (P) {$P$};}
+  \capa{2}{\draw[curva3] plot[domain=4.1:8.0,samples=80] (\x,{icL(\x)}) node[etiqueta,right] {$U_1$};}
+  \capa{2}{\node[punto] (C) at (5.903,1.743) {};}
+  \capa{2}{\node[etiqueta,above right] at (C) {$C$};}
+  \capa{2}{\draw[guia] (3.697,4.059) -- (3.697,0);}
+  \capa{2}{\draw[guia] (5.2,2.160) -- (5.2,0);}
+  \capa{2}{\draw[guia] (5.903,1.743) -- (5.903,0);}
+  \capa{3}{\draw[decorate,decoration={brace,mirror,amplitude=3pt},thick,tceerojo] (3.697,-0.45) -- (5.2,-0.45) node[midway,below=3pt,etiqueta,text=tceerojo,font=\footnotesize] {$\Delta I$};}
+  \capa{3}{\draw[decorate,decoration={brace,mirror,amplitude=3pt},thick,tceegris] (5.2,-0.45) -- (5.903,-0.45) node[midway,below=3pt,etiqueta,text=tceegris,font=\footnotesize] {$\Delta C$};}
+  \capa{3}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceegris] (3.697,-1.35) -- (5.903,-1.35) node[midway,below=4pt,etiqueta,font=\footnotesize] {déficit en $t$};}
+  \end{scope}
+  % ---------------- b) el préstamo financia sobre todo consumo
+  \begin{scope}[xshift=11.5cm]
+  \capa{1}{\node[etiqueta,font=\small\bfseries,anchor=south west] at (-0.8,8.9) {b) Financia sobre todo consumo};}
+  \capa{1}{\ejes{$C_t$}{$C_{t+1}$}{8.4}{8.4}}
+  \capa{1}{\draw[curva1] plot[domain=0:6.5,samples=80] (\x,{fpp(\x)});}
+  \capa{1}{\draw[curva4] plot[domain=6.6:4.1,samples=80] (\x,{iaR(\x)}) node[etiqueta,above left] {$U_0$};}
+  \capa{1}{\node[punto,fill=tceegris] (A2) at (5.2,2.160) {};}
+  \capa{1}{\node[etiqueta,below left,text=tceegris] at (A2) {$A$};}
+  \capa{2}{\draw[curva2] (2.0,{rectaR(2.0)}) -- (6.904,0);}
+  \capa{2}{\node[punto] (P2) at (4.577,3.025) {};}
+  \capa{2}{\node[etiqueta,above right] at (P2) {$P$};}
+  \capa{2}{\draw[curva3] plot[domain=4.5:6.92,samples=80] (\x,{icR(\x)}) node[etiqueta,above right] {$U_1$};}
+  \capa{2}{\node[punto] (C2) at (6.338,0.735) {};}
+  \capa{2}{\node[etiqueta,above right] at (C2) {$C$};}
+  \capa{2}{\draw[guia] (4.577,3.025) -- (4.577,0);}
+  \capa{2}{\draw[guia] (5.2,2.160) -- (5.2,0);}
+  \capa{2}{\draw[guia] (6.338,0.735) -- (6.338,0);}
+  \capa{3}{\draw[decorate,decoration={brace,mirror,amplitude=3pt},thick,tceegris] (4.577,-0.45) -- (5.2,-0.45) node[midway,below=3pt,etiqueta,text=tceegris,font=\footnotesize] {$\Delta I$};}
+  \capa{3}{\draw[decorate,decoration={brace,mirror,amplitude=3pt},thick,tceerojo] (5.2,-0.45) -- (6.338,-0.45) node[midway,below=3pt,etiqueta,text=tceerojo,font=\footnotesize] {$\Delta C$};}
+  \capa{3}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceegris] (4.577,-1.35) -- (6.338,-1.35) node[midway,below=4pt,etiqueta,font=\footnotesize] {déficit en $t$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

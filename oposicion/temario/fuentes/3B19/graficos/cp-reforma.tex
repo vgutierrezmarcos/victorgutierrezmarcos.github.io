@@ -1,0 +1,67 @@
+% Corsetti y Pesenti (2005, 2009): reforma estructural en A que reduce el poder
+% de mercado (sigma sube). Código de colores del artículo: negro, lo inicial;
+% azul, lo exógeno (sigma); rojo, lo endógeno (tau, P, C, l).
+%   a) A: O = (3; 2), AS C = (2/3) l. (1) sigma sube: NR -> l-barra' = 3,6
+%      (NR = (sigma-1)/(sigma chi) crece con sigma). (2) A produce más y sus bienes
+%      se abaratan: tau baja, AS' C = 0,6 l. (3) la AD sube a 2,16:
+%      O' = (3,6; 2,16): A trabaja y consume más.
+%   b) B: NR_B igual. (4) tau_B sube: AS_B' C = 0,75 l. (5) bajan sus precios
+%      de importación: AD_B' C = 2,25: O_B' = (3; 2,25), más consumo con el
+%      mismo trabajo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=1.15cm,
+    ini/.style={very thick,black!80},
+    exo/.style={very thick,dashed,tceeazul},
+    endo/.style={very thick,dashed,tceerojo},
+    paso/.style={circle,draw=#1,fill=white,text=#1,font=\scriptsize\bfseries,inner sep=0.8pt,minimum size=11pt},
+    paso/.default=tceerojo,
+    titulo/.style={font=\small\bfseries,anchor=base west},
+    explica/.style={etiqueta,font=\footnotesize,anchor=west}]
+  \path (-0.9,-1.15) rectangle (19.6,4.95);
+  % ---------------- a) País A ----------------
+  \capa{1}{\node[titulo] at (0,4.6) {a) País A: reforma estructural};}
+  \capa{1}{\ejes{$\ell$}{$C$}{6.0}{4.3}}
+  \capa{1}{\draw[ini] (0,0) -- (5.6,3.733) node[etiqueta,right] {AS: $C=Z\ell\tau$};}
+  \capa{1}{\draw[ini] (0,2) -- (5.6,2) node[etiqueta,right] {AD: $C=\mu/P$};}
+  \capa{1}{\draw[ini] (3,0) node[below] {$\bar\ell$} -- (3,4.2) node[etiqueta,above] {NR};}
+  \capa{1}{\node[punto] (O) at (3,2) {};}
+  \capa{1}{\node[etiqueta,below left] at (O) {$O$};}
+  % 2: (1) sigma sube: la NR se desplaza a la derecha
+  \capa{2}{\draw[exo] (3.6,0) node[below,text=tceeazul] {$\bar\ell'$} -- (3.6,4.2) node[etiqueta,above right,text=tceeazul] {NR$'$: $\sigma\!\uparrow$};}
+  \capa{2}{\draw[->,thick,tceeazul] (3.05,3.85) -- (3.55,3.85);}
+  \capa{2}{\node[paso=tceeazul] at (2.6,3.85) {1};}
+  % 3: (2) tau baja: la AS gira hacia abajo
+  \capa{3}{\draw[endo] (0,0) -- (5.6,3.36) node[etiqueta,below right,text=tceerojo] {AS$'$: $\tau\!\downarrow$};}
+  \capa{3}{\draw[->,thick,tceerojo] (5.0,3.33) -- (5.15,3.05);}
+  \capa{3}{\node[paso] at (5.45,3.45) {2};}
+  % 4: (3) la AD sube y el nuevo punto
+  \capa{4}{\draw[endo] (0,2.16) -- (5.6,2.16) node[etiqueta,above right,text=tceerojo] {AD$'$};}
+  \capa{4}{\node[paso] at (0.5,2.5) {3};}
+  \capa{4}{\node[punto,fill=tceerojo] (O1) at (3.6,2.16) {};}
+  \capa{4}{\draw[thin,tceerojo] (O1) -- (4.5,1.35) node[etiqueta,below right,text=tceerojo,inner sep=1pt] {$O'$};}
+  \capa{4}{\node[explica,text=tceerojo] at (0.2,-0.8) {A trabaja y consume más};}
+  % ---------------- b) País B ----------------
+  \begin{scope}[xshift=10.2*0.95cm]
+  \capa{1}{\node[titulo] at (0,4.6) {b) País B};}
+  \capa{1}{\ejes{$\ell_B$}{$C_B$}{6.0}{4.3}}
+  \capa{1}{\draw[ini] (0,0) -- (5.6,3.733) node[etiqueta,right] {AS$_B$};}
+  \capa{1}{\draw[ini] (0,2) -- (5.6,2) node[etiqueta,below right] {AD$_B$};}
+  \capa{1}{\draw[ini] (3,0) node[below] {$\bar\ell_B$} -- (3,4.2) node[etiqueta,above] {NR$_B$};}
+  \capa{1}{\node[punto] (OB) at (3,2) {};}
+  \capa{1}{\node[etiqueta,below right] at (OB) {$O_B$};}
+  % 5: (4) tau_B sube
+  \capa{5}{\draw[endo] (0,0) -- (4.9,3.675) node[etiqueta,above,text=tceerojo] {AS$_B'$: $\tau_B\!\uparrow$};}
+  \capa{5}{\draw[->,thick,tceerojo] (5.0,3.33) -- (4.6,3.6);}
+  \capa{5}{\node[paso] at (5.45,3.25) {4};}
+  % 6: (5) bajan sus precios: AD_B sube
+  \capa{6}{\draw[endo] (0,2.25) -- (5.6,2.25) node[etiqueta,above right,text=tceerojo] {AD$_B'$: $P_B\!\downarrow$};}
+  \capa{6}{\node[paso] at (0.5,2.6) {5};}
+  \capa{6}{\node[punto,fill=tceerojo] (OB1) at (3,2.25) {};}
+  \capa{6}{\node[etiqueta,above left,text=tceerojo] at (OB1) {$O_B'$};}
+  \capa{6}{\node[explica,text=tceerojo] at (0.2,-0.8) {B consume más con el mismo trabajo};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

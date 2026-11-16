@@ -1,0 +1,138 @@
+% Banderas simplificadas de los Estados europeos, dibujadas en TikZ para los
+% gráficos del tema 3.B.36 (circulos-europa, linea-temporal). Las banderas
+% nacionales son de dominio público; aquí se dibujan a mano, simplificadas
+% (escudos y emblemas esquematizados), en proporción 3:2 salvo Suiza y el
+% Vaticano (cuadradas). Colores aproximados a los oficiales.
+% Uso: \bandera[escala]{(x,y)}{código}: centrada en (x,y); con escala 0.2,
+% 0,6 x 0,4 cm. Códigos ISO de dos letras (GR, Grecia; XK, Kosovo; GB, Reino
+% Unido; EU, la bandera europea).
+% Autor: Víctor Gutiérrez Marcos
+\makeatletter
+% estrella de 5 puntas: \bandera@estrella{x}{y}{radio}{color}
+\newcommand{\bandera@estrella}[4]{%
+  \fill[#4] ($(#1,#2)+(90:#3)$)
+    \foreach \k in {1,...,9}{ -- ($(#1,#2)+({90+36*\k}:{ifthenelse(mod(\k,2)==1,0.4*#3,#3)})$) } -- cycle;}
+% franjas horizontales (de arriba abajo) y verticales (de izquierda a derecha)
+\newcommand{\bandera@h}[3]{\fill[#1] (0,4/3) rectangle (3,2);\fill[#2] (0,2/3) rectangle (3,4/3);\fill[#3] (0,0) rectangle (3,2/3);}
+\newcommand{\bandera@hdos}[2]{\fill[#1] (0,1) rectangle (3,2);\fill[#2] (0,0) rectangle (3,1);}
+\newcommand{\bandera@v}[3]{\fill[#1] (0,0) rectangle (1,2);\fill[#2] (1,0) rectangle (2,2);\fill[#3] (2,0) rectangle (3,2);}
+% cruz nórdica: fondo, cruz y, opcional, cruz interior
+\newcommand{\bandera@nordica}[3]{\fill[#1] (0,0) rectangle (3,2);
+  \fill[#2] (0.8,0) rectangle (1.4,2);\fill[#2] (0,0.7) rectangle (3,1.3);
+  \ifx&#3&\else\fill[#3] (0.95,0) rectangle (1.25,2);\fill[#3] (0,0.85) rectangle (3,1.15);\fi}
+% escudo pequeño genérico: \bandera@escudo{x}{y}{ancho}{relleno}{borde}
+\newcommand{\bandera@escudo}[5]{%
+  \filldraw[fill=#4,draw=#5,line width=0.15pt] ($(#1,#2)+(-#3/2,#3*0.55)$) -- ++(#3,0) -- ++(0,-#3*0.6)
+    .. controls +(0,-#3*0.35) and +(#3*0.3,0) .. ($(#1,#2)+(0,-#3*0.62)$)
+    .. controls +(-#3*0.3,0) and +(0,-#3*0.35) .. ($(#1,#2)+(-#3/2,-#3*0.05)$) -- cycle;}
+\definecolor{bnrojo}{HTML}{D52B1E}\definecolor{bnazul}{HTML}{003F87}\definecolor{bnoro}{HTML}{FFCE00}
+\definecolor{bnverde}{HTML}{009246}\definecolor{bnazulc}{HTML}{0072CE}
+\newcommand{\bandera@AT}{\fill[white] (0,0) rectangle (3,2);\fill[red!85!black] (0,4/3) rectangle (3,2);\fill[red!85!black] (0,0) rectangle (3,2/3);}
+\newcommand{\bandera@BE}{\bandera@v{black}{bnoro}{red!90!black}}
+\newcommand{\bandera@BG}{\bandera@h{white}{bnverde!90!black}{bnrojo}}
+\newcommand{\bandera@HR}{\bandera@h{red}{white}{blue!70!black}%
+  \fill[white] (1.15,1.45) rectangle (1.85,0.55);
+  \foreach \i in {0,...,4}{\foreach \j in {0,...,4}{\pgfmathtruncatemacro{\bpar}{mod(\i+\j,2)}
+    \ifnum\bpar=0 \fill[red] ({1.15+0.14*\i},{1.45-0.14*\j}) rectangle ++(0.14,-0.14);\fi}}
+  \draw[blue!70!black,line width=0.2pt] (1.15,1.45) rectangle (1.85,0.75);}
+\newcommand{\bandera@EE}{\bandera@h{bnazulc}{black}{white}}
+\newcommand{\bandera@FI}{\bandera@nordica{white}{blue!75!black}{}}
+\newcommand{\bandera@FR}{\bandera@v{blue!80!black}{white}{bnrojo}}
+\newcommand{\bandera@DE}{\bandera@h{black}{red!90!black}{bnoro}}
+\newcommand{\bandera@GR}{\fill[white] (0,0) rectangle (3,2);
+  \foreach \i in {0,2,4,6,8}{\fill[blue!70!black] (0,{2-\i*2/9}) rectangle (3,{2-(\i+1)*2/9});}
+  \fill[blue!70!black] (0,2) rectangle (10/9,{2-10/9});
+  \fill[white] (4/9,2) rectangle (6/9,{2-10/9});\fill[white] (0,{2-4/9}) rectangle (10/9,{2-6/9});}
+\newcommand{\bandera@IT}{\bandera@v{bnverde}{white}{red!85!black}}
+\newcommand{\bandera@LV}{\fill[white] (0,0) rectangle (3,2);\fill[red!55!black] (0,1.2) rectangle (3,2);\fill[red!55!black] (0,0) rectangle (3,0.8);}
+\newcommand{\bandera@LT}{\bandera@h{bnoro!90!orange}{green!40!black}{red!80!black}}
+\newcommand{\bandera@LU}{\bandera@h{red!90!black}{white}{cyan!70!blue}}
+\newcommand{\bandera@MT}{\fill[white] (0,0) rectangle (1.5,2);\fill[red!85!black] (1.5,0) rectangle (3,2);
+  \fill[gray!55] (0.3,1.55) rectangle (0.6,1.65);\fill[gray!55] (0.4,1.45) rectangle (0.5,1.75);
+  \draw[red!85!black,line width=0.15pt] (0.27,1.42) rectangle (0.63,1.78);}
+\newcommand{\bandera@NL}{\bandera@h{red!80!black}{white}{blue!70!black}}
+\newcommand{\bandera@PT}{\fill[green!45!black] (0,0) rectangle (1.2,2);\fill[red] (1.2,0) rectangle (3,2);
+  \draw[bnoro,line width=0.6pt] (1.2,1) circle (0.42);
+  \bandera@escudo{1.2}{1}{0.42}{white}{red}\fill[blue!70!black] (1.15,1.05) rectangle (1.25,0.85);}
+\newcommand{\bandera@SK}{\bandera@h{white}{blue!75!black}{red}%
+  \bandera@escudo{1.05}{1.05}{0.85}{red}{white}
+  \fill[white] (1.0,0.85) rectangle (1.1,1.45);\fill[white] (0.85,1.25) rectangle (1.25,1.33);\fill[white] (0.9,1.07) rectangle (1.2,1.15);
+  \fill[blue!75!black] (0.75,0.72) .. controls (0.9,0.95) and (1.2,0.95) .. (1.35,0.72) -- cycle;}
+\newcommand{\bandera@SI}{\bandera@h{white}{blue!70!black}{red}%
+  \bandera@escudo{0.95}{1.35}{0.55}{blue!70!black}{red}
+  \fill[white] (0.73,1.12) -- (0.95,1.45) -- (1.17,1.12) -- cycle;
+  \fill[bnoro] (0.95,1.62) circle (0.04);\fill[bnoro] (0.85,1.55) circle (0.04);\fill[bnoro] (1.05,1.55) circle (0.04);}
+\newcommand{\bandera@ES}{\fill[red!75!black] (0,0) rectangle (3,2);\fill[bnoro!90!orange] (0,0.5) rectangle (3,1.5);
+  \bandera@escudo{0.95}{1.0}{0.42}{red!75!black}{red!40!black}
+  \fill[bnoro!80!orange] (0.95,1.0) rectangle (1.16,0.78);\fill[white] (0.74,1.0) rectangle (0.95,1.23);
+  \fill[gray!70] (0.62,0.62) rectangle (0.68,1.15);\fill[gray!70] (1.22,0.62) rectangle (1.28,1.15);
+  \fill[red!60!black] (0.8,1.25) rectangle (1.1,1.33);}
+\newcommand{\bandera@CZ}{\bandera@hdos{white}{red!85!black}\fill[blue!70!black] (0,0) -- (1.5,1) -- (0,2) -- cycle;}
+\newcommand{\bandera@DK}{\bandera@nordica{red!85!black}{white}{}}
+\newcommand{\bandera@HU}{\bandera@h{red!80!black}{white}{green!45!black}}
+\newcommand{\bandera@PL}{\bandera@hdos{white}{red!85!black}}
+\newcommand{\bandera@RO}{\bandera@v{blue!75!black}{bnoro!95!orange}{red!85!black}}
+\newcommand{\bandera@SE}{\bandera@nordica{cyan!45!blue!80!black}{bnoro}{}}
+\newcommand{\bandera@IE}{\bandera@v{green!55!black}{white}{orange!90!red}}
+\newcommand{\bandera@CY}{\fill[white] (0,0) rectangle (3,2);
+  \fill[orange!75!brown] (0.75,1.15) -- (1.05,1.35) -- (1.55,1.38) -- (2.0,1.55) -- (2.35,1.62) -- (2.05,1.35)
+    -- (1.95,1.15) -- (1.7,1.05) -- (1.45,0.92) -- (1.15,0.95) -- (0.9,1.0) -- cycle;
+  \draw[green!35!black,line width=0.5pt] (1.15,0.75) .. controls (1.3,0.55) and (1.5,0.55) .. (1.5,0.55);
+  \draw[green!35!black,line width=0.5pt] (1.85,0.75) .. controls (1.7,0.55) and (1.5,0.55) .. (1.5,0.55);}
+\newcommand{\bandera@IS}{\bandera@nordica{blue!70!black}{white}{red!85!black}}
+\newcommand{\bandera@NO}{\bandera@nordica{red!80!black}{white}{blue!60!black}}
+\newcommand{\bandera@LI}{\bandera@hdos{blue!75!black}{red!85!black}%
+  \fill[bnoro] (0.45,1.35) -- (0.45,1.6) -- (0.6,1.48) -- (0.75,1.7) -- (0.9,1.48) -- (1.05,1.6) -- (1.05,1.35) -- cycle;}
+\newcommand{\bandera@CH}{\fill[red] (0.5,0) rectangle (2.5,2);
+  \fill[white] (1.35,0.4) rectangle (1.65,1.6);\fill[white] (0.9,0.85) rectangle (2.1,1.15);}
+\newcommand{\bandera@TR}{\fill[red!90!black] (0,0) rectangle (3,2);
+  \fill[white] (1.05,1) circle (0.5);\fill[red!90!black] (1.18,1) circle (0.4);
+  \bandera@estrella{1.85}{1}{0.25}{white}}
+\newcommand{\bandera@AD}{\fill[blue!80!black] (0,0) rectangle (0.95,2);\fill[bnoro] (0.95,0) rectangle (2.05,2);\fill[red!85!black] (2.05,0) rectangle (3,2);
+  \bandera@escudo{1.5}{1.0}{0.5}{bnoro!80!orange}{red!50!black}
+  \fill[red!85!black] (1.53,1.0) rectangle (1.72,0.75);\fill[red!85!black] (1.28,1.27) rectangle (1.47,1.0);}
+\newcommand{\bandera@SM}{\bandera@hdos{white}{cyan!55!blue!70}%
+  \bandera@escudo{1.5}{1.0}{0.5}{cyan!40}{bnoro!70!brown}
+  \fill[white] (1.35,0.9) rectangle (1.42,1.15);\fill[white] (1.47,0.9) rectangle (1.54,1.2);\fill[white] (1.59,0.9) rectangle (1.66,1.15);}
+\newcommand{\bandera@MC}{\bandera@hdos{red!85!black}{white}}
+\newcommand{\bandera@VA}{\fill[bnoro] (0.5,0) rectangle (1.5,2);\fill[white] (1.5,0) rectangle (2.5,2);
+  \draw[bnoro!80!orange,line width=0.7pt] (1.7,0.5) -- (2.3,1.2);\draw[gray!60,line width=0.7pt] (2.3,0.5) -- (1.7,1.2);
+  \fill[white] (1.85,1.25) rectangle (2.15,1.6);\draw[bnoro!80!orange,line width=0.3pt] (1.85,1.25) rectangle (2.15,1.6);}
+\newcommand{\bandera@ME}{\fill[bnoro!80!orange] (0,0) rectangle (3,2);\fill[red!75!black] (0.12,0.12) rectangle (2.88,1.88);
+  \fill[bnoro!80!orange] (1.5,0.55) -- (1.2,0.85) -- (0.95,1.4) -- (1.3,1.15) -- (1.5,1.45) -- (1.7,1.15) -- (2.05,1.4) -- (1.8,0.85) -- cycle;}
+\newcommand{\bandera@XK}{\fill[blue!65!black] (0,0) rectangle (3,2);
+  \fill[bnoro!70!brown] (1.05,0.5) -- (0.95,0.9) -- (1.2,1.25) -- (1.6,1.28) -- (1.95,1.05) -- (2.0,0.7) -- (1.7,0.45) -- (1.35,0.35) -- cycle;
+  \foreach \a in {-25,-15,-5,5,15,25}{\bandera@estrella{{1.5+2.6*sin(\a)}}{{1.6-0.6*(1-cos(\a))*5}}{0.09}{white}}}
+\newcommand{\bandera@GB}{\fill[blue!60!black] (0,0) rectangle (3,2);
+  \draw[white,line width=1.1pt] (0,0) -- (3,2) (0,2) -- (3,0);\draw[red!85!black,line width=0.4pt] (0,0) -- (3,2) (0,2) -- (3,0);
+  \fill[white] (1.25,0) rectangle (1.75,2);\fill[white] (0,0.75) rectangle (3,1.25);
+  \fill[red!85!black] (1.35,0) rectangle (1.65,2);\fill[red!85!black] (0,0.85) rectangle (3,1.15);}
+\newcommand{\bandera@EU}{\fill[blue!70!black] (0,0) rectangle (3,2);
+  \foreach \a in {0,30,...,330}{\bandera@estrella{{1.5+0.62*cos(\a)}}{{1+0.62*sin(\a)}}{0.1}{bnoro}}}
+\newcommand{\bandera@UA}{\bandera@hdos{blue!70!cyan!80!black}{bnoro}}
+\newcommand{\bandera@MD}{\bandera@v{blue!75!black}{bnoro}{red!85!black}\bandera@escudo{1.5}{1.0}{0.45}{brown!70!orange}{brown!50!black}}
+\newcommand{\bandera@AL}{\fill[red!85!black] (0,0) rectangle (3,2);
+  \fill[black] (1.5,0.45) -- (1.25,0.8) -- (0.8,1.45) -- (1.3,1.2) -- (1.5,1.55) -- (1.7,1.2) -- (2.2,1.45) -- (1.75,0.8) -- cycle;}
+\newcommand{\bandera@RS}{\bandera@h{red!80!black}{blue!60!black}{white}\bandera@escudo{1.05}{1.05}{0.5}{red!80!black}{bnoro}}
+\newcommand{\bandera@MK}{\fill[red!85!black] (0,0) rectangle (3,2);
+  \foreach \a in {0,45,...,315}{\fill[bnoro] (1.5,1) -- ($(1.5,1)+(\a-7:2)$) -- ($(1.5,1)+(\a+7:2)$) -- cycle;}
+  \fill[red!85!black] (0,0) rectangle (3,-1);\fill[red!85!black] (0,2) rectangle (3,3);
+  \fill[bnoro] (1.5,1) circle (0.3);\fill[red!85!black] (1.5,1) circle (0.24);\fill[bnoro] (1.5,1) circle (0.2);}
+\newcommand{\bandera@BA}{\fill[blue!65!black] (0,0) rectangle (3,2);\fill[bnoro] (0.8,2) -- (2.2,2) -- (2.2,0) -- cycle;
+  \foreach \k in {0,...,7}{\bandera@estrella{{0.6+0.2*\k}}{{1.95-0.286*\k}}{0.09}{white}}}
+\newcommand{\bandera@GE}{\fill[white] (0,0) rectangle (3,2);\fill[red] (1.3,0) rectangle (1.7,2);\fill[red] (0,0.8) rectangle (3,1.2);
+  \foreach \x/\y in {0.65/1.5,2.35/1.5,0.65/0.5,2.35/0.5}{\fill[red] ({\x-0.05},{\y-0.15}) rectangle ({\x+0.05},{\y+0.15});\fill[red] ({\x-0.15},{\y-0.05}) rectangle ({\x+0.15},{\y+0.05});}}
+% \bandera[escala]{(x,y)}{código}
+\newcommand{\bandera}[3][0.2]{%
+  \begin{scope}[shift={#2},scale=#1,shift={(-1.5,-1)}]
+    \begin{scope}
+      \ifnum\pdfstrcmp{#3}{CH}=0 \clip (0.5,0) rectangle (2.5,2);
+      \else\ifnum\pdfstrcmp{#3}{VA}=0 \clip (0.5,0) rectangle (2.5,2);
+      \else \clip (0,0) rectangle (3,2);\fi\fi
+      \csname bandera@#3\endcsname
+    \end{scope}
+    \ifnum\pdfstrcmp{#3}{CH}=0 \draw[black!35,line width=0.2pt] (0.5,0) rectangle (2.5,2);
+    \else\ifnum\pdfstrcmp{#3}{VA}=0 \draw[black!35,line width=0.2pt] (0.5,0) rectangle (2.5,2);
+    \else \draw[black!35,line width=0.2pt] (0,0) rectangle (3,2);\fi\fi
+  \end{scope}}
+\makeatother

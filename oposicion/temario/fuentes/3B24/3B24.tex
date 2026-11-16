@@ -829,10 +829,8 @@ La primera igualdad es la del arbitraje; la segunda define $y$: es el tipo únic
 
 \begin{itemize}
 \item \emph{Idea}: la duración modificada aproxima la curva precio-rentabilidad con una recta; la \concepto{convexidad} mide cuánto se curva y corrige el error de esa recta.
-\item \emph{Definición}: es la segunda derivada del precio respecto a la TIR, en proporción al precio, $\mathrm{Conv}=(\mathrm{d}^2P/\mathrm{d}y^2)/P$.\footnote{Derivando 2 veces \eqref{eq:precio-bono} (anexo~\ref{anexo:derivaciones}),
-  \[
-  \mathrm{Conv}=\frac{1}{P}\,\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\frac{1}{P\,(1+y)^2}\sum_{t=1}^{T}t\,(t+1)\,\frac{\mathrm{FC}_t}{(1+y)^t} .
-  \]}
+\item \emph{Definición}: es la segunda derivada del precio respecto a la TIR, en proporción al precio; derivando 2 veces \eqref{eq:precio-bono} (anexo~\ref{anexo:derivaciones}),
+  \funcionclave[eq:convexidad]{\mathrm{Conv}=\frac{1}{P}\,\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\frac{1}{P\,(1+y)^2}\sum_{t=1}^{T}t\,(t+1)\,\frac{\mathrm{FC}_t}{(1+y)^t}}
 \item \emph{La aproximación de segundo orden}, con un desarrollo de \autor{Taylor} (anexo~\ref{anexo:derivaciones}):
   \funcionclave[eq:precio-duracion-convexidad]{\frac{\Delta P}{P}\simeq-D^{\mathrm{mod}}\,\Delta y+\frac{1}{2}\,\mathrm{Conv}\,(\Delta y)^2}
 \item \emph{Interpretación}: en un bono sin opciones la convexidad es positiva, así que el segundo término suma siempre: la duración sola exagera las caídas del precio cuando la TIR sube y se queda corta en las subidas cuando la TIR baja (gráfico~\ref{fig:precio-rentabilidad}).

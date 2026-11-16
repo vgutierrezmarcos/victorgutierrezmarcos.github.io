@@ -1,0 +1,73 @@
+% Las políticas del FMI en una figura: los recursos arriba, las 3 políticas
+% (supervisión, préstamo con sus instrumentos y servicios, asistencia técnica)
+% en columnas y la condicionalidad, que las une, abajo. Datos vigentes en
+% noviembre de 2026 (fuentes en el pie de la figura del tema).
+% Capas: 1 recursos; 2 supervisión; 3 préstamo; 4 asistencia técnica;
+% 5 condicionalidad y flechas.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    banda/.style={draw=#1,thick,fill=#1!8,rounded corners=2pt,inner sep=5pt,
+      align=left,font=\footnotesize},
+    cab/.style={draw=#1,thick,fill=#1,text=white,rounded corners=2pt,inner sep=4pt,
+      align=center,text width=4.9cm,font=\small\bfseries,anchor=north},
+    col/.style={draw=#1,thick,fill=#1!5,rounded corners=2pt,inner sep=5pt,
+      align=left,text width=4.9cm,font=\footnotesize,anchor=north},
+    rel/.style={->,thick,tceegris},
+    etq/.style={font=\scriptsize\itshape,text=tceegris!80!black,align=center,fill=white,inner sep=1pt}]
+  % 1: recursos
+  \capa{1}{\node[banda=tceedorado,text width=16.6cm] (rec) at (0,0.1) {%
+    \textbf{Los recursos} (en torno a 1 billón de dólares): \textbf{cuotas} 476.000 millones de DEG (la 16.ª revisión, +50~\%, sigue sin entrar en vigor) $\cdot$ \textbf{NAP} 364.000 millones (2026-2030) $\cdot$ \textbf{acuerdos bilaterales} 136.600 millones $\cdot$ fuera de la cuenta general, los \textbf{fondos fiduciarios} FFCLP (renta baja) y FFRS (clima), con préstamos y donaciones voluntarios. 1 DEG $\approx$ 1,35 dólares; tipo del DEG, 3,119~\%.};}
+  % 2: supervisión
+  \capa{2}{\node[cab=tceeazul] (c1) at (-5.85,-1.25) {Supervisión: vigila\\[-1pt]{\scriptsize\normalfont obligatoria y universal; solo persuade}};}
+  \capa{2}{\node[col=tceeazul] (s) at ([yshift=-3pt]c1.south) {%
+    \textbf{Base}: art.~IV; Decisión de Supervisión Integrada (2012); revisión integral de 2026\\[4pt]
+    \textbf{Bilateral}\\
+    -- consultas del art.~IV: casi cada año, a los 191 miembros\\
+    -- FSAP (con el Banco Mundial): obligatorio en 47 jurisdicciones sistémicas (32 cada 5 años)\\
+    -- régimen cambiario \emph{de facto}\\[4pt]
+    \textbf{Regional}: perspectivas regionales; uniones monetarias (zona del euro\ldots)\\[4pt]
+    \textbf{Multilateral}\\
+    -- 2 veces al año: \emph{Perspectivas de la economía mundial}, \emph{Informe sobre la estabilidad financiera mundial}, \emph{Monitor fiscal}\\
+    -- cada año: \emph{Informe sobre el sector externo}\\
+    -- alerta temprana (con el FSB); apoyo al G-20\\[4pt]
+    \textbf{Estadística}: NEDD y SGDD-m; manuales (MBP7, 2025)};}
+  % 3: préstamo
+  \capa{3}{\node[cab=tceemorado] (c2) at (0,-1.25) {Préstamo: presta\\[-1pt]{\scriptsize\normalfont temporal y con condiciones}};}
+  \capa{3}{\node[col=tceemorado] (p) at ([yshift=-3pt]c2.south) {%
+    \textbf{Cuenta de Recursos Generales} (tipo del DEG + 60~pb; recargo de 200~pb por encima del 300~\% de la cuota; acceso normal hasta el 200~\% de la cuota al año y el 600~\% acumulado)\\
+    -- \emph{resolver}: acuerdo \textbf{Stand-By} (corto plazo); \textbf{Servicio Ampliado} (SAF, estructural)\\
+    -- \emph{prevenir}: \textbf{LCF}, \textbf{LPL}, LLCP\\
+    -- \emph{urgencias}: \textbf{IFR}\\[4pt]
+    \textbf{FFCLP} (renta baja; tipo nulo o reducido): servicios de Crédito Ampliado (SCA), Stand-By (SCS) y Rápido (SCR)\\[4pt]
+    \textbf{FFRS}: Servicio de Resiliencia y Sostenibilidad (SRS; clima y pandemias; 20 años)\\[4pt]
+    \textbf{Sin dinero}: ICP e IAPE, el sello del FMI\\[4pt]
+    \textbf{Crédito vivo} (octubre de 2026): 92.000 millones de DEG en la cuenta general (Argentina, el 46~\%); 122.700 millones con los fondos fiduciarios};}
+  % 4: asistencia técnica
+  \capa{4}{\node[cab=tceeverde] (c3) at (5.85,-1.25) {Asistencia técnica: enseña\\[-1pt]{\scriptsize\normalfont voluntaria; la más apreciada}};}
+  \capa{4}{\node[col=tceeverde] (a) at ([yshift=-3pt]c3.south) {%
+    \textbf{Asesoramiento}: misiones del personal, expertos destinados en el país y centros regionales de asistencia técnica\\[4pt]
+    \textbf{Formación}: Instituto de Capacitación y sus centros regionales (Viena, Singapur, Kuwait, Mauricio, China); cursos en línea\\[4pt]
+    \textbf{Ámbitos} (su ventaja comparativa)\\
+    -- política monetaria y cambiaria\\
+    -- regulación y supervisión financiera\\
+    -- política y administración tributaria; gasto y deuda pública\\
+    -- estadística; marco jurídico\\[4pt]
+    \textbf{Para quién}: sobre todo renta baja y media, con fondos de donantes; también avanzados (España, 2012)};}
+  \capa{3}{\draw[rel] (rec.south-|c2.north) -- node[etq,right=2pt,fill=none] {financian} (c2.north);}
+  % 5: condicionalidad
+  \coordinate (fondo) at (current bounding box.south);
+  \capa{5}{\node[banda=tceerojo,text width=16.6cm,anchor=north] (cond) at ([yshift=-0.9cm]0,0 |- fondo) {%
+    \textbf{La condicionalidad} (une las 3 políticas): el país se compromete a corregir lo que lo llevó a pedir ayuda, y el dinero llega \textbf{por tramos}, tras cada \textbf{revisión} del Directorio\\[2pt]
+    -- \emph{acciones previas}: lo que se hace antes de aprobar el programa\\
+    -- \emph{criterios cuantitativos de ejecución}: techo al crédito interno neto, suelo a las reservas internacionales netas, techo al déficit (incumplir exige una dispensa)\\
+    -- \emph{metas indicativas} y \emph{referencias estructurales}: reformas que se siguen sin cortar el desembolso\\
+    -- \emph{por qué}: protege los recursos del Fondo y reduce el riesgo moral; las directrices de 2002 piden pocas condiciones, críticas y que el país las haga suyas};}
+  \capa{5}{\draw[rel] (s.south) -- node[etq] {diagnóstico} (s.south|-cond.north);}
+  \capa{5}{\draw[rel] (p.south) -- node[etq] {condiciones} (p.south|-cond.north);}
+  \capa{5}{\draw[rel] (a.south) -- node[etq] {capacidad para cumplir} (a.south|-cond.north);}
+\end{tikzpicture}
+\end{document}

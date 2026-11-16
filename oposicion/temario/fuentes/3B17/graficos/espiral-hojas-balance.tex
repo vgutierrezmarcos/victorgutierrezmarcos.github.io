@@ -1,0 +1,38 @@
+% Hojas de balance (Krugman, 1999): la espiral de 4 pasos, cada flecha una
+% ecuación del tema: menos inversión (pérdida de confianza) -> depreciación
+% real (equilibrio del bien nacional) -> menos riqueza (deuda en divisas) ->
+% menos crédito (restricción de crédito) -> menos inversión. En el centro, la
+% condición para que la espiral se dispare.
+% Nodos en una elipse de semiejes 3,9 y 2,3 cm, a 90°, 0°, -90° y 180°.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={draw=tceemorado, fill=tceemorado!7, rounded corners=3pt, thick,
+      align=center, font=\small, inner sep=4pt, minimum width=2.9cm},
+    circuito/.style={->, very thick, tceemorado, shorten <=3pt, shorten >=3pt},
+    rotulo/.style={etiqueta, font=\footnotesize, align=center, text=tceegris},
+    choque/.style={->, very thick, tceerojo, shorten >=3pt}]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-7.4,-3.4) rectangle (7.0,3.4);
+  % 1: el detonante y la inversión
+  \capa{1}{\node[nodo] (I) at (90:3.9cm and 2.3cm) {(1) inversión\\$I\downarrow$};}
+  \capa{1}{\node[font=\small, text=tceerojo, align=center] (P) at (-5.4,2.6) {pérdida de\\confianza};
+    \draw[choque] (P) -- (I);}
+  % 2: depreciación real
+  \capa{2}{\node[nodo] (q) at (0:3.9cm and 2.3cm) {(2) tipo de cambio real\\$q\uparrow$};}
+  \capa{2}{\draw[circuito] (I) to[bend left=22] node[rotulo, above right=-2pt] {menos demanda del\\bien nacional} (q);}
+  % 3: menos riqueza
+  \capa{3}{\node[nodo] (W) at (-90:3.9cm and 2.3cm) {(3) riqueza neta\\$W=\alpha Y-B-qB^{*}\downarrow$};}
+  \capa{3}{\draw[circuito] (q) to[bend left=22] node[rotulo, below right=-2pt] {deuda en divisas\\más cara} (W);}
+  % 4: menos crédito, que cierra el círculo
+  \capa{4}{\node[nodo] (IF) at (180:3.9cm and 2.3cm) {(4) crédito\\$I_F=(1+\theta)W\downarrow$};}
+  \capa{4}{\draw[circuito] (W) to[bend left=22] node[rotulo, below left=-2pt] {menos garantías} (IF);}
+  \capa{4}{\draw[circuito] (IF) to[bend left=22] node[rotulo, above left=-2pt] {crisis bancaria:\\vuelve a caer $I$} (I);}
+  % 5: la condición en el centro
+  \capa{5}{\node[align=center, font=\small] at (0,0)
+      {\textbf{se dispara si}\\[2pt]{\color{tceemorado}$\dfrac{\partial I_F}{\partial I}=\dfrac{(1+\theta)(1-m)B^{*}}{X}>1$}};}
+\end{tikzpicture}
+\end{document}

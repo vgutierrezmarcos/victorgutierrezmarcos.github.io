@@ -1,0 +1,65 @@
+% Infografía de la OCDE (datos a 16/11/2026): de la OECE (1948) a los 38
+% miembros, los 8 candidatos, los órganos (Consejo, comités y Secretaría), los
+% instrumentos (análisis, normas, fiscalidad) y su método, la presión entre
+% iguales. Fuentes: oecd.org (miembros y socios, estructura, presupuesto 2026,
+% Declaración del presidente de la reunión ministerial de 2026).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    caja/.style={draw=#1,fill=#1!7,rounded corners=4pt,line width=0.9pt,align=left,font=\footnotesize,inner sep=5pt},
+    organo/.style={draw=tceemorado,fill=tceemorado!10,rounded corners=4pt,line width=1pt,text width=4.6cm,align=center,font=\footnotesize,inner sep=5pt,anchor=north},
+    hito/.style={font=\scriptsize,align=center,text width=2.2cm,anchor=north,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    anio/.style={font=\footnotesize\bfseries,text=tceeazul,anchor=south}]
+  % 1: de la OECE a la OCDE: línea del tiempo
+  \capa{1}{\node[font=\bfseries\normalsize,anchor=west] at (-8.3,1.0) {De la OECE a la OCDE};}
+  \capa{1}{\draw[very thick,tceeazul,->] (-8.2,0) -- (8.4,0);}
+  \capa{1}{\foreach \x/\a/\t in {
+      -7.3/1948/{OECE: reparto del Plan Marshall},
+      -4.95/1960/{Convenio de París (14 dic.): 20 firmantes, España entre ellos},
+      -2.6/1961/{En vigor (30 sept.): nace la OCDE},
+      -0.25/1964-1973/{Japón, Finlandia, Australia, Nueva Zelanda},
+      2.1/1994-2000/{México, Chequia, Hungría, Polonia, Corea, Eslovaquia},
+      4.45/2010-2018/{Chile, Eslovenia, Israel, Estonia, Letonia, Lituania},
+      6.8/2020-2021/{Colombia y Costa Rica: 38 miembros}}{
+    \fill[tceeazul] (\x,0) circle (2.2pt);
+    \node[anio] at (\x,0.1) {\a};
+    \node[hito] at (\x,-0.15) {\t};}}
+  % 2: los miembros y los candidatos
+  \capa{2}{\node[caja=tceeazul,text width=7.9cm,anchor=north west] (miem) at (-8.3,-1.75) {%
+    {\bfseries\color{tceeazul} 38 miembros}\\[2pt]
+    \textbullet\ \emph{Europa (26)}: los 22 de la UE que son miembros, más Islandia, Noruega, Reino Unido y Suiza.\\
+    \textbullet\ \emph{América (6)}: Estados Unidos, Canadá, México, Chile, Colombia y Costa Rica.\\
+    \textbullet\ \emph{Asia-Pacífico (4)}: Japón, Corea, Australia y Nueva Zelanda.\\
+    \textbullet\ \emph{Turquía e Israel (2)}.\\
+    La Comisión Europea participa en todos los trabajos sin voto.};}
+  \capa{2}{\node[caja=tceenaranja,text width=7.9cm,anchor=north east] (cand) at (8.3,-1.75) {%
+    {\bfseries\color{tceenaranja!80!black} 8 candidatos y socios}\\[2pt]
+    \textbullet\ \emph{Desde 2022}: Argentina, Brasil, Bulgaria, Croacia, Perú y Rumanía.\\
+    \textbullet\ \emph{Desde 2024}: Indonesia y Tailandia.\\
+    \textbullet\ \emph{Socios clave}: Brasil, China, India, Indonesia y Sudáfrica.\\
+    \textbullet\ Programas regionales (América Latina, Sudeste Asiático, Oriente Medio y Norte de África, Eurasia, Europa Sudoriental) y relación con más de 100 economías.};}
+  % 3: los órganos
+  \capa{3}{\node[font=\bfseries\normalsize,anchor=west] at (-8.3,-5.25) {Órganos};}
+  \capa{3}{\node[organo] (cons) at (-5.6,-5.6) {{\bfseries Consejo}\\decide por consenso; un embajador por miembro y la Comisión Europea; lo preside el secretario general; reunión ministerial anual (2026: Finlandia, política industrial)};}
+  \capa{3}{\node[organo] (comi) at (0,-5.6) {{\bfseries Comités}\\más de 300 órganos (comités, grupos de trabajo y de expertos): política económica, comercio, fiscalidad, ayuda al desarrollo (CAD), competencia…};}
+  \capa{3}{\node[organo] (secr) at (5.6,-5.6) {{\bfseries Secretaría}\\en París, unas 3.500 personas; secretario general, \mbox{\textsc{Mathias Cormann}} (2021-2031), con 4 adjuntos};}
+  \capa{3}{\draw[<->,thick,tceemorado] (cons.east) -- (comi.west);}
+  \capa{3}{\draw[<->,thick,tceemorado] (comi.east) -- (secr.west);}
+  % 4: los instrumentos
+  \capa{4}{\node[font=\bfseries\normalsize,anchor=west] at (-8.3,-8.45) {Instrumentos};}
+  \capa{4}{\node[caja=tceeverde,text width=4.9cm,anchor=north west] (ana) at (-8.3,-8.8) {%
+    {\bfseries\color{tceeverde} Análisis}\\[2pt]
+    \emph{Economic Outlook} (2 al año), estudios económicos por país, \emph{Going for Growth} (hoy \emph{Foundations for Growth and Competitiveness}), PISA, \emph{Employment Outlook}.};}
+  \capa{4}{\node[caja=tceedorado,text width=4.9cm,anchor=north] (nor) at (0,-8.8) {%
+    {\bfseries\color{tceedorado!80!black} Normas}\\[2pt]
+    269 instrumentos jurídicos vigentes: decisiones (vinculantes), recomendaciones, declaraciones, acuerdos y entendimientos (Consenso de créditos a la exportación).};}
+  \capa{4}{\node[caja=tceerojo,text width=4.9cm,anchor=north east] (fis) at (8.3,-8.8) {%
+    {\bfseries\color{tceerojo} Fiscalidad}\\[2pt]
+    Con el G-20: BEPS y el Marco Inclusivo (148 jurisdicciones): pilar 2, impuesto mínimo del 15\,\%, con el paquete «paralelo» de 2026 para EE. UU.};}
+  % 5: el método
+  \capa{5}{\node[caja=tceemorado,text width=16.1cm,align=center,anchor=north] at (0,-11.6) {%
+    {\bfseries\color{tceemorado} Método: presión entre iguales} (\emph{peer pressure})\\Presupuesto de 2026 (parte I): 238 millones de euros; EE. UU., 18\,\%; España, 3,1\,\%};}
+\end{tikzpicture}
+\end{document}

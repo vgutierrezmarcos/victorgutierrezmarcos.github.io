@@ -1,0 +1,60 @@
+% Infografía del G-20 (datos a 16/11/2026): miembros por región (en morado,
+% los del G-7), su peso en la economía mundial, cómo funciona (2 vías, troika,
+% sin secretaría) y sus hitos, de Berlín (1999) a Miami (2026) y Mánchester (2027).
+% Fuentes: g20.org («About G20»), Departamento de Estado de EE. UU. (presidencia
+% de 2026), GOV.UK (2027), Declaración de Nueva Delhi (2023).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\gs}[1]{\textcolor{tceemorado}{\bfseries #1}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    region/.style={draw=#1,fill=#1!7,rounded corners=4pt,line width=0.9pt,text width=3.3cm,align=left,anchor=north,font=\footnotesize,inner sep=4pt},
+    caja/.style={draw=#1,fill=#1!7,rounded corners=4pt,line width=0.9pt,align=left,font=\footnotesize,inner sep=5pt},
+    hito/.style={font=\scriptsize,align=center,text width=2.15cm,anchor=north,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+    anio/.style={font=\footnotesize\bfseries,text=tceeazul,anchor=south}]
+  % 1: título central y peso
+  \capa{1}{\node[caja=tceedorado,text width=16.6cm,align=center] (peso) at (0,0) {%
+    {\bfseries\normalsize G-20: 19 países + Unión Europea + Unión Africana}\\[2pt]
+    $\approx$\,85\,\% del PIB mundial \quad·\quad más del 75\,\% del comercio \quad·\quad $\approx$\,2/3 de la población\\
+    {\scriptsize En \textcolor{tceemorado}{\bfseries morado}, los miembros del G-7. España: invitado permanente (en 2026, «observador invitado»).}};}
+  % 2: los miembros por región
+  \capa{2}{\node[region=tceeazul] (am) at (-6.51,-1.3) {{\bfseries América (5)}\\[2pt]
+    \gs{Canadá}\\\gs{Estados Unidos}\\México\\Brasil\\Argentina};}
+  \capa{2}{\node[region=tceemorado] (eu) at (-2.83,-1.3) {{\bfseries Europa (5 + UE)}\\[2pt]
+    \gs{Alemania}\\\gs{Francia}\\\gs{Italia}\\\gs{Reino Unido}\\Rusia\\\emph{Unión Europea}};}
+  \capa{2}{\node[region=tceeverde] (as) at (0.85,-1.3) {{\bfseries Asia y Oriente Medio (7)}\\[2pt]
+    \gs{Japón}\\China\\India\\Indonesia\\Corea del Sur\\Arabia Saudí\\Turquía};}
+  \capa{2}{\node[region=tceenaranja] (af) at (4.53,-1.3) {{\bfseries África (1 + UA)}\\[2pt]
+    Sudáfrica\\{\scriptsize (excluida por EE. UU. de la presidencia de 2026)}\\\emph{Unión Africana}\\{\scriptsize (miembro desde 2023)}};}
+  \capa{2}{\node[region=tceegris,text width=1.6cm] (oc) at (7.36,-1.3) {{\bfseries Oceanía (1)}\\[2pt]Australia};}
+  % 3: cómo funciona
+  \capa{3}{\node[caja=tceemorado,text width=7.9cm,anchor=north west] (func) at (-8.3,-5.0) {%
+    {\bfseries\color{tceemorado} Cómo funciona}\\[2pt]
+    \textbullet\ Informal: sin tratado, sin secretaría permanente y por consenso.\\
+    \textbullet\ Presidencia anual rotatoria con \emph{troika} (la anterior, la actual y la siguiente).\\
+    \textbullet\ 2 vías: la de \emph{sherpas} (grupos de trabajo; en 2026 solo 4) y la financiera (ministros de Finanzas y gobernadores).\\
+    \textbullet\ Trabajo técnico de FMI, Banco Mundial, OCDE y FSB.\\
+    \textbullet\ Grupos de afinidad (B20, C20, L20, T20…); en 2026, solo el B20.};}
+  \capa{3}{\node[caja=tceeverde,text width=7.9cm,anchor=north east] (coord) at (8.3,-5.0) {%
+    {\bfseries\color{tceeverde} Qué ha coordinado}\\[2pt]
+    \textbullet\ Estímulo fiscal y recursos del FMI (Londres, 2009).\\
+    \textbullet\ Marco para un Crecimiento Fuerte, Sostenible y Equilibrado y evaluación mutua (Pittsburgh, 2009).\\
+    \textbullet\ Reforma financiera: creación del FSB, Basilea III.\\
+    \textbullet\ Fiscalidad: BEPS y 2 pilares, con la OCDE.\\
+    \textbullet\ Deuda: suspensión del servicio (2020-2021) y Marco Común.};}
+  % 4: hitos
+  \capa{4}{\draw[very thick,tceeazul,->] (-8.2,-9.9) -- (8.4,-9.9);}
+  \capa{4}{\foreach \x/\a/\t in {
+      -7.3/1999/{Berlín: ministros y gobernadores, tras la crisis asiática},
+      -4.95/2008/{Washington: primera cumbre de líderes},
+      -2.6/2009/{Londres y Pittsburgh: «foro principal»},
+      -0.25/2023/{Nueva Delhi: entra la Unión Africana},
+      2.1/2025/{Johannesburgo: primera en África, sin EE. UU.},
+      4.45/2026/{EE. UU.: cumbre de Miami, 14-15 de diciembre},
+      6.8/2027/{Reino Unido: Mánchester, 27-28 de noviembre}}{
+    \fill[tceeazul] (\x,-9.9) circle (2.2pt);
+    \node[anio] at (\x,-9.8) {\a};
+    \node[hito] at (\x,-10.05) {\t};}}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,78 @@
+% Corsetti y Pesenti (2005, 2009): el modelo de 2 países en el plano (l, C) y
+% los efectos internacionales de la estabilización en A con fijación de precios
+% en la moneda del productor (PCP, traspaso completo). Código de colores del
+% artículo: negro, lo inicial; azul, lo exógeno (Z, mu); rojo, lo endógeno
+% (P, tau, C).
+%   Inicial en los 2 países: O = (3; 2), AS C = Z l tau = (2/3) l, AD C = 2, NR 3.
+%   A: (1) Z sube: AS' C = l (con precios rígidos, A iría a (2; 2)).
+%      (2) el banco central de A sube mu: deprecia (E = mu/mu* sube).
+%      (3) con PCP, los bienes de A se abaratan fuera: tau baja, AS'' C = 0,85 l;
+%      las importaciones se encarecen: P sube algo y la AD sube a 2,55.
+%      H = (3; 2,55), sobre la NR: la brecha se cierra.
+%   B: (4) mejora su relación de intercambio: tau_B sube, AS_B' C = 0,85 l;
+%      (5) sus importaciones se abaratan: P_B baja, AD_B' C = 2,55.
+%      H_B = (3; 2,55): más consumo con el mismo empleo (desbordamiento positivo).
+% Capas: 1 ejes; 2 curvas iniciales (el modelo de 2 países: paso 1 en
+% cp-pcp-paso1); 3-5 país A; 6-7 país B.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.95cm,y=1.15cm,
+    ini/.style={very thick,black!80},
+    exo/.style={very thick,dashed,tceeazul},
+    endo/.style={very thick,dashed,tceerojo},
+    paso/.style={circle,draw=#1,fill=white,text=#1,font=\scriptsize\bfseries,inner sep=0.8pt,minimum size=11pt},
+    paso/.default=tceerojo,
+    titulo/.style={font=\small\bfseries,anchor=base west},
+    explica/.style={etiqueta,font=\footnotesize,anchor=west}]
+  \path (-0.9,-1.15) rectangle (19.6,4.95);
+  % ---------------- a) País A ----------------
+  % 1: ejes
+  \capa{1}{\node[titulo] at (0,4.6) {a) País A (zona del euro)};}
+  \capa{1}{\ejes{$\ell$}{$C$}{6.0}{4.3}}
+  % 2: AS, AD y NR iniciales y O
+  \capa{2}{\draw[ini] (0,0) -- (5.6,3.733) node[etiqueta,right] {AS: $C=Z\ell\tau$};}
+  \capa{2}{\draw[ini] (0,2) -- (5.6,2) node[etiqueta,right] {AD: $C=\mu/P$};}
+  \capa{2}{\draw[ini] (3,0) node[below] {$\bar\ell$} -- (3,4.2) node[etiqueta,above] {NR};}
+  \capa{2}{\node[punto] (O) at (3,2) {};}
+  \capa{2}{\node[etiqueta,below right] at (O) {$O$};}
+  % 3: (1) sube la productividad en A
+  \capa{3}{\draw[exo] (0,0) -- (3.9,3.9) node[etiqueta,above,text=tceeazul] {$Z\!\uparrow$};}
+  \capa{3}{\draw[->,thick,tceeazul] (4.3,2.87) -- (3.65,3.55);}
+  \capa{3}{\node[paso=tceeazul] at (4.35,3.4) {1};}
+  % 4: (2) el banco central de A expande y deprecia: (3) tau baja y la AD sube menos que mu
+  \capa{4}{\draw[endo] (0,2.55) -- (5.6,2.55) node[etiqueta,right,text=tceerojo] {AD$'$: $\textcolor{tceeazul}{\mu\!\uparrow}/P\!\uparrow$};}
+  \capa{4}{\draw[->,thick,tceerojo] (1.0,2.03) -- (1.0,2.5);}
+  \capa{4}{\node[paso=tceeazul] at (0.5,2.85) {2};}
+  \capa{5}{\draw[endo] (0,0) -- (4.6,3.91) node[etiqueta,above right,text=tceerojo,inner sep=1pt] {$\tau\!\downarrow$};}
+  \capa{5}{\draw[->,thick,tceerojo] (3.75,3.75) -- (4.15,3.45);}
+  \capa{5}{\node[paso] at (4.65,3.05) {3};}
+  \capa{5}{\node[punto,fill=tceerojo] (H) at (3,2.55) {};}
+  \capa{5}{\node[etiqueta,above left,text=tceerojo] at (H) {$H$};}
+  \capa{5}{\node[explica,text=tceerojo] at (0.2,-0.8) {A cierra su brecha: vuelve a $\bar\ell$};}
+  % ---------------- b) País B ----------------
+  \begin{scope}[xshift=10.2*0.95cm]
+  % 1: ejes
+  \capa{1}{\node[titulo] at (0,4.6) {b) País B (Estados Unidos)};}
+  \capa{1}{\ejes{$\ell_B$}{$C_B$}{6.0}{4.3}}
+  % 2: AS_B, AD_B, NR_B y O_B
+  \capa{2}{\draw[ini] (0,0) -- (5.6,3.733) node[etiqueta,right] {AS$_B$: $C_B=Z_B\ell_B\tau_B$};}
+  \capa{2}{\draw[ini] (0,2) -- (5.6,2) node[etiqueta,right] {AD$_B$: $C_B=\mu_B/P_B$};}
+  \capa{2}{\draw[ini] (3,0) node[below] {$\bar\ell_B$} -- (3,4.2) node[etiqueta,above] {NR$_B$};}
+  \capa{2}{\node[punto] (OB) at (3,2) {};}
+  \capa{2}{\node[etiqueta,below right] at (OB) {$O_B$};}
+  % 6: (4) mejora la relación de intercambio de B: tau_B sube
+  \capa{6}{\draw[endo] (0,0) -- (4.6,3.91) node[etiqueta,above,text=tceerojo] {$\tau_B\!\uparrow$};}
+  \capa{6}{\draw[->,thick,tceerojo] (4.9,3.27) -- (4.45,3.65);}
+  \capa{6}{\node[paso] at (5.05,3.75) {4};}
+  % 7: (5) sus importaciones se abaratan: P_B baja y la AD_B sube
+  \capa{7}{\draw[endo] (0,2.55) -- (5.6,2.55) node[etiqueta,right,text=tceerojo] {AD$_B'$: $\mu_B/P_B\!\downarrow$};}
+  \capa{7}{\draw[->,thick,tceerojo] (1.0,2.03) -- (1.0,2.5);}
+  \capa{7}{\node[paso] at (0.5,2.85) {5};}
+  \capa{7}{\node[punto,fill=tceerojo] (HB) at (3,2.55) {};}
+  \capa{7}{\node[etiqueta,above left,text=tceerojo] at (HB) {$H_B$};}
+  \capa{7}{\node[explica,text=tceerojo] at (0.2,-0.8) {B consume más con el mismo trabajo};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

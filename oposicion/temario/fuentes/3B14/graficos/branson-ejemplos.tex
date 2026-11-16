@@ -1,0 +1,69 @@
+% Anexo de ejemplos del modelo de cartera (Víctor, 16/11/2026): 4 paneles con
+% las rectas de branson.tex (MM: E = 2,5 + 0,9 (i - 3); BB: E = 8,5 - 2 i;
+% B*B*: E = 3,85 - 0,45 i; A = (3; 2,5)), a escala 0,62.
+%  a) Intervención esterilizada (dB = -E dB*): MM quieta; B*B* sube 0,6
+%     (E = 4,45 - 0,45 i); BB' a la derecha (E = 9,789 - 2 i). A' = (3,444; 2,9).
+%  b) Déficit financiado con deuda (↑B): MM' a la derecha (E = 0,9 i - 0,74);
+%     B*B* sube 0,3 (E = 4,15 - 0,45 i); BB' (E = 9,764 - 2 i). A' = (3,622; 2,52).
+%  c) Superávit corriente (↑B*): MM' a la derecha (E = 0,9 i - 0,56); B*B*
+%     baja 0,6 (E = 3,25 - 0,45 i); BB' a la izquierda (E = 7,624 - 2 i).
+%     A' = (2,822; 1,98).
+%  d) Subida de i*: MM' a la izquierda (E = 0,9 i + 0,34); B*B* sube 0,6
+%     (E = 4,45 - 0,45 i); BB' a la derecha (E = 9,169 - 2 i). A' = (3,044; 3,08).
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    tit/.style={etiqueta,anchor=south west,font=\small,align=left},
+    pe/.style={etiqueta,font=\footnotesize,inner sep=1pt}]
+  % \base: ejes y las 3 rectas iniciales con A
+  \newcommand{\base}{%
+    \draw[eje] (0,0) -- (6,0) node[below left=1pt and 0pt] {$i$};
+    \draw[eje] (0,0) -- (0,5.2) node[left] {$E$};
+    \draw[curva1,thick] (0.9,0.61) -- (5.2,4.48) node[pe,right] {$MM$};
+    \draw[curva3,thick] (0.4,3.67) -- (5.4,1.42) node[pe,right] {$B^*B^*$};
+    \draw[curva2] (2.05,4.4) node[pe,above] {$BB$} -- (3.9,0.7);
+    \node[punto] at (3,2.5) {};
+    \node[pe,below right=1pt] at (3,2.5) {$A$};}
+  % \nuevo{i}{E}: punto A' con sus proyecciones
+  \newcommand{\nuevo}[2]{%
+    \node[punto,fill=tceerojo] at (#1,#2) {};
+    \node[pe,left=3pt,text=tceerojo,fill=white,inner sep=0.5pt] at (#1,#2) {$A'$};
+    \draw[guia] (#1,0) -- (#1,#2) -- (0,#2);}
+  % 1: a) intervención esterilizada
+  \capa{1}{\begin{scope}[scale=0.62]
+    \node[tit] at (-0.3,5.4) {a) Intervención esterilizada: compra de divisas\\\phantom{a) }y venta de bonos nacionales: $\uparrow i$, $\uparrow E$};
+    \base
+    \draw[curva3,desplazada] (0.4,4.27) -- (5.4,2.02);
+    \draw[curva2,dashed] (2.6,4.59) -- (4.6,0.59);
+    \nuevo{3.444}{2.9}
+  \end{scope}}
+  % 2: b) déficit financiado con deuda
+  \capa{2}{\begin{scope}[xshift=8.2cm,scale=0.62]
+    \node[tit] at (-0.3,5.4) {b) Déficit público financiado con deuda ($\uparrow B$):\\\phantom{b) }$\uparrow i$, $E$ ambiguo};
+    \base
+    \draw[curva1,desplazada] (1.6,0.7) -- (5.6,4.3);
+    \draw[curva3,desplazada] (0.4,3.97) -- (5.4,1.72);
+    \draw[curva2,dashed] (2.6,4.56) -- (4.6,0.56);
+    \nuevo{3.622}{2.52}
+  \end{scope}}
+  % 3: c) superávit corriente
+  \capa{3}{\begin{scope}[yshift=-4.6cm,scale=0.62]
+    \node[tit] at (-0.3,5.4) {c) Superávit corriente ($\uparrow B^*$):\\\phantom{c) }$\downarrow E$, $i$ ambiguo};
+    \base
+    \draw[curva1,desplazada] (1.4,0.7) -- (5.6,4.48);
+    \draw[curva3,desplazada] (0.4,3.07) -- (5.4,0.82);
+    \draw[curva2,dashed] (1.6,4.42) -- (3.5,0.62);
+    \nuevo{2.822}{1.98}
+  \end{scope}}
+  % 4: d) subida del tipo de interés extranjero
+  \capa{4}{\begin{scope}[xshift=8.2cm,yshift=-4.6cm,scale=0.62]
+    \node[tit] at (-0.3,5.4) {d) Subida del tipo de interés extranjero ($\uparrow i^*$):\\\phantom{d) }$\uparrow E$, $i$ ambiguo};
+    \base
+    \draw[curva1,desplazada] (0.4,0.7) -- (4.8,4.66);
+    \draw[curva3,desplazada] (0.4,4.27) -- (5.4,2.02);
+    \draw[curva2,dashed] (2.4,4.37) -- (4.2,0.77);
+    \nuevo{3.044}{3.08}
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

@@ -77,7 +77,7 @@ Introducción\esqtiempo{2,5}\\
 I. Causas de la inflación\esqtiempo{13}\\
 \hspace*{1.5em}1. Debate tradicional de la inflación en modelos clásicos y keynesianos\\
 \hspace*{1.5em}2. Causas de la inflación en modelos dinámicos: el triángulo de \autor{Gordon} (1982)\\
-\hspace*{3em}política monetaria · política fiscal · NEK: demanda y costes · inercia\\
+\hspace*{3em}demanda (política monetaria · política fiscal · otras perturbaciones) · costes · inercia\\
 \hspace*{1.5em}3. La inflación de 2021-2026 a la luz del triángulo\\
 II. Efectos sobre la eficiencia económica y el bienestar\esqtiempo{8}\\
 \hspace*{1.5em}1. Costes de la inflación anticipada y no anticipada\\
@@ -205,13 +205,19 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1,5
 \end{infografia}
 
 \begin{itemize}
-\item Cada vértice es una causa y pide una respuesta distinta. Empezamos por la demanda que crean las 2 políticas, la monetaria (\ref{sec:politica-monetaria}) y la fiscal (\ref{sec:politica-fiscal}); después, con el modelo canónico de la nueva economía keynesiana, las otras perturbaciones de demanda y las de costes (\ref{sec:nek-origenes}) y la inercia (\ref{sec:inercia}). Es el esquema de la exposición y la forma en que los bancos centrales leen los datos.
+\item Cada vértice es una causa y pide una respuesta distinta. Seguimos los 3 lados del triángulo. Empezamos por la demanda (\ref{sec:demanda}): la que crean las 2 políticas, la monetaria y la fiscal, y las demás perturbaciones de demanda, que se ven con el modelo canónico de la nueva economía keynesiana; después, los costes (\ref{sec:costes-push}) y la inercia (\ref{sec:inercia}). Es el esquema de la exposición y la forma en que los bancos centrales leen los datos.
 \end{itemize}
 
 % ..........................................................................
-\subsubsection{Inflación de demanda: la política monetaria}\label{sec:politica-monetaria}
+\subsubsection{Inflación de demanda (\emph{demand-pull})}\label{sec:demanda}
 
-\paragraph{De la curva de \autor{Phillips} a la hipótesis aceleracionista}
+\begin{itemize}
+\item El primer lado del triángulo es la demanda: el paro por debajo de la tasa natural empuja los precios. Vemos 3 orígenes de ese empuje: la política monetaria, la política fiscal y las demás perturbaciones de demanda (confianza, riqueza, inversión, demanda exterior).
+\end{itemize}
+
+\paragraph{La política monetaria}\label{sec:politica-monetaria}
+
+\subparagraph{De la curva de \autor{Phillips} a la hipótesis aceleracionista}
 
 \begin{itemize}
 \item \emph{La aportación original}: \textcite{Phillips1958} encontró, con datos del Reino Unido de 1861 a 1957, una relación inversa y no lineal entre el crecimiento de los salarios nominales y el paro: con poco paro, los salarios subían deprisa.\footnote{No fue el primero: \textcite{Fisher1926Statistical} ya había relacionado la inflación con el empleo en Estados Unidos. Su artículo se volvió a publicar en 1973 con el título «I Discovered the Phillips Curve»\nocite{Fisher1973Discovered}.} Era una regularidad empírica, sin teoría detrás \vertema{3.A.28}.
@@ -236,24 +242,24 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1,5
 \fuente{Elaboración propia a partir de \textcite{Friedman1968Role} y \textcite{Phelps1967Phillips}. Una curva de corto plazo por cada inflación esperada (la primera es el menú de \textcite{SamuelsonSolow1960Analytical}); la de largo plazo es vertical en $U^n$.}
 \end{figure}
 
-\paragraph{De las islas de \autor{Phelps} a la oferta de \autor{Lucas}}
+\subparagraph{De las islas de \autor{Phelps} a la oferta de \autor{Lucas}}
 
-\subparagraph{a) Idea}
+\hspace*{4.8em}\emph{a) Idea}
 
 \begin{itemize}
 \item Las adaptativas permiten que el público se equivoque año tras año en la misma dirección. \textcite{Lucas1972Expectations} pone expectativas racionales y explica por qué el dinero mueve la producción a corto plazo aunque nadie se equivoque de forma sistemática: por la \emph{información imperfecta} \vertema{3.A.6}.\footnote{\autor{Robert Lucas} recibió el Premio Nobel en 1995 «por haber desarrollado y aplicado la hipótesis de las expectativas racionales, transformando así el análisis macroeconómico y profundizando en la comprensión de la política económica»\nocite{Nobel1995Lucas}.}
 \end{itemize}
 
-\subparagraph{b) Modelo}
+\hspace*{4.8em}\emph{b) Modelo}
 
-\hspace*{3.6em}\emph{i) Supuestos}
+\hspace*{6em}\emph{i) Supuestos}
 
 \begin{itemize}
 \item Los productores viven en mercados separados, las \concepto{islas} de \textcite{Phelps1970Microeconomic}: cada uno ve el precio de su isla, $p_{i,t}=p_t+z_{i,t}$, con $z_{i,t}$ una perturbación real de la isla, de media cero, pero no el nivel general $p_t$ (en logaritmos).
 \item Solo quieren producir más si sube su precio \emph{relativo}; las expectativas son racionales.
 \end{itemize}
 
-\hspace*{3.6em}\emph{ii) Desarrollo}
+\hspace*{6em}\emph{ii) Desarrollo}
 
 \begin{itemize}
 \item Cuando su precio sube, cada productor no sabe si es una perturbación real (le conviene producir más) o una subida general (no le conviene). Atribuye a causas reales la parte $\omega=\sigma^2_z/(\sigma^2_z+\sigma^2_p)$ de la subida, el \emph{coeficiente de proyección}: la parte de la varianza de su precio que se debe a las perturbaciones reales.
@@ -264,7 +270,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1,5
   con $y^n$ la producción natural y $\varepsilon_S$ la elasticidad de la oferta de cada isla a su precio relativo. Solo las sorpresas de precios mueven la producción. El desarrollo, en el anexo~\ref{anexo:lucas}.
 \end{itemize}
 
-\hspace*{3.6em}\emph{iii) Implicaciones}
+\hspace*{6em}\emph{iii) Implicaciones}
 
 \begin{itemize}
 \item La política monetaria puede tener efectos reales, pero solo con 3 condiciones:
@@ -276,23 +282,23 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1,5
 \item Como $\psi$ cambia con la política, la curva no sirve como un menú estable, la \concepto{crítica de \autor{Lucas}} \vertema{3.A.6}. Y con inflación errática los precios dejan de informar: es uno de los costes de la inflación sobre la eficiencia (\ref{sec:costes-inflacion}).
 \end{itemize}
 
-\subparagraph{c) Valoración}
+\hspace*{4.8em}\emph{c) Valoración}
 
 \begin{itemize}
 \item Da fundamento a la curva de \autor{Phillips} con expectativas racionales, pero no explica por qué los efectos del dinero duran años si las estadísticas de precios salen cada mes: es la puerta a las rigideces de la nueva economía keynesiana (\ref{sec:nek-origenes}).
 \end{itemize}
 
-\paragraph{Reglas frente a discrecionalidad: \autor{Kydland} y \autor{Prescott} (1977) y \autor{Barro} y \autor{Gordon} (1983)}
+\subparagraph{Reglas frente a discrecionalidad: \autor{Kydland} y \autor{Prescott} (1977) y \autor{Barro} y \autor{Gordon} (1983)}
 
-\subparagraph{a) Idea}
+\hspace*{4.8em}\emph{a) Idea}
 
 \begin{itemize}
 \item Si solo la inflación por sorpresa baja el paro y el público lo sabe, ¿por qué ha habido tanta inflación? \textcite{KydlandPrescott1977Rules} y \textcite{BarroGordon1983Positive} responden con una causa \emph{institucional}: la \concepto{inconsistencia temporal} de la política monetaria \vertema{3.A.6} \vertema{3.A.36}.\footnote{\autor{Finn Kydland} y \autor{Edward Prescott} recibieron el Premio Nobel en 2004 «por sus contribuciones a la macroeconomía dinámica: la consistencia temporal de la política económica y las fuerzas que impulsan los ciclos económicos»\nocite{Nobel2004KydlandPrescott}.}
 \end{itemize}
 
-\subparagraph{b) Modelo}
+\hspace*{4.8em}\emph{b) Modelo}
 
-\hspace*{3.6em}\emph{i) Supuestos}
+\hspace*{6em}\emph{i) Supuestos}
 
 \begin{itemize}
 \item La curva de \autor{Phillips} con sorpresas, $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$, con $\alpha=1/a$.
@@ -304,7 +310,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1,5
 \item Un juego en 2 etapas: primero el público fija $\pi^e_t$ y después el banco central elige $\pi_t$ con discrecionalidad.
 \end{itemize}
 
-\hspace*{3.6em}\emph{ii) Desarrollo}
+\hspace*{6em}\emph{ii) Desarrollo}
 
 \begin{itemize}
 \item Fijadas las expectativas, sorprender con inflación baja el paro hacia $U^*$, y el banco central tiene la tentación de hacerlo. El público lo sabe y espera la inflación con la que el banco central ya no quiere sorprender: en equilibrio el paro queda en $U^n$ y la inflación, por encima del objetivo, en la \concepto{inflación de discrecionalidad}
@@ -312,7 +318,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1,5
   El sesgo inflacionista es mayor cuanto más quiere el banco central bajar el paro ($U^n-U^*$), cuanto más responde el paro a las sorpresas ($\alpha$) y cuanto menos pesa la inflación en su pérdida ($\gamma$). La derivación y los 3 puntos (regla, tentación y discrecionalidad), en el anexo~\ref{anexo:barro-gordon}.
 \end{itemize}
 
-\hspace*{3.6em}\emph{iii) Implicaciones}
+\hspace*{6em}\emph{iii) Implicaciones}
 
 \begin{itemize}
 \item La inflación no compra ningún paro: es el precio de la falta de compromiso. La regla ($\pi^*$ con $U^n$) sería mejor que la discrecionalidad, pero no es creíble.
@@ -327,14 +333,14 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{1,5
   La misma inconsistencia temporal aparece en la regulación \vertema{3.A.20}.
 \end{itemize}
 
-\subparagraph{c) Valoración}
+\hspace*{4.8em}\emph{c) Valoración}
 
 \begin{itemize}
 \item Explica la inflación de los 70 y la ola de independencia de los bancos centrales y de objetivos de inflación de los 90. Su límite: los bancos centrales independientes no parecen querer un paro por debajo del natural, y hoy el problema ha sido a menudo el contrario, una inflación por debajo del objetivo.
 \end{itemize}
 
 % ..........................................................................
-\subsubsection{Inflación de demanda: la política fiscal}\label{sec:politica-fiscal}
+\paragraph{La política fiscal}\label{sec:politica-fiscal}
 
 \begin{itemize}
 \item \emph{La restricción presupuestaria une las 2 políticas}: la inflación es monetaria, pero el dinero puede estar al servicio del déficit. Lo que no cubren los impuestos se paga con deuda o con dinero, y emitir dinero da al Estado un ingreso real, el \concepto{señoreaje}. Si el Estado tiene poco acceso a la deuda o un sistema fiscal pobre, el banco central acaba financiándolo; cuánto puede recaudar así y qué pasa si se le pide demasiado es la hiperinflación (\ref{sec:hiperinflacion}) \vertema{3.A.39}.
@@ -387,10 +393,10 @@ Una introducción a la teoría fiscal del nivel de precios de uno de sus autores
 \end{anotaciones}
 
 % ..........................................................................
-\subsubsection{Las demás perturbaciones de demanda y las de costes en el modelo canónico de la NEK}\label{sec:nek-origenes}
+\paragraph{Otras perturbaciones de demanda}\label{sec:nek-origenes}
 
 \begin{itemize}
-\item Vistas las 2 políticas, el resto de los orígenes de la inflación se explican con el \concepto{modelo canónico de la nueva economía keynesiana} (NEK): empresas con poder de mercado que solo revisan su precio de vez en cuando (con probabilidad $\eta$ de \emph{no} revisarlo cada periodo)\nocite{Calvo1983Staggered,Gali2015Monetary}, hogares que optimizan y expectativas racionales \vertema{3.A.7}. Cómo modela la NEK estas rigideces (\autor{Fischer}, \autor{Taylor} y \autor{Calvo}) está en el anexo~\ref{anexo:rigideces}. Son 3 ecuaciones log-linealizadas alrededor de un estado estacionario sin inflación:
+\item Vistas las 2 políticas, el resto de las perturbaciones de demanda, y también las de costes y la inercia del tercer lado, se explican con el \concepto{modelo canónico de la nueva economía keynesiana} (NEK): empresas con poder de mercado que solo revisan su precio de vez en cuando (con probabilidad $\eta$ de \emph{no} revisarlo cada periodo)\nocite{Calvo1983Staggered,Gali2015Monetary}, hogares que optimizan y expectativas racionales \vertema{3.A.7}. Cómo modela la NEK estas rigideces (\autor{Fischer}, \autor{Taylor} y \autor{Calvo}) está en el anexo~\ref{anexo:rigideces}. Son 3 ecuaciones log-linealizadas alrededor de un estado estacionario sin inflación:
   \begin{itemize}
   \item la \emph{IS dinámica}, la demanda: $x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)$;
   \item la \emph{curva de \autor{Phillips} neokeynesiana} (NKPC), la oferta, con la perturbación de costes:
@@ -401,15 +407,14 @@ Una introducción a la teoría fiscal del nivel de precios de uno de sus autores
 \item \emph{Los 3 orígenes, en las 3 ecuaciones}: la demanda entra por la IS ($r^n_t$) y la política monetaria por la regla ($v_t$); los costes, por la NKPC ($u_t$); y la inercia, por lo que la NKPC \emph{no} tiene, la inflación pasada (\ref{sec:inercia}).
 \end{itemize}
 
-\paragraph{Otras perturbaciones de demanda}
-
 \begin{itemize}
 \item La demanda no solo sube con el dinero o el déficit: un aumento de la confianza o de la riqueza de los hogares, el gasto del ahorro acumulado, un auge de la inversión, una mayor demanda exterior o una depreciación hacen lo mismo.
 \item En el modelo todas suben el tipo de interés natural, $r^n_t$: si el banco central no sube el tipo nominal lo suficiente, la brecha de producción se abre y, por la NKPC, la inflación sube.
 \item Con una perturbación de demanda, la producción y la inflación suben a la vez, y el banco central puede estabilizar las 2 con el tipo de interés: es la \concepto{divina coincidencia} (gráfico~\ref{fig:nek-xpi}, panel a) \vertema{3.A.7}.
 \end{itemize}
 
-\paragraph{Perturbaciones de costes (\emph{cost-push})}
+% ..........................................................................
+\subsubsection{Inflación de costes (\emph{cost-push})}\label{sec:costes-push}
 
 \begin{itemize}
 \item Una vez vista la inflación que tira de la demanda, pasamos a la que empuja desde los costes: la producción baja y los precios suben a la vez, la \concepto{estanflación}. El término de oferta se generalizó en las curvas de \autor{Phillips} con las crisis del petróleo de los 70\nocite{Gordon2011Phillips}.

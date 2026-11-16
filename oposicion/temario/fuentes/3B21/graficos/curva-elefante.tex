@@ -1,0 +1,63 @@
+% 3.B.21: la curva del elefante (Lakner y Milanović, 2016): crecimiento
+% acumulado de la renta real media de cada veintil de la distribución mundial
+% de la renta entre 1988 y 2008. Veintiles leídos del gráfico 1(a) de
+% Lakner y Milanović (2013, WPS 6719) y contrastados con su cuadro 3 (ver la
+% cabecera de ../datos/curva-elefante.csv). x = 98 es P95-P99 y x = 100, el
+% 1 % más rico. Mismo estilo que el gráfico del 3.B.18 (curva morada, media gris).
+% Puntos A (P55, joroba: clases medias de Asia emergente), B (P80, valle:
+% clases medias y bajas de los países ricos) y C (1 % más rico, trompa).
+% Capas (CRITERIOS §7): ejes -> media -> curva -> puntos -> rótulos A, B, C.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/curva-elefante.csv}\elefante
+\colorlet{elcurva}{tceemorado}
+\colorlet{elmedia}{tceegris}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      scale only axis, width=10.5cm, height=6cm,
+      xmin=0, xmax=102, xtick={5,10,...,95,100},
+      xticklabels={5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,top 1},
+      xticklabel style={font=\scriptsize},
+      xlabel={veintil de la distribución mundial de la renta},
+      xlabel style={font=\footnotesize},
+      ymin=0, ymax=85, ytick={0,10,...,80},
+      yticklabel style={font=\footnotesize},
+      ylabel={crecimiento de la renta real, 1988-2008 (\%)},
+      ylabel style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      dicapas,
+    ]
+    % 2: la media mundial
+    \capa{2}{
+      \dicraya[dicumbral, thick]{(0,24.34) (102,24.34)}
+      \dicrotulo[font=\footnotesize, text=elmedia, anchor=north west, inner sep=2pt]{(31,23.8)}{media mundial: $24{,}3$~\%}
+    }
+    % 3: la curva
+    \capa{3}{
+      \addplot[diclinea=elcurva, forget plot] table[x=percentil, y=crecimiento] {\elefante};
+    }
+    % 4: los veintiles
+    \capa{4}{
+      \addplot[on layer=dicpuntos, forget plot, only marks, mark=*, mark size=1.8pt,
+          mark options={fill=white, draw=elcurva, line width=0.9pt}]
+        table[x=percentil, y=crecimiento] {\elefante};
+    }
+    % 5: A, la joroba
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, text=elcurva, anchor=south, align=center]{(55,77)}{\textbf{A}: clases medias de Asia emergente\\[-1pt]P55: $\approx 76$~\%}
+    }
+    % 6: B, el valle
+    \capa{6}{
+      \dicrotulo[font=\footnotesize, text=elcurva, anchor=east, align=right]{(78,9)}{\textbf{B}: clases medias y bajas\\[-1pt]de los países ricos\\[-1pt]P80: $\approx 1$~\%}
+    }
+    % 7: C, la trompa
+    \capa{7}{
+      \dicrotulo[font=\footnotesize, text=elcurva, anchor=east, align=right]{(98.5,66)}{\textbf{C}: 1~\% más rico\\[-1pt]$64{,}8$~\%}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

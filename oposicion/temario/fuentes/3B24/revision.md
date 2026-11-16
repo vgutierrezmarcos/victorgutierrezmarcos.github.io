@@ -161,6 +161,7 @@ Números de ecuaciones, gráficos y apartados: los del PDF de la rama antes de e
 - **R24-10. «La primera función de convexidad (la (8))».** En el PDF, la (8) era la aproximación de Taylor con duración y convexidad (función clave en morado), y la primera fórmula de la convexidad, sin número, su definición.
   - Aplicada (a): la definición desarrollada va a la nota y la (8) sigue en morado en el cuerpo, porque es la función clave del bloque III.
   - Alternativa (b): llevar también la aproximación de Taylor a la nota.
+  - **Resuelta por Víctor (16/11/2026)**: la fórmula desarrollada de la convexidad vuelve al cuerpo, numerada y en morado (ver «Comentarios de Víctor (16/11/2026)»).
 - **R24-11. Prima de riesgo «actualizada a noviembre de 2026».** El BCE y Eurostat publican medias mensuales; a 15/11/2026 el último mes es octubre.
   - Aplicada (a): datos hasta octubre de 2026 (publicados en noviembre), dicho así en la fuente del gráfico.
   - Alternativa (b): añadir un dato diario de noviembre de otra fuente (no oficial del BCE).
@@ -168,3 +169,9 @@ Números de ecuaciones, gráficos y apartados: los del PDF de la rama antes de e
   - Aplicada (a): se queda en II.1 como «la curva observada», porque enseña la ETTI con datos y la usan las formas y la conclusión.
   - Alternativa (b): llevarla al anexo B con NSS.
 
+
+## Comentarios de Víctor (16/11/2026)
+
+- «La fórmula de la convexidad de la nota al pie 19 llévala al cuerpo del tema numerada y en morado.» → En III.2.4, la definición de la convexidad, $\mathrm{Conv}=\frac{1}{P}\frac{\mathrm{d}^2P}{\mathrm{d}y^2}=\frac{1}{P(1+y)^2}\sum_t t(t+1)\,\mathrm{FC}_t/(1+y)^t$, sale de la nota y va al cuerpo en `\funcionclave` con número (ecuación 8, `eq:convexidad`); la aproximación con duración y convexidad pasa a ser la (9). La nota desaparece. Duda R24-10 marcada como resuelta. En la ficha de repaso, la misma fórmula en morado y la convexidad añadida a las funciones clave.
+- Regla general 1 (series de títulos completas): comprobado; el tema no tiene series rotas.
+- Páginas: cuerpo 31 (total 42), igual que antes. \minutos sigue en 30. Ficha: 4 páginas, letra de 10,5.

@@ -1,0 +1,54 @@
+% Tipo de cambio efectivo real amplio (frente a 64 economías, deflactado por
+% el IPC, 2020 = 100) de las principales economías, enero de 1994 a
+% septiembre de 2026. Datos: ../datos/bis-tcer.csv (BPI, WS_EER,
+% M.R.B.{US,XM,CN,JP,GB,ES}; consulta 16/11/2026).
+% Convención del BPI: una subida es una apreciación real (la contraria a la
+% del tema); se avisa en el rótulo del eje.
+% Pequeños múltiplos con el mismo eje vertical: a la izquierda las 3 grandes
+% monedas (dólar, euro, yen); a la derecha China, el Reino Unido y España,
+% con la zona del euro en gris claro como referencia.
+% Capas: línea de 100 y ejes -> series -> rótulos de los episodios.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/bis-tcer.csv}\tcer
+\begin{tikzpicture}[tcee]
+  \begin{groupplot}[group style={group size=2 by 1, horizontal sep=3.4cm},
+      width=7.4cm, height=7cm, xmin=1993.5, xmax=2027, ymin=40, ymax=200,
+      xtick={1995,2000,...,2025}, ytick={40,60,...,200},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25}, clip=false, dicapas]
+    \nextgroupplot[title={\small Las 3 grandes monedas},
+      ylabel={2020 = 100 (subida = apreciación real)}, ylabel style={font=\footnotesize}]
+    \capa{1}{\dicraya[dicumbral]{(1993.5,100) (2027,100)}}
+    \capa{2}{\addplot[diclinea=tceedorado, mark=none, forget plot] table[x=x, y=JP] {\tcer};
+      \addplot[diclinea=dicze, mark=none, forget plot] table[x=x, y=XM] {\tcer};
+      \addplot[diclinea=tceemorado, mark=none, forget plot] table[x=x, y=US] {\tcer};}
+    \capa{3}{\dicrotulo[font=\scriptsize, text=tceemorado, anchor=west]{(2026.9,111)}{EE.\,UU. 107}
+      \dicrotulo[font=\scriptsize, text=dicze, anchor=west]{(2026.9,99)}{Zona del euro 103}
+      \dicrotulo[font=\scriptsize, text=tceedorado, anchor=west]{(2026.9,67)}{Japón 67}
+      \dicrotulo[font=\scriptsize, text=tceedorado, anchor=west]{(1995.6,194)}{1995: 194}
+      \dicrotulo[font=\scriptsize, text=dicze, anchor=north]{(2000.8,86)}{2000: 88}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=north]{(2011.5,77)}{2011: 78}
+      \dicrotulo[font=\scriptsize, text=tceemorado, anchor=south]{(2023.5,116)}{2025: 115}}
+    \nextgroupplot[title={\small China, Reino Unido y España}]
+    \capa{1}{\dicraya[dicumbral]{(1993.5,100) (2027,100)}}
+    \capa{2}{\addplot[diclinea=dicotroclaro, mark=none, forget plot] table[x=x, y=XM] {\tcer};
+      \addplot[diclinea=tceeverde, mark=none, forget plot] table[x=x, y=CN] {\tcer};
+      \addplot[diclinea=tceeazul, mark=none, forget plot] table[x=x, y=GB] {\tcer};
+      \addplot[diclinea=dicespana, mark=none, forget plot] table[x=x, y=ES] {\tcer};}
+    \capa{3}{\dicrotulo[font=\scriptsize, text=tceeazul, anchor=west]{(2026.9,113)}{Reino Unido 111}
+      \dicrotulo[font=\scriptsize, text=dicespana, anchor=west]{(2026.9,104)}{España 104}
+      \dicrotulo[font=\scriptsize, text=tceeverde, anchor=west]{(2026.9,91)}{China 92}
+      \dicrotulo[font=\scriptsize, text=dicotro, anchor=west]{(2003,48)}{gris: zona del euro}
+      \dicrotulo[font=\scriptsize, text=tceeverde, anchor=west]{(1995.3,53)}{1994: 53}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=south]{(2000.3,136)}{2000: 135}
+      \dicrotulo[font=\scriptsize, text=tceeazul, anchor=north]{(2016.8,93)}{2016: 94}}
+  \end{groupplot}
+\end{tikzpicture}
+\end{document}

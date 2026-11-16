@@ -2,31 +2,46 @@
 \input{../../../latex/tikz-tcee}
 \newcommand{\pie}[1]{{\footnotesize #1}}
 \begin{document}
-% El efecto Balassa-Samuelson como cadena causal: 5 cajas en fila unidas por
-% flechas (morado del tema) y la última, la apreciación real, en verde; debajo,
-% la función clave del tema (q = EP*/P, ↑q = depreciación real).
+% El efecto Balassa-Samuelson como cadena causal en 2 filas, como la imagen 3
+% del tema antiguo (Víctor, 16/11/2026): arriba los comerciables (T), abajo los
+% no comerciables (N). La subida del salario pasa de una fila a la otra porque
+% el trabajo es móvil entre sectores; las 2 filas confluyen en el nivel de
+% precios y la apreciación real (verde). Debajo, la función clave
+% (q = EP*/P, ↑q = depreciación real).
 % Elaboración propia a partir de Balassa (1964) y Samuelson (1964).
 \begin{tikzpicture}[tcee,
     caja/.style={draw=tceemorado,fill=tceemorado!7,thick,rounded corners=3pt,
-      text width=2.45cm,align=center,minimum height=1.55cm,inner sep=3pt},
-    cajafin/.style={caja,draw=tceeverde,fill=tceeverde!10},
-    paso/.style={->,very thick,tceemorado}]
-  % 1: sube la productividad en los comerciables
-  \capa{1}{\node[caja] (c1) at (0,0) {$\uparrow A_T$\\[1pt]\pie{productividad en los comerciables}};}
-  % 2: sube el salario en los comerciables
-  \capa{2}{\node[caja] (c2) at (3.25,0) {$\uparrow W$ en $T$\\[1pt]\pie{($P_T$ fijo por el precio único)}};
-    \draw[paso] (c1) -- (c2);}
-  % 3: sube el salario en los no comerciables
-  \capa{3}{\node[caja] (c3) at (6.5,0) {$\uparrow W$ en $N$\\[1pt]\pie{(trabajo móvil entre sectores)}};
-    \draw[paso] (c2) -- (c3);}
-  % 4: sube el precio de los no comerciables
-  \capa{4}{\node[caja] (c4) at (9.75,0) {$\uparrow P_N$\\[1pt]\pie{(sin más productividad en $N$)}};
-    \draw[paso] (c3) -- (c4);}
-  % 5: sube el nivel de precios y se aprecia el tipo real
-  \capa{5}{\node[cajafin] (c5) at (13,0) {$\uparrow P$, $\downarrow q$\\[1pt]{\footnotesize\bfseries\color{tceeverde!80!black}apreciación real}};
-    \draw[paso] (c4) -- (c5);}
-  % 6: la fórmula de Balassa-Samuelson
-  \capa{6}{\node[etiqueta,text=tceegris] at (6.5,-1.45)
+      text width=2.75cm,align=center,minimum height=1.45cm,inner sep=3pt},
+    cajafin/.style={caja,draw=tceeverde,fill=tceeverde!10,minimum height=1.9cm},
+    fila/.style={etiqueta,font=\small\bfseries,text=tceemorado,align=center,text width=2.6cm},
+    paso/.style={->,very thick,tceemorado},
+    rot/.style={etiqueta,font=\footnotesize,text=tceegris,align=center}]
+  % 1: rótulos de las 2 filas
+  \capa{1}{%
+    \node[fila] at (-0.3,0) {Comerciables\\($T$)};
+    \node[fila] at (-0.3,-2.6) {No\\comerciables\\($N$)};
+    \draw[guia] (-1.5,-1.3) -- (4.4,-1.3);}
+  % 2: sube la productividad en los comerciables
+  \capa{2}{\node[caja] (t1) at (2.6,0) {$\uparrow A_T$\\[1pt]\pie{sube la productividad en los comerciables}};
+    \node[caja,draw=tceegris,fill=tceegris!6] (n1) at (2.6,-2.6) {$A_N$ dada\\[1pt]\pie{sin más productividad en los no comerciables}};}
+  % 3: sube el salario en los comerciables (P_T fijo)
+  \capa{3}{\node[caja] (t2) at (6.2,0) {$\uparrow W$ en $T$\\[1pt]\pie{$W=P_TA_T$, con $P_T$ fijo por el precio único}};
+    \draw[paso] (t1) -- (t2);}
+  % 4: el salario pasa a los no comerciables
+  \capa{4}{\node[caja] (n2) at (6.2,-2.6) {$\uparrow W$ en $N$\\[1pt]\pie{el mismo salario en toda la economía}};
+    \draw[paso] (t2) -- node[rot,right] {trabajo móvil\\entre sectores} (n2);}
+  % 5: P_T no cambia; P_N sube
+  \capa{5}{\node[caja] (t3) at (9.8,0) {$P_T$ constante\\[1pt]\pie{$P_T=E\,P^*_T$ (ley del precio único)}};
+    \draw[paso] (t2) -- (t3);
+    \node[caja] (n3) at (9.8,-2.6) {$\uparrow P_N$\\[1pt]\pie{$P_N=W/A_N$: sube para cubrir el coste}};
+    \draw[paso] (n2) -- (n3);
+    \draw[paso,dashed] (n1) -- (n2);}
+  % 6: confluyen: sube P y se aprecia el tipo real
+  \capa{6}{\node[cajafin] (f) at (13.4,-1.3) {$\uparrow P$, $\downarrow q$\\[2pt]{\footnotesize\bfseries\color{tceeverde!80!black}apreciación real}\\[1pt]\pie{$q=EP^*/P$}};
+    \draw[paso] (t3.east) -- (f.north west);
+    \draw[paso] (n3.east) -- (f.south west);}
+  % 7: la fórmula de Balassa-Samuelson
+  \capa{7}{\node[etiqueta,text=tceegris] at (6.5,-4.0)
       {$q=-\,\omega_N\big[(a_T-a_N)-(a^{*}_T-a^{*}_N)\big]$};}
 \end{tikzpicture}
 \end{document}

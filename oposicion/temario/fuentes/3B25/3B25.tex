@@ -58,16 +58,16 @@
   \begin{itemize}
   \item En el bloque~\ref{sec:futuros}, los futuros y los \emph{forwards}, los más sencillos. Con ellos se presenta lo que es común a todos los derivados: dónde se negocian (en mercados organizados, con una cámara, o en mercados OTC), quién participa, para qué se usan y la idea que recorre todo el tema: un derivado vale lo que cuesta replicarlo.
   \item En el bloque~\ref{sec:opciones}, las opciones, que añaden la asimetría del derecho sin obligación y obligan a modelizar la incertidumbre: la paridad \emph{put-call}, el modelo binomial y el de \autor{Black} y \autor{Scholes}.
-  \item En el bloque~\ref{sec:swaps}, los \emph{swaps}, que son carteras de \emph{forwards}, y los derivados de crédito, casi todos OTC. Con ellos se cierra el tema: los mercados OTC tras la crisis de 2008, su tamaño, su regulación y si estabilizan o desestabilizan el sistema financiero.
+  \item En el bloque~\ref{sec:swaps}, los \emph{swaps}, que son carteras de \emph{forwards}, y los derivados de crédito, casi todos OTC.
   \end{itemize}
-  \item Así, el grueso del tema son los instrumentos; lo común a todos se cuenta una vez, al principio (los mercados) y al final (los riesgos y la regulación).
+  \item Así, el grueso del tema son los instrumentos, y lo común a todos se cuenta una vez: al principio, dónde se negocian y quién participa; y en la conclusión, el balance de los mercados OTC tras la crisis de 2008 (su tamaño, su regulación y si estabilizan o desestabilizan el sistema financiero), con el detalle en un anexo.
   \end{itemize}
 \end{itemize}
 
 \begin{esquema}
 \textbf{3.B.25. Análisis de los instrumentos y de los mercados de derivados}\\[2pt]
 Introducción\esqtiempo{2,5}\\
-I. Mercados de futuros y \emph{forwards}\esqtiempo{7,5}\\
+I. Mercados de futuros y \emph{forwards}\esqtiempo{8}\\
 \hspace*{1.5em}1. Definición\\
 \hspace*{1.5em}2. Tipos: según el mercado (organizado u OTC) y según el subyacente\\
 \hspace*{1.5em}3. Pago del futuro a vencimiento\\
@@ -79,18 +79,17 @@ II. Mercados de opciones\esqtiempo{12}\\
 \hspace*{1.5em}3. Pago de la opción a vencimiento y beneficio\\
 \hspace*{1.5em}4. Estrategias\\
 \hspace*{1.5em}5. Valoración: paridad \emph{put-call}, binomial y \autor{Black}-\autor{Scholes}\\
-III. Mercados de \emph{swaps}\esqtiempo{7}\\
+III. Mercados de \emph{swaps}\esqtiempo{6}\\
 \hspace*{1.5em}1. Definición\\
 \hspace*{1.5em}2. Tipos\\
 \hspace*{1.5em}3. Pagos del \emph{swap}\\
 \hspace*{1.5em}4. Estrategias\\
 \hspace*{1.5em}5. Valoración\\
-\hspace*{1.5em}6. Los mercados OTC tras 2008: tamaño, regulación y estabilidad\\
-Conclusión\esqtiempo{1}
+Conclusión\esqtiempo{1,5}
 \end{esquema}
 
 \begin{notaopositor}
-Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7,5} (I.1, \tiempo{0,5}; I.2, \tiempo{2,25}; I.3, \tiempo{0,75}; I.4, \tiempo{0,75}; I.5, \tiempo{3,25}: paridad \emph{spot-forward}, \tiempo{1,5}, expectativas y \emph{contango}, \tiempo{1,25}, y la paridad cubierta de intereses, \tiempo{0,5}); II, \tiempo{12} (II.1, \tiempo{0,5}; II.2, \tiempo{1}; II.3, \tiempo{1,5}; II.4, \tiempo{2}; II.5, \tiempo{7}: paridad \emph{put-call}, \tiempo{1,5}, valor intrínseco y temporal, \tiempo{1}, binomial, \tiempo{2}, \autor{Black} y \autor{Scholes}, \tiempo{2}, y opciones reales, \tiempo{0,5}); III, \tiempo{7} (III.1, \tiempo{0,5}; III.2, \tiempo{2,5}; III.3, \tiempo{0,25}; III.4, \tiempo{0,75}; III.5, \tiempo{1}; III.6, \tiempo{2}), y conclusión, \tiempo{1}. La valoración es el hilo del tema y se lleva casi la mitad del cuerpo. La introducción y la conclusión llevan el dicho del enganche, «cubrirse las espaldas», que vuelve en la idea final. Los 3 bloques siguen el mismo guion (definición, tipos, pago, estrategias y valoración). Las funciones clave son la paridad \emph{spot-forward} \eqref{eq:spot-forward}, la paridad \emph{put-call} \eqref{eq:put-call} y la fórmula de \autor{Black} y \autor{Scholes} \eqref{eq:black-scholes}, que acompañan todo el tema. Los dichos van junto a su concepto: «cada día tiene su afán» (liquidación diaria), «lo que se gana en los columpios se pierde en los tiovivos» (paridad \emph{spot-forward}) y «el que paga, manda» (asimetría de la opción). Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{0,5}; I.2, \tiempo{2,75}; I.3, \tiempo{0,75}; I.4, \tiempo{0,75}; I.5, \tiempo{3,25}: paridad \emph{spot-forward}, \tiempo{1,5}, expectativas y \emph{contango}, \tiempo{1,25}, y la paridad cubierta de intereses, \tiempo{0,5}); II, \tiempo{12} (II.1, \tiempo{0,5}; II.2, \tiempo{1}; II.3, \tiempo{1,5}; II.4, \tiempo{2}; II.5, \tiempo{7}: paridad \emph{put-call}, \tiempo{1,5}, valor intrínseco y temporal, \tiempo{1}, binomial, \tiempo{2}, \autor{Black} y \autor{Scholes}, \tiempo{2}, y opciones reales, \tiempo{0,5}); III, \tiempo{6} (III.1, \tiempo{0,5}; III.2, \tiempo{3}; III.3, \tiempo{0,25}; III.4, \tiempo{0,75}; III.5, \tiempo{1,5}), y conclusión, \tiempo{1,5}, que lleva en pocas frases lo esencial de los mercados OTC tras 2008 (tamaño, reforma y riesgos; el detalle, en el anexo~\ref{anexo:otc}). La valoración es el hilo del tema y se lleva casi la mitad del cuerpo. La introducción y la conclusión llevan el dicho del enganche, «cubrirse las espaldas», que vuelve en la idea final. Los 3 bloques siguen el mismo guion (definición, tipos, pago, estrategias y valoración). Las funciones clave son la paridad \emph{spot-forward} \eqref{eq:spot-forward}, la paridad \emph{put-call} \eqref{eq:put-call} y la fórmula de \autor{Black} y \autor{Scholes} \eqref{eq:black-scholes}, que acompañan todo el tema. Los dichos van junto a su concepto: «cada día tiene su afán» (liquidación diaria), «lo que se gana en los columpios se pierde en los tiovivos» (paridad \emph{spot-forward}) y «el que paga, manda» (asimetría de la opción). Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
 \end{notaopositor}
 
 \begin{anotaciones}
@@ -103,10 +102,10 @@ Para entender los derivados en pocos minutos: en castellano, \url{https://youtu.
 
 % ==========================================================================
 \section{Mercados de futuros y \emph{forwards}}\label{sec:futuros}
-\minutos{7,5}
+\minutos{8}
 
 \begin{notaopositor}
-En el cante (\tiempo{7,5}): el guion de 5 pasos ordena todo el tema. I.1, \tiempo{0,5}: de palabra, con los 5 elementos del contrato. I.2, \tiempo{2,25}: la estrella de la cámara frente a la malla bilateral (figura~\ref{figu:ccp}), con «cada día tiene su afán» junto a la liquidación diaria, la tabla~\ref{tab:organizados-otc} en versión mínima o de palabra, y que la distinción vale para todos los derivados; los participantes y MEFF, de palabra. I.3, \tiempo{0,75}: el gráfico~\ref{fig:pago-futuro}, largo y corto, con el ejemplo de 140 y 60 y la suma cero, y la vuelta al WTI de abril de 2020. I.4, \tiempo{0,75}: de palabra. I.5, \tiempo{3,25}: la paridad \eqref{eq:spot-forward}, con «lo que se gana en los columpios se pierde en los tiovivos»; después, una sola extensión, la del coste de mantenimiento \eqref{eq:coste-mantenimiento}; y el gráfico~\ref{fig:contango} con las 3 trayectorias. La paridad cubierta de intereses, de palabra. La definición legal, la ratio de cobertura, el FRA y las notas son de profundización.
+En el cante (\tiempo{8}): el guion de 5 pasos ordena todo el tema. I.1, \tiempo{0,5}: de palabra, con los 5 elementos del contrato. I.2, \tiempo{2,75}: la estrella de la cámara frente a la malla bilateral (figura~\ref{figu:ccp}), con «cada día tiene su afán» junto a la liquidación diaria, la tabla~\ref{tab:organizados-otc} en versión mínima o de palabra, y que la distinción vale para todos los derivados; los participantes, el tamaño de los mercados organizados (FIA) y MEFF, de palabra, porque es el único sitio del cuerpo en que se habla de los mercados como tales. I.3, \tiempo{0,75}: el gráfico~\ref{fig:pago-futuro}, largo y corto, con el ejemplo de 140 y 60 y la suma cero, y la vuelta al WTI de abril de 2020. I.4, \tiempo{0,75}: de palabra. I.5, \tiempo{3,25}: la paridad \eqref{eq:spot-forward}, con «lo que se gana en los columpios se pierde en los tiovivos»; después, una sola extensión, la del coste de mantenimiento \eqref{eq:coste-mantenimiento}; y el gráfico~\ref{fig:contango} con las 3 trayectorias. La paridad cubierta de intereses, de palabra. La definición legal, la ratio de cobertura, el FRA y las notas son de profundización.
 \end{notaopositor}
 
 \begin{itemize}
@@ -187,7 +186,7 @@ En el cante (\tiempo{7,5}): el guion de 5 pasos ordena todo el tema. I.1, \tiemp
   \item los \emph{intermediarios}: un puñado de grandes bancos actúan como \concepto{creadores de mercado} (\emph{dealers}): cotizan precios de compra y de venta, casan las operaciones de los clientes y cubren entre ellos el riesgo neto que les queda. Por eso el mercado OTC está muy concentrado y muy interconectado;
   \item las \emph{infraestructuras}: las \concepto{entidades de contrapartida central}, que compensan las posiciones y piden garantías, y reducen el riesgo de contrapartida, pero lo concentran en ellas, que pasan a ser sistémicas\nocite{NunezValdeolivas2019CCP,DuffieZhu2011Does} (anexo~\ref{anexo:ccp}); los \concepto{registros de operaciones} (\emph{trade repositories}), a los que se comunica cada contrato, para que los supervisores vean quién está expuesto a quién; y, en lo bilateral, el contrato marco de la ISDA (\emph{International Swaps and Derivatives Association}), con la compensación por saldos netos en caso de quiebra (\emph{close-out netting}) y el intercambio de garantías.
   \end{itemize}
-\item \emph{Tamaño de los mercados organizados}: en 2025 se negociaron en todo el mundo 119.000 millones de contratos de futuros y opciones, un 42~\% menos que en 2024, sobre todo por las restricciones del regulador indio a la especulación con opciones sobre índices\nocite{FIA2026ETDDic}. Por número de contratos, los mayores mercados fueron 2 bolsas indias, la NSE y la BSE (casi todo opciones sobre índices de muy pequeño tamaño), seguidas de la brasileña B3, el CME Group y el ICE de Estados Unidos; el primer mercado europeo, Eurex, fue el 14.º y el español MEFF, el 34.º (gráfico~\ref{fig:fia-bolsas})\nocite{FIA2026ETDQ4}.\footnote{El CME Group integra el \emph{Chicago Board of Trade} desde 2007 y el NYMEX y el COMEX desde 2008\nocite{CME2020Form10K}. Que la NSE de la India sea la primera bolsa de derivados del mundo por contratos lo confirma su nota de prensa\nocite{NSE2026NotaPrensa}; ya lo era en 2019\nocite{Bloomberg2020India}. Por importe negociado, el CME va muy por delante.} El tamaño de los OTC, mucho mayor, se ve con los \emph{swaps} (\ref{sec:mercados-tamano}).
+\item \emph{Tamaño de los mercados organizados}: en 2025 se negociaron en todo el mundo 119.000 millones de contratos de futuros y opciones, un 42~\% menos que en 2024, sobre todo por las restricciones del regulador indio a la especulación con opciones sobre índices\nocite{FIA2026ETDDic}. Por número de contratos, los mayores mercados fueron 2 bolsas indias, la NSE y la BSE (casi todo opciones sobre índices de muy pequeño tamaño), seguidas de la brasileña B3, el CME Group y el ICE de Estados Unidos; el primer mercado europeo, Eurex, fue el 14.º y el español MEFF, el 34.º (gráfico~\ref{fig:fia-bolsas})\nocite{FIA2026ETDQ4}.\footnote{El CME Group integra el \emph{Chicago Board of Trade} desde 2007 y el NYMEX y el COMEX desde 2008\nocite{CME2020Form10K}. Que la NSE de la India sea la primera bolsa de derivados del mundo por contratos lo confirma su nota de prensa\nocite{NSE2026NotaPrensa}; ya lo era en 2019\nocite{Bloomberg2020India}. Por importe negociado, el CME va muy por delante.} El tamaño de los OTC, mucho mayor, se resume en la conclusión y se detalla en el anexo~\ref{anexo:otc}.
 \item \emph{En España}, los derivados organizados se negocian en \concepto{MEFF}, mercado regulado del grupo BME (propiedad de la suiza SIX desde 2020), y se compensan en \concepto{BME Clearing}, la entidad de contrapartida central; los supervisa la CNMV\nocite{CNMV2026RegistroMercados,SIX2020BME} \vertema{4.A.20}. En 2025 MEFF negoció algo más de 35 millones de contratos, un 22,6~\% más que en 2024, sobre todo opciones sobre acciones (16,3 millones, un 48~\% más) y futuros y opciones sobre el IBEX~35 y el Mini IBEX~35\nocite{BME2026InformeMercado}.\footnote{Desde el 1 de enero de 2026, la sociedad rectora de MEFF está integrada por absorción en BME Markets \& Exchanges\nocite{CNMV2026RegistroMercados}.}
 \end{itemize}
 
@@ -963,14 +962,14 @@ Paridad \emph{put-call} & $S_0$ & $-\,Ke^{-rT}$ & $+\,p$\\
 
 % ==========================================================================
 \section{Mercados de \emph{swaps}}\label{sec:swaps}
-\minutos{7}
+\minutos{6}
 
 \begin{notaopositor}
-En el cante (\tiempo{7}): III.1, \tiempo{0,5}: de palabra, «un \emph{swap} es una cartera de \emph{forwards}». III.2, \tiempo{2,5}: el esquema del IRS (figura~\ref{figu:irs}) con el ejemplo del banco (\tiempo{1}); FX \emph{swaps} y \emph{currency swaps}, de palabra, con el dato de la Encuesta Trienal (\tiempo{0,5}); permutas de rentabilidad total y Archegos, en una frase (\tiempo{0,25}); CDS con $s\simeq\lambda(1-R)$ y AIG (\tiempo{0,75}). III.3, \tiempo{0,25}: de palabra. III.4, \tiempo{0,75}: cobertura y ventaja comparativa, con la crítica de \autor{Turnbull}, de palabra. III.5, \tiempo{1}: la idea general, «un \emph{swap} vale la suma de sus \emph{forwards}» con la \eqref{eq:valor-swap-general}, y el IRS como serie de FRA o como $B_{\mathrm{fix}}-B_{\mathrm{fl}}$, que vuelve a la ETTI. III.6, \tiempo{2}: 3 columnas, «tamaño», «reforma de 2009» y «riesgos», con 2 o 3 palabras en cada una; los gráficos de datos no se dibujan. La caja de las líneas \emph{swap} de la Reserva Federal, los otros derivados de crédito y los detalles de la regulación son de profundización.
+En el cante (\tiempo{6}): III.1, \tiempo{0,5}: de palabra, «un \emph{swap} es una cartera de \emph{forwards}». III.2, \tiempo{3}: el esquema del IRS (figura~\ref{figu:irs}) con el ejemplo del banco (\tiempo{1}); FX \emph{swaps} y \emph{currency swaps}, de palabra, con el dato de la Encuesta Trienal (\tiempo{0,5}); permutas de rentabilidad total y Archegos, en una frase (\tiempo{0,25}); CDS con $s\simeq\lambda(1-R)$ y AIG, que llevó a la reforma de 2009 que resume la conclusión (\tiempo{1,25}). III.3, \tiempo{0,25}: de palabra. III.4, \tiempo{0,75}: cobertura y ventaja comparativa, con la crítica de \autor{Turnbull}, de palabra. III.5, \tiempo{1,5}: la idea general, «un \emph{swap} vale la suma de sus \emph{forwards}» con la \eqref{eq:valor-swap-general}, en sus 3 pasos, y el IRS como serie de FRA o como $B_{\mathrm{fix}}-B_{\mathrm{fl}}$, que vuelve a la ETTI. La caja de las líneas \emph{swap} de la Reserva Federal y los otros derivados de crédito son de profundización; el tamaño, la regulación y la estabilidad de los mercados OTC van, en pocas frases, en la conclusión.
 \end{notaopositor}
 
 \begin{itemize}
-\item \emph{Conclusión anticipada}: un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: vale cero al firmarse y se valora, como todo lo anterior, por arbitraje. Con los \emph{swaps} y los derivados de crédito, casi todos OTC, llegamos al mercado que estuvo en el centro de la crisis de 2008 y a la pregunta del final: qué hacen los mercados de derivados por la economía y qué riesgos crean.
+\item \emph{Conclusión anticipada}: un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: vale cero al firmarse y se valora, como todo lo anterior, por arbitraje. Con los \emph{swaps} y los derivados de crédito, casi todos OTC, llegamos al mercado que estuvo en el centro de la crisis de 2008, y con él a la pregunta que responde la conclusión: qué hacen los mercados de derivados por la economía y qué riesgos crean.
 \item \emph{Nexo}: una vez vistos los derivados con un pago en una fecha, pasamos a los que intercambian una serie de pagos.
 \end{itemize}
 
@@ -1133,75 +1132,14 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
 \item \emph{Ejemplo 3, la permuta de divisas}: cada intercambio de principal o de intereses es un \emph{forward} de divisas, cuyo precio da la paridad cubierta de intereses \eqref{eq:pci}; o, de forma equivalente, la diferencia entre un bono en cada moneda, convertida al tipo de cambio de hoy.\footnote{El \emph{swap} es una cartera de contratos a plazo y no de futuros en sentido estricto: sus pagos no se liquidan cada día en un mercado organizado, sino en cada fecha de intercambio. Hablar de una «sucesión de futuros» es correcto como idea, si se entiende «futuro» en sentido amplio.}
 \end{itemize}
 
-% --------------------------------------------------------------------------
-\subsection{Los mercados OTC tras 2008:\cortetitulo tamaño, regulación y estabilidad}\label{sec:mercados-derivados}
-
 \begin{itemize}
-\item Vistos los instrumentos y, con los futuros (\ref{sec:futuros-mercado}), dónde se negocian y quién participa, queda la otra mitad del título: el análisis de conjunto de los mercados. Se hace aquí, al final, porque el grueso del mercado OTC son los \emph{swaps} y porque la crisis de 2008, con los CDS en el centro, es la que cambió su regulación. Lo que sigue vale para todos los derivados OTC: qué tamaño tienen, cómo se han regulado y si estabilizan o desestabilizan el sistema financiero.
-\end{itemize}
-
-\subsubsection{Tamaño y estructura de los mercados OTC}\label{sec:mercados-tamano}
-
-\begin{itemize}
-\item \emph{OTC}: según el BIS, el nocional de los derivados OTC vivos pasó de 95 billones de dólares a finales de 2000 a 673 billones a mediados de 2008. Tras la crisis se movió entre 480 y 730 billones, y en diciembre de 2025 alcanzó 845 billones, cerca de su máximo histórico (gráfico~\ref{fig:bis-otc-derivados})\nocite{BIS2026OTCDerivados,ISDA2026KeyTrends}.
-  \begin{itemize}
-  \item Por subyacente, los derivados de tipos de interés son casi cuatro quintas partes del nocional (669,5 billones, sobre todo \emph{swaps}), y los de divisas, 148,7 billones; los de crédito, acciones y materias primas son pequeños\nocite{ISDA2026KeyTrends}.
-  \item Casi el 80~\% del nocional de los derivados de tipos (el 78,7~\%) tiene ya una entidad de contrapartida central como contraparte, efecto de la compensación obligatoria acordada tras 2008\nocite{BIS2026OTCDerivados}.
-  \end{itemize}
-\item \emph{Nocional no es riesgo}: un \emph{swap} de 100 millones expone a la diferencia de intereses, no a 100 millones. El valor de mercado bruto, lo que costaría reponer todos los contratos a precios de hoy, era de 22,8 billones, un 2,7~\% del nocional, y la exposición crediticia tras compensar posiciones, de 3,35 billones\nocite{BIS2026OTCDerivados}.
-\item \emph{Frente a los organizados}: los OTC son mucho mayores en nocional, aunque los organizados negocian muchos más contratos (\ref{sec:futuros-mercado}).
-\end{itemize}
-
-\begin{figure}[tbp]
-\centering
-\caption{Derivados OTC: nocional por categoría de riesgo y valor de mercado bruto (billones de dólares)}\label{fig:bis-otc-derivados}
-\grafico[0.85\textwidth]{bis-otc-derivados}
-\fuente{BIS, estadísticas semestrales de derivados OTC \parencite{BIS2026OTCDerivados}; datos de junio y diciembre de cada año, de 1998 a diciembre de 2025 (consulta: 8/11/2026).}
-\end{figure}
-
-\subsubsection{La regulación tras 2008}\label{sec:mercados-regulacion}
-
-\begin{itemize}
-\item En la cumbre de Pittsburgh de 2009, el G-20 acordó que los derivados OTC normalizados se negociaran en plataformas y se compensaran en entidades de contrapartida central, que todos se comunicaran a registros de operaciones y que los no compensados tuvieran más requisitos de capital\nocite{G20Pittsburgh2009}. La UE lo aplica con 3 normas \vertema{3.B.27}:
-  \begin{itemize}
-  \item el \concepto{EMIR}\nocite{UE2012EMIR}: obligación de compensar en una cámara los derivados que determine la ESMA, de comunicar todos los contratos a un registro y de intercambiar garantías en los no compensados; regula y supervisa las cámaras. Se reformó en 2019\nocite{UE2019EMIRRefit,UE2019EMIR22} y en 2024 con EMIR~3, que obliga a los grandes usuarios a mantener una cuenta activa en una cámara de la Unión para reducir la dependencia de las de terceros países\nocite{UE2024EMIR3};
-  \item el \concepto{MiFIR}, que obliga a negociar en plataformas los derivados más líquidos\nocite{UE2014MiFIR};
-  \item y el Reglamento de ventas en corto, que prohíbe los CDS soberanos al descubierto y permite a los supervisores prohibir temporalmente las posiciones cortas\nocite{UE2012VentasCorto}: la CNMV lo hizo entre marzo y mayo de 2020.\footnote{Hay que distinguir 2 operaciones:
-\begin{itemize}
-\item \emph{venta en corto}: se vende un activo tomado en préstamo, con la idea de recomprarlo más barato antes de devolverlo; la ganancia es la diferencia entre el precio de venta y el de recompra;
-\item \emph{venta en corto al descubierto}: se vende un activo que no se tiene ni se ha tomado en préstamo, con la idea de comprarlo más barato antes de entregarlo.
-\end{itemize}}
-  \end{itemize}
-\item En Estados Unidos, el título VII de la ley Dodd-Frank (2010) hizo lo mismo con los \emph{swaps}, bajo la supervisión de la CFTC y de la SEC\nocite{DoddFrank2010}.
-\item \emph{Resultado}: el riesgo de contrapartida bilateral ha bajado y la transparencia ha subido, pero las cámaras se han convertido en infraestructuras críticas, «demasiado importantes para quebrar», y sus márgenes pueden ser procíclicos.
-\end{itemize}
-
-\subsubsection{Eficiencia y estabilidad}\label{sec:mercados-estabilidad}
-
-\begin{itemize}
-\item \emph{A favor}:
-  \begin{itemize}
-  \item \emph{Reparten el riesgo}: lo trasladan de quien no lo quiere a quien está dispuesto a asumirlo a cambio de una prima, como en la \emph{normal backwardation}. Las opciones completan los mercados: con suficientes opciones se puede construir cualquier pago contingente, lo que acerca la economía a la asignación eficiente de \textcite{Arrow1964Role}\nocite{Ross1976Options} \vertema{3.A.21}.
-  \item \emph{Revelan información}: los futuros y las opciones son a menudo el primer sitio donde se forman los precios, y sus precios dan las expectativas de tipos, inflación, volatilidad o impago que usan los bancos centrales.
-  \item \emph{Abaratan las transacciones}: es más barato cubrirse o tomar posición con un futuro que comprar o vender la cartera.
-  \end{itemize}
-\item \emph{En contra}:
-  \begin{itemize}
-  \item \emph{Apalancamiento}: con poco capital se toman posiciones enormes, y las pérdidas pueden superar el patrimonio (Archegos en 2021, el WTI en 2020).
-  \item \emph{Interconexión y opacidad}: en lo OTC, nadie sabía en 2008 quién estaba expuesto a quién, y la quiebra de uno podía arrastrar a sus contrapartes (AIG) \vertema{3.B.26}. La gravedad de la Gran Recesión se debió sobre todo al pánico en los mercados de financiación mayorista y de titulización, más que a la caída de la vivienda en sí\nocite{Bernanke2018Real}.
-  \item \emph{Prociclicidad}: en una crisis suben a la vez la volatilidad y los márgenes, y los usuarios tienen que vender activos para atenderlos, lo que agrava la caída, como ocurrió en marzo de 2020.
-  \item \emph{Riesgo de modelo}: los derivados complejos se valoran con modelos cuyos supuestos fallan justo en las crisis (LTCM en 1998; las CDO en 2007).
-  \end{itemize}
-\item \emph{Balance}: los derivados son neutrales como instrumento; lo que los hace útiles o peligrosos es quién los usa, con cuánto apalancamiento y con cuánta transparencia. La regulación posterior a 2008 ha atacado la opacidad y el riesgo de contrapartida, pero no el apalancamiento ni la concentración del riesgo en las cámaras.
-\end{itemize}
-
-\begin{itemize}
-\item \emph{Recapitulación del bloque~\ref{sec:swaps}}: un \emph{swap} es una cartera de \emph{forwards} y vale la suma de lo que vale cada uno (en un IRS, una serie de FRA o la diferencia entre 2 bonos); los derivados de crédito trasladan el riesgo de impago y fueron centrales en 2008. Los mercados de derivados son enormes en nocional y mucho menores en riesgo neto, están muy concentrados y, desde 2009, mucho más regulados: reparten el riesgo y dan información, pero con apalancamiento y opacidad lo amplifican.
+\item \emph{Recapitulación del bloque~\ref{sec:swaps}}: un \emph{swap} es una cartera de \emph{forwards} y vale la suma de lo que vale cada uno (en un IRS, una serie de FRA o la diferencia entre 2 bonos); los derivados de crédito trasladan el riesgo de impago y fueron centrales en 2008.
+\item \emph{Nexo}: vistos los 3 instrumentos, queda la otra mitad del título, sus mercados: cuánto pesan, cómo se regularon tras 2008 y si estabilizan o desestabilizan el sistema financiero. Lo esencial cabe en la conclusión.
 \end{itemize}
 
 % ==========================================================================
 \section*{Conclusión}
-\minutos{1}
+\minutos{1,5}
 
 \begin{itemize}
 \item \textbf{\emph{Recapitulación}}:
@@ -1212,10 +1150,16 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
   \item La opción separa el lado bueno del malo, y su prima sale de una cartera de réplica (paridad \emph{put-call}, binomial, \autor{Black} y \autor{Scholes}), sin depender de las expectativas ni de la aversión al riesgo.
   \item El \emph{swap} es una cartera de \emph{forwards}.
   \end{itemize}
+  \item Queda la otra mitad del título, los mercados. De los OTC, el grueso, importan 3 cosas, que el anexo~\ref{anexo:otc} desarrolla:
+  \begin{itemize}
+  \item \emph{Su tamaño}: 845 billones de dólares de nocional en diciembre de 2025, casi cuatro quintas partes en derivados de tipos de interés, sobre todo \emph{swaps}; pero el nocional no es riesgo: su valor de mercado bruto era de 22,8 billones, un 2,7~\%\nocite{BIS2026OTCDerivados}.
+  \item \emph{La reforma tras 2008}: en Pittsburgh (2009), el G-20 acordó llevar los derivados OTC normalizados a plataformas, a cámaras de contrapartida central y a registros de operaciones\nocite{G20Pittsburgh2009}; la UE lo aplica con el EMIR y el MiFIR, y Estados Unidos con la ley Dodd-Frank. Hoy casi el 80~\% del nocional de los derivados de tipos se compensa en una cámara.
+  \item \emph{Sus efectos sobre la estabilidad}: reparten el riesgo, completan los mercados y revelan información, pero con apalancamiento, interconexión y márgenes procíclicos amplifican las crisis, como con AIG en 2008 o en marzo de 2020.
+  \end{itemize}
   \end{itemize}
 \item \textbf{\emph{Relevancia}}:
   \begin{itemize}
-  \item Son el mayor mercado financiero por nocional; con sus precios, los bancos centrales leen lo que el mercado espera de los tipos, de la inflación y de la volatilidad; y están en la gestión de la deuda pública (el Tesoro cubre con \emph{swaps} sus emisiones en divisas), en la supervisión y en la regulación europea.
+  \item Con sus precios, los bancos centrales leen lo que el mercado espera de los tipos, de la inflación y de la volatilidad; y están en la gestión de la deuda pública (el Tesoro cubre con \emph{swaps} sus emisiones en divisas), en la supervisión y en la regulación europea.
   \end{itemize}
 \item \textbf{\emph{Extensiones}}:
   \begin{itemize}
@@ -1225,7 +1169,7 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
   \begin{itemize}
   \item El riesgo no está en el instrumento, sino en el apalancamiento y en la opacidad.
 
-  \item La reforma de 2009 llevó los derivados OTC a cámaras con márgenes, y en abril de 2020 el mercado absorbió un precio negativo del petróleo sin que cayera ninguna cámara.
+  \item La reforma de 2009 ha funcionado: en abril de 2020 el mercado absorbió un precio negativo del petróleo sin que cayera ninguna cámara.
 
   \item Pero ahora el riesgo se concentra en esas cámaras, cuyos márgenes, en una crisis, obligan a vender cuando todos venden.
   \end{itemize}
@@ -1425,6 +1369,68 @@ Funcionan como un prestamista de última instancia internacional en dólares, m�
 \grafico[0.9\textwidth]{griegas}
 \fuente{elaboración propia con la fórmula de \textcite{BlackScholes1973Pricing}: $K=100$, $r=5$~\%, $\sigma=20$~\% y $T=1$; vega por punto de volatilidad y theta por día.}
 \end{figure}
+
+% ==========================================================================
+\section{Anexo: los mercados OTC tras 2008.\cortetitulo{} Tamaño, regulación y estabilidad}\label{anexo:otc}\label{sec:mercados-derivados}
+
+\begin{itemize}
+\item Este anexo desarrolla lo que la conclusión resume en pocas frases: el análisis de conjunto de los mercados de derivados, la otra mitad del título. Dónde se negocian y quién participa se vio con los futuros (\ref{sec:futuros-mercado}); aquí se trata lo que vale para todos los derivados OTC, cuyo grueso son los \emph{swaps} y cuya regulación cambió la crisis de 2008, con los CDS en el centro: qué tamaño tienen, cómo se han regulado y si estabilizan o desestabilizan el sistema financiero.
+\end{itemize}
+
+\subsection{Tamaño y estructura de los mercados OTC}\label{sec:mercados-tamano}
+
+\begin{itemize}
+\item \emph{OTC}: según el BIS, el nocional de los derivados OTC vivos pasó de 95 billones de dólares a finales de 2000 a 673 billones a mediados de 2008. Tras la crisis se movió entre 480 y 730 billones, y en diciembre de 2025 alcanzó 845 billones, cerca de su máximo histórico (gráfico~\ref{fig:bis-otc-derivados})\nocite{BIS2026OTCDerivados,ISDA2026KeyTrends}.
+  \begin{itemize}
+  \item Por subyacente, los derivados de tipos de interés son casi cuatro quintas partes del nocional (669,5 billones, sobre todo \emph{swaps}), y los de divisas, 148,7 billones; los de crédito, acciones y materias primas son pequeños\nocite{ISDA2026KeyTrends}.
+  \item Casi el 80~\% del nocional de los derivados de tipos (el 78,7~\%) tiene ya una entidad de contrapartida central como contraparte, efecto de la compensación obligatoria acordada tras 2008\nocite{BIS2026OTCDerivados}.
+  \end{itemize}
+\item \emph{Nocional no es riesgo}: un \emph{swap} de 100 millones expone a la diferencia de intereses, no a 100 millones. El valor de mercado bruto, lo que costaría reponer todos los contratos a precios de hoy, era de 22,8 billones, un 2,7~\% del nocional, y la exposición crediticia tras compensar posiciones, de 3,35 billones\nocite{BIS2026OTCDerivados}.
+\item \emph{Frente a los organizados}: los OTC son mucho mayores en nocional, aunque los organizados negocian muchos más contratos (\ref{sec:futuros-mercado}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Derivados OTC: nocional por categoría de riesgo y valor de mercado bruto (billones de dólares)}\label{fig:bis-otc-derivados}
+\grafico[0.85\textwidth]{bis-otc-derivados}
+\fuente{BIS, estadísticas semestrales de derivados OTC \parencite{BIS2026OTCDerivados}; datos de junio y diciembre de cada año, de 1998 a diciembre de 2025 (consulta: 8/11/2026).}
+\end{figure}
+
+\subsection{La regulación tras 2008}\label{sec:mercados-regulacion}
+
+\begin{itemize}
+\item En la cumbre de Pittsburgh de 2009, el G-20 acordó que los derivados OTC normalizados se negociaran en plataformas y se compensaran en entidades de contrapartida central, que todos se comunicaran a registros de operaciones y que los no compensados tuvieran más requisitos de capital\nocite{G20Pittsburgh2009}. La UE lo aplica con 3 normas \vertema{3.B.27}:
+  \begin{itemize}
+  \item el \concepto{EMIR}\nocite{UE2012EMIR}: obligación de compensar en una cámara los derivados que determine la ESMA, de comunicar todos los contratos a un registro y de intercambiar garantías en los no compensados; regula y supervisa las cámaras. Se reformó en 2019\nocite{UE2019EMIRRefit,UE2019EMIR22} y en 2024 con EMIR~3, que obliga a los grandes usuarios a mantener una cuenta activa en una cámara de la Unión para reducir la dependencia de las de terceros países\nocite{UE2024EMIR3};
+  \item el \concepto{MiFIR}, que obliga a negociar en plataformas los derivados más líquidos\nocite{UE2014MiFIR};
+  \item y el Reglamento de ventas en corto, que prohíbe los CDS soberanos al descubierto y permite a los supervisores prohibir temporalmente las posiciones cortas\nocite{UE2012VentasCorto}: la CNMV lo hizo entre marzo y mayo de 2020.\footnote{Hay que distinguir 2 operaciones:
+\begin{itemize}
+\item \emph{venta en corto}: se vende un activo tomado en préstamo, con la idea de recomprarlo más barato antes de devolverlo; la ganancia es la diferencia entre el precio de venta y el de recompra;
+\item \emph{venta en corto al descubierto}: se vende un activo que no se tiene ni se ha tomado en préstamo, con la idea de comprarlo más barato antes de entregarlo.
+\end{itemize}}
+  \end{itemize}
+\item En Estados Unidos, el título VII de la ley Dodd-Frank (2010) hizo lo mismo con los \emph{swaps}, bajo la supervisión de la CFTC y de la SEC\nocite{DoddFrank2010}.
+\item \emph{Resultado}: el riesgo de contrapartida bilateral ha bajado y la transparencia ha subido, pero las cámaras se han convertido en infraestructuras críticas, «demasiado importantes para quebrar», y sus márgenes pueden ser procíclicos.
+\end{itemize}
+
+\subsection{Eficiencia y estabilidad}\label{sec:mercados-estabilidad}
+
+\begin{itemize}
+\item \emph{A favor}:
+  \begin{itemize}
+  \item \emph{Reparten el riesgo}: lo trasladan de quien no lo quiere a quien está dispuesto a asumirlo a cambio de una prima, como en la \emph{normal backwardation}. Las opciones completan los mercados: con suficientes opciones se puede construir cualquier pago contingente, lo que acerca la economía a la asignación eficiente de \textcite{Arrow1964Role}\nocite{Ross1976Options} \vertema{3.A.21}.
+  \item \emph{Revelan información}: los futuros y las opciones son a menudo el primer sitio donde se forman los precios, y sus precios dan las expectativas de tipos, inflación, volatilidad o impago que usan los bancos centrales.
+  \item \emph{Abaratan las transacciones}: es más barato cubrirse o tomar posición con un futuro que comprar o vender la cartera.
+  \end{itemize}
+\item \emph{En contra}:
+  \begin{itemize}
+  \item \emph{Apalancamiento}: con poco capital se toman posiciones enormes, y las pérdidas pueden superar el patrimonio (Archegos en 2021, el WTI en 2020).
+  \item \emph{Interconexión y opacidad}: en lo OTC, nadie sabía en 2008 quién estaba expuesto a quién, y la quiebra de uno podía arrastrar a sus contrapartes (AIG) \vertema{3.B.26}. La gravedad de la Gran Recesión se debió sobre todo al pánico en los mercados de financiación mayorista y de titulización, más que a la caída de la vivienda en sí\nocite{Bernanke2018Real}.
+  \item \emph{Prociclicidad}: en una crisis suben a la vez la volatilidad y los márgenes, y los usuarios tienen que vender activos para atenderlos, lo que agrava la caída, como ocurrió en marzo de 2020.
+  \item \emph{Riesgo de modelo}: los derivados complejos se valoran con modelos cuyos supuestos fallan justo en las crisis (LTCM en 1998; las CDO en 2007).
+  \end{itemize}
+\item \emph{Balance}: los derivados son neutrales como instrumento; lo que los hace útiles o peligrosos es quién los usa, con cuánto apalancamiento y con cuánta transparencia. La regulación posterior a 2008 ha atacado la opacidad y el riesgo de contrapartida, pero no el apalancamiento ni la concentración del riesgo en las cámaras.
+\end{itemize}
 
 % ==========================================================================
 \section{Anexo: para el test}\label{anexo:test}

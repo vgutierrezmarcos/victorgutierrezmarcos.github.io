@@ -1,0 +1,53 @@
+% 3.B.20: las 4 grandes hiperinflaciones de entreguerras (Sargent, 1982).
+% Índices de precios mensuales, julio de 1921 = 1, en escala logarítmica,
+% de julio de 1921 a junio de 1924. Alemania (morado), Austria (azul),
+% Hungría (verde), Polonia (dorado). Marcas: mes de la estabilización de cada
+% país (Austria, septiembre de 1922; Alemania, noviembre de 1923; Polonia,
+% enero de 1924; Hungría, marzo de 1924).
+% Datos: ../datos/hiperinflaciones.csv (tablas G1, A3, H3 y P3 de Sargent).
+% Capas: ejes (1) → Alemania (2) → Austria (3) → Hungría (4) → Polonia (5) →
+% estabilizaciones y rótulos (6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\hidatos}{../datos/hiperinflaciones.csv}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[width=12.5cm, height=6.4cm, scale only axis,
+      ymode=log, log basis y=10,
+      xmin=1921.5, xmax=1924.55, xtick={1922,1923,1924},
+      x tick label style={/pgf/number format/1000 sep={}},
+      minor xtick={1921.5,1922.5,1923.5,1924.5},
+      ymin=0.5, ymax=5e11,
+      ytick={1,10,100,1000,1e4,1e5,1e6,1e7,1e8,1e9,1e10,1e11},
+      yticklabels={1,10,100,{1.000},{$10^4$},{$10^5$},{$10^6$},{$10^7$},{$10^8$},{$10^9$},{$10^{10}$},{$10^{11}$}},
+      axis lines=left, tick align=outside, clip=false,
+      ticklabel style={font=\footnotesize}, label style={font=\small},
+      ylabel={índice de precios, julio de 1921 $=1$},
+      unbounded coords=discard,
+      legend style={draw=none, fill=none, font=\footnotesize, at={(0.02,0.98)}, anchor=north west},
+      legend cell align=left]
+    % 2: Alemania
+    \capa{2}{\addplot[very thick, tceemorado] table[col sep=comma, comment chars={\#}, x=fecha, y=alemania] {\hidatos};
+      \addlegendentry{Alemania}}
+    % 3: Austria
+    \capa{3}{\addplot[very thick, tceeazul] table[col sep=comma, comment chars={\#}, x=fecha, y=austria] {\hidatos};
+      \addlegendentry{Austria}}
+    % 4: Hungría
+    \capa{4}{\addplot[very thick, tceeverde, densely dashed] table[col sep=comma, comment chars={\#}, x=fecha, y=hungria] {\hidatos};
+      \addlegendentry{Hungría}}
+    % 5: Polonia
+    \capa{5}{\addplot[very thick, tceedorado, densely dotted] table[col sep=comma, comment chars={\#}, x=fecha, y=polonia] {\hidatos};
+      \addlegendentry{Polonia}}
+    % 6: estabilizaciones (puntos en el mes en que se frena la subida)
+    \capa{6}{\addplot[only marks, mark=*, mark size=2.2pt, tceeazul] coordinates {(1922.7083,140.49)};}
+    \capa{6}{\addplot[only marks, mark=*, mark size=2.2pt, tceemorado] coordinates {(1923.8750,5.07483e10)};}
+    \capa{6}{\addplot[only marks, mark=*, mark size=2.2pt, tceedorado] coordinates {(1924.0417,5304.41)};}
+    \capa{6}{\addplot[only marks, mark=*, mark size=2.2pt, tceeverde] coordinates {(1924.2083,494.452)};}
+    \capa{6}{\node[font=\footnotesize, text=tceeazul, anchor=south, align=center] at (axis cs:1922.7083,300) {Austria\\sept.\ 1922};}
+    \capa{6}{\node[font=\footnotesize, text=tceemorado, anchor=east, align=right] at (axis cs:1923.83,5.07e10) {\emph{Rentenmark}\\nov.\ 1923};}
+    \capa{6}{\node[font=\footnotesize, text=tceedorado, anchor=south, align=center] at (axis cs:1924.0417,2.2e4) {Polonia\\ene.\ 1924};}
+    \capa{6}{\node[font=\footnotesize, text=tceeverde, anchor=north, align=center] at (axis cs:1924.2083,180) {Hungría\\mar.\ 1924};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

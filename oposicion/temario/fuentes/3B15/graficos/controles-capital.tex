@@ -11,6 +11,9 @@
 %   RMS = 1,876; U_2: K = 64,63. U_0 < U_2 < U_1.
 %   Déficit corriente en t (sin impuesto): C_t^C - Y_t = 2,175.
 % Capas: 1 ejes; 2 autarquía; 3-5 libertad de capitales; 6-8 impuesto.
+% Lo que añade el impuesto, en rojo (Víctor, 16/11/2026: «vete añadiendo los
+% impuestos en otro color»). Pasos para las cajas: controles-capital-paso1
+% (autarquía) y -paso2 (libertad de capitales).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -37,11 +40,11 @@
   \capa{4}{\node[etiqueta,above right] at (C) {$C$};}
   \capa{4}{\draw[guia] (0,2.717) node[left,text=black] {$C_{t+1}^C$} -| (5.175,0) node[below,text=black] {$C_t^C$};}
   % 5: el déficit corriente de t
-  \capa{5}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (3,-0.75) -- (5.175,-0.75) node[midway,below=4pt,etiqueta,text=tceerojo,font=\footnotesize] {déficit corriente en $t$};}
+  \capa{5}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceegris] (3,-0.75) -- (5.175,-0.75) node[midway,below=4pt,etiqueta,text=tceegris,font=\footnotesize] {déficit corriente en $t$};}
   % 6: con el impuesto, el país sigue sobre la recta nacional: punto D
-  \capa{6}{\node[punto] (D) at (4.1,3.845) {};}
-  \capa{6}{\node[etiqueta,above right] at (D) {$D$};}
-  \capa{6}{\draw[guia] (4.1,3.845) -- (4.1,0) node[below,text=black] {$C_t^D$};}
+  \capa{6}{\node[punto,tceerojo] (D) at (4.1,3.845) {};}
+  \capa{6}{\node[etiqueta,above right,text=tceerojo] at (D) {$D$};}
+  \capa{6}{\draw[guia,tceerojo] (4.1,3.845) -- (4.1,0) node[below,text=tceerojo] {$C_t^D$};}
   % 7: la recta privada por D, pendiente -(1+r*+τ), tangente a U_2 en D
   \capa{7}{\draw[curvanueva,dashed] (2.6,{privada(2.6)}) -- (5.55,{privada(5.55)});}
   \capa{7}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=south,align=center] at (2.6,{privada(2.6)+0.05}) {pendiente\\$-(1+r^*+\tau)$};}

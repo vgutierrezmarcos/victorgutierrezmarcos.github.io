@@ -187,3 +187,53 @@ datos:
     url: https://www.ecb.europa.eu/euro/intro/html/index.en.html
     periodicidad: cuando cambie
     familia: bce-euro
+
+  # ---- Añadidos el 16/11/2026 (comentarios de Víctor: contenido recuperado del tema antiguo) ----
+  - id: curva-elefante
+    texto: "la renta media mundial creció un 24~\\%, pero de forma muy desigual"
+    texto_repaso: "\\textbf{Curva del elefante} (\\autor{Lakner}-\\autor{Milanović}, 2016), 1988-2008, media +24\\,\\%"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 24.34
+    unidad: "% de crecimiento acumulado de la renta real media, 1988-2008 (PPA de 2005)"
+    periodo: 1988-2008
+    fuente: LaknerMilanovic2013WP
+    organismo: Banco Mundial (Lakner y Milanović)
+    serie: "veintiles leídos del gráfico 1(a) (±1 punto); exactos del cuadro 3: 1 % más rico 64,8; P95-P99 26,9; P90-P95 16,6; P50-P60 71,7; P80-P90 4,6"
+    url: https://documents1.worldbank.org/curated/en/914431468162277879/pdf/WPS6719.pdf
+    periodicidad: irregular (estudios académicos)
+    proxima: "si se publica una curva 1988-2018 o posterior con tabla de veintiles, sustituir la lectura del gráfico"
+    familia: desigualdad-mundial
+    depende: [datos/curva-elefante.csv, graficos/curva-elefante.tex]
+    frase: "I.3, la curva del elefante (A ≈ 76 %, B ≈ 1 %, C 64,8 %); ficha (I.3, preguntas)"
+    nota: "el 3.B.18 usa los 8 grupos del cuadro 3; aquí, los veintiles completos. Mismos valores donde coinciden"
+
+  - id: gini-mundial
+    texto: "el Gini mundial bajó de 69 a 66 puntos entre 1988 y 2008 … hasta 60 puntos en 2018"
+    texto_repaso: "Gini mundial 69 $\\to$ 66 $\\to$ 60 (\\autor{Milanović}, 2024)"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 60
+    unidad: "puntos de Gini (renta per cápita en PPA de 2011)"
+    periodo: 2018
+    fuente: Milanovic2024ThreeEras
+    organismo: Milanović (World Development, 2024), cuadro 3
+    url: https://doi.org/10.1016/j.worlddev.2023.106516
+    periodicidad: irregular
+    proxima: "nueva estimación con datos de 2023"
+    familia: desigualdad-mundial
+    frase: "I.3, la lectura y la actualización; ficha (I.3)"
+
+  - id: tipo-sociedades-medio
+    texto: "el tipo legal medio del impuesto de sociedades en el mundo bajó del 38,8~\\% en 1980 al 23~\\% en 2018"
+    texto_repaso: "tipo medio 38,8\\,\\% en 1980 $\\to$ 23\\,\\% en 2018"
+    donde: [3B21.tex, repaso/3B21-repaso.tex]
+    valor: 23.03
+    unidad: "% (media simple de 208 jurisdicciones)"
+    periodo: 2018
+    fuente: TaxFoundation2018Sociedades
+    organismo: Tax Foundation
+    url: https://taxfoundation.org/data/all/global/corporate-tax-rates-around-world-2018/
+    periodicidad: anual (diciembre)
+    proxima: 2026-12
+    familia: fiscalidad-sociedades
+    frase: "III.3, la fiscalidad internacional; ficha (III.3)"
+    nota: "el tema antiguo atribuía «de más del 40 % a en torno al 24 %» a Zucman; se toma la serie de la Tax Foundation (edición 2018: 38,84 % en 1980, 23,03 % en 2018). Ediciones posteriores revisan el dato de 1980 (40,38 %)"

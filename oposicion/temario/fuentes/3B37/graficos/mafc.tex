@@ -1,0 +1,75 @@
+% Cómo funciona el Mecanismo de Ajuste en Frontera por Carbono (MAFC) en su
+% régimen definitivo (desde el 1 de enero de 2026): arriba, quién paga el
+% carbono sin ajuste (solo el productor europeo, por el RCDE; riesgo de fuga
+% de carbono); abajo, con el ajuste, el árbol de decisión de una importación
+% (bien cubierto, umbral de 50 toneladas, certificados al precio del RCDE con
+% descuento del precio pagado en origen y de la asignación gratuita); al pie,
+% el calendario. Recupera, actualizada, la idea de la infografía del PIIE
+% (Hufbauer, 2021) del tema antiguo. Fuentes: Reglamentos (UE) 2023/956 y
+% 2025/2083; Comisión Europea.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    banda/.style={font=\small\bfseries,text=tceemorado,anchor=west},
+    actor/.style={font=\footnotesize\bfseries,text=tceemorado,align=center,anchor=north},
+    preg/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,align=left,
+      text width=4.6cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    paga/.style={draw=tceedorado!80!black,thick,fill=tceedorado!12,rounded corners=2pt,align=left,
+      text width=4.6cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    nada/.style={draw=tceegris,thick,fill=tceegris!8,rounded corners=2pt,align=left,
+      text width=3.2cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    riesgo/.style={draw=tceerojo,thick,fill=tceerojo!7,rounded corners=2pt,align=left,
+      text width=4.6cm,inner sep=4pt,font=\footnotesize,anchor=north},
+    hito/.style={font=\scriptsize,align=center,text width=2.6cm,anchor=north},
+    si/.style={->,thick,tceeverde},
+    no/.style={->,thick,tceerojo},
+    etq/.style={font=\scriptsize\bfseries,fill=white,inner sep=1pt}]
+  % 1: sin ajuste
+  \capa{1}{\node[banda] (ba) at (0,0) {a) Sin ajuste en frontera: solo paga el carbono quien produce en la UE};
+    \node[actor] (ue1) at (3.4,-0.45) {Productor de la UE\\de un sector intensivo en CO\textsubscript{2}};
+    \node[paga,text width=6.2cm] (ue1p) at ($(ue1.south)+(0,-0.2)$) {Está en el \textbf{RCDE}: compra derechos por sus emisiones, salvo los que aún recibe gratis};
+    \node[actor] (fx1) at (11.4,-0.45) {Productor de fuera\\que vende en la UE};
+    \node[nada,text width=6.6cm] (fx1p) at ($(fx1.south)+(0,-0.2)$) {No paga nada por su carbono};
+    \node[riesgo,text width=6.6cm] (fuga) at ($(fx1p.south)+(0,-0.35)$) {\textbf{Fuga de carbono}: la producción y sus emisiones se van fuera; el mundo no emite menos y la UE pierde industria. Por eso se regalan derechos a los sectores expuestos};
+    \draw[->,thick,tceerojo] (fx1p) -- (fuga);
+    \draw[tceegris,dashed] (7.3,-0.4) -- (7.3,0 |- fuga.south);
+    \coordinate (fa) at ($(0,0 |- fuga.south)+(0,-0.3)$);}
+  % 2: con ajuste
+  \capa{2}{\draw[tceegris!60] (fa) -- (fa -| 15.4,0);
+    \node[banda] (bb) at ($(fa)+(0,-0.35)$) {b) Con el MAFC (régimen definitivo desde el 1 de enero de 2026): el importador paga lo mismo};
+    \node[actor] (ue2) at ($(bb.south -| 3.4,0)+(0,-0.15)$) {Productor de la UE};
+    \node[paga,text width=6.2cm] (ue2p) at ($(ue2.south)+(0,-0.2)$) {Igual que antes, en el \textbf{RCDE}; los derechos gratuitos se retiran poco a poco (97,5~\% en 2026; ninguno en 2034)};
+    \node[paga,text width=6.2cm,fill=tceeverde!8,draw=tceeverde] (ef) at ($(ue2p.south)+(0,-0.4)$) {\textbf{Resultado}: el mismo precio del carbono dentro y en la frontera. Se pueden retirar los derechos gratuitos sin fuga, y los países de fuera tienen incentivo a poner su propio precio: si lo cobran ellos, la UE lo descuenta};
+    \node[paga,text width=6.2cm,fill=tceeazul!8,draw=tceeazul] (rp) at ($(ef.south)+(0,-0.4)$) {\textbf{Para el presupuesto}: la Comisión propone que el 75~\% de lo recaudado sea un recurso propio desde 2028, unos 1.400 millones de euros al año};
+    \node[actor] (fx2) at ($(bb.south -| 11.4,0)+(0,-0.15)$) {Importación en la UE};
+    \node[preg] (q1) at ($(fx2.south -| 10.25,0)+(0,-0.2)$) {¿Es un \textbf{bien cubierto}? Cemento, hierro y acero, aluminio, fertilizantes, electricidad e hidrógeno};
+    \node[nada,text width=1.6cm,anchor=west] (n1) at ($(q1.east)+(0.45,0)$) {\textbf{no}: sin cargo};
+    \node[preg] (q2) at ($(q1.south)+(0,-0.55)$) {¿Importa \textbf{más de 50 toneladas} al año? El umbral de 2025 deja fuera a 9 de cada 10 importadores, pero solo al 1~\% de las emisiones};
+    \node[nada,text width=1.6cm,anchor=west] (n2) at ($(q2.east)+(0.45,0)$) {\textbf{no}: exento};
+    \node[paga,text width=6.6cm,anchor=north west] (pay) at ($(q2.south west)+(0,-0.55)$) {\textbf{Compra certificados MAFC} por las emisiones incorporadas en lo importado, al precio de las subastas del RCDE (82,32~€ por tonelada de CO\textsubscript{2} en el tercer trimestre de 2026), menos:\\[2pt]
+      \hspace*{0.6em}$\bullet$ el precio del carbono ya pagado en el país de origen;\\
+      \hspace*{0.6em}$\bullet$ la parte que en la UE aún recibe derechos gratis.};
+    \draw[no] (q1) -- (n1);
+    \draw[no] (q2) -- (n2);
+    \draw[si] (q1) -- node[etq,right=2pt] {sí} (q2);
+    \draw[si] (q2.south) -- node[etq,right=2pt] {sí} (q2.south |- pay.north);
+    \draw[tceegris,dashed] ($(bb.south -| 7.3,0)$) -- (7.3,0 |- pay.south);
+    \coordinate (fb) at ($(0,0 |- pay.south)+(0,-0.3)$);}
+  % 3: calendario
+  \capa{3}{\draw[tceegris!60] (fb) -- (fb -| 15.4,0);
+    \node[banda] (bc) at ($(fb)+(0,-0.35)$) {c) Calendario};
+    \coordinate (lc) at ($(bc.south)+(0,-0.75)$);
+    \draw[tceedorado,line width=1.6pt,->] (lc -| 0.4,0) -- (lc -| 15.2,0);
+    \foreach \x/\a/\t in {1.6/1-X-2023/periodo transitorio: solo informar de las emisiones,
+        4.6/1-I-2026/régimen definitivo: se paga por lo importado desde ese día,
+        7.6/II-2027/empiezan a venderse los certificados,
+        10.6/2027/primera declaración y entrega de certificados por lo importado en 2026,
+        13.6/2028-2034/recurso propio propuesto; fin de los derechos gratuitos en 2034}{
+      \fill[tceedorado] (lc -| \x,0) circle (3pt);
+      \node[font=\scriptsize\bfseries,text=tceemorado,anchor=south] at ($(lc -| \x,0)+(0,0.15)$) {\a};
+      \node[hito] at ($(lc -| \x,0)+(0,-0.2)$) {\t};}}
+\end{tikzpicture}
+\end{document}

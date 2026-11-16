@@ -436,6 +436,11 @@ que cargan `tcee.sty` y `tcee-repaso.sty`.
 
 - **Refrán inicial único** (Víctor, 15/11/2026): los 90 temas tienen 90 refranes iniciales distintos; el refrán inicial de un tema no puede ser el inicial de otro. En el resto del cuerpo los refranes sí pueden repetirse (también si en un tema es el inicial y en otro sale en el cuerpo).
 - **Preguntas a Víctor, en el HTML de dudas** (15/11/2026): toda pregunta va como duda en `revision.md`, en una sección cuyo título lleve «Dudas», para que salga en el HTML.
+- **Títulos con letras o números siempre desde el principio** (Víctor, 16/11/2026): dentro de un título superior, una serie a), b), c)… o i), ii)… empieza siempre por la primera (nunca «c) Extensiones» justo tras empezar III.3).
+- **Enumeraciones** (16/11/2026): párrafo introductorio que diga qué se enumera y por qué, y cada elemento en un subpárrafo sangrado (lista numerada si el orden importa).
+- **Autores de los modelos**: siempre nombrados (p. ej., Johnson en el enfoque monetario de la balanza de pagos).
+- **Extensión del cuerpo**: entre 30 y 45 páginas, con flexibilidad (gráficos grandes y cajas grises no cuentan igual).
+- **Temas institucionales** (UE, organismos): sin modelos de teoría económica en el cuerpo; a anexos y, en el cuerpo, la idea de palabra.
 - **«Rule of thumb» en inglés**, nunca «regla del pulgar» ni «regla de pulgar»: «hogares \emph{rule of thumb}».
 - **Listas en las notas al pie**: si una nota distingue varios conceptos (p. ej., neutralidad, superneutralidad y dicotomía clásica), van en un `itemize` dentro de la `\footnote{…}`; `tcee.sty` les da viñetas pequeñas y sangría corta, con el formato de la nota.
 - **Marcadores del PDF**: salen todos los niveles, hasta `\paragraph` (a) Idea…) y `\subparagraph` (i) Supuestos…). No hace falta hacer nada; los títulos de esos niveles tienen que ser cortos.

@@ -1,0 +1,70 @@
+% Corsetti y Pesenti (2005, 2009): la economía cerrada (tau = 1) en el plano
+% (l, C), construida curva a curva y con una perturbación de productividad.
+% Código de colores del artículo original: en negro, lo inicial; en azul, lo
+% exógeno (la productividad Z y el tono monetario mu); en rojo, lo endógeno
+% (precios P, consumo C, empleo l).
+%   U = ln C - chi l, con chi = 0,25; sigma = 4 -> l-barra = (sigma-1)/(sigma chi) = 3
+%   AD: C = mu/P = 2;  AS: C = Z l = (2/3) l;  O = (3; 2)
+%   curva de indiferencia por O: C = 2 exp(0,25 (l - 3)); pendiente en O,
+%   chi C = 0,5 < Z = 2/3: corta la AS desde arriba (se trabaja poco)
+%   eficiente (competencia perfecta): l* = 1/chi = 4, X = (4; 8/3), tangencia
+%   con C = (8/3) exp(0,25 (l - 4))
+%   Z sube a 1: AS' C = l. Precios rígidos: B = (2; 2) (brecha de empleo).
+%   Precios flexibles: P baja, AD' C = 3: A = (3; 3). La política (mu sube)
+%   lleva de B a A.
+% Capas: 1 ejes; 2 AD; 3 AS; 4 NR; 5 O e indiferencia; 6 punto eficiente;
+% 7 Z sube; 8 precios rígidos; 9 precios flexibles; 10 respuesta monetaria.
+% Pasos para el texto: cp-cerrada-paso1 (capas 1-4), cp-cerrada-paso2 (1-6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.3cm,
+    ini/.style={very thick,black!80},
+    exo/.style={very thick,dashed,tceeazul},
+    endo/.style={very thick,dashed,tceerojo},
+    indif/.style={very thick,dotted,black!70},
+    paso/.style={circle,draw=#1,fill=white,text=#1,font=\scriptsize\bfseries,inner sep=0.8pt,minimum size=11pt},
+    paso/.default=tceerojo]
+  % Marco fijo para que todas las capas tengan el mismo tamaño
+  \path (-0.9,-1.25) rectangle (9.6,4.95);
+  % 1: ejes
+  \capa{1}{\ejes{$\ell$}{$C$}{6.6}{4.6}}
+  % 2: AD, horizontal: el gasto nominal dado por la política entre los precios
+  \capa{2}{\draw[ini] (0,2) -- (6.1,2) node[etiqueta,right] {AD: $C=\textcolor{tceeazul}{\mu}/P$};}
+  % 3: AS, un rayo desde el origen con pendiente Z (tau = 1)
+  \capa{3}{\draw[ini] (0,0) -- (5.8,3.867) node[etiqueta,right] {AS: $C=\textcolor{tceeazul}{Z}\,\ell$};}
+  % 4: NR, el empleo natural (precios flexibles)
+  \capa{4}{\draw[ini] (3,0) node[below] {$\bar\ell$} -- (3,4.3) node[etiqueta,above] {NR: $\bar\ell=\frac{\sigma-1}{\sigma\chi}$};}
+  % 5: el equilibrio inicial O y su curva de indiferencia
+  \capa{5}{\draw[indif] plot[domain=0.25:5.2,samples=40] (\x,{2*exp(0.25*(\x-3))});}
+  \capa{5}{\node[etiqueta,text=black!70,anchor=south] at (0.55,1.12) {$U_O$};}
+  \capa{5}{\node[punto] (O) at (3,2) {};}
+  \capa{5}{\node[etiqueta,below right] at (O) {$O$};}
+  % 6: el punto eficiente X (competencia perfecta): se trabaja poco en O
+  \capa{6}{\draw[indif,black!40] plot[domain=3.0:5.1,samples=40] (\x,{2.6667*exp(0.25*(\x-4))});}
+  \capa{6}{\node[circle,draw=black,fill=white,thick,inner sep=1.3pt] (X) at (4,2.6667) {};}
+  \capa{6}{\node[etiqueta,below right] at (X) {$X$};}
+  \capa{6}{\node[etiqueta,text=black!50,anchor=north west] at (5.1,{2.6667*exp(0.275)}) {$U_X$};}
+  \capa{6}{\draw[guia] (X) -- (4,0) node[below] {$\tfrac{1}{\chi}$};}
+  % 7: sube la productividad (exógena): la AS gira hacia arriba
+  \capa{7}{\draw[exo] (0,0) -- (4.15,4.15) node[etiqueta,above right,text=tceeazul] {AS$'$: $Z\!\uparrow$};}
+  \capa{7}{\draw[->,thick,tceeazul] (4.7,3.13) -- (4.0,3.78);}
+  \capa{7}{\node[paso=tceeazul] at (4.75,3.7) {1};}
+  % 8: con precios rígidos, el consumo no cambia y se trabaja menos: B
+  \capa{8}{\node[punto,fill=tceeazul] (B) at (2,2) {};}
+  \capa{8}{\node[etiqueta,below right,text=tceeazul] at (B) {$B$};}
+  \capa{8}{\draw[guia,tceeazul] (B) -- (2,0) node[below,text=tceeazul] {$\ell_B$};}
+  \capa{8}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceeazul] (2,-0.75) -- (3,-0.75) node[midway,below=4pt,font=\footnotesize,text=tceeazul] {brecha de empleo};}
+  \capa{8}{\node[paso=tceeazul] at (1.55,2.3) {2};}
+  % 9: con precios flexibles, P baja y el consumo sube: A, sobre la NR
+  \capa{9}{\draw[endo] (0,3) node[left,text=tceerojo] {$C_A$} -- (6.1,3) node[etiqueta,right,text=tceerojo] {AD$'$: $C=\mu/P\!\downarrow$};}
+  \capa{9}{\node[punto,fill=tceerojo] (A) at (3,3) {};}
+  \capa{9}{\node[etiqueta,above left,text=tceerojo] at (A) {$A$};}
+  \capa{9}{\node[paso] at (3.45,3.35) {3};}
+  % 10: la respuesta monetaria (mu sube) replica los precios flexibles: de B a A
+  \capa{10}{\draw[->,thick,tceeazul,shorten <=3pt,shorten >=3pt] (B) to[bend left=35] (A);}
+  \capa{10}{\node[paso=tceeazul] at (1.75,3.4) {4};}
+  \capa{10}{\node[etiqueta,text=tceeazul,anchor=west] at (1.95,3.4) {$\mu\!\uparrow$};}
+\end{tikzpicture}
+\end{document}

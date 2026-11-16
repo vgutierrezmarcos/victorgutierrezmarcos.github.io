@@ -1,7 +1,8 @@
 % Hojas de balance (Krugman, 1999): inversión efectiva frente a esperada.
 % Curva en 3 tramos: nula (0 a 2), restringida por el crédito (pendiente 2 > 1,
 % de (2,0) a (5,6)) y fijada por la rentabilidad (6, de 5 a 8). Corta a la
-% de 45° en L=(0,0), U=(4,4) (2(x-2)=x) inestable y H=(6,6).
+% de 45° en L=(0,0), U=(4,4) (2(x-2)=x) inestable y H=(6,6). El techo de
+% crédito I_F(I^e) (discontinuo) sigue la recta de pendiente 2 fuera del tramo ii).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -17,10 +18,16 @@
   % 3: curva de la inversión efectiva (esquinas suaves solo en los codos)
   \capa{3}{\draw[curva1,rounded corners=3pt] (0,0) -- (2,0) -- (5,6) -- (8,6);}
   \capa{3}{\node[etiqueta,text=tceemorado,right] at (8,6) {inversión efectiva};}
-  % 4: tramos
-  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris] at (1.1,0.45) {i)};}
-  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris,right] at (3.6,2.4) {ii)};}
-  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris] at (7.2,6.45) {iii)};}
+  % 4: tramos, con la inversión efectiva de cada uno, y el techo de crédito I_F
+  %    (discontinuo) donde no coincide con la efectiva: negativo en i) y por
+  %    encima de la inversión rentable en iii)
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris] at (1.25,0.3) {i) $I=0$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris,right] at (3.6,2.3) {ii) $I=I_F(I^e)$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize,text=tceegris] at (7.2,5.55) {iii) $I=\bar I$};}
+  \capa{4}{\draw[guia] (0,6) -- (5,6);}
+  \capa{4}{\node[left] at (0,6) {$\bar I$};}
+  \capa{4}{\draw[curva2,dashed] (1.6,-0.8) -- (2,0);}
+  \capa{4}{\draw[curva2,dashed] (5,6) -- (6.2,8.4) node[right,etiqueta,text=tceeazul] {$I_F(I^e)$};}
   % 5: equilibrios
   \capa{5}{\node[punto] (L) at (0,0) {};}
   \capa{5}{\node[etiqueta,above left] at (L) {$L$};}
