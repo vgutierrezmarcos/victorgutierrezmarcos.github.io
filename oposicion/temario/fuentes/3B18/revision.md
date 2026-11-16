@@ -164,3 +164,9 @@ Ninguna nota lo necesitaba.
 ### Dudas (16/11/2026)
 
 - **¿Se hizo con el tema nuevo de ICEX-CECO (numeración nueva)?** Pendiente de contrastar con ICEX-CECO 3B18 cuando se conecte el D:. No está en las copias de `AppData/Local/Temp/tcee-d/copias/` y el disco D: no estaba conectado el 16/11/2026. **Aplicada: dejar el tema como está hasta poder compararlo (recomendada).**
+
+## Contraste con ICEX-CECO 3B18 (16/11/2026)
+
+### Dudas (contraste ICEX-CECO, 16/11/2026)
+
+- **B18-ICEX. Contraste con el tema nuevo de ICEX-CECO (3B18, 2023, numeración actual; escaneado, leído el índice por OCR).** Su estructura: I introducción; II indicadores (comercio, capitales, migraciones) y tendencias (CGV, emergentes, servitización, sostenibilidad y digitalización, desigualdad, rechazo, estancamiento); III movilidad de trabajadores (determinantes y efectos); IV inversión transfronteriza (cartera; IED horizontal —proximidad-concentración— y vertical); V cadenas globales de valor (descripción, determinantes, efectos). El tema de la rama cubre todo eso (Brainard, IED vertical, Borjas, remesas, fuga de cerebros, elefante, rechazo, estancamiento), con una diferencia: la **servitización** y la **sostenibilidad y digitalización** de la globalización solo se mencionan de pasada (1 vez cada una), y ICEX les dedica un apartado. Recomendada (a): añadir en I.3 (rasgos de la nueva globalización) dos viñetas breves sobre ellas, con datos de la OMC/OCDE de 2025-2026. (b): dejarlo así. Pendiente de Víctor. La duda anterior «pendiente de contrastar con ICEX-CECO» queda resuelta con este contraste.
