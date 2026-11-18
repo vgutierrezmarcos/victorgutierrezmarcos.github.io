@@ -59,10 +59,10 @@
 \begin{esquema}[unbreakable]
 \textbf{3.B.33. La OMC. Antecedentes y Organización actual. El GATT y los Acuerdos sobre el comercio de mercancías. Situación actual}\\[2pt]
 Introducción\esqtiempo{2,5}\\
-I. La OMC: antecedentes y organización actual\esqtiempo{9}\\
+I. La OMC: antecedentes y organización actual\esqtiempo{8,5}\\
 \hspace*{1.5em}1. Antecedentes de la OMC\\
 \hspace*{1.5em}2. Organización actual de la OMC\\
-II. El GATT y los acuerdos sobre el comercio de mercancías\esqtiempo{9,5}\\
+II. El GATT y los acuerdos sobre el comercio de mercancías\esqtiempo{10}\\
 \hspace*{1.5em}1. Acuerdos multilaterales sobre el comercio de mercancías\\
 \hspace*{1.5em}2. Acuerdos plurilaterales sobre el comercio de mercancías\\
 III. Evolución de las negociaciones y situación actual\esqtiempo{8}\\
@@ -72,16 +72,13 @@ Conclusión\esqtiempo{1}
 \end{esquema}
 
 \begin{notaopositor}
-Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9} (I.1, \tiempo{4,5}, de ellos \tiempo{2} para el modelo de los acuerdos comerciales; I.2, \tiempo{4,5}); II, \tiempo{9,5} (II.1, \tiempo{7,5}; II.2, \tiempo{2}); III, \tiempo{8} (III.1, \tiempo{2,5}; III.2, \tiempo{5,5}), y conclusión, \tiempo{1}. El modelo que conviene escribir es el de los acuerdos comerciales (el arancel de \autor{Nash} frente al políticamente óptimo, con el gráfico de los aranceles), y, si hay tiempo, la restricción de incentivos de las salvaguardias. Los gráficos y figuras imprescindibles son los acuerdos de la OMC (el mapa del tema), las rondas del GATT, el de los acuerdos comerciales y el de las diferencias por año. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{4}, de ellos \tiempo{1,5} para la teoría de los acuerdos comerciales; I.2, \tiempo{4,5}); II, \tiempo{10} (II.1, \tiempo{8}; II.2, \tiempo{2}); III, \tiempo{8} (III.1, \tiempo{2,5}; III.2, \tiempo{5,5}), y conclusión, \tiempo{1}. Las teorías de los acuerdos comerciales y de las salvaguardias se cuentan de palabra, con su idea y sus implicaciones; su desarrollo formal está en los anexos. Los gráficos y figuras imprescindibles son los acuerdos de la OMC (el mapa del tema), las rondas del GATT, los acuerdos específicos del anexo~1A y las diferencias por año. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
 \end{notaopositor}
 
-\begin{anotaciones}
-\textbf{Notación.} $t$ es el arancel \emph{ad valorem} del país $A$ y $t^*$ el del país $B$ (el asterisco indica el extranjero, como en el resto del temario); RRI es la relación real de intercambio. En el modelo de los acuerdos comerciales, $\pi\geq0$ mide el peso de los grupos de presión en el gobierno y $\alpha>0$ el poder de mercado del país en los mercados mundiales; $W$ es la función objetivo del gobierno, que puede no coincidir con el bienestar nacional. En las salvaguardias, $\theta$ es el volumen de importaciones y $\beta$ el factor de descuento. En la fórmula suiza, $t_0$ y $t_1$ son el arancel inicial y el final.
-\end{anotaciones}
 
 % ==========================================================================
 \section{La OMC:\cortetitulo antecedentes y organización actual}\label{sec:omc}
-\minutos{9}
+\minutos{8,5}
 
 \begin{itemize}
 \item Empezamos por la institución: de dónde viene, por qué existe y cómo funciona.
@@ -106,59 +103,16 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9} (I.1, \tiempo{4,5}
 
 \subsubsection{¿Por qué un acuerdo comercial?\cortetitulo{} La teoría de \autor{Bagwell} y \autor{Staiger}}\label{sec:bagwell-staiger}
 
-\paragraph{a) Idea}
-
 \begin{itemize}
-\item La teoría clásica del comercio dice que el libre comercio es la mejor política para un país pequeño \vertema{3.B.5}. Si fuera así para todos, no harían falta acuerdos: cada país abriría su mercado por su cuenta.
-\item Pero un país grande puede ganar con un arancel, porque abarata lo que compra fuera: mejora su \concepto{relación real de intercambio} (RRI) a costa de sus socios. Es el argumento del \concepto{arancel óptimo} \vertema{3.B.7}.
-\item \textcite{Johnson1953Optimum} mostró que, si todos lo hacen, la guerra arancelaria suele dejar a todos peor que el libre comercio \vertema{3.B.8}. \textcite{BagwellStaiger1999Economic} dan el paso siguiente: muestran que ese es el \emph{único} problema que resuelve un acuerdo comercial cuando los gobiernos son racionales, y que los 2 principios del GATT, la \emph{reciprocidad} y la \emph{no discriminación}, son justo lo que hace falta para resolverlo.
-\end{itemize}
-
-\paragraph{b) Modelo}
-
-\subparagraph{i) Supuestos}
-
-\begin{enumerate}
-\item \emph{2 países grandes y simétricos}, $A$ y $B$: $A$ importa el bien $X$ y exporta $Y$; $B$, al revés. Competencia perfecta.
-\item \emph{Instrumentos}: cada gobierno fija un arancel, $t$ el de $A$ y $t^*$ el de $B$.
-\item \emph{Objetivo de cada gobierno}: puede no ser el bienestar nacional. \textcite{BagwellStaiger1999Economic} solo exigen que, a igualdad de precios internos, el gobierno prefiera una RRI mejor. En un ejemplo lineal-cuadrático, el gobierno de $A$ maximiza
-  \[W(t,t^*)=\underbrace{\pi t-\tfrac12 t^2}_{\text{efecto de los precios internos}}+\underbrace{\alpha\,(t-t^*)}_{\text{efecto RRI}}\]
-  y el de $B$, la expresión simétrica $W^*(t^*,t)$.
+\item \emph{La pregunta}: la teoría clásica del comercio dice que el libre comercio es la mejor política para un país pequeño \vertema{3.B.5}. Si fuera así para todos, no harían falta acuerdos: cada país abriría su mercado por su cuenta.
+\item \emph{El problema de los países grandes}: un país grande puede ganar con un arancel, porque abarata lo que compra fuera: mejora su \concepto{relación real de intercambio} (RRI) a costa de sus socios. Es el argumento del \concepto{arancel óptimo} \vertema{3.B.7}. \textcite{Johnson1953Optimum} mostró que, si todos lo hacen, la guerra arancelaria suele dejar a todos peor que el libre comercio \vertema{3.B.8}.
+\item \emph{La respuesta de \textcite{BagwellStaiger1999Economic}}: un acuerdo comercial solo tiene que corregir una cosa, la \emph{externalidad de la RRI} (anexo~\ref{anexo:acuerdos}).
   \begin{itemize}
-  \item El primer término recoge lo que el arancel hace dentro: protege a los productores (con más peso cuanto mayor es $\pi$, el peso de los grupos de presión; $\pi=0$ es un gobierno que solo mira el bienestar nacional) y distorsiona el consumo y la producción ($-\tfrac12t^2$).
-  \item El segundo recoge la \emph{externalidad de la RRI}: el arancel propio abarata las importaciones en el mercado mundial (gana $\alpha t$) y el ajeno abarata las exportaciones propias (pierde $\alpha t^*$). $\alpha$ es mayor cuanto más grande es el país.
+  \item Sin acuerdo, cada gobierno pone un arancel más alto del que pondría si no pudiera trasladar a los demás parte de su coste a través de la RRI.
+  \item Llaman \concepto{aranceles políticamente óptimos} a los que elegiría cada gobierno si no tuviera en cuenta ese efecto, como si fuera un país pequeño. Los 2 gobiernos están mejor con ellos que en la guerra arancelaria, aunque atiendan a sus grupos de presión.
+  \item Los motivos políticos para proteger, por sí solos, no exigen un acuerdo; lo que sí lo exige es que cada país haga pagar a los demás parte de su arancel.
   \end{itemize}
-\item \emph{Juego simultáneo} con información completa.
-\end{enumerate}
-
-\subparagraph{ii) Desarrollo}
-
-\begin{itemize}
-\item \emph{Paso 1: el equilibrio de \autor{Nash}} (sin acuerdo):
-  \begin{itemize}
-  \item cada gobierno maximiza su objetivo dado el arancel del otro: $\partial W/\partial t=\pi-t+\alpha=0$;
-  \item la mejor respuesta, $t^N=\pi+\alpha$, no depende de $t^*$: el arancel es una estrategia dominante (en el gráfico~\ref{fig:bagwell-staiger}, las 2 rectas $R_A$ y $R_B$ se cortan en $N$).
-  \end{itemize}
-\item \emph{Paso 2: el óptimo político}. \textcite{BagwellStaiger1999Economic} definen los \concepto{aranceles políticamente óptimos} como los que elegiría cada gobierno si no tuviera en cuenta el efecto de su arancel sobre la RRI (como si fuera un país pequeño), es decir, con $\partial W/\partial t\,\big|_{\text{RRI fija}}=\pi-t=0$:
-  \begin{itemize}
-  \item $t^{\mathit{PO}}=\pi$, que es el libre comercio si el gobierno solo mira el bienestar ($\pi=0$), y un arancel positivo si atiende a los grupos de presión.
-  \end{itemize}
-\item \emph{Paso 3: la comparación}. El arancel de \autor{Nash} supera al políticamente óptimo exactamente en el componente de la RRI:
-  \funcionclave[eq:bagwell-staiger]{t^{N}=\underbrace{\pi}_{\text{objetivos internos}}+\underbrace{\alpha}_{\text{externalidad RRI}}\;>\;t^{\mathit{PO}}=\pi}
-  y los 2 gobiernos están mejor en el óptimo político: $W^{\mathit{PO}}-W^{N}=\tfrac12\alpha^2>0$ para cada uno.
-\item \emph{Paso 4: eficiencia}. Las combinaciones eficientes de aranceles (la \emph{curva de contrato}, donde las curvas de isobienestar de los 2 gobiernos son tangentes) cumplen $(\pi+\alpha-t)(\pi+\alpha-t^*)=\alpha^2$; el óptimo político $(\pi,\pi)$ está en ella. El equilibrio de \autor{Nash}, no.
-\item \emph{Paso 5: la reciprocidad}. Como la RRI depende aquí de $t-t^*$, las rebajas \emph{recíprocas} (iguales en los 2 países) llevan de $N$ al óptimo político a lo largo de la diagonal, sin mover la RRI: cada gobierno solo ve el efecto interno de su rebaja, que es justo lo que le falta para elegir el arancel políticamente óptimo (gráfico~\ref{fig:bagwell-staiger}).
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\caption{La teoría de los acuerdos comerciales en el espacio de los aranceles}\label{fig:bagwell-staiger}
-\grafico[0.66\textwidth]{bagwell-staiger}
-\fuente{elaboración propia a partir de \textcite{BagwellStaiger1999Economic}, con el ejemplo lineal-cuadrático del texto ($\pi=1$, $\alpha=2$). La zona sombreada son los aranceles que mejoran a los 2 gobiernos respecto de $N$; la diagonal, los que dejan la RRI como en $N$.}
-\end{figure}
-
-\begin{itemize}
-\item \emph{Paso 6: el mismo resultado, como dilema del prisionero}. Si cada gobierno solo puede elegir entre el libre comercio (o el arancel políticamente óptimo) y el arancel de \autor{Nash}, el juego tiene la estructura del dilema del prisionero \vertema{3.A.14}: con los pagos de la tabla~\ref{tab:dilema-arancel}, poner el arancel es estrategia dominante ($6>5$ y $1>0$), y el equilibrio (1, 1) es peor para los 2 que el libre comercio (5, 5).
+\item \emph{Es un dilema del prisionero} \vertema{3.A.14}: poner el arancel es la estrategia dominante de cada país, y el equilibrio deja a los 2 peor que si cooperaran (tabla~\ref{tab:dilema-arancel}).
 \end{itemize}
 
 \begin{table}[H]
@@ -176,39 +130,19 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9} (I.1, \tiempo{4,5}
 \fuente{elaboración propia, con los pagos de referencia del dilema del prisionero del temario. Subrayadas, las mejores respuestas; sombreado, el equilibrio de \autor{Nash}.}
 \end{table}
 
-\subparagraph{iii) Implicaciones}
-
 \begin{itemize}
-\item \emph{El único problema que resuelve un acuerdo comercial es la externalidad de la RRI}: aunque los gobiernos protejan por motivos políticos, eso no exige un acuerdo; lo que sí lo exige es que cada uno traslade a los demás parte del coste de su arancel.
-\item \emph{La reciprocidad} neutraliza esa externalidad: si cada rebaja se paga con otra que deja la RRI igual, cada país liberaliza «como si fuera pequeño».
-\item \emph{La no discriminación} (NMF) hace que haya un único precio mundial por producto, de modo que lo que negocian 2 países no se lo hace pagar un tercero ni se deshace con un acuerdo bilateral posterior.
-\item \emph{El juego repetido}: como el acuerdo no tiene una policía mundial, tiene que ser \emph{autoejecutable}. Con la estrategia del gatillo, la cooperación se sostiene si el factor de descuento cumple $\beta\geq\frac{6-5}{6-1}=\frac15$ \vertema{3.A.14}. Por eso importa tanto el sistema de solución de diferencias: autoriza y acota la represalia (\ref{sec:institucional}).
-\end{itemize}
-
-\paragraph{c) Extensiones}
-
-\begin{itemize}
-\item \emph{El acuerdo como compromiso} (\emph{commitment}): \textcite{MaggiRodriguezClare1998Value} muestran que un gobierno puede querer un acuerdo para \emph{atarse las manos} ante sus propios grupos de presión, aunque no haya externalidad de la RRI. Si los inversores anticipan que el gobierno protegerá su sector, invierten de más en él; comprometerse fuera evita esa distorsión. Explica que los países pequeños (sin efecto RRI) se adhieran y consoliden aranceles.
-\item \emph{La economía política de las negociaciones}: en \textcite{GrossmanHelpman1995TradeWars}, los grupos de presión «compran» protección; en la negociación, los exportadores de cada país presionan para que el otro abra su mercado, y eso contrarresta a los que compiten con las importaciones.
-\item \emph{Los nuevos temas}: cuando el comercio se hace en cadenas globales de valor con insumos a medida, los precios se negocian entre empresas y no hay un precio mundial único; la externalidad ya no pasa solo por la RRI y los acuerdos tienen que ser más \emph{profundos} (inversión, servicios, normas)\nocite{AntrasStaiger2012Offshoring} \vertema{3.B.18}.
-\end{itemize}
-
-\paragraph{d) Evidencia empírica}
-
-\begin{itemize}
-\item \emph{Los países usan su poder de mercado}: \textcite{BrodaLimaoWeinstein2008Optimal} encuentran que 15 países que aún no estaban en la OMC ponían aranceles unos 9 puntos más altos en los productos cuya oferta extranjera era inelástica, como predice el arancel óptimo.
-\item \emph{Las negociaciones lo corrigen}: \textcite{BagwellStaiger2011Negotiators} muestran que los países que entraron en la OMC rebajaron más sus aranceles en los productos en los que su poder de mercado era mayor.
-\item \emph{El coste de la guerra}: en un modelo cuantitativo, \textcite{Ossa2014TradeWars} estima aranceles de \autor{Nash} de más del 60~\% y pérdidas de bienestar de en torno al 3~\% de la renta real si estallara una guerra arancelaria mundial.
-\item \emph{¿Aumenta la OMC el comercio?} \textcite{Rose2004WTO} no encontró que los miembros del GATT o la OMC comerciaran más que los demás; \textcite{TomzGoldsteinRivers2007} lo corrigen: si se cuentan también los países que aplicaban las reglas sin ser parte formal (colonias, nuevos Estados), el efecto es positivo y grande.
-\end{itemize}
-
-\paragraph{e) Valoración}
-
-\begin{itemize}
-\item La teoría explica bien la arquitectura del GATT (reciprocidad, NMF, consolidación de aranceles, represalias acotadas) y por qué funcionó para los aranceles.
-\item Pero los negociadores no hablan de la RRI sino de exportaciones y empleos, y los grandes problemas de hoy (subvenciones industriales, normas, datos, seguridad) no son de aranceles. Por eso la OMC ha avanzado tanto en los aranceles y tan poco en lo demás, como se ve en el bloque~\ref{sec:actual}.
+\item \emph{Lo que implica para el diseño del GATT}:
+  \begin{itemize}
+  \item la \concepto{reciprocidad} neutraliza la externalidad: si cada rebaja se paga con otra que deja la RRI igual, cada país liberaliza «como si fuera pequeño» y se llega a los aranceles políticamente óptimos;
+  \item la \concepto{no discriminación} (NMF) garantiza un precio mundial único por producto, de modo que lo que negocian 2 países no se lo hace pagar un tercero ni se deshace con un acuerdo bilateral posterior;
+  \item el acuerdo tiene que ser \emph{autoejecutable}, porque no hay una policía mundial: la cooperación se sostiene con la amenaza de represalia si los países valoran lo bastante el futuro. Por eso importa tanto el sistema de solución de diferencias, que autoriza y acota la represalia (\ref{sec:institucional}).
+  \end{itemize}
+\item \emph{Otras razones para un acuerdo}: \textcite{MaggiRodriguezClare1998Value} muestran que un gobierno puede querer un acuerdo para \emph{atarse las manos} ante sus propios grupos de presión (\emph{commitment}), lo que explica que también se adhieran los países pequeños.
+\item \emph{Lo que dicen los datos}: \textcite{BrodaLimaoWeinstein2008Optimal} encuentran que los países que aún no estaban en la OMC ponían aranceles más altos en los productos en los que tenían más poder de mercado, y \textcite{BagwellStaiger2011Negotiators}, que al entrar en ella los rebajaron más justo en esos productos.
+\item \emph{Valoración}: la teoría explica bien la arquitectura del GATT (reciprocidad, NMF, consolidación, represalias acotadas) y su éxito con los aranceles; pero los grandes problemas de hoy (subvenciones industriales, normas, datos, seguridad) no son de aranceles, y ahí la OMC ha avanzado poco (bloque~\ref{sec:actual}).
 \item Con esta lógica en la cabeza, veamos cómo nació el GATT.
 \end{itemize}
+
 
 \subsubsection{Orígenes del GATT: de La Habana a Ginebra}\label{sec:origenes}
 
@@ -219,7 +153,7 @@ Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9} (I.1, \tiempo{4,5}
   \item el pleno empleo, que podía exigir intervención pública, como pedían el Reino Unido y los países en desarrollo.
   \end{itemize}
 \item \emph{Su fracaso}: muchos países firmaron la Carta, pero casi ninguno la ratificó. En 1950 el gobierno de Estados Unidos anunció que no la llevaría al Congreso, y la OIC murió\nocite{OMC2026AniosGATT}.\footnote{Para muchos congresistas estadounidenses, las excepciones a la no discriminación y las disposiciones sobre el empleo hacían de la Carta un instrumento que no favorecía la liberalización; para otros, ataba demasiado la soberanía. Se juntaron los 2 rechazos.}
-\item \emph{El GATT}: mientras se negociaba la Carta, 23 países se reunieron en Ginebra para rebajar aranceles. El 30 de octubre de 1947 firmaron el GATT, con 45.000 concesiones arancelarias que afectaban a 10.000 millones de dólares de comercio, la quinta parte del total mundial. Entró en vigor el 1 de enero de 1948 mediante un \emph{Protocolo de Aplicación Provisional}, para proteger lo negociado hasta que naciera la OIC\nocite{OMC2026AniosGATT}.\footnote{Los 23 fundadores fueron Australia, Bélgica, Birmania, Brasil, Canadá, Ceilán, Checoslovaquia, Chile, China, Cuba, Estados Unidos, Francia, India, Líbano, Luxemburgo, Noruega, Nueva Zelanda, los Países Bajos, Pakistán, el Reino Unido, Rodesia del Sur, Siria y Sudáfrica. España no estaba: se adhirió en 1963.}
+\item \emph{El GATT}: mientras se negociaba la Carta, 23 países se reunieron en Ginebra para rebajar aranceles. El 30 de octubre de 1947 firmaron el GATT, con 45.000 concesiones arancelarias que afectaban a 10.000 millones de dólares de comercio, la quinta parte del total mundial. Se aplicó de forma provisional desde el 1 de enero de 1948, mediante un \emph{Protocolo de Aplicación Provisional}, para proteger lo negociado hasta que naciera la OIC; a mediados de 1948 ya regían las concesiones de todos, aunque como tratado el GATT nunca llegó a entrar en vigor\nocite{OMC2026AniosGATT,OMC2026IndiceGATT}.\footnote{Los 23 fundadores fueron Australia, Bélgica, Birmania, Brasil, Canadá, Ceilán, Checoslovaquia, Chile, China, Cuba, Estados Unidos, Francia, India, Líbano, Luxemburgo, Noruega, Nueva Zelanda, los Países Bajos, Pakistán, el Reino Unido, Rodesia del Sur, Siria y Sudáfrica. España no estaba: se adhirió en 1963.}
 \item \emph{Lo provisional duró 47 años}: sin la OIC, el GATT fue el único instrumento multilateral del comercio hasta 1995, y fue adquiriendo una estructura de organización (una secretaría, un consejo, grupos especiales para las disputas).
 \end{itemize}
 
@@ -359,7 +293,7 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
   \item \emph{consultas} entre las partes, durante 60 días como mínimo;
   \item \emph{grupo especial} de 3 o 5 expertos, que el OSD establece si se pide (consenso negativo) y que informa en 6 meses (9 como máximo);
   \item \emph{apelación} ante el \concepto{Órgano de Apelación}, de 7 miembros, solo sobre cuestiones de derecho, en 60-90 días;
-  \item \emph{cumplimiento}: el condenado debe ajustar su medida en un \emph{plazo prudencial}; si no lo hace, el demandante puede pedir una compensación o, con la autorización del OSD, suspender concesiones (represalias) por un importe igual al daño.
+  \item \emph{cumplimiento}: el condenado debe ajustar su medida en un \emph{plazo prudencial}; si no lo hace, el demandante puede pedir una compensación o, con la autorización del OSD, suspender concesiones (represalias) en un nivel equivalente al de la anulación o menoscabo que sufre\nocite{OMC1994ESD}.
   \end{itemize}
 \item \emph{Lo nuevo frente al GATT}: los plazos, la apelación y, sobre todo, el consenso negativo, que hace casi automáticos el grupo especial, la adopción del informe y la represalia. En la lógica del modelo de \autor{Bagwell} y \autor{Staiger}, es lo que hace creíble el castigo que sostiene la cooperación, y lo que lo acota para que no degenere en guerra.
 \item \emph{Su uso}: entre 1995 y noviembre de 2026 se han presentado 646 solicitudes de consultas (gráfico~\ref{fig:diferencias}). La UE y Estados Unidos son los que más han demandado y más han sido demandados.
@@ -386,7 +320,7 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
 
 % ==========================================================================
 \section{El GATT y los acuerdos\cortetitulo sobre el comercio de mercancías}\label{sec:mercancias}
-\minutos{9,5}
+\minutos{10}
 
 \begin{itemize}
 \item \emph{Conclusión anticipada}: el GATT descansa en 5 principios (no discriminación, consolidación, transparencia, prohibición de las cuotas y liberalización progresiva), pero su eficacia está en las excepciones bien acotadas: integración regional, desarrollo, salvaguardias, defensa comercial y seguridad. Las válvulas hacen que el acuerdo aguante los momentos difíciles; su abuso es lo que hoy lo amenaza.
@@ -418,7 +352,7 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
   \item \emph{nación más favorecida} (artículo~I): toda ventaja que un miembro concede a los productos de un país (en aranceles, cargas o formalidades) se extiende inmediata e incondicionalmente a los productos similares de todos los demás miembros;\footnote{Si un miembro rebaja al 10~\% el arancel de los teléfonos móviles de un socio, tiene que aplicar el 10~\% a los teléfonos móviles de todos. La obligación vale aunque la ventaja se conceda a un país que no es miembro.}
   \item \emph{trato nacional} (artículo~III): una vez dentro, los productos importados no pueden recibir peor trato que los nacionales similares en impuestos internos y reglamentos. Es lo que impide sustituir un arancel por un impuesto o una norma que solo pague el extranjero.
   \end{itemize}
-\item \concepto{Consolidación de los aranceles} (artículo~II): cada miembro se compromete a no superar en cada producto un arancel máximo, el \concepto{arancel consolidado}, que figura en su lista. Puede aplicar uno menor, pero si supera el consolidado tiene que compensar a los afectados.
+\item \concepto{Consolidación de los aranceles} (artículo~II): cada miembro se compromete a no superar en cada producto un arancel máximo, el \concepto{arancel consolidado}, que figura en su lista. Puede aplicar uno menor; para superar el consolidado tiene que renegociar su lista (artículo~XXVIII) y compensar a los afectados.
 \item \concepto{Transparencia} (artículo~X): publicar las normas comerciales y notificarlas.
 \item \concepto{Prohibición de las restricciones cuantitativas} (artículo~XI): la protección se hace con aranceles, visibles y negociables, no con cuotas. Los \emph{contingentes arancelarios} (un arancel bajo dentro de un volumen y otro más alto fuera) no son cuotas y están permitidos; son habituales en la agricultura.
 \item \concepto{Liberalización progresiva}: los miembros se comprometen a seguir negociando rebajas.
@@ -433,7 +367,7 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
 \begin{itemize}
 \item \emph{A la no discriminación}:
   \begin{itemize}
-  \item \emph{integración regional} (artículo~XXIV): se permiten las zonas de libre comercio y las uniones aduaneras si eliminan los aranceles en «lo esencial de los intercambios» (en la práctica, en torno al 90~\% del comercio entre las partes) en un plazo razonable, y si la unión aduanera no eleva en conjunto la protección frente a terceros. Si sube algún arancel consolidado, tiene que compensar a los afectados.\footnote{La condición tiene fundamento teórico: el teorema de \textcite{KempWan1976Elementary}, según el cual siempre existe un arancel exterior común que deja a terceros igual y no empeora a ningún miembro \vertema{3.B.10}. Un ejemplo de compensación: cuando Croacia entró en la UE (2013) y adoptó su arancel común, más alto en algunos productos, la UE tuvo que abrir contingentes compensatorios, entre ellos uno de ajos para China.}
+  \item \emph{integración regional} (artículo~XXIV): se permiten las zonas de libre comercio y las uniones aduaneras si eliminan los aranceles en «lo esencial de los intercambios» (en la práctica se suele tomar como referencia el 90~\% del comercio entre las partes) en un plazo razonable, que según el Entendimiento sobre el artículo~XXIV solo supera los 10 años en casos excepcionales, y si no elevan la protección frente a terceros: en una unión aduanera, los aranceles comunes no pueden ser «en conjunto» más altos ni más restrictivos que los anteriores; en una zona de libre comercio, ningún socio puede subir los suyos. Si una unión aduanera sube algún arancel consolidado, tiene que compensar a los afectados\nocite{GATT1947,OMC1994GATT}.\footnote{La condición tiene fundamento teórico: el teorema de \textcite{KempWan1976Elementary}, según el cual siempre existe un arancel exterior común que deja a terceros igual y no empeora a ningún miembro \vertema{3.B.10}. Un ejemplo de compensación: cuando Croacia entró en la UE (2013) y adoptó su arancel común, más alto en algunos productos, la UE tuvo que abrir contingentes compensatorios, entre ellos uno de ajos para China.}
   \item \emph{trato especial y diferenciado} a los países en desarrollo: la \concepto{cláusula de habilitación} (1979) permite preferencias sin reciprocidad, como el Sistema de Preferencias Generalizadas de la UE \vertema{3.B.41}, y los acuerdos dan a esos países más plazo y flexibilidad. Cada país decide si es «en desarrollo», salvo los 44 países menos adelantados de la lista de la ONU.
   \end{itemize}
 \item \emph{A todas las obligaciones}:
@@ -441,8 +375,8 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
   \item \emph{exenciones} (\emph{waivers}, artículo~IX del Acuerdo de Marrakech): la Conferencia Ministerial puede eximir a un miembro de una obligación en circunstancias excepcionales, por tiempo limitado;
   \item \emph{balanza de pagos} (artículos~XII y XVIII.B): restricciones temporales para defender las reservas;\footnote{Es una vía casi olvidada que Estados Unidos rescató en 2026: notificó a la OMC su recargo del 10~\% de la sección~122 (febrero-julio de 2026) como una medida por balanza de pagos, reconociendo que superaba sus aranceles consolidados\nocite{OMC2026BalanzaPagos}.}
   \item \emph{salvaguardias} (artículo~XIX) y \emph{defensa comercial} (VI y XVI), que se tratan con sus acuerdos (\ref{sec:especificos});
-  \item \emph{excepciones generales} (artículo~XX): medidas necesarias para proteger la moral pública, la salud o los recursos naturales agotables, siempre que no sean una discriminación arbitraria ni una restricción encubierta del comercio. Es la base de las medidas medioambientales, como el Mecanismo de Ajuste en Frontera por Carbono de la UE, que replica el precio interno del carbono para respetar el trato nacional; en cambio, el arancel uniforme a los que no participan que proponen los «clubes climáticos» chocaría con la NMF \vertema{3.B.31};
-  \item \emph{excepciones de seguridad} (artículo~XXI): nada impide a un miembro adoptar las medidas que «estime necesarias» para sus intereses esenciales de seguridad, en tiempo de guerra o de «otras emergencias en las relaciones internacionales».
+  \item \emph{excepciones generales} (artículo~XX): entre otras, las medidas necesarias para proteger la moral pública o la salud y la vida de las personas, los animales y los vegetales, y las relativas a la conservación de los recursos naturales agotables, siempre que no se apliquen como una discriminación arbitraria o injustificable ni como una restricción encubierta del comercio. Es la base de las medidas medioambientales, como el Mecanismo de Ajuste en Frontera por Carbono de la UE, que replica el precio interno del carbono para respetar el trato nacional; en cambio, el arancel uniforme a los que no participan que proponen los «clubes climáticos» chocaría con la NMF \vertema{3.B.31};
+  \item \emph{excepciones de seguridad} (artículo~XXI): nada impide a un miembro adoptar las medidas que «estime necesarias» para sus intereses esenciales de seguridad, por ejemplo, las aplicadas «en tiempos de guerra o en caso de grave tensión internacional».
   \end{itemize}
 \end{itemize}
 
@@ -453,7 +387,18 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
 \subsubsection{Acuerdos sobre cuestiones y sectores específicos}\label{sec:especificos}
 
 \begin{itemize}
-\item Además del GATT, el anexo~1A tiene 13 acuerdos (el de los Textiles y el Vestido expiró en 2005; se añadieron el de Facilitación del Comercio en 2017 y el de Subvenciones a la Pesca en 2025). Los agrupamos por su función (figura~\ref{figu:acuerdos}).
+\item Además del GATT, el anexo~1A tiene 13 acuerdos (el de los Textiles y el Vestido expiró en 2005; se añadieron el de Facilitación del Comercio en 2017 y el de Subvenciones a la Pesca en 2025)\nocite{OMC2026Panorama}. Los agrupamos por su función, en 5 grupos (figura~\ref{figu:especificos}).
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{Los acuerdos sobre cuestiones y sectores específicos del anexo~1A: año e idea clave}\label{figu:especificos}
+\grafico[0.98\textwidth]{acuerdos-especificos}
+\fuente{elaboración propia a partir de los textos jurídicos de la OMC y de OMC, «Entender la OMC»\nocite{OMC2026Panorama,OMC2026AniosGATT}.}
+\end{infografia}
+
+\begin{itemize}
+\item Empezamos por los que regulan el paso de las mercancías por la aduana.
 \end{itemize}
 
 \paragraph{Procedimientos aduaneros}
@@ -461,15 +406,15 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
 \begin{itemize}
 \item \emph{Valoración en aduana}: el arancel \emph{ad valorem} se aplica sobre el \concepto{valor de transacción}, el precio realmente pagado, y no sobre valores arbitrarios u oficiales. La UE valora en CIF (con el seguro y el flete hasta la frontera), y Estados Unidos en FOB.
 \item \emph{Normas de origen}: los criterios para saber de dónde es un producto (en general, el país de la última transformación sustancial). El acuerdo pide que sean transparentes y neutrales, pero la armonización que preveía nunca se terminó, y en los acuerdos preferenciales cada país aplica las suyas, lo que encarece el cumplimiento.\footnote{Es el efecto «cuenco de espaguetis» (\emph{spaghetti bowl}) de \autor{Jagdish Bhagwati}: con muchos acuerdos preferenciales y normas de origen distintas, a una empresa le cuesta demostrar el origen para aprovechar cada uno, y a menudo paga el arancel NMF \vertema{3.B.35}.}
-\item \emph{Licencias de importación}: si se exigen, no pueden ser un obstáculo en sí mismas; plazos máximos y procedimientos sencillos.
+\item \emph{Licencias de importación}: si se exigen, los trámites tienen que ser sencillos, transparentes y previsibles, y no pueden ser un obstáculo en sí mismos; las licencias no automáticas se conceden en 30 días como máximo (60 si se examinan todas las solicitudes a la vez)\nocite{OMC2026EntenderBNA}.
 \item \emph{Inspección previa a la expedición}: regula a las empresas que algunos países contratan para inspeccionar las mercancías antes del envío.
-\item \emph{Facilitación del Comercio} (AFC): aprobado en Bali (2013) y en vigor desde el 22 de febrero de 2017, es el primer acuerdo multilateral nuevo de la OMC. Simplifica los trámites aduaneros (resoluciones anticipadas, ventanilla única, operadores económicos autorizados, tasas limitadas al coste del servicio). Su novedad es que cada país en desarrollo decide cuándo aplicar cada medida y recibe ayuda para hacerlo: hoy se han cumplido el 89,6~\% de los compromisos\nocite{OMC2026AFC}. La OCDE estimó que su aplicación completa reduciría los costes del comercio entre un 13 y un 15~\%, más de lo que daría una ronda de rebajas arancelarias\nocite{OCDE2018AFC}.
+\item \emph{Facilitación del Comercio} (AFC): aprobado en Bali (2013) y en vigor desde el 22 de febrero de 2017, es el primer acuerdo multilateral nuevo de la OMC. Simplifica los trámites aduaneros (resoluciones anticipadas, ventanilla única, operadores económicos autorizados, tasas limitadas al coste del servicio). Su novedad es que cada país en desarrollo decide cuándo aplicar cada medida y recibe ayuda para hacerlo: hoy se han cumplido el 89,6~\% de los compromisos\nocite{OMC2026AFC}. Según la OMC, su aplicación completa reduciría los costes del comercio un 14,3~\% de media y podría aumentar el comercio mundial en 1 billón de dólares al año\nocite{OMC2026AFCPagina}.
 \end{itemize}
 
 \paragraph{Reglamentos técnicos y sanitarios}
 
 \begin{itemize}
-\item \emph{Medidas sanitarias y fitosanitarias} (MSF): cada país fija el nivel de protección de la salud que quiera, pero sus medidas deben basarse en pruebas científicas o en normas internacionales (el \emph{Codex Alimentarius}), y no discriminar\nocite{OMC1994MSF}.\footnote{Es el acuerdo de la diferencia de la carne con hormonas entre la UE y Estados Unidos y Canadá (DS26 y DS48): el Órgano de Apelación declaró en 1998 que la prohibición europea no se basaba en una evaluación del riesgo, la UE no la levantó y soportó represalias durante años hasta un acuerdo de contingentes de carne sin hormonas.}
+\item \emph{Medidas sanitarias y fitosanitarias} (MSF): cada país fija el nivel de protección de la salud que considere adecuado, pero sus medidas tienen que basarse en principios científicos y no discriminar de forma arbitraria o injustificable. Si sigue las normas internacionales (el \emph{Codex Alimentarius} y las de sanidad animal y vegetal), se presume que cumple; puede ser más estricto si lo justifica con pruebas científicas o una evaluación del riesgo\nocite{OMC1994MSF,OMC2026EntenderMSF}.\footnote{Es el acuerdo de la diferencia de la carne con hormonas entre la UE y Estados Unidos y Canadá (DS26 y DS48): el Órgano de Apelación declaró en 1998 que la prohibición europea no se basaba en una evaluación del riesgo, la UE no la levantó y soportó represalias durante años hasta un acuerdo de contingentes de carne sin hormonas.}
 \item \emph{Obstáculos técnicos al comercio} (OTC): los reglamentos y las normas sobre las características de los productos (etiquetado, embalaje, seguridad) no pueden crear obstáculos innecesarios ni discriminar, y deben basarse en normas internacionales cuando las haya\nocite{OMC1994OTC}.
 \item \emph{En la MC14} (Yaundé, 2026) se aprobó una decisión para aplicar de forma más precisa y operativa el trato especial y diferenciado en los acuerdos MSF y OTC\nocite{OMC2026CG0605}.
 \end{itemize}
@@ -477,21 +422,39 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
 \paragraph{Defensa comercial}
 
 \begin{itemize}
-\item \concepto{Antidumping} (artículo~VI del GATT y su acuerdo): hay \emph{dumping} si se exporta por debajo del \emph{valor normal} (el precio en el mercado de origen o, si no hay ventas representativas, el coste más un margen) \vertema{3.B.7}. Se puede poner un derecho antidumping, como máximo igual al margen de dumping, si se demuestra:
+\item \concepto{Antidumping} (artículo~VI del GATT y su acuerdo): hay \emph{dumping} si se exporta por debajo del \emph{valor normal} (el precio en el mercado del exportador o, si no sirve, su precio de exportación a un tercer país o su coste de producción más unos gastos y un beneficio razonables) \vertema{3.B.7}. Se puede poner un derecho antidumping, como máximo igual al margen de dumping, si se demuestra:
   \begin{itemize}
-  \item un margen de dumping de al menos el 2~\%;
+  \item un margen de dumping de al menos el 2~\% del precio de exportación;
   \item un \emph{daño importante} a la producción nacional;
   \item una \emph{relación causal} entre ambos.
   \end{itemize}
-  La denuncia tiene que apoyarla al menos el 25~\% de la producción nacional (y más productores que los que se oponen); se archiva si las importaciones del país son menores del 3~\% del total, y la medida dura 5 años salvo que una reconsideración la prorrogue\nocite{OMC1994Antidumping}.
-\item \concepto{Subvenciones y medidas compensatorias} (SMC): una subvención es una contribución financiera pública que da un beneficio. Si es \emph{específica} (para ciertas empresas o sectores), el acuerdo distingue\nocite{OMC1994SMC}:
+  La denuncia tiene que apoyarla al menos el 25~\% de la producción nacional, y los que la apoyan tienen que producir más que los que se oponen; se archiva si las importaciones del país son menores del 3~\% del total (salvo que varios países en esa situación sumen el 7~\% o más), y la medida expira a los 5 años salvo que una reconsideración muestre que retirarla causaría daño\nocite{OMC1994Antidumping,OMC2026EntenderDefensa}.
+\item \concepto{Subvenciones y medidas compensatorias} (SMC): una subvención es una contribución financiera de un gobierno o de un organismo público que otorga un beneficio. El acuerdo solo disciplina las \emph{específicas} (las que van a ciertas empresas, sectores o regiones), y las divide en\nocite{OMC1994SMC,OMC2026SubvencionesPagina}:
   \begin{itemize}
-  \item \emph{prohibidas}: las supeditadas a la exportación o al uso de productos nacionales en lugar de importados; se retiran sin más;
-  \item \emph{recurribles}: las demás, si causan \emph{efectos desfavorables} a otro miembro (daño a su producción, perjuicio grave en terceros mercados); el afectado puede ir al OSD o imponer \emph{derechos compensatorios} tras una investigación;
-  \item \emph{no recurribles}: las horizontales de investigación, desarrollo regional y medio ambiente estuvieron permitidas hasta 1999, cuando expiró esa categoría.
+  \item \emph{prohibidas}: las supeditadas, de derecho o de hecho, a los resultados de exportación o al empleo de productos nacionales en lugar de importados; se consideran específicas siempre, y si un grupo especial confirma que lo son, hay que retirarlas sin demora;
+  \item \emph{recurribles}: todas las demás específicas. \emph{No están prohibidas}: se pueden conceder, pero otro miembro puede impugnarlas si le causan \emph{efectos desfavorables}, que son de 3 tipos:
+    \begin{itemize}
+    \item \emph{daño a una rama de producción nacional} del otro miembro por las importaciones subvencionadas, que es el único que permite poner derechos compensatorios;
+    \item \emph{anulación o menoscabo} de las ventajas que le da el GATT, como una subvención que anula el efecto de una rebaja arancelaria negociada;
+    \item \emph{perjuicio grave} a sus intereses, como el desplazamiento de sus exportaciones en el mercado del que subvenciona o en terceros mercados;
+    \end{itemize}
+  \item \emph{no recurribles}: las de investigación, ayuda a regiones desfavorecidas y adaptación a nuevas normas medioambientales formaban una tercera categoría, permitida y no impugnable, que se creó por 5 años y expiró el 31 de diciembre de 1999 sin consenso para prorrogarla. Desde entonces solo hay 2 categorías.
   \end{itemize}
-  Las disputas de los grandes aviones (\emph{Airbus} y \emph{Boeing}, DS316 y DS353) fueron sus casos más grandes \vertema{3.B.8}.
-\item \concepto{Salvaguardias} (artículo~XIX y su acuerdo): medidas temporales (aranceles o cuotas) ante un aumento de las importaciones que cause o amenace causar un \emph{daño grave}, aunque no haya práctica desleal. Son no discriminatorias, duran como máximo 4 años prorrogables hasta 8, deben liberalizarse progresivamente y, en principio, compensarse; el acuerdo prohibió las restricciones «voluntarias» de las exportaciones\nocite{OMC1994Salvaguardias}. ¿Por qué un acuerdo de libre comercio permite subir aranceles? Lo explica la economía de las salvaguardias (\ref{sec:salvaguardias}).
+  Cómo se aplican estas reglas:
+  \begin{itemize}
+  \item \emph{La vía multilateral}: el afectado lleva la subvención al OSD, que puede pedir que se retire o que se eliminen sus efectos desfavorables.
+  \item \emph{La vía unilateral}: el afectado pone \emph{derechos compensatorios}, pero solo si demuestra con una investigación que hay importaciones subvencionadas, daño a su rama de producción y una relación causal entre ambos.
+  \item \emph{Los países en desarrollo}: los menos adelantados y los de menos de 1.000 dólares de renta per cápita están exentos de la prohibición de las subvenciones a la exportación.
+  \item \emph{Los grandes casos}: las disputas de los grandes aviones (\emph{Airbus} y \emph{Boeing}, DS316 y DS353), sobre todo por perjuicio grave \vertema{3.B.8}.
+  \end{itemize}
+\item \concepto{Salvaguardias} (artículo~XIX y su acuerdo): medidas temporales (aranceles o cuotas) ante un aumento de las importaciones que cause o amenace causar un \emph{daño grave} a la producción nacional, aunque no haya práctica desleal\nocite{OMC1994Salvaguardias,OMC2026EntenderDefensa}:
+  \begin{itemize}
+  \item \emph{Sin discriminar}: se aplican a las importaciones de todos los orígenes.
+  \item \emph{Temporales}: duran como máximo 4 años, prorrogables hasta 8, y deben liberalizarse progresivamente.
+  \item \emph{Con compensación}: el país que la aplica tiene que ofrecer una compensación a los exportadores afectados; si no hay acuerdo, estos pueden suspender concesiones equivalentes, aunque no en los 3 primeros años si las importaciones crecieron en términos absolutos.
+  \item \emph{Sin «zona gris»}: el acuerdo prohibió las restricciones «voluntarias» de las exportaciones y los demás arreglos bilaterales al margen del GATT.
+  \end{itemize}
+  ¿Por qué un acuerdo de libre comercio permite subir aranceles? Lo explica la economía de las salvaguardias (\ref{sec:salvaguardias}).
 \end{itemize}
 
 \begin{figure}[H]
@@ -554,79 +517,24 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
 
 \subsubsection{La economía de las salvaguardias:\cortetitulo{} la protección administrada}\label{sec:salvaguardias}
 
-\paragraph{a) Idea}
-
 \begin{itemize}
-\item Un acuerdo comercial sin policía tiene que ser autoejecutable (\ref{sec:bagwell-staiger}): cada país coopera mientras lo que gana desviándose hoy sea menor que lo que pierde mañana con la represalia.
-\item Si el comercio cambia mucho de un año a otro, en los años de oleada de importaciones la tentación de desviarse es mayor. \textcite{BagwellStaiger1990Managed} muestran que, entonces, lo mejor que puede pactarse es \emph{permitir} una protección temporal en esos años: la salvaguardia es la válvula que evita que el acuerdo salte por los aires.
-\end{itemize}
-
-\paragraph{b) Modelo}
-
-\subparagraph{i) Supuestos}
-
-\begin{enumerate}
-\item los 2 países del modelo de \autor{Bagwell} y \autor{Staiger} (\ref{sec:bagwell-staiger}), con $\pi=0$, y un volumen de comercio $\theta$ que cambia cada periodo de forma aleatoria y observable, de modo que la ganancia de la RRI es $\alpha\theta\,(t-t^*)$: $W=-\tfrac12t^2+\alpha\theta\,(t-t^*)$;
-\item juego repetido infinitas veces, con factor de descuento $\beta$;
-\item la cooperación se sostiene con el gatillo: si un país se desvía, los 2 vuelven para siempre al equilibrio de \autor{Nash}.
-\end{enumerate}
-
-\subparagraph{ii) Desarrollo}
-
-\begin{itemize}
-\item \emph{Paso 1: la ganancia de desviarse}. Si se ha pactado un arancel $t^c$ y el país se desvía, pone su mejor respuesta $t^N(\theta)=\alpha\theta$, y gana hoy
-  \[\Omega(t^c,\theta)=\tfrac12\left(\alpha\theta-t^c\right)^2,\]
-  que crece con el volumen de comercio: cuanto más se importa, más se gana abaratando las importaciones.
-\item \emph{Paso 2: lo que se pierde}. Desviarse lleva a la guerra arancelaria a partir de mañana; el valor esperado de lo que se pierde es $K\equiv\frac{\beta}{1-\beta}\,V$, con $V$ la ganancia esperada de cooperar frente a \autor{Nash} en cada periodo.
-\item \emph{Paso 3: la restricción de incentivos}. El acuerdo solo se cumple si, en cada periodo,
-  \funcionclave[eq:incentivos]{\tfrac12\left(\alpha\theta-t^c\right)^2\;\leq\;\frac{\beta}{1-\beta}\,V\equiv K}
-\item \emph{Paso 4: el arancel más cooperativo sostenible}:
+\item \emph{La pregunta}: ¿por qué un acuerdo de libre comercio permite subir aranceles?
+\item \emph{La respuesta de \textcite{BagwellStaiger1990Managed}}: un acuerdo sin policía tiene que ser autoejecutable (\ref{sec:bagwell-staiger}); cada país coopera mientras lo que gana desviándose hoy sea menor que lo que pierde mañana con la represalia (anexo~\ref{anexo:salvaguardias}).
   \begin{itemize}
-  \item si $\theta\leq\bar\theta\equiv\sqrt{2K}/\alpha$, el libre comercio ($t^c=0$) cumple la restricción;
-  \item si $\theta>\bar\theta$, no: hay que permitir $t^c(\theta)=\alpha\theta-\sqrt{2K}>0$, que crece con el volumen de importaciones, pero siempre por debajo del arancel de \autor{Nash} (gráfico~\ref{fig:escape}).
+  \item En los años de oleada de importaciones, la ganancia de desviarse crece, porque es mayor el volumen de importaciones que un arancel abarata, y puede superar el coste de la represalia.
+  \item Lo mejor que puede pactarse entonces es \emph{permitir} en esos años una protección limitada y temporal, siempre por debajo del arancel de la guerra arancelaria: es la lógica de la \concepto{cláusula de escape} del artículo~XIX y del Acuerdo sobre Salvaguardias.
+  \item Cuanto más valoran los países el futuro, menos necesitan la válvula; sin ella, en los años malos la desviación sería tan rentable que el acuerdo entero podría romperse.
   \end{itemize}
+\item \emph{Extensiones}: para \textcite{RosendorffMilner2001}, la cláusula es un seguro frente a perturbaciones de economía política, y usarla tiene que tener un precio (la compensación) para que no se abuse; el antidumping, que no hay que compensar y se puede dirigir a un solo país, se ha convertido en la válvula preferida \vertema{3.B.7}.
+\item \emph{Evidencia}: \textcite{BownCrowley2013} encuentran que la protección temporal de Estados Unidos frente a un socio aumentaba cuando crecían de forma inesperada las importaciones desde ese socio. Las salvaguardias del acero de Estados Unidos (2002) y de la UE (2018-2026) respondieron a oleadas de importaciones; la europea expiró el 30 de junio de 2026 y desde el 1 de julio la sustituye una medida permanente de contingentes (Reglamento 2026/1384), ya fuera del Acuerdo sobre Salvaguardias, con una renegociación de los aranceles consolidados (artículo~XXVIII) \vertema{3.B.41}.
+\item \emph{Valoración}: el modelo explica por qué las reglas de la OMC no son de libre comercio puro, sino de protección acotada; pero una válvula demasiado fácil de abrir vacía el acuerdo, y la excepción de seguridad, que no tiene precio ni plazo, es hoy la más peligrosa (\ref{sec:unilateralismo}).
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{La protección administrada: el arancel cooperativo según el volumen de importaciones}\label{fig:escape}
-\grafico[0.62\textwidth]{clausula-escape}
-\fuente{elaboración propia a partir de \textcite{BagwellStaiger1990Managed}, con el ejemplo del texto.}
-\end{figure}
-
-\subparagraph{iii) Implicaciones}
-
-\begin{itemize}
-\item \emph{La protección temporal forma parte del acuerdo óptimo}: en las oleadas de importaciones se permite subir aranceles, de forma limitada y temporal. Es la lógica de la \concepto{cláusula de escape} del artículo~XIX y del Acuerdo sobre Salvaguardias.
-\item \emph{Cuanto más se valora el futuro} ($\beta$ alto, $K$ grande), más alto es $\bar\theta$ y menos se necesita la válvula.
-\item \emph{Sin válvula, el acuerdo entero puede romperse}: si las reglas prohibieran toda protección, en los años malos la desviación sería tan rentable que se volvería a la guerra.
-\end{itemize}
-
-\paragraph{c) Extensiones}
-
-\begin{itemize}
-\item \emph{La incertidumbre política}: \textcite{RosendorffMilner2001} ven la cláusula de escape como un seguro frente a perturbaciones de economía política (un sector en apuros que presiona); para que no se abuse, usarla tiene que tener un precio: la compensación que exige el acuerdo, o la represalia si no se paga.
-\item \emph{El antidumping como salvaguardia encubierta}: como no hay que compensar y se puede dirigir a un solo país, el antidumping se ha convertido en la válvula preferida; el dumping que persigue suele ser la discriminación de precios corriente de una empresa, no una práctica predatoria \vertema{3.B.7}.
-\end{itemize}
-
-\paragraph{d) Evidencia empírica}
-
-\begin{itemize}
-\item \textcite{BownCrowley2013} contrastan el modelo con la protección temporal de Estados Unidos (antidumping, compensatorios y salvaguardias) entre 1997 y 2006: la protección frente a un socio aumentaba cuando crecían de forma inesperada las importaciones desde ese socio, como predice la restricción de incentivos.
-\item Las salvaguardias del acero de Estados Unidos (2002) y de la UE (desde 2018, con el límite de 8 años en junio de 2026) responden a oleadas de importaciones; la europea expiró el 30 de junio de 2026 y desde el 1 de julio la sustituye una medida permanente de contingentes (Reglamento 2026/1384), ya fuera del Acuerdo sobre Salvaguardias, con una renegociación de los aranceles consolidados (art. XXVIII) \vertema{3.B.41}.
-\end{itemize}
-
-\paragraph{e) Valoración}
-
-\begin{itemize}
-\item El modelo justifica las válvulas de seguridad y explica por qué las reglas de la OMC no son de libre comercio puro, sino de protección acotada.
-\item Pero una válvula demasiado fácil de abrir vacía el acuerdo: el antidumping se usa mucho más que la salvaguardia, y la excepción de seguridad, que no tiene precio ni plazo, es hoy la válvula más peligrosa (\ref{sec:unilateralismo}).
-\end{itemize}
 
 \subsubsection{Listas de compromisos}\label{sec:listas}
 
 \begin{itemize}
-\item Las \concepto{listas de compromisos} de cada miembro (unas 30.000 páginas impresas en total) forman parte de los acuerdos: recogen, producto a producto, sus aranceles consolidados, sus contingentes arancelarios y sus compromisos agrícolas.
+\item Las \concepto{listas de compromisos} de cada miembro (unas 22.500 páginas solo las de la Ronda Uruguay) forman parte de los acuerdos: recogen, producto a producto, sus aranceles consolidados, sus contingentes arancelarios y sus compromisos agrícolas.
 \item \emph{Consolidado y aplicado}: el arancel consolidado es un techo. La diferencia con el que se aplica es el \concepto{excedente de consolidación} (\emph{binding overhang}): da margen para subir aranceles sin incumplir, pero hace menos previsible la política comercial (gráfico~\ref{fig:consolidados}).
   \begin{itemize}
   \item En los países desarrollados es casi nulo: la UE consolida y aplica de media el 5~\%; Estados Unidos, el 3,4 y el 3,3~\%.
@@ -649,7 +557,7 @@ Además de las reglas, la OMC presta \emph{asistencia técnica} a los países en
 \item \emph{Qué son}: acuerdos que solo obligan a quienes los firman. Son la vía para avanzar cuando el consenso de todos es imposible. Los hay de 2 tipos.
 \item \emph{Los del anexo~4} (con reglas propias, solo para sus partes):
   \begin{itemize}
-  \item \emph{Comercio de Aeronaves Civiles} (1979): elimina los aranceles de las aeronaves civiles y sus piezas y regula las compras públicas; 32 signatarios contando a la UE y a varios de sus Estados miembros por separado\nocite{OMC2026AeronavesCiviles};
+  \item \emph{Comercio de Aeronaves Civiles} (1979): elimina los aranceles de las aeronaves civiles y sus piezas y regula las compras públicas; 33 signatarios, contando a la UE y a 19 de sus Estados miembros por separado\nocite{OMC2026AeronavesCiviles};
   \item \emph{Contratación Pública} (ACP): abre a la competencia las compras de las administraciones; tiene 22 partes, que suman 49 miembros con la UE \vertema{3.B.34};
   \item los de la \emph{carne de bovino} y los \emph{productos lácteos} terminaron en 1997.
   \end{itemize}
@@ -783,7 +691,7 @@ CM14 Yaundé (2026) & 3 decisiones (pequeñas economías; trato especial en MSF 
   \begin{itemize}
   \item en 2025, con la Ley de Poderes Económicos de Emergencia Internacional (IEEPA), Estados Unidos puso aranceles a Canadá, México y China y, desde abril, aranceles «recíprocos» a casi todos sus socios: un 10~\% universal y tipos más altos por país;
   \item pactó techos con algunos socios: con la UE, un arancel máximo del 15~\% para casi todo desde agosto de 2025\nocite{UE2025DeclaracionEEUU};
-  \item el 20 de febrero de 2026, su Tribunal Supremo declaró que la IEEPA no permite imponer aranceles. El gobierno los sustituyó por un recargo del 10~\% (sección~122, de febrero a julio de 2026) y, desde el 24 de julio, por aranceles del 10 o el 12,5~\% a 60 economías por «trabajo forzoso» (sección~301); a la UE se le aplican descontando el arancel NMF, de modo que se mantiene el techo del 15~\%;
+  \item el 20 de febrero de 2026, su Tribunal Supremo declaró que la IEEPA no permite imponer aranceles\nocite{JonesDay2026IEEPA}. El gobierno los sustituyó por un recargo del 10~\% (sección~122, de febrero a julio de 2026) y, desde el 24 de julio, por aranceles del 10 o el 12,5~\% a 60 economías por «trabajo forzoso» (sección~301); a la UE se le aplican descontando el arancel NMF, de modo que se mantiene el techo del 15~\%;
   \item además, aranceles de «seguridad nacional» (sección~232) al acero, al aluminio, al cobre, a los automóviles y a otros productos.
   \end{itemize}
 \item \emph{Su encaje en las reglas de la OMC}:
@@ -819,9 +727,8 @@ CM14 Yaundé (2026) & 3 decisiones (pequeñas economías; trato especial en MSF 
 \minutos{1}
 
 \begin{itemize}
-\item \textbf{\emph{Recapitulación}}:
+\item \textbf{\emph{Recapitulación}}: En conclusión, la OMC es la institución que corrige un fallo de coordinación: sin reglas, cada país grande protege su mercado a costa de los demás y todos acaban peor.
   \begin{itemize}
-  \item En conclusión, la OMC es la institución que corrige un fallo de coordinación: sin reglas, cada país grande protege su mercado a costa de los demás y todos acaban peor.
   \item El GATT lo resolvió con reciprocidad, no discriminación y consolidación, y en 8 rondas llevó los aranceles industriales casi a cero; la OMC le dio forma de organización, amplió su ámbito y le añadió un juez.
   \item Sus reglas de mercancías son principios con válvulas (integración regional, desarrollo, salvaguardias, defensa comercial, seguridad), y funcionan mientras las válvulas se usen con mesura.
   \end{itemize}
@@ -845,6 +752,174 @@ CM14 Yaundé (2026) & 3 decisiones (pequeñas economías; trato especial en MSF 
 
 \clearpage
 \appendix
+
+% ==========================================================================
+\section{Anexo: la teoría de los acuerdos comerciales\cortetitulo{} de \autor{Bagwell} y \autor{Staiger}}\label{anexo:acuerdos}
+
+\begin{anotaciones}
+\textbf{Notación.} $t$ es el arancel \emph{ad valorem} del país $A$ y $t^*$ el del país $B$ (el asterisco indica el extranjero, como en el resto del temario); RRI es la relación real de intercambio. En el modelo de los acuerdos comerciales, $\pi\geq0$ mide el peso de los grupos de presión en el gobierno y $\alpha>0$ el poder de mercado del país en los mercados mundiales; $W$ es la función objetivo del gobierno, que puede no coincidir con el bienestar nacional. En las salvaguardias, $\theta$ es el volumen de importaciones y $\beta$ el factor de descuento. En la fórmula suiza, $t_0$ y $t_1$ son el arancel inicial y el final.
+\end{anotaciones}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La teoría clásica del comercio dice que el libre comercio es la mejor política para un país pequeño \vertema{3.B.5}. Si fuera así para todos, no harían falta acuerdos: cada país abriría su mercado por su cuenta.
+\item Pero un país grande puede ganar con un arancel, porque abarata lo que compra fuera: mejora su \concepto{relación real de intercambio} (RRI) a costa de sus socios. Es el argumento del \concepto{arancel óptimo} \vertema{3.B.7}.
+\item \textcite{Johnson1953Optimum} mostró que, si todos lo hacen, la guerra arancelaria suele dejar a todos peor que el libre comercio \vertema{3.B.8}. \textcite{BagwellStaiger1999Economic} dan el paso siguiente: muestran que ese es el \emph{único} problema que resuelve un acuerdo comercial cuando los gobiernos son racionales, y que los 2 principios del GATT, la \emph{reciprocidad} y la \emph{no discriminación}, son justo lo que hace falta para resolverlo.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{enumerate}
+\item \emph{2 países grandes y simétricos}, $A$ y $B$: $A$ importa el bien $X$ y exporta $Y$; $B$, al revés. Competencia perfecta.
+\item \emph{Instrumentos}: cada gobierno fija un arancel, $t$ el de $A$ y $t^*$ el de $B$.
+\item \emph{Objetivo de cada gobierno}: puede no ser el bienestar nacional. \textcite{BagwellStaiger1999Economic} solo exigen que, a igualdad de precios internos, el gobierno prefiera una RRI mejor. En un ejemplo lineal-cuadrático, el gobierno de $A$ maximiza
+  \[W(t,t^*)=\underbrace{\pi t-\tfrac12 t^2}_{\text{efecto de los precios internos}}+\underbrace{\alpha\,(t-t^*)}_{\text{efecto RRI}}\]
+  y el de $B$, la expresión simétrica $W^*(t^*,t)$.
+  \begin{itemize}
+  \item El primer término recoge lo que el arancel hace dentro: protege a los productores (con más peso cuanto mayor es $\pi$, el peso de los grupos de presión; $\pi=0$ es un gobierno que solo mira el bienestar nacional) y distorsiona el consumo y la producción ($-\tfrac12t^2$).
+  \item El segundo recoge la \emph{externalidad de la RRI}: el arancel propio abarata las importaciones en el mercado mundial (gana $\alpha t$) y el ajeno abarata las exportaciones propias (pierde $\alpha t^*$). $\alpha$ es mayor cuanto más grande es el país.
+  \end{itemize}
+\item \emph{Juego simultáneo} con información completa.
+\end{enumerate}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Paso 1: el equilibrio de \autor{Nash}} (sin acuerdo):
+  \begin{itemize}
+  \item cada gobierno maximiza su objetivo dado el arancel del otro: $\partial W/\partial t=\pi-t+\alpha=0$;
+  \item la mejor respuesta, $t^N=\pi+\alpha$, no depende de $t^*$: el arancel es una estrategia dominante (en el gráfico~\ref{fig:bagwell-staiger}, las 2 rectas $R_A$ y $R_B$ se cortan en $N$).
+  \end{itemize}
+\item \emph{Paso 2: el óptimo político}. \textcite{BagwellStaiger1999Economic} definen los \concepto{aranceles políticamente óptimos} como los que elegiría cada gobierno si no tuviera en cuenta el efecto de su arancel sobre la RRI (como si fuera un país pequeño), es decir, con $\partial W/\partial t\,\big|_{\text{RRI fija}}=\pi-t=0$:
+  \begin{itemize}
+  \item $t^{\mathit{PO}}=\pi$, que es el libre comercio si el gobierno solo mira el bienestar ($\pi=0$), y un arancel positivo si atiende a los grupos de presión.
+  \end{itemize}
+\item \emph{Paso 3: la comparación}. El arancel de \autor{Nash} supera al políticamente óptimo exactamente en el componente de la RRI:
+  \funcionclave[eq:bagwell-staiger]{t^{N}=\underbrace{\pi}_{\text{objetivos internos}}+\underbrace{\alpha}_{\text{externalidad RRI}}\;>\;t^{\mathit{PO}}=\pi}
+  y los 2 gobiernos están mejor en el óptimo político: $W^{\mathit{PO}}-W^{N}=\tfrac12\alpha^2>0$ para cada uno.
+\item \emph{Paso 4: eficiencia}. Las combinaciones eficientes de aranceles (la \emph{curva de contrato}, donde las curvas de isobienestar de los 2 gobiernos son tangentes) cumplen $(\pi+\alpha-t)(\pi+\alpha-t^*)=\alpha^2$; el óptimo político $(\pi,\pi)$ está en ella. El equilibrio de \autor{Nash}, no.
+\item \emph{Paso 5: la reciprocidad}. Como la RRI depende aquí de $t-t^*$, las rebajas \emph{recíprocas} (iguales en los 2 países) llevan de $N$ al óptimo político a lo largo de la diagonal, sin mover la RRI: cada gobierno solo ve el efecto interno de su rebaja, que es justo lo que le falta para elegir el arancel políticamente óptimo (gráfico~\ref{fig:bagwell-staiger}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La teoría de los acuerdos comerciales en el espacio de los aranceles}\label{fig:bagwell-staiger}
+\grafico[0.66\textwidth]{bagwell-staiger}
+\fuente{elaboración propia a partir de \textcite{BagwellStaiger1999Economic}, con el ejemplo lineal-cuadrático del texto ($\pi=1$, $\alpha=2$). La zona sombreada son los aranceles que mejoran a los 2 gobiernos respecto de $N$; la diagonal, los que dejan la RRI como en $N$.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Paso 6: el mismo resultado, como dilema del prisionero}. Si cada gobierno solo puede elegir entre el libre comercio (o el arancel políticamente óptimo) y el arancel de \autor{Nash}, el juego tiene la estructura del dilema del prisionero \vertema{3.A.14}: con los pagos de la tabla~\ref{tab:dilema-arancel}, poner el arancel es estrategia dominante ($6>5$ y $1>0$), y el equilibrio (1, 1) es peor para los 2 que el libre comercio (5, 5).
+\end{itemize}
+
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El único problema que resuelve un acuerdo comercial es la externalidad de la RRI}: aunque los gobiernos protejan por motivos políticos, eso no exige un acuerdo; lo que sí lo exige es que cada uno traslade a los demás parte del coste de su arancel.
+\item \emph{La reciprocidad} neutraliza esa externalidad: si cada rebaja se paga con otra que deja la RRI igual, cada país liberaliza «como si fuera pequeño».
+\item \emph{La no discriminación} (NMF) hace que haya un único precio mundial por producto, de modo que lo que negocian 2 países no se lo hace pagar un tercero ni se deshace con un acuerdo bilateral posterior.
+\item \emph{El juego repetido}: como el acuerdo no tiene una policía mundial, tiene que ser \emph{autoejecutable}. Con la estrategia del gatillo, la cooperación se sostiene si el factor de descuento cumple $\beta\geq\frac{6-5}{6-1}=\frac15$ \vertema{3.A.14}. Por eso importa tanto el sistema de solución de diferencias: autoriza y acota la represalia (\ref{sec:institucional}).
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{El acuerdo como compromiso} (\emph{commitment}): \textcite{MaggiRodriguezClare1998Value} muestran que un gobierno puede querer un acuerdo para \emph{atarse las manos} ante sus propios grupos de presión, aunque no haya externalidad de la RRI. Si los inversores anticipan que el gobierno protegerá su sector, invierten de más en él; comprometerse fuera evita esa distorsión. Explica que los países pequeños (sin efecto RRI) se adhieran y consoliden aranceles.
+\item \emph{La economía política de las negociaciones}: en \textcite{GrossmanHelpman1995TradeWars}, los grupos de presión «compran» protección; en la negociación, los exportadores de cada país presionan para que el otro abra su mercado, y eso contrarresta a los que compiten con las importaciones.
+\item \emph{Los nuevos temas}: cuando el comercio se hace en cadenas globales de valor con insumos a medida, los precios se negocian entre empresas y no hay un precio mundial único; la externalidad ya no pasa solo por la RRI y los acuerdos tienen que ser más \emph{profundos} (inversión, servicios, normas)\nocite{AntrasStaiger2012Offshoring} \vertema{3.B.18}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Los países usan su poder de mercado}: \textcite{BrodaLimaoWeinstein2008Optimal} encuentran que 15 países que aún no estaban en la OMC ponían aranceles unos 9 puntos más altos en los productos cuya oferta extranjera era inelástica, como predice el arancel óptimo.
+\item \emph{Las negociaciones lo corrigen}: \textcite{BagwellStaiger2011Negotiators} muestran que los países que entraron en la OMC rebajaron más sus aranceles en los productos en los que su poder de mercado era mayor.
+\item \emph{El coste de la guerra}: en un modelo cuantitativo, \textcite{Ossa2014TradeWars} estima aranceles de \autor{Nash} de más del 60~\% y pérdidas de bienestar de en torno al 3~\% de la renta real si estallara una guerra arancelaria mundial.
+\item \emph{¿Aumenta la OMC el comercio?} \textcite{Rose2004WTO} no encontró que los miembros del GATT o la OMC comerciaran más que los demás; \textcite{TomzGoldsteinRivers2007} lo corrigen: si se cuentan también los países que aplicaban las reglas sin ser parte formal (colonias, nuevos Estados), el efecto es positivo y grande.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item La teoría explica bien la arquitectura del GATT (reciprocidad, NMF, consolidación de aranceles, represalias acotadas) y por qué funcionó para los aranceles.
+\item Pero los negociadores no hablan de la RRI sino de exportaciones y empleos, y los grandes problemas de hoy (subvenciones industriales, normas, datos, seguridad) no son de aranceles. Por eso la OMC ha avanzado tanto en los aranceles y tan poco en lo demás, como se ve en el bloque~\ref{sec:actual}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la economía de las salvaguardias\cortetitulo{} de \autor{Bagwell} y \autor{Staiger}}\label{anexo:salvaguardias}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Un acuerdo comercial sin policía tiene que ser autoejecutable (anexo~\ref{anexo:acuerdos}): cada país coopera mientras lo que gana desviándose hoy sea menor que lo que pierde mañana con la represalia.
+\item Si el comercio cambia mucho de un año a otro, en los años de oleada de importaciones la tentación de desviarse es mayor. \textcite{BagwellStaiger1990Managed} muestran que, entonces, lo mejor que puede pactarse es \emph{permitir} una protección temporal en esos años: la salvaguardia es la válvula que evita que el acuerdo salte por los aires.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{enumerate}
+\item los 2 países del modelo de \autor{Bagwell} y \autor{Staiger} (anexo~\ref{anexo:acuerdos}), con $\pi=0$, y un volumen de comercio $\theta$ que cambia cada periodo de forma aleatoria y observable, de modo que la ganancia de la RRI es $\alpha\theta\,(t-t^*)$: $W=-\tfrac12t^2+\alpha\theta\,(t-t^*)$;
+\item juego repetido infinitas veces, con factor de descuento $\beta$;
+\item la cooperación se sostiene con el gatillo: si un país se desvía, los 2 vuelven para siempre al equilibrio de \autor{Nash}.
+\end{enumerate}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Paso 1: la ganancia de desviarse}. Si se ha pactado un arancel $t^c$ y el país se desvía, pone su mejor respuesta $t^N(\theta)=\alpha\theta$, y gana hoy
+  \[\Omega(t^c,\theta)=\tfrac12\left(\alpha\theta-t^c\right)^2,\]
+  que crece con el volumen de comercio: cuanto más se importa, más se gana abaratando las importaciones.
+\item \emph{Paso 2: lo que se pierde}. Desviarse lleva a la guerra arancelaria a partir de mañana; el valor esperado de lo que se pierde es $K\equiv\frac{\beta}{1-\beta}\,V$, con $V$ la ganancia esperada de cooperar frente a \autor{Nash} en cada periodo.
+\item \emph{Paso 3: la restricción de incentivos}. El acuerdo solo se cumple si, en cada periodo,
+  \funcionclave[eq:incentivos]{\tfrac12\left(\alpha\theta-t^c\right)^2\;\leq\;\frac{\beta}{1-\beta}\,V\equiv K}
+\item \emph{Paso 4: el arancel más cooperativo sostenible}:
+  \begin{itemize}
+  \item si $\theta\leq\bar\theta\equiv\sqrt{2K}/\alpha$, el libre comercio ($t^c=0$) cumple la restricción;
+  \item si $\theta>\bar\theta$, no: hay que permitir $t^c(\theta)=\alpha\theta-\sqrt{2K}>0$, que crece con el volumen de importaciones, pero siempre por debajo del arancel de \autor{Nash} (gráfico~\ref{fig:escape}).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La protección administrada: el arancel cooperativo según el volumen de importaciones}\label{fig:escape}
+\grafico[0.62\textwidth]{clausula-escape}
+\fuente{elaboración propia a partir de \textcite{BagwellStaiger1990Managed}, con el ejemplo del texto.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La protección temporal forma parte del acuerdo óptimo}: en las oleadas de importaciones se permite subir aranceles, de forma limitada y temporal. Es la lógica de la \concepto{cláusula de escape} del artículo~XIX y del Acuerdo sobre Salvaguardias.
+\item \emph{Cuanto más se valora el futuro} ($\beta$ alto, $K$ grande), más alto es $\bar\theta$ y menos se necesita la válvula.
+\item \emph{Sin válvula, el acuerdo entero puede romperse}: si las reglas prohibieran toda protección, en los años malos la desviación sería tan rentable que se volvería a la guerra.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{La incertidumbre política}: \textcite{RosendorffMilner2001} ven la cláusula de escape como un seguro frente a perturbaciones de economía política (un sector en apuros que presiona); para que no se abuse, usarla tiene que tener un precio: la compensación que exige el acuerdo, o la represalia si no se paga.
+\item \emph{El antidumping como salvaguardia encubierta}: como no hay que compensar y se puede dirigir a un solo país, el antidumping se ha convertido en la válvula preferida; el dumping que persigue suele ser la discriminación de precios corriente de una empresa, no una práctica predatoria \vertema{3.B.7}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{BownCrowley2013} contrastan el modelo con la protección temporal de Estados Unidos (antidumping, compensatorios y salvaguardias) entre 1997 y 2006: la protección frente a un socio aumentaba cuando crecían de forma inesperada las importaciones desde ese socio, como predice la restricción de incentivos.
+\item Las salvaguardias del acero de Estados Unidos (2002) y de la UE (desde 2018, con el límite de 8 años en junio de 2026) responden a oleadas de importaciones; la europea expiró el 30 de junio de 2026 y desde el 1 de julio la sustituye una medida permanente de contingentes (Reglamento 2026/1384), ya fuera del Acuerdo sobre Salvaguardias, con una renegociación de los aranceles consolidados (art. XXVIII) \vertema{3.B.41}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item El modelo justifica las válvulas de seguridad y explica por qué las reglas de la OMC no son de libre comercio puro, sino de protección acotada.
+\item Pero una válvula demasiado fácil de abrir vacía el acuerdo: el antidumping se usa mucho más que la salvaguardia, y la excepción de seguridad, que no tiene precio ni plazo, es hoy la válvula más peligrosa (\ref{sec:unilateralismo}).
+\end{itemize}
 
 % ==========================================================================
 \section{Anexo: los métodos de reducción arancelaria\cortetitulo{} y la fórmula suiza}\label{anexo:formulas}

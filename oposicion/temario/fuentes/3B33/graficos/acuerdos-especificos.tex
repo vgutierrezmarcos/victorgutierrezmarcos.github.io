@@ -1,0 +1,64 @@
+% Los acuerdos sobre cuestiones y sectores específicos del anexo 1A (II.1.2),
+% agrupados por su función, con el año y la idea clave de cada uno para
+% memorizarlos. Mismos grupos y colores de grupo que el texto: procedimientos
+% aduaneros, reglamentos técnicos y sanitarios, defensa comercial, inversión y
+% sectores, agricultura.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{array}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+% cabecera de un grupo: banda de color con el nombre y el número de acuerdos
+\newcommand{\cabecera}[3]{{\setlength{\fboxsep}{3pt}\colorbox{#1}{\parbox{\dimexpr8.1cm-6pt\relax}{\color{white}\bfseries #2\hfill\mdseries #3}}}\par\vspace{2pt}}
+% fila: acuerdo, año, idea clave
+\newcommand{\fila}[3]{\textbf{#1} & #2 & \emph{#3}\\[2pt]}
+\newenvironment{filas}{\setlength{\tabcolsep}{3pt}\begin{tabular}{@{\hspace{3pt}}>{\raggedright\arraybackslash}p{2.95cm}>{\centering\arraybackslash}p{1.15cm}>{\raggedright\arraybackslash}p{3.35cm}@{}}}{\end{tabular}}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    grupo/.style={draw=#1,thick,fill=#1!5,rounded corners=2pt,inner sep=0pt,
+      align=left,text width=8.1cm,font=\footnotesize,anchor=north west},
+    nota/.style={font=\footnotesize,text width=16.5cm,align=left,anchor=north west,text=tceegris}]
+  % 1: procedimientos aduaneros
+  \capa{1}{\node[grupo=tceeazul] (aduanas) at (0,0) {%
+    \cabecera{tceeazul}{Procedimientos aduaneros}{5 acuerdos}
+    \begin{filas}
+    \fila{Valoración en aduana\textsuperscript{T}}{1994}{valor de transacción, no valores arbitrarios}
+    \fila{Inspección previa a la expedición}{1994}{disciplina a las empresas inspectoras}
+    \fila{Normas de origen}{1994}{reglas claras; armonización pendiente}
+    \fila{Licencias de importación\textsuperscript{T}}{1994}{trámite sencillo: 30-60 días}
+    \fila{Facilitación del Comercio (AFC)}{2013\newline{\scriptsize(vigor 2017)}}{aduanas ágiles, aplicación a la carta}
+    \end{filas}};}
+  % 2: reglamentos técnicos y sanitarios
+  \capa{2}{\node[grupo=tceeverde] (reglamentos) [below=0.3cm of aduanas.south west,anchor=north west] {%
+    \cabecera{tceeverde}{Reglamentos técnicos y sanitarios}{2 acuerdos}
+    \begin{filas}
+    \fila{Medidas sanitarias y fitosanitarias (MSF)}{1994}{salud con base científica (\emph{Codex})}
+    \fila{Obstáculos técnicos al comercio (OTC)\textsuperscript{T}}{1994}{normas sin obstáculos innecesarios}
+    \end{filas}};}
+  % 3: defensa comercial
+  \capa{3}{\node[grupo=tceerojo] (defensa) at (8.4,0) {%
+    \cabecera{tceerojo}{Defensa comercial}{3 acuerdos}
+    \begin{filas}
+    \fila{Antidumping\textsuperscript{T} (art.~VI)}{1994}{margen ${\geq}\,2$~\%, daño y causalidad}
+    \fila{Subvenciones y medidas compensatorias\textsuperscript{T} (arts.~VI y XVI)}{1994}{prohibidas y recurribles}
+    \fila{Salvaguardias (art.~XIX)}{1994}{daño grave: 4 + 4 años, NMF}
+    \end{filas}};}
+  % 4: inversión y sectores
+  \capa{4}{\node[grupo=tceemorado] (sectores) [below=0.3cm of defensa.south west,anchor=north west] {%
+    \cabecera{tceemorado}{Inversión y sectores}{3 acuerdos}
+    \begin{filas}
+    \fila{Medidas en materia de inversiones (MIC)}{1994}{prohíbe exigir contenido local}
+    \fila{\textcolor{tceegris}{Textiles y vestido (ATV)}}{\textcolor{tceegris}{1995-2005}}{\textcolor{tceegris}{fin de las cuotas; expiró}}
+    \fila{Subvenciones a la Pesca}{2022\newline{\scriptsize(vigor 2025)}}{sin ayudas a la pesca ilegal ni a poblaciones sobreexplotadas}
+    \end{filas}};}
+  % 5: agricultura (columna izquierda, para equilibrar)
+  \capa{5}{\node[grupo=tceedorado] (agricultura) [below=0.3cm of reglamentos.south west,anchor=north west] {%
+    \cabecera{tceedorado}{Agricultura}{1 acuerdo}
+    \begin{filas}
+    \fila{Agricultura}{1994}{arancelización; 3 pilares; cajas de colores}
+    \end{filas}};}
+  % 6: leyenda de los años y de la marca T
+  \capa{6}{\path let \p1=(agricultura.south), \p2=(sectores.south) in coordinate (fondo) at (0,{min(\y1,\y2)-0.25cm});}
+  \capa{6}{\node[nota] at (fondo) {1994: firmados en Marrakech al cerrar la Ronda Uruguay, en vigor el 1 de enero de 1995. \textsuperscript{T}~Tenía un código previo de la Ronda de Tokio (1979). Además del GATT de 1994, 13 acuerdos en vigor (el ATV expiró en 2005).};}
+\end{tikzpicture}
+\end{document}

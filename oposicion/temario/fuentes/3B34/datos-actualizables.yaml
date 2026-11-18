@@ -3,13 +3,41 @@ fecha_inventario: 2026-11-14
 datos:
   - id: servicios-mundo
     texto: "en 2025 el mundo exportó 9,6 billones de dólares en servicios comerciales, más de la cuarta parte (el 27,5 %) del comercio total de bienes y servicios comerciales [...] aumentó un 8 % [...] prestados digitalmente 5,3 billones, el 55 %"
-    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/servicios-sector.tex, datos/servicios-sector.csv]
+    donde: [3B34.tex, repaso/3B34-repaso.tex, datos/servicios-sector.csv, datos/comercio-bienes-servicios.csv]
     valor: 9594
     unidad: miles de millones de dólares
     periodo: "2025"
     fuente: OMC2026EstadisticasServicios
     organismo: OMC (WTO-UNCTAD-ITC)
     serie: "ITS_CS_AX6, Mundo, sectores SC (transporte, viajes, relacionados con bienes, otros); servicios prestados digitalmente"
+    url: https://www.wto.org/english/res_e/statis_e/trade_datasets_e.htm
+    periodicidad: anual (avance en marzo-abril; revisión en julio)
+    proxima: "2027-04"
+    familia: omc-servicios
+
+  - id: comercio-bienes-servicios
+    texto: "entre 1980 y 2025 pasaron de 0,4 a 9,6 billones de dólares, un 7,5 % al año, frente al 5,8 % de las mercancías [...] en torno al 15 % del total en 1980 [...] en 2009 cayeron un 10 %, frente al 22 % de las mercancías [...] en 2020 cayeron un 17 %"
+    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/comercio-bienes-servicios.tex, datos/comercio-bienes-servicios.csv]
+    valor: 26275
+    unidad: miles de millones de dólares (mercancías, 2025)
+    periodo: "1980-2025"
+    fuente: OMC2026EstadisticasMercancias
+    organismo: OMC
+    serie: "ITS_MTV_AX (mercancías, total, Mundo); ITS_CS_AX5 S200CS (1980-2004) e ITS_CS_AX6 SOX (2005-2025), Mundo"
+    url: https://www.wto.org/english/res_e/statis_e/trade_datasets_e.htm
+    periodicidad: anual (avance en marzo-abril; revisión en julio)
+    proxima: "2027-04"
+    familia: omc-servicios
+
+  - id: servicios-composicion
+    texto: "otros servicios empresariales 24,5 %, viajes 19,9 %, transporte 16,2 %, telecomunicaciones e informática 14,8 % (7,1 % en 2005)"
+    donde: [3B34.tex, repaso/3B34-repaso.tex, graficos/servicios-composicion.tex, datos/servicios-composicion.csv]
+    valor: null
+    unidad: "% de las exportaciones mundiales de servicios comerciales"
+    periodo: "2025"
+    fuente: OMC2026EstadisticasServicios
+    organismo: OMC (WTO-UNCTAD-ITC)
+    serie: "ITS_CS_AX6, Mundo, sectores EBOPS 2010 (SC, SD, SE, SF, SG, SH, SI, SJ, SK, SPX4)"
     url: https://www.wto.org/english/res_e/statis_e/trade_datasets_e.htm
     periodicidad: anual (avance en marzo-abril; revisión en julio)
     proxima: "2027-04"

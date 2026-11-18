@@ -1,0 +1,53 @@
+# Fuente: OMC, conjuntos de datos anuales de descarga masiva. Mercancías: «Merchandise trade values annual dataset», indicador ITS_MTV_AX (exportaciones de mercancías), declarante Mundo (000), producto TO (total de mercancías), base aduanera. Servicios comerciales: «Services annual dataset», indicador ITS_CS_AX5 (exportaciones de servicios comerciales, MBP5, 1980-2013), producto S200CS, hasta 2004, e indicador ITS_CS_AX6 (MBP6, 2005-2025), producto SOX, desde 2005; declarante y socio Mundo (000).
+# URL: https://stats.wto.org/assets/UserGuide/merchandise_values_annual_dataset.zip y https://stats.wto.org/assets/UserGuide/services_annual_dataset.zip (página: https://www.wto.org/english/res_e/statis_e/trade_datasets_e.htm)
+# Fecha de consulta: 18/11/2026. Último dato: 2025 (estimación OMC-UNCTAD).
+# Ruptura de serie en 2005 (cambio de MBP5 a MBP6 en servicios): la tasa de 2005 de los servicios se calcula con la serie MBP5 (2004-2005); desde 2006, con la MBP6.
+# Segunda comprobación: UNCTADstat, «Goods and Services (BPM5): Exports and imports of goods and services, annual, 1980-2013» (GASBEAIOGASA12D, vía https://db.nomics.world/UNCTAD/GASBEAIOGASA12D, consultado el 18/11/2026): bienes 1980 = 1.981 mil M$ (OMC 2.036, base aduanera) y 2013 = 18.604 (OMC 18.962); servicios totales (incluidos los del gobierno) 1980 = 396 (OMC, comerciales, 367). Servicios 2025: OMC, Global Trade Outlook and Statistics (marzo de 2026), 9,56 billones (+8 %).
+# Unidades: miles de millones de dólares corrientes; variaciones en %; peso_servicios_pct = servicios / (mercancías + servicios) x 100.
+anio,mercancias,servicios,base_servicios,var_mercancias,var_servicios,peso_servicios_pct
+1980,2036.14,367.06,MBP5,nan,nan,15.3
+1981,2014.39,377.33,MBP5,-1.1,2.8,15.8
+1982,1885.81,368.18,MBP5,-6.4,-2.4,16.3
+1983,1845.98,357.15,MBP5,-2.1,-3.0,16.2
+1984,1955.71,368.24,MBP5,5.9,3.1,15.8
+1985,1952.89,383.48,MBP5,-0.1,4.1,16.4
+1986,2138.51,452.53,MBP5,9.5,18.0,17.5
+1987,2515.50,536.68,MBP5,17.6,18.6,17.6
+1988,2868.92,604.72,MBP5,14.0,12.7,17.4
+1989,3099.55,662.49,MBP5,8.0,9.6,17.6
+1990,3490.39,788.67,MBP5,12.6,19.0,18.4
+1991,3511.34,832.58,MBP5,0.6,5.6,19.2
+1992,3779.18,931.83,MBP5,7.6,11.9,19.8
+1993,3793.65,950.04,MBP5,0.4,2.0,20.0
+1994,4327.19,1042.53,MBP5,14.1,9.7,19.4
+1995,5167.16,1179.43,MBP5,19.4,13.1,18.6
+1996,5406.31,1273.08,MBP5,4.6,7.9,19.1
+1997,5592.22,1329.78,MBP5,3.4,4.5,19.2
+1998,5502.44,1346.86,MBP5,-1.6,1.3,19.7
+1999,5719.28,1405.85,MBP5,3.9,4.4,19.7
+2000,6451.97,1491.32,MBP5,12.8,6.1,18.8
+2001,6194.35,1492.72,MBP5,-4.0,0.1,19.4
+2002,6498.22,1597.57,MBP5,4.9,7.0,19.7
+2003,7588.38,1851.37,MBP5,16.8,15.9,19.6
+2004,9219.82,2250.43,MBP5,21.5,21.6,19.6
+2005,10522.11,2644.64,MBP6,14.1,11.8,20.1
+2006,12142.04,2982.30,MBP6,15.4,12.8,19.7
+2007,14041.97,3573.73,MBP6,15.6,19.8,20.3
+2008,16191.68,4023.56,MBP6,15.3,12.6,19.9
+2009,12585.37,3602.91,MBP6,-22.3,-10.5,22.3
+2010,15303.62,3928.84,MBP6,21.6,9.0,20.4
+2011,18339.10,4421.17,MBP6,19.8,12.5,19.4
+2012,18512.59,4565.45,MBP6,0.9,3.3,19.8
+2013,18962.15,4864.39,MBP6,2.4,6.5,20.4
+2014,19012.73,5229.93,MBP6,0.3,7.5,21.6
+2015,16564.60,5002.30,MBP6,-12.9,-4.4,23.2
+2016,16049.40,5086.46,MBP6,-3.1,1.7,24.1
+2017,17736.83,5550.17,MBP6,10.5,9.1,23.8
+2018,19545.31,6121.26,MBP6,10.2,10.3,23.8
+2019,19006.89,6331.47,MBP6,-2.8,3.4,25.0
+2020,17645.25,5256.54,MBP6,-7.2,-17.0,23.0
+2021,22288.88,6346.69,MBP6,26.3,20.7,22.2
+2022,24916.66,7392.87,MBP6,11.8,16.5,22.9
+2023,23905.24,8040.30,MBP6,-4.1,8.8,25.2
+2024,24535.05,8847.70,MBP6,2.6,10.0,26.5
+2025,26275.04,9593.83,MBP6,7.1,8.4,26.7

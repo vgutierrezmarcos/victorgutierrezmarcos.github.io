@@ -1,0 +1,79 @@
+% Exportaciones mundiales de mercancías y de servicios comerciales, 1980-2025:
+% a) valor (billones de dólares corrientes); b) variación anual (%). Fuente en
+% la cabecera de ../datos/comercio-bienes-servicios.csv (OMC). Ruptura de serie
+% de los servicios en 2005 (MBP5 -> MBP6).
+% Capas: a) ejes -> mercancías -> servicios -> ruptura y rótulos;
+%        b) ejes y cero -> mercancías -> servicios -> rótulos de las crisis.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\begin{document}
+\colorlet{cbmerc}{tceeazul}
+\colorlet{cbserv}{tceemorado}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/comercio-bienes-servicios.csv}\cbs
+\pgfplotsset{ejescb/.style={}}
+\ifnum1>\tceepaso\relax
+  \pgfplotsset{ejescb/.style={axis line style={draw=none},
+    major tick style={draw=none}, ticklabel style={opacity=0},
+    label style={opacity=0}, title style={opacity=0}, ymajorgrids=false}}
+\fi
+\begin{tikzpicture}[tcee]
+  \begin{groupplot}[
+      group style={group size=2 by 1, horizontal sep=1.7cm},
+      width=8.2cm, height=7cm,
+      xmin=1979, xmax=2026.5,
+      xtick={1980,1990,...,2020}, minor xtick={1985,1995,...,2025},
+      xticklabel style={/pgf/number format/1000 sep=, font=\footnotesize},
+      yticklabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      clip=false, unbounded coords=jump,
+      title style={font=\small\bfseries, align=center},
+      ejescb, dicapas,
+    ]
+    % ---------- a) valor
+    \nextgroupplot[
+      title={a) Valor},
+      ymin=0, ymax=28, ytick={0,5,...,25},
+      ylabel={Billones de dólares},
+      legend style={at={(0.03,0.97)}, anchor=north west, draw=none, fill=none,
+        font=\footnotesize, row sep=1pt},
+      legend cell align=left,
+    ]
+    \capa{2}{
+      \addplot[diclinea=cbmerc] table[x=anio, y expr=\thisrow{mercancias}/1000] {\cbs};
+      \addlegendentry{Mercancías}
+    }
+    \capa{3}{
+      \addplot[diclinea=cbserv] table[x=anio, y expr=\thisrow{servicios}/1000] {\cbs};
+      \addlegendentry{Servicios comerciales}
+    }
+    \capa{4}{
+      \draw[dicumbral] (axis cs:2005,0) -- (axis cs:2005,20);
+      \dicrotulo[font=\scriptsize,anchor=south,align=center,text=tceegris]{(2005,20)}{MBP5 | MBP6}
+      \dicrotulo[font=\scriptsize,anchor=west,text=cbmerc]{(2025.4,26.3)}{26,3}
+      \dicrotulo[font=\scriptsize,anchor=west,text=cbserv]{(2025.4,9.6)}{9,6}
+    }
+    % ---------- b) variación anual
+    \nextgroupplot[
+      title={b) Variación anual},
+      ymin=-30, ymax=30, ytick={-30,-20,...,30},
+      ylabel={\%},
+    ]
+    \capa{1}{\draw[diccero] (axis cs:1979,0) -- (axis cs:2026.5,0);}
+    \capa{2}{
+      \addplot[diclinea=cbmerc] table[x=anio, y=var_mercancias] {\cbs};
+    }
+    \capa{3}{
+      \addplot[diclinea=cbserv] table[x=anio, y=var_servicios] {\cbs};
+    }
+    \capa{4}{
+      \dicrotulo[font=\scriptsize,anchor=north,align=center]{(2009,-23)}{2009}
+      \dicrotulo[font=\scriptsize,anchor=north,align=center]{(2020,-18)}{2020}
+      \dicrotulo[font=\scriptsize,anchor=north,align=center]{(2015,-13.5)}{2015}
+    }
+  \end{groupplot}
+\end{tikzpicture}
+\end{document}

@@ -210,3 +210,31 @@ datos:
     periodicidad: cuando cambie la TIGIE
     proxima: sin fecha
     familia: bloques-america
+
+  - id: mapa-bloques-miembros
+    texto: "gráfico mapa-bloques: miembros de T-MEC, Mercosur, Alianza del Pacífico, CAN, SICA, CARICOM, AELC, CEFTA, UEE, CCG, SAFTA, ASEAN, RCEP, CPTPP, CEDEAO, UEMOA, CEMAC, EAC, SACU, SADC, COMESA, UMA y ZLECAf, a 18/11/2026"
+    donde: [graficos/mapa-bloques.tex, datos/mapa-bloques.csv, 3B35.tex, repaso/3B35-repaso.tex]
+    valor: null
+    unidad: países
+    periodo: "2026-11-18"
+    fuente: OMC2026RTAIS; páginas oficiales de cada acuerdo (cabecera de datos/mapa-bloques.csv)
+    organismo: OMC y secretarías de los acuerdos
+    serie: "Pertenencias en datos/mapa-bloques.csv; el .tex se regenera con python3 datos/mapa-bloques.py <ne_50m_admin_0_countries.geojson> (Natural Earth). Pendientes de vigilar: adhesión de Costa Rica al CPTPP; adhesiones al RCEP (Hong Kong, Sri Lanka, Chile, Bangladés); situación de la AES en la UEMOA"
+    url: https://rtais.wto.org/UI/PublicMaintainRTAHome.aspx
+    periodicidad: continua (cada adhesión o salida)
+    proxima: "2027-05"
+    familia: comercio-acr
+
+  - id: efectos-estimados-acuerdos
+    texto: "RCEP +186.000 millones de dólares y CPTPP +147.000 millones de renta mundial en 2030 (Petri y Plummer, 2020); ZLECAf +7 % de la renta de África en 2035 (Banco Mundial, 2020)"
+    donde: [3B35.tex, repaso/3B35-repaso.tex]
+    valor: [186, 147, 7]
+    unidad: "miles de millones de dólares; %"
+    periodo: "2020"
+    fuente: PetriPlummer2020; BM2020ZLECAf
+    organismo: PIIE; Banco Mundial
+    serie: "Estimaciones ex ante con MEGC; sustituir si salen estimaciones nuevas"
+    url: https://openknowledge.worldbank.org/handle/10986/34139
+    periodicidad: irregular
+    proxima: "2027-11"
+    familia: comercio-acr
