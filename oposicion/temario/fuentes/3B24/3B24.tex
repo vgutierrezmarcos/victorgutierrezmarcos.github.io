@@ -920,6 +920,13 @@ La primera igualdad es la del arbitraje; la segunda define $y$: es el tipo únic
   \item sobre los diferenciales: cambiar un bono por otro casi igual que cotiza más barato, o por otro de otro emisor o sector cuyo diferencial se espera que se estreche.
   \end{itemize}
 \item El \emph{análisis de horizonte} une las 2: se fija un plazo, se supone una curva para entonces y se calcula la rentabilidad realizada de cada bono (\ref{sec:rent-realizada}).
+\item \emph{La inteligencia artificial}: un asistente de inteligencia artificial (IA) ya puede analizar el mercado, proponer operaciones y, si el inversor le da permiso, enviarlas a su intermediario.\footnote{Por ejemplo, una habilidad (\emph{skill}) para asistentes de IA publicada en GitHub en 2026 por un particular, no por Anthropic, permite a Claude, el asistente de IA de Anthropic, preparar y enviar órdenes de bolsa por cuenta del usuario a través de un intermediario estadounidense, con una cuenta simulada por defecto y la confirmación del usuario antes de cada orden \parencite{Schincariol2026DayTrader}.} Eso abre 3 preguntas:
+  \begin{itemize}
+  \item \emph{¿Mejora la intermediación financiera?}: probablemente sí, porque abarata la formación financiera, el asesoramiento y la evaluación del riesgo de crédito, y acerca más ahorro a los Estados y las empresas que se financian con bonos; a cambio, puede trasladar a las decisiones los sesgos de sus datos \parencite{BIS2024AER}.
+  \item \emph{¿Bate al mercado?}: no de forma duradera, porque una ventaja al alcance de todos se arbitra hasta que solo compensa el coste de obtenerla, como predice la paradoja de \textcite{GrossmanStiglitz1980} \vertema{3.B.23}.
+  \item \emph{¿Hace eficientes los mercados?}: los hace más rápidos para incorporar la información pública, pero si todos usan modelos parecidos sus órdenes se correlacionan y pueden amplificar las caídas en los momentos de tensión \parencite{FMI2024GFSR3,FSB2024AI}.
+  \end{itemize}
+\item Los supervisores aplican a la IA las reglas que ya existen, como los controles de la negociación algorítmica de la directiva MiFID II y la evaluación de solvencia de alto riesgo del Reglamento de IA, y vigilan la dependencia de unos pocos proveedores de modelos (anexo~\ref{anexo:ia}).
 \item \emph{Recapitulación}: la duración mide el riesgo de tipo de interés, la convexidad lo afina y la inmunización lo neutraliza igualando la duración con el horizonte.
 \end{itemize}
 
@@ -942,6 +949,7 @@ La primera igualdad es la del arbitraje; la segunda define $y$: es el tipo únic
   \begin{itemize}
   \item Los derivados de tipos de interés, que se valoran con la curva y permiten cambiar la duración sin vender bonos \vertema{3.B.25}.
   \item El riesgo de tipo de interés de los bancos y las crisis \vertema{3.B.26}, y su regulación \vertema{3.B.27}.
+  \item La inteligencia artificial en los mercados de bonos: más intermediación y más eficiencia informativa, pero también más riesgo de que todos vendan a la vez (anexo~\ref{anexo:ia}).
   \item La transmisión de la política monetaria a lo largo de la curva y las compras de activos \vertema{3.A.37} \vertema{3.A.40}; la deuda pública y su sostenibilidad \vertema{3.A.39}; y el mercado español de renta fija \vertema{4.A.20}.
   \end{itemize}
 \item \textbf{\emph{Opinión}}:
@@ -1175,6 +1183,86 @@ $-3$ puntos & $+5{,}18$ & $+4{,}98$ & $+5{,}17$\\
 \end{tabular}
 \fuente{elaboración propia.}
 \end{table}
+
+% ==========================================================================
+\section{Anexo: la inteligencia artificial\cortetitulo{} y los mercados financieros}\label{anexo:ia}
+
+\begin{itemize}
+\item \emph{Por qué en este tema}: la negociación de bonos, que durante décadas se hizo por teléfono entre intermediarios, es hoy en gran parte electrónica. La deuda pública de los grandes países se negocia en plataformas y con algoritmos; la renta fija privada va más despacio, porque cada emisor tiene muchos bonos distintos y poco negociados \parencite{BIS2016Electronic}. La IA es el paso siguiente de esa automatización.
+\item \emph{Qué cambia}: el algoritmo que compra y vende existe desde hace décadas; lo nuevo es que cualquiera puede pedir a un asistente, en lenguaje natural, que analice el mercado y ejecute la operación. Entre 2017 y 2020, la parte de las solicitudes de patentes de negociación algorítmica con contenido de IA pasó del 19~\% a más de la mitad, y desde entonces no ha bajado de ahí \parencite{FMIBlog2024AI}.
+\end{itemize}
+
+\subsection{Un agente que opera por cuenta del inversor}
+
+\begin{itemize}
+\item \emph{Qué es}: un conjunto de 11 habilidades (\emph{skills}: instrucciones y programas que el asistente carga para una tarea) publicado en GitHub en 2026 con licencia libre (MIT) para que Claude, el asistente de IA de Anthropic, ayude a operar en bolsa dentro del día. Es obra de un particular, no un producto de Anthropic \parencite{Schincariol2026DayTrader}.
+\item \emph{Qué hace}, encadenando esas habilidades:
+  \begin{itemize}
+  \item busca valores con pautas en sus gráficos y sigue sus noticias, con datos públicos y gratuitos;
+  \item propone el momento de entrar y de salir, con su límite de pérdidas (\emph{stop}) y su objetivo, y simula 10.000 sesiones para ver cómo podría acabar la operación;
+  \item calcula el tamaño de la posición, comprueba unos límites de riesgo y envía la orden a través del conector de un intermediario estadounidense.
+  \end{itemize}
+\item \emph{Sus cautelas}: opera por defecto con una cuenta simulada; ninguna orden sale sin que el usuario la confirme; el apalancamiento, las ventas en corto y las opciones están desactivados salvo que el usuario los active; y advierte de que no es asesoramiento y de que la mayoría de quienes operan dentro del día pierden dinero.
+\item La herramienta resume bien las 3 preguntas de este anexo: si la IA mejora el acceso del ahorrador a los mercados, si le da una ventaja para batirlos y qué pasa cuando todos la usan.
+\end{itemize}
+
+\subsection{¿Mejora la IA la intermediación financiera?}
+
+\begin{itemize}
+\item \emph{Formación financiera}: muchos adultos no dominan el interés compuesto, la inflación o la diversificación, y eso se traduce en peores decisiones de ahorro, de deuda y de jubilación \parencite{LusardiMitchell2014Economic}. Un asistente que explica con paciencia, por ejemplo, por qué un bono pierde valor cuando suben los tipos, abarata esa formación y la pone al alcance de cualquiera.
+\item \emph{Asesoramiento}: los asesores automatizados (\emph{robo-advisors}) ya ofrecían carteras de fondos a bajo coste. Con ellos, los inversores poco diversificados diversifican más y caen menos en sesgos de conducta, como vender pronto lo que gana y aferrarse a lo que pierde \parencite{DAcuntoEtAl2019Promises}. La IA generativa extiende ese servicio barato a preguntas abiertas.
+\item \emph{Crédito}: con datos no tradicionales, la IA predice mejor el impago, sobre todo en los grupos con poco historial, y puede dar crédito a solventes que hoy no lo obtienen \parencite{BIS2024AER}. En las hipotecas de EE.~UU., los prestamistas tecnológicos tramitaban las solicitudes un 20~\% más rápido que los demás, sin más impagos \parencite{FusterEtAl2019Role}.
+\item \emph{Renta fija}: la IA lee folletos y contratos de emisión y da precios orientativos a bonos que apenas se negocian, lo que rebaja la barrera de entrada a la renta fija privada y a la soberana menos líquida \parencite{FMI2024GFSR3}. Más inversores y más liquidez en esos bonos abaratan la financiación de las empresas que los emiten.
+\item \emph{Las cautelas}:
+  \begin{itemize}
+  \item un modelo de crédito puede ser más preciso en conjunto y, aun así, ampliar las diferencias entre grupos de prestatarios \parencite{FusterEtAl2022Predictably};
+  \item un asistente de uso general puede equivocarse con aplomo, y no tiene los deberes de idoneidad y de lealtad de un asesor autorizado.
+  \end{itemize}
+\end{itemize}
+
+\subsection{¿Puede la IA batir al mercado?}
+
+\begin{itemize}
+\item \emph{Qué significa}: batir al mercado es obtener, de forma repetida, más rentabilidad que la que corresponde al riesgo asumido, una vez pagados los costes.
+\item \emph{La paradoja de \autor{Grossman} y \autor{Stiglitz}}: si los precios reflejaran toda la información, nadie pagaría por obtenerla, y entonces no podrían reflejarla. En equilibrio, el mercado es lo bastante ineficiente como para remunerar a quien se informa, y solo eso \parencite{GrossmanStiglitz1980} \vertema{3.B.23}. Con la IA, la ventaja de un modelo dura mientras pocos lo usan: cuando se difunde, las operaciones que lo explotan mueven los precios y la ventaja desaparece.
+\item \emph{La evidencia}: un modelo de lenguaje que puntúa los titulares de noticias predice las rentabilidades bursátiles del día siguiente, sobre todo en las empresas pequeñas y con las malas noticias; pero esa rentabilidad cae a medida que se generaliza el uso de estos modelos \parencite{LopezLiraTang2025Can}.
+\item \emph{Dónde quedan ventajas}: no en la herramienta, que es de todos, sino en lo que no se copia, como los datos propios, la rapidez, una ejecución barata o, en la renta fija, el acceso al balance de un intermediario. Por eso un inversor particular con la misma herramienta que millones de otros no tiene ventaja, y sí costes de transacción.
+\item \emph{En la renta fija}: en la deuda pública, cuyo precio fijan los tipos esperados y la prima por plazo, con información pública y muy seguida, hay poco que batir; queda más margen en el crédito y en los bonos poco líquidos, donde la información es cara de reunir.
+\end{itemize}
+
+\subsection{¿Y si todos usan IA?}
+
+\begin{itemize}
+\item \emph{Más eficiencia informativa}: si todos procesan la información pública más deprisa y mejor, los precios la incorporan antes. Según el FMI, la negociación con IA puede hacer los mercados más rápidos y eficientes, pero también traer más negociación y más volatilidad en los momentos de tensión; los fondos cotizados gestionados con IA, por ejemplo, rotan sus carteras bastante más que los demás \parencite{FMI2024GFSR3}.
+\item \emph{Pero más frágiles}, por 4 vías:
+  \begin{itemize}
+  \item \emph{comportamiento gregario}: modelos parecidos, entrenados con los mismos datos, dan las mismas recomendaciones, y en una crisis venden a la vez, con ventas forzadas que se realimentan \parencite{BIS2024AER,FMI2024GFSR3};
+  \item \emph{uniformidad de modelos y de proveedores}: solo unas pocas empresas ofrecen los modelos más avanzados, de modo que un fallo o un ciberataque en una de ellas afectaría a muchas entidades a la vez \parencite{BIS2024AER,FSB2024AI};
+  \item \emph{caídas relámpago}: el 15 de octubre de 2014, en los 12 minutos que van de las 9:33 a las 9:45, la rentabilidad del bono del Tesoro de EE.~UU. a 10 años cayó unos 16 puntos básicos y volvió casi a su nivel, sin noticias que lo justificaran; en el día se movió en un margen de 37 puntos básicos, inusual y de tamaño histórico \parencite{JSR2015October15,FedNotes2020October15}. En uno de los mercados más líquidos del mundo, la negociación automática ya puede producir saltos que nadie ha decidido;
+  \item \emph{colusión algorítmica}: algoritmos que aprenden por refuerzo pueden llegar, sin comunicarse, a precios por encima de los competitivos \parencite{CalvanoEtAl2020Artificial}; en simulaciones de mercados financieros, la misma colusión tácita entre operadores con IA reduce la liquidez y hace los precios menos informativos \parencite{DouGoldsteinJi2025AIPowered}.
+  \end{itemize}
+\item \emph{Conclusión}: la IA acerca los mercados a la eficiencia informativa en lo que todos pueden procesar, pero no a la eficiencia completa, que la paradoja de \autor{Grossman} y \autor{Stiglitz} hace imposible, y puede hacerlos menos estables: más eficientes en tiempos normales y más frágiles en los de tensión.
+\end{itemize}
+
+\subsection{La regulación}
+
+\begin{itemize}
+\item \emph{El principio}: misma actividad, mismo riesgo, misma regla. Quien usa IA responde de sus decisiones igual que si no la usara, y buena parte de los riesgos ya están cubiertos por las normas en vigor \parencite{FMI2024GFSR3,IOSCO2025AI}.
+\item \emph{Lo que ya existe en la Unión Europea}:
+  \begin{itemize}
+  \item la directiva MiFID II obliga a las empresas que negocian con algoritmos a tener sistemas y controles de riesgo, límites a las órdenes, pruebas y planes de continuidad, y a comunicarlo al supervisor (art.~17); y a los mercados, a tener mecanismos para detener la negociación ante movimientos bruscos (art.~48) \parencite{UE2014MiFID2};
+  \item la ESMA recordó en 2024 que las empresas que usan IA para asesorar o gestionar carteras siguen obligadas a actuar en el mejor interés del cliente, a comprobar la idoneidad de lo que recomiendan y a informar de cómo usan la IA \parencite{ESMA2024AI};
+  \item el Reglamento de IA clasifica como de alto riesgo los sistemas que evalúan la solvencia de las personas físicas o les asignan una calificación crediticia (anexo~III, punto 5, letra b), con exigencias de datos, documentación y supervisión humana \parencite{UE2024ReglamentoIA}; en 2026, la Unión aplazó esas obligaciones hasta el 2 de diciembre de 2027 \parencite{Consejo2026OmnibusIA}.
+  \end{itemize}
+\item \emph{Lo que piden los organismos internacionales}:
+  \begin{itemize}
+  \item calibrar los interruptores de la negociación y revisar las prácticas de márgenes, que pueden forzar ventas en cadena \parencite{FMI2024GFSR3};
+  \item vigilar mejor a los grandes operadores, también a los no bancarios, y pedir a las entidades un mapa de su dependencia de datos, modelos y proveedores \parencite{FMI2024GFSR3,FSB2024AI};
+  \item definir de forma coordinada qué proveedores de IA son críticos y reforzar la protección frente a ciberataques \parencite{FMI2024GFSR3}.
+  \end{itemize}
+\item \emph{Una pregunta abierta}: un asistente que analiza, propone y ejecuta órdenes por cuenta de un particular se parece mucho a un servicio de inversión (asesoramiento o gestión de carteras), que en la Unión exige autorización. Hoy la responsabilidad es del usuario que lo instala y del intermediario que ejecuta; cuando estos agentes se generalicen, el regulador tendrá que decidir dónde acaba la herramienta y empieza el servicio.
+\item Todas estas normas responden a los fallos de mercado que justifican la regulación financiera: la información asimétrica entre el inversor y quien lo asesora, y el riesgo sistémico de que muchos fallen a la vez \vertema{3.B.27}.
+\end{itemize}
 
 % ==========================================================================
 \section{Anexo: para el test}\label{anexo:test}
