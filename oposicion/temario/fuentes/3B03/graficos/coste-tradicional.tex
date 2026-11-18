@@ -1,0 +1,35 @@
+% Tesis tradicional: el coste del capital frente al peso de la deuda,
+% L = V_D/(V_D+V_E), entre 0 y 1. Sin impuestos: WACC = (1 - L) r_E + L r_D.
+% Valores: r_D = 5 hasta L = 0,45 y 5 + 30 (L - 0,45)^2 después (14,1 en L = 1);
+% r_E = 10 + 12 L^2 (convexa, 22 en L = 1). WACC en U: mínimo en L* = 0,517
+% (9,03); en L = 1 no hay acciones y WACC = r_D.
+% Colores del bloque II: r_E morado, r_D verde, WACC azul.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=0.2cm,
+    declare function={
+      rd(\x)=5+30*(\x>0.45)*(\x-0.45)^2;
+      re(\x)=10+12*\x^2;
+      w(\x)=(1-\x)*re(\x)+\x*rd(\x);}]
+  % 1: ejes (peso de la deuda entre 0 y 1) y la vertical de L = 1
+  \capa{1}{\draw[eje] (0,0) -- (1.1,0) node[right] {$L=\dfrac{V_D}{V_D+V_E}$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,26) node[above right=0pt and -2pt,font=\footnotesize] {coste del capital};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (1,24);}
+  % 2: r_D, plana y luego creciente
+  \capa{2}{\draw[curva3] plot[domain=0:1,samples=80] (\x,{rd(\x)});}
+  \capa{2}{\node[etiqueta,below,text=tceeverde] at (0.2,5) {$r_D$};}
+  % 3: r_E convexa
+  \capa{3}{\draw[curva1] plot[domain=0:1,samples=80] (\x,{re(\x)}) node[etiqueta,right,text=tceemorado] {$r_E$};}
+  % 4: WACC en U y su mínimo
+  \capa{4}{\draw[curva2] plot[domain=0:1,samples=100] (\x,{w(\x)});}
+  \capa{4}{\node[etiqueta,below,text=tceeazul] at (0.3,{w(0.3)}) {$\mathrm{WACC}$};}
+  \capa{4}{\node[punto,fill=tceeazul] (M) at (0.5171,9.0338) {};}
+  \capa{4}{\draw[guia] (M) -- (0.5171,0) node[below,text=black] {$L^*$};}
+  % 5: en L = 1 el WACC es el coste de la deuda
+  \capa{5}{\node[punto,fill=tceeverde] (F) at (1,14.075) {};}
+  \capa{5}{\node[etiqueta,right,align=left,font=\footnotesize] at (F) {$L=1$:\\ $\mathrm{WACC}=r_D$};}
+\end{tikzpicture}
+\end{document}

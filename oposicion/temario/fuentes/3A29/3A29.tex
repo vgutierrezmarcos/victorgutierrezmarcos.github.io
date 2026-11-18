@@ -953,7 +953,7 @@ Este anexo es la parte en tiempo discreto de la pieza común de optimización di
   \begin{equation}
   \optim{\max}{\{C_t\}}{\sum_{t=0}^{T}\beta^t\,u(C_t)}{b_{t+1}=(1+r)\,b_t+Y_t-C_t,\quad t=0,\dots,T\\ b_0\ \text{dado}\\ b_{T+1}\geq 0}\label{eq:problema-t-periodos}
   \end{equation}
-\item \emph{La condición terminal}, $b_{T+1}\geq 0$, hace falta:\footnote{Corrige la nota del original, que hablaba de una «tasa de ahorro negativa en $T$»: lo que se descarta es morir endeudado, $b_{T+1}<0$.}
+\item \emph{La condición terminal}, $b_{T+1}\geq 0$, hace falta:\footnote{No se trata de una «tasa de ahorro negativa en $T$»: lo que se descarta es morir endeudado, $b_{T+1}<0$.}
   \begin{itemize}
   \item sin ella, la solución sería endeudarse sin límite y consumir con cargo a esa deuda, que nadie devolvería: hay que impedir morir endeudado, $b_{T+1}<0$;
   \item tampoco interesa morir con activos, $b_{T+1}>0$, que podrían haberse consumido antes y dado utilidad.

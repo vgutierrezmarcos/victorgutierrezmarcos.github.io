@@ -9,7 +9,7 @@ que copia un texto para pegarlo en la conversación).
 Lee la sección «Dudas abiertas» del revision.md de cada tema revisado y aún sin
 aprobar (estado.json → aprobado.tema), en todos los worktrees de la revisión
 (…-revision, …-revision-2…; de cada tema, el revision.md más reciente), más
-las dudas generales de canon/dudas-generales.md (misma sección). Las dudas
+las dudas generales de oposicion/temario/dudas-generales.md (misma sección). Las dudas
 nuevas (no vistas en la última ejecución con --marcar-vistas) salen marcadas.
 
     python3 scripts/temario/dudas/dudas-pagina.py               # rehace la página
@@ -62,6 +62,24 @@ def revisiones():
             if t not in elegidos or os.path.getmtime(f) > os.path.getmtime(elegidos[t][0]):
                 elegidos[t] = (f, wt)
     return elegidos
+
+
+def aprobados_registro():
+    """Temas aprobados según oposicion/temario/estado-revision.md (fila «b)»),
+    con rangos como 3A01-3A31."""
+    try:
+        txt = open(os.path.join(RAIZ, 'oposicion', 'temario', 'estado-revision.md'), encoding='utf-8').read()
+    except OSError:
+        return set()
+    m = re.search(r'^\| b\)[^|]*\|[^|]*\|([^|]*)\|', txt, re.M)
+    temas = set()
+    for a, b in re.findall(r'(\d[AB]\d\d)(?:-(\d[AB]\d\d))?', m.group(1) if m else ''):
+        if not b:
+            temas.add(a)
+            continue
+        for n in range(int(a[2:]), int(b[2:]) + 1):
+            temas.add(f'{a[:2]}{n:02d}')
+    return temas
 
 
 def aprobado(ruta_rev):
@@ -137,14 +155,15 @@ def main():
     except (OSError, ValueError):
         vistas = None   # primera vez: ninguna sale como nueva
     temas = []
-    general = os.path.join(RAIZ, 'oposicion', 'temario', 'canon', 'dudas-generales.md')
+    general = os.path.join(RAIZ, 'oposicion', 'temario', 'dudas-generales.md')
     if os.path.exists(general):
         ds, intro = dudas_de(open(general, encoding='utf-8').read(), 'GEN')
         if any('id' in d for d in ds):
             temas.append({'T': 'GEN', 'cod': 'General', 'titulo': 'Criterios, web y dudas comunes a varios temas',
                           'cuenta': 'trabajo', 'intro': intro, 'dudas': ds})
+    registro = aprobados_registro()
     for T, (ruta, wt) in sorted(revisiones().items()):
-        if aprobado(ruta):
+        if aprobado(ruta) or T in registro:
             continue
         ds, intro = dudas_de(open(ruta, encoding='utf-8').read(), T)
         if not any('id' in d for d in ds):

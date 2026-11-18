@@ -1,0 +1,37 @@
+% Modigliani y Miller (1958) sin posibilidad de quiebra, con el peso de la
+% deuda L = V_D/(V_D+V_E) entre 0 y 1. r_A = 10, r_D = 5 (sin riesgo).
+% Proposición II en L: r_E = r_A + (r_A - r_D) L/(1 - L), con asíntota en L = 1;
+% WACC = (1 - L) r_E + L r_D = r_A. Nuestra empresa: L = 0,4, r_E = 13,3.
+% En L = 1 no quedan acciones: la deuda es la empresa entera y soporta todo el
+% riesgo de los activos, así que no puede seguir siendo sin riesgo: r_D = r_A
+% (punto aislado; el tramo plano de r_D solo vale lejos de L = 1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=0.2cm,
+    declare function={re(\x)=10+5*\x/(1-\x);}]
+  % 1: ejes y la vertical de L = 1, que es la asíntota de r_E
+  \capa{1}{\draw[eje] (0,0) -- (1.1,0) node[right] {$L=\dfrac{V_D}{V_D+V_E}$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,28) node[above right=0pt and -2pt,font=\footnotesize] {coste del capital};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (1,27);}
+  % 2: r_D plana (deuda sin riesgo); en L = 1 deja de valer (círculo vacío)
+  \capa{2}{\draw[curva3] (0,5) -- (0.985,5);}
+  \capa{2}{\node[circle,draw=tceeverde,thick,fill=white,inner sep=1.3pt] at (1,5) {};}
+  \capa{2}{\node[etiqueta,below,text=tceeverde] at (0.5,5) {$r_D$ (sin riesgo)};}
+  % 3: r_E creciente y cada vez más deprisa, con asíntota en L = 1
+  \capa{3}{\draw[curva1] plot[domain=0:0.785,samples=100] (\x,{re(\x)}) node[etiqueta,left,text=tceemorado] {$r_E$};}
+  \capa{3}{\node[etiqueta,left,font=\footnotesize,text=tceemorado] at (0.7,24) {$r_E\to\infty$ si $L\to1$};}
+  % 4: nuestra empresa, L = 0,4
+  \capa{4}{\node[punto,fill=tceemorado] (N) at (0.4,13.333) {};}
+  \capa{4}{\draw[guia] (N) -- (0.4,0) node[below,text=black] {$0{,}4$};}
+  \capa{4}{\node[etiqueta,above left,font=\footnotesize] at (N) {$13{,}3~\%$};}
+  % 5: WACC = r_A, plano hasta L = 1
+  \capa{5}{\draw[curva2] (0,10) node[left,text=black] {$r_A$} -- (1,10);}
+  \capa{5}{\node[etiqueta,above,text=tceeazul] at (0.6,10) {$\mathrm{WACC}=r_A$};}
+  % 6: en L = 1 toda la empresa es deuda: r_D = r_A
+  \capa{6}{\node[punto,fill=tceeverde] (F) at (1,10) {};}
+  \capa{6}{\node[etiqueta,right,align=left,font=\footnotesize] at (F) {$L=1$:\\ $r_D=r_A$};}
+\end{tikzpicture}
+\end{document}

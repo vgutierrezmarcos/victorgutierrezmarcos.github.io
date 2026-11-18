@@ -1,0 +1,35 @@
+% Modigliani y Miller (1958) con posibilidad de quiebra (deuda con riesgo), con
+% L = V_D/(V_D+V_E) entre 0 y 1. r_A = 10. r_D = 5 hasta L = 0,3 y después
+% 5 + 5 u^2, con u = (L - 0,3)/0,7: sube hasta r_A = 10 en L = 1.
+% r_E = r_A + (r_A - r_D) L/(1 - L): hasta 0,3 como sin riesgo; desde 0,3,
+% 10 + 5 (1 + u) L/0,7 (sube menos y acaba en 24,3 en L = 1). WACC = r_A.
+% En guía, la r_E de la deuda sin riesgo, para comparar.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=0.2cm,
+    declare function={
+      u(\x)=(\x-0.3)/0.7;
+      rd(\x)=5+5*u(\x)^2;
+      resin(\x)=10+5*\x/(1-\x);
+      recon(\x)=10+5*(1+u(\x))*\x/0.7;}]
+  % 1: ejes y la vertical de L = 1
+  \capa{1}{\draw[eje] (0,0) -- (1.1,0) node[right] {$L=\dfrac{V_D}{V_D+V_E}$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,28) node[above right=0pt and -2pt,font=\footnotesize] {coste del capital};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (1,27);}
+  % 2: WACC = r_A, plano
+  \capa{2}{\draw[curva2] (0,10) node[left,text=black] {$r_A$} -- (1,10);}
+  \capa{2}{\node[etiqueta,above,text=tceeazul] at (0.62,10) {$\mathrm{WACC}=r_A$};}
+  % 3: r_D, plana y después creciente hasta r_A en L = 1
+  \capa{3}{\draw[curva3] (0,5) -- (0.3,5) plot[domain=0.3:1,samples=60] (\x,{rd(\x)});}
+  \capa{3}{\node[etiqueta,below,text=tceeverde] at (0.2,5) {$r_D$};}
+  \capa{3}{\node[punto,fill=tceeverde] (F) at (1,10) {};}
+  \capa{3}{\node[etiqueta,right,align=left,font=\footnotesize] at (F) {$L=1$:\\ $r_D=r_A$};}
+  % 4: r_E sin riesgo, como referencia
+  \capa{4}{\draw[guia] plot[domain=0.3:0.785,samples=60] (\x,{resin(\x)}) node[etiqueta,left,text=tceegris,font=\footnotesize] {sin riesgo};}
+  % 5: r_E con deuda con riesgo: sube menos
+  \capa{5}{\draw[curva1] plot[domain=0:0.3,samples=30] (\x,{resin(\x)}) -- plot[domain=0.3:1,samples=60] (\x,{recon(\x)}) node[etiqueta,right,text=tceemorado] {$r_E$};}
+\end{tikzpicture}
+\end{document}

@@ -121,6 +121,7 @@ Todas del 13/11/2026, aplicadas con la opción recomendada.
 - **B01-09** Extensión: 36 págs. de tema. (a) **Se mantiene: lo no cantable va en cajas grises, notas y anexos** — *Aplicada: (a)*; (b) pasar a anexo la sostenibilidad y las reformas del PGC.
 - **B01-10** Datos con una sola fuente o sin segunda comprobación propia: «más de 140 jurisdicciones» (IFRS), sectores «información y comunicaciones» y «resto» de la CBT, el caducado de los proyectos de ley (RD 806/2026, según la fase de datos). Comprobar antes de publicar; la nota de la CBT del tercer trimestre sale a finales de noviembre de 2026.
 - **B01-11** «Gonzalo, Pérez y Serrano (2000)», fuente de la tabla 1 según Garrido e Íñiguez: no encontrada; se cita en el pie como texto, sin entrada en la bibliografía.
+- **B01-12** (18/11/2026) Detalle de los modelos del anexo A. (a) **Epígrafes (A, A-1, I, II…) en el balance y el ECPN, y epígrafes con sus partidas a), b)… en la cuenta de pérdidas y ganancias y el EFE; memoria con sus 25 notas; anexo A, el primero, porque desarrolla el apartado II** — *Aplicada: (a)*; (b) el balance también con todas sus partidas (1., 2.… de cada epígrafe), unas 2 páginas más; (c) el anexo al final, detrás del ciclo contable.
 
 ## 8. Instrucciones para el vídeo
 
@@ -144,3 +145,8 @@ Todas del 13/11/2026, aplicadas con la opción recomendada.
 - Nota del inmovilizado intangible (balance): «Hay que distinguir 3 conceptos:» patente, marca y fondo de comercio; la amortización del fondo de comercio, en párrafo aparte.
 - Nota del margen bruto (cuenta de pérdidas y ganancias): consumo de materias primas, coste de la producción y coste de las ventas en itemize.
 - No se convierten: la de los umbrales de las cuentas abreviadas y la auditoría (con ejemplo, mejor seguida), la de los tipos de opinión de auditoría (lista corta), la de actividad interrumpida ni las de Nobel.
+
+## Comentarios de Víctor (18/11/2026)
+
+- **Figura 2 «al revés»**: las 5 partes del PGC estaban apiladas de abajo arriba (la 1.ª abajo y la 5.ª arriba, como unos cimientos), de modo que se leían 5.ª → 1.ª. Rehecha (`graficos/partes-pgc.tex`) en el orden del PGC, de arriba abajo (1.ª arriba, 5.ª abajo), con las cajas del mismo ancho y las llaves igual (obligatorias las 3 primeras; voluntarias la 4.ª y la 5.ª, salvo registro y valoración, art. 2 del RD 1514/2007). Sale igual en la ficha de repaso (reconstruida, sigue en 4 págs.). Las capas del vídeo no cambian (1: las 3 obligatorias; 2: las 2 voluntarias; 3: llaves).
+- **Esquemas desarrollados de los documentos en el anexo**: nuevo anexo A, «Los modelos de las cuentas anuales del PGC», en tablas LaTeX con la estructura de epígrafes del modelo normal vigente (texto consolidado del BOE, comprobado el 18/11/2026: RD 1159/2010, RD 602/2016 y RD 1/2021): balance en T (tabla 7, A-2.I «Activos financieros a valor razonable con cambios en el patrimonio neto», RD 1/2021), cuenta de pérdidas y ganancias con las partidas 1-18 y los subtotales A.1-A.5 (tabla 8), ECPN en sus 2 partes (tablas 9 y 10), EFE con sus partidas (tabla 11) y las 25 notas de la memoria (tabla 12). Remisiones desde II.3 (cuentas anuales, balance, PyG, ECPN, EFE y memoria). Los demás anexos pasan a B-G (las remisiones son `\ref`). Anexos: de 7 a 12 págs.; tema, 35 págs. (sin cambios). Duda B01-12.

@@ -85,7 +85,7 @@ Conclusión\esqtiempo{1}
 \end{esquema}
 
 \begin{notaopositor}
-Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{6,5} (I.1, \tiempo{2}; I.2, \tiempo{1,5}; I.3, \tiempo{3}: acciones, deuda e híbridos, \tiempo{1,5}, y banco frente a mercado, \tiempo{1,5}); II, \tiempo{13,5} (II.1, \tiempo{1}; II.2, \tiempo{1}; II.3, \tiempo{11,5}: perspectiva tradicional, \tiempo{1}; \autor{Modigliani} y \autor{Miller} sin impuestos, \tiempo{4}; impuestos, \tiempo{2}; teoría del equilibrio, \tiempo{1,5}; información asimétrica y agencia, \tiempo{2,5}; factores en la práctica, \tiempo{0,5}); III, \tiempo{6,5} (III.1, \tiempo{1}; III.2, \tiempo{2,5}; III.3, \tiempo{3}), y conclusión, \tiempo{1}. La introducción y la conclusión llevan el dicho del enganche, «no hay que matar la gallina de los huevos de oro». Las funciones clave, hasta el final, son $V=V_E+V_D$, las proposiciones de \autor{Modigliani} y \autor{Miller} \eqref{eq:mm} y la teoría del equilibrio \eqref{eq:trade-off}. Los números de nuestra empresa acompañan todo el tema, y los dichos van cada uno junto a su concepto: «los mismos perros con distinto collar» (irrelevancia), «ni tanto que queme al santo, ni tanto que no lo alumbre» (teoría del equilibrio), «la ocasión hace al ladrón» (flujo de caja libre) y «la ropa sucia se lava en casa» (jerarquía financiera). En el bloque~\ref{sec:fuentes}, la matriz de fuentes (tabla~\ref{tab:matriz-fuentes}) y la tabla~\ref{tab:propia-ajena} de palabra. En el bloque~\ref{sec:estructura}, el coste del capital frente a $V_D/V_E$ por capas (gráfico~\ref{fig:coste-capital}), imprescindible; después, el valor de la empresa frente a la deuda (gráfico~\ref{fig:valor-tradeoff}), imprescindible, y la escalera de la jerarquía financiera (gráfico~\ref{fig:jerarquia}). En el bloque~\ref{sec:dividendos}, el precio de la acción frente a la tasa de retención con las 3 curvas de \autor{Walter} (gráfico~\ref{fig:walter}). Los gráficos de datos, las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{6,5} (I.1, \tiempo{2}; I.2, \tiempo{1,5}; I.3, \tiempo{3}: acciones, deuda e híbridos, \tiempo{1,5}, y banco frente a mercado, \tiempo{1,5}); II, \tiempo{13,5} (II.1, \tiempo{1}; II.2, \tiempo{1}; II.3, \tiempo{11,5}: perspectiva tradicional, \tiempo{1}; \autor{Modigliani} y \autor{Miller} sin impuestos, \tiempo{4}; impuestos, \tiempo{2}; teoría del equilibrio, \tiempo{1,5}; información asimétrica y agencia, \tiempo{2,5}; factores en la práctica, \tiempo{0,5}); III, \tiempo{6,5} (III.1, \tiempo{1}; III.2, \tiempo{2,5}; III.3, \tiempo{3}), y conclusión, \tiempo{1}. La introducción y la conclusión llevan el dicho del enganche, «no hay que matar la gallina de los huevos de oro». Las funciones clave, hasta el final, son $V=V_E+V_D$, las proposiciones de \autor{Modigliani} y \autor{Miller} \eqref{eq:mm} y la teoría del equilibrio \eqref{eq:trade-off}. Los números de nuestra empresa acompañan todo el tema, y los dichos van cada uno junto a su concepto: «los mismos perros con distinto collar» (irrelevancia), «ni tanto que queme al santo, ni tanto que no lo alumbre» (teoría del equilibrio), «la ocasión hace al ladrón» (flujo de caja libre) y «la ropa sucia se lava en casa» (jerarquía financiera). En el bloque~\ref{sec:fuentes}, la matriz de fuentes (tabla~\ref{tab:matriz-fuentes}) y la tabla~\ref{tab:propia-ajena} de palabra. En el bloque~\ref{sec:estructura}, el coste del capital frente al peso de la deuda, $L$, entre 0 y 1, un gráfico por tesis (gráficos~\ref{fig:coste-tradicional} a~\ref{fig:coste-equilibrio}, resumidos en el gráfico~\ref{fig:coste-capital}), imprescindible; después, el valor de la empresa frente a la deuda (gráfico~\ref{fig:valor-tradeoff}), imprescindible, y la escalera de la jerarquía financiera (gráfico~\ref{fig:jerarquia}). En el bloque~\ref{sec:dividendos}, el precio de la acción frente a la tasa de retención con las 3 curvas de \autor{Walter} (gráfico~\ref{fig:walter}). Los gráficos de datos, las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
 \end{notaopositor}
 
 % ==========================================================================
@@ -172,39 +172,91 @@ En el cante (\tiempo{6,5}). La apertura, de palabra. I.1, \tiempo{2}: la matriz 
 \paragraph{Autofinanciación de enriquecimiento: las reservas}
 
 \begin{itemize}
-\item Según su origen, las reservas son:
+\item La autofinanciación de enriquecimiento está compuesta de las \emph{reservas}, que según su origen son:
   \begin{itemize}
   \item \emph{legal}: las sociedades de capital destinan el 10~\% del beneficio de cada ejercicio a esta reserva hasta que alcance al menos el 20~\% del capital social, y mientras no supere ese límite solo puede usarse para compensar pérdidas si no hay otras reservas\nocite{LSC2010}. Protege a los acreedores, no a los socios;
   \item \emph{estatutarias}: las que fijan los estatutos de la sociedad;
   \item \emph{voluntarias}: las que decide la junta de accionistas.
   \end{itemize}
-\item \emph{El efecto multiplicador}: si la empresa quiere mantener constante su ratio de endeudamiento $V_D/V_E$ (aquí a valores contables \vertema{3.B.2}), cada euro de reservas le permite pedir prestados otros $V_D/V_E$ euros, y los recursos totales crecen más que las reservas:
-  \begin{equation}\label{eq:multiplicador}
-  \Delta(\text{recursos totales})=\Delta V_E+\Delta V_D=\Big(1+\frac{V_D}{V_E}\Big)\,\Delta V_E.
-  \end{equation}
-  Cuanto más endeudada esté la empresa, mayor es el efecto expansivo de la autofinanciación.
+\item \emph{El efecto multiplicador}: las reservas no solo financian por sí mismas, sino que permiten pedir más deuda. Se ve en 3 pasos, con valores contables \vertema{3.B.2}:
   \begin{itemize}
-  \item En nuestra empresa, financiada con 600 de fondos propios y 400 de deuda, $V_D/V_E=2/3$: 60 euros de beneficio retenido le permiten pedir prestados otros 40 e invertir 100.
+  \item \emph{Paso 1, los recursos totales}:
+    \begin{itemize}
+    \item la empresa financia su activo con su patrimonio neto, $V_E$, y con su pasivo, $V_D$. Dividiendo por el patrimonio neto aparece la ratio de endeudamiento:
+    \[
+    \text{Recursos totales}=V_E+V_D\ \Longrightarrow\ \frac{\text{Recursos totales}}{V_E}=1+\underbrace{\frac{V_D}{V_E}}_{\text{ratio de endeudamiento}}.
+    \]
+    \end{itemize}
+  \item \emph{Paso 2, la ratio constante}:
+    \begin{itemize}
+    \item si la empresa quiere mantener constante su ratio de endeudamiento, cada aumento de las reservas ($\uparrow$ reservas $\Rightarrow$ $\uparrow V_E$) tiene que ir acompañado de un aumento de la deuda. Si el patrimonio neto sube 1 euro, la deuda tiene que subir $V_D/V_E$ euros para que la ratio no cambie:
+    \[
+    \Delta V_D=\frac{V_D}{V_E}\,\Delta V_E.
+    \]
+    \end{itemize}
+  \item \emph{Paso 3, el multiplicador}:
+    \begin{itemize}
+    \item la variación de los recursos totales es, por tanto,
+    \begin{equation}\label{eq:multiplicador}
+    \Delta(\text{recursos totales})=\Delta V_E+\underbrace{\Delta V_D}_{=\frac{V_D}{V_E}\,\Delta V_E}=\Big(1+\frac{V_D}{V_E}\Big)\,\Delta V_E.
+    \end{equation}
+    \end{itemize}
+  \end{itemize}
+\item La autofinanciación tiene así un \emph{efecto expansivo} sobre la capacidad productiva, y cuanto más endeudada esté la empresa, mayor es: con una ratio alta, cada euro de reservas arrastra más deuda.
+  \begin{itemize}
+  \item En nuestra empresa, financiada con 600 de fondos propios y 400 de deuda, $V_D/V_E=2/3$: 60 euros de beneficio retenido le permiten pedir prestados otros $\tfrac23\cdot60=40$ e invertir $\big(1+\tfrac23\big)\cdot60=100$.
   \end{itemize}
 \end{itemize}
 
 \paragraph{Autofinanciación de mantenimiento: amortizaciones y provisiones}
 
 \begin{itemize}
-\item Las \emph{amortizaciones} son el gasto con que cada año se reconoce la depreciación de los activos.\footnote{Métodos de amortización:
+\item La autofinanciación de mantenimiento está compuesta de:
+  \begin{itemize}
+  \item las \emph{amortizaciones}, el gasto con que cada año se reconoce la depreciación de los activos.\footnote{Métodos de amortización:
 \begin{itemize}
 \item \emph{lineal}: en cuotas fijas, $A=(V_0-V_R)/n$, con $V_0$ el valor de compra, $V_R$ el residual y $n$ la vida útil;
 \item \emph{acelerados}: con cuotas más altas al principio (por ejemplo, un coeficiente constante sobre una base que decrece).
-\end{itemize}} Como no son un pago, la caja que representan se queda en la empresa hasta que haya que reponer el activo.
-\item Las \emph{provisiones} son gastos por obligaciones o pérdidas probables cuyo importe o fecha son inciertos (un litigio, una garantía). Mientras el riesgo no se materializa, los fondos se quedan en la empresa.
+\end{itemize}} Como no son un pago, la caja que representan se queda en la empresa hasta que haya que reponer el activo;
+  \item las \emph{provisiones}, gastos por obligaciones o pérdidas probables cuyo importe o fecha son inciertos (un litigio, una garantía). Mientras el riesgo no se materializa, los fondos se quedan en la empresa.
+  \end{itemize}
+\item Las 2 evitan que el patrimonio neto disminuya; no lo aumentan.
 \item \concepto{Efecto \autor{Lohmann}-\autor{Ruchti}}: si las amortizaciones se reinvierten en cuanto se dotan, la capacidad productiva no solo se mantiene, sino que crece, aunque la empresa no aporte un euro nuevo. Requiere 4 supuestos:
-  \begin{itemize}
+  \begin{enumerate}
   \item que no haya obsolescencia: los activos nuevos rinden lo mismo que los viejos;
   \item que los activos sean divisibles;
   \item que no haya inflación;
   \item y que la amortización libere de verdad recursos, es decir, que se recupere vía precios y no sea un mero apunte contable.
+  \end{enumerate}
+\item \emph{El ejemplo de la flota}: una empresa pesquera compra 10 barcos de 1 millón de euros cada uno, con una vida útil de 10 años, sin valor residual y con amortización lineal: 100.000 euros por barco y año. Si reinvierte cada año lo que amortiza (tabla~\ref{tab:lohmann}):
+  \begin{itemize}
+  \item el primer año amortiza 1 millón y compra un barco más: tiene 11;
+  \item el segundo amortiza 1,1 millones, compra otro y le sobran 100.000 euros;
+  \item y así sucesivamente: la flota crece sin que la empresa aporte un euro nuevo.
   \end{itemize}
-\item El ejemplo clásico, el de una flota de barcos que crece sola, está en el anexo~\ref{anexo:lohmann}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El efecto \autor{Lohmann}-\autor{Ruchti}: una flota que reinvierte sus amortizaciones}\label{tab:lohmann}
+\begin{tabular}{>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Año} & \textbf{Amortización (millones)} & \textbf{Barcos comprados} & \textbf{Barcos al final} & \textbf{Caja sobrante (millones)} \\
+\midrule
+1 & 1,0 & 1 & 11 & 0,0 \\
+2 & 1,1 & 1 & 12 & 0,1 \\
+3 & 1,2 & 1 & 13 & 0,3 \\
+4 & 1,3 & 1 & 14 & 0,6 \\
+5 & 1,4 & 2 & 16 & 0,0 \\
+\rowcolor{tceesalvia}A largo plazo & --- & --- & en torno a 18 & --- \\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{itemize}
+\item En el año 10 se retiran los 10 barcos iniciales y la flota baja; a largo plazo, con barcos de todas las edades, se estabiliza en torno a 18, cerca de $2n/(n+1)$ veces la inicial con $n=10$ años de vida útil.
+\item Lo que crece es la capacidad \emph{de cada periodo}, no la capacidad \emph{total}: los años de uso que quedan a la flota no aumentan, porque la flota envejece. Y el efecto depende de los 4 supuestos: sin obsolescencia, con activos divisibles, sin inflación y con una amortización que se recupere de verdad con las ventas.
 \end{itemize}
 
 \subsubsection{Coste de la autofinanciación}\label{sec:coste-autofinanciacion}
@@ -309,7 +361,7 @@ En el cante (\tiempo{6,5}). La apertura, de palabra. I.1, \tiempo{2}: la matriz 
 \minutos{13,5}
 
 \begin{notaopositor}
-En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\ref{figu:balance-financiero}) y la palanca financiera en una línea con nuestra empresa. II.2, \tiempo{1}: el $\mathrm{WACC}$ \eqref{eq:wacc} en una línea. II.3, \tiempo{11,5}: el gráfico~\ref{fig:coste-capital} con $V_D/V_E$ en abscisas; la tesis tradicional (panel a, \tiempo{1}); las curvas de \autor{Modigliani} y \autor{Miller} (panel b), con \eqref{eq:mm}, el arbitraje de nuestra empresa en 3 líneas y «los mismos perros con distinto collar» (\tiempo{4}); los impuestos con la fórmula de \autor{Miller} \eqref{eq:miller} en una línea y el panel c sobre los mismos ejes (\tiempo{2}); la teoría del equilibrio, \eqref{eq:trade-off}, el panel d y el gráfico~\ref{fig:valor-tradeoff}, con «ni tanto que queme al santo, ni tanto que no lo alumbre» (\tiempo{1,5}); la agencia y la jerarquía financiera con la escalera del gráfico~\ref{fig:jerarquia}, «la ocasión hace al ladrón» y «la ropa sucia se lava en casa» (\tiempo{2,5}); los factores, de palabra (\tiempo{0,5}). Las tablas~\ref{tab:supuestos-mm} y~\ref{tab:teorias-estructura} y los gráficos de datos son de apoyo.
+En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\ref{figu:balance-financiero}) y la palanca financiera en una línea con nuestra empresa. II.2, \tiempo{1}: el $\mathrm{WACC}$ \eqref{eq:wacc} en una línea. II.3, \tiempo{11,5}: el coste del capital con $L$ en abscisas, entre 0 y 1; la tesis tradicional (gráfico~\ref{fig:coste-tradicional}, \tiempo{1}); las 2 proposiciones de \autor{Modigliani} y \autor{Miller} con \eqref{eq:mm}, el gráfico~\ref{fig:coste-mm} (y qué pasa en $L=1$), el arbitraje de nuestra empresa en 3 líneas y «los mismos perros con distinto collar» (\tiempo{4}); los impuestos con el reparto del resultado de nuestra empresa (figura~\ref{figu:escudo-fiscal}), el gráfico~\ref{fig:coste-mm-is} y la fórmula de \autor{Miller} \eqref{eq:miller} con la figura~\ref{figu:miller} (\tiempo{2}); la teoría del equilibrio, \eqref{eq:trade-off}, los gráficos~\ref{fig:valor-tradeoff} y~\ref{fig:coste-equilibrio}, con «ni tanto que queme al santo, ni tanto que no lo alumbre» (\tiempo{1,5}); la agencia y la jerarquía financiera con la escalera del gráfico~\ref{fig:jerarquia}, «la ocasión hace al ladrón» y «la ropa sucia se lava en casa» (\tiempo{2,5}); los factores, de palabra (\tiempo{0,5}). Las tablas~\ref{tab:supuestos-mm} y~\ref{tab:teorias-estructura} y los gráficos de datos son de apoyo.
 \end{notaopositor}
 
 \begin{itemize}
@@ -392,17 +444,17 @@ En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\re
   \begin{itemize}
   \item el coste de los fondos propios, $r_E$, crece con el endeudamiento, porque el accionista soporta más riesgo financiero, y lo hace de forma \emph{convexa}: cada vez más deprisa;
   \item el coste de la deuda, $r_D$, es constante hasta un cierto nivel de endeudamiento y creciente después, cuando el riesgo de insolvencia empieza a pesar; siempre es menor que $r_E$, porque el acreedor cobra antes;
-  \item el $\mathrm{WACC}$ es primero decreciente, porque se sustituye financiación cara por barata, y después creciente, cuando suben a la vez $r_E$ y $r_D$: tiene forma de U, con un mínimo en $(V_D/V_E)^*$ (gráfico~\ref{fig:coste-capital}, panel a).
+  \item el $\mathrm{WACC}$ es primero decreciente, porque se sustituye financiación cara por barata, y después creciente, cuando suben a la vez $r_E$ y $r_D$: tiene forma de U, con un mínimo en $L^*$ (gráfico~\ref{fig:coste-tradicional}).
   \end{itemize}
 \item \emph{Implicación}: hay un endeudamiento óptimo, y las decisiones de inversión y de financiación están ligadas, porque la tasa con que se evalúan los proyectos depende de cómo se financian.
-\item El gráfico~\ref{fig:coste-capital} reúne en 4 paneles, sobre los mismos ejes, las respuestas que se van a ver en este apartado; el panel a es el de la tesis tradicional.
+\item \emph{Interpretación gráfica}: en todos los gráficos del coste del capital de este apartado, en abscisas va el \emph{peso} de la deuda, $L=V_D/(V_D+V_E)$, que va de 0 a 1. En $L=0$ la empresa no tiene deuda y el $\mathrm{WACC}$ es $r_E$; en $L=1$ no tiene acciones y el $\mathrm{WACC}$ es el coste de la deuda, $r_D$. En la tesis tradicional (gráfico~\ref{fig:coste-tradicional}), $r_D$ es plana y luego sube; $r_E$, convexa, y el $\mathrm{WACC}$, en U, con su mínimo en $L^*$.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{El coste del capital y la estructura financiera: tesis tradicional, \autor{Modigliani} y \autor{Miller} con y sin impuestos y teoría del equilibrio}\label{fig:coste-capital}
-\grafico[0.95\textwidth]{coste-capital}
-\fuente{elaboración propia a partir de \textcite{ModiglianiMiller1958Cost}, \textcite{ModiglianiMiller1963Corporate} y \textcite{Myers1984Capital}.}
+\caption{La tesis tradicional: el coste del capital y el peso de la deuda}\label{fig:coste-tradicional}
+\grafico[0.75\textwidth]{coste-tradicional}
+\fuente{elaboración propia a partir de \textcite{Durand1952Costs}.}
 \end{figure}
 
 \begin{itemize}
@@ -436,22 +488,99 @@ En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\re
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \concepto{Proposición I}: el valor de mercado de una empresa no depende de su estructura del capital; es el de sus flujos de explotación descontados a la rentabilidad de su clase de riesgo, $r_A$. \concepto{Proposición II}: la rentabilidad que exigen los accionistas crece linealmente con la ratio deuda/fondos propios, porque soportan el riesgo financiero:
+\item \textcite{ModiglianiMiller1958Cost} hacen 2 proposiciones fundamentales:
+  \begin{itemize}
+  \item \concepto{Proposición I}, sobre el valor de la empresa: el valor de mercado de una empresa no depende de su estructura del capital. Es el de sus flujos de explotación descontados a la rentabilidad de su clase de riesgo, $r_A$, así que depende solo de la capacidad de sus activos para generar beneficios. Endeudarse cambia cómo se reparten esos flujos entre accionistas y acreedores, no cuánto valen.
+  \item \concepto{Proposición II}, sobre la rentabilidad de las acciones: la rentabilidad que exigen los accionistas crece linealmente con la ratio deuda/fondos propios, $V_D/V_E$. Con más deuda, lo que queda para el accionista después de pagar los intereses es más variable: soporta el \emph{riesgo financiero} y exige que se lo paguen. La deuda es más barata, pero encarece los fondos propios justo lo necesario para que el coste medio no cambie.
+  \end{itemize}
+\item Las 2 proposiciones, juntas, son:
   \funcionclave[eq:mm]{V_L=V_U\qquad\text{y}\qquad r_E=r_A+(r_A-r_D)\,\frac{V_D}{V_E}}
   Sin impuestos, $r_A$ es a la vez el $\mathrm{WACC}$ de cualquier empresa de la clase, tenga la deuda que tenga.
 \item \emph{Por qué se cumple la proposición I: el arbitraje}. Si 2 empresas generan los mismos flujos y una vale más solo por tener deuda, los inversores ganan sin riesgo vendiendo la cara y comprando la barata. Es el \emph{apalancamiento casero} (\emph{homemade leverage}): el inversor puede endeudarse o prestar por su cuenta y replicar o deshacer la estructura de cualquier empresa, así que no paga nada por ella.
   \begin{itemize}
   \item Volvamos a nuestra empresa, con un $\mathrm{EBIT}$ esperado de 100 al año para siempre y $r_A=10$~\%. Sin deuda (U), vale $V_U=100/0{,}10=1.000$. Con 400 de deuda al 5~\% (L), paga 20 de intereses y deja 80 a los accionistas.
   \item Supongamos que el mercado valorase sus acciones en 700, de modo que $V_L=1.100$. Quien tenga el 1~\% de L (7 euros, que le rinden $0{,}01\cdot80=0{,}8$) puede venderlo, pedir prestados 4 euros al 5~\% (paga 0,2 de intereses) y comprar el 1~\% de U por 10 (cobra 1): sigue cobrando $1-0{,}2=0{,}8$, con el mismo riesgo, y le sobra 1 euro.
-  \item Mientras la diferencia exista, todos harán lo mismo, hasta que las acciones de L valgan 600 y $V_L=V_U=1.000$. Si L valiera menos que U, se haría al revés: vender U y comprar acciones y deuda de L en la misma proporción. El detalle, en el anexo~\ref{anexo:mm}.
+  \item Mientras la diferencia exista, todos harán lo mismo, hasta que las acciones de L valgan 600 y $V_L=V_U=1.000$. Si L valiera menos que U, se haría al revés: vender U y comprar acciones y deuda de L en la misma proporción.
   \end{itemize}
-\item \emph{Por qué se cumple la proposición II}: si el $\mathrm{WACC}$ no cambia, la deuda barata se compensa exactamente con unos fondos propios más caros.\footnote{No es contradictorio con la proposición I: la deuda sube la rentabilidad que exigen las acciones, no el valor de la empresa, que es la suma de lo que valen sus acciones y su deuda, $V=V_E+V_D$. La derivación, en el anexo~\ref{anexo:mm}.}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{El arbitraje, en general.} 2 empresas de la misma clase de riesgo generan el mismo resultado de explotación, $\mathrm{EBIT}$, cada periodo. U no tiene deuda y vale $V_U=V_E^U$; L tiene una deuda $V_D$ al tipo $r_D$ y vale $V_L=V_E^L+V_D$. Un inversor puede elegir entre 2 estrategias\nocite{Vernimmen2017Corporate}:
+\begin{itemize}
+\item \emph{Estrategia 1}: comprar una fracción $s$ de las acciones de L. Paga $s V_E^L$ y cobra
+  \[
+  \underbrace{s\,(\mathrm{EBIT}-r_DV_D)}_{\text{lo que queda tras los intereses}}.
+  \]
+\item \emph{Estrategia 2}: comprar la misma fracción $s$ de las acciones de U y pedir prestado $s V_D$ al mismo tipo $r_D$ (el apalancamiento casero). Paga $s(V_U-V_D)$ y cobra
+  \[
+  \underbrace{s\,\mathrm{EBIT}}_{\text{acciones de U}}-\underbrace{s\,r_DV_D}_{\text{intereses de su préstamo}}=s\,(\mathrm{EBIT}-r_DV_D).
+  \]
+\item Las 2 estrategias dan exactamente los mismos flujos, con el mismo riesgo; si no costaran lo mismo, habría arbitraje. Por tanto, $s V_E^L=s(V_U-V_D)$, es decir, $V_L=V_E^L+V_D=V_U$.
+\item Si $V_L<V_U$, el inversor vende U y compra a la vez una fracción $s$ de las acciones y de la deuda de L, que le da lo mismo que una fracción $s$ de U:
+  \[
+  \underbrace{s\,(\mathrm{EBIT}-r_DV_D)}_{\text{acciones de L}}+\underbrace{s\,r_DV_D}_{\text{deuda de L}}=s\,\mathrm{EBIT}.
+  \]
+  \findemo
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Por qué se cumple la proposición II}: si el $\mathrm{WACC}$ no cambia, la deuda barata se compensa exactamente con unos fondos propios más caros.\footnote{No es contradictorio con la proposición I: la deuda sube la rentabilidad que exigen las acciones, no el valor de la empresa, que es la suma de lo que valen sus acciones y su deuda, $V=V_E+V_D$.}
   \begin{itemize}
   \item En nuestra empresa, con $V_E=600$ y $V_D=400$: $r_E=10+(10-5)\cdot\tfrac{400}{600}=13{,}3$~\%, y $\mathrm{WACC}=0{,}6\cdot13{,}3+0{,}4\cdot5=10$~\%, igual que $r_A$. Es la misma cifra que el ROE de la palanca financiera de \eqref{eq:roe-roa}: el accionista gana más de media, pero exige más por el mismo motivo.
   \end{itemize}
-\item \emph{Deuda con riesgo}: si con mucha deuda aparece el riesgo de impago, $r_D$ sube con el endeudamiento y $r_E$ crece cada vez menos (se vuelve \emph{cóncava}), porque los acreedores pasan a soportar parte del riesgo. Las 2 proposiciones siguen valiendo y el $\mathrm{WACC}$ sigue plano.\footnote{Lo que pierden los acreedores lo ganan los accionistas: sin impuestos ni costes de insolvencia, el $\mathrm{WACC}$ no sube nunca, aunque suba $r_D$.}
-\item \emph{Interpretación gráfica} (gráfico~\ref{fig:coste-capital}, panel b): con $V_D/V_E$ en abscisas, $r_D$ plana, $r_E$ una recta creciente que parte de $r_A$, y el $\mathrm{WACC}=r_A$ horizontal; en trazo discontinuo, el caso de la deuda con riesgo.
 \end{itemize}
+
+\begin{anotaciones}
+\textbf{La proposición II, paso a paso.}
+\begin{itemize}
+\item Sin impuestos, el $\mathrm{WACC}$ es la media ponderada de lo que exigen accionistas y acreedores, y por la proposición I es igual a $r_A$:
+  \[
+  r_A=\mathrm{WACC}=r_E\,\underbrace{\frac{V_E}{V_D+V_E}}_{1-L}+r_D\,\underbrace{\frac{V_D}{V_D+V_E}}_{L}\ \Longrightarrow\ r_A\,(V_D+V_E)=r_E\,V_E+r_D\,V_D.
+  \]
+\item Despejando $r_E$:
+  \[
+  r_E=\frac{r_A\,(V_D+V_E)-r_D\,V_D}{V_E}=r_A+(r_A-r_D)\,\frac{V_D}{V_E}.
+  \]
+\item Con el peso de la deuda, como $V_D/V_E=L/(1-L)$, la misma proposición se escribe
+  \[
+  r_E=r_A+(r_A-r_D)\,\frac{L}{1-L}.
+  \]
+  La rentabilidad exigida a las acciones crece linealmente con la ratio $V_D/V_E$ y, con el peso $L$, cada vez más deprisa.\findemo
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:coste-mm}): con $L$ en abscisas, $r_D$ es plana, porque la deuda no tiene riesgo; $r_E$ parte de $r_A$ y crece cada vez más deprisa, y el $\mathrm{WACC}=r_A$ es horizontal: lo que se gana sustituyendo fondos propios caros por deuda barata se pierde exactamente porque los que quedan se encarecen.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Modigliani} y \autor{Miller} (1958) sin posibilidad de quiebra: el coste del capital y el peso de la deuda}\label{fig:coste-mm}
+\grafico[0.75\textwidth]{coste-mm}
+\fuente{elaboración propia a partir de \textcite{ModiglianiMiller1958Cost}.}
+\end{figure}
+
+\begin{anotaciones}
+\textbf{¿Qué pasa cuando $L$ se acerca a 1?} Si $r_D$ y el $\mathrm{WACC}$ son constantes, $r_E$ tiene que crecer sin límite: con $L\to1$, $r_E=r_A+(r_A-r_D)\,L/(1-L)\to\infty$.
+\begin{itemize}
+\item \emph{No es una contradicción con el $\mathrm{WACC}$ plano}: el peso de las acciones, $1-L$, cae a la vez, y su producto se queda en $(1-L)\,r_E=(1-L)\,r_A+(r_A-r_D)\,L\to r_A-r_D$. Por eso $\mathrm{WACC}=(1-L)\,r_E+L\,r_D\to(r_A-r_D)+r_D=r_A$: unas acciones cada vez más pequeñas cobran una rentabilidad cada vez mayor, y lo que se llevan en euros no cambia.
+\item \emph{Pero el supuesto de deuda sin riesgo deja de valer}: con muy pocos fondos propios, todo el riesgo del negocio cae sobre muy poco capital, y cualquier mal año deja sin cubrir la deuda. En el límite, $L=1$, no quedan acciones: la deuda es la empresa entera, cobra todo el $\mathrm{EBIT}$ y soporta todo el riesgo de los activos, así que su rentabilidad exigida es la de los activos, $r_D=r_A=\mathrm{WACC}$. La $r_D$ plana es una aproximación para niveles de deuda moderados, no para $L$ cercano a 1.
+\item \emph{Cómo se resuelve}: admitiendo que la deuda tenga riesgo. Entonces $r_D$ sube con el endeudamiento hasta alcanzar $r_A$ en $L=1$, $r_E$ sube menos y deja de dispararse, y las 2 proposiciones siguen valiendo (gráfico~\ref{fig:coste-mm-riesgo}).
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Deuda con riesgo}: si con mucha deuda aparece el riesgo de impago, $r_D$ sube con el endeudamiento, porque los acreedores pasan a soportar parte del riesgo, y $r_E$ crece menos que con la deuda sin riesgo (en términos de la ratio $V_D/V_E$, se vuelve \emph{cóncava}). Las 2 proposiciones siguen valiendo y el $\mathrm{WACC}$ sigue plano.\footnote{Lo que pierden los acreedores lo ganan los accionistas: sin impuestos ni costes de insolvencia, el $\mathrm{WACC}$ no sube nunca, aunque suba $r_D$.}
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:coste-mm-riesgo}): $r_D$ es plana mientras la deuda es segura y después sube hasta igualar al $\mathrm{WACC}$ en $L=1$, cuando toda la empresa es deuda; $r_E$ queda por debajo de la curva de la deuda sin riesgo.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Modigliani} y \autor{Miller} (1958) con posibilidad de quiebra: deuda con riesgo}\label{fig:coste-mm-riesgo}
+\grafico[0.75\textwidth]{coste-mm-riesgo}
+\fuente{elaboración propia a partir de \textcite{ModiglianiMiller1958Cost}.}
+\end{figure}
 
 \subparagraph{iii) Implicaciones}
 
@@ -470,27 +599,103 @@ En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\re
 \subparagraph{i) Los impuestos: \autor{Modigliani} y \autor{Miller} (1963) y \autor{Miller} (1977)}
 
 \begin{itemize}
-\item \emph{El impuesto sobre sociedades}\nocite{ModiglianiMiller1963Corporate}:\footnote{\textbf{Vídeo.} Las dos proposiciones con impuesto sobre sociedades, paso a paso, en \href{https://www.youtube.com/watch?v=DoLc5CCqd3g}{«FIN 401 - Modigliani-Miller (M\&M) Proposition 1 and 2 (with tax) - Part 1»} (AllThingsMathematics, YouTube).} los intereses se deducen en el impuesto y los dividendos no, así que cada euro de intereses ahorra $t_{IS}$ euros de impuesto. Si la deuda es permanente, ese ahorro anual, $t_{IS}\,r_D\,V_D$, descontado a $r_D$, vale $t_{IS}\,V_D$: es el \concepto{escudo fiscal} de la deuda, y
-  \[
-  V_L=V_U+t_{IS}\,V_D.
-  \]
+\item \emph{El impuesto sobre sociedades}\nocite{ModiglianiMiller1963Corporate}:\footnote{\textbf{Vídeo.} Las dos proposiciones con impuesto sobre sociedades, paso a paso, en \href{https://www.youtube.com/watch?v=DoLc5CCqd3g}{«FIN 401 - Modigliani-Miller (M\&M) Proposition 1 and 2 (with tax) - Part 1»} (AllThingsMathematics, YouTube).} los intereses se deducen en el impuesto y los dividendos no, así que cada euro de intereses ahorra $t_{IS}$ euros de impuesto. Ese ahorro es el \concepto{escudo fiscal} de la deuda.
   \begin{itemize}
-  \item La proposición II pasa a ser $r_E=r_A+(1-t_{IS})(r_A-r_D)\,V_D/V_E$, y el coste medio ponderado baja con la deuda, $\mathrm{WACC}=r_A\,(1-t_{IS}\,L)$ (gráfico~\ref{fig:coste-capital}, panel c).
-  \item Volvamos a nuestra empresa, con un impuesto del 25~\%: sin deuda vale $V_U=100\cdot0{,}75/0{,}10=750$; con 400 de deuda, $V_L=750+0{,}25\cdot400=850$, y su $\mathrm{WACC}$ baja al 8,8~\%. La pizza es la misma, pero el Estado se lleva un trozo menor y quedan 100 más para accionistas y acreedores.
+  \item \emph{De dónde sale}: el Estado se lleva un trozo menor del mismo resultado de explotación. Volvamos a nuestra empresa, con un impuesto del 25~\% (figura~\ref{figu:escudo-fiscal}): sin deuda, de un $\mathrm{EBIT}$ de 100 el Estado se lleva 25 y los accionistas, 75; con 400 de deuda al 5~\%, los 20 de intereses se pagan antes del impuesto, el Estado se lleva $0{,}25\cdot80=20$, los accionistas 60 y los acreedores 20. Los inversores reciben 80 en vez de 75: 5 más al año, que son $t_{IS}\,r_DV_D$.
+  \item \emph{Lo que vale}: si la deuda es permanente, ese ahorro anual, tan seguro como los intereses, se descuenta a $r_D$ y vale $t_{IS}\,r_DV_D/r_D=t_{IS}\,V_D$. Por eso
+    \[
+    V_L=V_U+t_{IS}\,V_D.
+    \]
+  \end{itemize}
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{El escudo fiscal de la deuda: cómo se reparte el resultado de explotación de nuestra empresa}\label{figu:escudo-fiscal}
+\grafico[\textwidth]{escudo-fiscal}
+\fuente{elaboración propia a partir de \textcite{ModiglianiMiller1963Corporate}.}
+\end{infografia}
+
+\begin{anotaciones}
+\textbf{El escudo fiscal, en general.}
+\begin{itemize}
+\item Con un impuesto sobre sociedades al tipo $t_{IS}$ y deuda permanente, lo que reciben cada periodo accionistas y acreedores de la empresa endeudada se puede partir en 2 trozos:
+  \[
+  \underbrace{(\mathrm{EBIT}-r_DV_D)(1-t_{IS})}_{\text{accionistas}}+\underbrace{r_DV_D}_{\text{acreedores}}=\underbrace{\mathrm{EBIT}\,(1-t_{IS})}_{\text{lo mismo que sin deuda}}+\underbrace{t_{IS}\,r_DV_D}_{\text{ahorro fiscal}}.
+  \]
+\item Cada trozo se descuenta a la rentabilidad de su riesgo: el primero es lo que reciben los accionistas de la empresa sin deuda y se descuenta a $r_A$; el segundo es tan seguro como los intereses y se descuenta a $r_D$:
+  \[
+  V_L=\underbrace{\frac{\mathrm{EBIT}\,(1-t_{IS})}{r_A}}_{V_U}+\underbrace{\frac{t_{IS}\,r_DV_D}{r_D}}_{t_{IS}V_D}.
+  \]
+\item En nuestra empresa: $60+20=75+5$ cada año, y $V_L=\tfrac{75}{0{,}10}+\tfrac{5}{0{,}05}=750+100=850$.\findemo
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Las proposiciones con impuesto sobre sociedades}: la proposición II pasa a ser $r_E=r_A+(1-t_{IS})(r_A-r_D)\,V_D/V_E$, y el coste medio ponderado baja con la deuda, $\mathrm{WACC}=r_A\,(1-t_{IS}\,L)$: con $L$ en abscisas, una recta decreciente que llega a $r_A\,(1-t_{IS})$ en $L=1$, cuando toda la empresa es deuda (gráfico~\ref{fig:coste-mm-is}).
+  \begin{itemize}
+  \item En nuestra empresa, sin deuda vale $V_U=100\cdot0{,}75/0{,}10=750$; con 400 de deuda, $V_L=750+0{,}25\cdot400=850$, y su $\mathrm{WACC}$ baja al 8,8~\%. La pizza es la misma, pero el Estado se lleva un trozo menor y quedan 100 más para accionistas y acreedores.
   \item La consecuencia lógica sería endeudarse casi al 100~\%, y no se observa: las empresas no se endeudan al máximo, y las más rentables, que más ahorrarían en impuestos, suelen tener poca deuda. Algo frena la deuda: según \autor{Miller}, los impuestos personales; según la teoría del equilibrio, los costes de insolvencia.
   \end{itemize}
-\item \emph{Los impuestos personales}\nocite{Miller1977Debt}: el inversor paga $t_D$ por los intereses y $t_E$ por la renta de las acciones (dividendos y plusvalías).\footnote{Por simplicidad, los tipos personales son proporcionales. En la práctica el impuesto es progresivo, y cada acreedor y cada accionista tiene su tipo marginal.} Lo que importa es lo que queda tras todos los impuestos: un euro de beneficio de explotación pagado como interés deja al inversor $1-t_D$; pagado a los accionistas, $(1-t_{IS})(1-t_E)$. La ganancia de endeudarse es
-  \begin{equation}\label{eq:miller}
-  V_L=V_U+\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D
-  \end{equation}
-  (derivación y esquema del euro de beneficio en el anexo~\ref{anexo:mm}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Modigliani} y \autor{Miller} (1963): el coste del capital con impuesto sobre sociedades}\label{fig:coste-mm-is}
+\grafico[0.75\textwidth]{coste-mm-is}
+\fuente{elaboración propia a partir de \textcite{ModiglianiMiller1963Corporate}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{El efecto conjunto del impuesto sobre sociedades y del IRPF}\nocite{Miller1977Debt}: el inversor paga $t_D$ por los intereses y $t_E$ por la renta de las acciones (dividendos y plusvalías).\footnote{Por simplicidad, los tipos personales son proporcionales. En la práctica el impuesto es progresivo, y cada acreedor y cada accionista tiene su tipo marginal.} Lo que importa es lo que queda tras todos los impuestos, y la figura~\ref{figu:miller} lo sigue fila a fila:
   \begin{itemize}
-  \item Si $t_E=t_D$, la ventaja es $t_{IS}\,V_D$, la de 1963.
-  \item Si $t_D>t_E$, el cociente es mayor que $1-t_{IS}$ y la ventaja es \emph{menor} que $t_{IS}\,V_D$: el impuesto personal sobre los intereses compensa en parte el escudo.
-  \item Si $1-t_D=(1-t_{IS})(1-t_E)$, la ventaja desaparece y se vuelve a la irrelevancia; si $t_D$ es aún mayor, endeudarse resta valor.
-  \item La ventaja crece con $t_{IS}$ y con $t_E$, y baja con $t_D$.
-  \item \autor{Miller} añade un equilibrio: las empresas emiten deuda mientras haya inversores a los que les compense comprarla; como los que tienen tipos personales bajos ya la tienen, el inversor marginal acaba teniendo un $t_D$ que anula la ventaja. Hay una cantidad óptima de deuda \emph{para el conjunto de las empresas}, pero a cada una le da igual cuánta emita.
+  \item un euro de resultado de explotación pagado como \emph{interés} no paga impuesto sobre sociedades y, tras el IRPF del acreedor, le deja $1-t_D$;
+  \item pagado como \emph{renta de las acciones}, paga primero el impuesto sobre sociedades, $t_{IS}$, y después el IRPF del accionista sobre lo que queda, $t_E\,(1-t_{IS})$: le deja $(1-t_{IS})(1-t_E)$.
   \end{itemize}
+\end{itemize}
+
+\begin{infografia}[H]
+\centering
+\caption{La lógica del efecto conjunto del impuesto sobre sociedades y del IRPF (\autor{Miller}, 1977)}\label{figu:miller}
+\grafico[0.8\textwidth]{miller}
+\fuente{elaboración propia a partir de \textcite{SuarezSuarez2014Decisiones} y \textcite[cap.~18]{BrealeyMyersAllen2020Principles}.}
+\end{infografia}
+
+\begin{itemize}
+\item La empresa gana endeudándose mientras haya ahorro fiscal, es decir, mientras lo que reciben los inversores con deuda supere lo que recibirían sin ella. La ganancia de endeudarse es
+  \begin{equation}\label{eq:miller}
+  V_L=V_U+\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D.
+  \end{equation}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{De dónde sale la fórmula de \autor{Miller}.}
+\begin{itemize}
+\item Lo que reciben, después de todos los impuestos, accionistas y acreedores de la empresa endeudada es
+  \[
+  \underbrace{(\mathrm{EBIT}-r_DV_D)(1-t_{IS})(1-t_E)}_{\text{accionistas}}+\underbrace{r_DV_D\,(1-t_D)}_{\text{acreedores}},
+  \]
+  que, reordenando, se parte en lo que recibirían sin deuda y el ahorro fiscal neto:
+  \[
+  \underbrace{\mathrm{EBIT}\,(1-t_{IS})(1-t_E)}_{\text{sin deuda: vale }V_U}+\underbrace{r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big]}_{\text{ahorro fiscal neto}}.
+  \]
+\item El ahorro fiscal neto es tan seguro como los intereses; para el inversor, la deuda rinde después de su impuesto $r_D(1-t_D)$, así que se descuenta a esa tasa:
+  \[
+  \frac{r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big]}{r_D\,(1-t_D)}=\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D.
+  \]
+\item Sumando, se obtiene \eqref{eq:miller}. Con $t_E=t_D$ (incluido $t_E=t_D=0$) queda el escudo de 1963, $t_{IS}\,V_D$.\findemo
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Qué dice la fórmula}:
+  \begin{itemize}
+  \item si $t_E=t_D$, la ventaja es $t_{IS}\,V_D$, la de 1963;
+  \item si $t_D>t_E$, el cociente es mayor que $1-t_{IS}$ y la ventaja es \emph{menor} que $t_{IS}\,V_D$: el impuesto personal sobre los intereses compensa en parte el escudo;
+  \item si $1-t_D=(1-t_{IS})(1-t_E)$, la ventaja desaparece y se vuelve a la irrelevancia; si $t_D$ es aún mayor, endeudarse resta valor;
+  \item la ventaja crece con $t_{IS}$ y con $t_E$, y baja con $t_D$.
+  \end{itemize}
+\item \autor{Miller} añade un equilibrio: las empresas emiten deuda mientras haya inversores a los que les compense comprarla; como los que tienen tipos personales bajos ya la tienen, el inversor marginal acaba teniendo un $t_D$ que anula la ventaja. Hay una cantidad óptima de deuda \emph{para el conjunto de las empresas}, pero a cada una le da igual cuánta emita.
 \item \emph{Y en España}, para un particular, los intereses, los dividendos y las plusvalías tributan en la misma base del ahorro, con la misma escala, del 19~\% al 30~\%\nocite{LIRPF2006}: $t_D\simeq t_E$, y la ventaja se acerca a la de 1963, $t_{IS}\,V_D$, con un $t_{IS}$ general del 25~\%\nocite{LIS2014}.
   \begin{itemize}
   \item El matiz es que la plusvalía tributa al venderla, lo que baja el $t_E$ efectivo por debajo de $t_D$ y reduce un poco la ventaja; y que la ley limita el escudo (\ref{sec:clasificacion}).
@@ -509,7 +714,7 @@ En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\re
   \item \emph{Supuestos}: los de \autor{Modigliani} y \autor{Miller} con impuesto sobre sociedades, y la empresa puede no pagar su deuda. Los \concepto{costes de insolvencia} son \emph{directos} (jueces, abogados, administradores concursales) e \emph{indirectos}, mayores: clientes y proveedores que se van, directivos ocupados en sobrevivir, inversiones que no se hacen, activos vendidos con descuento.
   \item \emph{Desarrollo}: el valor de la empresa endeudada es el de la no endeudada, más el valor actual del ahorro fiscal, menos el valor actual de los costes esperados de insolvencia:
     \funcionclave[eq:trade-off]{V_L=V_U+\mathrm{VA}(\text{ahorro fiscal})-\mathrm{VA}(\text{costes esperados de insolvencia})}
-    Con deuda permanente, $\mathrm{VA}(\text{ahorro fiscal})=t_{IS}\,V_D$. Con poca deuda, la probabilidad de insolvencia es pequeña y domina el escudo; con mucha, el coste esperado crece más deprisa. El valor es máximo en $V_D^*$, donde la ganancia marginal del escudo iguala el coste marginal esperado de la insolvencia (gráfico~\ref{fig:valor-tradeoff}); en el coste del capital, el $\mathrm{WACC}$ vuelve a tener forma de U, con un mínimo en $(V_D/V_E)^*$ (gráfico~\ref{fig:coste-capital}, panel d).
+    Con deuda permanente, $\mathrm{VA}(\text{ahorro fiscal})=t_{IS}\,V_D$. Con poca deuda, la probabilidad de insolvencia es pequeña y domina el escudo; con mucha, el coste esperado crece más deprisa. El valor es máximo en $V_D^*$, donde la ganancia marginal del escudo iguala el coste marginal esperado de la insolvencia (gráfico~\ref{fig:valor-tradeoff}); en el coste del capital, el $\mathrm{WACC}$ vuelve a tener forma de U, con un mínimo en $L^*$ (gráfico~\ref{fig:coste-equilibrio}): primero baja por el escudo fiscal, como con \autor{Modigliani} y \autor{Miller} (1963), y después sube, cuando $r_D$ y $r_E$ se disparan por el riesgo de insolvencia.
     \begin{itemize}
     \item Volvamos a nuestra empresa: con 400 de deuda, el riesgo de insolvencia es pequeño y $V_L=850$. Si se endeuda hasta 800, el escudo sube a $0{,}25\cdot800=200$, pero si el valor actual de los costes esperados de insolvencia es de 120, $V_L=750+200-120=830$, menos que con 400. Hay un óptimo interior: «ni tanto que queme al santo, ni tanto que no lo alumbre».
     \end{itemize}
@@ -521,6 +726,13 @@ En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\re
 \centering
 \caption{La teoría del equilibrio: el valor de la empresa y su deuda}\label{fig:valor-tradeoff}
 \grafico[0.7\textwidth]{valor-tradeoff}
+\fuente{elaboración propia a partir de \textcite{Myers1984Capital}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{La teoría del equilibrio: el coste del capital y el peso de la deuda}\label{fig:coste-equilibrio}
+\grafico[0.75\textwidth]{coste-equilibrio}
 \fuente{elaboración propia a partir de \textcite{Myers1984Capital}.}
 \end{figure}
 
@@ -554,7 +766,19 @@ En el cante (\tiempo{13,5}). II.1, \tiempo{1}: el balance financiero (figura~\re
 \paragraph{e) Valoración}
 
 \begin{itemize}
-\item Es el punto de partida de las finanzas corporativas modernas: la primera prueba por arbitraje de la economía financiera y la lista de lo que hay que mirar para saber cuándo importa la financiación. La tabla~\ref{tab:supuestos-mm} recoge qué pasa al levantar cada supuesto y dónde se ve en esta exposición.
+\item Es el punto de partida de las finanzas corporativas modernas: la primera prueba por arbitraje de la economía financiera y la lista de lo que hay que mirar para saber cuándo importa la financiación.
+\item \emph{Resumen gráfico}: el gráfico~\ref{fig:coste-capital} reúne, sobre los mismos ejes, las 4 respuestas sobre el coste del capital: la tesis tradicional (en U), \autor{Modigliani} y \autor{Miller} (1958) (plano), con impuesto sobre sociedades (decreciente) y la teoría del equilibrio (otra vez en U, ahora por las fricciones).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El coste del capital y la estructura financiera, en resumen: tesis tradicional, \autor{Modigliani} y \autor{Miller} con y sin impuestos y teoría del equilibrio}\label{fig:coste-capital}
+\grafico[0.95\textwidth]{coste-capital}
+\fuente{elaboración propia a partir de \textcite{Durand1952Costs}, \textcite{ModiglianiMiller1958Cost}, \textcite{ModiglianiMiller1963Corporate} y \textcite{Myers1984Capital}.}
+\end{figure}
+
+\begin{itemize}
+\item La tabla~\ref{tab:supuestos-mm} recoge qué pasa al levantar cada supuesto y dónde se ve en esta exposición.
 \end{itemize}
 
 \begin{table}[H]
@@ -1011,103 +1235,6 @@ En el cante (\tiempo{6,5}). La apertura, de palabra: el nexo con la autofinancia
 \item \emph{Obligaciones convertibles}: el tenedor puede cambiarlas por un número fijado de acciones. La conversión le interesa si sube la cotización; por esa opción, la empresa paga menos interés \vertema{3.B.25}.
 \item \emph{Bonos convertibles contingentes} (CoCos): emitidos por bancos, pagan un cupón alto mientras viven y se convierten en acciones, o pierden su valor, sin que lo decidan ni el emisor ni el inversor: cuando el capital ordinario de nivel 1 del banco cae por debajo de un umbral (al menos el 5,125~\% de sus activos ponderados por riesgo)\nocite{UE2013CRR} o cuando el supervisor declara que el banco no es viable. Absorben pérdidas cuando más falta hace y por eso cuentan como capital adicional de nivel 1 \vertema{3.B.27}.
 \end{itemize}
-
-% ==========================================================================
-\section{Anexo: el efecto \autor{Lohmann}-\autor{Ruchti}}\label{anexo:lohmann}
-
-\begin{itemize}
-\item Una empresa pesquera compra 10 barcos de 1 millón de euros cada uno, con una vida útil de 10 años, sin valor residual y con amortización lineal: 100.000 euros por barco y año. Si reinvierte cada año lo que amortiza (tabla~\ref{tab:lohmann}):
-  \begin{itemize}
-  \item el primer año amortiza 1 millón y compra un barco más: tiene 11;
-  \item el segundo amortiza 1,1 millones, compra otro y le sobran 100.000 euros;
-  \item y así sucesivamente: la flota crece sin que la empresa aporte un euro nuevo.
-  \end{itemize}
-\end{itemize}
-
-\begin{table}[H]
-\centering
-\caption{El efecto \autor{Lohmann}-\autor{Ruchti}: una flota que reinvierte sus amortizaciones}\label{tab:lohmann}
-\begin{tabular}{>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{3cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}}
-\toprule
-\rowcolor{tceeazulpalido}\textbf{Año} & \textbf{Amortización (millones)} & \textbf{Barcos comprados} & \textbf{Barcos al final} & \textbf{Caja sobrante (millones)} \\
-\midrule
-1 & 1,0 & 1 & 11 & 0,0 \\
-2 & 1,1 & 1 & 12 & 0,1 \\
-3 & 1,2 & 1 & 13 & 0,3 \\
-4 & 1,3 & 1 & 14 & 0,6 \\
-5 & 1,4 & 2 & 16 & 0,0 \\
-\rowcolor{tceesalvia}A largo plazo & --- & --- & en torno a 18 & --- \\
-\bottomrule
-\end{tabular}
-\fuente{elaboración propia.}
-\end{table}
-
-\begin{itemize}
-\item En el año 10 se retiran los 10 barcos iniciales y la flota baja; a largo plazo, con barcos de todas las edades, se estabiliza en torno a 18, cerca de $2n/(n+1)$ veces la inicial con $n=10$ años de vida útil.
-\item Lo que crece es la capacidad \emph{de cada periodo}, no la capacidad \emph{total}: los años de uso que quedan a la flota no aumentan, porque la flota envejece. Y el efecto depende de los 4 supuestos del texto (\ref{sec:tipos-autofinanciacion}): sin obsolescencia, con activos divisibles, sin inflación y con una amortización que se recupere de verdad con las ventas.
-\end{itemize}
-
-% ==========================================================================
-\section{Anexo: derivaciones de \autor{Modigliani} y \autor{Miller}}\label{anexo:mm}
-
-\subsection{La proposición I: el arbitraje}\label{anexo:arbitraje}
-
-\begin{itemize}
-\item 2 empresas de la misma clase de riesgo generan el mismo resultado de explotación, $\mathrm{EBIT}$, cada periodo. U no tiene deuda y vale $V_U=V_E^U$; L tiene una deuda $V_D$ al tipo $r_D$ y vale $V_L=V_E^L+V_D$. Un inversor puede elegir entre 2 estrategias\nocite{Vernimmen2017Corporate}:
-  \begin{itemize}
-  \item \emph{Estrategia 1}: comprar una fracción $s$ de las acciones de L. Paga $s V_E^L$ y cobra $s(\mathrm{EBIT}-r_DV_D)$.
-  \item \emph{Estrategia 2}: comprar la misma fracción $s$ de las acciones de U y pedir prestado $s V_D$ al mismo tipo $r_D$ (el apalancamiento casero). Paga $s(V_U-V_D)$ y cobra $s\,\mathrm{EBIT}-s r_DV_D$.
-  \end{itemize}
-\item Las 2 estrategias dan exactamente los mismos flujos, con el mismo riesgo; si no, habría arbitraje. Por tanto, deben costar lo mismo: $s V_E^L=s(V_U-V_D)$, es decir, $V_L=V_E^L+V_D=V_U$.
-\item Si $V_L>V_U$, el inversor vende L y hace la estrategia 2; si $V_L<V_U$, vende U y compra a la vez acciones y deuda de L en la proporción de su estructura del capital (comprar una fracción $s$ de las acciones y de la deuda de L da $s(\mathrm{EBIT}-r_DV_D)+s r_DV_D=s\,\mathrm{EBIT}$, lo mismo que una fracción $s$ de U).\findemo
-\item Con los números de nuestra empresa ($\mathrm{EBIT}=100$, $V_D=400$, $r_D=5$~\%, $s=1$~\%), el arbitraje está en el apartado~\ref{sec:mm}.
-\end{itemize}
-
-\subsection{La proposición II}\label{anexo:prop-ii}
-
-\begin{itemize}
-\item Sin impuestos, el $\mathrm{WACC}$ es la media ponderada de lo que exigen accionistas y acreedores, y por la proposición I es igual a $r_A$:
-  \[
-  r_A=r_E\,\frac{V_E}{V_E+V_D}+r_D\,\frac{V_D}{V_E+V_D}\ \Longrightarrow\ r_A\,(V_E+V_D)=r_E\,V_E+r_D\,V_D.
-  \]
-\item Despejando $r_E$:
-  \[
-  r_E=\frac{r_A\,(V_E+V_D)-r_D\,V_D}{V_E}=r_A+(r_A-r_D)\,\frac{V_D}{V_E}.
-  \]
-  La rentabilidad exigida a las acciones crece linealmente con la ratio deuda/fondos propios \eqref{eq:mm}.\findemo
-\end{itemize}
-
-\subsection{El escudo fiscal: \autor{Modigliani} y \autor{Miller} (1963)}\label{anexo:mm-1963}
-
-\begin{itemize}
-\item Con un impuesto sobre sociedades al tipo $t_{IS}$ y deuda permanente, lo que reciben cada periodo accionistas y acreedores de la empresa endeudada es
-  \[
-  (\mathrm{EBIT}-r_DV_D)(1-t_{IS})+r_DV_D=\mathrm{EBIT}\,(1-t_{IS})+t_{IS}\,r_DV_D.
-  \]
-\item El primer sumando es lo que reciben los accionistas de la empresa sin deuda: vale $V_U$. El segundo es tan seguro como los intereses y se descuenta a $r_D$: vale $t_{IS}\,r_DV_D/r_D=t_{IS}\,V_D$. Por tanto, $V_L=V_U+t_{IS}\,V_D$.\findemo
-\end{itemize}
-
-\subsection{Los impuestos personales: \autor{Miller} (1977)}\label{anexo:miller}
-
-\begin{itemize}
-\item Ahora el inversor paga $t_D$ por los intereses y $t_E$ por la renta de las acciones. Un euro de resultado de explotación que se paga como interés deja al inversor $1-t_D$; si se paga a los accionistas, paga primero el impuesto sobre sociedades y después el personal, y deja $(1-t_{IS})(1-t_E)$ (figura~\ref{figu:miller}).
-\item Lo que reciben, después de todos los impuestos, accionistas y acreedores de la empresa endeudada es
-  \[
-  (\mathrm{EBIT}-r_DV_D)(1-t_{IS})(1-t_E)+r_DV_D(1-t_D)=\mathrm{EBIT}\,(1-t_{IS})(1-t_E)+r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big].
-  \]
-\item El primer sumando es lo que recibirían los accionistas de la empresa sin deuda: vale $V_U$. El segundo es tan seguro como los intereses; para el inversor, la deuda rinde después de su impuesto $r_D(1-t_D)$, así que se descuenta a esa tasa:
-  \[
-  \frac{r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big]}{r_D\,(1-t_D)}=\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D.
-  \]
-\item Sumando, se obtiene \eqref{eq:miller}. Con $t_E=t_D$ (incluido $t_E=t_D=0$) queda el escudo de 1963, $t_{IS}\,V_D$.\findemo
-\end{itemize}
-
-\begin{infografia}[H]
-\centering
-\caption{\autor{Miller} (1977): qué queda de 1 euro de resultado de explotación}\label{figu:miller}
-\grafico[0.7\textwidth]{miller}
-\fuente{elaboración propia a partir de \textcite[cap.~18]{BrealeyMyersAllen2020Principles}.}
-\end{infografia}
 
 % ==========================================================================
 \section{Anexo: la liquidez interna y externa (\autor{Holmström} y \autor{Tirole})}\label{anexo:holmstrom-tirole}

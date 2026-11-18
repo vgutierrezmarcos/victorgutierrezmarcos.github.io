@@ -1092,86 +1092,77 @@ Esterilizada & $\Delta R=+100$; $\Delta\mathrm{CI}=-100$ (venta de títulos) & \
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item El modelo se construye en 3 escenarios, y cada uno añade un supuesto al anterior. Las cajas grises los desarrollan paso a paso, con sus ecuaciones y su gráfico; lo que añade el impuesto va en \textcolor{tceerojo}{rojo}, para que se vea qué cambia.
-\item \emph{En autarquía}, el país consume su dotación: el punto $A$ del gráfico~\ref{fig:controles-capital}.
-\end{itemize}
-
-\begin{anotaciones}
-\textbf{Escenario 1: autarquía}
-\begin{itemize}
-\item \emph{Supuestos}: el país recibe las dotaciones $Y_t$ e $Y_{t+1}$ y no puede prestar ni pedir prestado fuera: la deuda exterior es nula, $B_t=0$.
-\item \emph{Restricciones}: lo que se consume es lo que se tiene en cada periodo,
-  $$C_t=Y_t,\qquad C_{t+1}=Y_{t+1}.$$
-\item \emph{Equilibrio}: el punto $A$. No hay nada que elegir; lo que se ajusta es el tipo de interés de autarquía, $r^A$, el que hace que los hogares quieran consumir justo su dotación (la relación marginal de sustitución en $A$):
-  $$1+r^A=\frac{u'(Y_t)}{\beta\,u'(Y_{t+1})}.$$
-  El supuesto de que el país quiere pedir prestado es $r^A>r^*$: su dotación crece, o es impaciente.
-\item \emph{Bienestar}: $U_0=u(Y_t)+\beta\,u(Y_{t+1})$, la curva de indiferencia que pasa por $A$.
-\end{itemize}
-\begin{figuracaja}
-\caption{El control de capitales (a): la autarquía, $A$}\label{fig:controles-paso1}
-\grafico[0.5\textwidth]{controles-capital-paso1}
-\fuente{Elaboración propia a partir de \textcite{SchmittGroheUribeWoodford2022International}. Primer paso del gráfico~\ref{fig:controles-capital}.}
-\end{figuracaja}
-\end{anotaciones}
-
-\begin{itemize}
-\item \emph{Con libertad de capitales}, el país consume en $C$, donde la curva de indiferencia $U_1$ es tangente a la recta nacional, que pasa por $A$ con pendiente $-(1+r^*)$; en $t$ tiene un déficit por cuenta corriente, $C_t-Y_t>0$.
-\end{itemize}
-
-\begin{anotaciones}
-\textbf{Escenario 2: libertad de capitales}
-\begin{itemize}
-\item \emph{Supuesto nuevo}: el país pide prestado $B_t$ en $t$ al tipo mundial $r^*$ y devuelve $(1+r^*)\,B_t$ en $t+1$.
-\item \emph{Restricciones}: en cada periodo, $C_t=Y_t+B_t$ y $C_{t+1}=Y_{t+1}-(1+r^*)\,B_t$. Eliminando $B_t$, la \emph{restricción intertemporal}, la recta nacional, que pasa por $A$ con pendiente $-(1+r^*)$:
-  $$C_t+\frac{C_{t+1}}{1+r^*}=Y_t+\frac{Y_{t+1}}{1+r^*}\equiv W.$$
-\item \emph{Problema}: $\max\,u(C_t)+\beta\,u(C_{t+1})$ sujeto a esa restricción. La condición de primer orden es la ecuación de \autor{Euler}:
-  $$u'(C_t)=\beta\,(1+r^*)\,u'(C_{t+1}).$$
-\item \emph{Equilibrio}: el punto $C$, tangencia de $U_1$ con la recta nacional. Como $r^*<r^A$, consumir hoy es más barato que en autarquía: $C^C_t>Y_t$, y el país tiene un \emph{déficit por cuenta corriente} en $t$, $C^C_t-Y_t=B_t>0$, que paga en $t+1$.
-\item \emph{Un ejemplo}: con $u(C)=\ln C$, la ecuación de \autor{Euler} da $C_{t+1}=\beta\,(1+r^*)\,C_t$ y, en la restricción, $C^C_t=W/(1+\beta)$. Con los números del gráfico ($Y_t=3$, $Y_{t+1}=5$, $\beta=0{,}5$, $1+r^*=1{,}05$), $W=7{,}76$ y $C^C_t=5{,}18$: un déficit de 2,18.
-\item \emph{Bienestar}: $U_1>U_0$. Son las ganancias del comercio intertemporal: el país adelanta consumo al precio mundial, más barato que el de autarquía.
-\end{itemize}
-\begin{figuracaja}
-\caption{El control de capitales (b): libertad de capitales, $C$}\label{fig:controles-paso2}
-\grafico[0.5\textwidth]{controles-capital-paso2}
-\fuente{Elaboración propia a partir de \textcite{SchmittGroheUribeWoodford2022International}. Segundo paso del gráfico~\ref{fig:controles-capital}.}
-\end{figuracaja}
-\end{anotaciones}
-
-\begin{itemize}
-\item \emph{Con el impuesto}, los hogares se endeudan al tipo interno $r=r^*+\tau$, y la ecuación de \autor{Euler} pasa a ser
-  \begin{equation}\label{eq:euler-controles}
-  u'(C_t)=\beta\,(1+r^*+\tau)\,u'(C_{t+1}).
-  \end{equation}
+\item El modelo se construye en 3 pasos: la autarquía, la libertad de capitales y el impuesto. Cada paso añade un supuesto al anterior y una capa al gráfico; lo que añade el impuesto va en \textcolor{tceerojo}{rojo}, para que se vea qué cambia.
+\item \emph{Las preferencias}: el hogar representativo valora el consumo de los 2 periodos con
+  $$U=u(C_t)+\beta\,u(C_{t+1}).$$
   \begin{itemize}
-  \item Como el impuesto vuelve a los hogares, el país sigue pagando $r^*$ al exterior: el equilibrio está sobre la recta nacional, en el punto $D$, entre $A$ y $C$.
-  \item En $D$, la curva de indiferencia $U_2$ tiene la pendiente del tipo interno, $-(1+r^*+\tau)$, más inclinada que la recta nacional (anexo~\ref{anexo:controles}).
+  \item En el plano $(C_t,C_{t+1})$, sus curvas de indiferencia son convexas, y su pendiente es la relación marginal de sustitución entre el consumo de hoy y el de mañana, $-u'(C_t)/[\beta\,u'(C_{t+1})]$.\footnote{A lo largo de una curva de indiferencia, $dU=u'(C_t)\,dC_t+\beta\,u'(C_{t+1})\,dC_{t+1}=0$, de donde $dC_{t+1}/dC_t=-u'(C_t)/[\beta\,u'(C_{t+1})]$. Con $u''<0$, esa relación baja a medida que aumenta $C_t$ y disminuye $C_{t+1}$: la curva es convexa.}
+  \item Esa relación es lo que el hogar está dispuesto a dar de consumo de mañana por una unidad más de consumo hoy. Cada paso del modelo la compara con el precio que pone el mercado.
+  \end{itemize}
+\item \emph{Paso 1: la autarquía}
+  \begin{itemize}
+  \item Sin acceso al exterior, la deuda exterior es nula y el país consume lo que tiene en cada periodo: $C_t=Y_t$ y $C_{t+1}=Y_{t+1}$. Es el punto $A$ del gráfico~\ref{fig:controles-paso1}, la dotación.
+  \item No hay nada que elegir: lo que se ajusta es el \concepto{tipo de interés de autarquía}, $r^A$, el que hace que los hogares quieran consumir justo su dotación. Es la relación marginal de sustitución en $A$:
+    $$1+r^A=\frac{u'(Y_t)}{\beta\,u'(Y_{t+1})}.$$
+  \item El supuesto de que el país quiere pedir prestado es $r^A>r^*$: su dotación crece o es impaciente, y valora el consumo de hoy más de lo que se lo cobra el mercado mundial.\footnote{Con $u(C)=\ln C$, $u'(C)=1/C$ y $1+r^A=Y_{t+1}/(\beta\,Y_t)$. Con los números del gráfico ($Y_t=3$, $Y_{t+1}=5$, $\beta=0{,}5$), $1+r^A=3{,}33$, muy por encima del $1+r^*=1{,}05$ mundial.}
+  \item El bienestar de la autarquía es $U_0=u(Y_t)+\beta\,u(Y_{t+1})$, la curva de indiferencia que pasa por $A$.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El control de capitales (a): la autarquía, $A$}\label{fig:controles-paso1}
+\grafico[0.6\textwidth]{controles-capital-paso1}
+\fuente{Elaboración propia a partir de \textcite{SchmittGroheUribeWoodford2022International}. Primer paso del gráfico~\ref{fig:controles-capital}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Paso 2: la libertad de capitales}
+  \begin{itemize}
+  \item \emph{Supuesto nuevo}: el país pide prestado $B_t$ en $t$ al tipo mundial $r^*$ y devuelve $(1+r^*)\,B_t$ en $t+1$.
+  \item \emph{La restricción}: en cada periodo, $C_t=Y_t+B_t$ y $C_{t+1}=Y_{t+1}-(1+r^*)\,B_t$. Eliminando $B_t$ queda la \concepto{restricción intertemporal} del país, la \concepto{recta nacional}:\footnote{De la primera, $B_t=C_t-Y_t$; sustituyendo en la segunda, $C_{t+1}=Y_{t+1}-(1+r^*)\,(C_t-Y_t)$, y dividiendo por $1+r^*$ y reordenando se llega a la recta. $W$ es la riqueza del país: el valor presente de su dotación.}
+    $$C_t+\frac{C_{t+1}}{1+r^*}=Y_t+\frac{Y_{t+1}}{1+r^*}\equiv W.$$
+    Pasa por $A$, porque la dotación siempre es alcanzable, y su pendiente es $-(1+r^*)$, el precio del consumo de hoy en el mercado mundial.
+  \item \emph{El problema}: el hogar elige el consumo de los 2 periodos,
+    $$\optim{\max}{C_t,\,C_{t+1}}{u(C_t)+\beta\,u(C_{t+1})}{C_t+\dfrac{C_{t+1}}{1+r^*}=W}$$
+  \item \emph{La condición de primer orden}: la ecuación de \autor{Euler}, que iguala la relación marginal de sustitución al precio mundial,
+    $$u'(C_t)=\beta\,(1+r^*)\,u'(C_{t+1}).$$
+  \item \emph{El equilibrio}: el punto $C$ del gráfico~\ref{fig:controles-paso2}, donde la curva de indiferencia $U_1$ es tangente a la recta nacional. Como $r^*<r^A$, consumir hoy es más barato que en autarquía: $C^C_t>Y_t$, y el país tiene un \emph{déficit por cuenta corriente} en $t$, $C^C_t-Y_t=B_t>0$, que paga en $t+1$.\footnote{Con $u(C)=\ln C$, la ecuación de \autor{Euler} da $C_{t+1}=\beta\,(1+r^*)\,C_t$ y, en la recta nacional, $C^C_t=W/(1+\beta)$. Con los números del gráfico ($1+r^*=1{,}05$), $W=7{,}76$ y $C^C_t=5{,}18$: un déficit de 2,18.}
+  \item \emph{El bienestar}: $U_1>U_0$. Son las ganancias del comercio intertemporal: el país adelanta consumo al precio mundial, más barato que el de autarquía.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El control de capitales (b): libertad de capitales, $C$}\label{fig:controles-paso2}
+\grafico[0.6\textwidth]{controles-capital-paso2}
+\fuente{Elaboración propia a partir de \textcite{SchmittGroheUribeWoodford2022International}. Segundo paso del gráfico~\ref{fig:controles-capital}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Paso 3: un impuesto sobre la deuda exterior}
+  \begin{itemize}
+  \item \emph{Supuestos nuevos}: el Gobierno cobra \textcolor{tceerojo}{$\tau$ por cada unidad de deuda exterior} y devuelve lo recaudado en \textcolor{tceerojo}{una transferencia en bloque, $T_{t+1}=\tau\,B_t$}, que cada hogar toma como dada.
+  \item \emph{La restricción de los hogares}: se endeudan al tipo interno, $r=r^*{\color{red}+\tau}$, y reciben la transferencia,
+    $$C_{t+1}=Y_{t+1}-(1+r^*{\color{red}+\tau})\,(C_t-Y_t){\color{red}+T_{t+1}}.$$
+  \item \emph{La ecuación de \autor{Euler} de los hogares}: consumir hoy les sale más caro, y su relación marginal de sustitución se iguala al tipo interno (la derivación, en el anexo~\ref{anexo:controles}):
+    \funcionclave[eq:euler-controles]{u'(C_t)=\beta\,(1+r^*{\color{red}+\tau})\,u'(C_{t+1})}
+  \item \emph{La restricción del país}: como \textcolor{tceerojo}{$T_{t+1}=\tau\,B_t$}, lo que los hogares pagan de impuesto les vuelve, y el país sigue pagando $r^*$ al exterior. La restricción agregada es \emph{la misma recta nacional} del paso~2.\footnote{Sustituyendo $T_{t+1}=\tau\,B_t=\tau\,(C_t-Y_t)$ en la restricción de los hogares, los términos en $\tau$ se anulan: $C_{t+1}=Y_{t+1}-(1+r^*)\,(C_t-Y_t)$.}
+  \item \emph{El equilibrio}: el punto \textcolor{tceerojo}{$D$} del gráfico~\ref{fig:controles-capital}, sobre la recta nacional pero donde la relación marginal de sustitución es $1+r^*{\color{red}+\tau}$. La curva \textcolor{tceerojo}{$U_2$} corta la recta nacional con la pendiente de la \textcolor{tceerojo}{recta privada, $-(1+r^*+\tau)$}, más inclinada. Con preferencias convexas, $D$ queda entre $A$ y $C$: menos deuda y menos déficit corriente.\footnote{Con $u(C)=\ln C$, $C_{t+1}=\beta\,(1+r^*+\tau)\,C_t$ y, en la recta nacional, $C^D_t=W/[1+\beta\,(1+r^*+\tau)/(1+r^*)]$. Con $1+r^*+\tau=1{,}876$, $C^D_t=4{,}1$: el déficit baja de 2,18 a 1,1.}
+  \item \emph{El bienestar}: $U_0<{\color{red}U_2}<U_1$. $C$ es el mejor punto de la recta nacional y la utilidad crece a lo largo de la recta de $A$ a $C$, así que $D$, entre los 2, queda en medio. El impuesto separa el precio privado del consumo presente de su precio social: es una distorsión, como un arancel.
   \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \caption{El efecto de un impuesto sobre el endeudamiento exterior}\label{fig:controles-capital}
-\grafico[0.62\textwidth]{controles-capital}
+\grafico[0.6\textwidth]{controles-capital}
 \fuente{Elaboración propia a partir de \textcite{SchmittGroheUribeWoodford2022International} y \textcite[cap.~1]{ObstfeldRogoff1996Foundations}. $A$ es la dotación (y la autarquía); $C$, el consumo con libertad de capitales; $D$, con el impuesto $\tau$. En rojo, lo que añade el impuesto.}
 \end{figure}
 
-\begin{anotaciones}
-\textbf{Escenario 3: un impuesto sobre la deuda exterior} (en \textcolor{tceerojo}{rojo}, lo que cambia frente al escenario 2)
 \begin{itemize}
-\item \emph{Supuestos nuevos}: el Gobierno cobra \textcolor{tceerojo}{$\tau$ por cada unidad de deuda exterior} y devuelve lo recaudado en \textcolor{tceerojo}{una transferencia en bloque, $T_{t+1}=\tau\,B_t$}, que cada hogar toma como dada.
-\item \emph{Restricción de los hogares}: pagan el tipo interno, $r^*$\textcolor{tceerojo}{$+\,\tau$}, y reciben la transferencia,
-  $$C_{t+1}=Y_{t+1}-(1+r^*{\color{red}+\tau})\,(C_t-Y_t){\color{red}+T_{t+1}}.$$
-\item \emph{Ecuación de \autor{Euler}}: la de los hogares cambia, porque consumir hoy les sale más caro,
-  $$u'(C_t)=\beta\,(1+r^*{\color{red}+\tau})\,u'(C_{t+1}).$$
-\item \emph{Restricción del país}: como \textcolor{tceerojo}{$T_{t+1}=\tau B_t$}, el impuesto vuelve a los hogares y el país sigue pagando $r^*$ al exterior: la restricción agregada es \emph{la misma recta nacional} del escenario 2,
-  $$C_t+\frac{C_{t+1}}{1+r^*}=Y_t+\frac{Y_{t+1}}{1+r^*}=W.$$
-\item \emph{Equilibrio}: el punto \textcolor{tceerojo}{$D$}, sobre la recta nacional pero donde la relación marginal de sustitución es $1+r^*$\textcolor{tceerojo}{$+\,\tau$}: la curva \textcolor{tceerojo}{$U_2$} corta la recta nacional con la pendiente de la \textcolor{tceerojo}{recta privada, $-(1+r^*+\tau)$}. Con preferencias convexas, $D$ queda entre $A$ y $C$: menos deuda y menos déficit corriente.
-\item \emph{El ejemplo}: con $u(C)=\ln C$, $C_{t+1}=\beta\,(1+r^*$\textcolor{tceerojo}{$+\,\tau$}$)\,C_t$ y, en la recta nacional,
-  $$C^D_t=\frac{W}{1+\beta\,(1+r^*{\color{red}+\tau})/(1+r^*)}.$$
-  Con \textcolor{tceerojo}{$1+r^*+\tau=1{,}876$}, $C^D_t=4{,}1$: el déficit baja de 2,18 a \textcolor{tceerojo}{1,1}.
-\item \emph{Bienestar}: $U_0<$\textcolor{tceerojo}{$U_2$}$<U_1$. El impuesto separa el precio privado del social del consumo presente: es una distorsión, como un arancel.
+\item Recapitulando el desarrollo: de $A$ a $C$, el país gana con la libertad de capitales; de $C$ a $D$, el impuesto le devuelve parte del camino, porque encarece el consumo de hoy solo para los hogares, no para el país.
 \end{itemize}
-\end{anotaciones}
 
 \subparagraph{iii) Implicaciones}
 

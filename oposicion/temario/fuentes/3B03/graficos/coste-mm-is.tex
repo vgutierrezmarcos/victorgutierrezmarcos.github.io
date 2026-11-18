@@ -1,0 +1,36 @@
+% Modigliani y Miller (1963), con impuesto sobre sociedades, frente a
+% L = V_D/(V_D+V_E) entre 0 y 1. r_A = 10, r_D = 5, t_IS = 0,25.
+% r_D (1 - t_IS) = 3,75 (deuda sin riesgo); r_E = 10 + 3,75 L/(1 - L);
+% WACC = r_A (1 - t_IS L) = 10 - 2,5 L: recta decreciente hasta 7,5 en L = 1,
+% donde la deuda es la empresa entera (r_D = r_A, r_D (1 - t_IS) = 7,5).
+% Nuestra empresa: L = 400/850 = 0,47, WACC = 8,8.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=0.2cm,
+    declare function={re(\x)=10+3.75*\x/(1-\x);}]
+  % 1: ejes y la vertical de L = 1
+  \capa{1}{\draw[eje] (0,0) -- (1.1,0) node[right] {$L=\dfrac{V_D}{V_D+V_E}$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,28) node[above right=0pt and -2pt,font=\footnotesize] {coste del capital};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (1,27);}
+  \capa{1}{\draw[guia] (0,10) node[left,text=black] {$r_A$} -- (1,10);}
+  % 2: coste de la deuda después de impuestos, plano
+  \capa{2}{\draw[curva3] (0,3.75) -- (0.985,3.75);}
+  \capa{2}{\node[circle,draw=tceeverde,thick,fill=white,inner sep=1.3pt] at (1,3.75) {};}
+  \capa{2}{\node[etiqueta,below,text=tceeverde] at (0.5,3.75) {$r_D\,(1-t_{IS})$};}
+  % 3: r_E, que sube menos que sin impuestos
+  \capa{3}{\draw[curva1] plot[domain=0:0.82,samples=100] (\x,{re(\x)}) node[etiqueta,left,text=tceemorado] {$r_E$};}
+  % 4: WACC = r_A (1 - t_IS L), recta decreciente
+  \capa{4}{\draw[curva2] (0,10) -- (1,7.5);}
+  \capa{4}{\node[etiqueta,below,text=tceeazul] at (0.76,8.1) {$\mathrm{WACC}=r_A\,(1-t_{IS}L)$};}
+  % 5: nuestra empresa (L = 0,47; WACC 8,8 %)
+  \capa{5}{\node[punto,fill=tceeazul] (N) at (0.4706,8.8235) {};}
+  \capa{5}{\draw[guia] (N) -- (0.4706,0) node[below,text=black] {$0{,}47$};}
+  \capa{5}{\node[etiqueta,below left,font=\footnotesize] at (N) {$8{,}8~\%$};}
+  % 6: en L = 1, r_D = r_A y el WACC es r_A (1 - t_IS)
+  \capa{6}{\node[punto,fill=tceeverde] (F) at (1,7.5) {};}
+  \capa{6}{\node[etiqueta,right,align=left,font=\footnotesize] at (F) {$L=1$:\\ $\mathrm{WACC}=r_A\,(1-t_{IS})$};}
+\end{tikzpicture}
+\end{document}

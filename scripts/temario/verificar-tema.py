@@ -508,6 +508,19 @@ PIZARRA = [r'\bpizarra\b', r'\(\s*(?:ver\s+|v[ée]ase\s+)?(?:la\s+)?caja(?:\s+(?
            r'\bcaja\s+(?:siguiente|de\s+abajo|inferior)\b', r'\bse\s+tacha\b', r'\ben\s+el\s+v[íi]deo\b']
 
 
+def comprobar_version_antigua(tema, tex, errores):
+    """Nunca se cita la versión antigua del tema (Víctor, 18/11/2026): ni «tema
+    antiguo», ni «versión anterior», ni «el original», en ninguna parte."""
+    sin = re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), tex)
+    ini = max(sin.find('\\begin{document}'), 0)
+    patron = (r'tema(?:s)? antiguos?|versi[oó]n (?:antigua|anterior) del tema|versi[oó]n antigua|'
+              r'(?:nota|cuadro|gr[aá]fico|figura|ejemplo|orden|esquema|Word) del original|del tema anterior')
+    for m in list(re.finditer(patron, sin[ini:], re.I))[:10]:
+        p = ini + m.start()
+        errores.append(f'Cita la versión antigua del tema (l. {_linea(tex, p)}): «…'
+                       f'{sin[max(0, p - 30):p + len(m.group(0)) + 20].strip()}…» (CRITERIOS §10)')
+
+
 def comprobar_pizarra(tema, tex, errores, avisos):
     """Nada de indicaciones de pizarra o de vídeo en el tema (Víctor, 11/11/2026):
     «en la pizarra…», «(caja siguiente)», «(ver caja)», «se tacha el 110…». Van
@@ -567,6 +580,7 @@ def verificar(tema):
             errores.append(f'Figura {i} sin \\fuente: {cap.group(1)[:60] if cap else ""}')
     datos['figuras'] = len(figuras)
     comprobar_remisiones(tema, tex, errores, datos)
+    comprobar_version_antigua(tema, tex, errores)
     comprobar_formulas_separadas(tex, errores)
     comprobar_criterios(tema, tex, errores, avisos, datos)
     comprobar_graficos_imagenes(tema, tex, errores, datos)

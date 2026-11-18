@@ -15822,7 +15822,7 @@ ii) Desarrollo
 \end_layout
 
 \begin_layout Itemize
-El modelo se construye en 3 escenarios, y cada uno aÃ±ade un supuesto al anterior. Las cajas grises los desarrollan paso a paso, con sus ecuaciones y su grÃ¡fico; lo que aÃ±ade el impuesto va en 
+El modelo se construye en 3 pasos: la autarquÃ­a, la libertad de capitales y el impuesto. Cada paso aÃ±ade un supuesto al anterior y una capa al grÃ¡fico; lo que aÃ±ade el impuesto va en 
 \begin_inset ERT
 status collapsed
 
@@ -15860,9 +15860,83 @@ status collapsed
 \begin_layout Itemize
 
 \emph on
-En autarquÃ­a
+Las preferencias
 \emph default
-, el paÃ­s consume su dotaciÃ³n: el punto 
+: el hogar representativo valora el consumo de los 2 periodos con 
+\begin_inset Formula \[U=u(C_t)+\beta\,u(C_{t+1}).\]
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En el plano 
+\begin_inset Formula $(C_t,C_{t+1})$
+\end_inset
+
+, sus curvas de indiferencia son convexas, y su pendiente es la relaciÃ³n marginal de sustituciÃ³n entre el consumo de hoy y el de maÃ±ana, 
+\begin_inset Formula $-u'(C_t)/[\beta\,u'(C_{t+1})]$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+A lo largo de una curva de indiferencia, 
+\begin_inset Formula $dU=u'(C_t)\,dC_t+\beta\,u'(C_{t+1})\,dC_{t+1}=0$
+\end_inset
+
+, de donde 
+\begin_inset Formula $dC_{t+1}/dC_t=-u'(C_t)/[\beta\,u'(C_{t+1})]$
+\end_inset
+
+. Con 
+\begin_inset Formula $u''<0$
+\end_inset
+
+, esa relaciÃ³n baja a medida que aumenta 
+\begin_inset Formula $C_t$
+\end_inset
+
+ y disminuye 
+\begin_inset Formula $C_{t+1}$
+\end_inset
+
+: la curva es convexa.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Esa relaciÃ³n es lo que el hogar estÃ¡ dispuesto a dar de consumo de maÃ±ana por una unidad mÃ¡s de consumo hoy. Cada paso del modelo la compara con el precio que pone el mercado. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Paso 1: la autarquÃ­a
+\emph default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sin acceso al exterior, la deuda exterior es nula y el paÃ­s consume lo que tiene en cada periodo: 
+\begin_inset Formula $C_t=Y_t$
+\end_inset
+
+ y 
+\begin_inset Formula $C_{t+1}=Y_{t+1}$
+\end_inset
+
+. Es el punto 
 \begin_inset Formula $A$
 \end_inset
 
@@ -15874,7 +15948,7 @@ En autarquÃ­a
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:controles-capital"
+reference "fig:controles-paso1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -15882,230 +15956,88 @@ nolink "false"
 
 \end_inset
 
-. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-Escenario 1: autarquÃ­a
-\series default
- 
+, la dotaciÃ³n. 
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Supuestos
-\emph default
-: el paÃ­s recibe las dotaciones 
-\begin_inset Formula $Y_t$
-\end_inset
-
- e 
-\begin_inset Formula $Y_{t+1}$
-\end_inset
-
- y no puede prestar ni pedir prestado fuera: la deuda exterior es nula, 
-\begin_inset Formula $B_t=0$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Restricciones
-\emph default
-: lo que se consume es lo que se tiene en cada periodo, 
-\begin_inset Formula $$
-\end_inset
-
-Ct=Yt,
-\begin_inset space \qquad{}
-
-\end_inset
-
-C
-\begin_inset ERT
+No hay nada que elegir: lo que se ajusta es el 
+\begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-{
+tipo de interÃ©s de autarquÃ­a
 \end_layout
 
 \end_inset
 
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-=Y
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Formula $$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Equilibrio
-\emph default
-: el punto 
-\begin_inset Formula $A$
-\end_inset
-
-. No hay nada que elegir; lo que se ajusta es el tipo de interÃ©s de autarquÃ­a, 
+, 
 \begin_inset Formula $r^A$
 \end_inset
 
-, el que hace que los hogares quieran consumir justo su dotaciÃ³n (la relaciÃ³n marginal de sustituciÃ³n en 
+, el que hace que los hogares quieran consumir justo su dotaciÃ³n. Es la relaciÃ³n marginal de sustituciÃ³n en 
 \begin_inset Formula $A$
 \end_inset
 
-): 
-\begin_inset Formula $$
-\end_inset
-
-1+rA=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
+: 
+\begin_inset Formula \[1+r^A=\frac{u'(Y_t)}{\beta\,u'(Y_{t+1})}.\]
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-u'(Yt)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-beta
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-u'(Y
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Formula $$
-\end_inset
-
- El supuesto de que el paÃ­s quiere pedir prestado es 
-\begin_inset Formula $r^A>r^*$
-\end_inset
-
-: su dotaciÃ³n crece, o es impaciente. 
 \end_layout
 
 \begin_layout Itemize
+El supuesto de que el paÃ­s quiere pedir prestado es 
+\begin_inset Formula $r^A>r^*$
+\end_inset
 
-\emph on
-Bienestar
-\emph default
-: 
+: su dotaciÃ³n crece o es impaciente, y valora el consumo de hoy mÃ¡s de lo que se lo cobra el mercado mundial.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Con 
+\begin_inset Formula $u(C)=\ln C$
+\end_inset
+
+, 
+\begin_inset Formula $u'(C)=1/C$
+\end_inset
+
+ y 
+\begin_inset Formula $1+r^A=Y_{t+1}/(\beta\,Y_t)$
+\end_inset
+
+. Con los nÃºmeros del grÃ¡fico (
+\begin_inset Formula $Y_t=3$
+\end_inset
+
+, 
+\begin_inset Formula $Y_{t+1}=5$
+\end_inset
+
+, 
+\begin_inset Formula $\beta=0{,}5$
+\end_inset
+
+), 
+\begin_inset Formula $1+r^A=3{,}33$
+\end_inset
+
+, muy por encima del 
+\begin_inset Formula $1+r^*=1{,}05$
+\end_inset
+
+ mundial.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+El bienestar de la autarquÃ­a es 
 \begin_inset Formula $U_0=u(Y_t)+\beta\,u(Y_{t+1})$
 \end_inset
 
@@ -16116,13 +16048,30 @@ Bienestar
 . 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
-\begin_inset Flex Grafico en caja
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -16164,7 +16113,7 @@ status collapsed
 
 \end_inset
 
-0.5
+0.6
 \begin_inset ERT
 status collapsed
 
@@ -16249,59 +16198,18 @@ nolink "false"
 
 \end_inset
 
- 
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Con libertad de capitales
+Paso 2: la libertad de capitales
 \emph default
-, el paÃ­s consume en 
-\begin_inset Formula $C$
-\end_inset
-
-, donde la curva de indiferencia 
-\begin_inset Formula $U_1$
-\end_inset
-
- es tangente a la recta nacional, que pasa por 
-\begin_inset Formula $A$
-\end_inset
-
- con pendiente 
-\begin_inset Formula $-(1+r^*)$
-\end_inset
-
-; en 
-\begin_inset Formula $t$
-\end_inset
-
- tiene un dÃ©ficit por cuenta corriente, 
-\begin_inset Formula $C_t-Y_t>0$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-Escenario 2: libertad de capitales
-\series default
  
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -16333,7 +16241,7 @@ Supuesto nuevo
 \begin_layout Itemize
 
 \emph on
-Restricciones
+La restricciÃ³n
 \emph default
 : en cada periodo, 
 \begin_inset Formula $C_t=Y_t+B_t$
@@ -16347,195 +16255,86 @@ Restricciones
 \begin_inset Formula $B_t$
 \end_inset
 
-, la 
-\emph on
+ queda la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
 restricciÃ³n intertemporal
-\emph default
-, la recta nacional, que pasa por 
-\begin_inset Formula $A$
-\end_inset
-
- con pendiente 
-\begin_inset Formula $-(1+r^*)$
-\end_inset
-
-: 
-\begin_inset Formula $$
-\end_inset
-
-Ct+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
 \end_layout
 
 \end_inset
 
-
-\begin_inset ERT
+ del paÃ­s, la 
+\begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-{
+recta nacional
 \end_layout
 
 \end_inset
 
-C
-\begin_inset ERT
+:
+\begin_inset Foot
 status collapsed
 
-\begin_layout Plain Layout
-{
-\end_layout
 
+\begin_layout Standard
+De la primera, 
+\begin_inset Formula $B_t=C_t-Y_t$
 \end_inset
 
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
+; sustituyendo en la segunda, 
+\begin_inset Formula $C_{t+1}=Y_{t+1}-(1+r^*)\,(C_t-Y_t)$
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
+, y dividiendo por 
+\begin_inset Formula $1+r^*$
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
+ y reordenando se llega a la recta. 
+\begin_inset Formula $W$
 \end_inset
 
-1+r*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
+ es la riqueza del paÃ­s: el valor presente de su dotaciÃ³n.
 \end_layout
 
-\end_inset
-
-=Yt+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Y
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1+r*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-equiv
-\end_layout
-
-\end_inset
-
- W.
-\begin_inset Formula $$
 \end_inset
 
  
+\begin_inset Formula \[C_t+\frac{C_{t+1}}{1+r^*}=Y_t+\frac{Y_{t+1}}{1+r^*}\equiv W.\]
+\end_inset
+
+Pasa por 
+\begin_inset Formula $A$
+\end_inset
+
+, porque la dotaciÃ³n siempre es alcanzable, y su pendiente es 
+\begin_inset Formula $-(1+r^*)$
+\end_inset
+
+, el precio del consumo de hoy en el mercado mundial. 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Problema
+El problema
 \emph default
-: 
-\begin_inset Formula $\max\,u(C_t)+\beta\,u(C_{t+1})$
+: el hogar elige el consumo de los 2 periodos, 
+\begin_inset Formula \[\optim{\max}{C_t,\,C_{t+1}}{u(C_t)+\beta\,u(C_{t+1})}{C_t+\dfrac{C_{t+1}}{1+r^*}=W}\]
 \end_inset
 
- sujeto a esa restricciÃ³n. La condiciÃ³n de primer orden es la ecuaciÃ³n de 
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La condiciÃ³n de primer orden
+\emph default
+: la ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -16545,73 +16344,43 @@ Euler
 
 \end_inset
 
-: 
-\begin_inset Formula $$
-\end_inset
-
-u'(Ct)=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-beta
-\end_layout
-
+, que iguala la relaciÃ³n marginal de sustituciÃ³n al precio mundial, 
+\begin_inset Formula \[u'(C_t)=\beta\,(1+r^*)\,u'(C_{t+1}).\]
 \end_inset
 
 
-\begin_inset space \thinspace{}
-
-\end_inset
-
-(1+r*)
-\begin_inset space \thinspace{}
-
-\end_inset
-
-u'(C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-).
-\begin_inset Formula $$
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Equilibrio
+El equilibrio
 \emph default
 : el punto 
 \begin_inset Formula $C$
 \end_inset
 
-, tangencia de 
+ del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:controles-paso2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, donde la curva de indiferencia 
 \begin_inset Formula $U_1$
 \end_inset
 
- con la recta nacional. Como 
+ es tangente a la recta nacional. Como 
 \begin_inset Formula $r^*<r^A$
 \end_inset
 
@@ -16635,15 +16404,13 @@ dÃ©ficit por cuenta corriente
 \begin_inset Formula $t+1$
 \end_inset
 
-. 
-\end_layout
+.
+\begin_inset Foot
+status collapsed
 
-\begin_layout Itemize
 
-\emph on
-Un ejemplo
-\emph default
-: con 
+\begin_layout Standard
+Con 
 \begin_inset Formula $u(C)=\ln C$
 \end_inset
 
@@ -16661,23 +16428,11 @@ Euler
 \begin_inset Formula $C_{t+1}=\beta\,(1+r^*)\,C_t$
 \end_inset
 
- y, en la restricciÃ³n, 
+ y, en la recta nacional, 
 \begin_inset Formula $C^C_t=W/(1+\beta)$
 \end_inset
 
 . Con los nÃºmeros del grÃ¡fico (
-\begin_inset Formula $Y_t=3$
-\end_inset
-
-, 
-\begin_inset Formula $Y_{t+1}=5$
-\end_inset
-
-, 
-\begin_inset Formula $\beta=0{,}5$
-\end_inset
-
-, 
 \begin_inset Formula $1+r^*=1{,}05$
 \end_inset
 
@@ -16689,13 +16444,18 @@ Euler
 \begin_inset Formula $C^C_t=5{,}18$
 \end_inset
 
-: un dÃ©ficit de 2,18. 
+: un dÃ©ficit de 2,18.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Bienestar
+El bienestar
 \emph default
 : 
 \begin_inset Formula $U_1>U_0$
@@ -16704,13 +16464,30 @@ Bienestar
 . Son las ganancias del comercio intertemporal: el paÃ­s adelanta consumo al precio mundial, mÃ¡s barato que el de autarquÃ­a. 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
-\begin_inset Flex Grafico en caja
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -16752,7 +16529,7 @@ status collapsed
 
 \end_inset
 
-0.5
+0.6
 \begin_inset ERT
 status collapsed
 
@@ -16837,9 +16614,109 @@ nolink "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Paso 3: un impuesto sobre la deuda exterior
+\emph default
  
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Supuestos nuevos
+\emph default
+: el Gobierno cobra 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\tau$
+\end_inset
+
+ por cada unidad de deuda exterior
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ y devuelve lo recaudado en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+una transferencia en bloque, 
+\begin_inset Formula $T_{t+1}=\tau\,B_t$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, que cada hogar toma como dada. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La restricciÃ³n de los hogares
+\emph default
+: se endeudan al tipo interno, 
+\begin_inset Formula $r=r^*{\color{red}+\tau}$
+\end_inset
+
+, y reciben la transferencia, 
+\begin_inset Formula \[C_{t+1}=Y_{t+1}-(1+r^*{\color{red}+\tau})\,(C_t-Y_t){\color{red}+T_{t+1}}.\]
 \end_inset
 
 
@@ -16848,13 +16725,7 @@ nolink "false"
 \begin_layout Itemize
 
 \emph on
-Con el impuesto
-\emph default
-, los hogares se endeudan al tipo interno 
-\begin_inset Formula $r=r^*+\tau$
-\end_inset
-
-, y la ecuaciÃ³n de 
+La ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -16864,50 +16735,9 @@ Euler
 
 \end_inset
 
- pasa a ser 
-\begin_inset Formula \begin{equation}\label{eq:euler-controles}
-  u'(C_t)=\beta\,(1+r^*+\tau)\,u'(C_{t+1}).
-  \end{equation}
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Como el impuesto vuelve a los hogares, el paÃ­s sigue pagando 
-\begin_inset Formula $r^*$
-\end_inset
-
- al exterior: el equilibrio estÃ¡ sobre la recta nacional, en el punto 
-\begin_inset Formula $D$
-\end_inset
-
-, entre 
-\begin_inset Formula $A$
-\end_inset
-
- y 
-\begin_inset Formula $C$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-En 
-\begin_inset Formula $D$
-\end_inset
-
-, la curva de indiferencia 
-\begin_inset Formula $U_2$
-\end_inset
-
- tiene la pendiente del tipo interno, 
-\begin_inset Formula $-(1+r^*+\tau)$
-\end_inset
-
-, mÃ¡s inclinada que la recta nacional (anexo
+ de los hogares
+\emph default
+: consumir hoy les sale mÃ¡s caro, y su relaciÃ³n marginal de sustituciÃ³n se iguala al tipo interno (la derivaciÃ³n, en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -16923,7 +16753,432 @@ nolink "false"
 
 \end_inset
 
-). 
+): 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+funcionclave
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+eq:euler-controles
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+u'(Ct)=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+
+\end_inset
+
+(1+r*
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+color{red}
+\end_layout
+
+\end_inset
+
++
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+tau
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+)
+\begin_inset space \thinspace{}
+
+\end_inset
+
+u'(C
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La restricciÃ³n del paÃ­s
+\emph default
+: como 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $T_{t+1}=\tau\,B_t$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, lo que los hogares pagan de impuesto les vuelve, y el paÃ­s sigue pagando 
+\begin_inset Formula $r^*$
+\end_inset
+
+ al exterior. La restricciÃ³n agregada es 
+\emph on
+la misma recta nacional
+\emph default
+ del paso
+\begin_inset space ~
+
+\end_inset
+
+2.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Sustituyendo 
+\begin_inset Formula $T_{t+1}=\tau\,B_t=\tau\,(C_t-Y_t)$
+\end_inset
+
+ en la restricciÃ³n de los hogares, los tÃ©rminos en 
+\begin_inset Formula $\tau$
+\end_inset
+
+ se anulan: 
+\begin_inset Formula $C_{t+1}=Y_{t+1}-(1+r^*)\,(C_t-Y_t)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El equilibrio
+\emph default
+: el punto 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $D$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:controles-capital"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, sobre la recta nacional pero donde la relaciÃ³n marginal de sustituciÃ³n es 
+\begin_inset Formula $1+r^*{\color{red}+\tau}$
+\end_inset
+
+. La curva 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $U_2$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ corta la recta nacional con la pendiente de la 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+recta privada, 
+\begin_inset Formula $-(1+r^*+\tau)$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, mÃ¡s inclinada. Con preferencias convexas, 
+\begin_inset Formula $D$
+\end_inset
+
+ queda entre 
+\begin_inset Formula $A$
+\end_inset
+
+ y 
+\begin_inset Formula $C$
+\end_inset
+
+: menos deuda y menos dÃ©ficit corriente.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Con 
+\begin_inset Formula $u(C)=\ln C$
+\end_inset
+
+, 
+\begin_inset Formula $C_{t+1}=\beta\,(1+r^*+\tau)\,C_t$
+\end_inset
+
+ y, en la recta nacional, 
+\begin_inset Formula $C^D_t=W/[1+\beta\,(1+r^*+\tau)/(1+r^*)]$
+\end_inset
+
+. Con 
+\begin_inset Formula $1+r^*+\tau=1{,}876$
+\end_inset
+
+, 
+\begin_inset Formula $C^D_t=4{,}1$
+\end_inset
+
+: el dÃ©ficit baja de 2,18 a 1,1.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El bienestar
+\emph default
+: 
+\begin_inset Formula $U_0<{\color{red}U_2}<U_1$
+\end_inset
+
+. 
+\begin_inset Formula $C$
+\end_inset
+
+ es el mejor punto de la recta nacional y la utilidad crece a lo largo de la recta de 
+\begin_inset Formula $A$
+\end_inset
+
+ a 
+\begin_inset Formula $C$
+\end_inset
+
+, asÃ­ que 
+\begin_inset Formula $D$
+\end_inset
+
+, entre los 2, queda en medio. El impuesto separa el precio privado del consumo presente de su precio social: es una distorsiÃ³n, como un arancel. 
 \end_layout
 
 \end_deeper
@@ -16987,7 +17242,7 @@ status collapsed
 
 \end_inset
 
-0.62
+0.6
 \begin_inset ERT
 status collapsed
 
@@ -17087,1116 +17342,24 @@ textcite[cap.~1]{ObstfeldRogoff1996Foundations}
 
 \end_layout
 
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-Escenario 3: un impuesto sobre la deuda exterior
-\series default
- (en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-rojo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-, lo que cambia frente al escenario 2) 
-\end_layout
-
 \begin_layout Itemize
-
-\emph on
-Supuestos nuevos
-\emph default
-: el Gobierno cobra 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\tau$
-\end_inset
-
- por cada unidad de deuda exterior
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- y devuelve lo recaudado en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-una transferencia en bloque, 
-\begin_inset Formula $T_{t+1}=\tau\,B_t$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-, que cada hogar toma como dada. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-RestricciÃ³n de los hogares
-\emph default
-: pagan el tipo interno, 
-\begin_inset Formula $r^*$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $+\,\tau$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-, y reciben la transferencia, 
-\begin_inset Formula $$
-\end_inset
-
-C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-=Y
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
--(1+r*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-color{red}
-\end_layout
-
-\end_inset
-
-+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-tau
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-)
-\begin_inset space \thinspace{}
-
-\end_inset
-
-(Ct-Yt)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-color{red}
-\end_layout
-
-\end_inset
-
-+T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Formula $$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-EcuaciÃ³n de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Euler
-\end_layout
-
-\end_inset
-
-
-\emph default
-: la de los hogares cambia, porque consumir hoy les sale mÃ¡s caro, 
-\begin_inset Formula $$
-\end_inset
-
-u'(Ct)=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-beta
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-(1+r*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-color{red}
-\end_layout
-
-\end_inset
-
-+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-tau
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-)
-\begin_inset space \thinspace{}
-
-\end_inset
-
-u'(C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-).
-\begin_inset Formula $$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-RestricciÃ³n del paÃ­s
-\emph default
-: como 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $T_{t+1}=\tau B_t$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-, el impuesto vuelve a los hogares y el paÃ­s sigue pagando 
-\begin_inset Formula $r^*$
-\end_inset
-
- al exterior: la restricciÃ³n agregada es 
-\emph on
-la misma recta nacional
-\emph default
- del escenario 2, 
-\begin_inset Formula $$
-\end_inset
-
-Ct+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1+r*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-=Yt+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Y
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t+1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1+r*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-=W.
-\begin_inset Formula $$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Equilibrio
-\emph default
-: el punto 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $D$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-, sobre la recta nacional pero donde la relaciÃ³n marginal de sustituciÃ³n es 
-\begin_inset Formula $1+r^*$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $+\,\tau$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-: la curva 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $U_2$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- corta la recta nacional con la pendiente de la 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-recta privada, 
-\begin_inset Formula $-(1+r^*+\tau)$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-. Con preferencias convexas, 
-\begin_inset Formula $D$
-\end_inset
-
- queda entre 
+Recapitulando el desarrollo: de 
 \begin_inset Formula $A$
 \end_inset
 
- y 
+ a 
 \begin_inset Formula $C$
 \end_inset
 
-: menos deuda y menos dÃ©ficit corriente. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-El ejemplo
-\emph default
-: con 
-\begin_inset Formula $u(C)=\ln C$
+, el paÃ­s gana con la libertad de capitales; de 
+\begin_inset Formula $C$
 \end_inset
 
-, 
-\begin_inset Formula $C_{t+1}=\beta\,(1+r^*$
+ a 
+\begin_inset Formula $D$
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $+\,\tau$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $)\,C_t$
-\end_inset
-
- y, en la recta nacional, 
-\begin_inset Formula $$
-\end_inset
-
-CDt=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-W
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-beta
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-(1+r*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-color{red}
-\end_layout
-
-\end_inset
-
-+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-tau
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-)/(1+r*)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Formula $$
-\end_inset
-
- Con 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $1+r^*+\tau=1{,}876$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Formula $C^D_t=4{,}1$
-\end_inset
-
-: el dÃ©ficit baja de 2,18 a 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1,1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Bienestar
-\emph default
-: 
-\begin_inset Formula $U_0<$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $U_2$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $<U_1$
-\end_inset
-
-. El impuesto separa el precio privado del social del consumo presente: es una distorsiÃ³n, como un arancel. 
-\end_layout
-
-\end_inset
-
-
+, el impuesto le devuelve parte del camino, porque encarece el consumo de hoy solo para los hogares, no para el paÃ­s. 
 \end_layout
 
 \begin_layout Subparagraph

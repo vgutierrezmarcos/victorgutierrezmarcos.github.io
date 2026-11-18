@@ -170,7 +170,7 @@
                     <p class="tema-codigo">Tema 3.B.15</p>
                     <h1 class="tema-titulo">Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio.</h1>
                     <p class="tema-meta">Última actualización: 11/11/2026 · Cante: 30 minutos</p>
-                    <p class="tema-meta tema-paginas">Tema: 38 págs. · Anexos: 11 · Bibliografía: 7 (PDF)</p>
+                    <p class="tema-meta tema-paginas">Tema: 39 págs. · Anexos: 11 · Bibliografía: 7 (PDF)</p>
                     <div class="tema-descargas">
                         <a href="3B15.pdf" target="_blank">Descargar PDF</a>
                         <a href="3B15.docx" download>Descargar Word</a>
@@ -1404,73 +1404,72 @@
 <section id="ii-desarrollo-2" class="level6">
 <h6>ii) Desarrollo</h6>
 <ul>
-<li><p>El modelo se construye en 3 escenarios, y cada uno añade un supuesto al anterior. Las cajas grises los desarrollan paso a paso, con sus ecuaciones y su gráfico; lo que añade el impuesto va en <span class="tcee-rojo">rojo</span>, para que se vea qué cambia.</p></li>
-<li><p><em>En autarquía</em>, el país consume su dotación: el punto <span class="math inline">\(A\)</span> del gráfico <a href="#fig:controles-capital">7</a>.</p></li>
-</ul>
-<div class="anotaciones">
-<p><strong>Escenario 1: autarquía</strong></p>
+<li><p>El modelo se construye en 3 pasos: la autarquía, la libertad de capitales y el impuesto. Cada paso añade un supuesto al anterior y una capa al gráfico; lo que añade el impuesto va en <span class="tcee-rojo">rojo</span>, para que se vea qué cambia.</p></li>
+<li><p><em>Las preferencias</em>: el hogar representativo valora el consumo de los 2 periodos con <span class="math display">\[U=u(C_t)+\beta\,u(C_{t+1}).\]</span></p>
 <ul>
-<li><p><em>Supuestos</em>: el país recibe las dotaciones <span class="math inline">\(Y_t\)</span> e <span class="math inline">\(Y_{t+1}\)</span> y no puede prestar ni pedir prestado fuera: la deuda exterior es nula, <span class="math inline">\(B_t=0\)</span>.</p></li>
-<li><p><em>Restricciones</em>: lo que se consume es lo que se tiene en cada periodo, <span class="math display">\[C_t=Y_t,\qquad C_{t+1}=Y_{t+1}.\]</span></p></li>
-<li><p><em>Equilibrio</em>: el punto <span class="math inline">\(A\)</span>. No hay nada que elegir; lo que se ajusta es el tipo de interés de autarquía, <span class="math inline">\(r^A\)</span>, el que hace que los hogares quieran consumir justo su dotación (la relación marginal de sustitución en <span class="math inline">\(A\)</span>): <span class="math display">\[1+r^A=\frac{u&#39;(Y_t)}{\beta\,u&#39;(Y_{t+1})}.\]</span> El supuesto de que el país quiere pedir prestado es <span class="math inline">\(r^A&gt;r^*\)</span>: su dotación crece, o es impaciente.</p></li>
-<li><p><em>Bienestar</em>: <span class="math inline">\(U_0=u(Y_t)+\beta\,u(Y_{t+1})\)</span>, la curva de indiferencia que pasa por <span class="math inline">\(A\)</span>.</p></li>
+<li><p>En el plano <span class="math inline">\((C_t,C_{t+1})\)</span>, sus curvas de indiferencia son convexas, y su pendiente es la relación marginal de sustitución entre el consumo de hoy y el de mañana, <span class="math inline">\(-u&#39;(C_t)/[\beta\,u&#39;(C_{t+1})]\)</span>.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></p></li>
+<li><p>Esa relación es lo que el hogar está dispuesto a dar de consumo de mañana por una unidad más de consumo hoy. Cada paso del modelo la compara con el precio que pone el mercado.</p></li>
+</ul></li>
+<li><p><em>Paso 1: la autarquía</em></p>
+<ul>
+<li><p>Sin acceso al exterior, la deuda exterior es nula y el país consume lo que tiene en cada periodo: <span class="math inline">\(C_t=Y_t\)</span> y <span class="math inline">\(C_{t+1}=Y_{t+1}\)</span>. Es el punto <span class="math inline">\(A\)</span> del gráfico <a href="#fig:controles-paso1">5</a>, la dotación.</p></li>
+<li><p>No hay nada que elegir: lo que se ajusta es el <strong>tipo de interés de autarquía</strong>, <span class="math inline">\(r^A\)</span>, el que hace que los hogares quieran consumir justo su dotación. Es la relación marginal de sustitución en <span class="math inline">\(A\)</span>: <span class="math display">\[1+r^A=\frac{u&#39;(Y_t)}{\beta\,u&#39;(Y_{t+1})}.\]</span></p></li>
+<li><p>El supuesto de que el país quiere pedir prestado es <span class="math inline">\(r^A&gt;r^*\)</span>: su dotación crece o es impaciente, y valora el consumo de hoy más de lo que se lo cobra el mercado mundial.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a></p></li>
+<li><p>El bienestar de la autarquía es <span class="math inline">\(U_0=u(Y_t)+\beta\,u(Y_{t+1})\)</span>, la curva de indiferencia que pasa por <span class="math inline">\(A\)</span>.</p></li>
+</ul></li>
 </ul>
 <figure id="fig:controles-paso1">
 <figcaption><span class="etiqueta">Gráfico 5.–</span> El control de capitales (a): la autarquía, <span class="math inline">\(A\)</span></figcaption>
-<img src="../fuentes/3B15/graficos/controles-capital-paso1.svg" style="width:50.0%" loading="lazy" alt="Gráfico 5.– El control de capitales (a): la autarquía, A" />
+<img src="../fuentes/3B15/graficos/controles-capital-paso1.svg" style="width:60.0%" loading="lazy" alt="Gráfico 5.– El control de capitales (a): la autarquía, A" />
 <div class="fuente">
 <p>Fuente: Elaboración propia a partir de <span class="citation" data-cites="SchmittGroheUribeWoodford2022International"><span class="smallcaps">Schmitt-Grohé</span>, <span class="smallcaps">Uribe</span> y <span class="smallcaps">Woodford</span> (<a href="#ref-SchmittGroheUribeWoodford2022International" role="doc-biblioref">2022</a>)</span>. Primer paso del gráfico <a href="#fig:controles-capital">7</a>.</p>
 </div>
 </figure>
-</div>
 <ul>
-<li><p><em>Con libertad de capitales</em>, el país consume en <span class="math inline">\(C\)</span>, donde la curva de indiferencia <span class="math inline">\(U_1\)</span> es tangente a la recta nacional, que pasa por <span class="math inline">\(A\)</span> con pendiente <span class="math inline">\(-(1+r^*)\)</span>; en <span class="math inline">\(t\)</span> tiene un déficit por cuenta corriente, <span class="math inline">\(C_t-Y_t&gt;0\)</span>.</p></li>
-</ul>
-<div class="anotaciones">
-<p><strong>Escenario 2: libertad de capitales</strong></p>
+<li><p><em>Paso 2: la libertad de capitales</em></p>
 <ul>
 <li><p><em>Supuesto nuevo</em>: el país pide prestado <span class="math inline">\(B_t\)</span> en <span class="math inline">\(t\)</span> al tipo mundial <span class="math inline">\(r^*\)</span> y devuelve <span class="math inline">\((1+r^*)\,B_t\)</span> en <span class="math inline">\(t+1\)</span>.</p></li>
-<li><p><em>Restricciones</em>: en cada periodo, <span class="math inline">\(C_t=Y_t+B_t\)</span> y <span class="math inline">\(C_{t+1}=Y_{t+1}-(1+r^*)\,B_t\)</span>. Eliminando <span class="math inline">\(B_t\)</span>, la <em>restricción intertemporal</em>, la recta nacional, que pasa por <span class="math inline">\(A\)</span> con pendiente <span class="math inline">\(-(1+r^*)\)</span>: <span class="math display">\[C_t+\frac{C_{t+1}}{1+r^*}=Y_t+\frac{Y_{t+1}}{1+r^*}\equiv W.\]</span></p></li>
-<li><p><em>Problema</em>: <span class="math inline">\(\max\,u(C_t)+\beta\,u(C_{t+1})\)</span> sujeto a esa restricción. La condición de primer orden es la ecuación de <span class="smallcaps">Euler</span>: <span class="math display">\[u&#39;(C_t)=\beta\,(1+r^*)\,u&#39;(C_{t+1}).\]</span></p></li>
-<li><p><em>Equilibrio</em>: el punto <span class="math inline">\(C\)</span>, tangencia de <span class="math inline">\(U_1\)</span> con la recta nacional. Como <span class="math inline">\(r^*&lt;r^A\)</span>, consumir hoy es más barato que en autarquía: <span class="math inline">\(C^C_t&gt;Y_t\)</span>, y el país tiene un <em>déficit por cuenta corriente</em> en <span class="math inline">\(t\)</span>, <span class="math inline">\(C^C_t-Y_t=B_t&gt;0\)</span>, que paga en <span class="math inline">\(t+1\)</span>.</p></li>
-<li><p><em>Un ejemplo</em>: con <span class="math inline">\(u(C)=\ln C\)</span>, la ecuación de <span class="smallcaps">Euler</span> da <span class="math inline">\(C_{t+1}=\beta\,(1+r^*)\,C_t\)</span> y, en la restricción, <span class="math inline">\(C^C_t=W/(1+\beta)\)</span>. Con los números del gráfico (<span class="math inline">\(Y_t=3\)</span>, <span class="math inline">\(Y_{t+1}=5\)</span>, <span class="math inline">\(\beta=0{,}5\)</span>, <span class="math inline">\(1+r^*=1{,}05\)</span>), <span class="math inline">\(W=7{,}76\)</span> y <span class="math inline">\(C^C_t=5{,}18\)</span>: un déficit de 2,18.</p></li>
-<li><p><em>Bienestar</em>: <span class="math inline">\(U_1&gt;U_0\)</span>. Son las ganancias del comercio intertemporal: el país adelanta consumo al precio mundial, más barato que el de autarquía.</p></li>
+<li><p><em>La restricción</em>: en cada periodo, <span class="math inline">\(C_t=Y_t+B_t\)</span> y <span class="math inline">\(C_{t+1}=Y_{t+1}-(1+r^*)\,B_t\)</span>. Eliminando <span class="math inline">\(B_t\)</span> queda la <strong>restricción intertemporal</strong> del país, la <strong>recta nacional</strong>:<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a> <span class="math display">\[C_t+\frac{C_{t+1}}{1+r^*}=Y_t+\frac{Y_{t+1}}{1+r^*}\equiv W.\]</span> Pasa por <span class="math inline">\(A\)</span>, porque la dotación siempre es alcanzable, y su pendiente es <span class="math inline">\(-(1+r^*)\)</span>, el precio del consumo de hoy en el mercado mundial.</p></li>
+<li><p><em>El problema</em>: el hogar elige el consumo de los 2 periodos, <span class="math display">\[\begin{array}{rl}\displaystyle \max_{C_t,\,C_{t+1}} &amp; \displaystyle u(C_t)+\beta\,u(C_{t+1}) \\ \text{s.a.} &amp; C_t+\dfrac{C_{t+1}}{1+r^*}=W\end{array}\]</span></p></li>
+<li><p><em>La condición de primer orden</em>: la ecuación de <span class="smallcaps">Euler</span>, que iguala la relación marginal de sustitución al precio mundial, <span class="math display">\[u&#39;(C_t)=\beta\,(1+r^*)\,u&#39;(C_{t+1}).\]</span></p></li>
+<li><p><em>El equilibrio</em>: el punto <span class="math inline">\(C\)</span> del gráfico <a href="#fig:controles-paso2">6</a>, donde la curva de indiferencia <span class="math inline">\(U_1\)</span> es tangente a la recta nacional. Como <span class="math inline">\(r^*&lt;r^A\)</span>, consumir hoy es más barato que en autarquía: <span class="math inline">\(C^C_t&gt;Y_t\)</span>, y el país tiene un <em>déficit por cuenta corriente</em> en <span class="math inline">\(t\)</span>, <span class="math inline">\(C^C_t-Y_t=B_t&gt;0\)</span>, que paga en <span class="math inline">\(t+1\)</span>.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></p></li>
+<li><p><em>El bienestar</em>: <span class="math inline">\(U_1&gt;U_0\)</span>. Son las ganancias del comercio intertemporal: el país adelanta consumo al precio mundial, más barato que el de autarquía.</p></li>
+</ul></li>
 </ul>
 <figure id="fig:controles-paso2">
 <figcaption><span class="etiqueta">Gráfico 6.–</span> El control de capitales (b): libertad de capitales, <span class="math inline">\(C\)</span></figcaption>
-<img src="../fuentes/3B15/graficos/controles-capital-paso2.svg" style="width:50.0%" loading="lazy" alt="Gráfico 6.– El control de capitales (b): libertad de capitales, C" />
+<img src="../fuentes/3B15/graficos/controles-capital-paso2.svg" style="width:60.0%" loading="lazy" alt="Gráfico 6.– El control de capitales (b): libertad de capitales, C" />
 <div class="fuente">
 <p>Fuente: Elaboración propia a partir de <span class="citation" data-cites="SchmittGroheUribeWoodford2022International"><span class="smallcaps">Schmitt-Grohé</span>, <span class="smallcaps">Uribe</span> y <span class="smallcaps">Woodford</span> (<a href="#ref-SchmittGroheUribeWoodford2022International" role="doc-biblioref">2022</a>)</span>. Segundo paso del gráfico <a href="#fig:controles-capital">7</a>.</p>
 </div>
 </figure>
+<ul>
+<li><p><em>Paso 3: un impuesto sobre la deuda exterior</em></p>
+<ul>
+<li><p><em>Supuestos nuevos</em>: el Gobierno cobra <span class="tcee-rojo"><span class="math inline">\(\tau\)</span> por cada unidad de deuda exterior</span> y devuelve lo recaudado en <span class="tcee-rojo">una transferencia en bloque, <span class="math inline">\(T_{t+1}=\tau\,B_t\)</span></span>, que cada hogar toma como dada.</p></li>
+<li><p><em>La restricción de los hogares</em>: se endeudan al tipo interno, <span class="math inline">\(r=r^*{\color{red}+\tau}\)</span>, y reciben la transferencia, <span class="math display">\[C_{t+1}=Y_{t+1}-(1+r^*{\color{red}+\tau})\,(C_t-Y_t){\color{red}+T_{t+1}}.\]</span></p></li>
+<li><p><em>La ecuación de <span class="smallcaps">Euler</span> de los hogares</em>: consumir hoy les sale más caro, y su relación marginal de sustitución se iguala al tipo interno (la derivación, en el anexo <a href="#anexo:controles">E</a>):</p>
+<div class="funcionclave">
+<div id="eq:euler-controles">
+
 </div>
-<ul>
-<li><p><em>Con el impuesto</em>, los hogares se endeudan al tipo interno <span class="math inline">\(r=r^*+\tau\)</span>, y la ecuación de <span class="smallcaps">Euler</span> pasa a ser <span id="eq:euler-controles"></span><span class="math display">\[\tag{5}
-  u&#39;(C_t)=\beta\,(1+r^*+\tau)\,u&#39;(C_{t+1}).\]</span></p>
-<ul>
-<li><p>Como el impuesto vuelve a los hogares, el país sigue pagando <span class="math inline">\(r^*\)</span> al exterior: el equilibrio está sobre la recta nacional, en el punto <span class="math inline">\(D\)</span>, entre <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span>.</p></li>
-<li><p>En <span class="math inline">\(D\)</span>, la curva de indiferencia <span class="math inline">\(U_2\)</span> tiene la pendiente del tipo interno, <span class="math inline">\(-(1+r^*+\tau)\)</span>, más inclinada que la recta nacional (anexo <a href="#anexo:controles">E</a>).</p></li>
+<p><span class="math display">\[u&#39;(C_t)=\beta\,(1+r^*{\color{red}+\tau})\,u&#39;(C_{t+1})\tag{5}\]</span></p>
+</div></li>
+<li><p><em>La restricción del país</em>: como <span class="tcee-rojo"><span class="math inline">\(T_{t+1}=\tau\,B_t\)</span></span>, lo que los hogares pagan de impuesto les vuelve, y el país sigue pagando <span class="math inline">\(r^*\)</span> al exterior. La restricción agregada es <em>la misma recta nacional</em> del paso 2.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></p></li>
+<li><p><em>El equilibrio</em>: el punto <span class="tcee-rojo"><span class="math inline">\(D\)</span></span> del gráfico <a href="#fig:controles-capital">7</a>, sobre la recta nacional pero donde la relación marginal de sustitución es <span class="math inline">\(1+r^*{\color{red}+\tau}\)</span>. La curva <span class="tcee-rojo"><span class="math inline">\(U_2\)</span></span> corta la recta nacional con la pendiente de la <span class="tcee-rojo">recta privada, <span class="math inline">\(-(1+r^*+\tau)\)</span></span>, más inclinada. Con preferencias convexas, <span class="math inline">\(D\)</span> queda entre <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span>: menos deuda y menos déficit corriente.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></p></li>
+<li><p><em>El bienestar</em>: <span class="math inline">\(U_0&lt;{\color{red}U_2}&lt;U_1\)</span>. <span class="math inline">\(C\)</span> es el mejor punto de la recta nacional y la utilidad crece a lo largo de la recta de <span class="math inline">\(A\)</span> a <span class="math inline">\(C\)</span>, así que <span class="math inline">\(D\)</span>, entre los 2, queda en medio. El impuesto separa el precio privado del consumo presente de su precio social: es una distorsión, como un arancel.</p></li>
 </ul></li>
 </ul>
 <figure id="fig:controles-capital">
 <figcaption><span class="etiqueta">Gráfico 7.–</span> El efecto de un impuesto sobre el endeudamiento exterior</figcaption>
-<img src="../fuentes/3B15/graficos/controles-capital.svg" style="width:62.0%" loading="lazy" alt="Gráfico 7.– El efecto de un impuesto sobre el endeudamiento exterior" />
+<img src="../fuentes/3B15/graficos/controles-capital.svg" style="width:60.0%" loading="lazy" alt="Gráfico 7.– El efecto de un impuesto sobre el endeudamiento exterior" />
 <div class="fuente">
 <p>Fuente: Elaboración propia a partir de <span class="citation" data-cites="SchmittGroheUribeWoodford2022International"><span class="smallcaps">Schmitt-Grohé</span>, <span class="smallcaps">Uribe</span> y <span class="smallcaps">Woodford</span> (<a href="#ref-SchmittGroheUribeWoodford2022International" role="doc-biblioref">2022</a>)</span> y <span class="citation" data-cites="ObstfeldRogoff1996Foundations"><span class="smallcaps">Obstfeld</span> y <span class="smallcaps">Rogoff</span> (<a href="#ref-ObstfeldRogoff1996Foundations" role="doc-biblioref">1996, cap. 1</a>)</span>. <span class="math inline">\(A\)</span> es la dotación (y la autarquía); <span class="math inline">\(C\)</span>, el consumo con libertad de capitales; <span class="math inline">\(D\)</span>, con el impuesto <span class="math inline">\(\tau\)</span>. En rojo, lo que añade el impuesto.</p>
 </div>
 </figure>
-<div class="anotaciones">
-<p><strong>Escenario 3: un impuesto sobre la deuda exterior</strong> (en <span class="tcee-rojo">rojo</span>, lo que cambia frente al escenario 2)</p>
 <ul>
-<li><p><em>Supuestos nuevos</em>: el Gobierno cobra <span class="tcee-rojo"><span class="math inline">\(\tau\)</span> por cada unidad de deuda exterior</span> y devuelve lo recaudado en <span class="tcee-rojo">una transferencia en bloque, <span class="math inline">\(T_{t+1}=\tau\,B_t\)</span></span>, que cada hogar toma como dada.</p></li>
-<li><p><em>Restricción de los hogares</em>: pagan el tipo interno, <span class="math inline">\(r^*\)</span><span class="tcee-rojo"><span class="math inline">\(+\,\tau\)</span></span>, y reciben la transferencia, <span class="math display">\[C_{t+1}=Y_{t+1}-(1+r^*{\color{red}+\tau})\,(C_t-Y_t){\color{red}+T_{t+1}}.\]</span></p></li>
-<li><p><em>Ecuación de <span class="smallcaps">Euler</span></em>: la de los hogares cambia, porque consumir hoy les sale más caro, <span class="math display">\[u&#39;(C_t)=\beta\,(1+r^*{\color{red}+\tau})\,u&#39;(C_{t+1}).\]</span></p></li>
-<li><p><em>Restricción del país</em>: como <span class="tcee-rojo"><span class="math inline">\(T_{t+1}=\tau B_t\)</span></span>, el impuesto vuelve a los hogares y el país sigue pagando <span class="math inline">\(r^*\)</span> al exterior: la restricción agregada es <em>la misma recta nacional</em> del escenario 2, <span class="math display">\[C_t+\frac{C_{t+1}}{1+r^*}=Y_t+\frac{Y_{t+1}}{1+r^*}=W.\]</span></p></li>
-<li><p><em>Equilibrio</em>: el punto <span class="tcee-rojo"><span class="math inline">\(D\)</span></span>, sobre la recta nacional pero donde la relación marginal de sustitución es <span class="math inline">\(1+r^*\)</span><span class="tcee-rojo"><span class="math inline">\(+\,\tau\)</span></span>: la curva <span class="tcee-rojo"><span class="math inline">\(U_2\)</span></span> corta la recta nacional con la pendiente de la <span class="tcee-rojo">recta privada, <span class="math inline">\(-(1+r^*+\tau)\)</span></span>. Con preferencias convexas, <span class="math inline">\(D\)</span> queda entre <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span>: menos deuda y menos déficit corriente.</p></li>
-<li><p><em>El ejemplo</em>: con <span class="math inline">\(u(C)=\ln C\)</span>, <span class="math inline">\(C_{t+1}=\beta\,(1+r^*\)</span><span class="tcee-rojo"><span class="math inline">\(+\,\tau\)</span></span><span class="math inline">\()\,C_t\)</span> y, en la recta nacional, <span class="math display">\[C^D_t=\frac{W}{1+\beta\,(1+r^*{\color{red}+\tau})/(1+r^*)}.\]</span> Con <span class="tcee-rojo"><span class="math inline">\(1+r^*+\tau=1{,}876\)</span></span>, <span class="math inline">\(C^D_t=4{,}1\)</span>: el déficit baja de 2,18 a <span class="tcee-rojo">1,1</span>.</p></li>
-<li><p><em>Bienestar</em>: <span class="math inline">\(U_0&lt;\)</span><span class="tcee-rojo"><span class="math inline">\(U_2\)</span></span><span class="math inline">\(&lt;U_1\)</span>. El impuesto separa el precio privado del social del consumo presente: es una distorsión, como un arancel.</p></li>
+<li><p>Recapitulando el desarrollo: de <span class="math inline">\(A\)</span> a <span class="math inline">\(C\)</span>, el país gana con la libertad de capitales; de <span class="math inline">\(C\)</span> a <span class="math inline">\(D\)</span>, el impuesto le devuelve parte del camino, porque encarece el consumo de hoy solo para los hogares, no para el país.</p></li>
 </ul>
-</div>
 </section>
 <section id="iii-implicaciones-2" class="level6">
 <h6>iii) Implicaciones</h6>
@@ -1654,7 +1653,7 @@
 <li><p><strong><em>i) Supuestos</em></strong>:</p>
 <ul>
 <li><p>en cada país <span class="math inline">\(j\)</span> (<span class="math inline">\(A\)</span>, el ancla; <span class="math inline">\(I\)</span>, el país con sesgo), una curva de <span class="smallcaps">Phillips</span> con expectativas, <span class="math inline">\(U_j=U^n-\alpha\,(\pi_j-\pi_j^e)\)</span>, y un banco central que, sin poder comprometerse, minimiza <span id="eq:anexo-bg-perdida"></span><span class="math display">\[\tag{10}
-    L_j=(U_j-U^*)^2+\gamma_j\,(\pi_j-\pi^*)^2,\qquad U^*&lt;U^n;\]</span> <span class="math inline">\(\gamma_j\)</span> es el peso que da a la inflación, alto en el ancla y bajo en el otro país, <span class="math inline">\(\gamma_A&gt;\gamma_I\)</span>;<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></p></li>
+    L_j=(U_j-U^*)^2+\gamma_j\,(\pi_j-\pi^*)^2,\qquad U^*&lt;U^n;\]</span> <span class="math inline">\(\gamma_j\)</span> es el peso que da a la inflación, alto en el ancla y bajo en el otro país, <span class="math inline">\(\gamma_A&gt;\gamma_I\)</span>;<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></p></li>
 <li><p>la paridad del poder adquisitivo relativa: la moneda del país con más inflación se deprecia lo que separa las 2 inflaciones, <span id="eq:anexo-bg-ppa"></span><span class="math display">\[\tag{11}
     \gamma_E=\pi_I-\pi_A .\]</span></p></li>
 </ul></li>
@@ -2245,7 +2244,13 @@ Williamson, John (1976). <span>«The Benefits and Costs of an International Mone
 <li id="fn14"><p><span class="smallcaps">Paul Krugman</span> recibió el Premio Nobel de Economía en 2008 «por su análisis de los patrones del comercio y de la localización de la actividad económica».<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn15"><p><span class="smallcaps">James Tobin</span> recibió el Premio Nobel de Economía en 1981 «por su análisis de los mercados financieros y de sus relaciones con las decisiones de gasto, el empleo, la producción y los precios».<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn16"><p><span class="smallcaps">Michael Woodford</span> recibió el Premio Nobel de Economía en 2026, con <span class="smallcaps">Robert Hall</span>, «por los fundamentos microeconómicos de la estabilización macroeconómica».<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17"><p>Aquí <span class="math inline">\(\gamma_j\)</span> es un peso, con la notación del modelo de una moneda <a data-app="3B16.pdf" href="3B16.html" class="vertema"><span class="vertema">[ver tema 3.B.16]</span></a>; con subíndice de una variable (<span class="math inline">\(\gamma_E\)</span>, <span class="math inline">\(\gamma_q\)</span>) es una tasa de variación.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>A lo largo de una curva de indiferencia, <span class="math inline">\(dU=u&#39;(C_t)\,dC_t+\beta\,u&#39;(C_{t+1})\,dC_{t+1}=0\)</span>, de donde <span class="math inline">\(dC_{t+1}/dC_t=-u&#39;(C_t)/[\beta\,u&#39;(C_{t+1})]\)</span>. Con <span class="math inline">\(u&#39;&#39;&lt;0\)</span>, esa relación baja a medida que aumenta <span class="math inline">\(C_t\)</span> y disminuye <span class="math inline">\(C_{t+1}\)</span>: la curva es convexa.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>Con <span class="math inline">\(u(C)=\ln C\)</span>, <span class="math inline">\(u&#39;(C)=1/C\)</span> y <span class="math inline">\(1+r^A=Y_{t+1}/(\beta\,Y_t)\)</span>. Con los números del gráfico (<span class="math inline">\(Y_t=3\)</span>, <span class="math inline">\(Y_{t+1}=5\)</span>, <span class="math inline">\(\beta=0{,}5\)</span>), <span class="math inline">\(1+r^A=3{,}33\)</span>, muy por encima del <span class="math inline">\(1+r^*=1{,}05\)</span> mundial.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>De la primera, <span class="math inline">\(B_t=C_t-Y_t\)</span>; sustituyendo en la segunda, <span class="math inline">\(C_{t+1}=Y_{t+1}-(1+r^*)\,(C_t-Y_t)\)</span>, y dividiendo por <span class="math inline">\(1+r^*\)</span> y reordenando se llega a la recta. <span class="math inline">\(W\)</span> es la riqueza del país: el valor presente de su dotación.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>Con <span class="math inline">\(u(C)=\ln C\)</span>, la ecuación de <span class="smallcaps">Euler</span> da <span class="math inline">\(C_{t+1}=\beta\,(1+r^*)\,C_t\)</span> y, en la recta nacional, <span class="math inline">\(C^C_t=W/(1+\beta)\)</span>. Con los números del gráfico (<span class="math inline">\(1+r^*=1{,}05\)</span>), <span class="math inline">\(W=7{,}76\)</span> y <span class="math inline">\(C^C_t=5{,}18\)</span>: un déficit de 2,18.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>Sustituyendo <span class="math inline">\(T_{t+1}=\tau\,B_t=\tau\,(C_t-Y_t)\)</span> en la restricción de los hogares, los términos en <span class="math inline">\(\tau\)</span> se anulan: <span class="math inline">\(C_{t+1}=Y_{t+1}-(1+r^*)\,(C_t-Y_t)\)</span>.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>Con <span class="math inline">\(u(C)=\ln C\)</span>, <span class="math inline">\(C_{t+1}=\beta\,(1+r^*+\tau)\,C_t\)</span> y, en la recta nacional, <span class="math inline">\(C^D_t=W/[1+\beta\,(1+r^*+\tau)/(1+r^*)]\)</span>. Con <span class="math inline">\(1+r^*+\tau=1{,}876\)</span>, <span class="math inline">\(C^D_t=4{,}1\)</span>: el déficit baja de 2,18 a 1,1.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>Aquí <span class="math inline">\(\gamma_j\)</span> es un peso, con la notación del modelo de una moneda <a data-app="3B16.pdf" href="3B16.html" class="vertema"><span class="vertema">[ver tema 3.B.16]</span></a>; con subíndice de una variable (<span class="math inline">\(\gamma_E\)</span>, <span class="math inline">\(\gamma_q\)</span>) es una tasa de variación.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
                 <footer class="tema-pie">

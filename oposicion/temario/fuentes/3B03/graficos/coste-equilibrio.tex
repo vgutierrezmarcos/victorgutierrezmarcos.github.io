@@ -1,0 +1,31 @@
+% Teoría del equilibrio: el coste del capital frente a L = V_D/(V_D+V_E) con
+% impuesto sobre sociedades y costes de insolvencia. r_A = 10, t_IS = 0,25.
+% r_D = 5 hasta L = 0,45 y 5 + 8 u^2 después, u = (L - 0,45)/0,55 (se dibuja
+% r_D (1 - t_IS)); r_E = 10 + 3,75 L/(1 - L) + 50 (L - 0,45)^2 desde 0,45.
+% WACC = (1 - L) r_E + (1 - t_IS) L r_D, en U: mínimo en L* = 0,486 (8,83).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=0.2cm,
+    declare function={
+      u(\x)=(\x>0.45)*(\x-0.45)/0.55;
+      rd(\x)=0.75*(5+8*u(\x)^2);
+      re(\x)=10+3.75*\x/(1-\x)+50*(\x>0.45)*(\x-0.45)^2;
+      w(\x)=(1-\x)*re(\x)+\x*rd(\x);}]
+  % 1: ejes y la vertical de L = 1
+  \capa{1}{\draw[eje] (0,0) -- (1.1,0) node[right] {$L=\dfrac{V_D}{V_D+V_E}$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,28) node[above right=0pt and -2pt,font=\footnotesize] {coste del capital};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (1,27);}
+  \capa{1}{\draw[guia] (0,10) node[left,text=black] {$r_A$} -- (1,10);}
+  % 2: r_D (1 - t_IS), que sube cuando aparece el riesgo de insolvencia
+  \capa{2}{\draw[curva3] plot[domain=0:1,samples=80] (\x,{rd(\x)}) node[etiqueta,right,text=tceeverde] {$r_D\,(1-t_{IS})$};}
+  % 3: r_E, que se dispara con mucha deuda
+  \capa{3}{\draw[curva1] plot[domain=0:0.76,samples=100] (\x,{re(\x)}) node[etiqueta,left,text=tceemorado] {$r_E$};}
+  % 4: WACC en U y su mínimo
+  \capa{4}{\draw[curva2] plot[domain=0:0.95,samples=100] (\x,{w(\x)}) node[etiqueta,right,text=tceeazul] {$\mathrm{WACC}$};}
+  \capa{4}{\node[punto,fill=tceeazul] (M) at (0.4859,8.8308) {};}
+  \capa{4}{\draw[guia] (M) -- (0.4859,0) node[below,text=black] {$L^*$};}
+\end{tikzpicture}
+\end{document}

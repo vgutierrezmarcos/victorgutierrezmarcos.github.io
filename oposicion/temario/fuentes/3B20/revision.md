@@ -126,6 +126,7 @@ Todas las cifras de los gráficos están en `datos-actualizables.yaml`.
 - **B20-08** (13/11/2026). *Resuelta por Víctor (16/11/2026): el anexo se mantiene tan largo como estaba y con su diagrama.* Anexo 1 del Word («Los orígenes de la economía», de Comín): no tiene que ver con el título. Opciones: (a) conservarlo resumido como anexo A, con caja de no cantable (nada del original se pierde); (b) quitarlo. **Aplicada: (a)**.
 - **B20-09** (13/11/2026). Sugerencias de usuarios: no se ha podido ejecutar `scripts/sugerencias.py` (está en la carpeta principal y no se toca en este encargo). Pendiente de comprobar al aprobar el tema.
 - **B20-10** (13/11/2026). El verificador da errores del PDF, HTML y Word publicados en `tercer-ejercicio/` (son los del tema antiguo: «[ver…» sin enlace, contenido por el pie en la página 25). Se resuelven al publicar (`construir-tema.py` sin `--no-publicar`); el PDF nuevo de `_trabajo/` no tiene páginas en blanco ni desbordes.
+- **B20-19** (18/11/2026). Tamaño de los gráficos de la nota 22: opciones: (a) reducir el conjunto con `\graficonota[0.75]` (también la letra, que queda pequeña pero legible); (b) más pequeño aún (0,6), con la letra de los rótulos ya muy justa; (c) redibujar los 3 paneles más juntos manteniendo el tamaño de la letra. **Aplicada: (a)**.
 
 ## 8. Instrucciones para el vídeo
 
@@ -167,3 +168,10 @@ Páginas del tema: 25 → 31 (anexos: 1 → 3; bibliografía: 4). `\minutos` sig
 ### Instrucciones para el vídeo (16/11/2026)
 
 - Nuevos gráficos por capas: `ajuste-asimetrico` (1 ejes; 2 situación inicial; 3 cae la demanda de dinero del débil y se depreciaría; 4 ajuste asimétrico; 5 ajuste simétrico), `hiperinflaciones` (Alemania, Austria, Hungría, Polonia y estabilizaciones), `perturbacion-real` (ejes y A; IS′ y B; LM′ y C o vuelta de la IS), `divergencia` y `origenes-cronologia` (apoyo, no se dibujan). El flujo-especie se dibuja como circuito en la pizarra al hablar de la estabilidad externa.
+
+## Comentarios de Víctor (18/11/2026)
+
+Páginas del tema: 31 → 31 (gráfico 4 en la p. 15; nota 22 en la p. 12). `\minutos` sigue sumando 30. Ficha sin cambios.
+
+- «En el gráfico 4 indica en el eje vertical cómo es la escala.»: el rótulo del eje vertical de `hiperinflaciones` dice ahora, en 2 líneas, «índice de precios, julio de 1921 = 1 (escala logarítmica)». Las marcas ya iban de potencia en potencia de 10 (1, 10, 100, 1.000, 10⁴… 10¹¹), a la misma distancia, así que se ve la escala sin tocarlas.
+- «Quiero que los gráficos de la nota al pie 22 sean más pequeños.»: `\graficonota[0.98]` → `\graficonota[0.75]{ajuste-asimetrico}`; los rótulos siguen legibles y la nota cabe en la misma página (B20-19).

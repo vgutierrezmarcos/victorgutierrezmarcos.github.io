@@ -1,0 +1,49 @@
+% Clasificación de las inversiones (Teichroew, Robichek y Montalbano, 1965):
+% por los cambios de signo (simple / no simple) y por el saldo del proyecto
+% (pura / mixta), con lo que pasa en cada caso con la TIR y con el punto de Fisher.
+% Toda simple es pura; las mixtas solo pueden ser no simples.
+% Elaboración propia.
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\begin{tikzpicture}[tcee, font=\scriptsize,
+  raiz/.style={fill=tceemorado, text=white, rounded corners=2pt, font=\footnotesize\bfseries, text width=7.6cm, align=center, minimum height=0.6cm},
+  fila/.style={text=tceegris, font=\scriptsize\itshape, text width=2.1cm, align=right},
+  neutra/.style={font=\footnotesize, draw=tceeazul, fill=tceeazul!8, rounded corners=2pt, line width=0.6pt, align=center, minimum height=1.0cm, inner sep=3pt},
+  buena/.style={font=\footnotesize, draw=tceeverde, fill=tceeverde!10, rounded corners=2pt, line width=0.6pt, align=center, minimum height=1.25cm, inner sep=3pt},
+  mala/.style={font=\footnotesize, draw=tceerojo, fill=tceerojo!8, rounded corners=2pt, line width=0.6pt, align=center, minimum height=1.25cm, inner sep=3pt},
+  sig/.style={-{Stealth[length=1.5mm]}, thick, tceegris}]
+  % Marco fijo para que todas las capas tengan el mismo tamaño
+  \path (-8.45,0.4) rectangle (7.5,-9.0);
+  % 1: la inversión
+  \capa{1}{\node[raiz] (r) at (0.4,0) {Una inversión: $-I_0$, $\mathrm{FC}_1$, \dots, $\mathrm{FC}_n$};}
+  % 2: primera clasificación, por los cambios de signo
+  \capa{2}{\node[fila] at (-7.35,-1.5) {1. ¿Cuántas veces cambia el signo de los flujos?};
+  \node[neutra, text width=3.6cm] (s) at (-3.2,-1.5) {\textbf{Simple}\\ 1 cambio de signo: primero los pagos, después los cobros};
+  \node[neutra, text width=7.9cm] (ns) at (3.3,-1.5) {\textbf{No simple}\\ 2 o más cambios de signo: algún pago después de empezar a cobrar};
+  \draw[sig] (r.south) ++(-2.4,0) -- (s.north);
+  \draw[sig] (r.south) ++(2.4,0) -- (ns.north);}
+  % 3: segunda clasificación, por el saldo del proyecto
+  \capa{3}{\node[fila] at (-7.35,-3.35) {2. ¿Es positivo algún saldo antes del final (calculado a la TIR)?};
+  \node[buena, text width=3.6cm] (p1) at (-3.2,-3.35) {\textbf{Pura}, siempre\\ saldo \mbox{$\leq 0$} hasta el final\\ p.\,ej. $-100$, $+60$, $+60$};
+  \node[buena, text width=3.6cm] (p2) at (1.15,-3.35) {\textbf{Pura}\\ saldo \mbox{$\leq 0$} hasta el final\\ p.\,ej. $-100$, $+60$, $-10$, $+70$};
+  \node[mala, text width=3.6cm] (m) at (5.45,-3.35) {\textbf{Mixta}\\ algún saldo \mbox{$>0$}: el proyecto financia a la empresa\\ p.\,ej. $-100$, $+230$, $-132$};
+  \draw[sig] (s.south) -- (p1.north);
+  \draw[sig] (ns.south) ++(-2.15,0) -- (p2.north);
+  \draw[sig] (ns.south) ++(2.15,0) -- (m.north);}
+  % 4: qué pasa con la TIR
+  \capa{4}{\node[fila] at (-7.35,-5.4) {¿Qué pasa con la TIR?};
+  \node[buena, text width=8.0cm] (t1) at (-1.025,-5.4) {\textbf{Una sola TIR}, que mide la rentabilidad del proyecto\\ \mbox{$\mathrm{VAN}(k)>0\iff k<\mathrm{TIR}$}\\ el VAN y la TIR coinciden en la \emph{efectuación}};
+  \node[mala, text width=3.6cm] (t2) at (5.45,-5.4) {\textbf{Varias TIR o ninguna}, y ninguna mide la rentabilidad: se usa $r(k)$, con los saldos positivos a $k$};
+  \draw[sig] (p1.south) -- (p1.south |- t1.north);
+  \draw[sig] (p2.south) -- (p2.south |- t1.north);
+  \draw[sig] (m.south) -- (t2.north);}
+  % 5: qué pasa con el punto de Fisher al comparar 2 proyectos
+  \capa{5}{\node[fila] at (-7.35,-7.85) {¿Hay punto de \textsc{Fisher} entre 2 proyectos A y B?};
+  \node[buena, text width=8.0cm, minimum height=2.1cm] (f1) at (-1.025,-7.85) {\textbf{Sí}, al menos uno entre 0 y la menor TIR, si el VAN con \mbox{$k=0$} y la TIR van \textbf{al revés} (escala o calendario distintos); único si el proyecto A$-$B es simple\\[2pt] \textbf{No}, normalmente, si van \textbf{en el mismo orden}: ninguno si A$-$B es simple y, si no lo es, un número par (2, 4\dots); sin corte, un proyecto domina};
+  \node[mala, text width=3.6cm, minimum height=2.1cm] (f2) at (5.45,-7.85) {\textbf{Varios puntos o ninguno}: las curvas del VAN no siempre bajan con $k$; la comparación con la TIR pierde sentido y \textbf{decide el VAN}};
+  \draw[sig] (t1.south) -- (f1.north);
+  \draw[sig] (t2.south) -- (f2.north);}
+\end{tikzpicture}
+\end{document}

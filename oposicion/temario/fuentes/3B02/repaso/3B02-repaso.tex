@@ -63,7 +63,7 @@ El VAN es el criterio coherente con maximizar el valor; los demás (TIR, \emph{p
 \end{itemize}
 \graficorepaso[0.72\linewidth]{esquema-pagos}{Esquema de pagos de un proyecto}
 \begin{itemize}
-\item \emph{Simples}: un cambio de signo. \emph{No simples} (\autor{Teichroew}-\autor{Robichek}-\autor{Montalbano}, 1965): \emph{puras} (saldo nunca $>0$ antes del final; TIR única) y \emph{mixtas} (el proyecto financia a la empresa un tiempo; p.\,ej. $-100,+230,-132$: TIR de 10 y 20\,\%).
+\item \emph{Simples} (un cambio de signo) y \emph{no simples}. Por el saldo $S_t$ a la TIR (\autor{Teichroew}-\autor{Robichek}-\autor{Montalbano}, 1965): \emph{puras} ($S_t\leq 0$ hasta el final; todas las simples; TIR única) y \emph{mixtas} (algún $S_t>0$: financia a la empresa; esos saldos rinden $k$ y la rentabilidad es $r(k)$; p.\,ej. $-100,+230,-132$: TIR de 10 y 20\,\%, pero $r(k)=7{,}8$\,\% con $k=8$\,\%).
 \end{itemize}
 
 \sub{I.2. Principios de valoración\label{rep:I.2}}
@@ -77,12 +77,14 @@ El VAN es el criterio coherente con maximizar el valor; los demás (TIR, \emph{p
 \end{enumerate}
 
 \sub{I.3. Métodos de valoración\label{rep:I.3}}
+\concepto{Efectuación}: ¿en qué invertir y en qué no? \concepto{Jerarquización}: entre varias rentables, ¿cuál?
+
 \textbf{a) Estáticos} (no descuentan). Flujo neto por unidad comprometida $\sum\mathrm{FC}_t/I_0>1$. \concepto{Plazo de recuperación} (\emph{payback}): con FC constantes, $I_0/\mathrm{FC}$. Sencillos, idea de liquidez y riesgo; pero suman euros de fechas distintas, sin $k$, e ignoran los flujos tras la recuperación (cortoplacismo). \emph{Payback descontado}: corrige lo 1.º, no lo 2.º.
 
 \textbf{b) VAN}. \concepto{Valor actual neto}: VA de los flujos a $k$ menos el desembolso = aumento del valor de la empresa:
 \funcionclave{\mathrm{VAN}=-I_0+\sum_{t=1}^{n}\frac{\mathrm{FC}_t}{(1+k)^t}+\frac{\mathrm{VR}}{(1+k)^n}}
 \begin{itemize}
-\item Aceptar si $\mathrm{VAN}>0$; excluyentes: mayor VAN; independientes sin límite de capital: todos los de $\mathrm{VAN}>0$.
+\item \emph{Efectuación}: $\mathrm{VAN}>0$ (sin límite de capital, todos). \emph{Jerarquización}: mayor VAN; con racionamiento, mayor IVAN.
 \item \emph{Ventajas}: todos los flujos y su calendario, riesgo vía $k$, \emph{aditivo}, coherente con maximizar el valor (\autor{Hirshleifer}, 1958).
 \item \emph{Límites}: $k$ no se observa; $k$ constante y prestar/endeudarse a $k$ («reinversión a $k$»: es la hipótesis correcta); número absoluto; decisión de ahora o nunca.
 \end{itemize}
@@ -93,14 +95,14 @@ El VAN es el criterio coherente con maximizar el valor; los demás (TIR, \emph{p
   \begin{formula}
   \[-I_0+\sum_{t=1}^{n}\frac{\mathrm{FC}_t}{(1+\mathrm{TIR})^t}+\frac{\mathrm{VR}}{(1+\mathrm{TIR})^n}=0\]
   \end{formula}
-  Aceptar si $\mathrm{TIR}>k$ (coste del capital máximo soportable). Un número en \%, comparable; calcularla no exige $k$.
+  \emph{Efectuación}: $\mathrm{TIR}>k$ (coste del capital máximo soportable). \emph{Jerarquización}: mayor TIR. Un número en \%, comparable; calcularla no exige $k$.
 \item \emph{Límites}: reinversión a la propia TIR; varias o ninguna con flujos no convencionales (\autor{Descartes}: n.º de raíces positivas $\leq$ cambios de signo); ordena mal excluyentes. FC constantes y vida ilimitada: $\mathrm{TIR}=\mathrm{FC}/I_0=1/\textit{payback}$.
 \end{itemize}
 
 \textbf{d) VAN frente a TIR}
 \begin{itemize}
-\item \emph{Aceptar/rechazar} (simple): coinciden, $\mathrm{VAN}(k)>0\iff\mathrm{TIR}>k$.
-\item \emph{Ordenar} excluyentes: discrepan si las curvas se cortan: \concepto{punto de \autor{Fisher}} $k^{\mathrm F}$ (una \emph{tasa}, con VAN iguales). Por \emph{escala} o por \emph{calendario} (el que cobra tarde es más sensible a $k$).
+\item \emph{Efectuación} (simples y puras): coinciden, $\mathrm{VAN}(k)>0\iff\mathrm{TIR}>k$.
+\item \emph{Jerarquización} de excluyentes: discrepan si las curvas se cortan: \concepto{punto de \autor{Fisher}} $k^{\mathrm F}$ (una \emph{tasa}, con VAN iguales). Por \emph{escala} o por \emph{calendario} (el que cobra tarde es más sensible a $k$).
 \item Ej.: ambos cuestan 100; A cobra 144 en $t=2$ ($\mathrm{TIR}_{\mathrm A}=20$\,\%), B 125 en $t=1$ ($\mathrm{TIR}_{\mathrm B}=25$\,\%):
   \begin{formula}
   \[\frac{144}{(1+k^{\mathrm F})^2}=\frac{125}{1+k^{\mathrm F}}\ \Rightarrow\ k^{\mathrm F}=\frac{144}{125}-1=15{,}2\text{\,\%}\]
@@ -109,6 +111,7 @@ El VAN es el criterio coherente con maximizar el valor; los demás (TIR, \emph{p
 \end{itemize}
 \graficorepaso[0.6\linewidth]{van-fisher}{VAN de A y B frente a $k$: TIR y punto de \autor{Fisher}}
 \begin{itemize}
+\item $k^{\mathrm F}$ = TIR de A$-$B. VAN(0) y TIR \emph{al revés}: al menos uno (único si A$-$B es simple); igual: ninguno si A$-$B es simple; mixtas: varios o ninguno.
 \item Hacer caso al VAN (euros de valor); la TIR premia lo pequeño o corto, aunque cree menos valor (\autor{Lorie}-\autor{Savage}, 1955; \autor{Hirshleifer}, 1958).
 \end{itemize}
 
@@ -118,7 +121,7 @@ El VAN es el criterio coherente con maximizar el valor; los demás (TIR, \emph{p
   \begin{formula}
   \[VA^{-}=\frac{VF^{+}}{(1+\mathrm{TIRM})^n}\qquad(\mathrm{TIRM}>k\iff\mathrm{VAN}>0)\]
   \end{formula}
-  Única; pero relativa: con escalas distintas puede ordenar distinto que el VAN.
+  Única; pero relativa: con escalas distintas puede ordenar distinto que el VAN. Ej.: $-100,+50,+60,-20,+70$ con $k=10$\,\%: $VA^{-}=115{,}03$, $VF^{+}=209{,}15$, TIRM de 16,1\,\%.
 \end{itemize}
 
 \textbf{f) Índice del VAN y racionamiento}. $\mathrm{IVAN}=\mathrm{VAN}/I_0$ (aceptar si $>0$). \concepto{Racionamiento de capital} \emph{duro} (no hay fondos) o \emph{blando} (tope de la dirección):

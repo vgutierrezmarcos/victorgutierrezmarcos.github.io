@@ -1623,11 +1623,43 @@ nolink "false"
 
 \end_inset
 
-, el coste del capital frente a 
-\begin_inset Formula $V_D/V_E$
+, el coste del capital frente al peso de la deuda, 
+\begin_inset Formula $L$
 \end_inset
 
- por capas (grÃ¡fico
+, entre 0 y 1, un grÃ¡fico por tesis (grÃ¡ficos
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-tradicional"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ a
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-equilibrio"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, resumidos en el grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -2970,7 +3002,11 @@ AutofinanciaciÃ³n de enriquecimiento: las reservas
 \end_layout
 
 \begin_layout Itemize
-SegÃºn su origen, las reservas son: 
+La autofinanciaciÃ³n de enriquecimiento estÃ¡ compuesta de las 
+\emph on
+reservas
+\emph default
+, que segÃºn su origen son: 
 \end_layout
 
 \begin_deeper
@@ -3023,11 +3059,7 @@ voluntarias
 \emph on
 El efecto multiplicador
 \emph default
-: si la empresa quiere mantener constante su ratio de endeudamiento 
-\begin_inset Formula $V_D/V_E$
-\end_inset
-
- (aquÃ­ a valores contables 
+: las reservas no solo financian por sÃ­ mismas, sino que permiten pedir mÃ¡s deuda. Se ve en 3 pasos, con valores contables 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -3037,17 +3069,101 @@ status collapsed
 
 \end_inset
 
-), cada euro de reservas le permite pedir prestados otros 
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Paso 1, los recursos totales
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+la empresa financia su activo con su patrimonio neto, 
+\begin_inset Formula $V_E$
+\end_inset
+
+, y con su pasivo, 
+\begin_inset Formula $V_D$
+\end_inset
+
+. Dividiendo por el patrimonio neto aparece la ratio de endeudamiento: 
+\begin_inset Formula \[
+    \text{Recursos totales}=V_E+V_D\ \Longrightarrow\ \frac{\text{Recursos totales}}{V_E}=1+\underbrace{\frac{V_D}{V_E}}_{\text{ratio de endeudamiento}}.
+    \]
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Paso 2, la ratio constante
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+si la empresa quiere mantener constante su ratio de endeudamiento, cada aumento de las reservas (
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ reservas 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\uparrow V_E$
+\end_inset
+
+) tiene que ir acompaÃ±ado de un aumento de la deuda. Si el patrimonio neto sube 1 euro, la deuda tiene que subir 
 \begin_inset Formula $V_D/V_E$
 \end_inset
 
- euros, y los recursos totales crecen mÃ¡s que las reservas: 
-\begin_inset Formula \begin{equation}\label{eq:multiplicador}
-  \Delta(\text{recursos totales})=\Delta V_E+\Delta V_D=\Big(1+\frac{V_D}{V_E}\Big)\,\Delta V_E.
-  \end{equation}
+ euros para que la ratio no cambie: 
+\begin_inset Formula \[
+    \Delta V_D=\frac{V_D}{V_E}\,\Delta V_E.
+    \]
 \end_inset
 
-Cuanto mÃ¡s endeudada estÃ© la empresa, mayor es el efecto expansivo de la autofinanciaciÃ³n. 
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Paso 3, el multiplicador
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+la variaciÃ³n de los recursos totales es, por tanto, 
+\begin_inset Formula \begin{equation}\label{eq:multiplicador}
+    \Delta(\text{recursos totales})=\Delta V_E+\underbrace{\Delta V_D}_{=\frac{V_D}{V_E}\,\Delta V_E}=\Big(1+\frac{V_D}{V_E}\Big)\,\Delta V_E.
+    \end{equation}
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+La autofinanciaciÃ³n tiene asÃ­ un 
+\emph on
+efecto expansivo
+\emph default
+ sobre la capacidad productiva, y cuanto mÃ¡s endeudada estÃ© la empresa, mayor es: con una ratio alta, cada euro de reservas arrastra mÃ¡s deuda. 
 \end_layout
 
 \begin_deeper
@@ -3056,7 +3172,15 @@ En nuestra empresa, financiada con 600 de fondos propios y 400 de deuda,
 \begin_inset Formula $V_D/V_E=2/3$
 \end_inset
 
-: 60 euros de beneficio retenido le permiten pedir prestados otros 40 e invertir 100. 
+: 60 euros de beneficio retenido le permiten pedir prestados otros 
+\begin_inset Formula $\tfrac23\cdot60=40$
+\end_inset
+
+ e invertir 
+\begin_inset Formula $\big(1+\tfrac23\big)\cdot60=100$
+\end_inset
+
+. 
 \end_layout
 
 \end_deeper
@@ -3065,11 +3189,16 @@ AutofinanciaciÃ³n de mantenimiento: amortizaciones y provisiones
 \end_layout
 
 \begin_layout Itemize
-Las 
+La autofinanciaciÃ³n de mantenimiento estÃ¡ compuesta de: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+las 
 \emph on
 amortizaciones
 \emph default
- son el gasto con que cada aÃ±o se reconoce la depreciaciÃ³n de los activos.
+, el gasto con que cada aÃ±o se reconoce la depreciaciÃ³n de los activos.
 \begin_inset Foot
 status collapsed
 
@@ -3112,15 +3241,20 @@ acelerados
 
 \end_inset
 
- Como no son un pago, la caja que representan se queda en la empresa hasta que haya que reponer el activo. 
+ Como no son un pago, la caja que representan se queda en la empresa hasta que haya que reponer el activo; 
 \end_layout
 
 \begin_layout Itemize
-Las 
+las 
 \emph on
 provisiones
 \emph default
- son gastos por obligaciones o pÃ©rdidas probables cuyo importe o fecha son inciertos (un litigio, una garantÃ­a). Mientras el riesgo no se materializa, los fondos se quedan en la empresa. 
+, gastos por obligaciones o pÃ©rdidas probables cuyo importe o fecha son inciertos (un litigio, una garantÃ­a). Mientras el riesgo no se materializa, los fondos se quedan en la empresa. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Las 2 evitan que el patrimonio neto disminuya; no lo aumentan. 
 \end_layout
 
 \begin_layout Itemize
@@ -3158,25 +3292,29 @@ Ruchti
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 que no haya obsolescencia: los activos nuevos rinden lo mismo que los viejos; 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 que los activos sean divisibles; 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 que no haya inflaciÃ³n; 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 y que la amortizaciÃ³n libere de verdad recursos, es decir, que se recupere vÃ­a precios y no sea un mero apunte contable. 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-El ejemplo clÃ¡sico, el de una flota de barcos que crece sola, estÃ¡ en el anexo
+
+\emph on
+El ejemplo de la flota
+\emph default
+: una empresa pesquera compra 10 barcos de 1 millÃ³n de euros cada uno, con una vida Ãºtil de 10 aÃ±os, sin valor residual y con amortizaciÃ³n lineal: 100.000 euros por barco y aÃ±o. Si reinvierte cada aÃ±o lo que amortiza (tabla
 \begin_inset space ~
 
 \end_inset
@@ -3184,7 +3322,7 @@ El ejemplo clÃ¡sico, el de una flota de barcos que crece sola, estÃ¡ en el a
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "anexo:lohmann"
+reference "tab:lohmann"
 plural "false"
 caps "false"
 noprefix "false"
@@ -3192,7 +3330,507 @@ nolink "false"
 
 \end_inset
 
-. 
+): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+el primer aÃ±o amortiza 1 millÃ³n y compra un barco mÃ¡s: tiene 11; 
+\end_layout
+
+\begin_layout Itemize
+el segundo amortiza 1,1 millones, compra otro y le sobran 100.000 euros; 
+\end_layout
+
+\begin_layout Itemize
+y asÃ­ sucesivamente: la flota crece sin que la empresa aporte un euro nuevo. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El efecto 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Lohmann
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Ruchti
+\end_layout
+
+\end_inset
+
+: una flota que reinvierte sus amortizaciones
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:lohmann"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="7" columns="5">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="1.6cm">
+<column alignment="center" valignment="middle" width="3cm">
+<column alignment="center" valignment="middle" width="3cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+AÃ±o
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+AmortizaciÃ³n (millones)
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Barcos comprados
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Barcos al final
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Caja sobrante (millones)
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1,0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+11 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0,0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1,1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+12 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0,1 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+3 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1,2 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+13 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0,3 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+4 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1,3 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+14 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0,6 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+5 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1,4 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+16 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0,0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+A largo plazo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+— 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+— 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+en torno a 18 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+— 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En el aÃ±o 10 se retiran los 10 barcos iniciales y la flota baja; a largo plazo, con barcos de todas las edades, se estabiliza en torno a 18, cerca de 
+\begin_inset Formula $2n/(n+1)$
+\end_inset
+
+ veces la inicial con 
+\begin_inset Formula $n=10$
+\end_inset
+
+ aÃ±os de vida Ãºtil. 
+\end_layout
+
+\begin_layout Itemize
+Lo que crece es la capacidad 
+\emph on
+de cada periodo
+\emph default
+, no la capacidad 
+\emph on
+total
+\emph default
+: los aÃ±os de uso que quedan a la flota no aumentan, porque la flota envejece. Y el efecto depende de los 4 supuestos: sin obsolescencia, con activos divisibles, sin inflaciÃ³n y con una amortizaciÃ³n que se recupere de verdad con las ventas. 
 \end_layout
 
 \begin_layout Subsubsection
@@ -4493,7 +5131,11 @@ status collapsed
 
 \end_inset
 
-: el grÃ¡fico
+: el coste del capital con 
+\begin_inset Formula $L$
+\end_inset
+
+ en abscisas, entre 0 y 1; la tesis tradicional (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -4501,7 +5143,7 @@ status collapsed
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:coste-capital"
+reference "fig:coste-tradicional"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4509,11 +5151,7 @@ nolink "false"
 
 \end_inset
 
- con 
-\begin_inset Formula $V_D/V_E$
-\end_inset
-
- en abscisas; la tesis tradicional (panel a, 
+, 
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -4523,7 +5161,7 @@ status collapsed
 
 \end_inset
 
-); las curvas de 
+); las 2 proposiciones de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4543,7 +5181,7 @@ Miller
 
 \end_inset
 
- (panel b), con 
+ con 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:mm"
@@ -4554,7 +5192,27 @@ nolink "false"
 
 \end_inset
 
-, el arbitraje de nuestra empresa en 3 lÃ­neas y Â«los mismos perros con distinto collarÂ» (
+, el grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-mm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ (y quÃ© pasa en 
+\begin_inset Formula $L=1$
+\end_inset
+
+), el arbitraje de nuestra empresa en 3 lÃ­neas y Â«los mismos perros con distinto collarÂ» (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -4564,7 +5222,39 @@ status collapsed
 
 \end_inset
 
-); los impuestos con la fÃ³rmula de 
+); los impuestos con el reparto del resultado de nuestra empresa (figura
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figu:escudo-fiscal"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), el grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-mm-is"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y la fÃ³rmula de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4585,7 +5275,23 @@ nolink "false"
 
 \end_inset
 
- en una lÃ­nea y el panel c sobre los mismos ejes (
+ con la figura
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figu:miller"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -4606,7 +5312,7 @@ nolink "false"
 
 \end_inset
 
-, el panel d y el grÃ¡fico
+, los grÃ¡ficos
 \begin_inset space ~
 
 \end_inset
@@ -4615,6 +5321,22 @@ nolink "false"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:valor-tradeoff"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-equilibrio"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5766,7 +6488,7 @@ el
 \end_inset
 
 : tiene forma de U, con un mÃ­nimo en 
-\begin_inset Formula $(V_D/V_E)^*$
+\begin_inset Formula $L^*$
 \end_inset
 
  (grÃ¡fico
@@ -5777,7 +6499,7 @@ el
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:coste-capital"
+reference "fig:coste-tradicional"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5785,7 +6507,7 @@ nolink "false"
 
 \end_inset
 
-, panel a). 
+). 
 \end_layout
 
 \end_deeper
@@ -5798,7 +6520,43 @@ ImplicaciÃ³n
 \end_layout
 
 \begin_layout Itemize
-El grÃ¡fico
+
+\emph on
+InterpretaciÃ³n grÃ¡fica
+\emph default
+: en todos los grÃ¡ficos del coste del capital de este apartado, en abscisas va el 
+\emph on
+peso
+\emph default
+ de la deuda, 
+\begin_inset Formula $L=V_D/(V_D+V_E)$
+\end_inset
+
+, que va de 0 a 1. En 
+\begin_inset Formula $L=0$
+\end_inset
+
+ la empresa no tiene deuda y el 
+\begin_inset Formula $\mathrm{WACC}$
+\end_inset
+
+ es 
+\begin_inset Formula $r_E$
+\end_inset
+
+; en 
+\begin_inset Formula $L=1$
+\end_inset
+
+ no tiene acciones y el 
+\begin_inset Formula $\mathrm{WACC}$
+\end_inset
+
+ es el coste de la deuda, 
+\begin_inset Formula $r_D$
+\end_inset
+
+. En la tesis tradicional (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -5806,7 +6564,7 @@ El grÃ¡fico
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:coste-capital"
+reference "fig:coste-tradicional"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5814,7 +6572,23 @@ nolink "false"
 
 \end_inset
 
- reÃºne en 4 paneles, sobre los mismos ejes, las respuestas que se van a ver en este apartado; el panel a es el de la tesis tradicional. 
+), 
+\begin_inset Formula $r_D$
+\end_inset
+
+ es plana y luego sube; 
+\begin_inset Formula $r_E$
+\end_inset
+
+, convexa, y el 
+\begin_inset Formula $\mathrm{WACC}$
+\end_inset
+
+, en U, con su mÃ­nimo en 
+\begin_inset Formula $L^*$
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Standard
@@ -5843,27 +6617,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-El coste del capital y la estructura financiera: tesis tradicional, 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Modigliani
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Miller
-\end_layout
-
-\end_inset
-
- con y sin impuestos y teorÃ­a del equilibrio
+La tesis tradicional: el coste del capital y el peso de la deuda
 \end_layout
 
 \end_inset
@@ -5871,7 +6625,7 @@ Miller
 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:coste-capital"
+name "fig:coste-tradicional"
 
 \end_inset
 
@@ -5897,7 +6651,7 @@ status collapsed
 
 \end_inset
 
-0.95
+0.75
 \begin_inset ERT
 status collapsed
 
@@ -5929,7 +6683,7 @@ status collapsed
 
 \end_inset
 
-coste-capital
+coste-tradicional
 \begin_inset ERT
 status collapsed
 
@@ -5951,31 +6705,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-textcite{ModiglianiMiller1958Cost}
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{ModiglianiMiller1963Corporate}
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Myers1984Capital}
+textcite{Durand1952Costs}
 \end_layout
 
 \end_inset
@@ -6197,6 +6927,23 @@ ii) Desarrollo
 
 \begin_layout Itemize
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ModiglianiMiller1958Cost}
+\end_layout
+
+\end_inset
+
+ hacen 2 proposiciones fundamentales: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
 \begin_inset Flex Concepto
 status collapsed
 
@@ -6206,11 +6953,15 @@ ProposiciÃ³n I
 
 \end_inset
 
-: el valor de mercado de una empresa no depende de su estructura del capital; es el de sus flujos de explotaciÃ³n descontados a la rentabilidad de su clase de riesgo, 
+, sobre el valor de la empresa: el valor de mercado de una empresa no depende de su estructura del capital. Es el de sus flujos de explotaciÃ³n descontados a la rentabilidad de su clase de riesgo, 
 \begin_inset Formula $r_A$
 \end_inset
 
-. 
+, asÃ­ que depende solo de la capacidad de sus activos para generar beneficios. Endeudarse cambia cÃ³mo se reparten esos flujos entre accionistas y acreedores, no cuÃ¡nto valen. 
+\end_layout
+
+\begin_layout Itemize
+
 \begin_inset Flex Concepto
 status collapsed
 
@@ -6220,7 +6971,20 @@ ProposiciÃ³n II
 
 \end_inset
 
-: la rentabilidad que exigen los accionistas crece linealmente con la ratio deuda/fondos propios, porque soportan el riesgo financiero: 
+, sobre la rentabilidad de las acciones: la rentabilidad que exigen los accionistas crece linealmente con la ratio deuda/fondos propios, 
+\begin_inset Formula $V_D/V_E$
+\end_inset
+
+. Con mÃ¡s deuda, lo que queda para el accionista despuÃ©s de pagar los intereses es mÃ¡s variable: soporta el 
+\emph on
+riesgo financiero
+\emph default
+ y exige que se lo paguen. La deuda es mÃ¡s barata, pero encarece los fondos propios justo lo necesario para que el coste medio no cambie. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Las 2 proposiciones, juntas, son: 
 \begin_inset ERT
 status collapsed
 
@@ -6461,26 +7225,155 @@ Mientras la diferencia exista, todos harÃ¡n lo mismo, hasta que las acciones d
 \begin_inset Formula $V_L=V_U=1.000$
 \end_inset
 
-. Si L valiera menos que U, se harÃ­a al revÃ©s: vender U y comprar acciones y deuda de L en la misma proporciÃ³n. El detalle, en el anexo
-\begin_inset space ~
+. Si L valiera menos que U, se harÃ­a al revÃ©s: vender U y comprar acciones y deuda de L en la misma proporciÃ³n. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+El arbitraje, en general.
+\series default
+ 2 empresas de la misma clase de riesgo generan el mismo resultado de explotaciÃ³n, 
+\begin_inset Formula $\mathrm{EBIT}$
+\end_inset
+
+, cada periodo. U no tiene deuda y vale 
+\begin_inset Formula $V_U=V_E^U$
+\end_inset
+
+; L tiene una deuda 
+\begin_inset Formula $V_D$
+\end_inset
+
+ al tipo 
+\begin_inset Formula $r_D$
+\end_inset
+
+ y vale 
+\begin_inset Formula $V_L=V_E^L+V_D$
+\end_inset
+
+. Un inversor puede elegir entre 2 estrategias
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Vernimmen2017Corporate"
+literal "false"
 
 \end_inset
 
+: 
+\end_layout
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "anexo:mm"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+\begin_layout Itemize
 
+\emph on
+Estrategia 1
+\emph default
+: comprar una fracciÃ³n 
+\begin_inset Formula $s$
+\end_inset
+
+ de las acciones de L. Paga 
+\begin_inset Formula $s V_E^L$
+\end_inset
+
+ y cobra 
+\begin_inset Formula \[
+  \underbrace{s\,(\mathrm{EBIT}-r_DV_D)}_{\text{lo que queda tras los intereses}}.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Estrategia 2
+\emph default
+: comprar la misma fracciÃ³n 
+\begin_inset Formula $s$
+\end_inset
+
+ de las acciones de U y pedir prestado 
+\begin_inset Formula $s V_D$
+\end_inset
+
+ al mismo tipo 
+\begin_inset Formula $r_D$
+\end_inset
+
+ (el apalancamiento casero). Paga 
+\begin_inset Formula $s(V_U-V_D)$
+\end_inset
+
+ y cobra 
+\begin_inset Formula \[
+  \underbrace{s\,\mathrm{EBIT}}_{\text{acciones de U}}-\underbrace{s\,r_DV_D}_{\text{intereses de su prÃ©stamo}}=s\,(\mathrm{EBIT}-r_DV_D).
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Las 2 estrategias dan exactamente los mismos flujos, con el mismo riesgo; si no costaran lo mismo, habrÃ­a arbitraje. Por tanto, 
+\begin_inset Formula $s V_E^L=s(V_U-V_D)$
+\end_inset
+
+, es decir, 
+\begin_inset Formula $V_L=V_E^L+V_D=V_U$
 \end_inset
 
 . 
 \end_layout
 
-\end_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $V_L<V_U$
+\end_inset
+
+, el inversor vende U y compra a la vez una fracciÃ³n 
+\begin_inset Formula $s$
+\end_inset
+
+ de las acciones y de la deuda de L, que le da lo mismo que una fracciÃ³n 
+\begin_inset Formula $s$
+\end_inset
+
+ de U: 
+\begin_inset Formula \[
+  \underbrace{s\,(\mathrm{EBIT}-r_DV_D)}_{\text{acciones de L}}+\underbrace{s\,r_DV_D}_{\text{deuda de L}}=s\,\mathrm{EBIT}.
+  \]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
@@ -6498,22 +7391,6 @@ status collapsed
 \begin_layout Standard
 No es contradictorio con la proposiciÃ³n I: la deuda sube la rentabilidad que exigen las acciones, no el valor de la empresa, que es la suma de lo que valen sus acciones y su deuda, 
 \begin_inset Formula $V=V_E+V_D$
-\end_inset
-
-. La derivaciÃ³n, en el anexo
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "anexo:mm"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
 \end_inset
 
 .
@@ -6571,6 +7448,420 @@ nolink "false"
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+La proposiciÃ³n II, paso a paso.
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Sin impuestos, el 
+\begin_inset Formula $\mathrm{WACC}$
+\end_inset
+
+ es la media ponderada de lo que exigen accionistas y acreedores, y por la proposiciÃ³n I es igual a 
+\begin_inset Formula $r_A$
+\end_inset
+
+: 
+\begin_inset Formula \[
+  r_A=\mathrm{WACC}=r_E\,\underbrace{\frac{V_E}{V_D+V_E}}_{1-L}+r_D\,\underbrace{\frac{V_D}{V_D+V_E}}_{L}\ \Longrightarrow\ r_A\,(V_D+V_E)=r_E\,V_E+r_D\,V_D.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Despejando 
+\begin_inset Formula $r_E$
+\end_inset
+
+: 
+\begin_inset Formula \[
+  r_E=\frac{r_A\,(V_D+V_E)-r_D\,V_D}{V_E}=r_A+(r_A-r_D)\,\frac{V_D}{V_E}.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Con el peso de la deuda, como 
+\begin_inset Formula $V_D/V_E=L/(1-L)$
+\end_inset
+
+, la misma proposiciÃ³n se escribe 
+\begin_inset Formula \[
+  r_E=r_A+(r_A-r_D)\,\frac{L}{1-L}.
+  \]
+\end_inset
+
+La rentabilidad exigida a las acciones crece linealmente con la ratio 
+\begin_inset Formula $V_D/V_E$
+\end_inset
+
+ y, con el peso 
+\begin_inset Formula $L$
+\end_inset
+
+, cada vez mÃ¡s deprisa.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+InterpretaciÃ³n grÃ¡fica
+\emph default
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-mm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): con 
+\begin_inset Formula $L$
+\end_inset
+
+ en abscisas, 
+\begin_inset Formula $r_D$
+\end_inset
+
+ es plana, porque la deuda no tiene riesgo; 
+\begin_inset Formula $r_E$
+\end_inset
+
+ parte de 
+\begin_inset Formula $r_A$
+\end_inset
+
+ y crece cada vez mÃ¡s deprisa, y el 
+\begin_inset Formula $\mathrm{WACC}=r_A$
+\end_inset
+
+ es horizontal: lo que se gana sustituyendo fondos propios caros por deuda barata se pierde exactamente porque los que quedan se encarecen. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Modigliani
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+ (1958) sin posibilidad de quiebra: el coste del capital y el peso de la deuda
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:coste-mm"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.75
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+coste-mm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ModiglianiMiller1958Cost}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Â¿QuÃ© pasa cuando 
+\begin_inset Formula $L$
+\end_inset
+
+ se acerca a 1?
+\series default
+ Si 
+\begin_inset Formula $r_D$
+\end_inset
+
+ y el 
+\begin_inset Formula $\mathrm{WACC}$
+\end_inset
+
+ son constantes, 
+\begin_inset Formula $r_E$
+\end_inset
+
+ tiene que crecer sin lÃ­mite: con 
+\begin_inset Formula $L\to1$
+\end_inset
+
+, 
+\begin_inset Formula $r_E=r_A+(r_A-r_D)\,L/(1-L)\to\infty$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+No es una contradicciÃ³n con el 
+\begin_inset Formula $\mathrm{WACC}$
+\end_inset
+
+ plano
+\emph default
+: el peso de las acciones, 
+\begin_inset Formula $1-L$
+\end_inset
+
+, cae a la vez, y su producto se queda en 
+\begin_inset Formula $(1-L)\,r_E=(1-L)\,r_A+(r_A-r_D)\,L\to r_A-r_D$
+\end_inset
+
+. Por eso 
+\begin_inset Formula $\mathrm{WACC}=(1-L)\,r_E+L\,r_D\to(r_A-r_D)+r_D=r_A$
+\end_inset
+
+: unas acciones cada vez mÃ¡s pequeÃ±as cobran una rentabilidad cada vez mayor, y lo que se llevan en euros no cambia. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Pero el supuesto de deuda sin riesgo deja de valer
+\emph default
+: con muy pocos fondos propios, todo el riesgo del negocio cae sobre muy poco capital, y cualquier mal aÃ±o deja sin cubrir la deuda. En el lÃ­mite, 
+\begin_inset Formula $L=1$
+\end_inset
+
+, no quedan acciones: la deuda es la empresa entera, cobra todo el 
+\begin_inset Formula $\mathrm{EBIT}$
+\end_inset
+
+ y soporta todo el riesgo de los activos, asÃ­ que su rentabilidad exigida es la de los activos, 
+\begin_inset Formula $r_D=r_A=\mathrm{WACC}$
+\end_inset
+
+. La 
+\begin_inset Formula $r_D$
+\end_inset
+
+ plana es una aproximaciÃ³n para niveles de deuda moderados, no para 
+\begin_inset Formula $L$
+\end_inset
+
+ cercano a 1. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+CÃ³mo se resuelve
+\emph default
+: admitiendo que la deuda tenga riesgo. Entonces 
+\begin_inset Formula $r_D$
+\end_inset
+
+ sube con el endeudamiento hasta alcanzar 
+\begin_inset Formula $r_A$
+\end_inset
+
+ en 
+\begin_inset Formula $L=1$
+\end_inset
+
+, 
+\begin_inset Formula $r_E$
+\end_inset
+
+ sube menos y deja de dispararse, y las 2 proposiciones siguen valiendo (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-mm-riesgo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
@@ -6580,15 +7871,19 @@ Deuda con riesgo
 \begin_inset Formula $r_D$
 \end_inset
 
- sube con el endeudamiento y 
+ sube con el endeudamiento, porque los acreedores pasan a soportar parte del riesgo, y 
 \begin_inset Formula $r_E$
 \end_inset
 
- crece cada vez menos (se vuelve 
+ crece menos que con la deuda sin riesgo (en tÃ©rminos de la ratio 
+\begin_inset Formula $V_D/V_E$
+\end_inset
+
+, se vuelve 
 \emph on
 cÃ³ncava
 \emph default
-), porque los acreedores pasan a soportar parte del riesgo. Las 2 proposiciones siguen valiendo y el 
+). Las 2 proposiciones siguen valiendo y el 
 \begin_inset Formula $\mathrm{WACC}$
 \end_inset
 
@@ -6627,7 +7922,7 @@ InterpretaciÃ³n grÃ¡fica
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:coste-capital"
+reference "fig:coste-mm-riesgo"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6635,27 +7930,175 @@ nolink "false"
 
 \end_inset
 
-, panel b): con 
-\begin_inset Formula $V_D/V_E$
-\end_inset
-
- en abscisas, 
+): 
 \begin_inset Formula $r_D$
 \end_inset
 
- plana, 
+ es plana mientras la deuda es segura y despuÃ©s sube hasta igualar al 
+\begin_inset Formula $\mathrm{WACC}$
+\end_inset
+
+ en 
+\begin_inset Formula $L=1$
+\end_inset
+
+, cuando toda la empresa es deuda; 
 \begin_inset Formula $r_E$
 \end_inset
 
- una recta creciente que parte de 
-\begin_inset Formula $r_A$
+ queda por debajo de la curva de la deuda sin riesgo. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
 \end_inset
 
-, y el 
-\begin_inset Formula $\mathrm{WACC}=r_A$
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Modigliani
+\end_layout
+
 \end_inset
 
- horizontal; en trazo discontinuo, el caso de la deuda con riesgo. 
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+ (1958) con posibilidad de quiebra: deuda con riesgo
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:coste-mm-riesgo"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.75
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+coste-mm-riesgo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ModiglianiMiller1958Cost}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subparagraph
@@ -6817,19 +8260,7 @@ literal "true"
 \begin_inset Formula $t_{IS}$
 \end_inset
 
- euros de impuesto. Si la deuda es permanente, ese ahorro anual, 
-\begin_inset Formula $t_{IS}\,r_D\,V_D$
-\end_inset
-
-, descontado a 
-\begin_inset Formula $r_D$
-\end_inset
-
-, vale 
-\begin_inset Formula $t_{IS}\,V_D$
-\end_inset
-
-: es el 
+ euros de impuesto. Ese ahorro es el 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -6839,26 +8270,21 @@ escudo fiscal
 
 \end_inset
 
- de la deuda, y 
-\begin_inset Formula \[
-  V_L=V_U+t_{IS}\,V_D.
-  \]
-\end_inset
-
-
+ de la deuda. 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-La proposiciÃ³n II pasa a ser 
-\begin_inset Formula $r_E=r_A+(1-t_{IS})(r_A-r_D)\,V_D/V_E$
+
+\emph on
+De dÃ³nde sale
+\emph default
+: el Estado se lleva un trozo menor del mismo resultado de explotaciÃ³n. Volvamos a nuestra empresa, con un impuesto del 25
+\begin_inset space ~
+
 \end_inset
 
-, y el coste medio ponderado baja con la deuda, 
-\begin_inset Formula $\mathrm{WACC}=r_A\,(1-t_{IS}\,L)$
-\end_inset
-
- (grÃ¡fico
+% (figura
 \begin_inset space ~
 
 \end_inset
@@ -6866,7 +8292,7 @@ La proposiciÃ³n II pasa a ser
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:coste-capital"
+reference "figu:escudo-fiscal"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6874,16 +8300,302 @@ nolink "false"
 
 \end_inset
 
-, panel c). 
-\end_layout
+): sin deuda, de un 
+\begin_inset Formula $\mathrm{EBIT}$
+\end_inset
 
-\begin_layout Itemize
-Volvamos a nuestra empresa, con un impuesto del 25
+ de 100 el Estado se lleva 25 y los accionistas, 75; con 400 de deuda al 5
 \begin_inset space ~
 
 \end_inset
 
-%: sin deuda vale 
+%, los 20 de intereses se pagan antes del impuesto, el Estado se lleva 
+\begin_inset Formula $0{,}25\cdot80=20$
+\end_inset
+
+, los accionistas 60 y los acreedores 20. Los inversores reciben 80 en vez de 75: 5 mÃ¡s al aÃ±o, que son 
+\begin_inset Formula $t_{IS}\,r_DV_D$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Lo que vale
+\emph default
+: si la deuda es permanente, ese ahorro anual, tan seguro como los intereses, se descuenta a 
+\begin_inset Formula $r_D$
+\end_inset
+
+ y vale 
+\begin_inset Formula $t_{IS}\,r_DV_D/r_D=t_{IS}\,V_D$
+\end_inset
+
+. Por eso 
+\begin_inset Formula \[
+    V_L=V_U+t_{IS}\,V_D.
+    \]
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float infografia
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El escudo fiscal de la deuda: cÃ³mo se reparte el resultado de explotaciÃ³n de nuestra empresa
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "figu:escudo-fiscal"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+escudo-fiscal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ModiglianiMiller1963Corporate}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+El escudo fiscal, en general.
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Con un impuesto sobre sociedades al tipo 
+\begin_inset Formula $t_{IS}$
+\end_inset
+
+ y deuda permanente, lo que reciben cada periodo accionistas y acreedores de la empresa endeudada se puede partir en 2 trozos: 
+\begin_inset Formula \[
+  \underbrace{(\mathrm{EBIT}-r_DV_D)(1-t_{IS})}_{\text{accionistas}}+\underbrace{r_DV_D}_{\text{acreedores}}=\underbrace{\mathrm{EBIT}\,(1-t_{IS})}_{\text{lo mismo que sin deuda}}+\underbrace{t_{IS}\,r_DV_D}_{\text{ahorro fiscal}}.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cada trozo se descuenta a la rentabilidad de su riesgo: el primero es lo que reciben los accionistas de la empresa sin deuda y se descuenta a 
+\begin_inset Formula $r_A$
+\end_inset
+
+; el segundo es tan seguro como los intereses y se descuenta a 
+\begin_inset Formula $r_D$
+\end_inset
+
+: 
+\begin_inset Formula \[
+  V_L=\underbrace{\frac{\mathrm{EBIT}\,(1-t_{IS})}{r_A}}_{V_U}+\underbrace{\frac{t_{IS}\,r_DV_D}{r_D}}_{t_{IS}V_D}.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+En nuestra empresa: 
+\begin_inset Formula $60+20=75+5$
+\end_inset
+
+ cada aÃ±o, y 
+\begin_inset Formula $V_L=\tfrac{75}{0{,}10}+\tfrac{5}{0{,}05}=750+100=850$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Las proposiciones con impuesto sobre sociedades
+\emph default
+: la proposiciÃ³n II pasa a ser 
+\begin_inset Formula $r_E=r_A+(1-t_{IS})(r_A-r_D)\,V_D/V_E$
+\end_inset
+
+, y el coste medio ponderado baja con la deuda, 
+\begin_inset Formula $\mathrm{WACC}=r_A\,(1-t_{IS}\,L)$
+\end_inset
+
+: con 
+\begin_inset Formula $L$
+\end_inset
+
+ en abscisas, una recta decreciente que llega a 
+\begin_inset Formula $r_A\,(1-t_{IS})$
+\end_inset
+
+ en 
+\begin_inset Formula $L=1$
+\end_inset
+
+, cuando toda la empresa es deuda (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-mm-is"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En nuestra empresa, sin deuda vale 
 \begin_inset Formula $V_U=100\cdot0{,}75/0{,}10=750$
 \end_inset
 
@@ -6923,10 +8635,162 @@ Miller
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Modigliani
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+ (1963): el coste del capital con impuesto sobre sociedades
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:coste-mm-is"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.75
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+coste-mm-is
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ModiglianiMiller1963Corporate}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
-Los impuestos personales
+El efecto conjunto del impuesto sobre sociedades y del IRPF
 \emph default
 
 \begin_inset CommandInset citation
@@ -6956,21 +8820,7 @@ Por simplicidad, los tipos personales son proporcionales. En la prÃ¡ctica el i
 
 \end_inset
 
- Lo que importa es lo que queda tras todos los impuestos: un euro de beneficio de explotaciÃ³n pagado como interÃ©s deja al inversor 
-\begin_inset Formula $1-t_D$
-\end_inset
-
-; pagado a los accionistas, 
-\begin_inset Formula $(1-t_{IS})(1-t_E)$
-\end_inset
-
-. La ganancia de endeudarse es 
-\begin_inset Formula \begin{equation}\label{eq:miller}
-  V_L=V_U+\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D
-  \end{equation}
-\end_inset
-
-(derivaciÃ³n y esquema del euro de beneficio en el anexo
+ Lo que importa es lo que queda tras todos los impuestos, y la figura
 \begin_inset space ~
 
 \end_inset
@@ -6978,7 +8828,7 @@ Por simplicidad, los tipos personales son proporcionales. En la prÃ¡ctica el i
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "anexo:mm"
+reference "figu:miller"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6986,12 +8836,315 @@ nolink "false"
 
 \end_inset
 
-). 
+ lo sigue fila a fila: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Si 
+un euro de resultado de explotaciÃ³n pagado como 
+\emph on
+interÃ©s
+\emph default
+ no paga impuesto sobre sociedades y, tras el IRPF del acreedor, le deja 
+\begin_inset Formula $1-t_D$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+pagado como 
+\emph on
+renta de las acciones
+\emph default
+, paga primero el impuesto sobre sociedades, 
+\begin_inset Formula $t_{IS}$
+\end_inset
+
+, y despuÃ©s el IRPF del accionista sobre lo que queda, 
+\begin_inset Formula $t_E\,(1-t_{IS})$
+\end_inset
+
+: le deja 
+\begin_inset Formula $(1-t_{IS})(1-t_E)$
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float infografia
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La lÃ³gica del efecto conjunto del impuesto sobre sociedades y del IRPF (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+, 1977)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "figu:miller"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.8
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+miller
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{SuarezSuarez2014Decisiones}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~18]{BrealeyMyersAllen2020Principles}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+La empresa gana endeudÃ¡ndose mientras haya ahorro fiscal, es decir, mientras lo que reciben los inversores con deuda supere lo que recibirÃ­an sin ella. La ganancia de endeudarse es 
+\begin_inset Formula \begin{equation}\label{eq:miller}
+  V_L=V_U+\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D.
+  \end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+De dÃ³nde sale la fÃ³rmula de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+.
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Lo que reciben, despuÃ©s de todos los impuestos, accionistas y acreedores de la empresa endeudada es 
+\begin_inset Formula \[
+  \underbrace{(\mathrm{EBIT}-r_DV_D)(1-t_{IS})(1-t_E)}_{\text{accionistas}}+\underbrace{r_DV_D\,(1-t_D)}_{\text{acreedores}},
+  \]
+\end_inset
+
+que, reordenando, se parte en lo que recibirÃ­an sin deuda y el ahorro fiscal neto: 
+\begin_inset Formula \[
+  \underbrace{\mathrm{EBIT}\,(1-t_{IS})(1-t_E)}_{\text{sin deuda: vale }V_U}+\underbrace{r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big]}_{\text{ahorro fiscal neto}}.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+El ahorro fiscal neto es tan seguro como los intereses; para el inversor, la deuda rinde despuÃ©s de su impuesto 
+\begin_inset Formula $r_D(1-t_D)$
+\end_inset
+
+, asÃ­ que se descuenta a esa tasa: 
+\begin_inset Formula \[
+  \frac{r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big]}{r_D\,(1-t_D)}=\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sumando, se obtiene 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:miller"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+. Con 
+\begin_inset Formula $t_E=t_D$
+\end_inset
+
+ (incluido 
+\begin_inset Formula $t_E=t_D=0$
+\end_inset
+
+) queda el escudo de 1963, 
+\begin_inset Formula $t_{IS}\,V_D$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QuÃ© dice la fÃ³rmula
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+si 
 \begin_inset Formula $t_E=t_D$
 \end_inset
 
@@ -6999,11 +9152,11 @@ Si
 \begin_inset Formula $t_{IS}\,V_D$
 \end_inset
 
-, la de 1963. 
+, la de 1963; 
 \end_layout
 
 \begin_layout Itemize
-Si 
+si 
 \begin_inset Formula $t_D>t_E$
 \end_inset
 
@@ -7019,11 +9172,11 @@ menor
 \begin_inset Formula $t_{IS}\,V_D$
 \end_inset
 
-: el impuesto personal sobre los intereses compensa en parte el escudo. 
+: el impuesto personal sobre los intereses compensa en parte el escudo; 
 \end_layout
 
 \begin_layout Itemize
-Si 
+si 
 \begin_inset Formula $1-t_D=(1-t_{IS})(1-t_E)$
 \end_inset
 
@@ -7031,11 +9184,11 @@ Si
 \begin_inset Formula $t_D$
 \end_inset
 
- es aÃºn mayor, endeudarse resta valor. 
+ es aÃºn mayor, endeudarse resta valor; 
 \end_layout
 
 \begin_layout Itemize
-La ventaja crece con 
+la ventaja crece con 
 \begin_inset Formula $t_{IS}$
 \end_inset
 
@@ -7050,6 +9203,7 @@ La ventaja crece con
 . 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \begin_inset Flex Autor
@@ -7072,7 +9226,6 @@ para el conjunto de las empresas
 , pero a cada una le da igual cuÃ¡nta emita. 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -7534,7 +9687,7 @@ nolink "false"
 \end_inset
 
  vuelve a tener forma de U, con un mÃ­nimo en 
-\begin_inset Formula $(V_D/V_E)^*$
+\begin_inset Formula $L^*$
 \end_inset
 
  (grÃ¡fico
@@ -7545,7 +9698,7 @@ nolink "false"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:coste-capital"
+reference "fig:coste-equilibrio"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7553,7 +9706,35 @@ nolink "false"
 
 \end_inset
 
-, panel d). 
+): primero baja por el escudo fiscal, como con 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Modigliani
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+ (1963), y despuÃ©s sube, cuando 
+\begin_inset Formula $r_D$
+\end_inset
+
+ y 
+\begin_inset Formula $r_E$
+\end_inset
+
+ se disparan por el riesgo de insolvencia. 
 \end_layout
 
 \begin_deeper
@@ -7686,6 +9867,138 @@ status collapsed
 \end_inset
 
 valor-tradeoff
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Myers1984Capital}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La teorÃ­a del equilibrio: el coste del capital y el peso de la deuda
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:coste-equilibrio"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.75
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+coste-equilibrio
 \begin_inset ERT
 status collapsed
 
@@ -8091,7 +10404,243 @@ e) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
-Es el punto de partida de las finanzas corporativas modernas: la primera prueba por arbitraje de la economÃ­a financiera y la lista de lo que hay que mirar para saber cuÃ¡ndo importa la financiaciÃ³n. La tabla
+Es el punto de partida de las finanzas corporativas modernas: la primera prueba por arbitraje de la economÃ­a financiera y la lista de lo que hay que mirar para saber cuÃ¡ndo importa la financiaciÃ³n. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Resumen grÃ¡fico
+\emph default
+: el grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:coste-capital"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ reÃºne, sobre los mismos ejes, las 4 respuestas sobre el coste del capital: la tesis tradicional (en U), 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Modigliani
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+ (1958) (plano), con impuesto sobre sociedades (decreciente) y la teorÃ­a del equilibrio (otra vez en U, ahora por las fricciones). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El coste del capital y la estructura financiera, en resumen: tesis tradicional, 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Modigliani
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Miller
+\end_layout
+
+\end_inset
+
+ con y sin impuestos y teorÃ­a del equilibrio
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:coste-capital"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.95
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+coste-capital
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Durand1952Costs}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ModiglianiMiller1958Cost}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ModiglianiMiller1963Corporate}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Myers1984Capital}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+La tabla
 \begin_inset space ~
 
 \end_inset
@@ -13788,1256 +16337,6 @@ status collapsed
 \end_inset
 
 . 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-% ==========================================================================
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Anexo: el efecto 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Lohmann
-\end_layout
-
-\end_inset
-
--
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Ruchti
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "anexo:lohmann"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Una empresa pesquera compra 10 barcos de 1 millÃ³n de euros cada uno, con una vida Ãºtil de 10 aÃ±os, sin valor residual y con amortizaciÃ³n lineal: 100.000 euros por barco y aÃ±o. Si reinvierte cada aÃ±o lo que amortiza (tabla
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:lohmann"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-): 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-el primer aÃ±o amortiza 1 millÃ³n y compra un barco mÃ¡s: tiene 11; 
-\end_layout
-
-\begin_layout Itemize
-el segundo amortiza 1,1 millones, compra otro y le sobran 100.000 euros; 
-\end_layout
-
-\begin_layout Itemize
-y asÃ­ sucesivamente: la flota crece sin que la empresa aporte un euro nuevo. 
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-El efecto 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Lohmann
-\end_layout
-
-\end_inset
-
--
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Ruchti
-\end_layout
-
-\end_inset
-
-: una flota que reinvierte sus amortizaciones
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:lohmann"
-
-\end_inset
-
- 
-\begin_inset Tabular 
-<lyxtabular version="3" rows="7" columns="5">
-<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="center" valignment="middle" width="1.6cm">
-<column alignment="center" valignment="middle" width="3cm">
-<column alignment="center" valignment="middle" width="3cm">
-<column alignment="center" valignment="middle" width="2.6cm">
-<column alignment="center" valignment="middle" width="2.6cm">
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceeazulpalido}
-\end_layout
-
-\end_inset
-
-
-\series bold
-AÃ±o
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-AmortizaciÃ³n (millones)
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Barcos comprados
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Barcos al final
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Caja sobrante (millones)
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1,0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-11 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0,0 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-2 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1,1 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-12 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0,1 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1,2 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-13 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0,3 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-4 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1,3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-14 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0,6 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-5 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-1,4 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-2 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-16 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0,0 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-A largo plazo 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-— 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-— 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-en torno a 18 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-— 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-En el aÃ±o 10 se retiran los 10 barcos iniciales y la flota baja; a largo plazo, con barcos de todas las edades, se estabiliza en torno a 18, cerca de 
-\begin_inset Formula $2n/(n+1)$
-\end_inset
-
- veces la inicial con 
-\begin_inset Formula $n=10$
-\end_inset
-
- aÃ±os de vida Ãºtil. 
-\end_layout
-
-\begin_layout Itemize
-Lo que crece es la capacidad 
-\emph on
-de cada periodo
-\emph default
-, no la capacidad 
-\emph on
-total
-\emph default
-: los aÃ±os de uso que quedan a la flota no aumentan, porque la flota envejece. Y el efecto depende de los 4 supuestos del texto (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:tipos-autofinanciacion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-): sin obsolescencia, con activos divisibles, sin inflaciÃ³n y con una amortizaciÃ³n que se recupere de verdad con las ventas. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-% ==========================================================================
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Anexo: derivaciones de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Modigliani
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Miller
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "anexo:mm"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-La proposiciÃ³n I: el arbitraje
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "anexo:arbitraje"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-2 empresas de la misma clase de riesgo generan el mismo resultado de explotaciÃ³n, 
-\begin_inset Formula $\mathrm{EBIT}$
-\end_inset
-
-, cada periodo. U no tiene deuda y vale 
-\begin_inset Formula $V_U=V_E^U$
-\end_inset
-
-; L tiene una deuda 
-\begin_inset Formula $V_D$
-\end_inset
-
- al tipo 
-\begin_inset Formula $r_D$
-\end_inset
-
- y vale 
-\begin_inset Formula $V_L=V_E^L+V_D$
-\end_inset
-
-. Un inversor puede elegir entre 2 estrategias
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Vernimmen2017Corporate"
-literal "false"
-
-\end_inset
-
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\emph on
-Estrategia 1
-\emph default
-: comprar una fracciÃ³n 
-\begin_inset Formula $s$
-\end_inset
-
- de las acciones de L. Paga 
-\begin_inset Formula $s V_E^L$
-\end_inset
-
- y cobra 
-\begin_inset Formula $s(\mathrm{EBIT}-r_DV_D)$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Estrategia 2
-\emph default
-: comprar la misma fracciÃ³n 
-\begin_inset Formula $s$
-\end_inset
-
- de las acciones de U y pedir prestado 
-\begin_inset Formula $s V_D$
-\end_inset
-
- al mismo tipo 
-\begin_inset Formula $r_D$
-\end_inset
-
- (el apalancamiento casero). Paga 
-\begin_inset Formula $s(V_U-V_D)$
-\end_inset
-
- y cobra 
-\begin_inset Formula $s\,\mathrm{EBIT}-s r_DV_D$
-\end_inset
-
-. 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Las 2 estrategias dan exactamente los mismos flujos, con el mismo riesgo; si no, habrÃ­a arbitraje. Por tanto, deben costar lo mismo: 
-\begin_inset Formula $s V_E^L=s(V_U-V_D)$
-\end_inset
-
-, es decir, 
-\begin_inset Formula $V_L=V_E^L+V_D=V_U$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Si 
-\begin_inset Formula $V_L>V_U$
-\end_inset
-
-, el inversor vende L y hace la estrategia 2; si 
-\begin_inset Formula $V_L<V_U$
-\end_inset
-
-, vende U y compra a la vez acciones y deuda de L en la proporciÃ³n de su estructura del capital (comprar una fracciÃ³n 
-\begin_inset Formula $s$
-\end_inset
-
- de las acciones y de la deuda de L da 
-\begin_inset Formula $s(\mathrm{EBIT}-r_DV_D)+s r_DV_D=s\,\mathrm{EBIT}$
-\end_inset
-
-, lo mismo que una fracciÃ³n 
-\begin_inset Formula $s$
-\end_inset
-
- de U).
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-findemo
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-Con los nÃºmeros de nuestra empresa (
-\begin_inset Formula $\mathrm{EBIT}=100$
-\end_inset
-
-, 
-\begin_inset Formula $V_D=400$
-\end_inset
-
-, 
-\begin_inset Formula $r_D=5$
-\end_inset
-
-
-\begin_inset space ~
-
-\end_inset
-
-%, 
-\begin_inset Formula $s=1$
-\end_inset
-
-
-\begin_inset space ~
-
-\end_inset
-
-%), el arbitraje estÃ¡ en el apartado
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:mm"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Subsection
-La proposiciÃ³n II
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "anexo:prop-ii"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Sin impuestos, el 
-\begin_inset Formula $\mathrm{WACC}$
-\end_inset
-
- es la media ponderada de lo que exigen accionistas y acreedores, y por la proposiciÃ³n I es igual a 
-\begin_inset Formula $r_A$
-\end_inset
-
-: 
-\begin_inset Formula \[
-  r_A=r_E\,\frac{V_E}{V_E+V_D}+r_D\,\frac{V_D}{V_E+V_D}\ \Longrightarrow\ r_A\,(V_E+V_D)=r_E\,V_E+r_D\,V_D.
-  \]
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Despejando 
-\begin_inset Formula $r_E$
-\end_inset
-
-: 
-\begin_inset Formula \[
-  r_E=\frac{r_A\,(V_E+V_D)-r_D\,V_D}{V_E}=r_A+(r_A-r_D)\,\frac{V_D}{V_E}.
-  \]
-\end_inset
-
-La rentabilidad exigida a las acciones crece linealmente con la ratio deuda/fondos propios 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:mm"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-findemo
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subsection
-El escudo fiscal: 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Modigliani
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Miller
-\end_layout
-
-\end_inset
-
- (1963)
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "anexo:mm-1963"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Con un impuesto sobre sociedades al tipo 
-\begin_inset Formula $t_{IS}$
-\end_inset
-
- y deuda permanente, lo que reciben cada periodo accionistas y acreedores de la empresa endeudada es 
-\begin_inset Formula \[
-  (\mathrm{EBIT}-r_DV_D)(1-t_{IS})+r_DV_D=\mathrm{EBIT}\,(1-t_{IS})+t_{IS}\,r_DV_D.
-  \]
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-El primer sumando es lo que reciben los accionistas de la empresa sin deuda: vale 
-\begin_inset Formula $V_U$
-\end_inset
-
-. El segundo es tan seguro como los intereses y se descuenta a 
-\begin_inset Formula $r_D$
-\end_inset
-
-: vale 
-\begin_inset Formula $t_{IS}\,r_DV_D/r_D=t_{IS}\,V_D$
-\end_inset
-
-. Por tanto, 
-\begin_inset Formula $V_L=V_U+t_{IS}\,V_D$
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-findemo
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subsection
-Los impuestos personales: 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Miller
-\end_layout
-
-\end_inset
-
- (1977)
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "anexo:miller"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Ahora el inversor paga 
-\begin_inset Formula $t_D$
-\end_inset
-
- por los intereses y 
-\begin_inset Formula $t_E$
-\end_inset
-
- por la renta de las acciones. Un euro de resultado de explotaciÃ³n que se paga como interÃ©s deja al inversor 
-\begin_inset Formula $1-t_D$
-\end_inset
-
-; si se paga a los accionistas, paga primero el impuesto sobre sociedades y despuÃ©s el personal, y deja 
-\begin_inset Formula $(1-t_{IS})(1-t_E)$
-\end_inset
-
- (figura
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "figu:miller"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-). 
-\end_layout
-
-\begin_layout Itemize
-Lo que reciben, despuÃ©s de todos los impuestos, accionistas y acreedores de la empresa endeudada es 
-\begin_inset Formula \[
-  (\mathrm{EBIT}-r_DV_D)(1-t_{IS})(1-t_E)+r_DV_D(1-t_D)=\mathrm{EBIT}\,(1-t_{IS})(1-t_E)+r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big].
-  \]
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-El primer sumando es lo que recibirÃ­an los accionistas de la empresa sin deuda: vale 
-\begin_inset Formula $V_U$
-\end_inset
-
-. El segundo es tan seguro como los intereses; para el inversor, la deuda rinde despuÃ©s de su impuesto 
-\begin_inset Formula $r_D(1-t_D)$
-\end_inset
-
-, asÃ­ que se descuenta a esa tasa: 
-\begin_inset Formula \[
-  \frac{r_DV_D\big[(1-t_D)-(1-t_{IS})(1-t_E)\big]}{r_D\,(1-t_D)}=\Big[1-\frac{(1-t_{IS})(1-t_E)}{1-t_D}\Big]\,V_D.
-  \]
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Sumando, se obtiene 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:miller"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-. Con 
-\begin_inset Formula $t_E=t_D$
-\end_inset
-
- (incluido 
-\begin_inset Formula $t_E=t_D=0$
-\end_inset
-
-) queda el escudo de 1963, 
-\begin_inset Formula $t_{IS}\,V_D$
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-findemo
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Float infografia
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Miller
-\end_layout
-
-\end_inset
-
- (1977): quÃ© queda de 1 euro de resultado de explotaciÃ³n
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "figu:miller"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.7
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-miller
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[cap.~18]{BrealeyMyersAllen2020Principles}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

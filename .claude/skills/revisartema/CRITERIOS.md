@@ -538,6 +538,15 @@ el texto original y lo que se hizo.
 
 ## 6. Coherencia con el resto del temario
 
+- **Formato del examen: parte A frente a parte B** (Víctor, 18/11/2026). Un
+  opositor nunca canta 2 temas de la parte A ni 2 de la parte B, así que
+  repetir un modelo o un contenido entre 2 temas de la **misma** parte no es
+  problema. Si un contenido sale en un tema de la A y en uno de la B, cada uno
+  debe tratarlo de forma suficientemente distinta (enfoque, pregunta a la que
+  responde, extensión) para cubrir los 2 temas de manera satisfactoria e
+  independiente sin quedar repetitivo. En cada revisión, comprobar estos
+  solapes A-B y avisar a Víctor (sin cambiar los temas por iniciativa
+  propia); el estado está en `oposicion/temario/solapes-a-b.md`.
 - Los títulos oficiales están en `oposicion/temario/temario.json`. El tema
   debe cubrir **todos** los epígrafes de su título, en ese orden.
 - Bloques de temas relacionados en `oposicion/organizacion/estructura_temario.json`.
@@ -988,6 +997,7 @@ también a universitarios y a quien aprende economía, sin perder la oposición
 - Publicar en `main` o fusionar la rama: solo Víctor decide cuándo.
 - Tocar otros temas que no sean el que se revisa.
 - Subir notas privadas (comentarios, texto oculto) a la fuente pública.
+- **Citar la versión antigua del tema** (Víctor, 18/11/2026): «el tema antiguo», «la versión anterior», «el original», «corrige la nota del original», «la regla del tema antiguo»… En ningún caso, ni en el texto, ni en notas, cajas, fuentes de gráficos, anexos o fichas. Lo que se conserve del tema antiguo se cuenta sin decir de dónde viene (lo comprueba `verificar-tema.py`).
 - Inventar datos, citas o referencias. Si no se encuentra la fuente, se dice.
 
 ## 11. Guía del dictamen de coyuntura (`1D01`)

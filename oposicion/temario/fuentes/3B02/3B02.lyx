@@ -1852,6 +1852,18 @@ nolink "false"
 \end_inset
 
  la desviaciÃ³n tÃ­pica. Los proyectos se llaman A y B. Son locales: 
+\begin_inset Formula $S_t$
+\end_inset
+
+, el saldo del proyecto, y 
+\begin_inset Formula $r$
+\end_inset
+
+, su rentabilidad (
+\begin_inset Formula $r(k)$
+\end_inset
+
+ en las inversiones mixtas); 
 \begin_inset Formula $k^{\mathrm F}$
 \end_inset
 
@@ -2104,7 +2116,23 @@ nolink "false"
 
 \end_inset
 
-, numerando las 5 variables; el flujo de caja libre, de palabra; la tabla
+, numerando las 5 variables; el flujo de caja libre, de palabra; simples, puras y mixtas en una frase (la figura
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figu:clasificacion-inversiones"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y la tabla
 \begin_inset space ~
 
 \end_inset
@@ -2120,7 +2148,7 @@ nolink "false"
 
 \end_inset
 
- no se canta. I.2, 
+ no se cantan). I.2, 
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -2140,7 +2168,7 @@ status collapsed
 
 \end_inset
 
-: los estÃ¡ticos de palabra (
+: las 2 preguntas, efectuaciÃ³n y jerarquizaciÃ³n, al empezar, y la respuesta de cada mÃ©todo a las 2; los estÃ¡ticos de palabra (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -2854,7 +2882,23 @@ elaboraciÃ³n propia.
 \emph on
 Tipos de inversiÃ³n segÃºn el signo de sus flujos
 \emph default
- (tabla
+. Hay 2 clasificaciones, que se solapan: toda inversiÃ³n simple es pura (figura
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figu:clasificacion-inversiones"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y tabla
 \begin_inset space ~
 
 \end_inset
@@ -2877,17 +2921,47 @@ nolink "false"
 \begin_layout Itemize
 
 \emph on
-simples
+SegÃºn cuÃ¡ntas veces cambia el signo de los flujos
 \emph default
- o convencionales: tras el desembolso, todos los flujos son positivos (por eso, un solo cambio de signo); 
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+las inversiones 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+simples
+\end_layout
+
+\end_inset
+
+ o convencionales tienen un solo cambio de signo: primero, todos los pagos (el desembolso, aunque se reparta en varios aÃ±os) y, despuÃ©s, todos los cobros; 
 \end_layout
 
 \begin_layout Itemize
+las inversiones 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+no simples
+\end_layout
+
+\end_inset
+
+ tienen mÃ¡s de un cambio de signo, porque despuÃ©s de empezar a cobrar hay algÃºn flujo negativo (una gran reparaciÃ³n, el desmantelamiento de una central). 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \emph on
-no simples
+SegÃºn el saldo del proyecto
 \emph default
-: algÃºn flujo posterior es negativo (una gran reparaciÃ³n, el desmantelamiento de una central). Entre ellas, 
+, la clasificaciÃ³n de 
 \begin_inset ERT
 status collapsed
 
@@ -2899,18 +2973,388 @@ textcite{TeichroewRobichekMontalbano1965Analysis}
 
 \end_inset
 
- distinguen las 
-\emph on
-puras
-\emph default
-, en las que el saldo acumulado del proyecto nunca es positivo antes del final (el proyecto es siempre una inversiÃ³n), de las 
-\emph on
-mixtas
-\emph default
-, en las que en algÃºn momento lo es (el proyecto financia a la empresa durante un tiempo). 
+. El 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+saldo del proyecto
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $S_t$
+\end_inset
+
+, es lo que la empresa lleva invertido en Ã©l al final de cada periodo (si es negativo) o lo que el proyecto le ha adelantado (si es positivo), capitalizado con la rentabilidad del proyecto, 
+\begin_inset Formula $r$
+\end_inset
+
+: 
+\begin_inset Formula \[
+    S_0=-I_0,\qquad S_t=S_{t-1}\,(1+r)+\mathrm{FC}_t\quad(t=1,\dots,n).
+    \]
+\end_inset
+
+La TIR es la 
+\begin_inset Formula $r$
+\end_inset
+
+ que deja el saldo final en cero, 
+\begin_inset Formula $S_n=0$
+\end_inset
+
+. SegÃºn el signo de los saldos intermedios, calculados con esa rentabilidad, hay 2 tipos:
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Si el proyecto no tiene TIR, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{TeichroewRobichekMontalbano1965Analysis}
+\end_layout
+
+\end_inset
+
+ lo clasifican con la tasa mÃ¡s baja que deja todos los saldos intermedios en cero o por debajo: si con ella el saldo final es negativo, la inversiÃ³n es mixta.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En las 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+inversiones puras
+\end_layout
+
+\end_inset
+
+, el saldo nunca es positivo antes del final: la empresa tiene siempre dinero metido en el proyecto, y todo ese dinero rinde la TIR. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Todas las simples son puras, y tambiÃ©n algunas no simples. 
+\end_layout
+
+\begin_layout Itemize
+Tienen una sola TIR, que mide de verdad la rentabilidad del proyecto. 
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+En las 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+inversiones mixtas
+\end_layout
+
+\end_inset
+
+, el saldo es positivo en algÃºn momento: durante ese tiempo el proyecto financia a la empresa. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Solo pueden ser no simples. 
+\end_layout
+
+\begin_layout Itemize
+El dinero adelantado no rinde la TIR, sino lo que la empresa gana al invertirlo, la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+tasa de reinversiÃ³n
+\end_layout
+
+\end_inset
+
+, que suele ser su coste del capital, 
+\begin_inset Formula $k$
+\end_inset
+
+. Por eso los saldos positivos se capitalizan a 
+\begin_inset Formula $k$
+\end_inset
+
+ y solo los negativos a 
+\begin_inset Formula $r$
+\end_inset
+
+: 
+\begin_inset Formula \[
+        S_t=\begin{cases}S_{t-1}\,(1+r)+\mathrm{FC}_t & \text{si } S_{t-1}\leq 0,\\ S_{t-1}\,(1+k)+\mathrm{FC}_t & \text{si } S_{t-1}>0.\end{cases}
+        \]
+\end_inset
+
+La rentabilidad del proyecto es la 
+\begin_inset Formula $r(k)$
+\end_inset
+
+ que deja 
+\begin_inset Formula $S_n=0$
+\end_inset
+
+: depende de 
+\begin_inset Formula $k$
+\end_inset
+
+, y 
+\begin_inset Formula $r(k)>k$
+\end_inset
+
+ equivale a 
+\begin_inset Formula $\mathrm{VAN}>0$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Pueden tener varias TIR o ninguna, y ninguna mide la rentabilidad del proyecto. Por ejemplo, el proyecto 
+\begin_inset Formula $-100$
+\end_inset
+
+, 
+\begin_inset Formula $+230$
+\end_inset
+
+, 
+\begin_inset Formula $-132$
+\end_inset
+
+ tiene 2 TIR, el 10
+\begin_inset space ~
+
+\end_inset
+
+% y el 20
+\begin_inset space ~
+
+\end_inset
+
+%, las 2 por encima de un coste del capital del 8
+\begin_inset space ~
+
+\end_inset
+
+%; pero, con 
+\begin_inset Formula $k=8$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+%, su rentabilidad es 
+\begin_inset Formula $r(k)=7{,}8$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+%, menor que 
+\begin_inset Formula $k$
+\end_inset
+
+, y su VAN es negativo (
+\begin_inset Formula $-0{,}2$
+\end_inset
+
+). 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float infografia
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ClasificaciÃ³n de las inversiones: la TIR y el punto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "figu:clasificacion-inversiones"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.98
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+clasificacion-inversiones
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{TeichroewRobichekMontalbano1965Analysis}
+\end_layout
+
+\end_inset
+
+. El punto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+ se explica en el apartado
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:dinamicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 
 \begin_inset Float table
@@ -2951,12 +3395,13 @@ name "tab:signos"
 
  
 \begin_inset Tabular 
-<lyxtabular version="3" rows="4" columns="4">
+<lyxtabular version="3" rows="6" columns="5">
 <features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="left" valignment="middle" width="3.4cm">
-<column alignment="center" valignment="middle" width="3.4cm">
+<column alignment="left" valignment="middle" width="2.2cm">
+<column alignment="center" valignment="middle" width="3.8cm">
+<column alignment="center" valignment="middle" width="1.9cm">
 <column alignment="center" valignment="middle" width="3.2cm">
-<column alignment="center" valignment="middle" width="3.6cm">
+<column alignment="center" valignment="middle" width="3.1cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -2989,10 +3434,10 @@ Tipo
 \begin_layout Standard
 
 \series bold
-Ejemplo
+Flujos
 \series default
  (
-\begin_inset Formula $t=0,1,2$
+\begin_inset Formula $t=0,1,\dots$
 \end_inset
 
 ) 
@@ -3007,6 +3452,19 @@ Ejemplo
 
 \series bold
 Cambios de signo
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Saldos intermedios a la TIR
 \series default
  
 \end_layout
@@ -3093,6 +3551,51 @@ status collapsed
 
 \end_inset
 
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: pura 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
 Una
 \begin_inset ERT
 status collapsed
@@ -3119,7 +3622,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-No simple pura 
+Simple 
 \end_layout
 
 \end_inset
@@ -3180,6 +3683,51 @@ status collapsed
 
 \end_inset
 
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: pura 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
 Una
 \begin_inset ERT
 status collapsed
@@ -3202,16 +3750,152 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-No simple mixta 
+No simple 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $-100$
+\end_inset
+
+, 
+\begin_inset Formula $+60$
+\end_inset
+
+, 
+\begin_inset Formula $-10$
+\end_inset
+
+, 
+\begin_inset Formula $+70$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+3 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: pura 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Una
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: 9,4
+\begin_inset space ~
+
+\end_inset
+
+% 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+No simple 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -3232,7 +3916,7 @@ No simple mixta
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -3241,7 +3925,52 @@ No simple mixta
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: mixta 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -3293,6 +4022,133 @@ status collapsed
 \end_inset
 </cell>
 </row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+No simple 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $-100$
+\end_inset
+
+, 
+\begin_inset Formula $+250$
+\end_inset
+
+, 
+\begin_inset Formula $-170$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: mixta 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Ninguna
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset
@@ -3314,16 +4170,24 @@ textcite{TeichroewRobichekMontalbano1965Analysis}
 
 \end_inset
 
-. En la mixta, al 10
+. En la pura no simple, los saldos a la TIR son 
+\begin_inset Formula $-49{,}4$
+\end_inset
+
+ y 
+\begin_inset Formula $-64{,}0$
+\end_inset
+
+. En la primera mixta, al 10
 \begin_inset space ~
 
 \end_inset
 
-% el saldo del proyecto tras el primer aÃ±o es positivo (
+% el saldo tras el primer aÃ±o es 
 \begin_inset Formula $-110+230=120$
 \end_inset
 
-): durante ese aÃ±o el proyecto financia a la empresa.
+: durante ese aÃ±o el proyecto financia a la empresa. La segunda mixta tiene VAN negativo con cualquier tasa.
 \end_layout
 
 \end_inset
@@ -3515,15 +4379,69 @@ name "sec:metodos"
 \end_layout
 
 \begin_layout Itemize
-Con los flujos ya calculados, los mÃ©todos de valoraciÃ³n dicen si conviene hacer un proyecto (
+Con los flujos ya calculados, los mÃ©todos de valoraciÃ³n tienen que responder a 2 preguntas distintas, y cada mÃ©todo se juzga por cÃ³mo responde a cada una: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+decisiÃ³n de efectuaciÃ³n
+\end_layout
+
+\end_inset
+
+: 
 \emph on
-efectuaciÃ³n
+Â¿en quÃ© proyectos invertir y en cuÃ¡les no?
 \emph default
-) y, si hay varios, en quÃ© orden (
+ Se mira cada proyecto por separado y se acepta si es rentable, es decir, si rinde mÃ¡s de lo que cuesta financiarlo; 
+\end_layout
+
+\begin_layout Itemize
+la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+decisiÃ³n de jerarquizaciÃ³n
+\end_layout
+
+\end_inset
+
+: 
 \emph on
-jerarquizaciÃ³n
+si hay que elegir entre varias inversiones rentables, Â¿cuÃ¡l elegir?
 \emph default
-). Interesan los que llevan a maximizar el valor de la empresa. 
+ Se ordenan los proyectos de mejor a peor. Importa cuando son 
+\emph on
+excluyentes
+\emph default
+ (en un solar cabe un hotel o un aparcamiento, no los 2) o cuando no hay dinero para todos. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Interesan los mÃ©todos que responden a las 2 preguntas como lo harÃ­a el objetivo de maximizar el valor de la empresa. La tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:efectuacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ lo resume al final del apartado. 
 \end_layout
 
 \begin_layout Standard
@@ -3583,9 +4501,27 @@ flujo neto de caja por unidad monetaria comprometida
 \begin_inset Formula $\sum_{t=1}^{n}\mathrm{FC}_t/I_0$
 \end_inset
 
-. Interesa el proyecto si es mayor que 1, porque recupera el desembolso; solo lo que pasa de 1 es rentabilidad en sentido estricto. 
+; solo lo que pasa de 1 es rentabilidad en sentido estricto. 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+EfectuaciÃ³n
+\emph default
+: se hace el proyecto si es mayor que 1, porque recupera el desembolso. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+JerarquizaciÃ³n
+\emph default
+: primero, el de mayor flujo por unidad invertida. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 El 
 \begin_inset Flex Concepto
@@ -3616,6 +4552,24 @@ payback
 . 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+EfectuaciÃ³n
+\emph default
+: se hace el proyecto si se recupera antes de un plazo mÃ¡ximo que fija la empresa. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+JerarquizaciÃ³n
+\emph default
+: primero, el que se recupera antes. 
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 
@@ -4057,21 +5011,21 @@ Regla de decisiÃ³n
 \begin_layout Itemize
 
 \emph on
-aceptar
+EfectuaciÃ³n
 \emph default
- los proyectos con 
+: se hacen los proyectos con 
 \begin_inset Formula $\mathrm{VAN}>0$
 \end_inset
 
-: rinden mÃ¡s que su coste del capital y aumentan el valor de la empresa; 
+, porque rinden mÃ¡s que su coste del capital y aumentan el valor de la empresa. Si son independientes y no falta capital, se hacen todos los de VAN positivo. 
 \end_layout
 
 \begin_layout Itemize
-entre proyectos 
+
 \emph on
-excluyentes
+JerarquizaciÃ³n
 \emph default
-, elegir el de mayor VAN; si son independientes y no falta capital, hacer todos los de VAN positivo. 
+: entre proyectos excluyentes, el de mayor VAN. Si falta capital, se ordenan por el VAN por euro invertido, el Ã­ndice del VAN que se ve mÃ¡s abajo. 
 \end_layout
 
 \end_deeper
@@ -4242,15 +5196,33 @@ status collapsed
 \begin_layout Itemize
 
 \emph on
-Regla
+Regla de decisiÃ³n
 \emph default
-: aceptar si 
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+EfectuaciÃ³n
+\emph default
+: se hace el proyecto si 
 \begin_inset Formula $\mathrm{TIR}>k$
 \end_inset
 
-; la TIR es el coste del capital mÃ¡ximo que soportarÃ­a el proyecto. Entre proyectos, preferir el de mayor TIR. 
+; la TIR es el coste del capital mÃ¡ximo que soportarÃ­a el proyecto. 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+JerarquizaciÃ³n
+\emph default
+: primero, el de mayor TIR. Este orden puede no coincidir con el del VAN, como se ve a continuaciÃ³n. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -4328,9 +5300,9 @@ c) ComparaciÃ³n del VAN y la TIR
 \begin_layout Itemize
 
 \emph on
-Para aceptar o rechazar
+En la efectuaciÃ³n
 \emph default
- un proyecto simple, los 2 criterios coinciden: como el VAN cae al subir la tasa de descuento, 
+ (Â¿se hace o no el proyecto?), los 2 criterios coinciden si la inversiÃ³n es simple o pura: el VAN es positivo con tasas por debajo de la TIR y negativo por encima, asÃ­ que 
 \begin_inset Formula $\mathrm{VAN}(k)>0$
 \end_inset
 
@@ -4344,9 +5316,9 @@ Para aceptar o rechazar
 \begin_layout Itemize
 
 \emph on
-Para ordenar
+En la jerarquizaciÃ³n
 \emph default
- proyectos excluyentes, pueden no coincidir. Ocurre cuando las curvas del VAN de 2 proyectos se cortan: la tasa del corte, 
+ (Â¿cuÃ¡l de los proyectos rentables?), pueden no coincidir entre proyectos excluyentes. Ocurre cuando las curvas del VAN de 2 proyectos se cortan: la tasa del corte, 
 \begin_inset Formula $k^{\mathrm F}$
 \end_inset
 
@@ -4392,7 +5364,7 @@ status collapsed
 
 
 \begin_layout Standard
-Si las curvas no se cortan en tasas positivas, un proyecto tiene a la vez mÃ¡s VAN para toda 
+Con inversiones simples o puras, si las curvas no se cortan en tasas positivas, un proyecto tiene a la vez mÃ¡s VAN para toda 
 \begin_inset Formula $k$
 \end_inset
 
@@ -4497,9 +5469,9 @@ nolink "false"
 \begin_layout Itemize
 
 \emph on
-Con flujos no convencionales
+Con inversiones mixtas
 \emph default
- (las inversiones mixtas), la TIR puede ser mÃºltiple o no existir (tabla
+, la TIR puede ser mÃºltiple o no existir (tabla
 \begin_inset space ~
 
 \end_inset
@@ -4515,7 +5487,7 @@ nolink "false"
 
 \end_inset
 
-), y los 2 criterios pueden no coincidir ni para aceptar o rechazar. Estos problemas los seÃ±alaron 
+), y los 2 criterios pueden no coincidir ni siquiera en la efectuaciÃ³n. Estos problemas los seÃ±alaron 
 \begin_inset ERT
 status collapsed
 
@@ -5251,6 +6223,341 @@ elaboraciÃ³n propia.
 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Â¿CuÃ¡ndo hay un punto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+?
+\series default
+ Depende de cÃ³mo vayan ordenados el VAN con tasa cero y la TIR de los 2 proyectos, y del tipo de inversiÃ³n. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QuÃ© es
+\emph default
+: el punto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+ es una tasa 
+\begin_inset Formula $k^{\mathrm F}>0$
+\end_inset
+
+ con 
+\begin_inset Formula $\mathrm{VAN}_{\mathrm A}(k^{\mathrm F})=\mathrm{VAN}_{\mathrm B}(k^{\mathrm F})$
+\end_inset
+
+. Como el VAN de una diferencia de flujos es la diferencia de los VAN, es una TIR del 
+\emph on
+proyecto diferencia
+\emph default
+ A
+\begin_inset Formula $-$
+\end_inset
+
+B, el que tiene los flujos 
+\begin_inset Formula $\mathrm{FC}_{\mathrm A,t}-\mathrm{FC}_{\mathrm B,t}$
+\end_inset
+
+: 
+\begin_inset Formula \[
+  \mathrm{VAN}_{\mathrm A}(k^{\mathrm F})-\mathrm{VAN}_{\mathrm B}(k^{\mathrm F})=\mathrm{VAN}_{\mathrm A-\mathrm B}(k^{\mathrm F})=0.
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En el ejemplo, A
+\begin_inset Formula $-$
+\end_inset
+
+B da 
+\begin_inset Formula $0$
+\end_inset
+
+, 
+\begin_inset Formula $-125$
+\end_inset
+
+, 
+\begin_inset Formula $+144$
+\end_inset
+
+: un solo cambio de signo y una sola TIR, 
+\begin_inset Formula $144/125-1=15{,}2$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+%. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Caso 1. Inversiones simples o puras con el VAN en cero y la TIR ordenados al revÃ©s
+\emph default
+ (
+\begin_inset Formula $\mathrm{VAN}_{\mathrm A}(0)>\mathrm{VAN}_{\mathrm B}(0)$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathrm{TIR}_{\mathrm A}<\mathrm{TIR}_{\mathrm B}$
+\end_inset
+
+): 
+\series bold
+siempre hay
+\series default
+ al menos un punto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+, entre 0 y 
+\begin_inset Formula $\mathrm{TIR}_{\mathrm A}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+La diferencia 
+\begin_inset Formula $\mathrm{VAN}_{\mathrm A}-\mathrm{VAN}_{\mathrm B}$
+\end_inset
+
+ es positiva con 
+\begin_inset Formula $k=0$
+\end_inset
+
+ y negativa con 
+\begin_inset Formula $k=\mathrm{TIR}_{\mathrm A}$
+\end_inset
+
+ (ahÃ­ 
+\begin_inset Formula $\mathrm{VAN}_{\mathrm A}=0$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathrm{VAN}_{\mathrm B}>0$
+\end_inset
+
+); como varÃ­a de forma continua, se anula entre medias. 
+\end_layout
+
+\begin_layout Itemize
+El punto es 
+\emph on
+Ãºnico
+\emph default
+ si el proyecto diferencia es simple (por la regla de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Descartes
+\end_layout
+
+\end_inset
+
+, tiene una sola TIR positiva); si no lo es, puede haber varios (un nÃºmero impar). 
+\end_layout
+
+\begin_layout Itemize
+Es el caso de la escala y del calendario: el proyecto mayor o el que cobra mÃ¡s tarde tiene mÃ¡s VAN con tasas bajas y menos TIR. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Caso 2. Inversiones simples o puras con el VAN en cero y la TIR ordenados igual
+\emph default
+ (
+\begin_inset Formula $\mathrm{VAN}_{\mathrm A}(0)>\mathrm{VAN}_{\mathrm B}(0)$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathrm{TIR}_{\mathrm A}>\mathrm{TIR}_{\mathrm B}$
+\end_inset
+
+): 
+\series bold
+normalmente no hay
+\series default
+ punto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+ entre 0 y las TIR, y A domina. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+La diferencia es positiva en los 2 extremos, con 
+\begin_inset Formula $k=0$
+\end_inset
+
+ y con 
+\begin_inset Formula $k=\mathrm{TIR}_{\mathrm B}$
+\end_inset
+
+, asÃ­ que se anula un nÃºmero par de veces: ninguna si el proyecto diferencia es simple. 
+\end_layout
+
+\begin_layout Itemize
+Si el proyecto diferencia tiene varios cambios de signo, las curvas pueden cortarse 2 veces, y B tener mÃ¡s VAN en un tramo intermedio de tasas. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Caso 3. Alguna inversiÃ³n mixta
+\emph default
+: 
+\series bold
+puede haber varios puntos de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+ o ninguno
+\series default
+, y la comparaciÃ³n con la TIR pierde sentido. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+La TIR de la mixta puede ser doble o no existir, asÃ­ que no hay una ordenaciÃ³n por la TIR con la que comparar. 
+\end_layout
+
+\begin_layout Itemize
+Su curva del VAN no siempre baja al subir 
+\begin_inset Formula $k$
+\end_inset
+
+ (en el ejemplo de la tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:signos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, el VAN de 
+\begin_inset Formula $-100$
+\end_inset
+
+, 
+\begin_inset Formula $+230$
+\end_inset
+
+, 
+\begin_inset Formula $-132$
+\end_inset
+
+ sube entre el 0
+\begin_inset space ~
+
+\end_inset
+
+% y el 14,8
+\begin_inset space ~
+
+\end_inset
+
+% y baja despuÃ©s), y las 2 curvas pueden cortarse varias veces o ninguna. 
+\end_layout
+
+\begin_layout Itemize
+Se decide con el VAN a la 
+\begin_inset Formula $k$
+\end_inset
+
+ del proyecto o, lo que es lo mismo, comparando su rentabilidad 
+\begin_inset Formula $r(k)$
+\end_inset
+
+ con 
+\begin_inset Formula $k$
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Cortes que no importan
+\emph default
+: un corte con 
+\begin_inset Formula $k^{\mathrm F}\leq 0$
+\end_inset
+
+ o por encima de las 2 TIR no crea conflicto, porque con las tasas relevantes un proyecto gana con los 2 criterios o los 2 proyectos tienen VAN negativo y no se hace ninguno. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
 d) La TIR modificada (TIRM)
 \end_layout
@@ -5287,31 +6594,35 @@ nolink "false"
 
 \begin_deeper
 \begin_layout Enumerate
-se llevan al momento 0, descontÃ¡ndolos a 
+Se llevan al momento 0, descontÃ¡ndolos a 
 \begin_inset Formula $k$
 \end_inset
 
-, el desembolso y los flujos negativos: 
-\begin_inset Formula $VA^{-}=I_0+\sum_{\mathrm{FC}_t<0}|\mathrm{FC}_t|\,(1+k)^{-t}$
+, el desembolso y los flujos negativos. Su suma es el valor actual de los pagos: 
+\begin_inset Formula \[
+    VA^{-}=I_0+\sum_{\mathrm{FC}_t<0}\frac{|\mathrm{FC}_t|}{(1+k)^{t}}.
+    \]
 \end_inset
 
-; 
+
 \end_layout
 
 \begin_layout Enumerate
-se llevan al final, capitalizÃ¡ndolos a la tasa de reinversiÃ³n, que suele ser 
+Se llevan al final, capitalizÃ¡ndolos a la tasa de reinversiÃ³n, que suele ser 
 \begin_inset Formula $k$
 \end_inset
 
-, los flujos positivos: 
-\begin_inset Formula $VF^{+}=\sum_{\mathrm{FC}_t>0}\mathrm{FC}_t\,(1+k)^{n-t}$
+, los flujos positivos. Su suma es el valor final de los cobros: 
+\begin_inset Formula \[
+    VF^{+}=\sum_{\mathrm{FC}_t>0}\mathrm{FC}_t\,(1+k)^{n-t}.
+    \]
 \end_inset
 
-; 
+
 \end_layout
 
 \begin_layout Enumerate
-la TIRM es la tasa que convierte 
+La TIRM es la tasa que convierte 
 \begin_inset Formula $VA^{-}$
 \end_inset
 
@@ -5325,8 +6636,8 @@ la TIRM es la tasa que convierte
 
  periodos: 
 \begin_inset Formula \[
-  VA^{-}=\frac{VF^{+}}{(1+\mathrm{TIRM})^n}.
-  \]
+    VA^{-}\,(1+\mathrm{TIRM})^n=VF^{+}\quad\Longrightarrow\quad\mathrm{TIRM}=\left(\frac{VF^{+}}{VA^{-}}\right)^{1/n}-1.
+    \]
 \end_inset
 
 
@@ -5336,9 +6647,107 @@ la TIRM es la tasa que convierte
 \begin_layout Itemize
 
 \emph on
-Regla
+Ejemplo
 \emph default
-: aceptar si 
+ (figura
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "figu:tirm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): un proyecto con los flujos 
+\begin_inset Formula $-100$
+\end_inset
+
+, 
+\begin_inset Formula $+50$
+\end_inset
+
+, 
+\begin_inset Formula $+60$
+\end_inset
+
+, 
+\begin_inset Formula $-20$
+\end_inset
+
+ y 
+\begin_inset Formula $+70$
+\end_inset
+
+ y 
+\begin_inset Formula $k=10$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+% tiene 
+\begin_inset Formula $VA^{-}=115{,}03$
+\end_inset
+
+, 
+\begin_inset Formula $VF^{+}=209{,}15$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathrm{TIRM}=16{,}1$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+%, por encima de 
+\begin_inset Formula $k$
+\end_inset
+
+, como su VAN, que es positivo (27,8). Su TIR, 23,1
+\begin_inset space ~
+
+\end_inset
+
+%, es mayor porque supone reinvertir los cobros al 23,1
+\begin_inset space ~
+
+\end_inset
+
+%, cuando la empresa solo consigue el 10
+\begin_inset space ~
+
+\end_inset
+
+%. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Regla de decisiÃ³n
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+EfectuaciÃ³n
+\emph default
+: se hace el proyecto si 
 \begin_inset Formula $\mathrm{TIRM}>k$
 \end_inset
 
@@ -5346,7 +6755,7 @@ Regla
 \begin_inset Formula $\mathrm{VAN}>0$
 \end_inset
 
-;
+.
 \begin_inset Foot
 status collapsed
 
@@ -5377,7 +6786,15 @@ Basta dividir
 
 \end_inset
 
- entre proyectos, el de mayor TIRM. Es siempre Ãºnica. Pero, como la TIR, es una medida relativa: entre proyectos de distinta escala puede seguir ordenando distinto que el VAN
+ Es siempre Ãºnica. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+JerarquizaciÃ³n
+\emph default
+: primero, el de mayor TIRM. Pero, como la TIR, es una medida relativa: entre proyectos de distinta escala puede seguir ordenando distinto que el VAN
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -5389,6 +6806,7 @@ literal "false"
 . 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
 \begin_inset Float infografia
@@ -5415,7 +6833,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-La TIR modificada en 3 pasos
+La TIR modificada en 3 pasos, con un ejemplo
 \end_layout
 
 \end_inset
@@ -5449,7 +6867,7 @@ status collapsed
 
 \end_inset
 
-0.8
+0.98
 \begin_inset ERT
 status collapsed
 
@@ -5508,7 +6926,16 @@ textcite[cap.~5]{BrealeyMyersAllen2020Principles}
 
 \end_inset
 
-.
+. Proyecto de 4 aÃ±os con 
+\begin_inset Formula $k=10$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+%; los importes, redondeados a 2 decimales.
 \end_layout
 
 \end_inset
@@ -5540,7 +6967,16 @@ status collapsed
 \begin_inset Formula $\mathrm{IVAN}=\mathrm{VAN}/I_0$
 \end_inset
 
-. Se aceptan los proyectos con 
+. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+EfectuaciÃ³n
+\emph default
+: se hacen los proyectos con 
 \begin_inset Formula $\mathrm{IVAN}>0$
 \end_inset
 
@@ -5551,6 +6987,19 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+JerarquizaciÃ³n
+\emph default
+: primero, el de mayor 
+\begin_inset Formula $\mathrm{IVAN}$
+\end_inset
+
+. Solo es el orden correcto cuando falta capital; entre proyectos excluyentes sin lÃ­mite de fondos, manda el VAN. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Su uso es el 
 \begin_inset Flex Concepto
@@ -5666,6 +7115,714 @@ status collapsed
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+RecapitulaciÃ³n
+\emph default
+: las 2 preguntas tienen la misma respuesta de fondo, el VAN (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:efectuacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Â¿En quÃ© proyectos invertir y en cuÃ¡les no?
+\emph default
+ En los de VAN positivo; la TIR, la TIRM y el Ã­ndice del VAN dan la misma respuesta si la inversiÃ³n es simple o pura. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Si hay que elegir entre varias inversiones rentables, Â¿cuÃ¡l?
+\emph default
+ La de mayor VAN; si falta capital, las de mayor VAN por euro hasta agotarlo. La TIR y la TIRM pueden ordenar mal. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+EfectuaciÃ³n y jerarquizaciÃ³n con cada criterio
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:efectuacion"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="6" columns="4">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="1.7cm">
+<column alignment="center" valignment="middle" width="3.7cm">
+<column alignment="center" valignment="middle" width="3.1cm">
+<column alignment="center" valignment="middle" width="6.2cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Criterio
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+EfectuaciÃ³n
+\series default
+:
+\begin_inset Newline newline
+\end_inset
+
+Â¿invertir o no? 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+JerarquizaciÃ³n
+\series default
+:
+\begin_inset Newline newline
+\end_inset
+
+Â¿cuÃ¡l elegir? 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Â¿Responde como el VAN?
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+EstÃ¡ticos 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Flujo por unidad 
+\begin_inset Formula $>1$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+payback
+\emph default
+ 
+\begin_inset Formula $\leq$
+\end_inset
+
+ plazo mÃ¡ximo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mayor flujo por unidad;
+\begin_inset Newline newline
+\end_inset
+
+menor 
+\emph on
+payback
+\emph default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+No
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: no descuentan ni usan 
+\begin_inset Formula $k$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+VAN 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\mathrm{VAN}>0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mayor VAN 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Es la referencia
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+TIR 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\mathrm{TIR}>k$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mayor TIR 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+EfectuaciÃ³n: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sÃ­
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ (simples y puras).
+\begin_inset Newline newline
+\end_inset
+
+JerarquizaciÃ³n: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+no
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ con punto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+TIRM 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\mathrm{TIRM}>k$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mayor TIRM 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+EfectuaciÃ³n: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sÃ­
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+JerarquizaciÃ³n: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+no
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ con escalas distintas 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+IVAN 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\mathrm{IVAN}>0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mayor IVAN 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+EfectuaciÃ³n: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sÃ­
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+JerarquizaciÃ³n: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sÃ­
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ con racionamiento 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

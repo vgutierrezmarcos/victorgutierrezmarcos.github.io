@@ -1,30 +1,48 @@
-% Miller (1977): qué le queda al inversor de 1 euro de resultado de explotación
-% según se pague como interés (rama de la deuda, verde) o a los accionistas
-% (rama de las acciones, morado). Notación del canon: t_IS, t_D, t_E.
+% Miller (1977): lógica del efecto conjunto del impuesto sobre sociedades y del
+% IRPF. Qué queda de 1 euro de resultado de explotación según se pague como
+% interés (columna de la deuda, verde) o a los accionistas (columna de las
+% acciones, morado), fila a fila: impuesto sobre sociedades, lo que queda tras
+% él, impuestos personales y lo que queda tras todos los impuestos.
+% Redibujado del cuadro de Suárez Suárez et al. (2014), que sigue a Brealey,
+% Myers y Allen. Notación del canon: t_IS, t_D, t_E.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
 \begin{tikzpicture}[tcee,
-    caja/.style={draw=#1,thick,rounded corners=2pt,fill=#1!12,align=center,
-      text width=3.9cm,minimum height=8mm,inner sep=3pt},
-    paso/.style={->,thick,#1},
-    impuesto/.style={etiqueta,font=\footnotesize,align=#1}]
-  % 1: raíz
-  \capa{1}{\node[caja=black,fill=tceesalvia] (R) at (0,0) {1~€ de resultado de explotación};}
-  % 2: rama de la deuda
-  \capa{2}{\node[caja=tceeverde] (D1) at (-3,-1.6) {pagado como interés:\\ $1$};}
-  \capa{2}{\draw[paso=tceeverde] (R.south) -- (D1.north);}
-  \capa{2}{\node[caja=tceeverde] (D2) at (-3,-6.4) {queda\\ $1-t_D$};}
-  \capa{2}{\draw[paso=tceeverde] (D1.south) -- node[impuesto=right,left=3pt,text=tceeverde] {IRPF de los\\intereses, $t_D$} (D2.north);}
-  % 3: rama de las acciones
-  \capa{3}{\node[caja=tceemorado] (E1) at (3,-1.6) {pagado a los accionistas:\\ $1$};}
-  \capa{3}{\draw[paso=tceemorado] (R.south) -- (E1.north);}
-  \capa{3}{\node[caja=tceemorado] (E2) at (3,-4) {$1-t_{IS}$};}
-  \capa{3}{\draw[paso=tceemorado] (E1.south) -- node[impuesto=left,right=3pt,text=tceemorado] {impuesto sobre\\sociedades, $t_{IS}$} (E2.north);}
-  \capa{3}{\node[caja=tceemorado] (E3) at (3,-6.4) {queda\\ $(1-t_{IS})(1-t_E)$};}
-  \capa{3}{\draw[paso=tceemorado] (E2.south) -- node[impuesto=left,right=3pt,text=tceemorado] {IRPF de las\\acciones, $t_E$} (E3.north);}
-  % 4: comparación
-  \capa{4}{\node[etiqueta,align=center] at (0,-7.9) {la deuda conviene si\quad $1-t_D>(1-t_{IS})(1-t_E)$};}
+    fila/.style={draw=tceegris,fill=tceegris!18,align=left,text width=4.7cm,execute at begin node=\hyphenpenalty10000\relax,
+      minimum height=10mm,inner sep=4pt,font=\small},
+    celda/.style={draw=#1,thick,fill=#1!10,align=center,text width=3.4cm,
+      minimum height=10mm,inner sep=3pt},
+    cabeza/.style={draw=#1,thick,rounded corners=2pt,fill=#1!22,align=center,
+      text width=3.4cm,minimum height=9mm,inner sep=3pt},
+    paso/.style={->,thick,#1}]
+  % 1: el euro de resultado de explotación
+  \capa{1}{\node[draw=black,thick,rounded corners=2pt,fill=tceesalvia,align=center,inner sep=4pt] (R) at (7.15,2.1) {resultado de explotación\\ $1$~€};}
+  % 2: las 2 formas de pagarlo
+  \capa{2}{\node[cabeza=tceeverde] (D) at (5.2,0.4) {pagado como interés};}
+  \capa{2}{\node[cabeza=tceemorado] (E) at (9.1,0.4) {pagado como renta de las acciones};}
+  \capa{2}{\draw[paso=tceeverde] (R.south) -- (D.north);}
+  \capa{2}{\draw[paso=tceemorado] (R.south) -- (E.north);}
+  % 3: impuesto sobre sociedades
+  \capa{3}{\node[fila] at (0.95,-1.0) {impuesto sobre sociedades};}
+  \capa{3}{\node[celda=tceeverde] at (5.2,-1.0) {ninguno};}
+  \capa{3}{\node[celda=tceemorado] at (9.1,-1.0) {$t_{IS}$};}
+  % 4: lo que queda después del impuesto sobre sociedades
+  \capa{4}{\node[fila] at (0.95,-2.1) {después del impuesto sobre sociedades};}
+  \capa{4}{\node[celda=tceeverde] at (5.2,-2.1) {$1$};}
+  \capa{4}{\node[celda=tceemorado] at (9.1,-2.1) {$1-t_{IS}$};}
+  % 5: impuestos personales (IRPF)
+  \capa{5}{\node[fila] at (0.95,-3.2) {impuestos personales (IRPF)};}
+  \capa{5}{\node[celda=tceeverde] at (5.2,-3.2) {$t_D$};}
+  \capa{5}{\node[celda=tceemorado] at (9.1,-3.2) {$t_E\,(1-t_{IS})$};}
+  % 6: lo que queda después de todos los impuestos
+  \capa{6}{\node[fila,fill=tceesalvia,draw=black] at (0.95,-4.3) {\textbf{después de todos los impuestos}};}
+  \capa{6}{\node[celda=tceeverde,fill=tceeverde!25] (DF) at (5.2,-4.3) {$1-t_D$};}
+  \capa{6}{\node[celda=tceemorado,fill=tceemorado!25] (EF) at (9.1,-4.3) {$(1-t_{IS})(1-t_E)$};}
+  \capa{6}{\node[etiqueta,below,font=\footnotesize,text=tceeverde] at (DF.south) {para el acreedor};}
+  \capa{6}{\node[etiqueta,below,font=\footnotesize,text=tceemorado] at (EF.south) {para el accionista};}
+  % 7: la comparación
+  \capa{7}{\node[etiqueta,align=center] at (5.6,-5.75) {la deuda conviene si\quad $1-t_D>(1-t_{IS})(1-t_E)$};}
 \end{tikzpicture}
 \end{document}

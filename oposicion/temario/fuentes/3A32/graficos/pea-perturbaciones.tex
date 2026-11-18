@@ -1,0 +1,84 @@
+% El modelo neokeynesiano de pequeña economía abierta (Galí y Monacelli, 2005,
+% con el gasto público de Furlanetto, 2006) en el plano (x_t, pi_{H,t}), con
+% expectativas dadas (perturbaciones transitorias) y la regla de Taylor con la
+% inflación interna (DITR). Mismos valores y colores que nek-perturbaciones
+% (bloque II) y nek-xpi (3.A.7): NKPC morada, DA verde (18/11/2026).
+%   Economía de partida: theta_aG = 1, phi_x = 0,5, phi_pi = 1,5, kappa_a = 0,5
+%   NKPC: pi_H = 0,5 x;  DA: pi_H = -x + (r^n - rho - eps)/phi_pi
+%   a) contracción monetaria (eps = 1,125): DA' pi_H = -x - 0,75;
+%      E_1 = (-0,5; -0,25)
+%   b) expansión fiscal: r^n sube; con la DITR, DA' pi_H = -x + 0,75,
+%      E_1 = (0,5; 0,25); con tipo fijo (i_t no sube), DA'' pi_H = -x + 1,5,
+%      E_2 = (1; 0,5); con la DIT, i_t sigue a r^n_t y vuelve a E_0
+%   c) apertura con Theta > 0: theta_aG = 0,5 y, con varphi = 1 y
+%      lambda = 0,25, kappa_a = 0,375. DA'_alpha pi_H = -(2/3) x - 0,75;
+%      E_1^alpha = (-0,72; -0,27), frente a E_1 = (-0,5; -0,25) con alpha = 0
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.5cm,y=1.5cm]
+  % Marco fijo para que todas las capas del vídeo tengan el mismo tamaño
+  \path (-1.75,-1.85) rectangle (8.95,1.8);
+  % ---------------- Panel a: contracción monetaria ----------------
+  % 1: ejes, NKPC, DA y E_0
+  \capa{1}{\node[font=\small\bfseries, anchor=base] at (0,1.55) {a) Monetaria: $\varepsilon_t>0$};}
+  \capa{1}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{1}{\draw[eje] (0,-1.15) -- (0,1.4) node[left] {$\pi_{H,t}$};}
+  \capa{1}{\draw[curva1] (-1.3,-0.65) -- (1.35,0.675) node[etiqueta, right, text=tceemorado] {NKPC};}
+  \capa{1}{\draw[curva3] (-1.1,1.1) -- (1.05,-1.05) node[etiqueta, right, text=tceeverde] {DA};}
+  \capa{1}{\node[punto] (Ea0) at (0,0) {};}
+  \capa{1}{\node[etiqueta, anchor=south west] at (0.03,0.03) {$E_0$};}
+  % 2: sube el tipo de interés: la DA a la izquierda; E_1 con x < 0 y pi_H < 0
+  \capa{2}{\draw[curva3, desplazada] (0.3,-1.05) -- (-1.45,0.7) node[etiqueta, above, text=tceeverde] {DA$'$};}
+  \capa{2}{\node[punto] (Ea1) at (-0.5,-0.25) {};}
+  \capa{2}{\node[etiqueta, anchor=north east, inner sep=1pt] at (-0.55,-0.3) {$E_1$};}
+  \capa{2}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Ea0) to[bend right=35] (Ea1);}
+  % 3: el canal del tipo de cambio
+  \capa{3}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=center] at (0.05,-1.45)
+      {la moneda se aprecia ($\tau_t\downarrow$):\\$\pi_t$ cae más que $\pi_{H,t}$};}
+  % ---------------- Panel b: expansión fiscal ----------------
+  \begin{scope}[xshift=3.6*1.5cm]
+  % 4: ejes, NKPC, DA y E_0
+  \capa{4}{\node[font=\small\bfseries, anchor=base] at (0,1.55) {b) Fiscal: $\hat g_t>0$, $r^n_t\uparrow$};}
+  \capa{4}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{4}{\draw[eje] (0,-1.15) -- (0,1.4) node[left] {$\pi_{H,t}$};}
+  \capa{4}{\draw[curva1] (-1.3,-0.65) -- (1.35,0.675) node[etiqueta, right, text=tceemorado] {NKPC};}
+  \capa{4}{\draw[curva3] (-1.1,1.1) -- (1.05,-1.05) node[etiqueta, below, text=tceeverde] {DA};}
+  \capa{4}{\node[punto] (Eb0) at (0,0) {};}
+  \capa{4}{\node[etiqueta, anchor=north east] at (-0.03,-0.03) {$E_0$};}
+  % 5: con la regla de Taylor interna, el tipo sube algo: E_1
+  \capa{5}{\draw[curva3, desplazada] (-0.55,1.3) -- (1.3,-0.55) node[etiqueta, below, text=tceeverde] {DA$'$};}
+  \capa{5}{\node[punto] (Eb1) at (0.5,0.25) {};}
+  \capa{5}{\node[etiqueta, anchor=north west, inner sep=1pt] at (0.62,0.1) {$E_1$};}
+  \capa{5}{\draw[flecha, shorten <=3pt, shorten >=3pt] (Eb0) to[bend right=35] (Eb1);}
+  % 6: con tipo fijo, el tipo de interés no sube: E_2, más brecha e inflación
+  \capa{6}{\draw[curvanueva, desplazada] (0.15,1.35) -- (1.45,0.05) node[etiqueta, right, text=tceerojo] {DA$''$};}
+  \capa{6}{\node[punto] (Eb2) at (1,0.5) {};}
+  \capa{6}{\node[etiqueta, anchor=south west, inner sep=1pt] at (1.05,0.56) {$E_2$};}
+  % 7: si el tipo sigue al natural (DIT), vuelve a E_0
+  \capa{7}{\draw[flecha, dashed, shorten <=3pt, shorten >=3pt] (Eb1) to[bend left=40] (Eb0);}
+  \capa{7}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=center] at (0.05,-1.45)
+      {tipo fijo: $E_2$; regla interna: $E_1$;\\$i_t$ sigue a $r^n_t$: $E_0$ ($y_t=y^n_t$, más alta)};}
+  \end{scope}
+  % ---------------- Panel c: la apertura ----------------
+  \begin{scope}[xshift=7.2*1.5cm]
+  % 8: ejes y la economía cerrada (alpha = 0) tras la misma contracción
+  \capa{8}{\node[font=\small\bfseries, anchor=base] at (0,1.55) {c) Más apertura, con $\Theta>0$};}
+  \capa{8}{\draw[eje] (-1.4,0) -- (1.5,0) node[below left=2pt and 0pt] {$x_t$};}
+  \capa{8}{\draw[eje] (0,-1.15) -- (0,1.4) node[left] {$\pi_{H,t}$};}
+  \capa{8}{\draw[very thick, tceegris] (-1.3,-0.65) -- (1.35,0.675) node[etiqueta, above left, text=tceegris] {$\alpha=0$};}
+  \capa{8}{\draw[very thick, tceegris, dashed] (0.3,-1.05) -- (-1.45,0.7);}
+  \capa{8}{\node[punto] (Ec1) at (-0.5,-0.25) {};}
+  \capa{8}{\node[etiqueta, anchor=north west, inner sep=1pt] at (-0.45,-0.3) {$E_1$};}
+  % 9: la economía abierta: NKPC y DA' más planas; E_1^alpha, más caída de la brecha
+  \capa{9}{\draw[curva1] (-1.3,-0.4875) -- (1.35,0.50625) node[etiqueta, right, text=tceemorado] {NKPC$_\alpha$};}
+  \capa{9}{\draw[curva3, desplazada] (0.5,-1.0833) -- (-1.4,0.1833) node[etiqueta, above, text=tceeverde] {DA$'_\alpha$};}
+  \capa{9}{\node[punto] (Ec2) at (-0.72,-0.27) {};}
+  \capa{9}{\node[etiqueta, anchor=east, inner sep=1pt] at (-0.8,-0.22) {$E_1^{\alpha}$};}
+  % 10: la lectura
+  \capa{10}{\node[etiqueta, text=tceerojo, font=\footnotesize, align=center] at (0.05,-1.45)
+      {$\Theta>0$: la misma subida baja más\\la brecha; $\Theta<0$: menos};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

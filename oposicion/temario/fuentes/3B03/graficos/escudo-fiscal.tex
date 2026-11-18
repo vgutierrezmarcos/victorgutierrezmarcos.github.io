@@ -1,0 +1,32 @@
+% El escudo fiscal de la deuda (Modigliani y Miller, 1963) con los números de
+% nuestra empresa: EBIT = 100, t_IS = 0,25, 400 de deuda al 5 % (20 de
+% intereses). Sin deuda: Estado 25, accionistas 75. Con deuda: acreedores 20,
+% Estado 0,25 (100 - 20) = 20, accionistas 60. Los inversores reciben 80 en vez
+% de 75: 5 al año = t_IS r_D V_D, que descontados a r_D valen 100 = t_IS V_D.
+% Escala: 1 euro = 0,06 cm.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=0.06cm,
+    trozo/.style={draw=#1,thick,fill=#1!18,align=center,font=\footnotesize},
+    estado/.style={draw=tceegris,thick,fill=tceegris!25,align=center,font=\footnotesize}]
+  % 1: la empresa sin deuda
+  \capa{1}{\draw[trozo=tceemorado] (0,0) rectangle node {accionistas\\ $(1-t_{IS})\,\mathrm{EBIT}$\\ $=0{,}75\cdot100=75$} (4,75);}
+  \capa{1}{\draw[estado] (0,75) rectangle node {Estado: $t_{IS}\,\mathrm{EBIT}=25$} (4,100);}
+  \capa{1}{\node[etiqueta,above] at (2,100) {$\mathrm{EBIT}=100$};}
+  \capa{1}{\node[etiqueta,below] at (2,0) {\textbf{sin deuda}};}
+  % 2: la empresa con 400 de deuda al 5 %
+  \capa{2}{\draw[trozo=tceeverde] (6,0) rectangle node {acreedores: $r_DV_D=20$} (10,20);}
+  \capa{2}{\draw[trozo=tceemorado] (6,20) rectangle node {accionistas\\ $(1-t_{IS})(\mathrm{EBIT}-r_DV_D)$\\ $=0{,}75\cdot80=60$} (10,80);}
+  \capa{2}{\draw[estado] (6,80) rectangle node {Estado: $t_{IS}\,(100-20)=20$} (10,100);}
+  \capa{2}{\node[etiqueta,above] at (8,100) {$\mathrm{EBIT}=100$};}
+  \capa{2}{\node[etiqueta,below] at (8,0) {\textbf{con 400 de deuda al 5~\%}};}
+  % 3: lo que reciben los inversores en cada caso
+  \capa{3}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thick] (-0.15,75) -- node[left=7pt,align=right,font=\footnotesize] {inversores:\\ $75$} (-0.15,0);}
+  \capa{3}{\draw[decorate,decoration={brace,amplitude=5pt},thick] (10.15,80) -- node[right=7pt,align=left,font=\footnotesize] {inversores:\\ $80=75+5$} (10.15,0);}
+  % 4: el ahorro fiscal
+  \capa{4}{\draw[guia] (4,75) -- (10,75);}
+  \capa{4}{\draw[flecha,tceenaranja] (11.6,96) node[right,align=left,font=\footnotesize,text=black] {ahorro fiscal:\\ $t_{IS}\,r_DV_D=0{,}25\cdot20=5$ al año;\\ valor actual:\\ $5/0{,}05=100=t_{IS}V_D$} -- (10.05,77.5);}
+\end{tikzpicture}
+\end{document}

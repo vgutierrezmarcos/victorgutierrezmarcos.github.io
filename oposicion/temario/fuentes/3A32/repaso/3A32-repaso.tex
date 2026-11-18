@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[OA y DA en una economía abierta]{3.A.32}{El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta.}
-\tcefecha{13/11/2026}
+\tcefecha{18/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -10,20 +10,25 @@
 \bloque{Esquema del cante}
 \esquemacante{%
 \apartadocante{Introducción: «las desgracias nunca vienen solas»}{2,5}
-\apartadocante{I. Modelo estático de economía abierta}{9,5}
-\subcante{1. \autor{Mundell}-\autor{Fleming}: renta con $P$ fijo}{5}
-\subcante{2. DA-OA abierta: renta y precios}{4,5}
-\apartadocante{II. Modelo dinámico cerrado: NEK}{12}
+\apartadocante{I. Modelos estáticos abiertos, en breve}{4}
+\subcante{\autor{Mundell}-\autor{Fleming}}{2}
+\subcante{DA-OA abierta y energía cara}{2}
+\apartadocante{II. Modelo dinámico cerrado: NEK}{7}
 \subcante{Modelo: IS, NKPC y regla}{3}
-\subcante{Impl.: oferta (origen, propagación, respuesta)}{4,5}
-\subcante{Impl.: demanda (origen, interacción, respuesta)}{3}
-\subcante{Extensiones, evidencia y valoración}{1,5}
-\apartadocante{III. Modelo dinámico abierto: \autor{Galí}-\autor{Monacelli}}{5}
-\subcante{Modelo: 2 inflaciones}{2}
-\subcante{Impl.: externas, régimen y regla}{2}
-\subcante{Evidencia y valoración}{1}
+\subcante{Impl.: oferta y su respuesta}{2}
+\subcante{Impl.: demanda y su respuesta}{1,5}
+\subcante{Evidencia y valoración}{0,5}
+\apartadocante{III. PEA: \autor{Galí}-\autor{Monacelli} + \autor{Furlanetto}}{15,5}
+\subcante{Idea y supuestos}{1,5}
+\subcante{3 ecuaciones y regla}{4}
+\subcante{Gráfico y forma reducida}{1,5}
+\subcante{Perturbación monetaria}{1,5}
+\subcante{Perturbación fiscal}{2,5}
+\subcante{Externas, régimen y regla óptima}{2}
+\subcante{¿Efectos inequívocos?}{1,5}
+\subcante{Ext., evidencia y valoración}{1}
 \apartadocante{Conclusión}{1}}
-\emph{Hilo}: 3 modelos, de lo estático a lo dinámico y de lo cerrado a lo abierto, cada uno con idea, modelo (supuestos, desarrollo, implicaciones), extensiones, evidencia y valoración; España, pequeña y abierta: tipo fijo frente al euro, flotante frente al dólar; Covid, energía cara de 2022 y 2026. \emph{Notación}: movilidad del capital $\beta_K$ ($\beta$ = factor de descuento en el NEK); $\alpha$ = apertura del consumo. \emph{Refranes}: «no se puede nadar y guardar la ropa» (trilema); «más vale doblarse que quebrarse» (flotación como amortiguador).
+\emph{Hilo}: de lo estático a lo dinámico y de lo cerrado a lo abierto; el grueso, en \hyperref[rep:III]{III}. España, pequeña y abierta: tipo fijo frente al euro, flotante frente al dólar. \emph{Pregunta de fondo}: ¿se pueden fijar los efectos de las políticas de forma inequívoca y universal? \emph{Notación}: $\beta_K$ movilidad del capital; $\alpha$ apertura; $s_G=\overline G/\overline Y$; $\hat g_t=(G_t-\overline G)/\overline Y$; $\theta_{\alpha G}=\theta_\alpha/(1-s_G)$. \emph{Refranes}: «no se puede nadar y guardar la ropa» (trilema); «más vale doblarse que quebrarse» (flotación).
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -31,139 +36,131 @@
 \item \textbf{Enganche}: «Las desgracias nunca vienen solas». 2022, zona del euro: Ucrania $\Rightarrow$ energía↑ y euro↓ frente al dólar, sobre una demanda que salía de la Covid y cadenas atascadas. Ene.\ 2021-jun.\ 2022: Brent \dato{+124\,\% en \$, +158\,\% en €}{EIA; BCE}. Inflación \dato{10,6\,\%}{Eurostat, oct.\ 2022}. 2026: Brent \dato{123,9 \$}{EIA, oct.\ 2026}, inflación \dato{4,0\,\%}{Eurostat}. ¿\emph{Qué les pasa a $Y$ y $\pi$ cuando golpea una perturbación, y qué deben hacer la monetaria, la fiscal y las de oferta?}
 \item \textbf{Relevancia}: \emph{teoría}: OA-DA = marco del corto y medio plazo; su versión moderna (NEK), la de los bancos centrales. \emph{Política}: la respuesta depende del \emph{origen} (demanda u oferta) y del régimen. España: $X$ \dato{36,5\,\%}{INE, 2025}, $M$ 32,6\,\% del PIB. \emph{Actualidad}: Covid (oferta que acaba en demanda), 2021 (demanda contra oferta atascada), 2022 y 2026 (oferta externa).
 \item \textbf{Contextualización}: \concepto{perturbación}: exógena e imprevista; \emph{de demanda} ($Y$ y $P$ mismo sentido) o \emph{de oferta} (sentido contrario); \emph{propagación} y \emph{segunda ronda} (salarios, márgenes). \concepto{Política de oferta}: capacidad↑ o costes↓. \concepto{Economía abierta} y \concepto{pequeña} \vertema{3.B.11}; $E$ directo ($E$↑ depreciación), $q\equiv EP^*/P$ \vertema{3.B.13}; régimen fijo o flexible \vertema{3.B.15}; movilidad del capital. \emph{Origen}: IS-LM de \autor{Hicks} (Nobel 1972) $\to$ \autor{Fleming} (1962) y \autor{Mundell} (1963; Nobel 1999); años 70: OA y oferta; NEK (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 1999; \autor{Woodford}, 2003, Nobel 2026 con \autor{Hall}).
-\item \textbf{Problemática}: ¿cómo se determinan $Y$ y $\pi$ y con qué modelos? ¿Origen, propagación y respuesta de cada perturbación? ¿Qué cambia cuando llega de fuera?
-\item \textbf{Estructura}: \hyperref[rep:I]{I}, modelo estático de economía abierta (MF $\to$ DA-OA: renta y precios); \hyperref[rep:II]{II}, modelo dinámico de economía cerrada con expectativas racionales (NEK), cuyas implicaciones son el origen, la propagación y la respuesta a las perturbaciones de oferta y de demanda; \hyperref[rep:III]{III}, modelo dinámico de economía abierta (\autor{Galí}-\autor{Monacelli}). Cada uno resuelve un límite del anterior. Figura de la estructura.
+\item \textbf{Problemática}: ¿cómo se determinan $Y$ y $\pi$ y con qué modelos? ¿Efectos de la monetaria, la fiscal y las perturbaciones de oferta, y cómo responder? \emph{¿Son esos efectos inequívocos y universales, como en los modelos estáticos?}
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, modelos estáticos, en breve (efectos nítidos dado el régimen); \hyperref[rep:II]{II}, NEK cerrado (la base: perturbaciones y respuesta); \hyperref[rep:III]{III}, el núcleo: NEK de pequeña economía abierta (\autor{Galí}-\autor{Monacelli} = 3 ecuaciones + apertura; \autor{Furlanetto} = GM + política fiscal) y la respuesta a la pregunta. Figura de la estructura.
 \end{itemize}
 
 % ==========================================================================
-\bloque[9,5]{I. Modelo estático de economía abierta: MF y DA-OA\label{rep:I}}
+\bloque[4]{I. Modelos estáticos de economía abierta, en breve\label{rep:I}}
 \begin{ideaclave}
-2 modelos, el segundo para el límite del primero. MF (precios fijos): la eficacia de cada política depende del régimen y de la movilidad. DA-OA: un equilibrio IS-LM-BP por cada $P$; la DA gana la competitividad y la OA la cuña exterior: la energía cara trae estanflación. \emph{Caja gris} (no se canta): IS-LM y DA-OA cerradas, y lo que falta para abrirlas.
+Los «modelos de juguete»: hay que saberlos, pero se cuentan en lo mínimo. Dan respuestas \emph{nítidas}: dados el régimen y la movilidad, cada política tiene un efecto de signo y eficacia conocidos; la energía cara trae estanflación. El desarrollo completo, en los anexos del tema.
 \end{ideaclave}
-
-\sub{I.1. \autor{Mundell}-\autor{Fleming}\label{rep:I.1}}
 \begin{itemize}
-\item \emph{Idea}: años 60, Bretton Woods: ¿eficacia de monetaria y fiscal con capital móvil, fijo y flexible? IS-LM-BP.
-\item \emph{Supuestos}: $P=P^*=1$; país pequeño ($Y^*$, $i^*$); expectativas estáticas (PNCI: $i=i^*$ con movilidad perfecta); sustitutos perfectos; \autor{Marshall}-\autor{Lerner} (curva J); cuenta financiera $\beta_K(i-i^*)$ (flujos; 3 casos); sin esterilización.
-\item \emph{IS abierta} con $XN=x\,Y^*-m\,Y+\nu\,q$:
-\funcionclave{\text{IS:}\ Y=\frac{\overline{A}-b\,i+x\,Y^*+\nu\,q}{1-c\,(1-t)+m}}
-\item \emph{LM}: $M/P=k\,Y-h\,i$; con fijo, $M=\mathrm{CI}+R$ (endógena). \emph{BP}:
-\funcionclave{x\,Y^*-m\,Y+\nu\,q+\beta_K\,(i-i^*)=0\ \Rightarrow\ \frac{\mathrm{d}i}{\mathrm{d}Y}\Big|_{\mathrm{BP}}=\frac{m}{\beta_K}}
-\item[] Encima, superávit. \emph{Nula} ($\beta_K=0$, vertical); \emph{imperfecta} (alta si $m/\beta_K<k/h$); \emph{perfecta} (horizontal en $i^*$).
+\item \emph{Idea}: \autor{Fleming} (1962) y \autor{Mundell} (1963; Nobel 1999): IS-LM + comercio + divisas. Con $P$ libre, cada equilibrio IS-LM-BP da un punto de la DA. \emph{Supuestos}: país pequeño ($Y^*$, $i^*$), expectativas estáticas, \autor{Marshall}-\autor{Lerner} (curva J), flujos $\beta_K(i-i^*)$, salarios con $P_C$ ($\alpha$ importado).
+\item \emph{IS} con $XN=xY^*-mY+\nu q$ y \emph{BP}:
+\funcionclave{Y=\frac{\overline{A}-b\,i+x\,Y^*+\nu\,q}{1-c\,(1-t)+m}}
+\funcionclave{x\,Y^*-m\,Y+\nu\,q+\beta_K\,(i-i^*)=0}
+\item[] LM $M/P=kY-hi$. Fijo: se ajusta $M$; flexible: $E$. \emph{Movilidad perfecta}: fijo-fiscal muy eficaz, fijo-monetaria ineficaz, flexible-fiscal ineficaz (expulsa $XN$), flexible-monetaria muy eficaz. Trilema.
 \end{itemize}
-\graficorepaso[0.62\linewidth]{is-lm-bp}{IS-LM-BP y los 3 casos de movilidad}
+\graficorepaso[0.55\linewidth]{is-lm-bp}{IS-LM-BP y los 3 casos de movilidad ($\beta_K=0$, imperfecta, perfecta)}
+\graficorepaso[0.7\linewidth]{mundell-fleming-politicas}{Arriba fijo, abajo flexible; izda.\ fiscal, dcha.\ monetaria}
 \begin{itemize}
-\item \emph{Equilibrio}: fijo: se ajusta $M$; flexible: se ajusta $E$.
-\item \emph{Movilidad perfecta}: \emph{fijo-fiscal}: muy eficaz (BC compra divisas, LM acompaña; multiplicador abierto $1/[1-c(1-t)+m]$); \emph{fijo-monetaria}: ineficaz (solo cambia CI por reservas); \emph{flexible-fiscal}: ineficaz (expulsa \emph{exportaciones netas}); \emph{flexible-monetaria}: muy eficaz ($\Delta Y=\Delta(M/P)/k$, canal del tipo de cambio). Devaluación = \emph{cambio del gasto} (\autor{Meade}, 1951; Nobel 1977).
+\item \emph{DA}: fijo, $Y=\frac{\overline{A}-bi^*+xY^*+\nu\overline{E}P^*/P}{1-c(1-t)+m}$ (competitividad); flexible, $Y=\frac{M/P+hi^*}{k}$ (saldos reales). \emph{OA} con cuña: $F(U^n,Z)=1/[(1+\mu)q^\alpha]$.
+\funcionclave{\pi_t\simeq(1-\alpha)\,\pi_{H,t}+\alpha\,(\gamma_{E,t}+\gamma_{P^*,t})}
+\item \emph{Implicaciones}: medio plazo, el régimen decide el camino, no el destino; devaluación interna lenta. \emph{Energía cara} (España \dato{69\,\% (UE 57\,\%)}{Eurostat}): OA corto↑, OA largo izda., DA↓: \concepto{estanflación}; la política de oferta desplaza las 2 OA. \emph{Evidencia}: trilema; multiplicador según régimen (\autor{Ilzetzki}-\autor{Mendoza}-\autor{Végh}, 2013); traspaso 0,04\,\% (\autor{Ortega}-\autor{Osbat}). \emph{Valoración}: nítidos, casi universales; estáticos, sin expectativas ni microfundamentos.
 \end{itemize}
-\graficorepaso[0.72\linewidth]{mundell-fleming-politicas}{Arriba fijo, abajo flexible; izda.\ fiscal, dcha.\ monetaria. Se dibujan a y d}
-\begin{itemize}
-\item \emph{Movilidad imperfecta}:
-\begin{formula}
-\centering \emph{fijo}: $\dfrac{\partial Y}{\partial\overline{G}}=\dfrac{\beta_K}{[1-c(1-t)]\beta_K+m(b+\beta_K)}$,\ \ $\dfrac{\partial Y}{\partial M}=0$\\[3pt]
-\emph{flexible}: $\dfrac{\partial Y}{\partial\overline{G}}=\dfrac{h}{D_X}$,\ \ $\dfrac{\partial Y}{\partial(M/P)}=\dfrac{b+\beta_K}{D_X}$,\ \ $D_X\equiv h[1-c(1-t)]+(b+\beta_K)k$
-\end{formula}
-\item[] Fijo: fiscal gana con $\beta_K$; monetaria, nunca. Flexible: monetaria gana, fiscal pierde; IS + BP = IS cerrada con $b+\beta_K$.
-\item \emph{Implicaciones}: el régimen decide qué se ajusta; cada política en su régimen; \emph{dilema del régimen}: fijo + monetaria $\Rightarrow$ crisis de 1.ª generación (\autor{Krugman}, 1979; Nobel 2008) \vertema{3.B.17}. \concepto{Trilema}: fijo + movilidad + autonomía, solo 2 (\autor{Obstfeld}-\autor{Shambaugh}-\autor{Taylor}, 2005): no se puede nadar y guardar la ropa; soluciones interiores (\autor{Frankel}, 1999); cuarteto imposible (\autor{Padoa-Schioppa}, 1988). \emph{Aislamiento} de $Y^*$ con flexible (\autor{Friedman}, 1953; Nobel 1976), no de $i^*$. \autor{Meade}-\autor{Tinbergen} (Nobel 1969)-\autor{Swan}; asignación de \autor{Mundell} (1962): monetaria $\to$ externo, fiscal $\to$ interno. \emph{Déficits gemelos} (EE.\,UU.\ 80: $XN$ $-0{,}6\to-2{,}5$\,\% del PIB). España en el euro: le queda la fiscal \vertema{4.B.4}. FMI: anclaje blando \dato{44,8\,\%}{2023}, flotación 32,5\,\%.
-\item \emph{Ext.}: 2 países (locomotora y empobrecer al vecino); sobrerreacción (\autor{Dornbusch}, 1976); fondos frente a flujos. \emph{Evidencia}: trilema en los datos; multiplicador fiscal según régimen (\autor{Ilzetzki}-\autor{Mendoza}-\autor{Végh}, 2013); \autor{Feldstein}-\autor{Horioka}. \emph{Valoración}: precios fijos $\Rightarrow$ dejamos mover $P$.
-\end{itemize}
-
-\sub{I.2. DA y OA en una economía abierta\label{rep:I.2}}
-\begin{itemize}
-\item \emph{De la IS-LM-BP a la DA}: $P$↑ $\Rightarrow$ \emph{saldos reales} (LM izda.) y \emph{competitividad} ($q$↓, IS izda.). Con movilidad perfecta, cada régimen uno:
-\funcionclave{\text{fijo: }Y=\frac{\overline{A}-b\,i^*+x\,Y^*+\nu\,\overline{E}P^*/P}{1-c\,(1-t)+m};\ \ \text{flexible: }Y=\frac{M/P+h\,i^*}{k}}
-\end{itemize}
-\graficorepaso[0.8\linewidth]{derivacion-da-abierta}{a: fijo, la LM sigue a la IS (salen reservas); b: flexible, la apreciación lleva la IS a la nueva LM}
-\begin{itemize}
-\item \emph{OA}: corto, creciente; el exterior entra por los insumos importados ($\mu$↑) y el salario de consumo ($P_C/P=q^{\alpha}$). Largo, vertical en $Y^n$:
-\funcionclave{F(U^n,Z)=\frac{1}{(1+\mu)\,q^{\alpha}}}
-\item[] \concepto{Cuña} exterior (\autor{Layard}-\autor{Nickell}-\autor{Jackman}, 1991): $q$↑ o $\mu$↑ con salarios reales rígidos $\Rightarrow$ $U^n$↑.
-\item \emph{Medio plazo}: flexible, $M$ neutral; fijo, la fiscal desplaza $XN$ (panel a); sin tipo propio, \concepto{devaluación interna} lenta (salarios rígidos a la baja: \autor{Schmitt-Grohé}-\autor{Uribe}, 2016); devaluación: de una vez, pero en $Y^n$ solo inflación (\autor{Keynes}, 1925). España: CC \dato{$-9{,}4$\,\%}{BdE, 2007} $\to$ superávit desde 2012 \vertema{4.A.21}.
-\end{itemize}
-\graficorepaso[0.85\linewidth]{da-oa-abierta}{Tipo fijo. a: expansión fiscal; b: devaluación interna ($C$) y devaluación ($B$)}
-\begin{itemize}
-\item \emph{Inflación}: \funcionclave{\pi_t\simeq(1-\alpha)\,\pi_{H,t}+\alpha\,(\gamma_{E,t}+\gamma_{P^*,t})}
-\item[] Inflación importada: efecto directo $\to$ indirecto y segunda ronda \vertema{3.A.41}. \emph{Implicaciones}: el régimen decide el camino, no el destino; las de demanda no mueven $Y^n$. \emph{Energía cara} (España, dependencia \dato{69\,\% (UE 57\,\%)}{Eurostat} \vertema{4.A.6}): OA corto↑, OA largo izda.\ (cuña), DA↓: \concepto{estanflación}; la política de oferta desplaza las 2 OA a la dcha. \emph{Ext.}: demandas rivales; \autor{Bruno}-\autor{Sachs} (1985). \emph{Evidencia}: traspaso \dato{0,3\,\% / 0,04\,\%}{\autor{Ortega}-\autor{Osbat}, 2020}; RRI $-1{,}3$ p.\ del PIB en 2021 (\autor{Gunnella}-\autor{Schuler}). \emph{Valoración}: estático y sin microfundamentos $\Rightarrow$ NEK.
-\end{itemize}
-\graficorepaso[0.8\linewidth]{oferta-abierta}{a: energía cara, estanflación; b: política de oferta}
+\graficorepaso[0.72\linewidth]{derivacion-da-abierta}{De la IS-LM-BP a la DA: a, fijo (competitividad); b, flexible (saldos reales)}
+\graficorepaso[0.42\linewidth]{trilema}{Trilema: cada régimen renuncia al vértice opuesto}
+\graficorepaso[0.78\linewidth]{da-oa-abierta}{Tipo fijo. a: expansión fiscal; b: devaluación interna ($C$) y devaluación ($B$)}
+\graficorepaso[0.72\linewidth]{oferta-abierta}{a: energía cara, estanflación; b: política de oferta}
 
 % ==========================================================================
-\bloque[12]{II. Modelo dinámico de economía cerrada: NEK\label{rep:II}}
+\bloque[7]{II. Modelo dinámico de economía cerrada: NEK\label{rep:II}}
 \begin{ideaclave}
-Expectativas racionales y dinámica: IS dinámica + NKPC + regla separan demanda ($r^n_t$) de costes ($u_t$). Sus implicaciones: el origen decide la política. Las tecnológicas y las de demanda: el tipo sigue a $r^n_t$ (divina coincidencia). Las de costes: dilema; la demanda reparte el golpe; solo la oferta mejora las 2. Las 2 se mezclan (Covid, 2021).
+La base de \hyperref[rep:III]{III}. IS dinámica + NKPC + regla separan demanda ($r^n_t$) de costes ($u_t$). Demanda: divina coincidencia; costes: dilema; solo la oferta mejora las 2. Y ya aquí el multiplicador depende de la regla.
 \end{ideaclave}
-
-\sub{II.1. El modelo\label{rep:II.1}}
 \begin{itemize}
-\item \emph{Idea}: precios rígidos con agentes que optimizan y expectativas racionales; la DA-OA con microfundamentos \vertema{3.A.7}. \emph{Supuestos}: cerrada, sin capital, \emph{cashless}; $\theta$, $\varphi$; \autor{Dixit}-\autor{Stiglitz} (Nobel 2001); \autor{Calvo} ($\eta$); 4 perturbaciones ($A_t$, demanda, $u_t$, $\varepsilon_t$).
+\item \emph{Idea y supuestos}: \autor{Clarida}-\autor{Galí}-\autor{Gertler} (1999), \autor{Woodford} (2003) \vertema{3.A.7}; cerrada, \emph{cashless}; $\theta$, $\varphi$; \autor{Dixit}-\autor{Stiglitz}; \autor{Calvo} ($\eta$).
 \begin{formula}
 \centering $x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t)$\\[2pt]
 $\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t$,\ \ $i_t=\rho+\phi_\pi\pi_t+\phi_x x_t+\varepsilon_t$
 \end{formula}
-\item \emph{Plano $(x_t,\pi_t)$}: DA decreciente (la desplazan $r^n_t$ y $\varepsilon_t$); NKPC creciente (la desplaza $u_t$). \emph{Aviso}: en sentido estricto no se puede dibujar: linealización en el estado estacionario, AR(1), $x_t=\psi u_t$, expectativas proporcionales; el gráfico es $\rho_u=0$.
+\item \emph{Plano $(x_t,\pi_t)$}: DA (la mueven $r^n_t$, $\varepsilon_t$), NKPC (la mueve $u_t$). Aviso: linealización, AR(1), expectativas proporcionales; el gráfico es $\rho_u=0$.
 \funcionclave{x_t=\frac{\hat r^n_t-\phi_{\pi}\,u_t-\varepsilon_t}{\theta+\phi_x+\phi_{\pi}\,\kappa}}
-\item[] Multiplicadores monetario y fiscal con el mismo denominador, menores con $\phi_\pi$. \emph{Implicaciones generales}: no neutral a corto; demanda frente a costes; \concepto{divina coincidencia} si $u_t=0$; criterio de bienestar.
 \end{itemize}
-\graficorepaso[0.72\linewidth]{nek-perturbaciones}{a: tecnológica; b: costes (dilema $E_\pi$, $E_x$); c: política de oferta; d: demanda (divina coincidencia)}
-
-\sub{II.2. Implicaciones: las perturbaciones de oferta\label{rep:II.2}}
+\graficorepaso[0.62\linewidth]{nek-perturbaciones}{a: tecnológica; b: costes (dilema); c: política de oferta; d: demanda (divina coincidencia)}
 \begin{itemize}
-\item \emph{Tipos}: tecnológicas ($r^n_t$↓: $x$↓, $\pi$↓; panel a); de costes ($u_t$: NKPC↑; panel b); externas (energía, cadenas, clima; oferta y demanda a la vez). En el modelo estático: estanflación (\hyperref[rep:I.2]{I.2}); aquí, $u_t$↑.
-\item \emph{Propagación}: efecto directo $\to$ indirecto $\to$ segunda ronda; precios relativos (\autor{Ball}-\autor{Mankiw}, 1995). \emph{Sectorial}: granular (\autor{Gabaix}, 2011); redes, \emph{aguas abajo} (\autor{Acemoglu}-\autor{Akcigit}-\autor{Kerr}, 2016; Nobel 2024) \vertema{3.A.31}.
-
-\item \emph{Tecnológicas}: sin dilema (el tipo sigue a $r^n_t$). \emph{Costes}: \emph{dilema} ($E_\pi$ o $E_x$; con la regla, $E_1$); menos agresiva cuanto más pesan los costes; salarios reales rígidos (\autor{Blanchard}-\autor{Galí}, 2007). \emph{Mirar a través} si es pasajera y con expectativas ancladas (BCE, 2025).
-\item \emph{Fiscal}: temporal y focalizada; Europa 2022: $\pi$ \dato{$-1$ a $-2$ p.}{\autor{Dao} et al., 2023}, mal focalizada. España: excepción ibérica (40 $\to$ 65 €/MWh), IVA eléctrico 21 $\to$ 10 $\to$ 5\,\%, 20 cts/l.
-\item \concepto{Políticas de oferta}: mercados (márgenes, NAIRU \vertema{3.A.28}), productividad \vertema{3.A.45}, energía. Bajan la NKPC (panel c): sin dilema. Rentas: pactos (Escandinavia, Austria); \autor{Calmfors}-\autor{Driffill} (1988), joroba. Agenda: \autor{Draghi}, MRR.
+\item \emph{Oferta}: tecnológicas (sin dilema), de costes (dilema $E_\pi$/$E_x$; regla, $E_1$; salarios reales rígidos, \autor{Blanchard}-\autor{Galí}, 2007), externas; segunda ronda; redes. Mirar a través (BCE, 2025); fiscal focalizada (Europa 2022: $-1$ a $-2$ p., \autor{Dao} et al., 2023); \concepto{políticas de oferta}: bajan la NKPC.
+\item \emph{Demanda}: mueven $r^n_t$; divina coincidencia; fiscal según la regla, $>1$ en el límite inferior (\autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}, 2011); oferta keynesiana (Covid; \autor{Guerrieri} et al., 2022); 2021.
+\item \emph{Datos}: España 2022: excepción ibérica (40 $\to$ 65 €/MWh), IVA eléctrico 21 $\to$ 10 $\to$ 5\,\%, 20 cts/l (generales, no focalizadas). Covid, paro abril 2020: EE.\,UU.\ \dato{14,8\,\%}{FRED}; zona del euro 7,4\,\%; España 15,3\,\% (ERTE) \vertema{4.A.29}. Los 70: petróleo ×4 y ×3; España \dato{28,4\,\%}{INE, ago.\ 1977}. \emph{Policy mix}: 4 cuadrantes; dominación (\autor{Sargent}-\autor{Wallace}, 1981; \autor{Leeper}, 1991). Rentas: \autor{Calmfors}-\autor{Driffill} (1988), joroba.
+\item \emph{Evidencia}: horas caen tras mejora tecnológica (\autor{Galí}, 1999); NKPC plana; VAR (\autor{Sims}, 1980), \autor{Blanchard}-\autor{Quah} (1989); 70 frente a 2000 (\autor{Blanchard}-\autor{Galí}, 2010). \emph{Valoración}: inmune a \autor{Lucas}; $u_t$ residual. Cerrada $\Rightarrow$ III.
 \end{itemize}
 
-\sub{II.3. Implicaciones: las perturbaciones de demanda\label{rep:II.3}}
-\begin{itemize}
-\item \emph{Origen}: preferencias y confianza, gasto público, crédito y riqueza, monetaria ($\varepsilon_t$), demanda exterior: mueven $r^n_t$ (panel d).
-\item \emph{Propagación}: multiplicador; acelerador financiero (\autor{Bernanke}-\autor{Gertler}-\autor{Gilchrist}, 1999; Nobel 2022); hogares que viven al día (\autor{Galí}-\autor{López-Salido}-\autor{Vallés}, 2007); redes \emph{aguas arriba}.
-\item \emph{Interacción}: \emph{oferta keynesiana} (Covid; \autor{Guerrieri} et al., 2022: varios sectores, baja sustituibilidad, mercados incompletos); 2021: demanda contra oferta atascada (\autor{Bernanke}-\autor{Blanchard}, 2025). Paro abril 2020: EE.\,UU.\ \dato{14,8\,\%}{FRED}; zona del euro 7,4\,\%; España 15,3\,\% (ERTE) \vertema{4.A.29}.
-\item \emph{Respuesta monetaria}: divina coincidencia ($i_t$ sigue a $r^n_t$) \vertema{3.A.36}. \emph{Fiscal}: multiplicador según la regla; en el límite inferior $>1$ (\autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}, 2011); sin moneda propia, la única \vertema{4.B.4}; ricardianos o no.
-\item \concepto{\emph{Policy mix}}: 4 cuadrantes; dominación monetaria o fiscal (\autor{Sargent}-\autor{Wallace}, 1981; \autor{Leeper}, 1991) \vertema{3.A.39}.
-\end{itemize}
-
-\sub{II.4. Extensiones, evidencia y valoración\label{rep:II.4}}
-\begin{itemize}
-\item \emph{Ext.}: NKPC híbrida; HANK. \emph{Evidencia}: horas caen tras mejora tecnológica (\autor{Galí}, 1999); NKPC plana. \emph{Identificación}: VAR (\autor{Sims}, 1980; Nobel 2011); \autor{Blanchard}-\autor{Quah} (1989): solo la oferta, permanente; \autor{Kilian} (2009); \autor{Hamilton} (1983).
-\item \emph{Políticas de oferta en los datos}: largo plazo ganan (\autor{Blanchard}-\autor{Giavazzi}, 2003); corto, según ciclo (\autor{Duval}-\autor{Furceri}, 2018); en el límite inferior, contractivas (\autor{Eggertsson} et al., 2014); España, reformas 2012 y 2021 \vertema{4.A.16}.
-\item \emph{Los 70}: petróleo ×4 y ×3; salarios indexados + acomodación: estanflación; España \dato{28,4\,\%}{INE, ago.\ 1977} \vertema{4.A.27}. \emph{Los 2000}: sin estanflación (\autor{Blanchard}-\autor{Galí}, 2010: 4 razones).
-\item \emph{Valoración}: inmune a la crítica de \autor{Lucas} (Nobel 1995); $u_t$ residual, sin finanzas. Cerrada $\Rightarrow$ III.
-\end{itemize}
+\graficorepaso[0.6\linewidth]{policy-mix}{\emph{Policy mix}: los 4 cuadrantes}
+\graficorepaso[0.75\linewidth]{blanchard-quah}{\autor{Blanchard}-\autor{Quah}: demanda en joroba, oferta permanente}
 
 % ==========================================================================
-\bloque[5]{III. Modelo dinámico de economía abierta: \autor{Galí}-\autor{Monacelli}\label{rep:III}}
+\bloque[15,5]{III. PEA neokeynesiana: \autor{Galí}-\autor{Monacelli} y \autor{Furlanetto}\label{rep:III}}
 \begin{ideaclave}
-La apertura cambia los coeficientes, no la forma. Estabilizar la inflación interna y dejar flotar; la flotación amortigua las reales de demanda, no las financieras ni (al importador) la energía. Sin moneda: fiscal, devaluación fiscal y oferta.
+Misma estructura de 3 ecuaciones; apertura y gasto cambian los coeficientes ($\theta_{\alpha G}$, $\kappa_\alpha$) y $r^n_t$. Monetaria: brecha y $\pi_H$ caen, aprecia, $\pi$ cae más. Fiscal: multiplicador $<1$, menor con más apertura, mayor con tipo fijo. Pero tamaño y a veces signo dependen de parámetros, regla y mercados: \textbf{no hay efectos inequívocos y universales}.
 \end{ideaclave}
 
-\sub{III.1. El modelo (\autor{Galí}-\autor{Monacelli}, 2005)\label{rep:III.1}}
+\sub{III.1. Idea y supuestos\label{rep:III.1}}
 \begin{itemize}
-\item \emph{Idea}: nueva macro abierta (\autor{Obstfeld}-\autor{Rogoff}, 1995); la versión moderna de MF. \emph{Supuestos}: continuo de economías pequeñas, apertura $\alpha$, PCP y ley del precio único, mercados completos.
-\begin{formula}
-\centering $\pi_t=\pi_{H,t}+\alpha\Delta\tau_t$;\ \ $x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta_{\alpha}}(i_t-\mathbb{E}_t[\pi_{H,t+1}]-r^n_t)$\\[2pt]
-$\pi_{H,t}=\beta\,\mathbb{E}_t[\pi_{H,t+1}]+\kappa_{\alpha}x_t+u_t$,\ \ $\theta_{\alpha}\equiv\frac{\theta}{1+\alpha\Theta}$
-\end{formula}
-\item[] Misma estructura; $E$ = precio relativo; divina coincidencia para $\pi_H$, no para el IPC.
+\item \emph{NOEM} (\autor{Obstfeld}-\autor{Rogoff}, 1995): 2 familias. \concepto{PEA}: el país no mueve al mundo (\autor{Galí}-\autor{Monacelli}, 2005: NEK + cesta con nacionales e importados; \autor{Furlanetto}, 2006: + gasto público). \concepto{2PG}: interdependencia (\autor{Corsetti}-\autor{Pesenti}, 2005; casi sin fiscal) \vertema{3.B.19}. Aquí PEA: España pequeña y el título pide la fiscal.
+\item \emph{Supuestos}: continuo de PEA ($y^*_t$ dado); hogares $\theta$, $\varphi$, apertura $\alpha$, $\sigma_{HF}$; \autor{Calvo}; PCP y ley del precio único (sin PPA por el sesgo nacional); mercados completos y PDI. \emph{Estado} (\autor{Furlanetto}): solo bienes nacionales, gasto sin utilidad, impuestos de suma fija, presupuesto equilibrado, ricardianos; $\hat g_t$ AR(1) con $\rho_g$.
 \end{itemize}
 
-\sub{III.2. Implicaciones: perturbaciones externas, régimen y regla\label{rep:III.2}}
+\sub{III.2. Desarrollo\label{rep:III.2}}
 \begin{itemize}
-\item \emph{Demanda exterior}: flexible la aísla; fijo, fiscal. \emph{Tipo mundial}: ciclo financiero global, dilema (\autor{Rey}, 2013). \emph{Energía}: al importador la depreciación lo amplifica (\autor{Bodenstein}-\autor{Erceg}-\autor{Guerrieri}, 2011). Flotación como amortiguador: más vale doblarse que quebrarse.
-\item \emph{Reglas}: \textbf{DITR $>$ CITR $>$ fijo}; óptimo $\pi_{H,t}=0$, $x_t=0$; mirar a través en abierta; miedo a flotar (\autor{Engel}, 2011; \autor{Calvo}-\autor{Reinhart}, 2002).
-\item \emph{Unión monetaria}: BC para la media, fiscal para cada país (\autor{Galí}-\autor{Monacelli}, 2008); multiplicador relativo \dato{$\approx$1,5}{\autor{Nakamura}-\autor{Steinsson}, 2014}; \emph{devaluación fiscal} (\autor{Farhi}-\autor{Gopinath}-\autor{Itskhoki}, 2014).
-\item \emph{Ext.}: LCP (\autor{Corsetti}-\autor{Pesenti}), DCP (\autor{Gopinath}, 2020); mercados incompletos. \emph{Evidencia}: \autor{Backus}-\autor{Smith} (1993); \emph{2021-23 y 2026}: euro↓ amplificó; subyacente \dato{5,7\,\%}{mar.\ 2023}; Fed 16/3/2022, BCE 21/7/2022 ($-0{,}50\to4$\,\%; \autor{Peersman}-\autor{Van Robays}); 2026: 2,25 y 2,50\,\%. \emph{Valoración}: mercados completos, traspaso completo.
+\item \emph{Paso 1}: $\pi_t=\pi_{H,t}+\alpha\Delta\tau_t$, $\tau_t\equiv p_{F,t}-p_{H,t}$; $q_t=(1-\alpha)\tau_t$. \emph{Paso 2}: $c_t=c^*_t+q_t/\theta$; $i_t-i^*_t=\mathbb{E}_t[\Delta e_{t+1}]$. \emph{Paso 3}: $y_t=y^*_t+\hat g_t+\frac{1-s_G}{\theta_\alpha}\tau_t$, $\theta_\alpha=\frac{\theta}{1+\alpha\Theta}$ ($\Theta>0$ si elasticidades altas).
+\funcionclave{x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta_{\alpha G}}\big(i_t-\mathbb{E}_t[\pi_{H,t+1}]-r^n_t\big)}
+\item[] $\theta_{\alpha G}\equiv\theta_\alpha/(1-s_G)$: apertura ($\Theta$) y gasto ($1-s_G$: solo el consumo privado responde al tipo). $r^n_t$ sube con $\hat g_t$: $\frac{\theta_{\alpha G}\varphi(1-\rho_g)}{\theta_{\alpha G}+\varphi}\hat g_t$.
+\funcionclave{\pi_{H,t}=\beta\,\mathbb{E}_t[\pi_{H,t+1}]+\kappa_{\alpha}x_t+u_t}
+\item[] $\kappa_\alpha=\tfrac{(1-\eta)(1-\beta\eta)}{\eta}(\theta_{\alpha G}+\varphi)$: misma forma, otra pendiente.
+\item \emph{Regla}: de las 3 de \autor{Furlanetto} (objetivo estricto $\pi_H=0$; DITR; tipo fijo) elijo la \textbf{DITR}, $i_t=\rho+\phi_\pi\pi_{H,t}+\phi_x x_t+\varepsilon_t$: observable, casi igual que el objetivo estricto, continúa la de \hyperref[rep:II]{II} y da el gráfico. \emph{Forma reducida}: la de \hyperref[rep:II]{II} con $\theta_{\alpha G}$ y $\kappa_\alpha$.
 \end{itemize}
+\graficorepaso[0.95\linewidth]{pea-perturbaciones}{a: contracción monetaria; b: expansión fiscal (DITR $E_1$, fijo $E_2$, objetivo estricto $E_0$); c: más apertura con $\Theta>0$}
+
+\sub{III.3. Implicaciones\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Monetaria} ($\varepsilon_t>0$): $x$↓, $\pi_H$↓; PDI: aprecia, $\tau$↓, $XN$↓; $\pi$ cae más ($\alpha\Delta\tau<0$). ¿Amplifica la apertura? Si $\Theta>0$ sí; si $\Theta<0$, no.
+\item \emph{Fiscal} (\autor{Furlanetto}): $r^n_t$↑, $i_t$↑; con el objetivo estricto
+\funcionclave{\frac{\partial Y_t}{\partial G_t}=\frac{\theta_{\alpha G}}{\theta_{\alpha G}+\varphi}<1}
+\item[] Menor con más apertura ($\Theta>0$): \dato{0,45 cerrada; 0,2 con $\alpha=0{,}4$}{impacto}. Aprecia (como MF-Dornbusch; al revés que \autor{Obstfeld}-\autor{Rogoff}); $C$↓ (menos que cerrada); $\pi$↓. \emph{Tipo fijo}: \dato{0,9 frente a 0,35}{\autor{Furlanetto}}, con más $\pi_H$.
+\item \emph{Externas}: demanda exterior (flotación aísla); tipo mundial (dilema de \autor{Rey}, 2013); energía (la depreciación amplifica al importador: \autor{Bodenstein} et al., 2011). Más vale doblarse que quebrarse.
+\item \emph{Reglas} (\autor{Galí}-\autor{Monacelli}): óptimo $\pi_H=0$; \textbf{DITR $>$ CITR $>$ fijo}; mirar a través; miedo a flotar (\autor{Engel}, 2011). Unión monetaria: fiscal por país (GM, 2008); devaluación fiscal.
+\item \emph{¿Efectos inequívocos?} En los estáticos, sí (dado el régimen). Aquí sobreviven las direcciones, pero el \emph{tamaño} depende de $\alpha$, $\Theta$, $\eta$, $\varphi$, $s_G$, $\rho_g$; algunos \emph{signos} del modelo (apertura y monetaria; tipo de cambio tras la fiscal; consumo con hogares que viven al día; LCP); y todo de la \emph{regla} (objetivo estricto, Taylor, fijo, límite inferior). Literatura sin conclusión firme (\autor{Zeyneloglu}-\autor{Koenig}, 2016).
+\item \emph{Ext.}: LCP/DCP; mercados incompletos; no ricardianos; \concepto{2PG} (\autor{Corsetti}-\autor{Pesenti}: PCP, la expansión monetaria tira del socio; LCP, lo empobrece; coordinar gana poco) \vertema{3.B.19}. \emph{Evidencia}: multiplicador bajo y menor cuanto más abierta; rompecabezas del consumo; \autor{Backus}-\autor{Smith} (1993); 2021-23 y 2026: euro↓ amplificó; BCE $-0{,}50\to4$\,\%. \emph{Valoración}: mercados completos, PCP, ricardianos.
+\end{itemize}
+
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}X}
+\toprule
+\rowcolor{tceemoradopalido} & \textbf{Estáticos (MF, DA-OA)} & \textbf{NEK de PEA}\\
+\midrule
+Monetaria, flexible & $Y$↓; muy eficaz & $x$, $\pi_H$↓; tamaño según $\Theta$, $\kappa_\alpha$, regla\\
+\rowcolor{tceesalvia}Fiscal, flexible & Ineficaz (expulsa $XN$) & Multiplicador $<1$, cae con $\alpha$; $C$↓\\
+Fiscal, fijo & Muy eficaz & Más potente (0,9 frente a 0,35)\\
+\rowcolor{tceesalvia}$E$ tras la fiscal & Se aprecia & Se aprecia (regla de tipos); se deprecia en \autor{Obstfeld}-\autor{Rogoff}\\
+Régimen o regla & Según perturbación y movilidad & Bienestar: interna $>$ consumo $>$ fijo\\
+\rowcolor{tceesalvia}¿Universales? & \textcolor{tceeverde}{\textbf{Sí}}, dado el régimen & \textcolor{tceerojo}{\textbf{No}}\\
+\bottomrule
+\end{tabularx}}
+
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}X}
+\toprule
+\rowcolor{tceemoradopalido} & \textbf{Pequeña economía abierta} & \textbf{2 países grandes}\\
+\midrule
+Ejemplos & GM (2005); \autor{Furlanetto} (2006) & \autor{Obstfeld}-\autor{Rogoff} (1995); \autor{Corsetti}-\autor{Pesenti} (2005)\\
+\rowcolor{tceesalvia}Lo de fuera & Dado & Endógeno: desbordamientos\\
+Pregunta & Qué inflación; régimen; multiplicador & Si coordinar; transmisión\\
+\rowcolor{tceesalvia}Política fiscal & Desarrollada & Apenas (en C-P)\\
+Dónde & Aquí & \vertema{3.B.19}\\
+\bottomrule
+\end{tabularx}}
 \graficorepaso[0.78\linewidth]{energia-tipo-cambio-zona-euro}{Brent en \$ y en €: en 2022 se separan (euro↓)}
+\begin{ideaclave}
+\textbf{La respuesta}: los efectos de la monetaria y la fiscal no se pueden fijar de antemano con validez universal: son condicionales a la economía (apertura, elasticidades, rigideces, mercados) y a la regla del banco central o al régimen. El modelo da la lista de lo que hay que medir.
+\end{ideaclave}
 
 % ==========================================================================
 \bloque[1]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: DA (de MF) + OA (cuña) $\to$ NEK; demanda: la monetaria (o la fiscal) estabiliza las 2; costes: la demanda reparte, la oferta mejora las 2; el régimen decide el instrumento.
+\item \textbf{Recapitulación}: estáticos: efectos nítidos dado el régimen; NEK: el origen decide la política; PEA (GM + \autor{Furlanetto}): misma estructura, monetaria también por el tipo de cambio, multiplicador $<1$, menor con apertura, mayor con tipo fijo.
 \item \textbf{Relevancia}: BCE y gobiernos ante la Covid, 2022 y 2026. \textbf{Extensiones}: \vertema{3.B.14} \vertema{3.B.15} \vertema{3.B.16} \vertema{3.B.17} \vertema{3.B.19} \vertema{4.A.22}.
-\item \textbf{Opinión}: las perturbaciones llegan mezcladas; separar oferta de demanda es la mitad de la respuesta. \textbf{Idea final}: las desgracias nunca vienen solas; la demanda reparte el golpe, solo la oferta hace que la próxima duela menos.
+\item \textbf{Opinión}: la respuesta honrada es «depende», pero el modelo dice de qué. \textbf{Idea final}: las desgracias nunca vienen solas, y los remedios no valen igual en todas partes; solo la oferta hace que la próxima duela menos.
 \end{itemize}
 
 % ==========================================================================
@@ -176,10 +173,12 @@ $\pi_{H,t}=\beta\,\mathbb{E}_t[\pi_{H,t+1}]+\kappa_{\alpha}x_t+u_t$,\ \ $\theta_
 \hito{1995}{\autor{Obstfeld}-\autor{Rogoff}: nueva macro abierta}
 \hito{1999}{\autor{Clarida}-\autor{Galí}-\autor{Gertler}; Nobel a \autor{Mundell}}
 \hito{2003}{\autor{Woodford}: \emph{Interest and Prices}}
-\hito{2005}{\autor{Galí}-\autor{Monacelli}}
+\hito{2005}{\autor{Galí}-\autor{Monacelli}; \autor{Corsetti}-\autor{Pesenti}}
+\hito{2006}{\autor{Furlanetto}: gasto público en GM}
 \hito{2010}{\autor{Blanchard}-\autor{Galí}: el petróleo}
-\hito{2013}{\autor{Rey}: dilema}
-\hito{2016}{\autor{Acemoglu}-\autor{Akcigit}-\autor{Kerr}: redes}
+\hito{2011}{\autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}: multiplicador en el límite inferior}
+\hito{2013}{\autor{Rey}: dilema; \autor{Ilzetzki}-\autor{Mendoza}-\autor{Végh}: multiplicador según régimen}
+\hito{2016}{\autor{Zeyneloglu}-\autor{Koenig}: fiscal en la NOEM}
 \hito{2022}{\autor{Guerrieri} et al.: oferta keynesiana}
 \hito{2026}{Nobel a \autor{Hall} y \autor{Woodford}}
 
@@ -189,7 +188,8 @@ $\pi_{H,t}=\beta\,\mathbb{E}_t[\pi_{H,t+1}]+\kappa_{\alpha}x_t+u_t$,\ \ $\theta_
 \item \textbf{¿Por qué con tipo fijo la monetaria es ineficaz con cualquier movilidad?} $M$ endógena: se va en reservas.
 \item \textbf{¿Cómo se pasa de MF a la DA?} Un equilibrio IS-LM-BP por cada $P$: fijo, competitividad; flexible, saldos reales.
 \item \textbf{¿Por qué una perturbación tecnológica no rompe la divina coincidencia?} Mueve $r^n_t$ (la DA), no la NKPC.
-\item \textbf{¿Qué es una perturbación de oferta keynesiana?} Una de oferta sectorial que causa una caída de demanda mayor (\autor{Guerrieri} et al.).
+\item \textbf{¿Por qué el multiplicador fiscal es menor en una economía más abierta?} Con elasticidades altas, la apreciación desvía demanda fuera: $\theta_{\alpha G}$ cae y $\theta_{\alpha G}/(\theta_{\alpha G}+\varphi)$ también.
+\item \textbf{¿Son universales los efectos de las políticas?} No: dependen de apertura, elasticidades, rigideces, mercados y regla.
 \item \textbf{¿Qué inflación debe estabilizar una economía pequeña?} La interna (DITR $>$ CITR $>$ fijo).
 \end{enumerate}
 
@@ -199,6 +199,7 @@ $\pi_{H,t}=\beta\,\mathbb{E}_t[\pi_{H,t+1}]+\kappa_{\alpha}x_t+u_t$,\ \ $\theta_
 \item Flexible + perfecta: la fiscal expulsa $XN$, no inversión.
 \item NEK: la tecnológica desplaza la DA; las de costes, la NKPC.
 \item Divina coincidencia en abierta: para $\pi_H$, no para el IPC.
+\item \autor{Furlanetto}: la expansión fiscal \emph{aprecia} y baja el consumo.
 \item \autor{Blanchard}-\autor{Quah}: la demanda, sin efecto a largo plazo en $Y$.
 \end{itemize}
 \end{trampa}

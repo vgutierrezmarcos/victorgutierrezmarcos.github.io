@@ -165,6 +165,11 @@ Víctor está fuera y el artifact de dudas no está disponible en esta sesión: 
 - El límite de Lohmann-Ruchti (en torno a 18 barcos, 2n/(n+1) veces la flota) es un cálculo propio con el ejemplo del original.
 - `construir-tema.py` dejó `tercer-ejercicio/3B03-anterior.pdf` y `.docx` (copia de la versión publicada, como en otros temas).
 
+**Comentarios del 18/11/2026:**
+
+- B03-01. **Coste del capital con $L$ entre 0 y 1 en MM sin quiebra** (comentario 4). Aplicada la opción (b): $r_D$ plana con círculo vacío en $L=1$, punto en $r_D=r_A$ en $L=1$, $r_E$ con asíntota vertical y caja gris «¿Qué pasa cuando $L$ se acerca a 1?» que explica que $(1-L)\,r_E\to r_A-r_D$ (el WACC sigue plano) y que la deuda sin riesgo deja de valer cerca de 1; la versión con riesgo, en gráfico aparte. Alternativas: (a) cortar el eje en $L<1$ sin decir nada de $L=1$; (c) dibujar solo la deuda con riesgo (sin la asíntota). Recomendada: (b).
+- B03-02. **Forma de $r_E$ con deuda con riesgo**: con $L$ en abscisas se dibuja convexa y acotada (llega a 24,3 en $L=1$), por debajo de la de la deuda sin riesgo; «cóncava» se dice solo en términos de $V_D/V_E$. Alternativa: dibujarla cóncava al final, como en el gráfico que tenía Víctor, que no se sigue de la fórmula con una $r_D$ suave. Recomendada: la aplicada.
+
 ## Enlaces del original (9/11/2026)
 
 Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del original ya estaban en el tema.
@@ -200,3 +205,15 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - Nota de las amortizaciones: métodos lineal y acelerados en itemize.
 - Nota de los valores de mercado: ROA → WACC, ROE → $r_E$, coste contable de la deuda → $r_D$, en itemize (el cierre del itemize va en la línea del último ítem para que verificar-tema no tome por separada la fórmula $V=V_E+V_D$ que sigue).
 - No se convierten: las demás (un solo argumento) ni las de Nobel.
+
+## Comentarios de Víctor (18/11/2026)
+
+1. **Autofinanciación de enriquecimiento con las fórmulas desarrolladas**: el efecto multiplicador va ahora en 3 pasos (recursos totales y ratio de endeudamiento con llave; ratio constante, $\Delta V_D=(V_D/V_E)\Delta V_E$; `eq:multiplicador` con llave en $\Delta V_D$) y el ejemplo de nuestra empresa con las cuentas. Notación del canon ($V_D/V_E$ contable), sin α.
+2. **Mantenimiento con subpárrafos**: «La autofinanciación de mantenimiento está compuesta de:» con las amortizaciones y las provisiones en viñetas indentadas (y lo mismo para las reservas en el enriquecimiento); los 4 supuestos de Lohmann-Ruchti, numerados.
+3. **Flota de barcos al cuerpo**: el ejemplo y la tabla `tab:lohmann` pasan a I.2.1, tras el efecto Lohmann-Ruchti; el anexo B desaparece.
+4. **Gráficos del coste del capital**: el gráfico de 4 paneles (`coste-capital`) queda como resumen al final de MM (e) Valoración), y cada tesis tiene su gráfico grande tras explicarla: `coste-tradicional`, `coste-mm` (sin quiebra), `coste-mm-riesgo` (con quiebra), `coste-mm-is` (1963) y `coste-equilibrio`. Todos con $L=V_D/(V_D+V_E)$ entre 0 y 1. En $L=1$ se ve que el WACC es $r_D$ (tradicional), que $r_D=r_A$ (MM con y sin riesgo) y que el WACC llega a $r_A(1-t_{IS})$ (MM 1963, ahora una recta). Lo de $L\to1$ en MM sin quiebra, en una caja gris tras el gráfico (ver B03-01). Ficha: pie del gráfico y una línea sobre $L\to1$.
+5. **Proposiciones de MM**: «Modigliani y Miller (1958) hacen 2 proposiciones fundamentales:» y un subpárrafo indentado para cada una (qué dicen y por qué), seguidas de `eq:mm`.
+6. **IS e IRPF y escudo fiscal; anexo C al cuerpo**: la imagen 5 se redibuja en TikZ en el cuerpo (`figu:miller`, cuadro fila a fila, con fuente Suárez Suárez et al., 2014, y Brealey, Myers y Allen); figura nueva `figu:escudo-fiscal` (reparto del EBIT de nuestra empresa con y sin deuda: 75 frente a 80, ahorro de 5 al año que vale 100); el anexo C entero va al cuerpo en 4 cajas grises con llaves (arbitraje, proposición II con $1-L$ y $L$, escudo de 1963 y fórmula de Miller). Desaparece el anexo C.
+
+- Páginas: tema 30 → 37; anexos 8 → 6 (quedan A instrumentos, B Holmström-Tirole, C dividendos, D retribución, E tribunal y test). `verificar-tema.py`: 0 errores, los mismos 6 avisos. Ficha: 4 páginas (8,75 pt).
+- Vídeo: en el II.3 se dibujan los gráficos grandes de cada tesis sobre los mismos ejes ($L$ de 0 a 1) en lugar de los paneles; el de 4 paneles, como apoyo al final; la figura del escudo fiscal con los números de nuestra empresa, en la pizarra (columna derecha); la figura de Miller, de apoyo.
