@@ -1,0 +1,104 @@
+{
+ "tema": "3.A.40",
+ "preguntas": [
+  {
+   "id": 314001,
+   "estado": "publicada",
+   "enunciado": "Un aumento del gasto público provoca las siguientes desviaciones respecto del escenario sin la medida (en miles de millones de euros constantes). Gasto público: 10 en el trimestre 0, 6 en el trimestre 1 y 4 en el trimestre 2. PIB: 5 en el trimestre 0, 8 en el trimestre 1 y 5 en el trimestre 2. El multiplicador acumulado a 2 trimestres, calculado como lo hace la literatura empírica reciente (Ramey y Zubairy, 2018), es:",
+   "opciones": {
+    "a": "0,5",
+    "b": "0,8",
+    "c": "0,9",
+    "d": "1,8"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El multiplicador acumulado divide la producción acumulada entre el gasto acumulado: $(5+8+5)/(10+6+4)=18/20=0{,}9$. Al ser menor que 1, el gasto público ha expulsado una parte del gasto privado.",
+    "desarrollo": "Como el gasto y la producción responden durante varios periodos, hay varias medidas del multiplicador:\n\n- de impacto: $\\Delta Y_t/\\Delta G_t=5/10=0{,}5$;\n- máximo: el pico de $\\Delta Y_{t+k}/\\Delta G_t$, aquí $8/10=0{,}8$, en el trimestre 1;\n- acumulado: $\\sum_j\\Delta Y_{t+j}/\\sum_j\\Delta G_{t+j}=18/20=0{,}9$.\n\nLa literatura reciente prefiere el acumulado porque el gasto también dura varios periodos, y lo estima en un solo paso con proyecciones locales.\n\nPor qué fallan las demás:\n\n- a) 0,5 es el multiplicador de impacto.\n- b) 0,8 es el multiplicador máximo.\n- d) 1,8 sale de dividir la producción acumulada (18) solo entre el gasto del primer trimestre (10). Con un gasto que dura varios trimestres, eso exagera el multiplicador: es justo el error que corrige dividir entre el gasto acumulado.\n\nInterpretación: con un multiplicador acumulado de 0,9, cada euro de gasto público añade 90 céntimos de PIB, es decir, expulsa 10 céntimos de gasto privado."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Qué es y cómo se mide el multiplicador (impacto, máximo y acumulado)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314002,
+   "estado": "publicada",
+   "enunciado": "En un modelo sin capital ($Y_t=C_t+G_t$), con producción proporcional al trabajo, impuestos de cuantía fija y un hogar representativo cuya oferta de trabajo es, en desviaciones logarítmicas, $w_t=\\theta\\,c_t+\\varphi\\,l_t$, con $\\theta=2$ y $\\varphi=3$, el gasto público, que parte de un nivel despreciable (de modo que $C\\approx Y$), aumenta transitoriamente en un 1 % del PIB. Compare el caso de precios flexibles (salario real constante, igual a la productividad) con el de precios rígidos y un banco central que mantiene constante el tipo de interés real:",
+   "opciones": {
+    "a": "Con precios flexibles, la producción sube un 0,4 % y el consumo cae un 0,6 % del PIB; con el tipo real constante, la producción sube un 1 % y el consumo no varía.",
+    "b": "Con precios flexibles, la producción sube un 0,6 % y el consumo cae un 0,4 % del PIB; con el tipo real constante, la producción sube un 1 % y el consumo no varía.",
+    "c": "Con precios flexibles, la producción sube un 0,4 % y el consumo cae un 0,6 % del PIB; con el tipo real constante ocurre lo mismo, porque los hogares son ricardianos.",
+    "d": "Con precios flexibles, la producción no varía y el consumo cae un 1 % del PIB (expulsión completa); con el tipo real constante, la producción sube un 1 %."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con precios flexibles, $w_t=0$, $l_t=y_t$ y $c_t=y_t-g_t$: $\\theta(y_t-g_t)+\\varphi y_t=0$, luego $dy/dg=\\theta/(\\theta+\\varphi)=2/5=0{,}4$ y el consumo cae 0,6. Si el banco central mantiene el tipo real, la ecuación de Euler deja el consumo intacto y el multiplicador es exactamente 1.",
+    "desarrollo": "Precios flexibles (multiplicador neoclásico del ciclo real sin capital):\n\n- el salario real no cambia, $w_t=0$, y la producción es proporcional al trabajo, $y_t=l_t$;\n- como $Y=C+G$, con el gasto medido en proporción del PIB y un gasto inicial despreciable ($C\\approx Y$), $c_t=y_t-g_t$ (si el consumo pesara $s_c<1$ en el PIB, sería $y_t=s_c\\,c_t+g_t$ y el multiplicador, $\\theta/(\\theta+s_c\\,\\varphi)$, algo mayor);\n- sustituyendo en la oferta de trabajo: $\\theta(y_t-g_t)+\\varphi y_t=0\\Rightarrow y_t=\\frac{\\theta}{\\theta+\\varphi}g_t=\\frac{2}{2+3}g_t=0{,}4\\,g_t$.\n\nEl gasto empobrece al hogar (efecto riqueza negativo): consume menos ($-0{,}6$) y trabaja más ($+0{,}4$). Comprobación: $2\\cdot(-0{,}6)+3\\cdot0{,}4=0$.\n\nPrecios rígidos y tipo real constante: la ecuación de Euler liga el consumo de hoy al de mañana y al tipo real. Si el tipo real no cambia y el gasto es transitorio, el consumo no cambia en ningún periodo, y $\\Delta y=\\Delta g$: multiplicador 1 (Woodford, 2011).\n\nPor qué fallan las demás:\n\n- b) Invierte la fórmula: usa $\\varphi/(\\theta+\\varphi)=0{,}6$. Cuanto mayor es $\\varphi$ (oferta de trabajo menos elástica), menor es el multiplicador, no mayor.\n- c) La equivalencia ricardiana hace irrelevante la financiación (impuestos o deuda), no la política monetaria: con precios rígidos, el multiplicador depende de lo que haga el banco central con el tipo real.\n- d) La expulsión completa exige una oferta de trabajo inelástica ($\\varphi\\to\\infty$); con $\\varphi=3$ las horas responden al efecto riqueza."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 De qué depende: la teoría (multiplicador neoclásico $\\Gamma$ y multiplicador neokeynesiano con tipo real constante)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314003,
+   "estado": "publicada",
+   "enunciado": "En el mercado de fondos prestables con un límite inferior del tipo de interés nominal con el que Summers (2014) explica el estancamiento secular, suponga que, con las expectativas de inflación ancladas, el tipo de interés natural cae por debajo del tipo real más bajo que el banco central puede alcanzar ($r^n<i^{\\mathrm{ELB}}-\\pi^e$). ¿Qué ocurre?",
+   "opciones": {
+    "a": "El banco central baja el tipo nominal hasta que el tipo real iguala al natural, y la economía sigue en pleno empleo con menos inflación.",
+    "b": "La caída de los precios restablece el pleno empleo, porque la deflación reduce el tipo real hasta el nivel del tipo de interés natural.",
+    "c": "Una expansión fiscal pierde eficacia, porque eleva el tipo de interés real y expulsa inversión privada en la misma cuantía que el gasto.",
+    "d": "Al tipo real más bajo alcanzable, el ahorro de pleno empleo supera a la inversión, y el mercado se equilibra con una caída de la renta."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Si el tipo natural queda por debajo del suelo del tipo real, ningún tipo alcanzable iguala el ahorro y la inversión de pleno empleo: sobra ahorro. Como el tipo no puede ajustarse, se ajusta la renta, que cae hasta que el ahorro baja al nivel de la inversión.",
+    "desarrollo": "El tipo natural es el tipo real que iguala el ahorro y la inversión (más el déficit) con la producción de pleno empleo. El tipo real esperado es $r=i-\\pi^e$, y el nominal no puede bajar de $i^{\\mathrm{ELB}}$: el tipo real tiene un suelo, $i^{\\mathrm{ELB}}-\\pi^e$.\n\nSi el ahorro deseado aumenta (envejecimiento, desigualdad, demanda de activos seguros) y la inversión deseada cae (menor crecimiento de la población y de la productividad, bienes de capital más baratos), el tipo natural puede quedar por debajo de ese suelo. Entonces, al tipo más bajo posible, el ahorro de pleno empleo supera a la inversión, y el ajuste lo hace la renta: cae, y con ella el ahorro, hasta vaciar el mercado con una producción inferior a la de pleno empleo. Es la paradoja de la frugalidad con el tipo de interés atascado.\n\nPor qué fallan las demás:\n\n- a) Es precisamente lo que el banco central no puede hacer: el tipo nominal ya está en su límite.\n- b) Al revés: con el tipo nominal en su límite, la deflación eleva el tipo real ($r=i-\\pi^e$) y agrava el exceso de ahorro. Por eso la flexibilidad de precios y salarios no resuelve el problema (Eggertsson, Mehrotra y Robbins, 2019).\n- c) Al revés: como sobra ahorro y el tipo no sube, el gasto público eleva la renta sin expulsar inversión; la política fiscal gana eficacia."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 El tipo de interés natural cae: el estancamiento secular",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:314003.webp",
+     "alt": "Plano con el ahorro y la inversión en abscisas y el tipo de interés real r en ordenadas, con valores negativos por debajo del eje. La curva de ahorro de pleno empleo, S1(r), creciente, y la de inversión más déficit, I1(r) + G − T, decreciente, se cortan en un punto hueco de ordenada negativa, el tipo natural r^n_1. Una horizontal discontinua, rotulada «suelo del tipo real», a la altura i^ELB − π^e, queda por encima de ese punto y por debajo de cero. No se dibuja ningún desplazamiento.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 314004,
+   "estado": "publicada",
+   "enunciado": "En el modelo neokeynesiano canónico, una perturbación de demanda transitoria mantiene el tipo de interés nominal en su límite inferior. Señale la afirmación CORRECTA sobre la política fiscal mientras dura el episodio:",
+   "opciones": {
+    "a": "Una rebaja del impuesto sobre el trabajo es más expansiva que en tiempos normales, porque el banco central no responde subiendo el tipo de interés.",
+    "b": "Una rebaja del impuesto sobre el trabajo puede ser contractiva: abarata la producción, presiona los precios a la baja y eleva el tipo de interés real.",
+    "c": "Un aumento del gasto que se espera mantener tras salir del límite multiplica más que uno que dura lo que el episodio, pues eleva más la inflación esperada.",
+    "d": "Una mayor flexibilidad de los precios reduce el multiplicador del gasto y suaviza la recesión, al acercar la economía al equilibrio de precios flexibles."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Es la paradoja del esfuerzo (Eggertsson, 2010): en el límite inferior, lo que reduce los costes marginales alimenta la deflación esperada y, con el tipo nominal fijo, sube el tipo real y hunde la demanda. En el límite funciona lo que eleva la inflación esperada, como el gasto público temporal.",
+    "desarrollo": "Con el tipo nominal atascado, el tipo real es $r=i-\\pi^e$: baja con todo lo que eleve la inflación esperada y sube con todo lo que la reduzca. De ahí salen resultados que invierten los de tiempos normales:\n\n- un aumento del gasto público eleva la inflación esperada, baja el tipo real y el consumo sube en lugar de caer: el multiplicador supera 1, tanto más cuanto más dura el episodio;\n- una rebaja del impuesto sobre el trabajo aumenta la oferta de trabajo y abarata la producción: expansiva en tiempos normales, en el límite presiona los precios a la baja, sube el tipo real y contrae la demanda (paradoja del esfuerzo, *paradox of toil*). En el modelo calibrado de Eggertsson (2011), su multiplicador pasa de ser positivo a negativo.\n\nPor qué fallan las demás:\n\n- a) Ignora el canal de la inflación esperada: que el banco central no suba el tipo nominal no basta, porque el tipo real sube por la deflación.\n- c) Al revés: el estímulo tiene que ser temporal. Si el gasto sigue después de salir del límite, el banco central lo neutralizará entonces subiendo el tipo, y esa expectativa reduce el multiplicador ya durante la crisis; puede quedar por debajo de 1 (Woodford, 2011).\n- d) Al revés en las dos cosas: con precios más flexibles la inflación (o la deflación) esperada responde más, de modo que el multiplicador es mayor y la misma perturbación provoca una recesión más profunda (paradoja de la flexibilidad; Eggertsson y Krugman, 2012)."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 El multiplicador según la política monetaria: el límite inferior (paradoja del esfuerzo, estímulo temporal, paradoja de la flexibilidad)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

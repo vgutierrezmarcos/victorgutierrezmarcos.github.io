@@ -1,0 +1,380 @@
+{
+ "tema": "3.B.45",
+ "preguntas": [
+  {
+   "id": 324501,
+   "estado": "publicada",
+   "enunciado": "Cuatro Estados iguales ($n=4$) comparten un banco central. Cada Gobierno elige su déficit $b_i$, que le da un beneficio $v(b_i)=9\\,b_i-b_i^2/2$. La inflación común depende del déficit medio, $\\pi=\\theta\\,\\frac{1}{n}\\sum_j b_j$, y cuesta a cada Estado $\\frac{\\lambda}{2}\\pi^2$, con $\\lambda\\theta^2=2$. ¿Cuál es el déficit de cada Estado en el equilibrio de Nash simétrico ($b^N$) y cuál elegiría un planificador que maximizara el bienestar conjunto ($b^C$)?",
+   "opciones": {
+    "a": "$b^N=3$ y $b^C=6$.",
+    "b": "$b^N=6$ y $b^C=6$.",
+    "c": "$b^N=6$ y $b^C=3$.",
+    "d": "$b^N=9$ y $b^C=3$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Cada Gobierno solo percibe $1/n$ del efecto de su déficit sobre la inflación común: $9-b=\\lambda\\theta^2 b/n=0{,}5\\,b$, luego $b^N=6$. El planificador internaliza todo el efecto: $9-b=2b$, luego $b^C=3$. El déficit de equilibrio duplica al cooperativo.",
+    "desarrollo": "Cada Gobierno maximiza $U_i=v(b_i)-\\frac{\\lambda}{2}\\pi^2$ tomando como dado el déficit de los demás.\n\n- Equilibrio de Nash: $\\partial\\pi/\\partial b_i=\\theta/n$, así que la condición de primer orden es $9-b_i=\\lambda\\pi\\,\\theta/n$. En el equilibrio simétrico $\\pi=\\theta b$ y queda $9-b=\\lambda\\theta^2\\,b/n=(2/4)\\,b$, es decir, $9=1{,}5\\,b$ y $b^N=6$. Con la fórmula general: $b^N=\\dfrac{a}{1+\\lambda\\theta^2/n}=\\dfrac{9}{1{,}5}=6$.\n- Planificador: suma las pérdidas de los 4 Estados, de modo que un punto más de déficit en todos sube la inflación en $\\theta$ y la condición es $9-b=\\lambda\\theta^2\\,b=2b$; $b^C=\\dfrac{a}{1+\\lambda\\theta^2}=\\dfrac{9}{3}=3$.\n\nEl coste de la inflación que genera el déficit de un Estado se reparte entre los cuatro, mientras que el beneficio se queda en casa: es un problema de polizón sobre la estabilidad de la moneda común.\n\nPor qué fallan las demás:\n\n- a) Invierte los resultados: el equilibrio no cooperativo es el del déficit alto.\n- b) Los dos solo coinciden con $n=1$, un país con moneda propia; aquí $n=4$.\n- d) $b=9$ es el déficit que agota el beneficio marginal ($v'(b)=0$), el que se elegiría si la inflación no costara nada; pero cada Gobierno sí soporta una cuarta parte del coste marginal que provoca."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 El sesgo deficitario en una unión monetaria (modelo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324502,
+   "estado": "publicada",
+   "enunciado": "En el modelo del sesgo deficitario de una unión monetaria con $n$ Estados iguales, el déficit de equilibrio no cooperativo es $b^N=\\dfrac{a}{1+\\lambda\\theta^2/n}$ y el cooperativo, $b^C=\\dfrac{a}{1+\\lambda\\theta^2}$, donde $\\theta$ mide cuánto responde la inflación común al déficit medio y $\\lambda$ el peso de la inflación en las pérdidas. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Si los mercados cobraran a cada Estado una prima de riesgo según su propia deuda, el coste dejaría de repartirse entre todos y el sesgo adicional se reduciría.",
+    "b": "El déficit cooperativo $b^C$ disminuye cuando aumenta el número de Estados, porque son más los Gobiernos que presionan sobre la inflación común.",
+    "c": "Con $n=1$, un país con moneda propia, el Gobierno elige un déficit nulo, porque soporta él solo todo el coste de la inflación que provoca.",
+    "d": "La brecha entre $b^N$ y $b^C$ se reduce cuando aumenta el número de Estados, porque la influencia de cada uno sobre la inflación común se diluye."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El sesgo adicional nace de que el coste del déficit (inflación o tipos de interés comunes) se reparte entre los socios. Si cada Estado paga su propio coste a través de una prima de riesgo individual, lo internaliza y el incentivo a endeudarse de más se debilita: es el argumento de la disciplina de mercado.",
+    "desarrollo": "En el modelo, cada Gobierno iguala su beneficio marginal al coste marginal que él soporta, que es solo $1/n$ del coste total de la inflación que genera. De ahí que $b^N>b^C$.\n\n- a) Correcta. Si el coste del endeudamiento recae sobre quien se endeuda (una prima de riesgo ligada a su propia deuda), deja de haber un «fondo común» y el Estado internaliza una parte mayor del coste. Es la tesis de quienes prefieren primas de riesgo, reestructuraciones ordenadas y una cláusula de no rescate creíble a las reglas numéricas. Otra cosa es que en la práctica la disciplina de mercado haya funcionado mal (complacencia hasta 2008, pánico en 2010-2012).\n- b) $b^C=a/(1+\\lambda\\theta^2)$ no depende de $n$: el planificador internaliza siempre todo el efecto.\n- c) Con $n=1$, $b^N=b^C=a/(1+\\lambda\\theta^2)>0$: desaparece el sesgo adicional de compartir moneda, no el déficit. El Gobierno sigue igualando beneficio y coste marginales.\n- d) Al revés: cuando $n$ crece, $\\lambda\\theta^2/n$ tiende a cero y $b^N$ tiende a $a$, mientras que $b^C$ no cambia. Precisamente porque la influencia de cada uno se diluye, cada Gobierno percibe menos coste y se endeuda más: la brecha aumenta con $n$."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 El sesgo deficitario en una unión monetaria (implicaciones y extensiones)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324503,
+   "estado": "publicada",
+   "enunciado": "En el procedimiento de déficit excesivo del art. 126 del TFUE, la decisión de que existe un déficit excesivo en un Estado miembro la adopta:",
+   "opciones": {
+    "a": "La Comisión, que después informa de ella al Consejo y al Parlamento Europeo.",
+    "b": "El Consejo, por mayoría cualificada y sin el voto del Estado afectado, a propuesta de la Comisión.",
+    "c": "El Eurogrupo, por unanimidad de los ministros de la zona del euro, excluido el del Estado afectado.",
+    "d": "El Consejo y el Parlamento Europeo, por el procedimiento legislativo ordinario, a propuesta de la Comisión."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En la gobernanza económica, la Comisión vigila y propone, pero quien decide es el Consejo (Ecofin), por mayoría cualificada. En las decisiones del art. 126 no se cuenta el voto del Estado afectado.",
+    "desarrollo": "El reparto de papeles es siempre el mismo: la Comisión analiza, elabora el informe (art. 126.3) y propone; el Consejo decide si existe déficit excesivo (art. 126.6) y dirige las recomendaciones al Estado, por mayoría cualificada y sin contar el voto del afectado (art. 126.13).\n\nPor qué fallan las demás:\n\n- a) La Comisión inicia el procedimiento con su informe y su propuesta, pero no decide.\n- c) El Eurogrupo es una reunión informal de los ministros de Finanzas de la zona del euro (Protocolo n.º 14): prepara las decisiones, pero no las adopta formalmente. Lo que sí ocurre es que, en las fases finales para un Estado del euro (la advertencia y las sanciones), en el Consejo solo votan los Estados del euro; y no por unanimidad, sino por mayoría cualificada.\n- d) El Parlamento Europeo colegisla los reglamentos que desarrollan el marco y mantiene un diálogo económico con la Comisión, el Consejo y los Estados, pero no decide en los procedimientos concretos."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 El marco jurídico e institucional",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324504,
+   "estado": "publicada",
+   "enunciado": "La «mayoría cualificada inversa», introducida en 2011 por el Six-Pack para determinadas sanciones a los Estados de la zona del euro, significa que:",
+   "opciones": {
+    "a": "La sanción necesita la mayoría cualificada del Consejo, pero el Estado afectado conserva un derecho de veto.",
+    "b": "La sanción la adopta el Consejo por mayoría simple de sus miembros, en vez de por mayoría cualificada.",
+    "c": "La sanción la impone directamente la Comisión, y el Consejo solo puede recurrirla ante el Tribunal de Justicia.",
+    "d": "La sanción recomendada por la Comisión se considera adoptada salvo que el Consejo la rechace por mayoría cualificada."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con la mayoría cualificada inversa se invierte la carga: ya no hace falta reunir una mayoría para sancionar, sino para no sancionar. Por eso se habla de sanciones «semiautomáticas»: se buscaba evitar que el Consejo bloqueara los procedimientos, como en 2003 con Alemania y Francia.",
+    "desarrollo": "Hasta 2011, cualquier paso del procedimiento exigía que una mayoría cualificada de ministros votara contra uno de los suyos, y la experiencia de 2003 (el Consejo dejó en suspenso los procedimientos de Alemania y Francia) mostró que eso restaba toda credibilidad a las sanciones.\n\nEl Six-Pack dio la vuelta a la regla para las sanciones de la zona del euro (depósitos y multas): la recomendación de la Comisión se entiende adoptada salvo que el Consejo decida rechazarla por mayoría cualificada en un plazo breve.\n\nAun así, nunca se ha llegado a cobrar una multa: en 2016 las de España y Portugal se fijaron en cero.\n\nPor qué fallan las demás:\n\n- a) El Estado afectado no vota en estas decisiones, así que no puede vetarlas.\n- b) No se rebaja el umbral a la mayoría simple: se invierte el sentido de la votación.\n- c) La decisión sigue siendo del Consejo: la Comisión recomienda, y su recomendación prospera si el Consejo no la frena."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 La evolución: de Maastricht a la reforma de 2024 (Six-Pack)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324505,
+   "estado": "publicada",
+   "enunciado": "La brecha de producción de una economía es $x=u+m\\,\\hat g$, donde $u$ es una perturbación de demanda, $\\hat g$ la desviación del gasto público respecto de su senda y $m=0{,}8$ el multiplicador (todo en puntos del PIB potencial). Los ingresos públicos se desvían de su nivel normal en $\\tau x$, con $\\tau=0{,}5$. Se comparan dos reglas: una de déficit, que no deja variar el saldo (el gasto sigue a los ingresos, $\\hat g=\\tau x$), y una de gasto, que mantiene el gasto en su senda ($\\hat g=0$). Ante una perturbación $u=-3$:",
+   "opciones": {
+    "a": "Con la regla de déficit la brecha es $-5$; con la de gasto es $-3$ y el saldo público empeora 1,5 puntos.",
+    "b": "Con la regla de déficit la brecha es $-3$; con la de gasto es $-5$ y el saldo público empeora 2,5 puntos.",
+    "c": "Con la regla de déficit la brecha es $-5$; con la de gasto es $-3$ y el saldo público no varía.",
+    "d": "Con la regla de déficit la brecha es $-4{,}2$; con la de gasto es $-3$ y el saldo público empeora 1,5 puntos."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con la regla de déficit, $x=u+m\\tau x$, luego $x=u/(1-m\\tau)=-3/0{,}6=-5$: el gasto se recorta cuando caen los ingresos y amplifica la perturbación. Con la regla de gasto, $x=u=-3$ y el saldo absorbe la caída de ingresos, $\\tau x=-1{,}5$: actúan los estabilizadores automáticos.",
+    "desarrollo": "Regla de déficit: el saldo no puede moverse, así que el gasto cae lo mismo que los ingresos, $\\hat g=\\tau x$. Sustituyendo, $x=u+m\\tau x$ y $x=\\dfrac{u}{1-m\\tau}=\\dfrac{-3}{1-0{,}8\\cdot0{,}5}=\\dfrac{-3}{0{,}6}=-5$. Comprobación: los ingresos caen $0{,}5\\cdot5=2{,}5$, el gasto se recorta 2,5 y eso resta $0{,}8\\cdot2{,}5=2$ puntos, que sumados a los $-3$ iniciales dan $-5$.\n\nRegla de gasto: $\\hat g=0$, de modo que $x=u=-3$. Los ingresos caen $\\tau\\cdot3=1{,}5$ puntos y el gasto no se toca: el saldo empeora 1,5 puntos. Es el juego libre de los estabilizadores automáticos.\n\nLa regla de déficit multiplica la perturbación por $1/(1-m\\tau)\\approx1{,}67$: es procíclica.\n\nPor qué fallan las demás:\n\n- b) Intercambia las reglas: la que amplifica es la de déficit.\n- c) Con la regla de gasto el saldo no puede quedar igual: los ingresos caen con la producción y el gasto no los sigue.\n- d) $-4{,}2$ resulta de contar solo la primera ronda del recorte ($-3-0{,}8\\cdot0{,}5\\cdot3$), sin tener en cuenta que el recorte reduce de nuevo la producción y los ingresos; el efecto completo es la suma de la progresión, $-5$."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Regla de déficit frente a regla de gasto (modelo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:324505.webp",
+     "alt": "Gráfico con el tiempo en abscisas y la brecha de producción en ordenadas, sin escala numérica (solo el 0). La perturbación de demanda u cae de golpe y se recupera poco a poco. Dos trayectorias de la brecha: «regla A» y «regla B»; una coincide con la perturbación y la otra tiene la misma forma pero es más profunda. No se indica qué regla fiscal es cada una.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 324506,
+   "estado": "publicada",
+   "enunciado": "Una regla fiscal que fija cada año un límite al saldo presupuestario total, sin corregirlo del ciclo, se considera procíclica porque:",
+   "opciones": {
+    "a": "Obliga a acumular superávits en las expansiones, lo que frena la demanda justo cuando la economía crece.",
+    "b": "Depende de la brecha de producción, una variable que no se observa y que se revisa mucho a posteriori.",
+    "c": "En las recesiones obliga a ajustar cuando caen los ingresos, y en las expansiones deja gastar los extraordinarios.",
+    "d": "Impide que el gasto en intereses se adapte al ciclo, de modo que la carga de la deuda sube en las recesiones."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Los ingresos públicos se mueven con el ciclo. Si el saldo total no puede variar, el gasto (o los impuestos) tiene que seguir a los ingresos: recortes en la recesión y margen para gastar más en la expansión. La política fiscal amplifica el ciclo en vez de amortiguarlo.",
+    "desarrollo": "Con un límite al saldo observado, los estabilizadores automáticos no pueden actuar: cuando la recesión reduce la recaudación y eleva el gasto en desempleo, el Gobierno tiene que compensarlo con recortes o subidas de impuestos, que deprimen más la demanda; en la expansión, los ingresos extraordinarios dejan margen para gastar más o bajar impuestos sin incumplir. Es lo que se observó en la zona del euro en 2011-2013.\n\nPor qué fallan las demás:\n\n- a) Una regla que obligara a ahorrar en las expansiones sería anticíclica; el problema de la regla de saldo total es justo el contrario: en las expansiones no exige nada.\n- b) Ese es el problema de las reglas de saldo estructural, que corrigen la prociclicidad pero dependen de una brecha de producción no observable. El saldo total sí se observa.\n- d) El gasto en intereses depende del nivel de deuda y de los tipos, no de la regla; no es la razón de la prociclicidad.\n\nUna regla de gasto evita el problema: el gasto sigue su senda y el saldo absorbe el ciclo; a cambio, necesita un ancla que garantice que la senda es coherente con una deuda sostenible."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Regla de déficit frente a regla de gasto (implicaciones)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324507,
+   "estado": "publicada",
+   "enunciado": "El indicador operativo único del marco fiscal de la Unión Europea aprobado en 2024 es el gasto primario neto, que se obtiene descontando del gasto público varias partidas y el efecto de las medidas discrecionales de ingresos. ¿Cuál de las siguientes partidas NO se descuenta al calcularlo?",
+   "opciones": {
+    "a": "El gasto en intereses de la deuda pública.",
+    "b": "El componente cíclico del gasto en prestaciones por desempleo.",
+    "c": "El gasto en programas de la Unión financiado con fondos de la Unión.",
+    "d": "El gasto en defensa."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El gasto primario neto excluye lo que el Gobierno no controla a corto plazo (intereses, desempleo cíclico) y lo que no afecta a su saldo (gasto financiado por la Unión), y se corrige por las medidas discrecionales de ingresos. El gasto en defensa forma parte del indicador: el margen para aumentarlo se ha dado por otra vía, la cláusula nacional de escape.",
+    "desarrollo": "La lógica del indicador es quedarse con el gasto que el Gobierno decide:\n\n- a) Los intereses se excluyen (por eso es «primario»): dependen de la deuda heredada y de los tipos de mercado.\n- b) El gasto cíclico en desempleo se excluye para dejar actuar a los estabilizadores automáticos.\n- c) El gasto en programas de la Unión cubierto con fondos de la Unión se excluye porque tiene un ingreso equivalente y no afecta al saldo.\n- También se excluyen la cofinanciación nacional de los programas financiados por la Unión y las medidas puntuales y temporales (art. 2 del Reglamento 2024/1263).\n- Además, es «neto» de medidas discrecionales de ingresos: si el Gobierno sube impuestos de forma permanente, puede gastar más, y si los baja, el gasto neto debe crecer menos.\n\n- d) El gasto en defensa no se descuenta. Cuando en 2025 se quiso dar margen para aumentarlo, no se cambió la definición del indicador: el Consejo activó la cláusula nacional de escape para los Estados que la pidieron, lo que permite desviarse temporalmente de la senda de gasto neto dentro de un límite."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 El marco de 2024 (gasto primario neto)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 324508,
+   "estado": "publicada",
+   "enunciado": "Un Estado miembro con una deuda pública del 95 % del PIB y un déficit del 2,5 % del PIB tiene una senda de gasto neto aprobada por el Consejo. Su gasto neto observado supera la senda y la desviación acumulada en la cuenta de control llega a 0,7 puntos del PIB. Con el marco fiscal de 2024, la consecuencia es que:",
+   "opciones": {
+    "a": "No ocurre nada mientras el déficit no supere el 3 % del PIB, porque solo ese exceso permite abrir un procedimiento de déficit excesivo.",
+    "b": "La Comisión elabora un informe (art. 126.3 TFUE) que puede llevar a un procedimiento de déficit excesivo por el criterio de deuda.",
+    "c": "Se abre un procedimiento de desviación significativa, que puede acabar en un depósito con intereses del 0,2 % del PIB.",
+    "d": "El Consejo impone de forma automática una multa del 0,05 % del PIB por semestre, hasta que se compense la desviación."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el marco de 2024 el criterio de deuda se hace operativo con la cuenta de control: si la deuda supera el 60 % del PIB y la desviación respecto de la senda de gasto neto pasa de 0,3 puntos del PIB en un año o de 0,6 acumulados, la Comisión elabora el informe que puede abrir un procedimiento por deuda, aunque el déficit esté por debajo del 3 %.",
+    "desarrollo": "El marco de 2024 mantiene el procedimiento de déficit excesivo por déficit (más del 3 %) y rehace el de deuda: ya no se mide con la regla de reducir cada año 1/20 del exceso sobre el 60 %, sino por el cumplimiento de la senda de gasto neto. La cuenta de control anota cada año las desviaciones, al alza y a la baja. Con una deuda superior al 60 % y unas cuentas que no están próximas al equilibrio (un déficit de más del 0,5 % del PIB), superar 0,3 puntos del PIB en un año o 0,6 acumulados lleva a la Comisión a elaborar el informe del art. 126.3, primer paso del procedimiento. Aquí la deuda es del 95 %, el déficit del 2,5 % y la desviación acumulada de 0,7: se cumplen las condiciones.\n\nPor qué fallan las demás:\n\n- a) El art. 126 tiene dos criterios, déficit y deuda; el segundo es justo el que se activa por la cuenta de control.\n- c) El procedimiento de desviación significativa, con su depósito del 0,2 %, pertenecía al brazo preventivo anterior a 2024; el nuevo marco lo sustituye por la cuenta de control.\n- d) No hay multas automáticas: el informe abre un procedimiento con varias fases (decisión del Consejo, recomendación, plazo), y la multa de hasta el 0,05 % del PIB cada seis meses solo llega al final si el Estado no toma medidas eficaces."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 El marco de 2024 (cuenta de control y procedimiento por deuda)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 324509,
+   "estado": "publicada",
+   "enunciado": "En un país, el gasto primario neto equivale al 40 % del PIB y el PIB potencial nominal crece un 4 % al año. Con la política de ingresos sin cambios, los ingresos públicos mantienen su peso en el PIB. Si el saldo primario estructural tiene que mejorar 0,5 puntos del PIB al año y todo el ajuste recae en el gasto, ¿cuánto puede crecer al año, aproximadamente, el gasto neto en términos nominales?",
+   "opciones": {
+    "a": "Un 2,75 %.",
+    "b": "Un 3,5 %.",
+    "c": "Un 3,8 %.",
+    "d": "Un 5,25 %."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El peso del gasto neto en el PIB varía en $\\Delta e\\approx e\\,(\\gamma_{GN}-\\gamma^N_p)$. Para que baje 0,5 puntos con $e=40$: $\\gamma_{GN}\\approx\\gamma^N_p-\\Delta s/e=4-0{,}5/0{,}4=2{,}75\\,\\%$. El gasto debe crecer 1,25 puntos menos que el PIB potencial nominal.",
+    "desarrollo": "Si los ingresos mantienen su peso en el PIB, el saldo primario estructural solo mejora si baja el peso del gasto neto, $\\Delta s=-\\Delta e$. Un gasto que crece a $\\gamma_{GN}$ en una economía que crece a $\\gamma^N_p$ cambia su peso en $\\Delta e\\approx e\\,(\\gamma_{GN}-\\gamma^N_p)$. Despejando:\n\n$$\\gamma_{GN}\\approx\\gamma^N_p-\\frac{\\Delta s}{e}=4\\,\\%-\\frac{0{,}5}{40}\\cdot100=4\\,\\%-1{,}25\\,\\%=2{,}75\\,\\%.$$\n\nComprobación por otra vía: con un PIB de 100, el gasto es 40; al año siguiente el PIB es 104 y el gasto debe ser el 39,5 %, es decir, 41,08; $41{,}08/40-1\\approx2{,}7\\,\\%$.\n\nAsí se traduce el ajuste que pide la sostenibilidad de la deuda en la cifra que el Gobierno controla cada año: el techo de crecimiento del gasto neto.\n\nPor qué fallan las demás:\n\n- b) Resta directamente los 0,5 puntos de PIB de la tasa de crecimiento, sin dividir por el peso del gasto: medio punto de PIB es un 1,25 % del gasto, no un 0,5 %.\n- c) Multiplica el ajuste por el peso del gasto ($0{,}5\\cdot0{,}4=0{,}2$) en vez de dividirlo.\n- d) Se equivoca de signo: un gasto que crece más que el PIB nominal aumenta su peso y empeora el saldo."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 La sostenibilidad de la deuda en el nuevo marco (del ajuste al gasto neto)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324510,
+   "estado": "publicada",
+   "enunciado": "Sobre el procedimiento de desequilibrios macroeconómicos (PDM) de la Unión Europea, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Lo creó el Two-Pack en 2013 y solo vigila a los Estados miembros que pertenecen a la zona del euro.",
+    "b": "Vigila los déficits por cuenta corriente, pero no los superávits, que no pueden constituir un desequilibrio.",
+    "c": "Superar un umbral del cuadro de indicadores no implica tener un desequilibrio: sirve para elegir a quién se examina a fondo.",
+    "d": "Su fase correctiva, el procedimiento de desequilibrio excesivo, se ha abierto varias veces, con multas del 0,1 % del PIB."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El cuadro de indicadores del PDM es un mecanismo de alerta, no un conjunto de reglas: sus umbrales sirven para que la Comisión decida qué Estados merecen un examen exhaustivo, y solo ese examen concluye si hay desequilibrios y si son excesivos.",
+    "desarrollo": "El PDM nació con el Six-Pack (2011) porque la crisis del euro no empezó en las cuentas públicas de todos los países: España e Irlanda tenían superávit en 2007, y sus problemas venían del crédito, la vivienda, el déficit exterior y la pérdida de competitividad. Tiene tres fases: alerta (informe del mecanismo de alerta, con el cuadro de indicadores), examen exhaustivo y, en su caso, corrección.\n\n- c) Correcta: los umbrales son señales que se leen con criterio económico, no de forma mecánica.\n\nPor qué fallan las demás:\n\n- a) Es del Six-Pack y se aplica a todos los Estados miembros; lo específico de la zona del euro son las sanciones.\n- b) El indicador del saldo por cuenta corriente tiene umbral inferior y superior ($-4\\,\\%$ y $+6\\,\\%$ del PIB, media de tres años): un gran superávit también puede ser un desequilibrio, aunque el umbral sea asimétrico y en la práctica nunca se hayan exigido medidas a los países con superávit.\n- d) El procedimiento de desequilibrio excesivo no se ha abierto nunca, ni siquiera a Estados a los que se les apreciaron desequilibrios excesivos: es la principal debilidad del PDM. La multa de hasta el 0,1 % del PIB, prevista solo para la zona del euro, no se ha aplicado."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 El Procedimiento de Desequilibrios Macroeconómicos",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 324511,
+   "estado": "publicada",
+   "enunciado": "El Semestre Europeo se diseñó para que las orientaciones europeas lleguen antes de que los Estados elaboren sus presupuestos. Señale la secuencia que corresponde a su ciclo anual:",
+   "opciones": {
+    "a": "Otoño: recomendaciones específicas por país; primavera: informe del mecanismo de alerta; julio: proyectos de presupuesto de los Estados del euro.",
+    "b": "Otoño: informe del mecanismo de alerta; primavera: proyectos de presupuesto de los Estados del euro; julio: la Comisión propone las recomendaciones por país, que el Consejo adopta en octubre.",
+    "c": "Otoño: informe del mecanismo de alerta; primavera: la Comisión adopta las recomendaciones por país; julio: el Parlamento Europeo las ratifica; octubre: proyectos de presupuesto de los Estados del euro.",
+    "d": "Otoño: informe del mecanismo de alerta; primavera: la Comisión propone las recomendaciones por país; julio: el Consejo las adopta; antes del 15 de octubre: proyectos de presupuesto de los Estados del euro."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El ciclo empieza en otoño con el paquete de la Comisión (prioridades e informe del mecanismo de alerta), sigue en primavera con los informes por país y la propuesta de recomendaciones, que el Consejo adopta en julio, y enlaza con el «semestre nacional»: los Estados del euro envían su proyecto de presupuesto antes del 15 de octubre.",
+    "desarrollo": "La lógica es temporal: primero el diagnóstico, después las recomendaciones y, al final, los presupuestos nacionales, que deben tenerlas en cuenta.\n\n1. Otoño: paquete de la Comisión, con las prioridades del año, el informe del mecanismo de alerta del PDM, los dictámenes sobre los proyectos de presupuesto y la recomendación para la zona del euro.\n2. 30 de abril: los Estados envían su informe anual de progreso sobre el plan fiscal-estructural.\n3. Primavera: informes por país, exámenes exhaustivos del PDM y propuesta de recomendaciones específicas por país.\n4. Julio: el Consejo adopta las recomendaciones, con el respaldo del Consejo Europeo.\n5. Antes del 15 de octubre: los Estados del euro envían a la Comisión su proyecto de presupuesto (obligación del Two-Pack).\n\nPor qué fallan las demás:\n\n- a) Invierte el orden: la alerta abre el ciclo y las recomendaciones lo cierran; y los proyectos de presupuesto son de octubre.\n- b) Si los presupuestos fueran antes que las recomendaciones, el Semestre perdería su razón de ser.\n- c) Las recomendaciones las propone la Comisión y las adopta el Consejo; el Parlamento Europeo participa en el diálogo económico, pero no las ratifica."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 El Semestre Europeo",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324512,
+   "estado": "publicada",
+   "enunciado": "Señale la afirmación INCORRECTA sobre el Mecanismo Europeo de Estabilidad (MEDE):",
+   "opciones": {
+    "a": "Sus decisiones más importantes se toman de mutuo acuerdo, con un procedimiento de urgencia por el 85 % de los votos que deja capacidad de veto a sus mayores accionistas.",
+    "b": "Es un instrumento de la Unión creado por un reglamento del Consejo con base en el art. 122.2 del TFUE, y sus emisiones están garantizadas por el presupuesto de la Unión.",
+    "c": "Como regla general, sus préstamos tienen la condición de acreedor preferente, solo por detrás de los del Fondo Monetario Internacional.",
+    "d": "Las operaciones monetarias de compraventa (OMT) del BCE solo pueden activarse para un Estado sujeto a un programa del MEDE, con su condicionalidad."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El MEDE es una organización intergubernamental creada por un tratado entre los Estados del euro, fuera del ordenamiento de la Unión (con amparo en el art. 136.3 TFUE), y se financia con su propio capital. El instrumento de la Unión basado en el art. 122.2 y garantizado por el presupuesto es el Mecanismo Europeo de Estabilización Financiera (MEEF).",
+    "desarrollo": "La opción b) describe el MEEF, la solución temporal de 2010 con la que la Unión prestó a Irlanda y a Portugal (hasta 60.000 millones de euros garantizados por el presupuesto). El MEDE es otra cosa: un organismo internacional con sede en Luxemburgo, cuyos miembros son los Estados del euro, creado por un tratado propio (2012) y respaldado por capital suscrito por esos Estados, parte desembolsado y parte exigible. Para darle encaje se añadió al art. 136 del TFUE un apartado 3.\n\nLas otras tres son ciertas:\n\n- a) La Junta de Gobernadores decide de mutuo acuerdo; en el procedimiento de urgencia basta el 85 % de los votos, y como los votos son proporcionales al capital, Alemania, Francia e Italia superan cada una el 15 % y pueden bloquear.\n- c) El MEDE tiene preferencia de cobro sobre los demás acreedores, salvo el FMI.\n- d) El BCE condicionó las OMT, anunciadas en 2012, a que el Estado estuviera bajo un programa del MEDE: así la intervención ilimitada del banco central queda ligada a la condicionalidad que negocian las instituciones."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 El Mecanismo Europeo de Estabilidad (naturaleza y funcionamiento)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324513,
+   "estado": "publicada",
+   "enunciado": "El instrumento SURE, creado por la Unión Europea en 2020 en respuesta a la pandemia:",
+   "opciones": {
+    "a": "Concedió préstamos a los Estados, financiados con deuda emitida por la Unión, para pagar regímenes de reducción de jornada como los ERTE.",
+    "b": "Concedió subvenciones a fondo perdido a los Estados con más paro, financiadas con aportaciones extraordinarias al presupuesto de la Unión.",
+    "c": "Fue una línea de crédito del Mecanismo Europeo de Estabilidad para gasto sanitario, con la única condición de respetar ese destino.",
+    "d": "Estableció un seguro europeo de desempleo permanente, que paga directamente una parte de la prestación a los trabajadores parados."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El SURE fue un instrumento temporal de préstamos de la Unión a los Estados (hasta 100.000 millones de euros), financiados con emisiones de la Comisión en forma de bonos sociales, para costear los regímenes de reducción de jornada y medidas similares. No fue una transferencia, sino financiación barata.",
+    "desarrollo": "El SURE (Reglamento 2020/672, con base en el art. 122 del TFUE) permitió a la Comisión endeudarse en los mercados, con garantías de los Estados por el 25 % del total, y prestar esos fondos en las mismas condiciones a los Estados que lo pidieron, para financiar regímenes de mantenimiento del empleo como los ERTE españoles. El ahorro para el Estado está en el tipo de interés: se financia con la calificación de la Unión y no con la suya.\n\nPor qué fallan las demás:\n\n- b) No dio subvenciones: las transferencias a fondo perdido llegaron después, con el NextGenerationEU. Y se financió con deuda de la Unión, no con aportaciones extraordinarias.\n- c) Esa es la línea pandémica del MEDE (hasta el 2 % del PIB de cada Estado), que nadie llegó a pedir por el estigma de acudir al MEDE.\n- d) Fue temporal y prestó a los Estados, no a los trabajadores. Se suele ver como un embrión de un reaseguro europeo de desempleo, pero no lo es: no hay transferencias automáticas ni permanentes."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 La respuesta común a partir de la covid-19 (SURE)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324514,
+   "estado": "publicada",
+   "enunciado": "El marco fiscal de la Unión Europea aprobado en 2024 prevé dos cláusulas de escape, la general y la nacional. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La general deja sin efecto los valores de referencia del 3 % y del 60 % del PIB y los procedimientos del Pacto mientras dure la crisis.",
+    "b": "La nacional la activa el propio Estado afectado, que solo tiene que comunicarlo a la Comisión y justificar el coste de las medidas.",
+    "c": "La general se activó por primera vez en 2025, para acomodar el aumento del gasto en defensa de la mayoría de los Estados miembros.",
+    "d": "La general exige una recesión grave en la zona del euro o en la Unión; la nacional, circunstancias excepcionales fuera del control de un Estado."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La cláusula general responde a una perturbación común (recesión económica grave en la zona del euro o en el conjunto de la Unión) y la nacional a circunstancias excepcionales ajenas al control de un Estado y con gran impacto en sus finanzas. En ambos casos decide el Consejo, por recomendación de la Comisión, por un tiempo limitado y sin poner en peligro la sostenibilidad fiscal.",
+    "desarrollo": "Las cláusulas de escape hacen que la regla sea contingente: permiten desviarse de la senda de gasto neto ante sucesos que el Estado no controla, sin que la regla pierda credibilidad.\n\n- d) Correcta: describe el supuesto de hecho de cada una.\n\nPor qué fallan las demás:\n\n- a) Ninguna cláusula deja sin efecto los valores de referencia, que están en el Tratado y su Protocolo, ni los procedimientos: lo que autoriza es una desviación temporal de la senda de gasto neto, siempre que no ponga en peligro la sostenibilidad a medio plazo. En 2020-2023 se suspendió el ajuste, no el Pacto.\n- b) El Estado la solicita, pero la activa el Consejo a partir de una recomendación de la Comisión, y fija un plazo.\n- c) La que se activó en 2025 para la defensa fue la nacional, país por país, para los Estados que la pidieron y con un límite de desviación. La general se había activado por primera vez en marzo de 2020, por la pandemia, y se mantuvo hasta finales de 2023."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 El marco de 2024 (cláusulas de escape) y III.2 La cláusula general de salvaguardia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324515,
+   "estado": "publicada",
+   "enunciado": "Dos regiones, A y B, comparten moneda y tipo de interés. La brecha de producción de cada una es $x_i=u_i+m\\,T_i$, donde $u_i$ es una perturbación de demanda, $T_i$ la transferencia neta que recibe de un presupuesto central y $m=2$ el multiplicador (todo en puntos del PIB regional; las dos regiones tienen el mismo tamaño). El presupuesto central aplica la regla $T_i=-\\phi\\,x_i$, con $\\phi=0{,}5$. Si $u_A=-4$ y $u_B=+4$:",
+   "opciones": {
+    "a": "La brecha de A es $-2$ y A recibe una transferencia de 2 puntos, que paga B.",
+    "b": "La brecha de A es $-2$ y A recibe una transferencia de 1 punto, que paga B.",
+    "c": "La brecha de A es $0$ y A recibe una transferencia de 2 puntos, que paga B.",
+    "d": "La brecha de A es $-2$ y A recibe una transferencia de 1 punto, financiada con deuda del presupuesto central."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Sustituyendo la regla, $x_i=u_i-m\\phi\\,x_i$, luego $x_i=u_i/(1+m\\phi)=u_i/2$: $x_A=-2$ y $x_B=+2$. La transferencia es $T_A=-0{,}5\\cdot(-2)=+1$ y $T_B=-1$: suman cero, así que el presupuesto central se equilibra sin deuda cuando las perturbaciones son asimétricas.",
+    "desarrollo": "Paso 1: $x_i=u_i+m\\,(-\\phi x_i)\\Rightarrow x_i(1+m\\phi)=u_i\\Rightarrow x_i=\\dfrac{u_i}{1+m\\phi}=\\dfrac{u_i}{1+2\\cdot0{,}5}=\\dfrac{u_i}{2}$. Por tanto $x_A=-2$ y $x_B=+2$.\n\nPaso 2: $T_A=-\\phi x_A=-0{,}5\\cdot(-2)=+1$ y $T_B=-0{,}5\\cdot2=-1$. Comprobación: $x_A=-4+2\\cdot1=-2$.\n\nPaso 3: $T_A+T_B=0$. La región en expansión paga lo que recibe la región en recesión. La capacidad fiscal amortigua $m\\phi/(1+m\\phi)=1/2$ de la perturbación sin necesidad de emitir deuda.\n\nPor qué fallan las demás:\n\n- a) Calcula la transferencia sobre la perturbación ($\\phi\\cdot4=2$) y no sobre la brecha resultante; con $T_A=2$ la brecha sería $-4+2\\cdot2=0$, no $-2$.\n- c) Supone que la transferencia compensa toda la perturbación; pero entonces la brecha sería nula y la regla $T=-\\phi x$ daría una transferencia nula: no es un equilibrio.\n- d) Los valores son correctos, pero no hace falta deuda: B, que está en expansión, aporta exactamente lo que recibe A. La deuda común haría falta ante una perturbación que golpeara a las dos regiones a la vez."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 ¿Hacia una capacidad fiscal central? (modelo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324516,
+   "estado": "publicada",
+   "enunciado": "Sobre el reparto de riesgos entre los territorios de una unión monetaria, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "En Estados Unidos, el presupuesto federal amortigua la mayor parte de las perturbaciones de renta de cada Estado, muy por delante de los mercados de capitales y de crédito.",
+    "b": "Una capacidad fiscal central con transferencias automáticas necesita emitir deuda común también cuando las perturbaciones son asimétricas y transitorias.",
+    "c": "Aun con mercados financieros completos, el seguro privado puede quedarse corto si los precios son rígidos, porque cada agente ignora cómo su gasto sostiene la demanda de su región.",
+    "d": "Si las perturbaciones que sufre un territorio son permanentes, las transferencias se compensan con el tiempo y no generan una redistribución estable entre territorios."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con precios rígidos y sin tipo de cambio propio, la demanda de cada región depende del gasto de sus residentes. Quien se asegura no tiene en cuenta esa externalidad de demanda agregada, de modo que el seguro privado es insuficiente aunque los mercados sean completos: es el argumento de Farhi y Werning a favor de un seguro público entre regiones.",
+    "desarrollo": "- c) Correcta. El argumento clásico de Kenen es que en una unión monetaria las transferencias de un presupuesto central suplen al tipo de cambio ante perturbaciones asimétricas. Farhi y Werning (2017) añaden por qué el mercado no basta: la decisión privada de asegurarse no internaliza que el gasto de cada hogar sostiene la producción de su región cuando los precios no se ajustan, así que hay menos seguro del socialmente óptimo y está justificada una unión fiscal.\n\nPor qué fallan las demás:\n\n- a) La evidencia clásica para Estados Unidos (Asdrubali, Sørensen y Yosha, 1996) dice lo contrario: los mercados de capitales amortiguan en torno al 39 % de las perturbaciones, el crédito el 23 % y el presupuesto federal solo el 13 %; el resto no se amortigua. Predomina el canal privado.\n- b) Ante perturbaciones asimétricas, lo que paga la región en expansión financia lo que recibe la región en recesión: las transferencias suman cero y no hace falta deuda. La deuda común se necesita ante perturbaciones simétricas, como la pandemia.\n- d) Al revés: las transferencias solo se compensan si las perturbaciones son transitorias. Si son permanentes, el seguro se convierte en una redistribución estable, la «unión de transferencias» que rechazan los contribuyentes netos."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 ¿Hacia una capacidad fiscal central? (idea, extensiones y evidencia)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ver.py id [id…]: enseña enunciado, opciones y clave de esas preguntas."""
 import json, sys, glob
-W = '/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io-revision/banco-test/'
+W = '/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io-revision-2/banco-test/'
 ids = set(map(int, sys.argv[1:]))
 for f in sorted(glob.glob(W + '*.json')):
     for p in json.load(open(f, encoding='utf-8'))['preguntas']:

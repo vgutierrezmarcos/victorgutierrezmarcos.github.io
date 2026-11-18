@@ -1,0 +1,212 @@
+{
+ "tema": "3.A.41",
+ "preguntas": [
+  {
+   "id": 314101,
+   "estado": "publicada",
+   "enunciado": "En una economía con precios y salarios plenamente flexibles y sin ilusión monetaria, el consumo depende de la renta, del tipo de interés real y de los saldos reales, $C=C(Y,r,M/P)$ (efecto saldos reales de Patinkin). El banco central duplica, una sola vez, la cantidad de dinero. Comparando el equilibrio inicial y el final:",
+   "opciones": {
+    "a": "Se cumplen la dicotomía clásica y la neutralidad: el bloque real se determina sin el dinero y los precios se duplican.",
+    "b": "No hay dicotomía clásica, pero el dinero es neutral: los precios se duplican y las variables reales no cambian.",
+    "c": "Hay dicotomía clásica, pero el dinero no es neutral: el mayor consumo eleva de forma permanente la producción.",
+    "d": "No se cumple ninguna de las dos: los saldos reales aumentan de forma permanente y, con ellos, el consumo."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La dicotomía es una propiedad de la estructura del modelo (el bloque real se resuelve sin el dinero) y aquí falla, porque $M/P$ entra en el consumo. La neutralidad es un resultado de estática comparativa y se mantiene: si $M$ y $P$ se duplican, $M/P$ no cambia y el equilibrio real es el mismo.",
+    "desarrollo": "Son dos propiedades distintas:\n\n- dicotomía clásica: las variables reales se determinan en un bloque de ecuaciones en el que no aparece el dinero, y el mercado de dinero solo fija el nivel de precios;\n- neutralidad: una variación de la cantidad de dinero cambia en la misma proporción todas las variables nominales y deja igual las reales.\n\nCon $C=C(Y,r,M/P)$, el mercado de bienes no puede resolverse sin conocer $M/P$: no hay dicotomía. Pero las variables nominales siguen apareciendo solo en cocientes ($M/P$, $W/P$): si $M$, $P$ y $W$ se duplican, todas las ecuaciones se cumplen con los mismos valores reales. Por ejemplo, con $M=100$ y $P=1$ los saldos reales son 100; con $M=200$, el equilibrio exige $P=2$ y los saldos reales vuelven a ser 100. Patinkin (1956) mostró además que la dicotomía «pura» dejaba el nivel de precios indeterminado; lo que se sostiene es la neutralidad. Ocurre lo mismo con el dinero en la función de utilidad (Sidrauski).\n\nPor qué fallan las demás:\n\n- a) La dicotomía exige que el bloque real no contenga $M/P$, y aquí lo contiene.\n- c) Invierte las dos propiedades: no hay dicotomía, y el aumento del consumo solo dura mientras los precios no han subido; en el nuevo equilibrio, $M/P$ es el de antes.\n- d) Los saldos reales no pueden quedar más altos de forma permanente: el exceso de gasto sube los precios hasta que $M/P$ vuelve a su valor inicial."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Debate tradicional: neutralidad y dicotomía clásica (efecto saldos reales)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314102,
+   "estado": "publicada",
+   "enunciado": "En un modelo como el de Barro y Gordon (1983), el paro (en %) sigue $U=U^n-\\alpha\\,(\\pi-\\pi^e)$, con $U^n=6$ y $\\alpha=0{,}5$, y el banco central minimiza $L=(U-U^*)^2+\\gamma\\,(\\pi-\\pi^*)^2$, con $U^*=4$, $\\pi^*=2$ y $\\gamma=0{,}25$. Primero el público forma sus expectativas, que son racionales, y después el banco central elige la inflación de forma discrecional. En equilibrio:",
+   "opciones": {
+    "a": "La inflación es del 2 % y el paro, del 6 %.",
+    "b": "La inflación es del 4 % y el paro, del 5 %.",
+    "c": "La inflación es del 6 % y el paro, del 6 %.",
+    "d": "La inflación es del 6 % y el paro, del 4 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La condición de primer orden del banco central es $\\gamma(\\pi-\\pi^*)=\\alpha(U-U^*)$. Con expectativas racionales no hay sorpresa, $U=U^n=6$, y $\\pi=\\pi^*+\\frac{\\alpha}{\\gamma}(U^n-U^*)=2+2\\cdot2=6$: hay sesgo inflacionista (4 puntos) sin ninguna ganancia de paro.",
+    "desarrollo": "Con discrecionalidad, el banco central toma $\\pi^e$ como dada y minimiza $L$. Sustituyendo la curva de Phillips y derivando respecto a $\\pi$:\n\n$-2\\alpha\\,(U-U^*)+2\\gamma\\,(\\pi-\\pi^*)=0\\;\\Rightarrow\\;\\pi-\\pi^*=\\frac{\\alpha}{\\gamma}\\,(U-U^*)$.\n\nEl público conoce esta regla de decisión; con expectativas racionales, $\\pi^e=\\pi$, de modo que $U=U^n=6$ y\n\n$\\pi^{\\mathrm D}=\\pi^*+\\frac{\\alpha}{\\gamma}\\,(U^n-U^*)=2+\\frac{0{,}5}{0{,}25}\\cdot(6-4)=6$.\n\nComprobación: con $\\pi^e=6$, el beneficio marginal de sorprender, $\\alpha(U-U^*)=0{,}5\\cdot2=1$, iguala su coste marginal, $\\gamma(\\pi-\\pi^*)=0{,}25\\cdot4=1$: el banco central ya no quiere desviarse.\n\nPor qué fallan las demás:\n\n- a) Es el resultado con una regla creíble ($\\pi^*$, $U^n$): mejor que la discrecionalidad, pero no es un equilibrio sin compromiso, porque, si el público esperara un 2 %, el banco central querría sorprender.\n- b) Es la «tentación»: si el público esperara un 2 %, el banco central elegiría $\\pi=2+\\frac{\\alpha(U^n-U^*)}{\\gamma+\\alpha^2}=2+\\frac{1}{0{,}5}=4$ y el paro bajaría a $6-0{,}5\\cdot2=5$. Pero entonces las expectativas no serían racionales.\n- d) El paro solo baja de $U^n$ con inflación no esperada; con expectativas racionales no la hay, por alta que sea la inflación."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Inflación de demanda: la política monetaria (inconsistencia temporal; Kydland y Prescott, Barro y Gordon)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314103,
+   "estado": "publicada",
+   "enunciado": "En el modelo de islas de Lucas (1972, 1973), compare dos economías idénticas salvo en una cosa: en A el nivel general de precios ha sido históricamente mucho más variable que en B (la varianza de las perturbaciones reales de cada mercado es la misma). Ante un aumento no anticipado de la cantidad de dinero de igual cuantía, el efecto sobre la producción:",
+   "opciones": {
+    "a": "Es mayor en A, porque sus productores se enfrentan a más sorpresas y las confunden más a menudo con cambios de su precio relativo.",
+    "b": "Es igual en las dos, porque la pendiente de la oferta agregada solo depende de la elasticidad de la oferta de cada mercado.",
+    "c": "Es nulo en las dos, porque con expectativas racionales ni siquiera el dinero no anticipado altera las decisiones de producción.",
+    "d": "Es menor en A, porque sus productores atribuyen al nivel general casi toda la variación de su precio, y la curva de Phillips es más vertical."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Cada productor atribuye a causas reales la parte $\\omega=\\sigma^2_z/(\\sigma^2_z+\\sigma^2_p)$ de la variación no esperada de su precio. Donde el nivel general es más variable ($\\sigma^2_p$ mayor), $\\omega$ es menor, la oferta responde menos a las sorpresas y la misma sorpresa monetaria mueve menos la producción y más los precios.",
+    "desarrollo": "El productor de cada isla ve su precio, $p_i=p+z_i$, pero no el nivel general $p$. Solo quiere producir más si sube su precio relativo, y tiene que adivinar qué parte de una subida de $p_i$ es real. Su mejor estimación (extracción de señal) es la fracción\n\n$\\omega=\\dfrac{\\sigma^2_z}{\\sigma^2_z+\\sigma^2_p}$,\n\ny, agregando, sale la oferta de Lucas, $y=y^n+\\psi\\,(p-p^e)$, con $\\psi=\\omega\\,\\varepsilon_S$.\n\nEn A, $\\sigma^2_p$ es grande: la experiencia enseña a los productores que casi todo movimiento de su precio es inflación general, $\\omega$ y $\\psi$ son pequeños y la curva de Phillips es casi vertical. Es la predicción que Lucas (1973) contrastó entre países: donde la demanda nominal es más volátil, la inflación «compra» menos producción.\n\nPor qué fallan las demás:\n\n- a) Confunde la frecuencia de las sorpresas con la respuesta a cada una: lo que cuenta es cuánto de su precio atribuye el productor a causas reales, y en A es menos.\n- b) La pendiente es $\\psi=\\omega\\,\\varepsilon_S$: depende también del coeficiente $\\omega$, que cambia con la variabilidad nominal (y, por tanto, con la política: es la crítica de Lucas).\n- c) La proposición de inefectividad se refiere a la política sistemática o anticipada; las sorpresas sí tienen efectos reales, aunque breves."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Inflación de demanda: la política monetaria (islas de Phelps y oferta de Lucas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314104,
+   "estado": "publicada",
+   "enunciado": "Considere, sin perturbaciones de costes, la curva de Phillips neokeynesiana escrita con el paro, $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]-a\\,(U_t-U^n)$ (tómese $\\beta=1$), y la curva aceleracionista, $\\pi_t=\\pi_{t-1}-a\\,(U_t-U^n)$. Si hoy el paro está por debajo de su tasa natural, ¿qué implica cada una?",
+   "opciones": {
+    "a": "La neokeynesiana, que la inflación de hoy supera a la que se espera para mañana (se espera que baje); la aceleracionista, que supera a la de ayer (ha subido).",
+    "b": "Las dos implican lo mismo: la inflación de hoy supera a la de ayer, y seguirá aumentando mientras el paro no vuelva a su tasa natural.",
+    "c": "La neokeynesiana, que la inflación de hoy es inferior a la que se espera para mañana (se espera que suba); la aceleracionista, que supera a la de ayer.",
+    "d": "La neokeynesiana, que la inflación de hoy solo depende de la inflación pasada; la aceleracionista, que solo depende del paro que se espera para mañana."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $U_t<U^n$, la curva neokeynesiana da $\\pi_t>\\mathbb{E}_t[\\pi_{t+1}]$: la inflación es alta hoy y se espera que baje. La aceleracionista da $\\pi_t>\\pi_{t-1}$: la inflación aumenta. La primera mira hacia delante y no tiene inercia propia; la segunda mira hacia atrás.",
+    "desarrollo": "Las dos curvas se parecen, pero el término de expectativas es distinto y cambia la dinámica:\n\n- aceleracionista (expectativas adaptativas con $\\pi^e_t=\\pi_{t-1}$): $\\pi_t-\\pi_{t-1}=-a\\,(U_t-U^n)>0$ si $U_t<U^n$. Mantener el paro por debajo de la tasa natural exige una inflación cada vez mayor; de ahí el nombre de NAIRU (la tasa de paro que no acelera la inflación);\n- neokeynesiana (precios à la Calvo y expectativas racionales): $\\pi_t-\\mathbb{E}_t[\\pi_{t+1}]=-a\\,(U_t-U^n)>0$. Las empresas que revisan hoy su precio miran a los costes futuros; si la brecha es positiva hoy, la inflación es alta hoy respecto de la que se espera: se espera que baje (Mankiw, 2001).\n\nConsecuencia: en la curva neokeynesiana no hay inflación pasada, toda la persistencia es heredada de la brecha y de los costes, y una desinflación creíble no costaría producción; para reproducir la inercia de los datos se añade indexación o reglas retrospectivas (curva híbrida).\n\nPor qué fallan las demás:\n\n- b) Atribuye a la neokeynesiana la dinámica de la aceleracionista: en aquella no aparece $\\pi_{t-1}$.\n- c) Invierte el signo: con $U_t<U^n$, el término $-a(U_t-U^n)$ es positivo y $\\pi_t$ queda por encima de la inflación esperada, no por debajo.\n- d) Intercambia las curvas y, además, omite que en las dos la inflación depende del paro de hoy."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Inflación inercial: la persistencia (curva de Phillips neokeynesiana frente a la aceleracionista)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314105,
+   "estado": "publicada",
+   "enunciado": "Suponga que la demanda de saldos reales es lineal en el tipo de interés nominal, $L(i)=L_0-b\\,i$, que el dinero no rinde intereses, que se cumple el efecto Fisher con un tipo de interés real constante del 2 % y que el coste de bienestar de la inflación anticipada se mide con el triángulo de Bailey (1956), tomando como referencia la situación en la que el tipo de interés nominal es nulo. Si la inflación pasa del 2 % al 8 %, la pérdida de bienestar por periodo se multiplica por:",
+   "opciones": {
+    "a": "2,5",
+    "b": "4",
+    "c": "6,25",
+    "d": "16"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El triángulo de Bailey vale $\\frac12\\,b\\,i^2$: crece con el cuadrado del tipo nominal, no de la inflación. El tipo nominal pasa de $2+2=4$ % a $2+8=10$ %, y la pérdida se multiplica por $(10/4)^2=6{,}25$.",
+    "desarrollo": "El coste de oportunidad de tener dinero es el tipo nominal, $i=r+\\pi$. Lo eficiente sería saciar la demanda, $L(0)$, porque producir dinero no cuesta. Con $i>0$ el público renuncia a los saldos entre $L(i)$ y $L(0)$; del área bajo la demanda, el rectángulo $i\\,L(i)$ es el impuesto inflacionario (una transferencia al emisor), y el resto es la pérdida:\n\n$\\mathrm{PB}(i)=\\int_0^i L(x)\\,dx-i\\,L(i)=L_0i-\\tfrac12bi^2-L_0i+bi^2=\\tfrac12\\,b\\,i^2$,\n\nun triángulo de altura $i$ y base $b\\,i$. Con demanda lineal la fórmula es exacta.\n\n- Con $\\pi=2$ %: $i=4$ % y $\\mathrm{PB}=\\tfrac12 b\\,(0{,}04)^2=0{,}0008\\,b$.\n- Con $\\pi=8$ %: $i=10$ % y $\\mathrm{PB}=\\tfrac12 b\\,(0{,}10)^2=0{,}005\\,b$.\n\nCociente: $0{,}005/0{,}0008=6{,}25=(10/4)^2$.\n\nPor qué fallan las demás:\n\n- a) 2,5 es el cociente de los tipos nominales ($10/4$): supone que la pérdida es proporcional al tipo, cuando es cuadrática, como el exceso de gravamen de cualquier impuesto.\n- b) 4 es el cociente de las tasas de inflación ($8/2$): ni la pérdida es lineal ni depende de la inflación sola.\n- d) 16 es $(8/2)^2$: eleva al cuadrado la inflación en lugar del tipo nominal; olvida que con inflación nula el tipo nominal ya es el 2 % y ya hay pérdida (por eso la regla de Friedman pide $i=0$, no $\\pi=0$)."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Costes de la inflación anticipada: los costes en saldos reales y el triángulo de Bailey",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314106,
+   "estado": "publicada",
+   "enunciado": "Sobre la tasa de inflación óptima en los modelos teóricos, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con precios rígidos que no se revisan a la vez, la tasa óptima es cero, porque cualquier inflación media, positiva o negativa, dispersa los precios relativos.",
+    "b": "Con precios rígidos que no se revisan a la vez, la tasa óptima es una deflación igual al tipo real, porque con un tipo nominal nulo desaparece la dispersión.",
+    "c": "Con el coste de tener dinero y la rigidez de precios a la vez, la tasa óptima se sitúa en torno al 2 %, que es la que han adoptado los bancos centrales.",
+    "d": "Si el Estado no dispone de impuestos de suma fija, la tasa óptima es la que maximiza el señoreaje, porque permite reducir al máximo los demás impuestos."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con precios escalonados, toda inflación distinta de cero hace que convivan precios fijados en fechas distintas: bienes que se valoran igual se venden a precios diferentes y se asignan mal los recursos. Por eso el óptimo con rigideces nominales es la estabilidad de precios (Woodford, 2003).",
+    "desarrollo": "La teoría da una tasa óptima distinta según la fricción que se considere:\n\n- solo la fricción monetaria (tener dinero cuesta el tipo nominal y producirlo no cuesta nada): regla de Friedman, $i=0$, es decir, $\\pi^*=-r$;\n- precios rígidos: $\\pi^*=0$, para evitar la dispersión de precios relativos, que aparece con inflación positiva y también con deflación;\n- las dos a la vez: entre $-r$ y 0, y muy cerca de cero con parámetros razonables (Schmitt-Grohé y Uribe, 2010): la rigidez de precios pesa mucho más que el coste de tener dinero.\n\nEl 2 % de los bancos centrales no sale de estos modelos: se justifica por el límite inferior de los tipos, la rigidez a la baja de los salarios nominales y el sesgo de medición de los índices de precios.\n\nPor qué fallan las demás:\n\n- b) Mezcla las dos fricciones: la deflación a la tasa $-r$ elimina el coste de tener dinero, pero no la dispersión; con deflación, los precios que no se revisan también se desalinean.\n- c) Con las dos fricciones el óptimo es ligeramente negativo, no el 2 %.\n- d) Sin impuestos de suma fija, la imposición óptima pide como mucho usar un poco el impuesto inflacionario, $\\pi^*$ algo mayor que $-r$ (Phelps, 1973), y si el dinero es un bien intermedio vuelve a valer la regla de Friedman (Chari, Christiano y Kehoe, 1996). Maximizar el señoreaje exigiría una inflación muy alta, con costes enormes."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 ¿Existe una tasa de inflación óptima? (regla de Friedman, rigideces nominales)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314107,
+   "estado": "publicada",
+   "enunciado": "Sobre el efecto de un aumento permanente y plenamente anticipado de la tasa de inflación en el capital de estado estacionario, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con el efecto Mundell-Tobin, el capital disminuye: la inflación eleva el tipo de interés real y desplaza las carteras del capital hacia el dinero.",
+    "b": "En el modelo de Sidrauski, con hogares optimizadores y dinero en la utilidad, el capital no varía: lo fija la regla de oro modificada.",
+    "c": "En el modelo de Stockman, con pago por adelantado también para invertir, el capital aumenta: la inflación abarata la inversión frente al consumo.",
+    "d": "En los tres modelos el capital es independiente de la inflación, porque la neutralidad del dinero a largo plazo implica la superneutralidad."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el modelo de Sidrauski (1967), el capital de estado estacionario sale de la condición de Euler del hogar (productividad marginal igual a la tasa de descuento más la depreciación y el crecimiento), en la que no entra la inflación: el dinero es superneutral. En Mundell-Tobin el capital sube, y en Stockman baja.",
+    "desarrollo": "La respuesta depende de por qué se demanda dinero:\n\n- Mundell (1963) y Tobin (1965): el dinero es un activo alternativo al capital. Más inflación reduce el rendimiento real del dinero, las carteras se desplazan hacia el capital, el tipo real baja y el capital de estado estacionario sube;\n- Sidrauski (1967): con un hogar de vida infinita que optimiza y saldos reales en la utilidad, el capital lo fija la regla de oro modificada, $f'(k)$ igual a la tasa de preferencia temporal (más la depreciación y el crecimiento), con independencia del crecimiento del dinero: superneutralidad. La inflación solo reduce los saldos reales (y, por eso, el bienestar);\n- Stockman (1981): si el dinero hace falta para pagar por adelantado también la inversión, la inflación actúa como un impuesto sobre invertir y el capital baja.\n\nPor qué fallan las demás:\n\n- a) Invierte el efecto Mundell-Tobin: las carteras se desplazan hacia el capital, el tipo real baja y el capital aumenta.\n- c) Invierte el resultado de Stockman: la inflación encarece la inversión, que exige mantener dinero que se deprecia.\n- d) La neutralidad (del nivel del dinero) no implica la superneutralidad (de su tasa de crecimiento): Mundell-Tobin y Stockman son modelos en los que la inflación anticipada cambia el capital."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Costes de la inflación anticipada: inflación y acumulación de capital",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314108,
+   "estado": "publicada",
+   "enunciado": "En un modelo como el de Cagan (1956), la demanda de saldos reales es $M/P=\\zeta\\,e^{-\\alpha\\,\\pi^e}$, con $\\alpha=4$ (la inflación, en tanto por uno anual), y en estado estacionario $\\pi=\\pi^e$ es igual a la tasa de crecimiento del dinero. Un Gobierno financia su déficit con señoreaje y la inflación estacionaria es del 50 % anual. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El señoreaje crece siempre con la inflación, por ser el producto de esta por los saldos reales: con el 50 % se recauda más que con el 25 %.",
+    "b": "El señoreaje es máximo con una inflación del 400 % ($\\pi=\\alpha$), de modo que con el 50 % aún puede recaudarse más emitiendo más deprisa.",
+    "c": "El señoreaje es máximo con una inflación del 25 %, y con el 50 % es nulo, porque el público ya ha dejado de demandar la moneda nacional.",
+    "d": "El señoreaje es máximo con una inflación del 25 %; el ingreso real que da el 50 % podría obtenerse también con una inflación inferior al 25 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En estado estacionario, $S(\\pi)=\\pi\\,\\zeta e^{-\\alpha\\pi}$, que es máximo en $\\pi=1/\\alpha=25$ %. Con el 50 % la economía está en el tramo decreciente de la curva de Laffer del señoreaje: el mismo ingreso se obtiene con otra inflación más baja (en torno al 10 %).",
+    "desarrollo": "El señoreaje es un tipo por una base: $S=\\gamma_M\\cdot M/P$, y en estado estacionario $S(\\pi)=\\pi\\,\\zeta\\,e^{-\\alpha\\pi}$. Derivando:\n\n$S'(\\pi)=\\zeta e^{-\\alpha\\pi}\\,(1-\\alpha\\pi)$,\n\nque se anula en $\\pi=1/\\alpha=1/4=25$ %. Por debajo domina el efecto tipo (más inflación recauda más); por encima, el efecto base (el público huye del dinero y la base se encoge más de lo que sube el tipo).\n\n- $S(0{,}25)=0{,}25\\,e^{-1}\\zeta\\approx0{,}092\\,\\zeta$ (el máximo, $\\zeta/(\\alpha e)$).\n- $S(0{,}50)=0{,}50\\,e^{-2}\\zeta\\approx0{,}068\\,\\zeta$.\n- Ese mismo ingreso se obtiene con $\\pi\\approx0{,}10$: $0{,}10\\,e^{-0{,}4}\\zeta\\approx0{,}067\\,\\zeta$.\n\nTodo déficit inferior al señoreaje máximo puede financiarse con dos inflaciones, una baja y otra alta; la economía del enunciado está en la alta.\n\nPor qué fallan las demás:\n\n- a) Olvida que la base no es constante: los saldos reales caen con la inflación esperada, y por encima de $1/\\alpha$ caen más deprisa de lo que sube el tipo ($0{,}068\\,\\zeta<0{,}092\\,\\zeta$).\n- b) El máximo está en $\\pi=1/\\alpha$, no en $\\pi=\\alpha$: cuanto más sensible es la demanda de dinero a la inflación, menor es la inflación que maximiza el señoreaje.\n- c) Con el 50 % el señoreaje es menor que el máximo, pero positivo: la demanda de dinero se reduce a $e^{-2}\\approx13{,}5$ % de $\\zeta$, no a cero."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Hiperinflación: el modelo de Cagan (curva de Laffer del señoreaje)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314109,
+   "estado": "publicada",
+   "enunciado": "Una economía tiene el tipo de interés nominal en su límite inferior, que se supone igual al 0 %; su tipo de interés natural es del $-1$ % y el público espera una inflación del $-2$ % (deflación). El tipo de interés real esperado es del:",
+   "opciones": {
+    "a": "$-2$ %: queda por debajo del natural, de modo que la política monetaria es expansiva y la brecha de producción tiende a cerrarse.",
+    "b": "0 %: coincide con el nominal, porque en el límite inferior la inflación esperada deja de influir en el tipo de interés real.",
+    "c": "$-1$ %: se iguala al natural, porque el banco central ya ha agotado todo el recorrido a la baja del tipo de interés nominal.",
+    "d": "2 %: queda 3 puntos por encima del natural, de modo que la deflación esperada endurece la política sin que el banco central actúe."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El tipo real esperado es $r=i-\\pi^e=0-(-2)=2$ %. Como el natural es $-1$ %, la política es contractiva: con el tipo nominal atascado, la deflación esperada sube el tipo real justo cuando la economía necesita que baje.",
+    "desarrollo": "Por la ecuación de Fisher, $r=i-\\pi^e$. Con $i=0$ y $\\pi^e=-2$ %, $r=2$ %. El tono de la política monetaria se mide comparando el tipo real con el natural: $2-(-1)=3$ puntos por encima, muy contractivo.\n\nEs el mecanismo que hace peligrosa la deflación de demanda: el tipo real alto deprime el gasto, la brecha negativa baja más los precios, la deflación esperada aumenta y el tipo real vuelve a subir. La deflación hace más probable quedarse en el límite inferior, y el límite hace más probable la deflación. La salida pasa por elevar la inflación esperada (compromiso de mantener los tipos bajos después de la crisis, objetivo de nivel de precios) o por la política fiscal.\n\nPor qué fallan las demás:\n\n- a) Suma la inflación esperada en lugar de restarla: $-2$ % sería el tipo real con una inflación esperada del $+2$ %.\n- b) El límite inferior afecta al tipo nominal; el real sigue dependiendo de la inflación esperada, y ese es precisamente el problema (y la vía de solución).\n- c) Que el banco central no pueda bajar más el tipo nominal no hace que el real alcance el natural: para eso haría falta $i=r^n+\\pi^e=-3$ %, imposible con el límite en 0 %."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Deflación: el límite inferior de los tipos y el tipo de interés real",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

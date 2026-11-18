@@ -1,0 +1,143 @@
+{
+ "tema": "3.A.45",
+ "preguntas": [
+  {
+   "id": 314501,
+   "estado": "publicada",
+   "enunciado": "La contabilidad del desarrollo de Hall y Jones (1999) parte de $Y=K^{\\alpha}(A\\,h\\,L)^{1-\\alpha}$ y escribe la producción por trabajador como $Y/L=(K/Y)^{\\alpha/(1-\\alpha)}\\,h\\,A$. Con $\\alpha=1/3$, un país rico produce por trabajador 16 veces más que uno pobre, su relación capital-producto es 4 veces mayor y su capital humano por trabajador, $h$, 2 veces mayor. La productividad $A$ del país rico es:",
+   "opciones": {
+    "a": "2 veces la del pobre: el capital aporta un factor de 4 y el capital humano otro de 2, y la productividad explica la cuarta parte de la diferencia de logaritmos.",
+    "b": "8 veces la del pobre: el capital aporta un factor de 2 y el capital humano ya va incluido en $A$, que explica las tres cuartas partes de la diferencia de logaritmos.",
+    "c": "4 veces la del pobre: el capital aporta un factor de 2 y el capital humano otro de 2, y la productividad explica la mitad de la diferencia de logaritmos.",
+    "d": "16 veces la del pobre: al usar $K/Y$ en lugar de $K/L$, toda la diferencia de capital se atribuye a la productividad, que explica la diferencia entera."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con $\\alpha=1/3$, el exponente de $K/Y$ es $\\alpha/(1-\\alpha)=1/2$: el capital aporta $4^{1/2}=2$. Como el cociente de rentas es el producto de los cocientes de los tres términos, $16=2\\times2\\times A$ y $A=4$. En logaritmos, $\\ln4/\\ln16=1/2$.",
+    "desarrollo": "Para comparar dos países se dividen sus ecuaciones: el cociente de las producciones por trabajador es el producto de los cocientes de la intensidad de capital, del capital humano y de la productividad.\n\n- Intensidad de capital: $(K/Y)^{\\alpha/(1-\\alpha)}$, con $\\alpha/(1-\\alpha)=(1/3)/(2/3)=1/2$. El cociente es $4^{1/2}=2$.\n- Capital humano: 2.\n- Productividad: $A=16/(2\\times2)=4$.\n\nEn logaritmos (base 2, para verlo sin calculadora): $\\log_2 16=4=1+1+2$. El capital explica 1/4 de la diferencia, el capital humano 1/4 y la productividad 1/2. Comprobación: $2\\times2\\times4=16$.\n\nEs el tipo de resultado de esta literatura (Klenow y Rodríguez-Clare, 1997; Hall y Jones, 1999; Caselli, 2005): la productividad es el término que más pesa en las diferencias de renta entre países.\n\nPor qué fallan las demás:\n\n- a) Usa el cociente de $K/Y$ sin elevarlo a $\\alpha/(1-\\alpha)$: $16/(4\\times2)=2$. La relación capital-producto entra con exponente 1/2, no 1.\n- b) Deja fuera el capital humano: $16/2=8$. En esta descomposición $h$ se mide aparte (con los años de estudio y los rendimientos de Mincer) precisamente para que no se confunda con $A$.\n- d) Que se use $K/Y$ en lugar de $K/L$ hace que el capital inducido por la productividad se atribuya a esta, pero no elimina la aportación del capital: las diferencias de $K/Y$ y de $h$ siguen contando (aquí, un factor de 2 cada una)."
+   },
+   "dificultad": 2,
+   "apartado": "I.4 Contabilidad del desarrollo (Hall y Jones, 1999)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314502,
+   "estado": "publicada",
+   "enunciado": "Una economía está en la senda de crecimiento equilibrado del modelo de Solow, con $Y=K^{\\alpha}(AL)^{1-\\alpha}$, $\\alpha=1/3$ y un progreso técnico aumentador del trabajo que crece al $g=3\\,\\%$ anual. Un analista le aplica la contabilidad del crecimiento habitual por trabajador, $\\gamma_{Y/L}=\\gamma_{\\mathrm{PTF}}+\\alpha\\,\\gamma_{K/L}$, donde $\\gamma_{\\mathrm{PTF}}$ es el residuo de Solow. De los 3 puntos de crecimiento anual de la producción por trabajador, atribuirá:",
+   "opciones": {
+    "a": "1 punto al capital por trabajador y 2 a la PTF, porque el capital por trabajador crece al 3 % y su aportación se pondera por $\\alpha$.",
+    "b": "0 puntos al capital por trabajador y 3 a la PTF, porque en la senda equilibrada el capital por trabajador permanece constante.",
+    "c": "2 puntos al capital por trabajador y 1 a la PTF, porque el capital por trabajador crece al 3 % y su aportación se pondera por $1-\\alpha$.",
+    "d": "3 puntos al capital por trabajador y 0 a la PTF, porque el capital por trabajador crece al mismo ritmo que la producción por trabajador."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En la senda equilibrada, $\\gamma_{K/L}=\\gamma_{Y/L}=g=3\\,\\%$. La contabilidad atribuye al capital $\\alpha g=1$ punto y deja como residuo $(1-\\alpha)g=2$ puntos, aunque la causa de todo el crecimiento por trabajador es el progreso técnico: sin él, el capital por trabajador no habría crecido.",
+    "desarrollo": "En el estado estacionario del modelo de Solow, el capital y la producción por unidad de trabajo eficiente son constantes, de modo que $K/L$ e $Y/L$ crecen los dos a la tasa $g=3\\,\\%$ y $K/Y$ es constante.\n\nLa contabilidad habitual da:\n\n- aportación del capital por trabajador: $\\alpha\\,\\gamma_{K/L}=\\tfrac13\\times3=1$ punto;\n- residuo: $\\gamma_{\\mathrm{PTF}}=3-1=2$ puntos.\n\nSegunda vía: con una Cobb-Douglas, $Y=K^{\\alpha}(AL)^{1-\\alpha}=A^{1-\\alpha}K^{\\alpha}L^{1-\\alpha}$, es decir, una PTF neutral en el sentido de Hicks igual a $A^{1-\\alpha}$, que crece a $(1-\\alpha)g=\\tfrac23\\times3=2\\,\\%$. Coincide.\n\nLa lectura importa más que la cifra: la contabilidad dice qué parte del crecimiento acompaña a cada factor, no qué lo causa. El capital crece porque crece la tecnología. Por eso Klenow y Rodríguez-Clare (1997) proponen medir la aportación del capital con $K/Y$: $\\gamma_{Y/L}=\\gamma_{\\mathrm{PTF}}/(1-\\alpha)+\\tfrac{\\alpha}{1-\\alpha}\\gamma_{K/Y}$; con $K/Y$ constante, los 3 puntos se atribuyen a la productividad ($2/(2/3)=3$).\n\nPor qué fallan las demás:\n\n- b) Lo que es constante en la senda equilibrada es el capital por unidad de trabajo eficiente, $K/(AL)$, y la relación $K/Y$; el capital por trabajador crece a $g$. Los 3 puntos para la productividad salen de la descomposición corregida con $K/Y$, no de la habitual que aplica el analista.\n- c) Pondera el capital por la participación del trabajo. La elasticidad de la producción respecto al capital es $\\alpha=1/3$.\n- d) Que $K/L$ crezca al mismo ritmo que $Y/L$ no significa que lo explique todo: su aportación es su crecimiento multiplicado por su elasticidad, $\\alpha<1$, por los rendimientos decrecientes."
+   },
+   "dificultad": 3,
+   "apartado": "I.5 Problemas de la contabilidad del crecimiento (contabilidad frente a causalidad)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314503,
+   "estado": "publicada",
+   "enunciado": "Dos economías tienen la misma tasa de ahorro, el mismo crecimiento de la población y acceso a la misma tecnología, pero parten de niveles de capital por trabajador muy distintos y, a largo plazo, se dirigen a estados estacionarios diferentes. Este resultado:",
+   "opciones": {
+    "a": "Es la convergencia condicional del modelo de Solow: cada economía se acerca a su propio estado estacionario, determinado por sus parámetros.",
+    "b": "Es la convergencia absoluta: al compartir los parámetros, la economía pobre crece más deprisa que la rica hasta que las dos rentas se igualan.",
+    "c": "Es una diferencia transitoria: basta controlar por el ahorro y la población en la regresión de convergencia para comprobar que convergen.",
+    "d": "Es propio de los clubes de convergencia: con equilibrios múltiples, el estado estacionario depende del punto de partida y no solo de los parámetros."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Si dos economías con los mismos parámetros acaban en estados estacionarios distintos según su punto de partida, hay clubes de convergencia (Galor, 1996). Exige equilibrios múltiples, como en las trampas de pobreza. En la convergencia condicional, en cambio, lo que separa a las economías son sus parámetros.",
+    "desarrollo": "Hay tres nociones que conviene separar:\n\n- convergencia absoluta: las economías pobres crecen más que las ricas sin más condiciones; es lo que predice el modelo de Solow si todas comparten parámetros y, por tanto, estado estacionario;\n- convergencia condicional: cada economía converge a su propio estado estacionario, que depende de sus parámetros (ahorro, población, tecnología); si los parámetros fueran iguales, convergerían entre sí;\n- clubes de convergencia: economías con los mismos parámetros van a estados estacionarios distintos según sus condiciones iniciales; convergen entre sí las que empiezan cerca.\n\nEl enunciado describe el tercer caso. Solo es posible con equilibrios múltiples: por ejemplo, un umbral de capital físico o humano por debajo del cual la economía cae al equilibrio bajo (trampa de pobreza) y por encima del cual sube al alto. Lo que separa a las economías es la historia, no los parámetros.\n\nPor qué fallan las demás:\n\n- a) En el modelo de Solow, con un único estado estacionario estable, dos economías con los mismos parámetros tienen el mismo estado estacionario. La convergencia condicional explica destinos distintos por parámetros distintos, y aquí son iguales.\n- b) Contradice el enunciado: las dos economías no se igualan, sino que van a estados estacionarios diferentes.\n- c) Controlar por los determinantes del estado estacionario sirve para detectar la convergencia condicional. Aquí esos determinantes ya son iguales y, aun así, las economías no convergen. En la práctica, además, las regresiones de convergencia distinguen mal los clubes de la convergencia condicional cuando la renta inicial está correlacionada con los parámetros (Durlauf y Johnson, 1995)."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Definiciones de convergencia (clubes de convergencia frente a convergencia condicional)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314504,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Solow, la velocidad de convergencia cerca del estado estacionario es $\\lambda=(1-\\alpha)(n+g+\\delta)$, con $\\alpha$ la participación del capital. Las regresiones entre economías parecidas (los estados de Estados Unidos, las prefecturas de Japón, las regiones europeas) dan $\\lambda\\simeq2\\,\\%$ anual. Si $n+g+\\delta=0{,}06$, esa velocidad:",
+   "opciones": {
+    "a": "Es la que predice el modelo con $\\alpha=1/3$, la participación del capital físico que se observa en la contabilidad nacional.",
+    "b": "Exige $\\alpha=2/3$, un valor verosímil solo si el capital se entiende en sentido amplio e incluye el capital humano.",
+    "c": "Exige $\\alpha=1/6$: los rendimientos decrecientes del capital llegan antes de lo que indica su participación en la renta.",
+    "d": "Solo es compatible con $\\alpha=1$, es decir, con una tecnología $AK$ sin rendimientos decrecientes del capital."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "De $0{,}02=(1-\\alpha)\\times0{,}06$ sale $1-\\alpha=1/3$ y $\\alpha=2/3$. Con $\\alpha=1/3$ el modelo predice el doble, un 4 %. La convergencia observada es más lenta: los rendimientos decrecientes llegan despacio, como si el capital incluyera el capital humano.",
+    "desarrollo": "Despejando: $1-\\alpha=\\lambda/(n+g+\\delta)=0{,}02/0{,}06=1/3$, luego $\\alpha=2/3$.\n\nComprobación con cada opción:\n\n- $\\alpha=1/3$: $\\lambda=\\tfrac23\\times0{,}06=0{,}04$ (4 %);\n- $\\alpha=2/3$: $\\lambda=\\tfrac13\\times0{,}06=0{,}02$ (2 %);\n- $\\alpha=1/6$: $\\lambda=\\tfrac56\\times0{,}06=0{,}05$ (5 %);\n- $\\alpha=1$: $\\lambda=0$.\n\nCuanto mayor es $\\alpha$, más despacio cae el producto marginal del capital al acumularlo y más lenta es la convergencia. Una velocidad del 2 % equivale a cerrar la mitad de la distancia al estado estacionario en $\\ln2/0{,}02\\simeq35$ años; con el 4 %, en unos 17. Barro y Sala-i-Martín encuentran en torno al 2 % en muestras muy distintas, y Mankiw, Romer y Weil (1992) lo reconcilian con el modelo neoclásico añadiendo el capital humano: la participación conjunta del capital físico y humano ronda los 2/3.\n\nPor qué fallan las demás:\n\n- a) Con $\\alpha=1/3$ el modelo predice un 4 %, el doble de lo que se observa: es precisamente la discrepancia que hay que explicar.\n- c) Va en la dirección contraria: una $\\alpha$ menor implica rendimientos decrecientes más fuertes y una convergencia más rápida (5 %), no más lenta.\n- d) Con $\\alpha=1$ no hay rendimientos decrecientes y la velocidad es cero: no habría convergencia, ni absoluta ni condicional, cuando los datos muestran una convergencia lenta pero positiva."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 y II.2 Velocidad de convergencia y evidencia entre regiones",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314505,
+   "estado": "publicada",
+   "enunciado": "Tras el trabajo de Barro (1991), decenas de variables aparecían como significativas en alguna regresión de crecimiento entre países. Levine y Renelt (1992) examinan su robustez con el análisis de cotas extremas de Leamer. Señale la afirmación CORRECTA sobre su criterio y su resultado:",
+   "opciones": {
+    "a": "Una variable es robusta si su coeficiente conserva el signo y la significación en todas las regresiones al cambiar los controles; casi ninguna lo logra, y la principal excepción es la tasa de inversión.",
+    "b": "Una variable es robusta si su coeficiente es significativo en al menos el 95 % de las regresiones que se estiman; con ese criterio, la mayoría de las variables de política económica lo son.",
+    "c": "Cada regresión se pondera por su ajuste para calcular la probabilidad de que la variable pertenezca al modelo; con ese criterio, cerca de una cuarta parte de las variables resultan robustas.",
+    "d": "Una variable es robusta si su coeficiente conserva el signo al estimar con datos de panel y efectos fijos de país; con ese criterio, solo las variables geográficas resultan robustas."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El análisis de cotas extremas es una prueba muy exigente: basta una combinación de controles en la que el coeficiente cambie de signo o deje de ser significativo para descartar la variable. Levine y Renelt concluyen que casi ninguna la supera: la tasa de inversión (y el comercio, asociado a ella).",
+    "desarrollo": "Levine y Renelt estiman regresiones de sección cruzada del crecimiento sobre tres grupos de variables: las que entran siempre (renta inicial, inversión, escolarización y crecimiento de la población), la variable cuya robustez se prueba y combinaciones de otros controles que se van cambiando. Una variable es robusta solo si su coeficiente mantiene el signo y la significación en todas las combinaciones. El resultado es pesimista: casi todas las variables de política que la literatura daba por buenas son frágiles; resiste la tasa de inversión, y el comercio por su relación con ella.\n\nPor qué fallan las demás:\n\n- b) Es, aproximadamente, la respuesta de Sala-i-Martín (1997) a Levine y Renelt: como la prueba de cotas extremas descarta una variable por una sola regresión desfavorable, propone mirar toda la distribución de los coeficientes y hablar de grados de robustez. Con ese enfoque sí resultan robustas bastantes variables, pero no es el criterio de Levine y Renelt.\n- c) Describe los promedios bayesianos de modelos de Sala-i-Martín, Doppelhofer y Miller (2004), que encuentran 18 variables robustas de 67.\n- d) Los efectos fijos de país eliminan lo que no cambia en el tiempo, de modo que el efecto de la geografía ni siquiera puede estimarse con ellos; y no es el método de Levine y Renelt, que trabajan con secciones cruzadas."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Otros determinantes y robustez (Levine y Renelt, 1992)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314506,
+   "estado": "publicada",
+   "enunciado": "Acemoglu, Johnson y Robinson (2001) estiman el efecto de las instituciones sobre la renta por habitante de las antiguas colonias usando la mortalidad de los colonos europeos como instrumento de la calidad institucional. El coeficiente estimado con variables instrumentales (0,94) es mayor que el de mínimos cuadrados ordinarios (0,52). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Que el coeficiente de variables instrumentales supere al de mínimos cuadrados indica que la causalidad inversa, de la renta a las instituciones, sesgaba al alza la estimación por mínimos cuadrados.",
+    "b": "La condición de exclusión se contrasta en la primera etapa: basta con que la mortalidad de los colonos explique una parte significativa de la calidad de las instituciones actuales.",
+    "c": "La exclusión exige que la mortalidad de los colonos solo afecte a la renta actual a través de las instituciones; con un único instrumento no puede contrastarse y hay que defenderla con argumentos.",
+    "d": "El instrumento es válido porque la mortalidad de los colonos también influye directamente en la renta actual, a través de la salud de la población, lo que refuerza su correlación con la renta."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Un instrumento debe ser relevante (correlacionado con las instituciones, lo que se comprueba en la primera etapa) y cumplir la exclusión (afectar a la renta solo a través de las instituciones), que no se puede contrastar con un solo instrumento. Que VI supere a MCO apunta a un error de medida en el índice de instituciones, que sesga MCO hacia cero.",
+    "desarrollo": "La estrategia tiene dos etapas: en la primera, la mortalidad de los colonos explica la protección frente a la expropiación; en la segunda, la renta por habitante se explica con la parte de las instituciones que predice la primera. Para que el resultado sea causal hacen falta dos condiciones:\n\n- relevancia: $\\mathrm{cov}(Z,X)\\neq0$. Se comprueba con los datos, en la primera etapa;\n- exclusión: $\\mathrm{cov}(Z,u)=0$, es decir, la mortalidad de hace dos o tres siglos solo afecta a la renta de hoy a través de las instituciones. Con un solo instrumento el modelo está exactamente identificado y la exclusión no puede contrastarse: se defiende con argumentos, y por eso es donde se concentran las críticas (los colonos llevaron también capital humano, según Glaeser y otros, 2004; la mortalidad pasada puede estar relacionada con la salud actual).\n\nPor qué fallan las demás:\n\n- a) Si la causalidad inversa (los países ricos se dan mejores instituciones) fuera el sesgo dominante, MCO sobrestimaría el efecto y la estimación con variables instrumentales sería menor, no mayor. Que sea mayor apunta a un sesgo de MCO hacia cero, como el que produce el error de medida en el índice de instituciones.\n- b) La primera etapa contrasta la relevancia, no la exclusión. Un instrumento puede ser muy relevante y no ser válido.\n- d) Es exactamente lo que la exclusión prohíbe: si la mortalidad de los colonos afectara a la renta actual por una vía distinta de las instituciones, el estimador atribuiría a las instituciones un efecto que no es suyo. Es una de las críticas a la estrategia, no un argumento a su favor."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 La importancia de las instituciones (Acemoglu, Johnson y Robinson, 2001)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

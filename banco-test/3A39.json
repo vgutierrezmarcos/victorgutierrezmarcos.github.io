@@ -1,0 +1,304 @@
+{
+ "tema": "3.A.39",
+ "preguntas": [
+  {
+   "id": 313901,
+   "estado": "publicada",
+   "enunciado": "En un año, el PIB nominal de un país es 100. La deuda pública viva al empezar el año era 80, emitida a un tipo de interés nominal del 6 %; el gasto público sin intereses es 41, los ingresos públicos son 40 y la inflación es del 4 %. ¿Cuáles son, en porcentaje del PIB, el déficit primario, el déficit total y el déficit operativo (el corregido por la inflación)?",
+   "opciones": {
+    "a": "1; 5,8 y 1,8, respectivamente.",
+    "b": "1; 4,8 y 1,6, respectivamente.",
+    "c": "1; 5,8 y 2,6, respectivamente.",
+    "d": "1; 5,8 y 9, respectivamente."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El déficit primario es el gasto sin intereses menos los ingresos: 1. El total le suma los intereses, $0{,}06\\times80=4{,}8$: 5,8. El operativo resta del total la parte de los intereses que solo compensa la pérdida de valor real de la deuda, $\\pi\\,D_{t-1}=0{,}04\\times80=3{,}2$: 2,6.",
+    "desarrollo": "- Déficit primario: $G-T=41-40=1$.\n- Intereses: $i_{t-1}D_{t-1}=0{,}06\\times80=4{,}8$. Déficit total: $1+4{,}8=5{,}8$.\n- Déficit operativo: $G+(i_{t-1}-\\pi_t)\\,D_{t-1}-T=1+(0{,}06-0{,}04)\\times80=1+1{,}6=2{,}6$. Por la otra vía: $5{,}8-0{,}04\\times80=5{,}8-3{,}2=2{,}6$.\n\nCon inflación, una parte de los intereses nominales no es una renta para el acreedor, sino la devolución anticipada del principal que la inflación erosiona: el déficit total exagera lo que crece la deuda en términos reales.\n\nPor qué fallan las demás:\n\n- a) Resta del déficit total la tasa de inflación (4 puntos) en lugar de la inflación aplicada a la deuda ($0{,}04\\times80=3{,}2$). Solo coincidirían con una deuda del 100 % del PIB.\n- b) Toma como déficit total solo los intereses, olvidando el déficit primario.\n- d) Suma la corrección por la inflación en lugar de restarla: la inflación reduce el valor real de la deuda, así que el déficit operativo es menor que el total."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Restricción presupuestaria y conceptos (déficit primario, total y operativo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313902,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Blinder y Solow (1973), un IS-LM con precios fijos al que se añaden la restricción presupuestaria del Gobierno y el efecto riqueza de los bonos sobre el consumo, el gasto público aumenta de forma permanente. Sobre su efecto a largo plazo, cuando el presupuesto vuelve a estar equilibrado, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Si el sistema es estable, la renta sube más si el déficit se financia con deuda que con dinero, porque los intereses de la deuda nueva exigen más recaudación para cerrar el presupuesto.",
+    "b": "La renta sube más si el déficit se financia con dinero que con deuda, igual que a corto plazo, porque solo así se desplaza también la LM y se evita la subida del tipo de interés.",
+    "c": "La renta sube lo mismo, $1/t$ por unidad de gasto, con las dos formas de financiación, porque en ambas la recaudación adicional tiene que igualar el aumento del gasto.",
+    "d": "Con deuda el sistema es siempre estable, porque el efecto riqueza de los bonos eleva el consumo y la recaudación en mayor cuantía que los intereses que esos bonos devengan."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "A largo plazo el déficit tiene que desaparecer: $\\overline{G}+i\\,D=t\\,Y$. Con dinero, basta con que la recaudación suba lo que el gasto, $\\Delta Y=\\Delta\\overline{G}/t$. Con deuda, hay que pagar además los intereses de los bonos emitidos por el camino, y eso solo se consigue con más renta: si el sistema es estable, la deuda es más expansiva que el dinero, al revés que a corto plazo.",
+    "desarrollo": "Mientras hay déficit, el Gobierno emite bonos o dinero, la riqueza privada aumenta y el consumo desplaza la IS. El proceso solo se detiene cuando el presupuesto se equilibra:\n\n- con dinero: $\\Delta\\overline{G}=t\\,\\Delta Y$, y el multiplicador de largo plazo es $1/t$;\n- con deuda: $\\Delta\\overline{G}+i\\,\\Delta D=t\\,\\Delta Y$, y el multiplicador es $(1+i\\,\\partial D/\\partial\\overline{G})/t>1/t$.\n\nLa condición es que el proceso converja: cada bono nuevo tiene que elevar la renta lo bastante para que la recaudación adicional pague sus intereses, $t\\,\\partial Y/\\partial D>i$. Si no, el déficit se alimenta a sí mismo y la deuda es explosiva.\n\nPor qué fallan las demás:\n\n- b) Es el resultado de corto plazo del IS-LM, antes de imponer que el presupuesto cierre. A largo plazo el orden se invierte.\n- c) $1/t$ es el multiplicador con financiación monetaria. Con deuda, el gasto que hay que cubrir incluye los intereses nuevos.\n- d) La estabilidad no está garantizada: el efecto riqueza sobre el consumo puede ser débil, y la riqueza puede elevar también la demanda de dinero y desplazar la LM a la izquierda, el canal que subrayaban los monetaristas."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Debate tradicional con el marco IS-LM (Blinder y Solow)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313903,
+   "estado": "publicada",
+   "enunciado": "En un modelo de juventud perpetua (Blanchard, 1985), cada persona tiene una probabilidad de morir del 1 % anual, no deja herencias y descuenta sus rentas futuras al tipo de interés, del 4 %, más esa probabilidad. El Estado rebaja hoy en 100 los impuestos de suma fija de los vivos, emite deuda perpetua por ese importe y, en adelante, paga sus intereses (4 al año) con un impuesto de suma fija que se reparte entre quienes vivan en cada momento. ¿Cómo cambia hoy la riqueza neta de los hogares vivos?",
+   "opciones": {
+    "a": "No cambia: el valor actual de los impuestos futuros que financian la deuda es exactamente 100.",
+    "b": "Aumenta en 100: los impuestos futuros recaen por completo en quienes todavía no han nacido.",
+    "c": "Aumenta en 80: es el valor actual de los impuestos que los hogares vivos esperan pagar.",
+    "d": "Aumenta en 20: los hogares vivos esperan pagar, en valor actual, solo 80 de los 100."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Los vivos de hoy pagarán 4 al año mientras vivan, y lo descuentan a $r+p=5\\,\\%$: en valor actual, $4/0{,}05=80$, la fracción $r/(r+p)$ de la rebaja. El resto de la factura lo pagarán quienes aún no han nacido. La riqueza neta de los vivos sube en $100-80=20$, la fracción $p/(r+p)$: la deuda es, en parte, riqueza neta, y la equivalencia ricardiana no se cumple.",
+    "desarrollo": "Con vidas finitas y sin herencias, quien recibe la rebaja no espera pagar todos los impuestos que la financian:\n\n$$\\int_0^{\\infty}r\\,D\\,e^{-(r+p)s}\\,ds=\\frac{r}{r+p}\\,D=\\frac{0{,}04}{0{,}05}\\times100=80.$$\n\n- Reciben hoy 100 y pagarán, en valor actual, 80: su riqueza sube en $\\frac{p}{r+p}\\,D=20$.\n- Consumen más, el ahorro nacional cae y la deuda desplaza capital.\n- Con $p=0$ (horizonte infinito), el valor actual sería 100 y volvería la equivalencia ricardiana.\n\nPor qué fallan las demás:\n\n- a) Es el resultado ricardiano, con horizonte infinito o herencias altruistas. Aquí parte de los impuestos recae en generaciones futuras.\n- b) Sería el caso de hogares que no pagan ningún impuesto futuro (o que no los anticipan). Los vivos sí pagan mientras viven.\n- c) Confunde lo que los vivos esperan pagar (80) con lo que ganan (20)."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Nueva macroeconomía clásica: equivalencia ricardiana (vidas finitas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313904,
+   "estado": "publicada",
+   "enunciado": "Un Estado quiere minimizar el valor actual de los costes de distorsión de sus impuestos, que son convexos en el tipo impositivo medio (Barro, 1979). La producción es constante e igual a 100, el tipo de interés real es del 5 % y no hay incertidumbre sobre el futuro. Estalla una guerra imprevista que eleva el gasto público en 21 solo en ese periodo. La política óptima es:",
+   "opciones": {
+    "a": "Subir la recaudación en 21 el año de la guerra y mantener el presupuesto equilibrado, para no trasladar la carga a los contribuyentes futuros.",
+    "b": "Subir la recaudación en 1 al año desde ese mismo periodo y para siempre; la deuda aumenta en 20 y no se amortiza.",
+    "c": "Subir la recaudación en 2,1 al año durante diez años, hasta amortizar por completo la deuda emitida para pagar la guerra.",
+    "d": "No subir los impuestos y renovar indefinidamente los 21 de deuda con sus intereses, puesto que el gasto es transitorio."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con costes de distorsión convexos conviene un tipo impositivo constante: el que cubre el gasto «permanente». Una guerra de un periodo eleva el gasto permanente en $\\frac{r}{1+r}\\,\\Delta G=\\frac{0{,}05}{1{,}05}\\times21=1$. La recaudación sube 1 para siempre, el primer año se emiten $21-1=20$ de deuda y el punto adicional de recaudación paga justo sus intereses, $0{,}05\\times20=1$.",
+    "desarrollo": "La condición de primer orden iguala el coste marginal de recaudar en todos los periodos; como ese coste es creciente en el tipo, el tipo tiene que ser el mismo siempre. La restricción intertemporal da su valor: el valor actual de la recaudación adicional tiene que ser 21.\n\n- Una subida constante $x$ desde el periodo de la guerra vale $x\\,(1+r)/r=21x$: $x=1$.\n- Déficit del año de la guerra: $21-1=20$. La deuda sube en 20, es decir, $\\Delta G/(1+r)$.\n- Desde el año siguiente, el punto adicional de recaudación paga los intereses, $0{,}05\\times20=1$: la deuda ni crece ni se amortiza.\n\nEs la suavización del consumo aplicada a los impuestos: el gasto transitorio se financia con deuda; el permanente, con impuestos.\n\nPor qué fallan las demás:\n\n- a) Concentra toda la distorsión en un año: con costes convexos, es mucho más caro un tipo muy alto un año que uno algo más alto siempre.\n- c) Un tipo más alto durante diez años y más bajo después tampoco iguala el coste marginal entre periodos; además, 2,1 al año durante diez años no cubre los intereses.\n- d) Viola la restricción intertemporal: una deuda que se renueva con sus intereses crece al tipo de interés (un juego de Ponzi). Los impuestos tienen que subir, aunque poco."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Nueva macroeconomía clásica: suavización impositiva",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313905,
+   "estado": "publicada",
+   "enunciado": "Un presupuesto común se financia a partes iguales entre 4 regiones. Cada región decide su propio gasto, $g_i$, que solo le beneficia a ella, con un beneficio $v(g_i)=2\\sqrt{g_i}$ (en las mismas unidades que el gasto), y soporta una cuarta parte de su coste. ¿Cuál es el gasto eficiente por región y cuál el que elige cada una?",
+   "opciones": {
+    "a": "El eficiente es 1 y cada región elige 1, porque acaba pagando también una cuarta parte del gasto de las demás.",
+    "b": "El eficiente es 1 y cada región elige 4, tantas veces el eficiente como regiones comparten el coste.",
+    "c": "El eficiente es 1 y cada región elige 16, porque iguala su beneficio marginal a la cuarta parte del coste.",
+    "d": "El eficiente es 4 y cada región elige 16, porque el beneficio de cada gasto se reparte entre las cuatro."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El gasto eficiente iguala el beneficio marginal al coste marginal total: $v'(g)=1/\\sqrt{g}=1$, $g=1$. Cada región solo percibe la parte del coste que paga, $1/4$: $1/\\sqrt{g}=1/4$, $g=16$. Es el problema del fondo común: todas gastan de más, y más cuantos más comparten la factura.",
+    "desarrollo": "- Óptimo social: se maximiza $2\\sqrt{g_i}-g_i$ para cada región. Condición: $1/\\sqrt{g_i}=1$, luego $g_i=1$.\n- Decisión de la región: maximiza $2\\sqrt{g_i}-g_i/4$ (más su parte del gasto de las demás, que toma como dada). Condición: $1/\\sqrt{g_i}=1/4$, luego $\\sqrt{g_i}=4$ y $g_i=16$.\n\nEn general, cada grupo gasta hasta $v'(g_i)=1/n$ y no hasta $v'(g_i)=1$. En el equilibrio cada región paga $4\\times16/4=16$ y obtiene un beneficio de $2\\sqrt{16}=8$: todas están peor que con el gasto eficiente (beneficio 2, coste 1), pero ninguna gana reduciendo sola su gasto. Es una de las explicaciones del sesgo deficitario.\n\nPor qué fallan las demás:\n\n- a) Lo que cada región paga por el gasto de las demás no depende de su propia decisión: no altera su condición marginal.\n- b) El exceso no es proporcional al número de regiones: depende de la curvatura del beneficio. Aquí $g=n^2=16$.\n- d) El beneficio de cada gasto no se reparte (es local); lo que se reparte es el coste. El nivel eficiente compara el beneficio marginal con el coste total."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Nueva macroeconomía clásica: sesgo deficitario (fondo común)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313906,
+   "estado": "publicada",
+   "enunciado": "La deuda de un Estado no supera el valor actual de los superávits primarios que cabe esperar de su política fiscal. Aun así, los inversores dejan de refinanciar sus vencimientos, porque cada uno teme que los demás tampoco lo hagan. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es un problema de solvencia: al no poder colocar deuda nueva, el Estado incumple su restricción intertemporal y la salida es una reestructuración con quita.",
+    "b": "Es un problema de liquidez de un Estado solvente: se resuelve con financiación puente o con un prestamista de último recurso que elimine el equilibrio malo.",
+    "c": "Es un problema de sostenibilidad: revela que el saldo primario previsto no es políticamente viable y exige una consolidación fiscal inmediata y mayor.",
+    "d": "No es un problema real: mientras se cumpla la restricción intertemporal, el tipo de interés que exijan los inversores no altera la dinámica de la deuda."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Si el valor actual de los superávits previstos cubre la deuda, el Estado es solvente; lo que falla es la refinanciación de los vencimientos, es decir, la liquidez. Es una crisis que se cumple sola: el remedio es que alguien garantice la financiación (un préstamo puente, un prestamista de último recurso), no una quita.",
+    "desarrollo": "Conviene distinguir tres conceptos:\n\n- liquidez: poder refinanciar los vencimientos;\n- solvencia: que la deuda no supere el valor actual de los superávits primarios (y del señoreaje) futuros;\n- sostenibilidad: que la política que garantiza la solvencia sea viable y creíble.\n\nEn el enunciado se cumple la solvencia y falla la liquidez. Hay dos equilibrios: si los inversores confían, refinancian a tipos bajos y la deuda se paga; si desconfían, exigen tipos muy altos o no prestan, y el impago que temían se produce. Un comprador de último recurso creíble elimina el equilibrio malo, a menudo sin llegar a desembolsar nada.\n\nPor qué fallan las demás:\n\n- a) La solvencia se refiere a la restricción intertemporal, que aquí se cumple. Una quita impondría pérdidas innecesarias.\n- c) El enunciado da por buena la senda de superávits: el problema no es la política fiscal, sino la coordinación de los acreedores.\n- d) El tipo de interés sí importa: un tipo exigido más alto aumenta el efecto bola de nieve y puede convertir en insolvente a un Estado que no lo era."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Sostenibilidad de la deuda (liquidez, solvencia y sostenibilidad)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313907,
+   "estado": "publicada",
+   "enunciado": "Un Estado tiene una deuda del 100 % del PIB, toda a un año, emitida a un tipo nominal del 5 % cuando se esperaba una inflación del 2 %. Su saldo primario es nulo, la economía crece un 1 % en términos reales y no hay señoreaje. La inflación resulta ser del 6 %. Respecto del cierre del año anterior, la ratio de deuda sobre el PIB:",
+   "opciones": {
+    "a": "Sube unos 2 puntos, lo mismo que con la inflación esperada: la inflación eleva por igual los intereses de la deuda y el PIB nominal.",
+    "b": "Sube unos 4 puntos: el tipo real de la deuda supera al crecimiento real y, además, la inflación encarece los intereses nominales.",
+    "c": "Baja unos 6 puntos: la inflación reduce el valor real de toda la deuda viva en la misma proporción en que suben los precios.",
+    "d": "Baja unos 2 puntos, cuando se esperaba que subiera unos 2: el PIB nominal crece un 7 % y el tipo estaba fijado en el 5 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con el saldo primario nulo, la ratio cambia en $\\frac{i-\\gamma^N}{1+\\gamma^N}\\,d$. El tipo nominal ya está fijado en el 5 %; con una inflación del 6 %, el PIB nominal crece $1{,}06\\times1{,}01-1\\simeq7{,}1\\,\\%$ y la ratio baja $2{,}1/1{,}071\\simeq1{,}9$ puntos. Con la inflación esperada habría subido $(5-3)/1{,}03\\simeq1{,}9$. La inflación no esperada actúa como un impuesto sobre quien tiene deuda nominal.",
+    "desarrollo": "La dinámica de la ratio, sin déficit primario ni señoreaje:\n\n$$d_t-d_{t-1}=\\frac{i_{t-1}-\\gamma^N_t}{1+\\gamma^N_t}\\,d_{t-1},\\qquad 1+\\gamma^N_t=(1+\\pi_t)(1+\\gamma_{Y,t}).$$\n\n- Con la inflación esperada (2 %): $\\gamma^N=1{,}02\\times1{,}01-1=3{,}02\\,\\%$; variación: $(0{,}05-0{,}0302)/1{,}0302\\times100\\simeq+1{,}9$ puntos.\n- Con la inflación observada (6 %): $\\gamma^N=1{,}06\\times1{,}01-1=7{,}06\\,\\%$; variación: $(0{,}05-0{,}0706)/1{,}0706\\times100\\simeq-1{,}9$ puntos.\n\nPor la otra vía: la deuda nominal crece un 5 % y el PIB nominal un 7,06 %, de modo que la ratio pasa a $105/107{,}06=98{,}1\\,\\%$.\n\nLa regla es comparar el tipo nominal con el crecimiento nominal (o el real con el real, pero entonces con el tipo real «ex post», $1{,}05/1{,}06-1\\simeq-0{,}9\\,\\%$, inferior al crecimiento real).\n\nPor qué fallan las demás:\n\n- a) La inflación esperada sí está en el tipo de interés; la no esperada no puede estarlo, porque el tipo se pactó antes.\n- b) Usa el tipo real «ex ante» (3 %), que no es el que acaba pagando la deuda, y supone que los intereses nominales de una deuda ya emitida suben con la inflación.\n- c) La deuda no solo se deprecia en términos reales: también devenga un 5 % de intereses. El efecto neto es de unos 2 puntos, no de 6."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Dinámica de la deuda: formulación analítica (inflación no esperada)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313908,
+   "estado": "publicada",
+   "enunciado": "Un Gobierno sigue la regla fiscal $\\tau_t-g_t=\\psi\\,d_{t-1}$: su superávit primario, en porcentaje del PIB, es proporcional a la ratio de deuda con que empieza el año. El tipo de interés real de la deuda es del 3 %, el crecimiento real del 1 %, no hay señoreaje y la deuda inicial es positiva. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con $\\psi=0{,}025$ la ratio de deuda desciende de forma continuada, aunque el superávit primario no llegue a cubrir los intereses reales de la deuda.",
+    "b": "Con $\\psi=0{,}01$ la ratio de deuda se estabiliza, porque basta cualquier respuesta positiva del superávit primario a la deuda para hacerla sostenible.",
+    "c": "La ratio de deuda solo deja de crecer si $\\psi\\geq0{,}03$, es decir, si el superávit primario cubre por completo los intereses reales de la deuda.",
+    "d": "Con un tipo de interés superior al crecimiento, ninguna regla de este tipo estabiliza la ratio de deuda: se necesita un superávit fijo, que no dependa de ella."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con la regla, $d_t=\\left(\\frac{1+r}{1+\\gamma_Y}-\\psi\\right)d_{t-1}$. La ratio baja si $\\psi>\\frac{r-\\gamma_Y}{1+\\gamma_Y}=\\frac{0{,}02}{1{,}01}\\simeq0{,}0198$: el superávit solo tiene que cubrir el tipo de interés neto del crecimiento, no los intereses enteros. Con $\\psi=0{,}025$, el factor es $0{,}995$ y la ratio desciende año a año.",
+    "desarrollo": "La dinámica de la deuda sin señoreaje es $d_t=(g_t-\\tau_t)+\\frac{1+r}{1+\\gamma_Y}\\,d_{t-1}$. Sustituyendo la regla:\n\n$$d_t=\\left(\\frac{1{,}03}{1{,}01}-\\psi\\right)d_{t-1}=(1{,}0198-\\psi)\\,d_{t-1}.$$\n\n- $\\psi=0{,}025$: factor $0{,}9948<1$. La ratio baja cerca de un 0,5 % cada año.\n- $\\psi=0{,}01$: factor $1{,}0098>1$. La ratio crece sin límite.\n- Umbral: $\\psi=(r-\\gamma_Y)/(1+\\gamma_Y)\\simeq0{,}0198$.\n\nEs la condición de Bohn (1998): la deuda es sostenible si el superávit primario responde lo bastante a la deuda, y es lo que Leeper llama una política fiscal pasiva.\n\nPor qué fallan las demás:\n\n- b) No basta con que la respuesta sea positiva: tiene que superar el diferencial entre el tipo de interés y el crecimiento. Con $\\psi=0{,}01$ el superávit crece con la deuda, pero menos que la bola de nieve.\n- c) No hace falta cubrir todos los intereses: el crecimiento «paga» una parte. Basta con $\\psi>0{,}0198$.\n- d) Es al revés: con $r>\\gamma_Y$, un superávit fijo solo estabiliza la deuda en un nivel concreto, que además es inestable; una regla que responde a la deuda la estabiliza desde cualquier nivel."
+   },
+   "dificultad": 2,
+   "apartado": "II.6 Otras aproximaciones al análisis de la sostenibilidad (función de reacción fiscal de Bohn)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313909,
+   "estado": "publicada",
+   "enunciado": "En una economía en senda estable, la base monetaria se mantiene en el 10 % del PIB nominal, el PIB real crece un 3 % al año y la inflación es del 2 %. Aproximadamente, ¿cuánto señoreaje obtiene cada año el sector público y qué parte de él es impuesto inflacionario?",
+   "opciones": {
+    "a": "Un 0,2 % del PIB, todo él impuesto inflacionario: sin inflación, el banco central no obtendría ningún señoreaje.",
+    "b": "Un 0,5 % del PIB, todo él impuesto inflacionario: el señoreaje es la pérdida de valor de los saldos del público.",
+    "c": "Un 0,5 % del PIB, del que 0,2 puntos son impuesto inflacionario y el resto, aumento de los saldos reales.",
+    "d": "Un 0,3 % del PIB, del que 0,2 puntos son impuesto inflacionario y el resto, aumento de los saldos reales."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El señoreaje es el dinero nuevo en términos reales. Para que la base siga en el 10 % del PIB nominal tiene que crecer como este, en torno al 5 %: $0{,}10\\times0{,}05\\simeq0{,}5\\,\\%$ del PIB. De ahí, el impuesto inflacionario es la pérdida de valor de los saldos existentes, $0{,}10\\times0{,}02\\simeq0{,}2$ puntos, y el resto, unos 0,3 puntos, el aumento de los saldos reales que demanda una economía que crece.",
+    "desarrollo": "La descomposición:\n\n$$\\frac{M_t-M_{t-1}}{P_t}=\\left(\\frac{M_t}{P_t}-\\frac{M_{t-1}}{P_{t-1}}\\right)+\\frac{\\pi_t}{1+\\pi_t}\\,\\frac{M_{t-1}}{P_{t-1}}.$$\n\n- Crecimiento del dinero: el del PIB nominal, $1{,}03\\times1{,}02-1=5{,}06\\,\\%$.\n- Señoreaje sobre el PIB: $0{,}10\\times0{,}0506/1{,}0506\\simeq0{,}48\\,\\%$.\n- Impuesto inflacionario: $\\frac{0{,}02}{1{,}02}\\times0{,}10/1{,}03\\simeq0{,}19\\,\\%$ del PIB.\n- Aumento de los saldos reales: los saldos reales crecen un 3 %, como la producción: $0{,}10\\times0{,}03/1{,}03\\simeq0{,}29\\,\\%$ del PIB.\n\nSuma: $0{,}19+0{,}29=0{,}48$.\n\nPor qué fallan las demás:\n\n- a) Identifica señoreaje e impuesto inflacionario. Solo coinciden si la demanda de saldos reales no cambia; en una economía que crece hay señoreaje sin inflación.\n- b) La cuantía es correcta, pero atribuye a la inflación también lo que se debe al crecimiento de la demanda de dinero.\n- d) Toma como señoreaje total solo el aumento de los saldos reales (0,3 puntos) y no le suma el impuesto inflacionario."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Señoreaje e impuesto inflacionario",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313910,
+   "estado": "publicada",
+   "enunciado": "La demanda de saldos reales de una economía es $M/P=\\zeta\\,e^{-\\alpha\\,\\pi^e}$, con $\\alpha=4$ y la inflación esperada, $\\pi^e$, medida en tanto por uno por periodo. En estado estacionario, la inflación coincide con la esperada y con el crecimiento del dinero. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El señoreaje crece siempre con la inflación, porque esta es el tipo del impuesto inflacionario: no tiene un máximo.",
+    "b": "El señoreaje es máximo con una inflación del 400 % por periodo, igual a la semielasticidad de la demanda de dinero.",
+    "c": "El señoreaje es máximo con una inflación del 25 %, y cada déficit inferior a ese máximo se financia con una sola tasa de inflación.",
+    "d": "El señoreaje es máximo con una inflación del 25 %: subirla del 30 % al 50 % reduce lo que se recauda con la emisión de dinero."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En estado estacionario el señoreaje es el tipo por la base, $S(\\pi)=\\pi\\,\\zeta\\,e^{-\\alpha\\pi}$, y es máximo cuando $1-\\alpha\\pi=0$: $\\pi^*=1/\\alpha=25\\,\\%$. Por encima, la base (los saldos reales) cae más deprisa de lo que sube el tipo: es la curva de Laffer del señoreaje.",
+    "desarrollo": "Derivando: $S'(\\pi)=\\zeta\\,e^{-\\alpha\\pi}\\,(1-\\alpha\\pi)$, positiva si $\\pi<1/\\alpha$ y negativa si $\\pi>1/\\alpha$. Con $\\alpha=4$, el máximo está en $\\pi^*=0{,}25$.\n\nComprobación numérica (en unidades de $\\zeta$):\n\n- $S(0{,}25)=0{,}25\\,e^{-1}\\simeq0{,}092$;\n- $S(0{,}30)=0{,}30\\,e^{-1{,}2}\\simeq0{,}090$;\n- $S(0{,}50)=0{,}50\\,e^{-2}\\simeq0{,}068$.\n\nPasar del 30 % al 50 % de inflación reduce el señoreaje en torno a una cuarta parte.\n\nPor qué fallan las demás:\n\n- a) Olvida que la base del impuesto, los saldos reales, cae cuando sube la inflación.\n- b) El máximo está en el inverso de la semielasticidad, $1/\\alpha$, no en $\\alpha$.\n- c) Un déficit menor que el máximo puede financiarse con dos tasas de inflación, una a cada lado de la curva (una baja y otra alta); uno mayor que el máximo no puede financiarse con dinero."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Hiperinflación: el modelo de Cagan (curva de Laffer del señoreaje)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313911,
+   "estado": "publicada",
+   "enunciado": "En la tipología de Leeper (1991), considere un régimen en el que el banco central sube el tipo de interés nominal menos que uno a uno cuando sube la inflación y el Gobierno mantiene una senda de superávits primarios que no responde al nivel de la deuda. Este régimen:",
+   "opciones": {
+    "a": "Es de dominación fiscal: la restricción intertemporal del sector público se cumple mediante el señoreaje o el ajuste del nivel de precios.",
+    "b": "Es de dominación monetaria: el banco central determina la inflación y la autoridad fiscal acaba ajustando sus superávits a la deuda.",
+    "c": "Carece de equilibrio estable: ninguna de las dos autoridades cede y la deuda sigue una senda explosiva, el juego de la gallina.",
+    "d": "Presenta indeterminación: las dos políticas se acomodan y hay múltiples sendas del nivel de precios compatibles con el equilibrio."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Una política monetaria que no cumple el principio de Taylor es pasiva, y una política fiscal cuyos superávits no responden a la deuda es activa. Es la combinación de dominación fiscal: como los superávits están dados, la restricción intertemporal la cierran el señoreaje (aritmética monetarista desagradable) o el nivel de precios, que ajusta el valor real de la deuda nominal (teoría fiscal del nivel de precios).",
+    "desarrollo": "Leeper llama activa a la política que persigue su objetivo sin atender a la restricción del sector público y pasiva a la que se ajusta para que se cumpla:\n\n- monetaria activa: $\\phi_\\pi>1$; pasiva: $\\phi_\\pi<1$;\n- fiscal pasiva: el superávit primario responde lo bastante a la deuda para estabilizarla; activa: no responde.\n\nLas cuatro combinaciones:\n\n- monetaria activa y fiscal pasiva: dominación monetaria (régimen ricardiano);\n- monetaria pasiva y fiscal activa: dominación fiscal (régimen no ricardiano), el caso del enunciado;\n- las dos activas: no hay equilibrio estable, la deuda es explosiva;\n- las dos pasivas: indeterminación del nivel de precios.\n\nPor qué fallan las demás:\n\n- b) Exigiría un banco central que cumple el principio de Taylor y un Gobierno que ajusta sus superávits.\n- c) Es el caso de las dos políticas activas.\n- d) Es el caso de las dos políticas pasivas."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Dominación monetaria y dominación fiscal (regímenes de Leeper)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313912,
+   "estado": "publicada",
+   "enunciado": "Con dominación fiscal, el saldo primario de un país es nulo y no va a cambiar. El tipo de interés real de la deuda es del 10 %, el crecimiento real es nulo y la deuda en manos del público es el 50 % del PIB. El banco central puede (i) aportar desde hoy el señoreaje que mantiene constante la ratio de deuda, o (ii) no aportar señoreaje durante dos años y, desde entonces, aportar el que estabilice la ratio en el nivel que haya alcanzado. Suponga que esas cuantías de señoreaje son alcanzables. ¿Qué señoreaje anual, en porcentaje del PIB, exige cada opción?",
+   "opciones": {
+    "a": "El 5 % en los dos casos: el señoreaje que estabiliza la deuda depende solo del diferencial entre el tipo de interés y el crecimiento.",
+    "b": "El 5 % desde hoy en la opción (i) y el 6,05 % para siempre en la (ii): la contención monetaria de hoy exige más señoreaje mañana.",
+    "c": "El 5 % desde hoy en la opción (i) y el 15 % para siempre en la (ii): hay que recuperar, además, el señoreaje que no se emitió.",
+    "d": "El 5 % desde hoy en la opción (i) y el 5,5 % para siempre en la (ii): la deuda solo acumula los intereses del primer año."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El señoreaje que estabiliza la deuda es $s=\\frac{r-\\gamma_Y}{1+\\gamma_Y}\\,d$: con el 50 % de deuda, el 5 % del PIB. Sin señoreaje, la deuda crece un 10 % al año: 55 y 60,5 % del PIB al cabo de dos años, y estabilizarla ahí exige el 6,05 % para siempre. Es la aritmética monetarista desagradable de Sargent y Wallace.",
+    "desarrollo": "Con saldo primario nulo y sin crecimiento, $d_t=(1+r)\\,d_{t-1}-s_t$.\n\n- Opción (i): $s^*=0{,}10\\times50=5$.\n- Opción (ii): $d_1=1{,}1\\times50=55$; $d_2=1{,}1\\times55=60{,}5$. Desde entonces, $s=0{,}10\\times60{,}5=6{,}05$.\n\nCon la fórmula general, $s^{\\text{después}}-s^*=\\left[\\left(\\frac{1+r}{1+\\gamma_Y}\\right)^{\\bar t}-1\\right](s^*-s^{\\text{antes}})=(1{,}1^2-1)\\times(5-0)=1{,}05$.\n\nCada punto de señoreaje que se ahorra hoy cuesta más señoreaje mañana, y para siempre. Y como la demanda de dinero depende de la inflación esperada, la mayor inflación futura puede adelantarse al presente.\n\nPor qué fallan las demás:\n\n- a) El diferencial es el mismo, pero se aplica a una deuda mayor: la que ha crecido mientras el banco central no monetizaba.\n- c) No hay que «recuperar» el señoreaje no emitido de una vez: lo que se paga es el interés, a perpetuidad, de la deuda que se ha acumulado en su lugar.\n- d) La deuda acumula intereses los dos años, y los del segundo se calculan sobre la deuda ya aumentada."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Dominación monetaria y dominación fiscal (aritmética monetarista desagradable)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313913,
+   "estado": "publicada",
+   "enunciado": "Un banco central compra deuda pública en el mercado secundario y la paga con reservas bancarias, que remunera a su tipo de interés oficial, positivo. Desde el punto de vista del sector público consolidado (el Tesoro y el banco central), esa operación:",
+   "opciones": {
+    "a": "Reduce la deuda consolidada en la cuantía comprada y sin coste alguno, porque la deuda en poder del banco central es deuda del sector público consigo mismo.",
+    "b": "Es financiación monetaria del déficit en sentido estricto, equivalente al dinero helicóptero, porque la base monetaria aumenta en el importe de la compra.",
+    "c": "Sustituye bonos por pasivos a un día remunerados al tipo oficial: acorta el plazo de la deuda consolidada, sin reducir su cuantía, y hace depender su coste del tipo oficial.",
+    "d": "No tiene ningún efecto sobre las cuentas públicas, cualquiera que sea la evolución posterior de los tipos de interés, por el teorema de irrelevancia de Wallace."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Los bonos que compra el banco central desaparecen del balance consolidado, pero en su lugar aparecen reservas, que son un pasivo del sector público y pagan el tipo oficial. El sector público debe lo mismo, a un plazo más corto y a un tipo variable. Habría monetización, y dominación fiscal, si el banco central renunciara a subir los tipos cuando la inflación lo pide para no encarecer esa deuda.",
+    "desarrollo": "En el balance consolidado:\n\n- antes: el público tiene bonos a largo plazo, a tipo fijo;\n- después: los bancos tienen reservas en el banco central, a un día y remuneradas al tipo oficial.\n\nLa cuantía de los pasivos del sector público con el sector privado es la misma. Cambia su composición: el coste pasa a depender del tipo oficial. Por eso, cuando los tipos suben, los bancos centrales que compraron mucha deuda a tipos bajos tienen pérdidas (pagan por las reservas más de lo que rinden los bonos), y esas pérdidas reducen los beneficios que transfieren a los Tesoros.\n\nPor qué fallan las demás:\n\n- a) La primera parte es cierta, pero las reservas con que se pagan los bonos también son deuda del sector público, y remunerada: no hay reducción gratuita.\n- b) El dinero helicóptero es una transferencia financiada con dinero que no se va a retirar y que no devenga intereses. Aquí la base aumenta a cambio de un activo, puede revertirse y las reservas se remuneran.\n- d) El teorema de irrelevancia dice que cambiar bonos por dinero no tiene efectos si no cambia la política fiscal ni las oportunidades de los agentes; pero el coste financiero del sector público consolidado pasa a depender del tipo oficial, así que la evolución de los tipos sí afecta a las cuentas públicas."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Dominación monetaria y dominación fiscal (la monetización hoy)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

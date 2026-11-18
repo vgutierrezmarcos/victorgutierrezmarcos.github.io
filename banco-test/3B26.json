@@ -1,0 +1,74 @@
+{
+ "tema": "3.B.26",
+ "preguntas": [
+  {
+   "id": 322601,
+   "estado": "publicada",
+   "enunciado": "El precio de un activo incorpora una burbuja racional como las de Blanchard y Watson (1982): en cada periodo, la burbuja estalla (su valor pasa a ser cero) con probabilidad 0,1 y sobrevive con probabilidad 0,9. Los inversores son neutrales al riesgo, tienen expectativas racionales y el tipo de interés es constante, del 8 %. Mientras no estalla, el componente de burbuja debe crecer cada periodo a una tasa del:",
+   "opciones": {
+    "a": "8 %",
+    "b": "20 %",
+    "c": "18 %",
+    "d": "10 %"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El componente de burbuja tiene que crecer en promedio al tipo de interés: $\\mathbb{E}_t[P^{\\mathrm b}_{t+1}]=(1+r)P^{\\mathrm b}_t$. Si con probabilidad 0,1 pasa a valer cero, cuando sobrevive debe crecer a la tasa $g$ que cumple $0{,}9\\,(1+g)=1{,}08$, es decir, $g=20$ %: más que el tipo de interés, para compensar el riesgo de estallido.",
+    "desarrollo": "La condición de arbitraje con inversores neutrales al riesgo, $P_t=\\mathbb{E}_t[D_{t+1}+P_{t+1}]/(1+r)$, admite como solución el valor fundamental más un componente de burbuja $P^{\\mathrm b}_t$ que cumpla\n\n$$\\mathbb{E}_t\\left[P^{\\mathrm b}_{t+1}\\right]=(1+r)\\,P^{\\mathrm b}_t.$$\n\nSi la burbuja sobrevive con probabilidad $q=0{,}9$ y entonces vale $(1+g)P^{\\mathrm b}_t$, y con probabilidad $0{,}1$ vale cero:\n\n$$0{,}9\\,(1+g)\\,P^{\\mathrm b}_t+0{,}1\\cdot0=1{,}08\\,P^{\\mathrm b}_t\\;\\Rightarrow\\;1+g=\\frac{1{,}08}{0{,}9}=1{,}2.$$\n\nComprobación: quien compra 100 de burbuja espera $0{,}9\\times120+0{,}1\\times0=108$, justo el 8 % que le daría el activo sin riesgo.\n\nPor qué fallan las demás:\n\n- a) El 8 % es el crecimiento esperado, contando el estallido. Si la burbuja creciera solo al 8 % mientras dura, su rentabilidad esperada sería $0{,}9\\times1{,}08-1=-2{,}8$ %, y nadie la mantendría.\n- c) El 18 % sale de sumar el tipo de interés y la probabilidad de estallido; es una aproximación que se queda corta, porque la compensación es multiplicativa: $0{,}9\\times1{,}18=1{,}062<1{,}08$.\n- d) El 10 % es la probabilidad de estallido, no una tasa de crecimiento: $0{,}9\\times1{,}10=0{,}99$, con lo que el inversor esperaría perder."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Teorías: las burbujas (burbuja racional que puede estallar)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322602,
+   "estado": "publicada",
+   "enunciado": "Según la regla clásica de Bagehot (1873) para el prestamista de última instancia, ante un pánico bancario el banco central debe prestar:",
+   "opciones": {
+    "a": "Sin límite y a un tipo inferior al de mercado a cualquier banco que lo solicite, para abaratar su financiación mientras dure el pánico.",
+    "b": "Cantidades limitadas y anunciadas de antemano a los bancos solventes, sin exigirles garantías, para no agravar su falta de liquidez.",
+    "c": "Con preferencia a los bancos insolventes, a un tipo de penalización, porque son los únicos que no logran financiarse en el mercado.",
+    "d": "Sin límite a los bancos solventes que se han quedado sin liquidez, contra buenas garantías y a un tipo de interés de penalización."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La regla de Bagehot tiene tres partes: prestar sin límite, para que nadie dude de que habrá liquidez; solo a bancos solventes y contra buenas garantías, para no rescatar a quien ha perdido su capital, y a un tipo de penalización, para que nadie recurra al banco central en tiempos normales.",
+    "desarrollo": "El pánico es un problema de liquidez: un banco solvente no puede devolver a la vez todos sus depósitos porque sus activos son a largo plazo y difíciles de vender. El prestamista de última instancia rompe el mal equilibrio si los depositantes saben que el banco tendrá liquidez. Cada elemento de la regla responde a un motivo:\n\n- sin límite: una ayuda limitada no elimina el incentivo a retirar antes que los demás;\n- a los solventes y con buenas garantías: el banco central da liquidez, no capital; el banco insolvente debe resolverse, no financiarse;\n- con penalización: limita el riesgo moral y hace que el banco acuda antes al mercado.\n\nLa dificultad práctica es distinguir, en plena crisis, la iliquidez de la insolvencia; de ahí la «ambigüedad constructiva» de los bancos centrales sobre a quién ayudarán.\n\nPor qué fallan las demás:\n\n- a) Falla en el tipo (debe ser de penalización, no reducido) y en los destinatarios (solo los solventes y con garantías): así se subvencionaría la asunción de riesgos.\n- b) Falla en el límite y en las garantías: una cantidad tasada invita a correr para llegar antes de que se agote, y prestar sin garantías expone al banco central a pérdidas.\n- c) Invierte el criterio de solvencia: prestar a los insolventes es un rescate encubierto, que corresponde en su caso al Tesoro o a la autoridad de resolución."
+   },
+   "dificultad": 1,
+   "apartado": "II.3 La red de seguridad y sus costes: el prestamista de última instancia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322603,
+   "estado": "publicada",
+   "enunciado": "Un banco tiene activos por 100 millones de euros, con una duración modificada de 4, financiados con pasivos por 92 millones, con una duración modificada de 2, y con 8 millones de capital. Si los tipos de interés suben 1 punto porcentual en todos los plazos, el valor económico de su capital varía, aproximadamente, en:",
+   "opciones": {
+    "a": "Una caída de 2,16 millones de euros.",
+    "b": "Una caída de 2 millones de euros.",
+    "c": "Una caída de 0,16 millones de euros.",
+    "d": "Una caída de 4 millones de euros."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El activo pierde $4\\times100\\times0{,}01=4$ millones y el pasivo se reduce en $2\\times92\\times0{,}01=1{,}84$ millones; el capital, que es la diferencia, cae $4-1{,}84=2{,}16$ millones, un 27 % de los 8 iniciales. Equivale a aplicar la brecha de duración, $4-0{,}92\\times2=2{,}16$, al total del activo.",
+    "desarrollo": "La duración modificada mide la variación porcentual del valor de un activo o pasivo por cada punto de variación del tipo de interés: $\\Delta V\\simeq-D^{\\mathrm{mod}}\\,V\\,\\Delta i$.\n\nPrimera vía, partida a partida:\n\n- activo: $-4\\times100\\times0{,}01=-4$ millones;\n- pasivo: $-2\\times92\\times0{,}01=-1{,}84$ millones (el banco debe menos en valor actual);\n- capital: $-4-(-1{,}84)=-2{,}16$ millones.\n\nSegunda vía, con la brecha de duración:\n\n$$\\Delta V_E\\simeq-\\Big[D^{\\mathrm{mod}}_{\\mathrm A}-\\frac{V_D}{V}\\,D^{\\mathrm{mod}}_{\\mathrm P}\\Big]\\,V\\,\\Delta i=-\\big[4-0{,}92\\times2\\big]\\times100\\times0{,}01=-2{,}16.$$\n\nUna subida de un punto se lleva el 27 % del capital: el apalancamiento multiplica el efecto del desajuste de plazos. Es el mecanismo que hundió a Silicon Valley Bank en 2023, con bonos a largo plazo financiados con depósitos a la vista.\n\nPor qué fallan las demás:\n\n- b) Resta las duraciones sin ponderar la del pasivo por su peso en el balance: $(4-2)\\times100\\times0{,}01=2$. Solo sería correcto si el pasivo fuera igual al activo, es decir, sin capital.\n- c) Aplica la diferencia de duraciones al capital y no al activo: $(4-2)\\times8\\times0{,}01=0{,}16$. La brecha se aplica a todo el balance, y por eso el efecto sobre el capital es tan grande.\n- d) Solo cuenta la pérdida del activo y olvida que el valor del pasivo también baja."
+   },
+   "dificultad": 3,
+   "apartado": "III.4 Riesgo de liquidez y de tipo de interés: la brecha de duración",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

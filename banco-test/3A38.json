@@ -1,0 +1,334 @@
+{
+ "tema": "3.A.38",
+ "preguntas": [
+  {
+   "id": 313801,
+   "estado": "publicada",
+   "enunciado": "En un modelo IS-LM de economía cerrada con precios fijos, el consumo es $C=\\overline{C}+c\\,(1-t)\\,Y$, con $c=0{,}8$ y $t=0{,}25$; la inversión, $I=\\overline{I}-b\\,i$, con $b=50$, y la demanda de saldos reales, $M/P=kY-h\\,i$, con $k=0{,}5$ y $h=125$. El gasto público aumenta en 30 unidades y se financia con deuda, sin que varíe la oferta monetaria. En el nuevo equilibrio:",
+   "opciones": {
+    "a": "La renta aumenta en 75 unidades y la inversión privada no varía.",
+    "b": "La renta aumenta en 50 unidades y la inversión privada cae en 10.",
+    "c": "La renta aumenta en 50 unidades y la inversión privada cae en 25.",
+    "d": "La renta aumenta en 150 unidades y la inversión privada cae en 10."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El multiplicador del gasto en el IS-LM es $1/[1-c(1-t)+b\\,k/h]=1/(0{,}4+0{,}2)=1{,}67$: la renta sube $30\\times1{,}67=50$. El término $b\\,k/h$ es la expulsión: la renta eleva la demanda de dinero, el tipo de interés sube $k\\,\\Delta Y/h=0{,}2$ y la inversión cae $b\\times0{,}2=10$.",
+    "desarrollo": "Paso a paso:\n\n- propensión a consumir sobre la renta: $c(1-t)=0{,}8\\times0{,}75=0{,}6$;\n- término de expulsión: $b\\,k/h=50\\times0{,}5/125=0{,}2$, que se suma en el denominador;\n- multiplicador: $1/(1-0{,}6+0{,}2)=1/0{,}6\\simeq1{,}67$, y $\\Delta Y=30/0{,}6=50$;\n- de la LM, con $M/P$ dado, $\\Delta i=k\\,\\Delta Y/h=0{,}5\\times50/125=0{,}2$, y $\\Delta I=-b\\,\\Delta i=-10$.\n\nComprobación por la demanda: $\\Delta C+\\Delta I+\\Delta G=0{,}6\\times50-10+30=50$.\n\nPor qué fallan las demás:\n\n- a) 75 es lo que da el multiplicador simple, $1/[1-c(1-t)]=2{,}5$, que solo vale si el tipo de interés no sube (LM horizontal o dinero que acompaña al gasto). Aquí la oferta monetaria no cambia.\n- c) La renta es la correcta, pero la inversión no cae en la diferencia entre 75 y 50: esos 25 son la renta que se pierde por la expulsión (10 de inversión multiplicados por 2,5), no la caída de la inversión.\n- d) 150 sale de restar el término $b\\,k/h$ en el denominador, $1/(0{,}4-0{,}2)=5$, o de olvidar los impuestos y la expulsión, $1/(1-0{,}8)=5$. La expulsión reduce el multiplicador, no lo aumenta."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Debate tradicional con el marco IS-LM (multiplicador y expulsión)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313802,
+   "estado": "publicada",
+   "enunciado": "Una economía pequeña mantiene un tipo de cambio fijo y su banco central no esteriliza las intervenciones en el mercado de divisas. En el modelo IS-LM-BP con precios fijos, la curva BP es creciente y tiene más pendiente que la LM. Si el Gobierno aumenta el gasto público:",
+   "opciones": {
+    "a": "Donde la nueva IS corta a la LM hay superávit de balanza de pagos: el banco central compra divisas, la oferta monetaria crece y la renta acaba subiendo más que con la oferta monetaria dada.",
+    "b": "La entrada de capital aprecia la moneda, las exportaciones netas caen en la cuantía del gasto y la renta vuelve a su nivel inicial: la expulsión es completa y recae en el sector exterior.",
+    "c": "Donde la nueva IS corta a la LM hay déficit de balanza de pagos: el banco central vende divisas, la oferta monetaria cae y la renta acaba subiendo menos que con la oferta monetaria dada.",
+    "d": "La renta no puede variar: con tipo de cambio fijo solo un nivel de renta es compatible con el equilibrio exterior, y la pérdida de reservas devuelve la economía al punto de partida."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Una BP más inclinada que la LM indica una movilidad del capital baja: la subida del tipo de interés que provoca el gasto atrae menos capital del que hace falta para pagar las importaciones adicionales. Hay déficit exterior, el banco central vende divisas para sostener el tipo de cambio y la oferta monetaria se contrae: la política fiscal es poco eficaz.",
+    "desarrollo": "El gasto desplaza la IS a la derecha. En el corte de la nueva IS con la LM, la renta y el tipo de interés han subido. Qué pasa con la balanza de pagos depende de las pendientes:\n\n- la BP tiene pendiente $m/\\beta_K$ (propensión a importar entre movilidad del capital) y la LM, $k/h$;\n- si la BP es más inclinada que la LM, el punto de corte de la nueva IS con la LM queda por debajo de la BP: el deterioro comercial por la mayor renta supera a la entrada de capital, y hay déficit;\n- con tipo fijo y sin esterilización, el banco central vende divisas, la base monetaria cae y la LM se desplaza a la izquierda hasta pasar por el corte de la nueva IS con la BP. Ahí el tipo de interés es más alto y la renta menor que con la oferta monetaria dada, aunque mayor que la inicial.\n\nPor qué fallan las demás:\n\n- a) Es el caso de movilidad alta (BP más plana que la LM): la entrada de capital domina, hay superávit y el dinero acompaña al gasto.\n- b) Es el caso de tipo de cambio flexible con movilidad perfecta. Con tipo fijo la moneda no se aprecia: lo que se ajusta es la cantidad de dinero.\n- d) Es el caso sin movilidad del capital (BP vertical). Con una BP creciente hay distintas combinaciones de renta y tipo de interés que equilibran la balanza de pagos, y la renta final es mayor que la inicial."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Debate tradicional con el marco IS-LM (economía abierta: Mundell-Fleming con movilidad imperfecta)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:313802.webp",
+     "alt": "Plano con la renta Y en abscisas y el tipo de interés i en ordenadas, sin escala. Tres rectas se cortan en el punto A: la IS, decreciente; la LM, creciente; y la BP, creciente y con más pendiente que la LM. Solo se representa el equilibrio inicial: no hay curvas desplazadas ni zonas rotuladas.",
+     "ancho": 540
+    }
+   ]
+  },
+  {
+   "id": 313803,
+   "estado": "publicada",
+   "enunciado": "En un modelo de ciclo real (competencia perfecta, precios y salarios flexibles) con un hogar representativo de vida infinita para el que el ocio es un bien normal, el gasto público, que ni da utilidad ni es productivo, aumenta de forma persistente y se financia con impuestos de suma fija. En el momento del aumento:",
+   "opciones": {
+    "a": "El consumo privado no varía, porque los hogares ricardianos solo reaccionan a cambios en la financiación, y la producción aumenta en la cuantía del gasto.",
+    "b": "La demanda de trabajo se desplaza a la derecha, por lo que suben el salario real y el empleo, y el consumo privado aumenta con la renta.",
+    "c": "Ni el empleo ni la producción varían: con precios flexibles, el gasto público expulsa uno a uno consumo e inversión privados.",
+    "d": "Los hogares, más pobres, consumen menos y ofrecen más trabajo: el salario real baja y la producción sube, aunque menos que el gasto."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En el ciclo real el gasto público actúa por un efecto riqueza negativo: los hogares saben que lo pagarán, reducen el consumo y el ocio, y la oferta de trabajo aumenta. Con la demanda de trabajo dada, el salario real baja y suben el empleo y la producción; como el gasto expulsa consumo e inversión, el multiplicador es positivo y menor que 1.",
+    "desarrollo": "El mecanismo, por pasos:\n\n- el gasto se paga con impuestos, hoy o mañana, y su valor actual reduce la riqueza de los hogares;\n- el consumo y el ocio son bienes normales: los hogares reducen los dos, así que ofrecen más trabajo a cada salario;\n- la demanda de trabajo (el producto marginal) no ha cambiado: con más oferta, el salario real baja y el empleo sube;\n- con más horas, la producción sube, pero menos que el gasto, porque caen el consumo y la inversión privados.\n\nPor qué fallan las demás:\n\n- a) La equivalencia ricardiana dice que no importa cómo se financie un gasto dado, no que el gasto sea inocuo: un gasto mayor empobrece a los hogares y su consumo cae. Un multiplicador igual a 1 con el consumo constante es propio de un modelo de precios rígidos en el que el banco central mantiene el tipo de interés real.\n- b) Es el mecanismo keynesiano o neokeynesiano (las empresas atienden más demanda contratando más). Con precios flexibles y un gasto improductivo, la demanda de trabajo no se mueve: lo que se desplaza es la oferta, y el salario real baja.\n- c) La expulsión completa solo se da si la oferta de trabajo es inelástica. Si el ocio es un bien normal y las horas responden, el empleo y la producción suben."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Modelo del ciclo real (efecto riqueza del gasto público)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313804,
+   "estado": "publicada",
+   "enunciado": "En un modelo de ciclo real con capital, oferta de trabajo elástica e impuestos de suma fija (como el de Baxter y King, 1993), compare el efecto en el impacto de dos aumentos del gasto público de la misma cuantía inicial: uno que dura un solo periodo y otro muy persistente. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El transitorio apenas reduce la riqueza de los hogares: el consumo y las horas casi no cambian, cae sobre todo la inversión y su multiplicador es mucho menor que el del persistente.",
+    "b": "El transitorio tiene el mayor multiplicador, porque los hogares no llegan a reducir su consumo; el persistente se compensa por entero con menos consumo y no altera la producción.",
+    "c": "Los dos tienen el mismo efecto sobre las horas y la producción, que solo depende de la cuantía inicial del gasto; se distinguen por el reparto de la expulsión entre consumo e inversión.",
+    "d": "El persistente reduce más la inversión que el transitorio, porque el Estado absorbe recursos durante más tiempo; el consumo cae lo mismo en los dos, al ser igual el gasto inicial."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Lo que mueve las horas es el efecto riqueza, y este depende del valor actual de todo el gasto. Un gasto de un periodo casi no cambia la riqueza de toda la vida: los hogares mantienen el consumo y el ocio y lo pagan reduciendo la inversión. Un gasto persistente los empobrece más: trabajan más, la producción sube más y el consumo cae más.",
+    "desarrollo": "Los hogares suavizan el consumo y el ocio: reaccionan a su riqueza de toda la vida, no al gasto de un periodo.\n\n- Gasto transitorio: la riqueza apenas cae, así que el consumo y las horas casi no se mueven. Como la producción tampoco, el gasto se hace sitio a costa de la inversión (los hogares «tiran» de su ahorro). El multiplicador de impacto es casi nulo.\n- Gasto persistente: el valor actual de los impuestos es mucho mayor. El consumo cae más, la oferta de trabajo aumenta más y la producción sube más; la inversión cae menos, porque con más horas durante mucho tiempo el capital es más productivo. Con una calibración habitual, el multiplicador de impacto pasa de valores cercanos a 0 con un gasto de un periodo a en torno a 0,3 con uno muy persistente, y a largo plazo, con un gasto permanente, puede acercarse a 1.\n\nPor qué fallan las demás:\n\n- b) Es al revés: que los hogares no reduzcan su consumo (ni su ocio) es justo lo que hace pequeño el multiplicador del gasto transitorio. El persistente no deja la producción intacta: la eleva a través de las horas.\n- c) El efecto sobre las horas depende de la persistencia, porque depende de la riqueza. No basta con la cuantía inicial.\n- d) Con el gasto persistente la inversión cae menos, no más, y el consumo cae más, no lo mismo."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelo del ciclo real (persistencia del gasto)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313805,
+   "estado": "publicada",
+   "enunciado": "En un modelo neokeynesiano sin capital, $Y_t=C_t+G_t$ y la producción es lineal en el trabajo. El hogar representativo, ricardiano, tiene la utilidad $\\frac{C_t^{1-\\theta}}{1-\\theta}-\\frac{L_t^{1+\\varphi}}{1+\\varphi}$, con $\\theta=2$ y $\\varphi=3$, y el gasto público, que no da utilidad, se financia con impuestos de suma fija y parte de un nivel despreciable frente a la producción ($C\\simeq Y$). ¿Cuál es el multiplicador de un aumento transitorio del gasto público (i) si los precios son plenamente flexibles y (ii) si los precios son rígidos y el banco central mantiene constante el tipo de interés real?",
+   "opciones": {
+    "a": "(i) 0,6 y (ii) 1: con precios flexibles lo determina el peso de $\\varphi$ en $\\theta+\\varphi$.",
+    "b": "(i) 0,4 y (ii) 1: con el tipo de interés real constante, el consumo no varía.",
+    "c": "(i) 0,4 y (ii) 2,5: con el tipo de interés real constante, el consumo aumenta.",
+    "d": "(i) 0 y (ii) 1: con precios flexibles, el gasto expulsa consumo uno a uno."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con precios flexibles solo actúa el efecto riqueza sobre la oferta de trabajo, y el multiplicador es $\\Gamma=\\theta/(\\theta+\\varphi)=2/5=0{,}4$. Con el tipo de interés real constante, la ecuación de Euler deja el consumo donde estaba y, como $Y=C+G$, la producción sube lo mismo que el gasto: el multiplicador es 1.",
+    "desarrollo": "(i) Precios flexibles. El salario real lo fija la productividad (dado el margen), y la oferta de trabajo exige $w_t-p_t=\\theta\\,c_t+\\varphi\\,l_t$ en logaritmos. Con $c_t=y_t-g_t$ (el gasto, medido en proporción de la producción, parte de un nivel despreciable, así que $C\\simeq Y$; si no, el multiplicador sería $\\theta/(\\theta+\\varphi\\,C/Y)$, algo mayor) y $l_t=y_t-a_t$:\n\n$$\\theta\\,(y_t-g_t)+\\varphi\\,(y_t-a_t)=\\text{constante}\\ \\Longrightarrow\\ \\frac{\\partial y_t}{\\partial g_t}=\\frac{\\theta}{\\theta+\\varphi}=\\frac{2}{5}=0{,}4.$$\n\nEl hogar, más pobre, trabaja más, pero el consumo cae: $0{,}4-1=-0{,}6$ por unidad de gasto.\n\n(ii) Tipo de interés real constante. La ecuación de Euler, $c_t=\\mathbb{E}_t[c_{t+1}]-\\frac{1}{\\theta}(r_t-\\rho)$, con el tipo real en su valor de estado estacionario, dice que el consumo de hoy es igual al esperado para mañana, y así hasta el estado estacionario, al que la economía vuelve: el consumo no cambia. Como $Y=C+G$, $\\Delta Y=\\Delta G$.\n\nPor qué fallan las demás:\n\n- a) Invierte los parámetros: 0,6 es $\\varphi/(\\theta+\\varphi)$, lo que cae el consumo, no lo que sube la producción.\n- c) 2,5 es $1/\\Gamma$. Un multiplicador mayor que 1 exige que el consumo suba, y para eso el tipo de interés real tiene que bajar, como ocurre en el límite inferior de los tipos, no mantenerse.\n- d) La expulsión completa exige una oferta de trabajo inelástica ($\\varphi\\to\\infty$). Con $\\varphi=3$ las horas responden al efecto riqueza."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Modelo neokeynesiano (multiplicador y respuesta del banco central)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313806,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Ramsey, Cass y Koopmans, con oferta de trabajo inelástica y la economía en su estado estacionario, el gasto público (improductivo y financiado con impuestos de suma fija) aumenta por sorpresa y los hogares saben que el aumento es temporal. Mientras dura:",
+   "opciones": {
+    "a": "El consumo cae en la misma cuantía que el gasto, y el capital y el tipo de interés permanecen en sus valores de estado estacionario.",
+    "b": "El consumo no cambia, porque la riqueza de toda la vida apenas varía; todo el gasto se financia con menos inversión y el tipo de interés baja.",
+    "c": "El consumo cae menos de lo que sube el gasto, porque los hogares reparten su coste en el tiempo; el capital disminuye y el tipo de interés sube.",
+    "d": "El consumo cae más de lo que sube el gasto, porque los hogares ahorran para los impuestos futuros; el capital aumenta."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El hogar reparte el coste de un gasto temporal a lo largo del tiempo: reduce su consumo, pero menos de lo que sube el gasto. La diferencia sale del ahorro: mientras dura el gasto, el capital se reduce y, con menos capital, su producto marginal (el tipo de interés) es mayor. Cuando el gasto termina, la economía vuelve al estado estacionario inicial.",
+    "desarrollo": "El gasto se resta de la acumulación de capital: $\\dot{\\tilde k}=f(\\tilde k)-\\tilde c-\\tilde G-(n+g+\\delta)\\,\\tilde k$.\n\n- Si el aumento fuera permanente, la riqueza caería en el valor actual de todo el gasto y el consumo bajaría, de una vez y para siempre, lo mismo que sube el gasto: el capital y el tipo de interés no cambiarían (expulsión completa del consumo).\n- Si es temporal, la riqueza cae menos. El hogar suaviza: el consumo salta hacia abajo menos que el gasto y, mientras este dura, la economía consume y gasta más de lo que produce neto de la inversión de reposición, de modo que el capital baja. Con menos capital, $r=f'(\\tilde k)-\\delta$ sube. El consumo no puede dar un salto previsible cuando el gasto termina: en ese momento la economía está justo sobre la senda de silla y vuelve poco a poco al estado estacionario inicial.\n\nPor qué fallan las demás:\n\n- a) Es el efecto de un aumento permanente.\n- b) El consumo sí cae (la riqueza baja algo), y el tipo de interés sube, no baja, porque el capital disminuye.\n- d) Los impuestos de suma fija que pagan el gasto ya están en la restricción intertemporal: el hogar no reduce el consumo más que el gasto, y el capital cae, no aumenta."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Agente representativo de horizonte infinito (gasto permanente y temporal)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313807,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Ramsey, Cass y Koopmans, la producción por unidad de trabajo eficiente es $f(\\tilde k)=\\tilde k^{1/2}$ y el capital no se deprecia. La economía está en su estado estacionario sin impuestos cuando el Estado introduce, de forma permanente, un impuesto del 20 % sobre las rentas del capital y devuelve la recaudación a los hogares como transferencias de suma fija. En el nuevo estado estacionario, respecto del inicial:",
+   "opciones": {
+    "a": "El capital por unidad de trabajo eficiente es un 36 % menor y la producción un 20 % menor; el rendimiento del capital neto de impuestos es el mismo.",
+    "b": "El capital por unidad de trabajo eficiente es un 20 % menor y la producción un 10 % menor; el rendimiento del capital neto de impuestos es un 20 % menor.",
+    "c": "El capital y la producción son los mismos, porque la recaudación se devuelve a los hogares y su riqueza no varía; solo cambia la composición de su renta.",
+    "d": "El capital por unidad de trabajo eficiente y la producción son un 36 % menores; el rendimiento bruto del capital es el mismo y el neto, un 20 % menor."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En el estado estacionario la ecuación de Euler fija el rendimiento neto: $(1-\\tau_K)\\,f'(\\tilde k^*)=\\rho+\\theta g$. Con el impuesto, el rendimiento bruto tiene que subir a $1/0{,}8=1{,}25$ veces el inicial; como $f'(\\tilde k)=\\tfrac12\\tilde k^{-1/2}$, el capital pasa a $0{,}8^2=0{,}64$ veces el inicial y la producción, a $0{,}64^{1/2}=0{,}8$ veces.",
+    "desarrollo": "Con $\\delta=0$, la condición de consumo constante por unidad de trabajo eficiente es\n\n$$(1-\\tau_K)\\,f'(\\tilde k^*)=\\rho+\\theta g\\quad\\Longrightarrow\\quad f'(\\tilde k^*)=\\frac{\\rho+\\theta g}{1-\\tau_K}.$$\n\n- El lado derecho de la primera expresión no depende del impuesto: a largo plazo el rendimiento neto es el mismo, y es el rendimiento bruto el que sube, un 25 % ($1/0{,}8$).\n- $f'(\\tilde k)=\\tfrac12\\tilde k^{-1/2}$: para que suba un 25 %, $\\tilde k^{-1/2}$ se multiplica por $1{,}25$ y $\\tilde k$ por $1/1{,}25^2=0{,}8^2=0{,}64$. El capital cae un 36 %.\n- La producción es $\\tilde k^{1/2}$: se multiplica por $0{,}8$. Cae un 20 %.\n\nComprobación por otra vía: con Cobb-Douglas, $\\tilde k^*\\propto(1-\\tau_K)^{1/(1-\\alpha)}=0{,}8^{2}=0{,}64$ e $\\tilde y^*\\propto(1-\\tau_K)^{\\alpha/(1-\\alpha)}=0{,}8$.\n\nPor qué fallan las demás:\n\n- b) Supone que el capital cae en la proporción del impuesto y que el rendimiento neto absorbe el gravamen. A largo plazo la oferta de capital es infinitamente elástica al rendimiento neto: este no cambia y todo el ajuste recae en la cantidad de capital (y, con ella, en los salarios).\n- c) Devolver la recaudación neutraliza el efecto renta, no el efecto sustitución: el impuesto reduce el rendimiento de ahorrar y desplaza el lugar de consumo constante. Un impuesto de suma fija no cambiaría el capital; uno sobre las rentas del capital, sí.\n- d) El capital cae un 36 %, pero la producción no es lineal en el capital, y es el rendimiento neto, no el bruto, el que vuelve a su valor."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Agente representativo de horizonte infinito (impuesto sobre las rentas del capital)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313808,
+   "estado": "publicada",
+   "enunciado": "Sobre el resultado de Chamley (1986) y Judd (1985) acerca de la imposición de las rentas del capital en modelos con hogares de horizonte infinito, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Solo se obtiene si el Estado dispone de impuestos de suma fija; si debe recurrir a impuestos distorsionantes sobre el trabajo, el tipo óptimo sobre el capital a largo plazo es positivo.",
+    "b": "Implica que tampoco conviene gravar el capital ya instalado en el momento inicial, pues ese gravamen es el que más distorsiona las decisiones de ahorro de los hogares.",
+    "c": "Descansa en que, en el estado estacionario, la oferta de capital es muy poco sensible a su rendimiento neto, de modo que el impuesto lo soportan íntegramente sus propietarios.",
+    "d": "Un tipo constante sobre las rentas del capital grava el consumo futuro a un tipo implícito que crece con el horizonte y, a largo plazo, su carga se traslada al trabajo vía salarios."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El impuesto óptimo sobre las rentas del capital a largo plazo es nulo porque un tipo constante abre entre el consumo de hoy y el de cada fecha futura una cuña que crece sin límite con la distancia, y porque, con una oferta de capital infinitamente elástica en el estado estacionario, el impuesto acaba reduciendo el capital y los salarios: es mejor gravar el trabajo directamente.",
+    "desarrollo": "Dos intuiciones del resultado:\n\n- un euro ahorrado da $(1+r)^T$ euros dentro de $T$ periodos sin impuesto y $[1+(1-\\tau_K)\\,r]^T$ con él: el cociente tiende a cero cuando $T$ crece. Es como gravar el consumo de cada fecha futura a un tipo cada vez mayor, cuando la regla de Ramsey pide no gravar de forma muy distinta bienes parecidos;\n- en el estado estacionario, el rendimiento neto queda fijado por las preferencias, $(1-\\tau_K)(f'(\\tilde k^*)-\\delta)=\\rho+\\theta g$: la oferta de capital es infinitamente elástica. El impuesto reduce el capital hasta que el rendimiento bruto sube lo necesario, y con menos capital el salario es menor. La carga recae en el trabajo, con una distorsión añadida.\n\nPor qué fallan las demás:\n\n- a) El resultado se obtiene precisamente cuando el Estado tiene que financiar su gasto con impuestos distorsionantes (Chamley) y aunque quiera redistribuir hacia los trabajadores (Judd). Con impuestos de suma fija no habría problema que resolver.\n- b) Al contrario: el capital ya instalado no puede escapar, y gravarlo equivale a un impuesto de suma fija. La política óptima lo grava al principio y promete no gravar el futuro; de ahí su inconsistencia temporal.\n- c) Es justo al revés: la oferta de capital es infinitamente elástica a largo plazo, y por eso sus propietarios no soportan el impuesto."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Agente representativo de horizonte infinito (resultado de Chamley y Judd)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313809,
+   "estado": "publicada",
+   "enunciado": "En un modelo de generaciones solapadas a la Diamond, cada persona vive dos periodos, trabaja solo en el primero y tiene la utilidad $\\ln C^J_t+\\ln C^V_{t+1}$. El salario es 100 en todos los periodos, la población es constante y el factor de interés es $1+r=2$ por periodo (tome el salario y el tipo de interés como dados). Se compara la situación sin pensiones con dos sistemas con una cotización del 10 % del salario: uno de capitalización y otro de reparto. ¿Cuánto ahorro por joven queda disponible para financiar capital (el ahorro privado más, en su caso, el fondo de pensiones) en cada caso?",
+   "opciones": {
+    "a": "50 sin pensiones, 50 con capitalización y 42,5 con reparto.",
+    "b": "50 sin pensiones, 40 con capitalización y 42,5 con reparto.",
+    "c": "50 sin pensiones, 50 con capitalización y 40 con reparto.",
+    "d": "50 sin pensiones, 50 con capitalización y 45 con reparto."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con utilidad logarítmica y $\\beta=1$, el joven consume la mitad de su riqueza de toda la vida. Con capitalización, la riqueza no cambia: el ahorro privado baja a 40, pero el fondo invierte los 10 cotizados (50 en total). Con reparto, la riqueza es $90+10/2=95$, el consumo 47,5 y el ahorro privado $90-47{,}5=42{,}5$; la cotización no se invierte, se paga a los jubilados.",
+    "desarrollo": "En los tres casos el consumo de joven es la mitad de la riqueza de toda la vida (valor actual del salario neto y de la pensión).\n\n- Sin pensiones: riqueza 100, $C^J=50$, ahorro 50.\n- Capitalización: cotiza 10 y recibe $10\\times2=20$ de viejo, cuyo valor actual es 10. Riqueza: $90+10=100$; $C^J=50$; ahorro privado: $90-50=40$. El fondo invierte los 10: ahorro total, 50. El ahorro obligatorio sustituye uno a uno al voluntario.\n- Reparto: cotiza 10 y recibe de viejo la cotización de un joven (población y salario constantes), 10, cuyo valor actual es $10/2=5$. Riqueza: $90+5=95$; $C^J=47{,}5$; ahorro privado: $90-47{,}5=42{,}5$. Nadie invierte la cotización: ahorro total, 42,5.\n\nComprobación con la fórmula del ahorro con reparto: $S=\\frac{\\beta}{1+\\beta}(1-\\tau)w-\\frac{1}{1+\\beta}\\frac{(1+n)\\tau w}{1+r}=45-2{,}5=42{,}5$.\n\nPor qué fallan las demás:\n\n- b) 40 es el ahorro privado con capitalización, pero se pregunta por el ahorro que financia capital, y el fondo de pensiones invierte los 10 restantes. Curiosamente, el ahorro privado es menor con capitalización (40) que con reparto (42,5); lo que distingue a los sistemas es que el reparto no acumula nada.\n- c) Con reparto el ahorro no cae en toda la cotización: la pensión rinde menos que el ahorro (0 % frente al 100 %), el hogar es más pobre y reduce también su consumo.\n- d) 45 solo recoge la menor renta de joven ($0{,}5\\times90$) y olvida que la pensión futura reduce además la necesidad de ahorrar."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Sistemas públicos de pensiones y ahorro (capitalización y reparto en el modelo de Diamond)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313810,
+   "estado": "publicada",
+   "enunciado": "En una economía de generaciones solapadas en estado estacionario, la población crece al 0,5 % anual, la productividad del trabajo al 1,5 % y el tipo de interés real es del 3,5 %. Se introduce un sistema público de pensiones de reparto con un tipo de cotización constante. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es una mejora de Pareto: al reducir el capital, acerca la economía a la regla de oro y ganan todas las generaciones, presentes y futuras.",
+    "b": "Los primeros jubilados cobran sin haber cotizado y las generaciones siguientes obtienen de su cotización un rendimiento, cercano al 2 %, inferior al del capital.",
+    "c": "No altera el ahorro total ni el capital: la cotización obligatoria sustituye uno a uno al ahorro voluntario y rinde el tipo de interés de mercado.",
+    "d": "Rinde a cada cotizante el 3,5 %, porque el Estado puede endeudarse a ese tipo para pagar las pensiones comprometidas con cada generación."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el estado estacionario, el reparto rinde el crecimiento de la masa salarial, $n+g\\simeq2\\,\\%$, y la capitalización, el tipo de interés, 3,5 %. Como $r>n+g$, no se cumple la condición de Aaron y la economía es dinámicamente eficiente: el reparto es una transferencia a favor de la primera generación de jubilados que pagan las siguientes.",
+    "desarrollo": "Con reparto, la pensión de cada jubilado la pagan los cotizantes de ese momento: crece con su número ($n$) y con sus salarios ($g$). Su rendimiento es $(1+n)(1+g)-1\\simeq2\\,\\%$.\n\nLa condición de Aaron dice que el reparto rinde más que la capitalización si $n+g>r$, que es también la condición de ineficiencia dinámica (la economía acumula demasiado capital). Aquí $2\\,\\%<3{,}5\\,\\%$:\n\n- la primera generación de jubilados recibe una pensión sin haber cotizado: gana;\n- las siguientes renuncian a un 3,5 % para obtener un 2 %, y además heredan menos capital, porque el reparto reduce el ahorro: pierden.\n\nPor qué fallan las demás:\n\n- a) Solo sería una mejora de Pareto con ineficiencia dinámica ($r<n+g$). Con $r>n+g$ la economía tiene menos capital que el de la regla de oro, y reducirlo la aleja de ella.\n- c) Describe la capitalización, en la que la cotización se invierte y rinde $r$. Con reparto la cotización no se invierte: el ahorro y el capital caen.\n- d) El rendimiento del reparto no lo fija el tipo de interés, sino la demografía y los salarios. Si el Estado se endeudara para pagar más, trasladaría la carga a generaciones futuras."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Sistemas públicos de pensiones y ahorro (condición de Aaron e ineficiencia dinámica)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313811,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Barro (1990) con tasa de ahorro constante, la producción es $Y=A\\,K^{\\alpha}G^{1-\\alpha}$, con $A=1$ y $\\alpha=0{,}5$; el gasto público productivo se financia con un impuesto proporcional sobre la renta y el presupuesto está equilibrado, $G=\\tau Y$. Los hogares ahorran el 40 % de su renta disponible y $n+\\delta=0{,}06$. Si el tipo impositivo sube del 20 % al 50 %, la tasa de crecimiento del capital por trabajador:",
+   "opciones": {
+    "a": "Baja del 4 % al 0,4 %: un tipo mayor reduce la renta disponible y, con ella, el ahorro y la inversión.",
+    "b": "No varía: con una tecnología lineal en el capital, depende de la tasa de ahorro y no del tamaño del Estado.",
+    "c": "Sube del 0,4 % al 4 %, que es su máximo: con un tipo del 80 % volvería a ser del 0,4 %.",
+    "d": "Sube del 0,4 % al 4 % y seguiría subiendo con tipos mayores, pues el gasto es productivo."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con $G=\\tau Y$, la producción es lineal en el capital, $y=A^{1/\\alpha}\\tau^{(1-\\alpha)/\\alpha}k=\\tau k$, y la tasa de crecimiento es $s(1-\\tau)\\tau-(n+\\delta)$. Con $\\tau=0{,}2$: $0{,}4\\times0{,}16-0{,}06=0{,}4\\,\\%$; con $\\tau=0{,}5$: $0{,}4\\times0{,}25-0{,}06=4\\,\\%$. El máximo está en $\\tau^*=1-\\alpha=0{,}5$; con $\\tau=0{,}8$, de nuevo $0{,}4\\,\\%$.",
+    "desarrollo": "Sustituyendo $G=\\tau Y$ en la función de producción, $Y=K^{0{,}5}(\\tau Y)^{0{,}5}$, de donde $Y=\\tau K$: un modelo $AK$ con productividad $\\tau$. La acumulación es $\\dot k=s(1-\\tau)y-(n+\\delta)k$, y\n\n$$\\gamma_k=s\\,(1-\\tau)\\,\\tau-(n+\\delta).$$\n\n- $\\tau=0{,}2$: $0{,}4\\times0{,}8\\times0{,}2-0{,}06=0{,}064-0{,}06=0{,}004$.\n- $\\tau=0{,}5$: $0{,}4\\times0{,}5\\times0{,}5-0{,}06=0{,}10-0{,}06=0{,}04$.\n- $\\tau=0{,}8$: $0{,}4\\times0{,}2\\times0{,}8-0{,}06=0{,}004$.\n\nEl impuesto tiene dos efectos: reduce la renta disponible, $(1-\\tau)$, y financia el gasto que hace productivo al capital, $\\tau^{(1-\\alpha)/\\alpha}$. El producto es máximo en $\\tau^*=1-\\alpha$: una U invertida.\n\nPor qué fallan las demás:\n\n- a) Solo ve el efecto negativo sobre la renta disponible. Por debajo de $1-\\alpha$ domina el efecto positivo del gasto productivo.\n- b) La tecnología es lineal en el capital, pero su «$A$» depende del tipo impositivo: el tamaño del Estado cambia la tasa de crecimiento.\n- d) Por encima de $\\tau^*=0{,}5$ domina el efecto negativo: la curva baja, y con $\\tau=1$ no quedaría renta para ahorrar."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 La política fiscal y el crecimiento endógeno (Barro, 1990)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313812,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Barro (1990) con hogares de Ramsey y población constante, la producción es $Y=A\\,K^{\\alpha}G^{1-\\alpha}$, donde $G$ es un flujo de gasto público productivo que las empresas toman como dado y que se financia con un impuesto proporcional sobre la renta, con presupuesto equilibrado. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El tipo que maximiza el crecimiento es inferior a $1-\\alpha$, porque con hogares que optimizan el impuesto reduce, además de la renta, el rendimiento neto del ahorro.",
+    "b": "Tras un cambio del tipo impositivo, la economía converge poco a poco a su nueva senda de crecimiento, porque el capital privado tiene rendimientos decrecientes ($\\alpha<1$).",
+    "c": "Con $\\tau=1-\\alpha$ el equilibrio de mercado coincide con el del planificador, porque el gasto público se lleva hasta que su producto marginal iguala su coste.",
+    "d": "Con $\\tau=1-\\alpha$ la economía crece menos que con un planificador; financiar ese mismo gasto con un impuesto de suma fija llevaría al crecimiento óptimo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Aunque el tamaño del gasto sea el óptimo, $G/Y=1-\\alpha$, el impuesto sobre la renta hace que el hogar reciba por su capital solo $(1-\\tau)\\,\\alpha\\,Y/K$, menos que su rendimiento social: ahorra poco y la economía crece menos que con el planificador. Con un impuesto de suma fija el rendimiento privado sería $\\alpha\\,Y/K$, igual al social cuando $G/Y=1-\\alpha$.",
+    "desarrollo": "Con $G=\\tau Y$, $Y=A^{1/\\alpha}\\tau^{(1-\\alpha)/\\alpha}K$. Cada empresa toma $G$ como dado, así que el producto marginal privado del capital es $\\alpha Y/K$, y tras el impuesto el hogar recibe $(1-\\tau)\\,\\alpha\\,A^{1/\\alpha}\\tau^{(1-\\alpha)/\\alpha}$. Con la ecuación de Euler,\n\n$$\\gamma=\\frac{1}{\\theta}\\left[(1-\\tau)\\,\\alpha\\,A^{1/\\alpha}\\tau^{(1-\\alpha)/\\alpha}-\\delta-\\rho\\right].$$\n\nEl planificador elige $G/Y=1-\\alpha$ y tiene en cuenta que la producción neta del gasto es $\\alpha A^{1/\\alpha}(1-\\alpha)^{(1-\\alpha)/\\alpha}K$: ese es el rendimiento social del capital. El hogar, con $\\tau=1-\\alpha$, recibe solo la fracción $\\alpha$ de él. Con un impuesto de suma fija que financiara el mismo gasto recibiría $\\alpha\\,Y/K=\\alpha A^{1/\\alpha}(1-\\alpha)^{(1-\\alpha)/\\alpha}$, exactamente el rendimiento social, y el equilibrio sería óptimo.\n\nPor qué fallan las demás:\n\n- a) El tipo entra en la tasa de crecimiento a través de $(1-\\tau)\\,\\tau^{(1-\\alpha)/\\alpha}$, la misma función que con ahorro constante: el máximo vuelve a estar en $\\tau^*=1-\\alpha$.\n- b) Una vez incorporada la restricción del Estado, la producción es lineal en el capital: es un $AK$, sin dinámica de transición. Los rendimientos son decrecientes en $K$ solo con $G$ dado, pero $G$ crece con $K$.\n- c) En $\\tau=1-\\alpha$ se cumple que $\\partial Y/\\partial G=1$ (el tamaño del gasto es el eficiente), pero la forma de financiarlo distorsiona la acumulación: el equilibrio no es el primer óptimo."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 La política fiscal y el crecimiento endógeno (Barro, 1990: equilibrio y óptimo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313813,
+   "estado": "publicada",
+   "enunciado": "En una economía con tecnología $Y=AK$, con $A=0{,}2$ y $\\delta=0{,}05$, los hogares son de horizonte infinito, con elasticidad de sustitución intertemporal $1/\\theta=0{,}5$ y tasa de preferencia temporal $\\rho=0{,}03$. El Estado introduce un impuesto permanente del 25 % sobre la renta del capital (antes de depreciación) y devuelve la recaudación como transferencias de suma fija. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La tasa de crecimiento cae del 6 % al 3,5 % durante la transición y después vuelve al 6 %, como en un modelo de Ramsey con progreso técnico exógeno.",
+    "b": "La tasa de crecimiento cae del 6 % al 3,5 % para siempre; en un modelo de Ramsey con progreso técnico exógeno, el impuesto solo reduciría el nivel de la renta.",
+    "c": "La tasa de crecimiento cae del 6 % al 4,5 % para siempre, un 25 % menos; en un modelo de Ramsey con progreso técnico exógeno, caería en la misma proporción.",
+    "d": "La tasa de crecimiento no varía, porque la recaudación se devuelve a los hogares; solo cae el nivel del consumo, como en un modelo de Ramsey."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el modelo $AK$ con hogares que optimizan, $\\gamma=[(1-\\tau_K)A-\\delta-\\rho]/\\theta$: sin impuesto, $(0{,}2-0{,}08)/2=6\\,\\%$; con él, $(0{,}15-0{,}08)/2=3{,}5\\,\\%$, y de forma permanente, porque el rendimiento del capital no decrece al acumular. Con rendimientos decrecientes y progreso técnico exógeno, el mismo impuesto reduce el capital y la renta de estado estacionario, pero la tasa de crecimiento a largo plazo sigue siendo la del progreso técnico.",
+    "desarrollo": "En el $AK$, el rendimiento neto del capital es $(1-\\tau_K)A-\\delta$, constante, y la ecuación de Euler da una tasa de crecimiento constante desde el primer momento:\n\n$$\\gamma=\\frac{(1-\\tau_K)\\,A-\\delta-\\rho}{\\theta}.$$\n\n- Sin impuesto: $(0{,}2-0{,}05-0{,}03)/2=0{,}06$.\n- Con $\\tau_K=0{,}25$: $(0{,}75\\times0{,}2-0{,}05-0{,}03)/2=(0{,}15-0{,}08)/2=0{,}035$.\n\nNo hay transición ni vuelta atrás: el rendimiento no se recupera al reducirse el capital, porque no hay rendimientos decrecientes.\n\nEn el modelo de Ramsey, Cass y Koopmans, el impuesto desplaza el lugar de consumo constante: el capital por unidad de trabajo eficiente baja hasta que el rendimiento neto vuelve a ser $\\rho+\\theta g$. Cae el nivel, y a largo plazo la renta per cápita vuelve a crecer a la tasa $g$.\n\nPor qué fallan las demás:\n\n- a) Atribuye al $AK$ la dinámica del modelo con rendimientos decrecientes.\n- c) El impuesto reduce un 25 % el producto marginal bruto, no la tasa de crecimiento: la caída es de 2,5 puntos, de 6 a 3,5. Y en el modelo de Ramsey la tasa de largo plazo no cambia.\n- d) Devolver la recaudación no elimina el efecto sustitución: el rendimiento de ahorrar es menor y la acumulación, más lenta."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 La estructura impositiva y el crecimiento (modelo AK frente a crecimiento exógeno)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313814,
+   "estado": "publicada",
+   "enunciado": "Según los trabajos de la OCDE sobre la estructura impositiva y el crecimiento (Johansson y otros, 2008; Arnold y otros, 2011), para una recaudación total dada, los impuestos se ordenan, de más a menos perjudiciales para el PIB per cápita a largo plazo, así:",
+   "opciones": {
+    "a": "Impuesto de sociedades; impuesto sobre la renta personal; impuestos sobre el consumo; impuestos recurrentes sobre la propiedad inmobiliaria.",
+    "b": "Impuestos sobre el consumo; impuestos recurrentes sobre la propiedad inmobiliaria; impuesto sobre la renta personal; impuesto de sociedades.",
+    "c": "Impuesto sobre la renta personal; impuestos sobre el consumo; impuesto de sociedades; impuestos recurrentes sobre la propiedad inmobiliaria.",
+    "d": "Impuestos recurrentes sobre la propiedad inmobiliaria; impuesto de sociedades; impuestos sobre el consumo; impuesto sobre la renta personal."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La jerarquía de la OCDE coincide con la de la teoría del crecimiento: los impuestos que más frenan son los que gravan el rendimiento de acumular capital (sociedades y, después, renta personal); los del consumo distorsionan menos, y los recurrentes sobre los inmuebles, de base inmóvil, los que menos.",
+    "desarrollo": "La lógica de la ordenación:\n\n- el impuesto de sociedades reduce el rendimiento de la inversión y de la innovación, y su base es muy móvil: es el más dañino;\n- el impuesto sobre la renta personal grava el trabajo y el ahorro, y su progresividad reduce los incentivos a formarse y a emprender;\n- los impuestos sobre el consumo no gravan el rendimiento del ahorro: distorsionan la elección entre consumo y ocio, pero no la acumulación;\n- los impuestos recurrentes sobre la propiedad inmobiliaria recaen sobre una base que no puede desplazarse ni reducirse a corto plazo: son los que menos distorsionan.\n\nEn los modelos de crecimiento endógeno el resultado es el mismo: un impuesto sobre las rentas del capital reduce la tasa de crecimiento, y por eso, para financiar un gasto dado, se prefiere gravar el consumo.\n\nPor qué fallan las demás:\n\n- b) Es exactamente el orden inverso.\n- c) Coloca el impuesto de sociedades entre los menos dañinos, cuando es el que más grava el rendimiento de acumular.\n- d) Coloca como más dañino el impuesto sobre los inmuebles, que es el de base más rígida y, por tanto, el menos distorsionante."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 La estructura impositiva y el crecimiento (jerarquía de la OCDE)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

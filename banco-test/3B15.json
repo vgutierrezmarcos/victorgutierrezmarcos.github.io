@@ -1,0 +1,265 @@
+{
+ "tema": "3.B.15",
+ "preguntas": [
+  {
+   "id": 321501,
+   "estado": "publicada",
+   "enunciado": "Una economía pequeña con movilidad perfecta del capital y precios fijos (modelo IS-LM-BP) sufre perturbaciones independientes y de media cero en la demanda de bienes, con varianza $\\sigma^2_{\\mathrm{IS}}=9$, y en la demanda de dinero, con varianza $\\sigma^2_{\\mathrm{LM}}=3$. La propensión marginal a consumir sobre la renta, neta de impuestos, es $c\\,(1-t)=0{,}6$; la propensión marginal a importar, $m=0{,}35$, y la sensibilidad de la demanda de dinero a la renta, $k=0{,}5$. Si la autoridad solo quiere minimizar la varianza de la renta, ¿qué régimen cambiario debe elegir?",
+   "opciones": {
+    "a": "El tipo flexible: la varianza de la renta es 12, frente a 16 con el tipo fijo.",
+    "b": "El tipo fijo: la varianza de la renta es 12, frente a 16 con el tipo flexible.",
+    "c": "El tipo fijo: dominan las perturbaciones reales, que con ese régimen absorben las reservas.",
+    "d": "Es indiferente: cada régimen bloquea una perturbación y deja pasar la otra, con igual varianza."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con movilidad perfecta, el tipo fijo deja pasar solo la perturbación real, con el multiplicador de la economía abierta, y el flexible solo la monetaria. $\\mathrm{Var}(Y)_{\\text{fijo}}=9/0{,}75^2=16$ y $\\mathrm{Var}(Y)_{\\text{flexible}}=3/0{,}5^2=12$: conviene flotar.",
+    "desarrollo": "Es el análisis de Poole llevado a la economía abierta (Boyer): con movilidad perfecta del capital, fijar el tipo de cambio equivale a fijar el tipo de interés en $i^*$.\n\n- Con tipo fijo, la cantidad de dinero es endógena y la renta sale de la IS con $i=i^*$: la perturbación monetaria la absorben las reservas y la real llega entera, multiplicada por $1/[1-c\\,(1-t)+m]=1/(1-0{,}6+0{,}35)=1/0{,}75$. Por tanto, $\\mathrm{Var}(Y)_{\\text{fijo}}=\\sigma^2_{\\mathrm{IS}}/0{,}75^2=9/0{,}5625=16$.\n- Con tipo flexible, la renta sale de la LM con $i=i^*$, $Y=(M/P+h\\,i^*-\\varepsilon^{\\mathrm{LM}})/k$: la perturbación real la absorbe el tipo de cambio y la monetaria llega a la renta. $\\mathrm{Var}(Y)_{\\text{flexible}}=\\sigma^2_{\\mathrm{LM}}/k^2=3/0{,}25=12$.\n\nComo $12<16$, la renta es más estable con el tipo flexible.\n\nPor qué fallan las demás:\n\n- b) Tiene las cifras correctas, pero cruzadas: atribuye al tipo fijo la varianza del flexible.\n- c) Confunde qué absorbe cada régimen: con tipo fijo las reservas absorben las perturbaciones monetarias, no las reales, que llegan enteras a la renta.\n- d) Cada régimen bloquea, en efecto, una de las dos perturbaciones, pero la que deja pasar tiene una varianza y un multiplicador distintos: aquí 16 frente a 12."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 El origen de las perturbaciones: Poole en economía abierta",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321502,
+   "estado": "publicada",
+   "enunciado": "Un país con sesgo inflacionista fija su tipo de cambio frente a la moneda de un país cuyo banco central es creíble, pero conserva su moneda y la posibilidad de devaluar. En el modelo de Barro y Gordon con dos países, paridad del poder adquisitivo relativa y expectativas racionales, el resultado es que el país:",
+   "opciones": {
+    "a": "Importa de forma permanente la inflación del ancla, aunque a costa de un paro superior al natural.",
+    "b": "Vuelve a su inflación de partida, porque el público anticipa la tentación de devaluar por sorpresa.",
+    "c": "Importa de forma permanente la inflación del ancla, y es el país ancla el que pasa a tener más inflación.",
+    "d": "Consigue de forma duradera un paro inferior al natural, porque puede repetir las devaluaciones por sorpresa."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Un tipo fijo que se puede devaluar no es más creíble que una regla de inflación: con el público esperando la inflación del ancla, al banco central le conviene devaluar por sorpresa; el público lo anticipa y la economía vuelve al equilibrio discrecional. «Atarse las manos» solo funciona si salir del ancla es muy caro.",
+    "desarrollo": "En el modelo, cada banco central, sin poder comprometerse, acaba en el paro natural con un sesgo inflacionista $\\pi^D_j=\\pi^*+(\\alpha/\\gamma_j)\\,(U^n-U^*)$, mayor cuanto menos pesa la inflación en sus preferencias. Con PPA relativa, la moneda del país con más sesgo se deprecia lo que separa las dos inflaciones.\n\nSi el país fija su tipo de cambio y el compromiso fuera creíble, su inflación sería la del ancla con el mismo paro natural: es la ventaja de «atarse las manos» (Giavazzi y Pagano). Pero si conserva la posibilidad de devaluar:\n\n1. con el público esperando la inflación del ancla, el banco central tiene la tentación de devaluar por sorpresa y moverse por su curva de Phillips de corto plazo hacia menos paro y más inflación;\n2. el público, racional, lo anticipa y sube sus expectativas;\n3. la economía vuelve al equilibrio discrecional de partida: misma inflación alta y paro natural.\n\nPor eso hace falta elevar el coste de devaluar hasta hacerlo impensable: una unión monetaria, la dolarización o, en menor medida, una caja de conversión.\n\nPor qué fallan las demás:\n\n- a) Si el ancla fuera creíble, la inflación bajaría sin coste en paro natural: lo que desaparece es el sesgo, no sube el paro. Y con posibilidad de devaluar ni siquiera se importa la inflación.\n- c) El ancla no cambia de inflación si su banco central sigue fijando la política; y el país con sesgo no consigue importar su credibilidad.\n- d) Con expectativas racionales, las sorpresas no pueden repetirse: el paro vuelve a su tasa natural."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Equilibrio interno: inflación y credibilidad (Barro-Gordon y Giavazzi-Pagano)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321503,
+   "estado": "publicada",
+   "enunciado": "En la literatura sobre regímenes cambiarios y fragilidad financiera (Eichengreen y Hausmann), el «pecado original» (original sin) designa:",
+   "opciones": {
+    "a": "La tendencia de bancos y empresas a endeudarse en divisas sin cubrirse porque el tipo fijo actúa como un seguro implícito.",
+    "b": "La tentación del banco central de crear inflación por sorpresa para llevar el paro por debajo de su tasa natural.",
+    "c": "La práctica de declarar un régimen de flotación mientras se interviene para mantener estable el tipo de cambio.",
+    "d": "La incapacidad de un país para endeudarse a largo plazo en su propia moneda, que deja descalces que no puede cubrir."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El pecado original es no poder endeudarse en moneda propia a largo plazo (ni fuera ni, a veces, dentro). Las empresas y el Estado acaban con descalces de moneda (deudas en dólares, ingresos en moneda local) o de plazo que no pueden cubrir, y eso complica tanto fijar como flotar.",
+    "desarrollo": "Eichengreen y Hausmann distinguen tres explicaciones del vínculo entre régimen cambiario y fragilidad financiera:\n\n- riesgo moral: el tipo fijo es un seguro implícito y los agentes se endeudan en divisas sin cubrirse;\n- pecado original: el país no puede endeudarse en su moneda a largo plazo, por su historial de inflación, mercados poco desarrollados o instituciones frágiles; los descalces de moneda o de plazo son inevitables y no hay con quién cubrirse;\n- problemas de compromiso: instituciones que no garantizan el cobro de los contratos.\n\nCon pecado original, todas las salidas son imperfectas: con flotación, la depreciación hunde los balances de quienes deben en dólares; con tipo fijo, defender la moneda exige subir los tipos y lleva al impago a los deudores a corto plazo.\n\nPor qué fallan las demás:\n\n- a) Es la hipótesis del riesgo moral: ahí los agentes podrían cubrirse y no lo hacen; con pecado original no pueden.\n- b) Es el sesgo inflacionista de la discrecionalidad (Barro y Gordon).\n- c) Es el «miedo a flotar» de Calvo y Reinhart, del que el pecado original es una de las causas, no la definición."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Desarrollo de los mercados financieros (Eichengreen y Hausmann)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321504,
+   "estado": "publicada",
+   "enunciado": "Según el paradigma de la moneda dominante (Gopinath y coautores), si el comercio de un país pequeño se factura mayoritariamente en dólares y los precios son rígidos en la moneda de facturación, una depreciación de su moneda frente al dólar, a corto plazo:",
+   "opciones": {
+    "a": "Mejora con rapidez su saldo exterior, porque abarata sus exportaciones en la moneda de cada comprador.",
+    "b": "Se traslada casi entera a los precios en dólares de sus exportaciones, que ganan cuota con rapidez.",
+    "c": "Apenas cambia los precios en dólares de sus exportaciones; el ajuste llega sobre todo por las importaciones.",
+    "d": "No altera ni las exportaciones ni las importaciones, porque tampoco varían los precios internos de lo importado."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con facturación en dólares, los precios de exportación están fijos en dólares y la depreciación no los abarata para el comprador: las exportaciones responden poco y la relación real de intercambio casi no se mueve. Lo que sí se encarece, en moneda nacional, son las importaciones, y por ahí llega el ajuste.",
+    "desarrollo": "En Mundell-Fleming y en el argumento de Friedman, los precios son rígidos en la moneda del productor: una depreciación abarata las exportaciones para el comprador y encarece las importaciones, la relación real de intercambio empeora casi uno a uno y el gasto se desplaza hacia los bienes nacionales.\n\nCon moneda dominante, los precios de exportaciones e importaciones están fijados en dólares:\n\n- las exportaciones cuestan lo mismo en dólares tras la depreciación, así que su volumen responde poco a corto plazo (mejoran los márgenes del exportador, no su competitividad-precio);\n- las importaciones, con precio fijo en dólares, se encarecen en moneda nacional casi en la cuantía de la depreciación, y su volumen cae;\n- la relación real de intercambio apenas se mueve (una depreciación del 1 % la mueve en torno al 0,1 %).\n\nLa depreciación mejora el saldo exterior menos de lo que predice el modelo tradicional, y lo hace sobre todo comprimiendo las importaciones.\n\nPor qué fallan las demás:\n\n- a) Es el resultado con precios fijados en la moneda del productor, justo lo que el paradigma pone en duda.\n- b) Es lo contrario: el traslado a los precios en dólares de las exportaciones es muy bajo a corto plazo.\n- d) Los precios internos de lo importado sí suben (el traslado a los precios de importación es alto), y las importaciones caen."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Equilibrio externo: la facturación en moneda dominante",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321505,
+   "estado": "publicada",
+   "enunciado": "En la clasificación de hecho de los regímenes cambiarios que publica el FMI en su informe anual (AREAER), los países de la zona del euro figuran:",
+   "opciones": {
+    "a": "En flotación libre, porque los miembros de una unión monetaria se clasifican por el régimen de la moneda común.",
+    "b": "En una categoría propia de «unión monetaria», separada tanto de los anclajes duros como de la flotación.",
+    "c": "Entre los anclajes duros, como países sin moneda propia de curso legal, igual que Ecuador o Panamá.",
+    "d": "Entre los anclajes convencionales, porque sus tipos de cambio bilaterales quedaron fijados de forma irrevocable."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La unión monetaria no es una categoría de la clasificación del FMI: sus miembros se clasifican por el régimen de la moneda común. El euro flota libremente frente al resto del mundo, así que los países del euro figuran en flotación libre.",
+    "desarrollo": "Desde 2009 el FMI clasifica los regímenes de hecho en diez categorías agrupadas en cuatro bloques: anclajes duros (sin moneda propia de curso legal y caja de conversión), anclajes blandos (convencional, estabilizado, deslizamiento, similar al deslizamiento y bandas horizontales), flotación (flotación y flotación libre) y una categoría residual (otros regímenes gestionados).\n\nLos miembros de una unión monetaria se clasifican por el régimen de la moneda común: los del euro, en flotación libre; los de las dos uniones del franco CFA, en el anclaje convencional (al euro), y los del Caribe Oriental, en la caja de conversión (con el dólar).\n\nPor qué fallan las demás:\n\n- b) No existe esa categoría: la unión monetaria no es un régimen aparte en la clasificación.\n- c) «Sin moneda propia de curso legal» es la dolarización oficial: usar como única moneda de curso legal la de otro país (Ecuador o Panamá con el dólar; Montenegro o Kosovo con el euro, sin ser miembros de la zona). Los países del euro comparten una moneda y un banco central en cuya política participan.\n- d) El anclaje convencional es un anclaje blando frente a otra moneda o cesta, con fluctuación inferior al ±1 %; entre los países del euro no hay tipo de cambio que anclar, y el euro no está anclado a nada."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Menú de regímenes cambiarios: la clasificación del FMI",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 321506,
+   "estado": "publicada",
+   "enunciado": "En el modelo de zonas objetivo, el tipo de cambio que seguiría a los fundamentos si no hubiera banda (el tipo de cambio sombra) se representa como una recta de 45° en el plano fundamentos-tipo de cambio. Si el mercado cree que, al llegar al borde de la banda, la autoridad realineará la paridad en lugar de defenderla (Bertola y Caballero), la relación entre los fundamentos y el tipo de cambio dentro de la banda:",
+   "opciones": {
+    "a": "Es una S aplanada, menos inclinada que la recta de 45°: la banda sigue estabilizando, aunque menos que si fuera creíble.",
+    "b": "Es una S invertida, más inclinada que la recta de 45°: cerca del borde se adelanta la depreciación y la banda añade volatilidad.",
+    "c": "Coincide con la recta de 45°: una banda sin credibilidad equivale a la flotación libre y no altera la volatilidad.",
+    "d": "Es horizontal en la paridad central: el tipo de cambio deja de responder a los fundamentos hasta el realineamiento."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Sin credibilidad, la expectativa se da la vuelta: cerca del borde depreciado se espera más depreciación (el realineamiento), los agentes venden la moneda y la depreciación se adelanta. El tipo de cambio reacciona a los fundamentos más que sin banda: una S invertida, el «efecto divorcio».",
+    "desarrollo": "En el modelo, $e_t=m_t+v_t+\\alpha\\,\\mathbb{E}_t[\\mathrm{d}e_t]/\\mathrm{d}t$: el tipo de cambio depende de los fundamentos y de la depreciación esperada.\n\n- Con una banda creíble (Krugman), cerca del borde depreciado el mercado sabe que la autoridad impedirá más depreciación: espera una apreciación y el tipo queda por debajo del tipo sombra. La curva es una S aplanada, menos inclinada que la recta de 45° y tangente a los bordes (smooth pasting): es el efecto «luna de miel», la banda estabiliza por sí sola.\n- Con una banda no creíble (Bertola y Caballero), cerca del borde depreciado se espera un realineamiento, es decir, más depreciación: el término de expectativas tiene el signo contrario y el tipo se deprecia más de lo que justifican los fundamentos. La curva es una S invertida, más inclinada que la recta de 45°, y la banda añade volatilidad en lugar de quitarla.\n\nEncaja con la experiencia del Sistema Monetario Europeo, donde el tipo pasaba mucho tiempo cerca de los bordes y los diferenciales de tipos de interés anticipaban los realineamientos.\n\nPor qué fallan las demás:\n\n- a) Es la curva de la banda creíble; sin credibilidad la banda desestabiliza, no «estabiliza menos».\n- c) La recta de 45° exige que la depreciación esperada sea nula; aquí el mercado espera un salto al llegar al borde, y esa expectativa mueve ya el tipo de cambio.\n- d) Dentro de la banda la autoridad no interviene y los fundamentos siguen moviendo el tipo de cambio."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Las bandas: zonas objetivo de Krugman (banda sin credibilidad)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:321506.webp",
+     "alt": "Plano con los fundamentos, m + v, en abscisas y el tipo de cambio e en ordenadas, con la paridad central en el origen. Dos horizontales discontinuas marcan los bordes de la banda, e máx y e mín. Tres trazos pasan por el origen: la recta de 45°, rotulada «tipo de cambio sombra»; la curva 1, una S aplanada, menos inclinada que la recta y tangente a los bordes; y la curva 2, una S invertida, más inclinada que la recta, que alcanza los bordes antes. No se indica a qué caso corresponde cada curva.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 321507,
+   "estado": "publicada",
+   "enunciado": "Un país con una inflación del 12 % anual ancla su moneda al dólar con un deslizamiento (crawling peg) anunciado del 6 % anual de depreciación; la inflación de Estados Unidos es del 2 %. Con el tipo de cambio real definido como $q\\equiv E\\,P^*/P$ ($E$: unidades de moneda nacional por dólar), el tipo de cambio real del país frente a Estados Unidos, aproximando con tasas de variación:",
+   "opciones": {
+    "a": "Se deprecia en torno a un 4 % al año, y el país gana competitividad-precio.",
+    "b": "Se mantiene constante, porque el deslizamiento anunciado compensa el diferencial de inflación.",
+    "c": "Se aprecia en torno a un 4 % al año, y el país pierde competitividad-precio.",
+    "d": "Se aprecia en torno a un 10 % al año, que es el diferencial de inflación con el ancla."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En tasas de variación, $\\gamma_q\\simeq\\gamma_E+\\pi^*-\\pi=6+2-12=-4$. El deslizamiento (6 %) no cubre el diferencial de inflación (10 puntos): $q$ baja unos 4 puntos al año, una apreciación real que resta competitividad.",
+    "desarrollo": "Tomando tasas de variación en $q\\equiv E\\,P^*/P$:\n\n$$\\gamma_q\\simeq\\gamma_E+\\pi^*-\\pi=6\\,\\%+2\\,\\%-12\\,\\%=-4\\,\\%.$$\n\nCon la convención directa, que $q$ baje es una apreciación real: los bienes nacionales se encarecen frente a los extranjeros. El cálculo exacto da $1{,}06\\times1{,}02/1{,}12-1\\approx-3{,}5\\,\\%$, «en torno a un 4 %».\n\nEl deslizamiento sirve a un país con más inflación que el ancla para que el tipo real no se aprecie, pero solo si el ritmo de depreciación iguala el diferencial de inflación (aquí haría falta un 10 %). Si la inflación supera al deslizamiento, la apreciación real continúa y, con ella, el riesgo de crisis.\n\nPor qué fallan las demás:\n\n- a) Acierta la cuantía y equivoca el signo: el tipo real se depreciaría si el deslizamiento superara el diferencial de inflación.\n- b) El deslizamiento compensa solo 6 de los 10 puntos de diferencial.\n- d) El 10 % sería la apreciación real con un tipo nominal fijo ($\\gamma_E=0$); el deslizamiento la reduce a unos 4 puntos."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Los anclajes blandos: el deslizamiento",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321508,
+   "estado": "publicada",
+   "enunciado": "El balance simplificado de un banco central es $\\mathrm{BM}=\\mathrm{CI}+R$, con una base monetaria de 1.000, un crédito interno de 600 y unas reservas de 400. Para frenar la apreciación de su moneda, compra divisas por valor de 200 y esteriliza el 60 % de la operación. Tras ella:",
+   "opciones": {
+    "a": "La base monetaria es 1.200, las reservas 600 y el crédito interno 600.",
+    "b": "La base monetaria es 1.000, las reservas 600 y el crédito interno 400.",
+    "c": "La base monetaria es 1.320, las reservas 600 y el crédito interno 720.",
+    "d": "La base monetaria es 1.080, las reservas 600 y el crédito interno 480."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La compra de divisas sube las reservas a 600. Esterilizar el 60 % es vender títulos en moneda nacional por 120: el crédito interno baja a 480. La base solo crece en la parte no esterilizada, 80: $\\mathrm{BM}=480+600=1.080$.",
+    "desarrollo": "Paso a paso:\n\n- compra de divisas: $\\Delta R=+200$, las reservas pasan de 400 a 600; sin más, la base subiría también 200;\n- esterilización del 60 %: el banco central vende títulos en moneda nacional (o emite los suyos) por $0{,}6\\times200=120$, de modo que $\\Delta\\mathrm{CI}=-120$ y el crédito interno pasa de 600 a 480;\n- base monetaria: $\\Delta\\mathrm{BM}=\\Delta\\mathrm{CI}+\\Delta R=-120+200=+80$, es decir, $1.080=480+600$.\n\nPor qué fallan las demás:\n\n- a) Es la intervención no esterilizada: la base sube lo mismo que las reservas.\n- b) Es la esterilización completa ($\\Delta\\mathrm{CI}=-200$), no la del 60 %.\n- c) Esteriliza al revés: para compensar una compra de divisas hay que vender títulos (reducir el crédito interno), no comprarlos; comprar títulos por 120 ampliaría aún más la base."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Intervención: formas (esterilizada y no esterilizada)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321509,
+   "estado": "publicada",
+   "enunciado": "Un banco central vende divisas para sostener su moneda y esteriliza la operación por completo. Si los activos nacionales y extranjeros son sustitutos perfectos, la intervención puede aún apreciar la moneda:",
+   "opciones": {
+    "a": "Por el canal de señales: si revela la política monetaria futura, cambia el tipo de cambio esperado.",
+    "b": "Por el canal de cartera: al cambiar la oferta relativa de bonos, modifica la prima de riesgo.",
+    "c": "Por el canal monetario: al reducir la base monetaria, eleva el tipo de interés interno.",
+    "d": "Por ningún canal: si la cantidad de dinero no varía, el tipo de cambio no puede moverse."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con sustitutos perfectos no hay prima de riesgo que mover, y al esterilizar no cambia la base monetaria. Queda el canal de señales: la intervención informa sobre la política monetaria futura o el tipo que el banco central considera de equilibrio, y mueve las expectativas, que entran en la paridad de intereses.",
+    "desarrollo": "En la paridad no cubierta de intereses, $i-i^*\\approx\\gamma E^e+\\rho$. Una intervención esterilizada no cambia la base monetaria ni, por tanto, $i$. Puede actuar sobre los otros dos términos:\n\n- canal de cartera: si los activos son sustitutos imperfectos, la prima $\\rho$ depende de la oferta relativa de bonos nacionales en manos privadas; al cambiarla, la intervención mueve el tipo de cambio sin tocar el dinero. Con sustitutos perfectos, $\\rho=0$ y este canal desaparece;\n- canal de señales: la intervención anuncia la política monetaria futura o el tipo de cambio que el banco central cree de equilibrio, y el banco central «pone su dinero» detrás del anuncio; mueve $\\gamma E^e$ aunque los activos sean sustitutos perfectos.\n\n(También puede operar un canal de coordinación de las expectativas de los operadores cuando el tipo está lejos de los fundamentos.)\n\nPor qué fallan las demás:\n\n- b) Exige sustitución imperfecta entre activos: es justo lo que el enunciado excluye.\n- c) Es el canal de la intervención no esterilizada; al esterilizar por completo, la base no varía.\n- d) Es la conclusión de los años ochenta, que ignora las expectativas; la evidencia posterior (Plaza, Louvre) muestra que la intervención pública y coordinada mueve el tipo de cambio."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Canales y eficacia de la intervención esterilizada",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321510,
+   "estado": "publicada",
+   "enunciado": "Un país pequeño vive dos periodos con dotaciones $Y_t=2$ e $Y_{t+1}=6$ y preferencias $U=\\ln C_t+\\ln C_{t+1}$ (factor de descuento $\\beta=1$). Puede endeudarse al tipo de interés mundial $r^*=0$. El Gobierno grava el endeudamiento exterior con un impuesto $\\tau=0{,}5$ por unidad de deuda, que se paga en $t+1$ (los hogares devuelven $1+r^*+\\tau$ por unidad tomada), y devuelve la recaudación a los hogares con una transferencia de suma fija en $t+1$, que estos toman como dada. Respecto a la situación de libertad de capitales, el déficit por cuenta corriente del periodo $t$:",
+   "opciones": {
+    "a": "No cambia y sigue siendo 2: como la recaudación se devuelve, el impuesto no altera las decisiones de los hogares.",
+    "b": "Baja de 2 a 1,2, y el bienestar queda entre el de la autarquía y el de la libertad de capitales.",
+    "c": "Baja de 2 a 1, y el bienestar queda por debajo del de la autarquía por la distorsión que crea el impuesto.",
+    "d": "Baja de 2 a 1,2, y el bienestar supera al de la libertad de capitales porque el país paga menos intereses."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con libertad de capitales, $C_t=C_{t+1}=4$ y el déficit es 2. Con el impuesto, la ecuación de Euler da $C_{t+1}=1{,}5\\,C_t$, pero el país sigue sobre la restricción nacional $C_t+C_{t+1}=8$: $C_t=3{,}2$ y el déficit baja a 1,2. La utilidad queda entre la de autarquía y la de libre movilidad.",
+    "desarrollo": "Libertad de capitales: la ecuación de Euler con utilidad logarítmica es $C_{t+1}=\\beta\\,(1+r^*)\\,C_t=C_t$, y la restricción intertemporal, $C_t+C_{t+1}=Y_t+Y_{t+1}=8$. Por tanto $C_t=C_{t+1}=4$ y el déficit corriente en $t$ es $C_t-Y_t=2$.\n\nCon el impuesto: los hogares se endeudan al tipo interno $r^*+\\tau$, y su ecuación de Euler pasa a ser $C_{t+1}=\\beta\\,(1+r^*+\\tau)\\,C_t=1{,}5\\,C_t$. Como la recaudación se devuelve ($T_{t+1}=\\tau\\,B_t$), el país en su conjunto sigue pagando $r^*$ al exterior y la restricción agregada es la misma: $C_t+C_{t+1}=8$. Sustituyendo, $2{,}5\\,C_t=8$, $C_t=3{,}2$ y $C_{t+1}=4{,}8$: el déficit baja a $3{,}2-2=1{,}2$.\n\nBienestar (basta comparar el producto $C_t\\,C_{t+1}$): autarquía, $2\\times6=12$; con impuesto, $3{,}2\\times4{,}8=15{,}36$; libertad de capitales, $4\\times4=16$. Por tanto $U_0<U_2<U_1$: en un país pequeño sin fricciones el control es una distorsión, como un arancel, pero no prohibitiva.\n\nPor qué fallan las demás:\n\n- a) La transferencia es de suma fija y cada hogar la toma como dada: no compensa el precio relativo. El impuesto encarece el consumo presente y cambia la decisión, aunque la restricción agregada no varíe.\n- c) El déficit de 1 sale de olvidar la devolución de la recaudación (hogares con riqueza $2+6/1{,}5=6$ y $C_t=3$). Y el bienestar supera al de autarquía, porque el país sigue comerciando en el tiempo.\n- d) Un país pequeño no influye en $r^*$: no paga un tipo menor al exterior. La ganancia por mejorar la relación de intercambio intertemporal solo aparece en un país grande (o si el impuesto corrige una externalidad)."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Regulación: el modelo intertemporal con controles de capitales",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321511,
+   "estado": "publicada",
+   "enunciado": "Un país exige que el 30 % de toda entrada de capital quede depositado durante un año en el banco central sin remuneración, cualquiera que sea el plazo de la inversión (un encaje como el chileno de los años noventa). Si el tipo de interés de mercado es del 10 % anual, el coste del encaje equivale, aproximadamente y sin capitalizar intereses:",
+   "opciones": {
+    "a": "A un impuesto del 3 % anual sobre lo que entra, sea cual sea el plazo: no altera la composición de los flujos.",
+    "b": "A un impuesto del 1,5 % anual sobre lo que entra para una inversión a seis meses y del 9 % anual para una a tres años.",
+    "c": "A un impuesto del 6 % anual sobre lo que entra para una inversión a seis meses y del 1 % anual para una a tres años.",
+    "d": "A un impuesto del 30 % anual sobre lo que entra para cualquier inversión, pues esa es la parte inmovilizada."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El coste es fijo: los intereses que deja de ganar el 30 % depositado durante un año, $0{,}3\\times10\\,\\%=3\\,\\%$ de lo que entra. Repartido sobre el plazo de la inversión, equivale a un 6 % anual si esta dura seis meses y a un 1 % anual si dura tres años: grava más cuanto más corto es el plazo.",
+    "desarrollo": "Por cada 100 que entran, 30 quedan un año en el banco central sin remunerar. El coste de oportunidad es $30\\times10\\,\\%=3$, y es el mismo dure lo que dure la inversión, porque el depósito es siempre de un año.\n\nPara compararlo con un impuesto anual, se reparte sobre el plazo:\n\n- inversión a seis meses: un coste de 3 en medio año equivale a un $3/0{,}5=6\\,\\%$ anual;\n- inversión a un año: un 3 % anual;\n- inversión a tres años: $3/3=1\\,\\%$ anual.\n\nPor eso el encaje es un control «de precio» que penaliza sobre todo los flujos a corto plazo. La evidencia sobre Chile va en esa línea: alargó los plazos de las entradas y dio algo más de autonomía monetaria, pero no redujo su volumen neto.\n\nPor qué fallan las demás:\n\n- a) El coste total (3) es independiente del plazo, pero precisamente por eso su equivalente anual no lo es: cae al alargarse la inversión, y esa es la clave del instrumento.\n- b) Invierte la relación: multiplica por el plazo en lugar de dividir.\n- d) El 30 % no se pierde: se inmoviliza y se devuelve; lo que se pierde es su rendimiento durante un año."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Regulación: formas de los controles (el encaje)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

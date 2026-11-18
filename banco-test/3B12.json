@@ -1,0 +1,419 @@
+{
+ "tema": "3.B.12",
+ "preguntas": [
+  {
+   "id": 321201,
+   "estado": "publicada",
+   "enunciado": "Un país devalúa partiendo de un déficit comercial: en moneda nacional, sus exportaciones valen 60 y sus importaciones 100 ($X=60$, $q\\,M=100$, con $q\\equiv EP^*/P$ el tipo de cambio real). Los precios están fijos en la moneda del productor, las ofertas son infinitamente elásticas y las elasticidades de las demandas de exportaciones y de importaciones al tipo de cambio real son, en valor absoluto, 0,9 y 0,4. Una pequeña depreciación real:",
+   "opciones": {
+    "a": "Mejora el saldo comercial tanto en moneda nacional como en divisas, porque la suma de las elasticidades (1,3) supera a 1.",
+    "b": "Empeora el saldo se mida como se mida, porque con déficit inicial las dos elasticidades se ponderan por $X/(q\\,M)=0{,}6$ y su suma queda en 0,78.",
+    "c": "Empeora el saldo medido en moneda nacional y lo mejora medido en divisas, porque en moneda nacional pesa más el encarecimiento de lo importado.",
+    "d": "Mejora el saldo medido en moneda nacional y lo empeora medido en divisas, porque en divisas pesa más el abaratamiento de lo exportado."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con déficit inicial, la condición de Marshall-Lerner no es la misma en las dos monedas. En moneda nacional es $\\frac{X}{qM}\\lvert\\varepsilon_{X,q}\\rvert+\\lvert\\varepsilon_{M,q}\\rvert>1$: $0{,}6\\cdot0{,}9+0{,}4=0{,}94<1$, el saldo empeora. En divisas es $\\lvert\\varepsilon_{X,q}\\rvert+\\frac{qM}{X}\\lvert\\varepsilon_{M,q}\\rvert>1$: $0{,}9+1{,}67\\cdot0{,}4\\approx1{,}57>1$, el saldo mejora.",
+    "desarrollo": "El saldo en unidades del bien nacional es $\\mathrm{XN}=X(q)-q\\,M(q)$. Derivando:\n\n$$\\frac{\\mathrm d\\,\\mathrm{XN}}{\\mathrm dq}=M\\left(\\frac{X}{q\\,M}\\,\\varepsilon_{X,q}-\\varepsilon_{M,q}-1\\right)=M\\,(0{,}6\\cdot0{,}9+0{,}4-1)=-0{,}06\\,M<0 .$$\n\nEn divisas el saldo es $\\mathrm{XN}^{\\$}=X(q)/q-M(q)$, y\n\n$$\\frac{\\mathrm d\\,\\mathrm{XN}^{\\$}}{\\mathrm dq}=\\frac{X}{q^2}\\left(\\varepsilon_{X,q}-1-\\varepsilon_{M,q}\\,\\frac{q\\,M}{X}\\right)=\\frac{X}{q^2}\\left(0{,}9-1+0{,}4\\cdot\\frac{100}{60}\\right)\\approx0{,}57\\,\\frac{X}{q^2}>0 .$$\n\nLa intuición: en moneda nacional, la depreciación encarece todo lo que ya se importaba (efecto valor), y con déficit eso pesa más que lo que se exporta; en divisas, el efecto valor recae sobre las exportaciones (cada unidad exportada vale menos divisas), que son la partida pequeña. Otra forma de verlo: $\\mathrm{XN}=q\\,\\mathrm{XN}^{\\$}$, y con un saldo en divisas negativo, la subida de $q$ agranda el déficit en moneda nacional aunque el déficit en divisas se reduzca.\n\nPor qué fallan las demás:\n\n- a) La regla de «la suma supera a 1» solo vale con comercio inicialmente equilibrado. Con déficit hay que ponderar.\n- b) El peso $X/(qM)$ multiplica solo a la elasticidad de las exportaciones (y solo en moneda nacional), no a las dos.\n- d) Es el resultado al revés: sería el caso de un país con superávit inicial."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 Enfoque de las elasticidades: Marshall-Lerner con déficit inicial, en moneda nacional y en divisas",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321202,
+   "estado": "publicada",
+   "enunciado": "La moneda de un país se deprecia un 10 % en términos nominales ($E$, el tipo de cambio directo, sube un 10 %). En el mismo periodo, la depreciación se traslada a los precios y salarios interiores, que suben un 10 %, mientras que los precios exteriores no cambian. Con $q\\equiv EP^*/P$, el efecto sobre la competitividad-precio del país es:",
+   "opciones": {
+    "a": "Nulo: el tipo de cambio real no cambia y la depreciación no desvía gasto hacia los bienes nacionales.",
+    "b": "Una depreciación real del 10 %: con los precios exteriores dados, el tipo de cambio real sigue al nominal.",
+    "c": "Una depreciación real del 20 %: a la depreciación nominal se suma la subida de los precios interiores.",
+    "d": "Una apreciación real del 10 %: la subida de los precios interiores encarece lo nacional y el tipo nominal no cuenta."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El tipo de cambio real es $q=EP^*/P$. Si $E$ y $P$ suben los dos un 10 % y $P^*$ no cambia, $q$ queda igual ($1{,}10/1{,}10=1$). Con traspaso completo a los precios interiores, la depreciación nominal no es real y no hay ganancia de competitividad.",
+    "desarrollo": "El enfoque de las elasticidades supone precios fijos en la moneda del productor: entonces una devaluación nominal es también real. Pero una devaluación genera inflación (encarece lo importado, permite subir márgenes y, si los salarios reaccionan, hay efectos de segunda ronda). Si $P$ sube tanto como $E$:\n\n$$\\frac{q_1}{q_0}=\\frac{1{,}10\\cdot1}{1{,}10}=1 .$$\n\nEl precio relativo de lo extranjero frente a lo nacional no cambia, y no hay efecto volumen ni desviación del gasto. Este traspaso a los precios interiores es mayor con inflación alta y poco creíble, mucho peso de las importaciones y salarios indexados.\n\nPor qué fallan las demás:\n\n- b) Olvida que $P$ está en el denominador: solo sería cierta si los precios interiores no se movieran.\n- c) Suma lo que hay que restar: la subida de $P$ compensa la de $E$, no la refuerza.\n- d) Ignora el numerador: habría apreciación real si los precios subieran con el tipo nominal fijo, o más que él."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Enfoque de las elasticidades: valoración (traspaso a los precios interiores)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321203,
+   "estado": "publicada",
+   "enunciado": "En una economía pequeña con recursos ociosos, sin impuestos ni movimientos de capital, y con precios, tipo de cambio y tipo de interés fijos, la propensión marginal a consumir es $c=0{,}7$, la propensión marginal a invertir es $z=0{,}1$ y la propensión marginal a importar es $m=0{,}3$. Las exportaciones autónomas aumentan en 100. La renta y el saldo comercial varían, respectivamente, en:",
+   "opciones": {
+    "a": "$+500$ y $-50$.",
+    "b": "$+200$ y $+100$.",
+    "c": "$+200$ y $+60$.",
+    "d": "$+200$ y $+40$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El multiplicador de la economía abierta es $1/(1-c-z+m)=1/0{,}5=2$: la renta sube 200. Las importaciones inducidas suben $m\\,\\Delta Y=60$, y el saldo mejora solo en $100-60=40$. El ajuste por la renta es incompleto: el saldo mejora, pero menos que el aumento inicial de las exportaciones.",
+    "desarrollo": "Equilibrio del mercado de bienes: $Y=\\overline A+(c+z)\\,Y+\\overline X-(\\overline M+m\\,Y)$, de donde\n\n$$\\Delta Y=\\frac{\\Delta\\overline X}{1-c-z+m}=\\frac{100}{1-0{,}7-0{,}1+0{,}3}=\\frac{100}{0{,}5}=200 .$$\n\nEl saldo comercial cambia por las exportaciones autónomas y por las importaciones inducidas:\n\n$$\\Delta\\mathrm{XN}=\\Delta\\overline X-m\\,\\Delta Y=100-0{,}3\\cdot200=40 .$$\n\nPor la otra vía, con la fórmula directa: $\\Delta\\mathrm{XN}=\\Delta\\overline X\\,\\frac{1-c-z}{1-c-z+m}=100\\cdot\\frac{0{,}2}{0{,}5}=40$. También cuadra con $\\mathrm{XN}=Y-A$: la renta sube 200 y la absorción $0{,}8\\cdot200=160$.\n\nPor qué fallan las demás:\n\n- a) Usa el multiplicador de la economía cerrada, $1/(1-c-z)=5$, que ignora la filtración por importaciones.\n- b) Acierta con la renta, pero olvida las importaciones inducidas: el saldo no mejora en todo el aumento de las exportaciones.\n- c) Confunde el aumento de las importaciones (60) con la variación del saldo."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Enfoque del multiplicador (Harrod y Machlup)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321204,
+   "estado": "publicada",
+   "enunciado": "Para corregir un déficit exterior, Harry Johnson (1958) distinguió entre políticas de reducción del gasto (expenditure-reducing) y políticas de desviación del gasto (expenditure-switching). Señale la clasificación CORRECTA:",
+   "opciones": {
+    "a": "Una subida de impuestos desvía el gasto hacia los bienes nacionales, y una devaluación reduce el gasto total de los residentes.",
+    "b": "Una contracción fiscal reduce el gasto, y una devaluación o una moderación salarial frente a los socios lo desvían hacia lo nacional.",
+    "c": "Una devaluación y una política monetaria contractiva desvían ambas el gasto, porque las dos actúan a través de un precio.",
+    "d": "Un arancel y una contracción fiscal son ambas políticas de reducción del gasto, porque las dos disminuyen las importaciones."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Las políticas de reducción del gasto bajan la absorción total (fiscal y monetaria contractivas). Las de desviación cambian su composición a favor de los bienes nacionales alterando los precios relativos: la devaluación, la devaluación interna o un arancel.",
+    "desarrollo": "Como $\\mathrm{XN}=Y-A$, el saldo exterior mejora si sube la renta o baja la absorción. Con pleno empleo, una devaluación sola no basta: desvía demanda hacia lo nacional, pero no hay recursos libres para atenderla, y hay que hacerles sitio reduciendo el gasto interior. De ahí la combinación de las dos políticas, que es la base de los programas de ajuste.\n\n- Reducción del gasto: política fiscal contractiva (más impuestos, menos gasto público) y política monetaria contractiva. Bajan $A$.\n- Desviación del gasto: todo lo que abarata lo nacional frente a lo extranjero. La devaluación nominal, la devaluación interna (precios y salarios que crecen menos que los de los socios, la vía disponible dentro de una unión monetaria) y las medidas comerciales.\n\nPor qué fallan las demás:\n\n- a) Está al revés: los impuestos reducen el gasto y la devaluación lo desvía.\n- c) La política monetaria contractiva reduce el gasto (sube el tipo de interés y cae la inversión); no cambia el precio relativo entre lo nacional y lo extranjero. El criterio no es que actúe «a través de un precio».\n- d) El arancel reduce las importaciones encareciéndolas frente a lo nacional: es desviación del gasto. El criterio no es el efecto sobre las importaciones, sino si baja el gasto total o cambia su composición."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Enfoque de la absorción: implicaciones (reducir y desviar el gasto)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321205,
+   "estado": "publicada",
+   "enunciado": "Según el enfoque de la absorción (Alexander, 1952), en una economía que está en pleno empleo una devaluación puede mejorar el saldo exterior:",
+   "opciones": {
+    "a": "Porque la mayor demanda de exportaciones eleva la producción y solo una parte de esa renta adicional se destina a gasto interior.",
+    "b": "De ninguna manera: con la producción dada, el saldo solo depende de la absorción, y esta no reacciona a los precios.",
+    "c": "Sobre todo si la subida de precios que provoca reduce la absorción: por ejemplo, los saldos monetarios pierden valor real y se ahorra más.",
+    "d": "Siempre que se cumpla la condición de Marshall-Lerner, que basta en pleno empleo porque el efecto volumen no requiere recursos adicionales."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Como $\\mathrm{XN}=Y-A$, con la producción en su nivel de pleno empleo el saldo solo mejora si baja la absorción. La devaluación lo consigue por sus efectos directos: sube los precios, y con ellos actúan el efecto saldos reales, el efecto Keynes sobre el tipo de interés, la redistribución de la renta y la ilusión monetaria.",
+    "desarrollo": "Alexander descompone el efecto de una devaluación en dos:\n\n$$\\mathrm d\\,\\mathrm{XN}=\\left[1-(c+z)\\right]\\mathrm dY-\\mathrm d\\left(\\overline A-b\\,i\\right).$$\n\n- El efecto renta (primer término) exige que la producción pueda crecer: opera con recursos ociosos y es nulo en pleno empleo (salvo que la devaluación corrija una mala asignación de recursos o mejore la relación real de intercambio).\n- El efecto directo sobre la absorción (segundo término) es el que queda en pleno empleo. La devaluación sube los precios y eso reduce el gasto: los saldos monetarios valen menos y los hogares ahorran para reponerlos (efecto Pigou-Patinkin); con menos $M/P$ sube el tipo de interés y cae la inversión (efecto Keynes); la inflación redistribuye renta hacia el sector público y hacia los beneficios, con más propensión a ahorrar, y puede haber ilusión monetaria.\n\nComo estos efectos son inciertos y pueden ser pequeños, la conclusión de política es que la devaluación debe acompañarse de medidas que reduzcan el gasto.\n\nPor qué fallan las demás:\n\n- a) Describe el efecto renta con recursos ociosos; en pleno empleo la producción no puede aumentar.\n- b) La absorción sí reacciona a los precios, por los mecanismos anteriores.\n- d) Es justo la crítica de Alexander a las elasticidades: en pleno empleo, el efecto volumen sí necesita recursos (producir más para exportar y para sustituir importaciones). Si no se libera gasto interior, la mayor demanda solo sube los precios y aprecia el tipo de cambio real."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Enfoque de la absorción: efecto renta y efecto directo sobre la absorción",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321206,
+   "estado": "publicada",
+   "enunciado": "Con tipo de cambio fijo y capital móvil, Mundell (1962) propuso asignar la política monetaria al equilibrio externo y la política fiscal al equilibrio interno. La razón es que:",
+   "opciones": {
+    "a": "Ambas expansiones elevan la renta, pero la monetaria baja el tipo de interés y saca capital y la fiscal lo sube y lo atrae: la monetaria influye relativamente más en el saldo exterior.",
+    "b": "La política fiscal no altera la balanza de pagos cuando el tipo de cambio es fijo, de modo que solo puede dedicarse al pleno empleo y la monetaria se queda con el otro objetivo.",
+    "c": "Con la asignación inversa se alcanzarían igualmente los dos objetivos, aunque más despacio, porque la política fiscal tiene retardos de decisión más largos que la monetaria.",
+    "d": "La política monetaria expansiva sube el tipo de interés y atrae capital, por lo que mejora a la vez la renta y la balanza de pagos, mientras que la fiscal solo mejora la renta."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Es el principio de la clasificación eficaz de los mercados: cada instrumento se asigna al objetivo sobre el que tiene más influencia relativa. Por su efecto sobre el tipo de interés y los flujos de capital, la política monetaria tiene ventaja comparativa en la balanza de pagos, y la fiscal, en la renta.",
+    "desarrollo": "Meade planteó el conflicto entre el equilibrio interno (pleno empleo sin inflación) y el externo, y Tinbergen mostró que hacen falta tantos instrumentos como objetivos. Mundell añadió cómo repartirlos cuando cada autoridad persigue un solo objetivo.\n\n- Una expansión monetaria eleva la renta (más importaciones) y baja el tipo de interés (sale capital): empeora la balanza de pagos por los dos lados.\n- Una expansión fiscal eleva la renta (más importaciones), pero sube el tipo de interés (entra capital): su efecto sobre la balanza de pagos es menor, e incluso positivo si la movilidad es alta.\n\nPor tanto, para un mismo efecto sobre la renta, la política monetaria mueve más la balanza de pagos. Si un país tiene paro y déficit exterior, la combinación adecuada es una política fiscal expansiva (para la renta) y una monetaria contractiva (para atraer capital).\n\nPor qué fallan las demás:\n\n- b) La política fiscal sí afecta a la balanza de pagos, por las importaciones y por el tipo de interés.\n- c) Con la asignación inversa cada corrección aleja a la economía del otro objetivo y el sistema es inestable: no es una cuestión de velocidad.\n- d) La expansión monetaria baja el tipo de interés, no lo sube."
+   },
+   "dificultad": 2,
+   "apartado": "I.4 IS-LM-BP y asignación de Mundell",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321207,
+   "estado": "publicada",
+   "enunciado": "El mecanismo flujo-especie de Hume y el enfoque monetario de la balanza de pagos (Johnson) comparten el tipo de cambio fijo, el ajuste automático y una cantidad de dinero ligada a las reservas. Su diferencia principal es que:",
+   "opciones": {
+    "a": "En el flujo-especie el ajuste exige que el banco central esterilice los flujos de oro, y en el enfoque monetario, que los deje actuar sobre la cantidad de dinero.",
+    "b": "En el flujo-especie el ajuste pasa por los precios internos y el tipo de cambio real; en el enfoque monetario los precios vienen dados de fuera y se ajustan las reservas.",
+    "c": "El flujo-especie supone pleno empleo y el enfoque monetario recursos ociosos, de modo que en el segundo es la renta la que corrige el desequilibrio.",
+    "d": "En el flujo-especie la cantidad de dinero es exógena y la fija la autoridad monetaria, mientras que en el enfoque monetario es endógena y la decide el público."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En Hume, la salida de oro reduce el dinero y los precios internos; con el tipo nominal fijo, eso es una depreciación real que corrige el saldo comercial. En el enfoque monetario, $P=\\overline E\\,P^*$: los precios no pueden moverse, el tipo de cambio real no cambia y el exceso de dinero se elimina directamente perdiendo reservas.",
+    "desarrollo": "Los dos enfoques ven el desequilibrio exterior como algo que se corrige solo a través de las reservas y del dinero, sin tocar el tipo de cambio nominal. Pero la cadena es distinta:\n\n- Flujo-especie: déficit $\\Rightarrow$ sale oro $\\Rightarrow$ baja $M$ $\\Rightarrow$ baja $P$ (teoría cuantitativa) $\\Rightarrow$ sube $q=\\overline E P^*/P$ $\\Rightarrow$ más exportaciones y menos importaciones. La variable de ajuste son los precios internos, y hace falta que el comercio responda a los precios relativos (una condición del tipo de la de Marshall-Lerner).\n- Enfoque monetario: exceso de oferta de dinero $\\Rightarrow$ el público lo cambia por bienes y activos extranjeros $\\Rightarrow$ déficit y pérdida de reservas hasta que $M^S=M^D$. Con la ley del precio único en bienes y activos ($P=\\overline E P^*$, $i=i^*$), ni los precios relativos ni el tipo de interés cambian: $\\Delta R=\\Delta M^D-\\Delta\\mathrm{CI}$.\n\nPor qué fallan las demás:\n\n- a) En ninguno de los dos se esteriliza: la esterilización bloquea el mecanismo en ambos (en el patrón oro, es incumplir las «reglas del juego»).\n- c) Los dos suponen pleno empleo; el ajuste por la renta es propio de los enfoques keynesianos.\n- d) En los dos la cantidad de dinero es endógena con tipo fijo: se mueve con la balanza de pagos."
+   },
+   "dificultad": 2,
+   "apartado": "II.1-II.2 Flujo-especie (Hume) y enfoque monetario (Johnson): comparación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321208,
+   "estado": "publicada",
+   "enunciado": "En el patrón oro, un país con superávit comercial recibe oro. Si su banco central esteriliza esa entrada (vende activos interiores para que la cantidad de dinero no aumente):",
+   "opciones": {
+    "a": "Acelera el ajuste, porque al impedir que suban los precios el país conserva su competitividad y el oro se redistribuye antes.",
+    "b": "No altera el ajuste, porque en el mecanismo flujo-especie los precios dependen de las reservas de oro y no de la cantidad de dinero.",
+    "c": "Traslada el ajuste al tipo de cambio nominal, que se aprecia hasta eliminar el superávit sin que cambien los precios internos.",
+    "d": "Incumple las «reglas del juego»: sus precios no suben, el superávit persiste y el peso del ajuste recae sobre los países con déficit."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El flujo-especie exige que el oro mueva la cantidad de dinero: en el país con superávit deben subir el dinero y los precios, lo que aprecia su tipo de cambio real y corrige el saldo. Si esteriliza, esa mitad del mecanismo se bloquea y todo el ajuste (deflación) queda para el país con déficit.",
+    "desarrollo": "El circuito de Hume tiene dos lados. En el país con déficit sale oro, baja el dinero y bajan los precios; en el país con superávit entra oro, sube el dinero y suben los precios. Los dos movimientos cambian el precio relativo y cierran el desequilibrio.\n\nLas «reglas del juego» son el compromiso de dejar que esto ocurra, sin compensar el efecto del oro sobre el dinero. El sistema es asimétrico: el país con déficit acaba obligado a contraer (se le agota el oro), pero el país con superávit puede acumular oro indefinidamente sin expandir su dinero. Si lo hace, el superávit persiste y los demás tienen que ajustar solos, con más deflación. Fue una de las preocupaciones de Keynes al diseñar el sistema de posguerra.\n\nPor qué fallan las demás:\n\n- a) Conservar la competitividad es precisamente lo que impide el ajuste: el superávit no se corrige.\n- b) El oro afecta a los precios a través de la cantidad de dinero (teoría cuantitativa); si el dinero no cambia, los precios tampoco.\n- c) En el patrón oro el tipo de cambio nominal está fijo por la paridad con el oro."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Flujo-especie: valoración (reglas del juego y asimetría)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321209,
+   "estado": "publicada",
+   "enunciado": "En una economía pequeña con tipo de cambio fijo, pleno empleo, ley del precio único en bienes y activos y multiplicador monetario igual a 1, la demanda de dinero es $M^D=0{,}25\\,P\\,Y$. Durante el año, la renta nominal $P\\,Y$ pasa de 2.000 a 2.080 y el tipo de interés mundial no cambia. El banco central aumenta el crédito interno en 35. Según el enfoque monetario de la balanza de pagos, las reservas varían en:",
+   "opciones": {
+    "a": "$-35$: las reservas caen en todo lo que aumenta el crédito interno.",
+    "b": "$-15$: la diferencia entre el aumento de la demanda de dinero y el del crédito interno.",
+    "c": "$+20$: las reservas aumentan en lo que crece la demanda de dinero.",
+    "d": "$+15$: el crédito interno que excede a la demanda de dinero se acumula como reservas."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el enfoque monetario, $\\Delta R=\\Delta M^D-\\Delta\\mathrm{CI}$. La demanda de dinero crece $0{,}25\\cdot80=20$ y el crédito interno 35: sobran 15 de dinero, que el público cambia por bienes y activos extranjeros. Las reservas caen en 15.",
+    "desarrollo": "La oferta de dinero es la base monetaria, con dos contrapartidas: $M^S=\\mathrm{CI}+R$. La demanda es exógena para el país, porque $P=\\overline E P^*$, $Y$ e $i=i^*$ están dados. El equilibrio $M^S=M^D$ en variaciones da:\n\n$$\\Delta R=\\Delta M^D-\\Delta\\mathrm{CI}=0{,}25\\cdot(2.080-2.000)-35=20-35=-15 .$$\n\nComprobación por los niveles: la demanda de dinero pasa de 500 a 520. Si el banco central crea 35, la oferta sería 535; los 15 que el público no quiere salen por la balanza de pagos (déficit) y la cantidad de dinero queda en 520, con 35 más de crédito interno y 15 menos de reservas.\n\nDe aquí sale la regla de crédito: para no perder reservas, el crédito interno debe crecer lo que crece la demanda de dinero (20 en este caso).\n\nPor qué fallan las demás:\n\n- a) Sería el resultado con la demanda de dinero constante ($\\Delta R=-\\Delta\\mathrm{CI}$); aquí la economía crece y absorbe parte del dinero nuevo.\n- c) Sería el resultado si el crédito interno no cambiara: todo el dinero adicional que quiere el público entraría por la balanza de pagos.\n- d) Tiene el signo cambiado: el exceso de crédito interno hace perder reservas, no ganarlas."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Enfoque monetario de la balanza de pagos: desarrollo y regla de crédito",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321210,
+   "estado": "publicada",
+   "enunciado": "En el enfoque de cartera de la balanza de pagos (país pequeño, tipo de cambio fijo, pleno empleo, y bonos nacionales y extranjeros que son sustitutos imperfectos), el banco central hace una expansión monetaria. Frente al enfoque monetario, en el que las reservas caen en el mismo importe que la expansión:",
+   "opciones": {
+    "a": "Las reservas caen más que la expansión, porque a la compra de bonos extranjeros se suma la salida de capital que provoca la bajada del tipo de interés.",
+    "b": "Las reservas no cambian, porque el exceso de dinero se destina por completo a bonos nacionales, que no se comercian con el exterior.",
+    "c": "Las reservas caen menos que la expansión, porque parte del exceso de dinero va a bonos nacionales, cuyo tipo de interés baja y eleva la demanda de dinero.",
+    "d": "Las reservas caen lo mismo, pero el tipo de interés nacional sube para compensar el riesgo cambiario y la política monetaria pierde toda su autonomía."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con sustitución imperfecta, el exceso de dinero se reparte entre bonos nacionales y extranjeros. Solo la compra de bonos extranjeros saca reservas; la de bonos nacionales baja $i$, que puede separarse de $i^*$, y con un $i$ menor el público quiere más dinero. El ajuste es automático, pero parcial y más lento, y queda algo de autonomía monetaria.",
+    "desarrollo": "La riqueza se reparte entre dinero, bonos nacionales y bonos extranjeros, $W=M+B+E\\,B^*$, y la demanda de cada activo crece con su rendimiento y baja con el de los demás. Tras una expansión monetaria:\n\n1. Hay exceso de dinero a los rendimientos de partida.\n2. El público recompone la cartera: compra bonos nacionales (sube su precio y baja $i$) y bonos extranjeros.\n3. La compra de bonos extranjeros se paga con divisas: déficit por la cuenta financiera y pérdida de reservas.\n4. Las reservas reducen la cantidad de dinero hasta que vuelve a coincidir con la demanda.\n\nLa diferencia con el enfoque monetario está en el paso 2: allí $i=i^*$ siempre y la demanda de dinero no puede cambiar, de modo que todo el exceso sale por las reservas ($\\Delta R=-\\Delta\\mathrm{CI}$). Aquí, la bajada de $i$ aumenta la demanda de dinero y la cantidad de dinero acaba siendo algo mayor que al principio: las reservas caen menos de lo que aumentó el dinero.\n\nPor qué fallan las demás:\n\n- a) La bajada de $i$ no añade una salida a la del reajuste de la cartera: es el mismo reajuste, y lo que hace es retener dinero dentro.\n- b) Los bonos extranjeros también forman parte de la cartera deseada: una parte del exceso sale.\n- d) El tipo de interés nacional baja, y el resultado es justo el contrario: se recupera algo de autonomía."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Enfoque de cartera (McKinnon-Oates y Branson)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321211,
+   "estado": "publicada",
+   "enunciado": "En el modelo intertemporal de dos periodos de una economía pequeña con producción (Obstfeld y Rogoff), un país cuyo tipo de interés de autarquía, $r^A$, es mayor que el mundial, $r^*$, se abre al mercado internacional de capitales, al que accede sin restricciones. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Invierte menos que en autarquía, porque parte de su ahorro se presta al exterior, y tiene un superávit por cuenta corriente en el primer periodo.",
+    "b": "Invierte más que en autarquía, pero solo en la medida en que sus hogares sean pacientes: la inversión sigue dependiendo de las preferencias.",
+    "c": "Mantiene la inversión de autarquía y usa el crédito exterior solo para adelantar consumo, por lo que su bienestar puede caer si es muy impaciente.",
+    "d": "Invierte hasta que $F'(K_{t+1})=r^*$, sean cuales sean sus preferencias, consume más hoy y tiene un déficit por cuenta corriente en el primer periodo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con apertura, la inversión se decide con $F'(K_{t+1})=r^*$ y el consumo con la ecuación de Euler: es la separación de Fisher. Como $r^*<r^A$ y $F''<0$, el capital deseado es mayor que en autarquía; además, pedir prestado es más barato y el país es más rico, así que consume más hoy. Gasta más de lo que produce: déficit por cuenta corriente.",
+    "desarrollo": "En autarquía, el tipo de interés coordina el ahorro y la inversión internos: $1+r^A$ es la pendiente común de la curva de indiferencia y de la frontera de posibilidades de producción intertemporal, y depende de la tecnología y de las preferencias. Al abrirse, el precio relevante pasa a ser $r^*$, dado desde fuera, y salen dos condiciones independientes:\n\n- $F'(K_{t+1})=r^*$: se invierte hasta que el capital rinde lo que cuesta financiarlo fuera. Como $r^*<r^A=F'(K^A_{t+1})$ y los rendimientos son decrecientes, $K_{t+1}>K^A_{t+1}$.\n- $u'(C_t)=\\beta\\,(1+r^*)\\,u'(C_{t+1})$: el consumo se reparte según el tipo mundial. El efecto sustitución (el consumo presente es más barato) y el efecto riqueza (la recta del mercado pasa por encima de la frontera) llevan a consumir más hoy.\n\nMás inversión y más consumo con la misma producción en $t$: $\\mathrm{CC}_t=Y_t-C_t-I_t<0$. En $t+1$ el país tiene un superávit comercial con el que devuelve el préstamo y sus intereses. La apertura nunca reduce el bienestar: lo que se alcanzaba en autarquía sigue siendo alcanzable.\n\nPor qué fallan las demás:\n\n- a) Es el caso contrario, $r^*>r^A$: el país presta.\n- b) Con acceso perfecto al crédito, la inversión no depende de las preferencias (teorema de separación). Volvería a depender de ellas con restricciones de crédito.\n- c) La inversión cambia, porque cambia el coste del capital, y el bienestar no puede caer con la apertura."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Modelo intertemporal de la cuenta corriente: apertura, separación de Fisher y cuenta corriente",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321212,
+   "estado": "publicada",
+   "enunciado": "Una economía pequeña de dotación (sin inversión ni gasto público) vive dos periodos y empieza sin activos ni deudas frente al exterior. Su renta es $Y_t=100$ e $Y_{t+1}=121$, y accede sin restricciones al mercado internacional de capitales al tipo de interés real $r^*=10\\,\\%$. Su utilidad es $u(C_t)+\\beta\\,u(C_{t+1})$, con $u$ estrictamente cóncava y $\\beta\\,(1+r^*)=1$. El saldo por cuenta corriente en $t$ y el saldo comercial en $t+1$ son, respectivamente:",
+   "opciones": {
+    "a": "Un déficit de 10 y un superávit de 11.",
+    "b": "Un déficit de 10 y un superávit de 10.",
+    "c": "Un déficit de 10,5 y un superávit de 10,5.",
+    "d": "Un superávit de 10 y un déficit de 11."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $\\beta\\,(1+r^*)=1$, la ecuación de Euler da consumo constante. La restricción intertemporal, $C+C/1{,}1=100+121/1{,}1=210$, da $C=110$. En $t$ el país consume 10 más de lo que produce (déficit de 10) y en $t+1$ devuelve el préstamo con intereses: superávit comercial de $121-110=11=1{,}1\\cdot10$.",
+    "desarrollo": "Ecuación de Euler: $u'(C_t)=\\beta\\,(1+r^*)\\,u'(C_{t+1})=u'(C_{t+1})$, y como $u$ es estrictamente cóncava, $C_t=C_{t+1}=C$.\n\nRestricción en valor actual:\n\n$$C+\\frac{C}{1{,}1}=100+\\frac{121}{1{,}1}=100+110=210\\quad\\Longrightarrow\\quad C=\\frac{210\\cdot1{,}1}{2{,}1}=110 .$$\n\n- En $t$: $\\mathrm{CC}_t=Y_t-C_t=100-110=-10$. No hay rentas de la inversión porque no había activos iniciales, de modo que la cuenta corriente coincide con el saldo comercial.\n- En $t+1$: $\\mathrm{XN}_{t+1}=121-110=11$, que es $(1+r^*)\\cdot10$: el principal más 1 de intereses. La cuenta corriente de $t+1$ es $11-1=+10$, la contraria de la de $t$.\n\nEl país pide prestado porque su renta de hoy está por debajo de su renta permanente: suaviza el consumo.\n\nPor qué fallan las demás:\n\n- b) Olvida los intereses: quien pide 10 al 10 % tiene que devolver 11.\n- c) Reparte la renta total sin descontar ($221/2=110{,}5$). Ese plan no es factible: pedir 10,5 obliga a devolver 11,55, y el consumo de $t+1$ sería 109,45.\n- d) Tiene los signos al revés: sería el caso de una renta decreciente."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Modelo intertemporal de la cuenta corriente: suavización del consumo",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321213,
+   "estado": "publicada",
+   "enunciado": "Según el enfoque intertemporal de la cuenta corriente, en un mundo de economías con acceso al mercado internacional de capitales, una mejora duradera de la productividad:",
+   "opciones": {
+    "a": "Mejora la cuenta corriente tanto si es propia del país como si es común a todos, porque la renta sube de inmediato y el consumo tarda en ajustarse.",
+    "b": "Empeora la cuenta corriente en la misma cuantía tanto si es propia del país como si es común a todos, porque en ambos casos sube la inversión deseada.",
+    "c": "Empeora la cuenta corriente si es propia del país, porque sube la inversión, y apenas la mueve si es común a todos, porque sube el tipo de interés mundial.",
+    "d": "No altera la cuenta corriente si es propia del país, porque lo permanente se ajusta y no se financia, y la empeora si es común a todos los países."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Una mejora de la productividad propia del país eleva el rendimiento del capital allí: sube la inversión, que se financia con ahorro exterior, y la cuenta corriente empeora. Si la mejora es mundial, todos quieren invertir más a la vez; como el mundo es una economía cerrada, sube el tipo de interés y las cuentas corrientes apenas cambian.",
+    "desarrollo": "La ecuación fundamental de la cuenta corriente, $\\mathrm{CC}_t=(Y_t-Y^P_t)-(I_t-I^P_t)-(G_t-G^P_t)$, dice que un país pide prestado cuando su renta está por debajo de la permanente o cuando invierte más de lo normal.\n\n- Perturbación propia del país: el país es pequeño y $r^*$ no cambia. La mayor productividad eleva el capital deseado ($F'(K)=r^*$) y la inversión sube por encima de su nivel normal. Además, la renta futura subirá más que la de hoy (cuando el capital nuevo produzca), así que el consumo sube al menos tanto como la renta corriente. La cuenta corriente empeora.\n- Perturbación mundial: todos los países querrían endeudarse a la vez, pero las cuentas corrientes del mundo suman cero. El exceso de inversión deseada sobre el ahorro sube el tipo de interés mundial hasta eliminarlo, y ningún país tiene motivo para prestar a otro.\n\nEs el resultado de Glick y Rogoff (1995), que encuentra apoyo en los datos de los países del G-7: las perturbaciones de productividad propias mueven la cuenta corriente y las mundiales no.\n\nPor qué fallan las demás:\n\n- a) Ignora la inversión: es el razonamiento de una economía de dotación con una perturbación temporal.\n- b) No todos los países pueden tener déficit a la vez.\n- d) Aplica mal la regla «lo permanente se ajusta», que se refiere al consumo ante un cambio de la renta sin inversión: una perturbación permanente de la renta no mueve la cuenta corriente por el lado del ahorro, pero una de la productividad sí la mueve por el lado de la inversión."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Modelo intertemporal: la cuenta corriente como amortiguador (perturbaciones de productividad propias y mundiales)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321214,
+   "estado": "publicada",
+   "enunciado": "La deuda exterior neta de un país es el 68 % del PIB, está emitida en moneda nacional y paga un tipo de interés real del 5 %; el PIB real crece un 2 %. Todo el déficit exterior se financia con deuda y no hay efectos de valoración. Para que la ratio de deuda sobre el PIB no cambie, el saldo comercial (el saldo exterior sin las rentas de la inversión) tiene que ser:",
+   "opciones": {
+    "a": "Un superávit del 3,4 % del PIB.",
+    "b": "Un superávit del 2,0 % del PIB.",
+    "c": "Un déficit del 2,0 % del PIB.",
+    "d": "Un saldo nulo: basta con no tener déficit comercial."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El saldo que estabiliza la ratio de deuda es $-d=\\frac{r^*-\\gamma_Y}{1+\\gamma_Y}\\,b=\\frac{0{,}05-0{,}02}{1{,}02}\\cdot0{,}68=0{,}02$: un superávit comercial del 2 % del PIB, que cubre el coste de la deuda neto de lo que la diluye el crecimiento.",
+    "desarrollo": "La deuda en porcentaje del PIB sigue $b_t=\\frac{1+r^*}{1+\\gamma_Y}\\,b_{t-1}+d_t$, con $d_t$ el déficit comercial. Imponiendo $b_t=b_{t-1}=b$:\n\n$$-d=\\frac{r^*-\\gamma_Y}{1+\\gamma_Y}\\,b=\\frac{0{,}03}{1{,}02}\\cdot0{,}68=0{,}02 .$$\n\nComprobación directa: sin saldo comercial, la ratio pasaría a $\\frac{1{,}05}{1{,}02}\\cdot68=70$; hace falta un superávit de 2 puntos para dejarla en 68.\n\nComo $r^*>\\gamma_Y$, hace falta un superávit solo para que la ratio no suba, y mayor cuanto mayor es la deuda: es la bola de nieve.\n\nPor qué fallan las demás:\n\n- a) Es $r^*\\cdot b=0{,}05\\cdot0{,}68$: pagar todos los intereses reales con superávit comercial estabiliza la deuda en nivel, no en porcentaje del PIB; olvida que el crecimiento diluye la ratio.\n- c) Un déficit sería compatible con una ratio estable solo si el crecimiento superara al tipo de interés real.\n- d) Con saldo comercial nulo la deuda sigue creciendo por los intereses, y más deprisa que el PIB porque $r^*>\\gamma_Y$."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Análisis de sostenibilidad: saldo que estabiliza la deuda exterior",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321215,
+   "estado": "publicada",
+   "enunciado": "La deuda exterior neta en porcentaje del PIB sigue $b_t=\\frac{1+r^*}{1+\\gamma_Y}\\,b_{t-1}+d_t$, donde $d_t$ es el déficit comercial en porcentaje del PIB. Un país tiene $r^*=4\\,\\%$ y $\\gamma_Y=2\\,\\%$, y mantiene de forma indefinida un superávit comercial del 1 % del PIB ($d=-0{,}01$). Si su deuda inicial es el 40 % del PIB y esos parámetros no cambian, la ratio de deuda:",
+   "opciones": {
+    "a": "Crece sin límite, porque el tipo de interés real supera al crecimiento y actúa la bola de nieve.",
+    "b": "Converge poco a poco al 51 % del PIB, que es su nivel de equilibrio estable.",
+    "c": "Permanece en el 40 %, porque el superávit compensa los intereses netos del crecimiento.",
+    "d": "Baja año tras año: el 51 % es un umbral inestable y la deuda de partida está por debajo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La ratio es estacionaria en $\\overline b=\\frac{(1+\\gamma_Y)(-d)}{r^*-\\gamma_Y}=\\frac{1{,}02\\cdot0{,}01}{0{,}02}=51\\,\\%$. Como la pendiente $(1+r^*)/(1+\\gamma_Y)$ es mayor que 1, ese punto es inestable: por debajo la deuda baja y por encima se dispara. Con un 40 %, el superávit del 1 % supera al que estabiliza (0,78 %) y la ratio cae.",
+    "desarrollo": "La ecuación es una recta en el plano $(b_{t-1},b_t)$ con pendiente $\\frac{1{,}04}{1{,}02}\\approx1{,}0196>1$ y ordenada en el origen $-0{,}01$. Corta a la bisectriz en\n\n$$\\overline b=\\frac{-d}{\\frac{1+r^*}{1+\\gamma_Y}-1}=\\frac{0{,}01\\cdot1{,}02}{0{,}02}=0{,}51 .$$\n\nLa distancia a ese punto se multiplica cada año por la pendiente: $b_t-\\overline b=1{,}0196\\,(b_{t-1}-\\overline b)$. Si la deuda empieza por debajo, se aleja hacia abajo; si empieza por encima, hacia arriba.\n\nCon $b_0=0{,}40$: $b_1=1{,}0196\\cdot0{,}40-0{,}01\\approx0{,}3978$, $b_2\\approx0{,}3956$… Por la otra vía: el superávit que mantendría la ratio en el 40 % es $\\frac{0{,}02}{1{,}02}\\cdot0{,}40\\approx0{,}78\\,\\%$ del PIB; el país tiene un 1 %, más de lo necesario, y la deuda baja.\n\nPor qué fallan las demás:\n\n- a) $r^*>\\gamma_Y$ no basta para que la deuda explote: depende de si el superávit comercial cubre el coste neto de la deuda. Explotaría con un déficit comercial, o con una deuda inicial por encima del 51 %.\n- b) El 51 % es un punto estacionario, pero inestable: la deuda se aleja de él, no converge. Sería estable con $r^*<\\gamma_Y$.\n- c) El superávit que compensa exactamente es el 0,78 %, no el 1 %."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Análisis de sostenibilidad: dinámica de la deuda exterior con $r^*>\\gamma_Y$",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321216,
+   "estado": "publicada",
+   "enunciado": "Un país tiene una deuda exterior neta del 50 % del PIB, toda ella en divisas. El tipo de interés real de esa deuda, en la moneda en que está emitida, es el 3 %; el PIB real crece un 3 % y el comercio está equilibrado ($d_t=0$). Durante el año, la moneda nacional se deprecia un 10 % en términos reales. Sin otros efectos de valoración, la ratio de deuda sobre el PIB al acabar el año es, aproximadamente:",
+   "opciones": {
+    "a": "El 50 %: el tipo de interés real y el crecimiento se compensan, y el tipo de cambio no afecta a una ratio sobre el PIB.",
+    "b": "El 45 %: la depreciación real reduce el valor de la deuda medido en bienes nacionales.",
+    "c": "El 55 %: la depreciación real eleva el valor de la deuda en divisas medido en producción nacional.",
+    "d": "El 56,7 %: a la depreciación se suman los intereses, y el crecimiento no cuenta porque la deuda está en divisas."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con deuda en divisas, $b_t=\\frac{(1+r^*)(1+\\gamma_q)}{1+\\gamma_Y}\\,b_{t-1}+d_t=\\frac{1{,}03\\cdot1{,}10}{1{,}03}\\cdot50=55\\,\\%$. El interés real y el crecimiento se compensan, pero la depreciación real encarece la deuda en un 10 % en términos de producción nacional.",
+    "desarrollo": "La deuda en divisas se pasa a moneda nacional con el tipo de cambio y se compara con el PIB nacional. En términos reales, con $r^*$ el tipo real en la moneda de la deuda y $\\gamma_q$ la depreciación real:\n\n$$b_t=\\frac{(1+r^*)(1+\\gamma_q)}{1+\\gamma_Y}\\,b_{t-1}+d_t=\\frac{1{,}03\\cdot1{,}10}{1{,}03}\\cdot0{,}50+0=0{,}55 .$$\n\nPor la otra vía: en divisas reales la deuda crece un 3 %, lo mismo que el PIB real, de modo que sin variación del tipo de cambio la ratio seguiría en el 50 %. La depreciación real del 10 % significa que cada unidad de producto nacional compra un 10 % menos de producto extranjero (y de la moneda de la deuda, en términos reales): hace falta un 10 % más de PIB para pagar lo mismo, $50\\cdot1{,}10=55$.\n\nEs el mecanismo del «pecado original»: en un país que solo puede endeudarse en divisas, la depreciación, que debería ayudar al ajuste por la competitividad, empeora a la vez la ratio de deuda. Y la inflación nacional no la licúa.\n\nPor qué fallan las demás:\n\n- a) Sería cierto con la deuda en moneda nacional o con el tipo de cambio real constante.\n- b) Tiene el signo al revés: la depreciación reduce el valor de lo nacional frente a lo extranjero, no el de la deuda.\n- d) Es $50\\cdot1{,}03\\cdot1{,}10$: olvida que el PIB, el denominador, también crece un 3 %, esté la deuda en la moneda que esté."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Análisis de sostenibilidad: deuda en divisas y tipo de cambio real",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321217,
+   "estado": "publicada",
+   "enunciado": "La posición de inversión internacional neta (PIIN) de un país cambia por las transacciones de la cuenta financiera y por los efectos de valoración. Ante una depreciación de la moneda nacional, y sin otros cambios, la PIIN medida en moneda nacional:",
+   "opciones": {
+    "a": "Mejora si los pasivos exteriores del país están en su propia moneda y sus activos exteriores en divisas, y empeora si el país tiene pasivos netos en divisas.",
+    "b": "Empeora en cualquier país deudor neto, porque sus pasivos superan a sus activos, sea cual sea la moneda en que estén denominados unos y otros.",
+    "c": "No cambia, porque la PIIN solo varía con el saldo de la cuenta financiera; las revalorizaciones por tipo de cambio se anotan en la cuenta de capital.",
+    "d": "Mejora si los pasivos exteriores del país están en divisas y sus activos exteriores en moneda propia, porque la depreciación reduce el valor real de lo que debe."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Una depreciación eleva el valor en moneda nacional de todo lo denominado en divisas. Si lo que está en divisas son los activos, la posición mejora (el caso de Estados Unidos); si son los pasivos, empeora (el «pecado original» de muchos emergentes). Lo que cuenta es la composición por monedas, no el signo de la posición neta.",
+    "desarrollo": "La variación de la posición es $\\mathrm{PIIN}_t-\\mathrm{PIIN}_{t-1}=\\mathrm{CF}_t+\\mathrm{OV}_t$: el saldo de la cuenta financiera más las revalorizaciones (por precios y por tipos de cambio) y los otros cambios de volumen. Con posiciones brutas muy grandes, las revalorizaciones pueden pesar tanto como los flujos.\n\n- País con pasivos en moneda propia y activos en divisas: tras la depreciación, los pasivos valen lo mismo en moneda nacional y los activos valen más. La PIIN mejora aunque el país sea deudor neto. Es un canal de ajuste exterior por valoración, que se suma al comercial.\n- País con pasivos en divisas: la depreciación aumenta el valor de la deuda en moneda nacional y su servicio. El tipo de cambio, en lugar de amortiguar, desestabiliza.\n\nPor qué fallan las demás:\n\n- b) Un deudor neto puede mejorar su posición con una depreciación si su deuda está en moneda propia.\n- c) Las revalorizaciones no son transacciones y no se anotan en ninguna cuenta de la balanza de pagos (tampoco en la de capital); por eso la variación de la PIIN no coincide con el saldo de la cuenta financiera.\n- d) Es el caso contrario: con pasivos en divisas, la depreciación aumenta lo que se debe en moneda nacional."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Análisis de sostenibilidad: efectos de valoración y moneda de la deuda",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321218,
+   "estado": "publicada",
+   "enunciado": "Sobre los indicadores del sector exterior del cuadro del procedimiento de desequilibrios macroeconómicos de la UE (saldo por cuenta corriente y posición de inversión internacional neta), señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Funcionan como reglas: superar un umbral abre automáticamente el procedimiento de desequilibrio excesivo, con multa para los Estados de la zona del euro.",
+    "b": "Alertan también por superávit: la banda del saldo corriente (media de 3 años) va del $-4$ % al $+6$ % del PIB, y la posición neta tiene un umbral del $-35$ % del PIB.",
+    "c": "Solo alertan por déficit: el umbral del saldo corriente (media de 3 años) es el $-4$ % del PIB, y un superávit no se considera desequilibrio por grande que sea.",
+    "d": "Miden solo flujos: el cuadro incluye el saldo corriente, pero ningún indicador de stock exterior, porque la posición neta depende de efectos de valoración."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El cuadro tiene un indicador de flujo (la media de 3 años del saldo corriente, con una banda asimétrica entre el $-4$ % y el $+6$ % del PIB) y uno de stock (la posición de inversión internacional neta, con umbral en el $-35$ %). También un superávit grande y persistente puede ser un desequilibrio. Los umbrales son alertas, no reglas.",
+    "desarrollo": "El procedimiento de desequilibrios macroeconómicos (creado en 2011) vigila los desequilibrios no fiscales. Cada otoño, el informe del mecanismo de alerta lee un cuadro de indicadores con umbrales y elige los Estados que merecen un examen exhaustivo; solo si este concluye que hay desequilibrios excesivos puede el Consejo abrir el procedimiento corrector.\n\nEn el bloque exterior:\n\n- Saldo por cuenta corriente, media de 3 años: alerta por debajo del $-4$ % y por encima del $+6$ % del PIB. La banda es asimétrica, con más margen para el superávit, pero reconoce que el ajuste es cosa de dos: un superávit persistente puede reflejar una demanda interior débil que se exporta a los demás.\n- Posición de inversión internacional neta: alerta por debajo del $-35$ % del PIB. Es el indicador de stock, el que recoge la deuda acumulada por los déficits pasados.\n\nPor qué fallan las demás:\n\n- a) Superar un umbral no significa tener un desequilibrio ni desencadena nada automático: la Comisión lo valora con juicio económico e indicadores auxiliares. El procedimiento de desequilibrio excesivo, de hecho, nunca se ha abierto.\n- c) Hay umbral superior, el $+6$ %.\n- d) La posición neta es precisamente el segundo indicador exterior.\n\nNota de vigencia: los umbrales son los del cuadro en vigor en 2026; la Comisión puede revisarlos."
+   },
+   "dificultad": 1,
+   "apartado": "III.3 Análisis de sostenibilidad: indicadores y procedimiento de desequilibrios macroeconómicos de la UE",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  }
+ ]
+}

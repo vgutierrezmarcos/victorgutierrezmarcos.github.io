@@ -1,0 +1,272 @@
+{
+ "tema": "3.B.7",
+ "preguntas": [
+  {
+   "id": 320701,
+   "estado": "publicada",
+   "enunciado": "Un país grava la importación de un producto con un arancel específico (una cantidad fija de euros por tonelada) en lugar de con un arancel ad valorem. Si el precio mundial del producto baja de forma sostenida y el arancel no se modifica:",
+   "opciones": {
+    "a": "La protección no cambia, porque un arancel específico equivale siempre al mismo porcentaje del valor en aduana.",
+    "b": "Su equivalente ad valorem aumenta, de modo que la protección crece sin que nadie haya modificado el arancel.",
+    "c": "Su equivalente ad valorem disminuye, igual que ocurre cuando sube el nivel general de precios.",
+    "d": "El arancel que se paga por cada tonelada importada cae en la misma proporción que el precio mundial."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El equivalente ad valorem de un arancel específico de $T$ euros por unidad es $T/p^W$. Si $p^W$ baja, el mismo $T$ es un porcentaje mayor del precio: la protección aumenta sola. Con inflación ocurre lo contrario: el arancel específico se erosiona.",
+    "desarrollo": "Un arancel ad valorem es un porcentaje $t$ del valor en aduana ($p=p^W(1+t)$); uno específico es una cantidad fija $T$ por unidad física ($p=p^W+T$). Para compararlos se calcula el equivalente ad valorem del específico, $T/p^W$.\n\n- Si el precio mundial baja, $T/p^W$ sube: por ejemplo, 20 euros por tonelada son un 10 % con un precio de 200 y un 20 % con un precio de 100. La protección crece justo cuando las importaciones se abaratan.\n- Si los precios suben (inflación), $T/p^W$ baja y la protección se erosiona.\n- Por la misma razón, dentro de una partida pesa más sobre las variedades baratas que sobre las caras.\n\nPor qué fallan las demás:\n\n- a) Eso es lo que hace el arancel ad valorem, no el específico: el específico es una cantidad fija y su porcentaje sobre el valor cambia con el precio.\n- c) Es al revés: el equivalente ad valorem disminuye cuando el precio sube, no cuando baja.\n- d) Lo que cae con el precio es lo que se paga con un arancel ad valorem ($t\\,p^W$ por unidad); con el específico se pagan siempre $T$ euros por tonelada."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Definición (arancel específico y ad valorem)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320702,
+   "estado": "publicada",
+   "enunciado": "Un país grande importa un bien en competencia perfecta. Su demanda de importaciones es $M=100-p$, donde $p$ es el precio interior, y la oferta de exportaciones del resto del mundo es $X^*=p^*$, donde $p^*$ es el precio que recibe el exportador. Partiendo del libre comercio, el país impone un arancel específico de 10 por unidad importada, cuya recaudación devuelve a los consumidores; el resto del mundo no toma represalias. Respecto del libre comercio:",
+   "opciones": {
+    "a": "El país importador gana 212,5 y el mundo en su conjunto pierde 25.",
+    "b": "El país importador pierde 50: el precio interior sube en los 10 del arancel y solo hay pérdidas de eficiencia.",
+    "c": "El país importador gana 225 y el exportador pierde 225: es una pura transferencia y el bienestar mundial no cambia.",
+    "d": "El país importador gana 212,5 y el exportador pierde 212,5, de modo que el bienestar mundial no cambia."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El arancel baja el precio del exportador de 50 a 45 y sube el interior de 50 a 55; se importan 45. El país gana la mejora de la relación real de intercambio, $5\\cdot45=225$, y pierde el triángulo de eficiencia, $\\tfrac12\\cdot5\\cdot5=12{,}5$. El exportador pierde $225+12{,}5$: el mundo pierde 25.",
+    "desarrollo": "Libre comercio: $100-p=p$, de modo que $p=p^*=50$ y se comercian 50 unidades.\n\nCon el arancel, $p=p^*+10$ y $100-(p^*+10)=p^*$: $p^*=45$, $p=55$ y $M=45$. El arancel se reparte: 5 lo pagan los compradores del país y 5 los exportadores extranjeros.\n\nPaís importador:\n\n- mejora de la relación real de intercambio (parte del arancel que pagan los extranjeros): $e=(50-45)\\cdot45=225$;\n- pérdida de eficiencia (las distorsiones en la producción y en el consumo, que en el mercado de importaciones son un solo triángulo): $b+d=\\tfrac12\\cdot(55-50)\\cdot(50-45)=12{,}5$;\n- efecto neto: $225-12{,}5=+212{,}5$.\n\nResto del mundo: pierde el rectángulo que transfiere, 225, y su propio triángulo, $\\tfrac12\\cdot(50-45)\\cdot(50-45)=12{,}5$; en total, 237,5.\n\nMundo: $212{,}5-237{,}5=-25$, la suma de los 2 triángulos ($\\tfrac12\\cdot10\\cdot5$).\n\nComprobación por otra vía: el bienestar del importador es el área bajo su demanda de importaciones menos lo que paga al exterior, $100M-M^2/2-p^*M$: 1.250 con libre comercio y $4.500-1.012{,}5-2.025=1.462{,}5$ con el arancel, una ganancia de 212,5. El del exportador, $p^*X^*-X^{*2}/2$, pasa de 1.250 a 1.012,5: pierde 237,5.\n\nEl arancel es menor que el óptimo (la elasticidad de la oferta extranjera es 1 y el óptimo sería del 100 %), y por eso el país gana.\n\nPor qué fallan las demás:\n\n- b) Es el resultado de un país pequeño, con oferta extranjera infinitamente elástica: el precio interior subiría a 60. Aquí el precio mundial baja.\n- c) Olvida el triángulo de eficiencia del importador y el del exportador: la transferencia es 225, pero ninguno de los 2 se queda en ese saldo.\n- d) Acierta con el importador, pero el exportador pierde más de lo que este gana: el arancel reduce el comercio y el mundo pierde 25."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Efectos: equilibrio parcial, país grande",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:320702.webp",
+     "alt": "Dos paneles sin escala con las importaciones en abscisas y el precio en ordenadas; en ambos, la demanda de importaciones M, decreciente, y la oferta de exportaciones X*, creciente, se cortan en el libre comercio (precio p^W, cantidad M0). Con el arancel se importa M1, menor: el precio interior p queda por encima de p^W y el del exportador, p*, por debajo; la distancia entre ambos es el arancel. En el panel del importador se sombrean el rectángulo e, entre p^W y p* hasta M1, y el triángulo b + d, entre M1 y M0 por encima de p^W. En el del exportador, el mismo rectángulo e y el triángulo f + h, entre M1 y M0 por debajo de p^W. No hay cifras.",
+     "ancho": 640
+    }
+   ]
+  },
+  {
+   "id": 320703,
+   "estado": "publicada",
+   "enunciado": "En un modelo de equilibrio general con dos países y competencia perfecta, el país $A$ es grande y el resto del mundo no toma represalias. En el entorno del equilibrio, la elasticidad de la demanda de importaciones del resto del mundo (la elasticidad de su curva de oferta neta) es $\\varepsilon^*=5$. El arancel ad valorem que maximiza el bienestar de $A$ es:",
+   "opciones": {
+    "a": "El 20 %, porque $t^{\\mathrm{opt}}=1/\\varepsilon^*$.",
+    "b": "El 25 %, porque $t^{\\mathrm{opt}}=1/(\\varepsilon^*-1)$.",
+    "c": "El 16,7 %, porque $t^{\\mathrm{opt}}=1/(\\varepsilon^*+1)$.",
+    "d": "El 0 %, porque con competencia perfecta todo arancel reduce el bienestar."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El arancel óptimo es $t^{\\mathrm{opt}}=1/(\\varepsilon^*-1)$, con $\\varepsilon^*$ la elasticidad de la demanda de importaciones del resto del mundo: $1/(5-1)=25\\,\\%$. Equivale a $1/\\varepsilon^*_X$, porque la elasticidad de su oferta de exportaciones es $\\varepsilon^*_X=\\varepsilon^*-1=4$.",
+    "desarrollo": "El país grande elige el punto de la curva de oferta neta del resto del mundo que toca su curva de indiferencia comercial más alta. La condición de tangencia da\n\n$$t^{\\mathrm{opt}}=\\frac{1}{\\varepsilon^*-1}\\quad\\Longleftrightarrow\\quad\\frac{t^{\\mathrm{opt}}}{1+t^{\\mathrm{opt}}}=\\frac{1}{\\varepsilon^*}.$$\n\nCon $\\varepsilon^*=5$: $t^{\\mathrm{opt}}=1/4=25\\,\\%$.\n\nComprobación por 2 vías:\n\n- con la segunda forma, $t/(1+t)=0{,}25/1{,}25=0{,}2=1/5$;\n- con la elasticidad de la oferta de exportaciones del resto del mundo, $\\varepsilon^*_X=\\varepsilon^*-1=4$, la fórmula del equilibrio parcial da $t^{\\mathrm{opt}}=1/\\varepsilon^*_X=1/4$.\n\nEs la regla de la elasticidad inversa: el país actúa como un monopsonista de su importación (o un monopolista de su exportación). Cuanto más rígida es la oferta neta del resto del mundo, mayor es el arancel óptimo.\n\nPor qué fallan las demás:\n\n- a) $1/\\varepsilon^*=20\\,\\%$ no es el arancel, sino $t/(1+t)$, la cuña medida sobre el precio interior. Es el error más frecuente: confundir las 2 formas de la fórmula (o la elasticidad de la demanda de importaciones con la de la oferta de exportaciones).\n- c) No hay ninguna versión de la fórmula con $\\varepsilon^*+1$.\n- d) Es la conclusión para un país pequeño ($\\varepsilon^*\\to\\infty$). Un país grande mejora su relación real de intercambio, y un arancel pequeño siempre le compensa si no hay represalias."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Efectos: equilibrio general, el arancel óptimo",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320704,
+   "estado": "publicada",
+   "enunciado": "Dos países grandes comercian en competencia perfecta. Uno de ellos impone su arancel óptimo, el otro responde con el suyo, y así sucesivamente. Sobre el resultado de esta guerra arancelaria en el análisis de Johnson (1953) con curvas de oferta neta, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La sucesión de represalias solo se detiene cuando los aranceles de los dos países son prohibitivos y el comercio entre ellos ha desaparecido.",
+    "b": "El equilibrio final es un dilema del prisionero en sentido estricto: los dos países pierden necesariamente respecto del libre comercio.",
+    "c": "Termina en un equilibrio de Nash con comercio: la curva de indiferencia comercial de cada país es tangente a la oferta neta con arancel del otro.",
+    "d": "El equilibrio final es un óptimo de Pareto mundial, porque en él las curvas de indiferencia comercial de los dos países son tangentes entre sí."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En el equilibrio de Nash en aranceles, cada país aplica su arancel óptimo dada la curva de oferta neta (ya contraída) del otro: su curva de indiferencia comercial es tangente a ella. El comercio se reduce, pero no desaparece, y lo normal, aunque no forzoso, es que pierdan los dos.",
+    "desarrollo": "Cada país pone su arancel óptimo tomando como dado el del otro: elige, sobre la curva de oferta neta del otro (contraída por su arancel), el punto de su curva de indiferencia comercial más alta. Cuando los 2 lo hacen a la vez, ninguno quiere cambiar su arancel: es un equilibrio de Nash.\n\nPropiedades:\n\n- hay comercio, menor que con libre comercio;\n- no es un óptimo de Pareto: las curvas de indiferencia comercial de los 2 países se cortan, en lugar de ser tangentes entre sí, y los 2 podrían mejorar rebajando a la vez los aranceles;\n- normalmente los 2 pierden frente al libre comercio, como en un dilema del prisionero; pero Johnson muestra que puede ganar el país cuya curva de oferta neta es mucho más elástica que la del otro (en la práctica, el país mucho mayor).\n\nPor qué fallan las demás:\n\n- a) El arancel óptimo nunca es prohibitivo: se sitúa en el tramo elástico de la curva de oferta neta del otro, con comercio positivo. La guerra reduce el comercio, pero termina en un equilibrio con intercambio.\n- b) Que pierdan los 2 es lo habitual, no una necesidad: uno de los países puede acabar mejor que con libre comercio.\n- d) Esa tangencia entre las curvas de indiferencia comercial de los 2 países caracteriza el libre comercio, no el equilibrio de Nash en aranceles, que es ineficiente."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Efectos: equilibrio general, la guerra arancelaria (Johnson)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320705,
+   "estado": "publicada",
+   "enunciado": "Un país grande $A$ impone un arancel sobre su bien importado. Sobre la paradoja de Lerner, en la que el arancel empeora la relación real de intercambio del propio país que lo impone, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Aparece cuando la curva de oferta neta del resto del mundo es inelástica en el tramo relevante, se gaste como se gaste la recaudación.",
+    "b": "Exige que el Estado gaste la recaudación en el bien exportado, porque así presiona al alza su precio en el mercado mundial.",
+    "c": "Implica que el precio interior del bien importado, con el arancel incluido, baja, de modo que el sector queda desprotegido.",
+    "d": "No puede darse si la recaudación se devuelve a los consumidores: exige que el Estado la gaste sobre todo en el bien importado."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La paradoja de Lerner depende del uso de la recaudación: hace falta que el Estado gaste en el bien importado una parte de ella mayor que la elasticidad de la demanda de importaciones del país (con todo gastado en ese bien, que esa demanda sea inelástica). Si la recaudación vuelve a los consumidores, no puede darse.",
+    "desarrollo": "A la relación real de intercambio inicial, el arancel hace que los consumidores de $A$ compren menos del bien importado. Para que su precio mundial suba (y la relación real de intercambio de $A$ empeore), la demanda mundial de ese bien tiene que aumentar: el Estado debe comprar con la recaudación más de lo que los consumidores dejan de comprar.\n\n- Condición general: $\\varepsilon^A_M<\\mathrm{PMgC}^G_Y$, la elasticidad de la demanda de importaciones de $A$ es menor que la parte de la recaudación que el Estado gasta en el bien importado.\n- Si la gasta entera en ese bien, basta con que la curva de oferta neta del propio $A$ sea inelástica, $\\varepsilon^A_M<1$.\n- Si la devuelve a los consumidores, estos la gastan según su propensión marginal, y $\\varepsilon^A_M-\\mathrm{PMgC}^A_Y$ es la elasticidad compensada, que es positiva: la paradoja es imposible.\n\nPor qué fallan las demás:\n\n- a) La curva de oferta neta inelástica del resto del mundo es la condición de la paradoja de Metzler. En la de Lerner, la curva anómala es la del propio país que pone el arancel, y además importa el uso de la recaudación.\n- b) Es al revés: si el Estado gasta en el bien exportado, sube el precio mundial de lo que $A$ vende y su relación real de intercambio mejora aún más. Ese gasto es el que facilita la paradoja de Metzler.\n- c) Eso es la paradoja de Metzler: la relación real de intercambio mejora tanto que el bien importado se abarata dentro. Con Lerner, el bien importado se encarece en el mundo y, con el arancel, todavía más dentro del país."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Efectos: equilibrio general, paradojas de Metzler y Lerner",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320706,
+   "estado": "publicada",
+   "enunciado": "Un país pequeño protege un sector en competencia perfecta. Puede hacerlo con un arancel o con una cuota a la importación que, hoy, dan el mismo precio interior y las mismas importaciones. Si después de fijar la medida aumenta la demanda interior del bien (y el precio mundial no cambia):",
+   "opciones": {
+    "a": "Con el arancel aumentan las importaciones y el precio interior no cambia; con la cuota las importaciones no varían y el precio interior sube.",
+    "b": "Con los dos instrumentos el precio interior sube en la misma cuantía, porque el arancel y la cuota eran equivalentes en el punto de partida.",
+    "c": "Con el arancel el precio interior sube y las importaciones no varían; con la cuota aumentan las importaciones y el precio interior no cambia.",
+    "d": "Con la cuota el precio interior no cambia, porque la producción nacional cubre toda la demanda adicional al precio inicial."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El arancel fija el precio interior, $p^W(1+t)$, y deja que se ajuste la cantidad importada; la cuota fija la cantidad y deja que se ajuste el precio. Si la demanda crece, con el arancel se importa más al mismo precio y con la cuota el precio sube: la protección de la cuota aumenta sola.",
+    "desarrollo": "La equivalencia entre arancel y cuota en competencia perfecta es estática: vale para unas curvas de oferta y demanda dadas.\n\n- Con el arancel, el país pequeño puede seguir comprando cuanto quiera a $p^W(1+t)$. Si la demanda se desplaza a la derecha, el precio interior no cambia, la producción nacional tampoco, y todo el consumo adicional se cubre con importaciones.\n- Con la cuota, las importaciones están en su tope. El exceso de demanda solo se elimina con un precio interior más alto, que reduce el consumo y eleva la producción nacional. Aumentan la renta de la cuota y su arancel equivalente, sin que nadie lo haya decidido.\n\nLo mismo ocurre si baja el precio mundial: con el arancel el precio interior baja; con la cuota, no.\n\nPor qué fallan las demás:\n\n- b) Que fueran equivalentes al principio no significa que respondan igual a los cambios: uno fija el precio y la otra, la cantidad.\n- c) Atribuye a cada instrumento el comportamiento del otro.\n- d) La oferta nacional es creciente: para producir más, los productores necesitan un precio mayor. Con la cuota agotada, el precio tiene que subir."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Cuotas a la importación: cuándo deja de haber equivalencia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320707,
+   "estado": "publicada",
+   "enunciado": "En un país pequeño, un bien homogéneo lo produce una sola empresa nacional, con coste marginal $\\mathrm{CMg}=q$. La demanda interior es $x=120-p$ y el bien puede importarse sin límite al precio mundial $p^W=40$, sin costes de transporte. El gobierno impone un arancel específico de 30 por unidad importada. En el nuevo equilibrio, la empresa nacional:",
+   "opciones": {
+    "a": "Produce 60 y vende a un precio de 60, como una industria competitiva, porque el arancel es prohibitivo.",
+    "b": "Produce 40 y cobra 80, su precio de monopolio en autarquía, porque ya no entran importaciones.",
+    "c": "Produce 50 y cobra 70: abastece toda la demanda a ese precio y no se importa nada.",
+    "d": "Produce 40 y cobra 70, y las 10 unidades restantes que se demandan a ese precio se importan."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El arancel pone un techo de 70 al precio interior, entre el competitivo de autarquía (60) y el de monopolio (80). Hasta $x(70)=50$ el ingreso marginal de la empresa es 70, mayor que su coste marginal; más allá es $120-2q<\\mathrm{CMg}$. Vende 50 a 70 y no hay importaciones: la amenaza de importar limita el precio.",
+    "desarrollo": "Referencias de autarquía:\n\n- precio competitivo: $120-q=q$, $q^c=60$ y $p^c=60$;\n- monopolio: $\\mathrm{IMg}=\\mathrm{CMg}$, $120-2q=q$, $q^M=40$ y $p^M=80$.\n\nCon el arancel, nadie pagará a la empresa más de $p^W+30=70$, porque a ese precio se puede importar. Su demanda es horizontal a 70 hasta $x(70)=50$ y, para cantidades mayores, es la demanda del mercado.\n\n- Para $q\\le50$: ingreso marginal 70, mayor que el coste marginal ($q\\le50$). Le conviene producir hasta 50.\n- Para $q>50$: tendría que bajar el precio y su ingreso marginal sería $120-2q<20$, menor que el coste marginal. No le conviene.\n\nProduce 50, cobra 70 y abastece toda la demanda: importaciones nulas. Comprobación con el beneficio variable (ingreso menos $q^2/2$): con 50 unidades a 70, $3.500-1.250=2.250$; con 40 a 70, $2.800-800=2.000$; con 60 a 60, $3.600-1.800=1.800$.\n\nEs el caso intermedio $p^c\\le p^W+T<p^M$: el arancel no deja entrar importaciones, pero la empresa tampoco recupera todo su poder de monopolio. Con una industria competitiva y la misma curva de costes, el precio no habría pasado de 60 (el arancel sobraría en parte); con el monopolio llega a 70.\n\nPor qué fallan las demás:\n\n- a) Es lo que haría una industria competitiva. El monopolista no iguala precio y coste marginal: puede subir el precio hasta el techo de 70 sin que entren importaciones.\n- b) A un precio de 80 los consumidores importarían a 70. Solo recuperaría el precio de monopolio con $p^W+T\\ge80$.\n- d) Con 40 unidades su ingreso marginal (70) supera a su coste marginal (40): gana más produciendo las 50 que se demandan."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Arancel y cuota con un monopolio nacional (anexo: el monopolio nacional con arancel)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:320707.webp",
+     "alt": "Plano con la cantidad en abscisas y el precio en ordenadas. La demanda interior, x = 120 − p, baja de (0, 120) a (120, 0); el ingreso marginal, en discontinuo, baja desde el mismo punto con el doble de pendiente; el coste marginal, CMg = q, sube desde el origen. Dos horizontales: el precio mundial, 40, y el precio mundial más el arancel, 70. No se marca ningún punto de equilibrio, cantidad ni importaciones.",
+     "ancho": 560
+    }
+   ]
+  },
+  {
+   "id": 320708,
+   "estado": "publicada",
+   "enunciado": "Un país grande, exportador neto de un bien en competencia perfecta, concede una subvención a la exportación de ese bien. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La subvención mejora su relación real de intercambio, porque al exportar más eleva el precio mundial del bien que vende.",
+    "b": "Existe una subvención a la exportación óptima y positiva, que es la contrapartida exportadora del arancel óptimo.",
+    "c": "La pérdida de bienestar es menor que en un país pequeño, porque parte del coste de la subvención recae en los extranjeros.",
+    "d": "La subvención empeora su relación real de intercambio; para explotar su tamaño, lo óptimo sería gravar la exportación."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Al exportar más, el país grande hace bajar el precio mundial de lo que vende: regala al resto del mundo parte de la subvención. Ese empeoramiento de la relación real de intercambio se suma a las distorsiones. Con competencia perfecta no hay subvención óptima; lo simétrico del arancel óptimo es un impuesto a la exportación.",
+    "desarrollo": "En un país pequeño, la subvención sube el precio interior a $p^W(1+s)$: se produce más, se consume menos y la pérdida neta son los 2 triángulos de distorsión, $b+d$.\n\nEn un país grande se añade un tercer coste: las exportaciones adicionales hacen bajar el precio mundial. El país vende más barato todo lo que exporta, y parte de la subvención acaba en los compradores extranjeros. La pérdida es mayor que en el país pequeño.\n\nEs lo contrario del arancel: el arancel de un país grande restringe el comercio y mejora su relación real de intercambio; la subvención lo expande y la empeora. Para explotar su poder de mercado, el exportador grande tiene que vender menos, no más: el instrumento es un impuesto a la exportación, que por el teorema de la simetría de Lerner equivale en equilibrio general a un arancel a la importación del mismo tipo.\n\nPor qué fallan las demás:\n\n- a) Exportar más aumenta la oferta mundial del bien y baja su precio: la relación real de intercambio empeora.\n- b) Con competencia perfecta, cualquier subvención a la exportación reduce el bienestar del país. Solo con oligopolio (traslado de rentas) puede haber una subvención óptima positiva.\n- c) Es al revés: en el país grande hay una pérdida adicional por la relación real de intercambio. Los extranjeros no soportan parte del coste, sino que se benefician de precios más bajos."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Subsidios a la exportación y II.3 Impuestos a la exportación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320709,
+   "estado": "publicada",
+   "enunciado": "Una empresa con poder de mercado vende de forma permanente en el exterior a un precio inferior al que cobra en su mercado de origen (dumping persistente), sin vender por debajo de su coste marginal. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es una estrategia predatoria: la empresa sacrifica beneficios hoy para expulsar a sus rivales y subir después el precio.",
+    "b": "Es una discriminación de precios entre mercados separados: cobra menos donde su demanda es más elástica, y el país importador sale ganando.",
+    "c": "Es una discriminación de precios que solo es posible si los dos mercados están integrados y no hay aranceles ni costes de transporte entre ellos.",
+    "d": "Es una venta ocasional de excedentes, que perjudica al país importador en su conjunto y por eso justifica un derecho antidumping."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El dumping persistente es discriminación de precios de tercer grado: con mercados separados, la empresa cobra menos donde la demanda que percibe es más elástica, que suele ser el mercado exterior, donde compite con más empresas. El país importador gana en conjunto; quien pierde es su productor.",
+    "desarrollo": "Una empresa que puede separar 2 mercados iguala el ingreso marginal de cada uno a su coste marginal, de modo que $p_i(1-1/\\lvert\\varepsilon_i\\rvert)$ es igual en los 2: cobra el precio más bajo donde la elasticidad es mayor. En su mercado de origen suele tener más cuota y una demanda más rígida; fuera compite con más empresas y su demanda es más elástica. Por eso exporta más barato de lo que vende en casa.\n\nViner distinguía 3 tipos de dumping:\n\n- esporádico: para colocar excedentes ocasionales;\n- persistente: la discriminación de precios descrita;\n- predatorio: para expulsar al competidor y subir después el precio. Solo este perjudica al país importador en su conjunto.\n\nCon el dumping persistente, los consumidores del país importador compran más barato de forma permanente; el derecho antidumping protege al productor nacional, no al país.\n\nPor qué fallan las demás:\n\n- a) El enunciado describe una venta permanente y por encima del coste marginal: la empresa no sacrifica beneficios, los maximiza. Eso es dumping persistente, no predatorio.\n- c) Es al revés: la discriminación exige mercados separados (por aranceles, costes de transporte o normas). Con mercados integrados, el arbitraje igualaría los precios.\n- d) La venta ocasional de excedentes es el dumping esporádico, y el enunciado habla de una práctica permanente; además, el país importador en su conjunto se beneficia de comprar más barato."
+   },
+   "dificultad": 2,
+   "apartado": "II.5 Otros instrumentos tradicionales: la defensa comercial (dumping)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320710,
+   "estado": "publicada",
+   "enunciado": "Una camisa vale 200 en el mercado mundial y para fabricarla se usa tela importada por valor de 100 (a precios de libre comercio); el país es pequeño y los coeficientes técnicos son fijos. Si el país aplica un arancel del 20 % a las camisas y del 10 % a la tela, la protección efectiva de la industria de la confección es:",
+   "opciones": {
+    "a": "El 10 %, la diferencia entre el arancel del producto y el del insumo.",
+    "b": "El 20 %, el arancel del producto final.",
+    "c": "El 30 %, lo que aumenta el valor añadido por unidad.",
+    "d": "El 15 %, la media de los dos aranceles."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La protección efectiva mide cuánto sube el valor añadido por unidad. Sin aranceles es $200-100=100$; con ellos, $240-110=130$: un 30 %. Con la fórmula, $z=(t_j-a\\,t_i)/(1-a)=(0{,}20-0{,}5\\cdot0{,}10)/0{,}5=0{,}30$.",
+    "desarrollo": "La protección efectiva compara el valor añadido de la industria (lo que retribuye a sus factores) con y sin la estructura arancelaria.\n\nPrimera vía, directa:\n\n- sin aranceles: $V=200-100=100$;\n- con aranceles: la camisa se vende a $200\\cdot1{,}2=240$ y la tela cuesta $100\\cdot1{,}1=110$, de modo que $V'=130$;\n- $z=(130-100)/100=30\\,\\%$.\n\nSegunda vía, con la fórmula de Corden, con $a=100/200=0{,}5$:\n\n$$z=\\frac{t_j-a\\,t_i}{1-a}=\\frac{0{,}20-0{,}5\\cdot0{,}10}{1-0{,}5}=\\frac{0{,}15}{0{,}5}=0{,}30.$$\n\nLa protección efectiva (30 %) supera a la nominal (20 %) porque el insumo paga menos que el producto: es el efecto del escalonamiento arancelario. Si la tela pagara un 20 %, la protección efectiva sería también del 20 %; si pagara más del 40 %, sería negativa.\n\nPor qué fallan las demás:\n\n- a) Restar los aranceles ignora que cada uno se aplica a una base distinta (200 y 100) y que el resultado se mide sobre el valor añadido.\n- b) El 20 % es la protección nominal, la que ve el consumidor, no la que recibe el valor añadido de la industria.\n- d) La media de los aranceles no tiene significado económico aquí: el arancel sobre el insumo no protege a la confección, la perjudica."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Medición del proteccionismo: protección efectiva",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320711,
+   "estado": "publicada",
+   "enunciado": "Para resumir la estructura arancelaria de un país se usa a menudo el arancel medio ponderado por las importaciones. Esta medida tiende a subestimar el grado de protección porque:",
+   "opciones": {
+    "a": "Los aranceles más altos reducen las importaciones de los bienes que gravan, que pesan poco o nada en la media.",
+    "b": "Da el mismo peso a todas las partidas arancelarias, incluidas las que apenas se comercian en el mercado mundial.",
+    "c": "Pondera cada arancel por la elasticidad de la demanda de importaciones del bien, y no por el valor de lo que se importa.",
+    "d": "Se calcula con los aranceles consolidados ante la OMC, que suelen ser inferiores a los efectivamente aplicados."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La ponderación es endógena al arancel: cuanto más alto es, menos se importa del bien y menos pesa. En el límite, un arancel prohibitivo elimina las importaciones y cuenta cero, aunque sea el que más protege. Por eso la media ponderada suele quedar por debajo de la simple.",
+    "desarrollo": "Hay 2 formas habituales de promediar los aranceles nominales:\n\n- la media simple da el mismo peso a todas las partidas; exagera la protección si las partidas con aranceles altos son irrelevantes en el comercio;\n- la media ponderada por las importaciones usa como peso lo que se importa de cada bien. Pero las importaciones dependen del arancel: los aranceles altos las reducen, y uno prohibitivo las anula. Los aranceles que más protegen son los que menos pesan, y la media subestima la protección.\n\nLos índices de restricción comercial (el TRI de Anderson y Neary y el OTRI de Kee, Nicita y Olarreaga) corrigen ese sesgo: buscan el arancel uniforme que dejaría el mismo bienestar o el mismo volumen de importaciones, y para ello ponderan cada arancel por su efecto, no por lo que se importa.\n\nPor qué fallan las demás:\n\n- b) Describe la media simple, no la ponderada, y su sesgo va en el otro sentido.\n- c) Describe la lógica de los índices de restricción comercial, que son precisamente la corrección de este sesgo.\n- d) Las medias se calculan con los aranceles aplicados; además, los consolidados son máximos comprometidos, iguales o superiores a los aplicados, no inferiores."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Medición del proteccionismo: protección nominal y arancel medio",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "tema": "3.B.17",
+ "preguntas": [
+  {
+   "id": 321701,
+   "estado": "publicada",
+   "enunciado": "En un modelo de crisis cambiaria de primera generación (Flood y Garber, 1984) con previsión perfecta, el equilibrio del mercado de dinero es $M_t=\\ell\\,E_t-h\\,\\dot E_t$, con $\\ell=2$ y $h=4$, y la oferta de dinero es la suma del crédito interno y las reservas, $M_t=\\mathrm{CI}_t+R_t$. El banco central mantiene la paridad $\\bar E=3$; el crédito interno parte de $\\mathrm{CI}_0=2$ y crece a un ritmo $\\mu=1$ por periodo. El tipo de cambio sombra es $\\tilde E_t=\\dfrac{\\mathrm{CI}_t}{\\ell}+\\dfrac{h\\,\\mu}{\\ell^{2}}$. ¿Cuándo se produce el ataque especulativo y cuántas reservas compran en él los especuladores?",
+   "opciones": {
+    "a": "En $t=4$, cuando las reservas ya se han agotado por sí solas: el ataque no llega a comprar reservas.",
+    "b": "En $t=2$, y los especuladores compran de golpe las 2 unidades de reservas que quedan.",
+    "c": "En $t=2$, y los especuladores compran de golpe las 4 unidades de reservas iniciales.",
+    "d": "En $t=3$, y los especuladores compran de golpe la unidad de reservas que queda."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El ataque llega cuando el tipo de cambio sombra alcanza la paridad: $(2+t)/2+1=3$ da $t=2$, antes del agotamiento natural ($t=4$). En ese momento quedan $R_2=\\ell\\bar E-\\mathrm{CI}_2=6-4=2$ unidades de reservas, que se compran de golpe.",
+    "desarrollo": "Paso a paso:\n\n- Mientras dura la paridad, $\\dot E=0$ y la demanda de dinero es $\\ell\\bar E=2\\cdot 3=6$. Las reservas iniciales son $R_0=6-\\mathrm{CI}_0=4$ y caen al ritmo $\\mu=1$: sin ataque se agotarían en $T_N=R_0/\\mu=4$.\n- El tipo sombra es $\\tilde E_t=\\dfrac{2+t}{2}+\\dfrac{4\\cdot 1}{4}=2+\\dfrac t2$. Mientras $\\tilde E_t<\\bar E$, atacar da pérdidas; si se esperara a $\\tilde E_t>\\bar E$, quien se adelantara ganaría. La competencia lleva el ataque a $\\tilde E_T=\\bar E$: $2+T/2=3$, $T=2$.\n- Segunda vía, con la fórmula del momento del ataque: $T=\\dfrac{R_0}{\\mu}-\\dfrac{h}{\\ell}=4-2=2$.\n- En $T=2$ el crédito interno es 4 y quedan $R_2=6-4=2$ de reservas (coincide con $h\\mu/\\ell=4/2=2$). Tras el ataque, $M=\\mathrm{CI}=4$ y la moneda se deprecia al ritmo $\\mu/\\ell=0{,}5$; se comprueba que $\\ell E-h\\dot E=6-2=4$.\n\nPor qué fallan las demás:\n\n- a) Es el agotamiento «natural» ($T_N=4$), que solo coincidiría con el ataque si la demanda de dinero no dependiera del tipo de interés ($h=0$). Con previsión perfecta, los inversores se adelantan.\n- c) El momento es correcto, pero en $t=2$ ya se han perdido 2 de las 4 unidades iniciales: solo quedan 2.\n- d) Resulta de restar a $T_N$ el término constante del tipo sombra, $h\\mu/\\ell^2=1$, en lugar de $h/\\ell=2$. En $t=3$ el tipo sombra sería $3{,}5>\\bar E$: habría un beneficio seguro sin explotar."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Primera generación: modelo de Flood y Garber (momento del ataque)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321702,
+   "estado": "publicada",
+   "enunciado": "En los modelos de crisis cambiarias de primera generación (Krugman, 1979; Flood y Garber, 1984), en el instante del ataque especulativo la cantidad nominal de dinero cae de forma discreta, aunque el tipo de cambio no da ningún salto. La explicación es que:",
+   "opciones": {
+    "a": "El banco central esteriliza el ataque vendiendo deuda pública, y con ello reduce el crédito interno en la cuantía de las reservas perdidas.",
+    "b": "El Gobierno deja de monetizar el déficit al abandonar la paridad, y el crédito interno se contrae hasta el nivel compatible con la flotación.",
+    "c": "Los precios suben de golpe por la paridad del poder adquisitivo y, al caer los saldos reales, el banco central retira dinero de la circulación.",
+    "d": "Desde ese instante se espera depreciación: sube el tipo de interés nacional, cae la demanda de dinero y el público cambia el exceso por reservas."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Al pasar de la paridad a la flotación, la depreciación esperada deja de ser nula; por la paridad no cubierta de intereses sube el tipo de interés nacional y cae la demanda de dinero. El público se deshace del dinero que le sobra comprando las reservas que quedan: esa compra es el ataque.",
+    "desarrollo": "Mientras dura la paridad, la depreciación esperada es nula y el tipo de interés nacional es igual al exterior. En cuanto la moneda flota, se deprecia de forma continua al ritmo al que crece el crédito interno. Por la paridad no cubierta de intereses, el tipo de interés nacional sube en la cuantía de esa depreciación esperada y la demanda de saldos reales baja.\n\nComo el tipo de cambio no puede saltar (un salto previsto daría un beneficio seguro, y la competencia entre especuladores lo elimina), los precios tampoco saltan, y el ajuste recae sobre la cantidad nominal de dinero: el público entrega al banco central el dinero que ya no quiere y se lleva a cambio las reservas restantes. Por eso el ataque llega antes de que las reservas se agoten por sí solas, y tanto antes cuanto más sensible es la demanda de dinero al tipo de interés.\n\nPor qué fallan las demás:\n\n- a) En el modelo básico el banco central es pasivo y el crédito interno sigue creciendo; además, esterilizar un ataque sería ampliar el crédito interno para compensar la pérdida de reservas, no reducirlo.\n- b) La política no cambia: el déficit se sigue monetizando después del colapso, y por eso la moneda se deprecia de forma continua.\n- c) Ni el tipo de cambio ni los precios saltan en el momento del ataque: lo impide el arbitraje. Lo que cae es la demanda de dinero, por el mayor tipo de interés."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Primera generación: desarrollo del modelo (el ataque y la demanda de dinero)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321703,
+   "estado": "publicada",
+   "enunciado": "En un modelo de crisis cambiaria de segunda generación con cláusula de escape (Obstfeld, 1996), el Gobierno abandona la paridad si $\\dfrac{(x+\\pi^e)^2}{1+\\gamma}>\\bar c$, donde $x$ resume los fundamentos (mayor cuanto peores son), $\\pi^e$ es la devaluación esperada, $\\gamma$ el peso de la inflación en la función de pérdida y $\\bar c$ el coste fijo de abandonar. Con expectativas racionales, el público espera $\\pi^e=0$ si prevé que la paridad se mantiene y $\\pi^e=x/\\gamma$ si prevé que se abandona. Si $\\gamma=1$, $\\bar c=2$ y $x=1{,}5$:",
+   "opciones": {
+    "a": "La paridad se mantiene sean cuales sean las expectativas, porque $x^2/(1+\\gamma)<\\bar c$.",
+    "b": "La paridad se abandona sean cuales sean las expectativas, porque $x>\\gamma\\sqrt{\\bar c/(1+\\gamma)}$.",
+    "c": "Hay dos equilibrios: la paridad se mantiene si se espera que se mantenga y cae si se espera que caiga.",
+    "d": "No hay equilibrio: si se espera la paridad se devalúa, y si se espera la devaluación la paridad se mantiene."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con $\\pi^e=0$, el beneficio de devaluar es $1{,}5^2/2=1{,}125<2$: la paridad aguanta. Con $\\pi^e=x/\\gamma=1{,}5$, es $3^2/2=4{,}5>2$: se abandona. Las dos expectativas se confirman: equilibrios múltiples, con una crisis que se cumple sola.",
+    "desarrollo": "Hay que comprobar las dos expectativas posibles:\n\n- Si el público espera la paridad ($\\pi^e=0$): $\\dfrac{(1{,}5+0)^2}{2}=1{,}125<\\bar c=2$. Al Gobierno no le compensa devaluar, y la expectativa se cumple.\n- Si el público espera la devaluación ($\\pi^e=x/\\gamma=1{,}5$): $\\dfrac{(1{,}5+1{,}5)^2}{2}=4{,}5>2$. El Gobierno devalúa, y la expectativa también se cumple.\n\nSegunda vía, con los umbrales: $x_1=\\gamma\\sqrt{\\bar c/(1+\\gamma)}=\\sqrt{1}=1$ y $x_2=\\sqrt{(1+\\gamma)\\bar c}=\\sqrt 4=2$. Como $x_1<1{,}5<x_2$, la economía está en la zona intermedia, la de equilibrios múltiples. La expectativa de devaluación eleva los salarios y los tipos de interés pactados, encarece la defensa de la paridad y acaba justificándose a sí misma.\n\nPor qué fallan las demás:\n\n- a) Solo comprueba la expectativa de paridad. La condición citada garantiza que mantener la paridad es un equilibrio, no que sea el único: para eso haría falta $x<x_1=1$.\n- b) Solo comprueba la expectativa de devaluación. Superar $x_1$ garantiza que la devaluación es un equilibrio; para que fuera el único haría falta $x>x_2=2$.\n- d) Es justo al revés: cada expectativa se confirma a sí misma, no se desmiente."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Segunda generación: cláusula de escape y equilibrios múltiples",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321704,
+   "estado": "publicada",
+   "enunciado": "En el modelo de hojas de balance de Krugman (1999), la riqueza neta de los empresarios es $W=\\alpha Y-B-q\\,B^{*}$ ($B$, deuda en moneda nacional; $B^{*}$, deuda en divisas; $q$, tipo de cambio real, que sube cuando la moneda se deprecia), el crédito permite invertir como máximo $I_F=(1+\\theta)\\,W$, y el equilibrio del mercado del bien nacional da $q=\\dfrac{[1-(1-m)(1-\\alpha)]\\,Y-(1-m)\\,I}{X}$, con la producción $Y$ dada a corto plazo. La espiral de crisis es explosiva si $\\partial I_F/\\partial I>1$. Al principio, $\\theta=1$, $m=0{,}25$, $B^{*}=60$ y $X=100$. ¿Cuál de estos cambios, por sí solo, hace que pase a cumplirse esa condición?",
+   "opciones": {
+    "a": "El apalancamiento, $\\theta$, sube de 1 a 1,5.",
+    "b": "La propensión a importar, $m$, sube de 0,25 a 0,4.",
+    "c": "Las exportaciones, $X$, suben de 100 a 120.",
+    "d": "La deuda en moneda nacional, $B$, aumenta en 30."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Derivando, $\\partial I_F/\\partial I=(1+\\theta)(1-m)B^{*}/X$. Al principio vale $2\\cdot 0{,}75\\cdot 0{,}6=0{,}9<1$. Con $\\theta=1{,}5$ pasa a $2{,}5\\cdot 0{,}75\\cdot 0{,}6=1{,}125>1$: cada caída de la inversión reduce el crédito en más de lo que cayó.",
+    "desarrollo": "Por la regla de la cadena,\n\n$\\dfrac{\\partial I_F}{\\partial I}=\\dfrac{\\partial I_F}{\\partial W}\\cdot\\dfrac{\\partial W}{\\partial q}\\cdot\\dfrac{\\partial q}{\\partial I}=(1+\\theta)\\,(-B^{*})\\left(-\\dfrac{1-m}{X}\\right)=\\dfrac{(1+\\theta)(1-m)\\,B^{*}}{X}.$\n\nMenos inversión es menos demanda del bien nacional y exige una depreciación real; la depreciación encarece la deuda en divisas y reduce la riqueza; con menos riqueza hay menos crédito y menos inversión. Si la derivada supera a 1, cada vuelta es mayor que la anterior.\n\nValor inicial: $\\dfrac{2\\cdot 0{,}75\\cdot 60}{100}=0{,}9<1$.\n\n- a) $\\theta=1{,}5$: $\\dfrac{2{,}5\\cdot 0{,}75\\cdot 60}{100}=1{,}125>1$. Se cumple: más apalancamiento multiplica el efecto de cada pérdida de riqueza sobre el crédito.\n- b) $m=0{,}4$: $\\dfrac{2\\cdot 0{,}6\\cdot 60}{100}=0{,}72$. Baja: en una economía más abierta, una parte mayor de la caída de la inversión recae sobre las importaciones y hace falta menos depreciación real.\n- c) $X=120$: $\\dfrac{2\\cdot 0{,}75\\cdot 60}{120}=0{,}75$. Baja: con más exportaciones, la misma caída de la demanda se absorbe con menos depreciación.\n- d) $B$ no aparece en la derivada: la deuda en moneda nacional reduce el nivel de la riqueza, pero su valor no cambia con el tipo de cambio real, así que no alimenta la espiral. La condición sigue en 0,9. Lo que la alimenta es la deuda en divisas, $B^{*}$."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Tercera generación: hojas de balance (Krugman, 1999), condición de colapso",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321705,
+   "estado": "publicada",
+   "enunciado": "Un país emergente con inflación baja y cuentas públicas saneadas solo consigue financiarse en los mercados internacionales emitiendo deuda denominada en dólares. Eichengreen y Hausmann llaman a este fenómeno:",
+   "opciones": {
+    "a": "Intolerancia a la deuda: el país entra en crisis con niveles de deuda que otros soportan, por su historial de impagos.",
+    "b": "Pecado original: el país no puede endeudarse en el exterior en su propia moneda, y eso apenas depende de sus políticas.",
+    "c": "Miedo a flotar: el país dice dejar flotar su moneda, pero interviene en el mercado para evitar que se deprecie.",
+    "d": "Descalce de plazos: los pasivos del país vencen antes de que puedan convertirse en dinero sus activos."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El pecado original es la incapacidad de un país de endeudarse en el exterior en su propia moneda. Obliga a tener deuda en divisas sin cobertura posible, de modo que una depreciación real deteriora los balances: es lo que convierte una parada súbita en una crisis de balance.",
+    "desarrollo": "Eichengreen y Hausmann (1999) acuñaron el término para la imposibilidad de emitir deuda exterior en moneda propia. Con Panizza mostraron después que apenas depende de la calidad de las políticas del país y sí de su tamaño y de la estructura del sistema financiero internacional: por eso lo sufren también países con políticas ortodoxas, como el del enunciado.\n\nSu consecuencia es un descalce de monedas que bancos y empresas no pueden cubrir aunque quieran: si la financiación exterior se corta y el tipo de cambio real se deprecia, la deuda en divisas pesa más y los balances se hunden.\n\nPor qué fallan las demás:\n\n- a) La intolerancia a la deuda (Reinhart, Rogoff y Savastano) se refiere al nivel de deuda que un país soporta sin entrar en crisis, no a la moneda en que puede emitirla, y sí depende de su historia de impagos e inflación.\n- c) El miedo a flotar (Calvo y Reinhart) es una conducta de política cambiaria; es, en parte, una consecuencia del pecado original (los balances no resisten la depreciación), no el fenómeno descrito.\n- d) El descalce de plazos compara vencimientos de activos y pasivos, no monedas. El concepto vecino del pecado original es el descalce de monedas, que es su resultado en el balance de cada agente."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Tercera generación: paradas súbitas y pecado original",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321706,
+   "estado": "publicada",
+   "enunciado": "La Reserva Federal sube con fuerza los tipos de interés y, en los meses siguientes, varias economías emergentes sin apenas lazos comerciales ni financieros entre sí sufren a la vez salidas de capital y crisis cambiarias. En la literatura sobre el contagio (Masson, 1998), este episodio se clasifica como:",
+   "opciones": {
+    "a": "Un efecto monzón: un choque común golpea a todos a la vez, y no es contagio en sentido estricto.",
+    "b": "Contagio por los fundamentos, a través de la competencia de esos países en un tercer mercado.",
+    "c": "Contagio puro por llamada de atención: la crisis de un país lleva a revisar la valoración de los demás.",
+    "d": "Contagio por efecto dominó: el impago de las contrapartes traslada las pérdidas de un país a otro."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Hay contagio cuando la crisis de un país aumenta, por sí misma, la probabilidad de crisis en otro. Si varias crisis coinciden porque responden a una misma perturbación exterior, como una subida de tipos en Estados Unidos, hay una causa común, no un vínculo causal entre ellas: son «efectos monzón».",
+    "desarrollo": "La definición de contagio exige causalidad entre las crisis: que la de un país ponga en marcha mecanismos que aumenten la probabilidad de crisis en otro. Masson (1998) separa de ese contagio los efectos monzón (monsoonal effects): perturbaciones comunes, originadas normalmente en las economías avanzadas, que afectan a la vez a muchos emergentes. En el enunciado, lo que golpea a todos es la subida de tipos, y los países no tienen lazos entre sí por los que pudiera transmitirse la crisis de uno a otro.\n\nPor qué fallan las demás:\n\n- b) El contagio por un tercer mercado exige que la devaluación de un país quite competitividad a otro que vende lo mismo en el mismo mercado: la causa es la devaluación del primero, no un choque exterior común, y supone un lazo comercial indirecto que el enunciado descarta.\n- c) En la llamada de atención (wake-up call), la crisis de un país revela información que lleva a los inversores a reexaminar a los países parecidos. La secuencia es de un país a otro; aquí todos caen a la vez por la misma causa.\n- d) El efecto dominó requiere exposiciones financieras cruzadas (acreedores con pérdidas que cruzan fronteras), es decir, lazos financieros que el enunciado excluye."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Contagio: concepto y tipos",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321707,
+   "estado": "publicada",
+   "enunciado": "Un analista observa que la correlación entre los rendimientos bursátiles de dos países sube mucho durante la crisis de uno de ellos y concluye que ha habido contagio. A la luz del trabajo de Forbes y Rigobon (2002), esa conclusión es:",
+   "opciones": {
+    "a": "Correcta: cualquier aumento de la correlación durante una crisis prueba que ha aparecido un canal de transmisión que antes no existía.",
+    "b": "Incorrecta: el contagio solo se transmite por los vínculos comerciales, de modo que los mercados bursátiles no informan sobre él.",
+    "c": "Precipitada: la correlación medida sube por sí sola cuando sube la volatilidad; corregido ese sesgo, buena parte es interdependencia normal.",
+    "d": "Precipitada: la correlación medida baja por sí sola cuando sube la volatilidad, de modo que el contagio suele quedar infraestimado."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El coeficiente de correlación está sesgado al alza en los periodos de volatilidad alta, aunque el vínculo entre los mercados no cambie. Corregido el sesgo, Forbes y Rigobon no encuentran un aumento significativo en 1987, 1994 ni 1997: «no hay contagio, solo interdependencia».",
+    "desarrollo": "Si el rendimiento del mercado B depende del de A con un coeficiente estable, más un ruido propio, la correlación entre ambos depende de cuánto pesa la varianza de A frente a la del ruido. En una crisis, la varianza de A se dispara y la correlación medida sube aunque el coeficiente de transmisión sea exactamente el mismo. Comparar correlaciones de periodos tranquilos y turbulentos, sin corregir por la heterocedasticidad, lleva a ver contagio donde solo hay la interdependencia de siempre.\n\nForbes y Rigobon reservan el término contagio para un aumento significativo de los vínculos tras una perturbación. Con la correlación corregida, casi todo el «contagio» bursátil de la caída de 1987, de la crisis mexicana de 1994 y de la asiática de 1997 desaparece: los mercados ya estaban muy ligados antes.\n\nPor qué fallan las demás:\n\n- a) Es la inferencia que el trabajo critica: el aumento de la correlación puede deberse solo a la mayor volatilidad.\n- b) El contagio también se transmite por vínculos financieros (prestamista común, recomposición de carteras) y por las expectativas; los mercados financieros son un lugar habitual para medirlo.\n- d) El sesgo va en sentido contrario: con más volatilidad, la correlación medida sube, no baja, y el contagio se sobreestima."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Contagio puro: evidencia empírica (medición del contagio)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

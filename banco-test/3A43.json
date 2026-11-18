@@ -1,0 +1,732 @@
+{
+ "tema": "3.A.43",
+ "preguntas": [
+  {
+   "id": 314301,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Harrod y Domar, el crecimiento con pleno empleo exige que la tasa garantizada, $s/v$, coincida con la tasa natural, lo que solo ocurriría por casualidad («filo de la navaja»). ¿Qué cambio introduce el modelo de Solow y Swan para resolver ese problema?",
+   "opciones": {
+    "a": "Hace endógena la tasa de ahorro, que se ajusta con el reparto de la renta entre salarios y beneficios.",
+    "b": "Añade un progreso técnico exógeno, que eleva la tasa natural hasta igualarla con la tasa garantizada.",
+    "c": "Sustituye los coeficientes fijos por una función de producción neoclásica, con la que la relación capital-producto se ajusta.",
+    "d": "Supone que el tipo de interés iguala en cada momento el ahorro y la inversión, con una relación capital-producto fija."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Solow acepta todos los supuestos de Harrod y Domar salvo las proporciones fijas. Si capital y trabajo se sustituyen, la relación capital-producto, $v$, deja de ser una constante tecnológica y se ajusta hasta que en el estado estacionario se cumple $s/v^*=n+g+\\delta$.",
+    "desarrollo": "En Harrod y Domar, $s$, $v$ y $n$ son tres parámetros independientes y ninguno se ajusta: la igualdad $s/v=n$ sería una coincidencia. Con una función de producción neoclásica, si el capital crece más deprisa que el trabajo, su productividad media cae ($v$ sube) y la acumulación se frena; si crece más despacio, ocurre lo contrario. En el estado estacionario, $s\\,f(\\tilde k^*)/\\tilde k^*=n+g+\\delta$, es decir, $s/v^*=n+g+\\delta$: la igualdad de Harrod se cumple sola y el equilibrio es estable.\n\nPor qué fallan las demás:\n\n- a) Es la otra salida, la de Cambridge (Inglaterra), con Kaldor y Pasinetti: ajusta $s$, no $v$. En Solow la tasa de ahorro es una constante exógena.\n- b) El progreso técnico cambia el valor de la tasa natural ($n+g$), pero por sí solo no hace que coincida con $s/v$: con coeficientes fijos seguiría siendo una casualidad.\n- d) Con $v$ fija, el problema de igualar $s/v$ y $n$ subsiste aunque el ahorro se invierta entero. Lo que resuelve el problema es que $v$ sea variable."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Idea: de Harrod y Domar a Solow",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314302,
+   "estado": "publicada",
+   "enunciado": "Una economía tiene la función de producción de coeficientes fijos $Y=\\min\\{K/v,\\ L/a_L\\}$, con $v=3$. Ahorra una fracción constante $s=0{,}24$ de la renta, la población crece a la tasa $n=0{,}02$, el capital se deprecia a la tasa $\\delta=0{,}04$ y no hay progreso técnico. Partiendo de un capital por trabajador inferior a $v/a_L$, a largo plazo:",
+   "opciones": {
+    "a": "El capital por trabajador crece hasta un estado estacionario con todo el trabajo empleado y parte del capital ocioso.",
+    "b": "El capital por trabajador cae de forma continua hacia cero y el paro crece sin límite.",
+    "c": "La economía alcanza el pleno empleo de los dos factores y se mantiene en él, porque $s/v$ supera a $n+\\delta$.",
+    "d": "El capital y la producción por trabajador crecen de forma indefinida al 2 % anual."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$s/v=0{,}08>n+\\delta=0{,}06$: mientras el capital es el factor escaso, el capital por trabajador crece al 2 %. Cuando supera $v/a_L$, el trabajo pasa a ser el factor escaso, la producción por trabajador se queda en $1/a_L$ y $k$ sigue creciendo, cada vez más despacio, hasta $k^*=s/[a_L(n+\\delta)]>v/a_L$: sobra capital.",
+    "desarrollo": "Con $\\dot k=s\\,y-(n+\\delta)k$ e $y=\\min\\{k/v,\\ 1/a_L\\}$:\n\n- si $k<v/a_L$, $y=k/v$ y $\\gamma_k=s/v-(n+\\delta)=0{,}08-0{,}06=0{,}02>0$: $k$ crece;\n- si $k>v/a_L$, $y=1/a_L$ y $\\gamma_k=s/(a_Lk)-(n+\\delta)$, que decrece con $k$ y se anula en $k^*=s/[a_L(n+\\delta)]=4/a_L$, mayor que $v/a_L=3/a_L$.\n\nEn ese estado estacionario trabaja toda la población, pero una cuarta parte del capital está ociosa, y aun así se sigue invirtiendo para mantenerla: un resultado absurdo, fruto de suponer un ahorro fijo aunque el capital no rinda.\n\nPor qué fallan las demás:\n\n- b) Es el caso contrario, $s/v<n+\\delta$.\n- c) El pleno empleo de los dos factores exige $k=v/a_L$, y la economía solo se queda ahí si $s/v=n+\\delta$ y además parte de ese punto.\n- d) El 2 % solo vale mientras el capital es escaso. Cuando el trabajo limita la producción, $y$ deja de crecer."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 y anexo A: el modelo de Harrod-Domar (versión de Barro y Sala-i-Martín)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314303,
+   "estado": "publicada",
+   "enunciado": "¿Cuál de las siguientes funciones de producción en forma intensiva, $y=f(k)$, cumple a la vez que el producto marginal del capital es positivo y decreciente para todo $k>0$ y las condiciones de Inada?",
+   "opciones": {
+    "a": "$f(k)=0{,}1\\,k+k^{0{,}3}$",
+    "b": "$f(k)=k^{0{,}3}$",
+    "c": "$f(k)=\\ln(1+k)$",
+    "d": "$f(k)=\\min\\{k/3,\\ 1\\}$"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La Cobb-Douglas $f(k)=k^{0,3}$ tiene $f'(k)=0{,}3\\,k^{-0,7}>0$ y $f''<0$, con $f'(k)\\to\\infty$ cuando $k\\to0$ y $f'(k)\\to0$ cuando $k\\to\\infty$. Cada una de las otras tres incumple alguna de esas propiedades.",
+    "desarrollo": "Las condiciones de Inada piden que el producto marginal del capital tienda a infinito cuando el capital tiende a cero y a cero cuando tiende a infinito (además de $f(0)=0$).\n\n- a) $f'(k)=0{,}1+0{,}3\\,k^{-0,7}$ tiende a $0{,}1$, no a cero, cuando $k\\to\\infty$. Es la función de Jones y Manuelli: al no agotarse los rendimientos del capital, puede haber crecimiento sostenido por acumulación.\n- b) Correcta.\n- c) $f'(k)=1/(1+k)$ es positivo y decreciente y tiende a cero, pero en el origen vale 1, no infinito: falla la condición de Inada en cero. Con una tasa de ahorro baja, la curva de ahorro podría no cortar a la recta de reposición ($s<n+\\delta$) y no habría estado estacionario interior.\n- d) Es la función de Leontief: el producto marginal es constante ($1/3$) hasta $k=3$ y nulo después; no es decreciente de forma continua ni tiende a infinito en el origen."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Supuestos: función de producción neoclásica y condiciones de Inada",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314304,
+   "estado": "publicada",
+   "enunciado": "En una economía descrita por el modelo de Solow sin progreso técnico, la función de producción en términos per cápita es $f(k)=k^{1/2}$, la tasa de ahorro es $s=0{,}3$, la población crece a la tasa $n=0{,}01$ y el capital se deprecia a la tasa $\\delta=0{,}05$. Los mercados de factores son competitivos. En el estado estacionario, el tipo de interés real, neto de depreciación ($r^*$), y el salario real ($w^*$) son:",
+   "opciones": {
+    "a": "$r^*=10~\\%$ y $w^*=2{,}5$",
+    "b": "$r^*=5~\\%$ y $w^*=3{,}5$",
+    "c": "$r^*=1~\\%$ y $w^*=5$",
+    "d": "$r^*=5~\\%$ y $w^*=2{,}5$"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En el estado estacionario $k^*=[s/(n+\\delta)]^2=25$ e $y^*=5$. El producto marginal del capital es $f'(k^*)=1/(2\\sqrt{25})=0{,}1$, así que $r^*=f'(k^*)-\\delta=5~\\%$, y el salario es $w^*=f(k^*)-k^*f'(k^*)=5-2{,}5=2{,}5$.",
+    "desarrollo": "Estado estacionario: $s\\,k^{1/2}=(n+\\delta)k\\Rightarrow k^{1/2}=0{,}3/0{,}06=5$, luego $k^*=25$ e $y^*=5$.\n\nPrecios de los factores (cada uno cobra su producto marginal): $f'(k^*)=\\tfrac12\\,k^{*-1/2}=0{,}1$; $r^*=0{,}1-0{,}05=0{,}05$; $w^*=y^*-k^*f'(k^*)=5-25\\cdot0{,}1=2{,}5$. Comprobación por las participaciones: con $\\alpha=1/2$, el trabajo se lleva la mitad de la renta, $0{,}5\\cdot5=2{,}5$, y el capital la otra mitad, $(r^*+\\delta)k^*=0{,}1\\cdot25=2{,}5$.\n\nPor qué fallan las demás:\n\n- a) El 10 % es el producto marginal bruto del capital; el tipo de interés es neto de depreciación.\n- b) 3,5 es el consumo per cápita, $(1-s)y^*=0{,}7\\cdot5$, no el salario.\n- c) $r^*=n$ es la condición de la regla de oro, que exigiría $s=\\alpha=0{,}5$; y el salario no agota la renta, porque el capital también se remunera."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Estado estacionario y precios de los factores",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314305,
+   "estado": "publicada",
+   "enunciado": "Una economía descrita por el modelo de Solow sin progreso técnico está en su estado estacionario. La población crece a la tasa $n=0{,}02$, el capital se deprecia a la tasa $\\delta=0{,}04$ y el producto marginal del capital es $f'(k^*)=0{,}09$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es dinámicamente ineficiente, porque el producto marginal del capital supera a $n+\\delta$: bajar el ahorro elevaría el consumo en todos los periodos.",
+    "b": "Es dinámicamente eficiente: subir el ahorro elevaría el consumo del estado estacionario, pero a costa de reducirlo al principio.",
+    "c": "Está en la regla de oro, porque el producto marginal del capital neto de depreciación, el 5 %, es positivo y cubre el crecimiento de la población.",
+    "d": "Subir la tasa de ahorro elevaría el consumo per cápita en todos los periodos, incluido el momento del cambio."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La regla de oro exige $f'(k_{\\mathrm{oro}})=n+\\delta=0{,}06$. Como $f'(k^*)=0{,}09$ es mayor y el producto marginal es decreciente, $k^*<k_{\\mathrm{oro}}$: la economía ahorra menos que en la regla de oro. Más ahorro subiría el consumo a largo plazo, pero lo reduce de entrada: hay conflicto entre generaciones, no ineficiencia.",
+    "desarrollo": "El consumo de estado estacionario es $c^*=f(k^*)-(n+\\delta)k^*$ y su derivada respecto a $k^*$ es $f'(k^*)-(n+\\delta)=0{,}09-0{,}06>0$: aumenta con el capital, luego la economía está a la izquierda de $k_{\\mathrm{oro}}$. Equivale a $r^*=f'-\\delta=5~\\%>n=2~\\%$.\n\nSi sube $s$, en el momento del cambio $k$ no varía y el consumo, $(1-s)f(k)$, cae; después crece con $k$ y acaba por encima del inicial.\n\nPor qué fallan las demás:\n\n- a) La ineficiencia dinámica es el caso contrario, $f'(k^*)<n+\\delta$ (es decir, $r^*<n$): hay tanto capital que mantenerlo cuesta más de lo que rinde.\n- c) La regla de oro no pide que el rendimiento neto sea positivo ni mayor que $n$, sino igual: $r_{\\mathrm{oro}}=n$.\n- d) Al subir $s$ se consume una fracción menor de la misma renta: el consumo cae en el impacto. Solo en la región ineficiente hay un cambio (una bajada de $s$) que sube el consumo en todos los periodos."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 La regla de oro de la acumulación (eficiencia dinámica)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314306,
+   "estado": "publicada",
+   "enunciado": "Considere un modelo de Solow con la función de producción $Y_t=(B_tK_t)^{1/3}L_t^{2/3}$, en la que el progreso técnico aumenta el capital: $B_t$ crece a la tasa constante del 2 % anual. La tasa de ahorro es constante y la población crece a la tasa $n$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Existe una senda de crecimiento equilibrado, en la que la renta per cápita crece al 1 % anual.",
+    "b": "No existe una senda de crecimiento equilibrado, porque el teorema de Uzawa exige que el progreso técnico aumente el trabajo.",
+    "c": "Existe una senda de crecimiento equilibrado, en la que la renta per cápita crece al 2 % anual.",
+    "d": "Existe una senda de crecimiento equilibrado, en la que la renta per cápita crece al 0,67 % anual."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con una Cobb-Douglas, el progreso aumentador del capital puede reescribirse como aumentador del trabajo: $(BK)^{\\alpha}L^{1-\\alpha}=K^{\\alpha}(AL)^{1-\\alpha}$ con $A\\equiv B^{\\alpha/(1-\\alpha)}$. Con $\\alpha=1/3$, $A$ crece a $0{,}02\\cdot\\tfrac{1/3}{2/3}=1~\\%$, y a ese ritmo crece la renta per cápita en la senda equilibrada.",
+    "desarrollo": "El teorema de Uzawa dice que, si hay senda equilibrada, la tecnología debe poder representarse en ella como $F(K,AL)$; no exige que esté escrita así. Con elasticidad de sustitución igual a 1 las tres neutralidades (Hicks, Solow y Harrod) coinciden.\n\nComprobación directa: $\\gamma_Y=\\alpha(\\gamma_B+\\gamma_K)+(1-\\alpha)n$. En la senda equilibrada $\\gamma_K=\\gamma_Y$ (para que $K/Y$ sea constante), así que $(1-\\alpha)\\gamma_Y=\\alpha\\gamma_B+(1-\\alpha)n$ y $\\gamma_y=\\gamma_Y-n=\\frac{\\alpha}{1-\\alpha}\\gamma_B=\\tfrac12\\cdot2~\\%=1~\\%$.\n\nPor qué fallan las demás:\n\n- b) Sería cierto con una elasticidad de sustitución distinta de 1: ahí el progreso aumentador del capital es incompatible con una relación capital-producto y unas participaciones constantes. Con Cobb-Douglas no.\n- c) El 2 % es el ritmo de $B$, no el del nivel tecnológico equivalente en unidades de trabajo.\n- d) $\\alpha\\gamma_B=0{,}67~\\%$ es lo que crece la productividad total de los factores; la renta per cápita crece más, porque el capital se acumula en respuesta."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Supuestos y anexo B: progreso técnico aumentador del trabajo y teorema de Uzawa",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314307,
+   "estado": "publicada",
+   "enunciado": "Dos economías descritas por el modelo de Solow sin progreso técnico comparten la función de producción $f(k)=k^{1/2}$ y las tasas $n$ y $\\delta$. La economía 1 ahorra el 30 % de su renta y la economía 2, el 70 %. Comparando sus estados estacionarios:",
+   "opciones": {
+    "a": "La economía 2 tiene más renta y más consumo per cápita, porque ahorra más.",
+    "b": "Las dos tienen la misma renta y el mismo consumo per cápita, porque sus tasas de ahorro equidistan de la de la regla de oro.",
+    "c": "La economía 1 tiene más consumo per cápita, porque la economía 2 supera la tasa de ahorro de la regla de oro.",
+    "d": "Las dos tienen el mismo consumo per cápita, y solo la economía 2 podría elevarlo en todos los periodos ahorrando menos."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con $\\alpha=1/2$, $y^*=s/(n+\\delta)$ y $c^*=(1-s)\\,s/(n+\\delta)$: como $0{,}7\\cdot0{,}3=0{,}3\\cdot0{,}7$, el consumo coincide, aunque la economía 2 tiene más capital y más renta. La regla de oro es $s_{\\mathrm{oro}}=\\alpha=0{,}5$: la economía 2 está por encima y es dinámicamente ineficiente; la 1, por debajo.",
+    "desarrollo": "Estado estacionario: $k^*=[s/(n+\\delta)]^2$, $y^*=s/(n+\\delta)$, $c^*=(1-s)y^*=s(1-s)/(n+\\delta)$. El consumo de estado estacionario es una U invertida en $s$, con máximo en $s=0{,}5$ y, en este caso, simétrica: $s=0{,}3$ y $s=0{,}7$ dan $c^*=0{,}21/(n+\\delta)$.\n\nPero la situación de las dos no es la misma. La economía 2 ($s>s_{\\mathrm{oro}}$) puede bajar el ahorro hasta 0,5: el consumo sube en el acto (se consume más de la misma renta) y se mantiene por encima del inicial hasta el nuevo estado estacionario, mayor. La economía 1 ($s<s_{\\mathrm{oro}}$) solo puede elevar su consumo a largo plazo ahorrando más, es decir, consumiendo menos al principio.\n\nPor qué fallan las demás:\n\n- a) Tiene más renta ($0{,}7/(n+\\delta)$ frente a $0{,}3/(n+\\delta)$), pero no más consumo: dedica el exceso a reponer capital.\n- b) El consumo coincide, pero la renta y el capital no.\n- c) Estar por encima de la regla de oro no implica consumir menos que cualquier economía que esté por debajo: aquí el consumo es idéntico."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 La regla de oro: consumo de estado estacionario y tasa de ahorro",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314308,
+   "estado": "publicada",
+   "enunciado": "Una economía descrita por el modelo de Solow con progreso técnico aumentador del trabajo se encuentra en su senda de crecimiento equilibrado. La población crece al 1 % anual y la tecnología, al 2 % anual. En esa senda:",
+   "opciones": {
+    "a": "El capital por trabajador es constante y la producción por trabajador crece al 2 %.",
+    "b": "La relación capital-producto crece al 2 %, porque el capital por trabajador aumenta de forma continua.",
+    "c": "La producción y el capital agregados crecen al 3 %, el salario real al 2 % y el tipo de interés real es constante.",
+    "d": "El salario real crece al 3 %, como la producción agregada, y el tipo de interés real cae por los rendimientos decrecientes."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En la senda equilibrada es constante el capital por unidad de trabajo eficiente, $\\tilde k^*$. Las variables agregadas crecen a $n+g=3~\\%$, las per cápita (incluido el salario real) a $g=2~\\%$, y el tipo de interés, $r^*=f'(\\tilde k^*)-\\delta$, no cambia.",
+    "desarrollo": "Con $\\tilde k=K/(AL)$ constante: $K=\\tilde k^*AL$ crece a $n+g$, y lo mismo $Y=f(\\tilde k^*)AL$; por tanto $K/Y$ es constante. Por trabajador, $k=A\\tilde k^*$ e $y=A\\,f(\\tilde k^*)$ crecen a $g$. El salario, $w=A[f(\\tilde k^*)-\\tilde k^*f'(\\tilde k^*)]$, crece a $g$, y el tipo de interés depende solo de $\\tilde k^*$. Son los cinco primeros hechos estilizados de Kaldor.\n\nPor qué fallan las demás:\n\n- a) Lo que es constante es el capital por unidad de trabajo eficiente; el capital por trabajador crece al 2 %, igual que la producción por trabajador.\n- b) $K$ e $Y$ crecen a la misma tasa: la relación capital-producto es constante.\n- d) El salario es una magnitud por trabajador: crece a $g$, no a $n+g$. Y el tipo de interés es constante: el progreso técnico compensa exactamente los rendimientos decrecientes del capital."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 El modelo con progreso técnico: senda de crecimiento equilibrado",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314309,
+   "estado": "publicada",
+   "enunciado": "Una economía descrita por el modelo de Solow con progreso técnico aumentador del trabajo está en su senda de crecimiento equilibrado. En un momento dado, el nivel de la tecnología, $A$, da un salto del 10 % de una sola vez, sin que cambie su tasa de crecimiento, $g$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El capital por unidad de trabajo eficiente cae en el momento del salto y vuelve poco a poco al mismo valor de estado estacionario.",
+    "b": "El capital por unidad de trabajo eficiente del estado estacionario aumenta un 10 %, porque la economía es más productiva.",
+    "c": "La renta per cápita sube un 10 % en el momento del salto y no hay transición, porque el estado estacionario no cambia.",
+    "d": "La renta per cápita crece a largo plazo a una tasa mayor que antes, porque parte de un nivel tecnológico más alto."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$\\tilde k^*$ depende de $s$, $n$, $g$ y $\\delta$, no del nivel de $A$. Como $K$ no puede saltar y $A$ sube, $\\tilde k=K/(AL)$ cae en el impacto; después la economía acumula capital y vuelve a $\\tilde k^*$. La renta per cápita acaba en una senda un 10 % más alta, creciendo a $g$.",
+    "desarrollo": "El estado estacionario cumple $s\\,f(\\tilde k^*)=(n+g+\\delta)\\tilde k^*$: el nivel de $A$ no aparece. Tras el salto, $\\tilde k=K/(AL)$ queda por debajo de $\\tilde k^*$ (dividido entre 1,1), la inversión efectiva supera a la de reposición y $\\tilde k$ crece hasta volver a $\\tilde k^*$.\n\nRenta per cápita, $y=A\\,f(\\tilde k)$: en el impacto sube menos del 10 % (con Cobb-Douglas, $1{,}1^{1-\\alpha}$, porque $A$ sube pero $\\tilde k$ baja); durante la transición crece por encima de $g$, y al final $y=A\\,f(\\tilde k^*)$ es exactamente un 10 % mayor que en la senda antigua. Efecto nivel, no efecto crecimiento.\n\nPor qué fallan las demás:\n\n- b) El capital por trabajador sí acaba un 10 % por encima, pero por unidad de trabajo eficiente el estado estacionario es el mismo.\n- c) El 10 % completo solo se alcanza cuando el capital se ha ajustado; en el impacto el capital es el de antes.\n- d) La tasa de crecimiento a largo plazo es $g$, que no ha cambiado."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Estática comparativa con progreso técnico",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314310,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Solow con función de producción Cobb-Douglas, la participación del capital en la renta es $\\alpha=0{,}5$ y $n+g+\\delta=0{,}07$. Con la aproximación lineal alrededor del estado estacionario, ¿cuánto tarda aproximadamente la economía en cerrar la mitad de la distancia (en logaritmos) que la separa de su estado estacionario? (Tome $\\ln2\\simeq0{,}69$.)",
+   "opciones": {
+    "a": "Unos 10 años.",
+    "b": "Unos 14 años.",
+    "c": "Unos 29 años.",
+    "d": "Unos 20 años."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La velocidad de convergencia es $\\lambda=(1-\\alpha)(n+g+\\delta)=0{,}5\\cdot0{,}07=0{,}035$: cada año se cierra el 3,5 % de la distancia. La semivida es $\\ln2/\\lambda\\simeq0{,}69/0{,}035\\simeq20$ años.",
+    "desarrollo": "Alrededor del estado estacionario, $\\ln\\tilde k_t-\\ln\\tilde k^*=e^{-\\lambda t}(\\ln\\tilde k_0-\\ln\\tilde k^*)$, con $\\lambda=(1-\\alpha)(n+g+\\delta)$. La mitad de la distancia se cierra cuando $e^{-\\lambda t}=1/2$, es decir, $t=\\ln2/\\lambda=0{,}69/0{,}035\\simeq19{,}7$ años.\n\nPor qué fallan las demás:\n\n- a) $0{,}69/0{,}07\\simeq10$: olvida el factor $(1-\\alpha)$. Sería la semivida si el capital no tuviera peso en la producción.\n- b) $1/0{,}07\\simeq14$: olvida $(1-\\alpha)$ y además confunde la semivida con $1/\\lambda$.\n- c) $1/0{,}035\\simeq29$ es el tiempo en que la distancia se reduce al 37 % ($e^{-1}$), no a la mitad.\n\nCuanto mayor es $\\alpha$, más despacio decrecen los rendimientos del capital y más lenta es la convergencia: con $\\alpha=1/3$ y el mismo $n+g+\\delta$, la semivida sería de unos 15 años."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 La dinámica de transición: velocidad de convergencia y semivida",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314311,
+   "estado": "publicada",
+   "enunciado": "Una economía con la función de producción $Y_t=K_t^{1/3}(A_tL_t)^{2/3}$ está en la senda de crecimiento equilibrado del modelo de Solow. La tecnología, $A_t$, crece al 1,5 % anual y el trabajo, al 1 %. Un analista hace la contabilidad del crecimiento y calcula el residuo de Solow como $\\gamma_Y-\\tfrac13\\gamma_K-\\tfrac23\\gamma_L$. Obtendrá:",
+   "opciones": {
+    "a": "Un 0,5 % anual.",
+    "b": "Un 1,5 % anual.",
+    "c": "Un 1 % anual.",
+    "d": "Un 2,5 % anual."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En la senda equilibrada $\\gamma_Y=\\gamma_K=n+g=2{,}5~\\%$. El residuo es $2{,}5-\\tfrac13\\cdot2{,}5-\\tfrac23\\cdot1=1~\\%$: con progreso técnico aumentador del trabajo, la productividad total de los factores crece a $(1-\\alpha)g$, no a $g$.",
+    "desarrollo": "Por dos vías:\n\n- contabilidad: $\\gamma_Y-\\alpha\\gamma_K-(1-\\alpha)\\gamma_L=2{,}5-0{,}833-0{,}667=1{,}0~\\%$;\n- directamente: $Y=K^{\\alpha}(AL)^{1-\\alpha}=A^{1-\\alpha}K^{\\alpha}L^{1-\\alpha}$, así que la productividad total de los factores es $A^{1-\\alpha}$ y crece a $(1-\\alpha)g=\\tfrac23\\cdot1{,}5=1~\\%$.\n\nPor qué fallan las demás:\n\n- a) $\\alpha g=0{,}5~\\%$ es justo la parte del crecimiento per cápita que la contabilidad atribuye al capital por trabajador ($\\alpha\\gamma_k$), no el residuo.\n- b) El 1,5 % es $g$, lo que crece la renta per cápita. La contabilidad atribuye al capital la acumulación que el propio progreso técnico induce, y por eso el residuo es menor que $g$.\n- d) El 2,5 % es el crecimiento de la producción agregada."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 Evidencia empírica: contabilidad del crecimiento y residuo de Solow",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314312,
+   "estado": "publicada",
+   "enunciado": "Dos países comparten la tecnología (Cobb-Douglas con una participación del capital $\\alpha=1/3$) y los valores de $n$, $g$ y $\\delta$, y están en su estado estacionario. La tasa de ahorro del país A es 4 veces la del país B. Según el modelo de Solow, la renta per cápita de A es:",
+   "opciones": {
+    "a": "Aproximadamente 1,6 veces la de B.",
+    "b": "El doble que la de B.",
+    "c": "El cuádruple que la de B.",
+    "d": "16 veces la de B."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el estado estacionario $\\tilde y^*=[s/(n+g+\\delta)]^{\\alpha/(1-\\alpha)}$. Con $\\alpha=1/3$ el exponente es $1/2$: una tasa de ahorro 4 veces mayor solo duplica la renta. Por eso el modelo, con una participación del capital realista, explica poco de las enormes diferencias de renta entre países.",
+    "desarrollo": "$\\tilde k^*=[s/(n+g+\\delta)]^{1/(1-\\alpha)}$ e $\\tilde y^*=(\\tilde k^*)^{\\alpha}=[s/(n+g+\\delta)]^{\\alpha/(1-\\alpha)}$. La elasticidad de la renta respecto a la tasa de ahorro es $\\alpha/(1-\\alpha)=0{,}5$, y $4^{0,5}=2$.\n\nPor qué fallan las demás:\n\n- a) $4^{1/3}\\simeq1{,}6$ usa $\\alpha$ como exponente: olvida que más renta genera a su vez más ahorro y más capital.\n- c) Proporcionalidad entre ahorro y renta: exigiría $\\alpha=1/2$.\n- d) $4^2$: es lo que ocurre con el capital por trabajador cuando $\\alpha=1/2$, no con la renta.\n\nAl añadir capital humano con $\\alpha=\\beta=1/3$, la elasticidad pasa a $\\alpha/(1-\\alpha-\\beta)=1$ y la misma diferencia de ahorro cuadruplicaría la renta."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Evidencia y valoración: la limitación cuantitativa del modelo",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314313,
+   "estado": "publicada",
+   "enunciado": "Suponga que dos países tienen la misma función de producción, $y=k^{1/3}$, y el mismo nivel tecnológico, de modo que sus diferencias de renta se deben solo al capital por trabajador. Si la renta por trabajador del país rico es 10 veces la del país pobre, el producto marginal del capital en el país pobre será:",
+   "opciones": {
+    "a": "Algo más del doble que en el país rico.",
+    "b": "10 veces el del país rico.",
+    "c": "1.000 veces el del país rico.",
+    "d": "100 veces el del país rico."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con $y=k^{\\alpha}$, $f'(k)=\\alpha k^{\\alpha-1}=\\alpha\\,y^{-(1-\\alpha)/\\alpha}$. Con $\\alpha=1/3$, $f'(k)=\\tfrac13\\,y^{-2}$: una renta 10 veces menor implica un producto marginal $10^2=100$ veces mayor. Una diferencia tan grande haría fluir el capital hacia los países pobres; que no ocurra es la paradoja de Lucas.",
+    "desarrollo": "Por dos vías:\n\n- con la renta: $k=y^{1/\\alpha}=y^3$, y $f'(k)=\\alpha\\,y/k=\\tfrac13\\,y^{-2}$; el cociente entre pobre y rico es $(1/10)^{-2}=100$;\n- con el capital: si $y_R/y_P=10$, $k_R/k_P=10^3=1.000$, y $f'(k_P)/f'(k_R)=(k_P/k_R)^{-2/3}=1.000^{2/3}=100$.\n\nLa conclusión es que las diferencias de renta no pueden deberse solo al capital físico por trabajador: tienen que intervenir el capital humano y, sobre todo, la productividad.\n\nPor qué fallan las demás:\n\n- a) $10^{1/3}\\simeq2{,}15$ aplica el exponente $\\alpha$ a la renta.\n- b) Proporcionalidad inversa entre renta y producto marginal: valdría con $\\alpha=1/2$.\n- c) 1.000 es el cociente de los capitales por trabajador, no el de sus productos marginales."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Implicaciones: flujos de capital y paradoja de Lucas",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314314,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Mankiw, Romer y Weil, con $Y_t=K_t^{\\alpha}H_t^{\\beta}(A_tL_t)^{1-\\alpha-\\beta}$ y $\\alpha+\\beta<1$, aumenta de forma permanente la fracción de la renta que se invierte en capital humano, $s_H$, sin que cambie la que se invierte en capital físico, $s_K$. En el nuevo estado estacionario, respecto al inicial:",
+   "opciones": {
+    "a": "Aumentan el capital físico y el humano por unidad de trabajo eficiente, y el producto marginal del capital físico no cambia.",
+    "b": "Aumenta el capital humano por unidad de trabajo eficiente y disminuye el físico, porque la inversión educativa desplaza a la inversión física.",
+    "c": "Aumentan el capital físico y el humano por unidad de trabajo eficiente, y el producto marginal del capital físico disminuye.",
+    "d": "Aumenta el capital humano y, con él, la tasa de crecimiento de la renta per cápita a largo plazo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Más capital humano eleva la renta y, con $s_K$ constante, también la inversión en capital físico: suben $\\tilde h^*$, $\\tilde k^*$ e $\\tilde y^*$. Pero en el estado estacionario $s_K\\tilde y^*=(n+g+\\delta)\\tilde k^*$, así que el producto marginal del capital físico, $\\alpha\\tilde y^*/\\tilde k^*=\\alpha(n+g+\\delta)/s_K$, no depende de $s_H$.",
+    "desarrollo": "Estado estacionario: $\\tilde k^*=\\left[s_K^{1-\\beta}s_H^{\\beta}/(n+g+\\delta)\\right]^{1/(1-\\alpha-\\beta)}$ y $\\tilde h^*=\\left[s_K^{\\alpha}s_H^{1-\\alpha}/(n+g+\\delta)\\right]^{1/(1-\\alpha-\\beta)}$: los dos crecen con $s_H$. El producto marginal del capital físico es $\\alpha\\,\\tilde y/\\tilde k$, y en el estado estacionario $\\tilde y^*/\\tilde k^*=(n+g+\\delta)/s_K$: hay más capital físico, pero también más capital humano que lo hace más productivo, y los dos efectos se compensan exactamente.\n\nPor qué fallan las demás:\n\n- b) $s_K$ no cambia: lo que se reduce es el consumo. Y como la renta sube, la inversión en capital físico, $s_K\\tilde y$, también.\n- c) Sería cierto si el capital humano no variara; aquí su aumento desplaza hacia arriba la productividad del capital físico.\n- d) Con $\\alpha+\\beta<1$ hay rendimientos decrecientes en el capital en sentido amplio: el capital humano tiene efecto nivel, y la renta per cápita sigue creciendo a $g$. Solo con $\\alpha+\\beta=1$ habría crecimiento endógeno."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 El modelo de Mankiw, Romer y Weil: implicaciones",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314315,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Mankiw, Romer y Weil con $\\alpha=\\beta=1/3$, dos países comparten el nivel y el ritmo de la tecnología y las tasas de inversión en capital físico y humano, pero en el país B la suma $n+g+\\delta$ es el doble que en el país A, por su mayor crecimiento de la población. En sus sendas de crecimiento equilibrado, la renta per cápita de B es, respecto a la de A:",
+   "opciones": {
+    "a": "La mitad.",
+    "b": "En torno al 71 %.",
+    "c": "La cuarta parte.",
+    "d": "La octava parte."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En la ecuación de la renta del modelo, el coeficiente de $\\ln(n+g+\\delta)$ es $-(\\alpha+\\beta)/(1-\\alpha-\\beta)=-2$. Duplicar $n+g+\\delta$ multiplica la renta per cápita por $2^{-2}=1/4$.",
+    "desarrollo": "$\\ln y_t=\\ln A_0+gt+\\frac{\\alpha}{1-\\alpha-\\beta}\\ln s_K+\\frac{\\beta}{1-\\alpha-\\beta}\\ln s_H-\\frac{\\alpha+\\beta}{1-\\alpha-\\beta}\\ln(n+g+\\delta)$. Con $\\alpha=\\beta=1/3$: $(2/3)/(1/3)=2$. Comprobación con el estado estacionario: $\\tilde y^*=\\tilde k^{*\\alpha}\\tilde h^{*\\beta}$, y tanto $\\tilde k^*$ como $\\tilde h^*$ son proporcionales a $(n+g+\\delta)^{-1/(1-\\alpha-\\beta)}=(n+g+\\delta)^{-3}$; entonces $\\tilde y^*\\propto(n+g+\\delta)^{-3\\cdot(1/3+1/3)}=(n+g+\\delta)^{-2}$.\n\nPor qué fallan las demás:\n\n- a) Elasticidad $-1$: es la de las tasas de inversión (con signo contrario), no la de $n+g+\\delta$, que afecta a los dos capitales a la vez.\n- b) $2^{-1/2}\\simeq0{,}71$ es el resultado del modelo de Solow sin capital humano con $\\alpha=1/3$: elasticidad $-\\alpha/(1-\\alpha)=-0{,}5$. El capital humano la cuadruplica.\n- d) $2^{-3}$ es lo que cae cada capital por unidad de trabajo eficiente, no la renta."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 El modelo de Mankiw, Romer y Weil: la ecuación de la renta",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314316,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Solow con Cobb-Douglas, $\\alpha=0{,}3$ y $n+g+\\delta=0{,}05$. Si se amplía con capital humano a la manera de Mankiw, Romer y Weil, con una elasticidad de la producción respecto al capital humano $\\beta=0{,}4$, la velocidad de convergencia al estado estacionario:",
+   "opciones": {
+    "a": "No cambia: es del 3,5 % anual en los dos casos, porque solo depende del capital físico.",
+    "b": "Baja del 3,5 % al 1,5 % anual.",
+    "c": "Baja del 3,5 % al 3 % anual.",
+    "d": "Sube del 3,5 % al 5 % anual, porque se acumulan dos capitales a la vez."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En Solow, $\\lambda=(1-\\alpha)(n+g+\\delta)=0{,}7\\cdot0{,}05=3{,}5~\\%$. Con capital humano, $\\lambda=(1-\\alpha-\\beta)(n+g+\\delta)=0{,}3\\cdot0{,}05=1{,}5~\\%$: el capital en sentido amplio pesa más, sus rendimientos decrecen más despacio y la convergencia es más lenta.",
+    "desarrollo": "La velocidad depende de lo deprisa que se agoten los rendimientos del factor acumulable. Con dos capitales que se acumulan, lo que cuenta es su peso conjunto, $\\alpha+\\beta=0{,}7$: la economía tarda más en llegar al estado estacionario (semivida de $0{,}69/0{,}015\\simeq46$ años, frente a unos 20). Es lo que acerca el modelo a la velocidad estimada con datos de países, en torno al 2 % anual o algo menos.\n\nPor qué fallan las demás:\n\n- a) La velocidad depende de la participación de todo el capital acumulable, no solo del físico.\n- c) $(1-\\beta)(n+g+\\delta)=3~\\%$ sustituye un capital por otro en lugar de sumarlos.\n- d) $n+g+\\delta=5~\\%$ sería la velocidad si el capital no tuviera ningún peso en la producción. Añadir un factor acumulable la reduce, no la aumenta."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 El modelo de Mankiw, Romer y Weil: velocidad de convergencia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314317,
+   "estado": "publicada",
+   "enunciado": "Al estimar con datos de muchos países la ecuación de estado estacionario del modelo de Solow (el logaritmo de la renta por trabajador en función de los logaritmos de la tasa de inversión y de $n+g+\\delta$), la participación del capital implícita en los coeficientes ronda 0,6, cerca del doble de la observada. La explicación de Mankiw, Romer y Weil es que:",
+   "opciones": {
+    "a": "Se omite el capital humano, que es mayor donde más se invierte y menos crece la población, lo que sesga los coeficientes al alza.",
+    "b": "La tasa de inversión se mide con error, y el error de medida en una variable explicativa sesga su coeficiente al alza.",
+    "c": "La participación del capital físico en la renta es en realidad de 0,6 en la mayoría de los países, y la contabilidad nacional la infravalora.",
+    "d": "Los países de la muestra están lejos de su estado estacionario, y eso eleva la elasticidad de la renta respecto a la tasa de inversión."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Es un sesgo por variable omitida. Si la ecuación verdadera incluye el capital humano y este es mayor donde se invierte más y la población crece menos, los coeficientes de la inversión y de $n+g+\\delta$ recogen también su efecto y salen demasiado grandes en valor absoluto. Al incluirlo, las participaciones estimadas se acercan a un tercio.",
+    "desarrollo": "La ecuación ampliada puede escribirse como la de Solow más un término en el capital humano: $\\ln y=\\ldots+\\frac{\\alpha}{1-\\alpha}\\ln s_K-\\frac{\\alpha}{1-\\alpha}\\ln(n+g+\\delta)+\\frac{\\beta}{1-\\alpha}\\ln\\tilde h^*$. Omitir $\\ln\\tilde h^*$, que depende positivamente de $s_K$ y negativamente de $n$, infla los dos coeficientes, y de ellos se deduce una $\\alpha$ demasiado alta. Con el capital humano incluido, la estimación original da $\\alpha\\simeq0{,}31$ y $\\beta\\simeq0{,}28$ y el ajuste mejora.\n\nPor qué fallan las demás:\n\n- b) El error de medida clásico en un regresor atenúa su coeficiente (lo sesga hacia cero), no lo aumenta.\n- c) Las participaciones del capital físico observadas rondan un tercio; el argumento de los autores es que falta un factor acumulable, no que la participación esté mal medida.\n- d) La ecuación supone que los países están en su estado estacionario, pero la lejanía de él no es la explicación que dan ni genera por sí misma ese sesgo sistemático."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 El modelo de Mankiw, Romer y Weil: la ecuación con el stock de capital humano y la evidencia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314318,
+   "estado": "publicada",
+   "enunciado": "La «contabilidad del desarrollo» (Klenow y Rodríguez-Clare, Hall y Jones, Caselli) descompone las diferencias de renta por trabajador entre países midiendo el capital humano con los años de estudio y los rendimientos de la educación estimados con ecuaciones de Mincer, en lugar de con la tasa de matrícula en secundaria. Frente a Mankiw, Romer y Weil, concluye que:",
+   "opciones": {
+    "a": "El capital humano explica todavía más, porque la matrícula en secundaria infravalora las diferencias educativas entre países.",
+    "b": "El capital físico explica casi todas las diferencias, y el capital humano y la productividad son residuales.",
+    "c": "Las diferencias se reparten a partes iguales entre capital físico, capital humano y productividad, lo que confirma $\\alpha=\\beta=1/3$.",
+    "d": "La mayor parte de las diferencias corresponde a la productividad, y el capital humano explica menos de lo que sugerían aquellos."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Medido con lo que el mercado paga por cada año de estudio, el capital humano varía entre países mucho menos que la matrícula en secundaria. Con esa medida, la acumulación de factores explica menos de la mitad de las diferencias de renta y el resto se atribuye a la productividad, $A$.",
+    "desarrollo": "Hall y Jones escriben $Y=K^{\\alpha}(A\\,h\\,L)^{1-\\alpha}$ con $h=e^{\\phi(S)}$, donde $S$ son los años de estudio y $\\phi'(S)$ el rendimiento de un año más. Con rendimientos del orden del 7-13 % por año, las diferencias de escolarización entre países ricos y pobres se traducen en diferencias moderadas de capital humano por trabajador, muy inferiores a las de renta. El grueso queda en el residuo de productividad, lo que desplaza la pregunta hacia por qué unos países usan sus factores mejor que otros (tecnología, instituciones, asignación de recursos).\n\nPor qué fallan las demás:\n\n- a) Es al revés: la matrícula en secundaria exagera las diferencias de capital humano.\n- b) Las diferencias de capital físico (en relación con el producto) tampoco bastan; el componente dominante es la productividad.\n- c) No hay tal reparto por tercios; $\\alpha=\\beta=1/3$ son elasticidades de la función de producción, no la parte de las diferencias de renta que explica cada factor."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 El modelo de Mankiw, Romer y Weil: extensiones y críticas (contabilidad del desarrollo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314319,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Solow sin progreso técnico, la función de producción tiene rendimientos crecientes en un tramo intermedio, de modo que la curva $s\\,f(k)/k$ decrece, crece y vuelve a decrecer, y corta a la horizontal $n+\\delta$ en tres puntos, $k_B<k_U<k_A$. La curva queda por encima de la horizontal para $k<k_B$ y para $k_U<k<k_A$, y por debajo en el resto. Un país situado en $k_B$ recibe una donación de capital por una sola vez. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Cualquier donación, por pequeña que sea, inicia la convergencia hacia $k_A$, porque el producto marginal del capital es mayor en el país pobre.",
+    "b": "Si la donación deja el capital por debajo de $k_U$, el país vuelve a $k_B$; si lo lleva por encima, converge a $k_A$ sin más ayuda.",
+    "c": "El país converge a $k_U$, que es el estado estacionario estable situado entre los otros dos.",
+    "d": "El país solo se mantiene en $k_A$ si la ayuda es permanente: al retirarla, vuelve siempre a $k_B$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La tasa de crecimiento de $k$ es la distancia entre $s\\,f(k)/k$ y $n+\\delta$. Entre $k_B$ y $k_U$ es negativa: el capital vuelve a caer hasta $k_B$. Entre $k_U$ y $k_A$ es positiva: el capital crece solo hasta $k_A$. $k_B$ y $k_A$ son estables y $k_U$, inestable, es el umbral de la trampa de pobreza.",
+    "desarrollo": "$\\gamma_k=s\\,f(k)/k-(n+\\delta)$. Por tramos: $\\gamma_k>0$ si $k<k_B$; $\\gamma_k<0$ si $k_B<k<k_U$; $\\gamma_k>0$ si $k_U<k<k_A$; $\\gamma_k<0$ si $k>k_A$. Por tanto, desde cualquier punto por debajo de $k_U$ la economía va a $k_B$ y desde cualquier punto por encima, a $k_A$. La renta a largo plazo depende de dónde se parte: una ayuda pequeña se disipa, y un «gran empujón» que supere el umbral basta aunque sea transitorio.\n\nPor qué fallan las demás:\n\n- a) Es la lógica del modelo de Solow habitual, con un solo estado estacionario. Aquí, justo por encima de $k_B$ la inversión efectiva no cubre la de reposición.\n- c) $k_U$ es inestable: cualquier desviación aleja a la economía de él.\n- d) $k_A$ es estable: una vez superado el umbral, el ahorro del propio país sostiene el capital sin ayuda.\n\nLas condiciones de Inada pueden seguir cumpliéndose, porque se refieren al producto marginal cerca de cero y en el infinito, no al tramo intermedio."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Otras extensiones: trampas de pobreza",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:314319.webp",
+     "alt": "Plano con el capital por trabajador k en abscisas. Una horizontal a la altura n + δ y la curva s·f(k)/k, que parte muy alta, baja hasta cortar a la horizontal en k_B, sigue bajando hasta un mínimo, sube y la corta en k_U, alcanza un máximo y vuelve a bajar hasta cortarla en k_A, para quedar después por debajo. Los tres cortes se proyectan sobre el eje. No hay flechas ni rótulos sobre la estabilidad.",
+     "ancho": 580
+    }
+   ]
+  },
+  {
+   "id": 314320,
+   "estado": "publicada",
+   "enunciado": "Una economía produce con capital, un recurso no renovable $R$, tierra $T$ y trabajo eficiente: $Y_t=K_t^{0{,}3}R_t^{0{,}1}T^{0{,}1}(A_tL_t)^{0{,}5}$. La tierra es fija, el uso del recurso cae un 1 % anual, la población crece un 1 % anual y la tecnología, un 2 % anual. En la senda de crecimiento equilibrado, en la que el capital y la producción crecen a la misma tasa, la renta por trabajador crece:",
+   "opciones": {
+    "a": "Al 0,7 % anual.",
+    "b": "Al 1,3 % anual.",
+    "c": "Al 1 % anual.",
+    "d": "Al 2 % anual."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Derivando en logaritmos, $\\gamma_Y=0{,}3\\gamma_K-0{,}1\\cdot0{,}01+0{,}5\\cdot0{,}03$. Con $\\gamma_K=\\gamma_Y$, $0{,}7\\gamma_Y=0{,}014$ y $\\gamma_Y=2~\\%$; por trabajador, $2-1=1~\\%$. Sin tierra ni recurso crecería a $g=2~\\%$: los factores fijos y agotables restan un punto, pero no impiden crecer.",
+    "desarrollo": "$\\gamma_Y=\\alpha\\gamma_K+\\alpha_R\\gamma_R+\\alpha_T\\gamma_T+(1-\\alpha-\\alpha_R-\\alpha_T)(g+n)$, con $\\gamma_R=-b=-1~\\%$ y $\\gamma_T=0$. Imponiendo $\\gamma_K=\\gamma_Y$: $\\gamma_Y=\\frac{-0{,}001+0{,}5\\cdot0{,}03}{0{,}7}=\\frac{0{,}014}{0{,}7}=0{,}02$, y $\\gamma_y=\\gamma_Y-n=0{,}01$.\n\nComprobación con la fórmula general: $\\gamma_y=\\frac{(1-\\alpha-\\alpha_R-\\alpha_T)g-(\\alpha_R+\\alpha_T)n-\\alpha_Rb}{1-\\alpha}=\\frac{0{,}5\\cdot0{,}02-0{,}2\\cdot0{,}01-0{,}1\\cdot0{,}01}{0{,}7}=\\frac{0{,}007}{0{,}7}=1~\\%$.\n\nEl lastre tiene dos orígenes: la población creciente reparte la tierra y el recurso entre más trabajadores ($0{,}2\\cdot n$) y el recurso se agota ($0{,}1\\cdot b$).\n\nPor qué fallan las demás:\n\n- a) 0,7 % es el numerador sin dividir entre $1-\\alpha$: olvida que el capital se acumula al ritmo de la producción y amplifica el resultado.\n- b) $0{,}009/0{,}7\\simeq1{,}3~\\%$ solo descuenta el agotamiento del recurso y olvida el efecto de la población sobre los factores fijos.\n- d) El 2 % es el crecimiento de la producción agregada (y el de la renta por trabajador si no hubiera tierra ni recurso)."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Otras extensiones: recursos naturales y límites al crecimiento",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314321,
+   "estado": "publicada",
+   "enunciado": "Una economía tiene la función de producción per cápita $f(k)=0{,}5\\,k+k^{0{,}5}$, ahorra una fracción constante $s=0{,}2$ de su renta y $n+\\delta=0{,}06$; no hay progreso técnico. A largo plazo, el capital per cápita:",
+   "opciones": {
+    "a": "Converge a un estado estacionario sin crecimiento, porque el término $k^{0{,}5}$ tiene rendimientos decrecientes.",
+    "b": "Crece a una tasa cada vez mayor, sin límite, por los rendimientos crecientes de la función.",
+    "c": "Crece a una tasa constante del 10 % desde el primer momento, como en un modelo $AK$.",
+    "d": "Crece de forma indefinida, a una tasa que disminuye y tiende al 4 % anual."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$\\gamma_k=s\\,f(k)/k-(n+\\delta)=0{,}2\\,(0{,}5+k^{-0{,}5})-0{,}06=0{,}04+0{,}2\\,k^{-0{,}5}$: siempre positiva, decreciente en $k$ y con límite 4 %. El producto marginal del capital tiende a 0,5 y no a cero (se incumple una condición de Inada), y como $s\\cdot0{,}5>n+\\delta$ la acumulación sostiene el crecimiento.",
+    "desarrollo": "Es la función de Jones y Manuelli, $f(k)=Ak+Bk^{\\alpha}$: se comporta como una neoclásica cuando hay poco capital y como una $AK$ cuando hay mucho. La productividad media, $f(k)/k=0{,}5+k^{-0{,}5}$, decrece, pero no baja de 0,5; la curva $s\\,f(k)/k$ no llega a cortar a la horizontal $n+\\delta$ si $sA>n+\\delta$ ($0{,}10>0{,}06$). Hay transición (el crecimiento se va frenando) y, a la vez, crecimiento a largo plazo, $sA-(n+\\delta)=4~\\%$, que depende de la tasa de ahorro.\n\nPor qué fallan las demás:\n\n- a) Habría estado estacionario si $sA<n+\\delta$; aquí la parte lineal basta para que la inversión supere siempre a la reposición.\n- b) La función tiene rendimientos constantes a escala y un producto marginal del capital decreciente: la tasa de crecimiento disminuye, no aumenta.\n- c) El 10 % es $sA$, sin restar $n+\\delta$; y la tasa no es constante, porque el término $k^{0{,}5}$ añade un crecimiento transitorio que se va agotando."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Hacia el crecimiento endógeno: modelos AK y de Jones y Manuelli",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314322,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Ramsey, Cass y Koopmans, la utilidad instantánea del hogar es $u(c)=\\frac{c^{1-\\theta}-1}{1-\\theta}$ con $\\theta=1{,}5$ y la tasa de preferencia temporal es $\\rho=2~\\%$. Si en un momento dado el tipo de interés real es del 5 %, el consumo per cápita del hogar crece en ese momento:",
+   "opciones": {
+    "a": "Al 2 %.",
+    "b": "Al 3 %.",
+    "c": "Al 4,5 %.",
+    "d": "Al 1,3 %."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La ecuación de Euler es $\\dot c/c=(r-\\rho)/\\theta=(0{,}05-0{,}02)/1{,}5=2~\\%$. El consumo crece porque el ahorro rinde más que la impaciencia, y la respuesta es tanto mayor cuanto mayor es la elasticidad de sustitución intertemporal, $1/\\theta$.",
+    "desarrollo": "De las condiciones de primer orden del hogar, $c^{-\\theta}=\\lambda$ y $\\dot\\lambda/\\lambda=\\rho-r$, se obtiene $\\dot c/c=(r-\\rho)/\\theta$. Con $r-\\rho=3$ puntos y una elasticidad de sustitución intertemporal de $1/1{,}5=2/3$, el consumo crece al 2 %.\n\nPor qué fallan las demás:\n\n- b) $r-\\rho=3~\\%$ solo vale con utilidad logarítmica ($\\theta=1$).\n- c) $(r-\\rho)\\,\\theta=4{,}5~\\%$ multiplica por $\\theta$ en lugar de dividir: cuanto mayor es $\\theta$, más desea el hogar suavizar el consumo y menos responde al tipo de interés.\n- d) $r/\\theta-\\rho=1{,}3~\\%$ aplica $\\theta$ solo al tipo de interés.\n\nEl crecimiento de la población no aparece: aunque el descuento efectivo de la utilidad del hogar es $\\rho-n$, los activos per cápita rinden $r-n$, y $n$ se cancela."
+   },
+   "dificultad": 1,
+   "apartado": "III.b Modelo: el problema del hogar y la ecuación de Euler",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314323,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Ramsey, Cass y Koopmans con progreso técnico aumentador del trabajo, la tasa de preferencia temporal es $\\rho=1~\\%$, el parámetro de la utilidad isoelástica es $\\theta=2$, la tecnología crece a $g=1{,}5~\\%$ y la población, a $n=1~\\%$. En la senda de crecimiento equilibrado, el tipo de interés real es:",
+   "opciones": {
+    "a": "El 1 %.",
+    "b": "El 2,5 %.",
+    "c": "El 4 %.",
+    "d": "El 3 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En la senda equilibrada el consumo per cápita crece a $g$, y la ecuación de Euler, $g=(r^*-\\rho)/\\theta$, da $r^*=\\rho+\\theta g=1+2\\cdot1{,}5=4~\\%$. Es la regla de oro modificada, $f'(\\tilde k^*)=\\rho+\\delta+\\theta g$.",
+    "desarrollo": "Por unidad de trabajo eficiente, $\\dot{\\tilde c}/\\tilde c=[f'(\\tilde k)-\\delta-\\rho-\\theta g]/\\theta=0$ en el estado estacionario, luego $r^*=f'(\\tilde k^*)-\\delta=\\rho+\\theta g$. El término $\\theta g$ aparece porque un hogar que espera ser más rico quiere adelantar consumo, y solo acepta una senda de consumo creciente si el tipo de interés le compensa.\n\nComprobación: la utilidad está acotada, porque $\\rho-n=0>(1-\\theta)g=-1{,}5~\\%$, y entonces $r^*=4~\\%>n+g=2{,}5~\\%$: el capital queda por debajo del de la regla de oro.\n\nPor qué fallan las demás:\n\n- a) $r^*=\\rho$ solo vale sin progreso técnico ($g=0$).\n- b) 2,5 % es $n+g$, el tipo de interés de la regla de oro de Solow (y también $\\rho+g$, que sería el resultado con $\\theta=1$).\n- d) $\\theta g=3~\\%$ olvida la impaciencia."
+   },
+   "dificultad": 2,
+   "apartado": "III.b Modelo: estado estacionario y regla de oro modificada",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314324,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Ramsey, Cass y Koopmans con función de producción Cobb-Douglas, $\\alpha=1/3$, $n=0{,}01$, $g=0{,}02$, $\\delta=0{,}03$, $\\rho=0{,}03$ y $\\theta=2$. En el estado estacionario, la tasa de ahorro bruta (inversión bruta sobre producción) es:",
+   "opciones": {
+    "a": "El 25 %.",
+    "b": "El 20 %.",
+    "c": "El 33 %.",
+    "d": "El 60 %."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el estado estacionario la inversión es la de reposición, $s^*=(n+g+\\delta)\\tilde k^*/f(\\tilde k^*)$, y con Cobb-Douglas $f(\\tilde k^*)/\\tilde k^*=f'(\\tilde k^*)/\\alpha=(\\rho+\\delta+\\theta g)/\\alpha$. Por tanto $s^*=\\alpha(n+g+\\delta)/(\\rho+\\delta+\\theta g)=\\tfrac13\\cdot0{,}06/0{,}10=20~\\%$, por debajo del $s_{\\mathrm{oro}}=\\alpha=33~\\%$.",
+    "desarrollo": "Paso a paso:\n\n- regla de oro modificada: $f'(\\tilde k^*)=\\rho+\\delta+\\theta g=0{,}03+0{,}03+0{,}04=0{,}10$;\n- con $f(\\tilde k)=\\tilde k^{\\alpha}$, $f'=\\alpha f/\\tilde k$, luego $f(\\tilde k^*)/\\tilde k^*=0{,}10/(1/3)=0{,}30$ y la relación capital-producto es $1/0{,}30$;\n- inversión de reposición sobre producción: $s^*=(n+g+\\delta)\\,\\tilde k^*/f(\\tilde k^*)=0{,}06/0{,}30=0{,}20$.\n\nComprobación: el consumo es $\\tilde c^*=f-(n+g+\\delta)\\tilde k^*=0{,}30\\tilde k^*-0{,}06\\tilde k^*=0{,}24\\tilde k^*$, el 80 % de la producción.\n\nPor qué fallan las demás:\n\n- a) 25 % sale de usar $\\rho+\\delta+g=0{,}08$ en el denominador, es decir, de suponer $\\theta=1$.\n- c) 33 % es la tasa de ahorro de la regla de oro, $\\alpha$: la impaciencia hace que el hogar ahorre menos.\n- d) 60 % es $(n+g+\\delta)/(\\rho+\\delta+\\theta g)$ sin multiplicar por $\\alpha$."
+   },
+   "dificultad": 3,
+   "apartado": "III.b Modelo: estado estacionario (tasa de ahorro con Cobb-Douglas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314325,
+   "estado": "publicada",
+   "enunciado": "En el diagrama de fases del modelo de Ramsey, Cass y Koopmans, en el plano $(\\tilde k,\\tilde c)$, la economía parte de un capital $\\tilde k_0<\\tilde k^*$. Suponga que el consumo inicial fuera inferior al que corresponde a la senda de silla y que, a partir de ahí, se cumplieran la ecuación de Euler y la ecuación de acumulación. Esa trayectoria:",
+   "opciones": {
+    "a": "Acumula capital sin cesar mientras el consumo tiende a cero, lo que viola la condición de transversalidad.",
+    "b": "Agota el capital en un tiempo finito y obliga al consumo a caer de golpe a cero, lo que es incompatible con la ecuación de Euler.",
+    "c": "Converge también al estado estacionario, aunque más despacio, porque este es globalmente estable, como en el modelo de Solow.",
+    "d": "Converge al capital de la regla de oro, en el que el consumo por unidad de trabajo eficiente es máximo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con un consumo demasiado bajo, el hogar ahorra de más: el capital cruza $\\tilde k^*$, el consumo empieza a caer y la economía acaba en $(\\bar k,0)$, donde el tipo de interés es menor que $n+g$. Se acumula un capital del que nunca se consume: se viola la transversalidad, y el hogar podría mejorar consumiendo más.",
+    "desarrollo": "El estado estacionario es un punto de silla: el capital es una variable predeterminada y el consumo puede saltar, y solo un consumo inicial lleva a $E$. Por debajo de la senda de silla, la trayectoria está bajo el lugar $\\dot{\\tilde k}=0$ (el capital crece) y, una vez a la derecha de $\\tilde k^*$, el producto marginal es menor que $\\rho+\\delta+\\theta g$ y el consumo cae. La economía tiende a $(\\bar k,0)$, con $f'(\\bar k)-\\delta<n+g$: el valor actual del capital no tiende a cero.\n\nPor qué fallan las demás:\n\n- b) Es lo que ocurre con un consumo inicial superior al de la senda de silla: el capital se agota y el consumo tendría que desplomarse de un salto.\n- c) En Solow el estado estacionario es globalmente estable porque el ahorro es una regla. Aquí la estabilidad es de punto de silla: solo una trayectoria converge.\n- d) Nada detiene la trayectoria en $\\tilde k_{\\mathrm{oro}}$: allí $\\dot{\\tilde c}<0$ y, al estar por debajo del lugar $\\dot{\\tilde k}=0$, el capital sigue creciendo."
+   },
+   "dificultad": 2,
+   "apartado": "III.b Modelo: diagrama de fases y senda de silla",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:314325.webp",
+     "alt": "Diagrama de fases con el capital por unidad de trabajo eficiente en abscisas y el consumo en ordenadas. El lugar donde el capital no varía es una U invertida que sale del origen, tiene su máximo en el capital de la regla de oro y vuelve al eje en k̄. El lugar donde el consumo no varía es una vertical en k*, a la izquierda de la regla de oro. Se cortan en E, por donde pasa la senda de silla, creciente. Sobre la vertical de k0, a la izquierda de k*, el punto C queda por debajo de la senda de silla. No se dibujan trayectorias ni flechas.",
+     "ancho": 600
+    }
+   ]
+  },
+  {
+   "id": 314326,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Ramsey, Cass y Koopmans con progreso técnico, el hogar maximiza $\\int_0^{\\infty}e^{-(\\rho-n)t}\\,\\frac{c_t^{1-\\theta}-1}{1-\\theta}\\,dt$, y en la senda de crecimiento equilibrado el consumo per cápita crece a la tasa $g$. Con $\\rho=0{,}02$, $n=0{,}01$ y $g=0{,}02$, ¿con cuál de los siguientes valores de $\\theta$ NO está acotada la utilidad del hogar en esa senda (la integral diverge)?",
+   "opciones": {
+    "a": "$\\theta=2$",
+    "b": "$\\theta=1$",
+    "c": "$\\theta=0{,}6$",
+    "d": "$\\theta=0{,}4$"
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con $c$ creciendo a $g$, el integrando se comporta como $e^{-[\\rho-n-(1-\\theta)g]t}$, y la integral converge si $\\rho-n>(1-\\theta)g$: $0{,}01>(1-\\theta)\\,0{,}02$, es decir, $\\theta>0{,}5$. Solo $\\theta=0{,}4$ lo incumple: $(1-0{,}4)\\cdot0{,}02=0{,}012>0{,}01$.",
+    "desarrollo": "$c_t^{1-\\theta}$ crece a la tasa $(1-\\theta)g$ y se descuenta a $\\rho-n$. Si $\\theta<1$, la utilidad instantánea crece con el consumo y puede crecer más deprisa de lo que se descuenta.\n\n- a) $\\theta=2$: $(1-\\theta)g=-0{,}02<0{,}01$. Converge.\n- b) $\\theta=1$ (utilidad logarítmica): la utilidad crece linealmente en el tiempo y la condición es $\\rho>n$, que se cumple. Converge.\n- c) $\\theta=0{,}6$: $0{,}4\\cdot0{,}02=0{,}008<0{,}01$. Converge.\n- d) $\\theta=0{,}4$: $0{,}012>0{,}01$. Diverge.\n\nLa misma condición, escrita como $\\rho+\\theta g>n+g$, garantiza que el tipo de interés de estado estacionario supere al crecimiento de la economía y que el capital quede por debajo del de la regla de oro; es también lo que exige la condición de transversalidad."
+   },
+   "dificultad": 3,
+   "apartado": "III.b Supuestos: utilidad acotada",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314327,
+   "estado": "publicada",
+   "enunciado": "Una economía descrita por el modelo de Ramsey, Cass y Koopmans está en su estado estacionario. El gasto público en bienes, que no da utilidad ni aumenta la producción y se financia con impuestos de suma fija, aumenta de forma inesperada, y los hogares saben que el aumento es temporal. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El consumo cae en la misma cuantía que el gasto mientras este dura, y el capital y el tipo de interés no cambian.",
+    "b": "El consumo no varía, porque un gasto temporal no altera la renta permanente, y el capital absorbe todo el ajuste.",
+    "c": "El consumo cae menos que el gasto y, mientras dura el aumento, el capital baja y el tipo de interés sube.",
+    "d": "El consumo cae más que el gasto, porque los hogares anticipan más impuestos, y el capital aumenta durante el episodio."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El hogar reparte en el tiempo el coste de un gasto transitorio: reduce el consumo, pero menos que el gasto, y cubre la diferencia desahorrando. El capital baja mientras dura el aumento y, con él, sube su producto marginal; cuando el gasto termina, la economía está sobre la senda de silla original y vuelve al estado estacionario inicial.",
+    "desarrollo": "El gasto desplaza hacia abajo el lugar $\\dot{\\tilde k}=0$ mientras dura; la ecuación de Euler no cambia. Como el consumo no puede saltar de forma prevista (lo impide Euler), en el momento del anuncio cae lo justo para que, al terminar el gasto, la economía esté exactamente sobre la senda de silla antigua. Durante el episodio, el consumo más el gasto superan lo que deja libre la producción tras reponer el capital: $\\tilde k$ cae y $r=f'(\\tilde k)-\\delta$ sube.\n\nPor qué fallan las demás:\n\n- a) Es el efecto de un aumento permanente: expulsión completa del consumo privado, sin cambios en el capital ni en el tipo de interés.\n- b) La renta permanente sí cae, aunque poco: el consumo baja algo. Solo en el límite de un gasto de duración ínfima el efecto sobre el consumo sería despreciable.\n- d) El valor actual de los impuestos es el del gasto; no hay razón para que el consumo caiga más que este ni para que el capital aumente."
+   },
+   "dificultad": 2,
+   "apartado": "III.d Extensiones: el sector público (gasto permanente y temporal)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314328,
+   "estado": "publicada",
+   "enunciado": "Una economía descrita por el modelo de Ramsey, Cass y Koopmans, sin progreso técnico y con $\\rho=3~\\%$, está en su estado estacionario. El Gobierno introduce de forma permanente un impuesto del 25 % sobre las rentas del capital (netas de depreciación) y devuelve la recaudación con transferencias de suma fija. En el nuevo estado estacionario:",
+   "opciones": {
+    "a": "El rendimiento del capital antes de impuestos sigue en el 3 % y el rendimiento después de impuestos baja al 2,25 %; el capital no cambia.",
+    "b": "El rendimiento del capital antes de impuestos sube al 4 % y el rendimiento después de impuestos sigue en el 3 %; el capital es menor.",
+    "c": "El rendimiento del capital antes de impuestos sube al 3,75 % y el rendimiento después de impuestos baja al 2,81 %; el capital es menor.",
+    "d": "Ni el rendimiento ni el capital cambian, porque al devolverse la recaudación el impuesto equivale a uno de suma fija."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con el impuesto, la ecuación de Euler iguala el rendimiento después de impuestos a la impaciencia: $(1-\\tau_K)(f'(k^*)-\\delta)=\\rho$. Por tanto $f'(k^*)-\\delta=0{,}03/0{,}75=4~\\%$: el capital cae hasta que su rendimiento bruto compensa el impuesto. A largo plazo, el ahorrador obtiene lo mismo que antes y la carga se traslada a una economía con menos capital, renta y salarios.",
+    "desarrollo": "Con $g=0$, $\\dot c/c=[(1-\\tau_K)(f'(k)-\\delta)-\\rho]/\\theta$. En el estado estacionario, $(1-0{,}25)(f'(k^*)-\\delta)=0{,}03$, luego $f'(k^*)-\\delta=4~\\%$ y el rendimiento neto de impuestos es $0{,}75\\cdot4=3~\\%$. Como $f'$ es decreciente, un producto marginal mayor exige menos capital: el lugar $\\dot c=0$ se desplaza a la izquierda. En el momento de la subida el consumo salta hacia arriba (ahorrar rinde menos) y después cae con el capital hasta un nivel inferior al inicial.\n\nPor qué fallan las demás:\n\n- a) Describe el impacto inicial, cuando el capital aún no se ha ajustado, no el estado estacionario: con un rendimiento neto del 2,25 %, inferior a $\\rho$, el consumo caería sin cesar.\n- c) $3~\\%\\cdot1{,}25=3{,}75~\\%$ no restablece la igualdad entre rendimiento neto e impaciencia: el ajuste correcto divide entre $1-\\tau_K$.\n- d) Devolver la recaudación neutraliza el efecto renta, pero no la distorsión: el impuesto sigue reduciendo el rendimiento marginal del ahorro. Por eso en este modelo el impuesto óptimo sobre el capital a largo plazo es nulo (Chamley y Judd)."
+   },
+   "dificultad": 2,
+   "apartado": "III.d Extensiones: impuestos distorsionantes",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314329,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Ramsey, Cass y Koopmans, con oferta de trabajo inelástica, ¿cuál de las siguientes medidas, permanente e inesperada, modifica el capital por unidad de trabajo eficiente del estado estacionario?",
+   "opciones": {
+    "a": "Un aumento del gasto público en bienes financiado con impuestos de suma fija.",
+    "b": "Un impuesto proporcional y constante sobre el consumo.",
+    "c": "Un impuesto proporcional sobre las rentas del trabajo.",
+    "d": "Un impuesto proporcional sobre las rentas del capital."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El capital de estado estacionario lo fija la ecuación de Euler: el rendimiento del ahorro después de impuestos debe igualar $\\rho+\\theta g$. Solo el impuesto sobre las rentas del capital altera ese rendimiento y obliga a que el capital sea menor. Las otras tres medidas no cambian el precio relativo del consumo presente y futuro.",
+    "desarrollo": "- a) El gasto permanente financiado con impuestos de suma fija desplaza hacia abajo el lugar $\\dot{\\tilde k}=0$: el consumo cae en la cuantía del gasto y el capital no cambia.\n- b) Un impuesto constante sobre el consumo encarece por igual el consumo de hoy y el de mañana: no distorsiona el ahorro.\n- c) Con oferta de trabajo inelástica, el impuesto sobre el trabajo no cambia ninguna decisión marginal: actúa como uno de suma fija.\n- d) Con un tipo $\\tau_K$, el estado estacionario cumple $(1-\\tau_K)(f'(\\tilde k^*)-\\delta)=\\rho+\\theta g$: el producto marginal antes de impuestos tiene que ser mayor y el capital, menor.\n\nSi la oferta de trabajo fuera elástica, los impuestos sobre el consumo y sobre el trabajo sí distorsionarían la elección entre consumo y ocio."
+   },
+   "dificultad": 1,
+   "apartado": "III.d Extensiones: el sector público e impuestos",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314330,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Solow, una economía puede ser dinámicamente ineficiente; en el equilibrio competitivo del modelo de Ramsey, Cass y Koopmans, no. La razón es que:",
+   "opciones": {
+    "a": "Los hogares eligen su ahorro descontando el futuro, y el estado estacionario cumple $f'(\\tilde k^*)=\\rho+\\delta+\\theta g>n+g+\\delta$.",
+    "b": "El Estado corrige el exceso de ahorro de los hogares con impuestos y transferencias de suma fija.",
+    "c": "La tasa de ahorro del estado estacionario coincide con la participación del capital en la renta, como pide la regla de oro.",
+    "d": "Las condiciones de Inada impiden que el capital por unidad de trabajo eficiente supere el de la regla de oro, en el que $f'=n+g+\\delta$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En Solow la tasa de ahorro es un dato arbitrario y puede superar la de la regla de oro. En el modelo con hogares que optimizan, la impaciencia hace que se acumule menos: como la utilidad acotada exige $\\rho+\\theta g>n+g$, el producto marginal del capital es mayor que el de la regla de oro y $\\tilde k^*<\\tilde k_{\\mathrm{oro}}$.",
+    "desarrollo": "La regla de oro, $f'(\\tilde k_{\\mathrm{oro}})=n+g+\\delta$, maximiza el consumo de estado estacionario; la regla de oro modificada, $f'(\\tilde k^*)=\\rho+\\delta+\\theta g$, sale de maximizar la utilidad descontada. Un hogar de horizonte infinito nunca mantendría un capital por encima del de la regla de oro: podría consumir más hoy y en todos los periodos futuros. Además, el equilibrio coincide con la solución de un planificador (primer teorema del bienestar: agentes precio-aceptantes, mercados completos, sin externalidades), así que es un óptimo de Pareto.\n\nPor qué fallan las demás:\n\n- b) El modelo básico no tiene sector público, y no hace falta: el mercado no ahorra de más.\n- c) La tasa de ahorro de estado estacionario es inferior a la participación del capital: con Cobb-Douglas, $s^*=\\alpha(n+g+\\delta)/(\\rho+\\delta+\\theta g)<\\alpha$.\n- d) Las condiciones de Inada también se cumplen en Solow, donde la ineficiencia dinámica es posible; garantizan que existe un estado estacionario, no dónde está.\n\nEl resultado depende del horizonte infinito: con generaciones solapadas (Diamond), el equilibrio competitivo sí puede ser dinámicamente ineficiente."
+   },
+   "dificultad": 1,
+   "apartado": "III.b Implicaciones: eficiencia del equilibrio y regla de oro modificada",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314331,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Ramsey, Cass y Koopmans con función de producción Cobb-Douglas, una economía parte de un capital inferior al del estado estacionario. Sea $s^*$ la tasa de ahorro del estado estacionario y $\\theta$ el parámetro de la utilidad isoelástica. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La tasa de ahorro es constante durante la transición para cualquier $\\theta$, porque con Cobb-Douglas los efectos renta y sustitución se compensan siempre.",
+    "b": "Si $\\theta<1/s^*$, la tasa de ahorro aumenta a medida que la economía se enriquece; si $\\theta=1/s^*$, es constante.",
+    "c": "Si $\\theta<1/s^*$, la tasa de ahorro disminuye a medida que la economía se enriquece; si $\\theta=1/s^*$, es constante.",
+    "d": "Cuanto mayor es $\\theta$, más rápida es la convergencia, porque el hogar desea suavizar el consumo y ahorra más al principio."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Cuando el capital es escaso, su rendimiento alto invita a ahorrar (efecto sustitución), pero el hogar, que sabe que será más rico, quiere adelantar consumo (efecto renta). Con $\\theta$ bajo domina la sustitución: se ahorra mucho al principio y la tasa de ahorro baja durante la transición. En el caso frontera, $\\theta=1/s^*$, es constante y el modelo se comporta como el de Solow.",
+    "desarrollo": "Con Cobb-Douglas, la tasa de ahorro es monótona en la transición y su sentido depende de comparar $\\theta$ con $1/s^*$ (Barro y Sala-i-Martín): decrece hacia $s^*$ si $\\theta<1/s^*$, crece hacia $s^*$ si $\\theta>1/s^*$ y es constante si $\\theta=1/s^*$. Con valores habituales $s^*$ ronda 0,2-0,25 y $1/s^*$, 4-5: para valores de $\\theta$ en torno a 1-2 el modelo predice que los países ahorran más cuando son pobres, lo contrario de lo observado en el despegue de Japón y del este de Asia.\n\nPor qué fallan las demás:\n\n- a) Los dos efectos solo se compensan exactamente cuando $\\theta=1/s^*$.\n- b) Invierte el sentido: con $\\theta$ bajo el hogar acepta una senda de consumo muy inclinada, ahorra mucho mientras el rendimiento es alto y la tasa de ahorro cae después.\n- d) Al revés: un hogar que quiere suavizar no sacrifica mucho consumo cuando es pobre; ahorra menos al principio, la senda de silla es más plana y la convergencia, más lenta."
+   },
+   "dificultad": 3,
+   "apartado": "III.b Implicaciones: convergencia y tasa de ahorro en la transición",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

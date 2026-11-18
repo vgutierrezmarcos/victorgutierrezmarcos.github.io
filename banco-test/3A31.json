@@ -1,0 +1,74 @@
+{
+ "tema": "3.A.31",
+ "preguntas": [
+  {
+   "id": 313101,
+   "estado": "publicada",
+   "enunciado": "Sobre las tablas que forman el marco input-output del SEC 2010, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La tabla de origen es cuadrada, porque cada rama de actividad produce un único producto y no hay producciones secundarias.",
+    "b": "La tabla simétrica se deriva de las de origen y destino con una hipótesis de tecnología que reparte las producciones secundarias.",
+    "c": "La tabla de destino recoge por columnas la oferta de cada producto, que es su producción interior más sus importaciones.",
+    "d": "La tabla simétrica se elabora directamente con las encuestas a las empresas, y de ella se derivan después las de origen y destino."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Los datos llegan por ramas y por productos, y con ellos se elaboran las tablas de origen y destino, que son rectangulares. La tabla simétrica (producto por producto o rama por rama) es una elaboración posterior: para que cada columna sea una sola tecnología hay que repartir las producciones secundarias con una hipótesis de tecnología de producto o de rama.",
+    "desarrollo": "Las empresas informan de lo que produce y consume cada establecimiento, que suele hacer varias cosas; nadie mide directamente qué consumos intermedios lleva cada producto. Por eso el núcleo del marco son las tablas de origen y destino, con productos en filas y ramas en columnas, y la simétrica se obtiene de ellas con supuestos: con la tecnología de producto, cada producto se fabrica igual lo haga la rama que lo haga (tablas producto por producto); con la tecnología de rama, cada rama usa la misma estructura de insumos para todo lo que produce (tablas rama por rama). Al ser cuadrada, es la que permite calcular la inversa de Leontief.\n\nPor qué fallan las demás:\n\n- a) La tabla de origen no es cuadrada (hay más productos que ramas) y recoge precisamente las producciones secundarias: lo que queda fuera de la producción principal de cada rama.\n- c) La oferta de cada producto (producción más importaciones, y el paso a precios de adquisición) está en la tabla de origen. La de destino recoge los empleos: por filas, a qué se destina cada producto; por columnas, la estructura de costes de cada rama (consumos intermedios y valor añadido).\n- d) Es al revés: las tablas de origen y destino se elaboran con los datos tal como llegan, y la simétrica se deriva de ellas."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Tablas de origen y destino y I.2 La tabla input-output simétrica",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313102,
+   "estado": "publicada",
+   "enunciado": "Con la inversa de Leontief de una economía se calculan los índices de Rasmussen de cada rama. Una de ellas tiene un poder de dispersión de 1,30 y una sensibilidad de dispersión de 0,70. Esa rama es:",
+   "opciones": {
+    "a": "Un sector clave: arrastra a las demás ramas y es arrastrada por ellas más que la media.",
+    "b": "Un sector base o estratégico: provee de inputs a muchas ramas, pero compra poco a las demás.",
+    "c": "Un sector independiente: sus eslabonamientos hacia atrás y hacia delante son menores que la media.",
+    "d": "Un sector impulsor: sus compras arrastran a las demás más que la media, pero vende poco a otras ramas."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El poder de dispersión compara el multiplicador de la rama (la suma de su columna en la inversa) con el multiplicador medio: mayor que 1 indica un arrastre hacia atrás superior a la media. La sensibilidad de dispersión hace lo mismo por filas: menor que 1 indica poco eslabonamiento hacia delante. Arrastre alto y sensibilidad baja definen un sector impulsor.",
+    "desarrollo": "Los dos índices valen 1 de media, así que el 1 es la línea de corte:\n\n- $\\mathrm{PD}_j>1$ y $\\mathrm{SD}_i>1$: sector clave;\n- $\\mathrm{PD}_j>1$ y $\\mathrm{SD}_i<1$: sector impulsor (compra muchos inputs a otras ramas y vende sobre todo a la demanda final; el automóvil es el ejemplo habitual);\n- $\\mathrm{PD}_j<1$ y $\\mathrm{SD}_i>1$: sector base o estratégico (la energía, el comercio al por mayor);\n- los dos menores que 1: sector independiente (servicios a los hogares, administración pública).\n\nCon 1,30 y 0,70, la rama es impulsora.\n\nPor qué fallan las demás:\n\n- a) Un sector clave supera la media en los dos índices; aquí la sensibilidad de dispersión está muy por debajo de 1.\n- b) Es la descripción contraria: un sector base tiene la sensibilidad alta y el poder de dispersión bajo. El error típico es confundir filas y columnas de la inversa.\n- c) Un sector independiente queda por debajo de 1 en los dos; esta rama tiene un arrastre hacia atrás un 30 % superior a la media."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Eslabonamientos interindustriales: los coeficientes de Rasmussen",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313103,
+   "estado": "publicada",
+   "enunciado": "En una economía de dos ramas, sin importaciones, la matriz de coeficientes técnicos es $A=\\begin{pmatrix}0{,}5 & 0{,}25\\\\ 0{,}2 & 0{,}5\\end{pmatrix}$ y el valor añadido por unidad de producción es 0,30 en la rama 1 y 0,25 en la rama 2, de modo que los dos precios valen 1. Un nuevo impuesto sobre la producción eleva el valor añadido por unidad de la rama 1 hasta 0,34. Según el modelo de precios de Leontief, con coeficientes fijos y traslación íntegra de los costes, los precios de las ramas 1 y 2 suben, respectivamente:",
+   "opciones": {
+    "a": "Un 4 % y un 0 %.",
+    "b": "Un 4 % y un 1 %.",
+    "c": "Un 10 % y un 5 %.",
+    "d": "Un 10 % y un 4 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En el modelo de precios, $\\Delta\\vec{p}^{\\,\\top}=\\Delta\\vec{v}^{\\,\\top}(I-A)^{-1}$: la inversa se lee por filas. Aquí $(I-A)^{-1}=\\begin{pmatrix}2{,}5 & 1{,}25\\\\ 1 & 2{,}5\\end{pmatrix}$ y $\\Delta\\vec{v}=(0{,}04;\\ 0)$, así que los precios suben $0{,}04\\cdot2{,}5=0{,}10$ y $0{,}04\\cdot1{,}25=0{,}05$.",
+    "desarrollo": "Cada precio es el coste unitario de su rama, que se lee en su columna: $p_1=0{,}5\\,p_1+0{,}2\\,p_2+v_1$ y $p_2=0{,}25\\,p_1+0{,}5\\,p_2+v_2$. Con $v=(0{,}30;\\ 0{,}25)$ los dos precios valen 1.\n\nCon matrices: $I-A=\\begin{pmatrix}0{,}5 & -0{,}25\\\\ -0{,}2 & 0{,}5\\end{pmatrix}$, de determinante $0{,}25-0{,}05=0{,}2$, e inversa $\\dfrac{1}{0{,}2}\\begin{pmatrix}0{,}5 & 0{,}25\\\\ 0{,}2 & 0{,}5\\end{pmatrix}=\\begin{pmatrix}2{,}5 & 1{,}25\\\\ 1 & 2{,}5\\end{pmatrix}$. Entonces $\\Delta\\vec{p}^{\\,\\top}=(0{,}04;\\ 0)\\,(I-A)^{-1}=(0{,}10;\\ 0{,}05)$: la primera fila de la inversa por 0,04.\n\nComprobación sin matrices: de la segunda ecuación, $0{,}5\\,\\Delta p_2=0{,}25\\,\\Delta p_1$, luego $\\Delta p_2=0{,}5\\,\\Delta p_1$; en la primera, $0{,}5\\,\\Delta p_1=0{,}2\\cdot0{,}5\\,\\Delta p_1+0{,}04$, de donde $\\Delta p_1=0{,}04/0{,}4=0{,}10$ y $\\Delta p_2=0{,}05$.\n\nEl precio de la rama 1 sube más que el impuesto (10 % frente a 4 puntos) porque la rama se compra a sí misma y compra a la rama 2, que a su vez se ha encarecido.\n\nPor qué fallan las demás:\n\n- a) Solo recoge el impacto inicial sobre la rama gravada, sin ninguna propagación.\n- b) Añade solo el efecto directo sobre la rama 2 ($a_{12}\\cdot0{,}04=0{,}25\\cdot0{,}04=0{,}01$), sin las rondas siguientes: se queda en $I+A$ en lugar de la inversa completa.\n- d) Usa la primera columna de la inversa, $(2{,}5;\\ 1)$, en lugar de la primera fila: es la lectura del modelo de demanda (cuánto produce cada rama si sube la demanda final de la rama 1), no la del modelo de precios, en el que los costes se propagan de los proveedores a los clientes."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Modelo de precios",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

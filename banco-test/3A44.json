@@ -1,0 +1,212 @@
+{
+ "tema": "3.A.44",
+ "preguntas": [
+  {
+   "id": 314401,
+   "estado": "publicada",
+   "enunciado": "En un modelo de crecimiento con gasto público productivo (Barro, 1990), la producción es $Y=AK^{0{,}7}G^{0{,}3}$, el Estado financia el gasto $G$ con un impuesto proporcional sobre la renta de tipo $\\tau$ y presupuesto equilibrado ($G=\\tau Y$), y los hogares ahorran una fracción constante de su renta disponible. Si el tipo vigente es del 40 %, una pequeña reducción de $\\tau$:",
+   "opciones": {
+    "a": "Reduce la tasa de crecimiento a largo plazo, porque disminuye el gasto público productivo y, con él, la productividad del capital privado.",
+    "b": "Eleva la tasa de crecimiento a largo plazo, porque el tipo supera el 30 % que la maximiza y domina el efecto del impuesto sobre el ahorro.",
+    "c": "No altera la tasa de crecimiento a largo plazo, porque el modelo se reduce a un $AK$ en el que esta solo depende de la tasa de ahorro.",
+    "d": "Eleva la tasa de crecimiento solo durante la transición, porque a largo plazo la política fiscal únicamente cambia el nivel de la renta."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con $G=\\tau Y$ el modelo es un $AK$ cuya tasa de crecimiento depende de $(1-\\tau)\\,\\tau^{(1-\\alpha)/\\alpha}$: una U invertida con máximo en $\\tau^*=1-\\alpha=0{,}3$. Con un tipo del 40 % la economía está en el tramo decreciente: bajar el tipo eleva el crecimiento, y de forma permanente.",
+    "desarrollo": "Sustituyendo $G=\\tau Y$ en la función de producción: $Y=A^{1/\\alpha}\\,\\tau^{(1-\\alpha)/\\alpha}\\,K$, lineal en el capital. Con ahorro constante sobre la renta disponible,\n\n$\\gamma=s\\,(1-\\tau)\\,A^{1/\\alpha}\\,\\tau^{(1-\\alpha)/\\alpha}-(n+\\delta)$.\n\nEl tipo impositivo tiene dos efectos:\n\n- negativo, por $(1-\\tau)$: reduce la renta disponible y, con ella, el ahorro y la inversión;\n- positivo, por $\\tau^{(1-\\alpha)/\\alpha}$: financia más gasto productivo, que eleva la productividad del capital privado.\n\nDerivando $(1-\\tau)\\,\\tau^{(1-\\alpha)/\\alpha}$ e igualando a cero: $\\tau^*=1-\\alpha=0{,}3$, la elasticidad de la producción al gasto público. Comprobación numérica con $\\alpha=0{,}7$: la expresión vale 0,4178 con $\\tau=0{,}30$; 0,4074 con $\\tau=0{,}39$, y 0,4051 con $\\tau=0{,}40$. A la derecha del máximo, bajar el tipo sube el crecimiento.\n\nPor qué fallan las demás:\n\n- a) Describe solo el efecto positivo del gasto, que domina cuando $\\tau<1-\\alpha$. Con $\\tau=0{,}4>0{,}3$ domina el efecto negativo del impuesto.\n- c) Es un $AK$, pero su productividad, $A^{1/\\alpha}\\tau^{(1-\\alpha)/\\alpha}$, y la renta disponible dependen de $\\tau$: la política fiscal entra de lleno en la tasa de crecimiento.\n- d) No hay dinámica de transición: como en todo $AK$, la tasa cambia de inmediato y para siempre. Que la política solo cambie el nivel es propio del modelo neoclásico."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelos de 1.ª generación: gasto público productivo (Barro, 1990)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314402,
+   "estado": "publicada",
+   "enunciado": "Considere un modelo de crecimiento con externalidades del capital en el que cada empresa produce con $Y_j=AK_j^{\\alpha}L_j^{1-\\alpha}E^{1-\\alpha}$, donde $E$ es el conocimiento de la economía, que cada empresa toma como dado. Compare la versión en que $E$ es el capital agregado, $E=K$, con aquella en que es el capital por trabajador, $E=k$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con $E=K$, la tasa de crecimiento aumenta con el tamaño de la población (efecto escala); con $E=k$, no depende de él.",
+    "b": "Con $E=K$, el equilibrio competitivo es eficiente; con $E=k$, se invierte menos de lo que sería socialmente óptimo.",
+    "c": "Con $E=K$, hay crecimiento sostenido; con $E=k$, la economía converge a un estado estacionario, como en el modelo de Solow.",
+    "d": "Con $E=K$, las empresas adquieren poder de mercado; con $E=k$, siguen siendo precio-aceptantes en todos los mercados."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $E=K=kL$, la producción por trabajador es $y=AL^{1-\\alpha}k$: un $AK$ cuya productividad, y con ella la tasa de crecimiento, sube con $L$. Con $E=k$, $y=Ak$: otro $AK$, pero sin efecto escala. En los dos casos el rendimiento privado del capital es menor que el social.",
+    "desarrollo": "Con todas las empresas iguales, la producción agregada es $Y=AK^{\\alpha}L^{1-\\alpha}E^{1-\\alpha}$ y, por trabajador, $y=Ak^{\\alpha}E^{1-\\alpha}$.\n\n- $E=K=kL$ (Romer, 1986): $y=Ak^{\\alpha}(kL)^{1-\\alpha}=A\\,L^{1-\\alpha}\\,k$. Con ahorro constante, $\\gamma=sAL^{1-\\alpha}-\\delta$: una economía con más trabajadores crece más deprisa. Es el efecto escala, la cara macroeconómica de la no rivalidad del conocimiento: lo que aprende una empresa lo usan todas.\n- $E=k$ (la versión que suele atribuirse a Lucas, 1988): $y=Ak^{\\alpha}k^{1-\\alpha}=A\\,k$, y $\\gamma=sA-(n+\\delta)$: el tamaño de la población no influye.\n\nEn ambas versiones, el exponente del capital en sentido amplio es 1 (el propio, $\\alpha$, más el de la externalidad, $1-\\alpha$): hay crecimiento sostenido y no hay estado estacionario.\n\nPor qué fallan las demás:\n\n- b) En ninguna de las dos el equilibrio es eficiente: cada empresa remunera el capital por su producto marginal privado ($\\alpha AL^{1-\\alpha}$ o $\\alpha A$), menor que el social ($AL^{1-\\alpha}$ o $A$), y se invierte de menos.\n- c) Con $E=k$ también hay rendimientos constantes del capital a escala agregada y crecimiento sostenido. El estado estacionario de Solow aparece si la externalidad es pequeña (exponentes que suman menos de 1), no por medirla por trabajador.\n- d) Los rendimientos crecientes son externos a la empresa en las dos versiones, y por eso son compatibles con la competencia perfecta: ninguna empresa tiene poder de mercado."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelos de 1.ª generación: externalidades del capital (Arrow, 1962; Romer, 1986)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314403,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Uzawa y Lucas sin externalidad y con población constante, el bien final se produce con $y=Ak^{\\alpha}(uh)^{1-\\alpha}$, donde $u$ es la fracción del tiempo dedicada a producir, y el capital humano se acumula según $\\dot h=B\\,(1-u)\\,h-\\delta_H h$. Los hogares tienen utilidad isoelástica con $\\theta=2$ y tasa de descuento $\\rho=2\\ \\%$; además, $B=0{,}10$ y $\\delta_H=2\\ \\%$. En la senda de crecimiento equilibrado, la tasa de crecimiento de la renta por trabajador y la fracción del tiempo dedicada a producir son, respectivamente:",
+   "opciones": {
+    "a": "El 3 % y el 70 %.",
+    "b": "El 6 % y el 20 %.",
+    "c": "No pueden calcularse sin conocer $A$ y $\\alpha$.",
+    "d": "El 3 % y el 50 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El rendimiento que no cae es el del capital humano, $r=B-\\delta_H$, y la ecuación de Euler da $\\gamma=(B-\\delta_H-\\rho)/\\theta=(0{,}10-0{,}02-0{,}02)/2=3\\ \\%$. Para que $h$ crezca a esa tasa, $B(1-u)-\\delta_H=0{,}03$, luego $1-u=0{,}5$ y $u=50\\ \\%$. Ni $A$ ni $\\alpha$ influyen en la tasa de largo plazo.",
+    "desarrollo": "En la senda de crecimiento equilibrado, $u$ es constante y $c$, $k$, $h$ e $y$ crecen a la misma tasa. El precio sombra del capital humano cae a la tasa $B-\\delta_H-\\rho$, y los dos capitales rinden lo mismo, de modo que el tipo de interés es $r=B-\\delta_H=8\\ \\%$. Con la ecuación de Euler:\n\n$\\gamma=\\dfrac{r-\\rho}{\\theta}=\\dfrac{0{,}10-0{,}02-0{,}02}{2}=0{,}03$.\n\nLa fracción del tiempo sale de la acumulación de capital humano, que tiene que crecer a esa misma tasa: $\\gamma_h=B(1-u)-\\delta_H=0{,}03\\Rightarrow 0{,}10\\,(1-u)=0{,}05\\Rightarrow u=0{,}5$. Es la fórmula $u^*=1-(\\gamma+\\delta_H)/B$ (con población constante).\n\nComprobaciones: $u\\in(0,1)$; hay crecimiento porque $B>\\delta_H+\\rho$, y la utilidad está acotada porque $\\rho=0{,}02>(1-\\theta)\\gamma=-0{,}03$.\n\nPor qué fallan las demás:\n\n- a) Acierta la tasa, pero olvida la depreciación del capital humano al calcular el tiempo: $0{,}10\\,(1-u)=0{,}03$ da $u=70\\ \\%$. Parte de la formación solo repone lo que se deprecia.\n- b) Olvida dividir por $\\theta$: $B-\\delta_H-\\rho=6\\ \\%$ es la diferencia entre el rendimiento y la impaciencia, no la tasa de crecimiento; con ella saldría $u=20\\ \\%$.\n- c) Como el sector educativo es lineal en el capital humano y no usa capital físico, la tasa de largo plazo no depende de la tecnología del sector de bienes ($A$, $\\alpha$), que solo afecta a los niveles y a la ratio $k/h$."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Modelos de 1.ª generación: capital humano (Uzawa, 1965; Lucas, 1988)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314404,
+   "estado": "publicada",
+   "enunciado": "Considere una economía con tasa de ahorro constante $s$, crecimiento de la población $n$, depreciación $\\delta$ y función de producción por trabajador $f(k)=Ak+Bk^{\\alpha}$, con $A,B>0$ y $0<\\alpha<1$ (Jones y Manuelli, 1990). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El producto marginal del capital es constante, por lo que $k$ crece a la misma tasa con cualquier nivel de capital y no hay dinámica de transición.",
+    "b": "Si $sA<n+\\delta$, el capital por trabajador decrece indefinidamente y tiende a cero, porque el ahorro nunca cubre la depreciación.",
+    "c": "Si $sA>n+\\delta$, la tasa de crecimiento de $k$ disminuye a medida que se acumula capital, pero tiende a $sA-(n+\\delta)>0$.",
+    "d": "Si $sA>n+\\delta$, la tasa de crecimiento de $k$ aumenta a medida que se acumula capital, porque hay rendimientos crecientes."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\gamma_k=s\\,(A+Bk^{\\alpha-1})-(n+\\delta)$: el producto medio del capital cae al acumular, como en Solow, pero tiende a $A$ y no a cero. Si $sA>n+\\delta$, la economía crece siempre, cada vez más despacio, hasta la tasa del $AK$: crecimiento sostenido y convergencia a la vez.",
+    "desarrollo": "La función suma una parte $AK$ y una parte neoclásica. Su producto marginal, $f'(k)=A+\\alpha Bk^{\\alpha-1}$, es positivo y decreciente, pero $f'(k)\\to A>0$ cuando $k\\to\\infty$: se incumple la condición de Inada en el infinito, y solo esa.\n\nEn tasas: $\\gamma_k=s\\,f(k)/k-(n+\\delta)=s\\,(A+Bk^{\\alpha-1})-(n+\\delta)$.\n\n- La curva de ahorro, $s(A+Bk^{\\alpha-1})$, decrece con $k$ y tiene una asíntota en $sA$.\n- Si $sA>n+\\delta$, queda siempre por encima de $n+\\delta$: $\\gamma_k>0$ para todo $k$, decreciente, con límite $sA-(n+\\delta)$. Entre economías con los mismos parámetros, la que tiene menos capital crece más (convergencia condicional, en tasas), pero ninguna deja de crecer.\n- Si $sA<n+\\delta$, las curvas se cortan en un $k^*$ finito y positivo: estado estacionario estable, como en Solow.\n\nLa lección: para crecer sin progreso técnico exógeno no hacen falta rendimientos constantes del capital; basta con que su producto marginal no tienda a cero.\n\nPor qué fallan las demás:\n\n- a) Describe el $AK$ puro ($B=0$). Aquí el producto marginal decrece con $k$ y sí hay transición.\n- b) Con $sA<n+\\delta$ hay un estado estacionario con $k^*>0$: para $k$ pequeño, $sBk^{\\alpha-1}$ es muy grande y el capital crece; $k$ no tiende a cero.\n- d) No hay rendimientos crecientes (la función tiene rendimientos constantes a escala y producto marginal decreciente), y la tasa de crecimiento cae con $k$, no sube."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelos de 1.ª generación: el modelo Sobelow (Jones y Manuelli, 1990)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314405,
+   "estado": "publicada",
+   "enunciado": "Los modelos de crecimiento en los que el progreso técnico procede de la I+D deliberada de las empresas (Romer, 1990; Aghion y Howitt, 1992) abandonan el supuesto de competencia perfecta. La razón es que:",
+   "opciones": {
+    "a": "Las ideas son bienes rivales: su productor se enfrenta a costes marginales crecientes y necesita un margen sobre el precio para cubrirlos.",
+    "b": "Los rendimientos crecientes son externos a cada empresa, que sigue siendo precio-aceptante, y por eso se invierte menos de lo óptimo.",
+    "c": "Las ideas son no rivales: pagar a los factores rivales su producto marginal agota la producción y no queda nada para remunerar la invención.",
+    "d": "La libre entrada en la investigación hace que los beneficios de innovar sean siempre positivos, lo que impide un equilibrio competitivo."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Una idea puede usarse a la vez en todas las fábricas sin gastarse. Con rendimientos constantes en los factores rivales (capital y trabajo), hay rendimientos crecientes en estos y las ideas juntos; por el teorema de Euler, pagar a capital y trabajo su producto marginal agota el producto. Para cubrir el coste fijo de inventar hace falta un precio superior al coste marginal.",
+    "desarrollo": "El argumento, de Romer (1990), tiene tres pasos:\n\n- Las ideas son no rivales: el uso por una empresa no impide el de otras. Por el principio de réplica, duplicar los factores rivales con las mismas ideas duplica la producción: rendimientos constantes en $K$ y $L$.\n- Entonces hay rendimientos crecientes en todos los factores juntos: $F(\\kappa K,\\kappa L,\\kappa N)>\\kappa F(K,L,N)$.\n- Con competencia perfecta, cada factor rival cobra su producto marginal y, por el teorema de Euler, eso agota la producción: no queda nada para pagar a quien crea las ideas. Visto de otra forma: inventar tiene un coste fijo y reproducir el invento, un coste marginal casi nulo; con precio igual a coste marginal nadie recuperaría el coste de la invención.\n\nHace falta, por tanto, que las ideas sean al menos parcialmente excluibles (patentes, secreto) y que el innovador tenga poder de mercado: las rentas de monopolio son lo que paga la I+D.\n\nPor qué fallan las demás:\n\n- a) Las ideas son no rivales, y su coste marginal de uso es prácticamente nulo, no creciente.\n- b) Describe los modelos de externalidades (aprendizaje por la práctica), que precisamente mantienen la competencia perfecta; pero en ellos el conocimiento es un subproducto no buscado, no el resultado de una I+D que haya que pagar.\n- d) La libre entrada en la I+D iguala el valor de una innovación a su coste: los beneficios extraordinarios de investigar son nulos en equilibrio. El poder de mercado está en la venta del bien que incorpora la idea."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Modelos de 2.ª generación: ideas no rivales y competencia imperfecta",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314406,
+   "estado": "publicada",
+   "enunciado": "En el modelo de aumento del número de variedades de Romer (1990), con investigadores que crean ideas según $\\dot N=\\eta_I L_I N$, el equilibrio de mercado crece menos que el óptimo social. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La única distorsión es el margen de monopolio de los bienes intermedios, de modo que basta con subvencionar su compra para alcanzar el óptimo social.",
+    "b": "La causa es el robo de negocio: cada innovador destruye las rentas del anterior, de modo que lo óptimo sería gravar la actividad de I+D.",
+    "c": "La causa son las patentes: suprimirlas llevaría el precio de los intermedios a su coste marginal y la tasa de crecimiento, a la óptima.",
+    "d": "Hay dos distorsiones, el margen de monopolio y el desbordamiento de las ideas hacia la investigación futura; corregirlas exige dos instrumentos."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El monopolista de cada variedad vende por encima del coste marginal, y se usan pocos bienes intermedios (distorsión estática). Y el inventor solo cobra los beneficios de su patente, sin tener en cuenta que su idea hace más productivos a los investigadores futuros (distorsión dinámica). Con dos distorsiones hacen falta dos instrumentos: una subvención a los intermedios y otra a la I+D.",
+    "desarrollo": "En el equilibrio descentralizado, el tipo de interés es $r=\\alpha\\,\\eta_I L_Y$ y la economía crece a $\\gamma^{\\mathrm E}=(\\alpha\\eta_I L-\\rho)/(\\alpha+\\theta)$; el planificador elegiría $\\gamma^{\\mathrm P}=(\\eta_I L-\\rho)/\\theta$, mayor. La diferencia viene de dos fallos:\n\n- estático: cada variedad se vende con el margen de la competencia monopolística, $p=1/\\alpha$ veces el coste marginal, y se usa menos cantidad de cada bien intermedio de la eficiente;\n- dinámico: en $\\dot N=\\eta_I L_I N$, cada idea nueva eleva la productividad de todos los investigadores posteriores («a hombros de gigantes»). Es un desbordamiento por el que el inventor no cobra; además, sus beneficios son solo una parte del excedente que crea.\n\nLos dos empujan hacia poca I+D. Una subvención a la compra de intermedios que compense el margen corrige el primero; para el segundo hace falta, además, subvencionar la I+D.\n\nPor qué fallan las demás:\n\n- a) Eso ocurre en la versión «de laboratorio», en la que las ideas se producen con bien final y no hay desbordamiento entre investigadores. Con $\\dot N=\\eta_I L_I N$ queda la distorsión dinámica.\n- b) El robo de negocio es propio de los modelos de mejoras de calidad (Aghion y Howitt), donde lo nuevo sustituye a lo anterior. Aquí las variedades se suman y nadie pierde su renta; y el robo de negocio llevaría a un exceso de I+D, no a un defecto.\n- c) Sin patentes no se podrían cobrar las innovaciones y nadie investigaría: desaparecería el crecimiento. Es el dilema entre eficiencia estática y dinámica."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Modelos de 2.ª generación: aumento del número de variedades (Romer, 1990)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314407,
+   "estado": "publicada",
+   "enunciado": "En el modelo de mejoras de calidad de Aghion y Howitt (1992), señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La I+D de equilibrio puede ser mayor o menor que la óptima: el innovador no internaliza la renta que destruye ni lo que aporta a innovaciones futuras.",
+    "b": "El monopolista en ejercicio es quien más investiga, porque es quien más gana con la siguiente mejora de calidad del bien intermedio que ya produce y vende.",
+    "c": "Si se espera más investigación en el futuro, aumenta el valor de innovar hoy, porque las innovaciones se sucederán a mayor ritmo.",
+    "d": "En el modelo básico, un menor poder de mercado del innovador eleva el crecimiento, porque la competencia en el producto estimula la I+D."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Hay efectos de signo contrario. El innovador no cobra lo que su mejora aporta a las siguientes ni todo el excedente que crea, y por eso investiga de menos; pero cuenta como ganancia la renta que quita al monopolista anterior, que para la sociedad es una mera transferencia (robo de negocio), y por eso puede investigar de más.",
+    "desarrollo": "En el modelo, cada innovación multiplica la calidad del bien intermedio y da a su autor un monopolio que dura hasta la siguiente innovación. El valor de innovar es $V=B/(r+\\lambda_I L_I)$: el beneficio descontado al tipo de interés más la tasa de llegada de la innovación que lo desbancará.\n\nEfectos sobre la eficiencia:\n\n- de menos I+D: el efecto intertemporal (las innovaciones futuras se construyen sobre la actual, y el innovador no cobra por ello) y el de apropiabilidad (el monopolista no captura todo el excedente);\n- de más I+D: el robo de negocio (el innovador se apropia de la renta del monopolista al que sustituye, que no es una ganancia social).\n\nEl signo neto es ambiguo, y por eso subvencionar la I+D no es una recomendación inmediata, a diferencia del modelo de variedades.\n\nPor qué fallan las demás:\n\n- b) Es al revés, por el efecto reemplazo de Arrow: el monopolista en ejercicio, al innovar, destruiría su propia renta, y gana menos que un recién llegado. En el modelo básico investigan los de fuera.\n- c) Más investigación futura significa más obsolescencia: el monopolio dura menos y vale menos, lo que desincentiva investigar hoy. Por eso la curva de arbitraje decrece con $L_I$.\n- d) En el modelo básico, menos poder de mercado es menos margen, menos premio a la innovación y menos crecimiento (efecto schumpeteriano). La U invertida entre competencia e innovación aparece en extensiones posteriores, con competencia paso a paso."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Modelos de 2.ª generación: mejoras de calidad (Aghion y Howitt, 1992)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314408,
+   "estado": "publicada",
+   "enunciado": "Los modelos de I+D de Romer (1990) y de Aghion y Howitt (1992) presentan un efecto escala. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Implica que la renta por habitante no depende del tamaño de la población, lo que encaja con los datos de la posguerra de Estados Unidos.",
+    "b": "Implica que una economía con más investigadores crece a una tasa mayor, lo que no encaja con los datos de la posguerra de Estados Unidos.",
+    "c": "Se debe a que las ideas son rivales: con más población, cada idea se reparte entre más usuarios y rinde menos a cada uno de ellos.",
+    "d": "En esos dos modelos, desaparece si la población crece a tasa constante, porque así la tasa de crecimiento de las ideas se estabiliza."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Si las ideas se producen de forma lineal en las ya existentes, $\\dot N=\\eta_I L_I N$, la tasa de crecimiento es proporcional al número de investigadores. Pero el esfuerzo investigador se ha multiplicado desde la posguerra sin que el crecimiento de la productividad se acelere: es la crítica de Jones (1995).",
+    "desarrollo": "El efecto escala es consecuencia de la no rivalidad: cada idea sirve a toda la economía, de modo que más personas son más investigadores y más ideas para todos. En Romer, $\\gamma_N=\\eta_I L_I$; en Aghion y Howitt, $\\gamma=\\lambda_I L_I^*\\ln\\gamma_q$, con $L_I^*$ creciente en la población. En los dos, el nivel de la población (o del número de investigadores) determina la tasa de crecimiento.\n\nLa evidencia: a muy largo plazo, la relación entre población y progreso técnico tiene apoyo (Kremer, 1993). Pero en las economías avanzadas de la posguerra el número de investigadores y el gasto real en I+D se han multiplicado, mientras que el crecimiento de la productividad total de los factores no solo no se ha acelerado, sino que es menor que en los años 50 y 60. Jones (1995) lo usa para rechazar el efecto escala en la tasa y propone rendimientos decrecientes en la producción de ideas ($\\phi<1$): el tamaño de la población eleva el nivel de la renta, no su tasa de crecimiento.\n\nPor qué fallan las demás:\n\n- a) Es lo contrario: en estos modelos la población influye incluso en la tasa de crecimiento, y eso es lo que los datos no confirman.\n- c) El efecto escala nace de que las ideas son no rivales: todos pueden usarlas a la vez sin que rindan menos.\n- d) Si la población creciera a una tasa constante, en estos modelos el número de investigadores crecería sin límite y, con él, la tasa de crecimiento: una aceleración explosiva. Por eso suponen población constante."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Rendimientos crecientes y efecto escala: la no rivalidad de las ideas",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314409,
+   "estado": "publicada",
+   "enunciado": "En un modelo de crecimiento semiendógeno (Jones, 1995), las ideas se producen según $\\dot N_t=\\eta_I\\,L_{I,t}^{\\lambda}\\,N_t^{\\phi}$, con $\\lambda=0{,}5$ y $\\phi=0{,}75$, y el número de investigadores, $L_{I,t}$, crece al 1 % anual. Si hoy el número de ideas crece al 3 % anual, su tasa de crecimiento:",
+   "opciones": {
+    "a": "Disminuye con el tiempo y converge al 2 %.",
+    "b": "Aumenta con el tiempo y converge al 4 %.",
+    "c": "Se mantiene en el 3 %, porque no hay dinámica de transición.",
+    "d": "Disminuye con el tiempo y converge a cero, porque $\\phi<1$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$\\gamma_N=\\eta_I L_I^{\\lambda}N^{\\phi-1}$ es constante solo si $\\lambda\\gamma_{L_I}=(1-\\phi)\\gamma_N$, es decir, $\\gamma_N^*=\\lambda n/(1-\\phi)=0{,}5\\cdot1\\ \\%/0{,}25=2\\ \\%$. Como hoy $\\gamma_N=3\\ \\%>2\\ \\%$, el denominador crece más deprisa que el numerador y la tasa cae hasta el 2 %.",
+    "desarrollo": "Dividiendo la función de producción de ideas por $N$: $\\gamma_N=\\eta_I\\,L_I^{\\lambda}\\,N^{\\phi-1}$. Tomando logaritmos y derivando respecto al tiempo:\n\n$\\dfrac{\\dot\\gamma_N}{\\gamma_N}=\\lambda\\,\\gamma_{L_I}-(1-\\phi)\\,\\gamma_N=0{,}5\\cdot0{,}01-0{,}25\\,\\gamma_N$.\n\n- Senda de crecimiento equilibrado ($\\dot\\gamma_N=0$): $\\gamma_N^*=\\lambda n/(1-\\phi)=0{,}005/0{,}25=0{,}02$.\n- Hoy: $0{,}005-0{,}25\\cdot0{,}03=-0{,}0025<0$: la tasa está cayendo. Seguirá haciéndolo mientras supere el 2 %, al que converge (el equilibrio es estable: si estuviera por debajo, subiría).\n\nSegunda vía: para que $L_I^{0{,}5}/N^{0{,}25}$ sea constante, $N$ tiene que crecer al doble que $L_I$: un 2 %.\n\nIntuición: con $\\phi<1$, cada idea nueva eleva el conocimiento en un porcentaje cada vez menor; mantener la tasa exige que el número de investigadores crezca. La tasa de largo plazo depende de $n$ y de los parámetros de la tecnología de las ideas, no de la fracción de la población que investiga, que solo cambia el nivel.\n\nPor qué fallan las demás:\n\n- b) El 4 % sale de $n/(1-\\phi)$, olvidando la duplicación de esfuerzos ($\\lambda=0{,}5$); además, desde el 3 % la tasa baja, no sube.\n- c) Es el modelo de Romer ($\\lambda=\\phi=1$) el que no tiene transición en la tasa de crecimiento de las ideas; con $\\phi<1$, sí la hay.\n- d) La tasa tendería a cero si el número de investigadores fuera constante ($n=0$); mientras crezca, el crecimiento de las ideas se sostiene en $\\lambda n/(1-\\phi)$."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 El modelo de crecimiento semiendógeno de Jones (1995)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

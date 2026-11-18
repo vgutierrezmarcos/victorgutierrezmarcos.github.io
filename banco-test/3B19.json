@@ -1,0 +1,166 @@
+{
+ "tema": "3.B.19",
+ "preguntas": [
+  {
+   "id": 321901,
+   "estado": "publicada",
+   "enunciado": "Considere el modelo de Mundell-Fleming con dos países grandes, A y B, tipo de cambio flexible entre ellos, movilidad perfecta del capital y precios fijos. Las dos curvas LM son idénticas, $M_j=0{,}5\\,Y_j-50\\,i$ ($j=A,B$), donde $i$ es el tipo de interés común, en puntos porcentuales, y las ofertas monetarias no cambian. Una expansión fiscal en A eleva el tipo de interés mundial en 1 punto. En el nuevo equilibrio:",
+   "opciones": {
+    "a": "La renta sube en 100 en cada uno de los dos países, porque las curvas LM son iguales y el tipo de interés es común.",
+    "b": "La renta de A sube en 100 y la de B baja en 100, porque el tipo de interés más alto frena su inversión.",
+    "c": "La renta de A no cambia, porque la apreciación expulsa exportaciones netas por el importe del gasto, y la de B sube en 100.",
+    "d": "La renta de A sube en más de 100 y la de B en menos de 100, porque el impulso inicial se produce en A."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con tipo flexible la oferta monetaria de cada país es exógena y, con movilidad perfecta, el tipo de interés es común. Cada LM fija entonces la renta de su país: $Y_j=(M_j+50\\,i)/0{,}5$. Si $i$ sube 1 punto, las dos rentas suben $50/0{,}5=100$: es el efecto locomotora.",
+    "desarrollo": "Con tipo de cambio flexible los bancos centrales no intervienen, de modo que $M_A$ y $M_B$ no se mueven; con movilidad perfecta, $i=i^*$. Despejando la renta en cada LM, $Y_j=(M_j+h\\,i)/k$, con $k=0{,}5$ y $h=50$. Por tanto $\\Delta Y_A=\\Delta Y_B=(h/k)\\,\\Delta i=(50/0{,}5)\\cdot 1=100$.\n\nComprobación por otra vía: la demanda de dinero debe seguir igualando una oferta que no ha cambiado; si $i$ sube 1 punto, la demanda cae en 50, y solo se compensa si $0{,}5\\,\\Delta Y=50$, es decir, $\\Delta Y=100$, y eso vale igual para A que para B.\n\nLa economía que hay detrás: el gasto de A sube su renta y el tipo de interés mundial; su moneda se aprecia y parte del impulso se filtra a B, que exporta más a A y gana competitividad. El tipo de cambio reparte la demanda mundial adicional de manera que cada mercado de dinero quede en equilibrio.\n\nPor qué fallan las demás:\n\n- b) Confunde este caso con el de tipo fijo, donde el efecto sobre B es ambiguo. Con tipo flexible, la LM de B, con $M_B$ dada y un tipo de interés más alto, solo es compatible con una renta mayor.\n- c) Es el resultado del país pequeño, que no mueve el tipo de interés mundial: allí la expulsión por la apreciación es total. Un país grande sí lo mueve, y su renta sube.\n- d) Es la intuición del multiplicador, pero aquí manda el mercado de dinero: con LM idénticas y un tipo de interés común, las dos rentas suben exactamente lo mismo, aunque el gasto se haya hecho en A."
+   },
+   "dificultad": 3,
+   "apartado": "I.1.1 Modelo estático: IS-LM-BP (Mundell-Fleming con 2 países)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321902,
+   "estado": "publicada",
+   "enunciado": "En el modelo de dos países de Corsetti y Pesenti (precios fijados por adelantado, bancos centrales benevolentes), la productividad sube en A y su banco central responde con una expansión monetaria que deprecia su moneda. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Si los precios se fijan en la moneda del productor (PCP), la depreciación desvía demanda hacia los bienes de A y reduce el consumo de B, por lo que coordinar mejora el resultado.",
+    "b": "Si los precios se fijan en la moneda del comprador (LCP), los precios de consumo no se mueven, B no se ve afectado y por eso no hay nada que ganar coordinando.",
+    "c": "Si los precios se fijan en la moneda del productor (PCP), la relación real de intercambio de B mejora y B consume más con el mismo empleo; no hay ganancias de coordinar.",
+    "d": "Si los precios se fijan en la moneda del comprador (LCP), B sale perjudicado, y por eso la política coordinada mejora el bienestar de los dos frente al equilibrio de Nash."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con PCP el traspaso es completo: la depreciación de A abarata sus bienes en B, cuya relación de intercambio mejora, y B consume más sin trabajar más. La política que mira solo hacia dentro reproduce el equilibrio con precios flexibles en los dos países, así que coordinar no añade nada.",
+    "desarrollo": "El signo del desbordamiento monetario depende de la moneda en que se fijan los precios de exportación, porque de ella depende cuánto del tipo de cambio pasa a los precios de importación.\n\n- PCP (traspaso completo): los bienes de A se abaratan en B y los de B se encarecen en A. La relación de intercambio de A empeora y la de B mejora; el índice de precios de B baja, su demanda agregada sube y B consume más con el mismo empleo. El desbordamiento es positivo, al revés que en Mundell-Fleming, y el tipo de cambio hace el papel de los precios flexibles: cada banco central cierra su brecha y no hay ganancias de coordinar.\n- LCP (traspaso nulo): los precios de consumo están fijos en todas partes. Lo que cambia son los márgenes: el exportador de A cobra en moneda de B, que ahora vale más. La relación de intercambio de A mejora y la de B empeora: B consume lo mismo trabajando más. Hay empobrecimiento del vecino, pero tampoco hay ganancias de coordinar: cada banco central, por su cuenta, estabiliza una media de los costes de las empresas de los dos países, los dos eligen la misma política y el tipo de cambio no se mueve.\n\nPor qué fallan las demás:\n\n- a) Describe el mecanismo de Mundell-Fleming (desvío de demanda), no el de este modelo: con PCP el vecino gana por la relación de intercambio, y no hay ganancias de coordinar.\n- b) Con LCP B sí se ve afectado: su relación de intercambio empeora y trabaja más para el mismo consumo. La conclusión (no hay ganancias) es cierta, pero no por esa razón.\n- d) El desbordamiento negativo existe, pero no basta: el equilibrio de Nash y la solución cooperativa coinciden. Los desbordamientos son condición necesaria de la coordinación, no suficiente."
+   },
+   "dificultad": 3,
+   "apartado": "I.1.2 Modelo dinámico con expectativas racionales: Corsetti y Pesenti",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321903,
+   "estado": "publicada",
+   "enunciado": "En el diagrama de Hamada, dos países eligen cada uno su oferta monetaria ($M_A$ en un eje y $M_B$ en el otro) para minimizar una función de pérdida propia, y cada uno tiene un punto de felicidad distinto. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El equilibrio de Nash, N, está sobre la curva de contrato: es eficiente en el sentido de Pareto, aunque reparta las ganancias de forma desigual entre los dos países.",
+    "b": "La solución cooperativa es también un equilibrio de Nash: una vez en la curva de contrato, ningún país gana modificando por su cuenta su oferta monetaria.",
+    "c": "Las funciones de reacción unen los puntos de tangencia de las curvas de indiferencia de los dos países, y su tramo interior a la lente es el núcleo.",
+    "d": "N es el corte de las funciones de reacción y no es eficiente: los acuerdos que mejoran a ambos son el tramo de la curva de contrato interior a la lente que pasa por N."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El equilibrio no cooperativo es el corte de las funciones de reacción. Por él pasa una curva de indiferencia de cada país, que forman una lente: dentro de ella los dos están mejor. Los acuerdos eficientes que mejoran a ambos (el núcleo) son el tramo de la curva de contrato que cae dentro de la lente.",
+    "desarrollo": "Cada país elige su instrumento tomando como dado el del otro: de ahí sale su función de reacción. Donde se cortan las dos, cada uno hace lo mejor que puede dado lo que hace el otro: es el equilibrio de Nash, N.\n\nN no es un óptimo de Pareto. En N, la curva de indiferencia de A es tangente a la recta en la que solo varía $M_A$ y la de B a la recta en la que solo varía $M_B$, de modo que las dos curvas se cortan y encierran una lente de puntos que ambos prefieren. La curva de contrato es el lugar de las tangencias entre las curvas de indiferencia de los dos países (con curvas circulares, el segmento que une los dos puntos de felicidad), y su tramo interior a la lente es el núcleo. El punto concreto depende del poder negociador.\n\nPor qué fallan las demás:\n\n- a) Si N estuviera sobre la curva de contrato no habría nada que ganar coordinando. El argumento a favor de la coordinación es precisamente que N queda fuera de ella.\n- b) Es la fragilidad de la cooperación: si un país cumple su parte del acuerdo, al otro le conviene desviarse hacia su función de reacción, que lo acerca a su punto de felicidad. La solución cooperativa no es un equilibrio de Nash y cada país tiene incentivos a actuar como polizón.\n- c) Atribuye a las funciones de reacción la definición de la curva de contrato. La función de reacción da la mejor respuesta de un país a cada política del otro."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.1 Hamada y Corden",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321904,
+   "estado": "publicada",
+   "enunciado": "Dos países juegan de forma indefinida un juego de expansión fiscal ante recesiones mundiales. Cada periodo, cada uno obtiene 4 si los dos expanden, 2 si ninguno lo hace, 7 si no expande mientras el otro sí lo hace y 0 en el caso contrario. Ambos siguen la estrategia del gatillo (cooperan mientras el otro coopere y, tras una desviación, dejan de cooperar para siempre) y descuentan los pagos futuros con un factor $\\beta\\in(0,1)$. La expansión coordinada es un equilibrio si:",
+   "opciones": {
+    "a": "$\\beta\\geq 2/5$",
+    "b": "$\\beta\\geq 3/5$",
+    "c": "$\\beta\\geq 3/7$",
+    "d": "$\\beta\\geq 4/7$"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Desviarse da hoy una ganancia de $7-4=3$ y cuesta $4-2=2$ en cada periodo posterior. Cooperar compensa si $3\\leq 2\\,\\beta/(1-\\beta)$, es decir, si $\\beta\\geq 3/5$. Es la condición $\\beta\\geq (u^D-u^C)/(u^D-u^N)=(7-4)/(7-2)$.",
+    "desarrollo": "El juego de una sola vez es un dilema del prisionero ($7>4>2>0$): no expandir es dominante y el único equilibrio de Nash da 2 a cada uno. En el juego repetido, cada gobierno compara:\n\n- cooperar siempre: $4+4\\beta+4\\beta^2+\\dots=\\dfrac{4}{1-\\beta}$;\n- desviarse hoy y ser castigado para siempre: $7+2\\beta+2\\beta^2+\\dots=7+\\dfrac{2\\beta}{1-\\beta}$.\n\nCooperar es mejor si $\\dfrac{4}{1-\\beta}\\geq 7+\\dfrac{2\\beta}{1-\\beta}$, es decir, $4\\geq 7(1-\\beta)+2\\beta=7-5\\beta$, de donde $\\beta\\geq 3/5$.\n\nSegunda vía, con la fórmula general: $\\beta\\geq\\dfrac{u^D-u^C}{u^D-u^N}=\\dfrac{7-4}{7-2}=\\dfrac{3}{5}$. El numerador es lo que se gana hoy desviándose y el denominador reúne esa ganancia y la pérdida posterior por periodo.\n\nInterpretación: $\\beta$ es la paciencia de los gobiernos (horizonte electoral, probabilidad de que el juego siga, reputación). Los foros que repiten el juego y hacen visibles los incumplimientos facilitan que la condición se cumpla.\n\nPor qué fallan las demás:\n\n- a) $2/5=(u^C-u^N)/(u^D-u^N)$: pone en el numerador la pérdida futura por periodo en lugar de la ganancia inmediata.\n- c) $3/7=(u^D-u^C)/u^D$: olvida que tras la desviación no se obtiene 0, sino el pago del equilibrio de Nash, 2.\n- d) $4/7=u^C/u^D$: compara los pagos de cooperar y de desviarse sin tener en cuenta el castigo."
+   },
+   "dificultad": 2,
+   "apartado": "I.2.2 Juegos repetidos: cómo se obtiene la cooperación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321905,
+   "estado": "publicada",
+   "enunciado": "En cuanto a su naturaleza y funcionamiento, el G-20:",
+   "opciones": {
+    "a": "Es una organización internacional creada por tratado tras la crisis asiática, con una secretaría permanente que vigila el cumplimiento de sus acuerdos.",
+    "b": "Es un foro informal, sin tratado ni secretaría permanente: decide por consenso y sus acuerdos no son vinculantes; lo organiza una presidencia rotatoria anual.",
+    "c": "Adopta sus decisiones por mayoría de votos ponderados por el peso económico de cada miembro, y son obligatorias para todos ellos, incluidos los que votan en contra.",
+    "d": "Se creó en 2008 directamente como cumbre de jefes de Estado y de Gobierno, sin que antes existiera un foro equivalente de ministros de Finanzas."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El G-20 es un foro informal: no tiene tratado constitutivo, secretaría permanente ni decisiones vinculantes, y decide por consenso. La continuidad la dan la presidencia rotatoria anual, apoyada en la anterior y la siguiente (troika), y el apoyo técnico de organismos como el FMI o la OCDE.",
+    "desarrollo": "El G-20 nació en 1999, tras la crisis asiática, como reunión de ministros de Finanzas y gobernadores de bancos centrales, para dar voz a las economías emergentes que el G-7 dejaba fuera. Con la crisis financiera global pasó a reunirse también a nivel de líderes (Washington, noviembre de 2008) y en Pittsburgh (2009) se designó a sí mismo foro principal de la cooperación económica internacional.\n\nSigue siendo un foro informal. No tiene tratado ni secretaría: cada año lo organiza el país que preside, apoyado en la presidencia anterior y en la siguiente, con dos vías de trabajo (la de los sherpas y la financiera) y el apoyo técnico del FMI, el Banco Mundial, la OCDE, el Consejo de Estabilidad Financiera, la OMC y la OIT. Decide por consenso y sus compromisos dependen de que los cumplan los gobiernos: la evaluación mutua de políticas no tiene sanción. En la escalera de la cooperación es, sobre todo, coordinación puntual en las crisis.\n\nPor qué fallan las demás:\n\n- a) No hay tratado ni secretaría permanente; el seguimiento lo hacen los organismos internacionales y la propia presidencia.\n- c) No hay votos ni ponderaciones: se decide por consenso, y lo acordado no obliga jurídicamente. Los votos ponderados por cuotas son propios del FMI.\n- d) El foro de ministros y gobernadores existe desde 1999; lo que empieza en 2008 son las cumbres de líderes."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 El G-20",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321906,
+   "estado": "publicada",
+   "enunciado": "El Consenso de la OCDE sobre créditos a la exportación con apoyo oficial:",
+   "opciones": {
+    "a": "Es una decisión del Consejo de la OCDE, jurídicamente vinculante para todos los miembros de la organización que no se abstuvieron al adoptarla.",
+    "b": "Pretende que los gobiernos compitan entre sí mejorando las condiciones financieras del apoyo oficial que dan a sus exportadores.",
+    "c": "Es un pacto de caballeros, pero en la Unión Europea es de obligado cumplimiento, porque se ha incorporado a su derecho por reglamento.",
+    "d": "Regula los créditos con apoyo oficial a menos de dos años, incluidos los destinados a productos agrícolas y a material militar."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El Consenso es un entendimiento, el instrumento menos obligatorio de la OCDE: un pacto de caballeros que fija condiciones mínimas (plazos, tipos, primas) para el apoyo oficial a los créditos a la exportación. En la Unión Europea, sin embargo, obliga, porque se ha incorporado a su derecho mediante reglamento.",
+    "desarrollo": "El Consenso se acordó en 1978, cuando los gobiernos competían por ofrecer a sus exportadores la financiación más barata. Su objetivo es que la competencia se dé en la calidad y el precio de los bienes y no en la financiación pública: un terreno de juego equilibrado (level playing field). Es un caso de coordinación de políticas de oferta que evita una carrera de subvenciones, con la lógica de un dilema del prisionero.\n\nSe aplica a los créditos con apoyo oficial (financiación directa, seguro o garantía y apoyo al tipo de interés) con plazo de amortización de dos o más años, y fija plazos máximos, tipos de interés mínimos y primas mínimas. Quedan fuera los productos agrícolas y el material militar. Su principal reto es que una parte creciente de la financiación oficial la conceden países que no participan en él.\n\nEntre los instrumentos de la OCDE, de más a menos obligatorios, están las decisiones (vinculantes para los miembros que no se abstienen), las recomendaciones, las declaraciones, los acuerdos internacionales y los entendimientos.\n\nPor qué fallan las demás:\n\n- a) No es una decisión del Consejo, sino un entendimiento entre sus participantes, que obliga por el honor de las partes y no por el derecho.\n- b) Busca justo lo contrario: limitar la competencia en las condiciones del apoyo oficial.\n- d) Cubre los créditos a dos o más años, y excluye los productos agrícolas y el material militar."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 La OCDE",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321907,
+   "estado": "publicada",
+   "enunciado": "Los acuerdos del Plaza (1985) y del Louvre (1987), dos de los episodios más citados de coordinación en materia de tipos de cambio, pretendían, respectivamente:",
+   "opciones": {
+    "a": "Una depreciación ordenada del dólar frente a las demás grandes monedas, y estabilizar después los tipos de cambio en torno a sus nuevos niveles.",
+    "b": "Estabilizar el dólar en los niveles de 1985, y promover después su depreciación ordenada frente a las demás grandes monedas.",
+    "c": "Frenar la caída del dólar con subidas concertadas de los tipos de interés, y sustituir después la flotación por paridades fijas pero ajustables.",
+    "d": "Comprometer a los firmantes a no fijar objetivos de tipo de cambio, y orientar después sus políticas solo a objetivos internos."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En el Plaza, el G-5 declaró deseable una apreciación ordenada de las demás monedas frente al dólar, que venía de una fuerte subida, y se ofreció a intervenir de forma conjunta. En el Louvre, con el dólar ya mucho más bajo, el objetivo fue estabilizar los tipos de cambio en torno a los niveles de entonces.",
+    "desarrollo": "En la primera mitad de los años ochenta el dólar se había apreciado mucho. En septiembre de 1985, los ministros y gobernadores del G-5 acordaron en el hotel Plaza de Nueva York que era deseable «una nueva apreciación ordenada» de sus monedas frente al dólar, y se mostraron dispuestos a cooperar para lograrla. El dólar, que ya bajaba, siguió cayendo. En febrero de 1987, en el Louvre, se comprometieron a fomentar la estabilidad de los tipos de cambio en torno a los niveles de ese momento.\n\nSon acuerdos puntuales, no reglas permanentes, y se suelen leer como una batalla de los sexos: todos querían un dólar más bajo y luego estable, pero discrepaban en el nivel y en quién debía ajustar su política. Hay varios equilibrios, y coordinar es elegir uno.\n\nPor qué fallan las demás:\n\n- b) Invierte el orden: primero se buscó bajar el dólar (Plaza) y después estabilizarlo (Louvre).\n- c) En 1985 no se quería frenar la caída del dólar, sino favorecerla, y el Louvre no restableció paridades fijas: fue un compromiso de estabilidad sin cambiar el régimen de flotación.\n- d) Es el contenido de la declaración del G-7 de febrero de 2013, en plena «guerra de divisas»: políticas orientadas a objetivos internos y sin objetivos de tipo de cambio. El Plaza y el Louvre fueron justo lo contrario, acuerdos sobre el tipo de cambio."
+   },
+   "dificultad": 1,
+   "apartado": "III.4 Los tipos de cambio: del Plaza al Louvre",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

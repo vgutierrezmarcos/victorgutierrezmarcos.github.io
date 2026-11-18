@@ -1,0 +1,143 @@
+{
+ "tema": "3.B.28",
+ "preguntas": [
+  {
+   "id": 322801,
+   "estado": "publicada",
+   "enunciado": "Dos países tienen los siguientes índices normalizados de salud, educación y renta: el país A, 0,8, 0,8 y 0,8; el país B, 0,95, 0,95 y 0,5. Con la metodología que el Programa de las Naciones Unidas para el Desarrollo aplica desde 2010 para calcular el índice de desarrollo humano (IDH):",
+   "opciones": {
+    "a": "A tiene un IDH mayor que B, porque el índice es la media geométrica de las tres dimensiones y penaliza el desequilibrio entre ellas.",
+    "b": "A y B tienen el mismo IDH, 0,8, porque el índice es la media aritmética de las tres dimensiones y una compensa del todo a otra.",
+    "c": "B tiene un IDH mayor que A, porque la renta entra en logaritmos y por eso su índice bajo pesa menos que los de salud y educación.",
+    "d": "B tiene un IDH mayor que A, porque el índice pondera el doble la educación, que se mide con dos indicadores, y B destaca en ella."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Desde 2010 el IDH es la media geométrica de los tres índices, no la aritmética. Los dos países tienen la misma media aritmética (0,8), pero la geométrica de B es menor: $(0{,}95\\times0{,}95\\times0{,}5)^{1/3}\\approx0{,}77$. Una dimensión muy baja no se compensa del todo con las otras.",
+    "desarrollo": "El IDH combina tres dimensiones: salud (esperanza de vida al nacer), educación (años esperados y años medios de escolarización) y nivel de vida (renta nacional bruta por habitante en paridad de poder adquisitivo, en logaritmos). Cada una se normaliza entre 0 y 1 y el índice es su media geométrica: $\\mathrm{IDH}=(I_S\\cdot I_E\\cdot I_R)^{1/3}$.\n\nPara A, la media geométrica de tres valores iguales es ese valor: 0,8. Para B, $0{,}95\\times0{,}95\\times0{,}5\\approx0{,}451$, cuya raíz cúbica es aproximadamente 0,77. No hace falta calcularla: la media geométrica es siempre menor que la aritmética cuando los valores no son iguales, y la aritmética de B es $(0{,}95+0{,}95+0{,}5)/3=0{,}8$. Por tanto, A queda por delante.\n\nPor qué fallan las demás:\n\n- b) Describe la metodología anterior a 2010, con media aritmética y sustitución perfecta entre dimensiones.\n- c) El logaritmo se aplica a la renta por habitante al construir su índice (cada dólar adicional amplía menos las capacidades), pero una vez normalizados los tres índices pesan lo mismo.\n- d) La educación usa dos indicadores, pero se promedian en un solo índice que pesa un tercio, como los otros dos."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Medición del desarrollo: el índice de desarrollo humano",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322802,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Harris y Todaro, el salario del sector moderno urbano está fijado en $\\overline w_M=100$, por encima del de equilibrio, y el salario agrario es $w_A=60$, que se supone constante. El sector moderno da empleo a $L_M=300$ trabajadores, los empleos se reparten al azar entre la población activa urbana y los emigrantes son neutrales al riesgo. En el equilibrio migratorio, el número de parados urbanos es:",
+   "opciones": {
+    "a": "120",
+    "b": "180",
+    "c": "200",
+    "d": "500"
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Se emigra hasta que el salario urbano esperado iguala al del campo: $60=(300/L_U)\\times100$, de donde la población activa urbana es $L_U=500$. Como solo hay 300 empleos, hay 200 parados (un 40 % de paro urbano).",
+    "desarrollo": "En el modelo de Harris y Todaro lo que cuenta para emigrar no es el salario urbano seguro, sino el esperado: el salario del sector moderno por la probabilidad de encontrar empleo, $L_M/L_U$. El equilibrio migratorio exige $w_A=(L_M/L_U)\\,\\overline w_M$.\n\nCon los datos, $60=(300/L_U)\\times100$, luego $L_U=300\\times100/60=500$. Los parados son $L_U-L_M=500-300=200$, y la tasa de paro urbano, $200/500=40\\ \\%$. Comprobación: con un 60 % de probabilidad de empleo, el salario esperado es $0{,}6\\times100=60=w_A$.\n\nEl modelo explica por qué se emigra a las ciudades aunque el paro urbano sea alto, y tiene una implicación incómoda: crear empleo urbano puede aumentar el paro. Si el sector moderno creara 60 empleos más ($L_M=360$) con el mismo salario agrario, la población activa urbana subiría a $360\\times100/60=600$ y los parados, a 240.\n\nPor qué fallan las demás:\n\n- a) Aplica la tasa de paro del 40 % a los ocupados (300) y no a la población activa urbana (500).\n- b) Multiplica los empleos por el cociente de salarios ($300\\times0{,}6$), que no es ninguna magnitud del modelo.\n- d) Es la población activa urbana de equilibrio, no los parados."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Teorías pioneras: el modelo dual de Lewis y la extensión de Harris y Todaro",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322803,
+   "estado": "publicada",
+   "enunciado": "Un país de renta media-baja invierte poco. Sus tipos de interés reales son bajos, los bancos tienen exceso de liquidez y, cuando entran remesas o ayuda exterior, la inversión privada apenas reacciona. Según el diagnóstico del crecimiento de Hausmann, Rodrik y Velasco, lo más probable es que la restricción que más limita el crecimiento sea:",
+   "opciones": {
+    "a": "El coste de la financiación, por un ahorro interno escaso: la prioridad sería atraer más ahorro del exterior.",
+    "b": "El coste de la financiación, por una mala intermediación: la prioridad sería liberalizar el sector financiero.",
+    "c": "Ninguna en particular: el método aconseja aplicar a la vez todas las reformas pendientes, porque se refuerzan.",
+    "d": "El bajo rendimiento que espera el inversor, porque el rendimiento social es bajo o porque no puede apropiárselo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El método busca la señal de la restricción que aprieta. Si faltara financiación, los tipos de interés reales serían altos y cada entrada de fondos se convertiría en inversión. Con tipos bajos, liquidez ociosa e inversión que no reacciona, lo que falla es el rendimiento que espera el inversor: o el rendimiento social es bajo o no puede apropiárselo.",
+    "desarrollo": "Hausmann, Rodrik y Velasco proponen no aplicar una lista general de reformas, sino buscar la restricción que más limita el crecimiento de cada país, la de precio sombra más alto, y concentrarse en ella. Si la inversión privada es baja, hay tres ramas:\n\n- el rendimiento social de invertir es bajo (geografía, capital humano, infraestructuras);\n- el rendimiento es alto, pero el inversor no puede apropiárselo (impuestos, corrupción, inseguridad jurídica, inestabilidad macroeconómica, fallos de información y de coordinación);\n- financiarse es caro (poco ahorro o mala intermediación).\n\nCada restricción deja una señal distinta. Si la que aprieta es la financiación, los tipos de interés reales son altos, los proyectos rentables no encuentran crédito y cualquier entrada de fondos (remesas, ayuda) se traduce en más inversión. En el país del enunciado ocurre lo contrario: sobra liquidez y nadie quiere invertir. La restricción está en una de las dos primeras ramas, y el diagnóstico debe seguir por ahí.\n\nPor qué fallan las demás:\n\n- a) Con ahorro escaso, los tipos reales serían altos y las entradas de fondos se invertirían.\n- b) Con mala intermediación, el crédito sería caro o inaccesible para proyectos rentables, no habría bancos con liquidez ociosa a tipos bajos.\n- c) Es justo lo que el método critica: las listas de reformas simultáneas ignoran que solo algunas restricciones aprietan, y en un mundo de segundo óptimo reformar lo que no aprieta puede incluso empeorar las cosas."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Teorías recientes: enfoque institucional y diagnóstico del crecimiento",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322804,
+   "estado": "publicada",
+   "enunciado": "Amartya Sen estudió hambrunas como la de Bengala de 1943. Su conclusión principal fue que las hambrunas:",
+   "opciones": {
+    "a": "Se deben a una caída de la producción de alimentos por habitante, de modo que la solución pasa ante todo por aumentar la oferta agraria.",
+    "b": "Pueden darse sin que falten alimentos: lo que se hunde es la capacidad de ciertos grupos de obtenerlos con su trabajo y sus rentas.",
+    "c": "Son más frecuentes en las democracias con prensa libre, donde los controles al gobierno retrasan su reacción ante la escasez.",
+    "d": "Reflejan una trampa demográfica: la población crece más deprisa que los alimentos y la renta vuelve al nivel de subsistencia."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Para Sen, el hambre es un problema de acceso y no solo de disponibilidad. En Bengala, en 1943, la producción de alimentos no cayó: subieron los precios y los salarios de los jornaleros no, de modo que se hundieron sus titularidades (entitlements), lo que podían obtener con su trabajo.",
+    "desarrollo": "Sen cambia la pregunta de cuántos alimentos hay a quién puede conseguirlos. Las titularidades de una persona son los bienes que puede obtener con lo que tiene: su trabajo, sus tierras, sus rentas y los precios a los que los intercambia. Una hambruna puede producirse con la misma disponibilidad de alimentos si un grupo (jornaleros sin tierra, pescadores, artesanos) pierde poder de compra, como ocurrió en Bengala con la inflación de guerra.\n\nDe ahí salen dos consecuencias: la política contra el hambre debe sostener las rentas de los grupos vulnerables (empleo público, transferencias) y no solo aumentar la oferta; y las instituciones importan, porque en las democracias con prensa libre los gobiernos están obligados a reaccionar y no ha habido grandes hambrunas.\n\nPor qué fallan las demás:\n\n- a) Es la explicación tradicional, por la caída de la disponibilidad de alimentos, que Sen rebate precisamente con el caso de Bengala.\n- c) Es al revés: la democracia y la prensa libre protegen frente a las hambrunas.\n- d) Es un argumento malthusiano, el de la trampa demográfica de Nelson, que explica una renta estancada, no las hambrunas que estudió Sen."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Las contribuciones pioneras: Sen y Deaton",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322805,
+   "estado": "publicada",
+   "enunciado": "Un programa de formación se ofrece por sorteo a la mitad de 2.000 hogares pobres. Solo el 40 % de los hogares a los que se ofrece participa en él, y ningún hogar del grupo de control accede al programa. Un año después, la renta mensual media de los hogares a los que se ofreció supera en 6 dólares a la del grupo de control. Si la oferta solo afecta a la renta a través de la participación, señale la afirmación correcta:",
+   "opciones": {
+    "a": "El efecto de la intención de tratar es de 6 dólares y el efecto sobre quienes participan, de 15 dólares ($6/0{,}4$).",
+    "b": "El efecto de la intención de tratar es de 6 dólares y el efecto sobre quienes participan, de 2,4 dólares ($6\\times0{,}4$).",
+    "c": "El efecto sobre quienes participan es de 6 dólares: la diferencia de medias entre los dos grupos lo estima sin sesgo.",
+    "d": "No puede estimarse ningún efecto causal, porque el incumplimiento rompe la aleatorización del experimento."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Comparar a los hogares sorteados con los no sorteados da el efecto de la intención de tratar: 6 dólares. Como solo participa el 40 %, esos 6 dólares son la media de un efecto sobre los participantes y un efecto nulo sobre el 60 % restante: el efecto sobre quienes participan es $6/0{,}4=15$ dólares (el sorteo actúa como variable instrumental).",
+    "desarrollo": "Cuando se sortea la oferta de un programa pero no todos los elegidos lo usan, hay dos efectos distintos:\n\n- el de la intención de tratar: la diferencia de medias entre asignados y no asignados. Sigue sin sesgo de selección, porque lo que se sorteó fue la oferta, pero mezcla el efecto del programa con la tasa de participación. Aquí, 6 dólares;\n- el efecto sobre quienes participan porque se les ofrece (el efecto medio local del tratamiento, LATE, de Imbens y Angrist): se obtiene dividiendo el anterior por la diferencia en la proporción de tratados entre los dos grupos, usando el sorteo como instrumento. Aquí, $6/(0{,}4-0)=15$ dólares.\n\nComprobación por otra vía: si el programa eleva en 15 dólares la renta del 40 % que participa y en nada la del 60 % que no, la media del grupo sorteado sube $0{,}4\\times15+0{,}6\\times0=6$ dólares.\n\nEl supuesto de que la oferta solo actúa a través de la participación (restricción de exclusión) es necesario: si recibir la oferta cambiara por sí sola la conducta, el cociente no mediría el efecto del programa.\n\nPor qué fallan las demás:\n\n- b) Multiplica en lugar de dividir: el efecto sobre los participantes tiene que ser mayor que el de la intención de tratar, que está diluido por quienes no participan.\n- c) Confunde los dos efectos: los 6 dólares son la media sobre todos los hogares sorteados, participen o no.\n- d) El incumplimiento no rompe la aleatorización de la oferta. Lo que sí tendría sesgo de selección es comparar directamente a los participantes con los no participantes, porque participar es una decisión."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 La aproximación experimental: el método (intención de tratar y efecto local)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322806,
+   "estado": "publicada",
+   "enunciado": "Señale cuál de las siguientes conclusiones está respaldada por los experimentos aleatorizados de la economía del desarrollo:",
+   "opciones": {
+    "a": "Cobrar un precio pequeño por productos preventivos de salud, como las mosquiteras, mejora mucho su uso, porque lo que se paga se valora más.",
+    "b": "Repartir libros de texto y otros materiales en las escuelas eleva las notas de todos los alumnos, sobre todo las de los más rezagados.",
+    "c": "Los microcréditos transforman el consumo y la renta de los hogares que los reciben, con una demanda mayor de la que se esperaba.",
+    "d": "Las transferencias de dinero sin condiciones elevan el consumo y los activos de los hogares, sin que aumente el gasto en alcohol o tabaco."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Los experimentos con transferencias incondicionales, como los de GiveDirectly en Kenia, encuentran más consumo, más activos y más bienestar, sin el aumento del gasto en alcohol o tabaco que se temía. Las otras tres afirmaciones dicen lo contrario de lo que se ha encontrado.",
+    "desarrollo": "Algunos resultados ya clásicos de la evidencia experimental:\n\n- Salud: los precios importan muchísimo. Cobrar una cantidad pequeña por los antiparasitarios o por las mosquiteras contra la malaria reduce drásticamente su adopción y no mejora su uso: cobrar no hace que se valore más, solo reparte menos (Kremer y Miguel; Cohen y Dupas).\n- Educación: más recursos, por sí solos, ayudan poco. En Kenia, los libros de texto solo mejoraron las notas de los alumnos que ya iban bien. Lo que funciona es enseñar según el nivel real de los alumnos y dar incentivos a la asistencia de los maestros.\n- Crédito: seis experimentos en otros tantos países muestran que los microcréditos tienen efectos modestos (algo más de inversión en negocios que ya existían) y una demanda menor de la esperada (Banerjee, Karlan y Zinman).\n- Transferencias: las condicionadas, como Progresa en México, aumentan la escolarización y mejoran la salud infantil; las incondicionales aumentan el consumo, los activos y el bienestar sin gastarse en alcohol ni tabaco (Haushofer y Shapiro).\n\nPor qué fallan las demás:\n\n- a) El resultado es el contrario: el precio reduce mucho la demanda sin mejorar el uso, y por eso se recomiendan precios cero en la prevención.\n- b) Los libros solo ayudaron a los mejores alumnos, no a los rezagados.\n- c) Ni transforman el consumo o la renta ni tienen la demanda que se esperaba."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 La aproximación experimental: la evidencia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

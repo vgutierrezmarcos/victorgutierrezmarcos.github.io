@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """editar.py < ediciones.json : [[id, campo, viejo, nuevo], …]; campo = enunciado | a | b | c | d | clave | desarrollo | dificultad (nuevo = número, viejo se ignora)."""
 import json, sys, glob
-W = '/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io-revision/banco-test/'
+W = '/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io-revision-2/banco-test/'
 eds = json.load(sys.stdin)
-for f in sorted(glob.glob(W + '*.json')):
+for f in sorted(glob.glob(W + '3[AB][0-9][0-9].json')):
     d = json.load(open(f, encoding='utf-8')); toca = False
     for p in d['preguntas']:
         for i, campo, viejo, nuevo in eds:

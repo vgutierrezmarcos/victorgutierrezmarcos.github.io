@@ -1,0 +1,97 @@
+{
+ "tema": "3.B.44",
+ "preguntas": [
+  {
+   "id": 324401,
+   "estado": "publicada",
+   "enunciado": "En un modelo en forma reducida del círculo vicioso entre los bancos y su Estado, el diferencial de la deuda pública es $s=s_0+\\alpha L$ y las pérdidas bancarias son $L=L_0+\\beta s$, con $\\alpha=0{,}5$ y $\\beta=1$. Si una perturbación eleva $L_0$ en 2 unidades, el diferencial de equilibrio aumenta en:",
+   "opciones": {
+    "a": "1 unidad: el efecto directo, $\\alpha\\,\\Delta L_0$.",
+    "b": "2 unidades: el efecto directo por $1/(1-\\alpha\\beta)$.",
+    "c": "4 unidades: la perturbación por $1/(1-\\alpha\\beta)$.",
+    "d": "0,5 unidades: el efecto directo por $(1-\\alpha\\beta)$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Resolviendo el sistema, $s^*=\\dfrac{s_0+\\alpha L_0}{1-\\alpha\\beta}$, así que $\\Delta s^*=\\dfrac{\\alpha}{1-\\alpha\\beta}\\,\\Delta L_0=\\dfrac{0{,}5}{0{,}5}\\times 2=2$. El efecto directo (1) se duplica porque cada subida del diferencial genera nuevas pérdidas bancarias, y estas, más diferencial.",
+    "desarrollo": "Sustituyendo la segunda ecuación en la primera: $s=s_0+\\alpha(L_0+\\beta s)$, luego $s^*(1-\\alpha\\beta)=s_0+\\alpha L_0$.\n\nCon $\\alpha\\beta=0{,}5$, el multiplicador del círculo vicioso es $1/(1-0{,}5)=2$:\n\n- efecto directo: $\\alpha\\,\\Delta L_0=0{,}5\\times 2=1$;\n- efecto total: $1\\times 2=2$.\n\nComprobación por rondas: el diferencial sube 1; eso causa pérdidas adicionales de $\\beta\\times 1=1$, que suben el diferencial $0{,}5$; luego $0{,}25$… La suma $1+0{,}5+0{,}25+\\dots=2$.\n\nLectura: la unión bancaria actúa sobre los parámetros. La resolución con recapitalización interna y el fondo común reducen $\\alpha$ (el Estado responde menos de sus bancos); un tratamiento prudencial de la deuda pública reduciría $\\beta$ (los bancos tienen menos deuda de su Estado). Si $\\alpha\\beta$ se acerca a 1, el multiplicador se dispara.\n\nPor qué fallan las demás:\n\n- a) Se queda en la primera ronda e ignora la retroalimentación.\n- c) Es el aumento de las pérdidas totales, no del diferencial: $\\Delta L^*=\\Delta L_0/(1-\\alpha\\beta)=4$.\n- d) Divide donde hay que multiplicar: la retroalimentación amplifica, no amortigua."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 El círculo vicioso banca-soberano en forma reducida",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324402,
+   "estado": "publicada",
+   "enunciado": "En una resolución bancaria con recapitalización interna (bail-in) conforme a las normas de la Unión, las pérdidas se absorben:",
+   "opciones": {
+    "a": "Primero por el Fondo Único de Resolución, hasta el 5 % del pasivo, y solo después, si no basta, por los accionistas y los acreedores.",
+    "b": "A prorrata entre accionistas, tenedores de deuda y depositantes, en proporción al importe de cada uno en el balance de la entidad.",
+    "c": "Primero por los instrumentos de capital adicional (AT1) y de nivel 2 y, cuando se agotan, por el capital ordinario de los accionistas.",
+    "d": "Primero por los accionistas y demás instrumentos de capital, y luego por la deuda subordinada y la sénior; los depósitos garantizados, no."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La recapitalización interna sigue el orden de prelación: capital ordinario, AT1 y T2, deuda subordinada, deuda sénior (la no preferente antes que la preferente) y, al final, los depósitos no garantizados. Los depósitos garantizados quedan excluidos. El fondo de resolución solo entra después.",
+    "desarrollo": "La lógica de la resolución es que paguen primero los dueños y los acreedores del banco, no el contribuyente, y que lo hagan en un orden conocido de antemano para que el riesgo se refleje en el precio de cada instrumento:\n\n- 1.º: accionistas (capital ordinario de nivel 1, CET1);\n- 2.º: instrumentos de capital adicional de nivel 1 (AT1) y de nivel 2 (T2);\n- 3.º: deuda subordinada y deuda sénior no preferente;\n- 4.º: deuda sénior ordinaria y, con preferencia sobre ella, los depósitos no garantizados;\n- nunca: los depósitos garantizados (hasta 100.000 euros).\n\nPor qué fallan las demás:\n\n- a) Es al revés: el Fondo Único de Resolución solo puede intervenir cuando accionistas y acreedores han absorbido pérdidas por al menos el 8 % del pasivo total y los fondos propios, y su aportación tiene como tope el 5 %.\n- b) No hay prorrata: hay una jerarquía estricta, y ningún acreedor puede salir peor parado que en una liquidación concursal.\n- c) En la Unión, el capital ordinario absorbe pérdidas siempre antes que el AT1. Lo contrario ocurrió en Suiza con Credit Suisse en 2023, y las autoridades europeas aclararon entonces que aquí no cabe."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 El Mecanismo Único de Resolución: recapitalización interna y orden de prelación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324403,
+   "estado": "publicada",
+   "enunciado": "Cuatro sistemas bancarios nacionales del mismo tamaño tienen cada uno un fondo de garantía de depósitos dimensionado para cubrir sus pérdidas anuales con una misma probabilidad (un múltiplo fijo de la desviación típica de las pérdidas, igual en los cuatro). Si las pérdidas de los cuatro países son independientes entre sí, un fondo común que dé la misma protección necesita, por país:",
+   "opciones": {
+    "a": "La mitad de recursos que cada fondo nacional.",
+    "b": "La cuarta parte de recursos que cada fondo nacional.",
+    "c": "Los mismos recursos que cada fondo nacional.",
+    "d": "El doble de recursos que cada fondo nacional."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La pérdida media de $n$ países con correlación $\\rho$ tiene desviación típica $\\sigma\\sqrt{\\rho+(1-\\rho)/n}$. Con $\\rho=0$ y $n=4$, es $\\sigma\\sqrt{1/4}=\\sigma/2$: el fondo común necesita la mitad por país. La diversificación reduce el riesgo con la raíz de $n$, no con $n$.",
+    "desarrollo": "Fondo nacional: $F_n=k\\sigma$.\n\nFondo común: la pérdida media de los 4 países tiene varianza $\\sigma^2\\left[\\rho+\\frac{1-\\rho}{n}\\right]=\\sigma^2/4$ si $\\rho=0$; su desviación típica es $\\sigma/2$ y $F_c=k\\sigma/2$.\n\n$\\dfrac{F_c}{F_n}=\\sqrt{\\rho+\\dfrac{1-\\rho}{n}}=\\sqrt{0{,}25}=0{,}5$.\n\nComprobación por la suma: la suma de 4 pérdidas independientes tiene desviación típica $\\sqrt{4}\\,\\sigma=2\\sigma$; el fondo común total es $2k\\sigma$, frente a $4k\\sigma$ de los cuatro fondos nacionales: la mitad.\n\nEs el argumento a favor de una garantía común de depósitos: la misma protección con menos recursos (o más protección con los mismos). La ganancia disminuye cuando la correlación sube ($\\rho=1$: ninguna), y el coste es el riesgo moral entre países, que se limita con aportaciones según el riesgo, supervisión común y reducción previa de los riesgos heredados.\n\nPor qué fallan las demás:\n\n- b) Divide por $n$ en lugar de por $\\sqrt{n}$: lo que cae con $n$ es la varianza de la media, no su desviación típica.\n- c) Sería cierto solo con pérdidas perfectamente correlacionadas ($\\rho=1$).\n- d) $2\\sigma$ es la desviación típica de la suma de las cuatro pérdidas; por país es $2\\sigma/4=\\sigma/2$."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 La garantía común de depósitos: seguro común y diversificación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 324404,
+   "estado": "publicada",
+   "enunciado": "Con el método de Asdrubali, Sørensen y Yosha se analiza una perturbación asimétrica en una región de una unión monetaria. Respecto a la media de la unión, su PIB cae 10 puntos; la renta nacional de sus residentes, 7; su renta disponible (tras los impuestos y las transferencias del nivel central), 6, y su consumo, 4. ¿Qué parte de la perturbación suaviza cada canal?",
+   "opciones": {
+    "a": "Capital, 30 %; fiscal, 14 %; crédito, 33 %; sin suavizar, 23 %.",
+    "b": "Capital, 20 %; fiscal, 10 %; crédito, 30 %; sin suavizar, 40 %.",
+    "c": "Capital, 30 %; fiscal, 10 %; crédito, 20 %; sin suavizar, 40 %.",
+    "d": "Capital, 10 %; fiscal, 30 %; crédito, 20 %; sin suavizar, 40 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Cada canal es un escalón entre el PIB y el consumo: del PIB a la renta nacional (capital), $10-7=3$; de la renta nacional a la disponible (fiscal), $7-6=1$; de la disponible al consumo (crédito), $6-4=2$. Sobre 10: 30 %, 10 % y 20 %; el consumo recoge el 40 % restante.",
+    "desarrollo": "La descomposición parte de la cadena PIB → renta nacional → renta disponible → consumo:\n\n- canal de capital (o de mercados de capitales): rentas de la propiedad cruzadas entre regiones. Si los residentes tienen acciones y bonos de otras regiones, su renta cae menos que su producción: $(10-7)/10=30\\,\\%$;\n- canal fiscal: impuestos y transferencias del presupuesto central: $(7-6)/10=10\\,\\%$;\n- canal de crédito: ahorro y endeudamiento, que permiten que el consumo caiga menos que la renta disponible: $(6-4)/10=20\\,\\%$;\n- sin suavizar: $4/10=40\\,\\%$.\n\nComprobación: $\\beta_K+\\beta_F+\\beta_C+\\beta_U=0{,}3+0{,}1+0{,}2+0{,}4=1$.\n\nEn Estados Unidos, el canal de capital es el principal amortiguador entre estados; en la zona del euro es pequeño, el fiscal casi no existe y la mayor parte de la perturbación queda sin suavizar. Es el argumento macroeconómico a favor de la Unión de Mercados de Capitales: repartir riesgos por la vía privada, sin transferencias entre Estados, y por un canal más estable que el crédito, que se retira en las crisis.\n\nPor qué fallan las demás:\n\n- a) Divide cada escalón por la magnitud anterior ($3/10$, $1/7$ y $2/6$) y deja el resto sin suavizar; todos los canales se miden sobre la perturbación inicial, la caída del PIB (10), y lo que queda sin suavizar es la caída del consumo ($4/10$).\n- b) Intercambia el capital y el crédito: el primer escalón (PIB → renta nacional) es el del capital.\n- d) Intercambia el capital y el fiscal: las transferencias públicas actúan entre la renta nacional y la disponible."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 El reparto de riesgos entre regiones (canales de capital, fiscal y de crédito)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

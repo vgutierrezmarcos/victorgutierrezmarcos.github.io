@@ -1,0 +1,357 @@
+{
+ "tema": "3.B.25",
+ "preguntas": [
+  {
+   "id": 322501,
+   "estado": "publicada",
+   "enunciado": "Una acción cotiza hoy a 102 euros y, antes del vencimiento de un contrato a plazo a un año, pagará un dividendo cuyo valor actual es de 2 euros. El tipo de interés sin riesgo es del 5 % anual (capitalización simple). Sin costes de transacción ni oportunidades de arbitraje, el precio a plazo de la acción es:",
+   "opciones": {
+    "a": "107,10 euros.",
+    "b": "109,20 euros.",
+    "c": "105,00 euros.",
+    "d": "105,10 euros."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con rentas conocidas de valor actual $I$, el precio a plazo es $F_0=(S_0-I)(1+r)$: $(102-2)\\cdot1{,}05=105$. Las rentas que cobra quien tiene el activo abaratan el contrato a plazo, porque quien compra a plazo no las recibe.",
+    "desarrollo": "El precio a plazo es el que impide ganar sin riesgo comprando al contado y vendiendo a plazo (cash and carry).\n\n- Por una vía: quien compra hoy la acción con un préstamo de 102 cobra el dividendo, cuyo valor actual es 2. Es como si solo necesitara financiar $102-2=100$ durante todo el año, que al 5 % se convierten en 105. Para que la operación no dé beneficio ni pérdida, tiene que vender a plazo a $F_0=105$.\n- Por la otra: $F_0=(S_0-I)(1+r)=S_0(1+r)-I(1+r)=107{,}10-2{,}10=105$.\n\nPor qué fallan las demás:\n\n- a) $102\\cdot1{,}05=107{,}10$ es el precio a plazo de un activo sin rentas: olvida el dividendo. Con ese precio, comprar al contado y vender a plazo daría 2,10 euros seguros.\n- b) $(102+2)\\cdot1{,}05=109{,}20$ suma el dividendo en lugar de restarlo: lo trata como un coste de mantener el activo (como el almacenamiento de una materia prima), cuando es una renta.\n- d) $107{,}10-2=105{,}10$ resta el dividendo sin capitalizarlo: mezcla un importe valorado en $T$ con otro valorado hoy. El valor actual del dividendo, 2, equivale a 2,10 en el vencimiento."
+   },
+   "dificultad": 2,
+   "apartado": "I.5 Valoración: paridad spot-forward con rentas",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322502,
+   "estado": "publicada",
+   "enunciado": "El precio de un futuro y el precio de contado que se espera para el vencimiento están relacionados por $F_0=\\mathbb{E}_0[S_T]\\,e^{(r-k)T}$, donde $r$ es el tipo sin riesgo y $k$ la rentabilidad que el mercado exige al subyacente según el CAPM. Si el subyacente tiene una beta negativa:",
+   "opciones": {
+    "a": "$F_0>\\mathbb{E}_0[S_T]$: hay contango respecto del precio esperado, y quien tiene futuros comprados pierde en promedio.",
+    "b": "$F_0<\\mathbb{E}_0[S_T]$: hay normal backwardation, y quien mantiene futuros comprados gana una prima en promedio.",
+    "c": "$F_0=\\mathbb{E}_0[S_T]$: el arbitraje entre el contado y el futuro elimina cualquier prima, sea cual sea la beta.",
+    "d": "$F_0<S_0$: la curva de futuros es decreciente, porque una beta negativa actúa como un rendimiento de conveniencia."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con beta negativa, el CAPM exige al subyacente menos que el tipo sin riesgo ($k<r$), así que $e^{(r-k)T}>1$ y $F_0>\\mathbb{E}_0[S_T]$. El futuro comprado cubre frente al mercado y por eso se acepta perder con él en promedio.",
+    "desarrollo": "Con la recta del mercado de títulos, $k=r+\\beta\\lambda_M$, donde $\\lambda_M>0$ es la prima de riesgo del mercado.\n\n- Si $\\beta<0$, $k<r$, el exponente $(r-k)T$ es positivo y $F_0>\\mathbb{E}_0[S_T]$: contango en el sentido de las expectativas. El beneficio esperado de la posición larga es $\\mathbb{E}_0[S_T]-F_0<0$.\n- La intuición: un futuro comprado sobre un activo que sube cuando el mercado cae es un seguro contra el riesgo sistemático, y los seguros se pagan. El precio del futuro baja hacia el de contado según se acerca el vencimiento.\n\nPor qué fallan las demás:\n\n- b) Es lo que ocurre con beta positiva ($k>r$): el comprador del futuro asume riesgo sistemático y se le paga con un precio a plazo por debajo del esperado.\n- c) Es la hipótesis de expectativas, que solo se cumple si $\\beta=0$ ($k=r$). El arbitraje fija $F_0$ respecto del precio de contado de hoy ($F_0=S_0e^{rT}$), no respecto del precio esperado.\n- d) Confunde los 2 sentidos de los términos. Que $F_0$ sea mayor o menor que $S_0$ (la pendiente de la curva de futuros) depende del coste de mantenimiento: tipo de interés, almacenamiento, rentas y rendimiento de conveniencia. La beta no interviene en esa comparación, sino en la de $F_0$ con $\\mathbb{E}_0[S_T]$."
+   },
+   "dificultad": 3,
+   "apartado": "I.5 Valoración: expectativas, normal backwardation y contango (riesgo sistemático)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322503,
+   "estado": "publicada",
+   "enunciado": "Un miembro compensador de una entidad de contrapartida central (ECC) incumple y el cierre de su posición arroja pérdidas. En el orden habitual de la cascada de recursos (default waterfall), que es el que exige la regulación europea, esas pérdidas se cubren:",
+   "opciones": {
+    "a": "Primero con el fondo de garantía común, a prorrata entre todos los miembros; después con las garantías del incumplidor, y al final con el capital de la ECC.",
+    "b": "Primero con todo el capital propio de la ECC; después con las garantías del incumplidor, y solo al final con el fondo de garantía común de los miembros.",
+    "c": "Primero con las garantías del incumplidor; después con las aportaciones de los demás miembros al fondo de garantía, y solo si se agotan, con capital de la ECC.",
+    "d": "Primero con las garantías del incumplidor y su aportación al fondo de garantía; después con un tramo del capital de la ECC, y luego con el resto del fondo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "«Quien incumple paga»: primero responden los márgenes y la aportación al fondo de garantía del propio incumplidor; después, un tramo del capital de la cámara (skin in the game), y solo entonces se mutualiza la pérdida entre los miembros cumplidores.",
+    "desarrollo": "La cascada ordena los recursos para dar a cada parte los incentivos correctos:\n\n1. El margen inicial del incumplidor y su aportación al fondo de garantía: la pérdida recae primero en quien la causa, lo que limita el riesgo moral.\n2. Un tramo del capital propio de la ECC (skin in the game): como la cámara pierde dinero suyo antes que los demás miembros, tiene incentivos para calcular bien los márgenes y gestionar bien el incumplimiento.\n3. Las aportaciones al fondo de garantía de los miembros cumplidores: la mutualización del riesgo, que les da incentivos para vigilar a quién se admite como miembro.\n4. Al final, el resto del capital de la ECC y sus herramientas de recuperación.\n\nPor qué fallan las demás:\n\n- a) Mutualizar antes de usar las garantías del incumplidor haría pagar a los cumplidores pérdidas que el causante todavía puede cubrir.\n- b) El capital de la cámara no va por delante de las garantías del incumplidor; y solo un tramo va por delante del fondo común, no todo.\n- c) Deja el capital de la ECC detrás de los miembros cumplidores: es justo lo que la regulación evita al exigir que la cámara arriesgue recursos propios antes de tocar las aportaciones de quienes no han incumplido."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Tipos según el mercado: la cámara de contrapartida central (cascada ante incumplimientos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322504,
+   "estado": "publicada",
+   "enunciado": "Una empresa sabe que dentro de 3 meses tomará un préstamo a 6 meses a tipo variable y teme que los tipos de interés suban antes de esa fecha. Para fijar hoy el coste de ese préstamo con un acuerdo de tipo de interés futuro (FRA), debe:",
+   "opciones": {
+    "a": "Vender un FRA 3x9: el vendedor cobra la liquidación cuando el tipo de mercado supera el tipo pactado.",
+    "b": "Comprar un FRA 3x9: si dentro de 3 meses el tipo a 6 meses supera el pactado, cobrará la diferencia.",
+    "c": "Comprar un FRA 3x6: el contrato empieza dentro de 3 meses y cubre un préstamo teórico de 6 meses.",
+    "d": "Vender un FRA 6x9: el contrato cubre un préstamo teórico de 6 meses y vence dentro de 9 meses."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El comprador de un FRA fija el tipo de un préstamo teórico y cobra si el tipo de mercado sube por encima del pactado: es la posición de quien va a endeudarse. Un FRA «3x9» empieza dentro de 3 meses y termina dentro de 9: cubre el tipo a 6 meses.",
+    "desarrollo": "Un FRA es un contrato a plazo OTC sobre un tipo de interés. El nominal no se presta: al inicio del periodo cubierto se liquida solo la diferencia entre el tipo de mercado, $R_M$, y el pactado, $R_K$, descontada porque los intereses se pagarían al final:\n\n$$\\text{Liquidación al comprador}=\\frac{\\mathrm{VN}\\,(R_M-R_K)\\,(T_2-T_1)}{1+R_M\\,(T_2-T_1)}.$$\n\n- Si los tipos suben, el comprador cobra, y eso compensa el mayor coste del préstamo que la empresa contrata en el mercado: el coste total queda fijado en $R_K$. Si bajan, paga la diferencia, pero su préstamo le sale más barato.\n- En la notación «$a$x$b$», $a$ son los meses hasta el inicio del periodo cubierto y $b$ los meses hasta su final: el periodo dura $b-a$ meses. Para un préstamo de 6 meses que empieza dentro de 3, hace falta un 3x9.\n\nPor qué fallan las demás:\n\n- a) El plazo es el correcto, pero la posición no: el vendedor cobra cuando los tipos bajan. Es la cobertura de quien va a invertir o prestar, no de quien va a endeudarse.\n- c) Un 3x6 empieza dentro de 3 meses pero termina dentro de 6: cubre el tipo a 3 meses, no a 6.\n- d) Un 6x9 cubre el tipo a 3 meses que regirá dentro de 6, y además con la posición equivocada."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Tipos según el subyacente: el FRA",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322505,
+   "estado": "publicada",
+   "enunciado": "Un inversor compra a la vez una call y una put europeas sobre la misma acción, con el mismo vencimiento y el mismo precio de ejercicio, 100 euros; paga por ellas primas de 6 y 4 euros, respectivamente. Sin tener en cuenta el valor temporal del dinero, al vencimiento obtiene beneficio:",
+   "opciones": {
+    "a": "Si la acción cotiza entre 90 y 110 euros.",
+    "b": "Si la acción cotiza por encima de 106 o por debajo de 96 euros.",
+    "c": "Si la acción cotiza por encima de 110 o por debajo de 90 euros.",
+    "d": "Solo si la acción cotiza por encima de 110 euros."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Es un cono (straddle) comprado: cuesta $6+4=10$ y paga $|S_T-100|$. Gana si el precio se aleja del precio de ejercicio más que la suma de las 2 primas, en cualquier sentido: por encima de 110 o por debajo de 90.",
+    "desarrollo": "Al vencimiento solo una de las 2 opciones acaba dentro de dinero:\n\n- si $S_T>100$, se ejerce la call y el pago es $S_T-100$;\n- si $S_T<100$, se ejerce la put y el pago es $100-S_T$.\n\nEl pago es $|S_T-100|$ y el beneficio, $|S_T-100|-10$: positivo si $S_T>110$ o $S_T<90$. Comprobación: con $S_T=115$, $15-10=5$; con $S_T=80$, $20-10=10$; con $S_T=100$, se pierden las 2 primas, 10. Es una apuesta por la volatilidad, no por la dirección.\n\nPor qué fallan las demás:\n\n- a) Entre 90 y 110 gana quien ha vendido el cono (cobra 10 y paga menos de 10), no quien lo ha comprado.\n- b) Compara cada opción solo con su propia prima (100 + 6 y 100 − 4), pero se han pagado las 2: con $S_T=107$ la call da 7 y el coste total ha sido 10.\n- d) Olvida la put: por debajo de 90 la put da más de 10 y la estrategia también gana."
+   },
+   "dificultad": 1,
+   "apartado": "II.4 Estrategias de especulación: el cono (straddle)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322506,
+   "estado": "publicada",
+   "enunciado": "Un inversor tiene una acción que compró a 50 euros. Para protegerla, compra una put europea con precio de ejercicio 45 y vende una call europea con precio de ejercicio 60, las 2 a un año y con la misma prima, 2 euros. Sin tener en cuenta el valor temporal del dinero, el resultado de la cartera al vencimiento, respecto del precio de compra de la acción:",
+   "opciones": {
+    "a": "Queda acotado entre una pérdida de 5 euros y una ganancia de 10 euros.",
+    "b": "Tiene una pérdida máxima de 5 euros y una ganancia que no está limitada.",
+    "c": "Queda acotado entre una pérdida de 7 euros y una ganancia de 12 euros.",
+    "d": "Tiene una ganancia máxima de 10 euros y una pérdida máxima de 45 euros."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Es un collar: la put comprada pone un suelo de 45 al valor de la cartera y la call vendida, un techo de 60. Como la prima cobrada paga la prima pagada, el coste es nulo y el resultado va de $45-50=-5$ a $60-50=+10$.",
+    "desarrollo": "El valor de la cartera al vencimiento, estado a estado:\n\n- si $S_T<45$, se ejerce la put y la acción se vende a 45: resultado, $45-50=-5$;\n- si $45\\leq S_T\\leq60$, no se ejerce ninguna opción: resultado, $S_T-50$, entre $-5$ y $+10$;\n- si $S_T>60$, el comprador de la call la ejerce y la acción se entrega a 60: resultado, $60-50=+10$.\n\nLas primas se compensan ($-2+2=0$). Es la suma de una put protectora (seguro contra la caída) y una call cubierta (se renuncia a la subida por encima de 60 a cambio de la prima que paga el seguro).\n\nPor qué fallan las demás:\n\n- b) Olvida la call vendida: por encima de 60 hay que entregar la acción a 60, así que la ganancia se detiene en 10. Una ganancia ilimitada con pérdida limitada sería la put protectora sola, que cuesta la prima.\n- c) Trata las 2 primas como si no se compensaran (y con signos distintos en cada extremo). El coste neto de las opciones es cero.\n- d) Olvida la put comprada, o la confunde con una put vendida: la pérdida de 45 no es posible, porque por debajo de 45 la put garantiza ese precio de venta."
+   },
+   "dificultad": 2,
+   "apartado": "II.4 Estrategias de cobertura: put protectora, call cubierta y collar",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322507,
+   "estado": "publicada",
+   "enunciado": "Una empresa endeudada a tipo variable (Euríbor más un diferencial) quiere poner un techo al tipo de interés que paga, sin renunciar a beneficiarse de las bajadas del Euríbor. El instrumento adecuado es:",
+   "opciones": {
+    "a": "Pagar fijo y recibir variable en una permuta de tipos de interés (IRS).",
+    "b": "Comprar un floor, que es una serie de puts sobre el tipo de interés.",
+    "c": "Vender un cap y cobrar a cambio la prima correspondiente.",
+    "d": "Comprar un cap, que es una serie de calls sobre el tipo de interés."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Un cap es una serie de opciones de compra sobre el tipo de interés: paga a su comprador cuando el tipo supera el techo pactado y no le obliga a nada cuando baja. Limita el coste máximo de la deuda a cambio de una prima.",
+    "desarrollo": "Lo que se pide es una protección asimétrica: cubrirse de las subidas y conservar las bajadas. Eso es una opción, no un contrato que obligue a las 2 partes.\n\n- Con un cap comprado, en cada periodo en que el Euríbor supera el tipo de ejercicio, el vendedor paga la diferencia a la empresa, cuyo coste queda limitado al techo; si el Euríbor baja, el cap no se ejerce y la empresa paga el tipo bajo. El precio de esa asimetría es la prima.\n\nPor qué fallan las demás:\n\n- a) La permuta convierte la deuda en deuda a tipo fijo: protege de las subidas, pero renuncia a las bajadas. Es una cobertura simétrica, como la de un futuro.\n- b) Un floor comprado paga cuando el tipo cae por debajo de un suelo: protege a quien cobra intereses variables (un prestamista o un inversor), no a quien los paga.\n- c) Quien vende un cap cobra la prima, pero tiene que pagar cuando los tipos suben: la empresa perdería 2 veces con la subida, en su deuda y en la opción."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Tipos de opciones: cap, floor y collar",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322508,
+   "estado": "publicada",
+   "enunciado": "Considere opciones sobre una acción que no paga dividendos, con un tipo de interés sin riesgo positivo. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Una put americana vale lo mismo que la europea equivalente, porque ejercerla antes del vencimiento supondría renunciar a su valor temporal.",
+    "b": "Una call americana vale lo mismo que la europea equivalente: viva vale al menos $S_0-Ke^{-rT}$, más que los $S_0-K$ que daría ejercerla.",
+    "c": "Una call europea muy dentro de dinero puede valer menos que su valor intrínseco, $S_0-K$, porque no puede ejercerse hasta el vencimiento.",
+    "d": "Una put europea nunca vale menos que su valor intrínseco, $K-S_0$, porque esa diferencia es precisamente su cota inferior de arbitraje."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Sin dividendos, la call vale al menos $S_0-Ke^{-rT}$, que supera a $S_0-K$ si $r>0$: nunca conviene ejercerla antes (es mejor venderla), y la americana vale lo que la europea. En la put ocurre lo contrario: ejercer pronto adelanta el cobro de $K$.",
+    "desarrollo": "Las cotas de arbitraje para una acción sin dividendos son $c\\geq\\max(S_0-Ke^{-rT},0)$ y $p\\geq\\max(Ke^{-rT}-S_0,0)$.\n\n- Call: como $Ke^{-rT}<K$, la call viva vale más que su valor intrínseco, $S_0-K$. Ejercerla antes de tiempo supone pagar $K$ antes (y perder los intereses) y renunciar al seguro que da la opción si la acción cae. El derecho a ejercer anticipadamente no vale nada y $C=c$.\n- Put: ejercer supone cobrar $K$ antes y ganar intereses. Si la acción ha caído mucho, apenas queda nada más que ganar esperando, y conviene ejercer ya. Ese derecho tiene valor: $P\\geq p$, con desigualdad estricta en general.\n\nPor qué fallan las demás:\n\n- a) La put americana vale más que la europea, porque el ejercicio anticipado puede ser óptimo cuando está muy dentro de dinero.\n- c) La cota inferior de la call europea, $S_0-Ke^{-rT}$, está por encima de $S_0-K$: su valor temporal no puede ser negativo si no hay dividendos.\n- d) La cota inferior de la put europea es $Ke^{-rT}-S_0$, menor que $K-S_0$. Una put europea muy dentro de dinero puede valer menos que su valor intrínseco (valor temporal negativo), porque el tenedor tiene que esperar para cobrar $K$."
+   },
+   "dificultad": 3,
+   "apartado": "II.5 Valoración: cotas de arbitraje y ejercicio anticipado",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322509,
+   "estado": "publicada",
+   "enunciado": "Una acción que no paga dividendos vale hoy 100 euros y dentro de un año valdrá 130 o 90 euros. Los analistas atribuyen a la subida una probabilidad del 80 %. El tipo sin riesgo es del 10 % anual (capitalización simple) y no hay oportunidades de arbitraje. ¿Cuánto vale hoy una call europea a un año con precio de ejercicio 108?",
+   "opciones": {
+    "a": "16,00 euros.",
+    "b": "11,00 euros.",
+    "c": "20,00 euros.",
+    "d": "10,00 euros."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La probabilidad real no interviene: la call vale lo que cuesta replicarla. La probabilidad neutral al riesgo es $\\pi=(1{,}1-0{,}9)/(1{,}3-0{,}9)=0{,}5$, y $c=0{,}5\\cdot22/1{,}1=10$.",
+    "desarrollo": "La call paga $c_u=130-108=22$ si la acción sube y $c_d=0$ si baja. Por 2 vías:\n\n- Con la fórmula: $u=1{,}3$, $d=0{,}9$, $\\pi=\\dfrac{(1+r)-d}{u-d}=\\dfrac{0{,}2}{0{,}4}=0{,}5$ y $c=\\dfrac{0{,}5\\cdot22+0{,}5\\cdot0}{1{,}1}=10$.\n- Con la cartera de réplica: $\\Delta=\\dfrac{c_u-c_d}{(u-d)S_0}=\\dfrac{22}{40}=0{,}55$ acciones. Para que la cartera valga cero en el estado malo, hay que deber $0{,}55\\cdot90=49{,}5$ dentro de un año, es decir, pedir prestado hoy $49{,}5/1{,}1=45$. En el estado bueno vale $0{,}55\\cdot130-49{,}5=22$, como la call. Coste: $55-45=10$.\n\nSi la call cotizara a otro precio, se compraría lo barato (la opción o su réplica) y se vendería lo caro, con una ganancia segura.\n\nPor qué fallan las demás:\n\n- a) $0{,}8\\cdot22/1{,}1=16$ usa la probabilidad real y descuenta al tipo sin riesgo. Es incoherente: con esa probabilidad, la acción rinde en promedio un 22 %, no un 10 %, y el pago esperado de la call habría que descontarlo a una tasa mucho mayor.\n- b) $0{,}5\\cdot22=11$ es el pago esperado con la probabilidad neutral al riesgo, sin descontar.\n- c) $22/1{,}1=20$ descuenta el pago del estado bueno como si fuera seguro."
+   },
+   "dificultad": 3,
+   "apartado": "II.5 Valoración: el modelo binomial",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:322509.webp",
+     "alt": "Árbol binomial de un periodo con dos filas. Arriba, la acción: vale 100 hoy y 130 o 90 dentro de un año. Abajo, la call con precio de ejercicio 108: paga 22 si la acción sube y 0 si baja, y su valor de hoy aparece como incógnita, «c = ?». No hay probabilidades en las ramas.",
+     "ancho": 520
+    }
+   ]
+  },
+  {
+   "id": 322510,
+   "estado": "publicada",
+   "enunciado": "En la fórmula de Black y Scholes para una call europea sobre una acción sin dividendos, $c=S_0\\,N(d_1)-K\\,e^{-rT}N(d_2)$:",
+   "opciones": {
+    "a": "$N(d_2)$ es la probabilidad neutral al riesgo de que la opción se ejerza, y $N(d_1)$, la delta de la call.",
+    "b": "$N(d_1)$ es la probabilidad neutral al riesgo de que la opción se ejerza, y $N(d_2)$, la delta de la call.",
+    "c": "$N(d_2)$ es la probabilidad real de que la opción se ejerza, calculada con la rentabilidad esperada, $\\mu$.",
+    "d": "$N(d_1)$ y $N(d_2)$ tienden a cero cuando la opción está muy dentro de dinero, y la prima, a su cota inferior."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La call vale lo que se espera recibir menos lo que se espera pagar, con probabilidades neutrales al riesgo: $N(d_2)=\\mathbb{Q}(S_T>K)$ es la probabilidad de ejercer (y de pagar $K$), y $N(d_1)=\\partial c/\\partial S_0$ es la delta, las acciones de la cartera de réplica.",
+    "desarrollo": "La fórmula se lee como una cartera de réplica: $N(d_1)$ acciones compradas, financiadas en parte con una deuda de $Ke^{-rT}N(d_2)$.\n\n- $N(d_2)$ es la probabilidad, con la medida neutral al riesgo (en la que la acción rinde en promedio $r$), de que $S_T>K$: multiplica al valor actual del precio de ejercicio, que solo se paga si se ejerce.\n- $N(d_1)$ es la delta de la call: cuánto cambia la prima cuando el subyacente sube un euro. Está entre 0 y 1 y es mayor que $N(d_2)$, porque $d_1=d_2+\\sigma\\sqrt{T}$.\n\nPor qué fallan las demás:\n\n- b) Intercambia los papeles de los 2 términos.\n- c) La rentabilidad esperada de la acción, $\\mu$, no aparece en la fórmula: en $d_1$ y $d_2$ solo entran $S_0$, $K$, $r$, $\\sigma$ y $T$. La probabilidad real de ejercicio depende de $\\mu$ y no coincide con $N(d_2)$ salvo que $\\mu=r$.\n- d) Es al revés: muy dentro de dinero, $d_1$ y $d_2$ son muy grandes y $N(d_1)$ y $N(d_2)$ tienden a 1, de modo que $c\\to S_0-Ke^{-rT}$, su cota inferior. Tienden a cero cuando la opción está muy fuera de dinero, y entonces $c\\to0$."
+   },
+   "dificultad": 2,
+   "apartado": "II.5 Valoración: el modelo de Black y Scholes (interpretación)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322511,
+   "estado": "publicada",
+   "enunciado": "Si el modelo de Black y Scholes describiera exactamente los precios de mercado, la volatilidad implícita sería la misma para todos los precios de ejercicio de un mismo subyacente y vencimiento. En las opciones sobre índices bursátiles, desde el desplome de octubre de 1987 se observa, en cambio, que:",
+   "opciones": {
+    "a": "La volatilidad implícita es mayor en las calls muy fuera de dinero, porque el mercado da a las subidas fuertes más probabilidad que la lognormal.",
+    "b": "La volatilidad implícita es mínima en las opciones más alejadas del dinero, porque casi no tienen valor temporal y apenas se negocian.",
+    "c": "La volatilidad implícita es mayor en las puts fuera de dinero, porque el mercado da a las caídas fuertes más probabilidad que la lognormal.",
+    "d": "La volatilidad implícita es igual en todos los precios de ejercicio, pero se sitúa sistemáticamente por debajo de la volatilidad histórica."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Es la «mueca» (skew) de volatilidad: las puts fuera de dinero sobre índices, que aseguran contra los desplomes, cotizan con una volatilidad implícita más alta. El mercado asigna a las caídas extremas más probabilidad que la distribución lognormal del modelo.",
+    "desarrollo": "La volatilidad implícita es la $\\sigma$ que, metida en la fórmula, da el precio de mercado de la opción. Con un subyacente lognormal de volatilidad constante sería una sola para todas las opciones sobre él.\n\n- En los índices bursátiles, la volatilidad implícita decrece con el precio de ejercicio: es alta en los precios de ejercicio bajos (puts fuera de dinero) y baja en los altos. Equivale a decir que la distribución que descuenta el mercado tiene la cola izquierda más gruesa que la lognormal: asimetría hacia las caídas y más sucesos extremos.\n- Refleja 2 de las críticas clásicas al modelo: la volatilidad no es constante y los rendimientos no son normales.\n\nPor qué fallan las demás:\n\n- a) Es la cola equivocada: en los índices bursátiles las calls muy fuera de dinero (precios de ejercicio altos) son las que tienen menor volatilidad implícita.\n- b) Ocurre lo contrario en el lado de las caídas, y el poco valor temporal de una opción no implica una volatilidad implícita baja.\n- d) Niega el hecho que se pregunta: la volatilidad implícita no es igual entre precios de ejercicio. Además, la implícita suele estar por encima de la realizada, no por debajo, porque incluye una prima por el riesgo de volatilidad."
+   },
+   "dificultad": 2,
+   "apartado": "II.5 Valoración: evidencia empírica del modelo de Black y Scholes (sonrisa de volatilidad)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322512,
+   "estado": "publicada",
+   "enunciado": "La empresa A puede endeudarse al 5,0 % fijo o al Euríbor + 0,2 %; la empresa B, al 6,5 % fijo o al Euríbor + 0,9 %. A prefiere deuda a tipo variable y B, a tipo fijo. Según el argumento de la ventaja comparativa, y sin intermediario:",
+   "opciones": {
+    "a": "A se endeuda a variable y B a fijo, como prefieren, y con una permuta de tipos de interés se reparten una ganancia conjunta de 1,5 puntos.",
+    "b": "A se endeuda a fijo y B a variable, y con una permuta de tipos de interés se reparten una ganancia conjunta de 0,8 puntos.",
+    "c": "A se endeuda a fijo y B a variable, y con una permuta de tipos de interés se reparten una ganancia conjunta de 2,2 puntos.",
+    "d": "No hay ganancia posible con una permuta, porque A tiene ventaja absoluta en los 2 mercados y no obtiene nada de B."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "A paga 1,5 puntos menos que B en el fijo y solo 0,7 menos en el variable: su ventaja comparativa está en el fijo, y la de B, en el variable. Si cada una se endeuda donde la tiene e intercambian los pagos, ahorran entre las 2 la diferencia de diferenciales: $1{,}5-0{,}7=0{,}8$.",
+    "desarrollo": "Por 2 vías:\n\n- Diferencia de diferenciales: en el fijo, $6{,}5-5{,}0=1{,}5$; en el variable, $0{,}9-0{,}2=0{,}7$. Ganancia conjunta: $1{,}5-0{,}7=0{,}8$ puntos.\n- Coste total: si cada una se endeuda directamente en lo que prefiere, pagan entre las 2 (Euríbor + 0,2) + 6,5 = Euríbor + 6,7. Si A se endeuda a fijo y B a variable, pagan 5,0 + (Euríbor + 0,9) = Euríbor + 5,9. El ahorro es 0,8, y la permuta (A paga variable a B y B paga fijo a A) lo reparte y deja a cada una con el tipo de deuda que quería.\n\nPor ejemplo, si se lo reparten a medias, A acaba pagando el Euríbor − 0,2 y B, el 6,1 % fijo: cada una, 0,4 puntos menos que por su cuenta.\n\nPor qué fallan las demás:\n\n- a) Si cada una se endeuda directamente en lo que prefiere, no hay nada que permutar; y 1,5 es solo la diferencia en el mercado de tipo fijo.\n- c) 2,2 suma las 2 diferencias en lugar de restarlas.\n- d) Como en el comercio internacional, lo que genera la ganancia es la ventaja comparativa, no la absoluta: A es mejor en los 2 mercados, pero relativamente mejor en el fijo.\n\nUna cautela: parte de la ganancia es aparente, porque el diferencial a tipo variable puede revisarse si la calidad crediticia de B empeora, y cada parte asume el riesgo de crédito de la otra."
+   },
+   "dificultad": 2,
+   "apartado": "III.4 Estrategias con swaps: arbitraje de ventaja comparativa",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322513,
+   "estado": "publicada",
+   "enunciado": "A una permuta de tipos de interés (IRS) fijo contra variable le queda un único intercambio, dentro de un año; su nominal es de 100 millones de euros y su tipo fijo, del 3 % anual. Hoy, fecha de revisión del tipo variable, el tipo de interés de mercado a un año es del 5 % (capitalización simple). El valor de la permuta para la parte que RECIBE el tipo fijo es, aproximadamente:",
+   "opciones": {
+    "a": "−1,90 millones de euros.",
+    "b": "+1,90 millones de euros.",
+    "c": "−2,00 millones de euros.",
+    "d": "Cero, como en cualquier fecha de revisión."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Quien recibe fijo tiene un bono fijo comprado y uno variable emitido: $V=B_{\\mathrm{fix}}-B_{\\mathrm{fl}}=103/1{,}05-100\\approx-1{,}90$ millones. Los tipos han subido por encima del fijo pactado, y cobrar el 3 % cuando el mercado da el 5 % tiene valor negativo.",
+    "desarrollo": "Por 2 vías:\n\n- Como diferencia de 2 bonos: el bono a tipo variable vale su nominal, 100, en la fecha de revisión, porque paga lo que pide el mercado. El bono fijo paga 103 dentro de un año y vale $103/1{,}05=98{,}10$. Para quien recibe fijo, $V=98{,}10-100=-1{,}90$ millones.\n- Como un contrato a plazo sobre el tipo de interés: dentro de un año recibirá el 3 % y pagará el variable, que hoy se fija en el 5 %. El pago neto es $100\\cdot(0{,}03-0{,}05)=-2$ millones, que descontado un año vale $-2/1{,}05=-1{,}90$.\n\nPor qué fallan las demás:\n\n- b) Es el valor para la otra parte, la que paga fijo y recibe variable: gana cuando los tipos suben.\n- c) Es el pago neto que se hará dentro de un año, sin descontar al 5 %.\n- d) Lo que vale su nominal en cada fecha de revisión es el bono a tipo variable, no la permuta. La permuta vale cero cuando se firma, porque el tipo fijo se elige para eso; después su valor cambia con los tipos de mercado."
+   },
+   "dificultad": 3,
+   "apartado": "III.5 Valoración de un swap de tipos de interés",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322514,
+   "estado": "publicada",
+   "enunciado": "El diferencial de una permuta de incumplimiento crediticio (CDS) sobre un emisor es de 300 puntos básicos anuales, y el mercado espera una tasa de recuperación del 40 % en caso de impago. La probabilidad anual de impago implícita en ese precio es, aproximadamente:",
+   "opciones": {
+    "a": "El 3 %.",
+    "b": "El 1,8 %.",
+    "c": "El 7,5 %.",
+    "d": "El 5 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Sin arbitraje, la cuota anual que paga el comprador de protección cubre la pérdida esperada: $s\\simeq\\lambda\\,(1-R)$. Con $s=3$ % y $R=40$ %, $\\lambda\\simeq0{,}03/0{,}6=5$ %.",
+    "desarrollo": "El vendedor de protección cobra cada año $s$ sobre el nominal y, si hay un evento de crédito, paga la pérdida, $1-R$ por unidad de nominal. Con una probabilidad anual de impago $\\lambda$, la pérdida esperada anual es $\\lambda(1-R)$, y la cuota justa la iguala:\n\n$$s\\simeq\\lambda\\,(1-R)\\quad\\Longrightarrow\\quad\\lambda\\simeq\\frac{s}{1-R}=\\frac{0{,}03}{0{,}60}=0{,}05.$$\n\nComprobación en sentido contrario: con una probabilidad de impago del 5 % y una pérdida del 60 % del nominal en ese caso, la pérdida esperada es el 3 % del nominal al año, los 300 puntos básicos.\n\nPor qué fallan las demás:\n\n- a) Iguala el diferencial a la probabilidad de impago: solo sería así con recuperación nula. Como en caso de impago solo se pierde el 60 %, hace falta una probabilidad mayor para justificar la misma cuota.\n- b) Multiplica por la pérdida en caso de impago ($0{,}03\\cdot0{,}6$) en lugar de dividir.\n- c) Divide por la tasa de recuperación ($0{,}03/0{,}4$) en lugar de por la pérdida en caso de impago.\n\nEs una probabilidad neutral al riesgo: incluye la prima que el mercado exige por soportar el riesgo de crédito, y suele ser mayor que la frecuencia histórica de impagos."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Tipos de swaps: derivados de crédito (CDS)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322515,
+   "estado": "publicada",
+   "enunciado": "Tras la crisis de 2008, el G-20 acordó en Pittsburgh (2009) una reforma de los mercados de derivados no organizados (OTC), que la UE aplica sobre todo con el reglamento EMIR y Estados Unidos con la ley Dodd-Frank. Entre sus elementos NO figura:",
+   "opciones": {
+    "a": "La obligación de compensar los derivados OTC normalizados en entidades de contrapartida central.",
+    "b": "La prohibición de negociar derivados a medida fuera de los mercados organizados de futuros y opciones.",
+    "c": "La obligación de comunicar todos los contratos de derivados a registros de operaciones.",
+    "d": "Mayores exigencias de garantías y de capital para los derivados que no se compensan en una cámara."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La reforma no prohibió los derivados OTC: los hizo más seguros y transparentes. Los normalizados van a plataformas y a cámaras de contrapartida central, todos se comunican a registros de operaciones, y los que siguen siendo bilaterales soportan más garantías y más capital.",
+    "desarrollo": "El mercado OTC sigue existiendo y es, con mucho, el mayor por importe nocional, porque da lo que el mercado organizado no puede dar: contratos a medida. Lo que cambió tras 2008 es cómo se gestionan sus riesgos:\n\n- compensación centralizada de los contratos normalizados (a), para reducir el riesgo de contrapartida bilateral que hizo sistémica la caída de AIG;\n- comunicación de todos los contratos a registros de operaciones (c), para que los supervisores sepan quién está expuesto a quién;\n- intercambio de garantías y más requisitos de capital en los contratos que no se compensan en una cámara (d), para que el coste refleje su mayor riesgo e incentivar la compensación;\n- y negociación de los más líquidos en plataformas.\n\nLa opción b) no forma parte de la reforma: los contratos a medida se siguen negociando de forma bilateral, con esas cautelas.\n\nEl resultado tiene 2 caras: ha bajado el riesgo de contrapartida bilateral y ha subido la transparencia, pero el riesgo se concentra ahora en las cámaras, que son infraestructuras sistémicas y cuyas peticiones de márgenes pueden ser procíclicas."
+   },
+   "dificultad": 1,
+   "apartado": "Conclusión y anexo: los mercados OTC tras 2008 (regulación)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

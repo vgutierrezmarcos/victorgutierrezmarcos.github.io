@@ -1,0 +1,396 @@
+{
+ "tema": "3.A.33",
+ "preguntas": [
+  {
+   "id": 313301,
+   "estado": "publicada",
+   "enunciado": "Las series de renta y consumo de Estados Unidos reconstruidas por Kuznets dieron lugar al llamado «enigma del consumo». Señale qué comportamiento de la propensión media a consumir recoge ese enigma:",
+   "opciones": {
+    "a": "Es constante entre hogares de distinta renta en un mismo año, pero decrece con la renta en las series agregadas largas.",
+    "b": "Decrece con la renta tanto entre hogares en un mismo año como en las series agregadas cortas y en las largas.",
+    "c": "Decrece con la renta entre hogares en un mismo año y en las series agregadas cortas, pero es casi constante en las series largas.",
+    "d": "Crece con la renta en las series agregadas cortas, por el efecto trinquete, y es casi constante en las series agregadas largas."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Kuznets encontró que la propensión media a consumir decrece con la renta en el corte transversal y en las series cortas, como predice la función keynesiana, pero es prácticamente constante en las series largas. La función $C=\\overline{C}+cY^d$ no puede explicar las dos cosas a la vez.",
+    "desarrollo": "Con la función keynesiana, $C/Y^d=\\overline{C}/Y^d+c$: la propensión media cae al crecer la renta. De ahí dedujo Hansen la tesis del estancamiento secular. Los datos de Kuznets muestran tres regularidades: en el corte transversal (hogares distintos en un mismo año) los más ricos consumen una proporción menor de su renta; en las series agregadas cortas también decrece con la renta, y en las series largas (desde 1869) es casi constante. El enigma es ese desajuste entre el corto y el largo plazo, que resuelven después la renta relativa, la renta permanente y el ciclo vital.\n\nPor qué fallan las demás:\n\n- a) Invierte los hechos: donde decrece es en el corte transversal, y donde es constante es en las series largas.\n- b) Es lo que predice la función keynesiana y lo que esperaba Hansen; si fuera así, no habría enigma.\n- d) En las series cortas la propensión media decrece con la renta (sube en las recesiones y baja en las expansiones); el efecto trinquete de Duesenberry es una explicación de ese hecho, no un hecho contrario."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Modelos estáticos: Keynes y el enigma de Kuznets",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313302,
+   "estado": "publicada",
+   "enunciado": "En el modelo de la renta relativa de Duesenberry, la propensión media a consumir es $\\dfrac{C_t}{Y_t}=1{,}2-0{,}3\\,\\dfrac{Y_t}{Y^{\\text{máx}}_t}$, donde $Y^{\\text{máx}}_t$ es la renta más alta alcanzada hasta entonces. La renta venía creciendo y acaba de alcanzar su máximo, 1.000; en la recesión siguiente cae a 900. En la recesión, el consumo:",
+   "opciones": {
+    "a": "Baja de 900 a 810, y la propensión media se mantiene en 0,9.",
+    "b": "Baja de 900 a 837, y la propensión media sube de 0,9 a 0,93.",
+    "c": "Se mantiene en 900, y la propensión media sube de 0,9 a 1.",
+    "d": "Baja de 900 a 783, y la propensión media baja de 0,9 a 0,87."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el máximo, $Y/Y^{\\text{máx}}=1$ y $C/Y=0{,}9$: $C=900$. En la recesión, $Y/Y^{\\text{máx}}=0{,}9$ y $C/Y=1{,}2-0{,}27=0{,}93$: $C=0{,}93\\cdot 900=837$. El consumo cae menos que proporcionalmente (efecto trinquete) y la propensión media sube.",
+    "desarrollo": "Mientras la renta crece y marca nuevos máximos, $Y_t=Y^{\\text{máx}}_t$ y la propensión media es constante, $1{,}2-0{,}3=0{,}9$: es la recta de largo plazo, que pasa por el origen. Con $Y=1.000$, $C=900$.\n\nEn la recesión, $Y^{\\text{máx}}$ sigue siendo 1.000 y $Y=900$: $C/Y=1{,}2-0{,}3\\cdot 0{,}9=0{,}93$ y $C=837$. La renta cae 100 y el consumo, 63: la propensión marginal a corto plazo (0,63) es menor que la media de largo plazo (0,9), porque los hogares defienden el consumo alcanzado reduciendo su ahorro. Es la recta de corto plazo, más plana.\n\nPor qué fallan las demás:\n\n- a) Supone que el consumo baja por la recta de largo plazo (propensión media constante); eso solo ocurre cuando la renta marca nuevos máximos.\n- c) Exagera el efecto trinquete: el consumo se resiste a bajar, pero baja.\n- d) Calcula con $Y/Y^{\\text{máx}}=1{,}1$, como si la renta hubiera subido; en una recesión la propensión media sube, no baja."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Modelos estáticos: renta relativa (Duesenberry)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313303,
+   "estado": "publicada",
+   "enunciado": "Un consumidor vive 2 periodos con certidumbre, tiene preferencias $u(C_1)+\\beta\\,u(C_2)$, con $u'>0$, $u''<0$ y $\\beta=\\dfrac{1}{1+\\rho}$, y accede a un mercado de capitales perfecto. Su tasa de descuento y el tipo de interés real coinciden: $\\rho=r=25~\\%$. Sus rentas son $Y_1=50$ e $Y_2=140$. En el óptimo:",
+   "opciones": {
+    "a": "Pide prestado 40 en el primer periodo y consume 90 en cada periodo.",
+    "b": "Pide prestado 45 en el primer periodo y consume 95 en cada periodo.",
+    "c": "Pide prestado 31 en el primer periodo y consume 81, la mitad de su riqueza.",
+    "d": "No pide prestado: la forma de $u$ no se conoce y no puede saberse más."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $\\beta(1+r)=1$, la ecuación de Euler da $u'(C_1)=u'(C_2)$ y, como $u''<0$, $C_1=C_2=C$. La riqueza es $50+140/1{,}25=162$ y $C+C/1{,}25=162$ da $C=90$. Como $Y_1=50$, pide prestado 40 y devuelve 50 en el segundo periodo ($140-50=90$).",
+    "desarrollo": "La ecuación de Euler, $u'(C_1)=\\beta(1+r)\\,u'(C_2)$, con $\\beta(1+r)=1{,}25/1{,}25=1$, exige $u'(C_1)=u'(C_2)$; como la utilidad marginal es estrictamente decreciente, $C_1=C_2$, sea cual sea la forma concreta de $u$.\n\nRestricción intertemporal: $C_1+\\dfrac{C_2}{1+r}=Y_1+\\dfrac{Y_2}{1+r}=50+112=162$. Con $C_1=C_2=C$: $C\\,(1+0{,}8)=162$, $C=90$; es la fórmula $C=\\dfrac{1+r}{2+r}\\,\\overline{W}=\\dfrac{1{,}25}{2{,}25}\\cdot 162$. Ahorro: $Y_1-C_1=-40$. Comprobación por la otra restricción: $C_2=140-40\\cdot 1{,}25=90$.\n\nPor qué fallan las demás:\n\n- b) Hace la media simple de las rentas, $(50+140)/2=95$, sin descontar: con ese plan, $C_2=140-45\\cdot 1{,}25=83{,}75$, no 95.\n- c) Reparte la riqueza a partes iguales en valor actual ($162/2=81$): entonces $C_2=140-31\\cdot 1{,}25=101{,}25\\neq C_1$, y no se cumple la ecuación de Euler.\n- d) No hace falta conocer $u$: con $r=\\rho$ basta que la utilidad marginal sea decreciente para que el consumo sea igual en los 2 periodos."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelos dinámicos: elección intertemporal (Fisher), caso $r=\\rho$",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313304,
+   "estado": "publicada",
+   "enunciado": "En la hipótesis de la renta permanente, un hogar consume $C_t=0{,}9\\,Y^P_t$ (no hay consumo transitorio) y estima su renta permanente con expectativas adaptativas: $Y^P_t=Y^P_{t-1}+0{,}4\\,(Y_t-Y^P_{t-1})$. Su renta llevaba mucho tiempo en 1.000, de modo que $Y^P_{t-1}=1.000$ y consumía 900. En $t$ su renta observada sube a 1.200. En ese periodo:",
+   "opciones": {
+    "a": "Consume 1.080 y su propensión media se mantiene en 0,9.",
+    "b": "Consume 900: hasta que la subida no se repite, la trata como transitoria.",
+    "c": "Consume 1.008 y su propensión media baja a 0,84.",
+    "d": "Consume 972 y su propensión media baja a 0,81."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$Y^P_t=1.000+0{,}4\\cdot 200=1.080$ y $C_t=0{,}9\\cdot 1.080=972$. La propensión media sobre la renta observada es $972/1.200=0{,}81$: baja al subir la renta, como en las series cortas. La propensión marginal a corto plazo es $0{,}9\\cdot 0{,}4=0{,}36$.",
+    "desarrollo": "Con expectativas adaptativas el hogar corrige cada periodo una parte $\\gamma=0{,}4$ del error: $Y^P_t=1.000+0{,}4\\,(1.200-1.000)=1.080$. El consumo es $0{,}9\\cdot 1.080=972$: sube 72 con una subida de la renta de 200, una propensión marginal a corto plazo de $k\\gamma=0{,}36$. La propensión media, $972/1.200=0{,}81$, cae por debajo de $k=0{,}9$. Si la subida persiste, se va incorporando a la renta permanente (en $t+1$, $Y^P=1.080+0{,}4\\cdot 120=1.128$ y $C=1.015{,}2$) y el consumo tiende a $0{,}9\\cdot 1.200=1.080$: a largo plazo la propensión media vuelve a 0,9. Así explica Friedman que la propensión media caiga con la renta a corto plazo y sea constante a largo plazo.\n\nPor qué fallan las demás:\n\n- a) Es el resultado de largo plazo, cuando toda la subida se ha incorporado a la renta permanente.\n- b) El hogar no espera a ver si se repite: incorpora desde el primer periodo una parte $\\gamma$ de la sorpresa.\n- c) Pondera al revés: incorpora el 60 % de la subida ($1.000+0{,}6\\cdot 200=1.120$) en lugar del 40 %."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelos dinámicos: renta permanente (Friedman), expectativas adaptativas",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313305,
+   "estado": "publicada",
+   "enunciado": "Un individuo empieza a trabajar sin activos y le quedan 50 años de vida: trabajará 40, con una renta laboral de 30.000 euros al año, y vivirá 10 jubilado, sin renta. Hay certidumbre, mercado de capitales perfecto, no deja herencia y $r=\\rho=0$. Según la hipótesis del ciclo vital:",
+   "opciones": {
+    "a": "Consume 24.000 euros al año toda su vida y llega a la jubilación con 300.000 euros.",
+    "b": "Consume 24.000 euros al año toda su vida y llega a la jubilación con 240.000 euros.",
+    "c": "Consume 27.000 euros al año mientras trabaja y 12.000 euros al año en la jubilación.",
+    "d": "Consume 24.000 euros al año toda su vida y llega a la jubilación con 60.000 euros."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con $r=\\rho=0$ el consumo es plano: reparte los recursos de toda la vida, $40\\cdot 30.000=1.200.000$, entre 50 años: 24.000 al año. Ahorra 6.000 al año durante 40 años y se jubila con 240.000, justo lo que necesita para consumir 24.000 durante 10 años.",
+    "desarrollo": "Por la ecuación de Euler con $\\beta(1+r)=1$, el consumo es el mismo todos los años: $C=\\dfrac{1}{T}\\sum Y^L_s=\\dfrac{1.200.000}{50}=24.000$. Mientras trabaja ahorra $30.000-24.000=6.000$ al año; a los 40 años ha acumulado $240.000$. Comprobación por el otro lado: en la jubilación desahorra $24.000\\cdot 10=240.000$ y muere sin activos.\n\nPor qué fallan las demás:\n\n- a) 300.000 sería lo necesario para mantener en la jubilación la renta de activo (30.000 al año), no el consumo; con un ahorro de 6.000 al año no se alcanza.\n- c) Cumple la restricción presupuestaria ($27.000\\cdot 40+12.000\\cdot 10=1.200.000$), pero no es óptimo: con utilidad marginal decreciente y $r=\\rho$, el consumidor prefiere un consumo igual todos los años.\n- d) 60.000 es el ahorro de 10 años ($6.000\\cdot 10$): confunde los años de jubilación con los años de trabajo. Ahorra 6.000 durante los 40 años que trabaja, y con 60.000 solo cubriría 2 años y medio de jubilación."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Modelos dinámicos: ciclo vital (Modigliani), consumo individual",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313306,
+   "estado": "publicada",
+   "enunciado": "Considere la hipótesis del ciclo vital en su versión más sencilla (sin herencias, con la estructura por edades y las preferencias estables). Sobre el ahorro agregado, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es nulo si no crecen ni la población ni la productividad; la tasa de ahorro depende del ritmo de crecimiento de la renta, no de su nivel.",
+    "b": "Es mayor en los países de más renta por habitante, porque la propensión media a consumir cae cuando aumenta el nivel de la renta.",
+    "c": "Es positivo aunque la economía no crezca, porque cada individuo ahorra en términos netos a lo largo de su vida para la jubilación.",
+    "d": "Aumenta con el envejecimiento de la población, porque los hogares de más edad son los que acumulan más riqueza por habitante."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Sin crecimiento, lo que ahorran los activos se compensa con lo que desahorran los jubilados y el ahorro agregado es nulo. Con crecimiento de la población o de la productividad, los que ahorran son más, o más ricos, que los que desahorran: la tasa de ahorro depende del ritmo de crecimiento, no del nivel de renta.",
+    "desarrollo": "En el ciclo vital sin herencias cada individuo consume a lo largo de su vida todo lo que gana: su ahorro neto vital es cero. En una economía estacionaria, la suma del ahorro de las generaciones activas es igual al desahorro de las jubiladas. Si la población crece, hay más jóvenes ahorrando que mayores desahorrando; si crece la productividad, los jóvenes ahorran a partir de rentas mayores que las que tuvieron los jubilados actuales. En los 2 casos el ahorro agregado es positivo, tanto más cuanto mayor es el crecimiento. Es la predicción con la que Modigliani explica la relación positiva entre crecimiento y tasa de ahorro entre países.\n\nPor qué fallan las demás:\n\n- b) Es la lógica de la función keynesiana, no la del ciclo vital, en el que la tasa de ahorro no depende del nivel de la renta.\n- c) Sin herencias, el ahorro neto de cada individuo a lo largo de su vida es nulo: lo que acumula de activo lo gasta de jubilado.\n- d) Confunde riqueza con ahorro: los mayores tienen activos, pero los van gastando; más jubilados por cada activo significa menos ahorro agregado."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Modelos dinámicos: ciclo vital (Modigliani), ahorro agregado y crecimiento",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313307,
+   "estado": "publicada",
+   "enunciado": "Un consumidor cumple los supuestos del modelo de Hall (utilidad cuadrática, expectativas racionales, un activo sin riesgo) con horizonte finito y $r=\\rho=0$. Le quedan 20 periodos de vida, contando el actual, $t$. En $t$ recibe una noticia inesperada: en $t+3$ cobrará, una sola vez, una paga extraordinaria de 6.000. Si no llegan más noticias, su consumo:",
+   "opciones": {
+    "a": "No cambia en $t$ y sube en 6.000 en $t+3$, solo en ese periodo, que es cuando cobra la paga.",
+    "b": "No cambia en $t$ y sube a partir de $t+3$, repartiendo la paga entre los periodos que queden.",
+    "c": "Sube en 300 en $t$ y se mantiene en ese nivel, sin cambiar cuando cobra la paga en $t+3$.",
+    "d": "Sube en 2.000 en cada periodo de $t$ a $t+2$, de modo que gasta la paga antes de cobrarla."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El consumo cambia cuando llega la noticia, no cuando llega el dinero, y lo hace en la revisión de la renta esperada repartida entre los periodos que quedan: $6.000/20=300$. Después, $\\mathbb{E}_t[C_{t+1}]=C_t$: el cobro de $t+3$ ya estaba descontado y no mueve el consumo.",
+    "desarrollo": "Con utilidad cuadrática, horizonte finito y $r=\\rho=0$, $C_t=\\dfrac{1}{T-t+1}\\Big[b_t+\\sum_{s=t}^{T}\\mathbb{E}_t[Y_s]\\Big]$, y el cambio del consumo es la revisión de las rentas esperadas dividida entre los periodos que quedan: $\\Delta C_t=6.000/20=300$. Entre $t$ y $t+2$ el consumidor se endeuda (o ahorra menos) en 300 por periodo; en $t+3$ cobra 6.000, consume 300 de más como en los demás periodos y el resto cubre lo adelantado y lo que seguirá consumiendo de más hasta el final ($300\\cdot 20=6.000$). En $t+3$ no hay noticia, así que el consumo no cambia: es el paseo aleatorio, $C_{t+1}=C_t+\\varepsilon_{t+1}$, con $\\varepsilon=0$ si no hay sorpresas.\n\nPor qué fallan las demás:\n\n- a) Es el comportamiento de un hogar que consume su renta corriente (o con restricciones de liquidez), no el del modelo de Hall.\n- b) Suaviza el consumo, pero desde el cobro y no desde el anuncio: es lo que haría quien no puede endeudarse; con mercado de capitales perfecto la noticia se incorpora en $t$.\n- d) No suaviza: con utilidad marginal decreciente no es óptimo concentrar el gasto en 3 periodos."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Hall: cuánto cambia el consumo con una noticia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313308,
+   "estado": "publicada",
+   "enunciado": "Campbell y Mankiw estiman con datos agregados la ecuación $\\Delta C_t=\\mu+\\lambda\\,\\Delta Y_t+\\varepsilon_t$ por variables instrumentales, usando como instrumentos variables retardadas, que solo recogen la parte previsible de $\\Delta Y_t$, y obtienen un $\\lambda$ en torno a 0,5. Este resultado se interpreta como:",
+   "opciones": {
+    "a": "Un apoyo al modelo de Hall: la propensión a consumir de la renta permanente es 0,5, y el resto se ahorra.",
+    "b": "Un exceso de suavidad: el consumo solo recoge la mitad de las sorpresas de la renta permanente.",
+    "c": "Un apoyo al modelo de Hall: la mitad de los cambios de la renta son imprevistos y solo esos mueven el consumo.",
+    "d": "Un exceso de sensibilidad: en torno a la mitad de la renta va a hogares que consumen su renta corriente."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con Hall, los cambios previsibles de la renta no deberían mover el consumo: $\\lambda=0$. Un $\\lambda$ cercano a 0,5 significa que el consumo responde a la renta previsible (exceso de sensibilidad), como si la mitad de la renta fuera a hogares que consumen su renta corriente y la otra mitad a hogares que siguen el paseo aleatorio.",
+    "desarrollo": "El modelo tiene 2 tipos de hogares: una fracción $\\lambda$ de la renta va a hogares que consumen su renta corriente ($\\Delta C=\\Delta Y$) y el resto, a hogares que cumplen el paseo aleatorio ($\\Delta C=\\varepsilon$). Al agregar, $\\Delta C_t=\\mu+\\lambda\\,\\Delta Y_t+\\varepsilon_t$. Como $\\varepsilon_t$ (las noticias) está correlacionado con $\\Delta Y_t$, se instrumenta con retardos: así $\\lambda$ mide la respuesta del consumo a la parte de $\\Delta Y_t$ que ya se podía prever. Con Hall debería ser cero. Los autores lo atribuyen a hogares que siguen reglas sencillas basadas en la renta corriente o que no pueden endeudarse.\n\nPor qué fallan las demás:\n\n- a) $\\lambda$ no es la propensión a consumir de la renta permanente, sino el peso de los hogares que no suavizan; y un $\\lambda>0$ rechaza a Hall.\n- b) El exceso de suavidad se refiere a la respuesta a los cambios imprevistos; los instrumentos retardados aíslan justo los previsibles.\n- c) $\\lambda$ no mide qué parte de la renta es imprevista; y que el consumo responda a la parte previsible es lo contrario de lo que dice Hall.\n\nNota de terminología: aquí se sigue la habitual en la literatura (exceso de sensibilidad del consumo ante cambios previsibles de la renta, Flavin; exceso de suavidad ante los imprevistos, Campbell y Deaton). Alguna pregunta de examen oficial ha llamado «exceso de suavidad» a la reacción ante cambios esperados: conviene conocer las dos formulaciones."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Contrastación empírica: exceso de sensibilidad (Campbell y Mankiw)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313309,
+   "estado": "publicada",
+   "enunciado": "Suponga que las tasas de crecimiento de la renta laboral agregada están positivamente autocorrelacionadas, de modo que una subida inesperada de la renta anuncia nuevas subidas. Con la hipótesis de la renta permanente y expectativas racionales, ante una sorpresa de renta:",
+   "opciones": {
+    "a": "El consumo debería variar menos que la renta, porque parte de la sorpresa es transitoria; los datos lo confirman.",
+    "b": "El consumo debería variar más que la renta, porque la renta permanente se revisa aún más; en los datos varía menos.",
+    "c": "El consumo no debería variar, porque solo responde a cambios previsibles de la renta; en los datos sí varía.",
+    "d": "El consumo debería variar lo mismo que la renta, porque la sorpresa es permanente; en los datos varía más."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Si una sorpresa positiva anuncia más subidas, la renta permanente sube más que la renta corriente y el consumo, que la sigue, debería oscilar más que la renta. En los datos agregados el consumo es más suave que la renta: es el exceso de suavidad o paradoja de Deaton.",
+    "desarrollo": "El consumo se revisa en lo que cambia la renta permanente. Con una renta agregada persistente en tasas de crecimiento, una innovación de 1 hoy eleva la renta esperada de todos los periodos futuros en más de 1, así que la renta permanente se revisa en más que la innovación: con los datos trimestrales de Estados Unidos, casi el doble. La teoría predice entonces un consumo más volátil que la renta, y se observa lo contrario. Deaton encuentra la salida en los datos de hogares: la renta de cada hogar es mucho menos persistente que la agregada, y los hogares que no pueden endeudarse usan sus activos como colchón (a ello se suman la prudencia y los hábitos).\n\nPor qué fallan las demás:\n\n- a) Valdría si la renta volviera a su nivel anterior tras la sorpresa; con el proceso del enunciado la teoría predice lo contrario, y por eso el consumo suave es una paradoja y no una confirmación.\n- c) Invierte el modelo de Hall: el consumo no responde a los cambios previsibles y sí a las sorpresas.\n- d) Variar lo mismo que la renta es lo que corresponde a una renta que sigue un paseo aleatorio en niveles, sin autocorrelación de sus tasas; y en los datos el consumo varía menos, no más.\n\nNota de terminología: aquí se sigue la habitual en la literatura (exceso de sensibilidad del consumo ante cambios previsibles de la renta, Flavin; exceso de suavidad ante los imprevistos, Campbell y Deaton). Alguna pregunta de examen oficial ha llamado «exceso de suavidad» a la reacción ante cambios esperados: conviene conocer las dos formulaciones."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Contrastación empírica: exceso de suavidad (paradoja de Deaton)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313310,
+   "estado": "publicada",
+   "enunciado": "Un hogar vive 2 periodos, con $u(C)=\\ln C$, $\\beta=1$ y $r=0$. Gana $Y_1=26$ hoy y mañana ganará 0 o 30, con probabilidad $\\tfrac12$ cada una. Elige hoy su ahorro $S=Y_1-C_1$ para maximizar $\\ln C_1+\\mathbb{E}[\\ln\\tilde{C}_2]$, con $\\tilde{C}_2=S+\\tilde{Y}_2$. Compare su ahorro óptimo con el que elegiría si fuera a ganar 15 con certeza:",
+   "opciones": {
+    "a": "Ahorra 5,5, lo mismo que con certeza: lo que cuenta es la renta esperada (equivalencia cierta).",
+    "b": "Ahorra 3, menos que con certeza (5,5): el riesgo reduce el valor del consumo futuro.",
+    "c": "Ahorra 10, más que con certeza (5,5): la utilidad marginal es convexa y hay ahorro precautorio.",
+    "d": "Ahorra 13, la mitad de su renta de hoy, frente a 5,5 con certeza: actúa como si mañana no fuera a ganar nada."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con certeza, $C_1=C_2=(26+15)/2=20{,}5$ y $S=5{,}5$. Con riesgo, la condición $\\dfrac{1}{26-S}=\\dfrac12\\Big[\\dfrac1S+\\dfrac{1}{S+30}\\Big]$ se cumple con $S=10$: $\\dfrac1{16}=\\dfrac12\\big(\\dfrac1{10}+\\dfrac1{40}\\big)$. Como $u'''>0$ (prudencia), el riesgo eleva la utilidad marginal esperada y el hogar ahorra más.",
+    "desarrollo": "Con certeza ($Y_2=15$): la ecuación de Euler con $\\beta(1+r)=1$ da $C_1=C_2=41/2=20{,}5$, $S=5{,}5$.\n\nCon riesgo: $u'(C_1)=\\mathbb{E}[u'(\\tilde{C}_2)]$, es decir, $\\dfrac{1}{26-S}=\\dfrac12\\Big[\\dfrac1S+\\dfrac{1}{S+30}\\Big]$. Operando, $2S(S+30)=(26-S)(2S+30)$, $2S^2+19S-390=0$ y $S=\\dfrac{-19+\\sqrt{3.481}}{4}=\\dfrac{-19+59}{4}=10$. Comprobación: $C_1=16$, $u'(C_1)=0{,}0625$; $\\mathbb{E}[u'(\\tilde{C}_2)]=\\tfrac12(0{,}1+0{,}025)=0{,}0625$. El ahorro precautorio es $10-5{,}5=4{,}5$.\n\nLa razón es la prudencia: con $u=\\ln C$, $u'''=2/C^3>0$, $u'$ es convexa y, por la desigualdad de Jensen, $\\mathbb{E}[u'(\\tilde{C}_2)]>u'(\\mathbb{E}[\\tilde{C}_2])$; para restablecer la igualdad hay que consumir menos hoy.\n\nPor qué fallan las demás:\n\n- a) La equivalencia cierta es propia de la utilidad cuadrática ($u'''=0$), no de la logarítmica; con $S=5{,}5$, $u'(C_1)=0{,}049$ y $\\mathbb{E}[u'(\\tilde{C}_2)]=0{,}105$: el hogar querría ahorrar más.\n- b) Con prudencia el riesgo de renta eleva el ahorro, no lo reduce; con $S=3$, la utilidad marginal de mañana en el estado malo ($1/3$) es muy superior a la de hoy ($1/23$).\n- d) Sería el óptimo si $Y_2=0$ con certeza; aquí hay una probabilidad $\\tfrac12$ de ganar 30 y con $S=13$ se ahorra de más: $1/13>\\tfrac12(1/13+1/43)$."
+   },
+   "dificultad": 3,
+   "apartado": "II.3 Salidas al modelo de Hall: prudencia y ahorro precautorio",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313311,
+   "estado": "publicada",
+   "enunciado": "En el marco de Hall (expectativas racionales, $\\beta(1+r)=1$, utilidad cuadrática), suponga que la utilidad instantánea depende del consumo sobre el hábito, $u(C_t-h\\,C_{t-1})$, con $h=0{,}6$. Si entre $t-1$ y $t$ el consumo ha aumentado en 10, con la información de $t$:",
+   "opciones": {
+    "a": "Se espera que entre $t$ y $t+1$ aumente en 6: sus variaciones son en parte predecibles y responde a las noticias de forma gradual.",
+    "b": "Se espera que entre $t$ y $t+1$ no cambie: los hábitos alteran el nivel del consumo, pero este sigue siendo un paseo aleatorio.",
+    "c": "Se espera que entre $t$ y $t+1$ caiga en 6: con hábitos, el consumo revierte en parte hacia el nivel al que se estaba acostumbrado.",
+    "d": "Se espera que entre $t$ y $t+1$ aumente en 4: el consumo completa en el periodo siguiente la parte $1-h$ de la subida inicial."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con hábitos, lo que sigue una martingala es $C_t-hC_{t-1}$, de modo que $\\Delta C_{t+1}=h\\,\\Delta C_t+\\varepsilon_{t+1}$ y $\\mathbb{E}_t[\\Delta C_{t+1}]=0{,}6\\cdot 10=6$. Las variaciones del consumo están positivamente autocorrelacionadas: los hábitos rompen el paseo aleatorio y dan un ajuste gradual.",
+    "desarrollo": "Con utilidad cuadrática y $\\beta(1+r)=1$, la variable cuya esperanza futura es su valor de hoy es el consumo sobre el hábito: $C_{t+1}-hC_t=C_t-hC_{t-1}+\\varepsilon_{t+1}$. Reordenando, $\\Delta C_{t+1}=h\\,\\Delta C_t+\\varepsilon_{t+1}$, y como $\\mathbb{E}_t[\\varepsilon_{t+1}]=0$, $\\mathbb{E}_t[\\Delta C_{t+1}]=0{,}6\\cdot 10=6$ (y $3{,}6$ en el periodo siguiente, y así sucesivamente). El consumo responde a una noticia poco a poco, lo que ayuda a explicar su inercia agregada (exceso de suavidad), y por eso los modelos neokeynesianos de equilibrio general incluyen hábitos; con datos de hogares, en cambio, el $h$ estimado es pequeño.\n\nPor qué fallan las demás:\n\n- b) Es el resultado con preferencias separables en el tiempo ($h=0$); con hábitos el consumo anterior ayuda a predecir el cambio del consumo.\n- c) El signo es el contrario: la autocorrelación de las variaciones es positiva (inercia), no negativa; la autocorrelación negativa aparece en el gasto en bienes duraderos.\n- d) El coeficiente de la variación anterior es $h$, no $1-h$."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Salidas al modelo de Hall: preferencias no separables y hábitos",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313312,
+   "estado": "publicada",
+   "enunciado": "Un consumidor vive 2 periodos con certidumbre y mercado de capitales perfecto, recibe toda su renta en el primero ($Y_2=0$) y tiene preferencias $u(C_1)+\\beta\\,u(C_2)$ con $u(C)=\\dfrac{C^{1-\\theta}-1}{1-\\theta}$ ($\\ln C$ si $\\theta=1$). Si sube el tipo de interés real, su consumo en el primer periodo:",
+   "opciones": {
+    "a": "Disminuye siempre: al ser $Y_2=0$ no hay efecto riqueza y el efecto sustitución domina.",
+    "b": "Aumenta siempre: es prestamista, y en un prestamista el efecto renta domina al de sustitución.",
+    "c": "Disminuye si $\\theta>1$, no cambia si $\\theta=1$ y aumenta si $\\theta<1$.",
+    "d": "Aumenta si $\\theta>1$, no cambia si $\\theta=1$ y disminuye si $\\theta<1$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "De la ecuación de Euler, $C_2=[\\beta(1+r)]^{1/\\theta}C_1$, y de la restricción $C_1+C_2/(1+r)=Y_1$ sale $C_1=\\dfrac{Y_1}{1+\\beta^{1/\\theta}(1+r)^{(1-\\theta)/\\theta}}$. Si $\\theta>1$ (elasticidad de sustitución intertemporal menor que 1), el denominador cae con $r$ y $C_1$ sube: domina el efecto renta.",
+    "desarrollo": "Sin renta futura no hay efecto riqueza (el valor actual de $Y_2$ es cero) y quedan 2 efectos de signo contrario: el de sustitución, que reduce $C_1$, y el de renta, que lo aumenta porque el consumidor es prestamista. Cuál domina depende de la elasticidad de sustitución intertemporal, $1/\\theta$.\n\nSustituyendo $C_2=[\\beta(1+r)]^{1/\\theta}C_1$ en la restricción: $C_1\\big[1+\\beta^{1/\\theta}(1+r)^{\\frac{1}{\\theta}-1}\\big]=Y_1$. El exponente de $(1+r)$ es $\\dfrac{1-\\theta}{\\theta}$:\n\n- si $\\theta>1$ es negativo: al subir $r$ el corchete cae y $C_1$ aumenta (domina el efecto renta; el ahorro cae al subir su rendimiento);\n- si $\\theta=1$ es cero: $C_1=Y_1/(1+\\beta)$, que no depende de $r$ (los 2 efectos se compensan);\n- si $\\theta<1$ es positivo: $C_1$ disminuye (domina el efecto sustitución).\n\nComprobación numérica con $\\beta=1$ y $\\theta=2$: $C_1=Y_1/[1+(1+r)^{-1/2}]$; con $r=0$, $C_1=0{,}5\\,Y_1$; con $r=3$, $C_1=Y_1/1{,}5=0{,}67\\,Y_1$: aumenta.\n\nPor qué fallan las demás:\n\n- a) Es cierto que no hay efecto riqueza, pero queda el efecto renta, positivo para quien ahorra; el de sustitución solo domina si $\\theta<1$.\n- b) En un prestamista el resultado es ambiguo: el efecto renta no domina siempre.\n- c) Invierte los casos: una $\\theta$ alta significa poca disposición a sustituir consumo entre periodos, y entonces domina el efecto renta."
+   },
+   "dificultad": 3,
+   "apartado": "II.3 Salidas al modelo de Hall: tipo de interés distinto de la tasa de descuento (efectos sustitución, renta y riqueza)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313313,
+   "estado": "publicada",
+   "enunciado": "En el modelo de valoración de activos basado en el consumo (C-CAPM) con utilidad CRRA, la prima de un activo sobre el activo sin riesgo es, aproximadamente, $\\theta\\operatorname{Cov}_t(r_{i,t+1},\\Delta\\ln C_{t+1})$. Sea $\\theta=4$. La covarianza del rendimiento del activo A con el crecimiento del consumo es $0{,}0025$ y la del activo B, $-0{,}001$. Los 2 tienen la misma varianza. Entonces:",
+   "opciones": {
+    "a": "Los 2 exigen la misma prima positiva, porque tienen la misma varianza y el inversor es averso al riesgo.",
+    "b": "A exige una prima de 1 punto, y B se acepta con 0,4 puntos menos de rendimiento esperado que el activo sin riesgo.",
+    "c": "A exige una prima de 1 punto y B, una de 0,4 puntos: toda covarianza con el consumo es riesgo y se remunera.",
+    "d": "B exige una prima de 1 punto y A, ninguna: rendir cuando el consumo cae es el riesgo que se remunera."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Prima de A: $4\\cdot 0{,}0025=0{,}01$, 1 punto. Prima de B: $4\\cdot(-0{,}001)=-0{,}004$: rinde más cuando el consumo cae, funciona como un seguro y se acepta con un rendimiento esperado inferior al del activo sin riesgo. Lo que se remunera es la covarianza con el consumo, no la varianza.",
+    "desarrollo": "La ecuación de Euler de cada activo es $1=\\mathbb{E}_t[m_{t+1}(1+r_{i,t+1})]$, con $m_{t+1}=\\beta\\,u'(C_{t+1})/u'(C_t)$, alto cuando el consumo de mañana es bajo. De ella sale $\\mathbb{E}_t[r_{i,t+1}]-r_f=-(1+r_f)\\operatorname{Cov}_t(m_{t+1},r_{i,t+1})\\simeq\\theta\\operatorname{Cov}_t(r_{i,t+1},\\Delta\\ln C_{t+1})$.\n\n- A rinde mucho cuando el consumo ya es alto (y la utilidad marginal, baja) y poco cuando es bajo: no asegura, y exige una prima de $4\\cdot 0{,}0025=1$ punto.\n- B rinde más cuando el consumo cae (y la utilidad marginal es alta): es un seguro, y el inversor lo mantiene aunque rinda, en media, $0{,}4$ puntos menos que el activo sin riesgo.\n\nPor qué fallan las demás:\n\n- a) La varianza propia del activo no determina la prima: lo que cuenta es la covarianza con el consumo.\n- c) Ignora el signo: una covarianza negativa reduce el riesgo del consumo y se paga por ella (prima negativa).\n- d) Invierte la lógica: se remunera rendir poco cuando el consumo es bajo, que es lo que le ocurre a A."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Salidas al modelo de Hall: rendimiento incierto y C-CAPM",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313314,
+   "estado": "publicada",
+   "enunciado": "Un automóvil cuesta hoy 20.000 unidades del bien no duradero. El tipo de interés real es del 4 %, el automóvil se deprecia un 15 % al año y se espera que su precio relativo caiga un 5 % en el próximo año. Con la aproximación habitual, $c^d_t\\simeq p^d_t\\,(r+\\delta-\\pi^d_{t+1})$, el coste de uso anual del automóvil (su alquiler implícito) es:",
+   "opciones": {
+    "a": "4.800: se suman el coste de oportunidad, la depreciación y la pérdida de valor.",
+    "b": "2.800: la caída esperada del precio abarata la compra y se resta de los otros 2 componentes.",
+    "c": "3.800: solo cuentan el coste de oportunidad y la depreciación.",
+    "d": "800: solo cuenta el coste de oportunidad de los fondos inmovilizados."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$\\pi^d_{t+1}=-5~\\%$, así que $c^d\\simeq 20.000\\,(0{,}04+0{,}15+0{,}05)=4.800$. Una caída esperada del precio relativo es una pérdida de capital para quien posee el bien y encarece su uso: por eso entra sumando.",
+    "desarrollo": "El coste de uso es lo que cuesta comprar una unidad hoy, usarla un periodo y venderla mañana, ya depreciada, en valor de hoy: $c^d_t=p^d_t-\\dfrac{1-\\delta}{1+r}\\,p^d_{t+1}$. Tiene 3 componentes, los mismos que el coste de uso del capital de la empresa: el coste de oportunidad de los fondos ($r=0{,}04$), la depreciación ($\\delta=0{,}15$) y la pérdida o ganancia de valor del bien ($-\\pi^d=0{,}05$, porque el precio cae). Suma: $0{,}24\\cdot 20.000=4.800$. La fórmula exacta da $20.000-\\dfrac{0{,}85}{1{,}04}\\cdot 19.000\\simeq 4.471$; la diferencia es el error de la aproximación, que desprecia el descuento y el producto $\\delta\\pi$.\n\nPor qué fallan las demás:\n\n- b) Se equivoca en el signo: una caída esperada del precio no abarata el uso, lo encarece (el bien valdrá menos al revenderlo), y además invita a aplazar la compra.\n- c) Olvida la variación esperada del precio relativo.\n- d) Olvida la depreciación y la pérdida de valor: trata el duradero como un activo financiero."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Bienes duraderos: coste de uso",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313315,
+   "estado": "publicada",
+   "enunciado": "El stock de bienes duraderos de un hogar pierde cada año un 10 % del valor que tenía al empezar el año, y hasta ahora el hogar solo compraba cada año lo necesario para reponer lo depreciado. Este año su stock deseado sube un 2 % y lo ajusta por completo dentro del año, sin costes de ajuste. Respecto al año anterior, su gasto en duraderos de este año aumenta:",
+   "opciones": {
+    "a": "Un 2 %, igual que el stock deseado.",
+    "b": "Un 10 %, igual que la tasa de depreciación.",
+    "c": "Un 12 %, la suma de las 2 tasas.",
+    "d": "Un 20 %, 10 veces más que el stock."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Antes gastaba $\\delta d=0{,}10\\,d$. Este año repone lo depreciado y añade el 2 % del stock: $0{,}10\\,d+0{,}02\\,d=0{,}12\\,d$, un 20 % más. Como el stock es grande frente a lo que se compra cada año, un cambio del stock deseado del 1 % mueve el gasto un $1/\\delta$ %.",
+    "desarrollo": "El stock evoluciona según $d_t=(1-\\delta)\\,d_{t-1}+I^d_t$. Con el stock constante en $d$, $I^d=\\delta d=0{,}10\\,d$. Para pasar a $1{,}02\\,d$: $I^d=1{,}02\\,d-0{,}90\\,d=0{,}12\\,d$. El aumento es $0{,}02/0{,}10=20~\\%$: el gasto amplifica $1/\\delta=10$ veces el cambio del stock deseado. Al año siguiente, con el stock ya en $1{,}02\\,d$, el gasto vuelve a ser solo reposición, $0{,}102\\,d$: cae un 15 % respecto al año del ajuste. Por eso el gasto en duraderos es mucho más volátil que el consumo de no duraderos, y por eso se parece a una inversión (es el mismo mecanismo que el acelerador).\n\nPor qué fallan las demás:\n\n- a) Confunde el stock con el flujo: lo que sube un 2 % es el stock, y de forma permanente el gasto de reposición, pero no el gasto del año del ajuste.\n- b) La tasa de depreciación es la proporción del stock que se repone, no la variación del gasto.\n- c) 12 % es el gasto de este año en proporción del stock inicial ($0{,}12\\,d$), no su tasa de variación."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Bienes duraderos: el gasto amplifica los cambios del stock deseado",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313316,
+   "estado": "publicada",
+   "enunciado": "Mankiw lleva los bienes duraderos al marco de Hall: renta incierta, expectativas racionales, $\\beta(1+r)=1$, precio relativo constante, utilidad separable y cuadrática y un stock que se deprecia a una tasa $\\delta$ pequeña, sin costes de ajuste. Sobre lo que predice el modelo y lo que muestran los datos agregados, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El gasto en duraderos sigue un paseo aleatorio, igual que el consumo de no duraderos, y los datos lo confirman.",
+    "b": "El stock sigue un paseo aleatorio y los cambios del gasto tienen autocorrelación positiva, por la inercia del stock; los datos lo confirman.",
+    "c": "El stock sigue un paseo aleatorio y los cambios del gasto tienen autocorrelación negativa, próxima a $-0{,}5$; los datos no la muestran.",
+    "d": "El stock es constante, porque el hogar suaviza el servicio, y el gasto solo repone la depreciación; los datos muestran un gasto volátil."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Lo que el hogar suaviza es el servicio, así que el paseo aleatorio lo sigue el stock: $d_{t+1}=d_t+e_{t+1}$. Como $I^d_t=d_t-(1-\\delta)d_{t-1}$, $\\Delta I^d_{t+1}=e_{t+1}-(1-\\delta)e_t$: una media móvil con autocorrelación $-(1-\\delta)/[1+(1-\\delta)^2]\\simeq-0{,}5$. En los datos esa autocorrelación negativa no aparece: otro rechazo del modelo.",
+    "desarrollo": "Con los supuestos del enunciado, la utilidad marginal del servicio del duradero es proporcional a la del no duradero ($v'(d_t)=c^d\\,u'(C_t)$, con el coste de uso $c^d$ constante), y como esta es una martingala y $v'$ es lineal, el stock sigue un paseo aleatorio. El gasto es $I^d_t=\\delta\\,d_{t-1}+e_t$ y su variación, $e_{t+1}-(1-\\delta)\\,e_t$: tras una buena noticia el hogar compra mucho de golpe para subir el stock y, al periodo siguiente, vuelve a comprar solo la reposición. Covarianza entre 2 cambios consecutivos: $-(1-\\delta)\\operatorname{var}(e)$; varianza: $[1+(1-\\delta)^2]\\operatorname{var}(e)$; con $\\delta=0{,}05$, $-0{,}95/1{,}9025\\simeq-0{,}50$. Con datos de Estados Unidos, el gasto en duraderos se comporta de forma parecida al de no duraderos, sin esa autocorrelación negativa: es más persistente de lo que dice la teoría, y la explicación son los costes de ajuste.\n\nPor qué fallan las demás:\n\n- a) El gasto solo seguiría un paseo aleatorio si el bien no durase ($\\delta=1$); eso es lo que parecen decir los datos, pero no lo que predice el modelo con $\\delta$ pequeña.\n- b) El signo predicho es negativo: a una compra grande le sigue otra menor.\n- d) El stock no es constante: se revisa con cada noticia sobre la renta permanente; lo que no se puede predecir es su cambio."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 Bienes duraderos: los duraderos en el modelo de Hall (Mankiw)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313317,
+   "estado": "publicada",
+   "enunciado": "Cuando cambiar un bien duradero conlleva un coste de transacción por operación (buscar, tramitar, vender el usado con descuento), el hogar sigue una regla $(S,s)$. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Cada hogar acerca su stock al deseado poco a poco, periodo a periodo, y de ahí viene la inercia del gasto agregado en duraderos.",
+    "b": "La banda de inacción se ensancha con la incertidumbre, y un mismo estímulo mueve menos el gasto si hay pocos hogares cerca del límite.",
+    "c": "La banda de inacción se estrecha con la incertidumbre, porque el hogar ajusta más a menudo para no alejarse de su stock deseado.",
+    "d": "Como todos los hogares siguen la misma regla, el gasto agregado responde igual a un mismo estímulo en cualquier fase del ciclo."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con costes por operación, el hogar no compra mientras su stock esté dentro de una banda en torno al deseado y ajusta de golpe al tocar un límite. La banda es más ancha cuanto mayores son el coste y la incertidumbre, y el gasto agregado depende de cuántos hogares están cerca del límite: por eso los estímulos rinden menos en las recesiones.",
+    "desarrollo": "Con un coste fijo o proporcional por operación no compensa ajustar cada vez que cambia el stock deseado. La regla óptima es de inacción y saltos: mientras el cociente entre el stock y el deseado esté dentro de la banda $(s,S)$ no se compra; al tocar un límite (el coche ha envejecido o la riqueza ha crecido) se ajusta de golpe. La banda se ensancha con el coste de transacción y con la incertidumbre, porque esperar tiene un valor de opción. El gasto de cada hogar es nulo casi siempre y grande de vez en cuando, y el agregado depende de la distribución de los hogares dentro de la banda. En una recesión hay menos hogares cerca de renovar y la incertidumbre ensancha la banda: un mismo incentivo mueve menos el gasto que en una expansión.\n\nPor qué fallan las demás:\n\n- a) Describe los costes de ajuste convexos (ajuste parcial y gradual de cada hogar). Con la regla $(S,s)$ cada hogar ajusta a saltos; la inercia agregada viene de que no todos ajustan a la vez.\n- c) Es al revés: más incertidumbre aumenta el valor de esperar y alarga el tiempo entre compras.\n- d) Aunque la regla sea la misma, la respuesta agregada depende de cómo estén repartidos los hogares en la banda, que cambia con el ciclo."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Bienes duraderos: costes de ajuste, regla $(S,s)$ e incertidumbre",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

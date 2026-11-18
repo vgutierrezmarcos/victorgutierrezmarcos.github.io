@@ -1,0 +1,511 @@
+{
+ "tema": "3.B.23",
+ "preguntas": [
+  {
+   "id": 322301,
+   "estado": "publicada",
+   "enunciado": "Una sociedad sale a bolsa mediante una oferta en la que sus accionistas actuales venden al público parte de sus acciones, sin que se emita ninguna acción nueva. Esta operación:",
+   "opciones": {
+    "a": "Es una oferta pública de suscripción (OPS): la sociedad capta fondos y su capital social aumenta.",
+    "b": "Es una oferta pública de venta (OPV): la sociedad capta fondos, aunque su capital social no varía.",
+    "c": "Es una oferta pública de venta (OPV): el dinero lo reciben los accionistas vendedores y la sociedad no capta fondos.",
+    "d": "Es una oferta pública de suscripción (OPS): el dinero lo reciben los accionistas vendedores y el capital social no varía."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En una OPV se venden acciones que ya existen: cobran los accionistas que venden y la sociedad no recibe nada. Solo en una OPS se emiten acciones nuevas y la sociedad capta fondos.",
+    "desarrollo": "Hay que distinguir dos operaciones:\n\n- en una oferta pública de suscripción (OPS) la sociedad emite acciones nuevas: aumenta su capital social y capta fondos;\n- en una oferta pública de venta (OPV) son los accionistas actuales los que venden acciones ya emitidas: el capital social no cambia y el dinero es para ellos.\n\nEl enunciado describe una venta de acciones existentes, sin emisión: es una OPV y la sociedad no capta fondos. Muchas salidas a bolsa combinan las dos operaciones.\n\nPor qué fallan las demás:\n\n- a) Describe bien una OPS, pero no es lo que ocurre aquí: no se emite ninguna acción.\n- b) Acierta el nombre, pero en una OPV la sociedad no capta nada: cambia el dueño de las acciones, no el patrimonio de la empresa.\n- d) Mezcla el nombre de una operación con los efectos de la otra: en una OPS el dinero entra en la sociedad y el capital aumenta."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Los instrumentos de renta variable (mercado primario: OPS y OPV)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322302,
+   "estado": "publicada",
+   "enunciado": "Un inversor puede prestar y endeudarse al tipo de interés libre de riesgo, el 3 %. La cartera de tangencia $T$ tiene una rentabilidad esperada del 9 % y una desviación típica del 16 %. Si se endeuda por un importe igual a la mitad de su riqueza y lo invierte todo en $T$ (es decir, $w=1{,}5$), la rentabilidad esperada y la desviación típica de su cartera serán, respectivamente:",
+   "opciones": {
+    "a": "12 % y 24 %.",
+    "b": "13,5 % y 24 %.",
+    "c": "12 % y 16 %.",
+    "d": "10,5 % y 24 %."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con una proporción $w$ en $T$ y $1-w$ en el activo seguro, $\\mathbb{E}[r_p]=(1-w)\\,r_f+w\\,\\mathbb{E}[r_T]$ y $\\sigma_p=w\\,\\sigma_T$. Con $w=1{,}5$: $-0{,}5\\cdot3+1{,}5\\cdot9=12\\,\\%$ y $1{,}5\\cdot16=24\\,\\%$.",
+    "desarrollo": "Al combinar una cartera con riesgo y el activo sin riesgo, la media y la desviación típica son lineales en el peso $w$ de la cartera con riesgo:\n\n- $\\mathbb{E}[r_p]=(1-w)\\,r_f+w\\,\\mathbb{E}[r_T]=-0{,}5\\cdot3\\,\\%+1{,}5\\cdot9\\,\\%=12\\,\\%$;\n- $\\sigma_p=w\\,\\sigma_T=1{,}5\\cdot16\\,\\%=24\\,\\%$.\n\nComprobación por otra vía: la ratio de Sharpe de $T$ es $(9-3)/16=0{,}375$, y la recta da $3+0{,}375\\cdot24=12\\,\\%$. La cartera apalancada está en la misma recta que $T$, a su derecha: más rentabilidad esperada y más riesgo, con la misma ratio de Sharpe.\n\nPor qué fallan las demás:\n\n- b) $1{,}5\\cdot9=13{,}5\\,\\%$ olvida que la deuda cuesta el 3 % sobre la mitad de la riqueza.\n- c) El apalancamiento multiplica también el riesgo: la desviación típica no se queda en la de $T$.\n- d) Resta el 3 % sobre toda la riqueza ($13{,}5-3$), cuando la deuda es solo la mitad de ella ($13{,}5-1{,}5$)."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Elección de cartera: carteras mixtas de Tobin (línea de asignación de capital y apalancamiento)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322303,
+   "estado": "publicada",
+   "enunciado": "Dos activos con riesgo, $A$ y $B$, tienen desviaciones típicas $\\sigma_A=20\\,\\%$ y $\\sigma_B=10\\,\\%$, y sus rendimientos no están correlacionados. Sin ventas en corto, la cartera de mínima varianza que puede formarse con ambos:",
+   "opciones": {
+    "a": "Invierte todo en $B$: con correlación nula, añadir el activo más volátil solo puede aumentar el riesgo.",
+    "b": "Invierte el 20 % en $A$ y el 80 % en $B$, y su desviación típica, en torno al 8,9 %, es inferior a la de $B$.",
+    "c": "Invierte un tercio en $A$ y dos tercios en $B$, y su desviación típica es nula, pues los riesgos se compensan.",
+    "d": "Invierte el 20 % en $A$ y el 80 % en $B$, y su desviación típica es el 12 %, la media ponderada de las dos."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con correlación nula, $\\sigma_p^2=w^2\\sigma_A^2+(1-w)^2\\sigma_B^2$, que se minimiza con $w=\\sigma_B^2/(\\sigma_A^2+\\sigma_B^2)=0{,}2$. Resulta $\\sigma_p^2=16+64=80$ (en puntos al cuadrado) y $\\sigma_p\\approx8{,}9\\,\\%$, menos que el activo menos arriesgado.",
+    "desarrollo": "Con dos activos y correlación nula desaparece el término cruzado de la varianza:\n\n$\\sigma_p^2=w^2\\sigma_A^2+(1-w)^2\\sigma_B^2=400\\,w^2+100\\,(1-w)^2$ (en puntos porcentuales al cuadrado).\n\nDerivando e igualando a cero: $800\\,w-200\\,(1-w)=0$, luego $w=0{,}2$. Es la fórmula $w=\\sigma_B^2/(\\sigma_A^2+\\sigma_B^2)=100/500$.\n\nSustituyendo: $\\sigma_p^2=0{,}04\\cdot400+0{,}64\\cdot100=16+64=80$, y $\\sigma_p=\\sqrt{80}\\approx8{,}9\\,\\%$, por debajo del 10 % de $B$. La diversificación reduce el riesgo siempre que la correlación no sea perfecta y positiva, también cuando es nula.\n\nPor qué fallan las demás:\n\n- a) Con todo en $B$ el riesgo es el 10 %; con un 20 % en $A$ baja al 8,9 %. Lo que importa de un activo no es su varianza aislada, sino lo que aporta a la cartera.\n- c) El peso $\\sigma_B/(\\sigma_A+\\sigma_B)=1/3$ y la varianza nula corresponden a la correlación perfecta negativa, no a la correlación nula. Con una correlación intermedia nunca se llega a una varianza nula.\n- d) Los pesos son los correctos, pero la desviación típica solo es la media ponderada ($0{,}2\\cdot20+0{,}8\\cdot10=12$) con correlación perfecta positiva; en los demás casos es menor."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Elección de cartera: Markowitz (dos activos y correlación)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322304,
+   "estado": "publicada",
+   "enunciado": "Los rendimientos de dos acciones, $A$ y $B$, tienen correlación perfecta negativa. $A$ tiene una rentabilidad esperada del 12 % y una desviación típica del 30 %; $B$, una rentabilidad esperada del 4 % y una desviación típica del 10 %. Los mercados no tienen fricciones y existe un activo libre de riesgo. Si no hay oportunidades de arbitraje, el tipo de interés libre de riesgo debe ser:",
+   "opciones": {
+    "a": "El 8 %.",
+    "b": "El 4 %.",
+    "c": "El 10 %.",
+    "d": "El 6 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con correlación $-1$, la cartera con $w_A=\\sigma_B/(\\sigma_A+\\sigma_B)=0{,}25$ no tiene riesgo. Rinde $0{,}25\\cdot12+0{,}75\\cdot4=6\\,\\%$, y dos activos sin riesgo no pueden rendir distinto: $r_f=6\\,\\%$.",
+    "desarrollo": "Con correlación perfecta negativa, $\\sigma_p=|w\\,\\sigma_A-(1-w)\\,\\sigma_B|$, que se anula con\n\n$w=\\dfrac{\\sigma_B}{\\sigma_A+\\sigma_B}=\\dfrac{10}{40}=0{,}25$.\n\nComprobación: $0{,}25\\cdot30-0{,}75\\cdot10=7{,}5-7{,}5=0$.\n\nEsa cartera (25 % en $A$ y 75 % en $B$) es un activo sin riesgo «sintético», con rentabilidad cierta $0{,}25\\cdot12\\,\\%+0{,}75\\cdot4\\,\\%=3\\,\\%+3\\,\\%=6\\,\\%$. Si el activo libre de riesgo rindiera otra cosa, habría arbitraje: endeudarse al tipo más bajo e invertir al más alto, sin riesgo y sin poner dinero. Por tanto, $r_f=6\\,\\%$.\n\nPor qué fallan las demás:\n\n- a) El 8 % es la media simple de las dos rentabilidades: la cartera a partes iguales no elimina el riesgo ($0{,}5\\cdot30-0{,}5\\cdot10=10\\,\\%$).\n- b) El 4 % es la rentabilidad de $B$, que es el activo menos arriesgado, pero no un activo sin riesgo.\n- c) El 10 % sale de invertir los pesos (75 % en $A$ y 25 % en $B$): hay que poner más peso en el activo menos volátil, no en el más volátil."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Elección de cartera: Markowitz (correlación perfecta negativa y cartera de varianza nula)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322305,
+   "estado": "publicada",
+   "enunciado": "Un inversor con función de utilidad $U=\\mathbb{E}[r_p]-\\tfrac{a}{2}\\,\\sigma_p^2$, con $a=4$, reparte su riqueza entre el activo libre de riesgo, que rinde $r_f=0{,}02$, y la cartera de tangencia $T$, con $\\mathbb{E}[r_T]=0{,}10$ y $\\sigma_T=0{,}20$. La proporción óptima de su riqueza que invierte en $T$ es:",
+   "opciones": {
+    "a": "El 100 %.",
+    "b": "El 50 %.",
+    "c": "El 10 %.",
+    "d": "El 40 %."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con $\\mathbb{E}[r_p]=r_f+w\\,(\\mathbb{E}[r_T]-r_f)$ y $\\sigma_p=w\\,\\sigma_T$, maximizar $U$ da $w^*=(\\mathbb{E}[r_T]-r_f)/(a\\,\\sigma_T^2)=0{,}08/(4\\cdot0{,}04)=0{,}5$.",
+    "desarrollo": "Sustituyendo la media y la varianza de la cartera mixta en la utilidad:\n\n$U(w)=r_f+w\\,(\\mathbb{E}[r_T]-r_f)-\\tfrac{a}{2}\\,w^2\\sigma_T^2=0{,}02+0{,}08\\,w-0{,}08\\,w^2$.\n\nDerivando e igualando a cero: $0{,}08-0{,}16\\,w=0$, luego $w^*=0{,}5$. Es la fórmula general\n\n$w^*=\\dfrac{\\mathbb{E}[r_T]-r_f}{a\\,\\sigma_T^2}=\\dfrac{0{,}08}{4\\cdot0{,}04}=0{,}5$.\n\nEl inversor pone la mitad en $T$ y presta la otra mitad: su cartera tiene $\\mathbb{E}[r_p]=6\\,\\%$ y $\\sigma_p=10\\,\\%$. El peso es mayor cuanto mayor es la prima y menor cuanto mayores son la aversión al riesgo o la varianza. Es la segunda parte del teorema de separación: la cartera con riesgo es la misma para todos; el reparto depende de $a$.\n\nPor qué fallan las demás:\n\n- a) Sale de olvidar que al derivar $\\tfrac{a}{2}w^2\\sigma_T^2$ desaparece el $\\tfrac12$: $0{,}08/(2\\cdot0{,}04)=1$.\n- c) Divide por la desviación típica en lugar de por la varianza: $0{,}08/(4\\cdot0{,}20)=0{,}1$.\n- d) El 0,4 es la ratio de Sharpe de $T$, $0{,}08/0{,}20$, que es la pendiente de la recta, no el peso óptimo."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Elección de cartera: carteras mixtas de Tobin (elección del inversor en la recta)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322306,
+   "estado": "publicada",
+   "enunciado": "En el modelo de índice (el modelo de la diagonal de Sharpe), una acción tiene una beta de 1,2 y una desviación típica total del 30 %; la desviación típica de la rentabilidad del mercado es el 20 %. ¿Qué parte de la varianza de la rentabilidad de la acción corresponde al riesgo sistemático?",
+   "opciones": {
+    "a": "El 80 %.",
+    "b": "El 36 %.",
+    "c": "El 64 %.",
+    "d": "El 44 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\sigma_i^2=\\beta_i^2\\sigma_M^2+\\sigma_{\\varepsilon_i}^2$. El riesgo sistemático es $1{,}2^2\\cdot0{,}20^2=0{,}0576$, y la varianza total, $0{,}30^2=0{,}09$: el 64 %. El 36 % restante es riesgo específico.",
+    "desarrollo": "El modelo de índice parte el riesgo de un activo en dos sumandos:\n\n$\\sigma_i^2=\\underbrace{\\beta_i^2\\sigma_M^2}_{\\text{sistemático}}+\\underbrace{\\sigma_{\\varepsilon_i}^2}_{\\text{específico}}$\n\n- Sistemático: $1{,}44\\cdot0{,}04=0{,}0576$ (una desviación típica del 24 %).\n- Total: $0{,}30^2=0{,}09$.\n- Proporción: $0{,}0576/0{,}09=0{,}64$.\n\nPor otra vía: $\\beta_i=\\mathrm{corr}(r_i,r_M)\\,\\sigma_i/\\sigma_M$, luego la correlación con el mercado es $1{,}2\\cdot20/30=0{,}8$, y su cuadrado, $0{,}64$, es la parte de la varianza que explica el mercado (el $R^2$ de la regresión). El riesgo específico es $0{,}09-0{,}0576=0{,}0324$, una desviación típica del 18 %: los tres riesgos forman un triángulo rectángulo ($24^2+18^2=30^2$).\n\nPor qué fallan las demás:\n\n- a) El 80 % compara desviaciones típicas ($24/30$), no varianzas: es la correlación con el mercado. Las desviaciones típicas no se suman (24 + 18 no es 30); las varianzas sí.\n- b) El 36 % es la parte del riesgo específico.\n- d) El 44 % es $\\sigma_M^2/\\sigma_i^2=0{,}04/0{,}09$: olvida multiplicar por $\\beta_i^2$."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Elección de cartera: modelo de la diagonal de Sharpe (riesgo sistemático y específico)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322307,
+   "estado": "publicada",
+   "enunciado": "En un mercado que se ajusta al modelo de índice, todas las acciones tienen una beta de 0,8 y un riesgo específico con una desviación típica del 30 %, y los residuos de acciones distintas no están correlacionados. La desviación típica de la rentabilidad del mercado es el 20 %. Cuando el número $n$ de acciones crece indefinidamente, la desviación típica de una cartera equiponderada de $n$ de ellas tiende a:",
+   "opciones": {
+    "a": "El 16 %.",
+    "b": "Cero.",
+    "c": "El 20 %.",
+    "d": "El 34 %."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$\\sigma_p^2=\\beta_p^2\\sigma_M^2+\\sum_iw_i^2\\sigma_{\\varepsilon_i}^2=0{,}8^2\\cdot0{,}04+0{,}09/n$. El segundo sumando tiende a cero y queda el riesgo sistemático: $\\sigma_p\\to0{,}8\\cdot20\\,\\%=16\\,\\%$.",
+    "desarrollo": "Con pesos iguales, $w_i=1/n$:\n\n- la beta de la cartera es la media ponderada de las betas: $\\beta_p=0{,}8$, sea cual sea $n$;\n- el riesgo específico es $\\sum_i(1/n)^2\\cdot0{,}09=0{,}09/n$, que tiende a cero.\n\nPor tanto, $\\sigma_p^2=0{,}64\\cdot0{,}04+0{,}09/n\\to0{,}0256$, y $\\sigma_p\\to16\\,\\%$. Por ejemplo, con $n=100$ la varianza es $0{,}0256+0{,}0009=0{,}0265$ (una desviación típica del 16,3 %). La diversificación elimina el riesgo específico, pero no el sistemático.\n\nPor qué fallan las demás:\n\n- b) Es el error de tratar la beta como el riesgo específico: escribir $\\beta_p^2=\\sum_iw_i^2\\beta_i^2$, que tendería a cero, en lugar de $\\beta_p=\\sum_iw_i\\beta_i$. El riesgo de mercado es común a todos los títulos y no se compensa entre ellos.\n- c) El 20 % es el riesgo del mercado; una cartera con beta 0,8 solo soporta el 80 % de ese riesgo.\n- d) El 34 % es la desviación típica de una sola acción, $\\sqrt{0{,}0256+0{,}09}=\\sqrt{0{,}1156}$: aunque todas sean iguales, sus riesgos específicos son independientes y se compensan."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Elección de cartera: modelo de la diagonal de Sharpe (límite de la diversificación)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322308,
+   "estado": "publicada",
+   "enunciado": "En un mercado en el que se cumple el CAPM, el tipo de interés libre de riesgo es el 3 %, la prima de riesgo del mercado es de 5 puntos y la desviación típica de la rentabilidad del mercado, el 20 %. Una acción tiene una desviación típica del 40 % y una correlación con el mercado de 0,5. Su rentabilidad esperada de equilibrio es:",
+   "opciones": {
+    "a": "El 13 %.",
+    "b": "El 5,5 %.",
+    "c": "El 4,25 %.",
+    "d": "El 8 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$\\beta_i=\\mathrm{corr}(r_i,r_M)\\,\\sigma_i/\\sigma_M=0{,}5\\cdot40/20=1$. Con beta 1, la acción rinde lo mismo que el mercado, $3+1\\cdot5=8\\,\\%$, aunque su volatilidad sea el doble.",
+    "desarrollo": "La beta no es la volatilidad relativa al mercado, sino esa volatilidad relativa multiplicada por la correlación:\n\n$\\beta_i=\\dfrac{\\mathrm{Cov}(r_i,r_M)}{\\mathrm{Var}(r_M)}=\\mathrm{corr}(r_i,r_M)\\,\\dfrac{\\sigma_i}{\\sigma_M}=0{,}5\\cdot\\dfrac{40}{20}=1$.\n\nComprobación con la covarianza: $\\mathrm{Cov}=0{,}5\\cdot0{,}40\\cdot0{,}20=0{,}04$, y $0{,}04/0{,}20^2=1$.\n\nPor la SML, $\\mathbb{E}[r_i]=r_f+\\beta_i\\lambda_M=3+1\\cdot5=8\\,\\%$. La acción es el doble de volátil que el mercado y, sin embargo, se le exige lo mismo: la mitad de su desviación típica es riesgo sistemático ($\\beta_i\\sigma_M=20\\,\\%$) y el resto es específico, que se elimina diversificando y no se paga.\n\nPor qué fallan las demás:\n\n- a) Toma como beta la volatilidad relativa, $40/20=2$: $3+2\\cdot5=13\\,\\%$. Solo sería así con correlación 1.\n- b) Toma como beta la correlación, 0,5: $3+0{,}5\\cdot5=5{,}5\\,\\%$.\n- c) Invierte el cociente de volatilidades, $0{,}5\\cdot20/40=0{,}25$: $3+0{,}25\\cdot5=4{,}25\\,\\%$."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 CAPM (la beta y la línea del mercado de títulos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322309,
+   "estado": "publicada",
+   "enunciado": "En un periodo largo, el tipo de interés libre de riesgo ha sido de media el 3 % y la rentabilidad del mercado, el 8 %. El fondo X ha obtenido una rentabilidad media del 12 % con una beta de 1,6; el fondo Y, del 9 % con una beta de 0,8. Evaluados con el alfa de Jensen:",
+   "opciones": {
+    "a": "X lo ha hecho mejor: su alfa es de 4 puntos y el de Y, de 1 punto.",
+    "b": "Y lo ha hecho mejor: su alfa es de 2 puntos y el de X, de 1 punto.",
+    "c": "X lo ha hecho mejor: su alfa es de 9 puntos y el de Y, de 6 puntos.",
+    "d": "Ninguno ha batido al mercado: el alfa de X es de $-3{,}8$ puntos y el de Y, de $-0{,}4$."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "$\\alpha_i=r_i-[r_f+\\beta_i(r_M-r_f)]$. A X se le exigía $3+1{,}6\\cdot5=11\\,\\%$ y obtuvo 12: alfa de 1 punto. A Y se le exigía $3+0{,}8\\cdot5=7\\,\\%$ y obtuvo 9: alfa de 2 puntos.",
+    "desarrollo": "El alfa de Jensen es la distancia vertical a la SML: la rentabilidad obtenida menos la que corresponde al riesgo sistemático asumido. La prima del mercado es $8-3=5$ puntos.\n\n- Fondo X: rentabilidad exigida $3+1{,}6\\cdot5=11\\,\\%$; alfa $=12-11=1$ punto.\n- Fondo Y: rentabilidad exigida $3+0{,}8\\cdot5=7\\,\\%$; alfa $=9-7=2$ puntos.\n\nY ha rendido menos que X, pero ha creado más valor para su riesgo. La ratio de Treynor lo confirma: X da $(12-3)/1{,}6\\approx5{,}6$ puntos por unidad de beta e Y, $(9-3)/0{,}8=7{,}5$; el mercado da 5. Buena parte de la rentabilidad de X se debe solo a que su beta es alta.\n\nPor qué fallan las demás:\n\n- a) Resta la rentabilidad del mercado ($12-8$ y $9-8$) sin ajustar por la beta: compara fondos de riesgo distinto como si fuera el mismo.\n- c) Resta solo el tipo sin riesgo ($12-3$ y $9-3$): eso es la prima obtenida, no el alfa.\n- d) Multiplica la beta por la rentabilidad del mercado en lugar de por la prima: $3+1{,}6\\cdot8=15{,}8$ y $3+0{,}8\\cdot8=9{,}4$."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 CAPM (alfa de Jensen y evaluación de gestores)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322310,
+   "estado": "publicada",
+   "enunciado": "En el equilibrio del CAPM, una acción individual correctamente valorada, cuya rentabilidad tiene una parte de riesgo específico, se sitúa:",
+   "opciones": {
+    "a": "Sobre la línea del mercado de títulos (SML), pero por debajo de la línea del mercado de capitales (CML).",
+    "b": "Sobre la línea del mercado de capitales (CML), pero por debajo de la línea del mercado de títulos (SML).",
+    "c": "Sobre las dos rectas a la vez, como todo activo cuyo precio es el de equilibrio.",
+    "d": "Por debajo de las dos rectas, que solo alcanzan las carteras eficientes."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La SML vale para todos los activos y carteras: relaciona la rentabilidad esperada con la beta. La CML solo recoge las carteras eficientes, en el plano de la desviación típica: un activo con riesgo específico tiene más $\\sigma$ de la que se le paga y queda por debajo de ella.",
+    "desarrollo": "Son dos rectas distintas, en planos distintos:\n\n- la CML, $\\mathbb{E}[r_p]=r_f+\\dfrac{\\mathbb{E}[r_M]-r_f}{\\sigma_M}\\,\\sigma_p$, mide el riesgo total y solo contiene las carteras eficientes (combinaciones de la cartera de mercado y el activo sin riesgo);\n- la SML, $\\mathbb{E}[r_i]=r_f+\\beta_i\\lambda_M$, mide el riesgo sistemático y vale para cualquier activo o cartera, eficiente o no.\n\nPara una acción, $\\beta_i=\\mathrm{corr}(r_i,r_M)\\,\\sigma_i/\\sigma_M$. Sustituyendo en la SML: $\\mathbb{E}[r_i]=r_f+\\mathrm{corr}(r_i,r_M)\\,\\dfrac{\\lambda_M}{\\sigma_M}\\,\\sigma_i$. Si tiene riesgo específico, su correlación con el mercado es menor que 1 y su rentabilidad esperada es inferior a la que la CML asigna a ese nivel de $\\sigma_i$: el riesgo específico aumenta la desviación típica y no se paga.\n\nPor qué fallan las demás:\n\n- b) Es al revés: la recta que cumplen todos los activos es la SML.\n- c) Solo las carteras eficientes, perfectamente correlacionadas con el mercado, están en las dos a la vez ($\\beta_p=\\sigma_p/\\sigma_M$).\n- d) Estar bajo la SML significaría un alfa negativo, es decir, un activo sobrevalorado, contra lo que dice el enunciado."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 CAPM (CML frente a SML)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322311,
+   "estado": "publicada",
+   "enunciado": "La crítica de Roll (1977) al CAPM sostiene que:",
+   "opciones": {
+    "a": "El modelo debe rechazarse porque la relación entre la beta y la rentabilidad media es, en los datos, más plana de lo que predice la línea del mercado de títulos.",
+    "b": "El modelo debe rechazarse porque la beta no explica las rentabilidades medias, que dependen del tamaño de la empresa y de la relación entre su valor contable y su valor de mercado.",
+    "c": "La verdadera cartera de mercado no se observa, por lo que los contrastes solo comprueban si el índice que la sustituye es eficiente en media y varianza.",
+    "d": "El modelo no puede contrastarse porque las betas se estiman con error y cambian con el tiempo, lo que impide calcular la pendiente de la línea del mercado de títulos."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La SML se cumple por pura aritmética siempre que las betas se calculen frente a una cartera eficiente en media y varianza. Lo único contrastable es la eficiencia de la cartera de mercado, que no se observa: con un índice, se contrasta la eficiencia del índice, no el CAPM.",
+    "desarrollo": "El argumento de Roll tiene dos pasos:\n\n- la relación lineal entre rentabilidad esperada y beta se cumple de forma exacta respecto de cualquier cartera eficiente en media y varianza; por tanto, la única hipótesis contrastable del CAPM es que la cartera de mercado es eficiente;\n- la verdadera cartera de mercado incluye todos los activos con riesgo (también los inmuebles, las empresas no cotizadas y el capital humano) y no se observa. Con un índice bursátil en su lugar, si se rechaza el modelo puede que el índice sea ineficiente aunque el CAPM sea cierto; y si no se rechaza, puede que el índice sea eficiente aunque el CAPM sea falso.\n\nPor qué fallan las demás:\n\n- a) Es el resultado de los primeros contrastes (Black, Jensen y Scholes; Fama y MacBeth): una SML empírica demasiado plana. Es evidencia, no la objeción lógica de Roll, y llevó al CAPM de beta cero más que al rechazo.\n- b) Son las anomalías de Fama y French (1992), el origen del modelo de tres factores.\n- d) Los errores de estimación y la inestabilidad de las betas son una limitación práctica cierta (de ahí los ajustes de las betas históricas), pero no impiden estimar la recta; la objeción de Roll es otra: aunque las betas se midieran sin error, faltaría la cartera frente a la que hay que medirlas."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 CAPM (valoración: la crítica de Roll)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322312,
+   "estado": "publicada",
+   "enunciado": "En un modelo APT con dos factores, el tipo de interés libre de riesgo es el 3 %, la prima de riesgo del primer factor (crecimiento) es de 5 puntos y la del segundo (inflación no anticipada), de 2 puntos. Una cartera bien diversificada tiene una sensibilidad de 1,2 al primer factor y de $-0{,}5$ al segundo. En ausencia de arbitraje, su rentabilidad esperada es:",
+   "opciones": {
+    "a": "El 10 %.",
+    "b": "El 5 %.",
+    "c": "El 9 %.",
+    "d": "El 8 %."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$\\mathbb{E}[r_p]=r_f+\\beta_{p1}\\lambda_1+\\beta_{p2}\\lambda_2=3+1{,}2\\cdot5+(-0{,}5)\\cdot2=3+6-1=8\\,\\%$. Una sensibilidad negativa a un factor con prima positiva resta rentabilidad exigida.",
+    "desarrollo": "La ecuación de valoración de la APT es lineal en las sensibilidades a los factores:\n\n$\\mathbb{E}[r_p]=r_f+\\beta_{p1}\\lambda_1+\\beta_{p2}\\lambda_2$,\n\ndonde $\\lambda_j$ es la prima del factor $j$: lo que rinde por encima de $r_f$ una cartera con sensibilidad 1 a ese factor y 0 a los demás.\n\n- Primer factor: $1{,}2\\cdot5=6$ puntos.\n- Segundo factor: $-0{,}5\\cdot2=-1$ punto.\n- Total: $3+6-1=8\\,\\%$.\n\nLa sensibilidad negativa al segundo factor significa que la cartera cubre en parte ese riesgo: por eso se le exige menos, igual que a un activo de beta negativa en el CAPM.\n\nPor qué fallan las demás:\n\n- a) Suma la prima del segundo factor en valor absoluto ($3+6+1$): el signo de la sensibilidad importa.\n- b) Olvida el tipo libre de riesgo ($6-1$): las primas se suman a $r_f$.\n- c) Ignora el segundo factor ($3+6$): es lo que daría un modelo de un solo factor, y justo lo que la APT corrige."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 APT (ecuación de valoración con varios factores)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322313,
+   "estado": "publicada",
+   "enunciado": "En una economía con un único factor de riesgo sistemático y mercados sin fricciones, el tipo de interés libre de riesgo es el 3 %. Hay dos carteras bien diversificadas, sin riesgo específico: $A$, con beta 1 y rentabilidad esperada del 10 %, y $B$, con beta 0,5 y rentabilidad esperada del 7 %. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Hay arbitraje: comprar $B$ y vender en corto una cartera con la mitad en $A$ y la mitad en el activo sin riesgo da un 0,5 % seguro sin inversión neta.",
+    "b": "Hay arbitraje: comprar $A$ y vender en corto $B$ por el mismo importe da un 3 % seguro sin inversión neta.",
+    "c": "No hay arbitraje: $A$ ofrece más rentabilidad esperada que $B$ porque tiene una beta mayor, como exige la teoría.",
+    "d": "Hay arbitraje: vender en corto $B$ y comprar una cartera con la mitad en $A$ y la mitad en el activo sin riesgo da un 0,5 % seguro sin inversión neta."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Una cartera con la mitad en $A$ y la mitad en el activo sin riesgo tiene beta 0,5, como $B$, y rinde $0{,}5\\cdot10+0{,}5\\cdot3=6{,}5\\,\\%$. $B$ rinde el 7 %: comprando $B$ y vendiendo esa cartera se gana un 0,5 % sin riesgo y sin poner dinero.",
+    "desarrollo": "Sin arbitraje, la prima por unidad de beta debe ser igual en todas las carteras bien diversificadas:\n\n- $A$: $(10-3)/1=7$ puntos;\n- $B$: $(7-3)/0{,}5=8$ puntos.\n\nNo coinciden: $B$ rinde demasiado para su riesgo. Para aprovecharlo se construye una cartera $C$ con la misma beta que $B$: mitad en $A$ y mitad en el activo sin riesgo, con beta $0{,}5\\cdot1+0{,}5\\cdot0=0{,}5$ y rentabilidad esperada $0{,}5\\cdot10+0{,}5\\cdot3=6{,}5\\,\\%$.\n\nComprando $B$ y vendiendo en corto el mismo importe de $C$: la inversión neta es nula, la beta es $0{,}5-0{,}5=0$ y, como no hay riesgo específico, el resultado es cierto: $7-6{,}5=0{,}5\\,\\%$. Al hacerlo todos, el precio de $B$ sube y su rentabilidad esperada baja hasta el 6,5 %.\n\nPor qué fallan las demás:\n\n- b) Esa posición no cuesta nada, pero tiene beta $1-0{,}5=0{,}5$: la diferencia de 3 puntos es una ganancia esperada, no segura. No es un arbitraje.\n- c) Que la rentabilidad crezca con la beta no basta: tiene que hacerlo de forma lineal, con la misma prima por unidad de beta.\n- d) Es la operación contraria: vende lo barato y compra lo caro, con una pérdida segura del 0,5 %."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 APT (el argumento de arbitraje con un factor)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322314,
+   "estado": "publicada",
+   "enunciado": "Un estudio concluye que comprar las acciones de una empresa al día siguiente de que publique unos beneficios mejores de lo previsto proporciona, de forma sistemática y una vez descontados el riesgo y los costes, rentabilidades anormales. De confirmarse, este resultado sería incompatible con:",
+   "opciones": {
+    "a": "La forma fuerte de eficiencia, pero no con la semifuerte ni con la débil.",
+    "b": "Las formas semifuerte y fuerte de eficiencia, aunque no necesariamente con la débil.",
+    "c": "La forma débil de eficiencia, pero no con la semifuerte ni con la fuerte.",
+    "d": "Las formas débil y semifuerte de eficiencia, pero no con la fuerte."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La estrategia usa información pública (el anuncio de beneficios). Si con ella se gana de forma sistemática, el precio no recoge toda la información pública: falla la forma semifuerte y, con ella, la fuerte, que la incluye. La débil solo se refiere a los precios y volúmenes pasados.",
+    "desarrollo": "Las tres formas de eficiencia informativa de Fama se definen por el conjunto de información que recoge el precio, cada uno contenido en el siguiente:\n\n- débil: la información histórica de precios y volúmenes;\n- semifuerte: además, toda la información pública (cuentas, anuncios, hechos relevantes);\n- fuerte: además, la información privada.\n\nCada forma implica la anterior; por tanto, si falla una, fallan las más exigentes. Un anuncio de beneficios es información pública: si se puede ganar de forma sistemática operando después de conocerlo, el precio no la incorpora del todo ni deprisa, y falla la forma semifuerte. Como la fuerte exige la semifuerte, también falla. La débil no queda comprometida: la regla no se basa en la serie de precios pasados, sino en una noticia.\n\nPor qué fallan las demás:\n\n- a) La forma fuerte se contradice, pero no solo ella: la información usada es pública, no privada.\n- c) Confunde el tipo de información: la forma débil se contrasta con reglas basadas en precios pasados, como las del análisis técnico.\n- d) La forma fuerte no puede cumplirse si falla la semifuerte, porque la contiene."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Hipótesis de los mercados eficientes (formas de eficiencia informativa)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322315,
+   "estado": "publicada",
+   "enunciado": "Un contraste empírico encuentra que las acciones de las empresas pequeñas obtienen, de media, rentabilidades superiores a las que predice el CAPM. De acuerdo con el problema de la hipótesis conjunta señalado por Fama:",
+   "opciones": {
+    "a": "El resultado prueba que el mercado es ineficiente, porque existe una rentabilidad anormal que se puede prever.",
+    "b": "El resultado prueba que el CAPM es falso, porque la eficiencia del mercado no interviene en el contraste.",
+    "c": "El resultado no dice nada sobre la eficiencia, que solo se refiere al uso de información privilegiada.",
+    "d": "No se puede saber si el mercado es ineficiente o si el modelo omite un riesgo que el mercado sí remunera."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Toda prueba de eficiencia contrasta a la vez dos hipótesis: que los precios reflejan la información y que el modelo usado da la rentabilidad «normal». Una rentabilidad anormal puede deberse a que falle cualquiera de las dos.",
+    "desarrollo": "Decir que un precio refleja toda la información exige saber cuál sería el precio correcto, y para eso hace falta un modelo de rentabilidades esperadas (el CAPM, la APT). El contraste es, por tanto, conjunto:\n\n1. hay un modelo que dice qué rentabilidad corresponde a cada activo por su riesgo;\n2. los precios reflejan toda la información disponible.\n\nSi las empresas pequeñas rinden más de lo que dice el CAPM, caben dos lecturas: que el mercado las valore mal (ineficiencia) o que sean más arriesgadas de un modo que la beta no recoge y esa rentabilidad sea una prima de riesgo (modelo incompleto). Es el debate entre Fama y French, para quienes el tamaño y el valor son factores de riesgo, y las finanzas conductuales, que los ven como errores del mercado.\n\nPor qué fallan las demás:\n\n- a) Solo sería una prueba de ineficiencia si el CAPM fuera con certeza el modelo correcto.\n- b) Simétricamente, solo probaría la falsedad del CAPM si la eficiencia se diera por cierta: las dos hipótesis entran en el contraste.\n- c) La eficiencia informativa tiene tres formas; la información privada solo distingue a la fuerte. Una regularidad basada en un dato público como el tamaño afecta a la forma semifuerte."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Hipótesis de los mercados eficientes (la hipótesis conjunta)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322316,
+   "estado": "publicada",
+   "enunciado": "Un inversor vende enseguida las acciones en las que acumula ganancias y mantiene durante años aquellas en las que acumula pérdidas, a la espera de recuperar el precio al que las compró. Las finanzas conductuales llaman a esta pauta:",
+   "opciones": {
+    "a": "Exceso de confianza: el inversor sobrestima la precisión de su información y opera demasiado.",
+    "b": "Aversión miope a las pérdidas: el inversor evalúa su cartera con mucha frecuencia y exige por ello una prima alta.",
+    "c": "Efecto disposición: su función de valor es cóncava en las ganancias y convexa en las pérdidas.",
+    "d": "Extrapolación: el inversor proyecta al futuro la racha reciente de cada acción."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Es el efecto disposición (Shefrin y Statman, 1985). La teoría de las perspectivas lo explica por la forma de S de la función de valor: aversión al riesgo en las ganancias (se aseguran vendiendo) y preferencia por el riesgo en las pérdidas (se sigue apostando para no realizarlas).",
+    "desarrollo": "En la teoría de las perspectivas, los resultados se valoran como ganancias o pérdidas respecto de un punto de referencia (aquí, el precio de compra), con una función de valor en forma de S:\n\n- cóncava en las ganancias: se prefiere una ganancia segura a una apuesta, así que se vende pronto lo que ha subido;\n- convexa en las pérdidas: se prefiere apostar a aceptar una pérdida segura, así que se retiene lo que ha bajado.\n\nEl resultado es vender los valores ganadores y conservar los perdedores, al revés de lo que suele convenir fiscalmente.\n\nPor qué fallan las demás (cada una describe bien su sesgo, pero no es el del enunciado):\n\n- a) El exceso de confianza explica que se opere demasiado en general, no la asimetría entre valores con ganancias y con pérdidas.\n- b) La aversión miope a las pérdidas (Benartzi y Thaler) explica el enigma de la prima de riesgo de las acciones, no qué títulos se venden antes.\n- d) Quien extrapola espera que lo que ha subido siga subiendo y lo que ha bajado siga bajando: conservaría los ganadores y vendería los perdedores, justo lo contrario."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 La crítica de las finanzas conductuales (enigmas y teoría de las perspectivas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322317,
+   "estado": "publicada",
+   "enunciado": "Una empresa repartirá dentro de un año un dividendo de 2 euros por acción. Retiene el 40 % de sus beneficios y la rentabilidad de sus fondos propios (ROE) es el 10 %, y se espera que ambas cifras se mantengan indefinidamente. El tipo de interés libre de riesgo es el 3 %, la prima de riesgo del mercado es de 5 puntos y la beta de la acción, 1,2. Según el modelo de Gordon y Shapiro, con la rentabilidad exigida que da el CAPM, el valor intrínseco de la acción es:",
+   "opciones": {
+    "a": "22,2 euros.",
+    "b": "66,7 euros.",
+    "c": "40 euros.",
+    "d": "50 euros."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$r_E=3+1{,}2\\cdot5=9\\,\\%$; $g=b\\cdot\\mathrm{ROE}=0{,}4\\cdot10\\,\\%=4\\,\\%$; $P_0=D_1/(r_E-g)=2/(0{,}09-0{,}04)=40$ euros.",
+    "desarrollo": "Tres pasos:\n\n1. La tasa de descuento, por la SML: $r_E=r_f+\\beta\\lambda_M=3+1{,}2\\cdot5=9\\,\\%$.\n2. La tasa de crecimiento de los dividendos: $g=b\\cdot\\mathrm{ROE}=0{,}4\\cdot10\\,\\%=4\\,\\%$, con $b$ la tasa de retención.\n3. El valor: $P_0=\\dfrac{D_1}{r_E-g}=\\dfrac{2}{0{,}05}=40$ euros. Se cumple la condición $g<r_E$.\n\nComprobación: a 40 euros, la rentabilidad por dividendo es $2/40=5\\,\\%$, que con un 4 % de crecimiento del precio da el 9 % exigido.\n\nPor qué fallan las demás:\n\n- a) $2/0{,}09=22{,}2$ ignora el crecimiento: es el valor de una renta perpetua constante.\n- b) Toma $g=(1-b)\\cdot\\mathrm{ROE}=6\\,\\%$, con la tasa de reparto en lugar de la de retención: $2/0{,}03=66{,}7$. Lo que hace crecer a la empresa es lo que retiene, no lo que reparte.\n- d) Usa $r_E=3+5=8\\,\\%$, sin multiplicar la prima por la beta: $2/0{,}04=50$."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Análisis fundamental (modelo de Gordon y Shapiro con la tasa del CAPM)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322318,
+   "estado": "publicada",
+   "enunciado": "Una empresa retiene la mitad de sus beneficios, la rentabilidad de sus fondos propios (ROE) es el 12 % y la rentabilidad exigida a sus acciones, el 10 %; se espera que estas cifras se mantengan indefinidamente. Con el modelo de Gordon y Shapiro, y en relación con el PER que justifican los fundamentos (precio entre el beneficio por acción esperado), señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El PER teórico es 12,5 y aumentaría si la empresa retuviera algo más, porque su ROE supera a la rentabilidad exigida.",
+    "b": "El PER teórico es 12,5 y disminuiría si la empresa retuviera algo más, porque repartiría menos dividendo.",
+    "c": "El PER teórico es 25 y disminuiría si la empresa retuviera algo más, porque repartiría menos dividendo.",
+    "d": "El PER teórico es 10, la inversa de la rentabilidad exigida, y no depende de la tasa de retención."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$\\mathrm{PER}=(1-b)/(r_E-g)$ con $g=b\\cdot\\mathrm{ROE}=6\\,\\%$: $0{,}5/0{,}04=12{,}5$. Retener más reduce el numerador pero aumenta $g$; si $\\mathrm{ROE}>r_E$, lo retenido se reinvierte a más de lo que exigen los accionistas y el PER sube.",
+    "desarrollo": "Dividiendo $P_0=D_1/(r_E-g)$ por el beneficio por acción, con $D_1=(1-b)\\,\\mathrm{BPA}_1$:\n\n$\\mathrm{PER}=\\dfrac{1-b}{r_E-b\\cdot\\mathrm{ROE}}=\\dfrac{0{,}5}{0{,}10-0{,}06}=12{,}5$.\n\nEfecto de la retención: derivando respecto de $b$, el signo es el de $\\mathrm{ROE}-r_E$. Como $12\\,\\%>10\\,\\%$, retener más aumenta el PER. Por ejemplo, con $b=0{,}6$: $g=7{,}2\\,\\%$ y $\\mathrm{PER}=0{,}4/0{,}028\\approx14{,}3$. La empresa crea valor al reinvertir porque sus proyectos rinden más que el coste de sus fondos propios (siempre que $g$ siga por debajo de $r_E$).\n\nPor qué fallan las demás:\n\n- b) El nivel es correcto, pero no el efecto: el menor dividendo de hoy se compensa con creces con el mayor crecimiento, porque $\\mathrm{ROE}>r_E$. Sería cierto con $\\mathrm{ROE}<r_E$.\n- c) $1/(r_E-g)=25$ olvida el factor $(1-b)$: es el precio por euro de dividendo, no por euro de beneficio. Y el efecto de retener más es el contrario.\n- d) El PER solo es $1/r_E$, con independencia de $b$, cuando $\\mathrm{ROE}=r_E$: entonces reinvertir ni crea ni destruye valor. No es el caso."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 Análisis fundamental (PER teórico)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322319,
+   "estado": "publicada",
+   "enunciado": "Un analista quiere valorar por múltiplos las acciones de una empresa, y las empresas comparables del sector tienen niveles de endeudamiento muy distintos entre sí. Lo más adecuado es:",
+   "opciones": {
+    "a": "Usar el PER, que al partir del beneficio neto no depende de la estructura financiera.",
+    "b": "Usar el PER, ya que el EV/EBIT solo es aplicable a empresas sin deuda financiera.",
+    "c": "Usar el EV/EBIT y tomar el valor obtenido, sin más ajuste, como valor de las acciones.",
+    "d": "Usar el EV/EBIT y restar la deuda neta al valor obtenido para llegar al de las acciones."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El EV/EBIT es un múltiplo indirecto: relaciona el valor de todo el negocio (fondos propios más deuda neta) con el resultado de explotación, anterior a los gastos financieros, y por eso no depende del endeudamiento. Da el valor de la empresa; restando la deuda neta se obtiene el de las acciones.",
+    "desarrollo": "Hay dos familias de múltiplos:\n\n- directos, que valoran la acción: el PER, precio entre beneficio por acción. El beneficio neto ya ha descontado los gastos financieros, de modo que el PER recoge la estructura financiera: dos empresas con el mismo negocio y distinta deuda tienen PER distintos;\n- indirectos, que valoran todo el negocio: el EV/EBIT, valor de la empresa (valor de mercado de los fondos propios más deuda neta) entre el resultado de explotación. Ni el numerador ni el denominador dependen de cómo se financia la empresa.\n\nCon comparables de apalancamiento distinto, el PER deja de ser comparable y conviene el EV/EBIT. El múltiplo aplicado al EBIT de la empresa da su valor total, y hay que restar la deuda neta para llegar al valor de los fondos propios.\n\nPor qué fallan las demás:\n\n- a) Es al revés: el beneficio neto es posterior a los intereses, luego depende de la deuda.\n- b) El EV/EBIT está pensado precisamente para comparar empresas con deuda distinta.\n- c) El EV es el valor de la empresa para accionistas y acreedores: tomarlo como valor de las acciones las sobrevalora en el importe de la deuda neta."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Análisis fundamental (múltiplos: PER y EV/EBIT)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322320,
+   "estado": "publicada",
+   "enunciado": "El PER ajustado al ciclo (CAPE), de Campbell y Shiller:",
+   "opciones": {
+    "a": "Divide el precio entre los beneficios previstos para los próximos 10 años, y permite fechar las correcciones del mercado.",
+    "b": "Divide el precio entre la media de los beneficios reales de los últimos 10 años; un valor alto anticipa rentabilidades bajas a largo plazo.",
+    "c": "Divide el precio entre la media de los beneficios reales de los últimos 10 años; un valor alto anticipa rentabilidades altas a largo plazo.",
+    "d": "Divide el PER entre la tasa de crecimiento esperada de los beneficios, para comparar empresas con distinto crecimiento."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El CAPE usa la media de los beneficios reales de 10 años para que un año excepcional del ciclo no distorsione la ratio. Un CAPE alto indica precios caros respecto de los beneficios y va seguido, de media, de rentabilidades bajas a 10 años vista; no dice cuándo corregirá el mercado.",
+    "desarrollo": "El PER corriente compara el precio con el beneficio de un año, que puede ser anormalmente alto o bajo según la fase del ciclo: en una recesión los beneficios se hunden y el PER se dispara aunque el mercado no esté caro. Campbell y Shiller lo corrigen dividiendo el precio entre la media de los beneficios de los 10 años anteriores, deflactados. Se usa sobre todo para valorar el mercado en su conjunto.\n\nSu utilidad es predictiva a largo plazo: cuando el CAPE es alto, las rentabilidades de la década siguiente tienden a ser bajas, porque se paga mucho por cada euro de beneficio. Pero no sirve para acertar el momento: el mercado puede seguir caro durante años.\n\nPor qué fallan las demás:\n\n- a) Usa beneficios pasados, no previstos, y precisamente no permite fechar las correcciones.\n- c) La definición es correcta, pero la relación es la inversa: precios altos respecto de los beneficios anuncian rentabilidades futuras bajas.\n- d) Describe otra ratio, el PEG (PER entre crecimiento), que se aplica a empresas concretas."
+   },
+   "dificultad": 1,
+   "apartado": "III.1 Análisis fundamental (PER ajustado al ciclo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322321,
+   "estado": "publicada",
+   "enunciado": "El análisis técnico parte de tres premisas: el precio lo descuenta todo, los precios se mueven en tendencias y la historia se repite. En relación con la hipótesis de los mercados eficientes:",
+   "opciones": {
+    "a": "Las dos últimas chocan con la forma débil, según la cual los precios pasados no sirven para prever los futuros.",
+    "b": "La primera choca con la forma débil: si el precio lo descuenta todo, su evolución no puede ser un paseo aleatorio.",
+    "c": "Las tres son compatibles con la forma débil y solo chocan con la semifuerte, que añade la información pública.",
+    "d": "Las tres son compatibles con la forma fuerte, puesto que el análisis técnico no utiliza información privilegiada."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con eficiencia débil, los precios ya incorporan la información de los precios y volúmenes pasados, y estos no sirven para prever los futuros. Que haya tendencias identificables y pautas que se repiten es negar justo eso. La primera premisa, en cambio, suena a eficiencia.",
+    "desarrollo": "La forma débil dice que el precio recoge toda la información histórica del mercado (precios y volúmenes): las variaciones futuras son impredecibles a partir de las pasadas, como en un paseo aleatorio, y ninguna regla basada en gráficos gana de forma sistemática.\n\n- «El precio lo descuenta todo» no contradice la eficiencia: es casi su enunciado.\n- «Los precios se mueven en tendencias» y «la historia se repite» sí: afirman que la serie pasada contiene información aprovechable sobre el precio futuro, es decir, que el mercado tiene memoria.\n\nPor eso el análisis técnico solo puede funcionar de forma sistemática si el mercado no es eficiente ni siquiera en sentido débil.\n\nPor qué fallan las demás:\n\n- b) Es al revés: si el precio recoge ya toda la información, solo lo mueven las noticias, que son imprevisibles, y eso es el paseo aleatorio.\n- c) El análisis técnico usa solo información histórica del mercado, que es el conjunto de información de la forma débil; con ella ya choca, y por tanto también con las más exigentes.\n- d) La forma fuerte implica la semifuerte y la débil: si se cumple, no funciona ninguna técnica, tampoco la que solo usa precios pasados."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Análisis técnico (premisas y eficiencia débil)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322322,
+   "estado": "publicada",
+   "enunciado": "Sobre las herramientas del análisis técnico, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Un soporte es un nivel de precios, por encima del actual, en el que la presión vendedora frena las subidas.",
+    "b": "El «cruce dorado» se produce cuando la media móvil de 50 sesiones cruza a la baja la de 200 sesiones.",
+    "c": "En una vela japonesa, el cuerpo va del mínimo al máximo de la sesión, y las mechas, a la apertura y al cierre.",
+    "d": "Una resistencia que el precio rompe al alza suele pasar a actuar como soporte."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Una resistencia es un nivel por encima del precio en el que las ventas frenan la subida; cuando el precio la supera, ese mismo nivel suele pasar a frenar las caídas: se convierte en soporte.",
+    "desarrollo": "Las herramientas básicas:\n\n- soporte: nivel por debajo del precio actual en el que se espera que las compras frenen la caída (suele ser un mínimo anterior); resistencia: nivel por encima en el que las ventas frenan la subida. Rota una resistencia, suele hacer de soporte, y a la inversa;\n- medias móviles: si una media corta cruza hacia arriba una larga, es señal de compra (el «cruce dorado» de las medias de 50 y 200 sesiones); si la cruza hacia abajo, de venta (el «cruce de la muerte»);\n- velas japonesas: el cuerpo va del precio de apertura al de cierre, y las mechas llegan al máximo y al mínimo de la sesión; si el cierre supera a la apertura, la vela es alcista.\n\nPor qué fallan las demás:\n\n- a) Es la definición de resistencia; el soporte está por debajo y lo sostienen los compradores.\n- b) Es el «cruce de la muerte»: el dorado es el cruce al alza.\n- c) Están intercambiados el cuerpo y las mechas."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Análisis técnico (soportes, resistencias, medias móviles y velas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

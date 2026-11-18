@@ -1,0 +1,97 @@
+{
+ "tema": "3.B.8",
+ "preguntas": [
+  {
+   "id": 320801,
+   "estado": "publicada",
+   "enunciado": "Dos empresas, una del país $A$ y otra del país $B$, producen un bien homogéneo con coste marginal constante $c=10$ y lo venden solo en un tercer país, cuya demanda inversa es $p=130-Q$, con $Q=q_A+q_B$. Compiten en cantidades (Cournot). Antes de que decidan, el gobierno de $A$ se compromete a pagar a su empresa una subvención $s_A$ por unidad exportada; el gobierno de $B$ no interviene. Si el gobierno de $A$ maximiza el beneficio de su empresa neto del coste de la subvención, en el equilibrio:",
+   "opciones": {
+    "a": "$s_A=24$; la empresa $A$ vende 56 y la $B$, 32.",
+    "b": "$s_A=30$; la empresa $A$ vende 60 y la $B$ sigue vendiendo 40.",
+    "c": "$s_A=30$; la empresa $A$ vende 60 y la $B$, 30.",
+    "d": "$s_A=60$; la empresa $A$ vende 80 y la $B$, 20."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La subvención óptima lleva a la empresa nacional a la producción de la líder de Stackelberg. Con demanda lineal y costes iguales, $s_A^*=(a-c)/4=30$, $q_A=(a-c)/2=60$ y $q_B=(a-c)/4=30$; el bienestar de $A$ sube de 1.600 (Cournot) a 1.800.",
+    "desarrollo": "Segunda etapa. Con la subvención, el coste marginal neto de $A$ es $10-s_A$. Las funciones de reacción son $q_A=(120+s_A-q_B)/2$ y $q_B=(120-q_A)/2$, y el equilibrio:\n\n$$q_A=\\frac{120+2s_A}{3},\\qquad q_B=\\frac{120-s_A}{3},\\qquad p-c=\\frac{120-s_A}{3}.$$\n\nPrimera etapa. El bienestar de $A$ es el beneficio de su empresa sin contar la subvención (que es una transferencia dentro del país):\n\n$$W_A=(p-c)\\,q_A=\\frac{(120-s_A)(120+2s_A)}{9}.$$\n\nDerivando, $120-4s_A=0$: $s_A^*=30$. Entonces $q_A=60$, $q_B=30$, $p=40$ y $W_A=30\\cdot60=1.800$.\n\nComprobación por otra vía: la subvención óptima reproduce el equilibrio de Stackelberg con $A$ como líder. La líder maximiza $(120-q_A-q_B)\\,q_A$ con $q_B=(120-q_A)/2$, es decir, $(60-q_A/2)\\,q_A$: $q_A=60$ y $q_B=30$. Para que 60 sea la mejor respuesta de $A$ a 30 en Cournot hace falta $(120+s_A-30)/2=60$, es decir, $s_A=30$.\n\nSin política (Cournot), cada empresa vende 40, el precio es 50 y cada una gana 1.600. Con la subvención, $A$ gana 1.800 netos y la empresa $B$ baja a $30\\cdot30=900$: traslado de rentas.\n\nPor qué fallan las demás:\n\n- a) $s=24=(a-c)/5$ es la subvención de cada gobierno cuando subvencionan los 2 (guerra de subvenciones). Con $B$ pasivo da $W_A=32\\cdot56=1.792<1.800$.\n- b) La subvención es la correcta, pero la rival no se queda en 40: las cantidades son sustitutos estratégicos y $B$ reduce su producción a 30. Ese retroceso es precisamente lo que hace rentable la subvención.\n- d) Con $s=60$, $A$ vendería 80 y $B$ 20, pero el precio caería a 30 y $W_A=20\\cdot80=1.600$, lo mismo que sin política: es una subvención excesiva."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Política ofensiva: Brander y Spencer (1985), caso lineal",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320802,
+   "estado": "publicada",
+   "enunciado": "Dos empresas, una del país $A$ y otra del país $B$, venden bienes diferenciados solo en un tercer país y compiten en precios (los precios son complementos estratégicos). El gobierno de $A$ fija su política óptima antes de que las empresas decidan y el de $B$ no interviene. Según el modelo de Eaton y Grossman (1986), esa política es:",
+   "opciones": {
+    "a": "Un impuesto a la exportación: suben los dos precios y también gana la empresa extranjera, a costa de los consumidores del tercer país.",
+    "b": "Una subvención a la exportación: la empresa nacional baja su precio y la extranjera responde subiendo el suyo y cediéndole cuota.",
+    "c": "Un impuesto a la exportación, que traslada hacia el país $A$ los beneficios de la empresa extranjera, cuyas ganancias disminuyen.",
+    "d": "El libre comercio: al competir en precios, cada empresa ya anticipa correctamente la respuesta de su rival y no hay nada que corregir."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con competencia en precios, las funciones de reacción son crecientes: si la empresa de $A$ sube su precio, la rival sube el suyo. El impuesto compromete a la empresa nacional a cobrar más, como una líder en precios. Gana el país $A$ y gana la empresa extranjera; pierden los consumidores del tercer país.",
+    "desarrollo": "La política estratégica sirve para comprometer a la empresa nacional a hacer lo que haría si pudiera mover primero.\n\n- En Cournot (sustitutos estratégicos), la líder produce más para que la rival produzca menos: el instrumento es una subvención.\n- En Bertrand con bienes diferenciados (complementos estratégicos), la líder sube su precio para que la rival suba el suyo: el instrumento es un impuesto a la exportación.\n\nCon el impuesto:\n\n- el bienestar de $A$ (beneficio de la empresa más recaudación) sube; el beneficio neto de su empresa puede bajar, pero lo recauda el Estado, y algo más;\n- la empresa extranjera vende más y más caro: gana;\n- los consumidores del tercer país pagan precios más altos: pierden.\n\nLa renta no se quita a la empresa rival, sino a los consumidores extranjeros: el impuesto hace de cártel. Por eso, si el gobierno de $B$ responde con otro impuesto, los 2 países exportadores ganan: no es un dilema del prisionero.\n\nPor qué fallan las demás:\n\n- b) Es la receta de Brander y Spencer trasladada sin más. Con complementos estratégicos, si la empresa nacional baja su precio, la rival baja el suyo (no lo sube), y la guerra de precios reduce los beneficios.\n- c) El instrumento es el correcto, pero no el mecanismo: la empresa extranjera no pierde, gana. No hay traslado de rentas entre empresas.\n- d) El libre comercio es óptimo solo con conjeturas consistentes. En Bertrand, cada empresa cree que la rival mantendrá su precio, pero en realidad lo sube: compite demasiado, y eso es lo que corrige el impuesto."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Política ofensiva: Eaton y Grossman (1986)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320803,
+   "estado": "publicada",
+   "enunciado": "Una industria de un país podría llegar a competir a los precios internacionales tras un periodo de aprendizaje con pérdidas. Suponga que el aprendizaje es interno a cada empresa (no se difunde a las demás) y que el mercado de capitales financia sin problemas los proyectos rentables. De acuerdo con los criterios de Mill, Bastable y Kemp, una protección temporal de esa industria:",
+   "opciones": {
+    "a": "Está justificada, porque se cumple el criterio de Mill: la industria llegará a competir sin ayuda a los precios internacionales.",
+    "b": "Está justificada siempre que el valor actual de las ganancias futuras supere el coste de la protección mientras dura.",
+    "c": "Está justificada, y debe ser un arancel antes que una subvención a la producción, porque el arancel no distorsiona el consumo.",
+    "d": "No está justificada: la empresa se apropia de las ganancias del aprendizaje e invertirá sola, aceptando las pérdidas iniciales."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Falla el criterio de Kemp: si las ganancias futuras del aprendizaje se las queda la empresa que da el primer paso y hay crédito, el mercado lo resuelve solo. La protección solo se justifica cuando el aprendizaje se difunde (economías externas) o el mercado de capitales falla, y aun así como segundo óptimo.",
+    "desarrollo": "Los 3 criterios son acumulativos:\n\n- Mill: la industria llegará a competir sin protección a los precios internacionales;\n- Bastable: el valor actual de las ganancias futuras supera el coste de la protección mientras dura;\n- Kemp: las ganancias no puede apropiárselas la empresa que da el primer paso.\n\nLos 2 primeros dicen que la inversión es socialmente rentable, pero una inversión rentable la hace el sector privado sin ayuda: toda empresa nueva acepta pérdidas iniciales si espera beneficios después. Hace falta, además, un fallo de mercado:\n\n- con economías externas o aprendizaje que se difunde, el pionero paga el coste de aprender y los demás se aprovechan: nadie quiere ser el primero;\n- con un mercado de capitales imperfecto, no se puede financiar el periodo de pérdidas.\n\nEn el enunciado no hay ninguno de los 2: aprendizaje interno y crédito disponible. No hay motivo para proteger.\n\nPor qué fallan las demás:\n\n- a) El criterio de Mill es necesario, pero no suficiente.\n- b) Mill y Bastable juntos tampoco bastan: prueban que el proyecto es rentable, no que el mercado no vaya a emprenderlo.\n- c) No está justificada y, además, el orden de los instrumentos es el contrario: por el principio de focalización, el fallo se corrige en su origen (crédito, compensación al pionero, subvención a la producción), y el arancel es peor porque añade una distorsión en el consumo."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 Política defensiva: el argumento de la industria naciente",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320804,
+   "estado": "publicada",
+   "enunciado": "La política de promoción exterior (información sobre mercados, ferias y misiones comerciales, formación, cofinanciación) se distingue de la política comercial ofensiva tradicional, basada en subvencionar la exportación, en que:",
+   "opciones": {
+    "a": "Subvenciona cada unidad exportada, pero solo en los sectores oligopolísticos de alta tecnología, donde hay rentas que trasladar.",
+    "b": "Es un apoyo genérico, no ligado al volumen exportado, que corrige fallos de información y financiación y abarata la salida al exterior.",
+    "c": "Apoya solo la exportación de bienes y excluye la inversión directa en el exterior, que se considera una forma de deslocalización.",
+    "d": "Abarata el precio de las exportaciones para ganar cuota a las empresas rivales, por lo que suele provocar represalias de otros países."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La promoción exterior no paga por unidad exportada: ofrece instrumentos generales que reducen el coste fijo de salir al exterior, justificados por fallos de mercado (la información sobre mercados tiene rasgos de bien público; la financiación sufre información asimétrica). Por eso no es una subvención supeditada a la exportación ni traslada rentas de otros países.",
+    "desarrollo": "La política ofensiva tradicional da un apoyo directo a lo que se exporta (subvenciones, ventajas fiscales o financieras ligadas a exportar), que cambia el precio de las exportaciones y traslada rentas desde otros países; por eso invita a la represalia y las reglas de la OMC prohíben las subvenciones supeditadas a la exportación.\n\nLa promoción exterior tiene 2 rasgos:\n\n- es un apoyo genérico: instrumentos a disposición de las empresas, no ligados al volumen exportado;\n- se dirige a la internacionalización, que incluye la exportación y la inversión directa en el exterior.\n\nSe justifica por fallos de mercado: la información sobre un mercado exterior tiene coste fijo y quien la paga no puede excluir a otros (se produce de menos), y quien presta no puede verificar la calidad del proyecto exterior (información asimétrica). En términos del modelo de Melitz, baja el coste fijo de exportar y, con él, el umbral de productividad a partir del cual una empresa exporta; no altera el precio de lo exportado.\n\nPor qué fallan las demás:\n\n- a) Describe la política comercial estratégica (traslado de rentas en oligopolio), no la promoción exterior, que no paga por unidad ni elige sectores con rentas.\n- c) La promoción exterior abarca la exportación y la inversión directa en el exterior y ofrece los mismos instrumentos para ambas.\n- d) Es el mecanismo de la subvención a la exportación. La promoción exterior no cambia el precio de lo que se exporta, y por eso no invita a la represalia."
+   },
+   "dificultad": 1,
+   "apartado": "II. Política de promoción exterior: objetivos y justificación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

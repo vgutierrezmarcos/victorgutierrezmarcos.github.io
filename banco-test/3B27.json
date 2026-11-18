@@ -1,0 +1,120 @@
+{
+ "tema": "3.B.27",
+ "preguntas": [
+  {
+   "id": 322701,
+   "estado": "publicada",
+   "enunciado": "En un modelo como el de Diamond y Dybvig, cada depositante entrega 1 al banco en $T=0$ y la mitad de ellos será impaciente ($\\pi=0{,}5$). El banco promete 1,2 a quien retire en $T=1$: guarda en liquidez lo justo para pagar a los impacientes (0,6) e invierte el resto (0,4) a largo plazo, con un rendimiento $R=2$ en $T=2$ y un valor de liquidación $L=0{,}5$ en $T=1$. Si se desata un pánico y todos los depositantes acuden a retirar en $T=1$, y el banco paga 1,2 por orden de llegada hasta agotar sus recursos, ¿qué fracción de los depositantes cobra?",
+   "opciones": {
+    "a": "La mitad: el banco solo puede pagar con los 0,6 que había guardado en liquidez.",
+    "b": "Dos tercios: el banco reúne 0,8 entre la liquidez y la inversión liquidada.",
+    "c": "Cinco sextos: el banco recupera la dotación de 1 y la reparte en pagos de 1,2.",
+    "d": "Todos: el banco es solvente, porque su inversión rinde $R=2$ y cubre lo prometido."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En el pánico el banco tiene que liquidar la inversión con pérdida: sus recursos en $T=1$ son $0{,}6+0{,}5\\times0{,}4=0{,}8$. Pagando 1,2 a cada uno, solo cobran $0{,}8/1{,}2=2/3$ de los depositantes; el resto no recibe nada, y por eso retirar es la mejor respuesta si se cree que los demás van a retirar.",
+    "desarrollo": "Los recursos del banco en $T=1$ si todos retiran son $\\pi c_1+L\\,(1-\\pi c_1)$: la liquidez guardada, $0{,}5\\times1{,}2=0{,}6$, más lo que se obtiene al liquidar la inversión ilíquida, $0{,}5\\times0{,}4=0{,}2$. En total, 0,8, menos que el 1,2 prometido a cada depositante. Con atención por orden de llegada, cobran $0{,}8/1{,}2=2/3$ de los depositantes y el tercio restante se queda sin nada.\n\nEl banco era perfectamente solvente en el equilibrio bueno: si solo retiran los impacientes, paga 1,2 a la mitad con la liquidez y, en $T=2$, la inversión rinde $0{,}4\\times2=0{,}8$, es decir, 1,6 a cada paciente, más que 1,2, de modo que ningún paciente quiere adelantarse. El pánico es un segundo equilibrio de Nash, una profecía que se cumple sola, y es lo que justifica la garantía de depósitos y el prestamista de última instancia.\n\nPor qué fallan las demás:\n\n- a) Olvida que el banco también liquida la inversión a largo plazo, aunque sea con pérdida ($0{,}6/1{,}2=1/2$).\n- c) Supone que la inversión se liquida sin pérdida ($L=1$): entonces habría 1 y cobrarían $1/1{,}2=5/6$. Con $L=0{,}5$ se recupera menos.\n- d) Confunde solvencia con liquidez: el rendimiento $R=2$ solo se obtiene si se espera a $T=2$; en un pánico la inversión vale $L$."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Estabilidad: pánicos bancarios (Diamond y Dybvig)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322702,
+   "estado": "publicada",
+   "enunciado": "Según cómo se reparten los objetivos de la supervisión financiera entre las autoridades, se distinguen tres modelos. En el modelo funcional o de «picos gemelos» (twin peaks):",
+   "opciones": {
+    "a": "Hay un supervisor para cada tipo de entidad (banca, valores y seguros), que vigila a la vez su solvencia y su conducta.",
+    "b": "Un único supervisor, dentro o fuera del banco central, se ocupa de la solvencia y de la conducta de todas las entidades.",
+    "c": "Un supervisor se ocupa de la política microprudencial de todas las entidades y otro, de la macroprudencial y de la resolución.",
+    "d": "Un supervisor vigila la solvencia de todas las entidades y otro, su conducta con los clientes, sea cual sea su sector."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El modelo de picos gemelos separa por objetivos y no por sectores: una autoridad para la solvencia (prudencial) y otra para la conducta con los clientes y en los mercados, sea banco, aseguradora o empresa de inversión. Es el del Reino Unido desde 2013 y el de los Países Bajos.",
+    "desarrollo": "Los tres modelos de organización de la supervisión son:\n\n- el sectorial: un supervisor por tipo de entidad (banca, valores, seguros), que vigila su solvencia y su conducta. Es el tradicional y el de España (Banco de España, CNMV y Dirección General de Seguros y Fondos de Pensiones);\n- el funcional o de picos gemelos: un supervisor de solvencia y otro de conducta para todas las entidades. En el Reino Unido, la Autoridad de Regulación Prudencial, dentro del Banco de Inglaterra, y la Autoridad de Conducta Financiera;\n- el integrado: un único supervisor para todo, dentro o fuera del banco central.\n\nLa ventaja de separar solvencia y conducta es evitar el conflicto de intereses de un supervisor que tolere malas prácticas con los clientes para no dañar la cuenta de resultados de la entidad; el coste es que obliga a coordinarse.\n\nPor qué fallan las demás:\n\n- a) Describe el modelo sectorial.\n- b) Describe el modelo integrado.\n- c) Los dos «picos» no son lo microprudencial y lo macroprudencial, sino la solvencia y la conducta; la política macroprudencial y la resolución se organizan aparte en cualquiera de los tres modelos."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 ¿Qué es la regulación financiera?: modelos de supervisión",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322703,
+   "estado": "publicada",
+   "enunciado": "Un banco tiene 100 millones en deuda pública con ponderación de riesgo del 0 %, 400 millones en hipotecas sobre vivienda con ponderación del 35 % y 260 millones en préstamos a empresas con ponderación del 100 %; no tiene exposiciones fuera de balance. Su capital se compone de 26 millones de capital ordinario de nivel 1 (CET1), 6 millones de capital adicional de nivel 1 y 8 millones de capital de nivel 2. Con los requisitos de Basilea III (mínimos de capital, colchón de conservación y ratio de apalancamiento), y sin otros colchones ni requisitos de Pilar 2, el banco:",
+   "opciones": {
+    "a": "Cumple los mínimos de capital y de apalancamiento, pero no cubre entero el colchón de conservación, lo que limita su reparto de dividendos.",
+    "b": "Incumple el mínimo de CET1, porque sus 26 millones son el 3,4 % de los 760 millones de activos y el mínimo es el 4,5 %.",
+    "c": "Cumple los mínimos y también el colchón de conservación, porque este puede cubrirse con capital de nivel 2 y su capital total llega al 10 %.",
+    "d": "Cumple los mínimos y el colchón de conservación, pero incumple la ratio de apalancamiento, porque su capital de nivel 1 es solo el 4,2 % de la exposición."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Los activos ponderados por riesgo son $0{,}35\\times400+260=400$ millones. Las ratios son 6,5 % de CET1, 8 % de nivel 1 y 10 % de capital total: cumple los mínimos (4,5 %, 6 % y 8 %), pero con el colchón de conservación haría falta un 7 % de CET1. El apalancamiento, $32/760=4{,}2\\ \\%$, supera el 3 %.",
+    "desarrollo": "Paso 1, los activos ponderados por riesgo (APR): $0\\times100+0{,}35\\times400+1\\times260=140+260=400$ millones.\n\nPaso 2, las ratios de capital sobre los APR: CET1, $26/400=6{,}5\\ \\%$; nivel 1, $(26+6)/400=8\\ \\%$; capital total, $(26+6+8)/400=10\\ \\%$. Los mínimos de Basilea III son 4,5 %, 6 % y 8 %: los cumple los tres.\n\nPaso 3, el colchón de conservación: un 2,5 % adicional, que tiene que ser CET1, y que lleva las exigencias al 7 % de CET1 (28 millones) y al 10,5 % de capital total (42 millones). El banco tiene 26 y 40: le faltan 2 millones de CET1. No cubrir el colchón no es incumplir un mínimo: el banco puede seguir operando, pero con límites al reparto de dividendos y de retribución variable hasta que lo reconstruya.\n\nPaso 4, la ratio de apalancamiento: capital de nivel 1 sobre la exposición sin ponderar, $32/760=4{,}2\\ \\%$, por encima del mínimo del 3 %.\n\nPor qué fallan las demás:\n\n- b) Las ratios de capital se miden sobre los activos ponderados por riesgo, no sobre el activo total: el CET1 es el 6,5 % de los APR.\n- c) El colchón de conservación solo puede cubrirse con CET1; además, el capital total (10 %) tampoco llega al 10,5 %.\n- d) El mínimo de apalancamiento es el 3 %, y el banco tiene el 4,2 %; lo que no cubre es el colchón de conservación."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Regulación prudencial: Basilea III (capital, colchones y apalancamiento)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 322704,
+   "estado": "publicada",
+   "enunciado": "Un banco significativo de la zona del euro es declarado inviable y la autoridad de resolución le aplica el instrumento de recapitalización interna (bail-in). Esto significa que:",
+   "opciones": {
+    "a": "El Fondo Único de Resolución suscribe una ampliación de capital antes de que los accionistas y los acreedores asuman pérdida alguna.",
+    "b": "Sus activos deteriorados se traspasan a una sociedad de gestión de activos y los accionistas conservan intacto el resto del banco.",
+    "c": "Se amortizan o convierten en acciones sus pasivos por orden de prelación, empezando por el capital y sin tocar los depósitos garantizados.",
+    "d": "Un juez abre el concurso de acreedores ordinario y los depositantes cobran a prorrata con el resto de los acreedores ordinarios."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En la recapitalización interna las pérdidas las absorben quienes financiaron al banco, por orden de prelación: primero las acciones, después la deuda subordinada y la ordinaria, que se amortizan o se convierten en capital. Los depósitos garantizados quedan siempre fuera. Es lo contrario del rescate con dinero público (bail-out).",
+    "desarrollo": "La resolución es un procedimiento administrativo y rápido, que gestiona una autoridad especializada y no un juez, pensado para que un banco inviable deje de serlo o desaparezca sin interrumpir sus funciones esenciales (pagos, depósitos, crédito) y sin que pague el contribuyente. Sus instrumentos son la venta del negocio, el banco puente, la segregación de activos y la recapitalización interna.\n\nEn la recapitalización interna se amortizan o se convierten en acciones los pasivos del banco siguiendo la prelación: capital, deuda subordinada y deuda ordinaria. Los depósitos garantizados (hasta 100.000 euros por depositante y entidad) no se tocan. Para que haya pasivos suficientes con que hacerlo, los bancos deben mantener un mínimo de fondos propios y deuda admisible (MREL; TLAC para los bancos de importancia sistémica mundial).\n\nPor qué fallan las demás:\n\n- a) Es al revés: el Fondo Único de Resolución solo puede usarse después de que los accionistas y los acreedores hayan absorbido pérdidas por al menos el 8 % del pasivo total.\n- b) Describe otro instrumento, la segregación de activos (el «banco malo»), y en una resolución los accionistas son los primeros en perder.\n- d) El concurso ordinario es justo lo que la resolución quiere evitar, por lento y por interrumpir funciones esenciales; y los depósitos garantizados no cobran a prorrata: están protegidos."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Resolución de crisis bancarias",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322705,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Martínez-Miera y Repullo (2010), los bancos compiten a la Cournot en el mercado de préstamos, la probabilidad de impago de los prestatarios aumenta con el tipo de interés del préstamo y los impagos están imperfectamente correlacionados. Al aumentar el número de bancos, la probabilidad de quiebra de cada banco:",
+   "opciones": {
+    "a": "Aumenta siempre, porque la competencia reduce el valor de la licencia bancaria y el banco, con menos que perder, elige una cartera más arriesgada.",
+    "b": "Baja primero y sube después: en los mercados concentrados domina el efecto riesgo de los prestatarios y en los muy competitivos, el efecto margen.",
+    "c": "Disminuye siempre, porque el tipo de los préstamos baja, los prestatarios eligen proyectos más seguros y los impagos se reducen.",
+    "d": "Sube primero y baja después: en los mercados concentrados domina el efecto margen y en los muy competitivos, el efecto riesgo de los prestatarios."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Más competencia baja el tipo de los préstamos, y eso tiene dos efectos opuestos: los prestatarios impagan menos (efecto riesgo) y el banco gana menos con los préstamos que sí se pagan, con lo que tiene menos colchón para cubrir los impagos (efecto margen). Con pocos bancos domina el primero y con muchos, el segundo: la probabilidad de quiebra tiene forma de U.",
+    "desarrollo": "Hay dos visiones clásicas de la relación entre competencia y estabilidad bancaria:\n\n- competencia-fragilidad (Keeley, 1990): la competencia reduce los márgenes y el valor de la licencia bancaria, y el banco, con menos que perder, arriesga más;\n- competencia-estabilidad (Boyd y De Nicolò, 2005): la competencia baja el tipo de los préstamos, los prestatarios eligen proyectos más seguros y quiebran menos bancos.\n\nMartínez-Miera y Repullo muestran que, si los impagos no están perfectamente correlacionados, la bajada del tipo tiene además un efecto margen: los préstamos que se pagan dejan menos ingresos con que cubrir los que no se pagan. En mercados muy concentrados domina el efecto riesgo y más competencia reduce la probabilidad de quiebra; en mercados muy competitivos domina el efecto margen y la aumenta. La relación tiene forma de U, de modo que las fusiones deben juzgarse caso a caso y la defensa de la competencia y la regulación prudencial se complementan.\n\nPor qué fallan las demás:\n\n- a) Es la visión de competencia-fragilidad, que el modelo solo confirma para mercados ya muy competitivos.\n- c) Es la visión de competencia-estabilidad, que solo vale para mercados concentrados.\n- d) Invierte el orden: describe una U invertida, con los efectos cambiados de sitio."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Política de la competencia: competencia y estabilidad",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

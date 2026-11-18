@@ -1,0 +1,120 @@
+{
+ "tema": "3.A.30",
+ "preguntas": [
+  {
+   "id": 313001,
+   "estado": "publicada",
+   "enunciado": "De una economía se conocen estos datos de un año, en millones de euros: producción a precios básicos, 1.000; consumos intermedios a precios de adquisición, 550; impuestos sobre los productos (IVA e impuestos especiales), 60; subvenciones a los productos, 10; otros impuestos sobre la producción, netos de otras subvenciones a la producción, 15; remuneración de los asalariados, 250. Con los criterios del SEC 2010, el PIB a precios de mercado y la suma del excedente bruto de explotación y la renta mixta bruta son, respectivamente:",
+   "opciones": {
+    "a": "500 y 200.",
+    "b": "515 y 200.",
+    "c": "500 y 185.",
+    "d": "450 y 185."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El VAB a precios básicos es $1.000-550=450$. El PIB a precios de mercado le suma solo los impuestos netos sobre los productos: $450+(60-10)=500$. El excedente y la renta mixta son el VAB menos la remuneración de los asalariados y los otros impuestos netos sobre la producción, que ya están dentro del VAB a precios básicos: $450-250-15=185$.",
+    "desarrollo": "Por la producción: $\\mathrm{VAB}_{\\mathrm{pb}}=1.000-550=450$ y $\\mathrm{PIB}_{\\mathrm{pm}}=\\mathrm{VAB}_{\\mathrm{pb}}+(\\mathrm{D.21}-\\mathrm{D.31})=450+50=500$.\n\nCuenta de explotación: del VAB a precios básicos se restan la remuneración de los asalariados y los otros impuestos netos sobre la producción ($\\mathrm{D.29}-\\mathrm{D.39}$), y queda $450-250-15=185$.\n\nComprobación por las rentas: $\\mathrm{PIB}=\\mathrm{RA}+\\mathrm{EBE}+\\mathrm{RMB}+(\\mathrm{D.2}-\\mathrm{D.3})=250+185+(50+15)=500$.\n\nPor qué fallan las demás:\n\n- a) Acierta el PIB, pero trata todo el VAB que no es salario como excedente ($450-250=200$): olvida que los otros impuestos netos sobre la producción (el IBI de la fábrica, las tasas) forman parte del VAB a precios básicos y no son renta del capital.\n- b) Suma al PIB también los otros impuestos netos sobre la producción ($450+50+15=515$), que ya están en el VAB a precios básicos: los cuenta dos veces. Y repite el error del excedente.\n- d) Calcula bien el excedente, pero da como PIB el VAB a precios básicos (450): le faltan los impuestos netos sobre los productos, que no se asignan a ninguna rama y se suman para el total."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Valoración (precios básicos y de mercado) y II.2 Cuenta de explotación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313002,
+   "estado": "publicada",
+   "enunciado": "De una economía se conocen estos datos de un año, en millones de euros: PIB a precios de mercado, 1.000; rentas primarias netas recibidas del resto del mundo, $-20$; transferencias corrientes netas recibidas del resto del mundo, $-10$; gasto en consumo final de los hogares, las ISFLSH y las Administraciones Públicas, 780; formación bruta de capital, 210; transferencias de capital netas recibidas del resto del mundo, 5. No hay adquisiciones de activos no producidos. La renta nacional disponible bruta, el ahorro nacional bruto y el saldo de la cuenta de capital de la nación son:",
+   "opciones": {
+    "a": "970, 190 y una necesidad de financiación de 15.",
+    "b": "970, 190 y una capacidad de financiación de 10.",
+    "c": "980, 200 y una necesidad de financiación de 5.",
+    "d": "1.030, 250 y una capacidad de financiación de 45."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La cadena de saldos es $\\mathrm{RNB}=\\mathrm{PIB}+\\mathrm{RP}=980$; $\\mathrm{RNDB}=\\mathrm{RNB}+\\mathrm{RS}=970$; $S=\\mathrm{RNDB}-C-G=190$, y capacidad o necesidad de financiación $=S-I+\\mathrm{CK}=190-210+5=-15$. El país tiene superávit de bienes y servicios (10), pero necesita financiación.",
+    "desarrollo": "Paso a paso:\n\n- $\\mathrm{RNB}=1.000-20=980$;\n- $\\mathrm{RNDB}=980-10=970$;\n- $S=970-780=190$;\n- saldo de la cuenta de capital: $190-210+5=-15$, una necesidad de financiación.\n\nComprobación por el lado exterior: $X-M=\\mathrm{PIB}-(C+G)-I=1.000-780-210=10$; la cuenta corriente es $\\mathrm{CC}=10-20-10=-20$, y $\\mathrm{CC}+\\mathrm{CK}=-20+5=-15$. Coincide.\n\nPor qué fallan las demás:\n\n- b) Calcula bien la renta y el ahorro, pero da como saldo final el de bienes y servicios ($X-M=10$): olvida que las rentas primarias y secundarias pagadas al exterior y las transferencias de capital también cuentan.\n- c) Se queda en la RNB (980) y no resta las transferencias corrientes netas pagadas al exterior; arrastra el error al ahorro (200) y al saldo ($200-210+5=-5$).\n- d) Cambia el signo de las rentas y transferencias con el exterior, como si el país las cobrara ($1.000+20+10=1.030$); de ahí un ahorro de 250 y una capacidad de 45."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Cuentas corrientes (RNB, RNDB y ahorro) y II.3 Cuenta de capital",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313003,
+   "estado": "publicada",
+   "enunciado": "Las Administraciones Públicas prestan gratis a los hogares servicios individuales de sanidad y de educación, que el SEC 2010 llama transferencias sociales en especie. Sobre su registro en la sucesión de cuentas, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Son un recurso de los hogares en la cuenta de distribución secundaria de la renta, de modo que elevan su renta disponible bruta.",
+    "b": "Forman parte del consumo final efectivo de las Administraciones Públicas, que coincide con su gasto en consumo final.",
+    "c": "Hacen que, para el total de la economía, la renta disponible ajustada supere a la renta nacional disponible bruta en su importe.",
+    "d": "Están en el gasto en consumo final de las Administraciones y en el consumo efectivo de los hogares, sin cambiar el ahorro de ningún sector."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El gasto en consumo final dice quién paga y el consumo final efectivo, quién consume. Las transferencias sociales en especie las pagan las Administraciones (están en su gasto) y las consumen los hogares (están en su consumo efectivo). Como suben a la vez la renta ajustada y el consumo efectivo de los hogares, y bajan los dos en las Administraciones, el ahorro de cada sector es el mismo.",
+    "desarrollo": "La cuenta de redistribución de la renta en especie anota estas transferencias como recurso de los hogares y empleo de las Administraciones Públicas (y de las ISFLSH). Su saldo es la renta disponible ajustada.\n\n- Hogares: renta disponible ajustada $=$ renta disponible $+$ transferencias en especie; consumo final efectivo $=$ gasto en consumo final $+$ transferencias en especie. La diferencia, el ahorro, no cambia.\n- Administraciones: renta ajustada $=$ renta disponible $-$ transferencias en especie; consumo final efectivo $=$ solo el consumo colectivo (defensa, justicia, orden público). El ahorro tampoco cambia.\n\nPor qué fallan las demás:\n\n- a) La cuenta de distribución secundaria solo recoge la redistribución en dinero (impuestos corrientes, cotizaciones, prestaciones distintas de las transferencias en especie, otras transferencias corrientes). Las transferencias en especie no entran en la renta disponible, sino en la ajustada.\n- b) El consumo final efectivo de las Administraciones es solo el colectivo: es menor que su gasto en consumo final, justo en el importe del consumo individual que transfieren a los hogares.\n- c) Son transferencias entre sectores residentes: lo que ganan los hogares lo pierden las Administraciones y las ISFLSH, así que en el total la renta disponible ajustada coincide con la renta nacional disponible."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Cuentas de redistribución de la renta en especie y de utilización de la renta",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313004,
+   "estado": "publicada",
+   "enunciado": "Durante un año sube el precio de mercado de las viviendas que ya poseen los hogares de un país, sin que estos compren, vendan ni reformen ninguna. En la sucesión de cuentas del SEC 2010, esa subida:",
+   "opciones": {
+    "a": "Se anota como ahorro de los hogares en la cuenta de utilización de la renta, porque aumenta su riqueza sin que hayan consumido más.",
+    "b": "Se anota como ganancia de posesión en la cuenta de revalorización: eleva su patrimonio neto sin pasar por la renta ni por el ahorro.",
+    "c": "Se anota como formación bruta de capital fijo en la cuenta de capital, porque la vivienda es un activo fijo de los hogares.",
+    "d": "No se anota en ninguna cuenta hasta que la vivienda se vende, porque el sistema solo registra operaciones entre unidades."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Un cambio de precio de un activo que se mantiene no es una operación: es una ganancia de posesión, que se anota en la cuenta de revalorización (dentro de las otras variaciones de los activos). Cambia el patrimonio neto del balance final, pero no la renta, el ahorro ni la inversión.",
+    "desarrollo": "El paso del balance inicial al final se explica por tres vías: el ahorro y las transferencias de capital (cuenta de capital), las otras variaciones del volumen (descubrimientos, catástrofes) y las ganancias y pérdidas de posesión (cuenta de revalorización). La subida del precio de un activo que ya se tiene pertenece a la tercera. Como los balances valoran los activos a los precios de su fecha, el patrimonio neto de los hogares sube; es el origen de los efectos riqueza sobre el consumo.\n\nPor qué fallan las demás:\n\n- a) El ahorro es la renta disponible que no se consume. La revalorización no es renta: no sale de la producción ni de una transferencia, y no aparece en las cuentas corrientes.\n- c) La formación bruta de capital fijo recoge adquisiciones menos cesiones de activos fijos producidos (viviendas nuevas, reformas importantes). Aquí no se ha producido ni comprado nada: solo ha cambiado un precio.\n- d) El sistema no registra solo operaciones: los flujos incluyen también las otras variaciones de los activos, y las ganancias de posesión se anotan cuando se producen, se realicen o no con una venta."
+   },
+   "dificultad": 1,
+   "apartado": "II.3 Cuenta de otras variaciones de los activos (revalorización) y II.4 Balances",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313005,
+   "estado": "publicada",
+   "enunciado": "Una economía produce dos bienes. En el año 0 produce 50 unidades del bien A, a 2 euros, y 100 unidades del bien B, a 1 euro. En el año 1 produce 60 unidades de A, a 2,7 euros, y 100 unidades de B, a 0,8 euros. Con el método del SEC 2010, que valora las cantidades de cada año a los precios del año anterior, el crecimiento del PIB en volumen y la variación del deflator implícito del PIB en el año 1 son, respectivamente:",
+   "opciones": {
+    "a": "10 % y 10 %.",
+    "b": "10 % y 7,5 %.",
+    "c": "12,6 % y 7,5 %.",
+    "d": "12,6 % y 10 %."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El volumen es un índice de Laspeyres con los precios del año anterior: $(2\\cdot60+1\\cdot100)/(2\\cdot50+1\\cdot100)=220/200=1{,}10$. El PIB nominal pasa de 200 a $2{,}7\\cdot60+0{,}8\\cdot100=242$, un 21 % más. El deflator implícito es el cociente, $1{,}21/1{,}10=1{,}10$: un índice de Paasche, que pondera los precios con las cantidades del año corriente.",
+    "desarrollo": "- PIB nominal: año 0, $2\\cdot50+1\\cdot100=200$; año 1, $2{,}7\\cdot60+0{,}8\\cdot100=162+80=242$. Crece un 21 %.\n- Volumen (cantidades del año 1 a precios del año 0): $2\\cdot60+1\\cdot100=220$; $220/200=1{,}10$.\n- Deflator implícito: $242/220=1{,}10$. Es $\\dfrac{\\vec{p}^{\\,1}\\cdot\\vec{x}^{\\,1}}{\\vec{p}^{\\,0}\\cdot\\vec{x}^{\\,1}}$, un índice de precios de Paasche.\n\nComprobación: $1{,}10\\cdot1{,}10=1{,}21$, el crecimiento nominal.\n\nPor qué fallan las demás:\n\n- b) Da como deflator un índice de precios de Laspeyres, con las cantidades del año 0: $(2{,}7\\cdot50+0{,}8\\cdot100)/200=215/200=1{,}075$. Pero volumen y deflator no pueden ser los dos de Laspeyres: $1{,}10\\cdot1{,}075=1{,}1825\\neq1{,}21$.\n- c) Es la pareja inversa a la del SEC: precios de Laspeyres (7,5 %) y volumen de Paasche, a precios del año corriente, $242/215=1{,}126$. Descompone bien el 21 %, pero no es el método del enunciado.\n- d) Combina el volumen a precios del año corriente (12,6 %) con el deflator de Paasche (10 %): $1{,}126\\cdot1{,}10\\neq1{,}21$."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 Del valor al volumen: volúmenes encadenados y deflator implícito",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

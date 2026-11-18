@@ -1,0 +1,219 @@
+{
+ "tema": "3.B.13",
+ "preguntas": [
+  {
+   "id": 321301,
+   "estado": "publicada",
+   "enunciado": "La cotización del par EUR/USD pasa de 1,10 a 1,15. Para un residente en la zona del euro, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es una cotización directa, y el euro se ha depreciado frente al dólar: hacen falta más euros por dólar.",
+    "b": "Es una cotización indirecta; el euro se ha apreciado, y el tipo directo (euros por dólar) ha bajado.",
+    "c": "Es una cotización indirecta, y el euro se ha depreciado frente al dólar: cada euro compra menos dólares.",
+    "d": "Es una cotización directa; el euro se ha apreciado, y hacen falta más euros para comprar 1 dólar."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "EUR/USD dice cuántos dólares vale 1 euro: para la zona del euro, la moneda cotizada es la extranjera, luego es una cotización indirecta. Si sube de 1,10 a 1,15, el euro vale más dólares (se aprecia) y el tipo directo, su inversa, baja de 0,909 a 0,870 euros por dólar.",
+    "desarrollo": "En un par BASE/COTIZADA, la cotización dice cuántas unidades de la moneda cotizada hacen falta para comprar 1 unidad de la base. En EUR/USD la base es el euro y la cotizada el dólar.\n\n- Cotización directa (o de precio): la moneda cotizada es la nacional; da el precio de 1 unidad de divisa en moneda nacional. Para la zona del euro sería «euros por dólar».\n- Cotización indirecta (o de volumen): la moneda cotizada es la extranjera; dice cuánta divisa se obtiene con 1 unidad de moneda nacional. Es el caso de EUR/USD para un residente en la zona del euro.\n\nSi EUR/USD sube de 1,10 a 1,15, cada euro compra más dólares: el euro se aprecia. El tipo directo es la inversa: pasa de $1/1{,}10\\approx0{,}909$ a $1/1{,}15\\approx0{,}870$ euros por dólar; baja, y con la convención directa una bajada es una apreciación de la moneda nacional.\n\nPor qué fallan las demás:\n\n- a) Ni es directa ni el euro se deprecia: con esta cotización, una subida es una apreciación del euro.\n- c) Acierta en el tipo de cotización, pero lee la variación al revés: cada euro compra más dólares, no menos.\n- d) Acierta en que el euro se aprecia, pero la cotización es indirecta y, tras la apreciación, hacen falta menos euros por dólar."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Convenciones: cotización directa e indirecta",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321302,
+   "estado": "publicada",
+   "enunciado": "Un banco cotiza a una empresa exportadora de la zona del euro el par EUR/USD a 1,2495/1,2500. La empresa acaba de cobrar 1.000.000 de dólares y quiere cambiarlos hoy por euros. ¿Cuántos euros recibe, aproximadamente?",
+   "opciones": {
+    "a": "800.000 euros: compra los euros al precio de venta del banco (ask), 1,2500.",
+    "b": "800.320 euros: compra los euros al precio de compra del banco (bid), 1,2495.",
+    "c": "1.250.000 euros: multiplica los dólares por el precio de venta del banco, 1,2500.",
+    "d": "800.160 euros: el banco le aplica el precio medio de la cotización, 1,24975."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La cotización se refiere a la moneda base, el euro: el banco compra euros a 1,2495 dólares (bid) y los vende a 1,2500 (ask). La empresa tiene dólares y quiere euros: compra euros al ask y recibe $1.000.000/1{,}2500=800.000$ euros. El cliente opera siempre al precio que menos le favorece.",
+    "desarrollo": "En EUR/USD la moneda base es el euro. El creador de mercado da 2 precios, los 2 desde su punto de vista:\n\n- bid (1,2495): el precio al que él compra euros; el cliente que vende euros recibe 1,2495 dólares por euro;\n- ask (1,2500): el precio al que él vende euros; el cliente que compra euros paga 1,2500 dólares por euro.\n\nLa empresa tiene dólares y quiere euros, es decir, compra euros: paga 1,2500 dólares por cada uno y obtiene $1.000.000/1{,}2500=800.000$ euros.\n\nEl coste del diferencial se ve comparando con el precio medio: $1.000.000/1{,}24975\\approx800.160$ euros; la empresa recibe unos 160 euros menos. El spread, de 5 pips, es lo que cobra el banco por dar liquidez.\n\nPor qué fallan las demás:\n\n- b) Al bid el banco compra euros, no los vende: sería el precio si la empresa vendiera euros. Si el cliente pudiera comprar al bid y vender al ask, ganaría él el diferencial.\n- c) La cotización está en dólares por euro: para pasar de dólares a euros hay que dividir, no multiplicar.\n- d) El precio medio no es un precio al que se pueda operar: el banco compra al bid y vende al ask."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Convenciones: bid, ask y spread",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321303,
+   "estado": "publicada",
+   "enunciado": "En una compraventa de divisas, el riesgo de liquidación (o riesgo de Herstatt) es:",
+   "opciones": {
+    "a": "El de que el tipo de cambio varíe entre la fecha de contratación y la de liquidación; se cubre contratando un seguro de cambio.",
+    "b": "El de no encontrar contrapartida para deshacer una posición en un mercado tensionado; lo reducen los creadores de mercado.",
+    "c": "El de perder la diferencia de precio si la contraparte quiebra antes del vencimiento; lo elimina la cámara de contrapartida central, obligatoria en el contado.",
+    "d": "El de entregar la moneda vendida y no recibir la comprada, con pérdida de todo el principal; lo reduce la liquidación con pago contra pago."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Una compraventa de divisas se liquida con 2 pagos, uno en cada moneda, en sistemas de pago que pueden abrir a horas distintas. Si una parte paga y la otra quiebra antes de pagar, la primera pierde todo el principal. La respuesta es el pago contra pago (las 2 partes se liquidan a la vez o ninguna), que ofrece CLS.",
+    "desarrollo": "La liquidación de una operación de divisas exige 2 pagos en 2 sistemas de pago nacionales, que pueden no coincidir en horario. Entre un pago y otro, quien ya ha entregado su moneda está expuesto por el importe íntegro de la operación. El nombre viene del banco alemán Herstatt, cerrado en junio de 1974 cuando ya había cobrado marcos y aún no había pagado los dólares en Nueva York. La solución es el pago contra pago (PvP): las 2 partes se liquidan simultáneamente o no se liquida ninguna. Lo ofrece CLS desde 2002; aun así, una parte del mercado (monedas fuera de CLS, operaciones con clientes) sigue expuesta.\n\nPor qué fallan las demás:\n\n- a) Describe el riesgo de cambio (de mercado), que es el que se cubre con un forward. El riesgo de liquidación existe aunque el tipo de cambio no se mueva.\n- b) Describe el riesgo de liquidez de mercado.\n- c) Describe el riesgo de contraparte antes de la liquidación (el coste de reposición: solo se pierde la diferencia de precio), distinto del de liquidación, en el que se pierde el principal. Además, en divisas la compensación es casi siempre bilateral: el contado no pasa por una cámara de contrapartida central ni está obligado a hacerlo."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Características: mercado extrabursátil y riesgo de liquidación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321304,
+   "estado": "publicada",
+   "enunciado": "¿En qué se diferencia un FX swap de un currency swap?",
+   "opciones": {
+    "a": "El FX swap se negocia en mercados organizados, con cámara y márgenes diarios; el currency swap es extrabursátil.",
+    "b": "En el FX swap no se intercambia el principal, solo la diferencia de tipos al vencimiento; en el currency swap sí.",
+    "c": "En el FX swap no hay pagos entre el contado y el plazo; en el currency swap las partes se pagan además intereses periódicos.",
+    "d": "El FX swap convierte deuda a largo plazo de una moneda a otra; el currency swap gestiona la liquidez a muy corto plazo."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Un FX swap son 2 compraventas de signo contrario entre las mismas partes, una al contado y la inversa a plazo, sin pagos intermedios. Un currency swap intercambia también el principal al inicio y al final, pero además, durante su vida, cada parte paga a la otra los intereses de la moneda que recibió.",
+    "desarrollo": "Los 2 instrumentos intercambian 2 monedas en sentido contrario al principio y al final, y los 2 son extrabursátiles (OTC), con riesgo de contraparte. Se distinguen en lo que pasa entre medias y en su uso:\n\n- FX swap: una compraventa al contado y la inversa a plazo, al tipo forward, sin pagos intermedios (el diferencial de intereses va incorporado en la diferencia entre el tipo de contado y el de plazo, por la paridad cubierta de intereses). Equivale a un préstamo en una moneda garantizado con un depósito en la otra. Suele ser a corto plazo y sirve para gestionar la liquidez en otra moneda sin riesgo de cambio; es el instrumento más negociado del mercado.\n- Currency swap: además del principal, las partes se intercambian periódicamente los intereses, fijos o variables, de la moneda que recibió cada una. Plazos más largos; sirve para convertir una deuda en una moneda en deuda en otra. Es un mercado pequeño.\n\nPor qué fallan las demás:\n\n- a) Los 2 son OTC. Los que se negocian en mercados organizados, con cámara y márgenes diarios, son los futuros.\n- b) En el FX swap sí se intercambian las 2 monedas, al contado y a plazo. El contrato en el que solo se paga una diferencia al vencimiento es el forward sin entrega (NDF).\n- d) Invierte los usos: la liquidez a corto plazo es lo propio del FX swap y la conversión de deuda a largo plazo, del currency swap."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Instrumentos: FX swaps y currency swaps",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321305,
+   "estado": "publicada",
+   "enunciado": "El tipo de cambio al contado es de 1,02 unidades de moneda nacional por unidad de divisa. El tipo de interés anual es del 8 % en moneda nacional y del 4 % en la divisa (para un plazo de 6 meses, el 4 % y el 2 %, respectivamente). Si se cumple la paridad cubierta de intereses, el tipo de cambio a plazo de 6 meses, en unidades de moneda nacional por unidad de divisa, es aproximadamente:",
+   "opciones": {
+    "a": "1,00: la divisa cotiza con descuento a plazo.",
+    "b": "1,04: la divisa cotiza con prima a plazo.",
+    "c": "1,06: la divisa cotiza con prima a plazo.",
+    "d": "1,02: la divisa cotiza a plazo igual que al contado."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Por la paridad cubierta, $F=E\\,\\frac{1+i}{1+i^*}=1{,}02\\times\\frac{1{,}04}{1{,}02}=1{,}04$, con los tipos del plazo de la operación (6 meses). La moneda de tipo de interés más bajo, aquí la divisa, cotiza con prima a plazo: lo que rinde de menos en intereses lo compensa en el cambio cubierto.",
+    "desarrollo": "La paridad cubierta de intereses iguala lo que rinde invertir en moneda nacional con lo que rinde invertir en la divisa cubriendo hoy el cambio de vuelta:\n\n$$1+i=(1+i^*)\\frac{F}{E}\\quad\\Longrightarrow\\quad F=E\\,\\frac{1+i}{1+i^*}=1{,}02\\times\\frac{1{,}04}{1{,}02}=1{,}04 .$$\n\nComprobación por los 2 caminos: 1,02 unidades de moneda nacional invertidas en casa dan $1{,}02\\times1{,}04=1{,}0608$; cambiadas por 1 unidad de divisa, invertidas al 2 % y vendidas a plazo a 1,04 dan $1{,}02\\times1{,}04=1{,}0608$. Coinciden.\n\nLa divisa vale a plazo un 1,96 % más que al contado ($\\approx i-i^*=2$ puntos): cotiza con prima, y la moneda nacional, que es la de tipo más alto, con descuento.\n\nPor qué fallan las demás:\n\n- a) Invierte el cociente: $1{,}02\\times1{,}02/1{,}04\\approx1{,}00$. La moneda con descuento a plazo es la de tipo de interés más alto (la nacional), no la divisa.\n- c) Usa el tipo anual nacional con el semestral extranjero: $1{,}02\\times1{,}08/1{,}04\\approx1{,}06$. Los 2 tipos tienen que ser los del plazo de la operación.\n- d) El tipo a plazo solo coincide con el de contado si los tipos de interés de las 2 monedas son iguales."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Operaciones de arbitraje: paridad cubierta de intereses",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321306,
+   "estado": "publicada",
+   "enunciado": "En un momento dado se observan estas cotizaciones, sin diferencial entre el precio de compra y el de venta: EUR/USD = 1,20; USD/JPY = 150; EUR/JPY = 183. Un arbitrajista que parte de yenes:",
+   "opciones": {
+    "a": "No puede ganar nada sin riesgo: el tipo cruzado EUR/JPY es coherente con los 2 tipos frente al dólar.",
+    "b": "Gana comprando euros con yenes, cambiando los euros por dólares y los dólares por yenes: obtiene 183 yenes por cada 180.",
+    "c": "Gana comprando dólares con yenes y esperando a que el tipo cruzado se corrija para venderlos: obtiene 183 yenes por cada 180.",
+    "d": "Gana comprando dólares con yenes, cambiando los dólares por euros y los euros por yenes: obtiene 183 yenes por cada 180."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El tipo cruzado que implican las cotizaciones frente al dólar es $1{,}20\\times150=180$ yenes por euro, menos que los 183 del par directo. El euro está barato a través del dólar y caro en el par directo: se compra por la vía del dólar (180 yenes) y se vende directamente (183 yenes).",
+    "desarrollo": "Sin arbitraje, el tipo cruzado es el producto de los 2 tipos frente al dólar:\n\n$$\\frac{\\mathrm{JPY}}{\\mathrm{EUR}}=\\frac{\\mathrm{USD}}{\\mathrm{EUR}}\\times\\frac{\\mathrm{JPY}}{\\mathrm{USD}}=1{,}20\\times150=180 .$$\n\nEl par directo cotiza a 183: el euro cuesta 180 yenes si se compra pasando por el dólar y se puede vender por 183 en el par directo. El arbitraje triangular consiste en comprar donde está barato y vender donde está caro, a la vez:\n\n- con 180 yenes se compran $180/150=1{,}20$ dólares;\n- con 1,20 dólares se compra $1{,}20/1{,}20=1$ euro;\n- el euro se vende por 183 yenes.\n\nBeneficio: 3 yenes por cada 180 (un 1,67 %), sin riesgo y sin capital propio. Al repetirse, la operación encarece el dólar en yenes y el euro en dólares y abarata el euro en yenes, hasta que el tipo cruzado vuelve a ser coherente.\n\nPor qué fallan las demás:\n\n- a) $1{,}20\\times150=180\\neq183$: los tipos no son coherentes.\n- b) Da la vuelta al revés: con 183 yenes compra 1 euro, lo cambia por 1,20 dólares y obtiene $1{,}20\\times150=180$ yenes. Pierde 3.\n- c) Eso no es un arbitraje, sino una especulación: deja una posición abierta en dólares y depende de cómo se muevan los tipos. El arbitraje cierra las 3 operaciones a la vez."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Operaciones de arbitraje: arbitraje espacial triangular y tipos cruzados",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:321306.webp",
+     "alt": "Triángulo con una moneda en cada vértice: EUR arriba, USD abajo a la izquierda y JPY abajo a la derecha. En cada lado, la cotización del enunciado: EUR/USD = 1,20; USD/JPY = 150; EUR/JPY = 183. Los lados no llevan flechas ni se indica ningún recorrido.",
+     "ancho": 520
+    }
+   ]
+  },
+  {
+   "id": 321307,
+   "estado": "publicada",
+   "enunciado": "Un inversor se endeuda a 1 año en una moneda al 1 % e invierte el importe, sin cubrir el tipo de cambio, en otra moneda que rinde el 6 %. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Es una operación de arbitraje: gana con certeza unos 5 puntos, el diferencial que garantiza la paridad cubierta de intereses.",
+    "b": "Si se cumple la paridad no cubierta de intereses, espera ganar unos 5 puntos, porque el tipo de cambio esperado no varía.",
+    "c": "Si la moneda de inversión se deprecia un 8 % frente a la de financiación, pierde algo más de 3 puntos; con la paridad no cubierta, la ganancia esperada sería nula.",
+    "d": "Si la moneda de inversión se deprecia un 8 % frente a la de financiación, gana unos 13 puntos, porque al diferencial de intereses se suma la variación del cambio."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Es un carry trade: una especulación, no un arbitraje, porque el cambio de vuelta queda abierto. Su resultado es, aproximadamente, el diferencial de intereses menos la depreciación de la moneda de inversión: $5-8=-3$ puntos. Con la paridad no cubierta, la depreciación esperada iguala al diferencial y la ganancia esperada es nula.",
+    "desarrollo": "El carry trade consiste en endeudarse en una moneda de tipo bajo (la de financiación) para invertir en una de tipo alto (la de inversión) sin cubrir el cambio. Por cada unidad de la moneda de financiación:\n\n- se devuelve $1{,}01$;\n- se obtiene $1{,}06\\times(1-0{,}08)=1{,}06\\times0{,}92=0{,}9752$;\n- resultado: $0{,}9752-1{,}01=-0{,}0348$, una pérdida del 3,5 % (aproximadamente, diferencial menos depreciación: $5-8=-3$).\n\nLa paridad no cubierta de intereses dice que, en equilibrio con neutralidad al riesgo, el diferencial de tipos es igual a la depreciación esperada de la moneda de tipo alto: se esperaría que la moneda de inversión se depreciara en torno a un 5 %, lo justo para anular el diferencial. El carry trade es, por eso, una apuesta contra la paridad no cubierta; en los datos ha ganado en promedio, pero con pérdidas bruscas cuando la moneda de financiación se aprecia de golpe.\n\nPor qué fallan las demás:\n\n- a) No hay beneficio seguro: el inversor asume riesgo de cambio. Si se cubriera vendiendo a plazo la moneda de inversión, la paridad cubierta haría que el descuento a plazo se llevara el diferencial.\n- b) La paridad no cubierta no dice que el tipo esperado no varíe, sino que la moneda de tipo alto se deprecia, en expectativa, lo que marca el diferencial: ganancia esperada nula.\n- d) La depreciación de la moneda en la que se invierte resta, no suma: lo invertido vale menos al volver a la moneda de financiación."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Operaciones de especulación: paridad no cubierta de intereses y carry trade",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321308,
+   "estado": "publicada",
+   "enunciado": "Con datos de las grandes monedas frente al dólar se estima la regresión $\\Delta e_{t+1}=\\beta_0+\\beta_1\\,(f_t-e_t)+\\varepsilon_{t+1}$, donde $e_t$ y $f_t$ son los logaritmos de los tipos de cambio al contado y a plazo, y se obtiene una pendiente $\\beta_1$ negativa y significativamente distinta de 1. Señale la interpretación CORRECTA:",
+   "opciones": {
+    "a": "La paridad cubierta de intereses no se cumple: quedan beneficios de arbitraje sin riesgo que nadie aprovecha.",
+    "b": "El tipo a plazo predice sin sesgo el tipo de contado futuro, aunque con un error de previsión muy grande.",
+    "c": "Se rechaza la hipótesis conjunta de neutralidad al riesgo y expectativas racionales: el tipo a plazo predice con sesgo.",
+    "d": "Se confirma la paridad no cubierta de intereses: las monedas de tipos altos se deprecian más que el diferencial."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con paridad cubierta, neutralidad al riesgo (paridad no cubierta) y expectativas racionales, el tipo a plazo sería un predictor insesgado del contado futuro: $\\beta_0=0$ y $\\beta_1=1$. Una pendiente negativa rechaza esa hipótesis conjunta: es la paradoja del margen forward. No dice cuál de los supuestos falla.",
+    "desarrollo": "La regresión de Fama (1984) contrasta si el margen a plazo, $f_t-e_t$, predice la depreciación observada. Si se cumplen la paridad cubierta ($f_t-e_t\\approx i-i^*$), la no cubierta ($\\mathbb{E}_t[e_{t+1}]-e_t\\approx i-i^*$) y las expectativas son racionales, la depreciación observada es el margen a plazo más un error impredecible: $\\beta_0=0$, $\\beta_1=1$.\n\nLa evidencia rechaza esa hipótesis: la pendiente suele ser negativa (en torno a $-0{,}9$ en el repaso de Froot y Thaler). El margen a plazo se equivoca incluso en el sentido, y de ahí vive el carry trade. Como el contraste es de una hipótesis conjunta, hay varias salidas: una prima de riesgo variable (se abandona la neutralidad al riesgo), los sucesos raros que no aparecen en la muestra (peso problem) o expectativas no racionales y heterogéneas.\n\nPor qué fallan las demás:\n\n- a) La regresión no contrasta la paridad cubierta, que es una condición de arbitraje entre el contado, el plazo y los tipos de interés de hoy y se da por supuesta. Lo que falla es la relación entre el plazo de hoy y el contado de mañana, que ningún arbitraje sin riesgo garantiza.\n- b) Insesgado exigiría $\\beta_1=1$ (y $\\beta_0=0$), por grande que fuera el error. Con $\\beta_1<0$ el sesgo es sistemático.\n- d) Si las monedas de tipos altos se depreciaran más que el diferencial, la pendiente sería mayor que 1, no negativa; y en ningún caso se confirmaría la paridad no cubierta, que exige exactamente 1."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Contraste: regresión de Fama y paradoja del margen forward",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 321309,
+   "estado": "publicada",
+   "enunciado": "Desde 2008 se observan desviaciones persistentes de la paridad cubierta de intereses entre las grandes monedas (la «base» de los swaps de divisas): obtener dólares a través del mercado de divisas cuesta más que pedirlos prestados directamente. La explicación más aceptada es:",
+   "opciones": {
+    "a": "El coste de usar el balance de los bancos que arbitran, por la regulación, unido a una fuerte demanda de cobertura en dólares.",
+    "b": "La prima de riesgo cambiario que exigen los inversores aversos al riesgo por mantener la moneda que consideran más arriesgada.",
+    "c": "Los controles de capital y los costes de transacción entre las grandes economías, que impiden mover los fondos de una a otra.",
+    "d": "Los errores sistemáticos de expectativas de los operadores chartistas, que extrapolan la tendencia reciente del tipo de cambio."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El arbitraje que impone la paridad cubierta no tiene riesgo de cambio, pero ocupa balance. Desde la crisis, la regulación (la ratio de apalancamiento de Basilea III) encarece ese balance y la demanda de cobertura en dólares es muy alta: la desviación persiste sin que haya un beneficio gratis. Es un caso de límites al arbitraje.",
+    "desarrollo": "Hasta 2007 la paridad cubierta se cumplía casi exactamente en las grandes monedas, descontados los costes de transacción. Desde 2008 hay una base persistente, mayor al cierre de los trimestres y en las crisis (como en marzo de 2020, cuando hicieron falta las líneas swap de la Reserva Federal). La literatura (Du, Tepper y Verdelhan; Borio y otros) la atribuye a 2 cosas:\n\n- los límites al balance de los bancos que arbitran: la operación no tiene riesgo de cambio, pero agranda el balance, y la ratio de apalancamiento exige capital por ello;\n- una gran demanda de cobertura en dólares (inversores y bancos de fuera de Estados Unidos con activos en dólares).\n\nNo es dinero encima de la mesa que nadie recoge: recogerlo cuesta capital. Por eso se dice que el mercado es eficiente, en el sentido de ausencia de arbitraje, una vez descontados los límites al arbitraje.\n\nPor qué fallan las demás:\n\n- b) La prima de riesgo cambiario es una explicación de los incumplimientos de la paridad no cubierta. En la cubierta no hay riesgo de cambio que remunerar: el cambio de vuelta está cerrado a plazo.\n- c) Entre las grandes monedas no hay controles de capital, y las desviaciones superan con mucho los costes de transacción.\n- d) Las expectativas, racionales o no, no intervienen en la paridad cubierta, que relaciona precios conocidos hoy; son una de las salidas a la paradoja del margen forward, que afecta a la no cubierta."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 ¿Es eficiente el mercado de divisas? Ausencia de arbitraje y desviaciones de la PCI",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

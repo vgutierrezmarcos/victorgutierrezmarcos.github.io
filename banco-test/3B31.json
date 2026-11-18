@@ -1,0 +1,127 @@
+{
+ "tema": "3.B.31",
+ "preguntas": [
+  {
+   "id": 323101,
+   "estado": "publicada",
+   "enunciado": "Cuatro países idénticos emiten CO$_2$. Con $E$ las emisiones mundiales, el coste marginal de reducción (el beneficio marginal de emitir) es $\\mathrm{CMgR}(E)=100-E$, y cada tonelada adicional causa a cada uno de los países un daño marginal $\\mathrm{DMg}_i(E)=E/4$. En el equilibrio no cooperativo, cada país reduce hasta que el coste marginal de reducción iguala su propio daño marginal. Las emisiones de ese equilibrio ($E^{\\mathrm{N}}$), las óptimas para el conjunto ($E^*$) y el impuesto uniforme por tonelada que, cobrado a unos emisores que no tienen en cuenta ningún daño, lleva al óptimo ($t^*$) son:",
+   "opciones": {
+    "a": "$E^{\\mathrm{N}}=100$, $E^*=80$ y $t^*=20$.",
+    "b": "$E^{\\mathrm{N}}=80$, $E^*=50$ y $t^*=12{,}5$.",
+    "c": "$E^{\\mathrm{N}}=80$, $E^*=50$ y $t^*=50$.",
+    "d": "$E^{\\mathrm{N}}=50$, $E^*=50$ y $t^*=50$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Cada país solo cuenta su daño: $100-E=E/4$ da $E^{\\mathrm{N}}=80$. El óptimo mundial suma los daños de los cuatro, $\\mathrm{DMg}=E$: $100-E=E$ da $E^*=50$. El impuesto óptimo es el daño marginal mundial en el óptimo, $t^*=50$, no el de un solo país.",
+    "desarrollo": "Como una tonelada calienta igual se emita donde se emita, es un mal público global y los daños marginales se suman en vertical entre países, como las valoraciones de un bien público: $\\mathrm{DMg}(E)=4\\times E/4=E$.\n\n- Sin ninguna política, se emite hasta que emitir no reporta nada: $\\mathrm{CMgR}=0$, $E^c=100$.\n- Equilibrio no cooperativo (de Nash): cada país iguala el coste marginal de reducción con su propio daño marginal, $100-E=E/4$, de donde $E^{\\mathrm{N}}=80$.\n- Óptimo mundial: $\\mathrm{CMgR}=\\mathrm{DMg}$, $100-E=E$, de donde $E^*=50$.\n- Impuesto pigouviano: $t^*=\\mathrm{DMg}(E^*)=50$. Comprobación: con un precio de 50 por tonelada, los emisores reducen hasta $\\mathrm{CMgR}=50$, es decir, $E=50$.\n\nSe cumple $E^c>E^{\\mathrm{N}}>E^*$ ($100>80>50$): aunque cada país haga lo que le conviene, el mundo emite demasiado. La distancia entre 80 y 50 es el problema del polizón entre Estados.\n\nPor qué fallan las demás:\n\n- a) Confunde el equilibrio no cooperativo con la ausencia de política (100) y toma por óptimo el punto en el que cada país solo cuenta su propio daño (80, con un precio de 20).\n- b) Acierta en las emisiones, pero fija el impuesto en el daño marginal de un solo país en el óptimo, $50/4=12{,}5$. Con ese precio se reduciría solo hasta $\\mathrm{CMgR}=12{,}5$, es decir, $E=87{,}5$: muy lejos del óptimo.\n- d) Supone que, sin cooperar, los países ya tienen en cuenta el daño que causan a los demás. Si fuera así no habría problema de cooperación."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 El cambio climático como problema económico (emisiones de Nash y óptimas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:323101.webp",
+     "alt": "Plano con las emisiones mundiales E en abscisas y los euros por tonelada en ordenadas, ambos de 0 a 100. Tres rectas: el coste marginal de reducción, CMgR = 100 − E, que baja de (0, 100) a (100, 0); el daño marginal de un país, DMg_i, que sube desde el origen hasta (100, 25); y el daño marginal sumado de los cuatro países, que sube desde el origen hasta (100, 100). No se marca ningún punto de corte ni ningún valor intermedio.",
+     "ancho": 540
+    }
+   ]
+  },
+  {
+   "id": 323102,
+   "estado": "publicada",
+   "enunciado": "Para valorar los daños del calentamiento se comparan dos hipótesis sobre una economía que, sin daños, crecería al 2 % anual: (i) un efecto nivel, por el que su PIB es de forma permanente un 2 % menor del que habría sido; (ii) un efecto crecimiento, por el que su tasa de crecimiento baja de forma permanente al 1,8 %. Pasados 50 años, y respecto a la senda sin daños, su PIB es aproximadamente:",
+   "opciones": {
+    "a": "Un 2 % menor en los dos casos, porque 0,2 puntos menos de crecimiento equivalen a largo plazo a un 2 % menos de nivel.",
+    "b": "Un 2 % menor en el caso (i) y en torno a un 9 % menor en el caso (ii), porque el efecto sobre el crecimiento se acumula.",
+    "c": "Un 2 % menor en el caso (i) y un 0,2 % menor en el caso (ii), porque la pérdida de crecimiento no se acumula en el tiempo.",
+    "d": "Un 64 % menor en el caso (i) y en torno a un 9 % menor en el caso (ii), porque la pérdida de nivel se repite cada año."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Un efecto nivel resta el mismo porcentaje todos los años: un 2 %. Un efecto sobre el crecimiento se compone: tras 50 años, $(1{,}018/1{,}02)^{50}\\simeq0{,}91$, cerca de un 9 % menos, y la brecha sigue creciendo. Por eso importa tanto si el clima daña el nivel o el crecimiento.",
+    "desarrollo": "Caso (i): el PIB es cada año el 98 % del que habría sido; la brecha es del 2 % a los 50 años, igual que al principio.\n\nCaso (ii): el cociente entre la senda con daños y la senda sin daños es $(1{,}018/1{,}02)^{50}$. Por dos vías:\n\n- con logaritmos: $50\\times(\\ln1{,}018-\\ln1{,}02)\\simeq50\\times(-0{,}00196)=-0{,}098$, y $e^{-0{,}098}\\simeq0{,}907$;\n- con la aproximación habitual: 0,2 puntos durante 50 años son unos 10 puntos logarítmicos, $e^{-0{,}10}\\simeq0{,}905$.\n\nLa pérdida ronda el 9 % y sigue aumentando con el tiempo (a los 100 años, cerca del 18 %).\n\nEs la pregunta clave de la evidencia sobre daños: si el calor reduce el nivel del PIB, el daño es acotado; si reduce su tasa de crecimiento, se acumula y a largo plazo puede ser enorme. La evidencia de panel (Dell, Jones y Olken, 2012) apunta a efectos sobre el crecimiento en los países pobres, y por eso las estimaciones recientes de daños son mucho mayores que las de los primeros modelos integrados, cuya función de daños actúa sobre el nivel del producto.\n\nPor qué fallan las demás:\n\n- a) Trata los dos efectos como equivalentes. Solo coinciden, aproximadamente, a los 10 años ($0{,}2\\times10=2$); después, el efecto crecimiento es cada vez mayor.\n- c) Confunde 0,2 puntos de crecimiento anual con un 0,2 % de nivel: esa es la pérdida del primer año, no la acumulada en 50.\n- d) Aplica la capitalización al caso que no la tiene: $1-0{,}98^{50}\\simeq0{,}64$ sería la pérdida si el nivel cayera un 2 % adicional cada año, que es justamente un efecto sobre el crecimiento (de 2 puntos), no un efecto nivel."
+   },
+   "dificultad": 2,
+   "apartado": "I.3 y II.1 Canales de impacto y evidencia empírica (efecto nivel frente a efecto crecimiento)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323103,
+   "estado": "publicada",
+   "enunciado": "La tasa social de descuento del consumo cumple, en la senda óptima, $r_s=\\rho+\\theta\\,\\gamma_c$, con $\\rho$ la tasa de preferencia temporal pura, $\\theta$ la elasticidad de la utilidad marginal del consumo y $\\gamma_c$ el crecimiento del consumo por habitante. Con $\\rho=0{,}1\\,\\%$ y $\\gamma_c=1{,}3\\,\\%$, y dada la senda de daños futuros, pasar de $\\theta=1$ a $\\theta=2$, que equivale a una mayor aversión a la desigualdad entre generaciones:",
+   "opciones": {
+    "a": "Eleva $r_s$ del 1,4 al 2,7 % y reduce el coste social del carbono: las generaciones futuras serán más ricas y sus daños pesan menos.",
+    "b": "Reduce $r_s$ del 1,4 al 0,75 % y eleva el coste social del carbono: más aversión a la desigualdad da más peso a las generaciones futuras.",
+    "c": "Deja $r_s$ en el 1,4 %: $\\theta$ mide la aversión al riesgo y solo cambia el trato de las catástrofes, no el descuento de los daños.",
+    "d": "Eleva $r_s$ del 1,4 al 2,8 % y eleva el coste social del carbono: una tasa mayor aumenta el valor actual de los daños futuros."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $\\theta=1$, $r_s=0{,}1+1{,}3=1{,}4\\,\\%$; con $\\theta=2$, $r_s=0{,}1+2\\times1{,}3=2{,}7\\,\\%$. Si el consumo crece, las generaciones futuras serán más ricas: una sociedad más aversa a la desigualdad entre generaciones pide menos sacrificio a la actual, descuenta más y obtiene un coste social del carbono menor.",
+    "desarrollo": "La fórmula de Ramsey del descuento separa dos motivos para descontar el futuro:\n\n- la impaciencia, $\\rho$;\n- el hecho de que las generaciones futuras serán más ricas ($\\gamma_c>0$), de modo que una unidad de consumo les dará menos utilidad que a la actual; ese motivo pesa tanto más cuanto mayor sea $\\theta$.\n\nCálculo: $r_s(\\theta=1)=0{,}1+1\\times1{,}3=1{,}4\\,\\%$ (la calibración del informe Stern) y $r_s(\\theta=2)=0{,}1+2\\times1{,}3=2{,}7\\,\\%$. El coste social del carbono es el valor actual de los daños futuros de una tonelada: con una tasa mayor, cada daño futuro vale menos hoy. Por ejemplo, 100 de daño dentro de 100 años valen hoy unos 25 al 1,4 % y unos 7 al 2,7 %.\n\nEl resultado es contraintuitivo y por eso se pregunta: con crecimiento positivo, más aversión a la desigualdad entre generaciones no favorece a las futuras, sino a la actual, que es la pobre de la comparación. Solo si se esperase una caída del consumo ($\\gamma_c<0$), un $\\theta$ mayor reduciría el descuento.\n\nPor qué fallan las demás:\n\n- b) Divide en lugar de multiplicar ($0{,}1+1{,}3/2=0{,}75$) y da por hecho que la aversión a la desigualdad protege a las generaciones futuras; con $\\gamma_c>0$ ocurre lo contrario.\n- c) $\\theta$ es a la vez la curvatura de la utilidad (aversión al riesgo) y la aversión a la desigualdad entre generaciones, y entra directamente en la tasa de descuento.\n- d) Aplica $\\theta$ también a $\\rho$ ($2\\times1{,}4=2{,}8$) y, sobre todo, invierte la relación: una tasa de descuento mayor reduce el valor actual de los daños y, con él, el coste social del carbono."
+   },
+   "dificultad": 3,
+   "apartado": "II.3 El modelo DICE (fórmula de Ramsey del descuento; debate Stern-Nordhaus)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323104,
+   "estado": "publicada",
+   "enunciado": "Dos países deciden a la vez si reducen sus emisiones o siguen emitiendo. Si los dos reducen, cada uno obtiene 4; si ninguno reduce, cada uno obtiene 2; si solo uno reduce, este obtiene 0 y el que emite, 7. Se crea un club climático al estilo de Nordhaus (2015): el país que emite paga un arancel de 4 cuando exporta a un país que reduce, y este no ingresa lo recaudado. El juego resultante:",
+   "opciones": {
+    "a": "Sigue siendo un dilema del prisionero: emitir continúa siendo la estrategia dominante de cada uno de los dos países.",
+    "b": "Hace de reducir la estrategia dominante de cada país, con (Reducir, Reducir) como único equilibrio de Nash.",
+    "c": "No tiene ningún equilibrio de Nash en estrategias puras, porque cada país quiere hacer lo contrario que el otro.",
+    "d": "Pasa a ser un juego de coordinación, con dos equilibrios de Nash: (Reducir, Reducir) y (Emitir, Emitir)."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con el arancel, emitir frente a un país que reduce da $7-4=3<4$: reducir es la mejor respuesta a reducir. Pero emitir sigue siendo la mejor respuesta a emitir ($2>0$). Hay dos equilibrios de Nash: el dilema del prisionero se convierte en un juego de coordinación.",
+    "desarrollo": "Sin club, emitir es dominante: es mejor tanto si el otro reduce ($7>4$) como si emite ($2>0$). El único equilibrio es (Emitir, Emitir), con (2, 2), aunque los dos estarían mejor con (4, 4): un dilema del prisionero.\n\nCon el arancel solo cambian las dos casillas de fuera de la diagonal: el que emite frente a uno que reduce obtiene $7-4=3$, y el que reduce sigue con 0.\n\n- Si el otro reduce: reducir da 4 y emitir, 3. Mejor respuesta: reducir.\n- Si el otro emite: reducir da 0 y emitir, 2. Mejor respuesta: emitir.\n\nNinguna estrategia es dominante y hay dos equilibrios de Nash en estrategias puras, (Reducir, Reducir) y (Emitir, Emitir); el primero es mejor para los dos. Ya no hace falta que cada país actúe contra su interés: basta con que espere que el otro reduzca. Además, la sanción es creíble porque no pasa por el clima: poner un arancel no empeora el clima de quien castiga, a diferencia de dejar de reducir.\n\nPor qué fallan las demás:\n\n- a) Sería cierto con un arancel menor que 3: emitir frente a un país que reduce seguiría dando más de 4. Con un arancel de 4, ya no.\n- b) Reducir no es dominante: frente a un país que emite, reducir da 0 y emitir, 2. Lo sería si el país que reduce ingresara además el arancel (obtendría $0+4=4>2$), pero el enunciado lo excluye.\n- c) Hay dos equilibrios en estrategias puras. Los juegos en los que cada jugador quiere hacer lo contrario que el otro son de otro tipo (como el de las monedas), y aquí cada país quiere hacer lo mismo que el otro."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 El problema de la cooperación internacional (clubes climáticos de Nordhaus)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323105,
+   "estado": "publicada",
+   "enunciado": "El Mecanismo de Ajuste en Frontera por Carbono de la UE cobra al importador por las emisiones incorporadas en el producto, al precio del derecho de emisión del mercado europeo, y descuenta el precio del carbono que ya se haya pagado en el país de origen. Suponga que la asignación gratuita de derechos a ese sector ya se ha retirado por completo, que el derecho cuesta 80 € por tonelada de CO$_2$, que en el país de origen se ha pagado un precio del carbono de 30 € por tonelada y que producir allí una tonelada de acero emite 2 toneladas de CO$_2$. El ajuste por tonelada de acero importada es de:",
+   "opciones": {
+    "a": "50 €.",
+    "b": "100 €.",
+    "c": "160 €.",
+    "d": "220 €."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El ajuste es la diferencia entre el precio europeo del carbono y el pagado en origen, multiplicada por las emisiones incorporadas en cada tonelada importada: $(80-30)\\times2=100$ €. Iguala el coste del carbono del acero importado al del europeo; no es un arancel de castigo.",
+    "desarrollo": "El ajuste por tonelada de producto es $a=(p_E-p_E^*)\\,\\sigma^M$, con $p_E$ el precio del derecho en la UE, $p_E^*$ el precio del carbono pagado en origen y $\\sigma^M$ las toneladas de CO$_2$ incorporadas en una tonelada importada:\n\n$$a=(80-30)\\times2=100\\ \\text{€ por tonelada de acero}.$$\n\nSegunda vía: una acería europea que emitiera lo mismo pagaría $80\\times2=160$ € por tonelada de acero; el exportador ya ha pagado en su país $30\\times2=60$ €; la diferencia, 100 €, es lo que se cobra en la frontera.\n\nDe la fórmula salen los dos incentivos del mecanismo: si la acería extranjera emite menos por tonelada de acero ($\\sigma^M$ menor), paga menos; y si su país pone un precio al carbono, se descuenta, de modo que recauda ese país y no la UE. Mientras dura la asignación gratuita, el ajuste se aplica solo a la parte de las emisiones que en la UE ya no recibe derechos gratis; por eso el enunciado supone que se ha retirado del todo.\n\nPor qué fallan las demás:\n\n- a) Calcula la diferencia de precios, $80-30=50$ €, pero por tonelada de CO$_2$: olvida que cada tonelada de acero incorpora 2 toneladas de CO$_2$.\n- c) Cobra el precio europeo entero, $80\\times2=160$ €, sin descontar el precio del carbono ya pagado en origen: el acero importado pagaría más que el europeo.\n- d) Suma los dos precios en lugar de restarlos, $(80+30)\\times2=220$ €."
+   },
+   "dificultad": 1,
+   "apartado": "III.4 Las medidas adoptadas (Mecanismo de Ajuste en Frontera por Carbono)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  }
+ ]
+}

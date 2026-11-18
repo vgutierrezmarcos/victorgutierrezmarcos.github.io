@@ -1,0 +1,235 @@
+{
+ "tema": "3.A.34",
+ "preguntas": [
+  {
+   "id": 313401,
+   "estado": "publicada",
+   "enunciado": "Una empresa produce con una relación capital-producto constante $v=3$ y ajusta su capital según el acelerador flexible: cada periodo cierra una fracción $\\beta_0=0{,}5$ de la distancia entre el capital deseado y el que tiene, $K_t-K_{t-1}=\\beta_0\\,(K^*_t-K_{t-1})$. Parte de una producción de 100 con el capital deseado (300) y no hay depreciación. Si la producción sube de forma permanente a 120, la inversión neta del primer periodo y la del segundo serán, respectivamente:",
+   "opciones": {
+    "a": "60 y 0.",
+    "b": "30 y 15.",
+    "c": "30 y 30.",
+    "d": "10 y 5."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El capital deseado pasa a $K^*=v\\,Y=360$, 60 más que el inicial. Con ajuste parcial, cada periodo se cubre la mitad de la distancia que queda: 30 en el primero (el capital llega a 330) y 15 en el segundo.",
+    "desarrollo": "El capital deseado es $K^*=v\\,Y=3\\cdot 120=360$; la empresa tiene 300, así que le faltan 60.\n\n- Periodo 1: $I_1=\\beta_0\\,(K^*-K_0)=0{,}5\\cdot(360-300)=30$, y $K_1=330$.\n- Periodo 2: $I_2=0{,}5\\cdot(360-330)=15$, y $K_2=345$.\n\nLa inversión decrece de forma geométrica (30, 15, 7,5…) y su suma tiende a 60: el capital se acerca poco a poco al deseado. Es lo que distingue al acelerador flexible del simple: reparte en el tiempo, con pesos que suman uno, la inversión que el acelerador simple concentra en un periodo.\n\nPor qué fallan las demás:\n\n- a) Es el acelerador simple, $I_t=v\\,\\Delta Y_t=3\\cdot 20=60$ en el primer periodo y nada después: equivale a $\\beta_0=1$.\n- c) Supone que cada periodo se invierte la misma cantidad; pero la fracción $\\beta_0$ se aplica a la distancia que queda, que se va reduciendo.\n- d) Aplica $\\beta_0$ a la variación de la producción (20) y olvida la relación capital-producto: lo que hay que cubrir es la variación del capital deseado, $v\\,\\Delta Y=60$."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Antecedentes: el acelerador flexible (ajuste parcial)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313402,
+   "estado": "publicada",
+   "enunciado": "Una empresa competitiva, sin costes de ajuste, produce con la tecnología $Y=K^{\\alpha}L^{1-\\alpha}$, con $\\alpha=0{,}3$, y toma como dado el valor de su producción, $P\\,Y=2.000$. Cada unidad de capital cuesta $P^K=100$, el tipo de interés nominal es del 5 %, el capital se deprecia un 10 % al año y se espera que el precio de los bienes de capital suba un 3 % al año. No hay impuestos. Según el modelo neoclásico de Jorgenson, el capital deseado es de:",
+   "opciones": {
+    "a": "120 unidades.",
+    "b": "40 unidades.",
+    "c": "33,3 unidades.",
+    "d": "50 unidades."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El coste de uso suma el interés y la depreciación y resta la revalorización del capital: $c_K=P^K(r+\\delta-\\dot P^K/P^K)=100\\cdot(0{,}05+0{,}10-0{,}03)=12$. Con una Cobb-Douglas, $P\\,F_K=\\alpha\\,P\\,Y/K$, y $K^*=\\alpha\\,P\\,Y/c_K=600/12=50$.",
+    "desarrollo": "La empresa demanda capital hasta que el valor de su producto marginal iguala el coste de uso:\n\n$$P\\,F_K=c_K\\equiv P^K\\left(r+\\delta-\\frac{\\dot P^K}{P^K}\\right).$$\n\n- Coste de uso: $c_K=100\\cdot(0{,}05+0{,}10-0{,}03)=12$ por unidad de capital y año. Tener la máquina cuesta el interés al que se renuncia (5) y su desgaste (10), pero la máquina se revaloriza (3).\n- Con la Cobb-Douglas, $F_K=\\alpha\\,Y/K$, así que $\\alpha\\,P\\,Y/K^*=c_K$ y $K^*=0{,}3\\cdot 2.000/12=50$.\n\nComprobación: con $K=50$, el valor del producto marginal es $0{,}3\\cdot 2.000/50=12$, igual al coste de uso.\n\nPor qué fallan las demás:\n\n- a) Solo cuenta el interés: $c_K=5$ y $K^*=600/5=120$. Olvida la depreciación y la ganancia de capital.\n- b) Olvida la revalorización del capital: $c_K=100\\cdot 0{,}15=15$ y $K^*=40$.\n- c) Suma la revalorización en vez de restarla: $c_K=18$ y $K^*=33{,}3$. Si el precio de las máquinas sube, tenerlas sale más barato, no más caro."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Jorgenson: coste de uso del capital y capital deseado",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313403,
+   "estado": "publicada",
+   "enunciado": "Con un impuesto de sociedades al tipo $t$, sin desgravación por inversión, sin deducción de los intereses y con un precio del capital constante e igual a 1, el coste de uso del capital es $c_K=(r+\\delta)\\,\\dfrac{1-t\\,z}{1-t}$, donde $z$ es el valor actual de las amortizaciones fiscales por euro invertido: $z=1$ si la inversión se deduce entera en el momento de hacerla y $z=\\delta/(r+\\delta)$ si solo se deduce la depreciación económica. Con $r=6$ %, $\\delta=10$ % y $t=25$ %, el coste de uso con deducción de la depreciación económica y con amortización inmediata es, respectivamente:",
+   "opciones": {
+    "a": "0,18 y 0,16.",
+    "b": "0,16 en los dos casos.",
+    "c": "0,2133 y 0,16.",
+    "d": "0,18 y 0,12."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con amortización inmediata ($z=1$) el factor fiscal vale 1 y el coste de uso es el de sin impuestos, $r+\\delta=0{,}16$: el impuesto es neutral. Si solo se deduce la depreciación económica, $c_K=r/(1-t)+\\delta=0{,}08+0{,}10=0{,}18$: el impuesto encarece el capital.",
+    "desarrollo": "- Amortización inmediata: $z=1$, $(1-t\\,z)/(1-t)=1$ y $c_K=r+\\delta=0{,}16$. El Estado se hace cargo de una fracción $t$ del coste de la inversión y se queda con la misma fracción $t$ de sus rendimientos: es un socio que no altera la decisión. El impuesto es neutral.\n- Depreciación económica: $z=0{,}10/0{,}16=0{,}625$; $1-t\\,z=1-0{,}15625=0{,}84375$; dividido por $0{,}75$, el factor fiscal es $1{,}125$ y $c_K=0{,}16\\cdot 1{,}125=0{,}18$.\n\nPor otra vía: sustituyendo $z=\\delta/(r+\\delta)$ en la fórmula, $c_K=\\dfrac{r+\\delta-t\\,\\delta}{1-t}=\\dfrac{r}{1-t}+\\delta=\\dfrac{0{,}06}{0{,}75}+0{,}10=0{,}18$. El impuesto grava el rendimiento financiero del capital (el interés, que aquí no se deduce) y por eso lo encarece.\n\nPor qué fallan las demás:\n\n- b) Supone que el impuesto es neutral siempre que se deduzca la depreciación; solo lo es con amortización inmediata (o si además se dedujera el coste financiero).\n- c) El primer valor, $0{,}16/0{,}75=0{,}2133$, es el coste de uso si no se dedujera nada ($z=0$), no el de la depreciación económica.\n- d) El segundo valor, $0{,}16\\cdot 0{,}75=0{,}12$, trata el impuesto como una subvención: con amortización inmediata el impuesto no abarata el capital, lo deja igual."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Jorgenson: extensiones (coste de uso con impuestos, Hall y Jorgenson)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313404,
+   "estado": "publicada",
+   "enunciado": "En el modelo de la q de Tobin con costes de ajuste convexos, el precio del capital es 1, no hay depreciación y el coste de ajuste de cada empresa es $\\Phi(I)=\\tfrac{\\phi}{2}\\,I^2$, con $\\phi=4$. En un momento dado, $q=1{,}2$, el tipo de interés es $r=5$ % y el beneficio por unidad de capital es $B(K)=0{,}07$. En ese momento, la inversión de la empresa y la variación de $q$ por unidad de tiempo son:",
+   "opciones": {
+    "a": "$I=0{,}05$ y $\\dot q=+0{,}01$.",
+    "b": "$I=0{,}30$ y $\\dot q=-0{,}01$.",
+    "c": "$I=0{,}05$ y $\\dot q=-0{,}01$.",
+    "d": "$I=0{,}80$ y $\\dot q=-0{,}02$."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "De $q=1+\\Phi'(I)=1+\\phi\\,I$ sale $I=(q-1)/\\phi=0{,}2/4=0{,}05$. De la condición de arbitraje, $r\\,q=B(K)+\\dot q$, sale $\\dot q=0{,}05\\cdot 1{,}2-0{,}07=-0{,}01$: la empresa invierte y $q$ está bajando hacia 1.",
+    "desarrollo": "El modelo se resume en dos condiciones:\n\n- Cuánto se invierte: $q_t=1+\\Phi'(I_t)$. Con el coste cuadrático, $\\Phi'(I)=\\phi\\,I$, así que $I=(q-1)/\\phi=(1{,}2-1)/4=0{,}05$. Se invierte porque una unidad más de capital instalado vale más (1,2) que lo que cuesta comprarla (1), y hasta que el coste marginal de instalarla cubre la diferencia.\n- Cuánto vale el capital: $r\\,q_t=B(K_t)+\\dot q_t$. Entonces $\\dot q=r\\,q-B(K)=0{,}06-0{,}07=-0{,}01$. El capital rinde 0,07 en beneficios, más que el interés de su valor (0,06); para que nadie gane arbitrando, tiene que perder valor: $q$ baja.\n\nEs la situación típica sobre la senda de silla, a la izquierda del equilibrio: $q>1$, el capital crece y $q$ cae hacia 1 (el punto está por debajo del lugar $\\dot q=0$, que es $q=B(K)/r=1{,}4$).\n\nPor qué fallan las demás:\n\n- a) El signo de $\\dot q$ está al revés: calcula $B-r\\,q$ en vez de $r\\,q-B$.\n- b) Calcula $I=q/\\phi$: olvida que lo que se compara con el coste marginal de ajuste es $q-1$, el exceso del valor del capital sobre su precio de compra.\n- d) Multiplica por $\\phi$ en vez de dividir ($I=(q-1)\\,\\phi$) y calcula $\\dot q=r-B$, sin multiplicar el tipo por $q$."
+   },
+   "dificultad": 2,
+   "apartado": "II. Modelo de la q de Tobin: condiciones de inversión y de arbitraje",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313405,
+   "estado": "publicada",
+   "enunciado": "En el modelo de la q de Tobin con costes de ajuste convexos (precio del capital igual a 1, sin depreciación, previsión perfecta), la economía está en su equilibrio de largo plazo cuando la demanda del producto aumenta de forma inesperada. Las empresas saben que el aumento es temporal: durará hasta el momento $T$ y después la demanda volverá a su nivel inicial. Señale la afirmación CORRECTA sobre el ajuste:",
+   "opciones": {
+    "a": "$q$ salta hasta la nueva senda de silla, como si el aumento fuera permanente, el capital crece hasta $T$ y en ese momento $q$ cae de golpe por debajo de 1.",
+    "b": "$q$ no se mueve en el momento de la noticia, porque el capital está dado; después sube poco a poco hasta $T$, y con ella crece la inversión.",
+    "c": "$q$ sube menos que con un aumento permanente y se mantiene por encima de 1 hasta $T$, de modo que el capital crece durante todo el periodo y solo cae después.",
+    "d": "$q$ sube menos que con un aumento permanente y baja de 1 antes de $T$, de modo que el capital empieza a caer antes de que la demanda vuelva a su nivel."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$q$ no puede dar saltos previstos: en $T$ tiene que estar ya sobre la senda de silla antigua, con más capital que en el equilibrio y, por tanto, con $q<1$. Como parte de $q>1$ y se mueve de forma continua, cruza $q=1$ antes de $T$: desde ese momento la inversión es negativa.",
+    "desarrollo": "La regla: el capital solo cambia poco a poco y $q$ solo salta cuando llega una noticia. Un salto previsto de $q$ daría una ganancia o una pérdida de capital segura, y el arbitraje lo impide.\n\n- En el momento de la noticia, $q$ sube: el capital instalado rendirá más durante un tiempo. Pero sube menos que si el aumento fuera permanente, porque los beneficios extra duran solo hasta $T$ y porque el capital que se instale sobrará después, y desinvertir también cuesta.\n- Hasta $T$ rige la dinámica del sistema nuevo. Desde $T$ rige la antigua, y la única senda que lleva al equilibrio inicial es la senda de silla antigua: en $T$ la economía tiene que estar exactamente sobre ella.\n- En $T$ el capital es mayor que el de equilibrio, y sobre la senda de silla antigua eso significa $q<1$. Como $q$ arranca por encima de 1 y no puede saltar, cruza la recta $q=1$ antes de $T$: en ese cruce el capital alcanza su máximo y a partir de ahí cae, aunque la demanda siga alta.\n- Después de $T$, $q$ sube hacia 1 y el capital sigue cayendo hasta el equilibrio inicial.\n\nPor qué fallan las demás:\n\n- a) Describe un salto previsto de $q$ en $T$, que el arbitraje descarta; y si el aumento se sabe temporal, $q$ no llega a la nueva senda de silla.\n- b) La variable que está dada es el capital; $q$ es un precio que mira al futuro y salta con la noticia.\n- c) Si $q$ siguiera por encima de 1 hasta $T$, en $T$ tendría que caer de golpe para alcanzar la senda de silla antigua (donde $q<1$, porque hay más capital que en el equilibrio): otra vez un salto previsto."
+   },
+   "dificultad": 3,
+   "apartado": "II. Modelo de la q de Tobin: perturbaciones temporales (aumento temporal de la demanda)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313406,
+   "estado": "publicada",
+   "enunciado": "Suponga que, por la información asimétrica entre la empresa y quienes la financian, los fondos externos son más caros que los internos. Para una empresa que ya recurre a la financiación externa, y con sus oportunidades de inversión (su q) dadas, un aumento de su riqueza neta (beneficios retenidos y activos que puede dar en garantía):",
+   "opciones": {
+    "a": "Reduce la prima de financiación externa que paga y aumenta su inversión.",
+    "b": "No altera su inversión, que solo depende de la q y no de cómo se financie.",
+    "c": "Reduce su inversión, porque con más fondos propios exige más rentabilidad.",
+    "d": "Aumenta su inversión solo si emite acciones, que son su fuente más barata."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con fricciones financieras, la empresa invierte al coste $r$ hasta agotar sus fondos propios y, por encima, paga una prima que crece con su endeudamiento. Más riqueza neta desplaza ese escalón y abarata los fondos: la inversión aumenta aunque la q no cambie.",
+    "desarrollo": "Con mercados financieros perfectos (Modigliani y Miller), el valor de la empresa no depende de cómo se financie y la decisión de invertir se separa de la de financiarse: solo importarían las oportunidades de inversión. Con información asimétrica y costes de agencia, no:\n\n- quien presta sabe menos que quien pide prestado y vigilarlo cuesta, así que la financiación externa lleva una prima;\n- la oferta de fondos de la empresa tiene un escalón: plana al tipo $r$ hasta su riqueza neta y creciente a partir de ahí;\n- si la demanda de inversión corta la oferta en el tramo creciente, un aumento de la riqueza neta desplaza el escalón a la derecha, reduce la prima y aumenta la inversión.\n\nPor eso la inversión depende del flujo de caja y del balance de la empresa además de la q, sobre todo en las empresas pequeñas y jóvenes, y por eso las recesiones, que reducen la riqueza neta, se amplifican (acelerador financiero).\n\nPor qué fallan las demás:\n\n- b) Es el resultado de Modigliani y Miller, que exige mercados financieros perfectos: justo lo que el enunciado descarta.\n- c) Es al revés: los fondos propios son los más baratos, porque no llevan prima de información.\n- d) En la jerarquía financiera (Myers y Majluf), las acciones son la última fuente, no la primera: emitirlas es una mala señal y se venden con descuento. El orden es beneficios retenidos, deuda y, por último, acciones."
+   },
+   "dificultad": 1,
+   "apartado": "III.4 Mercados financieros e inversión: prima de financiación externa",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313407,
+   "estado": "publicada",
+   "enunciado": "Considere el modelo de la q con costes de ajuste quebrados: el capital se compra a $1+\\phi_c$ y se revende a $1-\\phi_d$, con $\\phi_c=0{,}1$ y $\\phi_d=0{,}4$, y hay además un coste cuadrático $\\tfrac{\\phi}{2}\\,I^2$, con $\\phi=2$. La inversión óptima es $I=(q-1-\\phi_c)/\\phi$ si $q>1+\\phi_c$ e $I=(q-1+\\phi_d)/\\phi$ si $q<1-\\phi_d$. La empresa A tiene $q=1{,}3$ y la empresa B, $q=0{,}8$. Sus inversiones son, respectivamente:",
+   "opciones": {
+    "a": "0,15 y $-0{,}10$.",
+    "b": "0,10 y 0.",
+    "c": "0,10 y $-0{,}10$.",
+    "d": "0,15 y 0."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La banda de inacción va de $1-\\phi_d=0{,}6$ a $1+\\phi_c=1{,}1$. La empresa A está por encima e invierte $(1{,}3-1-0{,}1)/2=0{,}10$. La empresa B, con $q=0{,}8$, está dentro: aunque su capital vale menos que su coste de reposición, venderlo le daría solo 0,6, y no hace nada.",
+    "desarrollo": "Con costes quebrados, el coste marginal de ajustar tiene un salto en cero: comprar la primera unidad cuesta $1+\\phi_c$ y vender la primera da solo $1-\\phi_d$. Entre esos dos valores de $q$, cambiar el capital cuesta más de lo que vale: es la banda de inacción,\n\n$$1-\\phi_d\\ \\leq\\ q\\ \\leq\\ 1+\\phi_c\\quad\\Longrightarrow\\quad 0{,}6\\leq q\\leq 1{,}1.$$\n\n- Empresa A: $q=1{,}3>1{,}1$. Invierte $I=(1{,}3-1-0{,}1)/2=0{,}10$.\n- Empresa B: $q=0{,}8$ está entre 0,6 y 1,1. No invierte ni desinvierte: $I=0$. Solo vendería capital si $q$ cayera por debajo de 0,6.\n\nLa banda es más ancha por abajo porque revender es más caro que comprar ($\\phi_d>\\phi_c$): es una forma de irreversibilidad parcial, y explica que las empresas pasen largos periodos sin invertir.\n\nPor qué fallan las demás:\n\n- a) Ignora los costes lineales y aplica a las dos la regla del coste cuadrático simétrico, $I=(q-1)/\\phi$: 0,15 y $-0{,}10$.\n- c) Calcula bien la de A, pero hace desinvertir a B por tener $q<1$: con un descuento del 40 % en la reventa, $q<1$ no basta.\n- d) Acierta con B, pero olvida que A paga $\\phi_c$ por cada unidad que compra: lo que se compara con el coste marginal cuadrático es $q-1-\\phi_c=0{,}2$, no $0{,}3$."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Costes de ajuste asimétricos y fijos: banda de inacción",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313408,
+   "estado": "publicada",
+   "enunciado": "Una empresa competitiva y neutral al riesgo produce con rendimientos constantes a escala, elige su capital antes de conocer el precio del producto y contrata el trabajo después, cuando ya lo conoce. Sus costes de ajuste del capital son convexos y simétricos (deshacer una inversión cuesta lo mismo que hacerla). Si aumenta la dispersión del precio del producto sin que cambie su media (Hartman, 1972; Abel, 1983):",
+   "opciones": {
+    "a": "La inversión no cambia: una empresa neutral al riesgo solo atiende al precio medio.",
+    "b": "La inversión disminuye, porque esperar a conocer el precio pasa a tener más valor.",
+    "c": "La inversión aumenta, porque el beneficio por unidad de capital es convexo en el precio.",
+    "d": "La inversión disminuye, porque la empresa exige una prima de riesgo sobre el capital."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Como el trabajo se ajusta al precio, el beneficio por unidad de capital es una función convexa del precio. Por la desigualdad de Jensen, más dispersión con la misma media eleva el beneficio esperado, y con él la q y la inversión.",
+    "desarrollo": "Con costes convexos y simétricos, la inversión sigue dependiendo solo de la q, que ahora es el valor actual esperado de los beneficios futuros de una unidad de capital.\n\n- Con una Cobb-Douglas $Y=K^{\\alpha}L^{1-\\alpha}$ y el trabajo elegido después de conocer el precio $p$, el beneficio por unidad de capital es proporcional a $p^{1/\\alpha}$, con $1/\\alpha>1$: es convexo en el precio. La empresa aprovecha los precios altos contratando más y limita las pérdidas con los bajos contratando menos.\n- Por la desigualdad de Jensen, $\\mathbb{E}[B(p)]>B(\\mathbb{E}[p])$, y la diferencia crece con la dispersión: sube el beneficio esperado, sube la q y sube la inversión.\n\nEl resultado descansa en que deshacer la inversión es tan barato como hacerla. Con irreversibilidad, la empresa teme quedarse con capital de sobra en los estados malos y el efecto se invierte.\n\nPor qué fallan las demás:\n\n- a) La neutralidad al riesgo significa que la empresa maximiza el beneficio esperado, pero este no es el beneficio evaluado en el precio medio: al ser convexo en el precio, depende de la dispersión.\n- b) Es el resultado de la opción de esperar, que exige que la inversión sea irreversible (o que deshacerla sea más caro que hacerla). El enunciado supone costes simétricos.\n- d) La empresa es neutral al riesgo: no exige prima alguna por la variabilidad de sus beneficios."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 La inversión bajo incertidumbre (Hartman y Abel)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313409,
+   "estado": "publicada",
+   "enunciado": "Una empresa neutral al riesgo puede construir una fábrica, con un coste irrecuperable de 880, que produce una unidad al año para siempre. Si invierte hoy, vende ya la unidad de este año al precio de 100. A partir del año próximo el precio será para siempre 150 o 50, con probabilidad 0,5 cada uno. La alternativa es esperar un año y decidir conociendo ya el precio (si construye entonces, paga los 880 en ese momento y vende ya la unidad de ese año). El tipo de descuento es del 10 %. El valor actual neto de invertir hoy y el de esperar (valorado hoy) son, respectivamente:",
+   "opciones": {
+    "a": "220 y 350: conviene esperar.",
+    "b": "220 y 200: conviene invertir hoy.",
+    "c": "120 y 350: conviene esperar.",
+    "d": "220 y 385: conviene esperar."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Invertir hoy vale $100+(0{,}5\\cdot 1.650+0{,}5\\cdot 550)/1{,}1-880=220$. Si espera, solo invierte con el precio alto: $0{,}5\\cdot(1.650-880)/1{,}1=350$. Aunque el VAN de invertir hoy es positivo, esperar vale más: se evita la pérdida del estado malo.",
+    "desarrollo": "Valor de la fábrica dentro de un año, incluida la producción de ese año: una renta perpetua que empieza ya, $p\\,(1+r)/r=11\\,p$.\n\n- Con precio alto: $V^{\\mathrm A}=11\\cdot 150=1.650$. Con precio bajo: $V^{\\mathrm B}=11\\cdot 50=550$.\n\nInvertir hoy:\n\n- $V_0=100+\\dfrac{0{,}5\\cdot 1.650+0{,}5\\cdot 550}{1{,}1}=100+1.000=1.100$, y $\\mathrm{VAN}_0=1.100-880=220$.\n\nEsperar: dentro de un año invierte solo si el precio es alto ($1.650>880$); si es bajo ($550<880$), no invierte y obtiene 0.\n\n- $\\mathrm{VAN}_{\\mathrm{esperar}}=\\dfrac{0{,}5\\cdot(1.650-880)+0{,}5\\cdot 0}{1{,}1}=\\dfrac{385}{1{,}1}=350$.\n\nComprobación por otra vía: esperar cuesta la venta de este año menos los intereses que se ahorran al aplazar el pago, $100-0{,}1\\cdot 880/1{,}1=20$, y evita la pérdida esperada del estado malo, $0{,}5\\cdot(880-550)/1{,}1=150$. Diferencia: $20-150=-130=220-350$.\n\nLa regla del VAN ($V_0\\geq I$) diría que hay que invertir; con irreversibilidad, el proyecto tiene que cubrir además el valor de la opción de esperar a la que se renuncia.\n\nPor qué fallan las demás:\n\n- b) Calcula el valor de esperar como si la empresa invirtiera en los dos estados: $[0{,}5\\cdot 770+0{,}5\\cdot(-330)]/1{,}1=200$. Lo que da valor a la espera es precisamente poder no invertir con el precio bajo.\n- c) Olvida la venta de este año al calcular el valor de invertir hoy ($1.000-880=120$).\n- d) No descuenta un año el valor de esperar (385 en vez de $385/1{,}1=350$)."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Irreversibilidad: la opción de esperar (ejemplo de dos periodos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313410,
+   "estado": "publicada",
+   "enunciado": "Una empresa neutral al riesgo puede hacer hoy una inversión irreversible de coste $I$ o esperar un periodo. El proyecto vende hoy al precio $p_0$ y, desde el periodo siguiente y para siempre, al precio $p^{\\mathrm A}$ con probabilidad $\\pi$ o $p^{\\mathrm B}<p^{\\mathrm A}$ con probabilidad $1-\\pi$; el proyecto vale más que su coste en el estado alto y menos en el bajo. ¿Cuál de los siguientes cambios, con todo lo demás constante, NO altera la diferencia entre el valor de invertir hoy y el de esperar?",
+   "opciones": {
+    "a": "Un aumento del precio de hoy, $p_0$.",
+    "b": "Una caída del precio del estado bajo, $p^{\\mathrm B}$.",
+    "c": "Un aumento del precio del estado alto, $p^{\\mathrm A}$.",
+    "d": "Un aumento de la probabilidad del estado bajo."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Es el principio de las malas noticias (Bernanke, 1983). En el estado alto la empresa acaba invirtiendo tanto si lo hace hoy como si espera, así que lo que valga el proyecto en ese estado mejora las dos opciones por igual. La decisión solo depende del coste de esperar y de la pérdida que se evita en el estado bajo.",
+    "desarrollo": "Sean $V^{\\mathrm A}$ y $V^{\\mathrm B}$ los valores del proyecto en el periodo siguiente, con $V^{\\mathrm B}<I<V^{\\mathrm A}$.\n\n- Invertir hoy: $\\mathrm{VAN}_0=p_0+\\dfrac{\\pi\\,V^{\\mathrm A}+(1-\\pi)\\,V^{\\mathrm B}}{1+r}-I$.\n- Esperar (solo se invierte en el estado alto): $\\mathrm{VAN}_{\\mathrm{esperar}}=\\dfrac{\\pi\\,(V^{\\mathrm A}-I)}{1+r}$.\n\nRestando:\n\n$$\\mathrm{VAN}_0-\\mathrm{VAN}_{\\mathrm{esperar}}=\\left[p_0-\\frac{r\\,I}{1+r}\\right]-\\frac{(1-\\pi)\\,(I-V^{\\mathrm B})}{1+r}.$$\n\nEl primer término es el coste de esperar (la venta de hoy, menos los intereses que se ahorran al aplazar el pago); el segundo, la pérdida esperada que se evita en el estado bajo. $V^{\\mathrm A}$ no aparece: un precio alto mayor eleva en $\\pi\\,\\Delta V^{\\mathrm A}/(1+r)$ tanto el valor de invertir hoy como el de esperar. Lo que frena la inversión es la posibilidad de malas noticias, no la magnitud de las buenas.\n\nPor qué fallan las demás:\n\n- a) Un $p_0$ mayor encarece la espera (se pierde una venta más valiosa) y favorece invertir hoy.\n- b) Un $p^{\\mathrm B}$ menor reduce $V^{\\mathrm B}$ y aumenta la pérdida que se evita esperando: favorece esperar.\n- d) Si el estado bajo es más probable, aumenta la pérdida esperada que se evita: favorece esperar."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Irreversibilidad: el principio de las malas noticias",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

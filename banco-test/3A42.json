@@ -1,0 +1,212 @@
+{
+ "tema": "3.A.42",
+ "preguntas": [
+  {
+   "id": 314201,
+   "estado": "publicada",
+   "enunciado": "El filtro de Hodrick y Prescott obtiene la tendencia de una serie minimizando la suma de los cuadrados del componente cíclico más $\\lambda$ veces la suma de los cuadrados de los cambios en el crecimiento de la tendencia. Respecto del parámetro de suavizado $\\lambda$, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con $\\lambda=0$ la tendencia es una recta, y toda la variación de la serie en torno a ella se atribuye al componente cíclico.",
+    "b": "Cuanto mayor es $\\lambda$, más flexible es la tendencia, que sigue de cerca a la serie, y menor la parte de las fluctuaciones atribuida al ciclo.",
+    "c": "El valor $\\lambda=1600$ de los datos trimestrales se deduce de la teoría del crecimiento, de modo que su elección no es discrecional.",
+    "d": "Cuanto mayor es $\\lambda$, más rígida es la tendencia (en el límite, una recta), y mayor la parte de las fluctuaciones atribuida al ciclo."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "$\\lambda$ pondera el castigo a los cambios de pendiente de la tendencia. Si $\\lambda$ sube, la tendencia se dobla menos y se aleja más de la serie, de modo que el componente cíclico crece; con $\\lambda\\to\\infty$ la tendencia es una recta, y con $\\lambda=0$ es la propia serie y no hay ciclo.",
+    "desarrollo": "El filtro resuelve $\\min_{\\{y^p_t\\}}\\sum_t (y_t-y^p_t)^2+\\lambda\\sum_t\\big[(y^p_{t+1}-y^p_t)-(y^p_t-y^p_{t-1})\\big]^2$. El primer sumando castiga el ciclo (la distancia entre la serie y la tendencia); el segundo, los cambios en el crecimiento de la tendencia. $\\lambda$ decide el reparto:\n\n- con $\\lambda=0$ solo cuenta el primer término: la tendencia coincide con la serie y el ciclo es nulo;\n- con $\\lambda\\to\\infty$ solo cuenta el segundo: las segundas diferencias de la tendencia son cero y la tendencia es una recta (la de mínimos cuadrados);\n- entre ambos extremos, un $\\lambda$ mayor da una tendencia más rígida y un componente cíclico más amplio. Por eso, con el $\\lambda=400\\,000$ que se usa para el crédito, el ciclo estimado es mucho mayor que con $\\lambda=1600$.\n\nPor qué fallan las demás:\n\n- a) Es justo al revés: con $\\lambda=0$ la tendencia es la propia serie y no hay ciclo. La recta es el caso $\\lambda\\to\\infty$.\n- b) Invierte la relación: un $\\lambda$ mayor hace la tendencia más rígida, no más flexible, y el ciclo, mayor.\n- c) El filtro es estadístico y ateórico. Hodrick y Prescott eligieron 1600 porque consideraron igual de grandes un ciclo del 5 % y un cambio de 1/8 de punto en el crecimiento trimestral de la tendencia, $(5/\\tfrac18)^2=1600$: una convención razonable, pero discrecional."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Caracterización empírica: medición del ciclo (filtro de Hodrick y Prescott)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314202,
+   "estado": "publicada",
+   "enunciado": "En una economía cerrada con precios fijos, el consumo depende de la renta del periodo anterior, $C_t=0{,}6\\,Y_{t-1}$; la inversión inducida, de la variación del consumo, $I_t=2\\,(C_t-C_{t-1})$, y hay un gasto autónomo constante, $G$, de modo que $Y_t=C_t+I_t+G$ (modelo del multiplicador-acelerador de Samuelson). Partiendo de una situación de equilibrio, $G$ aumenta de forma permanente en 10 unidades. A partir de entonces, la renta:",
+   "opciones": {
+    "a": "Converge sin oscilaciones hacia un nivel de equilibrio 25 unidades mayor que el inicial.",
+    "b": "Converge con oscilaciones amortiguadas hacia un nivel de equilibrio 25 unidades mayor que el inicial.",
+    "c": "Oscila con amplitud creciente en torno a un nivel de equilibrio 25 unidades mayor, sin converger a él.",
+    "d": "Se aleja de forma monótona y explosiva del equilibrio inicial, sin oscilar en ningún momento."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La renta sigue $Y_t=c(1+v)Y_{t-1}-cvY_{t-2}+G=1{,}8\\,Y_{t-1}-1{,}2\\,Y_{t-2}+G$. Hay oscilaciones porque $c(1+v)^2=5{,}4<4v=8$ (raíces complejas), y son explosivas porque $cv=1{,}2>1$. El nuevo equilibrio, $G/(1-c)$, está 25 unidades por encima, pero la renta no converge a él.",
+    "desarrollo": "Sustituyendo consumo e inversión en $Y_t=C_t+I_t+G$, con $c=0{,}6$ y $v=2$:\n\n$Y_t=c\\,(1+v)\\,Y_{t-1}-c\\,v\\,Y_{t-2}+G=1{,}8\\,Y_{t-1}-1{,}2\\,Y_{t-2}+G$.\n\n- Equilibrio: $Y^*=G/(1-c)=2{,}5\\,G$. Con $\\Delta G=10$, el nivel de equilibrio sube en 25.\n- Dinámica: depende de las raíces de $z^2-1{,}8\\,z+1{,}2=0$. El discriminante es $1{,}8^2-4\\cdot1{,}2=3{,}24-4{,}8<0$: raíces complejas, luego hay oscilaciones (es la condición $c\\,(1+v)^2<4v$: $5{,}4<8$).\n- El módulo de las raíces es $\\sqrt{c\\,v}=\\sqrt{1{,}2}>1$: las oscilaciones crecen en cada vuelta (la condición de estabilidad, $c\\,v<1$, no se cumple).\n\nComprobación numérica (desviaciones respecto al equilibrio inicial): 10; 28; 48,4; 63,5; 66,3; 53,0; 26,0; $-6{,}9$; $-33{,}6$; $-42{,}2$; $-25{,}6$; 14,5; 66,9; 112,9… La renta sobrepasa el nuevo equilibrio (25), cae por debajo y vuelve a subir, cada vez más lejos.\n\nPor qué fallan las demás:\n\n- a) Exigiría raíces reales y menores que 1 (un acelerador $v$ pequeño).\n- b) Las oscilaciones serían amortiguadas si $c\\,v<1$; por ejemplo, con $c=0{,}6$ y $v=1$.\n- d) La divergencia sin oscilaciones exige raíces reales mayores que 1, es decir, $c\\,(1+v)^2\\geq4v$ con un $v$ grande; aquí las raíces son complejas.\n\nEste caso explosivo es el que Hicks acota con un techo (el pleno empleo) y un suelo (la inversión bruta no puede ser negativa)."
+   },
+   "dificultad": 3,
+   "apartado": "I.4 Análisis en perspectiva histórica: el multiplicador-acelerador (Samuelson, 1939)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314203,
+   "estado": "publicada",
+   "enunciado": "Considere un modelo de ciclo real con producción $Y_t=A_tK_t^{\\alpha}$, $\\alpha=0{,}4$, depreciación completa del capital, utilidad logarítmica del consumo y oferta de trabajo inelástica, de modo que en equilibrio el hogar ahorra una fracción constante de la producción. La productividad sigue $\\ln A_t=0{,}5\\,\\ln A_{t-1}+\\varepsilon_t$. La economía está en su estado estacionario y en $t$ recibe una perturbación $\\varepsilon_t=1\\ \\%$, sin que haya ninguna otra después. ¿Cuál es la desviación de la producción respecto a su estado estacionario en $t+2$?",
+   "opciones": {
+    "a": "0,61 %",
+    "b": "0,41 %",
+    "c": "0,25 %",
+    "d": "0,16 %"
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con ahorro constante y depreciación completa, $K_{t+1}=sY_t$ y la producción en desviaciones sigue $\\hat y_{t+1}=\\alpha\\,\\hat y_t+\\ln A_{t+1}$. Así, $\\hat y_t=1$; $\\hat y_{t+1}=0{,}4+0{,}5=0{,}9$; $\\hat y_{t+2}=0{,}4\\cdot0{,}9+0{,}25=0{,}61$. Se suman la persistencia endógena (el capital, $\\alpha$) y la exógena (la perturbación, $\\rho_A$).",
+    "desarrollo": "Es la versión con solución cerrada del modelo de ciclo real (McCallum, 1989). Con depreciación completa, utilidad logarítmica y trabajo inelástico, el hogar ahorra la fracción constante $s=\\alpha\\beta$ de la producción, y $K_{t+1}=sY_t$. Entonces\n\n$\\ln Y_{t+1}=\\ln A_{t+1}+\\alpha\\ln K_{t+1}=\\ln A_{t+1}+\\alpha\\ln s+\\alpha\\ln Y_t$,\n\ny, restando el estado estacionario, $\\hat y_{t+1}=\\alpha\\,\\hat y_t+\\ln A_{t+1}$.\n\nLa productividad tras la perturbación: $\\ln A_t=1$; $\\ln A_{t+1}=0{,}5$; $\\ln A_{t+2}=0{,}25$ (en %).\n\n- $\\hat y_t=1$ (el capital de $t$ está dado);\n- $\\hat y_{t+1}=0{,}4\\cdot1+0{,}5=0{,}9$;\n- $\\hat y_{t+2}=0{,}4\\cdot0{,}9+0{,}25=0{,}36+0{,}25=0{,}61$.\n\nSegunda vía, con la fórmula general $\\hat y_{t+k}=(\\rho_A^{k+1}-\\alpha^{k+1})/(\\rho_A-\\alpha)$: $(0{,}125-0{,}064)/0{,}1=0{,}61$.\n\nPor qué fallan las demás:\n\n- b) 0,41 es $\\alpha^2+\\rho_A^2$: suma los dos canales por separado y olvida el término cruzado (el capital acumulado gracias a la productividad aún alta de $t+1$).\n- c) 0,25 es $\\rho_A^2$: solo la persistencia de la propia perturbación, como si el capital no se hubiera acumulado.\n- d) 0,16 es $\\alpha^2$: la respuesta a una perturbación sin persistencia ($\\rho_A=0$), en la que solo propaga el capital.\n\nLa comparación entre c) y d) y el resultado muestra de dónde viene la persistencia: una parte la genera el modelo (el alisamiento del consumo convierte producción de hoy en capital de mañana) y otra se impone con $\\rho_A$."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Modelo de ciclo real: la solución cerrada de McCallum (1989)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314204,
+   "estado": "publicada",
+   "enunciado": "En un modelo de ciclo real, la oferta de trabajo del hogar cumple la condición $\\chi L_t^{\\varphi}=C_t^{-\\theta}\\,w_t$, con $\\theta=1$ y $\\varphi=2$. Tras una perturbación tecnológica positiva, el salario real sube un 2 % y el consumo, un 1 %. Las horas trabajadas varían, aproximadamente:",
+   "opciones": {
+    "a": "Un 1 %, porque la elasticidad de Frisch es 0,5 y el salario sube un 2 %.",
+    "b": "Un 0,5 %, porque el aumento del consumo compensa parte del efecto del salario.",
+    "c": "Un 2 %, porque con utilidad logarítmica las horas siguen al salario real.",
+    "d": "Nada, porque con utilidad logarítmica el efecto renta anula el de sustitución."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En tasas de variación, $\\varphi\\,\\hat L=\\hat w-\\theta\\,\\hat C$, es decir, $2\\hat L=2-1=1$ y $\\hat L=0{,}5\\ \\%$. El salario empuja a trabajar más (sustitución); el mayor consumo, que reduce la utilidad marginal de la renta, a trabajar menos (efecto riqueza). Las horas suben porque el consumo sube menos que el salario.",
+    "desarrollo": "Tomando logaritmos y diferenciando la condición intratemporal entre consumo y ocio: $\\varphi\\,\\hat L_t=\\hat w_t-\\theta\\,\\hat C_t$.\n\nCon $\\theta=1$, $\\varphi=2$, $\\hat w=2\\ \\%$ y $\\hat C=1\\ \\%$: $\\hat L=(2-1)/2=0{,}5\\ \\%$.\n\nComprobación exacta: $L^2\\propto w/C$, luego $L$ se multiplica por $\\sqrt{1{,}02/1{,}01}\\approx1{,}0049$: un 0,5 %.\n\nInterpretación: $1/\\varphi=0{,}5$ es la elasticidad de Frisch, la respuesta de las horas al salario con la utilidad marginal de la riqueza (aquí, del consumo) constante. Pero el consumo no es constante: al subir, cae su utilidad marginal y el hogar quiere más ocio. Cuando la perturbación es transitoria, el consumo sube poco (la renta extra se ahorra y se reparte en el tiempo) y domina la sustitución: las horas suben. Cuando es permanente, el consumo sube casi tanto como el salario y las horas apenas cambian.\n\nPor qué fallan las demás:\n\n- a) Aplica la elasticidad de Frisch al salario ($0{,}5\\cdot2=1$) y olvida el efecto riqueza, que entra por el consumo.\n- c) Las horas no siguen al salario uno a uno: lo impiden $\\varphi>0$ (la desutilidad marginal del trabajo es creciente) y el aumento del consumo.\n- d) Los dos efectos se anulan solo si el consumo sube en la misma proporción que el salario ($\\hat w=\\theta\\hat C$), como ocurre a largo plazo o ante una perturbación permanente; aquí el consumo sube la mitad."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Modelo de ciclo real: oferta de trabajo y sustitución intertemporal",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314205,
+   "estado": "publicada",
+   "enunciado": "En el modelo de ciclo real básico, las horas trabajadas fluctúan mucho menos que en los datos, salvo que la oferta de trabajo individual sea muy elástica, algo que los estudios microeconómicos no avalan. La extensión de trabajo indivisible (Hansen, 1985; Rogerson, 1988) responde a este problema porque:",
+   "opciones": {
+    "a": "Las horas agregadas varían por el número de ocupados, y la elasticidad agregada de la oferta de trabajo es alta aunque la individual sea baja.",
+    "b": "Introduce salarios de eficiencia, de modo que aparece paro involuntario y las fluctuaciones del empleo dejan de ser una respuesta eficiente.",
+    "c": "Supone salarios nominales rígidos, de modo que las perturbaciones monetarias mueven el empleo aunque la oferta de trabajo sea inelástica.",
+    "d": "Elimina el efecto riqueza sobre la oferta de trabajo, de modo que las horas responden igual a perturbaciones permanentes que a transitorias."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Si solo se puede trabajar la jornada completa o no trabajar, el ajuste se hace por el margen extensivo (cuántos trabajan), no por el intensivo (cuántas horas cada uno). La economía agregada se comporta como si tuviera una oferta de trabajo muy elástica, con independencia de la elasticidad de cada individuo.",
+    "desarrollo": "El modelo básico necesita que pequeñas variaciones del salario real muevan mucho las horas. Con las elasticidades individuales que estima la microeconometría (bajas), la volatilidad de las horas del modelo es aproximadamente la mitad de la observada.\n\nHansen (1985) y Rogerson (1988) suponen que el trabajo es indivisible: cada persona trabaja una jornada fija o no trabaja. Quién trabaja en cada periodo se decide como en una lotería, con seguro completo entre hogares. El resultado es que el hogar representativo tiene una desutilidad lineal en las horas agregadas: la elasticidad agregada es muy alta (infinita, en el caso extremo) aunque la de cada individuo sea baja o nula. Las horas totales varían porque cambia el número de ocupados, que es además lo que se observa en los datos: la mayor parte del ajuste del empleo en el ciclo es de personas, no de horas por persona.\n\nPor qué fallan las demás:\n\n- b) Los salarios de eficiencia son una explicación neokeynesiana del paro involuntario. En el modelo de trabajo indivisible el equilibrio sigue siendo competitivo y eficiente: es una extensión dentro del ciclo real.\n- c) No hay rigideces nominales ni dinero: las perturbaciones siguen siendo reales (tecnológicas).\n- d) El efecto riqueza no desaparece; lo que cambia es la elasticidad con la que las horas agregadas responden al salario."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Modelo de ciclo real: extensiones (trabajo indivisible)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314206,
+   "estado": "publicada",
+   "enunciado": "Sobre los modelos de ciclo nominal con fundamentos microeconómicos, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "En el modelo de Lucas (1972) los precios son rígidos, y por eso las perturbaciones monetarias, tanto anticipadas como no anticipadas, alteran la producción.",
+    "b": "En el modelo de Lucas (1972) la política monetaria sistemática estabiliza la producción, porque los agentes tardan en revisar sus expectativas.",
+    "c": "En el modelo neokeynesiano con precios a la Calvo, también la política monetaria anticipada tiene efectos reales, porque los precios se ajustan poco a poco.",
+    "d": "En el modelo neokeynesiano las fluctuaciones son respuestas eficientes, como en el ciclo real, y la política de estabilización no mejora el bienestar."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Los dos modelos rompen la neutralidad del dinero por vías distintas. En Lucas (1972), con precios flexibles e información imperfecta, solo la sorpresa monetaria mueve la producción. En el modelo neokeynesiano, la rigidez nominal hace que cualquier cambio del tipo de interés, anticipado o no, altere el tipo real y la demanda.",
+    "desarrollo": "- Lucas (1972): precios flexibles, mercados que se vacían, expectativas racionales e información imperfecta. Cada productor ve su precio, pero no el nivel general, y confunde en parte una subida de todos los precios con una subida de su precio relativo. La producción responde solo a la parte no anticipada de la política monetaria, $y_t=y^n+\\psi\\,(p_t-p^e_t)$; la parte sistemática, que los agentes prevén, no tiene efectos reales (proposición de ineficacia).\n- Modelo neokeynesiano: competencia monopolística y precios que cada empresa solo puede revisar de vez en cuando (Calvo). Si el banco central sube el tipo nominal y los precios no se ajustan del todo, sube el tipo real, cae el consumo y con él la producción, aunque la subida estuviera anunciada. El dinero no es neutral a corto plazo (sí a largo) y, como la producción se aparta de la que habría con precios flexibles, el ciclo es ineficiente y estabilizar mejora el bienestar.\n\nPor qué fallan las demás:\n\n- a) En Lucas (1972) los precios son flexibles: la no neutralidad viene de la información imperfecta, y solo vale para las perturbaciones no anticipadas.\n- b) Es lo contrario: con expectativas racionales, la política sistemática se anticipa y no afecta a la producción.\n- d) La eficiencia del ciclo es la conclusión del ciclo real. En el modelo neokeynesiano, las rigideces nominales y el poder de mercado la rompen, y eso es lo que justifica la política de estabilización."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Ciclos nominales: de Lucas (1972) al modelo neokeynesiano",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314207,
+   "estado": "publicada",
+   "enunciado": "La brecha crédito-PIB, que Basilea III propone como guía para fijar el colchón de capital anticíclico, es:",
+   "opciones": {
+    "a": "La diferencia entre la tasa de crecimiento anual del crédito al sector privado y la del PIB nominal, medida en puntos porcentuales.",
+    "b": "La desviación de la ratio de crédito al sector privado sobre el PIB respecto a su tendencia, estimada con un filtro HP de una cola y un $\\lambda$ muy alto.",
+    "c": "La desviación de la ratio de crédito sobre el PIB respecto a su tendencia, estimada con el mismo $\\lambda=1600$ del ciclo económico, porque ambos tienen una duración similar.",
+    "d": "La brecha de producción corregida por el crédito; el colchón se exige cuando es negativa, para sostener el crédito en las recesiones."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Es la versión financiera de la brecha de producción: la distancia, en puntos, entre la ratio crédito/PIB y su tendencia. La tendencia se estima solo con datos pasados (filtro de una cola) y con un parámetro de suavizado mucho mayor que el del ciclo económico ($\\lambda=400\\,000$), porque el ciclo financiero es mucho más largo.",
+    "desarrollo": "El ciclo financiero (las oscilaciones conjuntas del crédito y de los precios de los activos, sobre todo de la vivienda) dura bastante más que el económico: unos 16 años de media, frente a un máximo de unos 8. Para medirlo:\n\n- se toma la ratio del crédito al sector privado no financiero sobre el PIB;\n- se estima su tendencia con un filtro de Hodrick y Prescott de una cola, que solo usa los datos disponibles hasta cada momento (es lo que necesita un supervisor, que decide en tiempo real y no puede esperar a revisiones), y con $\\lambda=400\\,000$, para que la tendencia casi no se doble y recoja ciclos largos;\n- la brecha es la diferencia, en puntos porcentuales, entre la ratio y esa tendencia.\n\nUna brecha positiva y creciente señala un auge del crédito: el colchón anticíclico obliga entonces a los bancos a acumular capital, que se libera en la fase de caída.\n\nPor qué fallan las demás:\n\n- a) La brecha compara niveles de la ratio con su tendencia, no tasas de crecimiento del crédito y del PIB.\n- c) Con $\\lambda=1600$ la tendencia absorbería buena parte del auge del crédito: ese valor está pensado para ciclos de hasta unos 8 años, y el financiero es mucho más largo.\n- d) No es una brecha de producción, y el colchón funciona al revés: se acumula cuando la brecha de crédito es positiva (en el auge) y se libera en la caída."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 El ciclo financiero: concepto, medición y hechos estilizados",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314208,
+   "estado": "publicada",
+   "enunciado": "De acuerdo con la hipótesis de la inestabilidad financiera de Minsky, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Las crisis financieras se deben a perturbaciones exógenas: sin ellas, el sistema financiero tiende por sí solo a la estabilidad.",
+    "b": "Una posición Ponzi es aquella en que los ingresos esperados cubren los intereses de la deuda, pero no la devolución del principal.",
+    "c": "En las expansiones largas las empresas reducen su endeudamiento, y la fragilidad financiera solo aparece al comenzar la recesión.",
+    "d": "En las expansiones largas ganan peso las posiciones especulativas y Ponzi, de modo que la fragilidad se gesta durante el propio auge."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Para Minsky la inestabilidad es endógena: «la estabilidad es desestabilizadora». En una expansión larga, los éxitos animan a endeudarse y los prestamistas relajan sus criterios; las posiciones pasan de cobertura a especulativas y de estas a Ponzi, y basta una subida de tipos o una caída de ingresos para desencadenar ventas forzosas.",
+    "desarrollo": "Minsky distingue tres posiciones financieras según la relación entre los ingresos esperados y los pagos de la deuda:\n\n- de cobertura: los ingresos pagan los intereses y el principal;\n- especulativa: pagan los intereses, pero el principal hay que refinanciarlo;\n- Ponzi: no pagan ni los intereses; hay que endeudarse más o vender activos, y solo se sostiene si los precios de los activos suben.\n\nEn una expansión prolongada, la experiencia favorable reduce la percepción del riesgo, sube el endeudamiento y la estructura financiera se desplaza hacia las posiciones especulativas y Ponzi. La economía se vuelve frágil sin necesidad de una gran perturbación: una subida de tipos o una caída de ingresos obliga a vender activos, sus precios caen y la crisis se extiende. La crisis se incuba en el auge.\n\nPor qué fallan las demás:\n\n- a) Es la visión contraria: en Minsky la inestabilidad nace dentro del sistema financiero, no de perturbaciones externas.\n- b) Esa es la definición de la posición especulativa. En la Ponzi los ingresos no cubren ni siquiera los intereses.\n- c) Ocurre lo contrario: el endeudamiento crece durante la expansión, y con él la fragilidad."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Teorías del ciclo financiero: Fisher, Minsky y Kindleberger",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 314209,
+   "estado": "publicada",
+   "enunciado": "En el modelo del acelerador financiero de Bernanke, Gertler y Gilchrist (1999), la prima de financiación externa (la diferencia entre el coste de la financiación ajena y el de la propia):",
+   "opciones": {
+    "a": "Decrece con la riqueza neta del prestatario en relación con el capital que financia, por lo que una caída del precio de los activos amplifica el ciclo.",
+    "b": "Crece con la riqueza neta del prestatario, que le lleva a emprender proyectos más arriesgados, por lo que una caída del precio de los activos amortigua el ciclo.",
+    "c": "Es nula en equilibrio, porque la competencia entre prestamistas hace irrelevante la estructura financiera de la empresa, como en Modigliani y Miller.",
+    "d": "Es constante a lo largo del ciclo, porque solo refleja el coste de verificación de los proyectos, por lo que las finanzas no alteran la respuesta de la inversión."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con información asimétrica, la financiación externa es más cara que la interna, y la prima baja cuanto más patrimonio propio aporta el prestatario. Una perturbación negativa reduce los beneficios y el precio de los activos, cae la riqueza neta, sube la prima, se invierte menos y vuelven a caer la demanda y el precio de los activos: una espiral que amplifica el ciclo.",
+    "desarrollo": "En el modelo, los empresarios financian la inversión con su riqueza neta y con deuda, y el prestamista solo puede observar el resultado de cada proyecto pagando un coste de verificación. De ahí sale una prima de financiación externa que depende negativamente de la solvencia del prestatario:\n\n$\\mathbb{E}_t\\big[R^K_{t+1}\\big]=s\\Big(\\dfrac{\\mathrm{RN}_{t+1}}{q_tK_{t+1}}\\Big)R_{t+1},\\qquad s'(\\cdot)<0$,\n\ndonde $R^K$ es el rendimiento del capital, $R$ el tipo sin riesgo, $\\mathrm{RN}$ la riqueza neta y $q_tK_{t+1}$ el valor del capital que se financia.\n\nMecanismo: perturbación negativa (por ejemplo, monetaria) → caen los beneficios y el precio del capital, $q_t$ → cae la riqueza neta → sube la prima → cae la inversión → cae la demanda → vuelven a caer los beneficios y $q_t$. La perturbación se amplifica y dura más, porque la riqueza neta tarda en reconstruirse. La riqueza neta es procíclica y la prima, contracíclica.\n\nPor qué fallan las demás:\n\n- b) El signo es el contrario: más riqueza neta alinea los incentivos del prestatario con los del prestamista y abarata la financiación. Y el efecto amplifica el ciclo, no lo amortigua.\n- c) La irrelevancia de la estructura financiera (Modigliani y Miller) es el supuesto de los modelos sin fricciones; aquí la rompe la información asimétrica.\n- d) Si la prima fuera constante no habría acelerador: lo que amplifica es precisamente que la prima varía con el patrimonio de los prestatarios."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Interrelaciones con el ciclo real: el acelerador financiero",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

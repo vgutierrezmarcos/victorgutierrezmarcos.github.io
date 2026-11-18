@@ -1,0 +1,74 @@
+{
+ "tema": "3.A.37",
+ "preguntas": [
+  {
+   "id": 313701,
+   "estado": "publicada",
+   "enunciado": "El tipo de interés a un año es hoy del 3 % y el mercado espera que dentro de un año sea del 5 %. La prima por plazo de la deuda a dos años es de 0,5 puntos. Según la hipótesis de las expectativas con prima por plazo, ¿cuál es el tipo a dos años y cuánto variaría si el banco central, sin tocar el tipo actual, convenciera al mercado de que el tipo a un año del próximo año será un punto más alto (con la prima constante)?",
+   "opciones": {
+    "a": "Es del 4,0 % y subiría 1 punto.",
+    "b": "Es del 4,5 % y no variaría, porque el tipo de hoy no se ha movido.",
+    "c": "Es del 4,5 % y subiría 0,5 puntos.",
+    "d": "Es del 5,5 % y subiría 1 punto."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El tipo a dos años es la media de los tipos a corto esperados más la prima: $(3+5)/2+0{,}5=4{,}5$ %. Si el tipo esperado para el segundo año sube un punto, la media sube medio punto: lo que el banco central anuncia mueve los tipos largos aunque el tipo oficial no cambie.",
+    "desarrollo": "$$i^{(2)}_t=\\tfrac12\\big(i_t+\\mathbb{E}_t[i_{t+1}]\\big)+\\text{prima por plazo}=\\tfrac12(3+5)+0{,}5=4{,}5\\ \\%.$$\n\nCon el tipo esperado en el 6 %: $\\tfrac12(3+6)+0{,}5=5$ %, medio punto más. Por la otra vía: cada tipo a corto pesa $1/2$ en un bono a dos años, luego un punto más en uno de ellos mueve el tipo largo $1\\cdot\\tfrac12=0{,}5$.\n\nEs la base del canal de las expectativas y de la orientación de la política (forward guidance): una subida que se espera duradera mueve los tipos largos, que son los que pagan hipotecas y empresas; una que se cree pasajera, apenas. Las compras de activos actúan sobre el otro sumando, la prima por plazo.\n\nPor qué fallan las demás:\n\n- a) Olvida la prima por plazo en el nivel ($4{,}0$ %) y traslada entero al tipo largo el cambio de un solo año.\n- b) Calcula bien el nivel, pero ignora que el tipo largo depende de los tipos a corto esperados, no solo del actual.\n- d) Toma el tipo esperado para el segundo año más la prima ($5+0{,}5$) en lugar de la media de los dos años."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Los canales de transmisión: la curva de tipos y el canal de las expectativas",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313702,
+   "estado": "publicada",
+   "enunciado": "Con expectativas racionales y contratos salariales de dos periodos que cada periodo renueva la mitad de los trabajadores, se compara el efecto de una subida permanente e inesperada de la cantidad de dinero cuando los salarios están predeterminados (Fischer, 1977: el contrato fija un salario para cada periodo) y cuando son fijos (Taylor, 1980: el mismo salario durante todo el contrato). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con Fischer el efecto real desaparece cuando se han renovado todos los contratos; con Taylor dura más que los contratos y se apaga poco a poco, más despacio cuanto mayor es la rigidez real.",
+    "b": "Con Taylor el efecto real desaparece cuando se han renovado todos los contratos; con Fischer dura más que los contratos y se apaga poco a poco, más despacio cuanto mayor es la rigidez real.",
+    "c": "En los dos casos el efecto real dura exactamente lo que el contrato más largo; solo cambia su tamaño, que es mayor con salarios fijos que con salarios predeterminados.",
+    "d": "En ninguno de los dos hay efectos reales más allá del periodo de la sorpresa, porque con expectativas racionales solo la parte no anticipada del dinero mueve la producción."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con salarios predeterminados, cada contrato firmado después de la sorpresa la incorpora del todo, y el efecto acaba al renovarse el último. Con salarios fijos, quien renueva mira el salario de los que aún no han renovado y se ajusta solo en parte: la producción cae de forma geométrica y el efecto sobrevive a los contratos.",
+    "desarrollo": "Con una demanda agregada $y_t=m_t-p_t$ y un salario deseado $p^*_t=p_t+a\\,y_t$ (una $a$ pequeña es más rigidez real):\n\n- Fischer: el contrato firmado en $t-j$ fija para $t$ el salario $\\mathbb{E}_{t-j}[p^*_t]$. La producción es $y_t=(m_t-\\mathbb{E}_{t-1}[m_t])+\\frac{1}{1+a}(\\mathbb{E}_{t-1}[m_t]-\\mathbb{E}_{t-2}[m_t])$: solo cuenta la información llegada después de firmar los contratos vigentes. Tras la sorpresa, la producción sube 1 en el primer periodo, $1/(1+a)$ en el segundo y nada desde el tercero, cuando todos los contratos se han firmado conociéndola.\n- Taylor: el salario del contrato es el mismo los dos periodos y cumple $w^c_t=\\rho_w\\,w^c_{t-1}+(1-\\rho_w)\\,m_t$, con $\\rho_w=(1-\\sqrt a)/(1+\\sqrt a)$. La producción es $y_k=\\tfrac12(1+\\rho_w)\\,\\rho_w^{\\,k}$: una caída geométrica que nunca llega del todo a cero. Con $a=0{,}1$, $\\rho_w\\approx0{,}52$ y la producción es 0,76, 0,39, 0,21…; con $a=1$, $\\rho_w=0$ y dura un solo periodo. Cuanta más rigidez real, más persistencia.\n\nPor qué fallan las demás:\n\n- b) Intercambia los dos modelos.\n- c) La duración del efecto no es la misma: esa es precisamente la aportación de Taylor (los efectos duran más que los propios contratos).\n- d) Es la proposición de inefectividad, que exige precios y salarios flexibles. Los contratos escalonados muestran que lo que da la neutralidad es la flexibilidad, no las expectativas racionales: en el segundo periodo la subida ya es conocida y sigue teniendo efectos reales."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Rigideces de salarios: los contratos escalonados (Fischer y Taylor)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313703,
+   "estado": "publicada",
+   "enunciado": "En el modelo neokeynesiano canónico, una perturbación persistente lleva el tipo de interés natural por debajo del límite inferior efectivo del tipo nominal, de modo que el banco central mantiene su tipo en ese límite mientras dura (suponga que el equilibrio es único). Si los precios fueran más flexibles (una pendiente $\\kappa$ mayor de la curva de Phillips), la caída de la brecha de producción sería:",
+   "opciones": {
+    "a": "Menor: los precios se ajustan antes y la economía vuelve más deprisa a su producción natural, igual que ocurre fuera del límite inferior.",
+    "b": "Mayor: la deflación es más rápida, cae la inflación esperada y, con el tipo nominal en su suelo, sube el tipo real.",
+    "c": "La misma: en el límite inferior la demanda no depende del tipo real, de modo que $\\kappa$ solo determina cuánto cae la inflación.",
+    "d": "Menor: la caída de los precios eleva los saldos reales y, con ellos, la demanda, que en el límite inferior sigue teniendo pendiente negativa."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Es la paradoja de la flexibilidad. Con el tipo nominal en su suelo, el tipo real es $i^{\\mathrm{ELB}}-\\mathbb{E}_t[\\pi_{t+1}]$: cuanto más responden los precios a la brecha negativa, más deflación se espera, más sube el tipo real y más cae la demanda.",
+    "desarrollo": "Si la perturbación persiste cada periodo con probabilidad $p$, en el estado bajo la curva de Phillips es $\\pi_L=\\dfrac{\\kappa}{1-\\beta p}\\,x_L$ y la IS, con el tipo en el límite, $x_L=p\\,x_L-\\frac1\\theta\\big(i^{\\mathrm{ELB}}-p\\,\\pi_L-r^n_L\\big)$. Resolviendo,\n\n$$x_L=\\frac{(1-\\beta p)\\,\\big(r^n_L-i^{\\mathrm{ELB}}\\big)}{\\theta(1-p)(1-\\beta p)-p\\,\\kappa}<0,$$\n\ncon el denominador positivo (equilibrio único). Una $\\kappa$ mayor reduce el denominador y hace más negativa la brecha. Con $\\theta=1$, $\\beta=0{,}99$ y $p=0{,}7$, y el tipo natural 1 punto anual (0,25 trimestral) por debajo del suelo: con $\\kappa=0{,}05$ el denominador es $0{,}3\\cdot0{,}307-0{,}035=0{,}057$ y la brecha, $-1{,}3$ %; con $\\kappa=0{,}1$ es $0{,}022$ y la brecha, $-3{,}5$ %.\n\nLa razón es que, en el límite, la demanda agregada en el plano $(x,\\pi)$ tiene pendiente positiva: menos inflación hoy hace esperar menos inflación mañana, sube el tipo real y cae el gasto. Fuera del límite ocurre lo contrario, porque el banco central baja el tipo nominal más que la inflación.\n\nPor qué fallan las demás:\n\n- a) Vale fuera del límite, donde la regla de tipos compensa la caída de la inflación; en el límite el banco central no puede bajar el tipo y la flexibilidad desestabiliza.\n- c) La demanda sí depende del tipo real (es la IS dinámica); lo que no puede moverse es el tipo nominal, y por eso la inflación esperada pasa entera al tipo real.\n- d) El modelo canónico no tiene efecto de saldos reales, y en el límite la pendiente de la demanda es positiva, no negativa."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 El modelo neokeynesiano en el límite inferior: la paradoja de la flexibilidad",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "tema": "3.A.35",
+ "preguntas": [
+  {
+   "id": 313501,
+   "estado": "publicada",
+   "enunciado": "En una economía se cumple la ecuación de cambio en términos de renta, $M\\,V=P\\,Y$. En un año, la cantidad de dinero crece un 8 %, la producción real crece un 3 % y la velocidad de circulación cae un 1 %. La tasa de inflación es, aproximadamente:",
+   "opciones": {
+    "a": "12 %.",
+    "b": "6 %.",
+    "c": "4 %.",
+    "d": "5 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En tasas de variación, $\\gamma_M+\\gamma_V=\\pi+\\gamma_Y$. Despejando, $\\pi=\\gamma_M+\\gamma_V-\\gamma_Y=8-1-3=4$ %. Una caída de la velocidad (se quiere tener más dinero por unidad de renta) absorbe parte del crecimiento del dinero.",
+    "desarrollo": "Tomando logaritmos y derivando respecto al tiempo en $M\\,V=P\\,Y$:\n\n$$\\gamma_M+\\gamma_V=\\pi+\\gamma_Y\\quad\\Longrightarrow\\quad\\pi=8\\,\\%+(-1\\,\\%)-3\\,\\%=4\\,\\%.$$\n\nLectura: el gasto nominal crece un 7 % (8 % de dinero menos 1 % de velocidad); de ese 7 %, 3 puntos son más producción y los 4 restantes, precios. Que la velocidad caiga equivale a que la demanda de dinero por unidad de renta aumente (la $k$ de Cambridge sube): el público absorbe parte del dinero nuevo sin gastarlo. (El cálculo exacto, $1{,}08\\cdot 0{,}99/1{,}03-1\\approx 3{,}8$ %, da el mismo resultado redondeado.)\n\nPor qué fallan las demás:\n\n- a) Suma las tres tasas: ni la caída de la velocidad ni el crecimiento de la producción añaden inflación; la restan.\n- b) Resta la producción, pero suma la caída de la velocidad como si fuera un aumento ($8+1-3$).\n- d) Supone la velocidad constante ($8-3$): es la versión estricta de la teoría cuantitativa, pero el enunciado dice que la velocidad cae."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Teoría cuantitativa: la ecuación de cambio en tasas de variación",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313502,
+   "estado": "publicada",
+   "enunciado": "En una economía de generaciones solapadas (Samuelson, 1958) cada persona vive dos periodos, recibe de joven una dotación de un bien perecedero y nada de viejo; la población crece a la tasa $n>0$ y existe una cantidad constante $M$ de dinero fiduciario, inicialmente en manos de los viejos. En el estado estacionario del equilibrio monetario:",
+   "opciones": {
+    "a": "Los precios caen al ritmo al que crece la población y el dinero rinde $1+n$ en términos reales (brutos); pero existe también un equilibrio en el que el dinero no vale nada.",
+    "b": "Los precios son constantes, porque la cantidad de dinero lo es, y el dinero tiene un rendimiento real nulo; el equilibrio monetario es el único equilibrio posible del modelo.",
+    "c": "Los precios suben al ritmo al que crece la población, porque cada vez más jóvenes demandan dinero, y este rinde $1/(1+n)$ en términos reales (brutos), menos que la autarquía.",
+    "d": "El dinero mejora a los jóvenes de cada generación, que pueden trasladar consumo a la vejez, pero perjudica a los viejos iniciales, que entregan bienes a cambio de un papel sin valor."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Cada generación de jóvenes es $1+n$ veces mayor que la anterior y quiere cambiar bienes por la misma cantidad de dinero: su valor real sube y los precios caen, $P_{t+1}/P_t=1/(1+n)$. El dinero rinde $1+n$. Pero vale solo porque se espera que la siguiente generación lo acepte: el equilibrio sin dinero existe siempre.",
+    "desarrollo": "Sin dinero no hay forma de ahorrar: el bien no se guarda y los viejos no pueden devolver un préstamo a los jóvenes. El único equilibrio es la autarquía (se consume todo de joven y nada de viejo).\n\nCon dinero:\n\n- Los jóvenes de $t$ venden parte de su dotación a los viejos a cambio de las $M$ unidades de dinero; el equilibrio del mercado de dinero es $M=P_t\\,L_t\\,s$, con $s$ el ahorro real por joven, constante en el estado estacionario.\n- Como $L_{t+1}=(1+n)\\,L_t$ y $M$ no cambia, $P_{t+1}/P_t=1/(1+n)$: los precios caen.\n- El rendimiento real bruto del dinero es $P_t/P_{t+1}=1+n$, el «tipo de interés biológico».\n- Todas las generaciones mejoran frente a la autarquía, incluidos los viejos iniciales, que consumen algo a cambio de un papel.\n\nPero el valor del dinero es una burbuja: si los jóvenes creen que la generación siguiente no lo aceptará, no lo aceptan, y el dinero no vale nada. Ese equilibrio no monetario existe siempre.\n\nPor qué fallan las demás:\n\n- b) Con dinero constante y una demanda real de dinero que crece con la población, los precios no pueden ser constantes; y el equilibrio monetario no es único.\n- c) Es al revés: más demandantes de una cantidad fija de dinero suben su valor, es decir, bajan los precios. El dinero rinde $1+n>1$, más que la autarquía (que no permite trasladar nada).\n- d) Los viejos iniciales reciben bienes a cambio de dinero, no al revés: son los primeros beneficiados."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 El dinero fiduciario: generaciones solapadas (Samuelson)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313503,
+   "estado": "publicada",
+   "enunciado": "Un individuo cobra 18.000 euros al principio del año en una cuenta que rinde un 5 % anual y los gasta de forma uniforme a lo largo del año. Cada retirada de efectivo le cuesta 2 euros, sea cual sea su importe. Según el modelo de inventarios de Baumol y Tobin, su saldo medio de efectivo y el número de retiradas que hace al año son:",
+   "opciones": {
+    "a": "1.200 euros y 15 retiradas.",
+    "b": "600 euros y 15 retiradas.",
+    "c": "600 euros y 30 retiradas.",
+    "d": "Unos 424 euros y unas 21 retiradas."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La retirada óptima es $M^*=\\sqrt{2\\,b\\,Y/i}=\\sqrt{2\\cdot 2\\cdot 18.000/0{,}05}=1.200$ euros, así que hace $18.000/1.200=15$ retiradas. Como el saldo baja de 1.200 a 0 entre retiradas, su saldo medio (su demanda de dinero) es la mitad: 600 euros.",
+    "desarrollo": "El individuo elige el importe de cada retirada, $M$, para minimizar el coste de conversión más el de oportunidad:\n\n$$CT(M)=b\\,\\frac{Y}{M}+i\\,\\frac{M}{2}.$$\n\n- Condición de primer orden: $-b\\,Y/M^2+i/2=0$, de donde $M^*=\\sqrt{2\\,b\\,Y/i}=\\sqrt{1.440.000}=1.200$ euros.\n- Número de retiradas: $Y/M^*=18.000/1.200=15$.\n- Saldo medio: $M^*/2=600$ euros. Es la demanda de dinero, $M^D=\\sqrt{b\\,Y/(2\\,i)}=\\sqrt{360.000}=600$.\n\nComprobación: en el óptimo los dos costes son iguales, $2\\cdot 15=30$ euros de comisiones y $0{,}05\\cdot 600=30$ euros de intereses perdidos; el total, 60 euros, coincide con $\\sqrt{2\\,b\\,i\\,Y}=\\sqrt{3.600}$.\n\nPor qué fallan las demás:\n\n- a) Confunde el importe de cada retirada (1.200) con el saldo medio: el efectivo se va gastando, y de media se tiene la mitad.\n- c) El saldo medio es correcto, pero 30 retiradas serían de 600 euros cada una, con un saldo medio de 300.\n- d) Toma la fórmula de la demanda de dinero, $\\sqrt{b\\,Y/(2\\,i)}$, sin el 2 del denominador ($\\sqrt{b\\,Y/i}\\approx 849$) como importe de la retirada, y la divide otra vez por 2."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 El dinero como medio de cambio: Baumol y Tobin",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313504,
+   "estado": "publicada",
+   "enunciado": "Frente al motivo especulación de Keynes, el modelo de cartera de Tobin (1958) explica la relación inversa entre la demanda de dinero y el tipo de interés:",
+   "opciones": {
+    "a": "Como el resultado de comparar el coste fijo de convertir bonos en dinero con los intereses que se pierden por mantener efectivo para pagar.",
+    "b": "Como el resultado de las expectativas de cada inversor sobre la vuelta del tipo de interés a un nivel que considera normal.",
+    "c": "Como el resultado de una restricción que obliga a pagar el consumo con el dinero acumulado en el periodo anterior.",
+    "d": "Como el resultado de la aversión al riesgo de un inversor que diversifica entre dinero, seguro, y bonos, de rendimiento incierto."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En Tobin (1958) el dinero es el activo sin riesgo de una cartera: el inversor averso al riesgo combina dinero y bonos, y si el tipo sube acepta más riesgo y tiene menos dinero (si domina el efecto sustitución). No hace falta un tipo «normal», y cada inversor tiene a la vez los dos activos.",
+    "desarrollo": "En Keynes, cada inversor compara el tipo de mercado con el que considera normal: si espera que el tipo suba (y el precio de los bonos baje), guarda toda su riqueza en dinero; si no, toda en bonos. La demanda agregada es decreciente solo porque los inversores discrepan sobre el tipo normal. Tiene dos debilidades: nadie diversifica y, si el tipo se mantiene mucho tiempo, las expectativas se adaptan y la demanda especulativa desaparece.\n\nTobin lo resuelve con la teoría de carteras:\n\n- el dinero no rinde ni tiene riesgo; los bonos rinden $i$ más una ganancia de capital aleatoria de media nula;\n- la rentabilidad esperada y el riesgo de la cartera crecen con la fracción en bonos: las carteras posibles forman una recta de pendiente $i/\\sigma_{\\mathrm B}$;\n- el inversor averso al riesgo elige un punto interior: tiene dinero y bonos a la vez;\n- si sube el tipo, la recta gira hacia arriba; con el efecto sustitución dominante, compra más bonos y demanda menos dinero.\n\nPor qué fallan las demás:\n\n- a) Es el modelo de inventarios de Baumol (1952) y Tobin (1956), que explica la demanda de dinero para transacciones, no la demanda como activo.\n- b) Es la explicación del propio Keynes, la que el modelo de Tobin viene a sustituir.\n- c) Es la restricción de pago por adelantado (Clower, Lucas), que explica el dinero como medio de cambio en equilibrio general."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 El dinero como depósito de valor: la cartera de Tobin (1958)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313505,
+   "estado": "publicada",
+   "enunciado": "Un agente mantiene un saldo de precaución $M$ porque sus pagos netos del periodo son inciertos, con media nula y varianza $\\sigma^2$. Estima la probabilidad de quedarse sin efectivo en $\\sigma^2/M^2$ (cota de Chebyshev); quedarse sin él le cuesta $b$, y cada euro de saldo le cuesta el tipo de interés $i$. Elige $M$ para minimizar $i\\,M+b\\,\\sigma^2/M^2$ (Whalen, 1966). Si la varianza de sus pagos netos se multiplica por 8, su saldo de precaución óptimo:",
+   "opciones": {
+    "a": "Se multiplica por 8.",
+    "b": "Se multiplica por 2.",
+    "c": "Se multiplica por 2,83.",
+    "d": "No cambia."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La condición de primer orden, $i=2\\,b\\,\\sigma^2/M^3$, da $M^*=(2\\,b\\,\\sigma^2/i)^{1/3}$: el saldo de precaución crece con la raíz cúbica de la varianza. Si esta se multiplica por 8, el saldo se multiplica por $8^{1/3}=2$.",
+    "desarrollo": "Derivando el coste respecto a $M$ e igualando a cero:\n\n$$i-\\frac{2\\,b\\,\\sigma^2}{M^3}=0\\quad\\Longrightarrow\\quad M^*=\\left(\\frac{2\\,b\\,\\sigma^2}{i}\\right)^{1/3}.$$\n\nEl agente guarda dinero hasta que lo que ahorra en coste esperado de iliquidez el último euro, $2\\,b\\,\\sigma^2/M^3$, iguala su coste de oportunidad, $i$. La elasticidad del saldo óptimo respecto a la varianza es $1/3$ (y $-1/3$ respecto al tipo de interés): con $\\sigma^2$ multiplicada por 8, $M^*$ se multiplica por $8^{1/3}=2$.\n\nComprobación: con el saldo duplicado, $M^3$ se multiplica por 8, igual que la varianza, y la condición de primer orden se sigue cumpliendo.\n\nDos lecturas: más incertidumbre significa más demanda de dinero (por eso se dispara en las crisis), pero menos que en proporción; y también el dinero de precaución responde al tipo de interés, algo que Keynes no recogía.\n\nPor qué fallan las demás:\n\n- a) Supone una demanda proporcional a la varianza (elasticidad 1).\n- c) Aplica una raíz cuadrada, $\\sqrt{8}\\approx 2{,}83$: es la regla del modelo de inventarios de Baumol y Tobin, o la proporcionalidad a la desviación típica, no la de este problema, cuya condición de primer orden es cúbica.\n- d) Supone que la precaución solo depende de la renta, como en Keynes; aquí depende de la dispersión de los pagos."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 El dinero como medio de cambio: el motivo precaución (Whalen)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313506,
+   "estado": "publicada",
+   "enunciado": "En una economía, la demanda de saldos reales es la de Cagan, $M/P=\\zeta\\,e^{-\\alpha\\,\\pi^e}$, con $\\alpha=5$ y la inflación medida en tanto por uno anual. En el estado estacionario, la inflación esperada coincide con la efectiva y con el crecimiento del dinero, y el señoreaje es $S=\\pi\\,M/P$. El Estado financia su déficit emitiendo dinero y la inflación estacionaria es del 40 %. Entonces:",
+   "opciones": {
+    "a": "La economía está en el tramo decreciente de la curva de Laffer del señoreaje: con una inflación del 20 % el Estado recaudaría más.",
+    "b": "La economía está en el tramo creciente de la curva de Laffer del señoreaje: el máximo se alcanza con una inflación del 500 %.",
+    "c": "La economía está justo en el máximo de la curva de Laffer del señoreaje: ninguna otra inflación permite recaudar más.",
+    "d": "El señoreaje no depende de la inflación: la base del impuesto cae en la misma proporción en que sube su tipo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El señoreaje, $S=\\pi\\,\\zeta\\,e^{-\\alpha\\pi}$, es máximo cuando $1-\\alpha\\,\\pi=0$, es decir, con $\\pi^*=1/\\alpha=20$ %. Con el 40 % la economía está al otro lado del máximo: la base (los saldos reales) cae más de lo que sube el tipo, y con menos inflación se recaudaría más.",
+    "desarrollo": "El señoreaje de estado estacionario es un impuesto cuyo tipo es la inflación y cuya base son los saldos reales:\n\n$$S(\\pi)=\\pi\\,\\zeta\\,e^{-\\alpha\\,\\pi},\\qquad S'(\\pi)=\\zeta\\,e^{-\\alpha\\,\\pi}\\,(1-\\alpha\\,\\pi).$$\n\n- $S'>0$ si $\\pi<1/\\alpha$ y $S'<0$ si $\\pi>1/\\alpha$: es una curva de Laffer con máximo en $\\pi^*=1/\\alpha=0{,}20$.\n- Con $\\pi=0{,}4$: $S=0{,}4\\,e^{-2}\\,\\zeta\\approx 0{,}054\\,\\zeta$.\n- Con $\\pi=0{,}20$: $S=0{,}20\\,e^{-1}\\,\\zeta\\approx 0{,}074\\,\\zeta$, un 36 % más.\n\nEn términos de elasticidad: la semielasticidad de la demanda es $\\alpha$, así que la elasticidad respecto a la inflación es $\\alpha\\,\\pi=2>1$: la base cae más que en proporción a la subida del tipo. Es lo que halló Cagan en casi todas las hiperinflaciones que estudió: la inflación media superó la que maximizaba el señoreaje.\n\nPor qué fallan las demás:\n\n- b) Confunde $\\alpha$ con la inflación que maximiza el señoreaje; es su inversa, $1/\\alpha$.\n- c) El máximo está en el 20 %, no en el 40 %.\n- d) Eso solo ocurriría con una demanda de elasticidad unitaria respecto a la inflación en todos sus puntos; con la de Cagan la elasticidad, $\\alpha\\,\\pi$, crece con la inflación y solo vale 1 en el máximo."
+   },
+   "dificultad": 3,
+   "apartado": "III.3 Demanda de dinero y política fiscal: señoreaje y curva de Laffer",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313507,
+   "estado": "publicada",
+   "enunciado": "En una economía, el tipo de interés real que iguala el ahorro y la inversión con pleno empleo (el tipo natural) es del $-3$ %. Como existe efectivo, cuyo rendimiento nominal es nulo, el tipo de interés nominal no puede bajar del $-0{,}5$ % (límite inferior efectivo). Con la aproximación $r=i-\\pi^e$, ¿cuál es la inflación esperada mínima con la que la política monetaria puede llevar el tipo real hasta el natural?",
+   "opciones": {
+    "a": "0,5 %.",
+    "b": "3 %.",
+    "c": "2,5 %.",
+    "d": "3,5 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El tipo real más bajo que se puede lograr es el suelo del nominal menos la inflación esperada: $-0{,}5\\,\\%-\\pi^e$. Para que llegue al $-3$ % hace falta $\\pi^e\\geq 3-0{,}5=2{,}5$ %. Con menos inflación esperada, el tipo real queda por encima del natural y sobra ahorro.",
+    "desarrollo": "Por la ecuación de Fisher, $r=i-\\pi^e$. Como $i\\geq i^{\\mathrm{ELB}}=-0{,}5$ %, el tipo real cumple\n\n$$r\\ \\geq\\ i^{\\mathrm{ELB}}-\\pi^e.$$\n\nPara alcanzar $r^*=-3$ % hace falta $-0{,}5-\\pi^e\\leq -3$, es decir, $\\pi^e\\geq 2{,}5$ %.\n\nComprobación: con $\\pi^e=2{,}5$ % y el tipo nominal en su suelo, $r=-0{,}5-2{,}5=-3$ %. Con $\\pi^e=2$ %, el tipo real mínimo sería $-2{,}5$ %, por encima del natural: se querría ahorrar más de lo que se quiere invertir y la economía se ajustaría con menos renta.\n\nEl suelo existe porque nadie aceptaría un tipo muy negativo pudiendo guardar billetes, que rinden un 0 %; está algo por debajo de cero porque guardar y asegurar efectivo cuesta. De ahí las salidas que se discuten: más inflación esperada (un objetivo de inflación más alto), una política fiscal que suba el tipo natural, o bajar el suelo gravando o suprimiendo el efectivo.\n\nPor qué fallan las demás:\n\n- a) Toma el valor absoluto del suelo del tipo nominal, sin compararlo con el tipo natural.\n- b) Sería la respuesta si el suelo del tipo nominal fuera exactamente cero; aquí está en el $-0{,}5$ %, y eso ahorra medio punto de inflación.\n- d) Suma el medio punto en vez de restarlo: trata el suelo como si fuera $+0{,}5$ %."
+   },
+   "dificultad": 2,
+   "apartado": "III.4 Una economía sin dinero en efectivo: el efectivo como suelo de los tipos",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

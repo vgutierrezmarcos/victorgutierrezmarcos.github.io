@@ -1,0 +1,725 @@
+{
+ "tema": "3.A.32",
+ "preguntas": [
+  {
+   "id": 313201,
+   "estado": "publicada",
+   "enunciado": "Una economía pequeña con precios fijos y tipo de cambio fijo se describe con el modelo IS-LM-BP. La movilidad del capital es baja: la curva BP es creciente y más inclinada que la LM. El banco central no esteriliza. Si el Gobierno aumenta el gasto público:",
+   "opciones": {
+    "a": "En el nuevo cruce de la IS y la LM hay superávit de balanza de pagos: el banco central compra divisas, la LM se desplaza a la derecha y la renta sube más que en ese cruce.",
+    "b": "En el nuevo cruce de la IS y la LM hay déficit de balanza de pagos: el banco central vende divisas, la LM se desplaza a la izquierda y la renta sube, pero menos que en ese cruce.",
+    "c": "En el nuevo cruce de la IS y la LM hay déficit de balanza de pagos: la moneda se deprecia, la IS y la BP se desplazan a la derecha y la renta sube más que en ese cruce.",
+    "d": "En el nuevo cruce de la IS y la LM hay déficit de balanza de pagos: el banco central vende divisas y la LM se desplaza a la izquierda hasta que la renta vuelve a su nivel inicial."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con la BP más inclinada que la LM, el empeoramiento del saldo comercial (más renta, más importaciones) pesa más que la entrada de capital que atrae la subida del tipo de interés: hay déficit, se pierden reservas y la cantidad de dinero cae. La expansión fiscal sigue subiendo la renta, pero menos que con una cantidad de dinero dada.",
+    "desarrollo": "La expansión fiscal desplaza la IS a la derecha. El cruce de la IS nueva con la LM tiene más renta y un tipo de interés más alto. Como la BP es más inclinada que la LM ($m/\\beta_K>k/h$), ese punto queda por debajo de la BP: para esa renta, el equilibrio exterior pediría un tipo de interés mayor. Hay déficit de balanza de pagos.\n\nCon tipo fijo, el banco central vende divisas para sostener la paridad; sin esterilización, la base monetaria cae y la LM se desplaza a la izquierda hasta pasar por el corte de la IS nueva con la BP. El equilibrio final tiene más renta que el inicial (el multiplicador con tipo fijo, $\\beta_K/\\{[1-c(1-t)]\\beta_K+m(b+\\beta_K)\\}$, es positivo si $\\beta_K>0$), pero menos que el cruce IS-LM, y un tipo de interés todavía más alto: por eso la política fiscal es «poco eficaz» con movilidad baja.\n\nPor qué fallan las demás:\n\n- a) Es lo que ocurre con movilidad alta (BP más plana que la LM): el cruce IS-LM queda por encima de la BP, hay superávit y el dinero acompaña.\n- c) El ajuste por el tipo de cambio es el del régimen flexible; aquí la paridad está fijada y lo que se ajusta es la cantidad de dinero.\n- d) La renta solo vuelve a su nivel inicial con movilidad nula (BP vertical). Con BP creciente, la IS nueva corta a la BP a la derecha del punto inicial."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Modelo de Mundell-Fleming (movilidad imperfecta, tipo fijo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable",
+   "imagenes": [
+    {
+     "src": "banco:313201.webp",
+     "alt": "Plano con la renta Y en abscisas y el tipo de interés i en ordenadas, sin escala. Una LM creciente y una BP creciente y más inclinada que la LM se cortan en el punto A, por el que pasa también la IS inicial, decreciente. A su derecha, en discontinuo, la IS desplazada (IS′), paralela a la inicial. No se desplaza la LM ni se marca ningún otro punto.",
+     "ancho": 540
+    }
+   ]
+  },
+  {
+   "id": 313202,
+   "estado": "publicada",
+   "enunciado": "Una economía pequeña con precios fijos, tipo de cambio fijo y movilidad perfecta del capital tiene una propensión marginal a consumir $c=0{,}8$, un tipo impositivo $t=0{,}25$ y una propensión marginal a importar $m=0{,}2$. Las exportaciones no dependen de la renta nacional y la inversión depende solo del tipo de interés. Si el gasto público aumenta en 60, en el nuevo equilibrio:",
+   "opciones": {
+    "a": "La renta aumenta en 150 y las exportaciones netas caen en 30.",
+    "b": "La renta aumenta en 100 y las exportaciones netas caen en 60.",
+    "c": "La renta aumenta en 100 y las exportaciones netas caen en 20.",
+    "d": "La renta no varía y las exportaciones netas caen en 60."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con tipo fijo y movilidad perfecta el tipo de interés queda en el mundial y la cantidad de dinero acompaña: la renta sube con todo el multiplicador abierto, $1/[1-c(1-t)+m]=1/0{,}6$. $\\Delta Y=60/0{,}6=100$, y las importaciones suben $m\\,\\Delta Y=20$.",
+    "desarrollo": "El multiplicador es $1/[1-0{,}8\\cdot0{,}75+0{,}2]=1/(1-0{,}6+0{,}2)=1/0{,}6\\simeq1{,}67$, de modo que $\\Delta Y=60/0{,}6=100$. No hay expulsión de la inversión, porque $i=i^*$: el banco central compra las divisas que entran y la LM acompaña a la IS.\n\nCon el tipo de cambio fijo y los precios dados, las exportaciones netas solo cambian por las importaciones: $\\Delta XN=-m\\,\\Delta Y=-0{,}2\\cdot100=-20$.\n\nComprobación por la identidad del gasto: $\\Delta C=c(1-t)\\Delta Y=60$, $\\Delta I=0$, $\\Delta G=60$ y $\\Delta XN=-20$ suman $100=\\Delta Y$.\n\nPor qué fallan las demás:\n\n- a) Usa el multiplicador de la economía cerrada, $1/[1-c(1-t)]=2{,}5$, sin la fuga de las importaciones.\n- b) La caída de las exportaciones netas en la misma cuantía que el gasto es el resultado del tipo flexible (o del medio plazo, cuando suben los precios), y entonces la renta no subiría.\n- d) Es el resultado con tipo de cambio flexible y movilidad perfecta: la apreciación expulsa exportaciones netas por todo el aumento del gasto."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Modelo de Mundell-Fleming (multiplicador fiscal y déficits gemelos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313203,
+   "estado": "publicada",
+   "enunciado": "Una economía pequeña con precios fijos ($P=1$), tipo de cambio flexible y movilidad perfecta del capital tiene una demanda de dinero $M/P=0{,}5\\,Y-h\\,i$, una propensión marginal a consumir $c=0{,}8$, un tipo impositivo $t=0{,}25$ y una propensión marginal a importar $m=0{,}2$; la inversión depende solo del tipo de interés. Si el banco central aumenta la cantidad de dinero en 50, en el nuevo equilibrio:",
+   "opciones": {
+    "a": "La renta aumenta en 100 y las exportaciones netas aumentan en 40.",
+    "b": "La renta aumenta en 100 y las exportaciones netas caen en 20.",
+    "c": "La renta aumenta en 100 y las exportaciones netas aumentan en 100.",
+    "d": "La renta aumenta en 50 y las exportaciones netas aumentan en 20."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $i=i^*$, la renta la fija el mercado de dinero: $\\Delta Y=\\Delta(M/P)/k=50/0{,}5=100$. Como la inversión y el gasto público no cambian y el consumo sube $c(1-t)\\Delta Y=60$, las exportaciones netas tienen que subir 40: la depreciación más que compensa las importaciones adicionales.",
+    "desarrollo": "Con movilidad perfecta el tipo de interés no puede separarse del mundial, así que la LM determina la renta: $M/P=k\\,Y-h\\,i^*\\Rightarrow\\Delta Y=\\Delta M/k=50/0{,}5=100$.\n\nEn el mercado de bienes, $\\Delta Y=\\Delta C+\\Delta I+\\Delta G+\\Delta XN$. Con $\\Delta I=0$ (el tipo de interés acaba donde estaba), $\\Delta G=0$ y $\\Delta C=0{,}8\\cdot0{,}75\\cdot100=60$, queda $\\Delta XN=100-60=40$.\n\nPor otra vía: las importaciones inducidas restan $m\\,\\Delta Y=20$, así que la depreciación tiene que aportar $\nu\\,\\Delta q=60$ para que $\\Delta XN=60-20=40$. La política monetaria actúa por el canal del tipo de cambio.\n\nPor qué fallan las demás:\n\n- b) Solo cuenta las importaciones inducidas por la renta y olvida la depreciación, que es justo lo que hace subir la renta.\n- c) Atribuye todo el aumento de la renta a las exportaciones netas, sin el consumo inducido.\n- d) Iguala el aumento de la renta al del dinero; hay que dividir por $k=0{,}5$."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 Modelo de Mundell-Fleming (política monetaria con tipo flexible)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313204,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Mundell-Fleming con tipo de cambio fijo, movilidad perfecta del capital y sin esterilización, el banco central compra bonos en el mercado abierto. Una vez completado el ajuste, en su balance:",
+   "opciones": {
+    "a": "La cantidad de dinero es mayor: aumenta el crédito interno y las reservas de divisas no cambian.",
+    "b": "La cantidad de dinero es mayor: aumentan tanto el crédito interno como las reservas de divisas.",
+    "c": "La cantidad de dinero es menor: las reservas caen más de lo que aumenta el crédito interno.",
+    "d": "La cantidad de dinero es la misma: aumenta el crédito interno y las reservas caen en igual cuantía."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con tipo fijo la cantidad de dinero es endógena: $M=\\mathrm{CI}+R$. La compra de bonos presiona a la baja el tipo de interés, sale capital y el banco central vende divisas para sostener la paridad hasta que el dinero vuelve a su nivel. Solo cambia la composición del balance.",
+    "desarrollo": "La compra de bonos aumenta el crédito interno y, de entrada, la cantidad de dinero: la LM se desplaza a la derecha y el tipo de interés tiende a caer por debajo del mundial. Con movilidad perfecta sale capital y la moneda tiende a depreciarse. Para mantener la paridad, el banco central vende divisas y retira moneda nacional; el proceso solo se detiene cuando el tipo de interés vuelve a $i^*$, es decir, cuando la LM está otra vez en su sitio y $M$ es la de partida.\n\nResultado: $\\Delta\\mathrm{CI}=-\\Delta R$ y $\\Delta M=0$. La renta no cambia; la política monetaria solo cambia reservas por crédito interno, y si se insiste las reservas se agotan (es el origen de las crisis cambiarias de primera generación).\n\nPor qué fallan las demás:\n\n- a) Es lo que ocurriría en una economía cerrada o con tipo flexible, donde el banco central controla la cantidad de dinero.\n- b) Las reservas aumentan con una expansión fiscal o una devaluación (entra capital), no con una expansión del crédito interno, que las hace salir.\n- c) Las reservas caen exactamente lo que sube el crédito interno: el ajuste se para cuando $i=i^*$, con la misma renta y, por tanto, la misma demanda de dinero."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Modelo de Mundell-Fleming (dinero endógeno con tipo fijo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313205,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Mundell-Fleming con precios fijos, tipo de cambio fijo y movilidad perfecta del capital, y cumpliéndose la condición de Marshall-Lerner, el Gobierno devalúa la moneda. En el nuevo equilibrio:",
+   "opciones": {
+    "a": "La renta aumenta, y las reservas de divisas y la cantidad de dinero también: la devaluación desvía gasto hacia los bienes nacionales.",
+    "b": "La renta no varía: como ocurre con la política monetaria, la cantidad de dinero es endógena y anula el efecto de la devaluación.",
+    "c": "La renta aumenta, pero las reservas de divisas caen, porque el banco central tiene que defender la nueva paridad vendiendo divisas.",
+    "d": "La renta aumenta porque el tipo de interés nacional queda por debajo del mundial y estimula la inversión."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La devaluación sube las exportaciones netas y desplaza la IS a la derecha, como una expansión fiscal. La presión al alza del tipo de interés atrae capital; el banco central compra divisas, la cantidad de dinero crece y la LM acompaña. Es una política de cambio del gasto (expenditure switching).",
+    "desarrollo": "Con Marshall-Lerner, un tipo de cambio más alto (moneda más barata) mejora el saldo comercial: la IS se desplaza a la derecha. En el cruce con la LM inicial el tipo de interés superaría al mundial, entra capital y la moneda tiende a apreciarse respecto de la nueva paridad; para evitarlo, el banco central compra divisas. Las reservas y la cantidad de dinero aumentan hasta que $i=i^*$. La renta sube $\nu\\,\\Delta\\overline{E}/[1-c(1-t)+m]$.\n\nMeade distinguió estas políticas, que cambian el destino del gasto entre bienes nacionales y extranjeros, de las que cambian su nivel (fiscal y monetaria).\n\nPor qué fallan las demás:\n\n- b) El dinero endógeno anula una expansión del crédito interno, que desplaza la LM. La devaluación desplaza la IS, y entonces el dinero endógeno refuerza el efecto en vez de anularlo.\n- c) Tras la devaluación entran divisas (mejora el comercio y entra capital): el banco central las compra, no las vende.\n- d) Con movilidad perfecta el tipo de interés acaba en el mundial; la inversión no cambia y la renta sube por las exportaciones netas y el consumo inducido."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Modelo de Mundell-Fleming (devaluación y cambio del gasto)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313206,
+   "estado": "publicada",
+   "enunciado": "Un país mantiene un tipo de cambio fijo frente a la moneda de su principal socio y quiere que su banco central pueda fijar el tipo de interés atendiendo a la situación de su propia economía. Según el trilema de la economía abierta, para conseguirlo debe:",
+   "opciones": {
+    "a": "Acumular un volumen elevado de reservas de divisas, porque con reservas suficientes los tres objetivos son compatibles de forma indefinida.",
+    "b": "Eliminar todas las restricciones a los movimientos de capital, para que el arbitraje iguale su tipo de interés al del socio.",
+    "c": "Restringir la movilidad del capital, de modo que un diferencial de tipos de interés no provoque flujos que obliguen a abandonar la paridad.",
+    "d": "Sustituir su moneda por la del socio, porque sin riesgo de cambio el banco central recupera el control del tipo de interés."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El trilema dice que solo se pueden tener a la vez dos de estos tres objetivos: tipo de cambio fijo, libre movilidad del capital y política monetaria autónoma. Quien quiere tipo fijo y autonomía tiene que renunciar a la libre movilidad (controles de capitales).",
+    "desarrollo": "Con tipo fijo y capital plenamente móvil, cualquier intento de fijar un tipo de interés distinto del exterior provoca entradas o salidas de capital que el banco central tiene que compensar comprando o vendiendo divisas, y la cantidad de dinero deja de estar bajo su control. Si el capital no puede moverse libremente, el diferencial de tipos no desencadena esos flujos y el banco central conserva margen: es el lado del triángulo que renuncia a la movilidad (como en Bretton Woods).\n\nPor qué fallan las demás:\n\n- a) Las reservas permiten aguantar un tiempo, pero no eliminan la incompatibilidad: con capital móvil, un tipo de interés inferior al exterior las agota tarde o temprano.\n- b) Es justo lo contrario: con libre movilidad y tipo fijo el tipo de interés queda atado al del socio, y lo que se pierde es la autonomía.\n- d) Adoptar la moneda del socio (o una unión monetaria) conserva el tipo fijo y la movilidad, y renuncia por completo a la política monetaria propia."
+   },
+   "dificultad": 1,
+   "apartado": "I.1 Modelo de Mundell-Fleming (trilema)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313207,
+   "estado": "publicada",
+   "enunciado": "Una economía con tipo de cambio fijo y capital móvil sufre a la vez desempleo y déficit de la balanza de pagos, y las autoridades no quieren modificar la paridad. Según el principio de asignación de Mundell (1962), la combinación adecuada de políticas es:",
+   "opciones": {
+    "a": "Una política monetaria expansiva, para reducir el desempleo, y una política fiscal contractiva, para corregir el déficit exterior.",
+    "b": "Una política monetaria expansiva y una política fiscal expansiva, porque el desempleo es el desequilibrio que más bienestar cuesta.",
+    "c": "Una política monetaria contractiva y una política fiscal contractiva, porque sin equilibrio exterior no puede sostenerse la paridad.",
+    "d": "Una política fiscal expansiva, para reducir el desempleo, y una política monetaria contractiva, para corregir el déficit exterior."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Mundell asigna cada instrumento al objetivo sobre el que tiene ventaja relativa: la política monetaria al equilibrio externo, porque además de la renta mueve los flujos de capital, y la fiscal al interno. Con paro y déficit exterior: fiscal expansiva y monetaria contractiva.",
+    "desarrollo": "Hay dos objetivos (equilibrio interno y externo) y, sin tocar el tipo de cambio, dos instrumentos (Tinbergen). Las dos políticas mueven la renta, pero una subida del tipo de interés mejora la balanza de pagos por dos vías: reduce la renta y las importaciones, y además atrae capital. La política monetaria tiene, por tanto, más efecto sobre la balanza de pagos en relación con su efecto sobre la renta que la fiscal, y debe asignarse al equilibrio externo; la fiscal, al interno (principio de la clasificación eficaz de los mercados).\n\nEn este caso: expansión fiscal para el empleo y tipos de interés más altos para atraer el capital que financie el déficit exterior.\n\nPor qué fallan las demás:\n\n- a) Es la asignación invertida: la expansión monetaria agrava el déficit exterior (más importaciones y salida de capital) y la contracción fiscal agrava el paro; cada corrección aleja a la economía del otro objetivo y el proceso es inestable.\n- b) Las dos expansiones reducen el paro, pero la monetaria empeora la balanza de pagos; no hay instrumento dirigido al equilibrio exterior.\n- c) Las dos contracciones corrigen el déficit exterior a costa de más desempleo."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Modelo de Mundell-Fleming (asignación de instrumentos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313208,
+   "estado": "publicada",
+   "enunciado": "En el modelo de Mundell-Fleming con precios fijos, considere una economía con tipo de cambio flexible y movilidad nula del capital ($\\beta_K=0$), de modo que el tipo de cambio mantiene equilibrado el saldo comercial. Si el Gobierno aumenta el gasto público:",
+   "opciones": {
+    "a": "La moneda se aprecia, porque la subida del tipo de interés atrae capital, y las exportaciones netas caen en la cuantía en que sube el gasto.",
+    "b": "La moneda se deprecia y la renta sube con el multiplicador del IS-LM de una economía cerrada, sin la fuga de las importaciones.",
+    "c": "La moneda se deprecia y la renta sube con el multiplicador $1/[1-c\\,(1-t)]$, porque no hay expulsión de la inversión.",
+    "d": "La moneda no se mueve y el saldo comercial empeora de forma permanente en la propensión a importar por el aumento de la renta."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Sin movilidad del capital, la balanza de pagos es el saldo comercial, y el tipo de cambio lo mantiene en cero. Más renta trae más importaciones y la moneda se deprecia hasta compensarlas: las exportaciones netas no cambian y la economía se comporta como una cerrada, con multiplicador $1/[1-c(1-t)+bk/h]$.",
+    "desarrollo": "Con $\\beta_K=0$ la BP es $x\\,Y^*-m\\,Y+\nu\\,E=0$: el tipo de cambio se ajusta para que el comercio esté equilibrado. Al llevarlo a la IS, las importaciones y el resto del comercio se cancelan y queda $[1-c(1-t)]\\,Y=\\overline{A}-b\\,i$, la IS de una economía cerrada. Con la LM, $\\partial Y/\\partial\\overline{G}=h/\\{h[1-c(1-t)]+bk\\}=1/[1-c(1-t)+bk/h]$.\n\nLa expansión fiscal sube la renta y las importaciones; el déficit comercial incipiente deprecia la moneda hasta restablecer el equilibrio. Por eso, con tipo flexible, la política fiscal es tanto más eficaz cuanto menor es la movilidad del capital: aquí no hay fuga por importaciones ni apreciación.\n\nPor qué fallan las demás:\n\n- a) Es el caso de movilidad perfecta. Sin movilidad, la subida del tipo de interés no atrae capital, y lo que manda en el mercado de divisas es el comercio: la moneda se deprecia.\n- c) El tipo de interés sube (la cantidad de dinero está dada) y expulsa parte de la inversión: el multiplicador es el del IS-LM, menor que $1/[1-c(1-t)]$.\n- d) Con tipo flexible y sin flujos de capital que lo financien, no puede haber un déficit comercial: el tipo de cambio lo impide."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 Modelo de Mundell-Fleming (movilidad nula, tipo flexible)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313209,
+   "estado": "publicada",
+   "enunciado": "En un modelo de Mundell-Fleming de dos países grandes, con tipo de cambio flexible entre ellos, movilidad perfecta del capital y salarios nominales rígidos, uno de los países lleva a cabo una expansión monetaria. Señale el efecto sobre el nivel de actividad de ambos:",
+   "opciones": {
+    "a": "Aumenta en los dos países: la caída del tipo de interés mundial estimula la demanda en ambos, y la política actúa como una «locomotora».",
+    "b": "Aumenta en el país que la aplica y no varía en el otro, porque el tipo de cambio flexible aísla a este de las perturbaciones exteriores.",
+    "c": "Aumenta en el país que la aplica y cae en el otro: la depreciación desvía demanda hacia el primero, y es una política de «empobrecer al vecino».",
+    "d": "No varía en el país que la aplica, porque la salida de capital anula la expansión, y aumenta en el otro por la entrada de ese capital."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La expansión monetaria baja el tipo de interés mundial y deprecia la moneda del país que la aplica: sus exportaciones netas suben a costa de las del socio. En el socio, con la cantidad de dinero dada y un tipo de interés menor, el equilibrio del mercado de dinero exige menos renta.",
+    "desarrollo": "Al ser grande, el país mueve el tipo de interés mundial. Más dinero baja el tipo de interés; sale capital y su moneda se deprecia, lo que desplaza su IS a la derecha: su renta sube.\n\nEn el socio ocurre lo contrario: su moneda se aprecia y pierde exportaciones netas. Su LM no se ha movido, y con un tipo de interés mundial menor la demanda de dinero solo se iguala a la oferta con una renta menor. La expansión monetaria es una política de empobrecer al vecino (beggar-thy-neighbour): gana demanda a costa del socio.\n\nPor qué fallan las demás:\n\n- a) La «locomotora» es la expansión fiscal: sube el tipo de interés mundial, aprecia la moneda propia y desvía demanda hacia el socio, con lo que la renta sube en los dos.\n- b) El aislamiento del tipo flexible vale para las perturbaciones de la demanda de bienes del exterior en un país pequeño, no para un cambio del tipo de interés mundial.\n- d) Con tipo flexible la salida de capital no anula la expansión: es el mecanismo por el que la moneda se deprecia y la renta sube. La anulación es propia del tipo fijo."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Modelo de Mundell-Fleming (extensión a dos países grandes)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313210,
+   "estado": "publicada",
+   "enunciado": "Considere una economía pequeña con movilidad perfecta del capital en la que el nivel de precios nacional puede variar. Sobre la pendiente negativa de su curva de demanda agregada en el plano $(Y,P)$, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Con tipo de cambio fijo se debe al efecto competitividad: un precio mayor aprecia el tipo de cambio real y reduce las exportaciones netas, y la cantidad de dinero se adapta.",
+    "b": "Con tipo de cambio fijo se debe al efecto saldos reales: un precio mayor reduce $M/P$ y sube el tipo de interés, y el tipo de cambio real no cambia porque el nominal está fijado.",
+    "c": "Con tipo de cambio flexible se debe al efecto competitividad: un precio mayor aprecia el tipo de cambio real, y la caída de los saldos reales no influye en la renta.",
+    "d": "Con tipo de cambio fijo la curva es vertical: como la cantidad de dinero es endógena, la renta demandada no depende del nivel de precios."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con movilidad perfecta, cada régimen se queda con un canal. Con tipo fijo, $q=\\overline{E}P^*/P$ cae al subir $P$ y la IS se desplaza a la izquierda; el dinero es endógeno y la LM la sigue. Con tipo flexible manda la LM: $Y=(M/P+h\\,i^*)/k$, el efecto saldos reales.",
+    "desarrollo": "Un nivel de precios más alto tiene dos efectos: reduce los saldos reales (efecto Keynes) y encarece los bienes nacionales frente a los extranjeros (efecto competitividad).\n\n- Con tipo fijo, la DA sale de la IS con $i=i^*$: $Y=[\\overline{A}-b\\,i^*+x\\,Y^*+\nu\\,\\overline{E}P^*/P]/[1-c(1-t)+m]$. Al subir $P$, el tipo real se aprecia, caen las exportaciones netas y la renta; salen reservas y la cantidad de dinero se adapta. La curva se desplaza con la política fiscal, la demanda exterior y las devaluaciones, no con el crédito interno.\n- Con tipo flexible, la DA sale de la LM con $i=i^*$: al subir $P$ caen los saldos reales y la renta compatible con el mercado de dinero; la apreciación lleva la IS hasta ese punto. Se desplaza con la política monetaria, no con la fiscal.\n\nPor qué fallan las demás:\n\n- b) Con el tipo nominal fijo, el real sí cambia cuando cambian los precios nacionales; y los saldos reales no restringen, porque el dinero es endógeno.\n- c) Invierte los regímenes: con tipo flexible lo que determina la renta es el mercado de dinero.\n- d) Que el dinero sea endógeno anula el efecto saldos reales, pero queda el efecto competitividad: la curva es decreciente."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Demanda y oferta agregadas en una economía abierta (derivación de la DA)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313211,
+   "estado": "publicada",
+   "enunciado": "En una economía abierta, el 30 % de la cesta de consumo son bienes importados. En un año, los precios de los bienes producidos en el país suben un 2 %, la moneda nacional se deprecia un 10 % y los precios exteriores, en moneda extranjera, suben un 2 %. Si el traspaso del tipo de cambio a los precios de importación es completo, la inflación de los precios de consumo es aproximadamente:",
+   "opciones": {
+    "a": "El 4,4 %.",
+    "b": "El 5,0 %.",
+    "c": "El 3,8 %.",
+    "d": "El 12,0 %."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El índice de consumo pondera lo nacional y lo importado: $\\pi\\simeq(1-\\alpha)\\,\\pi_H+\\alpha\\,(\\gamma_E+\\gamma_{P^*})=0{,}7\\cdot2+0{,}3\\cdot(10+2)=1{,}4+3{,}6=5{,}0$ %. El segundo sumando es la inflación importada.",
+    "desarrollo": "Con $P_C=P^{1-\\alpha}(EP^*)^{\\alpha}$, en tasas: $\\pi\\simeq(1-\\alpha)\\,\\pi_H+\\alpha\\,(\\gamma_E+\\gamma_{P^*})$.\n\nLos bienes importados se encarecen en moneda nacional lo que se deprecia la moneda más lo que suben fuera: $10+2=12$ %. Con $\\alpha=0{,}3$: $0{,}7\\cdot2=1{,}4$ puntos de inflación interna y $0{,}3\\cdot12=3{,}6$ puntos de inflación importada; en total, 5,0 %.\n\nPor otra vía: $\\pi=\\pi_H+\\alpha\\,\\Delta\\tau$, donde $\\Delta\\tau=12-2=10$ es el encarecimiento relativo de lo importado: $2+0{,}3\\cdot10=5{,}0$ %.\n\nPor qué fallan las demás:\n\n- a) Olvida la inflación exterior: $1{,}4+0{,}3\\cdot10=4{,}4$.\n- c) Resta la inflación exterior a la depreciación en vez de sumarla: $1{,}4+0{,}3\\cdot8=3{,}8$.\n- d) Es lo que suben los bienes importados, no la cesta de consumo."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Demanda y oferta agregadas en una economía abierta (inflación de consumo e inflación importada)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313212,
+   "estado": "publicada",
+   "enunciado": "En una economía abierta, los salarios se negocian atendiendo al índice de precios de consumo, del que una parte $\\alpha>0$ corresponde a bienes importados, y las empresas fijan el precio de lo que producen con un margen $\\mu$ sobre los costes. Si los trabajadores se resisten a que caiga su salario real de consumo, una depreciación real permanente:",
+   "opciones": {
+    "a": "Reduce la tasa de paro de equilibrio (NAIRU), porque la ganancia de competitividad aumenta de forma duradera la demanda de bienes nacionales.",
+    "b": "No altera la NAIRU, que depende solo del margen empresarial y de las instituciones del mercado de trabajo, y no de los precios exteriores.",
+    "c": "Eleva la NAIRU solo con tipo de cambio fijo, porque con tipo flexible el banco central puede compensarla con la política monetaria.",
+    "d": "Eleva la NAIRU, porque encarece la cesta de consumo respecto del precio de la producción nacional y amplía la cuña entre ambos salarios reales."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con $P_C/P=q^{\\alpha}$, la condición de equilibrio es $F(U^n,Z)=1/[(1+\\mu)\\,q^{\\alpha}]$: un tipo real más depreciado reduce el salario de consumo que el margen permite pagar. Si los trabajadores no lo aceptan, hace falta más paro para moderar los salarios pedidos.",
+    "desarrollo": "La empresa paga un salario real medido con el precio de lo que vende, $W/P=\\mathrm{PAT}/(1+\\mu)$; el trabajador compra con ese salario una cesta que incluye importaciones, y lo que le importa es $W/P_C$. Entre los dos media la cuña exterior, $P_C/P=q^{\\alpha}$.\n\nUna depreciación real ($q\\uparrow$) encarece la cesta: el salario de consumo compatible con el margen baja. Si la curva de salarios no cede, las aspiraciones de trabajadores y empresas solo vuelven a ser compatibles con más paro: como $F_U<0$, un $q$ mayor exige un $U^n$ mayor. La oferta agregada de largo plazo se desplaza a la izquierda. El efecto es mayor cuanto mayor es $\\alpha$, y con $\\alpha=0$ desaparece. Por eso la cuña resta eficacia a una devaluación.\n\nPor qué fallan las demás:\n\n- a) Confunde demanda y oferta: la competitividad desplaza la demanda agregada, pero la NAIRU la determina la fijación de salarios y precios.\n- b) Vale para una economía cerrada ($\\alpha=0$). En una abierta, el precio relativo de lo importado forma parte de la cuña, junto al margen y los impuestos.\n- c) La NAIRU es un equilibrio real: la política monetaria no puede reducirla de forma duradera, con ningún régimen cambiario."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Demanda y oferta agregadas en una economía abierta (NAIRU abierta y cuña exterior)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313213,
+   "estado": "publicada",
+   "enunciado": "Una economía pequeña con tipo de cambio fijo y movilidad perfecta del capital parte de su producción natural, $Y^n$. El Gobierno aumenta el gasto público de forma permanente y los precios nacionales se ajustan gradualmente. A medio plazo, respecto de la situación inicial:",
+   "opciones": {
+    "a": "La producción es mayor, porque con tipo fijo y capital móvil la cantidad de dinero acompaña y no hay expulsión del gasto privado.",
+    "b": "La producción vuelve a $Y^n$ y la inversión cae en la cuantía en que sube el gasto, porque el tipo de interés nacional es más alto.",
+    "c": "La producción vuelve a $Y^n$ con precios más altos: el tipo de cambio real se aprecia y las exportaciones netas caen lo que sube el gasto.",
+    "d": "La producción vuelve a $Y^n$ con los mismos precios, porque el banco central vende reservas hasta anular la expansión de la demanda."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "A corto plazo la expansión fiscal sube la renta, pero con $Y>Y^n$ los salarios y los precios suben. Con el tipo nominal fijo, el real se aprecia y las exportaciones netas caen hasta que la producción vuelve a $Y^n$: la expulsión que el tipo fijo evitaba a corto plazo llega por los precios.",
+    "desarrollo": "A corto plazo, con tipo fijo y movilidad perfecta, la DA se desplaza a la derecha y la renta supera $Y^n$. Eso sube los salarios y los precios nacionales; como $q=\\overline{E}P^*/P$, el tipo de cambio real se aprecia y la economía se mueve a lo largo de la nueva DA hasta la oferta vertical.\n\nA medio plazo, $Y=Y^n$: el consumo es el inicial (la renta es la misma), la inversión también ($i=i^*$) y el gasto público es mayor, así que las exportaciones netas tienen que ser menores en la misma cuantía: $\nu\\,\\Delta q=-\\Delta\\overline{G}$. Cambia la composición de la demanda, no su nivel, y aparece el déficit exterior «gemelo» del público.\n\nPor qué fallan las demás:\n\n- a) Es el resultado de corto plazo con precios fijos. A medio plazo las políticas de demanda no mueven $Y^n$.\n- b) Con movilidad perfecta y paridad creíble, el tipo de interés sigue siendo el mundial: lo expulsado son exportaciones netas, no inversión.\n- d) El ajuste se hace por los precios, que acaban más altos; y tras una expansión fiscal el banco central gana reservas a corto plazo, no las pierde."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Demanda y oferta agregadas en una economía abierta (políticas a medio plazo con tipo fijo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313214,
+   "estado": "publicada",
+   "enunciado": "Un país de una unión monetaria tiene su producción por debajo de la natural y necesita una depreciación real del 6 % frente a sus socios para recuperarla. El tipo de cambio nominal es fijo e irrevocable. Si la inflación de los socios es del 2 % anual y la del país se mantiene en el 0,5 % anual, la depreciación real necesaria se alcanza en aproximadamente:",
+   "opciones": {
+    "a": "4 años.",
+    "b": "3 años.",
+    "c": "12 años.",
+    "d": "Nunca: con el tipo de cambio nominal fijo, el tipo de cambio real no puede variar."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $q=EP^*/P$ y $E$ fijo, el tipo real se deprecia cada año lo que la inflación exterior supera a la nacional: $2-0{,}5=1{,}5$ puntos. Para acumular un 6 % hacen falta unos $6/1{,}5=4$ años. Es la devaluación interna: funciona, pero despacio.",
+    "desarrollo": "En tasas, $\\gamma_q\\simeq\\gamma_E+\\gamma_{P^*}-\\pi$. Con $\\gamma_E=0$, $\\gamma_q\\simeq2-0{,}5=1{,}5$ % al año. En 4 años, $1{,}015^4\\simeq1{,}061$: una depreciación real acumulada del 6,1 %.\n\nEs el mecanismo de ajuste de una economía sin tipo de cambio propio: con $Y<Y^n$, la inflación nacional queda por debajo de la exterior, la competitividad mejora poco a poco y las exportaciones netas devuelven la producción a su nivel natural. Es lento y costoso en empleo, porque los salarios nominales casi nunca bajan; una devaluación nominal de la cuantía adecuada daría el mismo tipo real de una vez.\n\nPor qué fallan las demás:\n\n- b) Divide por la inflación exterior (6/2) y olvida que los precios nacionales también suben.\n- c) Divide por la inflación nacional (6/0,5); lo que cuenta es el diferencial.\n- d) Confunde el tipo nominal con el real: con $E$ fijo, $q$ cambia siempre que los precios nacionales y los exteriores evolucionen de forma distinta."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Demanda y oferta agregadas en una economía abierta (devaluación interna)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313215,
+   "estado": "publicada",
+   "enunciado": "Una economía que importa casi toda la energía que consume sufre un encarecimiento duradero de esta. En el modelo de oferta y demanda agregadas de una economía abierta, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La demanda agregada aumenta, porque el mayor valor de las importaciones energéticas eleva el gasto total, y eso explica la subida de los precios.",
+    "b": "La oferta agregada de corto plazo no se desplaza, porque la energía no se produce en el país: solo sube el índice de precios de consumo.",
+    "c": "La oferta agregada de largo plazo se desplaza a la izquierda solo si los salarios reales son plenamente flexibles y absorben el encarecimiento.",
+    "d": "La oferta agregada de corto plazo se desplaza hacia arriba y la demanda agregada cae, porque se transfiere renta al exterior."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Para un importador, la energía cara es una perturbación de oferta (encarece producir y sube la OA de corto plazo) que tiene además un componente de demanda: empeora la relación real de intercambio y parte de la renta se va a pagar la energía. El resultado es estanflación.",
+    "desarrollo": "El encarecimiento de la energía importada tiene tres efectos:\n\n- la oferta agregada de corto plazo se desplaza hacia arriba, porque la energía es un insumo: en la fijación de precios actúa como un aumento del margen sobre el coste laboral;\n- la de largo plazo se desplaza a la izquierda si los trabajadores se resisten a la caída del salario real de consumo: la cuña exterior eleva la NAIRU;\n- la demanda agregada cae: la renta real disponible para gastar en bienes nacionales es menor, porque hay que pagar más al exterior por la misma energía.\n\nLa producción cae y los precios suben. La política de demanda solo puede elegir entre más paro y más inflación.\n\nPor qué fallan las demás:\n\n- a) Pagar más por las importaciones es una fuga de renta, no un aumento de la demanda de bienes nacionales; la subida de precios viene de la oferta.\n- b) Aunque no se produzca en el país, la energía se usa para producir: sus costes se trasladan a los precios de los bienes nacionales (efecto indirecto), además del efecto directo sobre la cesta de consumo.\n- c) Es al revés: si los salarios reales son flexibles y aceptan la pérdida, la NAIRU no sube. Es la resistencia salarial la que convierte el encarecimiento en paro (Bruno y Sachs)."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Demanda y oferta agregadas en una economía abierta (perturbación de oferta externa)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313216,
+   "estado": "publicada",
+   "enunciado": "En el modelo de demandas rivales de una economía abierta (Layard, Nickell y Jackman; Carlin y Soskice), la curva de equilibrio de las demandas rivales (EDR) recoge las combinaciones de producción, $Y$, y tipo de cambio real, $q\\equiv EP^*/P$, con las que la inflación es estable. Esa curva es:",
+   "opciones": {
+    "a": "Creciente: un tipo de cambio real más depreciado mejora la competitividad y permite producir más sin que la inflación aumente.",
+    "b": "Decreciente: un tipo de cambio real más depreciado reduce el salario real de consumo que el margen permite pagar, y hace falta más paro.",
+    "c": "Vertical: la producción compatible con una inflación estable depende de las instituciones laborales y del margen, no del tipo de cambio real.",
+    "d": "Decreciente: un tipo de cambio real más depreciado empeora el saldo comercial y reduce la demanda de bienes nacionales y, con ella, la producción."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La EDR es la NAIRU abierta escrita en producción: $F(U^n,Z)=1/[(1+\\mu)q^{\\alpha}]$. Con un $q$ mayor, la cesta de consumo es más cara respecto de lo que vende la empresa; para que lo que piden los trabajadores quepa en lo que dejan el margen y los proveedores extranjeros, hace falta más paro, menos $Y$.",
+    "desarrollo": "Tres grupos se reparten la renta por persona ocupada: los trabajadores (salario real de consumo), las empresas (margen) y los proveedores extranjeros (importaciones, cuyo precio relativo es $q$). La inflación es estable solo cuando las tres pretensiones son compatibles.\n\nSi $q$ sube, lo importado se lleva más y el salario real de consumo compatible con el margen baja. Con una curva de salarios dada, los trabajadores solo aceptan un salario real menor con más paro: la producción de inflación estable es menor. De ahí la pendiente negativa en el plano $(Y,q)$. Con más producción que la que marca la curva, las pretensiones superan la renta disponible y la inflación sube.\n\nUn encarecimiento de la energía importada desplaza la EDR a la izquierda; intentar sostener la producción con estímulos solo hace que la inflación siga subiendo.\n\nPor qué fallan las demás:\n\n- a) Describe el equilibrio del mercado de bienes (la curva de demanda), que sí es creciente en ese plano. La EDR es una condición de oferta.\n- c) Sería así en una economía cerrada, o si los salarios se negociaran con el precio de la producción nacional ($\\alpha=0$).\n- d) Acierta con el signo, pero por un mecanismo falso: con Marshall-Lerner la depreciación mejora el saldo comercial y aumenta la demanda; la pendiente negativa viene de la fijación de salarios."
+   },
+   "dificultad": 3,
+   "apartado": "I.2 Demanda y oferta agregadas en una economía abierta (modelo de demandas rivales)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313217,
+   "estado": "publicada",
+   "enunciado": "En la curva de Phillips neokeynesiana, $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]+\\kappa\\,x_t+u_t$, derivada con precios rígidos a la Calvo, un aumento de la probabilidad de que una empresa no pueda revisar su precio en un periodo:",
+   "opciones": {
+    "a": "Aumenta $\\kappa$: como hay menos ocasiones de revisar los precios, cada revisión es mayor y la inflación responde más a la brecha de producción.",
+    "b": "No altera $\\kappa$, sino el factor de descuento $\\beta$: las empresas dan menos peso a la inflación futura esperada.",
+    "c": "Reduce $\\kappa$: la curva es más plana y la inflación responde menos a la brecha de producción.",
+    "d": "No altera $\\kappa$, sino la perturbación de costes $u_t$, que pasa a ser más volátil."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\kappa=\\frac{(1-\\eta)(1-\\beta\\eta)}{\\eta}(\\theta+\\varphi)$ es decreciente en $\\eta$, la probabilidad de no revisar el precio. Cuanto más rígidos son los precios, menos empresas trasladan a sus precios la presión de los costes marginales en cada periodo: la curva se aplana.",
+    "desarrollo": "Cada periodo solo una fracción $1-\\eta$ de las empresas revisa su precio, y lo hace pensando en los costes marginales que espera mientras ese precio siga vigente. La inflación agregada es la suma de esas revisiones.\n\nSi $\\eta$ aumenta, el numerador $(1-\\eta)(1-\\beta\\eta)$ cae y el denominador sube: $\\kappa$ disminuye. Con una curva más plana, una misma brecha de producción mueve menos la inflación, y los efectos reales de la política monetaria son mayores y más duraderos. Con precios casi flexibles ($\\eta\\to0$), $\\kappa\\to\\infty$ y la curva es vertical.\n\nPor qué fallan las demás:\n\n- a) Aunque cada empresa que revisa pueda cambiar más su precio, son menos las que lo hacen y miran más al futuro: el efecto neto sobre la pendiente es negativo.\n- b) $\\beta$ es el factor de descuento de las preferencias; no depende de la rigidez de los precios.\n- d) $u_t$ recoge los cambios de costes ajenos a la brecha (márgenes deseados, impuestos); la rigidez de los precios entra por $\\kappa$."
+   },
+   "dificultad": 1,
+   "apartado": "II Modelo neokeynesiano (curva de Phillips neokeynesiana)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313218,
+   "estado": "publicada",
+   "enunciado": "Considere el modelo neokeynesiano con perturbaciones transitorias (expectativas nulas): $x_t=-\\frac{1}{\\theta}(i_t-r^n_t)$, $\\pi_t=\\kappa\\,x_t+u_t$ e $i_t=\\rho+\\phi_\\pi\\,\\pi_t+\\phi_x\\,x_t$, con $\\theta=1$, $\\kappa=0{,}5$, $\\phi_\\pi=1{,}5$ y $\\phi_x=0{,}5$. Partiendo de $x_t=\\pi_t=0$ y con $r^n_t=\\rho$, se produce una perturbación de costes $u_t=3$ (en puntos porcentuales). La brecha de producción y la inflación del periodo son:",
+   "opciones": {
+    "a": "$x_t=0$ y $\\pi_t=3$.",
+    "b": "$x_t=-2$ y $\\pi_t=3$.",
+    "c": "$x_t=-4/3$ y $\\pi_t=7/3$.",
+    "d": "$x_t=-2$ y $\\pi_t=2$."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Sustituyendo la regla y la curva de Phillips en la IS: $x_t=-\\phi_\\pi u_t/(\\theta+\\phi_x+\\phi_\\pi\\kappa)=-4{,}5/2{,}25=-2$, y $\\pi_t=0{,}5\\cdot(-2)+3=2$. La regla reparte el golpe entre más inflación y menos producción.",
+    "desarrollo": "Con $r^n_t=\\rho$, la IS y la regla dan $\\theta\\,x_t=-(\\phi_\\pi\\pi_t+\\phi_x x_t)$, es decir, $(\\theta+\\phi_x)\\,x_t=-\\phi_\\pi\\,\\pi_t$: $1{,}5\\,x_t=-1{,}5\\,\\pi_t$, luego $\\pi_t=-x_t$ (la DA).\n\nCon la curva de Phillips, $\\pi_t=0{,}5\\,x_t+3$. Igualando: $-x_t=0{,}5\\,x_t+3\\Rightarrow x_t=-2$ y $\\pi_t=2$.\n\nComprobación con la forma reducida: $x_t=-\\phi_\\pi u_t/(\\theta+\\phi_x+\\phi_\\pi\\kappa)=-1{,}5\\cdot3/(1+0{,}5+0{,}75)=-4{,}5/2{,}25=-2$. El tipo de interés sube $1{,}5\\cdot2+0{,}5\\cdot(-2)=2$ puntos, lo que reduce la brecha en 2: coherente.\n\nLa perturbación de costes mueve la brecha y la inflación en sentido contrario, y el banco central no puede cerrar las dos: no hay divina coincidencia.\n\nPor qué fallan las demás:\n\n- a) Supone que el banco central no reacciona; con la regla, sube el tipo de interés y abre una brecha negativa.\n- b) Calcula bien la brecha, pero olvida que esa brecha modera la inflación en $\\kappa\\,x_t=-1$.\n- c) Divide $u_t$ por el denominador sin multiplicarlo por $\\phi_\\pi$: la brecha cae por la respuesta del tipo de interés a la inflación."
+   },
+   "dificultad": 2,
+   "apartado": "II Modelo neokeynesiano (forma reducida: perturbación de costes)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313219,
+   "estado": "publicada",
+   "enunciado": "Considere el modelo neokeynesiano con perturbaciones transitorias (expectativas nulas): $x_t=-\\frac{1}{\\theta}(i_t-r^n_t)$, $\\pi_t=\\kappa\\,x_t$ e $i_t=\\rho+\\phi_\\pi\\,\\pi_t+\\phi_x\\,x_t+\\varepsilon_t$, con $\\theta=1$, $\\kappa=0{,}5$, $\\phi_\\pi=1{,}5$, $\\phi_x=0{,}5$ y $r^n_t=\\rho$. Partiendo de $x_t=\\pi_t=0$, el banco central se aparta de su regla con $\\varepsilon_t=2{,}25$ puntos porcentuales. En ese periodo:",
+   "opciones": {
+    "a": "$x_t=-1$, $\\pi_t=-0{,}5$ y el tipo de interés nominal sube 1 punto.",
+    "b": "$x_t=-2{,}25$, $\\pi_t=-1{,}125$ y el tipo de interés nominal sube 2,25 puntos.",
+    "c": "$x_t=-1$, $\\pi_t=-0{,}5$ y el tipo de interés nominal sube 2,25 puntos.",
+    "d": "$x_t=-1{,}5$, $\\pi_t=-0{,}75$ y el tipo de interés nominal sube 1,5 puntos."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "$x_t=-\\varepsilon_t/(\\theta+\\phi_x+\\phi_\\pi\\kappa)=-2{,}25/2{,}25=-1$ y $\\pi_t=-0{,}5$. El tipo de interés sube menos que la perturbación, porque la propia regla reacciona a la caída de la inflación y de la brecha: $1{,}5\\cdot(-0{,}5)+0{,}5\\cdot(-1)+2{,}25=1$.",
+    "desarrollo": "Sustituyendo la regla en la IS: $\\theta\\,x_t=-(\\phi_\\pi\\pi_t+\\phi_x x_t+\\varepsilon_t)$. Con $\\pi_t=\\kappa\\,x_t$: $(\\theta+\\phi_x+\\phi_\\pi\\kappa)\\,x_t=-\\varepsilon_t$, es decir, $2{,}25\\,x_t=-2{,}25$ y $x_t=-1$. La inflación es $\\pi_t=0{,}5\\cdot(-1)=-0{,}5$.\n\nEl tipo de interés observado es $i_t-\\rho=1{,}5\\cdot(-0{,}5)+0{,}5\\cdot(-1)+2{,}25=-0{,}75-0{,}5+2{,}25=1$. Comprobación con la IS: $x_t=-(i_t-\\rho)/\\theta=-1$.\n\nLa parte sistemática de la política amortigua su propia perturbación: el multiplicador de la política monetaria, $-1/(\\theta+\\phi_x+\\phi_\\pi\\kappa)$, es menor cuanto más agresiva es la regla.\n\nPor qué fallan las demás:\n\n- b) Trata la perturbación como si fuera la subida efectiva del tipo de interés y la lleva directamente a la IS, sin la reacción endógena de la regla.\n- c) Acierta con la brecha y la inflación, pero no es coherente: con una subida de 2,25 puntos la IS daría $x_t=-2{,}25$.\n- d) Divide por $\\theta+\\phi_x=1{,}5$ y olvida que la inflación también cae y la regla responde a ella."
+   },
+   "dificultad": 3,
+   "apartado": "II Modelo neokeynesiano (forma reducida: perturbación monetaria)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313220,
+   "estado": "publicada",
+   "enunciado": "En el modelo neokeynesiano básico de economía cerrada se produce una mejora transitoria de la productividad. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Desplaza hacia abajo la curva de Phillips neokeynesiana, como una perturbación de costes favorable, y plantea al banco central un dilema entre inflación y brecha.",
+    "b": "Reduce el tipo de interés natural; si el tipo de interés del banco central lo sigue, la producción sube hasta la natural y la inflación no se mueve.",
+    "c": "Eleva el tipo de interés natural, porque aumenta la producción potencial, y el banco central debe subir los tipos para evitar que la inflación aumente.",
+    "d": "Aumenta la producción en la misma cuantía que la natural con cualquier regla monetaria, de modo que la brecha de producción no varía."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Una mejora transitoria eleva la producción natural hoy, pero se espera que vuelva a caer: el tipo natural, que depende del crecimiento esperado de la producción natural, baja. Si el banco central baja los tipos con él, la brecha y la inflación siguen en cero: no hay dilema.",
+    "desarrollo": "El tipo natural es $r^n_t=\\rho+\\theta\\,\\mathbb{E}_t[\\Delta y^n_{t+1}]$. Con una mejora transitoria, la producción natural es hoy más alta que mañana, $\\mathbb{E}_t[\\Delta y^n_{t+1}]<0$, y el tipo natural cae: los hogares quieren ahorrar parte de la renta extraordinaria y hace falta un tipo real menor para que la demanda absorba la mayor producción.\n\nSi el banco central no baja lo bastante su tipo, la demanda (y con precios rígidos, la producción) sube menos que la natural: la brecha es negativa y la inflación cae. Si el tipo de interés sigue al natural, la producción alcanza la natural, con $x_t=\\pi_t=0$. Para la política monetaria la perturbación tecnológica se trata como una de demanda: no rompe la divina coincidencia.\n\nPor qué fallan las demás:\n\n- a) La perturbación tecnológica mueve la producción natural y el tipo natural, no el término $u_t$ de la curva de Phillips: no hay dilema. Lo plantean las perturbaciones de costes.\n- c) El tipo natural subiría si se esperase que la productividad siguiera creciendo; siendo transitoria, baja, y lo que procede es bajar los tipos.\n- d) Con precios rígidos, la producción la determina la demanda; si el banco central no acomoda, sube menos que la natural y se abre una brecha negativa."
+   },
+   "dificultad": 2,
+   "apartado": "II Modelo neokeynesiano (perturbaciones tecnológicas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313221,
+   "estado": "publicada",
+   "enunciado": "En el modelo neokeynesiano, la «divina coincidencia» (Blanchard y Galí) consiste en que:",
+   "opciones": {
+    "a": "Sin perturbaciones de costes, estabilizar la inflación estabiliza también la brecha de producción, y basta con que el tipo de interés siga al natural.",
+    "b": "Con perturbaciones de costes, una regla suficientemente agresiva con la inflación logra cerrar a la vez la brecha de producción y la de inflación.",
+    "c": "Las políticas monetaria y fiscal óptimas tienen siempre el mismo signo, de modo que nunca hay conflicto entre el banco central y el Gobierno.",
+    "d": "A largo plazo la inflación efectiva coincide con la esperada sea cual sea la política monetaria, por lo que la curva de Phillips es vertical."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con $u_t=0$, la curva de Phillips $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]+\\kappa\\,x_t$ implica que una inflación siempre nula exige una brecha nula. Un instrumento basta para dos objetivos porque se mueven juntos. Las perturbaciones de costes la rompen.",
+    "desarrollo": "Ante perturbaciones de demanda o tecnológicas, que entran por el tipo natural, el banco central puede mover su tipo de interés a la par y dejar a la vez la inflación en el objetivo y la producción en su nivel natural. Es el fundamento teórico de los objetivos de inflación.\n\nSi hay una perturbación de costes ($u_t\neq0$), la curva de Phillips se desplaza: con inflación cero la brecha es negativa, y con brecha cero la inflación es positiva. El banco central solo puede elegir un punto de la nueva curva.\n\nPor qué fallan las demás:\n\n- b) Ninguna regla elimina el dilema que crea $u_t$: una regla más agresiva consigue menos inflación a cambio de una brecha mayor.\n- c) La coincidencia es entre dos objetivos del banco central, no entre dos autoridades; el signo adecuado de cada política depende del origen de la perturbación.\n- d) Describe la neutralidad a largo plazo (la curva de Phillips vertical), que es otra propiedad."
+   },
+   "dificultad": 1,
+   "apartado": "II Modelo neokeynesiano (divina coincidencia)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313222,
+   "estado": "publicada",
+   "enunciado": "En el modelo neokeynesiano, el multiplicador del gasto público puede ser bastante mayor que 1 cuando el tipo de interés nominal está en su límite inferior. La razón es que:",
+   "opciones": {
+    "a": "Con tipos de interés nulos el Estado se financia sin coste, y los hogares dejan de anticipar los impuestos futuros con los que se pagará el gasto.",
+    "b": "La regla de Taylor responde con más fuerza a la inflación cuando los tipos están en su mínimo, lo que ancla las expectativas y refuerza el estímulo.",
+    "c": "El banco central no sube el tipo nominal; el gasto eleva la inflación esperada, reduce el tipo de interés real y estimula el gasto privado.",
+    "d": "Los precios pasan a ser plenamente flexibles en una recesión profunda, de modo que la expansión fiscal no se pierde en ajustes de cantidades."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El multiplicador fiscal depende de la reacción del banco central. En tiempos normales, la regla sube el tipo real y expulsa gasto privado. En el límite inferior el tipo nominal no se mueve: más inflación esperada significa un tipo real más bajo, y el consumo privado sube en vez de caer.",
+    "desarrollo": "En la forma reducida, $x_t=(\\hat r^n_t-\\phi_\\pi u_t-\\varepsilon_t)/(\\theta+\\phi_x+\\phi_\\pi\\kappa)$: el gasto público eleva el tipo natural y la brecha, pero tanto menos cuanto más agresiva es la regla ($\\phi_\\pi$, $\\phi_x$ altos), porque el banco central sube el tipo real y contrarresta el impulso.\n\nEn el límite inferior esa reacción desaparece. El gasto eleva la demanda y la inflación esperada; con el tipo nominal fijo, el tipo real, $i_t-\\mathbb{E}_t[\\pi_{t+1}]$, cae, y por la ecuación de Euler los hogares adelantan consumo. El gasto privado se suma al público en vez de ser expulsado (Christiano, Eichenbaum y Rebelo).\n\nPor qué fallan las demás:\n\n- a) El argumento no depende de que falle la equivalencia ricardiana: funciona con hogares que anticipan los impuestos, por el canal del tipo real.\n- b) En el límite inferior la regla no puede operar a la baja, y lo relevante es que el banco central no sube los tipos; si respondiese con fuerza, el multiplicador sería menor.\n- d) El mecanismo necesita precios rígidos; con precios flexibles la producción no dependería de la demanda."
+   },
+   "dificultad": 2,
+   "apartado": "II Modelo neokeynesiano (política fiscal y límite inferior de los tipos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313223,
+   "estado": "publicada",
+   "enunciado": "Tras un fuerte encarecimiento del gas importado, ¿cuál de los siguientes hechos es un efecto de segunda ronda sobre la inflación?",
+   "opciones": {
+    "a": "Sube el precio de la electricidad y de los carburantes que pagan directamente los hogares en sus facturas.",
+    "b": "Suben los costes del transporte y de los fertilizantes y, con ellos, el precio de los alimentos.",
+    "c": "Sube el índice de precios de consumo aunque los precios de los bienes producidos en el país no cambien.",
+    "d": "Los convenios recogen subidas salariales para recuperar poder adquisitivo y las empresas las trasladan a precios."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El efecto directo es la subida de la energía que se consume; el indirecto, la de los bienes que la usan como insumo. La segunda ronda llega cuando los salarios y los márgenes reaccionan para recuperar lo perdido: es lo que convierte un cambio de precios relativos en inflación persistente.",
+    "desarrollo": "La distinción importa para la política monetaria. Los efectos directo e indirecto son un cambio de precios relativos: elevan el nivel de precios una vez y desaparecen de la tasa de inflación. Si las expectativas están bien ancladas, el banco central puede «mirar a través» de ellos.\n\nLa segunda ronda es distinta: trabajadores y empresas intentan no cargar con la pérdida de renta real que impone el encarecimiento, los salarios y los márgenes suben y la perturbación pasa a la inflación de los bienes nacionales y a las expectativas. Ante ella el banco central tiene que responder.\n\nPor qué fallan las demás:\n\n- a) Es el efecto directo: la energía forma parte de la cesta de consumo.\n- b) Es el efecto indirecto: la energía es un insumo de otros bienes.\n- c) Describe la inflación importada, es decir, el efecto directo en una economía abierta."
+   },
+   "dificultad": 1,
+   "apartado": "II Modelo neokeynesiano (propagación de las perturbaciones de oferta)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313224,
+   "estado": "publicada",
+   "enunciado": "Guerrieri, Lorenzoni, Straub y Werning (2022) llaman «perturbación de oferta keynesiana» a una perturbación de oferta que provoca una caída de la demanda agregada mayor que la de la propia oferta. En su modelo, las condiciones que la hacen posible son que:",
+   "opciones": {
+    "a": "La economía tenga un solo sector y los precios sean rígidos, de modo que la caída de la producción reduzca la renta y el consumo en mayor proporción.",
+    "b": "Haya varios sectores cuyos bienes se sustituyan mal entre sí y los hogares no puedan asegurarse contra la pérdida de renta de los sectores afectados.",
+    "c": "Haya varios sectores cuyos bienes sean muy sustitutivos, de modo que el gasto se desplace con facilidad hacia los sectores que siguen abiertos.",
+    "d": "Los mercados financieros sean completos, de modo que la pérdida de renta de los sectores afectados se reparta entre todos los hogares."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Si se cierran unos sectores, sus trabajadores pierden renta y gastan menos en los demás; si además los bienes que siguen disponibles sustituyen mal a los que faltan, el resto de hogares no desvía su gasto hacia ellos. La demanda de los sectores no afectados cae, y la caída total puede superar a la de la oferta.",
+    "desarrollo": "El mecanismo se propuso para la Covid. Con un solo bien, una perturbación de oferta negativa crea exceso de demanda: se produce menos de lo que se quiere comprar, y el tipo natural sube. Para que ocurra lo contrario hacen falta tres ingredientes:\n\n- varios sectores, de los que solo algunos sufren la perturbación;\n- baja sustituibilidad entre sus bienes (menor que la sustitución intertemporal): quien no puede ir al restaurante no gasta ese dinero en otros bienes, sino que lo aplaza;\n- mercados incompletos: los trabajadores de los sectores cerrados, sin seguro ni crédito, recortan su consumo de todo.\n\nEntonces la demanda cae también en los sectores que siguen abiertos. La respuesta adecuada no es un estímulo genérico, sino sostener la renta de los afectados y conservar los empleos.\n\nPor qué fallan las demás:\n\n- a) Con un solo sector no puede darse: la perturbación de oferta deja la demanda por encima de la oferta.\n- c) Con bienes muy sustitutivos el gasto se va a los sectores abiertos y su demanda aumenta, no cae.\n- d) Con mercados completos la pérdida se reparte y el efecto renta sobre los afectados se diluye; son los mercados incompletos los que amplifican la caída."
+   },
+   "dificultad": 3,
+   "apartado": "II Modelo neokeynesiano (interacción entre oferta y demanda)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313225,
+   "estado": "publicada",
+   "enunciado": "Blanchard y Quah (1989) separan las perturbaciones de demanda de las de oferta en un vector autorregresivo estructural con la producción y la tasa de paro. La restricción con la que las identifican es que:",
+   "opciones": {
+    "a": "Las perturbaciones de demanda no tienen efecto a largo plazo sobre el nivel de producción, mientras que las de oferta sí pueden tenerlo.",
+    "b": "Las perturbaciones de oferta no tienen efecto contemporáneo sobre la producción, porque la capacidad productiva tarda en ajustarse.",
+    "c": "Las perturbaciones de demanda mueven la producción y los precios en el mismo sentido, y las de oferta, en sentido contrario.",
+    "d": "Las perturbaciones de oferta no tienen efecto a largo plazo sobre el nivel de producción, mientras que las de demanda sí pueden tenerlo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Es una restricción de largo plazo: el efecto acumulado de una perturbación de demanda sobre la producción tiende a cero. Recoge la idea de que a largo plazo la producción la determina la oferta. Las perturbaciones de demanda tienen efectos transitorios, en forma de joroba.",
+    "desarrollo": "Las perturbaciones no se observan: hay que imponer restricciones que vengan de la teoría para recuperarlas a partir de los residuos del VAR. La de Blanchard y Quah es $\\lim_{k\\to\\infty}\\partial y_{t+k}/\\partial\\varepsilon^{D}_t=0$: solo las de oferta dejan la producción en un nivel permanentemente distinto. Ninguna de las dos tiene efecto a largo plazo sobre el paro.\n\nSus resultados: la demanda mueve la producción y el paro en sentidos opuestos, con un máximo al cabo de unos trimestres y un efecto que desaparece en pocos años; el efecto de la oferta sobre la producción crece con el tiempo hasta estabilizarse.\n\nPor qué fallan las demás:\n\n- b) Sería una restricción de corto plazo (de impacto), como las de Sims con una ordenación recursiva; no es la de este trabajo.\n- c) Es la definición habitual de cada perturbación y la base de las restricciones de signo, pero su VAR no incluye los precios.\n- d) Invierte la restricción: es la demanda la que no tiene efectos permanentes sobre la producción."
+   },
+   "dificultad": 2,
+   "apartado": "II Modelo neokeynesiano (evidencia: identificación de las perturbaciones)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313226,
+   "estado": "publicada",
+   "enunciado": "Un país lleva a cabo reformas que aumentan la competencia en los mercados de bienes y reducen los márgenes empresariales. Según Eggertsson, Ferrero y Raffo (2014), si los tipos de interés nominales están en su límite inferior, a corto plazo estas reformas:",
+   "opciones": {
+    "a": "Son más expansivas que en tiempos normales, porque el banco central no sube los tipos de interés para contrarrestar el aumento de la actividad.",
+    "b": "No tienen efecto alguno sobre la actividad, porque con los tipos en su límite inferior la curva de Phillips es horizontal.",
+    "c": "Pueden ser contractivas: reducen la inflación esperada y, con el tipo nominal bloqueado, elevan el tipo de interés real y deprimen la demanda.",
+    "d": "Pueden ser contractivas: elevan la inflación esperada y obligan al banco central a abandonar el límite inferior antes de lo previsto."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Bajar los márgenes es una perturbación de costes favorable: menos inflación hoy y esperada. En tiempos normales el banco central baja los tipos y la actividad mejora. En el límite inferior no puede: la menor inflación esperada sube el tipo real y reduce el gasto a corto plazo.",
+    "desarrollo": "En el modelo neokeynesiano, una reducción de los márgenes baja la curva de Phillips: mejora a la vez la inflación y la brecha siempre que la política monetaria acompañe, porque la menor inflación permite un tipo de interés más bajo.\n\nCon el tipo nominal en su límite inferior, ese acompañamiento no existe. El tipo real es $i_t-\\mathbb{E}_t[\\pi_{t+1}]$: si la reforma hace esperar menos inflación (o deflación), el tipo real sube y, por la IS dinámica, la demanda cae. Es el mismo mecanismo que hace grande el multiplicador fiscal en el límite inferior, con el signo contrario. A largo plazo la reforma sigue elevando la producción; el argumento se refiere al corto plazo y a la conveniencia de acompañarla con demanda.\n\nPor qué fallan las demás:\n\n- a) Aplica el razonamiento del gasto público, que eleva la inflación esperada; la reforma la reduce, y ahí está el problema.\n- b) El límite inferior afecta al tipo de interés, no a la pendiente de la curva de Phillips; y la reforma mueve la demanda a través del tipo real.\n- d) El signo es el contrario: la reforma es desinflacionista, y el daño viene de que el banco central no puede bajar más los tipos."
+   },
+   "dificultad": 3,
+   "apartado": "II Modelo neokeynesiano (evidencia: políticas de oferta)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313227,
+   "estado": "publicada",
+   "enunciado": "Galí y Monacelli (2005) comparan, para una economía pequeña y abierta con precios rígidos fijados en la moneda del productor, tres reglas de política monetaria: una regla de Taylor que responde a la inflación de los bienes producidos en el país, otra que responde a la inflación de los precios de consumo y un tipo de cambio fijo. Su conclusión es que:",
+   "opciones": {
+    "a": "La regla sobre la inflación de consumo es la mejor, porque el bienestar de los hogares depende del precio de la cesta que compran, incluidas las importaciones.",
+    "b": "La regla sobre la inflación interna genera menos pérdida de bienestar que la regla sobre la inflación de consumo, y esta menos que el tipo de cambio fijo.",
+    "c": "El tipo de cambio fijo es la mejor, porque elimina la volatilidad de la relación de intercambio y, con ella, la de la inflación importada.",
+    "d": "Las tres generan la misma pérdida de bienestar, porque la divina coincidencia se cumple para cualquier índice de precios que se estabilice."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Lo que distorsiona la economía es la rigidez de los precios que fijan las empresas nacionales: lo óptimo es estabilizar la inflación interna y dejar que el tipo de cambio haga el ajuste de los precios relativos. Cuanto más suaviza una regla el tipo de cambio, más volátiles son la brecha y la inflación interna.",
+    "desarrollo": "En el modelo hay dos inflaciones: la interna, $\\pi_{H,t}$, y la de consumo, $\\pi_t=\\pi_{H,t}+\\alpha\\,\\Delta\\tau_t$, que añade el cambio de la relación de intercambio. La curva de Phillips se cumple para la interna, y con ella la divina coincidencia: $\\pi_{H,t}=0$ implica $x_t=0$.\n\nLa política óptima (en el caso que admite un cálculo del bienestar) estabiliza del todo la inflación interna. El tipo de cambio y la relación de intercambio fluctúan entonces mucho, y eso es bueno: hacen el ajuste de precios relativos que los precios rígidos no pueden hacer. La regla sobre la inflación de consumo frena en parte ese ajuste, porque responde al tipo de cambio; el tipo fijo lo impide del todo y es la peor de las tres.\n\nEs el fundamento, en una economía abierta, de «mirar a través» del efecto directo de un encarecimiento de lo importado mientras no contagie a precios y salarios nacionales.\n\nPor qué fallan las demás:\n\n- a) El coste de bienestar de la inflación viene de la dispersión de los precios rígidos, que son los nacionales; los precios de importación, con traspaso completo, son flexibles.\n- c) Estabilizar la relación de intercambio traslada la volatilidad a la brecha y a la inflación interna.\n- d) La divina coincidencia vale para la inflación interna, no para la de consumo."
+   },
+   "dificultad": 2,
+   "apartado": "III Modelo de Galí y Monacelli (qué inflación estabilizar)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313228,
+   "estado": "publicada",
+   "enunciado": "La tesis del «dilema» de Rey (2013), basada en la existencia de un ciclo financiero global, sostiene que, para un país cuya moneda no es la del centro del sistema:",
+   "opciones": {
+    "a": "El tipo de cambio flexible aísla por completo de las condiciones financieras exteriores, igual que aísla de una caída de la demanda exterior.",
+    "b": "El tipo de cambio fijo conserva más autonomía monetaria que el flexible, porque evita las salidas de capital que provoca una depreciación.",
+    "c": "Los controles de capitales son inútiles, y solo una acumulación suficiente de reservas permite una política monetaria propia.",
+    "d": "Con libre movilidad del capital, la flotación no basta para tener autonomía monetaria: hace falta gestionar la cuenta financiera."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El crédito, los flujos de capital y el precio de los activos de riesgo se mueven en todo el mundo al ritmo de la política monetaria del centro, también en los países que flotan. El trilema se reduce a un dilema: la elección real es entre libre movilidad del capital y autonomía monetaria.",
+    "desarrollo": "En Mundell-Fleming, el tipo flexible devuelve al banco central el control monetario y aísla de las perturbaciones de la demanda exterior. Pero frente a una subida del tipo de interés mundial la flotación no aísla: la moneda se deprecia, y además, por el canal financiero (apalancamiento de los bancos globales, primas de riesgo, deuda en dólares), el crédito y el precio de los activos se contraen. Las condiciones financieras internas siguen a las del centro con cualquier régimen cambiario.\n\nDe ahí la conclusión: con capital plenamente móvil, la autonomía es limitada aunque se flote, y solo se recupera actuando sobre la cuenta financiera, directamente (controles) o con instrumentos macroprudenciales.\n\nPor qué fallan las demás:\n\n- a) Es la visión del trilema tradicional, que la evidencia del ciclo financiero global cuestiona para las perturbaciones financieras.\n- b) Con tipo fijo y capital móvil el tipo de interés propio sigue al exterior: es el régimen con menos autonomía.\n- c) La tesis apunta justo a la gestión de los flujos de capital como vía para recuperar margen; las reservas no dan autonomía por sí solas."
+   },
+   "dificultad": 2,
+   "apartado": "III Modelo de Galí y Monacelli (perturbaciones financieras externas)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313229,
+   "estado": "publicada",
+   "enunciado": "Un país importador neto de energía con tipo de cambio flexible sufre un encarecimiento del petróleo, que se paga en dólares. De acuerdo con los modelos con mercados financieros incompletos (Bodenstein, Erceg y Guerrieri, 2011), el tipo de cambio:",
+   "opciones": {
+    "a": "Puede amplificar la perturbación: la moneda del importador se deprecia y el petróleo se encarece aún más en moneda nacional.",
+    "b": "Amortigua la perturbación: la moneda del importador se aprecia, porque necesita menos divisas al reducir su consumo de petróleo.",
+    "c": "Es irrelevante: como el petróleo cotiza en dólares, su precio en moneda nacional no depende del tipo de cambio del importador.",
+    "d": "Aísla por completo de la perturbación, como ocurre ante una caída de la demanda exterior en el modelo de Mundell-Fleming."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El encarecimiento transfiere riqueza del importador a los exportadores de energía. Sin seguro entre países, el importador consume menos y su tipo de cambio real se deprecia, lo que encarece todavía más la energía medida en su moneda. Para el exportador ocurre lo contrario: su moneda se aprecia y lo amortigua.",
+    "desarrollo": "La flotación amortigua bien las perturbaciones reales de demanda: si caen las exportaciones, la depreciación las compensa. Con la energía importada el ajuste va en contra. El precio en moneda nacional es el precio en dólares por el tipo de cambio; si el país paga más por lo que importa, su saldo exterior empeora y su riqueza cae, y el tipo real tiene que depreciarse para generar el superávit no energético que lo compense. La depreciación se suma a la subida en dólares.\n\nEs lo que le pasó a la zona del euro entre 2021 y 2022, cuando el petróleo subió bastante más en euros que en dólares.\n\nPor qué fallan las demás:\n\n- b) La demanda de energía es poco elástica a corto plazo: la factura en divisas sube, no baja, y la moneda del importador tiende a depreciarse.\n- c) Precisamente porque cotiza en dólares, su precio en moneda nacional depende del tipo de cambio frente al dólar.\n- d) El aislamiento vale para las perturbaciones de la demanda exterior de bienes; no para una perturbación de oferta que empeora la relación real de intercambio."
+   },
+   "dificultad": 3,
+   "apartado": "III Modelo de Galí y Monacelli (perturbaciones de oferta externas y régimen cambiario)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313230,
+   "estado": "publicada",
+   "enunciado": "En los modelos neokeynesianos de economía abierta, suponga que los precios de los bienes importados no se fijan en la moneda del productor, sino en la del comprador (o en una moneda dominante, como el dólar), y son rígidos. Respecto del caso de fijación en la moneda del productor:",
+   "opciones": {
+    "a": "El traspaso del tipo de cambio a los precios de importación es completo e inmediato, lo que refuerza el papel estabilizador de la flotación.",
+    "b": "La política óptima sigue siendo estabilizar solo la inflación interna, porque la moneda de facturación solo altera el reparto de los beneficios.",
+    "c": "El tipo de cambio apenas reasigna el gasto a corto plazo, y la política óptima debe atender también a sus desalineamientos.",
+    "d": "Una depreciación mejora más el saldo comercial a corto plazo, porque los exportadores bajan de inmediato sus precios en el mercado de destino."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Si los precios que paga el comprador están fijados en su moneda, una depreciación no encarece lo importado ni abarata lo exportado a corto plazo: el tipo de cambio no cambia los precios relativos que ven los compradores. Aparecen desviaciones de la ley del precio único que la política monetaria debe tener en cuenta (Engel, 2011).",
+    "desarrollo": "El argumento clásico a favor de la flotación (Friedman, Mundell-Fleming, Galí y Monacelli) supone precios rígidos en la moneda del productor: una depreciación abarata al instante los bienes nacionales frente a los extranjeros y desvía gasto hacia ellos.\n\nSi los precios son rígidos en la moneda del comprador, o en dólares para casi todo el comercio, el traspaso a corto plazo es bajo: el precio en destino no se mueve y lo que cambia es el margen del exportador. El tipo de cambio deja de hacer ese ajuste, sus movimientos crean diferencias de precio del mismo bien entre países, que son ineficientes, y el banco central ya no puede cerrar a la vez la brecha de producción y ese desalineamiento. Es una de las razones del «miedo a flotar», y casa con la evidencia de un traspaso incompleto.\n\nPor qué fallan las demás:\n\n- a) Es lo contrario: el traspaso completo es propio de la fijación en la moneda del productor.\n- b) La moneda de facturación cambia los precios relativos que afrontan los compradores, y por tanto la asignación, no solo los beneficios.\n- d) Con precios fijados en la moneda del comprador, el precio en destino no cambia a corto plazo: las cantidades exportadas reaccionan poco."
+   },
+   "dificultad": 3,
+   "apartado": "III Modelo de Galí y Monacelli (moneda de fijación de precios)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313231,
+   "estado": "publicada",
+   "enunciado": "Un país de una unión monetaria quiere ganar competitividad sin esperar al ajuste lento de los salarios y los precios. Una «devaluación fiscal» consiste en:",
+   "opciones": {
+    "a": "Bajar el IVA y subir las cotizaciones sociales a cargo de las empresas, para abaratar el consumo y contener las importaciones.",
+    "b": "Subir el IVA y bajar las cotizaciones sociales a cargo de las empresas, lo que abarata las exportaciones y encarece las importaciones.",
+    "c": "Subir los aranceles a la importación y gravar las exportaciones, lo que mejora el saldo comercial sin modificar el tipo de cambio.",
+    "d": "Bajar los impuestos sobre la renta y aumentar el gasto público, lo que eleva la demanda interna y, con ella, la producción."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Bajar las cotizaciones reduce el coste laboral de todo lo que se produce en el país; el IVA grava las importaciones y no las exportaciones. La combinación abarata los bienes nacionales fuera y encarece los extranjeros dentro, como una devaluación nominal, sin tocar el tipo de cambio.",
+    "desarrollo": "Una devaluación nominal encarece las importaciones y abarata las exportaciones. Dentro de una unión monetaria se puede imitar con impuestos (Farhi, Gopinath e Itskhoki, 2014):\n\n- la rebaja de las cotizaciones empresariales reduce el coste de producir y, con él, el precio de los bienes nacionales, se vendan dentro o fuera;\n- la subida del IVA recae sobre lo que se consume en el país, sea nacional o importado, pero no sobre las exportaciones, que salen sin IVA.\n\nResultado: las exportaciones se abaratan; las importaciones se encarecen por el IVA; y el precio de los bienes nacionales en el mercado interior queda más o menos igual (menos costes, más IVA). Es, junto con las políticas de oferta, la alternativa a la devaluación interna.\n\nPor qué fallan las demás:\n\n- a) Es la combinación inversa: equivale a una revaluación.\n- c) Dentro de una unión aduanera no hay aranceles nacionales, y gravar las exportaciones las encarece; el equivalente arancelario de una devaluación sería un arancel con subvención a la exportación.\n- d) Es una expansión fiscal, una política de nivel del gasto: aumenta la demanda y empeora el saldo exterior, sin cambiar los precios relativos."
+   },
+   "dificultad": 1,
+   "apartado": "III Modelo de Galí y Monacelli (unión monetaria y devaluación fiscal)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

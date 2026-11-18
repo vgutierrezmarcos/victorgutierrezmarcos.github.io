@@ -1,0 +1,465 @@
+{
+ "tema": "3.B.24",
+ "preguntas": [
+  {
+   "id": 322401,
+   "estado": "publicada",
+   "enunciado": "Una agencia de calificación rebaja la nota de los bonos de una empresa de BBB$-$ a BB$+$ (escala de S&P). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "El bono sigue en grado de inversión, porque la frontera con el grado especulativo está en B$-$, de modo que la rebaja no debería afectar a su demanda.",
+    "b": "El bono pasa del grado de inversión al grado especulativo (high yield), y su diferencial de crédito tiende a ampliarse por las ventas de los inversores que no pueden tenerlo.",
+    "c": "La calificación mide el riesgo de liquidez del título, no el de impago, así que el diferencial frente al bono sin riesgo del mismo plazo no tiene por qué cambiar.",
+    "d": "El precio del bono sube, porque tras la rebaja el mercado le exige una rentabilidad mayor y esa rentabilidad adicional la cobra quien ya lo tiene en cartera."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "BBB$-$ (Baa3 en Moody's) es el último escalón del grado de inversión; BB$+$ es ya grado especulativo o de alto rendimiento. Muchos inversores institucionales solo pueden tener grado de inversión, así que la rebaja provoca ventas, baja el precio y amplía el diferencial de crédito.",
+    "desarrollo": "La calificación crediticia es la opinión de una agencia sobre la capacidad y la voluntad del emisor de pagar a tiempo los intereses y el principal: mide el riesgo de crédito. La escala va de AAA a D, y la frontera relevante está entre BBB$-$ (grado de inversión) y BB$+$ (grado especulativo o high yield). A los bonos que la cruzan hacia abajo se les llama «ángeles caídos».\n\nA igual plazo, un bono rinde más cuanto peor es su calificación: el diferencial de crédito compensa la probabilidad de impago, la pérdida esperada, la menor liquidez y la aversión al riesgo. Al perder el grado de inversión, además, los fondos y las aseguradoras cuyos mandatos o cuya regulación lo exigen tienen que vender.\n\nPor qué fallan las demás:\n\n- a) La frontera está entre BBB$-$ y BB$+$, no en B$-$.\n- c) La calificación mide el riesgo de crédito (de impago), no el de liquidez, y el diferencial depende directamente de ella.\n- d) Una rentabilidad exigida mayor implica un precio menor: quien ya tenía el bono sufre una pérdida de valor; la rentabilidad más alta la obtiene quien compra después de la caída."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Tipos de bono: la calificación crediticia",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322402,
+   "estado": "publicada",
+   "enunciado": "Los bonos convertibles contingentes (CoCos) que emiten los bancos se diferencian de un bono convertible ordinario en que:",
+   "opciones": {
+    "a": "Dan al tenedor el derecho, y no la obligación, de cambiarlos por acciones del banco cuando la cotización supera un precio fijado en la emisión.",
+    "b": "Dan al emisor el derecho a amortizarlos antes del vencimiento si los tipos de interés bajan, a cambio de pagar un cupón más alto.",
+    "c": "Se convierten en acciones o pierden valor automáticamente si el capital del banco cae bajo un umbral, sin que lo decidan el emisor ni el tenedor.",
+    "d": "Tienen preferencia de cobro sobre la deuda ordinaria del banco en caso de liquidación, y por eso pagan un cupón inferior al de esta."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En un CoCo la conversión (o la quita) no es una opción de nadie: la dispara automáticamente la caída de la ratio de capital ordinario de nivel 1 (CET1) por debajo de un umbral. Así el bono absorbe pérdidas justo cuando el banco necesita capital.",
+    "desarrollo": "Entre los bonos con opciones conviene distinguir quién decide:\n\n- en el bono amortizable anticipadamente (callable), el emisor;\n- en el bono con opción de venta (putable) y en el convertible ordinario, el tenedor;\n- en el CoCo, nadie: la conversión en acciones o la reducción del principal se activa sola cuando el CET1 cae por debajo del umbral pactado (de al menos el 5,125 % de los activos ponderados por riesgo para que compute como capital adicional de nivel 1).\n\nPor eso el CoCo es un instrumento de absorción de pérdidas: recapitaliza el banco sin recurrir al contribuyente, y el inversor cobra a cambio un cupón alto.\n\nPor qué fallan las demás:\n\n- a) Describe el convertible ordinario, en el que decide el tenedor.\n- b) Describe un bono callable.\n- d) Es al revés: los CoCos son deuda muy subordinada, que cobra después de la deuda ordinaria, y por eso pagan más, no menos."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Tipos de bono: bonos con opciones (CoCos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 322403,
+   "estado": "publicada",
+   "enunciado": "En un mercado sin oportunidades de arbitraje cotizan dos bonos cupón cero del mismo emisor, ambos de nominal 100 €: el que vence dentro de 1 año vale 96 € y el que vence dentro de 2 años, 90 €. ¿Cuál debe ser el precio de un bono de ese emisor a 2 años, de nominal 1.000 € y cupón anual del 5 %?",
+   "opciones": {
+    "a": "945 €.",
+    "b": "990 €.",
+    "c": "1.000 €.",
+    "d": "993 €."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El bono es una cartera de dos pagos: 50 € dentro de un año y 1.050 € dentro de dos. Cada uno vale lo que vale un euro de su fecha: $50\\times0{,}96+1.050\\times0{,}90=48+945=993$ €.",
+    "desarrollo": "Los precios de los bonos cupón cero dan los factores de descuento de cada plazo: un euro dentro de 1 año vale hoy 0,96 € y un euro dentro de 2 años, 0,90 €.\n\nEl bono paga $C_1=50$ € y $C_2+\\mathrm{VN}=1.050$ €, así que\n\n$P=50\\times0{,}96+1.050\\times0{,}90=48+945=993$ €.\n\nComprobación con los tipos de contado: $r_1=100/96-1=4{,}17$ % y $r_2=(100/90)^{1/2}-1=5{,}41$ %; $50/1{,}0417+1.050/1{,}0541^2=48+945=993$ €. Si el bono costara otra cosa, se ganaría sin riesgo comprándolo y vendiendo sus pagos por separado (o al revés).\n\nPor qué fallan las demás:\n\n- a) 945 € es solo el valor actual del último pago: olvida el primer cupón.\n- b) 990 € sale de descontar los dos pagos (1.100 €) con el factor a 2 años: el primer cupón se cobra antes y vale más.\n- c) El bono valdría la par solo si su cupón igualara su rentabilidad a vencimiento; aquí el cupón (5 %) es algo menor que los tipos que exige el mercado, y cotiza ligeramente bajo la par."
+   },
+   "dificultad": 2,
+   "apartado": "I.4 Determinación del precio de los bonos (valoración con tipos de contado)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322404,
+   "estado": "publicada",
+   "enunciado": "Un bono de nominal 1.000 € paga un cupón anual del 6 % y cotiza en el mercado secundario al 98 % (precio limpio o ex cupón). Han pasado 73 días desde el último pago de cupón, en un año de 365 días. ¿Cuánto paga quien lo compra hoy?",
+   "opciones": {
+    "a": "992 €.",
+    "b": "980 €.",
+    "c": "968 €.",
+    "d": "1.040 €."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El comprador paga el precio sucio: el limpio más el cupón corrido. El cupón corrido es $60\\times73/365=12$ €, así que paga $980+12=992$ €.",
+    "desarrollo": "El vendedor tiene derecho a la parte del cupón devengada mientras tuvo el bono:\n\n$\\mathrm{CC}=C\\cdot\\dfrac{\\text{días desde el último cupón}}{\\text{días entre cupones}}=60\\times\\dfrac{73}{365}=60\\times0{,}2=12$ €.\n\nPrecio limpio: $0{,}98\\times1.000=980$ €. Precio sucio: $980+12=992$ €.\n\nLos bonos cotizan por el precio limpio para que la cotización no dé un salto cada vez que se paga un cupón; el que sube día a día y cae el día del pago es el precio sucio.\n\nPor qué fallan las demás:\n\n- b) 980 € es el precio limpio: falta el cupón corrido.\n- c) 968 € resta el cupón corrido en lugar de sumarlo: es el comprador quien compensa al vendedor, no al revés.\n- d) 1.040 € suma el cupón entero, como si el vendedor hubiera tenido el bono todo el año."
+   },
+   "dificultad": 1,
+   "apartado": "I.4 Determinación del precio de los bonos (precio limpio, precio sucio y cupón corrido)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322405,
+   "estado": "publicada",
+   "enunciado": "Un bono a 3 años, de nominal 100 y cupón anual del 8 %, cotiza con una rentabilidad a vencimiento (TIR) del 5 %. Si la TIR se mantiene en el 5 % hasta el vencimiento y el emisor paga, ¿qué ocurrirá con el precio ex cupón del bono y con la rentabilidad que obtiene cada año quien lo tenga?",
+   "opciones": {
+    "a": "El precio se mantiene constante por encima de 100 hasta el vencimiento, y la rentabilidad de cada año es el cupón entre el precio, inferior al 8 %.",
+    "b": "El precio sube cada año, porque se acerca el cobro del nominal, y la rentabilidad de cada año supera el 8 % al sumarse el cupón y la ganancia de capital.",
+    "c": "El precio baja cada año hasta 100, y esa pérdida de capital, restada del cupón, deja la rentabilidad de cada año exactamente en el 5 %.",
+    "d": "El precio baja cada año hasta 100, y la rentabilidad de cada año es el 8 % del cupón, porque la pérdida de capital no se materializa hasta el vencimiento."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Con un cupón (8 %) superior a la TIR (5 %), el bono cotiza sobre la par. Si la TIR no cambia, el precio converge al nominal: baja cada año, y el cupón menos esa pérdida de capital da exactamente la TIR.",
+    "desarrollo": "Precio con 3 años por delante: $8/1{,}05+8/1{,}05^2+108/1{,}05^3=108{,}17$. Con 2 años: $105{,}58$. Con 1 año: $102{,}86$. Al vencimiento: 100.\n\nRentabilidad del primer año: $(8+105{,}58-108{,}17)/108{,}17=5{,}41/108{,}17=5$ %. Lo mismo los demás años: el cupón, más alto que lo que exige el mercado, se compensa con una pérdida de capital anual.\n\nLa lógica: el bono vale más que la par porque cada año paga un cupón superior a la rentabilidad de mercado; cada año queda un año menos de esa ventaja, y el precio se acerca al nominal. En un bono bajo la par ocurre lo contrario: el precio sube y la ganancia de capital completa un cupón escaso.\n\nPor qué fallan las demás:\n\n- a) El precio no puede quedarse por encima de 100: al vencimiento el bono paga 100.\n- b) Sube el precio de los bonos bajo la par, no el de los que cotizan sobre la par.\n- d) La pérdida de capital se produce año a año en el valor del bono; ignorarla es confundir la tasa de cupón con la rentabilidad."
+   },
+   "dificultad": 2,
+   "apartado": "I.4 Determinación del precio de los bonos (convergencia a la par)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322406,
+   "estado": "publicada",
+   "enunciado": "La curva de tipos de contado (cupón cero) de un emisor es estrictamente creciente. Ese emisor tiene en circulación dos bonos con el mismo vencimiento, a 10 años, y cupón anual: el bono A, con un cupón del 2 %, y el bono B, con un cupón del 8 %. Si los dos están valorados sin oportunidades de arbitraje:",
+   "opciones": {
+    "a": "La TIR de A es mayor que la de B, porque en A pesa más el pago final, que se descuenta al tipo de contado más alto.",
+    "b": "Los dos tienen la misma TIR, porque el arbitraje iguala la rentabilidad de los bonos de un mismo emisor y un mismo plazo.",
+    "c": "La TIR de B es mayor que la de A, porque un cupón más alto eleva siempre la rentabilidad a vencimiento de un bono.",
+    "d": "No puede saberse cuál tiene mayor TIR sin conocer los precios a los que cotizan los dos bonos en el mercado."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La TIR es un promedio de los tipos de contado de los plazos del bono, ponderado por sus flujos. El bono de cupón bajo concentra su valor en el último pago, que se descuenta al tipo más alto de una curva creciente: su TIR es mayor. Es el efecto cupón.",
+    "desarrollo": "El arbitraje fija el precio de cada bono descontando cada flujo con el tipo de contado de su plazo; la TIR es el tipo único que da ese mismo precio, es decir, una media de los tipos de contado ponderada por el peso de cada flujo.\n\n- En el bono A (cupón del 2 %), casi todo el valor está en el pago del año 10, que se descuenta a $r_{10}$, el tipo más alto: su TIR queda muy cerca de $r_{10}$.\n- En el bono B (cupón del 8 %), los cupones intermedios pesan más, y se descuentan a tipos de contado más bajos: su TIR es menor.\n\nEjemplo: con tipos de contado que van del 2 % a 1 año al 6,5 % a 10 años (medio punto más cada año), la TIR de A es del 6,29 % y la de B, del 5,89 %. Con una curva decreciente pasaría lo contrario, y con una plana coincidirían.\n\nPor qué fallan las demás:\n\n- b) El arbitraje iguala el precio de cada flujo, no la TIR de bonos con distinto cupón: por eso comparar bonos solo por su TIR puede engañar.\n- c) Con el precio dado, más cupón es más TIR; pero aquí el precio no está dado, lo fija la curva, y el bono B cotiza más caro.\n- d) No hacen falta los precios: los determina la curva, y con una curva estrictamente creciente el signo de la diferencia es inequívoco."
+   },
+   "dificultad": 3,
+   "apartado": "I.5 Determinación del rendimiento de los bonos (TIR y efecto cupón)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322407,
+   "estado": "publicada",
+   "enunciado": "Una letra del Tesoro de nominal 1.000 €, a la que le quedan 180 días hasta el vencimiento, se compra por 980 €. Con el convenio habitual para las letras a un año o menos (interés simple y año de 360 días), su rentabilidad anual es aproximadamente:",
+   "opciones": {
+    "a": "2,04 %.",
+    "b": "4,08 %.",
+    "c": "4,00 %.",
+    "d": "4,12 %."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con interés simple y base 360, $P=\\mathrm{VN}/(1+y\\,d/360)$: $y=(1.000/980-1)\\times360/180=2{,}04\\ \\%\\times2=4{,}08$ %.",
+    "desarrollo": "La letra no paga cupón: se emite al descuento, y el interés es la diferencia entre el nominal y el precio. A un año o menos, su rentabilidad se calcula con interés simple y base 360:\n\n$980=\\dfrac{1.000}{1+y\\cdot180/360}\\ \\Longrightarrow\\ y=\\Big(\\dfrac{1.000}{980}-1\\Big)\\times\\dfrac{360}{180}=0{,}0204\\times2=4{,}08$ %.\n\nComprobación: $980\\times(1+0{,}0408\\times0{,}5)=980\\times1{,}0204=1.000$ €.\n\nPor qué fallan las demás:\n\n- a) 2,04 % es la rentabilidad del periodo de 180 días, sin anualizar.\n- c) 4,00 % divide el descuento (20 €) entre el nominal en lugar de entre el precio pagado: es un tipo de descuento, no una rentabilidad.\n- d) 4,12 % anualiza con interés compuesto, $(1.000/980)^2-1$; ese convenio no es el de las letras a un año o menos."
+   },
+   "dificultad": 2,
+   "apartado": "I.5 Determinación del rendimiento de los bonos (letras del Tesoro)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322408,
+   "estado": "publicada",
+   "enunciado": "En la curva de tipos de contado de un emisor, el tipo a 2 años es $r_2=5$ % y el tipo a 3 años, $r_3=6$ % (anuales, con capitalización compuesta). El tipo a plazo implícito para el tercer año, $f_3$ (el de un préstamo que empieza dentro de 2 años y vence dentro de 3), es aproximadamente:",
+   "opciones": {
+    "a": "5,5 %.",
+    "b": "7,0 %.",
+    "c": "8,0 %.",
+    "d": "11,0 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Invertir a 3 años debe dar lo mismo que invertir a 2 y pactar hoy el tercero: $(1+r_3)^3=(1+r_2)^2(1+f_3)$. Así, $1+f_3=1{,}06^3/1{,}05^2=1{,}0803$: un 8 %. En aproximación lineal, $f_3\\simeq3r_3-2r_2$.",
+    "desarrollo": "La condición de no arbitraje entre invertir a $t$ años e invertir a $t-1$ años reinvirtiendo al tipo a plazo es\n\n$(1+r_t)^t=(1+r_{t-1})^{t-1}(1+f_t)$.\n\nCon $t=3$: $1+f_3=\\dfrac{1{,}06^3}{1{,}05^2}=\\dfrac{1{,}1910}{1{,}1025}=1{,}0803$, es decir, $f_3=8{,}03$ %.\n\nPor la vía rápida, en aproximación lineal: $3r_3\\simeq2r_2+f_3$, luego $f_3\\simeq3\\times6-2\\times5=8$ %.\n\nLa intuición: el tipo a 3 años es una media de los tres tipos anuales; para que la media suba del 5 % al 6 % al añadir un año, ese año tiene que estar muy por encima del 6 %. Con una curva creciente, los tipos a plazo quedan por encima de los de contado.\n\nPor qué fallan las demás:\n\n- a) 5,5 % es la media de los dos tipos de contado: un tipo a plazo no puede quedar por debajo de $r_3$ si la curva sube.\n- b) 7,0 % sale de $2r_3-r_2$, la fórmula que serviría para $f_2$ a partir de $r_1$ y $r_2$: no pondera cada tipo por su plazo.\n- d) 11,0 % suma los dos tipos de contado."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Definición: tipos de contado y tipos a plazo",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322409,
+   "estado": "publicada",
+   "enunciado": "Para un mismo emisor se dibujan tres curvas: la de tipos de contado (cupón cero), la de tipos a plazo implícitos a un año y la de rentabilidades (TIR) de bonos con cupón que cotizan a la par. Si la curva de tipos de contado es estrictamente creciente, entonces, para cada plazo superior a un año:",
+   "opciones": {
+    "a": "Las tres curvas coinciden, porque el arbitraje obliga a que todos los títulos de un mismo emisor rindan lo mismo en cada plazo.",
+    "b": "La curva de TIR a la par queda por encima de la de contado, porque los cupones añaden rentabilidad, y la de tipos a plazo, por debajo de ambas.",
+    "c": "La curva de tipos a plazo queda por debajo de la de contado, porque es una media de los tipos de contado de los plazos anteriores, más bajos.",
+    "d": "La curva de tipos a plazo queda por encima de la de contado, y la de TIR de los bonos a la par, por debajo de la de contado."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El tipo de contado es una media de los tipos a plazo, y la TIR de un bono con cupón, una media de los tipos de contado de sus flujos. Con una curva creciente, el tipo marginal (a plazo) supera a la media (contado), y la TIR, que también pondera tipos de plazos más cortos, queda por debajo.",
+    "desarrollo": "Dos relaciones de «media y marginal»:\n\n- $(1+r_n)^n=(1+r_1)(1+f_2)\\cdots(1+f_n)$: el tipo de contado a $n$ años es la media geométrica de los tipos a plazo. Si la media sube con el plazo, es porque el último tipo añadido está por encima de ella: $f_n>r_n$.\n- La TIR de un bono con cupón es un promedio de los tipos de contado de todos sus flujos. Como los cupones intermedios se descuentan a tipos más bajos que $r_n$, la TIR del bono a $n$ años queda por debajo de $r_n$.\n\nEjemplo: con $r_1=4$ % y $r_2=5$ %, el tipo a plazo es $f_2=1{,}05^2/1{,}04-1=6{,}01$ % y el cupón que hace cotizar a la par un bono a 2 años (su TIR) es del 4,98 %: $6{,}01>5>4{,}98$.\n\nPor eso la curva de rentabilidades que publica la prensa (TIR de bonos con cupón) no es la estructura temporal en sentido estricto, que es la curva cupón cero.\n\nPor qué fallan las demás:\n\n- a) Solo coinciden si la curva es plana.\n- b) Está invertida: los cupones no «añaden» rentabilidad; adelantan flujos hacia plazos con tipos más bajos.\n- c) Es al revés: el tipo de contado es la media de los tipos a plazo, no el tipo a plazo la media de los de contado."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Definición: tipos de contado y tipos a plazo (curva cupón cero, curva a la par y tipos a plazo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322410,
+   "estado": "publicada",
+   "enunciado": "¿Cuál de las siguientes teorías de la estructura temporal de los tipos de interés considera que los bonos de distinto plazo son sustitutivos imperfectos y admite que la prima por plazo sea positiva en unos vencimientos y negativa en otros, según la demanda que tenga cada uno?",
+   "opciones": {
+    "a": "La teoría de las expectativas puras, que parte de inversores neutrales al riesgo.",
+    "b": "La teoría de la prima por liquidez, que parte de inversores que prefieren los plazos cortos.",
+    "c": "La teoría de la segmentación del mercado, que parte de inversores que nunca cambian de plazo.",
+    "d": "La teoría del hábitat preferente, que parte de inversores que cambian de plazo si se les compensa."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "En el hábitat preferente (Modigliani y Sutch), cada inversor tiene un plazo preferido, pero lo deja a cambio de una prima suficiente. La prima por plazo puede tener cualquier signo: positiva donde hay poca demanda propia, negativa en los plazos muy demandados.",
+    "desarrollo": "Las teorías se ordenan por lo que suponen sobre la prima por plazo en la ecuación del tipo largo (media de los tipos cortos esperados más una prima):\n\n- expectativas puras: bonos sustitutivos perfectos e inversores neutrales al riesgo; prima nula;\n- prima por liquidez: sustitutivos imperfectos, pero todos los inversores prefieren lo corto; prima positiva y creciente con el plazo;\n- segmentación (Culbertson): los bonos de plazos distintos no son sustitutivos en absoluto; cada tipo lo fijan la oferta y la demanda de su segmento, sin conexión entre plazos;\n- hábitat preferente: sustitutivos imperfectos, cada inversor con su plazo preferido, que abandona si la prima compensa; la prima puede ser de cualquier signo.\n\nEl hábitat preferente reúne a las demás: las expectativas son el primer sumando; la prima por liquidez, el caso de prima positiva y creciente, y la segmentación, el caso límite en que la prima necesaria para cambiar de plazo es infinita.\n\nPor qué fallan las demás:\n\n- a) Supone sustitutivos perfectos y prima nula.\n- b) Su prima es siempre positiva: no admite primas negativas en los plazos largos.\n- c) Niega cualquier sustitución entre plazos, de modo que no hay una prima que conecte unos tipos con otros."
+   },
+   "dificultad": 1,
+   "apartado": "II.2 Teorías explicativas (segmentación y hábitat preferente)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322411,
+   "estado": "publicada",
+   "enunciado": "La curva de tipos de la deuda pública de un país es hoy completamente plana. Según la teoría de la prima por liquidez, esa forma indica que el mercado:",
+   "opciones": {
+    "a": "Espera que los tipos a corto plazo bajen ligeramente en el futuro, y la prima por plazo compensa esa bajada.",
+    "b": "Espera que los tipos a corto plazo se mantengan constantes en el nivel actual durante todos los plazos de la curva.",
+    "c": "Espera que los tipos a corto plazo suban ligeramente en el futuro, aunque la prima por plazo oculta esa subida.",
+    "d": "No espera nada en concreto, porque en esta teoría la curva refleja solo la oferta y la demanda de cada plazo."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con prima por liquidez, el tipo largo es la media de los cortos esperados más una prima positiva y creciente con el plazo. Si el tipo largo iguala al corto pese a esa prima, es porque la media de los tipos cortos esperados está por debajo del tipo corto actual: se esperan bajadas.",
+    "desarrollo": "La ecuación del tipo largo es $i^{(n)}_t=\\frac{1}{n}\\sum_{k=0}^{n-1}\\mathbb{E}_t[i_{t+k}]+\\text{prima}_n$, con $\\text{prima}_n>0$ y creciente en $n$ según la teoría de la prima por liquidez.\n\nCurva plana significa $i^{(n)}_t=i_t$ para todo $n$. Entonces la media de los tipos cortos esperados es $i_t-\\text{prima}_n<i_t$: el mercado espera que los tipos cortos bajen, lo justo para que la prima lo compense.\n\nLas lecturas de cada forma con esta teoría:\n\n- ligeramente creciente: compatible con tipos cortos constantes (la pendiente es solo la prima);\n- plana: ligeras bajadas esperadas;\n- invertida: bajadas esperadas con seguridad, mayores que la prima.\n\nPor eso una curva que se aplana suele anticipar un menor crecimiento.\n\nPor qué fallan las demás:\n\n- b) Es la lectura de la teoría de las expectativas puras, sin prima.\n- c) Si se esperaran subidas, a ellas se sumaría la prima y la curva sería claramente creciente.\n- d) Describe la segmentación del mercado; en la teoría de la prima por liquidez las expectativas siguen siendo el primer determinante de la curva."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Teorías explicativas (prima por liquidez)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322412,
+   "estado": "publicada",
+   "enunciado": "Un banco central anuncia compras masivas de deuda pública a largo plazo. Suponga que el anuncio no altera en nada la senda que el mercado espera para los tipos de interés a corto plazo. ¿Qué efecto tendrían las compras sobre el tipo a largo plazo según las distintas teorías de la curva de tipos?",
+   "opciones": {
+    "a": "Con las expectativas puras y con el hábitat preferente el tipo largo baja lo mismo, porque en las dos lo determina la demanda de bonos de ese plazo.",
+    "b": "Con las expectativas puras el tipo largo no cambia; con el hábitat preferente baja, porque las compras reducen la prima por plazo.",
+    "c": "Con las expectativas puras el tipo largo baja; con el hábitat preferente no cambia, porque los inversores vuelven a su plazo preferido.",
+    "d": "Con la segmentación del mercado bajan en la misma cuantía los tipos de todos los plazos, porque los segmentos se arbitran entre sí."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El tipo largo es la media de los tipos cortos esperados más una prima por plazo. Con expectativas puras la prima es nula y, si las expectativas no cambian, el tipo largo tampoco. Con hábitat preferente, retirar bonos largos reduce el riesgo de duración que debe absorber el mercado y baja la prima.",
+    "desarrollo": "En la ecuación del tipo largo hay dos sumandos: los tipos cortos esperados y la prima por plazo.\n\n- Expectativas puras: los bonos de distinto plazo son sustitutivos perfectos; las cantidades de cada plazo no importan. Sin cambios en las expectativas, el tipo largo no se mueve.\n- Hábitat preferente (y su formalización por Vayanos y Vila): unos arbitrajistas aversos al riesgo y con capital limitado conectan los plazos, pero exigen una prima por cargar con bonos largos. Si el banco central compra bonos largos, retira riesgo de duración del mercado, la prima baja, sobre todo en los plazos que compra, y el tipo largo también. Es el canal de reequilibrio de carteras de las compras de activos.\n\nEl banco central mueve la curva con lo que anuncia (expectativas) y con lo que compra (prima por plazo); el enunciado cierra la primera vía para aislar la segunda.\n\nPor qué fallan las demás:\n\n- a) En las expectativas puras la demanda de cada plazo no influye en su tipo.\n- c) Está invertida.\n- d) Con segmentación pura bajaría solo el tipo del segmento comprado: precisamente porque los segmentos no se arbitran entre sí, esa teoría no explica que los tipos se muevan juntos."
+   },
+   "dificultad": 2,
+   "apartado": "II.2 Teorías explicativas (hábitat preferente y compras de activos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322413,
+   "estado": "publicada",
+   "enunciado": "La pendiente de la curva de tipos (el tipo a 10 años menos el tipo a 3 meses) se usa como indicador adelantado del ciclo económico. Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "La curva se invierte antes de las recesiones porque, cuando el banco central sube el tipo oficial, los tipos largos suben más que los cortos al sumarse la prima por plazo.",
+    "b": "Una curva invertida indica que el mercado espera subidas de los tipos a corto plazo, normalmente porque prevé una economía recalentada y más inflación.",
+    "c": "Si las compras de bonos de los bancos centrales comprimen la prima por plazo, la curva puede aplanarse o invertirse sin que el mercado espere una recesión.",
+    "d": "La pendiente informa sobre la actividad del mes siguiente, pero carece de capacidad predictiva a horizontes de entre 2 y 6 trimestres."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La pendiente refleja los tipos cortos esperados y la prima por plazo. Suele invertirse cuando el mercado espera bajadas de tipos por una desaceleración; pero si la prima por plazo es muy baja, la curva se aplana sin que se espere una recesión: es la principal cautela al leer la señal.",
+    "desarrollo": "El tipo largo es la media de los tipos cortos esperados más una prima por plazo. Cuando el banco central sube el tipo oficial para frenar una economía recalentada, el tipo corto sube y el mercado anticipa que tendrá que bajarlo cuando llegue la desaceleración: el tipo largo sube menos, o baja, y la curva se invierte. Por eso, en Estados Unidos, las recesiones desde los años 60 han ido precedidas de una curva invertida, y la pendiente predice la actividad a 2-6 trimestres mejor que la mayoría de los indicadores.\n\nLa cautela: la señal mezcla expectativas y prima. Si la prima por plazo está comprimida (por ejemplo, por las compras de activos de los bancos centrales o por una gran demanda de bonos largos), la curva puede estar plana o invertida sin que se esperen bajadas de tipos ni recesión, y dar una falsa alarma.\n\nPor qué fallan las demás:\n\n- a) Al subir el tipo oficial, los tipos cortos suben más que los largos: por eso se invierte.\n- b) Una curva invertida indica que se esperan bajadas de los tipos cortos, no subidas.\n- d) Es al revés: su valor está en que adelanta la actividad y las recesiones varios trimestres."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Formas y movimientos de la curva (la curva y el ciclo)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322414,
+   "estado": "publicada",
+   "enunciado": "Un inversor tiene un bono a 10 años de cupón variable, que se revisa cada 6 meses con un tipo de referencia del mercado monetario más un diferencial fijo. La calidad crediticia del emisor no cambia. Si los tipos de interés de mercado suben de forma general:",
+   "opciones": {
+    "a": "El precio del bono apenas cambia, porque el cupón se ajusta en la siguiente revisión: el riesgo del tenedor es de renta, no de precio.",
+    "b": "El precio del bono cae más que el de un bono de cupón fijo a 10 años, porque su duración es igual a su plazo hasta el vencimiento.",
+    "c": "El precio del bono sube de forma apreciable, porque los cupones futuros serán más altos y el nominal a cobrar no ha cambiado.",
+    "d": "El precio del bono cae igual que el de un bono de cupón fijo a 10 años, porque los dos tienen el mismo plazo hasta el vencimiento."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "En un bono de cupón variable, el cupón se pone al nivel del mercado en cada revisión, y en esas fechas el bono vale casi su nominal. Su sensibilidad a los tipos es la de un título que vence en la próxima revisión; lo que varía con los tipos es la renta que cobra el tenedor.",
+    "desarrollo": "El riesgo de tipo de interés nace de que los pagos están fijados: si los tipos suben, unos pagos fijos valen menos. En el bono de cupón variable, los cupones futuros suben con los tipos de mercado, y eso compensa el mayor descuento: en cada fecha de revisión el bono vuelve a valer aproximadamente su nominal (si el diferencial que exige el mercado al emisor no cambia).\n\nSu duración es, por tanto, muy corta: como mucho, el tiempo que falta hasta la próxima revisión (aquí, 6 meses), no los 10 años hasta el vencimiento. El tenedor no corre un riesgo de precio relevante, pero sí de renta: si los tipos bajan, cobrará cupones menores.\n\nPor qué fallan las demás:\n\n- b) La duración igual al plazo es la del bono cupón cero; el de cupón variable tiene una duración cercana al plazo hasta la próxima revisión.\n- c) Los cupones más altos se descuentan también a tipos más altos: los dos efectos se compensan y el precio queda cerca de la par.\n- d) El plazo no mide la sensibilidad a los tipos: importa cuándo se revisan los pagos."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Riesgos de la inversión en bonos (riesgo de tipo de interés y de reinversión)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322415,
+   "estado": "publicada",
+   "enunciado": "Una cartera de 1.000.000 € está formada por 600.000 € en bonos cupón cero a 2 años y 400.000 € en bonos cupón cero a 7 años (valores de mercado). La curva de tipos es plana al 5 % anual. Si todos los tipos suben 0,5 puntos porcentuales, la pérdida de valor de la cartera, aproximada con la duración, es de unos:",
+   "opciones": {
+    "a": "21.400 €.",
+    "b": "19.000 €.",
+    "c": "33.300 €.",
+    "d": "42.900 €."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La duración de la cartera es la media ponderada por valor: $0{,}6\\times2+0{,}4\\times7=4$ años. La duración modificada es $4/1{,}05=3{,}81$, y la pérdida, $3{,}81\\times0{,}005=1{,}9$ % de 1.000.000 €: unos 19.000 €.",
+    "desarrollo": "- Paso 1: la duración de un bono cupón cero es su plazo: 2 y 7 años.\n- Paso 2: la duración de una cartera es la media de las de sus bonos, ponderada por su valor de mercado: $D=0{,}6\\times2+0{,}4\\times7=1{,}2+2{,}8=4$ años.\n- Paso 3: duración modificada, $D^{\\mathrm{mod}}=D/(1+y)=4/1{,}05=3{,}81$.\n- Paso 4: $\\Delta P/P\\simeq-D^{\\mathrm{mod}}\\,\\Delta y=-3{,}81\\times0{,}005=-1{,}905$ %, unos 19.000 €.\n\nComprobación bono a bono: el de 2 años pierde $2/1{,}05\\times0{,}5=0{,}95$ % de 600.000 €, 5.714 €; el de 7 años, $7/1{,}05\\times0{,}5=3{,}33$ % de 400.000 €, 13.333 €; en total, 19.048 €. La pérdida exacta es algo menor (unos 18.760 €), por la convexidad.\n\nPor qué fallan las demás:\n\n- a) 21.400 € usa la media simple de los plazos, 4,5 años, sin ponderar por el valor invertido en cada bono.\n- c) 33.300 € aplica a toda la cartera la duración del bono a 7 años.\n- d) 42.900 € suma las duraciones de los dos bonos (9 años) en lugar de promediarlas."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Riesgo de tipo de interés (duración de Macaulay y duración modificada)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322416,
+   "estado": "publicada",
+   "enunciado": "Un título de deuda perpetua paga un cupón anual constante y no se amortiza nunca. Si su rentabilidad (TIR) es del 10 %, su duración de Macaulay es:",
+   "opciones": {
+    "a": "Infinita, porque el principal no se devuelve nunca.",
+    "b": "10 años, el inverso de su rentabilidad.",
+    "c": "Indeterminada, porque sin vencimiento no hay plazo medio.",
+    "d": "11 años, pese a que el título no vence."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La duración de un bono perpetuo es $(1+y)/y$, finita: con $y=10$ %, $1{,}1/0{,}1=11$ años. Los pagos muy lejanos pesan muy poco al descontarlos, y el plazo medio ponderado por el valor es finito aunque el título no venza.",
+    "desarrollo": "El precio de una renta perpetua de cupón $C$ es $P=C/y$. Derivando, $\\mathrm{d}P/\\mathrm{d}y=-C/y^2$, así que la duración modificada es\n\n$D^{\\mathrm{mod}}=-\\dfrac{1}{P}\\dfrac{\\mathrm{d}P}{\\mathrm{d}y}=\\dfrac{1}{y}=10$,\n\ny la de Macaulay, $D=D^{\\mathrm{mod}}(1+y)=\\dfrac{1+y}{y}=\\dfrac{1{,}1}{0{,}1}=11$ años.\n\nLa duración no es el plazo hasta el vencimiento, sino la media de los plazos de los pagos ponderada por su valor actual: los pagos de dentro de 50 o 100 años valen hoy casi nada y apenas cuentan. Por eso la duración crece con el plazo cada vez menos y tiene como techo la del bono perpetuo; y por eso baja cuando sube la TIR (con una TIR del 5 % sería de 21 años).\n\nPor qué fallan las demás:\n\n- a) Confunde duración con vencimiento: el plazo medio ponderado es finito porque los pesos decrecen geométricamente.\n- b) 10 es la duración modificada ($1/y$), la semielasticidad del precio, no la de Macaulay.\n- c) Está perfectamente definida: la suma de los plazos ponderados converge."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Riesgo de tipo de interés (duración de Macaulay: propiedades)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322417,
+   "estado": "publicada",
+   "enunciado": "Un bono sin opciones tiene una duración modificada de 8 y una convexidad de 100. Si su rentabilidad a vencimiento baja 2 puntos porcentuales, la variación de su precio, con la aproximación que usa la duración y la convexidad, es:",
+   "opciones": {
+    "a": "$+14$ %.",
+    "b": "$+16$ %.",
+    "c": "$+18$ %.",
+    "d": "$+20$ %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$\\Delta P/P\\simeq-D^{\\mathrm{mod}}\\Delta y+\\frac12\\mathrm{Conv}(\\Delta y)^2=-8\\times(-0{,}02)+\\frac12\\times100\\times0{,}02^2=0{,}16+0{,}02=18$ %. La convexidad suma siempre: el precio sube más de lo que dice la duración.",
+    "desarrollo": "La aproximación de segundo orden (desarrollo de Taylor) es\n\n$\\dfrac{\\Delta P}{P}\\simeq-D^{\\mathrm{mod}}\\,\\Delta y+\\dfrac12\\,\\mathrm{Conv}\\,(\\Delta y)^2$.\n\nCon $\\Delta y=-0{,}02$:\n\n- término de la duración: $-8\\times(-0{,}02)=+0{,}16$;\n- término de la convexidad: $\\frac12\\times100\\times0{,}0004=+0{,}02$;\n- total: $+18$ %.\n\nSi la rentabilidad subiera 2 puntos, el resultado sería $-16+2=-14$ %: el precio sube más con una bajada de tipos (18 %) que lo que cae con una subida igual (14 %). Esa asimetría es la convexidad, y por eso el inversor la valora.\n\nPor qué fallan las demás:\n\n- a) $+14$ % resta el término de convexidad: con convexidad positiva, ese término suma tanto si los tipos suben como si bajan (14 % es, en valor absoluto, la caída ante una subida de 2 puntos).\n- b) $+16$ % usa solo la duración, que se queda corta en las subidas del precio.\n- d) $+20$ % olvida el factor $\\frac12$ del término de convexidad."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Riesgo de tipo de interés (convexidad)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322418,
+   "estado": "publicada",
+   "enunciado": "Un bono amortizable anticipadamente por el emisor (callable) se compara con un bono ordinario del mismo emisor, cupón y vencimiento. Cuando los tipos de interés de mercado bajan hasta niveles cercanos a aquellos en que al emisor le conviene amortizar, el bono callable:",
+   "opciones": {
+    "a": "Sube de precio menos que el ordinario, y su convexidad puede volverse negativa.",
+    "b": "Sube de precio más que el ordinario, porque el tenedor posee una opción valiosa.",
+    "c": "Tiene una duración efectiva mayor que el ordinario, porque sus flujos son inciertos.",
+    "d": "Tiene un suelo en su precio, porque el tenedor lo devolverá al precio pactado."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Si los tipos bajan mucho, el emisor recomprará el bono al precio de amortización para refinanciarse más barato: el precio deja de subir y se queda cerca de ese nivel. La curva precio-rentabilidad se dobla hacia abajo: convexidad negativa.",
+    "desarrollo": "En el bono callable, la opción es del emisor, y el inversor se la ha vendido a cambio de un cupón más alto. El emisor la ejercerá cuando los tipos bajen.\n\n- Con tipos altos, la amortización es improbable y el bono se comporta como uno ordinario.\n- Con tipos bajos, el precio no puede superar en mucho el precio de amortización, porque el mercado sabe que el bono se recomprará a ese precio: la curva precio-rentabilidad se aplana por arriba y se vuelve cóncava (convexidad negativa). El inversor pierde con las subidas de tipos casi tanto como con un bono ordinario, pero gana menos con las bajadas.\n\nComo los flujos dependen de los tipos, la fórmula de Macaulay no sirve y se usa la duración efectiva, $D^{\\mathrm{ef}}=(P_--P_+)/(2P\\,\\Delta y)$, calculada con un modelo que incluye la opción. En esta zona es menor que la del bono ordinario, porque el precio reacciona menos a los tipos y la vida esperada del bono se acorta.\n\nPor qué fallan las demás:\n\n- b) La opción es del emisor, no del tenedor, y limita la subida del precio.\n- c) La duración efectiva del callable es menor, no mayor, cuando la amortización es probable.\n- d) El suelo en el precio es propio del bono con opción de venta (putable), cuando los tipos suben; el callable tiene un techo."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Riesgo de tipo de interés (convexidad: bonos con opciones y duración efectiva)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322419,
+   "estado": "publicada",
+   "enunciado": "Un fondo de pensiones tiene que hacer un único pago dentro de 5 años y quiere que el valor acumulado de su inversión en esa fecha no dependa de un desplazamiento paralelo de la curva de tipos (que se supone plana) justo después de invertir. ¿Qué estrategia lo consigue?",
+   "opciones": {
+    "a": "Comprar bonos con cupón anual que venzan exactamente dentro de 5 años.",
+    "b": "Comprar letras a un año y renovarlas cada año hasta la fecha del pago.",
+    "c": "Comprar la cartera de mayor convexidad, sea cual sea su duración.",
+    "d": "Comprar una cartera de bonos cuya duración de Macaulay sea de 5 años."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Si los tipos suben, el bono vale menos pero los cupones se reinvierten a más; si bajan, al revés. Los dos efectos se compensan en un horizonte igual a la duración: inmunizar es igualar la duración de la cartera, no su vencimiento, con el plazo del compromiso.",
+    "desarrollo": "El valor de la inversión en el horizonte $H$ es $V_H=P(y)(1+y)^H$. Al derivar respecto a $y$ aparecen el efecto precio (negativo) y el efecto reinversión (positivo), y queda\n\n$\\dfrac{\\mathrm{d}V_H}{\\mathrm{d}y}=(1+y)^{H-1}\\,P\\,(H-D)$,\n\nque se anula si $D=H$. Con una duración de 5 años, lo que se pierde en el precio se gana en la reinversión, y al revés. La protección es local: la duración cambia con los tipos y con el tiempo, así que la cartera hay que reajustarla, y falla si la curva gira en vez de desplazarse en paralelo.\n\nPor qué fallan las demás:\n\n- a) Un bono con cupones que vence a los 5 años tiene una duración inferior a 5: a ese horizonte domina el riesgo de reinversión de los cupones (si los tipos bajan, se acumula menos de lo previsto).\n- b) Renovar letras deja la inversión expuesta por completo al riesgo de reinversión: su duración es de un año como máximo.\n- c) La convexidad es deseable una vez igualada la duración, pero no la sustituye: una cartera muy convexa con una duración distinta de 5 años no está inmunizada."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Riesgo de tipo de interés (gestión: la inmunización)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 322420,
+   "estado": "publicada",
+   "enunciado": "Un banco tiene activos con un valor de mercado de 100 millones de euros y una duración modificada de 5, financiados con 90 millones de depósitos, de duración modificada 1, y 10 millones de capital. La curva de tipos es plana. Si todos los tipos suben 1 punto porcentual, el valor económico del capital del banco, aproximado con la duración:",
+   "opciones": {
+    "a": "Cae unos 4,0 millones de euros.",
+    "b": "Cae unos 4,1 millones de euros.",
+    "c": "Cae unos 5,0 millones de euros.",
+    "d": "Cae unos 0,4 millones de euros."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Los activos pierden $5\\times1\\ \\%\\times100=5$ millones y los pasivos valen $1\\times1\\ \\%\\times90=0{,}9$ millones menos: el capital cae 4,1 millones. Es la brecha de duración, $5-0{,}9\\times1=4{,}1$, por el activo y por la variación de los tipos.",
+    "desarrollo": "El valor económico del capital es $V_E=V-V_D$ (activos menos pasivos), y su variación ante un desplazamiento paralelo $\\Delta y$ es\n\n$\\Delta V_E\\simeq-\\Big[D^{\\mathrm{mod}}_{\\mathrm A}-\\dfrac{V_D}{V}D^{\\mathrm{mod}}_{\\mathrm P}\\Big]V\\,\\Delta y=-[5-0{,}9\\times1]\\times100\\times0{,}01=-4{,}1$ millones.\n\nPor la otra vía: los activos caen un 5 % de 100, es decir, 5 millones; los depósitos valen un 1 % de 90 menos, 0,9 millones, lo que beneficia al banco; el capital cae $5-0{,}9=4{,}1$ millones, el 41 % de los 10 de partida.\n\nEs el riesgo de un banco que financia activos largos con pasivos cortos: una subida de tipos reduce más el valor de lo que tiene que el de lo que debe. Inmunizarse es llevar la brecha de duración a cero, alargando el pasivo, acortando el activo o con derivados (pagando fijo en permutas de tipos de interés).\n\nPor qué fallan las demás:\n\n- a) 4,0 millones resta las duraciones sin ponderar la del pasivo por su peso en el balance ($V_D/V=0{,}9$).\n- c) 5,0 millones ignora que el valor de los pasivos también baja.\n- d) 0,4 millones aplica la diferencia de duraciones al capital (10 millones) en lugar de al activo total."
+   },
+   "dificultad": 3,
+   "apartado": "III.2 Riesgo de tipo de interés (gestión: brecha de duración de un banco)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}

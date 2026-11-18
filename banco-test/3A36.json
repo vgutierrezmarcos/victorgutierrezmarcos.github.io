@@ -1,0 +1,235 @@
+{
+ "tema": "3.A.36",
+ "preguntas": [
+  {
+   "id": 313601,
+   "estado": "publicada",
+   "enunciado": "Un banco central elige la inflación $\\pi$ de cada periodo para minimizar la pérdida $L=(U-U^*)^2+\\gamma\\,(\\pi-\\pi^*)^2$, sujeto a la curva de Phillips $U=U^n-\\alpha\\,(\\pi-\\pi^e)$. Los datos son $U^n=6$, $U^*=4$, $\\pi^*=2$ (todo en %), $\\alpha=0{,}5$ y $\\gamma=0{,}25$. El público conoce estas preferencias, forma sus expectativas de manera racional antes de que el banco central decida, y este no puede comprometerse. En el equilibrio:",
+   "opciones": {
+    "a": "La inflación es del 6 % y el paro, del 6 %.",
+    "b": "La inflación es del 4 % y el paro, del 5 %.",
+    "c": "La inflación es del 2 % y el paro, del 6 %.",
+    "d": "La inflación es del 6 % y el paro, del 4 %."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Con discreción y expectativas racionales, $\\pi^e=\\pi$ y el paro es el natural, 6 %. La condición de primer orden, $\\gamma(\\pi-\\pi^*)=\\alpha(U-U^*)$, da $\\pi=\\pi^*+(\\alpha/\\gamma)(U^n-U^*)=2+2\\cdot2=6$ %: hay sesgo inflacionista sin ganancia alguna de paro.",
+    "desarrollo": "Sustituyendo la curva de Phillips en la pérdida y derivando respecto a $\\pi$, con $\\pi^e$ dada:\n\n$$-2\\alpha\\,(U-U^*)+2\\gamma\\,(\\pi-\\pi^*)=0\\ \\Rightarrow\\ \\gamma\\,(\\pi-\\pi^*)=\\alpha\\,(U-U^*).$$\n\nEl público es racional y conoce el problema del banco central, así que acierta: $\\pi^e=\\pi$ y, por la curva de Phillips, $U=U^n=6$. Entonces\n\n$$0{,}25\\,(\\pi-2)=0{,}5\\,(6-4)=1\\ \\Rightarrow\\ \\pi=6.$$\n\nComprobación por la función de reacción, $\\pi=\\dfrac{\\gamma\\pi^*+\\alpha^2\\pi^e+\\alpha(U^n-U^*)}{\\gamma+\\alpha^2}$: con $\\pi^e=6$, $\\pi=(0{,}5+1{,}5+1)/0{,}5=6$. Es un punto fijo.\n\nPor qué fallan las demás:\n\n- b) Es el punto de la tentación: si el público esperase $\\pi^e=2$, al banco central le convendría fijar $\\pi=(0{,}5+0{,}5+1)/0{,}5=4$ y el paro bajaría a $6-0{,}5\\cdot(4-2)=5$. Pero no es un equilibrio: un público racional no espera un 2 % sabiendo que el banco central elegirá un 4 %.\n- c) Es el resultado con regla (compromiso): mismo paro y menos inflación. Sin compromiso no es creíble, porque una vez formadas las expectativas en el 2 % el banco central se desviaría.\n- d) El punto $(U^*,\\pi^D)$ no está sobre la curva de Phillips con expectativas acertadas: bajar el paro al 4 % exigiría una sorpresa de 4 puntos de inflación, imposible con expectativas racionales e información completa."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Reglas frente a discrecionalidad (Kydland y Prescott; Barro y Gordon)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313602,
+   "estado": "publicada",
+   "enunciado": "En un modelo de inconsistencia temporal a la Barro y Gordon con perturbaciones de oferta de media cero, se comparan dos soluciones al sesgo inflacionista: delegar la política en un banquero central conservador (Rogoff, 1985) y firmar con el banquero un contrato que le penalice linealmente por la inflación (Walsh, 1995). Señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Las dos eliminan por completo el sesgo inflacionista, pero solo el contrato lineal empeora la estabilización del paro ante las perturbaciones.",
+    "b": "El banquero conservador reduce el sesgo sin alterar la respuesta a las perturbaciones; el contrato lineal lo elimina a costa de que el paro absorba una parte mayor de cada perturbación.",
+    "c": "El banquero conservador reduce el sesgo a costa de estabilizar peor el paro; el contrato lineal bien calibrado lo elimina sin cambiar la respuesta a las perturbaciones.",
+    "d": "Ninguna de las dos altera la inflación media: solo cambian el reparto de cada perturbación de oferta entre la inflación y el paro."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Un banquero con más aversión a la inflación ($\\gamma'>\\gamma$) baja la inflación media, pero responde menos a las perturbaciones de oferta y el paro varía más: credibilidad frente a flexibilidad. La penalización lineal de Walsh cambia el coste marginal de la inflación en una constante: quita el sesgo y deja intacta la respuesta a las perturbaciones.",
+    "desarrollo": "Con una perturbación de oferta $u$, $U=U^n-\\alpha(\\pi-\\pi^e)+u$, el equilibrio con discreción de un banco central que da un peso $\\gamma$ a la inflación es\n\n$$\\pi=\\pi^*+\\frac{\\alpha}{\\gamma}(U^n-U^*)+\\frac{\\alpha}{\\gamma+\\alpha^2}\\,u,\\qquad U=U^n+\\frac{\\gamma}{\\gamma+\\alpha^2}\\,u.$$\n\n- Banquero conservador: con $\\gamma'>\\gamma$ el sesgo baja a $(\\alpha/\\gamma')(U^n-U^*)$, pero no desaparece salvo con un peso infinito, y el coeficiente de $u$ en el paro, $\\gamma'/(\\gamma'+\\alpha^2)$, sube: cada perturbación pasa más al paro. Por eso el grado óptimo de conservadurismo es mayor que el de la sociedad, pero finito.\n- Contrato lineal: si la pérdida del banquero es $L+c\\,\\pi$, la condición de primer orden pasa a ser $2\\gamma(\\pi-\\pi^*)+c=2\\alpha(U-U^*)$. Con $c=2\\alpha(U^n-U^*)$ el término constante compensa exactamente la tentación y la inflación media es $\\pi^*$; como $c$ no depende de $u$, la respuesta a la perturbación es la misma que la de la sociedad. Se obtiene la credibilidad sin perder flexibilidad.\n\nPor qué fallan las demás:\n\n- a) El banquero conservador reduce el sesgo, no lo elimina, y es él (no el contrato) quien empeora la estabilización.\n- b) Atribuye a cada solución lo que hace la otra.\n- d) Las dos existen precisamente para bajar la inflación media de equilibrio."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Reglas frente a discrecionalidad: extensiones (banquero conservador y contrato de incentivos)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313603,
+   "estado": "publicada",
+   "enunciado": "Un banco central tiene un objetivo del 2 % anual. El índice de precios parte de 100 y, por una perturbación, la inflación del año 1 es del 4 %. Compare qué inflación buscará para el año 2 (i) con un objetivo de inflación y (ii) con un objetivo de nivel de precios cuya senda crece un 2 % anual desde 100 y a la que quiere haber vuelto al final del año 2:",
+   "opciones": {
+    "a": "Un 2 % en los dos casos: los dos objetivos coinciden cuando la tasa de referencia es la misma.",
+    "b": "Un 2 % con el objetivo de inflación y aproximadamente un 0 % con el de nivel de precios.",
+    "c": "Aproximadamente un 0 % con el objetivo de inflación y un 2 % con el de nivel de precios.",
+    "d": "Un 2 % con el objetivo de inflación y un 4 % con el de nivel de precios, cuya senda se actualiza con la inflación pasada."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con un objetivo de inflación, lo pasado no se corrige: se vuelve al 2 % y el nivel de precios queda para siempre por encima de la senda inicial. Con un objetivo de nivel de precios hay que compensar: la senda marca $100\\cdot1{,}02^2=104{,}04$ al final del año 2 y los precios ya están en 104, así que la inflación debe ser casi nula.",
+    "desarrollo": "Tras el año 1 el índice está en $100\\cdot1{,}04=104$.\n\n- Objetivo de inflación: el banco central busca un 2 % cada año, pase lo que pase antes. El índice acabará el año 2 en $104\\cdot1{,}02=106{,}08$, unos 2 puntos por encima de la senda inicial, y esa desviación no se deshace.\n- Objetivo de nivel de precios: la senda al final del año 2 es $100\\cdot1{,}02^2=104{,}04$. Para llegar desde 104 hace falta una inflación de $104{,}04/104-1\\approx0{,}04$ %, prácticamente cero. Por otra vía: la inflación media de los dos años debe ser el 2 %, y $(4+x)/2=2$ da $x\\approx0$.\n\nDe ahí sus propiedades: el nivel de precios ancla mejor el largo plazo y, cuando los precios caen, hace esperar más inflación futura (lo que baja el tipo real y ayuda en el límite inferior), pero obliga a desinflar tras una perturbación alcista de oferta.\n\nPor qué fallan las demás:\n\n- a) Solo coinciden si nunca hay desviaciones; tras una perturbación, uno la deja pasar y el otro la compensa.\n- c) Intercambia los dos regímenes.\n- d) Una senda que se actualizase con la inflación pasada no sería un objetivo de nivel de precios; y buscar un 4 % alejaría aún más los precios de la senda."
+   },
+   "dificultad": 2,
+   "apartado": "I.2 Elección de la variable objetivo: objetivo de inflación y de nivel de precios",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313604,
+   "estado": "publicada",
+   "enunciado": "Considere la regla de Taylor original, $i_t=r^*+\\pi_t+0{,}5\\,(\\pi_t-\\pi^*)+0{,}5\\,\\mathrm{OG}_t$, con $r^*=\\pi^*=2$ %, donde $\\mathrm{OG}_t$ es la brecha de producción en % del PIB potencial. La inflación es del 4 %, la brecha es del $-2$ % y el tipo de interés vigente es el 4,5 %. El tipo que prescribe la regla y el tono de la política son:",
+   "opciones": {
+    "a": "Un 4 %; el tipo vigente está por encima y la política es contractiva.",
+    "b": "Un 5 %; el tipo vigente está por debajo y la política es expansiva.",
+    "c": "Un 6 %; el tipo vigente está por debajo y la política es expansiva.",
+    "d": "Un 8 %; el tipo vigente está por debajo y la política es expansiva."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "$i=2+4+0{,}5\\cdot(4-2)+0{,}5\\cdot(-2)=6$ %. Con el tipo vigente en el 4,5 %, por debajo del de la regla, la política es expansiva: el tipo real ex post es del 0,5 %, inferior al real de equilibrio del 2 %.",
+    "desarrollo": "Por la forma original: $i=r^*+\\pi+0{,}5(\\pi-\\pi^*)+0{,}5\\,\\mathrm{OG}=2+4+1-1=6$ %.\n\nPor la forma reducida, $i=1+1{,}5\\,\\pi+0{,}5\\,\\mathrm{OG}$ (válida con $r^*=\\pi^*=2$): $1+6-1=6$ %. Coinciden.\n\nLa inflación, 2 puntos por encima del objetivo, pide subir el tipo 3 puntos sobre el neutral del 4 % (principio de Taylor: el nominal sube más que la inflación para que suba el real); la brecha negativa pide bajarlo 1 punto. Comparar el tipo vigente con el de la regla da una medida sencilla del tono: un 4,5 % frente a un 6 % es una política expansiva.\n\nPor qué fallan las demás:\n\n- a) Olvida el término $\\pi_t$ que acompaña a $r^*$ y suma $r^*+\\pi^*+0{,}5(\\pi-\\pi^*)+0{,}5\\,\\mathrm{OG}=4$ %: trata el coeficiente de la inflación como 0,5 y no como 1,5.\n- b) Aplica $1{,}5\\,\\pi+0{,}5\\,\\mathrm{OG}$ sin la constante.\n- d) Suma la brecha con signo positivo ($1+6+1$), como si la producción estuviera por encima de la potencial."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Elección de una regla: la regla de Taylor",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313605,
+   "estado": "publicada",
+   "enunciado": "En el modelo canónico de la nueva economía keynesiana, con la producción natural eficiente y un banco central que minimiza $\\mathbb{E}_0\\sum_t\\beta^t(\\pi_t^2+\\lambda_x x_t^2)$, llega una perturbación de costes positiva y transitoria en la curva de Phillips $\\pi_t=\\beta\\,\\mathbb{E}_t[\\pi_{t+1}]+\\kappa\\,x_t+u_t$. Al comparar la política óptima con discreción y con compromiso:",
+   "opciones": {
+    "a": "Coinciden: al ser eficiente la producción natural no hay sesgo inflacionista y, por tanto, el compromiso no aporta ninguna ganancia.",
+    "b": "Con compromiso el banco central mantiene la inflación en cero en todos los periodos, a costa de una recesión inicial mayor que con discreción.",
+    "c": "Con compromiso el banco central cierra la brecha en cuanto pasa la perturbación, y por eso la inflación inicial es mayor que con discreción.",
+    "d": "Con compromiso el banco central promete prolongar la brecha negativa: baja la inflación esperada y hoy hay menos inflación y menos recesión."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Como la inflación de hoy depende de la esperada, prometer una política restrictiva también después de la perturbación baja $\\mathbb{E}_t[\\pi_{t+1}]$ y mejora el dilema de hoy. Con discreción esa promesa no es creíble: es el sesgo de estabilización. La política con compromiso tiene inercia y devuelve el nivel de precios a su senda.",
+    "desarrollo": "- Discreción: el banco central reoptimiza cada periodo con las expectativas dadas. La condición de óptimo es $x_t=-(\\kappa/\\lambda_x)\\,\\pi_t$: reparte la perturbación entre más inflación y menos producción mientras dura, y en cuanto desaparece vuelve a $x=\\pi=0$.\n- Compromiso: el banco central tiene en cuenta que lo que se espera que haga mañana mueve la inflación de hoy. La condición pasa a ser $x_t=x_{t-1}-(\\kappa/\\lambda_x)\\,\\pi_t$, es decir, $x_t=-(\\kappa/\\lambda_x)(p_t-p_{-1})$: la brecha responde al nivel de precios. Mantiene la brecha negativa después de la perturbación, con una inflación algo negativa, hasta que el nivel de precios vuelve a su senda. Como el público lo anticipa, la inflación esperada baja y la curva de Phillips de hoy se desplaza hacia abajo: menos inflación y menos caída de la producción en el impacto.\n\nLa ganancia existe aunque no haya sesgo inflacionista: es otra cara de la inconsistencia temporal (cuando llega el mañana, al banco central ya no le conviene cumplir).\n\nPor qué fallan las demás:\n\n- a) Confunde el sesgo inflacionista (que exige querer una producción superior a la natural) con el sesgo de estabilización, que aparece con cualquier perturbación de costes.\n- b) Estabilizar del todo la inflación no es óptimo si la brecha pesa en la pérdida ($\\lambda_x>0$); el compromiso suaviza el dilema, no lo resuelve a favor de una sola variable.\n- c) Es lo contrario: cerrar la brecha en cuanto pasa la perturbación es lo que hace la discreción, y el compromiso consigue una inflación inicial menor, no mayor."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 La política óptima de la NEK: discreción y compromiso",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313606,
+   "estado": "publicada",
+   "enunciado": "Una subida del precio de la energía eleva la inflación y reduce la producción al mismo tiempo. Sobre la respuesta adecuada del banco central a esta perturbación de oferta, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Si es transitoria y las expectativas están ancladas, puede no responder a ella; si amenaza con trasladarse a salarios y márgenes y desanclar las expectativas, debe endurecer la política.",
+    "b": "Puede estabilizar a la vez la inflación y la brecha de producción subiendo los tipos, porque la divina coincidencia se mantiene también ante las perturbaciones de costes.",
+    "c": "Debe bajar los tipos en todo caso para cerrar la brecha negativa, porque la inflación de origen energético se corrige sola aunque las expectativas se desanclen.",
+    "d": "Si es transitoria, debe subir los tipos de inmediato, porque la política monetaria actúa con rapidez sobre el precio de la energía; si es duradera y desancla las expectativas, puede no responder."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Una perturbación de oferta rompe la divina coincidencia: no se puede estabilizar a la vez la inflación y la actividad. Si es pasajera y las expectativas siguen ancladas, se puede «mirar a través» de ella, porque los tipos no bajan el precio de la energía y actúan con retraso; si hay efectos de segunda ronda, hay que responder.",
+    "desarrollo": "En el modelo neokeynesiano, una perturbación de costes desplaza hacia arriba la curva de Phillips: a cada brecha le corresponde más inflación. El banco central se enfrenta a un dilema y la respuesta depende de dos cosas:\n\n- la duración: la política monetaria actúa con un retraso de uno a dos años; si la perturbación es transitoria, endurecerla frena la economía cuando la perturbación ya se ha ido;\n- las expectativas: mientras sigan ancladas, la subida del precio relativo de la energía no se convierte en inflación persistente. Si es grande y duradera, o se traslada a salarios y márgenes (efectos de segunda ronda), las expectativas pueden desanclarse y entonces hay que responder con firmeza.\n\nPor qué fallan las demás:\n\n- b) La divina coincidencia (estabilizar la inflación estabiliza también la brecha) solo vale sin perturbaciones de costes; con ellas, bajar la inflación exige abrir una brecha negativa.\n- c) Si las expectativas se desanclan, la inflación no vuelve sola: se hace persistente y bajarla cuesta más producción después.\n- d) Invierte el criterio. Los tipos de interés no abaratan la energía y la política actúa con retraso, así que endurecerla ante una perturbación pasajera llega tarde; y es justo cuando la perturbación dura y las expectativas se desanclan cuando hay que responder."
+   },
+   "dificultad": 1,
+   "apartado": "I.4 Nuevas problemáticas: las perturbaciones de oferta",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313607,
+   "estado": "publicada",
+   "enunciado": "En una economía el público mantiene efectivo por el 20 % de sus depósitos ($c_E=0{,}2$), los bancos guardan reservas por el 10 % de los depósitos ($c_R=0{,}1$) y la base monetaria es de 600. Tras un episodio de desconfianza en la banca, el público pasa a mantener efectivo por el 50 % de sus depósitos ($c_E=0{,}5$), sin que cambien $c_R$ ni la base. Según el multiplicador del dinero, la oferta monetaria (efectivo en manos del público más depósitos):",
+   "opciones": {
+    "a": "No cambia: sigue en 2.400.",
+    "b": "Sube de 2.400 a 3.000.",
+    "c": "Cae de 2.400 a 1.500.",
+    "d": "Cae de 2.400 a 1.000."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El multiplicador es $(1+c_E)/(c_E+c_R)$: pasa de $1{,}2/0{,}3=4$ a $1{,}5/0{,}6=2{,}5$, y con una base de 600 el dinero cae de 2.400 a 1.500. El efectivo que sale de los bancos es base que deja de sostener depósitos.",
+    "desarrollo": "De $\\mathrm{BM}=\\mathrm{Ef}+\\mathrm{Res}=(c_E+c_R)\\,\\mathrm{Dep}$ y $M=\\mathrm{Ef}+\\mathrm{Dep}=(1+c_E)\\,\\mathrm{Dep}$:\n\n$$M=\\frac{1+c_E}{c_E+c_R}\\,\\mathrm{BM}.$$\n\n- Antes: $m=1{,}2/0{,}3=4$ y $M=4\\cdot600=2.400$.\n- Después: $m=1{,}5/0{,}6=2{,}5$ y $M=2{,}5\\cdot600=1.500$.\n\nComprobación por los balances. Antes: depósitos $=600/0{,}3=2.000$, efectivo 400 y reservas 200 (suman la base, 600); $M=2.400$. Después: depósitos $=600/0{,}6=1.000$, efectivo 500 y reservas 100 (suman 600); $M=1.500$. El público tiene 100 más de efectivo, pero los depósitos se han reducido en 1.000. Es el mecanismo de la Gran Contracción de 1929-1933: la base no cayó, pero el dinero sí, porque subieron los cocientes de efectivo y de reservas.\n\nPor qué fallan las demás:\n\n- a) La base es la misma, pero el dinero depende también de las decisiones del público y de los bancos: es endógeno.\n- b) Cambia solo el numerador ($1{,}5/0{,}3=5$). Más efectivo en manos del público significa menos reservas en los bancos y una contracción múltiple de los depósitos: el multiplicador es decreciente en $c_E$.\n- d) Usa $1/(c_E+c_R)$, que da los depósitos (1.000), y olvida sumar el efectivo en manos del público (500)."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 La creación del dinero: el multiplicador",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313608,
+   "estado": "publicada",
+   "enunciado": "Un banco central quiere minimizar la varianza de la producción y debe elegir su instrumento antes de observar las perturbaciones. La economía se describe por $y=-b\\,i+\\varepsilon^{\\mathrm{IS}}$ y $m=k\\,y-h\\,i+\\varepsilon^{\\mathrm{LM}}$ (precios fijos, variables en desviaciones), con $b=2$, $h=1$ y $k=1$. Las perturbaciones son independientes, de media cero, y las dos tienen varianza 1. ¿Qué le conviene?",
+   "opciones": {
+    "a": "Fijar el tipo de interés: la varianza de la producción es 1, frente a $5/3$ si fija la cantidad de dinero.",
+    "b": "Fijar la cantidad de dinero: la varianza de la producción es $5/9$, frente a 1 si fija el tipo de interés.",
+    "c": "Es indiferente: con perturbaciones de igual varianza, los dos instrumentos dan una varianza de la producción de 1.",
+    "d": "Fijar la cantidad de dinero: la varianza de la producción es $1/9$, frente a 1 si fija el tipo de interés."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Con el tipo fijo, $y=\\varepsilon^{\\mathrm{IS}}$ y la varianza es 1. Con la cantidad fija, $y=(h\\,\\varepsilon^{\\mathrm{IS}}-b\\,\\varepsilon^{\\mathrm{LM}})/(h+bk)=(\\varepsilon^{\\mathrm{IS}}-2\\varepsilon^{\\mathrm{LM}})/3$ y la varianza es $(1+4)/9=5/9$. Conviene la cantidad: el cociente de varianzas, 1, no supera el umbral $k^2+2hk/b=2$.",
+    "desarrollo": "Es el análisis de Poole (1970).\n\n- Tipo fijo ($i=0$ en desviaciones): la LM es horizontal, el dinero se adapta y las perturbaciones monetarias no llegan a la producción, pero las reales pasan enteras: $y=\\varepsilon^{\\mathrm{IS}}$, $\\mathrm{Var}(y)=1$.\n- Cantidad fija ($m=0$): de la LM, $i=(k\\,y+\\varepsilon^{\\mathrm{LM}})/h=y+\\varepsilon^{\\mathrm{LM}}$. En la IS, $y=-2(y+\\varepsilon^{\\mathrm{LM}})+\\varepsilon^{\\mathrm{IS}}$, luego $y=(\\varepsilon^{\\mathrm{IS}}-2\\,\\varepsilon^{\\mathrm{LM}})/3$ y, por la independencia, $\\mathrm{Var}(y)=(1+4)/9=5/9$.\n\nComo $5/9<1$, conviene fijar la cantidad. Por la otra vía, fijar el tipo solo es mejor si $\\sigma^2_{\\mathrm{LM}}/\\sigma^2_{\\mathrm{IS}}>k^2+2hk/b=1+1=2$, y aquí el cociente es 1. Con la cantidad fija, el tipo sube cuando sube la demanda de bienes y amortigua la perturbación real (se queda en un tercio); a cambio, deja pasar la monetaria, pero el saldo compensa. Con varianzas iguales y $k\\geq1$, fijar la cantidad nunca es peor.\n\nPor qué fallan las demás:\n\n- a) Olvida elevar al cuadrado el denominador: $(h^2+b^2)/(h+bk)=5/3$.\n- c) Varianzas iguales no implican indiferencia: lo que cuenta es el cociente de varianzas frente al umbral, que depende de $k$, $h$ y $b$.\n- d) Acierta el instrumento con una cuenta incompleta: $h^2/(h+bk)^2=1/9$ sería la varianza si solo hubiera perturbaciones reales; con la cantidad fija, las monetarias también mueven la producción."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Elección del instrumento: Poole (1970)",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313609,
+   "estado": "publicada",
+   "enunciado": "Dentro de un programa de compras de activos, el banco central compra deuda pública por valor de 100 a un fondo de pensiones, que tiene su cuenta en un banco comercial. El efecto inmediato sobre los balances es:",
+   "opciones": {
+    "a": "Suben 100 las reservas del banco comercial; los depósitos no cambian, porque el banco central paga con reservas y el fondo no puede tenerlas.",
+    "b": "Suben 100 las reservas del banco comercial y, por el multiplicador, sus préstamos aumentan en 100 dividido por el coeficiente de reservas.",
+    "c": "Suben 100 los depósitos del fondo en el banco comercial; las reservas no cambian, porque la operación se liquida entre el fondo y su banco.",
+    "d": "Suben 100 las reservas del banco comercial y 100 los depósitos del fondo en ese banco; los préstamos a hogares y empresas no cambian."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El banco central paga con reservas, que solo pueden tener los bancos: las abona al banco del fondo, y este abona un depósito al fondo. Suben a la vez las reservas y los depósitos, pero no el crédito: las compras crean reservas, no préstamos.",
+    "desarrollo": "Los asientos son:\n\n- Banco central: activo, bonos $+100$; pasivo, reservas $+100$.\n- Banco comercial: activo, reservas $+100$; pasivo, depósito del fondo $+100$.\n- Fondo de pensiones: activo, bonos $-100$ y depósito $+100$.\n\nEl fondo tiene ahora un depósito en lugar de un bono y querrá cambiarlo por otros activos (reequilibrio de carteras): bajan los tipos a largo plazo y suben los precios de los activos. El dinero que usan hogares y empresas solo crece si los bancos prestan más, y eso depende de la demanda de crédito y de la rentabilidad y el riesgo de prestar, no de la cantidad de reservas.\n\nPor qué fallan las demás:\n\n- a) Describe la compra a un banco, que cambia un bono por reservas sin que varíen los depósitos. Si el vendedor no es un banco, su banco hace de intermediario y le abona un depósito.\n- b) El multiplicador no es un mecanismo: los bancos no prestan las reservas ni están limitados por ellas. En los programas de compras las reservas se multiplicaron y el crédito creció mucho menos (Japón entre 2001 y 2006, la zona del euro desde 2015).\n- c) Quien compra es el banco central, y paga creando reservas; la operación no puede liquidarse sin que aumente su pasivo."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Instrumentos no convencionales: las compras de activos en los balances",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  },
+  {
+   "id": 313610,
+   "estado": "publicada",
+   "enunciado": "Un banco central instrumenta su política con una facilidad marginal de crédito y una facilidad de depósito, cuyos tipos delimitan un corredor. Tras años de compras de activos, los bancos mantienen un gran exceso de reservas. En esta situación (sistema de suelo):",
+   "opciones": {
+    "a": "El tipo de mercado a un día queda en el centro del corredor, y el banco central lo mantiene ahí ajustando cada semana la cantidad de reservas que presta.",
+    "b": "El tipo de mercado a un día sube hasta el de la facilidad marginal de crédito, porque los bancos con reservas de sobra solo las prestan a ese tipo.",
+    "c": "El banco central pierde el control del tipo a un día, que pasa a depender de la cantidad de reservas, y solo puede influir en los tipos a largo plazo.",
+    "d": "El tipo de mercado a un día queda junto al de la facilidad de depósito, que marca el tono de la política, y las variaciones de las reservas apenas lo mueven."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con reservas abundantes, ningún banco presta por debajo de lo que le paga el banco central en la facilidad de depósito, y la competencia por colocar el exceso lleva el tipo de mercado a ese suelo. El banco central controla el tipo con la remuneración de las reservas, no con su cantidad.",
+    "desarrollo": "Las facilidades permanentes delimitan el tipo a un día: nadie paga en el mercado más que el tipo de la facilidad marginal de crédito (techo) ni presta por menos que el de la facilidad de depósito (suelo).\n\n- Sistema de corredor: con reservas escasas, el banco central da justo las que el sistema necesita y el tipo de mercado queda cerca del centro, junto al de sus operaciones principales. La demanda de reservas tiene pendiente en ese tramo y la cantidad importa.\n- Sistema de suelo: con reservas abundantes, la demanda de reservas es plana a la altura del tipo de depósito. El tipo de mercado se pega al suelo y el tipo relevante para el tono de la política es el de la facilidad de depósito. La cantidad de reservas puede variar mucho (por ejemplo, al reducir el balance) sin mover el tipo, mientras sigan siendo abundantes.\n\nEs el marco hacia el que han ido los grandes bancos centrales tras las compras de activos.\n\nPor qué fallan las demás:\n\n- a) Describe el corredor con reservas escasas, no el suelo.\n- b) Es al revés: quien tiene reservas de sobra las presta a cualquier tipo por encima del de depósito, y el tipo de mercado baja; al techo solo se llega cuando faltan reservas.\n- c) El control se mantiene, y es más sencillo: basta con mover el tipo que remunera las reservas."
+   },
+   "dificultad": 2,
+   "apartado": "II.4 Marco operativo: de un sistema de corredor a un sistema de suelo",
+   "creada": "2026-11-17",
+   "revisada": "2026-11-17",
+   "vigencia": "estable"
+  }
+ ]
+}
