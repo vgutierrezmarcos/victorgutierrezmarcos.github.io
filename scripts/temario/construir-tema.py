@@ -651,7 +651,22 @@ def comunes_pandoc(tema, datos):
                   '-M', 'link-citations=true', '-M', 'reference-section-title=Bibliografía',
                   # las citas del texto son \nocite (Víctor, 11/11/2026): toda la .bib a la bibliografía
                   '--metadata-file', ruta_windows(os.path.join(LATEX, 'nocite.yaml'))]
+        esenciales = claves_esenciales(tema.bib)
+        if esenciales:
+            orden += ['-M', 'esenciales=' + ','.join(esenciales)]
     return orden
+
+
+def claves_esenciales(bib):
+    """Entradas del .bib marcadas como fuente esencial del tema (keywords =
+    {esencial}): van primero en la bibliografía (Víctor, 18/11/2026)."""
+    texto = open(bib, encoding='utf-8').read()
+    claves = []
+    for m in re.finditer(r'@\w+\s*\{\s*([^,\s]+)\s*,(.*?)(?=\n@|\Z)', texto, re.S):
+        k = re.search(r'\bkeywords\s*=\s*[{"]([^}"]*)', m.group(2), re.I)
+        if k and 'esencial' in [x.strip().lower() for x in k.group(1).split(',')]:
+            claves.append(m.group(1))
+    return claves
 
 
 def generar_html(tema, tex_pandoc, datos):

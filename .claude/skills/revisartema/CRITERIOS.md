@@ -110,6 +110,9 @@ en cada tema. Ver `LICENSE.md` en la raíz.
     procede) e **Idea final** (p. ej., la respuesta a la problemática). Mismo formato que
     la introducción: el rótulo solo en su línea y el desarrollo en viñetas
     indentadas debajo (Víctor, 9/11/2026).
+    Excepción (Víctor, 18/11/2026): la Recapitulación empieza en su misma
+    línea con «En conclusión,» tras los dos puntos («**Recapitulación**: En
+    conclusión, …») y las demás ideas van en viñetas debajo.
   - **Reparto de minutos** (Víctor, 13/10/2026): introducción
     **2'00"–2'30"** y conclusión **1'00"–1'30"**; el cuerpo, **26–27
     minutos**. Los `\minutos{}` de los apartados suman exactamente eso (p. ej.
@@ -183,6 +186,15 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   su línea (Víctor, 16/10/2026), como en los temas antiguos, para que el
   opositor se acostumbre a ver la función objetivo por un lado y las
   restricciones aparte: `\optim{\max}{\vect{z}}{pF(\vect{z})-\vect{w}\cdot\vect{z}}{F(\vect{z})\geq q\\ \vect{z}\geq\vect{0}}`.
+- **Bibliografía en 2 partes** (Víctor, 18/11/2026): primero las **fuentes
+  esenciales**, los manuales o fuentes que el lector del tema querría consultar
+  (como mucho 5; pueden ser menos), y después «Otras referencias». En el `.bib`
+  llevan `keywords = {esencial}`; `\bibliografia` (PDF) y `construir-tema.py`
+  (HTML y Word) las separan solas.
+- **Rótulos de una lista, todos con el mismo formato** (Víctor, 18/11/2026):
+  si los \item de una lista empiezan con un rótulo («X: …»), todos van en
+  cursiva (`\emph`) o todos en negrita (`\concepto`), nunca mezclados.
+  Los subtítulos de estructura (`\item[] \textbf{Idea}`) no cuentan.
 - **Notas al pie del original**: se mantienen las que estaban bien
   desarrolladas (Víctor, 16/10/2026), como notas al pie y no integradas en
   el texto ni borradas: amenizan la lectura, dan curiosidades y material

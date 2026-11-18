@@ -100,7 +100,11 @@ local function titulo_equilibrado(texto, por_linea)
   return salida
 end
 
+local esenciales = {}
 function Meta(m)
+  if m['esenciales'] then
+    for k in pandoc.utils.stringify(m['esenciales']):gmatch('[^,%s]+') do esenciales['ref-' .. k] = true end
+  end
   if m['graficos-html'] then graficos_html = pandoc.utils.stringify(m['graficos-html']) end
   if m['graficos-docx'] then graficos_docx = pandoc.utils.stringify(m['graficos-docx']) end
   if es_docx and m.title then
@@ -612,6 +616,23 @@ function Pandoc(doc)
           table.remove(bloques, i); i = i - 1
         end
       elseif b.t == 'Div' and b.identifier == 'refs' then
+        -- Fuentes esenciales primero y el resto después (Víctor, 18/11/2026)
+        if next(esenciales) then
+          local primero, resto = pandoc.List(), pandoc.List()
+          for _, e in ipairs(b.content) do
+            if e.t == 'Div' and esenciales[e.identifier] then primero:insert(e) else resto:insert(e) end
+          end
+          if #primero > 0 then
+            local nuevo = pandoc.List()
+            nuevo:insert(pandoc.Header(base + 1, { pandoc.Str('Fuentes'), pandoc.Space(), pandoc.Str('esenciales') },
+              pandoc.Attr('bib-esenciales', { 'unnumbered' })))
+            nuevo:extend(primero)
+            nuevo:insert(pandoc.Header(base + 1, { pandoc.Str('Otras'), pandoc.Space(), pandoc.Str('referencias') },
+              pandoc.Attr('bib-otras', { 'unnumbered' })))
+            nuevo:extend(resto)
+            b.content = nuevo
+          end
+        end
         -- La bibliografía (citeproc) empieza en página nueva (en Word, sección B-1…), como en el PDF
         local previo = bloques[i - 1]
         if es_docx then

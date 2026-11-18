@@ -370,9 +370,14 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     for titulo in ('Introducción', 'Conclusión'):
         m = re.search(r'\\section\*\{' + titulo + r'\}(.*?)(?=\\section|\\clearpage|\\appendix|$)', cuerpo, re.S)
         if m:
-            for r in re.finditer(r'\\item\s*\\textbf\{\\emph\{([^}]+)\}\}\s*:?[ \t]*(?=[^\s:])(?!\\begin\{itemize\})', m.group(1)):
+            for r in re.finditer(r'\\item\s*\\textbf\{\\emph\{([^}]+)\}\}\s*:?[ \t]*(?=[^\s:])(?!\\begin\{itemize\})(?!En conclusión)', m.group(1)):
                 errores.append(f'{titulo}: el rótulo «{r.group(1)}» lleva el texto en su misma línea; va solo y el '
                                'desarrollo en viñetas indentadas debajo (CRITERIOS §2)')
+    # --- Conclusión: «Recapitulación: En conclusión, …» en la misma línea (Víctor, 18/11/2026)
+    m = re.search(r'\\section\*\{Conclusión\}(.*?)(?=\\section|\\clearpage|\\appendix|$)', cuerpo, re.S)
+    if m and not tema.es_dictamen and re.search(r'Recapitulaci', m.group(1)) and \
+            not re.search(r'\\emph\{Recapitulaci[^}]*\}\}:[ \t]*En conclusión', m.group(1)):
+        errores.append('Conclusión: «En conclusión,» va en la misma línea que «Recapitulación:», tras los dos puntos (CRITERIOS §2)')
     # --- Esquema del tema (§2, Víctor 9/11/2026): un título por línea y los
     # minutos de cada parte (\esqtiempo) iguales a los \minutos del cuerpo
     m = re.search(r'\\begin\{esquema\}(?:\[[^\n]*\])?(.*?)\\end\{esquema\}', cuerpo, re.S)
@@ -508,13 +513,44 @@ PIZARRA = [r'\bpizarra\b', r'\(\s*(?:ver\s+|v[ée]ase\s+)?(?:la\s+)?caja(?:\s+(?
            r'\bcaja\s+(?:siguiente|de\s+abajo|inferior)\b', r'\bse\s+tacha\b', r'\ben\s+el\s+v[íi]deo\b']
 
 
+def comprobar_listas_y_bibliografia(tema, tex, errores, avisos):
+    """Rótulos de una lista con el mismo formato y bibliografía con sus fuentes
+    esenciales (Víctor, 18/11/2026)."""
+    sin = re.sub(r'(?<!\\)%[^\n]*', '', tex)
+    lab = re.compile(r'\\(concepto|textbf|emph|textit)\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}(?:\s*\([^)]*\))?\s*(?::|\.?[ \t]*$)', re.M)
+    pila, mixtas = [], []
+    for m in re.finditer(r'\\begin\{(itemize|enumerate)\}|\\end\{(itemize|enumerate)\}|\\item(?!\[\])(?:\[[^\]]*\])?[ \t]*', sin):
+        if m.group(1):
+            pila.append([sin[:m.start()].count('\n') + 1, set()])
+        elif m.group(2):
+            if pila:
+                linea, est = pila.pop()
+                if len(est) > 1:
+                    mixtas.append(linea)
+        elif pila:
+            l = lab.match(sin, m.end())
+            if l:
+                pila[-1][1].add('negrita' if l.group(1) in ('concepto', 'textbf') else 'cursiva')
+    if mixtas:
+        errores.append(f'{len(mixtas)} listas con rótulos en negrita y en cursiva mezclados (l. '
+                       f'{", ".join(map(str, sorted(mixtas)[:8]))}): todos iguales (CRITERIOS §2)')
+    if os.path.exists(tema.bib) and not tema.es_dictamen:
+        bib = open(tema.bib, encoding='utf-8').read()
+        n = len(re.findall(r'\bkeywords\s*=\s*[{"][^}"]*\besencial\b', bib, re.I))
+        if n == 0:
+            avisos.append('Bibliografía sin fuentes esenciales (keywords = {esencial} en el .bib; CRITERIOS §2)')
+        elif n > 5:
+            errores.append(f'{n} fuentes esenciales en la bibliografía: como mucho 5 (CRITERIOS §2)')
+
+
 def comprobar_version_antigua(tema, tex, errores):
     """Nunca se cita la versión antigua del tema (Víctor, 18/11/2026): ni «tema
     antiguo», ni «versión anterior», ni «el original», en ninguna parte."""
     sin = re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), tex)
     ini = max(sin.find('\\begin{document}'), 0)
     patron = (r'tema(?:s)? antiguos?|versi[oó]n (?:antigua|anterior) del tema|versi[oó]n antigua|'
-              r'(?:nota|cuadro|gr[aá]fico|figura|ejemplo|orden|esquema|Word) del original|del tema anterior')
+              r'(?:nota|cuadro|gr[aá]fico|figura|ejemplo|orden|esquema|Word) del original|del tema anterior|'
+              r'tema original|notas? del tema anterior|recog[íi]a el tema anterior|del Word\b')
     for m in list(re.finditer(patron, sin[ini:], re.I))[:10]:
         p = ini + m.start()
         errores.append(f'Cita la versión antigua del tema (l. {_linea(tex, p)}): «…'
@@ -581,6 +617,7 @@ def verificar(tema):
     datos['figuras'] = len(figuras)
     comprobar_remisiones(tema, tex, errores, datos)
     comprobar_version_antigua(tema, tex, errores)
+    comprobar_listas_y_bibliografia(tema, tex, errores, avisos)
     comprobar_formulas_separadas(tex, errores)
     comprobar_criterios(tema, tex, errores, avisos, datos)
     comprobar_graficos_imagenes(tema, tex, errores, datos)
@@ -683,6 +720,9 @@ def verificar(tema):
                 if fuera:
                     errores.append(f'Contenido que se sale por el pie en la página {n} del PDF')
                 if not lineas:
+                    continue
+                # en la bibliografía (páginas B-…) no hay títulos: «D. C.: Banco Mundial.» no es el anexo D
+                if re.search(r'\bB-\d+/\d+', pag.get_text()):
                     continue
                 texto, span = lineas[-1]
                 destacado = span['color'] in morados and (span['flags'] & 2 or span['flags'] & 16)

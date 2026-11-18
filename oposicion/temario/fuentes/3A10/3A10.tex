@@ -424,7 +424,7 @@ $u'''(x)$ & $0$ (sin prudencia) & $\theta(\theta+1)x^{-\theta-2}>0$ (prudente)\\
   \iff\ &\int_{-\infty}^{x}F(t)\,dt\leq\int_{-\infty}^{x}G(t)\,dt\ \ \text{para todo } x .
   \end{align*}
   Equivale a que $G$ sea una \concepto{dispersión que conserva la media} de $F$: se obtiene de $F$ quitando probabilidad del centro y llevándola a las colas sin cambiar la media (gráfico~\ref{fig:dominancia}, derecha). Es la definición rigurosa de «más arriesgada», más general que «con más varianza»\nocite{RothschildStiglitz1970Increasing}.
-\item \emph{Valoración}: son criterios exigentes, que solo dan un orden \emph{parcial} (muchos pares de loterías no se pueden ordenar así) y no dicen cuánto mejor es una lotería que otra.
+\item \concepto{Valoración}: son criterios exigentes, que solo dan un orden \emph{parcial} (muchos pares de loterías no se pueden ordenar así) y no dicen cuánto mejor es una lotería que otra.
   \begin{itemize}
   \item Por eso se usa a menudo el criterio de \concepto{media y varianza}, que resume cada lotería en 2 números: la media como un «bien» y la varianza como un «mal». Pierde información\nocite{BikhchandaniHirshleiferRiley2013Analytics}, y solo es coherente con la utilidad esperada si la utilidad es cuadrática o los rendimientos son normales (o, en general, elípticos), no por el teorema central del límite\nocite{Tobin1958Liquidity,Chamberlain1983Characterization}.\footnote{La media y la varianza son los 2 primeros momentos de la distribución. La utilidad esperada también es sensible a los de orden superior: con $u'''>0$, el consumidor prefiere asimetría positiva (premios grandes y poco probables), y con $u''''<0$ rechaza las colas gruesas (la curtosis).}
   \item Es la base de la teoría de carteras de \autor{Markowitz}, \autor{Tobin} y \autor{Sharpe} (anexo~\ref{anexo:media-varianza}) \vertema{3.B.23}.\footnote{\autor{Harry Markowitz} recibió el Premio Nobel de Economía en 1990, con \autor{Merton Miller} y \autor{William Sharpe}, «por sus trabajos pioneros en la teoría de la economía financiera»\nocite{Nobel1990Markowitz}, y \autor{James Tobin}, en 1981, «por su análisis de los mercados financieros y de sus relaciones con las decisiones de gasto, el empleo, la producción y los precios»\nocite{Nobel1981Tobin}.}
@@ -831,7 +831,7 @@ En el cante de \ref{sec:perspectivas} (\tiempo{4,5}): la idea y la diferencia co
   \begin{itemize}
   \item \emph{dependencia del punto de referencia}: se valoran cambios, no niveles de riqueza;
   \item \emph{sensibilidad decreciente}: es \emph{cóncava en las ganancias}, porque cada euro ganado añade menos valor (aversión al riesgo: «más vale pájaro en mano que ciento volando»), y \emph{convexa en las pérdidas}, porque cada euro perdido resta menos (búsqueda del riesgo: «de perdidos, al río»);
-  \item \concepto{aversión a las pérdidas}: es más inclinada en las pérdidas que en las ganancias, con un quiebro en el punto de referencia. Por eso la mayoría rechaza una apuesta al 50\,\% de ganar o perder la misma cantidad: las pérdidas duelen más de lo que alegran las ganancias del mismo importe.
+  \item \emph{aversión a las pérdidas}: es más inclinada en las pérdidas que en las ganancias, con un quiebro en el punto de referencia. Por eso la mayoría rechaza una apuesta al 50\,\% de ganar o perder la misma cantidad: las pérdidas duelen más de lo que alegran las ganancias del mismo importe.
   \end{itemize}
   La forma que estiman \textcite{TverskyKahneman1992Advances}, con la misma curvatura para ganancias y pérdidas, es
   \begin{equation}\label{eq:funcion-valor}
@@ -1138,9 +1138,8 @@ Con los axiomas de \autor{Savage}, la incertidumbre se reduce al riesgo con prob
 \minutos{1}
 
 \begin{itemize}
-\item \textbf{\emph{Recapitulación (ideas clave)}}:
+\item \textbf{\emph{Recapitulación (ideas clave)}}: En conclusión, con unos axiomas razonables sobre las loterías, sobre todo el de independencia, las preferencias se representan con la utilidad esperada, y toda la actitud ante el riesgo queda en la curvatura de la utilidad de \autor{Bernoulli}: el averso paga una prima por librarse del riesgo, se asegura del todo si la prima es justa y compra algo de un activo con riesgo si su rentabilidad esperada es favorable (\ref{sec:utilidad-esperada}).
   \begin{itemize}
-  \item En conclusión, con unos axiomas razonables sobre las loterías, sobre todo el de independencia, las preferencias se representan con la utilidad esperada, y toda la actitud ante el riesgo queda en la curvatura de la utilidad de \autor{Bernoulli}: el averso paga una prima por librarse del riesgo, se asegura del todo si la prima es justa y compra algo de un activo con riesgo si su rentabilidad esperada es favorable (\ref{sec:utilidad-esperada}).
   \item Las personas se apartan de ella de forma sistemática (\autor{Allais}, los efectos marco): valoran ganancias y pérdidas respecto a un punto de referencia y deforman las probabilidades, como recoge la teoría de las perspectivas (\ref{sec:criticas}).
   \item Cuando las probabilidades no se conocen (\ref{sec:incertidumbre}):
     \begin{itemize}

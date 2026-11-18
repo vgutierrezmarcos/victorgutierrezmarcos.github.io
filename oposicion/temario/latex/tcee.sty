@@ -501,7 +501,19 @@
 % Apellidos en versalitas en las citas del texto (no en la bibliografía)
 \AtEveryCite{\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}}
 % La bibliografía va al final, después de los anexos, en página nueva
-\newcommand{\bibliografia}{\tcee@nuevaparte{bib}{B}\printbibliography[heading=bibliography,title={Bibliografía}]}
+% Dividida (Víctor, 18/11/2026): primero las fuentes esenciales del tema (como mucho 5;
+% en el .bib llevan keywords = {esencial}) y después el resto. Sin ninguna marcada,
+% una sola lista, como antes.
+\newif\iftcee@hayesenciales
+\AtDataInput{\ifkeyword{esencial}{\global\tcee@hayesencialestrue}{}}
+\newcommand{\bibliografia}{\tcee@nuevaparte{bib}{B}%
+  \iftcee@hayesenciales
+    \printbibheading[heading=bibliography,title={Bibliografía}]%
+    \printbibliography[heading=subbibliography,title={Fuentes esenciales},keyword=esencial]%
+    \printbibliography[heading=subbibliography,title={Otras referencias},notkeyword=esencial]%
+  \else
+    \printbibliography[heading=bibliography,title={Bibliografía}]%
+  \fi}
 % URL partibles en cualquier letra o número (si no, las largas se salen del margen)
 \setcounter{biburlnumpenalty}{9000}
 \setcounter{biburlucpenalty}{9000}

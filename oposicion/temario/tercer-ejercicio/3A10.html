@@ -581,7 +581,7 @@
   \iff\ &amp;\int_{-\infty}^{x}F(t)\,dt\leq\int_{-\infty}^{x}G(t)\,dt\ \ \text{para todo } x .
   
 \end{aligned}\]</span> Equivale a que <span class="math inline">\(G\)</span> sea una <strong>dispersión que conserva la media</strong> de <span class="math inline">\(F\)</span>: se obtiene de <span class="math inline">\(F\)</span> quitando probabilidad del centro y llevándola a las colas sin cambiar la media (gráfico <a href="#fig:dominancia">4</a>, derecha). Es la definición rigurosa de «más arriesgada», más general que «con más varianza».</p></li>
-<li><p><em>Valoración</em>: son criterios exigentes, que solo dan un orden <em>parcial</em> (muchos pares de loterías no se pueden ordenar así) y no dicen cuánto mejor es una lotería que otra.</p>
+<li><p><strong>Valoración</strong>: son criterios exigentes, que solo dan un orden <em>parcial</em> (muchos pares de loterías no se pueden ordenar así) y no dicen cuánto mejor es una lotería que otra.</p>
 <ul>
 <li><p>Por eso se usa a menudo el criterio de <strong>media y varianza</strong>, que resume cada lotería en 2 números: la media como un «bien» y la varianza como un «mal». Pierde información, y solo es coherente con la utilidad esperada si la utilidad es cuadrática o los rendimientos son normales (o, en general, elípticos), no por el teorema central del límite.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a></p></li>
 <li><p>Es la base de la teoría de carteras de <span class="smallcaps">Markowitz</span>, <span class="smallcaps">Tobin</span> y <span class="smallcaps">Sharpe</span> (anexo <a href="#anexo:media-varianza">E</a>) <a data-app="3B23.pdf" href="3B23.html" class="vertema"><span class="vertema">[ver tema 3.B.23]</span></a>.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p></li>
@@ -1001,7 +1001,7 @@ Completo, <span class="math inline">\(S^*=L\)</span>, si <span class="math inlin
 <ul>
 <li><p><em>dependencia del punto de referencia</em>: se valoran cambios, no niveles de riqueza;</p></li>
 <li><p><em>sensibilidad decreciente</em>: es <em>cóncava en las ganancias</em>, porque cada euro ganado añade menos valor (aversión al riesgo: «más vale pájaro en mano que ciento volando»), y <em>convexa en las pérdidas</em>, porque cada euro perdido resta menos (búsqueda del riesgo: «de perdidos, al río»);</p></li>
-<li><p><strong>aversión a las pérdidas</strong>: es más inclinada en las pérdidas que en las ganancias, con un quiebro en el punto de referencia. Por eso la mayoría rechaza una apuesta al 50 % de ganar o perder la misma cantidad: las pérdidas duelen más de lo que alegran las ganancias del mismo importe.</p></li>
+<li><p><em>aversión a las pérdidas</em>: es más inclinada en las pérdidas que en las ganancias, con un quiebro en el punto de referencia. Por eso la mayoría rechaza una apuesta al 50 % de ganar o perder la misma cantidad: las pérdidas duelen más de lo que alegran las ganancias del mismo importe.</p></li>
 </ul>
 <p>La forma que estiman <span class="citation" data-cites="TverskyKahneman1992Advances"><span class="smallcaps">Tversky</span> y <span class="smallcaps">Kahneman</span> (<a href="#ref-TverskyKahneman1992Advances" role="doc-biblioref">1992</a>)</span>, con la misma curvatura para ganancias y pérdidas, es <span id="eq:funcion-valor"></span><span class="math display">\[\tag{12}
   v(z)=\begin{cases} z^{\beta} &amp; \text{si } z\geq 0,\\ -\lambda\,(-z)^{\beta} &amp; \text{si } z&lt;0,\end{cases}\qquad \beta\approx 0{,}88,\quad \lambda\approx 2{,}25 ,\]</span> con <span class="math inline">\(z=x_s-r\)</span>: una pérdida duele algo más del doble que una ganancia del mismo tamaño.</p></li>
@@ -1382,9 +1382,8 @@ Completo, <span class="math inline">\(S^*=L\)</span>, si <span class="math inlin
 <section id="esq:17" class="level2 unnumbered" data-minutos="1′">
 <h2 class="unnumbered" data-minutos="1′">Conclusión<span class="minutos" aria-hidden="true">1′</span></h2>
 <ul>
-<li><p><strong><em>Recapitulación (ideas clave)</em></strong>:</p>
+<li><p><strong><em>Recapitulación (ideas clave)</em></strong>: En conclusión, con unos axiomas razonables sobre las loterías, sobre todo el de independencia, las preferencias se representan con la utilidad esperada, y toda la actitud ante el riesgo queda en la curvatura de la utilidad de <span class="smallcaps">Bernoulli</span>: el averso paga una prima por librarse del riesgo, se asegura del todo si la prima es justa y compra algo de un activo con riesgo si su rentabilidad esperada es favorable (<a href="#sec:utilidad-esperada">I</a>).</p>
 <ul>
-<li><p>En conclusión, con unos axiomas razonables sobre las loterías, sobre todo el de independencia, las preferencias se representan con la utilidad esperada, y toda la actitud ante el riesgo queda en la curvatura de la utilidad de <span class="smallcaps">Bernoulli</span>: el averso paga una prima por librarse del riesgo, se asegura del todo si la prima es justa y compra algo de un activo con riesgo si su rentabilidad esperada es favorable (<a href="#sec:utilidad-esperada">I</a>).</p></li>
 <li><p>Las personas se apartan de ella de forma sistemática (<span class="smallcaps">Allais</span>, los efectos marco): valoran ganancias y pérdidas respecto a un punto de referencia y deforman las probabilidades, como recoge la teoría de las perspectivas (<a href="#sec:criticas">II</a>).</p></li>
 <li><p>Cuando las probabilidades no se conocen (<a href="#sec:incertidumbre">III</a>):</p>
 <ul>
@@ -1774,6 +1773,26 @@ Completo, <span class="math inline">\(S^*=L\)</span>, si <span class="math inlin
 <section id="bibliografia" class="level2 unnumbered">
 <h2 class="unnumbered">Bibliografía</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<section id="bib-esenciales" class="level3 unnumbered">
+<h3 class="unnumbered">Fuentes esenciales</h3>
+<div id="ref-Arrow1965Aspects" class="csl-entry" role="listitem">
+Arrow, Kenneth J. (1965). <em>Aspects of the Theory of Risk-Bearing</em>. Yrjö Jahnsson Lectures. Helsinki: Yrjö Jahnssonin Säätiö.
+</div>
+<div id="ref-Gollier2001Economics" class="csl-entry" role="listitem">
+Gollier, Christian (2001). <em>The Economics of Risk and Time</em>. Cambridge (Mass.): MIT Press.
+</div>
+<div id="ref-KahnemanTversky1979Prospect" class="csl-entry" role="listitem">
+Kahneman, Daniel y Amos Tversky (1979). <span>«Prospect Theory: An Analysis of Decision under Risk»</span>. <em>Econometrica</em> 47 (2): 263-91. <a href="https://doi.org/10.2307/1914185">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1914185</a>.
+</div>
+<div id="ref-MasColellWhinstonGreen1995" class="csl-entry" role="listitem">
+Mas-Colell, Andreu, Michael D. Whinston y Jerry R. Green (1995). <em>Microeconomic Theory</em>. Nueva York: Oxford University Press.
+</div>
+<div id="ref-VonNeumannMorgenstern1944Theory" class="csl-entry" role="listitem">
+Neumann, John von y Oskar Morgenstern (1944). <em>Theory of Games and Economic Behavior</em>. Princeton: Princeton University Press.
+</div>
+</section>
+<section id="bib-otras" class="level3 unnumbered">
+<h3 class="unnumbered">Otras referencias</h3>
 <div id="ref-Allais1953Comportement" class="csl-entry" role="listitem">
 Allais, Maurice (1953). <span>«Le comportement de l’homme rationnel devant le risque: critique des postulats et axiomes de l’École américaine»</span>. <em>Econometrica</em> 21 (4): 503-46. <a href="https://doi.org/10.2307/1907921">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1907921</a>.
 </div>
@@ -1785,9 +1804,6 @@ Arrow, Kenneth J. (1953). <span>«Le rôle des valeurs boursières pour la répa
 </div>
 <div id="ref-Arrow1964Role" class="csl-entry" role="listitem">
 Arrow, Kenneth J. (1964). <span>«The Role of Securities in the Optimal Allocation of Risk-bearing»</span>. <em>Review of Economic Studies</em> 31 (2): 91-96. <a href="https://doi.org/10.2307/2296188">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>2296188</a>.
-</div>
-<div id="ref-Arrow1965Aspects" class="csl-entry" role="listitem">
-Arrow, Kenneth J. (1965). <em>Aspects of the Theory of Risk-Bearing</em>. Yrjö Jahnsson Lectures. Helsinki: Yrjö Jahnssonin Säätiö.
 </div>
 <div id="ref-ArrowHurwicz1972Optimality" class="csl-entry" role="listitem">
 Arrow, Kenneth J. y Leonid Hurwicz (1972). <span>«An Optimality Criterion for Decision-Making under Ignorance»</span>. En <em>Uncertainty and Expectations in Economics: Essays in Honour of G. L. S. Shackle</em>, editado por C. F. Carter y J. L. Ford, 1-11. Oxford: Basil Blackwell.
@@ -1876,9 +1892,6 @@ Gigerenzer, Gerd (2004). <span>«Dread Risk, September 11, and Fatal Traffic Acc
 <div id="ref-GilboaSchmeidler1989Maxmin" class="csl-entry" role="listitem">
 Gilboa, Itzhak y David Schmeidler (1989). <span>«Maxmin Expected Utility with Non-unique Prior»</span>. <em>Journal of Mathematical Economics</em> 18 (2): 141-53. <a href="https://doi.org/10.1016/0304-4068(89)90018-9">https://doi.<wbr>org/<wbr>10.<wbr>1016/<wbr>0304-<wbr>4068(89)90018-<wbr>9</a>.
 </div>
-<div id="ref-Gollier2001Economics" class="csl-entry" role="listitem">
-Gollier, Christian (2001). <em>The Economics of Risk and Time</em>. Cambridge (Mass.): MIT Press.
-</div>
 <div id="ref-GravelleRees2004Microeconomics" class="csl-entry" role="listitem">
 Gravelle, Hugh y Ray Rees (2004). <em>Microeconomics</em>. 3.ª ed. Harlow: Financial Times/Prentice Hall.
 </div>
@@ -1914,9 +1927,6 @@ Kahneman, Daniel, Jack L. Knetsch y Richard H. Thaler (1986). <span>«Fairness a
 </div>
 <div id="ref-KahnemanKnetschThaler1990Endowment" class="csl-entry" role="listitem">
 Kahneman, Daniel, Jack L. Knetsch y Richard H. Thaler (1990). <span>«Experimental Tests of the Endowment Effect and the Coase Theorem»</span>. <em>Journal of Political Economy</em> 98 (6): 1325-48. <a href="https://doi.org/10.1086/261737">https://doi.<wbr>org/<wbr>10.<wbr>1086/<wbr>261737</a>.
-</div>
-<div id="ref-KahnemanTversky1979Prospect" class="csl-entry" role="listitem">
-Kahneman, Daniel y Amos Tversky (1979). <span>«Prospect Theory: An Analysis of Decision under Risk»</span>. <em>Econometrica</em> 47 (2): 263-91. <a href="https://doi.org/10.2307/1914185">https://doi.<wbr>org/<wbr>10.<wbr>2307/<wbr>1914185</a>.
 </div>
 <div id="ref-Karmarkar1978Subjectively" class="csl-entry" role="listitem">
 Karmarkar, Uday S. (1978). <span>«Subjectively Weighted Utility: A Descriptive Extension of the Expected Utility Model»</span>. <em>Organizational Behavior and Human Performance</em> 21 (1): 61-72. <a href="https://doi.org/10.1016/0030-5073(78)90039-9">https://doi.<wbr>org/<wbr>10.<wbr>1016/<wbr>0030-<wbr>5073(78)90039-<wbr>9</a>.
@@ -1981,9 +1991,6 @@ Markowitz, Harry (1952b). <span>«The Utility of Wealth»</span>. <em>Journal of
 <div id="ref-Markowitz1990Biografia" class="csl-entry" role="listitem">
 Markowitz, Harry M. (1990). <span>«Biographical»</span>. NobelPrize.org. 1990. <a href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/biographical/">https://www.<wbr>nobelprize.<wbr>org/<wbr>prizes/<wbr>economic-<wbr>sciences/<wbr>1990/<wbr>markowitz/<wbr>biographical/</a>.
 </div>
-<div id="ref-MasColellWhinstonGreen1995" class="csl-entry" role="listitem">
-Mas-Colell, Andreu, Michael D. Whinston y Jerry R. Green (1995). <em>Microeconomic Theory</em>. Nueva York: Oxford University Press.
-</div>
 <div id="ref-MatePerez2007Microeconomia" class="csl-entry" role="listitem">
 Maté García, Jorge Juan y Carlos Pérez Domínguez (2007). <em>Microeconomía avanzada: cuestiones y ejercicios resueltos</em>. Madrid: Pearson Prentice Hall.
 </div>
@@ -1998,9 +2005,6 @@ Milnor, John (1954). <span>«Games against Nature»</span>. En <em>Decision Proc
 </div>
 <div id="ref-Mossin1968Aspects" class="csl-entry" role="listitem">
 Mossin, Jan (1968). <span>«Aspects of Rational Insurance Purchasing»</span>. <em>Journal of Political Economy</em> 76 (4): 553-68. <a href="https://doi.org/10.1086/259427">https://doi.<wbr>org/<wbr>10.<wbr>1086/<wbr>259427</a>.
-</div>
-<div id="ref-VonNeumannMorgenstern1944Theory" class="csl-entry" role="listitem">
-Neumann, John von y Oskar Morgenstern (1944). <em>Theory of Games and Economic Behavior</em>. Princeton: Princeton University Press.
 </div>
 <div id="ref-Neuroprofiler2022Ellsberg" class="csl-entry" role="listitem">
 Neuroprofiler (2022). <span>«Cognitive Bias: The Ellsberg Paradox»</span>. 2022. <a href="https://neuroprofiler.com/cognitive-bias-the-ellsberg-paradox/">https://neuroprofiler.<wbr>com/<wbr>cognitive-<wbr>bias-<wbr>the-<wbr>ellsberg-<wbr>paradox/</a>.
@@ -2170,6 +2174,7 @@ Wald, Abraham (1950). <em>Statistical Decision Functions</em>. Nueva York: John 
 <div id="ref-Yemshanov2013Quantifying" class="csl-entry" role="listitem">
 Yemshanov, Denys, Frank H. Koch, Mark Ducey, Robert A. Haack, Marty Siltanen y Kirsty Wilson (2013). <span>«Quantifying Uncertainty in Pest Risk Maps and Assessments: Adopting a Risk-Averse Decision Maker’s Perspective»</span>. <em>NeoBiota</em> 18: 193-218. <a href="https://doi.org/10.3897/neobiota.18.4002">https://doi.<wbr>org/<wbr>10.<wbr>3897/<wbr>neobiota.<wbr>18.<wbr>4002</a>.
 </div>
+</section>
 </div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
