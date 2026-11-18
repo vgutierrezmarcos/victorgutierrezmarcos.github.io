@@ -1,0 +1,189 @@
+{
+ "tema": "3.B.2",
+ "preguntas": [
+  {
+   "id": 320201,
+   "estado": "publicada",
+   "enunciado": "Una empresa estudia construir una nave logística en un solar que ya es suyo. Al calcular los flujos de caja con los que hallará el VAN del proyecto, debe incluir:",
+   "opciones": {
+    "a": "El coste del estudio de mercado que encargó y pagó el año pasado para decidir si construía la nave.",
+    "b": "Los intereses del préstamo con el que piensa financiar una parte de la construcción de la nave.",
+    "c": "El precio al que podría vender hoy el solar, aunque lo comprara hace años por mucho menos.",
+    "d": "La parte de los gastos generales de la sede que la contabilidad le imputará, aunque su total no cambie."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Los flujos se calculan en términos incrementales y de oportunidad: usar el solar en el proyecto supone renunciar a venderlo o alquilarlo, y ese valor de mercado es un coste del proyecto aunque no haya desembolso. Lo que se pagó por él en su día es irrelevante.",
+    "desarrollo": "Cuentan los flujos que cambian si el proyecto se hace. El solar propio tiene un uso alternativo (venderlo, alquilarlo, esperar): su valor de mercado actual es el coste de oportunidad de destinarlo a la nave, y debe restarse aunque la empresa no pague nada por él.\n\nPor qué fallan las demás:\n\n- a) Es un coste hundido: ya está pagado, se construya o no la nave, así que no debe pesar en la decisión.\n- b) La inversión se separa de la financiación: los flujos del proyecto no restan intereses ni dividendos, porque la remuneración de acreedores y accionistas ya está en la tasa de descuento. Restarlos sería contar dos veces el coste de la financiación.\n- d) Si el total de los gastos generales no cambia con el proyecto, su reparto contable no es un flujo incremental: solo contarían los gastos generales adicionales que el proyecto provocara."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Principios fundamentales de valoración",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320202,
+   "estado": "publicada",
+   "enunciado": "Un proyecto exige un desembolso de 100 hoy, genera un cobro de 250 dentro de un año y obliga a un pago de 156 dentro de dos años (el desmantelamiento). La ecuación que define su TIR tiene dos soluciones: el 20 % y el 30 %. Si el coste del capital de la empresa es del 10 %, señale la afirmación correcta:",
+   "opciones": {
+    "a": "Como sus dos TIR superan el coste del capital, el proyecto crea valor y debe aceptarse.",
+    "b": "Su VAN es negativo al 10 %: solo es positivo con tasas de descuento entre el 20 % y el 30 %.",
+    "c": "Es una inversión no simple pero pura, y su rentabilidad es la mayor de sus dos TIR, el 30 %.",
+    "d": "Su VAN decrece al subir la tasa: es positivo por debajo del 20 % y negativo por encima."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Es una inversión mixta: tras el primer cobro, el proyecto financia a la empresa, y ninguna de sus TIR mide su rentabilidad. Su VAN es $-100+250/1{,}1-156/1{,}21\\approx-1{,}7$: negativo al 10 %, aunque las dos TIR estén por encima. Solo es positivo entre las dos raíces.",
+    "desarrollo": "Con $x=1+k$, $\\mathrm{VAN}(k)=-100+250/x-156/x^{2}=-(100x^{2}-250x+156)/x^{2}$. El polinomio $100x^{2}-250x+156$ se anula en $x=1{,}2$ y $x=1{,}3$ y es negativo entre las dos raíces, de modo que el VAN solo es positivo con tasas entre el 20 % y el 30 % (y muy poco: su máximo, cerca del 24,8 %, es de unos 0,16). Al 10 %, $250/1{,}1=227{,}27$ y $156/1{,}21=128{,}93$: $\\mathrm{VAN}=-1{,}65$. El proyecto destruye valor.\n\nLa razón económica: al 20 %, el saldo del proyecto tras el primer año es $-100\\cdot1{,}2+250=130>0$. Durante el segundo año es el proyecto el que adelanta dinero a la empresa, y ese dinero no rinde la TIR, sino lo que la empresa obtiene al reinvertirlo, su coste del capital. Con un 10 %, los 250 no dan para compensar el desembolso inicial y el pago final.\n\nPor qué fallan las demás:\n\n- a) La regla «aceptar si la TIR supera a $k$» solo equivale a la del VAN en las inversiones simples o puras. Aquí hay dos TIR y ninguna es la rentabilidad del proyecto.\n- c) Es no simple (dos cambios de signo), pero no pura: el saldo intermedio es positivo, luego es mixta. Las inversiones puras tienen una sola TIR.\n- d) Describe el perfil de una inversión simple. En esta, el VAN sube con la tasa hasta cerca del 24,8 % y baja después; por debajo del 20 % es negativo."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 Variables integrantes de una inversión: inversiones puras y mixtas; I.3 Comparación del VAN y la TIR",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320203,
+   "estado": "publicada",
+   "enunciado": "Una empresa dispone de un presupuesto de inversión de 200 que no puede ampliar y tiene tres proyectos independientes, que no se pueden repetir: el 1 exige un desembolso de 200 y tiene un VAN de 50; el 2 exige 100 y tiene un VAN de 35, y el 3 exige 100 y tiene un VAN de 30. Para maximizar su valor, debe hacer:",
+   "opciones": {
+    "a": "Solo el proyecto 1, porque es el de mayor VAN (50).",
+    "b": "Solo el proyecto 2, porque es el de mayor VAN por euro invertido (0,35).",
+    "c": "Los proyectos 1 y 2, los dos de mayor VAN, que suman 85.",
+    "d": "Los proyectos 2 y 3, que agotan el presupuesto y suman un VAN de 65."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con racionamiento de capital no se elige el proyecto de mayor VAN, sino la combinación que da más VAN con el presupuesto disponible: se ordenan por VAN por euro invertido. Los proyectos 2 y 3 (índices de 0,35 y 0,30) suman 65, más que los 50 del proyecto 1 (índice de 0,25).",
+    "desarrollo": "El problema es maximizar la suma de los VAN sujeta a que los desembolsos no superen 200. Las combinaciones posibles son: solo el 1 (cuesta 200, VAN de 50) o el 2 y el 3 juntos (cuestan 200, VAN de $35+30=65$). La segunda es mejor. El índice del VAN, $\\mathrm{VAN}/I_0$, lo anticipa: 0,35 y 0,30 frente a 0,25.\n\nPor qué fallan las demás:\n\n- a) El mayor VAN manda entre proyectos excluyentes cuando no falta capital. Con el presupuesto limitado, el proyecto 1 consume los 200 y deja fuera dos proyectos que juntos crean más valor.\n- b) El índice sirve para ordenar, no para quedarse con el primero: hacer solo el proyecto 2 deja 100 sin invertir y renuncia a los 30 del proyecto 3, que también tiene VAN positivo.\n- c) No es factible: los proyectos 1 y 2 exigen 300, más que el presupuesto."
+   },
+   "dificultad": 1,
+   "apartado": "I.3 Métodos de valoración: el índice del VAN y el racionamiento de capital",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320204,
+   "estado": "publicada",
+   "enunciado": "Una empresa neutral al riesgo puede hacer hoy una inversión irreversible que cuesta 100 en un proyecto que vale hoy 115 (el valor actual de sus flujos). Si espera un año, sabrá si el proyecto vale entonces 150 o 80, con probabilidad 0,5 cada uno, y podrá decidir si invierte los 100. El tipo de interés sin riesgo es del 10 %. ¿Qué le conviene hacer?",
+   "opciones": {
+    "a": "Esperar: la opción de esperar vale $0{,}5\\cdot50/1{,}1\\approx22{,}7$, más que el VAN de invertir hoy (15).",
+    "b": "Invertir hoy: esperar vale $(0{,}5\\cdot50-0{,}5\\cdot20)/1{,}1\\approx13{,}6$, menos que el VAN de hoy (15).",
+    "c": "Invertir hoy: el VAN es positivo, y aplazar la inversión solo retrasa unos cobros que hay que descontar.",
+    "d": "No invertir ni hoy ni dentro de un año: en el escenario malo el proyecto vale menos de lo que cuesta."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Si espera, la empresa solo invierte en el escenario bueno: la espera vale $0{,}5\\cdot(150-100)/1{,}1\\approx22{,}7$. Invertir hoy da $115-100=15$ y mata esa opción. Con irreversibilidad e incertidumbre, un VAN positivo no basta: tiene que superar el valor de la opción de esperar.",
+    "desarrollo": "Invertir hoy: $\\mathrm{VAN}=V_0-I_0=115-100=15$.\n\nEsperar: dentro de un año la empresa invierte solo si el proyecto vale 150 (gana 50) y no invierte si vale 80 (gana 0, en lugar de perder 20). El valor hoy de esa estrategia es $\\pi\\,(V^{\\mathrm A}-I_0)/(1+r_f)=0{,}5\\cdot50/1{,}1=22{,}7$.\n\nLa regla es invertir hoy solo si $V_0-I_0\\geq\\pi\\,(V^{\\mathrm A}-I_0)/(1+r_f)$. Como $15<22{,}7$, conviene esperar: la flexibilidad de no invertir en el escenario malo vale más que lo que se pierde por aplazar.\n\nPor qué fallan las demás:\n\n- b) Calcula la espera como si la empresa estuviera obligada a invertir también en el escenario malo, perdiendo 20. Eso ignora justo lo que da valor a la espera: es un derecho, no una obligación.\n- c) Es la regla del VAN clásico, que supone que la inversión es reversible o de ahora o nunca. Aquí es irreversible y aplazable, y llegará información.\n- d) El escenario malo se evita esperando; en el bueno, el proyecto vale 150 y cuesta 100. Renunciar del todo tira un valor esperado positivo."
+   },
+   "dificultad": 3,
+   "apartado": "I.3 Métodos de valoración: opciones reales (la opción de esperar)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320205,
+   "estado": "publicada",
+   "enunciado": "Una empresa gestiona su tesorería según el modelo de Baumol y Tobin: hace pagos a ritmo constante y conocido, guarda su liquidez en activos que rinden un tipo $i$ y paga un coste fijo $b$ cada vez que los vende para reponer la caja. Si sus pagos del periodo se duplican y el tipo de interés también se duplica, con $b$ constante, su saldo medio de caja óptimo:",
+   "opciones": {
+    "a": "No cambia: repone la misma cantidad cada vez, pero el doble de veces.",
+    "b": "Se duplica, porque la caja necesaria es proporcional a los pagos.",
+    "c": "Se reduce a la mitad, porque tener caja cuesta el doble.",
+    "d": "Aumenta un 41 %, porque la elasticidad a los pagos es $1/2$."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La reposición óptima es $M^{*}=\\sqrt{2bY/i}$ y el saldo medio, $M^{*}/2$: depende del cociente $Y/i$. Si los pagos y el tipo se duplican a la vez, el cociente no cambia y el saldo medio tampoco; el número de reposiciones, $Y/M^{*}$, se duplica.",
+    "desarrollo": "La empresa minimiza $CT(M)=b\\,Y/M+i\\,M/2$, el coste de reponer más el de oportunidad, y obtiene $M^{*}=\\sqrt{2bY/i}$. Las elasticidades del saldo medio son $1/2$ respecto a los pagos y $-1/2$ respecto al tipo de interés: duplicar $Y$ lo multiplica por $\\sqrt2$ y duplicar $i$ lo divide por $\\sqrt2$. Los dos efectos se compensan exactamente: $\\sqrt{2b\\,(2Y)/(2i)}=\\sqrt{2bY/i}$.\n\nCon la misma reposición y el doble de pagos, hace $2Y/M^{*}$ reposiciones, el doble, y el coste total, $\\sqrt{2biY}$, también se duplica.\n\nPor qué fallan las demás:\n\n- b) La caja no es proporcional a los pagos: hay economías de escala (elasticidad de $1/2$), y además olvida el efecto del tipo de interés.\n- c) Solo mira el coste de oportunidad, y lo exagera: duplicar el tipo, con los pagos constantes, reduciría el saldo un 29 % (lo divide por $\\sqrt2$), no a la mitad.\n- d) Es el efecto de duplicar los pagos con el tipo constante ($\\sqrt2\\approx1{,}41$): olvida que el tipo también ha subido."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Inversión en activo corriente: tesorería (modelo de Baumol y Tobin)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320206,
+   "estado": "publicada",
+   "enunciado": "Una empresa calcula la vida económica de una máquina cuyos flujos de caja y cuyo valor residual decrecen con la edad, y cada máquina tiene un VAN positivo. Frente al caso en que no piensa sustituirla al retirarla, si prevé reemplazarla indefinidamente por otras idénticas:",
+   "opciones": {
+    "a": "La retira más tarde, porque así reparte el desembolso de cada máquina entre más años de uso.",
+    "b": "La vida óptima no cambia, porque el VAN de cada máquina por separado es el mismo en los dos casos.",
+    "c": "La retira cuando su valor residual se anula, porque venderla antes sería perder parte de un coste hundido.",
+    "d": "La retira antes, porque alargar su vida retrasa los ciclos siguientes, que también crean valor."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Con reemplazos idénticos no se maximiza el VAN de una máquina, sino el de la cadena de renovaciones (o, lo que es lo mismo, el valor anual equivalente). Cada año que se alarga la vida de una máquina retrasa todas las siguientes, que también crean valor: ese coste de oportunidad adicional acorta la vida óptima.",
+    "desarrollo": "Sin sustitución, la máquina se mantiene mientras lo que da un año más (su flujo más su valor residual al final) supere lo que se obtendría vendiéndola hoy e invirtiendo el dinero al coste del capital: $\\mathrm{FC}_{n+1}+\\mathrm{VR}_{n+1}\\geq(1+k)\\,\\mathrm{VR}_n$.\n\nCon reemplazos idénticos, la cadena vale $\\mathrm{VAN}_\\infty(n)=\\mathrm{VAN}(n)\\,(1+k)^{n}/[(1+k)^{n}-1]$, y se maximiza esa expresión, no $\\mathrm{VAN}(n)$. El factor que multiplica a $\\mathrm{VAN}(n)$ decrece con $n$: alargar la vida aplaza los VAN positivos de las máquinas futuras. En el óptimo, el último año de vida tiene que cubrir, además de lo que daría vender la máquina, el valor de adelantar la cadena; por eso la vida óptima es más corta. Es equivalente a maximizar el valor anual equivalente, $\\mathrm{VAE}(n)=k\\,\\mathrm{VAN}_\\infty(n)$.\n\nPor qué fallan las demás:\n\n- a) Repartir el desembolso entre más años reduce el coste anual del capital, pero ese efecto ya está en el modelo sin sustitución; lo que añade el reemplazo es un motivo para acortar, no para alargar.\n- b) El VAN de cada máquina aislada es el mismo, pero el objetivo cambia: lo óptimo para un equipo aislado no es lo óptimo para la política de renovación de la empresa.\n- c) El coste hundido no debe pesar en la decisión, y esperar a que el valor residual sea nulo no responde a ningún criterio de valor: lo relevante es comparar lo que da un año más con sus alternativas."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Inversión en activo no corriente: la vida óptima (retiro con reemplazos idénticos)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320207,
+   "estado": "publicada",
+   "enunciado": "Una empresa quiere estimar el coste del capital de los activos, $r_A$, de un proyecto en un sector en el que no opera. Las empresas cotizadas de ese sector tienen una beta de las acciones de 1,44, una relación entre deuda y fondos propios, $V_D/V_E$, de 1 a valor de mercado y un tipo del impuesto sobre sociedades del 20 %; su deuda no tiene riesgo sistemático. La rentabilidad del activo sin riesgo es del 2 % y la prima de riesgo del mercado, del 5 %. Con el CAPM, $r_A$ es:",
+   "opciones": {
+    "a": "El 4 %.",
+    "b": "El 5,6 %.",
+    "c": "El 6 %.",
+    "d": "El 9,2 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La beta de las acciones incluye el riesgo financiero de la deuda: hay que desapalancarla. $\\beta_A=\\beta_E/[1+(1-t_{IS})\\,V_D/V_E]=1{,}44/1{,}8=0{,}8$, y $r_A=r_f+\\beta_A\\,\\lambda_M=2\\,\\%+0{,}8\\cdot5\\,\\%=6\\,\\%$.",
+    "desarrollo": "El riesgo de un proyecto es el de sus activos, que depende del negocio (lo cíclico que es y sus costes fijos), no de cómo se financien las empresas comparables. Con deuda sin riesgo sistemático, $\\beta_E=\\beta_A\\,[1+(1-t_{IS})\\,V_D/V_E]$. Aquí el factor es $1+0{,}8\\cdot1=1{,}8$, así que $\\beta_A=1{,}44/1{,}8=0{,}8$.\n\nCon el CAPM, $r_A=r_f+\\beta_A\\,\\lambda_M=0{,}02+0{,}8\\cdot0{,}05=0{,}06$. Comprobación a la inversa: reapalancando, $0{,}8\\cdot1{,}8=1{,}44$.\n\nPor qué fallan las demás:\n\n- a) El 4 % es solo la prima de riesgo del proyecto ($0{,}8\\cdot5\\,\\%$): olvida sumar la rentabilidad del activo sin riesgo.\n- b) Desapalanca sin el efecto fiscal, dividiendo entre $1+V_D/V_E=2$: $\\beta=0{,}72$ y $2\\,\\%+3{,}6\\,\\%=5{,}6\\,\\%$.\n- d) Usa la beta de las acciones sin desapalancar: $2\\,\\%+1{,}44\\cdot5\\,\\%=9{,}2\\,\\%$ es el coste de los fondos propios de las empresas comparables, que incluye su riesgo financiero, no el coste de los activos."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Coste del capital: estimación directa (CAPM y beta de los activos)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 320208,
+   "estado": "publicada",
+   "enunciado": "Las acciones de una empresa cotizan a 20 euros; se espera que el próximo dividendo sea de 1 euro por acción y que crezca indefinidamente al 3 % anual. Su deuda cuesta el 5 % y supone el 40 % del valor de mercado de la empresa; el tipo del impuesto sobre sociedades es del 20 %. Estimando el coste de los fondos propios con el modelo de Gordon y Shapiro, su coste medio ponderado del capital (WACC) es:",
+   "opciones": {
+    "a": "El 4,6 %.",
+    "b": "El 6,4 %.",
+    "c": "El 6,8 %.",
+    "d": "El 8 %."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Coste de los fondos propios: $r_E=D_1/P_0+g=1/20+0{,}03=8\\,\\%$. Coste de la deuda después de impuestos: $5\\,\\%\\cdot(1-0{,}2)=4\\,\\%$. Con pesos a valor de mercado, $\\mathrm{WACC}=0{,}6\\cdot8\\,\\%+0{,}4\\cdot4\\,\\%=6{,}4\\,\\%$.",
+    "desarrollo": "Si el dividendo crece a una tasa constante $g<r_E$, el precio es una perpetuidad creciente, $P_0=D_1/(r_E-g)$, y despejando, $r_E=D_1/P_0+g$: la rentabilidad por dividendo (5 %) más su crecimiento (3 %), 8 %.\n\nLos intereses son deducibles, así que la deuda le cuesta a la empresa $r_D\\,(1-t_{IS})=4\\,\\%$. Con $L=V_D/V=0{,}4$,\n\n$$\\mathrm{WACC}=r_E\\,(1-L)+r_D\\,(1-t_{IS})\\,L=0{,}08\\cdot0{,}6+0{,}04\\cdot0{,}4=0{,}048+0{,}016=0{,}064.$$\n\nPor qué fallan las demás:\n\n- a) Toma como coste de los fondos propios solo la rentabilidad por dividendo (5 %), sin el crecimiento: $0{,}6\\cdot5\\,\\%+0{,}4\\cdot4\\,\\%=4{,}6\\,\\%$.\n- c) Olvida el escudo fiscal de la deuda: $0{,}6\\cdot8\\,\\%+0{,}4\\cdot5\\,\\%=6{,}8\\,\\%$. Como los flujos de caja libres no restan los intereses, el ahorro fiscal tiene que entrar por la tasa.\n- d) Es el coste de los fondos propios, no el medio ponderado: sería la tasa correcta solo si la empresa no tuviera deuda."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Coste del capital: estimación implícita (Gordon y Shapiro) e indirecta (WACC)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  }
+ ]
+}

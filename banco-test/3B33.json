@@ -1,0 +1,396 @@
+{
+ "tema": "3.B.33",
+ "preguntas": [
+  {
+   "id": 323301,
+   "estado": "publicada",
+   "enunciado": "Según la teoría de los acuerdos comerciales de Bagwell y Staiger (1999), ¿cuál es el problema que un acuerdo comercial entre países grandes tiene que resolver?",
+   "opciones": {
+    "a": "Que los gobiernos atienden a sus grupos de presión: el acuerdo sirve para llevarlos al libre comercio, que es el único resultado eficiente para ellos.",
+    "b": "Que los gobiernos no pueden comprometerse ante sus propios grupos de presión: por eso el modelo explica, sobre todo, la adhesión de los países pequeños.",
+    "c": "Que cada gobierno traslada a sus socios, a través de la relación real de intercambio, parte del coste de su arancel, y no que proteja por motivos políticos.",
+    "d": "Que los países pequeños no influyen en los precios mundiales y quedan indefensos: por eso la reciprocidad se exige a los grandes y no a los pequeños."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Para Bagwell y Staiger, lo único que un acuerdo comercial corrige es la externalidad de la relación real de intercambio (RRI): sin acuerdo, cada país grande pone un arancel más alto del que pondría si no pudiera hacer pagar parte de su coste a los demás. Que un gobierno proteja por motivos políticos no exige, por sí solo, un acuerdo.",
+    "desarrollo": "Un país grande abarata lo que importa cuando pone un arancel: mejora su RRI a costa de sus socios (argumento del arancel óptimo). Si todos lo hacen, la guerra arancelaria deja a todos peor (Johnson, 1953). Bagwell y Staiger muestran que esa externalidad es el único problema que resuelve el acuerdo:\n\n- sin acuerdo, cada gobierno elige un arancel que incluye un componente de RRI;\n- los aranceles «políticamente óptimos» son los que elegiría cada gobierno si no tuviera en cuenta ese efecto, como si fuera un país pequeño. Pueden ser positivos si el gobierno atiende a sus grupos de presión, y aun así son eficientes para los dos gobiernos;\n- la reciprocidad (rebajas que dejan la RRI igual) y la no discriminación (un precio mundial único) son justo lo que hace falta para llegar a ellos.\n\nPor qué fallan las demás:\n\n- a) El acuerdo no tiene por qué llevar al libre comercio: lleva a los aranceles políticamente óptimos, que son positivos si los gobiernos dan peso a sus productores. Los motivos políticos no son el problema.\n- b) Es la teoría del compromiso (*commitment*) de Maggi y Rodríguez-Clare (1998), distinta y complementaria: explica que se adhieran países pequeños, sin efecto sobre la RRI. No es la de Bagwell y Staiger.\n- d) Es al revés: el problema lo crean los países grandes entre sí, y la teoría no dice que la reciprocidad deba eximir a nadie; explica por qué la reciprocidad neutraliza la externalidad."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Antecedentes: la teoría de los acuerdos comerciales de Bagwell y Staiger",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323302,
+   "estado": "publicada",
+   "enunciado": "Dos países grandes y simétricos, $A$ y $B$, fijan a la vez sus aranceles, $t$ y $t^*$. El gobierno de $A$ maximiza $W(t,t^*)=\\pi t-\\tfrac12 t^2+\\alpha\\,(t-t^*)$, donde el último término recoge el efecto de los aranceles sobre su relación real de intercambio (RRI), y el de $B$, la expresión simétrica. Con $\\pi=1$ y $\\alpha=2$, calcule el arancel del equilibrio de Nash ($t^N$), el arancel políticamente óptimo ($t^{PO}$, el que elegiría cada gobierno si no tuviera en cuenta el efecto de su arancel sobre la RRI) y lo que gana cada gobierno si los dos pasan de $t^N$ a $t^{PO}$:",
+   "opciones": {
+    "a": "$t^N=3$, $t^{PO}=1$, y cada gobierno gana 2.",
+    "b": "$t^N=3$, $t^{PO}=0$, y cada gobierno gana 1,5.",
+    "c": "$t^N=2$, $t^{PO}=1$, y cada gobierno gana 0,5.",
+    "d": "$t^N=3$, $t^{PO}=1$, y ninguno gana, porque la RRI es la misma en los dos casos."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "La mejor respuesta sale de $\\partial W/\\partial t=\\pi-t+\\alpha=0$: $t^N=\\pi+\\alpha=3$. Sin el término de la RRI, $\\pi-t=0$: $t^{PO}=\\pi=1$. Con aranceles iguales el término de la RRI se anula, así que $W^N=3-4{,}5=-1{,}5$ y $W^{PO}=1-0{,}5=0{,}5$: cada gobierno gana 2, que es $\\tfrac12\\alpha^2$.",
+    "desarrollo": "Paso 1: equilibrio de Nash. Cada gobierno maximiza $W$ dado el arancel del otro: $\\partial W/\\partial t=\\pi-t+\\alpha=0$, luego $t^N=\\pi+\\alpha=1+2=3$. No depende de $t^*$: es una estrategia dominante.\n\nPaso 2: óptimo político. Si el gobierno no cuenta el efecto de su arancel sobre la RRI, la condición es $\\pi-t=0$: $t^{PO}=\\pi=1$. No es el libre comercio, porque el gobierno da peso a sus productores ($\\pi>0$).\n\nPaso 3: la ganancia. Cuando los dos ponen el mismo arancel, $t-t^*=0$ y el término de la RRI desaparece:\n\n- en Nash, $W^N=1\\cdot3-\\tfrac12\\cdot3^2=3-4{,}5=-1{,}5$;\n- en el óptimo político, $W^{PO}=1\\cdot1-\\tfrac12\\cdot1^2=0{,}5$.\n\nLa ganancia es $0{,}5-(-1{,}5)=2$. Comprobación con la expresión general: $W^{PO}-W^N=\\tfrac12\\alpha^2=\\tfrac12\\cdot4=2$.\n\nPor qué fallan las demás:\n\n- b) Confunde el óptimo político con el libre comercio: $t^{PO}=0$ solo si $\\pi=0$.\n- c) Olvida el componente político en el arancel de Nash: $t^N=\\pi+\\alpha$, no $\\alpha$.\n- d) Los aranceles están bien, pero la conclusión no: es cierto que la RRI es la misma en los dos casos (los aranceles son iguales entre sí), y justo por eso los dos ganan. En Nash cada uno soporta la distorsión de un arancel demasiado alto sin conseguir a cambio ninguna mejora de la RRI, porque el arancel del otro la anula."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 Antecedentes: la teoría de los acuerdos comerciales (anexo, modelo lineal-cuadrático)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323303,
+   "estado": "publicada",
+   "enunciado": "Dos países repiten indefinidamente el siguiente juego arancelario. En cada periodo, si los dos mantienen el libre comercio, cada uno obtiene 8; si uno pone un arancel y el otro no, el que lo pone obtiene 10 y el otro 0; si los dos lo ponen, cada uno obtiene 4. Los dos siguen la estrategia del gatillo: cooperan mientras el otro coopere y, si alguno se desvía, ponen el arancel para siempre. ¿Cuál es el factor de descuento $\\beta$ mínimo con el que el libre comercio se sostiene sin que nadie obligue a cumplirlo?",
+   "opciones": {
+    "a": "$\\beta=1/5$",
+    "b": "$\\beta=1/3$",
+    "c": "$\\beta=1/2$",
+    "d": "$\\beta=2/3$"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Cooperar siempre vale $8/(1-\\beta)$; desviarse vale 10 hoy y 4 en adelante, $10+4\\beta/(1-\\beta)$. La cooperación se sostiene si $8\\geq10(1-\\beta)+4\\beta$, es decir, si $\\beta\\geq\\frac{10-8}{10-4}=\\frac13$.",
+    "desarrollo": "Un acuerdo comercial no tiene una policía mundial: tiene que ser autoejecutable. Con la estrategia del gatillo, cada país compara:\n\n- cooperar siempre: $8+8\\beta+8\\beta^2+\\dots=\\dfrac{8}{1-\\beta}$;\n- desviarse: 10 hoy y, desde mañana, la guerra arancelaria: $10+\\dfrac{4\\beta}{1-\\beta}$.\n\nCoopera si $\\dfrac{8}{1-\\beta}\\geq10+\\dfrac{4\\beta}{1-\\beta}$. Multiplicando por $(1-\\beta)$: $8\\geq10-10\\beta+4\\beta$, es decir, $6\\beta\\geq2$ y $\\beta\\geq1/3$.\n\nOtra vía: la ganancia de desviarse hoy es $10-8=2$ y la pérdida por periodo desde mañana es $8-4=4$, con valor actual $4\\beta/(1-\\beta)$. Hace falta $4\\beta/(1-\\beta)\\geq2$, es decir, $4\\beta\\geq2-2\\beta$ y $\\beta\\geq1/3$. En general, $\\beta\\geq\\dfrac{\\text{tentación}-\\text{cooperación}}{\\text{tentación}-\\text{castigo}}$.\n\nPor qué fallan las demás:\n\n- a) $1/5$ sale de dividir la ganancia de desviarse (2) por el pago de la tentación (10), sin restar el pago del castigo.\n- c) $1/2$ sale de dividir la ganancia de desviarse (2) por la pérdida de un solo periodo (4), sin actualizar la corriente de pérdidas futuras.\n- d) $2/3$ invierte el cociente: es $\\frac{8-4}{10-4}$, la pérdida por el castigo sobre la diferencia entre tentación y castigo.\n\nLa lectura económica: cuanto más valoran los países el futuro, más fácil es sostener la cooperación con la amenaza de represalia; por eso importa un sistema de solución de diferencias que autorice y acote esa represalia."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Antecedentes: el acuerdo autoejecutable (anexo, juego repetido)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323304,
+   "estado": "publicada",
+   "enunciado": "En una negociación arancelaria se aplica la fórmula suiza, $t_1=\\dfrac{a\\,t_0}{a+t_0}$, con $t_0$ el arancel inicial y $t_1$ el final, los dos en porcentaje. ¿Qué coeficiente $a$ deja en el 10 % un arancel inicial del 30 %, y en cuánto queda, con ese mismo coeficiente, un arancel inicial del 15 %?",
+   "opciones": {
+    "a": "$a=10$; el arancel del 15 % queda en el 6 %.",
+    "b": "$a=15$; el arancel del 15 % queda en el 5 %.",
+    "c": "$a=15$; el arancel del 15 % queda en el 7,5 %.",
+    "d": "$a=20$; el arancel del 15 % queda en el 8,6 %."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "De $10=\\frac{30a}{a+30}$ sale $10a+300=30a$ y $a=15$. Con $a=15$, un arancel del 15 % queda en $\\frac{15\\cdot15}{15+15}=7{,}5$ %. La fórmula recorta dos tercios del arancel alto y solo la mitad del bajo: por eso se dice que armoniza.",
+    "desarrollo": "Paso 1: el coeficiente. $t_1=\\dfrac{a\\cdot30}{a+30}=10$ implica $30a=10a+300$, luego $20a=300$ y $a=15$. Comprobación: $\\dfrac{15\\cdot30}{45}=\\dfrac{450}{45}=10$.\n\nPaso 2: el otro arancel. $t_1=\\dfrac{15\\cdot15}{15+15}=\\dfrac{225}{30}=7{,}5$ %.\n\nPaso 3: la lectura. La rebaja proporcional es $1-t_1/t_0=t_0/(a+t_0)$, creciente en $t_0$: el arancel del 30 % se recorta en $30/45=2/3$ y el del 15 %, en $15/30=1/2$. La fórmula suiza es armonizadora: recorta más los aranceles más altos y acaba con las crestas arancelarias, a diferencia de la reducción lineal, que aplica el mismo porcentaje a todos.\n\nPor qué fallan las demás:\n\n- a) Confunde el coeficiente con el arancel final que se busca. $a$ es el techo al que tienden los aranceles finales cuando el inicial es muy alto, no el resultado para un arancel concreto: con $a=10$, el arancel del 30 % quedaría en $300/40=7{,}5$ %.\n- b) El coeficiente está bien, pero aplica al arancel del 15 % el mismo recorte de dos tercios que al del 30 %: eso sería una reducción lineal, no la fórmula suiza.\n- d) Con $a=20$, el arancel del 30 % quedaría en $600/50=12$ %, no en el 10 %."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Antecedentes: las rondas del GATT y la fórmula suiza (anexo)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323305,
+   "estado": "publicada",
+   "enunciado": "Sobre la toma de decisiones en la Organización Mundial del Comercio, señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Las decisiones exigen unanimidad: el voto favorable expreso de todos los miembros, incluidos los que no asisten a la reunión.",
+    "b": "Se decide por consenso, pero, si este no se alcanza, resuelve el director general con el apoyo de la Secretaría.",
+    "c": "Como las contribuciones al presupuesto dependen del peso de cada miembro en el comercio, el Acuerdo prevé que, si se vota, el voto se pondere igual.",
+    "d": "Se decide por consenso, que existe si ningún miembro presente se opone formalmente; el Acuerdo prevé también la votación, con un voto por miembro."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La OMC mantiene la práctica del GATT de decidir por consenso: una decisión se adopta si ningún miembro presente en la reunión se opone formalmente. El Acuerdo de Marrakech permite votar, con un voto por miembro, pero casi nunca se ha hecho. No hay directorio ni voto ponderado.",
+    "desarrollo": "El artículo IX del Acuerdo de Marrakech dice que la OMC seguirá la práctica del GATT de decidir por consenso, y lo define: hay consenso si ningún miembro presente en la reunión se opone formalmente a la decisión. Si no se alcanza, el Acuerdo permite votar, con un voto por miembro (y mayorías reforzadas para interpretar los acuerdos, conceder exenciones o enmendarlos). En la práctica casi nunca se vota, por miedo a sentar precedente, de modo que cualquier miembro puede bloquear.\n\nPor qué fallan las demás:\n\n- a) Consenso no es unanimidad: no hace falta el voto favorable de nadie, basta con que ningún presente se oponga formalmente. Quien no asiste o calla no bloquea.\n- b) Es una organización «dirigida por sus miembros»: la Secretaría y el director general apoyan, pero no deciden ni desempatan.\n- c) Mezcla dos cosas. Las contribuciones sí son proporcionales al peso en el comercio internacional, pero el voto no se pondera: a diferencia del FMI o del Banco Mundial, cada miembro tiene un voto."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Organización actual: marco institucional (toma de decisiones)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323306,
+   "estado": "publicada",
+   "enunciado": "En el procedimiento que establece el Entendimiento sobre Solución de Diferencias (ESD) de la OMC, la apelación contra el informe de un grupo especial:",
+   "opciones": {
+    "a": "Permite a las partes presentar hechos y pruebas nuevos, de modo que el Órgano de Apelación vuelve a examinar el asunto entero.",
+    "b": "Se limita a las cuestiones de derecho tratadas en el informe y a las interpretaciones jurídicas del grupo especial.",
+    "c": "Solo puede pedirla el miembro demandado, puesto que es el único al que el informe puede imponer obligaciones.",
+    "d": "Termina con un informe que, a diferencia del informe del grupo especial, el OSD adopta por consenso positivo."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El Órgano de Apelación no es una segunda instancia sobre los hechos: solo revisa las cuestiones de derecho del informe del grupo especial y sus interpretaciones jurídicas, y puede confirmarlas, modificarlas o revocarlas. Su informe se adopta también por consenso negativo.",
+    "desarrollo": "El ESD ordena las diferencias en etapas: consultas, grupo especial, apelación y cumplimiento. La apelación, ante un Órgano de Apelación permanente de 7 miembros (actúan 3 en cada asunto), tiene un objeto limitado: las cuestiones de derecho tratadas en el informe del grupo especial y las interpretaciones jurídicas que este haya hecho. Los hechos los fija el grupo especial.\n\nPor qué fallan las demás:\n\n- a) No es un nuevo juicio: no se admiten pruebas nuevas ni se vuelven a valorar los hechos.\n- c) Puede apelar cualquiera de las partes en la diferencia, también el demandante que ha perdido en todo o en parte. Los que no pueden apelar son los terceros.\n- d) El informe del Órgano de Apelación se adopta igual que el del grupo especial, por consenso negativo: salvo que todos los miembros, incluido el que ha ganado, decidan no adoptarlo.\n\nLa pregunta describe el procedimiento del ESD. Desde diciembre de 2019 el Órgano de Apelación no puede funcionar por falta de miembros, pero las reglas no han cambiado."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Organización actual: la solución de diferencias (apelación)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323307,
+   "estado": "publicada",
+   "enunciado": "Un miembro de la OMC tiene consolidado en el 0 % el arancel del vino. Aprueba un impuesto especial que grava con el 10 % el vino de producción nacional y con el 25 % el vino importado, sea cual sea el país del que proceda. ¿Qué regla del GATT incumple, en primer lugar, esta medida?",
+   "opciones": {
+    "a": "El trato nacional (artículo III): los productos importados no pueden recibir en los impuestos internos peor trato que los nacionales.",
+    "b": "La cláusula de la nación más favorecida (artículo I): el impuesto no trata igual a todos los productos similares que se venden en su mercado.",
+    "c": "La prohibición de las restricciones cuantitativas (artículo XI): un impuesto más alto equivale a una cuota de importación.",
+    "d": "Ninguna: el GATT disciplina las medidas en frontera, y los impuestos internos son competencia exclusiva de cada miembro."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El impuesto discrimina entre el producto nacional y el importado, no entre países de origen: es una infracción del trato nacional (artículo III), que impide sustituir un arancel por un impuesto interno que solo, o en mayor medida, pague el producto extranjero.",
+    "desarrollo": "La no discriminación del GATT tiene dos cláusulas, que responden a dos preguntas distintas:\n\n- nación más favorecida (artículo I): ¿trata igual a los productos similares de todos sus socios?\n- trato nacional (artículo III): una vez dentro, ¿trata a los productos importados al menos tan bien como a los nacionales similares, en impuestos internos y reglamentos?\n\nAquí todos los vinos importados pagan lo mismo (25 %), así que no hay discriminación entre socios; la hay entre el vino importado y el nacional (10 %). Es el caso de manual del trato nacional: sin él, un país podría deshacer con un impuesto interno la rebaja arancelaria que ha consolidado.\n\nPor qué fallan las demás:\n\n- b) La NMF compara entre sí los productos de distintos países de origen, y el impuesto es el mismo para todos los vinos importados. La discriminación frente al producto nacional es cosa del artículo III.\n- c) El artículo XI prohíbe las cuotas y otras restricciones que no sean derechos de aduana, impuestos u otras cargas; un impuesto interno no es una restricción cuantitativa.\n- d) El GATT regula también las medidas «detrás de la frontera» (impuestos internos, reglamentos) justo para que no se usen como protección encubierta. Cada miembro fija sus impuestos, pero sin discriminar al producto importado."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 El GATT: principios (no discriminación: trato nacional)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323308,
+   "estado": "publicada",
+   "enunciado": "Un miembro de la OMC tiene consolidado en el 40 % el arancel de un producto y aplica un arancel NMF del 10 %. Decide subir el arancel aplicado al 25 % para las importaciones de todos los orígenes. Con las reglas del GATT:",
+   "opciones": {
+    "a": "Incumple el artículo II, porque un arancel aplicado no puede subirse una vez que se ha comunicado a los demás miembros.",
+    "b": "No incumple, pero tiene que compensar a sus principales proveedores por los 15 puntos de subida.",
+    "c": "Incumple la cláusula de la nación más favorecida, porque empeora el trato que venía dando a sus socios.",
+    "d": "No incumple: el consolidado es un techo; solo para superar el 40 % tendría que renegociar su lista y compensar."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El compromiso del artículo II es no superar el arancel consolidado. Entre el aplicado y el consolidado hay un margen (el excedente de consolidación) dentro del cual el miembro puede subir el arancel sin incumplir ni compensar, siempre que no discrimine. Para superar el techo hay que renegociar la lista (artículo XXVIII) y compensar.",
+    "desarrollo": "El arancel consolidado figura en la lista de compromisos de cada miembro y es un máximo; el aplicado puede ser menor. La diferencia entre ambos es el excedente de consolidación (*binding overhang*), que es casi nulo en los países desarrollados y grande en muchos emergentes.\n\nEn el caso, el miembro sube el aplicado del 10 al 25 %, por debajo del techo del 40 %, y lo hace para todos los orígenes: no supera el consolidado (artículo II) ni discrimina (artículo I). No incumple nada y no debe compensación. Es legal, aunque hace menos previsible su política comercial: por eso se valora que los consolidados estén cerca de los aplicados.\n\nPor qué fallan las demás:\n\n- a) Lo que obliga es el consolidado, no el aplicado. El aplicado puede subir y bajar por debajo del techo.\n- b) La compensación se debe cuando se modifica o retira una concesión, es decir, cuando se quiere superar el consolidado, tras renegociar con los miembros afectados (artículo XXVIII). Dentro del margen no hay nada que compensar.\n- c) La NMF no congela el nivel del arancel: exige que sea el mismo para los productos similares de todos los miembros. La subida se aplica a todos por igual."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Listas de compromisos y consolidación de los aranceles (excedente de consolidación)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323309,
+   "estado": "publicada",
+   "enunciado": "El artículo XXIV del GATT permite las uniones aduaneras y las zonas de libre comercio como excepción a la cláusula de la nación más favorecida. Señale la afirmación INCORRECTA sobre sus condiciones:",
+   "opciones": {
+    "a": "Deben eliminar los derechos de aduana en lo esencial de los intercambios comerciales entre sus miembros.",
+    "b": "En una unión aduanera, el arancel común no puede ser, en conjunto, más alto ni más restrictivo que los anteriores de sus miembros.",
+    "c": "En una zona de libre comercio, los socios deben adoptar frente a terceros un arancel común no superior a la media de los anteriores.",
+    "d": "Si al formar una unión aduanera un miembro sube un arancel consolidado, hay que compensar a los terceros afectados."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Una zona de libre comercio no tiene arancel exterior común: cada socio mantiene el suyo frente a terceros, y lo que se le exige es no subirlo. El arancel común es lo que distingue a la unión aduanera, a la que se pide que no sea, «en conjunto», más restrictivo que los anteriores.",
+    "desarrollo": "El artículo XXIV permite discriminar a favor de los socios de un acuerdo de integración con dos tipos de condiciones:\n\n- hacia dentro: eliminar los derechos de aduana y las demás reglamentaciones comerciales restrictivas en «lo esencial de los intercambios» entre las partes, en un plazo razonable. Se trata de evitar preferencias parciales, a la carta;\n- hacia fuera: no elevar la protección frente a terceros. En una unión aduanera, que tiene arancel exterior común, este no puede ser «en conjunto» más alto ni más restrictivo que los que aplicaban sus miembros; en una zona de libre comercio, donde cada socio conserva su propio arancel, ninguno puede subir el suyo.\n\nAdemás, si al adoptar el arancel común un miembro de la unión aduanera tiene que subir un arancel que tenía consolidado, hay que negociar una compensación con los afectados (artículo XXIV.6, con el procedimiento del XXVIII).\n\nPor tanto, a), b) y d) son correctas. La c) atribuye a la zona de libre comercio lo que define a la unión aduanera: en una zona de libre comercio no hay arancel común, y por eso necesita normas de origen, para que las mercancías de terceros no entren por el socio con el arancel más bajo.\n\nEl fundamento teórico de la condición exterior es el teorema de Kemp y Wan: siempre existe un arancel exterior común que deja a los terceros igual y no empeora a ningún miembro."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 El GATT: excepciones (integración regional, artículo XXIV)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323310,
+   "estado": "publicada",
+   "enunciado": "Un miembro de la OMC prohíbe importar un alimento que contiene un aditivo autorizado por la norma internacional de referencia (el *Codex Alimentarius*). Alega que quiere un nivel de protección de la salud más alto que el de esa norma, pero no aporta ninguna evaluación del riesgo. Con el Acuerdo sobre Medidas Sanitarias y Fitosanitarias (MSF), la medida:",
+   "opciones": {
+    "a": "Es compatible: cada miembro fija libremente su nivel de protección y no tiene que justificar las medidas con las que lo alcanza.",
+    "b": "Es incompatible mientras no tenga base científica: se puede ser más estricto que la norma internacional, pero hay que justificarlo.",
+    "c": "Es incompatible en todo caso: el Acuerdo obliga a aplicar exactamente las normas internacionales, sin poder superarlas.",
+    "d": "Queda fuera del Acuerdo MSF: como requisito sobre las características de un producto, se rige solo por el Acuerdo OTC."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El Acuerdo MSF deja a cada miembro elegir su nivel de protección, pero exige que las medidas se basen en principios científicos. Las que siguen las normas internacionales se presumen compatibles; las más estrictas se admiten si hay una justificación científica o una evaluación del riesgo.",
+    "desarrollo": "El Acuerdo MSF busca un equilibrio: el derecho a proteger la salud de las personas, los animales y las plantas, sin que las medidas sanitarias se usen como proteccionismo encubierto. Sus reglas básicas:\n\n- cada miembro fija el nivel de protección que considere adecuado;\n- las medidas tienen que basarse en principios científicos y no discriminar de forma arbitraria o injustificable;\n- si la medida sigue las normas internacionales (el *Codex Alimentarius* en inocuidad de los alimentos, y las de sanidad animal y vegetal), se presume que cumple;\n- puede ser más estricta que esas normas si hay una justificación científica o se apoya en una evaluación del riesgo.\n\nEn el caso, el miembro va más allá de la norma internacional sin evaluación del riesgo: la medida no cumple. Es el razonamiento de la diferencia de la carne con hormonas (DS26 y DS48), que perdió la Comunidad Europea porque su prohibición no se basaba en una evaluación del riesgo.\n\nPor qué fallan las demás:\n\n- a) La libertad es para elegir el nivel de protección, no para prescindir de la base científica de las medidas.\n- c) El Acuerdo no obliga a quedarse en la norma internacional: la toma como referencia y da presunción de conformidad a quien la sigue.\n- d) Una medida para proteger la salud frente a los riesgos de los aditivos de los alimentos es una medida sanitaria, y las medidas sanitarias se rigen por el Acuerdo MSF, no por el de Obstáculos Técnicos al Comercio, que cubre los demás reglamentos técnicos y normas.\n\nMatiz: cuando las pruebas científicas son insuficientes, el Acuerdo admite medidas provisionales de precaución, pero obliga a buscar la información que falta y a revisarlas en un plazo razonable; no ampara una prohibición sin ningún análisis."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Acuerdos específicos: reglamentos técnicos y sanitarios (MSF)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323311,
+   "estado": "publicada",
+   "enunciado": "Una empresa del país $B$ vende un producto a 50 € en su mercado interior, en operaciones comerciales normales, y lo exporta al país $A$ a 40 €. Los productores de $A$ piden un derecho antidumping. Con las reglas de la OMC:",
+   "opciones": {
+    "a": "Hay dumping y basta con acreditar el margen para imponer el derecho: el daño a la producción nacional solo se exige en las salvaguardias.",
+    "b": "Hay dumping y el derecho puede superar los 10 € por unidad, si hace falta para eliminar el daño causado a la producción nacional.",
+    "c": "No hay dumping si los 40 € cubren el coste de producción: vender más barato fuera que dentro es una discriminación de precios lícita.",
+    "d": "Hay un margen de dumping del 25 % del precio de exportación; con daño importante y relación causal, cabe un derecho de hasta 10 € por unidad."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Hay dumping cuando se exporta por debajo del valor normal, que es, en principio, el precio en el mercado del exportador: el margen es $50-40=10$ €, el 25 % del precio de exportación. Para imponer el derecho hay que probar además un daño importante y la relación causal, y el derecho no puede superar el margen.",
+    "desarrollo": "Paso 1: ¿hay dumping? El valor normal es el precio comparable en el mercado interior del exportador (50 €) y el precio de exportación es 40 €. El margen de dumping es $50-40=10$ € por unidad, que se expresa en porcentaje del precio de exportación: $10/40=25$ %, muy por encima del mínimo del 2 % por debajo del cual la investigación se archiva.\n\nPaso 2: ¿se puede poner el derecho? Hacen falta tres cosas: dumping, un daño importante a la rama de producción nacional y una relación causal entre los dos.\n\nPaso 3: ¿cuánto? El derecho antidumping puede ser, como máximo, igual al margen de dumping: 10 € por unidad. Y se aplica a las importaciones objeto de dumping de ese origen, no a todas.\n\nPor qué fallan las demás:\n\n- a) El daño se exige también en el antidumping (daño «importante»); en las salvaguardias el listón es más alto (daño «grave»), porque no hay práctica desleal.\n- b) El margen de dumping es el techo del derecho. Puede ponerse uno menor si basta para eliminar el daño, pero no uno mayor.\n- c) Para las reglas de la OMC, el dumping se define comparando el precio de exportación con el valor normal, no con el coste. El coste de producción (más gastos y un beneficio razonables) solo se usa para construir el valor normal cuando el precio interior no sirve. Que, desde el punto de vista económico, este dumping sea a menudo una discriminación de precios corriente, y no una práctica predatoria, es una crítica a la norma, no lo que la norma dice."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Acuerdos específicos: defensa comercial (antidumping)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323312,
+   "estado": "publicada",
+   "enunciado": "Un miembro de la OMC concede una ayuda a sus fabricantes de vehículos eléctricos con la condición de que monten baterías de producción nacional en lugar de importadas, y la justifica por sus objetivos de descarbonización. Con el Acuerdo sobre Subvenciones y Medidas Compensatorias, esta ayuda es una subvención:",
+   "opciones": {
+    "a": "Prohibida: está supeditada al uso de productos nacionales, y debe retirarse sin que haga falta probar efectos desfavorables.",
+    "b": "Recurrible: está permitida mientras otro miembro no demuestre que le causa daño, anulación o menoscabo o perjuicio grave.",
+    "c": "No recurrible: las ayudas para adaptarse a objetivos medioambientales están permitidas y no pueden impugnarse en la OMC.",
+    "d": "No disciplinada: el Acuerdo solo prohíbe las subvenciones supeditadas a los resultados de exportación, que no es el caso."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "El Acuerdo prohíbe dos tipos de subvención: las supeditadas a los resultados de exportación y las supeditadas al empleo de productos nacionales en lugar de importados (contenido local). Se consideran específicas siempre y hay que retirarlas sin demora; el reclamante no tiene que demostrar que le perjudican.",
+    "desarrollo": "El Acuerdo SMC disciplina las subvenciones específicas y las clasifica en dos categorías:\n\n- prohibidas: las supeditadas, de derecho o de hecho, a los resultados de exportación o al empleo de productos nacionales con preferencia a los importados. Son las que distorsionan el comercio de forma más directa: se presumen específicas y, si un grupo especial confirma que lo son, deben retirarse sin demora;\n- recurribles: las demás subvenciones específicas. No están prohibidas, pero otro miembro puede impugnarlas si demuestra efectos desfavorables (daño a su rama de producción, anulación o menoscabo de ventajas, o perjuicio grave).\n\nLa ayuda del enunciado está condicionada a usar baterías nacionales en vez de importadas: es una subvención de contenido local, prohibida, cualquiera que sea su finalidad.\n\nPor qué fallan las demás:\n\n- b) Sería así si la ayuda se diera a los fabricantes sin la condición de contenido local: una subvención específica corriente es recurrible. La condición es lo que la convierte en prohibida, y entonces no hay que probar efectos desfavorables.\n- c) La categoría de subvenciones no recurribles (investigación, regiones desfavorecidas y adaptación a nuevas normas medioambientales) se creó por 5 años y expiró a finales de 1999; además, protegía frente a las reclamaciones por efectos desfavorables y las medidas compensatorias (partes III y V del Acuerdo), no frente a la prohibición del contenido local (parte II).\n- d) La prohibición alcanza a las dos condiciones, exportación y contenido local. Esta última choca también con el trato nacional y con el Acuerdo sobre las Medidas en materia de Inversiones relacionadas con el Comercio."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 Acuerdos específicos: defensa comercial (subvenciones y medidas compensatorias)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323313,
+   "estado": "publicada",
+   "enunciado": "En un modelo de protección administrada a la Bagwell y Staiger (1990), dos países sostienen un acuerdo comercial con la amenaza de volver para siempre a la guerra arancelaria. El volumen de importaciones, $\\theta$, cambia cada periodo y se observa. Si se ha pactado un arancel $t^c$, lo que un país gana hoy desviándose es $\\tfrac12\\left(\\alpha\\theta-t^c\\right)^2$, y el acuerdo solo se cumple si esa ganancia no supera el valor actual de lo que se pierde con la guerra, $K$. El arancel de la guerra arancelaria es $t^N=\\alpha\\theta$. Con $\\alpha=1$ y $K=2$, ¿cuál es el arancel más bajo (no puede ser negativo) que el acuerdo puede sostener en un periodo normal ($\\theta=1$) y en una oleada de importaciones ($\\theta=5$)?",
+   "opciones": {
+    "a": "0 en el periodo normal y 5 en la oleada.",
+    "b": "1 en el periodo normal y 5 en la oleada.",
+    "c": "0 en el periodo normal y 3 en la oleada.",
+    "d": "0 en el periodo normal y 1 en la oleada."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La restricción $\\tfrac12(\\theta-t^c)^2\\leq2$ equivale a $\\theta-t^c\\leq2$. Con $\\theta=1$ se cumple con libre comercio ($t^c=0$). Con $\\theta=5$ hace falta $t^c\\geq3$: se permite una protección temporal, mayor cuanto mayor es la oleada, pero inferior al arancel de la guerra (5). Es la lógica de la cláusula de salvaguardia.",
+    "desarrollo": "La restricción de incentivos, con $\\alpha=1$ y $K=2$, es $\\tfrac12(\\theta-t^c)^2\\leq2$, es decir, $(\\theta-t^c)^2\\leq4$ y $\\theta-t^c\\leq2$. El umbral de importaciones hasta el que se sostiene el libre comercio es $\\bar\\theta=\\sqrt{2K}/\\alpha=2$.\n\n- Periodo normal, $\\theta=1\\leq2$: con $t^c=0$ la ganancia de desviarse es $\\tfrac12\\cdot1^2=0{,}5\\leq2$. Se sostiene el libre comercio.\n- Oleada, $\\theta=5>2$: con $t^c=0$ la ganancia de desviarse sería $\\tfrac12\\cdot5^2=12{,}5>2$, y el acuerdo se rompería. El arancel más bajo sostenible es $t^c=\\alpha\\theta-\\sqrt{2K}=5-2=3$. Comprobación: $\\tfrac12(5-3)^2=2=K$.\n\nEl arancel permitido en la oleada (3) es positivo, pero menor que el de la guerra arancelaria ($t^N=5$).\n\nPor qué fallan las demás:\n\n- a) y b) En la oleada ponen el arancel de Nash: eso es la ruptura del acuerdo, no una cooperación limitada. El acuerdo óptimo permite solo la protección imprescindible para que desviarse deje de compensar.\n- b) Además, en el periodo normal pone también el arancel de Nash ($\\alpha\\theta=1$), cuando el libre comercio es sostenible.\n- d) Resta $2K=4$ en lugar de $\\sqrt{2K}=2$. Con $t^c=1$, la ganancia de desviarse sería $\\tfrac12\\cdot4^2=8>2$: no se sostiene.\n\nLa lectura: un acuerdo de libre comercio permite subir aranceles en las oleadas de importaciones porque, sin esa válvula, en los años malos la desviación sería tan rentable que el acuerdo entero podría romperse. Cuanto más valoran los países el futuro ($K$ mayor), más alto es el umbral y menos se necesita la válvula."
+   },
+   "dificultad": 3,
+   "apartado": "II.1 La economía de las salvaguardias: la protección administrada (anexo)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323314,
+   "estado": "publicada",
+   "enunciado": "Algunos acuerdos de la OMC solo los suscribe una parte de sus miembros. Compare el Acuerdo sobre Contratación Pública (ACP), del anexo 4 del Acuerdo de Marrakech, con una rebaja sectorial «cero por cero» como el Acuerdo sobre Tecnología de la Información (ATI) y señale la afirmación CORRECTA:",
+   "opciones": {
+    "a": "Los dos reservan sus ventajas a los firmantes, de modo que ninguno de ellos plantea un problema de polizón.",
+    "b": "Las rebajas del ATI se extienden a todos los miembros por la NMF, y de ahí el riesgo de polizón; las ventajas del ACP se limitan a sus partes.",
+    "c": "Las ventajas del ACP se extienden a todos los miembros por la NMF; las del ATI se limitan a los participantes, para asegurar la reciprocidad.",
+    "d": "Ninguno puede reservar ventajas a sus firmantes: el todo único obliga a extenderlas a todos los miembros de la OMC."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "En un «cero por cero», los participantes inscriben las rebajas en sus listas y las aplican a todos los miembros por la NMF: los que no participan se benefician sin abrir su mercado, y por eso solo se firma si hay masa crítica. Los acuerdos plurilaterales del anexo 4, como el ACP, tienen reglas propias cuyas ventajas solo alcanzan a sus partes.",
+    "desarrollo": "Hay dos maneras de avanzar entre pocos en la OMC:\n\n- los acuerdos plurilaterales del anexo 4 (Contratación Pública, Aeronaves Civiles): tienen reglas propias, que solo obligan y solo benefician a sus partes. Un miembro que no ha firmado el ACP no puede exigir que sus empresas accedan a las compras públicas de los que sí lo han hecho;\n- las rebajas sectoriales «cero por cero» (Tecnología de la Información, productos farmacéuticos): un grupo de miembros elimina los aranceles de un sector y lo inscribe en sus listas de concesiones. Como son aranceles consolidados, se aplican a todos los miembros por la cláusula NMF, participen o no.\n\nDe ahí el problema del polizón de los «cero por cero»: quien no participa exporta sin arancel a los que sí y no abre su mercado. Solo merecen la pena si los participantes suman casi todo el comercio del sector (masa crítica), para que el «regalo» a los demás sea pequeño.\n\nPor qué fallan las demás:\n\n- a) El ATI no reserva sus ventajas a los firmantes, y además no es un acuerdo del anexo 4.\n- c) Es justo al revés.\n- d) El todo único se refiere a los acuerdos multilaterales (anexos 1 a 3), que obligan a todos los miembros. Los plurilaterales del anexo 4 son la excepción expresa: solo obligan a quienes los aceptan y no crean derechos ni obligaciones para los demás."
+   },
+   "dificultad": 3,
+   "apartado": "II.2 Acuerdos plurilaterales sobre el comercio de mercancías",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323315,
+   "estado": "publicada",
+   "enunciado": "La Conferencia Ministerial de Singapur (1996) creó grupos de trabajo sobre cuatro cuestiones nuevas, los «temas de Singapur»: inversión, competencia, transparencia en la contratación pública y facilitación del comercio. ¿Qué fue de ellos en las negociaciones de la OMC?",
+   "opciones": {
+    "a": "Los cuatro entraron en la Ronda de Doha y siguen negociándose dentro de su todo único.",
+    "b": "Los cuatro se abandonaron en 2004 y desde entonces solo se tratan en acuerdos regionales.",
+    "c": "La inversión y la competencia dieron lugar a acuerdos multilaterales; los otros dos se abandonaron.",
+    "d": "Tres se abandonaron en 2004; la facilitación del comercio siguió y acabó en un acuerdo multilateral."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Los países en desarrollo rechazaron negociar los temas de Singapur, que contribuyeron al fracaso de Cancún (2003). En 2004 se retiraron de la Ronda de Doha la inversión, la competencia y la contratación pública; solo siguió la facilitación del comercio, que dio lugar al Acuerdo sobre Facilitación del Comercio (Bali, 2013).",
+    "desarrollo": "Los temas de Singapur eran la agenda de los países desarrollados, sobre todo de la Unión Europea, para llevar a la OMC las reglas «detrás de la frontera». Muchos países en desarrollo se opusieron: veían nuevas obligaciones sin haber obtenido aún lo que pedían en agricultura.\n\n- En Cancún (2003), el desacuerdo sobre estos temas y sobre la agricultura hizo fracasar la conferencia.\n- En 2004 se sacaron de la Ronda de Doha tres de los cuatro: inversión, competencia y transparencia en la contratación pública.\n- La facilitación del comercio (simplificar los trámites aduaneros) siguió negociándose, porque beneficia a todos, y se cerró en Bali en 2013: el Acuerdo sobre Facilitación del Comercio, en vigor desde 2017, fue el primer acuerdo multilateral nuevo de la OMC.\n\nPor qué fallan las demás:\n\n- a) Tres de los cuatro salieron de la ronda en 2004.\n- b) La facilitación del comercio no se abandonó. Además, la contratación pública tiene un acuerdo plurilateral en la OMC, y la inversión ha vuelto por la vía plurilateral.\n- c) No hay acuerdos multilaterales de inversión ni de competencia en la OMC: por eso el sistema de solución de diferencias no cubre, por ejemplo, las disputas de defensa de la competencia ni las de expropiación a inversores. Sobre inversión solo existen el Acuerdo sobre las MIC, que es de la Ronda Uruguay y se limita a medidas que afectan al comercio de mercancías, y la presencia comercial del AGCS."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Evolución de las negociaciones (de Singapur a Doha y Bali)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323316,
+   "estado": "publicada",
+   "enunciado": "Desde que el Órgano de Apelación de la OMC se quedó sin miembros, un miembro que pierde ante un grupo especial puede «apelar al vacío». ¿Por qué esa apelación le permite no cumplir lo que dice el informe?",
+   "opciones": {
+    "a": "Porque, notificada la apelación, el OSD no puede adoptar el informe del grupo especial hasta que se resuelva, y sin adopción no obliga.",
+    "b": "Porque, sin Órgano de Apelación, los informes de los grupos especiales pasan a adoptarse por consenso positivo, y el miembro que pierde puede vetarlos.",
+    "c": "Porque la apelación devuelve la diferencia a la fase de consultas entre las partes, que no tiene un plazo máximo de duración.",
+    "d": "Porque el informe se adopta igualmente, pero el OSD no puede autorizar represalias sin un dictamen previo del Órgano de Apelación."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Según el Entendimiento sobre Solución de Diferencias, si una parte notifica que apela, el OSD no considera la adopción del informe del grupo especial hasta que termine la apelación. Como no hay quien la resuelva, el informe queda sin adoptar indefinidamente: no nace la obligación de cumplir ni cabe pedir autorización para represalias.",
+    "desarrollo": "El sistema de la OMC es casi automático gracias al consenso negativo: el informe de un grupo especial se adopta salvo que todos los miembros se opongan. Pero hay otra salida: la apelación. Si una parte notifica su decisión de apelar, la adopción del informe queda en suspenso hasta que concluya la apelación.\n\nDesde 2017 Estados Unidos bloquea el nombramiento de los miembros del Órgano de Apelación, que se quedó sin quórum en diciembre de 2019 y sin ningún miembro a finales de 2020. La apelación se puede presentar, pero nadie puede resolverla: el informe del grupo especial no se adopta nunca, y sin informe adoptado no hay recomendación del OSD que cumplir ni base para pedir que se autorice la suspensión de concesiones.\n\nPor qué fallan las demás:\n\n- b) La regla de adopción no ha cambiado: sigue siendo el consenso negativo. El bloqueo viene de la apelación pendiente, no de un veto.\n- c) La apelación no devuelve el asunto a consultas: lo deja pendiente ante un órgano que no puede funcionar.\n- d) El informe no llega a adoptarse. Y, cuando hay un informe adoptado y no se cumple, la represalia la autoriza el OSD (con un arbitraje sobre su nivel si se discute), sin dictamen del Órgano de Apelación.\n\nPara evitarlo, las partes pueden pactar que no apelarán o acudir al arbitraje del artículo 25 del Entendimiento, que es lo que hace el procedimiento arbitral multipartito de apelación provisional (MPIA) entre sus participantes."
+   },
+   "dificultad": 2,
+   "apartado": "III.2 Situación actual: la crisis de la solución de diferencias",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 323317,
+   "estado": "publicada",
+   "enunciado": "Los acuerdos de la OMC dan a los países en desarrollo un trato especial y diferenciado (más plazo, más flexibilidad, preferencias sin reciprocidad). ¿Cómo se determina qué miembros son «países en desarrollo»?",
+   "opciones": {
+    "a": "Con un umbral de renta per cápita que fija el Banco Mundial y que la OMC revisa periódicamente.",
+    "b": "Lo decide para cada miembro el Comité de Comercio y Desarrollo, por consenso, cuando se adhiere.",
+    "c": "Cada miembro se declara a sí mismo; solo los países menos adelantados salen de una lista, la de la ONU.",
+    "d": "Figuran en una lista cerrada anexa al Acuerdo de Marrakech, que solo puede cambiarse por enmienda."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "La OMC no define qué es un país en desarrollo: cada miembro se declara como tal (autodeclaración). La única categoría objetiva es la de los países menos adelantados, que son los de la lista de las Naciones Unidas. Por eso grandes potencias comerciales pueden reclamar el mismo trato que países muy pobres, una de las causas de la parálisis negociadora.",
+    "desarrollo": "El trato especial y diferenciado es una de las excepciones a la reciprocidad y a la no discriminación: la cláusula de habilitación (1979) permite dar preferencias arancelarias sin reciprocidad a los países en desarrollo (los sistemas de preferencias generalizadas), y casi todos los acuerdos les dan plazos más largos y obligaciones más ligeras.\n\nPero los acuerdos no dicen quién es país en desarrollo. Cada miembro lo decide por sí mismo, y los demás pueden discutirle que use una disposición concreta. Solo los países menos adelantados forman una categoría cerrada: los que figuran en la lista de las Naciones Unidas.\n\nLa consecuencia es un problema político de primer orden: economías emergentes que son grandes potencias comerciales pueden invocar el mismo trato que los países más pobres, y los países desarrollados no aceptan acuerdos nuevos en esas condiciones. Varios emergentes han anunciado que renuncian a pedirlo en las negociaciones futuras, sin dejar de considerarse países en desarrollo.\n\nPor qué fallan las demás:\n\n- a) No hay un umbral general de renta. Algún acuerdo usa criterios de renta para una disposición concreta (el de Subvenciones, para eximir de la prohibición de subvencionar la exportación a los países más pobres), pero no para definir la categoría.\n- b) Ningún órgano de la OMC clasifica a los miembros. En cada adhesión se negocian los compromisos del nuevo miembro, no su etiqueta.\n- d) No existe tal lista en los acuerdos.\n\nOtra cosa son las preferencias unilaterales: el país que las concede (por ejemplo, la UE en su Sistema de Preferencias Generalizadas) decide a quién se las da."
+   },
+   "dificultad": 1,
+   "apartado": "III.2 Situación actual: la parálisis negociadora (trato especial y diferenciado)",
+   "creada": "2026-11-18",
+   "revisada": "2026-11-18",
+   "vigencia": "revisar-2027-11"
+  }
+ ]
+}
