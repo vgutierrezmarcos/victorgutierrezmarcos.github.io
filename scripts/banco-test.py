@@ -49,7 +49,7 @@ from collections import Counter
 from datetime import date
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ORIGEN = RAIZ + '-revision/banco-test'
+ORIGEN = RAIZ + '-revision-2/banco-test'
 OFICIALES = os.path.join(RAIZ, 'oposicion', 'temario', 'primer-ejercicio', 'test', 'preguntas.json')
 WORKER = os.path.join(RAIZ, 'mcp', 'worker')
 TOKEN = os.path.expanduser('~/.config/oposicion-red/cloudflare.token')
