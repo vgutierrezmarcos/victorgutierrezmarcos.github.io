@@ -177,6 +177,10 @@ Todo el tema es nuevo. Lo que no estaba en ninguna referencia:
 - **Cifras**: una por idea. No recitar tablas.
 - **Pausas**: antes de cada modelo y tras la pregunta del enganche.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3}; I.2, \tiempo{1,5}; I.3, \tiempo{3,5}, con \tiempo{2} para el centro de gravedad); II, \tiempo{13} (II.1, \tiempo{3}; II.2, \tiempo{2}; II.3, \tiempo{3}; II.4, \tiempo{2,5}; II.5, \tiempo{2,5}); III, \tiempo{5,5} (III.1, \tiempo{2,5}; III.2, \tiempo{2}; III.3, \tiempo{1}), y conclusión, \tiempo{1}. Es un tema de datos: no se trata de recitar cifras, sino de dar pocas y bien elegidas (una por idea) y de explicarlas con 4 modelos sencillos. Se dibujan el desplazamiento del centro de gravedad (gráfico~\ref{fig:centro-gravedad}), la recta de gravedad (gráfico~\ref{fig:gravedad}), el circuito del ciclo financiero global (figura~\ref{figu:ciclo-global}) y la nube de convergencia (gráfico~\ref{fig:convergencia}); las funciones clave son la ecuación de gravedad \eqref{eq:gravedad} y la de convergencia \eqref{eq:convergencia-beta}. Los demás gráficos son de apoyo. Las cifras caducan cada año: están en el registro de datos del tema y se actualizan con el WEO de octubre.
+
 ## Material del disco D: usado
 
 - `Temas a imprimir\10. Historia económica y organismos internacionales\Tema 3.B.33 - v.2023.pdf` (esqueleto; base de la intención y de los 2 gráficos rehechos).

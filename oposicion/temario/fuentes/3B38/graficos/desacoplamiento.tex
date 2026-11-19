@@ -9,7 +9,8 @@
 %   referencia histórica: no cambia el precio marginal, q = q_0; sin pérdida.
 %   En la práctica, el desacoplamiento es imperfecto (efectos riqueza y
 %   seguro, exigencia de mantener la tierra): la oferta se desplaza algo a la
-%   derecha (línea discontinua, q'(p), desplazamiento ilustrativo de 0,6).
+%   derecha (línea discontinua «con el pago», desplazamiento ilustrativo de 0,6;
+%   sin símbolo, para no confundirla con la pendiente q'(p) de la fórmula).
 % Capas: ejes -> oferta y precio mundial -> pago acoplado -> pérdida ->
 % panel derecho -> desacoplamiento imperfecto.
 % Autor: Víctor Gutiérrez Marcos
@@ -47,7 +48,7 @@
     \capa{5}{\node[punto] at (5,3) {};}
     \capa{5}{\draw[guia] (5,3) -- (5,0) node[below,text=black] {$q_0$};}
     \capa{5}{\node[etiqueta,font=\footnotesize,align=center] at (3.6,4.55) {el pago no cambia el precio\\que decide la producción:\\sin pérdida irrecuperable};}
-    \capa{6}{\draw[desplazada,tceeverde!70] (0.6,{ps(0)}) -- (9.0,{ps(8.2)}) node[etiqueta,below right,text=tceeverde] {$q'(p)$};}
+    \capa{6}{\draw[desplazada,tceeverde!70] (0.6,{ps(0)}) -- (9.0,{ps(8.2)}) node[etiqueta,below right,text=tceeverde,font=\footnotesize] {con el pago};}
     \capa{6}{\node[punto,fill=tceegris] at (5.6,3) {};}
     \capa{6}{\node[etiqueta,font=\footnotesize,text=tceegris,align=left,anchor=north west] at (5.7,2.85) {desacoplamiento\\imperfecto};}
   \end{scope}

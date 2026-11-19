@@ -215,6 +215,10 @@ Restaurados:
 - **Pegatinas**: «la avaricia rompe el saco» (ineficiencia dinámica en Solow; en el III se tacha) y «al perro flaco todo son pulgas» (trampa de pobreza).
 - **No se dicen números de tema** en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10} (I.1, \tiempo{1,5}; I.2, \tiempo{7}; I.3, \tiempo{1,5}); II, \tiempo{5,5} (II.1, \tiempo{4}; II.2, \tiempo{1,5}); III, \tiempo{11} (a) idea, \tiempo{0,75}; b) modelo, \tiempo{7,5}; c) evidencia, \tiempo{0,75}; d) extensiones, \tiempo{1,5}; e) valoración, \tiempo{0,5}), y conclusión, \tiempo{1}. Las ecuaciones que hay que dar siempre son la ley fundamental de \autor{Solow} y la regla de oro (\ref{sec:solow-modelo}), la renta de \autor{Mankiw}, \autor{Romer} y \autor{Weil} (\ref{sec:mrw-modelo}) y, en el apartado~\ref{sec:rck}, la ecuación de \autor{Euler}, la de acumulación y la regla de oro modificada. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Control de calidad (1/11/2026): correcciones aplicadas
 
 - `.bib`: Lucas como «Lucas, Jr., Robert E.» (3 entradas); «Bolt y van Zanden» con `useprefix=true` (comprobado en el PDF de prueba); fuera las notas internas de Phelps1961, Koopmans1965, Strotz1956, Nordhaus1992 y los 3 vídeos, con su fecha real (5/4/2020, 10/12/2019 y 8/4/2015).

@@ -1,0 +1,55 @@
+% El euro en las reservas de divisas del mundo, 1999-2025: cuota del dólar,
+% el euro, el yen, la libra y el renminbi en las reservas asignadas (final de
+% cada año, a tipos de cambio corrientes).
+% Datos: ../datos/euro-reservas.csv (FMI, COFER, serie revisada; consulta
+% 19/11/2026). Valores de control: euro 17,9 (1999), 24,0 (2009), 20,3 (2025);
+% dólar 71,0 (1999), 56,5 (2025).
+% Paleta: euro en el azul de la zona del euro (dicze), dólar en verde, el
+% resto en grises y el renminbi en bermellón, finos.
+% Capas «dic» (tikz-tcee.tex): cuadrícula → ejes → líneas → rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/euro-reservas.csv}\res
+\colorlet{dicdolar}{dicfbcf}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13.5cm, height=7.5cm,
+      xmin=1998.5, xmax=2025.5,
+      xtick={1999,2003,...,2023}, x tick label style={/pgf/number format/1000 sep={}},
+      ymin=0, ymax=80, ytick={0,10,...,80},
+      ticklabel style={font=\footnotesize},
+      ylabel={\% de las reservas de divisas},
+      ylabel style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      unbounded coords=jump,
+      dicapas,
+    ]
+    % 1: el dólar
+    \capa{1}{\addplot[diclinea=dicdolar] table[x=anio, y=usd] {\res};}
+    \capa{1}{\dicrotulo[font=\footnotesize, anchor=south, text=dicdolar]{(2012,63)}{dólar}}
+    % 2: el euro
+    \capa{2}{\addplot[diclinea=dicze] table[x=anio, y=eur] {\res};}
+    \capa{2}{\dicrotulo[font=\footnotesize, anchor=south, text=dicze]{(2012,22.5)}{euro}}
+    % 3: las demás monedas
+    \capa{3}{
+      \addplot[thick, dicotro] table[x=anio, y=jpy] {\res};
+      \addplot[thick, dicotro, dashed] table[x=anio, y=gbp] {\res};
+      \addplot[thick, dicenergia] table[x=anio, y=cny] {\res};
+      \dicrotulo[font=\scriptsize, anchor=west, text=dicotro]{(2025.4,7.6)}{yen}
+      \dicrotulo[font=\scriptsize, anchor=west, text=dicotro]{(2025.4,4.6)}{libra}
+      \dicrotulo[font=\scriptsize, anchor=west, text=dicenergia]{(2025.4,1.5)}{renminbi}
+    }
+    % 4: los hitos del euro
+    \capa{4}{
+      \dicrotulo[font=\scriptsize, anchor=south, align=center]{(2009,24.6)}{2009: 24,0\,\%\\máximo}
+      \dicrotulo[font=\scriptsize, anchor=north, align=center]{(2016,18.3)}{tras la crisis\\de la deuda}
+      \dicrotulo[font=\scriptsize, anchor=west, align=left, text=dicze]{(2025.4,20.3)}{20,3}
+      \dicrotulo[font=\scriptsize, anchor=west, align=left, text=dicdolar]{(2025.4,56.5)}{56,5}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -250,6 +250,10 @@ Actualizadas el 11/11/2026 (4.ª tanda: estructura macro/micro, Kenia fuera del 
 - **Funciones clave**: solo `eq:sesgo-seleccion`, desde III.3 hasta el final (`conservar:`).
 - **Idea final**: «volvamos al refrán»: la estrella de nacimiento puede pesar cada vez menos (Botsuana, China, Corea del Sur). Nunca se dice el número de un tema en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{3} (I.1, \tiempo{1,5}; I.2, \tiempo{1,5}); II, \tiempo{10} (II.1, \tiempo{1,5}; II.2, \tiempo{5,5}; II.3, \tiempo{3}); III, \tiempo{13,5} (III.1, \tiempo{2}; III.2, \tiempo{3}; III.3, \tiempo{6}; III.4, \tiempo{2,5}), y conclusión, \tiempo{1}. El título pide sobre todo lo reciente: a las teorías desde los 90 (apartados~\ref{sec:recientes} y~\ref{sec:microap}), la aproximación experimental y las políticas hay que dedicarles al menos un cuarto de hora. Los gráficos que se cantan son el mercado de trabajo de \autor{Lewis} y la trampa de pobreza (apartado~\ref{sec:clasicas}), y la función clave, la descomposición del sesgo de selección \eqref{eq:sesgo-seleccion} (apartado~\ref{sec:experimental}). Los dichos: «una golondrina no hace verano» (el gran empujón), «café para todos» (el Consenso de Washington), «el hábito no hace al monje» (las instituciones de segundo óptimo) y «ver para creer» (los experimentos). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Control de calidad (3/11/2026): correcciones aplicadas
 
 - Anexo D, fila de los fertilizantes: «Tanto uso como con subvenciones mucho mayores: sesgo al presente» (antes «Más uso que…»).

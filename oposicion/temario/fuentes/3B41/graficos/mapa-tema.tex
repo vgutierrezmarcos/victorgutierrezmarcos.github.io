@@ -1,0 +1,97 @@
+% Mapa de la exposición del 3.B.41 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, el elemento de la
+% estructura común de las políticas de la UE que cubre (relevancia,
+% justificación, evolución, articulación y retos) y el hilo entre ellos.
+% A la izquierda, la pregunta de cada bloque; a la derecha, lo que se cuenta;
+% entre bloques, la flecha dice por qué se pasa al siguiente. Arriba, la
+% pregunta del enganche; abajo, la respuesta de la idea final.
+% Elaboración propia, con la misma forma que el mapa del 3.B.4.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\newcommand{\elem}[1]{\\[2pt]\textit{\textcolor{tceegris}{#1}}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Donde las dan, las toman». ¿Cómo defiende sus intereses una potencia comercial que vive de la apertura, cuando sus socios vuelven a las represalias?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Las bases}
+     ¿Por qué una política comercial común y quién la decide?
+     \elem{Relevancia, justificación (teoría, competencias, marco jurídico, decisiones) y evolución}};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Relevancia y teoría (I.1-I.2)}
+     mayor exportador del mundo; 1.\textsuperscript{er} socio, EE.~UU.; 1.\textsuperscript{er} proveedor, China\\
+     excepciones al librecambio: arancel óptimo, deslealtad, seguridad\\
+     unión aduanera $\Rightarrow$ política común; la «sola voz» (\autor{Meunier})};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Competencias, reglas y evolución (I.3-I.5)}
+     competencia exclusiva (art.~3.1.e TFUE)\\
+     la Comisión negocia; el Consejo y el PE deciden; dictamen 2/15\\
+     de Roma a Lisboa; de Europa Global a la seguridad económica};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.75) -- (2.0,-4.45);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.1)
+    {con la competencia y las reglas claras: ¿qué instrumentos usa la Unión cuando decide sola?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.5)
+    {\tit{tceeverde}{II. La política autónoma}
+     ¿Qué decide la Unión sola para proteger y presionar?
+     \elem{Articulación (1)}};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.5)
+    {\tit{tceeverde}{Arancel y defensa comercial (II.1-II.2)}
+     arancel común y TARIC: bajo de media, alto en la agricultura\\
+     media simple 5\,\% frente a ponderada 2,8\,\%\\
+     antidumping, antisubvenciones, salvaguardias (\autor{Prusa})};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.5)
+    {\tit{tceeverde}{Preferencias y nuevos instrumentos (II.3-II.4)}
+     SPG, SPG+ y Todo menos armas\\
+     Anticoerción, contratación pública, subvenciones extranjeras\\
+     sostenibilidad: MAFC, deforestación, trabajo forzoso};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-7.1) -- (2.0,-7.8);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.45)
+    {el arancel ya protege poco: la gran palanca de la Unión es lo que pacta con otros};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.85)
+    {\tit{tceedorado}{III. La política convencional}
+     ¿Qué pacta, con quién y cómo negocia con quien no pacta?
+     \elem{Articulación (2) y retos de futuro}};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.85)
+    {\tit{tceedorado}{OMC y red de acuerdos (III.1-III.3)}
+     defensa de la OMC y apelación provisional (MPIA)\\
+     44 acuerdos con 76 socios: 46\,\% de su comercio\\
+     Corea, CETA, Japón, Reino Unido, Mercosur; India y Australia};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.85)
+    {\tit{tceedorado}{Grandes socios y retos (III.4-III.5)}
+     EE.~UU.: negociar bajo amenaza (\autor{Nash}), techo del 15\,\%\\
+     China: reducir riesgos; Rusia: sanciones\\
+     retos: OMC, coerción, exceso de capacidad, ratificación};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-10.45) -- (2.0,-10.75);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.75)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: la amenaza solo pesa si es creíble y si hay alternativas: instrumentos para responder y muchos socios con los que comerciar.};}
+\end{tikzpicture}
+\end{document}

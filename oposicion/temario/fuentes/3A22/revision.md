@@ -281,6 +281,10 @@ Se comparan las URL del Word original con las de `3A22.tex` y `3A22.bib` (CRITER
 - Los anexos no se cantan.
 - (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9,5} (I.1, \tiempo{1}; I.2, \tiempo{6,5}; I.3, \tiempo{2}); II, \tiempo{10} (II.1, \tiempo{5,5}; II.2, \tiempo{4,5}); III, \tiempo{7} (III.1, \tiempo{3}; III.2, \tiempo{1,5}; III.3, \tiempo{1,5}; III.4, \tiempo{1}), y conclusión, \tiempo{1}. Los gráficos imprescindibles son la gran frontera de posibilidades de utilidad (gráfico~\ref{fig:gfpu}), la caja de los teoremas (gráfico~\ref{fig:caja-intercambio-teoremas}) y los 2 del \emph{second best}; las tablas, la de los supuestos del primer teorema (tabla~\ref{tab:supuestos-1tfeb}) y la de los mecanismos. Las 3 condiciones del óptimo, \eqref{eq:condiciones-pareto}, son la función clave hasta el final del bloque~\ref{sec:teoremas}. En el 1TFEB, los 4 pasos del equilibrio general competitivo (consumidores, empresas en los factores, empresas en los bienes y vaciado) se emparejan cada uno con la condición que cumple. Los criterios de compensación, las curvas de contrato especiales, el planificador con $I$ consumidores, $J$ empresas y $n$ bienes y las demostraciones completas van en los anexos y no se cantan.
+
 ## Control de calidad (21/10/2026)
 
 Correcciones aplicadas tras el control de calidad del coordinador:

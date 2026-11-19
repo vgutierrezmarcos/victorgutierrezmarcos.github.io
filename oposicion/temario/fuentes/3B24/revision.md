@@ -132,6 +132,10 @@ Se conservan con entrada en el `.bib`: Economipedia (precio sucio), AnalystNotes
 - **Desarrollos por pasos**: no arbitraje → logaritmos → prima (II.2); inmunización en 4 pasos (III.2.5). El *bootstrapping* está en caja gris desde el 15/11/2026.
 - **No se cantan**: notas al pie, cajas grises (notación, lecturas, precio con la TIR, construcción de la curva, curvas de España y EE. UU.), el anexo A (derivaciones) y el anexo B (Nelson-Siegel-Svensson y Vasicek-CIR).
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9} (I.1, \tiempo{1}; I.2, \tiempo{1}; I.3, \tiempo{2}; I.4, \tiempo{2,5}; I.5, \tiempo{2,5}: rentabilidad corriente, \tiempo{0,5}, TIR, \tiempo{1,5}, y rentabilidad realizada, \tiempo{0,5}); II, \tiempo{8} (II.1, \tiempo{1,5}; II.2, \tiempo{4}: expectativas, \tiempo{2}, prima por liquidez, \tiempo{1}, y segmentación y hábitat, \tiempo{1}; II.3, \tiempo{2,5}); III, \tiempo{9,5} (III.1, \tiempo{1,5}; III.2, \tiempo{8}: \autor{Malkiel}, \tiempo{1,5}, \autor{Macaulay}, \tiempo{2}, modificada, \tiempo{1,5}, convexidad, \tiempo{1,5}, y gestión, \tiempo{1,5}), y conclusión, \tiempo{1}. Los 4 epígrafes del título están en los 3 apartados, en su orden: los 2 primeros, en el bloque~\ref{sec:instrumentos}. Las funciones clave son el precio del bono con los tipos de contado \eqref{eq:precio-contado}, el tipo largo \eqref{eq:tipo-largo}, la duración de \autor{Macaulay} \eqref{eq:macaulay}, la duración modificada \eqref{eq:duracion-modificada} y la aproximación de la variación del precio con la duración y la convexidad \eqref{eq:precio-duracion-convexidad}. Un mismo bono a 2 años sirve de ejemplo en todo el tema. No se cantan las cajas grises, las notas al pie ni los anexos: son para las preguntas del tribunal.
+
 ## Listas en las notas al pie (15/11/2026)
 
 - Nota de inversión y sistema financiero: activos reales y financieros, en itemize.

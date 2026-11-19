@@ -188,7 +188,9 @@ Todas con la opción recomendada **ya aplicada** (Víctor fuera hasta el 9/11).
 - Las notas de los Nobel, la tabla de la conclusión y los anexos no van al cante; pueden salir como apunte. No se dice «hilo» ni números de temas en voz alta.
 - Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): La pizarra se organiza en 3 zonas fijas, como en el modelo neoclásico del mercado de trabajo \vertema{3.A.25}. A la izquierda, los supuestos que se levantan (4, atomicidad; 2, información; 6, flexibilidad salarial; 7, movilidad sin costes) y los refranes pegatina de cada bloque: «hablando se entiende la gente» para la negociación, «lo barato sale caro» para los salarios de eficiencia y «a las duras y a las maduras» para los contratos implícitos. En el centro, los gráficos, que se borran al acabar cada bloque. A la derecha, las funciones clave, que se quedan: el producto de \autor{Nash} con $\gamma=\rho_B/(\rho_S+\rho_B)$, la utilidad del sindicato, la condición de \autor{Solow}, la condición de no escaqueo y el contrato implícito.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
 
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11,5} (I.1, \tiempo{3}; I.2, \tiempo{7,5}; I.3, \tiempo{1}); II, \tiempo{10} (II.1, \tiempo{1}; II.2, \tiempo{2,5}; II.3, \tiempo{6,5}); III, \tiempo{5} (III.1, \tiempo{0,5}; III.2, \tiempo{2}; III.3, \tiempo{2}; III.4, \tiempo{0,5}), y conclusión, \tiempo{1}.
 
 ## Revisión transversal (13/11/2026)
 

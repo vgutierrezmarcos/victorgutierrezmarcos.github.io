@@ -153,6 +153,10 @@ Aplicada en todas la opción recomendada:
 - **III.4**: sin pizarra; `fig:contenido-importado` como apoyo en pantalla.
 - **Funciones clave que se conservan**: `eq:macdougall` (II.1-II.2), `eq:umbrales-hmy` (II.4) y `eq:participacion-cgv` (III).
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{5} (I.1, \tiempo{1,5}; I.2, \tiempo{1}; I.3, \tiempo{2,5}); II, \tiempo{13} (II.1, \tiempo{2}; II.2, \tiempo{4}; II.3, \tiempo{3}; II.4, \tiempo{4}); III, \tiempo{8} (III.1, \tiempo{2}; III.2, \tiempo{2,5}; III.3, \tiempo{2}; III.4, \tiempo{1,5}), y conclusión, \tiempo{1,5}. Un solo argumento recorre los 3 factores: cada uno va a donde rinde más, frenado por lo que cuesta moverse. Los 3 factores del bloque~\ref{sec:factores} siguen el mismo patrón (determinantes y efectos), fácil de memorizar, y los 2 modelos que se desarrollan son el de \autor{MacDougall} y el de \autor{Helpman}, \autor{Melitz} y \autor{Yeaple}. Las cadenas globales de valor, la especial referencia del título, tienen su propio bloque. Las cajas grises, las notas al pie y los anexos son para las preguntas del tribunal.
+
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.

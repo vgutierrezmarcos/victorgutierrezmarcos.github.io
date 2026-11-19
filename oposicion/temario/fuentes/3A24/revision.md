@@ -243,6 +243,15 @@ Se comparan las URL del Word original con las de `3A24.tex` y `3A24.bib` (CRITER
 - **Anexos**: no se cantan.
 - (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{1,5}; I.2, \tiempo{6}; I.3, \tiempo{1}); II, \tiempo{9} (II.1, \tiempo{1}; II.2, \tiempo{3}; II.3, \tiempo{2}; II.4, \tiempo{2,5}; II.5, \tiempo{0,5}); III, \tiempo{9} (III.1, \tiempo{0,75}; III.2, \tiempo{6,75}; III.3, \tiempo{1,5}), y conclusión, \tiempo{1}.
+> \begin{itemize}
+> \item \emph{El hilo del cante}: los 5 axiomas de \autor{Arrow} (U, T, P, I, D), que se presentan en el apartado~\ref{sec:teorema-arrow} y a los que en el~\ref{sec:valoracion-arrow} se añade su salida en una palabra (tabla~\ref{tab:axiomas-salidas}); en los bloques~\ref{sec:fbs} y~\ref{sec:levantamiento} se retoma cada salida al tratarla. Las funciones clave, que acompañan hasta el final: la regla de agregación \eqref{eq:regla-arrow}, la función de bienestar social \eqref{eq:fbs} y la familia isoelástica \eqref{eq:isoelastica}, con los refranes que se van diciendo.
+> \item \emph{Los ejemplos}: en el bloque~\ref{sec:eleccion-arrow}, una comunidad de 3 vecinos que vota cuánto gastar en reformar el portal ilustra cada axioma, y es la misma que vuelve en el bloque~\ref{sec:levantamiento}; en el bloque~\ref{sec:fbs}, los 2 individuos $A$ y $B$ de la gran frontera de posibilidades de utilidad.
+> \item Los gráficos imprescindibles son la columna de axiomas con sus salidas, la función de bienestar social sobre la gran frontera (gráfico~\ref{fig:fbs-gfpu-tradeoff}), las 3 formas de las curvas de indiferencia social (gráfico~\ref{fig:cis-formas}), la curva de \autor{Lorenz} (gráfico~\ref{fig:lorenz}) y las preferencias de \autor{Condorcet} (gráfico~\ref{fig:condorcet}). La demostración completa del teorema de \autor{Arrow}, las bases informativas y la elección pública van en los anexos y no se cantan.
+> \end{itemize}
+
 ## Correcciones del control de calidad (22/10/2026)
 
 - Citas: Condorcet con el autor como persona («Condorcet (1785)»); Borda, Condorcet, Bergson y Samuelson de la introducción con `\textcite`; Dupuit y Robbins (1938) con `\textcite`; las fechas del anexo de test con `\parencite`, sin la cita duplicada de Engel.

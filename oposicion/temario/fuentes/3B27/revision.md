@@ -123,6 +123,10 @@ Todas las cifras que caducan están en `datos-actualizables.yaml`.
 - Hilo: red de seguridad → riesgo moral → capital, liquidez, supervisión y resolución → no bancos («mismo riesgo, misma regulación»).
 - Tablas `tab:marco` y `tab:no-bancaria` como apoyo, nunca escritas.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11,5} (I.1, \tiempo{1,5}; I.2, \tiempo{10}: los 3 motivos y el diagrama de la intervención, \tiempo{3,5}; \autor{Stiglitz} y \autor{Weiss}, \tiempo{2}; \autor{Diamond} y \autor{Dybvig}, \tiempo{2,5}; fallo de regulación, \tiempo{2}); II, \tiempo{10} (II.1, \tiempo{2}; II.2, \tiempo{6}; II.3, \tiempo{2}); III, \tiempo{5} (III.1, \tiempo{1}; III.2, \tiempo{2}; III.3, \tiempo{1,5}; III.4, \tiempo{0,5}), y conclusión, \tiempo{1}. Los 2 modelos son resúmenes: su desarrollo completo está en otros temas \vertema{3.A.13} \vertema{3.B.26}. Los gráficos imprescindibles son el diagrama de por qué se interviene, el racionamiento del crédito, el de \autor{Diamond} y \autor{Dybvig}, los requisitos de capital y la brecha crédito-PIB; las funciones clave, el rendimiento esperado del banco, la condición del contrato óptimo de depósito, la ratio de capital y las 2 ratios de liquidez. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Coherencia con el 3.B.44 (14/11/2026)
 
 - EDIS: se añade que nunca se aprobó y que la Comisión anunció su retirada en su programa de trabajo para 2027 (COM(2026) 710, 4/11/2026), según comprobó el agente del 3.B.44. Cambio en el tema y en la ficha.

@@ -197,6 +197,28 @@ Se comparan las URL del Word original con las de `3A23.tex` y `3A23.bib` (CRITER
 - El cap and trade se cuenta con `cap-and-trade-instalaciones` en la pizarra (3 pasos) y el esquema y Montgomery como apoyo.
 - (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante:
+> \begin{itemize}
+> \item introducción, \tiempo{2,5};
+> \item I, \tiempo{3} (I.1, \tiempo{0,5}; I.2, \tiempo{1}; I.3, \tiempo{1,5});
+> \item II, \tiempo{17} (II.1, \tiempo{9}; II.2, \tiempo{8});
+> \item III, \tiempo{6,5} (III.1, \tiempo{5}; III.2, \tiempo{1,5});
+> \item conclusión, \tiempo{1}.
+> \end{itemize}
+> El peso está en el bloque~\ref{sec:externalidades-bienes-publicos}, que es el título; el bloque~\ref{sec:optimalidad-fallos} solo recuerda lo necesario de la economía del bienestar, que tiene su propio tema. Los gráficos imprescindibles son:
+> \begin{itemize}
+> \item la tabla de los fallos (tabla~\ref{tab:fallos-supuestos});
+> \item el de la externalidad, con el impuesto y el estándar (gráficos~\ref{fig:externalidad}, \ref{fig:externalidad-pigou} y~\ref{fig:externalidad-estandar});
+> \item el de \autor{Coase}, con las mismas áreas (gráfico~\ref{fig:coase-externalidad});
+> \item el de las instalaciones del \emph{cap and trade} (gráfico~\ref{fig:cap-and-trade-instalaciones});
+> \item la clasificación de los bienes (tabla~\ref{tab:rivalidad-exclusion});
+> \item el de \autor{Bowen} (gráfico~\ref{fig:bowen});
+> \item el ejemplo de \autor{Clarke}-\autor{Groves} (tabla~\ref{tab:clarke-groves}).
+> \end{itemize}
+> Las derivaciones con condiciones de primer orden están en los anexos, para las preguntas del tribunal.
+
 ## Retoques de coherencia del 21/10/2026
 
 A raíz del 3.A.22 (`canon/pendientes-coherencia.md`, opción (a)): la tabla `tab:fallos-supuestos` pasa a la de 5 filas del 3.A.22 (no saciedad local, mercados completos en salmón con «Se levanta», precio-aceptantes, precios comunes, información perfecta), con la columna «Dónde»; la lista de I.3 renumera (poder de mercado: supuesto 3; información asimétrica: supuesto 5), la frase de entrada remite al 3.A.22 y al 3.A.16, y el producto homogéneo pasa a una frase del poder de mercado (\vertema{3.A.18}). En los anexos A y B, los multiplicadores del planificador son $\lambda_U,\lambda_X,\lambda_Y,\lambda_L,\lambda_K$ como en el 3.A.22.

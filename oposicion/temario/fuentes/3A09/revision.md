@@ -260,6 +260,10 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **Bloque III, bienestar** (por analogía con el punto 12): primero el gráfico del problema; después, en dos paneles (cestas arriba, demanda abajo), la $\Delta\mathrm{EC}$, la VC y la VE de una en una, y al final el gráfico conjunto `bienestar-vc-ve`, que es el que queda en la pizarra.
 - Pizarra de I: primal en la mitad izquierda, dual en la derecha y, al final, el gráfico conjunto. (11/11/2026)
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> La exposición va de las herramientas (\ref{sec:analisis-teorico-dualidad}) a su estimación (\ref{sec:desarrollos-empiricos-estimacion}) y a sus aplicaciones (\ref{sec:aplicaciones-dualidad}). Reparto del cante: introducción, \tiempo{2}; I, \tiempo{10} (I.1, \tiempo{2}; I.2, \tiempo{5}; I.3, \tiempo{3}); II, \tiempo{5} (II.1, \tiempo{0,5}; II.2, \tiempo{3,5}; II.3, \tiempo{1}); III, \tiempo{12} (III.1, \tiempo{2,5}; III.2, \tiempo{3,5}; III.3, \tiempo{6}), y conclusión, \tiempo{1}. El bloque \ref{sec:analisis-teorico-dualidad} es el que más tiempo recibe porque de él sale todo lo demás. Los gráficos y figuras imprescindibles son el del primal, el del dual y el conjunto de los dos, el esquema de dualidad, los de la variación del excedente, la VC y la VE (uno por concepto y, después, el que los reúne) y el del índice de \autor{Konüs} frente al de \autor{Laspeyres}. Las condiciones de \autor{Kuhn}-\autor{Tucker}, la translog, la recuperación de la utilidad y la ordenación de las medidas de bienestar con las de \autor{Laspeyres} y \autor{Paasche} son de profundización (anexos).
+
 ## Comentarios de Víctor (11/11/2026, 4.ª tanda)
 
 | Comentario | Cómo se ha aplicado |

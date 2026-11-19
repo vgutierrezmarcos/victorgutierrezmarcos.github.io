@@ -172,6 +172,10 @@ Todas aplicadas con la opción recomendada (13/11/2026); para que Víctor las co
 - **I y II** (16/11/2026): la figura 2 (`gobierno-fmi`, página entera) y la figura 3 (`politicas-fmi`) son de repaso; en el vídeo, como apoyo por capas.
 - Nunca se dice el número de un tema en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{2,5}; I.2, \tiempo{1,5}; I.3, \tiempo{4,5}); II, \tiempo{8,5} (II.1, \tiempo{3}; II.2, \tiempo{1}; II.3, \tiempo{4,5}); III, \tiempo{9,5} (III.1, \tiempo{1,5}; III.2, \tiempo{1,5}; III.3, \tiempo{4,5}; III.4, \tiempo{1}; III.5, \tiempo{1}), y conclusión, \tiempo{1}. La historia se cuenta solo en lo que explica el FMI de hoy: el sistema monetario internacional es materia de otros temas. Como es un tema institucional, los modelos (la financiación catalítica y la programación financiera) se cuentan en el cuerpo solo de palabra y se desarrollan en los anexos. Las fórmulas que conviene escribir son 2: la de los votos y la de la dinámica de la deuda, la base del análisis de sostenibilidad, que es la pieza que más se desarrolla en el III. Los gráficos imprescindibles son el de los votos (el veto de Estados Unidos), el del crédito vivo del FMI, que dibuja las oleadas de crisis, el abanico de la deuda y la figura que lleva del análisis de sostenibilidad a la decisión de prestar o de reestructurar. Las figuras del gobierno y de las políticas sirven para repasar. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba (la de las aportaciones monetarias y fiscales es un solo contraste en una frase).

@@ -127,6 +127,10 @@ Todos consultados el 14/11/2026. Las fuentes completas están en `datos-actualiz
   - III: financiación de las empresas y capitalización como apoyo; la descomposición $1=\beta_K+\beta_F+\beta_C+\beta_U$ se escribe y las barras del reparto de riesgos se dibujan por canales.
 - La introducción y la conclusión, en modo guion.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7,5} (I.1, \tiempo{2}; I.2, \tiempo{3,5}, con \tiempo{2} para el círculo vicioso y \tiempo{1,5} para el trilema financiero; I.3, \tiempo{2}); II, \tiempo{10,5} (II.1, \tiempo{3}; II.2, \tiempo{4}, con \tiempo{1,5} para la recapitalización interna; II.3, \tiempo{3,5}, con \tiempo{1,5} para el seguro común); III, \tiempo{8,5} (III.1, \tiempo{3}, con \tiempo{2} para el reparto de riesgos; III.2, \tiempo{2,5}; III.3, \tiempo{3}), y conclusión, \tiempo{1}. Los gráficos y figuras imprescindibles son el círculo vicioso en forma reducida, el trilema financiero, los pilares, la jerarquía de acreedores, el fondo común frente a los nacionales y el reparto de riesgos. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Material de trabajo
 
 `_trabajo/`: `icex-3B44.txt` (OCR), `antiguo-3B46-2023.txt` y `a46.txt`, `afi-*.txt`, `cinco-presidentes.txt`, `notas-ub.md`, `notas-umc.md` (verificaciones de datos de 14/11/2026), `parte1-3.tex` (borradores), `canon-pendiente.md`.
@@ -134,3 +138,21 @@ Todos consultados el 14/11/2026. Las fuentes completas están en `datos-actualiz
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Anexo de competencias (arts. 2 a 6 TFUE): nuevo anexo «El reparto de competencias de la Unión» (anexo:competencias) antes del de test, con la figura común `graficos/competencias-ue.tex` (carga `latex/competencias-ue-base.tex`, idéntica en los 10 temas de la UE salvo el resaltado). Resaltado en este tema: el mercado interior (art. 4.2.a, base del art. 114) y la política monetaria del euro (por el art. 127.6, base del MUS). Remisión desde el «Ámbito» del código normativo único (con el art. 114 TFUE).
+- **Estructura común de las políticas de la UE**: se aplica (la unión bancaria y la de mercados de capitales son 2 políticas de la Unión, cada una con su porqué, su base, su historia, sus piezas y lo que falta). El tema ya tenía los elementos; se han hecho visibles los que estaban implícitos, sin cambiar títulos de segundo nivel ni minutos (30):
+  - *1. Relevancia*: introducción.
+  - *2. Justificación*: a) teoría económica, I.2 (círculo vicioso banca-soberano y trilema financiero) y III.1 para la UMC (reparto de riesgos); b) delimitación de competencias, I.3 (mercado interior, art. 114, con la remisión al anexo) y, **nuevo**, en la entrada del bloque III para la UMC (competencia compartida; fiscalidad, insolvencia y pensiones nacionales; unanimidad para armonizar la fiscalidad, arts. 113 y 115); c) marco jurídico, I.3 (código normativo único: CRR/CRD, BRRD, DGSD) y la base de cada pilar en II; d) toma de decisiones: **viñeta nueva «Quién aprueba las normas»** en I.3 (procedimiento legislativo ordinario para el código; el MUS por unanimidad del Consejo, art. 127.6; el MUR por el art. 114 con el acuerdo intergubernamental del fondo) y, ya estaban, la gobernanza del MUS (no objeción) y la decisión de resolución en II.2. El párrafo «Quién lo completa» pasa a «Quién lo aprueba y quién lo completa», con rótulos en sus 3 viñetas.
+  - *3. Evolución*: I.1 (de la crisis a la decisión de 2012, con la cronología) y III.2 (UMC 2015-2024).
+  - *4. Articulación*: II (los 3 pilares).
+  - *5. Retos de futuro*: II.2.2 (CMDI), II.3 (la garantía común de depósitos y el tratamiento de la deuda pública), III.3 (Unión de Ahorros e Inversiones) y la opinión de la conclusión.
+  - Viñetas nuevas «El orden del bloque» en la entrada de I y frase de orden en la de III (por qué, evolución, qué queda).
+  - Orden: la evolución (I.1, el origen) va antes que la justificación (I.2). Se mantiene: el origen hace de contexto y de motivo de las razones económicas; duda B44-11.
+  - Páginas: cuerpo 26 → 26; anexos 3. Ficha sin cambios (lo nuevo son reglas de decisión que ya resume la ficha con el art. 127.6 y el Reglamento 1024/2013). `\tcefecha` a 19/11/2026.
+
+### Dudas (19/11/2026)
+
+- **B44-11. Orden de I.1 y I.2.** La fórmula común pone la justificación antes que la evolución; en el 3.B.44, I.1 (origen: la crisis y la decisión de 2012) va antes que I.2 (por qué una unión bancaria). Opciones: (a) dejarlo así, porque el origen es el contexto que da sentido a los modelos **[aplicada]**; (b) intercambiar I.1 y I.2 (cambia el orden de 2 títulos de segundo nivel, el esquema y la ficha).
+- **B44-12. Modelos en el cuerpo de un tema institucional.** El cuerpo conserva 5 modelos (círculo vicioso, trilema, recapitalización interna, seguro común y reparto de riesgos), aunque CRITERIOS (14/11/2026) pide para los temas de la UE la idea en el cuerpo y el modelo en anexos. Opciones: (a) dejarlos hasta que Víctor lo pida **[aplicada]**; (b) llevarlos a anexos como en el 3.B.36 y el 3.B.37.

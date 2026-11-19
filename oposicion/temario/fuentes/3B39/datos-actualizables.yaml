@@ -101,7 +101,7 @@ datos:
 
   - id: schengen-controles
     texto: "29 miembros de Schengen; controles interiores notificados en noviembre de 2026 por Alemania, Austria, Dinamarca, Francia, Italia, Polonia, Suecia y Noruega"
-    donde: [3B39.tex]
+    donde: [3B39.tex, repaso/3B39-repaso.tex, datos/mapa-schengen.csv, graficos/mapa-schengen.tex]
     valor: 29
     unidad: Estados
     periodo: "2026-11"
@@ -110,7 +110,7 @@ datos:
     serie: "Temporary reintroduction of border control"
     url: https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en
     periodicidad: continua (notificaciones de 6 meses)
-    proxima: "en cada revisión; decisión sobre Chipre prevista en 2027"
+    proxima: "en cada revisión; decisión sobre Chipre prevista en 2027 (al cambiar, editar datos/mapa-schengen.csv y regenerar con datos/mapa-schengen.py)"
     familia: ue-mercado-unico
 
   - id: dma-dsa
@@ -140,3 +140,45 @@ datos:
     periodicidad: irregular
     proxima: "2027"
     familia: ue-competencia
+
+  - id: brecha-iva
+    texto: "en 2023 los Estados dejaron de recaudar 128.000 millones de euros, el 9,5 % de lo que debían ingresar"
+    donde: [3B39.tex, repaso/3B39-repaso.tex]
+    valor: 9.5
+    unidad: "% de la recaudación teórica (VTTL)"
+    periodo: "2023"
+    fuente: CE2025BrechaIVA
+    organismo: Comisión Europea (DG TAXUD)
+    serie: "VAT gap in Europe, informe anual"
+    url: https://taxation-customs.ec.europa.eu/taxation/vat/fight-against-vat-fraud/vat-gap_en
+    periodicidad: anual (diciembre)
+    proxima: "2026-12 (dato de 2024)"
+    familia: ue-fiscalidad
+
+  - id: tipos-iva
+    texto: "tipos generales del IVA (2026): del 17 % de Luxemburgo al 27 % de Hungría; España, el 21 %"
+    donde: [3B39.tex]
+    valor: 27
+    unidad: "%"
+    periodo: "2026"
+    fuente: CE2026TiposIVA
+    organismo: Comisión Europea (TEDB)
+    serie: "Taxes in Europe Database, tipos del IVA"
+    url: https://ec.europa.eu/taxation_customs/tedb/
+    periodicidad: continua
+    proxima: "enero de cada año"
+    familia: ue-fiscalidad
+
+  - id: tipos-sociedades
+    texto: "tipos del impuesto sobre sociedades del 9 % de Hungría a más del 30 % de Alemania (España, el 25 %)"
+    donde: [3B39.tex, repaso/3B39-repaso.tex]
+    valor: 30.1
+    unidad: "% (tipo legal combinado)"
+    periodo: "2026"
+    fuente: TaxFoundation2026Sociedades
+    organismo: Tax Foundation (contrastar con la OCDE, Corporate Tax Statistics)
+    serie: "Corporate Income Tax Rates in Europe"
+    url: https://taxfoundation.org/data/all/eu/corporate-income-tax-rates-europe/
+    periodicidad: anual
+    proxima: "2027-01"
+    familia: ue-fiscalidad

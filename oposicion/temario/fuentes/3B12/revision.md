@@ -187,6 +187,10 @@ Opción aplicada entre corchetes.
   - III.4 (5′): a la pizarra la función clave `eq:deuda-externa` y debajo `eq:saldo-estabilizador`; el gráfico `dinamica-deuda-externa` en sus 2 paneles (caso 3: capas 1-3; caso 4: capas 4-5); la lista de determinantes con sus signos. Las extensiones, como lista de títulos con una frase cada una (valoración, indicadores, DSA, fuentes de financiación, pecado original, *risk sharing*, superávits). España: se dicen las cifras de 2007 (estabilizador −2 %, déficit del 6 %) y de 2025; `cc-piin-espana` y las tablas `tab:indicadores-externos`, `tab:fuentes-financiacion` y `tab:sostenibilidad-espana`, como apoyo.
 - No se dicen números de temas en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10} (I.1, \tiempo{4}; I.2, \tiempo{1,5}; I.3, \tiempo{2,5}; I.4, \tiempo{2}); II, \tiempo{5} (II.1, \tiempo{2}; II.2, \tiempo{2}; II.3, \tiempo{1}); III, \tiempo{11,5} (III.1, \tiempo{1}; III.2, \tiempo{5,5}; III.3, \tiempo{5}), y conclusión, \tiempo{1}. Los modelos antiguos (bloques~\ref{sec:flujos} y~\ref{sec:stocks}) se cuentan deprisa y el peso va al enfoque intertemporal y a la sostenibilidad. Conviene decir al empezar la convención del tipo de cambio (directo: si sube, se deprecia la moneda): así el tribunal sigue sin dudas los signos de las elasticidades y de los desplazamientos. España vuelve como ejemplo en la absorción, en el modelo intertemporal y en la sostenibilidad, y el refrán del enganche cierra la idea final. Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+
 ## Respuestas de Víctor (12/11/2026)
 
 - Se mantiene el I.4 nuevo (IS-LM-BP, asignación de Mundell y ajuste con tipo flexible).

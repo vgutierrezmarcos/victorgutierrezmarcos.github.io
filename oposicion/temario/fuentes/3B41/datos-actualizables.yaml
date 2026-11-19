@@ -100,12 +100,12 @@ datos:
     familia: comercio-acuerdos
 
   - id: estado-acuerdos
-    texto: "situación de los acuerdos: Mercosur (firma 17/1/2026, interino provisional 1/5/2026, dictamen 1/26 pendiente), México (firma 22/5/2026), India (cerrado 27/1/2026), Indonesia (cerrado 9/2025), Australia (cerrado 24/3/2026), Suiza (firmado 2/3/2026), CETA (17/27 ratificaciones)"
+    texto: "situación de los acuerdos: Mercosur (firma 17/1/2026, interino provisional 1/5/2026, dictamen 1/26 pendiente), México (firma 22/5/2026), India (cerrado 27/1/2026), Indonesia (cerrado 9/2025), Australia (cerrado 24/3/2026), Suiza (firmado 2/3/2026), CETA (18/27 ratificaciones; faltan Bélgica, Bulgaria, Chipre, Francia, Grecia, Hungría, Irlanda, Italia y Polonia, a 19/11/2026)"
     donde: [3B41.tex, repaso/3B41-repaso.tex, datos/comercio-socios.csv]
     valor: null
     unidad: fechas
     periodo: "2026-11-14"
-    fuente: CE2026Negociaciones; CE2026MercosurProvisional; PE2026Mercosur; Euronews2026CETA
+    fuente: CE2026Negociaciones; CE2026MercosurProvisional; PE2026Mercosur; CE2026CETA
     organismo: Comisión Europea
     serie: "Negotiations and agreements"
     url: https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/negotiations-and-agreements_en
@@ -182,3 +182,45 @@ datos:
     periodicidad: continua
     proxima: "2027-01"
     familia: comercio-sanciones
+
+  - id: aranceles-evolucion
+    texto: "gráfico aranceles-evolucion; en el texto: desde 1988 la media simple del arancel NMF ha bajado de algo más del 6 % a algo más del 5 % y la ponderada del 4,7 % al 2,7 %; aplicado con preferencias, 1,3 % ponderado en 2022"
+    donde: [3B41.tex, graficos/aranceles-evolucion.tex, datos/aranceles-evolucion.csv, repaso/3B41-repaso.tex]
+    valor: null
+    unidad: "%"
+    periodo: "1988-2022"
+    fuente: BM2026Aranceles
+    organismo: Banco Mundial (WDI, con datos de WITS-TRAINS)
+    serie: "TM.TAX.MRCH.SM.FN.ZS, TM.TAX.MRCH.WM.FN.ZS, TM.TAX.MRCH.SM.AR.ZS, TM.TAX.MRCH.WM.AR.ZS, país EUU"
+    url: https://api.worldbank.org/v2/country/EUU/indicator/TM.TAX.MRCH.SM.FN.ZS?format=json&per_page=100
+    periodicidad: anual (con 2-4 años de retraso)
+    proxima: "2027-07"
+    familia: aranceles
+
+  - id: taric-bicicleta
+    texto: "bicicleta 8712 00 30: derecho de terceros países 14 %; China, antidumping 48,5 % (Reg. de Ejecución 2025/2146, desde 24/10/2025); Indonesia, SPG 10,5 % y antidumping extendido 48,5 %; Vietnam, 0 % (ALC); envíos de escaso valor, 3 € + tasa de gestión de 2 €; del 0 % al 62,5 % según el origen"
+    donde: [3B41.tex, repaso/3B41-repaso.tex]
+    valor: [14, 48.5, 10.5, 0]
+    unidad: "%"
+    periodo: "consulta 19/11/2026"
+    fuente: CE2026TARICBicicletas
+    organismo: Comisión Europea (TARIC)
+    serie: "consulta de medidas, códigos 8712003010, 8712003020 y 8712003090, orígenes CN, ID y VN"
+    url: https://ec.europa.eu/taxation_customs/dds2/taric/measures.jsp?Lang=es&SimDate=20261119&Taric=8712003090&Area=CN&LangDescr=es
+    periodicidad: cambia con cada medida (la NC, cada 1 de enero; el antidumping, al expirar en 2030)
+    proxima: "2027-01"
+    familia: aranceles
+
+  - id: mapa-acuerdos
+    texto: "gráfico mapa-acuerdos (tipo de acuerdo de cada país) y apartado de la red en vigor: 45 acuerdos y 80 socios con el Mercosur; Corea (digital 2026), Japón, Singapur (digital en vigor 1/2/2026), Vietnam, Nueva Zelanda (140 M€ de derechos al año), Chile (interino 1/2/2025), CETA, Mercosur (57.000 M€ de exportaciones de la UE en 2024)"
+    donde: [3B41.tex, datos/mapa-acuerdos.csv, graficos/mapa-acuerdos.tex, repaso/3B41-repaso.tex]
+    valor: null
+    unidad: null
+    periodo: "19/11/2026"
+    fuente: CE2026Negociaciones; CE2026Corea; CE2026Japon; CE2026Singapur; CE2026Vietnam; CE2026NuevaZelanda; CE2026CETA; CE2026MercosurAcuerdo
+    organismo: Comisión Europea (DG Comercio)
+    serie: "Negotiations and agreements (tablas en vigor, en ratificación y en negociación); regenerar el mapa con datos/mapa-acuerdos.py"
+    url: https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/negotiations-and-agreements_en
+    periodicidad: cuando cambia un acuerdo
+    proxima: "2027-01"
+    familia: acuerdos

@@ -191,6 +191,24 @@ Se comparan las URL del Word original con las de `3A19.tex` y `3A19.bib` (CRITER
 - **Pronunciación** (si hace falta): Cournot, Bertrand, Stackelberg, Edgeworth, Scheinkman, Rotemberg, Saloner, d'Aspremont, Shapley.
 - (11/11/2026) El plan de pizarra (zonas, qué se queda hasta el final, qué se borra) salió del texto del tema; para el vídeo sirve el de la ficha de repaso («Pizarra») y las funciones clave que el tema nombra en las notas al opositor.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> La exposición va de lo que pasa cuando las empresas se encuentran una sola vez y no pueden comprometerse (\ref{sec:analisis-estatico}: \autor{Cournot}, \autor{Stackelberg}, \autor{Bertrand} y el liderazgo en precios, cada uno en una casilla de la tabla~\ref{tab:modelos-oligopolio}) a cómo la repetición permite cooperar sin contratos (\ref{sec:analisis-dinamico}) y, por último, a la cooperación explícita: el cártel, el reparto de lo que gana y lo que la limita (\ref{sec:soluciones-cooperativas}). Reparto del cante:
+> \begin{itemize}
+> \item introducción, \tiempo{2,5};
+> \item I, \tiempo{11} (I.1, \tiempo{1}; I.2, \tiempo{3,5}; I.3, \tiempo{1,5}; I.4, \tiempo{3,5}; I.5, \tiempo{1,5});
+> \item II, \tiempo{7} (II.1, \tiempo{1}; II.2, \tiempo{6});
+> \item III, \tiempo{8,5} (III.1, \tiempo{3}; III.2, \tiempo{3}; III.3, \tiempo{2,5});
+> \item conclusión, \tiempo{1}.
+> \end{itemize}
+> Los gráficos imprescindibles son:
+> \begin{itemize}
+> \item las funciones de reacción de \autor{Cournot} con los isobeneficios, que se completa con \autor{Stackelberg} y, en el bloque~\ref{sec:soluciones-cooperativas}, con el cártel;
+> \item la senda de beneficios del gatillo;
+> \item la columna de cantidades de la tabla comparativa.
+> \end{itemize}
+> El panel a del reparto del cártel (gráfico~\ref{fig:reparto-cartel}) se dibuja si hay tiempo. Las 2 funciones clave, el índice de \autor{Lerner} con la cuota \eqref{eq:lerner-cournot} y la condición de la colusión \eqref{eq:colusion}, acompañan todo el cante.
+
 ## Cambios posteriores
 
 - 20/10/2026: nomenclatura estático/dinámico de los manuales, coherente con el 3.A.14; recuadro "Otra forma de verlo".

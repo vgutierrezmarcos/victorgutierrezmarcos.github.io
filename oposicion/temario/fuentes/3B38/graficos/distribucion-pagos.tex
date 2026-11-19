@@ -1,41 +1,90 @@
 % Distribución de los pagos directos de la PAC por tramos de importe recibido
-% por perceptor (euros), ejercicio financiero 2023: % de perceptores y % del
-% importe en la UE-27 y en España. Datos: ../datos/distribucion-pagos-grupos.csv,
-% agregación de ../datos/distribucion-pagos.csv (DG AGRI, «Indicative figures
-% on the distribution of aid»). Perceptores en colores claros; importe, oscuros.
-% Capas: barras de perceptores -> barras de importe -> ejes -> rótulos.
+% por perceptor (euros), ejercicio financiero 2023, UE-27 y España.
+% Panel a): barras divergentes por tramo, a la izquierda el % de perceptores
+% y a la derecha el % del importe (cada medida con su propio eje, para leer
+% cada tramo por separado). Datos: ../datos/distribucion-pagos-grupos.csv.
+% Panel b): curva de Lorenz de los pagos (% acumulado de perceptores, de menor
+% a mayor pago, frente al % acumulado del importe). Datos:
+% ../datos/distribucion-pagos-lorenz.csv. Las 2 tablas salen de
+% ../datos/distribucion-pagos.csv (DG AGRI, «Indicative figures on the
+% distribution of aid», tabla 4.1).
+% UE-27 en morado (como el PSE de la UE) y España en dorado (como en las
+% capturas), en los 2 paneles.
+% Capas: perceptores -> importe -> diagonal y curvas de Lorenz -> rótulos.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \usepackage{pgfplotstable}
 \begin{document}
-\colorlet{dmclaro}{tceemorado!35}
-\colorlet{ddclaro}{tceedorado!40}
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/distribucion-pagos-grupos.csv}\dist
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/distribucion-pagos-lorenz.csv}\lor
+\pgfplotsset{
+  mariposa/.style={
+    width=5.4cm, height=7.2cm,
+    xbar, bar width=6.5pt, y dir=reverse,
+    ymin=0.45, ymax=6.55, ytick={1,...,6}, yticklabels={}, major y tick style={draw=none},
+    axis x line*=bottom, axis y line=none, tick align=outside,
+    xmajorgrids, grid style={tceegris!25}, clip=false,
+    xticklabel style={font=\footnotesize},
+    every node near coord/.append style={font=\scriptsize,
+      /pgf/number format/use comma, /pgf/number format/fixed,
+      /pgf/number format/precision=1, /pgf/number format/fixed zerofill},
+    dicapas},
+  barra/.style={on layer=dicbarras, dicbarra=#1, nodes near coords},
+}
 \begin{tikzpicture}[tcee]
-  \begin{axis}[
-      width=15cm, height=7cm,
-      ybar, bar width=0.17, xmin=0.4, xmax=6.6, ymin=0, ymax=52,
-      xtick={1,...,6},
-      xticklabels={{menos de 1.250},{1.250-5.000},{5.000-20.000},{20.000-50.000},{50.000-100.000},{más de 100.000}},
-      xticklabel style={font=\footnotesize},
-      xlabel={Pago recibido por perceptor (euros al año)}, xlabel style={font=\footnotesize},
-      yticklabel style={font=\footnotesize},
-      ylabel={\%},
-      axis x line*=bottom, axis y line*=left, tick align=outside,
-      ymajorgrids, grid style={tceegris!25},
-      legend style={at={(0.99,0.99)}, anchor=north east, font=\footnotesize, draw=none},
-      legend cell align=left, clip=false, dicapas,
-      nodes near coords, every node near coord/.append style={font=\tiny, /pgf/number format/use comma, /pgf/number format/fixed, /pgf/number format/precision=1, /pgf/number format/fixed zerofill},
+  % ------------- a) cada tramo: % de perceptores (izq.) y % del importe (der.)
+  \begin{axis}[mariposa, name=izq, x dir=reverse, xmin=0, xmax=50,
+      xtick={0,10,...,50},
+      title={\% de perceptores}, title style={font=\footnotesize\bfseries,text=tceegris!60!black},
+      every node near coord/.append style={anchor=east},
+      legend style={at={(0.02,0.03)}, anchor=south west, font=\footnotesize, draw=none},
+      legend cell align=left,
     ]
-    \capa{1}{\addplot[on layer=dicbarras, dicbarra=dmclaro, bar shift=-0.27] table[x=n,y=ue_benef] {\dist};
-      \addlegendentry{UE-27: \% de perceptores}}
-    \capa{2}{\addplot[on layer=dicbarras, dicbarra=tceemorado, bar shift=-0.09] table[x=n,y=ue_importe] {\dist};
-      \addlegendentry{UE-27: \% del importe}}
-    \capa{3}{\addplot[on layer=dicbarras, dicbarra=ddclaro, bar shift=0.09] table[x=n,y=es_benef] {\dist};
-      \addlegendentry{España: \% de perceptores}}
-    \capa{3}{\addplot[on layer=dicbarras, dicbarra=tceedorado, bar shift=0.27] table[x=n,y=es_importe] {\dist};
-      \addlegendentry{España: \% del importe}}
+    \capa{1}{\addplot[barra=tceemorado, bar shift=3.6pt] table[y=n,x=ue_benef] {\dist};
+      \addlegendentry{UE-27}}
+    \capa{1}{\addplot[barra=tceedorado, bar shift=-3.6pt] table[y=n,x=es_benef] {\dist};
+      \addlegendentry{España}}
+    \dicraya{(0,0.45) (0,6.55)}
   \end{axis}
+  \begin{axis}[mariposa, name=der, at={($(izq.east)+(2.75cm,0)$)}, anchor=west,
+      xmin=0, xmax=35, xtick={0,10,...,30},
+      title={\% del importe}, title style={font=\footnotesize\bfseries,text=tceegris!60!black},
+      every node near coord/.append style={anchor=west},
+    ]
+    \capa{2}{\addplot[barra=tceemorado, bar shift=3.6pt] table[y=n,x=ue_importe] {\dist};}
+    \capa{2}{\addplot[barra=tceedorado, bar shift=-3.6pt] table[y=n,x=es_importe] {\dist};}
+    \dicraya{(0,0.45) (0,6.55)}
+  \end{axis}
+  % rótulos de los tramos, entre los 2 ejes (euros al año por perceptor)
+  \path (izq.south east) -- (der.south west) coordinate[pos=0.5] (medio);
+  \foreach \t [count=\i] in {menos de 1.250,1.250-5.000,5.000-20.000,20.000-50.000,50.000-100.000,más de 100.000}{
+    \path (izq.north east) -- (izq.south east) coordinate[pos={(\i-0.45)/6.1}] (y\i);
+    \node[font=\footnotesize,anchor=center] at (medio |- y\i) {\t};
+  }
+  \node[font=\footnotesize\itshape,text=tceegris!60!black,anchor=south] at (medio |- izq.north) {euros al año};
+  \node[font=\small\bfseries,anchor=south] at ($(medio |- izq.north)+(0,0.75cm)$) {a) Cada tramo de pago};
+
+  % ------------- b) concentración: curva de Lorenz
+  \begin{axis}[name=lor, at={($(der.east)+(1.5cm,0)$)}, anchor=west,
+      width=5.6cm, height=5.6cm, xmin=0, xmax=100, ymin=0, ymax=100,
+      xtick={0,25,...,100}, ytick={0,25,...,100},
+      xticklabel style={font=\footnotesize}, yticklabel style={font=\footnotesize},
+      xlabel={\% acumulado de perceptores}, ylabel={\% acumulado del importe},
+      xlabel style={font=\footnotesize}, ylabel style={font=\footnotesize},
+      axis x line*=bottom, axis y line*=left, tick align=outside,
+      grid=major, grid style={tceegris!25}, clip=false, dicapas,
+    ]
+    \capa{3}{\dicraya[dicumbral]{(0,0) (100,100)}}
+    \capa{3}{\dicrotulo[font=\scriptsize,text=tceegris,rotate=45,anchor=south]{(55,55)}{igualdad}}
+    \capa{3}{\addplot[diclinea=tceedorado, mark=none] table[x=es_perceptores_acum,y=es_importe_acum] {\lor};}
+    \capa{3}{\addplot[diclinea=tceemorado, mark=none] table[x=ue_perceptores_acum,y=ue_importe_acum] {\lor};}
+    \capa{4}{\addplot[dicpuntos=tceemorado] coordinates {(74.91,15.38)};}
+    \capa{4}{\dicraya[thin,tceemorado]{(74.91,15.38) (67,19)}}
+    \capa{4}{\dicrotulo[font=\scriptsize,anchor=south east,align=right,text=tceemorado]{(68,17)}{el 25\,\% que más\\cobra: 84,6\,\%}}
+    \capa{4}{\dicrotulo[font=\scriptsize,anchor=west,align=left,text=tceemorado]{(3,93)}{UE-27: IG $\approx$ 0,75}}
+    \capa{4}{\dicrotulo[font=\scriptsize,anchor=west,align=left,text=tceedorado!80!black]{(3,83)}{España: IG $\approx$ 0,70}}
+  \end{axis}
+  \node[font=\small\bfseries,anchor=south] at ($(lor.north)+(0,0.25cm)$) {b) Concentración};
 \end{tikzpicture}
 \end{document}

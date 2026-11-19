@@ -1,0 +1,53 @@
+% Evolución del arancel medio de la UE, 1988-2022 (%), todos los productos.
+% Color = cómo se promedia: media simple en morado, media ponderada por las
+% importaciones en dorado (los mismos colores en todo el gráfico).
+% Trazo = qué arancel: NMF (continuo) o aplicado efectivo, con las
+% preferencias (discontinuo). Rótulos al final de cada serie, sin leyenda.
+% Fuente en la cabecera de ../datos/aranceles-evolucion.csv (Banco Mundial,
+% WDI, con datos de WITS-TRAINS).
+% Capas: ejes -> NMF simple -> NMF ponderada -> aplicadas -> rótulos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+\colorlet{arsimple}{tceemorado}
+\colorlet{arponderada}{tceedorado!85!black}
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/aranceles-evolucion.csv}\arevol
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=13cm, height=7cm,
+      xmin=1987.5, xmax=2022.5, ymin=0, ymax=10,
+      xtick={1988,1992,...,2020}, ytick={0,2,...,10},
+      x tick label style={/pgf/number format/.cd, set thousands separator={}},
+      ticklabel style={font=\footnotesize},
+      ylabel={Arancel medio (\%)}, label style={font=\footnotesize},
+      axis lines*=left, tick align=outside, clip=false,
+      ymajorgrids, grid style={tceegris!25},
+      unbounded coords=jump, dicapas,
+    ]
+    % 1: ejes (los dibuja el entorno axis)
+    % 2: arancel NMF, media simple
+    \capa{2}{
+      \addplot[diclinea=arsimple, mark=none] table[x=anio, y=nmf_simple] {\arevol};
+    }
+    % 3: arancel NMF, media ponderada
+    \capa{3}{
+      \addplot[diclinea=arponderada, mark=none] table[x=anio, y=nmf_ponderada] {\arevol};
+    }
+    % 4: aranceles aplicados con las preferencias
+    \capa{4}{
+      \addplot[thick, arsimple, dashed, mark=none] table[x=anio, y=aplicado_simple] {\arevol};
+      \addplot[thick, arponderada, dashed, mark=none] table[x=anio, y=aplicado_ponderada] {\arevol};
+    }
+    % 5: rótulos al final de cada serie y del pico de 1995
+    \capa{5}{
+      \dicrotulo[font=\footnotesize, anchor=west, text=arsimple, align=left]{(2022.6,5.24)}{NMF, media simple: 5,2}
+      \dicrotulo[font=\footnotesize, anchor=west, text=arponderada, align=left]{(2022.6,2.95)}{NMF, media ponderada: 2,7}
+      \dicrotulo[font=\footnotesize, anchor=west, text=arsimple, align=left]{(2022.6,1.95)}{aplicado, simple: 2,0}
+      \dicrotulo[font=\footnotesize, anchor=west, text=arponderada, align=left]{(2022.6,1.05)}{aplicado, ponderado: 1,3}
+      \dicrotulo[font=\footnotesize, anchor=west, align=left]{(1995.6,9.0)}{1995: arancelización agrícola\\de la Ronda Uruguay}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -260,6 +260,10 @@ Todas aplicadas ya con la opción indicada; basta confirmarlas o cambiarlas.
 - **Al empezar**, la convención del tipo de cambio (directo: si sube, se deprecia).
 - **No se canta**: los anexos A-C, la caja gris de la derivada de Krugman, las notas al pie (curiosidades para las preguntas del tribunal) y la tabla completa de los datos recientes de Turquía y Argentina (basta nombrarlos).
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{5}; I.2, \tiempo{6}); II, \tiempo{9} (II.1, \tiempo{1,5}; II.2, \tiempo{5,5}; II.3, \tiempo{1}; II.4, \tiempo{1}); III, \tiempo{6,5} (III.1, \tiempo{0,5}; III.2 a III.5, \tiempo{1,5} cada uno), y conclusión, \tiempo{1}. Cada generación nace de una crisis que la anterior no explicaba: Bretton Woods y América Latina, el Sistema Monetario Europeo, Asia y, después, 2008 y el euro. Los 3 gráficos imprescindibles son el del momento del ataque (\autor{Flood} y \autor{Garber}), el de las 3 regiones (\autor{Obstfeld}) y el de los 3 equilibrios de la inversión (\autor{Krugman}, 1999), cada uno con su función clave: el momento del ataque, la cláusula de escape y la condición de colapso. Conviene decir al empezar la convención del tipo de cambio (directo: si sube, se deprecia la moneda). El refrán del enganche vuelve en la idea final; por el camino, «tanto va el cántaro a la fuente que al final se rompe» resume la primera generación, y la frase de los banqueros, «no es la velocidad lo que mata, es la parada súbita», las paradas súbitas. Las derivaciones están en el anexo~\ref{anexo:derivaciones}.
+
 ## Listas en las notas al pie (15/11/2026)
 
 - Nota de la iliquidez internacional: «Hay que distinguir 2 descalces:» de plazos y de monedas, en itemize.

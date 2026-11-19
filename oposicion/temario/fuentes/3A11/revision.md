@@ -281,6 +281,10 @@ Resueltas el 13/10/2026 y quitadas de esta lista: el orden de I.1 e I.2 (se vuel
 - **Sin pizarra**: introducción y conclusión.
 - **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> La exposición va de la tecnología en abstracto (\ref{sec:tecnologia-definicion-propiedades}) a cómo responde la producción en cada plazo (\ref{sec:analisis-funcion-produccion}) y a la producción de varios bienes (\ref{sec:empresa-multiproducto-curva}). Reparto orientativo del cante (introducción, \tiempo{2,5}; conclusión, \tiempo{1,5}): I, \tiempo{10} (I.1, \tiempo{3}; I.2, \tiempo{2,5}; I.3, \tiempo{4,5}); II, \tiempo{11,5} (II.1, \tiempo{4}; II.2, \tiempo{5}; II.3, \tiempo{2,5}); III, \tiempo{4,5} (III.1, \tiempo{2,5}; III.2, \tiempo{2}). La superficie de producción con los 3 plazos (gráfico~\ref{fig:plazos-3d}) es el gráfico que une los bloques: sus curvas de nivel son las isocuantas y sus cortes, los plazos. Las derivaciones, el problema del productor, otras formas funcionales, la elasticidad de sustitución con más de 2 factores y la controversia del capital están en los anexos, para las preguntas del tribunal.
+
 ## Enlaces del original (9/11/2026)
 
 Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).

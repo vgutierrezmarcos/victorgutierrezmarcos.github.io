@@ -218,6 +218,10 @@ Se comparan las URL del Word original con las de `3A29.tex` y `3A29.bib` (CRITER
 - **Conclusión**: empieza por «En conclusión,»; sin pizarra; sin número de temas en voz alta; la última frase es la respuesta a Ramsey.
 - Introducción y conclusión, sin pizarra. No decir números de temas en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{6}; I.2, \tiempo{2,5}); II, \tiempo{18} (II.1, \tiempo{2}; II.2, \tiempo{6}; II.3, \tiempo{10}), y conclusión, \tiempo{1}. Las funciones que conviene tener presentes durante todo el cante son el problema del consumidor, la ecuación de \autor{Euler} (\ref{sec:metodos}), la de \autor{Bellman} y la ley de movimiento de \autor{Diamond} (\ref{sec:diamond}). Los refranes acompañan a cada idea: el del enganche, «de tal palo, tal astilla» (la dinastía), «cuando seas padre, comerás huevos» (generaciones solapadas) y «la avaricia rompe el saco» (ineficiencia dinámica). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Estado de las propuestas
 
 ### Contenido (C1-C29)

@@ -113,6 +113,10 @@ Consulta: 14/11/2026. Todos en `datos-actualizables.yaml`.
 - II: la cronología por décadas en el guion; el gráfico de compromisos y el de votos como apoyo; la tabla de las 5 entidades se escribe en la pizarra como 5 casillas (ventanilla de cada una).
 - III: la tabla de los regionales como apoyo; en la pizarra, solo «792.000 M$» y la triple agenda en 3 líneas.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{5}, con los 3 modelos; I.2 a I.5, \tiempo{3,5}); II, \tiempo{9,5} (II.1, \tiempo{2,5}; II.2, \tiempo{2}; II.3, \tiempo{5}); III, \tiempo{8} (III.1, \tiempo{1}; III.2 a III.6, \tiempo{3,5}; III.7 y III.8, \tiempo{1,5}; III.9, \tiempo{2}), y conclusión, \tiempo{1,5}. La deuda externa, la ayuda al desarrollo y el FMI tienen su propio tema: aquí basta con lo que explica a los bancos. Los gráficos imprescindibles son la palanca del capital y el de los bienes públicos globales; las funciones clave, la palanca del capital, la condición de \autor{Samuelson} para los bienes globales y la condición del efecto catalizador. El refrán del enganche vuelve en la idea final. Las cifras que conviene llevar al día son los compromisos del Grupo del Banco Mundial, la AIF21 y los votos de España.
+
 ## Ficha de repaso (14/11/2026)
 
 - `repaso/3B30-repaso.tex`: esquema del cante, introducción, los 3 modelos con sus funciones clave y 2 gráficos, GBM con el de compromisos y el de votos, tabla de regionales, reforma y España con el gráfico de España, conclusión, preguntas y trampas.

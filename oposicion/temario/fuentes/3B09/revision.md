@@ -215,6 +215,10 @@ Título oficial: «Comercio internacional y crecimiento económico. Especial ref
 
 Autor: Víctor Gutiérrez Marcos
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{1}; I.2, \tiempo{9}: país pequeño, \tiempo{3}, país grande, \tiempo{3,5}, acumulación de factores, \tiempo{1,25}, y progreso técnico, \tiempo{1,25}; I.3, \tiempo{1}); II, \tiempo{15,5} (apertura, \tiempo{0,75}; II.1, \tiempo{8}; II.2, \tiempo{2,75}; II.3, \tiempo{1,5}; II.4, \tiempo{2,5}), y conclusión, \tiempo{1}. La especial referencia del título es el bloque~\ref{sec:comercio-crecimiento}: lleva más de la mitad del cuerpo. En el bloque~\ref{sec:crecimiento-comercio}, la \eqref{eq:importaciones} y la tabla de los 5 sesgos (tabla~\ref{tab:sesgos}) guían todo el bloque, con sus gráficos (presupuesto con las 5 regiones, curvas de oferta neta, crecimiento empobrecedor y \autor{Rybczynski}); en el apartado~\ref{sec:teoria-crecimiento}, la lista de los 4 mecanismos de \textcite{GrossmanHelpman2015Globalization} y la tasa de crecimiento de \autor{Romer} \eqref{eq:romer-gamma}. Los gráficos imprescindibles son el~\ref{fig:consumo}, el~\ref{fig:ofertas-netas-crecimiento}, el~\ref{fig:bienestar-grande} (panel del crecimiento empobrecedor) y el~\ref{fig:rybczynski}. Los refranes van junto a su concepto: el del enganche, «¿qué fue antes, el huevo o la gallina?», y los dichos «ir por lana y volver trasquilado» (crecimiento empobrecedor), «morir de éxito» (enfermedad holandesa), «todo se pega menos la hermosura» (externalidades) y «no hay que reinventar la rueda» (efecto redundancia). Las notas al pie, las cajas grises y los anexos son para las preguntas del tribunal.
+
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.

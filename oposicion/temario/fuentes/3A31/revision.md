@@ -165,6 +165,10 @@ Introducción, I y II (abajo, III y la conclusión).
 - **Conclusión** (modo guion, sin pizarra): empieza con «En conclusión,» y sigue sus 5 bloques; las extensiones, por su contenido y sin números de tema. La idea final retoma el refrán del enganche («Tirando del hilo se saca el ovillo, pero el ovillo tiene un final») y responde a la pregunta: cada euro acaba entero en valor añadido del país o en importaciones.
 - Los anexos no se cantan.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7} (I.1, \tiempo{2}; I.2, \tiempo{3}; I.3, \tiempo{2}); II, \tiempo{14} (II.1, \tiempo{6}; II.2, \tiempo{3}; II.3, \tiempo{3}; II.4, \tiempo{2}); III, \tiempo{5,5} (III.1, \tiempo{3}; III.2, \tiempo{2,5}), y conclusión, \tiempo{1}. Todo el tema sigue una misma economía de 2 ramas, industria y servicios (tabla~\ref{tab:ejemplo}): sus números permiten hacer cada cálculo a mano. El ejemplo completo y otro de 3 ramas están en el anexo~\ref{anexo:ejemplo}.
+
 ## Para canon/pendientes-coherencia.md
 
 Las lleva `tema-canon`; no se ha tocado ningún otro tema.

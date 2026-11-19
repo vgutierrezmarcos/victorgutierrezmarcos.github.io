@@ -123,6 +123,27 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **Funciones clave que se conservan**: `eq:sesgo-union` (I), `eq:gasto-neto` (II.1-II.3), `eq:capacidad` (III.3).
 - Nunca se dice el número de un tema en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7,5} (I.1, \tiempo{3}, casi todo para el modelo del sesgo deficitario en la unión monetaria; I.2, \tiempo{2}; I.3, \tiempo{2,5}); II, \tiempo{11} (II.1, \tiempo{7,5}, con \tiempo{1,5} para el modelo de la regla de gasto y \tiempo{2} para el de la sostenibilidad de la deuda; II.2, \tiempo{2}; II.3, \tiempo{1,5}); III, \tiempo{8} (III.1, \tiempo{3}; III.2, \tiempo{2,5}; III.3, \tiempo{2,5}, con \tiempo{1,5} para el modelo de la capacidad fiscal), y conclusión, \tiempo{1}. Los gráficos y figuras imprescindibles son el del sesgo deficitario, el de la regla de déficit frente a la de gasto, el de la simulación de la deuda con el marco de 2024, la figura del ciclo del marco, el de los rescates por país y el de la capacidad fiscal. Las cifras de las tablas, las cajas grises y los anexos son para las preguntas del tribunal. La aplicación a España se estudia con detalle en el cuarto ejercicio \vertema{4.B.23} \vertema{4.B.26} \vertema{4.A.29}: aquí basta con lo esencial.
+
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Anexo de competencias (arts. 2 a 6 TFUE): nuevo anexo «El reparto de competencias de la Unión» (anexo:competencias) antes del de test, con la figura común `graficos/competencias-ue.tex` (carga `latex/competencias-ue-base.tex`, idéntica en los 10 temas de la UE salvo el resaltado). Resaltado en este tema: la coordinación de las políticas económicas (art. 5.1) y de empleo (art. 5.2). Remisión desde «La base en los Tratados» del marco jurídico.
+- **Estructura común de las políticas de la UE**: se aplica, y el tema ya la seguía casi entera; solo se han hecho visibles 2 piezas (sin mover títulos ni contenido, minutos sin cambios, 30):
+  - *1. Relevancia*: introducción.
+  - *2. Justificación*: a) teoría económica, I.1 (externalidades fiscales, sesgo deficitario, riesgo moral, límites de la disciplina de mercado y el modelo del sesgo deficitario en la unión monetaria); b) delimitación de competencias, I.2 (coordinación de las políticas económicas y de empleo, art. 5 TFUE, con la remisión al anexo de competencias); c) marco jurídico, I.2 (arts. 119, 121, 122, 123-126 y 136 TFUE y Protocolo 12); d) toma de decisiones, I.2: **viñeta nueva «Cómo se decide, en resumen»** (Comisión propone y Ecofin decide por mayoría cualificada; mayoría cualificada inversa para las sanciones del euro desde 2011, con el Reglamento 1173/2011 citado, entrada nueva del `.bib`; el reglamento preventivo por procedimiento legislativo ordinario, art. 121.6, y el correctivo por unanimidad del Consejo tras consultar al Parlamento, art. 126.14, como en 2024; el MEDE, por mutuo acuerdo).
+  - *3. Evolución*: I.3 (de Maastricht a la reforma de 2024).
+  - *4. Articulación*: II (reglas fiscales, PDM y Semestre) y III.1-III.2 (MEDE y respuesta común a la covid).
+  - *5. Retos de futuro*: III.3 (¿hacia una capacidad fiscal central?: Draghi, Letta, MFP 2028-2034) y la opinión de la conclusión.
+  - **Viñeta nueva «El orden del bloque»** en la entrada del bloque I, que dice que se va de la justificación al marco jurídico, las competencias y la decisión, y a la evolución.
+  - Páginas: cuerpo 26 → 26; anexos 3. Ficha sin cambios (lo nuevo es un resumen de lo que ya estaba repartido; la ficha ya recoge la mayoría cualificada inversa). `verificar-tema.py`: 0 errores, 17 avisos (los de siempre: cifras sin cita en párrafos históricos y el vídeo). `\tcefecha` a 19/11/2026.
+  - Duda nueva **B45-13** (abajo).
+
+### Dudas (19/11/2026)
+
+- **B45-13. Modelos en el cuerpo de un tema institucional.** CRITERIOS (14/11/2026) pide para los temas de la UE la idea de los modelos en el cuerpo y el desarrollo en anexos; el 3.B.45 conserva en el cuerpo los 4 modelos (sesgo deficitario, regla de déficit frente a regla de gasto, sostenibilidad de la deuda y capacidad fiscal), porque Víctor no lo ha pedido para este tema y no entraba en el encargo de hoy. Opciones: (a) dejarlos así hasta que Víctor lo diga **[aplicada]**; (b) llevarlos a anexos como en el 3.B.36 y el 3.B.37, dejando la idea de palabra y compensando con contenido institucional.

@@ -1,0 +1,97 @@
+% Mapa del tema 3.B.40 (comentario de Víctor del 19/11/2026): los 3 bloques,
+% la pregunta a la que responde cada uno, lo que se cuenta en cada subbloque
+% y el hilo entre ellos. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Elaboración propia (con el formato del mapa del 3.B.4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=6.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  enlace/.style={->,thick,tceegris,dashed},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Dios da pan a quien no tiene dientes». ¿Sirve la cohesión para que las regiones pobres alcancen a las ricas, o solo compensa a quien pierde con la integración?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Política regional}
+     ¿Por qué hace falta, si el mercado único ya debería acercar las rentas? ¿Con qué actúa la Unión y cómo?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Por qué y con qué base (I.1-I.3)}
+     relevancia: 1/3 del presupuesto\\
+     justificación: compensar y corregir; la integración concentra (modelo de capital móvil, anexo)\\
+     competencia compartida, arts. 174-178 TFUE\\
+     historia: de las cuotas de 1975 a la reforma de 1988 y al Este};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Cómo se articula (I.4-I.5)}
+     392.000 M€ en 2021-2027: FEDER, Fondo de Cohesión, FSE+, FTJ, Interreg\\
+     3 categorías de regiones; concentración y condiciones\\
+     gestión compartida y revisión intermedia\\
+     retos: el plan único de 2028-2034};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.55) -- (2.0,-4.35);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.95)
+    {la cohesión es también de las personas: ¿qué puede hacer la Unión en lo social?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.4)
+    {\tit{tceeverde}{II. Políticas social y de empleo}
+     ¿Qué puede hacer la Unión, si los Estados se reservan los salarios y la protección social?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.4)
+    {\tit{tceeverde}{Política social (II.1)}
+     evitar el \emph{dumping} social\\
+     directivas de mínimos (art. 153), sin salarios\\
+     Pilar Europeo de Derechos Sociales: 3 objetivos para 2030 (empleo, formación, AROPE)\\
+     FSE+};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.4)
+    {\tit{tceeverde}{Política de empleo (II.2)}
+     solo coordinación (arts. 145-150 TFUE)\\
+     Estrategia Europea de Empleo, dentro del Semestre\\
+     FSE+, FEAG y SURE\\
+     retos: pobreza, cualificaciones, IA};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.65) -- (2.0,-7.45);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.05)
+    {mínimos, objetivos y dinero: ¿han acercado de verdad las rentas?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.5)
+    {\tit{tceedorado}{III. Convergencia real}
+     ¿Se han acercado las rentas de países y regiones? ¿Qué parte se debe a los fondos?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.5)
+    {\tit{tceedorado}{Teoría y evidencia (III.1-III.2)}
+     convergencia $\beta$ y $\sigma$\\
+     estimación propia: $\hat\beta_1\simeq-2$ entre regiones\\
+     el Este converge; el Sur, España incluida, se aleja desde 2008};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.5)
+    {\tit{tceedorado}{El papel de los fondos (III.3-III.4)}
+     regresión en discontinuidad en el 75~\%: más crecimiento, no más empleo\\
+     depende de la capacidad de absorción\\
+     medir cuesta: contrafactual, expulsión};}
+
+  % 7: enlace cruzado (a la derecha): ¿funcionan los fondos?
+  \capa{7}{\draw[enlace] (cI2.east) -- ++(0.3,0) |- node[pos=0.25,rotulohilo,text=tceegris,rotate=90,above] {¿funcionan los fondos?} (cIII2.east);}
+
+  % 8: la respuesta (conclusión)
+  \capa{8}{\draw[hilo] (2.0,-9.25) -- (2.0,-9.6);}
+  \capa{8}{\node[marco,anchor=north west] (concl) at (0,-9.6)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: el pan alimenta, pero solo a quien puede masticarlo: la cohesión debe ayudar a las regiones a tener dientes.};}
+\end{tikzpicture}
+\end{document}

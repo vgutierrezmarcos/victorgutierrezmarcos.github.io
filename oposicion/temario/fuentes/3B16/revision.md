@@ -207,6 +207,10 @@ Cada una con la opción aplicada:
 - **Conclusión** (sin pizarra): empieza por «En conclusión,»; la idea final responde a la pregunta del enganche («compensa cuando las perturbaciones son simétricas o hay con qué absorberlas; si no, las instituciones tienen que hacer de seguro») y cierra con el refrán: «compartir moneda exige compartir también la casa».
 - No se cantan: cajas grises, notas, la tabla de la zona del euro, la evidencia detallada, los programas del BCE fecha a fecha y los anexos.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{1}; I.2, \tiempo{7,5}; I.3, \tiempo{1,5}; I.4, \tiempo{1}); II, \tiempo{9} (II.1, \tiempo{2}; II.2, \tiempo{2,5}; II.3, \tiempo{1,5}; II.4, \tiempo{2,5}; II.5, \tiempo{0,5}); III, \tiempo{6,5} (III.1, \tiempo{0,5}; III.2, \tiempo{2,5}; III.3, \tiempo{3,5}), y conclusión, \tiempo{1}. Todo el tema vuelve al mismo ejemplo: España y Alemania dentro del euro. Los criterios se ordenan por las 3 dimensiones de \autor{De Grauwe} (simetría, flexibilidad e integración) que cierran el apartado~\ref{sec:costes} y que el apartado~\ref{sec:coste-beneficio} convierte en coste-beneficio. Los gráficos imprescindibles son la oferta y la demanda agregadas de los 2 países (la perturbación y, después, los 2 mecanismos de ajuste), la línea AMO, los costes y beneficios frente a la apertura y el plano simetría-integración con las 2 hipótesis de la endogeneidad.
+
 ## Correcciones del control de calidad (11/11/2026)
 
 1. Tabla `tab:zona-euro-amo`: la caja `anotaciones` que la contiene es ahora `[unbreakable]`; título y tabla salen juntos (pág. 19 del PDF).

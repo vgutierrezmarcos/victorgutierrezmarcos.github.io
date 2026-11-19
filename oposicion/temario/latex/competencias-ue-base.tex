@@ -1,0 +1,145 @@
+% ==========================================================================
+% competencias-ue-base.tex — El reparto de competencias de la Unión (arts. 2
+% a 6 del TFUE), común a los temas de la UE (3.B.36 a 3.B.45; Víctor, 19/11/2026)
+% Autor: Víctor Gutiérrez Marcos
+%
+% Cada tema tiene un graficos/competencias-ue.tex corto que dice qué resaltar
+% y carga este fichero; así el diagrama es idéntico en todos salvo el resaltado:
+%
+%   \documentclass[tikz,border=4pt]{standalone}
+%   \input{../../../latex/tikz-tcee}
+%   \newcommand{\ueresaltar}{comercial,aduanera}   % claves de abajo (o vacío)
+%   \newcommand{\ueleyenda}{En rojo, ...}           % texto de la leyenda (opcional)
+%   \begin{document}
+%   \input{../../../latex/competencias-ue-base}
+%   \end{document}
+%
+% Claves de los ámbitos (con su artículo del TFUE):
+%   exclusivas (art. 3): aduanera (3.1.a), competencia (3.1.b), monetaria (3.1.c),
+%     recursosmarinos (3.1.d), comercial (3.1.e), acuerdos (3.2)
+%   compartidas (art. 4): mercadointerior (4.2.a), social (4.2.b), cohesion (4.2.c),
+%     agricultura (4.2.d), medioambiente (4.2.e), consumidores (4.2.f),
+%     transportes (4.2.g), redes (4.2.h), energia (4.2.i), libertad (4.2.j),
+%     saludpublica (4.2.k), investigacion (4.3), desarrollo (4.4)
+%   coordinación (art. 5): economicas (5.1), empleo (5.2), socialescoord (5.3)
+%   apoyo (art. 6): salud (6.a), industria (6.b), cultura (6.c), turismo (6.d),
+%     educacion (6.e), proteccioncivil (6.f), cooperacionadm (6.g)
+%   PESC (art. 2.4 TFUE y arts. 23-46 TUE): pesc
+%   Categorías enteras (resalta el recuadro de la izquierda): exclusivas,
+%     compartidas, coordinacion, apoyo, categoriapesc
+% Texto de los ámbitos: el de los arts. 3 a 6 del TFUE (versión consolidada,
+% DOUE C 202 de 7/6/2016), abreviado sin cambiar el sentido.
+% ==========================================================================
+\providecommand{\ueresaltar}{}
+\providecommand{\ueleyenda}{}
+\makeatletter
+\edef\ue@lista{\ueresaltar}
+\ifx\ue@lista\@empty\else
+  \@for\ue@x:=\ue@lista\do{\expandafter\gdef\csname ueres@\ue@x\endcsname{}}
+\fi
+% \ambito{clave}{color}{(x,y)}{ancho del texto}{alto mínimo}{texto}{artículo}
+% El artículo va a la derecha de la última línea, o en una línea propia si no cabe.
+\newcommand{\ue@ref}[1]{\unskip\nobreak\hfill\penalty50\hskip0.4em\hbox{}\nobreak\hfill\textit{#1}}
+\newcommand{\ambito}[7]{%
+  \ifcsname ueres@#1\endcsname
+    \node[chip=#2,chipresaltado,text width=#4,minimum height=#5] (#1) at #3 {#6\ue@ref{#7}};
+    \node[rotuloeste] at ([xshift=-3pt]#1.north east) {este tema};
+  \else
+    \node[chip=#2,text width=#4,minimum height=#5] (#1) at #3 {#6\ue@ref{#7}};
+  \fi}
+% \categoria{clave}{color}{(x,y)}{alto}{título}{quién actúa}
+\newcommand{\categoria}[6]{%
+  \ifcsname ueres@#1\endcsname
+    \node[cat=#2,chipresaltado,minimum height=#4] (#1) at #3
+      {\textcolor{#2!80!black}{\bfseries #5}\\[2pt]#6};
+    \node[rotuloeste] at ([xshift=-3pt]#1.north east) {este tema};
+  \else
+    \node[cat=#2,minimum height=#4] (#1) at #3
+      {\textcolor{#2!80!black}{\bfseries #5}\\[2pt]#6};
+  \fi}
+\makeatother
+\tikzset{
+  chip/.style={draw=#1,fill=#1!7,thin,rounded corners=2pt,anchor=north west,
+    align=flush left,font=\footnotesize,inner xsep=3pt,inner ysep=2.5pt},
+  cat/.style={draw=#1,fill=#1!16,thick,rounded corners=3pt,anchor=north west,
+    align=flush left,font=\footnotesize,text width=4.25cm,inner sep=4pt},
+  chipresaltado/.style={draw=tceerojo,line width=1.8pt,fill=tceerojo!9},
+  rotuloeste/.style={anchor=east,fill=tceerojo,text=white,font=\tiny\bfseries\sffamily,
+    inner xsep=2pt,inner ysep=1pt,rounded corners=1pt},
+  paralela/.style={dashed},
+  cabecera/.style={font=\footnotesize\bfseries,text=tceegris!60!black,anchor=south west,inner sep=1pt},
+  subrotulo/.style={font=\footnotesize\itshape,anchor=north west,align=flush left,inner sep=1pt},
+}
+\begin{tikzpicture}[tcee]
+  % --- Principio de atribución (arriba, toda la anchura) --------------------
+  \node[draw=tceemorado,fill=tceemorado!6,thick,rounded corners=3pt,anchor=north west,
+    text width=16.25cm,align=center,font=\footnotesize,inner sep=4pt] (atrib) at (0,0)
+    {\textbf{Atribución}: la Unión solo actúa dentro de las competencias que le dan los Tratados; las demás son de los Estados (art.~5 TUE y art.~4.1 TUE).\\
+     Las ejerce con \textbf{subsidiariedad} (si el objetivo se alcanza mejor en la Unión; no en las exclusivas) y \textbf{proporcionalidad} (no más de lo necesario).};
+  \begin{scope}[yshift=-0.75cm]
+  \node[cabecera] at (0,-1.32) {Categoría (art.~2) y quién actúa};
+  \node[cabecera] at (4.85,-1.32) {Ámbitos (arts.~3 a 6 TFUE)};
+  % flecha lateral: de más Unión a más Estados
+  \draw[->,very thick,tceegris] (-0.35,-1.45) -- (-0.35,-15.85);
+  \node[rotate=90,font=\scriptsize\itshape,text=tceegris!70!black,anchor=south] at (-0.4,-2.4) {más Unión};
+  \node[rotate=90,font=\scriptsize\itshape,text=tceegris!70!black,anchor=south] at (-0.4,-14.7) {más Estados};
+
+  % --- 1. Exclusivas (art. 3) -------------------------------------------------
+  \categoria{exclusivas}{tceemorado}{(0,-1.45)}{2.7cm}{Exclusivas (art.~3)}
+    {\textbf{Solo la Unión legisla} y adopta actos vinculantes; los Estados, solo si la Unión los faculta o para aplicar sus actos (art.~2.1).}
+  \ambito{aduanera}{tceemorado}{(4.8,-1.45)}{3.63cm}{1.3cm}{Unión aduanera}{3.1.a}
+  \ambito{competencia}{tceemorado}{(8.743,-1.45)}{3.63cm}{1.3cm}{Normas sobre competencia necesarias para el mercado interior}{3.1.b}
+  \ambito{monetaria}{tceemorado}{(12.687,-1.45)}{3.63cm}{1.3cm}{Política monetaria de los Estados cuya moneda es el euro}{3.1.c}
+  \ambito{recursosmarinos}{tceemorado}{(4.8,-2.85)}{3.63cm}{1.3cm}{Conservación de los recursos biológicos marinos (pesca)}{3.1.d}
+  \ambito{comercial}{tceemorado}{(8.743,-2.85)}{3.63cm}{1.3cm}{Política comercial común}{3.1.e}
+  \ambito{acuerdos}{tceemorado}{(12.687,-2.85)}{3.63cm}{1.3cm}{Celebración de acuerdos internacionales en ciertos casos}{3.2}
+
+  % --- 2. Compartidas (art. 4) ------------------------------------------------
+  \categoria{compartidas}{tceeazul}{(0,-4.45)}{4.75cm}{Compartidas (art.~4)}
+    {\textbf{Legislan la Unión y los Estados}; los Estados, en la medida en que la Unión no haya ejercido la suya: lo que regula un acto de la Unión queda ocupado (\emph{preferencia}; art.~2.2 y Protocolo 25). Es la categoría residual (art.~4.1).\\[2pt]
+     \emph{Paralelas} (art.~4.3 y 4.4): la Unión actúa sin impedir que los Estados ejerzan la suya.}
+  \ambito{mercadointerior}{tceeazul}{(4.8,-4.45)}{2.65cm}{1.15cm}{Mercado interior}{4.2.a}
+  \ambito{social}{tceeazul}{(7.758,-4.45)}{2.65cm}{1.15cm}{Política social, en lo que prevé el Tratado}{4.2.b}
+  \ambito{cohesion}{tceeazul}{(10.715,-4.45)}{2.65cm}{1.15cm}{Cohesión económica, social y territorial}{4.2.c}
+  \ambito{agricultura}{tceeazul}{(13.672,-4.45)}{2.65cm}{1.15cm}{Agricultura y pesca (salvo 3.1.d)}{4.2.d}
+  \ambito{medioambiente}{tceeazul}{(4.8,-5.7)}{2.65cm}{1.15cm}{Medio ambiente}{4.2.e}
+  \ambito{consumidores}{tceeazul}{(7.758,-5.7)}{2.65cm}{1.15cm}{Protección de los consumidores}{4.2.f}
+  \ambito{transportes}{tceeazul}{(10.715,-5.7)}{2.65cm}{1.15cm}{Transportes}{4.2.g}
+  \ambito{redes}{tceeazul}{(13.672,-5.7)}{2.65cm}{1.15cm}{Redes transeuropeas}{4.2.h}
+  \ambito{energia}{tceeazul}{(4.8,-6.95)}{2.65cm}{1.15cm}{Energía}{4.2.i}
+  \ambito{libertad}{tceeazul}{(7.758,-6.95)}{2.65cm}{1.15cm}{Espacio de libertad, seguridad y justicia}{4.2.j}
+  \ambito{saludpublica}{tceeazul}{(10.715,-6.95)}{2.65cm}{1.15cm}{Seguridad común en salud pública}{4.2.k}
+  \node[subrotulo,text width=2.65cm] at (13.772,-7.05) {\textcolor{tceeazul!80!black}{Paralelas} (trazo discontinuo):};
+  \ambito{investigacion}{tceeazul,paralela}{(4.8,-8.2)}{5.61cm}{1.0cm}{Investigación, desarrollo tecnológico y espacio}{4.3}
+  \ambito{desarrollo}{tceeazul,paralela}{(10.715,-8.2)}{5.61cm}{1.0cm}{Cooperación para el desarrollo y ayuda humanitaria}{4.4}
+
+  % --- 3. Coordinación de las políticas económicas y de empleo (art. 5) ------
+  \categoria{coordinacion}{tceeverde}{(0,-9.5)}{2.0cm}{Coordinación (art.~5)}
+    {\textbf{Los Estados hacen la política}; la Unión la coordina con orientaciones del Consejo (art.~2.3).}
+  \ambito{economicas}{tceeverde}{(4.8,-9.5)}{3.63cm}{2.0cm}{Políticas económicas: orientaciones generales; normas propias para los Estados del euro}{5.1}
+  \ambito{empleo}{tceeverde}{(8.743,-9.5)}{3.63cm}{2.0cm}{Políticas de empleo: orientaciones}{5.2}
+  \ambito{socialescoord}{tceeverde}{(12.687,-9.5)}{3.63cm}{2.0cm}{Políticas sociales: la Unión puede tomar iniciativas para coordinarlas}{5.3}
+
+  % --- 4. Apoyo, coordinación o complemento (art. 6) -------------------------
+  \categoria{apoyo}{tceedorado}{(0,-11.8)}{2.5cm}{Apoyo, coordinación o complemento (art.~6)}
+    {\textbf{Los Estados legislan}; la Unión apoya, sin armonizar sus leyes (art.~2.5).}
+  \ambito{salud}{tceedorado}{(4.8,-11.8)}{2.65cm}{1.2cm}{Salud humana}{6.a}
+  \ambito{industria}{tceedorado}{(7.758,-11.8)}{2.65cm}{1.2cm}{Industria}{6.b}
+  \ambito{cultura}{tceedorado}{(10.715,-11.8)}{2.65cm}{1.2cm}{Cultura}{6.c}
+  \ambito{turismo}{tceedorado}{(13.672,-11.8)}{2.65cm}{1.2cm}{Turismo}{6.d}
+  \ambito{educacion}{tceedorado}{(4.8,-13.1)}{2.65cm}{1.2cm}{Educación, formación, juventud y deporte}{6.e}
+  \ambito{proteccioncivil}{tceedorado}{(7.758,-13.1)}{2.65cm}{1.2cm}{Protección civil}{6.f}
+  \ambito{cooperacionadm}{tceedorado}{(10.715,-13.1)}{2.65cm}{1.2cm}{Cooperación administrativa}{6.g}
+
+  % --- 5. PESC (régimen propio) -----------------------------------------------
+  \categoria{categoriapesc}{tceegris}{(0,-14.6)}{1.25cm}{PESC (art.~2.4; TUE)}
+    {Régimen propio: unanimidad, sin actos legislativos (art.~24 TUE).}
+  \ambito{pesc}{tceegris}{(4.8,-14.6)}{11.52cm}{1.25cm}{Política exterior y de seguridad común, con la política común de seguridad y defensa}{arts.~23-46 TUE}
+
+  % --- Leyenda (si el tema la da) -------------------------------------------
+  \if\relax\detokenize\expandafter{\ueleyenda}\relax\else
+    \node[anchor=north west,text width=16.25cm,align=flush left,font=\footnotesize,inner sep=2pt]
+      at (0,-16.05) {\tikz[baseline=-0.6ex]\draw[tceerojo,line width=1.8pt,fill=tceerojo!9,rounded corners=1pt] (0,-0.12) rectangle (0.5,0.12);\ \ueleyenda};
+  \fi
+  \end{scope}
+\end{tikzpicture}

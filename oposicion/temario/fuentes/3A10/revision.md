@@ -259,6 +259,10 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - **Enganche**: los 2 refranes, las primas de seguro (unos 86.000 millones, ~5 % del PIB) y la Lotería de Navidad; **idea final**: el patrón cuádruple de la teoría de las perspectivas, que responde a la pregunta del enganche.
 - El teorema de la utilidad esperada queda en una esquina de la pizarra todo el cante (Savage lo reutiliza). (11/11/2026)
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> La exposición va de lo conocido (riesgo) a lo desconocido (incertidumbre) y, en cada caso, del modelo a sus críticas y alternativas. Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{8}: \tiempo{3,5} + \tiempo{4,5}; I.2, \tiempo{4}; I.3, \tiempo{1}); II, \tiempo{8} (II.1, \tiempo{3,5}; II.2, \tiempo{4,5}); III, \tiempo{5,5} (III.1, \tiempo{3}; III.2, \tiempo{2,5}), y conclusión, \tiempo{1}. Los gráficos imprescindibles son la actitud ante el riesgo (utilidad de \autor{Bernoulli} cóncava con $\mathbb{E}[\tilde{x}]$, $\xi$ y $\rho$), el plano de la riqueza en cada estado con la línea de certeza y la recta de aseguramiento, que se reutiliza en la preferencia por el estado, y la función de valor en S. Los axiomas en detalle, el caso continuo, la prudencia, la demanda de un activo con riesgo, la empresa aversa al riesgo, la tabla de casos del seguro, la caja de finanzas conductuales y los anexos son para las preguntas del tribunal.
+
 ## Comentarios de Víctor del 19/10/2026
 
 1. **Imagen 3 (actitud ante el riesgo)**: `actitud-tres-casos` rehecho como el original, con los 3 paneles completos y rotulados: x₁, x₂, 𝔼[x̃], ξ; u(x₁), u(x₂), u(𝔼[x̃]) y 𝔼[u(x̃)] = u(ξ); la cuerda; la prima ρ con su signo (ρ > 0, ρ = 0, ρ < 0); y debajo de cada panel las desigualdades y el signo de r_A. Sigue en la nota al pie, ahora a todo el ancho y con un texto que explica cada caso. Se corrige un error del original: en el panel del amante rotulaba «U(ξ) = U(E[x])» en el punto de la curva en E[x]. Ahí la curva da u(𝔼[x̃]), y u(ξ) = 𝔼[u] está a la altura de la cuerda.

@@ -1,51 +1,80 @@
-% Sostenimiento de precios de la PAC con restituciones a la exportación
-% (país pequeño exportador neto; modelo del apartado I.2.3 del tema).
-% Demanda inversa p^D(x) = 5 - 0,5 x; oferta inversa p^S(q) = 0,5 + 0,5 q
-% (autarquía: p^A = 2,75, x = q = 4,5). Precio mundial p^W = 3; precio de
-% intervención p^I = 4.
-%   Con libre comercio (p^W): x_0 = 4, q_0 = 5, exportación 1.
-%   Con sostenimiento (p^I): x_1 = 2, q_1 = 7, exportación 5.
-%   Coste presupuestario de las restituciones: (p^I - p^W)(q_1 - x_1) = 5.
-%   Pérdida del consumidor: trapecio 0..4 entre p^W y p^I = 3.
-%   Ganancia del productor: trapecio 0..7 entre p^W y p^I = 6.
-%   Pérdida neta = 3 - 6 + 5 = 2 = triángulo de consumo (b, área 1)
-%   + triángulo de producción (d, área 1).
-% Capas: ejes -> curvas -> precio mundial y libre comercio -> precio de
-% intervención -> exportaciones y coste presupuestario -> pérdidas -> rótulos.
+% Sostenimiento de precios de la PAC (modelo del apartado I.2.3 del tema),
+% en 2 fases, siguiendo a Baldwin y Wyplosz (2020, cap. 9, figs. 9.2, 9.6 y
+% 9.10): la misma demanda, el mismo precio mundial y el mismo precio de
+% intervención; lo que cambia es la oferta (la «revolución verde»).
+% Demanda inversa p = 5 - 0,5 x; p^W = 3; p^I = 4 (x_0 = 4, x_1 = 2).
+% a) Años 60, la Comunidad importa: oferta p = 2,5 + q (q_0 = 0,5, q_1 = 1,5).
+%    Exacción variable p^I - p^W = 1; importaciones x_1 - q_1 = 0,5.
+%    Consumidores pierden a+b+c+d = 3; productores ganan a = 1; la exacción
+%    recauda c = 0,5; pérdida neta b + d = 1 + 0,5 = 1,5.
+% b) Desde finales de los 70, la Comunidad exporta: oferta p = 0,5 + 0,5 q
+%    (q_0 = 5, q_1 = 7; la de a, discontinua). Restituciones (b+c+d) = 5;
+%    consumidores pierden a+b = 3; productores ganan a+b+c = 6;
+%    pérdida neta b + d = 1 + 1 = 2. Letras como en la fig. 9.10 de
+%    Baldwin y Wyplosz: b, triángulo de consumo; d, de producción.
+% Capas: ejes -> demanda y oferta -> p^W y libre comercio -> p^I ->
+% áreas a, c y triángulos (panel a) -> panel b con su oferta y sus áreas.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-\begin{tikzpicture}[tcee,x=0.95cm,y=1.05cm,
-    declare function={pd(\x)=5-0.5*\x; ps(\x)=0.5+0.5*\x;},
-    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none}]
-  % 1: ejes
-  \capa{1}{\ejes{$x,q$}{$p$}{9.4}{5.6}}
-  % 2: demanda y oferta de la Unión
-  \capa{2}{\draw[curva1] (0,{pd(0)}) -- (8.6,{pd(8.6)}) node[etiqueta,right] {$x(p)$};}
-  \capa{2}{\draw[curva3] (0,{ps(0)}) -- (8.6,{ps(8.6)}) node[etiqueta,right] {$q(p)$};}
-  % 3: precio mundial y libre comercio
-  \capa{3}{\draw[curva2] (0,3) -- (9.0,3) node[etiqueta,right,text=tceeazul] {$p^W$};}
-  \capa{3}{\draw[guia] (4,3) -- (4,0) node[below,text=black] {$x_0$};}
-  \capa{3}{\draw[guia] (5,3) -- (5,0) node[below,text=black] {$q_0$};}
-  \capa{3}{\node[punto] at (4,3) {};}
-  \capa{3}{\node[punto] at (5,3) {};}
-  % 4: precio de intervención
-  \capa{4}{\draw[curvanueva] (0,4) -- (9.0,4) node[etiqueta,right,text=tceerojo] {$p^I$};}
-  \capa{4}{\draw[guia] (2,4) -- (2,0) node[below,text=black] {$x_1$};}
-  \capa{4}{\draw[guia] (7,4) -- (7,0) node[below,text=black] {$q_1$};}
-  \capa{4}{\node[punto] at (2,4) {};}
-  \capa{4}{\node[punto] at (7,4) {};}
-  % 5: exportaciones subvencionadas y coste presupuestario
-  \capa{5}{\draw[thick,dashed,tceerojo] (2,3) rectangle (7,4);}
-  \capa{5}{\draw[decorate,decoration={brace,amplitude=4pt},thick] (2,4.12) -- (7,4.12) node[midway,above=5pt,font=\footnotesize,align=center] {exportación con restitución $(q_1-x_1)$};}
-  % 6: pérdidas irrecuperables
-  \capa{6}{\fill[perdida] (2,4) -- (2,3) -- (4,3) -- cycle;}
-  \capa{6}{\fill[perdida] (5,3) -- (7,4) -- (7,3) -- cycle;}
-  \capa{6}{\node[etiqueta,text=tceerojo,font=\footnotesize\bfseries] at (2.55,3.3) {$b$};}
-  \capa{6}{\node[etiqueta,text=tceerojo,font=\footnotesize\bfseries] at (6.45,3.3) {$d$};}
-  % 7: rótulos
-  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=west] at (7.25,2.35) {coste presupuestario:\\rectángulo discontinuo};}
-  \capa{7}{\draw[guia,solid,->] (7.6,2.62) -- (7.0,3.0);}
+\begin{tikzpicture}[tcee,
+    declare function={pd(\x)=5-0.5*\x; psa(\x)=2.5+\x; psb(\x)=0.5+0.5*\x;},
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none},
+    recauda/.style={fill=tceeazul,fill opacity=0.25,draw=none},
+    letra/.style={etiqueta,font=\footnotesize\bfseries},
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % =============== a) Comunidad importadora: exacción variable ===============
+  \begin{scope}[x=1.05cm,y=1.0cm]
+    \capa{1}{\ejes{$x,q$}{$p$}{6.6}{5.6}}
+    \capa{1}{\node[titulo,align=center] at (3.2,5.75) {a) Años 60: la Comunidad importa\\(exacción variable)};}
+    \capa{2}{\draw[curva1] (0,{pd(0)}) -- (6.2,{pd(6.2)}) node[etiqueta,right] {$x(p)$};}
+    \capa{2}{\draw[curva3] (0,{psa(0)}) -- (2.9,{psa(2.9)}) node[etiqueta,right] {$q(p)$};}
+    \capa{3}{\draw[curva2] (0,3) -- (6.3,3) node[etiqueta,right,text=tceeazul] {$p^W$};}
+    \capa{3}{\draw[guia] (0.5,3) -- (0.5,0) node[below,text=black] {$q_0$};}
+    \capa{3}{\draw[guia] (4,3) -- (4,0) node[below,text=black] {$x_0$};}
+    \capa{3}{\node[punto] at (0.5,3) {};}
+    \capa{3}{\node[punto] at (4,3) {};}
+    \capa{4}{\draw[curvanueva] (0,4) -- (6.3,4) node[etiqueta,right,text=tceerojo] {$p^I$};}
+    \capa{4}{\draw[guia] (1.5,4) -- (1.5,0) node[below,text=black] {$q_1$};}
+    \capa{4}{\draw[guia] (2,4) -- (2,0) node[below,text=black] {$x_1$};}
+    \capa{4}{\node[punto] at (1.5,4) {};}
+    \capa{4}{\node[punto] at (2,4) {};}
+    \capa{5}{\fill[area2] (0,3) -- (0.5,3) -- (1.5,4) -- (0,4) -- cycle;}
+    \capa{5}{\node[letra,text=tceedorado!80!black] at (0.45,3.62) {$a$};}
+    \capa{5}{\fill[recauda] (1.5,3) rectangle (2,4);}
+    \capa{5}{\node[letra,text=tceeazul] at (1.75,3.5) {$c$};}
+    \capa{6}{\fill[perdida] (0.5,3) -- (1.5,4) -- (1.5,3) -- cycle;}
+    \capa{6}{\node[letra,text=tceerojo] at (1.22,3.3) {$d$};}
+    \capa{6}{\fill[perdida] (2,4) -- (2,3) -- (4,3) -- cycle;}
+    \capa{6}{\node[letra,text=tceerojo] at (2.5,3.3) {$b$};}
+    \capa{7}{\draw[decorate,decoration={brace,amplitude=3pt},thick] (4.35,4) -- (4.35,3) node[midway,right=4pt,font=\footnotesize,align=left] {exacción\\$p^I-p^W$};}
+    \capa{7}{\node[etiqueta,font=\footnotesize,text=tceeazul,align=center] at (2.5,1.25) {$c$: recaudación\\de la exacción};}
+  \end{scope}
+  % =============== b) Comunidad exportadora: restituciones ===============
+  \begin{scope}[xshift=8.6cm,x=0.78cm,y=1.0cm]
+    \capa{8}{\ejes{$x,q$}{$p$}{9.6}{5.6}}
+    \capa{8}{\node[titulo,align=center] at (4.6,5.75) {b) Desde finales de los 70: la Comunidad\\exporta (restituciones)};}
+    \capa{8}{\draw[curva1] (0,{pd(0)}) -- (8.8,{pd(8.8)}) node[etiqueta,right] {$x(p)$};}
+    \capa{8}{\draw[desplazada,tceegris!70] (0,{psa(0)}) -- (2.6,{psa(2.6)}) node[etiqueta,above,text=tceegris,font=\footnotesize] {antes};}
+    \capa{8}{\draw[curva3] (0,{psb(0)}) -- (8.8,{psb(8.8)}) node[etiqueta,right] {$q(p)$};}
+    \capa{8}{\draw[flecha,tceegris] (2.75,4.7) -- (3.9,4.7);}
+    \capa{8}{\node[etiqueta,font=\footnotesize,text=tceegris,align=left,anchor=west] at (4.0,4.7) {progreso técnico};}
+    \capa{9}{\draw[curva2] (0,3) -- (9.1,3) node[etiqueta,right,text=tceeazul] {$p^W$};}
+    \capa{9}{\draw[curvanueva] (0,4) -- (9.1,4) node[etiqueta,right,text=tceerojo] {$p^I$};}
+    \capa{9}{\draw[guia] (2,4) -- (2,0) node[below,text=black] {$x_1$};}
+    \capa{9}{\draw[guia] (4,3) -- (4,0) node[below,text=black] {$x_0$};}
+    \capa{9}{\draw[guia] (5,3) -- (5,0) node[below,text=black] {$q_0$};}
+    \capa{9}{\draw[guia] (7,4) -- (7,0) node[below,text=black] {$q_1$};}
+    \capa{9}{\foreach \p in {(2,4),(4,3),(5,3),(7,4)} \node[punto] at \p {};}
+    \capa{10}{\draw[thick,dashed,tceerojo] (2,3) rectangle (7,4);}
+    \capa{10}{\node[letra,text=tceedorado!80!black] at (1.45,3.3) {$a$};}
+    \capa{10}{\node[letra,text=tceerojo] at (4.6,3.62) {$c$};}
+    \capa{11}{\fill[perdida] (2,4) -- (2,3) -- (4,3) -- cycle;}
+    \capa{11}{\node[letra,text=tceerojo] at (2.55,3.3) {$b$};}
+    \capa{11}{\fill[perdida] (5,3) -- (7,4) -- (7,3) -- cycle;}
+    \capa{11}{\node[letra,text=tceerojo] at (6.45,3.3) {$d$};}
+    \capa{12}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=north west] at (6.1,2.88) {restituciones $b+c+d$:\\rectángulo discontinuo};}
+  \end{scope}
 \end{tikzpicture}
 \end{document}

@@ -309,6 +309,18 @@ anotado); entradas en `datos-actualizables.yaml`.
 - **Conclusión** (sin pizarra): empieza por «En conclusión,»; la idea final vuelve al refrán («ya no se
   hace la política económica a ojo de buen cubero») y responde a la pregunta del principio.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante:
+> \begin{itemize}
+> \item introducción, \tiempo{2,5};
+> \item I, \tiempo{6,5} (I.1, \tiempo{2,5}; I.2, \tiempo{4});
+> \item II, \tiempo{13,5} (II.1, \tiempo{1}; II.2, \tiempo{6}; II.3, \tiempo{3,5}; II.4, \tiempo{1}; II.5, \tiempo{1}; II.6, \tiempo{1});
+> \item III, \tiempo{6,5} (III.1, \tiempo{2,5}; III.2, \tiempo{1,5}; III.3, \tiempo{2,5});
+> \item conclusión, \tiempo{1}.
+> \end{itemize}
+> Es un tema de definiciones encadenadas. Lo que se canta es la cadena de saldos, de la producción a la capacidad o necesidad de financiación, qué mide cada agregado y por qué cuadran las cuentas. Las cuentas en forma de T, los códigos del SEC y los anexos son para las preguntas del tribunal.
+
 ## Revisión transversal (13/11/2026)
 
 - **Nobel**: la nota de Kuznets pasa a su primera mención (enganche) con la motivación oficial de 1971; nueva nota en la primera mención de Stone (1984) y Meade (1977, con Ohlin) con las motivaciones oficiales entre comillas (antes iban parafraseadas en una nota conjunta, que se queda con la historia de Kuznets, Nathan y Somervell); notas nuevas para Stiglitz (2001) y Sen (1998) en la comisión Stiglitz-Sen-Fitoussi, y para Tobin (1981) y Nordhaus (2018) en la medida del bienestar económico. Entradas `Nobel2001AkerlofSpenceStiglitz`, `NobelPrize1998`, `Nobel1981Tobin` y `Nobel2018Nordhaus` copiadas de otros temas al .bib.

@@ -140,6 +140,8 @@ Todas se han aplicado con la opción recomendada (14/11/2026); están pendientes
 - **B38-10** El modelo de Gordon-Schaefer se desarrolla completo aquí, aunque el canon (`tragedia-comunes`) preveía una mención. Es el modelo central de la PPC y no está en otro tema. Opciones: (a) desarrollo completo y ficha nueva en el canon **[aplicada]**; (b) mención con remisión al anexo del 3.A.23.
 - **B38-11** Unos 40 párrafos con cifras van sin `\nocite` propio (aviso de `verificar-tema.py`): son hechos históricos o normativos cuya fuente se cita en el párrafo o el gráfico vecinos, o en las fichas del PE. Opciones: (a) dejarlos **[aplicada]**; (b) añadir `\nocite` párrafo a párrafo.
 - **B38-12** El original citaba una noticia de El País (2018) sobre el fin de las cuotas lecheras. No se mantiene: no es fuente de datos y el tema da el fin de las cuotas con fecha. Opciones: (a) quitarla **[aplicada]**; (b) mantenerla en nota.
+- **B38-13** (19/11/2026) Gráfico 6 (antes 5), distribución de los pagos: se han probado 4 formas con los mismos datos (barras pareadas, barras divergentes por tramo, curva de Lorenz y barras apiladas al 100 % con bandas). Opciones: (a) 2 paneles: barras divergentes por tramo (% de perceptores a la izquierda y % del importe a la derecha, cada uno con su eje) y curva de Lorenz con el Gini **[aplicada]**; (b) solo las barras divergentes; (c) solo la curva de Lorenz; (d) barras apiladas al 100 % (perceptores frente a importe) unidas por bandas, solo para la UE.
+- **B38-14** (19/11/2026) Baldwin y Wyplosz (2020) como fuente esencial: el máximo es 5, así que entra en lugar de la ficha de objetivos de la DG AGRI (`CE2026ObjetivosPAC`), que sigue citada entre las otras referencias. Opciones: (a) así **[aplicada]**; (b) dejar fuera otra (la OCDE o una ficha del PE). También: el gráfico nuevo del reparto entre explotaciones (gráfico 2, fig. 9.5 del manual) va en las extensiones del modelo de precios; si alarga demasiado, puede quedar solo de palabra.
 
 ## 8. Instrucciones para el vídeo
 
@@ -147,17 +149,18 @@ Todas se han aplicado con la opción recomendada (14/11/2026); están pendientes
 - **Introducción y conclusión, sin pizarra** (`modo: guion`).
 - **I**:
   - los objetivos del art. 39, como lista corta en la pizarra (eran la indicación «escribirlos en la pizarra» del original);
-  - el modelo del sostenimiento de precios en la pizarra, por capas (ejes; $x(p)$ y $q(p)$; $p^W$ y libre comercio; $p^I$; restituciones y rectángulo; triángulos $b$ y $d$);
+  - el modelo del sostenimiento de precios en la pizarra, en 2 paneles y por capas (19/11/2026, como Baldwin y Wyplosz): a) importadora: ejes, $x(p)$ y $q(p)$, $p^W$, $p^I$, áreas $a$ y $c$ (exacción), triángulos $d$ y $b$; b) exportadora: la oferta se desplaza (progreso técnico), restituciones $b+c+d$ y los mismos triángulos;
+  - el reparto entre explotaciones (gráfico `reparto-explotaciones`) como apoyo;
   - función clave `eq:perdida-precios`, que se conserva hasta el final de II.1;
   - `pse-ue` como apoyo.
 - **II.1**:
   - `reformas-pac` como apoyo que va avanzando;
   - `gasto-pac` como apoyo (el gráfico clásico de la Comisión);
-  - el desacoplamiento en la pizarra: panel izquierdo por capas, panel derecho después;
+  - el desacoplamiento: primero, de palabra sobre el panel b del sostenimiento, bajar el precio ($+b+d$) y compensar con $D=a+b+c$; después, en la pizarra, el panel izquierdo del gráfico `desacoplamiento` por capas y el derecho;
   - función clave `eq:desacoplamiento`.
 - **II.2**: `arquitectura-verde` como apoyo; la simplificación, de palabra.
 - **II.3**:
-  - `distribucion-pagos` como apoyo;
+  - `distribucion-pagos` como apoyo (2 paneles: barras divergentes por tramo y curva de Lorenz);
   - la capitalización en la pizarra (panel de oferta rígida y, si da tiempo, el de oferta con pendiente);
   - función clave `eq:capitalizacion`;
   - la propuesta post-2027, de palabra, con una tabla corta de apoyo (pilares → fondo único; 300.000 reservados; degresividad).
@@ -168,6 +171,26 @@ Todas se han aplicado con la opción recomendada (14/11/2026); están pendientes
 - **Funciones clave que se conservan**: `eq:perdida-precios` (I-II.1), `eq:capitalizacion` (II.3) y `eq:gordon-schaefer` (III).
 - Nunca se dice el número de un tema en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3}; I.2, \tiempo{5}, de ellos \tiempo{2,5} para el modelo del sostenimiento de precios); II, \tiempo{10,5} (II.1, \tiempo{4,5}, con \tiempo{1,5} para el desacoplamiento; II.2, \tiempo{2,5}; II.3, \tiempo{3,5}, con \tiempo{1,5} para la capitalización en la tierra); III, \tiempo{8} (III.1, \tiempo{3,5}, con \tiempo{2,5} para el modelo de \autor{Gordon}-\autor{Schaefer}; III.2, \tiempo{1}; III.3, \tiempo{1,5}; III.4, \tiempo{2}), y conclusión, \tiempo{1}. Los gráficos y figuras imprescindibles son el sostenimiento de precios, la evolución del gasto de la PAC, el desacoplamiento, la capitalización, la distribución de los pagos y los 2 paneles de \autor{Gordon}-\autor{Schaefer}. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- **1. Gráfico 5 (distribución de los pagos)**: rehecho con los mismos datos de la DG AGRI (ejercicio 2023). Se probaron barras pareadas (la versión anterior), barras divergentes, curva de Lorenz y barras apiladas al 100 %; queda en 2 paneles: a) cada tramo con su % de perceptores a la izquierda y su % del importe a la derecha, cada medida con su eje (los tramos se leen por separado y se ve el cruce: muchos perceptores y poco dinero abajo, al revés arriba); b) curva de Lorenz de la UE-27 y de España con el Gini (cota inferior: 0,75 y 0,70) y el punto «el 25 % que más cobra se lleva el 84,6 %». CSV nuevo `datos/distribucion-pagos-lorenz.csv` (elaboración propia a partir de `distribucion-pagos.csv`). Ahora es el gráfico 6 (pág. 21) porque entra uno nuevo antes. Texto: viñeta «Cómo leer el gráfico» con el Gini. Duda B38-13.
+- **2. Modelos y Baldwin y Wyplosz** (6.ª ed., 2020, cap. 9, leído en el ejemplar del D:): el manual sí trae los modelos, con diagramas de oferta y demanda y letras $a$-$d$. Los 2 del tema ya seguían su lógica (el sostenimiento con restituciones es su fig. 9.10 leída al revés, con las mismas letras $b$ y $d$; la equivalencia arancel = impuesto al consumo + subvención a la producción ya estaba en el anexo A), pero faltaban piezas, que se han añadido:
+  - *Sostenimiento de precios* (I.2.3): ahora en 2 fases, como el manual: años 60, la Comunidad importa y el precio se sostiene con la exacción variable (fig. 9.2: productores $+a$, consumidores $-(a+b+c+d)$, recaudación $c$); la «revolución verde» desplaza la oferta y la Comunidad pasa a exportar con restituciones (figs. 9.6 y 9.10: $+(a+b+c)$, $-(a+b)$, $-(b+c+d)$). La función clave $\Delta W=-(b+d)$ no cambia. Gráfico rehecho en 2 paneles. Implicaciones nuevas: «de fuente de ingresos a sumidero de gasto» y el sesgo a las grandes. Extensión nueva con gráfico nuevo (`reparto-explotaciones`, fig. 9.5): la explotación grande se lleva casi toda la ganancia. Evidencia: 18,5 millones de t de cereales almacenados en 1985.
+  - *Desacoplamiento* (II.1.3): se rehace como la «nueva lógica» del manual: bajar el precio a $p^W$ ($+b+d$), compensar con un pago desacoplado $D=a+b+c$ (todos ganan, el bienestar sube igual) o con uno acoplado (queda $d$: los pagos de MacSharry). Se mantiene la función clave $\tfrac12 s^2q'(p)$ y el gráfico; se quita el rótulo $q'(p)$ de la oferta desplazada, que chocaba con la pendiente $q'(p)$ de la fórmula. Valoración: el pago desacoplado del todo es una subvención a la propiedad de la tierra (sec. 9.6).
+  - *Capitalización* (II.3.2): ya era el planteamiento del manual (incidencia de una subvención); se cita y se añade su dato de la OCDE (unos 45 céntimos de cada euro de pago por superficie para propietarios que no cultivan; el 40 % de la tierra no la cultiva su dueño).
+  - *Gordon-Schaefer*: el manual no trata la pesca; se queda como estaba.
+  - Notación del canon (x(p), q(p), $p^W$, $p^I$; la exacción sin letra para no chocar con $T$, la superficie). Fuentes: «elaboración propia a partir de Baldwin y Wyplosz (2020)» en los gráficos 1, 2 y 4. Entrada nueva `BaldwinWyplosz2020Economics` en el `.bib`, esencial (duda B38-14).
+- **3. Estructura común de las políticas de la UE**: el tema ya tenía casi todos los elementos; se ha reordenado por debajo de los títulos de segundo nivel (que no cambian) para que estén todos y en orden, en las 2 políticas:
+  - *PAC*: 1. Relevancia (I.1.1); 2. Justificación: a) teoría económica (I.1.2, por qué agraria y por qué común), b) **delimitación de competencias** (I.1.3, nueva, con lo que estaba en el marco jurídico y la tendencia a dar margen a los Estados), c) marco jurídico (I.1.4: arts. 38-44 y derecho derivado vigente), d) **toma de decisiones** (I.1.5, nueva: art. 43, gestión compartida y el MFP); 3. Evolución (I.2 y II.1, con los modelos de precios y de desacoplamiento); 4. Articulación (II.2, la PAC 2023-2027); 5. Retos de futuro (II.3).
+  - *PPC*: 1. Relevancia (III.1.1); 2. a) teoría económica (III.1.2 y el modelo de Gordon-Schaefer), b) delimitación de competencias (III.1.4, nueva), c) marco jurídico (III.1.5), d) toma de decisiones (III.1.6, nueva, con el asesoramiento del ICES y del CCTEP); 3. Evolución (III.2 y III.3); 4. Articulación (III.4, párrafo nuevo «La articulación actual: fondo, control y acción exterior», con el FEMPA, el control, los SFPA, las OROP y el Brexit) y sus resultados (estado de las poblaciones); 5. Retos de futuro (III.4, párrafo «Retos de futuro»: evaluación, Pacto por los Océanos, Visión 2040, después de 2027).
+  - No se pierde contenido; los minutos no cambian (suman 30).
+  - **Anexo de competencias**: añadido el fragmento `_trabajo/anexo-competencias.tex` (con `graficos/competencias-ue`, figura 3) como anexo D, antes del de test; se remite a él desde la delimitación de competencias de la PAC (I.1.3) y de la PPC (III.1.4).
+- **PDF**: antes 31 páginas de tema + 2 de anexos + 5 de bibliografía (38); ahora 33 + 4 + 5 (42), con el anexo de competencias. Ficha de repaso puesta al día (sostenimiento, desacoplamiento y pie del gráfico de distribución): 4 páginas a 10,5 pt. `verificar-tema.py`: 0 errores, 17 avisos (los de siempre: cifras sin cita en párrafos históricos y el vídeo).

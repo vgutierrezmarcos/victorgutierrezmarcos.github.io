@@ -1013,6 +1013,7 @@ también a universitarios y a quien aprende economía, sin perder la oposición
 - Publicar en `main` o fusionar la rama: solo Víctor decide cuándo.
 - Tocar otros temas que no sean el que se revisa.
 - Subir notas privadas (comentarios, texto oculto) a la fuente pública.
+- **Ninguna nota al opositor tras el esquema del tema** con el reparto del cante (Víctor, 19/11/2026): ese reparto va a «Instrucciones para el vídeo» de `revision.md`, no al tema.
 - **Citar la versión antigua del tema** (Víctor, 18/11/2026): «el tema antiguo», «la versión anterior», «el original», «corrige la nota del original», «la regla del tema antiguo»… En ningún caso, ni en el texto, ni en notas, cajas, fuentes de gráficos, anexos o fichas. Lo que se conserve del tema antiguo se cuenta sin decir de dónde viene (lo comprueba `verificar-tema.py`).
 - Inventar datos, citas o referencias. Si no se encuentra la fuente, se dice.
 

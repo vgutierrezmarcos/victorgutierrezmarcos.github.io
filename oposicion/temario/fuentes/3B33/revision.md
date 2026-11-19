@@ -156,6 +156,10 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **Funciones clave**: ninguna en el cuerpo desde el 18/11/2026 (`eq:bagwell-staiger` y `eq:incentivos` están en los anexos).
 - Nunca se dice el número de un tema en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{4}, de ellos \tiempo{1,5} para la teoría de los acuerdos comerciales; I.2, \tiempo{4,5}); II, \tiempo{10} (II.1, \tiempo{8}; II.2, \tiempo{2}); III, \tiempo{8} (III.1, \tiempo{2,5}; III.2, \tiempo{5,5}), y conclusión, \tiempo{1}. Las teorías de los acuerdos comerciales y de las salvaguardias se cuentan de palabra, con su idea y sus implicaciones; su desarrollo formal está en los anexos. Los gráficos y figuras imprescindibles son los acuerdos de la OMC (el mapa del tema), las rondas del GATT, los acuerdos específicos del anexo~1A y las diferencias por año. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Coherencia con el 3.B.34 (14/11/2026)
 - Exámenes de políticas comerciales cada 3 años: la OMC (página del MEPC) lista hoy a la UE, Estados Unidos, China y el **Reino Unido**, no Japón. Corregido.
 - Acuerdo de Facilitación de las Inversiones en Yaundé: la OMC no nombra a quien bloqueó; se dice «por falta de consenso» y que la prensa señala a la India (tema, tabla de conferencias y ficha).

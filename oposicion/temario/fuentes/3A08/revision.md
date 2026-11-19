@@ -582,6 +582,10 @@ Puesta al día con los criterios del 16/10/2026 (CRITERIOS.md § 2 y «Órdenes 
 - **Sin pizarra**: introducción, II.3 y conclusión (modo guion con sus cinco partes).
 - **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> La exposición sigue el orden lógico de la teoría: I construye la demanda paso a paso (ingredientes, equilibrio y solución, hasta la demanda de mercado); II estudia cómo cambia esa demanda con la renta y los precios, primero gráficamente y luego con elasticidades, y termina con una valoración que da paso a III; III recoge los 3 desarrollos que acercan la teoría a lo observable (preferencia revelada, producción doméstica y precios hedónicos). Reparto orientativo del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{5,5}; I.2, \tiempo{3}; I.3, \tiempo{2,5}); II, \tiempo{8} (II.1, \tiempo{2,5}; II.2, \tiempo{4,5}; II.3, \tiempo{1}); III, \tiempo{7,5} (\tiempo{3} + \tiempo{1,5} + \tiempo{3}), y conclusión, \tiempo{1}. El enfoque cardinal, la demanda de características de \autor{Lancaster}, la estimación de sistemas completos de demanda y la economía conductual de \autor{Thaler} están en los anexos, para las preguntas del tribunal.
+
 ## Enlaces del original (9/11/2026)
 
 Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIOS §4).

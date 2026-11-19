@@ -86,8 +86,8 @@ datos:
     familia: comercio-ue
 
   - id: euro-internacional
-    texto: "Euro: 20,2 % de las reservas (dólar 57 %), 24,6 % de la deuda internacional, 28,5 % del mercado de divisas, 23 % de SWIFT, 60,0 % y 53,1 % de la facturación de exportaciones e importaciones"
-    donde: [3B42.tex]
+    texto: "Euro: índice compuesto ≈20 %; 20,2 % de las reservas (dólar 57 %; oro 27 % de las reservas oficiales), 24,6 % de la deuda, 21,7 % de los préstamos y 17,3 % de los depósitos internacionales, más de 1,1 billones de dólares emitidos, 41 % de los bonos verdes, 28,5 % del mercado de divisas, 23 % de SWIFT (dólar 48 %, renminbi 4 %), 60,0 % y 53,1 % de la facturación de exportaciones e importaciones (64 % servicios); 70 % de los bancos centrales ven la geopolítica como su mayor riesgo"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
     valor: 20.2
     unidad: "%"
     periodo: "2025"
@@ -209,4 +209,32 @@ datos:
     url: https://www.europarl.europa.eu/legislative-train/
     periodicidad: irregular
     proxima: "cuando se complete la ratificación"
+    familia: aod
+
+  - id: euro-reservas-cofer
+    texto: "Euro en las reservas de divisas: 17,9 % (1999), máximo 24,0 % (2009), 20,3 % (2025), 20,6 % (2.º trim. 2026); dólar 71,0 % → 56,5 % (2025), 56,7 % (2.º trim. 2026)"
+    donde: [3B42.tex, datos/euro-reservas.csv, graficos/euro-reservas.tex, repaso/3B42-repaso.tex]
+    valor: 20.3
+    unidad: "%"
+    periodo: "1999-2025 (anual) y 2026T2"
+    fuente: FMI2026COFER
+    organismo: FMI
+    serie: "COFER, IMF.STA G001.AFXRA.CI_EUR/CI_USD/CI_JPY/CI_GBP/CI_CNY.SHRO_PT.A (API SDMX api.imf.org)"
+    url: https://data.imf.org/en/datasets/IMF.STA:COFER
+    periodicidad: trimestral (final de marzo, junio, septiembre y diciembre)
+    proxima: "2026-12 (datos del 3.er trimestre de 2026); 2027-03 (cierre de 2026)"
+    familia: euro
+
+  - id: ayuda-cad-total
+    texto: "CAD 2025: 174.300 millones de dólares de AOD, 0,26 % de la RNB, −23,1 % real"
+    donde: [3B42.tex, repaso/3B42-repaso.tex]
+    valor: 174300
+    unidad: millones de dólares
+    periodo: "2025 (preliminar)"
+    fuente: OCDE2026AODPreliminar
+    organismo: OCDE
+    serie: "DAC1, datos preliminares"
+    url: https://data-explorer.oecd.org/
+    periodicidad: anual (abril, preliminar; diciembre, definitivo)
+    proxima: "2026-12 (definitivos de 2025)"
     familia: aod

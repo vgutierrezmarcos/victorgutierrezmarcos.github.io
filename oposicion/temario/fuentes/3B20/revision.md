@@ -136,6 +136,10 @@ Todas las cifras de los gráficos están en `datos-actualizables.yaml`.
 - Funciones que se conservan en la esquina: la paridad de acuñación y la banda de los puntos del oro durante I; $D_t>G_t$ desde III.1.3 hasta el final.
 - Tablas `tab:white-keynes` y `tab:tres-ordenes` como apoyo, nunca escritas. La tabla de los 3 órdenes cierra la recapitulación.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{2}; I.2, \tiempo{1,5}; I.3, \tiempo{4,5}); II, \tiempo{8} (II.1, \tiempo{3,5}; II.2, \tiempo{4,5}); III, \tiempo{10,5} (III.1, \tiempo{6,5}; III.2, \tiempo{4}), y conclusión, \tiempo{1}. Cada etapa se cuenta con los 3 planos (comercial, financiero y monetario) y se cierra con los 3 problemas (ajuste, liquidez y confianza): es el patrón que ordena el cante. Los gráficos y figuras imprescindibles son la cronología (que se va completando), los puntos del oro y el dilema de \autor{Triffin}; las funciones clave, la paridad de acuñación, la banda de los puntos del oro y la condición de \autor{Triffin}. El refrán del enganche vuelve en la idea final.
+
 ## Listas en las notas al pie (15/11/2026)
 
 - Nota del sesgo deflacionista del patrón oro: las 3 razones por las que la liquidez no fue un problema grave, en itemize.

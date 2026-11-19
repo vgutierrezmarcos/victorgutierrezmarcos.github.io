@@ -112,3 +112,32 @@ for y in range(2015, 2026):
                            str(oa[('A','PC','TOTAL','T','EU27_2020',y)]),
                            str(oa[('A','PC','TOTAL','T','ES',y)])]))
 open(os.path.join(AQUI, 'pilar-social.csv'), 'w').write('\n'.join(filas) + '\n')
+
+# --- Mapa del PIB por habitante por regiones (NUTS 2024), 19/11/2026 ---------
+# Todas las regiones NUTS 2 de la UE-27 con dato en 2024 (244); la variación
+# 2000-2024 solo donde hay dato de 2000 (faltan Bélgica y Mayotte).
+regs_m = sorted(g for g in geo if len(g) == 4 and g[:2] in EU and not g.endswith('ZZ') and v(g, 2024))
+filas = [f'# Eurostat, nama_10r_2gdp (actualizado el 10/2/2026; consulta 14/11/2026): PIB por habitante en PPA, índice UE-27 = 100, regiones NUTS 2 (NUTS 2024) de la UE-27 ({len(regs_m)}).',
+         '# idx2024: nivel en 2024; dif: variación en puntos 2000-2024 (vacía si no hay dato de 2000). Lo lee mapas-regiones.py.',
+         'nuts;idx2024;idx2000;dif']
+for g in regs_m:
+    a, b0 = v(g, 2024), v(g, 2000)
+    filas.append(f'{g};{a};{b0 if b0 else ""};{a - b0 if b0 else ""}')
+open(os.path.join(AQUI, 'mapa-pib-regional.csv'), 'w').write('\n'.join(filas) + '\n')
+print('regiones del mapa', len(regs_m), '<75:', sum(v(g, 2024) < 75 for g in regs_m))
+
+# --- Cohesión por Estado, por habitante (19/11/2026) ---------------------------
+# Mismos datos que cohesion-estados.csv, ordenados por euros por habitante, y la
+# media de la UE (importe total entre la población implícita en pc).
+lc = [l for l in open(os.path.join(AQUI, 'cohesion-estados.csv')).read().splitlines() if l and not l.startswith('#')]
+cab, filas_c = lc[0].split(','), [dict(zip(lc[0].split(','), l.split(','))) for l in lc[1:]]
+filas_c.sort(key=lambda f: int(f['pc']))
+tot = sum(float(f['millones']) for f in filas_c)
+pob = sum(float(f['millones']) / int(f['pc']) for f in filas_c)
+media = tot / pob
+salida = [f'# Mismos datos que cohesion-estados.csv (ver su cabecera), ordenados por euros por habitante (pc). Media de la UE-27: {media:.0f} euros por habitante ({tot:.1f} millones entre la población implícita).',
+          'n,codigo,pais,millones,mm,pc,es']
+for i, f in enumerate(filas_c):
+    salida.append(f"{i},{f['codigo']},{f['pais']},{f['millones']},{f['mm']},{f['pc']},{f['es']}")
+open(os.path.join(AQUI, 'cohesion-estados-hab.csv'), 'w').write('\n'.join(salida) + '\n')
+print('media UE por habitante', round(media))

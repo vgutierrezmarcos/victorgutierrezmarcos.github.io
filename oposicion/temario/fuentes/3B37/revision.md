@@ -140,6 +140,10 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - Nunca se dice el número de un tema en voz alta.
 - B37-08 resuelta por el coordinador (14/11/2026): comprobado en el texto del artículo; son ≈1,6 puntos más de crecimiento anual medio durante el periodo de programación. Se mantiene «al año»; el 3.B.40 dice lo mismo.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{1}; I.2, \tiempo{2,5}; I.3, \tiempo{2,5}; I.4, \tiempo{2,5}, de ellos \tiempo{1} para los bienes públicos europeos); II, \tiempo{9} (II.1, \tiempo{2,5}; II.2, \tiempo{4,5}, de ellos \tiempo{1} para el justo retorno; II.3, \tiempo{2}); III, \tiempo{9} (III.1, \tiempo{1}; III.2, \tiempo{3}; III.3, \tiempo{5}, de ellos \tiempo{1,5} para la sostenibilidad de la deuda común), y conclusión, \tiempo{1}. Las figuras y gráficos imprescindibles son la constitución financiera, el ciclo presupuestario, el MAFC, el gasto desde 1958, el del MFP 2021-2027 por rúbricas y el de la deuda del NextGenerationEU. Como es un tema institucional, los 2 modelos (bienes públicos europeos y justo retorno) van en los anexos: en el cante basta su idea. Las cifras de las tablas, las cajas grises y los anexos son para las preguntas del tribunal.
+
 ## Coherencia con el 3.B.45 (14/11/2026)
 
 - SAFE: «los primeros pagos llegaron en junio de 2026» pasa a «el primer pago, a Polonia, llegó el 29 de mayo de 2026», según la fuente que comprobó el agente del 3.B.45.
@@ -169,3 +173,19 @@ Ninguna nota lo necesitaba.
 - **B37-10** Gráfico 3 antes de 2000: las áreas se han hecho corresponder con las rúbricas de entonces (competitividad = solo investigación; las demás políticas internas, en «otros»), las unidades de cuenta y ecus se equiparan al euro y el % de la RNB de 1958-1969 solo tiene un decimal. Hay una ruptura en 2000 (cambia la clasificación y la fuente). Opciones: (a) así, avisándolo en la fuente **[aplicada]**; (b) empezar en 1970, donde el % de la RNB es cálculo propio con 2 decimales.
 - **B37-11** Fórmula de la carga anual de la deuda del NGEU: en caja gris, no en morado, para no presentarla como modelo. Opciones: (a) en caja gris **[aplicada]**; (b) quitarla y dejar solo las cifras.
 - **B37-12** Infografía del MAFC: el calendario dice «2027: primera declaración y entrega de certificados por lo importado en 2026» sin día exacto (la simplificación de 2025 movió la fecha y no se ha comprobado hoy). Opciones: (a) dejar el año **[aplicada]**; (b) poner el día tras comprobarlo en la web de la Comisión.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Anexo de competencias (arts. 2 a 6 TFUE): nuevo anexo «El reparto de competencias de la Unión» (anexo:competencias) antes del de test, con la figura común `graficos/competencias-ue.tex` (carga `latex/competencias-ue-base.tex`, idéntica en los 10 temas de la UE salvo el resaltado). Resaltado en este tema: la cohesión y la agricultura (los 2 ámbitos que más gastan), con la leyenda de que el presupuesto financia todas las categorías. Remisión desde el teorema de la descentralización en «¿Qué debe financiar la Unión?».
+- **Estructura común de las políticas de la UE**: se aplica en parte. El presupuesto no es una política, sino el instrumento que financia todas; aun así, los elementos de la fórmula tienen su sitio, y el que faltaba en su orden (la justificación económica, que estaba al final del bloque I, en I.4.2) se ha adelantado:
+  - *1. Relevancia*: introducción.
+  - *2. Justificación*: a) teoría económica: **nuevo al principio del bloque I**, «Por qué hay un presupuesto común» (las 3 funciones de Musgrave y el federalismo fiscal), trasladado desde I.4.2; b) delimitación de competencias: **nuevo**, «Qué puede hacer la Unión» (Oates, principio de atribución, art. 5 TUE, y la remisión al anexo de competencias), también trasladado desde I.4.2; c) marco jurídico, I.1 (los 4 textos de la constitución financiera); d) toma de decisiones, I.2 (ciclo presupuestario, art. 314) y, para los ingresos y los techos, I.1, I.3 y I.4.1 (unanimidad y ratificación). Una viñeta «El orden del bloque» lo anuncia. En I.4.2 queda lo normativo (los bienes públicos europeos, los 4 criterios y la evidencia), enlazado con lo de arriba; no se pierde nada.
+  - *3. Evolución*: II.1 (1951-2027).
+  - *4. Articulación*: I.3 y I.4 (ingresos y MFP), II.2 (el MFP 2021-2027 y el presupuesto de 2026) y III (actividad extrapresupuestaria).
+  - *5. Retos de futuro*: II.3 (la propuesta 2028-2034 y su negociación), los nuevos recursos propios (I.3.2) y la sostenibilidad de la deuda común (III.3.5).
+  - Minutos sin cambios (30); títulos sin cambios. Ficha sin cambios (ya resume el federalismo fiscal en I.4 de palabra). `\tcefecha` a 19/11/2026.
+  - Páginas: cuerpo 33 → 34; anexos 8. `verificar-tema.py`: 0 errores, 17 avisos (cifras sin cita en párrafos históricos y el vídeo; ninguno en lo nuevo).
+
+### Dudas (19/11/2026)
+
+- **B37-13. Dónde va la justificación económica.** Opciones: (a) la teoría (Musgrave, Oates y competencias) al principio del bloque I, en su entrada, y los bienes públicos europeos y la evidencia en I.4.2, con el MFP **[aplicada]**; (b) un subapartado nuevo I.1 «¿Por qué un presupuesto común? Los bienes públicos europeos» con todo I.4.2, renumerando I.1-I.4 (cambia títulos de segundo nivel, esquema y ficha); (c) dejarlo todo en I.4.2.

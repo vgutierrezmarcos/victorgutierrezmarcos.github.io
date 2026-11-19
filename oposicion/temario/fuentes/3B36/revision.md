@@ -130,6 +130,8 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **B36-08** Resultado del Consejo Europeo de octubre de 2026 sobre la comunicación «Preparar una Unión más amplia»: no comprobado; el tema solo dice lo que propuso la Comisión. Comprobar en la próxima pasada.
 - **B36-09** Reforma del Tratado del MEDE: se dice que no ha entrado en vigor porque Italia no la ha ratificado (rechazo de diciembre de 2023), sin comprobar si cambió en 2026. Comprobar con el 3.B.45.
 - **B36-10** Infracción contra Polonia por la sentencia de su Tribunal Constitucional (llevada al TJ en 2023): no se da el resultado por no haberlo comprobado. Ninguna acción.
+- **B36-30. Tabla de competencias del cuerpo frente al diagrama del anexo** (19/11/2026). La tabla `tab:competencias` del cuerpo repite en parte el diagrama nuevo del anexo de competencias (arts. 2-6 TFUE, común a los temas de la UE). Opción recomendada (a): dejar los dos (la tabla se canta; el diagrama es de consulta). Opción (b): quitar la tabla del cuerpo y remitir al anexo. Opción (c): llevar la tabla a una caja gris.
+- **B36-31. «Preferencia» o «preempción»** (19/11/2026). El diagrama de competencias dice «preferencia» (art. 2.2 TFUE y Protocolo 25); el cuerpo del 3.B.36 dice «preempción». Opción recomendada (a): «preferencia» en todo el temario, con «(*preemption*)» la primera vez. Opción (b): «preempción» en todo. Opción (c): dejarlo así.
 
 ## 8. Instrucciones para el vídeo
 
@@ -142,6 +144,10 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **III**: `mapa-instituciones` como apoyo que se va completando; `escanos-estados` y `grupos-pe` como apoyo; en el Consejo, la regla de la doble mayoría en la pizarra y la idea de que el peso no es el poder, de palabra (el modelo y `poder-voto` están en el anexo A.3 desde el 16/11/2026).
 - **Funciones clave que se conservan**: ninguna en el cuerpo desde el 16/11/2026 (`eq:asignacion` y `eq:shapley-shubik` están en los anexos).
 - Nunca se dice el número de un tema en voz alta.
+
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1-I.4, \tiempo{3,5}; I.5, \tiempo{2}; I.6, \tiempo{2,5}); II, \tiempo{9} (II.1, \tiempo{4}; II.2, \tiempo{2,5}; II.3, \tiempo{2,5}); III, \tiempo{9,5} (III.1-III.2, \tiempo{3,5}; III.3, \tiempo{2,5}; III.4-III.8, \tiempo{3,5}), y conclusión, \tiempo{1}. La historia se canta deprisa, tratado a tratado y con lo que aportó cada uno, con la línea temporal como guía; el peso va al Derecho y a las instituciones. Es un tema institucional: los modelos de la asignación de competencias y del poder de voto van en los anexos, y en el cante basta su idea, en una frase cada uno. Las figuras imprescindibles son la línea temporal, la estructura de los tratados, la de las fuentes del Derecho, el procedimiento legislativo ordinario y el mapa de las instituciones. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
 
 ## Coherencia con el 3.B.43 (14/11/2026)
 
@@ -167,3 +173,16 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **B36-13** El modelo de la asignación de competencias y el del poder de voto conservan en los anexos su estructura de a) a e) y sus funciones clave en morado. Opciones: (a) así **[aplicada]**; (b) dejarlos en versión corta (idea y resultado).
 - **B36-14** Contenido nuevo no comprobado con fuente primaria en la web (de memoria verificada con la doctrina): DTC 1/1992 y 1/2004, *Melloni*/STC 26/2014, RD 515/2013, Ley 8/1994, *Publicidad del tabaco*, *CILFIT*, *Foto-Frost*, Dictámenes 1/17 y 2/13, Ioannina (Decisión 2009/857), «unas 20» comisiones del PE. Sí se comprobaron en EUR-Lex los reglamentos de NGEU (2020/2094), el Mecanismo para Ucrania (2024/792) y SAFE (2025/1106). Opciones: (a) dejarlo así **[aplicada]**; (b) añadir cita a cada sentencia y norma en la bibliografía.
 - **B36-15** En la página A-2 del anexo de la asignación de competencias queda medio blanco antes del gráfico 5 (el gráfico no cabe tras la función clave). Ninguna acción por ahora (es un anexo).
+
+## Comentarios de Víctor (19/11/2026)
+
+- Anexo de competencias (arts. 2 a 6 TFUE): nuevo anexo «El reparto de competencias de la Unión» (anexo:competencias) antes del de test, con la figura común `graficos/competencias-ue.tex` (carga `latex/competencias-ue-base.tex`, idéntica en los 10 temas de la UE salvo el resaltado). Resaltado en este tema: ninguno (el tema estudia el reparto entero). Remisión desde «La atribución de competencias» (sec:atribucion).
+- **Estructura común de las políticas de la UE** (relevancia; justificación con teoría económica, competencias, marco jurídico y toma de decisiones; evolución; articulación; retos): **no se aplica** al 3.B.36, porque no estudia una política, sino el marco en que se hacen todas (tratados, Derecho e instituciones), y su título fija los 3 bloques. No se reestructura. Cómo se reparten aquí los elementos, como referencia para los demás temas de la UE:
+  - *Relevancia*: en la introducción.
+  - *Justificación de teoría económica*: solo la del reparto de competencias entre niveles de gobierno (Oates; Alesina, Angeloni y Etro), de palabra al final de II.2.2 y desarrollada en el anexo A.2, y la del poder de voto (anexo A.3).
+  - *Delimitación de competencias*: II.2 (arts. 2-6 TFUE y principios), con la remisión al anexo de competencias; es el tema de referencia de lo que los demás temas de la UE resumen.
+  - *Marco jurídico*: todo el bloque II (fuentes, jerarquía, Derecho derivado, Derecho de la Unión en España).
+  - *Toma de decisiones*: II.3 (procedimientos legislativos, acuerdos internacionales, flexibilidad) y III (cada institución, con la doble mayoría del Consejo).
+  - *Evolución*: el bloque I (de París a Lisboa, Brexit, crisis).
+  - *Retos de futuro*: I.6.4 (ampliación y reforma de los Tratados) y la opinión de la conclusión.
+  - Sin cambios en el `.tex`, la ficha ni las páginas (cuerpo 32, anexos 9).

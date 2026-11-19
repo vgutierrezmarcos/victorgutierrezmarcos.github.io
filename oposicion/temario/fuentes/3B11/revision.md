@@ -207,6 +207,19 @@ Todas con la opción recomendada aplicada.
 - Las pegatinas, cada una junto a su concepto: «toda moneda tiene dos caras» (partida doble), «las cuentas del Gran Capitán» (errores y omisiones), «de grano en grano hace la gallina el granero» (la posición acumula las cuentas financieras) y «las cuentas de la lechera» (el déficit que se justifica por unas rentas futuras que pueden no llegar).
 - Pegatinas, una vez cada una: «toda moneda tiene dos caras» (I.2.3), «las cuentas del Gran Capitán» (II.5), «de grano en grano hace la gallina el granero» (II.7), «las cuentas de la lechera» (III.1); el refrán de la manga vuelve en III.3.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante:
+> \begin{itemize}
+> \item introducción, \tiempo{2,5};
+> \item I, \tiempo{6,5} (I.1, \tiempo{2,5}; I.2, \tiempo{4});
+> \item II, \tiempo{11,5} (II.1, \tiempo{1}; II.2, \tiempo{3,5}; II.3, \tiempo{1}; II.4, \tiempo{3}; II.5, \tiempo{0,5}; II.6, \tiempo{1}; II.7, \tiempo{1,5});
+> \item III, \tiempo{8,5} (entrada, \tiempo{0,5}; III.1, \tiempo{3}; III.2, \tiempo{1,5}; III.3, \tiempo{2}; III.4, \tiempo{1,5});
+> \item conclusión, \tiempo{1}.
+> \end{itemize}
+> Es un tema de documento estadístico: la teoría del ajuste, de las crisis y de la sostenibilidad se cuenta en resumen y se remite a sus temas.
+> Las tablas de España, las series de datos y los anexos~\ref{anexo:rubricas} a~\ref{anexo:sostenibilidad} (rúbricas y fuentes, cuadros del MBP6, asientos y ejercicios, cuentas nacionales y sostenibilidad) son para las preguntas del tribunal.
+
 ## 9. Propuestas: qué se aplicó
 
 - **Contenido** (C1-C39): aplicadas C2-C33 y C35-C39, con la estructura, los minutos, la notación y las etiquetas de coherencia donde chocan (C1 sustituida por K30; `eq:cc-ahorro` → `eq:cc-ahorro-inversion`; `eq:otras-variaciones`/`eq:pii-flujo` → `eq:variacion-pii`; $W$, $I^n$, $S^n$, EV, OCV → la forma de K21, B11-14 y B11-15; `cnf*`, `piin` en minúsculas → forma de la 1D01 en el cuerpo y de la ficha en el anexo E, B11-13). C34 (conclusión) aplicada con la versión de K9 y sin Irlanda (B11-17). C5 como viñeta y no recuadro (K1); C6 recortada (B11-07); C7 sin `tab:sectores` (B11-06). Decisiones D1-D12 de contenido: D10 (refrán de la manga) y D11 (almazara) aplicadas; el resto, sustituidas por las de coherencia y el coordinador.

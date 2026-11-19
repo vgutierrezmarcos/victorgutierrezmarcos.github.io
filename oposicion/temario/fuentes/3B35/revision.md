@@ -154,6 +154,10 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **II**: patrón fijo por bloque, de palabra; en la pizarra solo una rejilla con los bloques que se van nombrando (forma y año). La tabla del plato de espaguetis de Asia-Pacífico, como apoyo en II.3. Nunca se dice el número de un tema en voz alta.
 - **III.1**: el gráfico `comercio-intrarregional` en la pizarra por capas (barras de 2000, de 2025, ejes, rótulos); el de PIB y población, como apoyo.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7} (I.1, \tiempo{1,5}; I.2, \tiempo{1}; I.3, \tiempo{3,5}; I.4, \tiempo{1}); II, \tiempo{13} (II.1, \tiempo{2}; II.2, \tiempo{4,5}; II.3, \tiempo{3,5}; II.4, \tiempo{1}; II.5, \tiempo{2}); III, \tiempo{6,5} (III.1, \tiempo{3,5}; III.2, \tiempo{3}), y conclusión, \tiempo{1}. El grueso del cante son los procesos (bloque~\ref{sec:procesos}), que se apoyan en el mapa de los bloques (gráfico~\ref{fig:mapa}). Del debate del regionalismo se cantan los argumentos del peldaño y del escollo con la interpretación de los modelos de \autor{Krugman}, \autor{Baldwin} y \autor{Krishna}, cuyo desarrollo está en los anexos; el gráfico de los bloques de \autor{Krugman} es el único de teoría que conviene dibujar. De cada bloque se canta el patrón fijo (miembros y forma, origen, situación actual, valoración) en pocas líneas; las fichas largas, las cajas grises y los anexos son para las preguntas del tribunal.
+
 ## Coherencia con el 3.B.41 (14/11/2026)
 - Corregido por el coordinador a partir del 3.B.41 (Mercosur: negociación cerrada en diciembre de 2024 y firma el 17/1/2026; México firmado; Indonesia, la India y Australia cerrados en 2025-2026; salvaguardia del acero sustituida el 1/7/2026 por el Reglamento 2026/1384; el SPG se trata en el 3.B.41).
 

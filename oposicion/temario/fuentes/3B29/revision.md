@@ -207,6 +207,10 @@ Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 
 - **Al final**, la pizarra queda limpia, con la curva de Laffer de la deuda y las 2 columnas de la ayuda si caben; si no, solo las 2 columnas.
 - No decir números de temas en voz alta (se nombran los enfoques: «el enfoque intertemporal», «la teoría de las crisis», «el Fondo Monetario»).
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{3,5}; I.2, \tiempo{1,5}; I.3, \tiempo{3,5}); II, \tiempo{9} (II.1, \tiempo{3,5}; II.2, \tiempo{3,5}; II.3, \tiempo{2}); III, \tiempo{8,5} (III.1, \tiempo{2,5}; III.2, \tiempo{2,5}; III.3, \tiempo{3,5}), y conclusión, \tiempo{1,5}. Los programas del FMI y la estructura del Banco Mundial tienen su propio tema: aquí basta con nombrarlos. Los 3 gráficos imprescindibles son el del modelo intertemporal, el de la dinámica de la deuda externa y la curva de Laffer de la deuda; las funciones clave, las 2 brechas, la dinámica de la deuda externa y el saldo que la estabiliza. El refrán del enganche vuelve en la idea final. Las 3 cifras que conviene llevar al día son la AOD del CAD y su porcentaje de la renta, la deuda externa y su servicio en los países de renta baja y media y el número de países en riesgo alto de sobreendeudamiento.
+
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.

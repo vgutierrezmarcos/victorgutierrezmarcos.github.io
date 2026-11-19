@@ -326,6 +326,10 @@ Rehechas el 11/11/2026 (4.ª tanda) con la estructura en 3 bloques; lo que antes
 - **Conclusión**: sin pizarra; empieza por «En conclusión,»; la idea final vuelve a la foto de Nogales (apoyo).
 - **Al final**, la pizarra queda con las 2 funciones clave a la izquierda y el esquema de las causas a la derecha.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10} (I.1, \tiempo{1,5}; I.2, \tiempo{3}; I.3, \tiempo{0,5}; I.4, \tiempo{2,5}; I.5, \tiempo{1}; I.6, \tiempo{1,5}); II, \tiempo{8} (II.1, \tiempo{3}; II.2, \tiempo{5}); III, \tiempo{8,5} (III.1, \tiempo{2,5}; III.2, \tiempo{2,5}; III.3, \tiempo{3,5}), y conclusión, \tiempo{1}. La caja de los hechos empíricos se cuenta en una frase al empezar el bloque~\ref{sec:contabilidad} (Estados Unidos ×12 en siglo y medio, y Corea del Sur frente a Nigeria). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Control de calidad (1/11/2026): correcciones aplicadas
 
 - I.3: la participación salarial ajustada de España desde 2007 se mueve «entre el 53 y el 58 %»; el resultado de Gollin, «con el ajuste de Gollin… con datos de los 90».

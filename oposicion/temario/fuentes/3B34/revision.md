@@ -173,6 +173,10 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **Funciones clave**: desde el 18/11/2026 están en los anexos (`eq:umbrales-servicios`, `eq:grossman-lai`, `eq:neutralidad`); en el cante no hay funciones clave que conservar.
 - Nunca se dice el número de un tema en voz alta.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10} (I.1, \tiempo{2,5}; I.2, \tiempo{1,5}; I.3, \tiempo{3,5}; I.4, \tiempo{1,5}; I.5, \tiempo{1}); II, \tiempo{9,5} (II.1, \tiempo{1,5}; II.2, \tiempo{1,5}; II.3, \tiempo{3,5}; II.4, \tiempo{2}; II.5, \tiempo{1}); III, \tiempo{7} (III.1, \tiempo{2}; III.2, \tiempo{3}; III.3, \tiempo{1}; III.4, \tiempo{1}), y conclusión, \tiempo{1}. Los 2 acuerdos multilaterales se cuentan con el mismo patrón (delimitación, motivación, estructura, negociaciones, valoración), fácil de memorizar. Es un tema institucional: la teoría (las barreras regulatorias como costes fijos, la protección de la propiedad intelectual entre el Norte y el Sur y el sesgo nacional de las compras públicas) se cuenta de palabra, con sus resultados y su evidencia; los modelos formales están en los anexos, para las preguntas del tribunal. Los gráficos y figuras imprescindibles son el mapa de los acuerdos, los modos de suministro, la evolución del comercio de mercancías y servicios, su composición por sectores y el índice de restricción del comercio de servicios. Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal. La organización de la OMC y la solución de diferencias no se repiten: se mencionan en una frase \vertema{3.B.33}.
+
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.

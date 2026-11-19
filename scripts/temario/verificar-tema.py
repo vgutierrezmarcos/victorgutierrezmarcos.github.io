@@ -534,6 +534,9 @@ def comprobar_listas_y_bibliografia(tema, tex, errores, avisos):
     if mixtas:
         errores.append(f'{len(mixtas)} listas con rótulos en negrita y en cursiva mezclados (l. '
                        f'{", ".join(map(str, sorted(mixtas)[:8]))}): todos iguales (CRITERIOS §2)')
+    # Reparto del cante tras el esquema: va a revision.md (Víctor, 19/11/2026)
+    if re.search(r'\\end\{esquema\}\s*(?:\\begin\{infografia\}.*?\\end\{infografia\}\s*)?\\begin\{notaopositor\}\s*Reparto del cante', sin, re.S):
+        errores.append('Nota al opositor con el reparto del cante tras el esquema: va a «Instrucciones para el vídeo» de revision.md (CRITERIOS §10)')
     if os.path.exists(tema.bib) and not tema.es_dictamen:
         bib = open(tema.bib, encoding='utf-8').read()
         n = len(re.findall(r'\bkeywords\s*=\s*[{"][^}"]*\besencial\b', bib, re.I))

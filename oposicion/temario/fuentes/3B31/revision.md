@@ -426,6 +426,26 @@ El tema original no tenía enlaces (`_trabajo/original.md` sin URL): no hay nada
 - **No se dicen números de temas** en voz alta: «la teoría de las externalidades», «el modelo de
   Ramsey, Cass y Koopmans», «la teoría de juegos».
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante:
+> \begin{itemize}
+> \item introducción, \tiempo{2,5};
+> \item I, \tiempo{7,5} (I.1, \tiempo{1,5}; I.2, \tiempo{2}; I.3, \tiempo{4});
+> \item II, \tiempo{9} (II.1, \tiempo{2,5}; II.2, \tiempo{1,5}; II.3, \tiempo{5});
+> \item III, \tiempo{9,5} (III.1, \tiempo{1,5}; III.2, \tiempo{1,5}; III.3, \tiempo{2,5}; III.4, \tiempo{4});
+> \item conclusión, \tiempo{1,5}.
+> \end{itemize}
+> Los 3 bloques pesan casi lo mismo, como en el título; dentro del tercero, el Mecanismo de Ajuste en Frontera por Carbono se lleva unos \tiempo{2}. Los gráficos y figuras imprescindibles son:
+> \begin{itemize}
+> \item el de las emisiones óptimas, que vuelve en todo el tema (gráfico~\ref{fig:emisiones-optimas});
+> \item la U invertida de la temperatura y la productividad (gráfico~\ref{fig:temperatura-productividad});
+> \item el esquema del DICE con su problema de optimización y la fórmula del descuento (figura~\ref{figu:dice-esquema});
+> \item la matriz del dilema entre países y su versión con el club (tablas~\ref{tab:dilema-clima} y~\ref{tab:club-clima});
+> \item el del Mecanismo de Ajuste en Frontera por Carbono (gráfico~\ref{fig:mafc}).
+> \end{itemize}
+> Las series de datos y los anexos son para las preguntas del tribunal. El ejemplo de la tonelada de CO\textsubscript{2} de la acería vuelve en cada bloque, siempre en una viñeta propia.
+
 ## Revisión transversal (13/11/2026)
 
 - **Nobel**: \autor{Nordhaus} 2018 ya estaba en la introducción, con su motivo, y su modelo DICE se desarrolla en el apartado II y en el anexo. Nuevas notas: \autor{Coase} 1991, \autor{Samuelson} 1970, \autor{Nash} 1994, \autor{Koopmans} 1975, \autor{Acemoglu} 2024 (cambio técnico dirigido; la nota añade que su coautor \autor{Aghion} lo recibió en 2025 con \autor{Howitt}), \autor{Frisch} 1969, \autor{Buchanan} 1986 y \autor{Arrow} 1972 (anexo); entradas copiadas al `.bib`.

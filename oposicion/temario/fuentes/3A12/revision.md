@@ -231,6 +231,10 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 - La idea final responde a la pregunta del enganche (¿cuánto del abaratamiento de la fotovoltaica se debe a la escala, al aprendizaje y a los precios de los factores?).
 - El esquema de dualidad se construye por capas en la pizarra durante todo I; la función de costes no se borra. (11/11/2026)
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> La exposición va de los dos problemas de la empresa y su «dualidad» (\ref{sec:dualidad-maximizacion-beneficios}) a cómo cambian los costes y cómo se estiman (\ref{sec:analisis-costes-estatica}), y a las extensiones y críticas de la teoría (\ref{sec:extensiones-criticas-teoria}). Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10,5} (I.1, \tiempo{1,5}; I.2, \tiempo{6}; I.3, \tiempo{3}); II, \tiempo{12} (II.1, \tiempo{4}; II.2, \tiempo{4,5}; II.3, \tiempo{1,5}; II.4, \tiempo{1}; II.5, \tiempo{1}); III, \tiempo{4} (III.1 y III.2, \tiempo{1}; III.3, \tiempo{2,5}; III.4, \tiempo{0,5}), y conclusión, \tiempo{1}. El bloque \ref{sec:dualidad-maximizacion-beneficios} se centra en la minimización del coste, porque el título solo pide costes; el II es el centro de la exposición, y el III va rápido.
+
 ## Comentarios de Víctor (11/11/2026, 4.ª tanda)
 
 | Comentario | Cómo se ha aplicado |

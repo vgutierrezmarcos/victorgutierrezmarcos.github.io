@@ -1,0 +1,49 @@
+% La base jurídica del mercado interior (3.B.39, I.2): de más a menos peso.
+% Arriba y en grande, el art. 26 TFUE (definición y mandato); debajo, el
+% art. 114 (base general de la armonización, mayoría cualificada) y lo que
+% excluye (fiscalidad y personas: bases propias con unanimidad); abajo, los
+% títulos de cada libertad con sus excepciones. A los lados, el reparto de
+% competencias (compartida; exclusiva en las normas de competencia).
+% Capas: 1 art. 26; 2 competencias; 3 art. 114; 4 exclusiones; 5 libertades.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=#1,fill=#1!8,rounded corners=3pt,align=center,inner sep=5pt,
+      execute at begin node={\hyphenpenalty=10000\relax}},
+    flecha/.style={-{Latex[length=2.2mm]},thick,#1},
+    libertad/.style={caja=#1,thick,text width=3.45cm,minimum height=2.15cm,font=\scriptsize}]
+  % 1: art. 26
+  \capa{1}{\node[caja=tceemorado,line width=1.6pt,text width=10.6cm,font=\small] (a26) at (0,0)
+    {{\large\bfseries\textcolor{tceemorado}{Art. 26 TFUE: el mercado interior}}\\[3pt]
+     «un espacio \textbf{sin fronteras interiores}, en el que la \textbf{libre circulación de mercancías, personas, servicios y capitales} estará garantizada»\\[2pt]
+     \footnotesize la Unión adopta las medidas para \emph{establecerlo} y \emph{garantizar su funcionamiento}; el Consejo fija las orientaciones para un progreso equilibrado};}
+  % 2: competencias
+  \capa{2}{\node[caja=tceegris,text width=2.6cm,font=\scriptsize] (comp) at (-7.25,0)
+    {\textbf{Competencia compartida}\\ art. 4.2.a TFUE\\[2pt] los Estados legislan mientras la Unión no lo haga (art. 2.2)};
+    \node[caja=tceegris,text width=2.6cm,font=\scriptsize] (excl) at (7.25,0)
+    {\textbf{Normas de competencia: exclusiva}\\ art. 3.1.b TFUE\\[2pt] arts. 101-109 (bloque~III)};
+    \draw[thick,tceegris] (comp) -- (a26); \draw[thick,tceegris] (a26) -- (excl);}
+  % 3: art. 114
+  \capa{3}{\node[caja=tceeazul,line width=1.1pt,text width=8.2cm,font=\footnotesize] (a114) at (-2.4,-2.75)
+    {{\normalsize\bfseries\textcolor{tceeazul}{Art. 114: la base general de la armonización}}\\[2pt]
+     Parlamento y Consejo, \textbf{procedimiento legislativo ordinario} (mayoría cualificada), previa consulta al CESE\\[1pt]
+     \scriptsize 114.4-114.5: un Estado puede mantener o introducir normas más protectoras si las notifica y la Comisión las aprueba};
+    \draw[flecha=tceemorado] (a26.south -| a114.north) -- (a114.north);}
+  % 4: exclusiones del 114
+  \capa{4}{\node[caja=tceerojo,thick,text width=5.1cm,font=\scriptsize] (excl114) at (5.55,-2.75)
+    {\textbf{\textcolor{tceerojo}{Fuera del 114 (art. 114.2)}}\\[2pt]
+     \textbf{fiscalidad}: arts. 113 (indirecta) y 115 (directa), con \textbf{unanimidad} en el Consejo y consulta al Parlamento\\[2pt]
+     \textbf{personas} y \textbf{derechos de los trabajadores}: bases propias (arts. 21 y 46-48)};
+    \draw[flecha=tceerojo,dashed] (a114.east) -- (excl114.west);}
+  % 5: las 4 libertades
+  \capa{5}{
+    \node[libertad=tceeazul] (lm) at (-5.85,-5.55) {\textbf{Mercancías}\\ arts. 28-37 (y 110)\\[2pt] \emph{excepciones}: art. 36 y exigencias imperativas (\emph{Cassis})};
+    \node[libertad=tceeverde] (lp) at (-1.95,-5.55) {\textbf{Personas}\\ arts. 21 y 45-48\\[2pt] \emph{excepciones}: orden, seguridad y salud públicos (45.3); empleo público (45.4)};
+    \node[libertad=tceenaranja] (ls) at (1.95,-5.55) {\textbf{Servicios y establecimiento}\\ arts. 49-62\\[2pt] \emph{excepciones}: poder público (51); orden, seguridad y salud (52)};
+    \node[libertad=tceedorado] (lc) at (5.85,-5.55) {\textbf{Capitales y pagos}\\ arts. 63-66, también \emph{erga omnes}\\[2pt] \emph{excepciones}: art. 65; frente a terceros, 64 y 66};
+    \node[font=\scriptsize\itshape,text=tceegris] at (0,-4.2) {las 4 libertades: cada una con su título del Tratado, su jurisprudencia y su derecho derivado};
+    \draw[thick,tceegris] (-7.6,-4.42) -- (7.6,-4.42);}
+\end{tikzpicture}
+\end{document}

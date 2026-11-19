@@ -16,7 +16,7 @@ datos:
     familia: ue-convergencia
 
   - id: convergencia-regional
-    texto: "232 regiones NUTS 2, 2000-2024: beta1 = -1,99 (0,12), R2 = 0,55, lambda 2,7 %; sin el Este, pendiente nula; 80 regiones por debajo del 75 % en 2024; Canarias 91->72, C. Valenciana 93->77, Andalucía 72->69, Extremadura 64->70, Madrid 129->125, Varsovia 105->157"
+    texto: "232 regiones NUTS 2, 2000-2024: beta1 = -1,99 (0,12), R2 = 0,55, lambda 2,7 %; sin el Este, pendiente nula; Canarias 91->72, C. Valenciana 93->77, Andalucía 72->69, Extremadura 64->70, Madrid 129->125, Varsovia 105->157"
     donde: [3B40.tex, repaso/3B40-repaso.tex, datos/convergencia-*.csv, graficos/convergencia-regional.tex]
     valor: -1.99
     unidad: "puntos porcentuales de crecimiento anual por unidad de ln"
@@ -139,4 +139,60 @@ datos:
     url: https://www.eib.org/en/about/priorities/cohesion/index.htm
     periodicidad: anual
     proxima: "2027-02 (resultados de 2026)"
+    familia: ue-cohesion
+
+  - id: mapa-pib-regional
+    texto: "En 2024, 83 de las 244 regiones NUTS 2 (NUTS 2024) por debajo del 75 % de la media; mapa del nivel de 2024 y de la variación 2000-2024 (gráfico mapa-pib-regional)"
+    donde: [3B40.tex, repaso/3B40-repaso.tex, datos/mapa-pib-regional.csv, graficos/mapa-pib-regional.tex]
+    valor: 83
+    unidad: "regiones"
+    periodo: "2024"
+    fuente: Eurostat2026Regional
+    organismo: Eurostat
+    serie: "nama_10r_2gdp, PPS_HAB_EU27_2020; python3 datos/preparar-datos.py y después python3 datos/mapas-regiones.py CARPETA_GISCO (contornos en la cabecera del script)"
+    url: https://ec.europa.eu/eurostat/databrowser/view/nama_10r_2gdp/default/table
+    periodicidad: anual (febrero-marzo, dato de t-2)
+    proxima: "2027-02 (añadir 2025)"
+    familia: ue-convergencia
+
+  - id: mapa-categorias
+    texto: "Categorías de regiones 2021-2027: 80 menos desarrolladas, 67 en transición, 95 más desarrolladas (gráfico mapa-categorias)"
+    donde: [3B40.tex, datos/mapa-categorias.csv, graficos/mapa-categorias.tex]
+    valor: 80
+    unidad: "regiones"
+    periodo: "2021-2027"
+    fuente: UE2021Categorias
+    organismo: Comisión Europea
+    serie: "Decisión de Ejecución (UE) 2021/1130, anexos I-III; cambia con el periodo 2028-2034"
+    url: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32021D1130
+    periodicidad: cada periodo de programación
+    proxima: "2027-2028 (lista de 2028-2034)"
+    familia: ue-cohesion
+
+  - id: cohesion-estados-hab
+    texto: "Cohesión 2021-2027 por habitante: España 724 €, media de la UE-27 815 € (gráfico cohesion-estados-hab)"
+    donde: [3B40.tex, repaso/3B40-repaso.tex, datos/cohesion-estados-hab.csv, graficos/cohesion-estados-hab.tex]
+    valor: 815
+    unidad: "euros por habitante"
+    periodo: "2021-2027 (programas a 13/11/2026; población a 1/1/2025)"
+    fuente: CE2026Cohesiondata
+    organismo: Comisión Europea y Eurostat
+    serie: "se rehace con python3 datos/preparar-datos.py a partir de cohesion-estados.csv"
+    url: https://cohesiondata.ec.europa.eu/
+    periodicidad: cuando cambian los programas
+    proxima: "2027 (cierre de las reprogramaciones)"
+    familia: ue-cohesion
+
+  - id: tabla-instrumentos
+    texto: "Tabla de instrumentos: FEADER unos 95.500 M€ (8.100 del NGEU); FEMPA 6.108; MRR hasta 672.500 de 2018 (312.500 en subvenciones); IPA III 14.162"
+    donde: [3B40.tex]
+    valor: 95500
+    unidad: "millones de euros"
+    periodo: "2021-2027"
+    fuente: CE2026FEADER
+    organismo: Comisión Europea y EUR-Lex
+    serie: "CE2026FEADER, UE2021FEMPA, UE2021MRR (art. 6), UE2021IPA (art. 4); el resto de filas, en las entradas de los fondos de cohesión"
+    url: https://agriculture.ec.europa.eu/common-agricultural-policy/financing-cap/cap-funds_en
+    periodicidad: fijas para el periodo; cambian con el MFP 2028-2034
+    proxima: "2028"
     familia: ue-cohesion

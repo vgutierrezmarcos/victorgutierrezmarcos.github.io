@@ -137,6 +137,10 @@ Revisión completa del 13/11/2026 (entrega 1: tema y ficha de repaso; sin vídeo
 - **Tabla de las crisis de los emergentes**: como apoyo, fila a fila mientras se nombra cada crisis.
 - **No decir números de temas** en voz alta: «la teoría de las crisis», «el tema del FMI», etc.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{2}; I.2, \tiempo{1,5}; I.3, \tiempo{2,5}; I.4, \tiempo{5}, con \tiempo{2} para el modelo de Bretton Woods II); II, \tiempo{7} (II.1, \tiempo{2}; II.2, \tiempo{3,5}; II.3, \tiempo{1,5}); III, \tiempo{8,5} (III.1, \tiempo{3}; III.2, \tiempo{3}; III.3, \tiempo{2,5}), y conclusión, \tiempo{1}. En cada etapa se recorren los 3 planos (comercial, monetario y financiero) en el mismo orden, para que el tribunal reconozca el patrón. Los gráficos y figuras imprescindibles son el trilema con el paso de Bretton Woods a la flotación (gráfico~\ref{fig:trilema-ruptura}), el esquema de Bretton Woods II (figura~\ref{figu:bw2}) y la curva del elefante (gráfico~\ref{fig:elefante}), con sus 3 puntos, A, B y C; la función clave es la identidad del saldo corriente \eqref{eq:cc-ahorro}. La cronología (figura~\ref{figu:cronologia}) se enseña al presentar la estructura, como mapa de los 3 apartados. Los gráficos de datos y el de la perturbación real son de apoyo y basta con citar su cifra o su idea clave. De las crisis de los emergentes se canta, de cada una, una frase de causas, otra de desarrollo y otra de salida. La crisis de 2008 y la de la deuda de 1982 se cuentan en resumen: su desarrollo está en otros temas. El dicho del enganche vuelve en la idea final.
+
 ## Coherencia con el 3.B.33 (14/11/2026)
 - La CM14 (Yaundé, marzo de 2026) no terminó «sin resultados»: aprobó tres decisiones menores (trato especial y diferenciado en MSF/OTC, entre otras), aunque sin acuerdos de calado. Corregido en el tema y en la ficha, en línea con el 3.B.33.
 

@@ -224,6 +224,10 @@ No restaurados:
 - Al final, la pizarra limpia con las 2 funciones clave y la columna de la izquierda completa.
 - Enganche y cierre: la vela de Jefferson y «más vale maña que fuerza»; la idea final responde a la pregunta del enganche y lo retoma.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11,5} (I.1, \tiempo{1}; I.2, \tiempo{9}; I.3, \tiempo{1,5}); II, \tiempo{9} (II.1, \tiempo{1,5}; II.2, \tiempo{6,5}; II.3, \tiempo{1}); III, \tiempo{6} (III.1, \tiempo{1}; III.2, \tiempo{2,5}; III.3, \tiempo{2,5}), y conclusión, \tiempo{1}. El hilo del tema es la ecuación de \autor{Euler}: en cada modelo se dice qué rendimiento $r$ no cae y a qué tasa crece la economía, y la tabla~\ref{tab:resumen-modelos} los recoge todos. Los refranes acompañan a cada idea: «más vale maña que fuerza» (enganche), «quien guarda, halla» ($AK$), «a hombros de gigantes» (\autor{Romer}: $\dot N=\eta_IL_IN$) y «rey muerto, rey puesto» (destrucción creativa). Lo que va en cajas grises, en notas y en los anexos es para las preguntas del tribunal.
+
 ## Revisión transversal (13/11/2026)
 
 - **Premios Nobel**: Romer (2018) y Aghion, Howitt y Mokyr (2025) ya estaban en la relevancia, con el motivo oficial, y su contribución se desarrolla entera (modelos de Romer y de Aghion y Howitt; Mokyr en las condiciones del crecimiento sostenido). Nuevas notas en la primera mención: Solow (1987), Koopmans (1975), Arrow (1972, con Hicks), Lucas (1995), Phelps (2006, Nelson y Phelps), Angrist (2021) y Acemoglu (2024) en Acemoglu y Angrist (2000), Stiglitz (2001, Dixit-Stiglitz), Samuelson (1970, Stolper-Samuelson) y Kremer (2019, en la nota de Kremer, 1993). La nota de North y Fogel pasa al formato habitual, con el motivo oficial.

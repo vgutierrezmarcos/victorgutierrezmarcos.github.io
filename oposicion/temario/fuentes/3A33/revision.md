@@ -197,6 +197,9 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 - No se dice «hilo» ni números de temas en voz alta.
 - Plan de pizarra del cante (retirado del texto del tema el 11/11/2026; úsese en el vídeo): Pizarra: a la izquierda, el plano $(Y,C)$ (\autor{Keynes}, \autor{Kuznets}, \autor{Duesenberry} y \autor{Friedman}) y, debajo, el ciclo vital; en el centro, el gráfico de \autor{Fisher}, que se reutiliza en las salidas a \autor{Hall} (\ref{sec:salidas}); a la derecha, la ecuación de \autor{Euler}, que pasa a ser estocástica en el bloque~\ref{sec:incertidumbre} y se va modificando pieza a pieza en \ref{sec:salidas}; en el bloque~\ref{sec:duraderos}, el coste de uso y las bandas $(S,s)$.
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{1,5}; I.2, \tiempo{7}: \autor{Fisher}, \tiempo{2,5}, renta permanente, \tiempo{2,5}, y ciclo vital, \tiempo{2}); II, \tiempo{11} (II.1, \tiempo{3}; II.2, \tiempo{2,5}; II.3, \tiempo{5,5}); III, \tiempo{7} (III.1, \tiempo{2,5}; III.2, \tiempo{2}; III.3, \tiempo{2,5}), y conclusión, \tiempo{1}. La teoría neoclásica, la optimización con $T$ periodos, las derivaciones de \autor{Hall} y del C-CAPM y el problema completo de los duraderos están en los anexos, para las preguntas del tribunal.
 
 ## Revisión transversal (13/11/2026)
 

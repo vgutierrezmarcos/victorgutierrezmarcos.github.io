@@ -194,6 +194,10 @@ K1-K26 en la parte 1 (K3 con los títulos del original; K6 aplicada como subapar
 - **España** vuelve como ejemplo en cada apartado con «Volvamos a España»: euro y trilema (I), SME y divorcio de la banda y el menú recorrido (II), tipos múltiples hasta 1959 y controles de 1992 (III), euro en la relevancia de la conclusión.
 - Dichos (13/11/2026): «no se puede nadar y guardar la ropa» (trilema), «cuando Estados Unidos estornuda, el mundo se resfría» (dilema) y «doblarse para no quebrarse» (Friedman), integrados en la frase sin etiqueta; la regla de Poole, como resumen del modelo. Se han quitado «ni chicha ni limonada» y «más vale una palabra a tiempo que cien a destiempo» (duda 18).
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{10,5} (I.1, \tiempo{0,5}; I.2, \tiempo{7,5}: políticas de demanda y trilema, \tiempo{3,5}, equilibrio interno, \tiempo{1,5}, equilibrio externo, \tiempo{1}, mercados financieros, \tiempo{1}, y economía política, \tiempo{0,5}; I.3, \tiempo{2,5}); II, \tiempo{6} (II.1, \tiempo{4,5}; II.2, \tiempo{1,5}); III, \tiempo{10} (III.1, \tiempo{4,5}; III.2, \tiempo{5,5}), y conclusión, \tiempo{1}. Los gráficos y figuras imprescindibles son el trilema (y su versión del dilema), \autor{Poole} en economía abierta, el eje de los regímenes, la zona objetivo y el modelo intertemporal con controles; la figura de la organización del apartado~\ref{sec:diseno} sirve para memorizar el orden de los argumentos, no para dibujarla. España vuelve como ejemplo en cada apartado.
+
 ## Puesta al día con las reglas de esta rama (13/11/2026)
 
 Tema traído de la rama `revision-temario`; adaptado a las reglas de las tandas 4.ª-9.ª y de la revisión transversal sin quitar contenido.

@@ -228,6 +228,10 @@ Regla nueva de CRITERIOS § 4: los enlaces del tema original se conservan.
 
 - **Anexos nuevos o rehechos (13/11/2026), solo apoyo**: Mundell-Fleming con 5 gráficos por capas (`mf-is-lm-bp` 1-8; `mf-fijo-perfecta` 1-8; `mf-flexible-perfecta` 1-7; `mf-fijo-imperfecta` panel a 1-8 y b 9-16; `mf-flexible-imperfecta` panel a 1-8 y b 9-16); Corsetti y Pesenti con `cp-fiscal` (12 capas: panel a, expansión propia de O a 1 y de 1 a 2 con GE, LE, ME y U₀; panel b, expansión del extranjero).
 
+**Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
+
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{9,5} (I.1, \tiempo{1}; I.2, \tiempo{5,5}; I.3, \tiempo{3}); II, \tiempo{9} (II.1, \tiempo{3}; II.2, \tiempo{6}); III, \tiempo{8} (III.1, \tiempo{5,5}; III.2, \tiempo{2,5}), y conclusión, \tiempo{1}. El título pide el crecimiento y el ahorro: el corto plazo no pasa de \tiempo{9,5}, el IS-LM se canta en un minuto y el modelo neokeynesiano y los multiplicadores se resumen, porque se desarrollan en otras exposiciones; el modelo de ciclo real con gasto y la equivalencia ricardiana, las pensiones y \autor{Barro} (1990) son los 3 desarrollos de esta. Lo que la exposición resume o simplifica (el IS-LM y \autor{Mundell}-\autor{Fleming} con sus gráficos, el ciclo real con gasto paso a paso, el modelo neokeynesiano con política fiscal, la economía abierta con expectativas racionales de \autor{Corsetti} y \autor{Pesenti}, la suavización impositiva, el tamaño del multiplicador, las pensiones en el modelo de \autor{Diamond} paso a paso y \autor{Barro} con hogares de \autor{Ramsey}) está en los anexos~\ref{anexo:islm} a~\ref{anexo:barro}.
+
 ## Refranes únicos (15/11/2026)
 
 Regla de Víctor: un refrán o dicho no se repite en temas distintos.

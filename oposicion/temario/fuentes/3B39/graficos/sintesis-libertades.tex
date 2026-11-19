@@ -1,0 +1,64 @@
+% Síntesis del bloque II del 3.B.39: las 4 libertades con el mismo patrón
+% (base jurídica, jurisprudencia, derecho derivado e instrumentos, barreras que
+% quedan y grado de avance). Mismos colores que la figura de la base jurídica:
+% mercancías azul, servicios naranja, personas verde, capitales dorado.
+% Capas: 1 rótulos de las filas; 2 mercancías; 3 servicios; 4 personas;
+% 5 capitales; 6 conclusión.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\newcommand{\nivel}[2]{% #1 color, #2 puntos llenos de 5
+  \foreach \k in {1,...,5}{\ifnum\k>#2\relax\tikz\draw[#1,thick] (0,0) circle (0.09);\else\tikz\fill[#1] (0,0) circle (0.1);\fi\hspace{1pt}}}
+\begin{tikzpicture}[tcee,
+    fila/.style={draw=tceemorado,fill=tceemorado!10,rounded corners=2pt,text width=2.35cm,minimum height=#1,align=left,font=\scriptsize\bfseries,text=tceemorado,inner sep=3pt},
+    celda/.style={draw=#1,fill=#1!7,rounded corners=2pt,text width=3.05cm,align=left,font=\scriptsize,inner sep=3pt,execute at begin node={\hyphenpenalty=10000\relax}},
+    cab/.style={draw=#1,fill=#1!35,rounded corners=2pt,text width=3.05cm,align=center,font=\footnotesize\bfseries,inner sep=3pt,minimum height=0.6cm}]
+  \def\xa{2.35}\def\dx{3.45}
+  % alturas de las filas (centros) y altos
+  \def\ya{-0.85}\def\yb{-2.05}\def\yc{-3.75}\def\yd{-5.55}\def\ye{-6.75}
+  % 1: rótulos de las filas
+  \capa{1}{
+    \node[fila=1.0cm] at (0,\ya) {Base jurídica\\(TFUE)};
+    \node[fila=1.2cm] at (0,\yb) {Jurisprudencia\\clave};
+    \node[fila=2.0cm] at (0,\yc) {Derecho derivado\\e instrumentos};
+    \node[fila=1.4cm] at (0,\yd) {Barreras que\\quedan};
+    \node[fila=0.8cm] at (0,\ye) {Grado de avance};}
+  % columnas: \col{capa}{color}{x}{título}{base}{jurisprudencia}{derivado}{barreras}{nivel}
+  \newcommand{\col}[9]{\capa{#1}{
+    \node[cab=#2] at (#3,0.15) {#4};
+    \node[celda=#2,minimum height=1.0cm] at (#3,\ya) {#5};
+    \node[celda=#2,minimum height=1.2cm] at (#3,\yb) {#6};
+    \node[celda=#2,minimum height=2.0cm] at (#3,\yc) {#7};
+    \node[celda=#2,minimum height=1.4cm] at (#3,\yd) {#8};
+    \node[celda=#2,minimum height=0.8cm,align=center] at (#3,\ye) {\nivel{#2}{#9}};}}
+  \col{2}{tceeazul}{\xa+0.65}{Mercancías}
+    {arts. 28-37 y 110; excepción, art. 36}
+    {\emph{Dassonville} (1974), \emph{Cassis} (1979): reconocimiento mutuo; \emph{Keck} (1993)}
+    {nuevo enfoque y marcado CE; Reglamento 2019/515; TRIS; Código Aduanero (2026); IVA en destino; impuestos especiales}
+    {normas técnicas y etiquetado; IVA transitorio; contratos públicos poco abiertos}
+    {4}
+  \col{3}{tceenaranja}{\xa+0.65+\dx}{Servicios}
+    {arts. 49-62; excepciones, 51 y 52}
+    {\emph{Van Binsbergen} (1974); \emph{Laval} y \emph{Viking} (2007)}
+    {Directiva de servicios (2006); cualificaciones (2005/36); pasaporte financiero; DSA y DMA}
+    {arancel equivalente de hasta el 110~\%; profesiones reguladas; restricciones territoriales}
+    {2}
+  \col{4}{tceeverde}{\xa+0.65+2*\dx}{Personas}
+    {arts. 21 y 45-48; excepciones, 45.3 y 45.4}
+    {\emph{Bosman} (1995)}
+    {Directiva 2004/38; Schengen; desplazamiento (2018/957); EURES y Autoridad Laboral Europea}
+    {lengua, títulos y seguridad social; controles interiores temporales}
+    {2}
+  \col{5}{tceedorado}{\xa+0.65+3*\dx}{Capitales}
+    {arts. 63-66, también frente a terceros (\emph{erga omnes})}
+    {acciones de oro: Comisión contra España (2003)}
+    {Directiva 88/361; control de inversiones extranjeras (2026/1386); Unión de Ahorros e Inversiones; imposición directa}
+    {sesgo nacional; fragmentación financiera; 27 impuestos de sociedades}
+    {4}
+  % 6: conclusión
+  \capa{6}{\node[draw=tceemorado,fill=tceemorado!8,rounded corners=3pt,text width=15.95cm,align=center,font=\footnotesize,inner sep=4pt] at (6.88,-7.75)
+    {\textbf{\textcolor{tceemorado}{Mismo patrón, distinto avance}}: mucho en mercancías y capitales, poco en servicios y personas.
+     Un mercado sin barreras aún no es un mercado competitivo $\Rightarrow$ \textbf{política de competencia} (bloque~III)};}
+\end{tikzpicture}
+\end{document}

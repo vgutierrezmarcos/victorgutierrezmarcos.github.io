@@ -1,0 +1,98 @@
+% Mapa del tema 3.B.42 (comentario de Víctor del 19/11/2026): los 3 bloques,
+% la pregunta a la que responde cada uno, sus subapartados y el hilo entre
+% ellos, como el mapa del 3.B.4. A la izquierda, la pregunta de cada bloque; a
+% la derecha, lo que se cuenta; entre bloques, la flecha dice por qué se pasa
+% al siguiente. Arriba, la pregunta del tema; abajo, la respuesta de la
+% conclusión. Debajo de cada bloque, en gris, dónde está cada pieza de la
+% fórmula común de las políticas de la UE. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  formula/.style={font=\scriptsize,text=tceegris,anchor=north west,text width=15.5cm,align=left,inner sep=1pt},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Más vale vecino cercano que hermano lejano». ¿Para qué usa la Unión su peso económico fuera de sus fronteras, y le basta con comerciar?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Visión global}
+     ¿Cuánto pesa la Unión, por qué actúa en común y con qué reglas, actores e instrumentos?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Peso (I.1) y marco (I.2)}
+     comercio, inversión, ayuda y euro\\
+     por qué en común: escala, externalidades\\
+     competencias, Tratados, actores, evolución};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Organizaciones y foros (I.3)}
+     miembro: OMC, FAO, G-20, BERD\\
+     observador: ONU, FMI (BCE), OCDE\\
+     art. 220 TFUE y, para el euro, art. 138};}
+  \capa{2}{\node[formula] at (0,-3.0)
+    {Fórmula común: relevancia (I.1) $\cdot$ justificación teórica, competencias, marco y decisiones (I.2) $\cdot$ evolución (I.2)};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.45) -- (2.0,-4.15);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.8)
+    {un mismo marco, pero la Unión no trata igual a todos: ¿qué ofrece a cada grupo de países?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.2)
+    {\tit{tceeverde}{II. Visión regional}
+     ¿Por qué trata distinto a candidatos, vecinos y socios, y le funciona?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.2)
+    {\tit{tceeverde}{Instrumento geoestratégico (II.1)}
+     ampliación: adhesión a cambio de reformas\\
+     vecindad: mercado y dinero, «más por más»\\
+     PESC y sanciones: el tope al petróleo ruso};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.2)
+    {\tit{tceeverde}{Bienes y factores: socios (II.2)}
+     instrumentos por factor\\
+     EE.\,UU., Reino Unido, China, Rusia\\
+     América Latina, África, Asia; retos};}
+  \capa{4}{\node[formula] at (0,-6.05)
+    {Fórmula común: articulación por círculos (II.1 y II.2) $\cdot$ retos de la acción exterior (II.2)};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.5) -- (2.0,-7.2);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-6.85)
+    {el círculo más amplio, el de los países en desarrollo, tiene su propia política};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.25)
+    {\tit{tceedorado}{III. Cooperación al desarrollo}
+     ¿Qué hace la Unión por el desarrollo, con qué dinero y con qué resultados?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.25)
+    {\tit{tceedorado}{Consideraciones generales (III.1)}
+     AOD: los 4 requisitos del CAD\\
+     la ayuda en el mundo: de Monterrey a Sevilla};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.25)
+    {\tit{tceedorado}{La política de la Unión (III.2)}
+     relevancia; justificación y marco\\
+     de Yaundé a Samoa; IVDCI, Global Gateway\\
+     retos: Europa Global 2028-2034};}
+  \capa{6}{\node[formula] at (0,-9.2)
+    {Fórmula común completa dentro de III.2: relevancia $\cdot$ justificación y marco $\cdot$ evolución $\cdot$ articulación $\cdot$ retos};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-9.6) -- (2.0,-9.9);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-9.9)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: su peso económico le sirve para algo más que comerciar (convertir vecinos en miembros, socios en aliados y países pobres en mercados que crecen), si cumple lo que promete.};}
+\end{tikzpicture}
+\end{document}

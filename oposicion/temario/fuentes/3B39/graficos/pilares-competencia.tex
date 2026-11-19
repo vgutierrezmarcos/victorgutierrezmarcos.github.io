@@ -3,7 +3,9 @@
 % instrumentos nuevos (subvenciones extranjeras y mercados digitales), con
 % su base jurídica y el tipo de control (ex post o ex ante).
 % Capas: frontón → pilares de control ex post → pilares de control ex ante
-% → instrumentos nuevos → base (quién aplica).
+% → instrumentos nuevos → a quién controlan → base (quién aplica).
+% Cada pilar con su color (azul, naranja, verde, dorado, rojo y morado), para
+% que ninguno se confunda con otro; las llaves de arriba agrupan a quién controla.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -16,15 +18,19 @@
     \node[titulo,text=tceemorado] at (7.9,3.4) {Política de competencia de la UE (competencia exclusiva, art. 3 TFUE)};}
   % 2: control ex post de las empresas
   \capa{2}{\node[pilar=tceeazul] at (1.2,1.5) {\textbf{Acuerdos}\\[2pt] art. 101 TFUE\\ Reglamento 1/2003\\[2pt] cárteles, acuerdos verticales\\[2pt] \emph{ex post}};
-    \node[pilar=tceeazul] at (3.9,1.5) {\textbf{Abuso de posición dominante}\\[2pt] art. 102 TFUE\\[2pt] exclusión, explotación\\[2pt] \emph{ex post}};}
+    \node[pilar=tceenaranja] at (3.9,1.5) {\textbf{Abuso de posición dominante}\\[2pt] art. 102 TFUE\\[2pt] exclusión, explotación\\[2pt] \emph{ex post}};}
   % 3: control ex ante
   \capa{3}{\node[pilar=tceeverde] at (6.6,1.5) {\textbf{Concentraciones}\\[2pt] Reglamento 139/2004\\[2pt] notificación previa\\[2pt] \emph{ex ante}};
     \node[pilar=tceedorado] at (9.3,1.5) {\textbf{Ayudas de Estado}\\[2pt] arts. 107-109 TFUE\\ RGEC\\[2pt] a los Estados\\[2pt] \emph{ex ante}};}
   % 4: instrumentos nuevos
   \capa{4}{\node[pilar=tceerojo] at (12.0,1.5) {\textbf{Subvenciones extranjeras}\\[2pt] Reglamento 2022/2560\\[2pt] de terceros países\\[2pt] \emph{ex ante} y de oficio};
-    \node[pilar=tceerojo] at (14.7,1.5) {\textbf{Mercados digitales}\\[2pt] Reglamento 2022/1925 (DMA)\\[2pt] guardianes de acceso\\[2pt] regulación \emph{ex ante}};}
-  % 5: base: quién aplica
-  \capa{5}{\fill[tceegris!15,draw=tceegris,thick] (-0.2,-0.25) rectangle (16.0,-0.85);
+    \node[pilar=tceemorado] at (14.7,1.5) {\textbf{Mercados digitales}\\[2pt] Reglamento 2022/1925 (DMA)\\[2pt] guardianes de acceso\\[2pt] regulación \emph{ex ante}};}
+  % 5: a quién controla cada grupo
+  \capa{5}{\node[font=\tiny\itshape,text=tceegris] at (3.9,2.88) {empresas};
+    \node[font=\tiny\itshape,text=tceegris] at (9.3,2.88) {Estados};
+    \node[font=\tiny\itshape,text=tceegris] at (13.35,2.88) {desde 2023};}
+  % 6: base: quién aplica
+  \capa{6}{\fill[tceegris!15,draw=tceegris,thick] (-0.2,-0.25) rectangle (16.0,-0.85);
     \node[font=\scriptsize,align=center] at (7.9,-0.55) {Aplican: Comisión (DG Competencia) y autoridades nacionales (Red Europea de Competencia); controlan: Tribunal General y Tribunal de Justicia};}
 \end{tikzpicture}
 \end{document}
