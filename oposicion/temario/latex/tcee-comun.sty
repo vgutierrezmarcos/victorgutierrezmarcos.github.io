@@ -211,4 +211,6 @@
 \newcommand{\nuevo}[1]{\ifmmode\begingroup\color{tceerojo}#1\endgroup\else\textcolor{tceerojo}{#1}\fi}% sin grupo {}: los signos +/− conservan su espaciado de operador
 \newcommand{\tachado}[1]{\cancel{#1}}
 
+% Signo menos Unicode (−) pegado desde otros textos: como el de LaTeX
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
 \endinput

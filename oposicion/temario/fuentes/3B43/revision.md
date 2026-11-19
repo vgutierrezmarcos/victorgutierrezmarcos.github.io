@@ -194,3 +194,5 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **B43-17. Retos dentro del modelo de la talla única.** La viñeta de los retos va en el último apartado (III.4), tras la valoración del modelo, porque no hay un subapartado propio de cierre. Opciones: (a) así **[aplicada]**; (b) un subapartado III.5 «Los retos de la política monetaria del euro» (quitaría medio minuto a otro).
 - **B43-18. Modelos en el cuerpo de un tema institucional.** El cuerpo conserva 3 modelos (asimetría del SME, crisis autocumplida, talla única), aunque CRITERIOS (14/11/2026) pide en los temas de la UE la idea en el cuerpo y el modelo en anexos. Opciones: (a) dejarlos hasta que Víctor lo pida **[aplicada]**; (b) llevarlos a anexos.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+

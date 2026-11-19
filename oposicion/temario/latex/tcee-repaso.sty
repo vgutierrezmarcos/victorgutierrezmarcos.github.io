@@ -112,7 +112,7 @@
 \newcommand{\subsub}[1]{\par\vspace{1.5pt}%
   \noindent\phantomsection{\color{tceemorado}\bfseries\itshape#1}\par\nopagebreak}
 \newcommand{\subsubsub}[1]{\par\vspace{1pt}%
-  \noindent\hspace*{0.4em}{\color{tceemorado}\footnotesize$\triangleright$\ \normalsize\bfseries\itshape#1}\par\nopagebreak}
+  \noindent\hspace*{0.4em}{\color{tceemorado}{\footnotesize$\triangleright$}\ \bfseries\itshape#1}\par\nopagebreak}
 % \anexorepaso: a partir de aquí, el «anexo» de la ficha (datos clave, autores y
 % fechas, preguntas del tribunal, ojo en el test), que empieza arriba de la última
 % columna y no pasa de ella (Víctor, 19/11/2026). El tema llena las 7 anteriores.
@@ -134,11 +134,14 @@
 % \vertema{3.A.12} es un enlace al tema citado (tcee-comun.sty); en la ficha el
 % texto es solo «[3.A.12]», para ahorrar sitio
 \renewcommand{\tcee@textovertema}[1]{[#1]}
-\newcommand{\dato}[2]{\textbf{#1}{\color{tceegris}\,(#2)}}   % \dato{54,1 \% del PIB}{INE, 2025}
+\newcommand{\dato}[2]{\textbf{#1}\if\relax\detokenize{#2}\relax\else{\color{tceegris}\,(#2)}\fi}   % \dato{54,1 \% del PIB}{INE, 2025}
 
 % --- Cajas -----------------------------------------------------------------------------------
 \newtcolorbox{ideaclave}{enhanced,colback=tceesalvia,colframe=tceesalviaoscuro,
   boxrule=0.4pt,arc=1pt,left=3pt,right=3pt,top=1pt,bottom=1pt,fontupper=\itshape,before skip=2pt,after skip=2pt}
+% La idea clave de un bloque no se queda al pie de la columna separada de lo que
+% sigue (Víctor, 19/11/2026: pasaba tras \bloque, antes del primer \sub)
+\AddToHook{env/ideaclave/after}{\nopagebreak}
 % La fórmula va siempre pegada a la línea que la presenta (no se separa de
 % ella por un salto de columna o de página): before con \nopagebreak.
 \newtcolorbox{formula}{enhanced,colback=tceemoradopalido,colframe=tceemoradopalido,

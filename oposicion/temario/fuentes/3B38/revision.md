@@ -195,3 +195,5 @@ Ninguna nota lo necesitaba.
   - **Anexo de competencias**: añadido el fragmento `_trabajo/anexo-competencias.tex` (con `graficos/competencias-ue`, figura 3) como anexo D, antes del de test; se remite a él desde la delimitación de competencias de la PAC (I.1.3) y de la PPC (III.1.4).
 - **PDF**: antes 31 páginas de tema + 2 de anexos + 5 de bibliografía (38); ahora 33 + 4 + 5 (42), con el anexo de competencias. Ficha de repaso puesta al día (sostenimiento, desacoplamiento y pie del gráfico de distribución): 4 páginas a 10,5 pt. `verificar-tema.py`: 0 errores, 17 avisos (los de siempre: cifras sin cita en párrafos históricos y el vídeo).
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+

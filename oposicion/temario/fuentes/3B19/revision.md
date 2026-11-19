@@ -283,3 +283,4 @@ Antes: 39 páginas de tema (anexos 15, bibliografía 8; 62 en total), con la fig
 | «Este tipo de diagramas… mejor meterlos en cuadros grises» (revisar otros) | No hay más del mismo tipo en el cuerpo: las figuras 2 (escalera de la cooperación), 3 (G-20) y 4 (OCDE) son imprescindibles en el cante según la nota del opositor, el gráfico 4 (productividad en la economía cerrada) ya estaba en caja gris y los demás gráficos sin cantar están en los anexos. |
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.

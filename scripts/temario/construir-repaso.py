@@ -217,7 +217,13 @@ def main():
                 sys.exit(1)
     print(f'{paginas} páginas; letra de {tam} pt; última página ocupada al {lleno:.0%} '
           f'(columnas: {", ".join(f"{c:.0%}" for c in columnas)})')
-    if lleno < LLENADO_MINIMO:
+    con_anexo = '\\anexorepaso' in open(fuente, encoding='utf-8').read()
+    if con_anexo and not tema.es_dictamen:
+        # con el anexo en la última columna (corta a propósito), lo que cuenta es que
+        # el tema llene la 7.ª, la izquierda de la última página (Víctor, 19/11/2026)
+        if columnas and columnas[0] < 0.85:
+            print(f'AVISO: la columna 7 (la última del tema) solo está llena al {columnas[0]:.0%}: conviene más desarrollo del tema')
+    elif lleno < LLENADO_MINIMO:
         print(f'AVISO: sobra sitio en la última página ({lleno:.0%}): conviene añadir contenido')
     estado['repaso'] = {'tam': tam, 'paginas': paginas, 'ocupacion_ultima': round(lleno, 2)}
     tema.guardar_estado(estado)

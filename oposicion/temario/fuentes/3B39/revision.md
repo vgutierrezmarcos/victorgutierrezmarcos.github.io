@@ -202,3 +202,5 @@ Aplicados el 19/11/2026 (encargo común del 18/11 y añadido de la UE del 19/11)
 - **B39-15.** Tipos del impuesto sobre sociedades: la cifra viene de la Tax Foundation, no de una fuente oficial. Opciones: (a) mantenerla citada **[aplicada]**; (b) sustituirla por la OCDE (Corporate Tax Statistics, que va un año por detrás).
 - **B39-16.** El 4.A.15 tiene 7 diferencias con este tema (lista arriba). Conviene corregirlas cuando se revise el 4.A.15.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+

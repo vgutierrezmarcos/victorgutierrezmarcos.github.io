@@ -187,3 +187,5 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
   - *Retos de futuro*: I.6.4 (ampliación y reforma de los Tratados) y la opinión de la conclusión.
   - Sin cambios en el `.tex`, la ficha ni las páginas (cuerpo 32, anexos 9).
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+

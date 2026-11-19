@@ -190,3 +190,5 @@ Ninguna nota lo necesitaba.
 
 - **B37-13. Dónde va la justificación económica.** Opciones: (a) la teoría (Musgrave, Oates y competencias) al principio del bloque I, en su entrada, y los bienes públicos europeos y la evidencia en I.4.2, con el MFP **[aplicada]**; (b) un subapartado nuevo I.1 «¿Por qué un presupuesto común? Los bienes públicos europeos» con todo I.4.2, renumerando I.1-I.4 (cambia títulos de segundo nivel, esquema y ficha); (c) dejarlo todo en I.4.2.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+

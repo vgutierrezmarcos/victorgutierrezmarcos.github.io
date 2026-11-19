@@ -363,3 +363,4 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche cambiado a «No se ganó Zamora en una hora» (antes «Por sus frutos los conoceréis»): enganche con Nogales y Corea del Sur, idea final, mención de II.2, mapa de la exposición, ficha e instrucciones del vídeo (A45-33).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt (antes 10,5). Entran 8 gráficos del tema que no estaban (PIB pc a largo plazo, MRW, participación salarial, tipos de convergencia, estados de EE. UU., σ, causas y AJR).

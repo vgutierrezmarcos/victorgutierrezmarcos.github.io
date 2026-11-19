@@ -155,3 +155,4 @@ Ninguna nota lo necesitaba.
   - España en el CIADI: 44 casos, muchos por las renovables (II.3.5).
 - Recortado: nada. Lo que solo está en el nuestro (los 3 modelos formales, la reforma 2022-2026 y el papel de España) es correcto, posterior a casi todas las versiones o propio del cuerpo; los modelos quedan en duda (B30-11).
 - No se pudieron leer los .doc de MPC y de Zapico/Teresa (sin conversor en el equipo).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.

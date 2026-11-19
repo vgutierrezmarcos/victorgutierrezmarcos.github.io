@@ -1,13 +1,32 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Teoría de la demanda del consumidor (III)]{3.A.10}{Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre.}
-\tcefecha{19/10/2026}
+\tcefecha{19/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
 
 % ==========================================================================
-\bloque{Esquema del cante}
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: \emph{¿somos prudentes o temerarios ante el riesgo?} «Más vale pájaro en mano que ciento volando», pero «de perdidos, al río».
+  \begin{itemize}
+  \item España, 2025: \dato{$\approx$86.000 M€ en primas, $\approx$5\,\% del PIB}{Mapfre; Eurostat}; y el décimo de Navidad (devuelve menos de lo que recauda).
+  \item Con el seguro se paga por \emph{librarse} del riesgo; con el décimo, por \emph{asumirlo}.
+  \end{itemize}
+\item \textbf{Relevancia}:
+  \begin{itemize}
+  \item \emph{Teórica}: lenguaje de toda la economía con riesgo \vertema{3.A.13} \vertema{3.A.14} \vertema{3.A.21} \vertema{3.A.33} \vertema{3.B.23}.
+  \item \emph{Práctica}: asegurarse, ahorrar, invertir; sus fallos, origen de la conductual \vertema{3.A.1}.
+  \end{itemize}
+\item \textbf{Contextualización}:
+  \begin{itemize}
+  \item \autor{Bernoulli} (1738): San Petersburgo $\to$ \autor{Knight} (1921) $\to$ \autor{von Neumann}-\autor{Morgenstern} (1944) $\to$ \autor{Savage} (1954) $\to$ \autor{Pratt}, \autor{Arrow} $\to$ \autor{Allais}, \autor{Ellsberg} $\to$ perspectivas (1979) y ambigüedad (1989).
+  \item \concepto{Riesgo}: probabilidades conocidas y \emph{objetivas}. \concepto{Incertidumbre}: sin ellas; a lo sumo, \emph{subjetivas} (\autor{Knight}, 1921).
+  \end{itemize}
+\item \textbf{Problemática}: ¿qué hace falta para maximizar una utilidad \emph{esperada}? ¿Qué demanda de seguros sale? ¿Se comportan así las personas? ¿Y sin probabilidades conocidas?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, utilidad esperada; \hyperref[rep:II]{II}, críticas y perspectivas; \hyperref[rep:III]{III}, incertidumbre: modelo, paradoja, alternativa.
+\end{itemize}
 \esquemacante{%
 \apartadocante{Introducción}{2,5}
 \apartadocante{I. Riesgo: teoría de la utilidad esperada}{13}
@@ -21,33 +40,24 @@
 \subcante{1. Probabilidad subjetiva (\autor{Savage}); \autor{Ellsberg}}{3}
 \subcante{2. Ambigüedad; criterios clásicos}{2,5}
 \apartadocante{Conclusión}{1}}
-\emph{Hilo}: de lo conocido (riesgo) a lo desconocido (incertidumbre); en cada caso, modelo $\to$ paradoja (\autor{Allais}, \autor{Ellsberg}) $\to$ alternativa. \emph{Pizarra}: $U(\tilde{x})=\sum_s\pi_s\,u(x_s)$ en una esquina todo el cante; gráficos de la actitud ante el riesgo, del seguro y de la función de valor en S.
-
-% ==========================================================================
-\bloque[2,5]{Introducción}
-\begin{itemize}
-\item \textbf{Enganche}: \emph{¿Somos prudentes o temerarios ante el riesgo?} «Más vale pájaro en mano que ciento volando», pero «de perdidos, al río». España, 2025: \dato{$\approx$86.000 M€ en primas de seguro, $\approx$5\,\% del PIB}{Mapfre; Eurostat}, y en diciembre, el décimo de Navidad (devuelve menos de lo que recauda). Con el seguro se paga por \emph{librarse} del riesgo; con el décimo, por \emph{asumirlo}.
-\item \textbf{Relevancia}: \emph{teórica}, lenguaje de toda la economía con riesgo: información asimétrica \vertema{3.A.13}, juegos y subastas \vertema{3.A.14}, mercados contingentes \vertema{3.A.21}, ahorro \vertema{3.A.33}, dinero como activo \vertema{3.A.35}, carteras \vertema{3.B.23}; \emph{práctica}, asegurarse, ahorrar, invertir, hipoteca fija o variable; sus fallos, origen de la economía conductual \vertema{3.A.1}.
-\item \textbf{Contextualización}: \emph{riesgo}, de \emph{riesco}, «risco». \autor{Cramer} (1728), \autor{Bernoulli} (1738): San Petersburgo $\to$ \autor{Knight}, \autor{Keynes} (1921) $\to$ \autor{von Neumann}-\autor{Morgenstern} (1944) $\to$ \autor{Savage} (1954) $\to$ \autor{Pratt} (1964), \autor{Arrow} (1965) $\to$ anomalías: \autor{Allais} (1953), \autor{Ellsberg} (1961) $\to$ perspectivas (\autor{Kahneman}-\autor{Tversky}, 1979; Nobel 2002) y ambigüedad (1989).
-\item \textbf{Problemática}: ¿qué hace falta para maximizar una utilidad \emph{esperada} y qué dice de la actitud ante el riesgo? ¿Qué demanda de seguros sale? ¿Se comportan así las personas? ¿Qué cambia sin probabilidades conocidas?
-\item \textbf{Estructura}: \hyperref[rep:I]{I}, utilidad esperada (fundamentos, seguros, extensiones); \hyperref[rep:II]{II}, críticas y perspectivas; \hyperref[rep:III]{III}, incertidumbre. \hyperref[rep:II]{II} y \hyperref[rep:III]{III}, misma lógica: modelo, paradoja, alternativa.
-\end{itemize}
-\begin{itemize}
-\item \concepto{Individualismo metodológico} \vertema{3.A.8}: ahora cada alternativa lleva a varios resultados posibles.
-\item \concepto{Riesgo}: probabilidades conocidas y \emph{objetivas} (moneda, tablas de mortalidad). \concepto{Incertidumbre}: sin ellas; a lo sumo, creencias \emph{subjetivas} (\autor{Knight}, 1921).
-\end{itemize}
 
 % ==========================================================================
 \bloque[13]{I. Riesgo: teoría de la utilidad esperada\label{rep:I}}
-\begin{itemize}
-\item \emph{Conclusión anticipada}: con 5 axiomas sobre loterías se elige \emph{como si} se maximizara la esperanza de una utilidad; su curvatura mide la aversión y basta para la demanda de seguros (completa con prima justa).
-\end{itemize}
+\begin{ideaclave}
+Con 5 axiomas se maximiza una utilidad esperada; la concavidad de $u$ mide la aversión y de ella salen el seguro (completo con prima justa, parcial con recargada) y la demanda de activos con riesgo.
+\end{ideaclave}
 
 \sub{I.1. Fundamentos\label{rep:I.1}}
+\subsub{a) Ingredientes y obtención de la utilidad esperada}
 \begin{itemize}
 \item \emph{Idea}: la \concepto{teoría de la utilidad esperada} (TUE) aplica el método del consumidor \vertema{3.A.8} (conjunto de elección, preferencias, axiomas, $U$, maximización), con 2 diferencias: (1) se eligen \emph{loterías}, no cestas; (2) $U$ con forma concreta, \emph{lineal en las probabilidades}.
 \item \emph{Supuestos}: $S$ \concepto{estados de la naturaleza}, mutuamente excluyentes y colectivamente exhaustivos; resultado $x_s$ (riqueza). \concepto{Lotería} $\tilde{x}\equiv(x_1,\dots,x_S;\ \pi_1,\dots,\pi_S)$, $\pi_s\geq0$, $\sum_s\pi_s=1$: \emph{simple}, \emph{compuesta} (se reduce multiplicando ramas) o \emph{degenerada} (certeza); un punto del \concepto{símplex}. \textbf{No se eligen resultados, sino loterías}.
-\item \emph{Axiomas} sobre $\succcurlyeq$: \emph{preorden completo}: (1) \concepto{completitud}, (2) \concepto{reflexividad}, (3) \concepto{transitividad}; \emph{regularidad}: (4) \concepto{continuidad} (sin resultados infinitamente buenos o malos) $\Rightarrow$ existe $U$; (5) \concepto{axioma de independencia}, el propio del riesgo, $\tau\in(0,1)$:
+\item \emph{Axiomas} sobre $\succcurlyeq$:
+  \begin{itemize}
+  \item \emph{preorden completo}: (1) \concepto{completitud}, (2) \concepto{reflexividad}, (3) \concepto{transitividad};
+  \item \emph{regularidad}: (4) \concepto{continuidad} $\Rightarrow$ existe $U$;
+  \item (5) \concepto{axioma de independencia}, el propio del riesgo, $\tau\in(0,1)$:
+  \end{itemize}
 \begin{formula}
 \centering $\tilde{x}^1\succcurlyeq\tilde{x}^2\iff\tau\tilde{x}^1+(1-\tau)\tilde{x}^3\succcurlyeq\tau\tilde{x}^2+(1-\tau)\tilde{x}^3$
 \end{formula}
@@ -55,9 +65,17 @@ Solo ocurre \emph{una} rama: lo común ($\tilde{x}^3$) no debe alterar el orden.
 \item \emph{Desarrollo}: \concepto{teorema de la utilidad esperada} (\autor{von Neumann}-\autor{Morgenstern}, 1944; prueba en la 2.ª ed., 1947): con los 5 axiomas existe $u(\cdot)$ sobre resultados ciertos, la \concepto{utilidad de \autor{Bernoulli}}, tal que
 \funcionclave{U(\tilde{x})=\mathbb{E}\big[u(\tilde{x})\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)}
 $U$: \concepto{utilidad esperada}. Construcción: $u(x)=\tau$ que iguala $x$ seguro a (mejor, $\tau$; peor, $1-\tau$).
-\item \emph{Implicaciones}: preserva el orden; lineal en probabilidades y \emph{separable} entre estados; $u$ única salvo \emph{afines positivas} $a\,u+b$ $\Rightarrow$ \concepto{cardinal} (sin comparaciones interpersonales); $u$ es un \emph{resultado}. Continuo: $U=\int u(x)\,dF(x)$.
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item preserva el orden; lineal en probabilidades y \emph{separable} entre estados;
+  \item $u$ única salvo \emph{afines positivas} $a\,u+b$ $\Rightarrow$ \concepto{cardinal} (sin comparaciones interpersonales);
+  \item $u$ es un \emph{resultado}; continuo: $U=\int u(x)\,dF(x)$.
+  \end{itemize}
 \item \emph{Idea central}: \textbf{esperanza de la utilidad, no utilidad de la esperanza}. \concepto{Paradoja de San Petersburgo} (N.\ \autor{Bernoulli}, 1713): premio $2^k$ con prob.\ $1/2^k$ $\Rightarrow$ $\mathbb{E}[\tilde{x}]=\infty$; con $u=\ln x$, $\xi=4$ ducados (con $\sqrt{x}$, \autor{Cramer}, $\approx$5,83).
 \item \emph{Valoración}: fundamento axiomático y contrastable; el discutido, la independencia (\hyperref[rep:II.1]{II.1}).
+\end{itemize}
+\subsub{b) Componentes: actitud ante el riesgo y distribución}
+\begin{itemize}
 \item \emph{Componentes}: \emph{subjetivo}, $u(x)$ $\to$ actitud ante el riesgo; \emph{objetivo}, $F(x)$ $\to$ comparar loterías sin conocer $u$.
 \item \emph{Actitud ante el riesgo} (desigualdad de \autor{Jensen}): \concepto{averso} si $u(\mathbb{E}[\tilde{x}])>\mathbb{E}[u(\tilde{x})]$ $\iff$ $u$ estrictamente cóncava; \concepto{neutral}, $=$, lineal; \concepto{amante}, $<$, convexa. Averso: el euro perdido duele más que lo que alegra el ganado.
 \end{itemize}
@@ -73,7 +91,12 @@ $U$: \concepto{utilidad esperada}. Construcción: $u(x)=\tau$ que iguala $x$ seg
 \centering $r_A(x)\equiv-\dfrac{u''(x)}{u'(x)}$,\qquad $r_R(x)\equiv x\,r_A(x)$,\qquad $\rho\approx\tfrac12\,\sigma^2\,r_A(\overline{W})$
 \end{formula}
 $r_R$: elasticidad de la UMg cambiada de signo. Prima de \emph{segundo orden} ($\sigma^2$); en el ejemplo, 3,6 frente a 4.
-\item \emph{Comparación}: \concepto{teorema de \autor{Pratt}}; equivalen (1) $r_A^1\geq r_A^2\ \forall x$; (2) $u_1=\psi(u_2)$, $\psi$ creciente y cóncava; (3) $\rho_1\geq\rho_2$ para toda lotería; (4) lo que el 1.º acepta frente a un cierto, lo acepta el 2.º. Evidencia: $r_R\approx1$ (\autor{Chetty}, 2006).
+\item \emph{Comparación}: \concepto{teorema de \autor{Pratt}}; equivalen:
+  \begin{enumerate}
+  \item $r_A^1\geq r_A^2\ \forall x$; (2) $u_1=\psi(u_2)$, $\psi$ cóncava;
+  \setcounter{enumii}{2}\item $\rho_1\geq\rho_2$ para toda lotería; (4) lo que acepta el 1.º, lo acepta el 2.º.
+  \end{enumerate}
+\item Evidencia: $r_R\approx1$ (\autor{Chetty}, 2006).
 \item \emph{Aversión y riqueza}: CARA, DARA, IARA (y CRRA, DRRA, IRRA). Evidencia e intuición: \concepto{DARA} (el rico arriesga más \emph{en euros}). Familias, todas \concepto{HARA} ($1/r_A=\eta_0+\eta_1x$ lineal):
 \end{itemize}
 {\centering\footnotesize\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{2.5pt}%
@@ -101,6 +124,7 @@ La utilidad esperada separa lo subjetivo ($u$: cuanto más cóncava, más prima 
 \end{ideaclave}
 
 \sub{I.2. Aplicaciones: demanda de seguros (\autor{Mossin}, 1968)\label{rep:I.2}}
+\subsub{a) Demanda de seguros}
 \begin{itemize}
 \item \emph{Idea}: ¿cuánto seguro compra un averso? Trasladar riqueza del estado bueno al malo.
 \item \emph{Supuestos}: (1) riqueza $\overline{W}$; pierde $L$ con prob.\ $\pi$: $A=(\overline{W},\overline{W}-L)$ en $(x_1,x_2)$ (sin y con accidente); bisectriz, \concepto{línea de certeza}; (2) averso: curvas decrecientes y convexas; (3) cobertura $S\in[0,L]$ a $\gamma$ por euro; (4) información simétrica.
@@ -110,7 +134,11 @@ La utilidad esperada separa lo subjetivo ($u$: cuanto más cóncava, más prima 
 \centering $\mathrm{RMSE}\equiv\dfrac{(1-\pi)\,u'(x_1)}{\pi\,u'(x_2)}=\dfrac{1-\gamma}{\gamma}$
 \end{formula}
 \concepto{Relación marginal de sustitución estocástica} (RMSE): en la línea de certeza, $(1-\pi)/\pi$ sea cual sea $u$.
-\item \emph{Implicaciones}: aseguradoras neutrales en competencia: $(\gamma-\pi)S=0$ $\Rightarrow$ $\gamma=\pi$, \concepto{prima justa}. \concepto{Teorema de \autor{Mossin}}: (1) prima justa $\Rightarrow$ $u'(x_1)=u'(x_2)$, $S^*=L$: \textbf{seguro completo} ($E$); (2) recargada ($\gamma>\pi$): recta más plana, $S^*<L$: \textbf{parcial} ($E'$), franquicias.
+\item \emph{Implicaciones}: aseguradoras neutrales en competencia: $\gamma=\pi$, \concepto{prima justa}. \concepto{Teorema de \autor{Mossin}}:
+  \begin{enumerate}
+  \item prima justa $\Rightarrow$ $u'(x_1)=u'(x_2)$, $S^*=L$: \textbf{seguro completo} ($E$);
+  \item recargada ($\gamma>\pi$): recta más plana, $S^*<L$: \textbf{parcial} ($E'$), franquicias.
+  \end{enumerate}
 \end{itemize}
 \graficorepaso[0.55\linewidth]{seguros}{Completo en $E$ (prima justa) y parcial en $E'$ (recargada)}
 \begin{itemize}
@@ -130,7 +158,12 @@ La utilidad esperada separa lo subjetivo ($u$: cuanto más cóncava, más prima 
 \begin{itemize}
 \item \emph{Evidencia}: franquicias, como predice; pero se paga demasiado por evitar riesgos \emph{pequeños} (\autor{Sydnor}, 2010) $\to$ \hyperref[rep:II.1]{II.1}.
 \item \emph{Valoración}: explica por qué hay seguros; pero información simétrica: \emph{selección adversa} y \emph{riesgo moral} (\autor{Rothschild}-\autor{Stiglitz}, 1976, sobre este gráfico) \vertema{3.A.13}.
-\item \emph{Otras aplicaciones} (en una frase): \emph{cartera} (\autor{Arrow}, 1965), problema inverso: todo averso compra \emph{algo} de un activo con $\mathbb{E}[\tilde{r}]>r_f$, y más si es rico con DARA; \emph{empresa aversa} (\autor{Sandmo}, 1971): $\mathrm{CMg}<\mathbb{E}[\tilde{p}]$, produce menos \vertema{3.A.11}; \emph{\autor{Diamond}-\autor{Dybvig}} (1983): depósitos, seguro de liquidez con 2 equilibrios, el malo un \concepto{pánico bancario} \vertema{3.B.26}.
+\end{itemize}
+\subsub{b) Otras aplicaciones}
+\begin{itemize}
+\item \emph{Cartera} (\autor{Arrow}, 1965), problema inverso: todo averso compra \emph{algo} de un activo con $\mathbb{E}[\tilde{r}]>r_f$, y más si es rico con DARA.
+\item \emph{Empresa aversa} (\autor{Sandmo}, 1971): $\mathrm{CMg}<\mathbb{E}[\tilde{p}]$, produce menos \vertema{3.A.11}.
+\item \emph{\autor{Diamond}-\autor{Dybvig}} (1983): depósitos, seguro de liquidez con 2 equilibrios; el malo, un \concepto{pánico bancario} \vertema{3.B.26}.
 \end{itemize}
 
 \sub{I.3. Extensiones\label{rep:I.3}}
@@ -142,15 +175,12 @@ La utilidad esperada separa lo subjetivo ($u$: cuanto más cóncava, más prima 
 \end{formula}
 El gráfico del seguro con otros nombres. Mercados completos $\Rightarrow$ riesgo repartido eficientemente \vertema{3.A.21}.
 \end{itemize}
-\begin{ideaclave}
-Con 5 axiomas se maximiza una utilidad esperada; la concavidad de $u$ mide la aversión y de ella salen el seguro (completo con prima justa, parcial con recargada) y la demanda de activos con riesgo.
-\end{ideaclave}
 
 % ==========================================================================
 \bloque[8]{II. Riesgo: críticas y enfoques alternativos\label{rep:II}}
-\begin{itemize}
-\item \emph{Conclusión anticipada}: la TUE es buena guía \emph{normativa}, pero falla como \emph{descripción}; las perspectivas lo explican con una referencia y pesos de decisión.
-\end{itemize}
+\begin{ideaclave}
+La TUE falla al describir por la independencia (\autor{Allais}) y la invariancia (marco). Las perspectivas lo explican con referencia, aversión a las pérdidas y pesos de decisión: por eso la misma persona compra el seguro y el décimo.
+\end{ideaclave}
 
 \sub{II.1. Limitaciones y críticas\label{rep:II.1}}
 \begin{itemize}
@@ -173,15 +203,28 @@ Con 5 axiomas se maximiza una utilidad esperada; la concavidad de $u$ mide la av
 \centering $A_1\succ B_1\iff\dfrac{u(110)}{u(100)}>\dfrac{0{,}80}{0{,}75}\approx1{,}067$;\quad $B_2\succ A_2\iff\dfrac{u(110)}{u(100)}<\dfrac{1}{0{,}95}\approx1{,}053$
 \end{formula}
 \emph{Por qué}: $B_1=0{,}8\,B_2+0{,}2\,\delta_0$, y $0{,}8\,A_2+0{,}2\,\delta_0$ (110 con 0,76) domina a $A_1$: quien prefiere $B_2$ debe preferir $B_1$. Del 80\,\% al 100\,\% pesa más que del 75\,\% al 95\,\%.
-\item \emph{Razón común} (\autor{Kahneman}-\autor{Tversky}, 1979): 80\,\%, 3.000 seguros frente a 4.000 al 80\,\%; 65\,\%, 4.000 al 20\,\% frente a 3.000 al 25\,\%. Triángulo de \autor{Marschak}-\autor{Machina}: rectas paralelas; \autor{Allais} pide \emph{abanico} (\autor{Machina}, 1982).
+\item \emph{Razón común} (\autor{Kahneman}-\autor{Tversky}, 1979):
+  \begin{itemize}
+  \item 80\,\% elige 3.000 seguros frente a 4.000 al 80\,\%;
+  \item 65\,\% elige 4.000 al 20\,\% frente a 3.000 al 25\,\%.
+  \end{itemize}
+\item Triángulo de \autor{Marschak}-\autor{Machina}: la TUE da rectas paralelas; \autor{Allais} pide \emph{abanico} (\autor{Machina}, 1982).
 \item \emph{Invariancia}: \concepto{efecto marco} (ganancias o pérdidas $\Rightarrow$ elecciones opuestas); \concepto{inversión de preferencias} (se \emph{elige} la segura y se \emph{pide más} por la arriesgada; \autor{Lichtenstein}-\autor{Slovic}, 1971).
-\item \emph{Valoración}: valor \emph{normativo}. Pero \concepto{calibración de \autor{Rabin}} (2000): quien rechaza siempre $-100/+110$ al 50\,\% rechazaría $-1.000$ frente a \emph{cualquier} ganancia: la aversión a riesgos pequeños viene del punto de referencia, no de la curvatura.
+\item \emph{Valoración}: valor \emph{normativo}.
+  \begin{itemize}
+  \item \concepto{Calibración de \autor{Rabin}} (2000): quien rechaza siempre $-100/+110$ al 50\,\% rechazaría $-1.000$ frente a \emph{cualquier} ganancia.
+  \item La aversión a riesgos pequeños viene del punto de referencia, no de la curvatura.
+  \end{itemize}
 \end{itemize}
 
 \sub{II.2. Teoría de las perspectivas (\autor{Kahneman}-\autor{Tversky}, 1979)\label{rep:II.2}}
 \begin{itemize}
 \item \emph{Idea}: \concepto{utilidad no esperada}, debilita la independencia; \emph{descriptiva}. Cambia cómo se \emph{definen} (ganancias y pérdidas), \emph{valoran} ($v$ en S) y \emph{ponderan} (pesos de decisión) las alternativas.
-\item \emph{Supuestos}: cálculo limitado $\Rightarrow$ 2 fases: (1) \concepto{edición}: \emph{codificación} respecto al \concepto{punto de referencia} $r$ (\emph{statu quo}, aspiración); combinación, segregación, cancelación; (2) \concepto{evaluación}.
+\item \emph{Supuestos}: cálculo limitado $\Rightarrow$ 2 fases:
+  \begin{enumerate}
+  \item \concepto{edición}: \emph{codificación} respecto al \concepto{punto de referencia} $r$ (\emph{statu quo}, aspiración); combinación, segregación, cancelación;
+  \item \concepto{evaluación}.
+  \end{enumerate}
 \item \emph{Desarrollo}: valor de una alternativa:
 \funcionclave{V=\sum_{s=1}^{S}w(\pi_s)\,v(x_s-r)}
 Con $r=0$, $w(\pi)=\pi$ y $v=u$, la TUE.
@@ -193,22 +236,30 @@ Con $r=0$, $w(\pi)=\pi$ y $v=u$, la TUE.
 \end{itemize}
 \pareja{funcion-valor}{Función de valor en S, con quiebro en $r$}{ponderacion}{Ponderación: sobre las bajas, bajo las altas}
 \begin{itemize}
-\item \emph{Implicaciones}: \concepto{patrón cuádruple}: con probabilidades medias y altas, aversión en ganancias y búsqueda en pérdidas ($v$); con bajas, al revés: \textbf{lotería} y \textbf{seguro} ($w$), sin $u$ con tramos. \emph{Efecto marco}: con 1.000, 84\,\% elige $+500$ seguros; con 2.000, 69\,\% arriesga $-1.000$ al 50\,\%. \concepto{Efecto dotación} \vertema{3.A.8}.
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item \concepto{patrón cuádruple}: con probabilidades medias y altas, aversión en ganancias y búsqueda en pérdidas ($v$); con bajas, al revés: \textbf{lotería} y \textbf{seguro} ($w$), sin $u$ con tramos;
+  \item \emph{efecto marco}: con 1.000, 84\,\% elige $+500$ seguros; con 2.000, 69\,\% arriesga $-1.000$ al 50\,\%;
+  \item \concepto{efecto dotación} \vertema{3.A.8}.
+  \end{itemize}
 \item \emph{Extensiones}: \concepto{teoría acumulativa} (1992): $w$ sobre probabilidades acumuladas, respeta la dominancia. \concepto{Dependiente del rango} (\autor{Quiggin}, 1982), \concepto{pesar} (\autor{Loomes}-\autor{Sugden}, \autor{Bell}, 1982), \concepto{generalizada} (\autor{Machina}, 1982).
-\item \emph{Evidencia}: \dato{94\,\% replicado, 4.098 personas, 19 países}{\autor{Ruggeri} et al., 2020}; salarios rígidos a la baja; vivienda; 11-S, \dato{$\approx$350 muertes más en carretera}{\autor{Gigerenzer}, 2004}; prima de las acciones, \emph{aversión miope a las pérdidas} (\autor{Benartzi}-\autor{Thaler}, 1995) \vertema{3.B.23}; efecto disposición.
+\item \emph{Evidencia}:
+  \begin{itemize}
+  \item \dato{94\,\% replicado, 4.098 personas, 19 países}{\autor{Ruggeri} et al., 2020};
+  \item salarios rígidos a la baja; vivienda; 11-S, \dato{$\approx$350 muertes más en carretera}{\autor{Gigerenzer}, 2004};
+  \item prima de las acciones: \emph{aversión miope a las pérdidas} (\autor{Benartzi}-\autor{Thaler}, 1995) \vertema{3.B.23}; efecto disposición.
+  \end{itemize}
 \item \emph{Valoración}: la que mejor encaja con los experimentos; \concepto{racionalidad limitada} (\autor{Simon}); \emph{nudges}. Límites: $r$ indeterminado, sin fuerza normativa. \emph{Complemento}, no sustituto.
 \end{itemize}
-\begin{ideaclave}
-La TUE falla al describir por la independencia (\autor{Allais}) y la invariancia (marco). Las perspectivas lo explican con referencia, aversión a las pérdidas y pesos de decisión: por eso la misma persona compra el seguro y el décimo.
-\end{ideaclave}
 
 % ==========================================================================
 \bloque[5,5]{III. Incertidumbre\label{rep:III}}
-\begin{itemize}
-\item \emph{Conclusión anticipada}: con \autor{Savage} se actúa \emph{como si} hubiera probabilidades subjetivas; \autor{Ellsberg} muestra que la gente distingue riesgo de ambigüedad.
-\end{itemize}
+\begin{ideaclave}
+Con \autor{Savage}, la incertidumbre se reduce a riesgo con probabilidades subjetivas; \autor{Ellsberg} rompe esa equivalencia, y los modelos de ambigüedad la recogen.
+\end{ideaclave}
 
 \sub{III.1. Teoría de la probabilidad subjetiva\label{rep:III.1}}
+\subsub{a) El teorema de la utilidad esperada subjetiva}
 \begin{itemize}
 \item \emph{Idea}: \concepto{incertidumbre} (\autor{Knight}, 1921), la situación más habitual. \concepto{Probabilidad subjetiva}: se \emph{deduce} de las elecciones.
 \item \emph{Supuestos}: \concepto{actos} $\vect{x}=(x_1,\dots,x_S)$. \autor{Savage} (1954), P1-P7: P1 \emph{orden}; P2 \concepto{principio de la cosa segura} (independencia subjetiva); P3-P4, resultados y apuestas independientes del estado y del premio; P5-P7, continuidad y técnicas.
@@ -218,7 +269,10 @@ La TUE falla al describir por la independencia (\autor{Allais}) y la invariancia
 \end{formula}
 Misma función clave; las $\pi_s$, \emph{creencias}.
 \item \emph{Implicaciones}: \autor{von Neumann}-\autor{Morgenstern}, caso particular; todo \hyperref[rep:I]{I} vale; hereda las críticas. \emph{Extensión}: \autor{Anscombe}-\autor{Aumann} (1963), caballos y ruleta.
-\item \emph{Valoración}: \concepto{paradoja de \autor{Ellsberg}} (1961): urna \emph{conocida} (50 rojas, 50 negras) y \emph{ambigua}. Se prefiere la conocida para «roja» \emph{y} para «negra» $\Rightarrow$ $\pi(R)+\pi(N)<1$: \textbf{ninguna probabilidad}. \concepto{Aversión a la ambigüedad}; menos bolsa (\autor{Dimmock} et al., 2016).
+\end{itemize}
+\subsub{b) Limitaciones: la paradoja de \autor{Ellsberg}}
+\begin{itemize}
+\item \concepto{Paradoja de \autor{Ellsberg}} (1961): urna \emph{conocida} (50 rojas, 50 negras) y \emph{ambigua}. Se prefiere la conocida para «roja» \emph{y} para «negra» $\Rightarrow$ $\pi(R)+\pi(N)<1$: \textbf{ninguna probabilidad}. \concepto{Aversión a la ambigüedad}; menos bolsa (\autor{Dimmock} et al., 2016).
 \end{itemize}
 \graficorepaso[0.42\linewidth]{ellsberg}{Urna conocida y urna ambigua}
 
@@ -244,17 +298,24 @@ $D$ & 10 & 3 & 4 & 3 & 1 & 4 & 3 & 10 & 5,67 & \cellcolor{tceesalvia}4\\
 \bottomrule
 \end{tabular}\par}
 \begin{itemize}
-\item \emph{Elección}: \concepto{\autor{Wald}} (\emph{maximin}) $\to B$; \concepto{maximax} $\to C$; \concepto{\autor{Laplace}} (razón insuficiente) $\to A$; \concepto{\autor{Hurwicz}} ($\alpha$ al mejor): $B$ si $\alpha<\frac17$, $D$ si $\frac17<\alpha<\frac12$, $C$ si $\alpha>\frac12$; \concepto{\autor{Savage}} (\emph{minimax regret}) $\to D$.
+\item \emph{Elección}:
+  \begin{itemize}
+  \item \concepto{\autor{Wald}} (\emph{maximin}) $\to B$; \concepto{maximax} $\to C$; \concepto{\autor{Laplace}} (razón insuficiente) $\to A$;
+  \item \concepto{\autor{Hurwicz}} ($\alpha$ al mejor): $B$ si $\alpha<\frac17$, $D$ si $\frac17<\alpha<\frac12$, $C$ si $\alpha>\frac12$;
+  \item \concepto{\autor{Savage}} (\emph{minimax regret}) $\to D$.
+  \end{itemize}
 \item \emph{Valoración}: cada criterio falla en algo (\autor{Milnor}, 1954). Ambigüedad: robustez (\autor{Hansen}-\autor{Sargent}).
 \end{itemize}
-\begin{ideaclave}
-Con \autor{Savage}, la incertidumbre se reduce a riesgo con probabilidades subjetivas; \autor{Ellsberg} rompe esa equivalencia, y los modelos de ambigüedad la recogen.
-\end{ideaclave}
 
 % ==========================================================================
 \bloque[1]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: axiomas (sobre todo independencia) $\Rightarrow$ utilidad esperada; actitud ante el riesgo en la curvatura de $u$ (\hyperref[rep:I]{I}); desviaciones sistemáticas $\to$ perspectivas (\hyperref[rep:II]{II}); \autor{Savage}, \autor{Ellsberg}, ambigüedad (\hyperref[rep:III]{III}).
+\item \textbf{Recapitulación}:
+  \begin{itemize}
+  \item axiomas (sobre todo independencia) $\Rightarrow$ utilidad esperada; actitud ante el riesgo en la curvatura de $u$;
+  \item desviaciones sistemáticas $\to$ perspectivas;
+  \item \autor{Savage}, \autor{Ellsberg}, ambigüedad.
+  \end{itemize}
 \item \textbf{Relevancia}: carteras \vertema{3.B.23}, dinero \vertema{3.A.35}, información asimétrica \vertema{3.A.13}, juegos \vertema{3.A.14}; seguros obligatorios y garantía de depósitos; economía conductual \vertema{3.A.1}.
 \item \textbf{Extensiones}: contingentes \vertema{3.A.21}; CRRA y ESI \vertema{3.A.29}; prudencia frente a \autor{Hall} \vertema{3.A.33}; irreversibilidad \vertema{3.A.34}.
 \item \textbf{Opinión}: no compiten: TUE \emph{normativa}; perspectivas \emph{positivas} (ahorro insuficiente, sobreaseguro). Hacen falta las 2.
@@ -262,54 +323,38 @@ Con \autor{Savage}, la incertidumbre se reduce a riesgo con probabilidades subje
 \end{itemize}
 
 % ==========================================================================
-\bloque{Autores y fechas}
-\hito{1738}{D.\ \autor{Bernoulli}: esperanza de la utilidad ($\ln x$); \autor{Cramer}, 1728}
-\hito{1921}{\autor{Knight}: riesgo frente a incertidumbre; \autor{Keynes}}
-\hito{1944}{\autor{von Neumann}-\autor{Morgenstern}: utilidad esperada (axiomas, 1947)}
-\hito{1948}{\autor{Friedman}-\autor{Savage}; 1952, \autor{Markowitz}}
-\hito{1953}{\autor{Allais}: paradoja; \autor{Arrow}: bienes contingentes}
-\hito{1954}{\autor{Savage}: utilidad esperada subjetiva}
-\hito{1961}{\autor{Ellsberg}: ambigüedad}
-\hito{1964}{\autor{Pratt}; 1965, \autor{Arrow}: medidas de aversión, cartera}
-\hito{1968}{\autor{Mossin}: demanda de seguros; \autor{Leland}: prudencia}
-\hito{1970}{\autor{Rothschild}-\autor{Stiglitz}: dispersión que conserva la media}
-\hito{1979}{\autor{Kahneman}-\autor{Tversky}: teoría de las perspectivas}
-\hito{1982}{\autor{Quiggin}; \autor{Machina}; \autor{Loomes}-\autor{Sugden}, \autor{Bell}}
-\hito{1989}{\autor{Schmeidler}; \autor{Gilboa}-\autor{Schmeidler}: maxmin}
-\hito{1992}{\autor{Tversky}-\autor{Kahneman}: teoría acumulativa}
-\hito{2005}{\autor{Klibanoff}-\autor{Marinacci}-\autor{Mukerji}: ambigüedad suave}
-
+\anexorepaso
 \bloque{Datos clave}
 \begin{itemize}
 \item Primas de seguro en España: \dato{$\approx$86.000 M€, $\approx$5\,\% del PIB}{Mapfre; Eurostat, 2025}.
-\item Prima de las acciones (EE.\,UU.): \dato{6,2 p.}{\autor{Mehra}-\autor{Prescott}, 1889-1978}; \dato{6,7 p. sobre letras, 5,5 sobre bonos a 10 años}{\autor{Damodaran}; UBS, 1928-2025}.
+\item Prima de las acciones (EE.\,UU.): \dato{6,7 p. sobre letras}{\autor{Damodaran}, 1928-2025}.
 \item Aversión relativa estimada: $\approx1$ (\autor{Chetty}, 2006).
-\item Garantía de depósitos (UE): \dato{100.000 €}{por depositante y entidad}. Pánicos: Grecia, \dato{$\approx$40.000 M€}{1.\textsuperscript{er} sem.\ 2015}; SVB, \dato{$\approx$42.000 M\$ en un día}{9/3/2023}.
-\item Nobel: \autor{Allais} 1988; \autor{Markowitz} 1990; \autor{Kahneman} 2002; \autor{Thaler} 2017; \autor{Diamond}, \autor{Dybvig} y \autor{Bernanke} 2022.
+\item Garantía de depósitos (UE): \dato{100.000 €}{por depositante y entidad}.
 \end{itemize}
-
-% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1738}{D.\ \autor{Bernoulli}: esperanza de la utilidad}
+\hito{1921}{\autor{Knight}: riesgo e incertidumbre}
+\hito{1944}{\autor{von Neumann}-\autor{Morgenstern}}
+\hito{1953}{\autor{Allais}: paradoja}
+\hito{1954}{\autor{Savage}: subjetiva}
+\hito{1961}{\autor{Ellsberg}: ambigüedad}
+\hito{1964}{\autor{Pratt}; \autor{Arrow} (1965)}
+\hito{1968}{\autor{Mossin}: seguros}
+\hito{1979}{\autor{Kahneman}-\autor{Tversky}}
+\hito{1989}{\autor{Gilboa}-\autor{Schmeidler}: maxmin}
 \bloque{Preguntas del tribunal}
 \begin{enumerate}
-\item \textbf{¿Qué axioma da la forma de utilidad esperada?} La independencia; la continuidad (con el preorden) solo da la existencia de $U$.
-\item \textbf{¿En qué sentido es cardinal?} $u$, única salvo afines positivas: mide la actitud ante el riesgo, no la intensidad; sin comparaciones interpersonales.
-\item \textbf{¿Relación entre $r_R$ y la elasticidad de la UMg?} $r_R=-\varepsilon_{u'(x),x}$; en la CRRA, $\theta$, y con utilidad separable $\mathrm{ESI}=1/\theta$.
-\item \textbf{¿Por qué parcial con prima recargada?} En $S=L$, $U'(L)=u'(\cdot)(\pi-\gamma)<0$: reducir la cobertura sube la utilidad esperada.
-\item \textbf{¿Cómo explican las perspectivas seguro y lotería a la vez?} $w$ sobrepondera lo improbable: patrón cuádruple.
-\item \textbf{¿Por qué \autor{Ellsberg} no cabe en \autor{Savage}?} Las probabilidades reveladas suman menos de 1; el maxmin la explica.
-\item \textbf{¿Qué aplicación dio el Nobel a \autor{Markowitz}?} La media-varianza (cuadrática o normales) $\to$ frontera eficiente \vertema{3.B.23}.
+\item \textbf{¿Qué axioma da la forma de utilidad esperada?} La independencia.
+\item \textbf{¿En qué sentido es cardinal?} Única salvo afines positivas; sin comparaciones.
+\item \textbf{¿Por qué parcial con prima recargada?} En $S=L$, $U'(L)<0$.
+\item \textbf{¿Seguro y lotería a la vez?} $w$ sobrepondera lo improbable.
+\item \textbf{¿Por qué \autor{Ellsberg} no cabe en \autor{Savage}?} Probabilidades que suman menos de 1.
 \end{enumerate}
-
 \begin{trampa}
 \begin{itemize}
-\item Averso $\iff$ $u$ cóncava $\iff$ $\xi<\mathbb{E}[\tilde{x}]$ $\iff$ $\rho>0$, para toda lotería no degenerada.
-\item El axioma propio es la \emph{independencia}, no la independencia de las alternativas irrelevantes de \autor{Arrow} \vertema{3.A.24}.
-\item $u$, única salvo transformaciones \emph{afines} positivas, no crecientes.
-\item CRRA $\Rightarrow$ DARA; la cuadrática es IARA y sin prudencia ($u'''=0$). El ahorro precautorio exige $u'''>0$, no basta la aversión.
-\item Prima justa: completo; recargada: parcial (\autor{Mossin}, 1968, información simétrica; no \autor{Rothschild}-\autor{Stiglitz}, 1976).
-\item 1.\textsuperscript{er} orden $\iff$ $F(x)\leq G(x)\ \forall x$; el 2.º compara loterías con la misma media.
-\item \autor{Allais} viola la independencia; \autor{Ellsberg}, la cosa segura. \autor{Quiggin} explica \autor{Allais}; \autor{Schmeidler} (\autor{Choquet}), \autor{Ellsberg}.
-\item Criterio de \autor{Savage}: mínimo del pesar \emph{máximo}, no de la suma.
+\item $u$: única salvo \emph{afines}, no crecientes.
+\item Cuadrática: IARA, sin prudencia.
+\item \autor{Allais}: independencia; \autor{Ellsberg}: cosa segura.
 \end{itemize}
 \end{trampa}
 

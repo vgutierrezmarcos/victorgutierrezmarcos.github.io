@@ -1,39 +1,45 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Unión Bancaria y Unión de Mercados de Capitales]{3.B.44}{La Unión Bancaria: Pilares y Código normativo único. La Unión de Mercados de Capitales.}
-\tcefecha{14/11/2026}
+\tcefecha{19/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
 
 % ==========================================================================
-\bloque{Esquema del cante}
-\esquemacante{%
-\apartadocante{Introducción: «empezar la casa por el tejado»}{2,5}
-\apartadocante{I. Origen, fundamentos y código normativo único}{7,5}
-\subcante{1. Origen: de la crisis a la decisión de 2012}{2}
-\subcante{2. ¿Por qué? Círculo vicioso y trilema financiero}{3,5}
-\subcante{3. El código normativo único}{2}
-\apartadocante{II. Los pilares de la unión bancaria}{10,5}
-\subcante{1. Mecanismo Único de Supervisión}{3}
-\subcante{2. Mecanismo Único de Resolución, con el \emph{bail-in}}{4}
-\subcante{3. La garantía común de depósitos, con el seguro común}{3,5}
-\apartadocante{III. La Unión de Mercados de Capitales}{8,5}
-\subcante{1. ¿Por qué?, con el reparto de riesgos}{3}
-\subcante{2. La UMC (2015-2024)}{2,5}
-\subcante{3. La Unión de Ahorros e Inversiones (2025-2026)}{3}
-\apartadocante{Conclusión}{1}}
-\emph{Gráficos y figuras del cante}: círculo vicioso en $(L,s)$ y trilema financiero (\hyperref[rep:I]{I}); pilares, solvencia, FUR, jerarquía de acreedores y fondo común (\hyperref[rep:II]{II}); financiación de las empresas, capitalización y reparto de riesgos (\hyperref[rep:III]{III}). Fórmulas: $s^*=\frac{s_0+\alpha L_0}{1-\alpha\beta}$; $\theta B\geq C$ frente a $B\geq C$; $r-r_f\approx\pi(1-R)$; $F_c/F_n=\sqrt{\rho+(1-\rho)/n}$; $1=\beta_K+\beta_F+\beta_C+\beta_U$.
-
-% ==========================================================================
 \bloque[2,5]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: «Empezar la casa por el tejado»: en 1999, moneda y banco central comunes, pero bancos supervisados, rescatados y garantizados por cada Estado. Irlanda gastó más de un tercio de su PIB en sus bancos. ¿Puede una unión monetaria funcionar sin un sistema financiero común?
-\item \textbf{Relevancia}: el BCE supervisa 109 grupos, $\approx$85\,\% de los activos, $\approx$29,5 billones; préstamos = 73\,\% de la deuda de las empresas (EE.\,UU.: 37\,\%); \autor{Draghi}: 750.000-800.000 millones más de inversión al año. España: BdE en el MUS, FROB en el MUR, Popular (2017) \vertema{4.A.19} \vertema{4.A.20}.
-\item \textbf{Contextualización}: \concepto{unión bancaria}: supervisión, resolución (y garantía) europeas sobre el \concepto{código normativo único}; euro + cooperación estrecha. \concepto{UMC} (2015) $\to$ \concepto{UAI} (2025): los 27 \vertema{3.B.39} \vertema{3.B.43} \vertema{3.B.45}.
+\item \textbf{Enganche}: «Empezar la casa por el tejado».
+  \begin{itemize}
+  \item 1999: moneda y banco central comunes, pero bancos supervisados, rescatados y garantizados por cada Estado.
+  \item Irlanda gastó más de 1/3 de su PIB en sus bancos.
+  \end{itemize}
+\item \textbf{Relevancia}: el BCE supervisa 109 grupos ($\approx$85\,\% de los activos); préstamos = 73\,\% de la deuda de las empresas (EE.\,UU.: 37\,\%).
+  \begin{itemize}
+  \item España: BdE en el MUS, FROB en el MUR, Popular (2017) \vertema{4.A.19} \vertema{4.A.20}.
+  \end{itemize}
+\item \textbf{Contextualización}: \concepto{unión bancaria}: supervisión, resolución (y garantía) europeas sobre el \concepto{código normativo único}.
+  \begin{itemize}
+  \item Euro + cooperación estrecha; \concepto{UMC} (2015) $\to$ \concepto{UAI} (2025): los 27 \vertema{3.B.39} \vertema{3.B.43}.
+  \end{itemize}
 \item \textbf{Problemática}: ¿por qué en 2012? ¿Qué normas y pilares? ¿Qué falta? ¿Por qué mercados integrados?
 \item \textbf{Estructura}: \hyperref[rep:I]{I} porqué y normas; \hyperref[rep:II]{II} pilares; \hyperref[rep:III]{III} mercados.
 \end{itemize}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Origen, fundamentos y código único}{7,5}
+\subcante{1. Origen: de la crisis a 2012}{2}
+\subcante{2. ¿Por qué una unión bancaria?}{3,5}
+\subcante{3. El código normativo único}{2}
+\apartadocante{II. Los pilares de la unión bancaria}{10,5}
+\subcante{1. Mecanismo Único de Supervisión}{3}
+\subcante{2. Mecanismo Único de Resolución}{4}
+\subcante{3. La garantía común de depósitos}{3,5}
+\apartadocante{III. La Unión de Mercados de Capitales}{8,5}
+\subcante{1. ¿Por qué mercados integrados?}{3}
+\subcante{2. La UMC (2015-2024)}{2,5}
+\subcante{3. La Unión de Ahorros e Inversiones}{3}
+\apartadocante{Conclusión}{1}}
 
 % ==========================================================================
 \bloque[7,5]{I. Origen, fundamentos y código normativo único\label{rep:I}}
@@ -41,45 +47,79 @@
 Con bancos nacionales, los problemas de los bancos y del Estado se alimentan entre sí, y un supervisor nacional no valora el coste para los vecinos. Respuesta: supervisión y resolución europeas sobre normas comunes para los 27.
 \end{ideaclave}
 
-\sub{I.1. Origen\label{rep:I.1}}
+\sub{I.1. Origen: de la crisis a la decisión de 2012\label{rep:I.1}}
 \begin{itemize}
-\item Antes: pasaporte + directivas mínimas; supervisión y rescates nacionales. 2008: rescates descoordinados; Fortis partido. 2009 \autor{de Larosière} $\to$ 2011 \concepto{SESF} (ABE, AEVM, AESPJ, JERS) \vertema{3.B.36}.
-\item 2010-2012: crisis de deuda; España, 555 pb, hasta 100.000 millones (41.000 del MEDE) \vertema{4.A.18}; fragmentación.
-\item 26/6 y 5/12/2012: \concepto{Informe de los cuatro presidentes} (\autor{Van Rompuy}). 29/6/2012: Cumbre del Euro: «romper el círculo vicioso». 26/7/2012: «lo que sea necesario» y OMT.
-\item Reglamento del MUS (2013) $\to$ BCE supervisa desde el 4/11/2014; MUR desde 2016; \concepto{Informe de los cinco presidentes} (22/6/2015).
+\item \emph{Antes}: pasaporte + directivas mínimas; supervisión y rescates nacionales.
+\item 2007-2009: rescates nacionales, garantías de depósitos ampliadas sin coordinar; Fortis y Dexia, partidos por países \vertema{3.B.26}.
+  \begin{itemize}
+  \item 2009 \autor{de Larosière} $\to$ 2011 \concepto{SESF} (ABE, AEVM, AESPJ, JERS).
+  \end{itemize}
+\item 2010-2012: crisis de deuda; fragmentación; España, 555 pb, hasta 100.000 M€ (41.000 del MEDE) \vertema{4.A.18}.
+\item 2012:
+  \begin{itemize}
+  \item \concepto{Informe de los cuatro presidentes} (\autor{Van Rompuy});
+  \item 29-6: Cumbre del Euro, «romper el círculo vicioso»;
+  \item 26-7: «lo que sea necesario» y OMT.
+  \end{itemize}
+\item MUS (2013) $\to$ el BCE supervisa desde el 4-11-2014; MUR desde 2016; \concepto{Informe de los cinco presidentes} (2015).
 \end{itemize}
 \graficorepaso[\linewidth]{cronologia}{Unión bancaria (arriba) y mercados de capitales (abajo), 2009-2027}
 
 \sub{I.2. ¿Por qué una unión bancaria?\label{rep:I.2}}
-\textbf{Círculo vicioso en forma reducida} \vertema{3.B.26}
+\subsub{a) El círculo vicioso banca-soberano en forma reducida}
 \begin{itemize}
-\item \emph{Supuestos}: Estado: $s=s_0+\alpha L$; bancos con deuda propia: $L=L_0+\beta s$; $\alpha\beta<1$.
+\item \emph{Supuestos}: Estado, $s=s_0+\alpha L$; bancos con deuda propia, $L=L_0+\beta s$; $\alpha\beta<1$ \vertema{3.B.26}.
 \item \emph{Desarrollo}:
-\begin{formula}
 \funcionclave{s^*=\frac{s_0+\alpha L_0}{1-\alpha\beta}}
-\end{formula}
-$\Delta s^*=\frac{\alpha}{1-\alpha\beta}\Delta L_0$: multiplicador $\frac{1}{1-\alpha\beta}>1$.
-\item \emph{Implicaciones}: resolución, FUR y EDIS bajan $\alpha$; supervisión baja $L_0$; deuda pública con capital o activo seguro bajan $\beta$. \emph{Extensiones}: abrazo mortal (\autor{Farhi}-\autor{Tirole}, 2018); ESBies. \emph{Evidencia}: deuda pública 9,3\,\% del activo; parte doméstica 39\,\% (2014) $\to$ 28\,\% (2025).
+  \begin{itemize}
+  \item $\Delta s^*=\frac{\alpha}{1-\alpha\beta}\Delta L_0$: multiplicador $\frac{1}{1-\alpha\beta}>1$.
+  \end{itemize}
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item resolución, FUR y EDIS bajan $\alpha$; supervisión baja $L_0$;
+  \item deuda pública con capital o activo seguro bajan $\beta$.
+  \end{itemize}
+\item \emph{Extensiones}: abrazo mortal (\autor{Farhi}-\autor{Tirole}, 2018); ESBies (\autor{Brunnermeier} et al., 2016).
+\item \emph{Evidencia}: deuda pública, 9,3\,\% del activo; parte doméstica, 39\,\% (2014) $\to$ 28\,\% (2025).
 \end{itemize}
-\graficorepaso[0.85\linewidth]{bucle-banco-soberano}{Perturbación $\Delta L_0$: de $E$ a $E'$, más que el impulso; con unión bancaria ($\alpha\downarrow$), $E''$}
-
-\textbf{Trilema financiero} (\autor{Schoenmaker}, 2011)
+\graficorepaso[\linewidth]{bucle-banco-soberano}{$\Delta L_0$ lleva de $E$ a $E'$, más que el impulso; con unión bancaria ($\alpha\downarrow$), $E''$}
+\subsub{b) El trilema financiero (\autor{Schoenmaker}, 2011)}
 \begin{itemize}
-\item Estabilidad, integración y políticas nacionales: solo 2. Banco transfronterizo: salvarlo cuesta $C$, evita $B$; el país de origen recibe $\theta B$:
-\begin{formula}
-\funcionclave{\theta B\geq C\ \text{(nacional)}\quad\text{vs}\quad B\geq C}
-\end{formula}
-Si $\theta<C/B<1$: infraprovisión; crece con la integración. Salidas: \emph{ring-fencing}, inestabilidad (euro hasta 2012) o unión bancaria. Captura y tolerancia \vertema{3.A.20}. Quien decide debe pagar.
-\item \emph{Evidencia}: Fortis (2008) partido por países; liquidez retenida en las filiales (2012). \emph{Valoración}: argumento sencillo y potente, pero exige compartir también los costes.
+\item \emph{Idea}: estabilidad, integración y políticas nacionales: solo 2.
+\item \emph{Desarrollo}: salvar un banco transfronterizo cuesta $C$ y evita $B$; el país de origen recibe $\theta B$:
+\funcionclave{\theta B\geq C\ \text{(nacional)}\quad\text{frente a}\quad B\geq C}
+  \begin{itemize}
+  \item Si $\theta<C/B<1$: infraprovisión, que crece con la integración.
+  \end{itemize}
+\item \emph{Implicaciones}: \emph{ring-fencing}, inestabilidad (euro hasta 2012) o unión bancaria; quien decide debe pagar.
+\item \emph{Evidencia}: Fortis (2008); liquidez retenida en las filiales (2012).
+\item \emph{Valoración}: sencillo y potente, pero exige compartir también los costes.
 \end{itemize}
-\graficorepaso[0.75\linewidth]{trilema-financiero}{Solo 2 de 3: la unión bancaria renuncia a las políticas nacionales}
+\graficorepaso[0.8\linewidth]{trilema-financiero}{Solo 2 de 3: la unión bancaria renuncia a las políticas nacionales}
 
 \sub{I.3. El código normativo único\label{rep:I.3}}
 \begin{itemize}
-\item Consejo Europeo, 2009: reglamentos, pocas opciones nacionales; los 27.
-\item \textbf{CRR/CRD} (Basilea~III \vertema{3.B.27}); \textbf{CRR3/CRD~VI}: desde el 1/1/2025, \emph{output floor} 50\,\% $\to$ 72,5\,\% (2030), transitorios a 2032; CRD~VI transpuesta en enero de 2026; terceros países 2027; FRTB desde 2027.
-\item \textbf{BRRD} (2014/59): planes, resolución, \emph{bail-in}. \textbf{DGSD} (2014/49): 100.000\,€, 7 días, 0,8\,\% (2024). BRRD + MUR + DGSD = \concepto{CMDI}.
-\item \textbf{ABE} (2011, París): normas técnicas, directrices, código interactivo, pruebas de resistencia.
+\item \emph{Qué es}: normas prudenciales armonizadas para todas las entidades (Consejo Europeo, 2009).
+  \begin{itemize}
+  \item Reglamentos directamente aplicables, pocas opciones nacionales.
+  \item Para los 27: base del mercado único bancario (art.~114, compartida) \vertema{3.B.39}.
+  \end{itemize}
+\item \textbf{CRR} (575/2013): Pilar~1, apalancamiento, liquidez (LCR, NSFR), grandes riesgos, Pilar~3.
+\item \textbf{CRD} (2013/36): autorización, gobierno, Pilar~2, colchones (Basilea~III \vertema{3.B.27}).
+\item \textbf{CRR3/CRD~VI} (2024):
+  \begin{itemize}
+  \item desde 1-1-2025; \emph{output floor} 50 $\to$ 72,5\,\% (2030); FRTB desde 2027.
+  \item Pilar~1: CET1 4,5\,\%, nivel~1 6\,\%, total 8\,\%; apalancamiento 3\,\%; conservación 2,5\,\%.
+  \end{itemize}
+\item \textbf{BRRD} (2014/59): planes, resolución, \emph{bail-in}.
+\item \textbf{DGSD} (2014/49): 100.000\,€, 7 días, fondo del 0,8\,\% (2024).
+\item BRRD + MUR + DGSD = \concepto{CMDI}.
+\item \emph{Quién aprueba}: PLO, mayoría cualificada.
+  \begin{itemize}
+  \item MUS: art.~127.6, unanimidad del Consejo (reglamento del Consejo).
+  \item MUR: art.~114, PLO; las aportaciones al fondo, por acuerdo intergubernamental.
+  \end{itemize}
+\item \textbf{ABE} (2011, París): normas técnicas, directrices, preguntas y respuestas, pruebas de resistencia cada 2 años.
 \end{itemize}
 
 % ==========================================================================
@@ -87,56 +127,110 @@ Si $\theta<C/B<1$: infraprovisión; crece con la integración. Salidas: \emph{ri
 \begin{ideaclave}
 Supervisión única: funciona. Resolución única: reglas y fondo lleno, poco uso y respaldo bloqueado. Garantía común: nunca aprobada, retirada en 2026. Una casa con 2 pilares y medio.
 \end{ideaclave}
-\graficorepaso[0.95\linewidth]{pilares-union-bancaria}{Los 3 pilares sobre el código normativo único; el tercero, sin construir}
+\graficorepaso[\linewidth]{pilares-union-bancaria}{Los 3 pilares sobre el código normativo único; el tercero, sin construir}
 
-\sub{II.1. Mecanismo Único de Supervisión\label{rep:II.1}}
+\sub{II.1. Primer pilar: el Mecanismo Único de Supervisión\label{rep:II.1}}
 \begin{itemize}
-\item Art.~127.6 TFUE; \textbf{Reglamento 1024/2013}; BCE + ANC; 21 países (Bulgaria en el euro desde 2026; cooperación estrecha 2020 de Bulgaria y Croacia).
-\item 109 \concepto{significativas} ($>$30.000 millones, $>$20\,\% PIB, 3 mayores, transfronteriza, ayuda del MEDE), $\approx$85\,\% de los activos, con equipos conjuntos; 1.828 menos significativas (77\,\% en DE y AT). Licencias, para todas.
-\item Consejo de Supervisión (\autor{Claudia Buch}, 2024) $\to$ Consejo de Gobierno por no objeción; separación de la política monetaria.
-\item \concepto{PRES}: modelo de negocio, gobierno, capital, liquidez $\to$ P2R y P2G. Para 2026: CET1 11,2\,\%, total 15,6\,\%, P2R 1,2\,\% (105 bancos). Reforma plurianual.
-\item Evaluación global 2014: 130 bancos, déficit de 24.600 millones en 25.
+\item Art.~127.6 TFUE; \textbf{Reglamento 1024/2013}; BCE + ANC; 21 países.
+\item \concepto{Significativas}: 109 ($>$30.000 M€, $>$20\,\% PIB, 3 mayores, transfronteriza, ayuda del MEDE).
+  \begin{itemize}
+  \item $\approx$85\,\% de los activos, con equipos conjuntos.
+  \item 1.828 menos significativas (77\,\% en Alemania y Austria); licencias, para todas.
+  \end{itemize}
+\item \emph{Cooperación estrecha}: Bulgaria y Croacia (1-10-2020), antes de entrar en el euro; hoy, ninguna.
+\item \emph{Gobernanza}:
+  \begin{itemize}
+  \item Consejo de Supervisión (\autor{Claudia Buch}, 2024) prepara; Consejo de Gobierno adopta por \emph{no objeción} (10 días);
+  \item separación obligatoria de la política monetaria; comisión de mediación; comité de revisión;
+  \item rinde cuentas ante el PE y el Eurogrupo.
+  \end{itemize}
+\item \concepto{PRES}: cada año, 4 elementos: modelo de negocio, gobierno, capital, liquidez.
+  \begin{itemize}
+  \item $\to$ P2R (obligatorio) y P2G (recomendación para un escenario adverso).
+  \item 2026: CET1 exigido 11,2\,\%, total 15,6\,\%, P2R 1,2\,\% (105 bancos).
+  \item Reforma: plurianual, más centrada en riesgos; prioridades 2026-2028: geopolítica y resiliencia operativa.
+  \end{itemize}
+\item \emph{Resultados}: evaluación global 2014 (130 bancos, 82\,\% de los activos): déficit de 24.600 M€ en 25.
+  \begin{itemize}
+  \item CET1 de España, 13,5\,\% (el más bajo), frente al 20,8\,\% de Lituania \vertema{4.A.19}.
+  \item 2023: SVB y Credit Suisse apenas tocaron a la zona del euro.
+  \end{itemize}
+\item \emph{Valoración}: el pilar más sólido; pero bancos «europeos en vida y nacionales en la muerte»: capital y liquidez retenidos en filiales, pocas fusiones transfronterizas.
 \end{itemize}
-\graficorepaso[\linewidth]{solvencia-morosidad}{CET1 del 12,7\,\% (2015) al 16,0\,\% (2026); dudosos del 7,5\,\% al 1,9\,\%}
+\graficorepaso[\linewidth]{solvencia-morosidad}{CET1 del 12,7\,\% (2015) al 16,0\,\% (2026); dudosos del 7,5 al 1,9\,\%}
 
-\sub{II.2. Mecanismo Único de Resolución\label{rep:II.2}}
+\sub{II.2. Segundo pilar: el Mecanismo Único de Resolución\label{rep:II.2}}
 \begin{itemize}
-\item \textbf{Reglamento 806/2014}; JUR (Bruselas): 115 bancos, 92 con resolución prevista. Inviable (BCE) $\to$ sin alternativa privada $\to$ interés público $\to$ dispositivo (JUR, Comisión, Consejo en 24 h). Si no, liquidación nacional.
-\item Instrumentos: venta, banco puente, segregación, \concepto{bail-in}.
-\item \concepto{FUR}: 1\,\% de los depósitos garantizados; $>$81.000 millones (2025); sin aportaciones 2024-2026; acuerdo intergubernamental de 2014, mutualizado en 2024. Solo tras el 8\,\% de \emph{bail-in}; máximo 5\,\%.
-\item \textbf{Respaldo del MEDE}: 68.000 millones; firmado el 27/1/2021; Italia no ratifica (21/12/2023) \vertema{3.B.45}.
+\item \emph{¿Por qué?} El concurso es lento e interrumpe funciones esenciales; el \emph{bail-out} premia a accionistas y alimenta el círculo vicioso: la \concepto{resolución}, 3.ª vía.
+\item \textbf{Reglamento 806/2014} (pleno desde 2016); JUR (Bruselas): 115 bancos, 92 con resolución prevista; en España, FROB y BdE.
+\item \emph{Pasos}:
+  \begin{enumerate}
+  \item \concepto{inviable o probablemente inviable} (BCE): incumple la autorización, activos $<$ pasivos, no puede pagar o necesita ayuda extraordinaria;
+  \item sin alternativa privada;
+  \item \concepto{interés público}: la resolución protege funciones esenciales mejor que la liquidación;
+  \item dispositivo (JUR, Comisión, Consejo en 24 h); si no, liquidación nacional.
+  \end{enumerate}
+\item Instrumentos: venta, banco puente, segregación, \concepto{bail-in}; \concepto{ningún acreedor peor parado} que en liquidación.
+\item \concepto{FUR}: lo pagan los bancos según tamaño y riesgo; 1\,\% de los depósitos garantizados; $>$81.000 M€ (2025); sin aportaciones 2024-2026.
+  \begin{itemize}
+  \item Acuerdo intergubernamental (2014): compartimentos nacionales mutualizados hasta 2024.
+  \end{itemize}
+  \begin{itemize}
+  \item Solo tras el 8\,\% de \emph{bail-in}; máximo 5\,\%.
+  \end{itemize}
+\item \emph{Respaldo del MEDE}: 68.000 M€; firmado en 2021; Italia no ratifica (2023) \vertema{3.B.45}.
 \end{itemize}
-\graficorepaso[0.9\linewidth]{fondo-unico-resolucion}{FUR: de 10.800 millones (2016) a más de 81.000 (2025)}
-
-\textbf{\emph{Bail-in} frente a \emph{bail-out}}
+\graficorepaso[\linewidth]{fondo-unico-resolucion}{FUR: de 10.800 M€ (2016) a más de 81.000 (2025)}
+\subsub{a) Recapitalización interna frente a rescate}
 \begin{itemize}
-\item \emph{Supuestos}: quiebra con probabilidad $\pi$; recuperación $R$; acreedores neutrales al riesgo. Con rescate, $r=r_f$. Con \emph{bail-in}:
-\begin{formula}
+\item \emph{Supuestos}: quiebra con probabilidad $\pi$; recuperación $R$; acreedores neutrales al riesgo.
+\item \emph{Desarrollo}: con rescate, $r=r_f$; con \emph{bail-in}:
 \funcionclave{r-r_f\approx\pi(1-R)}
-\end{formula}
-= subvención implícita del demasiado grande para caer.
-\item \emph{Implicaciones}: inconsistencia temporal $\Rightarrow$ MREL (objetivo medio 27,8\,\% de APR; déficit 200 millones) y TLAC. \emph{Extensiones}: contagio; Credit Suisse (AT1, 2023). \emph{Evidencia}: subvención hasta 300.000 millones de dólares en el euro (FMI, 2012); CDS tras Chipre (\autor{Schäfer}, \autor{Schnabel} y \autor{Weder di Mauro}, 2016).
+  \begin{itemize}
+  \item La diferencia es la subvención implícita del «demasiado grande para caer».
+  \end{itemize}
+\item \emph{Implicaciones}: inconsistencia temporal $\Rightarrow$ MREL (objetivo medio 27,8\,\% de APR) y TLAC (18\,\% de APR).
+\item \emph{Extensiones}: contagio; Credit Suisse (AT1, 2023).
+\item \emph{Evidencia}: subvención de hasta 300.000 M\$ en el euro (FMI, 2012); CDS tras Chipre (\autor{Schäfer}-\autor{Schnabel}-\autor{Weder di Mauro}, 2016).
 \end{itemize}
-\graficorepaso[0.9\linewidth]{jerarquia-acreedores}{Primero el capital, después la deuda; los depósitos, con preferencia; los garantizados, nunca}
-
-\textbf{Casos}: Popular (7/6/2017, Santander, 1\,€); Vicenza y Veneto (2017, liquidación nacional con ayudas); ABLV (2018), PNB (2019); Sberbank (2022). \textbf{CMDI}: acuerdo 25/6/2025; Directivas 2026/806 y 2026/804 y Reglamento 2026/808 (abril de 2026), aplicación en mayo de 2028: más interés público, FGD financian transferencias (cuentan para el 8\,\%), preferencia de los depositantes en 3 niveles.
-
-\sub{II.3. La garantía común de depósitos\label{rep:II.3}}
+\graficorepaso[\linewidth]{jerarquia-acreedores}{Primero el capital, después la deuda; los depósitos garantizados, nunca}
+\subsub{b) Casos y la reforma CMDI}
 \begin{itemize}
-\item \concepto{EDIS} (24/11/2015): reaseguro, coaseguro, seguro pleno en 2024. Bloqueo: reducir riesgos antes o compartirlos. 2017: 2 fases; Eurogrupo 2022: solo CMDI. Julio de 2026: se sustituirá; programa de trabajo 2027 (4/11/2026): retirada; nuevas propuestas en el 1.\textsuperscript{er} trimestre de 2027.
+\item Popular (7-6-2017, al Santander por 1\,€); Vicenza y Veneto (2017: liquidación nacional con ayudas); ABLV (2018); Sberbank (2022).
+\item Recapitalización precautoria: Monte dei Paschi (2017).
+\item \textbf{CMDI} (acuerdo 25-6-2025; textos de abril de 2026; aplicación 2028):
+  \begin{itemize}
+  \item más interés público; los FGD financian transferencias (cuentan para el 8\,\%);
+  \item preferencia de los depositantes en 3 niveles.
+  \end{itemize}
 \end{itemize}
-\textbf{Seguro común y riesgo moral}
+
+\sub{II.3. El pilar que falta: la garantía común de depósitos\label{rep:II.3}}
 \begin{itemize}
-\item Garantía creíble elimina el pánico de \autor{Diamond}-\autor{Dybvig} \vertema{3.B.26}. $n$ sistemas, desviación $\sigma$, correlación $\rho$:
-\begin{formula}
+\item \concepto{EDIS} (24-11-2015): reaseguro, coaseguro, seguro pleno en 2024.
+\item Bloqueo: ¿reducir riesgos antes o compartirlos?
+  \begin{itemize}
+  \item 2017: 2 fases; Eurogrupo 2022: solo CMDI.
+  \item Programa de trabajo 2027 (4-11-2026): retirada; nuevas propuestas en 2027.
+  \end{itemize}
+\end{itemize}
+\subsub{Seguro de depósitos común y riesgo moral}
+\begin{itemize}
+\item \emph{Idea}: una garantía creíble elimina el pánico (\autor{Diamond}-\autor{Dybvig}, 1983) \vertema{3.B.26}.
+\item \emph{Desarrollo}: $n$ sistemas, desviación $\sigma$, correlación $\rho$:
 \funcionclave{\frac{F_c}{F_n}=\sqrt{\rho+\frac{1-\rho}{n}}<1}
-\end{formula}
-Riesgo moral: la garantía es una \emph{put} (\autor{Merton}, 1977), y entre países. Remedio: aportaciones según riesgo, supervisión común, reducir riesgos heredados.
-\item \emph{Evidencia}: con 0,8\,\%, suficiente incluso en crisis grave y sin subvenciones cruzadas sistemáticas (\autor{Carmassi} \emph{et al.}, 2018).
+\item \emph{Riesgo moral}: la garantía es una \emph{put} (\autor{Merton}, 1977), también entre países.
+  \begin{itemize}
+  \item Remedio: aportaciones según riesgo, supervisión común, reducir riesgos heredados.
+  \end{itemize}
+\item \emph{Evidencia}: con el 0,8\,\%, suficiente incluso en crisis grave, sin subvenciones cruzadas (\autor{Carmassi} et al., 2018).
 \end{itemize}
-\graficorepaso[0.85\linewidth]{seguro-depositos-comun}{Fondo común frente a nacional: menor con más países y menos correlación}
+\graficorepaso[\linewidth]{seguro-depositos-comun}{Fondo común frente a nacional: menor con más países y menos correlación}
 \begin{itemize}
-\item \textbf{Deuda pública}: pondera 0 y sin límite de grandes riesgos; Basilea (2017): sin consenso; reforma gradual + activo seguro \vertema{3.B.37}.
+\item \emph{Deuda pública}: pondera 0 y sin límite de grandes riesgos; Basilea (2017), sin consenso.
+  \begin{itemize}
+  \item Salida: reforma gradual + activo seguro \vertema{3.B.37}.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
@@ -145,92 +239,116 @@ Riesgo moral: la garantía es una \emph{put} (\autor{Merton}, 1977), y entre pa�
 Mucha financiación bancaria y ahorro en depósitos: los riesgos se reparten mal. Diez años de normas (UMC) y pocos cambios de fondo; en 2025, Unión de Ahorros e Inversiones.
 \end{ideaclave}
 
-\sub{III.1. ¿Por qué?\label{rep:III.1}}
+\sub{III.1. ¿Por qué unos mercados de capitales integrados?\label{rep:III.1}}
 \begin{itemize}
-\item Préstamos 73\,\% de la deuda de las empresas (EE.\,UU.: 37\,\%; bancos 12\,\%); capitalización 71\,\% del PIB (EE.\,UU. 224\,\%); depósitos 31\,\% de los activos de los hogares (EE.\,UU. 14\,\%); 300.000 millones al año salen (\autor{Letta}).
-\item Rueda de repuesto, innovación, inversión (\autor{Draghi}: 4,4-4,7\,\% del PIB), reparto de riesgos.
+\item Préstamos, 73\,\% de la deuda de las empresas (EE.\,UU.: 37\,\%).
+\item Capitalización, 71\,\% del PIB (EE.\,UU. 224\,\%); depósitos, 31\,\% de los activos de los hogares (EE.\,UU. 14\,\%).
+\item 300.000 M€ al año salen fuera (\autor{Letta}).
+\item \emph{Ventajas}: rueda de repuesto, innovación, inversión (\autor{Draghi}: 4,4-4,7\,\% del PIB), reparto de riesgos.
 \end{itemize}
-\graficorepaso[\linewidth]{capitalizacion-bursatil}{Capitalización bursátil: UE 71\,\%, EE.\,UU. 224\,\% y Japón 172\,\% del PIB (2025)}
-\graficorepaso[\linewidth]{financiacion-empresas}{Préstamos sobre deuda de las empresas: 73\,\% en el euro, 37\,\% en EE.\,UU.}
-\textbf{Reparto de riesgos} (\autor{Asdrubali}, \autor{Sørensen} y \autor{Yosha}, 1996; \autor{Ingram} \vertema{3.B.16})
+\pareja{capitalizacion-bursatil}{Capitalización: UE 71\,\%, EE.\,UU. 224\,\% del PIB (2025)}{financiacion-empresas}{Préstamos sobre deuda de las empresas: 73\,\% frente a 37\,\%}
+\subsub{El reparto de riesgos entre regiones}
 \begin{itemize}
+\item \autor{Asdrubali}-\autor{Sørensen}-\autor{Yosha} (1996); \autor{Ingram} \vertema{3.B.16}.
 \item PIB $\to$ renta nacional (capital) $\to$ renta disponible (fiscal) $\to$ consumo (crédito):
-\begin{formula}
 \funcionclave{1=\beta_K+\beta_F+\beta_C+\beta_U}
-\end{formula}
-EE.\,UU.: 39/13/23, sin suavizar 25\,\%. Euro (1997-2022): capital $\approx$10, crédito $\approx$30, fiscal $\approx$0, sin suavizar $\approx$60\,\%. El capital es el canal más estable; el crédito se esfuma en las crisis.
+\item \emph{Evidencia}:
+  \begin{itemize}
+  \item EE.\,UU.: capital 39, fiscal 13, crédito 23; sin suavizar 25\,\%;
+  \item euro (1997-2022): capital $\approx$10, crédito $\approx$30, fiscal $\approx$0; sin suavizar $\approx$60\,\%.
+  \end{itemize}
+\item \emph{Valoración}: el capital, el canal más estable; el crédito se esfuma en las crisis.
 \end{itemize}
 \graficorepaso[\linewidth]{reparto-riesgos}{Lo que suaviza cada canal: en el euro, poco el capital y casi nada el presupuesto}
 
-\sub{III.2. La UMC (2015-2024)\label{rep:III.2}}
+\sub{III.2. La Unión de Mercados de Capitales (2015-2024)\label{rep:III.2}}
 \begin{itemize}
-\item Plan de 30/9/2015 (\autor{Juncker}, más de 30 acciones); revisión 2017 (Brexit); plan de 24/9/2020: 16 acciones, 3 objetivos.
-\item Logros: STS (2017/2402, 2019); folleto y \emph{Listing Act} (2024/2809); ELTIF (2023); \emph{crowdfunding}; ESAP (julio de 2027); PEPP (2022; 2 proveedores); inversión minorista (acuerdo 12/2025); cinta consolidada (acciones, septiembre de 2026); EMIR~3 (cuenta activa); T+1 (11/10/2027); FASTER (2030); insolvencia (2026).
-\item Balance: normas sí; integración, poca.
+\item Plan de 2015 (\autor{Juncker}, $>$30 acciones); revisión 2017 (Brexit); plan de 2020: 16 acciones.
+\item \emph{Logros}:
+  \begin{itemize}
+  \item STS (titulización simple, 2019); folleto y \emph{Listing Act} (2024); ELTIF (2023); \emph{crowdfunding};
+  \item ESAP (2027); PEPP (2022); inversión minorista (acuerdo 2025);
+  \item \concepto{cinta consolidada} (acciones, 2026); EMIR~3 (cuenta activa); T+1 (2027); FASTER.
+  \end{itemize}
+\item \emph{UMC verde}: taxonomía (2020/852), divulgación (2019/2088), bono verde europeo (2023/2631).
+\item \emph{Balance}: las normas existen, pero los mercados siguen fragmentados.
+  \begin{itemize}
+  \item Faltaban decisiones políticas: supervisión común, fiscalidad, insolvencia, pensiones.
+  \end{itemize}
 \end{itemize}
 
-\sub{III.3. La Unión de Ahorros e Inversiones\label{rep:III.3}}
+\sub{III.3. La Unión de Ahorros e Inversiones (2025-2026)\label{rep:III.3}}
 \begin{itemize}
-\item \autor{Letta} (4/2024) y \autor{Draghi} (9/2024). Estrategia de 19/3/2025: ciudadanos y ahorro; inversión y financiación; integración y escala; supervisión.
-\item Cuentas de ahorro e inversión (30/9/2025); titulización (acuerdo 21/10/2026); pensiones complementarias (11/2025) \vertema{4.B.24}; integración y supervisión (4/12/2025): AEVM supervisa plataformas significativas, ECC, DCV y criptoactivos (Consejo, 9/10/2026); 28.º régimen (3/2026).
-\item Euro digital: propuesta 2023; Consejo 12/2025; PE 7/2026; trílogos; emisión posible 2029 \vertema{3.B.43}.
-\item Valoración: razón política nueva y supervisión europea sobre la mesa; lo difícil depende de los Estados.
+\item \autor{Letta} (2024): el problema es cómo se canaliza el ahorro hacia la inversión \vertema{3.B.39}.
+\item \autor{Draghi} (2024): brecha de inversión; supervisión en la AEVM, titulización, pensiones que inviertan.
+\item Estrategia de 19-3-2025 (también la unión bancaria):
+  \begin{itemize}
+  \item ciudadanos y ahorro: $\approx$10 billones en depósitos;
+  \item inversión y financiación: titulización, capital riesgo, institucionales en acciones;
+  \item integración y escala: plataformas, poscontratación y fondos;
+  \item supervisión más eficaz y convergente.
+  \end{itemize}
+\item \emph{Medidas}:
+  \begin{itemize}
+  \item cuentas de ahorro e inversión (30-9-2025): sencillas, digitales, con ventajas fiscales (modelo sueco);
+  \item titulización (acuerdo 21-10-2026);
+  \item pensiones complementarias (2025) \vertema{4.B.24};
+  \item integración y supervisión (4-12-2025): la AEVM supervisa plataformas significativas, ECC, DCV y criptoactivos;
+  \item 28.º régimen (2026).
+  \end{itemize}
+\item Euro digital: emisión posible en 2029 \vertema{3.B.43}.
+\item \emph{Valoración}: razón política nueva y supervisión europea sobre la mesa; lo difícil depende de los Estados.
 \end{itemize}
 
 % ==========================================================================
 \bloque[1]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: 2012, círculo vicioso y trilema; código común; MUS y MUR con FUR; falta EDIS. UMC y UAI: el otro motor.
+\item \textbf{Recapitulación}: 2012, círculo vicioso y trilema; código común; MUS y MUR con FUR; falta EDIS; UMC y UAI, el otro motor.
 \item \textbf{Relevancia}: transmisión monetaria, crisis bancarias sin crisis de deuda, financiar la transición.
-\item \textbf{Extensiones}: \vertema{3.B.27} \vertema{3.B.26} \vertema{3.B.16} \vertema{3.B.43} \vertema{3.B.45} \vertema{3.B.39} \vertema{4.A.19} \vertema{4.A.20}.
+\item \textbf{Extensiones}: \vertema{3.B.27} \vertema{3.B.26} \vertema{3.B.16} \vertema{3.B.43} \vertema{3.B.45} \vertema{4.A.19}.
 \item \textbf{Opinión}: garantía común con menos sesgo doméstico; AEVM para los mercados grandes.
-\item \textbf{Idea final}: el euro empezó la casa por el tejado; desde 2012 se levantan los cimientos. La casa estará terminada cuando el seguro de los depósitos sostenga el tejado.
+\item \textbf{Idea final}: el euro empezó la casa por el tejado; desde 2012 se levantan los cimientos.
+  \begin{itemize}
+  \item Estará terminada cuando el seguro de los depósitos sostenga el tejado.
+  \end{itemize}
 \end{itemize}
 
+% ==========================================================================
+\anexorepaso
 \bloque{Datos clave}
 \begin{itemize}
-\item 109 significativas (1/9/2026), $\approx$85\,\% de activos; 21 países; CET1 16,0\,\%, dudosos 1,89\,\% (2,17\,\% sin efectivo), ROE 10,7\,\% (2T 2026).
-\item FUR $>$81.000 millones; respaldo 68.000; MREL 27,8\,\%.
-\item Capitalización: UE 71\,\%, EE.\,UU. 224\,\% del PIB (2025).
+\item \dato{109 significativas, $\approx$85\,\% de activos}{BCE, 2026}.
+\item CET1 \dato{16,0\,\%}{2T 2026}; dudosos 1,89\,\%; ROE 10,7\,\%.
+\item FUR \dato{$>$81.000 M€}{2025}; respaldo 68.000; MREL 27,8\,\%.
+\item Capitalización: \dato{UE 71\,\%, EE.\,UU. 224\,\% del PIB}{2025}.
 \end{itemize}
-
-\bloque{Conceptos}
-\begin{itemize}
-\item \textbf{Inviable o probablemente inviable}: incumple la autorización, activos menores que pasivos, no puede pagar o necesita ayuda pública extraordinaria.
-\item \textbf{Interés público}: la resolución mantiene funciones esenciales, evita el contagio y protege fondos públicos y depositantes mejor que la liquidación.
-\item \textbf{Ningún acreedor peor parado}: nadie pierde en la resolución más que en una liquidación.
-\item \textbf{Recapitalización precautoria}: ayuda a un banco solvente por el déficit de una prueba de resistencia (Monte dei Paschi, 2017).
-\item \textbf{Cinta consolidada}: un único flujo de precios y volúmenes de todas las plataformas.
-\item \textbf{Requisitos}: Pilar~1 CET1 4,5\,\%, nivel~1 6\,\%, total 8\,\%; apalancamiento 3\,\%; conservación 2,5\,\%; TLAC 18\,\% de APR y 6,75\,\% de la exposición.
-\end{itemize}
-
 \bloque{Autores y fechas}
-\begin{itemize}
-\item 1983 \autor{Diamond}-\autor{Dybvig}; 1977 \autor{Merton}; 1996 \autor{Asdrubali}-\autor{Sørensen}-\autor{Yosha}; 2009 \autor{de Larosière}; 2011 \autor{Schoenmaker}; 2012 4 presidentes; 2014 MUS; 2015 5 presidentes, EDIS, UMC; 2016 MUR; 2016 \autor{Brunnermeier} \emph{et al.}; 2017 Popular; 2018 \autor{Farhi}-\autor{Tirole}; 2020 UMC 2.0; 2021 MEDE; 2024 \autor{Letta}, \autor{Draghi}; 2025 CRR3, UAI; 2026 CMDI, EDIS retirado.
-\end{itemize}
-
+\hito{1977}{\autor{Merton}: garantía como \emph{put}}
+\hito{1983}{\autor{Diamond}-\autor{Dybvig}: pánicos}
+\hito{1996}{\autor{Asdrubali}-\autor{Sørensen}-\autor{Yosha}}
+\hito{2011}{\autor{Schoenmaker}: trilema financiero}
+\hito{2012}{Informe de los cuatro presidentes}
+\hito{2014}{MUS (BCE supervisor)}
+\hito{2017}{Popular: 1.ª resolución}
+\hito{2025}{CRR3; Unión de Ahorros e Inversiones}
 \bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué no basta la supervisión?} Quien decide debe pagar: sin fondo y garantía comunes, $\alpha$ sigue alto.
+\item \textbf{¿Es creíble el \emph{bail-in}?} Solo con MREL suficiente y un respaldo común.
+\item \textbf{¿Por qué no se aprueba el EDIS?} Riesgos heredados y deuda pública en los balances.
+\item \textbf{¿Por qué Vicenza y Veneto no se resolvieron?} Sin interés público: liquidación italiana con ayudas.
+\item \textbf{¿Mercados o bancos?} Complementarios: mercados reparten riesgos; bancos, pymes.
+\item \textbf{¿Qué aporta la AEVM como supervisor?} Un solo supervisor para los mercados transfronterizos grandes, contra el trilema.
+\end{enumerate}
+\begin{trampa}
 \begin{itemize}
-\item \textbf{¿Por qué la supervisión sola no basta?} Quien decide debe pagar: sin resolución, fondo y garantía comunes, $\alpha$ sigue alto.
-\item \textbf{¿Es creíble el \emph{bail-in}?} Solo con MREL suficiente en manos de quien pueda perder y un respaldo común.
-\item \textbf{¿Por qué no se aprueba el EDIS?} Riesgos heredados y deuda pública en los balances: reducir antes o compartir antes.
-\item \textbf{¿Por qué Vicenza y Veneto no se resolvieron?} Sin interés público según la JUR: liquidación italiana con ayudas; la CMDI amplía esa prueba.
-\item \textbf{¿Qué aporta la AEVM como supervisor?} Lo mismo que el MUS a los bancos: un solo supervisor para los mercados transfronterizos grandes, contra el trilema y la competencia entre supervisores.
-\item \textbf{¿Basta el reparto de riesgos privado?} Reduce la necesidad de presupuesto común, pero el crédito se retira en las crisis: hace falta también un respaldo público.
-\item \textbf{¿Y España?} BdE en el MUS (sus grandes bancos, en el BCE), FROB en el MUR, FGD; CET1 del 13,5\,\%, el más bajo; Popular (2017); MARF y BME Growth \vertema{4.A.19} \vertema{4.A.20}.
-\item \textbf{¿Mercados o bancos?} Complementarios: los mercados reparten riesgos entre países y financian la innovación; los bancos, a las pymes.
+\item Código único: los 27; unión bancaria: euro + cooperación estrecha.
+\item FUR tras el \emph{8\,\%} de \emph{bail-in}; máximo \emph{5\,\%}.
+\item Garantía: 100.000\,€ por depositante y \emph{entidad}.
+\item El respaldo del MEDE \emph{no} está en vigor; el EDIS nunca se aprobó.
+\item MUS desde \emph{noviembre de 2014}; MUR pleno desde \emph{enero de 2016}.
 \end{itemize}
-
-\bloque{Trampas del test}
-\begin{itemize}
-\item El código normativo único es de los 27; la unión bancaria, del euro y la cooperación estrecha.
-\item El FUR actúa tras el 8\,\% de \emph{bail-in}; máximo 5\,\%. La garantía: 100.000\,€ por depositante y \emph{entidad}.
-\item El MUS supervisa \emph{directamente} solo las significativas; licencias, todas.
-\item El respaldo del MEDE no está en vigor; el EDIS nunca se aprobó.
-\item El MUS empezó en noviembre de 2014; el MUR, plenamente, en enero de 2016.
-\item Cooperación estrecha: Bulgaria y Croacia, desde el 1/10/2020; ahora, ninguna.
-\item La CMDI no crea EDIS: reforma BRRD, MUR y DGSD.
-\end{itemize}
+\end{trampa}
 
 \end{columnas}
 \end{document}
