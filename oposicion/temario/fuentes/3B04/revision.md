@@ -263,3 +263,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Ficha de repaso: bloques II y III intercambiados (esquema del cante, estructura, problemática, pizarra, conclusión, remisiones) y, en los múltiplos, las 2 fórmulas aparte y el ejemplo de la empresa; sigue en 4 páginas (8,75 pt).
 - Páginas: antes 31 de tema, 9 de anexos y 6 de bibliografía (46); ahora 38, 5 y 6 (49). `verificar-tema.py`: 0 errores, 6 avisos (antes 7: desaparece el del título largo del anexo de la OPA).
 - Dudas nuevas: D8 y D9, en «7. Dudas abiertas».
+
+## Comentarios de Víctor (19/11/2026)
+
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.

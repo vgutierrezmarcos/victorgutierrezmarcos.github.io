@@ -203,3 +203,4 @@ Páginas del tema: antes 28 (anexos: 1), ahora **32** (anexos: 4: A, programaci�
 ## Comentarios de Víctor (19/11/2026)
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.

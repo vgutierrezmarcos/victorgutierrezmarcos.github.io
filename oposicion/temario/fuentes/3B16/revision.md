@@ -273,3 +273,4 @@ Cada una con la opción aplicada:
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche cambiado por uno más popular: «El casado casa quiere» → «Más vale ser cabeza de ratón que cola de león». Bulgaria se mantiene, con un dato nuevo de la misma nota del BCE ya citada (su gobernador obtiene un asiento en el Consejo de Gobierno; comprobado el 19/11/2026). Fuera la metáfora de la casa en el enganche, la pregunta y la idea final («instituciones comunes», «compartir también los seguros»). Puestos al día la ficha y las instrucciones del vídeo. Duda B16-23.
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.

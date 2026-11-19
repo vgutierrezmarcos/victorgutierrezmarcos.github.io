@@ -351,6 +351,7 @@ Comentario: «Sin necesidad de cambiar radicalmente el contenido del tema, aumen
 | Compilación | Antes: 25 páginas de tema, 19 de anexos, 8 de bibliografía (52). Después: 27, 17 y 8 (52); 30′. Ficha: 4 páginas a 10,5 pt (última al 57 %). `verificar-tema.py 3A32`: 0 errores y 9 avisos (los mismos de antes) |
 
 Pendiente (no tocado, previo): el título del bloque II ocupa 3 líneas en el PDF («…con expectativas / racionales: / el modelo neokeynesiano…»). El rótulo «Hilo:» de la infografía se quitó en la 2.ª tanda del 19/11/2026.
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
 
 ## Comentarios de Víctor (19/11/2026, 2.ª tanda)
 

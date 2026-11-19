@@ -167,7 +167,7 @@
                     <p class="tema-codigo">Tema 3.B.23</p>
                     <h1 class="tema-titulo">Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.</h1>
                     <p class="tema-meta">Última actualización: 08/11/2026 · Cante: 30 minutos</p>
-                    <p class="tema-meta tema-paginas">Tema: 36 págs. · Anexos: 9 · Bibliografía: 7 (PDF)</p>
+                    <p class="tema-meta tema-paginas">Tema: 37 págs. · Anexos: 9 · Bibliografía: 7 (PDF)</p>
                     <div class="tema-descargas">
                         <a href="3B23.pdf" target="_blank">Descargar PDF</a>
                         <a href="3B23.docx" download>Descargar Word</a>
@@ -245,13 +245,23 @@
 <a href="#esq:22">Conclusión</a><span class="esq-tiempo">1′</span></p>
 </div>
 <div class="anotaciones">
+<p><strong>Mapa de la exposición.</strong> Cada bloque responde a una pregunta y deja abierta la del siguiente: de la teoría que justifica la gestión pasiva a las técnicas que intentan batirla.</p>
+<figure id="figu:mapa-tema">
+<figcaption><span class="etiqueta">Figura 1.–</span> Mapa del tema: la pregunta de cada bloque y el hilo que los une</figcaption>
+<img src="../fuentes/3B23/graficos/mapa-tema.svg" style="width:100.0%" loading="lazy" alt="Figura 1.– Mapa del tema: la pregunta de cada bloque y el hilo que los une" />
+<div class="fuente">
+<p>Fuente: elaboración propia.</p>
+</div>
+</figure>
+</div>
+<div class="anotaciones">
 <p><strong>Notación.</strong> Como en el canon del temario, las rentabilidades van en minúscula: <span class="math inline">\(r_i\)</span> la del activo <span class="math inline">\(i\)</span>, <span class="math inline">\(r_p\)</span> la de una cartera, <span class="math inline">\(r_M\)</span> la de la cartera de mercado y <span class="math inline">\(r_f\)</span> la del activo libre de riesgo. <span class="math inline">\(\mathbb{E}[\cdot]\)</span> es la esperanza matemática (la <span class="math inline">\(E\)</span> latina queda para otros usos), <span class="math inline">\(\sigma_i\)</span> la desviación típica de <span class="math inline">\(r_i\)</span>, <span class="math inline">\(\sigma_{ij}\equiv\mathrm{Cov}(r_i,r_j)\)</span> la covarianza y <span class="math inline">\(\mathrm{corr}(r_i,r_j)\)</span> la correlación, de modo que <span class="math inline">\(\sigma_{ij}=\mathrm{corr}(r_i,r_j)\,\sigma_i\sigma_j\)</span>; <span class="math inline">\(\mathrm{Cov}\)</span> y <span class="math inline">\(\mathrm{Var}\)</span> van en redonda y con mayúscula. <span class="math inline">\(w_i\)</span> es el peso del activo <span class="math inline">\(i\)</span> en la cartera y, en <span class="smallcaps">Tobin</span>, <span class="math inline">\(w\)</span> el peso de la cartera con riesgo; <span class="math inline">\(T\)</span> es la cartera de tangencia y <span class="math inline">\(M\)</span> la de mercado. <span class="math inline">\(\beta_i\)</span> es la beta del activo <span class="math inline">\(i\)</span> y <span class="math inline">\(\beta_p=\sum_iw_i\beta_i\)</span> la de una cartera; <span class="math inline">\(\lambda_M\equiv\mathbb{E}[r_M]-r_f\)</span> la prima de riesgo del mercado. En el modelo de índice, <span class="math inline">\(\varepsilon_i\)</span> es la perturbación específica del activo <span class="math inline">\(i\)</span> (no una elasticidad), con varianza <span class="math inline">\(\sigma_{\varepsilon_i}^2\)</span>, y <span class="math inline">\(\alpha_i\)</span> la constante, que es a la vez el alfa de <span class="smallcaps">Jensen</span>. En la APT, <span class="math inline">\(F_j\)</span> es la sorpresa del factor <span class="math inline">\(j\)</span>, <span class="math inline">\(\beta_{ij}\)</span> la sensibilidad del activo <span class="math inline">\(i\)</span> a ese factor y <span class="math inline">\(\lambda_j\)</span> su prima, con <span class="math inline">\(j=1,\dots,J\)</span>. En el bloque <a href="#sec:fundamental-tecnico">III</a>, <span class="math inline">\(P_t\)</span> es el precio de la acción, <span class="math inline">\(D_t\)</span> el dividendo, <span class="math inline">\(r_E\)</span> la rentabilidad exigida a los fondos propios, <span class="math inline">\(\mathrm{BPA}\)</span> el beneficio por acción, <span class="math inline">\(\mathrm{PER}\)</span> la ratio precio-beneficio y <span class="math inline">\(g=b\cdot\mathrm{ROE}\)</span> la tasa de crecimiento, con <span class="math inline">\(b\)</span> la tasa de retención.</p>
 </div>
 </section>
 <section id="sec:cartera-valoracion" class="level2" data-minutos="14′">
 <h2 data-minutos="14′"><span class="numero">I.</span> Los instrumentos de renta variable, la elección de cartera y los modelos de valoración<span class="minutos" aria-hidden="true">14′</span></h2>
 <div class="notaopositor">
-<p>En el cante (14′). Los instrumentos (2′): la tabla <a href="#tab:renta-fija-variable">1</a> en versión mínima (5 filas y 2 columnas), la rentabilidad de una acción (<a href="#eq:rentabilidad-accion">1</a>) y los 3 enfoques de análisis, de palabra, con la figura <a href="#figu:mapa-analisis">1</a> como guion (no se dibuja); los tipos de acciones y los mercados no se cantan. <span class="smallcaps">Markowitz</span> (2′45″): el problema del inversor (la utilidad sujeta a la frontera eficiente, que es a su vez un problema de optimización); la media y la varianza de la cartera, con la (<a href="#eq:varianza-cartera">3</a>); los 3 casos de correlación de palabra, con el gráfico <a href="#fig:correlaciones">1</a> solo si da tiempo; y las 2 etapas, con el gráfico <a href="#fig:markowitz-a">2</a> (etapa objetiva) completado en el <a href="#fig:markowitz">3</a> (etapa subjetiva), con el dicho «no poner todos los huevos en la misma cesta» y su giro: más que de cestas, se trata de qué gallinas se llevan bien. <span class="smallcaps">Tobin</span> (1′45″): sobre el mismo gráfico, <span class="math inline">\(r_f\)</span> y la recta tangente (gráfico <a href="#fig:cml">4</a>), la (<a href="#eq:cml">6</a>) y la separación. <span class="smallcaps">Sharpe</span> (1′): el gráfico <a href="#fig:diversificacion">5</a> y la (<a href="#eq:riesgo-sistematico">8</a>); el límite y la diversificación internacional no se cantan. CAPM (4′): los supuestos, la derivación en 3 frases, la (<a href="#eq:sml">10</a>), qué es la beta (definición, interpretación, referencia 1 y que no es la volatilidad) y el gráfico <a href="#fig:sml">7</a> con el alfa de <span class="smallcaps">Jensen</span>, con «cuando llueve, todos se mojan»; las extensiones en 0′30″ (solo el C-CAPM y el enigma de la prima); la evidencia y la crítica de <span class="smallcaps">Roll</span>, de palabra. APT (2′30″): la idea del arbitraje, la (<a href="#eq:apt">12</a>) bajo la SML y el CAPM como caso particular; de <span class="smallcaps">Fama</span> y <span class="smallcaps">French</span> se dice «mercado, tamaño y valor». La caja de la beta (clasificación, triángulo del riesgo y determinantes), la caja de la varianza nula, la tabla <a href="#tab:capm-apt">4</a> y las derivaciones del anexo <a href="#anexo:derivaciones">B</a> no se cantan.</p>
+<p>En el cante (14′). Los instrumentos (2′): la tabla <a href="#tab:renta-fija-variable">1</a> en versión mínima (5 filas y 2 columnas), la rentabilidad de una acción (<a href="#eq:rentabilidad-accion">1</a>) y los 3 enfoques de análisis, de palabra, con la figura <a href="#figu:mapa-analisis">2</a> como guion (no se dibuja); los tipos de acciones y los mercados no se cantan. <span class="smallcaps">Markowitz</span> (2′45″): el problema del inversor (la utilidad sujeta a la frontera eficiente, que es a su vez un problema de optimización); la media y la varianza de la cartera, con la (<a href="#eq:varianza-cartera">3</a>); los 3 casos de correlación de palabra, con el gráfico <a href="#fig:correlaciones">1</a> solo si da tiempo; y las 2 etapas, con el gráfico <a href="#fig:markowitz-a">2</a> (etapa objetiva) completado en el <a href="#fig:markowitz">3</a> (etapa subjetiva), con el dicho «no poner todos los huevos en la misma cesta» y su giro: más que de cestas, se trata de qué gallinas se llevan bien. <span class="smallcaps">Tobin</span> (1′45″): sobre el mismo gráfico, <span class="math inline">\(r_f\)</span> y la recta tangente (gráfico <a href="#fig:cml">4</a>), la (<a href="#eq:cml">6</a>) y la separación. <span class="smallcaps">Sharpe</span> (1′): el gráfico <a href="#fig:diversificacion">5</a> y la (<a href="#eq:riesgo-sistematico">8</a>); el límite y la diversificación internacional no se cantan. CAPM (4′): los supuestos, la derivación en 3 frases, la (<a href="#eq:sml">10</a>), qué es la beta (definición, interpretación, referencia 1 y que no es la volatilidad) y el gráfico <a href="#fig:sml">7</a> con el alfa de <span class="smallcaps">Jensen</span>, con «cuando llueve, todos se mojan»; las extensiones en 0′30″ (solo el C-CAPM y el enigma de la prima); la evidencia y la crítica de <span class="smallcaps">Roll</span>, de palabra. APT (2′30″): la idea del arbitraje, la (<a href="#eq:apt">12</a>) bajo la SML y el CAPM como caso particular; de <span class="smallcaps">Fama</span> y <span class="smallcaps">French</span> se dice «mercado, tamaño y valor». La caja de la beta (clasificación, triángulo del riesgo y determinantes), la caja de la varianza nula, la tabla <a href="#tab:capm-apt">4</a> y las derivaciones del anexo <a href="#anexo:derivaciones">B</a> no se cantan.</p>
 </div>
 <ul>
 <li><p><em>Conclusión anticipada</em>: el riesgo de una acción no se mide por su volatilidad aislada sino por lo que aporta al riesgo de una cartera. Diversificar elimina el riesgo específico de cada empresa, pero no el sistemático, y en equilibrio el mercado solo paga por este último: cada acción rinde lo que corresponde a su riesgo sistemático.</p></li>
@@ -340,7 +350,7 @@
 <ul>
 <li><p>Por su mayor riesgo, la renta variable rinde más a largo plazo: en Estados Unidos, de 1928 a 2025, las acciones han rendido de media unos 6,6 puntos al año más que las letras del Tesoro. Es la <strong>prima de riesgo</strong> de las acciones.</p></li>
 </ul></li>
-<li><p><em>Tres maneras de analizar una acción</em>, que ordenan la exposición (figura <a href="#figu:mapa-analisis">1</a>):</p>
+<li><p><em>Tres maneras de analizar una acción</em>, que ordenan la exposición (figura <a href="#figu:mapa-analisis">2</a>):</p>
 <ul>
 <li><p>por lo que aporta a la rentabilidad y al riesgo de una cartera: la <strong>teoría de la elección de cartera</strong> y los modelos de valoración que se apoyan en ella (apartados <a href="#sec:eleccion-cartera">I.2</a> y <a href="#sec:valoracion">I.3</a>);</p></li>
 <li><p>por su <em>valor intrínseco</em>, a partir de los beneficios y dividendos que generará la empresa: el <strong>análisis fundamental</strong> (<a href="#sec:fundamental">III.1</a>);</p></li>
@@ -348,8 +358,8 @@
 </ul></li>
 </ul>
 <figure id="figu:mapa-analisis">
-<figcaption><span class="etiqueta">Figura 1.–</span> Las 3 maneras de analizar una acción: qué aporta cada modelo y por qué se pasa al siguiente</figcaption>
-<img src="../fuentes/3B23/graficos/mapa-analisis.svg" style="width:95.0%" loading="lazy" alt="Figura 1.– Las 3 maneras de analizar una acción: qué aporta cada modelo y por qué se pasa al siguiente" />
+<figcaption><span class="etiqueta">Figura 2.–</span> Las 3 maneras de analizar una acción: qué aporta cada modelo y por qué se pasa al siguiente</figcaption>
+<img src="../fuentes/3B23/graficos/mapa-analisis.svg" style="width:95.0%" loading="lazy" alt="Figura 2.– Las 3 maneras de analizar una acción: qué aporta cada modelo y por qué se pasa al siguiente" />
 <div class="fuente">
 <p>Fuente: elaboración propia. A la izquierda, los modelos de la teoría de la elección de cartera (en verde, barra morada; apartado <a href="#sec:eleccion-cartera">I.2</a>) y los de valoración de activos (en dorado; apartado <a href="#sec:valoracion">I.3</a>), y en rojo la limitación de cada modelo que lleva al siguiente; la eficiencia de los mercados (bloque <a href="#sec:emh-bloque">II</a>) decide si tiene sentido la gestión activa, y el análisis fundamental toma del CAPM su tasa de descuento.</p>
 </div>
@@ -676,7 +686,7 @@
 <p><strong>La beta: clasificación, riesgo total y determinantes.</strong> Completa lo que se ha visto de la beta en el desarrollo del CAPM.</p>
 <ul>
 <li><p><em>Clasificación</em>, según la SML, <span class="math inline">\(\mathbb{E}[r_i]-r_f=\beta_i\lambda_M\)</span> (tabla <a href="#tab:beta">3</a>). Las acciones cíclicas suelen tener betas mayores que 1, y las defensivas, menores (anexo <a href="#anexo:acciones">A</a>).</p></li>
-<li><p><em>Riesgo total, sistemático y específico</em>: el riesgo total de un activo es la suma del sistemático y del específico, la (<a href="#eq:riesgo-sistematico">8</a>) para un solo activo: <span class="math inline">\(\sigma_i^2=\beta_i^2\sigma_M^2+\sigma_{\varepsilon_i}^2\)</span>, un triángulo rectángulo de desviaciones típicas (figura <a href="#figu:triangulo-riesgo">2</a>).</p></li>
+<li><p><em>Riesgo total, sistemático y específico</em>: el riesgo total de un activo es la suma del sistemático y del específico, la (<a href="#eq:riesgo-sistematico">8</a>) para un solo activo: <span class="math inline">\(\sigma_i^2=\beta_i^2\sigma_M^2+\sigma_{\varepsilon_i}^2\)</span>, un triángulo rectángulo de desviaciones típicas (figura <a href="#figu:triangulo-riesgo">3</a>).</p></li>
 <li><p><em>Determinantes</em>: el tipo de negocio (cuánto dependen sus ventas del ciclo), el apalancamiento operativo (el peso de los costes fijos) y el apalancamiento financiero: a más deuda, más beta de los fondos propios.</p></li>
 </ul>
 <div id="tab:beta">
@@ -720,8 +730,8 @@
 </div>
 <p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021</a>, caps. 8 y 9)</span>. La rentabilidad es la esperada, no la que se obtiene cada año.</em></p>
 <figure id="figu:triangulo-riesgo">
-<figcaption><span class="etiqueta">Figura 2.–</span> Riesgo total, sistemático y específico de un activo</figcaption>
-<img src="../fuentes/3B23/graficos/triangulo-riesgo.svg" style="width:45.0%" loading="lazy" alt="Figura 2.– Riesgo total, sistemático y específico de un activo" />
+<figcaption><span class="etiqueta">Figura 3.–</span> Riesgo total, sistemático y específico de un activo</figcaption>
+<img src="../fuentes/3B23/graficos/triangulo-riesgo.svg" style="width:45.0%" loading="lazy" alt="Figura 3.– Riesgo total, sistemático y específico de un activo" />
 <div class="fuente">
 <p>Fuente: elaboración propia a partir de <span class="citation" data-cites="BodieKaneMarcus2021Investments"><span class="smallcaps">Bodie</span>, <span class="smallcaps">Kane</span> y <span class="smallcaps">Marcus</span> (<a href="#ref-BodieKaneMarcus2021Investments" role="doc-biblioref">2021, cap. 8</a>)</span>.</p>
 </div>
@@ -1105,7 +1115,7 @@
 <section id="sec:fundamental-tecnico" class="level2" data-minutos="8′">
 <h2 data-minutos="8′"><span class="numero">III.</span> Gestión activa de carteras (II): análisis fundamental y análisis técnico<span class="minutos" aria-hidden="true">8′</span></h2>
 <div class="notaopositor">
-<p>En el cante (8′). La apertura, de palabra (0′30″). El análisis fundamental (4′): la idea, con el dicho «todo necio confunde valor y precio»; los enfoques y los métodos estáticos en una frase; la (<a href="#eq:gordon">14</a>) y la (<a href="#eq:per-teorico">15</a>), con la <span class="math inline">\(r_E\)</span> que sale de la SML; el PER y el EV/EBIT, de palabra; el CAPE con su último dato. El análisis técnico (3′30″): la definición, las 3 premisas y su choque con la forma débil (con la tabla <a href="#tab:eficiencia-analisis">5</a>), la teoría de <span class="smallcaps">Dow</span> en una frase, el gráfico <a href="#fig:soporte-resistencia">8</a> esquemático, las velas japonesas de palabra (la figura <a href="#figu:velas">3</a>, si da tiempo) y la evidencia. El gráfico <a href="#fig:sp500-soporte-medias">9</a> es de apoyo; los indicadores del anexo <a href="#anexo:indicadores">C</a> no se cantan.</p>
+<p>En el cante (8′). La apertura, de palabra (0′30″). El análisis fundamental (4′): la idea, con el dicho «todo necio confunde valor y precio»; los enfoques y los métodos estáticos en una frase; la (<a href="#eq:gordon">14</a>) y la (<a href="#eq:per-teorico">15</a>), con la <span class="math inline">\(r_E\)</span> que sale de la SML; el PER y el EV/EBIT, de palabra; el CAPE con su último dato. El análisis técnico (3′30″): la definición, las 3 premisas y su choque con la forma débil (con la tabla <a href="#tab:eficiencia-analisis">5</a>), la teoría de <span class="smallcaps">Dow</span> en una frase, el gráfico <a href="#fig:soporte-resistencia">8</a> esquemático, las velas japonesas de palabra (la figura <a href="#figu:velas">4</a>, si da tiempo) y la evidencia. El gráfico <a href="#fig:sp500-soporte-medias">9</a> es de apoyo; los indicadores del anexo <a href="#anexo:indicadores">C</a> no se cantan.</p>
 </div>
 <ul>
 <li><p><em>Conclusión anticipada</em>: si los precios pueden apartarse del valor, hay 2 maneras de buscar el alfa. El análisis fundamental estima el valor intrínseco a partir de la empresa y apuesta a que el precio acabará convergiendo a él; el técnico estudia solo la historia de los precios y apuesta a que las pautas se repiten. El primero solo funciona si el mercado no es eficiente en sentido semifuerte; el segundo, si no lo es ni en sentido débil.</p></li>
@@ -1160,7 +1170,7 @@
 <ul>
 <li><p><strong>soporte</strong> y <strong>resistencia</strong>: un soporte es un nivel de precio, por debajo del actual, en el que se espera que la presión compradora supere a la vendedora y frene la caída; suele ser un mínimo anterior. Una resistencia es lo contrario, un nivel por encima en el que la presión vendedora frena la subida. Cuando una resistencia se rompe, suele pasar a hacer de soporte (gráfico <a href="#fig:soporte-resistencia">8</a>);</p></li>
 <li><p><strong>medias móviles</strong>: la media de los precios de las últimas sesiones, que se recalcula cada día.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a> Si el precio o una media corta cruza hacia arriba una larga, se lee como señal de compra (el <em>cruce dorado</em> de las medias de 50 y 200 sesiones), y al revés, como señal de venta (el <em>cruce de la muerte</em>);</p></li>
-<li><p><strong>velas japonesas</strong>: cada vela resume el precio de apertura, el de cierre, el máximo y el mínimo de una sesión; el cuerpo va del de apertura al de cierre, y las mechas, al máximo y al mínimo. Si el cierre supera a la apertura, la vela es alcista; si no, bajista (figura <a href="#figu:velas">3</a>). De la forma de las velas y de su sucesión se infieren tendencias; hoy es el gráfico más usado por los analistas técnicos;</p></li>
+<li><p><strong>velas japonesas</strong>: cada vela resume el precio de apertura, el de cierre, el máximo y el mínimo de una sesión; el cuerpo va del de apertura al de cierre, y las mechas, al máximo y al mínimo. Si el cierre supera a la apertura, la vela es alcista; si no, bajista (figura <a href="#figu:velas">4</a>). De la forma de las velas y de su sucesión se infieren tendencias; hoy es el gráfico más usado por los analistas técnicos;</p></li>
 <li><p>los osciladores como el RSI y los indicadores de sentimiento están en el anexo <a href="#anexo:indicadores">C</a>.</p></li>
 </ul></li>
 <li><p><em>Un ejemplo con datos</em>: en el S&amp;P 500, los 6.980 puntos fueron una resistencia entre enero y febrero de 2026; el índice la rompió en abril y desde entonces ese nivel hizo de soporte. Antes, en abril de 2025, tras la caída por los aranceles, la media de 50 sesiones había cruzado a la baja la de 200, y en julio volvió a cruzarla al alza (gráfico <a href="#fig:sp500-soporte-medias">9</a>).</p></li>
@@ -1173,8 +1183,8 @@
 </div>
 </figure>
 <figure id="figu:velas">
-<figcaption><span class="etiqueta">Figura 3.–</span> Anatomía de las velas japonesas</figcaption>
-<img src="../fuentes/3B23/graficos/velas.svg" style="width:70.0%" loading="lazy" alt="Figura 3.– Anatomía de las velas japonesas" />
+<figcaption><span class="etiqueta">Figura 4.–</span> Anatomía de las velas japonesas</figcaption>
+<img src="../fuentes/3B23/graficos/velas.svg" style="width:70.0%" loading="lazy" alt="Figura 4.– Anatomía de las velas japonesas" />
 <div class="fuente">
 <p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Murphy1999Technical"><span class="smallcaps">Murphy</span> (<a href="#ref-Murphy1999Technical" role="doc-biblioref">1999</a>)</span>.</p>
 </div>
@@ -1205,8 +1215,9 @@
 <section id="esq:22" class="level2 unnumbered" data-minutos="1′">
 <h2 class="unnumbered" data-minutos="1′">Conclusión<span class="minutos" aria-hidden="true">1′</span></h2>
 <ul>
-<li><p><strong><em>Recapitulación</em></strong>: En conclusión, la rentabilidad de una acción es una variable aleatoria, y lo que importa no es su riesgo aislado sino lo que aporta al de una cartera.</p>
+<li><p><strong><em>Recapitulación</em></strong>: En conclusión,</p>
 <ul>
+<li><p>La rentabilidad de una acción es una variable aleatoria, y lo que importa no es su riesgo aislado sino lo que aporta al de una cartera.</p></li>
 <li><p><span class="smallcaps">Markowitz</span> mostró que diversificar reduce el riesgo sin sacrificar rentabilidad; <span class="smallcaps">Tobin</span>, que todos deberían tener la misma cartera con riesgo; y el CAPM y la APT, que en equilibrio solo se paga el riesgo que no se puede diversificar.</p></li>
 <li><p>Si además los mercados son eficientes, nadie bate al índice de forma sistemática y basta la gestión pasiva; las anomalías y las finanzas conductuales abren un resquicio a la gestión activa, con el análisis fundamental, que busca el valor intrínseco, y el técnico, que busca pautas en los precios.</p></li>
 </ul></li>

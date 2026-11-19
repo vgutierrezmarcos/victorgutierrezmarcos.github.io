@@ -1,44 +1,51 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Crecimiento y valoración de empresas]{3.B.4}{Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas.}
-\tcefecha{08/11/2026}
+\tcefecha{19/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
 
 % ==========================================================================
-\bloque{Esquema del cante}
-\esquemacante{%
-\apartadocante{Introducción: «Roma no se hizo en un día»}{2,5}
-\apartadocante{I. Teorías del crecimiento de la empresa}{6,5}
-\subcante{1. Hasta el tamaño óptimo}{3,5}
-\subcante{\hspace*{0.8em}Tecnológico y \autor{Stigler}}{1}
-\subcante{\hspace*{0.8em}Transaccional (\autor{Coase}, \autor{Williamson}, GHM)}{2,5}
-\subcante{2. Sin tamaño óptimo: \autor{Penrose}, \autor{Gibrat}, \autor{Marris}}{3}
-\apartadocante{II. Estrategias de crecimiento}{10,5}
-\subcante{Apertura: matriz de \autor{Ansoff}}{0,5}
-\subcante{1. Crecimiento interno}{2}
-\subcante{2. Crecimiento externo}{8}
-\apartadocante{III. Análisis financiero del crecimiento}{9,5}
-\subcante{1. Métodos de valoración}{8}
-\subcante{\hspace*{0.8em}Escalera de métodos}{1}
-\subcante{\hspace*{0.8em}\autor{Gordon}-\autor{Shapiro}}{1,5}
-\subcante{\hspace*{0.8em}Descuento de flujos de caja}{3}
-\subcante{\hspace*{0.8em}Múltiplos}{1,5}
-\subcante{\hspace*{0.8em}Otros métodos; ¿qué método?}{1}
-\subcante{2. Financiación del crecimiento}{1,5}
-\apartadocante{Conclusión}{1}}
-\emph{Pizarra} (solo en I-III): izq., árbol «tamaño óptimo: sí/no» con sus autores; gráfico de gobierno con los modos de crecimiento debajo, (hasta las alianzas). En II, \autor{Ansoff} 2×2 junto al de gobierno; el valor de la adquisición recuadrado hasta el final. En III, arriba a lo ancho la escalera de métodos; el DCF recuadrado al lado del valor de la adquisición; puente $\mathrm{EV}\to V_E$ pequeño.
-
-% ==========================================================================
 \bloque[2,5]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: «Roma no se hizo en un día»: crecer piedra a piedra o comprar la ciudad hecha. OPA de BBVA sobre Sabadell (mayo 2024, hostil, canje, mínimo del 50\,\%): 17 meses discutiendo cuánto valía; aceptación \dato{25,33\,\% del capital}{CNMV, 2025} $\Rightarrow$ sin efecto.
-\item \textbf{Relevancia}: el tamaño pesa en productividad, salarios, empleo, resistencia a crisis y competencia. España, país de pymes: \dato{3,31 M de empresas; 54,4\,\% sin asalariados; 2,3\,\% con 20 o más}{INE, DIRCE 2025}; VAB/ocupado de las grandes \dato{1,7 veces el de las micro}{Eurostat, 2024} \vertema{3.A.15}. M\&A mundial \dato{4,6 billones de \$, +49\,\%, 68 operaciones $>$10.000 M}{LSEG, 2025}.
-\item \textbf{Contextualización}: micro: la empresa combina factores y maximiza beneficio; ¿por qué existe y dónde acaba? \vertema{3.A.15}. Finanzas: \autor{Friedman} (1970), aumentar beneficios $\to$ \concepto{maximizar el valor para el accionista}. 3 decisiones: inversión \vertema{3.B.2}, financiación \vertema{3.B.3} y \emph{dimensión} (este tema). Ej.: PSA-Opel (2017), Stellantis (2021), CaixaBank-Bankia (2021). \concepto{Crecimiento} = aumento de la dimensión (ventas, activos, empleo, valor); \concepto{interno u orgánico} (invierte en su capacidad), \concepto{externo o inorgánico} (compra capacidad instalada), \concepto{alianza estratégica} (colaboran conservando la personalidad jurídica).
-\item \textbf{Problemática}: ¿por qué crecen y hay un tamaño óptimo? ¿Crecer dentro, comprar, fusionarse o aliarse? ¿Crean valor las F\&A, y para quién? ¿Cuánto vale una empresa y por qué difieren los métodos?
-\item \textbf{Estructura}: \hyperref[rep:I]{I}, teórico (\emph{por qué}); \hyperref[rep:II]{II}, estratégico (\emph{cómo}: interno, externo, alianzas = especial referencia); \hyperref[rep:III]{III}, financiero (\emph{cuánto vale} y con qué se paga, la pregunta que deja abierta toda operación). Une organización industrial, finanzas corporativas y economía financiera.
+\item \textbf{Enganche}: «Roma no se hizo en un día»: crecer piedra a piedra o comprar la ciudad hecha.
+  \begin{itemize}
+  \item OPA de BBVA sobre Sabadell (5/2024): hostil, canje, mínimo del 50\,\%; 17 meses discutiendo cuánto valía.
+  \item Aceptación: \dato{25,33\,\% del capital}{CNMV, 2025} $\Rightarrow$ sin efecto.
+  \end{itemize}
+\item \textbf{Relevancia}: tamaño $\Rightarrow$ productividad, salarios, empleo, resistencia a crisis, competencia.
+  \begin{itemize}
+  \item España: \dato{3,31 M de empresas; 54,4\,\% sin asalariados; 2,3\,\% con 20+}{INE, 2025}.
+  \item VAB/ocupado de las grandes: \dato{1,7 veces el de las micro}{Eurostat, 2024} \vertema{3.A.15}.
+  \item M\&A mundial: \dato{4,6 billones de \$, +49\,\%}{LSEG, 2025}.
+  \end{itemize}
+\item \textbf{Contextualización}:
+  \begin{itemize}
+  \item Micro: ¿por qué existe la empresa y dónde acaba? \vertema{3.A.15}. Finanzas: \autor{Friedman} (1970) $\to$ \concepto{maximizar el valor para el accionista}.
+  \item 3 decisiones: inversión \vertema{3.B.2}, financiación \vertema{3.B.3} y \emph{dimensión} (este tema).
+  \item \concepto{Crecimiento}: aumento de la dimensión (ventas, activos, empleo, valor).
+    \begin{itemize}
+    \item \concepto{Interno u orgánico}: invierte en su capacidad; \concepto{externo o inorgánico}: compra capacidad instalada.
+    \item \concepto{Alianza estratégica}: colaboran conservando la personalidad jurídica.
+    \end{itemize}
+  \end{itemize}
+\item \textbf{Problemática}: ¿por qué crecen y hay tamaño óptimo? ¿Crecer dentro, comprar o aliarse? ¿Crean valor las F\&A? ¿Cuánto vale una empresa?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, \emph{por qué} (teorías); \hyperref[rep:II]{II}, \emph{cómo} (estrategias); \hyperref[rep:III]{III}, \emph{cuánto vale} y con qué se paga.
 \end{itemize}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Teorías del crecimiento de la empresa}{6,5}
+\subcante{1. Hasta el tamaño óptimo}{3,5}
+\subcante{2. Sin tamaño óptimo}{3}
+\apartadocante{II. Estrategias de crecimiento}{10,5}
+\subcante{Matriz de \autor{Ansoff}}{0,5}
+\subcante{1. Crecimiento interno}{2}
+\subcante{2. Crecimiento externo y alianzas}{8}
+\apartadocante{III. Análisis financiero del crecimiento}{9,5}
+\subcante{1. Métodos de valoración}{8}
+\subcante{2. Financiación del crecimiento}{1,5}
+\apartadocante{Conclusión}{1}}
 
 % ==========================================================================
 \bloque[6,5]{I. Teorías del crecimiento de la empresa\label{rep:I}}
@@ -47,44 +54,92 @@ No hay una teoría, sino 2 familias: unas ven un tamaño óptimo (tecnología o 
 \end{ideaclave}
 
 \sub{I.1. Hasta el tamaño óptimo\label{rep:I.1}}
-\textbf{a) Enfoque tecnológico (neoclásico)}. La tecnología fija la dimensión eficiente.
+\subsub{a) Enfoque tecnológico (neoclásico) y \autor{Stigler}}
 \begin{itemize}
-\item Rendimientos a escala crecientes (indivisibilidades, especialización) y luego decrecientes (dirección) $\Rightarrow$ CMe a l/p en U \vertema{3.A.12}.
-\item \concepto{Escala mínima eficiente} $\overline q$: menor producción con CMe mínimo $\overline c$. Crece hasta $\overline q$: eficiencia \emph{productiva}; la \emph{asignativa} exige $p=\mathrm{CMg}$ (competencia, no tamaño). N.º de empresas $\approx$ demanda a $\overline c$ / $\overline q$ \vertema{3.A.16}.
-\item \emph{\autor{Stigler} (1939)}: demanda incierta $\Rightarrow$ planta \concepto{flexible}, CMe algo mayor pero casi constante en un tramo amplio: \emph{horquilla} de tamaños.
-\item \emph{Evidencia}: costes en L; \concepto{técnica del superviviente} (\autor{Stigler}, 1958): horquilla amplia.
-\item \emph{Límite}: explica la \emph{planta}, no la \emph{empresa}; no dice por qué las economías se aprovechan dentro y no por contrato.
+\item La tecnología fija la dimensión eficiente:
+  \begin{itemize}
+  \item rendimientos crecientes (indivisibilidades, especialización), luego decrecientes (dirección) $\Rightarrow$ CMe a l/p en U \vertema{3.A.12};
+  \item \concepto{escala mínima eficiente} $\overline q$: menor producción con CMe mínimo $\overline c$;
+  \item hasta $\overline q$: eficiencia \emph{productiva}; la \emph{asignativa} exige $p=\mathrm{CMg}$ (competencia, no tamaño).
+  \item N.º de empresas $\approx$ demanda a $\overline c$ / $\overline q$ \vertema{3.A.16}.
+  \end{itemize}
+\item \autor{Stigler} (1939): demanda incierta $\Rightarrow$ planta \concepto{flexible}: CMe casi constante en un tramo: \emph{horquilla} de tamaños.
+\item \emph{Evidencia}: costes en L; \concepto{técnica del superviviente} (\autor{Stigler}, 1958).
+\item \emph{Límite}: explica la \emph{planta}, no la \emph{empresa}: ¿por qué dentro y no por contrato?
 \end{itemize}
-\graficorepaso[0.6\linewidth]{costes-l}{Costes medios a l/p en L: $\overline q$ y $\overline c$}
+\graficorepaso[0.62\linewidth]{costes-l}{Costes medios a l/p en L: $\overline q$ y $\overline c$}
 
-\textbf{b) Enfoque transaccional (\autor{Coase}, \autor{Williamson}, \autor{Grossman}-\autor{Hart})}. \emph{Hacer o comprar} = crecer o no.
+\subsub{b) Enfoque transaccional: \emph{hacer o comprar} = crecer o no}
 \begin{itemize}
-\item \autor{Coase} (1937): usar el mecanismo de precios cuesta: \concepto{costes de transacción} \emph{ex ante} (buscar, negociar, redactar) y \emph{ex post} (vigilar, adaptar, resolver). Organizar dentro también cuesta (rendimientos decrecientes de la dirección). Frontera en el \emph{margen}:
+\item \autor{Coase} (1937): usar el mercado cuesta: \concepto{costes de transacción}.
+  \begin{itemize}
+  \item \emph{Ex ante} (buscar, negociar, redactar) y \emph{ex post} (vigilar, adaptar, resolver).
+  \item Organizar dentro también cuesta (rendimientos decrecientes de la dirección). Frontera en el margen:
   \begin{formula}
   \[\mathrm{CMg}^{\mathrm{org}}(m^{*})=\mathrm{CMg}^{\mathrm{tr}}(m^{*})\]
   \end{formula}
-\item \autor{Williamson} (1979, 1985, 1991): racionalidad limitada + oportunismo. 3 atributos: \concepto{especificidad de los activos} $a$ (el clave: cuasirrenta y \emph{hold-up}, monopolio bilateral \vertema{3.A.17}), incertidumbre y frecuencia (no encarece: justifica la estructura propia). Mercado, \emph{híbrida}, jerarquía:
+  \end{itemize}
+\item \autor{Williamson} (1979, 1985, 1991): racionalidad limitada + oportunismo.
+  \begin{itemize}
+  \item 3 atributos: \concepto{especificidad de los activos} $a$ (la clave: cuasirrenta y \emph{hold-up} \vertema{3.A.17}), incertidumbre y frecuencia (no encarece: justifica estructura propia).
+  \item Elige la estructura de gobierno más barata:
   \begin{formula}
-  \[C^{*}(a)=\min\{C_{\text{mercado}}(a),\,C_{\text{híbrida}}(a),\,C_{\text{jerarquía}}(a)\}\]
+  \[C^{*}(a)=\min\{C_{\text{merc.}}(a),\,C_{\text{híbr.}}(a),\,C_{\text{jer.}}(a)\}\]
   \end{formula}
+  \end{itemize}
 \end{itemize}
-\graficorepaso[0.78\linewidth]{gobierno-crecimiento}{Cada estructura de gobierno es un modo de crecer: hilo del tema}
+\graficorepaso[0.72\linewidth]{gobierno-crecimiento}{Cada estructura de gobierno es un modo de crecer: hilo del tema}
 \begin{itemize}
-\item $a<a_1$: mercado (subcontratar, no crecer); $a_1<a<a_2$: híbridas (\emph{alianzas}); $a>a_2$: jerarquía (crecer dentro o \emph{comprar}: integración vertical, no indicio de monopolio).
-\item \emph{Contratos incompletos} (\autor{Grossman}-\autor{Hart}, 1986; \autor{Hart}-\autor{Moore}, 1990): la propiedad da los \concepto{derechos residuales de control}; integrar da incentivos al comprador y se los quita al vendido $\Rightarrow$ propiedad a quien más aporta; la empresa \emph{no} compra todo.
-\item \emph{Valoración}: explica qué se integra, las alianzas y fusiones verticales eficientes; pero da otra frontera de equilibrio.
+\item \emph{Implicaciones}: los modos de crecer.
+  \begin{itemize}
+  \item $a<a_1$: mercado (subcontratar, no crecer);
+  \item $a_1<a<a_2$: híbridas (\emph{alianzas});
+  \item $a>a_2$: jerarquía (crecer dentro o \emph{comprar}); integrar no es indicio de monopolio.
+  \end{itemize}
+\item \emph{Contratos incompletos} (\autor{Grossman}-\autor{Hart}, 1986; \autor{Hart}-\autor{Moore}, 1990):
+  \begin{itemize}
+  \item la propiedad da los \concepto{derechos residuales de control};
+  \item integrar da incentivos al comprador y se los quita al vendido $\Rightarrow$ propiedad a quien más aporta: no se compra todo.
+  \end{itemize}
+\item \emph{Valoración}: explica qué se integra, las alianzas y las fusiones verticales eficientes.
 \end{itemize}
 
 \sub{I.2. Sin tamaño óptimo\label{rep:I.2}}
+\subsub{a) \autor{Penrose} (1959): los recursos}
 \begin{itemize}
-\item \textbf{\autor{Penrose} (1959)}: la empresa, conjunto de recursos; siempre hay \emph{recursos ociosos} (indivisibilidad, uso múltiple, aprendizaje) que empujan a crecer y se regeneran. \concepto{Efecto \autor{Penrose}}: la dirección limita la \emph{velocidad}, no el tamaño. Diversificación relacionada. Extensión: recursos y capacidades (\autor{Wernerfelt}, 1984). Difícil de medir.
-\item \textbf{\autor{Gibrat} (1931)}: \concepto{ley del efecto proporcional}: la tasa de crecimiento es independiente del tamaño y de la historia:
+\item Empresa = conjunto de recursos; siempre hay \emph{recursos ociosos} (indivisibilidad, uso múltiple, aprendizaje) que empujan a crecer y se regeneran.
+\item \concepto{Efecto \autor{Penrose}}: la dirección limita la \emph{velocidad}, no el tamaño.
+\item Extensión: recursos y capacidades (\autor{Wernerfelt}, 1984).
+\end{itemize}
+\subsub{b) \autor{Gibrat} (1931): el azar}
+\begin{itemize}
+\item \concepto{Ley del efecto proporcional}: la tasa de crecimiento es independiente del tamaño y de la historia:
   \begin{formula}
-  \[S_{i,t}=(1+\varepsilon_{i,t})S_{i,t-1}\ \Rightarrow\ \ln S_{i,t}\approx\ln S_{i,0}+\textstyle\sum_{\tau=1}^{t}\varepsilon_{i,\tau}\]
+  \[S_{i,t}=(1+\varepsilon_{i,t})S_{i,t-1}\Rightarrow\ln S_{i,t}\approx\ln S_{i,0}+\textstyle\sum_{\tau=1}^{t}\varepsilon_{i,\tau}\]
   \end{formula}
-  $\ln S$ paseo aleatorio $\Rightarrow$ TCL: tamaño \concepto{lognormal} (asimétrica a la dcha.); $\mathrm{Var}(\ln S)\uparrow$ con $t$: dispersión, sin óptimo; concentración por azar. Cola: \concepto{ley de potencias}, \autor{Zipf} $\alpha\approx1$ (\autor{Axtell}, 2001); \autor{Gibrat} + tamaño mínimo la genera (\autor{Gabaix}, 1999). \emph{Evidencia}: vale en grandes; en pequeñas y jóvenes el crecimiento $\downarrow$ con tamaño y edad (\autor{Evans}, \autor{Hall}, 1987; \autor{Sutton}, 1997). Referencia nula; \autor{Geroski} (1999): casi paseo aleatorio (innovaciones irregulares); \autor{Alexander}: crecer para \emph{estabilizar} el beneficio.
-\item \textbf{\autor{Marris} (1963-64)}: separación propiedad-control (\autor{Berle}-\autor{Means}, 1932); el directivo maximiza el \emph{crecimiento equilibrado} (demanda = capital) s.\,a. \concepto{restricción de seguridad}: que la \emph{ratio de valoración} (valor de mercado / contable) no caiga tanto como para ser absorbida. Crece más de lo que conviene al accionista. Puentes: ratio $\approx q$ de \autor{Tobin} \vertema{3.A.34}; mercado de control.
-\item \emph{Agencia}: \autor{Jensen}-\autor{Meckling} (1976) \vertema{3.A.13}; \autor{Jensen} (1986): \concepto{flujo de caja libre} (lo que sobra tras los VAN $>0$) se gasta en crecer/comprar; la deuda disciplina (LBO). \concepto{Mercado de control empresarial} (\autor{Manne}, 1965): las F\&A, síntoma y remedio.
+\item \emph{Implicaciones}: $\ln S$ paseo aleatorio $\Rightarrow$ TCL:
+  \begin{itemize}
+  \item tamaño \concepto{lognormal} (asimétrico a la dcha.);
+  \item $\mathrm{Var}(\ln S)\uparrow$ con $t$: dispersión, sin óptimo; concentración por azar.
+  \end{itemize}
+\item \emph{Extensiones}: cola en \concepto{ley de potencias}, \autor{Zipf} $\alpha\approx1$ (\autor{Axtell}, 2001); \autor{Gibrat} + tamaño mínimo la genera (\autor{Gabaix}, 1999).
+\item \emph{Evidencia}: vale en grandes; en pequeñas y jóvenes el crecimiento $\downarrow$ con tamaño y edad (\autor{Evans}, \autor{Hall}, 1987; \autor{Sutton}, 1997).
+\item \emph{Valoración}: referencia nula; \autor{Geroski} (1999): casi paseo aleatorio; \autor{Alexander}: crecer para \emph{estabilizar} el beneficio.
+\end{itemize}
+\subsub{c) \autor{Marris} (1964): los directivos}
+\begin{itemize}
+\item Separación propiedad-control (\autor{Berle}-\autor{Means}, 1932).
+\item El directivo maximiza el \emph{crecimiento equilibrado} (demanda = capital) s.\,a. una \concepto{restricción de seguridad}:
+  \begin{itemize}
+  \item que la \emph{ratio de valoración} (valor de mercado / contable) no caiga tanto como para ser absorbida;
+  \item ratio $\approx q$ de \autor{Tobin} \vertema{3.A.34}.
+  \end{itemize}
+\item \emph{Implicación}: crece más de lo que conviene al accionista.
+\item \emph{Agencia}: \autor{Jensen}-\autor{Meckling} (1976) \vertema{3.A.13}.
+  \begin{itemize}
+  \item \autor{Jensen} (1986): el \concepto{flujo de caja libre} (lo que sobra tras los VAN $>0$) se gasta en crecer y comprar; la deuda disciplina (LBO).
+  \item \concepto{Mercado de control empresarial} (\autor{Manne}, 1965): las F\&A, síntoma y remedio.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
@@ -93,57 +148,144 @@ No hay una teoría, sino 2 familias: unas ven un tamaño óptimo (tecnología o 
 Crecer dentro es lento y seguro; comprar es rápido, pero el valor se lo suele llevar el vendedor; aliarse es la vía intermedia cuando los activos son algo específicos. Importa si las sinergias superan la prima.
 \end{ideaclave}
 \begin{itemize}
-\item Cada estrategia = \emph{dirección} + \emph{vía}. Dirección: \concepto{matriz de \autor{Ansoff}} (1957): \emph{penetración} (productos y mercados actuales), \emph{desarrollo de mercados} (productos actuales, mercados nuevos: internacionalización \vertema{3.B.18}), \emph{desarrollo de productos} (nuevos, mercados actuales), \emph{diversificación} (relacionada o conglomerado); riesgo $\uparrow$ hacia la diversificación. Vía: la que dicta $a$ (gráfico de gobierno).
+\item Estrategia = \emph{dirección} + \emph{vía}.
+\item Dirección: \concepto{matriz de \autor{Ansoff}} (1957); riesgo $\uparrow$ hacia la diversificación:
+  \begin{itemize}
+  \item \emph{penetración}: productos y mercados actuales;
+  \item \emph{desarrollo de mercados}: productos actuales en mercados nuevos (internacionalización \vertema{3.B.18});
+  \item \emph{desarrollo de productos}: nuevos, en mercados actuales;
+  \item \emph{diversificación}: relacionada o conglomerado.
+  \end{itemize}
+\item Vía: la que dicta $a$ (gráfico de gobierno).
 \end{itemize}
 
 \sub{II.1. Crecimiento interno u orgánico\label{rep:II.1}}
+\subsub{a) Idea}
 \begin{itemize}
-\item Proyectos de inversión propios: añade capacidad nueva a la economía. Crece si hay proyectos con VAN $>0$ (rentabilidad $>$ coste del capital): $\mathrm{ROE}>r_E$ \vertema{3.B.2}.
-\item \concepto{Crecimiento sostenible} (\autor{Higgins}, 1977): tasa máxima sin cambiar la política financiera. Supuestos: sin acciones nuevas; $b$, endeudamiento (deuda/FP), rotación y margen constantes. FP crecen a $b\cdot\mathrm{ROE}$ $\Rightarrow$ deuda, activo y ventas igual; ROE de \autor{DuPont} \vertema{3.B.1}:
+\item Proyectos propios: capacidad nueva; crece si hay VAN $>0$: $\mathrm{ROE}>r_E$ \vertema{3.B.2}.
+\end{itemize}
+\subsub{b) Modelo: el crecimiento sostenible (\autor{Higgins}, 1977)}
+\begin{itemize}
+\item Tasa máxima sin cambiar la política financiera. \emph{Supuestos}: sin acciones nuevas; $b$, deuda/FP, rotación y margen constantes.
+\item \emph{Desarrollo}: FP crecen a $b\cdot\mathrm{ROE}$ $\Rightarrow$ deuda, activo y ventas igual; ROE de \autor{DuPont} \vertema{3.B.1}:
   \funcionclave{g^{*}=b\cdot\mathrm{ROE}=b\cdot\underbrace{\frac{\text{benef.}}{\text{ventas}}}_{\text{margen}}\cdot\underbrace{\frac{\text{ventas}}{\text{activo}}}_{\text{rotación}}\cdot\underbrace{\frac{\text{activo}}{\text{FP}}}_{\text{apalanc.}}}
-  Ej.: $0{,}10\cdot2{,}4\cdot5/3=0{,}40$; $b=0{,}5\Rightarrow g^*=20$\,\% (con FP de final de periodo, $g^*=b\,\mathrm{ROE}/(1-b\,\mathrm{ROE})$).
-\item Misma $g$ que \autor{Gordon}-\autor{Shapiro}. Crecer $>g^*$: emitir, endeudarse, repartir menos o mejorar margen/rotación; si no, iliquidez: «no estires más el brazo que la manga». Crecer $<g^*$: caja ociosa (FCL de \autor{Jensen}). Une política comercial y financiera.
-\item \emph{Valoración}: menos arriesgado, sin prima de control, más barato; pero \emph{lento} (como Roma).
+  \begin{itemize}
+  \item Ej.: $0{,}10\cdot2{,}4\cdot5/3=0{,}40$; $b=0{,}5\Rightarrow g^*=20$\,\%.
+  \item Con FP de final de periodo: $g^*=b\,\mathrm{ROE}/(1-b\,\mathrm{ROE})$.
+  \end{itemize}
+\item \emph{Implicaciones}: misma $g$ que \autor{Gordon}-\autor{Shapiro}.
+  \begin{itemize}
+  \item Crecer $>g^*$: emitir, endeudarse, repartir menos o mejorar margen/rotación; si no, iliquidez: «no estires más el brazo que la manga».
+  \item Crecer $<g^*$: caja ociosa (FCL de \autor{Jensen}).
+  \end{itemize}
+\end{itemize}
+\subsub{c) Valoración}
+\begin{itemize}
+\item Menos arriesgado, sin prima de control, más barato; pero \emph{lento} (como Roma).
 \end{itemize}
 
 \sub{II.2. Crecimiento externo o inorgánico\label{rep:II.2}}
 \begin{itemize}
-\item Comprar capacidad existente (empresa, división, activos); transfronterizo = IED (frente a \emph{greenfield}) \vertema{3.B.18}. España: \dato{3.336 operaciones, $\approx$103.000 M€}{TTR, 2025}. Concentración, desconcentración y alianzas.
+\item Comprar capacidad existente (empresa, división, activos); transfronterizo = IED (frente a \emph{greenfield}) \vertema{3.B.18}.
+\item España: \dato{3.336 operaciones, $\approx$103.000 M€}{TTR, 2025}.
 \end{itemize}
-
-\textbf{a) Fusiones y adquisiciones}. Decisión de inversión; la comprada ya tiene precio y hay que pagar más para controlarla.
+\subsub{a) Fusiones y adquisiciones}
+\subsubsub{i) Concepto y clases}
 \begin{itemize}
-\item \concepto{Fusión} (RDL 5/2023): 2 o más sociedades en una, que recibe en bloque los patrimonios; \emph{por creación} o \emph{por absorción} (amplía capital). Requisitos: proyecto común, informe de experto (SA/SCA), juntas, 1 mes de oposición de acreedores; canje mal fijado: compensación, no impugnación.
-\item \concepto{Adquisición}: compra de acciones o activos hasta el control; ambas conservan personalidad: \emph{grupo}, a menudo bajo \emph{holding}. Cotizada y control: OPA.
+\item \concepto{Fusión} (RDL 5/2023): 2 o más sociedades en una, que recibe en bloque los patrimonios.
+  \begin{itemize}
+  \item \emph{Por creación} o \emph{por absorción} (amplía capital).
+  \item Requisitos: proyecto común, informe de experto, juntas, 1 mes de oposición de acreedores.
+  \end{itemize}
+\item \concepto{Adquisición}: compra de acciones o activos hasta el control; ambas conservan personalidad: \emph{grupo} (a menudo \emph{holding}). Cotizada: OPA.
 \item \emph{Horizontales}, \emph{verticales} o \emph{de conglomerado}.
-\item \concepto{Sinergias} $\Delta V=V_{AB}-(V_A+V_B)$; \concepto{prima de control} $P_B-V_B$. Gana el comprador si
+\end{itemize}
+\subsubsub{ii) Sinergias, prima y valor de la adquisición}
+\begin{itemize}
+\item \concepto{Sinergias} $\Delta V=V_{AB}-(V_A+V_B)$; \concepto{prima de control} $P_B-V_B$. Gana el comprador si:
   \funcionclave{\underbrace{V_{AB}-(V_A+V_B)}_{\Delta V}-\underbrace{(P_B-V_B)}_{\text{prima}}-\text{costes}>0}
-  Cada término, con DCF o múltiplos (\hyperref[rep:III.1]{III.1}); la prima es la parte de las sinergias que se lleva el vendedor; se paga hoy, las sinergias llegan después: «no vendas la piel del oso antes de cazarlo».
-\item \concepto{Ecuación de canje} (acciones de $A$ por cada una de $B$, prima $\theta$); $B$ se queda con $\mathrm{TC}\,n_B/(n_A+\mathrm{TC}\,n_B)$; valor razonable y experto independiente:
+  \begin{itemize}
+  \item La prima es la parte de las sinergias que se lleva el vendedor.
+  \item Se paga hoy; las sinergias llegan después: «no vendas la piel del oso antes de cazarlo».
+  \end{itemize}
+\item \concepto{Ecuación de canje} (acciones de $A$ por cada una de $B$, prima $\theta$):
   \begin{formula}
   \[\mathrm{TC}=(1+\theta)\,\frac{V_{E,B}/n_B}{V_{E,A}/n_A}\]
   \end{formula}
-  Ej.: $A$ 100 M acc.\ a 20 €, $B$ 50 M a 10 €, $\theta=30$\,\%, sinergias 300: $\mathrm{TC}=0{,}65$, emite 32,5 M; $B$ tiene 24,5\,\%. Con sinergias (2.800): $B$ +186,8, $A$ +113,2; sin ellas (2.500): $B$ +113,2, $A$ $-$113,2. En efectivo (650): $B$ +150 siempre, $A$ $\pm150$. Acciones: el riesgo se reparte; pagar con acciones, señal de que están caras (\autor{Myers}, 1984).
-\item \emph{Motivos que crean valor} (origen de $\Delta V$): costes (escala, alcance, integración vertical: doble marginalización \vertema{3.A.17}; cerrar capacidad); ingresos (ventas cruzadas, recursos de \autor{Penrose}); \emph{poder de mercado} (para el accionista, no para la economía: control); financieros y fiscales; \emph{sustituir a una dirección ineficiente}: mercado de control (\autor{Manne}, 1965).
-\item \emph{Que no crean valor}: diversificar (el accionista lo hace solo y más barato) \vertema{3.B.23}; interés de los directivos (\autor{Marris}, \autor{Jensen}); \concepto{arrogancia} (\emph{hubris}, \autor{Roll}, 1986): la prima es transferencia; \emph{maldición del ganador} \vertema{3.A.14}; momento de mercado (\autor{Shleifer}-\autor{Vishny}, 2003); \concepto{adquisiciones asesinas} \dato{5-7\,\% en farmacia de EE.\,UU.}{Cunningham et al., 2021}.
-\item \emph{Proceso} (3 fases): diseño (estrategia, candidatas, asesor); ejecución (confidencialidad, carta de intenciones, \emph{due diligence}, negociación, firma, cierre); integración (donde se ganan o pierden las sinergias).
-\item \concepto{Compra apalancada} (LBO): fondo $\to$ NEWCO con FP; contrato de financiación (sénior, \emph{mezzanine}) y de adquisición; fusión con la comprada, que paga la deuda con su caja. Deuda \dato{60-90\,\% del precio}{Kaplan-Strömberg, 2009}; MBO si compran los directivos. Valor: disciplina del FCL, vigilancia, escudo fiscal; riesgo de insolvencia. España: fusión tras deuda para comprar en los 3 años previos $\Rightarrow$ plan y experto (RDL 5/2023; asistencia financiera).
+  \begin{itemize}
+  \item Ej.: $A$ 100 M acc.\ a 20 €, $B$ 50 M a 10 €, $\theta=30$\,\%: $\mathrm{TC}=0{,}65$; $B$ tiene el 24,5\,\%.
+  \item Con acciones el riesgo de las sinergias se reparte; en efectivo lo asume $A$.
+  \item Pagar con acciones: señal de que están caras (\autor{Myers}, 1984).
+  \end{itemize}
 \end{itemize}
-\graficorepaso[0.6\linewidth]{lbo}{La compra apalancada: NEWCO, financiadores y vendedores}
+\subsubsub{iii) Motivos}
 \begin{itemize}
-\item \concepto{OPA}: a todos los accionistas, igual precio; efectivo, canje o mixta (Ley 6/2023; RD 1066/2007). \emph{Obligatoria} al alcanzar el control (30\,\% de voto, o menos si nombra $>$ mitad del consejo en 24 meses), por la totalidad y a precio equitativo; \emph{voluntaria} antes. Amistosa u hostil. \concepto{Deber de pasividad}: el consejo necesita a la junta, salvo buscar \emph{caballero blanco}; reciprocidad. EE.\,UU.: \emph{píldora venenosa}. BBVA-Sabadell: hostil, voluntaria, canje, mínimo 50\,\%: 25,33\,\%: la prima no bastó.
-\item \emph{Control de concentraciones}: CNMC (cuota $\geq30$\,\%, salvo adquirida $<10$ M y cuota $<50$\,\%; o $>240$ M en España y 2 con $>60$ M; Ley 15/2007); Comisión (dimensión comunitaria, p.\,ej. $>5.000$ M mundial y $>250$ M en la UE de 2; Reglamento 139/2004). Autorizar, con compromisos o prohibir \vertema{3.B.39} \vertema{4.A.15}.
-\item \emph{Evidencia} (estudios de acontecimientos; \autor{Andrade} et al., 2001): comprada gana (prima); compradora poco, nada o pierde; conjunto \dato{1-2\,\% del valor}{Pautler, 2001}. Pérdidas en pocas operaciones muy grandes (\autor{Moeller} et al., 2005); mejor la compra programática.
+\item \emph{Crean valor} (origen de $\Delta V$):
+  \begin{itemize}
+  \item costes: escala, alcance, integración vertical (doble marginalización \vertema{3.A.17});
+  \item ingresos: ventas cruzadas, recursos de \autor{Penrose};
+  \item \emph{poder de mercado}: para el accionista, no para la economía;
+  \item financieros y fiscales; \emph{sustituir a una dirección ineficiente} (\autor{Manne}).
+  \end{itemize}
+\item \emph{No crean valor}:
+  \begin{itemize}
+  \item diversificar (el accionista lo hace solo y más barato) \vertema{3.B.23};
+  \item interés de los directivos (\autor{Marris}, \autor{Jensen});
+  \item \concepto{arrogancia} (\emph{hubris}, \autor{Roll}, 1986): la prima es transferencia; \emph{maldición del ganador} \vertema{3.A.14};
+  \item \concepto{adquisiciones asesinas}: en farmacia de EE.\,UU., \dato{5-7\,\%}{Cunningham et al., 2021}.
+  \end{itemize}
 \end{itemize}
-
-\textbf{b) Desconcentración}. Crecer al revés (descuento de conglomerado). \emph{Escisión total} (se extingue; acciones a los socios); \emph{escisión parcial} (unidad económica; acciones a los \emph{socios}: \emph{spin-off}); \emph{segregación} (acciones a la \emph{propia sociedad}). \emph{Carve-out}, venta de divisiones; las escisiones suelen crear valor (\autor{Cusatis} et al., 1993).
-
-\textbf{c) Alianzas estratégicas}
+\subsubsub{iv) Proceso, LBO, OPA y control}
 \begin{itemize}
-\item \concepto{Alianza estratégica}: cooperación entre empresas independientes que conservan su personalidad jurídica; \emph{forma híbrida} de \autor{Williamson} (tramo $a_1<a<a_2$).
-\item \emph{Societarias} (\emph{joint ventures}): Nokia Siemens Networks (50\,\%, 2007; Nokia la compra en 2013); A220 (Airbus 50,01\,\% en 2018, 75\,\% desde 2020). \emph{Contractuales}: licencias, franquicias, I+D, consorcios; \concepto{UTE} (sin personalidad, obra concreta; Ley 18/1982) y \concepto{AIE} (con personalidad, actividad auxiliar; Ley 12/1991). Participaciones cruzadas minoritarias. \emph{No} son alianzas: grupo/holding (control), subcontratación (mercado), SGR, PERTE.
-\item \emph{Ventajas}: rápidas, baratas, flexibles, reparten riesgo, sin prima. \emph{Inconvenientes}: información a un posible competidor, menos control, \emph{hold-up} sin resolver $\Rightarrow$ acaban en compra o ruptura. Colaborar sin fundirse: «juntos, pero no revueltos».
-\item \emph{Competencia}: acuerdo entre competidores puede ser cártel (directrices de cooperación horizontal); \emph{joint venture} con plenas funciones = concentración \vertema{3.B.39}.
+\item \emph{Proceso}: diseño, ejecución (\emph{due diligence}) e integración (donde se ganan o pierden las sinergias).
+\item \concepto{Compra apalancada} (LBO):
+  \begin{itemize}
+  \item fondo $\to$ NEWCO con FP; deuda sénior y \emph{mezzanine}; fusión con la comprada, que paga la deuda con su caja;
+  \item deuda \dato{60-90\,\% del precio}{Kaplan-Strömberg, 2009}; MBO si compran los directivos;
+  \item valor: disciplina del FCL, vigilancia, escudo fiscal; riesgo: insolvencia.
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.62\linewidth]{lbo}{La compra apalancada: NEWCO, financiadores y vendedores}
+\begin{itemize}
+\item \concepto{OPA}: a todos, igual precio; efectivo, canje o mixta (Ley 6/2023; RD 1066/2007).
+  \begin{itemize}
+  \item \emph{Obligatoria} al alcanzar el control (30\,\% de voto), por la totalidad y a precio equitativo; \emph{voluntaria} antes.
+  \item Amistosa u hostil; \concepto{deber de pasividad} del consejo (salvo \emph{caballero blanco}); EE.\,UU.: \emph{píldora venenosa}.
+  \item BBVA-Sabadell: hostil, voluntaria, canje: 25,33\,\%: la prima no bastó.
+  \end{itemize}
+\item \emph{Control de concentraciones}:
+  \begin{itemize}
+  \item CNMC: cuota $\geq30$\,\% o $>240$ M en España (Ley 15/2007);
+  \item Comisión: dimensión comunitaria (Reglamento 139/2004);
+  \item autorizar, con compromisos o prohibir \vertema{3.B.39} \vertema{4.A.15}.
+  \end{itemize}
+\end{itemize}
+\subsubsub{v) Evidencia y valoración}
+\begin{itemize}
+\item Estudios de acontecimientos (\autor{Andrade} et al., 2001):
+  \begin{itemize}
+  \item la comprada gana (cobra la prima); la compradora, poco, nada o pierde;
+  \item el conjunto, \dato{1-2\,\% del valor}{Pautler, 2001}.
+  \end{itemize}
+\item Pérdidas en pocas operaciones muy grandes (\autor{Moeller} et al., 2005); mejor la compra programática.
+\end{itemize}
+\subsub{b) Desconcentración: crecer al revés}
+\begin{itemize}
+\item \emph{Escisión total} (se extingue; acciones a los socios); \emph{parcial} (acciones a los \emph{socios}: \emph{spin-off}); \emph{segregación} (a la \emph{propia sociedad}).
+\item \emph{Carve-out}; suelen crear valor (\autor{Cusatis} et al., 1993): descuento de conglomerado.
+\end{itemize}
+\subsub{c) Alianzas estratégicas}
+\begin{itemize}
+\item \concepto{Alianza estratégica}: cooperación entre empresas independientes que conservan su personalidad jurídica; \emph{forma híbrida} ($a_1<a<a_2$).
+\item \emph{Clases}:
+  \begin{itemize}
+  \item \emph{societarias} (\emph{joint ventures}): Nokia Siemens (2007); A220 (Airbus);
+  \item \emph{contractuales}: licencias, franquicias, I+D, consorcios; \concepto{UTE} (sin personalidad; Ley 18/1982) y \concepto{AIE} (con personalidad; Ley 12/1991);
+  \item participaciones cruzadas minoritarias. \emph{No} lo son: grupo, subcontratación.
+  \end{itemize}
+\item \emph{Ventajas}: rápidas, baratas, flexibles, reparten riesgo, sin prima.
+\item \emph{Inconvenientes}: información a un posible competidor, menos control, \emph{hold-up} $\Rightarrow$ acaban en compra o ruptura: «juntos, pero no revueltos».
+\item \emph{Competencia}: puede ser cártel; \emph{joint venture} con plenas funciones = concentración \vertema{3.B.39}.
 \end{itemize}
 
 % ==========================================================================
@@ -154,158 +296,186 @@ No hay un valor, sino tantos como preguntas: el contable mira al pasado, el de m
 
 \sub{III.1. Métodos de valoración de empresas\label{rep:III.1}}
 \begin{itemize}
-\item Una \emph{escalera}, de lo que la empresa \emph{tiene} a lo que \emph{generará}: balance $\to$ mercado $\to$ descuento de flujos $\to$ comparables $\to$ mixtos, suma de las partes y opciones reales.
+\item Una \emph{escalera}, de lo que la empresa \emph{tiene} a lo que \emph{generará}.
 \end{itemize}
 \graficorepaso[\linewidth]{metodos-valoracion}{La escalera de métodos (a partir de \autor{Fernández}, 2008)}
-
-\textbf{a) Del valor contable al de mercado}
+\subsub{a) Del valor contable al de mercado}
 \begin{itemize}
-\item \emph{Balance} (estáticos): \concepto{valor contable} (patrimonio neto = activo $-$ pasivo exigible); \emph{ajustado} (cada partida a mercado); \emph{de liquidación} (suelo); \emph{sustancial} (reposición de los activos de explotación). Dependen de criterios contables y no miran al futuro (marca, clientela, equipo).
-\item \concepto{Valor de mercado del capital} = precio $\times$ n.º de acciones. Límites: solo si cotiza; fiable solo con eficiencia semifuerte \vertema{3.B.23}; es un paquete \emph{minoritario}, sin \emph{prima de control}. Precio/valor contable $\approx q$ de \autor{Tobin} = ratio de \autor{Marris}.
+\item \emph{Balance} (estáticos):
+  \begin{itemize}
+  \item \concepto{valor contable} (patrimonio neto = activo $-$ pasivo exigible); \emph{ajustado} (a mercado);
+  \item \emph{de liquidación} (suelo); \emph{sustancial} (reposición de los activos de explotación);
+  \item dependen de criterios contables y no miran al futuro (marca, clientela).
+  \end{itemize}
+\item \concepto{Valor de mercado del capital} = precio $\times$ n.º de acciones.
+  \begin{itemize}
+  \item Solo si cotiza; fiable con eficiencia semifuerte \vertema{3.B.23};
+  \item paquete \emph{minoritario}, sin \emph{prima de control};
+  \item precio/valor contable $\approx q$ de \autor{Tobin} = ratio de \autor{Marris}.
+  \end{itemize}
 \end{itemize}
-
-\textbf{b) Descuento de dividendos: \autor{Gordon}-\autor{Shapiro} (1956)}
+\subsub{b) Descuento de dividendos: \autor{Gordon}-\autor{Shapiro} (1956)}
 \begin{itemize}
-\item $P_0=\sum_{t=1}^{N}D_t/(1+r_E)^t+P_N/(1+r_E)^N$, y $P_N$ es el valor de los dividendos posteriores. Supuestos: $D_t=D_0(1+g)^t$, $g<r_E$, retención $b$ reinvertida al $\mathrm{ROE}$. Suma desde $t=1$, razón $(1+g)/(1+r_E)<1$:
+\item \emph{Supuestos}: $D_t=D_0(1+g)^t$, $g<r_E$, retención $b$ reinvertida al ROE:
   \begin{formula}
-  \[P_0=\sum_{t=1}^{\infty}\frac{D_0(1+g)^t}{(1+r_E)^t}=\frac{D_0(1+g)}{r_E-g}=\frac{D_1}{r_E-g},\quad g=b\cdot\mathrm{ROE}\]
+  \[P_0=\sum_{t=1}^{\infty}\frac{D_0(1+g)^t}{(1+r_E)^t}=\frac{D_1}{r_E-g},\quad g=b\cdot\mathrm{ROE}\]
   \end{formula}
-\item \emph{Implicaciones}: $r_E=D_1/P_0+g$ (coste de los fondos propios) \vertema{3.B.2}; con $D_1=(1-b)\mathrm{BPA}_1$, \emph{PER adelantado}:
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item $r_E=D_1/P_0+g$ (coste de los fondos propios) \vertema{3.B.2};
+  \item \emph{PER adelantado} y retención:
   \begin{formula}
-  \[\frac{P_0}{\mathrm{BPA}_1}=\frac{1-b}{r_E-b\cdot\mathrm{ROE}};\qquad \frac{\partial P_0}{\partial b}\gtrless0\iff\mathrm{ROE}\gtrless r_E\]
+  \[\frac{P_0}{\mathrm{BPA}_1}=\frac{1-b}{r_E-b\cdot\mathrm{ROE}};\quad \frac{\partial P_0}{\partial b}\gtrless0\iff\mathrm{ROE}\gtrless r_E\]
   \end{formula}
-  PER $\uparrow$ con crecimiento, $\downarrow$ con riesgo. Retener crea valor solo si $\mathrm{ROE}>r_E$; si $=$, irrelevancia (\autor{Miller}-\autor{Modigliani}, 1961) \vertema{3.B.3}.
-\item \emph{Valoración}: sencillo; solo maduras con dividendos estables, muy sensible a $r_E-g$, depende de la política de dividendos $\Rightarrow$ se valora por lo que se \emph{genera}.
+  \item PER $\uparrow$ con crecimiento, $\downarrow$ con riesgo; si $\mathrm{ROE}=r_E$, irrelevancia (\autor{Miller}-\autor{Modigliani}, 1961) \vertema{3.B.3}.
+  \end{itemize}
+\item \emph{Valoración}: sencillo; solo maduras con dividendos estables; muy sensible a $r_E-g$.
 \end{itemize}
-
-\textbf{c) Descuento de flujos de caja (DCF)}. El más usado para comprar una empresa entera.
+\subsub{c) Descuento de flujos de caja (DCF)}
 \begin{itemize}
-\item \concepto{Flujo de caja libre}: caja de los activos tras impuestos e inversiones, \emph{como si no hubiera deuda} (para accionistas y acreedores) \vertema{3.B.1}:
+\item El más usado para comprar una empresa entera. \concepto{Flujo de caja libre}: caja de los activos \emph{como si no hubiera deuda} \vertema{3.B.1}:
   \begin{formula}
   \[\mathrm{FCL}_t=\mathrm{EBIT}_t(1-t_{\mathrm{IS}})+\text{amort.}_t-\mathrm{CAPEX}_t-\Delta\mathrm{NOF}_t\]
   \end{formula}
-\item \concepto{Coste medio ponderado del capital}, pesos a \emph{mercado}, escudo fiscal en la tasa:
+\item \concepto{Coste medio ponderado del capital}, pesos a \emph{mercado}:
   \begin{formula}
-  \[\mathrm{WACC}=r_E(1-L)+r_D(1-t_{\mathrm{IS}})L,\quad L=\frac{V_D}{V},\ V=V_E+V_D\]
+  \[\mathrm{WACC}=r_E(1-L)+r_D(1-t_{\mathrm{IS}})L,\quad L=\frac{V_D}{V}\]
   \end{formula}
-  $r_E$ por CAPM: $r_f+\beta_E[\mathbb{E}(r_M)-r_f]$ \vertema{3.B.23}; no cotizada: beta de comparable desapalancada y reapalancada. $r_D$: TIR de la deuda neta de gastos.
-\item $N$ años con visibilidad + \concepto{valor terminal} (perpetuidad creciente):
+  \begin{itemize}
+  \item $r_E$ por CAPM: $r_f+\beta_E[\mathbb{E}(r_M)-r_f]$ \vertema{3.B.23}; no cotizada: beta de comparable desapalancada y reapalancada.
+  \item $r_D$: TIR de la deuda; escudo fiscal en la tasa.
+  \end{itemize}
+\item $N$ años + \concepto{valor terminal} (perpetuidad creciente):
   \funcionclave{\mathrm{EV}=\sum_{t=1}^{N}\frac{\mathrm{FCL}_t}{(1+\mathrm{WACC})^t}+\frac{\mathrm{VT}_N}{(1+\mathrm{WACC})^N},\ \ \mathrm{VT}_N=\frac{\mathrm{FCL}_{N+1}}{\mathrm{WACC}-g}}
-\item \emph{Puente}: $V_E=\mathrm{EV}-$ deuda neta (deuda financiera $-$ caja y activos líquidos). Se negocia sobre el EV; se paga $V_E$.
+\item \emph{Puente}: $V_E=\mathrm{EV}-$ deuda neta. Se negocia sobre el EV; se paga $V_E$.
 \end{itemize}
 \graficorepaso[0.92\linewidth]{valor-empresa}{Del valor de la empresa al de las acciones: múltiplos indirectos y directos}
 \begin{itemize}
-\item \concepto{FCLA} (para el accionista), descontado a $r_E$, da $V_E$ directamente; bien hechos, coinciden:
+\item \emph{Extensiones}:
+  \begin{itemize}
+  \item \concepto{FCLA}, a $r_E$, da $V_E$ directamente:
   \begin{formula}
   \[\mathrm{FCLA}_t=\mathrm{FCL}_t-\text{int.}_t(1-t_{\mathrm{IS}})+\Delta\,\text{deuda neta}_t\]
   \end{formula}
-\item \concepto{APV} (\autor{Myers}, 1974): FCL a $r_A$ (sin deuda) + VA del ahorro fiscal $-$ coste de insolvencia; útil si la deuda cambia (LBO). Incertidumbre: escenarios, sensibilidad a WACC y $g$, Monte Carlo.
-\item \emph{Valoración}: futuro y caja, no depende de dividendos; pero el VT suele ser la mayor parte y $\mathrm{WACC}-g$ lo mueve mucho: $g\leq$ crecimiento nominal de la economía; contrastar con múltiplos.
+  \item \concepto{APV} (\autor{Myers}, 1974): FCL a $r_A$ + VA del ahorro fiscal $-$ insolvencia; si la deuda cambia (LBO);
+  \item incertidumbre: escenarios, sensibilidad a WACC y $g$, Monte Carlo.
+  \end{itemize}
+\item \emph{Valoración}: mira al futuro y a la caja; pero el VT suele ser la mayor parte $\Rightarrow$ $g\leq$ crecimiento nominal; contrastar con múltiplos.
 \end{itemize}
-
-\textbf{d) Múltiplos (valoración relativa)}
+\subsub{d) Múltiplos (valoración relativa)}
 \begin{itemize}
-\item \concepto{Múltiplo} = valor de mercado / medida de lo que genera. 2 pasos: calcularlo en comparables (sector, tamaño, crecimiento, riesgo; cotizadas u operaciones) y compararlo con el «teórico».
-\item \emph{Indirectos} (EV, luego $-$ deuda neta): EV/EBITDA, EV/EBIT, EV/ventas; no dependen del endeudamiento (EV/EBITDA, tampoco de la amortización):
+\item \concepto{Múltiplo} = valor de mercado / medida de lo que genera; en comparables (cotizadas u operaciones).
+\item \emph{Indirectos} (EV): EV/EBITDA, EV/EBIT, EV/ventas; no dependen del endeudamiento:
   \begin{formula}
-  \[\mathrm{EV}=\left(\frac{\mathrm{EV}}{\mathrm{EBITDA}}\right)_{\text{comp.}}\times\mathrm{EBITDA},\qquad V_E=\mathrm{EV}-\text{deuda neta}\]
+  \[\mathrm{EV}=\left(\frac{\mathrm{EV}}{\mathrm{EBITDA}}\right)_{\text{comp.}}\times\mathrm{EBITDA},\quad V_E=\mathrm{EV}-\text{deuda neta}\]
   \end{formula}
-\item \emph{Directos} ($V_E$): \concepto{PER} $=P/\mathrm{BPA}$, precio/valor contable, rentabilidad por dividendo:
-  \begin{formula}
-  \[V_E=\mathrm{PER}_{\text{comp.}}\times\text{beneficio neto}\]
-  \end{formula}
-\item \emph{Ejemplo} (FP 400, deuda 400 al 5\,\%, beneficio 50, $b=0{,}4$, $r_E=0{,}10$): contable 400; \autor{Gordon} $30/(0{,}10-0{,}05)=600$; DCF $25/(0{,}075-0{,}05)-400=600$; 9 veces un EBITDA de 125, $725$; PER 11, $550$. Los descuentos coinciden; los múltiplos dan la horquilla.
-\item Un múltiplo es un DCF resumido: PER alto = crecimiento esperado y poco riesgo, no necesariamente caro. PER: el más usado, recoge la estructura financiera; pero depende del apalancamiento, del ciclo y de la contabilidad, y no sirve con pérdidas. Regla: apalancamientos muy distintos $\Rightarrow$ múltiplos del EV.
-\item \emph{Valoración}: rápidos y con precios reales; suponen que el mercado valora bien las comparables. CAPE (\autor{Campbell}-\autor{Shiller}, 1988) para el mercado entero \vertema{3.B.23}.
+\item \emph{Directos} ($V_E$): \concepto{PER} $=P/\mathrm{BPA}$, precio/valor contable, rentabilidad por dividendo.
+  \begin{itemize}
+  \item Un múltiplo es un DCF resumido: PER alto = crecimiento esperado y poco riesgo.
+  \item PER: el más usado; depende del apalancamiento, del ciclo y de la contabilidad; no sirve con pérdidas.
+  \end{itemize}
+\item \emph{Ejemplo} (FP 400, deuda 400 al 5\,\%, beneficio 50, $b=0{,}4$, $r_E=0{,}10$):
+  \begin{itemize}
+  \item contable 400; \autor{Gordon} $30/(0{,}10-0{,}05)=600$; DCF $25/(0{,}075-0{,}05)-400=600$;
+  \item EV/EBITDA $9\times125=725$; PER $11\times50=550$: los descuentos coinciden; los múltiplos dan la horquilla.
+  \end{itemize}
+\item \emph{Valoración}: rápidos, con precios reales; suponen que el mercado valora bien.
 \end{itemize}
-
-\textbf{e) Otros métodos y ¿qué método?}
+\subsub{e) Otros métodos}
 \begin{itemize}
-\item \emph{Mixtos}: activos + \concepto{fondo de comercio} (lo que el balance no recoge). UEC: capitaliza el \emph{superbeneficio} $B-iV$ durante $n$ años al tipo $k$:
+\item \emph{Mixtos}: activos + \concepto{fondo de comercio}; UEC capitaliza el \emph{superbeneficio} $B-iV$:
   \begin{formula}
-  \[V=A+a_{n,k}(B-iV)\Rightarrow V=\frac{A+a_{n,k}B}{1+i\,a_{n,k}},\ a_{n,k}=\frac{1-(1+k)^{-n}}{k}\]
+  \[V=A+a_{n,k}(B-iV),\quad a_{n,k}=\frac{1-(1+k)^{-n}}{k}\]
   \end{formula}
-\item \emph{Suma de las partes}: cada negocio con su método, $-$ deuda neta y costes centrales; conglomerados, holdings, inmobiliarias; mide el \emph{descuento de conglomerado}.
-\item \concepto{Opciones reales} (\autor{Myers}, 1977): derecho, no obligación, de esperar, ampliar, abandonar o hacer por fases; valen más con más incertidumbre. \emph{VAN ampliado} = VAN estático + opciones (\autor{Trigeorgis}, 1996); esperar tiene valor (\autor{Dixit}-\autor{Pindyck}, 1994) \vertema{3.A.34}. Acciones = \emph{call} sobre los activos con $K$ = deuda (\autor{Merton}, 1974). Se valoran con \autor{Black}-\autor{Scholes} o binomial \vertema{3.B.25}.
-\item \emph{¿Cuál?} Ninguno óptimo: DCF para comprar el control o empresas singulares; múltiplos para contraste rápido; balance/suma de partes para inmobiliarias, holdings, liquidación; opciones reales para biotecnología, recursos naturales, \emph{start-ups}. \emph{Start-ups}: múltiplos de ventas o usuarios y \emph{método del capital riesgo}, $V_0=V_N/(1+r_{\mathrm{CR}})^N$, $r_{\mathrm{CR}}$ muy alta.
-\item Valor $\neq$ precio: «el precio es lo que pagas; el valor, lo que recibes» (\autor{Graham}, citado por \autor{Buffett}).
+\item \emph{Suma de las partes}: cada negocio con su método; holdings, conglomerados; mide el descuento de conglomerado.
+\item \concepto{Opciones reales} (\autor{Myers}, 1977): esperar, ampliar, abandonar, por fases.
+  \begin{itemize}
+  \item Valen más con más incertidumbre; \emph{VAN ampliado} = VAN + opciones (\autor{Trigeorgis}, 1996; \autor{Dixit}-\autor{Pindyck}, 1994) \vertema{3.A.34}.
+  \item Acciones = \emph{call} sobre los activos con $K$ = deuda (\autor{Merton}, 1974); \autor{Black}-\autor{Scholes} o binomial \vertema{3.B.25}.
+  \end{itemize}
+\end{itemize}
+\subsub{f) ¿Qué método?}
+\begin{itemize}
+\item Ninguno óptimo:
+  \begin{itemize}
+  \item DCF: comprar el control, empresas singulares;
+  \item múltiplos: contraste rápido;
+  \item balance, suma de partes: inmobiliarias, holdings, liquidación;
+  \item opciones reales: biotecnología, recursos naturales.
+  \end{itemize}
+\item \emph{Start-ups}: múltiplos de ventas o usuarios y \emph{método del capital riesgo}, $V_0=V_N/(1+r_{\mathrm{CR}})^N$, $r_{\mathrm{CR}}$ muy alta.
+\item Valor $\neq$ precio: «el precio es lo que pagas; el valor, lo que recibes» (\autor{Graham}).
 \end{itemize}
 
 \sub{III.2. Financiación del crecimiento\label{rep:III.2}}
 \begin{itemize}
-\item Fondos: beneficios retenidos, socios o deuda. Mercados perfectos: inversión y financiación separadas (\autor{Modigliani}-\autor{Miller}, 1958) \vertema{3.B.3}.
-\item Con asimetría y \emph{riesgo moral}, sin fondos propios bastantes no hay crédito aunque el VAN sea $>0$ (\autor{Holmström}-\autor{Tirole}): \emph{ingreso comprometible} $\pi(e^{\mathrm A})(R-B^{\mathrm p}/\Delta\pi)\geq I_0-V_E$ \vertema{3.A.13}.
-\item Implicaciones: acumular liquidez; \emph{jerarquía financiera} (\autor{Myers}-\autor{Majluf}, 1984): retenidos $\to$ deuda $\to$ acciones; tecnológicas, capital riesgo; crisis $\Rightarrow$ inversión y compras $\downarrow$; crédito y oleadas de fusiones van juntos.
+\item Fondos: retenidos, socios o deuda; con mercados perfectos, inversión y financiación separadas (\autor{Modigliani}-\autor{Miller}, 1958) \vertema{3.B.3}.
+\item Con asimetría y \emph{riesgo moral} (\autor{Holmström}-\autor{Tirole}) \vertema{3.A.13}:
+  \begin{itemize}
+  \item sin fondos propios bastantes no hay crédito aunque el VAN sea $>0$;
+  \item \emph{ingreso comprometible} $\pi(e^{\mathrm A})(R-B^{\mathrm p}/\Delta\pi)\geq I_0-V_E$.
+  \end{itemize}
+\item \emph{Implicaciones}:
+  \begin{itemize}
+  \item acumular liquidez; \emph{jerarquía financiera} (\autor{Myers}-\autor{Majluf}, 1984): retenidos $\to$ deuda $\to$ acciones;
+  \item tecnológicas: capital riesgo; crisis $\Rightarrow$ inversión y compras $\downarrow$; crédito y oleadas de fusiones van juntos.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
 \bloque[1]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: crecen hasta donde dejan tecnología y costes de transacción, o sin destino (recursos, azar, directivos); vía según especificidad y sinergias frente a prima; para decidir, valorar: valor = VA de lo que se generará. El crecimiento es un mercado en sí mismo.
-\item \textbf{Relevancia}: productividad, salarios y competencia; en España, empresas de 250 o más \dato{0,2\,\% del total}{Cifras PYME, 2026}.
-\item \textbf{Extensiones}: \vertema{3.A.15} \vertema{3.B.2} \vertema{3.B.3} \vertema{3.B.23} \vertema{3.A.34} \vertema{3.B.18} \vertema{3.B.39} \vertema{4.A.15}; política económica: ciclo, tipos y crédito.
-\item \textbf{Opinión}: la adquisición crea valor si lleva los activos a quien mejor los gestiona; desconfiar de sinergias pagadas por adelantado y vigilar el poder de mercado. Mejor quitar regulaciones por umbral de tamaño (\autor{Garicano} et al., 2016; \autor{Almunia}-\autor{López-Rodríguez}, 2018) que subvencionar fusiones.
-\item \textbf{Idea final}: Roma no se hizo en un día ni se compra de un día para otro; crecer compensa si lo que se recibe vale más de lo que se paga (\autor{Graham}).
+\item \textbf{Recapitulación}:
+  \begin{itemize}
+  \item crecen hasta donde dejan tecnología y costes de transacción, o sin destino (recursos, azar, directivos);
+  \item la vía, según especificidad y sinergias frente a prima;
+  \item para decidir, valorar: valor = VA de lo que se generará.
+  \end{itemize}
+\item \textbf{Relevancia}: productividad, salarios y competencia; en España, empresas de 250+ \dato{0,2\,\% del total}{Cifras PYME, 2026}.
+\item \textbf{Extensiones}: \vertema{3.A.15} \vertema{3.B.2} \vertema{3.B.3} \vertema{3.B.23} \vertema{3.A.34} \vertema{3.B.18} \vertema{3.B.39} \vertema{4.A.15}.
+\item \textbf{Opinión}:
+  \begin{itemize}
+  \item la compra crea valor si lleva los activos a quien mejor los gestiona; desconfiar de sinergias pagadas por adelantado y vigilar el poder de mercado;
+  \item mejor quitar regulaciones por umbral de tamaño (\autor{Garicano} et al., 2016) que subvencionar fusiones.
+  \end{itemize}
+\item \textbf{Idea final}: Roma no se hizo en un día ni se compra de un día para otro; crecer compensa si lo que se recibe vale más de lo que se paga.
 \end{itemize}
 
 % ==========================================================================
-\bloque{Autores y fechas}
-\hito{1931}{\autor{Gibrat}: efecto proporcional}
-\hito{1932}{\autor{Berle}-\autor{Means}: propiedad y control}
-\hito{1937}{\autor{Coase}: costes de transacción}
-\hito{1939}{\autor{Stigler}: flexibilidad}
-\hito{1956}{\autor{Gordon}-\autor{Shapiro}: descuento de dividendos}
-\hito{1957}{\autor{Ansoff}: matriz productos-mercados}
-\hito{1958}{\autor{Modigliani}-\autor{Miller}; \autor{Stigler}: superviviente}
-\hito{1959}{\autor{Penrose}: \emph{The Theory of the Growth of the Firm}}
-\hito{1961}{\autor{Miller}-\autor{Modigliani}: dividendos}
-\hito{1964}{\autor{Marris}: teoría gerencial}
-\hito{1965}{\autor{Manne}: mercado de control}
-\hito{1970}{\autor{Friedman}: responsabilidad social = beneficios}
-\hito{1973}{\autor{Black}-\autor{Scholes}}
-\hito{1974}{\autor{Myers}: APV; \autor{Merton}: acciones como \emph{call}}
-\hito{1976}{\autor{Jensen}-\autor{Meckling}: agencia}
-\hito{1977}{\autor{Higgins}: crecimiento sostenible; \autor{Myers}: opciones reales}
-\hito{1979}{\autor{Williamson}: atributos de la transacción}
-\hito{1984}{\autor{Myers}-\autor{Majluf}; \autor{Wernerfelt}: recursos}
-\hito{1986}{\autor{Jensen}: FCL; \autor{Roll}: \emph{hubris}; \autor{Grossman}-\autor{Hart}}
-\hito{1990}{\autor{Hart}-\autor{Moore}: derechos de propiedad}
-\hito{1991}{\autor{Williamson}: formas híbridas; Nobel \autor{Coase} (\autor{Williamson}, 2009; \autor{Hart}-\autor{Holmström}, 2016)}
-\hito{1999}{\autor{Gabaix}: \autor{Zipf}; \autor{Geroski}}
-\hito{2023}{RDL 5/2023 (modificaciones estructurales); Ley 6/2023 (LMV)}
-
-% ==========================================================================
+\anexorepaso
 \bloque{Datos clave}
 \begin{itemize}
-\item La OPA de BBVA sobre Sabadell la aceptó el \dato{25,33\,\% del capital}{CNMV, 2025}, con un mínimo del 50\,\%.
-\item Empresas: \dato{3,31 M; 54,4\,\% sin asalariados; 2,3\,\% con 20+}{INE, 2025}; \dato{0,2\,\% con 250+}{Cifras PYME, 2026}; VAB/ocupado grandes \dato{1,7× micro}{Eurostat, 2024}.
-\item F\&A: mundo \dato{4,6 billones de \$ (+49\,\%)}{LSEG, 2025}; España \dato{3.336 operaciones, $\approx$103.000 M€}{TTR, 2025}; capital privado en España \dato{$\approx$7.000 M€, $>$1.000 operaciones}{SpainCap, 2025}.
-\item SPAC que salieron a bolsa en EE.\,UU.: \dato{613}{2021}, \dato{57}{2024} y \dato{$\approx$140}{2025; SPACInsider}.
+\item OPA BBVA-Sabadell: \dato{25,33\,\% del capital}{CNMV, 2025} (mínimo, 50\,\%).
+\item Empresas: \dato{3,31 M; 54,4\,\% sin asalariados}{INE, 2025}; \dato{0,2\,\% con 250+}{Cifras PYME, 2026}.
+\item VAB/ocupado: grandes \dato{1,7× micro}{Eurostat, 2024}.
+\item F\&A: mundo \dato{4,6 billones de \$ (+49\,\%)}{LSEG, 2025}; España \dato{3.336 operaciones, $\approx$103.000 M€}{TTR, 2025}.
 \end{itemize}
-
-% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1931}{\autor{Gibrat}: efecto proporcional}
+\hito{1937}{\autor{Coase}: costes de transacción}
+\hito{1956}{\autor{Gordon}-\autor{Shapiro}}
+\hito{1957}{\autor{Ansoff}: productos-mercados}
+\hito{1959}{\autor{Penrose}: recursos ociosos}
+\hito{1964}{\autor{Marris}: teoría gerencial}
+\hito{1977}{\autor{Higgins}: $g^*$; \autor{Myers}: opciones reales}
+\hito{1979}{\autor{Williamson}: especificidad}
+\hito{1986}{\autor{Jensen}: FCL; \autor{Roll}: \emph{hubris}; \autor{Grossman}-\autor{Hart}}
 \bloque{Preguntas del tribunal}
 \begin{enumerate}
-\item \textbf{¿Por qué el valor terminal es una perpetuidad creciente y qué exige?} Es \autor{Gordon} aplicado al FCL; exige $g<\mathrm{WACC}$ y $g$ sostenible ($\leq$ crecimiento nominal); suele ser la mayor parte del EV.
-\item \textbf{¿Pesos del WACC a valor contable?} No: a mercado (coste de oportunidad actual); deuda tras impuestos, $r_D(1-t_{\mathrm{IS}})$, porque el FCL no recoge el escudo fiscal.
+\item \textbf{¿Qué exige el valor terminal?} $g<\mathrm{WACC}$ y sostenible ($\leq$ crecimiento nominal); suele ser la mayor parte del EV.
+\item \textbf{¿Pesos del WACC a valor contable?} No: a mercado; deuda tras impuestos porque el FCL no recoge el escudo fiscal.
 \item \textbf{¿Crea valor retener beneficios?} Solo si $\mathrm{ROE}>r_E$; si $=$, da igual (MM, 1961).
-\item \textbf{¿Por qué pierden los compradores?} La prima transfiere al vendedor las sinergias (y más, con \emph{hubris} o puja); se paga hoy y las sinergias son inciertas.
-\item \textbf{¿Efectivo o acciones?} Con acciones el riesgo de las sinergias se reparte; con efectivo lo asume el comprador; pagar con acciones puede señalar que están caras.
-\item \textbf{¿Cómo se valora una \emph{start-up}?} Múltiplos de ventas o usuarios, capital riesgo ($V_N$ a $r_{\mathrm{CR}}$ alta) y opciones reales.
-\item \textbf{¿Cuándo aliarse y no comprar?} Especificidad intermedia ($a_1<a<a_2$): demasiada para el mercado, poca para integrar.
-\item \textbf{¿Barreras institucionales al tamaño?} Regulaciones por umbral (50 trabajadores en Francia; 6 M de facturación en España, Grandes Contribuyentes): empresas justo por debajo.
+\item \textbf{¿Por qué pierden los compradores?} La prima transfiere las sinergias al vendedor (\emph{hubris}, puja); se paga hoy y las sinergias son inciertas.
+\item \textbf{¿Cuándo aliarse y no comprar?} Especificidad intermedia ($a_1<a<a_2$).
+\item \textbf{¿Cómo se valora una \emph{start-up}?} Múltiplos de ventas, capital riesgo y opciones reales.
 \end{enumerate}
-
 \begin{trampa}
 \begin{itemize}
-\item \autor{Gordon}: $P_0=D_1/(r_E-g)$ con $D_1=D_0(1+g)$, no $D_0$; suma desde $t=1$; $g=b\cdot\mathrm{ROE}$.
-\item WACC: pesos a mercado, $r_D(1-t_{\mathrm{IS}})$; FCL sin intereses (como si no hubiera deuda). En el WACC, $V$ con deuda bruta; en el puente, deuda \emph{neta}.
-\item FCLA $=$ FCL $-$ int.$(1-t_{\mathrm{IS}})+\Delta$deuda neta; con 500, 800 al 9\,\%, 25\,\%, +350 y $-$400: 396.
-\item \autor{Ansoff}: desarrollo de \emph{productos} = productos nuevos en mercados actuales; de \emph{mercados} = actuales en mercados nuevos.
-\item OPA: 30\,\% de voto; comunicación desde el 3\,\%; aceptación 15-70 días naturales; venta forzosa 90\,\% y 90\,\%; blindajes caen al 70\,\%.
-\item Escisión parcial: acciones a los socios; segregación: a la propia sociedad.
-\item \autor{Gibrat}: tasa \emph{independiente} del tamaño; lognormal es el \emph{tamaño}, no las tasas. Efecto \autor{Penrose}: limita la velocidad, no el tamaño.
-\item Frecuencia (\autor{Williamson}): no encarece la transacción. Contratos incompletos: \autor{Grossman}-\autor{Hart}-\autor{Moore}, no \autor{Williamson}.
+\item \autor{Gordon}: $D_1=D_0(1+g)$, no $D_0$; $g=b\cdot\mathrm{ROE}$.
+\item WACC: pesos a mercado; FCL sin intereses; en el puente, deuda \emph{neta}.
+\item \autor{Ansoff}: desarrollo de \emph{productos} = nuevos en mercados actuales.
+\item Escisión parcial: acciones a los socios; segregación: a la sociedad.
+\item \autor{Gibrat}: lognormal es el \emph{tamaño}, no las tasas.
 \end{itemize}
 \end{trampa}
 

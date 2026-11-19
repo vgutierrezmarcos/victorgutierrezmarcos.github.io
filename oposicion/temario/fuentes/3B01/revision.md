@@ -160,3 +160,4 @@ Todas del 13/11/2026, aplicadas con la opción recomendada.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche cambiado por uno más popular: «El papel lo aguanta todo» → «Las apariencias engañan» (Wirecard se mantiene: las cuentas aparentaban una empresa que crecía y ganaba dinero). Rehechos el enganche, la idea final, la ficha (esquema del cante, enganche e idea final) y las instrucciones del vídeo. Duda B01-13.
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.

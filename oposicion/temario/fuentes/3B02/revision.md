@@ -248,3 +248,4 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche cambiado por uno más popular: «Más vale un hoy que dos mañanas» → «No por mucho madrugar amanece más temprano» (Intel en Magdeburgo se mantiene; la opción de esperar de II lo retoma). Rehechos el enganche, la idea final, la frase de la opción de esperar, la ficha (esquema del cante, enganche e idea final) y las instrucciones del vídeo. Duda B02-08.
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.

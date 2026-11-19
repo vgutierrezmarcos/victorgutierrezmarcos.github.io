@@ -374,3 +374,4 @@ Páginas del tema: 35 antes y 36 después (anexos: 5 → 9; bibliografía: 6 →
   - **Ficha**: una viñeta «IA» en II.1 (sigue en 4 páginas, letra de 9). **seo.json**: palabra clave «inteligencia artificial y mercados financieros».
   - **Vídeo**: la viñeta de la IA se dice de palabra al final de II.1, sin pizarra, en unos 20″ que salen de la lectura de la eficiencia; los \minutos no cambian.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.

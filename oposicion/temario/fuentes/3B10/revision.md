@@ -206,3 +206,4 @@ Propuestas: todas las de coherencia (K1-K35), contenido (C1-C46) y datos (V1-V17
 ## Comentarios de Víctor (19/11/2026)
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 8,75 pt.

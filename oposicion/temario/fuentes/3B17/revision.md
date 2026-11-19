@@ -295,3 +295,4 @@ Páginas del tema: 25 → 31 (anexos 3; bibliografía 6). \minutos sigue en 30. 
 ## Comentarios de Víctor (19/11/2026)
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.

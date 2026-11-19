@@ -261,7 +261,7 @@ El artifact de dudas no está disponible en esta sesión: van aquí. En todas se
 
 - **Enganche e idea final** (refrán cambiado el 19/11/2026): «Hombre prevenido vale por dos», el futuro del WTI liquidado a −37,63 $ el 20/4/2020 (un contrato pensado para prevenirse, convertido en pérdida para quien apostaba con poco dinero) y la advertencia de Buffett (carta de 2002). Pregunta: «¿hacen los derivados que quien los usa valga por dos, o multiplican los riesgos que deberían cubrir?».
   - La idea final la responde: los derivados no crean ni destruyen el riesgo, lo cambian de manos y le ponen precio.
-  - Con márgenes, cámaras y transparencia, quien se cubre con ellos vale por dos; sin ellos, y con el apalancamiento de quien apuesta, lo multiplican.
+  - Con márgenes, cámaras y transparencia, quien se cubre con derivados vale por dos; sin esas garantías, y con el apalancamiento de quien apuesta, lo multiplican.
   - Introducción y conclusión, en `modo: guion`.
 - **Esqueleto de la pizarra**: a la izquierda, todo el tema, el guion de 5 pasos que se repite en los 3 bloques (definición, tipos, pago, estrategias y valoración).
 - **Funciones clave** (`conservar:`), en la esquina superior derecha. Se recuadran al aparecer y se quedan hasta el final:
@@ -340,4 +340,5 @@ Números de gráficos, tablas y ecuaciones del PDF de la rama (tercer-ejercicio/
 ## Comentarios de Víctor (19/11/2026)
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
-- Refrán del enganche más popular: «cubrirse las espaldas» pasa a «Hombre prevenido vale por dos» (la cobertura). Se rehacen el enganche (el WTI de 2020 como contrato para prevenirse que hundió a quien apostaba apalancado), la pregunta y la idea final, y se ajustan la ficha (esquema, pizarra, enganche e idea final), el mapa de la exposición y las instrucciones del vídeo. Sin cifras nuevas. Duda D10.
+- Refrán del enganche más popular: «cubrirse las espaldas» pasa a «Hombre prevenido vale por dos» (la cobertura). Se rehacen el enganche (el WTI de 2020 como contrato para prevenirse que hundió a quien apostaba apalancado), la pregunta y la idea final, y se ajustan la ficha (esquema, pizarra, enganche e idea final), el mapa de la exposición y las instrucciones del vídeo. Sin cifras nuevas. Al rehacer el PDF, el título de II.5.3 quedaba al pie de la página 24: `\needspace{8\baselineskip}` delante. Duda D10.
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.

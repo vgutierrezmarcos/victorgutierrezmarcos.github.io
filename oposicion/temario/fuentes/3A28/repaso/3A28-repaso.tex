@@ -1,16 +1,36 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Tasa natural de paro y NAIRU]{3.A.28}{La tasa natural de paro y la NAIRU. La persistencia del desempleo.}
-\tcefecha{31/10/2026}
+\tcefecha{19/11/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
 
 % ==========================================================================
-% ==========================================================================
-\bloque{Esquema del cante}
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{agua pasada no mueve molino}». ¿Vale para el paro?
+  \begin{itemize}
+  \item España \dato{8,2\,\% (2007) $\to$ 26,1\,\% (2013)}{AMECO}; hoy \dato{10,2\,\%}{EPA 3T 2026}, > precrisis y lejos del 6,4\,\% del euro.
+  \item NAWRU 13,6\,\% $\to$ 16,9\,\%, baja despacio: la crisis no es agua pasada.
+  \item ¿\emph{Hay un paro «natural» al que se vuelve solo, o el de hoy fija el de mañana?}
+  \end{itemize}
+\item \textbf{Relevancia}:
+  \begin{itemize}
+  \item \emph{social} (renta, cualificaciones); \emph{teoría}: la macro nació para explicar el paro involuntario (\autor{De Vroey}, 2016);
+  \item \emph{política}: la demanda acerca a $U^n$, solo las reformas la bajan; bancos centrales \vertema{3.A.36}; CE: NAWRU $\to$ saldo estructural \vertema{3.A.42}.
+  \end{itemize}
+\item \textbf{Contextualización}: \concepto{parado}: sin empleo, lo busca y está disponible; $U_t$ = parados/activos.
+  \begin{itemize}
+  \item Cierra el bloque: neoclásico \vertema{3.A.25}, búsqueda \vertema{3.A.26}, salarios \vertema{3.A.27}.
+  \item \concepto{Tasa natural} $U^n$: sin paro cíclico (\autor{Phelps}, 1967; \autor{Friedman}, 1968).
+  \item \concepto{NAIRU}: paro con el que la inflación no se acelera (\autor{Modigliani}-\autor{Papademos}, 1975; \autor{Tobin}, 1980; LNJ, 1991). En WS-PS coinciden.
+  \end{itemize}
+\item \textbf{Problemática}: ¿qué paro es de equilibrio? ¿Puede la demanda bajarlo a cambio de inflación? ¿Qué lo reduce? ¿Por qué no vuelve tras una recesión?
+\item \textbf{Estructura}: \hyperref[rep:I]{I} tipos de paro; \hyperref[rep:II]{II} evolución de la curva de \autor{Phillips} y su política; \hyperref[rep:III]{III} NAIRU y persistencia.
+\end{itemize}
 \esquemacante{%
-\apartadocante{Introducción: «agua pasada no mueve molino»}{2,5}
+\apartadocante{Introducción}{2,5}
 \apartadocante{I. Los tipos de paro}{6,5}
 \subcante{1. Clasificación del paro}{1,5}
 \subcante{2. Búsqueda y emparejamiento}{2,5}
@@ -27,19 +47,6 @@
 \subcante{2. La NAIRU}{4,5}
 \subcante{3. Persistencia e histéresis}{3,5}
 \apartadocante{Conclusión}{1}}
-\emph{Pizarra} en 3 zonas: izquierda, supuestos que se levantan (4 atomicidad, 6 salarios y precios flexibles) y refranes («no se puede estar en misa y repicando», curva aumentada; «quien se fue a Sevilla perdió su silla», \emph{insiders}; «agua pasada no mueve molino», el del enganche, junto a la NAIRU sin histéresis y tachado en la histéresis); centro, gráficos por capas (tabla de tipos de paro y \autor{Beveridge}; \autor{Phillips} del menú a la vertical y \autor{Barro}-\autor{Gordon}; WS sola, PS sola, WS-PS, demanda e histéresis); derecha, funciones clave: curva aumentada, NAIRU, histéresis.
-
-% ==========================================================================
-\bloque[2,5]{Introducción}
-\begin{itemize}
-\item \textbf{Enganche}: «\emph{Agua pasada no mueve molino}». ¿Vale para el paro? España \dato{8,2\,\% (2007) $\to$ 26,1\,\% (2013)}{AMECO}; hoy \dato{10,2\,\%}{EPA 3T 2026}, mínimo desde 2008 pero > precrisis y lejos del 6,4\,\% de la zona del euro. NAWRU: 13,6\,\% (2007) $\to$ 16,9\,\% (2013), baja despacio detrás del paro: la crisis no es agua pasada. ¿\emph{Hay un paro «natural» al que se vuelve solo, o el paro de hoy fija el de mañana?}
-\item \textbf{Relevancia}: \emph{social} (renta, cualificaciones); \emph{teoría}: la macro nació para explicar el paro involuntario (\autor{De Vroey}, 2016); ¿equilibrio o desequilibrio?; \emph{política}: separa lo que hace la demanda (acercar a $U^n$) de lo que solo hacen las reformas (bajar $U^n$); bancos centrales \vertema{3.A.36}; CE: NAWRU $\to$ PIB potencial, brecha y saldo estructural \vertema{3.A.42}.
-\item \concepto{Parado}: sin empleo, lo busca activamente y está disponible; \concepto{tasa de paro} $U_t$: parados / activos. Notación: $U_t$ tasa de paro, $U^n$ tasa natural (en \hyperref[rep:III]{III}, también la NAIRU: en WS-PS coinciden).
-\item \textbf{Contextualización}: cierra el bloque del mercado de trabajo: neoclásico sin paro involuntario salvo salario mínimo \vertema{3.A.25}; búsqueda, paro friccional \vertema{3.A.26}; negociación y eficiencia, por qué no baja $w$ real \vertema{3.A.27}. ¿Cuánto paro hay en equilibrio?
-\item \concepto{Tasa natural} $U^n$: sin paro cíclico (\autor{Phelps}, 1967; \autor{Friedman}, 1968). \concepto{NAIRU}: paro con el que la inflación no se acelera; NIRU (\autor{Modigliani}-\autor{Papademos}, 1975), acrónimo con \autor{Tobin} (1980); modelo de \autor{Layard}-\autor{Nickell}-\autor{Jackman} (1991).
-\item \textbf{Problemática}: ¿qué tipos de paro hay y cuáles son de equilibrio? ¿Puede la demanda bajarlo de forma duradera a cambio de inflación? ¿Qué lo determina y qué lo reduce? ¿Por qué no vuelve tras una recesión?
-\item \textbf{Estructura}: \hyperref[rep:I]{I}, tipos de paro (¿qué paro es de equilibrio?); \hyperref[rep:II]{II}, evolución de la curva de \autor{Phillips} por escuelas, con su política (¿puede la demanda bajar el paro?); \hyperref[rep:III]{III}, \emph{NAIRU} y \emph{persistencia} (¿por qué hay paro involuntario de equilibrio y por qué no vuelve?).
-\end{itemize}
 
 % ==========================================================================
 \bloque[6,5]{I. Los tipos de paro: qué paro es de equilibrio\label{rep:I}}
@@ -48,208 +55,292 @@ No todo el paro es igual: friccional y estructural forman el paro de equilibrio 
 \end{ideaclave}
 \sub{I.1. Clasificación del paro\label{rep:I.1}}
 \begin{itemize}
-\item \emph{Por la causa}: \emph{friccional} (entre 2 empleos; buscar lleva tiempo); \emph{estructural} (desajuste de cualificación, sector, región + salarios por encima del que vacía el mercado); \emph{cíclico} (demanda insuficiente); \emph{estacional} (calendario; se desestacionaliza).
-\item \emph{Por la voluntad}: voluntario ($w<w^R$) e involuntario. \emph{Por el mercado que falla} (\autor{Malinvaud}): keynesiano (demanda) y clásico (salario real alto) \vertema{3.A.4}.
+\item \emph{Por la causa}:
+  \begin{itemize}
+  \item \emph{friccional}: entre 2 empleos; buscar lleva tiempo;
+  \item \emph{estructural}: desajuste de cualificación, sector, región + salarios sobre el que vacía el mercado;
+  \item \emph{cíclico}: demanda insuficiente; \emph{estacional}: calendario.
+  \end{itemize}
+\item \emph{Por la voluntad}: voluntario ($w<w^R$) e involuntario. \emph{Por el mercado} (\autor{Malinvaud}): keynesiano y clásico \vertema{3.A.4}.
 \item Friccional + estructural = \concepto{tasa natural}; «natural» $\neq$ inevitable ni deseable.
 \end{itemize}
 \sub{I.2. Friccional y estructural: búsqueda y emparejamiento\label{rep:I.2}}
+\subsub{a) Idea}
 \begin{itemize}
-\item \autor{Phelps} (1968, 1970): información imperfecta; \autor{Diamond}-\autor{Mortensen}-\autor{Pissarides}: fundamento en los \emph{flujos} \vertema{3.A.26}. \autor{Friedman}: $U^n$ no es paro = vacantes; conviven.
-\item Separación $s$; hallar empleo $f(\theta)$, $\theta\equiv V/U$ (\emph{tensión}); $\dot U=s(1-U)-f(\theta)U$; estado estacionario:
+\item \autor{Phelps} (1968, 1970): información imperfecta; \autor{Diamond}-\autor{Mortensen}-\autor{Pissarides}: \emph{flujos} \vertema{3.A.26}.
+\item \autor{Friedman}: $U^n$ no es paro = vacantes; conviven.
+\end{itemize}
+\subsub{b) Modelo}
+\begin{itemize}
+\item Separación $s$; hallar empleo $f(\theta)$, $\theta\equiv V/U$ (\emph{tensión}); $\dot U=s(1-U)-f(\theta)U$:
 \begin{formula}
 \centering $U^n=\dfrac{s}{s+f(\theta^*)}$;\quad $s=2$\,\%, $f=30$\,\% $\Rightarrow$ $U^n\approx6{,}3$\,\%
 \end{formula}
-\item[] $\theta^*$: creación de empleo + negociación; es el $U^*$ del modelo de búsqueda \vertema{3.A.26}. ↑$U^n$ con ↑$s$, peor emparejamiento, ↓vacantes, prestaciones o poder negociador mayores.
-\item \emph{Beveridge}: a lo largo = ciclo; desplazamiento = friccional y estructural; España 2008-09, hacia fuera (construcción; \autor{Boscá} et al., 2017). \concepto{Condición de \autor{Hosios}} (1990): poder negociador = elasticidad del emparejamiento: solo entonces óptima. «Natural» $\neq$ deseable.
+  \begin{itemize}
+  \item $\theta^*$: creación de empleo + negociación \vertema{3.A.26}.
+  \item ↑$U^n$ con ↑$s$, peor emparejamiento, ↓vacantes, más prestaciones o poder negociador.
+  \end{itemize}
+\item \emph{Beveridge}: a lo largo = ciclo; desplazamiento = friccional y estructural.
+  \begin{itemize}
+  \item España 2008-09, hacia fuera (construcción; \autor{Boscá} et al., 2017).
+  \end{itemize}
 \end{itemize}
-\graficorepaso[0.55\linewidth]{beveridge-lectura}{\autor{Beveridge}: movimientos a lo largo (ciclo) y desplazamientos ($U^n$)}
+\graficorepaso[0.55\linewidth]{beveridge-lectura}{\autor{Beveridge}: a lo largo (ciclo) y desplazamientos ($U^n$)}
+\subsub{c) Valoración}
 \begin{itemize}
-\item \emph{Valoración}: + paro y vacantes con agentes que optimizan; qué políticas bajan $U^n$. $-$ poca respuesta a la productividad (\autor{Shimer}, 2005); paro friccional, no involuntario.
+\item \concepto{Condición de \autor{Hosios}} (1990): óptima solo si poder negociador = elasticidad del emparejamiento.
+\item + paro y vacantes con agentes que optimizan. $-$ poca respuesta a la productividad (\autor{Shimer}, 2005); paro friccional, no involuntario.
 \end{itemize}
 
-% ==========================================================================
-\sub{I.3. Paro cíclico: la ley de \autor{Okun}\label{rep:I.3}}
+\sub{I.3. Paro cíclico: la ley de \autor{Okun} (1962)\label{rep:I.3}}
 \begin{itemize}
-\item \autor{Okun} (1962): $\approx3$ puntos de PNB por punto de paro sobre el 4\,\%; puente paro-producción y $U^n$-$Y^p$:
+\item $\approx3$ puntos de PNB por punto de paro sobre el 4\,\%; puente paro-producción y $U^n$-$Y^p$:
 \begin{formula}
 \centering $U_t-U_{t-1}\approx-\vartheta(\gamma_{Y,t}-\bar\gamma_Y)$,\quad $U_t-U^n\approx-\vartheta'\,\mathrm{OG}_t$
 \end{formula}
-\item[] $\vartheta\approx1/3$ (\autor{Okun}); hoy EE.\,UU. 0,45, Japón 0,15, España 0,85, el más alto, por los temporales (\autor{Ball} et al., 2017). $\vartheta<1$: caen también horas, participación y productividad. Falla con economía sumergida y ERTE (2020: PIB $-$10,9\,\%, paro +1,4 puntos) \vertema{4.A.16}.
+\item $\vartheta\approx1/3$ (\autor{Okun}); hoy EE.\,UU. 0,45, Japón 0,15, España 0,85, por los temporales (\autor{Ball} et al., 2017).
+  \begin{itemize}
+  \item $\vartheta<1$: caen también horas, participación y productividad.
+  \item Falla con ERTE (2020: PIB $-$10,9\,\%, paro +1,4 puntos) \vertema{4.A.16}.
+  \end{itemize}
 \end{itemize}
-\graficorepaso[0.6\linewidth]{okun-espana}{\autor{Okun} en España, 1996-2025: $-$0,8 puntos de paro por punto de crecimiento sobre el 1,8\,\%}
+\graficorepaso[0.6\linewidth]{okun-espana}{\autor{Okun} en España, 1996-2025: $-$0,8 puntos por punto sobre el 1,8\,\%}
 \sub{I.4. Evidencia y política económica\label{rep:I.4}}
 \begin{itemize}
-\item España: 2013, paro 26,1\,\% y NAWRU 16,9\,\% ($\approx$9 puntos cíclicos); 2025, paro 10,5\,\% < NAWRU 12,1\,\%: el problema es estructural. Instituciones: prestaciones largas, negociación de mucha cobertura y poca coordinación (\autor{Nickell}, 1997).
-\item \emph{Política}: friccional, intermediación y movilidad; estructural, formación y reformas (negociación, prestaciones, cuña fiscal, competencia); cíclico, demanda y ERTE; estacional, contratos de temporada (fijos discontinuos). Activas frente a pasivas \vertema{4.A.16}.
+\item España: 2013, paro 26,1\,\%, NAWRU 16,9\,\% ($\approx$9 puntos cíclicos); 2025, paro 10,5\,\% < NAWRU 12,1\,\%: problema estructural.
+  \begin{itemize}
+  \item Instituciones: prestaciones largas, mucha cobertura y poca coordinación (\autor{Nickell}, 1997).
+  \end{itemize}
+\item \emph{Política}:
+  \begin{itemize}
+  \item friccional: intermediación y movilidad;
+  \item estructural: formación y reformas (negociación, prestaciones, cuña fiscal, competencia);
+  \item cíclico: demanda y ERTE; estacional: fijos discontinuos \vertema{4.A.16}.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
 \bloque[11]{II. La tasa natural: evolución de la curva de \autor{Phillips}\label{rep:II}}
 \begin{ideaclave}
-La curva parecía un \emph{menú}; con expectativas, la disyuntiva es solo de corto plazo y el paro vuelve a la \emph{tasa natural}. Cada escuela, su política: ajuste fino, reglas, independencia, objetivos de inflación. No se puede estar en misa y repicando.
+La curva parecía un \emph{menú}; con expectativas, la disyuntiva es solo de corto plazo y el paro vuelve a la \emph{tasa natural}. Cada escuela, su política: ajuste fino, reglas, independencia, objetivos de inflación. «No se puede estar en misa y repicando».
 \end{ideaclave}
 \sub{II.1. El debate previo a la curva de \autor{Phillips}\label{rep:II.1}}
-
+\subsub{a) Enfoque neoclásico}
 \begin{itemize}
-\item Demanda $W/P=\mathrm{PMg}_L$; oferta, consumo-ocio; $w$ real vacía el mercado \vertema{3.A.25}. Sin paro involuntario (salvo salario mínimo) ni friccional: quien no trabaja, $w<w^R$.
-\item Paro voluntario fluctúa: sustitución intertemporal (\autor{Lucas}-\autor{Rapping}, 1969). \emph{Dicotomía clásica}: OA vertical, la demanda no mueve el empleo; quitar trabas a la bajada de $w$.
-\item Gran Depresión: rigideces (sindicatos, \autor{Hicks}, 1932 \vertema{3.A.27}; poder de mercado, \autor{Chamberlin}, 1933 \vertema{3.A.18}). Se levantan los supuestos \textbf{4} (atomicidad) y \textbf{6} (flexibilidad).
-\item \autor{Keynes} (1936): se negocia el salario \emph{nominal}, rígido a la baja; la \emph{DA fija la producción} y la función de producción, el empleo.
-\item ↓DA $\Rightarrow$ ↓$P$, $W$ fijo $\Rightarrow$ ↑$W/P$ $\Rightarrow$ ↓$L$: ajuste por cantidades. \concepto{Paro involuntario}: quienes trabajarían al salario vigente (o algo menor) y no encuentran empleo \vertema{3.A.4}. OA creciente con recursos ociosos, vertical al agotarse.
-\item Cap. 19: bajar $w$ solo crea empleo si ↑$I$; prefería subir precios con más demanda. Remedio: política de demanda (fiscal).
-\item \emph{Recapitulación}: 2 preguntas abiertas: expansión puntual = subida de precios única $\Rightarrow$ falta \emph{teoría de la inflación} (\autor{Phillips}); ¿por qué negociar sin la inflación esperada? (\autor{Friedman}-\autor{Phelps}).
+\item $W/P=\mathrm{PMg}_L$; $w$ real vacía el mercado \vertema{3.A.25}: sin paro involuntario (salvo salario mínimo).
+  \begin{itemize}
+  \item Paro voluntario fluctúa: sustitución intertemporal (\autor{Lucas}-\autor{Rapping}, 1969).
+  \item \emph{Dicotomía clásica}: OA vertical; la demanda no mueve el empleo.
+  \end{itemize}
+\item Gran Depresión: rigideces (sindicatos, \autor{Hicks}, 1932 \vertema{3.A.27}; \autor{Chamberlin}, 1933 \vertema{3.A.18}). Se levantan los supuestos \textbf{4} (atomicidad) y \textbf{6} (flexibilidad).
+\end{itemize}
+\subsub{b) Enfoque keynesiano}
+\begin{itemize}
+\item \autor{Keynes} (1936): $W$ \emph{nominal} rígido a la baja; la \emph{DA fija la producción} y el empleo.
+  \begin{itemize}
+  \item ↓DA $\Rightarrow$ ↓$P$ $\Rightarrow$ ↑$W/P$ $\Rightarrow$ ↓$L$: ajuste por cantidades.
+  \item \concepto{Paro involuntario}: quien trabajaría al salario vigente (o algo menor) y no encuentra empleo \vertema{3.A.4}.
+  \item Bajar $w$ solo crea empleo si ↑$I$ (cap. 19); remedio: política fiscal.
+  \end{itemize}
+\item Abiertas: falta \emph{teoría de la inflación} (\autor{Phillips}); ¿por qué negociar sin la inflación esperada? (\autor{Friedman}-\autor{Phelps}).
 \end{itemize}
 
-% ==========================================================================
 \sub{II.2. La síntesis neoclásica y la curva de \autor{Phillips}\label{rep:II.2}}
+\subsub{a) Modelo IS-LM \vertema{3.A.5}}
 \begin{itemize}
-\item \emph{IS-LM} \vertema{3.A.5}: paro por \emph{rigidez del $W$ nominal}; con flexibilidad, \emph{efecto \autor{Keynes}} hasta el pleno empleo salvo \emph{trampa de la liquidez} o \emph{$I$ insensible a $i$} (solo fiscal). Le falta la inflación.
-\item \autor{Phillips} (1958): R.\,U. 1861-1913, salarios \emph{nominales} y paro; relación \emph{inversa} y \emph{convexa}:
+\item Paro por \emph{rigidez del $W$ nominal}; con flexibilidad, \emph{efecto \autor{Keynes}} salvo trampa de la liquidez o $I$ insensible a $i$. Le falta la inflación.
+\end{itemize}
+\subsub{b) Curva de \autor{Phillips} original (1958)}
+\begin{itemize}
+\item R.\,U. 1861-1913, salarios \emph{nominales} y paro: relación \emph{inversa} y \emph{convexa}:
 \begin{formula}
 \centering $\log(\gamma_W+0{,}900)=0{,}984-1{,}394\log U$
 \end{formula}
-\item[] $\gamma_W=0$ con $U\approx5{,}5$\,\%; $\gamma_W=2$\,\% (productividad, precios estables) con $U\approx2{,}4$\,\%; 1948-57 cerca de la curva. 3 explicaciones: exceso de demanda, \emph{ritmo} de cambio del paro (lazos), coste de la vida. Antecedente: \autor{Fisher} (1926).
-\item \autor{Lipsey} (1960): $\gamma_W=g[(L^D-L^S)/L^S]$, $g'>0$; exceso de demanda $=h(U)$, $h'<0$ (con exceso nulo queda paro friccional) $\Rightarrow$ $\gamma_W=f(U)$, $f'<0$.
-\item \autor{Samuelson}-\autor{Solow} (1960): margen sobre el CLU, $P=(1+\mu)W/\mathrm{PAT}$ $\Rightarrow$ $\pi=\gamma_W-\gamma_{\mathrm{PAT}}$; EE.\,UU.: precios estables con 5,5\,\% de paro; 3\,\% de paro $\leftrightarrow$ 4,5\,\% de inflación: \emph{menú}. Avisaron de que podía cambiar; se leyó como disyuntiva permanente. Cierra IS-LM: \emph{ajuste fino} de la demanda.
-\item \emph{Valoración}: + todo modelo macro debe explicar inflación-actividad («la relación macroeconómica más importante», \autor{Akerlof}, 2002). $-$ no explica inflación de costes; fundamento débil; sin \emph{expectativas}.
+  \begin{itemize}
+  \item $\gamma_W=0$ con $U\approx5{,}5$\,\%; $\gamma_W=2$\,\% con $U\approx2{,}4$\,\%. Antecedente: \autor{Fisher} (1926).
+  \end{itemize}
+\item \autor{Lipsey} (1960): $\gamma_W=g[(L^D-L^S)/L^S]$, exceso de demanda $=h(U)$ $\Rightarrow$ $\gamma_W=f(U)$, $f'<0$.
+\item \autor{Samuelson}-\autor{Solow} (1960): $P=(1+\mu)W/\mathrm{PAT}$ $\Rightarrow$ $\pi=\gamma_W-\gamma_{\mathrm{PAT}}$.
+  \begin{itemize}
+  \item EE.\,UU.: 3\,\% de paro $\leftrightarrow$ 4,5\,\% de inflación: \emph{menú}.
+  \item Se leyó como disyuntiva permanente: \emph{ajuste fino} de la demanda.
+  \end{itemize}
+\item \emph{Valoración}: + «la relación macroeconómica más importante» (\autor{Akerlof}, 2002). $-$ sin inflación de costes ni \emph{expectativas}; fundamento débil.
 \end{itemize}
-\pareja{phillips-original}{\autor{Phillips} (1958): R.\,U., 1861-1913}{samuelson-solow}{Menú de \autor{Samuelson}-\autor{Solow} en precios}
+\pareja{phillips-original}{\autor{Phillips} (1958): R.\,U., 1861-1913}{samuelson-solow}{Menú de \autor{Samuelson}-\autor{Solow}}
+
 \sub{II.3. Enfoque monetarista: la tasa natural\label{rep:II.3}}
+\subsub{a) Idea}
 \begin{itemize}
-\item \autor{Phelps} (1967, 1968), \autor{Friedman} (1968, discurso ante la AEA): la curva no distingue salarios nominales y reales; poco paro presiona el salario \emph{real}. Nobel: \autor{Friedman} 1976, \autor{Phelps} 2006.
-\item \emph{Supuestos}: sin ilusión monetaria; $\pi^e_t\equiv\mathbb{E}_{t-1}[\pi_t]$, \emph{adaptativas} $\pi^e_t=\pi_{t-1}$; $U^n$ fijada por factores reales. $\gamma_W=\pi^e_t+f(U_t)$ $\Rightarrow$ \concepto{curva de \autor{Phillips} aumentada con expectativas}:
+\item \autor{Phelps} (1967), \autor{Friedman} (1968, AEA): poco paro presiona el salario \emph{real}, no el nominal.
+\end{itemize}
+\subsub{b) Modelo}
+\begin{itemize}
+\item \emph{Supuestos}: sin ilusión monetaria; \emph{adaptativas} $\pi^e_t=\pi_{t-1}$; $U^n$ por factores reales.
+\item $\gamma_W=\pi^e_t+f(U_t)$ $\Rightarrow$ \concepto{curva de \autor{Phillips} aumentada con expectativas}:
 \funcionclave{\pi_t=\pi^e_t-a\big(U_t-U^n\big)+\varepsilon_t,\quad a>0}
-\item[] $\varepsilon_t$: perturbaciones de oferta (inflación de costes \vertema{3.A.41}).
-\item \concepto{Tasa natural}: la de $\pi=\pi^e$; «la que resultaría del sistema walrasiano… con las características estructurales reales» (\autor{Friedman}, 1968, p.\,8): imperfecciones, costes de información y de movilidad. No es inmutable, ni mínimo, ni deseable: salario mínimo y sindicatos la suben; mejores oficinas de empleo la bajan (como el tipo natural de \autor{Wicksell}).
-\item \emph{Mecanismo}: $A$ ($U^n$) $\to$ expansión, ↓$w$ real, trabajadores engañados, $B$ ($U_1$, $\pi_1$) $\to$ revisan $\pi^e=\pi_1$ $\to$ $C$ ($U^n$, más inflación). Largo plazo ($\pi=\pi^e$): \emph{vertical} en $U^n$. Con $\pi^e_t=\pi_{t-1}$, \concepto{curva aceleracionista}:
+\item \concepto{Tasa natural}: la de $\pi=\pi^e$; «la del sistema walrasiano… con las características estructurales reales» (\autor{Friedman}, 1968).
+  \begin{itemize}
+  \item No es inmutable, ni mínima, ni deseable: salario mínimo y sindicatos la suben.
+  \end{itemize}
+\item \emph{Mecanismo}: $A$ ($U^n$) $\to$ expansión, trabajadores engañados, $B$ ($U_1$, $\pi_1$) $\to$ revisan $\pi^e$ $\to$ $C$ ($U^n$, más $\pi$).
+  \begin{itemize}
+  \item Largo plazo ($\pi=\pi^e$): \emph{vertical} en $U^n$.
+  \item \concepto{Curva aceleracionista}: mantener $U<U^n$ exige ↑$\pi$ cada periodo:
 \begin{formula}
-\centering $\Delta\pi_t\equiv\pi_t-\pi_{t-1}=-a\,(U_t-U^n)$
+\centering $\Delta\pi_t=-a\,(U_t-U^n)$
 \end{formula}
-\item[] Mantener $U_1<U^n$ exige ↑$\pi$ cada periodo ($C\to D$): de ahí NAIRU.
-\item[] Con \autor{Okun}: $\pi_t=\pi^e_t+a\vartheta'\mathrm{OG}_t+\varepsilon_t$ = OA de corto plazo.
+  \end{itemize}
 \end{itemize}
 \graficorepaso[0.68\linewidth]{phillips-aumentada}{Curvas de corto plazo por $\pi^e$ y vertical en $U^n$: $A\to B\to C\to D$}
+\subsub{c) Implicaciones y evidencia}
 \begin{itemize}
-\item \emph{Implicaciones}: «disyuntiva temporal, no permanente», por la inflación \emph{no anticipada} (\autor{Friedman}, 1968, p.\,11). Reglas, no ajuste fino: la política monetaria, a la inflación (regla monetaria); bajar $U^n$, \emph{políticas de oferta}; desinflar cuesta paro \vertema{3.A.41}.
-\item \emph{Evidencia}: R.\,U. 1969-71: paro 3,5 $\to$ 4,1\,\%, inflación 5,2 $\to$ 9,4\,\%; EE.\,UU.: paro 3,5 $\to$ 6\,\%, inflación solo 5,4 $\to$ 4,2\,\% (1971). \emph{Estanflación}: EE.\,UU. 1975, paro 8,5\,\% e inflación 9,1\,\%.
-\item \emph{Críticas}: adaptativas = error sistemático (NMC); a inflación muy baja, LP no vertical (\autor{Akerlof}-\autor{Dickens}-\autor{Perry}, 1996).
+\item «Disyuntiva temporal, no permanente», por la inflación \emph{no anticipada}.
+  \begin{itemize}
+  \item Reglas, no ajuste fino; bajar $U^n$: \emph{políticas de oferta}; desinflar cuesta paro \vertema{3.A.41}.
+  \end{itemize}
+\item R.\,U. 1969-71: paro 3,5 $\to$ 4,1\,\%, inflación 5,2 $\to$ 9,4\,\%; EE.\,UU.: paro 3,5 $\to$ 6\,\%, inflación solo 5,4 $\to$ 4,2\,\%.
+\item \emph{Estanflación}: EE.\,UU. 1975, paro 8,5\,\% e inflación 9,1\,\%.
+\end{itemize}
+\subsub{d) Valoración}
+\begin{itemize}
+\item $-$ adaptativas = error sistemático (NMC); con inflación muy baja, LP no vertical (\autor{Akerlof}-\autor{Dickens}-\autor{Perry}, 1996).
 \end{itemize}
 
 \sub{II.4. Nueva macroeconomía clásica: reglas frente a discrecionalidad\label{rep:II.4}}
+\subsub{a) Expectativas racionales y proposición de ineficacia}
 \begin{itemize}
-\item Expectativas racionales (\autor{Muth}, 1961): sin errores sistemáticos; solo las \emph{sorpresas} separan $U$ de $U^n$:
+\item \autor{Muth} (1961): sin errores sistemáticos; solo las \emph{sorpresas} separan $U$ de $U^n$ (\autor{Lucas}, 1972, islas):
 \begin{formula}
-\centering $U_t=U^n-\alpha(\pi_t-\pi^e_t)+\alpha\varepsilon_t$,\quad $\alpha\equiv1/a$\quad (\autor{Lucas}, 1972, islas)
+\centering $U_t=U^n-\alpha(\pi_t-\pi^e_t)+\alpha\varepsilon_t$,\quad $\alpha\equiv1/a$
 \end{formula}
-\item Vertical también a corto plazo salvo sorpresas; \emph{proposición de ineficacia} (\autor{Sargent}-\autor{Wallace}, 1975); \emph{crítica de \autor{Lucas}} (1976): el menú no era estable \vertema{3.A.6}.
-\item \concepto{Inconsistencia temporal} (\autor{Kydland}-\autor{Prescott}, 1977; \autor{Barro}-\autor{Gordon}, 1983): el público fija $\pi^e$ y después la autoridad elige $\pi$; información completa, falta \emph{compromiso}. $\min\ (U_t-U^*)^2+\gamma(\pi_t-\pi^*)^2$ s.a. la \autor{Phillips}, con $U^*<U^n$. CPO $\gamma(\pi-\pi^*)=\alpha(U-U^*)$; con $\pi^e=\pi$:
+  \begin{itemize}
+  \item \emph{Proposición de ineficacia} (\autor{Sargent}-\autor{Wallace}, 1975); \emph{crítica de \autor{Lucas}} (1976) \vertema{3.A.6}.
+  \end{itemize}
+\end{itemize}
+\subsub{b) \autor{Kydland}-\autor{Prescott} (1977), \autor{Barro}-\autor{Gordon} (1983)}
+\begin{itemize}
+\item \concepto{Inconsistencia temporal}: el público fija $\pi^e$, después la autoridad elige $\pi$; falta \emph{compromiso}.
+  \begin{itemize}
+  \item $\min\ (U_t-U^*)^2+\gamma(\pi_t-\pi^*)^2$ s.a. la \autor{Phillips}, con $U^*<U^n$; con $\pi^e=\pi$:
 \begin{formula}
 \centering $\pi^D=\pi^*+\dfrac{\alpha}{\gamma}(U^n-U^*)>\pi^*$,\quad $U=U^n$
 \end{formula}
-\item[] R (regla, $\pi^*$) $\to$ T (tentación: sorpresa, $U^T<U^n$) $\to$ D (discreción): mismo paro y más inflación; $L^T<L^R<L^D$: la regla no es creíble. \emph{Soluciones}: reputación (\autor{Barro}-\autor{Gordon}, 1983b); reglas y «atarse las manos» (\autor{Giavazzi}-\autor{Pagano}, 1988); banquero conservador, $\gamma'>\gamma$ (\autor{Rogoff}, 1985); contrato (\autor{Walsh}, 1995); independencia \vertema{3.A.36}. \emph{Evidencia}: independencia $\Rightarrow$ menos inflación sin menos crecimiento (\autor{Alesina}-\autor{Summers}, 1993). \emph{Críticas}: pérdida \emph{ad hoc}; \autor{McCallum} (1995). Bajar $U^n$ (oferta) quita la tentación.
+  \item R (regla) $\to$ T (tentación) $\to$ D (discreción): mismo paro, más inflación; la regla no es creíble.
+  \end{itemize}
 \end{itemize}
-\graficorepaso[0.6\linewidth]{barro-gordon}{\autor{Barro}-\autor{Gordon}: regla (0 = R), tentación (1 = T) y discreción (F = D)}
+\graficorepaso[0.58\linewidth]{barro-gordon}{\autor{Barro}-\autor{Gordon}: regla (R), tentación (T) y discreción (D)}
+\begin{itemize}
+\item \emph{Soluciones}: reputación; «atarse las manos» (\autor{Giavazzi}-\autor{Pagano}, 1988); banquero conservador (\autor{Rogoff}, 1985); contrato (\autor{Walsh}, 1995); independencia \vertema{3.A.36}.
+\item \emph{Evidencia}: independencia $\Rightarrow$ menos inflación sin menos crecimiento (\autor{Alesina}-\autor{Summers}, 1993).
+\item \emph{Valoración}: pérdida \emph{ad hoc}; \autor{McCallum} (1995). Bajar $U^n$ (oferta) quita la tentación.
+\end{itemize}
+
 \sub{II.5. NEK: la curva de \autor{Phillips} nuevo keynesiana\label{rep:II.5}}
+\subsub{a) La NKPC}
 \begin{itemize}
 \item Competencia monopolística y precios à la \autor{Calvo} (1983) \vertema{3.A.7}:
 \begin{formula}
-\centering $\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa x_t+u_t$;\ con \autor{Okun}, $-\tfrac{\kappa}{\vartheta'}(U_t-U^n)$
+\centering $\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa x_t+u_t$
 \end{formula}
-\item[] Expectativa de \emph{mañana}; $\pi_t=\kappa\sum\beta^k\mathbb{E}_t[x_{t+k}]$; LP casi vertical, $x=(1-\beta)\pi/\kappa$. \emph{Política}: \emph{divina coincidencia} sin $u_t$ (\autor{Blanchard}-\autor{Galí}, 2007), dilema con $u_t$; regla de \autor{Taylor} (1993); compromiso mejor que discreción (\autor{Clarida}-\autor{Galí}-\autor{Gertler}, 1999); objetivo de inflación flexible.
-\item \emph{Evidencia}: ajusta con el coste marginal (\autor{Galí}-\autor{Gertler}, 1999); \emph{aplanamiento} (\autor{Blanchard}-\autor{Cerutti}-\autor{Summers}, 2015; \autor{Blanchard}, 2016); \emph{no lineal} en 2021-23 (\autor{Benigno}-\autor{Eggertsson}, 2023). $-$ solo prospectiva; sin paro.
-\item \emph{Con desempleo}: \autor{Blanchard}-\autor{Galí} (2010), búsqueda + salario real rígido: se rompe la divina coincidencia; mercados \emph{escleróticos} \vertema{3.A.7}. \autor{Galí} (2011): \autor{Phillips} \emph{salarial}, $U^n=\mu^W/\varphi$: une tasa natural y NAIRU.
-\item \emph{Recapitulación}: menú $\to$ disyuntiva de corto plazo $\to$ sesgo inflacionista si se explota $\to$ reglas e independencia $\to$ NKPC con ancla en $U^n$. Europa: paro que sube y no vuelve $\Rightarrow$ NAIRU.
+  \begin{itemize}
+  \item Expectativa de \emph{mañana}; LP casi vertical.
+  \item \emph{Divina coincidencia} sin $u_t$ (\autor{Blanchard}-\autor{Galí}, 2007); \autor{Taylor} (1993); objetivo de inflación flexible.
+  \end{itemize}
+\item \emph{Evidencia}: coste marginal (\autor{Galí}-\autor{Gertler}, 1999); \emph{aplanamiento} (\autor{Blanchard}, 2016); \emph{no lineal} en 2021-23 (\autor{Benigno}-\autor{Eggertsson}, 2023).
+\end{itemize}
+\subsub{b) El modelo nuevo keynesiano con desempleo}
+\begin{itemize}
+\item \autor{Blanchard}-\autor{Galí} (2010): búsqueda + $w$ real rígido: se rompe la divina coincidencia.
+\item \autor{Galí} (2011): \autor{Phillips} \emph{salarial}, $U^n=\mu^W/\varphi$: une tasa natural y NAIRU.
 \end{itemize}
 
+% ==========================================================================
 \bloque[9]{III. La NAIRU y la persistencia del desempleo\label{rep:III}}
 \begin{ideaclave}
-Con poder de mercado en salarios y precios, el paro de equilibrio (NAIRU) incluye paro \emph{involuntario}: es el que concilia lo que piden trabajadores y empresas, y solo lo bajan las políticas de oferta. Si depende del paro pasado (histéresis), las recesiones dejan huella y la demanda importa también a largo plazo.
+Con poder de mercado en salarios y precios, el paro de equilibrio (NAIRU) incluye paro \emph{involuntario}: concilia lo que piden trabajadores y empresas, y solo lo bajan las políticas de oferta. Con histéresis, las recesiones dejan huella y la demanda importa también a largo plazo.
 \end{ideaclave}
 
-\sub{III.1. Competencia imperfecta y salarios rígidos\label{rep:III.1}}
+\sub{III.1. Competencia imperfecta y salarios que no vacían el mercado\label{rep:III.1}}
 \begin{itemize}
-\item NEK: expectativas racionales y microfundamentos + \emph{competencia imperfecta} y \emph{rigideces} nominales y reales \vertema{3.A.7}: paro \emph{involuntario} y \emph{de equilibrio}. Sin marco único. NAIRU «aproximadamente un sinónimo» de la tasa natural (\autor{Ball}-\autor{Mankiw}, 2002).
-\item Microfundamentos de la WS \vertema{3.A.27}: \emph{negociación} con derecho a gestionar (con menos paro, el sindicato pide más); \emph{salarios de eficiencia} (CNE de \autor{Shapiro}-\autor{Stiglitz}, 1984: el paro disciplina); \emph{contratos implícitos}: rigidez real, no paro.
-\item \concepto{Curva salarial} (\autor{Blanchflower}-\autor{Oswald}, 1994): elasticidad del salario regional al paro $\approx-0{,}1$.
+\item NEK: \emph{competencia imperfecta} y \emph{rigideces} reales $\Rightarrow$ paro \emph{involuntario} y \emph{de equilibrio} \vertema{3.A.7}.
+\item Microfundamentos de la WS \vertema{3.A.27}:
+  \begin{itemize}
+  \item \emph{negociación} (derecho a gestionar): con menos paro, el sindicato pide más;
+  \item \emph{salarios de eficiencia}: CNE de \autor{Shapiro}-\autor{Stiglitz} (1984), el paro disciplina;
+  \item \concepto{curva salarial} (\autor{Blanchflower}-\autor{Oswald}, 1994): elasticidad $\approx-0{,}1$.
+  \end{itemize}
 \end{itemize}
 
 \sub{III.2. La NAIRU: fijación de salarios y precios\label{rep:III.2}}
+\subsub{a) Idea}
 \begin{itemize}
-\item NIRU (\autor{Modigliani}-\autor{Papademos}, 1975): paro por encima del cual la inflación baja; concepto empírico. Modelo: \autor{Layard}-\autor{Nickell} (1985), LNJ (1991), \autor{Carlin}-\autor{Soskice} (2015); paro europeo de los 70-80.
-\item \emph{Supuestos}: $\overline L$ dada, $U=(\overline L-L)/\overline L$; $W$ se fija con $P^e$ y $\mathrm{PAT}^e$; competencia monopolística, margen $\mu$ \vertema{3.A.18}; $\mathrm{PAT}=Y/L$ independiente de $L$; CP: la DA fija $L$; MP: las 2 curvas.
-\item \concepto{WS} (\emph{wage setting}): mejores alternativas y huelga más cara con menos paro:
+\item NIRU (\autor{Modigliani}-\autor{Papademos}, 1975): concepto empírico. Modelo: \autor{Layard}-\autor{Nickell}-\autor{Jackman} (1991), \autor{Carlin}-\autor{Soskice} (2015).
+\end{itemize}
+\subsub{b) Modelo}
+\begin{itemize}
+\item \emph{Supuestos}: $U=(\overline L-L)/\overline L$; $W$ se fija con $P^e$ y $\mathrm{PAT}^e$; competencia monopolística, margen $\mu$ \vertema{3.A.18}; CP: la DA fija $L$.
+\item \concepto{WS}: con menos paro, mejores alternativas y huelga más cara:
 \begin{formula}
 \centering $\dfrac{W}{P^e}=F(U,Z)\cdot\mathrm{PAT}^e$,\quad $F_U<0$, $F_Z>0$
 \end{formula}
-\item[] $Z$: prestaciones, poder sindical, protección del empleo, impuestos sobre el trabajo; si sube, la WS sube.
-\item \concepto{PS} (\emph{price setting}): $\mathrm{CLU}=W/\mathrm{PAT}$:
+  \begin{itemize}
+  \item $Z$: prestaciones, poder sindical, protección del empleo, impuestos sobre el trabajo.
+  \end{itemize}
+\item \concepto{PS}: $P=(1+\mu)\,\mathrm{CLU}$:
 \begin{formula}
 \centering $P=(1+\mu)\dfrac{W}{\mathrm{PAT}}\Rightarrow\dfrac{W}{P}=\dfrac{\mathrm{PAT}}{1+\mu}$\quad (horizontal)
 \end{formula}
-\item[] De $\mathrm{PAT}$, el salario real $\mathrm{PAT}/(1+\mu)$ y el beneficio por trabajador $\mu\mathrm{PAT}/(1+\mu)$.
 \item \emph{Equilibrio} ($P^e=P$, $\mathrm{PAT}^e=\mathrm{PAT}$): \concepto{NAIRU}
 \funcionclave{F(U^n,Z)=\frac{1}{1+\mu}}
-\item[] \emph{Conflicto distributivo}: trabajadores piden $F(U,Z)$, empresas $\mu/(1+\mu)$; si suman >1, salarios y precios se persiguen; el paro modera las pretensiones. Lineal $F=1-aU+Z$:
-\begin{formula}
-\centering $U^n=\dfrac1a\Big(\dfrac{\mu}{1+\mu}+Z\Big)$;\ $\pi_t\approx\pi^e_t-a(U_t-U^n)$, $U^n\approx\dfrac{\mu+Z}{a}$
-\end{formula}
-\item[] La pendiente de la WS es la de la \autor{Phillips} aumentada.
+  \begin{itemize}
+  \item \emph{Conflicto distributivo}: si las pretensiones suman >1, salarios y precios se persiguen; el paro las modera.
+  \item Lineal $F=1-aU+Z$: $U^n=\frac1a\big(\frac{\mu}{1+\mu}+Z\big)$; pendiente de la WS = de la \autor{Phillips}.
+  \end{itemize}
 \end{itemize}
-\graficorepaso[0.72\linewidth]{ws-ps}{NAIRU: WS decreciente y PS horizontal en $(U,W/P)$}
+\graficorepaso[0.7\linewidth]{ws-ps}{NAIRU: WS decreciente y PS horizontal en $(U,W/P)$}
+\subsub{c) Implicaciones}
 \begin{itemize}
-\item \emph{Paro involuntario de equilibrio}: en $U^n$ hay quien trabajaría al salario vigente; no es vaciado del mercado.
-\item \emph{Políticas de oferta}: ↑$Z$ (prestaciones, poder sindical) sube la WS y $U^n$; ↓$\mu$ (competencia, liberalización) sube la PS y baja $U^n$; \emph{cuña fiscal}: IRPF y cotizaciones del trabajador suben la WS, las de la empresa bajan la PS; \emph{nivel} de $\mathrm{PAT}$ esperado no mueve $U^n$ (solo las sorpresas); formación, vía emparejamiento.
+\item \emph{Paro involuntario de equilibrio}: en $U^n$ hay quien trabajaría al salario vigente.
+\item \emph{Políticas de oferta}:
+  \begin{itemize}
+  \item ↑$Z$ sube la WS y $U^n$; ↓$\mu$ (competencia) sube la PS y baja $U^n$;
+  \item \emph{cuña fiscal}: IRPF y cotizaciones del trabajador, WS; las de la empresa, PS;
+  \item el \emph{nivel} de $\mathrm{PAT}$ esperado no mueve $U^n$.
+  \end{itemize}
 \end{itemize}
-\graficorepaso[0.95\linewidth]{ws-ps-desplazamientos}{Determinantes: WS$'$ por ↑$Z$; PS$'$ por ↑$\mu$}
+\graficorepaso[0.92\linewidth]{ws-ps-desplazamientos}{Determinantes: WS$'$ por ↑$Z$; PS$'$ por ↑$\mu$}
 \begin{itemize}
-\item \emph{Política de demanda}, paso a paso: expansión, $U_1<U^n$ (1) $\Rightarrow$ los sindicatos piden más (WS > PS) $\Rightarrow$ las empresas lo trasladan a precios $\Rightarrow$ ↓$M/P$, ↑$i$ (o el banco central), $U_2$ (2) $\Rightarrow$ se repite hasta $U^n$ (3) con más inflación: aceleracionista. Sin histéresis: «agua pasada no mueve molino».
+\item \emph{Demanda}: $U_1<U^n$ $\Rightarrow$ los sindicatos piden más $\Rightarrow$ precios $\Rightarrow$ ↓$M/P$, ↑$i$ $\Rightarrow$ vuelta a $U^n$ con más inflación.
+  \begin{itemize}
+  \item Sin histéresis: «agua pasada no mueve molino».
+  \end{itemize}
 \item \emph{Shock de oferta}: petróleo = margen mayor (↓PS); sin moderación, ↑$U^n$ (\autor{Bruno}-\autor{Sachs}, 1985).
-\item \emph{Evidencia}: Europa vs. EE.\,UU. (\autor{Blanchard}, 2006): 70, \emph{perturbaciones con salarios rígidos} (\autor{Bruno}-\autor{Sachs}); 90, \emph{instituciones} (\autor{Nickell}, 1997; joroba de \autor{Calmfors}-\autor{Driffill}, 1988); síntesis, \emph{perturbaciones × instituciones} (\autor{Blanchard}-\autor{Wolfers}, 2000). EE.\,UU. 90: ↓NAIRU con ↑productividad (\autor{Ball}-\autor{Mankiw}, 2002). Incertidumbre: IC 95\,\% 4,3-7,3\,\% (\autor{Staiger}-\autor{Stock}-\autor{Watson}, 1997); concepto de corto plazo (\autor{Estrella}-\autor{Mishkin}, 1999).
-\item \emph{España}: NAWRU \dato{13,4\,\% (2005) $\to$ 16,9\,\% (2013) $\to$ 12,1\,\% (2025)}{CE, AMECO}; zona del euro 6,6\,\%; paro bajo la NAWRU desde 2023.
+\end{itemize}
+\subsub{d) Evidencia empírica}
+\begin{itemize}
+\item Europa vs. EE.\,UU. (\autor{Blanchard}, 2006):
+  \begin{itemize}
+  \item 70: \emph{perturbaciones con salarios rígidos} (\autor{Bruno}-\autor{Sachs});
+  \item 90: \emph{instituciones} (\autor{Nickell}, 1997; \autor{Calmfors}-\autor{Driffill}, 1988);
+  \item síntesis: \emph{perturbaciones × instituciones} (\autor{Blanchard}-\autor{Wolfers}, 2000).
+  \end{itemize}
+\item Incertidumbre: IC 95\,\% 4,3-7,3\,\% (\autor{Staiger}-\autor{Stock}-\autor{Watson}, 1997).
+\item España: NAWRU \dato{13,4\,\% (2005) $\to$ 16,9\,\% (2013) $\to$ 12,1\,\% (2025)}{CE, AMECO}; paro bajo la NAWRU desde 2023.
 \end{itemize}
 \graficorepaso[0.8\linewidth]{paro-nawru-espana}{Paro y NAWRU: España y zona del euro, 1980-2027}
+\subsub{e) Valoración}
 \begin{itemize}
-\item \emph{Valoración}: + paro involuntario de equilibrio, ordena las políticas de oferta, referencia para BC y CE \vertema{3.A.36} \vertema{3.A.42}. $-$ \emph{se estima mal} («¡La NAIRU ha muerto! ¡Larga vida a la NAIRU!», \autor{Jimeno}, 2018); expectativas simples; \emph{se mueve con el paro}; \emph{puede no ser única}: \autor{Farmer} (2010, 2013), función de creencias en vez de \autor{Nash} $\Rightarrow$ infinitos equilibrios \vertema{3.A.26}.
+\item + paro involuntario de equilibrio; ordena las políticas de oferta; referencia para BC y CE \vertema{3.A.42}.
+\item $-$ \emph{se estima mal} («¡La NAIRU ha muerto! ¡Larga vida a la NAIRU!», \autor{Jimeno}, 2018); \emph{se mueve con el paro}; \emph{puede no ser única} (\autor{Farmer}, 2010).
+\item Tasa natural y NAIRU: «aproximadamente sinónimos» (\autor{Ball}-\autor{Mankiw}, 2002); la NAIRU, de corto plazo (\autor{Estrella}-\autor{Mishkin}, 1999):
 \end{itemize}
-
-\sub{III.3. La persistencia del desempleo y la histéresis\label{rep:III.3}}
-\begin{itemize}
-\item R.\,U.: $\leq$3,3\,\% en 1945-70, >12\,\% a mediados de los 80; CE: se dobla en 1970-80 y otra vez después. España, máximos crecientes: 19,7\,\% (1987), 24,1\,\% (1994), 26,1\,\% (2013).
-\item \concepto{Persistencia}: vuelve, pero despacio. \concepto{Histéresis}: no vuelve, el equilibrio cambia con el paro pasado (física; \autor{Blanchard}-\autor{Summers}, 1986).
-\funcionclave{U^n_t=\lambda_h\,U_{t-1}+(1-\lambda_h)\,\overline U^n,\quad 0\le\lambda_h\le1}
-\item[] $\lambda_h=0$: NAIRU sin histéresis; $0<\lambda_h<1$: persistencia; $\lambda_h=1$: \emph{histéresis pura}, paseo aleatorio. En la aceleracionista:
-\begin{formula}
-\centering $\Delta\pi_t=-a\big[(U_t-U_{t-1})+(1-\lambda_h)(U_{t-1}-\overline U^n)\big]$
-\end{formula}
-\item[] $\lambda_h=1$: importa la \emph{variación} del paro, no su nivel: «límite de velocidad» de \autor{Phillips}.
-\end{itemize}
-\graficorepaso[0.8\linewidth]{histeresis-ws-ps}{Recesión (1) con histéresis: ↑WS y ↓PS; la NAIRU sube de $U^n_0$ a $U^n_1$ (2)}
-\begin{itemize}
-\item \emph{Mecanismos} (\autor{Blanchard}-\autor{Summers}, 1986): \emph{capital físico} (↓$K$ $\Rightarrow$ ↓PS) \vertema{3.A.34}; \emph{capital humano} (pérdida de cualificación, desánimo; \emph{ranking}, \autor{Blanchard}-\autor{Diamond}, 1994; parados de larga duración no moderan salarios) \vertema{3.A.26}; \emph{insiders}-\emph{outsiders}, la principal: «quien se fue a Sevilla perdió su silla» (\autor{Lindbeck}-\autor{Snower}, 1988) \vertema{3.A.27}. Los 2 últimos ↑WS; el 1.º ↓PS. En el paro, el agua pasada sí mueve molino.
-\item \emph{Implicaciones}: la demanda importa a largo plazo (recesión larga ↑$U^n$, alta presión ↓); desinflaciones más caras \vertema{3.A.41}; política monetaria con más peso al empleo (\autor{Galí}, 2022) \vertema{3.A.36}; políticas activas para parados de larga duración; negociación que tenga en cuenta a los \emph{outsiders}.
-\item \emph{Evidencia}: Europa 80 depende de su historia, EE.\,UU. mucho menos (\autor{Blanchard}-\autor{Summers}, 1986); grandes ↑NAIRU con desinflaciones en 20 países, España 6,5\,\% (1980) $\to$ 14,4\,\% (1995) (\autor{Ball}, 2009); componente no estacionario en la zona del euro (\autor{Galí}, 2015); 2/3 de 122 recesiones dejan el PIB bajo su tendencia (\autor{Blanchard}-\autor{Cerutti}-\autor{Summers}, 2015); NAWRU de España +3,5 puntos (2005-13) frente a +17 del paro (en parte, por el filtro de estimación).
-\item \emph{Valoración}: + explica el paro europeo y español; papel duradero de la demanda. $-$ difícil distinguir de una $U^n$ estructural que cambia despacio; evidencia «sugerente, no concluyente» (\autor{Blanchard}, 2018).
-\end{itemize}
-
-\begin{itemize}
-\item \emph{Recapitulación}: NAIRU = paro que concilia pretensiones, con paro involuntario, bajada solo con oferta; histéresis: el equilibrio guarda memoria y la demanda importa a largo plazo.
-\end{itemize}
-
-\bloque[1]{Conclusión}
-\begin{itemize}
-\item \textbf{Recapitulación}: friccional y estructural = paro de equilibrio, cíclico con la producción; menú $\to$ disyuntiva de corto plazo y $U^n$; explotarla trae sesgo inflacionista (reglas, independencia); NAIRU con poder de mercado y paro involuntario; histéresis: el equilibrio depende de la historia.
-\item \textbf{Relevancia}: qué paro se combate con demanda y cuál con reformas; coste de desinflar; PIB potencial y saldo estructural.
-\item \textbf{Extensiones}: \vertema{3.A.26} \vertema{3.A.27} \vertema{3.A.5} \vertema{3.A.6} \vertema{3.A.7} \vertema{3.A.36} \vertema{3.A.41} \vertema{3.A.42}; para ampliar, \vertema{4.A.16} \vertema{4.B.4}.
-\item \textbf{Opinión}: referencia útil, no destino; en España, alta y sensible al ciclo: la política la mueve, para bien (reformas) y para mal (recesiones largas).
-\item \textbf{Idea final}: hay paro de equilibrio, pero no ajeno a la historia: que el paro de hoy no sea el de mañana, protegiendo a las personas más que a los puestos (\emph{flexiseguridad}) y devolviendo pronto a los parados al empleo. En el paro, el agua pasada sí mueve molino.
-\end{itemize}
-
 {\centering\scriptsize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2pt}%
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.39\linewidth}>{\raggedright\arraybackslash}p{0.39\linewidth}@{}}
 \toprule
 \rowcolor{tceeazulpalido} & \textbf{Tasa natural} & \textbf{NAIRU}\\
 \midrule
-Origen & \autor{Friedman} (1968), \autor{Phelps} (1967) & NIRU, \autor{Modigliani}-\autor{Papademos} (1975); LNJ (1991)\\
+Origen & \autor{Friedman} (1968), \autor{Phelps} (1967) & \autor{Modigliani}-\autor{Papademos} (1975); LNJ (1991)\\
 Definición & paro con $\pi=\pi^e$ & paro que no acelera $\pi$\\
 Modelo & búsqueda: $s/[s+f(\theta^*)]$ & WS-PS: $F(U^n,Z)=1/(1+\mu)$\\
 Paro & sobre todo friccional & también involuntario\\
@@ -257,76 +348,100 @@ Horizonte & largo plazo & corto (\autor{Estrella}-\autor{Mishkin})\\
 ¿Óptima? & solo con \autor{Hosios} & no: el poder de mercado la eleva\\
 \bottomrule
 \end{tabular}\par}
-\graficorepaso[0.62\linewidth]{tn-nairu}{Tasa natural y NAIRU en $(L,W/P)$ (anexo)}
+\graficorepaso[0.6\linewidth]{tn-nairu}{Tasa natural y NAIRU en $(L,W/P)$}
 \begin{itemize}
-\item WS por encima de la oferta competitiva $L^S$; en $E$, empleo $L^n$ y $W/P=\mathrm{PAT}/(1+\mu)$. Entre $L^n$ y $L^S_0$, \emph{paro involuntario de equilibrio} (no keynesiano: la demanda solo lo baja acelerando $\pi$); entre $L^S_0$ y $\overline L$, voluntario.
+\item WS por encima de la oferta competitiva $L^S$: entre $L^n$ y $L^S_0$, paro \emph{involuntario} de equilibrio; entre $L^S_0$ y $\overline L$, voluntario.
+\end{itemize}
+
+\sub{III.3. La persistencia del desempleo y la histéresis\label{rep:III.3}}
+\subsub{a) Idea}
+\begin{itemize}
+\item R.\,U.: $\leq$3,3\,\% en 1945-70, >12\,\% en los 80. España: 19,7\,\% (1987), 24,1\,\% (1994), 26,1\,\% (2013).
+\item \concepto{Persistencia}: vuelve, pero despacio. \concepto{Histéresis}: el equilibrio cambia con el paro pasado (\autor{Blanchard}-\autor{Summers}, 1986).
+\end{itemize}
+\subsub{b) Modelo}
+\funcionclave{U^n_t=\lambda_h\,U_{t-1}+(1-\lambda_h)\,\overline U^n,\quad 0\le\lambda_h\le1}
+\begin{itemize}
+\item $\lambda_h=0$: sin histéresis; $0<\lambda_h<1$: persistencia; $\lambda_h=1$: \emph{histéresis pura} (paseo aleatorio).
+  \begin{itemize}
+  \item $\lambda_h=1$: importa la \emph{variación} del paro, no su nivel («límite de velocidad»).
+  \end{itemize}
+\item \emph{Mecanismos}:
+  \begin{itemize}
+  \item \emph{capital físico}: ↓$K$ $\Rightarrow$ ↓PS \vertema{3.A.34};
+  \item \emph{capital humano}: pérdida de cualificación, desánimo; \emph{ranking} (\autor{Blanchard}-\autor{Diamond}, 1994) \vertema{3.A.26};
+  \item \emph{insiders}-\emph{outsiders}, la principal (\autor{Lindbeck}-\autor{Snower}, 1988) \vertema{3.A.27}: «quien se fue a Sevilla perdió su silla».
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.78\linewidth]{histeresis-ws-ps}{Recesión (1) con histéresis: ↑WS y ↓PS; la NAIRU sube de $U^n_0$ a $U^n_1$ (2)}
+\begin{itemize}
+\item \emph{Implicaciones}: la demanda importa a largo plazo; desinflar es más caro \vertema{3.A.41}; más peso al empleo en la política monetaria (\autor{Galí}, 2022); activas para parados de larga duración; negociación que tenga en cuenta a los \emph{outsiders}.
+\end{itemize}
+\subsub{c) Evidencia empírica}
+\begin{itemize}
+\item Europa depende de su historia, EE.\,UU. mucho menos (\autor{Blanchard}-\autor{Summers}, 1986).
+\item Desinflaciones $\Rightarrow$ ↑NAIRU; España 6,5\,\% (1980) $\to$ 14,4\,\% (1995) (\autor{Ball}, 2009).
+\item Componente no estacionario en la zona del euro (\autor{Galí}, 2015); NAWRU de España +3,5 puntos (2005-13) frente a +17 del paro.
+\item 2/3 de 122 recesiones dejan el PIB bajo su tendencia (\autor{Blanchard}-\autor{Cerutti}-\autor{Summers}, 2015).
+\end{itemize}
+\subsub{d) Valoración}
+\begin{itemize}
+\item + explica el paro europeo y español. $-$ difícil distinguir de una $U^n$ que cambia despacio; evidencia «sugerente, no concluyente» (\autor{Blanchard}, 2018).
 \end{itemize}
 
 % ==========================================================================
-\bloque{Autores y fechas}
-\hito{1926}{\autor{Fisher}: inflación y paro (EE.\,UU.)}
-\hito{1932}{\autor{Hicks}: \emph{The Theory of Wages}}
-\hito{1936}{\autor{Keynes}: \emph{Teoría general}, paro involuntario}
-\hito{1958}{\autor{Phillips}: R.\,U., 1861-1957}
-\hito{1960}{\autor{Lipsey}: exceso de demanda; \autor{Samuelson}-\autor{Solow}: menú}
-\hito{1961}{\autor{Muth}: expectativas racionales}
-\hito{1962}{\autor{Okun}: 3 a 1}
-\hito{1967}{\autor{Phelps}; 1968, \autor{Friedman}: tasa natural}
-\hito{1969}{\autor{Lucas}-\autor{Rapping}: sustitución intertemporal}
-\hito{1972}{\autor{Lucas}: curva de oferta, islas}
-\hito{1977}{\autor{Kydland}-\autor{Prescott}: reglas frente a discrecionalidad}
-\hito{1983}{\autor{Barro}-\autor{Gordon}: sesgo inflacionista; \autor{Calvo}: precios escalonados}
-\hito{1975}{\autor{Modigliani}-\autor{Papademos}: NIRU; \autor{Sargent}-\autor{Wallace}}
-\hito{1980}{\autor{Tobin}: NAIRU}
-\hito{1985}{\autor{Layard}-\autor{Nickell}: WS-PS; \autor{Bruno}-\autor{Sachs}}
-\hito{1986}{\autor{Blanchard}-\autor{Summers}: histéresis}
-\hito{1988}{\autor{Lindbeck}-\autor{Snower}: \emph{insiders}; \autor{Calmfors}-\autor{Driffill}}
-\hito{1990}{\autor{Hosios}: eficiencia de la búsqueda}
-\hito{1991}{\autor{Layard}-\autor{Nickell}-\autor{Jackman}: \emph{Unemployment}}
-\hito{1994}{\autor{Blanchflower}-\autor{Oswald}: curva salarial}
-\hito{2000}{\autor{Blanchard}-\autor{Wolfers}: perturbaciones e instituciones}
-\hito{2002}{\autor{Ball}-\autor{Mankiw}: NAIRU; \autor{Akerlof}, conferencia Nobel}
-\hito{2005}{\autor{Shimer}: paro y vacantes, poco sensibles}
-\hito{2009}{\autor{Ball}: histéresis en 20 países}
-\hito{2010}{\autor{Blanchard}-\autor{Galí}: NK con paro; \autor{Farmer}}
-\hito{2011}{\autor{Galí}: \autor{Phillips} salarial}
-\hito{2018}{\autor{Blanchard}: tasa natural; \autor{Jimeno}: «¡Larga vida a la NAIRU!»}
-\hito{2023}{\autor{Benigno}-\autor{Eggertsson}: \autor{Phillips} no lineal}
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}:
+  \begin{itemize}
+  \item friccional y estructural = paro de equilibrio; cíclico con la producción;
+  \item menú $\to$ disyuntiva de corto plazo y $U^n$ $\to$ reglas e independencia;
+  \item NAIRU con poder de mercado y paro involuntario; histéresis: el equilibrio guarda memoria.
+  \end{itemize}
+\item \textbf{Relevancia}: qué paro se combate con demanda y cuál con reformas; coste de desinflar; saldo estructural.
+\item \textbf{Extensiones}: \vertema{3.A.26} \vertema{3.A.27} \vertema{3.A.7} \vertema{3.A.36} \vertema{3.A.41} \vertema{4.A.16}.
+\item \textbf{Opinión}: referencia útil, no destino; en España, alta y sensible al ciclo.
+\item \textbf{Idea final}: que el paro de hoy no sea el de mañana (\emph{flexiseguridad}). En el paro, el agua pasada sí mueve molino.
+\end{itemize}
 
 % ==========================================================================
+\anexorepaso
 \bloque{Datos clave}
 \begin{itemize}
-\item Paro España: \dato{8,2\,\% (2007), 26,1\,\% (2013)}{CE, AMECO}; \dato{10,2\,\%}{INE, EPA 3T 2026}; zona del euro \dato{6,4\,\%}{AMECO}.
-\item NAWRU España: \dato{12,1\,\% en 2025}{CE, AMECO} (16,9\,\% en 2013); zona del euro \dato{6,6\,\%}{AMECO}.
-\item \autor{Okun}: España \dato{0,85}{\autor{Ball} et al., 2017}; con 1996-2025, \dato{$-$0,8 puntos por punto sobre el 1,8\,\%}{Eurostat y AMECO}.
-\item 2020 (ERTE): \dato{PIB $-$10,9\,\%, paro +1,4 puntos}{Eurostat y AMECO}.
-\item Estanflación: EE.\,UU. 1975, \dato{paro 8,5\,\%, inflación 9,1\,\%}{BLS}.
+\item Paro España: \dato{8,2\,\% (2007), 26,1\,\% (2013)}{AMECO}; \dato{10,2\,\%}{EPA 3T 2026}; euro \dato{6,4\,\%}{AMECO}.
+\item NAWRU España: \dato{12,1\,\% (2025)}{CE, AMECO} (16,9\,\% en 2013); euro \dato{6,6\,\%}{AMECO}.
+\item \autor{Okun}: España \dato{0,85}{\autor{Ball} et al., 2017}; EE.\,UU. 0,45.
+\item 2020 (ERTE): \dato{PIB $-$10,9\,\%, paro +1,4 p.}{Eurostat}.
+\item Estanflación: EE.\,UU. 1975, \dato{paro 8,5\,\%, $\pi$ 9,1\,\%}{BLS}.
 \item NAIRU de España: \dato{6,5\,\% (1980) $\to$ 14,4\,\% (1995)}{\autor{Ball}, 2009}.
 \end{itemize}
-
-% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1936}{\autor{Keynes}: paro involuntario}
+\hito{1958}{\autor{Phillips}: R.\,U., 1861-1957}
+\hito{1960}{\autor{Samuelson}-\autor{Solow}: menú}
+\hito{1962}{\autor{Okun}: 3 a 1}
+\hito{1968}{\autor{Friedman}; \autor{Phelps} (1967): tasa natural}
+\hito{1975}{\autor{Modigliani}-\autor{Papademos}: NIRU}
+\hito{1977}{\autor{Kydland}-\autor{Prescott}: inconsistencia}
+\hito{1986}{\autor{Blanchard}-\autor{Summers}: histéresis}
+\hito{1991}{\autor{Layard}-\autor{Nickell}-\autor{Jackman}: WS-PS}
 \bloque{Preguntas del tribunal}
 \begin{enumerate}
-\item \textbf{¿Tasa natural y NAIRU son lo mismo?} «Aproximadamente sinónimos» (\autor{Ball}-\autor{Mankiw}); cambia el modelo: búsqueda (friccional) vs. WS-PS (involuntario); \autor{Estrella}-\autor{Mishkin}: NAIRU de corto plazo.
-\item \textbf{¿Es la NAIRU la tasa de competencia perfecta?} No: \autor{Friedman} incluye las imperfecciones del mercado en su tasa natural.
-\item \textbf{¿Qué baja la NAIRU?} ↓$Z$ (prestaciones, poder sindical), ↓$\mu$ (competencia), menor cuña fiscal, mejor emparejamiento; no la demanda (salvo histéresis).
-\item \textbf{¿Por qué la curva de largo plazo es vertical?} Con $\pi=\pi^e$ el paro es $U^n$: solo la inflación no anticipada lo separa.
-\item \textbf{¿Qué cambia con $\lambda_h=1$?} No hay paro de equilibrio único; la inflación depende de $\Delta U$, no de su nivel.
-\item \textbf{¿Es óptima la tasa natural?} No necesariamente: solo con \autor{Hosios} (poder negociador = elasticidad del emparejamiento).
-\item \textbf{¿Por qué hay sesgo inflacionista?} Porque $U^*<U^n$ y falta compromiso: $\pi^D=\pi^*+(\alpha/\gamma)(U^n-U^*)$ con $U=U^n$.
-\item \textbf{¿Por qué $\mathrm{PAT}^e$ en la WS?} Sin ella, el crecimiento de la productividad acabaría con el paro, y no es lo que se observa a largo plazo.
-\item \textbf{¿Por qué $\vartheta$ de \autor{Okun} es tan alto en España?} Peso de los contratos temporales (0,85 frente a 0,45 en EE.\,UU.).
+\item \textbf{¿Tasa natural y NAIRU son lo mismo?} «Aproximadamente»; cambia el modelo: búsqueda (friccional) vs. WS-PS (involuntario).
+\item \textbf{¿Qué baja la NAIRU?} ↓$Z$, ↓$\mu$, menor cuña fiscal, mejor emparejamiento; no la demanda (salvo histéresis).
+\item \textbf{¿Por qué la curva de largo plazo es vertical?} Con $\pi=\pi^e$, el paro es $U^n$.
+\item \textbf{¿Qué cambia con $\lambda_h=1$?} Sin paro de equilibrio único; la inflación depende de $\Delta U$.
+\item \textbf{¿Por qué hay sesgo inflacionista?} $U^*<U^n$ y falta compromiso: $\pi^D=\pi^*+(\alpha/\gamma)(U^n-U^*)$.
+\item \textbf{¿Es óptima la tasa natural?} Solo con \autor{Hosios} (poder negociador = elasticidad del emparejamiento).
 \end{enumerate}
-
 \begin{trampa}
 \begin{itemize}
-\item \autor{Phillips} (1958): salarios \emph{nominales}, no precios; R.\,U. 1861-1913. En precios: \autor{Samuelson}-\autor{Solow} (1960), EE.\,UU.
-\item NIRU: \autor{Modigliani}-\autor{Papademos} (1975); NAIRU: \autor{Tobin} (1980); NAWRU: versión salarial de la CE.
-\item Con $\mathrm{PAT}^e$ en la WS, $U^n=f(Z,\mu)$; sin ella, $U^n=f(Z,\mu,\mathrm{PAT})$, ↓ con el nivel de productividad.
-\item Signos: $U^n$ ↑ con $Z$ y $\mu$, ↓ con $a$.
-\item $\lambda_h=1$ histéresis pura (paseo aleatorio); $0<\lambda_h<1$, persistencia. Mecanismo principal: \emph{insiders}.
-\item \autor{Okun}: $\approx3$ de producción por 1 de paro ($\vartheta\approx1/3$), no al revés.
-\item WS decreciente en $(U,W/P)$, creciente en $(L,W/P)$: la distancia $\overline L-L^n$ es el \emph{número} de parados, no la NAIRU.
+\item \autor{Phillips} (1958): salarios \emph{nominales}; en precios, \autor{Samuelson}-\autor{Solow}.
+\item NIRU: \autor{Modigliani}-\autor{Papademos} (1975); NAIRU: \autor{Tobin} (1980).
+\item \autor{Okun}: $\approx3$ de producción por 1 de paro, no al revés.
+\item $U^n$ ↑ con $Z$ y $\mu$, ↓ con $a$; $\mathrm{PAT}^e$ en la WS: el nivel de productividad no mueve $U^n$.
+\item $\lambda_h=1$: histéresis pura (paseo aleatorio); $0<\lambda_h<1$: persistencia.
+\item WS decreciente en $(U,W/P)$, creciente en $(L,W/P)$.
 \end{itemize}
 \end{trampa}
 

@@ -211,6 +211,7 @@ Ninguna nota lo necesitaba.
   - *Solo en el nuestro, y se queda* (es correcto y aporta): el modelo de gravedad desarrollado, el ciclo financiero global, la convergencia condicional y la trampa de la renta media, el centro de gravedad de Quah, el peso en PPA frente a tipos de mercado, el Golfo y el comercio Sur-Sur, y el DAFO. Ninguna versión da una tabla de previsiones de varios organismos: todas se quedan en el FMI (y alguna, el BM o la OMC).
   - *No se ha añadido* (minoritario o de otro tema): la evolución histórica por etapas desde el siglo XIX (es el 3.B.20 y el 3.B.21; aquí quedan las 3 etapas desde 1991), la curva del elefante y los trilemas de Rodrik (2 versiones), la teoría de la IED en detalle y las CGV con su tipología (3.B.18), las fuentes de financiación del desarrollo (AOD, fondos soberanos; 3.B.29) y las finanzas sostenibles (una).
   - Páginas: el tema pasa de 24 a 28 (más 1 de anexos y 5 de bibliografía), por debajo de 45.
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 8,75 pt.
 
 ## Dudas abiertas (19/11/2026)
 

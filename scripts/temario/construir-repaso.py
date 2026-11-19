@@ -202,6 +202,13 @@ def main():
         if '\\anexorepaso' not in fuente_txt:
             print('AVISO: la ficha no tiene \\anexorepaso (datos clave, autores y fechas y preguntas del tribunal, en la última columna)')
         else:
+            # introducción + esquema del cante: como mucho la primera columna (el esquema
+            # acaba con su línea «Conclusión», que tiene que quedar en la columna izquierda)
+            pr = doc[0]
+            con = [b for b in pr.get_text('blocks') if b[4].strip().startswith('Conclusión')]
+            if '\\esquemacante' in fuente_txt and (not con or con[0][0] > pr.rect.width / 2):
+                print('ERROR: la introducción y el esquema del cante pasan de la primera columna (como mucho una columna)')
+                sys.exit(1)
             ult = doc[paginas - 1]
             pos = [b for b in ult.get_text('blocks') if 'Datos clave' in b[4]]
             if not pos or pos[0][0] < ult.rect.width / 2 or pos[0][1] > ult.rect.height * 0.25:

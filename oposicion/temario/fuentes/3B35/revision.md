@@ -180,3 +180,4 @@ Otros cambios: reglas del 18/11 aplicadas (5 fuentes esenciales marcadas: Jovano
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche más popular: «juntos, pero no revueltos» pasa a «Más vale solo que mal acompañado» (integrarse o no, y con quién). Se rehacen el enganche (los hechos de 2026 como las 2 respuestas), la idea final y las 2 menciones del dicho viejo en el cuerpo (la AELC y la recapitulación del bloque II); «juntos, pero no revueltos» se queda solo como dicho de la ZLC frente a la UA en I.1. Ficha, mapa de la exposición e instrucciones del vídeo al día. Sin cifras nuevas. Duda B35-12.
+- Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt. Fuera la tabla «Los bloques en cifras» (sus datos están en los gráficos y en Datos clave): con ella la ficha bajaba a 8,75 pt.
