@@ -194,3 +194,10 @@ Páginas del tema: 31 antes y 32 después (anexos: 6 → 10; bibliografía: 5 �
   - Aplicada (a): en el 3.B.24, como pidió Víctor, con el ángulo de la renta fija (negociación electrónica de bonos, precios de bonos poco líquidos, *credit scoring*, la caída relámpago de la deuda de EE. UU.) y remitiendo al 3.B.23 para la eficiencia.
   - Alternativa (b): moverla entera al 3.B.23 (gestión activa y eficiencia), dejando aquí una línea en «Extensiones».
   - Alternativa (c): repartirla: los puntos (2) y (3) al 3.B.23 y aquí el (1) y la regulación del crédito y de la negociación algorítmica de bonos. Como un opositor nunca canta 2 temas de la parte B, repetirla en los 2 no sería un problema (CRITERIOS §6).
+  - **Respuesta de Víctor (19/11/2026):** llevarlo al 3.B.23.
+
+## Comentarios de Víctor (19/11/2026)
+
+Páginas del tema: 32 antes y 31 después (anexos: 10 → 6; bibliografía: 7 → 6; total 49 → 43), las mismas que antes del 18/11. \minutos sin cambios (30). Ficha: 4 páginas, letra de 10,5.
+
+- «El anexo E quiero llevarlo mejor al tema 3.B.23. […] había un error con el número del tema» → Quitado todo lo añadido el 18/11: la viñeta «La inteligencia artificial» de III.2.5 con sus 3 subviñetas, la línea de regulación y la nota de la *skill*; el anexo E (el de test vuelve a ser el E); las 21 entradas del `.bib` que solo citaba ese material (ninguna se cita ya); las 2 entradas de `datos-actualizables.yaml`; la viñeta «IA» de la ficha y la palabra clave de `seo.json`. En «Extensiones» de la conclusión queda una sola línea con remisión: «La inteligencia artificial en los mercados financieros: si mejora la intermediación, si permite batir al mercado y si lo hace más eficiente \vertema{3.B.23}». Todo el desarrollo, adaptado a la renta variable, está en el 3.B.23 (II.1.4 y anexo D). Duda R24-13 resuelta.

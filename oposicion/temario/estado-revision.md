@@ -1,6 +1,6 @@
 # Estado de la revisión del temario (3.er ejercicio)
 
-Registro que lleva Claude y actualiza tras cada tanda. Última actualización: 18/11/2026 (comentarios de Víctor del 18/11).
+Registro que lleva Claude y actualiza tras cada tanda. Última actualización: 19/11/2026 (comentarios de Víctor del 19/11).
 
 | Estado | N.º | Temas |
 |---|---|---|
@@ -27,4 +27,5 @@ Revisión transversal del 13/11 (Nobel, 4.º ejercicio, dichos, figuras) hecha e
 - 15/11/2026: Víctor revisa la parte B (1.ª tanda): aprueba 3B05-3B08, 3B10 y 3B11; comentarios a 3B09, 3B23, 3B24 y 3B25.
 - 16/11/2026: comentarios a 3A41, 3B12-3B27, 3B36, 3B37 y 3B43 (agentes lanzados y parados a mitad por desconexión; se retoman con el disco D: conectado). Resto de la parte A, aprobado por ahora.
 
-- 18/11/2026: 3B24 con una reflexión sobre la IA en los mercados financieros (cuerpo y anexo E). Comentarios a 3A32 (pasa a desarrollar Galí-Monacelli con la política fiscal de Furlanetto), 3B01-3B04, 3B14, 3B15, 3B16, 3B19 y 3B20, aplicados y construidos. Reglas nuevas: nunca citar la versión antigua del tema (quitadas las menciones de 3A03, 3A12, 3A26, 3A29, 3A33, 3B20 y 3B37) y formato del examen A frente a B (informe en `solapes-a-b.md`, dudas GEN-02 a GEN-18).
+- 18/11/2026: Comentarios a 3A32 (pasa a desarrollar Galí-Monacelli con la política fiscal de Furlanetto), 3B01-3B04, 3B14, 3B15, 3B16, 3B19 y 3B20, aplicados y construidos. Reglas nuevas: nunca citar la versión antigua del tema (quitadas las menciones de 3A03, 3A12, 3A26, 3A29, 3A33, 3B20 y 3B37) y formato del examen A frente a B (informe en `solapes-a-b.md`, dudas GEN-02 a GEN-18).
+- 19/11/2026: 3A32 con el reparto 2′30″/7′30″/6′/13′/1′ (más OA-DA en el bloque I); 3B19 con la figura 1 en caja gris (regla: los diagramas que no se exponen van en caja gris); la reflexión sobre la IA en los mercados pasa del 3B24 al 3B23 (II.1.4 y anexo D). Bibliografía con fuentes esenciales, «En conclusión» en la línea de la Recapitulación y rótulos de lista uniformes en todos los temas (reconstruidos el 18-19/11).

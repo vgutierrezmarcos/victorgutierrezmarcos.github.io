@@ -268,3 +268,12 @@ Antes: 40 páginas de tema (anexos 15, bibliografía 8; 63 en total). Después: 
 ### Instrucciones para el vídeo (18/11/2026)
 
 - C-P en el cante: ya no se dibuja `cp-cerrada` (la productividad en la cerrada es una caja que no se canta). En la pizarra, `cp-cerrada-paso2` por capas (ejes; AD; AS; NR, escribiendo cada función al dibujar su curva; $O$ y $U_O$; $X$), después `cp-pcp` (capas 1-2, la economía mundial, diciendo que con precios rígidos B no se entera; 3-5, A con la brecha y la respuesta monetaria; 6-7, B) y, si da tiempo, `cp-lcp`.
+
+## Comentarios de Víctor (19/11/2026)
+
+Antes: 39 páginas de tema (anexos 15, bibliografía 8; 62 en total), con la figura 1 sola en la página 19. Después: **39** (igual), con la figura dentro de la caja en la página 18.
+
+| Comentario | Cómo se ha aplicado |
+|---|---|
+| «Mete la figura 1 en un cuadro gris» (`mf-vs-cp`, Mundell-Fleming frente a Corsetti-Pesenti) | Deja de ser una figura flotante de página entera (`infografia[p]`) y pasa a una caja `anotaciones` con rótulo «Los 2 modelos, frente a frente (para consultar; no se canta)» y una frase de entrada, con la figura en `infografiacaja` al 92 % del ancho de la caja. Mismo título, fuente y etiqueta (`figu:mf-vs-cp`): sigue siendo la figura 1 y la remisión de e) Valoración funciona en PDF, web y Word. Con ese ancho cabe en la página 18, tras la caja del artículo, sin dejar hueco. En la nota del opositor, la figura queda en la lista de lo que no se canta (fuera «se estudia, no se canta entera»). Ficha sin cambios (lleva una tabla resumida, no la figura). |
+| «Este tipo de diagramas… mejor meterlos en cuadros grises» (revisar otros) | No hay más del mismo tipo en el cuerpo: las figuras 2 (escalera de la cooperación), 3 (G-20) y 4 (OCDE) son imprescindibles en el cante según la nota del opositor, el gráfico 4 (productividad en la economía cerrada) ya estaba en caja gris y los demás gráficos sin cantar están en los anexos. |

@@ -322,6 +322,10 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   tablas que es imposible memorizar pero ayudan a entender, anécdotas
   biográficas, desarrollos largos y material complementario van en un
   recuadro gris (`anotaciones`), breve y en viñetas, sin perder información.
+  También los **diagramas que no se exponen** en el cante pero ayudan al
+  lector a ver una idea (mapas del tema, esquemas de clasificación,
+  cronologías ilustrativas) van dentro de una caja gris (`figuracaja`,
+  `infografiacaja`) (Víctor, 19/11/2026).
   **La primera línea de una caja** (que hace de título) **nunca queda
   separada del resto en otra página** (Víctor, 12/11/2026, 8.ª tanda): lo
   hace `tcee.sty` en `anotaciones`, `ideaclave` y `notaopositor` (no hay

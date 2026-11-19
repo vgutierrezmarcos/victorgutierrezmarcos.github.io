@@ -1,5 +1,5 @@
 % La estructura del tema 3.A.32 en una página (18/11/2026): I. los modelos
-% estáticos de economía abierta, en breve; II. el modelo neokeynesiano
+% estáticos de economía abierta (MF y, con más detalle, la DA-OA abierta); II. el modelo neokeynesiano
 % cerrado; III. el núcleo: la pequeña economía abierta de Galí-Monacelli con
 % el gasto público de Furlanetto, y la pregunta de si los efectos son
 % inequívocos.
@@ -24,14 +24,15 @@
     {\textbf{La pregunta}: ¿cómo se determinan la renta y la inflación de una economía abierta, qué efectos tienen la política monetaria, la fiscal y las perturbaciones de oferta y, sobre todo, \textbf{se pueden determinar esos efectos de manera inequívoca y con validez universal}? \hfill \textit{Hilo: España, pequeña y abierta, con tipo fijo frente al euro y flotante frente al dólar.}};}
 
   % 2: bloque I, los modelos estáticos (en breve)
-  \capa{2}{\node[titulo=tceemorado, anchor=north west] at (0,-1.55) {I. Los modelos estáticos de economía abierta, en breve \hfill (4$'$)};}
+  \capa{2}{\node[titulo=tceemorado, anchor=north west] at (0,-1.55) {I. Los modelos estáticos de economía abierta \hfill (7$'$30$''$)};}
   \capa{2}{\node[caja=tceeazul, text width=7.6cm, minimum height=2.3cm] (m1) at (0,-2.15)
     {\textbf{\autor{Mundell}-\autor{Fleming} (IS-LM-BP): la renta}\\[2pt]
      IS con $XN$; LM; BP con movilidad $\beta_K$. Con tipo fijo se ajusta $M$; con flexible, $E$.\\[2pt]
      \textbf{Movilidad perfecta}: fijo, fiscal \textcolor{tceeverde}{sí} y monetaria \textcolor{tceerojo}{no}; flexible, fiscal \textcolor{tceerojo}{no} y monetaria \textcolor{tceeverde}{sí}. Trilema.};}
   \capa{2}{\node[caja=tceeazul, text width=7.6cm, minimum height=2.3cm] (m2) at (8.4,-2.15)
     {\textbf{DA-OA abierta: la renta y los precios}\\[2pt]
-     DA = un equilibrio IS-LM-BP por cada $P$. OA con la \textbf{cuña exterior}; inflación importada.\\[2pt]
+     DA = un equilibrio IS-LM-BP por cada $P$: fijo, competitividad; flexible, saldos reales. OA con la \textbf{cuña exterior}; inflación importada.\\[2pt]
+     \textbf{Medio plazo}: flexible, dinero neutral; fijo, la fiscal expulsa $XN$; devaluación interna. El régimen decide el camino, no el destino.\\[2pt]
      \textbf{Energía cara}: estanflación; la política de oferta desplaza las 2 OA.\\[2pt]
      \textit{Efectos nítidos, dado el régimen. Límite: estático, sin expectativas} $\rightarrow$ II.};}
   \capa{2}{\draw[paso] (m1.east) -- (m2.west);}
@@ -40,7 +41,7 @@
   \capa{3}{\draw[paso] (8.2,-4.6) -- node[rotulo, right] {un modelo dinámico con expectativas racionales, primero en una economía cerrada} (8.2,-5.2);}
 
   % 4: bloque II, el modelo neokeynesiano cerrado
-  \capa{4}{\node[titulo=tceerojo, anchor=north west] at (0,-5.3) {II. Un modelo dinámico de economía cerrada: el modelo neokeynesiano \hfill (7$'$)};}
+  \capa{4}{\node[titulo=tceerojo, anchor=north west] at (0,-5.3) {II. Un modelo dinámico de economía cerrada: el modelo neokeynesiano \hfill (6$'$)};}
   \capa{4}{\node[caja=tceemorado, text width=7.6cm, minimum height=1.6cm] (n0) at (0,-5.9)
     {\textbf{El modelo}: IS dinámica (DA) + curva de \autor{Phillips} neokeynesiana (OA) + regla de \autor{Taylor}, en $(x_t,\pi_t)$. Forma reducida: los multiplicadores monetario y fiscal dependen de la regla.};}
   \capa{4}{\node[caja=tceerojo, text width=7.6cm, minimum height=1.6cm] (o1) at (8.4,-5.9)
@@ -51,7 +52,7 @@
   \capa{5}{\draw[paso] (8.2,-7.65) -- node[rotulo, right] {abrimos la economía y añadimos el gasto público: el núcleo del tema} (8.2,-8.25);}
 
   % 6: bloque III, la pequeña economía abierta
-  \capa{6}{\node[titulo=tceeverde, anchor=north west] at (0,-8.35) {III. La pequeña economía abierta neokeynesiana: \autor{Galí}-\autor{Monacelli} y \autor{Furlanetto} \hfill (15$'$30$''$)};}
+  \capa{6}{\node[titulo=tceeverde, anchor=north west] at (0,-8.35) {III. La pequeña economía abierta neokeynesiana: \autor{Galí}-\autor{Monacelli} y \autor{Furlanetto} \hfill (13$'$)};}
   \capa{6}{\node[caja=tceeverde, text width=7.6cm, minimum height=3.5cm] (a1) at (0,-8.95)
     {\textbf{El modelo}\\[2pt]
      2 inflaciones: $\pi_t=\pi_{H,t}+\alpha\Delta\tau_t$. Reparto del riesgo y paridad de intereses.\\
