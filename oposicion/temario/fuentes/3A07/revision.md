@@ -337,3 +337,7 @@ Víctor: «En las notas a pie de página también puede haber párrafos indentad
 - La nota de la información como nexo entre las 2 familias (l. 535): 2 viñetas (contratos implícitos, salarios de eficiencia); la frase de Azariadis en párrafo aparte.
 
 No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

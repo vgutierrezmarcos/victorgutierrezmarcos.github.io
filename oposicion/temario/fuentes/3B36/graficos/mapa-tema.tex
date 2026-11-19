@@ -1,0 +1,84 @@
+% Mapa de la exposición del 3.B.36 (comentario de Víctor del 19/11/2026):
+% los bloques, la pregunta a la que responde cada uno, lo que se cuenta en cada
+% subapartado (a la derecha) y el hilo entre ellos (la flecha dice por qué se
+% pasa al siguiente). En gris, bajo la pregunta, el papel del bloque en la
+% exposición. Arriba, la pregunta del enganche; abajo, la respuesta de la
+% conclusión. Misma forma que los mapas de los demás temas de la UE (3.B.36 a
+% 3.B.45). Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\newcommand{\elem}[1]{\\[2pt]\textit{\textcolor{tceegris}{#1}}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Del dicho al hecho hay mucho trecho». ¿Cómo ha convertido la Unión los dichos en hechos, y le sirven sus reglas para seguir haciéndolo con más de 30 miembros?};}
+  \capa{1}{\draw[hilo] (intro.south -| 2.0,0) -- ++(0,-0.25) coordinate (b0);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at ([yshift=-0.05cm]b0 -| 0,0)
+    {\tit{tceeazul}{I. Los tratados}
+     ¿Cómo se pasó de una comunidad sectorial de 6 países a una Unión de 27?
+     \elem{La historia: de París a Lisboa}};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at ([yshift=-0.05cm]b0 -| 4.75,0)
+    {\tit{tceeazul}{De la CECA a la Unión (I.1-I.5)}
+     \autor{Schuman} y la CECA (1951); Roma (1957)\\ crisis (1973-1985) y Acta Única (1986)\\ Maastricht (1992): la Unión y sus 3 pilares\\ Ámsterdam, Niza y la Constitución que no fue};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at ([yshift=-0.05cm]b0 -| 10.45,0)
+    {\tit{tceeazul}{Base actual (I.6)}
+     Lisboa: TUE y TFUE, personalidad jurídica\\ Brexit (2020) y respuestas a las crisis\\ ampliación: 9 candidatos; reforma sin cambiar los Tratados};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (pI.south -| 2.0,0) ++(0,-0.05) -- ++(0,-0.7) coordinate (b1);}
+  \capa{3}{\node[rotulolargo,anchor=west] at ([xshift=0.15cm,yshift=0.35cm]b1)
+    {cada tratado convirtió un dicho en una regla: ¿qué Derecho ha nacido de ellos y qué competencias da?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at ([yshift=-0.05cm]b1 -| 0,0)
+    {\tit{tceeverde}{II. El ordenamiento jurídico}
+     ¿Qué Derecho tiene la Unión, de dónde sale su fuerza y qué nivel de gobierno hace cada cosa?
+     \elem{El Derecho}};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at ([yshift=-0.05cm]b1 -| 4.75,0)
+    {\tit{tceeverde}{Bases y competencias (II.1-II.2)}
+     autonomía, primacía y efecto directo\\ fuentes: originario, derivado y su jerarquía\\ competencias exclusivas, compartidas y de apoyo\\ subsidiariedad: externalidades frente a preferencias (anexo)};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at ([yshift=-0.05cm]b1 -| 10.45,0)
+    {\tit{tceeverde}{Aprobación de la legislación (II.3)}
+     procedimiento legislativo ordinario (art.~294 TFUE)\\ procedimientos especiales y acuerdos internacionales\\ flexibilidad: cooperación reforzada y pasarelas};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (pII.south -| 2.0,0) ++(0,-0.05) -- ++(0,-0.7) coordinate (b2);}
+  \capa{5}{\node[rotulolargo,anchor=west] at ([xshift=0.15cm,yshift=0.35cm]b2)
+    {un Derecho necesita quien lo proponga, lo apruebe y lo haga cumplir: ¿quién decide y con cuánto poder?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at ([yshift=-0.05cm]b2 -| 0,0)
+    {\tit{tceedorado}{III. Las instituciones}
+     ¿Quién decide en la Unión, cómo y con cuánto poder cada Estado?
+     \elem{Quién hace el Derecho y quién lo aplica}};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at ([yshift=-0.05cm]b2 -| 4.75,0)
+    {\tit{tceedorado}{Las que deciden (III.1-III.4)}
+     Comisión: propone y vigila\\ Parlamento: 720 escaños, colegislador\\ Consejo: mayoría cualificada (55\,\% de Estados, 65\,\% de población)\\ Consejo Europeo: el impulso};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at ([yshift=-0.05cm]b2 -| 10.45,0)
+    {\tit{tceedorado}{Las que juzgan y controlan (III.5-III.8)}
+     Tribunal de Justicia y Tribunal de Cuentas\\ BCE\\ otros órganos y organismos\\ poder de voto: no proporcional al peso (\autor{Banzhaf}, anexo)};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (pIII.south -| 2.0,0) ++(0,-0.05) -- ++(0,-0.3) coordinate (bf);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (bf -| 0,0)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: cada tratado convirtió un dicho en un hecho jurídico; para pasar de 27 a más de 30, falta otra vez convertir en reglas lo prometido.};}
+\end{tikzpicture}
+\end{document}

@@ -323,3 +323,7 @@ El artifact de dudas no está disponible en esta sesión: en cada duda se ha apl
 
 - **Ficha de repaso**: el anexo no se ha llevado a la ficha (los anexos son para las preguntas del tribunal y la ficha va justa en 4 páginas). Alternativa: una línea en I.2 con el yen en mínimos y el dólar en máximos de 2025. **Aplicada: no tocar la ficha (recomendada).**
 - **Último dato**: septiembre de 2026 es el último mes que publica el BPI a 16/11/2026 (el índice sale con unas 6 semanas de retraso). El texto que depende del último dato (yen en mínimo de la serie, dólar en 107) está marcado en `datos-actualizables.yaml` para revisarlo con cada actualización. **Aplicada: dejarlo con septiembre de 2026 (recomendada).**
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

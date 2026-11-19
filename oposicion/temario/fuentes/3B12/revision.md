@@ -258,3 +258,7 @@ Compilación: `construir-tema.py 3B12 --solo pdf --no-publicar` correcto. Págin
 - **Autores en los títulos**: se han puesto entre paréntesis en los títulos de I.2, I.3, II.1, II.2, II.3 y III.2 (y en el texto), como en el tema antiguo y en el 3.B.14. Opciones: (a) en el título y en el texto; (b) solo en el texto. **Aplicada: (a)**.
 - **Cuadro del PDM revisado**: el 3.B.45 y la página de la Comisión dan el cuadro de 13 indicadores; el 3.B.45 dice que se aplica desde el informe de alerta de 2025, y la página de la Comisión no lo fecha. Aquí se dice «el que se aplica en los informes de alerta recientes». Opciones: (a) así; (b) fecharlo en el informe de 2025 si se confirma en el AMR 2025. **Aplicada: (a)**.
 - **Polak (1957)** como antecedente del enfoque monetario en el FMI: añadido de memoria (IMF Staff Papers 6(1), 1-50), sin comprobar en la fuente. Opciones: (a) mantenerlo; (b) quitarlo. **Aplicada: (a)**.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

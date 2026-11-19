@@ -264,3 +264,7 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 
 - Nota de la FPP cóncava (modelo de Heckscher-Ohlin): los 3 casos según los rendimientos a escala en itemize.
 - No se convierten: la del sesgo de demanda, la de la reversión de intensidades y las demás (un solo argumento) ni las de Nobel.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

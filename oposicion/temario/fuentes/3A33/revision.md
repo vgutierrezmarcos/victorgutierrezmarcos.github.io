@@ -215,3 +215,7 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - l. 1316: neutralidad, superneutralidad y dicotomía clásica (como la nota 7 del 3A35).
 - l. 1355 (anexo): la misma nota de las restricciones intertemporales que en el 3A29.
 - Probada y descartada: la nota del alisamiento del consumo (sus 3 rasgos, l. 298); como lista se partía y el gráfico de las sendas pasaba a la página siguiente, así que se deja en prosa.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

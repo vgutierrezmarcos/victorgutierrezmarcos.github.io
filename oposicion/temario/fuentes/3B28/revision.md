@@ -276,3 +276,7 @@ Actualizadas el 11/11/2026 (4.ª tanda: estructura macro/micro, Kenia fuera del 
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

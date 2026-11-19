@@ -1,0 +1,94 @@
+% Mapa de la exposición del 3.B.28 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Elaboración propia, con la misma forma que el mapa del 3.B.41.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Unos nacen con estrella y otros estrellados». ¿Por qué unos países se quedan atrás y qué funciona de verdad contra la pobreza?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Hechos estilizados}
+     ¿Qué tienen en común los países en desarrollo y cómo se mide su atraso?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Medición del desarrollo (I.1)}
+     desarrollo humano: el IDH\\
+     renta: RNB por habitante en PPA\\
+     pobreza: la cara más dura};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Características (I.2)}
+     económicas: dualidad, mercados incompletos\\
+     institucionales: poca capacidad del Estado\\
+     demográficas: transición a medias};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.75) -- (2.0,-4.55);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.15)
+    {fijados los hechos: ¿por qué unos países se quedan atrás?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.5)
+    {\tit{tceeverde}{II. Aproximación macro}
+     Escala del país: ¿por qué algunas economías se quedan atrás?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.5)
+    {\tit{tceeverde}{Tendencias y teorías pioneras (II.1-II.2)}
+     pobreza extrema del 43\,\% al 10\,\% desde 1990, cada vez más en África\\
+     una etapa: \autor{Lewis}, \autor{Rostow}\\
+     una situación: \autor{Myrdal}, \autor{Nurkse}, CEPAL\\
+     replanteamiento: Consenso de Washington};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.5)
+    {\tit{tceeverde}{Teorías recientes (II.3)}
+     crecimiento endógeno\\
+     fallos de coordinación y anillo O\\
+     trampa de la renta media\\
+     instituciones y cultura};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-7.1) -- (2.0,-7.9);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.5)
+    {las recetas generales no bastan: ¿cómo viven y deciden los hogares pobres?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.85)
+    {\tit{tceedorado}{III. Aproximación micro}
+     Escala de las personas: ¿cómo deciden los pobres y qué programas funcionan?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.85)
+    {\tit{tceedorado}{Pioneros y mercados (III.1-III.2)}
+     \autor{Sen}: capacidades; \autor{Deaton}: medir con encuestas\\
+     comportamiento de los pobres\\
+     mercados que fallan: crédito y seguros};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.85)
+    {\tit{tceedorado}{Experimentos y políticas (III.3-III.4)}
+     ensayos aleatorios: \autor{Banerjee}, \autor{Duflo}, \autor{Kremer}\\
+     evidencia y valoración\\
+     método estructural frente a experimental\\
+     implicaciones para el diseño de políticas};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-10.45) -- (2.0,-10.75);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.75)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: los 2 enfoques se complementan: el desarrollo lo empujan el ahorro, la inversión y un Estado que coordina, y los experimentos dicen qué funciona dentro de ese marco.};}
+\end{tikzpicture}
+\end{document}

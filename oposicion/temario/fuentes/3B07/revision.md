@@ -206,3 +206,7 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - Nota de los nuevos modelos cuantitativos (métodos): se probó a poner en itemize lo que estiman para España los CGE, la gravedad y los nuevos modelos, pero la nota se partía con el último ítem solo en la página siguiente; se deja en prosa.
 - Nota de la FPP (supuestos del modelo general): los 3 casos según los rendimientos a escala en itemize.
 - No se convierten: la de los efectos sustitución y renta (ya lleva tabla), la de los aranceles a la exportación ni las de Nobel.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

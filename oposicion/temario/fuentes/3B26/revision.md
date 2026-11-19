@@ -237,3 +237,6 @@ Ninguna nota lo necesitaba.
 - **«Distinto» o «diferente»**: Víctor escribe «Esta vez es diferente»; el título de la edición española es *Esta vez es distinto* y así lo citan el 3.B.17, 3.B.20, 3.B.21, 3.B.22 y 3.B.27. **Aplicada: «distinto» (recomendada, por coherencia con el temario).**
 - **Lugar de la figura del hilo**: al comienzo del bloque I, como flotante de página entera (sale en la p. 5, tras el esquema y la nota del opositor). Alternativa: tras la estructura de la introducción, antes del esquema. **Aplicada: comienzo del bloque I (recomendada: el esquema sigue justo después de la introducción).**
 
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

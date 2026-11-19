@@ -310,3 +310,7 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 
 ### Pendiente (15/11/2026)
 - **Guion y vídeo**: `guion-cante.md` (I.3, «Apoyo 3: gráfico `superficie-produccion` (capa 3)») sigue usando el gráfico que ha salido del cuerpo. Duda: ¿se mantiene ese apoyo en el cante (el fichero sigue en graficos/) o se cambia por el panel (a) de la figura 2? Recomendado y aplicado por ahora: mantenerlo, porque las isocuantas como curvas de nivel se dicen en el cante; actualizar el guion y `video/escenas.yaml` cuando se regenere el vídeo.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

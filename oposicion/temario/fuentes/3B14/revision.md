@@ -209,3 +209,7 @@ Compilación: `construir-tema.py 3B14 --solo pdf --no-publicar` y `construir-rep
 ## Comentarios de Víctor (18/11/2026)
 
 - **«No me gusta el refrán ni la introducción, piensa en alguna alternativa de enganche.»** Enganche rehecho con el refrán «En casa del herrero, cuchillo de palo» (no es el inicial de ningún otro tema): el BCE, que decide la política monetaria que mueve el euro, supone en sus proyecciones el tipo de cambio constante; en marzo de 2025 supuso 1,04 dólares para 2025-2027 y el euro acabó 2025 en 1,175 (+13 %), con media anual de 1,13 (cifras de la serie diaria del BCE, descargada el 18/11/2026, y del recuadro 1 de las proyecciones; entrada nueva `BCE2025ProyeccionesMarzo`). La idea final retoma el refrán y responde (Meese y Rogoff a corto, fundamentos a largo). Sale el recorrido del euro 1999-2022. Nota al opositor, instrucciones para el vídeo y ficha de repaso al día. Alternativas en la duda 21. PDF: 43 páginas de tema, 10 de anexos y 7 de bibliografía (60 en total) antes y después; `\minutos` en 30; ficha en 4 páginas (10 pt). `verificar-tema.py 3B14`: 0 errores y los 10 avisos de antes.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

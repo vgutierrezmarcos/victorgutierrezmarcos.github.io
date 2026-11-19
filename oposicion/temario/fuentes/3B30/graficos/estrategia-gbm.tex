@@ -1,0 +1,48 @@
+% La estrategia actual del Grupo del Banco Mundial (comentario de Víctor del
+% 18/11/2026): la visión de 2023, la hoja de ruta de la evolución en una línea
+% de tiempo y sus 3 frentes (más capacidad, mejores resultados y prioridades).
+% Capas: 1 la visión; 2 la línea de tiempo; 3 los 3 frentes.
+% Datos a noviembre de 2026. Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    vision/.style={draw=tceemorado,thick,fill=tceemorado!10,rounded corners=3pt,
+      align=center,text width=15.6cm,inner sep=5pt,font=\footnotesize},
+    hito/.style={align=center,text width=2.05cm,font=\scriptsize,anchor=north},
+    anio/.style={font=\footnotesize\bfseries,text=tceemorado},
+    frente/.style={draw=#1,thick,fill=#1!7,rounded corners=2pt,anchor=north west,
+      align=left,text width=4.85cm,inner sep=4pt,font=\scriptsize}]
+  % 1: la visión
+  \capa{1}{\node[vision] (v) at (8,0) {\textbf{La visión (2023)}: «un mundo sin pobreza en un planeta habitable»\\
+    \emph{objetivos}: acabar con la pobreza extrema (menos de 3 \$ al día) e impulsar la prosperidad compartida, en un planeta habitable};}
+  % 2: la línea de tiempo
+  \capa{2}{\draw[->,very thick,tceemorado] (0,-1.55) -- (16.2,-1.55);}
+  \capa{2}{\foreach \x/\a/\t in {
+      1.05/2013/{objetivos gemelos: pobreza extrema y prosperidad compartida},
+      3.35/{dic. 2022}/{hoja de ruta de la evolución (\emph{Evolution Roadmap})},
+      5.65/{oct. 2023}/{Marrakech: nueva visión; patrimonio mínimo del 20 al 19~\%},
+      7.95/{abr. 2024}/{marco de puntuación: 22 indicadores en vez de 153},
+      10.25/{jul.-oct. 2024}/{plataforma de garantías en MIGA; mínimo al 18~\%; 6 programas de desafíos globales},
+      12.55/{dic. 2024}/{AIF21: 100.000 M\$ con 23.700 de los donantes},
+      14.85/{2025-2026}/{el empleo, prioridad; energía nuclear con el OIEA (2025)}}{
+    \fill[tceemorado] (\x,-1.55) circle (2.2pt);
+    \node[anio,anchor=south] at (\x,-1.45) {\a};
+    \node[hito] at (\x,-1.7) {\t};}}
+  % 3: los 3 frentes
+  \capa{3}{\node[frente=tceeazul] at (0,-3.6) {\textbf{\textcolor{tceeazul}{Más capacidad: el capital}}\\[2pt]
+    \textbullet\ patrimonio mínimo sobre préstamos del 20 al 18~\% (real: 21,6~\% en 2026)\\
+    \textbullet\ capital híbrido de 12 accionistas (unos 1.200 M\$) y garantías de cartera\\
+    \textbullet\ más de 150.000 M\$ adicionales en 10 años};}
+  \capa{3}{\node[frente=tceeverde] at (5.45,-3.6) {\textbf{\textcolor{tceeverde}{Mejor banco: resultados y rapidez}}\\[2pt]
+    \textbullet\ marco de puntuación con 22 indicadores y metas a 2030\\
+    \textbullet\ preparar un proyecto: de 19 a 9 meses\\
+    \textbullet\ un solo grupo: garantías en MIGA, estrategias de país comunes, banco del conocimiento};}
+  \capa{3}{\node[frente=tceedorado] at (10.9,-3.6) {\textbf{\textcolor{tceedorado}{Las prioridades}}\\[2pt]
+    \textbullet\ empleo: 5 sectores (energía e infraestructuras, agroindustria, salud, turismo y manufacturas); el 55~\% de lo comprometido en 2026\\
+    \textbullet\ Misión 300: electricidad para 300 millones de africanos en 2030\\
+    \textbullet\ clima: el 44~\% de la financiación propia en 2026};}
+\end{tikzpicture}
+\end{document}

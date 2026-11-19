@@ -356,3 +356,7 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - l. 54: Smith, Ricardo y Malthus; la frase sobre lo que se ha multiplicado la renta queda como párrafo aparte.
 - l. 148: los 3 grupos de Panagariya; «Los 2 extremos…» queda como párrafo aparte.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

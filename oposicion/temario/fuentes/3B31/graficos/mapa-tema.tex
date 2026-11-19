@@ -1,0 +1,89 @@
+% Mapa de la exposición del 3.B.31 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Elaboración propia, con la misma forma que el mapa del 3.B.41.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Quien siembra vientos recoge tempestades». ¿Por qué el mercado emite demasiado, cuánto cuesta y por qué cuesta tanto actuar?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Impacto en la economía}
+     ¿Por qué es un problema económico y por dónde llega a la economía?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{El fenómeno físico (I.1)}
+     $+1{,}4$~°C; el CO\textsubscript{2} se acumula\\
+     presupuesto de carbono\\
+     IPCC};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Problema y canales (I.2-I.3)}
+     externalidad global, entre generaciones e incierta\\
+     $E^c>E^{\mathrm{N}}>E^*$\\
+     riesgos físicos y de transición};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.75) -- (2.0,-4.55);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.15)
+    {sabido por qué falla el mercado: ¿cuánto daña y cuánto vale evitarlo?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.5)
+    {\tit{tceeverde}{II. Evidencia y modelos}
+     ¿Cuánto daña y cuánto vale evitar una tonelada de CO\textsubscript{2}?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.5)
+    {\tit{tceeverde}{Evidencia (II.1)}
+     corte transversal, panel, temperatura global\\
+     daños mayores y no lineales};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.5)
+    {\tit{tceeverde}{Modelos integrados (II.2-II.3)}
+     coste social del carbono\\
+     DICE: producción, emisiones, clima, daños\\
+     descuento: $r_s=\rho+\theta\gamma_c$};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-7.1) -- (2.0,-7.9);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.5)
+    {con la cifra en la mano: ¿por qué cuesta tanto actuar juntos?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.85)
+    {\tit{tceedorado}{III. Acuerdos y medidas}
+     Si a todos les conviene reducir, ¿por qué se ha logrado tan poco?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.85)
+    {\tit{tceedorado}{Instrumentos y cooperación (III.1-III.2)}
+     precio, cantidad, adaptación\\
+     dilema del prisionero\\
+     clubes climáticos};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.85)
+    {\tit{tceedorado}{Acuerdos y medidas (III.3-III.4)}
+     CMNUCC, Kioto, París\\
+     UE: RCDE y MAFC};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-10.45) -- (2.0,-10.75);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.75)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: la tonelada de CO\textsubscript{2} ya tiene precio en una parte del mundo; el reto es que lo tenga en todo él, para que quien la emite pague lo que cuesta.};}
+\end{tikzpicture}
+\end{document}

@@ -217,3 +217,7 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Regla general 1 (series de títulos completas; en I.2, «iii) Implicaciones» quedaba debajo de «Productores: curva de oferta…», sin i) ni ii) bajo ese título) → Los 2 bloques del desarrollo, «Consumidores: curva de demanda individual y de mercado» y «Productores: curva de oferta individual y de mercado», dejan de ser `\subparagraph` (el mismo nivel que i)-iii)) y pasan a rótulos sangrados dentro de «ii) Desarrollo». Así i) Supuestos, ii) Desarrollo y iii) Implicaciones quedan seguidos en el mismo nivel bajo I.2 «Modelo». Solo cambian esos 2 títulos; el contenido, igual. Comprobadas las demás series del tema: completas.
 - Páginas: cuerpo 37, igual que antes. \minutos sigue en 30. La ficha no cambia.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

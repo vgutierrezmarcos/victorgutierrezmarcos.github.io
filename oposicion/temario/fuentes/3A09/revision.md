@@ -363,3 +363,7 @@ Dudas (15/11/2026):
 3. **Vídeo**: la figura es de anexo (profundización) y no entra en el guion ni en las escenas; tiene capas `\capa` por si se quiere usar.
 
 - Nota del coordinador (15/11/2026): la infografía usa `\graficopagina` (nueva en tcee.sty, hasta el 90 % de la altura), y ocupa la página entera con letra más grande.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

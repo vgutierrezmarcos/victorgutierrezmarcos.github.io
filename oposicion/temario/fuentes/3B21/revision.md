@@ -178,3 +178,7 @@ Ninguna nota lo necesitaba.
 - **B21-14** (16/11/2026). La ficha ya no cabe en 4 páginas a 10,5 pt. Opciones: (a) dejarla a 10 pt (4 páginas, 97 %); (b) recortar contenido para volver a 10,5 pt. **Aplicada: (a)**.
 - **B21-15** (16/11/2026). Colores de los apartados en la cronología. Opciones: (a) verde, naranja y rojo, distintos de los del 3.B.20 (dorado, gris y azul) para que no se confundan los apartados de un tema con los del otro, y el morado de la ruptura compartido como enlace; (b) seguir la paleta del 3.B.20 (el apartado I en azul, continuación de Bretton Woods). **Aplicada: (a)**.
 - **B21-16** (16/11/2026). La nota 26 del antiguo (IS-LM-BP: el tipo flexible aísla de las perturbaciones reales). Opciones: (a) recuperarla como caja gris en I.1 con un gráfico TikZ de 2 paneles en el lenguaje del de Poole del 3.B.15; (b) solo remitir al 3.A.32 y al 3.B.15. **Aplicada: (a)**: explica por qué la flotación ayudó con las crisis del petróleo, y como caja gris no pesa en el cante.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

@@ -284,3 +284,7 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - l. 39: los 2 artículos de Ramsey (imposición óptima; ahorro óptimo).
 - l. 966 (anexo): cuándo se resumen las restricciones de cada periodo en la intertemporal (certidumbre; incertidumbre y mercados completos o no; activos redundantes).
 - l. 1233 (anexo de Hotelling): recursos flujo, stock renovables y stock no renovables.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

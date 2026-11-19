@@ -202,3 +202,7 @@ Propuestas: todas las de coherencia (K1-K35), contenido (C1-C46) y datos (V1-V17
 - Nota de Tinbergen (definición de integración): integración negativa y positiva en itemize; el Nobel, en párrafo aparte. Es una nota larga en la página 1 y se parte entre los 2 ítems (con la flecha); en prosa también se partía.
 - Nota de la nueva geografía económica: los antecedentes (von Thünen, Hotelling, Ohlin) en itemize; la definición de Krugman, en párrafo aparte.
 - No se convierten: la del segundo óptimo, la del artículo XXIV del GATT ni las de Nobel.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

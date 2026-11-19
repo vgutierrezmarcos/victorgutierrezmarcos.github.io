@@ -1,0 +1,91 @@
+% Mapa del tema 3.B.12 (comentario de Víctor del 19/11/2026): los 3 bloques,
+% la pregunta a la que responde cada uno, sus subapartados y el hilo entre
+% ellos, como el mapa del 3.B.4. A la izquierda, la pregunta de cada bloque; a
+% la derecha, lo que se cuenta; entre bloques, la flecha dice por qué se pasa
+% al siguiente. Arriba, la pregunta del tema; abajo, la respuesta de la
+% conclusión. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  enlace/.style={->,thick,tceegris,dashed},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «De aquellos polvos, estos lodos». ¿Se corrigen solos los desequilibrios exteriores? ¿Es malo un déficit y cuándo es sostenible?};}
+  % la introducción ocupa 2 líneas: lo demás baja medio centímetro
+  \begin{scope}[yshift=-0.5cm]
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Tipo de cambio y renta: enfoques keynesianos}
+     ¿Corrigen el saldo los precios relativos y la renta?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Flujos de bienes (I.1-I.3)}
+     elasticidades: \autor{Marshall}-\autor{Lerner} y curva J\\
+     multiplicador: ajuste por la renta, incompleto\\
+     absorción: $\mathrm{CC}=Y-A$};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Con capital móvil (I.4)}
+     IS-LM-BP: el régimen cambiario decide qué variable ajusta\\
+     asignación de \autor{Mundell}: cada instrumento a su objetivo};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.15) -- (2.0,-3.95);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.55)
+    {con tipo fijo, el ajuste lo hacen las reservas: de los flujos a los \emph{stocks}};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.0)
+    {\tit{tceeverde}{II. Reservas: enfoques de \emph{stocks}}
+     ¿Se ajusta solo el saldo a través del dinero?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.0)
+    {\tit{tceeverde}{Dinero y reservas (II.1-II.2)}
+     flujo-especie (\autor{Hume}): el oro mueve los precios\\
+     monetario (\autor{Johnson}): el dinero de más se va por la balanza};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.0)
+    {\tit{tceeverde}{Cartera (II.3)}
+     \autor{McKinnon}-\autor{Oates}, \autor{Branson}: activos sustitutos imperfectos\\
+     ajuste parcial; algo de autonomía monetaria};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-5.75) -- (2.0,-6.55);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-6.15)
+    {todos dan por hecho que hay que ajustar: ¿hay que hacerlo?};}
+
+  % 6: bloque III (especial referencia del título)
+  \capa{6}{\node[bloquep=tceedorado,very thick] (pIII) at (0,-6.6)
+    {\tit{tceedorado}{III. Enfoque intertemporal y sostenibilidad}
+     ¿Es malo un déficit? ¿Qué deuda se puede soportar?\\[1pt]
+     \textit{Especial referencia del título}};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-6.6)
+    {\tit{tceedorado}{Del ajuste a la elección (III.1-III.2)}
+     $\mathrm{CC}=S-I$ óptimos (\autor{Obstfeld} y \autor{Rogoff})\\
+     un déficit puede financiar inversión rentable o amortiguar un choque temporal};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-6.6)
+    {\tit{tceedorado}{Sostenibilidad (III.3)}
+     óptimo no es sostenible: el superávit futuro debe cubrir $(r-g)$ por la deuda\\
+     moneda, composición y valoración};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-8.75) -- (2.0,-9.05);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-9.05)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: ningún enfoque basta solo; sin cambiar el ahorro o la inversión no se corrige un déficit. No es malo en sí: lo es si financia lo que no se podrá devolver.};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

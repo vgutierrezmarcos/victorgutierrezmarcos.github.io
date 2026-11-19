@@ -112,7 +112,8 @@ en cada tema. Ver `LICENSE.md` en la raíz.
     indentadas debajo (Víctor, 9/11/2026).
     Excepción (Víctor, 18/11/2026): la Recapitulación empieza en su misma
     línea con «En conclusión,» tras los dos puntos («**Recapitulación**: En
-    conclusión, …») y las demás ideas van en viñetas debajo.
+    conclusión,») y ahí acaba la línea: todas las ideas, también la primera,
+    van en subpárrafos debajo (Víctor, 19/11/2026).
   - **Reparto de minutos** (Víctor, 13/10/2026): introducción
     **2'00"–2'30"** y conclusión **1'00"–1'30"**; el cuerpo, **26–27
     minutos**. Los `\minutos{}` de los apartados suman exactamente eso (p. ej.
@@ -326,6 +327,14 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   lector a ver una idea (mapas del tema, esquemas de clasificación,
   cronologías ilustrativas) van dentro de una caja gris (`figuracaja`,
   `infografiacaja`) (Víctor, 19/11/2026).
+  **Ninguna caja puede salirse de los márgenes** de la página ni taparle la
+  cabecera o el pie (Víctor, 19/11/2026): lo evita `tcee.sty` y lo comprueba
+  `verificar-tema.py`.
+  **Mapa de la exposición** (Víctor, 19/11/2026): todos los temas llevan,
+  tras el esquema, una infografía en caja gris con los bloques, la pregunta o
+  idea de cada uno y el hilo entre ellos (`graficos/mapa-tema.tex`); si el
+  tema ya tiene esquemas de algún subapartado, el mapa los usa para que sea
+  coherente, y se adapta al bloque del temario al que pertenece el tema.
   **La primera línea de una caja** (que hace de título) **nunca queda
   separada del resto en otra página** (Víctor, 12/11/2026, 8.ª tanda): lo
   hace `tcee.sty` en `anotaciones`, `ideaclave` y `notaopositor` (no hay
@@ -935,6 +944,26 @@ el texto original y lo que se hizo.
 
 ## 8 bis. Ficha de repaso (cuatro páginas)
 
+- **Orden y reparto de las 8 columnas** (Víctor, 19/11/2026):
+  1. **Primera columna**: la **Introducción** y, al final de ella, el
+     **Esquema del cante** (`\esquemacante`). Entre los dos no va nada (fuera
+     el párrafo de «Funciones clave» que había entre el esquema y la
+     introducción). Introducción + esquema **nunca pasan de una columna**
+     (pueden ocupar menos).
+  2. **Columnas 2 a 7** (o desde donde acabe la introducción): el tema, que
+     **agota siempre** esas columnas: más desarrollo, no relleno.
+  3. **Última columna** (`\anexorepaso` y detrás, en este orden, **Datos
+     clave**, **Autores y fechas**, **Preguntas del tribunal** y, si hay sitio,
+     **Ojo en el test**): a modo de anexo, **como mucho una columna** (media
+     cara). Solo lo que de verdad interesa (nada de listas largas de autores y
+     fechas). `construir-repaso.py` falla si no empieza arriba de la última
+     columna.
+  Los demás bloques sueltos de antes (definiciones, tablas comparativas…) van
+  dentro del tema, donde toquen, o se quitan.
+- **Esquemático** (Víctor, 19/11/2026): pocas frases largas y muchas viñetas
+  subindentadas (2.º y 3.er nivel de lista); que nada quede como un ladrillo.
+  Se mantienen los títulos de **nivel 3** del tema (`\subsub`) e incluso de
+  nivel 4 (`\subsubsub`) si ayudan.
 - **Saltos de columna y de página como en el tema** (Víctor, 18/10/2026):
   ningún título (`\bloque`, `\sub`) queda al pie de una columna o de una
   página, ni separado del título o el párrafo del nivel siguiente; tampoco una
@@ -945,7 +974,7 @@ el texto original y lo que se hizo.
 - Cada tema tiene una ficha de repaso en **exactamente cuatro páginas** (A4,
   **dos columnas**, estética del tema: `tcee-repaso.sty`; Víctor, 14/10/2026:
   antes eran dos páginas a tres columnas), para repasar antes del
-  examen: esquema del cante con minutos, introducción, ideas clave,
+  examen: introducción y esquema del cante con minutos, ideas clave,
   definiciones, fórmulas y 2-4 gráficos por apartado, conclusión, autores y
   fechas, datos clave, preguntas probables del tribunal y trampas del test.
 - Solo resume el tema: nada que no esté en él.

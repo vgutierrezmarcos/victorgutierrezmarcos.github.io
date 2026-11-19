@@ -261,3 +261,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 ### Dudas (16/11/2026)
 
 - **A43-16N-1. Orden de los bloques en el modelo de Ramsey-Cass-Koopmans.** En III, «c) Evidencia empírica» va antes de «d) Extensiones», al revés que el orden del temario (Idea, Modelo, Extensiones, Evidencia, Valoración). Opción recomendada aplicada: no tocarlo, porque el tema está aprobado y el encargo pide cambiar solo títulos. Alternativa: intercambiar los 2 bloques (y su reparto en el esquema y en la nota del cante).
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

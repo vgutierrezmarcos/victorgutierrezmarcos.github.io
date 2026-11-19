@@ -36,8 +36,8 @@ TIPOS = {
     "eee":        ("acueee",   3, "EEE y Suiza"),
     "ua":         ("acuua",    3, "Unión aduanera"),
     "asociacion": ("acuasoc",  4, "Asociación y vecindad: Balcanes, DCFTA, Mediterráneo"),
-    "nueva":      ("acunueva", 5, "ALC de nueva generación (con Reino Unido y Mercosur)"),
-    "primera":    ("acuprim",  5, "ALC de primera generación (México, Feroe)"),
+    "nueva":      ("acunueva", 5, "ALC de nueva generación (p.~ej., Reino Unido y Mercosur)"),
+    "primera":    ("acuprim",  5, "ALC de primera generación (p.~ej., México y Feroe)"),
     "aae":        ("acuaae",   6, "Acuerdos de asociación económica (ACP)"),
 }
 # Con trama: acuerdo cerrado o firmado y pendiente; México, además, por su

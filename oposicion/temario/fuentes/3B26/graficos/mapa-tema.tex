@@ -1,0 +1,81 @@
+% Mapa de la exposición del 3.B.26 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Misma forma que los mapas del 3.B.4 y del 3.B.41.
+% Colores de los bloques: los de la figura hilo-tema del tema (morado el I, azul el II y verde el III).
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «El hombre es el único animal que tropieza dos veces con la misma piedra». ¿Por qué un banco, o todo un sistema, puede hundirse por miedo, qué falló en 2007-2008 y cómo gestionan sus riesgos las entidades?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceemorado,minimum height=2.20cm] (pI) at (0,-1.15)
+    {\tit{tceemorado}{I. Crisis financieras}
+     ¿Por qué se repiten, si todas se parecen?};}
+  \capa{2}{\node[contenido=tceemorado,minimum height=2.20cm] (cI1) at (4.75,-1.15)
+    {\tit{tceemorado}{Tipos y anatomía (I.1-I.2)}
+     4 tipos, casi siempre tras un auge del crédito: «esta vez es distinto»\\ \autor{Kindleberger} y \autor{Minsky}: auge, euforia, pánico y crac};}
+  \capa{2}{\node[contenido=tceemorado,minimum height=2.20cm] (cI2) at (10.45,-1.15)
+    {\tit{tceemorado}{Teorías (I.3)}
+     deuda-deflación (\autor{Fisher})\\ burbujas\\ fricciones financieras: el sistema amplifica};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.40) -- (2.0,-4.10);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.75)
+    {falta el eslabón débil: ¿por qué cae un banco, incluso solvente, de un día para otro?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeazul,minimum height=2.45cm] (pII) at (0,-4.15)
+    {\tit{tceeazul}{II. Pánicos bancarios y la crisis de 2007-2008}
+     ¿Por qué cae un banco sano y qué falló en 2007-2008?};}
+  \capa{4}{\node[contenido=tceeazul,minimum height=2.45cm] (cII1) at (4.75,-4.15)
+    {\tit{tceeazul}{Pánicos y red de seguridad (II.1-II.3)}
+     \autor{Diamond} y \autor{Dybvig}: el depósito tiene un 2.º equilibrio, el pánico\\ extensiones: fundamentos, información, contagio\\ garantía y prestamista, a costa de riesgo moral};}
+  \capa{4}{\node[contenido=tceeazul,minimum height=2.45cm] (cII2) at (10.45,-4.15)
+    {\tit{tceeazul}{La crisis (II.4-II.5)}
+     burbuja con deuda y pánico mayorista en la banca en la sombra\\ en Europa, el círculo vicioso banca-soberano};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.65) -- (2.0,-7.35);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.00)
+    {los remedios públicos crean riesgo moral: la primera defensa es la propia entidad};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceeverde,minimum height=2.45cm] (pIII) at (0,-7.40)
+    {\tit{tceeverde}{III. Gestión de riesgos}
+     ¿Cómo se protegen las entidades y por qué no bastó en 2008?};}
+  \capa{6}{\node[contenido=tceeverde,minimum height=2.45cm] (cIII1) at (4.75,-7.40)
+    {\tit{tceeverde}{Los riesgos y el de mercado (III.1-III.2)}
+     crédito, mercado, liquidez, tipo de interés y operacional\\ 3 líneas de defensa\\ VaR y pérdida esperada en la cola};}
+  \capa{6}{\node[contenido=tceeverde,minimum height=2.45cm] (cIII2) at (10.45,-7.40)
+    {\tit{tceeverde}{Crédito, liquidez y tipo de interés (III.3-III.4)}
+     $\mathrm{PE}=\mathrm{PD}\times\mathrm{LGD}\times\mathrm{EAD}$; \autor{Merton}\\ Silicon Valley Bank: brecha de duración y depósitos sin garantía};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-9.90) -- (2.0,-10.20);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.20)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: las crisis se repiten porque el crédito y la confianza crecen y caen juntos; un banco sano cae por miedo si nadie lo frena: capital, liquidez y una red de seguridad creíble.};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,111 @@
+% Mapa del tema 3.A.12 (comentario de Víctor del 19/11/2026): los bloques,
+% la pregunta a la que responde cada uno, sus subapartados y el hilo entre
+% ellos, como el mapa del 3.B.4. A la izquierda, la pregunta de cada bloque; a
+% la derecha, lo que se cuenta; entre bloques, la flecha dice por qué se pasa
+% al siguiente. Arriba, la pregunta del tema; abajo, la respuesta de la
+% conclusión. Debajo de cada bloque, en gris, en gris, la herramienta con la que trabaja
+% (rasgo común de los mapas de microeconomía (3.A.8-3.A.24)). Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\providecommand{\vect}[1]{\boldsymbol{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,anchor=north west,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulolargo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt,
+    anchor=west,text width=13cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  gris/.style={font=\scriptsize,text=tceegris,anchor=north west,text width=15.5cm,align=left,inner sep=1pt},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\par\vspace{1pt}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «La práctica hace al maestro». ¿Qué nos dicen los costes de una empresa sobre su tecnología, su conducta y su mercado, y cómo se miden?};}
+  \capa{1}{\coordinate (f0) at (intro.south -| 0,0);}
+  \capa{1}{\draw[hilo] ($(f0)+(2.0,-0.03)$) -- ++(0,-0.27);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at ($(f0)+(0,-0.33)$)
+    {\tit{tceeazul}{I. «Dualidad» MB--MC}
+     ¿Qué relación hay entre maximizar el beneficio y minimizar el coste?\\[1pt]
+     \textit{largo plazo}};}
+  \capa{2}{\node[contenido=tceeazul,text width=3.18cm] (cI1) at ($(pI.north west)+(4.75,0)$)
+    {\tit{tceeazul}{Ingredientes (I.1)}
+     \hangindent=0.8em $\mathcal{Y}$, $F(\vect{z})$, $p$, $\vect{w}$\par
+     \hangindent=0.8em los papeles cambiados};}
+  \capa{2}{\node[contenido=tceeazul,text width=3.18cm] (cI2) at ($(pI.north west)+(8.55,0)$)
+    {\tit{tceeazul}{MB y MC (I.2)}
+     \hangindent=0.8em MB: $\vect{z}(p,\vect{w})$, $B(p,\vect{w})$\par
+     \hangindent=0.8em MC: $\vect{z}(\vect{w},q)$, $C(\vect{w},q)$};}
+  \capa{2}{\node[contenido=tceeazul,text width=3.18cm] (cI3) at ($(pI.north west)+(12.35,0)$)
+    {\tit{tceeazul}{Relaciones (I.3)}
+     \hangindent=0.8em \autor{Hotelling}, \autor{Shephard}\par
+     \hangindent=0.8em $p=\mathrm{CMg}$\par
+     \hangindent=0.8em $C\leftrightarrow F$, $B\leftrightarrow\mathcal{Y}$};}
+  \capa{2}{\path let \p1=(pI.south), \p2=(cI1.south), \p3=(cI2.south), \p4=(cI3.south) in node[gris] (gI) at (0,{min(\y1,\y2,\y3,\y4)-0.15cm})
+    {Herramienta: el esquema de dualidad de la empresa: 2 problemas, sus soluciones, sus funciones valor y sus relaciones};}
+  \capa{2}{\coordinate (fI) at (gI.south -| 0,0);}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] ($(fI)+(2.0,-0.12)$) -- ++(0,-0.75);}
+  \capa{3}{\node[rotulolargo] at ($(fI)+(2.15,-0.5)$)
+    {con la función de costes y sus propiedades: ¿cómo se comporta y cómo se mide?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at ($(fI)+(0,-0.93)$)
+    {\tit{tceeverde}{II. Análisis de los costes}
+     ¿Cómo cambian los costes con la producción, los precios y el plazo, y qué dicen los datos?};}
+  \capa{4}{\node[contenido=tceeverde,text width=3.18cm] (cII1) at ($(pII.north west)+(4.75,0)$)
+    {\tit{tceeverde}{Estática comparativa y plazos (II.1-II.2)}
+     \hangindent=0.8em senda de expansión, economías de escala\par
+     \hangindent=0.8em efecto sustitución + efecto escala\par
+     \hangindent=0.8em corto plazo y envolvente; \autor{Le Chatelier}};}
+  \capa{4}{\node[contenido=tceeverde,text width=3.18cm] (cII2) at ($(pII.north west)+(8.55,0)$)
+    {\tit{tceeverde}{Estimación (II.3-II.4)}
+     \hangindent=0.8em translog de costes y participaciones\par
+     \hangindent=0.8em \autor{Christensen}-\autor{Greene}: costes en L\par
+     \hangindent=0.8em densidad frente a escala};}
+  \capa{4}{\node[contenido=tceeverde,text width=3.18cm] (cII3) at ($(pII.north west)+(12.35,0)$)
+    {\tit{tceeverde}{Eficiencia (II.5)}
+     \hangindent=0.8em \autor{Farrell}: técnica, asignativa\par
+     \hangindent=0.8em frontera estocástica frente a DEA};}
+  \capa{4}{\path let \p1=(pII.south), \p2=(cII1.south), \p3=(cII2.south), \p4=(cII3.south) in node[gris] (gII) at (0,{min(\y1,\y2,\y3,\y4)-0.15cm})
+    {Herramienta: $C(\vect{w},q)$ y sus curvas: CMe, CMg, CVMe; la envolvente; la translog estimada};}
+  \capa{4}{\coordinate (fII) at (gII.south -| 0,0);}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] ($(fII)+(2.0,-0.12)$) -- ++(0,-0.75);}
+  \capa{5}{\node[rotulolargo] at ($(fII)+(2.15,-0.5)$)
+    {la función supone eficiencia y un solo producto: ¿qué se escapa?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at ($(fII)+(0,-0.93)$)
+    {\tit{tceedorado}{III. Extensiones y críticas}
+     ¿Qué queda fuera de la función de costes neoclásica?};}
+  \capa{6}{\node[contenido=tceedorado,text width=5.08cm] (cIII1) at ($(pIII.north west)+(4.75,0)$)
+    {\tit{tceedorado}{Mercado y escala (III.1-III.2)}
+     \hangindent=0.8em competencia perfecta y monopolio natural\par
+     \hangindent=0.8em economías de escala};}
+  \capa{6}{\node[contenido=tceedorado,text width=5.08cm] (cIII2) at ($(pIII.north west)+(10.45,0)$)
+    {\tit{tceedorado}{\autor{Stigler}, \autor{Leibenstein} y otras (III.3-III.4)}
+     \hangindent=0.8em reserva de capacidad; ineficiencia X\par
+     \hangindent=0.8em multiplanta, multiproducto\par
+     \hangindent=0.8em curvas de aprendizaje};}
+  \capa{6}{\path let \p1=(pIII.south), \p2=(cIII1.south), \p3=(cIII2.south) in node[gris] (gIII) at (0,{min(\y1,\y2,\y3)-0.15cm})
+    {Herramienta: subaditividad de los costes y curva de aprendizaje};}
+  \capa{6}{\coordinate (fIII) at (gIII.south -| 0,0);}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] ($(fIII)+(2.0,-0.1)$) -- ++(0,-0.3);}
+  \capa{7}{\node[marco] (concl) at ($(fIII)+(0,-0.43)$)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: la función de costes recoge tecnología, escala y precios de los factores, y la dualidad permite separarlos con datos: la fotovoltaica se ha abaratado un 89\,\% por la escala y, sobre todo, por el aprendizaje.};}
+\end{tikzpicture}
+\end{document}

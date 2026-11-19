@@ -252,3 +252,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - «Donde las dan, las toman» deja de ser el nombre del *tit for tat* (I.3, tabla y anexo de estrategias): es el refrán inicial del 3.B.41. La estrategia se llama ahora «reciprocidad (*tit for tat*)». Se conserva «quemar las naves» (compromiso, Cortés), que se quita del 3.A.15.
 
 - Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

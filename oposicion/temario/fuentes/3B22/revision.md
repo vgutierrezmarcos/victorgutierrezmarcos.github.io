@@ -199,3 +199,7 @@ Páginas del tema: antes 28 (anexos: 1), ahora **32** (anexos: 4: A, programaci�
 - **B22-19** Datos nuevos del DSA comprobados en la web el 16/11/2026 (revisión del LIC-DSF: propuestas de septiembre de 2026, aplicación prevista a mediados de 2027; objetivos de Ghana: 55 % del PIB en valor actual y 18 % de los ingresos en 2028; riesgo moderado desde julio de 2026). Los umbrales del LIC-DSF de 2018 (tabla 3) y los detalles del SRDSF (horizontes, módulos) son los de las notas de orientación, sin segunda comprobación hoy. Opciones: (a) usarlos **[aplicada]**; (b) quitar la tabla de umbrales y dejar la descripción.
 - **B22-20** Plazo de la 16.ª revisión de cuotas (B22-13): vencía el 15/11/2026; la búsqueda del 16/11 no encontró aún la decisión del Directorio (prórroga o entrada en vigor). Se mantiene el texto («la última hasta el 15 de noviembre de 2026»). Opciones: (a) mantenerlo hasta que se publique **[aplicada]**; (b) escribir «vencía el 15 de noviembre de 2026».
 - **B22-21** El gráfico de abanico es ilustrativo (datos inventados, lo dice el pie), no de un país real. Opciones: (a) ilustrativo **[aplicada]**; (b) el abanico de un análisis real (p. ej., España en el art. IV de 2026), que habría que leer del informe.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

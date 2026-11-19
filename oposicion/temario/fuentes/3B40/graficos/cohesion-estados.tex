@@ -1,9 +1,11 @@
 % Asignaciones de la política de cohesión 2021-2027 por Estado (importe UE,
 % FEDER + Fondo de Cohesión + FSE+ + FTJ, sin Interreg; última versión
-% adoptada de los programas, 13/11/2026), en miles de millones de euros.
-% España en rojo. El importe por habitante va aparte (cohesion-estados-hab.tex).
+% adoptada de los programas, 13/11/2026), en 2 paneles lado a lado con el
+% mismo orden de países (de menor a mayor importe): a la izquierda, miles de
+% millones de euros; a la derecha, euros por habitante (población a 1-1-2025)
+% con la media de la UE-27 (815 euros). España en rojo.
 % Datos: ../datos/cohesion-estados.csv (Comisión, cohesiondata, pbbz-hmfu).
-% Capas: barras -> barra de España -> rótulo de España.
+% Capas: importe (barras, España) -> por habitante (barras, España, media).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -11,22 +13,48 @@
 \begin{document}
 \pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/cohesion-estados.csv}\coh
 \colorlet{cohbarra}{tceeazul!60}
+\pgfplotsset{cohpanel/.style={width=7.4cm, height=11cm, xbar, bar width=5.5pt,
+    bar shift=0pt, ymin=-0.7, ymax=26.7, ytick={0,...,26},
+    yticklabel style={font=\scriptsize}, xticklabel style={font=\footnotesize},
+    xlabel style={font=\footnotesize}, title style={font=\small\bfseries, text height=1.6ex, text depth=0.4ex},
+    axis y line*=left, axis x line*=bottom, xmajorgrids, grid style={tceegris!20},
+    clip=false}}
 \begin{tikzpicture}[tcee]
-  \begin{axis}[width=10cm, height=10.5cm, xbar, bar width=5.5pt, bar shift=0pt,
-      xmin=0, xmax=85, ymin=-0.7, ymax=26.7,
-      ytick={0,...,26}, yticklabels from table={\coh}{pais},
-      yticklabel style={font=\scriptsize},
-      xticklabel style={font=\footnotesize},
-      xlabel={miles de millones de euros}, xlabel style={font=\footnotesize},
-      axis y line*=left, axis x line*=bottom, xmajorgrids, grid style={tceegris!20},
-      dicapas]
+  % Panel izquierdo: importe
+  \begin{axis}[cohpanel, name=importe, title={Importe},
+      xmin=0, xmax=85, yticklabels from table={\coh}{pais},
+      xlabel={miles de millones de euros}, dicapas]
     % 1: Estados
     \capa{1}{\addplot[on layer=dicbarras, dicbarra=cohbarra, point meta=x, nodes near coords={\pgfmathprintnumber[fixed,fixed zerofill,precision=1,use comma]{\pgfplotspointmeta}}, nodes near coords style={font=\tiny, anchor=west}, x filter/.expression={\thisrow{es}==1 ? nan : x}]
-      table[x=mm, y=n, meta=pc] {\coh};}
+      table[x=mm, y=n] {\coh};}
     % 2: España
     \capa{2}{\addplot[on layer=dicbarras, dicbarra=dicespana, x filter/.expression={\thisrow{es}==1 ? x : nan}]
-      table[x=mm, y=n, meta=pc] {\coh};
-      \dicrotulo[font=\scriptsize, text=dicespana, anchor=west]{(36.5,24)}{35,6}}
+      table[x=mm, y=n] {\coh};
+      \dicrotulo[font=\tiny, text=dicespana, anchor=west]{(35.6,24)}{35,6}}
   \end{axis}
+  % Panel derecho: por habitante, mismo orden de países
+  \begin{axis}[cohpanel, at={(importe.south east)}, anchor=south west, xshift=0.5cm,
+      name=hab, title={Por habitante},
+      xmin=0, xmax=2800, yticklabels={},
+      xlabel={euros por habitante}, scaled x ticks=false,
+      xtick={0,1000,2000},
+      xticklabel={\pgfmathprintnumber[fixed,precision=0,1000 sep={.}]{\tick}}, dicapas]
+    % 3: Estados
+    % (las cifras que acabarían encima de la línea de la media, Italia y
+    % España, van a su derecha)
+    \capa{3}{\addplot[on layer=dicbarras, dicbarra=cohbarra, point meta=x, nodes near coords={\pgfmathprintnumber[fixed,precision=0,1000 sep={.}]{\pgfplotspointmeta}}, nodes near coords style={font=\tiny, anchor=west}, x filter/.expression={(\thisrow{es}==1 || (x>600 && x<815)) ? nan : x}]
+      table[x=pc, y=n] {\coh};
+      \addplot[on layer=dicbarras, dicbarra=cohbarra, x filter/.expression={(\thisrow{es}==0 && x>600 && x<815) ? x : nan}]
+      table[x=pc, y=n] {\coh};
+      \dicrotulo[font=\tiny, anchor=west]{(830,25)}{716}}
+    % 4: España
+    \capa{4}{\addplot[on layer=dicbarras, dicbarra=dicespana, x filter/.expression={\thisrow{es}==1 ? x : nan}]
+      table[x=pc, y=n] {\coh};
+      \dicrotulo[font=\tiny, text=dicespana, anchor=west]{(830,24)}{724}}
+    % 5: media de la UE
+    \capa{5}{\dicraya[dicreferencia, dashed, thick]{(815,-0.7) (815,26.7)}
+      \dicrotulo[font=\scriptsize, text=dicreferencia, anchor=west]{(850,0)}{media de la UE: 815}}
+  \end{axis}
+  \path (hab.east) ++(0.2cm,0);
 \end{tikzpicture}
 \end{document}

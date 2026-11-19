@@ -344,3 +344,7 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - l. 26: clasificación de los modelos de equilibrio general (2 criterios: poder de mercado y origen de los bienes).
 - l. 769: la teoría de la negociación y sus 2 caminos (axiomático, de Nash; estratégico, de Rubinstein); lo que sigue (Binmore, Rubinstein y Wolinsky; relación con el núcleo) queda como párrafo aparte.
 - Probada y descartada: la nota de la forma de la FPP según los rendimientos (l. 232); como lista empujaba el apartado I.2.2 a la página siguiente y dejaba un cuarto de página en blanco, así que se deja en prosa.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

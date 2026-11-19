@@ -1,0 +1,91 @@
+% Mapa de la exposición del tema 3.A.30 (comentario de Víctor del 19/11/2026),
+% como el del 3.B.4: arriba, la pregunta del tema (introducción); a la
+% izquierda, la pregunta de cada bloque; a la derecha, lo que se cuenta en sus
+% apartados; entre bloques, la flecha dice por qué se pasa al siguiente; abajo,
+% la respuesta de la conclusión. Paleta del bloque de macroeconomía (3.A.29-3.A.45): azul marino, naranja y verde, los colores de la demanda.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize,
+    execute at begin node={\everypar{\hangindent=0.8em\hangafter=1}}},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  fila/.style={inner sep=0pt,draw=none},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\par\vspace{1pt}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «A ojo de buen cubero». ¿Pueden unas pocas cifras resumir la actividad de millones de agentes?};}
+  \capa{1}{\draw[hilo] ($(intro.south west)+(2.0,0)$) -- ++(0,-0.28);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=dicze] (pI) at ($(intro.south west)+(0,-0.3)$)
+    {\tit{dicze}{I. El SEC 2010}
+     ¿Qué se mide y con qué reglas?};}
+  \capa{2}{\node[contenido=dicze] (cI1) at ($(pI.north west)+(4.75,0)$)
+    {\tit{dicze}{Concepto (I.1)}
+     producción, renta y gasto: 3 caras de un mismo flujo\par};}
+  \capa{2}{\node[contenido=dicze] (cI2) at ($(pI.north west)+(10.45,0)$)
+    {\tit{dicze}{Principios (I.2)}
+     unidades y sectores, operaciones\par
+     valoración y momento de registro\par};}
+  \capa{2}{\node[fila,fit=(pI)(cI1)(cI2)] (fI) {};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] ($(fI.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{3}{\node[rotulolargo,anchor=west] at ($(fI.south west)+(2.15,-0.48)$)
+    {con reglas comunes, la actividad se registra cuenta a cuenta};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=dicconspriv] (pII) at ($(fI.south west)+(0,-0.95)$)
+    {\tit{dicconspriv}{II. La sucesión de cuentas}
+     ¿Cómo se pasa de la producción a la renta, al ahorro y a la financiación?};}
+  \capa{4}{\node[contenido=dicconspriv] (cII1) at ($(pII.north west)+(4.75,0)$)
+    {\tit{dicconspriv}{Cuentas corrientes (II.1-II.2)}
+     bienes y servicios; producción: PIB\par
+     renta: excedente, renta disponible\par
+     utilización: ahorro\par};}
+  \capa{4}{\node[contenido=dicconspriv] (cII2) at ($(pII.north west)+(10.45,0)$)
+    {\tit{dicconspriv}{Acumulación y balances (II.3-II.6)}
+     capacidad o necesidad de financiación\par
+     balances y resto del mundo\par};}
+  \capa{4}{\node[fila,fit=(pII)(cII1)(cII2)] (fII) {};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] ($(fII.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{5}{\node[rotulolargo,anchor=west] at ($(fII.south west)+(2.15,-0.48)$)
+    {cada saldo es un agregado: ¿cómo se lee y qué deja fuera?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=dicfbcf] (pIII) at ($(fII.south west)+(0,-0.95)$)
+    {\tit{dicfbcf}{III. Uso y límites}
+     ¿Cómo se leen las magnitudes y qué dejan fuera?};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII1) at ($(pIII.north west)+(4.75,0)$)
+    {\tit{dicfbcf}{Del valor al volumen (III.1-III.2)}
+     deflactor y contribuciones al crecimiento\par
+     fuentes, revisiones y alta frecuencia\par};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII2) at ($(pIII.north west)+(10.45,0)$)
+    {\tit{dicfbcf}{El PIB y el bienestar (III.3)}
+     lo que el PIB no mide\par
+     indicadores alternativos\par};}
+  \capa{6}{\node[fila,fit=(pIII)(cIII1)(cIII2)] (fIII) {};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] ($(fIII.south west)+(2.0,-0.05)$) -- ++(0,-0.3);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at ($(fIII.south west)+(0,-0.38)$)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: unas pocas cifras sí resumen la actividad de millones de agentes, si se sabe cómo se han hecho y qué dejan fuera.};}
+\end{tikzpicture}
+\end{document}

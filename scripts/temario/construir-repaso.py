@@ -195,6 +195,19 @@ def main():
               f'({"hay que añadir contenido" if paginas < minimo else "hay que recortar"})')
         sys.exit(1)
     lleno, columnas = ocupacion(doc[paginas - 1])
+    # El «anexo» de la ficha (\anexorepaso: datos clave, autores y fechas, preguntas
+    # del tribunal) va arriba de la última columna y no pasa de ella (Víctor, 19/11/2026)
+    fuente_txt = open(fuente, encoding='utf-8').read()
+    if not tema.es_dictamen:
+        if '\\anexorepaso' not in fuente_txt:
+            print('AVISO: la ficha no tiene \\anexorepaso (datos clave, autores y fechas y preguntas del tribunal, en la última columna)')
+        else:
+            ult = doc[paginas - 1]
+            pos = [b for b in ult.get_text('blocks') if 'Datos clave' in b[4]]
+            if not pos or pos[0][0] < ult.rect.width / 2 or pos[0][1] > ult.rect.height * 0.25:
+                print('ERROR: el anexo de la ficha (\\anexorepaso, «Datos clave») no empieza arriba de la última columna: '
+                      'el tema tiene que llenar las 7 columnas anteriores y el anexo caber en la última')
+                sys.exit(1)
     print(f'{paginas} páginas; letra de {tam} pt; última página ocupada al {lleno:.0%} '
           f'(columnas: {", ".join(f"{c:.0%}" for c in columnas)})')
     if lleno < LLENADO_MINIMO:

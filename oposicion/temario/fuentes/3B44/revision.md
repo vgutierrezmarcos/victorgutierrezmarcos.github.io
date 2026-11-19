@@ -156,3 +156,4 @@ Ninguna nota lo necesitaba.
 
 - **B44-11. Orden de I.1 y I.2.** La fórmula común pone la justificación antes que la evolución; en el 3.B.44, I.1 (origen: la crisis y la decisión de 2012) va antes que I.2 (por qué una unión bancaria). Opciones: (a) dejarlo así, porque el origen es el contexto que da sentido a los modelos **[aplicada]**; (b) intercambiar I.1 y I.2 (cambia el orden de 2 títulos de segundo nivel, el esquema y la ficha).
 - **B44-12. Modelos en el cuerpo de un tema institucional.** El cuerpo conserva 5 modelos (círculo vicioso, trilema, recapitalización interna, seguro común y reparto de riesgos), aunque CRITERIOS (14/11/2026) pide para los temas de la UE la idea en el cuerpo y el modelo en anexos. Opciones: (a) dejarlos hasta que Víctor lo pida **[aplicada]**; (b) llevarlos a anexos como en el 3.B.36 y el 3.B.37.
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

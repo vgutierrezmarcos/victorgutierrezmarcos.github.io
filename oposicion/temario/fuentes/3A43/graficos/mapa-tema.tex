@@ -1,0 +1,92 @@
+% Mapa de la exposición del tema 3.A.43 (comentario de Víctor del 19/11/2026),
+% como el del 3.B.4: arriba, la pregunta del tema (introducción); a la
+% izquierda, la pregunta de cada bloque; a la derecha, lo que se cuenta en sus
+% apartados; entre bloques, la flecha dice por qué se pasa al siguiente; abajo,
+% la respuesta de la conclusión. Paleta del bloque de macroeconomía (3.A.29-3.A.45): azul marino, naranja y verde, los colores de la demanda.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize,
+    execute at begin node={\everypar{\hangindent=0.8em\hangafter=1}}},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  fila/.style={inner sep=0pt,draw=none},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\par\vspace{1pt}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Poco a poco se llega lejos». ¿Se puede crecer para siempre acumulando capital? ¿Por qué unos países son mucho más ricos que otros?};}
+  \capa{1}{\draw[hilo] ($(intro.south west)+(2.0,0)$) -- ++(0,-0.28);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=dicze] (pI) at ($(intro.south west)+(0,-0.3)$)
+    {\tit{dicze}{I. Modelo de \autor{Solow}}
+     ¿Sostiene la acumulación de capital el crecimiento?};}
+  \capa{2}{\node[contenido=dicze] (cI1) at ($(pI.north west)+(4.75,0)$)
+    {\tit{dicze}{Idea y modelo (I.1-I.2)}
+     de \autor{Harrod}-\autor{Domar} a \autor{Solow}\par
+     $\dot k=s\,f(k)-(n+\delta)k$: estado estacionario\par
+     regla de oro; solo con $g$, $\gamma_y=g$\par};}
+  \capa{2}{\node[contenido=dicze] (cI2) at ($(pI.north west)+(10.45,0)$)
+    {\tit{dicze}{Evidencia y valoración (I.3)}
+     convergencia condicional\par
+     el progreso técnico, sin explicar\par};}
+  \capa{2}{\node[fila,fit=(pI)(cI1)(cI2)] (fI) {};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] ($(fI.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{3}{\node[rotulolargo,anchor=west] at ($(fI.south west)+(2.15,-0.48)$)
+    {con capital humano, ¿se explican las diferencias de renta?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=dicconspriv] (pII) at ($(fI.south west)+(0,-0.95)$)
+    {\tit{dicconspriv}{II. \autor{Solow} con capital humano}
+     ¿Explica las diferencias de renta entre países?};}
+  \capa{4}{\node[contenido=dicconspriv] (cII1) at ($(pII.north west)+(4.75,0)$)
+    {\tit{dicconspriv}{\autor{Mankiw}, \autor{Romer} y \autor{Weil} (II.1)}
+     ahorro en capital físico y humano: explica buena parte\par};}
+  \capa{4}{\node[contenido=dicconspriv] (cII2) at ($(pII.north west)+(10.45,0)$)
+    {\tit{dicconspriv}{Extensiones (II.2)}
+     trampas de pobreza, recursos naturales\par
+     hacia el crecimiento endógeno\par};}
+  \capa{4}{\node[fila,fit=(pII)(cII1)(cII2)] (fII) {};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] ($(fII.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{5}{\node[rotulolargo,anchor=west] at ($(fII.south west)+(2.15,-0.48)$)
+    {el ahorro deja de ser una constante: lo eligen los hogares};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=dicfbcf] (pIII) at ($(fII.south west)+(0,-0.95)$)
+    {\tit{dicfbcf}{III. \autor{Ramsey}-\autor{Cass}-\autor{Koopmans}}
+     ¿Ahorra el mercado lo que conviene?};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII1) at ($(pIII.north west)+(4.75,0)$)
+    {\tit{dicfbcf}{Modelo (a-b)}
+     el ahorro, una decisión óptima\par
+     ecuación de \autor{Euler}, diagrama de fases\par
+     $f'(\tilde k^*)=\rho+\delta+\theta g$\par};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII2) at ($(pIII.north west)+(10.45,0)$)
+    {\tit{dicfbcf}{Evidencia y valoración (c-e)}
+     eficiente: nunca acumula de más\par
+     pero el crecimiento sigue siendo exógeno\par};}
+  \capa{6}{\node[fila,fit=(pIII)(cIII1)(cIII2)] (fIII) {};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] ($(fIII.south west)+(2.0,-0.05)$) -- ++(0,-0.3);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at ($(fIII.south west)+(0,-0.38)$)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: acumular capital no sostiene el crecimiento para siempre: «poco a poco se llega lejos», pero solo si cada paso mejora la forma de andar; lo que lleva lejos es innovar.};}
+\end{tikzpicture}
+\end{document}

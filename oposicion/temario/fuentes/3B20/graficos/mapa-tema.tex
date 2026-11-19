@@ -1,0 +1,87 @@
+% Mapa del tema 3.B.20 (comentario de Víctor del 19/11/2026): los 3 bloques,
+% la pregunta a la que responde cada uno, sus subapartados y el hilo entre
+% ellos, con la disposición del mapa del 3.B.4. A la izquierda, la pregunta de
+% cada bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice
+% por qué se pasa al siguiente. Arriba, la pregunta del tema; abajo, la
+% respuesta de la conclusión. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «No hay bien ni mal que cien años dure». ¿Por qué cada orden económico internacional, después de funcionar, acabó rompiéndose, y qué aprendió el siguiente?};}
+  \capa{1}{\draw[hilo] (2.0,-1.13) -- (2.0,-1.37);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceedorado] (pI) at (0,-1.40)
+    {\tit{tceedorado}{I. Hasta 1914}
+     ¿Cómo funcionó la primera globalización sin un tratado que la organizara?};}
+  \capa{2}{\node[contenido=tceedorado] (cI1) at (4.75,-1.40)
+    {\tit{tceedorado}{Comercio y finanzas (I.1-I.2)}
+     librecambio: Leyes de Granos, \autor{Cobden}-\autor{Chevalier}\\
+     vuelta atrás desde 1879 (\autor{Bismarck})\\
+     exportación de capital y de personas};}
+  \capa{2}{\node[contenido=tceedorado] (cI2) at (10.45,-1.40)
+    {\tit{tceedorado}{Patrón oro clásico (I.3)}
+     flujo de especie y puntos oro\\
+     funcionó por credibilidad y hegemonía británica, más que por su mecanismo};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.45) -- (2.0,-4.15);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.80)
+    {la guerra rompe las condiciones del orden de 1914 y volver atrás falla};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceegris] (pII) at (0,-4.20)
+    {\tit{tceegris}{II. Entreguerras (1914-1944)}
+     ¿Por qué no se pudo volver al oro y el mundo se cerró?};}
+  \capa{4}{\node[contenido=tceegris] (cII1) at (4.75,-4.20)
+    {\tit{tceegris}{Primera Guerra Mundial (II.1)}
+     rotas las 3 condiciones del patrón oro\\
+     flotación, hiperinflaciones, Génova y el patrón cambios-oro};}
+  \capa{4}{\node[contenido=tceegris] (cII2) at (10.45,-4.20)
+    {\tit{tceegris}{Gran Depresión (II.2)}
+     el oro transmite la crisis a todo el mundo\\
+     aranceles, devaluaciones y controles\\
+     bloques: el comercio se hunde};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.05) -- (2.0,-6.75);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-6.40)
+    {tras salvarse cada uno solo en los 30, se pactan reglas comunes};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceeazul] (pIII) at (0,-6.80)
+    {\tit{tceeazul}{III. Bretton Woods (1944-1973)}
+     ¿Qué se pactó y por qué no aguantó?};}
+  \capa{6}{\node[contenido=tceeazul] (cIII1) at (4.75,-6.80)
+    {\tit{tceeazul}{Acuerdos y funcionamiento (III.1)}
+     reglas multilaterales: FMI, BIRF, GATT\\
+     tipos fijos pero ajustables, con el dólar};}
+  \capa{6}{\node[contenido=tceeazul] (cIII2) at (10.45,-6.80)
+    {\tit{tceeazul}{Ruptura (III.2)}
+     3 problemas: ajuste, liquidez y confianza (\autor{Triffin})\\
+     vuelve el capital; \autor{Nixon} (1971), flotación (1973)};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-8.65) -- (2.0,-8.95);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-8.95)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: ninguno de los 3 órdenes llegó al siglo: un sistema dura mientras se adapta y sus miembros cooperan; ningún diseño resolvió a la vez el ajuste, la liquidez y la confianza.};}
+\end{tikzpicture}
+\end{document}

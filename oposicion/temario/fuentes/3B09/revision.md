@@ -229,3 +229,7 @@ Ninguna nota lo necesitaba.
 - **Texto**: el efecto sobre la producción ya no dice que «se lee igual sobre la FPP desplazada»; tras el gráfico, un punto nuevo, «La lectura gráfica»: los tramos son de la FPP nueva, el tipo lo da el tramo en que la toca una recta con la RRI constante ($P_1$) y eso depende del origen del crecimiento (remite a I.2.3 y I.2.4). Pie del gráfico: «… los 5 tramos de la FPP nueva».
 - **Ficha**: en «Producción», una frase: las 5 regiones son tramos de la FPP nueva y manda dónde la toca la RRI.
 - **Páginas**: 30 → 31; el apartado «En un país grande» pasa a empezar en la página 9 y el gráfico 4 no cabe en su hueco (probado a reducir el gráfico 4 y a acortar el texto: no basta). La página 9 queda a media altura.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

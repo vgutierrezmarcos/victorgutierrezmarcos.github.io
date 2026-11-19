@@ -321,3 +321,7 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba (la de los antecedentes de la nueva geografía económica es una enumeración corta dentro de una frase).
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

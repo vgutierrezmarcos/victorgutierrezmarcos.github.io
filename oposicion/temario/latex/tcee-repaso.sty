@@ -107,6 +107,16 @@
 \newcommand{\sub}[1]{\par\vspace{2pt}%
   \noindent\phantomsection{\color{tceemorado}\bfseries#1}\par\nopagebreak\vspace{-0.45em}%
   \noindent{\color{tceemorado}\rule{\linewidth}{0.3pt}}\par\nopagebreak}
+% \subsub{título} y \subsubsub{título}: niveles 3 y 4 del tema (Víctor, 19/11/2026),
+% en morado y cursiva, sin raya; no quedan solos al pie (\nopagebreak detrás).
+\newcommand{\subsub}[1]{\par\vspace{1.5pt}%
+  \noindent\phantomsection{\color{tceemorado}\bfseries\itshape#1}\par\nopagebreak}
+\newcommand{\subsubsub}[1]{\par\vspace{1pt}%
+  \noindent\hspace*{0.6em}{\color{tceemorado}\itshape#1}\par\nopagebreak}
+% \anexorepaso: a partir de aquí, el «anexo» de la ficha (datos clave, autores y
+% fechas, preguntas del tribunal, ojo en el test), que empieza arriba de la última
+% columna y no pasa de ella (Víctor, 19/11/2026). El tema llena las 7 anteriores.
+\newcommand{\anexorepaso}{\par\vfill\columnbreak\phantomsection\label{rep:anexo}}
 % Ojo: un \color en modo vertical deja un «whatsit» que convierte el \parskip
 % siguiente en un punto de corte legal; por eso cada línea empieza con \noindent
 % o \leavevmode (sin ello, un \sub podía quedar solo al pie de la columna).

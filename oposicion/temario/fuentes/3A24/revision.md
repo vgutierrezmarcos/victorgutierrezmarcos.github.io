@@ -273,3 +273,7 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - l. 40: las 3 etapas de la economía del bienestar.
 - l. 558: los 2 principios de la justicia de Rawls, por orden de prioridad (se quitan los «1)» y «2)»; los a) y b) del segundo quedan dentro del ítem).
 - l. 858: manipulación de la agenda, el ganador según el orden de votación (3 casos).
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

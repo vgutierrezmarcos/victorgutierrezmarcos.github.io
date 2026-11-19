@@ -256,3 +256,7 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 ### Dudas (16/11/2026)
 
 - **A41-16N-1. Niveles de los modelos de la política monetaria.** Con la política monetaria en `\paragraph` y cada modelo (Phelps-Lucas, Kydland-Prescott y Barro-Gordon) en `\subparagraph`, no queda un nivel de título para a) Idea, b) Modelo, c) Valoración ni para i)-iii). Opción recomendada aplicada: rótulos sangrados en cursiva (a)-c) a 4,8 em, i)-iii) a 6 em), como los i)-iii) de otros temas; no salen en los marcadores del PDF. Alternativa: sacar los 2 modelos a su propio `\paragraph` dentro de I.2.1 (p. ej., «La política monetaria: expectativas racionales» y «La política monetaria: inconsistencia temporal»), con a)-c) en `\subparagraph`.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

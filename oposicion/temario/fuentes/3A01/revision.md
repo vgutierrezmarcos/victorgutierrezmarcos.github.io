@@ -286,3 +286,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - En la caja «Para ver», el enlace a Wikipedia se conserva (venía del original), pero el texto ya no dice «a hombros de gigantes», que se queda en el 3.A.44 (Romer): «la idea de que la ciencia avanza apoyándose en lo que descubrieron otros antes».
 
 - Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

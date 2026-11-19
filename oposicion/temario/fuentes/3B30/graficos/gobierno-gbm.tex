@@ -1,0 +1,55 @@
+% El gobierno del Grupo del Banco Mundial y el voto en el BIRF (comentario de
+% Víctor del 18/11/2026). Mismos estilos que la figura del gobierno del FMI
+% (3.B.22): órganos en morado, quien asesora en azul, los países en verde y
+% el control en dorado. A la derecha, cómo se reparten los votos y la silla
+% de España.
+% Capas: 1 los 3 niveles; 2 el Comité para el Desarrollo; 3 los países y el
+% control; 4 el voto y la silla de España.
+% Datos a 30/6/2026 (votos) y 1/11/2026 (Directorio). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\begin{document}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    organo/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=2pt,
+      align=center,text width=5.2cm,inner sep=4pt,font=\footnotesize},
+    asesor/.style={draw=tceeazul,thick,fill=tceeazul!8,rounded corners=2pt,
+      align=center,text width=3.4cm,inner sep=4pt,font=\footnotesize},
+    control/.style={draw=tceedorado,thick,fill=tceedorado!10,rounded corners=2pt,
+      align=center,text width=3.4cm,inner sep=4pt,font=\footnotesize},
+    pais/.style={draw=tceeverde,thick,fill=tceeverde!10,rounded corners=8pt,
+      align=center,text width=3.4cm,inner sep=4pt,font=\footnotesize},
+    voto/.style={draw=tceemorado!60,fill=tceemorado!4,rounded corners=2pt,
+      align=left,text width=4.6cm,inner sep=4pt,font=\scriptsize},
+    rel/.style={->,thick,tceegris},
+    etq/.style={font=\scriptsize,text=tceegris!80!black,align=center}]
+  % 1: los 3 niveles
+  \capa{1}{\node[organo] (junta) at (0,0) {\textbf{Junta de Gobernadores}\\un gobernador por país (en España, el ministro de Economía); se reúne en las Reuniones Anuales con el FMI\\capital, miembros, enmiendas: 85~\% de los votos (veto de EE.~UU.)};}
+  \capa{1}{\node[organo] (directorio) at (0,-3.1) {\textbf{Directorio Ejecutivo}\\25 directores: 6 nombrados por los mayores accionistas y 19 elegidos por grupos de países (sillas)\\aprueba préstamos, estrategias y presupuesto};}
+  \capa{1}{\node[organo] (presidente) at (0,-6.0) {\textbf{Presidente}\\por tradición, estadounidense\\(\autor{Ajay Banga}, desde junio de 2023)};}
+  \capa{1}{\draw[rel] (junta) -- node[etq,right] {delega la gestión} (directorio);}
+  \capa{1}{\draw[rel] ([xshift=-0.7cm]directorio.south) -- node[etq,left] {lo elige} ([xshift=-0.7cm]presidente.north);}
+  \capa{1}{\draw[rel] ([xshift=0.7cm]presidente.north) -- node[etq,right] {lo preside} ([xshift=0.7cm]directorio.south);}
+  % 2: el Comité para el Desarrollo
+  \capa{2}{\node[asesor] (cd) at (-5.0,-0.1) {\textbf{Comité para el Desarrollo}\\ministerial, conjunto con el FMI: orienta en desarrollo};}
+  \capa{2}{\draw[rel] (cd.east) -- node[etq,above] {asesora} (cd.east -| junta.west);}
+  % 3: los países y el control
+  \capa{3}{\node[pais] (paises) at (-5.0,-3.1) {\textbf{Países miembros}\\189 en el BIRF; votan según sus acciones};}
+  \capa{3}{\draw[rel] (paises.north) -- node[etq,left] {nombran} (cd.south);}
+  \capa{3}{\draw[rel] (paises.east) -- node[etq,above] {eligen} (paises.east -| directorio.west);}
+  \capa{3}{\node[control] (control) at (-5.0,-6.0) {\textbf{Control independiente}\\Grupo de Evaluación Independiente y Panel de Inspección (1993)};}
+  \capa{3}{\draw[rel] (control.east) -- (-3.1,-6.0) |- node[etq,below,pos=0.75] {informa} ([yshift=-0.75cm]directorio.west);}
+  % 4: el voto y la silla de España
+  \capa{4}{\node[voto,anchor=north west] (v) at (3.2,0.95) {%
+    \textbf{\textcolor{tceemorado}{El voto en el BIRF}}\\[2pt]
+    votos de un país $=$ votos básicos $+$ 1 por acción\\[2pt]
+    votos básicos: el 5,55~\% del total, a partes iguales\\[2pt]
+    EE.~UU. 15,98~\% · Japón 6,88 · China 5,75 · Alemania 4,09 · Francia y Reino Unido 3,75\\[2pt]
+    \textbf{España 1,84~\%}, puesto 14};}
+  \capa{4}{\node[voto,anchor=north west] (s) at (3.2,-2.9) {%
+    \textbf{\textcolor{tceemorado}{La silla de España}}\\[2pt]
+    España, México, Venezuela, Costa Rica, El Salvador, Guatemala, Honduras y Nicaragua\\[2pt]
+    4,59~\% de los votos; España y México se turnan director y suplente};}
+\end{tikzpicture}
+\end{document}

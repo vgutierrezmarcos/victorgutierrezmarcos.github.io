@@ -10,7 +10,7 @@ Tema hecho desde cero el 14/11/2026 (entrega 1: tema y ficha de repaso; sin víd
     - De la carpeta «Tema 3.B.33» de materiales por temas: `3B-33.pdf` (tema de otro preparador, solo para contrastar), `Comercio.xlsx` (datos de 2019, sustituidos por los oficiales de 2025-2026) y los manuales de Alonso (dir.), *Lecciones sobre economía mundial*, 9.ª ed., 2019, y de Requeijo, *Economía mundial*, 4.ª ed. (citados en el `.bib`).
     - De la nueva colección de ICEX-CECO: `3B32i.pdf` (2023, ya con la numeración actual), solo para contrastar estructura y enfoque.
   - Referencias de otros preparadores (`_trabajo/referencias.md`): la estructura sigue la de Miquel Tebar (CRITERIOS §5), que coincide con la de ICEX-CECO: perspectivas; flujos comerciales con las áreas emergentes; flujos financieros. Aquí, los 3 epígrafes del título son los 3 apartados (B32-01).
-- **Estructura**:
+- **Estructura** (la del 14/11/2026; desde el 19/11/2026 el orden es I. Flujos, II. Emergentes, III. Perspectivas: ver «Comentarios de Víctor (18/11/2026)»):
   - Introducción (2′30″).
   - **I. Perspectivas económicas mundiales** (8′):
     - I.1 Coyuntura (WEO de octubre de 2026).
@@ -106,6 +106,8 @@ Todo el tema es nuevo. Lo que no estaba en ninguna referencia:
 
 ## 6. Coherencia
 
+- **19/11/2026**: el sistema monetario (I.3) usa las mismas cifras y fuentes que el 3.B.21 (COFER, BPI, BCE, ley GENIUS). El 3.B.21 da un 4,6 % para el volumen del comercio de mercancías de 2025; aquí, el 4,2 % revisado de la OMC (B32-13).
+
 - **No se duplica el 3.B.21.** Su historia (hiperglobalización, aranceles de EE. UU., dólar y renminbi) se resume en una línea y se remite. Las cifras compartidas son las mismas: arancel efectivo 2,6 → ~7 %, Ormuz, WEO de octubre de 2026, NMF 80 → 72 %.
 - **Las CGV** se cuentan en resumen y se remiten al 3.B.18 (ficha `cadenas-globales-valor`).
 - **El trilema y el dilema** se resumen y se remiten al 3.B.15. **La paradoja de Lucas** se resume y se remite al 3.B.12 y al 3.B.18.
@@ -133,6 +135,7 @@ Todo el tema es nuevo. Lo que no estaba en ninguna referencia:
   - (a) 3 apartados que siguen los 3 epígrafes del título (perspectivas; flujos comerciales y financieros; emergentes).
   - (b) Comercio y finanzas en apartados distintos, con los emergentes dentro del comercio.
   - **Aplicada: (a)**: respeta el orden del título y da a los emergentes un apartado con su propio modelo.
+  - **Superada el 19/11/2026**: Víctor pide el orden flujos → emergentes → perspectivas.
 - **B32-02 (14/11/2026). Bloques comerciales.** Estaban en el título antiguo.
   - (a) Fuera, con remisiones al 3.B.35 y al 3.B.41.
   - (b) Un subapartado.
@@ -173,13 +176,14 @@ Todo el tema es nuevo. Lo que no estaba en ninguna referencia:
   - II.3: la ecuación de gravedad (función clave, se conserva en una esquina hasta el final de II) y la recta decreciente en escala logarítmica, con los socios de la UE por encima.
   - II.5: el circuito de 4 cajas del ciclo financiero global, construido paso a paso (Fed → intermediarios → resto del mundo → vuelta).
   - III.1: la ecuación de convergencia β (función clave) y la nube con la recta.
+  - **Nueva numeración (19/11/2026)**: lo anterior de II pasa a I (II.3 → I.1, gravedad; II.5 → I.2, ciclo); III.1 → II.1 (convergencia); I.3 → III.4 (centro de gravedad). Nuevo: III.5, el DAFO en 4 cuadrantes, que se escribe en la pizarra al final del bloque III; la tabla de previsiones (III.2) va como apoyo.
 - **Apoyo**, sin pizarra: crecimiento por regiones, peso en PPA, comercio frente a PIB, productos, regiones, servicios, IED, banca y la tabla de exportadores. Basta con decir su cifra clave.
 - **Cifras**: una por idea. No recitar tablas.
 - **Pausas**: antes de cada modelo y tras la pregunta del enganche.
 
 **Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
 
-> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8} (I.1, \tiempo{3}; I.2, \tiempo{1,5}; I.3, \tiempo{3,5}, con \tiempo{2} para el centro de gravedad); II, \tiempo{13} (II.1, \tiempo{3}; II.2, \tiempo{2}; II.3, \tiempo{3}; II.4, \tiempo{2,5}; II.5, \tiempo{2,5}); III, \tiempo{5,5} (III.1, \tiempo{2,5}; III.2, \tiempo{2}; III.3, \tiempo{1}), y conclusión, \tiempo{1}. Es un tema de datos: no se trata de recitar cifras, sino de dar pocas y bien elegidas (una por idea) y de explicarlas con 4 modelos sencillos. Se dibujan el desplazamiento del centro de gravedad (gráfico~\ref{fig:centro-gravedad}), la recta de gravedad (gráfico~\ref{fig:gravedad}), el circuito del ciclo financiero global (figura~\ref{figu:ciclo-global}) y la nube de convergencia (gráfico~\ref{fig:convergencia}); las funciones clave son la ecuación de gravedad \eqref{eq:gravedad} y la de convergencia \eqref{eq:convergencia-beta}. Los demás gráficos son de apoyo. Las cifras caducan cada año: están en el registro de datos del tema y se actualizan con el WEO de octubre.
+> Reparto del cante (estructura del 19/11/2026): introducción, 2'30"; I, 13' (I.1 sistema comercial, 7': mercancías y sus formas 2'30", servicios y CGV 1'30", gravedad 3'; I.2 sistema financiero, 4'30": flujos financieros y de factores 2', ciclo financiero global 2'30"; I.3 sistema monetario, 1'30"); II, 5' (II.1, 2'30"; II.2, 1'30"; II.3, 1'); III, 8'30" (III.1 coyuntura, 2'; III.2 previsiones de los organismos, 1'30", con la tabla de previsiones como apoyo; III.3 riesgos y recomendaciones, 1'30"; III.4 medio y largo plazo, 2'30", con 1'30" para el centro de gravedad; III.5 DAFO, 1', escrito en la pizarra en 4 cuadrantes), y conclusión, 1'. Es un tema de datos: no se trata de recitar cifras, sino de dar pocas y bien elegidas (una por idea) y de explicarlas con 4 modelos sencillos. Se dibujan la recta de gravedad (gráfico «gravedad»), el circuito del ciclo financiero global (figura «ciclo-global»), la nube de convergencia (gráfico «convergencia»), el desplazamiento del centro de gravedad (gráfico «centro-gravedad») y el DAFO (tabla «dafo»); las funciones clave son la ecuación de gravedad y la de convergencia. Los demás gráficos y la tabla de previsiones son de apoyo. Las cifras caducan: están en el registro de datos del tema; las previsiones, cada vez que publique uno de los organismos de la tabla.
 
 ## Material del disco D: usado
 
@@ -192,3 +196,31 @@ Todo el tema es nuevo. Lo que no estaba en ninguna referencia:
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Comentarios de Víctor (18/11/2026)
+
+1. **Contraste con otros preparadores**: hecho (ver la sección del 19/11/2026).
+2. **Perspectivas al día y desarrolladas**: nuevo subapartado III.2 «Las previsiones de los organismos internacionales», con la tabla de previsiones 2026-2027 (tabla «previsiones») de 7 informes con su fecha: FMI (WEO, 13/10/2026), OCDE (informe intermedio, 23/9/2026; el Economic Outlook de diciembre aún no ha salido), Comisión Europea (otoño, 17/11/2026), Banco Mundial (GEP, 11/6/2026), OMC (GTOS, 8/10/2026), BCE (septiembre de 2026) y Funcas (previsiones del 15/10/2026 y panel de septiembre; el de noviembre aún no ha salido; Funcas no da previsiones mundiales: solo la zona del euro y la opinión de los panelistas sobre el entorno internacional). Mundo, EE. UU., zona del euro, China, emergentes y comercio; qué es consenso y qué no (el comercio); riesgos en los que coinciden todos (guerra y energía, corrección de la IA, comercio, deuda y tipos a largo, clima), con el escenario adverso del Banco Mundial (1,3 %). Cifras comprobadas en el documento original (cuadro I.2.1 de la Comisión, cuadro 1.1 del GEP, cuadro 1 de la OMC, cuadros A1/A4 y DataMapper del FMI, cuadro 4 del panel y cuadro 2 de las previsiones de Funcas), salvo la OCDE (B32-11).
+3. **Nueva estructura**: I. Estructura de los flujos (I.1 sistema comercial: mercancías —con las formas del comercio—, servicios y CGV, gravedad; I.2 sistema financiero: flujos financieros, ciclo financiero global y flujos de factores; I.3 sistema monetario, breve, con las cifras del 3.B.21); II. Nuevas áreas emergentes (con el peso en el PIB mundial, que pasa aquí desde las perspectivas); III. Perspectivas (coyuntura, previsiones, riesgos, medio y largo plazo con el centro de gravedad, y el DAFO en una tabla de 4 cuadrantes, cantada). Mismos 3 planos (comercial, financiero, monetario) que el 3.B.20 y el 3.B.21. Minutos: 2'30" + 13' + 5' + 8'30" + 1' = 30'. Puestos al día la introducción (contextualización, problemática y estructura), el esquema, los nexos y recapitulaciones de cada bloque, la conclusión, la ficha (4 páginas a 9 pt), el reparto del cante en «Instrucciones para el vídeo» y `datos-actualizables.yaml` (entradas nuevas: previsiones-organismos, funcas-panel, bm-escenario-adverso, cofer-dolar, migrantes y royalties).
+
+## Comentarios de Víctor (19/11/2026)
+
+- **Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema)**, con la estructura nueva (I flujos, II emergentes, III perspectivas) y la misma forma que el del 3.B.41.
+- **Contraste con otros preparadores** (tabla en `_trabajo/contraste-preparadores.md`, 9 ficheros: 7 versiones válidas de 2018 a 2024, 2 de ellas con el título vigente; otros 2 del disco D: resultaron ser del tema de la OMC):
+  - *Añadido, porque está en casi todas y aquí faltaba o era una línea*: las formas del comercio (interindustrial, intraindustrial con el índice de Grubel-Lloyd, intraempresa y de bienes intermedios); los acuerdos regionales que ordenan cada polo (mercado único, T-MEC, RCEP, ZLCCA), en una línea, porque los bloques ya no están en el título (B32-02); la IED *greenfield* frente a las fusiones y adquisiciones y el paradigma OLI de Dunning; los bloques como desviación de la gravedad y el efecto de la moneda común (Rose, 2000), en las extensiones del modelo de gravedad; las causas del gran colapso del comercio de 2009 (crédito comercial, inventarios, CGV); los flujos de factores (migrantes, remesas, tecnología), que Víctor pide y que 3 versiones tratan de pasada; el sistema monetario (dólar, reservas, renminbi), que solo esbozan 3.
+  - *Solo en el nuestro, y se queda* (es correcto y aporta): el modelo de gravedad desarrollado, el ciclo financiero global, la convergencia condicional y la trampa de la renta media, el centro de gravedad de Quah, el peso en PPA frente a tipos de mercado, el Golfo y el comercio Sur-Sur, y el DAFO. Ninguna versión da una tabla de previsiones de varios organismos: todas se quedan en el FMI (y alguna, el BM o la OMC).
+  - *No se ha añadido* (minoritario o de otro tema): la evolución histórica por etapas desde el siglo XIX (es el 3.B.20 y el 3.B.21; aquí quedan las 3 etapas desde 1991), la curva del elefante y los trilemas de Rodrik (2 versiones), la teoría de la IED en detalle y las CGV con su tipología (3.B.18), las fuentes de financiación del desarrollo (AOD, fondos soberanos; 3.B.29) y las finanzas sostenibles (una).
+  - Páginas: el tema pasa de 24 a 28 (más 1 de anexos y 5 de bibliografía), por debajo de 45.
+
+## Dudas abiertas (19/11/2026)
+
+- **B32-10. El DAFO, ¿cantado o en caja gris?**
+  - (a) Cantado (1'), como cierre del bloque III, en una tabla de 4 cuadrantes en el cuerpo.
+  - (b) En una caja gris, sin cantar, y el minuto a las previsiones.
+  - **Aplicada: (a)**: resume el bloque y da una recapitulación que se recuerda.
+- **B32-11. Previsiones de la OCDE sin comprobar en la fuente** (oecd.org devuelve 403 a todas las descargas): las cifras (2,9/3,0 el mundo) son las de su nota de prensa, reproducida en prensa especializada; van marcadas en la tabla. Sustituirlas por las del Economic Outlook de diciembre de 2026 en cuanto salga. Tampoco se pudo abrir el cuadro 1.1 del WEO (sus cifras salen del apéndice A1/A4 y del DataMapper, que coinciden).
+- **B32-12. Dónde van los flujos de factores.**
+  - (a) Dentro de I.2, sistema financiero, tras el ciclo financiero global (las remesas son su contrapartida financiera).
+  - (b) Un subapartado propio (I.3) y el monetario en I.4.
+  - **Aplicada: (a)**: mantiene los 3 planos del 3.B.20 y el 3.B.21.
+- **B32-13. Volumen del comercio de mercancías de 2025.** Aquí 4,2 % (cifra revisada de la OMC de octubre de 2026); el 3.B.21 dice 4,6 % (la de su nota de prensa). No se toca el 3.B.21: conviene ponerlo al día con el 4,2 % (anotado también en «Coherencia»).

@@ -1,0 +1,90 @@
+% Mapa de la exposición del tema 3.A.37 (comentario de Víctor del 19/11/2026),
+% como el del 3.B.4: arriba, la pregunta del tema (introducción); a la
+% izquierda, la pregunta de cada bloque; a la derecha, lo que se cuenta en sus
+% apartados; entre bloques, la flecha dice por qué se pasa al siguiente; abajo,
+% la respuesta de la conclusión. Paleta del bloque de macroeconomía (3.A.29-3.A.45): azul marino, naranja y verde, los colores de la demanda.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize,
+    execute at begin node={\everypar{\hangindent=0.8em\hangafter=1}}},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  fila/.style={inner sep=0pt,draw=none},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\par\vspace{1pt}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Las cosas de palacio van despacio». ¿Por qué caminos, y con qué retraso, llega una decisión sobre el tipo a un día al gasto y a los precios?};}
+  \capa{1}{\draw[hilo] ($(intro.south west)+(2.0,0)$) -- ++(0,-0.28);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=dicze] (pI) at ($(intro.south west)+(0,-0.3)$)
+    {\tit{dicze}{I. Transmisión convencional}
+     ¿Por qué tiene efectos reales y por qué canales llega?};}
+  \capa{2}{\node[contenido=dicze] (cI1) at ($(pI.north west)+(4.75,0)$)
+    {\tit{dicze}{Teoría y canales (I.1-I.2)}
+     efectos reales a corto plazo, no a largo\par
+     tipo de interés, precios de los activos, tipo de cambio, crédito, expectativas\par};}
+  \capa{2}{\node[contenido=dicze] (cI2) at ($(pI.north west)+(10.45,0)$)
+    {\tit{dicze}{Zona del euro y evidencia (I.3-I.4)}
+     la transmisión en la zona del euro y en España\par
+     efectos con retardos largos\par};}
+  \capa{2}{\node[fila,fit=(pI)(cI1)(cI2)] (fI) {};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] ($(fI.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{3}{\node[rotulolargo,anchor=west] at ($(fI.south west)+(2.15,-0.48)$)
+    {¿qué hace posible la transmisión y qué la amplifica?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=dicconspriv] (pII) at ($(fI.south west)+(0,-0.95)$)
+    {\tit{dicconspriv}{II. Rigideces y fricciones}
+     ¿Crean la transmisión o la amplifican?};}
+  \capa{4}{\node[contenido=dicconspriv] (cII1) at ($(pII.north west)+(4.75,0)$)
+    {\tit{dicconspriv}{Precios y salarios (II.1-II.2)}
+     NEK: el tipo nominal mueve el real\par
+     contratos escalonados\par};}
+  \capa{4}{\node[contenido=dicconspriv] (cII2) at ($(pII.north west)+(10.45,0)$)
+    {\tit{dicconspriv}{Crédito y hogares (II.3-II.4)}
+     canales del crédito\par
+     hogares distintos: canal redistributivo\par};}
+  \capa{4}{\node[fila,fit=(pII)(cII1)(cII2)] (fII) {};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] ($(fII.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{5}{\node[rotulolargo,anchor=west] at ($(fII.south west)+(2.15,-0.48)$)
+    {¿y cuando el tipo de interés ya no puede bajar?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=dicfbcf] (pIII) at ($(fII.south west)+(0,-0.95)$)
+    {\tit{dicfbcf}{III. Transmisión no convencional}
+     ¿Qué hace el banco central cuando el tipo no puede bajar más?};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII1) at ($(pIII.north west)+(4.75,0)$)
+    {\tit{dicfbcf}{El límite inferior (III.1)}
+     el tipo a corto plazo no puede bajar más\par};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII2) at ($(pIII.north west)+(10.45,0)$)
+    {\tit{dicfbcf}{La NEK en el límite (III.2)}
+     riesgo de espiral deflacionista\par
+     tipos esperados y primas: su palabra y su balance\par};}
+  \capa{6}{\node[fila,fit=(pIII)(cIII1)(cIII2)] (fIII) {};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] ($(fIII.south west)+(2.0,-0.05)$) -- ++(0,-0.3);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at ($(fIII.south west)+(0,-0.38)$)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: la política monetaria actúa hoy sobre la economía de dentro de 2 años: por eso tiene que mirar hacia delante y ser creíble.};}
+\end{tikzpicture}
+\end{document}

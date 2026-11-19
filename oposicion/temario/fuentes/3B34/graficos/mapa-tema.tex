@@ -1,0 +1,88 @@
+% Mapa de la exposición del 3.B.34 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Elaboración propia, con la misma forma que el mapa del 3.B.41.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Ojos que no ven, corazón que no siente». ¿Se pueden poner reglas comunes a lo que no se ve: servicios, ideas, compras públicas?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. AGCS (anexo 1B)}
+     ¿Por qué hace falta un acuerdo para los servicios, si sus barreras no son aranceles?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Importancia y motivación (I.1-I.2)}
+     más de la cuarta parte del comercio\\
+     barreras regulatorias: costes fijos};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{El acuerdo (I.3-I.5)}
+     4 modos de suministro\\
+     listas de compromisos\\
+     de la Ronda Uruguay a Doha; valoración};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.75) -- (2.0,-4.55);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.15)
+    {tras los servicios, el otro comercio que no se ve: las ideas};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.5)
+    {\tit{tceeverde}{II. ADPIC (anexo 1C)}
+     ¿Debe un acuerdo comercial obligar a proteger la propiedad intelectual, y a quién beneficia?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.5)
+    {\tit{tceeverde}{Importancia y motivación (II.1-II.2)}
+     cobros de más de 600.000 M\$ al año\\
+     protección entre el Norte y el Sur};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.5)
+    {\tit{tceeverde}{El acuerdo (II.3-II.5)}
+     mínimos de protección con juez\\
+     de la OMPI a la salud pública: flexibilidades\\
+     valoración};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-7.1) -- (2.0,-7.9);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.5)
+    {lo nuevo, sin consenso de todos, avanza entre grupos de miembros};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.85)
+    {\tit{tceedorado}{III. Plurilaterales y otros (anexos 2-4)}
+     ¿Cómo avanza la OMC en lo nuevo cuando no hay consenso?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.85)
+    {\tit{tceedorado}{Contratación Pública (III.1)}
+     anexo 4: solo obliga a quien firma\\
+     economía del sesgo nacional};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.85)
+    {\tit{tceedorado}{Otros acuerdos e iniciativas (III.2-III.4)}
+     comercio electrónico, inversiones, reglamentación de los servicios\\
+     MEPC y solución de diferencias\\
+     situación actual};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-10.45) -- (2.0,-10.75);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.75)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: sí se pueden poner reglas comunes a lo que no se ve, siempre que antes se haga visible, en listas y exámenes.};}
+\end{tikzpicture}
+\end{document}

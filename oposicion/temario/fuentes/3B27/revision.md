@@ -156,3 +156,7 @@ Todas las cifras que caducan están en `datos-actualizables.yaml`.
 - **B27-12** (16/11/2026). Media de la zona del euro en el gráfico de concentración: el BCE no publica un agregado de la zona en SSI. Opciones: (a) media simple de los 20 países (composición de 2025), el criterio del BCE para la media de la UE; (b) media ponderada por activos, que exigiría otra serie y quedaría dominada por Alemania y Francia (concentración baja). **Aplicada: (a)**, explicado en la fuente del gráfico y en la cabecera del CSV.
 - **B27-13** (16/11/2026). La Imagen 1 del original era un árbol de fusiones con los activos de cada grupo en 2020. Opciones: (a) gráfico de CR5 e IHH con datos del BCE más una tabla de las fusiones 2007-2025 sin cifras de activos (no hay una fuente oficial única y comparable por grupo); (b) redibujar el árbol en TikZ con los activos de 2025 de cada grupo. **Aplicada: (a)**.
 - **B27-14** (16/11/2026). III.4 «Capital humano de las cajas» se queda con 30″ dentro de los 5′ de III. Opciones: (a) mantenerlo como apartado propio, porque estaba en el original; (b) fundirlo en III.2 e) (supervisión y gobernanza). **Aplicada: (a)**.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

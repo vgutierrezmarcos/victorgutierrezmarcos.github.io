@@ -239,3 +239,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Quitados «no hay plazo que no se cumpla ni deuda que no se pague» (equivalencia ricardiana; se queda en el 3.A.39) y «la gallina de los huevos de oro» (Chamley-Judd; es el refrán inicial del 3.B.3), en el tema y la ficha. Ahora: «porque la deuda de hoy habrá que pagarla» y «el capital es la fuente de la renta futura».
 
 - Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

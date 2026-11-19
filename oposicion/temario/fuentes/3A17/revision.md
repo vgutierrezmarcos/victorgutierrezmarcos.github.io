@@ -219,3 +219,7 @@ Víctor: «En las notas a pie de página también puede haber párrafos indentad
 - La nota de los problemas de cubrir el déficit con impuestos (l. 803): 3 viñetas (trade-off, eficiencia dinámica, redistribución).
 
 No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con enlaces ni las que son un solo argumento seguido. La ficha de repaso no tiene notas al pie. Compilado (`--solo pdf --no-publicar`) y comprobadas en el PDF las páginas de esas notas: sin desbordes ni notas partidas raras.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

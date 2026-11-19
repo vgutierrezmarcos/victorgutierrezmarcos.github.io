@@ -203,3 +203,6 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **Coherencia**: el 3.B.8 remite al 3.B.33 para Bagwell y Staiger: sigue desarrollado, ahora en el anexo A (no hace falta tocar el 3.B.8). Instrucciones para el vídeo (sección 8) puestas al día: los 2 modelos ya no van a la pizarra y la figura `acuerdos-especificos` se dibuja por grupos en II.1.2.
 - `verificar-tema.py`: 0 errores, los mismos 17 avisos de antes (cifras sin cita y vídeo).
 
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

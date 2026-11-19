@@ -1,0 +1,80 @@
+% Mapa de la exposición del 3.B.24 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Misma forma que los mapas del 3.B.4 y del 3.B.41.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «¡Cuán largo me lo fiáis!». ¿Cuánto vale una promesa de pago futura, por qué se paga distinto según el plazo y cuánto riesgo tiene una inversión que parece segura?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul,minimum height=2.45cm] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Instrumentos de renta fija}
+     ¿Qué es un bono y cómo se fijan su precio y su rentabilidad?};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Definición, elementos y tipos (I.1-I.3)}
+     pagos prometidos, frente a la renta variable\\ nominal, cupón y vencimiento\\ tipos de bono y calificación crediticia};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Precio y rendimiento (I.4-I.5)}
+     precio: los pagos descontados con el tipo de cada plazo\\ rentabilidad corriente, a vencimiento (TIR) y realizada\\ precio y TIR, en sentido contrario};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.65) -- (2.0,-4.35);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.00)
+    {un tipo distinto para cada plazo: ¿por qué, y qué dice del futuro?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde,minimum height=2.20cm] (pII) at (0,-4.40)
+    {\tit{tceeverde}{II. La curva de tipos}
+     ¿Por qué un mismo emisor paga tipos distintos según el plazo?};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.20cm] (cII1) at (4.75,-4.40)
+    {\tit{tceeverde}{Definición y teorías (II.1-II.2)}
+     tipos de contado y tipos a plazo\\ expectativas, prima por liquidez y hábitat preferente};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.20cm] (cII2) at (10.45,-4.40)
+    {\tit{tceeverde}{Formas y movimientos (II.3)}
+     creciente, plana o invertida\\ nivel, pendiente y curvatura\\ la curva, el ciclo y la política monetaria};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.65) -- (2.0,-7.35);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.00)
+    {si los tipos se mueven, se mueve el precio: ¿cuánto riesgo tiene un bono?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado,minimum height=2.45cm] (pIII) at (0,-7.40)
+    {\tit{tceedorado}{III. Duración y convexidad}
+     Si los pagos son fijos, ¿por qué es arriesgado un bono y cómo se gestiona ese riesgo?};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII1) at (4.75,-7.40)
+    {\tit{tceedorado}{Riesgos del bono (III.1)}
+     8 riesgos: tipo de interés, reinversión, crédito, liquidez\ldots\\ el principal, el de tipo de interés};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII2) at (10.45,-7.40)
+    {\tit{tceedorado}{Riesgo de tipo de interés (III.2)}
+     proposiciones de \autor{Malkiel}\\ duración de \autor{Macaulay}, modificada y monetaria\\ convexidad: corrige el error de la duración\\ inmunización; gestión pasiva y activa};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-9.90) -- (2.0,-10.20);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.20)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: el largo plazo se paga 2 veces, con la prima por plazo en el precio y con la duración en el riesgo; medir las 2 permite fiar a 100 años.};}
+\end{tikzpicture}
+\end{document}

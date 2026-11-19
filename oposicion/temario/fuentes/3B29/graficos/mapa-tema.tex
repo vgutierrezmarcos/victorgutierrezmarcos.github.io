@@ -1,0 +1,94 @@
+% Mapa de la exposición del 3.B.29 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Elaboración propia, con la misma forma que el mapa del 3.B.41.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Dale un pez a un hombre y comerá un día; enséñale a pescar y comerá toda la vida». ¿Por qué no llega el capital a los pobres, cuándo es sostenible su deuda y funciona la ayuda?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Financiación exterior}
+     ¿Por qué financiarse fuera y por qué el capital no va a los pobres?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Por qué financiarse fuera (I.1-I.2)}
+     brecha de financiación y 2 brechas\\
+     enfoque intertemporal\\
+     paradoja de \autor{Lucas}: el capital no va a los pobres};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Las fuentes (I.3)}
+     sin deuda: remesas e inversión directa\\
+     con deuda: préstamos y bonos\\
+     recursos internos y financiación innovadora};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.75) -- (2.0,-4.55);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.15)
+    {la financiación que crea deuda hay que devolverla: ¿cuándo se puede?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.5)
+    {\tit{tceeverde}{II. La deuda externa}
+     ¿Cuándo es sostenible, por qué pagan los Estados y cómo se resuelven sus crisis?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.5)
+    {\tit{tceeverde}{Sostenibilidad e impago (II.1)}
+     sostenible si el crecimiento cubre su coste\\
+     por qué pagan: reputación y sanciones\\
+     deuda excesiva: perdonar conviene a los 2};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.5)
+    {\tit{tceeverde}{Crisis y respuestas (II.2-II.3)}
+     años 80: Plan \autor{Brady}\\
+     años 90: México, Asia, Rusia, Argentina\\
+     los más pobres: de Toronto a la PPME\\
+     hoy: ISSD y Marco Común\\
+     FMI, foros de acreedores y reformas};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-7.1) -- (2.0,-7.9);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.5)
+    {queda la financiación que no se devuelve: la ayuda};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.85)
+    {\tit{tceedorado}{III. La ayuda al desarrollo}
+     ¿Qué es, cómo ha evolucionado y funciona de verdad?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.85)
+    {\tit{tceedorado}{Concepto y evolución (III.1-III.2)}
+     AOD: los 4 requisitos del CAD\\
+     del 0,7\,\% a la eficacia (París, Busan)\\
+     de los ODM a los ODS; de Monterrey a Sevilla\\
+     los recortes de 2024-2025};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.85)
+    {\tit{tceedorado}{¿Funciona? (III.3)}
+     por qué se da\\
+     efecto pequeño sobre el crecimiento agregado\\
+     funciona en programas concretos y evaluados};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-10.45) -- (2.0,-10.75);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.75)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: importa más cómo se financia el desarrollo que cuánto: la mejor financiación es la que enseña a pescar.};}
+\end{tikzpicture}
+\end{document}

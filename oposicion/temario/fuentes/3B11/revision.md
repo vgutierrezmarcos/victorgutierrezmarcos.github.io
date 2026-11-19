@@ -238,3 +238,7 @@ Todas con la opción recomendada aplicada.
 
 - Nota de las rentas primarias: las 2 cuentas de renta primaria de la contabilidad nacional (explotación y asignación) en itemize; la correspondencia con la balanza, en párrafo aparte.
 - No se convierten: las demás (un solo argumento) ni las de Nobel.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

@@ -373,3 +373,4 @@ Páginas del tema: 35 antes y 36 después (anexos: 5 → 9; bibliografía: 6 →
   - **Bibliografía**: 17 entradas nuevas en `3B23.bib` (15 traídas del 3B24 y 2 nuevas: `KimMuhnNikolaev2024Financial`, `CFTCSEC2010May6`); ninguna es esencial (siguen 5). `datos-actualizables.yaml`: entradas `reglamento-ia-alto-riesgo` y `patentes-ia-negociacion`, traídas del 3B24.
   - **Ficha**: una viñeta «IA» en II.1 (sigue en 4 páginas, letra de 9). **seo.json**: palabra clave «inteligencia artificial y mercados financieros».
   - **Vídeo**: la viñeta de la IA se dice de palabra al final de II.1, sin pizarra, en unos 20″ que salen de la lectura de la eficiencia; los \minutos no cambian.
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

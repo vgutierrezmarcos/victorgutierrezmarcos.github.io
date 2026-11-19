@@ -1,0 +1,80 @@
+% Mapa de la exposición del 3.B.22 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Misma forma que los mapas del 3.B.4 y del 3.B.41.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Más vale prevenir que curar». ¿Puede una institución internacional evitar las crisis de balanza de pagos, o solo curarlas cuando ya han estallado, y a qué precio?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul,minimum height=2.45cm] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Estructura}
+     ¿Qué es el FMI, cómo se gobierna y de dónde salen sus recursos?};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Historia y marco jurídico (I.1-I.2)}
+     4 etapas: guardián de las paridades, bombero, regreso y un fondo para todo\\ Convenio Constitutivo (1944): los fines del artículo~I};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Gobierno y finanzas (I.3)}
+     Junta de Gobernadores, Directorio, Gerencia\\ principio del accionista: la cuota da los votos y el acceso\\ cuotas, recursos prestados y DEG};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.65) -- (2.0,-4.35);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.00)
+    {con esa estructura y esos recursos: ¿qué hace el Fondo?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde,minimum height=2.20cm] (pII) at (0,-4.40)
+    {\tit{tceeverde}{II. Políticas}
+     ¿Qué hace el FMI: vigilar, asesorar, prestar?};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.20cm] (cII1) at (4.75,-4.40)
+    {\tit{tceeverde}{Supervisión y asistencia técnica (II.1-II.2)}
+     supervisión bilateral (artículo~IV), multilateral y estadística\\ asistencia técnica: voluntaria y la más apreciada};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.20cm] (cII2) at (10.45,-4.40)
+    {\tit{tceeverde}{Política financiera (II.3)}
+     justificación y principios\\ acuerdo de derecho de giro, Servicio Ampliado, líneas precautorias\\ la condicionalidad une las 3 políticas};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.65) -- (2.0,-7.35);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.00)
+    {las 3 políticas sirven a un mismo fin: ¿previenen y resuelven las crisis?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado,minimum height=2.45cm] (pIII) at (0,-7.40)
+    {\tit{tceedorado}{III. Prevención y solución de crisis}
+     ¿Puede prevenir las crisis, cómo ayuda a resolverlas y a qué coste?};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII1) at (4.75,-7.40)
+    {\tit{tceedorado}{Idea y prevención (III.1-III.2)}
+     prestamista internacional: el préstamo cambia las expectativas\\ supervisión, reservas y líneas precautorias};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII2) at (10.45,-7.40)
+    {\tit{tceedorado}{Solución y valoración (III.3-III.5)}
+     el programa: artículo~IV, sostenibilidad de la deuda, sector financiero\\ efectos sobre los países con programa\\ riesgo moral, ajuste y legitimidad};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-9.90) -- (2.0,-10.20);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.20)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: puede evitar las crisis de liquidez, no las de solvencia: la cura funciona si llega a tiempo, si el paciente es solvente y si no le quita las ganas de cuidarse.};}
+\end{tikzpicture}
+\end{document}

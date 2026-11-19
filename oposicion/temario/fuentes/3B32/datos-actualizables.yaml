@@ -1,5 +1,5 @@
 tema: 3B32
-fecha_inventario: 2026-11-14
+fecha_inventario: 2026-11-19
 # Tema de datos: se pone al día cada año tras el WEO de octubre del FMI.
 # 1) python3 graficos/datos-3B32.py   (rehace datos/*.csv y graficos/centro-gravedad.tex)
 # 2) revisar las cifras de cada entrada en el .tex y en la ficha, y los rótulos y comentarios de los gráficos
@@ -51,19 +51,46 @@ datos:
     familia: fmi-weo
     depende: [datos/inflacion-mundial.csv]
 
-  - id: otras-previsiones
-    texto: "la OCDE prevé un 2,9~\\% para 2026 y un 3~\\% para 2027, y el Banco Mundial, un 2,5~\\% para 2026"
-    donde: [3B32.tex]
-    valor: 2.9
-    unidad: "%"
-    periodo: "OCDE, informe intermedio de septiembre de 2026; Banco Mundial, GEP de junio de 2026"
-    fuente: [OCDE2026Interim, BM2026GEP]
-    organismo: OCDE y Banco Mundial
-    url: https://www.oecd.org/en/publications/oecd-economic-outlook-interim-report-september-2026_f751d02b-en.html
-    periodicidad: semestral (OCDE junio y diciembre, intermedios en marzo y septiembre; BM enero y junio)
+  - id: previsiones-organismos
+    texto: "Previsiones de crecimiento de los organismos internacionales para 2026 y 2027 (tabla tab:previsiones)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 3.0
+    unidad: "% (PIB real; mundo en PPA salvo BM y OMC, a tipos de mercado)"
+    periodo: "2026/2027. FMI WEO 13/10/2026: mundo 3,1/3,4; EE. UU. 2,3/2,3; zona del euro 1,1/1,2; China 4,5/4,0; EMED 3,7/4,4; comercio de bienes y servicios 4,6/4,7. OCDE intermedio 23/9/2026: 2,9/3,0; 2,2/2,1; 1,0/1,0; 4,5/4,2. Comisión otoño 17/11/2026 (IP 348, cuadro I.2.1): 3,0/3,3 (sin UE 3,2/3,6); 2,3/2,1; 1,2/1,2; 4,5/4,4; emergentes 3,6/4,4; comercio de bienes y servicios (mundo) 4,0/4,3. BM GEP 11/6/2026 (cuadro 1.1): 2,5/2,8 (PPA 2,9/3,4); 2,2/2,1; 0,8/1,3; 4,2/4,3; EMDE 3,6/4,2; comercio 2,9/3,3. OMC GTOS 8/10/2026 (cuadro 1): mercancías 3,9/4,1; PIB de consenso a tipos de mercado 2,6/2,9. BCE sept. 2026: zona del euro 0,9/1,4; mundo sin zona del euro 3,1/3,3; comercio sin zona del euro 4,7/4,5. Funcas 15/10/2026: zona del euro 1,1/1,3"
+    fuente: [FMI2026WEO, OCDE2026Interim, CE2026Otono, BM2026GEP, OMC2026PerspectivasOct, BCE2026Proyecciones, Funcas2026Previsiones]
+    organismo: FMI, OCDE, Comisión Europea, Banco Mundial, OMC, BCE y Funcas
+    url: https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts_en
+    periodicidad: "FMI abril y octubre (enero y julio); OCDE junio y diciembre (marzo y septiembre); Comisión primavera y otoño; BM enero y junio; OMC abril y octubre; BCE trimestral; Funcas trimestral"
     proxima: 2026-12
-    familia: ocde-eo
-    nota: "las cifras de la OCDE, de prensa (Euronews): la nota oficial daba 403. Comprobar en la publicación de diciembre de 2026. BM: «casi una década de convergencia perdida» para EMED sin China ni India"
+    familia: previsiones
+    depende: [repaso/3B32-repaso.tex]
+    frase: "III.2 (tabla y texto «En qué coinciden»/«En qué difieren»); III.3 riesgos (BM: 1,3 % con tensión financiera); conclusión («algo menos según los demás organismos»); DAFO; ficha III.2"
+    nota: "OCDE no comprobada en oecd.org (403): cifras de la nota de prensa reproducida por prensa especializada; sustituir por el Economic Outlook de diciembre de 2026 (con su cifra de comercio, si la da). El cuadro 1.1 del WEO no se pudo abrir: cifras del apéndice A1/A4 y DataMapper. Al llegar el GEP de enero de 2027 y el WEO de abril, rehacer la tabla entera"
+
+  - id: funcas-panel
+    texto: "15 de los 19 servicios de análisis ven desfavorable el contexto internacional en la UE y 16 fuera de ella"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 16
+    unidad: "respuestas de 19"
+    periodo: "Panel de septiembre de 2026 (cierre 8/9, publicado 16/9), cuadro 4"
+    fuente: Funcas2026Panel
+    organismo: Funcas
+    url: https://www.funcas.es/wp-content/uploads/2026/09/PP2609.pdf
+    periodicidad: bimestral (enero, marzo, mayo, julio, septiembre, noviembre)
+    proxima: 2026-11
+    familia: previsiones
+
+  - id: bm-escenario-adverso
+    texto: "con tensiones financieras añadidas, el mundo crecería solo un 1,3~\\% en 2026"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 1.3
+    unidad: "% (PIB mundial a tipos de mercado)"
+    periodo: 2026
+    fuente: BM2026GEP
+    organismo: Banco Mundial
+    periodicidad: semestral
+    proxima: 2027-01
+    familia: previsiones
 
   - id: peso-pib-ppa
     texto: "en PPA, los avanzados pasan del 65~\\% del PIB mundial en 1980 al 39,5~\\% en 2025 (36,3~\\% en 2031)"
@@ -257,7 +284,7 @@ datos:
 
   - id: remesas
     texto: "unos 685.000 millones de dólares llegaron en 2024 a los países de renta baja y media"
-    donde: [3B32.tex]
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
     valor: 685
     unidad: "miles de millones de dólares"
     periodo: 2024
@@ -311,3 +338,45 @@ datos:
     proxima: 2027-09
     familia: fmi-weo
     nota: "Arabia Saudí contada como miembro (estatus ambiguo); población ≈3.930 millones de ~8.200"
+
+  - id: cofer-dolar
+    texto: "el dólar es el 56,7~\\% de las reservas de divisas asignadas de los bancos centrales (junio de 2026)"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 56.7
+    unidad: "% de las reservas asignadas"
+    periodo: "2026T2 (euro 20,6 %; renminbi 2,1 %; 71 % en 1999); mercado de divisas: 89,2 % (abril de 2025); oro 27 % de las reservas a precios de mercado (finales de 2025)"
+    fuente: [FMI2026COFER, BIS2025Trienal, BCE2026PapelEuro]
+    organismo: FMI, BPI y BCE
+    url: https://data.imf.org/en/datasets/IMF.STA:COFER
+    periodicidad: trimestral (COFER); trienal (BPI, próxima abril de 2028); anual (BCE, junio)
+    proxima: 2026-12
+    familia: sistema-monetario
+    nota: "mismas cifras y fuentes que el 3.B.21 (III.2): cambiarlas a la vez"
+
+  - id: migrantes
+    texto: "en 2024 había en el mundo unos 304 millones de migrantes internacionales, el 3,7~\\% de la población mundial"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 304
+    unidad: "millones de personas"
+    periodo: "mediados de 2024 (154 millones y 2,9 % en 1990)"
+    fuente: ONU2025Migrantes
+    organismo: ONU (DAES)
+    url: https://www.un.org/development/desa/pd/content/international-migrant-stock
+    periodicidad: quinquenal (aprox.)
+    proxima: 2029
+    familia: onu-migraciones
+    nota: "leída en una copia del PDF de la ONU (un.org daba 403); la OIM, World Migration Report 2026, da la misma cifra"
+
+  - id: royalties
+    texto: "los cobros mundiales por el uso de la propiedad intelectual suman unos 629.000 millones de dólares en 2025"
+    donde: [3B32.tex, repaso/3B32-repaso.tex]
+    valor: 628.85
+    unidad: "miles de millones de dólares corrientes"
+    periodo: "2025 (2024: 572,6; 2018: 402,5)"
+    fuente: BM2026WDIRoyalties
+    organismo: Banco Mundial (WDI, a partir de la balanza de pagos del FMI)
+    serie: BX.GSR.ROYL.CD (WLD)
+    url: https://api.worldbank.org/v2/country/WLD/indicator/BX.GSR.ROYL.CD?format=json
+    periodicidad: anual
+    proxima: 2027-07
+    familia: bm-wdi

@@ -1,0 +1,81 @@
+% Mapa de la exposición del 3.B.23 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Misma forma que los mapas del 3.B.4 y del 3.B.41.
+% Los términos de los bloques son los de la figura mapa-analisis del tema.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Nadie da duros a cuatro pesetas». ¿Cómo se analiza y se valora una acción, y se puede batir al mercado de forma sistemática?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul,minimum height=2.45cm] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Cartera y valoración}
+     ¿Qué rentabilidad cabe esperar de una acción por lo que aporta a una cartera?};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Instrumentos y elección de cartera (I.1-I.2)}
+     rentabilidad, riesgo y prima de riesgo\\ \autor{Markowitz}: importa la covarianza; frontera eficiente\\ \autor{Tobin}: separación; \autor{Sharpe}: un factor, la beta};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Modelos de valoración (I.3)}
+     CAPM: en equilibrio solo se paga la beta\\ APT: sin arbitraje, varias betas\\ el CAPM, caso de un solo factor};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.65) -- (2.0,-4.35);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.00)
+    {si los precios ya recogen ese riesgo, basta copiar el índice: ¿lo recogen?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde,minimum height=2.20cm] (pII) at (0,-4.40)
+    {\tit{tceeverde}{II. Mercados eficientes}
+     ¿Respetan los precios esa rentabilidad? ¿Basta la gestión pasiva?};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.20cm] (cII1) at (4.75,-4.40)
+    {\tit{tceeverde}{La hipótesis de eficiencia (II.1)}
+     gestión pasiva frente a gestión activa\\ eficiencia débil, semifuerte y fuerte\\ la hipótesis conjunta};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.20cm] (cII2) at (10.45,-4.40)
+    {\tit{tceeverde}{Las finanzas conductuales (II.2)}
+     sesgos y límites al arbitraje\\ anomalías: un margen estrecho a la gestión activa};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.65) -- (2.0,-7.35);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.00)
+    {queda un margen estrecho: ¿con qué técnicas se intenta batir al mercado?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado,minimum height=2.45cm] (pIII) at (0,-7.40)
+    {\tit{tceedorado}{III. Gestión activa}
+     ¿Cómo se busca lo que el precio aún no recoge?};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII1) at (4.75,-7.40)
+    {\tit{tceedorado}{Análisis fundamental (III.1)}
+     valor intrínseco: \autor{Gordon}, PER\\ descuenta con la $r_E$ del CAPM\\ solo bate al mercado si no hay eficiencia semifuerte};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII2) at (10.45,-7.40)
+    {\tit{tceedorado}{Análisis técnico (III.2)}
+     pautas en los precios y volúmenes pasados\\ soportes, resistencias, medias móviles, velas\\ solo funciona si no hay eficiencia débil};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-9.90) -- (2.0,-10.20);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.20)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: la bolsa solo paga el riesgo que no se puede diversificar, y batir al mercado exige saber algo que el precio aún no recoge: lo único gratis es diversificar.};}
+\end{tikzpicture}
+\end{document}

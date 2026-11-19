@@ -179,3 +179,7 @@ Páginas del tema: 31 → 31 (gráfico 4 en la p. 15; nota 22 en la p. 12). `\mi
 
 - «En el gráfico 4 indica en el eje vertical cómo es la escala.»: el rótulo del eje vertical de `hiperinflaciones` dice ahora, en 2 líneas, «índice de precios, julio de 1921 = 1 (escala logarítmica)». Las marcas ya iban de potencia en potencia de 10 (1, 10, 100, 1.000, 10⁴… 10¹¹), a la misma distancia, así que se ve la escala sin tocarlas.
 - «Quiero que los gráficos de la nota al pie 22 sean más pequeños.»: `\graficonota[0.98]` → `\graficonota[0.75]{ajuste-asimetrico}`; los rótulos siguen legibles y la nota cabe en la misma página (B20-19).
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

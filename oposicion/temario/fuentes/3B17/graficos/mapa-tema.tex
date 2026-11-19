@@ -1,0 +1,89 @@
+% Mapa del tema 3.B.17 (comentario de Víctor del 19/11/2026): los 3 bloques,
+% la pregunta a la que responde cada uno, sus subapartados y el hilo entre
+% ellos, con la disposición del mapa del 3.B.4. A la izquierda, la pregunta de
+% cada bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice
+% por qué se pasa al siguiente. Arriba, la pregunta del tema; abajo, la
+% respuesta de la conclusión. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Nadie escarmienta en cabeza ajena». ¿Por qué un país que parecía sano deja en pocos días de poder pagar al exterior?};}
+  \capa{1}{\draw[hilo] (2.0,-1.13) -- (2.0,-1.37);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.40)
+    {\tit{tceeazul}{I. Crisis cambiarias}
+     ¿Por qué cae un tipo de cambio fijo: por las políticas o por las expectativas?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.40)
+    {\tit{tceeazul}{Primera generación (I.1)}
+     \autor{Krugman} (1979), \autor{Flood} y \autor{Garber}\\
+     déficit monetizado que agota las reservas\\
+     crisis inevitable y previsible};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.40)
+    {\tit{tceeazul}{Segunda generación (I.2)}
+     \autor{Obstfeld}: el gobierno sopesa costes\\
+     equilibrios múltiples\\
+     expectativas que se cumplen solas};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.25) -- (2.0,-3.95);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.60)
+    {algunas crisis golpearon a países con cuentas sanas: el problema estaba en los balances};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.00)
+    {\tit{tceeverde}{II. Tercera generación: crisis gemelas}
+     ¿Por qué caen países con cuentas públicas sanas?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.00)
+    {\tit{tceeverde}{Idea y modelos (II.1-II.2)}
+     riesgo moral: la crisis bancaria lleva a la cambiaria\\
+     hojas de balance (\autor{Krugman}, 1999)\\
+     paradas súbitas y pecado original};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.00)
+    {\tit{tceeverde}{Evidencia y valoración (II.3-II.4)}
+     la banca precede a la crisis cambiaria\\
+     y esta agrava la bancaria\\
+     efectos reales mucho mayores};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.20) -- (2.0,-6.90);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-6.55)
+    {las crisis saltan de un país a otro: ¿por qué, y se ven venir?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-6.95)
+    {\tit{tceedorado}{III. Contagio, predicción y ¿cuarta generación?}
+     ¿Por qué se propagan y se pueden anticipar?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-6.95)
+    {\tit{tceedorado}{Contagio (III.1-III.3)}
+     por los fundamentos: comercio, acreedores comunes\\
+     puro: expectativas};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-6.95)
+    {\tit{tceedorado}{Predicción y cuarta generación (III.4-III.5)}
+     alerta temprana: vulnerables, no cuándo\\
+     2008 y el euro: crisis de balance sin tipo fijo};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-8.80) -- (2.0,-9.10);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-9.10)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: un país cae cuando sus balances dependen de que el capital siga entrando, y no aprende de sus vecinos porque, cuando todo va bien, «esta vez es distinto».};}
+\end{tikzpicture}
+\end{document}

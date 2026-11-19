@@ -201,4 +201,4 @@ Aplicados el 19/11/2026 (encargo común del 18/11 y añadido de la UE del 19/11)
 - **B39-14.** Orden del bloque I: para seguir la estructura común (justificación → competencias y marco → evolución) se ha puesto la justificación económica antes que los fundamentos jurídicos y la historia al final. Opciones: (a) así **[aplicada]**; (b) el orden anterior (fundamentos, historia, efectos), con la teoría al final.
 - **B39-15.** Tipos del impuesto sobre sociedades: la cifra viene de la Tax Foundation, no de una fuente oficial. Opciones: (a) mantenerla citada **[aplicada]**; (b) sustituirla por la OCDE (Corporate Tax Statistics, que va un año por detrás).
 - **B39-16.** El 4.A.15 tiene 7 diferencias con este tema (lista arriba). Conviene corregirlas cuando se revise el 4.A.15.
-
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

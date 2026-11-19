@@ -338,3 +338,7 @@ anotado); entradas en `datos-actualizables.yaml`.
 - **A30-15N-01 · Altura de la figura 7**: `\grafico` limita la altura al 78 % de la caja de texto (regla común de `tcee.sty`), así que la figura llega a unos 19 cm de alto y deja algo de blanco arriba y abajo de su página. *Aplicado (recomendada)*: proporción ajustada a ese tope (ancho de texto y la altura máxima que permite `\grafico`), con la letra un 40 % mayor. *Alternativa*: una variante común de `\grafico` sin tope para figuras de página entera (cambio en `latex/tcee.sty`, que no toco) y una figura más alta con letra `\footnotesize`.
 
 - Nota del coordinador (15/11/2026): A30-15N-01 resuelta con la variante común `\graficopagina` (tcee.sty, hasta el 90 % de la altura); la figura 7 ocupa ya la página entera.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

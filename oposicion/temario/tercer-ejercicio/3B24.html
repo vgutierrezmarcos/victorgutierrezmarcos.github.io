@@ -169,7 +169,7 @@
                     <p class="tema-codigo">Tema 3.B.24</p>
                     <h1 class="tema-titulo">Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.</h1>
                     <p class="tema-meta">Última actualización: 13/11/2026 · Cante: 30 minutos</p>
-                    <p class="tema-meta tema-paginas">Tema: 31 págs. · Anexos: 6 · Bibliografía: 6 (PDF)</p>
+                    <p class="tema-meta tema-paginas">Tema: 32 págs. · Anexos: 6 · Bibliografía: 6 (PDF)</p>
                     <div class="tema-descargas">
                         <a href="3B24.pdf" target="_blank">Descargar PDF</a>
                         <a href="3B24.docx" download>Descargar Word</a>
@@ -185,9 +185,9 @@
 <ul>
 <li><p><strong><em>Enganche</em></strong>:</p>
 <ul>
-<li><p>«¡Cuán largo me lo fiáis!», responde don Juan en <em>El burlador de Sevilla</em> cada vez que le recuerdan que todo se acaba pagando. Prestar a 100 años es fiar muy largo.</p></li>
+<li><p>«Quien guarda, halla», dice el refrán. En la renta fija parece cumplirse a la letra: quien compra un bono y lo guarda hasta el vencimiento cobra lo que se le prometió.</p></li>
 <li><p>En junio de 2020, Austria colocó un bono a 100 años con un cupón del 0,85 %. Quien lo compró se aseguraba cobrar cada año sus cupones y recuperar su dinero en 2120, de uno de los Estados más solventes del mundo.</p></li>
-<li><p>Cuando los tipos de interés subieron en 2022 y 2023, ese bono pasó de valer unos 139 euros por cada 100 de nominal a unos 33, sin que Austria dejara de pagar un solo cupón. Lo que perdió valor no fue la promesa, sino el plazo.</p></li>
+<li><p>Cuando los tipos de interés subieron en 2022 y 2023, ese bono pasó de valer unos 139 euros por cada 100 de nominal a unos 33, sin que Austria dejara de pagar un solo cupón. Lo que perdió valor no fue la promesa, sino el plazo: quien lo guarde hasta 2120 hallará sus 100 euros; quien tenga que venderlo antes, no.</p></li>
 <li><p>¿Cómo puede perder tres cuartas partes de su valor un activo de «renta fija»? Detrás está la pregunta de esta exposición: ¿cuánto vale una promesa de pago futura, por qué se paga distinto según el plazo y cuánto riesgo tiene una inversión que parece segura?</p></li>
 </ul></li>
 <li><p><strong><em>Relevancia</em></strong>:</p>
@@ -241,6 +241,16 @@
 <a href="#sec:riesgos">1. Riesgos de la inversión en bonos</a><br />
 <a href="#sec:riesgo-tipo">2. Riesgo de tipo de interés</a><br />
 <a href="#esq:30">Conclusión</a><span class="esq-tiempo">1′</span></p>
+</div>
+<div class="anotaciones">
+<p><strong>Mapa de la exposición.</strong> Cada bloque responde a una pregunta y deja abierta la del siguiente: del instrumento al plazo y del plazo al riesgo.</p>
+<figure id="figu:mapa-tema">
+<figcaption><span class="etiqueta">Figura 1.–</span> Mapa del tema: la pregunta de cada bloque y el hilo que los une</figcaption>
+<img src="../fuentes/3B24/graficos/mapa-tema.svg" style="width:100.0%" loading="lazy" alt="Figura 1.– Mapa del tema: la pregunta de cada bloque y el hilo que los une" />
+<div class="fuente">
+<p>Fuente: elaboración propia.</p>
+</div>
+</figure>
 </div>
 <div class="anotaciones">
 <p><strong>Notación.</strong> Como en el canon del temario: <span class="math inline">\(P\)</span> es el precio del bono, <span class="math inline">\(\mathrm{VN}\)</span> su nominal, <span class="math inline">\(c\)</span> la tasa de cupón y <span class="math inline">\(C_t=c\,\mathrm{VN}\)</span> el cupón; <span class="math inline">\(\mathrm{FC}_t\)</span> el flujo de la fecha <span class="math inline">\(t\)</span> (el cupón y, en el vencimiento <span class="math inline">\(T\)</span>, también el nominal). <span class="math inline">\(y\)</span> es la rentabilidad a vencimiento o TIR (en los temas de macroeconomía, <span class="math inline">\(y\)</span> es otra cosa: el logaritmo de la producción). <span class="math inline">\(r_t\)</span> es el tipo de contado a <span class="math inline">\(t\)</span> años y <span class="math inline">\(f_t\)</span> el tipo a plazo implícito para el año que va de <span class="math inline">\(t-1\)</span> a <span class="math inline">\(t\)</span>. En las teorías de la estructura temporal, como en los temas de política monetaria <a data-app="3A37.pdf" href="3A37.html" class="vertema"><span class="vertema">[ver tema 3.A.37]</span></a>, <span class="math inline">\(i_t\)</span> es el tipo a un periodo y <span class="math inline">\(i^{(n)}_t\)</span> el tipo a <span class="math inline">\(n\)</span> periodos en la fecha <span class="math inline">\(t\)</span>, de modo que <span class="math inline">\(r_n\equiv i^{(n)}_0\)</span>. <span class="math inline">\(D\)</span> es la duración de <span class="smallcaps">Macaulay</span>, <span class="math inline">\(D^{\mathrm{mod}}\)</span> la modificada, <span class="math inline">\(D^{\mathrm{mon}}\)</span> la monetaria y <span class="math inline">\(\mathrm{Conv}\)</span> la convexidad; <span class="math inline">\(\Delta y\)</span>, la variación de la TIR. Todo en tiempo discreto y con cupones anuales; los derivados se valoran a menudo en tiempo continuo, con <span class="math inline">\(e^{-r_tt}\)</span> <a data-app="3B25.pdf" href="3B25.html" class="vertema"><span class="vertema">[ver tema 3.B.25]</span></a>.</p>
@@ -317,7 +327,7 @@
 <section id="sec:elementos" class="level3">
 <h3><span class="numero">I.2.</span> Elementos de un bono</h3>
 <ul>
-<li><p>Los elementos de un bono son (figura <a href="#figu:linea-temporal-bono">1</a>):</p>
+<li><p>Los elementos de un bono son (figura <a href="#figu:linea-temporal-bono">2</a>):</p>
 <ul>
 <li><p>el <em>emisor</em> o prestatario, que se financia, y el <em>tenedor</em> o prestamista, que invierte;</p></li>
 <li><p>el <strong>valor nominal</strong> <span class="math inline">\(\mathrm{VN}\)</span> (o facial), el principal sobre el que se calculan los cupones y que se devuelve al vencimiento;</p></li>
@@ -329,8 +339,8 @@
 <li><p>Siguiendo con el ejemplo que acompaña todo el tema, un bono a 2 años con un nominal de 1.000 € y un cupón anual del 10 % paga 100 € dentro de un año y 1.100 € dentro de 2. Hoy cotiza a 922,6 €: bajo la par.</p></li>
 </ul>
 <figure id="figu:linea-temporal-bono">
-<figcaption><span class="etiqueta">Figura 1.–</span> Los flujos de un bono a lo largo de su vida</figcaption>
-<img src="../fuentes/3B24/graficos/linea-temporal-bono.svg" style="width:85.0%" loading="lazy" alt="Figura 1.– Los flujos de un bono a lo largo de su vida" />
+<figcaption><span class="etiqueta">Figura 2.–</span> Los flujos de un bono a lo largo de su vida</figcaption>
+<img src="../fuentes/3B24/graficos/linea-temporal-bono.svg" style="width:85.0%" loading="lazy" alt="Figura 2.– Los flujos de un bono a lo largo de su vida" />
 <div class="fuente">
 <p>Fuente: elaboración propia.</p>
 </div>
@@ -463,7 +473,7 @@
 </ul></li>
 <li><p><em>En el mercado secundario</em>, el precio lo fija el arbitraje, en 2 pasos:</p>
 <ul>
-<li><p><em>Idea</em>: un bono es una cartera de pagos futuros, y cada pago vale hoy lo que vale un euro de su fecha. Por eso el precio es el <strong>valor actual de sus flujos</strong>, descontado cada uno con el <strong>tipo de contado</strong> (<em>spot</em>) <span class="math inline">\(r_t\)</span> de su plazo: el que rinde hoy un bono sin cupones que paga solo en <span class="math inline">\(t\)</span> (figura <a href="#figu:linea-temporal-bono">1</a>),</p>
+<li><p><em>Idea</em>: un bono es una cartera de pagos futuros, y cada pago vale hoy lo que vale un euro de su fecha. Por eso el precio es el <strong>valor actual de sus flujos</strong>, descontado cada uno con el <strong>tipo de contado</strong> (<em>spot</em>) <span class="math inline">\(r_t\)</span> de su plazo: el que rinde hoy un bono sin cupones que paga solo en <span class="math inline">\(t\)</span> (figura <a href="#figu:linea-temporal-bono">2</a>),</p>
 <div class="funcionclave">
 <div id="eq:precio-contado">
 
@@ -1151,8 +1161,9 @@ P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_
 <section id="esq:30" class="level2 unnumbered" data-minutos="1′">
 <h2 class="unnumbered" data-minutos="1′">Conclusión<span class="minutos" aria-hidden="true">1′</span></h2>
 <ul>
-<li><p><strong><em>Recapitulación</em></strong>: En conclusión, un bono vale lo que valen sus pagos descontados con los tipos de cada plazo, y su TIR es la rentabilidad que da si se cumplen 3 supuestos que rara vez se cumplen a la vez; por eso precio y rentabilidad se mueven en sentido contrario.</p>
+<li><p><strong><em>Recapitulación</em></strong>: En conclusión,</p>
 <ul>
+<li><p>Un bono vale lo que valen sus pagos descontados con los tipos de cada plazo, y su TIR es la rentabilidad que da si se cumplen 3 supuestos que rara vez se cumplen a la vez; por eso precio y rentabilidad se mueven en sentido contrario.</p></li>
 <li><p>La curva de tipos resume las expectativas sobre los tipos cortos futuros más una prima por plazo, que cambia con el riesgo y con quién compra cada plazo.</p></li>
 <li><p>El riesgo de un bono es, sobre todo, de tipo de interés: la duración lo mide, la convexidad corrige el error de esa medida y la inmunización lo neutraliza.</p></li>
 </ul></li>
@@ -1170,11 +1181,11 @@ P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_
 <li><p><strong><em>Opinión</em></strong>:</p>
 <ul>
 <li><p>En 15 años, la renta fija europea ha vivido los 2 extremos. En julio de 2012, la prima de riesgo española llegó a 555 puntos básicos de media, con la ruptura del euro como un riesgo de suceso que ninguna duración mide. En diciembre de 2020, la deuda del Estado rendía en negativo hasta 5 años, con un BCE que compraba deuda y una prima por plazo bajo cero. Y en 2022 y 2023, la subida de los tipos dio a los bonos largos sus peores años en décadas.</p></li>
-<li><p>La lección es la del enganche: la renta fija es fija en sus pagos, no en su valor; quien la compra asume un riesgo de tipo de interés que se mide con la duración, y quien lo olvida lo descubre de golpe, como Silicon Valley Bank.</p></li>
+<li><p>La lección es la del enganche: la renta fija es fija en sus pagos, no en su valor; quien la compra asume un riesgo de tipo de interés que se mide con la duración, y quien lo olvida lo descubre de golpe, como Silicon Valley Bank, que no pudo guardar sus bonos hasta el vencimiento.</p></li>
 </ul></li>
 <li><p><strong><em>Idea final</em></strong>:</p>
 <ul>
-<li><p>«¡Cuán largo me lo fiáis!»: en la renta fija, el largo plazo se paga 2 veces, con la prima por plazo en el precio y con la duración en el riesgo. Medir las 2 es lo que permite que el ahorro de hoy financie, a 30, 50 o 100 años, la inversión de mañana.</p></li>
+<li><p>«Quien guarda, halla», pero solo si puede guardar: en la renta fija, el largo plazo se paga 2 veces, con la prima por plazo en el precio y con la duración en el riesgo. Medir las 2 es lo que permite que el ahorro de hoy financie, a 30, 50 o 100 años, la inversión de mañana.</p></li>
 </ul></li>
 </ul>
 </section>
@@ -1355,7 +1366,7 @@ P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_
 <section id="d.2.-la-teoría-de-las-expectativas-con-números-redondos" class="level3 unnumbered">
 <h3 class="unnumbered">D.2. La teoría de las expectativas con números redondos</h3>
 <ul>
-<li><p><em>Enunciado</em>: un inversor con 100 € y 2 años puede comprar un bono a 2 años al 10 % (<span class="math inline">\(i^{(2)}_t=10\)</span> %), que le da <span class="math inline">\(100\times1{,}1^2=121\)</span> €, o un bono a 1 año al 8 % (<span class="math inline">\(i_t=8\)</span> %) y reinvertir al tipo que haya dentro de un año (figura <a href="#figu:estrategias-expectativas">2</a>).</p></li>
+<li><p><em>Enunciado</em>: un inversor con 100 € y 2 años puede comprar un bono a 2 años al 10 % (<span class="math inline">\(i^{(2)}_t=10\)</span> %), que le da <span class="math inline">\(100\times1{,}1^2=121\)</span> €, o un bono a 1 año al 8 % (<span class="math inline">\(i_t=8\)</span> %) y reinvertir al tipo que haya dentro de un año (figura <a href="#figu:estrategias-expectativas">3</a>).</p></li>
 <li><p>Lo que obtiene con la segunda estrategia depende del tipo esperado para el segundo año, <span class="math inline">\(\mathbb{E}_t[i_{t+1}]\)</span>:</p>
 <ul>
 <li><p>si espera un 20 %, <span class="math inline">\(100\times1{,}08\times1{,}20=129{,}60\)</span> €: todos venden bonos a 2 años, su precio baja y su tipo sube;</p></li>
@@ -1365,8 +1376,8 @@ P=\sum_{t=1}^{T}\frac{\mathrm{FC}_t}{(1+r_t)^t}=\sum_{t=1}^{T}\frac{\mathrm{FC}_
 <li><p>En equilibrio, <span class="math inline">\((1+i^{(2)}_t)^2=(1+i_t)\,(1+\mathbb{E}_t[i_{t+1}])\)</span> y, despreciando el producto de los tipos, <span class="math inline">\(i^{(2)}_t\simeq\frac12\big(i_t+\mathbb{E}_t[i_{t+1}]\big)\)</span>: 10 % <span class="math inline">\(\simeq\frac12(8+12)\)</span> %. Es (<a href="#eq:tipo-largo">5</a>) con <span class="math inline">\(n=2\)</span> y sin prima.<span class="findemo">∎</span></p></li>
 </ul>
 <figure id="figu:estrategias-expectativas">
-<figcaption><span class="etiqueta">Figura 2.–</span> 2 estrategias para invertir a 2 años</figcaption>
-<img src="../fuentes/3B24/graficos/estrategias-expectativas.svg" style="width:80.0%" loading="lazy" alt="Figura 2.– 2 estrategias para invertir a 2 años" />
+<figcaption><span class="etiqueta">Figura 3.–</span> 2 estrategias para invertir a 2 años</figcaption>
+<img src="../fuentes/3B24/graficos/estrategias-expectativas.svg" style="width:80.0%" loading="lazy" alt="Figura 3.– 2 estrategias para invertir a 2 años" />
 <div class="fuente">
 <p>Fuente: elaboración propia.</p>
 </div>

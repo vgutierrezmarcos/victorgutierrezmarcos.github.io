@@ -1,0 +1,84 @@
+% Mapa de la exposición del 3.B.39 (comentario de Víctor del 19/11/2026):
+% los bloques, la pregunta a la que responde cada uno, lo que se cuenta en cada
+% subapartado (a la derecha) y el hilo entre ellos (la flecha dice por qué se
+% pasa al siguiente). En gris, bajo la pregunta, el papel del bloque en la
+% exposición. Arriba, la pregunta del enganche; abajo, la respuesta de la
+% conclusión. Misma forma que los mapas de los demás temas de la UE (3.B.36 a
+% 3.B.45). Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\newcommand{\elem}[1]{\\[2pt]\textit{\textcolor{tceegris}{#1}}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «El pez grande se come al chico». ¿Cómo agranda el mercado único el estanque para que los peces crezcan, y cómo impide la política de competencia que el grande se coma al chico?};}
+  \capa{1}{\draw[hilo] (intro.south -| 2.0,0) -- ++(0,-0.25) coordinate (b0);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at ([yshift=-0.05cm]b0 -| 0,0)
+    {\tit{tceeazul}{I. El mercado único}
+     ¿Por qué conviene un mercado único, qué dicen los Tratados y cómo se ha construido?
+     \elem{Justificación, marco jurídico y evolución}};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at ([yshift=-0.05cm]b0 -| 4.75,0)
+    {\tit{tceeazul}{Justificación y base jurídica (I.1-I.2)}
+     competencia y escala: mercados más grandes, márgenes más pequeños\\ integración negativa y positiva (\autor{Tinbergen})\\ arts.~26 y 114 TFUE};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at ([yshift=-0.05cm]b0 -| 10.45,0)
+    {\tit{tceeazul}{De Roma a 2025 (I.3)}
+     unión aduanera (1968)\\ Libro Blanco y programa de 1992\\ informes \autor{Letta} y \autor{Draghi}; estrategia de 2025};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (pI.south -| 2.0,0) ++(0,-0.05) -- ++(0,-0.7) coordinate (b1);}
+  \capa{3}{\node[rotulolargo,anchor=west] at ([xshift=0.15cm,yshift=0.35cm]b1)
+    {el marco está, pero el mercado se completa libertad a libertad: ¿cuánto falta en cada una?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at ([yshift=-0.05cm]b1 -| 0,0)
+    {\tit{tceeverde}{II. Las 4 libertades}
+     ¿Qué garantiza cada libertad y qué barreras quedan?
+     \elem{Articulación (1): mismo patrón, distinto avance}};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at ([yshift=-0.05cm]b1 -| 4.75,0)
+    {\tit{tceeverde}{Bienes y servicios (II.1-II.2)}
+     mercancías: \emph{Dassonville}, \emph{Cassis de Dijon}, reconocimiento mutuo; barreras fiscales\\ servicios: Directiva de 2006; barreras como aranceles altos};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at ([yshift=-0.05cm]b1 -| 10.45,0)
+    {\tit{tceeverde}{Personas y capitales (II.3-II.4)}
+     personas: trabajadores, Schengen, cualificaciones\\ capitales: libertad plena desde 1990, también con terceros};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (pII.south -| 2.0,0) ++(0,-0.05) -- ++(0,-0.7) coordinate (b2);}
+  \capa{5}{\node[rotulolargo,anchor=west] at ([xshift=0.15cm,yshift=0.35cm]b2)
+    {quitadas las barreras, hay que impedir que empresas y Estados las levanten de nuevo};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at ([yshift=-0.05cm]b2 -| 0,0)
+    {\tit{tceedorado}{III. La política de competencia}
+     ¿Por qué una política de competencia común y cómo controla a empresas y Estados?
+     \elem{Articulación (2) y debate actual}};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at ([yshift=-0.05cm]b2 -| 4.75,0)
+    {\tit{tceedorado}{Teoría y 4 pilares (III.1-III.2)}
+     acuerdos y abusos (\emph{ex post}): cárteles y clemencia\\ concentraciones (\emph{ex ante}): el compromiso de \autor{Williamson}\\ ayudas de Estado: la carrera de subvenciones};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at ([yshift=-0.05cm]b2 -| 10.45,0)
+    {\tit{tceedorado}{Nuevos instrumentos y debate (III.3)}
+     subvenciones extranjeras y mercados digitales (desde 2023)\\ ¿campeones europeos? nuevas directrices de concentraciones};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (pIII.south -| 2.0,0) ++(0,-0.05) -- ++(0,-0.3) coordinate (bf);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (bf -| 0,0)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: el mercado agranda el estanque y la competencia vigila que los peces crezcan por ser mejores; falta quitar las redes que aún lo parten.};}
+\end{tikzpicture}
+\end{document}

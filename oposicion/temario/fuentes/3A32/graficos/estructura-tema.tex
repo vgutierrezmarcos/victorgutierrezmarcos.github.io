@@ -4,6 +4,7 @@
 % el gasto público de Furlanetto, y la pregunta de si los efectos son
 % inequívocos.
 % Unos 16,4 x 19 cm: cabe en una cara con su título y su fuente.
+% 19/11/2026: sin el rótulo «Hilo:» de la banda superior; va en caja gris en el tema.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -21,7 +22,7 @@
 
   % 1: la pregunta del tema
   \capa{1}{\node[banda=tceemorado] (preg) at (0,0)
-    {\textbf{La pregunta}: ¿cómo se determinan la renta y la inflación de una economía abierta, qué efectos tienen la política monetaria, la fiscal y las perturbaciones de oferta y, sobre todo, \textbf{se pueden determinar esos efectos de manera inequívoca y con validez universal}? \hfill \textit{Hilo: España, pequeña y abierta, con tipo fijo frente al euro y flotante frente al dólar.}};}
+    {\textbf{La pregunta}: ¿cómo se determinan la renta y la inflación de una economía abierta, qué efectos tienen la política monetaria, la fiscal y las perturbaciones de oferta y, sobre todo, \textbf{se pueden determinar esos efectos de manera inequívoca y con validez universal}?};}
 
   % 2: bloque I, los modelos estáticos (en breve)
   \capa{2}{\node[titulo=tceemorado, anchor=north west] at (0,-1.55) {I. Los modelos estáticos de economía abierta \hfill (7$'$30$''$)};}
@@ -63,10 +64,11 @@
     {\textbf{Implicaciones}\\[2pt]
      \textbf{Monetaria}: brecha y $\pi_H$ caen, la moneda se aprecia, $\pi$ cae más; la apertura amplifica si $\Theta>0$.\\
      \textbf{Fiscal}: multiplicador $\theta_{\alpha G}/(\theta_{\alpha G}+\varphi)<1$, menor con más apertura; aprecia; $C$ y $XN$ caen; con tipo fijo, unos 0,9.\\
-     Perturbaciones externas; inflación interna $>$ consumo $>$ fijo; unión monetaria.};}
+     \textbf{Perturbaciones}: externas y régimen; oferta y demanda, segunda ronda, redes, rentas y \emph{policy mix}.\\
+     Inflación interna $>$ consumo $>$ fijo; unión monetaria.};}
   \capa{6}{\draw[paso] (a1.east) -- (a2.west);}
   \capa{6}{\node[rotulo, anchor=north west, text width=15.9cm, align=left] at (0,-12.6)
-    {Extensiones: 2 países grandes (\autor{Corsetti}-\autor{Pesenti}) [3.B.19], precios en la moneda del comprador, hogares no ricardianos. Evidencia: multiplicador bajo y menor cuanto más abierta; el rompecabezas del consumo; 2022 y 2026.};}
+    {Extensiones: 2 países grandes (\autor{Corsetti}-\autor{Pesenti}) [3.B.19], precios en la moneda del comprador, hogares no ricardianos. Evidencia: multiplicador bajo y menor cuanto más abierta; el rompecabezas del consumo; identificación; los 70 frente a los 2000; 2022 y 2026.};}
 
   % 7: la idea final
   \capa{7}{\node[banda=tceemorado] at (0,-13.65)

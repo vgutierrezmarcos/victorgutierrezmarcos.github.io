@@ -318,3 +318,7 @@ Correcciones aplicadas tras el control de calidad del coordinador:
 Comentario de Víctor: «En las notas a pie de página también puede haber párrafos indentados […] si se distinguen 3 conceptos, que los 3 conceptos salgan en bullets indentados adaptados al formato de la nota al pie». Se han repasado todas las notas del tema (la ficha no tiene notas) y se pasan a lista (itemize dentro de la nota, ítems en minúscula con «;» y «.» al final) solo las que enumeran conceptos, tipos o casos paralelos. Comprobadas en el PDF: sin desbordes ni notas partidas.
 
 - l. 107: optimalidad débil y fuerte; «Aquí se trabaja con la fuerte…» queda como párrafo aparte.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

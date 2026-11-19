@@ -376,8 +376,8 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     # --- Conclusión: «Recapitulación: En conclusión, …» en la misma línea (Víctor, 18/11/2026)
     m = re.search(r'\\section\*\{Conclusión\}(.*?)(?=\\section|\\clearpage|\\appendix|$)', cuerpo, re.S)
     if m and not tema.es_dictamen and re.search(r'Recapitulaci', m.group(1)) and \
-            not re.search(r'\\emph\{Recapitulaci[^}]*\}\}:[ \t]*En conclusión', m.group(1)):
-        errores.append('Conclusión: «En conclusión,» va en la misma línea que «Recapitulación:», tras los dos puntos (CRITERIOS §2)')
+            not re.search(r'\\emph\{Recapitulaci[^}]*\}\}:[ \t]*En conclusión[,:][ \t]*\n', m.group(1)):
+        errores.append('Conclusión: «Recapitulación: En conclusión,» va sola en su línea y las ideas, en subpárrafos debajo (CRITERIOS §2)')
     # --- Esquema del tema (§2, Víctor 9/11/2026): un título por línea y los
     # minutos de cada parte (\esqtiempo) iguales a los \minutos del cuerpo
     m = re.search(r'\\begin\{esquema\}(?:\[[^\n]*\])?(.*?)\\end\{esquema\}', cuerpo, re.S)
@@ -716,6 +716,10 @@ def verificar(tema):
                         caja = caja & r
                     if caja.height > 2 and caja.width > 2:
                         cajas.append(caja)
+                # Una caja que empieza por encima de la cabecera (y < 44 pt) se ha
+                # desplazado al partirse: tapa la cabecera y se corta (Víctor, 19/11/2026)
+                if n > 1 and any(c.y0 < 44 and c.height > 8 and c.width > 30 for c in cajas):
+                    errores.append(f'Caja que se sale por arriba de la página {n} del PDF (tapa la cabecera)')
                 cajas = [c for c in cajas if c.y0 > 60 and c.y0 < limite]
                 if not lineas and not cajas and n < doc.page_count:
                     errores.append(f'Página {n} del PDF en blanco')

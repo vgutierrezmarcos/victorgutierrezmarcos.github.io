@@ -23,15 +23,16 @@
 \subcante{Evidencia y valoración}{0,5}
 \apartadocante{III. PEA: \autor{Galí}-\autor{Monacelli} + \autor{Furlanetto}}{13}
 \subcante{Idea y supuestos}{1}
-\subcante{3 ecuaciones y regla}{3,5}
-\subcante{Gráfico y forma reducida}{1}
+\subcante{3 ecuaciones y regla}{3}
+\subcante{Gráfico y forma reducida}{0,5}
 \subcante{Perturbación monetaria}{1,5}
-\subcante{Perturbación fiscal}{2,5}
+\subcante{Perturbación fiscal}{2}
 \subcante{Externas, régimen y regla óptima}{1,5}
+\subcante{Oferta y demanda; \emph{policy mix}}{1,5}
 \subcante{¿Efectos inequívocos?}{1,5}
 \subcante{Ext., evidencia y valoración}{0,5}
 \apartadocante{Conclusión}{1}}
-\emph{Hilo}: de lo estático a lo dinámico y de lo cerrado a lo abierto; el grueso, en \hyperref[rep:III]{III}. España, pequeña y abierta: tipo fijo frente al euro, flotante frente al dólar. \emph{Pregunta de fondo}: ¿se pueden fijar los efectos de las políticas de forma inequívoca y universal? \emph{Notación}: $\beta_K$ movilidad del capital; $\alpha$ apertura; $s_G=\overline G/\overline Y$; $\hat g_t=(G_t-\overline G)/\overline Y$; $\theta_{\alpha G}=\theta_\alpha/(1-s_G)$. \emph{Refranes}: «no se puede nadar y guardar la ropa» (trilema); «más vale doblarse que quebrarse» (flotación).
+\emph{Recorrido}: de lo estático a lo dinámico y de lo cerrado a lo abierto; el grueso, en \hyperref[rep:III]{III}. España, pequeña y abierta: tipo fijo frente al euro, flotante frente al dólar. \emph{Pregunta de fondo}: ¿se pueden fijar los efectos de las políticas de forma inequívoca y universal? \emph{Notación}: $\beta_K$ movilidad del capital; $\alpha$ apertura; $s_G=\overline G/\overline Y$; $\hat g_t=(G_t-\overline G)/\overline Y$; $\theta_{\alpha G}=\theta_\alpha/(1-s_G)$. \emph{Refranes}: «no se puede nadar y guardar la ropa» (trilema); «más vale doblarse que quebrarse» (flotación).
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -69,7 +70,7 @@ Los «modelos de juguete»: MF en lo mínimo; la DA-OA abierta, con más detalle
 \graficorepaso[0.72\linewidth]{oferta-abierta}{a: energía cara, estanflación; b: política de oferta}
 
 % ==========================================================================
-\bloque[7]{II. Modelo dinámico de economía cerrada: NEK\label{rep:II}}
+\bloque[6]{II. Modelo dinámico de economía cerrada: NEK\label{rep:II}}
 \begin{ideaclave}
 La base de \hyperref[rep:III]{III}. IS dinámica + NKPC + regla separan demanda ($r^n_t$) de costes ($u_t$). Demanda: divina coincidencia; costes: dilema; solo la oferta mejora las 2. Y ya aquí el multiplicador depende de la regla.
 \end{ideaclave}
@@ -86,15 +87,12 @@ $\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t$,\ \ $i_t=\rho+\phi_\pi\pi
 \begin{itemize}
 \item \emph{Oferta}: tecnológicas (sin dilema), de costes (dilema $E_\pi$/$E_x$; regla, $E_1$; salarios reales rígidos, \autor{Blanchard}-\autor{Galí}, 2007), externas; segunda ronda; redes. Mirar a través (BCE, 2025); fiscal focalizada (Europa 2022: $-1$ a $-2$ p., \autor{Dao} et al., 2023); \concepto{políticas de oferta}: bajan la NKPC.
 \item \emph{Demanda}: mueven $r^n_t$; divina coincidencia; fiscal según la regla, $>1$ en el límite inferior (\autor{Christiano}-\autor{Eichenbaum}-\autor{Rebelo}, 2011); oferta keynesiana (Covid; \autor{Guerrieri} et al., 2022); 2021.
-\item \emph{Datos}: España 2022: excepción ibérica (40 $\to$ 65 €/MWh), IVA eléctrico 21 $\to$ 10 $\to$ 5\,\%, 20 cts/l (generales, no focalizadas). Covid, paro abril 2020: EE.\,UU.\ \dato{14,8\,\%}{FRED}; zona del euro 7,4\,\%; España 15,3\,\% (ERTE) \vertema{4.A.29}. Los 70: petróleo ×4 y ×3; España \dato{28,4\,\%}{INE, ago.\ 1977}. \emph{Policy mix}: 4 cuadrantes; dominación (\autor{Sargent}-\autor{Wallace}, 1981; \autor{Leeper}, 1991). Rentas: \autor{Calmfors}-\autor{Driffill} (1988), joroba.
 \item \emph{Evidencia}: horas caen tras mejora tecnológica (\autor{Galí}, 1999); NKPC plana; VAR (\autor{Sims}, 1980), \autor{Blanchard}-\autor{Quah} (1989); 70 frente a 2000 (\autor{Blanchard}-\autor{Galí}, 2010). \emph{Valoración}: inmune a \autor{Lucas}; $u_t$ residual. Cerrada $\Rightarrow$ III.
 \end{itemize}
 
-\graficorepaso[0.6\linewidth]{policy-mix}{\emph{Policy mix}: los 4 cuadrantes}
-\graficorepaso[0.75\linewidth]{blanchard-quah}{\autor{Blanchard}-\autor{Quah}: demanda en joroba, oferta permanente}
 
 % ==========================================================================
-\bloque[15,5]{III. PEA neokeynesiana: \autor{Galí}-\autor{Monacelli} y \autor{Furlanetto}\label{rep:III}}
+\bloque[13]{III. PEA neokeynesiana: \autor{Galí}-\autor{Monacelli} y \autor{Furlanetto}\label{rep:III}}
 \begin{ideaclave}
 Misma estructura de 3 ecuaciones; apertura y gasto cambian los coeficientes ($\theta_{\alpha G}$, $\kappa_\alpha$) y $r^n_t$. Monetaria: brecha y $\pi_H$ caen, aprecia, $\pi$ cae más. Fiscal: multiplicador $<1$, menor con más apertura, mayor con tipo fijo. Pero tamaño y a veces signo dependen de parámetros, regla y mercados: \textbf{no hay efectos inequívocos y universales}.
 \end{ideaclave}
@@ -123,9 +121,10 @@ Misma estructura de 3 ecuaciones; apertura y gasto cambian los coeficientes ($\t
 \funcionclave{\frac{\partial Y_t}{\partial G_t}=\frac{\theta_{\alpha G}}{\theta_{\alpha G}+\varphi}<1}
 \item[] Menor con más apertura ($\Theta>0$): \dato{0,45 cerrada; 0,2 con $\alpha=0{,}4$}{impacto}. Aprecia (como MF-Dornbusch; al revés que \autor{Obstfeld}-\autor{Rogoff}); $C$↓ (menos que cerrada); $\pi$↓. \emph{Tipo fijo}: \dato{0,9 frente a 0,35}{\autor{Furlanetto}}, con más $\pi_H$.
 \item \emph{Externas}: demanda exterior (flotación aísla); tipo mundial (dilema de \autor{Rey}, 2013); energía (la depreciación amplifica al importador: \autor{Bodenstein} et al., 2011). Más vale doblarse que quebrarse.
+\item \emph{Oferta y demanda, en detalle}: efecto directo (inflación importada), indirecto y segunda ronda; granularidad y redes (oferta aguas abajo, demanda aguas arriba; \autor{Acemoglu} et al., 2016); rentas: pacto de rentas, \autor{Calmfors}-\autor{Driffill} (1988), joroba; acelerador financiero, hogares al día; oferta keynesiana (Covid) y 2021. \emph{Policy mix}: 4 cuadrantes; dominación (\autor{Sargent}-\autor{Wallace}, 1981; \autor{Leeper}, 1991). España 2022: excepción ibérica (40 $\to$ 65 €/MWh), IVA eléctrico 21 $\to$ 10 $\to$ 5\,\%, 20 cts/l (generales, no focalizadas). Covid, paro abril 2020: EE.\,UU.\ \dato{14,8\,\%}{FRED}; zona del euro 7,4\,\%; España 15,3\,\% (ERTE) \vertema{4.A.29}.
 \item \emph{Reglas} (\autor{Galí}-\autor{Monacelli}): óptimo $\pi_H=0$; \textbf{DITR $>$ CITR $>$ fijo}; mirar a través; miedo a flotar (\autor{Engel}, 2011). Unión monetaria: fiscal por país (GM, 2008); devaluación fiscal.
 \item \emph{¿Efectos inequívocos?} En los estáticos, sí (dado el régimen). Aquí sobreviven las direcciones, pero el \emph{tamaño} depende de $\alpha$, $\Theta$, $\eta$, $\varphi$, $s_G$, $\rho_g$; algunos \emph{signos} del modelo (apertura y monetaria; tipo de cambio tras la fiscal; consumo con hogares que viven al día; LCP); y todo de la \emph{regla} (objetivo estricto, Taylor, fijo, límite inferior). Literatura sin conclusión firme (\autor{Zeyneloglu}-\autor{Koenig}, 2016).
-\item \emph{Ext.}: LCP/DCP; mercados incompletos; no ricardianos; \concepto{2PG} (\autor{Corsetti}-\autor{Pesenti}: PCP, la expansión monetaria tira del socio; LCP, lo empobrece; coordinar gana poco) \vertema{3.B.19}. \emph{Evidencia}: multiplicador bajo y menor cuanto más abierta; rompecabezas del consumo; \autor{Backus}-\autor{Smith} (1993); 2021-23 y 2026: euro↓ amplificó; BCE $-0{,}50\to4$\,\%. \emph{Valoración}: mercados completos, PCP, ricardianos.
+\item \emph{Ext.}: LCP/DCP; mercados incompletos; no ricardianos; \concepto{2PG} (\autor{Corsetti}-\autor{Pesenti}: PCP, la expansión monetaria tira del socio; LCP, lo empobrece; coordinar gana poco) \vertema{3.B.19}. \emph{Evidencia}: multiplicador bajo y menor cuanto más abierta; rompecabezas del consumo; \autor{Backus}-\autor{Smith} (1993); identificación (\autor{Blanchard}-\autor{Quah}, \autor{Kilian}); políticas de oferta en los datos; los 70 (petróleo ×4 y ×3; España \dato{28,4\,\%}{INE, ago.\ 1977}) frente a los 2000; 2021-23 y 2026: euro↓ amplificó; BCE $-0{,}50\to4$\,\%. \emph{Valoración}: mercados completos, PCP, ricardianos.
 \end{itemize}
 
 {\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.1}
@@ -154,6 +153,8 @@ Pregunta & Qué inflación; régimen; multiplicador & Si coordinar; transmisión
 Dónde & Aquí & \vertema{3.B.19}\\
 \bottomrule
 \end{tabularx}}
+\graficorepaso[0.6\linewidth]{policy-mix}{\emph{Policy mix}: los 4 cuadrantes}
+\graficorepaso[0.75\linewidth]{blanchard-quah}{\autor{Blanchard}-\autor{Quah}: demanda en joroba, oferta permanente}
 \graficorepaso[0.78\linewidth]{energia-tipo-cambio-zona-euro}{Brent en \$ y en €: en 2022 se separan (euro↓)}
 \begin{ideaclave}
 \textbf{La respuesta}: los efectos de la monetaria y la fiscal no se pueden fijar de antemano con validez universal: son condicionales a la economía (apertura, elasticidades, rigideces, mercados) y a la regla del banco central o al régimen. El modelo da la lista de lo que hay que medir.

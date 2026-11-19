@@ -1,0 +1,87 @@
+% Mapa del tema 3.B.6 (comentario de Víctor del 19/11/2026): los 3 bloques,
+% la pregunta a la que responde cada uno, sus subapartados y el hilo entre
+% ellos, como el mapa del 3.B.4 y el del resto del bloque de comercio. A la
+% izquierda, la pregunta de cada bloque; a la derecha, lo que se cuenta; entre
+% bloques, la flecha dice por qué se pasa al siguiente. Arriba, la pregunta
+% del tema; abajo, la respuesta de la conclusión. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  formula/.style={font=\scriptsize,text=tceegris,anchor=north west,text width=15.5cm,align=left,inner sep=1pt},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=south west] (intro) at (0,-0.85)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «No vendas miel al colmenero». ¿Por qué comercian países parecidos bienes parecidos, qué ganan con ello y dónde se produce?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Competencia monopolística}
+     ¿Por qué comercian 2 países idénticos? Variedad y escala};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Antecedentes y \autor{Krugman} (I.1, I.2)}
+     sin ventaja comparativa estática: \autor{Posner}, \autor{Vernon}, \autor{Linder}, \autor{Falvey}\\
+     \autor{Krugman} (1979): más variedades, márgenes menores y más escala};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Extensiones y \autor{Melitz} (I.3, I.4)}
+     costes iceberg: efecto del mercado doméstico\\
+     empresas heterogéneas: solo exportan las más productivas\\
+     abrirse sube la productividad media};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.0) -- (2.0,-3.7);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.35)
+    {con pocas empresas, la estrategia basta: se comercia hasta el mismo bien};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-3.75)
+    {\tit{tceeverde}{II. Competencia oligopolista}
+     ¿Por qué se comercia el mismo bien en las 2 direcciones?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-3.75)
+    {\tit{tceeverde}{En cantidades (II.1)}
+     dumping recíproco (\autor{Brander} y \autor{Krugman})\\
+     el bien homogéneo cruza en los 2 sentidos};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-3.75)
+    {\tit{tceeverde}{En precios (II.2)}
+     con bienes iguales, \autor{Bertrand} no da comercio\\
+     con diferenciación, sí};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-5.3) -- (2.0,-6.0);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-5.65)
+    {si la escala es de la industria y del lugar, ¿dónde se produce?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-6.05)
+    {\tit{tceedorado}{III. Otros desarrollos}
+     ¿Dónde se localiza la producción y cuánto se comercia?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-6.05)
+    {\tit{tceedorado}{Escala externa y geografía (III.1)}
+     economías externas y dinámicas: decide la historia\\
+     nueva geografía: centro y periferia};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-6.05)
+    {\tit{tceedorado}{Modelos de gravedad (III.2)}
+     el comercio crece con el tamaño y cae con la distancia\\
+     la regularidad empírica que lo resume todo};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-7.75) -- (2.0,-8.05);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-8.05)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: se vende miel al colmenero cuando la miel es distinta, cuando producir en grande abarata y cuando vende el mejor colmenero: la diferencia entre países es causa y también resultado del comercio.};}
+\end{tikzpicture}
+\end{document}

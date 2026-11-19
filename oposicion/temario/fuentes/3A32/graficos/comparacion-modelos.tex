@@ -1,0 +1,161 @@
+% Los 4 modelos del tema 3.A.32 frente a frente, en una cara (comentario de
+% Víctor del 19/11/2026): a) IS-LM con OA-DA; b) IS-LM-BP con OA-DA
+% (Mundell-Fleming); c) el modelo neokeynesiano canónico; d) la nueva
+% macroeconomía abierta, con la pequeña economía abierta (Galí-Monacelli y
+% Furlanetto) y los 2 países grandes (Corsetti-Pesenti, con la notación del
+% 3.B.19). Filas: supuestos, ecuaciones, qué determina los precios y el tipo
+% de cambio, política monetaria, política fiscal y límites.
+% Unos 16,6 x 21 cm: cabe en una cara dentro de su caja.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\providecommand{\vect}[1]{\vec{#1}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    banda/.style={fill=#1, text=white, draw=none, rounded corners=3pt, anchor=north west,
+      inner sep=4pt, align=left, font=\footnotesize},
+    texto/.style={anchor=north west, inner sep=0pt, align=flush left, font=\scriptsize,
+      execute at begin node={\setlength{\baselineskip}{8.6pt}}},
+    rotfila/.style={anchor=north west, inner sep=0pt, align=flush left,
+      font=\scriptsize\bfseries, text=tceemorado}]
+  % Columnas: rótulo de la fila; a), b), c) y d)
+  \def\xr{0}\def\wr{1.75}
+  \def\xa{1.85}\def\wa{3.25}
+  \def\xb{5.2}\def\wb{3.45}
+  \def\xc{8.75}\def\wc{3.45}
+  \def\xd{12.3}\def\wdd{4.35}
+  % Filas: arriba (y) y altura (h)
+  \def\yH{-0.95}\def\hH{1.4}
+  \def\yS{-2.45}\def\hS{3.6}
+  \def\yE{-6.15}\def\hE{4.05}
+  \def\yP{-10.3}\def\hP{2.05}
+  \def\yM{-12.45}\def\hM{2.65}
+  \def\yF{-15.2}\def\hF{2.05}
+  \def\yL{-17.35}\def\hL{2.35}
+  % \celda{x}{w}{y}{h}{color}{texto}
+  \newcommand{\celda}[6]{%
+    \fill[#5!9, rounded corners=2pt] (#1,#3) rectangle ++(#2,-#4);
+    \draw[#5!70, line width=0.5pt, rounded corners=2pt] (#1,#3) rectangle ++(#2,-#4);
+    \pgfmathsetmacro{\anchocelda}{#2-0.2}%
+    \node[texto, text width=\anchocelda cm] at (#1+0.1,#3-0.1) {#6};}
+  \newcommand{\cabecera}[4]{% x, w, color, texto
+    \pgfmathsetmacro{\anchocab}{#2-0.28}%
+    \node[banda=#3, font=\scriptsize, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}, text width=\anchocab cm, minimum height=\hH cm, anchor=north west, align=center] at (#1,\yH) {#4};}
+  \newcommand{\rotulo}[3]{% y, h, texto
+    \node[rotfila, text width=\wr cm] at (\xr,#1-0.1) {#3};}
+
+  % 1: título
+  \capa{1}{\node[banda=tceemorado, text width=16.4cm] at (0,0)
+    {\textbf{Los 4 modelos del tema, frente a frente}: de los estáticos, con efectos nítidos dado el régimen, a los dinámicos, con efectos que dependen de la economía y de la regla.};}
+
+  % 2: rótulos de las filas
+  \capa{2}{\rotulo{\yS}{\hS}{Supuestos clave};}
+  \capa{2}{\rotulo{\yE}{\hE}{Ecuaciones};}
+  \capa{2}{\rotulo{\yP}{\hP}{Qué determina los precios y el tipo de cambio};}
+  \capa{2}{\rotulo{\yM}{\hM}{Política monetaria};}
+  \capa{2}{\rotulo{\yF}{\hF}{Política fiscal};}
+  \capa{2}{\rotulo{\yL}{\hL}{Límites};}
+
+  % 3: a) IS-LM con OA-DA (economía cerrada)
+  \capa{3}{\cabecera{\xa}{\wa}{tceedorado}{\textbf{a) IS-LM con OA-DA}\\ economía cerrada};}
+  \capa{3}{\celda{\xa}{\wa}{\yS}{\hS}{tceedorado}{%
+    Economía cerrada.\\
+    IS-LM: precios fijos.\\
+    DA-OA: $P$ se ajusta; salarios nominales que se revisan con retraso.\\
+    Expectativas adaptativas o estáticas; sin microfundamentos.}}
+  \capa{3}{\celda{\xa}{\wa}{\yE}{\hE}{tceedorado}{%
+    IS: $Y=\dfrac{\overline{A}-b\,i}{1-c\,(1-t)}$\\[2pt]
+    LM: $\dfrac{M}{P}=k\,Y-h\,i$\\[2pt]
+    DA: un equilibrio IS-LM por cada $P$ (efecto \autor{Keynes}).\\[2pt]
+    OA: $\pi_t-\pi^e_t=-a\,(U_t-U^n)+\varepsilon_t$; a medio plazo, vertical en $Y^n$.}}
+  \capa{3}{\celda{\xa}{\wa}{\yP}{\hP}{tceedorado}{%
+    $P$: el corte de la DA y la OA; a medio plazo, la DA sobre la OA vertical.\\
+    No hay tipo de cambio.}}
+  \capa{3}{\celda{\xa}{\wa}{\yM}{\hM}{tceedorado}{%
+    Expansiva: baja $i$, sube la inversión; suben $Y$ y $P$.\\
+    A medio plazo, neutral: solo sube $P$.}}
+  \capa{3}{\celda{\xa}{\wa}{\yF}{\hF}{tceedorado}{%
+    Expansiva: suben $Y$ y $P$; sube $i$ y expulsa inversión.\\
+    A medio plazo, solo $P$ y la composición del gasto.}}
+  \capa{3}{\celda{\xa}{\wa}{\yL}{\hL}{tceedorado}{%
+    Sin comercio ni tipo de cambio; sin expectativas racionales (crítica de \autor{Lucas}) ni criterio de bienestar.}}
+
+  % 4: b) IS-LM-BP con OA-DA (Mundell-Fleming)
+  \capa{4}{\cabecera{\xb}{\wb}{tceeazul}{\textbf{b) IS-LM-BP con OA-DA}\\ \autor{Mundell}-\autor{Fleming}, abierta};}
+  \capa{4}{\celda{\xb}{\wb}{\yS}{\hS}{tceeazul}{%
+    País pequeño: $Y^*$ e $i^*$ dados.\\
+    Movilidad del capital $\beta_K$; \autor{Marshall}-\autor{Lerner}; expectativas estáticas.\\
+    Precios fijos en \autor{Mundell}-\autor{Fleming}; en la DA-OA, $P$ se ajusta y $P^*$ está dado.\\
+    Salarios con el índice de consumo (apertura $\alpha$).}}
+  \capa{4}{\celda{\xb}{\wb}{\yE}{\hE}{tceeazul}{%
+    IS: $Y=\dfrac{\overline{A}-b\,i+x\,Y^*+\nu\,q}{1-c\,(1-t)+m}$\\[2pt]
+    LM: $\dfrac{M}{P}=k\,Y-h\,i$\\[2pt]
+    BP: $x\,Y^*-m\,Y+\nu\,q+\beta_K\,(i-i^*)=0$\\[2pt]
+    DA: fijo, efecto competitividad; flexible, efecto saldos reales.\\[2pt]
+    OA con la cuña: $F(U^n,Z)=\dfrac{1}{(1+\mu)\,q^{\alpha}}$}}
+  \capa{4}{\celda{\xb}{\wb}{\yP}{\hP}{tceeazul}{%
+    Tipo fijo: se ajusta $M$ (endógeno). Flexible: se ajusta $E$.\\
+    $P$: DA-OA. Inflación de consumo: $\pi\simeq(1-\alpha)\,\pi_H+\alpha\,(\gamma_E+\gamma_{P^*})$.}}
+  \capa{4}{\celda{\xb}{\wb}{\yM}{\hM}{tceeazul}{%
+    Movilidad perfecta: con tipo fijo, \textcolor{tceerojo}{ineficaz} (se van las reservas); con flexible, \textcolor{tceeverde}{muy eficaz} (depreciación).\\
+    A medio plazo, neutral.}}
+  \capa{4}{\celda{\xb}{\wb}{\yF}{\hF}{tceeazul}{%
+    Movilidad perfecta: con tipo fijo, \textcolor{tceeverde}{muy eficaz}; con flexible, \textcolor{tceerojo}{ineficaz} (expulsa $XN$).\\
+    A medio plazo, con tipo fijo, la expulsión llega por los precios.}}
+  \capa{4}{\celda{\xb}{\wb}{\yL}{\hL}{tceeazul}{%
+    Estático; flujos y no fondos; sin restricción intertemporal ni criterio de bienestar.}}
+
+  % 5: c) el modelo neokeynesiano canónico
+  \capa{5}{\cabecera{\xc}{\wc}{tceemorado}{\textbf{c) Neokeynesiano canónico}\\ dinámico, cerrado};}
+  \capa{5}{\celda{\xc}{\wc}{\yS}{\hS}{tceemorado}{%
+    Hogares que optimizan, con expectativas racionales ($\theta$, $\varphi$).\\
+    Competencia monopolística ($\sigma$) y precios à la \autor{Calvo} ($\eta$).\\
+    Sin dinero (\emph{cashless}); un banco central con una regla de tipos.\\
+    Ecuaciones log-linealizadas.}}
+  \capa{5}{\celda{\xc}{\wc}{\yE}{\hE}{tceemorado}{%
+    IS dinámica:\\ $x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta}\big(i_t-\mathbb{E}_t[\pi_{t+1}]-r^n_t\big)$\\[2pt]
+    NKPC:\\ $\pi_t=\beta\,\mathbb{E}_t[\pi_{t+1}]+\kappa\,x_t+u_t$\\[2pt]
+    Regla de \autor{Taylor}:\\ $i_t=\rho+\phi_\pi\,\pi_t+\phi_x\,x_t+\varepsilon_t$\\[2pt]
+    Forma reducida:\\ $x_t=\dfrac{\hat r^n_t-\phi_\pi\,u_t-\varepsilon_t}{\theta+\phi_x+\phi_\pi\,\kappa}$}}
+  \capa{5}{\celda{\xc}{\wc}{\yP}{\hP}{tceemorado}{%
+    La inflación, no el nivel: la NKPC, con las expectativas y la brecha; la regla la ancla.\\
+    No hay tipo de cambio.}}
+  \capa{5}{\celda{\xc}{\wc}{\yM}{\hM}{tceemorado}{%
+    Contractiva ($\varepsilon_t>0$): caen la brecha y la inflación.\\
+    Demanda: divina coincidencia; costes: dilema.}}
+  \capa{5}{\celda{\xc}{\wc}{\yF}{\hF}{tceemorado}{%
+    Entra por $r^n_t$. El multiplicador es menor cuanto más agresiva es la regla; puede superar 1 en el límite inferior de los tipos.}}
+  \capa{5}{\celda{\xc}{\wc}{\yL}{\hL}{tceemorado}{%
+    Necesita inercia añadida; $u_t$, casi un residuo; sin sector financiero ni tipo de cambio.}}
+
+  % 6: d) la nueva macroeconomía abierta
+  \capa{6}{\cabecera{\xd}{\wdd}{tceeverde}{\textbf{d) Nueva macroeconomía abierta}\\ PEA: \autor{Galí}-\autor{Monacelli} y \autor{Furlanetto}\\ 2PG: \autor{Corsetti}-\autor{Pesenti}};}
+  \capa{6}{\celda{\xd}{\wdd}{\yS}{\hS}{tceeverde}{%
+    \textbf{PEA}: continuo de economías pequeñas; apertura $\alpha$ y sesgo nacional; precios en la moneda del productor; mercados completos; gasto en bienes nacionales, hogares ricardianos.\\[1pt]
+    \textbf{2PG}: 2 países, A y B; $U=\ln C-\chi\,\ell$; precios fijados un periodo antes, en la moneda del productor o del comprador; sin gasto público; $\mu$, el tono monetario (no el margen).}}
+  \capa{6}{\celda{\xd}{\wdd}{\yE}{\hE}{tceeverde}{%
+    \textbf{PEA}: $\pi_t=\pi_{H,t}+\alpha\,\Delta\tau_t$\\
+    $x_t=\mathbb{E}_t[x_{t+1}]-\frac{1}{\theta_{\alpha G}}\big(i_t-\mathbb{E}_t[\pi_{H,t+1}]-r^n_t\big)$\\
+    $\pi_{H,t}=\beta\,\mathbb{E}_t[\pi_{H,t+1}]+\kappa_\alpha\,x_t+u_t$\\
+    $i_t=\rho+\phi_\pi\,\pi_{H,t}+\phi_x\,x_t+\varepsilon_t$, con $\theta_{\alpha G}=\dfrac{\theta}{(1+\alpha\,\Theta)(1-s_G)}$\\[3pt]
+    \textbf{2PG}: AD: $C=\dfrac{\mu}{P}$;\quad AS: $C=Z\,\ell\,\tau$;\\[1pt]
+    NR: $\overline{\ell}=\dfrac{\sigma-1}{\sigma\,\chi}$;\quad $E=\dfrac{\mu}{\mu^*}$}}
+  \capa{6}{\celda{\xd}{\wdd}{\yP}{\hP}{tceeverde}{%
+    \textbf{PEA}: $\pi_H$ por la NKPC abierta; $E$ por la paridad de intereses y el reparto del riesgo, $q_t=(1-\alpha)\,\tau_t$; $\pi$ suma lo importado.\\
+    \textbf{2PG}: precios fijados por adelantado; $E$, el cociente de los tonos monetarios.}}
+  \capa{6}{\celda{\xd}{\wdd}{\yM}{\hM}{tceeverde}{%
+    \textbf{PEA}: contractiva: caen la brecha y $\pi_H$, la moneda se aprecia y $\pi$ cae más; la apertura amplifica si $\Theta>0$. Mejor regla: inflación interna $>$ consumo $>$ fijo.\\
+    \textbf{2PG}: una expansión en A ayuda a B con precios del productor; con los del comprador, lo empobrece.}}
+  \capa{6}{\celda{\xd}{\wdd}{\yF}{\hF}{tceeverde}{%
+    \textbf{PEA}: $\dfrac{\partial Y}{\partial G}=\dfrac{\theta_{\alpha G}}{\theta_{\alpha G}+\varphi}<1$, menor cuanto más abierta; aprecia y caen $C$ y $XN$; con tipo fijo, unos 0,9 frente a 0,35.\\
+    \textbf{2PG}: apenas desarrollada.}}
+  \capa{6}{\celda{\xd}{\wdd}{\yL}{\hL}{tceeverde}{%
+    \textbf{PEA}: mercados completos y traspaso completo; el rompecabezas del consumo; los efectos dependen de los parámetros y de la regla.\\
+    \textbf{2PG}: depende de la moneda de facturación y de las preferencias logarítmicas.}}
+
+  % 7: la lectura de la tabla
+  \capa{7}{\node[banda=tceemorado, text width=16.4cm] at (0,-19.85)
+    {\textbf{Cómo se lee}: de izquierda a derecha, cada modelo levanta un supuesto del anterior (los precios fijos, la economía cerrada, las expectativas estáticas, el país aislado). Los de a) y b) dan efectos de signo conocido; los de c) y d) recuperan sus direcciones básicas, pero el tamaño, y a veces el signo, depende de la apertura, las elasticidades, las rigideces, la regla monetaria y la moneda de facturación.};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,81 @@
+% Mapa de la exposición del 3.B.27 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Misma forma que los mapas del 3.B.4 y del 3.B.41.
+% En el bloque I, los 3 motivos con los colores de la figura por-que-intervenir del tema.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Cada palo que aguante su vela». ¿Por qué las finanzas son el sector más regulado, cómo se regula a los bancos y a quienes hacen lo mismo sin serlo, y sirve de algo?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul,minimum height=2.45cm] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Fundamentos teóricos}
+     ¿Por qué regular las finanzas más que cualquier otro sector?};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Qué es (I.1)}
+     funciones del sistema financiero\\ 3 objetivos: solvencia, protección del cliente y estabilidad\\ 3 modelos de supervisión};}
+  \capa{2}{\node[contenido=tceeazul,minimum height=2.45cm] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Por qué intervenir (I.2)}
+     \textcolor{tceemorado}{eficiencia}: racionamiento (\autor{Stiglitz} y \autor{Weiss})\\ \textcolor{tceeverde}{equidad}: el acceso\\ \textcolor{tceerojo}{estabilidad}: pánicos (\autor{Diamond} y \autor{Dybvig})\\ límite: el fallo de regulación};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.65) -- (2.0,-4.35);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.00)
+    {hay motivos para intervenir: ¿quién regula y con qué instrumentos?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde,minimum height=2.45cm] (pII) at (0,-4.40)
+    {\tit{tceeverde}{II. Instrumentos}
+     ¿Qué se regula, con qué instrumentos y quién, dentro y fuera de los bancos?};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.45cm] (cII1) at (4.75,-4.40)
+    {\tit{tceeverde}{Marco e implementación (II.1-II.2)}
+     Comité de Basilea, FSB, unión bancaria\\ Basilea~III: más capital, apalancamiento y liquidez\\ macroprudencial, supervisión y resolución};}
+  \capa{4}{\node[contenido=tceeverde,minimum height=2.45cm] (cII2) at (10.45,-4.40)
+    {\tit{tceeverde}{Regulación no bancaria (II.3)}
+     seguros, fondos y mercados de valores\\ intermediación no bancaria\\ criptoactivos (MiCA) y riesgos digitales};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-6.90) -- (2.0,-7.60);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.25)
+    {muchas normas a la vez: ¿qué dicen los datos?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado,minimum height=2.45cm] (pIII) at (0,-7.65)
+    {\tit{tceedorado}{III. Evidencia empírica}
+     ¿Ha hecho la regulación más estable y más eficiente al sistema?};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII1) at (4.75,-7.65)
+    {\tit{tceedorado}{Crecimiento y regulación (III.1-III.2)}
+     las finanzas ayudan a crecer, hasta un crédito del 100\,\% del PIB\\ funciona la regulación que da información e incentivos};}
+  \capa{6}{\node[contenido=tceedorado,minimum height=2.45cm] (cIII2) at (10.45,-7.65)
+    {\tit{tceedorado}{Competencia y cajas (III.3-III.4)}
+     5 mayores: del 41\,\% al 67\,\% de los activos\\ competencia y estabilidad (\autor{Martínez-Miera} y \autor{Repullo})\\ cajas: la gobernanza importa};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-10.15) -- (2.0,-10.45);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.45)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: las finanzas se regulan más porque sus pérdidas no se quedan en quien las causa; la regulación sirve si consigue que cada palo aguante su vela, también fuera de los bancos.};}
+\end{tikzpicture}
+\end{document}

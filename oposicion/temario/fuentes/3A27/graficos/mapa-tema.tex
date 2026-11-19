@@ -1,0 +1,88 @@
+% Mapa de la exposición del tema 3.A.27 (comentario de Víctor del 19/11/2026),
+% como el del 3.B.4: arriba, la pregunta del tema (introducción); a la
+% izquierda, la pregunta de cada bloque; a la derecha, lo que se cuenta en sus
+% apartados; entre bloques, la flecha dice por qué se pasa al siguiente; abajo,
+% la respuesta de la conclusión. Paleta del bloque de mercado de trabajo (3.A.25-3.A.28): verde azulado, dorado y teja, los colores del empleo y el paro.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize,
+    execute at begin node={\everypar{\hangindent=0.8em\hangafter=1}}},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  fila/.style={inner sep=0pt,draw=none},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\par\vspace{1pt}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Lo barato sale caro». ¿Por qué no bajan los salarios si sobra gente dispuesta a trabajar?};}
+  \capa{1}{\draw[hilo] ($(intro.south west)+(2.0,0)$) -- ++(0,-0.28);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=dicempleo] (pI) at ($(intro.south west)+(0,-0.3)$)
+    {\tit{dicempleo}{I. Modelos de negociación}
+     ¿Cómo se fija el salario cuando negocian sindicato y empresa?};}
+  \capa{2}{\node[contenido=dicempleo] (cI1) at ($(pI.north west)+(4.75,0)$)
+    {\tit{dicempleo}{La herramienta (I.1)}
+     teoría de la negociación: \autor{Hicks}, \autor{Nash} y \autor{Rubinstein}\par};}
+  \capa{2}{\node[contenido=dicempleo] (cI2) at ($(pI.north west)+(10.45,0)$)
+    {\tit{dicempleo}{Negociación colectiva (I.2-I.3)}
+     monopolista, derecho a gestionar, contratos eficientes\par
+     en macro: curva salarial y WS\par};}
+  \capa{2}{\node[fila,fit=(pI)(cI1)(cI2)] (fI) {};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] ($(fI.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{3}{\node[rotulolargo,anchor=west] at ($(fI.south west)+(2.15,-0.48)$)
+    {sin sindicato: a la propia empresa puede convenirle pagar más};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceedorado] (pII) at ($(fI.south west)+(0,-0.95)$)
+    {\tit{tceedorado}{II. Salarios de eficiencia}
+     ¿Por qué pagaría una empresa más de lo necesario?};}
+  \capa{4}{\node[contenido=tceedorado] (cII1) at ($(pII.north west)+(4.75,0)$)
+    {\tit{tceedorado}{Idea y \autor{Solow} (II.1-II.2)}
+     los 4 motivos de \autor{Romer}\par
+     el esfuerzo depende del salario\par};}
+  \capa{4}{\node[contenido=tceedorado] (cII2) at ($(pII.north west)+(10.45,0)$)
+    {\tit{tceedorado}{\autor{Shapiro} y \autor{Stiglitz} (II.3)}
+     condición de no escaqueo: el paro disciplina\par};}
+  \capa{4}{\node[fila,fit=(pII)(cII1)(cII2)] (fII) {};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] ($(fII.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{5}{\node[rotulolargo,anchor=west] at ($(fII.south west)+(2.15,-0.48)$)
+    {el salario tampoco sigue a la productividad en cada momento: ¿un seguro?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=dicparo] (pIII) at ($(fII.south west)+(0,-0.95)$)
+    {\tit{dicparo}{III. Contratos implícitos}
+     ¿Por qué el salario es estable y el empleo no?};}
+  \capa{6}{\node[contenido=dicparo] (cIII1) at ($(pIII.north west)+(4.75,0)$)
+    {\tit{dicparo}{El seguro (III.1-III.2)}
+     la empresa diversifica el riesgo y asegura al trabajador\par};}
+  \capa{6}{\node[contenido=dicparo] (cIII2) at ($(pIII.north west)+(10.45,0)$)
+    {\tit{dicparo}{\emph{Insiders} (III.3-III.4)}
+     explica la rigidez, no el paro\par
+     los \emph{insiders} fijan el salario\par};}
+  \capa{6}{\node[fila,fit=(pIII)(cIII1)(cIII2)] (fIII) {};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] ($(fIII.south west)+(2.0,-0.05)$) -- ++(0,-0.3);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at ($(fIII.south west)+(0,-0.38)$)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: a la empresa le sale caro bajar el salario (pierde esfuerzo, trabajadores o la paz con el sindicato): lo barato sale caro, y el ajuste lo pagan los que se quedan fuera.};}
+\end{tikzpicture}
+\end{document}

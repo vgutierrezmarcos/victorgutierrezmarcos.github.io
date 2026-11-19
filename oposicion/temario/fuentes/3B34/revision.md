@@ -202,3 +202,6 @@ Ninguna nota lo necesitaba.
 - **4. Negrita y cursiva mezcladas.** Comprobadas todas las listas (también las de sin dos puntos): unificadas 2 que quedaban mezcladas (compromisos específicos: «Compromisos adicionales» pasa a negrita como sus hermanos; III.3: los 3 rasgos de la solución de diferencias, todos con rótulo en negrita). Las listas nuevas siguen un solo patrón (obligaciones y principios en negrita; excepciones y modelos de palabra en cursiva).
 - **Reglas del día.** Bibliografía: `keywords = {esencial}` en 4 fuentes (texto del AGCS, texto del ADPIC, «Entender la OMC» y el Informe sobre el Comercio Mundial 2019). Recapitulación con «En conclusión,» en su línea: se mantiene. Referencias nuevas: `OMC2026EstadisticasMercancias`, `OMC1994Marrakech`, `OMC1996Singapur`. Quitadas de los comentarios de 3 gráficos las menciones a la versión antigua. Ficha de repaso al día (minutos, gráficos nuevos, excepciones), sigue en 4 páginas.
 
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

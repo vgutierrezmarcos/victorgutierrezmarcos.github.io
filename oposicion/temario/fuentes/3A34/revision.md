@@ -238,3 +238,7 @@ Los 4 enlaces del original siguen en el tema (en el `.tex` o en el `.bib`): no s
 ## Listas en las notas al pie (15/11/2026)
 
 Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota lo necesitaba: no hay ninguna que enumere conceptos o casos paralelos de forma que una lista ayude a leerla.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

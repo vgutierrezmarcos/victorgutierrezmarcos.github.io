@@ -281,3 +281,7 @@ Páginas: antes, 38 de tema, 11 de anexos y 7 de bibliografía (56); ahora, 39 d
 ## Dudas abiertas (18/11/2026)
 
 - **B15-20.** Modelo intertemporal con controles. Opciones: (a) desarrollo en el cuerpo, en 3 pasos con su gráfico cada uno y notas al pie para el álgebra y los ejemplos; (b) mantener las 3 cajas grises, pero cada una antes de la viñeta del cuerpo que la resume y con el gráfico completo al final; (c) en el cuerpo solo el resultado y todo el desarrollo en el anexo E. **Aplicada: (a)**, recomendada: es el orden en que se dibuja en el cante y deja de repetir cada escenario 2 veces (viñeta y caja). Ocupa una página más.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

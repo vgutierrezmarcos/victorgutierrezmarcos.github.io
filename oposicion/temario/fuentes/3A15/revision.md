@@ -218,3 +218,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Quitado «quemar las naves» (compromiso de capacidad, tema y ficha): se queda en el 3.A.14 (Cortés y el compromiso). En el tema, «es la lógica del compromiso estratégico» (con la misma cita a Schelling).
 
 - Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

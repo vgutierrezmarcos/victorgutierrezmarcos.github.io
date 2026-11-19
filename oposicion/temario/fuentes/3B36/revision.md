@@ -186,3 +186,4 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
   - *Evolución*: el bloque I (de París a Lisboa, Brexit, crisis).
   - *Retos de futuro*: I.6.4 (ampliación y reforma de los Tratados) y la opinión de la conclusión.
   - Sin cambios en el `.tex`, la ficha ni las páginas (cuerpo 32, anexos 9).
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

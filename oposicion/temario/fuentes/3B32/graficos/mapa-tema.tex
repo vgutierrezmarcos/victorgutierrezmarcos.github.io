@@ -1,0 +1,90 @@
+% Mapa de la exposición del 3.B.32 (comentario de Víctor del 19/11/2026): los
+% 3 bloques, la pregunta a la que responde cada uno, lo que se cuenta en sus
+% subapartados y el hilo entre ellos. A la izquierda, la pregunta de cada
+% bloque; a la derecha, lo que se cuenta; entre bloques, la flecha dice por qué
+% se pasa al siguiente. Arriba, la pregunta del enganche; abajo, la respuesta
+% de la conclusión. Elaboración propia, con la misma forma que el mapa del 3.B.41.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,minimum height=2.55cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=12.6cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del enganche (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Dios aprieta, pero no ahoga». ¿Hacia dónde va la economía mundial y quién la mueve: los mismos de siempre o las nuevas áreas emergentes?};}
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Estructura de los flujos}
+     ¿Qué circula entre países, entre quiénes y en qué moneda?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Sistema comercial (I.1)}
+     manufacturas; más servicios digitales y bienes de la IA\\
+     cadenas globales de valor\\
+     gravedad: 3 polos; la distancia importa};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Sistemas financiero y monetario (I.2-I.3)}
+     el capital va sobre todo entre ricos\\
+     ciclo financiero global (la Fed)\\
+     personas y tecnología, menos integradas\\
+     el dólar, aún dominante};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.75) -- (2.0,-4.55);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-4.15)
+    {los flujos cambian de protagonistas: ¿quién emerge y por qué?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-4.5)
+    {\tit{tceeverde}{II. Nuevas áreas emergentes}
+     ¿Quiénes son, por qué emergen y qué retos tienen?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-4.5)
+    {\tit{tceeverde}{Concepto y causas (II.1)}
+     sin definición oficial: FMI, BM, BRICS\\
+     convergencia condicional\\
+     convergen si elevan su estado estacionario};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-4.5)
+    {\tit{tceeverde}{Áreas y retos (II.2-II.3)}
+     China, la India, Sudeste Asiático, Golfo, América Latina, África\\
+     retos: renta media, fragmentación, deuda, clima};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-7.1) -- (2.0,-7.9);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-7.5)
+    {con estos flujos y protagonistas: ¿hacia dónde va?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-7.85)
+    {\tit{tceedorado}{III. Perspectivas}
+     ¿Cómo está la economía mundial, qué prevén los organismos y qué la amenaza?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-7.85)
+    {\tit{tceedorado}{Coyuntura y previsiones (III.1-III.2)}
+     resiste aranceles, guerra y petróleo caro\\
+     FMI, OCDE, Comisión, BM, OMC: crece menos que antes};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-7.85)
+    {\tit{tceedorado}{Riesgos, largo plazo y DAFO (III.3-III.5)}
+     riesgos a la baja, poco margen fiscal\\
+     el centro de gravedad (\autor{Quah}) se desplaza hacia el este\\
+     balance: DAFO};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] (2.0,-10.45) -- (2.0,-10.75);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at (0,-10.75)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: los choques aprietan pero no ahogan: el mundo sigue creciendo, empujado desde Asia y los emergentes que convergen; ¿podrá seguirlos el resto en un mundo de bloques?};}
+\end{tikzpicture}
+\end{document}

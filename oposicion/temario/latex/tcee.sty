@@ -356,8 +356,23 @@
 \newif\iftcee@primerpar
 \AddToHook{para/begin}{\iftcee@primerpar\vadjust{\nobreak}\fi}
 \AddToHook{para/after}{\iftcee@primerpar\global\tcee@primerparfalse\nobreak\fi}
+% Una caja que empieza donde no se puede cortar (justo tras un título o tras una
+% tabla o gráfico con [H] y su fuente) no se parte: si tcolorbox intentaba
+% partirla ahí, dejaba una primera parte vacía y dibujaba el resto en la página
+% siguiente desplazado hacia arriba, encima de la cabecera (3.B.41, anexo D,
+% 19/11/2026). verificar-tema.py comprueba que ninguna caja se salga por arriba.
 \tcbset{tcee primera linea/.style={before upper pre={\global\tcee@primerpartrue},
-  after upper pre={\global\tcee@primerparfalse}}}
+  after upper pre={\global\tcee@primerparfalse},
+  code={\ifvmode\ifnum\lastpenalty>9999 \tcbset{unbreakable}\fi\if@nobreak\tcbset{unbreakable}\fi\fi}}}
+% Si al pie de una página no cabe el primer trozo inseparable de una caja (su
+% primera línea va pegada a lo que le sigue), tcolorbox dejaba ahí una primera
+% parte vacía y dibujaba el resto en la página siguiente desplazado hacia arriba,
+% por encima de la cabecera (3.B.41, anexo D, 19/11/2026). Antes de abrir la caja
+% se pide sitio para sus primeras líneas; si no lo hay, empieza en la página
+% siguiente. verificar-tema.py comprueba que ninguna caja se salga por arriba.
+\AddToHook{env/anotaciones/before}{\par\needspace{6\baselineskip}}
+\AddToHook{env/ideaclave/before}{\par\needspace{5\baselineskip}}
+\AddToHook{env/notaopositor/before}{\par\needspace{5\baselineskip}}
 % Nota al opositor: consejo útil para el cante (sustituye a la caja amarilla
 % con texto rojo de los Word antiguos).
 \newtcolorbox{notaopositor}[1][]{enhanced,breakable,

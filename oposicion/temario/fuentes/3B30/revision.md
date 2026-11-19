@@ -104,18 +104,23 @@ Consulta: 14/11/2026. Todos en `datos-actualizables.yaml`.
 - **B30-07** (14/11/2026). Silla de España en el Banco Mundial: desde noviembre de 2026 el director parece ser de México (deducido de la tabla de directores). (a) «España y México se turnan»; (b) nombrar al director. **Aplicada: (a)**.
 - **B30-08** (14/11/2026). Notación del modelo de la palanca ($E$, $L$, $e^{\min}$, la del propio Banco Mundial: *equity-to-loans*). (a) Mantenerla y llevarla al canon; (b) otra. **Aplicada: (a)**; anotada en `_trabajo/canon-pendiente.md`.
 - **B30-09** (14/11/2026). `verificar-tema.py` da 3 errores por faltar el PDF, HTML y Word publicados: es por compilar con `--no-publicar` (encargo). No es un error del tema.
+- **B30-10** (19/11/2026). Bloque III reordenado por tipo de banco en 4 subapartados (regionales, con BERD y BEI en «los bancos europeos» a 4.º nivel; subregionales y temáticos; nuevos de los emergentes; reforma y España). Alternativa: 3 subapartados, uniendo «subregionales y temáticas» y «nuevas» en «Otras instituciones». **Aplicada: 4**, porque los nuevos (BAII, NDB) responden a otra pregunta (el peso de los emergentes) y Víctor los separaba.
+- **B30-11** (19/11/2026). Los 3 modelos de la razón de ser (palanca, bienes públicos globales, catalizador) con a)-e) en el cuerpo solo están en nuestro tema; las demás versiones dan esas razones de palabra, y CRITERIOS (14/11) pide para temas institucionales los modelos en anexo y la idea de palabra en el cuerpo. (a) Dejarlos en el cuerpo (dan el hilo del tema: el árbol y su sombra); (b) pasar supuestos y desarrollo a un anexo y dejar en I.1 la idea, la función clave y el gráfico. **Aplicada: (a)**, a la espera de que Víctor decida.
+- **B30-12** (19/11/2026). Las 5 entidades estaban en una tabla; ahora son una figura (`figu:entidades-gbm`) con año, miembros, qué hacen, clientes, financiación y actividad de 2026, y la tabla se quita para no repetir. Se deja fuera de caja gris porque se expone (son las 5 casillas de la pizarra). Las figuras del gobierno y de la estrategia van en caja gris.
+- **B30-13** (19/11/2026). España en el CIADI: 44 casos como demandado contados en la base de datos oficial (no es una estadística publicada) y 5.º Estado más demandado; no se pudo aislar cuántos son por renovables, por eso «muchos». (a) Así; (b) quitar la cifra.  **Aplicada: (a)**.
+
 
 ## 8. Instrucciones para el vídeo
 
 - Enganche: el refrán del árbol y la pregunta «¿por qué hace falta un banco cuyos dueños son Estados…?»; la idea final vuelve al árbol (la sombra depende del árbol: capital y votos).
 - I: a la izquierda, en morado y hasta el final, $L^{\max}=E/e^{\min}$; el gráfico de la palanca por capas (curva → 20 % → 18 % → capital híbrido). Bienes globales: el gráfico por capas (3 países → $c$ → $G^N$ → suma → $G^*$ → brecha) y la condición de Samuelson. Catalizador: solo la desigualdad $p_A R\ge1+r^*>\bar pR$, sin gráfico.
 - I.2-I.5: sin pizarra (la tabla de ventanillas como apoyo).
-- II: la cronología por décadas en el guion; el gráfico de compromisos y el de votos como apoyo; la tabla de las 5 entidades se escribe en la pizarra como 5 casillas (ventanilla de cada una).
+- II: la cronología por décadas en el guion; el gráfico de compromisos y el de votos como apoyo; la figura de las 5 entidades se escribe en la pizarra como 5 casillas (ventanilla de cada una, con el color de la figura); las figuras del gobierno y de la estrategia, como apoyo.
 - III: la tabla de los regionales como apoyo; en la pizarra, solo «792.000 M$» y la triple agenda en 3 líneas.
 
 **Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
 
-> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{5}, con los 3 modelos; I.2 a I.5, \tiempo{3,5}); II, \tiempo{9,5} (II.1, \tiempo{2,5}; II.2, \tiempo{2}; II.3, \tiempo{5}); III, \tiempo{8} (III.1, \tiempo{1}; III.2 a III.6, \tiempo{3,5}; III.7 y III.8, \tiempo{1,5}; III.9, \tiempo{2}), y conclusión, \tiempo{1,5}. La deuda externa, la ayuda al desarrollo y el FMI tienen su propio tema: aquí basta con lo que explica a los bancos. Los gráficos imprescindibles son la palanca del capital y el de los bienes públicos globales; las funciones clave, la palanca del capital, la condición de \autor{Samuelson} para los bienes globales y la condición del efecto catalizador. El refrán del enganche vuelve en la idea final. Las cifras que conviene llevar al día son los compromisos del Grupo del Banco Mundial, la AIF21 y los votos de España.
+> Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{5}, con los 3 modelos; I.2 a I.5, \tiempo{3,5}); II, \tiempo{9,5} (II.1, \tiempo{2,5}; II.2, \tiempo{2}; II.3, \tiempo{5}); III, \tiempo{8} (III.1, \tiempo{4,5}; III.2, \tiempo{0,5}; III.3, \tiempo{1}; III.4, \tiempo{2}), y conclusión, \tiempo{1,5}. La deuda externa, la ayuda al desarrollo y el FMI tienen su propio tema: aquí basta con lo que explica a los bancos. Los gráficos imprescindibles son la palanca del capital y el de los bienes públicos globales; las funciones clave, la palanca del capital, la condición de \autor{Samuelson} para los bienes globales y la condición del efecto catalizador. El refrán del enganche vuelve en la idea final. Las cifras que conviene llevar al día son los compromisos del Grupo del Banco Mundial, la AIF21 y los votos de España.
 
 ## Ficha de repaso (14/11/2026)
 
@@ -131,3 +136,22 @@ Consulta: 14/11/2026. Todos en `datos-actualizables.yaml`.
 ## Listas en las notas al pie (15/11/2026)
 
 Ninguna nota lo necesitaba.
+
+## Comentarios de Víctor (18/11/2026)
+
+- (1) Contraste con otros preparadores: ver la sección del 19/11.
+- (2) Bloque III con estructura: de 9 subapartados a 4 de segundo nivel por tipo de banco: III.1 Los bancos regionales de desarrollo (III.1.1 origen y rasgos comunes; III.1.2 BID; III.1.3 BAfD; III.1.4 BAsD; III.1.5 los bancos europeos, con el BERD y el BEI en 4.º nivel); III.2 Las instituciones subregionales y temáticas (III.2.1 subregionales y de afinidad; III.2.2 fondos temáticos o verticales); III.3 Las nuevas instituciones de las economías emergentes (III.3.1 BAII; III.3.2 NDB); III.4 El sistema de los BMD: reforma y papel de España. Esquema, estructura de la introducción, ficha y mapa al día; frases de enlace al empezar III.1, III.2 y III.4. Duda B30-10.
+- (3) Infografías del Banco Mundial (datos comprobados en worldbank.org, ida, ifc, miga, icsid y devcommittee el 19/11/2026): `entidades-gbm` (las 5 entidades con año, miembros, función, clientes, financiación y actividad del ejercicio 2026; sustituye a la tabla, en el cuerpo), `gobierno-gbm` (Junta, Directorio con 6 nombrados y 19 elegidos, presidente, Comité para el Desarrollo, control independiente, votos básicos y por acciones, silla de España con el 4,59 %; caja gris) y `estrategia-gbm` (visión de 2023, línea de tiempo de la hoja de ruta 2013-2026, marco de puntuación de 22 indicadores, AIF21, frentes de capital, resultados y prioridades: empleo, Misión 300, clima; caja gris). En el texto, nuevas viñetas de la estrategia: programas de desafíos globales (2024), empleo (2025) y clima (44 % en 2026). Duda B30-12.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema). Bloque III al día con la nueva estructura.
+- **Contraste con otros preparadores** (tabla en `_trabajo/contraste-preparadores.md`; 7 versiones: 3 de preparadores actuales, 1 de ICEX-CECO con el título vigente y 3 más antiguas). El tema ya cubría lo que tienen casi todas (definición, rasgos, ventanillas, gobierno, actuaciones, historia, 5 entidades, regionales, nuevos, fondos climáticos, ONU). Añadido lo que estaba en varias y faltaba o era muy breve:
+  - estrategias en 3 niveles: corporativa, sectorial y de país (I.4);
+  - orientación a resultados: Declaración de París (2005) y Busan (2011), evaluación independiente, Panel de Inspección y evaluaciones con grupos de control (Banerjee, Duflo y Kremer, Nobel 2019) (I.5);
+  - la Agenda 2030 y la Agenda de Acción de Addis Abeba (2015) como mandato de los BMD (III.4.1);
+  - la AIF y el alivio de la deuda: PPME, IADM, ISSD y Marco Común, con remisión al 3.B.29 (II.3.2);
+  - la clasificación de países por renta del ejercicio 2027 (II.3.1);
+  - España en el CIADI: 44 casos, muchos por las renovables (II.3.5).
+- Recortado: nada. Lo que solo está en el nuestro (los 3 modelos formales, la reforma 2022-2026 y el papel de España) es correcto, posterior a casi todas las versiones o propio del cuerpo; los modelos quedan en duda (B30-11).
+- No se pudieron leer los .doc de MPC y de Zapico/Teresa (sin conversor en el equipo).

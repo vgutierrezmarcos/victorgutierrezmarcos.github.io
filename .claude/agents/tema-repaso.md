@@ -25,14 +25,17 @@ lo esperes.
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
-\bloque{Esquema del cante}
-\esquemacante{\apartadocante{Introducción}{2,5} \apartadocante{I. …}{11} …}   % los \minutos del tema
 \bloque[2,5]{Introducción}
-…
+…   % enganche, relevancia, contextualización, problemática y estructura
+\esquemacante{\apartadocante{Introducción}{2,5} \apartadocante{I. …}{11} …}   % al final de la introducción; las dos cosas, como mucho una columna
 \bloque[11]{I. <apartado>\label{rep:I}}
 \sub{I.1. <subapartado>\label{rep:I.1}}
+\subsub{a) <nivel 3 del tema>}   % y \subsubsub{…} para el nivel 4 si ayuda
 … (remisión a otro apartado de la ficha: \hyperref[rep:I.1]{I.1}; a otro tema: \vertema{3.A.9})
 \bloque[1]{Conclusión}
+…
+\anexorepaso   % desde aquí, la última columna (como mucho una)
+\bloque{Datos clave}
 …
 \bloque{Autores y fechas}
 \hito{1915}{\autor{Slutsky}: efecto sustitución y renta}
@@ -45,23 +48,27 @@ lo esperes.
 
 Contenido, en este orden y **todo sacado del tema** (nada nuevo ni distinto):
 
-1. **Esquema del cante**: los apartados y subapartados con sus minutos.
-2. **Introducción**: enganche, relevancia, contextualización, problemática y
-   estructura, en una línea cada uno.
-3. **Cada apartado**: las ideas clave en viñetas muy breves; las
-   **definiciones** precisas (`\concepto{}`); las fórmulas esenciales en
-   `formula` (solo las que hay que saber escribir); 2-4 gráficos clave del
-   tema en pequeño con `\graficorepaso[ancho]{nombre}{pie}` (el `nombre` de
-   `D/graficos/`); resultados y teoremas con su autor y año; la idea clave
-   del apartado en `ideaclave`.
-4. **Conclusión**: recapitulación, relevancia, extensiones, opinión e idea
-   final, una línea cada uno.
-5. **Autores y fechas**: cronología con `\hito`.
-6. **Datos clave** con su fuente (`\dato{54,1 \% del PIB}{INE, 2025}`).
-7. **Preguntas del tribunal**: 4-6 preguntas probables con su respuesta en una
-   o dos líneas.
-8. **Ojo en el test** (`trampa`): confusiones típicas (p. ej., qué axiomas
-   hacen falta para la función de utilidad, signos de la ecuación de Slutsky).
+1. **Introducción** (primera columna): enganche, relevancia, contextualización,
+   problemática y estructura, en una línea cada uno; y **al final de ella el
+   esquema del cante** (`\esquemacante`) con los apartados, subapartados y
+   minutos. Nada entre el esquema y la introducción (ni «Funciones clave»).
+   Introducción + esquema: **como mucho una columna** (pueden ocupar menos).
+2. **Cada apartado** (columnas 2-7, que el tema **agota siempre**): las ideas
+   clave en viñetas muy breves y **subindentadas** (2.º y 3.er nivel), nada de
+   párrafos largos; los títulos del tema hasta el **nivel 3** (`\subsub`) e
+   incluso el 4 (`\subsubsub`); las **definiciones** precisas (`\concepto{}`)
+   donde tocan; las fórmulas esenciales en `formula` o `\funcionclave`; 2-4
+   gráficos clave por apartado con `\graficorepaso[ancho]{nombre}{pie}`;
+   resultados con autor y año; la idea clave en `ideaclave`. Si sobra sitio, más
+   desarrollo del tema (no relleno ni bloques sueltos).
+3. **Conclusión**: recapitulación, relevancia, extensiones, opinión e idea
+   final, en viñetas.
+4. **`\anexorepaso`** y, en la **última columna** y como mucho en ella: **Datos
+   clave** (primero, con su fuente: `\dato{…}{…}`), **Autores y fechas** (solo
+   los que de verdad interesan, con `\hito`), **Preguntas del tribunal** (3-5,
+   respuesta en una línea) y, si cabe, **Ojo en el test** (`trampa`).
+   `construir-repaso.py` falla si «Datos clave» no empieza arriba de la última
+   columna: ajusta el desarrollo del tema hasta que encaje.
 
 Estilo: telegráfico, sin frases de relleno, con símbolos (⇒, ↑, ↓) y
 abreviaturas habituales; nada de citas largas ni bibliografía.

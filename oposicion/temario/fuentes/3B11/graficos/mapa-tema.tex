@@ -1,0 +1,94 @@
+% Mapa del tema 3.B.11 (comentario de Víctor del 19/11/2026): los 3 bloques,
+% la pregunta a la que responde cada uno, sus subapartados y el hilo entre
+% ellos, como el mapa del 3.B.4. A la izquierda, la pregunta de cada bloque; a
+% la derecha, lo que se cuenta; entre bloques, la flecha dice por qué se pasa
+% al siguiente. Arriba, la pregunta del tema; abajo, la respuesta de la
+% conclusión. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  enlace/.style={->,thick,tceegris,dashed},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\\[1pt]}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «No se puede estirar el brazo más que la manga». ¿Quién presta a quién, cuánto y con qué, y se puede pagar la deuda que queda?};}
+  % la introducción ocupa 2 líneas: lo demás baja medio centímetro
+  \begin{scope}[yshift=-0.5cm]
+  \capa{1}{\draw[hilo] (2.0,-0.88) -- (2.0,-1.12);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=tceeazul] (pI) at (0,-1.15)
+    {\tit{tceeazul}{I. Concepto y medición}
+     ¿Qué registran las cuentas internacionales y con qué reglas?};}
+  \capa{2}{\node[contenido=tceeazul] (cI1) at (4.75,-1.15)
+    {\tit{tceeazul}{Concepto (I.1)}
+     3 estados enlazados: balanza de pagos (flujos), PII (\emph{stocks}) y otras variaciones\\
+     la balanza siempre cuadra: el desequilibrio es económico, no contable};}
+  \capa{2}{\node[contenido=tceeazul] (cI2) at (10.45,-1.15)
+    {\tit{tceeazul}{Medición (I.2)}
+     residencia, partida doble, devengo y precios de mercado\\
+     MBP6 hoy; MBP7 a finales de la década\\
+     fuentes del Banco de España};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] (2.0,-3.0) -- (2.0,-3.8);}
+  \capa{3}{\node[rotulolargo,anchor=west] at (2.15,-3.4)
+    {sabido cómo se anota, ¿qué dice cada cuenta?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=tceeverde] (pII) at (0,-3.85)
+    {\tit{tceeverde}{II. Estructura y lectura de cada cuenta}
+     ¿Qué nos dice cada una de sus cuentas?};}
+  \capa{4}{\node[contenido=tceeverde] (cII1) at (4.75,-3.85)
+    {\tit{tceeverde}{Cuenta corriente y de capital (II.2-II.3)}
+     bienes, servicios, rentas primarias y secundarias\\
+     $\mathrm{CC}+\mathrm{CK}$: capacidad ($+$) o necesidad ($-$) de financiación};}
+  \capa{4}{\node[contenido=tceeverde] (cII2) at (10.45,-3.85)
+    {\tit{tceeverde}{Cuenta financiera y PII (II.4-II.7)}
+     con qué instrumentos y qué sectores\\
+     errores y omisiones; otras variaciones\\
+     PII: cuánto se ha acumulado y con qué riesgo};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] (2.0,-5.7) -- (2.0,-6.5);}
+  \capa{5}{\node[rotulolargo,anchor=west] at (2.15,-6.1)
+    {si siempre cuadra, ¿qué es un desequilibrio y cuándo preocupa?};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=tceedorado] (pIII) at (0,-6.55)
+    {\tit{tceedorado}{III. Interpretación del saldo agregado}
+     ¿Es malo un déficit? ¿Cuándo preocupa?};}
+  \capa{6}{\node[contenido=tceedorado] (cIII1) at (4.75,-6.55)
+    {\tit{tceedorado}{Origen y financiación (III.1-III.2)}
+     $\mathrm{CC}=S-I$: ¿ahorro o inversión, público o privado?\\
+     reservas y, en el euro, saldos TARGET};}
+  \capa{6}{\node[contenido=tceedorado] (cIII2) at (10.45,-6.55)
+    {\tit{tceedorado}{Sostenibilidad (III.3-III.4)}
+     hoja de balance: tamaño y composición de la PII\\
+     desequilibrios globales};}
+
+  % 7: enlace cruzado (a la derecha)
+  \capa{7}{\draw[enlace] (cII2.south) -- node[rotulohilo,text=tceegris,right,align=left] {la PII que deja} (cIII2.north);}
+
+  % 8: la respuesta (conclusión)
+  \capa{8}{\draw[hilo] (2.0,-8.25) -- (2.0,-8.55);}
+  \capa{8}{\node[marco,anchor=north west] (concl) at (0,-8.55)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: un déficit no es bueno ni malo en sí; importan su origen, su financiación y la posición que deja. La balanza dice cuánto se estira el brazo; la PII, hasta cuándo prestarán la manga.};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

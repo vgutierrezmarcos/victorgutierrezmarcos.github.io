@@ -291,3 +291,7 @@ Páginas del tema: 25 → 31 (anexos 3; bibliografía 6). \minutos sigue en 30. 
 - **Orden de los 4 tipos**: el 3.B.17 usa ahora el orden del 3.B.26 (cambiaria, parada súbita, deuda, bancaria) en lugar del antiguo (cambiaria, bancaria, deuda externa, parada súbita). Opciones: (a) el del 3.B.26, para que todo el temario repita el mismo orden; (b) el antiguo. **Aplicada: (a)**.
 - **Jeanne en caja gris o en el cuerpo**: (a) caja gris tras el gráfico de las 3 regiones, con el cuerpo compacto (cláusula de escape y 3 regiones) que ya estaba; (b) llevar al cuerpo la derivación completa como en el tema antiguo. **Aplicada: (a)**, como pedía el comentario («aunque sea en una caja gris»).
 - **«Enfoque monetario de la balanza de pagos de Johnson y Mundell»** sin cita en la bibliografía (solo los autores). Opciones: (a) dejarlo así; (b) añadir Frenkel y Johnson (1976) al .bib. **Aplicada: (a)**.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

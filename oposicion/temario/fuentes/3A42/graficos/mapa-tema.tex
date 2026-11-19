@@ -1,0 +1,91 @@
+% Mapa de la exposición del tema 3.A.42 (comentario de Víctor del 19/11/2026),
+% como el del 3.B.4: arriba, la pregunta del tema (introducción); a la
+% izquierda, la pregunta de cada bloque; a la derecha, lo que se cuenta en sus
+% apartados; entre bloques, la flecha dice por qué se pasa al siguiente; abajo,
+% la respuesta de la conclusión. Paleta del bloque de macroeconomía (3.A.29-3.A.45): azul marino, naranja y verde, los colores de la demanda.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\providecommand{\autor}[1]{\textsc{#1}}
+\tikzset{
+  bloquep/.style={draw=#1,fill=#1!12,thick,rounded corners=3pt,anchor=north west,
+    text width=3.9cm,align=flush left,inner sep=4pt,font=\footnotesize},
+  contenido/.style={draw=#1,fill=white,thick,rounded corners=3pt,anchor=north west,
+    text width=5.1cm,align=flush left,inner sep=4pt,font=\scriptsize,
+    execute at begin node={\everypar{\hangindent=0.8em\hangafter=1}}},
+  marco/.style={draw=tceemorado,fill=tceemorado!8,thick,rounded corners=3pt,
+    text width=15.55cm,align=center,inner sep=5pt,font=\footnotesize,
+    execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  hilo/.style={->,very thick,tceemorado},
+  rotulohilo/.style={font=\scriptsize\itshape,text=tceemorado,align=left,inner sep=2pt},
+  rotulolargo/.style={rotulohilo,text width=11cm,execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  fila/.style={inner sep=0pt,draw=none},
+}
+\newcommand{\tit}[2]{\textcolor{#1}{\bfseries #2}\par\vspace{1pt}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: la pregunta del tema (introducción)
+  \capa{1}{\node[marco,anchor=north west] (intro) at (0,0)
+    {\textbf{\textcolor{tceemorado}{Introducción}}: «Siempre que ha llovido, ha escampado». ¿Por qué fluctúa la economía, por qué unas recesiones duran más que otras y qué puede hacer la política?};}
+  \capa{1}{\draw[hilo] ($(intro.south west)+(2.0,0)$) -- ++(0,-0.28);}
+
+  % 2: bloque I
+  \capa{2}{\node[bloquep=dicze] (pI) at ($(intro.south west)+(0,-0.3)$)
+    {\tit{dicze}{I. Descripción e historia}
+     ¿Qué es el ciclo y qué hechos debe explicar una teoría?};}
+  \capa{2}{\node[contenido=dicze] (cI1) at ($(pI.north west)+(4.75,0)$)
+    {\tit{dicze}{Definición y hechos (I.1-I.3)}
+     \autor{Burns} y \autor{Mitchell}: movimiento conjunto, recurrente, no periódico\par
+     brecha frente a una tendencia\par};}
+  \capa{2}{\node[contenido=dicze] (cI2) at ($(pI.north west)+(10.45,0)$)
+    {\tit{dicze}{Perspectiva histórica (I.4)}
+     multiplicador-acelerador\par
+     ciclos no lineales: \autor{Kaldor}, \autor{Goodwin}\par};}
+  \capa{2}{\node[fila,fit=(pI)(cI1)(cI2)] (fI) {};}
+
+  % 3: hilo de I a II
+  \capa{3}{\draw[hilo] ($(fI.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{3}{\node[rotulolargo,anchor=west] at ($(fI.south west)+(2.15,-0.48)$)
+    {¿nace dentro de la economía o de perturbaciones que se propagan?};}
+
+  % 4: bloque II
+  \capa{4}{\node[bloquep=dicconspriv] (pII) at ($(fI.south west)+(0,-0.95)$)
+    {\tit{dicconspriv}{II. Ciclos reales y nominales}
+     ¿Respuestas eficientes o fluctuaciones costosas?};}
+  \capa{4}{\node[contenido=dicconspriv] (cII1) at ($(pII.north west)+(4.75,0)$)
+    {\tit{dicconspriv}{Ciclo real (II.1)}
+     perturbaciones de productividad en una economía eficiente\par
+     el método de los EGDE\par};}
+  \capa{4}{\node[contenido=dicconspriv] (cII2) at ($(pII.north west)+(10.45,0)$)
+    {\tit{dicconspriv}{Ciclos nominales (II.2)}
+     del monetarismo a la NEK\par
+     rigideces: margen para la política\par};}
+  \capa{4}{\node[fila,fit=(pII)(cII1)(cII2)] (fII) {};}
+
+  % 5: hilo de II a III
+  \capa{5}{\draw[hilo] ($(fII.south west)+(2.0,-0.08)$) -- ++(0,-0.8);}
+  \capa{5}{\node[rotulolargo,anchor=west] at ($(fII.south west)+(2.15,-0.48)$)
+    {las finanzas no son un velo};}
+
+  % 6: bloque III
+  \capa{6}{\node[bloquep=dicfbcf] (pIII) at ($(fII.south west)+(0,-0.95)$)
+    {\tit{dicfbcf}{III. Ciclo financiero}
+     ¿Qué añade el crédito y por qué agrava las recesiones?};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII1) at ($(pIII.north west)+(4.75,0)$)
+    {\tit{dicfbcf}{Concepto y teorías (III.1-III.2)}
+     más largo y amplio que el real\par
+     \autor{Fisher}, \autor{Minsky}, \autor{Kindleberger}\par};}
+  \capa{6}{\node[contenido=dicfbcf] (cIII2) at ($(pIII.north west)+(10.45,0)$)
+    {\tit{dicfbcf}{Interrelaciones (III.3)}
+     acelerador financiero\par
+     política macroprudencial\par};}
+  \capa{6}{\node[fila,fit=(pIII)(cIII1)(cIII2)] (fIII) {};}
+
+  % 7: la respuesta (conclusión)
+  \capa{7}{\draw[hilo] ($(fIII.south west)+(2.0,-0.05)$) -- ++(0,-0.3);}
+  \capa{7}{\node[marco,anchor=north west] (concl) at ($(fIII.south west)+(0,-0.38)$)
+    {\textbf{\textcolor{tceemorado}{Conclusión}}: siempre escampa, pero no da igual cuánto tarde: las recesiones que nacen del crédito escampan tarde y dejan cicatriz.};}
+\end{tikzpicture}
+\end{document}

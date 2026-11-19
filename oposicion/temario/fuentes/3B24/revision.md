@@ -85,7 +85,7 @@ Todos en `datos-actualizables.yaml` (14 entradas).
 
 - **Nobel**: notas añadidas para Hicks, Modigliani, Shiller (con Fama y Hansen) y Bernanke, con `\nocite` de las entradas existentes en otros temas.
 - **4.º ejercicio**: 4.B.26, 4.A.20 y 4.A.19, pocas y detrás de la idea.
-- **Refranes**: el del enganche, «¡Cuán largo me lo fiáis!» (nuevo: el Word no tenía refrán), que retoma la idea final. Se conserva uno más, «cada mochuelo a su olivo», integrado en una frase que explica la relación con el hábitat preferente y coherente con el 3.A.37 (duda R24-04). Quitadas todas las «pegatinas» propuestas en la fase 2 («tanto monta», «ni tanto ni tan calvo», «el fiel de la balanza» como dicho, «cuando el río suena», «las cuentas de la lechera»).
+- **Refranes**: el del enganche, «Quien guarda, halla» (desde el 19/11/2026; antes «¡Cuán largo me lo fiáis!», que era cita de *El burlador de Sevilla* más que refrán; el Word no tenía refrán), que retoma la idea final. Se conserva uno más, «cada mochuelo a su olivo», integrado en una frase que explica la relación con el hábitat preferente y coherente con el 3.A.37 (duda R24-04). Quitadas todas las «pegatinas» propuestas en la fase 2 («tanto monta», «ni tanto ni tan calvo», «el fiel de la balanza» como dicho, «cuando el río suena», «las cuentas de la lechera»).
 
 ## Dudas abiertas
 
@@ -95,7 +95,7 @@ Fecha de todas: 13/11/2026. En todas se ha aplicado la opción recomendada.
   - Aplicada (a): unir I y II del Word (instrumento y precio) en el apartado I, conservando sus 5 títulos de segundo nivel.
   - Alternativa (b): unir III y IV (ETTI y riesgo).
 - **R24-02 (K28, C3). Enganche.**
-  - Aplicada (a): «¡Cuán largo me lo fiáis!» con el bono austriaco a 100 años (de 139 a 33 por 100 de nominal, Saxo Bank, 2024; sin segunda fuente oficial: la OeBFA no se ha podido consultar).
+  - Aplicada (a), sustituida el 19/11/2026 por «Quien guarda, halla» (R24-14): «¡Cuán largo me lo fiáis!» con el bono austriaco a 100 años (de 139 a 33 por 100 de nominal, Saxo Bank, 2024; sin segunda fuente oficial: la OeBFA no se ha podido consultar).
   - Alternativas: (b) la obligación del Tesoro a 50 años (cifras sin comprobar); (c) «Al freír será el reír».
 - **R24-03 (K14). Título de la teoría de Hicks.**
   - Aplicada (a): «Teoría de la prima por liquidez», con el aviso de que no es la de Keynes.
@@ -124,7 +124,7 @@ Se conservan con entrada en el `.bib`: Economipedia (precio sucio), AnalystNotes
 
 ## Instrucciones para el vídeo
 
-- **Enganche e idea final**: «¡Cuán largo me lo fiáis!» y el bono austriaco a 100 años; la idea final lo retoma: el largo plazo se paga 2 veces, con la prima por plazo en el precio y con la duración en el riesgo.
+- **Enganche e idea final** (19/11/2026): «Quien guarda, halla» y el bono austriaco a 100 años (de 139 a 33 por 100 de nominal sin dejar de pagar un cupón: quien lo guarde hasta 2120 hallará sus 100 euros; quien tenga que vender antes, no); pregunta: ¿cuánto vale una promesa de pago futura, por qué se paga distinto según el plazo y cuánto riesgo tiene una inversión que parece segura? La opinión lo recuerda con Silicon Valley Bank, que no pudo guardar sus bonos hasta el vencimiento, y la idea final lo retoma: «quien guarda, halla», pero solo si puede guardar; el largo plazo se paga 2 veces, con la prima por plazo en el precio y con la duración en el riesgo.
 - **Funciones clave que se conservan** en una esquina de la rejilla: `eq:precio-contado` (desde I.4), `eq:tipo-largo` (desde II.2), `eq:macaulay` (III.2.2), `eq:duracion-modificada` (III.2.3) y `eq:precio-duracion-convexidad` (desde III.2.4). La fórmula con la TIR (`eq:precio-bono`) va en caja gris desde el 15/11/2026.
 - **Gráficos y figuras imprescindibles en la pizarra**: la figura `linea-temporal-bono` (I.2); el gráfico `precio-rentabilidad` por capas, que se dibuja en I.5 (curva y punto) y se completa en III.2.3 (tangente, $-P_0D^{\mathrm{mod}}$) y III.2.4 (error que corrige la convexidad), así que conviene no borrarlo entre I y III o volver a trazarlo deprisa; `prima-liquidez` (II.2); `movimientos-curva` o `formas-curva` (II.3, mejor movimientos); `balanza-duracion` (III.2.2).
 - **Como apoyo** (no se dibujan): `pull-to-par`, `precio-sucio`, `opciones-bono`, `nss-factores`, `curva-bce-zona-euro`, `curvas-espana-eeuu`, `prima-riesgo-espana`, `malkiel-bonos`, `convexidad-bonos`, `inmunizacion-horizonte`, la figura `estrategias-expectativas` y las tablas.
@@ -200,8 +200,14 @@ Páginas del tema: 31 antes y 32 después (anexos: 6 → 10; bibliografía: 5 �
   - Alternativa (c): repartirla: los puntos (2) y (3) al 3.B.23 y aquí el (1) y la regulación del crédito y de la negociación algorítmica de bonos. Como un opositor nunca canta 2 temas de la parte B, repetirla en los 2 no sería un problema (CRITERIOS §6).
   - **Respuesta de Víctor (19/11/2026):** llevarlo al 3.B.23.
 
+- **R24-14 (19/11/2026). Refrán del enganche**, por uno más popular que no abra otro tema.
+  - Aplicada (a): «Quien guarda, halla», con el bono austriaco a 100 años (quien lo guarde hasta 2120 cobra lo prometido; quien venda antes asume la caída del precio) y Silicon Valley Bank en la opinión; la idea final: «pero solo si puede guardar».
+  - Alternativas: (b) «El que paga, descansa» (Austria paga todos sus cupones y aun así el bono pierde tres cuartas partes de su valor: el riesgo no es de impago, sino de plazo); (c) «Quien fía o promete, en deuda se mete» (el bono como promesa de pago; encaja más con la emisión que con el riesgo de tipo de interés).
+
 ## Comentarios de Víctor (19/11/2026)
 
 Páginas del tema: 32 antes y 31 después (anexos: 10 → 6; bibliografía: 7 → 6; total 49 → 43), las mismas que antes del 18/11. \minutos sin cambios (30). Ficha: 4 páginas, letra de 10,5.
 
 - «El anexo E quiero llevarlo mejor al tema 3.B.23. […] había un error con el número del tema» → Quitado todo lo añadido el 18/11: la viñeta «La inteligencia artificial» de III.2.5 con sus 3 subviñetas, la línea de regulación y la nota de la *skill*; el anexo E (el de test vuelve a ser el E); las 21 entradas del `.bib` que solo citaba ese material (ninguna se cita ya); las 2 entradas de `datos-actualizables.yaml`; la viñeta «IA» de la ficha y la palabra clave de `seo.json`. En «Extensiones» de la conclusión queda una sola línea con remisión: «La inteligencia artificial en los mercados financieros: si mejora la intermediación, si permite batir al mercado y si lo hace más eficiente \vertema{3.B.23}». Todo el desarrollo, adaptado a la renta variable, está en el 3.B.23 (II.1.4 y anexo D). Duda R24-13 resuelta.
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+- Refrán del enganche cambiado por uno más popular: «¡Cuán largo me lo fiáis!» → «Quien guarda, halla» (el bono austriaco se mantiene: quien lo guarde hasta 2120 hallará sus 100 euros; quien venda antes, no). Rehechos el enganche, la idea final y la frase de Silicon Valley Bank en la opinión (no pudo guardar sus bonos hasta el vencimiento); puestos al día la ficha y las instrucciones del vídeo. Duda R24-14.

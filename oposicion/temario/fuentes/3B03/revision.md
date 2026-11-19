@@ -221,3 +221,7 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 
 - Páginas: tema 30 → 37; anexos 8 → 6 (quedan A instrumentos, B Holmström-Tirole, C dividendos, D retribución, E tribunal y test). `verificar-tema.py`: 0 errores, los mismos 6 avisos. Ficha: 4 páginas (8,75 pt).
 - Vídeo: en el II.3 se dibujan los gráficos grandes de cada tesis sobre los mismos ejes ($L$ de 0 a 1) en lugar de los paneles; el de 4 paneles, como apoyo al final; la figura del escudo fiscal con los números de nuestra empresa, en la pizarra (columna derecha); la figura de Miller, de apoyo.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

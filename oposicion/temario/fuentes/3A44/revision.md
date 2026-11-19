@@ -241,3 +241,7 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - l. 49: Smith, Ricardo y Malthus.
 - l. 1161: las 3 razones de Jones.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

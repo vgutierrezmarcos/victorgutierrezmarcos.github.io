@@ -286,3 +286,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Quitado «no hay mal que cien años dure» (variante del refrán inicial del 3.B.20): «Ningún mal es eterno, pero las causas de este son lentas».
 
 - Corrección (15/11/2026): Víctor aclara que lo único que no puede repetirse es el **refrán inicial** de cada tema; en el resto del cuerpo los refranes pueden repetirse. Se deshacen los cambios de la sección «Refranes únicos» de arriba: el texto vuelve a como estaba.
+
+## Comentarios de Víctor (19/11/2026)
+
+- Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).

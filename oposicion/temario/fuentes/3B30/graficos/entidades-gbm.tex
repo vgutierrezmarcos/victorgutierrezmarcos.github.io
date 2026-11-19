@@ -1,0 +1,70 @@
+% Las 5 entidades del Grupo del Banco Mundial (comentario de Víctor del
+% 18/11/2026: infografía que explique el Banco Mundial). Una ficha por entidad,
+% con el color de su ventanilla (el mismo en todo el tema): año, miembros, qué
+% hace, quiénes son sus clientes, cómo se financia y su actividad del último
+% ejercicio. Arriba, el grupo; la llave marca el Banco Mundial en sentido
+% estricto (BIRF y AIF).
+% Capas: 1 el grupo y la llave; 2 BIRF; 3 AIF; 4 CFI; 5 MIGA; 6 CIADI.
+% Datos a 30/6/2026 (CIADI, a 16/8/2026). Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\newcommand{\nocortar}{\hyphenpenalty=10000 \exhyphenpenalty=10000 }
+\newcommand{\rot}[1]{{\bfseries #1}: }
+\newcommand{\cont}[1]{\parbox[t][5.05cm][t]{2.95cm}{\raggedright\nocortar #1}}
+\begin{document}
+\begin{tikzpicture}[tcee,every node/.append style={execute at begin node=\nocortar},
+    cabeza/.style={draw=#1,fill=#1,text=white,rounded corners=2pt,anchor=north west,
+      text width=2.95cm,minimum height=1.25cm,align=center,inner sep=3pt,font=\footnotesize},
+    ficha/.style={draw=#1,thick,fill=#1!7,rounded corners=2pt,anchor=north west,
+      align=left,inner sep=3pt,font=\scriptsize},
+    grupo/.style={draw=tceemorado,thick,fill=tceemorado!8,rounded corners=3pt,
+      text width=16.25cm,align=center,inner sep=4pt,font=\footnotesize},
+    llave/.style={decorate,decoration={brace,amplitude=5pt,mirror},thick,tceemorado}]
+  % 1: el grupo
+  \capa{1}{\node[grupo,anchor=north west] (gbm) at (0,0)
+    {\textbf{Grupo del Banco Mundial}: 5 entidades con personalidad jurídica propia y un objetivo común; sede en Washington; para entrar hay que ser miembro del FMI};}
+  \capa{1}{\draw[llave] (0.05,-7.75) -- node[below=6pt,font=\footnotesize\bfseries,text=tceemorado] {Banco Mundial: prestan a los Estados} (6.5,-7.75);}
+  \capa{1}{\draw[llave] (6.85,-7.75) -- node[below=6pt,font=\footnotesize\bfseries,text=tceemorado] {Sector privado e inversión extranjera} (16.7,-7.75);}
+
+  % 2: BIRF
+  \capa{2}{\node[cabeza=tceeazul] (h1) at (0,-1.1) {\textbf{BIRF} (1944)\\ventanilla dura\\189 miembros};}
+  \capa{2}{\node[ficha=tceeazul] at (0,-2.4) {\cont{%
+    \rot{Qué hace} presta a largo plazo y a tipo variable (SOFR más un margen), con garantía del Estado\\[3pt]
+    \rot{Clientes} Estados de renta media y de renta baja solventes\\[3pt]
+    \rot{Se financia} bonos AAA (casi 50.000 M\$ al año), capital (332.500 M\$ suscritos; 23.600 desembolsados) y beneficios\\[3pt]
+    \rot{Ejercicio 2026} 50.200 M\$ comprometidos}};}
+
+  % 3: AIF
+  \capa{3}{\node[cabeza=tceeverde] (h2) at (3.4,-1.1) {\textbf{AIF} (1960)\\ventanilla blanda\\175 miembros};}
+  \capa{3}{\node[ficha=tceeverde] at (3.4,-2.4) {\cont{%
+    \rot{Qué hace} créditos sin interés a 31 o 40 años y donaciones\\[3pt]
+    \rot{Clientes} los 78 países más pobres (renta por habitante por debajo de 1.365 \$)\\[3pt]
+    \rot{Se financia} reposiciones de los donantes cada 3 años, transferencias del BIRF, reembolsos y, desde 2018, bonos\\[3pt]
+    \rot{Ejercicio 2026} 30.800 M\$ comprometidos; AIF21: 100.000 M\$ con 23.700 de los donantes}};}
+
+  % 4: CFI
+  \capa{4}{\node[cabeza=tceedorado] (h3) at (6.8,-1.1) {\textbf{CFI} (1956)\\sector privado\\186 miembros};}
+  \capa{4}{\node[ficha=tceedorado] at (6.8,-2.4) {\cont{%
+    \rot{Qué hace} presta a empresas y toma participaciones, sin garantía del Estado y sin ser mayoritaria; asesora\\[3pt]
+    \rot{Clientes} empresas e intermediarios financieros privados\\[3pt]
+    \rot{Se financia} bonos en los mercados, capital y beneficios\\[3pt]
+    \rot{Ejercicio 2026} 32.000 M\$ propios y 73.600 movilizados de otros inversores}};}
+
+  % 5: MIGA
+  \capa{5}{\node[cabeza=tceenaranja] (h4) at (10.2,-1.1) {\textbf{MIGA} (1988)\\garantías\\182 miembros};}
+  \capa{5}{\node[ficha=tceenaranja] at (10.2,-2.4) {\cont{%
+    \rot{Qué hace} asegura contra el riesgo político: expropiación, guerra, inconvertibilidad, incumplimiento del Estado; plataforma de garantías del grupo (2024)\\[3pt]
+    \rot{Clientes} inversores extranjeros y sus bancos\\[3pt]
+    \rot{Se financia} capital y primas; reasegura con aseguradoras privadas\\[3pt]
+    \rot{Ejercicio 2026} 10.600 M\$ de garantías emitidas}};}
+
+  % 6: CIADI
+  \capa{6}{\node[cabeza=tceegris] (h5) at (13.6,-1.1) {\textbf{CIADI} (1966)\\arbitraje\\159 Estados};}
+  \capa{6}{\node[ficha=tceegris] at (13.6,-2.4) {\cont{%
+    \rot{Qué hace} ofrece las reglas y la sede para la conciliación y el arbitraje; los tribunales son independientes y el laudo, obligatorio\\[3pt]
+    \rot{Clientes} inversores extranjeros y Estados en disputa\\[3pt]
+    \rot{Coste} unirse es gratis; las partes pagan los gastos de su caso\\[3pt]
+    \rot{2025} 63 casos registrados; 1.085 desde 1966}};}
+\end{tikzpicture}
+\end{document}
