@@ -343,3 +343,10 @@ anotado); entradas en `datos-actualizables.yaml`.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Refranes (20/11/2026)
+
+- **Sale** «A ojo de buen cubero»; **entra** «No es más rico el que más tiene, sino el que menos necesita» (propuesta de Víctor): el PIB no es el bienestar.
+- **Enganche nuevo**: el refrán («tener mucho no es lo mismo que vivir bien»); hasta los años 30 ni siquiera se sabía cuánto producía un país; el encargo del Senado de 1932 y la primera estimación de Kuznets (enero de 1934), con su aviso en ese mismo informe de que de esa cifra «difícilmente se puede deducir el bienestar de una nación» (nota con el original inglés, Senate Document 124, pág. 7); el PIB del INE a los 30 días (+0,6 % en el 3T 2026); y la contabilidad nacional, que mide muy bien cuánto se produce y cuánto se gana, «el refrán, y Kuznets, recuerdan que eso no es todo». Sale el aforismo «no se puede gestionar lo que no se puede medir» del enganche (sigue en la idea final).
+- **Idea final**: responde a la pregunta del principio (las cifras sí resumen la actividad, a los 30 días) y vuelve al refrán: el PIB dice muy bien cuánto se produce, pero no cuánto mejor se vive; el reto es medir igual de bien lo que deja fuera.
+- **III.3**: las limitaciones remiten al aviso de Kuznets «como se vio al principio». Mapa de la exposición (`graficos/mapa-tema.tex`) y ficha (enganche e idea final) al día; la ficha sigue en 4 páginas a 9 pt. `verificar-tema.py`: 0 errores.

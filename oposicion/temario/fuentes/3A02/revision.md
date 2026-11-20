@@ -254,6 +254,7 @@ Ninguna bloquea el tema: todas se han resuelto con la opción recomendada.
 - **A02-21 (Malthus, «el avaro que cierra bajo llave»)**: no lo he encontrado en los *Principles* de Malthus ni en las fuentes del tema, y su argumento no es el atesoramiento sino el exceso de ahorro invertido. Opción aplicada: fuera, con la corrección explicada. Si Víctor tiene la fuente (¿Landreth y Colander?), se puede recuperar en la caja.
 - **A02-22 (dónde va «De dónde sale la tesis» de Malthus)**: Víctor lo quiere en «Recomendaciones de política económica», como en el antiguo, aunque no es una recomendación. Opción aplicada: primera viñeta de ese bloque, como introducción de las recomendaciones («de ella salen sus recomendaciones»).
 - **A02-23 (Say)**: Víctor permite integrarlo en Smith. Opción aplicada: se mantiene II.2 propio (1′), en viñetas y con caja gris, para no tocar el esquema ni el reparto; la «ley de Say antes de Say» de Smith remite a él. Integrarlo en II.1 cambiaría la numeración de II.
+- **A02-25 (refrán nuevo, 20/11/2026: los 2 hechos de 2018 y 2023)**: con «No es oro todo lo que reluce», el dato del enganche pasa a ser la plata de América (Hamilton, 1934) y la crítica de Smith al «sistema mercantil»; Tréveris (2018) y Glasgow (2023) se quedan en una frase para no perder el hecho actual. Opción aplicada: los 2; si Víctor prefiere un enganche más corto, basta borrar la última frase de la 2.ª viñeta.
 - **A02-24 (rótulos de los modelos dentro de las líneas)**: como el nombre del modelo ocupa el `\paragraph`, a)-e) van en `\subparagraph` y i)-iii) como rótulos en negrita y cursiva (no hay un nivel de título más bajo). Es lo que admite `verificar-tema.py` (como el 3.A.9).
 
 ## Enlaces del original (9/11/2026)
@@ -327,3 +328,11 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Refranes (20/11/2026)
+
+- **Sale** «Cada uno habla de la feria según le va en ella»; **entra** «No es oro todo lo que reluce» (no abre ningún otro tema).
+- **Enganche**: el refrán resume la crítica con la que nace la escuela: los mercantilistas medían la riqueza por el oro y la plata; España vio salir la plata de América hacia el resto de Europa mientras subían los precios (`Hamilton1934Treasure`, nuevo en el `.bib`), y Smith dedica el libro IV a desmontar esa «noción popular» («That wealth consists in money, or in gold and silver, is a popular notion…», libro IV, cap. 1): la riqueza es el producto anual del trabajo. 2.ª viñeta: Marx acepta que la riqueza sale del trabajo pero ve conflicto en el reparto donde Smith veía armonía; Tréveris (2018) y Glasgow (2023) en una frase. La pregunta no cambia: ¿de dónde sale la riqueza de una nación y quién se la queda?
+- **Idea final**: «No del oro que reluce, sino del trabajo…»; Smith y Ricardo desde el capitalista, Malthus desde el terrateniente y Marx desde el obrero, para quien el salario libre reluce como un trato justo y esconde la plusvalía: «Tampoco ahí era oro todo lo que relucía». El refrán sirve 2 veces: clásicos frente a mercantilistas y Marx frente a los clásicos.
+- **Otros cambios**: en III, «Volvamos a la feria del enganche» pasa a «Volvamos a la pregunta del enganche, quién se queda la riqueza»; mapa de la exposición (`graficos/mapa-tema.tex`) y ficha (enganche e idea final) al día. La ficha sigue en 4 páginas.
+

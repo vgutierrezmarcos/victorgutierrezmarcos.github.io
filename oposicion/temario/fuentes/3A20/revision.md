@@ -467,6 +467,10 @@ como elaboración propia.
     regla $p_v=b$, $p_p=b+\beta$ con el gráfico de referencia `pico-valle` del 3.A.17 (copia), y
     el programa de Ramsey-Boiteux con `\optim`; la derivación sigue solo en el 3.A.17 (canon).
 
+**Nuevas (20/11/2026, refrán nuevo)**, con la opción aplicada:
+
+16. **A20-06 (término medio del enganche)**: con «Ni tanto ni tan calvo», el término medio se ilustra con la tarifa en dos partes de la factura de la luz (término de potencia y término de energía) y, de palabra, con la idea de Ramsey («cargar el margen donde menos distorsiona»), sin nombrarlo para no adelantar el bloque II. Se mantiene el dato de la CNMC (6,58 %) como 2.ª viñeta, porque responde al mismo refrán («¿es mucho o es poco?»). Alternativa: quitar la factura de la luz y dejar solo la tasa de retribución, para un enganche más corto.
+
 **Decididas por Víctor el 23/10/2026** (se mantienen): el refrán «Tener la sartén por el mango» y
 sus pegatinas (A20-01); Baron-Myerson en el cuerpo (A20-02); el reparto 8′ / 11′ / 7′30″ (A20-02),
 y dentro de III, 2′ / 1′30″ / 2′30″ / 1′30″ (23/10/2026); las fichas nuevas del canon (A20-03); el
@@ -641,3 +645,11 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Refranes (20/11/2026)
+
+- **Sale** «Tener la sartén por el mango»; **entra** «Ni tanto ni tan calvo» (no abre ningún otro tema).
+- **Enganche**: el refrán resume el dilema del monopolio natural: ni el precio de monopolio (menos consumo y rentas) ni el coste marginal (pérdidas con costes fijos altos, nadie invertiría); el término medio es la tarifa en dos partes, como la factura de la luz con término de potencia y de energía, o precios que cubran costes cargando el margen donde menos distorsiona. Sigue la tasa de retribución de las redes de la CNMC (del 5,58 % al 6,58 %, 2026-2031, sin cambios en las cifras ni en las citas), que ahora cierra con «Ni tanto ni tan calvo, pero dónde está el término medio lo sabe mejor la empresa regulada que el regulador». Las preguntas del tema no cambian.
+- **Idea final**: «Ni tanto ni tan calvo: entre el precio de monopolio y el coste marginal con pérdidas, la regulación busca el término medio…» y «la regulación óptima no le quita el negocio al monopolista natural, que es quien mejor lo hace, sino que le paga lo justo para que revele sus costes: esa es la renta informativa, ni tanta que se lleve rentas ni tan poca que deje de invertir».
+- **Otros cambios**: en II, la regla de Ramsey-Boiteux como Lerner «amortiguada» se presenta como «el "ni tanto ni tan calvo" del enganche» (con $\lambda=0$, coste marginal; con $\lambda\to\infty$, monopolio). Mapa de la exposición (introducción y conclusión) y ficha (enganche e idea final) al día. Los dichos del cuerpo no cambian. Dudas: A20-06.
+

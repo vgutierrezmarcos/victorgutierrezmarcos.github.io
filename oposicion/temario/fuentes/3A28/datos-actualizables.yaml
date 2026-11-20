@@ -29,7 +29,7 @@ datos:
     serie: "ZUTN, EA20"
     url: https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ZUTN&countries=ESP
     periodicidad: semestral
-    proxima: 2026-11
+    proxima: 2027-05
     familia: ameco
     depende: [datos/paro-nawru-espana.csv, graficos/paro-nawru-espana.tex]
   - id: paro-espana-2007-2013
@@ -43,7 +43,7 @@ datos:
     serie: "ZUTN, ESP"
     url: https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ZUTN&countries=ESP
     periodicidad: semestral (cifras cerradas; solo cambian si se revisa la serie)
-    proxima: 2026-11
+    proxima: 2027-05
     familia: ameco
     depende: [datos/paro-nawru-espana.csv, graficos/paro-nawru-espana.tex]
     frase: "también en III.3 a) («el 26,1 % en 2013 … 8,2 % en 2007»), en I.4 a) y en la ficha"
@@ -58,12 +58,12 @@ datos:
     serie: "ZUTN, ESP"
     url: https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ZUTN&countries=ESP
     periodicidad: semestral (cifras cerradas; solo cambian si se revisa la serie)
-    proxima: 2026-11
+    proxima: 2027-05
     familia: ameco
   - id: paro-espana-2025
-    texto: "en 2025, con un paro del 10,5~\\% y una NAWRU del 12,1~\\%"
+    texto: "en 2025, con un paro del 10,5~\\% y una NAWRU del 12,0~\\%"
     donde: [3A28.tex, repaso/3A28-repaso.tex]
-    valor: [10.5, 12.1]
+    valor: [10.5, 12.0]
     unidad: "% de la población activa"
     periodo: 2025
     fuente: CE2026AMECOParo
@@ -71,28 +71,28 @@ datos:
     serie: "ZUTN y ZNAWRU, ESP"
     url: https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en
     periodicidad: semestral
-    proxima: 2026-11
+    proxima: 2027-05
     familia: ameco
     depende: [datos/paro-nawru-espana.csv, graficos/paro-nawru-espana.tex]
     frase: "I.4 a): «el paro estaba ya por debajo de su nivel de equilibrio estimado»; cambiar el año al último cerrado"
   - id: nawru-espana-enganche
-    texto: "subió del 13,6~\\% en 2007 al 16,9~\\% en 2013, y desde entonces baja despacio, detrás del paro"
+    texto: "subió en España del 13,6~\\% en 2007 al 16,8~\\% en 2013; desde entonces ha bajado detrás del paro, y la Comisión la estima en el 11,6~\\% en 2026 y prevé el 11,1~\\% en 2028"
     donde: [3A28.tex, repaso/3A28-repaso.tex]
-    valor: [13.6, 16.9]
+    valor: [13.6, 16.8, 11.6, 11.1]
     unidad: "% de la población activa"
-    periodo: 2007 y 2013
+    periodo: 2007, 2013, 2026 y 2028 (previsiones de otoño de 2026)
     fuente: CE2026AMECO
     organismo: Comisión Europea (AMECO)
     serie: "ZNAWRU, ESP"
     url: https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ZNAWRU&countries=ESP
     periodicidad: semestral (la NAWRU se reestima en cada previsión, también la de años pasados)
-    proxima: 2026-11
+    proxima: 2027-05
     familia: ameco
     depende: [datos/paro-nawru-espana.csv, graficos/paro-nawru-espana.tex]
   - id: nawru-espana-ultima
-    texto: "pasó del 13,4~\\% en 2005 al 16,9~\\% en 2013 y ha bajado al 12,1~\\% en 2025, casi el doble que la de la zona del euro, del 6,6~\\%"
+    texto: "pasó del 13,4~\\% en 2005 al 16,8~\\% en 2013 y ha bajado al 12,0~\\% en 2025, casi el doble que la de la zona del euro, del 6,6~\\%; para 2028, la Comisión prevé el 11,1~\\%"
     donde: [3A28.tex, repaso/3A28-repaso.tex]
-    valor: [13.4, 16.9, 12.1, 6.6]
+    valor: [13.4, 16.8, 12.0, 6.6, 11.1]
     unidad: "% de la población activa"
     periodo: 2025
     fuente: CE2026AMECO
@@ -100,25 +100,25 @@ datos:
     serie: "ZNAWRU, ESP y EA20"
     url: https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ZNAWRU&countries=ESP
     periodicidad: semestral
-    proxima: 2026-11
+    proxima: 2027-05
     familia: ameco
     depende: [datos/paro-nawru-espana.csv, graficos/paro-nawru-espana.tex]
-    frase: "también en la nota de la tasa natural (II.3: «en 2025, el 12,1 % en España y el 6,6 % en la zona del euro»), en III.3 c) («subió 3,5 puntos entre 2005 y 2013, mientras el paro subía 17») y «Desde 2023, el paro efectivo está por debajo de ella»"
+    frase: "también en la nota de la tasa natural (II.3: «en 2025, el 12,0 % en España y el 6,6 % en la zona del euro»), en III.3 c) («subió 3,4 puntos entre 2005 y 2013, mientras el paro subía 17») y «Desde 2022, el paro efectivo está por debajo de ella»"
   - id: nawru-grafico
-    texto: "Tasa de paro y NAWRU: España y zona del euro, 1980-2027"
+    texto: "Tasa de paro y NAWRU: España y zona del euro, 1980-2028"
     donde: [3A28.tex, repaso/3A28-repaso.tex]
     valor: null
     unidad: serie
-    periodo: 1980-2027 (2026-2027, previsiones de primavera de 2026; actualización de AMECO del 3/6/2026)
+    periodo: 1980-2028 (2026-2028, previsiones de otoño de 2026; actualización de AMECO del 17/11/2026)
     fuente: CE2026AMECO
     organismo: Comisión Europea (AMECO)
     serie: "ZUTN y ZNAWRU, ESP y EA20"
     url: https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en
     periodicidad: semestral
-    proxima: 2026-11
+    proxima: 2027-05
     familia: ameco
     depende: [datos/paro-nawru-espana.csv, graficos/paro-nawru-espana.tex]
-    frase: "el pie del gráfico dice «actualización del 3/6/2026; 2026 y 2027, previsiones»"
+    frase: "el pie del gráfico dice «actualización del 17/11/2026 (previsiones de otoño de 2026); 2026-2028, previsiones»"
   - id: okun-espana
     texto: "Con datos de 1996-2025 (sin 2020-2021), en España cada punto de crecimiento por encima del 1,8~\\% ha bajado el paro en 0,8 puntos"
     donde: [3A28.tex, repaso/3A28-repaso.tex]

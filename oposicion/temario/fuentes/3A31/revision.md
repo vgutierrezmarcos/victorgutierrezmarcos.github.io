@@ -199,3 +199,15 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Refranes (20/11/2026)
+
+- **Sale** «Tirando del hilo se saca el ovillo» (a Víctor le gusta, pero no para este tema; queda libre para otro); **entra** «Por un clavo se perdió una herradura; por una herradura, un caballo; por un caballo, un jinete; por un jinete, una batalla, y por una batalla, un reino».
+- **Enganche nuevo**: el refrán («lo que falta en un eslabón se propaga por toda la cadena»); la escasez de chips de 2021: un componente de pocos euros, sin el que no se termina un coche, paró cadenas de montaje en toda Europa y, según la Comisión Europea, la producción de automóviles cayó un tercio en algunos Estados miembros (nota de prensa IP/22/729 del Chips Act, 8/2/2022, entrada nueva `CE2022ChipsAct` en el `.bib`); las plantas paradas dejaron de comprar asientos, neumáticos, acero, electricidad y transporte, sus proveedores a los suyos, y por los salarios perdidos llegó a las tiendas; y la misma pregunta del tema (¿hasta dónde llega un euro que se gasta, o que se deja de gastar, en una rama?). Salen las cifras de turistas (FRONTUR); el turismo sigue en el cuerpo como ejemplo de estudios de impacto.
+- **Otros cambios**: en la contextualización, las proporciones fijas de Leontief se enlazan con el refrán («sin el clavo no hay herradura»); en II (modelo de demanda, a) Idea), «volviendo al enganche» pasa del euro del turista al euro que la fábrica de coches deja de gastar (asientos → acero → eléctrica → otras ramas); idea final: «En el refrán, por un clavo se pierde un reino; en las tablas, la cadena tiene un final», y el euro de la fábrica se reparte ronda a ronda hasta acabar en valor añadido o importaciones.
+- Mapa de la exposición y ficha al día (enganche e idea final); la ficha sigue en 4 páginas a 10 pt. `verificar-tema.py`: 0 errores.
+
+### Dudas abiertas de los refranes (20/11/2026)
+
+- **A31-20N-01 · Cifra de España**: para España no hay cifra oficial a mano de la caída de la producción de coches por los chips; la de la patronal (ANFAC: 2.098.133 vehículos en 2021, un 7,5 % menos que en 2020 y un 25,6 % menos que en 2019) no es de fuente oficial. *Aplicado (recomendada)*: solo la cifra de la Comisión Europea («un tercio en algunos Estados miembros»). *Alternativa*: añadir la de ANFAC, citada como dato sectorial.
+- **A31-20N-02 · Entrada `INE2026FRONTUR2025`**: queda en el `.bib` sin citar tras quitar los turistas del enganche (no sale en la bibliografía). Se puede borrar o dejar por si se recupera el ejemplo.

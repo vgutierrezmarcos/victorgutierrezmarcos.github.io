@@ -158,6 +158,10 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o
 9. **D9, páginas de Edgeworth (1897)**: «13-31, 307-320, 405-414», reconstruidas de una cita secundaria; conviene comprobarlas en la revista.
 10. **D10, Cournot bayesiano**: viñeta en el cuerpo y desarrollo en el anexo C (aplicado).
 
+**Refrán nuevo (20/11/2026)**:
+
+- **A19-01 (caso de cártel roto)**: se mantiene el de los camiones (2016), que ya era el dato del enganche y en el que MAN rompe el acuerdo al denunciarlo para librarse de unos 1.200 millones de euros de multa (IP/16/2582). Alternativa: la OPEP+ en marzo de 2020 (Rusia se niega a recortar, Arabia Saudí inunda el mercado y el Brent se hunde), que es un cártel roto por la desviación de un socio sin clemencia de por medio; habría que buscar las cifras oficiales.
+
 **Datos sin verificar o con una sola fuente**: firmeza de la multa a las constructoras (el texto dice que está recurrida); 116/53 de clemencia (una sola fuente oficial); mayor multa de cártel de la UE (solo la tabla de la Comisión); volumen de Edgeworth (1897) y de Forchheimer (1908); páginas finales de varios artículos (marcadas en `bib-datos.bib`). **Otras**: la excepción agraria de la nota 29 (art. 42 TFUE, Reglamento 1308/2013) se dejó fuera por no estar comprobada; Ross (1992), que coherencia cita para la diferenciación horizontal, no está en ningún `.bib`: el factor «diferenciación» de la tabla se dejó sin cita.
 
 ## Enlaces del original (9/11/2026)
@@ -246,3 +250,11 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Refranes (20/11/2026)
+
+- **Sale** «Entre bomberos no se pisan la manguera»; **entra** «La avaricia rompe el saco» (no abre ningún otro tema).
+- **Enganche**: el refrán explica la inestabilidad del cártel («todos ganan si respetan el acuerdo, pero cada uno gana aún más si se lo salta, y si todos lo hacen, el acuerdo se rompe»); siguen Smith (1776) y el cártel de los camiones (2.926 millones de euros, 1997-2011), ahora con «El saco lo rompió un quinto socio, MAN: fue el primero en denunciar el cártel y se libró de una multa de unos 1.200 millones de euros» (dato de la nota IP/16/2582, `CE2016Camiones`). Pregunta: «¿Por qué unas veces el acuerdo aguanta 14 años y otras la avaricia de uno de ellos lo rompe?».
+- **Idea final**: «La avaricia rompe el saco… si compensa: la colusión aguanta mientras lo que cada una gana desviándose hoy pese menos que lo que pierde después, cuando las demás la castiguen» (ecuación de la colusión), y la clemencia «usa esa misma avaricia para romper el saco».
+- Mapa de la exposición (introducción y conclusión) y ficha (enganche, dato de MAN e idea final) al día; la ficha sigue en 4 páginas a 9 pt. Dudas: A19-01.
+

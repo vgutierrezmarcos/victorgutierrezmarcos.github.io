@@ -225,6 +225,7 @@ Todas aplicadas con la opción recomendada; para que Víctor las confirme.
 - **B28-27** (11/11/2026) III.1 «Las contribuciones pioneras de Angus Deaton y Amartya Sen» es contenido nuevo (la propuesta lo pide y el tema no lo tenía): Sen (capacidades; titularidades y la hambruna de Bengala de 1943; democracia y hambrunas) y Deaton (encuestas de hogares, nutrición en la India con Drèze, su crítica de los RCT), con el precedente de Schultz. Entradas nuevas del `.bib`: `Sen1981Poverty` (DOI de Oxford Scholarship, comprobar), `Deaton1997Analysis` (copiada del 3.A.9), `DeatonDreze2009` (sin DOI), `NobelPrize1998`, `NobelPrize2015`. Opciones: (a) 2′ en el cante; (b) solo mencionarlos en la introducción de III. **Aplicada: (a)**.
 - **B28-28** (11/11/2026) Mapas: territorios sin código ISO de Natural Earth asignados al país en que los cuentan el BM y el PNUD (Somalilandia con Somalia, el norte de Chipre con Chipre, Kosovo con XKX, el Sáhara Occidental con su propio código, sin dato); Taiwán y Groenlandia (en el IDH) salen como «sin datos». Paleta secuencial en morados (renta baja/IDH bajo, la más clara). Opciones: (a) así; (b) paleta divergente. **Aplicada: (a)**.
 - **B28-29** (11/11/2026) Gráficos por pasos solo para los 3 modelos que se explican con gráfico (Lewis, trampa de pobreza, gran empujón); Rostow, la trampa demográfica (nota) y los de datos se quedan en un solo gráfico. Opciones: (a) así; (b) también Rostow en 2 pasos. **Aplicada: (a)**.
+- **B28-30** (20/11/2026) «Unos nacen con estrella y otros estrellados» tras pasar a «Unos tanto y otros tan poco» como refrán inicial. (a) **Fuera del tema y de la ficha: un solo refrán en el enganche, retomado en la idea final** — *Aplicada: (a)*; (b) mantenerlo como segunda frase del enganche («la estrella tiene nombre: el país en el que se nace»), con 2 refranes seguidos.
 
 ## Enlaces del original (9/11/2026)
 
@@ -240,7 +241,7 @@ Todas aplicadas con la opción recomendada; para que Víctor las confirme.
 
 Actualizadas el 11/11/2026 (4.ª tanda: estructura macro/micro, Kenia fuera del texto, mapas y gráficos por pasos).
 
-- **Enganche e idea final**: «Unos nacen con estrella y otros estrellados»; Kenia frente a España (20 años de vida y 8 veces la renta). La idea final responde que la estrella no es un destino.
+- **Enganche e idea final** (20/11/2026): «Unos tanto y otros tan poco»; Kenia frente a España (20 años de vida y 8 veces la renta). La idea final responde que ese reparto no es un destino.
 - **Introducción y conclusión, sin pizarra** (`modo: guion`).
 - **Ejemplo conductor (solo en el vídeo, no en el texto)**: Kenia puede volver de palabra, sin cifras que memorizar, en 3 momentos: I.1 (país de renta media-baja y desarrollo humano medio), II.2 (lejos de su punto de Lewis; ISI tras 1963 y ajuste de los 80) y III.3 (muchos experimentos clásicos se hicieron allí). Sin decir nunca «hilo».
 - **Pizarra del I**: columna izquierda con las 3 medidas en orden, «IDH (referencia) · renta (base y clasificación) · pobreza (cara más dura)», y las 3 dimensiones del IDH con «media geométrica». Los mapas `mapa-idh` y `mapa-renta` como **apoyo** (pueden aparecer por capas: el mundo en gris y cada grupo de menor a mayor). Tabla de rasgos, apoyo.
@@ -248,7 +249,7 @@ Actualizadas el 11/11/2026 (4.ª tanda: estructura macro/micro, Kenia fuera del 
 - **Pizarra del III**: se borra todo. III.1: «Sen: capacidades · titularidades (Bengala 1943)» y «Deaton: encuestas de hogares». III.2: «brecha de aspiraciones», «escasez», «umbral de activos (BRAC)» y «crédito: selección · vigilancia · sanciones». III.3: recuadrada a la izquierda, la **función clave** `eq:sesgo-seleccion`, término a término mientras se explica, que se queda hasta el final; a la derecha, 4 o 5 ejemplos en una palabra con su cifra (gusanos −80 %, lentejas 6→18→39 %, comidas +31 %, GiveDirectly ×2,5). III.4: las 6 lecciones numeradas a la derecha, con la función clave aún a la vista. La tabla de experimentos y la demostración del anexo C, como **apoyo**.
 - **Pegatinas** en una esquina, al decirlas: «una golondrina no hace verano» (gran empujón), «café para todos» (Consenso de Washington), «el hábito no hace al monje» (instituciones), «ver para creer» (experimentos), «del dicho al hecho hay mucho trecho» (validez externa) y «obras son amores, que no buenas razones» (políticas).
 - **Funciones clave**: solo `eq:sesgo-seleccion`, desde III.3 hasta el final (`conservar:`).
-- **Idea final**: «volvamos al refrán»: la estrella de nacimiento puede pesar cada vez menos (Botsuana, China, Corea del Sur). Nunca se dice el número de un tema en voz alta.
+- **Idea final**: «volvamos al refrán: unos tanto y otros tan poco»: el país de nacimiento puede pesar cada vez menos (Botsuana, China, Corea del Sur). Nunca se dice el número de un tema en voz alta.
 
 **Reparto del cante** (nota que iba tras el esquema del tema; quitada del tema el 19/11/2026 a petición de Víctor, se conserva aquí para el vídeo):
 
@@ -271,7 +272,7 @@ Actualizadas el 11/11/2026 (4.ª tanda: estructura macro/micro, Kenia fuera del 
 - **Nobel**: la lista de premiados de la introducción lleva ahora una nota común con todos los motivos oficiales (Myrdal y Hayek 1974; Lewis y Schultz 1979; North y Fogel 1993; Sen 1998; Deaton 2015; Banerjee, Duflo y Kremer 2019; Acemoglu, Johnson y Robinson 2024), y se quitan las notas repetidas que había más adelante (Lewis, Myrdal, North, Sen, Deaton). Nuevas notas: \autor{Solow} 1987, \autor{Kuznets} 1971, \autor{Lucas} 1995 (dentro de la nota de la paradoja), \autor{Stiglitz} 2001 y \autor{Robert E. Hall} 2026, con \autor{Woodford} (Hall y Jones, 1999).
 - **Angrist, Imbens y Card (2021)**: en «Otras dificultades» del método experimental se añade el efecto medio local del tratamiento (LATE) de \textcite{ImbensAngrist1994Identification}, con nota del Nobel de 2021 (Angrist e Imbens, y Card por los experimentos naturales). Banerjee-Duflo-Kremer, Acemoglu-Johnson-Robinson y Deaton ya tenían su desarrollo en el cuerpo.
 - **4.º ejercicio**: ya remitía al \vertema{4.A.27}, \vertema{4.A.26} y \vertema{4.B.6}; no se añaden más.
-- **Refranes**: se quedan el del enganche («unos nacen con estrella y otros estrellados»), «una golondrina no hace verano» (gran empujón), «café para todos» (Consenso de Washington), «el hábito no hace al monje» (instituciones de segundo óptimo) y «ver para creer» (RCT), los tres últimos integrados en la frase. Se quitan «del dicho al hecho hay mucho trecho» y «obras son amores, que no buenas razones», del tema y de la ficha.
+- **Refranes**: se quedan el del enganche («unos tanto y otros tan poco», desde el 20/11/2026; antes «unos nacen con estrella y otros estrellados»), «una golondrina no hace verano» (gran empujón), «café para todos» (Consenso de Washington), «el hábito no hace al monje» (instituciones de segundo óptimo) y «ver para creer» (RCT), los tres últimos integrados en la frase. Se quitan «del dicho al hecho hay mucho trecho» y «obras son amores, que no buenas razones», del tema y de la ficha.
 
 ## Listas en las notas al pie (15/11/2026)
 
@@ -281,3 +282,11 @@ Ninguna nota lo necesitaba.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Refranes (20/11/2026)
+
+- Sale «Unos nacen con estrella y otros estrellados»; entra «Unos tanto y otros tan poco» (Víctor: mejor empezar con esa frase popular), que no abre ningún otro tema. Kenia frente a España se mantiene sin cambios (esperanza de vida 64 y 84 años; renta por habitante en PPA 8 veces mayor; PNUD), con la prima de ciudadanía de Milanović.
+- Enganche: «“Unos tanto y otros tan poco”, dice el refrán. En la economía mundial, que a uno le toque tanto o tan poco depende, sobre todo, del país en el que nace.» Siguen Kenia y España, la prima de ciudadanía y la pregunta del tema.
+- Idea final: «Volvamos al refrán: “unos tanto y otros tan poco”. / Nacer en Kenia o en España sigue decidiendo, en buena medida, a quién le toca tanto y a quién tan poco. / Pero la economía del desarrollo enseña que ese reparto no es un destino: Botsuana, China o Corea del Sur lo muestran […], el país de nacimiento puede pesar cada vez menos.»
+- Ficha (enganche e idea final) e instrucciones del vídeo al día. Duda B28-30 (el refrán de la estrella sale del todo).
+- Mapa de la exposición (`graficos/mapa-tema.tex`): introducción al día.

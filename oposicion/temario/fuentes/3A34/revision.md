@@ -243,3 +243,11 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Refranes (20/11/2026)
+
+- **Sale** «Antes de que te cases, mira lo que haces»; **entra** «Más vale tarde que nunca», con el giro de la opción de esperar.
+- **Enganche nuevo**: «Más vale tarde que nunca», dice el refrán; en la compra de bienes de equipo la teoría le da una vuelta: a veces más vale tarde que pronto, porque un equipo hecho a la medida de una fábrica apenas vale nada fuera de ella y lo que no tiene marcha atrás conviene hacerlo cuando se ve claro. Siguen los datos de incertidumbre de 2025 (índice de Baker, Bloom y Davis en máximo histórico en abril; el del Banco de España, un 77 % sobre su media), que ahora cierran con «prefieren invertir tarde a equivocarse pronto», y la pregunta del tema, sin cambios.
+- **Idea final**: «Volvamos al refrán: "más vale tarde que nunca", y, cuando la inversión no tiene marcha atrás, a veces más vale tarde que pronto. La teoría lo explica: esperar tiene un valor, el de la opción a la que se renuncia al invertir, y el dinero barato no basta si el futuro está nublado.» El resto de la idea final, igual. Se queda en III.3 «No por mucho madrugar amanece más temprano» (refrán del cuerpo, permitido).
+- Mapa de la exposición y ficha (enganche e idea final) al día.
+- La ficha sigue en 4 páginas a 10 pt. `verificar-tema.py`: 0 errores.

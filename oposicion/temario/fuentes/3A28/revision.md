@@ -164,6 +164,7 @@ Víctor está fuera hasta el 9/11: en todas se ha aplicado la recomendada.
 | A28-19 | Extensión | El tema pasa de 23 a 33 páginas de tema (45 en total) con Kydland-Prescott y Barro-Gordon desarrollados, la NKPC y los gráficos nuevos | (a) dejarlo así (el cante se queda en 30′, II.4 con 2′30″); (b) pasar las soluciones de Barro-Gordon y la evidencia de la NAIRU a cajas grises o a un anexo | **(a)** |
 | A28-20 | Letras en el mismo tema | Barro-Gordon usa γ (peso de la inflación) y α = 1/a; la condición de Hosios usaba γ y α con otro sentido | (a) Hosios dicho de palabra, sin letras; (b) letras locales con aviso | **(a)** |
 | A28-21 | Gráfico de Barro-Gordon | El del 3.A.6 rotula π_T y U_T con subíndice; el texto dice π^T y U^T (canon) | (a) copiarlo sin cambios y seguir el canon en el texto; (b) cambiarlo aquí | **(a)**: se arregla en el 3.A.6 (A36-15) y se vuelve a copiar |
+| A28-22 | NAWRU de otoño de 2026 (20/11/2026) | La Comisión solo publica la NAWRU en AMECO; la segunda comprobación es la interfaz antigua (serie de primavera), y la vendimia de otoño rebaja 2013 a 16,8 % y 2025 a 12,0 % | (a) usar la de otoño en todo el tema y el gráfico; (b) dejar la de primavera fuera del enganche | **(a)** |
 
 ## Comentarios de Víctor (9/11/2026, 2.ª tanda)
 
@@ -221,3 +222,13 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Refranes (20/11/2026)
+
+- **Refrán**: se mantiene «Agua pasada no mueve molino» (Víctor: «Me gusta el refrán, pero el mensaje… que se vea más claro que alude a la histéresis»).
+- **Enganche nuevo** (tras el refrán y el paro de 2007, 2013 y hoy, que no cambian): «La crisis no movió solo el paro efectivo, sino también el de equilibrio. La NAWRU, la tasa de paro que la Comisión Europea considera compatible con salarios estables, subió en España del 13,6 % en 2007 al 16,8 % en 2013; desde entonces ha bajado detrás del paro, y la Comisión la estima en el 11,6 % en 2026 y prevé el 11,1 % en 2028. / El paro de equilibrio ha subido y bajado con el paro de cada momento. Esto refleja cómo el paro no es ajeno a su propia historia, lo que los economistas llaman *histéresis*: en el paro, el agua pasada sí mueve molino.» Sale «la crisis no parece agua pasada». Sigue la pregunta del tema.
+- **Idea final**: para no repetir literalmente el enganche, «hay un paro de equilibrio, pero se mueve con el paro de cada momento, como la NAWRU de España: en el paro, el agua pasada sí mueve molino».
+- **Datos (AMECO, previsiones de otoño de 2026, actualización del 17/11/2026; descarga SDMX de Redisstat, `AMECO_CHAPTER01-03`, consulta 20/11/2026)**: NAWRU de España 13,6 % (2007), 16,8 % (2013; antes 16,9), 12,0 % (2025; antes 12,1), 11,6 % (2026), 11,3 % (2027) y 11,1 % (2028); zona del euro 6,6 % (2025). La Comisión reestima toda la serie en cada previsión, así que se ha puesto al día en todo el tema: I.4 a), nota de la tasa natural, II.3/III.3 (España, «subió 3,4 puntos» en vez de 3,5), ficha (enganche, I.4, III.3, idea final, datos clave), `datos/paro-nawru-espana.csv` (1980-2028) y el gráfico `paro-nawru-espana` (hasta 2028, rótulos 16,8 y 12,0, pie con la actualización del 17/11/2026). Paro de España sin cambios. `CE2026AMECO` y `CE2026AMECOParo` con la nota y la fecha de consulta nuevas; `datos-actualizables.yaml` al día (próxima, 2027-05).
+- **Corrección**: «Desde 2023, el paro efectivo está por debajo de [la NAWRU]» pasa a «desde 2022» (13,0 % frente a 13,5 % en 2022, ya con la serie de primavera). También en la ficha.
+- Construido: 47 páginas (34 de tema, antes 33, por la viñeta nueva del enganche); ficha en 4 páginas (8,75 pt); `verificar-tema.py`: 0 errores.
+- Duda **A28-22**: segunda comprobación de la NAWRU. La Comisión no publica la NAWRU fuera de AMECO; se ha cotejado la descarga de Redisstat con la consulta de la interfaz antigua (que aún sirve la serie de primavera: 16,86 y 12,11), y las diferencias son solo la reestimación de otoño. Recomendado: dejarlo así.

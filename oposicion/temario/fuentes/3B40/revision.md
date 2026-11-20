@@ -115,7 +115,7 @@ Todos consultados el 14/11/2026.
 | Estructura rígida de modelo | 3 modelos con a) Idea, b) Modelo (i-iii), c) Extensiones, d) Evidencia empírica, e) Valoración |
 | Sin citas Harvard | Solo `\nocite` y `\textcite` de obras originales |
 | Nunca citar a Víctor | Ninguna entrada suya; gráficos «elaboración propia» |
-| Ni «Pegatina» ni «Dicho» | Un solo refrán, el del enganche («Dios da pan a quien no tiene dientes», no usado en otro tema ni en la tanda), retomado en la capacidad de absorción y en la idea final |
+| Ni «Pegatina» ni «Dicho» | Un solo refrán, el del enganche («Dios da pan a quien no tiene dientes», no usado en otro tema ni en la tanda), retomado en la idea final (desde el 20/11/2026, ya no en la capacidad de absorción) |
 | Nobel con motivo oficial | Krugman (2008), Solow (1987), Myrdal (1974), con las notas de otros temas |
 | `\vertema` al 4.º ejercicio | 4.A.16, 4.A.17, 4.A.28, 4.A.30, 4.B.14 |
 | Resultados clave en morado | `eq:mercado-domestico`, `eq:convergencia-beta`, `eq:rdd` con `\funcionclave` |
@@ -142,10 +142,11 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - **B40-10.** (19/11/2026) Segundo panel del mapa del PIB regional (gráfico 8, caja gris de III.2): ¿variación 2000-2024 o 2014-2024? Con 2000 faltan Bélgica y Mayotte (12 regiones, con trama «sin dato»), pero casa con la regresión de convergencia β (misma ventana); con 2014 están las 244 regiones, pero solo enseña la última década. Opciones: (a) 2000-2024 **[aplicada]**; (b) 2014-2024; (c) quitar el panel y dejar solo el nivel de 2024.
 - **B40-11.** (19/11/2026) Tabla de instrumentos (tabla 1, caja gris al final de I.4): recoge, además de los 5 fondos de la cohesión, los de otras políticas con fines parecidos (FEADER, FEMPA, MRR, IPA III), los de emergencia (FSUE, FEAG, SURE) y los financieros (BEI, InvestEU, STEP), como el texto de I.4.3. Opciones: (a) todos, por bloques **[aplicada]**; (b) solo los de la cohesión y los de emergencia.
 - **B40-12.** (19/11/2026) Retos de la política social (II.2.4): que la propuesta 2028-2034 integra el FSE+ en los planes nacionales y regionales se apoya en COM(2025) 565; el temor del Parlamento y de los interlocutores sociales se dice de forma general, sin cita propia (como B40-07). Opciones: (a) así **[aplicada]**; (b) quitar esa viñeta.
+- **B40-13** (20/11/2026) La capacidad de absorción tras la idea final nueva («el pan sí alimenta»). (a) **Se quita la vuelta al refrán de III («el pan solo alimenta a quien tiene dientes»), que chocaba con la idea final; queda el dato (en torno al 30 % de las regiones) con «los fondos rinden más donde la región tiene con qué aprovecharlos»; la idea final, literal de Víctor, sin añadidos** — *Aplicada: (a)*; (b) añadir a la idea final una segunda frase con el matiz de la absorción («y alimenta más a quien puede masticarlo»).
 
 ## 8. Instrucciones para el vídeo
 
-- **Enganche e idea final**: «Dios da pan a quien no tiene dientes»; Polonia y Rumanía se acercan a la media mientras España, Italia y Grecia se alejan. Idea final: el pan sí alimenta, pero solo a quien puede masticarlo; la cohesión debe ayudar a las regiones a tener dientes.
+- **Enganche e idea final** (20/11/2026): «Dios da pan a quien no tiene dientes» (los recursos llegan a quien menos partido puede sacarles; la crítica que se oye a veces a la cohesión); Polonia y Rumanía se acercan a la media mientras España, Italia y Grecia se alejan. Idea final, literal de Víctor: «Volvamos al refrán: Dios da pan a quien no tiene dientes. La evidencia dice que el pan sí alimenta y la política de cohesión ayuda a la convergencia de las regiones más desfavorecidas.»
 - **Introducción y conclusión, sin pizarra** (`modo: guion`).
 - **I**: el modelo de capital móvil ya no se canta (19/11/2026: va al anexo A); en I.1.4 se dicen de palabra sus 4 lecciones (la integración concentra, las transferencias frenan, la carretera de doble sentido, el dilema crecimiento-equidad) y, si se quiere, `mercado-domestico` como apoyo. `historia-cohesion` como apoyo que se va completando; `marco-cohesion` y `cohesion-estados` (2 paneles: importe y por habitante) como apoyo. Las cajas grises (mapa del tema, mapa de las categorías, tabla de instrumentos) no se cantan.
 - **II**: sin pizarra salvo una lista breve de los 3 objetivos de 2030; `pilar-social` como apoyo.
@@ -187,3 +188,11 @@ Ninguna nota lo necesitaba.
 8. **Gráficos 2 y 3 unificados** (2.ª tanda): `cohesion-estados` es ahora un único gráfico 2 con 2 paneles lado a lado y el mismo orden de países (de menor a mayor importe): a la izquierda, miles de millones de euros; a la derecha, euros por habitante con la media de la UE-27 (815 €). Las cifras de Italia y España del panel derecho van a la derecha de la línea de la media para no taparse. Se borra `graficos/cohesion-estados-hab.*` (el CSV `datos/cohesion-estados-hab.csv` se conserva porque guarda la media); título, fuente y remisión del texto al día («a la izquierda»/«a la derecha»); `datos-actualizables.yaml` y las instrucciones del vídeo, también. Los gráficos siguientes bajan un número. Ficha: el gráfico pasa a todo el ancho de la columna (sigue en 4 páginas a 10,5 pt). Tema: 28 → 27 páginas. `verificar-tema.py`: 0 errores, 17 avisos (los mismos).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
 
+
+## Refranes (20/11/2026)
+
+- Se mantiene «Dios da pan a quien no tiene dientes» (Víctor: el uso estaba cogido con pinzas). Enganche suavizado: «“Dios da pan a quien no tiene dientes”, dice el refrán: los recursos llegan a menudo a quien menos partido puede sacarles. Es una crítica que se oye a veces a la política de cohesión, que concentra sus fondos en las regiones menos desarrolladas, las que, en principio, menos capacidad tienen para aprovecharlos.» Siguen los datos de Eurostat (Polonia, Rumanía, España, Italia, Grecia) y la pregunta del tema, sin cambios.
+- Idea final, literal de Víctor: «Volvamos al refrán: Dios da pan a quien no tiene dientes. La evidencia dice que el pan sí alimenta y la política de cohesión ayuda a la convergencia de las regiones más desfavorecidas.»
+- III (capacidad de absorción): fuera «Es el refrán del principio: el pan solo alimenta a quien tiene dientes»; ahora «Los fondos rinden más donde la región tiene con qué aprovecharlos». Ya no quedan «dientes» ni «masticar» fuera del enganche y la idea final.
+- Ficha (idea final) e instrucciones del vídeo al día. Duda B40-13.
+- Mapa de la exposición (`graficos/mapa-tema.tex`): conclusión al día con la idea final nueva.
