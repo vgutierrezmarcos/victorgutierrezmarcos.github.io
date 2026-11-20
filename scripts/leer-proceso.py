@@ -148,13 +148,22 @@ def leer_oposicion(cuerpo, ctx, anio, conocidas=()):
 
 
 def leer_conocidas(previo, ctx):
-    """Solo las convocatorias que ya se conocen (las del JSON)."""
+    """Solo las convocatorias que ya se conocen (las del JSON).
+
+    Una página conocida que responde sin documentos (en mantenimiento, una
+    página de error) cuenta como fallo del portal: si se diera por buena, la
+    convocatoria se perdería del JSON y, en la lectura siguiente, todos sus
+    documentos volverían como novedad (pasó el 13 nov. 2026 con DCE 2025)."""
     out = []
     for p in previo.get('procesos', []):
         pagina = descargar(p['url'], ctx)
         time.sleep(1)
-        if pagina and '<h2' in pagina:
-            out.append((p['convocatoria'], p['url'], pagina))
+        if pagina is None:
+            # 404: la página ya no existe; la convocatoria se conserva abajo (red de seguridad).
+            continue
+        if '<h2' not in pagina or not documentos(pagina):
+            raise ConnectionError(f"{p['url']} responde sin documentos")
+        out.append((p['convocatoria'], p['url'], pagina))
     return out
 
 
@@ -187,7 +196,9 @@ def fusionar(anterior, convocatoria, url, docs, hoy):
     """Convocatoria con la fecha en que se vio cada documento por primera vez.
     La primera vez que se lee una oposición no se sabe cuándo salió lo que ya
     había (desde = None): solo es novedad lo que aparezca después."""
-    antes = {d['id']: d.get('desde') for p in anterior.get('procesos', []) if p['convocatoria'] == convocatoria for d in p['documentos']}
+    # La fecha de un documento ya visto se conserva aunque estuviera en otra
+    # convocatoria del JSON (la misma URL es el mismo documento).
+    antes = {d['id']: d.get('desde') for p in anterior.get('procesos', []) for d in p['documentos']}
     if not anterior:
         hoy = None
     return {
@@ -262,6 +273,12 @@ def main():
             continue
         procesos = [fusionar(previo, a, url, documentos(p), hoy) for a, url, p in paginas]
         procesos = [p for p in procesos if p['documentos']]
+        # Red de seguridad: una convocatoria conocida que no se ha podido leer
+        # se conserva tal cual, para que no vuelva luego entera como novedad.
+        leidas = {p['convocatoria'] for p in procesos}
+        procesos += [p for p in previo.get('procesos', []) if p['convocatoria'] not in leidas]
+        procesos.sort(key=lambda p: p['convocatoria'], reverse=True)
+        procesos = procesos[:CONVOCATORIAS]
         if not procesos:
             if previo:
                 nuevo[op] = previo
