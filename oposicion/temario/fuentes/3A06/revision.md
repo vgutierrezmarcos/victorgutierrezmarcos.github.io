@@ -301,3 +301,7 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - 3 viñetas → 2: ganó el método y perdió las conclusiones (qué se quedó y qué no) en una; Lucas (2003) y la crisis, en otra.
 - Frase: no se añade la de Gell-Mann. No se ha podido confirmar: no hay fuente primaria; la publicó por primera vez Scott Page («Computational models from A to Z», *Complexity*, 5(1), 1999), que la atribuye a Gell-Mann citando *The Quark and the Jaguar* (1994), donde no aparece; las páginas de citas dan también la versión «si las partículas pudieran pensar». Además, la opinión ya tiene una frase célebre, la de Lucas (2003) sobre las depresiones resueltas «a todos los efectos prácticos», que cuenta como la del tema. Si Víctor la quiere igualmente, iría como «atribuida a Gell-Mann», tras la de Lucas.
 - Ficha: sin cambios (ya era corta).
+
+## Frase de Gell-Mann (20/11/2026)
+
+A petición de Víctor, se añade a la opinión como «atribuida» (3.ª viñeta, ligada a la crítica de Lucas), con la misma fuente que el 3B23: no hay texto ni conferencia de Gell-Mann que la contenga; la primera aparición escrita es Page (1999), *Complexity* 5(1), que se la atribuye. Usada en 2 temas (3A06 y 3B23).
