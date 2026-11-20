@@ -343,3 +343,9 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 - 3 viñetas → 2: valor trabajo y pesimismo en una; el reparto que vuelve con la desigualdad y las ideas clásicas que siguen guiando la política en otra.
 - Frase: Keynes (1936), *Teoría general*, cap. 24: «los hombres prácticos, que se creen libres de toda influencia intelectual, suelen ser esclavos de algún economista difunto»; nota con el original («Practical men, who believe themselves to be quite exempt from any intellectual influences, are usually the slaves of some defunct economist»), comprobado en el texto del cap. 24. Cita Keynes1936, ya en el .bib.
 - Ficha al día.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-04 (solape con el 3.B.5).** Salen las 2 tablas de paño y vino (ventaja absoluta y ventaja comparativa), el cálculo de los costes comparativos y la ecuación de los límites de la RRI del cuerpo, que están en el 3.B.5. Smith queda con el ejemplo de palabra; Ricardo, como pensamiento: el resultado en una frase con remisión al 3.B.5, por qué le importa (las Leyes de Granos, la renta y la tasa de beneficio: el comercio solo sube el beneficio si abarata los bienes salario) y lo que dice del valor trabajo (100 ingleses por 80 portugueses). El anexo de la ventaja comparativa se mantiene, con las cifras en el texto y la ecuación de los límites de la RRI en forma general. Sin cambios de minutos.

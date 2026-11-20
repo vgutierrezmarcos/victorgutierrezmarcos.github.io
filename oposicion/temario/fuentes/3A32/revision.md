@@ -371,3 +371,13 @@ Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase 
 - 1 viñeta → 2: se mantiene la del «depende» y se añade que la política se juega en el ajuste, con la frase entera de **Keynes**: «este largo plazo es una mala guía para los asuntos de hoy. A largo plazo, todos muertos. Los economistas se ponen una tarea demasiado fácil y demasiado inútil si, en plena tempestad, solo saben decirnos que, cuando pase la tormenta, el mar volverá a estar en calma». Casa con la idea final (las desgracias que llegan juntas).
 - Fuente comprobada: *A Tract on Monetary Reform* (1923), cap. 3 (p. 80 de la 1.ª edición); original en la nota. `Keynes1923Tract` copiada del 3A04 (que usa la frase corta en el enganche: 2 temas en total).
 - Ficha: «a largo plazo, todos muertos».
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-14 (IS-LM-BP y asignación de Mundell, con el 3.B.12)**, opción (a): en el anexo~A, el párrafo de Meade, Tinbergen, Swan y la asignación de Mundell queda en una línea con remisión al 3.B.12, que es donde la asignación es central (el ajuste). Se conservan Meade y Swan en esa línea y en los aspectos para el test; la nota del Nobel de Tinbergen sale de aquí (sigue en el 3.B.12). El gráfico IS-LM-BP sigue en el anexo: no se canta.
+- **GEN-15 (política fiscal en la unión monetaria, con el 3.B.16)**, opción (a): el punto «Sin moneda propia» del III pasa a una frase (el banco central común responde a la media; a cada país le queda la política fiscal, también la devaluación fiscal) con remisión al 3.B.16, que desarrolla Galí-Monacelli (2008), el multiplicador relativo y la devaluación fiscal. De la evidencia del III sale el multiplicador relativo regional (Nakamura y Steinsson), que está en el 3.B.16.
+- **GEN-02 (Mundell-Fleming, con el 3.B.15)**: el 3.A.32 sigue siendo el tema de referencia del modelo (los 4 casos, la tabla y el gráfico de las políticas se quedan aquí); el cambio se hizo en el 3.B.15.
+- Los `\minutos` no cambian; el cante gana unos segundos en el III.
+- Al acortarse el anexo A, el título del anexo E quedaba solo al pie de una página (lo marcaba verificar-tema.py): se añade un `\clearpage` antes de ese anexo. Páginas del tema: 33, sin cambios.

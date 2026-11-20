@@ -546,19 +546,8 @@ El documento de trabajo de \autor{Kiyotaki} y \autor{Wright} que dio lugar al ar
 \subparagraph{c) Extensiones: pagos aleatorios (\autor{Miller} y \autor{Orr}, 1966)}
 
 \begin{itemize}
-\item \textcite{MillerOrr1966Model} llevan el modelo a una \emph{empresa} cuyos cobros y pagos netos de cada día son aleatorios: su saldo de caja sigue un paseo aleatorio, con varianza diaria $\sigma^2$.\footnote{\autor{Merton Miller} recibió el Premio Nobel de Economía en 1990, con \autor{Harry Markowitz} y \autor{William Sharpe}, «por sus trabajos pioneros en la teoría de la economía financiera»\nocite{Nobel1990Markowitz}.}
-\item \emph{La regla óptima es una banda} (gráfico~\ref{fig:miller-orr}): la empresa fija un saldo mínimo, $M^{\mathrm{inf}}$, y deja que la caja se mueva libremente entre él y un límite superior, $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$. Si toca el límite superior, compra bonos hasta volver al \emph{punto de retorno}, $M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$; si toca el inferior, vende bonos hasta volver a él. Con $b$ el coste de cada operación e $i$ el tipo diario,
-  \funcionclave[eq:miller-orr]{z^*=\left(\frac{3\,b\,\sigma^2}{4\,i}\right)^{1/3}}
-  y el saldo medio es $M^{\mathrm{inf}}+\tfrac{4}{3}\,z^*$. Solo el saldo mínimo lo fija la empresa a su criterio; el punto de retorno y el límite superior son óptimos.
-\item \emph{Implicaciones}: la demanda de dinero tiene elasticidad $-1/3$ respecto al tipo y $1/3$ respecto al coste de cada operación y a la varianza de los flujos: la incertidumbre aumenta la demanda de dinero, y sigue habiendo economías de escala.
+\item \textcite{MillerOrr1966Model} llevan el modelo a una \emph{empresa} cuyos cobros y pagos netos son aleatorios,\footnote{\autor{Merton Miller} recibió el Premio Nobel de Economía en 1990, con \autor{Harry Markowitz} y \autor{William Sharpe}, «por sus trabajos pioneros en la teoría de la economía financiera»\nocite{Nobel1990Markowitz}.} y la regla óptima pasa a ser una \emph{banda}: la caja se mueve libremente entre un mínimo y un máximo, y solo al tocarlos se compran o venden bonos hasta un punto de retorno, a una distancia del mínimo proporcional a $(b\,\sigma^2/i)^{1/3}$, con $\sigma^2$ la varianza diaria de los flujos. La demanda de dinero tiene entonces elasticidad $-1/3$ respecto al tipo y $1/3$ respecto al coste de cada operación y a la varianza: la incertidumbre la aumenta y sigue habiendo economías de escala. Como gestión de la tesorería de una empresa, con su gráfico y un ejemplo, se desarrolla en su tema \vertema{3.B.2}.
 \end{itemize}
-
-\begin{figure}[H]
-\centering
-\caption{El modelo de \autor{Miller} y \autor{Orr}: la caja se mueve libremente dentro de una banda}\label{fig:miller-orr}
-\grafico[0.7\textwidth]{miller-orr}
-\fuente{elaboración propia a partir de \textcite{MillerOrr1966Model}.}
-\end{figure}
 
 \subparagraph{d) Evidencia empírica}
 
@@ -1058,8 +1047,7 @@ Búsqueda & \textcolor{tceeverde}{Cambio} & Encuentros & Aceptación & Confianza
 \begin{itemize}
 \item \emph{Los criptoactivos} (bitcóin y similares) se registran en una cadena de bloques y no tienen un emisor que responda de ellos. No cumplen bien ninguna función del dinero: su precio es tan volátil que nadie fija precios en ellos, se aceptan poco para pagar y no conservan el valor. Su demanda es la de un activo especulativo, no la de dinero; y, como en \autor{Kiyotaki} y \autor{Wright} (\ref{sec:fiduciario}), un medio de pago nuevo solo circula si se confía en que los demás lo aceptarán.
 \item \emph{Las monedas estables} (\emph{stablecoins}) prometen valer siempre una unidad de una moneda oficial, respaldadas por depósitos o deuda pública a corto plazo: son, en el fondo, depósitos de una entidad no bancaria. Para el Banco de Pagos Internacionales no cumplen las condiciones del buen dinero: que una unidad valga lo mismo la emita quien la emita, que su oferta se adapte a la demanda de pagos y que no sirva para eludir los controles\nocite{BIS2025Annual}. Desde el 30~de diciembre de 2024 los criptoactivos tienen en la UE un régimen común, el Reglamento MiCA, que ya se aplicaba desde junio de 2024 a las monedas estables\nocite{UE2023MiCA} \vertema{4.A.20}.
-\item \emph{El euro digital} sería dinero del banco central en forma digital para el público: un medio de pago con curso legal, sin intereses, con un límite de tenencia por persona y utilizable sin conexión. La Comisión propuso su reglamento en junio de 2023\nocite{Comision2023EuroDigital}; el Consejo fijó su posición en diciembre de 2025\nocite{Consejo2025EuroDigital} y el Parlamento Europeo, en julio de 2026\nocite{PE2026EuroDigital}, y las negociaciones siguen abiertas. Si el reglamento se aprueba en 2026, el BCE prevé un piloto en 2027 y la primera emisión en 2029\nocite{BCE2025EuroDigital} \vertema{3.A.36}.
-\item \emph{Para la demanda de dinero}: si el público cambiara depósitos por euros digitales, los bancos perderían financiación barata, y en una crisis la huida hacia el dinero del banco central sería más rápida: por eso el límite de tenencia y que no se remunere. A cambio, mantiene un ancla pública cuando el efectivo se usa cada vez menos.
+\item \emph{El euro digital}, dinero del banco central en forma digital para el público, toca a la demanda de dinero por un lado concreto: si el público cambiara depósitos por euros digitales, los bancos perderían financiación barata, y en una crisis la huida hacia el dinero del banco central sería más rápida. Por eso se diseña con un límite de tenencia y sin remuneración; a cambio, mantiene un ancla pública cuando el efectivo se usa cada vez menos. Su diseño y el estado de su reglamento se desarrollan en su tema \vertema{3.B.43} y, desde la política monetaria, \vertema{3.A.36}.
 \item Recapitulando el bloque: la forma de la demanda de dinero decide la inflación óptima, el instrumento, cuánto se puede recaudar con la inflación y el margen de la política con tipos bajos; y la tecnología de pagos está cambiando qué es dinero, pero no por qué se acepta: la confianza en el emisor.
 \end{itemize}
 

@@ -257,3 +257,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
 
 - 2 viñetas → 2 (sin cambios): ya era corta (las transiciones exigen inversiones irreversibles; más que subvenciones, una senda estable y creíble de precios del carbono y de regulación). No tiene frase asignada.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-08 (solape con el 3.B.2).** El refrán «no por mucho madrugar amanece más temprano», que es el inicial del 3.B.2, se sustituye en el cuerpo, en la nota del cante y en la ficha por la vuelta al refrán propio del tema («a veces más vale tarde que pronto»). La regla, el ejemplo de Pindyck y las implicaciones macro se quedan aquí (tema de referencia); la extensión remite al 3.B.2 para la valoración de opciones reales con el árbol binomial.

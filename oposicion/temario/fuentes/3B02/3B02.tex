@@ -104,7 +104,7 @@ Conclusión\esqtiempo{1}
 \minutos{10,5}
 
 \begin{notaopositor}
-En el cante (\tiempo{10,5}). La apertura, de palabra (\tiempo{0,5}): la conclusión anticipada y los 5~pasos del proceso, sin escribirlos. I.1, \tiempo{1,25}: la línea de flujos de la figura~\ref{figu:esquema-pagos}, numerando las 5~variables; el flujo de caja libre, de palabra; simples, puras y mixtas en una frase (la figura~\ref{figu:clasificacion-inversiones} y la tabla~\ref{tab:signos} no se cantan). I.2, \tiempo{0,75}: los 6~principios nombrados, con «borrón y cuenta nueva» junto a los costes hundidos y «nominal con nominal». I.3, \tiempo{7,5}: las 2~preguntas, efectuación y jerarquización, al empezar, y la respuesta de cada método a las 2; los estáticos de palabra (\tiempo{0,5}); el VAN \eqref{eq:van}, función clave hasta el final (\tiempo{1,25}); la TIR en una línea (\tiempo{0,75}); el gráfico~\ref{fig:van-fisher} por capas y la tabla~\ref{tab:van-tir} de 3~columnas (\tiempo{1,5}); la TIRM y el índice con el racionamiento, de palabra (\tiempo{0,75}); la tasa ajustada y el equivalente cierto, con las 2~fórmulas en una línea cada una (\tiempo{1}); la sensibilidad, de palabra (\tiempo{0,25}); las opciones reales con la regla \eqref{eq:opcion-esperar} en una línea bajo el VAN, el ejemplo en una frase y «no por mucho madrugar amanece más temprano» (\tiempo{1,5}). I.4, \tiempo{0,5}: las cifras de la encuesta, de palabra. La figura~\ref{figu:tirm} y el árbol del gráfico~\ref{fig:arbol-opciones} son de apoyo.
+En el cante (\tiempo{10,5}). La apertura, de palabra (\tiempo{0,5}): la conclusión anticipada y los 5~pasos del proceso, sin escribirlos. I.1, \tiempo{1,25}: la línea de flujos de la figura~\ref{figu:esquema-pagos}, numerando las 5~variables; el flujo de caja libre, de palabra; simples, puras y mixtas en una frase (la figura~\ref{figu:clasificacion-inversiones} y la tabla~\ref{tab:signos} no se cantan). I.2, \tiempo{0,75}: los 6~principios nombrados, con «borrón y cuenta nueva» junto a los costes hundidos y «nominal con nominal». I.3, \tiempo{7,5}: las 2~preguntas, efectuación y jerarquización, al empezar, y la respuesta de cada método a las 2; los estáticos de palabra (\tiempo{0,5}); el VAN \eqref{eq:van}, función clave hasta el final (\tiempo{1,25}); la TIR en una línea (\tiempo{0,75}); el gráfico~\ref{fig:van-fisher} por capas y la tabla~\ref{tab:van-tir} de 3~columnas (\tiempo{1,5}); la TIRM y el índice con el racionamiento, de palabra (\tiempo{0,75}); la tasa ajustada y el equivalente cierto, con las 2~fórmulas en una línea cada una (\tiempo{1}); la sensibilidad, de palabra (\tiempo{0,25}); las opciones reales (\tiempo{1,5}): la regla de esperar en una línea bajo el VAN, con «no por mucho madrugar amanece más temprano» y la remisión \vertema{3.A.34}, y el árbol del gráfico~\ref{fig:arbol-opciones} con el ejemplo de abandonar, ampliar y esperar. I.4, \tiempo{0,5}: las cifras de la encuesta, de palabra. La figura~\ref{figu:tirm} es de apoyo.
 \end{notaopositor}
 
 \begin{itemize}
@@ -495,37 +495,13 @@ IVAN & $\mathrm{IVAN}>0$ & Mayor IVAN & Efectuación: \textcolor{tceeverde}{sí}
 \item Esa flexibilidad es una \concepto{opción real}: el derecho, pero no la obligación, de cambiar el proyecto, con un valor como el de una opción financiera \vertema{3.B.25}; el nombre es de \textcite{Myers1977Determinants}. El valor de un proyecto es su VAN estático más el valor de sus opciones\nocite{Trigeorgis1996Real}.
 \end{itemize}
 
-\paragraph{b) Modelo: la opción de esperar}
+\paragraph{b) Modelo: la valoración con un árbol binomial}
 
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item Invertir cuesta $I_0$, que no se recupera; se puede invertir hoy o dentro de un año.
-\item El proyecto vale hoy $V_0$, y dentro de un año valdrá $V^{\mathrm A}$ en el escenario bueno, con probabilidad $\pi$, o $V^{\mathrm B}$ en el malo, con $V^{\mathrm B}<I_0<V^{\mathrm A}$. La empresa es neutral al riesgo y descuenta al tipo sin riesgo, $r_f$.\footnote{Es la misma presentación que en las teorías de la inversión \vertema{3.A.34}, donde el desembolso se escribe $I$ y el tipo de interés $r$; aquí $I_0$ es la letra del desembolso en todo el tema.}
-\end{itemize}
-
-\subparagraph{ii) Desarrollo}
-
-\begin{itemize}
-\item Si espera, solo invierte en el escenario bueno, así que esperar vale $\pi\,(V^{\mathrm A}-I_0)/(1+r_f)$. Invertir hoy mata esa opción, y solo conviene si vale más que ella:
-  \begin{equation}\label{eq:opcion-esperar}
-  V_0-I_0\ \geq\ \frac{\pi\,(V^{\mathrm A}-I_0)}{1+r_f}.
-  \end{equation}
-  Ya no basta con $\mathrm{VAN}>0$ ($V_0\geq I_0$): el proyecto tiene que cubrir su coste más el valor de la opción de esperar a la que se renuncia. Es el refrán del principio, «no por mucho madrugar amanece más temprano»: invertir en cuanto el VAN es positivo hace perder el valor de esperar a saber más.
-\item En el ejemplo de \textcite{Pindyck1991Irreversibility}, una fábrica que cuesta 1.600~y vale hoy 2.200~tiene un VAN de 600; pero si se espera un año a saber si el precio sube o baja, vale unos 773: un VAN positivo no basta.
-\end{itemize}
-
-\subparagraph{iii) Implicaciones}
-
-\begin{itemize}
-\item Con incertidumbre e irreversibilidad, las empresas exigen a los proyectos más de lo que dice el VAN y esperan aunque el VAN sea positivo. La incertidumbre frena la inversión \vertema{3.A.34}.
-\item El valor de una opción real, como el de una financiera\nocite{BlackScholes1973Pricing}, crece con la \emph{incertidumbre} (si nada puede cambiar, la flexibilidad no vale nada), con el \emph{tiempo} durante el que se puede ejercer y con la \emph{irreversibilidad} (si cambiar fuera gratis, no haría falta la opción).
-\end{itemize}
-
-\paragraph{c) Extensiones}
-
-\begin{itemize}
-\item Además de esperar, se puede \emph{ampliar} si va bien, \emph{reducir} o \emph{abandonar} si va mal (recuperando el valor residual) o invertir \emph{por fases}. Se valoran con un \emph{árbol de decisión} (gráfico~\ref{fig:arbol-opciones}), que alterna nodos de decisión (cuadrados) y de azar (círculos) y se resuelve hacia atrás, o, con más pasos, con los modelos de valoración de opciones \vertema{3.B.25}.
+\item \emph{La regla de esperar}, en una línea: con un coste hundido $I_0$ y un proyecto que dentro de un año valdrá $V^{\mathrm A}$ (con probabilidad $\pi$) o $V^{\mathrm B}<I_0$, invertir hoy solo conviene si $V_0-I_0\geq\pi\,(V^{\mathrm A}-I_0)/(1+r_f)$: el proyecto tiene que cubrir su coste más la opción de esperar a la que renuncia. Es el refrán del principio, «no por mucho madrugar amanece más temprano». La regla, el ejemplo de \textcite{Pindyck1991Irreversibility} y lo que implica para la inversión agregada se desarrollan en su tema \vertema{3.A.34}.
+\item Para la empresa, la pregunta es más amplia: \emph{cuánto vale} un proyecto que lleva dentro varias opciones. Se valora con un \concepto{árbol de decisión} (gráfico~\ref{fig:arbol-opciones}), que alterna nodos de decisión (cuadrados) y de azar (círculos). La empresa descuenta al tipo sin riesgo, $r_f$, con probabilidades neutrales al riesgo, como en la valoración de opciones financieras \vertema{3.B.25}.
 \end{itemize}
 
 \begin{figure}[H]
@@ -534,6 +510,33 @@ IVAN & $\mathrm{IVAN}>0$ & Mayor IVAN & Efectuación: \textcolor{tceeverde}{sí}
 \grafico[0.8\textwidth]{arbol-opciones}
 \fuente{elaboración propia a partir de \textcite[cap.~22]{BrealeyMyersAllen2020Principles}.}
 \end{figure}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{El árbol se resuelve hacia atrás}: en cada nodo de decisión del año~1~se elige la rama que más vale; en cada nodo de azar se toma el valor esperado, descontado; y en el nodo inicial se compara invertir hoy con esperar.
+\item \emph{Un ejemplo}: una fábrica cuesta $I_0=100$; dentro de un año valdrá $V^{\mathrm A}=180$ si la demanda es alta o $V^{\mathrm B}=60$ si es baja, con $\pi=0{,}5$, y $r_f=10$~\%.
+  \begin{itemize}
+  \item \emph{VAN estático}: $(0{,}5\cdot180+0{,}5\cdot60)/1{,}1-100\approx9{,}1$.
+  \item \emph{Abandonar}: si la demanda es baja, la fábrica se vende por un valor residual $\mathrm{VR}=90$ en lugar de seguir con 60. La opción vale $0{,}5\cdot(90-60)/1{,}1\approx13{,}6$.
+  \item \emph{Ampliar}: si la demanda es alta, por 50~más se amplía la fábrica la mitad y vale 90~más. La opción vale $0{,}5\cdot(90-50)/1{,}1\approx18{,}2$.
+  \item \emph{El VAN ampliado}, el estático más el valor de las opciones\nocite{Trigeorgis1996Real}: $9{,}1+13{,}6+18{,}2\approx40{,}9$. Aquí se suman, porque cada opción se ejerce en una rama distinta del árbol.
+  \item \emph{Esperar}: si la empresa espera un año, solo invierte con demanda alta y obtiene $0{,}5\cdot(180-100)/1{,}1\approx36{,}4$. Frente al VAN estático (9,1), esperar ganaría; frente al VAN ampliado (40,9), conviene invertir hoy, porque la fábrica construida lleva dentro las opciones de ampliar y abandonar, que se perderían esperando.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Las opciones cambian la decisión en los 2~sentidos: la de esperar exige más que un VAN positivo, y las de ampliar y abandonar pueden justificar proyectos con un VAN estático bajo o incluso negativo. Lo que importa es la \emph{flexibilidad} que da el proyecto.
+\item El valor de una opción real, como el de una financiera\nocite{BlackScholes1973Pricing}, crece con la \emph{incertidumbre} (si nada puede cambiar, la flexibilidad no vale nada), con el \emph{tiempo} durante el que se puede ejercer y con la \emph{irreversibilidad} (si cambiar fuera gratis, no haría falta la opción). En el ejemplo, si $V^{\mathrm B}$ bajara a 40~y $V^{\mathrm A}$ subiera a 200, con la misma media, la opción de abandonar pasaría a valer $0{,}5\cdot50/1{,}1\approx22{,}7$.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Además de esperar, ampliar y abandonar, se puede \emph{reducir} la escala o invertir \emph{por fases}, que es encadenar opciones: cada fase da derecho a la siguiente. Con muchos periodos, el árbol de un paso se convierte en el modelo binomial de \autor{Cox}, \autor{Ross} y \autor{Rubinstein} o, en tiempo continuo, en las fórmulas de valoración de opciones \vertema{3.B.25}.
+\end{itemize}
 
 \paragraph{d) Valoración}
 
@@ -562,7 +565,7 @@ IVAN & $\mathrm{IVAN}>0$ & Mayor IVAN & Efectuación: \textcolor{tceeverde}{sí}
 \minutos{6,5}
 
 \begin{notaopositor}
-En el cante (\tiempo{6,5}). La apertura y la clasificación, de palabra (\tiempo{0,75}). II.1, \tiempo{4,5}: el retiro simple y la cadena de renovaciones en una línea cada uno (\tiempo{0,5}); el MAPI con el gráfico~\ref{fig:mapi} pequeño (\tiempo{0,75}); las existencias con la fórmula de \autor{Wilson} y la regla $(S,s)$ en una frase (\tiempo{0,5}); \autor{Baumol} y \autor{Tobin} para la tesorería, el corazón del bloque (\tiempo{1,5}): el coste total del gráfico~\ref{fig:baumol-tesoreria} por capas (al menos el panel de la U; los dientes de sierra, si da tiempo), $M^*$ debajo junto a la fórmula de \autor{Wilson}, para que se vea que es la misma, y «en el término medio está la virtud»; \autor{Miller} y \autor{Orr} con la banda del gráfico~\ref{fig:miller-orr}, recomendado (\tiempo{0,5}); \autor{Holmström} y \autor{Tirole}, de palabra (\tiempo{0,5}); los intangibles, en una frase (\tiempo{0,25}). II.2, \tiempo{0,5}, y II.3, \tiempo{0,75}, de palabra. Las notas al pie y el anexo~\ref{anexo:renovaciones} son de profundización.
+En el cante (\tiempo{6,5}). La apertura y la clasificación, de palabra (\tiempo{0,75}). II.1, \tiempo{4,5}: el retiro simple y la cadena de renovaciones en una línea cada uno (\tiempo{0,5}); el MAPI con el gráfico~\ref{fig:mapi} pequeño (\tiempo{0,75}); las existencias con la fórmula de \autor{Wilson} y la regla $(S,s)$ en una frase (\tiempo{0,5}); \autor{Baumol} y \autor{Tobin} en una línea, con $M^*$ junto a la fórmula de \autor{Wilson} para que se vea que es la misma, las economías de escala y la remisión \vertema{3.A.35} (\tiempo{0,5}); \autor{Miller} y \autor{Orr}, el corazón del bloque (\tiempo{1,5}): la banda del gráfico~\ref{fig:miller-orr} por capas, la \eqref{eq:miller-orr} y el ejemplo de la tesorera con sus 3~cifras; \autor{Holmström} y \autor{Tirole}, de palabra (\tiempo{0,5}); los intangibles, en una frase (\tiempo{0,25}). II.2, \tiempo{0,5}, y II.3, \tiempo{0,75}, de palabra. Las notas al pie y el anexo~\ref{anexo:renovaciones} son de profundización.
 \end{notaopositor}
 
 \begin{itemize}
@@ -664,59 +667,42 @@ En el cante (\tiempo{6,5}). La apertura y la clasificación, de palabra (\tiempo
 \item \emph{Extensión}: con demanda incierta, la política óptima es una regla $(S,s)$: cuando las existencias bajan de un mínimo $s$, se pide lo necesario para volver al nivel $S$\nocite{ArrowHarrisMarschak1951Optimal,Scarf1960Optimality}. Es la misma banda de inacción de la inversión con costes fijos \vertema{3.A.34} y de la compra de bienes duraderos \vertema{3.A.33}.
 \end{itemize}
 
-\paragraph{b) Tesorería: el modelo de \autor{Baumol} (1952) y \autor{Tobin} (1956)}
+\paragraph{b) Tesorería con pagos ciertos: \autor{Baumol} (1952) y \autor{Tobin} (1956)}
+
+\begin{itemize}
+\item La caja no rinde, pero hace falta para pagar: es el problema de las existencias con el dinero como mercancía\nocite{Baumol1952Transactions,Tobin1956Interest}.\footnote{\autor{Tobin} recibió el Premio Nobel de Economía en 1981 «por su análisis de los mercados financieros y de sus relaciones con las decisiones de gasto, el empleo, la producción y los precios»\nocite{Nobel1981Tobin}.} Con pagos ciertos y regulares $Y$, un coste fijo $b$ por cada venta de activos y un tipo $i$, la reposición óptima es la fórmula de \autor{Wilson} con el tipo como coste de almacenar el dinero, $M^{*}=\sqrt{2\,b\,Y/i}$. El modelo, su gráfico y lo que implica para la demanda de dinero se desarrollan en su tema \vertema{3.A.35}; un ejemplo para una empresa, en el anexo~\ref{anexo:baumol-esquina}.
+\item Para la empresa importa sobre todo una consecuencia: la elasticidad de $1/2$ respecto a los pagos son \emph{economías de escala}. Si una empresa paga el doble, no necesita el doble de caja, sino un 41~\% más; por eso las empresas grandes, y los grupos que centralizan la tesorería de sus filiales (\emph{cash pooling}), necesitan menos caja por euro pagado.
+\item Pero los pagos de una empresa no son ciertos ni regulares, y además cobra durante el periodo. Eso lleva al modelo con el que de verdad se gestiona la tesorería.
+\end{itemize}
+
+\paragraph{c) Tesorería con incertidumbre: el modelo de \autor{Miller} y \autor{Orr} (1966)}
 
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item La caja no rinde, pero hace falta para pagar. ¿Cuánta conviene tener? Es el mismo problema que el de las existencias, con el dinero como mercancía\nocite{Baumol1952Transactions,Tobin1956Interest};\footnote{\autor{Tobin} recibió el Premio Nobel de Economía en 1981 «por su análisis de los mercados financieros y de sus relaciones con las decisiones de gasto, el empleo, la producción y los precios»\nocite{Nobel1981Tobin}.} su versión para los hogares es la demanda de dinero por transacciones \vertema{3.A.35}.
-\item La empresa tiene que hacer pagos por un total de $Y$ euros en el periodo, a ritmo constante y conocido.
-\item Guarda su liquidez en activos a corto plazo que rinden un tipo $i$ (letras, depósitos) y en caja, que no rinde nada.
-\item Cada vez que vende activos para reponer la caja paga un coste fijo $b$ (comisiones, gestión) y repone $M$ euros cada vez: su caja baja de $M$ a cero en «dientes de sierra», hace $Y/M$ reposiciones y su saldo medio es $M/2$ (gráfico~\ref{fig:baumol-tesoreria}, panel a).
+\item \textcite{MillerOrr1966Model} piensan en una empresa cuyos cobros y pagos netos de cada día son aleatorios, sin tendencia y con varianza diaria $\sigma^2$: su saldo de caja sigue un paseo aleatorio.
+\item Cada compra o venta de activos líquidos cuesta $b$, sea cual sea su importe, y los activos rinden $i$ al día.
+\item La empresa fija un saldo mínimo, $M^{\mathrm{inf}}$, por seguridad o porque lo exige el banco.
 \end{itemize}
 
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item La empresa minimiza el coste de reposición más el de oportunidad, los intereses a los que renuncia por su saldo medio:
-  \[
-  \min_{M}\ CT(M)=b\,\frac{Y}{M}+i\,\frac{M}{2}\quad\Longrightarrow\quad M^{*}=\sqrt{\frac{2\,b\,Y}{i}},\qquad M^D=\frac{M^{*}}{2}=\sqrt{\frac{b\,Y}{2\,i}}.
-  \]
-  El coste de reposición es una hipérbola que cae con $M$; el de oportunidad, una recta que sube; el total tiene forma de U y su mínimo está donde los 2~son iguales (gráfico~\ref{fig:baumol-tesoreria}, panel b).\footnote{La condición de primer orden es $-b\,Y/M^2+i/2=0$, y la de segundo orden se cumple: $CT''(M)=2\,b\,Y/M^3>0$. En el óptimo, $b\,Y/M^{*}=i\,M^{*}/2$ y el coste total es $CT^*=\sqrt{2\,b\,i\,Y}$.} Es la fórmula de \autor{Wilson} con el tipo de interés como coste de almacenar el dinero. «En el término medio está la virtud»: ni vender activos cada día ni tener toda la tesorería parada.
-\end{itemize}
-
-\begin{figure}[H]
-\centering
-\caption{El modelo de \autor{Baumol} y \autor{Tobin} aplicado a la tesorería: a) la caja en dientes de sierra; b) el coste total y la reposición óptima}\label{fig:baumol-tesoreria}
-\grafico[0.95\textwidth]{baumol-tesoreria}
-\fuente{elaboración propia a partir de \textcite{Baumol1952Transactions} y \textcite{Tobin1956Interest}. Si el tipo sube del 4~\% al 8~\%, la recta del coste de oportunidad gira hacia arriba y $M^*$ baja a unos 67.100~euros (con un coste de unos 5.370~euros).}
-\end{figure}
-
-\subparagraph{iii) Implicaciones}
-
-\begin{itemize}
-\item El saldo medio de caja sube con los pagos y con el coste de reponer, y baja con el tipo de interés: $M^D=f\big(\underset{+}{Y},\underset{+}{b},\underset{-}{i}\big)$, con elasticidades de $1/2$ respecto a $Y$ y a $b$ y de $-1/2$ respecto a $i$.
-\item La elasticidad de $1/2$ respecto a los pagos son \emph{economías de escala}: si una empresa paga el doble, no necesita el doble de caja, sino un 41~\% más. Por eso las empresas grandes, y los grupos que centralizan la tesorería de sus filiales (\emph{cash pooling}), necesitan menos caja por euro pagado.
-\item Con tipos altos conviene tener menos caja y reponer más a menudo; con tipos cerca de cero, el coste de oportunidad desaparece y las empresas acumulan liquidez. Lo que el modelo implica para la demanda de dinero agregada, la velocidad y la política monetaria se estudia con la demanda de dinero \vertema{3.A.35}.
-\item Pensemos en una empresa que paga 3,6~millones de euros al año, a la que cada venta de letras le cuesta 50~euros, con un tipo del 4~\%: repone $M^{*}=\sqrt{2\cdot50\cdot3.600.000/0{,}04}\approx94.900$~euros unas 38~veces al año, mantiene de media unos 47.400~euros en caja y le cuesta todo unos 3.800~euros al año.
-\item \emph{Valoración}: supone pagos ciertos y regulares y que la empresa no cobra durante el periodo. En la realidad, los cobros y los pagos son inciertos, y eso lleva al modelo siguiente.
-\end{itemize}
-
-\paragraph{c) Tesorería con incertidumbre: el modelo de \autor{Miller} y \autor{Orr} (1966)}
-
-\begin{itemize}
-\item \emph{Supuestos}: \textcite{MillerOrr1966Model} piensan en una empresa cuyos cobros y pagos netos de cada día son aleatorios, sin tendencia y con varianza diaria $\sigma^2$: su saldo de caja sigue un paseo aleatorio. Cada compra o venta de activos líquidos cuesta $b$, y los activos rinden $i$ al día.
-\item \emph{Resultado}: la política óptima es una \emph{banda de control} (gráfico~\ref{fig:miller-orr}). La empresa fija un saldo mínimo, $M^{\mathrm{inf}}$ (por seguridad o porque lo exige el banco), y deja que la caja se mueva libremente hasta un límite superior, $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$:
+\item La política óptima es una \emph{banda de control} (gráfico~\ref{fig:miller-orr}): la caja se mueve libremente hasta un límite superior, $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$;
   \begin{itemize}
-  \item si toca el límite superior, compra activos líquidos hasta volver al \emph{punto de retorno}, $M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$;
+  \item si toca el límite superior, la empresa compra activos líquidos hasta volver al \emph{punto de retorno}, $M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$;
   \item si toca el inferior, vende activos hasta volver a él;
   \end{itemize}
   con
-  \[
-  z^*=\left(\frac{3\,b\,\sigma^2}{4\,i}\right)^{1/3},
-  \]
-  y el saldo medio es $M^{\mathrm{inf}}+\tfrac{4}{3}\,z^*$. Solo el saldo mínimo lo fija la empresa a su criterio; el punto de retorno y el límite superior son óptimos.
-\item \emph{Implicaciones}: la banda es más ancha cuanto más volátiles son los flujos y más cuesta cada operación, y más estrecha cuanto más alto es el tipo de interés; el punto de retorno está a un tercio de la banda, más cerca del mínimo que del máximo, porque así se ahorra rendimiento. Sigue habiendo economías de escala, y la incertidumbre aumenta la caja. Es la regla $(S,s)$ aplicada a la tesorería: aquí es donde mejor encaja, porque el modelo se pensó para una empresa.
+  \funcionclave[eq:miller-orr]{z^*=\left(\frac{3\,b\,\sigma^2}{4\,i}\right)^{1/3}}
+  y un saldo medio de $M^{\mathrm{inf}}+\tfrac{4}{3}\,z^*$. Solo el saldo mínimo lo fija la empresa a su criterio; el punto de retorno y el límite superior son óptimos.
+\item \emph{Un ejemplo}: una empresa cuyos cobros y pagos netos diarios tienen una desviación típica de 20.000~euros, a la que cada operación con letras le cuesta 50~euros, con un tipo del 4~\% anual ($i=0{,}04/365$ al día) y un saldo mínimo de 10.000~euros:
+  \begin{itemize}
+  \item $z^*=\big(3\cdot50\cdot20.000^2/(4\cdot0{,}04/365)\big)^{1/3}\approx51.500$~euros;
+  \item el punto de retorno está en unos 61.500~euros y el límite superior en unos 164.600: la tesorera no hace nada mientras la caja se mueva entre 10.000~y 164.600~euros;
+  \item el saldo medio es de unos 78.700~euros.
+  \end{itemize}
+  Si los flujos se vuelven el doble de volátiles, $z^*$ sube a unos 81.800~euros (un 59~\% más, $2^{2/3}$); si el tipo sube al 8~\%, baja a unos 40.900 (un 21~\% menos, $2^{-1/3}$).
 \end{itemize}
 
 \begin{figure}[H]
@@ -725,6 +711,14 @@ En el cante (\tiempo{6,5}). La apertura y la clasificación, de palabra (\tiempo
 \grafico[0.7\textwidth]{miller-orr}
 \fuente{elaboración propia a partir de \textcite{MillerOrr1966Model}.}
 \end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La banda es más ancha cuanto más volátiles son los flujos y más cuesta cada operación, y más estrecha cuanto más alto es el tipo de interés. El punto de retorno está a un tercio de la banda, más cerca del mínimo que del máximo, porque así se ahorra rendimiento.
+\item Sigue habiendo economías de escala, ahora de $2/3$ respecto a la desviación típica de los flujos, y la incertidumbre aumenta la caja: la empresa necesita más tesorería cuanto menos previsibles son sus cobros y pagos.
+\item Es la regla $(S,s)$ aplicada a la tesorería, y aquí es donde mejor encaja, porque el modelo se pensó para una empresa. En la práctica, es la base de la gestión de tesorería con límites y de las previsiones diarias de caja: reducir la incertidumbre de los flujos (con mejores previsiones o con líneas de crédito) estrecha la banda y libera caja ociosa.
+\end{itemize}
 
 \paragraph{d) La liquidez como seguro: \autor{Holmström} y \autor{Tirole} (2011)}
 
@@ -1143,9 +1137,10 @@ En el cante (\tiempo{9,5}). La apertura, de palabra (\tiempo{0,25}). III.1, \tie
 \item Como $k>r_f$, el cociente es menor que 1~y $\alpha_t$ cae de forma geométrica con $t$: descontar con una tasa ajustada constante supone que el riesgo de cada flujo crece con el plazo. Si el riesgo se concentra al principio, conviene el equivalente cierto, flujo a flujo.\findemo
 \end{itemize}
 
-\subsection{La solución de esquina del modelo de \autor{Baumol} y \autor{Tobin}}\label{anexo:baumol-esquina}
+\subsection{El modelo de \autor{Baumol} y \autor{Tobin} en la tesorería:\cortetitulo{} un ejemplo y la solución de esquina}\label{anexo:baumol-esquina}
 
 \begin{itemize}
+\item \emph{Un ejemplo}: una empresa que paga 3,6~millones de euros al año, a la que cada venta de letras le cuesta 50~euros, con un tipo del 4~\%, repone $M^{*}=\sqrt{2\cdot50\cdot3.600.000/0{,}04}\approx94.900$~euros unas 38~veces al año, mantiene de media unos 47.400~euros en caja y le cuesta todo, $CT^*=\sqrt{2\,b\,i\,Y}$, unos 3.800~euros al año. Si el tipo sube al 8~\%, $M^*$ baja a unos 67.100~euros y el coste sube a unos 5.370. Con tipos cerca de cero, el coste de oportunidad desaparece y las empresas acumulan liquidez.
 \item La reposición óptima $M^*=\sqrt{2bY/i}$ no puede ser mayor que los pagos del periodo, $Y$. Si $M^*\geq Y$, es decir, si $Y\leq 2b/i$, a la empresa no le compensa colocar nada en activos líquidos: guarda toda su tesorería en caja\nocite{Tobin1956Interest}. Es el caso de las empresas pequeñas o de los periodos con tipos muy bajos (\ref{sec:corriente}).\findemo
 \end{itemize}
 

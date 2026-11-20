@@ -1947,18 +1947,7 @@ status collapsed
 
 \end_inset
 
-); las opciones reales con la regla 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:opcion-esperar"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- en una lÃ­nea bajo el VAN, el ejemplo en una frase y Â«no por mucho madrugar amanece mÃ¡s tempranoÂ» (
+); las opciones reales (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -1968,7 +1957,33 @@ status collapsed
 
 \end_inset
 
-). I.4, 
+): la regla de esperar en una lÃ­nea bajo el VAN, con Â«no por mucho madrugar amanece mÃ¡s tempranoÂ» y la remisiÃ³n 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.34
+\end_layout
+
+\end_inset
+
+, y el Ã¡rbol del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:arbol-opciones"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ con el ejemplo de abandonar, ampliar y esperar. I.4, 
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -1994,23 +2009,7 @@ nolink "false"
 
 \end_inset
 
- y el Ã¡rbol del grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:arbol-opciones"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- son de apoyo. 
+ es de apoyo. 
 \end_layout
 
 \end_inset
@@ -8157,7 +8156,7 @@ literal "false"
 \end_layout
 
 \begin_layout Paragraph
-b) Modelo: la opciÃ³n de esperar
+b) Modelo: la valoraciÃ³n con un Ã¡rbol binomial
 \end_layout
 
 \begin_layout Subparagraph
@@ -8165,102 +8164,31 @@ i) Supuestos
 \end_layout
 
 \begin_layout Itemize
-Invertir cuesta 
+
+\emph on
+La regla de esperar
+\emph default
+, en una lÃ­nea: con un coste hundido 
 \begin_inset Formula $I_0$
 \end_inset
 
-, que no se recupera; se puede invertir hoy o dentro de un aÃ±o. 
-\end_layout
-
-\begin_layout Itemize
-El proyecto vale hoy 
-\begin_inset Formula $V_0$
-\end_inset
-
-, y dentro de un aÃ±o valdrÃ¡ 
+ y un proyecto que dentro de un aÃ±o valdrÃ¡ 
 \begin_inset Formula $V^{\mathrm A}$
 \end_inset
 
- en el escenario bueno, con probabilidad 
+ (con probabilidad 
 \begin_inset Formula $\pi$
 \end_inset
 
-, o 
-\begin_inset Formula $V^{\mathrm B}$
+) o 
+\begin_inset Formula $V^{\mathrm B}<I_0$
 \end_inset
 
- en el malo, con 
-\begin_inset Formula $V^{\mathrm B}<I_0<V^{\mathrm A}$
+, invertir hoy solo conviene si 
+\begin_inset Formula $V_0-I_0\geq\pi\,(V^{\mathrm A}-I_0)/(1+r_f)$
 \end_inset
 
-. La empresa es neutral al riesgo y descuenta al tipo sin riesgo, 
-\begin_inset Formula $r_f$
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-Es la misma presentaciÃ³n que en las teorÃ­as de la inversiÃ³n 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.34
-\end_layout
-
-\end_inset
-
-, donde el desembolso se escribe 
-\begin_inset Formula $I$
-\end_inset
-
- y el tipo de interÃ©s 
-\begin_inset Formula $r$
-\end_inset
-
-; aquÃ­ 
-\begin_inset Formula $I_0$
-\end_inset
-
- es la letra del desembolso en todo el tema.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subparagraph
-ii) Desarrollo
-\end_layout
-
-\begin_layout Itemize
-Si espera, solo invierte en el escenario bueno, asÃ­ que esperar vale 
-\begin_inset Formula $\pi\,(V^{\mathrm A}-I_0)/(1+r_f)$
-\end_inset
-
-. Invertir hoy mata esa opciÃ³n, y solo conviene si vale mÃ¡s que ella: 
-\begin_inset Formula \begin{equation}\label{eq:opcion-esperar}
-  V_0-I_0\ \geq\ \frac{\pi\,(V^{\mathrm A}-I_0)}{1+r_f}.
-  \end{equation}
-\end_inset
-
-Ya no basta con 
-\begin_inset Formula $\mathrm{VAN}>0$
-\end_inset
-
- (
-\begin_inset Formula $V_0\geq I_0$
-\end_inset
-
-): el proyecto tiene que cubrir su coste mÃ¡s el valor de la opciÃ³n de esperar a la que se renuncia. Es el refrÃ¡n del principio, Â«no por mucho madrugar amanece mÃ¡s tempranoÂ»: invertir en cuanto el VAN es positivo hace perder el valor de esperar a saber mÃ¡s. 
-\end_layout
-
-\begin_layout Itemize
-En el ejemplo de 
+: el proyecto tiene que cubrir su coste mÃ¡s la opciÃ³n de esperar a la que renuncia. Es el refrÃ¡n del principio, Â«no por mucho madrugar amanece mÃ¡s tempranoÂ». La regla, el ejemplo de 
 \begin_inset ERT
 status collapsed
 
@@ -8272,25 +8200,7 @@ textcite{Pindyck1991Irreversibility}
 
 \end_inset
 
-, una fÃ¡brica que cuesta 1.600
-\begin_inset space ~
-
-\end_inset
-
-y vale hoy 2.200
-\begin_inset space ~
-
-\end_inset
-
-tiene un VAN de 600; pero si se espera un aÃ±o a saber si el precio sube o baja, vale unos 773: un VAN positivo no basta. 
-\end_layout
-
-\begin_layout Subparagraph
-iii) Implicaciones
-\end_layout
-
-\begin_layout Itemize
-Con incertidumbre e irreversibilidad, las empresas exigen a los proyectos mÃ¡s de lo que dice el VAN y esperan aunque el VAN sea positivo. La incertidumbre frena la inversiÃ³n 
+ y lo que implica para la inversiÃ³n agregada se desarrollan en su tema 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -8304,55 +8214,20 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-El valor de una opciÃ³n real, como el de una financiera
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "BlackScholes1973Pricing"
-literal "false"
+Para la empresa, la pregunta es mÃ¡s amplia: 
+\emph on
+cuÃ¡nto vale
+\emph default
+ un proyecto que lleva dentro varias opciones. Se valora con un 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Ã¡rbol de decisiÃ³n
+\end_layout
 
 \end_inset
 
-, crece con la 
-\emph on
-incertidumbre
-\emph default
- (si nada puede cambiar, la flexibilidad no vale nada), con el 
-\emph on
-tiempo
-\emph default
- durante el que se puede ejercer y con la 
-\emph on
-irreversibilidad
-\emph default
- (si cambiar fuera gratis, no harÃ­a falta la opciÃ³n). 
-\end_layout
-
-\begin_layout Paragraph
-c) Extensiones
-\end_layout
-
-\begin_layout Itemize
-AdemÃ¡s de esperar, se puede 
-\emph on
-ampliar
-\emph default
- si va bien, 
-\emph on
-reducir
-\emph default
- o 
-\emph on
-abandonar
-\emph default
- si va mal (recuperando el valor residual) o invertir 
-\emph on
-por fases
-\emph default
-. Se valoran con un 
-\emph on
-Ã¡rbol de decisiÃ³n
-\emph default
  (grÃ¡fico
 \begin_inset space ~
 
@@ -8369,7 +8244,11 @@ nolink "false"
 
 \end_inset
 
-), que alterna nodos de decisiÃ³n (cuadrados) y de azar (cÃ­rculos) y se resuelve hacia atrÃ¡s, o, con mÃ¡s pasos, con los modelos de valoraciÃ³n de opciones 
+), que alterna nodos de decisiÃ³n (cuadrados) y de azar (cÃ­rculos). La empresa descuenta al tipo sin riesgo, 
+\begin_inset Formula $r_f$
+\end_inset
+
+, con probabilidades neutrales al riesgo, como en la valoraciÃ³n de opciones financieras 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -8512,6 +8391,261 @@ textcite[cap.~22]{BrealeyMyersAllen2020Principles}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El Ã¡rbol se resuelve hacia atrÃ¡s
+\emph default
+: en cada nodo de decisiÃ³n del aÃ±o
+\begin_inset space ~
+
+\end_inset
+
+1
+\begin_inset space ~
+
+\end_inset
+
+se elige la rama que mÃ¡s vale; en cada nodo de azar se toma el valor esperado, descontado; y en el nodo inicial se compara invertir hoy con esperar. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Un ejemplo
+\emph default
+: una fÃ¡brica cuesta 
+\begin_inset Formula $I_0=100$
+\end_inset
+
+; dentro de un aÃ±o valdrÃ¡ 
+\begin_inset Formula $V^{\mathrm A}=180$
+\end_inset
+
+ si la demanda es alta o 
+\begin_inset Formula $V^{\mathrm B}=60$
+\end_inset
+
+ si es baja, con 
+\begin_inset Formula $\pi=0{,}5$
+\end_inset
+
+, y 
+\begin_inset Formula $r_f=10$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+%. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+VAN estÃ¡tico
+\emph default
+: 
+\begin_inset Formula $(0{,}5\cdot180+0{,}5\cdot60)/1{,}1-100\approx9{,}1$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Abandonar
+\emph default
+: si la demanda es baja, la fÃ¡brica se vende por un valor residual 
+\begin_inset Formula $\mathrm{VR}=90$
+\end_inset
+
+ en lugar de seguir con 60. La opciÃ³n vale 
+\begin_inset Formula $0{,}5\cdot(90-60)/1{,}1\approx13{,}6$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Ampliar
+\emph default
+: si la demanda es alta, por 50
+\begin_inset space ~
+
+\end_inset
+
+mÃ¡s se amplÃ­a la fÃ¡brica la mitad y vale 90
+\begin_inset space ~
+
+\end_inset
+
+mÃ¡s. La opciÃ³n vale 
+\begin_inset Formula $0{,}5\cdot(90-50)/1{,}1\approx18{,}2$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El VAN ampliado
+\emph default
+, el estÃ¡tico mÃ¡s el valor de las opciones
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Trigeorgis1996Real"
+literal "false"
+
+\end_inset
+
+: 
+\begin_inset Formula $9{,}1+13{,}6+18{,}2\approx40{,}9$
+\end_inset
+
+. AquÃ­ se suman, porque cada opciÃ³n se ejerce en una rama distinta del Ã¡rbol. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Esperar
+\emph default
+: si la empresa espera un aÃ±o, solo invierte con demanda alta y obtiene 
+\begin_inset Formula $0{,}5\cdot(180-100)/1{,}1\approx36{,}4$
+\end_inset
+
+. Frente al VAN estÃ¡tico (9,1), esperar ganarÃ­a; frente al VAN ampliado (40,9), conviene invertir hoy, porque la fÃ¡brica construida lleva dentro las opciones de ampliar y abandonar, que se perderÃ­an esperando. 
+\end_layout
+
+\end_deeper
+\begin_layout Subparagraph
+iii) Implicaciones
+\end_layout
+
+\begin_layout Itemize
+Las opciones cambian la decisiÃ³n en los 2
+\begin_inset space ~
+
+\end_inset
+
+sentidos: la de esperar exige mÃ¡s que un VAN positivo, y las de ampliar y abandonar pueden justificar proyectos con un VAN estÃ¡tico bajo o incluso negativo. Lo que importa es la 
+\emph on
+flexibilidad
+\emph default
+ que da el proyecto. 
+\end_layout
+
+\begin_layout Itemize
+El valor de una opciÃ³n real, como el de una financiera
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "BlackScholes1973Pricing"
+literal "false"
+
+\end_inset
+
+, crece con la 
+\emph on
+incertidumbre
+\emph default
+ (si nada puede cambiar, la flexibilidad no vale nada), con el 
+\emph on
+tiempo
+\emph default
+ durante el que se puede ejercer y con la 
+\emph on
+irreversibilidad
+\emph default
+ (si cambiar fuera gratis, no harÃ­a falta la opciÃ³n). En el ejemplo, si 
+\begin_inset Formula $V^{\mathrm B}$
+\end_inset
+
+ bajara a 40
+\begin_inset space ~
+
+\end_inset
+
+y 
+\begin_inset Formula $V^{\mathrm A}$
+\end_inset
+
+ subiera a 200, con la misma media, la opciÃ³n de abandonar pasarÃ­a a valer 
+\begin_inset Formula $0{,}5\cdot50/1{,}1\approx22{,}7$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Paragraph
+c) Extensiones
+\end_layout
+
+\begin_layout Itemize
+AdemÃ¡s de esperar, ampliar y abandonar, se puede 
+\emph on
+reducir
+\emph default
+ la escala o invertir 
+\emph on
+por fases
+\emph default
+, que es encadenar opciones: cada fase da derecho a la siguiente. Con muchos periodos, el Ã¡rbol de un paso se convierte en el modelo binomial de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cox
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Ross
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Rubinstein
+\end_layout
+
+\end_inset
+
+ o, en tiempo continuo, en las fÃ³rmulas de valoraciÃ³n de opciones 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.25
+\end_layout
+
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Paragraph
@@ -8901,37 +9035,11 @@ Tobin
 
 \end_inset
 
- para la tesorerÃ­a, el corazÃ³n del bloque (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-1,5
-\end_layout
-
-\end_inset
-
-): el coste total del grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:baumol-tesoreria"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- por capas (al menos el panel de la U; los dientes de sierra, si da tiempo), 
+ en una lÃ­nea, con 
 \begin_inset Formula $M^*$
 \end_inset
 
- debajo junto a la fÃ³rmula de 
+ junto a la fÃ³rmula de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8941,7 +9049,27 @@ Wilson
 
 \end_inset
 
-, para que se vea que es la misma, y Â«en el tÃ©rmino medio estÃ¡ la virtudÂ»; 
+ para que se vea que es la misma, las economÃ­as de escala y la remisiÃ³n 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.35
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+0,5
+\end_layout
+
+\end_inset
+
+); 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8961,7 +9089,17 @@ Orr
 
 \end_inset
 
- con la banda del grÃ¡fico
+, el corazÃ³n del bloque (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+1,5
+\end_layout
+
+\end_inset
+
+): la banda del grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -8977,17 +9115,23 @@ nolink "false"
 
 \end_inset
 
-, recomendado (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-0,5
-\end_layout
+ por capas, la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:miller-orr"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-); 
+ y el ejemplo de la tesorera con sus 3
+\begin_inset space ~
+
+\end_inset
+
+cifras; 
 \begin_inset Flex Autor
 status collapsed
 
@@ -9955,7 +10099,7 @@ status collapsed
 \end_layout
 
 \begin_layout Paragraph
-b) TesorerÃ­a: el modelo de 
+b) TesorerÃ­a con pagos ciertos: 
 \begin_inset Flex Autor
 status collapsed
 
@@ -9978,12 +10122,8 @@ Tobin
  (1956)
 \end_layout
 
-\begin_layout Subparagraph
-i) Supuestos
-\end_layout
-
 \begin_layout Itemize
-La caja no rinde, pero hace falta para pagar. Â¿CuÃ¡nta conviene tener? Es el mismo problema que el de las existencias, con el dinero como mercancÃ­a
+La caja no rinde, pero hace falta para pagar: es el problema de las existencias con el dinero como mercancÃ­a
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -9992,7 +10132,7 @@ literal "false"
 
 \end_inset
 
-;
+.
 \begin_inset Foot
 status collapsed
 
@@ -10022,139 +10162,19 @@ literal "false"
 
 \end_inset
 
- su versiÃ³n para los hogares es la demanda de dinero por transacciones 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.35
-\end_layout
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-La empresa tiene que hacer pagos por un total de 
+ Con pagos ciertos y regulares 
 \begin_inset Formula $Y$
 \end_inset
 
- euros en el periodo, a ritmo constante y conocido. 
-\end_layout
-
-\begin_layout Itemize
-Guarda su liquidez en activos a corto plazo que rinden un tipo 
-\begin_inset Formula $i$
-\end_inset
-
- (letras, depÃ³sitos) y en caja, que no rinde nada. 
-\end_layout
-
-\begin_layout Itemize
-Cada vez que vende activos para reponer la caja paga un coste fijo 
+, un coste fijo 
 \begin_inset Formula $b$
 \end_inset
 
- (comisiones, gestiÃ³n) y repone 
-\begin_inset Formula $M$
+ por cada venta de activos y un tipo 
+\begin_inset Formula $i$
 \end_inset
 
- euros cada vez: su caja baja de 
-\begin_inset Formula $M$
-\end_inset
-
- a cero en Â«dientes de sierraÂ», hace 
-\begin_inset Formula $Y/M$
-\end_inset
-
- reposiciones y su saldo medio es 
-\begin_inset Formula $M/2$
-\end_inset
-
- (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:baumol-tesoreria"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-, panel a). 
-\end_layout
-
-\begin_layout Subparagraph
-ii) Desarrollo
-\end_layout
-
-\begin_layout Itemize
-La empresa minimiza el coste de reposiciÃ³n mÃ¡s el de oportunidad, los intereses a los que renuncia por su saldo medio: 
-\begin_inset Formula \[
-  \min_{M}\ CT(M)=b\,\frac{Y}{M}+i\,\frac{M}{2}\quad\Longrightarrow\quad M^{*}=\sqrt{\frac{2\,b\,Y}{i}},\qquad M^D=\frac{M^{*}}{2}=\sqrt{\frac{b\,Y}{2\,i}}.
-  \]
-\end_inset
-
-El coste de reposiciÃ³n es una hipÃ©rbola que cae con 
-\begin_inset Formula $M$
-\end_inset
-
-; el de oportunidad, una recta que sube; el total tiene forma de U y su mÃ­nimo estÃ¡ donde los 2
-\begin_inset space ~
-
-\end_inset
-
-son iguales (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:baumol-tesoreria"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-, panel b).
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-La condiciÃ³n de primer orden es 
-\begin_inset Formula $-b\,Y/M^2+i/2=0$
-\end_inset
-
-, y la de segundo orden se cumple: 
-\begin_inset Formula $CT''(M)=2\,b\,Y/M^3>0$
-\end_inset
-
-. En el Ã³ptimo, 
-\begin_inset Formula $b\,Y/M^{*}=i\,M^{*}/2$
-\end_inset
-
- y el coste total es 
-\begin_inset Formula $CT^*=\sqrt{2\,b\,i\,Y}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Es la fÃ³rmula de 
+, la reposiciÃ³n Ã³ptima es la fÃ³rmula de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -10164,252 +10184,11 @@ Wilson
 
 \end_inset
 
- con el tipo de interÃ©s como coste de almacenar el dinero. Â«En el tÃ©rmino medio estÃ¡ la virtudÂ»: ni vender activos cada dÃ­a ni tener toda la tesorerÃ­a parada. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
+ con el tipo como coste de almacenar el dinero, 
+\begin_inset Formula $M^{*}=\sqrt{2\,b\,Y/i}$
 \end_inset
 
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-El modelo de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Baumol
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Tobin
-\end_layout
-
-\end_inset
-
- aplicado a la tesorerÃ­a: a) la caja en dientes de sierra; b) el coste total y la reposiciÃ³n Ã³ptima
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:baumol-tesoreria"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.95
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-baumol-tesoreria
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Baumol1952Transactions}
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Tobin1956Interest}
-\end_layout
-
-\end_inset
-
-. Si el tipo sube del 4
-\begin_inset space ~
-
-\end_inset
-
-% al 8
-\begin_inset space ~
-
-\end_inset
-
-%, la recta del coste de oportunidad gira hacia arriba y 
-\begin_inset Formula $M^*$
-\end_inset
-
- baja a unos 67.100
-\begin_inset space ~
-
-\end_inset
-
-euros (con un coste de unos 5.370
-\begin_inset space ~
-
-\end_inset
-
-euros).
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subparagraph
-iii) Implicaciones
-\end_layout
-
-\begin_layout Itemize
-El saldo medio de caja sube con los pagos y con el coste de reponer, y baja con el tipo de interÃ©s: 
-\begin_inset Formula $M^D=f\big(\underset{+}{Y},\underset{+}{b},\underset{-}{i}\big)$
-\end_inset
-
-, con elasticidades de 
-\begin_inset Formula $1/2$
-\end_inset
-
- respecto a 
-\begin_inset Formula $Y$
-\end_inset
-
- y a 
-\begin_inset Formula $b$
-\end_inset
-
- y de 
-\begin_inset Formula $-1/2$
-\end_inset
-
- respecto a 
-\begin_inset Formula $i$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-La elasticidad de 
-\begin_inset Formula $1/2$
-\end_inset
-
- respecto a los pagos son 
-\emph on
-economÃ­as de escala
-\emph default
-: si una empresa paga el doble, no necesita el doble de caja, sino un 41
-\begin_inset space ~
-
-\end_inset
-
-% mÃ¡s. Por eso las empresas grandes, y los grupos que centralizan la tesorerÃ­a de sus filiales (
-\emph on
-cash pooling
-\emph default
-), necesitan menos caja por euro pagado. 
-\end_layout
-
-\begin_layout Itemize
-Con tipos altos conviene tener menos caja y reponer mÃ¡s a menudo; con tipos cerca de cero, el coste de oportunidad desaparece y las empresas acumulan liquidez. Lo que el modelo implica para la demanda de dinero agregada, la velocidad y la polÃ­tica monetaria se estudia con la demanda de dinero 
+. El modelo, su grÃ¡fico y lo que implica para la demanda de dinero se desarrollan en su tema 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -10419,58 +10198,48 @@ status collapsed
 
 \end_inset
 
+; un ejemplo para una empresa, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:baumol-esquina"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
 . 
 \end_layout
 
 \begin_layout Itemize
-Pensemos en una empresa que paga 3,6
+Para la empresa importa sobre todo una consecuencia: la elasticidad de 
+\begin_inset Formula $1/2$
+\end_inset
+
+ respecto a los pagos son 
+\emph on
+economÃ­as de escala
+\emph default
+. Si una empresa paga el doble, no necesita el doble de caja, sino un 41
 \begin_inset space ~
 
 \end_inset
 
-millones de euros al aÃ±o, a la que cada venta de letras le cuesta 50
-\begin_inset space ~
-
-\end_inset
-
-euros, con un tipo del 4
-\begin_inset space ~
-
-\end_inset
-
-%: repone 
-\begin_inset Formula $M^{*}=\sqrt{2\cdot50\cdot3.600.000/0{,}04}\approx94.900$
-\end_inset
-
-
-\begin_inset space ~
-
-\end_inset
-
-euros unas 38
-\begin_inset space ~
-
-\end_inset
-
-veces al aÃ±o, mantiene de media unos 47.400
-\begin_inset space ~
-
-\end_inset
-
-euros en caja y le cuesta todo unos 3.800
-\begin_inset space ~
-
-\end_inset
-
-euros al aÃ±o. 
+% mÃ¡s; por eso las empresas grandes, y los grupos que centralizan la tesorerÃ­a de sus filiales (
+\emph on
+cash pooling
+\emph default
+), necesitan menos caja por euro pagado. 
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-ValoraciÃ³n
-\emph default
-: supone pagos ciertos y regulares y que la empresa no cobra durante el periodo. En la realidad, los cobros y los pagos son inciertos, y eso lleva al modelo siguiente. 
+Pero los pagos de una empresa no son ciertos ni regulares, y ademÃ¡s cobra durante el periodo. Eso lleva al modelo con el que de verdad se gestiona la tesorerÃ­a. 
 \end_layout
 
 \begin_layout Paragraph
@@ -10497,12 +10266,12 @@ Orr
  (1966)
 \end_layout
 
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
+
 \begin_layout Itemize
 
-\emph on
-Supuestos
-\emph default
-: 
 \begin_inset ERT
 status collapsed
 
@@ -10518,11 +10287,15 @@ textcite{MillerOrr1966Model}
 \begin_inset Formula $\sigma^2$
 \end_inset
 
-: su saldo de caja sigue un paseo aleatorio. Cada compra o venta de activos lÃ­quidos cuesta 
+: su saldo de caja sigue un paseo aleatorio. 
+\end_layout
+
+\begin_layout Itemize
+Cada compra o venta de activos lÃ­quidos cuesta 
 \begin_inset Formula $b$
 \end_inset
 
-, y los activos rinden 
+, sea cual sea su importe, y los activos rinden 
 \begin_inset Formula $i$
 \end_inset
 
@@ -10530,11 +10303,19 @@ textcite{MillerOrr1966Model}
 \end_layout
 
 \begin_layout Itemize
+La empresa fija un saldo mÃ­nimo, 
+\begin_inset Formula $M^{\mathrm{inf}}$
+\end_inset
 
-\emph on
-Resultado
-\emph default
-: la polÃ­tica Ã³ptima es una 
+, por seguridad o porque lo exige el banco. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+La polÃ­tica Ã³ptima es una 
 \emph on
 banda de control
 \emph default
@@ -10554,20 +10335,16 @@ nolink "false"
 
 \end_inset
 
-). La empresa fija un saldo mÃ­nimo, 
-\begin_inset Formula $M^{\mathrm{inf}}$
-\end_inset
-
- (por seguridad o porque lo exige el banco), y deja que la caja se mueva libremente hasta un lÃ­mite superior, 
+): la caja se mueve libremente hasta un lÃ­mite superior, 
 \begin_inset Formula $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$
 \end_inset
 
-: 
+; 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-si toca el lÃ­mite superior, compra activos lÃ­quidos hasta volver al 
+si toca el lÃ­mite superior, la empresa compra activos lÃ­quidos hasta volver al 
 \emph on
 punto de retorno
 \emph default
@@ -10586,12 +10363,181 @@ si toca el inferior, vende activos hasta volver a Ã©l;
 \begin_deeper
 \begin_layout Standard
 con 
-\begin_inset Formula \[
-  z^*=\left(\frac{3\,b\,\sigma^2}{4\,i}\right)^{1/3},
-  \]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+funcionclave
+\end_layout
+
 \end_inset
 
-y el saldo medio es 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+eq:miller-orr
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+z*=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+left
+\end_layout
+
+\end_inset
+
+(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+3
+\begin_inset space \thinspace{}
+
+\end_inset
+
+b
+\begin_inset space \thinspace{}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+sigma
+\end_layout
+
+\end_inset
+
+2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+4
+\begin_inset space \thinspace{}
+
+\end_inset
+
+i
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+right
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+1/3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ y un saldo medio de 
 \begin_inset Formula $M^{\mathrm{inf}}+\tfrac{4}{3}\,z^*$
 \end_inset
 
@@ -10602,15 +10548,116 @@ y el saldo medio es
 \begin_layout Itemize
 
 \emph on
-Implicaciones
+Un ejemplo
 \emph default
-: la banda es mÃ¡s ancha cuanto mÃ¡s volÃ¡tiles son los flujos y mÃ¡s cuesta cada operaciÃ³n, y mÃ¡s estrecha cuanto mÃ¡s alto es el tipo de interÃ©s; el punto de retorno estÃ¡ a un tercio de la banda, mÃ¡s cerca del mÃ­nimo que del mÃ¡ximo, porque asÃ­ se ahorra rendimiento. Sigue habiendo economÃ­as de escala, y la incertidumbre aumenta la caja. Es la regla 
-\begin_inset Formula $(S,s)$
+: una empresa cuyos cobros y pagos netos diarios tienen una desviaciÃ³n tÃ­pica de 20.000
+\begin_inset space ~
+
 \end_inset
 
- aplicada a la tesorerÃ­a: aquÃ­ es donde mejor encaja, porque el modelo se pensÃ³ para una empresa. 
+euros, a la que cada operaciÃ³n con letras le cuesta 50
+\begin_inset space ~
+
+\end_inset
+
+euros, con un tipo del 4
+\begin_inset space ~
+
+\end_inset
+
+% anual (
+\begin_inset Formula $i=0{,}04/365$
+\end_inset
+
+ al dÃ­a) y un saldo mÃ­nimo de 10.000
+\begin_inset space ~
+
+\end_inset
+
+euros: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Formula $z^*=\big(3\cdot50\cdot20.000^2/(4\cdot0{,}04/365)\big)^{1/3}\approx51.500$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+euros; 
+\end_layout
+
+\begin_layout Itemize
+el punto de retorno estÃ¡ en unos 61.500
+\begin_inset space ~
+
+\end_inset
+
+euros y el lÃ­mite superior en unos 164.600: la tesorera no hace nada mientras la caja se mueva entre 10.000
+\begin_inset space ~
+
+\end_inset
+
+y 164.600
+\begin_inset space ~
+
+\end_inset
+
+euros; 
+\end_layout
+
+\begin_layout Itemize
+el saldo medio es de unos 78.700
+\begin_inset space ~
+
+\end_inset
+
+euros. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+Si los flujos se vuelven el doble de volÃ¡tiles, 
+\begin_inset Formula $z^*$
+\end_inset
+
+ sube a unos 81.800
+\begin_inset space ~
+
+\end_inset
+
+euros (un 59
+\begin_inset space ~
+
+\end_inset
+
+% mÃ¡s, 
+\begin_inset Formula $2^{2/3}$
+\end_inset
+
+); si el tipo sube al 8
+\begin_inset space ~
+
+\end_inset
+
+%, baja a unos 40.900 (un 21
+\begin_inset space ~
+
+\end_inset
+
+% menos, 
+\begin_inset Formula $2^{-1/3}$
+\end_inset
+
+). 
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 
 \begin_inset Float figure
@@ -10761,6 +10808,30 @@ textcite{MillerOrr1966Model}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subparagraph
+iii) Implicaciones
+\end_layout
+
+\begin_layout Itemize
+La banda es mÃ¡s ancha cuanto mÃ¡s volÃ¡tiles son los flujos y mÃ¡s cuesta cada operaciÃ³n, y mÃ¡s estrecha cuanto mÃ¡s alto es el tipo de interÃ©s. El punto de retorno estÃ¡ a un tercio de la banda, mÃ¡s cerca del mÃ­nimo que del mÃ¡ximo, porque asÃ­ se ahorra rendimiento. 
+\end_layout
+
+\begin_layout Itemize
+Sigue habiendo economÃ­as de escala, ahora de 
+\begin_inset Formula $2/3$
+\end_inset
+
+ respecto a la desviaciÃ³n tÃ­pica de los flujos, y la incertidumbre aumenta la caja: la empresa necesita mÃ¡s tesorerÃ­a cuanto menos previsibles son sus cobros y pagos. 
+\end_layout
+
+\begin_layout Itemize
+Es la regla 
+\begin_inset Formula $(S,s)$
+\end_inset
+
+ aplicada a la tesorerÃ­a, y aquÃ­ es donde mejor encaja, porque el modelo se pensÃ³ para una empresa. En la prÃ¡ctica, es la base de la gestiÃ³n de tesorerÃ­a con lÃ­mites y de las previsiones diarias de caja: reducir la incertidumbre de los flujos (con mejores previsiones o con lÃ­neas de crÃ©dito) estrecha la banda y libera caja ociosa. 
 \end_layout
 
 \begin_layout Paragraph
@@ -15978,7 +16049,7 @@ findemo
 \end_layout
 
 \begin_layout Subsection
-La soluciÃ³n de esquina del modelo de 
+El modelo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -15998,7 +16069,29 @@ Tobin
 
 \end_inset
 
+ en la tesorerÃ­a:
+\begin_inset ERT
+status collapsed
 
+\begin_layout Plain Layout
+
+\backslash
+cortetitulo
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{}
+\end_layout
+
+\end_inset
+
+ un ejemplo y la soluciÃ³n de esquina
 \end_layout
 
 \begin_layout Standard
@@ -16010,6 +16103,71 @@ name "anexo:baumol-esquina"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Un ejemplo
+\emph default
+: una empresa que paga 3,6
+\begin_inset space ~
+
+\end_inset
+
+millones de euros al aÃ±o, a la que cada venta de letras le cuesta 50
+\begin_inset space ~
+
+\end_inset
+
+euros, con un tipo del 4
+\begin_inset space ~
+
+\end_inset
+
+%, repone 
+\begin_inset Formula $M^{*}=\sqrt{2\cdot50\cdot3.600.000/0{,}04}\approx94.900$
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+euros unas 38
+\begin_inset space ~
+
+\end_inset
+
+veces al aÃ±o, mantiene de media unos 47.400
+\begin_inset space ~
+
+\end_inset
+
+euros en caja y le cuesta todo, 
+\begin_inset Formula $CT^*=\sqrt{2\,b\,i\,Y}$
+\end_inset
+
+, unos 3.800
+\begin_inset space ~
+
+\end_inset
+
+euros al aÃ±o. Si el tipo sube al 8
+\begin_inset space ~
+
+\end_inset
+
+%, 
+\begin_inset Formula $M^*$
+\end_inset
+
+ baja a unos 67.100
+\begin_inset space ~
+
+\end_inset
+
+euros y el coste sube a unos 5.370. Con tipos cerca de cero, el coste de oportunidad desaparece y las empresas acumulan liquidez. 
 \end_layout
 
 \begin_layout Itemize

@@ -217,3 +217,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
 
 - 2 viñetas → 2 (sin cambios): ya era corta (la linealidad es su fuerza y su debilidad; no sirvieron para planificar, sí para ver las interdependencias). No tiene frase asignada; la de \autor{Joan Robinson} (mapa a escala 1:1) sigue en el cuerpo, donde estaba.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- GEN-18 (cadenas globales de valor, con 3.B.18): se quita el gráfico del contenido importado de la UE (lo desarrolla el 3.B.18; el fichero sigue en graficos/ y en la ficha) y se añade cómo se calcula el valor añadido extranjero con la inversa de Leontief: `eq:contenido` con las exportaciones como demanda final ($\vect{v}^{\top}(I-A)^{-1}\vect{d}^{\mathrm X}$ y $\vect{m}^{\top}(I-A)^{-1}\vect{d}^{\mathrm X}$, la especialización vertical de Hummels, Ishii y Yi, 2001, nueva en el .bib) y por qué hacen falta tablas multirregionales. El dato de España se mantiene (25,7 % en 2024, Eurostat FIGARO, ahora con su cita en el texto), igual que en el 3.B.18. El párrafo de Leontief (1953) se reescribe como cálculo (cociente $\vect{a}_K^{\top}(I-A)^{-1}\vect{d}/\vect{a}_L^{\top}(I-A)^{-1}\vect{d}$) y deja la paradoja como teoría del comercio al 3.B.5. 27 páginas.

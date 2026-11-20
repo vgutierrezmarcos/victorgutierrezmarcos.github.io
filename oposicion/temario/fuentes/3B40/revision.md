@@ -201,3 +201,9 @@ Ninguna nota lo necesitaba.
 
 - **Antes → después**: 1 viñeta → 2: (1) la cohesión es la «solidaridad de hecho» de Schuman y rinde más como inversión en capacidades que como compensación o caja; (2) planes nacionales, solo sin dejar fuera a las regiones.
 - **Frase célebre**: Sí (2.º y último tema con esta frase, tras el 3.B.37). Declaración Schuman (9/5/1950), texto oficial en castellano de la Unión Europea (european-union.europa.eu, «Declaración Schuman de mayo de 1950»); original francés comprobado en la Fundación Robert Schuman («L'Europe ne se fera pas d'un coup, ni dans une construction d'ensemble : elle se fera par des réalisations concrètes créant d'abord une solidarité de fait»). Nueva entrada `Schuman1950Declaracion` en el `.bib`. Ficha: «la solidaridad de hecho de Schuman» en la línea de la opinión.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- GEN-12 (convergencia β y σ, con 3.A.45): en III.1 las 2 definiciones quedan en una viñeta (la regresión en línea, sin `\funcionclave`) con remisión al 3.A.45, y la velocidad de convergencia solo con $\beta_1=-(1-e^{-\lambda T})/T$, que hace falta para leer la estimación propia; sale $\lambda=(1-\alpha)(n+g+\delta)$ de Solow, que está en 3.A.43 y 3.A.45. Se pierden las etiquetas `eq:convergencia-beta` y `eq:convergencia-sigma`, que no se citaban. El tiempo va a la evidencia regional de la UE, que no cambia. 27 páginas.

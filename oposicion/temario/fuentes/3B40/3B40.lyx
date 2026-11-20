@@ -7262,13 +7262,14 @@ ii) Desarrollo
 \begin_layout Itemize
 
 \emph on
-Paso 1: la convergencia 
-\begin_inset Formula $\beta$
+Las 2
+\begin_inset space ~
+
 \end_inset
 
-
+nociones
 \emph default
-. Hay 
+: hay 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -7282,351 +7283,23 @@ convergencia
 
 \end_inset
 
- si las regiones con menos renta por habitante crecen mÃ¡s que las de mÃ¡s renta. Se contrasta con una regresiÃ³n entre regiones del crecimiento sobre la renta inicial: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-funcionclave
-\end_layout
-
+ si las regiones con menos renta por habitante crecen mÃ¡s que las de mÃ¡s renta, es decir, si 
+\begin_inset Formula $\beta_1<0$
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
+ en la regresiÃ³n del crecimiento sobre la renta inicial, 
+\begin_inset Formula $\gamma^{y}_{t,t-1}=\beta_0+\beta_1\ln y_{t-1}+\vect{\eta}\cdot\vect{z}_{t-1}+u_t$
 \end_inset
 
-eq:convergencia-beta
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-gamma
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-y
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t,t-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-beta
-\end_layout
-
-\end_inset
-
-0+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-beta
-\end_layout
-
-\end_inset
-
-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-ln
-\end_layout
-
-\end_inset
-
- y
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-vect
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-eta
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cdot
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-vect
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-z
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-t-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-+ut
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-es 
+ (
 \emph on
 absoluta
 \emph default
- si 
-\begin_inset Formula $\beta_1<0$
-\end_inset
-
- sin controles (
-\begin_inset Formula $\vect{\eta}=\vect{0}$
-\end_inset
-
-), y 
+ sin controles, 
 \emph on
 condicional
 \emph default
- si 
-\begin_inset Formula $\beta_1<0$
-\end_inset
-
- al controlar por 
-\begin_inset Formula $\vect{z}_{t-1}$
-\end_inset
-
-; 
-\end_layout
-
-\begin_layout Itemize
-la 
-\emph on
-velocidad de convergencia
-\emph default
- 
-\begin_inset Formula $\lambda$
-\end_inset
-
- es la fracciÃ³n de la distancia al estado estacionario que se cierra cada aÃ±o: con un periodo de 
-\begin_inset Formula $T$
-\end_inset
-
- aÃ±os, 
-\begin_inset Formula $\beta_1=-(1-e^{-\lambda T})/T$
-\end_inset
-
-. En el modelo de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Solow
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Formula $\lambda=(1-\alpha)(n+g+\delta)$
-\end_inset
-
-. 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-Paso 2: la convergencia 
-\begin_inset Formula $\sigma$
-\end_inset
-
-
-\emph default
-. Hay 
+ con ellos); hay 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -7640,20 +7313,10 @@ convergencia
 
 \end_inset
 
- si la dispersiÃ³n de las rentas por habitante (la varianza de su logaritmo) se reduce con el tiempo: 
-\begin_inset Formula \begin{equation}
-  \sigma^{2}_{y,t-1}>\sigma^{2}_{y,t}.\label{eq:convergencia-sigma}
-  \end{equation}
+ si se reduce la dispersiÃ³n de las rentas, la varianza de su logaritmo, 
+\begin_inset Formula $\sigma^{2}_{y,t}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Paso 3: la relaciÃ³n entre las 2
-\emph default
 . La 
 \begin_inset Formula $\beta$
 \end_inset
@@ -7662,17 +7325,7 @@ Paso 3: la relaciÃ³n entre las 2
 \begin_inset Formula $\sigma$
 \end_inset
 
-: una regiÃ³n pobre puede crecer tanto que adelante a la rica y deje mÃ¡s distancia que al principio, y las perturbaciones nuevas pueden volver a separar a las regiones aunque las pobres crezcan mÃ¡s. Los 3
-\begin_inset space ~
-
-\end_inset
-
-casos con 2
-\begin_inset space ~
-
-\end_inset
-
-economÃ­as se dibujan aparte 
+, por los adelantamientos y por las perturbaciones nuevas 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -7683,6 +7336,26 @@ status collapsed
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La velocidad de convergencia
+\emph default
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, la fracciÃ³n de la distancia al estado estacionario que se cierra cada aÃ±o, se lee en el coeficiente: con un periodo de 
+\begin_inset Formula $T$
+\end_inset
+
+ aÃ±os, 
+\begin_inset Formula $\beta_1=-(1-e^{-\lambda T})/T$
+\end_inset
+
+. Es la que permite comparar las estimaciones de periodos distintos. 
 \end_layout
 
 \begin_layout Subparagraph

@@ -298,3 +298,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Opinión rehecha (instrucción de Víctor): 2 viñetas → 3, ahora en defensa del pluralismo de modelos: ningún modelo hace sobrar a los demás; cada uno simplifica para su pregunta (Rodrik, 2015); las ideas abandonadas vuelven (Simon, equilibrios múltiples).
 - Frase: Joan Robinson (1962), «un modelo que tomara en cuenta toda la diversidad de la realidad sería tan poco útil como un mapa a escala de uno a uno»; nota con el original («A model which took account of all the variegation of reality would be of no more use than a map at the scale of one to one») y la fuente, *Essays in the Theory of Economic Growth* (Macmillan, 1962), la misma referencia que usan 3.A.18 y 3.A.31 (añadida al .bib). La atribución a Robinson en 1962 se confirma en varias fuentes; alguna la sitúa en *Economic Philosophy* (también de 1962), pero se mantiene *Essays* por coherencia con los otros temas.
 - Ficha: opinión al día con la frase en pocas palabras.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- GEN-16 (experimentos aleatorizados, con 3.B.28): el punto de los RCT en «Experimentos en economía» se queda en el método (qué se quiere saber, el sesgo de selección y por qué el sorteo lo elimina, experimento de campo frente a laboratorio, validez interna y externa); la notación de resultados potenciales $Y_i(1)$, $Y_i(0)$, $D_i$ sale del cuerpo porque el 3.B.28 la desarrolla con la descomposición `eq:sesgo-seleccion` (la ficha aún la cita en una línea). La lectura recomendada pasa de *The Economist* (2019), que se queda en el 3.B.28, a Angrist y Pischke (2010), «The Credibility Revolution in Empirical Economics», en acceso abierto. Los \minutos no cambian.

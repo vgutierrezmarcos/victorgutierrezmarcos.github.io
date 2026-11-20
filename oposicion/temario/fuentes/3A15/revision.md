@@ -227,3 +227,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 ## Opinión (21/11/2026)
 
 2 viñetas → 2, más cortas. Sin frase célebre (no hay asignada; la conclusión no tiene otra).
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-03 (solape con el 3.B.4).** El párrafo de Marris (maximización del crecimiento) se acorta a la restricción de seguridad y su conclusión, con remisión al 3.B.4, donde se desarrolla como teoría del crecimiento. El resto del tema (enfoque tecnológico, costes de transacción) no cambia: es el tema de referencia de esos modelos.

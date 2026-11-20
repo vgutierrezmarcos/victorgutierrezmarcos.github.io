@@ -9818,17 +9818,7 @@ usos principales.
 \end_layout
 
 \begin_layout Paragraph
-El comercio: la paradoja de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Leontief
-\end_layout
-
-\end_inset
-
-
+El comercio: el contenido en factores de las exportaciones
 \end_layout
 
 \begin_layout Itemize
@@ -9844,7 +9834,23 @@ textcite{Leontief1953Domestic}
 
 \end_inset
 
- calculÃ³ con la tabla de Estados Unidos de 1947 cuÃ¡nto capital y cuÃ¡nto trabajo, contando los insumos de los insumos, hacÃ­an falta para producir 1
+ aplicÃ³ por primera vez el modelo de demanda al comercio. Con los coeficientes de capital y de trabajo por euro producido, 
+\begin_inset Formula $\vect{a}_K$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{a}_L$
+\end_inset
+
+, el capital por trabajador que exige, directa e indirectamente, una cesta 
+\begin_inset Formula $\vect{d}$
+\end_inset
+
+ es el cociente 
+\begin_inset Formula $\vect{a}_K^{\top}(I-A)^{-1}\vect{d}\,/\,\vect{a}_L^{\top}(I-A)^{-1}\vect{d}$
+\end_inset
+
+; lo calculÃ³ con la tabla de Estados Unidos de 1947 para 1
 \begin_inset space ~
 
 \end_inset
@@ -9854,11 +9860,7 @@ millÃ³n de dÃ³lares de exportaciones y 1
 
 \end_inset
 
-millÃ³n de sustitutos de las importaciones: es 
-\begin_inset Formula $\vect{a}_L^{\top}(I-A)^{-1}$
-\end_inset
-
- aplicado al comercio. 
+millÃ³n de sustitutos de las importaciones. 
 \end_layout
 
 \begin_layout Itemize
@@ -9867,7 +9869,7 @@ Los sustitutos de las importaciones usaban unos 18.184
 
 \end_inset
 
-dÃ³lares de capital por aÃ±o-hombre y las exportaciones unos 13.991. El paÃ­s mÃ¡s abundante en capital del mundo parecÃ­a exportar trabajo: es la 
+dÃ³lares de capital por aÃ±o-hombre y las exportaciones unos 13.991: el paÃ­s mÃ¡s abundante en capital parecÃ­a exportar trabajo. La lectura de ese resultado para la teorÃ­a del comercio es la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -9907,9 +9909,66 @@ Las cadenas globales de valor
 \begin_layout Itemize
 
 \emph on
+CÃ³mo se calcula el valor aÃ±adido extranjero
+\emph default
+: es 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:contenido"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ con las exportaciones como demanda final. Si 
+\begin_inset Formula $\vect{d}^{\mathrm X}$
+\end_inset
+
+ es el vector de exportaciones y 
+\begin_inset Formula $A$
+\end_inset
+
+ la matriz interior, cada euro exportado se reparte en valor aÃ±adido nacional, 
+\begin_inset Formula $\vect{v}^{\top}(I-A)^{-1}\vect{d}^{\mathrm X}$
+\end_inset
+
+, y contenido importado, 
+\begin_inset Formula $\vect{m}^{\top}(I-A)^{-1}\vect{d}^{\mathrm X}$
+\end_inset
+
+, contando los insumos de los insumos. Es la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+especializaciÃ³n vertical
+\end_layout
+
+\end_inset
+
+ de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{HummelsIshiiYi2001}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 Las tablas multirregionales
 \emph default
-: enlazando las tablas de muchos paÃ­ses con el comercio bilateral se construyen tablas mundiales: la WIOD
+: con la tabla de un solo paÃ­s, ese contenido importado mezcla el valor aÃ±adido de otros paÃ­ses con el propio que saliÃ³ y vuelve, y no dice de dÃ³nde viene. Enlazando las tablas de muchos paÃ­ses con el comercio bilateral se construyen tablas mundiales, que lo separan por paÃ­s de origen: la WIOD
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -9940,18 +9999,7 @@ literal "false"
 \emph on
 QuÃ© miden
 \emph default
-: con ellas y con 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:contenido"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- se descomponen las exportaciones brutas en valor aÃ±adido nacional y extranjero
+: con ellas se descomponen las exportaciones brutas en valor aÃ±adido nacional y extranjero
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -10011,23 +10059,26 @@ EspaÃ±a
 
 \end_inset
 
-% es valor aÃ±adido espaÃ±ol que viaja en las exportaciones de otros paÃ­ses (grÃ¡fico
-\begin_inset space ~
+% es valor aÃ±adido espaÃ±ol que viaja en las exportaciones de otros paÃ­ses
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Eurostat2026FIGAROcgv"
+literal "false"
 
 \end_inset
 
+ 
+\begin_inset Flex Ver tema
+status collapsed
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:contenido-importado"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
+\begin_layout Plain Layout
+3.B.18
+\end_layout
 
 \end_inset
 
-) 
+ 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -10072,7 +10123,7 @@ literal "false"
 
 \end_inset
 
-% de contenido extranjero en 2022
+% de contenido extranjero en 2022, su Ãºltimo aÃ±o
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -10087,138 +10138,6 @@ literal "false"
 \end_inset
 
  
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-ParticipaciÃ³n en las cadenas globales de valor de los paÃ­ses de la UniÃ³n Europea, 2024
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:contenido-importado"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.85
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-contenido-importado-ue
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-Eurostat, indicadores de globalizaciÃ³n basados en FIGARO 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite{Eurostat2026FIGAROcgv}
-\end_layout
-
-\end_inset
-
-; media simple de la UE-27, cÃ¡lculo propio. Porcentaje de las exportaciones brutas de cada paÃ­s.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph

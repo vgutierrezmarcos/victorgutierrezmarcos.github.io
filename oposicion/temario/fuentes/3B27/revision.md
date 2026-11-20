@@ -166,3 +166,9 @@ Todas las cifras que caducan están en `datos-actualizables.yaml`.
 
 - Viñetas: 1 → 3 cortas (bancos más resistentes; los bordes; la presión para relajarla, con Stigler). Ficha al día.
 - Frase: Stigler, «The Theory of Economic Regulation», *Bell Journal of Economics and Management Science* 2(1), 1971, p. 3: «as a rule, regulation is acquired by the industry and is designed and operated primarily for its benefit» (comprobada en la reedición del GW Regulatory Studies Center, que cita la p. 3).
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-06 (solape con el 3.A.13).** Stiglitz-Weiss queda en el resultado y la función clave, sin el gráfico y con remisión al 3.A.13; las implicaciones se rehacen como «lo que justifica la regulación»: garantías (y por qué no bastan), avales públicos y LTV, la Central de Información de Riesgos y el racionamiento en una crisis (el ajuste por cantidad, la política monetaria por el crédito, los avales de la covid-19). Se mantienen la dación en pago, las extensiones, la evidencia y la valoración.

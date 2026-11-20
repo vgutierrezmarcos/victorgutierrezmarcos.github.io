@@ -4,7 +4,7 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 
 - Temas: 90; sin refrán entre «»: 0 (ninguno)
 - Refranes iniciales repetidos: 0
-- No retomados en la idea final (por texto): 3A01, 3A02, 3A04, 3A08, 3A09, 3A10, 3A12, 3A13, 3A15, 3A16, 3A21, 3A28, 3A31, 3A35, 3A39, 3A40, 3A41, 3A42, 3B03, 3B05, 3B06, 3B07, 3B18, 3B20, 3B25, 3B26, 3B27, 3B29, 3B30, 3B44
+- No retomados en la idea final (por texto): 3A01, 3A02, 3A04, 3A10, 3A13, 3A15, 3A16, 3A21, 3A28, 3A31, 3A35, 3A39, 3A40, 3A41, 3B03, 3B06, 3B07, 3B18, 3B25, 3B26, 3B27, 3B29, 3B30, 3B44
 - Ficha sin el refrán: 3A08, 3A09, 3A11, 3A12
 
 ## 3A01 · 
@@ -177,7 +177,10 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 
 **Idea final**:
 
-
+- ¿Puede, entonces, una teoría explicar lo que elegimos sin ver lo que queremos? Sí, con matices: sobre gustos no hay nada escrito, pero sobre cómo se elige, sí.
+- Las elecciones delatan las preferencias, y basta pedirles coherencia para obtener una demanda que los datos pueden refutar.
+- Por eso la teoría de la demanda es el primer ladrillo del análisis de los mercados: sin ella no puede explicarse cómo se forman los precios, ni medirse la inflación con bienes cuya calidad cambia, ni valorarse el bienestar que una política gana o pierde.
+- Lo que esa coherencia no recoge (el riesgo, el tiempo o los sesgos) es lo que el resto de la teoría económica viene a explicar.
 
 **Ficha**: ¿puede una teoría explicar lo que elegimos sin ver lo que queremos?
 - Marshall (1890): «el estudio de la humanidad en los asuntos ordinarios de la vida»; pocas decisiones más ordinarias que qué comprar.
@@ -194,7 +197,9 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 
 **Idea final**:
 
-
+- Volviendo a la pregunta del principio, ¿se puede medir en euros algo que solo sabemos ordenar? Sí, si no se mide la utilidad, sino lo que cuesta alcanzarla: la función de gasto, que la dualidad permite recuperar de la demanda.
+- Con ella se responde al pensionista: si su cesta se parece a la del IPC, la subida le compensa algo más de lo necesario, porque un índice de Laspeyres ignora que el consumidor sustituye lo que se encarece: a falta de pan, buenas son tortas; si es distinta, puede quedarse corta, y la compensación exacta es la variación compensatoria.
+- Lo que esa traducción no permite es sumar el bienestar de personas distintas: para eso hacen falta juicios de valor, y ahí empieza la economía del bienestar.
 
 **Ficha**: pensiones revalorizadas con la media del IPC (+2,7 \% en 2026). ¿Basta para quedar igual?
 - Si los precios suben de forma desigual, se sustituye: importa cuánto cuesta volver a estar igual de bien.
@@ -266,7 +271,8 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 
 **Idea final**:
 
-
+- Volviendo a la fotovoltaica, ¿cuánto de su abaratamiento se debe a la escala, al aprendizaje y a los precios de los factores? Su coste ha caído un 89 \% desde 2010 por la escala y, sobre todo, por el aprendizaje (la práctica hace al maestro), que desplaza la curva de costes hacia abajo; pero en 2025 los equipos se abarataron un 6 \% y el coste nivelado no bajó, porque subió el coste del capital.
+- La función de costes $C(w,q)$ recoge las tres cosas, tecnología, escala y precios de los factores, y la dualidad permite separarlas con datos: esa es la utilidad de la teoría de los costes.
 
 **Ficha**: fotovoltaica: coste nivelado $0,410,044$ \$/kWh (2010-2025, $-89$ \%); módulos $-27$ \% por cada duplicación de la producción acumulada.
 - ¿Cuánto se debe a la escala, cuánto al aprendizaje y cuánto a los precios de los factores?
@@ -827,123 +833,6 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 - Volviendo al refrán del principio, «quien no trabaja en verano, pasa hambre en invierno», la política fiscal puede hacer de hormiga, pero no basta con guardar grano.
 - A corto plazo, cuando llega el invierno, puede gastar el grano guardado: el gasto sostiene la demanda, y tanto más cuanto más acomode el banco central.
 - A largo plazo, trabajar en verano es gastar en lo que rinde mañana y no castigar a quien ahorra: el ahorro decide el nivel de la renta; el gasto productivo y los impuestos que no gravan la acumulación, su ritmo de crecimiento; y unas pensiones que no dependan solo del verano de la generación siguiente, el invierno de cada una.
-anotaciones
-Para el debate sobre si el tipo de interés seguirá por debajo del crecimiento: [Blanchard2023Secular], «Secular stagnation is not over», https://www.piie.com/blogs/realtime-economics/2023/secular-stagnation-not-over.
-anotaciones
-Anexo: el modelo IS-LM y la economía abierta
-El equilibrio y los multiplicadores
-- La IS: con $C=C+c (1-t) Y$, $I=I-b i$ y $G=G$, el mercado de bienes está en equilibrio si
-equation*
-Y=A-b i1-c(1-t), AC+I+G.
-equation*
-- La LM: la demanda de dinero depende de la renta (motivos transacción y precaución) y del tipo de interés (motivo especulación) [ver tema 3.A.35], y la oferta la fija el banco central: $M/P=kY-h i$, es decir, $i=(kY-M/P)/h$.
-- El equilibrio: sustituyendo la LM en la IS,
-equation*
-Y^*=A+(b/h) M/P1-c(1-t)+b k/h,
-equation*
-de donde salen el multiplicador del gasto eq:multiplicador-fiscal y el del tipo impositivo,
-equation*
-Y^* t=-c Y^*1-c(1-t)+b k/h<0
-equation*
-[ver tema 3.A.5].
-- Las 2 proposiciones keynesianas: con $b k/h$ pequeño, el multiplicador del gasto supera 1, y es mayor que el de los impuestos, porque el gasto entra entero en la demanda y una rebaja de impuestos solo en la parte que se consume.
-- El presupuesto equilibrado, de [Haavelmo1945Multiplier]: con un impuesto de suma fija $T$, la inversión dada y $G= T$, $(1-c) Y=G-c T=(1-c) G$, y el multiplicador es 1. En el IS-LM es menor, porque la renta sube el tipo de interés y expulsa inversión.
-El modelo de Mundell-Fleming
-a) Idea
-- A principios de los 60, con Bretton Woods en marcha y los capitales empezando a moverse, [Fleming1962Domestic] y [Mundell1963Capital] llevaron el IS-LM a la economía abierta para preguntarse qué eficacia tiene la política fiscal cuando el capital es móvil, con tipo de cambio fijo y con tipo flexible.
-- Su respuesta, el modelo IS-LM-BP, es el punto de partida de la política fiscal en economía abierta: lo que la vuelve eficaz o ineficaz no es el gasto en sí, sino qué variable se ajusta para mantener el equilibrio exterior, la cantidad de dinero o el tipo de cambio [ver tema 3.A.32].
-b) Modelo
-i) Supuestos
-- Precios fijos: $P=P^*=1$, de modo que el tipo nominal es el real y el tipo de cambio real $q$ es el nominal.
-- País pequeño: la renta exterior, $Y^*$, y el tipo de interés mundial, $i^*$, están dados.
-- Expectativas estáticas del tipo de cambio y activos nacionales y extranjeros sustitutos perfectos: sin depreciación esperada ni prima de riesgo.
-- Condición de Marshall-Lerner: una depreciación real mejora el saldo comercial [ver tema 3.B.12].
-- Los flujos de capital responden al diferencial de tipos: la cuenta financiera neta es $_K (i-i^*)$, con $_K0$ la movilidad del capital ($_K$ local, para no confundirla con el factor de descuento).
-- Sin esterilización: con tipo fijo, lo que el banco central compra o vende de divisas cambia la base monetaria.
-ii) Desarrollo
-- La IS abierta: con exportaciones netas $XN=x Y^*-m Y+ q$, con $x$ la propensión a exportar, $m$ la propensión a importar y $$ la sensibilidad del saldo comercial al tipo de cambio real,
-equation*
-Y=A-b i+x Y^*+ q1-c(1-t)+m.
-equation*
-La propensión a importar reduce el multiplicador, porque parte del gasto se va fuera; ese desbordamiento es el que justifica la coordinación internacional y el «efecto locomotora» [ver tema 3.B.19]. Una depreciación ($q$) desplaza la IS a la derecha.
-- La LM, la de la economía cerrada, $M/P=kY-h i$. Con tipo fijo, la cantidad de dinero es el crédito interno más las reservas y cambia con cada intervención en el mercado de divisas.
-- La BP: la balanza de pagos está en equilibrio cuando el saldo comercial se financia con la cuenta financiera,
-equation*
-x Y^*-m Y+ q+_K (i-i^*)=0 didY|_BP=m_K.
-equation*
-Con más renta se importa más, y hace falta un tipo más alto que atraiga el capital que lo financie. Por encima de la BP hay superávit (entran divisas); por debajo, déficit. Una depreciación la desplaza a la derecha. Según la movilidad (gráfico fig:mf-is-lm-bp):
-- con movilidad perfecta ($_K$), horizontal: $i=i^*$;
-- con movilidad imperfecta, creciente: la movilidad es alta si la BP es más plana que la LM ($m/_K<k/h$) y baja si es más inclinada;
-- sin movilidad ($_K=0$), vertical: solo hay una renta compatible con el equilibrio comercial.
-figure[H]
-El modelo IS-LM-BP: equilibrio y los 3 casos de movilidad del capital
-[0.62]mf-is-lm-bp
-Elaboración propia a partir de [Fleming1962Domestic], [Mundell1963Capital] y [Gandolfo2002International]. Por encima de cada BP, superávit de la balanza de pagos; por debajo, déficit.
-figure
-- Qué se ajusta: las 3 curvas tienen que cortarse en un punto, y lo que se mueve para lograrlo depende del régimen:
-- con tipo fijo, la cantidad de dinero: si hay superávit, el banco central compra divisas para que la moneda no se aprecie, la base monetaria crece y la LM se desplaza a la derecha hasta pasar por el corte de la IS y la BP; con déficit, al revés;
-- con tipo flexible, el tipo de cambio: si hay superávit, la moneda se aprecia, las exportaciones netas caen y la IS y la BP se desplazan a la izquierda hasta cortarse sobre la LM, que controla el banco central; con déficit, la moneda se deprecia y se desplazan a la derecha.
-- En los 4 ejemplos que siguen, la economía parte de $A$, el gasto público sube y la IS pasa a IS$'$. $B$ es el corte de IS$'$ y LM, antes de que reaccionen las reservas o el tipo de cambio; $C$, el equilibrio final.
-iii) Implicaciones: 4 ejemplos de una expansión fiscal
-- Ejemplo 1: tipo fijo y movilidad perfecta (gráfico fig:mf-fijo-perfecta). La política fiscal es muy eficaz:
-- Paso 1: el gasto desplaza la IS a IS$'$; con la LM dada, la renta y el tipo suben hasta $B$.
-- Paso 2: en $B$, $i>i^*$: entra capital sin límite y la moneda tiende a apreciarse.
-- Paso 3: para defender el tipo de cambio, el banco central compra divisas; la base monetaria crece y la LM se desplaza a LM$'$.
-- Paso 4: el ajuste acaba en $C$, con $i=i^*$: el tipo de interés no ha subido, no hay expulsión de la inversión y el multiplicador es el de la economía abierta con el tipo dado, $1/[1-c(1-t)+m]$. El dinero acompaña al gasto.
-figure[H]
-Expansión fiscal con tipo de cambio fijo y movilidad perfecta del capital
-[0.6]mf-fijo-perfecta
-Elaboración propia a partir de [Fleming1962Domestic] y [Mundell1963Capital]. $A$, equilibrio inicial; $B$, antes de que reaccionen las reservas; $C$, equilibrio final.
-figure
-- Ejemplo 2: tipo flexible y movilidad perfecta (gráfico fig:mf-flexible-perfecta). La política fiscal es ineficaz:
-- Paso 1: el gasto desplaza la IS a IS$'$ y la economía va a $B$, con $i>i^*$.
-- Paso 2: entra capital y, como el banco central no interviene, la moneda se aprecia.
-- Paso 3: la apreciación abarata las importaciones y encarece las exportaciones: las exportaciones netas caen y la IS vuelve hacia la izquierda.
-- Paso 4: el proceso solo se para cuando el tipo vuelve a $i^*$; con la LM fija, eso exige la renta inicial: $C=A$. La expulsión es total, pero no de la inversión, sino de las exportaciones netas: el saldo exterior empeora en lo que sube el gasto (los déficits gemelos) [ver tema 3.B.11].
-figure[H]
-Expansión fiscal con tipo de cambio flexible y movilidad perfecta del capital
-[0.6]mf-flexible-perfecta
-Elaboración propia a partir de [Fleming1962Domestic] y [Mundell1963Capital]. La apreciación devuelve la IS$'$ a la IS y el equilibrio final $C$ coincide con el inicial $A$.
-figure
-- Ejemplo 3: tipo fijo y movilidad imperfecta (gráfico fig:mf-fijo-imperfecta). La eficacia depende de si la BP es más plana o más inclinada que la LM:
-- Movilidad alta (panel a):
-- en $B$ el tipo ha subido lo bastante para que la entrada de capital supere al deterioro comercial: hay superávit;
-- el banco central compra divisas, la LM se desplaza a la derecha y el ajuste acaba en $C$, en el corte de IS$'$ y BP: la renta sube más que en el IS-LM cerrado, y la política fiscal es eficaz.
-- Movilidad baja (panel b):
-- en $B$ la entrada de capital no compensa el aumento de las importaciones: hay déficit;
-- el banco central vende divisas, la base monetaria cae y la LM se desplaza a la izquierda; en $C$ el tipo es más alto y la renta, menor que en $B$: la política fiscal es poco eficaz.
-- En el límite, sin movilidad, la BP es vertical y el ajuste monetario devuelve la renta a la que equilibra el comercio: la política fiscal es ineficaz.
-figure[H]
-Expansión fiscal con tipo de cambio fijo y movilidad imperfecta del capital
-[0.95]mf-fijo-imperfecta
-Elaboración propia a partir de [Mundell1963Capital] y [Gandolfo2002International]. a) La BP es más plana que la LM. b) La BP es más inclinada que la LM.
-figure
-- Ejemplo 4: tipo flexible y movilidad imperfecta (gráfico fig:mf-flexible-imperfecta). Ahora la LM no se mueve y el tipo de cambio desplaza a la vez la IS y la BP:
-- Movilidad alta (panel a):
-- en $B$ hay superávit y la moneda se aprecia;
-- las exportaciones netas caen: IS$'$ se desplaza a IS$''$ y la BP a BP$'$, y el equilibrio final $C$ queda sobre la LM, entre $A$ y $B$: la política fiscal es poco eficaz.
-- Movilidad baja (panel b):
-- en $B$ hay déficit y la moneda se deprecia;
-- las exportaciones netas suben: la IS y la BP se desplazan a la derecha y $C$ queda por encima de $B$ sobre la LM: la depreciación refuerza el gasto y la política fiscal es eficaz.
-- En el límite, sin movilidad, la depreciación mantiene el comercio equilibrado y el multiplicador es el del IS-LM cerrado sin importaciones, $1/[1-c(1-t)+b k/h]$: la política fiscal es muy eficaz.
-figure[H]
-Expansión fiscal con tipo de cambio flexible y movilidad imperfecta del capital
-[0.95]mf-flexible-imperfecta
-Elaboración propia a partir de [Mundell1963Capital] y [Gandolfo2002International]. a) La apreciación lleva la IS y la BP a la izquierda. b) La depreciación las lleva a la derecha. En los 2 paneles, el equilibrio final $C$ está sobre la LM.
-figure
-- En resumen (tabla tab:mundell-fleming), la política fiscal gana eficacia con la movilidad del capital si el tipo es fijo y la pierde si es flexible: con tipo fijo, el multiplicador es $_K/\[1-c(1-t)] _K+m (b+_K)\$, creciente en $_K$; con tipo flexible, $h/\h [1-c(1-t)]+(b+_K) k\$, decreciente.
-table[H]
-Eficacia de la política fiscal en el modelo de Mundell-Fleming
-tabular>m3.2cm>m2.3cm>m2.3cm>m2.3cm>m2.3cm
-tceeazulpalido Movilidad del capital & Perfecta & Alta & Baja & Nula\\
-Tipo de cambio fijo & tceeverdeMuy eficaz & tceeverdeEficaz & tceedoradoPoco eficaz & tceerojoIneficaz\\
-Tipo de cambio flexible & tceerojoIneficaz & tceedoradoPoco eficaz & tceeverdeEficaz & tceeverdeMuy eficaz\\
-tabular
-Elaboración propia a partir de [Mundell1963Capital] y [Heijdra2017Foundations].
-table
-c) Valoración
-- A favor: con 3 curvas da la intuición que sigue usando la política económica: en una unión monetaria, o con tipo fijo, la política fiscal es el instrumento que le queda a cada país [ver tema 3.B.40]; con tipo flexible y capital móvil, el gasto se va en apreciación y déficit exterior.
-- En contra: precios fijos, expectativas estáticas del tipo de cambio y un enfoque de flujos (mientras haya diferencial, entra capital sin fin); y, como el IS-LM, no tiene restricción intertemporal del Estado ni de la nación. Los modelos de equilibrio general de economía abierta con hogares que optimizan revisan estos resultados (anexo anexo:corsetti-pesenti) [ver tema 3.A.32].
 
 **Ficha**: «quien no trabaja en verano, pasa hambre en invierno» (Samaniego, 1781).
 - No ahorrar no es ser cigarra si se gasta en lo que rinde mañana (infraestructuras, I+D).
@@ -1022,7 +911,9 @@ c) Valoración
 
 **Idea final**:
 
-
+- Volviendo al refrán del principio, siempre que ha llovido, ha escampado, pero no da igual cuánto tarde en escampar.
+- Si el ciclo fuera solo la respuesta óptima a perturbaciones de productividad, bastaría con poner buena cara al mal tiempo; como el dinero y el crédito importan, hay margen para la política: guardar en los años buenos, como pide el colchón anticíclico, y actuar pronto en los malos, cuando llueve sobre mojado.
+- Porque las recesiones que nacen del crédito escampan tarde y dejan cicatriz: la histéresis hace que parte de lo perdido no se recupere nunca.
 
 **Ficha**: «siempre que ha llovido, ha escampado».
 - España: 2020 $-10,9 \%$, 2021 +6,7 \%: nivel de 2019 en 2022. 2008-13: $-8,9 \%$, máximo recuperado +8 años después: empezó en el crédito.
@@ -1187,7 +1078,9 @@ c) Valoración
 
 **Idea final**:
 
-
+- «El que mucho abarca, poco aprieta»: el país que no intenta producirlo todo y se especializa en su ventaja comparativa gana, y Ricardo añadió que le conviene aunque lo haga todo mejor (o peor) que los demás.
+- Pero la especialización tiene perdedores dentro del país: el dueño del factor escaso y, a corto plazo, el del capital atado al sector que compite con las importaciones.
+- Los países comercian porque son distintos y ganan haciéndolo; que ganen todos sus ciudadanos depende de lo que se haga con esas ganancias.
 
 **Ficha**: «el que mucho abarca, poco aprieta».
 - España: aceites y grasas pesan en sus exportaciones 3,65 vecesVCR de Balassa lo que en las mundiales; déficit en combustibles (CUCI 3) de 28.562 M€2025.
@@ -1205,7 +1098,8 @@ c) Valoración
 
 **Idea final**:
 
-
+- El refrán aconseja no vender miel al colmenero, pero el comercio moderno lo hace todos los días.
+- Tiene sentido cuando la miel de cada uno es distinta, cuando producirla en grande sale más barato y cuando quien la vende es el mejor colmenero: con rendimientos crecientes, la diferencia entre países no es solo la causa del comercio, sino también su resultado.
 
 **Ficha**: «no vendas miel al colmenero».
 - España vende a Alemania $$2.100 M€ de medicamentos y le compra $$2.500 M€ (2025; GL = 0,92).
@@ -1433,7 +1327,7 @@ c) Valoración
 **Enganche**:
 
 - «El mundo es un pañuelo», dice el refrán, y las exportaciones españolas lo confirman.
-- En torno a una cuarta parte de lo que vale lo que España vende fuera es valor añadido de otros países: el 26,6 \% en 2022, frente al 23,5 \% de 2010.
+- En torno a una cuarta parte de lo que vale lo que España vende fuera es valor añadido de otros países: el 25,7 \% en 2024.
 - Y casi una quinta parte del valor que España exporta viaja dentro de las exportaciones de otros países.
 - El pañuelo es más pequeño para las cosas que para las personas: los bienes, el capital y las tareas cruzan fronteras con facilidad, pero solo el 3,7 \% de la población mundial vive fuera del país en que nació.
 - Y desde hace unos años el pañuelo se dobla: aranceles entre Estados Unidos y China desde 2018, cadenas de suministro cortadas por la pandemia y las guerras, Gobiernos que quieren producir en casa o «entre amigos». ¿Se acaba la globalización o solo cambia de forma?
@@ -1478,7 +1372,7 @@ c) Valoración
 
 **Idea final**:
 
-
+- «No hay bien ni mal que cien años dure»: ninguno de estos órdenes llegó al siglo, porque las condiciones que los hicieron posibles cambiaron más deprisa que sus reglas. La lección para la pregunta del principio es que un sistema dura mientras se adapta y mientras sus miembros cooperan; y, como enseñan los años 30, cuando los países apostaron por el librecambio y la estabilidad monetaria, llegaron la paz y la prosperidad, y cuando cada uno buscó salvarse solo, llegó la depresión.
 
 **Ficha**: «no hay bien ni mal que cien años dure».
 - Patrón oro, unos 40 años; cambios-oro, 6 (1925-1931); Bretton Woods, 27 (13 con convertibilidad europea, 1958-1971).

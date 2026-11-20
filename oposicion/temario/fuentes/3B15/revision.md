@@ -291,3 +291,10 @@ Páginas: antes, 38 de tema, 11 de anexos y 7 de bibliografía (56); ahora, 39 d
 
 - Viñetas: 1 → 2. El único párrafo largo se parte en dos frases cortas: la paradoja (menos tipos fijos, más intervención y controles aceptados) y las esquinas redondeadas del trilema.
 - Frase célebre: no tenía asignada (la idea final ya cita el título de Frankel, 1999).
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-02 (Mundell-Fleming, con el 3.A.32)**, opción (a): en el I.2 («Eficacia de las políticas de demanda y el trilema») los 4 casos con movilidad perfecta y la tabla de eficacia se sustituyen por el resultado en 3 viñetas (con tipo fijo vive la fiscal y la monetaria no sirve con ninguna movilidad; con tipo flexible, la monetaria) y la remisión al 3.A.32, que es el tema de referencia. Se quita la nota al opositor sobre la tabla. La tabla pasa al anexo A (IS-LM-BP), junto a los casos y su gráfico: nada se pierde. Ese tiempo del cante queda para el trilema como elección de régimen, el dilema de Rey y Poole, que no cambian.
+- Páginas del tema: de 40 a 39. Los `\minutos` no cambian. Al hacer el guion del cante, contar Mundell-Fleming en un minuto como mucho.

@@ -729,31 +729,25 @@ p_j=\sum_{i}a_{ij}\,p_i+p^{\mathrm M}m_j+v_j,\qquad j=1,\dots,n.
 \item \emph{Conclusión anticipada}: el álgebra de \eqref{eq:contenido} sirve para cualquier cosa que se pueda medir por euro producido: trabajo, capital, emisiones o valor añadido de otros países. Son 5~usos principales.
 \end{itemize}
 
-\paragraph{El comercio: la paradoja de \autor{Leontief}}
+\paragraph{El comercio: el contenido en factores de las exportaciones}
 
 \begin{itemize}
-\item \textcite{Leontief1953Domestic} calculó con la tabla de Estados Unidos de 1947 cuánto capital y cuánto trabajo, contando los insumos de los insumos, hacían falta para producir 1~millón de dólares de exportaciones y 1~millón de sustitutos de las importaciones: es $\vect{a}_L^{\top}(I-A)^{-1}$ aplicado al comercio.
-\item Los sustitutos de las importaciones usaban unos 18.184~dólares de capital por año-hombre y las exportaciones unos 13.991. El país más abundante en capital del mundo parecía exportar trabajo: es la \concepto{paradoja de \autor{Leontief}} \vertema{3.B.5}.
+\item \textcite{Leontief1953Domestic} aplicó por primera vez el modelo de demanda al comercio. Con los coeficientes de capital y de trabajo por euro producido, $\vect{a}_K$ y $\vect{a}_L$, el capital por trabajador que exige, directa e indirectamente, una cesta $\vect{d}$ es el cociente $\vect{a}_K^{\top}(I-A)^{-1}\vect{d}\,/\,\vect{a}_L^{\top}(I-A)^{-1}\vect{d}$; lo calculó con la tabla de Estados Unidos de 1947 para 1~millón de dólares de exportaciones y 1~millón de sustitutos de las importaciones.
+\item Los sustitutos de las importaciones usaban unos 18.184~dólares de capital por año-hombre y las exportaciones unos 13.991: el país más abundante en capital parecía exportar trabajo. La lectura de ese resultado para la teoría del comercio es la \concepto{paradoja de \autor{Leontief}} \vertema{3.B.5}.
 \end{itemize}
 
 \paragraph{Las cadenas globales de valor}
 
 \begin{itemize}
-\item \emph{Las tablas multirregionales}: enlazando las tablas de muchos países con el comercio bilateral se construyen tablas mundiales: la WIOD\nocite{Timmer2015WIOD}, las de la OCDE (81~economías, de 1995 a 2022) y las de Eurostat (FIGARO, hasta 2024)\nocite{OCDE2025TiVA,Eurostat2026FIGARO}.
-\item \emph{Qué miden}: con ellas y con \eqref{eq:contenido} se descomponen las exportaciones brutas en valor añadido nacional y extranjero\nocite{JohnsonNoguera2012,KoopmanWangWei2014} \vertema{3.B.18}.
+\item \emph{Cómo se calcula el valor añadido extranjero}: es \eqref{eq:contenido} con las exportaciones como demanda final. Si $\vect{d}^{\mathrm X}$ es el vector de exportaciones y $A$ la matriz interior, cada euro exportado se reparte en valor añadido nacional, $\vect{v}^{\top}(I-A)^{-1}\vect{d}^{\mathrm X}$, y contenido importado, $\vect{m}^{\top}(I-A)^{-1}\vect{d}^{\mathrm X}$, contando los insumos de los insumos. Es la \concepto{especialización vertical} de \textcite{HummelsIshiiYi2001}.
+\item \emph{Las tablas multirregionales}: con la tabla de un solo país, ese contenido importado mezcla el valor añadido de otros países con el propio que salió y vuelve, y no dice de dónde viene. Enlazando las tablas de muchos países con el comercio bilateral se construyen tablas mundiales, que lo separan por país de origen: la WIOD\nocite{Timmer2015WIOD}, las de la OCDE (81~economías, de 1995 a 2022) y las de Eurostat (FIGARO, hasta 2024)\nocite{OCDE2025TiVA,Eurostat2026FIGARO}.
+\item \emph{Qué miden}: con ellas se descomponen las exportaciones brutas en valor añadido nacional y extranjero\nocite{JohnsonNoguera2012,KoopmanWangWei2014} \vertema{3.B.18}.
   \begin{itemize}
   \item El valor añadido extranjero contenido en las exportaciones de un país mide su participación \emph{hacia atrás} en las cadenas.
   \item Su valor añadido contenido en las exportaciones de otros países mide su participación \emph{hacia delante}.
   \end{itemize}
-\item \emph{España}: en torno a una cuarta parte del valor de sus exportaciones es valor añadido extranjero, el 25,7~\% en 2024, menos que la media simple de la Unión (38,4~\%) y solo por encima de Alemania, Croacia y Rumanía; otro 19,9~\% es valor añadido español que viaja en las exportaciones de otros países (gráfico~\ref{fig:contenido-importado}) \vertema{4.A.22}.\footnote{El INE, con la misma base de Eurostat, estima que en 2024 el 72,3~\% del valor de las exportaciones españolas se generó en España y el 27,7~\% fuera, y que el valor añadido español incorporado en ellas fue el 21,5~\% del PIB\nocite{INE2026TiVA2024}; la OCDE da un 26,6~\% de contenido extranjero en 2022\nocite{OCDE2025TiVA}. Las diferencias vienen de las tablas de partida y del tratamiento de las reexportaciones; todas coinciden en el orden de magnitud.}
+\item \emph{España}: en torno a una cuarta parte del valor de sus exportaciones es valor añadido extranjero, el 25,7~\% en 2024, menos que la media simple de la Unión (38,4~\%) y solo por encima de Alemania, Croacia y Rumanía; otro 19,9~\% es valor añadido español que viaja en las exportaciones de otros países\nocite{Eurostat2026FIGAROcgv} \vertema{3.B.18} \vertema{4.A.22}.\footnote{El INE, con la misma base de Eurostat, estima que en 2024 el 72,3~\% del valor de las exportaciones españolas se generó en España y el 27,7~\% fuera, y que el valor añadido español incorporado en ellas fue el 21,5~\% del PIB\nocite{INE2026TiVA2024}; la OCDE da un 26,6~\% de contenido extranjero en 2022, su último año\nocite{OCDE2025TiVA}. Las diferencias vienen de las tablas de partida y del tratamiento de las reexportaciones; todas coinciden en el orden de magnitud.}
 \end{itemize}
-
-\begin{figure}[H]
-\centering
-\caption{Participación en las cadenas globales de valor de los países de la Unión Europea, 2024}\label{fig:contenido-importado}
-\grafico[0.85\textwidth]{contenido-importado-ue}
-\fuente{Eurostat, indicadores de globalización basados en FIGARO \parencite{Eurostat2026FIGAROcgv}; media simple de la UE-27, cálculo propio. Porcentaje de las exportaciones brutas de cada país.}
-\end{figure}
 
 \paragraph{El medio ambiente}
 

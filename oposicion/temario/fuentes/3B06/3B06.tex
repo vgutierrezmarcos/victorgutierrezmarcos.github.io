@@ -129,7 +129,7 @@ Conclusión\esqtiempo{1,5}
 \minutos{14}
 
 \begin{notaopositor}
-En el cante (\tiempo{14}): los antecedentes (\tiempo{1,5}), como nexo: una frase por modelo, con el gráfico de \autor{Posner} o el de \autor{Vernon} si sobra tiempo y la tabla de las 4~preguntas, de palabra; \autor{Krugman} (\tiempo{6}): la idea (\tiempo{0,5}); los supuestos con la lista de la competencia monopolística y la CES resumida (\tiempo{1}); con elasticidad constante, la regla del margen, $q^*$, $n^*$ y la apertura: más variedades con el mismo $q$ (\tiempo{1,5}); con elasticidad decreciente, las curvas PP y ZZ y los efectos procompetitivo, escala y racionalización (\tiempo{2}); la evidencia (\autor{Grubel}-\autor{Lloyd}, \autor{Broda} y \autor{Weinstein}) y la valoración (\tiempo{1}). Las extensiones de 1980 (\tiempo{2}): costes iceberg y efecto del mercado doméstico, de palabra. \autor{Melitz} (\tiempo{4,5}): los hechos con cifras (\tiempo{0,5}), los supuestos (\tiempo{0,75}), la autarquía y la apertura con el gráfico de los umbrales (\tiempo{2}), las implicaciones (\tiempo{0,75}) y extensiones, evidencia y valoración en una frase cada una (\tiempo{0,5}). La derivación de la demanda CES, la tangencia en 3~paneles, el índice de \autor{Balassa} y las condiciones de equilibrio de \autor{Melitz} paso a paso no se cantan (anexos~\ref{anexo:krugman} y~\ref{anexo:melitz}).
+En el cante (\tiempo{14}): los antecedentes (\tiempo{1,5}), como nexo: una frase por modelo, con el gráfico de \autor{Posner} o el de \autor{Vernon} si sobra tiempo y la tabla de las 4~preguntas, de palabra; \autor{Krugman} (\tiempo{6}): la idea (\tiempo{0,5}); los supuestos con la lista de la competencia monopolística y la CES resumida (\tiempo{1}); con elasticidad constante, el equilibrio cerrado en una línea con sus 3~fórmulas y la remisión \vertema{3.A.18}, y lo propio del comercio: la apertura, con más variedades y el mismo $q$, el comercio equilibrado e intraindustrial y la ganancia de variedad, $2^{1/(\sigma-1)}$ (\tiempo{1,25}); con elasticidad decreciente, las curvas PP y ZZ y los efectos procompetitivo, escala y racionalización (\tiempo{2,25}); la evidencia (\autor{Grubel}-\autor{Lloyd}, \autor{Broda} y \autor{Weinstein}) y la valoración (\tiempo{1}). Las extensiones de 1980 (\tiempo{2}): costes iceberg y efecto del mercado doméstico, de palabra. \autor{Melitz} (\tiempo{4,5}): los hechos con cifras (\tiempo{0,5}), los supuestos (\tiempo{0,75}), la autarquía y la apertura con el gráfico de los umbrales (\tiempo{2}), las implicaciones (\tiempo{0,75}) y extensiones, evidencia y valoración en una frase cada una (\tiempo{0,5}). La derivación del equilibrio con la CES, el índice de \autor{Balassa} y las condiciones de equilibrio de \autor{Melitz} paso a paso no se cantan (anexos~\ref{anexo:krugman} y~\ref{anexo:melitz}).
 \end{notaopositor}
 
 \begin{itemize}
@@ -319,28 +319,9 @@ En el cante (\tiempo{14}): los antecedentes (\tiempo{1,5}), como nexo: una frase
 \begin{itemize}
 \item \emph{Con elasticidad de sustitución constante} (CES).
   \begin{itemize}
-  \item \emph{La demanda de cada variedad}. Con renta $w$ por trabajador, todo el gasto va a las variedades y la demanda es la de \autor{Dixit}-\autor{Stiglitz} \vertema{3.A.18} (la derivación, en el anexo~\ref{anexo:krugman}):
-  \begin{equation}\label{eq:demanda-krugman}
-  x_i=\frac{w}{P}\left(\frac{p_i}{P}\right)^{-\sigma},\qquad P\equiv\Big[\sum_{j=1}^{n}p_j^{\,1-\sigma}\Big]^{\frac{1}{1-\sigma}},
-  \end{equation}
-  donde $P$ es el índice de precios de las variedades. La demanda de la variedad $i$:
-    \begin{itemize}
-    \item aumenta con la renta, $w$;
-    \item disminuye con su precio, $p_i$; con muchas variedades, cada empresa toma $P$ como dado y su demanda tiene elasticidad $\sigma$;
-    \item aumenta con el índice de precios, $P$ (es proporcional a $P^{\sigma-1}$): si las demás se encarecen, la $i$ se abarata en términos relativos;
-    \item y la \emph{elasticidad de sustitución} $\sigma$ la hace más elástica, pero no la desplaza en un sentido fijo: con $\sigma$ más alto sube la demanda de las variedades más baratas que el índice ($p_i<P$) y baja la de las más caras.
-    \end{itemize}
-  \item \emph{El precio}. Cada empresa maximiza su beneficio tomando $P$ como dado:
-  $$\optim{\max}{p_i}{B_i=(p_i-c\,w)\,L\,x_i(p_i)-w\,F}{}$$
-  La condición $\mathrm{IMg}=\mathrm{CMg}$ da la regla del margen del monopolista \vertema{3.A.17}:
-\funcionclave[eq:precio-krugman]{p^*=\frac{\sigma}{\sigma-1}\,c\,w\quad\Longleftrightarrow\quad \frac{p^*-c\,w}{p^*}=\frac{1}{\sigma}}
-  El precio es un margen constante, $\frac{\sigma}{\sigma-1}$, sobre el coste marginal, que baja cuanto más sustituibles son las variedades (mayor $\sigma$): cuanto mejores sustitutivos tiene una variedad, menos poder de mercado tiene su productor.
-  \item \emph{La libre entrada}. Entran empresas hasta que el beneficio es nulo, $p^*=\mathrm{CMe}(q^*)$: $\frac{\sigma}{\sigma-1}\,c\,w=w\,(c+F/q^*)$, de donde
-  $$q^*=\frac{(\sigma-1)\,F}{c}.$$
-  La escala de cada empresa crece con $F/c$ (más economías de escala que aprovechar) y con $\sigma$ (con menos margen hay que vender más para cubrir el coste fijo), y \emph{no depende del tamaño del mercado}.
-  \item \emph{El mercado de trabajo}. Las $n$ empresas emplean a todos los trabajadores, $L=n\,(F+c\,q^*)=n\,\sigma F$:
-  $$n^*=\frac{L}{\sigma F}.$$
-  El número de variedades es proporcional al tamaño del país; el vaciado de cada variedad, $q^*=L\,x^*$, da el consumo por persona de cada una.
+  \item \emph{El equilibrio cerrado} es el de \autor{Dixit}-\autor{Stiglitz} con el trabajo como único factor \vertema{3.A.18}: cada empresa, monopolista de su variedad, fija un margen constante sobre el coste marginal, y la libre entrada lleva el beneficio a cero (la derivación, en el anexo~\ref{anexo:krugman}):
+\funcionclave[eq:precio-krugman]{p^*=\frac{\sigma}{\sigma-1}\,c\,w,\qquad q^*=\frac{(\sigma-1)\,F}{c},\qquad n^*=\frac{L}{\sigma F}}
+  Para el comercio importan 2~rasgos: la escala de cada empresa, $q^*$, \emph{no depende del tamaño del mercado}, y el número de variedades, $n^*$, es \emph{proporcional} a él. Por eso abrirse no cambia lo que produce cada empresa, sino cuántas variedades hay.
   \item \emph{La apertura}. Si $A$ y $B$ se abren al comercio sin costes de transporte, es como si se sumaran sus poblaciones:
     \begin{itemize}
     \item el precio relativo al salario, $p^*/w$, y la escala de cada empresa, $q^*$, no cambian;
@@ -352,7 +333,6 @@ En el cante (\tiempo{14}): los antecedentes (\tiempo{1,5}), como nexo: una frase
   \item \emph{El bienestar}. Con todos los precios iguales, $P=p^*\,n^{\frac{1}{1-\sigma}}$, y el salario real en términos del índice de precios es
   $$\frac{w}{P}=\frac{\sigma-1}{\sigma\,c}\;n^{\frac{1}{\sigma-1}}.$$
   Con 2~países iguales, la apertura duplica $n$ y multiplica el salario real por $2^{\frac{1}{\sigma-1}}$: toda la ganancia viene de la \emph{variedad}.
-  \item \emph{Gráficamente}, es el equilibrio de \autor{Chamberlin} con una demanda isoelástica: el ingreso marginal corta al coste marginal en $q^*$, el precio es el margen sobre $c\,w$ y la libre entrada desplaza la demanda de cada variedad hasta que es tangente al coste medio (anexo~\ref{anexo:krugman}).
   \end{itemize}
 \item \emph{Con elasticidad variable}: la versión original\nocite{Krugman1979Increasing}.
   \begin{itemize}
@@ -397,7 +377,7 @@ En el cante (\tiempo{14}): los antecedentes (\tiempo{1,5}), como nexo: una frase
     \item \emph{sube la escala de cada empresa}: como $p/w-c=F/q$ baja, $q$ aumenta y las empresas aprovechan mejor las economías de escala (\concepto{efecto escala});
     \item \emph{baja el número de empresas de cada país}, $n=L/(F+c\,q)$ (\concepto{racionalización}), aunque el consumidor dispone de más variedades que en autarquía, $2n'>n$: algunas empresas cierran, pero el modelo, con empresas iguales, no dice cuáles.
     \end{enumerate}
-  \item \emph{Qué añade la elasticidad variable}. Con la CES, el margen y el tamaño de cada empresa no cambian al abrirse, y la única ganancia es la variedad. Con la elasticidad decreciente, la apertura da además \emph{precios más bajos} por la competencia, \emph{empresas más grandes} y \emph{menos empresas por país}: separa 3~fuentes de ganancia (variedad, procompetitiva y escala) y crea ganadores y perdedores entre las empresas.
+  \item \emph{Qué añade la elasticidad variable}. Con la CES, el margen y el tamaño de cada empresa no cambian al abrirse, y la única ganancia es la variedad. Con la elasticidad decreciente, la apertura da además \emph{precios más bajos} por la competencia, \emph{empresas más grandes} y \emph{menos empresas por país}: separa 3~fuentes de ganancia (variedad, procompetitiva y escala) y crea ganadores y perdedores entre las empresas. Cómo queda el gráfico con la CES, con PP horizontal, y el efecto procompetitivo en su forma más sencilla, con 2~monopolistas, están en el anexo~\ref{anexo:krugman}.
   \end{itemize}
 \end{itemize}
 
@@ -408,35 +388,6 @@ En el cante (\tiempo{14}): los antecedentes (\tiempo{1,5}), como nexo: una frase
 \fuente{elaboración propia a partir de \textcite{Krugman1979Increasing} y \textcite[cap.~5]{Feenstra2016Advanced}.}
 \end{figure}
 
-\begin{anotaciones}
-\textbf{¿Y si la elasticidad de sustitución fuese constante?} Con la CES, la elasticidad de la demanda de cada variedad es $\sigma$ para cualquier consumo por persona, y la condición de la curva PP da $p/w=c\,\sigma/(\sigma-1)$: \emph{PP es horizontal} (gráfico~\ref{fig:krugman-ppzz-ces}). La apertura baja ZZ igual que antes, pero el nuevo corte queda a la misma altura:
-\begin{itemize}
-\item el margen y el precio relativo, $p/w$, no cambian: no hay efecto procompetitivo;
-\item como $p/w-c=F/(L\,x)$ no cambia, tampoco cambia lo que vende cada empresa, $q=L\,x=(\sigma-1)F/c$: no hay efecto escala. Lo que cambia es el consumo por persona de cada variedad, que se reduce a la mitad, $x_1=x_0/2$, porque cada empresa reparte las mismas ventas entre el doble de consumidores;
-\item cada país sigue teniendo $n=L/(\sigma F)$ empresas: no hay racionalización;
-\item y cada consumidor dispone del doble de variedades: \emph{toda la ganancia es de variedad}, como en el desarrollo con elasticidad constante.
-\end{itemize}
-\begin{figuracaja}
-\caption{Con elasticidad constante, la curva PP es horizontal: la apertura solo aumenta la variedad}\label{fig:krugman-ppzz-ces}
-\grafico[0.55\textwidth]{krugman-ppzz-ces}
-\fuente{elaboración propia a partir de \textcite{Krugman1980Scale} y \textcite{DixitStiglitz1977Monopolistic}.}
-\end{figuracaja}
-\end{anotaciones}
-
-\begin{anotaciones}
-\textbf{El efecto procompetitivo con 2~monopolistas.} El monopolio basta, por sí solo, para que haya comercio intraindustrial. Supongamos 2~países, $A$ y $B$, cada uno con un monopolista que produce el mismo bien (gráfico~\ref{fig:monopolio-procompetitivo}):
-\begin{itemize}
-\item en \emph{autarquía}, cada empresa produce $Q_0$, donde $\mathrm{IMg}=\mathrm{CMg}$, y cobra $p_M$: producir más le obligaría a bajar el precio de todas las unidades que vende, no solo el de las adicionales, y el ingreso marginal quedaría por debajo del coste marginal;
-\item si puede \emph{comerciar}, a la empresa de $A$ le interesa producir más si puede vender esas unidades en $B$ sin rebajar el precio de las que vende en casa: cada unidad exportada a un precio cercano a $p_M$ deja $p_M-\mathrm{CMg}>0$, hasta $Q_1$. Gana a costa del beneficio del monopolista de $B$ en su mercado, y la de $B$ hace lo mismo en el mercado de $A$;
-\item podría pensarse que los consumidores no ganan, porque sigue habiendo un solo bien y además se paga el transporte. Pero, al invadirse los mercados, aumentan las unidades ofrecidas en cada uno y el precio baja: se pasa del \emph{monopolio} a un \emph{oligopolio}, a la \autor{Cournot} o a la \autor{Bertrand}, más cerca de la competencia.
-\end{itemize}
-Es el \concepto{efecto procompetitivo} del comercio internacional en su forma más sencilla; con competencia en cantidades es el dumping recíproco (\ref{sec:dumping-reciproco}).
-\begin{figuracaja}
-\caption{El monopolista exporta mientras el precio exterior supere su coste marginal}\label{fig:monopolio-procompetitivo}
-\grafico[0.5\textwidth]{monopolio-procompetitivo}
-\fuente{elaboración propia a partir de \textcite{Brander1981Intra}.}
-\end{figuracaja}
-\end{anotaciones}
 
 \subparagraph{iii) Implicaciones}
 
@@ -450,43 +401,15 @@ Es el \concepto{efecto procompetitivo} del comercio internacional en su forma m�
 \paragraph{c) Evidencia empírica}
 
 \begin{itemize}
-\item \emph{La medida del comercio intraindustrial}. Hay que resolver 3~problemas: qué es una industria, cómo medir el comercio en las 2~direcciones y cómo distinguir sus tipos.
-  \begin{itemize}
-  \item \emph{Qué es una industria}. Es el problema central, porque el resultado depende de él: con una definición amplia, todo comercio parece intraindustrial, y con una muy fina, ninguno.
-    \begin{itemize}
-    \item \emph{En teoría}, una industria agrupa bienes que son sustitutivos cercanos en la demanda (el mismo uso) y que se producen con técnicas e intensidades factoriales parecidas (el mismo proceso). Los 2~criterios no siempre coinciden: los muebles de madera y los de metal sirven para lo mismo y se hacen de forma distinta.
-    \item \emph{En la práctica}, se usan las clasificaciones estadísticas de productos, que tienen varios niveles de desagregación. La \concepto{Clasificación Uniforme para el Comercio Internacional} (CUCI, revisión 4, de Naciones Unidas) va de la sección (1~dígito) a la división (2), el grupo (3), el subgrupo (4) y la partida básica (5); por ejemplo, la sección 5, productos químicos, la división 54, productos medicinales y farmacéuticos, y el grupo 542, medicamentos, el del enganche. El \emph{Sistema Armonizado} (SA) llega a 6~dígitos y la nomenclatura de la Unión Europea, a 8 (10~en el TARIC). Lo habitual es medir con la CUCI a 3~dígitos o a 5, o con el SA a 6.
-    \item \emph{El sesgo de agregación}: cuanto más agregada es la clasificación, más comercio intraindustrial se mide, porque en un mismo grupo se compensan exportaciones e importaciones de bienes distintos, a veces con intensidades factoriales muy diferentes. Por eso \textcite{Finger1975Trade} sostuvo que buena parte del comercio intraindustrial medido es comercio interindustrial de \autor{Heckscher}-\autor{Ohlin} mal clasificado. En el comercio de España con Francia, el índice baja de 0,63~con la CUCI a 3~dígitos a 0,48~a 5~dígitos y a 0,46~con el SA a 6 (tabla~\ref{tab:gl-agregacion}). Desagregar tampoco es la solución perfecta: con una clasificación muy fina se separan variedades del mismo bien.
-    \item \emph{La agregación geográfica}: el índice multilateral, con las exportaciones e importaciones de un país frente al mundo, compensa lo que se exporta a un socio con lo que se importa de otro, y sale mayor que el bilateral. Lo correcto es calcularlo por pares de socio y producto.
-    \end{itemize}
-  \Needspace{12\baselineskip}
-  \item y \emph{cómo medirlo}. Con $X_k$ y $M_k$ las exportaciones y las importaciones de la industria $k$, el \concepto{índice de \autor{Grubel}-\autor{Lloyd}}\nocite{GrubelLloyd1971Empirical}, que vale 0~si todo el comercio de la industria va en una dirección (interindustrial) y 1~si se reparte por igual en las 2 (intraindustrial), es
+\item \emph{La medida del comercio intraindustrial}. Con $X_k$ y $M_k$ las exportaciones y las importaciones de la industria $k$, el \concepto{índice de \autor{Grubel}-\autor{Lloyd}}\nocite{GrubelLloyd1971Empirical}, que vale 0~si todo el comercio de la industria va en una dirección (interindustrial) y 1~si se reparte por igual en las 2 (intraindustrial), es
 \funcionclave[eq:grubel-lloyd]{GL_k\equiv 1-\frac{|X_k-M_k|}{X_k+M_k}=\frac{2\min\{X_k,M_k\}}{X_k+M_k}\in[0,1]}
   La segunda forma dice lo mismo de otro modo: es el comercio que se compensa en las 2~direcciones, $\min\{X_k,M_k\}$, en proporción a la media del comercio de la industria, $(X_k+M_k)/2$, que es el índice que usan \textcite[cap.~8]{KrugmanObstfeldMelitz2018International}. Para el país, se pondera cada industria por su peso en el comercio, $GL=\sum_k\big[(X_k+M_k)-|X_k-M_k|\big]\big/\sum_k(X_k+M_k)$.\footnote{El índice anterior de \textcite{Balassa1966Tariff} mide lo contrario, el comercio en una sola dirección: $|X_k-M_k|/(X_k+M_k)$, que vale 1~si no hay comercio intraindustrial y 0~si todo lo es; el del país es la media simple de las industrias. El de \autor{Grubel}-\autor{Lloyd} es su complementario, con la media ponderada.}
-  \item \emph{El desequilibrio comercial}: si un país tiene un saldo global distinto de 0, el índice agregado no puede llegar a 1~aunque todo su comercio sea intraindustrial; \textcite{Aquino1978Intra} propuso corregirlo, aunque no hay acuerdo sobre la corrección.
-  \item \emph{Horizontal o vertical}. Con el \emph{valor unitario} (el precio por kilo) de las exportaciones y de las importaciones de cada producto se separan los 2~tipos: si difieren poco (menos de un 15~\% en el criterio habitual), el comercio es de variedades de calidad parecida, \concepto{intraindustrial horizontal}, el de \autor{Krugman}; si difieren más, es de calidades distintas, \concepto{intraindustrial vertical}, el de \autor{Falvey}, \autor{Linder} o \autor{Shaked} y \autor{Sutton}. En el Reino Unido, el vertical era la mayor parte\nocite{GreenawayHineMilner1995Vertical}.
-  \item \emph{El comercio intraindustrial marginal}: el índice de \autor{Grubel}-\autor{Lloyd} mide niveles, pero para los costes de ajuste importa si los \emph{aumentos} del comercio son intraindustriales. \textcite{Brulhart1994Marginal} lo mide con el mismo índice aplicado a las variaciones, $A_k=1-|\Delta X_k-\Delta M_k|/(|\Delta X_k|+|\Delta M_k|)$: cuanto más se acerca a 1, más se reparte el ajuste dentro de cada industria y menos tienen que cambiar de industria los factores.
-  \end{itemize}
+\item Medirlo bien exige decidir qué es una industria (con una clasificación más agregada se mide más comercio intraindustrial: es el \emph{sesgo de agregación} de \textcite{Finger1975Trade}), corregir el desequilibrio comercial y separar el comercio horizontal del vertical por los valores unitarios. El detalle, con las cifras de España, está en el anexo~\ref{anexo:intraindustrial}.
 \item \emph{Lo que dicen los datos}. En 2006, el 27~\% del comercio mundial era intraindustrial con la CUCI a 5~dígitos y el 44~\% a 3~dígitos; había crecido desde los años 60~y era mucho mayor entre países de renta alta y media que en los de renta baja\nocite{Brulhart2009Account}.\footnote{En España, alrededor de un tercio del comercio de bienes con sus 50~principales socios es intraindustrial: el índice agregado es de 0,33~a 5~dígitos y de 0,44~a 3~dígitos, y llega a 0,48~en el comercio con Francia y a 0,52~con Alemania (elaboración propia con datos de 2025 de \textcite{Eurostat2026Comext}; no es una cifra oficial).} Es mayor entre economías desarrolladas, grandes, con gustos parecidos y próximas\nocite{GreenawayMilner1986Economics}.\footnote{En los países desarrollados es alto en las industrias intensivas en capital y en tecnología, donde hay economías de escala, competencia imperfecta y diferenciación, y bajo en las intensivas en trabajo. \autor{Balassa} lo observó ya en la Comunidad Económica Europea: el comercio que creó la integración fue sobre todo intraindustrial\nocite{Balassa1966Tariff}.}
 \item \emph{Las ganancias por variedad} se pueden cuantificar: entre 1972 y 2001 el número de variedades importadas por Estados Unidos se triplicó, una ganancia para los consumidores del 2,6~\% del PIB\nocite{BrodaWeinstein2006Globalization}.
 \item Los efectos escala y de cierre de empresas se han medido con la liberalización entre Canadá y Estados Unidos; como el cierre no es al azar, sino de las menos productivas, se cuentan con el modelo de \autor{Melitz} (\ref{sec:melitz}).
 \end{itemize}
 
-\begin{table}[H]
-\centering
-\caption{El sesgo de agregación: índice de \autor{Grubel}-\autor{Lloyd} según el nivel de la clasificación}\label{tab:gl-agregacion}
-\begin{tabular}{>{\raggedright\arraybackslash}m{5.6cm}>{\centering\arraybackslash}m{1.8cm}>{\centering\arraybackslash}m{1.8cm}>{\centering\arraybackslash}m{1.8cm}}
-\toprule
-\rowcolor{tceeazulpalido}\textbf{Comercio} & \textbf{CUCI, 3 dígitos} & \textbf{CUCI, 5 dígitos} & \textbf{SA, 6 dígitos}\\
-\midrule
-Mundo, 2006 & 0,44 & 0,27 & —\\
-España con sus 50 principales socios, 2025 & 0,44 & 0,33 & —\\
-España-Alemania, 2025 & 0,62 & 0,52 & —\\
-España-Francia, 2025 & 0,63 & 0,48 & 0,46\\
-\bottomrule
-\end{tabular}
-\fuente{mundo, \textcite{Brulhart2009Account}; España, elaboración propia con datos de \textcite{Eurostat2026Comext}, por pares de socio y producto (no es una cifra oficial).}
-\end{table}
 
 \paragraph{d) Valoración}
 
@@ -716,32 +639,11 @@ España-Francia, 2025 & 0,63 & 0,48 & 0,46\\
 \end{table}
 
 \begin{itemize}
-\item \emph{La curva de concentración} (gráfico~\ref{fig:concentracion-espana}) completa la tabla: ordena las empresas exportadoras de mayor a menor y muestra qué parte del valor exportado hacen el 1~\%, el 10~\% o el 50~\% mayores. Paso a paso:
-  \begin{enumerate}
-  \item en el eje horizontal, el porcentaje de empresas, de la mayor a la menor, en escala logarítmica, porque casi todo el valor lo hace una parte muy pequeña de ellas; en el vertical, la cuota acumulada del valor exportado;
-  \item la curva de 2019: el 1~\% mayor de las exportadoras hacía el 76,7~\% de la exportación, y el 10~\%, el 98,6~\%\nocite{AEAT2026MicrodatosEmpresas};
-  \item la de 2025, por debajo en todo el recorrido: el 1~\% mayor hizo el 68,6~\% y el 10~\%, el 95,7~\%\nocite{AEAT2026MicrodatosEmpresas};
-  \item los puntos de las 10, 100~y 1.000~primeras, que apenas se mueven (la tabla~\ref{tab:concentracion-espana}).
-  \end{enumerate}
+\item \emph{La curva de concentración} de las exportadoras y la comparación con otros países europeos están en el anexo~\ref{anexo:concentracion}.
 \item \emph{Qué ha cambiado}. El número de exportadoras cayó de unas 209.000~en 2019 a unas 127.000~en 2025, y casi todas las que dejaron de exportar eran pequeñas: en 2019, el 80~\% menor de las exportadoras hacía solo el 0,2~\% del valor. Al desaparecer esa cola, la cuota de las mayores en número absoluto casi no cambia, pero cada percentil corresponde a menos empresas y la curva baja. La exportación no se ha concentrado más en las grandes; lo que se ha reducido es la base de exportadoras pequeñas y ocasionales\nocite{AEAT2026MicrodatosEmpresas}.
 \item \emph{En términos de \autor{Melitz}}, es lo que ocurre cuando sube el umbral de exportación, $\varphi^*_x$, por ejemplo porque crecen los costes fijos de exportar, $F^x$, o la incertidumbre sobre los mercados de destino: salen de la exportación las empresas que estaban cerca del umbral, que exportaban poco, y el margen extensivo (cuántas exportan) se reduce mucho más que el valor, que depende del margen intensivo de las grandes. La lectura de política es la del modelo: reducir $F^x$ (información, promoción, redes en el exterior) es lo que amplía la base exportadora.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{España: cuota acumulada del valor exportado según el porcentaje de empresas exportadoras, de mayor a menor, 2019 y 2025}\label{fig:concentracion-espana}
-\grafico[0.75\textwidth]{concentracion-exportadoras-espana}
-\fuente{elaboración propia con los microdatos de empresas exportadoras de la Agencia Tributaria \parencite{AEAT2026MicrodatosEmpresas}; solo agregados; 2025, provisional.}
-\end{figure}
-
-\begin{anotaciones}
-\textbf{España frente a otros países europeos.} Con la estadística de comercio por características de las empresas de Eurostat (TEC), que mide la concentración con la misma definición en todos los países, España está entre los países europeos con la exportación \emph{menos} concentrada (gráfico~\ref{fig:concentracion-ue}): en 2024, sus 1.000~primeras exportadoras hicieron el 67,5~\% de la exportación de bienes, como en Alemania y Polonia (65,6~\%) y por encima de Italia (53,3~\%), el país con la base exportadora más repartida, frente al 80~\% de Francia y el 98~\% de Irlanda, donde unas pocas multinacionales hacen casi toda la exportación\nocite{Eurostat2026TEC}. La concentración es mayor cuanto más pequeña es la economía y cuanto más pesan las filiales de multinacionales, algo coherente con \autor{Melitz}: cuanto menor es el mercado interior, solo las empresas más productivas cubren los costes de exportar. Las cifras de Eurostat no coinciden exactamente con las de la Agencia Tributaria de la tabla~\ref{tab:concentracion-espana} (las 10~primeras, el 16,6~\% en 2024), porque Eurostat cuenta empresas del directorio estadístico y no operadores fiscales.
-\begin{figuracaja}
-\caption{Cuota de las 10, 100~y 1.000~mayores empresas en la exportación de bienes de 12~países europeos, 2024 (\%)}\label{fig:concentracion-ue}
-\grafico[0.75\textwidth]{concentracion-exportadoras-ue}
-\fuente{\textcite[ext\_tec02]{Eurostat2026TEC}.}
-\end{figuracaja}
-\end{anotaciones}
 
 \paragraph{e) Valoración}
 
@@ -1246,7 +1148,10 @@ Con economías externas, la industria se queda donde empezó antes, aunque no se
 \item La relación marginal de sustitución entre 2~variedades es igual a su precio relativo: $(x_i/x_j)^{\rho-1}=p_i/p_j$, es decir, $x_i=x_j\,(p_i/p_j)^{-\sigma}$, porque $1/(1-\rho)=\sigma$.
 \item Sustituyendo en la restricción, $\sum_ip_ix_i=x_j\,p_j^{\sigma}\sum_ip_i^{1-\sigma}=w$, de donde
   $$x_j=\frac{w\,p_j^{-\sigma}}{\sum_ip_i^{1-\sigma}}=\frac{w}{P}\left(\frac{p_j}{P}\right)^{-\sigma},\qquad P\equiv\Big[\sum_{i=1}^{n}p_i^{\,1-\sigma}\Big]^{\frac{1}{1-\sigma}},$$
-  que es \eqref{eq:demanda-krugman}. $P$ es el coste mínimo de una unidad del agregador: el gasto total es $P\,U=w$. Con un sector numerario además del diferenciado, la derivación es la del anexo de \autor{Dixit}-\autor{Stiglitz} \vertema{3.A.18}.\findemo
+  \begin{equation}\label{eq:demanda-krugman}
+  x_j=\frac{w}{P}\left(\frac{p_j}{P}\right)^{-\sigma}.
+  \end{equation}
+  $P$ es el coste mínimo de una unidad del agregador: el gasto total es $P\,U=w$. Con un sector numerario además del diferenciado, la derivación es la del anexo de \autor{Dixit}-\autor{Stiglitz} \vertema{3.A.18}.\findemo
 \end{itemize}
 
 \paragraph{El precio, la escala y el número de variedades}
@@ -1266,22 +1171,105 @@ Con economías externas, la industria se queda donde empezó antes, aunque no se
   Por simetría, $M_B$ es lo mismo: el comercio está equilibrado, sin que haga falta ajustar los salarios, que son iguales en los 2~países. Las exportaciones de cada país son la parte de las variedades nacionales que compran los extranjeros, y todo ese comercio es intraindustrial ($GL=1$).
 \end{itemize}
 
-\paragraph{La tangencia de \autor{Chamberlin} con demanda isoelástica}
+\paragraph{La tangencia}
 
 \begin{itemize}
-\item El gráfico~\ref{fig:krugman-tangencia} muestra el equilibrio de una empresa en 3~pasos:
+\item Gráficamente, el equilibrio de cada empresa es la tangencia de \autor{Chamberlin} con una demanda isoelástica: la entrada desplaza la demanda de cada variedad, con el precio fijo en el margen sobre $c\,w$, hasta que toca al coste medio. El gráfico en 3~paneles está en su tema \vertema{3.A.18}.
+\end{itemize}
+
+\paragraph{Con elasticidad constante, la curva PP es horizontal}
+
+Con la CES, la elasticidad de la demanda de cada variedad es $\sigma$ para cualquier consumo por persona, y la condición de la curva PP da $p/w=c\,\sigma/(\sigma-1)$: \emph{PP es horizontal} (gráfico~\ref{fig:krugman-ppzz-ces}). La apertura baja ZZ igual que antes, pero el nuevo corte queda a la misma altura:
+\begin{itemize}
+\item el margen y el precio relativo, $p/w$, no cambian: no hay efecto procompetitivo;
+\item como $p/w-c=F/(L\,x)$ no cambia, tampoco cambia lo que vende cada empresa, $q=L\,x=(\sigma-1)F/c$: no hay efecto escala. Lo que cambia es el consumo por persona de cada variedad, que se reduce a la mitad, $x_1=x_0/2$, porque cada empresa reparte las mismas ventas entre el doble de consumidores;
+\item cada país sigue teniendo $n=L/(\sigma F)$ empresas: no hay racionalización;
+\item y cada consumidor dispone del doble de variedades: \emph{toda la ganancia es de variedad}, como en el desarrollo con elasticidad constante.
+\end{itemize}
+\begin{figure}[H]
+\centering
+\caption{Con elasticidad constante, la curva PP es horizontal: la apertura solo aumenta la variedad}\label{fig:krugman-ppzz-ces}
+\grafico[0.55\textwidth]{krugman-ppzz-ces}
+\fuente{elaboración propia a partir de \textcite{Krugman1980Scale} y \textcite{DixitStiglitz1977Monopolistic}.}
+\end{figure}
+
+\paragraph{El efecto procompetitivo con 2~monopolistas}
+
+El monopolio basta, por sí solo, para que haya comercio intraindustrial. Supongamos 2~países, $A$ y $B$, cada uno con un monopolista que produce el mismo bien (gráfico~\ref{fig:monopolio-procompetitivo}):
+\begin{itemize}
+\item en \emph{autarquía}, cada empresa produce $Q_0$, donde $\mathrm{IMg}=\mathrm{CMg}$, y cobra $p_M$: producir más le obligaría a bajar el precio de todas las unidades que vende, no solo el de las adicionales, y el ingreso marginal quedaría por debajo del coste marginal;
+\item si puede \emph{comerciar}, a la empresa de $A$ le interesa producir más si puede vender esas unidades en $B$ sin rebajar el precio de las que vende en casa: cada unidad exportada a un precio cercano a $p_M$ deja $p_M-\mathrm{CMg}>0$, hasta $Q_1$. Gana a costa del beneficio del monopolista de $B$ en su mercado, y la de $B$ hace lo mismo en el mercado de $A$;
+\item podría pensarse que los consumidores no ganan, porque sigue habiendo un solo bien y además se paga el transporte. Pero, al invadirse los mercados, aumentan las unidades ofrecidas en cada uno y el precio baja: se pasa del \emph{monopolio} a un \emph{oligopolio}, a la \autor{Cournot} o a la \autor{Bertrand}, más cerca de la competencia.
+\end{itemize}
+Es el \concepto{efecto procompetitivo} del comercio internacional en su forma más sencilla; con competencia en cantidades es el dumping recíproco (\ref{sec:dumping-reciproco}).
+\begin{figure}[H]
+\centering
+\caption{El monopolista exporta mientras el precio exterior supere su coste marginal}\label{fig:monopolio-procompetitivo}
+\grafico[0.5\textwidth]{monopolio-procompetitivo}
+\fuente{elaboración propia a partir de \textcite{Brander1981Intra}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: la medida del comercio intraindustrial}\label{anexo:intraindustrial}
+
+\begin{itemize}
+\item Medir el comercio intraindustrial con el índice de \autor{Grubel}-\autor{Lloyd} \eqref{eq:grubel-lloyd} exige resolver 3~problemas: qué es una industria, cómo tratar el desequilibrio comercial y cómo distinguir sus tipos.
+\item \emph{Qué es una industria}. Es el problema central, porque el resultado depende de él: con una definición amplia, todo comercio parece intraindustrial, y con una muy fina, ninguno.
   \begin{itemize}
-  \item con pocas variedades, el precio que da el margen está por encima del coste medio y hay beneficios (panel a);
-  \item atraídas por ellos, entran variedades: la demanda de cada una se desplaza hacia la izquierda, con el precio fijo en el margen sobre $c\,w$ (panel b);
-  \item hasta que la demanda es tangente al coste medio y el beneficio es nulo (panel c).\footnote{Al bajar la demanda de cada variedad, su cantidad de equilibrio disminuye y, por las economías de escala, el coste medio sube a lo largo de su curva, que no se desplaza, mientras el precio se mantiene en $p^*$. En la tangencia también se cumple $\mathrm{IMg}=\mathrm{CMg}$.}
+  \item \emph{En teoría}, una industria agrupa bienes que son sustitutivos cercanos en la demanda (el mismo uso) y que se producen con técnicas e intensidades factoriales parecidas (el mismo proceso). Los 2~criterios no siempre coinciden: los muebles de madera y los de metal sirven para lo mismo y se hacen de forma distinta.
+  \item \emph{En la práctica}, se usan las clasificaciones estadísticas de productos, que tienen varios niveles de desagregación. La \concepto{Clasificación Uniforme para el Comercio Internacional} (CUCI, revisión 4, de Naciones Unidas) va de la sección (1~dígito) a la división (2), el grupo (3), el subgrupo (4) y la partida básica (5); por ejemplo, la sección 5, productos químicos, la división 54, productos medicinales y farmacéuticos, y el grupo 542, medicamentos, el del enganche. El \emph{Sistema Armonizado} (SA) llega a 6~dígitos y la nomenclatura de la Unión Europea, a 8 (10~en el TARIC). Lo habitual es medir con la CUCI a 3~dígitos o a 5, o con el SA a 6.
+  \item \emph{El sesgo de agregación}: cuanto más agregada es la clasificación, más comercio intraindustrial se mide, porque en un mismo grupo se compensan exportaciones e importaciones de bienes distintos, a veces con intensidades factoriales muy diferentes. Por eso \textcite{Finger1975Trade} sostuvo que buena parte del comercio intraindustrial medido es comercio interindustrial de \autor{Heckscher}-\autor{Ohlin} mal clasificado. En el comercio de España con Francia, el índice baja de 0,63~con la CUCI a 3~dígitos a 0,48~a 5~dígitos y a 0,46~con el SA a 6 (tabla~\ref{tab:gl-agregacion}). Desagregar tampoco es la solución perfecta: con una clasificación muy fina se separan variedades del mismo bien.
+  \item \emph{La agregación geográfica}: el índice multilateral, con las exportaciones e importaciones de un país frente al mundo, compensa lo que se exporta a un socio con lo que se importa de otro, y sale mayor que el bilateral. Lo correcto es calcularlo por pares de socio y producto.
   \end{itemize}
+\item \emph{El desequilibrio comercial}: si un país tiene un saldo global distinto de 0, el índice agregado no puede llegar a 1~aunque todo su comercio sea intraindustrial; \textcite{Aquino1978Intra} propuso corregirlo, aunque no hay acuerdo sobre la corrección.
+\item \emph{Horizontal o vertical}. Con el \emph{valor unitario} (el precio por kilo) de las exportaciones y de las importaciones de cada producto se separan los 2~tipos: si difieren poco (menos de un 15~\% en el criterio habitual), el comercio es de variedades de calidad parecida, \concepto{intraindustrial horizontal}, el de \autor{Krugman}; si difieren más, es de calidades distintas, \concepto{intraindustrial vertical}, el de \autor{Falvey}, \autor{Linder} o \autor{Shaked} y \autor{Sutton}. En el Reino Unido, el vertical era la mayor parte\nocite{GreenawayHineMilner1995Vertical}.
+\item \emph{El comercio intraindustrial marginal}: el índice de \autor{Grubel}-\autor{Lloyd} mide niveles, pero para los costes de ajuste importa si los \emph{aumentos} del comercio son intraindustriales. \textcite{Brulhart1994Marginal} lo mide con el mismo índice aplicado a las variaciones, $A_k=1-|\Delta X_k-\Delta M_k|/(|\Delta X_k|+|\Delta M_k|)$: cuanto más se acerca a 1, más se reparte el ajuste dentro de cada industria y menos tienen que cambiar de industria los factores.
+  \end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El sesgo de agregación: índice de \autor{Grubel}-\autor{Lloyd} según el nivel de la clasificación}\label{tab:gl-agregacion}
+\begin{tabular}{>{\raggedright\arraybackslash}m{5.6cm}>{\centering\arraybackslash}m{1.8cm}>{\centering\arraybackslash}m{1.8cm}>{\centering\arraybackslash}m{1.8cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Comercio} & \textbf{CUCI, 3 dígitos} & \textbf{CUCI, 5 dígitos} & \textbf{SA, 6 dígitos}\\
+\midrule
+Mundo, 2006 & 0,44 & 0,27 & —\\
+España con sus 50 principales socios, 2025 & 0,44 & 0,33 & —\\
+España-Alemania, 2025 & 0,62 & 0,52 & —\\
+España-Francia, 2025 & 0,63 & 0,48 & 0,46\\
+\bottomrule
+\end{tabular}
+\fuente{mundo, \textcite{Brulhart2009Account}; España, elaboración propia con datos de \textcite{Eurostat2026Comext}, por pares de socio y producto (no es una cifra oficial).}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: la concentración de la exportación española}\label{anexo:concentracion}
+
+\begin{itemize}
+\item \emph{La curva de concentración} (gráfico~\ref{fig:concentracion-espana}) completa la tabla~\ref{tab:concentracion-espana}: ordena las empresas exportadoras de mayor a menor y muestra qué parte del valor exportado hacen el 1~\%, el 10~\% o el 50~\% mayores. Paso a paso:
+  \begin{enumerate}
+  \item en el eje horizontal, el porcentaje de empresas, de la mayor a la menor, en escala logarítmica, porque casi todo el valor lo hace una parte muy pequeña de ellas; en el vertical, la cuota acumulada del valor exportado;
+  \item la curva de 2019: el 1~\% mayor de las exportadoras hacía el 76,7~\% de la exportación, y el 10~\%, el 98,6~\%\nocite{AEAT2026MicrodatosEmpresas};
+  \item la de 2025, por debajo en todo el recorrido: el 1~\% mayor hizo el 68,6~\% y el 10~\%, el 95,7~\%\nocite{AEAT2026MicrodatosEmpresas};
+  \item los puntos de las 10, 100~y 1.000~primeras, que apenas se mueven (la tabla~\ref{tab:concentracion-espana}).
+  \end{enumerate}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{Equilibrio de una empresa en el modelo de \autor{Krugman} con elasticidad constante: la entrada desplaza la demanda de cada variedad hasta la tangencia con el coste medio}\label{fig:krugman-tangencia}
-\grafico[0.95\textwidth]{krugman-tangencia}
-\fuente{elaboración propia a partir de \textcite{DixitStiglitz1977Monopolistic} y \textcite{Gandolfo2014International}.}
+\caption{España: cuota acumulada del valor exportado según el porcentaje de empresas exportadoras, de mayor a menor, 2019 y 2025}\label{fig:concentracion-espana}
+\grafico[0.75\textwidth]{concentracion-exportadoras-espana}
+\fuente{elaboración propia con los microdatos de empresas exportadoras de la Agencia Tributaria \parencite{AEAT2026MicrodatosEmpresas}; solo agregados; 2025, provisional.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{España frente a otros países europeos.} Con la estadística de comercio por características de las empresas de Eurostat (TEC), que mide la concentración con la misma definición en todos los países, España está entre los países europeos con la exportación \emph{menos} concentrada (gráfico~\ref{fig:concentracion-ue}): en 2024, sus 1.000~primeras exportadoras hicieron el 67,5~\% de la exportación de bienes, como en Alemania y Polonia (65,6~\%) y por encima de Italia (53,3~\%), el país con la base exportadora más repartida, frente al 80~\% de Francia y el 98~\% de Irlanda, donde unas pocas multinacionales hacen casi toda la exportación\nocite{Eurostat2026TEC}. La concentración es mayor cuanto más pequeña es la economía y cuanto más pesan las filiales de multinacionales, algo coherente con \autor{Melitz}: cuanto menor es el mercado interior, solo las empresas más productivas cubren los costes de exportar. Las cifras de Eurostat no coinciden exactamente con las de la Agencia Tributaria de la tabla~\ref{tab:concentracion-espana} (las 10~primeras, el 16,6~\% en 2024), porque Eurostat cuenta empresas del directorio estadístico y no operadores fiscales.
+\end{itemize}
+\begin{figure}[H]
+\centering
+\caption{Cuota de las 10, 100~y 1.000~mayores empresas en la exportación de bienes de 12~países europeos, 2024 (\%)}\label{fig:concentracion-ue}
+\grafico[0.75\textwidth]{concentracion-exportadoras-ue}
+\fuente{\textcite[ext\_tec02]{Eurostat2026TEC}.}
 \end{figure}
 
 % ==========================================================================

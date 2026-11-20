@@ -226,3 +226,10 @@ Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase 
 - 1 viñeta → 2: se añade delante la de **Goodhart** (1975): «cualquier regularidad estadística observada tiende a desmoronarse en cuanto se la presiona con fines de control»; por eso la demanda de dinero sirve para entender la política monetaria, no para dirigirla. Se mantiene la del euro digital y las monedas estables.
 - Fuente comprobada: Goodhart (1975), «Problems of Monetary Management: The U.K. Experience», *Papers in Monetary Economics*, vol. 1, Reserve Bank of Australia (`Goodhart1975Problems`, ya en el .bib). El cuerpo (III, la experiencia de los objetivos monetarios) ya enunciaba la ley; la opinión da la cita literal.
 - Ficha: en pocas palabras.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-09 (solape con el 3.B.2).** Miller-Orr queda en una viñeta (la banda, $(b\sigma^2/i)^{1/3}$ y las elasticidades de la demanda de dinero), con remisión al 3.B.2; salen su función clave y su gráfico, que se desarrollan en el 3.B.2 como gestión de tesorería. Baumol-Tobin sigue desarrollado aquí. La tabla de teorías de la demanda de dinero no cambia.
+- **Euro digital (solape con el 3.B.43, detectado al resolver GEN-10).** El párrafo del euro digital (curso legal, sin intereses, límite, sin conexión, calendario del reglamento y del BCE) era casi idéntico al del 3.B.43: queda en una viñeta con la idea propia de este tema (qué supone para la demanda de dinero y por qué el límite y la falta de remuneración), con remisión al 3.B.43 y al 3.A.36. No hacía falta anexo: todo lo que salió está en el 3.B.43.

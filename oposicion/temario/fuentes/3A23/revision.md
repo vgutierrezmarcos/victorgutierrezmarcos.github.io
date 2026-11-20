@@ -245,3 +245,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - 1 viñeta con 3 subviñetas → 2 viñetas: comparar un fallo con otro y no con un ideal (falacia del nirvana); el informe Stern y los instrumentos robustos. Fuera la mención a Kahn (ya es la frase del 3A20).
 - Frase: informe Stern (2006), «el mayor fallo de mercado que el mundo ha visto». Comprobada en el PDF: *Summary of Conclusions*, p. viii (HM Treasury, 30/10/2006): «Climate change is the greatest market failure the world has ever seen, and it interacts with other market imperfections» (el resumen ejecutivo, p. i, dice «the greatest and widest-ranging market failure ever seen»). Nota al pie con el original y la fuente; bib: Stern2007Economics (libro, Cambridge UP, 2007). Ojo: la introducción (Relevancia) ya cita la misma frase; en la opinión se retoma como cierre del círculo. Ficha: la frase abreviada.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- GEN-17 (instrumentos frente a la contaminación, con 3.B.31): la evidencia empírica del mercado de derechos pasa del RCDE al programa de SO2 (lluvia ácida) de la Ley de Aire Limpio de Estados Unidos de 1990: tope, derechos gratuitos negociables y acumulables, −94 % de emisiones de las centrales entre 1990 y 2019 (LaCount et al., 2021), coste menor del previsto y la lección de la credibilidad de las reglas (Schmalensee y Stavins, 2013; 2 entradas nuevas en el .bib). El RCDE queda en 1 viñeta con remisión al 3.B.31, y todo su desarrollo anterior (fases, tope, resultados, precios, reserva de estabilidad, RCDE 2 y MAFC) pasa sin cambios a un anexo nuevo, `anexo:rcde`. Nota del cante actualizada; \minutos sin cambios; 37 páginas.

@@ -279,53 +279,27 @@ Conclusión\esqtiempo{1}
 
 \paragraph{b) Modelo}
 
-\subparagraph{i) Supuestos}
+\subparagraph{i) Supuestos y resultado}
 
 \begin{itemize}
-\item Cada prestatario pide un préstamo de la misma cuantía para un proyecto.
-\item Los proyectos tienen el \emph{mismo rendimiento medio y distinto riesgo}.
-\item Hay \emph{responsabilidad limitada}: si el proyecto fracasa, el prestatario no devuelve y solo pierde su garantía; si sale bien, devuelve $1+\hat r$ por unidad prestada.
-\item El banco no observa el riesgo de cada proyecto (selección adversa) ni el proyecto que se elige después (riesgo moral), y solo fija el tipo $\hat r$.
-\end{itemize}
-
-\subparagraph{ii) Desarrollo}
-
-\begin{itemize}
-\item \emph{Por qué al prestatario le gusta el riesgo}: se queda con todo lo que el proyecto rinda por encima de la deuda y, si fracasa, solo pierde la garantía. El banco, en cambio, cobra como mucho la deuda.
-\item \emph{Los 3~efectos de subir el tipo}:
-  \begin{itemize}
-  \item el \emph{directo}: cobra más a los que pagan;
-  \item el de \emph{selección adversa}: los prestatarios con proyectos más seguros dejan de pedir;
-  \item el de \emph{incentivos}: los que quedan eligen proyectos más arriesgados.
-  \end{itemize}
-\item \emph{El resultado}: los 2~últimos efectos reducen la probabilidad de cobrar, y el rendimiento esperado del banco deja de crecer con el tipo a partir de un tipo $\hat r^*$:
+\item \emph{El modelo, en una línea}: proyectos con el mismo rendimiento medio y distinto riesgo, responsabilidad limitada y un banco que no observa el riesgo de cada proyecto ni lo que el prestatario hace después y solo fija el tipo $\hat r$; se desarrolla, con su gráfico, en su tema \vertema{3.A.13}.
+\item \emph{El resultado}: subir el tipo cobra más a los que pagan, pero ahuyenta a los prestatarios más seguros (\emph{selección adversa}) y empuja a los que quedan hacia proyectos más arriesgados (\emph{incentivos}). A partir de un tipo $\hat r^*$, el rendimiento esperado del banco deja de crecer con el tipo:
   \funcionclave[eq:stiglitz-weiss]{\mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\cdot\Pr(\text{repago}\mid\hat r),\qquad \frac{\partial\Pr(\text{repago}\mid\hat r)}{\partial\hat r}<0}
-\item \emph{El racionamiento}: el banco no presta por encima de $\hat r^*$, y la oferta de crédito se dobla hacia atrás desde ese tipo. Si a $\hat r^*$ la demanda supera a la oferta, hay \concepto{racionamiento del crédito en equilibrio}: solicitantes iguales en apariencia reciben el préstamo o no, y el tipo que vaciaría el mercado no es un equilibrio (gráfico~\ref{fig:stiglitz-weiss}). Es el mismo gráfico con el que se desarrolla el modelo completo \vertema{3.A.13}.
+\item \emph{El racionamiento}: el banco no presta por encima de $\hat r^*$, y la oferta de crédito se dobla hacia atrás desde ese tipo. Si a $\hat r^*$ la demanda supera a la oferta, hay \concepto{racionamiento del crédito en equilibrio}: solicitantes iguales en apariencia reciben el préstamo o no, y el tipo que vaciaría el mercado no es un equilibrio.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{Racionamiento del crédito (\autor{Stiglitz} y \autor{Weiss}, 1981)}\label{fig:stiglitz-weiss}
-\grafico[0.92\textwidth]{stiglitz-weiss}
-\fuente{elaboración propia a partir de \textcite{StiglitzWeiss1981Credit} y \textcite{FreixasRochet2008Microeconomics}. A la izquierda, el rendimiento esperado del banco, máximo en $\hat r^*$; a la derecha, el mercado de préstamos con exceso de demanda a $\hat r^*$.}
-\end{figure}
-
-\subparagraph{iii) Implicaciones}
+\subparagraph{ii) Implicaciones: lo que justifica la regulación}
 
 \begin{itemize}
-\item \emph{Ineficiencia}: proyectos rentables se quedan sin financiar, sobre todo los de las pymes y los nuevos, y el crecimiento se resiente.
-\item \emph{Las soluciones privadas} revelan información:
+\item \emph{El fallo}: proyectos rentables se quedan sin financiar, sobre todo los de las pymes y los nuevos, y el crecimiento se resiente. El mercado no lo corrige subiendo el tipo, porque es justo lo que el banco no quiere hacer: la intervención tiene que actuar sobre la \emph{información} o sobre el \emph{riesgo}, no sobre el precio.
+\item \emph{Las garantías}: separan a los prestatarios, porque quien arriesga su garantía revela que confía en su proyecto, y por eso las soluciones privadas (garantías, historial de crédito, relación a largo plazo entre el banco y el cliente) llegan lejos. Pero dejan fuera a quien no tiene ni garantías ni historial, y una garantía muy alta puede volver a atraer a los más arriesgados, los ricos dispuestos a jugarse más\nocite{StiglitzWeiss1981Credit}. La regulación responde por 2~vías:
   \begin{itemize}
-  \item las garantías y el historial de crédito, que separan a los prestatarios, aunque dejan fuera a quien no tiene ni lo uno ni lo otro;
-  \item la relación a largo plazo entre el banco y el cliente.
+  \item compartir el riesgo con \emph{avales públicos} y banca pública, como las líneas del Instituto de Crédito Oficial, que prestan donde el mercado no llega;
+  \item y limitar el riesgo moral con ratios entre el préstamo y el valor de la garantía (\emph{loan to value}, LTV) en las hipotecas (apartado~\ref{sec:macroprudencial}).
   \end{itemize}
-\item \emph{Las soluciones públicas}:
-  \begin{itemize}
-  \item infraestructuras de información, como la Central de Información de Riesgos del Banco de España, que da a los bancos el endeudamiento de cada cliente;
-  \item avales públicos y banca pública, como las líneas del Instituto de Crédito Oficial, que comparten el riesgo con los bancos o prestan donde el mercado no llega;
-  \item límites al riesgo moral, como el del préstamo en relación con el valor de la garantía (\emph{loan to value}, LTV) en las hipotecas (apartado~\ref{sec:macroprudencial}).
-  \end{itemize}
-\item \emph{La política monetaria tiene efectos reales por el crédito}: si el banco central da más fondos a los bancos, la oferta de crédito se desplaza a la derecha y el racionamiento se reduce, como buscaban las operaciones de financiación a plazo más largo con objetivo específico del BCE desde 2014 \vertema{3.A.37}.
+\item \emph{Las centrales de riesgos}: la información sobre el endeudamiento de cada cliente es un bien que el mercado ofrece poco, porque el banco que la reúne no quiere compartirla con sus competidores. Por eso la recoge el supervisor: la Central de Información de Riesgos del Banco de España da a los bancos el endeudamiento de cada cliente con todo el sistema, y reduce la selección adversa sin tocar el tipo.
+\item \emph{El racionamiento en una crisis}: cuando la economía empeora, sube el riesgo de los proyectos y baja el capital de los bancos. Subir el tipo para cubrirse ahuyentaría a los mejores prestatarios, así que el ajuste llega por la cantidad y no por el precio: el crédito cae más de lo que sube el tipo, y caen primero las empresas pequeñas y opacas, como se vio en España tras 2008\nocite{JimenezEtAl2012Credit}.
+\item \emph{La política monetaria y los avales}: por eso la política monetaria tiene efectos reales por el crédito: si el banco central da más fondos a los bancos, la oferta de crédito se desplaza a la derecha y el racionamiento se reduce, como buscaban las operaciones de financiación a plazo más largo con objetivo específico del BCE desde 2014 \vertema{3.A.37}. Y por eso los avales públicos fueron la respuesta a la covid-19 (anexo~\ref{anexo:covid}).
 \end{itemize}
 
 \begin{anotaciones}

@@ -7021,11 +7021,7 @@ textcite{MillerOrr1966Model}
 \emph on
 empresa
 \emph default
- cuyos cobros y pagos netos de cada dÃ­a son aleatorios: su saldo de caja sigue un paseo aleatorio, con varianza diaria 
-\begin_inset Formula $\sigma^2$
-\end_inset
-
-.
+ cuyos cobros y pagos netos son aleatorios,
 \begin_inset Foot
 status collapsed
 
@@ -7075,242 +7071,19 @@ literal "false"
 
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Itemize
-
+ y la regla Ã³ptima pasa a ser una 
 \emph on
-La regla Ã³ptima es una banda
+banda
 \emph default
- (grÃ¡fico
-\begin_inset space ~
-
+: la caja se mueve libremente entre un mÃ­nimo y un mÃ¡ximo, y solo al tocarlos se compran o venden bonos hasta un punto de retorno, a una distancia del mÃ­nimo proporcional a 
+\begin_inset Formula $(b\,\sigma^2/i)^{1/3}$
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:miller-orr"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
+, con 
+\begin_inset Formula $\sigma^2$
 \end_inset
 
-): la empresa fija un saldo mÃ­nimo, 
-\begin_inset Formula $M^{\mathrm{inf}}$
-\end_inset
-
-, y deja que la caja se mueva libremente entre Ã©l y un lÃ­mite superior, 
-\begin_inset Formula $M^{\mathrm{sup}}=M^{\mathrm{inf}}+3z^*$
-\end_inset
-
-. Si toca el lÃ­mite superior, compra bonos hasta volver al 
-\emph on
-punto de retorno
-\emph default
-, 
-\begin_inset Formula $M^{\mathrm{ret}}=M^{\mathrm{inf}}+z^*$
-\end_inset
-
-; si toca el inferior, vende bonos hasta volver a Ã©l. Con 
-\begin_inset Formula $b$
-\end_inset
-
- el coste de cada operaciÃ³n e 
-\begin_inset Formula $i$
-\end_inset
-
- el tipo diario, 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-funcionclave
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-eq:miller-orr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-z*=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-left
-\end_layout
-
-\end_inset
-
-(
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-3
-\begin_inset space \thinspace{}
-
-\end_inset
-
-b
-\begin_inset space \thinspace{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-sigma
-\end_layout
-
-\end_inset
-
-2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-4
-\begin_inset space \thinspace{}
-
-\end_inset
-
-i
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-right
-\end_layout
-
-\end_inset
-
-)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1/3
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- y el saldo medio es 
-\begin_inset Formula $M^{\mathrm{inf}}+\tfrac{4}{3}\,z^*$
-\end_inset
-
-. Solo el saldo mÃ­nimo lo fija la empresa a su criterio; el punto de retorno y el lÃ­mite superior son Ã³ptimos. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Implicaciones
-\emph default
-: la demanda de dinero tiene elasticidad 
+ la varianza diaria de los flujos. La demanda de dinero tiene entonces elasticidad 
 \begin_inset Formula $-1/3$
 \end_inset
 
@@ -7318,159 +7091,17 @@ Implicaciones
 \begin_inset Formula $1/3$
 \end_inset
 
- respecto al coste de cada operaciÃ³n y a la varianza de los flujos: la incertidumbre aumenta la demanda de dinero, y sigue habiendo economÃ­as de escala. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
+ respecto al coste de cada operaciÃ³n y a la varianza: la incertidumbre la aumenta y sigue habiendo economÃ­as de escala. Como gestiÃ³n de la tesorerÃ­a de una empresa, con su grÃ¡fico y un ejemplo, se desarrolla en su tema 
+\begin_inset Flex Ver tema
 status collapsed
 
 \begin_layout Plain Layout
-
-\backslash
-centering
+3.B.2
 \end_layout
 
 \end_inset
 
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-El modelo de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Miller
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Orr
-\end_layout
-
-\end_inset
-
-: la caja se mueve libremente dentro de una banda
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:miller-orr"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.7
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-miller-orr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{MillerOrr1966Model}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
+. 
 \end_layout
 
 \begin_layout Subparagraph
@@ -15237,43 +14868,17 @@ status collapsed
 \emph on
 El euro digital
 \emph default
- serÃ­a dinero del banco central en forma digital para el pÃºblico: un medio de pago con curso legal, sin intereses, con un lÃ­mite de tenencia por persona y utilizable sin conexiÃ³n. La ComisiÃ³n propuso su reglamento en junio de 2023
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Comision2023EuroDigital"
-literal "false"
+, dinero del banco central en forma digital para el pÃºblico, toca a la demanda de dinero por un lado concreto: si el pÃºblico cambiara depÃ³sitos por euros digitales, los bancos perderÃ­an financiaciÃ³n barata, y en una crisis la huida hacia el dinero del banco central serÃ­a mÃ¡s rÃ¡pida. Por eso se diseÃ±a con un lÃ­mite de tenencia y sin remuneraciÃ³n; a cambio, mantiene un ancla pÃºblica cuando el efectivo se usa cada vez menos. Su diseÃ±o y el estado de su reglamento se desarrollan en su tema 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.43
+\end_layout
 
 \end_inset
 
-; el Consejo fijÃ³ su posiciÃ³n en diciembre de 2025
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Consejo2025EuroDigital"
-literal "false"
-
-\end_inset
-
- y el Parlamento Europeo, en julio de 2026
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "PE2026EuroDigital"
-literal "false"
-
-\end_inset
-
-, y las negociaciones siguen abiertas. Si el reglamento se aprueba en 2026, el BCE prevÃ© un piloto en 2027 y la primera emisiÃ³n en 2029
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "BCE2025EuroDigital"
-literal "false"
-
-\end_inset
-
- 
+ y, desde la polÃ­tica monetaria, 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -15284,14 +14889,6 @@ status collapsed
 \end_inset
 
 . 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Para la demanda de dinero
-\emph default
-: si el pÃºblico cambiara depÃ³sitos por euros digitales, los bancos perderÃ­an financiaciÃ³n barata, y en una crisis la huida hacia el dinero del banco central serÃ­a mÃ¡s rÃ¡pida: por eso el lÃ­mite de tenencia y que no se remunere. A cambio, mantiene un ancla pÃºblica cuando el efectivo se usa cada vez menos. 
 \end_layout
 
 \begin_layout Itemize

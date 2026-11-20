@@ -288,3 +288,12 @@ Cada una con la opción aplicada:
 
 - Viñetas: 2 → 2. La segunda, más corta: las instituciones suplen en parte la flexibilidad y la movilidad que faltan.
 - Frase célebre: no tenía asignada.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-07 (Barro-Gordon, con el 3.A.36)**, opción (a): en «Beneficios macroeconómicos: la credibilidad» el modelo de una economía cerrada queda citado en la idea, con su resultado (el sesgo inflacionista, `eq:sesgo`, que sigue siendo función clave porque lo usan las preguntas del tribunal) y la remisión al 3.A.36. El desarrollo es ahora la versión abierta con 2 países: Giavazzi y Pagano (1988), en 5 pasos (cada país con su sesgo, el tipo fijo, la tentación de devaluar, el público que lo anticipa y la unión que hace creíble el ancla), con el gráfico de De Grauwe (2022, fig. 2.14) en el plano $(U,\pi)$ (`graficos/barro-gordon-abierta.tex`, copiado del 3.B.15 con $\gamma'$ en el ancla y $\gamma$ en el país con sesgo, la notación de este tema). En las extensiones entra el balance con la estabilización de Alesina y Barro (2002, entrada nueva del `.bib`, comprobada en Crossref) y se mantiene el banquero conservador de Rogoff. El ejemplo de 1992-1993 pasa al paso 4.
+- La ficha de repaso sigue con el gráfico cerrado (`barro-gordon`); conviene cambiarlo por `barro-gordon-abierta` cuando se rehaga la ficha.
+- **GEN-15 (política fiscal en la unión monetaria, con el 3.A.32)**: aquí no cambia nada; el 3.A.32 se queda con una frase y remite a este tema.
+- Los `\minutos` no cambian.

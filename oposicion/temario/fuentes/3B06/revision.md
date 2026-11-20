@@ -332,3 +332,10 @@ Ninguna nota lo necesitaba (la de los antecedentes de la nueva geografía econó
 - Antes: 2 viñetas largas. Después: 2 viñetas más cortas (ACR 2012: misma ganancia con 2 datos; los modelos nuevos cambian cómo y quién, no cuánto, y piden apertura con políticas).
 - Frase: no hay asignada; ninguna.
 - Ficha: sin cambios.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-05 (solape con el 3.A.18).** El equilibrio cerrado con la CES ya no se rehace paso a paso (demanda y sus 4 propiedades, maximización, libre entrada, mercado de trabajo): queda en una función clave con $p^*$, $q^*$ y $n^*$, la remisión al 3.A.18 y lo que importa para el comercio (la escala no depende del mercado; el número de variedades, sí). Sale la tangencia en 3 paneles del anexo (es el gráfico del 3.A.18); la derivación de la demanda y del equilibrio sigue en el anexo. En la nota del cante, el tiempo que se libera pasa a la apertura y a PP-ZZ (Krugman sigue en 6′).
+- **Extensión (40 páginas como máximo).** El tema tenía 45 páginas antes de esta pasada. Además de lo anterior, pasan a anexos, sin cambiar nada de lo que se canta: el gráfico de PP horizontal con la CES y el efecto procompetitivo con 2 monopolistas (antes en recuadros, ahora en el anexo de Krugman); el detalle de la medida del comercio intraindustrial (qué es una industria, sesgo de agregación, desequilibrio, horizontal y vertical, comercio marginal) con su tabla, a un anexo nuevo, «la medida del comercio intraindustrial»; y la curva de concentración de las exportadoras españolas con la comparación europea, a otro anexo nuevo, «la concentración de la exportación española». En el cuerpo quedan la función clave de Grubel-Lloyd, los datos y la tabla de concentración.

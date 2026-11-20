@@ -51,7 +51,7 @@ NIVEL_MAX = 3
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 REPO = 'vgutierrezmarcos/victorgutierrezmarcos.github.io'
-RAMA = 'revision-temario'
+RAMA = 'temario-publicado'   # rama de publicación (se crea al lanzar desde revision-temario-2)
 FUENTES = 'oposicion/temario/fuentes'
 SALIDA = 'oposicion/temario/app/revisados.json'
 EJERCICIOS = {'1': 'primer-ejercicio', '3': 'tercer-ejercicio', '4': 'cuarto-ejercicio'}

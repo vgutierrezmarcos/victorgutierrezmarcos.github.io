@@ -200,3 +200,14 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 
 - **Antes → después**: 1 viñeta → 2 cortas (euro más sólido pero incompleto; completar uniones y euro digital).
 - **Frase célebre**: No: la frase de Draghi («lo que sea necesario… y créanme, será suficiente») ya es el enganche de la introducción, vuelve en el cuerpo (III) y la idea final la retoma («El BCE ganó su fama en 2012»). Repetirla en la opinión sería la cuarta vez. Ficha sin cambios.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-10 (marco operativo del BCE, con el 3.A.36)**, opción (a): el 3.B.43 se queda solo con el Eurosistema.
+  - El gráfico teórico del corredor y el suelo (`marco-operativo`, copiado del 3.A.36) sale del cuerpo y en su lugar va el de los tipos oficiales del BCE con el tipo a un día (`tipos-bce`), que estaba al principio del III y ahora está en el II.3, donde se explica el paso del corredor al suelo; el III remite a él. La ficha de repaso sigue usando los 2 gráficos.
+  - La nota sobre las subastas se queda en el dato (subastas a tipo variable entre 2000 y 2008): la teoría de las subastas americana y holandesa está en el 3.A.36.
+  - La viñeta del marco de 2024 se parte en 3 (tenía más de 130 palabras) y recoge la facilidad marginal 25 pb por encima de las OPF, que el 3.A.36 ya no da.
+  - El euro digital se queda aquí con su calendario legislativo; el 3.A.36 da la teoría de las monedas digitales de banco central y remite aquí.
+- Los `\minutos` no cambian.

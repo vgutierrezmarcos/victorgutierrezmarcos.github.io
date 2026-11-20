@@ -246,3 +246,9 @@ Ninguna nota lo necesitaba.
 
 - Viñetas: 1 → 2 (la paradoja de Minsky; menos crisis y más baratas con capital, liquidez, perímetro y resolución). Ficha al día.
 - Frase: «la estabilidad es desestabilizadora» (Minsky). No he encontrado la fórmula literal en *Stabilizing an Unstable Economy* (1986) ni en el documento de trabajo de 1992; es la fórmula con la que Papadimitriou y Wray resumen la hipótesis en la introducción a la reedición de 2008 (McGraw-Hill, p. xii), entre comillas y atribuida a Minsky. Por eso el tema la presenta como «la paradoja de Minsky» y la nota dice de dónde sale (nueva entrada PapadimitriouWray2008Minsky en el .bib).
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- GEN-13 (Minsky, con 3.A.4 y 3.A.42): las 3 posiciones financieras y la dinámica quedan en una viñeta con remisión a 3.A.4 y 3.A.42, y sale el «momento Minsky» con el dato de la deuda privada de Estados Unidos (125 % → 171 %), que sigue en el 3.A.4. A cambio, la anatomía de Kindleberger gana la tabla nueva `tab:fases-kindleberger`, con las 5 fases en 3 crisis (Mares del Sur, 1720; Estados Unidos, 1929; Japón, 1985-1992), y remite a la de 2007-2008, que ya se recorre fase a fase en II.4. 31 páginas.

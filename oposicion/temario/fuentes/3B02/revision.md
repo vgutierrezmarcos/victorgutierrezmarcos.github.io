@@ -255,3 +255,10 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Antes: 3 viñetas (VAN y sus ingredientes; una sola tasa y tasas de corte altas; estimar riesgo y valorar flexibilidad). Después: 2 viñetas (la tercera se funde en la segunda).
 - Frase: no hay asignada; ninguna.
 - Ficha: sin cambios (ya era corta).
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-08 (solape con el 3.A.34).** La opción de esperar queda en una línea, con el refrán del tema y la remisión al 3.A.34 (sin los supuestos repetidos ni la ecuación con la misma etiqueta). El apartado se dedica a valorar las opciones reales con el árbol binomial del gráfico del árbol de decisión y un ejemplo propio (VAN estático 9,1; abandonar 13,6; ampliar 18,2; VAN ampliado 40,9; esperar 36,4: conviene invertir hoy). El ejemplo de Pindyck se queda en el 3.A.34, donde su tabla es el corazón del cante, en lugar de pasarlo aquí como decía la opción (a): así cada tema tiene su ejemplo.
+- **GEN-09 (solape con el 3.A.35).** Baumol-Tobin queda en una viñeta con $M^*$, las economías de escala (cash pooling) y la remisión al 3.A.35; sale su gráfico (está en el 3.A.35) y el ejemplo de la empresa pasa al anexo de la solución de esquina, que ahora se titula «un ejemplo y la solución de esquina». Miller-Orr se desarrolla como gestión de tesorería (supuestos, banda, función clave, ejemplo numérico de la tesorera e implicaciones), con su gráfico. En la nota del cante, Baumol-Tobin pasa a 0′30″ y Miller-Orr a 1′30″ (el bloque II sigue en 6′30″). Se quita «en el término medio está la virtud», que es del 3.A.35.

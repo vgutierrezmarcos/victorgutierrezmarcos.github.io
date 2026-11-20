@@ -662,7 +662,9 @@ Transferencias fiscales (\autor{Kenen}) & \textcolor{tceerojo}{No} & Presupuesto
 \begin{itemize}
 \item La política monetaria a la que se renuncia no siempre es un activo. Si el banco central nacional tiene poca credibilidad, renunciar a él puede \emph{bajar} la inflación sin subir el paro.
 \item Un país con fama de inflacionista que comparte moneda con uno creíble toma prestada su credibilidad, como dice el refrán: «Arrímate a los buenos y serás uno de ellos».
-\item Es el problema de la \concepto{inconsistencia temporal} (\emph{time inconsistency}) de \textcite{KydlandPrescott1977Rules},\footnote{\autor{Finn Kydland} y \autor{Edward Prescott} recibieron el Premio Nobel de Economía en 2004 «por sus contribuciones a la macroeconomía dinámica: la consistencia temporal de la política económica y las fuerzas que impulsan los ciclos económicos»\nocite{Nobel2004KydlandPrescott}.} que \autor{Barro} y \autor{Gordon} (1983) llevan a la política monetaria: lo que el banco central promete hoy no es lo que le conviene hacer mañana.
+\item El punto de partida es la \concepto{inconsistencia temporal} (\emph{time inconsistency}) de \textcite{KydlandPrescott1977Rules},\footnote{\autor{Finn Kydland} y \autor{Edward Prescott} recibieron el Premio Nobel de Economía en 2004 «por sus contribuciones a la macroeconomía dinámica: la consistencia temporal de la política económica y las fuerzas que impulsan los ciclos económicos»\nocite{Nobel2004KydlandPrescott}.} que \textcite{BarroGordon1983Positive} llevan a la política monetaria: un banco central que no puede comprometerse y quiere un paro $U^*$ menor que el natural acaba, con el mismo paro natural, en una inflación mayor que su objetivo $\pi^*$, el \concepto{sesgo inflacionista}, mayor cuanto menor es el peso $\gamma$ que da a la inflación \vertema{3.A.36}:
+  \funcionclave[eq:sesgo]{\pi^D=\pi^*+\frac{\alpha}{\gamma}\,(U^n-U^*)>\pi^*}
+\item Aquí interesa su versión con 2~países, la de \textcite{GiavazziPagano1988Advantage}, que \textcite[cap.~2]{DeGrauwe2022Economics} dibuja: ¿puede un país con sesgo librarse de él atando su moneda a la de un país creíble? Y \textcite{AlesinaBarro2002} le ponen precio: lo que se pierde en estabilización.
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -670,59 +672,60 @@ Transferencias fiscales (\autor{Kenen}) & \textcolor{tceerojo}{No} & Presupuesto
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item \emph{Oferta}: la curva de \autor{Phillips} aumentada con expectativas, $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$, con $\alpha>0$: el paro solo baja de su tasa natural si la inflación sorprende \vertema{3.A.28}.
-\item \emph{Orden de las jugadas}: el público fija sus expectativas $\pi^e_t$ y después el banco central elige $\pi_t$, sin poder comprometerse antes.
-\item \emph{Objetivo del banco central}: minimizar una pérdida cuadrática, con un objetivo de inflación $\pi^*$ y $U^*<U^n$, es decir, quiere menos paro que el natural\nocite{BarroGordon1983Positive}:
-  $$\optim{\min}{\pi_t}{L_t=(U_t-U^*)^2+\gamma\,(\pi_t-\pi^*)^2}{U_t=U^n-\alpha\,(\pi_t-\pi^e_t)}$$
-  donde $\gamma$ es el peso de la inflación.\footnote{Aquí $\gamma$, sin subíndice, es el peso que el banco central da a la inflación; con subíndice ($\gamma_q$, $\gamma_E$, $\gamma_{P^*}$) es una tasa de variación. Las curvas de pérdida en el plano $(U,\pi)$ son elipses centradas en $(U^*,\pi^*)$: el conjunto de puntos mejores que uno dado es convexo; nunca son «cóncavas».}
+\item \emph{2~países}: $A$, el ancla, con un banco central «duro» (la Alemania del Bundesbank), e $I$, con un banco central «blando» (la Italia o la España de los 80).
+\item \emph{Oferta}: en cada uno, la curva de \autor{Phillips} aumentada con expectativas, $U_j=U^n-\alpha\,(\pi_j-\pi^e_j)$, con $\alpha>0$: el paro solo baja de su tasa natural si la inflación sorprende \vertema{3.A.28}.
+\item \emph{Orden de las jugadas}: el público fija sus expectativas y después el banco central elige la inflación, sin poder comprometerse antes.
+\item \emph{Objetivo de cada banco central}: minimizar una pérdida cuadrática, con $U^*<U^n$; en $I$\nocite{BarroGordon1983Positive},
+  $$\optim{\min}{\pi_I}{L_I=(U_I-U^*)^2+\gamma\,(\pi_I-\pi^*)^2}{U_I=U^n-\alpha\,(\pi_I-\pi^e_I)}$$
+  y en el ancla la misma con un peso de la inflación mayor, $\gamma'>\gamma$.\footnote{Aquí $\gamma$ y $\gamma'$, sin subíndice de una variable, son pesos de la inflación; con él ($\gamma_E$, $\gamma_q$, $\gamma_{P^*}$) $\gamma$ es una tasa de variación. Las curvas de pérdida en el plano $(U,\pi)$ son elipses centradas en $(U^*,\pi^*)$: el conjunto de puntos mejores que uno dado es convexo; nunca son «cóncavas».}
+\item \emph{Paridad del poder adquisitivo relativa}: la moneda del país con más inflación se deprecia lo que separa las 2~inflaciones, $\gamma_E=\pi_I-\pi_A$ \vertema{3.B.13}.
 \end{itemize}
 
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{Con discrecionalidad}, el público, racional, anticipa la inflación que el banco central elegirá. La economía acaba en el paro natural, $U_t=U^n$, y con una inflación mayor que el objetivo:
-  \funcionclave[eq:sesgo]{\pi^D=\pi^*+\frac{\alpha}{\gamma}\,(U^n-U^*)>\pi^*}
-  Es el \concepto{sesgo inflacionista}: mayor cuanto menor es el peso $\gamma$ que la autoridad da a la inflación \vertema{3.A.36}.
-\item \emph{Gráficamente} (gráfico~\ref{fig:credibilidad}), los puntos van numerados en el orden en que se recorren:
-  \begin{itemize}
-  \item 0 = R, la regla: con $\pi^e=\pi^*$, la economía está en $(U^n,\pi^*)$;
-  \item 1 = T, la tentación: dada esa curva de \autor{Phillips}, el banco central prefiere sorprender, en la tangencia con su curva de pérdida, con menos paro y más inflación;
-  \item 2: el público lo anticipa y sube sus expectativas; la curva de \autor{Phillips} se desplaza hacia arriba y el paro vuelve a $U^n$ con más inflación;
-  \item 3: el banco central vuelve a optimizar sobre la nueva curva, y el proceso se repite;
-  \item la \concepto{función de reacción} une esas tangencias, la inflación que elige el banco central para cada expectativa; el equilibrio final, F = D (discreción), está donde corta a la vertical $U^n$: la inflación esperada es la elegida y no hay tentación de sorprender.
-  \end{itemize}
-\item \emph{La unión como solución}: si un país con $\gamma$ bajo (la Italia o la España de los 80) comparte banco central con uno de $\gamma'$ alto (la Alemania del Bundesbank), su inflación pasa a $\pi^*+(\alpha/\gamma')(U^n-U^*)$, menor, con el mismo paro natural. Es «atarse las manos»\nocite{GiavazziPagano1988Advantage}: en el gráfico~\ref{fig:credibilidad}, el equilibrio D baja por la vertical $U^n$ hacia R, porque el sesgo $(\alpha/\gamma')(U^n-U^*)$ es menor.
+\item En 5~pasos (gráfico~\ref{fig:credibilidad}):
+  \begin{enumerate}
+  \item \emph{Cada país por su cuenta}: con discrecionalidad, el público anticipa la inflación que elegirá su banco central, y cada uno acaba en su paro natural con su sesgo~\eqref{eq:sesgo}: $\pi^D_A=\pi^*+(\alpha/\gamma')(U^n-U^*)$, menor que $\pi^D_I=\pi^*+(\alpha/\gamma)(U^n-U^*)$. Son los puntos $D_A$ y $D_I$, y la moneda de $I$ se deprecia sin cesar, $\gamma_E=\pi^D_I-\pi^D_A>0$.
+  \item \emph{$I$ fija su tipo de cambio} con la moneda del ancla, $\gamma_E=0$: su inflación pasa a ser la del ancla, $\pi_I=\pi^D_A$. Es el punto $F$, con el mismo paro natural, menos inflación y una pérdida menor.
+  \item \emph{Pero $F$ no es creíble si $I$ puede devaluar}: con el público esperando $\pi^D_A$, a su banco central le conviene devaluar por sorpresa y moverse por su curva de \autor{Phillips} de corto plazo hasta $G$, con menos paro y más inflación.
+  \item \emph{El público lo anticipa} y la economía vuelve a $D_I$: un tipo fijo ajustable no es más creíble que una promesa de inflación baja. El 16~de septiembre de 1992, tras intervenciones masivas, el Reino Unido suspendió la participación de la libra en el mecanismo de cambios del Sistema Monetario Europeo\nocite{BoE1992Operation}, y la peseta se devaluó varias veces entre 1992 y 1993\nocite{EichengreenWyplosz1993Unstable} \vertema{3.B.17}.
+  \item \emph{La unión monetaria} sube tanto el coste de salir que la tentación de $G$ desaparece y $F$ se vuelve creíble: es «atarse las manos». Si el banco central de la unión es tan duro como el del ancla, la inflación de $I$ pasa a $\pi^*+(\alpha/\gamma')(U^n-U^*)$, con el mismo paro natural.
+  \end{enumerate}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{El sesgo inflacionista: de la regla, R, al equilibrio con discreción, F = D}\label{fig:credibilidad}
-\grafico[0.6\textwidth]{barro-gordon}
-\fuente{elaboración propia a partir de \textcite{BarroGordon1983Positive}. T: tentación; 2~y 3: ajuste de expectativas y nueva optimización; F: equilibrio final. Con un ancla creíble, D se acerca a R, como muestran \textcite{GiavazziPagano1988Advantage}.}
+\caption{\autor{Barro} y \autor{Gordon} con 2~países: el sesgo de cada uno, el tipo fijo y la tentación de devaluar}\label{fig:credibilidad}
+\grafico[0.92\textwidth]{barro-gordon-abierta}
+\fuente{elaboración propia a partir de \textcite[cap.~2, fig.~2.14]{DeGrauwe2022Economics}, \textcite{BarroGordon1983Positive} y \textcite{GiavazziPagano1988Advantage}. $D$, discreción; $F$, tipo fijo creíble; $G$, devaluación por sorpresa.}
 \end{figure}
 
 \subparagraph{iii) Implicaciones}
 
 \begin{itemize}
-\item Renunciar a la política monetaria propia con un tipo de cambio fijo frente a un país de baja inflación o con una unión monetaria baja la inflación sin coste en paro natural: desaparece el sesgo inflacionista, no la disyuntiva (\emph{trade-off}) de corto plazo entre inflación y paro.
+\item Renunciar a la política monetaria propia con una unión monetaria con un país de baja inflación baja la inflación sin coste en paro natural: desaparece el sesgo inflacionista, no la disyuntiva (\emph{trade-off}) de corto plazo entre inflación y paro.
+\item \emph{Solo funciona si salir es muy caro}: un tipo fijo que se puede devaluar no basta (pasos 3~y 4); hace falta una unión monetaria o, en menor medida, la dolarización o una caja de conversión \vertema{3.B.15}.
 \item Fue el argumento de Italia y de España para entrar en el Sistema Monetario Europeo y en la unión económica y monetaria con el marco alemán como ancla \vertema{3.B.43}.
 \end{itemize}
 
 \paragraph{c) Extensiones}
 
 \begin{itemize}
-\item \emph{¿Por qué una unión y no un tipo fijo?} Con tipo fijo, el país sigue teniendo moneda y puede devaluar por sorpresa, y el público lo anticipa: la paridad solo es creíble mientras defenderla cuesta menos que abandonarla.
+\item \emph{El balance con la estabilización}: \textcite{AlesinaBarro2002} añaden el coste. Con perturbaciones, el país que adopta la moneda del ancla gana credibilidad y comercio, pero ya no puede responder a sus perturbaciones propias. Le compensa más:
   \begin{itemize}
-  \item El 16~de septiembre de 1992, tras intervenciones masivas, el Reino Unido suspendió la participación de la libra en el mecanismo de cambios del Sistema Monetario Europeo\nocite{BoE1992Operation}; la peseta se devaluó varias veces entre 1992 y 1993\nocite{EichengreenWyplosz1993Unstable} \vertema{3.B.17}.
-  \item Una unión monetaria sube mucho el coste de salir y, con él, la credibilidad.
+  \item cuanto peor es su historial de inflación (el $\gamma$ bajo de su banco central);
+  \item cuanto más comercia con el ancla;
+  \item cuanto más se parecen sus perturbaciones (de producción y de precios) a las del ancla, porque entonces la política común le sirve también a él.
   \end{itemize}
-\item \emph{El banquero conservador}: delegar en un banco central más averso a la inflación que la sociedad reduce el sesgo, pero estabiliza menos la producción ante las perturbaciones de oferta\nocite{Rogoff1985Optimal}.
+  Es la disyuntiva entre credibilidad y flexibilidad, la misma de los criterios de \autor{Mundell} (\ref{sec:mundell}).
+\item \emph{El banquero conservador} es la misma disyuntiva dentro de un país: delegar en un banco central más averso a la inflación que la sociedad reduce el sesgo, pero estabiliza menos la producción ante las perturbaciones de oferta\nocite{Rogoff1985Optimal} \vertema{3.A.36}.
 \end{itemize}
 
 \paragraph{d) Valoración}
 
 \begin{itemize}
-\item El beneficio es para el país de menos credibilidad; el de más credibilidad gana poco y exige garantías: un banco central independiente con la estabilidad de precios como objetivo prioritario \vertema{3.B.43}.
+\item El beneficio es para el país de menos credibilidad. El ancla no gana si el banco central de la unión es el suyo, y pierde si es uno nuevo en el que pesan los 2~países; por eso exige garantías: un banco central independiente con la estabilidad de precios como objetivo prioritario\nocite{DeGrauwe2022Economics} \vertema{3.B.43}.
 \item La credibilidad importada se paga en flexibilidad: el país acepta la política monetaria del ancla aunque sus preferencias sean otras, que es justo el coste del apartado~\ref{sec:costes}.
 \end{itemize}
 

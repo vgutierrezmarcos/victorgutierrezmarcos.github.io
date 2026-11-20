@@ -52,9 +52,9 @@ def leer_tema(t):
     ruta = os.path.join(d, f'{t}.tex')
     if not os.path.exists(ruta):
         return None
-    tex = open(ruta, encoding='utf-8').read()
+    tex = re.sub(r'(?m)^[ \t]*%[^\n]*\n', '', open(ruta, encoding='utf-8').read())   # sin líneas de comentario
     eng = bloque(tex, 'Enganche', r'(?=\\item\s*\\textbf\{\\emph\{(?:Relevancia|Contexto|Objeto)|\\section)')
-    fin = bloque(tex, 'Idea final', r'(?=\\end\{itemize\}\s*(?:\\clearpage|\\appendix|\\section|$))')
+    fin = bloque(tex, 'Idea final', r'(?=\\end\{itemize\}\s*(?:\\end\{itemize\}|\\clearpage|\\appendix|\\section|$))')
     ficha = ''
     rf = os.path.join(d, 'repaso', f'{t}-repaso.tex')
     if os.path.exists(rf):

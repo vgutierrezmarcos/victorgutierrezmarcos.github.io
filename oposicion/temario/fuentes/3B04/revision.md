@@ -273,3 +273,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Antes: 2 viñetas. Después: 2 viñetas algo más cortas (mismo contenido).
 - Frase: no hay asignada; la idea final ya tiene la de Graham (precio y valor).
 - Ficha: sin cambios.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-03 (solape con el 3.A.15).** El I.1 se reduce a lo que dice sobre la decisión de crecer, con remisión al 3.A.15: el enfoque tecnológico queda en 2 viñetas (escala mínima eficiente, horquilla de Stigler y por qué no explica el crecimiento) y salen el gráfico de costes en L, la nota de la planta flexible de Stigler, la cita de Coase, la red de contratos y la nota de los Nobel, que están en el 3.A.15. El enfoque transaccional se queda en la frontera de Coase, la especificidad de Williamson con el gráfico de gobierno y los modos de crecimiento (que es lo propio de este tema) y la propiedad de los activos en una viñeta. Desaparece la frase repetida («El enfoque explica el tamaño de la planta…»). Los minutos del bloque I no cambian (6′30″): I.1 pasa de 3′30″ a 2′ e I.2 (Penrose, Gibrat y Marris) de 3′ a 4′30″, como pedía la duda.

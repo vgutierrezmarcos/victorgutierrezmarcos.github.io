@@ -545,17 +545,8 @@ Conclusión\esqtiempo{1}
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{Paso 1: la convergencia $\beta$}. Hay \concepto{convergencia $\beta$} si las regiones con menos renta por habitante crecen más que las de más renta. Se contrasta con una regresión entre regiones del crecimiento sobre la renta inicial:
-  \funcionclave[eq:convergencia-beta]{\gamma^{y}_{t,t-1}=\beta_0+\beta_1\ln y_{t-1}+\vect{\eta}\cdot\vect{z}_{t-1}+u_t}
-  \begin{itemize}
-  \item es \emph{absoluta} si $\beta_1<0$ sin controles ($\vect{\eta}=\vect{0}$), y \emph{condicional} si $\beta_1<0$ al controlar por $\vect{z}_{t-1}$;
-  \item la \emph{velocidad de convergencia} $\lambda$ es la fracción de la distancia al estado estacionario que se cierra cada año: con un periodo de $T$ años, $\beta_1=-(1-e^{-\lambda T})/T$. En el modelo de \autor{Solow}, $\lambda=(1-\alpha)(n+g+\delta)$.
-  \end{itemize}
-\item \emph{Paso 2: la convergencia $\sigma$}. Hay \concepto{convergencia $\sigma$} si la dispersión de las rentas por habitante (la varianza de su logaritmo) se reduce con el tiempo:
-  \begin{equation}
-  \sigma^{2}_{y,t-1}>\sigma^{2}_{y,t}.\label{eq:convergencia-sigma}
-  \end{equation}
-\item \emph{Paso 3: la relación entre las 2}. La $\beta$ es necesaria pero no suficiente para la $\sigma$: una región pobre puede crecer tanto que adelante a la rica y deje más distancia que al principio, y las perturbaciones nuevas pueden volver a separar a las regiones aunque las pobres crezcan más. Los 3~casos con 2~economías se dibujan aparte \vertema{3.A.45}.
+\item \emph{Las 2~nociones}: hay \concepto{convergencia $\beta$} si las regiones con menos renta por habitante crecen más que las de más renta, es decir, si $\beta_1<0$ en la regresión del crecimiento sobre la renta inicial, $\gamma^{y}_{t,t-1}=\beta_0+\beta_1\ln y_{t-1}+\vect{\eta}\cdot\vect{z}_{t-1}+u_t$ (\emph{absoluta} sin controles, \emph{condicional} con ellos); hay \concepto{convergencia $\sigma$} si se reduce la dispersión de las rentas, la varianza de su logaritmo, $\sigma^{2}_{y,t}$. La $\beta$ es necesaria pero no suficiente para la $\sigma$, por los adelantamientos y por las perturbaciones nuevas \vertema{3.A.45}.
+\item \emph{La velocidad de convergencia} $\lambda$, la fracción de la distancia al estado estacionario que se cierra cada año, se lee en el coeficiente: con un periodo de $T$ años, $\beta_1=-(1-e^{-\lambda T})/T$. Es la que permite comparar las estimaciones de periodos distintos.
 \end{itemize}
 
 \subparagraph{iii) Implicaciones}

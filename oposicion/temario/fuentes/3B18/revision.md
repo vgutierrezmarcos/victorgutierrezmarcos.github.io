@@ -184,3 +184,9 @@ Ninguna nota lo necesitaba.
 
 - Viñetas: 1 → 2. Se parte en dos: resiliencia no es autarquía (diversificar, no cerrarse) y compensar a quien pierde mejor que levantar barreras.
 - Frase célebre: no tenía asignada.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- GEN-18 (cadenas globales de valor, con 3.A.31): el dato de España se unifica con el último oficial, 25,7 % de valor añadido extranjero en 2024 (Eurostat, FIGARO), en la introducción y en IV.1, como ya estaba en IV.4 y en el 3.A.31; el 26,6 % de 2022 queda solo como dato de la OCDE para comparar con el mundo (23,5 % en 2010, media de la OCDE, Estados Unidos y China) y en la nota que reconcilia las fuentes. El gráfico de la UE se queda aquí; el 3.A.31 lo quita.

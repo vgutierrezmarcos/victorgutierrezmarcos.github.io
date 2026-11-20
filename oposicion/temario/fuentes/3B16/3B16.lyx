@@ -9298,7 +9298,7 @@ Un paÃ­s con fama de inflacionista que comparte moneda con uno creÃ­ble toma
 \end_layout
 
 \begin_layout Itemize
-Es el problema de la 
+El punto de partida es la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -9365,170 +9365,50 @@ literal "false"
 \end_inset
 
  que 
-\begin_inset Flex Autor
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-Barro
+
+\backslash
+textcite{BarroGordon1983Positive}
 \end_layout
 
 \end_inset
 
- y 
-\begin_inset Flex Autor
+ llevan a la polÃ­tica monetaria: un banco central que no puede comprometerse y quiere un paro 
+\begin_inset Formula $U^*$
+\end_inset
+
+ menor que el natural acaba, con el mismo paro natural, en una inflaciÃ³n mayor que su objetivo 
+\begin_inset Formula $\pi^*$
+\end_inset
+
+, el 
+\begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Gordon
+sesgo inflacionista
 \end_layout
 
 \end_inset
 
- (1983) llevan a la polÃ­tica monetaria: lo que el banco central promete hoy no es lo que le conviene hacer maÃ±ana. 
-\end_layout
-
-\begin_layout Paragraph
-b) Modelo
-\end_layout
-
-\begin_layout Subparagraph
-i) Supuestos
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Oferta
-\emph default
-: la curva de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Phillips
-\end_layout
-
+, mayor cuanto menor es el peso 
+\begin_inset Formula $\gamma$
 \end_inset
 
- aumentada con expectativas, 
-\begin_inset Formula $U_t=U^n-\alpha\,(\pi_t-\pi^e_t)$
-\end_inset
-
-, con 
-\begin_inset Formula $\alpha>0$
-\end_inset
-
-: el paro solo baja de su tasa natural si la inflaciÃ³n sorprende 
+ que da a la inflaciÃ³n 
 \begin_inset Flex Ver tema
 status collapsed
 
 \begin_layout Plain Layout
-3.A.28
+3.A.36
 \end_layout
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Orden de las jugadas
-\emph default
-: el pÃºblico fija sus expectativas 
-\begin_inset Formula $\pi^e_t$
-\end_inset
-
- y despuÃ©s el banco central elige 
-\begin_inset Formula $\pi_t$
-\end_inset
-
-, sin poder comprometerse antes. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Objetivo del banco central
-\emph default
-: minimizar una pÃ©rdida cuadrÃ¡tica, con un objetivo de inflaciÃ³n 
-\begin_inset Formula $\pi^*$
-\end_inset
-
- y 
-\begin_inset Formula $U^*<U^n$
-\end_inset
-
-, es decir, quiere menos paro que el natural
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "BarroGordon1983Positive"
-literal "false"
 
 \end_inset
 
 : 
-\begin_inset Formula \[\optim{\min}{\pi_t}{L_t=(U_t-U^*)^2+\gamma\,(\pi_t-\pi^*)^2}{U_t=U^n-\alpha\,(\pi_t-\pi^e_t)}\]
-\end_inset
-
-donde 
-\begin_inset Formula $\gamma$
-\end_inset
-
- es el peso de la inflaciÃ³n.
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-AquÃ­ 
-\begin_inset Formula $\gamma$
-\end_inset
-
-, sin subÃ­ndice, es el peso que el banco central da a la inflaciÃ³n; con subÃ­ndice (
-\begin_inset Formula $\gamma_q$
-\end_inset
-
-, 
-\begin_inset Formula $\gamma_E$
-\end_inset
-
-, 
-\begin_inset Formula $\gamma_{P^*}$
-\end_inset
-
-) es una tasa de variaciÃ³n. Las curvas de pÃ©rdida en el plano 
-\begin_inset Formula $(U,\pi)$
-\end_inset
-
- son elipses centradas en 
-\begin_inset Formula $(U^*,\pi^*)$
-\end_inset
-
-: el conjunto de puntos mejores que uno dado es convexo; nunca son Â«cÃ³ncavasÂ».
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Subparagraph
-ii) Desarrollo
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Con discrecionalidad
-\emph default
-, el pÃºblico, racional, anticipa la inflaciÃ³n que el banco central elegirÃ¡. La economÃ­a acaba en el paro natural, 
-\begin_inset Formula $U_t=U^n$
-\end_inset
-
-, y con una inflaciÃ³n mayor que el objetivo: 
 \begin_inset ERT
 status collapsed
 
@@ -9697,26 +9577,112 @@ status collapsed
 
 \end_inset
 
- Es el 
-\begin_inset Flex Concepto
+ 
+\end_layout
+
+\begin_layout Itemize
+AquÃ­ interesa su versiÃ³n con 2
+\begin_inset space ~
+
+\end_inset
+
+paÃ­ses, la de 
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-sesgo inflacionista
+
+\backslash
+textcite{GiavazziPagano1988Advantage}
 \end_layout
 
 \end_inset
 
-: mayor cuanto menor es el peso 
-\begin_inset Formula $\gamma$
+, que 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~2]{DeGrauwe2022Economics}
+\end_layout
+
 \end_inset
 
- que la autoridad da a la inflaciÃ³n 
+ dibuja: Â¿puede un paÃ­s con sesgo librarse de Ã©l atando su moneda a la de un paÃ­s creÃ­ble? Y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{AlesinaBarro2002}
+\end_layout
+
+\end_inset
+
+ le ponen precio: lo que se pierde en estabilizaciÃ³n. 
+\end_layout
+
+\begin_layout Paragraph
+b) Modelo
+\end_layout
+
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+2
+\begin_inset space ~
+
+\end_inset
+
+paÃ­ses
+\emph default
+: 
+\begin_inset Formula $A$
+\end_inset
+
+, el ancla, con un banco central Â«duroÂ» (la Alemania del Bundesbank), e 
+\begin_inset Formula $I$
+\end_inset
+
+, con un banco central Â«blandoÂ» (la Italia o la EspaÃ±a de los 80). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Oferta
+\emph default
+: en cada uno, la curva de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Phillips
+\end_layout
+
+\end_inset
+
+ aumentada con expectativas, 
+\begin_inset Formula $U_j=U^n-\alpha\,(\pi_j-\pi^e_j)$
+\end_inset
+
+, con 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+: el paro solo baja de su tasa natural si la inflaciÃ³n sorprende 
 \begin_inset Flex Ver tema
 status collapsed
 
 \begin_layout Plain Layout
-3.A.36
+3.A.28
 \end_layout
 
 \end_inset
@@ -9727,122 +9693,125 @@ status collapsed
 \begin_layout Itemize
 
 \emph on
-GrÃ¡ficamente
+Orden de las jugadas
 \emph default
- (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:credibilidad"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-), los puntos van numerados en el orden en que se recorren: 
+: el pÃºblico fija sus expectativas y despuÃ©s el banco central elige la inflaciÃ³n, sin poder comprometerse antes. 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-0 = R, la regla: con 
-\begin_inset Formula $\pi^e=\pi^*$
-\end_inset
-
-, la economÃ­a estÃ¡ en 
-\begin_inset Formula $(U^n,\pi^*)$
-\end_inset
-
-; 
-\end_layout
-
-\begin_layout Itemize
-1 = T, la tentaciÃ³n: dada esa curva de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Phillips
-\end_layout
-
-\end_inset
-
-, el banco central prefiere sorprender, en la tangencia con su curva de pÃ©rdida, con menos paro y mÃ¡s inflaciÃ³n; 
-\end_layout
-
-\begin_layout Itemize
-2: el pÃºblico lo anticipa y sube sus expectativas; la curva de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Phillips
-\end_layout
-
-\end_inset
-
- se desplaza hacia arriba y el paro vuelve a 
-\begin_inset Formula $U^n$
-\end_inset
-
- con mÃ¡s inflaciÃ³n; 
-\end_layout
-
-\begin_layout Itemize
-3: el banco central vuelve a optimizar sobre la nueva curva, y el proceso se repite; 
-\end_layout
-
-\begin_layout Itemize
-la 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-funciÃ³n de reacciÃ³n
-\end_layout
-
-\end_inset
-
- une esas tangencias, la inflaciÃ³n que elige el banco central para cada expectativa; el equilibrio final, F = D (discreciÃ³n), estÃ¡ donde corta a la vertical 
-\begin_inset Formula $U^n$
-\end_inset
-
-: la inflaciÃ³n esperada es la elegida y no hay tentaciÃ³n de sorprender. 
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \emph on
-La uniÃ³n como soluciÃ³n
+Objetivo de cada banco central
 \emph default
-: si un paÃ­s con 
-\begin_inset Formula $\gamma$
+: minimizar una pÃ©rdida cuadrÃ¡tica, con 
+\begin_inset Formula $U^*<U^n$
 \end_inset
 
- bajo (la Italia o la EspaÃ±a de los 80) comparte banco central con uno de 
-\begin_inset Formula $\gamma'$
+; en 
+\begin_inset Formula $I$
 \end_inset
 
- alto (la Alemania del Bundesbank), su inflaciÃ³n pasa a 
-\begin_inset Formula $\pi^*+(\alpha/\gamma')(U^n-U^*)$
-\end_inset
 
-, menor, con el mismo paro natural. Es Â«atarse las manosÂ»
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
-key "GiavazziPagano1988Advantage"
+key "BarroGordon1983Positive"
 literal "false"
 
 \end_inset
 
-: en el grÃ¡fico
+, 
+\begin_inset Formula \[\optim{\min}{\pi_I}{L_I=(U_I-U^*)^2+\gamma\,(\pi_I-\pi^*)^2}{U_I=U^n-\alpha\,(\pi_I-\pi^e_I)}\]
+\end_inset
+
+y en el ancla la misma con un peso de la inflaciÃ³n mayor, 
+\begin_inset Formula $\gamma'>\gamma$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+AquÃ­ 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ y 
+\begin_inset Formula $\gamma'$
+\end_inset
+
+, sin subÃ­ndice de una variable, son pesos de la inflaciÃ³n; con Ã©l (
+\begin_inset Formula $\gamma_E$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma_q$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma_{P^*}$
+\end_inset
+
+) 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ es una tasa de variaciÃ³n. Las curvas de pÃ©rdida en el plano 
+\begin_inset Formula $(U,\pi)$
+\end_inset
+
+ son elipses centradas en 
+\begin_inset Formula $(U^*,\pi^*)$
+\end_inset
+
+: el conjunto de puntos mejores que uno dado es convexo; nunca son Â«cÃ³ncavasÂ».
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Paridad del poder adquisitivo relativa
+\emph default
+: la moneda del paÃ­s con mÃ¡s inflaciÃ³n se deprecia lo que separa las 2
+\begin_inset space ~
+
+\end_inset
+
+inflaciones, 
+\begin_inset Formula $\gamma_E=\pi_I-\pi_A$
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.13
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+En 5
+\begin_inset space ~
+
+\end_inset
+
+pasos (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -9858,17 +9827,186 @@ nolink "false"
 
 \end_inset
 
-, el equilibrio D baja por la vertical 
-\begin_inset Formula $U^n$
-\end_inset
-
- hacia R, porque el sesgo 
-\begin_inset Formula $(\alpha/\gamma')(U^n-U^*)$
-\end_inset
-
- es menor. 
+): 
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+Cada paÃ­s por su cuenta
+\emph default
+: con discrecionalidad, el pÃºblico anticipa la inflaciÃ³n que elegirÃ¡ su banco central, y cada uno acaba en su paro natural con su sesgo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:sesgo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: 
+\begin_inset Formula $\pi^D_A=\pi^*+(\alpha/\gamma')(U^n-U^*)$
+\end_inset
+
+, menor que 
+\begin_inset Formula $\pi^D_I=\pi^*+(\alpha/\gamma)(U^n-U^*)$
+\end_inset
+
+. Son los puntos 
+\begin_inset Formula $D_A$
+\end_inset
+
+ y 
+\begin_inset Formula $D_I$
+\end_inset
+
+, y la moneda de 
+\begin_inset Formula $I$
+\end_inset
+
+ se deprecia sin cesar, 
+\begin_inset Formula $\gamma_E=\pi^D_I-\pi^D_A>0$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+
+\begin_inset Formula $I$
+\end_inset
+
+ fija su tipo de cambio
+\emph default
+ con la moneda del ancla, 
+\begin_inset Formula $\gamma_E=0$
+\end_inset
+
+: su inflaciÃ³n pasa a ser la del ancla, 
+\begin_inset Formula $\pi_I=\pi^D_A$
+\end_inset
+
+. Es el punto 
+\begin_inset Formula $F$
+\end_inset
+
+, con el mismo paro natural, menos inflaciÃ³n y una pÃ©rdida menor. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Pero 
+\begin_inset Formula $F$
+\end_inset
+
+ no es creÃ­ble si 
+\begin_inset Formula $I$
+\end_inset
+
+ puede devaluar
+\emph default
+: con el pÃºblico esperando 
+\begin_inset Formula $\pi^D_A$
+\end_inset
+
+, a su banco central le conviene devaluar por sorpresa y moverse por su curva de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Phillips
+\end_layout
+
+\end_inset
+
+ de corto plazo hasta 
+\begin_inset Formula $G$
+\end_inset
+
+, con menos paro y mÃ¡s inflaciÃ³n. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+El pÃºblico lo anticipa
+\emph default
+ y la economÃ­a vuelve a 
+\begin_inset Formula $D_I$
+\end_inset
+
+: un tipo fijo ajustable no es mÃ¡s creÃ­ble que una promesa de inflaciÃ³n baja. El 16
+\begin_inset space ~
+
+\end_inset
+
+de septiembre de 1992, tras intervenciones masivas, el Reino Unido suspendiÃ³ la participaciÃ³n de la libra en el mecanismo de cambios del Sistema Monetario Europeo
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "BoE1992Operation"
+literal "false"
+
+\end_inset
+
+, y la peseta se devaluÃ³ varias veces entre 1992 y 1993
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "EichengreenWyplosz1993Unstable"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.17
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+La uniÃ³n monetaria
+\emph default
+ sube tanto el coste de salir que la tentaciÃ³n de 
+\begin_inset Formula $G$
+\end_inset
+
+ desaparece y 
+\begin_inset Formula $F$
+\end_inset
+
+ se vuelve creÃ­ble: es Â«atarse las manosÂ». Si el banco central de la uniÃ³n es tan duro como el del ancla, la inflaciÃ³n de 
+\begin_inset Formula $I$
+\end_inset
+
+ pasa a 
+\begin_inset Formula $\pi^*+(\alpha/\gamma')(U^n-U^*)$
+\end_inset
+
+, con el mismo paro natural. 
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 
 \begin_inset Float figure
@@ -9895,7 +10033,32 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-El sesgo inflacionista: de la regla, R, al equilibrio con discreciÃ³n, F = D
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Barro
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Gordon
+\end_layout
+
+\end_inset
+
+ con 2
+\begin_inset space ~
+
+\end_inset
+
+paÃ­ses: el sesgo de cada uno, el tipo fijo y la tentaciÃ³n de devaluar
 \end_layout
 
 \end_inset
@@ -9929,7 +10092,7 @@ status collapsed
 
 \end_inset
 
-0.6
+0.92
 \begin_inset ERT
 status collapsed
 
@@ -9961,7 +10124,7 @@ status collapsed
 
 \end_inset
 
-barro-gordon
+barro-gordon-abierta
 \begin_inset ERT
 status collapsed
 
@@ -9983,17 +10146,24 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
+textcite[cap.~2, fig.~2.14]{DeGrauwe2022Economics}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
 textcite{BarroGordon1983Positive}
 \end_layout
 
 \end_inset
 
-. T: tentaciÃ³n; 2
-\begin_inset space ~
-
-\end_inset
-
-y 3: ajuste de expectativas y nueva optimizaciÃ³n; F: equilibrio final. Con un ancla creÃ­ble, D se acerca a R, como muestran 
+ y 
 \begin_inset ERT
 status collapsed
 
@@ -10005,7 +10175,19 @@ textcite{GiavazziPagano1988Advantage}
 
 \end_inset
 
-.
+. 
+\begin_inset Formula $D$
+\end_inset
+
+, discreciÃ³n; 
+\begin_inset Formula $F$
+\end_inset
+
+, tipo fijo creÃ­ble; 
+\begin_inset Formula $G$
+\end_inset
+
+, devaluaciÃ³n por sorpresa.
 \end_layout
 
 \end_inset
@@ -10023,11 +10205,34 @@ iii) Implicaciones
 \end_layout
 
 \begin_layout Itemize
-Renunciar a la polÃ­tica monetaria propia con un tipo de cambio fijo frente a un paÃ­s de baja inflaciÃ³n o con una uniÃ³n monetaria baja la inflaciÃ³n sin coste en paro natural: desaparece el sesgo inflacionista, no la disyuntiva (
+Renunciar a la polÃ­tica monetaria propia con una uniÃ³n monetaria con un paÃ­s de baja inflaciÃ³n baja la inflaciÃ³n sin coste en paro natural: desaparece el sesgo inflacionista, no la disyuntiva (
 \emph on
 trade-off
 \emph default
 ) de corto plazo entre inflaciÃ³n y paro. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Solo funciona si salir es muy caro
+\emph default
+: un tipo fijo que se puede devaluar no basta (pasos 3
+\begin_inset space ~
+
+\end_inset
+
+y 4); hace falta una uniÃ³n monetaria o, en menor medida, la dolarizaciÃ³n o una caja de conversiÃ³n 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.15
+\end_layout
+
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -10051,32 +10256,78 @@ c) Extensiones
 \begin_layout Itemize
 
 \emph on
-Â¿Por quÃ© una uniÃ³n y no un tipo fijo?
+El balance con la estabilizaciÃ³n
 \emph default
- Con tipo fijo, el paÃ­s sigue teniendo moneda y puede devaluar por sorpresa, y el pÃºblico lo anticipa: la paridad solo es creÃ­ble mientras defenderla cuesta menos que abandonarla. 
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{AlesinaBarro2002}
+\end_layout
+
+\end_inset
+
+ aÃ±aden el coste. Con perturbaciones, el paÃ­s que adopta la moneda del ancla gana credibilidad y comercio, pero ya no puede responder a sus perturbaciones propias. Le compensa mÃ¡s: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-El 16
-\begin_inset space ~
+cuanto peor es su historial de inflaciÃ³n (el 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ bajo de su banco central); 
+\end_layout
+
+\begin_layout Itemize
+cuanto mÃ¡s comercia con el ancla; 
+\end_layout
+
+\begin_layout Itemize
+cuanto mÃ¡s se parecen sus perturbaciones (de producciÃ³n y de precios) a las del ancla, porque entonces la polÃ­tica comÃºn le sirve tambiÃ©n a Ã©l. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+Es la disyuntiva entre credibilidad y flexibilidad, la misma de los criterios de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Mundell
+\end_layout
 
 \end_inset
 
-de septiembre de 1992, tras intervenciones masivas, el Reino Unido suspendiÃ³ la participaciÃ³n de la libra en el mecanismo de cambios del Sistema Monetario Europeo
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "BoE1992Operation"
-literal "false"
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:mundell"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-; la peseta se devaluÃ³ varias veces entre 1992 y 1993
+). 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+El banquero conservador
+\emph default
+ es la misma disyuntiva dentro de un paÃ­s: delegar en un banco central mÃ¡s averso a la inflaciÃ³n que la sociedad reduce el sesgo, pero estabiliza menos la producciÃ³n ante las perturbaciones de oferta
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
-key "EichengreenWyplosz1993Unstable"
+key "Rogoff1985Optimal"
 literal "false"
 
 \end_inset
@@ -10086,30 +10337,8 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-3.B.17
+3.A.36
 \end_layout
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Una uniÃ³n monetaria sube mucho el coste de salir y, con Ã©l, la credibilidad. 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-El banquero conservador
-\emph default
-: delegar en un banco central mÃ¡s averso a la inflaciÃ³n que la sociedad reduce el sesgo, pero estabiliza menos la producciÃ³n ante las perturbaciones de oferta
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Rogoff1985Optimal"
-literal "false"
 
 \end_inset
 
@@ -10121,7 +10350,21 @@ d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
-El beneficio es para el paÃ­s de menos credibilidad; el de mÃ¡s credibilidad gana poco y exige garantÃ­as: un banco central independiente con la estabilidad de precios como objetivo prioritario 
+El beneficio es para el paÃ­s de menos credibilidad. El ancla no gana si el banco central de la uniÃ³n es el suyo, y pierde si es uno nuevo en el que pesan los 2
+\begin_inset space ~
+
+\end_inset
+
+paÃ­ses; por eso exige garantÃ­as: un banco central independiente con la estabilidad de precios como objetivo prioritario
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "DeGrauwe2022Economics"
+literal "false"
+
+\end_inset
+
+ 
 \begin_inset Flex Ver tema
 status collapsed
 

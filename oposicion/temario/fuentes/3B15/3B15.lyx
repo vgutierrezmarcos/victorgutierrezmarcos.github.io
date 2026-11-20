@@ -1898,7 +1898,25 @@ literal "false"
 
 \end_inset
 
- da la respuesta de partida
+ da la respuesta de partida: aÃ±ade al IS-LM una tercera curva, la BP (equilibrio de la balanza de pagos), con precios fijos, y mide la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+movilidad del capital
+\end_layout
+
+\end_inset
+
+ con 
+\begin_inset Formula $\beta_K$
+\end_inset
+
+, la sensibilidad de los flujos de capital al diferencial 
+\begin_inset Formula $i-i^*$
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -1917,34 +1935,7 @@ status collapsed
 
 \end_inset
 
-. 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-AÃ±ade al IS-LM una tercera curva, la BP (equilibrio de la balanza de pagos), con precios fijos y el tipo de cambio esperado constante. 
-\end_layout
-
-\begin_layout Itemize
-La 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-movilidad del capital
-\end_layout
-
-\end_inset
-
- se mide con 
-\begin_inset Formula $\beta_K$
-\end_inset
-
-, la sensibilidad de los flujos de capital al diferencial 
-\begin_inset Formula $i-i^*$
-\end_inset
-
-:
+.
 \begin_inset Foot
 status collapsed
 
@@ -1970,75 +1961,45 @@ nolink "false"
 
 \end_inset
 
- con movilidad nula, 
-\begin_inset Formula $\beta_K=0$
-\end_inset
-
-, la BP es vertical; con movilidad perfecta, 
-\begin_inset Formula $\beta_K\to\infty$
-\end_inset
-
-, es horizontal en 
-\begin_inset Formula $i=i^*$
-\end_inset
-
-. 
+ 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-Con movilidad perfecta, cada rÃ©gimen deja viva una sola de las 2
+
+\emph on
+Su resultado, el que importa para elegir rÃ©gimen
+\emph default
+: con movilidad perfecta, cada rÃ©gimen deja viva una sola de las 2
 \begin_inset space ~
 
 \end_inset
 
-polÃ­ticas de demanda: 
+polÃ­ticas de demanda. 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \emph on
-con tipo fijo
+Con tipo fijo
 \emph default
-, la polÃ­tica fiscal es muy eficaz y la monetaria, ineficaz. El banco central compra o vende todas las divisas que haga falta, y la cantidad de dinero se vuelve endÃ³gena: una expansiÃ³n monetaria solo cambia la composiciÃ³n de su balance, con mÃ¡s crÃ©dito interno y menos reservas; 
+, la polÃ­tica fiscal; la monetaria no sirve con 
+\emph on
+ninguna
+\emph default
+ movilidad, porque la cantidad de dinero se vuelve endÃ³gena. El equilibrio interno queda supeditado al objetivo cambiario. 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-con tipo flexible
+Con tipo flexible
 \emph default
-, la polÃ­tica monetaria es muy eficaz, porque actÃºa a travÃ©s de la depreciaciÃ³n, y la fiscal, ineficaz, porque la apreciaciÃ³n expulsa exportaciones netas. 
+, la monetaria, que actÃºa a travÃ©s de la depreciaciÃ³n; la apreciaciÃ³n anula la fiscal. 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-Con menos movilidad (de 
-\begin_inset Formula $\beta_K\to\infty$
-\end_inset
-
- a 
-\begin_inset Formula $\beta_K=0$
-\end_inset
-
-) el resultado se matiza, pero el orden se mantiene (tabla
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:mundell-fleming"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-; los casos, uno a uno y con sus grÃ¡ficos, en el anexo
+Con menos movilidad el resultado se matiza, pero no cambia de orden. Los casos, uno a uno y con su tabla, estÃ¡n en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -2054,1004 +2015,10 @@ nolink "false"
 
 \end_inset
 
-): 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-cuanto mayor es la movilidad, mÃ¡s eficaz es la polÃ­tica que funciona en cada rÃ©gimen (la fiscal con tipo fijo, la monetaria con flexible) y menos la otra; 
-\end_layout
-
-\begin_layout Itemize
-con tipo fijo, la polÃ­tica monetaria no sirve con 
-\emph on
-ninguna
-\emph default
- movilidad: en ese rÃ©gimen, el equilibrio interno queda supeditado al objetivo cambiario. 
+. 
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Eficacia de las polÃ­ticas monetaria y fiscal en el modelo de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Mundell
-\end_layout
-
-\end_inset
-
--
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Fleming
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:mundell-fleming"
-
-\end_inset
-
- 
-\size small
-
-\begin_inset Tabular 
-<lyxtabular version="3" rows="5" columns="6">
-<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="left" valignment="middle" width="1.9cm">
-<column alignment="left" valignment="middle" width="3.0cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceeazulpalido}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-multicolumn{2}{l}{Movilidad del capital}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Perfecta 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Alta 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Baja 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Nula
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="3" alignment="none" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Fiscal
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Tipo de cambio fijo 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Muy eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceedorado}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Poco eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Ineficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Tipo de cambio flexible 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Ineficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceedorado}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Poco eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Muy eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="3" alignment="none" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Monetaria
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Tipo de cambio fijo 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Ineficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Ineficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Ineficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Ineficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Tipo de cambio flexible 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Muy eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Eficaz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-ElaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Heijdra2017Foundations}
-\end_layout
-
-\end_inset
-
-. Movilidad alta: la BP es menos inclinada que la LM; baja: mÃ¡s inclinada. Con tipo fijo, la monetaria solo cambia las reservas, mÃ¡s deprisa cuanto mayor es la movilidad; con tipo flexible, su eficacia crece con la movilidad, y sin movilidad es la de la economÃ­a cerrada.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Nota al opositor
-status collapsed
-
-\begin_layout Standard
-En el cante bastan las 2
-\begin_inset space ~
-
-\end_inset
-
-polÃ­ticas eficaces con movilidad perfecta: la fiscal con tipo fijo y la monetaria con tipo flexible. El resto de la tabla se cuenta de palabra. 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 
 \emph on
@@ -19215,6 +18182,968 @@ regÃ­menes y 4
 \end_inset
 
 grados de movilidad). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Eficacia de las polÃ­ticas monetaria y fiscal en el modelo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Mundell
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Fleming
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:mundell-fleming"
+
+\end_inset
+
+ 
+\size small
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="5" columns="6">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="1.9cm">
+<column alignment="left" valignment="middle" width="3.0cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+multicolumn{2}{l}{Movilidad del capital}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Perfecta 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Alta 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Baja 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Nula
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Fiscal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Tipo de cambio fijo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Muy eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Poco eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Ineficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Tipo de cambio flexible 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Ineficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Poco eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Muy eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Monetaria
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Tipo de cambio fijo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Ineficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Ineficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Ineficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Ineficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Tipo de cambio flexible 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Muy eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Eficaz
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+ElaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Heijdra2017Foundations}
+\end_layout
+
+\end_inset
+
+. Movilidad alta: la BP es menos inclinada que la LM; baja: mÃ¡s inclinada. Con tipo fijo, la monetaria solo cambia las reservas, mÃ¡s deprisa cuanto mayor es la movilidad; con tipo flexible, su eficacia crece con la movilidad, y sin movilidad es la de la economÃ­a cerrada.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

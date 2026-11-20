@@ -297,3 +297,16 @@ Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase 
 - 2 viñetas → 3: se mantienen las 2 (acierto institucional; riesgos fuera del modelo canónico) y se añade que, para el riesgo financiero, la regla sigue siendo la de **Bagehot** (1873): en un pánico, prestar «a un tipo de interés muy alto», «contra todos los buenos valores bancarios y tanto como el público pida».
 - Fuente comprobada: *Lombard Street* (1873), cap. VII (párrafos 58-59 de la edición de Econlib): «First. That these loans should only be made at a very high rate of interest» y «Secondly. That at this rate these advances should be made on all good banking securities, and as largely as the public ask for them». La fórmula de la tabla del encargo («prestar con generosidad, a un tipo de penalización y contra buenas garantías») es un resumen posterior (Bagehot nunca habla de «tipo de penalización» ni de 3 principios): por eso se citan sus palabras y la nota lo advierte. `Bagehot1873` copiada del 1D01.
 - Ficha: en pocas palabras.
+
+## Pasada final (noviembre de 2026)
+
+### Solapes
+
+- **GEN-10 (marco operativo del BCE, con el 3.B.43)**, opción (a): el 3.A.36 se queda con la teoría de los instrumentos y la comparación entre bancos centrales, y el detalle del Eurosistema pasa a ser solo del 3.B.43.
+  - Operaciones de mercado abierto: en vez del detalle de las operaciones del BCE, cómo las usan el BCE y la Reserva Federal; la adjudicación a tipo fijo y sin límite se explica como idea (el banco central fija el precio y la demanda decide la cantidad).
+  - Facilidades permanentes: el corredor como idea, con el equivalente de la Reserva Federal (ventanilla de descuento y remuneración de las reservas y de los repos inversos).
+  - Reservas mínimas y tipos negativos: menos fechas del BCE y la comparación con la Reserva Federal (cero desde 2020; nunca tipos negativos) y el Banco de Japón (fuera de los tipos negativos en marzo de 2024).
+  - Marco operativo: el «suelo con demanda» como concepto, en una viñeta, con el BCE de ejemplo; los parámetros del marco de 2024 (15 y 25 pb, operaciones estructurales) y el exceso de liquidez quedan en el 3.B.43. Se conserva el gráfico teórico del corredor y el suelo (en el 3.B.43 se cambia por el de los tipos oficiales con el tipo a un día).
+  - Euro digital: el apartado pasa a ser «el dinero digital del banco central» (CBDC mayorista y minorista y sus efectos sobre la política monetaria); el calendario legislativo del euro digital se queda en el 3.B.43 y aquí va una frase con remisión.
+- Queda fuera de esta pasada el párrafo del euro digital del 3.A.35 (no me tocaba): es casi igual al del 3.B.43 y convendría dejarlo en la idea con remisión.
+- Los `\minutos` no cambian. La ficha de repaso no se ha tocado (su apartado del euro digital sigue siendo correcto).
