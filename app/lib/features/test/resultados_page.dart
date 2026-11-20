@@ -10,6 +10,7 @@ import '../../data/models/pregunta.dart';
 import '../../data/models/resultado.dart';
 import '../../data/models/reto.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/burbuja_ia.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/texto_formulas.dart';
 import 'compartir_resultado.dart';
@@ -111,6 +112,9 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
             ),
           ],
         ),
+        floatingActionButton: BurbujaIa(acciones: (m) => m.resultadoTest),
+        floatingActionButtonLocation: ubicacionBurbujaIa(ref),
+        floatingActionButtonAnimator: sinAnimacionBurbujaIa,
         body: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
           children: [

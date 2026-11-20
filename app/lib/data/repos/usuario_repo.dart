@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -12,6 +13,7 @@ import '../../features/test/leitner.dart';
 import '../../features/test/motor_test.dart' show TestEnCurso;
 import '../models/resultado.dart';
 import '../models/reto.dart';
+import '../models/sugerencia.dart';
 
 /// Ajustes del usuario (locales y, con sesión, en users/{uid}/progress/settings).
 class Ajustes {
@@ -263,6 +265,54 @@ class UsuarioRepo {
       'creado': FieldValue.serverTimestamp(),
       'enviado': false,
     });
+  }
+
+  // ------------------------------------------------------------ Sugerencias
+
+  /// «Sugerir una mejora» en un tema o en su ficha. Va a los datos del propio
+  /// usuario (`sugerencias/{id}`), sin correo ni nombre: el autor la lee en
+  /// una bandeja anónima (scripts/sugerencias.py). Las mismas claves que
+  /// escribe el conector. Sin red, Firestore la envía al volver.
+  Future<void> sugerirMejora({required String recurso, required String tema, String apartado = '', required String tipo, required String propuesta, String version = ''}) async {
+    final doc = _docUsuario;
+    if (doc == null) throw StateError('Sin sesión');
+    // 1 << 30 y no más: en el navegador los desplazamientos son de 32 bits.
+    final id = 's_${DateTime.now().millisecondsSinceEpoch.toRadixString(36)}${Random().nextInt(1 << 30).toRadixString(36)}';
+    await doc.collection('sugerencias').doc(id).set({
+      'oposicion': oposicion.id,
+      'recurso': recurso,
+      'tema': tema,
+      'apartado': apartado,
+      'tipo': tipo,
+      'cita': '',
+      'propuesta': propuesta,
+      'duda': '',
+      'version': version,
+      'origen': 'app ${(await PackageInfo.fromPlatform()).version}',
+      'estado': 'recibida',
+      'creado': FieldValue.serverTimestamp(),
+    });
+  }
+
+  /// Las sugerencias del usuario en esta oposición, con lo que el autor haya
+  /// contestado (vacío sin sesión).
+  Stream<List<Sugerencia>> sugerencias() {
+    final doc = _docUsuario;
+    if (doc == null) return Stream.value(const []);
+    return doc.collection('sugerencias').snapshots().map((s) => Sugerencia.ordenar([
+          for (final d in s.docs) Sugerencia.fromJson(d.id, d.data(), creado: d.data()['creado'] is Timestamp ? (d.data()['creado'] as Timestamp).toDate() : null),
+        ]));
+  }
+
+  /// El usuario ya ha visto en qué han quedado: Inicio deja de avisar.
+  Future<void> marcarSugerenciasVistas(Iterable<String> ids) async {
+    final doc = _docUsuario;
+    if (doc == null || _db == null || ids.isEmpty) return;
+    final lote = _db.batch();
+    for (final id in ids) {
+      lote.update(doc.collection('sugerencias').doc(id), {'vista': true});
+    }
+    await lote.commit();
   }
 
   // --------------------------------------------------------------- Reto diario
@@ -550,6 +600,8 @@ class UsuarioRepo {
     'tablon': [],
     'coordinacion': [],
     'anotaciones': ['paginas'],
+    'sugerencias': [],
+    'dictamenes': [],
   };
 
   /// Ids de `anotaciones` de un tema: el del PDF de siempre y el del revisado.

@@ -165,10 +165,11 @@ void main() {
       expect(e.puedeCambiar, isFalse);
     });
 
-    test('sin sesión, la anterior con la invitación a entrar, aunque se pida la revisada', () {
+    test('sin sesión, ninguna versión (ni la anterior): solo el aviso para entrar', () {
       for (final pide in [true, false]) {
         final e = elegirVersion(revisado: rev, conSesion: false, pideAnterior: pide);
-        expect(e.version, VersionTema.anterior);
+        expect(e.version, VersionTema.sinSesion);
+        expect(e.esRevisada, isFalse);
         expect(e.hayRevisada, isTrue);
         expect(e.invitarASesion, isTrue);
         expect(e.puedeCambiar, isFalse);

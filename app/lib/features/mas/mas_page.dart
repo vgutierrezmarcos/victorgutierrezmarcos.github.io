@@ -8,6 +8,7 @@ import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/conectar_calendario.dart';
 import '../../core/constants.dart';
+import '../../core/ia.dart';
 import '../../core/notificaciones.dart';
 import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
@@ -24,6 +25,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/boton_oposicion.dart';
 import '../../widgets/comunes.dart';
+import '../temario/sugerencias.dart';
 import '../../widgets/sincronizar.dart';
 import '../plan/proceso_page.dart';
 import '../inicio/permisos_sheet.dart';
@@ -96,7 +98,16 @@ class MasPage extends ConsumerWidget {
           ]),
           const TituloSeccion('Con IA'),
           GrupoFilas(children: [
-            _fila(context, Icons.auto_awesome_outlined, 'EconomIA', 'Tu IA corrige tus cantes, te organiza el cronograma y te pregunta como el tribunal. En Claude, Le Chat, ChatGPT y Gemini', () => context.go('/mas/economia')),
+            _fila(
+                context,
+                Icons.auto_awesome_outlined,
+                'EconomIA',
+                switch ((ref.watch(iaConfiguradaProvider), ref.watch(iaElegidaProvider))) {
+                  (final Ia ia, _) => 'Configurada en ${ia.nombre}',
+                  (null, final Ia ia) => 'Has elegido ${ia.nombre}: falta conectarla',
+                  _ => 'Tu IA corrige tus cantes, te organiza el cronograma y te pregunta como el tribunal. En Claude, Le Chat, ChatGPT y Gemini',
+                },
+                () => context.go('/mas/economia')),
           ]),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),
@@ -226,6 +237,7 @@ class MasPage extends ConsumerWidget {
           const TituloSeccion('Ayuda'),
           GrupoFilas(children: [
           _fila(context, Icons.explore_outlined, 'Guía de la app', 'Dónde está cada cosa, en unos pocos pasos', () => ref.read(guiaProvider.notifier).empezar()),
+          _fila(context, Icons.rate_review_outlined, 'Mis sugerencias', 'Lo que has propuesto mejorar en los temas y las fichas, y en qué ha quedado', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MisSugerenciasPage()))),
           _fila(context, Icons.play_circle_outline, 'Ayuda en vídeo', 'Cómo se pide una clase, el cronograma, la pizarra… en un minuto', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AyudaVideosPage()))),
           ]),
           const TituloSeccion('Acerca de'),

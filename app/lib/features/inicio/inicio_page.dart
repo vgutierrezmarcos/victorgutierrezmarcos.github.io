@@ -17,7 +17,9 @@ import 'permisos_sheet.dart';
 import '../cronograma/cronograma_page.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/burbuja_ia.dart';
 import '../../widgets/comunes.dart';
+import '../temario/sugerencias.dart';
 import '../cantar/probabilidades.dart';
 import '../plan/proceso_page.dart';
 import '../plan/cante_page.dart';
@@ -81,6 +83,9 @@ class InicioPage extends ConsumerWidget {
           ),
         ],
       ),
+      floatingActionButton: BurbujaIa(acciones: (m) => m.inicio(preparador: !opositor)),
+      floatingActionButtonLocation: ubicacionBurbujaIa(ref),
+      floatingActionButtonAnimator: sinAnimacionBurbujaIa,
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(configProvider);
@@ -144,6 +149,7 @@ class InicioPage extends ConsumerWidget {
             if (config != null && config.avisos.isNotEmpty)
               for (final a in config.avisos)
                 Aviso(tipo: TipoAviso.aviso, icono: Icons.campaign_outlined, titulo: a),
+            const AvisoSugerencias(),
             const TarjetaNovedadProceso(),
             const TarjetaElegirPapel(),
             const TarjetaParaEmpezar(),

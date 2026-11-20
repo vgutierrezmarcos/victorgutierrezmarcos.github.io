@@ -95,6 +95,7 @@ class OposicionCuenta {
     if (uid == null) return;
     try {
       await _doc(uid).delete().timeout(_espera);
+      await _doc(uid).parent.doc('conector').delete().timeout(_espera);
     } catch (_) {}
   }
 

@@ -6,6 +6,7 @@ import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/burbuja_ia.dart';
 import '../../widgets/comunes.dart';
 import 'cronograma_form_page.dart';
 import 'cronograma_recibido.dart';
@@ -117,6 +118,9 @@ class CronogramaPage extends ConsumerWidget {
           ),
         ],
       ),
+      floatingActionButton: BurbujaIa(acciones: (m) => m.cronograma),
+      floatingActionButtonLocation: ubicacionBurbujaIa(ref),
+      floatingActionButtonAnimator: sinAnimacionBurbujaIa,
       body: ListaAdaptable(children: [
         const SizedBox(height: 10),
         const TarjetasCronogramasRecibidos(),

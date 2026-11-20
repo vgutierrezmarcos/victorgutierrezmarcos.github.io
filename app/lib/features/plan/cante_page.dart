@@ -18,6 +18,7 @@ import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/burbuja_ia.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/pizarra_cante_vista.dart';
 import '../cantar/pizarra_page.dart';
@@ -201,6 +202,9 @@ class CantePage extends ConsumerWidget {
           ),
         ],
       ),
+      floatingActionButton: BurbujaIa(acciones: (m) => m.cantes),
+      floatingActionButtonLocation: ubicacionBurbujaIa(ref),
+      floatingActionButtonAnimator: sinAnimacionBurbujaIa,
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [

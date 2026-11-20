@@ -243,6 +243,9 @@ enum VersionTema {
   anterior,
   /// La revisada, exclusiva de la app.
   revisada,
+  /// Ninguna: hay revisada pero no hay sesión, y en vez del PDF antiguo se
+  /// pide entrar con Google.
+  sinSesion,
 }
 
 class EleccionVersion {
@@ -250,7 +253,7 @@ class EleccionVersion {
   final VersionTema version;
   /// El tema tiene versión revisada (se pone el distintivo).
   final bool hayRevisada;
-  /// Hay versión revisada pero no hay sesión: se invita a entrar.
+  /// Hay versión revisada pero no hay sesión: no se abre nada y se pide entrar.
   final bool invitarASesion;
   /// El tema tenía versión anterior (si no, no se ofrece «Ver versión anterior»).
   final bool hayAnterior;
@@ -271,11 +274,12 @@ class EleccionVersion {
 }
 
 /// La revisada se abre por defecto, pero solo con sesión iniciada; sin sesión
-/// se ve la anterior con la invitación a entrar. [pideAnterior]: el usuario ha
+/// no se enseña ninguna (ni la anterior): solo el aviso para entrar con Google
+/// (decisión de Víctor, 20 nov. 2026). [pideAnterior]: el usuario ha
 /// tocado «Ver versión anterior»; sin [hayAnterior] (el tema no tenía PDF) no
 /// se ofrece.
 EleccionVersion elegirVersion({required TemaRevisado? revisado, required bool conSesion, bool pideAnterior = false, bool hayAnterior = true}) {
   if (revisado == null) return const EleccionVersion(version: VersionTema.anterior);
-  if (!conSesion) return EleccionVersion(version: VersionTema.anterior, hayRevisada: true, invitarASesion: true, hayAnterior: hayAnterior);
+  if (!conSesion) return EleccionVersion(version: VersionTema.sinSesion, hayRevisada: true, invitarASesion: true, hayAnterior: hayAnterior);
   return EleccionVersion(version: pideAnterior && hayAnterior ? VersionTema.anterior : VersionTema.revisada, hayRevisada: true, hayAnterior: hayAnterior);
 }

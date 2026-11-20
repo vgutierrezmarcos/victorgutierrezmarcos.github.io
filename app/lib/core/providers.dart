@@ -70,7 +70,7 @@ bool saliendoAProposito = false;
 /// a propósito no vuelve a entrar solo; esto cubre los móviles en los que la
 /// sesión guardada desaparece al cerrar la app del todo (visto en un Galaxy
 /// S24 con la 1.20.5, 28 oct. 2026). Cuenta las veces en la caja `app` para
-/// enseñarlo en Más → Cuenta. Devuelve si ha recuperado la sesión.
+/// el diagnóstico (no se enseña al usuario). Devuelve si ha recuperado la sesión.
 Future<bool> recuperarSesion() async {
   if (kIsWeb || saliendoAProposito) return false;
   final auth = FirebaseAuth.instance;
@@ -84,6 +84,8 @@ Future<bool> recuperarSesion() async {
     sesionRecuperada = true;
     final caja = Hive.box(Cajas.app);
     await caja.put(claveSesionesRecuperadas, ((caja.get(claveSesionesRecuperadas) as int?) ?? 0) + 1);
+    // Solo para saber, en conjunto y sin datos de nadie, si hay móviles que pierden la sesión.
+    Analitica.instancia.evento('sesion_recuperada');
     return true;
   } catch (e) {
     debugPrint('No se pudo recuperar la sesión: $e');

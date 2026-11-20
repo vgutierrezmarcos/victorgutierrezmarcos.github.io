@@ -14,8 +14,10 @@ import '../../core/providers.dart';
 import '../../data/models/esquema.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/revisado.dart';
+import '../../data/models/sugerencia.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/burbuja_ia.dart';
 import '../../widgets/comunes.dart';
 import '../test/preguntas_por_tema_page.dart';
 import '../../core/red_providers.dart';
@@ -28,6 +30,7 @@ import 'autoevaluacion_page.dart';
 import 'esquema_tema.dart';
 import '../cantar/esquema_ciegas_page.dart';
 import 'html_revisado.dart';
+import 'sugerencias.dart';
 import 'visor_html.dart';
 import 'visor_tema.dart';
 
@@ -39,7 +42,7 @@ import 'visor_tema.dart';
 /// Si el tema está en el temario revisado (exclusivo de la app, ver
 /// `data/models/revisado.dart`), con sesión se abre la versión revisada (PDF
 /// con anotaciones propias, HTML, ficha de repaso y Word) y la anterior queda
-/// a un toque; sin sesión, la anterior con la invitación a entrar.
+/// a un toque; sin sesión, solo el aviso para entrar con Google.
 class TemaPage extends ConsumerStatefulWidget {
   const TemaPage({super.key, required this.tema, this.esRecurso = false, this.nombreDescarga, this.reemplazaDescarga, this.paginaInicial});
   final Tema tema;
@@ -227,8 +230,6 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     await anterior?.close();
   }
 
-  void _entrar() => GoRouter.of(context).go('/mas/cuenta');
-
   @override
   void dispose() {
     _claveCargada = null;
@@ -322,16 +323,18 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final revisada = rv != null;
     // Exclusivo (uso personal): se lee dentro de la app; sin compartir, sin Word y sin descargar anotado.
     final exclusivo = rv?.exclusivo ?? false;
+    // Revisado y sin sesión: ni la versión anterior; solo el aviso para entrar.
+    final bloqueado = eleccion.version == VersionTema.sinSesion;
     // Con sesión, se espera al manifiesto antes de abrir nada (para no bajar
     // la versión anterior y luego la revisada).
     final listo = estadoRevisados == null || !conSesion || estadoRevisados.hasValue || estadoRevisados.hasError;
 
-    final sinPdf = !revisada && widget.tema.url == null;
-    final web = !revisada && widget.tema.esPaginaWeb;
+    final sinPdf = !revisada && !bloqueado && widget.tema.url == null;
+    final web = !revisada && !bloqueado && widget.tema.esPaginaWeb;
     final verHtml = rv != null && _verHtml && rv.html != null;
     final _FuentePdf? fuente = rv != null
         ? (url: rv.url(rv.pdf), nombre: rv.nombreLocal(ClaseFichero.pdf), reemplaza: rv.prefijoLocal(ClaseFichero.pdf))
-        : (widget.tema.url == null || web ? null : (url: widget.tema.url!, nombre: widget.nombreDescarga, reemplaza: widget.reemplazaDescarga));
+        : (bloqueado || widget.tema.url == null || web ? null : (url: widget.tema.url!, nombre: widget.nombreDescarga, reemplaza: widget.reemplazaDescarga));
     final clave = fuente == null ? null : '${fuente.url}|${fuente.nombre}';
     if (listo && clave != _claveCargada) {
       _claveCargada = clave;
@@ -352,6 +355,19 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             ? (rv.esquema.isEmpty ? null : rv.esquema)
             : ref.watch(esquemasProvider).valueOrNull?.de(widget.tema.url);
     final pantallaAncha = MediaQuery.sizeOf(context).width >= 900;
+    // «Sugerir una mejora» al autor: en los temas y en sus fichas de repaso (no en otros recursos).
+    final destinoSugerencia = Sugerencia.destinoDe(widget.tema.codigo);
+    final VoidCallback? sugerir = destinoSugerencia == null
+        ? null
+        : () => sugerirMejora(
+              context,
+              ref,
+              tema: destinoSugerencia.tema,
+              recurso: destinoSugerencia.recurso,
+              version: rv?.version ?? '',
+              // Los apartados principales del esquema, para decir dónde.
+              apartados: destinoSugerencia.recurso == 'ficha' ? const [] : {for (final e in esquema ?? const <EntradaEsquema>[]) if (e.nivel <= 1) e.titulo}.take(40).toList(),
+            );
     final esquemaAlLado = esquema != null && pantallaAncha && _verEsquema && !_anotando;
 
     return Scaffold(
@@ -395,8 +411,13 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               icon: const Icon(Icons.share_outlined),
               onPressed: () => SharePlus.instance.share(ShareParams(files: [XFile(_ruta!)], text: '${widget.tema.codigo} ${widget.tema.titulo}${revisada ? ' (revisado)' : ''}')),
             ),
-          if (fuente != null && !verHtml) PopupMenuButton<String>(
+          if ((fuente != null && !verHtml) || destinoSugerencia != null) PopupMenuButton<String>(
             onSelected: (v) async {
+              if (v == 'sugerir') {
+                sugerir!();
+                return;
+              }
+              if (fuente == null) return;
               if (v == 'web') {
                 abrirUrl(context, widget.tema.url);
                 return;
@@ -412,26 +433,33 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               }
             },
             itemBuilder: (_) => [
-              // El revisado no tiene página pública: no se abre fuera de la app.
-              if (!revisada && widget.nombreDescarga == null) PopupMenuItem(value: 'web', child: Text(kIsWeb ? 'Abrir en otra pestaña' : 'Abrir en el navegador')),
-              if (_pdf != null && anotaciones != null && !exclusivo) const PopupMenuItem(value: 'anotado', child: Text('Descargar con mis anotaciones')),
-              if (ref.read(descargasProvider).guardaSinConexion) const PopupMenuItem(value: 'borrar', child: Text('Eliminar descarga')),
+              if (destinoSugerencia != null) const PopupMenuItem(value: 'sugerir', child: Text('Sugerir una mejora')),
+              if (fuente != null && !verHtml) ...[
+                // El revisado no tiene página pública: no se abre fuera de la app.
+                if (!revisada && widget.nombreDescarga == null) PopupMenuItem(value: 'web', child: Text(kIsWeb ? 'Abrir en otra pestaña' : 'Abrir en el navegador')),
+                if (_pdf != null && anotaciones != null && !exclusivo) const PopupMenuItem(value: 'anotado', child: Text('Descargar con mis anotaciones')),
+                if (ref.read(descargasProvider).guardaSinConexion) const PopupMenuItem(value: 'borrar', child: Text('Eliminar descarga')),
+              ],
             ],
           ),
         ],
       ),
+      floatingActionButton: _anotando || widget.esRecurso || bloqueado ? null : BurbujaIa(acciones: (m) => m.tema(widget.tema.codigo, widget.tema.titulo)),
+      // Por encima de la barra de páginas del visor.
+      floatingActionButtonLocation: ubicacionBurbujaIa(ref, subir: 56),
+      floatingActionButtonAnimator: sinAnimacionBurbujaIa,
       body: Column(children: [
         if (!widget.esRecurso && !_anotando) _FilaMateriales(codigo: widget.tema.codigo),
-        if (rev != null && !_anotando)
+        if (rev != null && !_anotando && !bloqueado)
           _BarraRevisado(
             revisado: rev,
             eleccion: eleccion,
-            entrar: _entrar,
             cambiar: () => setState(() {
               _pideAnterior = !_pideAnterior;
               _verHtml = false;
             }),
             abrir: (c) => _abrirFichero(rev, c),
+            sugerir: sugerir,
           ),
         if (!widget.esRecurso && !_anotando)
           Material(
@@ -473,6 +501,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
         Expanded(
           child: !listo
               ? const Cargando()
+              : bloqueado
+              ? _AvisoSinSesion(exclusivo: rev?.exclusivo ?? false)
               : verHtml
               ? (_errorHtml != null
                   ? ErrorVista(error: _errorHtml!, reintentar: () => setState(() { _errorHtml = null; _shaHtml = null; }))
@@ -589,12 +619,12 @@ class _FilaMateriales extends ConsumerWidget {
 
 /// Distintivo del temario revisado sobre el tema: con sesión, «Revisado ·
 /// exclusivo de la app», la ficha de repaso, el Word y el paso a la versión
-/// anterior (y vuelta); sin sesión, la invitación a entrar.
+/// anterior (y vuelta). Sin sesión no se pinta: lo dice [_AvisoSinSesion].
 class _BarraRevisado extends StatelessWidget {
-  const _BarraRevisado({required this.revisado, required this.eleccion, required this.entrar, required this.cambiar, required this.abrir});
+  const _BarraRevisado({required this.revisado, required this.eleccion, required this.cambiar, required this.abrir, this.sugerir});
+  final VoidCallback? sugerir;
   final TemaRevisado revisado;
   final EleccionVersion eleccion;
-  final VoidCallback entrar;
   final VoidCallback cambiar;
   final ValueChanged<ClaseFichero> abrir;
 
@@ -603,15 +633,7 @@ class _BarraRevisado extends StatelessWidget {
     final compacto = TextButton.styleFrom(visualDensity: VisualDensity.compact, padding: const EdgeInsets.symmetric(horizontal: 8));
     final textoPequeno = context.textos.bodySmall?.copyWith(color: context.esquema.onSurface);
     final Widget contenido;
-    if (eleccion.invitarASesion) {
-      contenido = Row(children: [
-        Icon(Icons.verified_outlined, color: context.esquema.primary),
-        const SizedBox(width: 10),
-        Expanded(child: Text('Versión revisada disponible: inicia sesión para leerla', style: textoPequeno)),
-        const SizedBox(width: 8),
-        FilledButton(onPressed: entrar, child: const Text('Entrar')),
-      ]);
-    } else if (eleccion.esRevisada) {
+    if (eleccion.esRevisada) {
       final aprobado = revisado.aprobado;
       contenido = Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
         Wrap(spacing: 8, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
@@ -631,6 +653,8 @@ class _BarraRevisado extends StatelessWidget {
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.docx), icon: const Icon(Icons.description_outlined, size: 18), label: const Text('Word')),
           if (eleccion.puedeCambiar)
             TextButton.icon(style: compacto, onPressed: cambiar, icon: const Icon(Icons.history, size: 18), label: const Text('Ver versión anterior')),
+          if (sugerir != null)
+            TextButton.icon(style: compacto, onPressed: sugerir, icon: const Icon(Icons.rate_review_outlined, size: 18), label: const Text('Sugerir una mejora')),
         ]),
       ]);
     } else {
@@ -651,4 +675,44 @@ class _BarraRevisado extends StatelessWidget {
   }
 
   static String _fecha(DateTime d) => '${d.day.toString().padLeft(2, '0')}/${d.month.toString().padLeft(2, '0')}/${d.year}';
+}
+
+/// Tema revisado sin sesión: en vez del PDF antiguo, solo este aviso con el
+/// botón de Google; al entrar, la página abre la versión revisada sola.
+class _AvisoSinSesion extends ConsumerWidget {
+  const _AvisoSinSesion({required this.exclusivo});
+
+  final bool exclusivo;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final ocupado = ref.watch(sesionProvider);
+    return Center(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(Espacio.e4),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 420),
+          child: Tarjeta(
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Icon(Icons.verified_outlined, size: 36, color: context.esquema.primary),
+              const SizedBox(height: Espacio.e2),
+              if (exclusivo) ...[Etiqueta('Exclusivo · uso personal'), const SizedBox(height: Espacio.e2)],
+              Text('Para ver la última versión de este tema inicia sesión con tu cuenta de Google', textAlign: TextAlign.center, style: context.textos.bodyMedium),
+              const SizedBox(height: Espacio.e3),
+              FilledButton.icon(
+                onPressed: ocupado
+                    ? null
+                    : () async {
+                        final err = await ref.read(sesionProvider.notifier).iniciarConGoogle();
+                        if (err != null && context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('No se pudo iniciar sesión: $err')));
+                      },
+                icon: ocupado ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)) : const Icon(Icons.login),
+                label: const Text('Iniciar sesión con Google'),
+              ),
+            ]),
+          ),
+        ),
+      ),
+    );
+  }
 }

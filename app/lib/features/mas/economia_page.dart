@@ -7,24 +7,19 @@ import '../../core/analitica.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/exportar_ia.dart';
+import '../../core/ia.dart';
+import '../../core/ia_mensajes.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/configurar_ia.dart';
 import '../cronograma/importar_cronograma.dart';
-
-/// Las IA con las que funciona el conector, por orden (Claude, la recomendada).
-const iasCompatibles = <({String nombre, String nota})>[
-  (nombre: 'Claude', nota: 'Recomendada: con Claude, completo (informes en PDF con la plantilla de los temas y gráficos como los del temario). Plan de pago (Pro, Max o Team).'),
-  (nombre: 'Le Chat (Mistral)', nota: 'También con el plan gratuito.'),
-  (nombre: 'ChatGPT', nota: 'Con los planes que admiten conectores propios.'),
-  (nombre: 'Gemini', nota: 'Con los planes que admiten conectores propios.'),
-];
 
 /// Una línea sobre lo que supone conectar el conector de IA (también en
 /// Cuenta → Tus datos solo los ves tú).
 const textoPrivacidadConector =
-    'Si conectas el conector de IA, un servidor de la web lee y escribe tus datos con tu propia sesión, en tu nombre y solo cuando tu IA se lo pide: escribe en la app solo lo que tú confirmas en la conversación. Lo desconectas en Más → EconomIA → «Desconectar la IA».';
+    'Si conectas el conector de IA, un servidor de la web lee y escribe tus datos con tu propia sesión, en tu nombre y solo cuando tu IA se lo pide: escribe en la app solo lo que tú confirmas en la conversación, y apunta en tu cuenta con qué IA lo usas y qué día fue la última vez (para ofrecerte aquí el acceso directo a tu IA). Lo desconectas en Más → EconomIA → «Desconectar la IA».';
 
 /// Más → EconomIA: el equipo de preparación con IA. Qué es, con qué IA
 /// funciona, cómo se añade el conector «Oposición TCEE · DCE», exportar los
@@ -40,6 +35,9 @@ class EconomiaPage extends ConsumerWidget {
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
+          // Lo primero: en qué IA está configurada.
+          const EstadoEconomiaTarjeta(),
+          const SizedBox(height: 10),
           Tarjeta(
             destacada: true,
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -62,15 +60,8 @@ class EconomiaPage extends ConsumerWidget {
             titulo: 'No sustituye a tu preparador: lo complementa.',
             texto: 'Cita de dónde sale cada corrección, pero es una IA y puede equivocarse. Contrasta con tu preparador lo que te sorprenda.',
           ),
-          const TituloSeccion('Con qué IA funciona'),
-          GrupoFilas(children: [
-            for (final (i, ia) in iasCompatibles.indexed)
-              ListTile(
-                leading: Icon(i == 0 ? Icons.star_outline : Icons.smart_toy_outlined, color: context.esquema.primary),
-                title: Text(ia.nombre, style: context.textos.titleSmall),
-                subtitle: Text(ia.nota, style: context.textos.labelSmall),
-              ),
-          ]),
+          const TituloSeccion('Tu IA'),
+          const _TuIa(),
           Padding(
             padding: const EdgeInsets.only(top: 6),
             child: SelectableText('Dirección del conector: ${Urls.conectorIa}', style: context.textos.labelSmall),
@@ -122,6 +113,66 @@ class EconomiaPage extends ConsumerWidget {
     final messenger = ScaffoldMessenger.of(context);
     await Clipboard.setData(ClipboardData(text: Urls.conectorIa));
     messenger.mostrar(const SnackBar(content: Text('Dirección del conector copiada: pégala en los conectores de tu IA')));
+  }
+}
+
+/// En qué IA está configurada EconomIA, elegirla, conectarla y decidir si se
+/// quiere la burbuja (activada por defecto: sin configurar, lleva a configurarla).
+class _TuIa extends ConsumerWidget {
+  const _TuIa();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final estado = ref.watch(iaProvider);
+    final conexiones = ref.watch(conectorProvider).valueOrNull ?? const <Ia, DateTime>{};
+    final elegida = ref.watch(iaElegidaProvider);
+    final configurada = ref.watch(iaConfiguradaProvider);
+    final notifier = ref.read(iaProvider.notifier);
+    final vista = elegida == null ? null : conexiones[elegida];
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      const SelectorIa(),
+      if (elegida != null && configurada == null) ...[
+        const SizedBox(height: 10),
+        Aviso(
+          icono: Icons.link,
+          titulo: 'Conecta EconomIA con ${elegida.nombre}',
+          texto: 'Sigue los pasos de la web con la misma cuenta de Google que usas aquí. Cuando ${elegida.nombre} use el conector, la app lo sabrá sola; si ya lo has hecho, toca «Ya lo he conectado».',
+          accion: Wrap(spacing: 8, children: [
+            TextButton(onPressed: () => abrirUrl(context, elegida.urlComoConectar), child: const Text('Cómo se conecta')),
+            TextButton(onPressed: () => notifier.conectadaAMano(true), child: const Text('Ya lo he conectado')),
+          ]),
+        ),
+      ],
+      const SizedBox(height: 10),
+      GrupoFilas(children: [
+        SwitchListTile(
+          secondary: Icon(Icons.auto_awesome_outlined, color: context.esquema.primary),
+          title: Text('Burbuja de EconomIA', style: context.textos.titleSmall),
+          subtitle: Text(
+            configurada != null
+                ? 'Un acceso pequeño en Inicio, los temas, los tests, el cronograma y los cantes que abre ${configurada.nombre} con lo que le quieras pedir. Arrástrala de lado para cambiarla de esquina.'
+                : 'Un acceso pequeño en Inicio, los temas, los tests, el cronograma y los cantes. Mientras EconomIA no esté configurada, te lleva a configurarla.',
+            style: context.textos.labelSmall,
+          ),
+          value: estado.burbuja,
+          onChanged: notifier.mostrarBurbuja,
+        ),
+        if (configurada != null)
+          ListTile(
+            leading: Icon(Icons.open_in_new, color: context.esquema.primary),
+            title: Text('Abrir ${configurada.nombre}', style: context.textos.titleSmall),
+            subtitle: Text('Con un mensaje para empezar', style: context.textos.labelSmall),
+            onTap: () => abrirIa(context, configurada, MensajesIa(ref.read(oposicionProvider)).libre, acceso: 'economia'),
+          ),
+        if (configurada != null && vista == null)
+          ListTile(
+            leading: Icon(Icons.link_off, color: context.colores.textoClaro),
+            title: Text('Aún no la he conectado', style: context.textos.titleSmall),
+            subtitle: Text('Quita la marca de conectada (la burbuja volverá a llevarte a configurarla)', style: context.textos.labelSmall),
+            onTap: () => notifier.conectadaAMano(false),
+          ),
+      ]),
+    ]);
   }
 }
 

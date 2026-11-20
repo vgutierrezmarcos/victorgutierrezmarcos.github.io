@@ -495,7 +495,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('temario revisado: distintivo en la lista y, sin sesión, invitación a entrar', (tester) async {
+  testWidgets('temario revisado: distintivo en la lista y, sin sesión, solo el aviso para entrar', (tester) async {
     overrides.add(revisadosProvider.overrideWith((ref) => ManifiestoRevisados.fromJson({
           'temas': [
             {'codigo': '5.C.4', 'aprobado': '2026-10-17', 'pdf': {'ruta': 'oposicion/temario/quinto-ejercicio/5C04.pdf', 'sha': 'abc'}},
@@ -508,13 +508,44 @@ void main() {
     await tocar(tester, find.text('Quinto ejercicio'));
     await tocar(tester, find.textContaining('Parte C: Derecho'));
     expect(find.text('Exclusivo · revisado'), findsOneWidget);
-    // Sin cuenta: se ve la versión anterior (aquí, la agenda: no tiene PDF) y la invitación.
+    // Sin cuenta: ni la versión anterior (aquí, la agenda: no tiene PDF); solo el aviso y el botón de Google.
     await tocar(tester, find.textContaining('5.C.4 ·'));
-    expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsOneWidget);
-    expect(find.text('Para la próxima vuelta'), findsOneWidget);
+    expect(find.text('Para ver la última versión de este tema inicia sesión con tu cuenta de Google'), findsOneWidget);
+    expect(find.text('Iniciar sesión con Google'), findsOneWidget);
+    expect(find.text('Para la próxima vuelta'), findsNothing);
     expect(find.text('Ver versión anterior'), findsNothing);
-    await tocar(tester, find.text('Entrar'));
-    expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('burbuja de EconomIA: se ve sin configurar, lleva a configurarla y después abre el menú', (tester) async {
+    // Sin IA elegida ni burbuja oculta (la caja `app` es común a todas las pruebas).
+    if (Hive.isBoxOpen(Cajas.app)) await Hive.box(Cajas.app).delete('ia');
+    await arrancar(tester);
+    await pestana(tester, 'Hoy');
+    // En Inicio, aunque no haya IA elegida.
+    expect(find.byTooltip('Configura EconomIA'), findsOneWidget);
+    await tocar(tester, find.byTooltip('Configura EconomIA'));
+    expect(find.text('Configura EconomIA'), findsOneWidget);
+    await tocar(tester, find.text('Claude (recomendada)'));
+    expect(find.text('Cómo se conecta'), findsOneWidget);
+    await tocar(tester, find.text('Ya lo he conectado'));
+    // Configurada: la hoja se cierra y sale el menú de accesos de Inicio.
+    expect(find.text('Configura EconomIA'), findsNothing);
+    expect(find.text('Con Claude'), findsOneWidget);
+    expect(find.text('¿Qué me toca hoy?'), findsOneWidget);
+    // Otro toque en la burbuja cierra el menú.
+    await tocar(tester, find.byTooltip('Tu IA: Claude'));
+    expect(find.text('Con Claude'), findsNothing);
+    // Más → EconomIA dice en qué IA está configurada.
+    await pestana(tester, 'Más');
+    expect(find.text('Configurada en Claude'), findsOneWidget);
+    await tocar(tester, find.text('EconomIA'));
+    expect(find.text('EconomIA está configurada en Claude'), findsOneWidget);
+    expect(find.text('La has marcado como conectada'), findsOneWidget);
+    // Ocultarla con el interruptor.
+    await tester.scrollUntilVisible(find.text('Burbuja de EconomIA'), 200, scrollable: find.byType(Scrollable).first);
+    await tocar(tester, find.text('Burbuja de EconomIA'));
+    expect(tester.widget<SwitchListTile>(find.widgetWithText(SwitchListTile, 'Burbuja de EconomIA')).value, isFalse);
     expect(tester.takeException(), isNull);
   });
 
