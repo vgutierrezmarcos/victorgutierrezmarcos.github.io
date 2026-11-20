@@ -1,0 +1,373 @@
+{
+ "tema": "3.B.30",
+ "preguntas": [
+  {
+   "id": 323001,
+   "estado": "publicada",
+   "enunciado": "Un banco multilateral de desarrollo tiene un patrimonio (capital desembolsado más reservas) de 60.000 millones de dólares y, para conservar su calificación crediticia, mantiene un patrimonio mínimo del 20 % de sus préstamos. Si su directorio rebaja ese mínimo al 15 % y el patrimonio no cambia, su capacidad máxima de préstamo aumenta en:",
+   "opciones": {
+    "a": "3.000 millones de dólares.",
+    "b": "15.000 millones de dólares.",
+    "c": "75.000 millones de dólares.",
+    "d": "100.000 millones de dólares."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Lo máximo que puede prestar el banco es su patrimonio dividido por el mínimo de patrimonio sobre préstamos: $L^{\\max}=E/e^{\\min}$. Con el 20 % son $60.000/0{,}20=300.000$ millones; con el 15 %, $60.000/0{,}15=400.000$. La capacidad sube en 100.000 millones, un tercio.",
+    "desarrollo": "La restricción de capital de un banco multilateral de desarrollo es $E/L\\geq e^{\\min}$: el patrimonio $E$ no puede bajar de una fracción mínima de los préstamos $L$. De ahí sale la palanca del capital, $L^{\\max}=E/e^{\\min}$: cada dólar de patrimonio sostiene $1/e^{\\min}$ dólares de préstamos.\n\nCon $e^{\\min}=20\\ \\%$, cada dólar sostiene 5 y el banco puede prestar $60.000\\times5=300.000$ millones. Con $e^{\\min}=15\\ \\%$, cada dólar sostiene $1/0{,}15\\approx6{,}67$ y el máximo es $60.000/0{,}15=400.000$ millones. El aumento es de 100.000 millones. Otra vía: bajar el mínimo de $e_0$ a $e_1$ multiplica la capacidad por $e_0/e_1=20/15=4/3$, un 33,3 % más sobre 300.000, es decir, 100.000.\n\nEs la lógica de las reformas recientes de los marcos de adecuación del capital: prestar más con el mismo patrimonio, a costa de asumir más riesgo por dólar de capital y, por tanto, de acercarse al límite que toleran las agencias de calificación.\n\nPor qué fallan las demás:\n\n- a) Aplica los 5 puntos de rebaja al patrimonio ($60.000\\times0{,}05$), como si el mínimo se calculara sobre el patrimonio y no sobre los préstamos.\n- b) Aplica los 5 puntos a los préstamos iniciales ($300.000\\times0{,}05$): es el patrimonio que queda «liberado», no los préstamos nuevos que ese patrimonio sostiene.\n- c) Supone que la capacidad sube en la misma proporción en que baja el mínimo (un 25 %); la relación es inversa, y la capacidad sube un 33,3 %."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Definición y razón de ser: la intermediación con la garantía de los accionistas",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323002,
+   "estado": "publicada",
+   "enunciado": "Un banco multilateral de desarrollo se endeuda en los mercados al 3 %, presta con un margen de 0,5 puntos sobre ese tipo y tiene unos costes de funcionamiento del 0,3 % de los préstamos. Mantiene un patrimonio igual al 20 % de sus préstamos (presta todo lo que su capital le permite), financia el resto con deuda, no sufre impagos, no reparte dividendos y no recibe capital nuevo. La tasa anual a la que pueden crecer sus préstamos es:",
+   "opciones": {
+    "a": "3,2 %",
+    "b": "4 %",
+    "c": "5,5 %",
+    "d": "16 %"
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "Sin capital nuevo, los préstamos solo crecen al ritmo al que crece el patrimonio con los beneficios retenidos. El beneficio es $r_B\\,E+(m-c)\\,L$, y como $L=E/e^{\\min}$, el patrimonio crece a $g=r_B+(m-c)/e^{\\min}=3\\ \\%+0{,}2\\ \\%/0{,}2=4\\ \\%$.",
+    "desarrollo": "Sea $E$ el patrimonio, $L$ los préstamos y $B=L-E$ la deuda. El banco cobra $r_L=r_B+m$ por los préstamos, paga $r_B$ por la deuda y gasta $c$ por unidad prestada:\n\n$\\Pi=(r_B+m)\\,L-r_B\\,(L-E)-c\\,L=r_B\\,E+(m-c)\\,L$\n\nEl patrimonio no paga intereses, así que rinde $r_B$ (lo que el banco se ahorra de deuda), y cada unidad prestada deja además el margen neto $m-c$. Si el beneficio se retiene, $g_E=\\Pi/E=r_B+(m-c)\\,L/E=r_B+(m-c)/e^{\\min}$. Como el banco presta siempre $L=E/e^{\\min}$, los préstamos crecen a la misma tasa.\n\nCon los datos: $g=3\\ \\%+(0{,}5\\ \\%-0{,}3\\ \\%)/0{,}20=3\\ \\%+1\\ \\%=4\\ \\%$. Comprobación con cifras: con $E=20$ y $L=100$, la deuda es 80; ingresos $3{,}5$, intereses $0{,}03\\times80=2{,}4$, costes $0{,}3$; beneficio $0{,}8$, que sobre un patrimonio de 20 es el 4 %.\n\nLa conclusión es general: sin aumentos de capital ni cambios en el mínimo de patrimonio, un banco de este tipo crece despacio, poco más que el tipo de interés.\n\nPor qué fallan las demás:\n\n- a) Suma el margen neto al tipo ($3+0{,}2$) sin dividirlo por $e^{\\min}$: olvida que cada unidad de patrimonio sostiene 5 de préstamos y recibe el margen de las 5.\n- c) Divide por $e^{\\min}$ el margen bruto ($3+0{,}5/0{,}2$) y olvida los costes de funcionamiento.\n- d) Divide por $e^{\\min}$ también el tipo de la deuda ($3{,}2/0{,}2$), como si el banco ganara $r_B$ sobre todos sus préstamos; solo lo gana sobre la parte financiada con patrimonio."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 Definición y razón de ser: la intermediación con la garantía de los accionistas (crecimiento del patrimonio)",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323003,
+   "estado": "publicada",
+   "enunciado": "Tres países se benefician de un bien público global $G=g_1+g_2+g_3$ (por ejemplo, emisiones evitadas), donde $g_i\\geq0$ es lo que aporta cada uno. El beneficio de cada país es $b_i(G)=a_i\\ln G$, con $a_1=6$, $a_2=3$ y $a_3=1$, y cada unidad aportada cuesta $c=2$. Si $G^N$ es la cantidad cuando cada país decide por su cuenta (equilibrio de Nash) y $G^*$ la que maximiza el bienestar conjunto:",
+   "opciones": {
+    "a": "$G^N=3$ y $G^*=5$",
+    "b": "$G^N=5$ y $G^*=5$",
+    "c": "$G^N=5$ y $G^*=3$",
+    "d": "$G^N=0{,}5$ y $G^*=5$"
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Por su cuenta, cada país aporta hasta que su propio beneficio marginal iguala el coste: solo lo hace el que más valora el bien, $6/G=2$, luego $G^N=3$. El óptimo suma los beneficios marginales de todos (condición de Samuelson): $(6+3+1)/G=2$, luego $G^*=5$.",
+    "desarrollo": "El beneficio marginal de cada país es $b_i'(G)=a_i/G$.\n\nEquilibrio de Nash: cada país toma como dadas las aportaciones de los demás y aporta mientras $a_i/G>c$. El país 1 quiere que $G$ llegue a $6/2=3$. Con $G=3$, el beneficio marginal del país 2 es $3/3=1<2$ y el del país 3, $1/3<2$: ninguno quiere aportar. El equilibrio es $g_1=3$, $g_2=g_3=0$ y $G^N=3$: aporta el que más valora el bien y los demás se aprovechan (son polizones).\n\nÓptimo: cada unidad beneficia a los tres a la vez, así que se suman los beneficios marginales: $\\sum_i b_i'(G^*)=c$, es decir, $10/G^*=2$ y $G^*=5$. Como la suma de los beneficios marginales es mayor que el de cualquier país, $G^*>G^N$.\n\nLa brecha (2 unidades) es el argumento a favor de una institución multilateral que reúna aportaciones o dé incentivos a quien produce el bien.\n\nPor qué fallan las demás:\n\n- b) Calcula $G^N$ sumando lo que cada país aportaría si estuviera solo ($3+1{,}5+0{,}5=5$). Es un error: una vez que el país 1 aporta 3, a los otros dos ya no les compensa aportar nada.\n- c) Invierte los dos resultados; la provisión descentralizada de un bien público nunca supera la óptima.\n- d) Hace depender el equilibrio del país que menos valora el bien ($1/2$); eso correspondería a un bien de «eslabón más débil», no a uno en que las aportaciones se suman."
+   },
+   "dificultad": 3,
+   "apartado": "I.1 Definición y razón de ser: los bienes públicos globales",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323004,
+   "estado": "publicada",
+   "enunciado": "En un país en desarrollo, la mitad de los proyectos de inversión son buenos (salen bien con probabilidad $p_A=0{,}9$) y la otra mitad, malos ($p_B=0{,}5$). Cada proyecto necesita 1 unidad de financiación y devuelve como máximo $R=1{,}3$ si sale bien y nada si sale mal. Los inversores privados son neutrales al riesgo, tienen un coste de oportunidad del 5 % y no distinguen un proyecto bueno de uno malo. En esta situación:",
+   "opciones": {
+    "a": "Los inversores financian todos los proyectos, porque el rendimiento esperado del proyecto medio cubre su coste de oportunidad.",
+    "b": "Los inversores no financian ninguno, aunque los buenos son rentables; un banco que los examine y cofinancie puede reabrir el mercado.",
+    "c": "Los inversores no financian ninguno y hacen bien, porque ni siquiera los proyectos buenos cubren su coste de oportunidad.",
+    "d": "Los inversores financian solo los buenos, porque exigen un tipo de interés más alto que expulsa del mercado a los proyectos malos."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El inversor solo conoce la probabilidad media de éxito, $0{,}7$, y espera cobrar como mucho $0{,}7\\times1{,}3=0{,}91<1{,}05$: no presta. Pero un proyecto bueno rinde $0{,}9\\times1{,}3=1{,}17>1{,}05$. La información asimétrica cierra un mercado rentable, y un banco que examine los proyectos y señale los buenos lo reabre.",
+    "desarrollo": "Sin información, el inversor valora cualquier proyecto con la probabilidad media: $\\bar p=0{,}5\\times0{,}9+0{,}5\\times0{,}5=0{,}7$. Lo máximo que puede cobrar es $R$, así que su ingreso esperado es como mucho $\\bar p\\,R=0{,}91$, menos que su coste de oportunidad, $1{,}05$. No presta a nadie.\n\nSin embargo, los proyectos buenos son rentables: $p_A\\,R=1{,}17\\geq1{,}05$. Se cumple $p_A\\,R\\geq1+r^*>\\bar p\\,R$: es un caso de selección adversa (Akerlof) y de racionamiento del crédito (Stiglitz y Weiss).\n\nUn banco multilateral que pueda examinar cada proyecto y cofinancie solo los buenos revela su tipo con su participación: los inversores prestan entonces a esos proyectos, y el banco moviliza más dinero del que pone. Es el efecto catalizador, que compensa si la ganancia de los proyectos que ahora se financian supera el coste de examinarlos.\n\nPor qué fallan las demás:\n\n- a) El proyecto medio rinde $0{,}91$, por debajo de $1{,}05$.\n- c) Los buenos sí cubren el coste ($1{,}17$); los que no lo cubren son los malos ($0{,}5\\times1{,}3=0{,}65$). El mercado cerrado es ineficiente.\n- d) El inversor no distingue los tipos, y subir el tipo de interés no expulsa a los malos: en estos modelos expulsa antes a los buenos."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Definición y razón de ser: el efecto catalizador",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323005,
+   "estado": "publicada",
+   "enunciado": "En la estructura financiera de un banco multilateral de desarrollo, el capital exigible (callable capital) es:",
+   "opciones": {
+    "a": "La parte del capital suscrito que los accionistas ya han desembolsado y que el banco puede prestar directamente a sus prestatarios.",
+    "b": "Las aportaciones que los donantes reponen cada tres o cuatro años para financiar las donaciones y los préstamos concesionales.",
+    "c": "La parte del capital suscrito que los accionistas no desembolsan y que solo se les pediría si el banco no pudiera atender su deuda.",
+    "d": "Los beneficios retenidos que el banco acumula como reservas y que, junto con el capital desembolsado, forman su patrimonio."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El capital suscrito se divide en una parte desembolsada, pequeña, y otra exigible, que los accionistas se comprometen a pagar solo si el banco no puede hacer frente a su deuda. Es una garantía para los tenedores de bonos, no un recurso para prestar.",
+    "desarrollo": "Los accionistas de un banco multilateral de desarrollo suscriben un capital del que solo desembolsan una pequeña parte. El resto, el capital exigible, es un compromiso: se pediría únicamente para pagar a los acreedores del banco si este no pudiera atender sus obligaciones. No figura en el balance como recurso, y no puede usarse para conceder préstamos ni para cubrir gastos.\n\nSu función es respaldar la deuda que el banco emite en los mercados y contribuir así a su máxima calificación, que es lo que le permite endeudarse barato y trasladar ese coste bajo a sus prestatarios. Por eso es una forma barata, para los accionistas, de financiar el desarrollo: aportan poco y garantizan el resto. Las agencias de calificación, con todo, le dan un valor limitado y miran sobre todo el patrimonio desembolsado.\n\nPor qué fallan las demás:\n\n- a) Es el capital desembolsado, que sí forma parte del patrimonio.\n- b) Son las reposiciones de las ventanillas blandas (como la Asociación Internacional de Fomento), que no son capital.\n- d) Son las reservas, la otra parte del patrimonio junto con el capital desembolsado."
+   },
+   "dificultad": 1,
+   "apartado": "I.2 Rasgos generales: las fuentes de recursos",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323006,
+   "estado": "publicada",
+   "enunciado": "Un banco multilateral de desarrollo aprueba una operación con un Gobierno cuyo importe se desembolsa a medida que se comprueba que se han alcanzado metas fijadas de antemano (por ejemplo, un número de niños vacunados), y no según los gastos realizados ni a cambio de la aprobación de medidas de política económica. Se trata de:",
+   "opciones": {
+    "a": "Un programa por resultados, que paga contra indicadores verificados.",
+    "b": "Una financiación de proyectos de inversión, que paga contra los gastos del proyecto.",
+    "c": "Un apoyo presupuestario ligado a reformas, que paga contra medidas de política.",
+    "d": "Una garantía de cartera, que paga si los prestatarios dejan de atender su deuda."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Los programas por resultados desembolsan cuando se alcanzan resultados medidos y verificados, no cuando se gasta. La financiación de proyectos paga gastos de una inversión concreta, y el apoyo presupuestario se desembolsa cuando el Gobierno cumple las reformas acordadas.",
+    "desarrollo": "Los bancos multilaterales de desarrollo financian a los Estados con tres grandes instrumentos, que se distinguen por lo que desencadena el desembolso:\n\n- la financiación de proyectos de inversión (carreteras, redes eléctricas, escuelas) paga los gastos de un proyecto concreto, conforme se ejecuta y con las reglas de contratación del banco;\n- el apoyo presupuestario ligado a reformas (en el Banco Mundial, la financiación para políticas de desarrollo) entra en el presupuesto general cuando el Gobierno adopta las medidas de política acordadas;\n- los programas por resultados pagan cuando se alcanzan resultados medidos de antemano, con independencia de en qué se gaste el dinero.\n\nEl enunciado describe el tercero: el desembolso depende de indicadores de resultado (niños vacunados), no del gasto ni de las reformas.\n\nPor qué fallan las demás:\n\n- b) Paga contra gastos admisibles del proyecto, no contra resultados.\n- c) Paga contra medidas de política (leyes, reformas), que el enunciado excluye expresamente.\n- d) Una garantía no desembolsa fondos al Gobierno: cubre a un acreedor o a un inversor frente a un riesgo."
+   },
+   "dificultad": 1,
+   "apartado": "I.5 Las actuaciones: los instrumentos de financiación",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323007,
+   "estado": "publicada",
+   "enunciado": "El Panel de Inspección del Banco Mundial, creado en 1993 tras las críticas a la calidad y a los efectos sociales y ambientales de sus proyectos, es:",
+   "opciones": {
+    "a": "Un tribunal arbitral ante el que los inversores extranjeros reclaman contra el Estado que ha recibido su inversión.",
+    "b": "La oficina que evalúa los resultados de los proyectos ya terminados y que responde ante la gerencia del banco.",
+    "c": "Un mecanismo independiente ante el que los afectados por un proyecto reclaman si el banco incumple sus normas.",
+    "d": "El órgano que resuelve los recursos de las empresas contra la adjudicación de los contratos que financia el banco."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "El Panel de Inspección permite a las personas afectadas por un proyecto financiado por el Banco Mundial reclamar ante un órgano independiente de la gerencia cuando creen que el banco no ha cumplido sus propias políticas, como las salvaguardias ambientales y sociales.",
+    "desarrollo": "A comienzos de los noventa, el informe Wapenhans (1992) denunció una cultura interna que premiaba aprobar préstamos más que cuidar sus resultados, y varios proyectos con graves daños sociales y ambientales (reasentamientos forzosos, sobre todo) dañaron la reputación del banco. La respuesta fue doble: normas ambientales y sociales que los proyectos deben cumplir (las salvaguardias) y un mecanismo de rendición de cuentas, el Panel de Inspección (1993).\n\nEl Panel es independiente de la gerencia e informa al Directorio Ejecutivo. Ante él pueden reclamar las personas o comunidades afectadas por un proyecto, y lo que examina es si el banco ha cumplido sus propias políticas y procedimientos. Los demás bancos multilaterales tienen mecanismos parecidos.\n\nPor qué fallan las demás:\n\n- a) Describe los tribunales que se constituyen en el marco del CIADI, que resuelven diferencias entre inversores y Estados, no reclamaciones de afectados contra el banco.\n- b) La evaluación de los resultados corresponde a la oficina de evaluación independiente, que además responde ante el Directorio y no ante la gerencia.\n- d) Las quejas de las empresas sobre las licitaciones siguen los cauces de las normas de contratación; no es la función del Panel."
+   },
+   "dificultad": 2,
+   "apartado": "II.1 Información general y evolución histórica (los noventa: instituciones y salvaguardias)",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 323008,
+   "estado": "publicada",
+   "enunciado": "El Convenio Constitutivo del Banco Internacional de Reconstrucción y Fomento (BIRF) exige, como condición previa para que un país pueda ingresar en él:",
+   "opciones": {
+    "a": "Ser miembro del Fondo Monetario Internacional.",
+    "b": "Ser miembro de la Organización Mundial del Comercio.",
+    "c": "Ser miembro de la Asociación Internacional de Fomento.",
+    "d": "Estar clasificado como país de renta baja o media."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Para ingresar en el BIRF hay que ser antes miembro del FMI: las dos instituciones nacieron juntas en Bretton Woods (1944). A su vez, la pertenencia al BIRF es la puerta de entrada a la AIF, la CFI y el MIGA.",
+    "desarrollo": "El BIRF y el FMI se crearon en la Conferencia de Bretton Woods (1944) como los dos pilares financieros del orden de posguerra: el Fondo para la estabilidad monetaria y de los pagos, y el Banco para la reconstrucción y el desarrollo. El convenio del Banco reserva el ingreso a los miembros del Fondo, de modo que un país que abandona el FMI deja, en principio, de ser miembro del BIRF.\n\nLa cadena sigue hacia dentro del Grupo: para entrar en la Asociación Internacional de Fomento, la Corporación Financiera Internacional y el Organismo Multilateral de Garantía de Inversiones hay que ser miembro del BIRF.\n\nPor qué fallan las demás:\n\n- b) La OMC (1995) es heredera del pilar comercial, el GATT, y no hay vínculo de pertenencia con el Banco.\n- c) Es al revés: se entra en la AIF siendo miembro del BIRF.\n- d) Los miembros del BIRF son países de todos los niveles de renta; los de renta alta son accionistas y no prestatarios. La renta decide a qué financiación se accede, no la pertenencia."
+   },
+   "dificultad": 1,
+   "apartado": "II.1 Información general y evolución histórica",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323009,
+   "estado": "publicada",
+   "enunciado": "La Asociación Internacional de Fomento (AIF) reparte sus recursos entre los países que pueden recibirlos combinando varios criterios. Señale la afirmación correcta:",
+   "opciones": {
+    "a": "El volumen que recibe cada país depende sobre todo de su riesgo de sobreendeudamiento, y la mezcla de donaciones y créditos, de su desempeño.",
+    "b": "El volumen que recibe cada país es el mismo por habitante, y la mezcla de donaciones y créditos se negocia con cada donante en la reposición.",
+    "c": "El volumen y las condiciones dependen del poder de voto del país en la Asociación, que refleja lo que aportó a reposiciones anteriores.",
+    "d": "El volumen que recibe cada país depende sobre todo de su desempeño, y la mezcla de donaciones y créditos, de su riesgo de sobreendeudamiento."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "La AIF asigna el grueso de sus recursos según el desempeño de cada país (la calidad de sus políticas e instituciones), y decide cuánto se da como donación y cuánto como crédito según el riesgo de sobreendeudamiento: a más riesgo, más donaciones.",
+    "desarrollo": "La AIF funciona con dos reglas distintas para dos preguntas distintas.\n\nCuánto recibe cada país: la asignación basada en el desempeño reparte la mayor parte de los recursos con una fórmula que premia las buenas políticas e instituciones (además de tener en cuenta la población y la renta por habitante). La idea es que la ayuda rinde más donde el entorno de políticas es mejor. Se completa con ventanillas especiales para crisis, refugiados y proyectos regionales.\n\nEn qué condiciones lo recibe: lo decide el riesgo de sobreendeudamiento que resulta del análisis de sostenibilidad de la deuda. Los países con riesgo alto reciben donaciones; los de riesgo bajo, créditos muy concesionales, y los intermedios, una mezcla. Así se evita que la propia AIF agrave un problema de deuda.\n\nPor qué fallan las demás:\n\n- a) Cruza los dos criterios: el riesgo de deuda fija las condiciones, no el volumen, y el desempeño fija el volumen, no las condiciones.\n- b) No hay un reparto igual por habitante, y las condiciones no se negocian con cada donante: los donantes fijan las prioridades generales en cada reposición.\n- c) Los receptores de la AIF apenas aportan a las reposiciones, y el poder de voto no interviene en la asignación."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Instituciones que conforman el Grupo: la Asociación Internacional de Fomento",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "revisar-2028-07"
+  },
+  {
+   "id": 323010,
+   "estado": "publicada",
+   "enunciado": "En un préstamo sindicado del programa B de la Corporación Financiera Internacional (CFI) a una empresa de un país en desarrollo:",
+   "opciones": {
+    "a": "La CFI garantiza a los bancos comerciales participantes el reembolso íntegro de su parte y asume así todo el riesgo de crédito.",
+    "b": "El Estado del país receptor avala la operación, y por eso los bancos comerciales aceptan plazos más largos de los habituales.",
+    "c": "Los bancos comerciales prestan bajo el paraguas de la CFI, asumen el riesgo de su parte y comparten su trato de acreedor preferente.",
+    "d": "Los bancos comerciales entran en el capital de la empresa junto con la CFI, que pasa a ser su accionista mayoritaria."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "En el programa B, la CFI figura como prestamista de toda la operación y cede una parte a bancos comerciales, que asumen el riesgo de crédito de su tramo pero se benefician de la condición de acreedor preferente de la CFI. Es una forma de movilizar capital privado.",
+    "desarrollo": "La CFI financia al sector privado sin garantía del Estado y nunca todo el coste de un proyecto: su papel es catalizar a otros inversores. Uno de sus instrumentos clásicos es el préstamo A/B. La CFI mantiene en su balance el tramo A y sindica el tramo B entre bancos comerciales, pero sigue siendo el prestamista ante la empresa para toda la operación.\n\nLos participantes asumen el riesgo de crédito de su parte: la CFI no les garantiza el cobro. Lo que obtienen es el «paraguas» de la CFI: como el prestamista formal es una institución multilateral, los pagos del préstamo se benefician de su trato de acreedor preferente (por ejemplo, acceso a divisas si el país impone restricciones a las transferencias) y del efecto disuasorio de su presencia frente a actuaciones arbitrarias del Gobierno. A cambio de ese riesgo menor, los bancos prestan a plazos y en países a los que no irían solos.\n\nPor qué fallan las demás:\n\n- a) La CFI no garantiza el tramo B: si la empresa no paga, los participantes pierden en proporción a su parte.\n- b) La CFI opera sin garantía soberana; es lo que la distingue del BIRF.\n- d) Un préstamo sindicado no es una toma de participaciones, y la CFI, cuando entra en el capital, lo hace siempre en minoría."
+   },
+   "dificultad": 3,
+   "apartado": "II.3 Instituciones que conforman el Grupo: la Corporación Financiera Internacional",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323011,
+   "estado": "publicada",
+   "enunciado": "Una empresa española va a construir y explotar una planta industrial en un país de renta baja y contrata una garantía del Organismo Multilateral de Garantía de Inversiones (MIGA). ¿Cuál de las siguientes pérdidas quedaría cubierta?",
+   "opciones": {
+    "a": "La caída de los ingresos de la planta porque la demanda resulta menor que la prevista en el plan de negocio.",
+    "b": "La imposibilidad de convertir a divisas y repatriar los dividendos porque el país impone un control de cambios.",
+    "c": "La pérdida de valor en euros de los beneficios de la planta porque la moneda local se deprecia con fuerza.",
+    "d": "El impago de un cliente privado local de la planta, que entra en concurso de acreedores."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "El MIGA asegura a los inversores extranjeros frente a riesgos no comerciales o políticos: expropiación, guerra y disturbios, incumplimiento de contratos por el Estado e inconvertibilidad y restricciones a la transferencia de divisas. No cubre el riesgo comercial ni la depreciación de la moneda.",
+    "desarrollo": "El MIGA no presta: es la aseguradora del Grupo del Banco Mundial. Sus garantías cubren riesgos que dependen de la actuación del Estado receptor o de la situación política del país, que el mercado privado asegura mal en los países más pobres:\n\n- la inconvertibilidad de la moneda y las restricciones a la transferencia de divisas;\n- la expropiación, directa o encubierta;\n- la guerra, el terrorismo y los disturbios civiles;\n- el incumplimiento de contratos por el Estado y de sus obligaciones financieras.\n\nUn control de cambios que impide convertir y repatriar dividendos es el primer riesgo de la lista. Además de indemnizar, la presencia del MIGA disuade al Gobierno de actuar contra el proyecto, porque un conflicto con el Grupo del Banco Mundial le resulta costoso.\n\nPor qué fallan las demás:\n\n- a) Es riesgo comercial (de mercado), que asume el inversor.\n- c) La depreciación es riesgo de cambio, no de convertibilidad: la empresa puede convertir y transferir, solo que a un tipo de cambio peor. Es la confusión más frecuente.\n- d) Es riesgo de crédito comercial de un deudor privado; el MIGA cubriría el incumplimiento de un contrato por el Estado, no por un cliente privado."
+   },
+   "dificultad": 2,
+   "apartado": "II.3 Instituciones que conforman el Grupo: el Organismo Multilateral de Garantía de Inversiones",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323012,
+   "estado": "publicada",
+   "enunciado": "¿Qué distingue al Banco Europeo de Reconstrucción y Desarrollo (BERD) de los bancos regionales de desarrollo de América, África y Asia?",
+   "opciones": {
+    "a": "Solo admite como accionistas a los países en los que opera, de modo que no tiene miembros no prestatarios.",
+    "b": "Presta casi en exclusiva a los Estados y dispone de una ventanilla blanda que los donantes reponen cada pocos años.",
+    "c": "Es una institución de la Unión Europea cuyos accionistas son únicamente sus Estados miembros.",
+    "d": "Su convenio incluye un mandato político y le obliga a dirigir la mayor parte de su financiación al sector privado."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "El BERD nació en 1991 para apoyar la transición a la economía de mercado. Su convenio limita su actividad a países comprometidos con la democracia pluripartidista y la economía de mercado y exige que la mayor parte de su financiación vaya a empresas privadas; por eso no tiene ventanilla blanda.",
+    "desarrollo": "Los bancos regionales clásicos (el interamericano, el africano y el asiático) copian al Banco Mundial: prestan sobre todo a los Estados, con una ventanilla dura y otra blanda, y sus convenios les prohíben tener en cuenta consideraciones políticas.\n\nEl BERD es distinto en dos cosas. Primero, tiene un mandato político expreso: solo opera en países comprometidos con los principios de la democracia pluripartidista, el pluralismo y la economía de mercado. Segundo, es sobre todo un banco del sector privado: su convenio exige que al menos el 60 % de su financiación se destine a empresas privadas, y solo financia proyectos rentables en condiciones de mercado, de modo que no necesita, ni tiene, una ventanilla concesional. Su objetivo original era la transición del Este de Europa y de Asia Central, y después se ha extendido a otras regiones.\n\nPor qué fallan las demás:\n\n- a) Entre sus accionistas hay muchos países no receptores (Estados Unidos, Japón, los de Europa occidental) y, además, la Unión Europea y el Banco Europeo de Inversiones.\n- b) Es lo contrario: predomina el sector privado y no hay ventanilla blanda.\n- c) Describe al Banco Europeo de Inversiones, que es el banco de la Unión; el BERD tiene accionistas de fuera de Europa."
+   },
+   "dificultad": 2,
+   "apartado": "III.1 Los bancos regionales de desarrollo: los bancos europeos (BERD y BEI)",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323013,
+   "estado": "publicada",
+   "enunciado": "En 2017, el Banco Asiático de Desarrollo traspasó a su capital ordinario la cartera de préstamos concesionales de su ventanilla blanda, el Fondo Asiático de Desarrollo. El principal efecto de esa operación fue que:",
+   "opciones": {
+    "a": "Aumentó mucho el patrimonio del banco y, con él, su capacidad de préstamo, sin aportaciones nuevas de capital de los accionistas.",
+    "b": "Redujo el patrimonio del banco, porque los préstamos concesionales rinden menos, y le obligó a pedir un aumento de capital.",
+    "c": "Suprimió la financiación concesional a los países más pobres de la región, que pasaron a endeudarse solo a tipos de mercado.",
+    "d": "Convirtió a los donantes del Fondo en nuevos accionistas del banco, lo que dio la mayoría de los votos a los países no regionales."
+   },
+   "respuesta": [
+    "a"
+   ],
+   "explicacion": {
+    "clave": "Los préstamos del Fondo se habían financiado con donaciones, no con deuda. Al pasar al balance ordinario se incorporaron como patrimonio, que se multiplicó aproximadamente por tres; como la capacidad de préstamo es proporcional al patrimonio ($L^{\\max}=E/e^{\\min}$), el banco pudo prestar mucho más sin un aumento de capital.",
+    "desarrollo": "Una ventanilla blanda tradicional es un fondo de donantes: recibe aportaciones a fondo perdido y las presta en condiciones muy favorables. Esos préstamos son activos sin deuda detrás, es decir, patrimonio puro, pero un patrimonio «ocioso», porque el fondo no se endeuda contra él.\n\nAl fusionar esa cartera con el balance ordinario, el banco suma activos sin sumar deuda: su patrimonio crece en el importe traspasado. Y como lo que limita los préstamos de un banco multilateral es la ratio entre patrimonio y préstamos, más patrimonio significa más capacidad para endeudarse en los mercados y prestar, sin pedir un euro a los accionistas. Desde entonces el Fondo Asiático de Desarrollo solo da donaciones, y los préstamos concesionales a los países más pobres se conceden desde el capital ordinario.\n\nEs el mismo principio que aplicó el Banco Interamericano de Desarrollo ese año al integrar su Fondo para Operaciones Especiales, y el que permite a la AIF emitir bonos desde 2018 apoyándose en su gran patrimonio. Son antecedentes de las medidas recientes para «prestar más con el mismo capital».\n\nPor qué fallan las demás:\n\n- b) El patrimonio aumenta, no disminuye; el menor rendimiento de esos préstamos afecta al beneficio, no al volumen de patrimonio.\n- c) La financiación concesional se mantuvo: cambió la ventanilla desde la que se concede.\n- d) El patrimonio del Fondo pasó a las reservas ordinarias, no al capital suscrito, que es lo que da votos: el reparto de los votos no cambió."
+   },
+   "dificultad": 3,
+   "apartado": "III.1 Los bancos regionales de desarrollo: el Banco Asiático de Desarrollo",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323014,
+   "estado": "publicada",
+   "enunciado": "En el Banco Internacional de Reconstrucción y Fomento, las enmiendas del convenio constitutivo exigen el 85 % de los votos, y Estados Unidos tiene en torno al 16 %. En el Banco Asiático de Inversión en Infraestructuras, las decisiones más importantes exigen el 75 % de los votos, y China tiene algo más del 26 %. De ello se deduce que:",
+   "opciones": {
+    "a": "Cada uno de los dos puede aprobar por sí solo esas decisiones, porque es el mayor accionista de su banco.",
+    "b": "Ninguno de los dos puede bloquear esas decisiones, porque ambos están lejos de tener la mayoría de los votos.",
+    "c": "Cada uno de los dos puede bloquear por sí solo esas decisiones, porque supera la minoría de bloqueo de su banco.",
+    "d": "Solo China puede bloquear esas decisiones, porque para vetar hay que superar la cuarta parte de los votos."
+   },
+   "respuesta": [
+    "c"
+   ],
+   "explicacion": {
+    "clave": "Una mayoría cualificada del 85 % se bloquea con más del 15 % de los votos, y una del 75 %, con más del 25 %. Estados Unidos (16 %) y China (26 %) superan cada uno su umbral, así que tienen veto sobre esas decisiones, pero no sobre las ordinarias, que se toman por mayoría simple.",
+    "desarrollo": "En los bancos multilaterales los votos dependen sobre todo del capital suscrito, y las decisiones fundamentales (reformar el convenio, ampliar el capital, admitir miembros) exigen mayorías cualificadas. El poder de veto no requiere tener la mayoría: basta con tener más votos que el complemento de la mayoría exigida.\n\n- BIRF: la mayoría es del 85 %; la minoría de bloqueo, más del 15 %. Con cerca del 16 %, Estados Unidos puede impedir una enmienda aunque todos los demás la apoyen ($100-16=84<85$).\n- BAII: la mayoría es del 75 %; la minoría de bloqueo, más del 25 %. Con algo más del 26 %, China también puede ($100-26=74<75$).\n\nEn cambio, las decisiones corrientes, como aprobar un préstamo, se adoptan por mayoría simple, y ahí ninguno de los dos decide solo. El paralelismo no es casual: el diseño del BAII reproduce para su principal accionista la posición que Estados Unidos tiene en el Banco Mundial.\n\nPor qué fallan las demás:\n\n- a) Vetar no es aprobar: para aprobar haría falta reunir el 85 % o el 75 %.\n- b) Confunde la minoría de bloqueo con la mayoría: basta superar el 15 % o el 25 %.\n- d) El umbral del veto no es fijo: depende de la mayoría exigida en cada banco; en el BIRF es el 15 %."
+   },
+   "dificultad": 2,
+   "apartado": "III.3 Las nuevas instituciones de las economías emergentes: el Banco Asiático de Inversión en Infraestructuras",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "revisar-2027-11"
+  },
+  {
+   "id": 323015,
+   "estado": "publicada",
+   "enunciado": "Un banco multilateral de desarrollo que mantiene un patrimonio mínimo del 20 % de sus préstamos coloca 2.000 millones de dólares de capital híbrido (títulos subordinados y perpetuos) que las agencias de calificación computan como patrimonio. Señale la afirmación correcta:",
+   "opciones": {
+    "a": "Su capacidad de préstamo aumenta en 2.000 millones, y los suscriptores reciben votos en proporción a lo que aportan.",
+    "b": "Su capacidad de préstamo no cambia, porque el capital híbrido es una garantía que solo se desembolsa si el banco no paga.",
+    "c": "Su capacidad de préstamo aumenta en 400 millones, el 20 % de lo emitido, y el banco no paga cupón por esos títulos.",
+    "d": "Su capacidad de préstamo aumenta en 10.000 millones, sin que los accionistas desembolsen capital ordinario."
+   },
+   "respuesta": [
+    "d"
+   ],
+   "explicacion": {
+    "clave": "Si el capital híbrido cuenta como patrimonio, la capacidad de préstamo pasa a ser $(E+H)/e^{\\min}$: cada dólar de híbrido sostiene $1/0{,}20=5$ dólares de préstamos, y 2.000 millones sostienen 10.000. Los accionistas no desembolsan capital ordinario, aunque el banco paga un cupón por esos títulos.",
+    "desarrollo": "El capital híbrido es un instrumento a medio camino entre la deuda y el capital: es perpetuo (o de plazo muy largo), está subordinado al resto de la deuda y sus cupones pueden cancelarse, de modo que absorbe pérdidas. Por eso las agencias de calificación lo computan, en todo o en parte, como patrimonio.\n\nCon la restricción de capital $E/L\\geq e^{\\min}$, añadir un instrumento $H$ que cuenta como patrimonio eleva el máximo a $L^{\\max}=(E+H)/e^{\\min}$. Con $e^{\\min}=20\\ \\%$, el aumento es $2.000/0{,}20=10.000$ millones. El resto de esos préstamos (8.000 millones) se financia con deuda ordinaria emitida en los mercados.\n\nEs una de las recomendaciones de la revisión de los marcos de adecuación del capital que encargó el G-20, junto con dar más valor al capital exigible, transferir riesgo con garantías y seguros y ajustar el apetito de riesgo. Tiene un coste: el banco paga un cupón superior al de su deuda ordinaria.\n\nPor qué fallan las demás:\n\n- a) Ignora la palanca (el aumento es de 5 veces lo emitido); además, el capital híbrido no da derechos de voto: por eso no altera el reparto de poder entre los accionistas.\n- b) Describe el capital exigible, que es una garantía fuera de balance; el híbrido sí se desembolsa.\n- c) Multiplica por $e^{\\min}$ en vez de dividir, y el híbrido sí paga cupón."
+   },
+   "dificultad": 2,
+   "apartado": "I.1 Definición y razón de ser: la intermediación con la garantía de los accionistas (la revisión del marco de adecuación del capital: capital híbrido)",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  },
+  {
+   "id": 323016,
+   "estado": "publicada",
+   "enunciado": "Los contratos de obras, bienes y consultoría de los proyectos que financia un banco multilateral de desarrollo, como norma general:",
+   "opciones": {
+    "a": "Se reservan a las empresas del país prestatario, para que la financiación revierta en su economía.",
+    "b": "Se licitan con concurrencia internacional, con las normas de contratación del banco y sin reserva para ningún país.",
+    "c": "Se reparten entre las empresas de los países accionistas en proporción a su parte en el capital.",
+    "d": "Los adjudica el directorio del banco a las empresas que propone el Gobierno del país prestatario."
+   },
+   "respuesta": [
+    "b"
+   ],
+   "explicacion": {
+    "clave": "La financiación multilateral no está ligada: los contratos se adjudican por licitación competitiva abierta a las empresas de los países miembros (en el Banco Mundial, de cualquier país), con las normas de contratación del banco. Por eso los bancos multilaterales son también un mercado para las empresas de sus accionistas, entre ellas las españolas.",
+    "desarrollo": "A diferencia de buena parte de la ayuda bilateral, que históricamente estuvo ligada a comprar bienes y servicios del donante, la financiación de los bancos multilaterales es no ligada. El prestatario (normalmente una agencia del Gobierno) convoca las licitaciones siguiendo las normas de contratación del banco, que supervisa el proceso, y pueden concurrir en igualdad de condiciones las empresas de los países miembros. El objetivo es obtener la mejor relación entre calidad y precio para el proyecto.\n\nDe ahí el interés comercial de ser accionista: los bancos licitan cada año un gran volumen de contratos, y las Administraciones de los países miembros (en España, la Secretaría de Estado de Comercio, con ICEX y las Oficinas Económicas y Comerciales) ayudan a sus empresas a competir por ellos.\n\nPor qué fallan las demás:\n\n- a) No hay reserva para las empresas locales; a lo sumo, las normas pueden admitir una pequeña preferencia para la industria nacional al comparar las ofertas.\n- c) No existe ningún «retorno» garantizado en proporción al capital: lo que cada país obtiene depende de la competitividad de sus empresas.\n- d) El directorio aprueba la financiación del proyecto, no adjudica los contratos; adjudica el prestatario con las reglas del banco."
+   },
+   "dificultad": 1,
+   "apartado": "III.4 El sistema de los BMD: el papel de España (licitaciones multilaterales)",
+   "creada": "2026-11-20",
+   "revisada": "2026-11-20",
+   "vigencia": "estable"
+  }
+ ]
+}

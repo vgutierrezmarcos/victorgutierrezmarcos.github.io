@@ -43,3 +43,6 @@ Revisado OK (16/16): 3B45, verificado con TFUE y Reglamentos 2024/1263-1264. TOD
 19 nov.: Víctor pide 3B01-04 y 3B33-35 (61 preguntas). Redactores: 3B01-02, 3B03-04, 3B33, 3B34-35
 Revisados OK (26/26): 3B01 3B02 3B34 3B35. Leves: 320207 (Hamada frente a desapalancar sin impuestos), 323405 (c y d casi iguales), 323404 (ejemplo del tema, no cotejado con Grossman y Lai). Art. 44 TM80 de la 323504: correcto según mi conocimiento.
 Revisados OK (35/35): 3B03 3B04 3B33 (3B33 verificado en textos de wto.org). Publicadas +61 → 900. Faltan 3B29, 30, 32, 38-42 (63).
+20 nov.: 39 borradores cerrados (39 publicadas, 0 retiradas). Revisados OK (20/20): 3B29 3B32 3B40 3B42 (Opus, fase 2 sobre el ciego de Fable).
+Revisados OK (16/16): 3B38 3B39 (Opus).
+Revisados OK (27/27): 3B30 3B41. BANCO COMPLETO: 1002 publicadas, 0 borradores.

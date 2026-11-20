@@ -95,7 +95,7 @@
   },
   {
    "id": 311005,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Un consumidor decide cuánto ahorrar hoy sabiendo que mañana recibirá una renta incierta. Sobre el ahorro precautorio (el que aparece cuando la renta futura se vuelve más incierta sin cambiar su media), señale la afirmación CORRECTA:",
    "opciones": {
     "a": "Todo consumidor averso al riesgo ($u''<0$) ahorra más cuando su renta futura se vuelve más incierta.",
@@ -113,7 +113,7 @@
    "dificultad": 2,
    "apartado": "I.1.2 Prudencia y ahorro precautorio",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {
@@ -194,7 +194,7 @@
   },
   {
    "id": 311009,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Un consumidor averso al riesgo, que maximiza su utilidad esperada, reparte su riqueza entre un activo seguro y un activo con riesgo cuya rentabilidad esperada es mayor que la del activo seguro. Según el resultado de Arrow (1965), y sin restricciones a la cantidad que puede invertir:",
    "opciones": {
     "a": "No invierte nada en el activo con riesgo si su aversión al riesgo supera cierto umbral.",
@@ -209,33 +209,33 @@
     "clave": "Partiendo de la certeza, la utilidad marginal de invertir el primer euro es $u'(W_0)\\,(\\mathbb{E}[\\tilde{r}]-r_f)>0$. Para riesgos pequeños, la ganancia esperada es de primer orden y el coste del riesgo, de segundo orden: todo averso toma algo de un riesgo con esperanza favorable.",
     "desarrollo": "Con $\\alpha$ euros en el activo con riesgo, la riqueza final es $W_0+\\alpha\\tilde{z}$, donde $\\tilde{z}=\\tilde{r}-r_f$ es la rentabilidad en exceso. La derivada de la utilidad esperada en $\\alpha=0$ es\n\n$$\\frac{d\\,\\mathbb{E}[u]}{d\\alpha}\\bigg|_{\\alpha=0}=u'(W_0)\\,\\mathbb{E}[\\tilde{z}]>0 ,$$\n\nporque en $\\alpha=0$ la riqueza es cierta y $u'(W_0)$ sale de la esperanza. Como la utilidad esperada es cóncava en $\\alpha$, el máximo está en $\\alpha^*>0$.\n\nLa intuición es la de la aproximación de Arrow-Pratt: el coste del riesgo es proporcional a la varianza, es decir, a $\\alpha^2$, mientras que la ganancia esperada es proporcional a $\\alpha$. Para un $\\alpha$ suficientemente pequeño, gana lo segundo. Un consumidor más averso invierte menos, pero no cero.\n\nPor qué fallan las demás:\n\n- a) No hay umbral: la aversión reduce $\\alpha^*$, pero no lo anula mientras la prima de rentabilidad sea positiva.\n- b) Eso lo haría un consumidor neutral al riesgo, que solo mira la esperanza.\n- c) Compara la ganancia con el coste de asumir todo el riesgo; la decisión es marginal, y el primer euro invertido casi no añade riesgo."
    },
-   "dificultad": 1,
+   "dificultad": 2,
    "apartado": "I.2 Aplicaciones: decisión de cartera y demanda de un activo con riesgo (Arrow, 1965)",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {
    "id": 311010,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Friedman y Savage (1948) explican que una misma persona compre seguros y juegue a la lotería con una utilidad de Bernoulli cóncava-convexa-cóncava sobre la riqueza. ¿Qué objeta Markowitz (1952) a esa función y qué propone?",
    "opciones": {
     "a": "Que viola el axioma de independencia; propone sustituir las probabilidades por pesos de decisión que sobreponderan los sucesos poco probables.",
     "b": "Que no puede explicar a la vez el seguro y el juego; propone una utilidad cóncava en todo su recorrido, definida sobre la riqueza final y no sobre sus cambios.",
     "c": "Que predice que los más ricos nunca jugarían; propone definir la utilidad sobre los cambios respecto a la riqueza habitual, con más peso para las pérdidas que para las ganancias iguales.",
-    "d": "Que predice que los más pobres nunca se asegurarían; propone una función de valor cóncava para las ganancias de cualquier tamaño y convexa para las pérdidas de cualquier tamaño."
+    "d": "Que predice que quienes tienen rentas intermedias nunca jugarían; propone una función de valor cóncava para las ganancias de cualquier tamaño y convexa para las pérdidas de cualquier tamaño."
    },
    "respuesta": [
     "c"
    ],
    "explicacion": {
     "clave": "Con la función de Friedman y Savage, la conducta depende del nivel de riqueza: los ricos, en el tramo cóncavo final, no jugarían nunca, y se juega a todos los niveles. Markowitz define la utilidad sobre cambios respecto a la riqueza habitual (un punto de inflexión) y da más peso a las pérdidas: dos ideas que recupera la teoría de las perspectivas.",
-    "desarrollo": "Friedman y Savage: utilidad sobre niveles de riqueza con dos puntos de inflexión; aversión en rentas bajas y altas, amor por el riesgo en las intermedias. Explica el seguro y la lotería de quien está cerca del tramo convexo, pero no por qué se juega a todos los niveles de renta, y predice que quien está en el tramo convexo aceptaría grandes apuestas justas.\n\nMarkowitz: la utilidad depende de los cambios respecto a la riqueza habitual, que es el origen y un punto de inflexión. Con tres puntos de inflexión, el individuo es averso a las pérdidas pequeñas y a las ganancias grandes, y amante de las pérdidas grandes y de las ganancias pequeñas: compra lotería y seguro a cualquier nivel de riqueza. Además, las pérdidas pesan más que las ganancias iguales.\n\nPor qué fallan las demás:\n\n- a) Los dos trabajos se mantienen dentro de la utilidad esperada: discuten la forma de $u$, no los axiomas. Los pesos de decisión son de Kahneman y Tversky (1979).\n- b) Friedman y Savage sí explican las dos conductas a la vez (esa era su pregunta), y una utilidad cóncava en todo su recorrido no puede explicar el juego desfavorable.\n- d) La objeción se refiere a los ricos, no a los pobres. Y la forma que describe (cóncava en todas las ganancias, convexa en todas las pérdidas) es la función de valor de Kahneman y Tversky; la de Markowitz es convexa en las ganancias pequeñas y cóncava en las pérdidas pequeñas."
+    "desarrollo": "Friedman y Savage: utilidad sobre niveles de riqueza con dos puntos de inflexión; aversión en rentas bajas y altas, amor por el riesgo en las intermedias. Explica el seguro y la lotería de quien está cerca del tramo convexo, pero no por qué se juega a todos los niveles de renta, y predice que quien está en el tramo convexo aceptaría grandes apuestas justas.\n\nMarkowitz: la utilidad depende de los cambios respecto a la riqueza habitual, que es el origen y un punto de inflexión. Con tres puntos de inflexión, el individuo es averso a las pérdidas pequeñas y a las ganancias grandes, y amante de las pérdidas grandes y de las ganancias pequeñas: compra lotería y seguro a cualquier nivel de riqueza. Además, las pérdidas pesan más que las ganancias iguales.\n\nPor qué fallan las demás:\n\n- a) Los dos trabajos se mantienen dentro de la utilidad esperada: discuten la forma de $u$, no los axiomas. Los pesos de decisión son de Kahneman y Tversky (1979).\n- b) Friedman y Savage sí explican las dos conductas a la vez (esa era su pregunta), y una utilidad cóncava en todo su recorrido no puede explicar el juego desfavorable.\n- d) La objeción se refiere a los ricos, no a las rentas intermedias, que en la función de Friedman y Savage están en el tramo convexo y son justo las que juegan. Y la forma que describe (cóncava en todas las ganancias, convexa en todas las pérdidas) es la función de valor de Kahneman y Tversky; la de Markowitz es convexa en las ganancias pequeñas y cóncava en las pérdidas pequeñas."
    },
    "dificultad": 2,
    "apartado": "II.1 Críticas a la utilidad esperada: la forma de la utilidad (Friedman-Savage y Markowitz)",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {
@@ -263,7 +263,7 @@
   },
   {
    "id": 311012,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Un individuo valora las ganancias y las pérdidas respecto a su situación actual con una función de valor como la de la teoría de las perspectivas, simplificada sin curvatura: $v(z)=z$ si $z\\geq 0$ y $v(z)=-2{,}25\\,(-z)$ si $z<0$. Pondera los resultados con sus probabilidades, $w(\\pi)=\\pi$. Se le ofrece una apuesta a cara o cruz con una moneda equilibrada: si sale cruz pierde 100 euros y si sale cara gana $G$ euros. Acepta la apuesta solo si $G$ es mayor que:",
    "opciones": {
     "a": "100",
@@ -281,7 +281,7 @@
    "dificultad": 1,
    "apartado": "II.2 Teoría de las perspectivas: función de valor y aversión a las pérdidas",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {

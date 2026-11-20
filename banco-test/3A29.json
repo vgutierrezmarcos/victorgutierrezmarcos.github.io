@@ -72,7 +72,7 @@
   },
   {
    "id": 312904,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Un individuo con descuento cuasihiperbólico valora en el periodo $t$ una senda de pagos como $x_t+b\\sum_{s\\geq1}d^{\\,s}\\,x_{t+s}$, con sesgo por el presente $b=0{,}8$ y factor de descuento $d=0{,}95$ (utilidad lineal en los pagos). Debe elegir entre A, recibir 100 en una fecha dada, y B, recibir 115 un periodo después de esa fecha. Compare su elección cuando la fecha de A está a 10 periodos de distancia con la que haría si la fecha de A fuera hoy:",
    "opciones": {
     "a": "Elige B en los dos casos, porque $0{,}95\\cdot115>100$.",
@@ -87,15 +87,15 @@
     "clave": "Entre dos fechas futuras solo cuenta $d$: $0{,}95\\cdot115=109{,}25>100$, y prefiere B. Entre hoy y mañana cuenta $b\\,d=0{,}76$: $0{,}76\\cdot115=87{,}4<100$, y prefiere A. El plan que hoy hace para el futuro deja de parecerle óptimo cuando el futuro llega.",
     "desarrollo": "Vistas desde hoy, con A a 10 periodos:\n\n- A vale $b\\,d^{10}\\cdot100$ y B vale $b\\,d^{11}\\cdot115$. El cociente es $d\\cdot115/100=1{,}0925>1$: prefiere B. El sesgo $b$ afecta a las dos opciones por igual y se cancela.\n\nCuando la fecha de A es hoy:\n\n- A vale $100$ y B vale $b\\,d\\cdot115=0{,}76\\cdot115=87{,}4$: prefiere A.\n\nLa misma pareja de pagos, separada por el mismo intervalo, se ordena de forma distinta según lo lejos que esté del presente. Es la inconsistencia temporal del descuento (cuasi)hiperbólico: el individuo planea esperar y, llegado el momento, no espera, y por eso demanda mecanismos de compromiso. Con descuento exponencial no ocurre: el factor entre dos periodos seguidos es siempre el mismo, y el plan óptimo de hoy lo sigue siendo mañana (Strotz, 1955).\n\nPor qué fallan las demás:\n\n- a) Es lo que haría un consumidor exponencial con factor $0{,}95$: ignora el sesgo por el presente cuando una de las fechas es hoy.\n- b) Aplica el sesgo $b$ entre dos periodos futuros consecutivos; el sesgo solo separa el presente de todo lo demás.\n- d) Invierte el patrón: el sesgo por el presente lleva a la impaciencia en lo inmediato y a la paciencia en lo lejano, no al revés."
    },
-   "dificultad": 3,
+   "dificultad": 2,
    "apartado": "II.2 Modelos de horizonte infinito: consistencia temporal y descuento hiperbólico",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {
    "id": 312905,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "En un modelo de Ramsey, Cass y Koopmans con utilidad CRRA, la tasa de preferencia temporal es $\\rho=4\\ \\%$, el coeficiente de aversión relativa al riesgo es $\\theta=2$, la población crece al $n=1\\ \\%$, el progreso técnico al $g=2\\ \\%$ y el capital se deprecia al $\\delta=5\\ \\%$. En el estado estacionario, el tipo de interés real (el producto marginal del capital neto de depreciación) es:",
    "opciones": {
     "a": "El 8 %, superior al 3 % de la regla de oro: el capital es menor que el de la regla de oro y la economía es dinámicamente eficiente.",
@@ -113,12 +113,12 @@
    "dificultad": 2,
    "apartado": "II.2 Modelos de horizonte infinito: Ramsey-Cass-Koopmans (regla de oro modificada)",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {
    "id": 312906,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "En un modelo de Diamond, los hogares viven dos periodos, trabajan solo de jóvenes y tienen utilidad $\\ln C^J_t+\\beta\\ln C^V_{t+1}$ con $\\beta=3/5$; la producción por unidad de trabajo eficiente es $f(\\tilde k)=\\tilde k^{1/4}$ y el capital se deprecia por completo en un periodo. Sea la tasa de ahorro de la economía el cociente $K_{t+1}/Y_t$. En el estado estacionario:",
    "opciones": {
     "a": "La tasa de ahorro es del 37,5 %, mayor que el 25 % de la regla de oro: la economía es dinámicamente ineficiente, y un sistema de pensiones de reparto podría mejorar a todas las generaciones.",
@@ -136,7 +136,7 @@
    "dificultad": 3,
    "apartado": "II.3 Generaciones solapadas: modelo de Diamond (ineficiencia dinámica)",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable",
    "imagenes": [
     {

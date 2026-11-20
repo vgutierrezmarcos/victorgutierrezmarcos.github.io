@@ -118,8 +118,8 @@
   },
   {
    "id": 310606,
-   "estado": "borrador",
-   "enunciado": "En el modelo de islas de Lucas (variables en logaritmos), la oferta agregada es $y_t=y^n+\\psi\\,(p_t-p^e_t)$, con $\\psi=\\omega\\,\\varepsilon_S$ y $\\omega=\\sigma^2_z/(\\sigma^2_z+\\sigma^2_p)$, y la demanda agregada, $y_t=m_t-p_t$. La varianza de las perturbaciones de precios relativos es $\\sigma^2_z=3$; la del nivel general de precios, $\\sigma^2_p=1$, y la elasticidad de la oferta de cada isla, $\\varepsilon_S=2$. Si la cantidad de dinero resulta un 5 % mayor de lo que el público esperaba, ¿cuánto se apartan la producción de su nivel natural y los precios de su nivel esperado?",
+   "estado": "publicada",
+   "enunciado": "En el modelo de islas de Lucas (variables en logaritmos), la oferta agregada es $y_t=y^n+\\psi\\,(p_t-p^e_t)$, con $\\psi=\\omega\\,\\varepsilon_S$ y $\\omega=\\sigma^2_z/(\\sigma^2_z+\\sigma^2_p)$, y la demanda agregada, $y_t=m_t-p_t$. En el equilibrio, la varianza de las perturbaciones de precios relativos es $\\sigma^2_z=3$; la del nivel general de precios, $\\sigma^2_p=1$, y la elasticidad de la oferta de cada isla, $\\varepsilon_S=2$. Si la cantidad de dinero resulta un 5 % mayor de lo que el público esperaba, ¿cuánto se apartan la producción de su nivel natural y los precios de su nivel esperado?",
    "opciones": {
     "a": "La producción no cambia y los precios suben un 5 %: con expectativas racionales el dinero es neutral.",
     "b": "La producción sube un 3,75 % y los precios, un 1,25 %.",
@@ -131,12 +131,12 @@
    ],
    "explicacion": {
     "clave": "$\\omega=3/4$ y $\\psi=0{,}75\\cdot2=1{,}5$. En equilibrio la sorpresa monetaria se reparte: $\\psi/(1+\\psi)=0{,}6$ va a la producción y $1/(1+\\psi)=0{,}4$ a los precios. Con una sorpresa del 5 %, la producción sube un 3 % y los precios un 2 % sobre lo esperado.",
-    "desarrollo": "Paso 1, la extracción de señales: $\\omega=\\dfrac{3}{3+1}=0{,}75$. El productor atribuye a su precio relativo tres cuartas partes de la subida inesperada que ve en su isla.\n\nPaso 2, la pendiente de la oferta: $\\psi=\\omega\\,\\varepsilon_S=0{,}75\\cdot2=1{,}5$.\n\nPaso 3, el equilibrio. En sorpresas, la demanda da $(y_t-y^n)=(m_t-\\mathbb{E}_{t-1}[m_t])-(p_t-p^e_t)$ y la oferta, $(y_t-y^n)=\\psi\\,(p_t-p^e_t)$. Despejando:\n\n$$p_t-p^e_t=\\frac{5}{1+1{,}5}=2,\\qquad y_t-y^n=\\frac{1{,}5}{2{,}5}\\cdot5=3.$$\n\nComprobación: $3+2=5$, la sorpresa de demanda nominal, y $3=1{,}5\\cdot2$, la oferta.\n\nPor qué fallan las demás:\n\n- a) Es el resultado para el dinero anticipado. El no anticipado sí mueve la producción, porque los productores confunden en parte la subida general con una subida de su precio relativo.\n- b) Sale de repartir la sorpresa con $\\omega$ (0,75 y 0,25), olvidando la elasticidad de la oferta y el equilibrio con la demanda.\n- c) Sale de aplicar $\\psi$ a la sorpresa monetaria ($1{,}5\\cdot5$) en lugar de a la sorpresa de precios. Además, los precios no pueden quedar por debajo de lo esperado con una sorpresa monetaria positiva."
+    "desarrollo": "Paso 1, la extracción de señales: $\\omega=\\dfrac{3}{3+1}=0{,}75$. El productor atribuye a su precio relativo tres cuartas partes de la subida inesperada que ve en su isla.\n\nPaso 2, la pendiente de la oferta: $\\psi=\\omega\\,\\varepsilon_S=0{,}75\\cdot2=1{,}5$.\n\nPaso 3, el equilibrio. En sorpresas, la demanda da $(y_t-y^n)=(m_t-\\mathbb{E}_{t-1}[m_t])-(p_t-p^e_t)$ y la oferta, $(y_t-y^n)=\\psi\\,(p_t-p^e_t)$. Despejando:\n\n$$p_t-p^e_t=\\frac{5}{1+1{,}5}=2,\\qquad y_t-y^n=\\frac{1{,}5}{2{,}5}\\cdot5=3.$$\n\nComprobación: $3+2=5$, la sorpresa de demanda nominal, y $3=1{,}5\\cdot2$, la oferta.\n\nPor qué fallan las demás:\n\n- a) Es el resultado para el dinero anticipado. El no anticipado sí mueve la producción, porque los productores confunden en parte la subida general con una subida de su precio relativo.\n- b) Sale de repartir la sorpresa con $\\omega$ (0,75 y 0,25), olvidando la elasticidad de la oferta y el equilibrio con la demanda.\n- c) Sale de aplicar $\\psi$ a la sorpresa monetaria ($1{,}5\\cdot5$) en lugar de a la sorpresa de precios. Además, los precios no pueden quedar por debajo de lo esperado con una sorpresa monetaria positiva.\n\nNota: $\\sigma^2_p$ no es un parámetro, sino un resultado del equilibrio (depende de lo errática que sea la política monetaria); aquí se da ya calculada."
    },
    "dificultad": 2,
    "apartado": "II.2.1-II.2.2 Curva de oferta de Lucas y equilibrio con dinero no anticipado",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {
@@ -240,7 +240,7 @@
   },
   {
    "id": 310611,
-   "estado": "borrador",
+   "estado": "publicada",
    "enunciado": "Rogoff (1985) propone delegar la política monetaria en un banquero central «conservador», con más aversión a la inflación que la sociedad ($\\gamma'>\\gamma$ en la función de pérdida $L=(U-U^*)^2+\\gamma\\,(\\pi-\\pi^*)^2$). En el modelo de Barro y Gordon, esa delegación:",
    "opciones": {
     "a": "Reduce el sesgo inflacionista a $\\frac{\\alpha}{\\gamma'}(U^n-U^*)$, pero, si hay perturbaciones de oferta, al precio de estabilizar menos la producción.",
@@ -258,7 +258,7 @@
    "dificultad": 2,
    "apartado": "II.3 Reglas frente a discrecionalidad (independencia: banquero central conservador)",
    "creada": "2026-11-11",
-   "revisada": "2026-11-11",
+   "revisada": "2026-11-20",
    "vigencia": "estable"
   },
   {
