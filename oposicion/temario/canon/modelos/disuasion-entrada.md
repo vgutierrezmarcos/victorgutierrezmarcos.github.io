@@ -33,11 +33,14 @@ $$B^{D}-B^{G}<\mathrm{CH}<B^{M}-B^{D}\qquad(\Rightarrow 2B^D<B^M+B^G);$$
 | 3.A.17 | Monopolio | mención (hecho, 17/10/2026) | Barreras estratégicas, legales y tecnológicas (supuesto 5); Modigliani en la contextualización | — |
 | 3.A.18 | Diferenciación | mención (hecho, 19/10/2026) | Proliferación de marcas como barrera (Schmalensee, 1978; Judd, 1985) | — |
 | 3.B.39, 4.A.15 | Política de competencia | mención | Precios predatorios y demás conductas como abuso de posición dominante; remitir a 3.A.15 la teoría | — |
-| 3.B.8 | Política comercial estratégica | mención (posible) | El compromiso que cambia la conducta del rival es la lógica de Brander-Spencer | — |
+| 3.B.8 | Política comercial estratégica | mención (hecho, 5/11/2026) | Dixit y Kyle (1985): la subvención como compromiso que disuade la entrada (anexo `anexo:juego-entrada`), con `\vertema{3.A.15}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.19 original (bloque «Barreras de entrada»): pagos con π («beneficios unitarios», que son totales), $C_0$ y la condición π^D − π^L < C_0 < π^M − π^D sin explicar por qué el coste hundido «desaparece» al luchar («diluyendo los costes fijos»); precio límite con $P_L$, $P_M$, $P_C$ y «por debajo de los costes medios de todas las empresas» (basta con el entrante). **Resuelto** (20/10/2026): pasa al 3.A.15 con B, CH y `eq:precio-limite`; en el 3.A.19, un resumen.
 - 3.B.39 (sin revisar): cita los precios predatorios como abuso (l. 1080 de su conversión) sin remitir a la teoría: añadir `\vertema{3.A.15}` al revisarlo.
 - El 3.A.15 aplicó la forma del árbol de coherencia (K38) pero no sus números ((0, 3), (1, 0), (−1, 1) con CH = 1): usa (0, 4), (1, 1), (−1, −1) y CH = 2,5, porque salen de una regla explícita ($B^G$ ya descuenta el coste de la capacidad comprada al luchar).
+
+## Puesta al día de la pasada final (noviembre de 2026)
+- **Conductas anticompetitivas y precios predatorios en el 3.A.20** (comentarios de Víctor, 9/11/2026): I.2 `sec:poder-mercado` cuenta las familias de conductas, McGee, Selten, Kreps-Wilson y Milgrom-Roberts, Areeda-Turner, AKZO y el estrechamiento de márgenes, con las claves del 3.A.15 (`sec:otras-conductas`). Es el tema del 3.er ejercicio que reúne la **teoría de la depredación** para la política de competencia: el 3.B.39 y el 4.A.15, al revisarse, pueden remitir al 3.A.20; la disuasión estratégica sigue siendo del 3.A.15.
 
 Autor: Víctor Gutiérrez Marcos

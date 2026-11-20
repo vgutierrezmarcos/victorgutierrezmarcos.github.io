@@ -34,7 +34,7 @@
 | 3.A.2 | Los clásicos | desarrollo (hecho, 4/11/2026) | Todo lo anterior; los 2 gráficos | — |
 | 3.B.31 | Cambio climático | mención (hecho, 31/10/2026) | Malthus y el Club de Roma como antecedentes de los límites del crecimiento | Los frenos |
 | 3.A.43, 3.A.44, 3.A.45 | Crecimiento y reparto | mención (hechos) | La presión de la población sobre los recursos (contextualización); en el 3.A.44, Kremer (1993) | El modelo |
-| 3.B.20 | Historia económica | mención (prevista) | Malthus a favor de las Leyes de Granos (consumo de los terratenientes) | El principio de la población |
+| 3.B.20 | Historia económica | mención (hecho, 13/11/2026) | Malthus a favor de las Leyes de Granos, en nota con `\vertema{3.A.2}` | El principio |
 | 3.B.28 | Desarrollo | mención (opcional) | La trampa maltusiana como lo que precede al crecimiento moderno | El modelo |
 
 ## Divergencias encontradas en el temario actual

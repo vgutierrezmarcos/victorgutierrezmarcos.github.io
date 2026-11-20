@@ -31,7 +31,7 @@ $$\max_{q_1,q_2}\ p(q_1+q_2)(q_1+q_2)-C_1(q_1)-C_2(q_2)\ \Longrightarrow\ \mathr
 | 3.A.17 | Monopolio multiplanta | mención (hecho, 17/10/2026) | «Es el mismo problema que el de un cártel» (`eq:cartel` = IMg(Q) = CMg_1 = CMg_2) | El cártel |
 | 3.A.18 | Diferenciación | mención (hecho, 19/10/2026) | Anexo `anexo:colusion`: asimetría y transparencia; PC: una línea con Ross (1992) para el efecto ambiguo de la diferenciación horizontal (`pendientes-coherencia.md`) | — |
 | 3.A.15 | ECR y Chicago | mención (hecho, 20/10/2026) | Cárteles inestables (Stigler, 1964) | — |
-| 3.B.39 | Política de competencia | mención | Art. 101 TFUE, efectos coordinados; la clemencia como dilema con remisión «\vertema{3.A.14} \vertema{3.A.19}» | La teoría |
+| 3.B.39 | Política de competencia | mención (hecho, 19/11/2026) | Art. 101 TFUE y efectos coordinados; **multa disuasoria** (III.2.1): siguiendo a Becker (1968) y Landes (1983), la multa debe cumplir $M\geq\Delta B/\pi$, con π la probabilidad de ser descubierto (canon micro); el 3.A.19 explica la estabilidad del cártel y el 3.B.39 su disuasión (propuesta `multa-disuasoria` recogida aquí como variante, pasada final) | La estabilidad del cártel |
 | 3.A.20 | Regulación con varias empresas | mención (hecho, 22/10/2026) | Colusión entre empresas comparadas en el *yardstick* y entre licitadores de una concesión, `\vertema{3.A.19}`; art. 101 TFUE | La teoría |
 | 4.A.15 | Defensa de la competencia en España | resumen aplicado | Clemencia (arts. 65 y 66 de la Ley 15/2007) explicada con `eq:colusion` en una línea; casos de la CNMC (constructoras, recurrida: no presentarla como firme); remite al 3.A.19 y al 3.A.14 | La derivación |
 

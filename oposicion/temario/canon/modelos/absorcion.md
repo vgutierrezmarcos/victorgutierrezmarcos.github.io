@@ -34,7 +34,7 @@ $$\mathrm d\,\mathrm{XN}=\underbrace{[1-(c+z)]\,\mathrm dY}_{\text{efecto renta}
 | 3.B.11 | Balanza de pagos | mención (hecho, 5/11/2026) | La lectura renta menos absorción de `eq:cc-ahorro-inversion`, $A=C+I+G$ | El modelo y los efectos de una devaluación |
 | 1D01 | Dictamen de coyuntura | uso (aprobada) | $(Y-A)$ en la identidad; «exceso de absorción»; políticas reductoras y desviadoras del gasto (Johnson, 1958) como guía del ajuste | El modelo |
 | 3.A.5 | Síntesis y monetarismo | mención (hecho, 3/11/2026) | La síntesis trata la balanza con elasticidades y absorción; el monetarismo, con el enfoque monetario | — |
-| 3.B.22 | El FMI | mención | Absorción (Alexander, 1952) y enfoque monetario (Johnson, 1972) como base de la programación financiera, `\vertema{3.B.12}` | La derivación |
+| 3.B.22 | El FMI | mención (hecho, 13/11/2026) | Absorción (Alexander, 1952) y enfoque monetario como base de la programación financiera (ficha `programacion-financiera`) | El modelo |
 | 3.A.32 | OA-DA abierta | mención | La DA abierta con $\overline A$ y la misma geometría de OA (su `da-oa-abierta.tex` es la base del gráfico) | — |
 
 ## Divergencias encontradas en el temario actual

@@ -41,8 +41,9 @@ $$i-i^*\approx\gamma E^e+\rho\quad\Rightarrow\quad i=i^*\ \ \text{si}\ \rho=0\ \
 | 3.B.19 | Coordinación | mención (hecho, 12/11/2026) | «Más que un trilema, un dilema» entre los desbordamientos financieros, `\vertema{3.B.15}` | El triángulo |
 | 3.A.37 | Transmisión monetaria | mención (hecho, 5/11/2026) | Anexo D, l. 961: el dilema con `\vertema{3.B.15}` | El trilema |
 | 1D01 | Dictamen | uso (aprobada) | IV.2, régimen cambiario y trilema (l. 1073) | — |
-| 3.B.20 | Bretton Woods | mención (prevista) | Bretton Woods como el lado del tipo fijo con política propia y controles; su caída cuando el capital se movió, `\vertema{3.B.15}` | El triángulo |
-| 3.B.43 | El euro y el SME | mención (prevista) | El SME con controles hasta 1990 y sin ellos en 1992-1993; el euro como el lado de la unión, `\vertema{3.B.15}` | El triángulo |
+| 3.B.20 | Bretton Woods | mención (hecho, 13/11/2026) | Nota en I.3 (Fleming, Mundell, Nobel de 1999) y III.1.3: Bretton Woods, el lado del tipo fijo con política propia y controles; el patrón oro, fijo con capital libre y sin política propia; `\vertema{3.B.15}` | El modelo |
+| 3.B.43 | El euro y el SME | mención (hecho, 14/11/2026) | El SME con controles hasta 1990 y sin ellos en 1992-1993; el euro como el lado de la unión; la asimetría del SME tiene ficha propia (`asimetria-sme`) | — |
+| 3.B.21 | El SEI desde 1973 | mención (hecho, 13/11/2026) | `graficos/trilema-ruptura.tex`: el gráfico de referencia del 3.B.15 (mismas coordenadas) con una flecha del lado de Bretton Woods al de la flotación (1971-1973); también podría servir al 3.B.20 | — |
 
 ## Divergencias encontradas en el temario actual
 

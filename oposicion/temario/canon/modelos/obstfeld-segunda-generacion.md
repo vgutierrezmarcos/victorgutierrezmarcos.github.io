@@ -40,7 +40,7 @@ Con expectativas racionales, $\pi^e=0$ o $\pi^e=\pi^{\mathrm{flex}}$, que da $\p
 | 3.B.11 | Balanza de pagos | mención (hecho, 5/11/2026) | Equilibrios múltiples (`Obstfeld1996`) como razón para el margen de seguridad | — |
 | 3.B.13 | Mercado de divisas | mención (revisado, canon pendiente) | Soros sin cifra; la PNCI con prima como coste de defender | — |
 | 3.B.15 | Regímenes | mención (hecho, 12/11/2026) | I.2.3, una viñeta (abandonar cuando defender cuesta más; expectativas que lo provocan) y II.1.3 e) (el abandono de una banda); `\vertema{3.B.17}`; la libra y la peseta en 1992-1993 con `BoE1992Operation` y `EichengreenWyplosz1993Unstable`. Falta la etiqueta «crisis autocumplidas» (cosmético) | — |
-| 3.B.21, 3.B.43 | Historia; SME | uso | 1992-1993 como ejemplo, con las fechas del 3.B.16 y el 3.B.17 | El modelo |
+| 3.B.21, 3.B.43 | Historia; SME | uso (hechos, 13 y 14/11/2026) | 1992-1993 como ejemplo, con las fechas del 3.B.16 y el 3.B.17 (cláusula de escape) | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.B.17 (12/11/2026):** $Y^*$ objetivo → $Y^{\mathrm{obj}}$ (D038); $Y_{TNP}$ → $Y^n$; $K$ brecha → Δ (K es el capital); α peso de la inflación → γ (α es la participación del capital en el mismo tema); $z$ → $u$; $C(\phi)$ → $\bar c$ (C es el consumo de Krugman, 1999); $\pi^*$ con flexible → $\pi^{\mathrm{flex}}$ (π* es la inflación exterior); simplificación $(\alpha+\alpha^2)/(1+\alpha)^2$ → $\gamma/(1+\gamma)$; «$Y^*-Y$» frente a «$Y-Y^*$»; π^e > 0 «sin valor» en el cielo; título con «Calvo y Jeanne»; Kydland-Prescott y Barro-Gordon «[ver tema 3.A.6]» → `\vertema{3.A.36}`; reunificación «a finales de los 80» → 1990; Soros con cifra → sin cifra.

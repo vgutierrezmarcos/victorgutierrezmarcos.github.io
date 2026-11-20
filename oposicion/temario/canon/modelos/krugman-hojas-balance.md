@@ -34,7 +34,7 @@ más fácil cuanto mayor θ, mayor $B^*/X$ y menor $m$. La derivada, en caja gri
 | 3.B.12 | Ajuste y sostenibilidad | mención (hecho, 11/11/2026) | Asia y el tipo fijo como seguro implícito; Tailandia ≈8 % | — |
 | 3.A.22 | Eficiencia y segundo óptimo | mención (hecho, 21/10/2026) | Liberalizar el capital con un sistema financiero débil | — |
 | 3.B.15 | Regímenes | mención (hecho, 12/11/2026) | La tercera generación en una viñeta (I.2.3, `\vertema{3.B.17}`); el tipo fijo como seguro implícito (riesgo moral) y la dolarización como respuesta (I.2.4); miedo a flotar (I.3.1, II.2). Falta la etiqueta «crisis gemelas» (cosmético) | — |
-| 3.B.22 | FMI | mención (prevista) | Programas en Asia y la crítica a la subida de tipos con las mismas palabras que II.2.2 iii); líneas de crédito | El modelo |
+| 3.B.22 | FMI | mención (hecho, 13/11/2026) | Asia 1997: la crítica de Stiglitz y Krugman a la subida de tipos | El modelo |
 | 3.B.26 | Crisis financieras | mención (hecho, 12/11/2026) | I.1 y `tab:tipos-crisis`: gemelas y triples en una viñeta (la depreciación hunde los balances de quien se endeudó en divisas y el rescate de los bancos debilita la moneda), `\vertema{3.B.17}`; Diamond y Dybvig en desarrollo en II.1 | El modelo |
 | 3.B.21 | Historia desde 1973 | uso | Asia, Argentina 2001-2002 (gemela y de deuda); Rusia 1998 (mixta, sobre todo fiscal y de deuda); Brasil 1999 (más cerca de la 1.ª/2.ª), con `tab:tres-generaciones` | El modelo |
 | 1D01 | Dictamen | uso (aprobada) | Enfoque de balances, descalces | — |

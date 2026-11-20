@@ -37,6 +37,8 @@ Con un bien privado se igualan las valoraciones; con uno público, se **suman**.
 | 4.B.2 | Elección pública | mención | Bowen y la votación del bien público, con remisión (Bowen se dibuja en el 3.A.23) | El gráfico |
 | 3.B.31 | Bienes públicos globales (clima) | mención (hecho, 31/10/2026) | $\mathrm{DMg}(E)=\sum_i\mathrm{DMg}_i(E)$, la suma vertical de Bowen entre países; $E^{\mathrm N}$ (cada país iguala $\mathrm{CMgR}$ a su propio daño, como la provisión de Nash) frente a $E^*$; polizón entre Estados y suma de esfuerzos. Gráfico propio `fig:emisiones-optimas` (ruta `oposicion/temario/fuentes/3B31/graficos/emisiones-optimas.tex`) | La condición en EG |
 | 3.A.14 | Juegos | mención (hecho, 19/10/2026) | El polizón como dilema del prisionero | La condición |
+| 3.B.30 | Banco Mundial y bienes públicos globales | resumen (hecho, 14/11/2026) | Versión con $N$ países, `eq:samuelson-global` (ficha `bmd-razon-de-ser`) | La derivación |
+| 3.B.37 | Finanzas de la UE | resumen, variante (hecho, 14/11/2026) | **Bienes públicos europeos** (Samuelson y Bowen entre Estados, `eq:samuelson-ue`): justificación del gasto de la UE; variante recogida aquí, sin ficha propia | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - Resueltas en el 3.A.23 (21/10/2026): $X_A+X_B=\overline X$ a la vez que $T(X,G)=0$ (sobra $\overline X$); $|\mathrm{RMT}_X^G|$ y $\mathrm{RMT}_G^X$ (→ $\mathrm{RMS}^i_{GX}$, $\mathrm{RMT}_{GX}$); «libre» en lugar de planificador; Bowen con $\mathrm{UMg}^A$, $D_T$, $G'$ (→ $\mathrm{RMS}^i_{GX}(G)$, tilde para lo declarado, $\tilde G$); manuscrito de la provisión privada con $u_i$, $R_1$, $G^{EN}$ (→ $U_A$, $g_A$, $R_A(g_B)$, $G^{\mathrm N}$).

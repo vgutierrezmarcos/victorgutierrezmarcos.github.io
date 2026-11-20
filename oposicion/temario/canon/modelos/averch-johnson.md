@@ -1,10 +1,10 @@
 # Regulación de la tasa de rentabilidad y efecto Averch-Johnson (1962)
 
-- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.20 (II.1, `sec:coste-servicio`, «Regulación de la tasa de rentabilidad: efecto Averch-Johnson», con a)-e); derivación en el anexo `anexo:aj`; **hecho, 22/10/2026**). Pasa del 3.A.17 al 3.A.20 por la P21-02 (Víctor, 21/10/2026): el título del 3.A.20 dice «desarrollos en presencia de información asimétrica» y es del 3.er ejercicio. El 3.A.17 queda en mención, con su anexo A resumido (`pendientes-coherencia.md`, sección del 3.A.20).
+- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.20 (III.1, `sec:coste-servicio`, «Regulación de la tasa de rentabilidad: efecto Averch-Johnson», con a)-e); derivación en el anexo `anexo:aj`; **hecho, 22/10/2026**). Pasa del 3.A.17 al 3.A.20 por la P21-02 (Víctor, 21/10/2026): el título del 3.A.20 dice «desarrollos en presencia de información asimétrica» y es del 3.er ejercicio. El 3.A.17 queda en mención, con su anexo A resumido (`pendientes-coherencia.md`, sección del 3.A.20).
 - **Temas que lo usan:** 3.A.20 (desarrollo; hecho, 22/10/2026), 3.A.17 (hoy desarrollo en el anexo A, no se canta; pasa a mención con `--fase coherencia` cuando Víctor apruebe el 3.A.20), 4.B.15 (resumen; hoy mención con ecuaciones); 4.A.5 y 4.A.12 (regulación sectorial) podrían citarlo.
 - **Manuales de referencia:** Averch y Johnson (1962), *AER*; Baumol y Klevorick (1970), *Bell Journal*; Joskow (1974); Spann (1974) y Courville (1974) para la evidencia; Viscusi, Harrington y Vernon, *Economics of Regulation and Antitrust*, cap. 12; Train (1991).
 
-## Presentación de referencia (3.A.20, II.1)
+## Presentación de referencia (3.A.20, III.1; estructura nueva del 9/11/2026)
 
 **Nombre:** «regulación por coste del servicio» o «de la **tasa de rentabilidad**» (nunca «tasa de beneficio» ni «de rendimiento»). Su atractivo es informativo: el regulador no conoce los costes eficientes, pero sí datos contables auditables (beneficio y capital).
 

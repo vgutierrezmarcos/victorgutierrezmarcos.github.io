@@ -1,9 +1,10 @@
 # Pacto de Estabilidad y Crecimiento (reglas fiscales de la UE)
 
-- **Área:** union-europea · **Tema de referencia:** 3.B.45 (lo tiene en el título: «las reglas fiscales») — **tema sin fuente**
+- **Área:** union-europea · **Tema de referencia:** 3.B.45 (lo tiene en el título: «las reglas fiscales»; revisado el 14/11/2026)
 - **Temas que lo usan:** 3.B.45 (desarrollo previsto), 4.B.21 (mención: cláusula general de salvaguardia y LOEPSF), 4.B.22 (mención), 4.B.26 (resumen: PDE de España y cumplimiento), 4.A.28 (mención: PDE 2009-2019, Six-Pack, Fiscal Compact, art. 135 CE), 4.A.29 (mención: reglas tras la covid), 4.A.30 (mención), 3.B.43 (mención: criterios de Maastricht como antecedente), 4.B.4 (mención: saldo estructural), 1D01 (uso: VI.2 y `tab:indicadores-exterior`), 3.B.16 (mención; hecho, 11/11/2026: nota de Kenen y III.3.2, valores de referencia del 3 % y el 60 % en el Tratado y senda de gasto primario neto desde 2024, planes de 4 años ampliables a 7, `UE2024Reglamento1263`, `UE2024Reglamento1264`, `\vertema{3.B.45}`)
 - **Manuales de referencia:** Reglamentos (UE) 2024/1263 y 2024/1264 y Directiva 2024/1265; Baldwin y Wyplosz, cap. de política fiscal en la UEM; De Grauwe, *Economics of Monetary Union*; Blanchard, Leandro y Zettelmeyer (2021), «Redesigning EU fiscal rules»
 - **Decisión D033 (13/10/2026):** ¿Dónde se desarrolla el Pacto de Estabilidad y Crecimiento (con el marco de 2024)? 3.B.45; los temas 4.B solo lo aplican a España
+- **Al día (pasada final, noviembre de 2026):** presentación del 3.B.45: PEC hasta 2024 (OMP, regla de gasto, 1/20, sanciones; anexo A) y marco de 2024 (ASD y trayectoria de referencia, gasto primario neto, planes de 4-5 años con ajuste en 4 o 7, salvaguardias de deuda 1/0,5 y de déficit 1,5 %, cuenta de control 0,3/0,6, PDE por deuda, multas del 0,05 % por semestre, cláusulas general y nacional). Aplicación: 21 sendas (21/1/2025), 8 a 7 años, 10 PDE (nov. 2026), cláusula de defensa (15 + DE, AT, ES). Figura de referencia `fuentes/3B45/graficos/ciclo-marco-2024.tex`; gráficos `pde-abiertos.tex` y `gasto-neto-espana.tex`. Variantes del 3.B.45 recogidas aquí sin ficha propia: **reglas de déficit frente a gasto** (`eq:reglas` $x^D_t=u_t/(1-m\tau)>x^E_t=u_t$; enlaza con `regla-gasto` del 4.B.21) y **gasto neto y ASD** (`eq:gasto-neto` $\gamma_{GN}\approx\gamma^N_p-\Delta s/e$, con la notación de la dinámica de la deuda del 3.A.39).
 
 ## Presentación de referencia
 Pregunta: ¿por qué y cómo se limita la política fiscal de los Estados en una unión monetaria?
@@ -26,7 +27,7 @@ Gráfico de referencia: ninguno propio; si acaso, deuda y déficit de España fr
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.45 | Gobernanza fiscal de la UE | Desarrollo | Justificación, evolución 1-7, procedimiento, valoración | — |
+| 3.B.45 | Gobernanza fiscal de la UE | desarrollo (hecho, 14/11/2026) | Lo anterior, con `eq:reglas` y `eq:gasto-neto` | — |
 | 4.B.21 | Presupuesto y estabilidad en España | Mención | Traslado a la LOEPSF y art. 135 CE; cláusula de salvaguardia | La cronología europea |
 | 4.B.26 | Déficit y deuda de España | Resumen | PDE de España (2009-2019), plan fiscal-estructural de España | Diseño de las reglas |
 | 4.A.28 | España 1999-2019 | Mención | PDE de 2009, reforma del art. 135 CE (2011), salida del PDE (2019) | Six-Pack en detalle |

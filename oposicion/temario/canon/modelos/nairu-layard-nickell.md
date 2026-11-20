@@ -60,4 +60,7 @@ Interpretación: **conflicto distributivo** (los trabajadores reclaman $F(U,Z)$ 
 - **3.A.41 (sin revisar)**: NAIRU como $\overline U$ (canon $U^n$).
 - Notación: $W$ nominal y $W/P$ real en la macro (D026); μ margen (D106).
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.28 (9/11/2026):** la NAIRU pasa a **III.2** (`sec:nairu`), con los gráficos nuevos `ws-curva` y `ps-curva` y la política de demanda paso a paso en el cuerpo con `nairu-demanda-pasos`; la búsqueda, en I.2 (`sec:busqueda-natural`).
+
 Autor: Víctor Gutiérrez Marcos

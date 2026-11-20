@@ -35,4 +35,7 @@ con γ_{Y,t} el crecimiento del PIB, γ̄_Y el que mantiene estable el paro (cer
 - La propuesta de coherencia de la 1D01 (C2) la escribía con $u_t$; el canon usa $U_t$ para la tasa de paro en los modelos (§ 6, regla de la tasa de paro en `notacion.md`).
 - **Resuelto (31/10/2026)**: el 3.A.28 no la citaba; ahora es su tema de referencia.
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.28 (9/11/2026):** Okun pasa a **I.3** (`sec:okun`); la NKPC en paro usa Okun en brechas, $-(\kappa/\vartheta')(U_t-U^n)$ (II.5).
+
 Autor: Víctor Gutiérrez Marcos

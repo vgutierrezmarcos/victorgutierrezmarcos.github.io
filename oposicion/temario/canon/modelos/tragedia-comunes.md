@@ -3,6 +3,7 @@
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.23** (Bienestar II: externalidades y bienes públicos; revisado el 21/10/2026, anexo `anexo:ostrom`, y II.2.1 con la tabla `tab:rivalidad-exclusion`). Ficha creada en la fase canon del 3.A.23 (CC8, opcional; provisional): ya la usan 2 temas revisados (3.A.23 y 3.A.15) y la usarán 4.A.13 y 3.B.38.
 - **Temas que lo usan:** 3.A.23 (desarrollo en anexo; hecho, 21/10/2026: modelo de Gordon con $F(N)$ y los 8 principios de Ostrom; en el cuerpo, los recursos comunes como cuarto grupo de la tabla de rivalidad y exclusión), 3.A.15 (mención; hecho, 20/10/2026: Ostrom y Williamson, Nobel de 2009, con `\vertema{3.A.23}`), 4.A.13 (mención prevista: turismo y bienes comunes), 3.B.38 (mención prevista si trata la pesca y los recursos naturales), 3.B.31 (mención; hecho, 31/10/2026: «la atmósfera es también un común global, con su tragedia de los comunes», `\vertema{3.A.23}`, sin el modelo de Gordon).
 - **Manuales de referencia:** Gordon (1954), *JPE*; Hardin (1968), *Science*; Ostrom (1990), *Governing the Commons*; Ostrom y Ostrom (1977); Heller (1998), *HLR* (anticomunes); Baumol y Oates (1988).
+- **Al día (pasada final, noviembre de 2026):** el 3.B.38 desarrolla la versión dinámica en extenso (ficha `gordon-schaefer`), no una «mención prevista».
 
 ## Presentación de referencia
 
@@ -26,7 +27,7 @@
 | 3.A.23 | Bienes públicos y externalidades | desarrollo en anexo (hecho, 21/10/2026) | Tabla de rivalidad y exclusión (Ostrom y Ostrom, 1977) con los recursos comunes; anexo con Gordon, Hardin, Ostrom, sus ejemplos y los 8 principios; la pesca y el riego del río como hilo del tema | — |
 | 3.A.15 | Gobernanza y límites de la empresa | mención (hecho, 20/10/2026) | Ostrom: comunidades que gestionan recursos comunes sin Estado ni mercado (Nobel de 2009 con Williamson), `\vertema{3.A.23}` | El modelo |
 | 4.A.13 | Turismo | mención | Bienes comunes (playas, espacios naturales) y tasas turísticas como corrección; ficha `pigou` | El modelo |
-| 3.B.38 / 3.B.31 | Recursos naturales; bienes públicos globales | mención | Sobrepesca y clima como comunes; acuerdos internacionales | El modelo |
+| 3.B.38 / 3.B.31 | Recursos naturales; bienes públicos globales | 3.B.38: desarrollo dinámico (hecho, 14/11/2026; III.1.3 y anexo B, ficha `gordon-schaefer`); 3.B.31: mención | La pesquería de Gordon y Schaefer: el mismo resultado que la versión estática del 3.A.23 (media frente a marginal) | — |
 
 ## Divergencias encontradas en el temario actual
 - Ninguna de notación (temas sin revisar). En el 3.A.23 las letras $N$, $F(N)$, $c$, $N^*$, $N^L$ son locales del anexo (`notacion.md` § 5): $F$ no es aquí una función de producción de factores ni $N$ el conjunto de jugadores del 3.A.14.

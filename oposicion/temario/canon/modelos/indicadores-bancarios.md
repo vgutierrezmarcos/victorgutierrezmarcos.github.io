@@ -1,7 +1,7 @@
 # Indicadores del sector bancario (solvencia, calidad de los activos, liquidez, rentabilidad)
 
 - **Área:** economia-espanola · **Tema de referencia:** **4.A.19** («Configuración actual del sector bancario español y principales indicadores», en el título), con **3.B.27** para los requisitos regulatorios (ficha `basilea-capital`).
-- **Temas que lo usan:** 4.A.19 (desarrollo), 3.B.27 (resumen: los mínimos), 3.B.26 (mención; hecho, 12/11/2026: III.3, la ratio de dudosos y la de cobertura como medida a posteriori del riesgo de crédito, `\vertema{4.A.19}`; LCR y NSFR nombrados en III.4, `\vertema{3.B.27}`), 4.A.18 (mención: saneamiento y recapitalización), 3.B.1 (mención: el ROA de la empresa no financiera es otro), 1D01 (resumen: III.2, `tab:indicadores-financiero`, `tab:basilea`)
+- **Temas que lo usan:** 4.A.19 (desarrollo), 3.B.27 (resumen; hecho, 13/11/2026: los mínimos), 3.B.1 (mención; hecho, 13/11/2026: viñeta, el ROA bancario es otro, distinto del ROA = EBIT/AT), 3.B.26 (mención; hecho, 12/11/2026: III.3, la ratio de dudosos y la de cobertura como medida a posteriori del riesgo de crédito, `\vertema{4.A.19}`; LCR y NSFR nombrados en III.4, `\vertema{3.B.27}`), 4.A.18 (mención: saneamiento y recapitalización), 3.B.1 (mención: el ROA de la empresa no financiera es otro), 1D01 (resumen: III.2, `tab:indicadores-financiero`, `tab:basilea`)
 - **Manuales de referencia:** Freixas y Rochet, *Microeconomics of Banking*; ABE, *Risk Dashboard* (trimestral) y *Risk Assessment Report*; BCE, *Supervisory Banking Statistics* y SREP; Banco de España, *Informe de Estabilidad Financiera* y estadísticas supervisoras; Reglamento (UE) 575/2013 (CRR).
 
 ## Presentación de referencia

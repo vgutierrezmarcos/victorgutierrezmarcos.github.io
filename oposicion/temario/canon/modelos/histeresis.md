@@ -51,4 +51,7 @@ con histéresis pura importa la **variación** del paro, no su nivel: el «lími
 - **3.A.7 (**resuelto** al revisarlo, 4/11/2026; antes)**: «Blanchard y Summers, 1987» y la histéresis copiada del 3.A.28 viejo; «Blanchard y Galí (2005)» (es 2010).
 - El coeficiente de persistencia se escribe λ_h (con subíndice) para no chocar con λ = precio sombra.
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.28 (9/11/2026):** la histéresis pasa a **III.3** (`sec:persistencia`), con el gráfico nuevo `histeresis-ws-ps`.
+
 Autor: Víctor Gutiérrez Marcos

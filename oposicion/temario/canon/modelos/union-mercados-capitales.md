@@ -4,6 +4,7 @@
 - **Temas que lo usan:** 3.B.44 (desarrollo previsto), 3.B.39 (resumen → mención), 4.A.20 (resumen: financiación no bancaria en España), 4.A.19 y 4.A.18 (mención)
 - **Manuales de referencia:** Comisión Europea, Plan de acción de la UMC (2015 y 2020) y comunicación sobre la Unión de Ahorros e Inversiones (19-3-2025); informes Letta (2024) y Draghi (2024)
 - **Decisión D073 (13/10/2026):** ¿Dónde van la Unión Bancaria y la Unión de Mercados de Capitales? Diseño de las dos en 3.B.44 (UMC trasladada desde 3.B.39); aplicación a España en 4.A.19
+- **Al día (pasada final, noviembre de 2026):** el 3.B.44 (tema de referencia, con fuente desde el 14/11/2026) presenta los planes de 2015 y 2020, los logros y las medidas de la Unión de Ahorros e Inversiones de 2025-2026 (cuentas de ahorro e inversión, titulización acordada el 21-22/10/2026, pensiones, paquete de integración y supervisión con la AEVM, posición del Consejo de 9/10/2026). Modelo: reparto de riesgos (Asdrubali, Sørensen y Yosha), `eq:asy` $1=\beta_K+\beta_F+\beta_C+\beta_U$, gráfico `fuentes/3B44/graficos/reparto-riesgos.tex`. El 3.B.39 lo deja en mención con remisión al 3.B.44.
 
 ## Presentación de referencia
 Pregunta: por qué la financiación de la UE depende tanto de la banca y cómo integrar los mercados de capitales.
@@ -13,8 +14,8 @@ Argumento económico: diversificación de la financiación, reparto privado de r
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.44 | UMC | Desarrollo | Planes, UAI, valoración | — |
-| 3.B.39 | Libre circulación de capitales | Mención | Una línea y remisión | Medidas |
+| 3.B.44 | UMC | desarrollo (hecho, 14/11/2026) | Planes, UAI, valoración; reparto de riesgos con `eq:asy` | — |
+| 3.B.39 | Libre circulación de capitales | mención (hecho, 19/11/2026) | Una línea con lo de 2025-2026 (UAI de marzo de 2025; titulización, acuerdo político del 22/10/2026; paquete de integración y supervisión, posición del Consejo del 9/10/2026) y `\vertema{3.B.44}` | Medidas |
 | 4.A.20 | Financiación no bancaria en España | Resumen | Efectos en España (BME Growth, MARF, titulización) | Arquitectura europea |
 
 ## Divergencias encontradas en el temario actual

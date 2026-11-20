@@ -11,7 +11,7 @@
 - $R$ / importaciones mensuales ≥ **3 meses** (países con poco acceso a los mercados);
 - $R$ / deuda externa a corto plazo (vencimiento residual) ≥ **100 %** (regla de Greenspan-Guidotti; emergentes con acceso a los mercados; mide la liquidez, no la solvencia);
 - $R$ / M2 ≥ **20 %** (riesgo de fuga de depósitos, sobre todo con tipo fijo o caja de conversión);
-- **métrica ARA del FMI**: combina exportaciones, M2, deuda a corto y otros pasivos de cartera según el régimen cambiario; adecuadas entre el **100 y el 150 %** de la métrica **[comprobar]** (duda 15 de la 1D01).
+- **métrica ARA del FMI**: combina exportaciones, M2, deuda a corto y otros pasivos de cartera según el régimen cambiario; adecuadas entre el **100 y el 150 %** de la métrica (confirmado: FMI, 2016, *Adequacy of the Global Financial Safety Net*, `FMI2016GFSN`; cierra la duda 15 de la 1D01 y la B11-16 del 3.B.11). **Pesos para emergentes** (`FMI2016GuiaReservas`): con tipo fijo, 10 % exportaciones, 10 % M2, 30 % deuda a corto (DCP) y 20 % otros pasivos (OP); con tipo flexible, 5/5/30/15. Función clave del 3.B.22: `eq:ara`.
 
 **Resultado:** demasiadas reservas también cuestan (rendimiento bajo, coste de esterilización); con tipo flexible la necesidad es menor.
 
@@ -20,7 +20,7 @@
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.22 | El FMI | Desarrollo | La métrica ARA y su papel en la supervisión | — |
+| 3.B.22 | El FMI | desarrollo (hecho, 13/11/2026) | III.2.1 (`sec:reservas`) a)-e), función clave `eq:ara`, con los pesos | — |
 | 3.B.15 | Regímenes | Mención (hecho, 12/11/2026) | Reservas y sostenibilidad del tipo fijo (I.2.3); los usos de las reservas en caja gris (III.1.1); cuántas bastan, con `\vertema{3.B.22}`; sin la guía del FMI de 2013 (no se pudo leer) | La métrica |
 | 1D01 | Dictamen de coyuntura | Uso | Los 3 indicadores clásicos con su umbral y el coste de acumular | La métrica en detalle |
 | 3.B.11 | Interpretación del saldo: el papel de las reservas | Resumen (hecho, 5/11/2026) | Caja gris «¿Cuántas reservas son suficientes?» (III.2): 3 meses de importaciones, 100 % de la deuda a corto (Greenspan-Guidotti), **20 % de M2** y la métrica ARA; demasiadas también cuestan; las reservas como partida que cubre lo que no cubre el capital privado (`eq:reservas-ajuste`) y, en el euro, el saldo TARGET | La métrica en detalle y la supervisión (3.B.22) |

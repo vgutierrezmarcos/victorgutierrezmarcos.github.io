@@ -51,4 +51,7 @@ pegatina «unos cardan la lana y otros llevan la fama».
 - Resuelto en el 3.A.45 (1/11/2026): RS, $\dot A/A$, $\alpha_K$, $\alpha_L$ y «+ ε» → $\gamma_A$, $\alpha$, $1-\alpha$, identidad sin error; «la renta per cápita se duplicó» (producción por hora); «Friedman» (Kaldor, 1957); Abramovitz y Jorgenson-Griliches separados; dual con $r$ ($c_K$); «96,7 %» sin periodo (1945-1965); mundo 40/10/50 % sin fuente (Bosworth y Collins); Hall y Jones «el 79 % se explica».
 - 4.A.27 (Word): «60/35/5 %» en 1960-1973 sin fuente.
 
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **Coste de uso en el reparto (3.A.45, 4.ª tanda, 11/11/2026):** el 3.A.45 escribe **$r$** (no $c_K$) en el reparto ($Y=rK+wL$, $\alpha=rK/Y$, `eq:euler-reparto`) y en el dual de Hsieh ($\gamma_r$, `eq:dual`), y su recuadro de notación lo define como **tipo real más depreciación con el precio del capital constante**. Choque con «$r$ tipo neto» del 3.A.43 ($r+\delta=f'(k)$): se decide con el tema de referencia (el 3.A.45 lo es de esta pieza) a favor de su forma, como **uso local avisado en el recuadro**; el $c_K$ de Jorgenson sigue en el 3.A.34 (con $P^K$ variable). Donde esta ficha escribe $c_K$ para el reparto, léase $r$ en el 3.A.45 (`notacion.md` § 7).
+
 Autor: Víctor Gutiérrez Marcos

@@ -14,7 +14,7 @@
 5. las participaciones del trabajo y del capital en la renta son estables (nota: en Kaldor, 1961, es en rigor una correlación alta entre la participación de los beneficios y la de la inversión);
 6. las tasas de crecimiento de la producción y de la productividad difieren mucho entre países.
 
-**No son independientes:** con (1) y (4), $K/L=(K/Y)(Y/L)$ da (2); con (3) y (4), $\alpha=c_K\,K/Y$ con $c_K=r+\delta$ es constante y da (5) (nunca $\alpha=rK/Y$: $r$ es el tipo neto). Bastan 1, 3, 4 y 6.
+**No son independientes:** con (1) y (4), $K/L=(K/Y)(Y/L)$ da (2); con (3) y (4), $\alpha=c_K\,K/Y$ con $c_K=r+\delta$ es constante y da (5) (en el 3.A.45, desde el 11/11/2026, $\alpha=rK/Y$ con $r$ coste de uso definido en su recuadro; ver abajo). Bastan 1, 3, 4 y 6.
 
 **Con el modelo de Solow** (`\vertema{3.A.43}`): la senda equilibrada reproduce los 5 primeros ($\gamma_{Y/L}=\gamma_{K/L}=g$; $r^*$, $K/Y=k^*/f(k^*)$ y $\alpha=k^*f'(k^*)/f(k^*)$ constantes) **con cualquier función neoclásica**; con Cobb-Douglas las participaciones son constantes también fuera de ella. **No el 6.º**, salvo como dinámica de transición (es el modelo de Solow el que no lo reproduce: Kaldor no usó el modelo).
 
@@ -34,5 +34,8 @@
 ## Divergencias encontradas en el temario actual
 - Resuelto en el 3.A.45 (1/11/2026): «Kaldor no consigue explicar con el modelo de Solow» el 6.º hecho (es el modelo el que no lo reproduce); Jones y Romer «en 2009» (2010); $\alpha=rK/Y$ ($c_K\,K/Y$); «participaciones constantes exigen Cobb-Douglas» (basta cualquier neoclásica en la senda equilibrada); «capital por hora trabajada» (por trabajador).
 - 3.A.44, l. 275: remite los hechos al 3.A.43; con el 3.A.45 de referencia, añadir `\vertema{3.A.45}` (`pendientes-coherencia.md`, «Pendiente del 3.A.45»).
+
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **Coste de uso en el reparto (3.A.45, 4.ª tanda, 11/11/2026):** el 3.A.45 escribe **$r$** (no $c_K$) en el reparto ($Y=rK+wL$, $\alpha=rK/Y$, `eq:euler-reparto`) y en el dual de Hsieh ($\gamma_r$, `eq:dual`), y su recuadro de notación lo define como **tipo real más depreciación con el precio del capital constante**. Choque con «$r$ tipo neto» del 3.A.43 ($r+\delta=f'(k)$): se decide con el tema de referencia (el 3.A.45 lo es de esta pieza) a favor de su forma, como **uso local avisado en el recuadro**; el $c_K$ de Jorgenson sigue en el 3.A.34 (con $P^K$ variable). Donde esta ficha escribe $c_K$ para el reparto, léase $r$ en el 3.A.45 (`notacion.md` § 7).
 
 Autor: Víctor Gutiérrez Marcos

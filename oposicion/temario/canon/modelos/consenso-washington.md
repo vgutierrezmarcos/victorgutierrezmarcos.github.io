@@ -33,8 +33,8 @@
 | 3.A.45 | Causas últimas: instituciones | mención (hecho, 1/11/2026) | Nota de contexto: los resultados decepcionantes del Consenso llevan a mirar a las instituciones | Los 10 puntos |
 | 3.B.9 | Comercio y crecimiento | mención (prevista) | La apertura como pieza del Consenso y la lectura de Asia, con `\vertema{3.B.28}` | Los 10 puntos |
 | 3.B.29 | Financiación exterior, deuda y ayuda | mención (hecho, 12/11/2026) | Ajuste estructural y condicionalidad tras la crisis de la deuda (II.2.1, `Williamson1990`, `\vertema{3.B.28}`) | Las críticas en detalle |
-| 3.B.30 | Banco Mundial y bancos de desarrollo | mención (prevista) | *Market-friendly* (1991), *East Asian Miracle* (1993), reformas de segunda generación | — |
-| 3.B.20, 3.B.21 | FMI y sistema monetario | mención (prevista) | El FMI en el ajuste de los 80-90 | — |
+| 3.B.30 | Banco Mundial y bancos de desarrollo | mención (hecho, 14/11/2026) | Con `\vertema{3.B.28}` | — |
+| 3.B.20, 3.B.21 | FMI y sistema monetario | 3.B.20: no se usa (hecho, 13/11/2026: el ajuste de los 80-90 es posterior a 1973); 3.B.21: mención | El FMI en el ajuste de los 80-90, solo en el 3.B.21 | — |
 
 ## Divergencias encontradas en el temario actual
 - **3.B.28** (Word): Williamson «(1990)» en un sitio y «en 1989» en otro; el *East Asian Miracle* atribuido a Stiglitz (1993); «en 1998 se promulgó el Consenso de Santiago»; II.4 y II.5 repetían el Consenso con la cronología al revés; «tigres» y «dragones». **Resuelto** (3/11/2026).

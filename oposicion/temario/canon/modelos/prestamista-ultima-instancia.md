@@ -26,7 +26,7 @@
 | 3.B.17 | Crisis de BP | mención (hecho) | No lo puede ser en una moneda que no emite: el pánico bancario se convierte en ataque | — |
 | 3.B.13, 3.B.25 | Divisas; derivados | mención (hecho) | Las líneas *swap* de la Fed como prestamista internacional en dólares | — |
 | 3.B.27 | Regulación financiera | resumen (previsto) | Marco legal (ELA), condicionalidad, resolución; `\vertema{3.B.26}` | La justificación |
-| 3.B.22 | FMI | resumen (previsto) | El FMI como prestamista de última instancia internacional y sus límites | — |
+| 3.B.22 | FMI | resumen (hecho, 13/11/2026) | III.1: Bagehot y Fischer (1999); la financiación catalítica tiene ficha propia (`financiacion-catalitica`) | — |
 
 ## Divergencias encontradas en el temario actual
 - Ninguna en los temas revisados: el 3.B.26 y la 1D01 dan la regla con las mismas palabras y la misma clave (`Bagehot1873`).

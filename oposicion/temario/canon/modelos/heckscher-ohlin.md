@@ -1,6 +1,6 @@
 # Modelo de Heckscher-Ohlin-Samuelson y sus teoremas (H-O, igualación del precio de los factores, Stolper-Samuelson, Rybczynski)
 
-- **Área:** comercio · **Tema de referencia:** **3.B.5** (Teoría del comercio internacional (I); sin revisar) — lo desarrolla con sus cuatro teoremas. Ficha creada el 14/10/2026 a raíz de la revisión del 3.A.21, que fija la **estática comparativa del 2×2 cerrado** (álgebra de Jones) en su anexo E.
+- **Área:** comercio · **Tema de referencia:** **3.B.5** (Teoría del comercio internacional (I); revisado el 10/11/2026) — lo desarrolla con sus cuatro teoremas. Ficha creada el 14/10/2026 a raíz de la revisión del 3.A.21, que fija la **estática comparativa del 2×2 cerrado** (álgebra de Jones) en su anexo E.
 - **Temas que lo usan:** 3.B.5 (desarrollo), 3.A.21 (resumen: anexo E, Stolper-Samuelson y Rybczynski como estática comparativa del 2×2×2×2 con rendimientos constantes; hecho, 14/10/2026), 3.B.9 (resumen: Rybczynski aplicado al crecimiento; id `rybczynski`, fusionado aquí), 3.B.7 y 3.B.8 (mención: efectos redistributivos del arancel por Stolper-Samuelson, con remisión a 3.B.5), 3.B.10 (mención: efectos redistributivos y Haberler), 4.B.8 (mención: 2×2 con intensidades factoriales, análogo del impuesto selectivo de Harberger).
 - **Fusiones (14/10/2026):** `rybczynski` (3.B.9) pasa a alias de este id (`_inventario/alias.json`).
 - **Manuales de referencia:** Heckscher (1919); Ohlin (1933); Stolper y Samuelson (1941); Samuelson (1948, 1949); Rybczynski (1955); Jones (1965), «The structure of simple general equilibrium models»; Feenstra (2016), cap. 1-3; Krugman, Obstfeld y Melitz, cap. 5; Mas-Colell, Whinston y Green (1995), § 17.G; Martínez-Giralt (2008), cap. 4.
@@ -20,20 +20,24 @@ $$\hat p_X=s_{LX}\hat w_L+s_{KX}\hat w_K,\quad \hat p_Y=s_{LY}\hat w_L+s_{KY}\ha
 - **H-O** e **igualación del precio de los factores** (Samuelson, 1948-1949): los de 3.B.5 (con w, r); reciprocidad ∂w_m/∂p_i = ∂x_i/∂z_m.
 - **Valoración:** dependen de la especialización incompleta y de la ausencia de reversión; con más bienes que factores o al revés, solo versiones débiles (Jones, 1965).
 
+**En el 3.B.5 (10/11/2026; D4 del 3.B.5):** $X$ es **intensivo en capital** (A = Inglaterra, abundante en capital, exporta paño), al revés que en el 3.A.21, donde $X$ es intensivo en trabajo; los gráficos del 3.A.21 se copian a `fuentes/3B05/graficos/` con $X$ e $Y$ intercambiados y $w$, $r$. Cadenas del 3.B.5: `eq:magnificacion` (función clave) $\hat p_Y>\hat p_X\Rightarrow\hat w>\hat p_Y>\hat p_X>\hat r$ y `eq:magnificacion-ryb` $\hat{\overline K}>\hat{\overline L}\Rightarrow\hat X>\hat{\overline K}>\hat{\overline L}>\hat Y$; HOV con `eq:hov`. La igualación del precio de los factores con las curvas de coste unitario en el cuerpo (`fig:costes-unitarios`) y Samuelson-Johnson (`fig:samuelson-johnson`, con $r/w$ en abscisas como Gandolfo, duda D-10) en el cuerpo y paso a paso en `anexo:igualacion`. Etiquetas: `sec:dotaciones`, `sec:hos`, `sec:hos-evidencia`, `sec:factores-especificos`, `sec:hos-valoracion`; anexos `anexo:rybczynski` (Jones) y `anexo:leontief`.
+
 Gráficos de referencia (3.A.21): `oposicion/temario/fuentes/3A21/graficos/costes-unitarios.tex` (curvas de coste unitario en el plano (w_L, w_K) y efecto de una subida de p_X) y `rybczynski.tex` (aumento de L̄ a precios constantes). 3.B.5 debe reutilizarlos (con w, r si lo avisa) y añadir el teorema H-O y Rybczynski en la caja de Edgeworth y en el plano de bienes.
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.5 | Determinantes del comercio y efectos distributivos | desarrollo | Los cuatro teoremas, con w, r (D011) y el álgebra de Jones con s_{Lj}, ℓ_{Lj}, x̂; paradoja de Leontief (id `paradoja-leontief`) | — |
+| 3.B.5 | Determinantes del comercio y efectos distributivos | desarrollo (hecho, 10/11/2026) | Los cuatro teoremas, con w, r (D011), X intensivo en capital, `eq:magnificacion` y `eq:magnificacion-ryb`; HOV y paradoja de Leontief (ficha `paradoja-leontief`); factores específicos como extensión (ficha `factores-especificos`) | — |
 | 3.A.21 | Estática comparativa del equilibrio general | resumen (hecho, 14/10/2026) | Anexo E: teorema de la función implícita, principio de correspondencia, y en el 2×2 con rendimientos constantes las 4 ecuaciones, Stolper-Samuelson con el efecto magnificación y Rybczynski, con w_L, w_K y remisión a 3.B.5 | El comercio (3.B.5) |
 | 3.B.9 | Crecimiento y comercio | resumen | Rybczynski aplicado a la acumulación de un factor (crecimiento sesgado), con remisión a 3.B.5 | La derivación |
 | 3.B.7, 3.B.8 | Política comercial | mención | Efectos redistributivos del arancel (Stolper-Samuelson), con remisión a 3.B.5 | — |
-| 3.B.10 | Política comercial (II) | mención | Efectos redistributivos y Haberler, con remisión a 3.B.5 | — |
+| 3.B.10 | Integración económica | mención | Stolper-Samuelson como coste redistributivo de la integración y puente con la economía política | — |
 | 4.B.8 | Incidencia | mención | 2×2 con intensidades factoriales: análogo del impuesto selectivo de Harberger (ficha `harberger-incidencia`); resumen propio, sin depender del 3.º | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.9 usa Rybczynski y Stolper-Samuelson sin remitir a 3.B.5; 3.B.5 usa la caja de Edgeworth y el equilibrio general sin remitir a 3.A.21 (`mapa.yaml`).
 - 3.A.21 original tenía la estática comparativa en un anexo sin notación común; resuelto (14/10/2026) con el álgebra de Jones y la notación de `notacion.md` § 5 y § 10.
+- **3.B.9**: enunciaba Rybczynski sin «a precios constantes»; al revisarlo (5/11/2026), con la cadena y la remisión a 3.B.5.
+- **3.B.10**: la fila lo llamaba «Política comercial (II)» y citaba a Haberler, que no sale en el 3.B.10: corregido.
 
 Autor: Víctor Gutiérrez Marcos

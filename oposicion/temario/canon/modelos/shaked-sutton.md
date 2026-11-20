@@ -25,7 +25,7 @@ $$p_{\mathrm{A}}^*=c+\frac{2\overline{\theta}-\underline{\theta}}{3}\,\Delta s>p
 |---|---|---|---|---|
 | 3.A.18 | Diferenciación vertical | desarrollo (hecho, 19/10/2026) | Todo lo anterior | — |
 | 3.A.19 | Oligopolio natural | mención (hecho, 20/10/2026) | Shaked y Sutton (1983): la finitud con calidades que cuestan en costes fijos; remitir a 3.A.18 (III.1) | El modelo |
-| 3.B.6 | Comercio intraindustrial vertical | resumen | Calidades con competencia imperfecta frente a Falvey (ventaja comparativa, competencia perfecta); con la notación de arriba y remisión a 3.A.18 | La derivación de los precios |
+| 3.B.6 | Comercio intraindustrial vertical | resumen (hecho, 5/11/2026) | Shaked y Sutton (1984), «Natural oligopolies and international trade» (en Kierzkowski, ed., 1984): oligopolio natural de calidades en el mercado integrado, frente a Falvey (ventaja comparativa, competencia perfecta); remisión a 3.A.18 para el duopolio de calidades | La derivación de los precios |
 | 3.A.17 | Discriminación por calidades | mención | Mussa y Rosen (1978) como autoselección por calidades (ficha `discriminacion-precios`) | El duopolio |
 
 ## Divergencias encontradas en el temario actual

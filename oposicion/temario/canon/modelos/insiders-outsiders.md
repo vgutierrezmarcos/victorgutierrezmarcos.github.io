@@ -4,7 +4,7 @@
 - **Temas que lo usan:** 3.A.27 (desarrollo; hecho, 31/10/2026), 3.A.28 (resumen; hecho, 31/10/2026: III.4, 3.er mecanismo de la histéresis, el principal para Blanchard y Summers, 1986, con «quien se fue a Sevilla perdió su silla», Lindbeck y Snower, 1988, y `\vertema{3.A.27}`), 4.A.16 (resumen aplicado: dualidad indefinidos-temporales, costes de despido y reformas en España; hoy mención como «primer problema estructural de la negociación colectiva»), 3.A.25 (mención; hecho, 31/10/2026: la formación específica, III.2 c, «una de las raíces del poder de los *insiders*», y la fila 7 de `tab:supuestos-trabajo`), 1D01 (mención; hecho, 24/10/2026: histéresis con *insiders-outsiders* y pérdida de capital humano). También 3.A.7 (mención; hecho, 4/11/2026: I.2.3, el 3.er mecanismo de la histéresis, Lindbeck y Snower, 1986 y 1988, `\vertema{3.A.27}`; III.2, Galí, 2022).
 - **Manuales de referencia:** Lindbeck y Snower (1986), *AER P&P*; Lindbeck y Snower (1988), *The Insider-Outsider Theory of Employment and Unemployment*, MIT Press; Blanchard y Summers (1986), *NBER Macroeconomics Annual*; Cahuc, Carcillo y Zylberberg (2014), cap. 7; Bentolila, Dolado y Jimeno (2012) para España.
 
-## Presentación de referencia (3.A.27, III.3 y anexo E)
+## Presentación de referencia (3.A.27, III.3; el anexo E desaparece el 9/11/2026)
 
 Pregunta: ¿quién soporta el ajuste por el empleo y por qué los parados no pueden ofrecerse por menos? Conclusión: los que ya tienen empleo (*insiders*) se apropian de los costes de rotación; los de fuera (*outsiders*) quedan en paro involuntario, y el paro persiste tras un *shock*.
 
@@ -33,5 +33,8 @@ Pregunta: ¿quién soporta el ajuste por el empleo y por qué los parados no pue
 - 3.A.27 original: al final de I.2 (sindicatos), con $N_I$, $d$, $c$ y la idea central «un modelo en el que el salario real es contracíclico». **Resuelto** (31/10/2026): en III.3 como extensión de los contratos implícitos (A27-04, **[decidir]**), con $\overline L_I$, $c_D$, $c_C$ ($c$ es el coste de la vacante en la curva salarial del DMP) y lo central en el paro de los *outsiders* y su persistencia.
 - 3.A.28: resumía a los *insiders* con otras palabras. **Resuelto** (31/10/2026): la frase de la histéresis con esta ficha y remisión al 3.A.27.
 - 4.A.16 (sin revisar): usa el modelo sin remitir: al revisarlo, `\vertema{3.A.27}` solo para ampliar.
+
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **3.A.27 (9/11/2026, 2.ª tanda):** el modelo entero (supuestos, programa de la empresa, CPO, salario máximo `eq:insiders`, **ahora recuadrado con `\funcionclave`**, los 3 casos y el gráfico `insiders`) pasa del anexo E al **cuerpo** (III.3, `sec:contratos-implicitos-extensiones`); el anexo E desaparece. El gráfico ya **no es «no se canta»**: los 3 casos se dicen de palabra.
 
 Autor: Víctor Gutiérrez Marcos

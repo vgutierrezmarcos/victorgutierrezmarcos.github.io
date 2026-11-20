@@ -37,7 +37,7 @@ precio mayor en el grupo de demanda menos elástica (Robinson, 1933). **Bienesta
 | 3.A.18 | Diferenciación vertical | mención (hecho, 19/10/2026) | Mussa y Rosen (1978): discriminación por calidades como autoselección; remite a 3.A.17 | El menú |
 | 3.A.14 | Juegos dinámicos: compromiso | mención (hecho, 19/10/2026) | Conjetura de Coase (1972): el monopolista de un bien duradero no puede comprometerse a no bajar el precio; inconsistencia temporal; remite a 3.A.17 | La discriminación |
 | 3.B.39 | Mercado único y competencia | mención | Ventas vinculadas como abuso; segmentación de mercados nacionales | La teoría |
-| 3.B.7 | Política comercial | mención (prevista) | *Dumping* como discriminación de 3.er grado entre mercados nacional y extranjero (precio menor donde la demanda es más elástica) | La regla por grupos |
+| 3.B.7 | Política comercial | mención (hecho, 5/11/2026) | *Dumping* persistente como discriminación de 3.er grado entre 2 mercados separados por aranceles o costes de transporte (precio menor donde la demanda es más elástica), con `\vertema{3.A.17}`; el dumping recíproco, `\vertema{3.B.6}` | La regla por grupos |
 | 4.A.5, 4.A.12 | Energía, transportes y telecomunicaciones | mención (prevista) | Tarifas de acceso, bonos sociales, periodos de punta y valle | Teoría |
 | 3.A.20 | Regulación con información asimétrica | mención (hecho, 22/10/2026) | El resultado de Baron-Myerson y de Laffont-Tirole es el del 2.º grado con el regulador como principal (ν, proporción del primer tipo) | El menú de paquetes |
 

@@ -21,9 +21,10 @@ Gráfico de referencia (3.A.12): `oposicion/temario/fuentes/3A12/graficos/aprend
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.12 | Costes en el tiempo | desarrollo (hecho, 14/10/2026) | Todo lo anterior (profundización en el cante: una frase en III.4 y la evidencia en IV.2) | — |
-| 3.B.8 | Industria naciente, política comercial estratégica | resumen | El coste baja con la producción acumulada: la protección temporal permite aprender; remitir a 3.A.12 para la curva | La forma funcional |
+| 3.B.8 | Industria naciente, política comercial estratégica | resumen (hecho, 5/11/2026) | El coste baja con la producción acumulada: la protección temporal permite aprender; con `\vertema{3.A.12}` | La curva y su derivación |
 | 3.A.44 | Crecimiento endógeno | mención (hecho, 1/11/2026) | Aprendizaje por la práctica de Arrow (1962) como externalidad que da rendimientos crecientes agregados | La curva de la empresa |
 | 3.A.17 | Monopolio multiproducto | mención (hecho, 17/10/2026) | Nota de II.3.1: no es complementariedad de costes en el mismo periodo, sino el mismo bien en 2 periodos; IMg_1(q_1) = c_1 + βc_2'(q_1)q_2 < c_1 (β factor de descuento, c_2' < 0): produce hoy más que un monopolista miope y puede vender bajo el CMg corriente, sin que sea «subsidio cruzado»; Wright (1936); remite a 3.A.12 | La forma funcional |
+| 3.B.6 | Nueva teoría del comercio | mención (hecho, 5/11/2026) | Economías de escala dinámicas en III.1 (Krugman, 1987), con `\vertema{3.A.12}` y `\vertema{3.B.8}` | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.12 original: confundía las economías de aprendizaje con las externas (*clusters*). Resuelto en la revisión (14/10/2026).

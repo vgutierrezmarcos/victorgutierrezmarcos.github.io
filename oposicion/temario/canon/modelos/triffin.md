@@ -14,15 +14,15 @@ Resultado: para dar liquidez, EE. UU. debe tener déficit de balanza de pagos pe
 
 Ecuación de referencia (opcional): sea $D_t$ el stock de pasivos oficiales exteriores en dólares y $G_t$ el valor del oro de EE. UU. a la paridad: hay riesgo de corrida cuando $D_t > G_t$ (ocurre hacia 1960).
 
-Gráfico de referencia: $D_t$ y $G_t$ en el tiempo (1950-1971), con el cruce hacia 1960. No existe aún .tex en temas revisados.
+Gráfico de referencia: `fuentes/3B20/graficos/triffin.tex` (`fig:triffin`): oro monetario $G_t$ al precio oficial y activos líquidos en dólares del resto del mundo $D_t$ (Tesoro + depósitos a la vista y a plazo), datos de la Reserva Federal (Z.1, vía FRED), 1948-1973. Función clave `eq:triffin` $D_t>G_t$. **El cruce, hacia 1960-1961** (1961 con esta medida; 1960 con los pasivos totales de Triffin).
 
 Versión moderna (para 3.B.21 y 3.B.43): con tipos flexibles, el emisor de la moneda de reserva ofrece activos seguros a costa de una posición exterior deudora creciente (Farhi-Gourinchas-Rey).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.20 | Por qué cae Bretton Woods | Desarrollo | Supuestos, mecanismo, gráfico y DEG | — |
-| 3.B.21 | El «no sistema» y Bretton Woods II | Mención | Una frase y la versión moderna (activos seguros, Bretton Woods II) | La explicación de 1960 |
+| 3.B.20 | Por qué cae Bretton Woods | desarrollo (hecho, 13/11/2026) | III.1.3 (`sec:triffin`) a)-e), `eq:triffin`, `fig:triffin`; extensiones: el «banco del mundo» (Despres, Kindleberger y Salant) y la versión moderna (`FarhiGourinchasRey2011`) | — |
+| 3.B.21 | El «no sistema» y Bretton Woods II | mención (hecho, 13/11/2026) | Una frase en I.1 y la versión moderna (`FarhiGourinchasRey2011`) en las extensiones de Bretton Woods II (ficha `bretton-woods-ii`) | La explicación |
 | 3.B.22 | FMI | Mención | DEG como respuesta | — |
 | 3.B.43 | Papel internacional del euro | Mención | Si el euro gana peso, se enfrenta a la versión moderna del dilema | — |
 

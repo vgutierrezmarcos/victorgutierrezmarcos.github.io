@@ -17,6 +17,7 @@
 | 3.A.17 | Monopolio | mención (hecho, 17/10/2026) | I.3: Tullock (1967) señala que los recursos para conseguir el monopolio son un coste social; Posner (1975) supone que la competencia por el premio disipa todo el rectángulo del beneficio, que se suma al triángulo (cota superior); remite a 4.B.2 solo para ampliar (D138). Teoría positiva de la regulación en el anexo A (Stigler, Olson, Peltzman, Becker) | La teoría de los grupos |
 | 3.A.23 | Fallos del sector público (incentivos) | mención (hecho, 21/10/2026) | Los recursos dedicados a conseguir rentas creadas por el sector público son un coste social que se suma a la distorsión (Tullock, 1967; Krueger, 1974), `\vertema{3.A.17}` | El gráfico |
 | 3.A.20 | Coste social del poder de mercado; captura | mención (hecho, 22/10/2026) | Búsqueda de rentas como pérdida que se suma al triángulo de Harberger y como coste de la captura | El modelo |
+| 3.B.7 | Política comercial | mención (hecho, 5/11/2026) | La renta de la cuota regalada a los importadores se disipa en búsqueda de rentas (Krueger, 1974), ficha `cuotas` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - Ninguna relevante.

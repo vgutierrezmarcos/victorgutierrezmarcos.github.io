@@ -45,4 +45,7 @@ $$\gamma_c=\gamma_k=\gamma_y=\frac{A-\delta-\rho}{\theta}\qquad(\texttt{eq:ak-ra
 - El 3.A.43 da la versión con ahorro exógeno y el 3.A.44 las 2: dicho en las 2 fichas (contradicción del 3.A.43 sobre el 3.A.44, resuelta).
 - Test de 2021 con un $AK$ con «$g_A=4\,\%$» que parece mal planteado (A44-12; para Víctor).
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **Antecedentes (3.A.44, 11/11/2026):** la primera función AK, **von Neumann (1937)**; $Q=K/L$ como función AK, **Frankel (1962)**.
+
 Autor: Víctor Gutiérrez Marcos

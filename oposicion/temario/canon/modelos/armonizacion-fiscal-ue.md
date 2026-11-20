@@ -1,7 +1,7 @@
 # Armonización fiscal en la Unión Europea
 
 - **Área:** sector público · **Tema de referencia:** 3.B.39 (el mapa proponía 4.B.13; el viejo 4.B.18, «La armonización fiscal en la UE», desaparece y su contenido encaja en el nuevo 3.B.39). Reparto: historia y estrategias de armonización en 3.B.39; IVA e impuestos especiales en la UE en resumen en 4.B.20; imposición directa (directivas del IS, BEFIT, pilar 2) en 4.B.18. Los dos temas del 4.º resumen lo imprescindible de la armonización para cantarse sin el 3.B.39.
-- **Temas que lo usan:** 4.B.18 (hoy desarrollo; debe quedar en la parte directa), 4.B.13 (resumen en anexo), 4.B.20 (desarrollo previsto de la parte indirecta aplicada), 3.B.39 (desarrollo propuesto), 3.B.37 (recursos propios)
+- **Temas que lo usan:** 4.B.18 (hoy desarrollo; debe quedar en la parte directa), 4.B.13 (resumen en anexo), 4.B.20 (desarrollo previsto de la parte indirecta aplicada), 3.B.39 (desarrollo; hecho, 19/11/2026: II.1, barreras fiscales en el mercado interior de bienes; II.4, imposición directa en resumen), 3.B.37 (recursos propios)
 - **Manuales de referencia:** TFUE, arts. 110-113 y 115; Directiva 2006/112/CE; Directiva (UE) 2020/262; Directivas matriz-filial (2011/96/UE), intereses y cánones (2003/49/CE), fusiones (2009/133/CE), ATAD (2016/1164), DAC (2011/16/UE y modificaciones), pilar 2 (2022/2523); propuesta BEFIT (2023); Informes Neumark (1962), Ruding (1992); Libro Blanco de Cockfield (1985).
 - **Decisión D074 (13/10/2026):** ¿Cuál es el tema de referencia de la armonización fiscal en la UE? 3.B.39: historia y estrategias; IVA e impuestos especiales en resumen en 4.B.20; imposición directa (IS, BEFIT, pilar 2) en 4.B.18
 
@@ -11,7 +11,7 @@
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.39 | Armonización (propuesta) | Desarrollo | Todo lo anterior | — |
+| 3.B.39 | Mercado único: barreras fiscales | desarrollo (hecho, 19/11/2026) | II.1: IVA con la Directiva (UE) 2022/542 (tipos) y ViDA (Directiva (UE) 2025/516; 2028 y 2030), IIEE con la Directiva (UE) 2020/262, revisión de la imposición de la energía y del tabaco pendiente; II.4: la directa en resumen (pilar 2, Directiva (UE) 2022/2523; BEFIT sin acuerdo) | La fiscalidad internacional en detalle (4.B.18) |
 | 4.B.18 | Fiscalidad internacional | Resumen de la parte directa | Directivas de IS, ATAD, DAC, pilar 2, BEFIT | La parte indirecta |
 | 4.B.13 / 4.B.20 | Imposición indirecta | Resumen | IVA e IIEE en la UE | Historia completa |
 

@@ -30,7 +30,7 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.29 | Financiación exterior del desarrollo; deuda externa | desarrollo (hecho, 12/11/2026) | Lo de arriba: II.1.2 a)-e), II.1.3 a)-d) con `laffer-deuda` y anexo B | — |
-| 3.B.22 | El FMI; prevención y solución de crisis | mención (prevista) | La acción colectiva como razón del SDRM y de las CAC; la política de préstamos con atrasos; el DSA como filtro, con `\vertema{3.B.29}` | El modelo y el gráfico |
+| 3.B.22 | El FMI; prevención y solución de crisis | mención (hecho, 13/11/2026) | La acción colectiva como razón del SDRM y de las CAC, `\vertema{3.B.29}` | El modelo |
 | 3.B.21 | El sistema económico internacional desde 1973 | mención (prevista) | 1982 como sobreendeudamiento; el Plan Brady como la quita a la derecha del máximo, `\vertema{3.B.29}` | La curva |
 | 3.A.39 | Deuda pública y su sostenibilidad | mención (hecho, 4/11/2026) | Equilibrios múltiples: el miedo al impago lo hace probable (Calvo, 1988) | — |
 | 3.B.17 | Crisis de balanza de pagos | mención (hecho, 12/11/2026) | Lo mismo en la deuda pública dentro de las crisis (l. 369, `Calvo1988Servicing`) | — |

@@ -30,10 +30,10 @@
 | 3.B.19 | Coordinación internacional | mención (hecho, 12/11/2026) | ISSD y Marco Común con las mismas cifras; Club de París | Los episodios |
 | 3.B.12 | Ajuste de la BP; sostenibilidad exterior | mención (hecho, 11/11/2026) | Volcker 1979-1982 y el Plan Brady en 1 frase; LIC DSF | Los planes |
 | 3.B.17 | Crisis de balanza de pagos | mención (hecho, 12/11/2026) | 1982 como crisis de deuda externa con `\vertema{3.B.29}`; las de los 90 son suyas | Los planes |
-| 3.B.21 | El sistema económico internacional desde 1973 | resumen (previsto; sin revisar) | Cronología breve de 1982 a 2023 con estas fechas y cifras, `\vertema{3.B.29}`; Volcker 1979-1982 | El análisis (Laffer, Baker frente a Brady) |
-| 3.B.22 | El FMI | mención (prevista; sin revisar) | Condonación (PPME, IADM) con `\vertema{3.B.29}`; PRGT, FFACC y DEG de 2021, DSA, SDRM y CAC desde el FMI | Los episodios |
-| 3.B.30 | Banco Mundial y bancos regionales | mención (prevista; sin revisar) | La AIF en la PPME y la IADM; el LIC DSF y las donaciones | — |
-| 3.B.20 | Bretton Woods | mención (prevista; sin revisar) | El Plan Brady para México con `\vertema{3.B.29}` | — |
+| 3.B.21 | El sistema económico internacional desde 1973 | resumen (hecho, 13/11/2026) | 1982 en resumen, Baker (1985), Brady (1989, `FMI2023Brady`), ISSD (más de 12.000 M$, ≈ 50 países) y Marco Común (nov. 2020) con `\vertema{3.B.29}` | — |
+| 3.B.22 | El FMI | mención (hecho, 13/11/2026) | PPME e IADM con `\vertema{3.B.29}`; PRGT y FFACC; SDRM y CAC | — |
+| 3.B.30 | Banco Mundial y bancos regionales | mención (hecho, 14/11/2026) | La AIF en la PPME y la IADM | — |
+| 3.B.20 | Bretton Woods | mención (hecho, 13/11/2026) | Los planes Dawes y Young como antecedentes del Plan Brady, `\vertema{3.B.29}` | — |
 | 4.A.24, 4.A.26 | Instrumentos financieros; cooperación española | mención (prevista; sin revisar) | Conversión de deuda de España; España en el Club de París | — |
 | 3.B.31 | Cambio climático | mención (hecho, 31/10/2026) | Canjes por naturaleza y cláusulas climáticas | — |
 

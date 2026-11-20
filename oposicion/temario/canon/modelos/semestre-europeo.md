@@ -4,6 +4,7 @@
 - **Temas que lo usan:** 3.B.45 (desarrollo previsto), 4.A.29 (desarrollo previsto del PDM aplicado a España; lo pide el título y hoy no está), 4.B.26 (resumen), 4.A.21 (mención: umbral de la PIIN del −35 %), 4.A.28 y 4.A.30 (mención), 3.B.40 (mención: Informe Conjunto sobre el Empleo), 3.B.37 (mención: condicionalidad del MRR ligada a las REP), 4.A.17 (mención), 1D01 (uso: umbrales del cuadro en cada indicador y en las tablas del anexo A), 3.B.16 (mención; hecho, 11/11/2026: III.3.2, la coordinación en el Semestre Europeo, que desde 2024 integra los planes fiscales-estructurales a medio plazo, `\vertema{3.B.45}`)
 - **Manuales de referencia:** Reglamentos 1175/2011 (Semestre, hoy integrado en el 2024/1263) y 1176/2011 (PDM); Comisión Europea, *Alert Mechanism Report* e *In-depth reviews* anuales; Baldwin y Wyplosz
 - **Decisión D118 (13/10/2026):** ¿Dónde van el Semestre Europeo y el procedimiento de desequilibrios macroeconómicos (PDM)? Diseño en 3.B.45; aplicación a España en 4.A.29
+- **Al día (pasada final, noviembre de 2026):** ciclo de 2026 en el 3.B.45 (II.2-II.3): IMA del 25/11/2025 con 7 exámenes en profundidad; primavera de 2026: EL, NL y SE sin desequilibrios; IT, HU y SK con desequilibrios; RO, excesivos; **España sin desequilibrios desde la primavera de 2024** (la ficha decía «verificar»). Figura `fuentes/3B45/graficos/semestre-europeo.tex`.
 
 ## Presentación de referencia
 **Semestre Europeo** (desde 2011): ciclo anual de coordinación de las políticas económicas, fiscales y de empleo.
@@ -34,14 +35,14 @@
 
 Desaparecen respecto al cuadro anterior (hasta el IMA 2024): la deuda privada (133 %), el crédito privado (14 % **del PIB**), el precio **real** de la vivienda (+6 %), la cuota de exportación mundial (−6 % en 5 años, hoy auxiliar), el TCER ±5 %/±11 %, los pasivos del sector financiero (+16,5 %) y los umbrales del paro de larga duración y juvenil (hoy auxiliares sin umbral). Auxiliares útiles: NENDI (PIIN sin instrumentos que no generan impago), capacidad de financiación, cuota de exportación mundial, ROE y Tier 1 de la banca, dudosos, precio de la vivienda sobre la renta.
 
-España: desequilibrios por endeudamiento externo, público y privado y desempleo (verificar la última categoría en el paquete de primavera más reciente).
+España: desequilibrios por endeudamiento externo, público y privado y desempleo (comprobado en el 3.B.45; texto anterior: verificar la última categoría en el paquete de primavera más reciente).
 
 Sin ecuaciones; la tabla del cuadro de indicadores es el «gráfico» de referencia (fuente: Comisión Europea, IMA; actualizar si cambia el cuadro).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.45 | Gobernanza | Desarrollo | Ciclo, PDM, cuadro de indicadores, valoración | — |
+| 3.B.45 | Gobernanza | desarrollo (hecho, 14/11/2026) | Ciclo, PDM, cuadro de indicadores, valoración | — |
 | 4.A.29 | Desequilibrios de España según el PDM | Desarrollo aplicado | Valores de España en cada indicador y última categoría | El diseño del procedimiento |
 | 4.A.21 | Sostenibilidad externa | Mención | Umbral −35 % de la PIIN | — |
 | 4.B.26 | Déficit y deuda | Resumen | REP fiscales a España | — |

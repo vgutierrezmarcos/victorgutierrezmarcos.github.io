@@ -14,13 +14,14 @@
 
 **b) Modelo (I.2).**
 - *Supuestos*: economía cerrada sin Estado, un bien, tiempo continuo; $Y_t=F(K_t,A_tL_t)$ (`eq:produccion`) neoclásica (productos marginales positivos y decrecientes, rendimientos constantes con principio de réplica, `\vertema{3.A.11}`, e Inada, `tab:inada` con 6 condiciones, A43-05); la tecnología es no rival y, en el modelo, no excluible (`\vertema{3.A.23}`); $\gamma_A=g$, $\gamma_L=n$; agente representativo que ahorra $s\in(0,1)$; competencia perfecta, **$r_t+\delta=F_K$ y $w_t=F_L$** (w real, sin letra para el alquiler); δ > 0. Cajas: teorema de **Uzawa (1961)**, condición necesaria (no Phelps ni «necesaria y suficiente»), con la demostración de Jones y Scrimgeour (2008) en el anexo B, y la **controversia del capital** (Robinson, 1953; Sraffa, 1960; Samuelson, 1966) con `\vertema{3.A.4}`.
-- *Notación* (caja del tema): $k_t\equiv K_t/(A_tL_t)$, $y_t$, $c_t$ **sin marca**, por unidad de trabajo eficiente; lo per cápita como cociente ($Y_t/L_t=A_ty_t$); punto = derivada; $\gamma_X\equiv\dot X/X$.
+- *Notación* (caja del tema; **regla 4 de Víctor, 11/11/2026**, sustituye a la anterior): $\tilde k_t\equiv K_t/(A_tL_t)$, $\tilde y_t$, $\tilde c_t$ **con virgulilla**, por unidad de trabajo eficiente; **sin virgulilla lo per cápita**, $k_t\equiv K_t/L_t$, $y_t\equiv Y_t/L_t=A_t\tilde y_t$, $c_t$; punto = derivada; $\gamma_X\equiv\dot X/X$.
 - *Ecuación fundamental* (función clave):
-$$\boxed{\dot k_t=s\,f(k_t)-(n+g+\delta)\,k_t}\qquad(\texttt{eq:solow})$$
+$$\boxed{\dot k_t=s\,f(k_t)-(n+\delta)\,k_t}\qquad(\texttt{eq:solow},\ \text{tecnología constante, desde el 11/11/2026})$$
+  y, con progreso técnico, $\dot{\tilde k}_t=s\,f(\tilde k_t)-(n+g+\delta)\,\tilde k_t$ (`eq:solow-g`);
   inversión efectiva frente a inversión de reposición; precios $r_t=f'(k_t)-\delta$, $w_t=A_t[f(k_t)-k_tf'(k_t)]$. Lectura «empecemos con $g=0$» (la recta $(n+\delta)k$ gira a $(n+g+\delta)k$): adaptación de la nota de Víctor (DK3), sin escribir el modelo 2 veces.
 - *Estado estacionario*: $s\,f(k^*)=(n+g+\delta)k^*$, único y estable por Inada; con Cobb-Douglas $k^*=[s/(n+g+\delta)]^{1/(1-\alpha)}$. Senda equilibrada: $\gamma_{Y/L}=\gamma_{K/L}=\gamma_{C/L}=g$; $\gamma_Y=\gamma_K=\gamma_C=n+g$; $r^*$ constante, $w$ crece a g; reproduce 5 de los 6 hechos de Kaldor (ficha `hechos-kaldor`).
 - *Regla de oro* (**Phelps, 1961**; el libro es de 1966), función clave:
-$$\boxed{f'(k_{\mathrm{oro}})=n+g+\delta}\qquad(\texttt{eq:regla-oro}),\qquad r_{\mathrm{oro}}=n+g,\qquad s_{\mathrm{oro}}=\alpha\ \text{(Cobb-Douglas)}$$
+$$\boxed{f'(k_{\mathrm{oro}})=n+\delta}\qquad(\texttt{eq:regla-oro},\ \text{tecnología constante}),\quad\text{con progreso técnico } f'(\tilde k_{\mathrm{oro}})=n+g+\delta,\ r_{\mathrm{oro}}=n+g,\qquad s_{\mathrm{oro}}=\alpha\ \text{(Cobb-Douglas)}$$
   ineficiencia dinámica si $s>s_{\mathrm{oro}}$ (propiedad del estado estacionario, pegatina «la avaricia rompe el saco»); eficiencia dinámica si $s<s_{\mathrm{oro}}$ (conflicto entre generaciones que el modelo no puede resolver sin preferencias); la regla de oro no es un óptimo.
 - *Tasas de crecimiento* (`eq:tasas-solow`): $\gamma_k=s\,f(k)/k-(n+g+\delta)$.
 - *Estática comparativa* (`tab:estatica-solow`, corregida): filas $s$, $n$, δ, $A_0$ (nivel: no cambia $k^*$, $y^*$, $c^*$ ni $f'(k^*)$, sube el nivel de Y/L) y $g$ (la única que cambia $\gamma_{Y/L}$ a largo plazo, en verde); columnas $k^*$, $y^*$, $c^*$ (± según la regla de oro), $f'(k^*)$, nivel de Y/L, $\gamma_{Y/L}$ y $\gamma_Y$. Sin fila de $s_H$ (A43-02: va en el II.1).
@@ -51,5 +52,10 @@ $$\boxed{f'(k_{\mathrm{oro}})=n+g+\delta}\qquad(\texttt{eq:regla-oro}),\qquad r_
 - Párrafos duplicados literalmente entre 3.A.43 y 3.A.44 (tecnología como bien público, tamaño indeterminado de la empresa, costes de ajuste): se quedan en el 3.A.43; el 3.A.44 remite. **Resuelto** (1/11/2026).
 - 3.A.38: la ecuación de Solow con impuestos (l. 1523 de su Word) con ahorro exógeno. **Resuelto (5/11/2026)**: solo en el anexo F, como simplificación de Barro; el gasto y los impuestos con hogares que optimizan, en el RCK (II.1).
 - Esta ficha decía «3.B.42 (subdesarrollo)»: el tema del desarrollo es el **3.B.28** (el 3.B.42 es la cooperación al desarrollo de la UE y queda en mención).
+
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **Regla 4 del bloque de crecimiento (3.A.43, 4.ª tanda, 11/11/2026):** virgulilla para lo que va por unidad de trabajo eficiente ($\tilde k$, $\tilde y$, $\tilde c$, $\tilde h$) y sin virgulilla lo per cápita ($k$, $y$, $c$). En esta ficha, donde una ecuación con progreso técnico escribe $k$, $y$ o $c$, léase $\tilde k$, $\tilde y$, $\tilde c$ (`notacion.md` § 7). Afecta también a MRW (en esta ficha: $\tilde h\equiv H/(AL)$).
+- **Funciones clave del 3.A.43:** `eq:solow` y `eq:regla-oro` en la versión con tecnología constante; la de progreso técnico es `eq:solow-g`.
+- **Pieza común del anexo de control óptimo** (3.A.34): su nota al opositor en el 3.A.43 dice «$\tilde y$ es la producción por unidad de trabajo eficiente» y «el consumo per cápita, $c_t$».
 
 Autor: Víctor Gutiérrez Marcos

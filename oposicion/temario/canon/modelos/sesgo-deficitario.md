@@ -32,6 +32,7 @@
 | 4.B.2 | Economía política | Resumen | Las 4 explicaciones junto a la ilusión fiscal y Nordhaus, completas para el 4.º; remitir al 3.A.39 sin depender de él | — |
 | 4.B.5 | Crecimiento del gasto público | Mención | Sesgo deficitario como causa del crecimiento de la deuda | Los modelos |
 | 4.B.21 | Estabilidad presupuestaria | Mención | Reglas fiscales y AIReF como respuesta al sesgo | Los modelos |
+| 3.B.45 | Gobernanza de la zona euro | variante (hecho, 14/11/2026) | **Sesgo en una unión monetaria** (Beetsma y Uhlig, 1999): `eq:sesgo-union` $b^N=a/(1+\lambda\theta^2/n)>b^C=a/(1+\lambda\theta^2)$; recogida aquí sin ficha propia; el 3.A.39 sigue siendo el tema de referencia del sesgo en general | El sesgo general |
 
 ## Divergencias encontradas en el temario actual
 

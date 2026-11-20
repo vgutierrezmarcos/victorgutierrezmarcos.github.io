@@ -36,6 +36,8 @@ con $p_E$ el precio del derecho en el RCDE, $p_E^*$ el precio del carbono pagado
 | 4.A.6 | Política de energía y clima | mención | El MAFC dentro del Objetivo 55 y su efecto en la industria española; `\vertema{3.B.31}` | La teoría |
 | 3.A.22 | Teoremas del bienestar y *second best* | mención (hecho, 21/10/2026) | Enganche: el MAFC como solución de segundo óptimo, desde el 1/1/2026 y en 6 sectores | El diseño |
 | 3.A.23 | Mercados de derechos de emisión | mención (hecho, 21/10/2026) | Contra la fuga de carbono, el MAFC cobra desde el 1/1/2026 a las importaciones de ciertos bienes (certificado a 82,32 €/t en el tercer trimestre de 2026), `\vertema{3.B.31}` | El diseño |
+| 3.B.33 | OMC | mención (hecho, 14/11/2026) | El art. XX como base del MAFC, que replica el precio interno del carbono para respetar el trato nacional; la demanda de Rusia contra la UE (DS639, grupo especial establecido el 25/9/2026) | El diseño |
+| 3.B.7 | Instrumentos de política comercial | mención (hecho, 5/11/2026) | Nuevos instrumentos en frontera: el MAFC, con `\vertema{3.B.31}` | El diseño |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.37 (sin revisar), nota 34: lo sitúa «transitorio desde octubre de 2023 durante 3 años hasta 2026»: el transitorio acabó el 31/12/2025 y el definitivo empezó el 1/1/2026.

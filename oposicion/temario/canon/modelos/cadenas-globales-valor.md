@@ -45,11 +45,12 @@
 | 4.A.22 | España en las CGV | resumen aplicado (previsto; sin revisar) | Participación de España hacia atrás y hacia delante, por ramas y socios; las cifras canónicas y su nota; la definición y los 2 índices **resumidos** para cantarse sin el 3.º (`eq:participacion-cgv` con las mismas letras) | La teoría (1 línea con `\vertema{3.B.18}`) |
 | 3.A.15 | Límites de la empresa | mención (hecho, 20/10/2026) | Hacer o comprar entre países, `\vertema{3.B.18}` | — |
 | 3.B.6, 3.B.9, 3.B.10, 3.B.19 | Comercio, crecimiento, integración, coordinación | mención (3.B.19 hecho, 12/11/2026) | La CGV en la pregunta de cada uno (fragmentación y exportar o invertir; industrialización; integración profunda; transmisión), 1 línea y `\vertema{3.B.18}` | La medición |
-| 3.B.31, 3.B.33 | Clima; OMC | mención | Emisiones incorporadas; reglas para las cadenas | La medición |
+| 3.B.31, 3.B.33 | Clima; OMC | mención (3.B.33 hecho, 14/11/2026: reglas más profundas para las cadenas, III.2.4) | Emisiones incorporadas; reglas para las cadenas | La medición |
 | 3.B.11 | Balanza de pagos | mención (hecho, 5/11/2026) | Curva de la sonrisa y comercio en valor añadido, con `\vertema{3.B.18}` | — |
-| 3.B.21 | Sistema desde Bretton Woods | mención prevista | La hiperglobalización 1990-2008 como era de las CGV | La teoría |
+| 3.B.21 | Sistema desde Bretton Woods | mención (hecho, 13/11/2026) | Hiperglobalización y «segunda separación» (Baldwin, 2016) con `\vertema{3.B.18}` | La teoría |
 | 3.B.39 | Mercado único | mención prevista | La curva de la sonrisa con `\vertema{3.B.18}` (hoy remite al 3.B.34: `corregir -> 3.B.18`) | — |
 | 4.A.23, 4.A.24 | Inversión e internacionalización de España | mención prevista | La IED vertical española en las cadenas | — |
+| 3.B.32 | Economía mundial | mención (hecho, 14/11/2026) | II.2 | La teoría |
 
 ## Divergencias encontradas en el temario actual
 

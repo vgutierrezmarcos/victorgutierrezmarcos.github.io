@@ -3,7 +3,7 @@
 Alias: `marris` (el id que usaba el 3.B.4 en `mapa.yaml`; en `_inventario/alias.json`).
 
 - **Área:** mercados-información-juegos (teoría de la empresa) · **Tema de referencia:** **3.A.15** (La empresa: el tamaño eficiente y sus límites…; revisado el 20/10/2026, I.2.2 `sec:gerencialistas`, con el anexo `anexo:baumol`) — los desarrolla con a)-c), con Baumol en la pizarra. Ficha creada a raíz de esa revisión (opcional en C5 de coherencia: se crea porque el 3.B.4 usa Marris y el crecimiento de la empresa).
-- **Temas que lo usan:** 3.A.15 (desarrollo; hecho, 20/10/2026), 3.B.4 (mención o resumen: Marris y el crecimiento de la empresa; hoy lo pone dentro de la teoría de la agencia), 4.B.2 (mención posible: Niskanen, 1971, es la versión burocrática del maximizador del tamaño; ficha `niskanen`), 3.A.12 (mención; hecho, 14/10/2026: la ineficiencia X como bisagra, ficha `ineficiencia-x`).
+- **Temas que lo usan:** 3.A.15 (desarrollo; hecho, 20/10/2026), 3.B.4 (resumen; hecho, 8/11/2026: «La teoría gerencial del crecimiento: Marris (1964)», con la ratio de valoración como $q$ media y la amenaza de absorción como puente al mercado de control), 4.B.2 (mención posible: Niskanen, 1971, es la versión burocrática del maximizador del tamaño; ficha `niskanen`), 3.A.12 (mención; hecho, 14/10/2026: la ineficiencia X como bisagra, ficha `ineficiencia-x`).
 - **Manuales de referencia:** Baumol (1958, 1959), *Business Behavior, Value and Growth*; Williamson (1964), *The Economics of Discretionary Behavior*; Marris (1963, 1964), *The Economic Theory of «Managerial» Capitalism*; Berle y Means (1932); Leibenstein (1966); Hicks (1935); Stigler (1976).
 
 ## Presentación de referencia (3.A.15, I.2.2)
@@ -26,11 +26,11 @@ Pregunta: ¿qué hace la empresa si la dirigen directivos que no son sus dueños
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.15 | Objetivos de la empresa y límites internos | desarrollo (hecho, 20/10/2026) | Todo lo anterior; Baumol en la pizarra, Williamson con gráfico sin cantar, Marris en una frase (D5 del 3.A.15) | La agencia formal (3.A.13) |
-| 3.B.4 | Crecimiento de la empresa | mención o resumen | Marris con su restricción de seguridad como teoría del crecimiento, junto a Penrose y Gibrat; gerencialista, no de agencia; remitir al 3.A.15 Baumol y Williamson | Baumol y Williamson |
+| 3.B.4 | Crecimiento de la empresa | resumen (hecho, 8/11/2026) | Marris con su restricción de seguridad como teoría del crecimiento, junto a Penrose y Gibrat; gerencialista, no de agencia; remitir al 3.A.15 Baumol y Williamson | Baumol y Williamson |
 | 4.B.2 | Burocracia | mención (posible) | Niskanen (1971) como el maximizador del tamaño en el sector público (ficha `niskanen`) | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.15 original: Baumol con la numeración 1, 5, 6, «produce donde el ingreso marginal es cero» sin beneficio mínimo y un tercer motivo «gestión tranquila → colusión tácita»; Williamson (1964) con $\max U=f(S,M,T)$ s.a. $\pi_R\ge\pi_0$ sin definir; Marris sin restricción; imágenes sin fuente. **Resuelto** (20/10/2026).
-- 3.B.4 (sin revisar): Marris dentro de la «teoría de la agencia» (es un modelo gerencialista).
+- **Resuelto en el 3.B.4 (8/11/2026).** Antes: 3.B.4 (sin revisar) ponía a Marris dentro de la «teoría de la agencia» (es un modelo gerencialista).
 
 Autor: Víctor Gutiérrez Marcos

@@ -42,7 +42,7 @@ Emitir es dominante; (Emitir, Emitir) es el único equilibrio de Nash: la versi�
 | 3.A.23 | Bienes públicos globales | mención (hecho, 21/10/2026) | Clubes con un arancel a quien no participa (Nordhaus, 2015); remisión al MAFC con `\vertema{3.B.31}` (hoy remite al 4.A.6: `pendientes-coherencia.md`) | Las tablas |
 | 3.B.19 | Coordinación internacional (G-20, OCDE) | mención (hecho, 12/11/2026) | III.1: los clubes (Nordhaus, 2015): un acuerdo se sostiene mejor si la ventaja de estar dentro es excluible, con un arancel a quien no participa, `\vertema{3.B.31}`; III.2.3: el Club del Clima del G-7 (diciembre de 2022), foro abierto **sin aranceles**, distinto de los clubes de Nordhaus (`G72022ClimateClub`, la frase del 3.B.31) | Las tablas |
 | 3.B.41 | Política comercial de la UE | mención | El MAFC frente al club: iguala el precio del carbono, no castiga la no participación | El juego |
-| 3.B.33 | OMC | mención | El arancel uniforme del club frente a la nación más favorecida y al art. XX | El juego |
+| 3.B.33 | OMC | mención (hecho, 14/11/2026) | El arancel uniforme del club frente a la nación más favorecida y al art. XX | El juego |
 
 ## Divergencias encontradas en el temario actual
 - **Tebar** (referencia de estructura del 3.B.31): el MAFC «es un arancel… fundado en los clubes de Nordhaus»; pagos del dilema 2, 3, −1, 0 con A y B. Corregido en el 3.B.31: el MAFC es un ajuste que iguala el precio del carbono, y el dilema usa los pagos y las palabras del 3.A.14.

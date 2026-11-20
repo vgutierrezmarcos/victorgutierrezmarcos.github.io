@@ -28,7 +28,7 @@
 | 1D01 | Dictamen | uso (hecho, 24/10/2026) | «Objetivo simétrico del 2 % a medio plazo» (`BCE2025Estrategia`); la estrategia de 2021 con el análisis monetario y financiero | La teoría |
 | 3.A.28 | Paro de equilibrio | mención (hecho, 31/10/2026) | Con histéresis, más peso al empleo (Galí, 2022); `\vertema{3.A.36}` | — |
 | 3.A.41 | Inflación | mención (hecho, 5/11/2026) | Por qué un objetivo positivo (2 %): entre otras razones, el colchón frente al límite inferior y la propuesta de estudiar un 4 % (Blanchard, Dell'Ariccia y Mauro, 2010, como el 3.A.36, I.4.1); las demás razones, comprobadas al revisarlo | Las anclas |
-| 3.B.43 | El euro | mención | El mandato del art. 127 del TFUE y la estrategia del BCE | — |
+| 3.B.43 | El euro | mención (hecho, 14/11/2026) | El mandato del art. 127 del TFUE y las estrategias del BCE de 1998 a 2025 | — |
 | 3.B.15 | Regímenes cambiarios | mención (hecho, 12/11/2026) | El tipo de cambio fijo como ancla (I.2.2); con flotación, la credibilidad con un objetivo de inflación (`\vertema{3.A.36}`); casi todos los que flotan lo tienen (II.2, `FMI2026InformeAnual`); en I.3.2 c), Galí y Monacelli: estabilizar la inflación interna | La estrategia del BCE |
 | 3.A.37 | Transmisión: expectativas y orientación | mención (hecho, 5/11/2026) | Con un objetivo creíble, una subida baja hoy la inflación esperada (I.2); la inflación media de la Fed como estrategia de compensación, adoptada en 2020 y abandonada en agosto de 2025 (III.2); `\vertema{3.A.36}` | El diseño del objetivo |
 

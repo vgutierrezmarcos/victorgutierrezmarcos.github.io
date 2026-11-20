@@ -41,4 +41,11 @@
 - **3.A.5 (revisado)**: «la nueva síntesis neoclásica de los 90, la nueva economía keynesiana con expectativas racionales» (l. 584) lee la nueva síntesis como la propia NEK; el 3.A.7 la cuenta como la convergencia de la NEK y la NMC (Woodford, 2009). Opcional, `pendientes-coherencia.md` (**[decidir]**).
 - **Terminología** (cosmética, **[decidir]**): «nuevokeynesianos» (3.A.29, l. 764 y otra); «nuevo keynesiano» (3.A.26, 3.A.27, 3.A.28) frente a «neokeynesiano» (3.A.7, 3.A.28, 3.A.33): se admiten los 2.
 
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **Estructura del 3.A.7 (9/11/2026):** 2 apartados; el antiguo III desaparece: las implicaciones de política son **II.3** (`sec:implicaciones`) y la valoración y nueva síntesis **II.4** (`sec:nueva-sintesis`). Donde esta ficha dice «III.2» (nueva síntesis), léase II.4.
+- **Método de la 1.ª generación**, frase fija: «La base la encontramos en el volumen *New Keynesian Economics* de Mankiw y Romer (1991) y en *A Sticky-Price Manifesto* de Ball y Mankiw (1994)», con las 2 características comunes y los 4 fundamentos en el cuerpo (antes en caja gris).
+- **De los EGDE del ciclo real a la NEK: 4 modificaciones** (`tab:rbc-nek` del 3.A.7): bienes diferenciados y competencia monopolística; rigideces nominales (Calvo o Rotemberg); sin capital; más perturbaciones. Sustituyen a los «2 cambios» anteriores. El 3.A.6 (III.4) habla de 2 piezas (`pendientes-coherencia.md`).
+- **Gráficos nuevos del 3.A.7:** `reglas-precios` (Fischer, Taylor, Calvo y Rotemberg ante una subida permanente del dinero; caja gris de I.2.1) y `mapa-agua-salada`.
+- **Salarios de eficiencia en el 3.A.7 (I.2.3):** dice «los 5 motivos con sus autores»; el canon (ficha `salarios-eficiencia`, 3.A.27) fija los **4 motivos de Romer** (`pendientes-coherencia.md`).
+
 Autor: Víctor Gutiérrez Marcos

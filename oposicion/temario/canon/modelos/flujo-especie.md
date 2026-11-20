@@ -19,7 +19,7 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.12 | Mecanismos de ajuste | desarrollo (hecho, 11/11/2026) | II.1 a)-c): supuestos de la ficha, el circuito con $q=\overline EP^*/P$, convertibilidad estricta (Ley de Peel, coeficiente del 100 %), reglas del juego (Mill y el tipo de descuento, `\vertema{3.A.2}`; esterilización antes de 1914, Bloomfield, 1959, `\vertema{3.B.20}`), asimetría (Keynes, 1943, `\vertema{3.B.19}`), precios rígidos, Cantillon; el enlace con el enfoque monetario en la Idea de II.2 y en `tab:mecanismos-ajuste` | — |
-| 3.B.20 | Sistema monetario internacional histórico | mención | Una frase: funcionamiento del patrón oro y por qué las «reglas del juego» se incumplían [ver tema 3.B.12] | El circuito completo |
+| 3.B.20 | Sistema monetario internacional histórico | mención (hecho, 13/11/2026) | Una viñeta en I.3 con `\vertema{3.B.12}`, sin el circuito; nota con la distinción identidad ($MV\equiv PY$) / teoría cuantitativa (regla 6 de la 9.ª tanda). El patrón oro tiene ficha propia: `patron-oro` | El circuito |
 | 3.A.2 | Los clásicos | mención (hecho, 4/11/2026) | Hume (1752) contra el mercantilismo; el ajuste vía precios; Mill y el tipo de descuento | El circuito y las críticas (`\vertema{3.B.12}`) |
 
 ## Divergencias encontradas en el temario actual

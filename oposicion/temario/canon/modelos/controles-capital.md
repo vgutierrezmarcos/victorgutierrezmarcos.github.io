@@ -36,9 +36,9 @@ $$u'(C_t)=\beta\,(1+r^*+\tau)\,u'(C_{t+1})\qquad(\texttt{eq:euler-controles})$$
 | 3.B.13 | Mercado de divisas | mención (hecho, 8/11/2026) | La externalidad pecuniaria (Korinek, 2011), `\vertema{3.B.15}`; el Código Global de Conducta como regulación de la conducta | El modelo |
 | 3.B.16 | Integración monetaria | mención (hecho, 11/11/2026) | Grecia 2015 y los controles dentro del euro (anexo) | El modelo |
 | 3.B.17 | Crisis de BP | mención (hecho, 12/11/2026) | Controlar los capitales como salida de la trinidad imposible | El modelo |
-| 3.B.22 | FMI | mención (prevista) | Artículos VI y VIII; Visión institucional 2012 y 2022, `\vertema{3.B.15}` | El modelo |
+| 3.B.22 | FMI | mención (hecho, 13/11/2026) | Art. VI y VIII; Visión institucional 2012 y 2022, `\vertema{3.B.15}` | El modelo |
 | 3.B.18 | Flujos de capital | mención (prevista) | Los controles en la gestión de las oleadas de entradas, con la terminología del FMI | El modelo |
-| 3.B.20 | Bretton Woods | mención (prevista) | Controles como pieza del sistema (el lado del trilema) | El modelo |
+| 3.B.20 | Bretton Woods | mención (hecho, 13/11/2026) | Controles como pieza del sistema (art. VI) | El modelo |
 | 3.B.27 | Regulación financiera | mención (prevista) | Medidas macroprudenciales frente a medidas de gestión de los flujos | El modelo |
 | 3.B.39 | Mercado único | mención (prevista) | Libre circulación de capitales (artículo 63 del TFUE) y sus salvaguardias | El modelo |
 | 4.A.27 | España 1959-1999 | mención (prevista) | Tipos múltiples hasta 1959 y unificación en 60 pesetas por dólar | La teoría |

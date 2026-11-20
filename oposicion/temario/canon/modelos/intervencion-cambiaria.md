@@ -40,8 +40,8 @@
 | 1D01 | Dictamen | uso (aprobada) | Cómo se ve la intervención en la balanza (ΔR) y su efecto en la inflación; coste cuasifiscal (Calvo, 1991) | La teoría |
 | 3.B.17 | Crisis de BP | mención (hecho, 12/11/2026) | Con la paridad, $\Delta R=-\Delta\mathrm{CI}$ automático; defender una paridad sobrevalorada con reservas acaba en ataque | Los canales |
 | 3.B.19 | Coordinación | mención (hecho, 12/11/2026) | Plaza y Louvre (II.1) como episodios de coordinación; *swaps* de la Fed como coordinación de hecho; el 3.B.15 remite allí la manipulación y la guerra de divisas | Balance y canales |
-| 3.B.22 | FMI | mención (prevista) | Supervisión del artículo IV, métrica ARA y Marco de Política Integrado, `\vertema{3.B.15}` | Los canales |
-| 3.B.43 | El euro | mención (prevista) | Intervención del Eurosistema y líneas *swap* del BCE | Los canales |
+| 3.B.22 | FMI | mención (hecho, 13/11/2026) | Supervisión del artículo IV, métrica ARA y Marco de Política Integrado, `\vertema{3.B.15}` | Los canales |
+| 3.B.43 | El euro | mención (hecho, 14/11/2026) | Líneas *swap* del BCE y EUREP | Los canales |
 
 ## Divergencias encontradas en el temario actual
 

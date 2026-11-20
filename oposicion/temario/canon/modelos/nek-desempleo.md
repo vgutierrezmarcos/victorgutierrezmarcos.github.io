@@ -33,4 +33,7 @@
 - **3.A.42** (**resuelto** el 4/11/2026): «Blanchard y Galí (2005)» (Word, l. 1478 y 1500) → Blanchard y Galí (2007) para los salarios reales rígidos y (2010) para la búsqueda, en II.2.2 iii).
 - **Terminología**: el 3.A.28 y el 3.A.26 escriben «modelo nuevo keynesiano», el 3.A.7 «neokeynesiano» y el 3.A.29 «nuevokeynesianos»; ver `notacion.md` § 14 (**[decidir]**).
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.28 (9/11/2026):** el subapartado pasa de III.5 a **II.5.2** (`sec:nek-desempleo`, mismo contenido).
+
 Autor: Víctor Gutiérrez Marcos

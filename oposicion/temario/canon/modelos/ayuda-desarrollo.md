@@ -34,12 +34,12 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.29 | Financiación exterior del desarrollo; la ayuda | desarrollo (hecho, 12/11/2026) | Lo de arriba | — |
-| 3.B.42 | Relaciones exteriores de la UE; cooperación al desarrollo | resumen (previsto; sin revisar) | Definición en 1 viñeta (4 requisitos, donación equivalente desde 2018, miembros actuales del CAD) con `\vertema{3.B.29}`; la UE como primer donante; su clasificación por finalidad (financiera, técnica, económica, humanitaria) junto a la del 3.B.29 por canal e instrumento; datos de 2025 | El debate de la eficacia en extenso |
+| 3.B.42 | Relaciones exteriores de la UE; cooperación al desarrollo | mención (hecho, 14/11/2026) | AOD de la UE en 2025: instituciones 23.100 M€; miembros UE del CAD, 0,42 % de la RNB; la asignación tiene ficha propia (`asignacion-ayuda`) | La definición (`\vertema{3.B.29}`) |
 | 4.A.26 | Cooperación española | resumen (previsto; sin revisar) | España 2025 (4.554 M€, 0,27 %), Ley 1/2023 y el 0,7 % en 2030; evaluación (ficha `rct`) con `\vertema{3.B.29}` | La definición y la evidencia agregada |
 | 4.A.24 | Instrumentos financieros de apoyo | mención (prevista; sin revisar) | Consenso OCDE de 1978 y la ayuda ligada (Helsinki 1991) | — |
 | 3.B.28 | Teorías del desarrollo | mención (hecho, 3/11/2026) | La brecha de financiación como origen de la ayuda; RCT con «ver para creer» | El debate |
 | 3.B.19 | Coordinación internacional | mención (hecho, 12/11/2026) | El CAD dentro de la OCDE | — |
-| 3.B.35, 3.B.30 | OCDE; Banco Mundial | mención (prevista; sin revisar) | La OCDE mide la ayuda; la AIF y el reparto por resultados | — |
+| 3.B.35, 3.B.30 | OCDE; Banco Mundial | 3.B.30: mención (hecho, 14/11/2026; AIF y asignación por desempeño); 3.B.35: nada (la OCDE va al 3.B.19) | La AIF y el reparto por resultados | — |
 
 ## Divergencias encontradas en el temario actual
 - **3.B.42** (Word, sin revisar): AOD con «3 características» (son 4), donación equivalente «tras la reforma de 2016» (desde los datos de 2018), «30 miembros» del CAD y datos de donantes antiguos, **sin remitir al 3.B.29**. Al revisarlo: resumir con `\vertema{3.B.29}` y quedarse con la cooperación de la UE.

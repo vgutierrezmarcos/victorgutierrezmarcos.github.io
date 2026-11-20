@@ -58,4 +58,7 @@ $$\text{AD: }C=\frac{\mu}{P},\qquad \text{AS: }C=Z\,\ell\,\tau,\qquad \text{NR: 
 - **3.B.14 (11/11/2026)**: la propuesta de coherencia lo dejaba en mención (K17); el tema lo da en **resumen** (3 párrafos a)-c), sin las curvas). Manda el `.tex`.
 - **Notación (CC5 del 3.A.37):** χ, no κ (**[decidir]**; *alternativa*: κ con aviso en los temas sin NKPC); μ tono, local y avisado. μ es aquí el tono monetario y en el 3.B.17 el crecimiento del crédito interno (Flood-Garber): cada uno la del artículo, definida en cada tema.
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.38 (13/11/2026):** anexo nuevo con Corsetti y Pesenti (2001) aplicado a la política fiscal (notación local ω, Γ ≡ Y/(Y − G), 𝒯; `notacion.md` § 8); el 3.A.37 usa la geometría de 2005/2009. Fila: 3.A.38 | Política fiscal en economía abierta | resumen en anexo | El efecto del gasto con la geometría de 2001 | El modelo completo (3.B.19).
+
 Autor: Víctor Gutiérrez Marcos

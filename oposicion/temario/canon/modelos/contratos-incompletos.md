@@ -1,7 +1,7 @@
 # Contratos incompletos y derechos de propiedad (Grossman y Hart, 1986; Hart y Moore, 1990; Hart, 1995)
 
 - **Área:** mercados-información-juegos (teoría de la empresa) · **Tema de referencia:** **3.A.15** (La empresa: el tamaño eficiente y sus límites…; revisado el 20/10/2026, II.3 `sec:contratos-incompletos`, con el anexo `anexo:ghm`) — único tema que lo desarrolla con un modelo (a)-e)). Ficha creada a raíz de esa revisión (C4 de coherencia).
-- **Temas que lo usan:** 3.A.15 (desarrollo; hecho, 20/10/2026), 3.A.13 (mención; hecho, 19/10/2026: la valoración del principal-agente remite al 3.A.15 los contratos incompletos, l. 792), 3.A.17 (mención; hecho, 17/10/2026: «los costes de transacción de los contratos incompletos», anexo A.2), 4.B.15 (mención para la privatización: Hart, Shleifer y Vishny, 1997), 3.B.3 (mención posible: deuda y acciones como reparto de los derechos de control; Aghion y Bolton, 1992; Hart y Moore, 1994), 3.B.4 (mención: hoy atribuye la teoría a Williamson).
+- **Temas que lo usan:** 3.A.15 (desarrollo; hecho, 20/10/2026), 3.A.13 (mención; hecho, 19/10/2026: la valoración del principal-agente remite al 3.A.15 los contratos incompletos, l. 792), 3.A.17 (mención; hecho, 17/10/2026: «los costes de transacción de los contratos incompletos», anexo A.2), 4.B.15 (mención para la privatización: Hart, Shleifer y Vishny, 1997), 3.B.3 (mención; hecho, 8/11/2026: deuda y acciones como reparto de los derechos de control; Aghion y Bolton, 1992; Hart y Moore, 1994), 3.B.4 (mención; hecho, 8/11/2026: Grossman y Hart, 1986, con los derechos de control bien descritos, no «de Williamson, 1985»).
 - **Manuales de referencia:** Grossman y Hart (1986), *JPE* 94(4); Hart y Moore (1990), *JPE*; Hart (1995), *Firms, Contracts, and Financial Structure*, caps. 2-4; Hart, Shleifer y Vishny (1997), *QJE*; Baker y Hubbard (2003); Hart (2017), *AER* (conferencia Nobel); Nash (1950) para el reparto.
 
 ## Presentación de referencia (3.A.15, II.3)
@@ -27,8 +27,8 @@ $$\tfrac12\,y'(e^{*})+\tfrac12\,y_0'(e^{*})=1,\qquad\text{frente a}\qquad y'(e^{
 | 3.A.13 | Principal-agente | mención (hecho, 19/10/2026) | Valoración: los contratos reales son incompletos; remite al 3.A.15 | El modelo |
 | 3.A.17 | Política de competencia | mención (hecho, 17/10/2026) | Las concentraciones pueden reducir los costes de los contratos incompletos | — |
 | 4.B.15 | Empresa pública y privatización | mención | Hart, Shleifer y Vishny (1997): mantener la propiedad pública si el ahorro de costes deteriora la calidad no contratable; remitir al 3.A.15 | El modelo de infrainversión |
-| 3.B.3 | Estructura financiera | mención (posible) | Deuda y acciones como reparto de los derechos de control (Aghion y Bolton, 1992; Hart y Moore, 1994) | — |
-| 3.B.4 | Fusiones e integración | mención | Integrar cambia la propiedad y los incentivos; remitir al 3.A.15 | — |
+| 3.B.3 | Estructura financiera | mención (hecho, 8/11/2026) | Deuda y acciones como reparto de los derechos de control (Aghion y Bolton, 1992; Hart y Moore, 1994) | — |
+| 3.B.4 | Fusiones e integración | mención (hecho, 8/11/2026) | Integrar cambia la propiedad y los incentivos; remitir al 3.A.15 | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.15 original: Grossman y Hart «1985» (es 1986); derechos específicos «con información completa (material de oficina)» y residuales «(trabajo cualificado)»; «la empresa crecerá hasta hacerse con todos los derechos residuales»; Holmström (1979) en el bloque de derechos de propiedad como *benchmark* sin información asimétrica. **Resuelto** (20/10/2026).

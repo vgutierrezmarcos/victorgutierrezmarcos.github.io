@@ -17,7 +17,7 @@ Crítica: la convergencia nominal no garantiza la real ni la sincronía de ciclo
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.43 | Origen del euro | Desarrollo | Criterios, informes, valoración | — |
+| 3.B.43 | Origen del euro | desarrollo (hecho, 14/11/2026) | Informe de 2024; informe extraordinario de Bulgaria (4/6/2025), Decisión 2025/1407 y Reglamento 2025/1409; informe de 2026 (24/6/2026; referencias 2,7 % y 5,1 %; Chequia y Suecia cumplen los económicos sin MTC II; Hungría, Polonia y Rumanía con PDE); España en 1998 (1,8 %, 2,6 %, 68,8 %, 6,3 %). MTC II hoy: solo Dinamarca | — |
 | 4.A.27 | Ajuste de España para el euro | Resumen | Programas de Convergencia y cumplimiento de España en 1997 | La definición formal |
 | 4.A.28 / 4.A.30 | 1999-2019 / relaciones con la UE | Mención | — | La lista de criterios |
 | 4.A.29 | España desde la covid | Nada | Quitar (sobra con el título nuevo) | — |

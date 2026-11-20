@@ -27,8 +27,12 @@ Pregunta: ¿qué pasa si las empresas eligen precios? Conclusión: con 2 empresa
 | 3.A.14 | EN | mención (hecho, 19/10/2026) | Bertrand como ejemplo de EN; remite al 3.A.19 | — |
 | 3.A.16 | Historia del tanteo walrasiano | mención (hecho, 17/10/2026) | Bertrand (1883) y Edgeworth critican el tanteo de Walras (no es el modelo de oligopolio) | El modelo |
 | 3.B.8 | Política comercial estratégica | mención | Eaton y Grossman (1986): con precios, el instrumento óptimo es un impuesto a la exportación (complementos estratégicos) | La paradoja |
+| 3.B.6 | Nueva teoría del comercio | mención (hecho, 5/11/2026) | Bertrand homogéneo con mercados segmentados: no hay comercio (contraste del dumping recíproco, II.2 `sec:precios`), `\vertema{3.A.19}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.19 original: $P_1=\mathrm{CMg}_2-\varepsilon$ (ε es elasticidad); CMg_1 < CMg_2 como siglas; gráfico de Bertrand con producto diferenciado repetido del 3.A.18. **Resuelto** (20/10/2026): «un céntimo por debajo», $c_1<c_2$, una línea y remisión al 3.A.18.
+
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.18 (13/11/2026):** Bertrand con producto diferenciado va en caja gris (II.2.2, `sec:hotelling-precios`) y en el anexo D (`anexo:bertrand-cournot`), ficha `oligopolio-diferenciado`.
 
 Autor: Víctor Gutiérrez Marcos

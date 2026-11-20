@@ -42,7 +42,7 @@ $$T=\frac{R_0}{\mu}-\frac{h}{\ell}<T_N$$
 | 3.B.13 | Mercado de divisas | mención (revisado, canon pendiente) | El «problema del peso» de México 1976 | — |
 | 3.B.15 | Regímenes cambiarios | mención (hecho, 12/11/2026) | I.2.3, una viñeta: una política incoherente con la paridad (un déficit financiado con crédito interno) agota las reservas hasta el ataque (`Krugman1979Model`), `\vertema{3.B.17}`. Falta la etiqueta «crisis por los fundamentos» (cosmético; `pendientes-coherencia.md`, «Pendiente del 3.B.15») | — |
 | 3.B.29 | Deuda externa del desarrollo | mención (hecho, 12/11/2026) | La crisis de 1982 y las de los 90 con `\vertema{3.B.17}`, **sin la clasificación por generaciones** (paradas súbitas, descalces y crisis gemelas en una viñeta) | El modelo |
-| 3.B.20, 3.B.21 | Historia | uso | Bretton Woods y América Latina 70-80 como ejemplos, con la clasificación de `tab:tres-generaciones` | El modelo |
+| 3.B.20, 3.B.21 | Historia | uso (3.B.20 hecho, 13/11/2026) | El *pool* del oro de 1968 y la convertibilidad de 1971, de **primera** generación (`Garber1993Collapse`, `Krugman2001Next`); la libra de 1931, de **segunda** (`EichengreenJeanne2000`); América Latina 70-80 con `tab:tres-generaciones` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - **Resuelto en el 3.B.17 (12/11/2026):** $\tilde e$, $\bar e$ → $\tilde E$, $\bar E$ (D013); multiplicador $(e+1)/(e+q)=1$ → «multiplicador igual a 1» sin letras; «el banco central esteriliza» → pérdida automática $\Delta R=-\Delta\mathrm{CI}$; título sin Krugman (1979); «se ajusta a la ruptura de Bretton Woods» como caso del modelo → motivación (Krugman, 2001); gráfico escaneado con «Fuente: Sahuquillo» → TikZ propio.

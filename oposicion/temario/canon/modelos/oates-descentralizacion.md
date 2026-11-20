@@ -17,6 +17,7 @@
 | 4.B.14 | Asignación óptima de funciones | Desarrollo previsto | Teorema, gráfico, transferencias, segunda generación | — |
 | 4.B.25 | España | Aplicación | Grado de descentralización del gasto e ingreso en España | El teorema |
 | 4.B.5 | Gasto | Mención | — | — |
+| 3.B.36 | Instituciones y competencias de la UE | resumen aplicado (hecho, 14/11/2026) | Subsidiariedad con una variante propia: 2 Estados, BMg $a_i-G$, externalidad lineal $e$ y regla `eq:asignacion` $e>\Delta/2$ (con ahorro fijo $F$: $e^2+F>\Delta^2/4$); gráfico `oates-uniforme`, que pasa a ser **gráfico de referencia** de la ficha (antes «no hay .tex todavía»); el 4.B.14 puede partir de él | — |
 
 ## Divergencias encontradas en el temario actual
 - Sin fuente en 4.B.14 ni 4.B.25: la ficha fija la presentación para cuando se escriban.

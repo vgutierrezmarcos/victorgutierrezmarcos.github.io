@@ -12,11 +12,11 @@ Gráfico de referencia: índice compuesto del BCE del papel internacional del eu
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.43 | El euro y el SEBC | Desarrollo | Funciones, indicadores, determinantes, política de la UE | — |
-| 3.B.42 | Relaciones exteriores | Resumen | El euro como instrumento geoeconómico | Indicadores detallados |
+| 3.B.43 | El euro y el SEBC | desarrollo en el anexo C (hecho, 14/11/2026) | Funciones, indicadores (informe del BCE de junio de 2026, COFER del 2T 2026), determinantes y política de la UE; si se quiere en el cuerpo, hay que quitar tiempo a III | — |
+| 3.B.42 | Relaciones exteriores | resumen (hecho, 14/11/2026; I.2 y anexo A) | El euro como instrumento geoeconómico, con los datos del informe del BCE de junio de 2026: reservas 20,2 %, deuda 24,6 %, divisas 28,5 %, SWIFT 23 %, facturación 60,0/53,1 % | Los determinantes y la política de la UE |
 | 3.B.39 | Mercado único | Mención | — | — |
 | 3.B.16 | Beneficios de una unión monetaria | mención (hecho, 11/11/2026) | Beneficio geopolítico: más peso en las negociaciones, señoreaje frente al resto del mundo y deuda en la propia moneda; `\vertema{3.B.43}` | Indicadores |
 
 ## Divergencias encontradas en el temario actual
 - **Desplazado a 3.B.42**, que lo desarrolla en extenso («segunda divisa mundial», datos de reservas y pagos). Reparto: el de arriba.
-- Datos de 3.B.42 a finales de 2017 (20,1 % de reservas, Bulgaria con 99 % de reservas en euros): actualizar con el último informe del BCE; Bulgaria está en la zona euro desde el 1-1-2026.
+- **Resuelto (3.B.42, 14/11/2026):** datos al día del informe del BCE de junio de 2026 (antes, finales de 2017: 20,1 % de reservas, Bulgaria con 99 % de reservas en euros). Texto anterior: actualizar con el último informe del BCE; Bulgaria está en la zona euro desde el 1-1-2026.

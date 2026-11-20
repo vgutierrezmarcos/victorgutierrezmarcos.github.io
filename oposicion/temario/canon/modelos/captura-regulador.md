@@ -1,11 +1,11 @@
 # Teoría de la captura del regulador (Stigler, 1971; Peltzman, 1976) y grupos de interés (Olson, 1965)
 
-- **Área:** sector público · **Tema de referencia:** 3.A.20 (II.5, `sec:compromiso-captura`, «Captura del regulador: la teoría positiva de la regulación», con a)-e); modelo gráfico de Peltzman en el anexo `anexo:peltzman`; **hecho, 22/10/2026**): la captura como teoría positiva de la regulación (Stigler, Peltzman, Becker, Laffont y Tirole, 1991). Los grupos de interés (Olson, Becker 1983) se desarrollan en 4.B.2, que resume la captura con lo imprescindible para cantarse sin el 3.A.20.
+- **Área:** sector público · **Tema de referencia:** 3.A.20 (III.6, `sec:compromiso-captura`, «Captura del regulador: la teoría positiva de la regulación», con a)-e); modelo gráfico de Peltzman en el anexo `anexo:peltzman`; **hecho, 22/10/2026**): la captura como teoría positiva de la regulación (Stigler, Peltzman, Becker, Laffont y Tirole, 1991). Los grupos de interés (Olson, Becker 1983) se desarrollan en 4.B.2, que resume la captura con lo imprescindible para cantarse sin el 3.A.20.
 - **Temas que lo usan:** 3.A.20 (desarrollo; hecho, 22/10/2026), 4.B.2 (resumen), 4.B.15 (resumen; hoy mención), 3.A.17 (mención en el anexo A; hecho, 17/10/2026; con `--fase coherencia` pasa a 2 viñetas y la anotación de ProMarket y Stigler Center se puede mover al 3.A.20), 3.A.23 (mención; hecho, 21/10/2026: grupos de presión en los problemas de incentivos, con `\vertema{3.A.20}` para Peltzman: cumplido); 3.B.27 (captura en la regulación financiera) podría citarlo.
 - **Manuales de referencia:** Stigler (1971), «The theory of economic regulation», *Bell Journal*; Peltzman (1976), *Journal of Law and Economics*; Peltzman (1989); Becker (1983), *QJE*; Olson, *The Logic of Collective Action* (1965); Laffont y Tirole (1991), *QJE*; Dal Bó (2006), *Oxford Review of Economic Policy*.
 - **Decisión D092 (13/10/2026):** ¿Cuál es el tema de referencia de la teoría de la captura del regulador? 3.A.20 (regulación: teoría positiva) y los grupos de interés (Olson, Becker 1983) en 4.B.2.
 
-## Presentación de referencia (3.A.20, II.5)
+## Presentación de referencia (3.A.20, III.6; estructura nueva del 9/11/2026)
 
 Antes, en el mismo apartado, el **compromiso**: efecto trinquete (Weitzman, 1980; Freixas, Guesnerie y Tirole, 1985; Laffont y Tirole, 1988), desfase regulatorio (tiempo **entre** revisiones) y la inconsistencia temporal de Kydland y Prescott (1977) aplicada a la inversión hundida en redes (\vertema{3.A.23} \vertema{3.A.36}; ficha `barro-gordon`).
 

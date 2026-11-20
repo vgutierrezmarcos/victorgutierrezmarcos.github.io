@@ -36,4 +36,9 @@ Pregunta: ¿por qué las empresas pagan por encima del salario que vacía el mer
 - 3.A.7 (**resuelto** al revisarlo, 4/11/2026; antes): desarrolla Solow y Shapiro y Stiglitz (con $b$, $N$ y 4 gráficos) con el texto antiguo del 3.A.27 y sus errores ($e(w)/w$, «teorías sociológicas»): al revisarlo, resumen con esta notación y remisión al 3.A.27 (`mapa.yaml`, contradicciones del 3.A.27).
 - 3.A.28: «mencionaba de pasada» los modelos del 3.A.27 con SRN. **Resuelto** (31/10/2026): la CNE como WS con remisión.
 
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **3.A.27 (9/11/2026, 2.ª tanda):** II.1 con los **4 motivos de Romer** numerados —nutrición; supervisión imperfecta, con la rotación como idea emparentada; atraer a los más hábiles; lealtad—, no 5. Es la lista canónica; donde esta ficha dice «5 motivos», léase 4.
+- **Gráficos:** `shapiro-stiglitz` ya no lleva la caída de la demanda y sombrea la zona sin escaqueo; `shapiro-stiglitz-variantes` se sustituye por `shapiro-stiglitz-vigilancia`, `shapiro-stiglitz-sin-rotacion` y `shapiro-stiglitz-demanda`, en el cuerpo, con la tabla `tab:ss-estatica`. El anexo C queda con transiciones, ecuaciones de valor desde $dt$ y bienestar.
+- **3.A.7** (I.2.3) dice «los 5 motivos con sus autores»: alinearlo con los 4 de Romer (`pendientes-coherencia.md`).
+
 Autor: Víctor Gutiérrez Marcos

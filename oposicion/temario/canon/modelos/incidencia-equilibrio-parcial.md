@@ -27,6 +27,7 @@ Proporción soportada por los consumidores: $\varepsilon_S/(\varepsilon_S+\lvert
 | 4.B.8 | Incidencia | Desarrollo (referencia del 4.º) | Todo lo anterior (sin depender del 3.A.16, al que remite), monopolio, oligopolio, capitalización y evidencia | — |
 | 4.B.13 / 4.B.20 | Quién soporta el IVA | Mención | Traslación según elasticidades; asimetría subidas/bajadas (Benzarti et al.) | Gráficos |
 | 4.A.11 | Vivienda | Mención | Con oferta inelástica a corto plazo, la deducción por vivienda se traslada al precio | — |
+| 3.B.38 | PAC | uso (hecho, 14/11/2026) | Capitalización de las ayudas en la tierra, `eq:capitalizacion`, con la fórmula para una subvención al comprador | — |
 
 ## Divergencias encontradas en el temario actual
 - **Error en 4.B.8 (casos extremos):** dice «demanda perfectamente elástica: porcentaje del impuesto que recaerá sobre los productores: 0 %»; es al revés: **productores 100 %**, consumidores 0 %. El anexo 1 del mismo tema lo da bien. **Corregir.**

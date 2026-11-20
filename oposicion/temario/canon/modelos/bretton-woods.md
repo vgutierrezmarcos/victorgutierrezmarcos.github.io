@@ -4,6 +4,7 @@
 - **Temas que lo usan:** 3.B.20 (desarrollo), 3.B.21 (hoy desarrollo duplicado → debe quedar en resumen), 3.B.22 (resumen: el FMI en 1944-1973), 3.B.33 y 3.B.34 (mención: OIC fallida y GATT), 3.B.35 (mención), 4.A.27 (mención: entrada de España en el FMI/BIRD en 1958 y paridad de 60 pta/$ en 1959), 3.B.43 (mención, SME como «Bretton Woods europeo»; sin fuente); 3.B.19 (mención; hecho, 12/11/2026: el plan de Keynes y el ajuste simétrico, y las paridades como reglas); 3.B.15 (mención; hecho, 12/11/2026: introducción, bandas del ±1 % y Acuerdo Smithsonian de diciembre de 1971 con ±2,25 % hasta marzo de 1973, `CEA1972ERP`, `\vertema{3.B.20}`; el lado del trilema con tipo fijo, política propia y controles; España en la paridad ajustable).
 - **Manuales de referencia:** Eichengreen, *Globalizing Capital* (caps. 3-4); Krugman-Obstfeld-Melitz, cap. «El sistema monetario internacional, 1870-1973»; Bordo y Eichengreen (eds.), *A Retrospective on the Bretton Woods System* (1993); Triffin (1960)
 - **Decisión D025 (13/10/2026):** ¿Cómo se reparte Bretton Woods, cuyo texto se repite en seis temas? Desarrollo solo en 3.B.20; en 3.B.21 un resumen de la ruptura (1971-1976); una frase con el pilar monetario en 3.B.22 y con el comercial en 3.B.33-3.B.34; nada en 3.B.35
+- **Al día (pasada final, noviembre de 2026):** reparto cerrado: el 3.B.20 acaba en la flotación de marzo de 1973 y el 3.B.21 empieza ahí. La devaluación de febrero de 1973 fue del **10 %** (42,22 $/onza), no del 11 % del Word del 3.B.20.
 
 ## Presentación de referencia
 Pregunta: cómo se organizó la cooperación económica internacional tras 1945 y por qué se rompió el sistema monetario en 1971-1973.
@@ -14,23 +15,24 @@ Pregunta: cómo se organizó la cooperación económica internacional tras 1945 
    - *Desarrollo / reconstrucción*: **BIRD**, hoy en el Grupo Banco Mundial [ver tema 3.B.30].
    - *Comercial*: la **OIC** (Carta de La Habana, 1948) no llega a nacer; queda el **GATT** (1947), origen de la **OMC** (1995) [ver temas 3.B.33 y 3.B.34].
 3. **Plan White frente a Plan Keynes**: paridades fijas y fondo de 5.000 M$ con condicionalidad (White) frente a Unión de Compensación con el *bancor* y ajuste simétrico (Keynes). Gana White.
-4. **Reglas**: paridades fijas pero ajustables frente al dólar (bandas de ±1 %), dólar convertible en oro a **35 $/onza** solo para bancos centrales; cambio de paridad solo ante «desequilibrio fundamental»; controles de capital permitidos.
+4. **Reglas**: paridades fijas pero ajustables frente al dólar (bandas de ±1 %), dólar convertible en oro a **35 $/onza** solo para bancos centrales; cambio de paridad solo ante «desequilibrio fundamental» (hasta un 10 % **acumulado sobre la paridad inicial** sin consulta previa al FMI); controles de capital permitidos.
 5. **Problemas**: ajuste (asimetría deficitarios/superavitarios), confianza y **liquidez → dilema de Triffin** [ficha `triffin`]; respuestas: Pool del oro (1961), AGP (1962), doble mercado del oro (1968), **DEG (1969)**.
-6. **Ruptura**: suspensión de la convertibilidad (15 ago. 1971) → Acuerdos del Smithsonian (dic. 1971: 38 $/onza, bandas ±2,25 %) → flotación generalizada (marzo 1973) → Acuerdos de Jamaica (enero 1976; Segunda Enmienda en vigor en 1978).
+6. **Ruptura**: suspensión de la convertibilidad (15 ago. 1971) → Acuerdos del Smithsonian (dic. 1971: 38 $/onza, bandas ±2,25 %) → segunda devaluación del dólar (febrero de 1973, un 10 %: 42,22 $/onza) → flotación generalizada (marzo 1973) → Acuerdos de Jamaica (enero 1976; Segunda Enmienda en vigor en 1978).
 
-Gráfico de referencia: cronograma 1944-1976 (no hace falta gráfico analítico; si se pone uno, es el del dilema de Triffin: pasivos exteriores en dólares frente a reservas de oro de EE. UU., cruce hacia 1960).
+Gráfico de referencia: `fuentes/3B20/graficos/cronologia-sei.tex` (`figu:cronologia`, figura, 1815-1973; sustituye al cronograma 1944-1976 propuesto). El analítico es el del dilema de Triffin (`fuentes/3B20/graficos/triffin.tex`, ficha `triffin`).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.20 | Funcionamiento del SEI hasta 1973 | Desarrollo | Puntos 1-6 completos, con los tres planos (comercial, financiero, monetario) | — |
-| 3.B.21 | El SEI desde 1973 | Resumen (5-6 líneas) | Solo el punto 6 (ruptura, Smithsonian, Jamaica) como punto de partida del «no sistema» | Los acuerdos de 1944 y Triffin (remitir a 3.B.20) |
-| 3.B.22 | FMI | Resumen | Papel del FMI en 1944-1973 (supervisión de paridades, préstamos) | Los tres pilares completos |
+| 3.B.20 | Funcionamiento del SEI hasta 1973 | desarrollo (hecho, 13/11/2026) | III (`sec:bretton`): puntos 1-6, `tab:white-keynes`, los 3 pilares con la redacción canónica, el 10 % acumulado, las 3 asimetrías, los factores que lo sostuvieron y la ruptura **hasta marzo de 1973**; Jamaica (1976) y el Comité de los 20 solo en una viñeta de epílogo con `\vertema{3.B.21}` | — |
+| 3.B.21 | El SEI desde 1973 | resumen (hecho, 13/11/2026) | I.1: la ruptura en 4 pasos (1971-1976) con `fig:trilema-ruptura`; los acuerdos de 1944 en una frase con `\vertema{3.B.20}`; «pilares» para las instituciones de 1944 y «planos» para el SEI | Los acuerdos de 1944 y Triffin |
+| 3.B.22 | FMI | resumen (hecho, 13/11/2026) | I.1.1: el FMI en Bretton Woods | Los tres pilares completos |
 | 3.B.33 / 3.B.34 | OMC y GATT | Mención | Solo el pilar comercial: OIC fallida → GATT 1947 → OMC 1995 | El pilar monetario y el de desarrollo |
 | 3.B.35 | Integración no comunitaria | Mención (1 línea) o nada | Multilateralismo de posguerra como contexto del art. XXIV | El párrafo de los tres pilares |
 | 4.A.27 | España 1959-1999 | Mención | España entra en FMI y BIRD (1958) y OECE (1959); paridad de 60 pta/$ | — |
 | 3.B.19 | Coordinación internacional | mención (hecho, 12/11/2026) | II.1: el **ajuste simétrico** que propuso Keynes (Unión de Compensación que cobraba también a los acreedores, `Keynes1943Proposals`; ganó White) como origen del debate superávit-déficit, `\vertema{3.B.20}`; II.3: las paridades de Bretton Woods como coordinación con **reglas** | Los acuerdos y su ruptura |
 | 3.B.15 | Regímenes cambiarios | mención (hecho, 12/11/2026) | Introducción: tipos fijos pero ajustables frente al dólar, bandas del ±1 %, Smithsonian (diciembre de 1971) con ±2,25 % y flotación de las grandes monedas en marzo de 1973 (`CEA1972ERP`); en el trilema, el lado del tipo fijo con política propia y controles (ficha `trilema`); `\vertema{3.B.20}` | El sistema |
+| 3.B.30 | Banco Mundial y bancos regionales | mención (hecho, 14/11/2026) | Los 3 pilares con la forma canónica | — |
 
 ## Divergencias encontradas en el temario actual
 

@@ -6,7 +6,7 @@
 - **Decisión D050 (13/10/2026):** ¿Qué versión de Barro (1990) es la de referencia? La de optimización (θ, ρ), como AK y Uzawa-Lucas; la de ahorro exógeno solo como simplificación
 - **Decisión D053 (13/10/2026):** ¿Cuál es el tema de referencia de Barro (1990)? 3.A.38 (efectos de la política fiscal sobre el crecimiento), escribiéndolo con ecuaciones
 
-## Presentación de referencia (versión con optimización; escrita en el 3.A.44, I.2.3 y anexo A)
+## Presentación de referencia (desde la 4.ª tanda, 11/11/2026, **versión con ahorro constante y $n$ en el cuerpo** del 3.A.44 y, en la 9.ª, del 3.A.38; la versión con optimización, abajo, es la de Ramsey `eq:barro-ramsey`, en anexo)
 **Pregunta:** ¿puede el gasto público productivo generar crecimiento sostenido y qué tamaño del Estado lo maximiza? Dilema: el gasto productivo hace más productivo el capital privado, pero se financia con impuestos que reducen el rendimiento de invertir.
 
 **Supuestos:** $Y_t=A\,K_t^{\alpha}G_t^{1-\alpha}$ (rendimientos constantes en K y G juntos, decrecientes en cada uno), **población constante normalizada a 1** (los agregados son también por trabajador; A44-04; en la versión con ahorro constante puede llevar $n$), $G$ un **flujo** de servicios públicos que todas las empresas usan a la vez y toman como dado; impuesto proporcional sobre la renta τ con presupuesto equilibrado $G_t=\tau Y_t$ (`\vertema{3.A.39}`); hogares de Ramsey con CRRA (θ) y descuento ρ.
@@ -43,5 +43,11 @@ con la comprobación de que es un máximo (anexo A del 3.A.44): el tipo óptimo 
 - **Clave de Baxter y King (1993)**: el 3.A.44 cita `BaxterKing1993` (l. 402) y el 3.A.38, el 3.A.6, el 3.A.39, el 3.A.40 y el 3.A.42, `BaxterKing1993Fiscal` (`pendientes-coherencia.md`, Pendiente del 3.A.38).
 - 4.B.1 y 4.B.5 lo presentan con **ahorro exógeno s** y son copia literal entre sí (mismas ecuaciones y gráfico): resumir con la versión de referencia y no duplicar.
 - g = gasto público por trabajador choca con g = progreso técnico (3.A.43): escribir **G** (con población normalizada) o G/L con definición explícita.
+
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **Presentación de referencia (3.A.44, 4.ª tanda, 11/11/2026):** ahorro constante con población que crece a $n$: `eq:barro`
+$$\gamma=s(1-\tau)A^{1/\alpha}\tau^{(1-\alpha)/\alpha}-(n+\delta),\qquad \tau^*=1-\alpha;$$
+Ramsey (`eq:barro-ramsey`, con hogares) y el planificador, en anexo. Antes, con hogares y $L=1$ en el cuerpo.
+- **3.A.38 (9.ª tanda, 13/11/2026):** desarrolla el modelo igual que el 3.A.44 (ahorro constante en el cuerpo, `eq:barro`; Ramsey en `eq:barro-ramsey`; planificador en anexo) y usa los gráficos `barro-paso1` y `barro` del 3.A.44.
 
 Autor: Víctor Gutiérrez Marcos

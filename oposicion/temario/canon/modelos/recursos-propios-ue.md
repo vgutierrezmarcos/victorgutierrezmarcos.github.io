@@ -3,6 +3,7 @@
 - **Área:** union-europea · **Tema de referencia:** 3.B.37 (finanzas de la UE) — lo desarrolla y lo tiene en el título
 - **Temas que lo usan:** 3.B.37 (desarrollo), 4.B.18 (resumen: armonización fiscal, IVA y aduanas), 4.A.30 (resumen previsto: aportación de España), 3.B.41 (mención: derechos de aduana), 3.B.31 (mención; hecho, 31/10/2026: la Comisión propone que el 75 % de los ingresos del MAFC vaya al presupuesto de la UE como nuevo recurso propio desde 2028, unos 1.400 M€ al año, `EY2025RecursosPropios`, con `\vertema{3.B.37}`)
 - **Manuales de referencia:** Decisión (UE, Euratom) 2020/2053; Comisión Europea, *EU budget financial report*; Tribunal de Cuentas Europeo; Baldwin y Wyplosz
+- **Al día (pasada final, noviembre de 2026):** a noviembre de 2026, ningún nuevo recurso propio aprobado; paquete de 2025 con 5 recursos y 58.500 M€ al año; propuesta de bajar la retención de los RPT al 10 % y techo al 1,75 % de la RNB. Gráfico de referencia: `fuentes/3B37/graficos/ingresos-composicion.tex`.
 
 ## Presentación de referencia
 Base: art. 311 TFUE (unanimidad del Consejo y ratificación nacional). Decisión vigente: **2020/2053** (en vigor desde 1-6-2021, con efectos desde 1-1-2021).
@@ -16,7 +17,7 @@ Sin ecuaciones; gráfico de referencia: estructura de ingresos del presupuesto (
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.37 | Finanzas de la UE | Desarrollo | Todo lo anterior y la evolución desde 1970 (contribuciones → recursos propios) | — |
+| 3.B.37 | Finanzas de la UE | desarrollo (hecho, 14/11/2026) | Todo lo anterior y la evolución desde 1970 | — |
 | 4.B.18 | Armonización fiscal en la UE | Resumen | IVA y aduanas como recursos propios | Techos y correcciones |
 | 4.A.30 | Flujos financieros España-UE | Resumen | Aportación de España por recurso y saldo | Diseño del sistema |
 | 3.B.41 | Política comercial | Mención | El arancel exterior común como recurso propio tradicional | — |

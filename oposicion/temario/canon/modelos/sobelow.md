@@ -37,4 +37,7 @@ La curva de ahorro decrece con $k$ y tiende a la asíntota $sA$: si $sA>n+\delta
 - 3.A.44 (Word): CES con el exponente del límite invertido ($\alpha^{(\sigma-1)/\sigma}$), φ suelta, «fue inicialmente por Kurz (1968)», gráficos sin título, el Sobelow al final del bloque (cortaba el paso de Uzawa-Lucas a la 2.ª generación). **Resuelto** (1/11/2026): orden $AK$ → Sobelow → Barro → externalidades → Uzawa-Lucas (DK2).
 - Test de junio de 2024: fecha el Sobelow en 1991 (es 1990) (A44-12; para Víctor).
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **Kurz (1968)** es el artículo de la *RES* 35(2): 155-174; no decir que «la propuso por primera vez». **Orden del bloque** en el 3.A.44: AK, Barro, externalidades, Uzawa-Lucas, Sobelow.
+
 Autor: Víctor Gutiérrez Marcos

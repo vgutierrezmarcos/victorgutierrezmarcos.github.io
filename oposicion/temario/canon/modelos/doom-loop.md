@@ -20,7 +20,7 @@ Mecanismo en dos sentidos: (1) bancos → soberano: pérdidas bancarias → resc
 | 4.A.18 | Crisis financiera española | Desarrollo (referencia del 4.º) | Mecanismo resumido y aplicado a 2010-2012 y salida (MoU, Unión Bancaria); «[ver tema 3.B.26]» | — |
 | 4.A.20 | Financiación no bancaria | Mención | Como argumento para diversificar la financiación | El mecanismo completo |
 | 4.A.28 | España 1999-2019 | Mención | — | — |
-| 3.B.44 | Unión Bancaria | Mención | Objetivo de romper el círculo | — |
+| 3.B.44 | Unión Bancaria | variante en forma reducida (hecho, 14/11/2026) | 2 rectas $s=s_0+\alpha L$, $L=L_0+\beta s$, equilibrio `eq:bucle` con el multiplicador $1/(1-\alpha\beta)$, gráfico `bucle-banco-soberano.tex`; el mecanismo, con remisión al 3.B.26 | El mecanismo completo |
 | 3.B.16 | Problemas de una unión monetaria incompleta | resumen (hecho, 11/11/2026) | El círculo como 1.er problema de una unión sin unión bancaria ni fiscal, tras la fragilidad de De Grauwe (2011): 5 pasos (perturbación de solvencia → deuda en los bancos nacionales → pérdidas en sus balances → recapitalización por el Estado → más deuda) y los 2 sentidos, con la economía real que lo empeora; **gráfico `fuentes/3B16/graficos/circulo-vicioso.tex`** (bancos ↔ Estado ↔ economía real; primer `.tex` del diagrama de esta ficha: **gráfico de referencia, confirmado al revisar el 3.B.26, [decidir]**; está a 0,6 del ancho, con letra de unos 5 pt: ponerlo a todo el ancho, como el 3.B.26 (`pendientes-coherencia.md`, «Pendiente del 3.B.26»)); `\vertema{3.B.26}`; solución, la unión bancaria (`\vertema{3.B.44}`) | El caso español de 2010-2012 |
 
 ## Divergencias encontradas en el temario actual

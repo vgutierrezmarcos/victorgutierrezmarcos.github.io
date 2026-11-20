@@ -65,3 +65,7 @@ No hace falta convexidad ni ninguna condición sobre los rendimientos: esas aseg
 - **3.A.21, anexo C**: 4 supuestos en otro orden (preferencias, poder de mercado, mercados completos, precios comunes) y sin la información perfecta; II.2 los da en el orden del 3.A.22 pero también sin la 5.ª. Matiz opcional en `pendientes-coherencia.md`.
 - 3.A.24: resuelto en su revisión (22/10/2026): Pareto en 5 viñetas y anexo de recordatorio con `\vertema{3.A.22}`; erratas («Primer Teorema del Fundamental») corregidas; su anexo de bloque ya no se atribuye el 2TFEB.
 - Resueltas: 3.A.23 con «seis supuestos», $|\mathrm{RMS}|$, $w$, $r$ y el desarrollo entero (21/10/2026); 3.A.22 con los teoremas solo mencionados, «2×2×2», μ negativo y $\mathrm{RMT}=-\mathrm{CMg}_X/\mathrm{CMg}_Y$ (21/10/2026); 3.A.21 original con el desarrollo entero (14/10/2026); `mapa.yaml` con los papeles al revés (14/10/2026).
+
+## Puesta al día de la pasada final (noviembre de 2026)
+- **Historia (3.A.3, III.3, con Fonseca, «The Paretian Revival»):** Pareto y Barone los sugieren; la exposición gráfica es de **Lerner (1934)** y las demostraciones de **Lange (1942)** y **Allais (1943)**; Arrow y Debreu (1954), con análisis convexo. El 3.A.22 (`Lerner1934Economic`, `Lange1942Foundations`) es coherente; Allais (1943) puede añadirse si se toca (opcional).
+- **Fechas de la nueva economía del bienestar**, las mismas en el 3.A.3, el 3.A.22 y el 3.A.24 (comprobado el 21/11/2026): Kaldor (1939), Hicks (1939), Bergson (1938), Samuelson (1947), Arrow (1951).

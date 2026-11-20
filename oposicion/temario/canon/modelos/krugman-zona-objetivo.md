@@ -35,7 +35,7 @@ con $m_t$ la oferta monetaria, **$v_t$ perturbación de la demanda de dinero** (
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.15 | Regímenes cambiarios | desarrollo (referencia; hecho, 12/11/2026) | II.1.3 a)-e) con `eq:zona-objetivo`, `fig:zona-objetivo`, luna de miel y divorcio, el SME y la peseta; anexo B con la solución | — |
-| 3.B.43 | El euro y el SME | mención (prevista) | Las bandas del SME (±2,25 %, ±6 %, ±15 % desde agosto de 1993) y por qué una banda creíble estabiliza sola, `\vertema{3.B.15}`; las fechas y fuentes del 3.B.16 y el 3.B.17 | El modelo |
+| 3.B.43 | El euro y el SME | no se usa (hecho, 14/11/2026) | Las bandas del SME (±2,25 %, ±6 %, ±15 % desde agosto de 1993) sin el modelo | El modelo |
 | 3.B.21 | El SEI desde 1973 | mención (posible) | El SME como sistema de bandas | El modelo |
 
 ## Divergencias encontradas en el temario actual

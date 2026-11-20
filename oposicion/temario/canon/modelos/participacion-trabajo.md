@@ -39,4 +39,7 @@ $$\alpha=r\,v,\qquad v\;\to\;\frac{s}{\gamma_Y}\qquad(\texttt{eq:piketty})$$
 - Claves bibliográficas distintas para las mismas obras: `KarabarbounisNeiman2014Global` y `AMECO2026WageShare` (3.A.11) frente a `KarabarbounisNeiman2014` y `CE2026AMECO` (3.A.43, 3.A.45); `AutorEtAl2020Fall`, `DeLoeckerEeckhoutUnger2020Rise`, `Philippon2019Great` (3.A.15 y otros de micro) frente a `AutorEtAl2020Superstar`, `DeLoeckerEeckhoutUnger2020`, `Philippon2019` (3.A.45). Sin efecto en el texto: unificar cuando haya `.bib` común.
 - 3.A.11 (anexo de Cambridge, l. 1309) escribe $r=\partial Y/\partial K$ como alquiler; en el canon macro el alquiler es $c_K$ (o $r+\delta$) y $r$ el tipo neto. Nota opcional si se toca.
 
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **Coste de uso en el reparto (3.A.45, 4.ª tanda, 11/11/2026):** el 3.A.45 escribe **$r$** (no $c_K$) en el reparto ($Y=rK+wL$, $\alpha=rK/Y$, `eq:euler-reparto`) y en el dual de Hsieh ($\gamma_r$, `eq:dual`), y su recuadro de notación lo define como **tipo real más depreciación con el precio del capital constante**. Choque con «$r$ tipo neto» del 3.A.43 ($r+\delta=f'(k)$): se decide con el tema de referencia (el 3.A.45 lo es de esta pieza) a favor de su forma, como **uso local avisado en el recuadro**; el $c_K$ de Jorgenson sigue en el 3.A.34 (con $P^K$ variable). Donde esta ficha escribe $c_K$ para el reparto, léase $r$ en el 3.A.45 (`notacion.md` § 7).
+
 Autor: Víctor Gutiérrez Marcos

@@ -15,6 +15,7 @@ Teoría que lo justifica: Viner (creación y desviación de comercio) [ficha `vi
 | 3.B.41 | Política comercial autónoma | Desarrollo | AAC, NC, regímenes, reforma aduanera | — |
 | 4.B.18 | Armonización fiscal | Resumen | Derechos de aduana como tributo armonizado | Regímenes |
 | 3.B.37 | Finanzas | Mención | 75 %/25 % | — |
+| 3.B.38 | PAC | mención (hecho, 14/11/2026) | Protección en frontera de los productos agrarios | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.41 titula el bloque I «CARACTERZACIÓN» (errata). Sin otras divergencias de contenido.

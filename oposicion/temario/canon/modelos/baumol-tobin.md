@@ -1,7 +1,7 @@
 # Modelo de inventarios de la demanda de dinero (Baumol 1952, Tobin 1956), Miller-Orr (1966) y el motivo precaución de Whalen (1966)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.35** (teorías de la demanda de dinero; revisado el 5/11/2026: II.1.1 «El motivo transacción», a)-e) con `\funcionclave` `eq:baumol-tobin`, el ejemplo de Lucía y Miller-Orr como extensión c); «El motivo precaución: Whalen (1966)», a)-c)) — es una teoría del motivo transacción.
-- **Temas que lo usan:** 3.A.35 (desarrollo; hecho, 5/11/2026), 3.B.2 (desarrollo: gestión de tesorería; dudoso, ver Divergencias), 3.A.29 (mención; hecho, 1/11/2026: l. 38, la demanda de dinero microfundamentada «Baumol, Tobin» con `\vertema{3.A.35}`).
+- **Temas que lo usan:** 3.A.35 (desarrollo; hecho, 5/11/2026), 3.B.2 (resumen aplicado: gestión de tesorería; hecho, 8/11/2026), 3.A.29 (mención; hecho, 1/11/2026: l. 38, la demanda de dinero microfundamentada «Baumol, Tobin» con `\vertema{3.A.35}`).
 - **Manuales de referencia:** Baumol (1952), *QJE*; Tobin (1956), *REStat*; Miller y Orr (1966), *QJE*; Whalen (1966), *QJE*; Goldman (1974); Walsh (2017), cap. 3; Romer (2019); Brealey, Myers y Allen (tesorería); Ball (2001); Benati, Lucas, Nicolini y Weber (2021).
 
 ## Presentación de referencia
@@ -43,12 +43,12 @@ beneficio marginal $2b\sigma^2/M^3$ decreciente frente al coste $i$; elasticidad
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.35 | Demanda de dinero (motivo transacción y precaución) | desarrollo (hecho, 5/11/2026) | a)-e) con `eq:baumol-tobin`, homogeneidad, esquina, velocidad endógena, suela de zapato, Lucía, evidencia; Miller-Orr como extensión; Whalen aparte (motivo precaución) | — |
-| 3.B.2 | Gestión de la tesorería de la empresa | desarrollo (aplicación; dudoso) | Mismo modelo como saldo óptimo de tesorería (Baumol) y Miller-Orr con la regla de banda, con las mismas letras ($M^{\mathrm{inf}}$, $M^{\mathrm{ret}}$, $M^{\mathrm{sup}}$, $z^*$) y `\vertema{3.A.35}` | Las implicaciones macro (LM, velocidad) |
+| 3.B.2 | Gestión de la tesorería de la empresa | resumen aplicado (hecho, 8/11/2026) | La misma presentación que el 3.A.35 aplicada a la tesorería de la empresa ($Y$ pagos del periodo; economías de escala y *cash pooling*); Miller-Orr con la banda y las mismas letras ($M^{\mathrm{inf}}$, $M^{\mathrm{ret}}$, $M^{\mathrm{sup}}$, $z^*$); la fórmula de Wilson para existencias, $Q^*=\sqrt{2bY/c_a}$, como el mismo modelo; $M^D$ (nunca $\bar M^D$); gráficos `fuentes/3A35/graficos/baumol-tobin.tex` y `miller-orr.tex`; `\vertema{3.A.35}` | Las implicaciones macro (LM, velocidad) |
 | 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026) | La demanda de dinero microfundamentada, `\vertema{3.A.35}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 
 - **Resuelto en el 3.A.35** (5/11/2026): el Word escribía $M$ «saldos reales» con $Y$ y $b$ nominales, tomaba $M$ por la demanda, hablaba de «elasticidad elevada al tipo» y atribuía a Baumol y Tobin la flexibilización del sistema financiero; Miller-Orr con «el ingreso sigue un paseo aleatorio» y «límites arbitrarios»; Whalen con «efecto de la renta incierto».
-- **3.B.2 (sin revisar):** el título vigente («La empresa y las decisiones de inversión…») no nombra la tesorería; el inventario la marcaba «dudosa». Lo decide su revisión (¿mención o desarrollo?); si la cuenta, con estas letras y `\vertema{3.A.35}`. La remisión del 3.A.35 al 3.B.2 se mantiene (su Word trae Wilson y Tobin).
+- **Resuelto en el 3.B.2 (8/11/2026):** resumen aplicado de la tesorería con Wilson. Antes: **3.B.2 (sin revisar):** el título vigente («La empresa y las decisiones de inversión…») no nombra la tesorería; el inventario la marcaba «dudosa». Lo decide su revisión (¿mención o desarrollo?); si la cuenta, con estas letras y `\vertema{3.A.35}`. La remisión del 3.A.35 al 3.B.2 se mantiene (su Word trae Wilson y Tobin).
 
 Autor: Víctor Gutiérrez Marcos

@@ -26,7 +26,7 @@ con $\overline A$ el gasto autónomo. **3 regímenes** (no 4): **paro keynesiano
 **Gráficos de referencia** (`oposicion/temario/fuentes/3A04/graficos/`):
 - `malinvaud-regimenes.tex` (**imprescindible**): plano de **salario y precio nominales $(W,P)$** (no $(w,p)$: $w$ es el salario real, § 6), con $M$ dada (Tsoulfidis, 2010); equilibrio walrasiano en $(5{,}5;\,6)$; **frontera K-I horizontal** (con $\overline A$, $M$ y $\overline L$ dados y el consumo sin depender del salario real, un solo $P$ con el que la demanda absorbe $F(\overline L)$), frontera C-I sobre el rayo del salario real walrasiano $W/P=w^c$, frontera K-C creciente y más plana que el rayo; K arriba, C abajo a la derecha, I abajo a la izquierda. En el cante, en la pizarra con las 3 regiones K, C, I.
 - `clower-decision-dual.tex`: un hogar y un bien, $C=F(L)=4\sqrt L$, $w=1$, equilibrio walrasiano $E=(4,8)$; racionado en $\overline L=1$, $C^{\mathrm{ef}}=4<C^{\mathrm{noc}}=8$.
-- Patinkin y el pasillo de Leijonhufvud, sin gráfico.
+- `patinkin-desequilibrio.tex` (Patinkin, 3.A.4 desde el 9/11/2026) y `desequilibrio-racionamiento.tex` (Barro y Grossman): **gráficos de referencia** de estos 2 modelos si el 3.A.5 o el 3.A.7 los usan (hoy solo el 3.A.4). El pasillo de Leijonhufvud, sin gráfico.
 
 **Tablas de referencia:** `tab:malinvaud` (régimen × bienes × trabajo × política, con el subconsumo en fila dorada aparte) y `tab:herederos` (Keynes, síntesis, postkeynesianos y desequilibrio).
 
@@ -50,5 +50,8 @@ con $\overline A$ el gasto autónomo. **3 regímenes** (no 4): **paro keynesiano
 - **Resuelto en el 3.A.4 (4/11/2026)**: el bloque estaba en el Word del 3.A.5 (epígrafe IV, ≈ 3.500 palabras, imágenes 1-4, notas 12-21) y solo mencionado en el 3.A.4 (D031): trasladado y completado; «postkeynesianos de Cambridge en los años 40»; «todos suponen precios fijos»; «Unidad de Chicago» y Patinkin (1951); punto G con exceso de oferta «de trabajo» (es de bienes); faltaban las 2 leyes de Walras; «Clower (1965 y 1967)» para la decisión dual; Leijonhufvud con «4 temas» sin lista; Malinvaud con «2 estados» y 4 en la tabla, «(1970s)»; inflación reprimida como «salarios artificialmente bajos»; «Second Thought». La cita de Clower «reduce al corto plazo una teoría que resulta revolucionaria…», no encontrada: en paráfrasis sin comillas en su valoración.
 - **Canon interno resuelto (4/11/2026)**: esta ficha (antes `malinvaud`) ponía el gráfico de referencia en el plano $(w,p)$ con la demanda efectiva $C(\overline w\overline L+\overline W)$, contra § 6 ($w$ salario real, $W$ nominal) y § 1 ($\overline W$ es la riqueza): pasa a $(W,P)$ nominales con $C^{\mathrm{ef}}=C(w\,\overline L)$; la ficha `patinkin` decía «resumen» para el 3.A.4 y el mapa «desarrollo»: desarrollo en el documento y resumen en el cante.
 - **3.A.5 y 3.A.7**: «neokeynesianos del desequilibrio» → «keynesianos del desequilibrio» (`pendientes-coherencia.md`): **hecho** en los 2 (3.A.5, commit 9a3076f2; 3.A.7, en su revisión del 4/11/2026, l. 107 y 865).
+
+## Puesta al día de la pasada final (noviembre de 2026)
+- **Hojas de esquema por mercado del 3.A.4** (`hoja-trabajo`, `hoja-bienes`, `hoja-dinero`): el azul `tceeazul` marca los conceptos de Keynes, como `tab:supuestos`. Si el 3.A.5 (síntesis) repite el formato, mismo color (convención de color, no de notación).
 
 Autor: Víctor Gutiérrez Marcos

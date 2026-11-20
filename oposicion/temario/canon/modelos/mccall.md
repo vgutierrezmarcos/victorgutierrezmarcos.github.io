@@ -25,11 +25,14 @@ $$w^R-z=\frac{\beta}{1-\beta}\int_{w^R}^{\infty}(w-w^R)\,dF(w).$$
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.26 | Desempleo friccional | desarrollo breve (hecho, 31/10/2026) | Stigler y McCall con `eq:salario-reserva` y `mccall.tex`; paradoja de Diamond como puente; extensiones en el anexo A | — |
+| 3.A.26 | Desempleo friccional | desarrollo breve (hecho, 31/10/2026) | Stigler y McCall con `eq:salario-reserva` y `mccall.tex`; desde el 9/11/2026 la paradoja de Diamond (y la de Rothschild) va dentro de las implicaciones y **las extensiones son las salidas a la paradoja**, en el cuerpo (heterogeneidad, entornos no estacionarios, número aleatorio de ofertas, búsqueda desde el empleo, impaciencia, Blau con `blau.tex` y, la última, búsqueda y emparejamiento, que da paso al bloque II); el anexo A conserva la derivación de $w^R$, la elegibilidad, la participación, la búsqueda desde el empleo y la intensidad | — |
 | 4.A.16 | Mercado de trabajo en España | mención | Prestaciones, salario de reserva y duración del paro (sube con $z$; con la prestación que se agota, $w^R$ baja con la duración), con `\vertema{3.A.26}` solo para ampliar | La ecuación y el gráfico |
 | 3.A.28 | Tasa natural de paro | mención (hecho, 31/10/2026) | El paro de búsqueda (Phelps, 1970; McCall) como parte friccional de la tasa natural, de palabra, con remisión | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.26 original: $U$ para el valor del paro, $W=w/(1-\beta)$, $w_R$, unas 2.550 palabras en el bloque I y la elegibilidad con el signo equivocado («un aumento de la prestación disminuirá la tasa de desempleo»); Blau con α y β. **Resuelto** en la revisión (31/10/2026): $V_{\mathrm U}$, $V_{\mathrm E}(w)$, $w^R$, bloque I en 5′, Mortensen (1977) con efecto ambiguo, letras locales $a$, $b$.
+
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.26 (9/11/2026):** bloque I de **5′30″** (McCall 4′30″, Stigler el resto); la paradoja de Diamond va en las implicaciones (d) y las extensiones (c) son sus salidas (ver la fila del 3.A.26).
 
 Autor: Víctor Gutiérrez Marcos

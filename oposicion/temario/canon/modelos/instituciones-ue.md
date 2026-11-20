@@ -4,6 +4,7 @@
 - **Temas que lo usan:** 3.B.36 (desarrollo), 3.B.37 (mención: procedimiento presupuestario, art. 314 TFUE), 3.B.41 (mención: art. 207 y 218 TFUE), 3.B.42 (mención: AR/VP y SEAE), 3.B.43 (BCE y SEBC, desarrollo previsto), 3.B.45 (Eurogrupo, previsto), 4.A.18-4.A.20 (BCE/MUS)
 - **Manuales de referencia:** TUE y TFUE; Mangas y Liñán, *Instituciones y Derecho de la Unión Europea*; Baldwin y Wyplosz, cap. 2
 - **Decisión D024 (13/10/2026):** ¿Se citan los nombres de los titulares de cargos en los temas? Solo los imprescindibles, fechados con la tabla de la ficha `instituciones-ue`
+- **Al día (pasada final, noviembre de 2026):** cargos a 14/11/2026: Vujčić, vicepresidente del BCE desde el 1/6/2026; Pierrakakis, presidente del Eurogrupo desde el 12/12/2025 (y de la Junta de Gobernadores del MEDE); Fiscalía Europea con Andrés Ritter desde el 1/11/2026 (tras Kövesi), 25 Estados con Hungría (julio de 2026); presidencias del Consejo de 2026, Chipre e Irlanda. Lagarde deja el BCE el 7/2/2027 (anuncio del 29/10/2026) y Schnabel se va al FMI el 3/1/2027 (3.B.43). Las divergencias anotadas (Schumann, 705 escaños, Michel, Borrell, Donohoe) quedan **resueltas en el 3.B.36**.
 
 ## Presentación de referencia
 Siete instituciones (art. 13 TUE): Parlamento Europeo, Consejo Europeo, Consejo, Comisión, TJUE, BCE, Tribunal de Cuentas. Órganos y organismos: BEI, CES, CdR, SEAE; el Eurogrupo es informal (Protocolo 14); el MEDE es intergubernamental [ficha `mede`].
@@ -30,7 +31,7 @@ Criterio común: en los temas no se dan nombres salvo cuando aportan (el canon g
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.36 | Instituciones | Desarrollo | Composición, funciones, procedimientos | — |
+| 3.B.36 | Instituciones | desarrollo (hecho, 14/11/2026) | Composición, funciones, procedimientos; poder de voto en el Consejo (ficha `poder-voto-consejo`) | — |
 | 3.B.43 | SEBC | Desarrollo del BCE | Objetivos, órganos e instrumentos | Resto de instituciones |
 | 3.B.41 / 3.B.42 | Política comercial / exterior | Mención | Papel de cada institución en los acuerdos y la acción exterior | Composición |
 

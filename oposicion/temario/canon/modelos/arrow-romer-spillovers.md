@@ -35,12 +35,17 @@ $$\gamma^{\mathrm E}=\frac{\alpha A-\delta-\rho}{\theta}\quad<\quad\gamma^{\math
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.44 | Rendimientos crecientes con competencia | desarrollo (hecho, 1/11/2026) | Lo de arriba; con E = k la principal y E = K para el efecto escala | — |
-| 3.B.9 | Comercio y crecimiento | resumen | Con el nombre de Arrow y Romer (no «Lucas»), la misma `eq:externalidad` con E y η, y lo que añade la apertura (el conocimiento se desborda entre países); si usa β para la externalidad de la apertura, decir que no es el factor de descuento | La derivación de los 3 casos `\vertema{3.A.44}` |
+| 3.B.9 | Comercio y crecimiento | resumen (hecho, 5/11/2026) | `eq:externalidad-apertura` $y=A[(X+M)/Y]^{\eta}k^{\alpha+\eta}$ con el **grado de apertura $(X+M)/Y$ sin símbolo** (β es coeficiente de regresión y factor de descuento); «a mayor apertura, mayor tasa» solo con α + η = 1 (con α + η < 1 sube el nivel); gráfico `externalidades-apertura.tex` (adaptado de `3A44/graficos/externalidades.tex`); viñeta de Lucas (1988, 1993) | La derivación cerrada |
 | 3.A.38 | Política fiscal y crecimiento | no lo usa (revisado, 5/11/2026) | — (la lectura de Barro como desbordamiento queda en el 3.A.44) | — |
 | 3.A.43 | Valoración del RCK | mención (hecho, 31/10/2026) | Con externalidades del capital, el mercado invierte de menos | El modelo `\vertema{3.A.44}` |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.44 (Word) y 3.B.9: lo atribuían a **Lucas (1988)** («Modelo de Lucas de externalidades del capital»). En el 3.A.44, **resuelto** (1/11/2026); en el 3.B.9, pendiente (sin revisar), y el inventario le asignaba el id `uzawa-lucas` (alias `lucas-spillovers`, que pasa aquí).
 - 3.A.44 (Word): «la tesis de Romer (1986)» (la tesis es de 1983; el artículo, de 1986), «si E = 0, Cobb-Douglas» (es con η = 0), ejemplo de los aviones «tras la Segunda Guerra Mundial» (la curva es de Wright, 1936), $Q=K/L$ y $E_t^{\eta}$ con E sin definir. **Resuelto**.
+- 3.B.9: el «modelo de Lucas de externalidades» **resuelto** (5/11/2026): Arrow y Romer, con $(X+M)/Y$ sin símbolo.
+
+## Puesta al día de la pasada final (noviembre de 2026; manda sobre lo anterior)
+- **3.A.44 (4.ª tanda, 11/11/2026):** el cuerpo cuenta **Romer (1986), con $E=K$** y $L$ constante: $y=AL^{\eta}k^{\alpha+\eta}$ y rendimiento privado $r=\alpha AL^{1-\alpha}-\delta$ (efecto escala); la variante $E=k$ se llama **«Lucas (1988) de externalidades»**, como en el test (solo ese nombre; la externalidad del capital humano medio sigue siendo la de Uzawa-Lucas).
+- **3.B.9**: escribe el grado de apertura $(X+M)/Y$ sin símbolo (no β).
 
 Autor: Víctor Gutiérrez Marcos

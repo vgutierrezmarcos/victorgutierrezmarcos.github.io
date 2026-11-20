@@ -28,6 +28,7 @@
 | 3.A.16, 3.A.21, 3.A.22, 3.A.23 | Competencia; equilibrio general; bienestar; fallos | mención (hechos) | El precio natural; la mano invisible formalizada por el 1TFEB y la estabilidad | Las 3 apariciones (basta la remisión) |
 | 3.A.43, 3.A.44, 3.A.45 | Crecimiento | mención (hechos) | La división del trabajo limitada por la extensión del mercado; Young (1928) | — |
 | 3.B.28 | Desarrollo | mención (hecho, 3/11/2026) | La pregunta fundacional | — |
+| 3.B.5 | Teoría clásica del comercio | mención (hecho, 10/11/2026) | La ventaja absoluta (I.1 `sec:smith`) con la máxima del padre de familia prudente (libro IV, cap. II), con la forma del 3.A.2 | La mano invisible |
 
 ## Divergencias encontradas en el temario actual
 

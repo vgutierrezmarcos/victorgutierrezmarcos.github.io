@@ -34,9 +34,9 @@ Cada foro con la misma plantilla: **qué es, origen, miembros, cómo funciona (�
 |---|---|---|---|---|
 | 3.B.19 | Coordinación internacional de políticas | desarrollo (referencia, D119; hecho, 12/11/2026) | III.2 con la plantilla de arriba para el G-20, la OCDE y los otros foros; la escalera (III.1); las cifras y claves de arriba; Londres, Pittsburgh y Toronto también en II.1 (`tab:cronologia`) | — |
 | 3.B.35 | Integración no comunitaria | nada o mención (sin revisar) | Quitar la sección IV y remitir al 3.B.19; no copiar sus errores («90 % del PIB», «duplicar los recursos del FMI», «18 países», Turquía 2 veces, «G-8» con Rusia, Wikipedia) | Todo el bloque OCDE/G-20 |
-| 3.B.21 | El SEI desde 1973 | resumen (sin revisar) | G-20 como sustituto del G-7 en 2008-2009, FSB, DSSI; Plaza (22/9/1985, G-5, `G51985Plaza`), Louvre (22/2/1987, G-6, `G61987Louvre`) y Londres (`G20Londres2009`, «triplicar») con las fechas y claves del 3.B.19 | Composición y estructura |
+| 3.B.21 | El SEI desde 1973 | resumen (hecho, 13/11/2026) | G-20 como foro principal (Pittsburgh 2009), Londres (`G20Londres2009`, «triplicar»), FSB, ISSD y Marco Común; Plaza (22/9/1985, G-5, `G51985Plaza`) y Louvre (22/2/1987, G-6, `G61987Louvre`); G-20 ≈ 85 % del PIB, 75 % del comercio y 2/3 de la población, con la Unión Africana; Johannesburgo 2025 sin EE. UU.; Miami 2026 | — |
 | 3.B.42 | Relaciones exteriores de la UE | resumen (sin revisar) | Estatus de la UE (miembro del G-20; participa sin voto en la OCDE) con el peso canónico (85 %, 75 %, 2/3) | Historia de la OCDE |
-| 3.B.22 | El FMI | mención (sin revisar) | Londres 2009 (FMI ×3 hasta 750.000 M$) y el MAP; el FMI como foro, `\vertema{3.B.19}` | El G-20 |
+| 3.B.22 | El FMI | mención (hecho, 13/11/2026) | Londres 2009 (FMI ×3 hasta 750.000 M$) y el MAP; el FMI como foro, `\vertema{3.B.19}` | El G-20 |
 | 3.B.11 | Balanza de pagos | mención (hecho, 5/11/2026) | III.4: el G-20 y los desequilibrios globales, `\vertema{3.B.19}` | — |
 | 3.A.40 | Política fiscal desde 2008 | mención (hecho, 5/11/2026) | El G-20 coordinó la respuesta fiscal de 2009; Toronto 2010 (`G202010Toronto`), `\vertema{3.B.19}` | Los foros |
 | 3.B.17 | Crisis de BP | mención del FSB (hecho, 12/11/2026) | El ejercicio de alerta temprana FMI-FSB desde 2009 (`FMI2010EWE`), `\vertema{3.B.19}`; sin el G-20 | — |

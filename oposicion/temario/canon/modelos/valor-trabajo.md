@@ -34,5 +34,6 @@ La **paradoja del agua y los diamantes** (Smith, libro I, cap. IV: valor de uso 
 - **3.A.2 (Word)**: la cita del valor de Ricardo mezclando 2 pasajes; «trabajo ordenado» por trabajo comandado. **Resuelto** en la revisión (4/11/2026).
 - **Test de 2014 (A02-17)**: el tribunal dio por buena «el valor [en Smith] se basa en el trabajo que incorporan los bienes»; el anexo de test del 3.A.2 lo matiza (solo en el estado primitivo; la medida es el trabajo comandado). Sin pendiente.
 - **Ediciones de Ricardo** (observación, sin pendiente): el 3.A.2 cita la 1.ª edición (`Ricardo1817Principles`, prefacio y «cap. I, secc. I») y la 3.ª (`Ricardo1821Principles`, «cap. 1, secc. 1», caps. 2, 7, 21, 31); el 3.A.1, el 3.A.3 y el 3.A.17 usan `Ricardo1817Principles`. Las 2 claves son correctas (la maquinaria solo está en la 3.ª), pero la numeración de capítulos va en romanos con una y en arábigos con otra: **[decidir]**, cosmético, unificar el formato al revisar el 3.B.5.
+- **3.B.5 (revisado, 10/11/2026):** usa `Ricardo1821Principles` con capítulos en arábigo («cap.~7»), como el 3.A.2 en la ventaja comparativa: coherente con la 3.ª edición.
 
 Autor: Víctor Gutiérrez Marcos

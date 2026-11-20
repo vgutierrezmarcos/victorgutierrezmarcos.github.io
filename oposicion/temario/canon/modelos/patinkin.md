@@ -20,7 +20,7 @@ Una caída de precios aumenta M/P y la demanda (**efecto saldos reales** o Pigou
 
 **Desequilibrio (3.A.4, III.2):** cae la demanda de bienes; con precios que bajan despacio queda un **exceso de oferta de bienes** (no de trabajo) y el empleo queda **fuera** de las curvas de demanda y de oferta de trabajo al mismo salario real: paro involuntario sin salario por encima del de equilibrio, pero transitorio; la política de demanda **acorta** el ajuste. Valoración: la «verdadera síntesis» de Keynes y Walras para Patinkin; críticas de De Vroey (2016) y Lucas (1980). Fecha canónica: *Money, Interest, and Prices* (1956; 2.ª ed. 1965), nunca 1951; Universidad de Chicago.
 
-**Gráfico de referencia:** IS-LM con la IS desplazándose a la derecha cuando baja P (efecto Pigou; el `is-lm.tex` del 3.A.5). El desequilibrio de Patinkin **no lleva gráfico** (3.A.4, A04-16: se cuenta de palabra).
+**Gráfico de referencia:** IS-LM con la IS desplazándose a la derecha cuando baja P (efecto Pigou; el `is-lm.tex` del 3.A.5). El desequilibrio de Patinkin lleva desde el 9/11/2026 el gráfico `fuentes/3A04/graficos/patinkin-desequilibrio.tex` en el 3.A.4 (antes A04-16: de palabra); es el de referencia si otro tema lo usa (ficha `desequilibrio`).
 
 ## Cómo se adapta en cada tema
 

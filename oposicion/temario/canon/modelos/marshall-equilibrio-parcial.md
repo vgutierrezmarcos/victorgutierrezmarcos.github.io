@@ -40,6 +40,7 @@
 | 3.A.9 | Medidas del bienestar | mención (hecho, 13/10/2026) | La nota de los ejes: Walras trata el precio como variable independiente y Marshall lo pone en el eje vertical | — |
 | 3.A.12 | Costes | mención (hecho, 14/10/2026) | Las economías internas y externas de Marshall (1890) como germen de la teoría de los costes | El periodo de mercado |
 | 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026) | La empresa representativa, criticada por Robbins (1928), frente al agente representativo | — |
+| 3.B.6 | Nueva teoría del comercio | mención (hecho, 5/11/2026) | Las 3 fuentes de economías externas de Marshall (mercado de trabajo especializado, proveedores, desbordamientos de conocimiento) en III.1, ficha `economias-externas` | — |
 
 ## Divergencias encontradas en el temario actual
 

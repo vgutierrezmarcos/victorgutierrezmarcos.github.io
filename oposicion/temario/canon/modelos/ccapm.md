@@ -1,7 +1,7 @@
 # Modelo de valoración de activos basado en el consumo (C-CAPM: Lucas, 1978; Breeden, 1979) y el enigma de la prima de riesgo (Mehra y Prescott, 1985)
 
 - **Área:** macro cerrada · **Tema de referencia:** **3.A.33** (revisado el 31/10/2026: II.3 `sec:ccapm`, derivación en el anexo C `anexo:hall-ccapm`) — es la ecuación de Euler del consumo con varios activos; Víctor lo pidió para este tema (nota del Word del 3.A.29: «el de C-CAPM habría que meterle en ese tema»). Ficha creada en la fase canon del 3.A.33 (DC3/A33-03, K24, **[decidir]**).
-- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.B.23 (resumen: beta de consumo frente a beta de mercado; el CAPM como caso particular), 3.A.29 (mención; hecho, 1/11/2026: la Euler estocástica `eq:euler-estocastica` en I.1.2 d) y el anexo C; Hall y el C-CAPM en I.1.3 c), con `\vertema{3.A.33}`), 3.A.1 (mención; hecho, 4/11/2026: anexo C `anexo:finanzas`, la prima de las acciones —6,7 puntos frente a las letras y 5,5 frente a los bonos, 1928-2025, Damodaran, 2026—, Mehra y Prescott, 1985, con `\vertema{3.A.33}`, y la aversión miope a las pérdidas de Benartzi y Thaler, 1995).
+- **Temas que lo usan:** 3.A.33 (desarrollo; hecho, 31/10/2026), 3.B.23 (resumen; hecho, 8/11/2026: beta de consumo frente a beta de mercado; «el CAPM es el caso particular en que el consumo se mueve con la cartera de mercado», la frase del 3.A.33), 3.A.29 (mención; hecho, 1/11/2026: la Euler estocástica `eq:euler-estocastica` en I.1.2 d) y el anexo C; Hall y el C-CAPM en I.1.3 c), con `\vertema{3.A.33}`), 3.A.1 (mención; hecho, 4/11/2026: anexo C `anexo:finanzas`, la prima de las acciones —6,7 puntos frente a las letras y 5,5 frente a los bonos, 1928-2025, Damodaran, 2026—, Mehra y Prescott, 1985, con `\vertema{3.A.33}`, y la aversión miope a las pérdidas de Benartzi y Thaler, 1995).
 - **Manuales de referencia:** Lucas (1978), *Econometrica*; Breeden (1979), *JFE*; Hansen y Singleton (1983), *JPE*; Mehra y Prescott (1985), *JME*; Campbell y Cochrane (1999), *JPE*; Cochrane (2005), *Asset Pricing*, cap. 1; Romer (2019), cap. 8.
 
 ## Presentación de referencia (3.A.33, II.3, pieza 2 de las salidas: el tipo de interés)
@@ -19,13 +19,13 @@ $$\mathbb{E}_t[r_{i,t+1}]-r_f=-(1+r_f)\operatorname{Cov}_t\big(m_{t+1},r_{i,t+1}
 
 **Gráfico de referencia:** no imprescindible (la ecuación en la pizarra, sobre la Euler estocástica, con el número 2).
 
-**Notación:** m_{t+1} local (M es el dinero; m(U,V) emparejamientos en el 3.A.26, no conviven); r_f, r_{i,t+1} minúsculas (D063); θ (D001); Cov_t y var_t en redonda. La β_i del CAPM es otra (§ 1).
+**Notación:** m_{t+1} local (M es el dinero; m(U,V) emparejamientos en el 3.A.26, no conviven); r_f, r_{i,t+1} minúsculas (D063); θ (D001); $\mathrm{Cov}_t$ y $\mathrm{Var}_t$ en redonda y con mayúscula, como en el CAPM y el 3.A.10 (pasada final, nov. 2026, a propuesta del 3.B.23; **[decidir]**: el 3.A.33 escribe aún `\operatorname{var}_t`, `pendientes-coherencia.md`). La β_i del CAPM es otra (§ 1).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.33 | Consumo con incertidumbre | desarrollo (hecho, 31/10/2026) | 1′ en el cante: la ecuación y la idea de la covarianza; anexo C con la prima y el enigma | — |
-| 3.B.23 | Renta variable, cartera y CAPM | resumen | El C-CAPM como generalización del CAPM (beta de consumo, Breeden, 1979) y el enigma con la explicación conductual que ya tiene; `\vertema{3.A.33}` y un resumen que se cante sin el 3.A.33 | La derivación |
+| 3.B.23 | Renta variable, cartera y CAPM | resumen (hecho, 8/11/2026) | El C-CAPM como generalización del CAPM (beta de consumo, Breeden, 1979) y el enigma con la explicación conductual que ya tiene; `\vertema{3.A.33}` y un resumen que se cante sin el 3.A.33 | La derivación |
 | 3.A.29 | Modelización dinámica | mención (hecho, 1/11/2026) | La Euler estocástica con varios activos | El modelo |
 | 3.A.1 | Economía conductual | mención (hecho, 4/11/2026) | Enigma de la prima y aversión miope a las pérdidas (Benartzi y Thaler, 1995) | El modelo |
 

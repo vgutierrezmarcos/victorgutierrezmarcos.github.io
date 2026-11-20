@@ -41,15 +41,21 @@ $$\gamma^{\mathrm P}=\frac{\eta_I\,L-\rho}{\theta}\;>\;\gamma^{\mathrm E}.$$
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.44 | Innovación como fuente de crecimiento | desarrollo (hecho, 1/11/2026) | Lo de arriba | — |
-| 3.B.9 | Comercio y crecimiento | resumen | Integración y difusión de ideas (Rivera-Batiz y Romer): duplicar el mercado eleva el crecimiento; Grossman y Helpman con el mismo mecanismo de Stolper-Samuelson que la caja del 3.A.44; $N_t$, $L_I$, $\eta_I$ | Derivación `\vertema{3.A.44}` |
+| 3.B.9 | Comercio y crecimiento | resumen (hecho, 5/11/2026) | Romer (1990) en resumen con `eq:romer-gamma` $\gamma^{\mathrm E}=(\alpha\eta_IL-\rho)/(\alpha+\theta)$ y la integración de Rivera-Batiz y Romer (1991) en desarrollo (escala y redundancia; solo bienes frente a ideas); valoración con Jones (1995); $N_t$, $L_I$, $\eta_I$ | Derivación `\vertema{3.A.44}` |
 | 3.A.18 | Competencia monopolística | mención (hecho, 19/10/2026) | Con variedades de bienes intermedios, la preferencia por la variedad se convierte en rendimientos crecientes y sostiene el crecimiento; `\vertema{3.A.44}` (ficha `dixit-stiglitz`) | El modelo |
 | 3.A.15 | Barreras, patentes | mención (hecho, 20/10/2026) | Patentes como monopolio temporal que paga la innovación | El modelo |
-| 3.B.34, 3.B.39, 3.B.42 | Liberalización, desarrollo | mención | Ideas no rivales como motor | — |
 | 4.A.7 | Política de ciencia y tecnología | previsto | No rivalidad, 2 distorsiones y 2 instrumentos; efecto escala corregido por Jones | El modelo |
+| 3.B.10 | Integración económica | mención | Integrar bienes e ideas equivale a duplicar $L$ (Rivera-Batiz y Romer, 1991), `\vertema{3.A.44}` y `\vertema{3.B.9}` | — |
+| 3.B.34 | ADPIC: por qué proteger la propiedad intelectual | mención (hecho, 18/11/2026; II.2 `sec:pi-teoria`) | Las ideas son no rivales (Romer, 1990) y la protección tiene un coste (monopolio temporal; Nordhaus, 1969, la duración óptima de la patente en economía cerrada), con sus notas Nobel; base del modelo Norte-Sur de Grossman y Lai (2004) del anexo | El modelo |
+| 3.B.39, 3.B.42 | Mercado único; relaciones exteriores | mención | Ideas no rivales como motor (3.B.39: crecimiento endógeno con `\vertema{3.B.9}`) | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.44 (Word): $n$ o $M$ para el número de variedades, $W$, ϕ coste de la invención, sin fórmula de γ, «la versión de Romer se llama semiendógena» (es Jones, 1995). **Resuelto** (1/11/2026): $N_t$, $w$, $1/\eta_I$, $L_I$, $B_j$, γ^E y γ^P.
 - **Esta ficha** escribía hasta el 1/11/2026 $L_N$ (trabajo en I+D), π y $V=\pi/r$: ahora **$L_I$** (la misma letra en Romer, Aghion-Howitt y Jones; DK12 del 3.A.44) y **$B_j$**, **$V=B_j/r$** (B beneficio, D003).
 - Romer/Grossman-Helpman duplicado entre 3.A.44 y 3.B.9: el 3.B.9 debe resumir y remitir, y redactar de nuevo la parte copiada de otro preparador.
+- 3.B.9: duplicado con el 3.A.44 **resuelto** (5/11/2026): resume y remite.
+
+## Puesta al día de la pasada final (noviembre de 2026)
+- **Versión con ahorro constante (3.A.44, 4.ª tanda, 11/11/2026; Jones, 2002, cap. 5):** $Y=K^{\alpha}(NL_Y)^{1-\alpha}$, $\tilde k\equiv K/(NL_Y)$, $\gamma=\eta_Is_IL$ ($s_I$ fracción de investigadores); versión de laboratorio con efecto escala. Se añade a la presentación de referencia junto a la de Ramsey.
 
 Autor: Víctor Gutiérrez Marcos

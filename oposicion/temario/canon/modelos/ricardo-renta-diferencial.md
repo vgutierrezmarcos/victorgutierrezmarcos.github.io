@@ -39,7 +39,7 @@ $$\frac{B}{K}=\frac{(\mathrm{PMg}_L-\bar w)\,L}{\bar w\,L}=\frac{\mathrm{PMg}_L-
 | 3.A.34 | Inversión | mención (hecho, 31/10/2026) | La acumulación frenada por la tierra hasta el estado estacionario | El gráfico |
 | 3.A.43, 3.A.44, 3.A.45 | Crecimiento y reparto | mención (hechos) | Los rendimientos decrecientes de la tierra en la contextualización; el 3.A.45, la pregunta de Ricardo por el reparto | El modelo |
 | 3.A.4 | Keynes y postkeynesianos | mención (hecho, 4/11/2026) | Kaldor (1956) y la maquinaria (1821) | El modelo |
-| 3.B.20 | Historia del sistema monetario y del comercio | mención (prevista) | Las Leyes de Granos (1815) y su derogación por **Robert** Peel (1846) | El modelo |
+| 3.B.20 | Historia del sistema monetario y del comercio | mención (hecho, 13/11/2026) | Las Leyes de Granos (1815) y su derogación por Robert Peel (1846) | El modelo |
 | 3.B.5 | Comercio ricardiano | mención (prevista) | Las Leyes de Granos y la tierra como motivo del libre comercio | El modelo de distribución |
 
 ## Divergencias encontradas en el temario actual

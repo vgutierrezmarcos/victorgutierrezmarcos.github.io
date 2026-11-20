@@ -30,6 +30,7 @@ $$p^*=\frac{\alpha\,\underline s}{2-\alpha}\qquad(\alpha<2,\ p^*<\overline s)$$
 | 3.B.27, 4.A.20 | Regulación financiera; financiación de las empresas | mención | La selección adversa como base del racionamiento (ficha `stiglitz-weiss`) | El modelo |
 | 3.A.33, 3.A.34 | Duraderos; inversión | mención (hechos, 31/10/2026) | El bien usado (coche, máquina) se revende con descuento: base de la irreversibilidad | El modelo |
 | 4.B.3 | Sanidad y seguros públicos | mención | Selección adversa en los seguros sanitarios como argumento del aseguramiento público | El modelo |
+| 3.B.30 | Banco Mundial | mención (hecho, 14/11/2026) | Efecto catalizador con selección adversa (ficha `bmd-razon-de-ser`) | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.13 original: «Solo se venden limones a 500 € (equilibrio aunador)», «calidad del precio», sin caso continuo pese a la pregunta de test de 2020. **Resuelto** (19/10/2026).

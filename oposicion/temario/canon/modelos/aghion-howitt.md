@@ -45,6 +45,7 @@ $$\gamma=\lambda_I\,L_I^*\,\ln\gamma_q,\qquad L_I^*=\frac{\gamma_q\frac{1-\alpha
 | 3.B.31 | Cambio climático | mención (hecho, 31/10/2026) | Cambio técnico dirigido, subvención a la investigación limpia | El modelo |
 | 3.B.42 | Desarrollo | mención | Instituciones y distancia a la frontera | Derivación |
 | 4.A.15 | Liberalización y competencia | mención (prevista) | La defensa de la competencia como política de crecimiento | El modelo |
+| 3.B.9 | Comercio y crecimiento | mención (hecho, 5/11/2026) | Efecto competencia de la apertura: U invertida (Aghion *et al.*, 2005), anima a innovar a las empresas cerca de la frontera y desanima a las rezagadas; evidencia de Bloom, Draca y Van Reenen (2016) y Autor *et al.* (2020), `\vertema{3.A.44}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.44 (Word): epígrafe «innovación tecnológica y variedad de productos» (la variedad es Romer), «en el marco de Dixit-Stiglitz», distancia a la frontera atribuida al modelo de 1992 (es Acemoglu, Aghion y Zilibotti, 2006), extensiones copiadas del índice de otro material, sin ecuaciones. **Resuelto** (1/11/2026).

@@ -4,6 +4,7 @@
 - **Temas que lo usan:** 3.B.45 (desarrollo previsto), 3.B.36 (resumen → mención), 3.B.37 (resumen), 4.B.26 (resumen), 4.A.18 (mención: préstamo de 2012 a España), 4.A.28 (mención), 4.A.30 (mención: flujos extrapresupuestarios), 3.B.21 y 3.B.22 (mención), 3.B.44 (mención: respaldo común del FUR), 3.B.16 (mención; hecho, 11/11/2026: anexo `anexo:crisis-euro`, los rescates y después el MEDE, `\vertema{3.B.45}`)
 - **Manuales de referencia:** Tratado MEDE (2012) y Tratado de reforma (2021); informes anuales del MEDE; Baldwin y Wyplosz, *The Economics of European Integration*, caps. de gobernanza; De Grauwe, *Economics of Monetary Union*
 - **Decisión D093 (13/10/2026):** ¿Dónde se desarrolla el MEDE? 3.B.45, a partir de la descripción de 3.B.37; 3.B.36 y 3.B.37 en mención o resumen
+- **Al día (pasada final, noviembre de 2026):** 21 miembros desde el 29/6/2026 (Bulgaria); capital suscrito 714.700 M€ (desembolsado 81.700); capacidad de préstamo 500.000 M€ (432.000 disponibles; 68.000 reservados al respaldo común del FUR); España: 41.333 M€ desembolsados, unos 7.300 vivos a finales de 2025, último vencimiento a finales de 2027; Grecia: prepagos del GLF en 2024, 2025 y junio de 2026; reforma del Tratado sin ratificar por Italia (rechazo del 21/12/2023; sigue a octubre de 2026). Gráfico de referencia: `fuentes/3B45/graficos/rescates-paises.tex`.
 
 ## Presentación de referencia
 Qué es: organización intergubernamental (fuera del ordenamiento de la UE) de los Estados de la zona euro, con sede en Luxemburgo, que presta a sus miembros con dificultades de financiación bajo estricta condicionalidad (MoU). Base: art. 136.3 TFUE (añadido en 2011).
@@ -21,9 +22,9 @@ Reforma del Tratado (firmada en 2021): respaldo común (*backstop*) al Fondo Ún
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.B.45 | Gobernanza de la zona euro | Desarrollo | Todo lo anterior, como pieza de gestión de crisis junto al PEC, el PDM y la unión bancaria | — |
+| 3.B.45 | Gobernanza de la zona euro | desarrollo (hecho, 14/11/2026; III.1) | Todo lo anterior, como pieza de gestión de crisis junto al PEC, el PDM y la unión bancaria | — |
 | 3.B.36 | Instituciones de la UE | Mención | Una línea: organismo intergubernamental fuera del marco de la UE [ver tema 3.B.45] | Funciones e instrumentos |
-| 3.B.37 | Finanzas de la UE | Resumen | Solo MEEF (ligado al presupuesto de la UE) y la diferencia con el MEDE (intergubernamental, fuera del presupuesto) | Detalle del capital e instrumentos |
+| 3.B.37 | Finanzas de la UE | resumen (hecho, 14/11/2026) | 500.000 M€; España 41.300 M€, con remisión al 3.B.45; el MEEF y la diferencia con el MEDE | Funciones e instrumentos |
 | 4.A.18 | Crisis y reestructuración bancaria en España | Resumen | Préstamo de 2012 (41.333 M€), MoU y condicionalidad | Estructura del MEDE |
 | 4.B.26 | Deuda pública | Resumen | Préstamo MEDE en la deuda del Estado y su amortización anticipada | — |
 | 4.A.30 | Relaciones financieras España-UE | Mención | Como flujo extrapresupuestario | — |

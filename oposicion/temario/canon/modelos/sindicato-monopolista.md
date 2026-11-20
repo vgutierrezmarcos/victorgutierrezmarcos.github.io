@@ -44,4 +44,7 @@ Pregunta: ¿qué salario y qué empleo salen cuando un sindicato negocia con la 
 - 3.A.25 (§ 3.5 de su propuesta) atribuía al 3.A.27 un sindicato con $c(L)$ y $W(L)$: era del propio 3.A.25 (anexo A.2); sin consecuencias.
 - 3.A.28: llamaba SRN y SRP a la WS y la PS. **Resuelto** (31/10/2026): WS con `eq:ws` y remisión al 3.A.27.
 
+## Puesta al día de la pasada final (noviembre de 2026)
+- **3.A.27 (9/11/2026, 2.ª tanda):** infografía nueva `mapa-negociacion-colectiva` al principio de I.2; caja gris con la rigidez del sindicato monopolista con demanda isoelástica (`sindicato-monopolista-rigidez`); nota con las curvas de contratos según la actitud ante el riesgo (`curvas-contratos-riesgo`); los contratos fuertemente eficientes son un subapartado del cuerpo (`sec:fuertemente-eficientes`) con su gráfico; `tab:modelos-negociacion` tiene una 4.ª columna.
+
 Autor: Víctor Gutiérrez Marcos

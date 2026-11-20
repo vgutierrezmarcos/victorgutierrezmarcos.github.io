@@ -34,6 +34,16 @@ en `D/revision.md`. Para cada una decide:
 Marca cada duda resuelta añadiendo al final de su línea, sin borrar nada:
 ` **Resuelta por Claude (pasada final):** <qué se hizo y por qué, una frase>.`
 
+## 1 bis. Pendientes de coherencia del canon
+
+Aplica también las entradas de `T` en
+`R/oposicion/temario/canon/pendientes-coherencia.md` que no estén marcadas
+`[hecho…]` (las de la sección «Pendiente de la pasada final» y las
+anteriores). Las marcadas `[decidir]` u «opcional»: aplícalas si la opción
+es clara con CRITERIOS y el canon; si no, déjalas como duda «Decide Víctor».
+Marca cada una aplicada con `[hecho: pasada final]` al final de su línea
+(con Edit sobre esa línea: otros agentes editan el mismo fichero).
+
 ## 2. Refrán del enganche
 
 `python3 R/scripts/temario/refranes.py T` te da el enganche, la idea final

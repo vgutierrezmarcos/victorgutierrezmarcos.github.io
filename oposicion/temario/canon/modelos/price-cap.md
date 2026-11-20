@@ -1,10 +1,10 @@
 # Regulación por precio máximo IPC − X (Littlechild, 1983) y esquemas intermedios
 
-- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.20 (II.4, `sec:price-cap`, «Regulación por incentivos: precios máximos y esquemas intermedios», con a)-e); **hecho, 22/10/2026**). Pasa del 3.A.17 al 3.A.20 por la P21-02 (Víctor, 21/10/2026); el 3.A.17 queda en mención, con su anexo A resumido (`pendientes-coherencia.md`, sección del 3.A.20). Así, la remisión del 4.A.12 al 3.A.20 es la correcta.
+- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.20 (III.4, `sec:price-cap`, «Regulación por incentivos: precios máximos y esquemas intermedios», con a)-e); **hecho, 22/10/2026**). Pasa del 3.A.17 al 3.A.20 por la P21-02 (Víctor, 21/10/2026); el 3.A.17 queda en mención, con su anexo A resumido (`pendientes-coherencia.md`, sección del 3.A.20). Así, la remisión del 4.A.12 al 3.A.20 es la correcta.
 - **Temas que lo usan:** 3.A.20 (desarrollo; hecho, 22/10/2026), 3.A.17 (hoy desarrollo en el anexo A, no se canta; pasa a mención con `--fase coherencia` cuando Víctor apruebe el 3.A.20: una viñeta con la regla), 3.A.15 (mención; hecho, 20/10/2026: anexo A, el *price cap* de Littlechild, 1983, para la British Telecom privatizada como respuesta austriaca a la regulación que desanima la innovación), 4.A.12 (mención: Telefónica, Aena), 4.B.15 (resumen; hoy mención); 4.A.5 (energía) podría citarlo.
 - **Manuales de referencia:** Littlechild (1983); Vogelsang y Finsinger (1979); Armstrong, Cowan y Vickers (1994), *Regulatory Reform*; Armstrong y Sappington (2007); Viscusi, Harrington y Vernon, cap. 12; Joskow (2014).
 
-## Presentación de referencia (3.A.20, II.4)
+## Presentación de referencia (3.A.20, III.4; estructura nueva del 9/11/2026)
 
 - **a) Idea**: el menú de Laffont-Tirole pide mucha información; la regulación por incentivos de la práctica desliga el precio de los costes declarados. Littlechild (1983) lo propone para la privatización de British Telecom; después gas, agua, electricidad y aeropuertos. Contrato de **alta potencia**, cercano al de precio fijo (b = 1 en t(C) = a − b(C − C^a), ficha `laffont-tirole`).
 - **b) Modelo**:
