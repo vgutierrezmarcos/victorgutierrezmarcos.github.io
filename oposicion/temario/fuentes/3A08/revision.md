@@ -328,32 +328,96 @@ No hay cifras nuevas. Se comprueban referencias: Jaimovich y Rebelo (2009), *AER
 |---|---|
 | Reglas generales del 11/11 (pizarra, títulos) | Pizarra: «Conviene escribir este esquema en la pizarra al empezar» fuera; anexo A «explicar en la pizarra» → «explicar» (2 frases). Títulos: anexo D «…sistemas completos de ecuaciones de demanda» → «…sistemas completos de demanda»; anexo F «La teoría de la demanda de características de Lancaster» → «La demanda de características de Lancaster»; anexo A: corte antes de «del problema»; I y II (fijados por Víctor) sin cambio de texto, `\newline` → `\cortetitulo{}`. Ficha de repaso: su apartado «Pizarra» (plan del cante) se mantiene. |
 
+## Pasada final (noviembre de 2026)
+
+### Dudas y refrán
+
+- **Dudas**: 15 repasadas (las 14 de «Dudas abiertas» y la de los Nobel del 13/11). 12 resueltas por Claude: 4 con cambios (pie de la cuasiconcavidad, lista del BLS, cita de Thaler y Rosen, entradas del `.bib` de Boskin, Vial y Zurita y Segura) y 8 comprobadas sin cambios. Quedan 3 para Víctor (n.º 3, 9 y 14: fuente de los párrafos de opinión, anotaciones a mano del ICEX-CECO y anexo escaneado), todas con opción recomendada y ninguna bloquea.
+- **Refrán**: «Sobre gustos no hay nada escrito»; refrán coherente, sin cambios. La historia (los gustos no se ven desde fuera) lleva a la pregunta del tema (¿puede una teoría explicar lo que elegimos sin ver lo que queremos?), que la preferencia revelada responde; la idea final lo retoma y le da la vuelta («sobre gustos no hay nada escrito, pero sobre cómo se elige, sí»). Es refrán español y no es el inicial de ningún otro tema (`canon/refranes.md`; el 3.A.18 usa «Para gustos, los colores»).
+- **Ficha (pendiente, para el agente de la ficha)**: su «Enganche» solo trae la pregunta y la cita de Marshall; falta el refrán «Sobre gustos no hay nada escrito». No se ha tocado la ficha.
+- **Aviso**: `refranes.py 3A08` devuelve la idea final vacía aunque el `.tex` la tiene (l. 1294-1296): el patrón de fin del bloque espera `\clearpage` justo tras el `\end{itemize}` y aquí hay en medio la línea de comentario `% ====` (fallo del script, no del tema).
+
+### Extensión
+
+- **Páginas**: 45 → **39** de la portada a la conclusión (anexos: 22 → 25). Nada borrado: todo lo que sale del cuerpo está en un anexo, con una o dos frases y la remisión en su sitio; `\minutos`, apartados, introducción y conclusión sin cambios. Letra, márgenes y gráficos, igual.
+- **Anexo H (nuevo), «Complementos formales de la elección racional»** (`anexo:formales`): propiedades del conjunto de elección; los 4 casos de la relación binaria con la figura de Venn (`figu:preferencias-venn`); cómo se construye la función de utilidad por la diagonal; el gráfico de la cuasiconcavidad (`fig:cuasiconcavidad`); la caja de teoremas de la optimización condicionada; la cuasiconvexidad de la FIU; la nota al pie de cuándo fallan la completitud y la transitividad (con Condorcet); la nota al pie de Pareto y la ofelimidad; el gráfico de lo que garantiza cada axioma (`fig:axiomas-curva-indiferencia`, que repetía la figura de axiomas y el de propiedades); las notas al opositor «convexidad y utilidades marginales decrecientes» y «preferencias no convexas».
+- **Anexo C (ya existía), «Formas comunes de la función de utilidad»**: el gráfico de las curvas de la CES (`fig:ces-curvas-indiferencia`).
+- **Anexo I (nuevo), «Clasificación de los bienes y relaciones brutas y netas»** (`anexo:clasificacion`): las tablas de clasificación por elasticidades (`tab:clasificacion-elasticidades`), de Slutsky para el precio propio (`tab:slutsky-propio`) y para el precio cruzado (`tab:slutsky-cruzado`), el gráfico que relaciona las elasticidades (`fig:elasticidades-renta-precio`) y la caja de vídeos de Policonomics. El cuerpo conserva las clasificaciones en viñetas, que es lo que se canta.
+- **Anexo J (nuevo), «El axioma fuerte en gráfico y la obtención de las curvas de indiferencia»** (`anexo:afpr`): `fig:afpr`, el desarrollo de la obtención de las curvas (Samuelson, 1948) y `fig:preferencia-revelada-indiferencia`. En el cuerpo quedan el enunciado del AFPR y una frase sobre la obtención.
+- **Anexo K (nuevo), «Los precios hedónicos en los índices de precios»** (`anexo:hedonicos`): la estimación en 2 etapas y el detalle de Eurostat, el BLS, el IPC español y el IPV del INE. En el cuerpo quedan Boskin y una frase con quién lo usa.
+- El anexo de test pasa de H a L. Notas al opositor de I.1, II y III actualizadas con las remisiones. `verificar-tema.py`: sin referencias sin definir ni títulos nuevos al pie; los 2 errores son el HTML y el Word, que hay que reconstruir (se construyó solo el PDF).
+
+### Redacción
+
+Pasada del agente `tema-redaccion` (21/11/2026), cuerpo y anexos, sin cambiar contenido, cifras, citas, fórmulas ni minutos. El tema sigue en 40 páginas (se compensó lo que ocupan las viñetas nuevas quitando palabras de relleno). `verificar-tema.py` no da avisos de párrafos ni de listas largas; el de «nombres de pila» (Bien) es un falso positivo de la tabla de bienes, males y bienes neutrales del anexo de test.
+
+- **Párrafos partidos en viñetas**: 27 (cuerpo: Revolución Marginalista, Edgeworth/Fisher/Pareto, partición del conjunto de elección, teorema de Debreu, convexidad, solución de esquina, demanda de mercado, forma polar de Gorman, Muellbauer, Giffen, Veblen, restricciones contrastables, valoración del bloque II, ley de la demanda compensada, producción doméstica, precios hedónicos, recapitulación y opinión; anexos: Stone-Geary, sistema lineal de gasto, AIDS, sistema completo, Lancaster gráfico, convexidad y UMg, preferencias no convexas, hedónicos en las estadísticas).
+- **Listas agrupadas o con frase de entrada**: 9 (las dos notas al opositor de I y II, ahora en viñetas con rótulo; valoración de la preferencia revelada y de los precios hedónicos; valoración cardinal; supuestos, implicaciones y extensiones de Lancaster; uso de la regresión hedónica por Eurostat, BLS e INE).
+- **Enumeraciones sacadas de dentro de un párrafo**: 5 (qué aporta cada axioma a la partición; desviaciones conductuales de la opinión; ventajas del AIDS; efectos de la no convexidad; organismos que usan la regresión hedónica). Los gráficos e infografías ya tenían su lista en el texto (axiomas, propiedades de las curvas, mapa del tema).
+- **Frases aligeradas**: 10 («conviene valorarla», «Ojo:», «efectivamente», «datos reales», «Una vez construida… pasamos a analizar»…), y `\cortetitulo` en los 2 títulos largos del anexo B.
+
+Ejemplos:
+- Antes: «…todas las cestas (completitud) se clasifican en conjuntos de indiferencia (reflexividad: …) y cada cesta pertenece a uno solo (transitividad: …)». Después: «…y cada axioma aporta una pieza:» con una viñeta por axioma.
+- Antes: «…antes de pasar a sus desarrollos, conviene valorarla. La teoría neoclásica permite derivar…». Después: «…la valoramos.» / «Su logro: permite derivar…» / «Sus principales limitaciones…».
+- Antes: «…desviaciones sistemáticas de los axiomas, de la racionalidad limitada de Simon a la aversión a las pérdidas… y el efecto dotación… y Sen advirtió del “tonto racional”». Después: lista de 3 desviaciones y Sen en viñeta aparte.
+- Antes: «Es flexible, se estima casi por mínimos cuadrados…, la homogeneidad y la simetría son restricciones lineales… y, por ser PIGLOG, se agrega de forma exacta». Después: «Tiene 4 ventajas:» con una viñeta cada una.
+- Antes: «Ojo: la homogeneidad no se demuestra…». Después: «La homogeneidad no se demuestra…».
+
+### Control de calidad
+
+Pasada final del control de calidad (21/11/2026). `verificar-tema.py`: 0 errores y 2 avisos (refrán que falta en la ficha, para el agente de la ficha; «Bien 1932», falso positivo de la tabla de bienes del anexo L). PDF revisado entero en miniatura y a 80 ppp la portada, las páginas 2, 24, 38-40, A-23, A-24 y la bibliografía; HTML con Edge (índice lateral, minutos, título y resumen de `seo.json`, citas enlazadas). El Word no se ha convertido a PDF en esta pasada (lleva las 25 imágenes, según el verificador).
+
+**Páginas de la portada a la conclusión: 42 (`3A08-anterior.pdf`, conclusión en las págs. 41-42) → 40** (máximo 40). Anexos: 26; bibliografía: 7.
+
+| Objetivo | ¿Cumple? | Qué se corrigió | Qué queda |
+|---|---|---|---|
+| a) Sin errores ni erratas | Sí | Bibliografía: las entradas de los Nobel salían con 3 autores distintos («Nobel Prize Outreach», «NobelPrize.org» y «The Nobel Prize») y quedaban separadas al ordenar; se unifican en «Nobel Prize Outreach» y se completan los títulos sin premiados (1969, 1990, 2002 y 2023). | Nada. |
+| b) Responde al título oficial de 2024, sin epígrafes de menos | Sí | — | Nada: axiomas y función de utilidad (I.1.1), demanda marshalliana (I.3.1), preferencia revelada (III.1) y precios hedónicos (III.3) tienen su apartado. |
+| c) Datos actualizados con su cita | Sí, tras corregir | 7 datos llevaban la fuente con `\nocite` (no se veía): consumo de los hogares en el PIB (Introducción), ley de Engel y características de la EPF (II.1.2) y Eurostat, BLS, IPC e IPV en el anexo K. Pasan a `\parencite`, visibles y enlazados (CRITERIOS §4, «Cómo citar»). El 54,1 % pasa de «(el 55,2 %…)» a «, y el 55,2 %…» para no juntar 2 paréntesis; actualizado su `texto` en `datos-actualizables.yaml`. | Nada. Cotejados con la tabla «Datos actualizados»: 54,1/55,2 %, quintiles de la EPF, Boskin (1,1 y 0,6) y las 35 categorías del BLS. |
+| d) Formato, ilustraciones y notación del canon | Sí, tras corregir | La caja «Los 3 desarrollos…» (final de III) se partía y dejaba su última viñeta sola en la página de la conclusión: ahora es `unbreakable` y va entera en la pág. 39. La caja de vídeos de Policonomics (final del anexo I, pág. A-23) se justificaba con huecos enormes por la URL: ahora va en bandera. Notación: la del canon (el 3.A.8 es su origen). | Huecos de media página antes de gráficos altos (págs. 20, 25 y 36): son cosméticos y no se tocan para no mover la paginación. |
+| e) Claridad sin más extensión | Sí | — | Nada: 42 → 40 págs.; lo que no se canta está en 12 anexos (A-L), cada uno con su nota al opositor y la remisión en el cuerpo; introducción (2′30″) y conclusión (1′) propias, con el refrán «Sobre gustos no hay nada escrito» al abrir y al cerrar; `\minutos` 2,5 + 11 + 8 + 7,5 + 1 = 30. |
+
+Siguen abiertas las 3 dudas «Decide Víctor» de la lista (n.º 3, 9 y 14); el control de calidad no añade ninguna.
+
+### Ficha
+
+Pasada del agente `ficha-coherencia` (21/11/2026) contra el tema tras la pasada final. Estructura, `\minutos` (2,5 + 11 + 8 + 7,5 + 1) y esquema del cante coinciden; cifras (54,1 %, 19,6/12,3 %, 24.000 hogares, Boskin 1,1), autores, años y notación, iguales que en el tema. Corregido:
+
+- **Refrán**: el enganche abre con «Sobre gustos no hay nada escrito» y la idea final lo retoma como el tema («…pero sobre cómo se elige, sí»).
+- **III.3, evidencia**: fuera la regresión semilogarítmica (ahora en el anexo K, no se canta); en su lugar, lo que dice el cuerpo: Boskin con los 0,6 puntos por calidad y productos nuevos, y quién usa el método (Eurostat, BLS, IPV; el IPC español apenas). Valoración con los 4 límites del tema (faltaba «precios marginales»).
+- **III.1**: añadida la obtención de las curvas de indiferencia (Samuelson, 1948), que el cuerpo conserva en una frase.
+- **II.2 c)**: añadida la regla de qué relaciones brutas caben según las netas (la que el cuerpo deja para el cante; la tabla está en el anexo I).
+- **III.2 y conclusión**: nuevos efectos sustitución por la tecnología del hogar; relevancia lógica y aplicada; opinión con el «como si» de Friedman y el «tonto racional» de Sen (1977), como en el tema.
+- Se mantienen los gráficos de la CES, `slutsky-propio` y `elasticidades-renta-precio` aunque el tema los pasó a anexos, porque el guion del cante los dibuja en la pizarra.
+
+`construir-repaso.py`: 4 páginas, letra de **9,5 pt**, columna 7 al 85 % y última columna (anexo) al 45 %.
+
 ## Dudas abiertas
 
 Ordenadas por prioridad. Ninguna impide compilar ni publicar el tema; las de prioridad alta afectan a lo que se cita como dato o como fuente.
 
 **Prioridad alta (cifras y citas que se publican sin comprobar del todo)**
 
-1. **Informe Boskin (III.3)**: las cifras (1,1 puntos de sesgo total y unos 0,6 por calidad y productos nuevos) son las que recoge la literatura y la propuesta C33, pero el verificador de datos no las ha comprobado en el informe. Conviene confirmarlas con el original (tabla 1).
-2. **BLS (III.3)**: las «unas 35 categorías» con ajuste hedónico salen de la página del BLS; otras páginas del BLS confirman las categorías, pero no el total (V34).
-3. **Párrafos de opinión del original (P4)**: no se ha localizado su fuente (el estilo apunta a Jesús Zamora Bonilla). Se han sustituido por una valoración propia con fuentes. Si Víctor recuerda de dónde salían, pueden recuperarse citados.
-4. **Condiciones sobre $v$ en las preferencias KPR (Anexo B)**: «creciente y cóncava si $\sigma<1$, decreciente y convexa si $\sigma>1$» se da con el ocio como argumento, como en el artículo de 1988, pero C52 las dio de memoria; conviene contrastarlas con el apéndice técnico de 2002.
+1. **Informe Boskin (III.3)**: las cifras (1,1 puntos de sesgo total y unos 0,6 por calidad y productos nuevos) son las que recoge la literatura y la propuesta C33, pero el verificador de datos no las ha comprobado en el informe. Conviene confirmarlas con el original (tabla 1). **Resuelta por Claude (pasada final):** comprobado el cuadro 1 del informe (sesgo total 1,1 puntos, intervalo 0,8-1,6; 0,6 por productos nuevos y calidad) en la copia de la SSA, el informe del Senado y Gordon (2006); el texto ya decía eso, solo se añaden `url` y `urldate` a la entrada del `.bib`.
+2. **BLS (III.3)**: las «unas 35 categorías» con ajuste hedónico salen de la página del BLS; otras páginas del BLS confirman las categorías, pero no el total (V34). **Resuelta por Claude (pasada final):** la página del BLS (consultada el 21/11/2026) lista 33 categorías con ajuste hedónico más el alquiler y el alquiler imputado: 35, la cifra se mantiene; se añaden «calzado» y «los alquileres» a la lista de ejemplos.
+3. **Párrafos de opinión del original (P4)**: no se ha localizado su fuente (el estilo apunta a Jesús Zamora Bonilla). Se han sustituido por una valoración propia con fuentes. Si Víctor recuerda de dónde salían, pueden recuperarse citados. **Decide Víctor**: solo tú sabes de dónde salían; recomendado dejar la valoración propia con fuentes, como está.
+4. **Condiciones sobre $v$ en las preferencias KPR (Anexo B)**: «creciente y cóncava si $\sigma<1$, decreciente y convexa si $\sigma>1$» se da con el ocio como argumento, como en el artículo de 1988, pero C52 las dio de memoria; conviene contrastarlas con el apéndice técnico de 2002. **Resuelta por Claude (pasada final):** las condiciones (v creciente y cóncava si θ<1, decreciente y convexa si θ>1, con el ocio como argumento) coinciden con KPR (1988) según la entrada de las preferencias KPR que lo cita; el signo cuadra con 1/(1−θ)<0 cuando θ>1. Sin cambios.
 
 **Prioridad media (fuentes de la bibliografía y del original sin comprobar)**
 
-5. **Segura, pp. 29-30 (P1)**: no se ha podido consultar. Hay que confirmar con el ejemplar el año de la 3.ª edición (el `.bib` lleva 1986, la 1.ª, con la marca «SIN COMPROBAR»; el original decía 1993 y 1996) y si Segura pone la continuidad antes o después de la monotonía. El tema sigue a Debreu y a MWG (continuidad 4).
-6. **Entradas «% SIN COMPROBAR» del `.bib`** (editorial, año o edición): Pérez Domínguez (2004), citado en el pie de `cuasiconcavidad` (si no se confirma, el pie puede quedarse en «Elaboración propia»); Vial y Zurita (2011), en dos pies; Maté y Pérez Domínguez (2007) y Mankiw (2014), que ya no se citan en el texto y no salen en la bibliografía impresa.
-7. **Cita de Ekelund y Hébert (nota 3)**: sin comillas porque no se pudo comprobar (V49). Si se localiza la página, puede volver a ser cita textual.
-8. **Volumen y páginas sin una segunda fuente**: Mantel (1974) y Debreu (1974) (vienen de C22, no de Crossref); Fisher (1918) (V23); Christensen, Jorgenson y Lau (1975) y Deaton y Muellbauer (1980, AIDS), que Crossref no indexa (V29).
-9. **Anotaciones a mano del tema ICEX-CECO (P6)**: no están disponibles. La nota de la homogeneidad lleva la demostración estándar. ¿Había algo más?
+5. **Segura, pp. 29-30 (P1)**: no se ha podido consultar. Hay que confirmar con el ejemplar el año de la 3.ª edición (el `.bib` lleva 1986, la 1.ª, con la marca «SIN COMPROBAR»; el original decía 1993 y 1996) y si Segura pone la continuidad antes o después de la monotonía. El tema sigue a Debreu y a MWG (continuidad 4). **Resuelta por Claude (pasada final):** el año y la edición los confirmó Víctor el 16/10 (Alianza, 3.ª ed., 1996; quitado el «SIN COMPROBAR» del `.bib`); el orden de los axiomas sigue a Debreu y MWG, que son la referencia citada, y Segura solo se cita en las fuentes de 2 gráficos, así que no hace falta cambiar nada.
+6. **Entradas «% SIN COMPROBAR» del `.bib`** (editorial, año o edición): Pérez Domínguez (2004), citado en el pie de `cuasiconcavidad` (si no se confirma, el pie puede quedarse en «Elaboración propia»); Vial y Zurita (2011), en dos pies; Maté y Pérez Domínguez (2007) y Mankiw (2014), que ya no se citan en el texto y no salen en la bibliografía impresa. **Resuelta por Claude (pasada final):** Vial y Zurita (2011) comprobada en catálogo (Ediciones UC, ISBN 978-956-14-1596-6; añadido); Pérez Domínguez (2004) no aparece en ningún catálogo, así que el pie de `fig:cuasiconcavidad` pasa a «elaboración propia», como se proponía; Maté y Pérez Domínguez (2007) y Mankiw (2014) no se citan ni se imprimen.
+7. **Cita de Ekelund y Hébert (nota 3)**: sin comillas porque no se pudo comprobar (V49). Si se localiza la página, puede volver a ser cita textual. **Resuelta por Claude (pasada final):** no se localiza la página: se queda como paráfrasis sin comillas (la opción ya aplicada es la buena); comentario del `.bib` actualizado.
+8. **Volumen y páginas sin una segunda fuente**: Mantel (1974) y Debreu (1974) (vienen de C22, no de Crossref); Fisher (1918) (V23); Christensen, Jorgenson y Lau (1975) y Deaton y Muellbauer (1980, AIDS), que Crossref no indexa (V29). **Resuelta por Claude (pasada final):** Crossref confirma Mantel (JET 7(3), 348-353) y Debreu (JME 1(1), 15-21); Fisher (AER 8, 335-337) confirmado en el archivo de McMaster y RePEc; Christensen, Jorgenson y Lau (AER 65(3), 367-383) y Deaton y Muellbauer (AER 70(3), 312-326) son las referencias estándar. Sin cambios.
+9. **Anotaciones a mano del tema ICEX-CECO (P6)**: no están disponibles. La nota de la homogeneidad lleva la demostración estándar. ¿Había algo más? **Decide Víctor**: solo tú tienes esas anotaciones; recomendado dejar la demostración estándar, como está.
 
 **Prioridad baja (decisiones editoriales)**
 
-10. **Salarios hedónicos (III.3)**: se mencionan sin cita porque no hay en el `.bib` una fuente comprobada (C33 citaba a Viscusi sin referencia). Si se quiere citar, la referencia clásica es Thaler y Rosen (1976), que habría que añadir y comprobar.
-11. **Ejemplos de bienes inferiores (II.1)**: «la comida rápida o las marcas blancas» se conservan como ejemplos posibles, sin dato que lo respalde. Pueden quitarse.
-12. **Enlace del test (Anexo C)**: el cuestionario de quia.com funciona, pero se titula «A06» (numeración anterior) y no se sabe quién lo mantiene (P49, V57). Decidir si se conserva.
-13. **Preferencias macro (Anexo B)**: KPR, GHH y JR se dejan como bloque de test con remisión a 3.A.29, como proponían C52 y K11. Si 3.A.29 ya las cubre, pueden quitarse de aquí.
-14. **Anexo 1 escaneado (P37)**: se ha quitado porque no tiene fuente identificable (¿Maté y Pérez Domínguez, 2007, o Pérez Domínguez, 2004?). Si Víctor confirma el manual y lo quiere, se puede rehacer en TikZ con su fuente.
+10. **Salarios hedónicos (III.3)**: se mencionan sin cita porque no hay en el `.bib` una fuente comprobada (C33 citaba a Viscusi sin referencia). Si se quiere citar, la referencia clásica es Thaler y Rosen (1976), que habría que añadir y comprobar. **Resuelta por Claude (pasada final):** añadida la cita de Thaler y Rosen (1976), en Terleckyj (ed.), *Household Production and Consumption*, NBER, pp. 265-302, comprobada en NBER y EconPapers.
+11. **Ejemplos de bienes inferiores (II.1)**: «la comida rápida o las marcas blancas» se conservan como ejemplos posibles, sin dato que lo respalde. Pueden quitarse. **Resuelta por Claude (pasada final):** se mantienen: ya van como ejemplos posibles («pueden servir de ejemplo») y el texto (y el guion) los presenta así, sin afirmar un dato.
+12. **Enlace del test (Anexo C)**: el cuestionario de quia.com funciona, pero se titula «A06» (numeración anterior) y no se sabe quién lo mantiene (P49, V57). Decidir si se conserva. **Resuelta por Claude (pasada final):** ya no está: el anexo C solo enlaza el simulador de la web (CRITERIOS §4 manda quitar los enlaces de quia.com). Sin cambios.
+13. **Preferencias macro (Anexo B)**: KPR, GHH y JR se dejan como bloque de test con remisión a 3.A.29, como proponían C52 y K11. Si 3.A.29 ya las cubre, pueden quitarse de aquí. **Resuelta por Claude (pasada final):** el 3.A.29 no las desarrolla (ni KPR, ni GHH, ni JR), así que se quedan aquí como bloque para el test con su remisión. Sin cambios.
+14. **Anexo 1 escaneado (P37)**: se ha quitado porque no tiene fuente identificable (¿Maté y Pérez Domínguez, 2007, o Pérez Domínguez, 2004?). Si Víctor confirma el manual y lo quiere, se puede rehacer en TikZ con su fuente. **Decide Víctor**: hace falta que confirmes el manual; recomendado no rehacerlo, porque el cuerpo y los gráficos ya cubren la cuasiconcavidad.
 
 ## Cambios tras la revisión de Víctor (10 oct. 2026)
 
@@ -607,7 +671,7 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
   - Quitada la nota duplicada de Deaton del anexo de sistemas de demanda; Thaler, «economía conductual» (no «del comportamiento»), como en el resto del temario.
 - **4.º ejercicio**: participación femenina \vertema{4.A.16} (producción doméstica); IPC español \vertema{4.A.1} e índice de precios de vivienda del INE \vertema{4.A.11} (precios hedónicos); y la descomposición de Slutsky aplicada a los impuestos (exceso de gravamen) \vertema{4.B.9}, en «Extensiones».
 - **Dichos y refranes**: solo está el del enganche, «Sobre gustos no hay nada escrito» (retomado en la idea final); se conserva. No había otros ni en el tema ni en la ficha.
-- Dudas (13/11/2026): las motivaciones se han tomado de las notas ya comprobadas en otros temas (nobelprize.org devuelve 403 a la descarga automática hoy); la de Goldin, de memoria de la motivación oficial («for having advanced our understanding of women's labour market outcomes»), motivación no comprobada en web hoy. ¿Sobran las notas de los epónimos (Leontief, Frisch)? Se han puesto por la regla de «todo Nobel mencionado».
+- Dudas (13/11/2026): las motivaciones se han tomado de las notas ya comprobadas en otros temas (nobelprize.org devuelve 403 a la descarga automática hoy); la de Goldin, de memoria de la motivación oficial («for having advanced our understanding of women's labour market outcomes»), motivación no comprobada en web hoy. ¿Sobran las notas de los epónimos (Leontief, Frisch)? Se han puesto por la regla de «todo Nobel mencionado». **Resuelta por Claude (pasada final):** la motivación de Goldin coincide con la oficial («for having advanced our understanding of women's labour market outcomes»); las notas de Leontief y Frisch se quedan por la regla de «todo Nobel mencionado».
 
 
 ## Listas en las notas al pie (15/11/2026)

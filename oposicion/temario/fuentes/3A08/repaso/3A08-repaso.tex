@@ -9,8 +9,9 @@
 % ==========================================================================
 \bloque[2,5]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: \emph{¿puede una teoría explicar lo que elegimos sin ver lo que queremos?}
+\item \textbf{Enganche}: «\emph{Sobre gustos no hay nada escrito}»: lo que a cada uno le gusta nadie lo ve desde fuera.
   \begin{itemize}
+  \item \emph{¿Puede una teoría explicar lo que elegimos sin ver lo que queremos?}
   \item \autor{Marshall} (1890): «el estudio de la humanidad en los asuntos ordinarios de la vida»; pocas decisiones más ordinarias que qué comprar.
   \end{itemize}
 \item \textbf{Relevancia}:
@@ -229,6 +230,7 @@ Elasticidades: $\varepsilon_{x_i,p_j}=\varepsilon^h_{i,p_j}-s_j\,\varepsilon_{x_
 \item \emph{Netas}, por el ES cruzado: \concepto{sustitutivos} o \concepto{complementarios netos}: \emph{simétricas} ($\partial h_i/\partial p_j=\partial h_j/\partial p_i$).
   \begin{itemize}
   \item Homogeneidad de $h$ $\Rightarrow$ todo bien tiene un sustitutivo neto; con 2~bienes, ambos lo son.
+  \item Sustitutivos netos e $i$ inferior $\Rightarrow$ solo sustitutivos brutos; complementarios netos e $i$ normal $\Rightarrow$ solo complementarios brutos.
   \end{itemize}
 \end{itemize}
 \subsub{d) Agregación de \autor{Cournot} y restricciones}
@@ -282,6 +284,7 @@ Los 3~desarrollos acercan la teoría a lo observable: la preferencia revelada re
   \item matriz de \autor{Slutsky} semidefinida negativa, \emph{no} simétrica (con 2~bienes, basta: \autor{Rose}, 1958).
   \end{enumerate}
 \item \concepto{Teorema de \autor{Houthakker}}: AFPR $\Leftrightarrow$ preferencias racionales: revelada y ordinal, equivalentes.
+\item \concepto{Obtención de las curvas de indiferencia} (\autor{Samuelson}, 1948): las cestas reveladas peores y mejores las acotan; salen convexas.
 \item \emph{Extensiones}: \concepto{teorema de \autor{Afriat}} (1967): datos \emph{finitos} compatibles con $U$ $\Leftrightarrow$ GARP; índices de \autor{Laspeyres} y \autor{Paasche} \vertema{3.A.9}.
 \item \emph{Evidencia}: \autor{Varian} (1982): contraste \emph{no paramétrico} del GARP.
 \item \emph{Valoración}: demanda sin utilidad y contrastable; identifica elección y bienestar (\autor{Sen}, 1973).
@@ -295,7 +298,7 @@ Los 3~desarrollos acercan la teoría a lo observable: la preferencia revelada re
 \centering $\optim{\max}{\{x_i,t_i\},\,t_w}{U(Z_1,\dots,Z_m)}{Z_i=f_i(x_i,t_i)\\ \textstyle\sum_ip_ix_i=w\,t_w+\overline{W}\\ \textstyle\sum_it_i+t_w=T}$
 \end{formula}
 \item \emph{Desarrollo}: \concepto{renta completa} $\sum_i(p_ix_i+w\,t_i)=wT+\overline{W}$; \concepto{precio sombra} $\pi_i=p_ib_i+w\,\ell_i$.
-\item \emph{Implicaciones}: $w\uparrow$ $\Rightarrow$ se sustituye tiempo por bienes (comida preparada, guarderías): mujer en el mercado de trabajo \vertema{3.A.25}.
+\item \emph{Implicaciones}: $w\uparrow$ $\Rightarrow$ se sustituye tiempo por bienes (comida preparada, guarderías): mujer en el mercado de trabajo \vertema{3.A.25}; los precios actúan también por la tecnología del hogar (nuevos efectos sustitución).
 \item \emph{Extensiones y valoración}: \autor{Gronau} (1977): trabajo doméstico $\neq$ ocio; educación, matrimonio, fecundidad; el PIB omite la producción doméstica.
 \end{itemize}
 
@@ -315,8 +318,12 @@ Los 3~desarrollos acercan la teoría a lo observable: la preferencia revelada re
 \begin{itemize}
 \item \emph{Implicaciones}: precio implícito = valoración marginal = coste marginal; $p(\vect{z})$, lugar de equilibrios.
 \item \emph{Extensiones}: bienes sin mercado (ruido, vivir frente al Retiro) \vertema{4.B.6}; salarios hedónicos.
-\item \emph{Evidencia}: 2~etapas, $\ln p_v=\beta_0+\sum_j\beta_jz_{vj}+u_v$; IPC: \autor{Boskin} (1996), sesgo \dato{1,1 p./año}{EE.\,UU.}; IPV del INE.
-\item \emph{Valoración}: forma funcional; 2.ª etapa mal identificada; equilibrio dudoso en vivienda.
+\item \emph{Evidencia}: estimación en 2~etapas (la 2.ª, mal identificada); índices con ajuste de calidad:
+  \begin{itemize}
+  \item \autor{Boskin} (1996): el IPC de EE.\,UU. sobrestimaba la inflación unos \dato{1,1 p./año}{}, \dato{0,6}{} por calidad y productos nuevos;
+  \item lo usan Eurostat, el BLS y el IPV del INE; el IPC español, apenas.
+  \end{itemize}
+\item \emph{Valoración}, 4~límites: forma funcional y variables omitidas; 2.ª etapa mal identificada; equilibrio dudoso (vivienda); precios marginales, no para cambios grandes.
 \end{itemize}
 
 % ==========================================================================
@@ -328,10 +335,17 @@ Los 3~desarrollos acercan la teoría a lo observable: la preferencia revelada re
   \item \autor{Slutsky}: normales, inferiores y \autor{Giffen}, brutas y netas;
   \item 3~desarrollos hacia los datos.
   \end{itemize}
-\item \textbf{Relevancia}: de elasticidades a índices de precios.
+\item \textbf{Relevancia}:
+  \begin{itemize}
+  \item \emph{Lógica}: de las preferencias a la demanda y vuelta (\autor{Houthakker}; integrabilidad \vertema{3.A.9}).
+  \item \emph{Aplicada}: \autor{Afriat} contrasta sin formas funcionales; los hedónicos miden precios y bienestar.
+  \end{itemize}
 \item \textbf{Extensiones}: \vertema{3.A.9} \vertema{3.A.10} \vertema{3.A.29} \vertema{3.A.16} \vertema{3.A.25} \vertema{3.A.11}.
-\item \textbf{Opinión}: lógica más sólida que evidencia (\autor{Deaton}-\autor{Muellbauer}, 1980); \emph{como si}; conducta (\autor{Simon}, \autor{Kahneman}-\autor{Tversky}, \autor{Thaler}).
-\item \textbf{Idea final}: sí, con matices: basta pedir coherencia a las elecciones para una demanda refutable.
+\item \textbf{Opinión}: lógica más sólida que evidencia (\autor{Deaton}-\autor{Muellbauer}, 1980); el \emph{como si} de \autor{Friedman} no basta: conducta (\autor{Simon}, \autor{Kahneman}-\autor{Tversky}, \autor{Thaler}) y el «tonto racional» (\autor{Sen}, 1977); la amplían, no la sustituyen.
+\item \textbf{Idea final}: sí, con matices: \emph{sobre gustos no hay nada escrito, pero sobre cómo se elige, sí}.
+  \begin{itemize}
+  \item Basta pedir coherencia a las elecciones para obtener una demanda que los datos pueden refutar.
+  \end{itemize}
 \end{itemize}
 
 % ==========================================================================
