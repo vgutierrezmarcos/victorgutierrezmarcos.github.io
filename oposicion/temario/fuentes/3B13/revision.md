@@ -328,3 +328,8 @@ El artifact de dudas no está disponible en esta sesión: en cada duda se ha apl
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2, sin cambios (ya era corta: el *forward* predice mal por las primas y los sucesos raros; reservas, *swaps*, *carry* que baja en ascensor).
+- Frase célebre: no tenía asignada.

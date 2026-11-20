@@ -289,3 +289,11 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 2 viñetas → 3: se mantiene la de Fisher y Ramsey, se aprieta la del agente de vida infinita frente a las preguntas entre generaciones y se añade la frase de **George Box**: «todos los modelos son falsos, pero algunos son útiles», y cada uno (horizonte infinito, generaciones solapadas) lo es para su pregunta.
+- Fuente comprobada: la frase literal («All models are wrong but some are useful») es el título de un epígrafe de Box (1979), «Robustness in the Strategy of Scientific Model Building», en Launer y Wilkinson (eds.), *Robustness in Statistics*, Academic Press, p. 202 (`Box1979Robustness`, nueva en el .bib). La idea ya está en Box (1976, *JASA*: «Since all models are wrong…») y se repite en Box y Draper (1987); en la nota se dice así.
+- Ficha: la frase en una línea.

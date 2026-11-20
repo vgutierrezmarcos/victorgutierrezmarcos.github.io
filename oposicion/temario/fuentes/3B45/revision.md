@@ -151,3 +151,8 @@ Ninguna nota lo necesitaba.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - **B45-14. Refrán del enganche.** Opciones: (a) «Quien bien te quiere te hará llorar» (las reglas fiscales) **[aplicada]**; (b) «Cuando las barbas de tu vecino veas pelar, pon las tuyas a remojar» (el contagio de la crisis de la deuda de 2010-2012: Grecia, Irlanda, Portugal y después España); (c) «Más vale tarde que nunca» (la reforma de las reglas de 2024, tras años de reglas procíclicas e incumplidas).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt (antes 10,5: el tema ocupa ahora más columnas; fuera el gráfico de la cronología, que repite la lista de I.3).
+
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta larga → 2: (1) mejor marco, credibilidad en juego (10 PDE, cláusula de defensa, incumplimientos); (2) sin capacidad fiscal permanente, la próxima crisis dependerá de una cumbre, con la frase de Monnet («ha funcionado, pero siempre a última hora»).
+- **Frase célebre**: Sí, Monnet y no Goodhart (casaba mejor con la capacidad fiscal y SURE/NGEU, y el 3.B.45 no podía llevar las 2). Monnet, *Mémoires* (Fayard, 1976): «J'ai toujours pensé que l'Europe se ferait dans les crises, et qu'elle serait la somme des solutions qu'on apporterait à ces crises» (comprobada en Le Grand Continent, 9/5/2022, que reproduce el pasaje). 2.º tema con esta frase, tras el 3.B.36. Entrada `Monnet1976Memoires` copiada al `.bib`. Ficha: «Monnet: Europa se haría en las crisis».

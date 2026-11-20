@@ -25,11 +25,11 @@
 \item \textbf{Contextualización}: \concepto{derivado}: contrato cuyo valor depende del de otro activo, el \concepto{subyacente}.
   \begin{itemize}
   \item 3.ª familia, con renta variable \vertema{3.B.23} y fija \vertema{3.B.24}.
-  \item 3 rasgos: vencimiento; suma cero en pagos (no en bienestar); no financian $\Rightarrow$ \concepto{apalancamiento}.
+  \item 3~rasgos: vencimiento; suma cero en pagos (no en bienestar); no financian $\Rightarrow$ \concepto{apalancamiento}.
   \item Tipos: futuros (obligación), opciones (derecho), \emph{swaps} (cartera de \emph{forwards}), de crédito. Usos: cubrir, especular, arbitrar.
   \end{itemize}
 \item \textbf{Problemática}: ¿qué pagan? ¿Cuánto valen y por qué no dependen de expectativas? ¿Sus mercados estabilizan?
-\item \textbf{Estructura}: mismo guion de 5 pasos (definición, tipos, pago, estrategias, valoración): \hyperref[rep:I]{I} futuros, \hyperref[rep:II]{II} opciones, \hyperref[rep:III]{III} \emph{swaps}; mercados OTC en la conclusión.
+\item \textbf{Estructura}: mismo guion de 5~pasos (definición, tipos, pago, estrategias, valoración): \hyperref[rep:I]{I} futuros, \hyperref[rep:II]{II} opciones, \hyperref[rep:III]{III} \emph{swaps}; mercados OTC en la conclusión.
 \end{itemize}
 \esquemacante{%
 \apartadocante{Introducción}{2,5}
@@ -59,9 +59,9 @@ Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo dec
 
 \sub{I.1. Definición\label{rep:I.1}}
 \begin{itemize}
-\item \concepto{\emph{Forward}} o \concepto{futuro}: 2 partes se \emph{obligan} hoy a comprar y vender un subyacente en $T$ a un precio $F_0$ fijado hoy.
+\item \concepto{\emph{Forward}} o \concepto{futuro}: 2~partes se \emph{obligan} hoy a comprar y vender un subyacente en $T$ a un precio $F_0$ fijado hoy.
   \begin{itemize}
-  \item 5 elementos: contrato; obligación para las 2 (\concepto{largo} compra, \concepto{corto} vende); subyacente y cantidad; $F_0$; $T$.
+  \item 5~elementos: contrato; obligación para las 2 (\concepto{largo} compra, \concepto{corto} vende); subyacente y cantidad; $F_0$; $T$.
   \item Al firmar nadie paga (sin prima). + prima = opción; + varias fechas = \emph{swap}.
   \end{itemize}
 \end{itemize}
@@ -94,7 +94,7 @@ Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo dec
   \[\frac{\mathrm{VN}\,(R_M-R_K)\,(T_2-T_1)}{1+R_M\,(T_2-T_1)}\]
   \end{formula}
   \begin{itemize}
-  \item Compra quien teme una \emph{subida}. FRA 2x3: tipo a 1 mes dentro de 2.
+  \item Compra quien teme una \emph{subida}. FRA 2x3: tipo a 1~mes dentro de 2.
   \end{itemize}
 \end{itemize}
 
@@ -122,7 +122,7 @@ Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo dec
 \sub{I.5. Valoración: la ausencia de arbitraje\label{rep:I.5}}
 \subsub{a) Paridad \emph{spot-forward}}
 \begin{itemize}
-\item \emph{Idea}: 2 formas de tener el subyacente en $T$ (comprar y guardar o comprar a plazo) deben costar igual.
+\item \emph{Idea}: 2~formas de tener el subyacente en $T$ (comprar y guardar o comprar a plazo) deben costar igual.
 \item \emph{Supuestos}: sin costes ni impuestos; prestar y pedir a $r$; venta en corto; sin contrapartida, rentas ni almacenamiento.
 \item \emph{Cash and carry}: pedir $S_0$, comprar, vender a plazo; en $T$, $F_0-S_0e^{rT}$ seguro sin dinero propio $=0$ (si $<0$, \emph{reverse}):
   \funcionclave{F_0=S_0\,e^{rT}}
@@ -141,7 +141,7 @@ Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo dec
 \end{itemize}
 \subsub{b) Expectativas, \emph{normal backwardation} y \emph{contango}}
 \begin{itemize}
-\item ¿Predice $F_0$ el contado futuro? 3 hipótesis:
+\item ¿Predice $F_0$ el contado futuro? 3~hipótesis:
   \begin{itemize}
   \item \concepto{Expectativas}: $F_0=\mathbb{E}_0[S_T]$.
   \item \concepto{\emph{Normal backwardation}} (\autor{Keynes}, 1930; \autor{Hicks}, 1939): se cubren los productores (venden) $\Rightarrow F_0<\mathbb{E}_0[S_T]$, $F_t$ sube.
@@ -152,7 +152,7 @@ Un futuro fija hoy el precio de mañana; su pago es lineal y su precio no lo dec
   \item $\beta>0$: \emph{backwardation}; $\beta=0$: expectativas; $\beta<0$: \emph{contango}.
   \end{itemize}
 \end{itemize}
-\graficorepaso[0.6\linewidth]{contango}{Las 3 hipótesis: todas convergen a $S_T$}
+\graficorepaso[0.6\linewidth]{contango}{Las 3~hipótesis: todas convergen a $S_T$}
 \begin{itemize}
 \item \emph{En el mercado}: \emph{contango} si $F_0>S_0$ ($r+u>y$); \emph{backwardation} si $F_0<S_0$ (escasez). WTI 2020: \emph{contango} extremo.
 \item \emph{Evidencia}: prima en materias primas (\autor{Gorton}-\autor{Rouwenhorst}, 2006), inestable (\autor{Fama}-\autor{French}, 1987); sesgo del \emph{forward} en divisas (\autor{Fama}, 1984) \vertema{3.B.13}.
@@ -179,7 +179,7 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
 \begin{itemize}
 \item \concepto{Opción}: \emph{derecho}, no obligación, de comprar (\concepto{\emph{call}}) o vender (\concepto{\emph{put}}) un subyacente a un precio y fecha fijados hoy.
   \begin{itemize}
-  \item 6 elementos: contrato; derecho del comprador, obligación del vendedor; subyacente; \concepto{precio de ejercicio} $K$; vencimiento $T$; \concepto{prima} ($c$, $p$ europeas; $C$, $P$ americanas).
+  \item 6~elementos: contrato; derecho del comprador, obligación del vendedor; subyacente; \concepto{precio de ejercicio} $K$; vencimiento $T$; \concepto{prima} ($c$, $p$ europeas; $C$, $P$ americanas).
   \item CBOE (1973); en España, MEFF (acciones e IBEX~35).
   \end{itemize}
 \end{itemize}
@@ -205,10 +205,10 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
   \end{itemize}
 \item «El que paga, manda»: la prima compensa el riesgo del vendedor.
 \end{itemize}
-\graficorepaso[0.7\linewidth]{pagos-opciones}{Pago (gris) y beneficio (color) de las 4 posiciones simples}
+\graficorepaso[0.7\linewidth]{pagos-opciones}{Pago (gris) y beneficio (color) de las 4~posiciones simples}
 
 \sub{II.4. Estrategias\label{rep:II.4}}
-\subsub{a) Especulación: 4 familias}
+\subsub{a) Especulación: 4~familias}
 \begin{itemize}
 \item \emph{Simples}: una opción; al alza, comprar \emph{call} o vender \emph{put}.
 \item \emph{Complejas}: \emph{calls} y \emph{puts}, mismo $K$ y $T$, todas compradas o vendidas: apuesta por la \emph{volatilidad}.
@@ -247,7 +247,7 @@ La opción separa el lado bueno del malo a cambio de una prima, que se calcula r
 \end{itemize}
 \subsub{b) Valor intrínseco y temporal}
 \begin{itemize}
-\item Prima = \concepto{valor intrínseco} ($\max(S_0-K,0)$) + \concepto{valor temporal} (máximo en el dinero; 0 al vencer).
+\item Prima = \concepto{valor intrínseco} ($\max(S_0-K,0)$) + \concepto{valor temporal} (máximo en el dinero; 0~al vencer).
 \item \emph{Cotas}: $\max(S_0-Ke^{-rT},0)\leq c\leq S_0$; $p\leq Ke^{-rT}$.
   \begin{itemize}
   \item \emph{Call} americana sin dividendos nunca se ejerce antes: $C=c$ (\autor{Merton}, 1973).
@@ -365,15 +365,15 @@ Un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: 
 
 \sub{III.5. Valoración\label{rep:III.5}}
 \begin{itemize}
-\item Vale 0 al firmar; después, suma de \emph{forwards} descontados:
+\item Vale 0~al firmar; después, suma de \emph{forwards} descontados:
   \begin{formula}
   \[V_{\mathrm{swap}}=\sum_i (F_i-K_i)\,e^{-r_it_i}\]
   \end{formula}
-\item \emph{IRS}: serie de FRA con los tipos a plazo de la ETTI; o 2 bonos: $V=B_{\mathrm{fix}}-B_{\mathrm{fl}}$ \vertema{3.B.24}.
+\item \emph{IRS}: serie de FRA con los tipos a plazo de la ETTI; o 2~bonos: $V=B_{\mathrm{fix}}-B_{\mathrm{fl}}$ \vertema{3.B.24}.
   \begin{itemize}
   \item El variable vale el nominal en cada revisión; $R_s$ hace que el fijo también.
   \end{itemize}
-\item \emph{Currency swap}: \emph{forwards} de divisas (PCI) o 2 bonos.
+\item \emph{Currency swap}: \emph{forwards} de divisas (PCI) o 2~bonos.
 \end{itemize}
 
 % ==========================================================================
@@ -397,7 +397,7 @@ Un \emph{swap} no es un instrumento nuevo, sino una cartera de \emph{forwards}: 
 \item \textbf{Estabilidad}: reparten riesgo y revelan información; pero apalancamiento, interconexión (AIG) y márgenes procíclicos (2020).
 \item \textbf{Relevancia}: bancos centrales leen sus precios; el Tesoro cubre con \emph{swaps}.
 \item \textbf{Extensiones}: \vertema{3.A.34} \vertema{3.B.2} \vertema{3.B.4} \vertema{3.B.13} \vertema{3.B.23} \vertema{3.B.24} \vertema{3.B.26}.
-\item \textbf{Opinión}: el riesgo no está en el instrumento sino en el apalancamiento y la opacidad.
+\item \textbf{Opinión}: ni «armas de destrucción masiva» (\autor{Buffett}): el riesgo no está en el instrumento sino en el apalancamiento y la opacidad.
   \begin{itemize}
   \item La reforma funcionó (2020: ninguna cámara cayó); pero el riesgo se concentra en ellas.
   \end{itemize}

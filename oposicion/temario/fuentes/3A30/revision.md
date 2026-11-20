@@ -350,3 +350,11 @@ anotado); entradas en `datos-actualizables.yaml`.
 - **Enganche nuevo**: el refrán («tener mucho no es lo mismo que vivir bien»); hasta los años 30 ni siquiera se sabía cuánto producía un país; el encargo del Senado de 1932 y la primera estimación de Kuznets (enero de 1934), con su aviso en ese mismo informe de que de esa cifra «difícilmente se puede deducir el bienestar de una nación» (nota con el original inglés, Senate Document 124, pág. 7); el PIB del INE a los 30 días (+0,6 % en el 3T 2026); y la contabilidad nacional, que mide muy bien cuánto se produce y cuánto se gana, «el refrán, y Kuznets, recuerdan que eso no es todo». Sale el aforismo «no se puede gestionar lo que no se puede medir» del enganche (sigue en la idea final).
 - **Idea final**: responde a la pregunta del principio (las cifras sí resumen la actividad, a los 30 días) y vuelve al refrán: el PIB dice muy bien cuánto se produce, pero no cuánto mejor se vive; el reto es medir igual de bien lo que deja fuera.
 - **III.3**: las limitaciones remiten al aviso de Kuznets «como se vio al principio». Mapa de la exposición (`graficos/mapa-tema.tex`) y ficha (enganche e idea final) al día; la ficha sigue en 4 páginas a 9 pt. `verificar-tema.py`: 0 errores.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 2 viñetas → 3: se mantienen las 2 (al PIB se le pide lo que no promete; completarlo como hace el SCN 2025, algo más corta) y se añade en medio la de **Solow**: «la era de los ordenadores se ve en todas partes, salvo en las estadísticas de productividad», como ejemplo de que lo que hay que mejorar es la medición de lo nuevo (servicios digitales gratuitos, datos, IA).
+- Fuente comprobada: Robert M. Solow, «We'd Better Watch Out», *New York Times Book Review*, 12/7/1987, p. 36 (`Solow1987Watch`, nueva). Original en la nota.
+- Ficha: la frase en pocas palabras.

@@ -246,3 +246,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 (larga) → 2 cortas: consenso en la joroba y el retraso; menos en las compras de activos, con postura (el tipo, instrumento principal; el balance, para cuando el tipo toca su límite).
+- Frase célebre: ninguna (no hay asignada a este tema).
+- Ficha: opinión al día en una línea.

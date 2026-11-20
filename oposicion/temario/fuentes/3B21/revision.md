@@ -183,3 +183,8 @@ Ninguna nota lo necesitaba.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 1 (ya era corta: el no sistema resiste por la cooperación de los bancos centrales y la confianza en el dólar). Sin cambios en el tema ni en la ficha.
+- Frase célebre: no (no tiene asignada).

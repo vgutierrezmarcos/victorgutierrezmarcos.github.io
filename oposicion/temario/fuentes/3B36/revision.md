@@ -189,3 +189,9 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
 
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 2 (más corto).
+- Frase: Jean Monnet, *Mémoires* (Fayard, 1976): «J'ai toujours pensé que l'Europe se ferait dans les crises, et qu'elle serait la somme des solutions qu'on apporterait à ces crises». Original en nota; `Monnet1976Memoires` añadido al .bib. El cuerpo (apartado de después de Lisboa) ya la cita entera; en la opinión va en forma breve, aplicada a la ampliación tras la guerra de Ucrania. La recapitulación alude a Schuman («por realizaciones concretas») sin cita literal.
+- Ficha: opinión con «se haría en las crisis» (Monnet, 1976).

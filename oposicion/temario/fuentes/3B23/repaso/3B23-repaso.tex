@@ -22,7 +22,7 @@
   \end{itemize}
 \item \textbf{Contextualización}: \concepto{inversión}: recursos hoy por beneficios futuros (tiempo y riesgo).
   \begin{itemize}
-  \item 3 familias: \concepto{renta variable}, renta fija \vertema{3.B.24}, derivados \vertema{3.B.25}.
+  \item 3~familias: \concepto{renta variable}, renta fija \vertema{3.B.24}, derivados \vertema{3.B.25}.
   \item Cartera (1952, 1958), equilibrio (CAPM, APT), eficiencia (\autor{Fama}, 1970); Nobel 1990, 2013, 2017.
   \end{itemize}
 \item \textbf{Problemática}: ¿cómo se miden rentabilidad y riesgo? ¿Qué riesgo paga el mercado? ¿Se le puede batir?
@@ -71,7 +71,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
   \end{formula}
   \begin{itemize}
   \item $\mathbb{E}[r_i]$, \concepto{rentabilidad esperada}; $\sigma_i$, \concepto{riesgo}; $\sigma_{ij}$, cuánto se mueven juntas.
-  \item \concepto{Prima de riesgo} en EE.\,UU.: \dato{$\approx$6,6 pt/año sobre letras}{Damodaran, 1928-2025}.
+  \item \concepto{Prima de riesgo} en EE.\,UU.: \dato{$\approx$6,6~pt/año sobre letras}{Damodaran, 1928-2025}.
   \end{itemize}
 \item \emph{3 formas de analizar}: aporte a la cartera (\hyperref[rep:I.2]{I.2}), valor intrínseco (\hyperref[rep:III.1]{III.1}), precios pasados (\hyperref[rep:III.2]{III.2}).
 \end{itemize}
@@ -79,7 +79,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
 \sub{I.2. Teoría de la elección de cartera\label{rep:I.2}}
 \begin{itemize}
 \item Un activo se juzga por cómo cambia la media y el riesgo de la cartera: deciden las \emph{covarianzas}.
-\item Inversor averso de media-varianza \vertema{3.A.10}; 3 modelos, cada uno corrige al anterior.
+\item Inversor averso de media-varianza \vertema{3.A.10}; 3~modelos, cada uno corrige al anterior.
 \end{itemize}
 \subsub{a) Media y varianza (\autor{Markowitz}, 1952)}
 \begin{itemize}
@@ -99,7 +99,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
   \item intermedia: curva, más curvada cuanto menor corr.
   \end{itemize}
 \end{itemize}
-\graficorepaso[0.64\linewidth]{correlaciones}{Combinaciones de 2 activos según la correlación}
+\graficorepaso[0.64\linewidth]{correlaciones}{Combinaciones de 2~activos según la correlación}
 \begin{itemize}
 \item \emph{2 etapas}:
   \begin{enumerate}
@@ -107,13 +107,13 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
   \item \emph{subjetiva}: tangencia con la curva de indiferencia más alta; el más averso, más a la izquierda.
   \end{enumerate}
 \end{itemize}
-\graficorepaso[0.7\linewidth]{markowitz}{Frontera eficiente y óptimo de 2 inversores}
+\graficorepaso[0.7\linewidth]{markowitz}{Frontera eficiente y óptimo de 2~inversores}
 \begin{itemize}
 \item \emph{Implicaciones}: diversificar reduce riesgo sin reducir rentabilidad (si corr $<1$); importa la contribución: $\partial\sigma_p^2/\partial w_i=2\,\mathrm{Cov}(r_i,r_p)$.
 \item \emph{Límites}:
   \begin{enumerate}
   \item no ordena las eficientes (\autor{Tobin});
-  \item $n(n+3)/2$ parámetros: 125.750 para 500 títulos (diagonal);
+  \item $n(n+3)/2$ parámetros: 125.750~para 500~títulos (diagonal);
   \item sensible a errores en las medias (\autor{Michaud}, 1989);
   \item normativo: no dice qué rentabilidad exigir (CAPM).
   \end{enumerate}
@@ -158,7 +158,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
   \[\sigma_p^2=\underbrace{\beta_p^2\,\sigma_M^2}_{\text{sistemático}}+\underbrace{\textstyle\sum_{i}w_i^2\,\sigma_{\varepsilon_i}^2}_{\text{específico}}\]
   \end{formula}
   \begin{itemize}
-  \item $3n+2$ parámetros (302 frente a 5.150 con 100 títulos).
+  \item $3n+2$ parámetros (302~frente a 5.150~con 100~títulos).
   \item $w_i=1/n$: el específico $\to0$; el sistemático $\to\bar\beta^{\,2}\sigma_M^2$: importa la beta.
   \end{itemize}
 \end{itemize}
@@ -197,7 +197,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
 \subsubsub{Implicaciones}
 \begin{itemize}
 \item Todo activo bien valorado está en la SML: igual para todos el \emph{precio} $\lambda_M$, distinta la prima $\beta_i\lambda_M$.
-\item \concepto{Alfa de \autor{Jensen}} (1968): $\alpha_i>0$, infravalorado (se compra, $P\uparrow$, $\mathbb{E}[r]\downarrow$); 115 fondos 1945-64, alfa neto \emph{negativo}.
+\item \concepto{Alfa de \autor{Jensen}} (1968): $\alpha_i>0$, infravalorado (se compra, $P\uparrow$, $\mathbb{E}[r]\downarrow$); 115~fondos 1945-64, alfa neto \emph{negativo}.
 \item \concepto{Ratio de \autor{Treynor}} $(\mathbb{E}[r_i]-r_f)/\beta_i$ (sistemático) vs. \autor{Sharpe} (total).
 \end{itemize}
 \graficorepaso[0.64\linewidth]{sml}{SML: $A$ infravalorado ($\alpha_A>0$), $B$ sobrevalorado}
@@ -217,7 +217,7 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
 \begin{itemize}
 \item Lineal y positiva pero \emph{más plana} (\autor{Black}-\autor{Jensen}-\autor{Scholes}, 1972; \autor{Fama}-\autor{MacBeth}, 1973).
 \item Tamaño y valor explican; la beta, apenas (\autor{Fama}-\autor{French}, 1992).
-\item Aun así, lo usan \dato{casi 3 de cada 4 directores financieros}{Graham-Harvey, 2001}: coste de los fondos propios, CMPC \vertema{3.B.2}.
+\item Aun así, lo usan \dato{casi 3~de cada 4~directores financieros}{Graham-Harvey, 2001}: coste de los fondos propios, CMPC \vertema{3.B.2}.
 \item \emph{Límites}: beta estimada (\autor{Blume}: $\beta^{\mathrm{aj}}=\tfrac23\hat\beta+\tfrac13$); con deuda, \autor{Hamada} (1972) \vertema{3.B.3}.
 \item \concepto{Crítica de \autor{Roll}} (1977): solo se contrasta la eficiencia de $M$, que no se observa.
   \begin{itemize}
@@ -238,10 +238,10 @@ El riesgo de una acción no es su volatilidad aislada sino lo que aporta al de u
   \begin{itemize}
   \item macro (\autor{Chen}-\autor{Roll}-\autor{Ross}, 1986): producción, inflación no anticipada, prima de crédito, pendiente;
   \item características (\autor{Fama}-\autor{French}, 1993): mercado, SMB (tamaño), HML (valor);
-  \item \emph{momentum} (\autor{Carhart}, 1997); 5 factores (2015).
+  \item \emph{momentum} (\autor{Carhart}, 1997); 5~factores (2015).
   \end{itemize}
 \item \emph{Valoración}: supuestos débiles, escapa a \autor{Roll}; pero no dice cuántos ni cuáles factores.
-\item \emph{CAPM vs. APT}: equilibrio/no arbitraje; 1 factor/varios; $M$ imprescindible/no.
+\item \emph{CAPM vs. APT}: equilibrio/no arbitraje; 1~factor/varios; $M$ imprescindible/no.
   \begin{itemize}
   \item En común: prima sobre $r_f$, solo sistemático, lineal.
   \end{itemize}
@@ -333,9 +333,9 @@ El fundamental estima el valor intrínseco y apuesta a que el precio converge (e
   \item PER de mercado $<$ teórico: infravalorada (estrategia de valor).
   \end{itemize}
 \item \emph{Múltiplos}: \concepto{PER} (alto $\neq$ caro); \concepto{EV/EBIT}, sin efecto del endeudamiento.
-\item \concepto{CAPE} (\autor{Campbell}-\autor{Shiller}, 1988): precio / beneficios reales medios de 10 años.
+\item \concepto{CAPE} (\autor{Campbell}-\autor{Shiller}, 1988): precio / beneficios reales medios de 10~años.
   \begin{itemize}
-  \item S\&P 500: \dato{40,7 (oct.\ 2026); media 17,8; máx.\ 44,2 (1999)}{Shiller}: rentabilidad baja a 10 años, no dice cuándo.
+  \item S\&P 500: \dato{40,7 (oct.\ 2026); media 17,8; máx.\ 44,2 (1999)}{Shiller}: rentabilidad baja a 10~años, no dice cuándo.
   \end{itemize}
 \end{itemize}
 
@@ -352,14 +352,14 @@ El fundamental estima el valor intrínseco y apuesta a que el precio converge (e
 \item \emph{Herramientas}:
   \begin{itemize}
   \item \concepto{soporte} y \concepto{resistencia}; rota, la resistencia pasa a soporte;
-  \item \concepto{medias móviles}: cruce \emph{dorado} (50 sobre 200: compra) y \emph{de la muerte};
+  \item \concepto{medias móviles}: cruce \emph{dorado} (50~sobre 200: compra) y \emph{de la muerte};
   \item \concepto{velas japonesas}; RSI (\autor{Wilder}, 1978; $>70$ sobrecomprado).
   \end{itemize}
 \end{itemize}
 \graficorepaso[0.75\linewidth]{soporte-resistencia}{Soporte, resistencia y media móvil}
 \graficorepaso[0.85\linewidth]{sp500-soporte-medias}{S\&P 500: cruces de 2025 y soporte de 6.980}
 \begin{itemize}
-\item \emph{Ejemplo}: S\&P 500, 6.980 puntos, resistencia en ene.-feb. 2026 y soporte tras la ruptura del 15/4/2026.
+\item \emph{Ejemplo}: S\&P 500, 6.980~puntos, resistencia en ene.-feb. 2026 y soporte tras la ruptura del 15/4/2026.
 \item \emph{Evidencia}: medias y rupturas predecían el Dow (\autor{Brock}-\autor{Lakonishok}-\autor{LeBaron}, 1992); con \emph{data snooping} desaparece (\autor{Sullivan}-\autor{Timmermann}-\autor{White}, 1999).
 \item \emph{Valoración}: sin teoría, sesgo de recuerdo; a favor, \emph{momentum} y profecías autocumplidas a corto.
 \end{itemize}
@@ -370,7 +370,7 @@ El fundamental estima el valor intrínseco y apuesta a que el precio converge (e
 \item \textbf{Recapitulación}: importa lo que una acción aporta a la cartera; solo se paga lo no diversificable; con eficiencia, gestión pasiva; anomalías: resquicio para fundamental y técnico.
 \item \textbf{Relevancia}: enfoques complementarios: cartera (si conviene), fundamental (cuánto vale), técnico (cuándo).
 \item \textbf{Extensiones}: \vertema{3.B.24} \vertema{3.B.25} \vertema{3.B.2} \vertema{3.B.4} \vertema{3.A.34}.
-\item \textbf{Opinión}: la pasiva tiene un límite lógico (\autor{Grossman}-\autor{Stiglitz}).
+\item \textbf{Opinión}: la pasiva tiene un límite lógico (\autor{Grossman}-\autor{Stiglitz}); «si los electrones pudieran pensar» (\autor{Gell-Mann}): si nadie busca información, el mercado deja de ser eficiente.
 \item \textbf{Idea final}: «nadie da duros a cuatro pesetas»: lo único gratis es diversificar.
 \end{itemize}
 
@@ -393,7 +393,7 @@ El fundamental estima el valor intrínseco y apuesta a que el precio converge (e
 \hito{1976}{\autor{Ross}: APT}
 \hito{1977}{\autor{Roll}: crítica}
 \hito{1980}{\autor{Grossman}-\autor{Stiglitz}}
-\hito{1993}{\autor{Fama}-\autor{French}: 3 factores}
+\hito{1993}{\autor{Fama}-\autor{French}: 3~factores}
 \bloque{Preguntas del tribunal}
 \begin{enumerate}
 \item \textbf{¿Beta = volatilidad?} No: $\beta_i=\mathrm{corr}\,\sigma_i/\sigma_M$; volátil y poco correlacionada, beta baja.

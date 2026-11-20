@@ -220,3 +220,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 2 viñetas → 2 (sin cambios): ya era corta (el consumidor de Fisher y Hall es el que tiene ahorros; la pregunta útil es cómo se reparte la propensión a consumir). No tiene frase asignada.

@@ -342,3 +342,8 @@ Números de gráficos, tablas y ecuaciones del PDF de la rama (tercer-ejercicio/
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche más popular: «cubrirse las espaldas» pasa a «Hombre prevenido vale por dos» (la cobertura). Se rehacen el enganche (el WTI de 2020 como contrato para prevenirse que hundió a quien apostaba apalancado), la pregunta y la idea final, y se ajustan la ficha (esquema, pizarra, enganche e idea final), el mapa de la exposición y las instrucciones del vídeo. Sin cifras nuevas. Al rehacer el PDF, el título de II.5.3 quedaba al pie de la página 24: `\needspace{8\baselineskip}` delante. Duda D10.
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 3 → 3 (la primera responde ahora a Buffett). Ficha al día.
+- Frase: Buffett, «armas financieras de destrucción masiva», carta a los accionistas de Berkshire Hathaway de 2002 (fechada el 21/2/2003), p. 15: «derivatives are financial weapons of mass destruction, carrying dangers that, while now latent, are potentially lethal» (comprobada en el PDF de berkshirehathaway.com). Ya estaba en el enganche; la opinión le contesta (exageraba: el riesgo está en el apalancamiento y la opacidad).

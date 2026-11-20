@@ -263,3 +263,8 @@ Compilación: `construir-tema.py 3B12 --solo pdf --no-publicar` correcto. Págin
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2. Se quita de la segunda la lección del enfoque intertemporal (por qué existe el déficit y cómo se financia), que repetía la idea final.
+- Frase célebre: no tenía asignada.

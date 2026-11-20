@@ -271,3 +271,10 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+
+## Opinión (21/11/2026)
+
+- 2 viñetas → 2, más cortas en la idea. La 1.ª lleva la frase entera de Keynes (el tema ya cita «a largo plazo, todos muertos» en la introducción; aquí va completa, la que da sentido).
+- Frase: Keynes (1923), *A Tract on Monetary Reform*, cap. 3: «a largo plazo, todos muertos. Los economistas se ponen una tarea demasiado fácil, demasiado inútil, si en tiempo de tormenta solo saben decirnos que, cuando la tormenta haya pasado hace mucho, el mar vuelve a estar en calma»; nota con el original («In the long run we are all dead. Economists set themselves too easy, too useless a task if in tempestuous seasons they can only tell us that when the storm is long past the ocean is flat again»). Cita Keynes1923Tract, ya en el .bib.
+- Ficha al día.

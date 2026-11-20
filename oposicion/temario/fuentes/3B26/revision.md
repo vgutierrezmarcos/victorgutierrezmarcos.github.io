@@ -241,3 +241,8 @@ Ninguna nota lo necesitaba.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 2 (la paradoja de Minsky; menos crisis y más baratas con capital, liquidez, perímetro y resolución). Ficha al día.
+- Frase: «la estabilidad es desestabilizadora» (Minsky). No he encontrado la fórmula literal en *Stabilizing an Unstable Economy* (1986) ni en el documento de trabajo de 1992; es la fórmula con la que Papadimitriou y Wray resumen la hipótesis en la introducción a la reedición de 2008 (McGraw-Hill, p. xii), entre comillas y atribuida a Minsky. Por eso el tema la presenta como «la paradoja de Minsky» y la nota dice de dónde sale (nueva entrada PapadimitriouWray2008Minsky en el .bib).

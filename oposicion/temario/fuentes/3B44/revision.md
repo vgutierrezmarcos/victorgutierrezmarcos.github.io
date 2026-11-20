@@ -159,3 +159,7 @@ Ninguna nota lo necesitaba.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
 
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta → 2: (1) el orden: garantía común con menos sesgo doméstico y AEVM para los mercados grandes; (2) la calma no es razón para esperar, con la frase de Minsky. Fuera «sin mercados integrados el euro reparte mal los riesgos» (ya en la recapitulación).
+- **Frase célebre**: Sí. Minsky, *Can "It" Happen Again? Essays on Instability and Finance* (M. E. Sharpe, 1982), p. 101: «Stability—or tranquility—in a world with a cyclical past and capitalist financial institutions is destabilizing» (ensayo de 1977-1978 sobre la hipótesis de inestabilidad financiera recogido en el libro; cita y página comprobadas en la *Brazilian Journal of Political Economy*, 2014, y en Keen). La forma corta «la estabilidad es desestabilizadora» es un resumen de sus comentaristas (Wray, Levy WP 659), no aparece literal en *Stabilizing an Unstable Economy* (1986): por eso se cita la larga. Nueva entrada `Minsky1982CanIt`. Ficha: «Minsky: la estabilidad […] es desestabilizadora».

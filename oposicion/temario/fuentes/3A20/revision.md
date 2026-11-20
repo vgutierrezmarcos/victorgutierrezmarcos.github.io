@@ -653,3 +653,8 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 - **Idea final**: «Ni tanto ni tan calvo: entre el precio de monopolio y el coste marginal con pérdidas, la regulación busca el término medio…» y «la regulación óptima no le quita el negocio al monopolista natural, que es quien mejor lo hace, sino que le paga lo justo para que revele sus costes: esa es la renta informativa, ni tanta que se lleve rentas ni tan poca que deje de invertir».
 - **Otros cambios**: en II, la regla de Ramsey-Boiteux como Lerner «amortiguada» se presenta como «el "ni tanto ni tan calvo" del enganche» (con $\lambda=0$, coste marginal; con $\lambda\to\infty$, monopolio). Mapa de la exposición (introducción y conclusión) y ficha (enganche e idea final) al día. Los dichos del cuerpo no cambian. Dudas: A20-06.
 
+
+## Opinión (21/11/2026)
+
+- 4 viñetas → 3: se juntan «no hay instrumento óptimo» y «conductas frente a monopolio natural, potencia según compromiso e independencia»; se queda la de las instituciones.
+- Frase: la de Alfred Kahn (*The Economics of Regulation*, 1970, ed. de 1988), que ya estaba; se queda sin cambios. En el 3A23 se ha quitado la mención a Kahn para no repetirla.

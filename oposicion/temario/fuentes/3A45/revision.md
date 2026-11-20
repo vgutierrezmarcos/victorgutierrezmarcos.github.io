@@ -364,3 +364,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche cambiado a «No se ganó Zamora en una hora» (antes «Por sus frutos los conoceréis»): enganche con Nogales y Corea del Sur, idea final, mención de II.2, mapa de la exposición, ficha e instrucciones del vídeo (A45-33).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt (antes 10,5). Entran 8 gráficos del tema que no estaban (PIB pc a largo plazo, MRW, participación salarial, tipos de convergencia, estados de EE. UU., σ, causas y AJR).
+
+## Opinión (21/11/2026)
+
+- Viñetas: 3 → 3: fuera «Las respuestas son más modestas que las preguntas»; entra la de Solow (la productividad tarda en responder: la paradoja se resolvió una década después y hoy vuelve con la IA).
+- Frase: Robert Solow, «We'd Better Watch Out», *New York Times Book Review*, 12/7/1987, p. 36: «You can see the computer age everywhere but in the productivity statistics». Comprobada (Brookings, Stand-Up Economist: no es la *New York Review of Books*, como se cita a menudo). Nueva entrada `Solow1987Watch`.
+- Ficha: la frase en pocas palabras.

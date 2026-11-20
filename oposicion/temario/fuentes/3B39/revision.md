@@ -204,3 +204,7 @@ Aplicados el 19/11/2026 (encargo común del 18/11 y añadido de la UE del 19/11)
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
 
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta → 3 cortas: completar servicios, capitales y digital antes que fabricar campeones; directrices con innovación y resiliencia sin abandonar al consumidor; frase de Stigler (quien pide campeones suele aspirar a serlo).
+- **Frase célebre**: Sí. Stigler, «The Theory of Economic Regulation», *Bell Journal of Economics and Management Science* 2 (1), 1971, p. 3: «as a rule, regulation is acquired by the industry and is designed and operated primarily for its benefit» (comprobada en Carrigan y Coglianese, capítulo sobre el artículo, GW Regulatory Studies Center, que cita la página). Entrada `Stigler1971Theory` copiada al `.bib`. Ficha: «Stigler: la industria adquiere la regulación».

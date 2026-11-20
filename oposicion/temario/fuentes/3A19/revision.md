@@ -258,3 +258,8 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - **Idea final**: «La avaricia rompe el saco… si compensa: la colusión aguanta mientras lo que cada una gana desviándose hoy pese menos que lo que pierde después, cuando las demás la castiguen» (ecuación de la colusión), y la clemencia «usa esa misma avaricia para romper el saco».
 - Mapa de la exposición (introducción y conclusión) y ficha (enganche, dato de MAN e idea final) al día; la ficha sigue en 4 páginas a 9 pt. Dudas: A19-01.
 
+
+## Opinión (21/11/2026)
+
+- 2 viñetas → 2, más cortas y sin repetir la idea final: la clemencia sale de la opinión porque la idea final ya la cuenta (MAN); la primera viñeta dice ahora de qué depende el resultado (variable, orden, paciencia).
+- Frase célebre: no tiene asignada; no se añade.

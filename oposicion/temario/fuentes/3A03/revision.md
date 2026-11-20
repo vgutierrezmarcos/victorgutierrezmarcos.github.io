@@ -294,3 +294,10 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+
+## Opinión (21/11/2026)
+
+- 3 viñetas → 2: programas sin continuidad y críticas vivas en una; el instrumental que sobrevive y se usa a diario sin leer a sus autores, con la frase, en otra.
+- Frase: Keynes (1936), *Teoría general*, cap. 24, «esclavos de algún economista difunto» (misma que 3.A.02; 2 temas como máximo), con el original en nota. Cita Keynes1936, ya en el .bib.
+- Ficha al día.

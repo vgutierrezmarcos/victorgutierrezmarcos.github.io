@@ -323,3 +323,8 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- 1 viñeta → sin cambios: ya era corta y con una postura clara.
+- Frase célebre: no tiene asignada; no se añade.

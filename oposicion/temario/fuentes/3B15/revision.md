@@ -286,3 +286,8 @@ Páginas: antes, 38 de tema, 11 de anexos y 7 de bibliografía (56); ahora, 39 d
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 2. El único párrafo largo se parte en dos frases cortas: la paradoja (menos tipos fijos, más intervención y controles aceptados) y las esquinas redondeadas del trilema.
+- Frase célebre: no tenía asignada (la idea final ya cita el título de Frankel, 1999).

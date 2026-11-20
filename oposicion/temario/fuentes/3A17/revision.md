@@ -224,3 +224,7 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+1 viñeta larga con 3 subviñetas → 2 viñetas (falta de disciplina; política según el origen del poder, con sus 3 subviñetas). Frase de Hicks (1935) «el mejor de todos los beneficios del monopolio es una vida tranquila», que ilustra la falta de disciplina; nota con el original («The best of all monopoly profits is a quiet life») y \textcite[8]{Hicks1935Annual} (ya en el .bib; el cuerpo ya la cita en la ineficiencia X). Comprobada: Econometrica 3(1), 1935, p. 8 (Wikiquote y cita de un capítulo del NBER). En la ficha, abreviada.

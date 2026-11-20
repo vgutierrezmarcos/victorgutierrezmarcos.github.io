@@ -197,3 +197,7 @@ Ninguna nota lo necesitaba.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
 
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta → 2 cortas: pagar por bienes públicos, riesgo y relevo generacional (y RMS con derechos en el mar); el fondo único, solo con objetivos comunes exigentes. Fuera el «no por hectárea», que ya dice la idea final.
+- **Frase célebre**: No hay frase asignada. Ficha sin cambios.

@@ -251,3 +251,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 - **Idea final**: «Volvamos al refrán: "más vale tarde que nunca", y, cuando la inversión no tiene marcha atrás, a veces más vale tarde que pronto. La teoría lo explica: esperar tiene un valor, el de la opción a la que se renuncia al invertir, y el dinero barato no basta si el futuro está nublado.» El resto de la idea final, igual. Se queda en III.3 «No por mucho madrugar amanece más temprano» (refrán del cuerpo, permitido).
 - Mapa de la exposición y ficha (enganche e idea final) al día.
 - La ficha sigue en 4 páginas a 10 pt. `verificar-tema.py`: 0 errores.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 2 viñetas → 2 (sin cambios): ya era corta (las transiciones exigen inversiones irreversibles; más que subvenciones, una senda estable y creíble de precios del carbono y de regulación). No tiene frase asignada.

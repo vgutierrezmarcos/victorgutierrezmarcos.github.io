@@ -289,3 +289,11 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 2 viñetas → 3: se mantienen las 2 (acierto institucional; riesgos fuera del modelo canónico) y se añade que, para el riesgo financiero, la regla sigue siendo la de **Bagehot** (1873): en un pánico, prestar «a un tipo de interés muy alto», «contra todos los buenos valores bancarios y tanto como el público pida».
+- Fuente comprobada: *Lombard Street* (1873), cap. VII (párrafos 58-59 de la edición de Econlib): «First. That these loans should only be made at a very high rate of interest» y «Secondly. That at this rate these advances should be made on all good banking securities, and as largely as the public ask for them». La fórmula de la tabla del encargo («prestar con generosidad, a un tipo de penalización y contra buenas garantías») es un resumen posterior (Bagehot nunca habla de «tipo de penalización» ni de 3 principios): por eso se citan sus palabras y la nota lo advierte. `Bagehot1873` copiada del 1D01.
+- Ficha: en pocas palabras.

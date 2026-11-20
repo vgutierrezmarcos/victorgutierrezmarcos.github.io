@@ -208,3 +208,8 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- 4 viñetas → 3: se juntan «ninguna basta sola» y «cada una encaja con un hecho (y Ford)»; se quedan la de las reformas que solo abaratan el trabajo y la de España.
+- Frase célebre: no tiene asignada; no se añade.

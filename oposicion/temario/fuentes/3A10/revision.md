@@ -298,3 +298,7 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+4 viñetas → 2 (la segunda con 2 subviñetas): los párrafos de lo normativo (utilidad esperada) y lo positivo (perspectivas) pasan a subpárrafos indentados bajo «no compiten en el mismo terreno», como pidió Víctor. Sin frase célebre (no hay asignada).

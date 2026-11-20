@@ -291,3 +291,10 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 8,75 pt.
+
+
+## Opinión (21/11/2026)
+
+- Opinión rehecha (instrucción de Víctor): 2 viñetas → 3, ahora en defensa del pluralismo de modelos: ningún modelo hace sobrar a los demás; cada uno simplifica para su pregunta (Rodrik, 2015); las ideas abandonadas vuelven (Simon, equilibrios múltiples).
+- Frase: Joan Robinson (1962), «un modelo que tomara en cuenta toda la diversidad de la realidad sería tan poco útil como un mapa a escala de uno a uno»; nota con el original («A model which took account of all the variegation of reality would be of no more use than a map at the scale of one to one») y la fuente, *Essays in the Theory of Economic Growth* (Macmillan, 1962), la misma referencia que usan 3.A.18 y 3.A.31 (añadida al .bib). La atribución a Robinson en 1962 se confirma en varias fuentes; alguna la sitúa en *Economic Philosophy* (también de 1962), pero se mantiene *Essays* por coherencia con los otros temas.
+- Ficha: opinión al día con la frase en pocas palabras.

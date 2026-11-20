@@ -218,3 +218,11 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 1 viñeta → 2: se añade delante la de **Goodhart** (1975): «cualquier regularidad estadística observada tiende a desmoronarse en cuanto se la presiona con fines de control»; por eso la demanda de dinero sirve para entender la política monetaria, no para dirigirla. Se mantiene la del euro digital y las monedas estables.
+- Fuente comprobada: Goodhart (1975), «Problems of Monetary Management: The U.K. Experience», *Papers in Monetary Economics*, vol. 1, Reserve Bank of Australia (`Goodhart1975Problems`, ya en el .bib). El cuerpo (III, la experiencia de los objetivos monetarios) ya enunciaba la ley; la opinión da la cita literal.
+- Ficha: en pocas palabras.

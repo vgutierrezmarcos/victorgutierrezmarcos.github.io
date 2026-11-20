@@ -284,3 +284,8 @@ Antes: 39 páginas de tema (anexos 15, bibliografía 8; 62 en total), con la fig
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 1 (ya era corta: el «monstruo del lago Ness» de la coordinación). Sin cambios en el tema ni en la ficha.
+- Frase célebre: no (no tiene asignada).

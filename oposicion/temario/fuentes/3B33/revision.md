@@ -208,3 +208,9 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
 
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 2.
+- Frase: Paul Samuelson (1969), «Presidential Address: The Way of an Economist», en *International Economic Relations*, Macmillan, pp. 1-11, respuesta a Ulam: «That it is logically true need not be argued before a mathematician; that it is not trivial is attested by the thousands of important and intelligent men who have never been able to grasp the doctrine for themselves or to believe it after it was explained to them». Original en nota; `Samuelson1969Way` añadido al .bib (reutilizado de 3B05). Ilustra que el fundamento económico de la OMC sigue en pie aunque falle la política.
+- Ficha: opinión con «verdadera y no trivial» (Samuelson, 1969).

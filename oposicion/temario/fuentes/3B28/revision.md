@@ -290,3 +290,9 @@ Ninguna nota lo necesitaba.
 - Idea final: «Volvamos al refrán: “unos tanto y otros tan poco”. / Nacer en Kenia o en España sigue decidiendo, en buena medida, a quién le toca tanto y a quién tan poco. / Pero la economía del desarrollo enseña que ese reparto no es un destino: Botsuana, China o Corea del Sur lo muestran […], el país de nacimiento puede pesar cada vez menos.»
 - Ficha (enganche e idea final) e instrucciones del vídeo al día. Duda B28-30 (el refrán de la estrella sale del todo).
 - Mapa de la exposición (`graficos/mapa-tema.tex`): introducción al día.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 3 (más cortas; la nota sobre China queda solo con el dato del ahorro).
+- Frase: Robert Lucas (1988), «On the Mechanics of Economic Development», *Journal of Monetary Economics* 22(1), p. 5: «The consequences for human welfare involved in questions like these are simply staggering: Once one starts to think about them, it is hard to think about anything else». Original en nota; `Lucas1988` añadido al .bib (reutilizado de 3A44).
+- Ficha: opinión con «difícil pensar en otra cosa» (Lucas, 1988).

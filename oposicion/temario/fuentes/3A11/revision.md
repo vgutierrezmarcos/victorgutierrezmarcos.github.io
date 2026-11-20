@@ -315,3 +315,7 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+2 viñetas → 2, más cortas (caja negra; lo de dentro, 3.A.15). Sin frase célebre (no hay asignada).

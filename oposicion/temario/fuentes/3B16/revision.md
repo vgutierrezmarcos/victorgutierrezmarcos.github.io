@@ -283,3 +283,8 @@ Cada una con la opción aplicada:
 - Idea final: «“Juntos, pero no revueltos”, siempre que lo que no se revuelve no deje a nadie solo ante una crisis: compartir moneda exige compartir también los seguros. Que el euro siga sumando socios, como Bulgaria en 2026, dice que estar juntos compensa; que siga completando la unión bancaria y la fiscal, que aún no está terminada.»
 - Ficha (enganche e idea final) e instrucciones del vídeo al día. Duda B16-24.
 - Mapa de la exposición (`graficos/mapa-tema.tex`): introducción y conclusión al día (aún decían «El casado casa quiere» y «compartir la casa»).
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2. La segunda, más corta: las instituciones suplen en parte la flexibilidad y la movilidad que faltan.
+- Frase célebre: no tenía asignada.

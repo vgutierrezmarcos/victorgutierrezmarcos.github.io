@@ -192,3 +192,7 @@ Ninguna nota lo necesitaba.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
 
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta larga (≈75 palabras) → 3 viñetas cortas: (1) hace bien lo que hace pero poco de lo que debería (bienes públicos en un 1 % de la RNB repartido por saldos netos); (2) la propuesta 2028-2034 va bien si no acaba en reparto de sobres; (3) frase de Schuman: el NextGenerationEU fue una «realización concreta» y un presupuesto para bienes públicos europeos sería la siguiente.
+- **Frase célebre**: Sí. Declaración Schuman (9/5/1950), texto oficial en castellano de la Unión Europea (european-union.europa.eu, «Declaración Schuman de mayo de 1950»); original francés comprobado en la Fundación Robert Schuman («L'Europe ne se fera pas d'un coup, ni dans une construction d'ensemble : elle se fera par des réalisations concrètes créant d'abord une solidarité de fait»). Nueva entrada `Schuman1950Declaracion` en el `.bib`. Ficha: «método Schuman: realizaciones concretas y solidaridad de hecho» en la viñeta de la opinión.

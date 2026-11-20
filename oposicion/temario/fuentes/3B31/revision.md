@@ -468,3 +468,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 8,75 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 con 3 subviñetas y frase suelta → 3 viñetas.
+- Frase: informe Stern (2006), *Summary of Conclusions*: «Climate change is the greatest market failure the world has ever seen, and it interacts with other market imperfections» (HM Treasury, `HMT2006SternResumen`, ya en el .bib). La introducción ya la cita (del libro de 2007); en la opinión cierra el círculo y da pie a la receta (precio del carbono).
+- Ficha: opinión con «el mayor fallo de mercado» (Stern, 2006).

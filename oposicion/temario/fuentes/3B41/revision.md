@@ -185,3 +185,7 @@ PDF antes: 30 páginas de tema, 3 de anexos y 5 de bibliografía (38). Después:
 - Paginación tras el cambio de `tcee.sty` (ninguna caja se sale por arriba): `verificar-tema.py` ya no da «Caja que se sale por arriba», pero dejaba solos al pie los títulos del anexo C (tras la figura de competencias) y del anexo F (cuya caja de notación pasaba a la página siguiente); se arregla con `\clearpage` delante de los 2 anexos. PDF: 29 páginas de tema, 12 de anexos y 6 de bibliografía (47). Ficha al día con el mapa nuevo (4 páginas a 10,5 pt). `verificar-tema.py`: 0 errores, 18 avisos.
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
 
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta → 2 cortas: el riesgo de que la seguridad económica proteja a quien más presiona; la red de acuerdos, la mejor defensa, por mayoría cualificada. Fuera «mercado abierto», que repetía la idea final (no se defiende cerrándose).
+- **Frase célebre**: No hay frase asignada. Ficha: «La mejor defensa, la red de acuerdos, por mayoría cualificada».

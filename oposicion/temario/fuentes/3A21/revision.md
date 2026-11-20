@@ -349,3 +349,8 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- 2 viñetas → 3 cortas: referencia exacta; frase de Smith; cada supuesto incumplido señala dónde falla el mercado (se quita «un modelo sirve porque deja cosas fuera»).
+- Frase: Adam Smith, *La riqueza de las naciones* (1776), libro I, cap. II: «No es de la benevolencia del carnicero, del cervecero o del panadero de la que esperamos nuestra cena, sino de su preocupación por su propio interés». Original en nota al pie («It is not from the benevolence of the butcher, the brewer, or the baker, that we expect our dinner, but from their regard to their own interest»), comprobado en el texto de la obra (Econlib, Project Gutenberg); bib: Smith1776Wealth (ya estaba). Ficha: la frase abreviada.

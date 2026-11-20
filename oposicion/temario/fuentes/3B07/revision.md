@@ -211,3 +211,9 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- Antes: 3 viñetas. Después: 2 viñetas (instrumentos caros frente a la alternativa para cada problema; el arancel del país grande lleva a la guerra comercial).
+- Frase: no hay asignada; ninguna.
+- Ficha: sin cambios.

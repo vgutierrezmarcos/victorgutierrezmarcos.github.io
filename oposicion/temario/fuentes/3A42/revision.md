@@ -244,3 +244,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2: fuera la del dilema entre realismo y claridad; se queda la del método del ciclo real y entra «entender el ciclo no es predecirlo».
+- Frase: Paul Samuelson, columna «Science and Stocks: Sense and Nonsense», *Newsweek*, 19/9/1966, p. 92: «Wall Street indexes predicted nine out of the last five recessions!». Comprobada en Quote Investigator y el *Yale Book of Quotations*. Nueva entrada `Samuelson1966Newsweek`.
+- Ficha: la frase en pocas palabras.

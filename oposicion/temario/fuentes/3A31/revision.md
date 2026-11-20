@@ -211,3 +211,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 
 - **A31-20N-01 · Cifra de España**: para España no hay cifra oficial a mano de la caída de la producción de coches por los chips; la de la patronal (ANFAC: 2.098.133 vehículos en 2021, un 7,5 % menos que en 2020 y un 25,6 % menos que en 2019) no es de fuente oficial. *Aplicado (recomendada)*: solo la cifra de la Comisión Europea («un tercio en algunos Estados miembros»). *Alternativa*: añadir la de ANFAC, citada como dato sectorial.
 - **A31-20N-02 · Entrada `INE2026FRONTUR2025`**: queda en el `.bib` sin citar tras quitar los turistas del enganche (no sale en la bibliografía). Se puede borrar o dejar por si se recupera el ejemplo.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 2 viñetas → 2 (sin cambios): ya era corta (la linealidad es su fuerza y su debilidad; no sirvieron para planificar, sí para ver las interdependencias). No tiene frase asignada; la de \autor{Joan Robinson} (mapa a escala 1:1) sigue en el cuerpo, donde estaba.

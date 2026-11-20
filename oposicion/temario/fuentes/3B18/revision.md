@@ -179,3 +179,8 @@ Ninguna nota lo necesitaba.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 2. Se parte en dos: resiliencia no es autarquía (diversificar, no cerrarse) y compensar a quien pierde mejor que levantar barreras.
+- Frase célebre: no tenía asignada.

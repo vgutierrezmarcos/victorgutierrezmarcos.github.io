@@ -334,3 +334,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- Antes: 2 viñetas. Después: 2 viñetas más cortas (mejor diagnóstico que receta; apoyo temporal y evaluado solo con externalidades claras).
+- Frase: no hay asignada; ninguna.
+- Ficha: sin cambios.

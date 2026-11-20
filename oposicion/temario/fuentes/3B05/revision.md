@@ -269,3 +269,9 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Antes: 1 viñeta. Después: 2 viñetas cortas (la nueva teoría completa a la tradicional; los modelos cuantitativos actuales son ricardianos).
+- Frase: la de Samuelson a Ulam ya está en la Relevancia de la conclusión, con su cita: cuenta como la frase del tema y no se repite en la opinión.
+- Ficha: sin cambios.

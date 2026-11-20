@@ -246,3 +246,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 3 → 3: fuera «La evidencia favorece una visión intermedia»; la de España, más corta; entra la de Lucas.
+- Frase: Robert Lucas, «On the Mechanics of Economic Development», *Journal of Monetary Economics* 22 (1988), p. 5: «The consequences for human welfare involved in questions like these are simply staggering: Once one starts to think about them, it is hard to think about anything else». Comprobada en el texto del artículo. Cita `Lucas1988`, ya en el .bib.
+- Ficha: la frase en pocas palabras.

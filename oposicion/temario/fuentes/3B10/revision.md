@@ -207,3 +207,8 @@ Propuestas: todas las de coherencia (K1-K35), contenido (C1-C46) y datos (V1-V17
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 8,75 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 3 → 2. Se juntan la de la teoría estática frente a la evidencia y la de lo que dejaba fuera Viner; la del riesgo de fragmentación, más corta.
+- Frase célebre: no tenía asignada.

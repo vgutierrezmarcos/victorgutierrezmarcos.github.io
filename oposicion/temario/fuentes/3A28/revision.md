@@ -232,3 +232,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - **Corrección**: «Desde 2023, el paro efectivo está por debajo de [la NAWRU]» pasa a «desde 2022» (13,0 % frente a 13,5 % en 2022, ya con la serie de primavera). También en la ficha.
 - Construido: 47 páginas (34 de tema, antes 33, por la viñeta nueva del enganche); ficha en 4 páginas (8,75 pt); `verificar-tema.py`: 0 errores.
 - Duda **A28-22**: segunda comprobación de la NAWRU. La Comisión no publica la NAWRU fuera de AMECO; se ha cotejado la descarga de Redisstat con la consulta de la interfaz antigua (que aún sirve la serie de primavera: 16,86 y 12,11), y las diferencias son solo la reestimación de otoño. Recomendado: dejarlo así.
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 2 viñetas → 2 (sin cambios): ya era corta, con una postura clara (la tasa natural, referencia útil pero no destino; en España, movible por las políticas para bien y por las recesiones largas para mal). No tiene frase asignada y no se añade ninguna.

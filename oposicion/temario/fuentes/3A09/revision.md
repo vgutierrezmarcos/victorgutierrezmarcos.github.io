@@ -368,3 +368,10 @@ Dudas (15/11/2026):
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+
+## Opinión (21/11/2026)
+
+- 3 viñetas → 2: la utilidad práctica de la dualidad en una; el límite (consumidor estático) y la herencia de Deaton en otra. Se quita la agregación, que repetía la idea final.
+- Frase: ninguna asignada.
+- Ficha al día (sin la agregación).

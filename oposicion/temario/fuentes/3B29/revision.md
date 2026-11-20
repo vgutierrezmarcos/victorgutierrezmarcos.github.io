@@ -233,3 +233,8 @@ Ninguna nota lo necesitaba.
 - **Ficha**: al día (requisitos en el orden del CAD, los 90, los términos del Club de París, FFACC y DEG, fila nueva en la tabla de respuestas); sigue en 4 páginas, ahora a 10 pt.
 - **Páginas**: el tema pasa de 26 a 28 (+ el mapa, que ocupa media página, y unos 1,5 de contenido); anexos de 3 a 4.
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 2 (la misma idea partida en dos frases cortas).
+- Frase: no tenía asignada.

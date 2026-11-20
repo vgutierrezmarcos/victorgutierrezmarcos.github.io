@@ -291,3 +291,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2; la segunda incorpora la red del BCE entre 2010-2013 y 2020.
+- Frase: Mario Draghi, Global Investment Conference, Londres, 26/7/2012: «Within our mandate, the ECB is ready to do whatever it takes to preserve the euro. And believe me, it will be enough». Comprobada en la web del BCE (sp120726). Cita `Draghi2012Speech`, ya en el .bib.
+- Ficha: la frase en la subviñeta de Europa.

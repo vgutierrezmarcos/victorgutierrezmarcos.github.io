@@ -196,3 +196,8 @@ Ninguna nota lo necesitaba.
 - III (capacidad de absorción): fuera «Es el refrán del principio: el pan solo alimenta a quien tiene dientes»; ahora «Los fondos rinden más donde la región tiene con qué aprovecharlos». Ya no quedan «dientes» ni «masticar» fuera del enganche y la idea final.
 - Ficha (idea final) e instrucciones del vídeo al día. Duda B40-13.
 - Mapa de la exposición (`graficos/mapa-tema.tex`): conclusión al día con la idea final nueva.
+
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta → 2: (1) la cohesión es la «solidaridad de hecho» de Schuman y rinde más como inversión en capacidades que como compensación o caja; (2) planes nacionales, solo sin dejar fuera a las regiones.
+- **Frase célebre**: Sí (2.º y último tema con esta frase, tras el 3.B.37). Declaración Schuman (9/5/1950), texto oficial en castellano de la Unión Europea (european-union.europa.eu, «Declaración Schuman de mayo de 1950»); original francés comprobado en la Fundación Robert Schuman («L'Europe ne se fera pas d'un coup, ni dans une construction d'ensemble : elle se fera par des réalisations concrètes créant d'abord une solidarité de fait»). Nueva entrada `Schuman1950Declaracion` en el `.bib`. Ficha: «la solidaridad de hecho de Schuman» en la línea de la opinión.

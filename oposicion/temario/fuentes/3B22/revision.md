@@ -204,3 +204,8 @@ Páginas del tema: antes 28 (anexos: 1), ahora **32** (anexos: 4: A, programaci�
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 3 cortas (aprendizaje del FMI; no puede ser el prestamista de Bagehot; legitimidad de las cuotas). Ficha al día.
+- Frase: Bagehot, «tanto como el público pida» («as largely as the public ask for them»), *Lombard Street* (1873), cap. 7, segunda regla del prestamista en un pánico (comprobada en el texto de Econlib). La fórmula «prestar con generosidad, a un tipo de penalización y contra buenas garantías» es un resumen moderno (Bagehot no dice *penalty rate*), así que se cita su texto literal; el cuerpo ya da la regla resumida.

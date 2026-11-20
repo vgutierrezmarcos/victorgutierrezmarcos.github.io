@@ -266,3 +266,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 
 ### Refrán (21/11/2026)
 - Víctor: «Tanto va el cántaro…» tampoco le encaja en este tema. Nuevo refrán del enganche: «No hay plazo que no se cumpla ni deuda que no se pague» (ya salía en la equivalencia ricardiana, que ahora remite al enganche). Al día la idea final, la ficha y el mapa de la exposición. «Tanto va el cántaro…» queda libre para otro tema.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2, más cortas (fuera «basada en el gasto menos productivo» y la remisión a la suavización impositiva).
+- Frase: Rudi Dornbusch, entrevista para *Frontline* (PBS), «Murder, Money and Mexico» (1997): «The crisis takes a much longer time coming than you think, and then it happens much faster than you would have thought». Comprobada en la transcripción de PBS (https://www.pbs.org/wgbh/pages/frontline/shows/mexico/interviews/dornbusch.html). Nueva entrada `Dornbusch1997Frontline` en el .bib.
+- Ficha: la frase en pocas palabras.

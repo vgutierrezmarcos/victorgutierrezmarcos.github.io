@@ -226,3 +226,9 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+- Antes: 2 viñetas largas. Después: 2 viñetas más cortas (flexibilidad como seguro; igualar el trato fiscal de deuda y fondos propios y abrir el mercado a las pymes).
+- Frase: no hay asignada; ninguna.
+- Ficha: «neutralizar» → «igualar».

@@ -267,3 +267,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 ## Comentarios de Víctor (19/11/2026)
 
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- Antes: 2 viñetas. Después: 2 viñetas algo más cortas (mismo contenido).
+- Frase: no hay asignada; la idea final ya tiene la de Graham (precio y valor).
+- Ficha: sin cambios.

@@ -261,3 +261,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 (larga) → 3 cortas: el 2 % simétrico como compromiso; la frase de Friedman (a largo plazo responde el banco central); solo puede si es creíble y la fiscal es sostenible (remisión a 3.A.39).
+- Frase: Milton Friedman, *Inflation: Causes and Consequences* (1963): «Inflation is always and everywhere a monetary phenomenon». El cuerpo ya la cita (fundamentos); la de la opinión cierra el argumento. Cita `Friedman1963Inflation`, ya en el .bib.
+- Ficha: la frase en pocas palabras.

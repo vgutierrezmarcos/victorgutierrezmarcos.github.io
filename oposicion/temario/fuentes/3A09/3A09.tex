@@ -56,7 +56,7 @@
   \item En sentido estricto, \concepto{dual} designa la relación entre maximizar la utilidad con una restricción de renta y minimizar el gasto con una restricción de utilidad: se intercambian la función objetivo y la restricción. En sentido amplio se aplica a cualquier par de problemas o funciones formalmente parecidos salvo por el papel invertido de objetivo y restricción, de cantidades y precios o de máximo y mínimo\nocite{MasColellWhinstonGreen1995,Blume2008Duality}. Aquí se usa en sentido estricto, aunque alguna vez aparezca el amplio.\footnote{Por ejemplo, la relación entre la función indirecta de utilidad y la función de utilidad directa (apartado~\ref{sec:problema-integrabilidad-preferencias}). En la teoría de la empresa el sentido amplio es más habitual: se habla de dualidad entre la minimización del coste y la maximización del beneficio (que no son duales en sentido estricto, porque el segundo problema incluye los ingresos) o entre las funciones de costes o de beneficios y la tecnología que se recupera a partir de ellas \vertema{3.A.12}.}
   \end{itemize}
 
-\item \textbf{\emph{Problemática (preguntas clave)}}:
+\item \textbf{\emph{Problemática}}:
   \begin{itemize}
   \item ¿Qué se gana al «dar la vuelta» al problema del consumidor y minimizar el gasto en lugar de maximizar la utilidad? ¿Se llega a la misma decisión?
   \item ¿Cómo se estiman en la práctica los sistemas de demanda?
@@ -902,7 +902,7 @@ QUAIDS\nocite{BanksBlundellLewbel1997Quadratic} & función de gasto & sí & sí 
 \subsubsection{Muestra de datos}\label{sec:muestra-datos}
 
 \begin{itemize}
-\item Hacen falta \emph{microdatos} de una muestra representativa de hogares: su gasto en cada partida, su renta, sus características y los precios que pagan. En España la fuente es la \concepto{Encuesta de Presupuestos Familiares} (EPF) del INE: anual desde 2006, con unos 24.000 hogares y microdatos públicos. La última es la de 2025, con un gasto medio por hogar de 35.101 euros\nocite{INE2026EPF,INE2008EPFCaracteristicas}.
+\item Hacen falta \emph{microdatos} de una muestra representativa de hogares: su gasto en cada partida, su renta, sus características y los precios que pagan. En España la fuente es la \concepto{Encuesta de Presupuestos Familiares} (EPF) del INE: anual desde 2006, con unos 24.000~hogares y microdatos públicos. La última es la de 2025, con un gasto medio por hogar de 35.101~euros\nocite{INE2026EPF,INE2008EPFCaracteristicas}.
 \item Lo más frecuente es un \emph{corte transversal}. Si se quiere seguir a los mismos hogares en el tiempo (\emph{datos de panel}), la EPF permite un panel corto, porque cada hogar colabora dos años seguidos. Su antecesora, la Encuesta Continua de Presupuestos Familiares (1985-2005), era trimestral y seguía a cada hogar durante ocho trimestres\nocite{INEEPFMetodologia,INE2008EPFCaracteristicas}.
 \item El problema son los \emph{precios}: en un corte transversal todos los hogares afrontan casi los mismos. Por eso se combinan varios años y regiones (con los índices de precios por subclases y comunidades autónomas) o se usan los \emph{valores unitarios} (gasto entre cantidad), corrigiendo que reflejan también la calidad de lo comprado, como propone \textcite{Deaton1997Analysis} para las encuestas de los países en desarrollo.
 \end{itemize}
@@ -1238,7 +1238,7 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
   \begin{equation}
   \mathrm{VC}=m(\vect{p}^1;\vect{p}^1,\overline{W})-m(\vect{p}^1;\vect{p}^0,\overline{W})=\underbrace{E(\vect{p}^1,\overline{U}^1)}_{=\overline{W}}-E(\vect{p}^1,\overline{U}^0)=\int_{p_1^1}^{p_1^0}h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^0)\,dp_1. \label{eq:vc}
   \end{equation}
-  Gráficamente (gráfico~\ref{fig:bienestar-vc}), en el panel de las cestas es la distancia vertical, medida en unidades del bien 2 con $p_2=1$, entre la nueva recta de balance y su paralela tangente a la curva inicial $\overline{U}^0$ (la cesta compensada $\vect{h}(\vect{p}^1,\overline{U}^0)$); en el panel de la demanda, es el área a la izquierda de la hicksiana \emph{inicial}, $h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^0)$, entre los dos precios.
+  Gráficamente (gráfico~\ref{fig:bienestar-vc}), en el panel de las cestas es la distancia vertical, medida en unidades del bien 2~con $p_2=1$, entre la nueva recta de balance y su paralela tangente a la curva inicial $\overline{U}^0$ (la cesta compensada $\vect{h}(\vect{p}^1,\overline{U}^0)$); en el panel de la demanda, es el área a la izquierda de la hicksiana \emph{inicial}, $h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^0)$, entre los dos precios.
 \end{itemize}
 
 \begin{figure}[H]
@@ -1348,9 +1348,9 @@ Si el tribunal pregunta por aplicaciones: la VE mide la pérdida de bienestar de
 \item \concepto{Índices superlativos}. \textcite{Diewert1976Exact} muestra que algunos índices calculados con datos observables son \emph{exactos} para formas funcionales flexibles: el índice ideal de \autor{Fisher}, $I_F=\sqrt{I_L\,I_P}$, lo es para una función de gasto cuadrática homogénea, y el de \autor{Törnqvist}, $\ln I_T=\sum_i\tfrac12\big(s_i^0+s_i^1\big)\ln\big(p_i^1/p_i^0\big)$, para una translog. Es el puente entre los sistemas de demanda del apartado~\ref{sec:desarrollos-empiricos-estimacion} y la medición de los precios.
 \item \emph{Magnitud del sesgo de sustitución}:
   \begin{itemize}
-  \item la Comisión \autor{Boskin} estimó que el IPC de Estados Unidos sobrestimaba la inflación en 1,1 puntos al año, de los que 0,4 se debían al sesgo de sustitución propio de la fórmula de \autor{Laspeyres}; el resto, sobre todo, a los cambios de calidad y a los productos nuevos\nocite{Boskin1996Toward,Gordon2006Boskin};
-  \item con índices superlativos, \textcite{ManserMcDonald1988Substitution} estiman un sesgo de sustitución de unos 0,18 puntos porcentuales al año para el periodo 1959-1985;
-  \item hoy, el IPC encadenado con fórmula de \autor{Törnqvist} que publica la oficina estadística de Estados Unidos crece entre 0,25 y 0,3 puntos menos al año que el IPC de \autor{Laspeyres} (0,25 puntos de media entre diciembre de 2005 y diciembre de 2024, según el cálculo propio con sus series)\nocite{BLS2026ChainedCPI,Klick2021Weight}.
+  \item la Comisión \autor{Boskin} estimó que el IPC de Estados Unidos sobrestimaba la inflación en 1,1~puntos al año, de los que 0,4~se debían al sesgo de sustitución propio de la fórmula de \autor{Laspeyres}; el resto, sobre todo, a los cambios de calidad y a los productos nuevos\nocite{Boskin1996Toward,Gordon2006Boskin};
+  \item con índices superlativos, \textcite{ManserMcDonald1988Substitution} estiman un sesgo de sustitución de unos 0,18~puntos porcentuales al año para el periodo 1959-1985;
+  \item hoy, el IPC encadenado con fórmula de \autor{Törnqvist} que publica la oficina estadística de Estados Unidos crece entre 0,25~y 0,3~puntos menos al año que el IPC de \autor{Laspeyres} (0,25~puntos de media entre diciembre de 2005 y diciembre de 2024, según el cálculo propio con sus series)\nocite{BLS2026ChainedCPI,Klick2021Weight}.
   \end{itemize}
 \end{itemize}
 
@@ -1360,8 +1360,8 @@ El IPC \emph{compara} el coste de una cesta representativa de bienes y servicios
 \begin{equation*}
 I_L=\frac{\displaystyle\sum_{i=1}^{n}p_i^t\,x_i^0}{\displaystyle\sum_{i=1}^{n}p_i^0\,x_i^0}\times 100=\frac{\vect{p}^t\cdot\vect{x}^0}{\vect{p}^0\cdot\vect{x}^0}\times 100.
 \end{equation*}
-Se asigna al índice un valor de 100 en el periodo base, y sus valores en los demás periodos indican el cambio porcentual medio de los precios respecto a él.\\
-En la práctica, el IPC es un \concepto{índice de tipo Laspeyres}: uno puro exigiría que la cesta fuera la comprada en el periodo de referencia de los precios, y en el IPC la cesta se refiere a un periodo distinto. En concreto, el IPC del INE es un \emph{índice de \autor{Laspeyres} encadenado}: cada año se compara con los precios de diciembre del año anterior y se encadenan los eslabones; las ponderaciones se actualizan cada año (las de 2026, con datos de 2024) y por completo en cada cambio de base. La base vigente es la 2025, desde el índice de enero de 2026\nocite{INE2026IPCMetodologia}; su cesta tiene 487 artículos repartidos en 196 subclases y 13 grupos\nocite{INE2026IPCPonderaciones,INE2026IPCNovedades}.\\
+Se asigna al índice un valor de 100~en el periodo base, y sus valores en los demás periodos indican el cambio porcentual medio de los precios respecto a él.\\
+En la práctica, el IPC es un \concepto{índice de tipo Laspeyres}: uno puro exigiría que la cesta fuera la comprada en el periodo de referencia de los precios, y en el IPC la cesta se refiere a un periodo distinto. En concreto, el IPC del INE es un \emph{índice de \autor{Laspeyres} encadenado}: cada año se compara con los precios de diciembre del año anterior y se encadenan los eslabones; las ponderaciones se actualizan cada año (las de 2026, con datos de 2024) y por completo en cada cambio de base. La base vigente es la 2025, desde el índice de enero de 2026\nocite{INE2026IPCMetodologia}; su cesta tiene 487~artículos repartidos en 196~subclases y 13~grupos\nocite{INE2026IPCPonderaciones,INE2026IPCNovedades}.\\
 Al ser de tipo \autor{Laspeyres}, tiene un \emph{sesgo de sustitución} que \emph{sobrevalora} los incrementos de precios: con el tiempo, unos precios suben más que otros y los consumidores compran menos de los bienes que se encarecen relativamente y más de los que se abaratan; como el índice mantiene la cesta del periodo de referencia, da demasiado peso a los bienes que más se encarecen y muestra más inflación de la que sufren los consumidores. Actualizar las ponderaciones cada año reduce el sesgo, pero no lo elimina, porque dentro de cada año la cesta es fija \vertema{4.A.1}.
 \end{anotaciones}
 
@@ -1420,11 +1420,9 @@ La función de gasto traduce la utilidad a euros:
   \end{itemize}
 \item \textbf{\emph{Opinión}}:
   \begin{itemize}
-  \item La dualidad es uno de los casos en que la teoría más abstracta ha resultado más útil en la práctica: una pregunta de apariencia académica, qué pasa si se minimiza el gasto en lugar de maximizar la utilidad, dio la herramienta con la que hoy se traduce el bienestar a euros en cualquier evaluación de políticas.
+  \item La dualidad es uno de los casos en que la teoría más abstracta ha resultado más útil: preguntarse qué pasa si se minimiza el gasto en lugar de maximizar la utilidad dio la herramienta con la que hoy se traduce el bienestar a euros en cualquier evaluación de políticas.
 
-  \item Su límite es el del modelo del que parte, un consumidor estático, racional y bien informado, y el de la agregación: las medidas son individuales y sumarlas exige juicios de valor sobre la distribución.
-
-  \item Por eso la línea de \autor{Deaton}, que consiste en medir con microdatos y tener en cuenta la heterogeneidad antes de recomendar, es quizá la herencia más valiosa de este campo.
+  \item Su límite es el del modelo del que parte, un consumidor estático, racional y bien informado. Por eso la herencia más valiosa de este campo es la línea de \autor{Deaton}: medir con microdatos y tener en cuenta la heterogeneidad antes de recomendar.
   \end{itemize}
 \item \textbf{\emph{Idea final}}:
   \begin{itemize}

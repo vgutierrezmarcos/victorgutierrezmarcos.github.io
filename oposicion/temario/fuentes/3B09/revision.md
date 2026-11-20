@@ -234,3 +234,9 @@ Ninguna nota lo necesitaba.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Antes: 1 viñeta (apertura necesaria, no suficiente). Después: 2 viñetas: la misma y la de la productividad con la frase de Krugman.
+- Frase: «la productividad no lo es todo, pero a largo plazo es casi todo», de Paul Krugman, *The Age of Diminished Expectations* (MIT Press, 1990), al empezar el capítulo de la productividad. Original: «Productivity isn't everything, but in the long run it is almost everything». Comprobada (IMF Blog, 4/9/2024; The American Prospect). Nueva entrada `Krugman1990Age` en el .bib. La comparte con 3A43.
+- Ficha: opinión con la frase en pocas palabras.

@@ -326,3 +326,9 @@ Ninguna nota lo necesitaba (la de los antecedentes de la nueva geografía econó
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+## Opinión (21/11/2026)
+
+- Antes: 2 viñetas largas. Después: 2 viñetas más cortas (ACR 2012: misma ganancia con 2 datos; los modelos nuevos cambian cómo y quién, no cuánto, y piden apertura con políticas).
+- Frase: no hay asignada; ninguna.
+- Ficha: sin cambios.

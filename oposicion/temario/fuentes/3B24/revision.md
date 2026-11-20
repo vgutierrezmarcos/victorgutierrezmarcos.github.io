@@ -212,3 +212,8 @@ Páginas del tema: 32 antes y 31 después (anexos: 10 → 6; bibliografía: 7 �
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Refrán del enganche cambiado por uno más popular: «¡Cuán largo me lo fiáis!» → «Quien guarda, halla» (el bono austriaco se mantiene: quien lo guarde hasta 2120 hallará sus 100 euros; quien venda antes, no). Rehechos el enganche, la idea final y la frase de Silicon Valley Bank en la opinión (no pudo guardar sus bonos hasta el vencimiento); puestos al día la ficha y las instrucciones del vídeo. Duda R24-14.
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 largas → 2 cortas (fija en pagos, no en valor, con los 2 extremos de 2012 y 2020; el riesgo de tipos que se descubre de golpe: 2022-2023 y SVB). Ficha al día.
+- Frase célebre: no (no tiene asignada).

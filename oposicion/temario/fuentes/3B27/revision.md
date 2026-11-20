@@ -161,3 +161,8 @@ Todas las cifras que caducan están en `datos-actualizables.yaml`.
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 3 cortas (bancos más resistentes; los bordes; la presión para relajarla, con Stigler). Ficha al día.
+- Frase: Stigler, «The Theory of Economic Regulation», *Bell Journal of Economics and Management Science* 2(1), 1971, p. 3: «as a rule, regulation is acquired by the industry and is designed and operated primarily for its benefit» (comprobada en la reedición del GW Regulatory Studies Center, que cita la p. 3).

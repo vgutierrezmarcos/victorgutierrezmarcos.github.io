@@ -513,6 +513,21 @@ PIZARRA = [r'\bpizarra\b', r'\(\s*(?:ver\s+|v[ée]ase\s+)?(?:la\s+)?caja(?:\s+(?
            r'\bcaja\s+(?:siguiente|de\s+abajo|inferior)\b', r'\bse\s+tacha\b', r'\ben\s+el\s+v[íi]deo\b']
 
 
+def comprobar_numeros_irrompibles(tema, tex, errores, avisos):
+    """Un número y la palabra que acompaña van unidos con ~ (Víctor, 21/11/2026): «4~ganancias»."""
+    import subprocess
+    script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'numeros-irrompibles.py')
+    rutas = [os.path.join(tema.dir, f'{tema.archivo}.tex')]
+    ficha = os.path.join(tema.dir, 'repaso', f'{tema.archivo}-repaso.tex')
+    if os.path.exists(ficha):
+        rutas.append(ficha)
+    salida = subprocess.run([sys.executable, script] + rutas, capture_output=True, text=True).stdout
+    n = sum(int(l.rsplit(': ', 1)[1]) for l in salida.splitlines() if ': ' in l and not l.startswith('total'))
+    if n:
+        errores.append(f'{n} números separados de su palabra por un espacio normal: ejecutar '
+                       f'scripts/temario/numeros-irrompibles.py --aplicar con el .tex (y la ficha)')
+
+
 def comprobar_listas_y_bibliografia(tema, tex, errores, avisos):
     """Rótulos de una lista con el mismo formato y bibliografía con sus fuentes
     esenciales (Víctor, 18/11/2026)."""
@@ -621,6 +636,7 @@ def verificar(tema):
     comprobar_remisiones(tema, tex, errores, datos)
     comprobar_version_antigua(tema, tex, errores)
     comprobar_listas_y_bibliografia(tema, tex, errores, avisos)
+    comprobar_numeros_irrompibles(tema, tex, errores, avisos)
     comprobar_formulas_separadas(tex, errores)
     comprobar_criterios(tema, tex, errores, avisos, datos)
     comprobar_graficos_imagenes(tema, tex, errores, datos)

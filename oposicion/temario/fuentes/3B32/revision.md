@@ -225,3 +225,8 @@ Ninguna nota lo necesitaba.
   - (b) Un subapartado propio (I.3) y el monetario en I.4.
   - **Aplicada: (a)**: mantiene los 3 planos del 3.B.20 y el 3.B.21.
 - **B32-13. Volumen del comercio de mercancías de 2025.** Aquí 4,2 % (cifra revisada de la OMC de octubre de 2026); el 3.B.21 dice 4,6 % (la de su nota de prensa). No se toca el 3.B.21: conviene ponerlo al día con el 4,2 % (anotado también en «Coherencia»).
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 2.
+- Frase: la asignada («la única función de la previsión económica es hacer respetable la astrología») no se pone: la atribución a Galbraith no se puede confirmar; las fuentes más antiguas (Reader's Digest, 1985; Atlanta Journal-Constitution, 1986, recogidas por Barry Popik) se la atribuyen a Ezra Solomon, y a Galbraith solo desde los años 2000. Además, la opinión habla de la resistencia del comercio, no de previsiones.

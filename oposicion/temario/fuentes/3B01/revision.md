@@ -171,3 +171,9 @@ Todas del 13/11/2026, aplicadas con la opción recomendada.
 - Ficha: enganche e idea final al día (sigue en 4 págs.). Instrucciones del vídeo al día. Duda B01-14.
 - `verificar-tema.py 3B01`: 0 errores (2 avisos de guion y vídeo pendientes).
 - Mapa de la exposición (`graficos/mapa-tema.tex`): introducción y conclusión al día (aún decían «El papel lo aguanta todo»).
+
+## Opinión (21/11/2026)
+
+- Antes: 1 viñeta larga (armonización, discrecionalidad, auditor, analista). Después: 2 viñetas cortas: la discrecionalidad que ni el auditor cierra exige el examen crítico del analista; y la frase de Coase.
+- Frase: «si torturas los datos lo suficiente, la naturaleza siempre confesará», de Ronald Coase, en su conferencia *How Should Economists Choose?* (G. Warren Nutter Lecture, AEI, 18/11/1981; publicada en 1982, p. 16), donde la recuerda como dicho suyo de principios de los años sesenta. Original: «if you torture the data enough, nature will always confess». En una carta de 1975 a T. D. Wallace escribió «If you torture the data long enough nature will confess»; la versión sin «nature» es de I. J. Good (1972), que se la atribuyó (Quote Investigator, 18/1/2021). Nueva entrada `Coase1982How` en el .bib.
+- Ficha: opinión con la frase en una línea.

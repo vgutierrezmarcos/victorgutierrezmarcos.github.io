@@ -214,3 +214,8 @@ Compilación: `construir-tema.py 3B14 --solo pdf --no-publicar` y `construir-rep
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2. La segunda se queda en lo que no pueden dar los modelos a horizontes de días; lo de la PPA a años se quita porque lo dice la idea final.
+- Frase célebre: no tenía asignada (la comparación de Edgeworth con las agujas del reloj sigue en la conclusión y en la ficha).

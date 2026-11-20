@@ -336,3 +336,10 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 - **Idea final**: «No del oro que reluce, sino del trabajo…»; Smith y Ricardo desde el capitalista, Malthus desde el terrateniente y Marx desde el obrero, para quien el salario libre reluce como un trato justo y esconde la plusvalía: «Tampoco ahí era oro todo lo que relucía». El refrán sirve 2 veces: clásicos frente a mercantilistas y Marx frente a los clásicos.
 - **Otros cambios**: en III, «Volvamos a la feria del enganche» pasa a «Volvamos a la pregunta del enganche, quién se queda la riqueza»; mapa de la exposición (`graficos/mapa-tema.tex`) y ficha (enganche e idea final) al día. La ficha sigue en 4 páginas.
 
+
+
+## Opinión (21/11/2026)
+
+- 3 viñetas → 2: valor trabajo y pesimismo en una; el reparto que vuelve con la desigualdad y las ideas clásicas que siguen guiando la política en otra.
+- Frase: Keynes (1936), *Teoría general*, cap. 24: «los hombres prácticos, que se creen libres de toda influencia intelectual, suelen ser esclavos de algún economista difunto»; nota con el original («Practical men, who believe themselves to be quite exempt from any intellectual influences, are usually the slaves of some defunct economist»), comprobado en el texto del cap. 24. Cita Keynes1936, ya en el .bib.
+- Ficha al día.

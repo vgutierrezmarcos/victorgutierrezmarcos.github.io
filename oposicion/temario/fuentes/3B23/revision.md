@@ -375,3 +375,8 @@ Páginas del tema: 35 antes y 36 después (anexos: 5 → 9; bibliografía: 6 →
   - **Vídeo**: la viñeta de la IA se dice de palabra al final de II.1, sin pizarra, en unos 20″ que salen de la lectura de la eficiencia; los \minutos no cambian.
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9,5 pt.
+
+## Opinión (21/11/2026)
+
+- Viñetas: 2 → 2 (Grossman-Stiglitz y los activos en una; la frase y su lectura en otra). Ficha al día.
+- Frase: «Imagina lo difícil que sería la física si los electrones pudieran pensar», atribuida a Murray Gell-Mann (Nobel de Física 1969). No hay fuente primaria localizada; la recoge Page (1999), *Complexity* 5(1), la misma referencia que usa el 3.A.1 (allí, en una nota del cuerpo). Se presenta como «frase que se atribuye». Ojo: con el 3.A.1 y el 3.A.6 la frase sale en 3 temas.

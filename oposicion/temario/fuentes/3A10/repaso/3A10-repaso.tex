@@ -11,7 +11,7 @@
 \begin{itemize}
 \item \textbf{Enganche}: \emph{¿somos prudentes o temerarios ante el riesgo?} «Más vale pájaro en mano que ciento volando», pero «de perdidos, al río».
   \begin{itemize}
-  \item España, 2025: \dato{$\approx$86.000 M€ en primas, $\approx$5\,\% del PIB}{Mapfre; Eurostat}; y el décimo de Navidad (devuelve menos de lo que recauda).
+  \item España, 2025: \dato{$\approx$86.000~M€ en primas, $\approx$5\,\% del PIB}{Mapfre; Eurostat}; y el décimo de Navidad (devuelve menos de lo que recauda).
   \item Con el seguro se paga por \emph{librarse} del riesgo; con el décimo, por \emph{asumirlo}.
   \end{itemize}
 \item \textbf{Relevancia}:
@@ -44,13 +44,13 @@
 % ==========================================================================
 \bloque[13]{I. Riesgo: teoría de la utilidad esperada\label{rep:I}}
 \begin{ideaclave}
-Con 5 axiomas se maximiza una utilidad esperada; la concavidad de $u$ mide la aversión y de ella salen el seguro (completo con prima justa, parcial con recargada) y la demanda de activos con riesgo.
+Con 5~axiomas se maximiza una utilidad esperada; la concavidad de $u$ mide la aversión y de ella salen el seguro (completo con prima justa, parcial con recargada) y la demanda de activos con riesgo.
 \end{ideaclave}
 
 \sub{I.1. Fundamentos\label{rep:I.1}}
 \subsub{a) Ingredientes y obtención de la utilidad esperada}
 \begin{itemize}
-\item \emph{Idea}: la \concepto{teoría de la utilidad esperada} (TUE) aplica el método del consumidor \vertema{3.A.8} (conjunto de elección, preferencias, axiomas, $U$, maximización), con 2 diferencias: (1) se eligen \emph{loterías}, no cestas; (2) $U$ con forma concreta, \emph{lineal en las probabilidades}.
+\item \emph{Idea}: la \concepto{teoría de la utilidad esperada} (TUE) aplica el método del consumidor \vertema{3.A.8} (conjunto de elección, preferencias, axiomas, $U$, maximización), con 2~diferencias: (1) se eligen \emph{loterías}, no cestas; (2) $U$ con forma concreta, \emph{lineal en las probabilidades}.
 \item \emph{Supuestos}: $S$ \concepto{estados de la naturaleza}, mutuamente excluyentes y colectivamente exhaustivos; resultado $x_s$ (riqueza). \concepto{Lotería} $\tilde{x}\equiv(x_1,\dots,x_S;\ \pi_1,\dots,\pi_S)$, $\pi_s\geq0$, $\sum_s\pi_s=1$: \emph{simple}, \emph{compuesta} (se reduce multiplicando ramas) o \emph{degenerada} (certeza); un punto del \concepto{símplex}. \textbf{No se eligen resultados, sino loterías}.
 \item \emph{Axiomas} sobre $\succcurlyeq$:
   \begin{itemize}
@@ -62,7 +62,7 @@ Con 5 axiomas se maximiza una utilidad esperada; la concavidad de $u$ mide la av
 \centering $\tilde{x}^1\succcurlyeq\tilde{x}^2\iff\tau\tilde{x}^1+(1-\tau)\tilde{x}^3\succcurlyeq\tau\tilde{x}^2+(1-\tau)\tilde{x}^3$
 \end{formula}
 Solo ocurre \emph{una} rama: lo común ($\tilde{x}^3$) no debe alterar el orden.
-\item \emph{Desarrollo}: \concepto{teorema de la utilidad esperada} (\autor{von Neumann}-\autor{Morgenstern}, 1944; prueba en la 2.ª ed., 1947): con los 5 axiomas existe $u(\cdot)$ sobre resultados ciertos, la \concepto{utilidad de \autor{Bernoulli}}, tal que
+\item \emph{Desarrollo}: \concepto{teorema de la utilidad esperada} (\autor{von Neumann}-\autor{Morgenstern}, 1944; prueba en la 2.ª ed., 1947): con los 5~axiomas existe $u(\cdot)$ sobre resultados ciertos, la \concepto{utilidad de \autor{Bernoulli}}, tal que
 \funcionclave{U(\tilde{x})=\mathbb{E}\big[u(\tilde{x})\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)}
 $U$: \concepto{utilidad esperada}. Construcción: $u(x)=\tau$ que iguala $x$ seguro a (mejor, $\tau$; peor, $1-\tau$).
 \item \emph{Implicaciones}:
@@ -82,15 +82,15 @@ $U$: \concepto{utilidad esperada}. Construcción: $u(x)=\tau$ que iguala $x$ seg
 \graficorepaso[0.98\linewidth]{actitud-tres-casos}{Cuerda (utilidad esperada) y curva (utilidad del valor esperado): averso, neutral y amante}
 \begin{itemize}
 \item \emph{Definiciones}: \concepto{equivalente cierto} $\xi$: $u(\xi)=\mathbb{E}[u(\tilde{x})]$. \concepto{Prima de riesgo} $\rho\equiv\mathbb{E}[\tilde{x}]-\xi$: lo que se sacrifica en valor esperado por librarse del riesgo (o la rentabilidad extra exigida). Averso $\iff\xi<\mathbb{E}[\tilde{x}]\iff\rho>0$.
-\item \emph{Ejemplo}: $u=\sqrt{x}$, riqueza 64, pierde 48 con prob.\ $\frac12$: $\mathbb{E}[\tilde{x}]=40$, $\mathbb{E}[u]=6$, $\xi=36$, $\rho=4$. \concepto{Prima actuarialmente justa}: pérdida esperada, 24. \concepto{Prima máxima}: $64-\xi=28=24+4$; ese margen hace posible el negocio asegurador.
+\item \emph{Ejemplo}: $u=\sqrt{x}$, riqueza 64, pierde 48~con prob.\ $\frac12$: $\mathbb{E}[\tilde{x}]=40$, $\mathbb{E}[u]=6$, $\xi=36$, $\rho=4$. \concepto{Prima actuarialmente justa}: pérdida esperada, 24. \concepto{Prima máxima}: $64-\xi=28=24+4$; ese margen hace posible el negocio asegurador.
 \end{itemize}
-\graficorepaso[0.7\linewidth]{actitud-riesgo}{$\xi=36$, $\rho=4$, prima justa 24 y prima máxima 28}
+\graficorepaso[0.7\linewidth]{actitud-riesgo}{$\xi=36$, $\rho=4$, prima justa 24~y prima máxima 28}
 \begin{itemize}
 \item \emph{Medidas} (\autor{Pratt}, 1964; \autor{Arrow}, 1965): curvatura normalizada por la pendiente, invariante a $a\,u+b$:
 \begin{formula}
 \centering $r_A(x)\equiv-\dfrac{u''(x)}{u'(x)}$,\qquad $r_R(x)\equiv x\,r_A(x)$,\qquad $\rho\approx\tfrac12\,\sigma^2\,r_A(\overline{W})$
 \end{formula}
-$r_R$: elasticidad de la UMg cambiada de signo. Prima de \emph{segundo orden} ($\sigma^2$); en el ejemplo, 3,6 frente a 4.
+$r_R$: elasticidad de la UMg cambiada de signo. Prima de \emph{segundo orden} ($\sigma^2$); en el ejemplo, 3,6~frente a 4.
 \item \emph{Comparación}: \concepto{teorema de \autor{Pratt}}; equivalen:
   \begin{enumerate}
   \item $r_A^1\geq r_A^2\ \forall x$; (2) $u_1=\psi(u_2)$, $\psi$ cóncava;
@@ -110,7 +110,7 @@ $r_R$: elasticidad de la UMg cambiada de signo. Prima de \emph{segundo orden} ($
 \bottomrule
 \end{tabular}\par}
 \begin{itemize}
-\item \emph{CRRA}: la de macro y finanzas; con utilidad separable, $\mathrm{ESI}=1/\theta$ \vertema{3.A.29} (un parámetro para 2 cosas). \emph{Cuadrática}: solo media y varianza, pero IARA.
+\item \emph{CRRA}: la de macro y finanzas; con utilidad separable, $\mathrm{ESI}=1/\theta$ \vertema{3.A.29} (un parámetro para 2~cosas). \emph{Cuadrática}: solo media y varianza, pero IARA.
 \item \emph{Prudencia} (no se canta): $u'''>0$ $\Rightarrow$ \concepto{ahorro precautorio} (\autor{Leland}, 1968; \autor{Sandmo}, 1970): $u'(\overline{W}-s^*)=\mathbb{E}[u'(s^*+\tilde{y})]$. Prudencia absoluta $-u'''/u''$ (\autor{Kimball}, 1990): CRRA, $(\theta+1)/x$; cuadrática, 0 $\Rightarrow$ paseo aleatorio de \autor{Hall} \vertema{3.A.33}. DARA $\Rightarrow$ prudencia.
 \item \emph{Distribución}: \concepto{dominancia estocástica}, loterías que \emph{todos} prefieren.
 \begin{formula}
@@ -163,7 +163,7 @@ La utilidad esperada separa lo subjetivo ($u$: cuanto más cóncava, más prima 
 \begin{itemize}
 \item \emph{Cartera} (\autor{Arrow}, 1965), problema inverso: todo averso compra \emph{algo} de un activo con $\mathbb{E}[\tilde{r}]>r_f$, y más si es rico con DARA.
 \item \emph{Empresa aversa} (\autor{Sandmo}, 1971): $\mathrm{CMg}<\mathbb{E}[\tilde{p}]$, produce menos \vertema{3.A.11}.
-\item \emph{\autor{Diamond}-\autor{Dybvig}} (1983): depósitos, seguro de liquidez con 2 equilibrios; el malo, un \concepto{pánico bancario} \vertema{3.B.26}.
+\item \emph{\autor{Diamond}-\autor{Dybvig}} (1983): depósitos, seguro de liquidez con 2~equilibrios; el malo, un \concepto{pánico bancario} \vertema{3.B.26}.
 \end{itemize}
 
 \sub{I.3. Extensiones\label{rep:I.3}}
@@ -202,11 +202,11 @@ La TUE falla al describir por la independencia (\autor{Allais}) y la invariancia
 \begin{formula}
 \centering $A_1\succ B_1\iff\dfrac{u(110)}{u(100)}>\dfrac{0{,}80}{0{,}75}\approx1{,}067$;\quad $B_2\succ A_2\iff\dfrac{u(110)}{u(100)}<\dfrac{1}{0{,}95}\approx1{,}053$
 \end{formula}
-\emph{Por qué}: $B_1=0{,}8\,B_2+0{,}2\,\delta_0$, y $0{,}8\,A_2+0{,}2\,\delta_0$ (110 con 0,76) domina a $A_1$: quien prefiere $B_2$ debe preferir $B_1$. Del 80\,\% al 100\,\% pesa más que del 75\,\% al 95\,\%.
+\emph{Por qué}: $B_1=0{,}8\,B_2+0{,}2\,\delta_0$, y $0{,}8\,A_2+0{,}2\,\delta_0$ (110~con 0,76) domina a $A_1$: quien prefiere $B_2$ debe preferir $B_1$. Del 80\,\% al 100\,\% pesa más que del 75\,\% al 95\,\%.
 \item \emph{Razón común} (\autor{Kahneman}-\autor{Tversky}, 1979):
   \begin{itemize}
-  \item 80\,\% elige 3.000 seguros frente a 4.000 al 80\,\%;
-  \item 65\,\% elige 4.000 al 20\,\% frente a 3.000 al 25\,\%.
+  \item 80\,\% elige 3.000~seguros frente a 4.000~al 80\,\%;
+  \item 65\,\% elige 4.000~al 20\,\% frente a 3.000~al 25\,\%.
   \end{itemize}
 \item Triángulo de \autor{Marschak}-\autor{Machina}: la TUE da rectas paralelas; \autor{Allais} pide \emph{abanico} (\autor{Machina}, 1982).
 \item \emph{Invariancia}: \concepto{efecto marco} (ganancias o pérdidas $\Rightarrow$ elecciones opuestas); \concepto{inversión de preferencias} (se \emph{elige} la segura y se \emph{pide más} por la arriesgada; \autor{Lichtenstein}-\autor{Slovic}, 1971).
@@ -220,7 +220,7 @@ La TUE falla al describir por la independencia (\autor{Allais}) y la invariancia
 \sub{II.2. Teoría de las perspectivas (\autor{Kahneman}-\autor{Tversky}, 1979)\label{rep:II.2}}
 \begin{itemize}
 \item \emph{Idea}: \concepto{utilidad no esperada}, debilita la independencia; \emph{descriptiva}. Cambia cómo se \emph{definen} (ganancias y pérdidas), \emph{valoran} ($v$ en S) y \emph{ponderan} (pesos de decisión) las alternativas.
-\item \emph{Supuestos}: cálculo limitado $\Rightarrow$ 2 fases:
+\item \emph{Supuestos}: cálculo limitado $\Rightarrow$ 2~fases:
   \begin{enumerate}
   \item \concepto{edición}: \emph{codificación} respecto al \concepto{punto de referencia} $r$ (\emph{statu quo}, aspiración); combinación, segregación, cancelación;
   \item \concepto{evaluación}.
@@ -245,8 +245,8 @@ Con $r=0$, $w(\pi)=\pi$ y $v=u$, la TUE.
 \item \emph{Extensiones}: \concepto{teoría acumulativa} (1992): $w$ sobre probabilidades acumuladas, respeta la dominancia. \concepto{Dependiente del rango} (\autor{Quiggin}, 1982), \concepto{pesar} (\autor{Loomes}-\autor{Sugden}, \autor{Bell}, 1982), \concepto{generalizada} (\autor{Machina}, 1982).
 \item \emph{Evidencia}:
   \begin{itemize}
-  \item \dato{94\,\% replicado, 4.098 personas, 19 países}{\autor{Ruggeri} et al., 2020};
-  \item salarios rígidos a la baja; vivienda; 11-S, \dato{$\approx$350 muertes más en carretera}{\autor{Gigerenzer}, 2004};
+  \item \dato{94\,\% replicado, 4.098~personas, 19~países}{\autor{Ruggeri} et al., 2020};
+  \item salarios rígidos a la baja; vivienda; 11-S, \dato{$\approx$350~muertes más en carretera}{\autor{Gigerenzer}, 2004};
   \item prima de las acciones: \emph{aversión miope a las pérdidas} (\autor{Benartzi}-\autor{Thaler}, 1995) \vertema{3.B.23}; efecto disposición.
   \end{itemize}
 \item \emph{Valoración}: la que mejor encaja con los experimentos; \concepto{racionalidad limitada} (\autor{Simon}); \emph{nudges}. Límites: $r$ indeterminado, sin fuerza normativa. \emph{Complemento}, no sustituto.
@@ -272,7 +272,7 @@ Misma función clave; las $\pi_s$, \emph{creencias}.
 \end{itemize}
 \subsub{b) Limitaciones: la paradoja de \autor{Ellsberg}}
 \begin{itemize}
-\item \concepto{Paradoja de \autor{Ellsberg}} (1961): urna \emph{conocida} (50 rojas, 50 negras) y \emph{ambigua}. Se prefiere la conocida para «roja» \emph{y} para «negra» $\Rightarrow$ $\pi(R)+\pi(N)<1$: \textbf{ninguna probabilidad}. \concepto{Aversión a la ambigüedad}; menos bolsa (\autor{Dimmock} et al., 2016).
+\item \concepto{Paradoja de \autor{Ellsberg}} (1961): urna \emph{conocida} (50~rojas, 50~negras) y \emph{ambigua}. Se prefiere la conocida para «roja» \emph{y} para «negra» $\Rightarrow$ $\pi(R)+\pi(N)<1$: \textbf{ninguna probabilidad}. \concepto{Aversión a la ambigüedad}; menos bolsa (\autor{Dimmock} et al., 2016).
 \end{itemize}
 \graficorepaso[0.42\linewidth]{ellsberg}{Urna conocida y urna ambigua}
 
@@ -319,14 +319,14 @@ $D$ & 10 & 3 & 4 & 3 & 1 & 4 & 3 & 10 & 5,67 & \cellcolor{tceesalvia}4\\
 \item \textbf{Relevancia}: carteras \vertema{3.B.23}, dinero \vertema{3.A.35}, información asimétrica \vertema{3.A.13}, juegos \vertema{3.A.14}; seguros obligatorios y garantía de depósitos; economía conductual \vertema{3.A.1}.
 \item \textbf{Extensiones}: contingentes \vertema{3.A.21}; CRRA y ESI \vertema{3.A.29}; prudencia frente a \autor{Hall} \vertema{3.A.33}; irreversibilidad \vertema{3.A.34}.
 \item \textbf{Opinión}: no compiten: TUE \emph{normativa}; perspectivas \emph{positivas} (ahorro insuficiente, sobreaseguro). Hacen falta las 2.
-\item \textbf{Idea final}: los 2 refranes tienen razón, cada uno en su terreno; ante lo improbable, al revés: por eso se compran el seguro y el décimo.
+\item \textbf{Idea final}: los 2~refranes tienen razón, cada uno en su terreno; ante lo improbable, al revés: por eso se compran el seguro y el décimo.
 \end{itemize}
 
 % ==========================================================================
 \anexorepaso
 \bloque{Datos clave}
 \begin{itemize}
-\item Primas de seguro en España: \dato{$\approx$86.000 M€, $\approx$5\,\% del PIB}{Mapfre; Eurostat, 2025}.
+\item Primas de seguro en España: \dato{$\approx$86.000~M€, $\approx$5\,\% del PIB}{Mapfre; Eurostat, 2025}.
 \item Prima de las acciones (EE.\,UU.): \dato{6,7 p. sobre letras}{\autor{Damodaran}, 1928-2025}.
 \item Aversión relativa estimada: $\approx1$ (\autor{Chetty}, 2006).
 \item Garantía de depósitos (UE): \dato{100.000 €}{por depositante y entidad}.

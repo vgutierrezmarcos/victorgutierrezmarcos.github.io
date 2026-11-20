@@ -150,3 +150,7 @@ Aplicados con el encargo común del 18/11 y el añadido de la UE del 19/11. PDF 
 - **B42-14** (19/11/2026) — *Cuota del euro en las reservas*: el gráfico usa el COFER del FMI a tipos corrientes (20,3 % en 2025) y el texto la cifra del BCE a tipos constantes (20,2 %). Opciones: (a) ambas, explicado en la fuente del gráfico; (b) solo la del FMI. **Aplicada: (a)**, coherente con el 3B43.
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
 
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta → 2 cortas: más poder del que usa y menos del que cree; la ampliación exige que la Unión se reforme. Fuera «si la promesa es creíble», que ya cierra la idea final («solo si cumple lo que promete»).
+- **Frase célebre**: No hay frase asignada. Ficha al día.

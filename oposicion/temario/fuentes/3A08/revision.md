@@ -626,3 +626,10 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10 pt.
+
+
+## Opinión (21/11/2026)
+
+- No había opinión (instrucción de Víctor): el bloque «Valoración» se reparte en los 5 rótulos fijos. Relevancia: lo acabado de su lógica (preferencia revelada, integrabilidad) y su papel de punto de partida (Afriat, precios hedónicos). Opinión (0 → 3 viñetas): su lógica es más sólida que su evidencia (Deaton y Muellbauer); el «como si» de Friedman no basta ante la conducta (Simon, Kahneman y Tversky, Thaler) y el «tonto racional» de Sen; aun así, la conducta la amplía más que sustituirla. Se mantienen las notas de los Nobel y las citas.
+- Frase: ninguna asignada.
+- Ficha: ya tenía «Relevancia» y «Opinión»; sin cambios.

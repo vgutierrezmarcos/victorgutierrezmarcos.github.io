@@ -183,3 +183,8 @@ Páginas del tema: 31 → 31 (gráfico 4 en la p. 15; nota 22 en la p. 12). `\mi
 ## Comentarios de Víctor (19/11/2026)
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
+
+## Opinión (21/11/2026)
+
+- Viñetas: 1 → 1 (ya era corta: los sistemas caen cuando falta la cooperación y la voluntad política). Sin cambios en el tema ni en la ficha.
+- Frase célebre: no (no tiene asignada).

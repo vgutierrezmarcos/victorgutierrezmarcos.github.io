@@ -114,6 +114,14 @@ en cada tema. Ver `LICENSE.md` en la raíz.
     línea con «En conclusión,» tras los dos puntos («**Recapitulación**: En
     conclusión,») y ahí acaba la línea: todas las ideas, también la primera,
     van en subpárrafos debajo (Víctor, 19/11/2026).
+    Rótulos fijos (Víctor, 21/11/2026): introducción **Enganche**,
+    **Relevancia**, **Contextualización**, **Problemática**, **Estructura**;
+    conclusión **Recapitulación**, **Relevancia**, **Extensiones y relación con
+    otras partes del temario**, **Opinión**, **Idea final**. Todos los temas los
+    tienen todos. La **Opinión** es corta (2-4 viñetas) y, donde case, se apoya
+    en una frase célebre de un economista (o de un científico, como la de Gell-Mann
+    sobre los electrones que piensan) con su autor y fuente; una misma frase,
+    en 2 temas como mucho.
   - **Reparto de minutos** (Víctor, 13/10/2026): introducción
     **2'00"–2'30"** y conclusión **1'00"–1'30"**; el cuerpo, **26–27
     minutos**. Los `\minutos{}` de los apartados suman exactamente eso (p. ej.
@@ -1168,3 +1176,4 @@ un tema (§1-§10), con estas diferencias:
   antigua (`esquema_dictamen_economico.pdf` y `_2025.docx`), que
   `publicar-tema.py` guarda como `1D01-anterior.*`. En el manifiesto de la
   app va aparte, en la clave `dictamen`.
+- **Número y palabra, en la misma línea** (Víctor, 21/11/2026): un número y la palabra que acompaña van unidos con espacio irrompible (`4~ganancias`, `2.100~millones`), para que la palabra no pase sola a la línea siguiente. `scripts/temario/numeros-irrompibles.py --aplicar T.tex` lo hace (no toca años, fórmulas, etiquetas ni citas) y `verificar-tema.py` da error si queda alguno.

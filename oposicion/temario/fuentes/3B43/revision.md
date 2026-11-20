@@ -196,3 +196,7 @@ Todas aplicadas con la opción recomendada (14/11/2026); para que Víctor las co
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 10,5 pt.
 
+## Opinión (21/11/2026)
+
+- **Antes → después**: 1 viñeta → 2 cortas (euro más sólido pero incompleto; completar uniones y euro digital).
+- **Frase célebre**: No: la frase de Draghi («lo que sea necesario… y créanme, será suficiente») ya es el enganche de la introducción, vuelve en el cuerpo (III) y la idea final la retoma («El BCE ganó su fama en 2012»). Repetirla en la opinión sería la cuarta vez. Ficha sin cambios.

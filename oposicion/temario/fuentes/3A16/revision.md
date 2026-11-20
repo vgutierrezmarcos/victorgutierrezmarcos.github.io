@@ -222,3 +222,7 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+3 viñetas → 3, más cortas. Frase de Adam Smith (1776) sobre la benevolencia del carnicero, el cervecero y el panadero, que abre la opinión: el modelo aísla cómo los precios coordinan el interés propio. Nota al pie con el original («It is not from the benevolence of the butcher, the brewer, or the baker, that we expect our dinner, but from their regard to their own interest»), \textcite[libro I, cap. 2]{Smith1776Wealth} (ya en el .bib). Comprobada: *The Wealth of Nations*, libro I, cap. II (econlib, marxists.org). En la ficha, abreviada.

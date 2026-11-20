@@ -240,3 +240,8 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - Mapa de la exposición tras el esquema, en caja gris (figu:mapa-tema).
 - Ficha rehecha con el formato nuevo (introducción y esquema en la 1.ª columna, anexo en la última); 9 pt.
+
+## Opinión (21/11/2026)
+
+- 1 viñeta con 3 subviñetas → 2 viñetas: comparar un fallo con otro y no con un ideal (falacia del nirvana); el informe Stern y los instrumentos robustos. Fuera la mención a Kahn (ya es la frase del 3A20).
+- Frase: informe Stern (2006), «el mayor fallo de mercado que el mundo ha visto». Comprobada en el PDF: *Summary of Conclusions*, p. viii (HM Treasury, 30/10/2006): «Climate change is the greatest market failure the world has ever seen, and it interacts with other market imperfections» (el resumen ejecutivo, p. i, dice «the greatest and widest-ranging market failure ever seen»). Nota al pie con el original y la fuente; bib: Stern2007Economics (libro, Cambridge UP, 2007). Ojo: la introducción (Relevancia) ya cita la misma frase; en la opinión se retoma como cierre del círculo. Ficha: la frase abreviada.

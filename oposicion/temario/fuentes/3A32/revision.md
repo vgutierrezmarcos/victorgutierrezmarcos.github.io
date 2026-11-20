@@ -363,3 +363,11 @@ Pendiente (no tocado, previo): el título del bloque II ocupa 3 líneas en el PD
 | 4. Mapa de la exposición en caja gris, sin «Hilo:» | `figu:estructura-tema` va ahora en `anotaciones` + `infografiacaja` tras el esquema, como en 3.B.1/3.B.16; quitado «Hilo: España…» de la banda superior; la caja de implicaciones del bloque III y la línea de evidencia recogen lo nuevo |
 | Ficha | Lo de España 2022, Covid, rentas, *policy mix* y los 70 pasa de II a III.3 (viñeta «Oferta y demanda, en detalle» y evidencia), con las figuras `policy-mix` y `blanchard-quah`; el esquema del cante con el nuevo reparto de III; corregidos los minutos de los títulos de II y III, que seguían en 7′ y 15′30″ (ahora 6′ y 13′), y «Hilo» → «Recorrido». 4 páginas a 10,5 pt (última al 76 %) |
 | Compilación | Antes: 27 páginas de tema, 17 de anexos y 8 de bibliografía (52). Después: 33, 14 y 8 (55); 30′. `verificar-tema.py 3A32`: 0 errores y 9 avisos (los mismos: «cifra sin cita» que se han movido con su texto y los 2 del vídeo) |
+
+## Opinión (21/11/2026)
+
+Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase célebre.
+
+- 1 viñeta → 2: se mantiene la del «depende» y se añade que la política se juega en el ajuste, con la frase entera de **Keynes**: «este largo plazo es una mala guía para los asuntos de hoy. A largo plazo, todos muertos. Los economistas se ponen una tarea demasiado fácil y demasiado inútil si, en plena tempestad, solo saben decirnos que, cuando pase la tormenta, el mar volverá a estar en calma». Casa con la idea final (las desgracias que llegan juntas).
+- Fuente comprobada: *A Tract on Monetary Reform* (1923), cap. 3 (p. 80 de la 1.ª edición); original en la nota. `Keynes1923Tract` copiada del 3A04 (que usa la frase corta en el enganche: 2 temas en total).
+- Ficha: «a largo plazo, todos muertos».
