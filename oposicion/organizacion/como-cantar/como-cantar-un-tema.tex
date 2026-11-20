@@ -3,11 +3,11 @@
 % (tcee.sty). Se compila con oposicion/temario/latex en TEXINPUTS:
 %   TEXINPUTS=../../temario/latex//: pdflatex como-cantar-un-tema.tex  (dos pasadas)
 % Las cifras de los patrones salen de los 90 temas revisados del tercer
-% ejercicio (fuentes/*/*.tex, 19/11/2026).
+% ejercicio (fuentes/*/*.tex, 20/11/2026).
 \usepackage{tcee}
 \usetikzlibrary{arrows.meta,positioning,calc,shapes.symbols,shapes.misc,fit,backgrounds,matrix}
 \tcetema[Cómo cantar un tema]{Guía}{Cómo cantar un tema}
-\tcefecha{19/11/2026}
+\tcefecha{20/11/2026}
 \tceeguia
 \hypersetup{pdftitle={Cómo cantar un tema},pdfsubject={Guía para cantar un tema de la oposición a TCEE: método y patrones del temario}}
 
@@ -40,6 +40,12 @@
 \renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.9}\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.85}
 \newcommand{\rot}[1]{{\bfseries\color{tceemorado}#1}}
 \newcommand{\rotb}[1]{{\bfseries\color{white}#1}}
+% Tarjetas de patrones
+\newcommand{\tarjeta}[3]{%
+  \begin{tcolorbox}[enhanced,colback=white,colframe=#1,boxrule=0.7pt,arc=2pt,
+    title={#2},fonttitle=\small\bfseries\raggedright,colbacktitle=#1,coltitle=white,
+    fontupper=\footnotesize,left=5pt,right=5pt,top=3pt,bottom=3pt]#3\end{tcolorbox}}
+\newcommand{\fila}[2]{\par\noindent{\bfseries\color{tceemoradooscuro}#1}\enspace #2\par\vspace{1.5pt}}
 
 \begin{document}
 \tceetitulo
@@ -61,8 +67,8 @@ es importante estructurar bien los temas para poder optimizar esa hora.
 \begin{anotaciones}
 \textbf{Cómo leer esta guía.}
 \begin{itemize}
-\item Cada parte empieza con el método (cómo se canta) y sigue con los \emph{patrones}: cómo están hechos los temas, con ejemplos reales del temario («como en el 3.B.4…»). Las cifras salen de los 90 temas revisados del tercer ejercicio (3.A.1-3.A.45 y 3.B.1-3.B.45) a 19 de noviembre de 2026.
-\item Las infografías resumen cada pieza en una página: la introducción (figura~\ref{figu:introduccion}), el hilo entre bloques (figura~\ref{figu:hilo}), un modelo (figura~\ref{figu:modelo}), la pizarra (figura~\ref{figu:pizarra}), la conclusión (figura~\ref{figu:conclusion}), dónde va cada cosa (figura~\ref{figu:donde}) y los patrones por tipo de tema (figuras~\ref{figu:tipos-a} a~\ref{figu:ue}).
+\item Cada parte empieza con el método (cómo se canta) y sigue con los \emph{patrones}: cómo están hechos los temas, con ejemplos reales del temario («como en el 3.B.4…»). Las cifras salen de los 90 temas revisados del tercer ejercicio (3.A.1-3.A.45 y 3.B.1-3.B.45) a 20 de noviembre de 2026.
+\item Las infografías resumen cada pieza en una página: la introducción (figura~\ref{figu:introduccion}), el hilo entre bloques (figura~\ref{figu:hilo}), una página del tema anotada (figura~\ref{figu:pagina}), un concepto (figura~\ref{figu:concepto}), los patrones del cuerpo (figura~\ref{figu:patrones}), un modelo (figura~\ref{figu:modelo}), la pizarra (figura~\ref{figu:pizarra}), la conclusión (figura~\ref{figu:conclusion}) y su opinión (figura~\ref{figu:opinion}), dónde va cada cosa (figura~\ref{figu:donde}) y los patrones por tipo de tema (figuras~\ref{figu:tipos-a} a~\ref{figu:ue}).
 \item Si conoces los patrones, reconoces el tema en cualquier página: sabes dónde está lo que se canta, lo que se mira y lo que se guarda para las preguntas del tribunal.
 \end{itemize}
 \end{anotaciones}
@@ -169,7 +175,7 @@ es importante estructurar bien los temas para poder optimizar esa hora.
   \item Situar el debate económico desde una perspectiva histórica: demostrar que conocemos cómo ha evolucionado el debate en la materia de la exposición.
   \item Dar también algunas \emph{definiciones}, no porque sean útiles, sino para desincentivar preguntas posteriores sobre definiciones, en las que es más frecuente perder puntos que ganarlos.
   \end{itemize}
-\item \textbf{\emph{Problemática}} (preguntas clave):
+\item \textbf{\emph{Problemática}}:
   \begin{itemize}
   \item La pregunta o preguntas a las que se va a responder a lo largo de la exposición.
   \end{itemize}
@@ -206,7 +212,7 @@ es importante estructurar bien los temas para poder optimizar esa hora.
 \begin{itemize}
 \item \textbf{\emph{Un refrán único por tema}}:
   \begin{itemize}
-  \item 89 de los 90 temas abren con un refrán o un dicho entre comillas, y ninguno se repite como refrán inicial: «A toro pasado, todos somos Manolete» (3.A.1), «Sobre gustos no hay nada escrito» (3.A.8), «Quien parte y reparte se queda con la mejor parte» (3.A.17), «Lo prometido es deuda» (3.A.36), «El que mucho abarca, poco aprieta» (3.B.5). El 3.A.10 abre con una pregunta y 2 refranes que se contradicen: «más vale pájaro en mano…» frente a «de perdidos, al río».
+  \item Los 90 temas abren con un refrán o un dicho entre comillas, y ninguno se repite: 89 refranes y un dicho (el «por un clavo se perdió una herradura…» del 3.A.31, que no se llama refrán porque no lo es). Por ejemplo, «A toro pasado, todos somos Manolete» (3.A.1), «Sobre gustos no hay nada escrito» (3.A.8), «Quien parte y reparte se queda con la mejor parte» (3.A.17), «Lo prometido es deuda» (3.A.36), «El que mucho abarca, poco aprieta» (3.B.5). El 3.A.10 abre con una pregunta y 2 refranes que se contradicen: «más vale pájaro en mano…» frente a «de perdidos, al río».
   \item El refrán no es un adorno: resume la intuición del tema. En el 3.A.23, «unos por otros, la casa sin barrer» es la definición de bien público; en el 3.A.29, «no dejes para mañana lo que puedas hacer hoy» es la pregunta de la ecuación de \autor{Euler}.
   \end{itemize}
 \item \textbf{\emph{Un hecho que lo ilustra, según el tipo de tema}}:
@@ -298,6 +304,134 @@ es importante estructurar bien los temas para poder optimizar esa hora.
 \item \textbf{\emph{Un ejemplo conductor}}: en los temas de conceptos se vuelve a la misma historia en cada concepto («Siguiendo con el ejemplo de nuestros 2 operadores…», 3.A.14), sin rótulo de «hilo».
 \item \textbf{\emph{Lo que se dice y lo que no}}: no se dicen números de tema en voz alta («como veremos en el 3.A.9»), sino el contenido («la teoría de la dualidad»). En el texto, las remisiones van en gris, \emph{detrás} de la idea: \vertema{3.A.15}. Los temas llevan unas 64 por término medio (164 el 3.A.1).
 \end{itemize}
+
+\subsection{Cómo es una página del cuerpo}\label{sec:pagina}
+
+\begin{itemize}
+\item \textbf{\emph{Cada cosa tiene su forma}}: en una página del cuerpo, el tipo de letra y la caja dicen qué se canta, qué se mira y qué se guarda. Si lo reconoces, sabes qué memorizar sin leer la página entera.
+\item \textbf{\emph{Lo que se canta}} va en viñetas: el nexo, la conclusión anticipada, los conceptos en negrita con su definición, las ecuaciones y su lectura, y la aplicación al caso europeo o español.
+\item \textbf{\emph{Lo que no se canta}} va fuera del hilo: la remisión en gris, la nota al pie, la caja gris y la nota al opositor (figura~\ref{figu:pagina}).
+\end{itemize}
+
+\newcommand{\nm}[1]{\tikz[baseline=-0.6ex]\node[circle,fill=tceedorado,text=white,font=\scriptsize\bfseries,inner sep=0pt,minimum size=3.8mm]{#1};}
+\begin{infografia}[!tb]
+\centering
+\caption{Anatomía de una página del cuerpo: la página 28 del 3.A.39 (déficit público y sostenibilidad de la deuda), tal como está en el tema}\label{figu:pagina}
+\begin{minipage}[t]{7.75cm}\vspace{0pt}
+\begin{tikzpicture}[inf,num/.style={circle,fill=tceedorado,text=white,font=\scriptsize\bfseries,inner sep=0pt,minimum size=4mm,draw=white,line width=0.6pt}]
+  \node[anchor=south west,inner sep=0pt] (pag) at (0,0) {\includegraphics[width=7.6cm]{pagina-3A39.pdf}};
+  \draw[tceegris!70,line width=0.4pt] (pag.south west) rectangle (pag.north east);
+  \begin{scope}[shift={(pag.north west)},x=0.012767cm,y=-0.012767cm]
+    \draw[tceedorado,line width=0.7pt,rounded corners=1pt] (508,164) rectangle (536,182);
+    \draw[tceedorado,line width=0.7pt,rounded corners=1pt] (488,491) rectangle (537,510);
+    \draw[tceedorado,line width=0.7pt] (447,479) circle (6);
+    \node[num] at (44,86) {1};
+    \node[num] at (44,139) {2};
+    \node[num] at (556,173) {3};
+    \node[num] at (44,190) {4};
+    \node[num] at (44,222) {5};
+    \node[num] at (44,300) {6};
+    \node[num] at (44,330) {7};
+    \node[num] at (556,383) {8};
+    \node[num] at (556,500) {10};
+    \node[num] at (44,562) {9};
+    \node[num] at (44,621) {11};
+    \node[num] at (44,700) {12};
+  \end{scope}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[t]{7.75cm}\vspace{0pt}\footnotesize\raggedright
+\setlength{\parskip}{3.2pt}
+{\bfseries\color{tceemorado}Fuera del hilo, antes del apartado}\par
+\nm{1} \emph{Caja gris} al final del apartado anterior: vídeos y lecturas para ver. Se mira, no se canta.\par
+{\bfseries\color{tceemorado}Lo que se canta}\par
+\nm{2} \emph{Título del apartado} (I, II o III), en mayúsculas: responde a una pregunta de la problemática.\par
+\nm{3} \emph{Minutos} del apartado, en gris a la derecha: \tiempo{7,75} de los 30.\par
+\nm{4} \emph{Nexo}: la primera viñeta enlaza con el bloque anterior («Una vez vista la dinámica de la deuda, pasamos a…»).\par
+\nm{5} \emph{Conclusión anticipada}, en cursiva: lo que el apartado va a demostrar, dicho antes de demostrarlo.\par
+\nm{6} \emph{Subapartado}: un concepto o un modelo cada uno.\par
+\nm{7} \emph{Concepto en negrita} la primera vez que sale, con su definición en la misma frase: «El \textbf{señoreaje} es lo que el sector público obtiene…».\par
+\nm{8} \emph{Ecuación numerada}, con una llave bajo cada término que dice qué es: la interpretación analítica, leída en palabras. Si se queda en la pizarra todo el cante, va en morado (función clave).\par
+\nm{9} \emph{Aplicación}: tras el mecanismo, el caso europeo o español, con el arranque en cursiva («\emph{En la zona del euro}, …»).\par
+{\bfseries\color{tceemorado}Lo que se mira y no se canta}\par
+\nm{10} \emph{Remisión} en gris, \emph{detrás} de la idea: \vertema{3.A.35}. En voz alta se dice el contenido, nunca el número.\par
+\nm{11} \emph{Nota al opositor}: qué ha preguntado el tribunal en otros exámenes y cómo responderlo con lo que ya está en el tema.\par
+\nm{12} \emph{Nota al pie}, con su llamada en el texto: el matiz o la curiosidad que ameniza sin cortar el hilo (aquí, que el señoreaje ya existía en tiempos de \autor{Dionisio} de Siracusa).\par
+\end{minipage}
+\fuente{elaboración propia a partir del 3.A.39 (página 28 de 35).}
+\end{infografia}
+
+\subsection{Un concepto, 3 interpretaciones}\label{sec:concepto}
+
+\begin{itemize}
+\item \textbf{\emph{La regla}}: cada concepto importante se da con su \emph{definición} (una frase que se dice tal cual), su \emph{interpretación analítica} (la fórmula, leída en palabras) y su \emph{interpretación gráfica} (dónde se ve en el gráfico). Con las 3, el tribunal ve que se entiende y no solo que se recuerda.
+\item \textbf{\emph{En el tema}}: la definición va con el concepto en negrita; la fórmula, en una ecuación o como función clave; el gráfico, en una figura que se dibuja por capas. La derivación, si es corta, va en nota al pie (figura~\ref{figu:concepto}).
+\end{itemize}
+
+\begin{infografia}[!tb]
+\centering
+\caption{Un concepto en sus 3 interpretaciones: el índice de \autor{Lerner} en el 3.A.17 (monopolio)}\label{figu:concepto}
+\begin{tikzpicture}[inf]
+  \foreach \i/\t in {0/{1. Definición},1/{2. Interpretación analítica},2/{3. Interpretación gráfica}}
+    \node[paso,text width=4.75cm,minimum height=0.8cm] (h\i) at (\i*5.3,0) {\t};
+  \node[que,text width=4.75cm,minimum height=4.05cm,anchor=north] (c0) at ($(h0.south)+(0,-0.2)$)
+    {El \textbf{índice de \autor{Lerner}} mide el \emph{poder de mercado} como el margen relativo del precio sobre el coste marginal.\\[5pt]
+     Una frase, la misma siempre, que se dice tal cual: quita las preguntas sobre la definición, en las que es más fácil perder puntos que ganarlos.};
+  \node[que,text width=4.75cm,minimum height=4.05cm,anchor=north] (c1) at ($(h1.south)+(0,-0.2)$)
+    {\makebox[4.75cm]{\fcolorbox{tceemorado}{tceemoradopalido}{\color{tceemorado}$\mathcal{L}\equiv\dfrac{p^M-\mathrm{CMg}}{p^M}=\dfrac{1}{|\varepsilon|}$}}\\[7pt]
+     Se lee en palabras: \emph{el margen es la inversa de la elasticidad}; cuanto menos sustitutos tiene el bien, más margen.\\[3pt]
+     La derivación, de una línea, va en nota al pie.};
+  \node[que,text width=4.75cm,minimum height=4.05cm,anchor=north] (c2) at ($(h2.south)+(0,-0.2)$) {};
+  \begin{scope}[shift={($(c2.south west)+(0.55,0.45)$)},x=1cm,y=1cm]
+    \draw[->,thick] (0,0) -- (3.9,0) node[below left=0pt and -2pt,font=\scriptsize] {$q$};
+    \draw[->,thick] (0,0) -- (0,2.95) node[left,font=\scriptsize] {$p$};
+    \draw[very thick,tceemorado] (0.1,2.7) -- (3.6,0.075) node[above right=-1pt and -10pt,font=\scriptsize] {$D$};
+    \draw[very thick,tceeazul] (0.1,2.65) -- (2.0,0.08) node[right,font=\scriptsize] {$\mathrm{IMg}$};
+    \draw[very thick,tceeverde] (0.1,0.8) -- (3.7,0.8) node[above left=0pt and 0pt,font=\scriptsize] {$\mathrm{CMg}$};
+    \fill (1.45,0.8) circle (1.5pt); \fill (1.45,1.6875) circle (1.5pt);
+    \draw[dashed,tceegris] (1.45,0) -- (1.45,1.6875) -- (0,1.6875);
+    \node[below,font=\scriptsize] at (1.45,0) {$q^M$};
+    \node[left,font=\scriptsize] at (0,1.6875) {$p^M$};
+    \draw[decorate,decoration={brace,amplitude=3pt},tceedorado,thick] (1.55,1.6875) -- (1.55,0.8);
+    \draw[tceedorado,thin] (1.68,1.25) -- (2.35,2.25) node[above,font=\scriptsize,text=tceedorado,align=center,inner sep=1pt] {margen $p^M-\mathrm{CMg}$};
+  \end{scope}
+  \foreach \i/\t in {0/{Se dice sentado, de palabra.},1/{Se escribe y se queda en la esquina de la pizarra: es función clave.},2/{Se dibuja por capas: demanda, ingreso y coste marginales, equilibrio y margen.}}
+    \node[ejemplo,text width=4.75cm,anchor=north] at ($(c\i.south)+(0,-0.2)$) {\t};
+\end{tikzpicture}
+\fuente{elaboración propia a partir del 3.A.17 (gráfico ilustrativo, sin escala).}
+\end{infografia}
+
+\subsection{Los patrones que se repiten en el cuerpo}\label{sec:patrones-cuerpo}
+
+\begin{itemize}
+\item \textbf{\emph{Las mismas formas en los 90 temas}}: además del hilo y de los modelos a)-e), hay 6 maneras de ordenar el contenido que vuelven en todo el temario. Reconocerlas ayuda a estudiar (cada forma se memoriza igual) y a improvisar un tema que no se tiene revisado (figura~\ref{figu:patrones}).
+\end{itemize}
+
+\begin{infografia}[!tb]
+\centering
+\caption{Los 6 patrones que se repiten en el cuerpo de los temas}\label{figu:patrones}
+\begin{tcbraster}[raster columns=2,raster equal height=rows,raster column skip=3mm,raster row skip=3mm]
+\tarjeta{tceemorado}{1. Dos escuelas, una viñeta cada una}{%
+\fila{Cómo}{cuando se comparan 2 enfoques, cada uno en su viñeta y sus puntos debajo, sangrados: se ve de un vistazo qué dice cada uno.}
+\fila{Ejemplos}{la síntesis neoclásica y el monetarismo (3.A.5); lo \emph{normativo} (utilidad esperada) frente a lo \emph{positivo} (teoría de las perspectivas), en el 3.A.10.}}
+\tarjeta{tceeazul}{2. Criterio, tipo, ventajas e inconvenientes}{%
+\fila{Cómo}{las clasificaciones, en 3 niveles: el criterio en cursiva («\emph{Según cómo se calcula}»), cada tipo con su concepto en negrita y, debajo, \emph{Ventaja} e \emph{Inconveniente}.}
+\fila{Ejemplos}{los aranceles \emph{ad valorem}, específicos y mixtos (3.B.7); 69 pares de ventajas e inconvenientes en el temario.}}
+\tarjeta{tceeverde}{3. Desarrollo por pasos}{%
+\fila{Cómo}{«Paso 1, Paso 2…», cada paso en su viñeta y lo que se hace debajo: se canta igual que se escribe en la pizarra.}
+\fila{Ejemplos}{los 3 pasos del paseo aleatorio de \autor{Hall} (3.A.33); más de 200 pasos en el temario.}}
+\tarjeta{tceedorado}{4. El dato, con fuente, fecha y comparación}{%
+\fila{Cómo}{la última cifra oficial, primero de España y después de la UE o del mundo, con otra cifra que le da sentido; la fuente, en la bibliografía.}
+\fila{Ejemplos}{el 54,4~\% de las empresas españolas no tiene asalariados y el valor añadido por ocupado de las grandes es 1,7~veces el de las micro (3.B.4).}}
+\tarjeta{tceenaranja}{5. Teoría, evidencia y valoración}{%
+\fila{Cómo}{cada modelo termina con lo que dicen los datos (\emph{Evidencia empírica}, unos 300 bloques) y con su \emph{Valoración}, que suele abrir el siguiente apartado.}
+\fila{Ejemplos}{la contrastación del paseo aleatorio tras \autor{Hall} (3.A.33); la paradoja de \autor{Leontief} tras \autor{Heckscher}-\autor{Ohlin} (3.B.5).}}
+\tarjeta{tceegris}{6. Del mecanismo al caso europeo o español}{%
+\fila{Cómo}{tras explicar cómo funciona algo, una viñeta lo aplica, con el arranque en cursiva: «\emph{En la zona del euro}…», «\emph{En España}…».}
+\fila{Ejemplos}{el señoreaje del Eurosistema y el artículo 123 del TFUE (3.A.39); el ejemplo conductor que vuelve en cada concepto (3.A.14).}}
+\end{tcbraster}
+\fuente{elaboración propia a partir de los 90 temas del tercer ejercicio.}
+\end{infografia}
 
 % ==========================================================================
 \section{Cómo se cuenta un modelo}\label{sec:modelo}
@@ -446,10 +580,10 @@ es importante estructurar bien los temas para poder optimizar esa hora.
   \item Debe huir de zanjar un debate (si se ha planteado uno) o de extraer las lecciones del tema (eso se ha ido haciendo en cada apartado para que no se pierda quien escucha). Difícilmente el opositor resolverá oralmente en unos minutos un debate que los círculos académicos tratan por escrito.
   \item Un buen apartado final recopila lo visto, si es necesario, pero sobre todo abre el tema al resto del temario o a cuestiones no tratadas, para suscitar preguntas y asegurar a quien escucha que el opositor puede tratar otras cuestiones además de las expuestas.
   \end{itemize}
-\item \textbf{\emph{Recapitulación}} (ideas clave): empieza por «En conclusión,». Dar las ideas clave en un breve resumen, sin que sea una mera repetición del contenido del cante.
+\item \textbf{\emph{Recapitulación}}: empieza por «En conclusión,». Dar las ideas clave en un breve resumen, sin que sea una mera repetición del contenido del cante.
 \item \textbf{\emph{Relevancia}}: remarcar la relevancia del tema mostrando fascinación.
 \item \textbf{\emph{Extensiones y relación con otras partes del temario}}: aplicaciones de lo estudiado en otros ámbitos (líneas de investigación actuales, aplicabilidad…). Es «tirar la caña» al tribunal con temas que controlemos, para provocar preguntas que sabemos responder.
-\item \textbf{\emph{Opinión}}: fundada, si procede.
+\item \textbf{\emph{Opinión}}: una postura fundada y \emph{corta}, de 2 a 4 viñetas; donde encaja, con una frase célebre de un economista que la resume (figura~\ref{figu:opinion}).
 \item \textbf{\emph{Idea final}} (salida o cierre): por ejemplo, la respuesta a la problemática planteada al principio. Es la última frase: nunca se termina dando las gracias ni con «y con esto termino».
 \end{itemize}
 
@@ -464,13 +598,13 @@ es importante estructurar bien los temas para poder optimizar esa hora.
  |[cabecera,fill=none,text=tceemorado,text width=2.75cm]| Paso \& |[cabecera,fill=none,draw=none]| Qué se dice \& |[cabecera,fill=none,draw=none,font=\footnotesize\bfseries\upshape,text=tceemorado]| Cómo lo hace el 3.B.4 \\
  1. Recapitulación \& «En conclusión,» y una idea por bloque, con otras palabras. \& Las empresas crecen hasta donde lo permiten la tecnología y los costes de usar el mercado, o sin tamaño de destino; la vía depende de lo específicos que sean los activos; y para decidirlo hay que valorar. \\
  2. Relevancia \& Por qué importa, con un dato distinto del de la introducción. \& El tamaño pesa en la productividad, los salarios y la competencia; en España, las empresas de 250 trabajadores o más son el 0,2~\% del total. \\
- 3. Extensiones \& Otros enfoques y temas: la «caña» para las preguntas. \& La teoría de la empresa, la inversión y el coste del capital, la estructura financiera, la eficiencia de los mercados, las opciones reales, el control de concentraciones. \\
- 4. Opinión \& Una postura fundada, con evidencia; no zanja el debate. \& Desconfiar de las sinergias que se pagan por adelantado; para que las empresas crezcan, ayuda más quitar las regulaciones por umbral de tamaño que subvencionar fusiones. \\
+ {3. Extensiones\\[-1pt]{\scriptsize\mdseries y relación con otras partes del temario}} \& Otros enfoques y temas: la «caña» para las preguntas. \& La teoría de la empresa, la inversión y el coste del capital, la estructura financiera, la eficiencia de los mercados, las opciones reales, el control de concentraciones. \\
+ 4. Opinión \& Una postura fundada y corta (2-4 viñetas), con evidencia; no zanja el debate. \& Desconfiar de las sinergias que se pagan por adelantado; para que las empresas crezcan, ayuda más quitar las regulaciones por umbral de tamaño que subvencionar fusiones. \\
  |[pasodorado]| 5. Idea final \& La respuesta a la pregunta del principio, volviendo al refrán. Es la última frase. \& «Roma no se hizo en un día, y tampoco se compra de un día para otro.» Crecer compensa cuando lo que se recibe vale más de lo que se paga: «el precio es lo que se paga y el valor, lo que se recibe» (\autor{Graham}). \\
 };
 \foreach \i [evaluate=\i as \j using int(\i+1)] in {2,...,5} \draw[flechamorada] (m-\i-1) -- (m-\j-1);
 \node[rectangle,rounded corners=2pt,draw=tceedorado,line width=0.8pt,fill=tceedorado!10,text width=15.3cm,align=left,inner sep=4pt,font=\footnotesize,anchor=north west] (vuelta) at ($(m.south west)+(0,-2.5mm)$)
-  {\textbf{\color{tceedorado}Cierre en círculo}: el refrán del enganche vuelve en la idea final, ya respondido. En 87 de los 90 temas se repite casi a la letra y en los demás se evoca: «Las desgracias nunca vienen solas: en 2020-2022 llegaron juntas una de oferta, una de demanda y otra de fuera» (3.A.32); «Volviendo al refrán, quien juega con fuego se quema, pero una casa sin fuego se hiela» (3.A.41).};
+  {\textbf{\color{tceedorado}Cierre en círculo}: el refrán del enganche vuelve en la idea final, ya respondido. En más de 80 de los 90 temas se repite casi a la letra y en los demás se evoca: «Las desgracias nunca vienen solas: en 2020-2022 llegaron juntas una de oferta, una de demanda y otra de fuera» (3.A.32); «Volviendo al refrán, quien juega con fuego se quema, pero una casa sin fuego se hiela» (3.A.41).};
 \draw[->,thick,tceedorado] (m-6-1.west) -- ++(-0.35,0) |- ($(m-2-1.west)+(0,0)$) node[pos=0.25,left,font=\scriptsize\itshape,text=tceedorado,rotate=90,anchor=south] {vuelve al enganche};
 \end{tikzpicture}
 \fuente{elaboración propia a partir de los 90 temas del tercer ejercicio.}
@@ -483,6 +617,36 @@ es importante estructurar bien los temas para poder optimizar esa hora.
 \item \textbf{\emph{La respuesta a la problemática}}: la idea final empieza muchas veces por «A la pregunta del principio…» o «Volviendo al refrán…» (3.A.43: «si se puede crecer para siempre acumulando capital, los 3 modelos responden que no»).
 \item \textbf{\emph{Extensiones con remisiones}}: la caña se lanza a temas concretos, con su remisión en el texto, para que el opositor sepa qué preguntas puede provocar y dónde está la respuesta.
 \end{itemize}
+
+
+\subsection{La opinión}\label{sec:opinion}
+
+\begin{itemize}
+\item \textbf{\emph{Corta}}: 2 a 4 viñetas (2,3 de media), una postura clara y razonada. Lo que repite la recapitulación o adelanta la idea final, fuera.
+\item \textbf{\emph{Fundada}}: con la evidencia del tema, sin zanjar el debate; el tribunal valora el criterio, no la rotundidad.
+\item \textbf{\emph{Con una frase célebre donde encaja}}: 40 temas cierran la opinión con la frase de un economista que la resume. Va traducida, entre comillas, con su autor y su año; el original, en nota al pie. Ninguna frase se usa en más de 2 temas, y solo si se ha comprobado quién la dijo (muchas están mal atribuidas).
+\item \textbf{\emph{3 formas}}: una postura con su porqué, 2 visiones en viñetas sangradas cuando el tema enfrenta escuelas, o la frase célebre como última viñeta (figura~\ref{figu:opinion}).
+\end{itemize}
+
+\begin{infografia}[!tb]
+\centering
+\caption{La opinión de la conclusión: 3 formas, con ejemplos del temario}\label{figu:opinion}
+\begin{tcbraster}[raster columns=3,raster equal height=rows,raster column skip=3mm]
+\tarjeta{tceemorado}{Una postura con su porqué}{%
+\fila{Cómo}{2-4 viñetas: qué piensa el opositor y en qué se apoya.}
+\fila{3.B.4}{comprar empresas crea valor si lleva los activos a quien mejor los gestiona, pero «conviene desconfiar de las sinergias que se pagan por adelantado»; para que las empresas crezcan, ayuda más quitar las regulaciones que saltan al cruzar un umbral de tamaño que subvencionar las fusiones.}}
+\tarjeta{tceeazul}{Dos visiones, sangradas}{%
+\fila{Cómo}{una viñeta por escuela o enfoque y sus razones debajo.}
+\fila{3.A.5}{«Las 2 escuelas tenían parte de razón»: \emph{la síntesis}, en que la demanda importa a corto plazo y la política puede estabilizar; \emph{el monetarismo}, en que no hay atajos permanentes contra el paro, aunque la cantidad de dinero resultó un mal objetivo.}
+\fila{3.A.10}{la utilidad esperada es \emph{normativa}; la teoría de las perspectivas, \emph{positiva}: «un buen análisis necesita las 2».}}
+\tarjeta{tceedorado}{La frase célebre}{%
+\fila{Cómo}{la última viñeta: traducción, autor y año; el original, en nota.}
+\fila{3.A.1}{\autor{Joan Robinson} (1962): un modelo con toda la diversidad de la realidad sería tan poco útil «como un mapa a escala de uno a uno».}
+\fila{3.A.29}{\autor{George Box} (1979): «todos los modelos son falsos, pero algunos son útiles».}
+\fila{3.A.20}{\autor{Alfred Kahn}: «la mejor combinación posible de una regulación inevitablemente imperfecta y una competencia inevitablemente imperfecta».}}
+\end{tcbraster}
+\fuente{elaboración propia a partir de los 90 temas del tercer ejercicio.}
+\end{infografia}
 
 % ==========================================================================
 \section{Nota al pie, caja gris o anexo}\label{sec:donde}
@@ -500,11 +664,12 @@ es importante estructurar bien los temas para poder optimizar esa hora.
   \tikzset{pregunta/.append style={text width=3.7cm},resultado/.append style={text width=10.6cm}}
   \node[resultado,draw=tceemorado,fill=tceemoradopalido,anchor=north west] (r1) at (3.4,0) {\textbf{\color{tceemorado}CUERPO DEL TEMA}, en viñetas que se entienden solas.\\
     -- Si es la ecuación que se queda en la pizarra: \emph{función clave}, en morado y recuadrada (294).\\
-    -- Si es un consejo para cantarlo: \emph{nota al opositor}, caja morada (179, en 50 temas).\\
+    -- Si es un consejo para cantarlo: \emph{nota al opositor}, caja morada (165, en 49 temas).\\
     -- Si es una frase para decir tal cual: \emph{idea clave}, caja verde (30).};
-  \node[resultado,draw=tceeazul,fill=tceeazul!8,anchor=north west] (r2) at ($(r1.south west)+(0,-0.35)$) {\textbf{\color{tceeazul}NOTA AL PIE} \hfill 1.921 en el cuerpo, 21 por tema\\
-    -- el Premio Nobel de un autor citado, con la frase del comité (547, el 28~\%);\\
-    -- una remisión a otro tema para ampliar (305);\\
+  \node[resultado,draw=tceeazul,fill=tceeazul!8,anchor=north west] (r2) at ($(r1.south west)+(0,-0.35)$) {\textbf{\color{tceeazul}NOTA AL PIE} \hfill 1.959 en el cuerpo, 22 por tema\\
+    -- el Premio Nobel de un autor citado, con la frase del comité (540, el 28~\%);\\
+    -- una remisión a otro tema para ampliar (253);\\
+    -- el original de una frase célebre citada en el texto (3.A.1, 3.A.29);\\
     -- una derivación corta, un matiz o «no confundir»: «en sentido estricto, el consumo sigue una martingala» (3.A.33);\\
     -- de dónde viene un nombre: la «enfermedad holandesa» (3.B.9);\\
     -- un enlace para ver o leer, o un gráfico pequeño con su nota (la curva de la sonrisa, 3.B.11).};
@@ -531,7 +696,7 @@ es importante estructurar bien los temas para poder optimizar esa hora.
   \draw[flechamorada] (q2) -- node[left,font=\scriptsize\bfseries] {No} (q3);
   \draw[flechamorada] (q3) -- node[left,font=\scriptsize\bfseries] {No} (q4);
 \end{tikzpicture}
-\fuente{elaboración propia a partir de los 90 temas del tercer ejercicio (19/11/2026).}
+\fuente{elaboración propia a partir de los 90 temas del tercer ejercicio (20/11/2026).}
 \end{infografia}
 
 \subsection{Cuándo va a nota al pie}\label{sec:nota}
@@ -540,6 +705,8 @@ es importante estructurar bien los temas para poder optimizar esa hora.
 \item \textbf{\emph{Lo que ameniza sin ser central}}: las notas dan curiosidades y material para el cante sin cortar el hilo. Las bien desarrolladas se mantienen como notas, no se integran en el texto.
 \item \textbf{\emph{El Premio Nobel}}: la primera vez que sale un premiado, su Nobel va en nota con la frase del comité («\autor{Friedman} recibió el Premio Nobel de Economía en 1976 “por sus logros en el análisis del consumo…”», 3.B.4). Es el tipo de nota más frecuente.
 \item \textbf{\emph{Precisiones y notación}}: lo que evita un error sin interrumpir («Aquí $\alpha$ es el grado de apertura del consumo, no la participación del capital», 3.A.32); si distingue varios conceptos, en viñetas dentro de la nota.
+\item \textbf{\emph{Derivaciones de una línea}}: la del índice de \autor{Lerner}, que en el texto queda como resultado y en la nota se ve paso a paso (3.A.17).
+\item \textbf{\emph{El original de una frase célebre}}: en el texto, la traducción con su autor y su año; en la nota, la frase en su lengua y la obra (\autor{Joan Robinson} en el 3.A.1, \autor{George Box} en el 3.A.29).
 \item \textbf{\emph{No es una nota}}: una cita de autor y año sin texto (va en el texto, «\autor{Hall} (1978)»), ni algo que se canta.
 \item \textbf{\emph{Dónde hay más y menos}}: el modelo neoclásico básico lleva 35 por tema (64 el 3.A.8) y la UE, 7 (1 en el 3.B.42 y el 3.B.45): cuanto más teoría, más matices.
 \end{itemize}
@@ -570,11 +737,6 @@ es importante estructurar bien los temas para poder optimizar esa hora.
 \item \textbf{\emph{Para qué sirve}}: si sabes de qué tipo es el tema, sabes qué esperar y cómo preparar uno que no está revisado. Las cifras de las figuras son medias por tema de cada bloque del temario.
 \end{itemize}
 
-\newcommand{\tarjeta}[3]{%
-  \begin{tcolorbox}[enhanced,colback=white,colframe=#1,boxrule=0.7pt,arc=2pt,
-    title={#2},fonttitle=\small\bfseries\raggedright,colbacktitle=#1,coltitle=white,
-    fontupper=\footnotesize,left=5pt,right=5pt,top=3pt,bottom=3pt]#3\end{tcolorbox}}
-\newcommand{\fila}[2]{\par\noindent{\bfseries\color{tceemoradooscuro}#1}\enspace #2\par\vspace{1.5pt}}
 
 \begin{infografia}[!tb]
 \centering
