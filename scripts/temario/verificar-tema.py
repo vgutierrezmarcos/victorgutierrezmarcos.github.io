@@ -57,6 +57,86 @@ SECCIONES_INFORME = ['Resumen', 'Errores corregidos', 'Marcas resueltas', 'Datos
 SECCIONES_INFORME_OPCIONALES = ['Instrucciones para el vídeo']   # CRITERIOS §9.8 (desde el 19/10/2026): solo avisa
 
 
+# --- Claridad y memorización (CRITERIOS §2, Víctor, 20/11/2026) ---------------------
+MAX_PAGINAS_TEMA = 40
+MAX_PALABRAS_PARRAFO = 130
+MAX_VINETAS = 7
+
+
+def _sin_notas(texto):
+    """Quita \\footnote{…} con llaves anidadas (las notas no cuentan como párrafo)."""
+    out, i = [], 0
+    while True:
+        j = texto.find('\\footnote{', i)
+        if j < 0:
+            out.append(texto[i:]); break
+        out.append(texto[i:j]); k, prof = j + len('\\footnote{'), 1
+        while k < len(texto) and prof:
+            prof += {'{': 1, '}': -1}.get(texto[k], 0) if texto[k - 1] != '\\' else 0
+            k += 1
+        i = k
+    return ''.join(out)
+
+
+def _palabras(texto):
+    t = re.sub(r'\\(?:footnote|nocite|label|ref|parencite|textcite|cite)\*?(?:\[[^\]]*\])*\{[^{}]*\}', ' ', texto)
+    t = re.sub(r'\$[^$]*\$', ' x ', t)
+    t = re.sub(r'\\[a-zA-Z]+\*?', ' ', t)
+    t = re.sub(r'[{}\[\]~]', ' ', t)
+    return len([w for w in t.split() if re.search(r'\w', w)])
+
+
+def comprobar_claridad(tema, tex, avisos):
+    """Párrafos largos y listas con demasiados elementos en un mismo nivel (avisos)."""
+    sin = re.sub(r'(?<!\\)%[^\n]*', '', tex)
+    cuerpo = _sin_notas(sin.split('\\begin{document}', 1)[-1])
+    largos = []
+    for m in re.finditer(r'(?:^|\n\s*\n|\\item\b)(.*?)(?=\n\s*\n|\\item\b|\\begin\{|\\end\{|$)', cuerpo, re.S):
+        trozo = m.group(1)
+        if trozo.strip().startswith('\\') and not trozo.strip().startswith(('\\textbf', '\\concepto', '\\emph', '\\autor')):
+            continue
+        if _palabras(trozo) > MAX_PALABRAS_PARRAFO:
+            ini = trozo.strip()[:40]
+            pos = sin.find(ini)
+            largos.append(sin.count('\n', 0, pos) + 1 if pos >= 0 else 0)
+    if largos:
+        avisos.append(f'{len(largos)} párrafos de más de {MAX_PALABRAS_PARRAFO} palabras (l. '
+                      f'{", ".join(map(str, largos[:8]))}): partir en ideas (CRITERIOS §2, «Claridad y memorización»)')
+    pila, listas = [], []
+    for m in re.finditer(r'\\begin\{(itemize|enumerate)\}|\\end\{(itemize|enumerate)\}|\\item\b(?!\[\])', sin):
+        if m.group(1):
+            pila.append([sin.count('\n', 0, m.start()) + 1, 0])
+        elif m.group(2):
+            if pila:
+                linea, n = pila.pop()
+                if n > MAX_VINETAS:
+                    listas.append((linea, n))
+        elif pila:
+            pila[-1][1] += 1
+    if listas:
+        avisos.append(f'{len(listas)} listas de más de {MAX_VINETAS} elementos en un mismo nivel (l. '
+                      f'{", ".join(f"{l} ({n})" for l, n in sorted(listas)[:8])}): agrupar en subniveles (CRITERIOS §2)')
+
+
+def refran_inicial(tex):
+    """Primer texto entre «» del enganche de la introducción (o None)."""
+    m = re.search(r'Enganche\}*:?(.{0,1500})', tex, re.S)
+    if not m:
+        return None
+    r = re.search(r'«([^»]{6,200})»', m.group(1))
+    return r.group(1).strip() if r else None
+
+
+def comprobar_refran_ficha(tema, tex, avisos):
+    ficha = leer(os.path.join(tema.dir, 'repaso', f'{tema.archivo}-repaso.tex'))
+    ref = refran_inicial(tex)
+    if not ficha or not ref or tema.es_dictamen:
+        return
+    norm = lambda x: re.sub(r'[^\w]+', ' ', x).lower().strip()
+    if norm(ref) not in norm(ficha):
+        avisos.append(f'La ficha no recoge el refrán del tema («{ref[:60]}»): mismo enganche en los dos')
+
+
 def leer(ruta):
     return open(ruta, encoding='utf-8', errors='replace').read() if os.path.exists(ruta) else None
 
@@ -636,6 +716,8 @@ def verificar(tema):
     comprobar_remisiones(tema, tex, errores, datos)
     comprobar_version_antigua(tema, tex, errores)
     comprobar_listas_y_bibliografia(tema, tex, errores, avisos)
+    comprobar_claridad(tema, tex, avisos)
+    comprobar_refran_ficha(tema, tex, avisos)
     comprobar_numeros_irrompibles(tema, tex, errores, avisos)
     comprobar_formulas_separadas(tex, errores)
     comprobar_criterios(tema, tex, errores, avisos, datos)
@@ -686,6 +768,9 @@ def verificar(tema):
         datos['paginas_tema'] = partes.get('tema')
         datos['paginas_anexos'] = partes.get('anexos', 0)
         datos['paginas_bibliografia'] = partes.get('bib', 0)
+        if not tema.es_dictamen and (datos['paginas_tema'] or 0) > MAX_PAGINAS_TEMA:
+            errores.append(f'El tema tiene {datos["paginas_tema"]} páginas: {MAX_PAGINAS_TEMA} como máximo; '
+                           'lo que no se canta, a anexos (CRITERIOS §0 y §2, «Extensión del cuerpo»)')
     pdf = os.path.join(tema.dir_publico, f'{tema.archivo}.pdf')
     if os.path.exists(pdf):
         try:

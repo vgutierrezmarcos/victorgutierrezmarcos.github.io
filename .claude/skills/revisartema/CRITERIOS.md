@@ -22,6 +22,7 @@ las comprueban):
 | Ficha de repaso | **exactamente cuatro páginas** A4 a dos columnas, letra de 10,5 a 8 pt (mejor 9–10) |
 | Vídeo | exactamente 30:00, 1920×1080, en `oposicion/temario/videos/` (fuera de git); hasta el ordenador nuevo, borrador sin voz (`--borrador`) |
 | Voz | motor `voicestudio` (OmniVoice, voz clonada; referencia `Documents/voz/referencia-12s.wav`), elegido el 13/10/2026; `xtts` y `edge` siguen disponibles para pruebas |
+| Extensión del tema | **40 páginas como máximo** de la portada a la conclusión (Víctor, 20/11/2026); el resto, a anexos |
 | Resumen SEO | 160 caracteres como máximo; título SEO de 40–50 |
 | Guía del dictamen (1D01) | sin `\minutos` ni cante; seis entregables (§11): guía, resumen de 6-10 págs., vídeo de la guía de **1 h 30 min**, examen de ejemplo de España, solución de máximos y vídeo de la solución de **1 h 30 min** |
 
@@ -465,6 +466,34 @@ que cargan `tcee.sty` y `tcee-repaso.sty`.
   blanco ni tras `\end{itemize}`. Lo comprueba `verificar-tema.py`.
 
 
+### Claridad y memorización (Víctor, 20/11/2026; la aplica `tema-redaccion`)
+
+El tema tiene que leerse de corrido y quedarse en la memoria. Lo revisa un
+agente propio (`tema-redaccion`) en la pasada final, sin cambiar el contenido:
+
+- **Un párrafo, una idea**, de unas 90 palabras como mucho (130 es el
+  límite duro: `verificar-tema.py` avisa). La primera frase dice la idea
+  que se memoriza; las siguientes la explican o la matizan.
+- **Orden dentro de cada apartado**: idea → mecanismo → evidencia →
+  valoración. En los modelos, el orden a)–e) de siempre.
+- **Listas de 6 elementos como máximo** en un mismo nivel (7 es el límite
+  duro: el verificador avisa). Si hay más, se agrupan en subniveles con
+  rótulo («Por el lado de la oferta: …») para que el opositor recuerde
+  grupos y no una ristra.
+- **Lo que hay que memorizar va enumerado**, cada elemento en su viñeta,
+  no metido solo dentro de un gráfico, una tabla o una infografía: el
+  gráfico acompaña, la lista es lo que se canta.
+- **Viñetas hermanas con el mismo patrón** gramatical y de formato
+  (todas sustantivo + dos puntos, o todas frase completa).
+- **Conectores que guían** («Primero», «Por un lado… por otro», «En
+  cambio», «Por eso»), y transiciones de una frase entre apartados.
+- **Frases cortas y directas**: sujeto y verbo cerca, sin incisos dobles,
+  sin pasivas innecesarias, sin muletillas («cabe destacar», «en este
+  sentido», «es importante señalar») ni giros de IA (tríadas vacías,
+  «no solo… sino también» en cadena, adjetivos de relleno).
+- **Nunca se toca**: cifras, citas, fórmulas, `\minutos`, rótulos fijos
+  de introducción y conclusión, notación del canon ni remisiones.
+
 ### Revisión de la parte A de Víctor (14/11/2026)
 
 - **Refrán inicial único** (Víctor, 15/11/2026): los 90 temas tienen 90 refranes iniciales distintos; el refrán inicial de un tema no puede ser el inicial de otro. En el resto del cuerpo los refranes sí pueden repetirse (también si en un tema es el inicial y en otro sale en el cuerpo).
@@ -472,7 +501,7 @@ que cargan `tcee.sty` y `tcee-repaso.sty`.
 - **Títulos con letras o números siempre desde el principio** (Víctor, 16/11/2026): dentro de un título superior, una serie a), b), c)… o i), ii)… empieza siempre por la primera (nunca «c) Extensiones» justo tras empezar III.3).
 - **Enumeraciones** (16/11/2026): párrafo introductorio que diga qué se enumera y por qué, y cada elemento en un subpárrafo sangrado (lista numerada si el orden importa).
 - **Autores de los modelos**: siempre nombrados (p. ej., Johnson en el enfoque monetario de la balanza de pagos).
-- **Extensión del cuerpo**: entre 30 y 45 páginas, con flexibilidad (gráficos grandes y cajas grises no cuentan igual).
+- **Extensión del cuerpo**: entre 30 y **40 páginas como máximo** (Víctor, 20/11/2026; antes 45), contadas de la portada a la conclusión («Tema: N págs.» de la portada). Si pasa de 40, lo que no se canta (derivaciones, casos, datos de detalle, desarrollos de cajas) va a anexos y en el cuerpo queda la intuición con su remisión `(anexo~\ref{…})`; nada se borra y los `\minutos` no cambian. `verificar-tema.py` da error por encima de 40.
 - **Temas institucionales** (UE, organismos): sin modelos de teoría económica en el cuerpo; a anexos y, en el cuerpo, la idea de palabra.
 - **«Rule of thumb» en inglés**, nunca «regla del pulgar» ni «regla de pulgar»: «hogares \emph{rule of thumb}».
 - **Listas en las notas al pie**: si una nota distingue varios conceptos (p. ej., neutralidad, superneutralidad y dicotomía clásica), van en un `itemize` dentro de la `\footnote{…}`; `tcee.sty` les da viñetas pequeñas y sangría corta, con el formato de la nota.

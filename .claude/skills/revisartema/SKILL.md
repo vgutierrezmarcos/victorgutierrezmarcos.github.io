@@ -275,3 +275,22 @@ Breve, en castellano:
   ya revisados con `python3 R/scripts/temario/reconstruir-todos.py --revisados`
   (dos pasadas, verificación y publicación de una vez) y se comparan páginas y
   avisos antes del commit.
+
+## Pasada final antes del lanzamiento (20/11/2026)
+
+Sobre los 90 temas ya revisados, con 1D01 y «Cómo cantar un tema», y por este
+orden en cada tema (un tema termina su cadena antes de empezar otro; dos o tres
+en paralelo). Cada agente se lanza leyendo su fichero de `.claude/agents/`:
+
+1. `tema-dudas`: resuelve las dudas que no son de autor («Resuelta por Claude»)
+   y comprueba el refrán (`scripts/temario/refranes.py`).
+2. `tema-extension`: solo si el tema pasa de 40 páginas.
+3. `tema-redaccion`: claridad y memorización (CRITERIOS §2).
+4. `tema-control-calidad`, con los objetivos a)–e) de la revisión y las páginas
+   frente a `T-anterior.pdf`.
+5. `ficha-coherencia` y `construir-repaso.py T`.
+
+Todo queda en `revision.md` → «Pasada final (noviembre de 2026)». La fecha se
+pone igual en todo al final con `scripts/temario/fecha-comun.py DD/MM/AAAA
+--reconstruir` (la del lanzamiento). La página de dudas (`dudas-pagina.py
+--todos`) separa las que piden decisión de las «resueltas por Claude».

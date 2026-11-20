@@ -45,7 +45,7 @@ code{font-size:.85em;background:rgba(95,41,135,.08);padding:0 3px;border-radius:
 <p id="res"></p>
 <div class="ctl"><input type="search" id="q" placeholder="Buscar en las dudas…" aria-label="Buscar">
 <select id="fc" aria-label="Cuenta"><option value="">Las dos cuentas</option><option value="trabajo">Cuenta del trabajo</option><option value="personal">Cuenta personal</option></select>
-<select id="fe" aria-label="Filtro"><option value="">Todas</option><option value="prop">Solo las que piden decisión</option><option value="nueva">Nuevas desde la última vez</option><option value="pend">Sin las resueltas</option><option value="sin">Sin contestar</option><option value="cambio">Marcadas «Cambiar»</option></select>
+<select id="fe" aria-label="Filtro"><option value="">Todas</option><option value="prop">Solo las que piden decisión</option><option value="rc">Resueltas por Claude (para repasar)</option><option value="nueva">Nuevas desde la última vez</option><option value="pend">Sin las resueltas</option><option value="sin">Sin contestar</option><option value="cambio">Marcadas «Cambiar»</option></select>
 <button id="abrir">Abrir todo</button><button class="lleno" id="exportar">Exportar respuestas</button></div></div>
 <main><div id="expbox" class="oculto"><p>Copia este texto y pégamelo en la conversación (ya está copiado si el navegador lo permite):</p><div id="exp"></div></div><div id="lista"></div></main>
 <script>
@@ -63,7 +63,7 @@ DATOS.forEach(t=>{
  if(t.intro){const p=document.createElement('p');p.className='intro';p.innerHTML=t.intro;c.appendChild(p)}
  t.dudas.forEach(d=>{
   if(d.h){const h=document.createElement('h3');h.innerHTML=d.h;c.appendChild(h);return}
-  const r=R[d.id]||{};const dv=document.createElement('div');dv.className='duda'+(d.estado==='propuesta'?' prop':'')+(d.estado==='resuelta'?' res':'')+(d.nueva?' nueva':'')+(r.v?' '+r.v:'');dv.dataset.id=d.id;dv.dataset.estado=d.estado;
+  const r=R[d.id]||{};const dv=document.createElement('div');dv.className='duda'+(d.estado==='propuesta'?' prop':'')+(d.estado==='resuelta'||d.estado==='resuelta-claude'?' res':'')+(d.nueva?' nueva':'')+(r.v?' '+r.v:'');dv.dataset.id=d.id;dv.dataset.estado=d.estado;
   dv.innerHTML=`<div class="tx">${d.html}</div><div class="bt"><button class="b-ok">De acuerdo con lo aplicado</button><button class="b-cambio">Cambiar</button></div><textarea class="${r.v==='cambio'||r.n?'':'oculto'}" placeholder="Qué cambiar (o un comentario)"></textarea>`;
   const ta=dv.querySelector('textarea');ta.value=r.n||'';
   const set=v=>{const x=R[d.id]||{};x.v=(x.v===v?'':v);R[d.id]=x;dv.classList.remove('ok','cambio');if(x.v)dv.classList.add(x.v);if(x.v==='cambio'){ta.classList.remove('oculto');ta.focus()};guardar();resumen()};
@@ -75,13 +75,13 @@ function resumen(){
  let tot=0,con=0,cam=0,ap=0;
  DATOS.forEach(t=>{let tt=0,tc=0;t.dudas.forEach(d=>{if(!d.id)return;tot++;tt++;const r=R[d.id];if(r&&r.v){con++;tc++}if(r&&r.v==='cambio')cam++});if(R['aprob:'+t.T])ap++;
   const ch=document.querySelector(`.chip.est[data-t="${t.T}"]`);ch.textContent=(R['aprob:'+t.T]?'aprobado · ':'')+`${tc}/${tt} contestadas`});
- document.getElementById('res').textContent=`${DATOS.length} temas revisados sin aprobar (las dos cuentas) · actualizada el __FECHA__ · ${tot} dudas, todas con la opción recomendada ya aplicada · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.estado==='resuelta').length,0)} resueltas por tus comentarios · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.nueva).length,0)} nuevas · contestadas ${con}, a cambiar ${cam} · temas aprobados aquí: ${ap}. Las respuestas se guardan en este navegador; al terminar, «Exportar respuestas».`}
+ document.getElementById('res').textContent=`${DATOS.length} temas revisados sin aprobar (las dos cuentas) · actualizada el __FECHA__ · ${tot} dudas, todas con la opción recomendada ya aplicada · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.estado==='propuesta').length,0)} piden tu decisión · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.estado==='resuelta-claude').length,0)} resueltas por Claude (para repasar) · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.estado==='resuelta').length,0)} resueltas por tus comentarios · ${DATOS.reduce((a,t)=>a+t.dudas.filter(d=>d.nueva).length,0)} nuevas · contestadas ${con}, a cambiar ${cam} · temas aprobados aquí: ${ap}. Las respuestas se guardan en este navegador; al terminar, «Exportar respuestas».`}
 function filtrar(){
  const q=document.getElementById('q').value.toLowerCase().trim(),fc=document.getElementById('fc').value,fe=document.getElementById('fe').value;
  document.querySelectorAll('details.tema').forEach(el=>{
   let vis=0;const okc=!fc||el.dataset.cuenta===fc;
   el.querySelectorAll('.duda').forEach(dv=>{const r=R[dv.dataset.id]||{};let ok=okc&&(!q||dv.textContent.toLowerCase().includes(q));
-   if(fe==='prop')ok=ok&&dv.dataset.estado==='propuesta';if(fe==='sin')ok=ok&&!r.v&&dv.dataset.estado!=='resuelta';if(fe==='nueva')ok=ok&&dv.classList.contains('nueva');if(fe==='pend')ok=ok&&dv.dataset.estado!=='resuelta';if(fe==='cambio')ok=ok&&r.v==='cambio';
+   if(fe==='prop')ok=ok&&dv.dataset.estado==='propuesta';if(fe==='rc')ok=ok&&dv.dataset.estado==='resuelta-claude';if(fe==='sin')ok=ok&&!r.v&&dv.dataset.estado!=='resuelta'&&dv.dataset.estado!=='resuelta-claude';if(fe==='nueva')ok=ok&&dv.classList.contains('nueva');if(fe==='pend')ok=ok&&dv.dataset.estado!=='resuelta'&&dv.dataset.estado!=='resuelta-claude';if(fe==='cambio')ok=ok&&r.v==='cambio';
    dv.classList.toggle('oculto',!ok);if(ok)vis++});
   const filtro=q||fe;el.classList.toggle('oculto',!okc||(filtro&&!vis));if(filtro&&vis)el.open=true})}
 ['q','fc','fe'].forEach(i=>document.getElementById(i).addEventListener('input',filtrar));

@@ -37,7 +37,8 @@ VISTAS = os.path.expanduser('~/.local/share/oposicion-web/dudas/vistas.json')
 PERSONAL = {'3B02', '3B03', '3B04', '3B05', '3B06', '3B07', '3B08', '3B09', '3B10', '3B13', '3B23', '3B25'}
 PROP = (r'[Dd]ecide Víctor|[Pp]ara Víctor|[Qq]ueda como propuesta|[Cc]onviene que Víctor|sin cambiar aún|'
         r'por decidir|pendiente de decisión|que Víctor decida|¿De acuerdo\?|'
-        r'Víctor (?:debe|tiene que|puede) (?:decidir|confirmar|mirar|comprobar)|a confirmar|[Pp]reguntar a Víctor')
+        r'Víctor (?:debe|tiene que|puede) (?:decidir|confirmar|mirar|comprobar)|a confirmar|[Pp]reguntar a Víctor|'
+        r'[Oo]pción recomendada|[Dd]ecisión de autor')
 
 
 def inline(t):
@@ -136,6 +137,8 @@ def dudas_de(md, T):
         did = mid.group(1) if mid else f'{T[1:]}-n{n:02d}'
         if re.search(r'[Rr]esuelta por Víctor|[Rr]esueltas? por (?:los )?comentarios de Víctor|[Rr]espuesta de Víctor', txt):
             estado = 'resuelta'
+        elif re.search(r'[Rr]esuelta por Claude', txt):
+            estado = 'resuelta-claude'   # pasada final (20/11/2026): para repasar, no para decidir
         elif re.search(PROP, txt):
             estado = 'propuesta'
         else:
@@ -148,6 +151,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--salida', default=SALIDA)
     ap.add_argument('--marcar-vistas', action='store_true', help='dar por vistas las dudas de ahora')
+    ap.add_argument('--todos', action='store_true', help='incluir también los temas aprobados (pasada final)')
     args = ap.parse_args()
     titulos = json.load(open(os.path.join(AQUI, 'titulos.json'), encoding='utf-8'))
     try:
@@ -163,7 +167,7 @@ def main():
                           'cuenta': 'trabajo', 'intro': intro, 'dudas': ds})
     registro = aprobados_registro()
     for T, (ruta, wt) in sorted(revisiones().items()):
-        if aprobado(ruta) or T in registro:
+        if not args.todos and (aprobado(ruta) or T in registro):
             continue
         ds, intro = dudas_de(open(ruta, encoding='utf-8').read(), T)
         if not any('id' in d for d in ds):
@@ -176,7 +180,7 @@ def main():
     for t in temas:
         for d in t['dudas']:
             if 'id' in d:
-                d['nueva'] = vistas is not None and d['id'] not in vistas and d['estado'] != 'resuelta'
+                d['nueva'] = vistas is not None and d['id'] not in vistas and d['estado'] not in ('resuelta', 'resuelta-claude')
     plantilla = open(os.path.join(AQUI, 'plantilla.html'), encoding='utf-8').read()
     fecha = datetime.datetime.now().strftime('%d/%m/%Y %H:%M')
     pagina = plantilla.replace('__DATOS__', json.dumps(temas, ensure_ascii=False)).replace('__FECHA__', fecha)
@@ -188,7 +192,8 @@ def main():
         json.dump(sorted(set(ids) | (vistas or set())), open(VISTAS, 'w', encoding='utf-8'))
     nuevas = sum(1 for t in temas for d in t['dudas'] if d.get('nueva'))
     prop = sum(1 for t in temas for d in t['dudas'] if d.get('estado') == 'propuesta')
-    print(f'{args.salida}: {len(temas)} temas, {len(ids)} dudas ({prop} piden decisión, {nuevas} nuevas)')
+    rc = sum(1 for t in temas for d in t['dudas'] if d.get('estado') == 'resuelta-claude')
+    print(f'{args.salida}: {len(temas)} temas, {len(ids)} dudas ({prop} piden decisión, {rc} resueltas por Claude, {nuevas} nuevas)')
 
 
 if __name__ == '__main__':
