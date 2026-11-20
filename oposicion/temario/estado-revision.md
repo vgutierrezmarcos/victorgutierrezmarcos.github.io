@@ -1,6 +1,6 @@
 # Estado de la revisión del temario (3.er ejercicio)
 
-Registro que lleva Claude y actualiza tras cada tanda. Última actualización: 19/11/2026 (comentarios de Víctor del 19/11).
+Registro que lleva Claude y actualiza tras cada tanda. Última actualización: 20/11/2026 (fichas nuevas y reconstrucción completa).
 
 | Estado | N.º | Temas |
 |---|---|---|
@@ -30,3 +30,4 @@ Revisión transversal del 13/11 (Nobel, 4.º ejercicio, dichos, figuras) hecha e
 - 18/11/2026: Comentarios a 3A32 (pasa a desarrollar Galí-Monacelli con la política fiscal de Furlanetto), 3B01-3B04, 3B14, 3B15, 3B16, 3B19 y 3B20, aplicados y construidos. Reglas nuevas: nunca citar la versión antigua del tema (quitadas las menciones de 3A03, 3A12, 3A26, 3A29, 3A33, 3B20 y 3B37) y formato del examen A frente a B (informe en `solapes-a-b.md`, dudas GEN-02 a GEN-18).
 - 19/11/2026: 3A32 con el reparto 2′30″/7′30″/6′/13′/1′ (más OA-DA en el bloque I); 3B19 con la figura 1 en caja gris (regla: los diagramas que no se exponen van en caja gris); la reflexión sobre la IA en los mercados pasa del 3B24 al 3B23 (II.1.4 y anexo D). Bibliografía con fuentes esenciales, «En conclusión» en la línea de la Recapitulación y rótulos de lista uniformes en todos los temas (reconstruidos el 18-19/11).
 - 19/11/2026 (2.ª tanda): fuera de todos los temas la nota con el reparto del cante tras el esquema (guardada en revision.md para el vídeo); temas de la UE con anexo de competencias (arts. 2-6 TFUE) y la estructura común de las políticas; comentarios a 3B38 (gráfico de la distribución de pagos, modelos según Baldwin-Wyplosz), 3B39 (art. 26, base jurídica, barreras fiscales del antiguo 4B18, Schengen, cajas de clemencia, Williamson y subvenciones), 3B40 (mapa del tema, Martin-Rogers al anexo, mapas regionales, instrumentos), 3B41 (TARIC, mapa de acuerdos, red de acuerdos, aranceles en el tiempo, modelos a anexos) y 3B42 (rol internacional del euro, organizaciones, modelos a anexos, fórmula común).
+- 20/11/2026: fichas de los 90 temas con el formato nuevo (introducción y esquema en la columna 1, anexo con datos clave, autores y preguntas en la última). Plantilla: tras un título, la caja ya no salta de página dejando el título solo al pie. Reconstruidos los 90 temas y la guía del dictamen (1D01): 0 errores en el verificador.
