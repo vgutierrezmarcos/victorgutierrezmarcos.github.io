@@ -1463,7 +1463,7 @@ Rubinstein
 \begin_inset Formula $\gamma$
 \end_inset
 
- como paciencia relativa. Las cajas grises (derivaciones) no se cantan. Los modelos de negociaciÃ³n colectiva (
+ como paciencia relativa. Los modelos de negociaciÃ³n colectiva (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -1559,7 +1559,27 @@ Nash
 
 \end_inset
 
-. Las derivaciones de los modelos de negociaciÃ³n colectiva estÃ¡n en el anexo
+. Las derivaciones (el reparto con utilidad transferible, el paso de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Rubinstein
+\end_layout
+
+\end_inset
+
+ a 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+, la rigidez con demanda isoelÃ¡stica, los modelos de negociaciÃ³n colectiva y el principio de indiferencia) y los contrastes entre modelos estÃ¡n en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -3169,7 +3189,23 @@ Con utilidad transferible
   \end{equation}
 \end_inset
 
+(derivaciÃ³n en el anexo
+\begin_inset space ~
 
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:nash-transferible"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Standard
@@ -3316,75 +3352,6 @@ textcite{Nash1950Bargaining}
 \end_inset
 
 .
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-DerivaciÃ³n del reparto con utilidad transferible
-\series default
- 
-\end_layout
-
-\begin_layout Itemize
-Con 
-\begin_inset Formula $B=\Pi-U_S$
-\end_inset
-
-, y tomando logaritmos, el problema es maximizar 
-\begin_inset Formula $\gamma\ln\big(U_S-U_S^0\big)+(1-\gamma)\ln\big(\Pi-U_S-B^0\big)$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-La condiciÃ³n de primer orden es 
-\begin_inset Formula $\gamma/\big(U_S-U_S^0\big)=(1-\gamma)/\big(\Pi-U_S-B^0\big)$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Despejando 
-\begin_inset Formula $U_S$
-\end_inset
-
- sale 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:nash-transferible"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-findemo
 \end_layout
 
 \end_inset
@@ -3774,28 +3741,7 @@ siendo
 \begin_inset Formula $\rho_B$
 \end_inset
 
- las tasas de descuento del sindicato y de la empresa. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-Del juego de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Rubinstein
-\end_layout
-
-\end_inset
-
- a la soluciÃ³n de 
+ las tasas de descuento del sindicato y de la empresa: con ofertas casi continuas, la ventaja de proponer primero desaparece y el reparto es el de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -3805,478 +3751,19 @@ Nash
 
 \end_inset
 
-
-\series default
- 
-\end_layout
-
-\begin_layout Itemize
-De 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:rubinstein"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-, la empresa se lleva 
-\begin_inset Formula $1-x^*=\beta_B\,(1-\beta_S)/(1-\beta_S\,\beta_B)$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Si el tiempo entre ofertas es 
-\begin_inset Formula $\Delta$
-\end_inset
-
- y 
-\begin_inset Formula $\beta_i=e^{-\rho_i\Delta}\approx 1-\rho_i\Delta$
-\end_inset
-
-, 
-\begin_inset Formula $$
-\end_inset
-
-x*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-approx
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-B
-\begin_inset space \thinspace{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Delta
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-S
-\begin_inset space \thinspace{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Delta
-\end_layout
-
-\end_inset
-
-+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-B
-\begin_inset space \thinspace{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Delta
-\end_layout
-
-\end_inset
-
--
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-S
-\begin_inset space \thinspace{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-B
-\begin_inset space \thinspace{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Delta
-\end_layout
-
-\end_inset
-
-2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \space{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-xrightarrow
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Delta
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-to
-\end_layout
-
-\end_inset
-
- 0
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \space{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-B
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-S+
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rho
-\end_layout
-
-\end_inset
-
-B
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $$
-\end_inset
-
- y la ventaja de proponer primero desaparece. 
-\end_layout
-
-\begin_layout Itemize
-La soluciÃ³n de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Nash
-\end_layout
-
-\end_inset
-
- generalizada con 
-\begin_inset Formula $U_S=x$
-\end_inset
-
-, 
-\begin_inset Formula $B=1-x$
-\end_inset
-
- y desacuerdo 
-\begin_inset Formula $(0,0)$
-\end_inset
-
- maximiza 
-\begin_inset Formula $x^{\gamma}(1-x)^{1-\gamma}$
-\end_inset
-
-. Su condiciÃ³n de primer orden, 
-\begin_inset Formula $\gamma/x=(1-\gamma)/(1-x)$
-\end_inset
-
-, da 
-\begin_inset Formula $x=\gamma$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Por tanto, el lÃ­mite de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Rubinstein
-\end_layout
-
-\end_inset
-
- es la soluciÃ³n de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Nash
-\end_layout
-
-\end_inset
-
- con el 
+ con ese 
 \begin_inset Formula $\gamma$
 \end_inset
 
- de 
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
 \begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:gamma-paciencia"
+LatexCommand ref
+reference "anexo:rubinstein-nash"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4284,24 +3771,7 @@ nolink "false"
 
 \end_inset
 
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-findemo
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
+). 
 \end_layout
 
 \begin_layout Subparagraph
@@ -5899,7 +5369,7 @@ La productividad
 \begin_inset Formula $A$
 \end_inset
 
- no aparece (tampoco en 
+ no aparece, tampoco en 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:dunlop"
@@ -5910,19 +5380,19 @@ nolink "false"
 
 \end_inset
 
- con aversiÃ³n al riesgo): si la demanda de trabajo se desplaza por un 
+ con aversiÃ³n al riesgo. Si un 
 \emph on
 shock
 \emph default
- de productividad o de demanda del producto, el salario 
+ de productividad o de demanda del producto desplaza la demanda de trabajo, el salario 
 \emph on
 no se mueve
 \emph default
- y es el empleo el que absorbe el 
+ y el empleo absorbe el 
 \emph on
 shock
 \emph default
-, mientras no se llegue a emplear a todos los afiliados (anexo
+, mientras no se emplee a todos los afiliados (anexo
 \begin_inset space ~
 
 \end_inset
@@ -5930,7 +5400,7 @@ shock
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "anexo:contratos-eficientes"
+reference "anexo:dunlop"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6128,7 +5598,7 @@ Pareto
 \begin_inset Formula $M$
 \end_inset
 
- no hay tangencia entre la curva de indiferencia del sindicato y la isobeneficio que pasan por Ã©l: forman una 
+, la indiferencia del sindicato y la isobeneficio que pasan por Ã©l no son tangentes y forman una 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -6154,447 +5624,17 @@ Rigidez real
 : con demanda isoelÃ¡stica, el salario no responde al ciclo y el ajuste se hace por cantidades, que es el primer hecho estilizado de la introducciÃ³n. 
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+El salario es un margen constante, 
+\begin_inset Formula $1/\alpha$
+\end_inset
 
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-El sindicato monopolista explica la rigidez salarial: demanda isoelÃ¡stica y salario como margen sobre el de reserva
-\series default
- 
+, sobre el de reserva, como el de un monopolista sobre su coste marginal: si la demanda de trabajo se desplaza, solo cambia el empleo. 
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-La demanda de trabajo
-\emph default
-. Con 
-\begin_inset Formula $Y=A\,L^{\alpha}$
-\end_inset
-
-, la empresa iguala el producto marginal al salario, 
-\begin_inset Formula $\alpha\,A\,L^{\alpha-1}=w$
-\end_inset
-
-, y su demanda es 
-\begin_inset Formula $$
-\end_inset
-
-LD(w)=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Big
-\end_layout
-
-\end_inset
-
-(
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-alpha
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-A
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-w
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Big
-\end_layout
-
-\end_inset
-
-)
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-alpha
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-,
-\begin_inset space \qquad{}
-
-\end_inset
-
-|
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-varepsilon
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-LD,w
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-|=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-alpha
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $$
-\end_inset
-
- La elasticidad no depende ni de 
-\begin_inset Formula $A$
-\end_inset
-
- ni de 
-\begin_inset Formula $w$
-\end_inset
-
-: la demanda es 
-\emph on
-isoelÃ¡stica
-\emph default
-. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-El salario del sindicato
-\emph default
-. Con afiliados neutrales al riesgo, la condiciÃ³n 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:dunlop"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- queda 
-\begin_inset Formula $(w-w^R)/w=1-\alpha$
-\end_inset
-
-, es decir, 
-\begin_inset Formula $$
-\end_inset
-
-wS=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-alpha
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-wR
-\begin_inset Formula $$
-\end_inset
-
- un 
-\emph on
-margen
-\emph default
- constante, 
-\begin_inset Formula $1/\alpha>1$
-\end_inset
-
-, sobre el salario de reserva, como el margen de un monopolista sobre su coste marginal. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Ante cambios en la demanda
-\emph default
- (grÃ¡fico
+La rigidez dura mientras haya afiliados sin empleo; cuando la demanda llega a emplearlos a todos, sube el salario (anexo
 \begin_inset space ~
 
 \end_inset
@@ -6602,243 +5642,18 @@ Ante cambios en la demanda
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:sindicato-monopolista-rigidez"
+reference "anexo:dunlop-rigidez"
 plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
 
-\end_inset
-
-): una productividad o una demanda del producto mayores, 
-\begin_inset Formula $A_1<A_2<A_3$
-\end_inset
-
-, desplazan la demanda de trabajo a la derecha, pero no cambian su elasticidad. 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-El sindicato sigue eligiendo el mismo salario, 
-\begin_inset Formula $w^S$
-\end_inset
-
-, y solo cambia el empleo: 
-\begin_inset Formula $E_1$
-\end_inset
-
-, 
-\begin_inset Formula $E_2$
-\end_inset
-
- y 
-\begin_inset Formula $E_3$
-\end_inset
-
- estÃ¡n a la misma altura. 
-\end_layout
-
-\begin_layout Itemize
-Es una 
-\emph on
-rigidez real
-\emph default
-: el salario no responde a la demanda y el empleo absorbe todo el ajuste. 
-\end_layout
-
-\begin_layout Itemize
-La rigidez dura mientras haya afiliados sin empleo. Cuando la demanda llega a emplear a todos (
-\begin_inset Formula $E_3$
-\end_inset
-
-, en 
-\begin_inset Formula $\overline{L}$
-\end_inset
-
-), mÃ¡s empleo ya no le sirve al sindicato, y con 
-\begin_inset Formula $A_4$
-\end_inset
-
- sube el salario (
-\begin_inset Formula $E_4$
 \end_inset
 
 ). 
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Con aversiÃ³n al riesgo pasa lo mismo: en 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:dunlop"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- no aparece 
-\begin_inset Formula $A$
-\end_inset
-
-, y el salario solo depende de 
-\begin_inset Formula $w^R$
-\end_inset
-
- y de 
-\begin_inset Formula $\alpha$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Grafico en caja
-status collapsed
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Sindicato monopolista con demanda isoelÃ¡stica: el salario no cambia con la demanda hasta emplear a todos los afiliados
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:sindicato-monopolista-rigidez"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.75
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-sindicato-monopolista-rigidez
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Dunlop1944Wage}
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Booth1995Economics}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Paragraph
 c) ValoraciÃ³n
 \end_layout
@@ -7087,7 +5902,7 @@ Se resuelve hacia atrÃ¡s: la empresa responde sobre su demanda de trabajo, y e
   \end{equation}
 \end_inset
 
-La primera etapa es una negociaciÃ³n (un concepto cooperativo), no un juego con estrategias, asÃ­ que, a diferencia del sindicato monopolista, el resultado no es un ENPS. 
+A diferencia del sindicato monopolista, el resultado no es un ENPS: la primera etapa es una negociaciÃ³n (un concepto cooperativo), no un juego con estrategias. 
 \end_layout
 
 \begin_layout Itemize
@@ -7173,7 +5988,7 @@ extremos ponderada por el poder (anexo
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "anexo:contratos-eficientes"
+reference "anexo:derecho-gestionar"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7749,7 +6564,7 @@ pendiente positiva
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "anexo:contratos-eficientes"
+reference "anexo:curva-contratos"
 plural "false"
 caps "false"
 noprefix "false"
@@ -8203,7 +7018,23 @@ El principio de indiferencia
 \begin_inset Formula $w=w^R+b$
 \end_inset
 
-, y el parado queda igual de bien que el empleado. 
+, y el parado queda igual de bien que el empleado (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:indiferencia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_deeper
@@ -8366,443 +7197,6 @@ vertical en el empleo competitivo, tambiÃ©n con aversiÃ³n al riesgo
 \end_inset
 
 ). 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-DerivaciÃ³n del principio de indiferencia
-\series default
- 
-\end_layout
-
-\begin_layout Itemize
-El pago total a los afiliados es 
-\begin_inset Formula $T=w\,L+b\,(\overline{L}-L)$
-\end_inset
-
-. Para 
-\begin_inset Formula $T$
-\end_inset
-
- dado, el reparto entre empleados y parados que maximiza 
-\begin_inset Formula $U_S$
-\end_inset
-
- cumple, con el multiplicador 
-\begin_inset Formula $\lambda$
-\end_inset
-
- de esa restricciÃ³n, 
-\begin_inset Formula $$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-overline
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-u'(w)=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-lambda
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-L,
-\begin_inset space \qquad{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Big
-\end_layout
-
-\end_inset
-
-(1-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-frac
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-overline
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Big
-\end_layout
-
-\end_inset
-
-)
-\begin_inset space \thinspace{}
-
-\end_inset
-
-u'(wR+b)=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-lambda
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-big
-\end_layout
-
-\end_inset
-
-(
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-overline
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
--L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-big
-\end_layout
-
-\end_inset
-
-)
-\begin_inset space \space{}
-
-\end_inset
-
-
-\begin_inset space \space{}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-Longrightarrow
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \space{}
-
-\end_inset
-
-
-\begin_inset space \space{}
-
-\end_inset
-
-u'(w)=u'(wR+b)
-\begin_inset Formula $$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-Como 
-\begin_inset Formula $u'$
-\end_inset
-
- es decreciente, 
-\begin_inset Formula $w=w^R+b$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Sustituyendo 
-\begin_inset Formula $b=w-w^R$
-\end_inset
-
- en 
-\begin_inset Formula $B$
-\end_inset
-
- de 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:fuertemente-eficientes"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- sale el beneficio del texto, y diferenciÃ¡ndolo con 
-\begin_inset Formula $dB=0$
-\end_inset
-
-, la pendiente 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:isobeneficio-fe"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-findemo
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -8994,7 +7388,7 @@ textcite{Booth1995Layoffs}
 
 \end_inset
 
- llega al mismo resultado aunque la empresa decida el empleo. Si en la mesa estÃ¡n el salario y las indemnizaciones por despido, se asegura del todo a los trabajadores y el producto marginal iguala el coste de oportunidad del trabajo; por eso, con indemnizaciones negociadas, el derecho a gestionar y los contratos eficientes son difÃ­ciles de distinguir con datos. 
+ llega al mismo resultado aunque la empresa decida el empleo. Si en la mesa estÃ¡n el salario y las indemnizaciones por despido, se asegura del todo a los trabajadores y el producto marginal iguala el coste de oportunidad del trabajo. Por eso, con indemnizaciones negociadas, los datos apenas distinguen el derecho a gestionar de los contratos eficientes. 
 \end_layout
 
 \begin_layout Itemize
@@ -9935,8 +8329,12 @@ sÃ­, con demanda isoelÃ¡stica
 \begin_layout Standard
 
 \size small
-el empleo no se mueve con 
-\begin_inset Formula $\gamma$
+no: se pactan de nuevo 
+\begin_inset Formula $w$
+\end_inset
+
+ y 
+\begin_inset Formula $L$
 \end_inset
 
  
@@ -9950,8 +8348,8 @@ el empleo no se mueve con
 \begin_layout Standard
 
 \size small
-el empleo no se mueve con 
-\begin_inset Formula $\gamma$
+no: el empleo sigue en 
+\begin_inset Formula $L^c$
 \end_inset
 
 
@@ -10028,37 +8426,30 @@ literal "false"
 \emph on
 Lo que dicen los datos
 \emph default
-: los contrastes directos no dan un veredicto claro. 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Los que buscan si el empleo pactado depende del salario alternativo, como predicen los contratos eficientes y no el derecho a gestionar, dan resultados mixtos con los convenios de la imprenta estadounidense
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "MaCurdyPencavel1986Testing,BrownAshenfelter1986Testing"
-literal "false"
+: los contrastes directos entre los 2
+\begin_inset space ~
 
 \end_inset
 
-. 
-\end_layout
-
-\begin_layout Itemize
-En bolsa, una subida salarial inesperada reduce el valor de la empresa en la misma cuantÃ­a en que aumenta lo que cobran los trabajadores: el salario reparte la renta, como en un contrato eficiente
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Abowd1989Effect"
-literal "false"
+modelos, con los convenios de la imprenta estadounidense y con la bolsa, no dan un veredicto claro (anexo
+\begin_inset space ~
 
 \end_inset
 
-. 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:contrastes"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -10136,43 +8527,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Salarios pactados
-\emph default
-: los convenios registrados hasta septiembre de 2026 pactan para este aÃ±o una subida media del 3,05
-\begin_inset space ~
-
-\end_inset
-
-%, algo menor en los de empresa (2,60
-\begin_inset space ~
-
-\end_inset
-
-%) que en los sectoriales (3,09
-\begin_inset space ~
-
-\end_inset
-
-%); en 2025 fue del 3,51
-\begin_inset space ~
-
-\end_inset
-
-%
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "MITES2026CCTSep"
-literal "false"
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
 El nivel al que se negocia (empresa, sector o paÃ­s) y sus efectos sobre el paro estÃ¡n en el anexo
 \begin_inset space ~
 
@@ -10189,7 +8543,7 @@ nolink "false"
 
 \end_inset
 
-, y la regulaciÃ³n espaÃ±ola y sus reformas se estudian aparte 
+, junto con la subida salarial que pactan los convenios, y la regulaciÃ³n espaÃ±ola y sus reformas se estudian aparte 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -10739,7 +9093,7 @@ nolink "false"
 
 \end_inset
 
- de los parÃ¡metros, de apoyo. Luego las implicaciones, la evidencia (
+ de los parÃ¡metros (anexo), de apoyo. Luego las implicaciones, la evidencia (
 \begin_inset Flex Autor
 status collapsed
 
@@ -10779,7 +9133,17 @@ Bewley
 
 \end_inset
 
-) y la valoraciÃ³n. Se levanta el supuesto 2, con el refrÃ¡n Â«lo barato sale caroÂ». Las transiciones de 
+) y la valoraciÃ³n. Se levanta el supuesto 2, con el refrÃ¡n Â«lo barato sale caroÂ». El desarrollo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Summers
+\end_layout
+
+\end_inset
+
+, las transiciones de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -10793,7 +9157,7 @@ Poisson
 \begin_inset Formula $dt$
 \end_inset
 
- y el bienestar estÃ¡n en el anexo
+, la tabla de los parÃ¡metros y el bienestar estÃ¡n en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -10904,7 +9268,7 @@ salario de eficiencia
 \end_layout
 
 \begin_layout Itemize
-Aparte del coste evidente de pagar un salario mÃ¡s alto, a la empresa le reporta beneficios. 
+Un salario mÃ¡s alto cuesta mÃ¡s, pero tambiÃ©n reporta beneficios a la empresa. 
 \begin_inset ERT
 status collapsed
 
@@ -11556,7 +9920,7 @@ Empleo
 \begin_inset Formula $A\,F'(e^*L)=w^*/e^*$
 \end_inset
 
-. Es una demanda de trabajo convencional, medida en unidades de eficiencia, que da 
+: una demanda de trabajo convencional, en unidades de eficiencia, que da 
 \begin_inset Formula $L^*$
 \end_inset
 
@@ -11837,123 +10201,44 @@ Summers
 \end_layout
 
 \begin_layout Itemize
-Si el esfuerzo depende de cuÃ¡nto mejor paga la empresa que la alternativa del trabajador, la rigidez deja de ser absoluta. 
-\begin_inset ERT
-status collapsed
+Si el esfuerzo depende de cuÃ¡nto mejor paga la empresa que la alternativa del trabajador (el salario de las demÃ¡s empresas, ponderado por la probabilidad de encontrar empleo), la rigidez deja de ser absoluta
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Summers1988Relative"
+literal "false"
 
-\begin_layout Plain Layout
-
-\backslash
-textcite{Summers1988Relative}
-\end_layout
-
-\end_inset
-
- propone que el esfuerzo dependa de la ventaja del salario 
-\begin_inset Formula $w$
-\end_inset
-
- sobre esa alternativa, 
-\begin_inset Formula $x$
-\end_inset
-
-, que es el salario de las demÃ¡s empresas, 
-\begin_inset Formula $w_a$
-\end_inset
-
-, ponderado por la probabilidad de encontrar empleo, menor cuanto mayor es la tasa de paro 
-\begin_inset Formula $U$
-\end_inset
-
-: 
-\begin_inset Formula \[e=\Big(\frac{w-x}{x}\Big)^{\eta},\qquad x=(1-b\,U)\,w_a,\qquad 0<\eta<1,\ b>0\]
-\end_inset
-
-con 
-\begin_inset Formula $\eta$
-\end_inset
-
- y 
-\begin_inset Formula $b$
-\end_inset
-
- parÃ¡metros de este ejemplo. 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-La condiciÃ³n de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Solow
-\end_layout
-
-\end_inset
-
- da 
-\begin_inset Formula $w=x/(1-\eta)$
-\end_inset
-
-: cada empresa quiere pagar una prima sobre la alternativa. 
-\end_layout
-
-\begin_layout Itemize
-Pero en equilibrio todas pagan lo mismo, 
-\begin_inset Formula $w=w_a$
-\end_inset
-
-, y eso solo es compatible con una tasa de paro 
-\begin_inset Formula \begin{equation}
-    U=\frac{\eta}{b} \label{eq:paro-summers}
-    \end{equation}
-\end_inset
-
-Con menos paro, a cada empresa le compensarÃ­a superar el salario de sus competidoras; esa puja encarece el trabajo y reduce el empleo hasta que el paro vuelve a 
-\begin_inset Formula $\eta/b$
 \end_inset
 
 . 
 \end_layout
 
-\end_deeper
+\begin_layout Itemize
+Cada empresa quiere pagar una prima sobre esa alternativa, pero en equilibrio todas pagan lo mismo: eso solo es compatible con una tasa de paro que fijan los parÃ¡metros del esfuerzo, no la productividad (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:summers"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
 Implicaciones
 \emph default
-: el paro de equilibrio lo fijan los parÃ¡metros del esfuerzo, 
-\begin_inset Formula $\eta$
-\end_inset
-
- y 
-\begin_inset Formula $b$
-\end_inset
-
-, y no la productividad, de modo que el crecimiento ya no lo hace desaparecer: acaba en el salario. Y basta una elasticidad pequeÃ±a para generar bastante paro: con 
-\begin_inset Formula $\eta=0{,}06$
-\end_inset
-
- y 
-\begin_inset Formula $b=1$
-\end_inset
-
-, la tasa de paro de equilibrio es del 6
-\begin_inset space ~
-
-\end_inset
-
-%
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Romer2019Advanced"
-literal "false"
-
-\end_inset
-
-. La relaciÃ³n entre el salario que fijan las empresas y el paro es, otra vez, una curva de fijaciÃ³n de salarios 
+: el crecimiento ya no hace desaparecer el paro, sino que acaba en el salario, y la relaciÃ³n entre el salario que fijan las empresas y el paro es, otra vez, una curva de fijaciÃ³n de salarios 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -12271,6 +10556,22 @@ nolink "false"
 
 \end_inset
 
+, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:ss-transiciones"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
 ), todas como procesos de 
 \begin_inset Flex Autor
 status collapsed
@@ -12356,175 +10657,6 @@ Sin el problema de informaciÃ³n habrÃ­a pleno empleo
 \end_inset
 
 . 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Float infografia
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Los 3
-\begin_inset space ~
-
-\end_inset
-
-estados del trabajador en el modelo de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Shapiro
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Stiglitz
-\end_layout
-
-\end_inset
-
- y las tasas de transiciÃ³n
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "figu:estados-ss"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-estados-ss
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{ShapiroStiglitz1984Equilibrium}
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[cap.~11]{Romer2019Advanced}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subparagraph
@@ -14093,7 +12225,7 @@ textcite[cap.~11]{Romer2019Advanced}
 \emph on
 Cada parÃ¡metro, de un vistazo
 \emph default
- (tabla
+: lo que sube la CNE (esfuerzo mÃ¡s costoso, trabajadores mÃ¡s impacientes, mÃ¡s rotaciÃ³n, peor vigilancia, un subsidio de paro mayor) sube el salario y el paro; lo que mueve la demanda de trabajo desplaza el equilibrio a lo largo de la CNE (tabla
 \begin_inset space ~
 
 \end_inset
@@ -14109,1039 +12241,23 @@ nolink "false"
 
 \end_inset
 
-): lo que sube la CNE (esfuerzo mÃ¡s costoso, trabajadores mÃ¡s impacientes, mÃ¡s rotaciÃ³n, peor vigilancia, un subsidio de paro mayor) sube el salario y el paro; lo que mueve la demanda de trabajo desplaza el equilibrio a lo largo de la CNE. 
-\end_layout
+, en el anexo
+\begin_inset space ~
 
-\begin_layout Standard
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-EstÃ¡tica comparativa del modelo de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Shapiro
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Stiglitz
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:ss-estatica"
-
-\end_inset
-
- 
-\size small
-
-\begin_inset Tabular 
-<lyxtabular version="3" rows="9" columns="4">
-<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="left" valignment="middle" width="4.4cm">
-<column alignment="center" valignment="middle" width="3.2cm">
-<column alignment="center" valignment="middle" width="2.2cm">
-<column alignment="center" valignment="middle" width="3.2cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceeazulpalido}
-\end_layout
-
-\end_inset
-
-
-\series bold
-Cambio
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\series bold
-QuÃ© curva se mueve
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\series bold
-Salario 
-\begin_inset Formula $w^*$
-\end_inset
-
-
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\series bold
-Empleo y paro
-\series default
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-Esfuerzo mÃ¡s costoso (
-\begin_inset Formula $\overline{e}\uparrow$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-CNE, arriba 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-sube
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-menos empleo, mÃ¡s paro
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-[0.3em] MÃ¡s impaciencia (
-\begin_inset Formula $\rho\uparrow$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-CNE, arriba 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-sube
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-menos empleo, mÃ¡s paro
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-[0.3em] MÃ¡s rotaciÃ³n (
-\begin_inset Formula $s\uparrow$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-CNE, arriba 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-sube
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-menos empleo, mÃ¡s paro
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-[0.3em] Subsidio de paro mayor 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-CNE, arriba 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-sube
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-menos empleo, mÃ¡s paro
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-[0.3em] MÃ¡s vigilancia (
-\begin_inset Formula $q\uparrow$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-CNE, abajo 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-baja
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-mÃ¡s empleo, menos paro
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-[0.3em] Sin rotaciÃ³n (
-\begin_inset Formula $s=0$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-CNE, horizontal 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-no depende del empleo 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-todo el ajuste, en el empleo
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-[0.3em] CaÃ­da de la demanda (
-\begin_inset Formula $A\downarrow$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-demanda, a la izquierda 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-baja algo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-menos empleo, mÃ¡s paro
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-[0.3em] Subsidio salarial 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-demanda, a la derecha 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-sube
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-mÃ¡s empleo, menos paro
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{ShapiroStiglitz1984Equilibrium}
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[cap.~11]{Romer2019Advanced}
-\end_layout
-
 \end_inset
-
-.
-\end_layout
 
-\end_inset
 
- 
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:ss-estatica"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
-
 
+). 
 \end_layout
 
 \begin_layout Subparagraph
@@ -16711,19 +13827,19 @@ Extensiones del modelo bÃ¡sico
 \emph on
 Despidos
 \emph default
-: si el trabajo es indivisible, en los estados malos el contrato despide a algunos trabajadores, elegidos al azar
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Azariadis1975Implicit"
-literal "false"
+: si el trabajo es indivisible, en los estados malos el contrato despide a algunos trabajadores; si no hay indemnizaciÃ³n, quedan peor que los que siguen y el paro es involuntario 
+\emph on
+a posteriori
+\emph default
+ (anexo
+\begin_inset space ~
 
 \end_inset
 
-. Si el contrato incluye una indemnizaciÃ³n, los despedidos quedan igual que los que siguen, como en el principio de indiferencia de los contratos fuertemente eficientes (
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:contratos-eficientes"
+reference "anexo:contratos-implicitos"
 plural "false"
 caps "false"
 noprefix "false"
@@ -16731,24 +13847,7 @@ nolink "false"
 
 \end_inset
 
-); si no la incluye, quedan peor: el paro es involuntario 
-\emph on
-a posteriori
-\emph default
-, aunque el contrato se aceptara voluntariamente 
-\emph on
-a priori
-\emph default
-
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Rosen1985Implicit"
-literal "false"
-
-\end_inset
-
-. 
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -16756,63 +13855,25 @@ literal "false"
 \emph on
 InformaciÃ³n asimÃ©trica
 \emph default
-: si solo la empresa observa el estado, el seguro completo no se sostiene, porque a la empresa le convendrÃ­a declarar siempre un estado malo para pagar menos. Para que le compense decir la verdad, el contrato tiene que hacerle costoso mentir, y eso distorsiona el empleo: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-hay 
-\emph on
-subempleo
-\emph default
- en los estados malos si la empresa es tambiÃ©n aversa al riesgo
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "GrossmanHart1981Implicit,Azariadis1983Employment"
-literal "false"
+: si solo la empresa observa el estado, le convendrÃ­a declarar siempre uno malo; el contrato que le hace decir la verdad distorsiona el empleo, con subempleo o sobreempleo segÃºn su actitud ante el riesgo (anexo
+\begin_inset space ~
 
 \end_inset
 
-; 
-\end_layout
 
-\begin_layout Itemize
-hay 
-\emph on
-sobreempleo
-\emph default
- si es neutral al riesgo y el ocio es un bien normal
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "GreenKahn1983Wage"
-literal "false"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:contratos-implicitos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-. 
+). 
 \end_layout
 
-\end_deeper
-\begin_deeper
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{AzariadisStiglitz1983Implicit}
-\end_layout
-
-\end_inset
-
- resumen esta literatura. 
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -16855,15 +13916,7 @@ status collapsed
 
 \end_inset
 
-. Y el trabajador puede irse cuando fuera le pagan mÃ¡s, asÃ­ que el salario tiene que subir cuando el mercado se tensa, aunque no baje cuando se relaja. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Otras variantes
-\emph default
-: el seguro puede cubrir el empleo y no el salario, con pagos al trabajador que queda parado; y, si lo que se asegura es el consumo, el salario por hora se vuelve contracÃ­clico, como acabamos de ver. 
+. El trabajador, por su parte, puede irse si fuera le pagan mÃ¡s: el salario tiene que subir cuando el mercado se tensa, aunque no baje cuando se relaja. 
 \end_layout
 
 \begin_layout Paragraph
@@ -17980,7 +15033,7 @@ RecapitulaciÃ³n
 
 \begin_deeper
 \begin_layout Itemize
-El salario no es un precio que se limite a vaciar el mercado de trabajo. Cada bloque de la exposiciÃ³n ha dado una razÃ³n, levantando un supuesto distinto del modelo neoclÃ¡sico (tabla
+El salario no es un precio que se limite a vaciar el mercado de trabajo. Cada bloque ha dado una razÃ³n, levantando un supuesto distinto del modelo neoclÃ¡sico (tabla
 \begin_inset space ~
 
 \end_inset
@@ -17999,6 +15052,7 @@ nolink "false"
 ): 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 con 
 \emph on
@@ -18028,8 +15082,7 @@ insiders
 \end_layout
 
 \end_deeper
-\begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 Los 3
 \begin_inset space ~
 
@@ -18050,6 +15103,12 @@ status collapsed
 \end_inset
 
 . 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+
 \begin_inset Float table
 placement H
 wide false
@@ -19146,7 +16205,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Anexo: derivaciones de la negociaciÃ³n colectiva
+Anexo: derivaciones y evidencia
 \begin_inset ERT
 status collapsed
 
@@ -19168,7 +16227,7 @@ status collapsed
 
 \end_inset
 
- y contratos eficientes
+ de los modelos de negociaciÃ³n
 \end_layout
 
 \begin_layout Standard
@@ -19180,6 +16239,241 @@ name "anexo:contratos-eficientes"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+El reparto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+ con utilidad transferible
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:nash-transferible"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Con 
+\begin_inset Formula $B=\Pi-U_S$
+\end_inset
+
+, y tomando logaritmos, el problema es maximizar 
+\begin_inset Formula $\gamma\ln\big(U_S-U_S^0\big)+(1-\gamma)\ln\big(\Pi-U_S-B^0\big)$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+La condiciÃ³n de primer orden es 
+\begin_inset Formula $\gamma/\big(U_S-U_S^0\big)=(1-\gamma)/\big(\Pi-U_S-B^0\big)$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Despejando 
+\begin_inset Formula $U_S$
+\end_inset
+
+ sale 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nash-transferible"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Del juego de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Rubinstein
+\end_layout
+
+\end_inset
+
+ a la soluciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:rubinstein-nash"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+De 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:rubinstein"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, la empresa se lleva 
+\begin_inset Formula $1-x^*=\beta_B\,(1-\beta_S)/(1-\beta_S\,\beta_B)$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Si el tiempo entre ofertas es 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ y 
+\begin_inset Formula $\beta_i=e^{-\rho_i\Delta}\approx 1-\rho_i\Delta$
+\end_inset
+
+, 
+\begin_inset Formula \[x^*\approx\frac{\rho_B\,\Delta}{\rho_S\,\Delta+\rho_B\,\Delta-\rho_S\,\rho_B\,\Delta^2}\ \xrightarrow[\Delta\to 0]{}\ \frac{\rho_B}{\rho_S+\rho_B}\]
+\end_inset
+
+y la ventaja de proponer primero desaparece. 
+\end_layout
+
+\begin_layout Itemize
+La soluciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+ generalizada con 
+\begin_inset Formula $U_S=x$
+\end_inset
+
+, 
+\begin_inset Formula $B=1-x$
+\end_inset
+
+ y desacuerdo 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+ maximiza 
+\begin_inset Formula $x^{\gamma}(1-x)^{1-\gamma}$
+\end_inset
+
+. Su condiciÃ³n de primer orden, 
+\begin_inset Formula $\gamma/x=(1-\gamma)/(1-x)$
+\end_inset
+
+, da 
+\begin_inset Formula $x=\gamma$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Por tanto, el lÃ­mite de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Rubinstein
+\end_layout
+
+\end_inset
+
+ es la soluciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+ con el 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ de 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:gamma-paciencia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -19346,6 +16640,337 @@ shock
 shock
 \emph default
 . 
+\end_layout
+
+\begin_layout Subsection
+La rigidez del sindicato monopolista con demanda isoelÃ¡stica
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:dunlop-rigidez"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La demanda de trabajo
+\emph default
+. Con 
+\begin_inset Formula $Y=A\,L^{\alpha}$
+\end_inset
+
+, la empresa iguala el producto marginal al salario, 
+\begin_inset Formula $\alpha\,A\,L^{\alpha-1}=w$
+\end_inset
+
+, y su demanda es 
+\begin_inset Formula \[L^D(w)=\Big(\frac{\alpha\,A}{w}\Big)^{\frac{1}{1-\alpha}},\qquad |\varepsilon_{L^D,w}|=\frac{1}{1-\alpha}\]
+\end_inset
+
+La elasticidad no depende ni de 
+\begin_inset Formula $A$
+\end_inset
+
+ ni de 
+\begin_inset Formula $w$
+\end_inset
+
+: la demanda es 
+\emph on
+isoelÃ¡stica
+\emph default
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El salario del sindicato
+\emph default
+. Con afiliados neutrales al riesgo, la condiciÃ³n 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dunlop"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ queda 
+\begin_inset Formula $(w-w^R)/w=1-\alpha$
+\end_inset
+
+, es decir, 
+\begin_inset Formula \[w^S=\frac{1}{\alpha}\,w^R\]
+\end_inset
+
+un 
+\emph on
+margen
+\emph default
+ constante, 
+\begin_inset Formula $1/\alpha>1$
+\end_inset
+
+, sobre el salario de reserva, como el margen de un monopolista sobre su coste marginal. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Ante cambios en la demanda
+\emph default
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sindicato-monopolista-rigidez"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): una productividad o una demanda del producto mayores, 
+\begin_inset Formula $A_1<A_2<A_3$
+\end_inset
+
+, desplazan la demanda de trabajo a la derecha, pero no cambian su elasticidad. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El sindicato sigue eligiendo el mismo salario, 
+\begin_inset Formula $w^S$
+\end_inset
+
+, y solo cambia el empleo: 
+\begin_inset Formula $E_1$
+\end_inset
+
+, 
+\begin_inset Formula $E_2$
+\end_inset
+
+ y 
+\begin_inset Formula $E_3$
+\end_inset
+
+ estÃ¡n a la misma altura. 
+\end_layout
+
+\begin_layout Itemize
+Es una 
+\emph on
+rigidez real
+\emph default
+: el salario no responde a la demanda y el empleo absorbe todo el ajuste. 
+\end_layout
+
+\begin_layout Itemize
+La rigidez dura mientras haya afiliados sin empleo. Cuando la demanda llega a emplear a todos (
+\begin_inset Formula $E_3$
+\end_inset
+
+, en 
+\begin_inset Formula $\overline{L}$
+\end_inset
+
+), mÃ¡s empleo ya no le sirve al sindicato, y con 
+\begin_inset Formula $A_4$
+\end_inset
+
+ sube el salario (
+\begin_inset Formula $E_4$
+\end_inset
+
+). 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Con aversiÃ³n al riesgo pasa lo mismo: en 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dunlop"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ no aparece 
+\begin_inset Formula $A$
+\end_inset
+
+, y el salario solo depende de 
+\begin_inset Formula $w^R$
+\end_inset
+
+ y de 
+\begin_inset Formula $\alpha$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sindicato monopolista con demanda isoelÃ¡stica: el salario no cambia con la demanda hasta emplear a todos los afiliados
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sindicato-monopolista-rigidez"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.75
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sindicato-monopolista-rigidez
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Dunlop1944Wage}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Booth1995Economics}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -19703,6 +17328,165 @@ findemo
  
 \end_layout
 
+\begin_layout Subsection
+El principio de indiferencia
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:indiferencia"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+El pago total a los afiliados es 
+\begin_inset Formula $T=w\,L+b\,(\overline{L}-L)$
+\end_inset
+
+. Para 
+\begin_inset Formula $T$
+\end_inset
+
+ dado, el reparto entre empleados y parados que maximiza 
+\begin_inset Formula $U_S$
+\end_inset
+
+ cumple, con el multiplicador 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ de esa restricciÃ³n, 
+\begin_inset Formula \[\frac{L}{\overline{L}}\,u'(w)=\lambda\,L,\qquad \Big(1-\frac{L}{\overline{L}}\Big)\,u'(w^R+b)=\lambda\,\big(\overline{L}-L\big)\ \ \Longrightarrow\ \ u'(w)=u'(w^R+b)\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Como 
+\begin_inset Formula $u'$
+\end_inset
+
+ es decreciente, 
+\begin_inset Formula $w=w^R+b$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Sustituyendo 
+\begin_inset Formula $b=w-w^R$
+\end_inset
+
+ en 
+\begin_inset Formula $B$
+\end_inset
+
+ de 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fuertemente-eficientes"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ sale el beneficio del texto, y diferenciÃ¡ndolo con 
+\begin_inset Formula $dB=0$
+\end_inset
+
+, la pendiente 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:isobeneficio-fe"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Los contrastes entre modelos
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:contrastes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Los contrastes directos entre el derecho a gestionar y los contratos eficientes no dan un veredicto claro (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:negociacion-practica"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Los que buscan si el empleo pactado depende del salario alternativo, como predicen los contratos eficientes y no el derecho a gestionar, dan resultados mixtos con los convenios de la imprenta estadounidense
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "MaCurdyPencavel1986Testing,BrownAshenfelter1986Testing"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+En bolsa, una subida salarial inesperada reduce el valor de la empresa en la misma cuantÃ­a en que aumenta lo que cobran los trabajadores: el salario reparte la renta, como en un contrato eficiente
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Abowd1989Effect"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 
 \begin_inset ERT
@@ -19722,7 +17506,167 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Anexo: el modelo de 
+Anexo: los salarios de eficiencia en detalle
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:shapiro-stiglitz"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+La extensiÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Summers
+\end_layout
+
+\end_inset
+
+ (1988): el paro de equilibrio
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:summers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Summers1988Relative}
+\end_layout
+
+\end_inset
+
+ propone que el esfuerzo dependa de la ventaja del salario 
+\begin_inset Formula $w$
+\end_inset
+
+ sobre la alternativa del trabajador, 
+\begin_inset Formula $x$
+\end_inset
+
+, que es el salario de las demÃ¡s empresas, 
+\begin_inset Formula $w_a$
+\end_inset
+
+, ponderado por la probabilidad de encontrar empleo, menor cuanto mayor es la tasa de paro 
+\begin_inset Formula $U$
+\end_inset
+
+: 
+\begin_inset Formula \[e=\Big(\frac{w-x}{x}\Big)^{\eta},\qquad x=(1-b\,U)\,w_a,\qquad 0<\eta<1,\ b>0\]
+\end_inset
+
+con 
+\begin_inset Formula $\eta$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+ parÃ¡metros de este ejemplo. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+La condiciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Solow
+\end_layout
+
+\end_inset
+
+ da 
+\begin_inset Formula $w=x/(1-\eta)$
+\end_inset
+
+: cada empresa quiere pagar una prima sobre la alternativa. 
+\end_layout
+
+\begin_layout Itemize
+Pero en equilibrio todas pagan lo mismo, 
+\begin_inset Formula $w=w_a$
+\end_inset
+
+, y eso solo es compatible con una tasa de paro 
+\begin_inset Formula \begin{equation}
+    U=\frac{\eta}{b} \label{eq:paro-summers}
+    \end{equation}
+\end_inset
+
+Con menos paro, a cada empresa le compensarÃ­a superar el salario de sus competidoras; esa puja encarece el trabajo y reduce el empleo hasta que el paro vuelve a 
+\begin_inset Formula $\eta/b$
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Implicaciones
+\emph default
+: el paro de equilibrio lo fijan los parÃ¡metros del esfuerzo, 
+\begin_inset Formula $\eta$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+, y no la productividad, de modo que el crecimiento ya no lo hace desaparecer: acaba en el salario. Y basta una elasticidad pequeÃ±a para generar bastante paro: con 
+\begin_inset Formula $\eta=0{,}06$
+\end_inset
+
+ y 
+\begin_inset Formula $b=1$
+\end_inset
+
+, la tasa de paro de equilibrio es del 6
+\begin_inset space ~
+
+\end_inset
+
+%
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Romer2019Advanced"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection
+El modelo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -19742,22 +17686,7 @@ Stiglitz
 
 \end_inset
 
-: transiciones, valores y bienestar
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "anexo:shapiro-stiglitz"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Las transiciones
+: las transiciones
 \end_layout
 
 \begin_layout Standard
@@ -19765,6 +17694,175 @@ Las transiciones
 \begin_inset CommandInset label
 LatexCommand label
 name "anexo:ss-transiciones"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float infografia
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Los 3
+\begin_inset space ~
+
+\end_inset
+
+estados del trabajador en el modelo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shapiro
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Stiglitz
+\end_layout
+
+\end_inset
+
+ y las tasas de transiciÃ³n
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "figu:estados-ss"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+estados-ss
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ShapiroStiglitz1984Equilibrium}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~11]{Romer2019Advanced}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
 
 \end_inset
 
@@ -20022,6 +18120,1105 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
+La estÃ¡tica comparativa, parÃ¡metro a parÃ¡metro
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:ss-estatica"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+La tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ss-estatica"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ resume cÃ³mo mueve cada parÃ¡metro la CNE o la demanda de trabajo, y con ellas el salario y el paro de equilibrio (grÃ¡ficos
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:shapiro-stiglitz-vigilancia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ a
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:shapiro-stiglitz-demanda"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+EstÃ¡tica comparativa del modelo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shapiro
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Stiglitz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:ss-estatica"
+
+\end_inset
+
+ 
+\size small
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="9" columns="4">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="4.4cm">
+<column alignment="center" valignment="middle" width="3.2cm">
+<column alignment="center" valignment="middle" width="2.2cm">
+<column alignment="center" valignment="middle" width="3.2cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Cambio
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\series bold
+QuÃ© curva se mueve
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\series bold
+Salario 
+\begin_inset Formula $w^*$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\series bold
+Empleo y paro
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+Esfuerzo mÃ¡s costoso (
+\begin_inset Formula $\overline{e}\uparrow$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+CNE, arriba 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sube
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+menos empleo, mÃ¡s paro
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+[0.3em] MÃ¡s impaciencia (
+\begin_inset Formula $\rho\uparrow$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+CNE, arriba 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sube
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+menos empleo, mÃ¡s paro
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+[0.3em] MÃ¡s rotaciÃ³n (
+\begin_inset Formula $s\uparrow$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+CNE, arriba 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sube
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+menos empleo, mÃ¡s paro
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+[0.3em] Subsidio de paro mayor 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+CNE, arriba 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sube
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+menos empleo, mÃ¡s paro
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+[0.3em] MÃ¡s vigilancia (
+\begin_inset Formula $q\uparrow$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+CNE, abajo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+baja
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+mÃ¡s empleo, menos paro
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+[0.3em] Sin rotaciÃ³n (
+\begin_inset Formula $s=0$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+CNE, horizontal 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+no depende del empleo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+todo el ajuste, en el empleo
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+[0.3em] CaÃ­da de la demanda (
+\begin_inset Formula $A\downarrow$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+demanda, a la izquierda 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+baja algo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+menos empleo, mÃ¡s paro
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+[0.3em] Subsidio salarial 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+demanda, a la derecha 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sube
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+mÃ¡s empleo, menos paro
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ShapiroStiglitz1984Equilibrium}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~11]{Romer2019Advanced}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Bienestar y polÃ­tica econÃ³mica
 \end_layout
 
@@ -20133,6 +19330,165 @@ literal "false"
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% ==========================================================================
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Anexo: extensiones de los contratos implÃ­citos
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:contratos-implicitos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Despidos
+\emph default
+: si el trabajo es indivisible, en los estados malos el contrato despide a algunos trabajadores, elegidos al azar
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Azariadis1975Implicit"
+literal "false"
+
+\end_inset
+
+. Si el contrato incluye una indemnizaciÃ³n, los despedidos quedan igual que los que siguen, como en el principio de indiferencia de los contratos fuertemente eficientes (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:fuertemente-eficientes"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+); si no la incluye, quedan peor: el paro es involuntario 
+\emph on
+a posteriori
+\emph default
+, aunque el contrato se aceptara voluntariamente 
+\emph on
+a priori
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Rosen1985Implicit"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+InformaciÃ³n asimÃ©trica
+\emph default
+: si solo la empresa observa el estado, el seguro completo no se sostiene, porque a la empresa le convendrÃ­a declarar siempre un estado malo para pagar menos. Para que le compense decir la verdad, el contrato tiene que hacerle costoso mentir, y eso distorsiona el empleo: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+hay 
+\emph on
+subempleo
+\emph default
+ en los estados malos si la empresa es tambiÃ©n aversa al riesgo
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "GrossmanHart1981Implicit,Azariadis1983Employment"
+literal "false"
+
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+hay 
+\emph on
+sobreempleo
+\emph default
+ si es neutral al riesgo y el ocio es un bien normal
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "GreenKahn1983Wage"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{AzariadisStiglitz1983Implicit}
+\end_layout
+
+\end_inset
+
+ resumen esta literatura. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Otras variantes
+\emph default
+: el seguro puede cubrir el empleo y no el salario, con pagos al trabajador que queda parado; y, si lo que se asegura es el consumo, el salario por hora se vuelve contracÃ­clico, como en las implicaciones del modelo bÃ¡sico (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:contratos-implicitos-modelo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Standard
@@ -20594,7 +19950,7 @@ literal "false"
 \emph on
 Las propuestas
 \emph default
-. Es el diagnÃ³stico de la propuesta de reforma laboral que un centenar de economistas publicÃ³ en 2009, que pedÃ­a mÃ¡s peso para los convenios de empresa, clÃ¡usulas de descuelgue y una coordinaciÃ³n que ligara los salarios a la productividad
+. Es el diagnÃ³stico de la propuesta de reforma laboral que un centenar de economistas publicÃ³ en 2009: una negociaciÃ³n colectiva muy rÃ­gida, demasiado centralizada en unos casos y poco coordinada en otros, que dificulta adaptar las condiciones de trabajo a cada empresa y frena la productividad. ProponÃ­a que los acuerdos de empresa pudieran prevalecer sobre los convenios de Ã¡mbito superior
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -20655,9 +20011,46 @@ status collapsed
 \begin_layout Itemize
 
 \emph on
+Salarios pactados
+\emph default
+: los convenios registrados hasta octubre de 2026 pactan para este aÃ±o una subida media del 3,06
+\begin_inset space ~
+
+\end_inset
+
+%, algo menor en los de empresa (2,61
+\begin_inset space ~
+
+\end_inset
+
+%) que en los sectoriales (3,10
+\begin_inset space ~
+
+\end_inset
+
+%); en 2025 fue del 3,51
+\begin_inset space ~
+
+\end_inset
+
+%
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "MITES2026CCTOct"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 Los datos
 \emph default
-. La negociaciÃ³n sigue siendo sobre todo sectorial: en 2025, solo el 7,4
+. La negociaciÃ³n sigue siendo sobre todo sectorial: en 2025, solo el 7,5
 \begin_inset space ~
 
 \end_inset
@@ -20667,17 +20060,17 @@ Los datos
 
 \end_inset
 
-% de 2013. Y el descuelgue se usa poco: 295
+% de 2013. Y el descuelgue se usa poco: 307
 \begin_inset space ~
 
 \end_inset
 
-inaplicaciones, con 13
+inaplicaciones, con 14
 \begin_inset space \thinspace{}
 
 \end_inset
 
-723 trabajadores, entre enero y septiembre de 2026, frente a 2
+812 trabajadores, entre enero y octubre de 2026, frente a 2
 \begin_inset space \thinspace{}
 
 \end_inset
@@ -20691,7 +20084,7 @@ inaplicaciones, con 13
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
-key "MITES2026CCTSep,MITES2026CCT2025"
+key "MITES2026CCTOct,MITES2026CCT2025"
 literal "false"
 
 \end_inset
@@ -20818,7 +20211,7 @@ millones de asalariados de la contabilidad nacional, el 69
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
-key "MITES2026CCTSep,Eurostat2026NamaPe"
+key "MITES2026CCTOct,Eurostat2026NamaPe"
 literal "false"
 
 \end_inset
@@ -20914,6 +20307,31 @@ literal "false"
 
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Modelos de negociaciÃ³n (bloque
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:negociacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)
+\series default
+: 
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -21055,17 +20473,41 @@ Contratos eficientes
  con neutralidad y creciente con aversiÃ³n al riesgo (sobreempleo); con un seguro de paro negociado, vertical tambiÃ©n con aversiÃ³n (fuertemente eficientes). 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
-\emph on
-Salarios de eficiencia
-\emph default
-: 4
+\series bold
+Salarios de eficiencia (bloque
 \begin_inset space ~
 
 \end_inset
 
-motivos segÃºn 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:eficiencia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)
+\series default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Los 4
+\begin_inset space ~
+
+\end_inset
+
+motivos de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -21075,6 +20517,8 @@ Romer
 
 \end_inset
 
+
+\emph default
 : nutriciÃ³n (
 \begin_inset Flex Autor
 status collapsed
@@ -21220,6 +20664,48 @@ Stiglitz
 , se llega al equilibrio walrasiano; una caÃ­da de la demanda mueve sobre todo el empleo. 
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Contratos implÃ­citos y nivel de negociaciÃ³n (bloque
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:contratos-implicitos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:centralizacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)
+\series default
+: 
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -21268,6 +20754,7 @@ Driffill
 : peores resultados con negociaciÃ³n sectorial (joroba); la evidencia posterior da mÃ¡s peso a la coordinaciÃ³n. 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
 \begin_inset ERT

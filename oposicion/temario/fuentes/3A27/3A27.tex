@@ -102,7 +102,7 @@ Conclusión\esqtiempo{1}
 \minutos{11,5}
 
 \begin{notaopositor}
-En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el monopolio bilateral y su indeterminación, que ya planteó \autor{Edgeworth}; \autor{Hicks} con su gráfico (concesión, resistencia y huelgas potenciales); \autor{Nash} con los 4~axiomas de palabra, el producto y su gráfico, y \autor{Rubinstein} con las ofertas alternadas y $\gamma$ como paciencia relativa. Las cajas grises (derivaciones) no se cantan. Los modelos de negociación colectiva (\tiempo{7,5}) empiezan con la infografía (figura~\ref{figu:mapa-negociacion}) de palabra y se cuentan sobre un solo plano $(L,w)$ que crece por capas: la demanda de trabajo y las isobeneficio, las indiferencias del sindicato con $w^R$ y $\overline{L}$, el punto $C$, el sindicato monopolista ($M$), el derecho a gestionar ($R$) y la curva de contratos. Los contratos fuertemente eficientes, con su gráfico, en 2~frases. Luego la tabla~\ref{tab:modelos-negociacion} de palabra y la evidencia con la cobertura de los convenios. Cierre macro (\tiempo{1}) con la curva salarial en una línea. Se levantan los supuestos 4~y 6, con el refrán «hablando se entiende la gente» junto al producto de \autor{Nash}. Las derivaciones de los modelos de negociación colectiva están en el anexo~\ref{anexo:contratos-eficientes}.
+En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el monopolio bilateral y su indeterminación, que ya planteó \autor{Edgeworth}; \autor{Hicks} con su gráfico (concesión, resistencia y huelgas potenciales); \autor{Nash} con los 4~axiomas de palabra, el producto y su gráfico, y \autor{Rubinstein} con las ofertas alternadas y $\gamma$ como paciencia relativa. Los modelos de negociación colectiva (\tiempo{7,5}) empiezan con la infografía (figura~\ref{figu:mapa-negociacion}) de palabra y se cuentan sobre un solo plano $(L,w)$ que crece por capas: la demanda de trabajo y las isobeneficio, las indiferencias del sindicato con $w^R$ y $\overline{L}$, el punto $C$, el sindicato monopolista ($M$), el derecho a gestionar ($R$) y la curva de contratos. Los contratos fuertemente eficientes, con su gráfico, en 2~frases. Luego la tabla~\ref{tab:modelos-negociacion} de palabra y la evidencia con la cobertura de los convenios. Cierre macro (\tiempo{1}) con la curva salarial en una línea. Se levantan los supuestos 4~y 6, con el refrán «hablando se entiende la gente» junto al producto de \autor{Nash}. Las derivaciones (el reparto con utilidad transferible, el paso de \autor{Rubinstein} a \autor{Nash}, la rigidez con demanda isoelástica, los modelos de negociación colectiva y el principio de indiferencia) y los contrastes entre modelos están en el anexo~\ref{anexo:contratos-eficientes}.
 \end{notaopositor}
 
 \begin{itemize}
@@ -231,6 +231,7 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
   \begin{equation}
   U_S=U_S^0+\gamma\,\big(\Pi-U_S^0-B^0\big),\qquad B=B^0+(1-\gamma)\,\big(\Pi-U_S^0-B^0\big) \label{eq:nash-transferible}
   \end{equation}
+  (derivación en el anexo~\ref{anexo:nash-transferible}).
 \end{itemize}
 
 \begin{figure}[H]
@@ -239,15 +240,6 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \grafico[0.5\textwidth]{nash}
 \fuente{elaboración propia a partir de \textcite{Nash1950Bargaining}.}
 \end{figure}
-
-\begin{anotaciones}
-\textbf{Derivación del reparto con utilidad transferible}
-\begin{itemize}
-\item Con $B=\Pi-U_S$, y tomando logaritmos, el problema es maximizar $\gamma\ln\big(U_S-U_S^0\big)+(1-\gamma)\ln\big(\Pi-U_S-B^0\big)$.
-\item La condición de primer orden es $\gamma/\big(U_S-U_S^0\big)=(1-\gamma)/\big(\Pi-U_S-B^0\big)$.
-\item Despejando $U_S$ sale \eqref{eq:nash-transferible}.\findemo
-\end{itemize}
-\end{anotaciones}
 
 \subparagraph{iii) Implicaciones}
 
@@ -310,20 +302,8 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
   \begin{equation}
   \gamma=\frac{\rho_B}{\rho_S+\rho_B} \label{eq:gamma-paciencia}
   \end{equation}
-  siendo $\rho_S$ y $\rho_B$ las tasas de descuento del sindicato y de la empresa.
+  siendo $\rho_S$ y $\rho_B$ las tasas de descuento del sindicato y de la empresa: con ofertas casi continuas, la ventaja de proponer primero desaparece y el reparto es el de \autor{Nash} con ese $\gamma$ (anexo~\ref{anexo:rubinstein-nash}).
 \end{itemize}
-
-\begin{anotaciones}
-\textbf{Del juego de \autor{Rubinstein} a la solución de \autor{Nash}}
-\begin{itemize}
-\item De \eqref{eq:rubinstein}, la empresa se lleva $1-x^*=\beta_B\,(1-\beta_S)/(1-\beta_S\,\beta_B)$.
-\item Si el tiempo entre ofertas es $\Delta$ y $\beta_i=e^{-\rho_i\Delta}\approx 1-\rho_i\Delta$,
-  $$x^*\approx\frac{\rho_B\,\Delta}{\rho_S\,\Delta+\rho_B\,\Delta-\rho_S\,\rho_B\,\Delta^2}\ \xrightarrow[\Delta\to 0]{}\ \frac{\rho_B}{\rho_S+\rho_B}$$
-  y la ventaja de proponer primero desaparece.
-\item La solución de \autor{Nash} generalizada con $U_S=x$, $B=1-x$ y desacuerdo $(0,0)$ maximiza $x^{\gamma}(1-x)^{1-\gamma}$. Su condición de primer orden, $\gamma/x=(1-\gamma)/(1-x)$, da $x=\gamma$.
-\item Por tanto, el límite de \autor{Rubinstein} es la solución de \autor{Nash} con el $\gamma$ de \eqref{eq:gamma-paciencia}.\findemo
-\end{itemize}
-\end{anotaciones}
 
 \subparagraph{iii) Implicaciones}
 
@@ -445,7 +425,7 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
   \begin{equation}
   w^S=\frac{w^R}{\alpha} \label{eq:dunlop-isoelastica}
   \end{equation}
-  La productividad $A$ no aparece (tampoco en \eqref{eq:dunlop} con aversión al riesgo): si la demanda de trabajo se desplaza por un \emph{shock} de productividad o de demanda del producto, el salario \emph{no se mueve} y es el empleo el que absorbe el \emph{shock}, mientras no se llegue a emplear a todos los afiliados (anexo~\ref{anexo:contratos-eficientes}).
+  La productividad $A$ no aparece, tampoco en \eqref{eq:dunlop} con aversión al riesgo. Si un \emph{shock} de productividad o de demanda del producto desplaza la demanda de trabajo, el salario \emph{no se mueve} y el empleo absorbe el \emph{shock}, mientras no se emplee a todos los afiliados (anexo~\ref{anexo:dunlop}).
 \end{itemize}
 
 \begin{figure}[H]
@@ -459,34 +439,13 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 
 \begin{itemize}
 \item \emph{Salario por encima del competitivo y paro involuntario}: al salario $w^S$, $\overline{L}-L^S$ afiliados querrían trabajar y no pueden.
-\item \emph{Ineficiencia}: el equilibrio es perfecto en subjuegos, pero no es un óptimo de \autor{Pareto}. En $M$ no hay tangencia entre la curva de indiferencia del sindicato y la isobeneficio que pasan por él: forman una \concepto{lente de mejoras paretianas}: con un salario algo menor y más empleo, las 2~partes estarían mejor.
+\item \emph{Ineficiencia}: el equilibrio es perfecto en subjuegos, pero no es un óptimo de \autor{Pareto}. En $M$, la indiferencia del sindicato y la isobeneficio que pasan por él no son tangentes y forman una \concepto{lente de mejoras paretianas}: con un salario algo menor y más empleo, las 2~partes estarían mejor.
 \item \emph{Rigidez real}: con demanda isoelástica, el salario no responde al ciclo y el ajuste se hace por cantidades, que es el primer hecho estilizado de la introducción.
-\end{itemize}
-
-\begin{anotaciones}
-\textbf{El sindicato monopolista explica la rigidez salarial: demanda isoelástica y salario como margen sobre el de reserva}
-\begin{itemize}
-\item \emph{La demanda de trabajo}. Con $Y=A\,L^{\alpha}$, la empresa iguala el producto marginal al salario, $\alpha\,A\,L^{\alpha-1}=w$, y su demanda es
-  $$L^D(w)=\Big(\frac{\alpha\,A}{w}\Big)^{\frac{1}{1-\alpha}},\qquad |\varepsilon_{L^D,w}|=\frac{1}{1-\alpha}$$
-  La elasticidad no depende ni de $A$ ni de $w$: la demanda es \emph{isoelástica}.
-\item \emph{El salario del sindicato}. Con afiliados neutrales al riesgo, la condición \eqref{eq:dunlop} queda $(w-w^R)/w=1-\alpha$, es decir,
-  $$w^S=\frac{1}{\alpha}\,w^R$$
-  un \emph{margen} constante, $1/\alpha>1$, sobre el salario de reserva, como el margen de un monopolista sobre su coste marginal.
-\item \emph{Ante cambios en la demanda} (gráfico~\ref{fig:sindicato-monopolista-rigidez}): una productividad o una demanda del producto mayores, $A_1<A_2<A_3$, desplazan la demanda de trabajo a la derecha, pero no cambian su elasticidad.
   \begin{itemize}
-  \item El sindicato sigue eligiendo el mismo salario, $w^S$, y solo cambia el empleo: $E_1$, $E_2$ y $E_3$ están a la misma altura.
-  \item Es una \emph{rigidez real}: el salario no responde a la demanda y el empleo absorbe todo el ajuste.
-  \item La rigidez dura mientras haya afiliados sin empleo. Cuando la demanda llega a emplear a todos ($E_3$, en $\overline{L}$), más empleo ya no le sirve al sindicato, y con $A_4$ sube el salario ($E_4$).
+  \item El salario es un margen constante, $1/\alpha$, sobre el de reserva, como el de un monopolista sobre su coste marginal: si la demanda de trabajo se desplaza, solo cambia el empleo.
+  \item La rigidez dura mientras haya afiliados sin empleo; cuando la demanda llega a emplearlos a todos, sube el salario (anexo~\ref{anexo:dunlop-rigidez}).
   \end{itemize}
-\item Con aversión al riesgo pasa lo mismo: en \eqref{eq:dunlop} no aparece $A$, y el salario solo depende de $w^R$ y de $\alpha$.
 \end{itemize}
-\begin{figuracaja}
-\centering
-\caption{Sindicato monopolista con demanda isoelástica: el salario no cambia con la demanda hasta emplear a todos los afiliados}\label{fig:sindicato-monopolista-rigidez}
-\grafico[0.75\textwidth]{sindicato-monopolista-rigidez}
-\fuente{elaboración propia a partir de \textcite{Dunlop1944Wage} y \textcite{Booth1995Economics}.}
-\end{figuracaja}
-\end{anotaciones}
 
 \paragraph{c) Valoración}
 
@@ -520,9 +479,9 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
   \begin{equation}
   \optim{\max}{w}{\Big[U_S\big(w,L^D(w)\big)-U_S^0\Big]^{\gamma}\,\Big[B\big(w,L^D(w)\big)-B^0\Big]^{1-\gamma}}{L^D(w)\leq\overline{L}} \label{eq:derecho-gestionar}
   \end{equation}
-  La primera etapa es una negociación (un concepto cooperativo), no un juego con estrategias, así que, a diferencia del sindicato monopolista, el resultado no es un ENPS.
+  A diferencia del sindicato monopolista, el resultado no es un ENPS: la primera etapa es una negociación (un concepto cooperativo), no un juego con estrategias.
 \item \emph{Los extremos}: con $\gamma=1$ es el sindicato monopolista ($w^S$, punto $M$); con $\gamma=0$, la empresa paga el salario de reserva y se llega al competitivo ($w^R$, punto $C$). Con $\gamma\in(0,1)$, el salario queda entre los 2~y el empleo, sobre la demanda, entre $L^S$ y $L^c$ (punto $R$, gráfico~\ref{fig:derecho-gestionar}).
-\item Con la Cobb-Douglas y neutralidad al riesgo, el salario negociado es la media de los 2~extremos ponderada por el poder (anexo~\ref{anexo:contratos-eficientes}):
+\item Con la Cobb-Douglas y neutralidad al riesgo, el salario negociado es la media de los 2~extremos ponderada por el poder (anexo~\ref{anexo:derecho-gestionar}):
   \begin{equation}
   w=(1-\gamma)\,w^R+\gamma\,w^S=w^R\Big[1+\gamma\,\frac{1-\alpha}{\alpha}\Big] \label{eq:salario-rtm}
   \end{equation}
@@ -575,7 +534,7 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
   \end{equation}
   Dónde se sitúa el acuerdo sobre ella lo decide $\gamma$: con $\gamma=0$, en $C$ (salario de reserva y empleo competitivo); con $\gamma=1$, en $F$, donde la empresa se queda sin beneficio y el salario es el producto medio, $w=A\,F(L)/L$.
 \item \emph{Afiliados neutrales al riesgo} ($u$ lineal): la curva de contratos es $A\,F'(L)=w^R$, una \emph{vertical en el empleo competitivo}. El empleo es el eficiente y no depende de $\gamma$: el poder sindical solo reparte la renta. Es el resultado del monopolio bilateral, con el empleo competitivo $L^c$ y un salario que da al sindicato su cuota $\gamma$ del excedente \vertema{3.A.17}.
-\item \emph{Afiliados aversos al riesgo}: por la concavidad de $u$, $u(w)-u(w^R)>u'(w)\,(w-w^R)$, así que $A\,F'(L)<w^R$. La curva de contratos está a la derecha del empleo competitivo y tiene \emph{pendiente positiva} (anexo~\ref{anexo:contratos-eficientes}): va de $C$ hasta $D$, donde se llega a emplear a todos los afiliados, y sigue vertical en $\overline{L}$ hasta $F$ (gráfico~\ref{fig:contratos-eficientes}).\footnote{La pendiente de la curva de contratos depende de la actitud ante el riesgo de los afiliados\nocite{Booth1995Economics}:
+\item \emph{Afiliados aversos al riesgo}: por la concavidad de $u$, $u(w)-u(w^R)>u'(w)\,(w-w^R)$, así que $A\,F'(L)<w^R$. La curva de contratos está a la derecha del empleo competitivo y tiene \emph{pendiente positiva} (anexo~\ref{anexo:curva-contratos}): va de $C$ hasta $D$, donde se llega a emplear a todos los afiliados, y sigue vertical en $\overline{L}$ hasta $F$ (gráfico~\ref{fig:contratos-eficientes}).\footnote{La pendiente de la curva de contratos depende de la actitud ante el riesgo de los afiliados\nocite{Booth1995Economics}:
 \begin{itemize}
 \item si fueran \emph{neutrales} al riesgo, la curva sería vertical en el empleo competitivo: no habría sobreempleo y la solución sería eficiente tanto en el reparto como en la producción;
 \item si fueran \emph{amantes} del riesgo ($u$ convexa), la desigualdad se invierte, $A\,F'(L)>w^R$, y la curva tiene pendiente negativa, a la izquierda de $L^c$: con más poder, el sindicato sube el salario y acepta \emph{menos} empleo (subempleo).
@@ -627,7 +586,7 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{El principio de indiferencia}. Para un pago total dado a los afiliados, lo que maximiza la utilidad esperada de aversos al riesgo es asegurarlos del todo: $w=w^R+b$, y el parado queda igual de bien que el empleado.
+\item \emph{El principio de indiferencia}. Para un pago total dado a los afiliados, lo que maximiza la utilidad esperada de aversos al riesgo es asegurarlos del todo: $w=w^R+b$, y el parado queda igual de bien que el empleado (anexo~\ref{anexo:indiferencia}).
   \begin{itemize}
   \item Es el \concepto{principio de indiferencia}: no que al sindicato le dé igual el resultado (prefiere salarios altos y a la empresa sin beneficio), sino que a cada afiliado le da igual trabajar o no, porque está asegurado frente al riesgo de paro\nocite{Cahuc2014Labor}.
   \item Es la misma lógica que la de los contratos implícitos (\ref{sec:contratos-implicitos-modelo}).
@@ -641,16 +600,6 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \item \emph{La curva de contratos} (gráfico~\ref{fig:fuertemente-eficientes}): las tangencias entre isobeneficio e indiferencias horizontales están todas en $L^c$. Es \emph{vertical en el empleo competitivo, también con aversión al riesgo}, de $C$ ($\gamma=0$, $b=0$, $w=w^R$) a $F'$ ($\gamma=1$, beneficio nulo, $w=w^R+\big[A\,F(L^c)-w^R\,L^c\big]/\overline{L}$).
 \end{itemize}
 
-\begin{anotaciones}
-\textbf{Derivación del principio de indiferencia}
-\begin{itemize}
-\item El pago total a los afiliados es $T=w\,L+b\,(\overline{L}-L)$. Para $T$ dado, el reparto entre empleados y parados que maximiza $U_S$ cumple, con el multiplicador $\lambda$ de esa restricción,
-  $$\frac{L}{\overline{L}}\,u'(w)=\lambda\,L,\qquad \Big(1-\frac{L}{\overline{L}}\Big)\,u'(w^R+b)=\lambda\,\big(\overline{L}-L\big)\ \ \Longrightarrow\ \ u'(w)=u'(w^R+b)$$
-\item Como $u'$ es decreciente, $w=w^R+b$.
-\item Sustituyendo $b=w-w^R$ en $B$ de \eqref{eq:fuertemente-eficientes} sale el beneficio del texto, y diferenciándolo con $dB=0$, la pendiente \eqref{eq:isobeneficio-fe}.\findemo
-\end{itemize}
-\end{anotaciones}
-
 \begin{figure}[H]
 \centering
 \caption{Contratos fuertemente eficientes: indiferencias horizontales, isobeneficio con su máximo en $L^c$ y curva de contratos vertical}\label{fig:fuertemente-eficientes}
@@ -663,7 +612,7 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \begin{itemize}
 \item \emph{Empleo eficiente}: el empleo es siempre el competitivo, también con afiliados aversos al riesgo; no hay paro involuntario ni sobreempleo.
 \item \emph{El poder sindical solo redistribuye}: un $\gamma$ mayor sube el salario (y el seguro) y transfiere renta de la empresa a los afiliados, sin ineficiencias.
-\item \emph{Con derecho a gestionar}: \textcite{Booth1995Layoffs} llega al mismo resultado aunque la empresa decida el empleo. Si en la mesa están el salario y las indemnizaciones por despido, se asegura del todo a los trabajadores y el producto marginal iguala el coste de oportunidad del trabajo; por eso, con indemnizaciones negociadas, el derecho a gestionar y los contratos eficientes son difíciles de distinguir con datos.
+\item \emph{Con derecho a gestionar}: \textcite{Booth1995Layoffs} llega al mismo resultado aunque la empresa decida el empleo. Si en la mesa están el salario y las indemnizaciones por despido, se asegura del todo a los trabajadores y el producto marginal iguala el coste de oportunidad del trabajo. Por eso, con indemnizaciones negociadas, los datos apenas distinguen el derecho a gestionar de los contratos eficientes.
 \item \emph{Política económica}: el modelo sugiere que los mercados en que las prestaciones por desempleo se negocian con la empresa pueden ser más eficientes que aquellos en que las fija el Estado.
 \end{itemize}
 
@@ -704,7 +653,7 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \addlinespace[0.3em]
 \textbf{Paro involuntario} & sí & sí & no: empleo $\geq L^c$ & no: empleo $=L^c$\\
 \addlinespace[0.3em]
-\textbf{Rigidez ante un \emph{shock}} & sí, con demanda isoelástica & sí, con demanda isoelástica & el empleo no se mueve con $\gamma$ & el empleo no se mueve con $\gamma$\\
+\textbf{Rigidez ante un \emph{shock}} & sí, con demanda isoelástica & sí, con demanda isoelástica & no: se pactan de nuevo $w$ y $L$ & no: el empleo sigue en $L^c$\\
 \bottomrule
 \end{tabular}
 \fuente{elaboración propia a partir de \textcite[cap.~7]{Cahuc2014Labor} y \textcite{Booth1995Economics}.}
@@ -712,17 +661,12 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 
 \begin{itemize}
 \item \emph{¿Qué modelo describe la realidad?} Los convenios fijan salarios y condiciones de trabajo y casi nunca la plantilla; suelen durar varios años; el salario se negocia a menudo en el sector y el empleo se decide en la empresa, y después del salario. Todo eso se parece más al derecho a gestionar que a los contratos eficientes\nocite{Cahuc2014Labor}.
-\item \emph{Lo que dicen los datos}: los contrastes directos no dan un veredicto claro.
-  \begin{itemize}
-  \item Los que buscan si el empleo pactado depende del salario alternativo, como predicen los contratos eficientes y no el derecho a gestionar, dan resultados mixtos con los convenios de la imprenta estadounidense\nocite{MaCurdyPencavel1986Testing,BrownAshenfelter1986Testing}.
-  \item En bolsa, una subida salarial inesperada reduce el valor de la empresa en la misma cuantía en que aumenta lo que cobran los trabajadores: el salario reparte la renta, como en un contrato eficiente\nocite{Abowd1989Effect}.
-  \end{itemize}
+\item \emph{Lo que dicen los datos}: los contrastes directos entre los 2~modelos, con los convenios de la imprenta estadounidense y con la bolsa, no dan un veredicto claro (anexo~\ref{anexo:contrastes}).
 \item \emph{En lo que coinciden la teoría y la evidencia}: los sindicatos suben el salario de sus afiliados (la \emph{prima sindical}) y reducen la dispersión salarial, y su efecto sobre el empleo es ambiguo, porque depende de lo que se negocie\nocite{Cahuc2014Labor}.
 \item \emph{El caso español}:
   \begin{itemize}
   \item \emph{Cobertura}: el 92~\% de los asalariados con derecho a negociar está cubierto por un convenio, casi 3~veces la media de la OCDE (34~\%), aunque solo el 12,5~\% de los asalariados está afiliado a un sindicato\nocite{OCDE2026ICTWSSCobertura,OCDE2026ICTWSSAfiliacion}. La cifra depende de la definición: la OCDE solo cuenta en el denominador a los asalariados con derecho a negociar. La diferencia con la afiliación se debe a que los convenios obligan a todos los empresarios y trabajadores de su ámbito, estén o no afiliados\nocite{BOE2015ET}.
-  \item \emph{Salarios pactados}: los convenios registrados hasta septiembre de 2026 pactan para este año una subida media del 3,05~\%, algo menor en los de empresa (2,60~\%) que en los sectoriales (3,09~\%); en 2025 fue del 3,51~\%\nocite{MITES2026CCTSep}.
-  \item El nivel al que se negocia (empresa, sector o país) y sus efectos sobre el paro están en el anexo~\ref{anexo:centralizacion}, y la regulación española y sus reformas se estudian aparte \vertema{4.A.16}.
+  \item El nivel al que se negocia (empresa, sector o país) y sus efectos sobre el paro están en el anexo~\ref{anexo:centralizacion}, junto con la subida salarial que pactan los convenios, y la regulación española y sus reformas se estudian aparte \vertema{4.A.16}.
   \end{itemize}
 \end{itemize}
 
@@ -753,7 +697,7 @@ En el cante: la teoría de la negociación como herramienta (\tiempo{3}): el mon
 \minutos{10}
 
 \begin{notaopositor}
-En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1}); \autor{Solow} (\tiempo{2,5}): supuestos en una frase, el programa de la empresa, la condición de \autor{Solow} y el panel~a del gráfico~\ref{fig:solow-esfuerzo} (la función de esfuerzo en S y el rayo tangente), con las implicaciones y la crítica del largo plazo, que abre la puerta a \autor{Shapiro} y \autor{Stiglitz}; la extensión de \autor{Summers}, en una frase. \autor{Shapiro} y \autor{Stiglitz} (\tiempo{6,5}): los 3~estados de palabra, las 3~ecuaciones de valor, la condición de incentivos, la condición de no escaqueo paso a paso y el gráfico~\ref{fig:shapiro-stiglitz} por capas (demanda, oferta, $E^W$ con supervisión perfecta, la CNE con su zona sin escaqueo, y $E$ con supervisión imperfecta y el paro). Después, la estática comparativa en el orden del texto: más vigilancia, sin rotación y caída de la demanda, cada una con su gráfico; la tabla~\ref{tab:ss-estatica} de los parámetros, de apoyo. Luego las implicaciones, la evidencia (\autor{Ford}, \autor{Krueger} y \autor{Summers}, \autor{Bewley}) y la valoración. Se levanta el supuesto 2, con el refrán «lo barato sale caro». Las transiciones de \autor{Poisson}, las ecuaciones de valor desde un intervalo $dt$ y el bienestar están en el anexo~\ref{anexo:shapiro-stiglitz}.
+En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1}); \autor{Solow} (\tiempo{2,5}): supuestos en una frase, el programa de la empresa, la condición de \autor{Solow} y el panel~a del gráfico~\ref{fig:solow-esfuerzo} (la función de esfuerzo en S y el rayo tangente), con las implicaciones y la crítica del largo plazo, que abre la puerta a \autor{Shapiro} y \autor{Stiglitz}; la extensión de \autor{Summers}, en una frase. \autor{Shapiro} y \autor{Stiglitz} (\tiempo{6,5}): los 3~estados de palabra, las 3~ecuaciones de valor, la condición de incentivos, la condición de no escaqueo paso a paso y el gráfico~\ref{fig:shapiro-stiglitz} por capas (demanda, oferta, $E^W$ con supervisión perfecta, la CNE con su zona sin escaqueo, y $E$ con supervisión imperfecta y el paro). Después, la estática comparativa en el orden del texto: más vigilancia, sin rotación y caída de la demanda, cada una con su gráfico; la tabla~\ref{tab:ss-estatica} de los parámetros (anexo), de apoyo. Luego las implicaciones, la evidencia (\autor{Ford}, \autor{Krueger} y \autor{Summers}, \autor{Bewley}) y la valoración. Se levanta el supuesto 2, con el refrán «lo barato sale caro». El desarrollo de \autor{Summers}, las transiciones de \autor{Poisson}, las ecuaciones de valor desde un intervalo $dt$, la tabla de los parámetros y el bienestar están en el anexo~\ref{anexo:shapiro-stiglitz}.
 \end{notaopositor}
 
 \begin{itemize}
@@ -766,7 +710,7 @@ En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1});
 
 \begin{itemize}
 \item Los modelos de salarios de eficiencia, que se desarrollan sobre todo en los años 80\nocite{AkerlofYellen1986Efficiency}, comparten una idea: la productividad del trabajador depende del salario que se le paga. Un \concepto{salario de eficiencia} es el que la empresa paga, por decisión propia, por encima del de equilibrio walrasiano, porque la plantilla le devuelve en rendimiento más de lo que le cuesta la diferencia.
-\item Aparte del coste evidente de pagar un salario más alto, a la empresa le reporta beneficios. \textcite[cap.~11]{Romer2019Advanced} destaca 4~motivos:
+\item Un salario más alto cuesta más, pero también reporta beneficios a la empresa. \textcite[cap.~11]{Romer2019Advanced} destaca 4~motivos:
   \begin{enumerate}
   \item \emph{Teorías nutricionistas}\nocite{Leibenstein1957Theory}: en las economías pobres, un salario mayor mejora la alimentación y la salud del trabajador y, con ellas, su esfuerzo y su productividad.
   \item \emph{Supervisión imperfecta del esfuerzo}\nocite{ShapiroStiglitz1984Equilibrium}: si la empresa no observa bien el esfuerzo, un salario mayor incentiva a esforzarse, porque el trabajador al que descubren sin trabajar y despiden pierde más. Es un problema de riesgo moral \vertema{3.A.13}.
@@ -817,7 +761,7 @@ En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1});
   En el salario de eficiencia $w^*$, el esfuerzo responde al salario con elasticidad unitaria.
 \item \emph{Interpretación}: la empresa compra trabajo efectivo. Por cada trabajador paga $w$ y recibe $e(w)$ unidades de trabajo efectivo, así que el \concepto{coste por unidad de trabajo efectivo} es $w/e(w)$. Le conviene subir el salario mientras un 1~\% más de salario dé más de un 1~\% más de esfuerzo (el coste unitario baja) y dejar de subirlo cuando dé menos (el coste unitario sube). El salario de eficiencia es el que \emph{minimiza} $w/e(w)$.\footnote{La condición de segundo orden de ese mínimo es $e''(w^*)<0$: la función de esfuerzo tiene que ser cóncava en el óptimo. Si fuera cóncava desde el principio, con $e(0)>0$, el cociente $e(w)/w$ sería siempre decreciente y la empresa pagaría el salario más bajo posible: no habría salario de eficiencia (panel~b del gráfico~\ref{fig:solow-esfuerzo}).}
 \item \emph{Gráficamente} (gráfico~\ref{fig:solow-esfuerzo}): en el plano $(w,e)$, cada rayo desde el origen une los puntos con el mismo cociente $e/w$, mayor cuanto más empinado es el rayo. La empresa busca el rayo más empinado que toca la función de esfuerzo, y ese es el que le es \emph{tangente}: el punto de tangencia da $w^*$ y $e^*$.
-\item \emph{Empleo}: fijado $w^*$, la empresa contrata hasta que el producto marginal del trabajo efectivo iguala su coste, $A\,F'(e^*L)=w^*/e^*$. Es una demanda de trabajo convencional, medida en unidades de eficiencia, que da $L^*$ por empresa. Con $J$ empresas iguales, la demanda total es $J\,L^*$:
+\item \emph{Empleo}: fijado $w^*$, la empresa contrata hasta que el producto marginal del trabajo efectivo iguala su coste, $A\,F'(e^*L)=w^*/e^*$: una demanda de trabajo convencional, en unidades de eficiencia, que da $L^*$ por empresa. Con $J$ empresas iguales, la demanda total es $J\,L^*$:
   \begin{itemize}
   \item si $J\,L^*<\overline{L}$, el salario es $w^*$ y quedan $\overline{L}-J\,L^*$ parados;
   \item si $J\,L^*\geq\overline{L}$, las empresas se disputan a los trabajadores, el salario sube por encima de $w^*$ hasta vaciar el mercado y no hay paro.
@@ -842,18 +786,9 @@ En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1});
 \paragraph{c) Extensiones: el paro de equilibrio (\autor{Summers}, 1988)}
 
 \begin{itemize}
-\item Si el esfuerzo depende de cuánto mejor paga la empresa que la alternativa del trabajador, la rigidez deja de ser absoluta. \textcite{Summers1988Relative} propone que el esfuerzo dependa de la ventaja del salario $w$ sobre esa alternativa, $x$, que es el salario de las demás empresas, $w_a$, ponderado por la probabilidad de encontrar empleo, menor cuanto mayor es la tasa de paro $U$:
-  $$e=\Big(\frac{w-x}{x}\Big)^{\eta},\qquad x=(1-b\,U)\,w_a,\qquad 0<\eta<1,\ b>0$$
-  con $\eta$ y $b$ parámetros de este ejemplo.
-  \begin{itemize}
-  \item La condición de \autor{Solow} da $w=x/(1-\eta)$: cada empresa quiere pagar una prima sobre la alternativa.
-  \item Pero en equilibrio todas pagan lo mismo, $w=w_a$, y eso solo es compatible con una tasa de paro
-    \begin{equation}
-    U=\frac{\eta}{b} \label{eq:paro-summers}
-    \end{equation}
-    Con menos paro, a cada empresa le compensaría superar el salario de sus competidoras; esa puja encarece el trabajo y reduce el empleo hasta que el paro vuelve a $\eta/b$.
-  \end{itemize}
-\item \emph{Implicaciones}: el paro de equilibrio lo fijan los parámetros del esfuerzo, $\eta$ y $b$, y no la productividad, de modo que el crecimiento ya no lo hace desaparecer: acaba en el salario. Y basta una elasticidad pequeña para generar bastante paro: con $\eta=0{,}06$ y $b=1$, la tasa de paro de equilibrio es del 6~\%\nocite{Romer2019Advanced}. La relación entre el salario que fijan las empresas y el paro es, otra vez, una curva de fijación de salarios \vertema{3.A.28}.
+\item Si el esfuerzo depende de cuánto mejor paga la empresa que la alternativa del trabajador (el salario de las demás empresas, ponderado por la probabilidad de encontrar empleo), la rigidez deja de ser absoluta\nocite{Summers1988Relative}.
+\item Cada empresa quiere pagar una prima sobre esa alternativa, pero en equilibrio todas pagan lo mismo: eso solo es compatible con una tasa de paro que fijan los parámetros del esfuerzo, no la productividad (anexo~\ref{anexo:summers}).
+\item \emph{Implicaciones}: el crecimiento ya no hace desaparecer el paro, sino que acaba en el salario, y la relación entre el salario que fijan las empresas y el paro es, otra vez, una curva de fijación de salarios \vertema{3.A.28}.
 \end{itemize}
 
 \paragraph{d) Valoración}
@@ -884,7 +819,7 @@ En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1});
 \begin{itemize}
 \item \emph{Agentes}: en tiempo continuo, $\overline{L}$ trabajadores neutrales al riesgo que descuentan el futuro a la tasa $\rho$ y $J$ empresas idénticas. Se estudia el estado estacionario.
 \item \emph{Esfuerzo}: el trabajador elige esforzarse ($e=\overline{e}$, que le cuesta $\overline{e}$) o escaquearse ($e=0$). Su utilidad instantánea es $w-\overline{e}$ si está empleado y se esfuerza (estado E), $w$ si está empleado y se escaquea (estado S, del inglés \emph{shirking}) y 0~si está parado (estado U).
-\item \emph{Transiciones} entre los 3~estados (figura~\ref{figu:estados-ss}), todas como procesos de \autor{Poisson}, que no tienen memoria:
+\item \emph{Transiciones} entre los 3~estados (figura~\ref{figu:estados-ss}, en el anexo~\ref{anexo:ss-transiciones}), todas como procesos de \autor{Poisson}, que no tienen memoria:
   \begin{itemize}
   \item los empleos se destruyen por causas ajenas al trabajador a la \concepto{tasa de separación} $s$, exógena;
   \item a quien se escaquea lo descubren y lo despiden, además, a la \concepto{tasa de detección} $q$, exógena;
@@ -893,13 +828,6 @@ En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1});
 \item \emph{Empresas}: el beneficio es $B=A\,F(\overline{e}\,L)-w\,L$, con $L$ los empleados que se esfuerzan; quien se escaquea cobra y no produce, así que la empresa paga lo necesario para que nadie lo haga.
 \item \emph{Sin el problema de información habría pleno empleo}: con todos empleados, el producto marginal de un trabajador supera lo que le cuesta esforzarse, $A\,\overline{e}\,F'\big(\overline{e}\,\overline{L}/J\big)>\overline{e}$.
 \end{itemize}
-
-\begin{infografia}[H]
-\centering
-\caption{Los 3~estados del trabajador en el modelo de \autor{Shapiro} y \autor{Stiglitz} y las tasas de transición}\label{figu:estados-ss}
-\grafico[0.6\textwidth]{estados-ss}
-\fuente{elaboración propia a partir de \textcite{ShapiroStiglitz1984Equilibrium} y \textcite[cap.~11]{Romer2019Advanced}.}
-\end{infografia}
 
 \subparagraph{ii) Desarrollo}
 
@@ -1012,36 +940,9 @@ En el cante: la idea con los 4~motivos de \autor{Romer}, numerados (\tiempo{1});
 \end{figure}
 
 \begin{itemize}
-\item \emph{Cada parámetro, de un vistazo} (tabla~\ref{tab:ss-estatica}): lo que sube la CNE (esfuerzo más costoso, trabajadores más impacientes, más rotación, peor vigilancia, un subsidio de paro mayor) sube el salario y el paro; lo que mueve la demanda de trabajo desplaza el equilibrio a lo largo de la CNE.
+\item \emph{Cada parámetro, de un vistazo}: lo que sube la CNE (esfuerzo más costoso, trabajadores más impacientes, más rotación, peor vigilancia, un subsidio de paro mayor) sube el salario y el paro; lo que mueve la demanda de trabajo desplaza el equilibrio a lo largo de la CNE (tabla~\ref{tab:ss-estatica}, en el anexo~\ref{anexo:ss-estatica}).
 \end{itemize}
 
-\begin{table}[H]
-\centering
-\caption{Estática comparativa del modelo de \autor{Shapiro} y \autor{Stiglitz}}\label{tab:ss-estatica}
-\small
-\begin{tabular}{>{\raggedright\arraybackslash}m{4.4cm}>{\centering\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{3.2cm}}
-\toprule
-\rowcolor{tceeazulpalido}\textbf{Cambio} & \textbf{Qué curva se mueve} & \textbf{Salario $w^*$} & \textbf{Empleo y paro}\\
-\midrule
-Esfuerzo más costoso ($\overline{e}\uparrow$) & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
-\addlinespace[0.3em]
-Más impaciencia ($\rho\uparrow$) & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
-\addlinespace[0.3em]
-Más rotación ($s\uparrow$) & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
-\addlinespace[0.3em]
-Subsidio de paro mayor & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
-\addlinespace[0.3em]
-Más vigilancia ($q\uparrow$) & CNE, abajo & \textcolor{tceeverde}{baja} & \textcolor{tceeverde}{más empleo, menos paro}\\
-\addlinespace[0.3em]
-Sin rotación ($s=0$) & CNE, horizontal & no depende del empleo & todo el ajuste, en el empleo\\
-\addlinespace[0.3em]
-Caída de la demanda ($A\downarrow$) & demanda, a la izquierda & \textcolor{tceerojo}{baja algo} & \textcolor{tceerojo}{menos empleo, más paro}\\
-\addlinespace[0.3em]
-Subsidio salarial & demanda, a la derecha & \textcolor{tceeverde}{sube} & \textcolor{tceeverde}{más empleo, menos paro}\\
-\bottomrule
-\end{tabular}
-\fuente{elaboración propia a partir de \textcite{ShapiroStiglitz1984Equilibrium} y \textcite[cap.~11]{Romer2019Advanced}.}
-\end{table}
 
 \subparagraph{iii) Implicaciones}
 
@@ -1167,16 +1068,10 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
 \paragraph{Extensiones del modelo básico}
 
 \begin{itemize}
-\item \emph{Despidos}: si el trabajo es indivisible, en los estados malos el contrato despide a algunos trabajadores, elegidos al azar\nocite{Azariadis1975Implicit}. Si el contrato incluye una indemnización, los despedidos quedan igual que los que siguen, como en el principio de indiferencia de los contratos fuertemente eficientes (\ref{sec:contratos-eficientes}); si no la incluye, quedan peor: el paro es involuntario \emph{a posteriori}, aunque el contrato se aceptara voluntariamente \emph{a priori}\nocite{Rosen1985Implicit}.
-\item \emph{Información asimétrica}: si solo la empresa observa el estado, el seguro completo no se sostiene, porque a la empresa le convendría declarar siempre un estado malo para pagar menos. Para que le compense decir la verdad, el contrato tiene que hacerle costoso mentir, y eso distorsiona el empleo:
-  \begin{itemize}
-  \item hay \emph{subempleo} en los estados malos si la empresa es también aversa al riesgo\nocite{GrossmanHart1981Implicit,Azariadis1983Employment};
-  \item hay \emph{sobreempleo} si es neutral al riesgo y el ocio es un bien normal\nocite{GreenKahn1983Wage}.
-  \end{itemize}
-  \textcite{AzariadisStiglitz1983Implicit} resumen esta literatura.
+\item \emph{Despidos}: si el trabajo es indivisible, en los estados malos el contrato despide a algunos trabajadores; si no hay indemnización, quedan peor que los que siguen y el paro es involuntario \emph{a posteriori} (anexo~\ref{anexo:contratos-implicitos}).
+\item \emph{Información asimétrica}: si solo la empresa observa el estado, le convendría declarar siempre uno malo; el contrato que le hace decir la verdad distorsiona el empleo, con subempleo o sobreempleo según su actitud ante el riesgo (anexo~\ref{anexo:contratos-implicitos}).
 \item \emph{Esfuerzo no observable}: si el trabajador puede esforzarse menos sin que la empresa lo sepa, el seguro completo le quita los incentivos, y el contrato óptimo le deja parte del riesgo \vertema{3.A.13}.
-\item \emph{Autoexigibilidad}: como no se puede llevar a un juez, el contrato tiene que ser creíble. La empresa cumple porque, si no, pierde su reputación y le cuesta más contratar en el futuro, como en un juego repetido\nocite{Bull1987Existence} \vertema{3.A.14}. Y el trabajador puede irse cuando fuera le pagan más, así que el salario tiene que subir cuando el mercado se tensa, aunque no baje cuando se relaja.
-\item \emph{Otras variantes}: el seguro puede cubrir el empleo y no el salario, con pagos al trabajador que queda parado; y, si lo que se asegura es el consumo, el salario por hora se vuelve contracíclico, como acabamos de ver.
+\item \emph{Autoexigibilidad}: como no se puede llevar a un juez, el contrato tiene que ser creíble. La empresa cumple porque, si no, pierde su reputación y le cuesta más contratar en el futuro, como en un juego repetido\nocite{Bull1987Existence} \vertema{3.A.14}. El trabajador, por su parte, puede irse si fuera le pagan más: el salario tiene que subir cuando el mercado se tensa, aunque no baje cuando se relaja.
 \end{itemize}
 
 \paragraph{\emph{Insiders} y \emph{outsiders} (\autor{Lindbeck} y \autor{Snower}, 1988)}
@@ -1283,12 +1178,14 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
 \begin{itemize}
 \item \textbf{\emph{Recapitulación}}: En conclusión,
   \begin{itemize}
-  \item El salario no es un precio que se limite a vaciar el mercado de trabajo. Cada bloque de la exposición ha dado una razón, levantando un supuesto distinto del modelo neoclásico (tabla~\ref{tab:resumen-salarios}):
-  \item con \emph{negociación colectiva}, el poder del sindicato sube el salario: si solo se negocia el salario, lo hace a costa del empleo y deja paro involuntario; si se negocia también el empleo, el poder solo reparte la renta;
-  \item con \emph{salarios de eficiencia}, es la propia empresa la que paga más, porque así obtiene más esfuerzo, y el paro es lo que disciplina a los trabajadores;
-  \item con \emph{contratos implícitos}, el salario estable es un seguro: explica la rigidez, no el paro, que aparece cuando los \emph{insiders} fijan el salario pensando solo en ellos.
+  \item El salario no es un precio que se limite a vaciar el mercado de trabajo. Cada bloque ha dado una razón, levantando un supuesto distinto del modelo neoclásico (tabla~\ref{tab:resumen-salarios}):
+    \begin{itemize}
+    \item con \emph{negociación colectiva}, el poder del sindicato sube el salario: si solo se negocia el salario, lo hace a costa del empleo y deja paro involuntario; si se negocia también el empleo, el poder solo reparte la renta;
+    \item con \emph{salarios de eficiencia}, es la propia empresa la que paga más, porque así obtiene más esfuerzo, y el paro es lo que disciplina a los trabajadores;
+    \item con \emph{contratos implícitos}, el salario estable es un seguro: explica la rigidez, no el paro, que aparece cuando los \emph{insiders} fijan el salario pensando solo en ellos.
+    \end{itemize}
+  \item Los 3~bloques son microfundamentos de la curva de fijación de salarios: la negociación y la condición de no escaqueo le dan su pendiente (el salario sube cuando baja el paro), los contratos implícitos explican por qué el salario real se mueve poco con el ciclo y los \emph{insiders}, por qué arrastra la historia del paro \vertema{3.A.28}.
   \end{itemize}
-  Los 3~bloques son microfundamentos de la curva de fijación de salarios: la negociación y la condición de no escaqueo le dan su pendiente (el salario sube cuando baja el paro), los contratos implícitos explican por qué el salario real se mueve poco con el ciclo y los \emph{insiders}, por qué arrastra la historia del paro \vertema{3.A.28}.
   \begin{table}[H]
   \centering
   \caption{Las explicaciones de la rigidez salarial, comparadas}\label{tab:resumen-salarios}
@@ -1352,7 +1249,26 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
 \appendix
 
 % ==========================================================================
-\section{Anexo: derivaciones de la negociación colectiva\cortetitulo{} y contratos eficientes}\label{anexo:contratos-eficientes}
+\section{Anexo: derivaciones y evidencia\cortetitulo{} de los modelos de negociación}\label{anexo:contratos-eficientes}
+
+\subsection{El reparto de \autor{Nash} con utilidad transferible}\label{anexo:nash-transferible}
+
+\begin{itemize}
+\item Con $B=\Pi-U_S$, y tomando logaritmos, el problema es maximizar $\gamma\ln\big(U_S-U_S^0\big)+(1-\gamma)\ln\big(\Pi-U_S-B^0\big)$.
+\item La condición de primer orden es $\gamma/\big(U_S-U_S^0\big)=(1-\gamma)/\big(\Pi-U_S-B^0\big)$.
+\item Despejando $U_S$ sale \eqref{eq:nash-transferible}.\findemo
+\end{itemize}
+
+\subsection{Del juego de \autor{Rubinstein} a la solución de \autor{Nash}}\label{anexo:rubinstein-nash}
+
+\begin{itemize}
+\item De \eqref{eq:rubinstein}, la empresa se lleva $1-x^*=\beta_B\,(1-\beta_S)/(1-\beta_S\,\beta_B)$.
+\item Si el tiempo entre ofertas es $\Delta$ y $\beta_i=e^{-\rho_i\Delta}\approx 1-\rho_i\Delta$,
+  $$x^*\approx\frac{\rho_B\,\Delta}{\rho_S\,\Delta+\rho_B\,\Delta-\rho_S\,\rho_B\,\Delta^2}\ \xrightarrow[\Delta\to 0]{}\ \frac{\rho_B}{\rho_S+\rho_B}$$
+  y la ventaja de proponer primero desaparece.
+\item La solución de \autor{Nash} generalizada con $U_S=x$, $B=1-x$ y desacuerdo $(0,0)$ maximiza $x^{\gamma}(1-x)^{1-\gamma}$. Su condición de primer orden, $\gamma/x=(1-\gamma)/(1-x)$, da $x=\gamma$.
+\item Por tanto, el límite de \autor{Rubinstein} es la solución de \autor{Nash} con el $\gamma$ de \eqref{eq:gamma-paciencia}.\findemo
+\end{itemize}
 
 \subsection{El sindicato monopolista}\label{anexo:dunlop}
 
@@ -1365,6 +1281,30 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
   Sustituyendo en la regla de margen, $w^S\,\alpha=w^R$, es decir, $w^S=w^R/\alpha$, que no depende de $A$. El empleo, $L^D(w^S)=\big(\alpha^2A/w^R\big)^{1/(1-\alpha)}$, sí: es proporcional a $A^{1/(1-\alpha)}$. Un \emph{shock} de productividad lo absorbe entero el empleo.\findemo
 \item \emph{El límite de $\overline{L}$}. Si un \emph{shock} positivo lleva la demanda a emplear a más de $\overline{L}$ al salario $w^S$, la restricción $L^D(w)\leq\overline{L}$ se satura: al sindicato no le sirve más empleo y sube el salario hasta $w=A\,F'(\overline{L})$. Solo entonces el salario responde al \emph{shock}.
 \end{itemize}
+
+\subsection{La rigidez del sindicato monopolista con demanda isoelástica}\label{anexo:dunlop-rigidez}
+
+\begin{itemize}
+\item \emph{La demanda de trabajo}. Con $Y=A\,L^{\alpha}$, la empresa iguala el producto marginal al salario, $\alpha\,A\,L^{\alpha-1}=w$, y su demanda es
+  $$L^D(w)=\Big(\frac{\alpha\,A}{w}\Big)^{\frac{1}{1-\alpha}},\qquad |\varepsilon_{L^D,w}|=\frac{1}{1-\alpha}$$
+  La elasticidad no depende ni de $A$ ni de $w$: la demanda es \emph{isoelástica}.
+\item \emph{El salario del sindicato}. Con afiliados neutrales al riesgo, la condición \eqref{eq:dunlop} queda $(w-w^R)/w=1-\alpha$, es decir,
+  $$w^S=\frac{1}{\alpha}\,w^R$$
+  un \emph{margen} constante, $1/\alpha>1$, sobre el salario de reserva, como el margen de un monopolista sobre su coste marginal.
+\item \emph{Ante cambios en la demanda} (gráfico~\ref{fig:sindicato-monopolista-rigidez}): una productividad o una demanda del producto mayores, $A_1<A_2<A_3$, desplazan la demanda de trabajo a la derecha, pero no cambian su elasticidad.
+  \begin{itemize}
+  \item El sindicato sigue eligiendo el mismo salario, $w^S$, y solo cambia el empleo: $E_1$, $E_2$ y $E_3$ están a la misma altura.
+  \item Es una \emph{rigidez real}: el salario no responde a la demanda y el empleo absorbe todo el ajuste.
+  \item La rigidez dura mientras haya afiliados sin empleo. Cuando la demanda llega a emplear a todos ($E_3$, en $\overline{L}$), más empleo ya no le sirve al sindicato, y con $A_4$ sube el salario ($E_4$).
+  \end{itemize}
+\item Con aversión al riesgo pasa lo mismo: en \eqref{eq:dunlop} no aparece $A$, y el salario solo depende de $w^R$ y de $\alpha$.
+\end{itemize}
+\begin{figure}[H]
+\centering
+\caption{Sindicato monopolista con demanda isoelástica: el salario no cambia con la demanda hasta emplear a todos los afiliados}\label{fig:sindicato-monopolista-rigidez}
+\grafico[0.75\textwidth]{sindicato-monopolista-rigidez}
+\fuente{elaboración propia a partir de \textcite{Dunlop1944Wage} y \textcite{Booth1995Economics}.}
+\end{figure}
 
 \subsection{El derecho a gestionar}\label{anexo:derecho-gestionar}
 
@@ -1392,10 +1332,54 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
 \item \emph{Extremos}. Con $\gamma=0$ el acuerdo es $C$, con $w=w^R$ y $L=L^c$. Con $\gamma=1$ es $F$, donde la empresa se queda sin beneficio, $A\,F(L)-w\,L=0$, y el salario es el producto medio, $w=A\,F(L)/L$. Al llegar a $L=\overline{L}$ (punto $D$), la curva sigue vertical hasta $F$, porque al sindicato ya no le sirve más empleo.\findemo
 \end{itemize}
 
-% ==========================================================================
-\section{Anexo: el modelo de \autor{Shapiro} y \autor{Stiglitz}: transiciones, valores y bienestar}\label{anexo:shapiro-stiglitz}
+\subsection{El principio de indiferencia}\label{anexo:indiferencia}
 
-\subsection{Las transiciones}\label{anexo:ss-transiciones}
+\begin{itemize}
+\item El pago total a los afiliados es $T=w\,L+b\,(\overline{L}-L)$. Para $T$ dado, el reparto entre empleados y parados que maximiza $U_S$ cumple, con el multiplicador $\lambda$ de esa restricción,
+  $$\frac{L}{\overline{L}}\,u'(w)=\lambda\,L,\qquad \Big(1-\frac{L}{\overline{L}}\Big)\,u'(w^R+b)=\lambda\,\big(\overline{L}-L\big)\ \ \Longrightarrow\ \ u'(w)=u'(w^R+b)$$
+\item Como $u'$ es decreciente, $w=w^R+b$.
+\item Sustituyendo $b=w-w^R$ en $B$ de \eqref{eq:fuertemente-eficientes} sale el beneficio del texto, y diferenciándolo con $dB=0$, la pendiente \eqref{eq:isobeneficio-fe}.\findemo
+\end{itemize}
+
+\subsection{Los contrastes entre modelos}\label{anexo:contrastes}
+
+\begin{itemize}
+\item Los contrastes directos entre el derecho a gestionar y los contratos eficientes no dan un veredicto claro (\ref{sec:negociacion-practica}).
+  \begin{itemize}
+  \item Los que buscan si el empleo pactado depende del salario alternativo, como predicen los contratos eficientes y no el derecho a gestionar, dan resultados mixtos con los convenios de la imprenta estadounidense\nocite{MaCurdyPencavel1986Testing,BrownAshenfelter1986Testing}.
+  \item En bolsa, una subida salarial inesperada reduce el valor de la empresa en la misma cuantía en que aumenta lo que cobran los trabajadores: el salario reparte la renta, como en un contrato eficiente\nocite{Abowd1989Effect}.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: los salarios de eficiencia en detalle}\label{anexo:shapiro-stiglitz}
+
+\subsection{La extensión de \autor{Summers} (1988): el paro de equilibrio}\label{anexo:summers}
+
+\begin{itemize}
+\item \textcite{Summers1988Relative} propone que el esfuerzo dependa de la ventaja del salario $w$ sobre la alternativa del trabajador, $x$, que es el salario de las demás empresas, $w_a$, ponderado por la probabilidad de encontrar empleo, menor cuanto mayor es la tasa de paro $U$:
+  $$e=\Big(\frac{w-x}{x}\Big)^{\eta},\qquad x=(1-b\,U)\,w_a,\qquad 0<\eta<1,\ b>0$$
+  con $\eta$ y $b$ parámetros de este ejemplo.
+  \begin{itemize}
+  \item La condición de \autor{Solow} da $w=x/(1-\eta)$: cada empresa quiere pagar una prima sobre la alternativa.
+  \item Pero en equilibrio todas pagan lo mismo, $w=w_a$, y eso solo es compatible con una tasa de paro
+    \begin{equation}
+    U=\frac{\eta}{b} \label{eq:paro-summers}
+    \end{equation}
+    Con menos paro, a cada empresa le compensaría superar el salario de sus competidoras; esa puja encarece el trabajo y reduce el empleo hasta que el paro vuelve a $\eta/b$.
+  \end{itemize}
+\item \emph{Implicaciones}: el paro de equilibrio lo fijan los parámetros del esfuerzo, $\eta$ y $b$, y no la productividad, de modo que el crecimiento ya no lo hace desaparecer: acaba en el salario. Y basta una elasticidad pequeña para generar bastante paro: con $\eta=0{,}06$ y $b=1$, la tasa de paro de equilibrio es del 6~\%\nocite{Romer2019Advanced}.
+\end{itemize}
+
+\subsection{El modelo de \autor{Shapiro} y \autor{Stiglitz}: las transiciones}\label{anexo:ss-transiciones}
+
+\begin{infografia}[H]
+\centering
+\caption{Los 3~estados del trabajador en el modelo de \autor{Shapiro} y \autor{Stiglitz} y las tasas de transición}\label{figu:estados-ss}
+\grafico[0.6\textwidth]{estados-ss}
+\fuente{elaboración propia a partir de \textcite{ShapiroStiglitz1984Equilibrium} y \textcite[cap.~11]{Romer2019Advanced}.}
+\end{infografia}
+
 
 \begin{itemize}
 \item \emph{Procesos de \autor{Poisson}}. Las separaciones siguen un proceso de \autor{Poisson} de tasa $s$: si un trabajador que se esfuerza está empleado hoy, la probabilidad de que lo siga estando dentro de un tiempo $\tau$ es $e^{-s\tau}$, que no depende de cuánto lleve en el puesto (el proceso no tiene memoria), y en un intervalo corto $dt$ pierde el empleo con probabilidad $s\,dt$.
@@ -1418,6 +1402,40 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
   Ninguna empresa quiere pagar más, porque consigue todos los trabajadores que quiere al salario $w^*$ y estos se esfuerzan; ni menos, porque se escaquearían\nocite{ShapiroStiglitz1984Equilibrium}.
 \end{itemize}
 
+\subsection{La estática comparativa, parámetro a parámetro}\label{anexo:ss-estatica}
+
+\begin{itemize}
+\item La tabla~\ref{tab:ss-estatica} resume cómo mueve cada parámetro la CNE o la demanda de trabajo, y con ellas el salario y el paro de equilibrio (gráficos~\ref{fig:shapiro-stiglitz-vigilancia} a~\ref{fig:shapiro-stiglitz-demanda}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Estática comparativa del modelo de \autor{Shapiro} y \autor{Stiglitz}}\label{tab:ss-estatica}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.4cm}>{\centering\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{3.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Cambio} & \textbf{Qué curva se mueve} & \textbf{Salario $w^*$} & \textbf{Empleo y paro}\\
+\midrule
+Esfuerzo más costoso ($\overline{e}\uparrow$) & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
+\addlinespace[0.3em]
+Más impaciencia ($\rho\uparrow$) & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
+\addlinespace[0.3em]
+Más rotación ($s\uparrow$) & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
+\addlinespace[0.3em]
+Subsidio de paro mayor & CNE, arriba & \textcolor{tceerojo}{sube} & \textcolor{tceerojo}{menos empleo, más paro}\\
+\addlinespace[0.3em]
+Más vigilancia ($q\uparrow$) & CNE, abajo & \textcolor{tceeverde}{baja} & \textcolor{tceeverde}{más empleo, menos paro}\\
+\addlinespace[0.3em]
+Sin rotación ($s=0$) & CNE, horizontal & no depende del empleo & todo el ajuste, en el empleo\\
+\addlinespace[0.3em]
+Caída de la demanda ($A\downarrow$) & demanda, a la izquierda & \textcolor{tceerojo}{baja algo} & \textcolor{tceerojo}{menos empleo, más paro}\\
+\addlinespace[0.3em]
+Subsidio salarial & demanda, a la derecha & \textcolor{tceeverde}{sube} & \textcolor{tceeverde}{más empleo, menos paro}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{ShapiroStiglitz1984Equilibrium} y \textcite[cap.~11]{Romer2019Advanced}.}
+\end{table}
+
 \subsection{Bienestar y política económica}\label{anexo:ss-bienestar}
 
 \begin{itemize}
@@ -1425,6 +1443,20 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
 \item \emph{Cómo se alcanza}: gravando los beneficios puros y usando lo recaudado para subvencionar los salarios. La subvención desplaza la demanda de trabajo hacia arriba, a lo largo de la CNE. Con rendimientos constantes a escala, el producto marginal es igual al medio y el equilibrio ya es óptimo.
 \item \emph{Por qué el equilibrio tiene demasiado paro}: cada empresa ve como coste de un trabajador más el salario, $w$, cuando para la sociedad es solo el esfuerzo, $\overline{e}$. Hay un efecto contrario, porque al contratar reduce la bolsa de parados y obliga a las demás a pagar más, pero en el modelo sencillo pesa menos\nocite{ShapiroStiglitz1984Equilibrium}.
 \item \emph{Eficiencia y reparto}. Si trabajadores y propietarios son personas distintas, la subvención baja los beneficios y deja de ser una mejora en el sentido de \autor{Pareto}: el equilibrio es óptimo de \autor{Pareto} aunque no maximice el producto. Que lo sea o no depende del reparto de la riqueza, y no se cumple la separación habitual entre eficiencia y distribución\nocite{ShapiroStiglitz1984Equilibrium}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: extensiones de los contratos implícitos}\label{anexo:contratos-implicitos}
+
+\begin{itemize}
+\item \emph{Despidos}: si el trabajo es indivisible, en los estados malos el contrato despide a algunos trabajadores, elegidos al azar\nocite{Azariadis1975Implicit}. Si el contrato incluye una indemnización, los despedidos quedan igual que los que siguen, como en el principio de indiferencia de los contratos fuertemente eficientes (\ref{sec:fuertemente-eficientes}); si no la incluye, quedan peor: el paro es involuntario \emph{a posteriori}, aunque el contrato se aceptara voluntariamente \emph{a priori}\nocite{Rosen1985Implicit}.
+\item \emph{Información asimétrica}: si solo la empresa observa el estado, el seguro completo no se sostiene, porque a la empresa le convendría declarar siempre un estado malo para pagar menos. Para que le compense decir la verdad, el contrato tiene que hacerle costoso mentir, y eso distorsiona el empleo:
+  \begin{itemize}
+  \item hay \emph{subempleo} en los estados malos si la empresa es también aversa al riesgo\nocite{GrossmanHart1981Implicit,Azariadis1983Employment};
+  \item hay \emph{sobreempleo} si es neutral al riesgo y el ocio es un bien normal\nocite{GreenKahn1983Wage}.
+  \end{itemize}
+  \textcite{AzariadisStiglitz1983Implicit} resumen esta literatura.
+\item \emph{Otras variantes}: el seguro puede cubrir el empleo y no el salario, con pagos al trabajador que queda parado; y, si lo que se asegura es el consumo, el salario por hora se vuelve contracíclico, como en las implicaciones del modelo básico (\ref{sec:contratos-implicitos-modelo}).
 \end{itemize}
 
 % ==========================================================================
@@ -1463,13 +1495,14 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
 
 \begin{itemize}
 \item \emph{Un modelo para España}. Con un modelo de búsqueda y emparejamiento y \emph{shocks} de productividad propios de cada empresa, \textcite{JimenoThomas2013Collective} encuentran que la negociación sectorial da un paro unos 5~puntos mayor que la de empresa en su calibración, porque impone a todas las empresas un salario que no tiene en cuenta su situación: se crean menos empleos y se destruyen más\nocite{JimenoThomas2011Collective}. Basta permitir que las empresas en dificultades pacten con sus trabajadores descolgarse del convenio sectorial para eliminar esa diferencia; sin esa vía, el ajuste se hace despidiendo.
-\item \emph{Las propuestas}. Es el diagnóstico de la propuesta de reforma laboral que un centenar de economistas publicó en 2009, que pedía más peso para los convenios de empresa, cláusulas de descuelgue y una coordinación que ligara los salarios a la productividad\nocite{FEDEA2009Propuesta}.
+\item \emph{Las propuestas}. Es el diagnóstico de la propuesta de reforma laboral que un centenar de economistas publicó en 2009: una negociación colectiva muy rígida, demasiado centralizada en unos casos y poco coordinada en otros, que dificulta adaptar las condiciones de trabajo a cada empresa y frena la productividad. Proponía que los acuerdos de empresa pudieran prevalecer sobre los convenios de ámbito superior\nocite{FEDEA2009Propuesta}.
 \item \emph{Las reformas}.
   \begin{itemize}
   \item La reforma de 2012 siguió esa lógica: dio prioridad al convenio de empresa sobre el sectorial en la cuantía del salario, limitó a un año la prórroga de los convenios denunciados (la ultraactividad) y facilitó el descuelgue por causas económicas\nocite{BOE2012Ley3}.
   \item La de 2021 dio marcha atrás en parte: el convenio sectorial vuelve a mandar en los salarios y los convenios denunciados siguen vigentes hasta que se firme otro, aunque se mantiene el descuelgue\nocite{BOE2021RDL32,BOE2015ET}. Sus efectos se estudian aparte \vertema{4.A.16}.
   \end{itemize}
-\item \emph{Los datos}. La negociación sigue siendo sobre todo sectorial: en 2025, solo el 7,4~\% de los trabajadores con convenio lo tenía de empresa o de grupo de empresas, frente al 10,7~\% de 2013. Y el descuelgue se usa poco: 295~inaplicaciones, con 13\,723 trabajadores, entre enero y septiembre de 2026, frente a 2\,512 y casi 160\,000 en todo 2013\nocite{MITES2026CCTSep,MITES2026CCT2025}.
+\item \emph{Salarios pactados}: los convenios registrados hasta octubre de 2026 pactan para este año una subida media del 3,06~\%, algo menor en los de empresa (2,61~\%) que en los sectoriales (3,10~\%); en 2025 fue del 3,51~\%\nocite{MITES2026CCTOct}.
+\item \emph{Los datos}. La negociación sigue siendo sobre todo sectorial: en 2025, solo el 7,5~\% de los trabajadores con convenio lo tenía de empresa o de grupo de empresas, frente al 10,7~\% de 2013. Y el descuelgue se usa poco: 307~inaplicaciones, con 14\,812 trabajadores, entre enero y octubre de 2026, frente a 2\,512 y casi 160\,000 en todo 2013\nocite{MITES2026CCTOct,MITES2026CCT2025}.
 \item En una unión monetaria, donde el tipo de cambio ya no ajusta, la forma de negociar decide cómo responden los salarios a los \emph{shocks} asimétricos \vertema{3.B.16}.
 \end{itemize}
 
@@ -1478,7 +1511,7 @@ En el cante: la idea en una frase (\tiempo{0,5}); el modelo (\tiempo{2}): supues
 \begin{itemize}
 \item \emph{OCDE}: el 92,1~\% de los asalariados \emph{con derecho a negociar} en 2024, frente a una media de la OCDE del 33,6~\%\nocite{OCDE2026ICTWSSCobertura}. Es el dato de la introducción y de la valoración de la negociación (\ref{sec:negociacion-practica}).
 \item \emph{OIT}: el 80,1~\% en 2018, su último año para España, con los trabajadores con convenio sobre los asalariados de la Encuesta de Población Activa\nocite{OIT2026ILOSTATSindicatos}.
-\item \emph{Cociente con los convenios registrados}: unos 13,1~millones de trabajadores con convenio con efectos económicos en 2024 sobre 19,0~millones de asalariados de la contabilidad nacional, el 69~\%\nocite{MITES2026CCTSep,Eurostat2026NamaPe}. Se queda corto, porque solo cuenta los convenios con efectos económicos registrados.
+\item \emph{Cociente con los convenios registrados}: unos 13,1~millones de trabajadores con convenio con efectos económicos en 2024 sobre 19,0~millones de asalariados de la contabilidad nacional, el 69~\%\nocite{MITES2026CCTOct,Eurostat2026NamaPe}. Se queda corto, porque solo cuenta los convenios con efectos económicos registrados.
 \end{itemize}
 La afiliación sindical es mucho menor, el 12,5~\% de los asalariados en 2023\nocite{OCDE2026ICTWSSAfiliacion}: los convenios obligan a todos los empresarios y trabajadores de su ámbito, estén o no afiliados\nocite{BOE2015ET}.
 \end{anotaciones}
@@ -1491,18 +1524,27 @@ Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarco
 \end{anotaciones}
 
 \begin{itemize}
-\item \emph{\autor{Hicks} (1932)}: curva de concesión de la empresa (creciente con la duración de la huelga) y curva de resistencia del sindicato (decreciente); con información completa, las huelgas son solo potenciales. \autor{Edgeworth} (1881) es el precursor: la curva de contrato deja el reparto indeterminado.
-\item \emph{Nash generalizada con utilidad transferible}: cada parte recibe su punto de desacuerdo más su cuota del excedente, $\gamma$ el sindicato y $1-\gamma$ la empresa; con los 4~axiomas, $\gamma=\tfrac{1}{2}$. Los axiomas: eficiencia, simetría, invariancia a transformaciones \emph{afines} positivas e independencia de las alternativas irrelevantes.
-\item \emph{\autor{Rubinstein}}: horizonte \emph{infinito}, único ENPS, acuerdo inmediato, $x^*=(1-\beta_B)/(1-\beta_S\beta_B)$ para quien propone primero; en el límite, $\gamma=\rho_B/(\rho_S+\rho_B)$ (gana el más paciente).
-\item \emph{Sindicato monopolista}: sobre la demanda de trabajo; con neutralidad, $w^S\big(1-1/|\varepsilon_{L^D,w}|\big)=w^R$, y con Cobb-Douglas, $w^S=w^R/\alpha$, que no depende de la productividad. Equilibrio perfecto en subjuegos, pero no óptimo de \autor{Pareto}.
-\item \emph{Derecho a gestionar}: sobre la demanda; $w=(1-\gamma)\,w^R+\gamma\,w^S$ con Cobb-Douglas y neutralidad; ineficiente salvo con $\gamma=0$.
-\item \emph{Contratos eficientes}: fuera de la demanda; curva de contratos vertical en $L^c$ con neutralidad y creciente con aversión al riesgo (sobreempleo); con un seguro de paro negociado, vertical también con aversión (fuertemente eficientes).
-\item \emph{Salarios de eficiencia}: 4~motivos según \autor{Romer}: nutrición (\autor{Leibenstein}), supervisión imperfecta (\autor{Shapiro} y \autor{Stiglitz}), atraer a los más hábiles (\autor{Weiss}) y lealtad (\autor{Akerlof} y \autor{Yellen}).
-\item \emph{\autor{Solow}}: el salario de eficiencia minimiza $w/e(w)$ y cumple $\varepsilon_{e,w}=1$; no depende de la productividad ni de la demanda de trabajo.
-\item \emph{\autor{Shapiro} y \autor{Stiglitz}}: $w=\overline{e}+\big(\rho+s/U\big)\,\overline{e}/q$; sube con $\overline{e}$, $\rho$ y $s$ y baja con $q$ y con el paro; sin paro no hay salario que disuada; con $s=0$, la CNE es horizontal; con $q\to\infty$, se llega al equilibrio walrasiano; una caída de la demanda mueve sobre todo el empleo.
-\item \emph{Contratos implícitos}: renta constante en todos los estados (seguro completo) y empleo eficiente en cada uno; rigidez salarial sin paro involuntario.
-\item \emph{Insiders}: $w_I\leq w_O+c_D+c_C$; explican el paro involuntario, la histéresis y la dualidad.
-\item \emph{\autor{Calmfors} y \autor{Driffill}}: peores resultados con negociación sectorial (joroba); la evidencia posterior da más peso a la coordinación.
+\item \textbf{Modelos de negociación (bloque~\ref{sec:negociacion})}:
+  \begin{itemize}
+  \item \emph{\autor{Hicks} (1932)}: curva de concesión de la empresa (creciente con la duración de la huelga) y curva de resistencia del sindicato (decreciente); con información completa, las huelgas son solo potenciales. \autor{Edgeworth} (1881) es el precursor: la curva de contrato deja el reparto indeterminado.
+  \item \emph{Nash generalizada con utilidad transferible}: cada parte recibe su punto de desacuerdo más su cuota del excedente, $\gamma$ el sindicato y $1-\gamma$ la empresa; con los 4~axiomas, $\gamma=\tfrac{1}{2}$. Los axiomas: eficiencia, simetría, invariancia a transformaciones \emph{afines} positivas e independencia de las alternativas irrelevantes.
+  \item \emph{\autor{Rubinstein}}: horizonte \emph{infinito}, único ENPS, acuerdo inmediato, $x^*=(1-\beta_B)/(1-\beta_S\beta_B)$ para quien propone primero; en el límite, $\gamma=\rho_B/(\rho_S+\rho_B)$ (gana el más paciente).
+  \item \emph{Sindicato monopolista}: sobre la demanda de trabajo; con neutralidad, $w^S\big(1-1/|\varepsilon_{L^D,w}|\big)=w^R$, y con Cobb-Douglas, $w^S=w^R/\alpha$, que no depende de la productividad. Equilibrio perfecto en subjuegos, pero no óptimo de \autor{Pareto}.
+  \item \emph{Derecho a gestionar}: sobre la demanda; $w=(1-\gamma)\,w^R+\gamma\,w^S$ con Cobb-Douglas y neutralidad; ineficiente salvo con $\gamma=0$.
+  \item \emph{Contratos eficientes}: fuera de la demanda; curva de contratos vertical en $L^c$ con neutralidad y creciente con aversión al riesgo (sobreempleo); con un seguro de paro negociado, vertical también con aversión (fuertemente eficientes).
+  \end{itemize}
+\item \textbf{Salarios de eficiencia (bloque~\ref{sec:eficiencia})}:
+  \begin{itemize}
+  \item \emph{Los 4~motivos de \autor{Romer}}: nutrición (\autor{Leibenstein}), supervisión imperfecta (\autor{Shapiro} y \autor{Stiglitz}), atraer a los más hábiles (\autor{Weiss}) y lealtad (\autor{Akerlof} y \autor{Yellen}).
+  \item \emph{\autor{Solow}}: el salario de eficiencia minimiza $w/e(w)$ y cumple $\varepsilon_{e,w}=1$; no depende de la productividad ni de la demanda de trabajo.
+  \item \emph{\autor{Shapiro} y \autor{Stiglitz}}: $w=\overline{e}+\big(\rho+s/U\big)\,\overline{e}/q$; sube con $\overline{e}$, $\rho$ y $s$ y baja con $q$ y con el paro; sin paro no hay salario que disuada; con $s=0$, la CNE es horizontal; con $q\to\infty$, se llega al equilibrio walrasiano; una caída de la demanda mueve sobre todo el empleo.
+  \end{itemize}
+\item \textbf{Contratos implícitos y nivel de negociación (bloque~\ref{sec:contratos-implicitos} y anexo~\ref{anexo:centralizacion})}:
+  \begin{itemize}
+  \item \emph{Contratos implícitos}: renta constante en todos los estados (seguro completo) y empleo eficiente en cada uno; rigidez salarial sin paro involuntario.
+  \item \emph{Insiders}: $w_I\leq w_O+c_D+c_C$; explican el paro involuntario, la histéresis y la dualidad.
+  \item \emph{\autor{Calmfors} y \autor{Driffill}}: peores resultados con negociación sectorial (joroba); la evidencia posterior da más peso a la coordinación.
+  \end{itemize}
 \end{itemize}
 
 % Lecturas y fuentes del tema original sin cita en el texto
