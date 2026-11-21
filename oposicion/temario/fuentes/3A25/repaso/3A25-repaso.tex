@@ -66,7 +66,7 @@
 Con competencia y salarios flexibles, el mercado se vacía: el salario real iguala la valoración marginal del ocio y la productividad marginal del trabajo; no hay paro involuntario salvo con salario mínimo.
 \end{ideaclave}
 \begin{itemize}
-\item \textbf{8 supuestos} (y dónde se levantan): 1~racionalidad; 2~información perfecta (\autor{Spence}; \vertema{3.A.26} \vertema{3.A.27}); 3~trabajo homogéneo (\hyperref[rep:III]{III}); 4~precio-aceptación (monopsonio, sindicatos); 5~libre participación; 6~salarios flexibles (salario mínimo; \vertema{3.A.28}); 7~movilidad sin costes (formación específica, \emph{insiders}); 8~sin externalidades \vertema{3.A.44}.
+\item \textbf{8 supuestos} (y dónde se levantan): 1~racionalidad; 2~información perfecta (\autor{Spence}; \vertema{3.A.26} \vertema{3.A.27}); 3~trabajo homogéneo (\hyperref[rep:III]{III}); 4~precio-aceptación (monopsonio, sindicatos); 5~libre participación; 6~salarios flexibles (salario mínimo; \vertema{3.A.27} \vertema{3.A.28}); 7~movilidad sin costes (formación específica, \emph{insiders}); 8~sin externalidades \vertema{3.A.44}.
 \end{itemize}
 
 \sub{I.1. Oferta de trabajo\label{rep:I.1}}
@@ -178,7 +178,7 @@ Con competencia y salarios flexibles, el mercado se vacía: el salario real igua
   \item Existencia; unicidad y estabilidad no garantizadas (oferta hacia atrás) \vertema{3.A.21}.
   \item Sin \concepto{paro involuntario} (sí \emph{voluntario}, $w^R>w^c$); eficiente (1TFEB) \vertema{3.A.22}.
   \end{itemize}
-\item \autor{Marshall}: equilibrio \emph{temporal} (oferta fija, sube solo $w$) y \emph{normal} (entra oferta: ↑$L$, $w$ baja algo).
+\item \emph{Estática comparativa}: ↑productividad $\Rightarrow$ la demanda se desplaza: ↑$w$ y, si la oferta crece, ↑$L$.
 \item \concepto{Salario mínimo} $\underline{w}>w^c$: manda el lado corto; paro involuntario $L^S(\underline{w})-L^D(\underline{w})$, el único del modelo.
 \end{itemize}
 \pareja{oferta-individual}{Oferta individual: $w^R$ y tramo hacia atrás}{equilibrio-trabajo}{Equilibrio y salario mínimo: paro involuntario}
@@ -214,13 +214,13 @@ Se trabaja más cuando trabajar compensa más: los cambios transitorios del sala
 \end{itemize}
 
 \sub{II.2. Modelo\label{rep:II.2}}
-\subsub{a) Supuestos}
+\subsub{i) Supuestos}
 \begin{itemize}
 \item Infinitos periodos, sin incertidumbre; $U$ separable, $\beta=1/(1+\rho)$; $O_t+L_t=1$; $w_t$, $\overline{W}_t$ conocidos; activos $b_t$ a $r$.
 \end{itemize}
-\subsub{b) Desarrollo}
+\subsub{ii) Desarrollo}
 \begin{formula}
-\centering $\optim{\max}{C_t,O_t,b_{t+1}}{\textstyle\sum_{t=0}^{\infty}\beta^tU(C_t,O_t)}{C_t+w_tO_t+b_{t+1}\leq w_t+(1+r)b_t+\overline{W}_t\\ \lim_{T\to\infty}b_T/(1+r)^T\geq0}$
+\centering $\optim{\max}{C_t,O_t,b_{t+1}}{\textstyle\sum_{t=0}^{\infty}\beta^tU(C_t,O_t)}{C_t+w_tO_t+b_{t+1}\leq w_t+(1+r)b_t+\overline{W}_t\\ \lim_{T\to\infty}b_{T+1}/(1+r)^T\geq0}$
 \end{formula}
 \begin{itemize}
 \item 3~CPO:
@@ -232,7 +232,7 @@ Se trabaja más cuando trabajar compensa más: los cambios transitorios del sala
   \end{enumerate}
 \item \concepto{Salario relativo intertemporal}: $L_t/L_{t+1}=f\big(\overset{+}{w_t/w_{t+1}},\overset{+}{r},\overset{-}{\rho}\big)$.
 \end{itemize}
-\subsub{c) Implicaciones}
+\subsub{iii) Implicaciones}
 {\centering\small\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{3pt}%
 \begin{tabular}{@{}lcl@{}}
 \toprule
@@ -255,6 +255,7 @@ $\rho$↑ (impaciencia) & \textcolor{tceerojo}{↓} & el ocio de hoy vale más\\
 \item \emph{Ciclos reales} (\autor{Kydland}-\autor{Prescott}, 1982): ↑productividad $\Rightarrow$ riqueza (↓$L$) vs sustitución intertemporal (↑$L$).
   \begin{itemize}
   \item Choque \emph{transitorio}: domina sustitución $\Rightarrow$ ciclo; estabilizar no mejora el bienestar.
+  \item Choque \emph{permanente}: apenas cambia la oferta relativa (el efecto riqueza compensa); actúa por la inversión y el capital.
   \end{itemize}
 \item \emph{Trabajo indivisible} (\autor{Hansen}, 1985; \autor{Rogerson}, 1988): ajuste extensivo $\Rightarrow$ elasticidad agregada alta con individual baja.
 \end{itemize}
@@ -279,8 +280,8 @@ La educación es una inversión que se paga con salarios más altos toda la vida
 
 \sub{III.1. Usos del capital humano\label{rep:III.1}}
 \begin{itemize}
-\item \concepto{Capital humano}: conocimientos, habilidades y rasgos que hacen más productiva a una persona; \emph{inseparable} de ella (no sirve de garantía). Supuesto 3.
-\item 5~enfoques (\autor{Acemoglu}-\autor{Autor}, 2011): \autor{Becker}; \autor{Gardner}; \autor{Nelson}-\autor{Phelps} \vertema{3.A.44}; \autor{Bowles}-\autor{Gintis}; \autor{Spence} (1973, \emph{señal}) \vertema{3.A.13}.
+\item \concepto{Capital humano}: conocimientos, habilidades y rasgos que hacen más productiva a una persona; \emph{inseparable} de ella (no sirve de garantía). Levanta el supuesto 3 (y el 2~con \autor{Spence}).
+\item 5~enfoques (\autor{Acemoglu}-\autor{Autor}, 2011): \autor{Becker}; \autor{Gardner}; \autor{Schultz} y \autor{Nelson}-\autor{Phelps} \vertema{3.A.44}; \autor{Bowles}-\autor{Gintis}; \autor{Spence} (1973, \emph{señal}) \vertema{3.A.13}.
 \item \autor{Becker}: educación $\to$ productividad $\to$ salario; \autor{Spence}: productividad $\to$ educación $\to$ salario. Las distingue la evidencia.
 \end{itemize}
 
@@ -300,9 +301,9 @@ La educación es una inversión que se paga con salarios más altos toda la vida
   \end{itemize}
 \item \autor{Becker} (1967): demanda $\rho(S)$ decreciente; oferta de fondos creciente y escalonada.
 \end{itemize}
-\pareja{becker-inversion}{Demanda y oferta de fondos para estudiar}{fisher-capital-humano}{\autor{Fisher}: la formación no depende de la paciencia}
+\graficorepaso[0.55\linewidth]{becker-inversion}{Demanda y oferta de fondos para estudiar}
 \begin{itemize}
-\item \emph{Quién}: los más hábiles y los de más recursos; liquidez $\Rightarrow$ se rompe la separación. \emph{Cuándo}: joven. Con $c=0$: $w'/w=r$ (\autor{Mincer}).
+\item \emph{Quién}: los más hábiles (demanda más arriba) y los de más recursos o crédito (oferta más abajo). \emph{Cuándo}: joven. Con $c=0$: $w'/w=r$ (\autor{Mincer}).
 \end{itemize}
 \graficorepaso[0.62\linewidth]{perfiles-edad}{Perfiles edad-ingresos (\autor{McConnell}-\autor{Brue}): estudiar si VAN $>0$}
 \subsub{c) Formación general y específica}

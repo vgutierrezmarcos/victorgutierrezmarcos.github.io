@@ -33,6 +33,6 @@ con VPMg_L = p·PMg_L y GMg_L = w_L(L) + w_L'(L)L (siglas de `notacion.md` § 0,
 
 ## Divergencias encontradas en el temario actual
 - 3.A.17 original: monopsonio vacío en el cuerpo; anexo 1 con «el GMg, i.e. la curva de oferta de trabajo» y «paro involuntario» con monopsonio; W, R, Π, IMgF, GMgF. **Resuelto** en la revisión (17/10/2026): GMg_L por encima de la oferta, sin paro, w_L(L), w_K, B, VPMg_L, IPMg_L, GMg_L.
-- 3.A.25 original: su anexo copiaba el anexo 1 del 3.A.17 original con los mismos errores (GMg = oferta, «IMgF, i.e. la curva de demanda», paro involuntario, nota 36) y usaba W, Π, IMgF, GMgF. **Resuelto** en la revisión del 3.A.25 (31/10/2026): resumen en I.4 y anexo D con esta notación, sin la tabla de los 4 casos.
+- 3.A.25 original: su anexo copiaba el anexo 1 del 3.A.17 original con los mismos errores (GMg = oferta, «IMgF, i.e. la curva de demanda», paro involuntario, nota 36) y usaba W, Π, IMgF, GMgF. **Resuelto** en la revisión del 3.A.25 (31/10/2026): resumen en I.4 y anexo C (antes D) con esta notación, sin la tabla de los 4 casos.
 
 Autor: Víctor Gutiérrez Marcos

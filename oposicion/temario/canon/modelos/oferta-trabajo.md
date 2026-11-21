@@ -26,7 +26,7 @@ Nota: prima por horas extraordinarias (casi solo efecto sustitución; $L_n$ jorn
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.25 | Oferta de trabajo individual y agregada; base del análisis intertemporal (Lucas-Rapping) | desarrollo (hecho, 31/10/2026) | Todo lo anterior; Kuhn-Tucker completas y Slutsky con dotación en el anexo A; evidencia en I.1 d) | — |
+| 3.A.25 | Oferta de trabajo individual y agregada; base del análisis intertemporal (Lucas-Rapping) | desarrollo (hecho, 31/10/2026) | Todo lo anterior; Kuhn-Tucker completas y Slutsky con dotación en el anexo A; agregación con los 2 márgenes en el anexo `anexo:agregacion-oferta` (pasada final, 21/11/2026); evidencia en I.1 d) | — |
 | 4.B.10 | Efectos de los impuestos sobre la oferta de trabajo | desarrollo (aplicación) | Mismo gráfico (`oferta-trabajo.tex`) con impuestos: suma fija (traslación paralela), proporcional sobre el salario (giro, pendiente −w(1−τ)), sobre la renta total, sobre el consumo, progresivo (recta cóncava); prestaciones condicionadas a la renta (la nota del 3.A.25 remite aquí). Con $\overline W$ y $U_O/U_C=w$ ($P_C=1$) | La derivación básica: remitir al 3.A.25, resumiendo lo imprescindible para el 4.º |
 | 3.A.8 | Teoría del consumidor | mención (hecho) | Asignación del tiempo de Becker (1965) con $T$, $t_w$: «se estudia desde la oferta de trabajo» (letras locales de Becker; el 3.A.25 avisa en nota de que $O_0$ es su $T$) | — |
 | 3.A.26 | Búsqueda y paro friccional | mención | El salario de reserva $w^R$ (superíndice, no $w_R$) del modelo de búsqueda como extensión dinámica del estático | El modelo consumo-ocio |
