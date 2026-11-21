@@ -141,11 +141,11 @@ Enganche
 
 \begin_deeper
 \begin_layout Itemize
-Â«Hoy por ti, maÃ±ana por mÃ­Â», dice el refrÃ¡n. Â¿Por quÃ© ayudamos sin firmar nada al vecino, al compaÃ±ero o al proveedor con el que vamos a volver a tratar, y no a un desconocido al que no veremos mÃ¡s? No hace falta suponer que somos mejores con unos que con otros: lo que cambia es el juego. La teorÃ­a de juegos responde que lo que hace cada uno depende de la 
+Â«Hoy por ti, maÃ±ana por mÃ­Â», dice el refrÃ¡n. Â¿Por quÃ© ayudamos sin firmar nada al vecino, al compaÃ±ero o al proveedor con el que vamos a volver a tratar, y no a un desconocido al que no veremos mÃ¡s? La teorÃ­a de juegos responde que no somos mejores con unos que con otros: lo que cambia es la 
 \emph on
 estructura
 \emph default
- del juego: si se repite o no, quÃ© sabe cada jugador, quiÃ©n mueve primero y cuÃ¡les son las reglas. 
+ del juego, es decir, si se repite o no, quÃ© sabe cada jugador, quiÃ©n mueve primero y cuÃ¡les son las reglas. 
 \end_layout
 
 \begin_layout Itemize
@@ -1127,7 +1127,7 @@ nolink "false"
 \end_deeper
 \begin_deeper
 \begin_layout Standard
-El orden va de menos a mÃ¡s informaciÃ³n privada, porque las subastas son juegos con informaciÃ³n incompleta. El eje de la exposiciÃ³n es el concepto de equilibrio (tabla
+El eje de la exposiciÃ³n es el concepto de equilibrio (tabla
 \begin_inset space ~
 
 \end_inset
@@ -1143,7 +1143,11 @@ nolink "false"
 
 \end_inset
 
-): cada paso aÃ±ade un ingrediente (el tiempo, la informaciÃ³n privada, los acuerdos vinculantes) que obliga a refinarlo, y el tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado. Un mismo ejemplo acompaÃ±a a toda la exposiciÃ³n, el de nuestros 2
+). Cada paso aÃ±ade un ingrediente (el tiempo, la informaciÃ³n privada, los acuerdos vinculantes) que obliga a refinarlo. El orden va de menos a mÃ¡s informaciÃ³n privada, porque las subastas son juegos con informaciÃ³n incompleta. El tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado.
+\end_layout
+
+\begin_layout Standard
+Un mismo ejemplo acompaÃ±a a toda la exposiciÃ³n, el de 2
 \begin_inset space ~
 
 \end_inset
@@ -1158,7 +1162,7 @@ I
 
 \end_inset
 
-, un operador de telecomunicaciones ya 
+, ya 
 \emph on
 instalado
 \emph default
@@ -1172,7 +1176,7 @@ E
 
 \end_inset
 
-, uno que quiere 
+, que quiere 
 \emph on
 entrar
 \emph default
@@ -1971,7 +1975,23 @@ nolink "false"
 
 \end_inset
 
- como apoyo), con Â«Quemar las navesÂ». 
+, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:compromiso"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, como apoyo), con Â«Quemar las navesÂ». 
 \end_layout
 
 \begin_layout Itemize
@@ -2134,7 +2154,7 @@ literal "false"
 
 \end_inset
 
-, que ilustramos ya con el ejemplo que nos acompaÃ±arÃ¡ en toda la exposiciÃ³n: 
+, que ilustramos con el ejemplo de toda la exposiciÃ³n: 
 \end_layout
 
 \begin_deeper
@@ -2334,11 +2354,20 @@ estrategia
 \emph on
 plan completo de acciÃ³n
 \emph default
-: dice quÃ© harÃ¡ el jugador en cada situaciÃ³n en la que le pueda tocar mover, incluso en las que no se lleguen a dar. No es lo mismo que una acciÃ³n: en un juego por turnos, la estrategia del que mueve segundo dice quÃ© harÃ¡ ante 
+: dice quÃ© harÃ¡ el jugador en cada situaciÃ³n en la que le pueda tocar mover, incluso en las que no se lleguen a dar. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No es lo mismo que una acciÃ³n: en un juego por turnos, la estrategia del que mueve segundo dice quÃ© harÃ¡ ante 
 \emph on
 cada
 \emph default
- jugada posible del primero. Un 
+ jugada posible del primero. 
+\end_layout
+
+\begin_layout Itemize
+Un 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2352,11 +2381,15 @@ perfil de estrategias
 \begin_inset Formula $s=(s_1,\dots,s_n)=(s_i,s_{-i})$
 \end_inset
 
- reÃºne una estrategia de cada jugador, donde 
+ reÃºne una de cada jugador; 
 \begin_inset Formula $s_{-i}$
 \end_inset
 
- son las de los demÃ¡s. Las estrategias pueden ser 
+ son las de los demÃ¡s. 
+\end_layout
+
+\begin_layout Itemize
+Las estrategias pueden ser 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2379,6 +2412,7 @@ mixtas
  (elegir al azar con unas probabilidades). 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -3430,7 +3464,7 @@ name "sec:juegos-estaticos"
 \end_layout
 
 \begin_layout Itemize
-Una vez descritos los elementos de un juego, pasamos a predecir cÃ³mo se juega cuando todos eligen a la vez. Empezamos por la predicciÃ³n que menos exige a los jugadores, la dominancia, y pasamos al concepto central, el equilibrio de 
+Descritos los elementos, pasamos a predecir cÃ³mo se juega cuando todos eligen a la vez: primero, con la predicciÃ³n que menos exige a los jugadores, la dominancia; despuÃ©s, con el concepto central, el equilibrio de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -3573,16 +3607,11 @@ Dilema del prisionero
 
 \begin_deeper
 \begin_layout Itemize
-Siguiendo con el ejemplo de nuestros 2
-\begin_inset space ~
-
-\end_inset
-
-operadores, 
+Supongamos que 
 \shape up
 I
 \shape default
- (el instalado) y E (el que quiere entrar), supongamos que ya compiten y libran una 
+ y E ya compiten y libran una 
 \emph on
 guerra de precios
 \emph default
@@ -5234,7 +5263,7 @@ c) Extensiones: juegos de suma cero y teorema minimax
 \end_layout
 
 \begin_layout Itemize
-En un juego finito de 2
+Fue el primer gran resultado de la teorÃ­a. En un juego finito de 2
 \begin_inset space ~
 
 \end_inset
@@ -5268,16 +5297,25 @@ valor del juego
 
 \end_inset
 
- es el pago de equilibrio, y las estrategias minimax forman un EN. En pares o nones (o en la campaÃ±a comercial de 
+ es el pago de equilibrio, y las estrategias minimax forman un EN. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En pares o nones (o en la campaÃ±a de 
 \shape up
 I
 \shape default
- y E, si lo que gana uno lo pierde el otro) cada jugador mezcla al 50
+ y E, si lo que gana uno lo pierde el otro), cada jugador mezcla al 50
 \begin_inset space ~
 
 \end_inset
 
-% y el valor es 0. Fue el primer gran resultado de la teorÃ­a; el enunciado formal, la diferencia con el maximin frente a la naturaleza y la evidencia de los penaltis del fÃºtbol estÃ¡n en el anexo
+% y el valor es 0. 
+\end_layout
+
+\begin_layout Itemize
+El enunciado formal, la diferencia con el maximin frente a la naturaleza y la evidencia de los penaltis, en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -5296,6 +5334,7 @@ nolink "false"
 . 
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 d) ValoraciÃ³n
 \end_layout
@@ -5315,7 +5354,7 @@ puede
 \emph on
 no existir en estrategias puras
 \emph default
- (pares y nones, la inspecciÃ³n, la campaÃ±a de 
+ (pares o nones, la inspecciÃ³n, la campaÃ±a de 
 \shape up
 I
 \shape default
@@ -5588,7 +5627,7 @@ name "sec:juegos-dinamicos"
 \end_layout
 
 \begin_layout Itemize
-Una vez estudiados los juegos en los que todos eligen a la vez y una sola vez, pasamos a los 
+De los juegos en los que todos eligen a la vez y una sola vez pasamos a los 
 \emph on
 dinÃ¡micos
 \emph default
@@ -5665,12 +5704,7 @@ En los juegos por turnos aparece un problema nuevo: un EN puede apoyarse en una 
 
 \begin_deeper
 \begin_layout Itemize
-Siguiendo con nuestros 2
-\begin_inset space ~
-
-\end_inset
-
-operadores, supongamos ahora que E todavÃ­a no estÃ¡ en el mercado (grÃ¡fico
+Supongamos ahora que E todavÃ­a no estÃ¡ en el mercado (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -6186,6 +6220,22 @@ nolink "false"
 
 \end_inset
 
+, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:compromiso"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
 ): antes de que E decida, 
 \shape up
 I
@@ -6303,50 +6353,7 @@ nolink "false"
 
 \end_deeper
 \begin_layout Itemize
-En economÃ­a: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-el monopolista de un bien duradero querrÃ­a comprometerse a no bajar el precio y no puede: los compradores lo anticipan y esperan, y el precio cae hacia el coste marginal; es la conjetura de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Coase1972Durability}
-\end_layout
-
-\end_inset
-
-, un problema de 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-inconsistencia temporal
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.17
-\end_layout
-
-\end_inset
-
-;
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-
+En economÃ­a, la misma falta de compromiso explica la conjetura de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6356,49 +6363,17 @@ Coase
 
 \end_inset
 
- recibiÃ³ el Premio Nobel en 1991 Â«por su descubrimiento y clarificaciÃ³n de la importancia de los costes de transacciÃ³n y los derechos de propiedad para la estructura institucional y el funcionamiento de la economÃ­aÂ»
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Nobel1991Coase"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-el banco central que promete inflaciÃ³n baja tiene, una vez fijadas las expectativas, incentivos a incumplir: es la inconsistencia temporal de 
-\begin_inset ERT
+ sobre el monopolista de un bien duradero 
+\begin_inset Flex Ver tema
 status collapsed
 
 \begin_layout Plain Layout
-
-\backslash
-textcite{KydlandPrescott1977Rules}
+3.A.17
 \end_layout
 
 \end_inset
 
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{BarroGordon1983Rules}
-\end_layout
-
-\end_inset
-
-, en la que la discreciÃ³n es el EN del juego entre la autoridad y el pÃºblico, y que se resuelve con reglas, reputaciÃ³n o independencia 
+ y la inconsistencia temporal de la polÃ­tica monetaria 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -6408,196 +6383,23 @@ status collapsed
 
 \end_inset
 
-.
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Kydland
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Prescott
-\end_layout
-
-\end_inset
-
- recibieron el Premio Nobel en 2004 Â«por sus contribuciones a la macroeconomÃ­a dinÃ¡mica: la consistencia temporal de la polÃ­tica econÃ³mica y las fuerzas que impulsan los ciclos econÃ³micosÂ»
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Nobel2004KydlandPrescott"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-El compromiso de 
-\shape up
-I
-\shape default
-: invertir antes en capacidad hace creÃ­ble la guerra de precios
-\end_layout
+ (anexo
+\begin_inset space ~
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:juego-entrada-compromiso"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:compromiso"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.8
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-juego-entrada-compromiso
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Schelling1960Strategy}
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[cap.~8]{Tirole1988Theory}
-\end_layout
-
-\end_inset
-
-. Pagos: (E, I), con un coste hundido de la capacidad de 2,5; en rojo, el ENPS.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
+). 
 \end_layout
 
 \begin_layout Paragraph
@@ -6739,41 +6541,23 @@ d) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
-La inducciÃ³n hacia atrÃ¡s exige mucha racionalidad. En el 
-\emph on
-juego del ciempiÃ©s
-\emph default
- de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Rosenthal1981Games}
-\end_layout
-
-\end_inset
-
-, 2
+La inducciÃ³n hacia atrÃ¡s exige mucha racionalidad: en el laboratorio casi nadie juega el ENPS del juego del ciempiÃ©s, y en el del ultimÃ¡tum muchos rechazan ofertas que juzgan injustas (anexo
 \begin_inset space ~
 
 \end_inset
 
-jugadores se pasan el turno y el bote crece en cada paso; el Ãºnico ENPS es parar en la primera jugada, pero en el laboratorio casi nadie para al principio
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "McKelveyPalfrey1992Experimental"
-literal "false"
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:evidencia-dinamicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-. En el 
-\emph on
-juego del ultimÃ¡tum
-\emph default
-, muchos rechazan ofertas positivas que juzgan injustas (
+; el ultimÃ¡tum, en 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:negociacion"
@@ -6831,12 +6615,7 @@ La repeticiÃ³n abre una oportunidad nueva: quien sabe que volverÃ¡ a encontr
 
 \begin_deeper
 \begin_layout Itemize
-Siguiendo con nuestros 2
-\begin_inset space ~
-
-\end_inset
-
-operadores, una vez que E ha entrado, 
+Una vez que E ha entrado, 
 \shape up
 I
 \shape default
@@ -7025,24 +6804,16 @@ asÃ­, mes a mes, hasta el primero: la cooperaciÃ³n se deshace desde el final
 \emph on
 ClÃ¡sico: la paradoja de la cadena de tiendas
 \emph default
- de 
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-\backslash
-textcite{Selten1978Chain}
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Selten1978Chain"
+literal "false"
 
 \end_inset
 
-. Una cadena presente en 20
-\begin_inset space ~
-
-\end_inset
-
-ciudades, que se enfrenta a un entrante en cada una, no puede ganarse la fama de agresiva: en la Ãºltima ciudad acomoda, porque ya no hay reputaciÃ³n que cuidar, y por inducciÃ³n hacia atrÃ¡s acomoda en todas. La intuiciÃ³n dice lo contrario: de ahÃ­ la paradoja (anexo
+: por inducciÃ³n hacia atrÃ¡s, la cadena acomoda en todas las ciudades, aunque la intuiciÃ³n diga que le conviene ganarse fama de agresiva (anexo
 \begin_inset space ~
 
 \end_inset
@@ -7058,7 +6829,7 @@ nolink "false"
 
 \end_inset
 
-); la predaciÃ³n como estrategia de reputaciÃ³n 
+) 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -7137,7 +6908,16 @@ textcite{Friedman1971Supergames}
 
 \end_inset
 
-: cooperar mientras el otro coopere y, si alguna vez se desvÃ­a, jugar el EN de la etapa para siempre. Con 
+: cooperar mientras el otro coopere y, si alguna vez se desvÃ­a, jugar el EN de la etapa para siempre.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+CondiciÃ³n
+\emph default
+. Sean 
 \begin_inset Formula $u^{\mathrm C}$
 \end_inset
 
@@ -7149,11 +6929,11 @@ textcite{Friedman1971Supergames}
 \begin_inset Formula $u^{\mathrm N}$
 \end_inset
 
- el del EN de la etapa (el castigo), a un jugador no le conviene desviarse si lo que gana cooperando siempre supera lo que gana desviÃ¡ndose hoy y siendo castigado despuÃ©s, 
+ el del EN de la etapa (el castigo). No conviene desviarse si cooperar siempre da mÃ¡s que desviarse hoy y ser castigado despuÃ©s, 
 \begin_inset Formula $u^{\mathrm C}/(1-\beta)\geq u^{\mathrm D}+\beta\,u^{\mathrm N}/(1-\beta)$
 \end_inset
 
-; es decir, si es lo bastante paciente: 
+; es decir, si el jugador es lo bastante paciente: 
 \begin_inset ERT
 status collapsed
 
@@ -7499,10 +7279,9 @@ status collapsed
 
 \end_inset
 
- El numerador es lo que se gana hoy desviÃ¡ndose; el denominador, lo que se pierde cada etapa despuÃ©s. El castigo es creÃ­ble, porque volver al EN de la etapa es un EN en cada subjuego, y por el principio de la desviaciÃ³n Ãºnica basta con esta comparaciÃ³n: el gatillo es un ENPS. 
+ El numerador es lo que se gana hoy desviÃ¡ndose; el denominador, lo que se pierde cada etapa despuÃ©s. El castigo es creÃ­ble, porque volver al EN de la etapa es un EN en cada subjuego. Por el principio de la desviaciÃ³n Ãºnica basta con esta comparaciÃ³n: el gatillo es un ENPS. 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Siguiendo con la guerra de precios de 
 \shape up
@@ -7612,7 +7391,20 @@ nolink "false"
 \emph on
 Otras estrategias condicionadas
 \emph default
-, mÃ¡s indulgentes que el gatillo (tabla
+ son mÃ¡s indulgentes que el gatillo: Â«donde las dan, las tomanÂ» (
+\emph on
+tit for tat
+\emph default
+), castigar solo tras 2
+\begin_inset space ~
+
+\end_inset
+
+desviaciones seguidas y Â«si gano, repito; si pierdo, cambioÂ». Que sean ENPS depende de 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (tabla
 \begin_inset space ~
 
 \end_inset
@@ -7644,64 +7436,9 @@ nolink "false"
 
 \end_inset
 
-): 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Â«donde las dan, las tomanÂ» (
-\emph on
-tit for tat
-\emph default
-), que repite lo que el otro hizo en la etapa anterior: su castigo solo es creÃ­ble con un valor concreto de 
-\begin_inset Formula $\beta$
-\end_inset
-
-; 
-\end_layout
-
-\begin_layout Itemize
-la que solo castiga tras 2
-\begin_inset space ~
-
-\end_inset
-
-desviaciones seguidas (
-\emph on
-tit for two tats
-\emph default
-), que perdona una desviaciÃ³n aislada, pero invita a desviarse una etapa sÃ­ y otra no, y 
-\end_layout
-
-\begin_layout Itemize
-Â«si gano, repito; si pierdo, cambioÂ» (
-\emph on
-win-stay, lose-shift
-\emph default
-), que estudiaron 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{NowakSigmund1993Strategy}
-\end_layout
-
-\end_inset
-
-: es un ENPS si 
-\begin_inset Formula $\beta$
-\end_inset
-
- es alto (aquÃ­, 
-\begin_inset Formula $\beta\geq1/4$
-\end_inset
-
 ). 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -7805,7 +7542,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-3.B.7
+3.B.33
 \end_layout
 
 \end_inset
@@ -7861,7 +7598,7 @@ d) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
-En los torneos de dilemas del prisionero repetidos de 
+En los torneos de 
 \begin_inset ERT
 status collapsed
 
@@ -7873,19 +7610,7 @@ textcite{Axelrod1984Evolution}
 
 \end_inset
 
-, la estrategia ganadora fue una de las mÃ¡s sencillas, Â«donde las dan, las tomanÂ»: cooperar al principio y despuÃ©s hacer lo que hizo el otro en la jugada anterior. Con errores (alguien se desvÃ­a sin querer), Â«donde las dan, las tomanÂ» encadena represalias, y en las simulaciones de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{NowakSigmund1993Strategy}
-\end_layout
-
-\end_inset
-
- la supera Â«si gano, repito; si pierdo, cambioÂ», que vuelve a cooperar tras un castigo. En el laboratorio, la cooperaciÃ³n es mÃ¡s frecuente cuanto mÃ¡s probable es que el juego continÃºe, como predice 
+ ganÃ³ Â«donde las dan, las tomanÂ», y en el laboratorio se coopera mÃ¡s cuanto mÃ¡s probable es que el juego continÃºe, como predice 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:gatillo"
@@ -7896,16 +7621,23 @@ nolink "false"
 
 \end_inset
 
-
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "DalBo2005Cooperation"
-literal "false"
+ (anexo
+\begin_inset space ~
 
 \end_inset
 
-. 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:evidencia-dinamicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Paragraph
@@ -7934,7 +7666,12 @@ selecciÃ³n de equilibrios
 \emph on
 RecapitulaciÃ³n del bloque I
 \emph default
-: con informaciÃ³n completa, el equilibrio de 
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+con informaciÃ³n completa, el equilibrio de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7944,7 +7681,16 @@ Nash
 
 \end_inset
 
- es la predicciÃ³n bÃ¡sica: existe (en mixtas) en todo juego finito, pero puede ser ineficiente o mÃºltiple; en los juegos dinÃ¡micos se refina exigiendo racionalidad secuencial (ENPS): en los secuenciales descarta las amenazas no creÃ­bles, y en los repetidos permite sostener la cooperaciÃ³n. Pero la informaciÃ³n completa es un supuesto fuerte: E no sabe cuÃ¡nto le cuesta a I ampliar su red, y en una subasta nadie conoce la valoraciÃ³n de los demÃ¡s. Pasamos a ver quÃ© ocurre cuando no es asÃ­, y cuando los jugadores pueden firmar acuerdos. 
+ es la predicciÃ³n bÃ¡sica: existe (en mixtas) en todo juego finito, pero puede ser ineficiente o mÃºltiple; 
+\end_layout
+
+\begin_layout Itemize
+en los juegos dinÃ¡micos se refina exigiendo racionalidad secuencial (ENPS): en los secuenciales descarta las amenazas no creÃ­bles, y en los repetidos permite sostener la cooperaciÃ³n. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pero la informaciÃ³n completa es un supuesto fuerte: E no sabe cuÃ¡nto le cuesta a I ampliar su red, y en una subasta nadie conoce la valoraciÃ³n de los demÃ¡s. Pasamos a ver quÃ© ocurre cuando no es asÃ­, y cuando los jugadores pueden firmar acuerdos. 
 \end_layout
 
 \begin_layout Standard
@@ -8276,15 +8022,19 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Una vez estudiados los juegos en los que todos conocen los pagos de todos, pasamos a los que tienen 
+Dejamos los juegos en los que todos conocen los pagos de todos: primero, los que tienen 
 \emph on
 informaciÃ³n privada
 \emph default
- y, despuÃ©s, a los juegos en los que se pueden firmar 
+; despuÃ©s, aquellos en los que se pueden firmar 
 \emph on
 acuerdos vinculantes
 \emph default
 . 
+\end_layout
+
+\begin_layout Itemize
+
 \emph on
 ConclusiÃ³n anticipada
 \emph default
@@ -8396,12 +8146,7 @@ nolink "false"
 
 \begin_deeper
 \begin_layout Itemize
-Siguiendo con nuestros 2
-\begin_inset space ~
-
-\end_inset
-
-operadores: E quiere entrar, pero no sabe si a 
+En nuestro ejemplo, E quiere entrar, pero no sabe si a 
 \shape up
 I
 \shape default
@@ -8632,7 +8377,23 @@ coste bajo
 \shape up
 I
 \shape default
-, son los de la tabla
+, son los del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:arbol-harsanyi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ (en forma de tabla, la
 \begin_inset space ~
 
 \end_inset
@@ -8648,7 +8409,23 @@ nolink "false"
 
 \end_inset
 
-. 
+, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:test"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -8780,590 +8557,6 @@ I
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-La entrada de E sin conocer el coste de 
-\shape up
-I
-\shape default
-: pagos (E, 
-\shape up
-I
-\shape default
-) segÃºn el tipo de 
-\shape up
-I
-\shape default
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:bayesiano"
-
-\end_inset
-
- 
-\begin_inset Tabular 
-<lyxtabular version="3" rows="5" columns="6">
-<features tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="center" valignment="middle" width="1.9cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<column alignment="center" valignment="middle" width="0.3cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<column alignment="center" valignment="middle" width="2.1cm">
-<row>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-
-\shape up
-I
-\shape default
- de coste alto
-\series default
- (
-\begin_inset Formula $\pi$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-
-\shape up
-I
-\shape default
- de coste bajo
-\series default
- (
-\begin_inset Formula $1-\pi$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Ampliar
-\series default
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-No ampliar
-\series default
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Ampliar
-\series default
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-No ampliar
-\series default
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-hhline
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-
-\end_inset
-
-|-|-|
-\begin_inset space ~
-
-\end_inset
-
-|-|-|
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\series bold
-Entrar
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(-1,-1)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cellcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $(1,1)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cellcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $(-1,2)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(1,1)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-hhline
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-
-\end_inset
-
-|-|-|
-\begin_inset space ~
-
-\end_inset
-
-|-|-|
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\series bold
-No entrar
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(0,2)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cellcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $(0,3)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cellcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $(0,4)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(0,3)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-hhline
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-
-\end_inset
-
-|-|-|
-\begin_inset space ~
-
-\end_inset
-
-|-|-|
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" rightline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[cap.~3]{Gibbons1992Game}
-\end_layout
-
-\end_inset
-
-. E, en las filas; 
-\shape up
-I
-\shape default
-, en las columnas. Sombreada, la estrategia dominante de cada tipo de 
-\shape up
-I
-\shape default
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 
 \begin_inset Float figure
@@ -9709,7 +8902,7 @@ a) Idea
 \end_layout
 
 \begin_layout Itemize
-Una vez estudiados los juegos bayesianos estÃ¡ticos, pasamos a los dinÃ¡micos. Cuando el informado mueve primero, su acciÃ³n 
+Pasamos de los juegos bayesianos estÃ¡ticos a los dinÃ¡micos. Cuando el informado mueve primero, su acciÃ³n 
 \emph on
 revela
 \emph default
@@ -10188,7 +9381,12 @@ literal "false"
 
 \end_inset
 
-. Como las creencias fuera de la senda son libres, hay infinitos EBP. El criterio las disciplina: ante una educaciÃ³n que el tipo B no elegirÃ­a nunca, ni aunque le tomaran por A, y que el tipo A sÃ­ elegirÃ­a si le tomaran por A, las empresas deben creer que quien la elige es A. Elimina todos los agrupadores y todos los separadores salvo el mÃ¡s barato, en el que 
+. Como las creencias fuera de la senda son libres, hay infinitos EBP. El criterio las disciplina: ante una educaciÃ³n que el tipo B no elegirÃ­a nunca, ni aunque le tomaran por A, y que el tipo A sÃ­ elegirÃ­a si le tomaran por A, las empresas deben creer que quien la elige es A. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Elimina todos los agrupadores y todos los separadores salvo el mÃ¡s barato, en el que 
 \begin_inset Formula $\hat y^*$
 \end_inset
 
@@ -10208,6 +9406,7 @@ literal "false"
 . 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -10251,7 +9450,11 @@ iii) Implicaciones
 \end_layout
 
 \begin_layout Itemize
-Las creencias fuera del equilibrio no son un tecnicismo: son las que sostienen el resultado. En el separador, el tipo B no se educa porque cree que, si eligiera una educaciÃ³n intermedia, le tomarÃ­an por B; con otras creencias, se educarÃ­a. El criterio intuitivo pide que esas creencias sean razonables: no atribuir a nadie una acciÃ³n que nunca le convendrÃ­a. 
+Las creencias fuera del equilibrio no son un tecnicismo: son las que sostienen el resultado. En el separador, el tipo A se educa hasta 
+\begin_inset Formula $\hat y$
+\end_inset
+
+ porque cree que, si eligiera una educaciÃ³n mÃ¡s baja, le tomarÃ­an por B; con otras creencias, se educarÃ­a menos. El criterio intuitivo pide que esas creencias sean razonables: no atribuir a nadie una acciÃ³n que nunca le convendrÃ­a. 
 \end_layout
 
 \begin_layout Itemize
@@ -10412,7 +9615,7 @@ name "sec:negociacion-cooperativos"
 \end_layout
 
 \begin_layout Itemize
-Una vez estudiados los juegos no cooperativos, pasamos a los que permiten firmar 
+Tras los juegos no cooperativos, pasamos a los que permiten firmar 
 \emph on
 acuerdos vinculantes
 \emph default
@@ -10543,12 +9746,7 @@ Nash
 
 \begin_deeper
 \begin_layout Itemize
-Siguiendo con nuestros 2
-\begin_inset space ~
-
-\end_inset
-
-operadores: en lugar de construir su propia red, E puede alquilar la de 
+En nuestro ejemplo, en lugar de construir su propia red, E puede alquilar la de 
 \shape up
 I
 \shape default
@@ -11381,7 +10579,7 @@ literal "false"
 
 \end_inset
 
- (anexo
+: el ENPS es ofrecer casi nada, pero en el laboratorio muchos ofrecen cerca de la mitad y se rechazan las ofertas bajas: la equidad pesa (anexo
 \begin_inset space ~
 
 \end_inset
@@ -11397,7 +10595,7 @@ nolink "false"
 
 \end_inset
 
-). Uno propone un reparto y el otro solo puede aceptarlo o rechazarlo (y entonces nadie cobra). El ENPS con agentes egoÃ­stas es ofrecer casi nada y aceptar; en el laboratorio, muchos proponen repartos cercanos a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazarlas cueste dinero. La equidad pesa 
+) 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -11643,7 +10841,11 @@ ninguna coaliciÃ³n puede bloquear
 
 \begin_deeper
 \begin_layout Itemize
-Siguiendo con nuestros operadores, ahora con un tercero, O (de Â«otroÂ»). 
+AÃ±adamos a 
+\shape up
+I
+\shape default
+ y E un tercer operador, O (de Â«otroÂ»). 
 \shape up
 I
 \shape default
@@ -11687,7 +10889,7 @@ Si
 \shape up
 I
 \shape default
- se asocia con uno de ellos (forman un consorcio) y se reparten lo que obtienen, la funciÃ³n caracterÃ­stica, lo que cada coaliciÃ³n consigue por su cuenta, es la de la tabla
+ se asocia con uno de ellos (forman un consorcio) y se reparten lo que obtienen, la funciÃ³n caracterÃ­stica, lo que cada coaliciÃ³n consigue por su cuenta, es (tabla
 \begin_inset space ~
 
 \end_inset
@@ -11703,7 +10905,23 @@ nolink "false"
 
 \end_inset
 
-: 
+, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:cooperativos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) 
 \begin_inset Formula $v(\{1\})=20$
 \end_inset
 
@@ -11831,291 +11049,6 @@ I
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-El consorcio de 
-\shape up
-I
-\shape default
-, E y O: lo que consigue cada coaliciÃ³n, 
-\begin_inset Formula $v(T)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:consorcio"
-
-\end_inset
-
- 
-\begin_inset Tabular 
-<lyxtabular version="3" rows="2" columns="8">
-<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="center" valignment="middle" width="2.2cm">
-<column alignment="center" valignment="middle" width="1.15cm">
-<column alignment="center" valignment="middle" width="1.15cm">
-<column alignment="center" valignment="middle" width="1.15cm">
-<column alignment="center" valignment="middle" width="1.15cm">
-<column alignment="center" valignment="middle" width="1.15cm">
-<column alignment="center" valignment="middle" width="1.15cm">
-<column alignment="center" valignment="middle" width="1.6cm">
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceeazulpalido}
-\end_layout
-
-\end_inset
-
-
-\series bold
-CoaliciÃ³n
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $\{\text{I}\}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $\{\text{E}\}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $\{\text{O}\}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $\{\text{E},\text{O}\}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $\{\text{I},\text{E}\}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $\{\text{I},\text{O}\}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $\{\text{I},\text{E},\text{O}\}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $v(T)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-20 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-60 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-100 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-100
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia. 
-\shape up
-I
-\shape default
- es el jugador 1 (el vendedor de la red), y E y O, los jugadores 2
-\begin_inset space ~
-
-\end_inset
-
-y 3 (los compradores).
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 
 \begin_inset Float figure
@@ -13226,7 +12159,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Una vez estudiados los conceptos, pasamos a sus aplicaciones. Primero, en quÃ© partes de la economÃ­a se usan; despuÃ©s, la aplicaciÃ³n que le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, el 
+Pasamos de los conceptos a sus aplicaciones. Primero, en quÃ© partes de la economÃ­a se usan; despuÃ©s, la aplicaciÃ³n que le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, el 
 \emph on
 diseÃ±ador
 \emph default
@@ -13307,10 +12240,28 @@ name "sec:aplicaciones"
 
 \end_layout
 
+\begin_layout Standard
+Los conceptos de los 2
+\begin_inset space ~
+
+\end_inset
+
+primeros bloques se usan en casi toda la economÃ­a. Por campos: 
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
-OrganizaciÃ³n industrial
+Mercados y empresas
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+organizaciÃ³n industrial
 \emph default
 : 
 \end_layout
@@ -13385,14 +12336,14 @@ status collapsed
 
 \end_inset
 
-. 
+; 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \emph on
-InformaciÃ³n asimÃ©trica
+informaciÃ³n asimÃ©trica
 \emph default
 : la seÃ±alizaciÃ³n, la autoselecciÃ³n y la relaciÃ³n principal-agente son juegos bayesianos 
 \begin_inset Flex Ver tema
@@ -13409,18 +12360,18 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-3.A.17
+3.A.20
 \end_layout
 
 \end_inset
 
-. 
+; 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Mercado de trabajo
+mercado de trabajo
 \emph default
 : la negociaciÃ³n salarial con la soluciÃ³n de 
 \begin_inset Flex Autor
@@ -13442,13 +12393,81 @@ status collapsed
 
 \end_inset
 
-. 
+; 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Sector pÃºblico y elecciÃ³n colectiva
+defensa de la competencia
+\emph default
+: los programas de clemencia convierten el cÃ¡rtel en un dilema del prisionero para sus miembros: el primero que confiesa queda exento de la multa 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.15
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+, y 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+diseÃ±o de mercados
+\emph default
+: el algoritmo de aceptaciÃ³n diferida de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{GaleShapley1962College}
+\end_layout
+
+\end_inset
+
+, con el que 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Roth
+\end_layout
+
+\end_inset
+
+ rediseÃ±Ã³ la asignaciÃ³n de mÃ©dicos residentes, plazas escolares y donaciones de riÃ±Ã³n (Nobel de 2012). 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Sector pÃºblico y polÃ­tica econÃ³mica
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+sector pÃºblico y elecciÃ³n colectiva
 \emph default
 : 
 \end_layout
@@ -13543,14 +12562,14 @@ status collapsed
 
 \end_inset
 
-. 
+; 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \emph on
-Comercio internacional
+comercio internacional
 \emph default
 : la guerra arancelaria como dilema del prisionero
 \begin_inset CommandInset citation
@@ -13593,15 +12612,20 @@ status collapsed
 
 \end_inset
 
-. 
+, y 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-MacroeconomÃ­a
+macroeconomÃ­a
 \emph default
-: la credibilidad y la inconsistencia temporal de la polÃ­tica monetaria 
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+la credibilidad y la inconsistencia temporal de la polÃ­tica monetaria 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -13611,7 +12635,11 @@ status collapsed
 
 \end_inset
 
-, los ataques especulativos contra un tipo de cambio fijo como juego de coordinaciÃ³n con varios equilibrios 
+; 
+\end_layout
+
+\begin_layout Itemize
+los ataques especulativos contra un tipo de cambio fijo, un juego de coordinaciÃ³n con varios equilibrios 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -13621,7 +12649,11 @@ status collapsed
 
 \end_inset
 
-, los pÃ¡nicos bancarios de 
+; 
+\end_layout
+
+\begin_layout Itemize
+los pÃ¡nicos bancarios de 
 \begin_inset ERT
 status collapsed
 
@@ -13633,7 +12665,7 @@ textcite{DiamondDybvig1983Bank}
 
 \end_inset
 
-, en los que retirar el depÃ³sito es la mejor respuesta si los demÃ¡s lo retiran, aunque el banco sea solvente 
+: retirar el depÃ³sito es la mejor respuesta si los demÃ¡s lo retiran, aunque el banco sea solvente 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -13653,7 +12685,7 @@ status collapsed
 
 \end_inset
 
-, y la coordinaciÃ³n de polÃ­ticas entre paÃ­ses.
+,
 \begin_inset Foot
 status collapsed
 
@@ -13703,67 +12735,15 @@ literal "false"
 
 \end_inset
 
- 
+ y 
 \end_layout
 
 \begin_layout Itemize
-
-\emph on
-Defensa de la competencia
-\emph default
-: los programas de clemencia convierten el cÃ¡rtel en un dilema del prisionero para sus miembros: el primero que confiesa queda exento de la multa 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-4.A.15
+la coordinaciÃ³n de polÃ­ticas entre paÃ­ses. 
 \end_layout
 
-\end_inset
-
- 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.19
-\end_layout
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-DiseÃ±o de mercados
-\emph default
-: el algoritmo de aceptaciÃ³n diferida de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{GaleShapley1962College}
-\end_layout
-
-\end_inset
-
-, con el que 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Roth
-\end_layout
-
-\end_inset
-
- rediseÃ±Ã³ la asignaciÃ³n de mÃ©dicos residentes, plazas escolares y donaciones de riÃ±Ã³n (Nobel de 2012). 
-\end_layout
-
+\end_deeper
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -13829,7 +12809,7 @@ a) Idea
 \end_layout
 
 \begin_layout Itemize
-Una vez vistas las aplicaciones Â«positivasÂ», que predicen quÃ© pasa con unas reglas dadas, pasamos a la aplicaciÃ³n Â«normativaÂ»: elegir las reglas. El mercado es un mecanismo mÃ¡s para asignar recursos con la informaciÃ³n dispersa entre muchos. Â¿Hay alguno que sea eficiente, respete la participaciÃ³n voluntaria y en el que nadie gane mintiendo? La pregunta nace del debate sobre el cÃ¡lculo econÃ³mico en el socialismo 
+Las aplicaciones Â«positivasÂ» predicen quÃ© pasa con unas reglas dadas; la Â«normativaÂ» elige las reglas. El mercado es un mecanismo mÃ¡s para asignar recursos con la informaciÃ³n dispersa entre muchos. Â¿Hay alguno que sea eficiente, respete la participaciÃ³n voluntaria y en el que nadie gane mintiendo? La pregunta nace del debate sobre el cÃ¡lculo econÃ³mico en el socialismo 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -14086,17 +13066,7 @@ SalomÃ³n
 
 
 \emph default
- (1
-\begin_inset space ~
-
-\end_inset
-
-Reyes 3, 16-28). 2
-\begin_inset space ~
-
-\end_inset
-
-mujeres se disputan un niÃ±o y el rey ordena partirlo por la mitad; la verdadera madre renuncia para salvarlo, y con su respuesta revela lo que el rey no podÃ­a ver. FuncionÃ³ por sorpresa: si la otra hubiera entendido el mecanismo, tambiÃ©n habrÃ­a renunciado (anexo
+: la orden de partir al niÃ±o hizo que la verdadera madre revelara su tipo, pero solo por sorpresa (anexo
 \begin_inset space ~
 
 \end_inset
@@ -14236,7 +13206,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-3.A.17
+3.A.20
 \end_layout
 
 \end_inset
@@ -14323,7 +13293,7 @@ Satterthwaite
 
 \end_inset
 
-o mÃ¡s alternativas y preferencias sin restricciones, toda regla de elecciÃ³n social no manipulable es dictatorial
+o mÃ¡s alternativas (si cualquiera de ellas puede salir elegida) y preferencias sin restricciones, toda regla de elecciÃ³n social no manipulable es dictatorial
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -14435,7 +13405,7 @@ name "sec:subastas"
 \end_layout
 
 \begin_layout Itemize
-Una vez establecido el marco del diseÃ±o de mecanismos, pasamos a su aplicaciÃ³n central, que es la Â«especial referenciaÂ» del tÃ­tulo. Seguimos al Gobierno en las decisiones que tiene que tomar: 
+Con el marco del diseÃ±o de mecanismos, pasamos a su aplicaciÃ³n central, la Â«especial referenciaÂ» del tÃ­tulo. Seguimos al Gobierno en las decisiones que tiene que tomar: 
 \end_layout
 
 \begin_deeper
@@ -16310,16 +15280,16 @@ y ganara, pagarÃ­a 10
 
 \end_inset
 
-y no ganarÃ­a nada. Cada operador sabe la suya y, de los otros 2, solo que sus valoraciones estÃ¡n entre 0
+y no ganarÃ­a nada. Con 
+\begin_inset Formula $n=3$
+\end_inset
+
+ y valoraciones uniformes entre 0
 \begin_inset space ~
 
 \end_inset
 
-y 12, todas igual de probables (la regla es la misma con cualquier tope). Con 
-\begin_inset Formula $n=3$
-\end_inset
-
-: 
+y 12 (la regla es la misma con cualquier tope): 
 \end_layout
 
 \begin_deeper
@@ -17520,40 +16490,8 @@ nolink "false"
 ). 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-En la licencia del 5G, con valoraciones entre 0
-\begin_inset space ~
-
-\end_inset
-
-y 12, el valor virtual es 
-\begin_inset Formula $\psi(v)=2v-12$
-\end_inset
-
- y el precio de reserva Ã³ptimo, 6: el Gobierno no venderÃ­a por menos de 6. Con las valoraciones de 
-\shape up
-I
-\shape default
-, E y O no cambia nada en segundo precio (
-\shape up
-I
-\shape default
- ya pagaba 8); pero si E y O valoraran la licencia en 3
-\begin_inset space ~
-
-\end_inset
-
-y 2, sin precio de reserva 
-\shape up
-I
-\shape default
- pagarÃ­a 3, y con Ã©l, 6. 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-El precio de reserva supera el valor del vendedor, asÃ­ que a veces el bien se queda sin vender aunque algÃºn comprador lo valore mÃ¡s: como el monopolista, el vendedor sacrifica eficiencia para extraer renta. Pero la competencia vale mÃ¡s: un pujador mÃ¡s, sin precio de reserva, recauda mÃ¡s que la subasta Ã³ptima con los que habÃ­a
+El precio de reserva supera el valor del vendedor, asÃ­ que a veces el bien se queda sin vender aunque algÃºn comprador lo valore mÃ¡s: como el monopolista, el vendedor sacrifica eficiencia para extraer renta. Pero un pujador mÃ¡s, sin precio de reserva, recauda mÃ¡s que la subasta Ã³ptima con los que habÃ­a
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -17562,17 +16500,20 @@ literal "false"
 
 \end_inset
 
- (con 
-\begin_inset Formula $U[0,1]$
-\end_inset
-
-, 3
+ (anexo
 \begin_inset space ~
 
 \end_inset
 
-pujadores dan 
-\begin_inset Formula $1/2>5/12$
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
 ). 
@@ -17736,36 +16677,12 @@ ClÃ¡sico: las licitaciones de petrÃ³leo del golfo de MÃ©xico
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
-key "CapenClappCampbell1971Competitive"
+key "CapenClappCampbell1971Competitive,Thaler1988Anomalies"
 literal "false"
 
 \end_inset
 
-. 3
-\begin_inset space ~
-
-\end_inset
-
-ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los aÃ±os 50
-\begin_inset space ~
-
-\end_inset
-
-y 60
-\begin_inset space ~
-
-\end_inset
-
-rendÃ­an de forma sistemÃ¡tica menos de lo esperado, y fueron los primeros en describir lo que hoy se llama Â«maldiciÃ³n del ganadorÂ»
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "Thaler1988Anomalies"
-literal "false"
-
-\end_inset
-
- (anexo
+: los yacimientos ganados rendÃ­an menos de lo esperado (anexo
 \begin_inset space ~
 
 \end_inset
@@ -17964,22 +16881,12 @@ literal "false"
 
 \end_inset
 
-. El Reino Unido sacÃ³ 5
+: el Reino Unido, con mÃ¡s licencias que instalados, atrajo entrantes y recaudÃ³ mÃ¡s de 600
 \begin_inset space ~
 
 \end_inset
 
-licencias para 4
-\begin_inset space ~
-
-\end_inset
-
-operadores instalados, asÃ­ que al menos una irÃ­a a un entrante; los entrantes acudieron y recaudÃ³ mÃ¡s de 600
-\begin_inset space ~
-
-\end_inset
-
-euros por habitante. Los PaÃ­ses Bajos, con tantas licencias como instalados, recaudaron 170, y Suiza, donde las retiradas de Ãºltima hora dejaron tantos pujadores como licencias, 20 (anexo
+euros por habitante; Suiza, con tantos pujadores como licencias, 20 (anexo
 \begin_inset space ~
 
 \end_inset
@@ -18073,78 +16980,57 @@ nolink "false"
 
 \end_inset
 
-). 
+). Hay 2
+\begin_inset space ~
+
+\end_inset
+
+formatos, y ninguno domina en general al otro (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:subastas-practica"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
+con 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Precio uniforme
+precio uniforme
 \end_layout
 
 \end_inset
 
-: todos pagan el precio marginal, el de la Ãºltima puja aceptada. Como la puja por las Ãºltimas unidades puede fijar el precio de todas, los grandes pujadores tienen incentivo a pujar por debajo de su valor en esas unidades: es la 
+, todos pagan la Ãºltima puja aceptada, y los grandes pujadores reducen su demanda; 
+\end_layout
+
+\begin_layout Itemize
+con 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-reducciÃ³n de la demanda
+precio discriminatorio
 \end_layout
 
 \end_inset
 
-, que resta ingreso y eficiencia
-\begin_inset CommandInset citation
-LatexCommand nocite
-after ""
-key "AusubelCramtonPyciaRostekWeretka2014Demand"
-literal "false"
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Precio discriminatorio
-\end_layout
-
-\end_inset
-
- (o Â«precio ofrecidoÂ»): cada uno paga sus pujas, y todos sombrean. NingÃºn formato domina en general al otro.
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-Ojo con la terminologÃ­a del mercado de deuda pÃºblica: 
-\end_layout
-
-\begin_layout Itemize
-se llama Â«subasta holandesaÂ» a la de precio Ãºnico, y 
-\end_layout
-
-\begin_layout Itemize
-Â«americanaÂ», a la de precio ofrecido. 
-\end_layout
-
-\begin_layout Standard
-En la teorÃ­a, la holandesa es la descendente, que con varias unidades es discriminatoria.
-\end_layout
-
-\end_inset
-
- 
+, cada uno paga sus pujas, y todos sombrean. 
 \end_layout
 
 \end_deeper
@@ -18299,7 +17185,28 @@ nolink "false"
 \emph on
 EspaÃ±a y la UE
 \emph default
-: el Tesoro emite la deuda con una subasta de varias unidades hÃ­brida, la Â«convencional corregidaÂ» 
+ (reglas y cifras, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:subastas-practica"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+el Tesoro emite la deuda con una subasta de varias unidades hÃ­brida, la Â«convencional corregidaÂ» 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -18309,7 +17216,11 @@ status collapsed
 
 \end_inset
 
-; el espectro se subasta con rondas ascendentes (la de 700
+; 
+\end_layout
+
+\begin_layout Itemize
+el espectro se subasta con rondas ascendentes (la de 700
 \begin_inset space ~
 
 \end_inset
@@ -18343,7 +17254,11 @@ status collapsed
 
 \end_inset
 
-; en las de renovables cada adjudicatario cobra el precio que ofreciÃ³, con un precio de reserva 
+; 
+\end_layout
+
+\begin_layout Itemize
+en las subastas de renovables, cada adjudicatario cobra el precio que ofreciÃ³, con un precio de reserva 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -18353,7 +17268,11 @@ status collapsed
 
 \end_inset
 
-, y los derechos de emisiÃ³n de la UE se subastan a sobre cerrado y a precio uniforme 
+, y 
+\end_layout
+
+\begin_layout Itemize
+los derechos de emisiÃ³n de la UE se subastan a sobre cerrado y a precio uniforme 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -18363,25 +17282,10 @@ status collapsed
 
 \end_inset
 
-. Reglas y cifras, en el anexo
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "anexo:subastas-practica"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
 . 
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
 ColusiÃ³n en las subastas: la rotaciÃ³n de ofertas
 \end_layout
@@ -18474,6 +17378,22 @@ I
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:rotacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:subastas"
 plural "false"
 caps "false"
 noprefix "false"
@@ -18619,434 +17539,7 @@ aÃ±os, el reparto no se sostiene.
 \end_deeper
 \begin_layout Standard
 
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-La rotaciÃ³n de 
-\shape up
-I
-\shape default
- y E en las subastas del 5G: lo que gana cada uno en cada subasta y lo que vale hoy
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:rotacion"
-
-\end_inset
-
- 
-\begin_inset Tabular 
-<lyxtabular version="3" rows="4" columns="7">
-<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="left" valignment="middle" width="3.9cm">
-<column alignment="center" valignment="middle" width="1.05cm">
-<column alignment="center" valignment="middle" width="1.05cm">
-<column alignment="center" valignment="middle" width="1.05cm">
-<column alignment="center" valignment="middle" width="1.05cm">
-<column alignment="center" valignment="middle" width="1.05cm">
-<column alignment="center" valignment="middle" width="2.6cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceeazulpalido}
-\end_layout
-
-\end_inset
-
-
-\series bold
-Subasta
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Hoy
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-2.Âª
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-3.Âª
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-4.Âª
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-…
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Valor hoy
-\series default
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\shape up
-I
-\shape default
-, a quien le toca hoy 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-…
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G/(1-\beta^2)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-[0.3em] E, si cumple 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-…
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G\beta/(1-\beta^2)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-[0.3em] 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-E, si se desvÃ­a hoy 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-…
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $G$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia. 
-\begin_inset Formula $G$
-\end_inset
-
-: lo que vale la licencia menos el precio de reserva; 
-\begin_inset Formula $\beta$
-\end_inset
-
-: factor de descuento entre 2
-\begin_inset space ~
-
-\end_inset
-
-subastas. Tras la desviaciÃ³n vuelve la competencia, que se lleva toda la ganancia.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
+\begin_inset Separator plain
 
 \end_inset
 
@@ -19165,61 +17658,12 @@ literal "false"
 
 \end_inset
 
-. Se vendÃ­an 10
+: con la primera puja, Mannesmann le dijo a T-Mobil cÃ³mo repartirse el espectro, y la subasta acabÃ³ en 2
 \begin_inset space ~
 
 \end_inset
 
-bloques en una subasta ascendente en la que cada nueva puja tenÃ­a que superar a la anterior en al menos un 10
-\begin_inset space ~
-
-\end_inset
-
-%. Mannesmann abriÃ³ con 18,18
-\begin_inset space ~
-
-\end_inset
-
-millones de marcos por megahercio en los bloques 1
-\begin_inset space ~
-
-\end_inset
-
-a 5
-\begin_inset space ~
-
-\end_inset
-
-y 20
-\begin_inset space ~
-
-\end_inset
-
-millones en los 6
-\begin_inset space ~
-
-\end_inset
-
-a 10; T-Mobil entendiÃ³ el mensaje (
-\begin_inset Formula $18{,}18\times1{,}1\approx20$
-\end_inset
-
-), pujÃ³ 20
-\begin_inset space ~
-
-\end_inset
-
-millones por los bloques 1
-\begin_inset space ~
-
-\end_inset
-
-a 5, y la subasta terminÃ³ tras 2
-\begin_inset space ~
-
-\end_inset
-
-rondas, con el espectro repartido a partes iguales (anexo
+rondas (anexo
 \begin_inset space ~
 
 \end_inset
@@ -20156,6 +18600,620 @@ comprobar para quÃ© probabilidades cada perfil es equilibrio.
 \end_layout
 
 \end_deeper
+\begin_deeper
+\begin_layout Standard
+En el ejemplo, los pagos de cada tipo de 
+\shape up
+I
+\shape default
+, en forma de matriz, son los de la tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:bayesiano"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: cada tipo tiene una estrategia dominante (sombreada), y E solo tiene que comparar 
+\begin_inset Formula $2\pi-1$
+\end_inset
+
+ con 0. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La entrada de E sin conocer el coste de 
+\shape up
+I
+\shape default
+: pagos (E, 
+\shape up
+I
+\shape default
+) segÃºn el tipo de 
+\shape up
+I
+\shape default
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:bayesiano"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="5" columns="6">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="1.9cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<column alignment="center" valignment="middle" width="0.3cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<column alignment="center" valignment="middle" width="2.1cm">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+
+\shape up
+I
+\shape default
+ de coste alto
+\series default
+ (
+\begin_inset Formula $\pi$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+
+\shape up
+I
+\shape default
+ de coste bajo
+\series default
+ (
+\begin_inset Formula $1-\pi$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Ampliar
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+No ampliar
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Ampliar
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+No ampliar
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hhline
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Entrar
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(-1,-1)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(1,1)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(-1,2)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(1,1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hhline
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+No entrar
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(0,2)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(0,3)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(0,4)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(0,3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hhline
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~3]{Gibbons1992Game}
+\end_layout
+
+\end_inset
+
+. E, en las filas; 
+\shape up
+I
+\shape default
+, en las columnas. Sombreada, la estrategia dominante de cada tipo de 
+\shape up
+I
+\shape default
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
@@ -22367,6 +21425,545 @@ textcite{Selten1975Reexamination}
 status collapsed
 
 \begin_layout Plain Layout
+% --------------------------------------------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+El compromiso de 
+\shape up
+I
+\shape default
+ y el compromiso en economÃ­a
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:compromiso"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El compromiso de 
+\shape up
+I
+\shape default
+, en un Ã¡rbol
+\emph default
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:enps"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): el grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:juego-entrada-compromiso"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ aÃ±ade al juego de entrada la rama Â«InvertirÂ»: con la capacidad ya comprada, luchar (
+\begin_inset Formula $-1$
+\end_inset
+
+) es mejor que acomodar (
+\begin_inset Formula $-1{,}5$
+\end_inset
+
+), E no entra e 
+\shape up
+I
+\shape default
+ gana 1,5, mÃ¡s que el 1
+\begin_inset space ~
+
+\end_inset
+
+que obtendrÃ­a sin invertir. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En economÃ­a
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+el monopolista de un bien duradero querrÃ­a comprometerse a no bajar el precio y no puede: los compradores lo anticipan y esperan, y el precio cae hacia el coste marginal; es la conjetura de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Coase1972Durability}
+\end_layout
+
+\end_inset
+
+, un problema de 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+inconsistencia temporal
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.17
+\end_layout
+
+\end_inset
+
+;
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Coase
+\end_layout
+
+\end_inset
+
+ recibiÃ³ el Premio Nobel en 1991 Â«por su descubrimiento y clarificaciÃ³n de la importancia de los costes de transacciÃ³n y los derechos de propiedad para la estructura institucional y el funcionamiento de la economÃ­aÂ»
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Nobel1991Coase"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+el banco central que promete inflaciÃ³n baja tiene, una vez fijadas las expectativas, incentivos a incumplir: es la inconsistencia temporal de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{KydlandPrescott1977Rules}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{BarroGordon1983Rules}
+\end_layout
+
+\end_inset
+
+, en la que la discreciÃ³n es el EN del juego entre la autoridad y el pÃºblico, y que se resuelve con reglas, reputaciÃ³n o independencia 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.36
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Kydland
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Prescott
+\end_layout
+
+\end_inset
+
+ recibieron el Premio Nobel en 2004 Â«por sus contribuciones a la macroeconomÃ­a dinÃ¡mica: la consistencia temporal de la polÃ­tica econÃ³mica y las fuerzas que impulsan los ciclos econÃ³micosÂ»
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Nobel2004KydlandPrescott"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El compromiso de 
+\shape up
+I
+\shape default
+: invertir antes en capacidad hace creÃ­ble la guerra de precios
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:juego-entrada-compromiso"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.8
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+juego-entrada-compromiso
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Schelling1960Strategy}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~8]{Tirole1988Theory}
+\end_layout
+
+\end_inset
+
+. Pagos: (E, I), con un coste hundido de la capacidad de 2,5; en rojo, el ENPS.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Evidencia sobre los juegos dinÃ¡micos
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:evidencia-dinamicos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juegos secuenciales
+\emph default
+: la inducciÃ³n hacia atrÃ¡s exige mucha racionalidad. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En el 
+\emph on
+juego del ciempiÃ©s
+\emph default
+ de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Rosenthal1981Games}
+\end_layout
+
+\end_inset
+
+, 2
+\begin_inset space ~
+
+\end_inset
+
+jugadores se pasan el turno y el bote crece en cada paso; el Ãºnico ENPS es parar en la primera jugada, pero en el laboratorio casi nadie para al principio
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "McKelveyPalfrey1992Experimental"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+En el 
+\emph on
+juego del ultimÃ¡tum
+\emph default
+, muchos rechazan ofertas positivas que juzgan injustas (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:negociacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Juegos repetidos
+\emph default
+, en torneos, simulaciones y laboratorio: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En los torneos de dilemas del prisionero repetidos de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Axelrod1984Evolution}
+\end_layout
+
+\end_inset
+
+, ganÃ³ una de las estrategias mÃ¡s sencillas, Â«donde las dan, las tomanÂ»: cooperar al principio y despuÃ©s hacer lo que hizo el otro en la jugada anterior. 
+\end_layout
+
+\begin_layout Itemize
+Con errores (alguien se desvÃ­a sin querer), Â«donde las dan, las tomanÂ» encadena represalias; en las simulaciones de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{NowakSigmund1993Strategy}
+\end_layout
+
+\end_inset
+
+ la supera Â«si gano, repito; si pierdo, cambioÂ», que vuelve a cooperar tras un castigo. 
+\end_layout
+
+\begin_layout Itemize
+En el laboratorio, la cooperaciÃ³n es mÃ¡s frecuente cuanto mÃ¡s probable es que el juego continÃºe, como predice 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:gatillo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "DalBo2005Cooperation"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 % ==========================================================================
 \end_layout
 
@@ -22699,6 +22296,291 @@ Shapley
 \begin_inset CommandInset label
 LatexCommand label
 name "anexo:cooperativos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El consorcio de 
+\shape up
+I
+\shape default
+, E y O: lo que consigue cada coaliciÃ³n, 
+\begin_inset Formula $v(T)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:consorcio"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="2" columns="8">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="2.2cm">
+<column alignment="center" valignment="middle" width="1.15cm">
+<column alignment="center" valignment="middle" width="1.15cm">
+<column alignment="center" valignment="middle" width="1.15cm">
+<column alignment="center" valignment="middle" width="1.15cm">
+<column alignment="center" valignment="middle" width="1.15cm">
+<column alignment="center" valignment="middle" width="1.15cm">
+<column alignment="center" valignment="middle" width="1.6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+CoaliciÃ³n
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\{\text{I}\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\{\text{E}\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\{\text{O}\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\{\text{E},\text{O}\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\{\text{I},\text{E}\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\{\text{I},\text{O}\}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $\{\text{I},\text{E},\text{O}\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $v(T)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+60 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+100 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia. 
+\shape up
+I
+\shape default
+ es el jugador 1 (el vendedor de la red), y E y O, los jugadores 2
+\begin_inset space ~
+
+\end_inset
+
+y 3 (los compradores).
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
 
 \end_inset
 
@@ -24011,6 +23893,74 @@ findemo
 \begin_layout Itemize
 
 \emph on
+Precio de reserva en el ejemplo del 5G
+\emph default
+. En la licencia del 5G, con valoraciones entre 0
+\begin_inset space ~
+
+\end_inset
+
+y 12, el valor virtual es 
+\begin_inset Formula $\psi(v)=2v-12$
+\end_inset
+
+ y el precio de reserva Ã³ptimo, 6: el Gobierno no venderÃ­a por menos de 6. Con las valoraciones de 
+\shape up
+I
+\shape default
+, E y O no cambia nada en segundo precio (
+\shape up
+I
+\shape default
+ ya pagaba 8); pero si E y O valoraran la licencia en 3
+\begin_inset space ~
+
+\end_inset
+
+y 2, sin precio de reserva 
+\shape up
+I
+\shape default
+ pagarÃ­a 3, y con Ã©l, 6. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Un pujador mÃ¡s vale mÃ¡s que el precio de reserva
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "BulowKlemperer1996Auctions"
+literal "false"
+
+\end_inset
+
+: con 
+\begin_inset Formula $U[0,1]$
+\end_inset
+
+, 3
+\begin_inset space ~
+
+\end_inset
+
+pujadores sin precio de reserva dan un ingreso esperado de 
+\begin_inset Formula $(3-1)/(3+1)=1/2$
+\end_inset
+
+, mÃ¡s que los 
+\begin_inset Formula $5/12$
+\end_inset
+
+ de la subasta Ã³ptima con 2. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 Valor comÃºn
 \emph default
 . Si el valor 
@@ -24043,6 +23993,480 @@ literal "false"
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Subsection*
+La rotaciÃ³n de ofertas, en una tabla
+\end_layout
+
+\begin_layout Standard
+Lo que gana cada uno en cada subasta si 
+\shape up
+I
+\shape default
+ y E se turnan (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:colusion-subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): la tentaciÃ³n de romper el acuerdo la tiene quien espera su turno, y la rotaciÃ³n se sostiene si 
+\begin_inset Formula $G\beta/(1-\beta^2)\geq G$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:rotacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La rotaciÃ³n de 
+\shape up
+I
+\shape default
+ y E en las subastas del 5G: lo que gana cada uno en cada subasta y lo que vale hoy
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:rotacion"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="4" columns="7">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="3.9cm">
+<column alignment="center" valignment="middle" width="1.05cm">
+<column alignment="center" valignment="middle" width="1.05cm">
+<column alignment="center" valignment="middle" width="1.05cm">
+<column alignment="center" valignment="middle" width="1.05cm">
+<column alignment="center" valignment="middle" width="1.05cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Subasta
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Hoy
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+2.Âª
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+3.Âª
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+4.Âª
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+…
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Valor hoy
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\shape up
+I
+\shape default
+, a quien le toca hoy 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+…
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G/(1-\beta^2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] E, si cumple 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+…
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G\beta/(1-\beta^2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+E, si se desvÃ­a hoy 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+…
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia. 
+\begin_inset Formula $G$
+\end_inset
+
+: lo que vale la licencia menos el precio de reserva; 
+\begin_inset Formula $\beta$
+\end_inset
+
+: factor de descuento entre 2
+\begin_inset space ~
+
+\end_inset
+
+subastas. Tras la desviaciÃ³n vuelve la competencia, que se lleva toda la ganancia.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24114,7 +24538,7 @@ status collapsed
 \emph on
 Pujadores asimÃ©tricos
 \emph default
-: el primer precio puede asignar el bien a quien no mÃ¡s lo valora, y no hay una ordenaciÃ³n general de los ingresos
+: el primer precio puede asignar el bien a quien no es el que mÃ¡s lo valora, y no hay una ordenaciÃ³n general de los ingresos
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
@@ -24266,7 +24690,7 @@ millones de euros en total
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
-key "MINECO2022Subasta26GHz"
+key "MINECO2022Subasta26GHz,BOE2023ETD114"
 literal "false"
 
 \end_inset
@@ -24300,7 +24724,7 @@ nolink "false"
 
 \end_inset
 
-, las pujas escalonadas se ordenan de mayor a menor hasta agotar la oferta; con precio uniforme todos pagan la Ãºltima puja aceptada, y con precio discriminatorio cada uno paga sus pujas (
+, las pujas escalonadas se ordenan de mayor a menor hasta agotar la oferta (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:multiunidad"
@@ -24311,9 +24735,81 @@ nolink "false"
 
 \end_inset
 
-). 
+): 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Precio uniforme
+\end_layout
+
+\end_inset
+
+: todos pagan el precio marginal, el de la Ãºltima puja aceptada. Como la puja por las Ãºltimas unidades puede fijar el precio de todas, los grandes pujadores tienen incentivo a pujar por debajo de su valor en esas unidades: es la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+reducciÃ³n de la demanda
+\end_layout
+
+\end_inset
+
+, que resta ingreso y eficiencia
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "AusubelCramtonPyciaRostekWeretka2014Demand"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Precio discriminatorio
+\end_layout
+
+\end_inset
+
+ (o Â«precio ofrecidoÂ»): cada uno paga sus pujas, y todos sombrean. NingÃºn formato domina en general al otro.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Ojo con la terminologÃ­a del mercado de deuda pÃºblica: 
+\end_layout
+
+\begin_layout Itemize
+se llama Â«subasta holandesaÂ» a la de precio Ãºnico, y 
+\end_layout
+
+\begin_layout Itemize
+Â«americanaÂ», a la de precio ofrecido. 
+\end_layout
+
+\begin_layout Standard
+En la teorÃ­a, la holandesa es la descendente, que con varias unidades es discriminatoria.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -24621,7 +25117,7 @@ millones de euros, mÃ¡s del cuÃ¡druple del precio de salida
 \begin_inset CommandInset citation
 LatexCommand nocite
 after ""
-key "MINECO2018Subasta5G"
+key "MINECO2018Subasta5G,BOE2018ECE1161"
 literal "false"
 
 \end_inset
@@ -25444,7 +25940,17 @@ status collapsed
 
 \end_inset
 
-; la coordinaciÃ³n de las polÃ­ticas econÃ³micas entre paÃ­ses 
+; la coordinaciÃ³n de las polÃ­ticas econÃ³micas entre paÃ­ses (el Plaza, en 1985, para depreciar el dÃ³lar, y el Louvre, en 1987, para frenar su caÃ­da y estabilizarlo: todos querÃ­an coordinarse, pero cada uno preferÃ­a que ajustaran los demÃ¡s) 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.19
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -25871,7 +26377,25 @@ nolink "false"
 
 \end_inset
 
-). En junio de 2012, EspaÃ±a pidiÃ³ al Eurogrupo asistencia para recapitalizar su banca, con un prÃ©stamo de hasta 100.000
+)
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "MEDE2026Espana,BCE2012OMT"
+literal "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Los hechos
+\emph default
+: en junio de 2012, EspaÃ±a pidiÃ³ al Eurogrupo asistencia para recapitalizar su banca, con un prÃ©stamo de hasta 100.000
 \begin_inset space ~
 
 \end_inset
@@ -25894,9 +26418,26 @@ literal "false"
 
 \end_inset
 
-. El pulso fue ese: el BCE querÃ­a que EspaÃ±a pidiera el programa antes de comprar su deuda, y EspaÃ±a, que el BCE la sostuviera sin pedirlo. En forma estilizada, con pagos que son una lectura propia y no salen de esas fuentes, EspaÃ±a puede aceptar un rescate o no aceptarlo; el BCE, seguir sosteniendo su financiaciÃ³n o dejar de hacerlo. Al BCE le conviene dejar de financiar si EspaÃ±a acepta el rescate, que sanearÃ­a su sistema financiero; a EspaÃ±a, no aceptarlo si el BCE sigue financiando. Si ninguno cede, la crisis es catastrÃ³fica para los 2. 
+. 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+El pulso
+\emph default
+: el BCE querÃ­a que EspaÃ±a pidiera el programa antes de comprar su deuda, y EspaÃ±a, que el BCE la sostuviera sin pedirlo. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El juego
+\emph default
+, en forma estilizada y con pagos que son una lectura propia y no salen de esas fuentes: EspaÃ±a puede aceptar un rescate o no aceptarlo; el BCE, seguir sosteniendo su financiaciÃ³n o dejar de hacerlo. Al BCE le conviene dejar de financiar si EspaÃ±a acepta el rescate, que sanearÃ­a su sistema financiero; a EspaÃ±a, no aceptarlo si el BCE sigue financiando. Si ninguno cede, la crisis es catastrÃ³fica para los 2. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -28860,7 +29401,16 @@ y 60
 
 \end_inset
 
-rendÃ­an de forma sistemÃ¡tica menos de lo esperado. Gana quien mÃ¡s ha sobrestimado el valor, y quien puja su estimaciÃ³n paga, en promedio, de mÃ¡s (grÃ¡fico
+rendÃ­an de forma sistemÃ¡tica menos de lo esperado, y fueron los primeros en describir lo que hoy se llama Â«maldiciÃ³n del ganadorÂ»
+\begin_inset CommandInset citation
+LatexCommand nocite
+after ""
+key "Thaler1988Anomalies"
+literal "false"
+
+\end_inset
+
+. Gana quien mÃ¡s ha sobrestimado el valor, y quien puja su estimaciÃ³n paga, en promedio, de mÃ¡s (grÃ¡fico
 \begin_inset space ~
 
 \end_inset

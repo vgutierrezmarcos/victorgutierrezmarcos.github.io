@@ -313,6 +313,19 @@ Pasada final del 21/11/2026. `verificar-tema.py`: 0 errores; 2 avisos ya conocid
 | d) Formato, ilustraciones y notación | Sí | — | 16 gráficos numerados y citados. Ninguna caja ni tabla se sale, no hay títulos de dos líneas con palabra sola ni overfull. μ es el multiplicador del dual, como en el canon. Detalle menor: en D.1 ii) (Rotterdam), una viñeta solo con la ecuación (35) |
 | e) Claridad sin más extensión | Sí, con reserva | — | Notas al opositor en I, II y III. Diez anexos para lo que no se canta. Introducción y conclusión propias con el refrán («A falta de pan…») y la idea final que lo retoma. `\minutos` 2 + 10 + 5 + 12 + 1 = 30. Ha crecido de 32 a 40 páginas por el contenido nuevo (sistemas de demanda, índices, bienestar). **Decide Víctor:** dejarlo en 40 (recomendado: está en el máximo y lo que se puede quitar ya está en anexos) o recortar algo más del bloque III |
 
+
+### Ficha
+
+Comparada con el tema (21/11/2026). Estructura, `\minutos` y esquema del cante (2 + 10 + 5 + 12 + 1, subapartados 2/5/3, 0,5/3,5/1, 2,5/3,5/6), cifras (2,7 %, EPF 24.000 hogares y 35.101 €, Boskin 1,1 y 0,4), años, autores y notación coincidían. Corregido:
+
+- **Refrán**: el «Enganche» empieza ahora por «A falta de pan, buenas son tortas» y la idea final lo retoma (Laspeyres ignora la sustitución); se añade la última viñeta del tema (sumar el bienestar de personas distintas exige juicios de valor).
+- **Willig**: la fórmula de la aproximación pasó al anexo G; la ficha da, como el cuerpo, el error relativo $|\varepsilon|\,|\Delta\mathrm{EC}|/2\overline{W}$ y su lectura (vale si el bien pesa poco).
+- **Integrabilidad**: fuera el gráfico de la recuperación de la utilidad (está en el anexo); se añade Afriat (1967).
+- **III.3**: títulos como en el tema («Idea» y «Medición de la variación del bienestar», con información completa e incompleta e índices); se añaden el gráfico del problema de medir el bienestar, el decisor público y la dependencia del camino del excedente con varios precios.
+- **Conclusión**: relevancia con sus usos (elasticidades fiscales, exceso de gravamen, proyectos, sesgo del IPC) y extensiones completas del tema (3.A.24, 3.A.30, 3.A.10, 3.A.29).
+
+`construir-repaso.py`: 4 páginas, **letra de 10 pt** (columna 7 al 94 %, anexo al 46 %). `verificar-tema.py`: 0 errores; queda solo el aviso conocido de «Comisión Boskin» (falso positivo).
+
 ## Dudas abiertas
 
 Criterios aplicados mientras Víctor no diga otra cosa:

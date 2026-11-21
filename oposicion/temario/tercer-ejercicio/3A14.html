@@ -152,10 +152,15 @@
 <li><a href="#el-teorema-minimax-y-los-penaltis-del-fútbol" id="toc-el-teorema-minimax-y-los-penaltis-del-fútbol">El teorema minimax y los penaltis del fútbol</a></li>
 <li><a href="#los-juegos-secuenciales-como-estáticos-con-variación-conjetural" id="toc-los-juegos-secuenciales-como-estáticos-con-variación-conjetural">Los juegos secuenciales como estáticos con variación conjetural</a></li>
 <li><a href="#purificación-y-refinamientos-con-información-incompleta" id="toc-purificación-y-refinamientos-con-información-incompleta">Purificación y refinamientos con información incompleta</a></li>
+<li><a href="#anexo:compromiso" id="toc-anexo:compromiso">El compromiso de <span class="upright">I</span> y el compromiso en economía</a></li>
+<li><a href="#anexo:evidencia-dinamicos" id="toc-anexo:evidencia-dinamicos">Evidencia sobre los juegos dinámicos</a></li>
 </ul></li>
 <li><a href="#anexo:rubinstein" id="toc-anexo:rubinstein">C. Anexo: la negociación de <span class="smallcaps">Rubinstein</span> y su límite</a></li>
 <li><a href="#anexo:cooperativos" id="toc-anexo:cooperativos">D. Anexo: cálculo del núcleo y del valor de <span class="smallcaps">Shapley</span></a></li>
-<li><a href="#anexo:subastas" id="toc-anexo:subastas">E. Anexo: subastas, derivaciones</a></li>
+<li><a href="#anexo:subastas" id="toc-anexo:subastas">E. Anexo: subastas, derivaciones</a>
+<ul>
+<li><a href="#la-rotación-de-ofertas-en-una-tabla" id="toc-la-rotación-de-ofertas-en-una-tabla">La rotación de ofertas, en una tabla</a></li>
+</ul></li>
 <li><a href="#anexo:subastas-practica" id="toc-anexo:subastas-practica">F. Anexo: las subastas en la práctica</a>
 <ul>
 <li><a href="#cuando-fallan-los-supuestos-del-modelo-de-referencia" id="toc-cuando-fallan-los-supuestos-del-modelo-de-referencia">Cuando fallan los supuestos del modelo de referencia</a></li>
@@ -189,7 +194,7 @@
                     <p class="tema-codigo">Tema 3.A.14</p>
                     <h1 class="tema-titulo">Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.</h1>
                     <p class="tema-meta">Última actualización: 20/10/2026 · Cante: 30 minutos</p>
-                    <p class="tema-meta tema-paginas">Tema: 41 págs. · Anexos: 21 · Bibliografía: 7 (PDF)</p>
+                    <p class="tema-meta tema-paginas">Tema: 39 págs. · Anexos: 23 · Bibliografía: 7 (PDF)</p>
                     <div class="tema-descargas">
                         <a href="3A14.pdf" target="_blank">Descargar PDF</a>
                         <a href="3A14.docx" download>Descargar Word</a>
@@ -203,7 +208,7 @@
 <ul>
 <li><p><strong><em>Enganche</em></strong>:</p>
 <ul>
-<li><p>«Hoy por ti, mañana por mí», dice el refrán. ¿Por qué ayudamos sin firmar nada al vecino, al compañero o al proveedor con el que vamos a volver a tratar, y no a un desconocido al que no veremos más? No hace falta suponer que somos mejores con unos que con otros: lo que cambia es el juego. La teoría de juegos responde que lo que hace cada uno depende de la <em>estructura</em> del juego: si se repite o no, qué sabe cada jugador, quién mueve primero y cuáles son las reglas.</p></li>
+<li><p>«Hoy por ti, mañana por mí», dice el refrán. ¿Por qué ayudamos sin firmar nada al vecino, al compañero o al proveedor con el que vamos a volver a tratar, y no a un desconocido al que no veremos más? La teoría de juegos responde que no somos mejores con unos que con otros: lo que cambia es la <em>estructura</em> del juego, es decir, si se repite o no, qué sabe cada jugador, quién mueve primero y cuáles son las reglas.</p></li>
 <li><p>Las reglas también las escribe el Estado. En julio de 2021 subastó la banda de 700 MHz para el 5G: tras 12 rondas de pujas, adjudicó concesiones por 1.010 millones de euros, apenas por encima del precio de salida de 995,5 millones. Ningún funcionario sabía cuánto valía ese espectro para cada operador; el formato de la subasta les obligó a revelarlo, al menos en parte, con sus pujas.</p></li>
 <li><p>Detrás está la pregunta de esta exposición: ¿se puede predecir lo que harán agentes racionales cuyas decisiones dependen unas de otras y que se anticipan unos a otros? ¿Y se pueden diseñar las reglas para que, jugando en su propio interés, revelen lo que saben?</p></li>
 </ul></li>
@@ -270,7 +275,8 @@
 <li><p>las subastas (<a href="#sec:subastas">III.3</a>), que terminan con la colusión entre los pujadores (<a href="#sec:colusion-subastas">III.3.4</a>).</p></li>
 </ul></li>
 </ul>
-<p>El orden va de menos a más información privada, porque las subastas son juegos con información incompleta. El eje de la exposición es el concepto de equilibrio (tabla <a href="#tab:clasificacion-juegos">1</a>): cada paso añade un ingrediente (el tiempo, la información privada, los acuerdos vinculantes) que obliga a refinarlo, y el tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado. Un mismo ejemplo acompaña a toda la exposición, el de nuestros 2 operadores de telecomunicaciones: <strong>I</strong>, un operador de telecomunicaciones ya <em>instalado</em> en el mercado, y <strong>E</strong>, uno que quiere <em>entrar</em> en él. A lo largo de la exposición:</p>
+<p>El eje de la exposición es el concepto de equilibrio (tabla <a href="#tab:clasificacion-juegos">1</a>). Cada paso añade un ingrediente (el tiempo, la información privada, los acuerdos vinculantes) que obliga a refinarlo. El orden va de menos a más información privada, porque las subastas son juegos con información incompleta. El tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado.</p>
+<p>Un mismo ejemplo acompaña a toda la exposición, el de 2 operadores de telecomunicaciones: <strong>I</strong>, ya <em>instalado</em> en el mercado, y <strong>E</strong>, que quiere <em>entrar</em> en él. A lo largo de la exposición:</p>
 <ul>
 <li><p>se enfrentan en una guerra de precios;</p></li>
 <li><p>E decide si entra e I si se resiste;</p></li>
@@ -317,8 +323,8 @@
 <ul>
 <li><p><em>Elementos y clasificación</em> (1′30″): los 4 elementos de un juego, de palabra, presentando a I y E; la tabla de clasificación vacía, con las columnas «estáticos» y «dinámicos» (esta, partida en «secuenciales» y «repetidos») y las filas «información completa», «información incompleta» y «cooperativos».</p></li>
 <li><p><em>Juegos estáticos</em> (3′30″): la matriz de la guerra de precios (tabla <a href="#tab:dilema-prisionero">2</a>), subrayando las mejores respuestas y sombreando el equilibrio (1′); la definición del EN (<a href="#eq:nash">1</a>), función clave; «EN» en su casilla de la tabla. La existencia en mixtas (con la campaña de <span class="upright">I</span> y E), el minimax y la coordinación, de palabra, con su clásico en una frase cada uno (prisionero, pares o nones, batalla de los sexos, gallina).</p></li>
-<li><p><em>Juegos secuenciales</em> (2′): el árbol de entrada (gráfico <a href="#fig:juego-entrada">1</a>), descartando «Luchar»; «ENPS» en la tabla, con «Perro ladrador, poco mordedor»; el compromiso, añadiendo de palabra la rama «Invertir» (gráfico <a href="#fig:juego-entrada-compromiso">2</a> como apoyo), con «Quemar las naves».</p></li>
-<li><p><em>Juegos repetidos</em> (2′): de vuelta a la matriz, la condición del gatillo (<a href="#eq:gatillo">2</a>), calculando <span class="math inline">\(\beta\geq1/5\)</span> con sus pagos; «Hoy por ti, mañana por mí», con los repetidos. La paradoja de la cadena de tiendas, la tabla de estrategias (tabla <a href="#tab:estrategias-repetidas">10</a>) y el teorema de tradición oral, de palabra.</p></li>
+<li><p><em>Juegos secuenciales</em> (2′): el árbol de entrada (gráfico <a href="#fig:juego-entrada">1</a>), descartando «Luchar»; «ENPS» en la tabla, con «Perro ladrador, poco mordedor»; el compromiso, añadiendo de palabra la rama «Invertir» (gráfico <a href="#fig:juego-entrada-compromiso">7</a>, en el anexo <a href="#anexo:compromiso">B</a>, como apoyo), con «Quemar las naves».</p></li>
+<li><p><em>Juegos repetidos</em> (2′): de vuelta a la matriz, la condición del gatillo (<a href="#eq:gatillo">2</a>), calculando <span class="math inline">\(\beta\geq1/5\)</span> con sus pagos; «Hoy por ti, mañana por mí», con los repetidos. La paradoja de la cadena de tiendas, la tabla de estrategias (tabla <a href="#tab:estrategias-repetidas">8</a>) y el teorema de tradición oral, de palabra.</p></li>
 </ul>
 <p>Son de profundización el ciempiés, la otra nomenclatura de los juegos dinámicos, los refinamientos de la reputación y las notas al pie; el juego sin estrategias dominadas y la tabla de estrategias repetidas están en el anexo <a href="#anexo:test">A</a>, y el minimax en detalle y la variación conjetural, en el anexo <a href="#anexo:conceptos">B</a>.</p>
 </div>
@@ -328,7 +334,7 @@
 <section id="sec:elementos" class="level3">
 <h3><span class="numero">I.1.</span> Elementos, representación y clasificación de los juegos</h3>
 <ul>
-<li><p><em>Elementos</em>. Un juego queda descrito por 4 elementos, que ilustramos ya con el ejemplo que nos acompañará en toda la exposición:</p>
+<li><p><em>Elementos</em>. Un juego queda descrito por 4 elementos, que ilustramos con el ejemplo de toda la exposición:</p>
 <ul>
 <li><p>los <strong>jugadores</strong>, <span class="math inline">\(i\in N=\{1,\dots,n\}\)</span>;</p>
 <ul>
@@ -347,7 +353,12 @@
 <li><p>En el ejemplo, los pagos son los beneficios de cada operador, en unidades sencillas (5, 6, 1…), sin funciones de demanda ni de costes: el ejemplo sirve para ilustrar los conceptos, no para describir un mercado concreto; el oligopolio se estudia aparte <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>.</p></li>
 </ul></li>
 </ul></li>
-<li><p><em>Estrategia</em>. Una <strong>estrategia</strong> <span class="math inline">\(s_i\in S_i\)</span> es un <em>plan completo de acción</em>: dice qué hará el jugador en cada situación en la que le pueda tocar mover, incluso en las que no se lleguen a dar. No es lo mismo que una acción: en un juego por turnos, la estrategia del que mueve segundo dice qué hará ante <em>cada</em> jugada posible del primero. Un <strong>perfil de estrategias</strong> <span class="math inline">\(s=(s_1,\dots,s_n)=(s_i,s_{-i})\)</span> reúne una estrategia de cada jugador, donde <span class="math inline">\(s_{-i}\)</span> son las de los demás. Las estrategias pueden ser <strong>puras</strong> (elegir con certeza) o <strong>mixtas</strong> (elegir al azar con unas probabilidades).</p></li>
+<li><p><em>Estrategia</em>. Una <strong>estrategia</strong> <span class="math inline">\(s_i\in S_i\)</span> es un <em>plan completo de acción</em>: dice qué hará el jugador en cada situación en la que le pueda tocar mover, incluso en las que no se lleguen a dar.</p>
+<ul>
+<li><p>No es lo mismo que una acción: en un juego por turnos, la estrategia del que mueve segundo dice qué hará ante <em>cada</em> jugada posible del primero.</p></li>
+<li><p>Un <strong>perfil de estrategias</strong> <span class="math inline">\(s=(s_1,\dots,s_n)=(s_i,s_{-i})\)</span> reúne una de cada jugador; <span class="math inline">\(s_{-i}\)</span> son las de los demás.</p></li>
+<li><p>Las estrategias pueden ser <strong>puras</strong> (elegir con certeza) o <strong>mixtas</strong> (elegir al azar con unas probabilidades).</p></li>
+</ul></li>
 <li><p><em>Racionalidad y conocimiento común</em>. Cada jugador maximiza su pago (esperado), y la estructura del juego y la racionalidad de los jugadores son <strong>conocimiento común</strong>: todos las conocen, todos saben que todos las conocen, y así sucesivamente.</p></li>
 <li><p><em>Representaciones</em>:</p>
 <ul>
@@ -406,7 +417,7 @@
 <section id="sec:juegos-estaticos" class="level3">
 <h3><span class="numero">I.2.</span> Juegos estáticos: dominancia y equilibrio de <span class="smallcaps">Nash</span></h3>
 <ul>
-<li><p>Una vez descritos los elementos de un juego, pasamos a predecir cómo se juega cuando todos eligen a la vez. Empezamos por la predicción que menos exige a los jugadores, la dominancia, y pasamos al concepto central, el equilibrio de <span class="smallcaps">Nash</span>.</p></li>
+<li><p>Descritos los elementos, pasamos a predecir cómo se juega cuando todos eligen a la vez: primero, con la predicción que menos exige a los jugadores, la dominancia; después, con el concepto central, el equilibrio de <span class="smallcaps">Nash</span>.</p></li>
 </ul>
 <section id="sec:dominancia" class="level4">
 <h4><span class="numero">I.2.1.</span> Dominancia y dilema del prisionero</h4>
@@ -419,7 +430,7 @@
 </ul></li>
 <li><p><em>Dilema del prisionero</em>: cuando cada jugador tiene una estrategia estrictamente dominante, la predicción es clara, pero puede ser mala para todos.</p>
 <ul>
-<li><p>Siguiendo con el ejemplo de nuestros 2 operadores, <span class="upright">I</span> (el instalado) y E (el que quiere entrar), supongamos que ya compiten y libran una <em>guerra de precios</em> (tabla <a href="#tab:dilema-prisionero">2</a>, con <span class="upright">I</span> en las filas y E en las columnas):</p>
+<li><p>Supongamos que <span class="upright">I</span> y E ya compiten y libran una <em>guerra de precios</em> (tabla <a href="#tab:dilema-prisionero">2</a>, con <span class="upright">I</span> en las filas y E en las columnas):</p>
 <ul>
 <li><p>cada uno decide, a la vez y sin ver lo que hace el otro, si mantiene un precio alto o lo baja;</p></li>
 <li><p>si los 2 mantienen el precio alto, ganan 5 cada uno;</p></li>
@@ -436,7 +447,7 @@
 </ul></li>
 <li><p><em>Clásico: el dilema del prisionero</em>. 2 detenidos, incomunicados, pueden callar o confesar; confesar es dominante y los 2 acaban con más años de cárcel que si hubieran callado (anexo <a href="#anexo:clasicos">G</a>).</p></li>
 <li><p><em>Eliminación iterativa de estrategias estrictamente dominadas</em>. Si la racionalidad es conocimiento común, se pueden ir eliminando las estrategias dominadas de cada jugador y, en el juego reducido, las que pasen a estarlo. El orden en que se eliminen no altera el resultado, pero cada ronda exige un nivel más de conocimiento común. Con estrategias débilmente dominadas el orden sí importa.</p></li>
-<li><p><em>Valoración</em>: pocas veces existe una estrategia dominante, y la eliminación iterativa suele dejar muchas estrategias sin descartar (en el juego <span class="math inline">\(3\times3\)</span> de la tabla <a href="#tab:sin-dominadas">8</a>, en el anexo <a href="#anexo:test">A</a>, no elimina ninguna). Hace falta un concepto más fuerte.</p></li>
+<li><p><em>Valoración</em>: pocas veces existe una estrategia dominante, y la eliminación iterativa suele dejar muchas estrategias sin descartar (en el juego <span class="math inline">\(3\times3\)</span> de la tabla <a href="#tab:sin-dominadas">6</a>, en el anexo <a href="#anexo:test">A</a>, no elimina ninguna). Hace falta un concepto más fuerte.</p></li>
 </ul>
 <div id="tab:dilema-prisionero">
 <table>
@@ -494,7 +505,7 @@
 </div>
 <p>La desigualdad es <em>débil</em>: basta con que nadie gane desviándose; puede haber otra estrategia igual de buena.</p></li>
 <li><p><em>Interpretación</em>: un EN es un perfil de <em>expectativas que se confirman</em>: si cada uno cree que los demás jugarán <span class="math inline">\(s_{-i}^*\)</span>, le conviene jugar <span class="math inline">\(s_i^*\)</span>, y así lo confirma. Todo EN sobrevive a la eliminación iterativa de estrategias estrictamente dominadas, pero no al revés: el EN es más exigente. Si cada jugador tiene una estrategia estrictamente dominante, ese perfil es el único EN.</p></li>
-<li><p><em>Cómo se halla</em> (anexo <a href="#anexo:test">A</a>): en cada columna se subraya el mejor pago del jugador de las filas y en cada fila el mejor del de las columnas; las casillas con los 2 pagos subrayados son EN. En la guerra de precios, el único EN es (Bajo, Bajo); en la tabla <a href="#tab:sin-dominadas">8</a>, (Abajo, Derecha), aunque ninguna estrategia está dominada.</p></li>
+<li><p><em>Cómo se halla</em> (anexo <a href="#anexo:test">A</a>): en cada columna se subraya el mejor pago del jugador de las filas y en cada fila el mejor del de las columnas; las casillas con los 2 pagos subrayados son EN. En la guerra de precios, el único EN es (Bajo, Bajo); en la tabla <a href="#tab:sin-dominadas">6</a>, (Abajo, Derecha), aunque ninguna estrategia está dominada.</p></li>
 <li><p><em>Estrategias mixtas</em>. Una <strong>estrategia mixta</strong> <span class="math inline">\(\vec{\pi}_i\in\Delta(S_i)\)</span> es una <em>distribución de probabilidad</em> sobre las estrategias puras del jugador; en un juego <span class="math inline">\(2\times2\)</span> basta con <span class="math inline">\(\pi_i\)</span>, la probabilidad con que <span class="math inline">\(i\)</span> juega su primera estrategia. Los pagos son entonces utilidades esperadas, <span class="math inline">\(U_i=\mathbb{E}[u_i]\)</span> <a data-app="3A10.pdf" href="3A10.html" class="vertema"><span class="vertema">[ver tema 3.A.10]</span></a>, y el EN se define igual, con <span class="math inline">\(\vec{\pi}\)</span> en lugar de <span class="math inline">\(s\)</span>.</p>
 <ul>
 <li><p><em>Propiedad clave</em>: en un EN en mixtas, cada jugador está <em>indiferente</em> entre las estrategias puras que mezcla (si una diera más, pondría en ella toda la probabilidad). Por eso <em>las probabilidades de un jugador se fijan para dejar indiferente al otro</em>, y dependen de los pagos del otro, no de los suyos (ejemplo resuelto, el juego de la inspección, en el anexo <a href="#anexo:test">A</a>).</p></li>
@@ -528,7 +539,11 @@
 <section id="c-extensiones-juegos-de-suma-cero-y-teorema-minimax" class="level5">
 <h5>c) Extensiones: juegos de suma cero y teorema minimax</h5>
 <ul>
-<li><p>En un juego finito de 2 jugadores y suma cero, lo máximo que el jugador 1 puede asegurarse contra el peor caso es igual a lo mínimo a lo que el 2 puede limitarle; ese <strong>valor del juego</strong> es el pago de equilibrio, y las estrategias minimax forman un EN. En pares o nones (o en la campaña comercial de <span class="upright">I</span> y E, si lo que gana uno lo pierde el otro) cada jugador mezcla al 50 % y el valor es 0. Fue el primer gran resultado de la teoría; el enunciado formal, la diferencia con el maximin frente a la naturaleza y la evidencia de los penaltis del fútbol están en el anexo <a href="#anexo:conceptos">B</a>.</p></li>
+<li><p>Fue el primer gran resultado de la teoría. En un juego finito de 2 jugadores y suma cero, lo máximo que el jugador 1 puede asegurarse contra el peor caso es igual a lo mínimo a lo que el 2 puede limitarle; ese <strong>valor del juego</strong> es el pago de equilibrio, y las estrategias minimax forman un EN.</p>
+<ul>
+<li><p>En pares o nones (o en la campaña de <span class="upright">I</span> y E, si lo que gana uno lo pierde el otro), cada jugador mezcla al 50 % y el valor es 0.</p></li>
+<li><p>El enunciado formal, la diferencia con el maximin frente a la naturaleza y la evidencia de los penaltis, en el anexo <a href="#anexo:conceptos">B</a>.</p></li>
+</ul></li>
 </ul>
 </section>
 <section id="d-valoración" class="level5">
@@ -536,7 +551,7 @@
 <ul>
 <li><p>El EN tiene 4 limitaciones:</p>
 <ul>
-<li><p>puede <em>no existir en estrategias puras</em> (pares y nones, la inspección, la campaña de <span class="upright">I</span> y E), aunque existe siempre en mixtas en los juegos finitos;</p></li>
+<li><p>puede <em>no existir en estrategias puras</em> (pares o nones, la inspección, la campaña de <span class="upright">I</span> y E), aunque existe siempre en mixtas en los juegos finitos;</p></li>
 <li><p>puede haber <em>varios</em>, y la teoría no dice cuál se jugará. En los <strong>juegos de coordinación</strong> la respuesta la dan a menudo los <strong>puntos focales</strong> de <span class="citation" data-cites="Schelling1960Strategy"><span class="smallcaps">Schelling</span> (<a href="#ref-Schelling1960Strategy" role="doc-biblioref">1960</a>)</span>: el resultado que destaca por la costumbre o la cultura (2 amigos que han quedado en Madrid sin decir dónde van a la Puerta del Sol).</p>
 <ul>
 <li><p>Volvamos a <span class="upright">I</span> y E, ahora como socios: para que sus redes se conecten tienen que adoptar el mismo estándar técnico, pero cada uno prefiere el suyo.</p>
@@ -562,7 +577,7 @@
 <section id="sec:juegos-dinamicos" class="level3">
 <h3><span class="numero">I.3.</span> Juegos dinámicos: juegos secuenciales y juegos repetidos</h3>
 <ul>
-<li><p>Una vez estudiados los juegos en los que todos eligen a la vez y una sola vez, pasamos a los <em>dinámicos</em>, en los que el tiempo importa. Son de 2 clases:</p>
+<li><p>De los juegos en los que todos eligen a la vez y una sola vez pasamos a los <em>dinámicos</em>, en los que el tiempo importa. Son de 2 clases:</p>
 <ul>
 <li><p>los <em>secuenciales</em>, en los que se mueve por turnos (E decide si entra e I responde). En ellos aparece un problema nuevo, la <strong>credibilidad</strong>: un EN puede apoyarse en una amenaza que el jugador no cumpliría si llegara el momento;</p></li>
 <li><p>los <em>repetidos</em>, en los que el mismo juego se juega muchas veces (<span class="upright">I</span> y E se encuentran cada mes). En ellos aparece una oportunidad nueva: la amenaza de castigar mañana puede sostener la cooperación hoy.</p></li>
@@ -576,7 +591,7 @@
 <ul>
 <li><p>En los juegos por turnos aparece un problema nuevo: un EN puede apoyarse en una amenaza que nadie cumpliría llegado el momento.</p>
 <ul>
-<li><p>Siguiendo con nuestros 2 operadores, supongamos ahora que E todavía no está en el mercado (gráfico <a href="#fig:juego-entrada">1</a>; pagos de E y de <span class="upright">I</span>, por este orden). El juego tiene 2 turnos:</p>
+<li><p>Supongamos ahora que E todavía no está en el mercado (gráfico <a href="#fig:juego-entrada">1</a>; pagos de E y de <span class="upright">I</span>, por este orden). El juego tiene 2 turnos:</p>
 <ul>
 <li><p>primero, E decide si entra en el mercado de <span class="upright">I</span>; si no entra, gana 0 e <span class="upright">I</span>, que sigue solo, 4;</p></li>
 <li><p>si E entra, <span class="upright">I</span> decide si acomoda (comparte el mercado y ganan 1 cada uno) o lucha con una guerra de precios (pierden los 2: <span class="math inline">\(-1\)</span> cada uno).</p></li>
@@ -640,7 +655,7 @@
 <ul>
 <li><p>Como la credibilidad se juzga hacia atrás, a un jugador puede convenirle <em>reducir sus propias opciones</em>.</p>
 <ul>
-<li><p>Volvamos a la entrada de E con una novedad (gráfico <a href="#fig:juego-entrada-compromiso">2</a>): antes de que E decida, <span class="upright">I</span> puede comprar una gran capacidad, con un coste hundido de 2,5 que ya no recuperará.</p>
+<li><p>Volvamos a la entrada de E con una novedad (gráfico <a href="#fig:juego-entrada-compromiso">7</a>, en el anexo <a href="#anexo:compromiso">B</a>): antes de que E decida, <span class="upright">I</span> puede comprar una gran capacidad, con un coste hundido de 2,5 que ya no recuperará.</p>
 <ul>
 <li><p>Si <span class="upright">I</span> ha invertido y E entra, su cálculo cambia: acomodando, deja la capacidad ociosa y gana <span class="math inline">\(1-2{,}5=-1{,}5\)</span>; luchando, la aprovecha para inundar el mercado y gana <span class="math inline">\(-1\)</span>. Ahora lucharía, de verdad.</p></li>
 <li><p>E, que lo anticipa, no entra, e <span class="upright">I</span> gana <span class="math inline">\(4-2{,}5=1{,}5\)</span>.</p></li>
@@ -648,19 +663,8 @@
 </ul></li>
 <li><p><em>Clásico: quemar las naves</em>. <span class="smallcaps">Hernán Cortés</span> hundió sus barcos en 1519 para que nadie pudiera retirarse (anexo <a href="#anexo:clasicos">G</a>). «Quemar las naves»: quien elimina su opción de retirada convence a los demás de que luchará.</p></li>
 </ul></li>
-<li><p>En economía:</p>
-<ul>
-<li><p>el monopolista de un bien duradero querría comprometerse a no bajar el precio y no puede: los compradores lo anticipan y esperan, y el precio cae hacia el coste marginal; es la conjetura de <span class="citation" data-cites="Coase1972Durability"><span class="smallcaps">Coase</span> (<a href="#ref-Coase1972Durability" role="doc-biblioref">1972</a>)</span>, un problema de <strong>inconsistencia temporal</strong> <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>;<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
-<li><p>el banco central que promete inflación baja tiene, una vez fijadas las expectativas, incentivos a incumplir: es la inconsistencia temporal de <span class="citation" data-cites="KydlandPrescott1977Rules"><span class="smallcaps">Kydland</span> y <span class="smallcaps">Prescott</span> (<a href="#ref-KydlandPrescott1977Rules" role="doc-biblioref">1977</a>)</span> y <span class="citation" data-cites="BarroGordon1983Rules"><span class="smallcaps">Barro</span> y <span class="smallcaps">Gordon</span> (<a href="#ref-BarroGordon1983Rules" role="doc-biblioref">1983</a>)</span>, en la que la discreción es el EN del juego entre la autoridad y el público, y que se resuelve con reglas, reputación o independencia <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p></li>
-</ul></li>
+<li><p>En economía, la misma falta de compromiso explica la conjetura de <span class="smallcaps">Coase</span> sobre el monopolista de un bien duradero <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a> y la inconsistencia temporal de la política monetaria <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a> (anexo <a href="#anexo:compromiso">B</a>).</p></li>
 </ul>
-<figure id="fig:juego-entrada-compromiso">
-<figcaption><span class="etiqueta">Gráfico 2.–</span> El compromiso de <span class="upright">I</span>: invertir antes en capacidad hace creíble la guerra de precios</figcaption>
-<img src="../fuentes/3A14/graficos/juego-entrada-compromiso.svg" style="width:80.0%" loading="lazy" alt="Gráfico 2.– El compromiso de I: invertir antes en capacidad hace creíble la guerra de precios" />
-<div class="fuente">
-<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Schelling1960Strategy"><span class="smallcaps">Schelling</span> (<a href="#ref-Schelling1960Strategy" role="doc-biblioref">1960</a>)</span> y <span class="citation" data-cites="Tirole1988Theory"><span class="smallcaps">Tirole</span> (<a href="#ref-Tirole1988Theory" role="doc-biblioref">1988, cap. 8</a>)</span>. Pagos: (E, I), con un coste hundido de la capacidad de 2,5; en rojo, el ENPS.</p>
-</div>
-</figure>
 </section>
 </section>
 <section id="c-extensiones" class="level5">
@@ -675,7 +679,7 @@
 <section id="d-evidencia-empírica" class="level5">
 <h5>d) Evidencia empírica</h5>
 <ul>
-<li><p>La inducción hacia atrás exige mucha racionalidad. En el <em>juego del ciempiés</em> de <span class="citation" data-cites="Rosenthal1981Games"><span class="smallcaps">Rosenthal</span> (<a href="#ref-Rosenthal1981Games" role="doc-biblioref">1981</a>)</span>, 2 jugadores se pasan el turno y el bote crece en cada paso; el único ENPS es parar en la primera jugada, pero en el laboratorio casi nadie para al principio. En el <em>juego del ultimátum</em>, muchos rechazan ofertas positivas que juzgan injustas (<a href="#sec:negociacion">II.3.1</a>).</p></li>
+<li><p>La inducción hacia atrás exige mucha racionalidad: en el laboratorio casi nadie juega el ENPS del juego del ciempiés, y en el del ultimátum muchos rechazan ofertas que juzgan injustas (anexo <a href="#anexo:evidencia-dinamicos">B</a>; el ultimátum, en <a href="#sec:negociacion">II.3.1</a>).</p></li>
 </ul>
 </section>
 <section id="e-valoración" class="level5">
@@ -692,7 +696,7 @@
 <ul>
 <li><p>La repetición abre una oportunidad nueva: quien sabe que volverá a encontrarse con el otro puede ganar más cooperando que aprovechándose de él. Es la pregunta del enganche, «Hoy por ti, mañana por mí».</p>
 <ul>
-<li><p>Siguiendo con nuestros 2 operadores, una vez que E ha entrado, <span class="upright">I</span> y E fijan sus precios cada mes, y cada mes se enfrentan a la guerra de precios de la tabla <a href="#tab:dilema-prisionero">2</a>:</p>
+<li><p>Una vez que E ha entrado, <span class="upright">I</span> y E fijan sus precios cada mes, y cada mes se enfrentan a la guerra de precios de la tabla <a href="#tab:dilema-prisionero">2</a>:</p>
 <ul>
 <li><p>si los 2 mantienen el precio alto, ganan 5 cada mes;</p></li>
 <li><p>el que baje el precio un mes gana 6 ese mes, pero el otro puede responderle los meses siguientes.</p></li>
@@ -721,19 +725,20 @@
 <li><p>en el mes 23, con el 24 ya decidido, tampoco hay nada que proteger: bajan el precio, y</p></li>
 <li><p>así, mes a mes, hasta el primero: la cooperación se deshace desde el final.</p></li>
 </ul></li>
-<li><p><em>Clásico: la paradoja de la cadena de tiendas</em> de <span class="citation" data-cites="Selten1978Chain"><span class="smallcaps">Selten</span> (<a href="#ref-Selten1978Chain" role="doc-biblioref">1978</a>)</span>. Una cadena presente en 20 ciudades, que se enfrenta a un entrante en cada una, no puede ganarse la fama de agresiva: en la última ciudad acomoda, porque ya no hay reputación que cuidar, y por inducción hacia atrás acomoda en todas. La intuición dice lo contrario: de ahí la paradoja (anexo <a href="#anexo:clasicos">G</a>); la predación como estrategia de reputación <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>.</p></li>
+<li><p><em>Clásico: la paradoja de la cadena de tiendas</em>: por inducción hacia atrás, la cadena acomoda en todas las ciudades, aunque la intuición diga que le conviene ganarse fama de agresiva (anexo <a href="#anexo:clasicos">G</a>) <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>.</p></li>
 </ul></li>
 <li><p><em>Horizonte infinito</em> (o con un final incierto, porque en cada etapa hay una probabilidad de que el juego continúe): la inducción hacia atrás no tiene por dónde empezar, y el futuro puede disciplinar el presente. Hay 2 tipos de estrategias:</p>
 <ul>
 <li><p><strong>estrategia incondicionada</strong>: jugar el EN de la etapa pase lo que pase (bajar siempre el precio). Es siempre un ENPS: en cada etapa se juega un EN y lo que uno haga hoy no cambia lo que hará el otro mañana. Pero no saca del dilema;</p></li>
-<li><p><strong>estrategias condicionadas</strong>: lo que se hace depende de la historia. La más sencilla es la del <strong>gatillo</strong> (<em>trigger</em>) de <span class="citation" data-cites="Friedman1971Supergames"><span class="smallcaps">Friedman</span> (<a href="#ref-Friedman1971Supergames" role="doc-biblioref">1971</a>)</span>: cooperar mientras el otro coopere y, si alguna vez se desvía, jugar el EN de la etapa para siempre. Con <span class="math inline">\(u^{\mathrm C}\)</span> el pago por etapa de cooperar, <span class="math inline">\(u^{\mathrm D}\)</span> el de desviarse una etapa y <span class="math inline">\(u^{\mathrm N}\)</span> el del EN de la etapa (el castigo), a un jugador no le conviene desviarse si lo que gana cooperando siempre supera lo que gana desviándose hoy y siendo castigado después, <span class="math inline">\(u^{\mathrm C}/(1-\beta)\geq u^{\mathrm D}+\beta\,u^{\mathrm N}/(1-\beta)\)</span>; es decir, si es lo bastante paciente:</p>
+<li><p><strong>estrategias condicionadas</strong>: lo que se hace depende de la historia. La más sencilla es la del <strong>gatillo</strong> (<em>trigger</em>) de <span class="citation" data-cites="Friedman1971Supergames"><span class="smallcaps">Friedman</span> (<a href="#ref-Friedman1971Supergames" role="doc-biblioref">1971</a>)</span>: cooperar mientras el otro coopere y, si alguna vez se desvía, jugar el EN de la etapa para siempre.</p>
+<p><em>Condición</em>. Sean <span class="math inline">\(u^{\mathrm C}\)</span> el pago por etapa de cooperar, <span class="math inline">\(u^{\mathrm D}\)</span> el de desviarse una etapa y <span class="math inline">\(u^{\mathrm N}\)</span> el del EN de la etapa (el castigo). No conviene desviarse si cooperar siempre da más que desviarse hoy y ser castigado después, <span class="math inline">\(u^{\mathrm C}/(1-\beta)\geq u^{\mathrm D}+\beta\,u^{\mathrm N}/(1-\beta)\)</span>; es decir, si el jugador es lo bastante paciente:</p>
 <div class="funcionclave">
 <div id="eq:gatillo">
 
 </div>
 <p><span class="math display">\[\beta\;\geq\;\frac{u^{\mathrm{D}}-u^{\mathrm{C}}}{u^{\mathrm{D}}-u^{\mathrm{N}}}\tag{2}\]</span></p>
 </div>
-<p>El numerador es lo que se gana hoy desviándose; el denominador, lo que se pierde cada etapa después. El castigo es creíble, porque volver al EN de la etapa es un EN en cada subjuego, y por el principio de la desviación única basta con esta comparación: el gatillo es un ENPS.</p>
+<p>El numerador es lo que se gana hoy desviándose; el denominador, lo que se pierde cada etapa después. El castigo es creíble, porque volver al EN de la etapa es un EN en cada subjuego. Por el principio de la desviación única basta con esta comparación: el gatillo es un ENPS.</p>
 <ul>
 <li><p>Siguiendo con la guerra de precios de <span class="upright">I</span> y E, cada mes:</p>
 <ul>
@@ -745,12 +750,7 @@
 <li><p>Como <span class="upright">I</span> y E se encuentran cada mes, <span class="math inline">\(\beta\)</span> está muy cerca de 1, y cooperar sin contrato es un ENPS (la comparación, en un gráfico, en el anexo <a href="#anexo:test">A</a>).</p></li>
 </ul></li>
 </ul></li>
-<li><p><em>Otras estrategias condicionadas</em>, más indulgentes que el gatillo (tabla <a href="#tab:estrategias-repetidas">10</a> y comprobación de cada una con el principio de la desviación única, en el anexo <a href="#anexo:test">A</a>):</p>
-<ul>
-<li><p>«donde las dan, las toman» (<em>tit for tat</em>), que repite lo que el otro hizo en la etapa anterior: su castigo solo es creíble con un valor concreto de <span class="math inline">\(\beta\)</span>;</p></li>
-<li><p>la que solo castiga tras 2 desviaciones seguidas (<em>tit for two tats</em>), que perdona una desviación aislada, pero invita a desviarse una etapa sí y otra no, y</p></li>
-<li><p>«si gano, repito; si pierdo, cambio» (<em>win-stay, lose-shift</em>), que estudiaron <span class="citation" data-cites="NowakSigmund1993Strategy"><span class="smallcaps">Nowak</span> y <span class="smallcaps">Sigmund</span> (<a href="#ref-NowakSigmund1993Strategy" role="doc-biblioref">1993</a>)</span>: es un ENPS si <span class="math inline">\(\beta\)</span> es alto (aquí, <span class="math inline">\(\beta\geq1/4\)</span>).</p></li>
-</ul></li>
+<li><p><em>Otras estrategias condicionadas</em> son más indulgentes que el gatillo: «donde las dan, las toman» (<em>tit for tat</em>), castigar solo tras 2 desviaciones seguidas y «si gano, repito; si pierdo, cambio». Que sean ENPS depende de <span class="math inline">\(\beta\)</span> (tabla <a href="#tab:estrategias-repetidas">8</a> y comprobación de cada una con el principio de la desviación única, en el anexo <a href="#anexo:test">A</a>).</p></li>
 <li><p><em>Teorema de tradición oral</em> (<em>folk theorem</em>; el nombre recuerda que se conocía antes de publicarse): en un juego repetido infinitamente, <em>cualquier</em> pago medio factible que dé a cada jugador más que su pago de castigo puede sostenerse como ENPS si los jugadores son lo bastante pacientes (<span class="math inline">\(\beta\)</span> cercano a 1). <span class="citation" data-cites="Friedman1971Supergames"><span class="smallcaps">Friedman</span> (<a href="#ref-Friedman1971Supergames" role="doc-biblioref">1971</a>)</span> lo prueba con castigos de reversión al EN; <span class="citation" data-cites="FudenbergMaskin1986Folk"><span class="smallcaps">Fudenberg</span> y <span class="smallcaps">Maskin</span> (<a href="#ref-FudenbergMaskin1986Folk" role="doc-biblioref">1986</a>)</span>, con el pago minimax como castigo.</p>
 <ul>
 <li><p>Para nuestros 2 operadores, quiere decir que el precio alto no es el único reparto sostenible. Con <span class="math inline">\(\beta\)</span> cercano a 1, <span class="upright">I</span> y E pueden sostener cualquier par de beneficios medios entre 1 (lo que da la guerra de precios) y 5 para cada uno: por ejemplo, 3 cada uno, alternando un mes de precio alto (5) y otro de guerra (1). Y también repartos desiguales, si se turnan para ser el que baja el precio.</p></li>
@@ -760,7 +760,7 @@
 <section id="iii-implicaciones-1" class="level6">
 <h6>iii) Implicaciones</h6>
 <ul>
-<li><p>La repetición explica la cooperación sin contratos: la colusión tácita en el oligopolio <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, la reputación de las empresas y de los bancos centrales <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a> y la cooperación entre países en los acuerdos comerciales <a data-app="3B07.pdf" href="3B07.html" class="vertema"><span class="vertema">[ver tema 3.B.7]</span></a>. Se coopera más cuanto más pacientes son los jugadores, más frecuente es la interacción y antes se detectan los incumplimientos.</p></li>
+<li><p>La repetición explica la cooperación sin contratos: la colusión tácita en el oligopolio <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, la reputación de las empresas y de los bancos centrales <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a> y la cooperación entre países en los acuerdos comerciales <a data-app="3B33.pdf" href="3B33.html" class="vertema"><span class="vertema">[ver tema 3.B.33]</span></a>. Se coopera más cuanto más pacientes son los jugadores, más frecuente es la interacción y antes se detectan los incumplimientos.</p></li>
 <li><p>La misma lógica sostiene la cooperación que la sociedad no quiere: los cárteles que se turnan para ganar las licitaciones públicas son un juego repetido, y el diseño de la subasta puede romperlo (<a href="#sec:subastas">III.3</a>).</p></li>
 </ul>
 </section>
@@ -774,7 +774,7 @@
 <section id="d-evidencia-empírica-1" class="level5">
 <h5>d) Evidencia empírica</h5>
 <ul>
-<li><p>En los torneos de dilemas del prisionero repetidos de <span class="citation" data-cites="Axelrod1984Evolution"><span class="smallcaps">Axelrod</span> (<a href="#ref-Axelrod1984Evolution" role="doc-biblioref">1984</a>)</span>, la estrategia ganadora fue una de las más sencillas, «donde las dan, las toman»: cooperar al principio y después hacer lo que hizo el otro en la jugada anterior. Con errores (alguien se desvía sin querer), «donde las dan, las toman» encadena represalias, y en las simulaciones de <span class="citation" data-cites="NowakSigmund1993Strategy"><span class="smallcaps">Nowak</span> y <span class="smallcaps">Sigmund</span> (<a href="#ref-NowakSigmund1993Strategy" role="doc-biblioref">1993</a>)</span> la supera «si gano, repito; si pierdo, cambio», que vuelve a cooperar tras un castigo. En el laboratorio, la cooperación es más frecuente cuanto más probable es que el juego continúe, como predice (<a href="#eq:gatillo">2</a>).</p></li>
+<li><p>En los torneos de <span class="citation" data-cites="Axelrod1984Evolution"><span class="smallcaps">Axelrod</span> (<a href="#ref-Axelrod1984Evolution" role="doc-biblioref">1984</a>)</span> ganó «donde las dan, las toman», y en el laboratorio se coopera más cuanto más probable es que el juego continúe, como predice (<a href="#eq:gatillo">2</a>) (anexo <a href="#anexo:evidencia-dinamicos">B</a>).</p></li>
 </ul>
 </section>
 <section id="e-valoración-1" class="level5">
@@ -783,7 +783,12 @@
 <li><p>La debilidad del teorema es la contraria a la del EN: en lugar de predecir poco, permite demasiado; casi cualquier resultado puede ser un equilibrio, y el problema pasa a ser de <em>selección de equilibrios</em>. Además, supone que se observa todo lo que hacen los demás: con información privada, la cooperación es más difícil de sostener.</p></li>
 </ul>
 <ul>
-<li><p><em>Recapitulación del bloque I</em>: con información completa, el equilibrio de <span class="smallcaps">Nash</span> es la predicción básica: existe (en mixtas) en todo juego finito, pero puede ser ineficiente o múltiple; en los juegos dinámicos se refina exigiendo racionalidad secuencial (ENPS): en los secuenciales descarta las amenazas no creíbles, y en los repetidos permite sostener la cooperación. Pero la información completa es un supuesto fuerte: E no sabe cuánto le cuesta a I ampliar su red, y en una subasta nadie conoce la valoración de los demás. Pasamos a ver qué ocurre cuando no es así, y cuando los jugadores pueden firmar acuerdos.</p></li>
+<li><p><em>Recapitulación del bloque I</em>:</p>
+<ul>
+<li><p>con información completa, el equilibrio de <span class="smallcaps">Nash</span> es la predicción básica: existe (en mixtas) en todo juego finito, pero puede ser ineficiente o múltiple;</p></li>
+<li><p>en los juegos dinámicos se refina exigiendo racionalidad secuencial (ENPS): en los secuenciales descarta las amenazas no creíbles, y en los repetidos permite sostener la cooperación.</p></li>
+</ul></li>
+<li><p>Pero la información completa es un supuesto fuerte: E no sabe cuánto le cuesta a I ampliar su red, y en una subasta nadie conoce la valoración de los demás. Pasamos a ver qué ocurre cuando no es así, y cuando los jugadores pueden firmar acuerdos.</p></li>
 </ul>
 </section>
 </section>
@@ -794,27 +799,28 @@
 <div class="notaopositor">
 <p>En el cante (7′30″), con la tabla de clasificación y las funciones clave de <a href="#sec:conceptos-informacion-completa">I</a>:</p>
 <ul>
-<li><p><em>Juegos bayesianos</em> (2′): un árbol pequeño con la Naturaleza eligiendo el coste de <span class="upright">I</span> (alto, con probabilidad <span class="math inline">\(\pi\)</span>, o bajo) y la línea discontinua que une los nodos que E no distingue (gráfico <a href="#fig:arbol-harsanyi">3</a> como apoyo); la estrategia como regla que depende del tipo y la condición de E, <span class="math inline">\(2\pi-1\geq0\)</span>; «EBN» en su casilla de la tabla, con «las subastas son juegos bayesianos» como puente.</p></li>
+<li><p><em>Juegos bayesianos</em> (2′): un árbol pequeño con la Naturaleza eligiendo el coste de <span class="upright">I</span> (alto, con probabilidad <span class="math inline">\(\pi\)</span>, o bajo) y la línea discontinua que une los nodos que E no distingue (gráfico <a href="#fig:arbol-harsanyi">2</a> como apoyo); la estrategia como regla que depende del tipo y la condición de E, <span class="math inline">\(2\pi-1\geq0\)</span>; «EBN» en su casilla de la tabla, con «las subastas son juegos bayesianos» como puente.</p></li>
 <li><p><em>Equilibrio bayesiano perfecto</em> (2′): sus 3 condiciones de palabra; la regla de <span class="smallcaps">Bayes</span> con la que E lee el precio de <span class="upright">I</span> y la doble desigualdad del separador; «EBP» en la tabla y, a su lado, «Cuando el río suena, agua lleva»; el criterio intuitivo con su clásico, cerveza o quiche, en una frase.</p></li>
-<li><p><em>Negociación y cooperativos</em> (3′30″): la solución de <span class="smallcaps">Nash</span> (<a href="#eq:nash-negociacion">3</a>), función clave, con sus 4 axiomas de palabra; <span class="smallcaps">Rubinstein</span> y la paciencia como poder de negociación, de palabra; la función característica de <span class="upright">I</span>, E y O, el núcleo en el triángulo de imputaciones (gráfico <a href="#fig:nucleo">4</a>) y el valor de <span class="smallcaps">Shapley</span> con sus 4 axiomas y su resultado; «núcleo, <span class="smallcaps">Shapley</span>» en la fila de los cooperativos.</p></li>
+<li><p><em>Negociación y cooperativos</em> (3′30″): la solución de <span class="smallcaps">Nash</span> (<a href="#eq:nash-negociacion">3</a>), función clave, con sus 4 axiomas de palabra; <span class="smallcaps">Rubinstein</span> y la paciencia como poder de negociación, de palabra; la función característica de <span class="upright">I</span>, E y O, el núcleo en el triángulo de imputaciones (gráfico <a href="#fig:nucleo">3</a>) y el valor de <span class="smallcaps">Shapley</span> con sus 4 axiomas y su resultado; «núcleo, <span class="smallcaps">Shapley</span>» en la fila de los cooperativos.</p></li>
 </ul>
 <p>Son de profundización los refinamientos de las creencias, el juego de mayoría sin núcleo, los axiomas del valor de <span class="smallcaps">Shapley</span> en detalle y sus aplicaciones (con su detalle en los anexos <a href="#anexo:conceptos">B</a> y <a href="#anexo:cooperativos">D</a>).</p>
 </div>
 <ul>
-<li><p>Una vez estudiados los juegos en los que todos conocen los pagos de todos, pasamos a los que tienen <em>información privada</em> y, después, a los juegos en los que se pueden firmar <em>acuerdos vinculantes</em>. <em>Conclusión anticipada</em>: la información privada se trata con tipos, probabilidades y creencias, y el equilibrio se amplía para incluirlas; con acuerdos vinculantes la pregunta deja de ser qué hace cada uno y pasa a ser cómo se reparte lo que el grupo puede conseguir.</p></li>
+<li><p>Dejamos los juegos en los que todos conocen los pagos de todos: primero, los que tienen <em>información privada</em>; después, aquellos en los que se pueden firmar <em>acuerdos vinculantes</em>.</p></li>
+<li><p><em>Conclusión anticipada</em>: la información privada se trata con tipos, probabilidades y creencias, y el equilibrio se amplía para incluirlas; con acuerdos vinculantes la pregunta deja de ser qué hace cada uno y pasa a ser cómo se reparte lo que el grupo puede conseguir.</p></li>
 </ul>
 <section id="sec:juegos-bayesianos" class="level3">
 <h3><span class="numero">II.1.</span> Juegos bayesianos: el equilibrio bayesiano de <span class="smallcaps">Nash</span></h3>
 <section id="a-idea-3" class="level5">
 <h5>a) Idea</h5>
 <ul>
-<li><p>Si un jugador no conoce los pagos de otro, tendría que formarse creencias sobre ellos, creencias sobre las creencias del otro, y así hasta el infinito. <span class="citation" data-cites="Harsanyi1967Games"><span class="smallcaps">Harsanyi</span> (<a href="#ref-Harsanyi1967Games" role="doc-biblioref">1967–1968</a>)</span> lo evita con un truco: un jugador ficticio, la <strong>Naturaleza</strong>, elige al principio el <strong>tipo</strong> de cada jugador (sus pagos) según una distribución que es conocimiento común, y cada uno observa solo el suyo. El juego de información incompleta se convierte así en uno de información <em>imperfecta</em> (gráfico <a href="#fig:arbol-harsanyi">3</a>), que ya sabemos tratar.</p>
+<li><p>Si un jugador no conoce los pagos de otro, tendría que formarse creencias sobre ellos, creencias sobre las creencias del otro, y así hasta el infinito. <span class="citation" data-cites="Harsanyi1967Games"><span class="smallcaps">Harsanyi</span> (<a href="#ref-Harsanyi1967Games" role="doc-biblioref">1967–1968</a>)</span> lo evita con un truco: un jugador ficticio, la <strong>Naturaleza</strong>, elige al principio el <strong>tipo</strong> de cada jugador (sus pagos) según una distribución que es conocimiento común, y cada uno observa solo el suyo. El juego de información incompleta se convierte así en uno de información <em>imperfecta</em> (gráfico <a href="#fig:arbol-harsanyi">2</a>), que ya sabemos tratar.</p>
 <ul>
-<li><p>Siguiendo con nuestros 2 operadores: E quiere entrar, pero no sabe si a <span class="upright">I</span> le resulta caro o barato ampliar su red. Ese coste es el <em>tipo</em> de <span class="upright">I</span>: <span class="upright">I</span> lo conoce y E no. Con el truco de <span class="smallcaps">Harsanyi</span>:</p>
+<li><p>En nuestro ejemplo, E quiere entrar, pero no sabe si a <span class="upright">I</span> le resulta caro o barato ampliar su red. Ese coste es el <em>tipo</em> de <span class="upright">I</span>: <span class="upright">I</span> lo conoce y E no. Con el truco de <span class="smallcaps">Harsanyi</span>:</p>
 <ul>
 <li><p>la Naturaleza elige primero el tipo de <span class="upright">I</span>: coste alto, con probabilidad <span class="math inline">\(\pi\)</span>, o bajo, con <span class="math inline">\(1-\pi\)</span>;</p></li>
 <li><p><span class="upright">I</span> ve su tipo, y</p></li>
-<li><p>E solo conoce las probabilidades, y decide sin saber en qué rama del árbol está (la línea discontinua del gráfico <a href="#fig:arbol-harsanyi">3</a>).</p></li>
+<li><p>E solo conoce las probabilidades, y decide sin saber en qué rama del árbol está (la línea discontinua del gráfico <a href="#fig:arbol-harsanyi">2</a>).</p></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -834,7 +840,7 @@
 <li><p><em>Estrategia</em>: en un juego bayesiano, una estrategia es una <em>regla</em> <span class="math inline">\(s_i(t_i)\)</span> que dice qué hace el jugador <em>según su tipo</em>. Aunque cada uno conoce su tipo, necesita saber qué haría con los demás, porque es lo que los rivales tienen que anticipar.</p></li>
 <li><p><em>Definición</em>. Un perfil de reglas <span class="math inline">\(\big(s_1^*(\cdot),\dots,s_n^*(\cdot)\big)\)</span> es un <strong>equilibrio bayesiano de <span class="smallcaps">Nash</span></strong> (EBN) si cada tipo de cada jugador elige lo que maximiza su pago <em>esperado</em>, dadas sus creencias sobre los tipos de los demás y sus estrategias: <span class="math display">\[\mathbb{E}_{t_{-i}}\Big[u_i\big(s_i^*(t_i),s_{-i}^*(t_{-i});t_i\big)\,\Big|\,t_i\Big]\;\geq\;\mathbb{E}_{t_{-i}}\Big[u_i\big(s_i,s_{-i}^*(t_{-i});t_i\big)\,\Big|\,t_i\Big]\qquad\forall\,s_i\in S_i,\ \forall\,t_i\in\mathcal{T}_i,\ \forall\,i\in N.\]</span> Es un EN del juego en el que cada tipo se trata como un jugador distinto. No necesita creencias fuera del equilibrio: eso solo hace falta cuando hay varias etapas (<a href="#sec:ebp-senalizacion">II.2</a>).</p>
 <ul>
-<li><p>Volvamos a la entrada de E sin conocer los costes de <span class="upright">I</span>. Ahora E decide si entra y, a la vez, <span class="upright">I</span> decide si amplía su capacidad. Ampliar es caro para <span class="upright">I</span> si es de <em>coste alto</em> (probabilidad <span class="math inline">\(\pi\)</span>) y barato si es de <em>coste bajo</em>; E no sabe cuál tiene enfrente. Los pagos, de E y de <span class="upright">I</span>, son los de la tabla <a href="#tab:bayesiano">3</a>.</p></li>
+<li><p>Volvamos a la entrada de E sin conocer los costes de <span class="upright">I</span>. Ahora E decide si entra y, a la vez, <span class="upright">I</span> decide si amplía su capacidad. Ampliar es caro para <span class="upright">I</span> si es de <em>coste alto</em> (probabilidad <span class="math inline">\(\pi\)</span>) y barato si es de <em>coste bajo</em>; E no sabe cuál tiene enfrente. Los pagos, de E y de <span class="upright">I</span>, son los del gráfico <a href="#fig:arbol-harsanyi">2</a> (en forma de tabla, la <a href="#tab:bayesiano">5</a>, en el anexo <a href="#anexo:test">A</a>).</p></li>
 <li><p>Primer paso, lo que hace cada tipo de <span class="upright">I</span>. Cada uno tiene una estrategia dominante:</p>
 <ul>
 <li><p>el de coste alto no amplía nunca: si E entra, gana 1 en lugar de <span class="math inline">\(-1\)</span>, y si no entra, 3 en lugar de 2;</p></li>
@@ -850,47 +856,9 @@
 <li><p>Resultado, el EBN: (Entrar; No ampliar si alto, Ampliar si bajo) si <span class="math inline">\(\pi\geq1/2\)</span>, y (No entrar; No ampliar si alto, Ampliar si bajo) si <span class="math inline">\(\pi\leq1/2\)</span>. Lo que decide E es su creencia sobre el tipo de <span class="upright">I</span>: entra si cree más probable que a <span class="upright">I</span> le salga caro ampliar.</p></li>
 </ul></li>
 </ul>
-<div id="tab:bayesiano">
-<table>
-<caption><span class="etiqueta">Tabla 3.–</span> La entrada de E sin conocer el coste de <span class="upright">I</span>: pagos (E, <span class="upright">I</span>) según el tipo de <span class="upright">I</span></caption>
-<tbody>
-<tr>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td colspan="2" style="text-align: center; vertical-align: middle;"><strong><span class="upright">I</span> de coste alto</strong> (<span class="math inline">\(\pi\)</span>)</td>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td colspan="2" style="text-align: center; vertical-align: middle;"><strong><span class="upright">I</span> de coste bajo</strong> (<span class="math inline">\(1-\pi\)</span>)</td>
-</tr>
-<tr>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td style="text-align: center; vertical-align: middle;"><strong>Ampliar</strong></td>
-<td style="text-align: center; vertical-align: middle;"><strong>No ampliar</strong></td>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td style="text-align: center; vertical-align: middle;"><strong>Ampliar</strong></td>
-<td style="text-align: center; vertical-align: middle;"><strong>No ampliar</strong></td>
-</tr>
-<tr>
-<td style="text-align: center; vertical-align: middle;"><strong>Entrar</strong></td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((-1,-1)\)</span></td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((1,1)\)</span></td>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((-1,2)\)</span></td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((1,1)\)</span></td>
-</tr>
-<tr>
-<td style="text-align: center; vertical-align: middle;"><strong>No entrar</strong></td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,2)\)</span></td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,3)\)</span></td>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,4)\)</span></td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,3)\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="Gibbons1992Game"><span class="smallcaps">Gibbons</span> (<a href="#ref-Gibbons1992Game" role="doc-biblioref">1992, cap. 3</a>)</span>. E, en las filas; <span class="upright">I</span>, en las columnas. Sombreada, la estrategia dominante de cada tipo de <span class="upright">I</span>.</em></p>
 <figure id="fig:arbol-harsanyi">
-<figcaption><span class="etiqueta">Gráfico 3.–</span> La entrada de E sin conocer el coste de <span class="upright">I</span>: el juego con información incompleta, a la <span class="smallcaps">Harsanyi</span></figcaption>
-<img src="../fuentes/3A14/graficos/arbol-harsanyi.svg" style="width:85.0%" loading="lazy" alt="Gráfico 3.– La entrada de E sin conocer el coste de I: el juego con información incompleta, a la Harsanyi" />
+<figcaption><span class="etiqueta">Gráfico 2.–</span> La entrada de E sin conocer el coste de <span class="upright">I</span>: el juego con información incompleta, a la <span class="smallcaps">Harsanyi</span></figcaption>
+<img src="../fuentes/3A14/graficos/arbol-harsanyi.svg" style="width:85.0%" loading="lazy" alt="Gráfico 2.– La entrada de E sin conocer el coste de I: el juego con información incompleta, a la Harsanyi" />
 <div class="fuente">
 <p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Harsanyi1967Games"><span class="smallcaps">Harsanyi</span> (<a href="#ref-Harsanyi1967Games" role="doc-biblioref">1967–1968</a>)</span> y <span class="citation" data-cites="Gibbons1992Game"><span class="smallcaps">Gibbons</span> (<a href="#ref-Gibbons1992Game" role="doc-biblioref">1992, cap. 3</a>)</span>. I es la instalada, de coste alto (probabilidad <span class="math inline">\(\pi\)</span>) o bajo, y E, la entrante. Pagos: (E, I). La línea discontinua une los nodos que E no distingue.</p>
 </div>
@@ -922,7 +890,7 @@
 <section id="a-idea-4" class="level5">
 <h5>a) Idea</h5>
 <ul>
-<li><p>Una vez estudiados los juegos bayesianos estáticos, pasamos a los dinámicos. Cuando el informado mueve primero, su acción <em>revela</em> algo sobre su tipo, y quien mueve después actualiza lo que cree. El ENPS ya no basta: en estos juegos apenas hay subjuegos propios (el que mueve segundo no sabe en qué nodo está), y hay que exigir racionalidad secuencial <em>dadas unas creencias</em>.</p>
+<li><p>Pasamos de los juegos bayesianos estáticos a los dinámicos. Cuando el informado mueve primero, su acción <em>revela</em> algo sobre su tipo, y quien mueve después actualiza lo que cree. El ENPS ya no basta: en estos juegos apenas hay subjuegos propios (el que mueve segundo no sabe en qué nodo está), y hay que exigir racionalidad secuencial <em>dadas unas creencias</em>.</p>
 <ul>
 <li><p>Volvamos a <span class="upright">I</span> y E, ahora con un turno más: antes de que E decida si entra, <span class="upright">I</span> fija su precio de hoy, y E lo ve.</p>
 <ul>
@@ -944,7 +912,7 @@
 <section id="i-supuestos-el-juego-de-señalización" class="level6">
 <h6>i) Supuestos: el juego de señalización</h6>
 <ul>
-<li><p>Es el modelo de <span class="citation" data-cites="Spence1973Job">M. <span class="smallcaps">Spence</span> (<a href="#ref-Spence1973Job" role="doc-biblioref">1973</a>)</span> escrito como juego <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> La Naturaleza elige el tipo del trabajador: productivo (A), con probabilidad <span class="math inline">\(\nu\)</span>, o poco productivo (B), con <span class="math inline">\(1-\nu\)</span>; su productividad es <span class="math inline">\(w_{\mathrm A}&gt;w_{\mathrm B}\)</span>.</p></li>
+<li><p>Es el modelo de <span class="citation" data-cites="Spence1973Job">M. <span class="smallcaps">Spence</span> (<a href="#ref-Spence1973Job" role="doc-biblioref">1973</a>)</span> escrito como juego <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> La Naturaleza elige el tipo del trabajador: productivo (A), con probabilidad <span class="math inline">\(\nu\)</span>, o poco productivo (B), con <span class="math inline">\(1-\nu\)</span>; su productividad es <span class="math inline">\(w_{\mathrm A}&gt;w_{\mathrm B}\)</span>.</p></li>
 <li><p>El trabajador, que conoce su tipo, elige su educación <span class="math inline">\(y\geq0\)</span> (para fijar ideas, <span class="math inline">\(0\)</span> o <span class="math inline">\(\hat y\)</span>), que no aumenta su productividad y le cuesta <span class="math inline">\(c_{\mathrm A}(y)&lt;c_{\mathrm B}(y)\)</span>, con <span class="math inline">\(c_{\mathrm A}&#39;&lt;c_{\mathrm B}&#39;\)</span> (cruce único).</p></li>
 <li><p>Las empresas, que compiten, observan <span class="math inline">\(y\)</span>, forman su creencia <span class="math inline">\(\mu(y)=\Pr(\mathrm A\mid y)\)</span> y pagan la productividad esperada, <span class="math inline">\(w(y)=\mu(y)\,w_{\mathrm A}+\big[1-\mu(y)\big]\,w_{\mathrm B}\)</span>.</p></li>
 </ul>
@@ -960,14 +928,17 @@
 </ol></li>
 <li><p><strong>Equilibrios separadores</strong>: A elige <span class="math inline">\(\hat y\)</span>, B elige 0, <span class="math inline">\(\mu(\hat y)=1\)</span> y <span class="math inline">\(\mu(0)=0\)</span> por la regla de <span class="smallcaps">Bayes</span>. Ninguno quiere imitar al otro si se cumple la doble desigualdad del modelo de <span class="smallcaps">Spence</span> <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a>: <span class="math display">\[c_{\mathrm A}(\hat y)\;\leq\;w_{\mathrm A}-w_{\mathrm B}\;\leq\;c_{\mathrm B}(\hat y).\]</span></p></li>
 <li><p><strong>Equilibrios agrupadores</strong>: los 2 tipos eligen la misma educación, <span class="math inline">\(\mu=\nu\)</span> por la regla de <span class="smallcaps">Bayes</span> y todos cobran <span class="math inline">\(\overline w=\nu w_{\mathrm A}+(1-\nu)w_{\mathrm B}\)</span>; se sostienen con creencias pesimistas fuera de la senda (quien se educa es tomado por B).</p></li>
-<li><p><strong>Criterio intuitivo</strong>. Como las creencias fuera de la senda son libres, hay infinitos EBP. El criterio las disciplina: ante una educación que el tipo B no elegiría nunca, ni aunque le tomaran por A, y que el tipo A sí elegiría si le tomaran por A, las empresas deben creer que quien la elige es A. Elimina todos los agrupadores y todos los separadores salvo el más barato, en el que <span class="math inline">\(\hat y^*\)</span> es el nivel más bajo de educación que el tipo B no imita, <span class="math inline">\(c_{\mathrm B}(\hat y^*)=w_{\mathrm A}-w_{\mathrm B}\)</span>.</p></li>
+<li><p><strong>Criterio intuitivo</strong>. Como las creencias fuera de la senda son libres, hay infinitos EBP. El criterio las disciplina: ante una educación que el tipo B no elegiría nunca, ni aunque le tomaran por A, y que el tipo A sí elegiría si le tomaran por A, las empresas deben creer que quien la elige es A.</p>
+<ul>
+<li><p>Elimina todos los agrupadores y todos los separadores salvo el más barato, en el que <span class="math inline">\(\hat y^*\)</span> es el nivel más bajo de educación que el tipo B no imita, <span class="math inline">\(c_{\mathrm B}(\hat y^*)=w_{\mathrm A}-w_{\mathrm B}\)</span>.</p></li>
+</ul></li>
 <li><p><em>Clásico: cerveza o quiche</em>. Un forastero, fuerte o débil, elige qué desayunar ante un matón que solo quiere pelear con los débiles; el criterio intuitivo descarta el equilibrio en el que los 2 tipos piden quiche (anexo <a href="#anexo:clasicos">G</a>).</p></li>
 </ul>
 </section>
 <section id="iii-implicaciones-3" class="level6">
 <h6>iii) Implicaciones</h6>
 <ul>
-<li><p>Las creencias fuera del equilibrio no son un tecnicismo: son las que sostienen el resultado. En el separador, el tipo B no se educa porque cree que, si eligiera una educación intermedia, le tomarían por B; con otras creencias, se educaría. El criterio intuitivo pide que esas creencias sean razonables: no atribuir a nadie una acción que nunca le convendría.</p></li>
+<li><p>Las creencias fuera del equilibrio no son un tecnicismo: son las que sostienen el resultado. En el separador, el tipo A se educa hasta <span class="math inline">\(\hat y\)</span> porque cree que, si eligiera una educación más baja, le tomarían por B; con otras creencias, se educaría menos. El criterio intuitivo pide que esas creencias sean razonables: no atribuir a nadie una acción que nunca le convendría.</p></li>
 <li><p>La señal tiene un coste de eficiencia: el tipo A gasta en educación solo para distinguirse, y ese gasto es el precio de la información asimétrica <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a>.</p></li>
 </ul>
 </section>
@@ -989,7 +960,7 @@
 <section id="sec:negociacion-cooperativos" class="level3">
 <h3><span class="numero">II.3.</span> Negociación y juegos cooperativos</h3>
 <ul>
-<li><p>Una vez estudiados los juegos no cooperativos, pasamos a los que permiten firmar <em>acuerdos vinculantes</em>. La pregunta ya no es qué estrategia elige cada uno, sino qué reparto del resultado conjunto es aceptable para todos. Empezamos con 2 jugadores (la negociación) y seguimos con <span class="math inline">\(n\)</span> (el núcleo y el valor de <span class="smallcaps">Shapley</span>).</p></li>
+<li><p>Tras los juegos no cooperativos, pasamos a los que permiten firmar <em>acuerdos vinculantes</em>. La pregunta ya no es qué estrategia elige cada uno, sino qué reparto del resultado conjunto es aceptable para todos. Empezamos con 2 jugadores (la negociación) y seguimos con <span class="math inline">\(n\)</span> (el núcleo y el valor de <span class="smallcaps">Shapley</span>).</p></li>
 </ul>
 <section id="sec:negociacion" class="level4">
 <h4><span class="numero">II.3.1.</span> Negociación: la solución de <span class="smallcaps">Nash</span> y su fundamento no cooperativo</h4>
@@ -998,7 +969,7 @@
 <ul>
 <li><p>Cuando 2 partes pueden ganar con un acuerdo, hay todo un abanico de acuerdos eficientes e individualmente racionales, y la teoría tradicional no dice cuál se alcanzará: es la indeterminación de <span class="smallcaps">Edgeworth</span> en la caja de intercambio <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a> y de <span class="smallcaps">Bowley</span> en el monopolio bilateral <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>. La teoría de la negociación la resuelve por 2 caminos, y el <strong>programa de <span class="smallcaps">Nash</span></strong> consiste en comprobar que llegan al mismo sitio: es el puente entre los juegos cooperativos y los no cooperativos.</p>
 <ul>
-<li><p>Siguiendo con nuestros 2 operadores: en lugar de construir su propia red, E puede alquilar la de <span class="upright">I</span>.</p>
+<li><p>En nuestro ejemplo, en lugar de construir su propia red, E puede alquilar la de <span class="upright">I</span>.</p>
 <ul>
 <li><p>Los 2 ganan con el acuerdo: E se ahorra la inversión e <span class="upright">I</span> cobra por una red que ya tiene.</p></li>
 <li><p>Pero el alquiler puede estar en cualquier punto entre lo mínimo que <span class="upright">I</span> acepta (lo que le cuesta dar el servicio) y lo máximo que E paga (lo que le costaría construir su red). Si lo primero es 10 y lo segundo 30, hay un excedente de 20 que repartir.</p></li>
@@ -1060,7 +1031,7 @@
 <section id="c-evidencia-empírica" class="level5">
 <h5>c) Evidencia empírica</h5>
 <ul>
-<li><p><em>Clásico: el juego del ultimátum</em> (anexo <a href="#anexo:clasicos">G</a>). Uno propone un reparto y el otro solo puede aceptarlo o rechazarlo (y entonces nadie cobra). El ENPS con agentes egoístas es ofrecer casi nada y aceptar; en el laboratorio, muchos proponen repartos cercanos a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazarlas cueste dinero. La equidad pesa <a data-app="3A01.pdf" href="3A01.html" class="vertema"><span class="vertema">[ver tema 3.A.1]</span></a>.</p></li>
+<li><p><em>Clásico: el juego del ultimátum</em>: el ENPS es ofrecer casi nada, pero en el laboratorio muchos ofrecen cerca de la mitad y se rechazan las ofertas bajas: la equidad pesa (anexo <a href="#anexo:clasicos">G</a>) <a data-app="3A01.pdf" href="3A01.html" class="vertema"><span class="vertema">[ver tema 3.A.1]</span></a>.</p></li>
 </ul>
 </section>
 <section id="d-valoración-3" class="level5">
@@ -1084,55 +1055,25 @@
 <li><p>Un reparto es una <strong>imputación</strong> si es <em>eficiente</em>, <span class="math inline">\(\sum_{i\in N}x_i=v(N)\)</span>, e <em>individualmente racional</em>, <span class="math inline">\(x_i\geq v(\{i\})\)</span>.</p></li>
 <li><p><em>Definición</em>. Una coalición <span class="math inline">\(T\)</span> <strong>bloquea</strong> un reparto si puede conseguir más por su cuenta, <span class="math inline">\(v(T)&gt;\sum_{i\in T}x_i\)</span>. El <strong>núcleo</strong> es el conjunto de imputaciones que <em>ninguna coalición puede bloquear</em>: <span class="math display">\[\mathcal{C}(v)=\Big\{x:\ \sum_{i\in N}x_i=v(N),\quad \sum_{i\in T}x_i\geq v(T)\ \ \forall\,T\subseteq N\Big\}.\]</span></p>
 <ul>
-<li><p>Siguiendo con nuestros operadores, ahora con un tercero, O (de «otro»). <span class="upright">I</span> tiene una red de torres que puede usar él solo o ceder a un único socio:</p>
+<li><p>Añadamos a <span class="upright">I</span> y E un tercer operador, O (de «otro»). <span class="upright">I</span> tiene una red de torres que puede usar él solo o ceder a un único socio:</p>
 <ul>
 <li><p>si <span class="upright">I</span> la usa él solo, le rinde 20;</p></li>
 <li><p>E sacaría de ella 60, y O, 100, pero solo cabe uno;</p></li>
 <li><p><span class="upright">I</span> es un vendedor (jugador 1), y E y O, 2 compradores (jugadores 2 y 3).</p></li>
 </ul></li>
-<li><p>Si <span class="upright">I</span> se asocia con uno de ellos (forman un consorcio) y se reparten lo que obtienen, la función característica, lo que cada coalición consigue por su cuenta, es la de la tabla <a href="#tab:consorcio">4</a>: <span class="math inline">\(v(\{1\})=20\)</span>, <span class="math inline">\(v(\{2\})=v(\{3\})=v(\{2,3\})=0\)</span>, <span class="math inline">\(v(\{1,2\})=60\)</span> y <span class="math inline">\(v(\{1,3\})=v(N)=100\)</span>.</p></li>
+<li><p>Si <span class="upright">I</span> se asocia con uno de ellos (forman un consorcio) y se reparten lo que obtienen, la función característica, lo que cada coalición consigue por su cuenta, es (tabla <a href="#tab:consorcio">9</a>, en el anexo <a href="#anexo:cooperativos">D</a>) <span class="math inline">\(v(\{1\})=20\)</span>, <span class="math inline">\(v(\{2\})=v(\{3\})=v(\{2,3\})=0\)</span>, <span class="math inline">\(v(\{1,2\})=60\)</span> y <span class="math inline">\(v(\{1,3\})=v(N)=100\)</span>.</p></li>
 <li><p>¿Qué repartos de los 100 son estables? Los que ninguna coalición puede mejorar por su cuenta:</p>
 <ul>
 <li><p><span class="upright">I</span> y O juntos consiguen los 100: <span class="math inline">\(x_1+x_3\geq100\)</span> obliga a <span class="math inline">\(x_2=0\)</span>, y E no recibe nada;</p></li>
 <li><p><span class="upright">I</span> y E juntos consiguen 60: <span class="math inline">\(x_1+x_2\geq60\)</span> obliga a <span class="math inline">\(x_1\geq60\)</span>, porque si <span class="upright">I</span> recibiera menos se iría con E, y</p></li>
 <li><p>las demás condiciones no añaden nada.</p></li>
 </ul></li>
-<li><p>El núcleo es <span class="math display">\[x_2=0,\qquad x_1\in[60,100],\qquad x_3=100-x_1:\]</span> la red va a O, quien más la valora, a un precio entre la segunda valoración y la primera (gráfico <a href="#fig:nucleo">4</a>; cálculo en el anexo <a href="#anexo:cooperativos">D</a>). Es el mismo resultado que dará una subasta inglesa (<a href="#sec:subastas">III.3</a>): la competencia de E es lo que protege a <span class="upright">I</span>, aunque E se quede fuera.</p></li>
+<li><p>El núcleo es <span class="math display">\[x_2=0,\qquad x_1\in[60,100],\qquad x_3=100-x_1:\]</span> la red va a O, quien más la valora, a un precio entre la segunda valoración y la primera (gráfico <a href="#fig:nucleo">3</a>; cálculo en el anexo <a href="#anexo:cooperativos">D</a>). Es el mismo resultado que dará una subasta inglesa (<a href="#sec:subastas">III.3</a>): la competencia de E es lo que protege a <span class="upright">I</span>, aunque E se quede fuera.</p></li>
 </ul></li>
 </ul>
-<div id="tab:consorcio">
-<table>
-<caption><span class="etiqueta">Tabla 4.–</span> El consorcio de <span class="upright">I</span>, E y O: lo que consigue cada coalición, <span class="math inline">\(v(T)\)</span></caption>
-<thead>
-<tr>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Coalición</strong></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I}\}\)</span></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{E}\}\)</span></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{O}\}\)</span></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{E},\text{O}\}\)</span></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I},\text{E}\}\)</span></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I},\text{O}\}\)</span></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I},\text{E},\text{O}\}\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(v(T)\)</span></td>
-<td style="text-align: center; vertical-align: middle;">20</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">60</td>
-<td style="text-align: center; vertical-align: middle;">100</td>
-<td style="text-align: center; vertical-align: middle;">100</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><em>Fuente: elaboración propia. <span class="upright">I</span> es el jugador 1 (el vendedor de la red), y E y O, los jugadores 2 y 3 (los compradores).</em></p>
 <figure id="fig:nucleo">
-<figcaption><span class="etiqueta">Gráfico 4.–</span> Imputaciones y núcleo del juego de <span class="upright">I</span> (vendedor) y E y O (compradores)</figcaption>
-<img src="../fuentes/3A14/graficos/nucleo.svg" style="width:55.0%" loading="lazy" alt="Gráfico 4.– Imputaciones y núcleo del juego de I (vendedor) y E y O (compradores)" />
+<figcaption><span class="etiqueta">Gráfico 3.–</span> Imputaciones y núcleo del juego de <span class="upright">I</span> (vendedor) y E y O (compradores)</figcaption>
+<img src="../fuentes/3A14/graficos/nucleo.svg" style="width:55.0%" loading="lazy" alt="Gráfico 3.– Imputaciones y núcleo del juego de I (vendedor) y E y O (compradores)" />
 <div class="fuente">
 <p>Fuente: elaboración propia.</p>
 </div>
@@ -1154,14 +1095,14 @@
 <ol>
 <li><p><em>eficiencia</em>: reparte todo, <span class="math inline">\(\sum_{i\in N}\phi_i(v)=v(N)\)</span>;</p></li>
 <li><p><em>simetría</em>: 2 jugadores que aportan lo mismo a toda coalición reciben lo mismo;</p></li>
-<li><p><em>jugador nulo</em>: quien no aporta nada a ninguna coalición, <span class="math inline">\(v(T\cup\{i\})=v(T)\)</span> para toda <span class="math inline">\(T\)</span>, recibe 0;<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p></li>
+<li><p><em>jugador nulo</em>: quien no aporta nada a ninguna coalición, <span class="math inline">\(v(T\cup\{i\})=v(T)\)</span> para toda <span class="math inline">\(T\)</span>, recibe 0;<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p></li>
 <li><p><em>aditividad</em>: si se juegan 2 juegos a la vez, el valor es la suma de los valores, <span class="math inline">\(\phi(v+w)=\phi(v)+\phi(w)\)</span>.</p></li>
 </ol></li>
 <li><p><em>Teorema</em>: la única regla que los cumple es <span id="eq:shapley"></span><span class="math display">\[\tag{4}
 \phi_i(v)=\sum_{T\subseteq N\setminus\{i\}}\frac{|T|!\,\big(n-|T|-1\big)!}{n!}\,\Big[v\big(T\cup\{i\}\big)-v(T)\Big].\]</span></p></li>
 <li><p><em>Interpretación</em>: si los jugadores llegan en un orden aleatorio y cada uno cobra lo que aporta a los que ya estaban, el valor de <span class="smallcaps">Shapley</span> es su <em>aportación marginal esperada</em>; el peso es la probabilidad de encontrarse justo con la coalición <span class="math inline">\(T\)</span> al llegar.</p>
 <ul>
-<li><p>Volvamos al consorcio de <span class="upright">I</span>, E y O. Imaginemos que llegan en un orden al azar y que cada uno cobra lo que añade al llegar (tabla <a href="#tab:shapley">11</a>, en el anexo <a href="#anexo:cooperativos">D</a>):</p>
+<li><p>Volvamos al consorcio de <span class="upright">I</span>, E y O. Imaginemos que llegan en un orden al azar y que cada uno cobra lo que añade al llegar (tabla <a href="#tab:shapley">10</a>, en el anexo <a href="#anexo:cooperativos">D</a>):</p>
 <ul>
 <li><p>si llegan en el orden <span class="upright">I</span>, E, O, <span class="upright">I</span> aporta 20 (lo que obtiene solo); E, 40 (de 20 a 60), y O, otros 40 (de 60 a 100);</p></li>
 <li><p>si llega primero O y después <span class="upright">I</span>, O no aporta nada (sin red no hace nada), <span class="upright">I</span> aporta 100 y E, que llega el último, 0;</p></li>
@@ -1193,13 +1134,13 @@
 <div class="notaopositor">
 <p>En el cante (10′), con la tabla de clasificación ya completa, siguen vivas la definición del EN (<a href="#eq:nash">1</a>) y la condición del gatillo (<a href="#eq:gatillo">2</a>), que vuelve al final con la colusión.</p>
 <ul>
-<li><p><em>El hilo del bloque</em>: la tabla de los formatos de subasta (tabla <a href="#tab:formatos-subasta">5</a>) se presenta vacía con los formatos y se completa fila a fila; el ejemplo de la licencia del 5G, la tabla pequeña de <span class="upright">I</span>, E y O (tabla <a href="#tab:subasta-5g">6</a>), con sus valoraciones y una fila por formato (lo que puja cada uno, quién gana y cuánto paga), acompaña hasta la equivalencia de ingresos; la puja de primer precio (<a href="#eq:puja">5</a>) es la función clave que llega hasta la conclusión. Los refranes: «No es oro todo lo que reluce», con el valor común, y «Hoy gano yo, mañana tú», con el gatillo.</p></li>
+<li><p><em>El hilo del bloque</em>: la tabla de los formatos de subasta (tabla <a href="#tab:formatos-subasta">3</a>) se presenta vacía con los formatos y se completa fila a fila; el ejemplo de la licencia del 5G, la tabla pequeña de <span class="upright">I</span>, E y O (tabla <a href="#tab:subasta-5g">4</a>), con sus valoraciones y una fila por formato (lo que puja cada uno, quién gana y cuánto paga), acompaña hasta la equivalencia de ingresos; la puja de primer precio (<a href="#eq:puja">5</a>) es la función clave que llega hasta la conclusión. Los refranes: «No es oro todo lo que reluce», con el valor común, y «Hoy gano yo, mañana tú», con el gatillo.</p></li>
 <li><p><em>Aplicaciones</em> (1′30″): de palabra, los campos con su ejemplo y su remisión.</p></li>
 <li><p><em>Diseño de mecanismos</em> (2′): el esquema «tipos <span class="math inline">\(\to\)</span> mensajes <span class="math inline">\(\to\)</span> resultado» con <span class="math inline">\(\mathrm{PC}_i\)</span> e <span class="math inline">\(\mathrm{IC}_i\)</span> debajo; el principio de revelación con el Gobierno que no sabe cuánto valen las licencias, y el juicio de <span class="smallcaps">Salomón</span> en una frase; los límites, de palabra.</p></li>
 <li><p><em>Subastas</em> (6′30″):</p>
 <ul>
 <li><p>formatos y valores (1′): la tabla de formatos con sus 4 filas y las columnas vacías; valores privados y valor común, de palabra, con el ejemplo de la licencia del 5G, y su tabla con la fila de las valoraciones (10, 8 y 6);</p></li>
-<li><p>segundo precio (1′): en la tabla del ejemplo, las filas del segundo precio y de la inglesa (<span class="upright">I</span> gana y paga 8 en las 2); por qué ni pujar más ni pujar menos compensa; «<span class="math inline">\(b=v\)</span>» en su fila de la tabla de formatos; el gráfico de la subasta (gráfico <a href="#fig:subasta-5g">5</a>) como apoyo;</p></li>
+<li><p>segundo precio (1′): en la tabla del ejemplo, las filas del segundo precio y de la inglesa (<span class="upright">I</span> gana y paga 8 en las 2); por qué ni pujar más ni pujar menos compensa; «<span class="math inline">\(b=v\)</span>» en su fila de la tabla de formatos; el gráfico de la subasta (gráfico <a href="#fig:subasta-5g">4</a>) como apoyo;</p></li>
 <li><p>primer precio (1′30″): el dilema del pujador, de palabra; (<a href="#eq:puja">5</a>), función clave; en la tabla del ejemplo, la fila del primer precio (6,67, 5,33 y 4; <span class="upright">I</span> paga 6,67); el gráfico de pujas (gráfico <a href="#fig:pujas">8</a>) como apoyo; «sombrear» en su fila;</p></li>
 <li><p>equivalencia de ingresos y precio de reserva (1′): (<a href="#eq:equivalencia">6</a>) en una línea, con el 6 del ejemplo en la última fila de su tabla; la fila de la equivalencia, al pie de la tabla;</p></li>
 <li><p>valor común y maldición del ganador (0′30″): «No es oro todo lo que reluce» y el clásico del golfo de México, de palabra;</p></li>
@@ -1210,7 +1151,7 @@
 <p>Son de profundización la subasta óptima en detalle, los valores afiliados, la evidencia, los nuevos formatos y los datos de España y la UE (con su detalle en el anexo <a href="#anexo:subastas-practica">F</a>), las derivaciones del anexo <a href="#anexo:subastas">E</a> y los clásicos del anexo <a href="#anexo:clasicos">G</a>.</p>
 </div>
 <ul>
-<li><p>Una vez estudiados los conceptos, pasamos a sus aplicaciones. Primero, en qué partes de la economía se usan; después, la aplicación que le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, el <em>diseñador</em> elige las reglas para alcanzar el resultado que quiere, y las subastas son su aplicación más acabada.</p>
+<li><p>Pasamos de los conceptos a sus aplicaciones. Primero, en qué partes de la economía se usan; después, la aplicación que le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, el <em>diseñador</em> elige las reglas para alcanzar el resultado que quiere, y las subastas son su aplicación más acabada.</p>
 <ul>
 <li><p>Para nuestros 2 operadores, el escenario cambia: el Gobierno subasta las licencias de espectro del 5G, y por ellas pujan <span class="upright">I</span>, E y O, el tercer operador del consorcio. Hasta ahora las reglas venían dadas; ahora las escribe el Gobierno, que no sabe cuánto vale cada licencia para cada operador.</p></li>
 </ul></li>
@@ -1224,25 +1165,38 @@
 </ul>
 <section id="sec:aplicaciones" class="level3">
 <h3><span class="numero">III.1.</span> Aplicaciones de la teoría de juegos en economía</h3>
+<p>Los conceptos de los 2 primeros bloques se usan en casi toda la economía. Por campos:</p>
 <ul>
-<li><p><em>Organización industrial</em>:</p>
+<li><p><em>Mercados y empresas</em>:</p>
+<ul>
+<li><p><em>organización industrial</em>:</p>
 <ul>
 <li><p>el oligopolio de <span class="smallcaps">Cournot</span>, <span class="smallcaps">Bertrand</span> y <span class="smallcaps">Stackelberg</span> como EN y ENPS, y la colusión tácita con el teorema de tradición oral <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>;</p></li>
 <li><p>la diferenciación de producto resuelta por etapas <a data-app="3A18.pdf" href="3A18.html" class="vertema"><span class="vertema">[ver tema 3.A.18]</span></a>, y</p></li>
-<li><p>la disuasión de la entrada, el compromiso de capacidad y el precio límite como señal <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>.</p></li>
+<li><p>la disuasión de la entrada, el compromiso de capacidad y el precio límite como señal <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>;</p></li>
 </ul></li>
-<li><p><em>Información asimétrica</em>: la señalización, la autoselección y la relación principal-agente son juegos bayesianos <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a>; la regulación con información asimétrica, un problema de diseño de mecanismos <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>.</p></li>
-<li><p><em>Mercado de trabajo</em>: la negociación salarial con la solución de <span class="smallcaps">Nash</span> <a data-app="3A27.pdf" href="3A27.html" class="vertema"><span class="vertema">[ver tema 3.A.27]</span></a>.</p></li>
-<li><p><em>Sector público y elección colectiva</em>:</p>
+<li><p><em>información asimétrica</em>: la señalización, la autoselección y la relación principal-agente son juegos bayesianos <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a>; la regulación con información asimétrica, un problema de diseño de mecanismos <a data-app="3A20.pdf" href="3A20.html" class="vertema"><span class="vertema">[ver tema 3.A.20]</span></a>;</p></li>
+<li><p><em>mercado de trabajo</em>: la negociación salarial con la solución de <span class="smallcaps">Nash</span> <a data-app="3A27.pdf" href="3A27.html" class="vertema"><span class="vertema">[ver tema 3.A.27]</span></a>;</p></li>
+<li><p><em>defensa de la competencia</em>: los programas de clemencia convierten el cártel en un dilema del prisionero para sus miembros: el primero que confiesa queda exento de la multa <a data-app="../cuarto-ejercicio/4A15.pdf" href="../cuarto-ejercicio/4A15.pdf" class="vertema"><span class="vertema">[ver tema 4.A.15]</span></a> <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, y</p></li>
+<li><p><em>diseño de mercados</em>: el algoritmo de aceptación diferida de <span class="citation" data-cites="GaleShapley1962College"><span class="smallcaps">Gale</span> y <span class="smallcaps">Shapley</span> (<a href="#ref-GaleShapley1962College" role="doc-biblioref">1962</a>)</span>, con el que <span class="smallcaps">Roth</span> rediseñó la asignación de médicos residentes, plazas escolares y donaciones de riñón (Nobel de 2012).</p></li>
+</ul></li>
+<li><p><em>Sector público y política económica</em>:</p>
+<ul>
+<li><p><em>sector público y elección colectiva</em>:</p>
 <ul>
 <li><p>el polizón en los bienes públicos como dilema del prisionero y los mecanismos de <span class="smallcaps">Clarke</span>-<span class="smallcaps">Groves</span> <a data-app="3A23.pdf" href="3A23.html" class="vertema"><span class="vertema">[ver tema 3.A.23]</span></a>;</p></li>
 <li><p>el voto estratégico y el teorema de <span class="smallcaps">Gibbard</span>-<span class="smallcaps">Satterthwaite</span> <a data-app="3A24.pdf" href="3A24.html" class="vertema"><span class="vertema">[ver tema 3.A.24]</span></a> <a data-app="../cuarto-ejercicio/4B02.pdf" href="../cuarto-ejercicio/4B02.pdf" class="vertema"><span class="vertema">[ver tema 4.B.2]</span></a>, y</p></li>
-<li><p>la imposición óptima con información privada <a data-app="../cuarto-ejercicio/4B11.pdf" href="../cuarto-ejercicio/4B11.pdf" class="vertema"><span class="vertema">[ver tema 4.B.11]</span></a>.</p></li>
+<li><p>la imposición óptima con información privada <a data-app="../cuarto-ejercicio/4B11.pdf" href="../cuarto-ejercicio/4B11.pdf" class="vertema"><span class="vertema">[ver tema 4.B.11]</span></a>;</p></li>
 </ul></li>
-<li><p><em>Comercio internacional</em>: la guerra arancelaria como dilema del prisionero <a data-app="3B07.pdf" href="3B07.html" class="vertema"><span class="vertema">[ver tema 3.B.7]</span></a> y la política comercial estratégica de <span class="citation" data-cites="BranderSpencer1985Export"><span class="smallcaps">Brander</span> y <span class="smallcaps">Spencer</span> (<a href="#ref-BranderSpencer1985Export" role="doc-biblioref">1985</a>)</span> <a data-app="3B08.pdf" href="3B08.html" class="vertema"><span class="vertema">[ver tema 3.B.8]</span></a>.</p></li>
-<li><p><em>Macroeconomía</em>: la credibilidad y la inconsistencia temporal de la política monetaria <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>, los ataques especulativos contra un tipo de cambio fijo como juego de coordinación con varios equilibrios <a data-app="3B17.pdf" href="3B17.html" class="vertema"><span class="vertema">[ver tema 3.B.17]</span></a>, los pánicos bancarios de <span class="citation" data-cites="DiamondDybvig1983Bank"><span class="smallcaps">Diamond</span> y <span class="smallcaps">Dybvig</span> (<a href="#ref-DiamondDybvig1983Bank" role="doc-biblioref">1983</a>)</span>, en los que retirar el depósito es la mejor respuesta si los demás lo retiran, aunque el banco sea solvente <a data-app="3B26.pdf" href="3B26.html" class="vertema"><span class="vertema">[ver tema 3.B.26]</span></a> <a data-app="../cuarto-ejercicio/4A18.pdf" href="../cuarto-ejercicio/4A18.pdf" class="vertema"><span class="vertema">[ver tema 4.A.18]</span></a>, y la coordinación de políticas entre países.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
-<li><p><em>Defensa de la competencia</em>: los programas de clemencia convierten el cártel en un dilema del prisionero para sus miembros: el primero que confiesa queda exento de la multa <a data-app="../cuarto-ejercicio/4A15.pdf" href="../cuarto-ejercicio/4A15.pdf" class="vertema"><span class="vertema">[ver tema 4.A.15]</span></a> <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>.</p></li>
-<li><p><em>Diseño de mercados</em>: el algoritmo de aceptación diferida de <span class="citation" data-cites="GaleShapley1962College"><span class="smallcaps">Gale</span> y <span class="smallcaps">Shapley</span> (<a href="#ref-GaleShapley1962College" role="doc-biblioref">1962</a>)</span>, con el que <span class="smallcaps">Roth</span> rediseñó la asignación de médicos residentes, plazas escolares y donaciones de riñón (Nobel de 2012).</p></li>
+<li><p><em>comercio internacional</em>: la guerra arancelaria como dilema del prisionero <a data-app="3B07.pdf" href="3B07.html" class="vertema"><span class="vertema">[ver tema 3.B.7]</span></a> y la política comercial estratégica de <span class="citation" data-cites="BranderSpencer1985Export"><span class="smallcaps">Brander</span> y <span class="smallcaps">Spencer</span> (<a href="#ref-BranderSpencer1985Export" role="doc-biblioref">1985</a>)</span> <a data-app="3B08.pdf" href="3B08.html" class="vertema"><span class="vertema">[ver tema 3.B.8]</span></a>, y</p></li>
+<li><p><em>macroeconomía</em>:</p>
+<ul>
+<li><p>la credibilidad y la inconsistencia temporal de la política monetaria <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>;</p></li>
+<li><p>los ataques especulativos contra un tipo de cambio fijo, un juego de coordinación con varios equilibrios <a data-app="3B17.pdf" href="3B17.html" class="vertema"><span class="vertema">[ver tema 3.B.17]</span></a>;</p></li>
+<li><p>los pánicos bancarios de <span class="citation" data-cites="DiamondDybvig1983Bank"><span class="smallcaps">Diamond</span> y <span class="smallcaps">Dybvig</span> (<a href="#ref-DiamondDybvig1983Bank" role="doc-biblioref">1983</a>)</span>: retirar el depósito es la mejor respuesta si los demás lo retiran, aunque el banco sea solvente <a data-app="3B26.pdf" href="3B26.html" class="vertema"><span class="vertema">[ver tema 3.B.26]</span></a> <a data-app="../cuarto-ejercicio/4A18.pdf" href="../cuarto-ejercicio/4A18.pdf" class="vertema"><span class="vertema">[ver tema 4.A.18]</span></a>,<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> y</p></li>
+<li><p>la coordinación de políticas entre países.</p></li>
+</ul></li>
+</ul></li>
 <li><p><em>Más allá del individuo racional</em>: la teoría de juegos evolutiva sustituye la racionalidad por la selección de las estrategias que más se reproducen, y la economía conductual estudia en el laboratorio el ultimátum, el dictador y los bienes públicos <a data-app="3A01.pdf" href="3A01.html" class="vertema"><span class="vertema">[ver tema 3.A.1]</span></a>.</p></li>
 </ul>
 </section>
@@ -1251,7 +1205,7 @@
 <section id="a-idea-6" class="level5">
 <h5>a) Idea</h5>
 <ul>
-<li><p>Una vez vistas las aplicaciones «positivas», que predicen qué pasa con unas reglas dadas, pasamos a la aplicación «normativa»: elegir las reglas. El mercado es un mecanismo más para asignar recursos con la información dispersa entre muchos. ¿Hay alguno que sea eficiente, respete la participación voluntaria y en el que nadie gane mintiendo? La pregunta nace del debate sobre el cálculo económico en el socialismo <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a> y la formaliza <span class="citation" data-cites="Hurwicz1960Optimality Hurwicz1972Informationally"><span class="smallcaps">Hurwicz</span> (<a href="#ref-Hurwicz1960Optimality" role="doc-biblioref">1960</a>, <a href="#ref-Hurwicz1972Informationally" role="doc-biblioref">1972</a>)</span>.</p>
+<li><p>Las aplicaciones «positivas» predicen qué pasa con unas reglas dadas; la «normativa» elige las reglas. El mercado es un mecanismo más para asignar recursos con la información dispersa entre muchos. ¿Hay alguno que sea eficiente, respete la participación voluntaria y en el que nadie gane mintiendo? La pregunta nace del debate sobre el cálculo económico en el socialismo <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a> y la formaliza <span class="citation" data-cites="Hurwicz1960Optimality Hurwicz1972Informationally"><span class="smallcaps">Hurwicz</span> (<a href="#ref-Hurwicz1960Optimality" role="doc-biblioref">1960</a>, <a href="#ref-Hurwicz1972Informationally" role="doc-biblioref">1972</a>)</span>.</p>
 <ul>
 <li><p>En la subasta del 5G, el Gobierno no sabe cuánto vale la licencia para <span class="upright">I</span>, E y O:</p>
 <ul>
@@ -1284,14 +1238,14 @@
 <li><p><em>participación</em>, <span class="math inline">\(\mathrm{PC}_i\)</span>: a cada tipo le conviene participar antes que quedarse fuera;</p></li>
 <li><p><em>compatibilidad de incentivos</em>, <span class="math inline">\(\mathrm{IC}_i\)</span>: a cada tipo le conviene decir la verdad antes que declarar otro tipo.</p></li>
 </ul></li>
-<li><p><em>Clásico: el juicio de <span class="smallcaps">Salomón</span></em> (1 Reyes 3, 16-28). 2 mujeres se disputan un niño y el rey ordena partirlo por la mitad; la verdadera madre renuncia para salvarlo, y con su respuesta revela lo que el rey no podía ver. Funcionó por sorpresa: si la otra hubiera entendido el mecanismo, también habría renunciado (anexo <a href="#anexo:clasicos">G</a>).</p></li>
+<li><p><em>Clásico: el juicio de <span class="smallcaps">Salomón</span></em>: la orden de partir al niño hizo que la verdadera madre revelara su tipo, pero solo por sorpresa (anexo <a href="#anexo:clasicos">G</a>).</p></li>
 <li><p><em>Mecanismos de <span class="smallcaps">Vickrey</span>-<span class="smallcaps">Clarke</span>-<span class="smallcaps">Groves</span></em> (VCG): hacen pagar a cada uno el daño que su presencia causa a los demás; así, decir la verdad es una estrategia <em>dominante</em> y la decisión es eficiente, aunque lo que pagan los agentes no puede devolverse sin romper los incentivos: el presupuesto no se equilibra. La subasta de segundo precio es su caso más sencillo (<a href="#sec:ipv">III.3.2</a>); la provisión de bienes públicos, otro <a data-app="3A23.pdf" href="3A23.html" class="vertema"><span class="vertema">[ver tema 3.A.23]</span></a>.</p></li>
 </ul>
 </section>
 <section id="iii-implicaciones-5" class="level6">
 <h6>iii) Implicaciones</h6>
 <ul>
-<li><p>La información privada se paga: para que cada tipo diga la verdad hay que dejarle una <strong>renta informativa</strong>, y el diseñador elige cuánta eficiencia sacrificar para recortarla. Es la lógica de la autoselección y de la discriminación de segundo grado <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a> <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>, de la regulación con información asimétrica <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>, de la imposición óptima <a data-app="../cuarto-ejercicio/4B11.pdf" href="../cuarto-ejercicio/4B11.pdf" class="vertema"><span class="vertema">[ver tema 4.B.11]</span></a> y de la subasta óptima (<a href="#sec:ipv">III.3.2</a>).</p></li>
+<li><p>La información privada se paga: para que cada tipo diga la verdad hay que dejarle una <strong>renta informativa</strong>, y el diseñador elige cuánta eficiencia sacrificar para recortarla. Es la lógica de la autoselección y de la discriminación de segundo grado <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a> <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>, de la regulación con información asimétrica <a data-app="3A20.pdf" href="3A20.html" class="vertema"><span class="vertema">[ver tema 3.A.20]</span></a>, de la imposición óptima <a data-app="../cuarto-ejercicio/4B11.pdf" href="../cuarto-ejercicio/4B11.pdf" class="vertema"><span class="vertema">[ver tema 4.B.11]</span></a> y de la subasta óptima (<a href="#sec:ipv">III.3.2</a>).</p></li>
 </ul>
 </section>
 </section>
@@ -1304,7 +1258,7 @@
 <section id="d-valoración-los-límites" class="level5">
 <h5>d) Valoración: los límites</h5>
 <ul>
-<li><p><em>Teorema de <span class="smallcaps">Gibbard</span>-<span class="smallcaps">Satterthwaite</span></em>: con 3 o más alternativas y preferencias sin restricciones, toda regla de elección social no manipulable es dictatorial <a data-app="3A24.pdf" href="3A24.html" class="vertema"><span class="vertema">[ver tema 3.A.24]</span></a>. Por eso los mecanismos VCG necesitan pagos monetarios.</p></li>
+<li><p><em>Teorema de <span class="smallcaps">Gibbard</span>-<span class="smallcaps">Satterthwaite</span></em>: con 3 o más alternativas (si cualquiera de ellas puede salir elegida) y preferencias sin restricciones, toda regla de elección social no manipulable es dictatorial <a data-app="3A24.pdf" href="3A24.html" class="vertema"><span class="vertema">[ver tema 3.A.24]</span></a>. Por eso los mecanismos VCG necesitan pagos monetarios.</p></li>
 <li><p><em>Teorema de <span class="smallcaps">Myerson</span>-<span class="smallcaps">Satterthwaite</span></em>: en un intercambio bilateral con valoraciones privadas que se solapan, ningún mecanismo es a la vez eficiente, compatible con los incentivos, voluntario y sin déficit: la información privada tiene un coste inevitable.</p></li>
 <li><p><em>Compromiso</em>: el diseñador tiene que poder comprometerse a cumplir las reglas, aunque una vez conocidos los tipos le convenga cambiarlas (<a href="#sec:enps">I.3.1</a>).</p></li>
 </ul>
@@ -1313,7 +1267,7 @@
 <section id="sec:subastas" class="level3">
 <h3><span class="numero">III.3.</span> Subastas</h3>
 <ul>
-<li><p>Una vez establecido el marco del diseño de mecanismos, pasamos a su aplicación central, que es la «especial referencia» del título. Seguimos al Gobierno en las decisiones que tiene que tomar:</p>
+<li><p>Con el marco del diseño de mecanismos, pasamos a su aplicación central, la «especial referencia» del título. Seguimos al Gobierno en las decisiones que tiene que tomar:</p>
 <ul>
 <li><p>qué formato usar;</p></li>
 <li><p>cómo pujarán los operadores en cada uno;</p></li>
@@ -1327,7 +1281,7 @@
 <h4><span class="numero">III.3.1.</span> Concepto, formatos y tipos de valores</h4>
 <ul>
 <li><p><em>Concepto</em>: una <strong>subasta</strong> es un mecanismo de asignación y de fijación del precio a partir de las pujas de los participantes. El vendedor no sabe cuánto vale el bien para cada comprador y usa la competencia entre ellos para que lo revelen y para reducir las rentas de información que tiene que dejarles.</p></li>
-<li><p><em>Formatos estándar</em> (un solo objeto; tabla <a href="#tab:formatos-subasta">5</a>):</p>
+<li><p><em>Formatos estándar</em> (un solo objeto; tabla <a href="#tab:formatos-subasta">3</a>):</p>
 <ul>
 <li><p><strong>abiertos</strong>: la subasta <strong>inglesa</strong> o ascendente (el precio sube hasta que queda un pujador, que paga ese precio; arte, antigüedades) y la <strong>holandesa</strong> o descendente (el precio baja hasta que alguien lo acepta; flores en Aalsmeer, pescado en las lonjas);</p></li>
 <li><p><strong>a sobre cerrado</strong>: de <strong>primer precio</strong> (gana la puja más alta y paga su puja; la contratación pública) y de <strong>segundo precio</strong> o de <span class="smallcaps">Vickrey</span> (gana la puja más alta y paga la segunda).</p></li>
@@ -1343,7 +1297,7 @@
 </ul>
 <div id="tab:formatos-subasta">
 <table>
-<caption><span class="etiqueta">Tabla 5.–</span> Los 4 formatos estándar de subasta y cómo se puja en cada uno con valores privados independientes</caption>
+<caption><span class="etiqueta">Tabla 3.–</span> Los 4 formatos estándar de subasta y cómo se puja en cada uno con valores privados independientes</caption>
 <thead>
 <tr>
 <th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Formato</strong></th>
@@ -1424,7 +1378,7 @@
 <li><p>Un objeto y <span class="math inline">\(n\)</span> pujadores <em>neutrales al riesgo</em> y <em>simétricos</em>.</p></li>
 <li><p><em>Valores privados independientes</em>: las valoraciones <span class="math inline">\(v_i\)</span> se extraen de forma independiente de una distribución continua <span class="math inline">\(F\)</span>, con densidad <span class="math inline">\(f\)</span>, que es conocimiento común (en los ejemplos, <span class="math inline">\(v_i\sim U[0,1]\)</span>); cada uno conoce la suya.</p>
 <ul>
-<li><p>En la subasta del 5G, la licencia vale 10 para <span class="upright">I</span>, 8 para E y 6 para O. Cada uno conoce la suya y, de las de los otros 2, solo sabe que están entre 0 y 12, todas igual de probables. Seguiremos estas cifras formato a formato en la tabla <a href="#tab:subasta-5g">6</a>.</p></li>
+<li><p>En la subasta del 5G, la licencia vale 10 para <span class="upright">I</span>, 8 para E y 6 para O. Cada uno conoce la suya y, de las de los otros 2, solo sabe que están entre 0 y 12, todas igual de probables. Seguiremos estas cifras formato a formato en la tabla <a href="#tab:subasta-5g">4</a>.</p></li>
 </ul></li>
 <li><p>El vendedor valora el objeto en <span class="math inline">\(v_0=0\)</span> y no fija precio de reserva.</p></li>
 </ul>
@@ -1437,7 +1391,7 @@
 <li><p>Si pujara más que <span class="math inline">\(v_i\)</span>, solo cambiaría el resultado cuando la puja rival más alta estuviera entre <span class="math inline">\(v_i\)</span> y su puja: ganaría y pagaría más de lo que vale el bien.</p></li>
 <li><p>Si pujara menos, solo cambiaría cuando la puja rival estuviera entre su puja y <span class="math inline">\(v_i\)</span>: perdería un bien que le daba ganancia.</p></li>
 <li><p>No depende de lo que hagan los demás ni de la distribución de los valores. Gana quien más valora el bien: la subasta es <em>eficiente</em>. Hay otros EN (por ejemplo, que el de mayor valor puje muy alto y el resto 0), pero usan estrategias débilmente dominadas.</p></li>
-<li><p>Volvamos a la licencia del 5G, con sobre cerrado y segundo precio (fila del segundo precio de la tabla <a href="#tab:subasta-5g">6</a>):</p>
+<li><p>Volvamos a la licencia del 5G, con sobre cerrado y segundo precio (fila del segundo precio de la tabla <a href="#tab:subasta-5g">4</a>):</p>
 <ul>
 <li><p>cada operador escribe en su sobre su valoración: <span class="upright">I</span>, 10; E, 8, y O, 6;</p></li>
 <li><p>gana <span class="upright">I</span>, que ha hecho la puja más alta, y paga la segunda, 8: se queda con una ganancia de <span class="math inline">\(10-8=2\)</span>;</p></li>
@@ -1448,7 +1402,7 @@
 </ul></li>
 <li><p><em>Inglesa</em>: con valores privados, quedarse hasta que el precio alcance la propia valoración es dominante; gana el de mayor valor y paga (casi) el segundo valor. Con valores privados es equivalente a la de segundo precio.</p>
 <ul>
-<li><p>En la licencia del 5G, el Gobierno sube el precio poco a poco desde 0 (gráfico <a href="#fig:subasta-5g">5</a>):</p>
+<li><p>En la licencia del 5G, el Gobierno sube el precio poco a poco desde 0 (gráfico <a href="#fig:subasta-5g">4</a>):</p>
 <ul>
 <li><p>al llegar a 6, O se retira: seguir le obligaría a pagar más de lo que la licencia vale para él;</p></li>
 <li><p>al llegar a 8, se retira E, por la misma razón, y</p></li>
@@ -1457,8 +1411,8 @@
 </ul></li>
 </ul>
 <figure id="fig:subasta-5g">
-<figcaption><span class="etiqueta">Gráfico 5.–</span> La licencia del 5G: hasta dónde llega cada operador en la inglesa y cuánto puja en primer precio</figcaption>
-<img src="../fuentes/3A14/graficos/subasta-5g.svg" style="width:80.0%" loading="lazy" alt="Gráfico 5.– La licencia del 5G: hasta dónde llega cada operador en la inglesa y cuánto puja en primer precio" />
+<figcaption><span class="etiqueta">Gráfico 4.–</span> La licencia del 5G: hasta dónde llega cada operador en la inglesa y cuánto puja en primer precio</figcaption>
+<img src="../fuentes/3A14/graficos/subasta-5g.svg" style="width:80.0%" loading="lazy" alt="Gráfico 4.– La licencia del 5G: hasta dónde llega cada operador en la inglesa y cuánto puja en primer precio" />
 <div class="fuente">
 <p>Fuente: elaboración propia. Valoraciones: <span class="upright">I</span>, 10; E, 8, y O, 6; en primer precio, cada uno puja 2/3 de la suya (con 3 pujadores y valoraciones uniformes entre 0 y 12).</p>
 </div>
@@ -1473,10 +1427,10 @@
 </div>
 <p>Con 2 pujadores, la mitad de la valoración. Cada uno puja lo que espera que valga el segundo valor si él tiene el más alto, y la puja se acerca a la valoración al crecer <span class="math inline">\(n\)</span>: con más competencia, se sombrea menos (gráfico <a href="#fig:pujas">8</a>, en el anexo <a href="#anexo:subastas">E</a>).</p>
 <ul>
-<li><p>En la licencia del 5G con sobre cerrado y primer precio, nadie puja su valoración: si <span class="upright">I</span> pujara 10 y ganara, pagaría 10 y no ganaría nada. Cada operador sabe la suya y, de los otros 2, solo que sus valoraciones están entre 0 y 12, todas igual de probables (la regla es la misma con cualquier tope). Con <span class="math inline">\(n=3\)</span>:</p>
+<li><p>En la licencia del 5G con sobre cerrado y primer precio, nadie puja su valoración: si <span class="upright">I</span> pujara 10 y ganara, pagaría 10 y no ganaría nada. Con <span class="math inline">\(n=3\)</span> y valoraciones uniformes entre 0 y 12 (la regla es la misma con cualquier tope):</p>
 <ul>
-<li><p>cada uno puja 2/3 de su valoración: <span class="upright">I</span>, <span class="math inline">\(\tfrac23\cdot10=6{,}67\)</span>; E, 5,33, y O, 4 (gráfico <a href="#fig:subasta-5g">5</a>);</p></li>
-<li><p>gana <span class="upright">I</span>, que paga su puja, 6,67, y se queda con <span class="math inline">\(10-6{,}67=3{,}33\)</span> (fila del primer precio de la tabla <a href="#tab:subasta-5g">6</a>);</p></li>
+<li><p>cada uno puja 2/3 de su valoración: <span class="upright">I</span>, <span class="math inline">\(\tfrac23\cdot10=6{,}67\)</span>; E, 5,33, y O, 4 (gráfico <a href="#fig:subasta-5g">4</a>);</p></li>
+<li><p>gana <span class="upright">I</span>, que paga su puja, 6,67, y se queda con <span class="math inline">\(10-6{,}67=3{,}33\)</span> (fila del primer precio de la tabla <a href="#tab:subasta-5g">4</a>);</p></li>
 <li><p>6,67 es lo que <span class="upright">I</span> espera que valga la segunda valoración si la suya es la más alta: si las 2 de sus rivales están por debajo de 10, la mayor de ellas está, en promedio, en <span class="math inline">\(\tfrac23\cdot10\)</span>;</p></li>
 <li><p>¿por qué no pujar menos, por ejemplo 5? <span class="upright">I</span> no sabe que E valora la licencia en 8: si ganara, se ahorraría 1,67, pero ganaría con menos probabilidad (aquí, la perdería frente a la puja de E, 5,33). La puja de 6,67 equilibra las 2 cosas.</p></li>
 </ul></li>
@@ -1491,14 +1445,14 @@
 <h6>iii) Implicaciones: el teorema de equivalencia de ingresos</h6>
 <ul>
 <li><p>Los 4 formatos asignan el bien a quien más lo valora. ¿Recaudan lo mismo? En segundo precio se paga el segundo valor; en primer precio, una puja sombreada del primero. Con <span class="math inline">\(U[0,1]\)</span>, el ingreso esperado <span class="math inline">\(I\)</span> del vendedor es el mismo: <span id="eq:equivalencia"></span><span class="math display">\[\tag{6}
-\mathbb{E}\big[I^{\mathrm{1P}}\big]=\frac{n-1}{n}\,\mathbb{E}\big[v_{(1)}\big]=\frac{n-1}{n}\cdot\frac{n}{n+1}=\mathbb{E}\big[v_{(2)}\big]=\mathbb{E}\big[I^{\mathrm{2P}}\big]=\frac{n-1}{n+1},\]</span> donde 1P y 2P indican primer y segundo precio, y <span class="math inline">\(v_{(1)}\)</span> y <span class="math inline">\(v_{(2)}\)</span> son la valoración más alta y la segunda más alta.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
+\mathbb{E}\big[I^{\mathrm{1P}}\big]=\frac{n-1}{n}\,\mathbb{E}\big[v_{(1)}\big]=\frac{n-1}{n}\cdot\frac{n}{n+1}=\mathbb{E}\big[v_{(2)}\big]=\mathbb{E}\big[I^{\mathrm{2P}}\big]=\frac{n-1}{n+1},\]</span> donde 1P y 2P indican primer y segundo precio, y <span class="math inline">\(v_{(1)}\)</span> y <span class="math inline">\(v_{(2)}\)</span> son la valoración más alta y la segunda más alta.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p></li>
 <li><p>No es casualidad. <strong>Teorema de equivalencia de ingresos</strong>: con pujadores <em>neutrales al riesgo</em> y <em>simétricos</em> y valores privados <em>independientes</em> extraídos de una distribución continua común, todo formato de subasta que cumpla en equilibrio 2 condiciones da al vendedor el <em>mismo ingreso esperado</em>, y a cada tipo de pujador, el mismo pago esperado:</p>
 <ol>
 <li><p>el bien va a quien más lo valora, y</p></li>
 <li><p>el pujador con el valor más bajo posible espera una ganancia nula.</p></li>
 </ol>
 <ul>
-<li><p>Volvamos a las cifras de <span class="upright">I</span>, E y O (tabla <a href="#tab:subasta-5g">6</a>):</p>
+<li><p>Volvamos a las cifras de <span class="upright">I</span>, E y O (tabla <a href="#tab:subasta-5g">4</a>):</p>
 <ul>
 <li><p>con estas valoraciones, el Gobierno cobra 8 en segundo precio y 6,67 en primer precio: aquí le va mejor con el segundo;</p></li>
 <li><p>con otras, sería al revés: si E valorara la licencia en 5 y O en 4, en segundo precio cobraría 5, y en primer precio, otra vez 6,67, porque la puja de <span class="upright">I</span> solo depende de su propia valoración;</p></li>
@@ -1508,7 +1462,7 @@
 </ul>
 <div id="tab:subasta-5g">
 <table>
-<caption><span class="etiqueta">Tabla 6.–</span> La subasta de la licencia del 5G formato a formato: pujas de <span class="upright">I</span>, E y O, quién gana y cuánto ingresa el Gobierno</caption>
+<caption><span class="etiqueta">Tabla 4.–</span> La subasta de la licencia del 5G formato a formato: pujas de <span class="upright">I</span>, E y O, quién gana y cuánto ingresa el Gobierno</caption>
 <thead>
 <tr>
 <th class="celda-tceeazulpalido" style="text-align: left;"></th>
@@ -1588,11 +1542,8 @@ precio al que se retira</td>
 <li><p><em>Subasta óptima y precio de reserva</em>. Si todos los formatos estándar recaudan lo mismo, ¿puede el vendedor hacerlo mejor con otro mecanismo? Sí: con un <strong>precio de reserva</strong> <span class="math inline">\(p^R\)</span> por debajo del cual no vende.</p>
 <ul>
 <li><p>Con pujadores simétricos, la subasta que maximiza el ingreso esperado es, si el valor virtual es creciente (caso regular, como la uniforme), cualquier formato estándar con un precio de reserva que cumple <span class="math inline">\(\psi\big(p^R\big)=v_0\)</span>, donde <span class="math inline">\(\psi(v)=v-\frac{1-F(v)}{f(v)}\)</span> es el <strong>valor virtual</strong>: el ingreso marginal de vender a ese tipo, como el ingreso marginal del monopolista <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>.</p></li>
-<li><p>Con <span class="math inline">\(U[0,1]\)</span> y <span class="math inline">\(v_0=0\)</span>, <span class="math inline">\(\psi(v)=2v-1\)</span> y <span class="math inline">\(p^R=1/2\)</span>, sea cual sea <span class="math inline">\(n\)</span>; con 2 pujadores, el ingreso esperado pasa de <span class="math inline">\(1/3\)</span> a <span class="math inline">\(5/12\)</span> (anexo <a href="#anexo:subastas">E</a>).</p>
-<ul>
-<li><p>En la licencia del 5G, con valoraciones entre 0 y 12, el valor virtual es <span class="math inline">\(\psi(v)=2v-12\)</span> y el precio de reserva óptimo, 6: el Gobierno no vendería por menos de 6. Con las valoraciones de <span class="upright">I</span>, E y O no cambia nada en segundo precio (<span class="upright">I</span> ya pagaba 8); pero si E y O valoraran la licencia en 3 y 2, sin precio de reserva <span class="upright">I</span> pagaría 3, y con él, 6.</p></li>
-</ul></li>
-<li><p>El precio de reserva supera el valor del vendedor, así que a veces el bien se queda sin vender aunque algún comprador lo valore más: como el monopolista, el vendedor sacrifica eficiencia para extraer renta. Pero la competencia vale más: un pujador más, sin precio de reserva, recauda más que la subasta óptima con los que había (con <span class="math inline">\(U[0,1]\)</span>, 3 pujadores dan <span class="math inline">\(1/2&gt;5/12\)</span>).</p></li>
+<li><p>Con <span class="math inline">\(U[0,1]\)</span> y <span class="math inline">\(v_0=0\)</span>, <span class="math inline">\(\psi(v)=2v-1\)</span> y <span class="math inline">\(p^R=1/2\)</span>, sea cual sea <span class="math inline">\(n\)</span>; con 2 pujadores, el ingreso esperado pasa de <span class="math inline">\(1/3\)</span> a <span class="math inline">\(5/12\)</span> (anexo <a href="#anexo:subastas">E</a>).</p></li>
+<li><p>El precio de reserva supera el valor del vendedor, así que a veces el bien se queda sin vender aunque algún comprador lo valore más: como el monopolista, el vendedor sacrifica eficiencia para extraer renta. Pero un pujador más, sin precio de reserva, recauda más que la subasta óptima con los que había (anexo <a href="#anexo:subastas">E</a>).</p></li>
 </ul></li>
 <li><p><em>Aversión al riesgo y pujadores asimétricos</em>: con aversión al riesgo, el primer precio recauda más que el segundo; con asimetría, no hay una ordenación general (anexo <a href="#anexo:subastas-practica">F</a>).</p></li>
 <li><p><em>Valor común y maldición del ganador</em>. Si el bien vale lo mismo para todos pero cada uno solo tiene una estimación, ganar es una mala noticia: quien gana es quien más lo ha sobrestimado. Quien puja su estimación paga, en promedio, de más: es la <strong>maldición del ganador</strong>. <span class="citation" data-cites="Wilson1969Competitive Wilson1977Bidding"><span class="smallcaps">Wilson</span> (<a href="#ref-Wilson1969Competitive" role="doc-biblioref">1969</a>, <a href="#ref-Wilson1977Bidding" role="doc-biblioref">1977</a>)</span> explicó por qué un pujador racional puja por debajo de su mejor estimación del valor común: teme la maldición del ganador.</p>
@@ -1604,7 +1555,7 @@ precio al que se retira</td>
 <li><p>ganar es, en sí mismo, una mala noticia: quiere decir que los otros 2 estudios eran más pesimistas. «No es oro todo lo que reluce»;</p></li>
 <li><p>el operador sensato puja por debajo de lo que dice su estudio, y tanto más cuantos más rivales tiene.</p></li>
 </ul></li>
-<li><p><em>Clásico: las licitaciones de petróleo del golfo de México</em>. 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado, y fueron los primeros en describir lo que hoy se llama «maldición del ganador» (anexo <a href="#anexo:clasicos">G</a>).</p></li>
+<li><p><em>Clásico: las licitaciones de petróleo del golfo de México</em>: los yacimientos ganados rendían menos de lo esperado (anexo <a href="#anexo:clasicos">G</a>).</p></li>
 </ul></li>
 <li><p><em>Valores afiliados y principio de vinculación</em>. Si las estimaciones están correlacionadas positivamente, cuanto más revela el formato durante la subasta, menos teme cada pujador la maldición del ganador y menos sombrea: en promedio, la inglesa recauda al menos tanto como la de segundo precio, y esta al menos tanto como la de primer precio. Por eso al vendedor le conviene revelar lo que sepa del bien (anexo <a href="#anexo:subastas-practica">F</a>).</p></li>
 </ul>
@@ -1624,7 +1575,7 @@ precio al que se retira</td>
 <li><p>Las de <em>sobre cerrado</em> dan una oportunidad a los débiles, pero no revelan información. Una solución híbrida es la subasta anglo-holandesa: ascendente hasta que quedan 2 y, entre ellos, sobre cerrado.</p></li>
 <li><p>Para la subasta del 5G: si el Gobierno sacara 3 licencias para <span class="upright">I</span>, E y O, ninguno tendría que competir. Cada uno sabría que se llevará la suya y pujaría el precio de salida. Con 2 licencias para los 3, o con 3 licencias y un cuarto operador que quiera entrar, alguno se quedaría fuera, y eso obliga a pujar.</p></li>
 </ul></li>
-<li><p><em>Clásico: las subastas del 3G de 2000</em>. El Reino Unido sacó 5 licencias para 4 operadores instalados, así que al menos una iría a un entrante; los entrantes acudieron y recaudó más de 600 euros por habitante. Los Países Bajos, con tantas licencias como instalados, recaudaron 170, y Suiza, donde las retiradas de última hora dejaron tantos pujadores como licencias, 20 (anexo <a href="#anexo:clasicos">G</a>).</p></li>
+<li><p><em>Clásico: las subastas del 3G de 2000</em>: el Reino Unido, con más licencias que instalados, atrajo entrantes y recaudó más de 600 euros por habitante; Suiza, con tantos pujadores como licencias, 20 (anexo <a href="#anexo:clasicos">G</a>).</p></li>
 </ul>
 </section>
 </section>
@@ -1635,17 +1586,23 @@ precio al que se retira</td>
 <ul>
 <li><p>En la subasta del 5G, el Gobierno no vende una sola licencia, sino varios bloques de espectro, en varias bandas y a veces por regiones, e <span class="upright">I</span>, E y O quieren más de uno. Además, 2 bloques contiguos pueden valerle a <span class="upright">I</span> más que la suma de cada uno por separado, porque juntos le permiten dar más velocidad.</p></li>
 </ul></li>
-<li><p><em>Varias unidades iguales</em> (deuda pública, derechos de emisión, electricidad): cada pujador presenta una curva de demanda escalonada; se adjudican las unidades a las pujas más altas hasta agotar la oferta (gráfico <a href="#fig:multiunidad">9</a>, en el anexo <a href="#anexo:subastas-practica">F</a>).</p>
+<li><p><em>Varias unidades iguales</em> (deuda pública, derechos de emisión, electricidad): cada pujador presenta una curva de demanda escalonada; se adjudican las unidades a las pujas más altas hasta agotar la oferta (gráfico <a href="#fig:multiunidad">9</a>, en el anexo <a href="#anexo:subastas-practica">F</a>). Hay 2 formatos, y ninguno domina en general al otro (anexo <a href="#anexo:subastas-practica">F</a>):</p>
 <ul>
-<li><p><strong>Precio uniforme</strong>: todos pagan el precio marginal, el de la última puja aceptada. Como la puja por las últimas unidades puede fijar el precio de todas, los grandes pujadores tienen incentivo a pujar por debajo de su valor en esas unidades: es la <strong>reducción de la demanda</strong>, que resta ingreso y eficiencia.</p></li>
-<li><p><strong>Precio discriminatorio</strong> (o «precio ofrecido»): cada uno paga sus pujas, y todos sombrean. Ningún formato domina en general al otro.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p></li>
+<li><p>con <strong>precio uniforme</strong>, todos pagan la última puja aceptada, y los grandes pujadores reducen su demanda;</p></li>
+<li><p>con <strong>precio discriminatorio</strong>, cada uno paga sus pujas, y todos sombrean.</p></li>
 </ul></li>
 <li><p><em>Varios objetos distintos</em> (licencias de espectro por región y banda): los valores tienen <em>complementariedades</em> (una licencia vale más junto a la de la región vecina).</p>
 <ul>
 <li><p>La <strong>subasta ascendente simultánea de varias rondas</strong> (SMRA), diseñada por <span class="smallcaps">Milgrom</span>, <span class="smallcaps">Wilson</span> y <span class="smallcaps">McAfee</span>, puja todas las licencias a la vez, ronda a ronda, con una <em>regla de actividad</em> que obliga a pujar desde el principio para no esconder la demanda. La estrenó en 1994 la Comisión Federal de Comunicaciones de Estados Unidos, y la han adoptado, entre otros, Canadá, Alemania, el Reino Unido y España (anexo <a href="#anexo:subastas-practica">F</a>).</p></li>
 <li><p>Las <strong>subastas combinatorias</strong> permiten pujar por paquetes, y la subasta de reloj es la versión práctica del tanteo walrasiano, con el subastador de <span class="smallcaps">Walras</span> hecho realidad <a data-app="3A21.pdf" href="3A21.html" class="vertema"><span class="vertema">[ver tema 3.A.21]</span></a> (anexo <a href="#anexo:subastas-practica">F</a>).</p></li>
 </ul></li>
-<li><p><em>España y la UE</em>: el Tesoro emite la deuda con una subasta de varias unidades híbrida, la «convencional corregida» <a data-app="../cuarto-ejercicio/4B26.pdf" href="../cuarto-ejercicio/4B26.pdf" class="vertema"><span class="vertema">[ver tema 4.B.26]</span></a>; el espectro se subasta con rondas ascendentes (la de 700 MHz, en 2021, cerró tras 12 rondas con 1.010 millones de euros) <a data-app="../cuarto-ejercicio/4A12.pdf" href="../cuarto-ejercicio/4A12.pdf" class="vertema"><span class="vertema">[ver tema 4.A.12]</span></a>; en las de renovables cada adjudicatario cobra el precio que ofreció, con un precio de reserva <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=4.A.5" href="../tema-no-disponible.html?tema=4.A.5" class="vertema"><span class="vertema">[ver tema 4.A.5]</span></a>, y los derechos de emisión de la UE se subastan a sobre cerrado y a precio uniforme <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=4.A.6" href="../tema-no-disponible.html?tema=4.A.6" class="vertema"><span class="vertema">[ver tema 4.A.6]</span></a>. Reglas y cifras, en el anexo <a href="#anexo:subastas-practica">F</a>.</p></li>
+<li><p><em>España y la UE</em> (reglas y cifras, en el anexo <a href="#anexo:subastas-practica">F</a>):</p>
+<ul>
+<li><p>el Tesoro emite la deuda con una subasta de varias unidades híbrida, la «convencional corregida» <a data-app="../cuarto-ejercicio/4B26.pdf" href="../cuarto-ejercicio/4B26.pdf" class="vertema"><span class="vertema">[ver tema 4.B.26]</span></a>;</p></li>
+<li><p>el espectro se subasta con rondas ascendentes (la de 700 MHz, en 2021, cerró tras 12 rondas con 1.010 millones de euros) <a data-app="../cuarto-ejercicio/4A12.pdf" href="../cuarto-ejercicio/4A12.pdf" class="vertema"><span class="vertema">[ver tema 4.A.12]</span></a>;</p></li>
+<li><p>en las subastas de renovables, cada adjudicatario cobra el precio que ofreció, con un precio de reserva <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=4.A.5" href="../tema-no-disponible.html?tema=4.A.5" class="vertema"><span class="vertema">[ver tema 4.A.5]</span></a>, y</p></li>
+<li><p>los derechos de emisión de la UE se subastan a sobre cerrado y a precio uniforme <a data-app="https://www.victorgutierrezmarcos.es/oposicion/temario/tema-no-disponible.html?tema=4.A.6" href="../tema-no-disponible.html?tema=4.A.6" class="vertema"><span class="vertema">[ver tema 4.A.6]</span></a>.</p></li>
+</ul></li>
 </ul>
 </section>
 <section id="sec:colusion-subastas" class="level4">
@@ -1653,7 +1610,7 @@ precio al que se retira</td>
 <ul>
 <li><p><em>Idea</em>: es el refrán del enganche visto desde el otro lado. Los mismos pujadores se encuentran subasta tras subasta, y la repetición que sostenía la cooperación sin contratos (<a href="#sec:repetidos">I.3.2</a>) puede sostener aquí un reparto. Es la <strong>colusión en las subastas</strong> (<em>bid rigging</em>): los pujadores acuerdan no competir, con <strong>ofertas de cobertura</strong>, hechas para perder, o con la <strong>rotación de ofertas</strong>, en la que se turnan para ganar. «Hoy gano yo, mañana tú».</p>
 <ul>
-<li><p>Siguiendo con la subasta del 5G, supongamos que el Gobierno subasta una banda cada pocos años y que <span class="upright">I</span> y E acuerdan turnarse (tabla <a href="#tab:rotacion">7</a>):</p>
+<li><p>Siguiendo con la subasta del 5G, supongamos que el Gobierno subasta una banda cada pocos años y que <span class="upright">I</span> y E acuerdan turnarse (tabla <a href="#tab:rotacion">11</a>, en el anexo <a href="#anexo:subastas">E</a>):</p>
 <ul>
 <li><p>en esta subasta solo puja en serio <span class="upright">I</span>, y lo hace al precio de reserva; en la próxima, solo E, y así sucesivamente;</p></li>
 <li><p>quien gana se lleva una ganancia <span class="math inline">\(G\)</span> (lo que vale la licencia menos el precio de reserva), y el otro, nada.</p></li>
@@ -1669,52 +1626,6 @@ precio al que se retira</td>
 <li><p>Si O entra en el acuerdo, el que acaba de ganar tiene que esperar 2 subastas a su próximo turno, y la condición pasa a <span class="math inline">\(\beta^2/(1-\beta^3)\geq1\)</span>, es decir, <span class="math inline">\(\beta\gtrsim0{,}755\)</span>: con 3 pujadores y subastas cada 5 años, el reparto no se sostiene.</p></li>
 </ul></li>
 </ul>
-<div id="tab:rotacion">
-<table>
-<caption><span class="etiqueta">Tabla 7.–</span> La rotación de <span class="upright">I</span> y E en las subastas del 5G: lo que gana cada uno en cada subasta y lo que vale hoy</caption>
-<thead>
-<tr>
-<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Subasta</strong></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Hoy</strong></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>2.ª</strong></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>3.ª</strong></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>4.ª</strong></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>…</strong></th>
-<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Valor hoy</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><span class="upright">I</span>, a quien le toca hoy</td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">…</td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G/(1-\beta^2)\)</span></td>
-</tr>
-<tr>
-<td style="text-align: left;">E, si cumple</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
-<td style="text-align: center; vertical-align: middle;">…</td>
-<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\beta/(1-\beta^2)\)</span></td>
-</tr>
-<tr>
-<td class="celda-tceesalvia" style="text-align: left;">E, si se desvía hoy</td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">0</td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">0</td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">0</td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">…</td>
-<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><em>Fuente: elaboración propia. <span class="math inline">\(G\)</span>: lo que vale la licencia menos el precio de reserva; <span class="math inline">\(\beta\)</span>: factor de descuento entre 2 subastas. Tras la desviación vuelve la competencia, que se lleva toda la ganancia.</em></p>
 <ul>
 <li><p><em>Cómo la dificulta el diseño</em>: el objetivo es que no haya «mañana» que repartir.</p>
 <ul>
@@ -1724,7 +1635,7 @@ precio al que se retira</td>
 <li><p><em>Precio de reserva</em>: pone un suelo a lo que el cártel paga, y limita lo que la colusión le quita al vendedor.</p></li>
 <li><p><em>Clemencia</em>: el primero que denuncia el cártel queda exento de la multa, y el acuerdo se convierte en un dilema del prisionero entre sus miembros <a data-app="../cuarto-ejercicio/4A15.pdf" href="../cuarto-ejercicio/4A15.pdf" class="vertema"><span class="vertema">[ver tema 4.A.15]</span></a> <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>.</p></li>
 </ul></li>
-<li><p><em>Clásico: la subasta alemana de espectro de 1999</em>. Se vendían 10 bloques en una subasta ascendente en la que cada nueva puja tenía que superar a la anterior en al menos un 10 %. Mannesmann abrió con 18,18 millones de marcos por megahercio en los bloques 1 a 5 y 20 millones en los 6 a 10; T-Mobil entendió el mensaje (<span class="math inline">\(18{,}18\times1{,}1\approx20\)</span>), pujó 20 millones por los bloques 1 a 5, y la subasta terminó tras 2 rondas, con el espectro repartido a partes iguales (anexo <a href="#anexo:clasicos">G</a>).</p></li>
+<li><p><em>Clásico: la subasta alemana de espectro de 1999</em>: con la primera puja, Mannesmann le dijo a T-Mobil cómo repartirse el espectro, y la subasta acabó en 2 rondas (anexo <a href="#anexo:clasicos">G</a>).</p></li>
 <li><p><em>En España</em>: en julio de 2022, la Comisión Nacional de los Mercados y la Competencia multó con 203,6 millones de euros a 6 grandes constructoras por alterar durante 25 años miles de licitaciones públicas <a data-app="../cuarto-ejercicio/4A15.pdf" href="../cuarto-ejercicio/4A15.pdf" class="vertema"><span class="vertema">[ver tema 4.A.15]</span></a>.</p></li>
 </ul>
 <ul>
@@ -1794,8 +1705,8 @@ precio al que se retira</td>
 <p>Preguntas tipo test del primer ejercicio: <a href="https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html?tema=3.A.14">simulador de test</a>.</p>
 </div>
 <ul>
-<li><p><em>Equilibrio de <span class="smallcaps">Nash</span> en una matriz</em>: subrayar en cada columna el mejor pago del jugador 1 y en cada fila el mejor del 2; los EN en puras son las casillas con los 2 subrayados (tablas <a href="#tab:dilema-prisionero">2</a> y <a href="#tab:sin-dominadas">8</a>). Antes, eliminar las estrategias estrictamente dominadas simplifica; con las débilmente dominadas hay que tener cuidado, porque el orden importa y se pueden perder equilibrios.</p></li>
-<li><p><em>Estrategias mixtas en un <span class="math inline">\(2\times2\)</span></em>: la probabilidad con que juega cada jugador es la que deja <em>indiferente al otro</em>. Si el jugador 2 juega su primera columna con probabilidad <span class="math inline">\(\pi_2\)</span>, el 1 está indiferente entre sus filas a y b si <span class="math display">\[\pi_2\,u_1(\mathrm{a},1)+(1-\pi_2)\,u_1(\mathrm{a},2)=\pi_2\,u_1(\mathrm{b},1)+(1-\pi_2)\,u_1(\mathrm{b},2);\]</span> se despeja <span class="math inline">\(\pi_2\)</span>, y lo mismo para <span class="math inline">\(\pi_1\)</span> con los pagos del 2. Comprobar que salen probabilidades entre 0 y 1; si no, no hay equilibrio en mixtas completas y el EN es en puras. Ejemplo resuelto: el juego de la inspección, más abajo (tabla <a href="#tab:inspeccion">9</a>).</p></li>
+<li><p><em>Equilibrio de <span class="smallcaps">Nash</span> en una matriz</em>: subrayar en cada columna el mejor pago del jugador 1 y en cada fila el mejor del 2; los EN en puras son las casillas con los 2 subrayados (tablas <a href="#tab:dilema-prisionero">2</a> y <a href="#tab:sin-dominadas">6</a>). Antes, eliminar las estrategias estrictamente dominadas simplifica; con las débilmente dominadas hay que tener cuidado, porque el orden importa y se pueden perder equilibrios.</p></li>
+<li><p><em>Estrategias mixtas en un <span class="math inline">\(2\times2\)</span></em>: la probabilidad con que juega cada jugador es la que deja <em>indiferente al otro</em>. Si el jugador 2 juega su primera columna con probabilidad <span class="math inline">\(\pi_2\)</span>, el 1 está indiferente entre sus filas a y b si <span class="math display">\[\pi_2\,u_1(\mathrm{a},1)+(1-\pi_2)\,u_1(\mathrm{a},2)=\pi_2\,u_1(\mathrm{b},1)+(1-\pi_2)\,u_1(\mathrm{b},2);\]</span> se despeja <span class="math inline">\(\pi_2\)</span>, y lo mismo para <span class="math inline">\(\pi_1\)</span> con los pagos del 2. Comprobar que salen probabilidades entre 0 y 1; si no, no hay equilibrio en mixtas completas y el EN es en puras. Ejemplo resuelto: el juego de la inspección, más abajo (tabla <a href="#tab:inspeccion">7</a>).</p></li>
 <li><p><em>Inducción hacia atrás</em>: resolver la última decisión en cada nodo, sustituir el subárbol por el pago elegido y seguir. La estrategia de equilibrio dice qué se hace en <em>todos</em> los nodos, también en los que no se alcanzan (gráfico <a href="#fig:juego-entrada">1</a>).</p></li>
 <li><p><em>ENPS con un subjuego simultáneo</em>. El jugador 1 elige Fuera, con pagos <span class="math inline">\((2,2)\)</span>, o Dentro; si entra, los 2 juegan a la vez un juego de coordinación: <span class="math inline">\((3,1)\)</span> si los 2 eligen Izquierda, <span class="math inline">\((1,3)\)</span> si los 2 eligen Derecha y <span class="math inline">\((0,0)\)</span> si no coinciden.</p>
 <ul>
@@ -1803,12 +1714,53 @@ precio al que se retira</td>
 <li><p>Sustituyendo hacia atrás: con (Izquierda, Izquierda), el 1 entra (<span class="math inline">\(3&gt;2\)</span>); con (Derecha, Derecha) o el mixto, se queda fuera (<span class="math inline">\(2&gt;1\)</span> y <span class="math inline">\(2&gt;3/4\)</span>). Hay 3 ENPS.</p></li>
 <li><p>(Fuera e Izquierda si entra; Derecha si entra) es EN de todo el juego, pero no ENPS, porque (Izquierda, Derecha) no es EN del subjuego.</p></li>
 </ul></li>
-<li><p><em>Equilibrio bayesiano de <span class="smallcaps">Nash</span> discreto</em> (ejemplo resuelto: la entrada con capacidad desconocida, <a href="#sec:juegos-bayesianos">II.1</a>, gráfico <a href="#fig:arbol-harsanyi">3</a>), en 3 pasos:</p>
+<li><p><em>Equilibrio bayesiano de <span class="smallcaps">Nash</span> discreto</em> (ejemplo resuelto: la entrada con capacidad desconocida, <a href="#sec:juegos-bayesianos">II.1</a>, gráfico <a href="#fig:arbol-harsanyi">2</a>), en 3 pasos:</p>
 <ol>
 <li><p>hallar la mejor respuesta de <em>cada tipo</em> del jugador informado;</p></li>
 <li><p>calcular el pago esperado del no informado con la distribución a priori, y</p></li>
 <li><p>comprobar para qué probabilidades cada perfil es equilibrio.</p></li>
-</ol></li>
+</ol>
+<p>En el ejemplo, los pagos de cada tipo de <span class="upright">I</span>, en forma de matriz, son los de la tabla <a href="#tab:bayesiano">5</a>: cada tipo tiene una estrategia dominante (sombreada), y E solo tiene que comparar <span class="math inline">\(2\pi-1\)</span> con 0.</p></li>
+</ul>
+<div id="tab:bayesiano">
+<table>
+<caption><span class="etiqueta">Tabla 5.–</span> La entrada de E sin conocer el coste de <span class="upright">I</span>: pagos (E, <span class="upright">I</span>) según el tipo de <span class="upright">I</span></caption>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td colspan="2" style="text-align: center; vertical-align: middle;"><strong><span class="upright">I</span> de coste alto</strong> (<span class="math inline">\(\pi\)</span>)</td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td colspan="2" style="text-align: center; vertical-align: middle;"><strong><span class="upright">I</span> de coste bajo</strong> (<span class="math inline">\(1-\pi\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"><strong>Ampliar</strong></td>
+<td style="text-align: center; vertical-align: middle;"><strong>No ampliar</strong></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"><strong>Ampliar</strong></td>
+<td style="text-align: center; vertical-align: middle;"><strong>No ampliar</strong></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Entrar</strong></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((-1,-1)\)</span></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((1,1)\)</span></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((-1,2)\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((1,1)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>No entrar</strong></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,2)\)</span></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,3)\)</span></td>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,4)\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((0,3)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="Gibbons1992Game"><span class="smallcaps">Gibbons</span> (<a href="#ref-Gibbons1992Game" role="doc-biblioref">1992, cap. 3</a>)</span>. E, en las filas; <span class="upright">I</span>, en las columnas. Sombreada, la estrategia dominante de cada tipo de <span class="upright">I</span>.</em></p>
+<ul>
 <li><p><em>Cooperación en un juego repetido</em>: con el gatillo, cooperar es ENPS si <span class="math inline">\(\beta\geq(u^{\mathrm{D}}-u^{\mathrm{C}})/(u^{\mathrm{D}}-u^{\mathrm{N}})\)</span> (<a href="#eq:gatillo">2</a>), que sale de <span class="math inline">\(u^{\mathrm{C}}/(1-\beta)\geq u^{\mathrm{D}}+\beta\,u^{\mathrm{N}}/(1-\beta)\)</span>: multiplicando por <span class="math inline">\(1-\beta\)</span>, <span class="math inline">\(u^{\mathrm{C}}\geq(1-\beta)u^{\mathrm{D}}+\beta u^{\mathrm{N}}\)</span>, y despejando <span class="math inline">\(\beta\)</span>.</p></li>
 <li><p><em>Subastas</em>:</p>
 <ul>
@@ -1820,10 +1772,10 @@ precio al que se retira</td>
 </ul>
 <section id="la-condición-del-gatillo-en-un-gráfico" class="level3 unnumbered">
 <h3 class="unnumbered">La condición del gatillo, en un gráfico</h3>
-<p>Con los pagos de cada etapa ya descontados, <span class="math inline">\(\beta^tu\)</span>, se comparan 2 áreas (gráfico <a href="#fig:colusion-tiempo">6</a>): lo que se gana desviándose hoy, hasta que el otro reacciona (en rojo), y lo que se pierde por el castigo desde entonces y para siempre (en azul). Cooperar compensa si la azul es mayor, y lo es tanto más cuanto más paciente es el jugador, porque un <span class="math inline">\(\beta\)</span> más alto pesa más el futuro. Es el mismo gráfico con el que se estudia la colusión tácita, con el retraso en detectar la desviación <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>.</p>
+<p>Con los pagos de cada etapa ya descontados, <span class="math inline">\(\beta^tu\)</span>, se comparan 2 áreas (gráfico <a href="#fig:colusion-tiempo">5</a>): lo que se gana desviándose hoy, hasta que el otro reacciona (en rojo), y lo que se pierde por el castigo desde entonces y para siempre (en azul). Cooperar compensa si la azul es mayor, y lo es tanto más cuanto más paciente es el jugador, porque un <span class="math inline">\(\beta\)</span> más alto pesa más el futuro. Es el mismo gráfico con el que se estudia la colusión tácita, con el retraso en detectar la desviación <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>.</p>
 <figure id="fig:colusion-tiempo">
-<figcaption><span class="etiqueta">Gráfico 6.–</span> La condición del gatillo: lo que se gana desviándose hoy frente a lo que se pierde por el castigo</figcaption>
-<img src="../fuentes/3A14/graficos/colusion-tiempo.svg" style="width:60.0%" loading="lazy" alt="Gráfico 6.– La condición del gatillo: lo que se gana desviándose hoy frente a lo que se pierde por el castigo" />
+<figcaption><span class="etiqueta">Gráfico 5.–</span> La condición del gatillo: lo que se gana desviándose hoy frente a lo que se pierde por el castigo</figcaption>
+<img src="../fuentes/3A14/graficos/colusion-tiempo.svg" style="width:60.0%" loading="lazy" alt="Gráfico 5.– La condición del gatillo: lo que se gana desviándose hoy frente a lo que se pierde por el castigo" />
 <div class="fuente">
 <p>Fuente: elaboración propia.</p>
 </div>
@@ -1831,10 +1783,10 @@ precio al que se retira</td>
 </section>
 <section id="un-juego-sin-estrategias-dominadas-con-un-único-equilibrio-de-nash" class="level3 unnumbered">
 <h3 class="unnumbered">Un juego sin estrategias dominadas con un único equilibrio de <span class="smallcaps">Nash</span></h3>
-<p>En el juego de la tabla <a href="#tab:sin-dominadas">8</a> ninguna estrategia está dominada, así que la eliminación iterativa no descarta nada; pero, subrayando las mejores respuestas, solo (Abajo, Derecha) tiene los 2 pagos subrayados: es el único EN. Es el ejemplo de que el EN predice donde la dominancia no llega (<a href="#sec:nash">I.2.2</a>).</p>
+<p>En el juego de la tabla <a href="#tab:sin-dominadas">6</a> ninguna estrategia está dominada, así que la eliminación iterativa no descarta nada; pero, subrayando las mejores respuestas, solo (Abajo, Derecha) tiene los 2 pagos subrayados: es el único EN. Es el ejemplo de que el EN predice donde la dominancia no llega (<a href="#sec:nash">I.2.2</a>).</p>
 <div id="tab:sin-dominadas">
 <table>
-<caption><span class="etiqueta">Tabla 8.–</span> Un juego sin estrategias dominadas con un único equilibrio de <span class="smallcaps">Nash</span>, (Abajo, Derecha)</caption>
+<caption><span class="etiqueta">Tabla 6.–</span> Un juego sin estrategias dominadas con un único equilibrio de <span class="smallcaps">Nash</span>, (Abajo, Derecha)</caption>
 <tbody>
 <tr>
 <td style="text-align: center; vertical-align: middle;"></td>
@@ -1867,13 +1819,13 @@ precio al que se retira</td>
 </section>
 <section id="un-equilibrio-en-mixtas-el-juego-de-la-inspección" class="level3 unnumbered">
 <h3 class="unnumbered">Un equilibrio en mixtas: el juego de la inspección</h3>
-<p>Un trabajador elige trabajar o escaquearse; la empresa, vigilar, con un coste de 1, o no vigilar. Los demás datos (tabla <a href="#tab:inspeccion">9</a>):</p>
+<p>Un trabajador elige trabajar o escaquearse; la empresa, vigilar, con un coste de 1, o no vigilar. Los demás datos (tabla <a href="#tab:inspeccion">7</a>):</p>
 <ul>
 <li><p>el salario es 4 y esforzarse cuesta 2;</p></li>
 <li><p>quien se escaquea y es descubierto no cobra, y</p></li>
 <li><p>trabajar produce 6.</p></li>
 </ul>
-<p>No hay EN en puras: las mejores respuestas dan vueltas (gráfico <a href="#fig:inspeccion">7</a>).</p>
+<p>No hay EN en puras: las mejores respuestas dan vueltas (gráfico <a href="#fig:inspeccion">6</a>).</p>
 <ul>
 <li><p>La empresa vigila con la probabilidad <span class="math inline">\(\pi_V\)</span> que deja indiferente al trabajador: trabajar le da 2 y escaquearse <span class="math inline">\(4(1-\pi_V)\)</span>, así que <span class="math inline">\(\pi_V^*=1/2\)</span>.</p></li>
 <li><p>El trabajador trabaja con la probabilidad <span class="math inline">\(\pi_T\)</span> que deja indiferente a la empresa: vigilar le da <span class="math inline">\(\pi_T-(1-\pi_T)=2\pi_T-1\)</span> y no vigilar <span class="math inline">\(2\pi_T-4(1-\pi_T)=6\pi_T-4\)</span>, así que <span class="math inline">\(\pi_T^*=3/4\)</span>.</p></li>
@@ -1881,7 +1833,7 @@ precio al que se retira</td>
 </ul>
 <div id="tab:inspeccion">
 <table>
-<caption><span class="etiqueta">Tabla 9.–</span> El juego de la inspección (trabajador, filas; empresa, columnas): sin equilibrio en estrategias puras</caption>
+<caption><span class="etiqueta">Tabla 7.–</span> El juego de la inspección (trabajador, filas; empresa, columnas): sin equilibrio en estrategias puras</caption>
 <tbody>
 <tr>
 <td style="text-align: center; vertical-align: middle;"></td>
@@ -1903,8 +1855,8 @@ precio al que se retira</td>
 </div>
 <p><em>Fuente: elaboración propia (salario 4, coste del esfuerzo 2, coste de vigilar 1, producto 6) a partir de la idea de <span class="citation" data-cites="Gibbons1992Game"><span class="smallcaps">Gibbons</span> (<a href="#ref-Gibbons1992Game" role="doc-biblioref">1992, cap. 1</a>)</span>.</em></p>
 <figure id="fig:inspeccion">
-<figcaption><span class="etiqueta">Gráfico 7.–</span> Mejores respuestas en el juego de la inspección y equilibrio en mixtas</figcaption>
-<img src="../fuentes/3A14/graficos/inspeccion.svg" style="width:50.0%" loading="lazy" alt="Gráfico 7.– Mejores respuestas en el juego de la inspección y equilibrio en mixtas" />
+<figcaption><span class="etiqueta">Gráfico 6.–</span> Mejores respuestas en el juego de la inspección y equilibrio en mixtas</figcaption>
+<img src="../fuentes/3A14/graficos/inspeccion.svg" style="width:50.0%" loading="lazy" alt="Gráfico 6.– Mejores respuestas en el juego de la inspección y equilibrio en mixtas" />
 <div class="fuente">
 <p>Fuente: elaboración propia.</p>
 </div>
@@ -1912,10 +1864,10 @@ precio al que se retira</td>
 </section>
 <section id="las-estrategias-del-dilema-del-prisionero-repetido-con-el-principio-de-la-desviación-única" class="level3 unnumbered">
 <h3 class="unnumbered">Las estrategias del dilema del prisionero repetido, con el principio de la desviación única</h3>
-<p>Con los pagos de la guerra de precios (5 si los 2 cooperan, 6 al que se desvía, 0 al que coopera cuando el otro se desvía y 1 si ninguno coopera), cada fila de la tabla <a href="#tab:estrategias-repetidas">10</a> se comprueba mirando, tras cada historia, si una sola desviación compensa.</p>
+<p>Con los pagos de la guerra de precios (5 si los 2 cooperan, 6 al que se desvía, 0 al que coopera cuando el otro se desvía y 1 si ninguno coopera), cada fila de la tabla <a href="#tab:estrategias-repetidas">8</a> se comprueba mirando, tras cada historia, si una sola desviación compensa.</p>
 <div id="tab:estrategias-repetidas">
 <table>
-<caption><span class="etiqueta">Tabla 10.–</span> Estrategias del dilema del prisionero repetido (con los pagos de la guerra de precios de <span class="upright">I</span> y E)</caption>
+<caption><span class="etiqueta">Tabla 8.–</span> Estrategias del dilema del prisionero repetido (con los pagos de la guerra de precios de <span class="upright">I</span> y E)</caption>
 <thead>
 <tr>
 <th class="celda-tceeazulpalido" style="text-align: left;"><strong>Estrategia</strong></th>
@@ -1991,6 +1943,40 @@ precio al que se retira</td>
 </ul></li>
 </ul>
 </section>
+<section id="anexo:compromiso" class="level3 unnumbered">
+<h3 class="unnumbered">El compromiso de <span class="upright">I</span> y el compromiso en economía</h3>
+<ul>
+<li><p><em>El compromiso de <span class="upright">I</span>, en un árbol</em> (<a href="#sec:enps">I.3.1</a>): el gráfico <a href="#fig:juego-entrada-compromiso">7</a> añade al juego de entrada la rama «Invertir»: con la capacidad ya comprada, luchar (<span class="math inline">\(-1\)</span>) es mejor que acomodar (<span class="math inline">\(-1{,}5\)</span>), E no entra e <span class="upright">I</span> gana 1,5, más que el 1 que obtendría sin invertir.</p></li>
+<li><p><em>En economía</em>:</p>
+<ul>
+<li><p>el monopolista de un bien duradero querría comprometerse a no bajar el precio y no puede: los compradores lo anticipan y esperan, y el precio cae hacia el coste marginal; es la conjetura de <span class="citation" data-cites="Coase1972Durability"><span class="smallcaps">Coase</span> (<a href="#ref-Coase1972Durability" role="doc-biblioref">1972</a>)</span>, un problema de <strong>inconsistencia temporal</strong> <a data-app="3A17.pdf" href="3A17.html" class="vertema"><span class="vertema">[ver tema 3.A.17]</span></a>;<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
+<li><p>el banco central que promete inflación baja tiene, una vez fijadas las expectativas, incentivos a incumplir: es la inconsistencia temporal de <span class="citation" data-cites="KydlandPrescott1977Rules"><span class="smallcaps">Kydland</span> y <span class="smallcaps">Prescott</span> (<a href="#ref-KydlandPrescott1977Rules" role="doc-biblioref">1977</a>)</span> y <span class="citation" data-cites="BarroGordon1983Rules"><span class="smallcaps">Barro</span> y <span class="smallcaps">Gordon</span> (<a href="#ref-BarroGordon1983Rules" role="doc-biblioref">1983</a>)</span>, en la que la discreción es el EN del juego entre la autoridad y el público, y que se resuelve con reglas, reputación o independencia <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
+</ul></li>
+</ul>
+<figure id="fig:juego-entrada-compromiso">
+<figcaption><span class="etiqueta">Gráfico 7.–</span> El compromiso de <span class="upright">I</span>: invertir antes en capacidad hace creíble la guerra de precios</figcaption>
+<img src="../fuentes/3A14/graficos/juego-entrada-compromiso.svg" style="width:80.0%" loading="lazy" alt="Gráfico 7.– El compromiso de I: invertir antes en capacidad hace creíble la guerra de precios" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Schelling1960Strategy"><span class="smallcaps">Schelling</span> (<a href="#ref-Schelling1960Strategy" role="doc-biblioref">1960</a>)</span> y <span class="citation" data-cites="Tirole1988Theory"><span class="smallcaps">Tirole</span> (<a href="#ref-Tirole1988Theory" role="doc-biblioref">1988, cap. 8</a>)</span>. Pagos: (E, I), con un coste hundido de la capacidad de 2,5; en rojo, el ENPS.</p>
+</div>
+</figure>
+</section>
+<section id="anexo:evidencia-dinamicos" class="level3 unnumbered">
+<h3 class="unnumbered">Evidencia sobre los juegos dinámicos</h3>
+<ul>
+<li><p><em>Juegos secuenciales</em>: la inducción hacia atrás exige mucha racionalidad.</p>
+<ul>
+<li><p>En el <em>juego del ciempiés</em> de <span class="citation" data-cites="Rosenthal1981Games"><span class="smallcaps">Rosenthal</span> (<a href="#ref-Rosenthal1981Games" role="doc-biblioref">1981</a>)</span>, 2 jugadores se pasan el turno y el bote crece en cada paso; el único ENPS es parar en la primera jugada, pero en el laboratorio casi nadie para al principio.</p></li>
+<li><p>En el <em>juego del ultimátum</em>, muchos rechazan ofertas positivas que juzgan injustas (<a href="#sec:negociacion">II.3.1</a>).</p></li>
+</ul></li>
+<li><p><em>Juegos repetidos</em>, en torneos, simulaciones y laboratorio:</p>
+<ul>
+<li><p>En los torneos de dilemas del prisionero repetidos de <span class="citation" data-cites="Axelrod1984Evolution"><span class="smallcaps">Axelrod</span> (<a href="#ref-Axelrod1984Evolution" role="doc-biblioref">1984</a>)</span>, ganó una de las estrategias más sencillas, «donde las dan, las toman»: cooperar al principio y después hacer lo que hizo el otro en la jugada anterior.</p></li>
+<li><p>Con errores (alguien se desvía sin querer), «donde las dan, las toman» encadena represalias; en las simulaciones de <span class="citation" data-cites="NowakSigmund1993Strategy"><span class="smallcaps">Nowak</span> y <span class="smallcaps">Sigmund</span> (<a href="#ref-NowakSigmund1993Strategy" role="doc-biblioref">1993</a>)</span> la supera «si gano, repito; si pierdo, cambio», que vuelve a cooperar tras un castigo.</p></li>
+<li><p>En el laboratorio, la cooperación es más frecuente cuanto más probable es que el juego continúe, como predice (<a href="#eq:gatillo">2</a>).</p></li>
+</ul></li>
+</ul>
+</section>
 </section>
 <section id="anexo:rubinstein" class="level2 unnumbered">
 <h2 class="unnumbered">C. Anexo: la negociación de <span class="smallcaps">Rubinstein</span> y su límite</h2>
@@ -2008,6 +1994,36 @@ precio al que se retira</td>
 </section>
 <section id="anexo:cooperativos" class="level2 unnumbered">
 <h2 class="unnumbered">D. Anexo: cálculo del núcleo y del valor de <span class="smallcaps">Shapley</span></h2>
+<div id="tab:consorcio">
+<table>
+<caption><span class="etiqueta">Tabla 9.–</span> El consorcio de <span class="upright">I</span>, E y O: lo que consigue cada coalición, <span class="math inline">\(v(T)\)</span></caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Coalición</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I}\}\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{E}\}\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{O}\}\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{E},\text{O}\}\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I},\text{E}\}\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I},\text{O}\}\)</span></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><span class="math inline">\(\{\text{I},\text{E},\text{O}\}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(v(T)\)</span></td>
+<td style="text-align: center; vertical-align: middle;">20</td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;">60</td>
+<td style="text-align: center; vertical-align: middle;">100</td>
+<td style="text-align: center; vertical-align: middle;">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia. <span class="upright">I</span> es el jugador 1 (el vendedor de la red), y E y O, los jugadores 2 y 3 (los compradores).</em></p>
 <ul>
 <li><p><em>Núcleo del ejemplo</em> (<a href="#sec:nucleo">II.3.2</a>; en el ejemplo, el vendedor 1 es <span class="upright">I</span> y los compradores 2 y 3 son E y O): con <span class="math inline">\(x_1+x_2+x_3=100\)</span>, la condición <span class="math inline">\(x_1+x_3\geq100\)</span> implica <span class="math inline">\(x_2\leq0\)</span> y, con <span class="math inline">\(x_2\geq0\)</span>, <span class="math inline">\(x_2=0\)</span>; <span class="math inline">\(x_1+x_2\geq60\)</span> implica <span class="math inline">\(x_1\geq60\)</span>; <span class="math inline">\(x_1\geq20\)</span>, <span class="math inline">\(x_3\geq0\)</span> y <span class="math inline">\(x_2+x_3\geq0\)</span> no añaden nada. Núcleo: <span class="math inline">\(\big\{(x_1,0,100-x_1):60\leq x_1\leq100\big\}\)</span>.<span class="findemo">∎</span></p></li>
 <li><p><em>Un juego con el núcleo vacío</em>: 3 jugadores se reparten 100 por mayoría, <span class="math inline">\(v(T)=100\)</span> si <span class="math inline">\(|T|\geq2\)</span> y 0 si no. Para que ninguna pareja bloquee, <span class="math inline">\(x_1+x_2\geq100\)</span>, <span class="math inline">\(x_1+x_3\geq100\)</span> y <span class="math inline">\(x_2+x_3\geq100\)</span>; sumando, <span class="math inline">\(2(x_1+x_2+x_3)\geq300\)</span>, es decir, <span class="math inline">\(x_1+x_2+x_3\geq150&gt;100=v(N)\)</span>: imposible.<span class="findemo">∎</span></p></li>
@@ -2020,11 +2036,11 @@ precio al que se retira</td>
 <li><p>estudiar qué cárteles y alianzas entre empresas son estables <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, y</p></li>
 <li><p>atribuir la contribución de cada variable en la estadística y el aprendizaje automático.</p></li>
 </ul></li>
-<li><p><em>Valor de <span class="smallcaps">Shapley</span></em> por los 6 órdenes de llegada (aportación de cada jugador al llegar, tabla <a href="#tab:shapley">11</a>). Comprobación con (<a href="#eq:shapley">4</a>) para el comprador 2: solo aporta algo cuando llega tras el vendedor y antes que el comprador 3, <span class="math inline">\(T=\{1\}\)</span>, con peso <span class="math inline">\(1!\,1!/3!=1/6\)</span>, así que <span class="math inline">\(\phi_2=(60-20)/6=6\tfrac23\)</span>.</p></li>
+<li><p><em>Valor de <span class="smallcaps">Shapley</span></em> por los 6 órdenes de llegada (aportación de cada jugador al llegar, tabla <a href="#tab:shapley">10</a>). Comprobación con (<a href="#eq:shapley">4</a>) para el comprador 2: solo aporta algo cuando llega tras el vendedor y antes que el comprador 3, <span class="math inline">\(T=\{1\}\)</span>, con peso <span class="math inline">\(1!\,1!/3!=1/6\)</span>, así que <span class="math inline">\(\phi_2=(60-20)/6=6\tfrac23\)</span>.</p></li>
 </ul>
 <div id="tab:shapley">
 <table>
-<caption><span class="etiqueta">Tabla 11.–</span> Aportaciones marginales en cada orden de llegada</caption>
+<caption><span class="etiqueta">Tabla 10.–</span> Aportaciones marginales en cada orden de llegada</caption>
 <thead>
 <tr>
 <th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"> <strong>Orden</strong></th>
@@ -2094,8 +2110,60 @@ precio al que se retira</td>
 </figure></li>
 <li><p><em>Equivalencia de ingresos</em>. En cualquier formato en el que gana el de mayor valor, la ganancia esperada de un pujador con valor <span class="math inline">\(v\)</span> que se comporta como si tuviera <span class="math inline">\(z\)</span> es <span class="math inline">\(U(z;v)=v\,G(z)-m(z)\)</span>, donde <span class="math inline">\(m(z)\)</span> es su pago esperado. En equilibrio <span class="math inline">\(z=v\)</span> es óptimo y, por el teorema de la envolvente, <span class="math inline">\(U&#39;(v)=G(v)\)</span>; integrando, <span class="math inline">\(U(v)=U(0)+\int_0^vG(s)\,ds\)</span>. Si <span class="math inline">\(U(0)=0\)</span>, el pago esperado <span class="math inline">\(m(v)=v\,G(v)-\int_0^vG(s)\,ds\)</span> no depende del formato, ni tampoco el ingreso, <span class="math inline">\(n\,\mathbb{E}\big[m(v)\big]\)</span>. Con <span class="math inline">\(U[0,1]\)</span>, <span class="math inline">\(m(v)=v^n-\frac{v^n}{n}=\frac{n-1}{n}v^n\)</span> y el ingreso es <span class="math inline">\(n\int_0^1\frac{n-1}{n}v^n\,dv=\frac{n-1}{n+1}\)</span>, que es (<a href="#eq:equivalencia">6</a>).<span class="findemo">∎</span></p></li>
 <li><p><em>Subasta óptima con <span class="math inline">\(U[0,1]\)</span></em>. El ingreso esperado de cualquier mecanismo es el valor virtual esperado del ganador, <span class="math inline">\(\mathbb{E}\big[\psi(v_{\mathrm{ganador}})\big]\)</span>; para maximizarlo, se vende al de mayor <span class="math inline">\(\psi\)</span> solo si <span class="math inline">\(\psi\geq v_0\)</span>. Con <span class="math inline">\(U[0,1]\)</span>, <span class="math inline">\(F(v)=v\)</span>, <span class="math inline">\(f(v)=1\)</span> y <span class="math inline">\(\psi(v)=v-(1-v)=2v-1\)</span>; con <span class="math inline">\(v_0=0\)</span>, <span class="math inline">\(p^R=1/2\)</span>. Con 2 pujadores y precio de reserva <span class="math inline">\(r\)</span> en segundo precio, el ingreso esperado es <span class="math inline">\(\frac13+r^2-\frac43r^3\)</span>, que es máximo en <span class="math inline">\(r=1/2\)</span> (<span class="math inline">\(2r-4r^2=0\)</span>) y vale <span class="math inline">\(\frac13+\frac14-\frac16=\frac{5}{12}\)</span>, frente a <span class="math inline">\(\frac13\)</span> sin reserva.<span class="findemo">∎</span></p></li>
+<li><p><em>Precio de reserva en el ejemplo del 5G</em>. En la licencia del 5G, con valoraciones entre 0 y 12, el valor virtual es <span class="math inline">\(\psi(v)=2v-12\)</span> y el precio de reserva óptimo, 6: el Gobierno no vendería por menos de 6. Con las valoraciones de <span class="upright">I</span>, E y O no cambia nada en segundo precio (<span class="upright">I</span> ya pagaba 8); pero si E y O valoraran la licencia en 3 y 2, sin precio de reserva <span class="upright">I</span> pagaría 3, y con él, 6.</p></li>
+<li><p><em>Un pujador más vale más que el precio de reserva</em>: con <span class="math inline">\(U[0,1]\)</span>, 3 pujadores sin precio de reserva dan un ingreso esperado de <span class="math inline">\((3-1)/(3+1)=1/2\)</span>, más que los <span class="math inline">\(5/12\)</span> de la subasta óptima con 2.</p></li>
 <li><p><em>Valor común</em>. Si el valor <span class="math inline">\(v\)</span> es el mismo para todos y cada uno recibe una estimación <span class="math inline">\(x_i=v+\varepsilon_i\)</span> con error de media nula, <span class="math inline">\(\mathbb{E}[v\mid x_i]=x_i\)</span> (con una distribución a priori difusa), pero <span class="math inline">\(\mathbb{E}[v\mid x_i \text{ es la estimación más alta}]&lt;x_i\)</span>: ganar informa de que los demás estimaron menos. Quien puja <span class="math inline">\(x_i\)</span> paga de más en promedio; el pujador racional descuenta esa información, y más cuantos más rivales hay.</p></li>
 </ul>
+<section id="la-rotación-de-ofertas-en-una-tabla" class="level3 unnumbered">
+<h3 class="unnumbered">La rotación de ofertas, en una tabla</h3>
+<p>Lo que gana cada uno en cada subasta si <span class="upright">I</span> y E se turnan (<a href="#sec:colusion-subastas">III.3.4</a>): la tentación de romper el acuerdo la tiene quien espera su turno, y la rotación se sostiene si <span class="math inline">\(G\beta/(1-\beta^2)\geq G\)</span> (<a href="#eq:rotacion">7</a>).</p>
+<div id="tab:rotacion">
+<table>
+<caption><span class="etiqueta">Tabla 11.–</span> La rotación de <span class="upright">I</span> y E en las subastas del 5G: lo que gana cada uno en cada subasta y lo que vale hoy</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Subasta</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Hoy</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>2.ª</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>3.ª</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>4.ª</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>…</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Valor hoy</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="upright">I</span>, a quien le toca hoy</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;">…</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G/(1-\beta^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">E, si cumple</td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
+<td style="text-align: center; vertical-align: middle;">0</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
+<td style="text-align: center; vertical-align: middle;">…</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\beta/(1-\beta^2)\)</span></td>
+</tr>
+<tr>
+<td class="celda-tceesalvia" style="text-align: left;">E, si se desvía hoy</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">0</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">0</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">0</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">…</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\(G\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia. <span class="math inline">\(G\)</span>: lo que vale la licencia menos el precio de reserva; <span class="math inline">\(\beta\)</span>: factor de descuento entre 2 subastas. Tras la desviación vuelve la competencia, que se lleva toda la ganancia.</em></p>
+</section>
 </section>
 <section id="anexo:subastas-practica" class="level2 unnumbered">
 <h2 class="unnumbered">F. Anexo: las subastas en la práctica</h2>
@@ -2103,7 +2171,7 @@ precio al que se retira</td>
 <h3 class="unnumbered">Cuando fallan los supuestos del modelo de referencia</h3>
 <ul>
 <li><p><em>Aversión al riesgo</em>: en primer precio, el averso puja más para no perder, y el ingreso supera al de segundo precio, donde pujar el valor sigue siendo dominante <a data-app="3A10.pdf" href="3A10.html" class="vertema"><span class="vertema">[ver tema 3.A.10]</span></a>.</p></li>
-<li><p><em>Pujadores asimétricos</em>: el primer precio puede asignar el bien a quien no más lo valora, y no hay una ordenación general de los ingresos.</p></li>
+<li><p><em>Pujadores asimétricos</em>: el primer precio puede asignar el bien a quien no es el que más lo valora, y no hay una ordenación general de los ingresos.</p></li>
 <li><p><em>Valores afiliados</em>: cuanto más revela el formato sobre la información de los demás durante la subasta, menos teme cada pujador la maldición del ganador, menos sombrea y más alto es el ingreso esperado; la inglesa recauda en promedio al menos tanto como la de segundo precio, y esta al menos tanto como la de primer precio (y la holandesa). No es que el vendedor gane <em>siempre</em> más con subastas abiertas: lo gana en esperanza cuando los valores están afiliados. Por eso, en general, le conviene revelar la información que tenga sobre el bien.</p></li>
 </ul>
 </section>
@@ -2122,7 +2190,11 @@ precio al que se retira</td>
 <section id="varias-unidades-y-nuevos-formatos-para-varios-objetos" class="level3 unnumbered">
 <h3 class="unnumbered">Varias unidades y nuevos formatos para varios objetos</h3>
 <ul>
-<li><p><em>Varias unidades iguales</em>: en el gráfico <a href="#fig:multiunidad">9</a>, las pujas escalonadas se ordenan de mayor a menor hasta agotar la oferta; con precio uniforme todos pagan la última puja aceptada, y con precio discriminatorio cada uno paga sus pujas (<a href="#sec:multiunidad">III.3.3</a>).</p></li>
+<li><p><em>Varias unidades iguales</em>: en el gráfico <a href="#fig:multiunidad">9</a>, las pujas escalonadas se ordenan de mayor a menor hasta agotar la oferta (<a href="#sec:multiunidad">III.3.3</a>):</p>
+<ul>
+<li><p><strong>Precio uniforme</strong>: todos pagan el precio marginal, el de la última puja aceptada. Como la puja por las últimas unidades puede fijar el precio de todas, los grandes pujadores tienen incentivo a pujar por debajo de su valor en esas unidades: es la <strong>reducción de la demanda</strong>, que resta ingreso y eficiencia.</p></li>
+<li><p><strong>Precio discriminatorio</strong> (o «precio ofrecido»): cada uno paga sus pujas, y todos sombrean. Ningún formato domina en general al otro.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p></li>
+</ul></li>
 <li><p><em>La subasta ascendente simultánea de varias rondas</em> (SMRA): la Comisión Federal de Comunicaciones de Estados Unidos la estrenó en julio de 1994 (10 licencias, 47 rondas y 617 millones de dólares) y en 20 años recaudó con ella más de 120.000 millones; la han adoptado, entre otros, Canadá, Alemania, el Reino Unido y España.</p></li>
 <li><p>Las <strong>subastas combinatorias</strong> y de reloj combinatorio permiten pujar por paquetes, y la <em>subasta de incentivos</em> de la Comisión Federal (2016-2017) compró espectro a las televisiones y lo revendió a los operadores.</p></li>
 </ul>
@@ -2197,7 +2269,7 @@ precio al que se retira</td>
 <li><p><em>Juego</em>: una pareja quiere pasar la tarde junta, pero uno prefiere el fútbol y el otro el teatro. Ir juntos al plan preferido da 2 a quien lo prefiere y 1 al otro; ir cada uno por su lado, 0 a los 2 (tabla <a href="#tab:batalla-sexos">13</a>).</p></li>
 <li><p><em>Equilibrio</em>: 2 EN en puras, (Fútbol, Fútbol) y (Teatro, Teatro), y uno en mixtas en el que cada uno va a su plan preferido con probabilidad <span class="math inline">\(2/3\)</span>; en este, los 2 se desencuentran con probabilidad <span class="math inline">\(5/9\)</span> y cada uno espera <span class="math inline">\(2/3\)</span>, menos que en cualquiera de los equilibrios en puras.</p></li>
 <li><p><em>Moraleja</em>: cuando hay varios equilibrios, la teoría no dice cuál se jugará; deciden la costumbre, los puntos focales de <span class="citation" data-cites="Schelling1960Strategy"><span class="smallcaps">Schelling</span> (<a href="#ref-Schelling1960Strategy" role="doc-biblioref">1960</a>)</span>, quién mueve primero o un acuerdo previo.</p></li>
-<li><p><em>En el temario</em>: los estándares tecnológicos y los efectos de red, en los que todos quieren coincidir pero cada uno prefiere el suyo <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>; la coordinación de las políticas económicas entre países <a data-app="3B45.pdf" href="3B45.html" class="vertema"><span class="vertema">[ver tema 3.B.45]</span></a>.</p></li>
+<li><p><em>En el temario</em>: los estándares tecnológicos y los efectos de red, en los que todos quieren coincidir pero cada uno prefiere el suyo <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>; la coordinación de las políticas económicas entre países (el Plaza, en 1985, para depreciar el dólar, y el Louvre, en 1987, para frenar su caída y estabilizarlo: todos querían coordinarse, pero cada uno prefería que ajustaran los demás) <a data-app="3B19.pdf" href="3B19.html" class="vertema"><span class="vertema">[ver tema 3.B.19]</span></a> <a data-app="3B45.pdf" href="3B45.html" class="vertema"><span class="vertema">[ver tema 3.B.45]</span></a>.</p></li>
 </ul>
 <div id="tab:batalla-sexos">
 <table>
@@ -2232,7 +2304,12 @@ precio al que se retira</td>
 <li><p>si se apartan los 2, empatan, y</p></li>
 <li><p>si no se aparta ninguno, chocan, el peor resultado para los 2.</p></li>
 </ul></li>
-<li><p><em>Una lectura de 2012: España y el BCE</em> (tabla <a href="#tab:gallina">14</a>). En junio de 2012, España pidió al Eurogrupo asistencia para recapitalizar su banca, con un préstamo de hasta 100.000 millones de euros del que se desembolsaron 41.330; en septiembre, el BCE aprobó las operaciones monetarias de compraventa (OMT), compras de deuda condicionadas a que el país pidiera un programa de asistencia. El pulso fue ese: el BCE quería que España pidiera el programa antes de comprar su deuda, y España, que el BCE la sostuviera sin pedirlo. En forma estilizada, con pagos que son una lectura propia y no salen de esas fuentes, España puede aceptar un rescate o no aceptarlo; el BCE, seguir sosteniendo su financiación o dejar de hacerlo. Al BCE le conviene dejar de financiar si España acepta el rescate, que sanearía su sistema financiero; a España, no aceptarlo si el BCE sigue financiando. Si ninguno cede, la crisis es catastrófica para los 2.</p></li>
+<li><p><em>Una lectura de 2012: España y el BCE</em> (tabla <a href="#tab:gallina">14</a>).</p>
+<ul>
+<li><p><em>Los hechos</em>: en junio de 2012, España pidió al Eurogrupo asistencia para recapitalizar su banca, con un préstamo de hasta 100.000 millones de euros del que se desembolsaron 41.330; en septiembre, el BCE aprobó las operaciones monetarias de compraventa (OMT), compras de deuda condicionadas a que el país pidiera un programa de asistencia.</p></li>
+<li><p><em>El pulso</em>: el BCE quería que España pidiera el programa antes de comprar su deuda, y España, que el BCE la sostuviera sin pedirlo.</p></li>
+<li><p><em>El juego</em>, en forma estilizada y con pagos que son una lectura propia y no salen de esas fuentes: España puede aceptar un rescate o no aceptarlo; el BCE, seguir sosteniendo su financiación o dejar de hacerlo. Al BCE le conviene dejar de financiar si España acepta el rescate, que sanearía su sistema financiero; a España, no aceptarlo si el BCE sigue financiando. Si ninguno cede, la crisis es catastrófica para los 2.</p></li>
+</ul></li>
 <li><p><em>Equilibrio</em>: 2 EN en puras, en los que cede uno de los 2 (Seguir, No aceptar) y (Dejar, Aceptar), y uno en mixtas en el que cada uno cede con probabilidad <span class="math inline">\(19/20\)</span>. Por ejemplo, el BCE está indiferente si España acepta con probabilidad <span class="math inline">\(a\)</span> tal que <span class="math inline">\(-(1-a)=a-20(1-a)\)</span>, es decir, <span class="math inline">\(a=19/20\)</span>.</p></li>
 <li><p><em>Moraleja</em>: gana quien logra comprometerse de forma creíble a no ceder (quemar las naves, <a href="#sec:enps">I.3.1</a>); y el riesgo de choque, aunque pequeño, existe.</p></li>
 <li><p><em>En el temario</em>: la crisis del sistema financiero español y su rescate <a data-app="../cuarto-ejercicio/4A18.pdf" href="../cuarto-ejercicio/4A18.pdf" class="vertema"><span class="vertema">[ver tema 4.A.18]</span></a>, los ataques especulativos con varios equilibrios <a data-app="3B17.pdf" href="3B17.html" class="vertema"><span class="vertema">[ver tema 3.B.17]</span></a> y la disuasión de la entrada <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>.</p></li>
@@ -2266,7 +2343,7 @@ precio al que se retira</td>
 <ul>
 <li><p><em>Juego</em>: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero (tabla <a href="#tab:pares-nones">15</a>).</p></li>
 <li><p><em>Equilibrio</em>: no hay EN en puras (el que pierde siempre quiere cambiar: en ninguna casilla están subrayados los 2 pagos); en el único EN, cada uno juega cada opción al 50 %, y el valor del juego es 0. Las mejores respuestas, <span class="math inline">\(R_1\)</span> y <span class="math inline">\(R_2\)</span>, solo se cortan en <span class="math inline">\((1/2,\,1/2)\)</span> (gráfico <a href="#fig:pares-nones">10</a>): con <span class="math inline">\(\pi_2&gt;1/2\)</span>, al 1 le conviene sacar 1 dedo siempre, y al 2, que quiere no coincidir, le conviene entonces sacar 2.</p></li>
-<li><p><em>Moraleja</em>: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspección (tabla <a href="#tab:inspeccion">9</a> y gráfico <a href="#fig:inspeccion">7</a>, con el EN en <span class="math inline">\((1/2,\,3/4)\)</span>), encarecer la vigilancia no cambia cuánto vigila la empresa, sino cuánto se escaquea el trabajador.</p></li>
+<li><p><em>Moraleja</em>: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspección (tabla <a href="#tab:inspeccion">7</a> y gráfico <a href="#fig:inspeccion">6</a>, con el EN en <span class="math inline">\((1/2,\,3/4)\)</span>), encarecer la vigilancia no cambia cuánto vigila la empresa, sino cuánto se escaquea el trabajador.</p></li>
 <li><p><em>En el temario</em>:</p>
 <ul>
 <li><p>los penaltis;</p></li>
@@ -2311,7 +2388,7 @@ precio al que se retira</td>
 <li><p><em>Juego</em>: un ejército desembarca y decide si conserva los barcos o los destruye; después, el rival decide si ataca, y el ejército, si lucha o se retira. Con los barcos, retirarse es la mejor respuesta al ataque, y el rival, que lo anticipa, ataca; sin ellos, la retirada no existe, luchar es la única opción y el rival, que lo sabe, no ataca. <span class="smallcaps">Hernán Cortés</span> hundió sus barcos en 1519, al llegar a México.</p></li>
 <li><p><em>Equilibrio</em> (gráfico <a href="#fig:quemar-naves">11</a>, con pagos ilustrativos): con barcos, ante el ataque, Cortés se retira (<span class="math inline">\(0&gt;-1\)</span>), y el rival ataca (<span class="math inline">\(1&gt;0\)</span>); sin barcos, el rival no ataca (<span class="math inline">\(0&gt;-1\)</span>). El ENPS empieza por destruir los barcos (<span class="math inline">\(2&gt;0\)</span>): tener menos opciones da un pago mayor.</p></li>
 <li><p><em>Moraleja</em>: «Quemar las naves»: un compromiso es creíble cuando es irreversible y cambia lo que a uno le conviene hacer después.</p></li>
-<li><p><em>En el temario</em>: la capacidad como disuasión de la entrada <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a> (el compromiso de <span class="upright">I</span>, gráfico <a href="#fig:juego-entrada-compromiso">2</a>), el liderazgo de <span class="smallcaps">Stackelberg</span> <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, la política comercial estratégica <a data-app="3B08.pdf" href="3B08.html" class="vertema"><span class="vertema">[ver tema 3.B.8]</span></a> y la independencia del banco central y las reglas <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>.</p></li>
+<li><p><em>En el temario</em>: la capacidad como disuasión de la entrada <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a> (el compromiso de <span class="upright">I</span>, gráfico <a href="#fig:juego-entrada-compromiso">7</a>), el liderazgo de <span class="smallcaps">Stackelberg</span> <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, la política comercial estratégica <a data-app="3B08.pdf" href="3B08.html" class="vertema"><span class="vertema">[ver tema 3.B.8]</span></a> y la independencia del banco central y las reglas <a data-app="3A36.pdf" href="3A36.html" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>.</p></li>
 </ul>
 <figure id="fig:quemar-naves">
 <figcaption><span class="etiqueta">Gráfico 11.–</span> <span class="smallcaps">Hernán Cortés</span> quema las naves: renunciar a la retirada disuade el ataque</figcaption>
@@ -2429,7 +2506,7 @@ precio al que se retira</td>
 <h3 class="unnumbered">Las licitaciones de petróleo del golfo de México: la maldición del ganador</h3>
 <ul>
 <li><p><em>Juego</em>: el Gobierno de Estados Unidos subastaba a sobre cerrado los derechos de explotación de yacimientos en el golfo de México. Lo que hay en el subsuelo vale casi lo mismo para todas las petroleras, pero nadie lo sabe: cada una lo estima con sus propios estudios geológicos. Es un valor común.</p></li>
-<li><p><em>Equilibrio</em>: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado. Gana quien más ha sobrestimado el valor, y quien puja su estimación paga, en promedio, de más (gráfico <a href="#fig:maldicion-ganador">16</a>: la más alta de 5 estimaciones supera el valor real, en promedio, en <span class="math inline">\(2/3\)</span> del error máximo); el pujador racional descuenta esa información y puja por debajo de su estimación, y tanto más cuantos más rivales tiene (anexo <a href="#anexo:subastas">E</a>).</p></li>
+<li><p><em>Equilibrio</em>: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado, y fueron los primeros en describir lo que hoy se llama «maldición del ganador». Gana quien más ha sobrestimado el valor, y quien puja su estimación paga, en promedio, de más (gráfico <a href="#fig:maldicion-ganador">16</a>: la más alta de 5 estimaciones supera el valor real, en promedio, en <span class="math inline">\(2/3\)</span> del error máximo); el pujador racional descuenta esa información y puja por debajo de su estimación, y tanto más cuantos más rivales tiene (anexo <a href="#anexo:subastas">E</a>).</p></li>
 <li><p><em>Moraleja</em>: «No es oro todo lo que reluce»: ganar es una mala noticia sobre lo que vale lo ganado. Por eso al vendedor le conviene revelar lo que sabe del bien: reduce el miedo de los pujadores a la maldición y sube las pujas.</p></li>
 <li><p><em>En el temario</em>:</p>
 <ul>
@@ -2725,7 +2802,7 @@ Harsanyi, John C. (1973). <span>«Games with Randomly Disturbed Payoffs: A New R
 Holt, Charles A. (1980). <span>«Competitive Bidding for Contracts under Alternative Auction Procedures»</span>. <em>Journal of Political Economy</em> 88 (3): 433-45. <a href="https://doi.org/10.1086/260878">https://doi.<wbr>org/<wbr>10.<wbr>1086/<wbr>260878</a>.
 </div>
 <div id="ref-Hurwicz1960Optimality" class="csl-entry" role="listitem">
-Hurwicz, Leonid (1960). <span>«Optimality and Informational Efficiency in Resource Allocation Processes»</span>. En <em>Mathematical Methods in the Social Sciences, 1959</em>, editado por Kenneth J. Arrow, Samuel Karlin y Patrick Suppes. Stanford: Stanford University Press.
+Hurwicz, Leonid (1960). <span>«Optimality and Informational Efficiency in Resource Allocation Processes»</span>. En <em>Mathematical Methods in the Social Sciences, 1959</em>, editado por Kenneth J. Arrow, Samuel Karlin y Patrick Suppes, 27-46. Stanford: Stanford University Press.
 </div>
 <div id="ref-Hurwicz1972Informationally" class="csl-entry" role="listitem">
 Hurwicz, Leonid (1972). <span>«On Informationally Decentralized Systems»</span>. En <em>Decision and Organization: A Volume in Honor of Jacob Marschak</em>, editado por C. B. McGuire y Roy Radner, 297-336. Ámsterdam: North-Holland.
@@ -2811,11 +2888,17 @@ Ministerio de Asuntos Económicos y Transformación Digital (2021b). <span>«Fin
 <div id="ref-MINECO2022Subasta26GHz" class="csl-entry" role="listitem">
 Ministerio de Asuntos Económicos y Transformación Digital (2022). <span>«El Gobierno adjudica la subasta de 26 GHz a cuatro operadores por importe de 36 millones de euros»</span>. 20 de diciembre de 2022. <a href="https://digital.gob.es/comunicacion/notas-prensa/secretaria-estado-telecomunicaciones-e-infraestructuras-digitales/2022/12/subasta-de-26-ghz">https://digital.<wbr>gob.<wbr>es/<wbr>comunicacion/<wbr>notas-<wbr>prensa/<wbr>secretaria-<wbr>estado-<wbr>telecomunicaciones-<wbr>e-<wbr>infraestructuras-<wbr>digitales/<wbr>2022/<wbr>12/<wbr>subasta-<wbr>de-<wbr>26-<wbr>ghz</a>.
 </div>
+<div id="ref-BOE2023ETD114" class="csl-entry" role="listitem">
+Ministerio de Asuntos Económicos y Transformación Digital (2023). <span>«Orden ETD/114/2023, de 6 de febrero, por la que se resuelve la subasta convocada por Orden ETD/1059/2022, de 3 de noviembre, para el otorgamiento de concesiones de uso privativo de dominio público radioeléctrico en la banda de 26 GHz»</span>. 2023. <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-3490">https://www.<wbr>boe.<wbr>es/<wbr>diario_<wbr>boe/<wbr>txt.<wbr>php?<wbr>id=<wbr>BOE-<wbr>A-<wbr>2023-<wbr>3490</a>.
+</div>
 <div id="ref-BOE2026DeudaEstado" class="csl-entry" role="listitem">
 Ministerio de Economía, Comercio y Empresa (2026). <span>«Orden ECM/2/2026, de 9 de enero, por la que se dispone la creación de Deuda del Estado durante el año 2026 y enero de 2027»</span>. 2026. <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-678">https://www.<wbr>boe.<wbr>es/<wbr>diario_<wbr>boe/<wbr>txt.<wbr>php?<wbr>id=<wbr>BOE-<wbr>A-<wbr>2026-<wbr>678</a>.
 </div>
+<div id="ref-BOE2018ECE1161" class="csl-entry" role="listitem">
+Ministerio de Economía y Empresa (2018a). <span>«Orden ECE/1161/2018, de 29 de octubre, por la que se resuelve la subasta convocada por Orden ETU/531/2018, de 25 de mayo, para el otorgamiento de concesiones de uso privativo de dominio público radioeléctrico en la banda 3600-3800 MHz»</span>. 2018. <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2018-15224">https://www.<wbr>boe.<wbr>es/<wbr>diario_<wbr>boe/<wbr>txt.<wbr>php?<wbr>id=<wbr>BOE-<wbr>A-<wbr>2018-<wbr>15224</a>.
+</div>
 <div id="ref-MINECO2018Subasta5G" class="csl-entry" role="listitem">
-Ministerio de Economía y Empresa (2018). <span>«Nota informativa sobre la subasta del espectro banda 3600-3800 MHz»</span>. 24 de julio de 2018. <a href="https://digital.gob.es/comunicacion/notas-prensa/secretaria-estado-telecomunicaciones-e-infraestructuras-digitales/2018/07/180717_np_subasta5g">https://digital.<wbr>gob.<wbr>es/<wbr>comunicacion/<wbr>notas-<wbr>prensa/<wbr>secretaria-<wbr>estado-<wbr>telecomunicaciones-<wbr>e-<wbr>infraestructuras-<wbr>digitales/<wbr>2018/<wbr>07/<wbr>180717_<wbr>np_<wbr>subasta5g</a>.
+Ministerio de Economía y Empresa (2018b). <span>«Nota informativa sobre la subasta del espectro banda 3600-3800 MHz»</span>. 24 de julio de 2018. <a href="https://digital.gob.es/comunicacion/notas-prensa/secretaria-estado-telecomunicaciones-e-infraestructuras-digitales/2018/07/180717_np_subasta5g">https://digital.<wbr>gob.<wbr>es/<wbr>comunicacion/<wbr>notas-<wbr>prensa/<wbr>secretaria-<wbr>estado-<wbr>telecomunicaciones-<wbr>e-<wbr>infraestructuras-<wbr>digitales/<wbr>2018/<wbr>07/<wbr>180717_<wbr>np_<wbr>subasta5g</a>.
 </div>
 <div id="ref-BOE2020TED1161" class="csl-entry" role="listitem">
 Ministerio para la Transición Ecológica y el Reto Demográfico (2020a). <span>«Orden TED/1161/2020, de 4 de diciembre, por la que se regula el primer mecanismo de subasta para el otorgamiento del régimen económico de energías renovables y se establece el calendario indicativo para el periodo 2020-2025»</span>. 2020. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2020-15689">https://www.<wbr>boe.<wbr>es/<wbr>buscar/<wbr>act.<wbr>php?<wbr>id=<wbr>BOE-<wbr>A-<wbr>2020-<wbr>15689</a>.
@@ -2976,12 +3059,12 @@ Zermelo, Ernst (1913). <span>«Über eine Anwendung der Mengenlehre auf die Theo
 <li id="fn1"><p>Las comillas encierran traducciones propias de las motivaciones oficiales, que están en inglés.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>«No cooperativo» no quiere decir que no haya cooperación: quiere decir que, si la hay, tiene que sostenerse sola, porque a cada uno le conviene mantenerla (como en los juegos repetidos, <a href="#sec:repetidos">I.3.2</a>), y no porque un juez la imponga.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p><span class="citation" data-cites="Nash1951NonCooperative"><span class="smallcaps">Nash</span> (<a href="#ref-Nash1951NonCooperative" role="doc-biblioref">1951</a>)</span> da otra prueba con el teorema de <span class="smallcaps">Brouwer</span>. Con estrategias continuas existe un EN en estrategias puras si los conjuntos de estrategias son no vacíos, compactos y convexos y cada pago es continuo y cuasicóncavo en la estrategia propia: es el caso del duopolio de <span class="smallcaps">Cournot</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><span class="smallcaps">Coase</span> recibió el Premio Nobel en 1991 «por su descubrimiento y clarificación de la importancia de los costes de transacción y los derechos de propiedad para la estructura institucional y el funcionamiento de la economía».<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p><span class="smallcaps">Kydland</span> y <span class="smallcaps">Prescott</span> recibieron el Premio Nobel en 2004 «por sus contribuciones a la macroeconomía dinámica: la consistencia temporal de la política económica y las fuerzas que impulsan los ciclos económicos».<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="smallcaps">Spence</span> recibió el Premio Nobel en 2001, con <span class="smallcaps">George Akerlof</span> y <span class="smallcaps">Joseph Stiglitz</span>, «por sus análisis de los mercados con información asimétrica».<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>En la versión con «jugador ficticio», si <span class="math inline">\(v(T\cup\{i\})=v(T)+v(\{i\})\)</span> para toda <span class="math inline">\(T\)</span>, el jugador recibe <span class="math inline">\(v(\{i\})\)</span>: lo que consigue solo, y nada más.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p><span class="smallcaps">Douglas Diamond</span> y <span class="smallcaps">Philip Dybvig</span> recibieron el Premio Nobel en 2022, con <span class="smallcaps">Ben Bernanke</span>, «por la investigación sobre bancos y crisis financieras».<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>El ingreso del vendedor, <span class="math inline">\(I\)</span>, en cursiva, no tiene que ver con el operador instalado, <span class="upright">I</span>, del ejemplo que acompaña a la exposición.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><span class="smallcaps">Spence</span> recibió el Premio Nobel en 2001, con <span class="smallcaps">George Akerlof</span> y <span class="smallcaps">Joseph Stiglitz</span>, «por sus análisis de los mercados con información asimétrica».<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>En la versión con «jugador ficticio», si <span class="math inline">\(v(T\cup\{i\})=v(T)+v(\{i\})\)</span> para toda <span class="math inline">\(T\)</span>, el jugador recibe <span class="math inline">\(v(\{i\})\)</span>: lo que consigue solo, y nada más.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><span class="smallcaps">Douglas Diamond</span> y <span class="smallcaps">Philip Dybvig</span> recibieron el Premio Nobel en 2022, con <span class="smallcaps">Ben Bernanke</span>, «por la investigación sobre bancos y crisis financieras».<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>El ingreso del vendedor, <span class="math inline">\(I\)</span>, en cursiva, no tiene que ver con el operador instalado, <span class="upright">I</span>, del ejemplo que acompaña a la exposición.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><span class="smallcaps">Coase</span> recibió el Premio Nobel en 1991 «por su descubrimiento y clarificación de la importancia de los costes de transacción y los derechos de propiedad para la estructura institucional y el funcionamiento de la economía».<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><span class="smallcaps">Kydland</span> y <span class="smallcaps">Prescott</span> recibieron el Premio Nobel en 2004 «por sus contribuciones a la macroeconomía dinámica: la consistencia temporal de la política económica y las fuerzas que impulsan los ciclos económicos».<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>Ojo con la terminología del mercado de deuda pública:</p>
 <ul>
 <li><p>se llama «subasta holandesa» a la de precio único, y</p></li>

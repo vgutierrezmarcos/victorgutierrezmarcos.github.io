@@ -9,8 +9,9 @@
 % ==========================================================================
 \bloque[2]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: pensiones revalorizadas con la media del IPC (+2,7\,\% en 2026). \emph{¿Basta para quedar igual?}
+\item \textbf{Enganche}: «\emph{A falta de pan, buenas son tortas}»: si algo se encarece, uno se apaña con otra cosa y queda casi igual de bien.
   \begin{itemize}
+  \item Pensiones revalorizadas con la media del IPC (+2,7\,\% en 2026). \emph{¿Basta para quedar igual?}
   \item Si los precios suben de forma desigual, se sustituye: importa cuánto cuesta \emph{volver a estar igual de bien}.
   \item Utilidad \emph{ordinal}: ¿se puede medir en euros? $\Rightarrow$ \concepto{función de gasto} $\Rightarrow$ \concepto{dualidad}.
   \end{itemize}
@@ -223,10 +224,7 @@ $\nabla_{\vect{p}}E(\vect{p},\overline{U})=\vect{x}\big(\vect{p},E(\vect{p},\ove
   \item que sea función de gasto: \emph{concavidad} $\Leftrightarrow$ \emph{negatividad};
   \item de $E$ a $U$: $U(\vect{x}^0)$ = mín.\ de $V$ entre los presupuestos con los que se compra $\vect{x}^0$.
   \end{itemize}
-\end{itemize}
-\graficorepaso[0.45\linewidth]{recuperar-utilidad}{Recuperar $U$ desde $V$}
-\begin{itemize}
-\item \emph{Preferencia revelada} \vertema{3.A.8}: axioma débil $\Rightarrow$ $S$ negativa, \emph{no} simétrica; fuerte (\autor{Houthakker}) sí racionaliza.
+\item \emph{Preferencia revelada} \vertema{3.A.8}: axioma débil $\Rightarrow$ $S$ negativa, \emph{no} simétrica; fuerte (\autor{Houthakker}) sí racionaliza; con datos finitos, \autor{Afriat} (1967).
 \item \emph{Relevancia}:
   \begin{itemize}
   \item \emph{teórica}: cierra el círculo; las preferencias no añaden nada a 3~propiedades contrastables;
@@ -265,11 +263,14 @@ $\leq0$ & $>0$: inferior & ordinario si $|\mathrm{ES}|\geq\mathrm{ER}$\\
 \sub{III.3. Análisis de bienestar del consumidor individual\label{rep:III.3}}
 \subsub{a) Idea}
 \begin{itemize}
-\item Un consumidor, cambios de \emph{precios} \vertema{3.A.16}; utilidad ordinal: $\overline{U}^1-\overline{U}^0$ no significa nada $\Rightarrow$ euros con $E$.
+\item Un consumidor, cambios de \emph{precios} \vertema{3.A.16}; evita comparar personas. Usuario: el decisor público.
+\item Baja $p_1$: de $\vect{x}^0$ en $\overline{U}^0$ a $\vect{x}^1$ en $\overline{U}^1$. ¿Cuánto mejora? Utilidad ordinal: $\overline{U}^1-\overline{U}^0$ no significa nada $\Rightarrow$ euros con $E$.
 \end{itemize}
-\subsub{b) Medidas: $\Delta$EC, VC y VE}
+\graficorepaso[0.34\linewidth]{bienestar-problema}{Baja $p_1$: mejora, pero ¿cuánto?}
+\subsub{b) Medición de la variación del bienestar}
+\subsubsub{Excedente y variaciones (información completa)}
 \begin{itemize}
-\item \concepto{Excedente del consumidor} (\autor{Dupuit}, \autor{Marshall}): observable, pero \emph{mezcla} ES y ER.
+\item \concepto{Excedente del consumidor} (\autor{Dupuit}, \autor{Marshall}): observable, pero \emph{mezcla} ES y ER; con varios precios, depende del camino $\Rightarrow$ demandas \emph{compensadas} (\autor{Hicks}).
 \item \concepto{Métrica monetaria} (\autor{McKenzie}, \autor{Samuelson}): $E(\bar{\vect{p}},V(\vect{p},\overline{W}))$: FIU en euros.
 \item Las 3~medidas:
 \begin{formula}
@@ -288,15 +289,15 @@ $\mathrm{VE}=E(\vect{p}^0,\overline{U}^1)-\overline{W}=\displaystyle\int_{p_1^1}
 \item Orden y aproximación:
 \begin{formula}
 \centering $L\leq\mathrm{VC}\leq\Delta\mathrm{EC}\leq\mathrm{VE}\leq P$\quad (normal, baja $p_1$)\\[3pt]
-\autor{Willig} (1976):\ \ $\mathrm{VC}\approx\Delta\mathrm{EC}-\dfrac{\varepsilon_{x_1,\overline{W}}(\Delta\mathrm{EC})^2}{2\overline{W}}$
+\autor{Willig} (1976), error relativo:\ \ $\dfrac{|\varepsilon_{x_1,\overline{W}}|\,|\Delta\mathrm{EC}|}{2\overline{W}}$
 \end{formula}
   \begin{itemize}
   \item Inferior o subida, se invierte; ER nulo: VC $=\Delta$EC $=$ VE.
-  \item Error de \autor{Willig}: 5\,\% de la renta y elasticidad 1: 2,5\,\%; \autor{Hausman} (1981): falla en la pérdida irrecuperable.
+  \item 5\,\% de la renta y elasticidad 1: error del 2,5\,\% $\Rightarrow$ $\Delta$EC vale si el bien pesa poco \vertema{3.A.16}; \autor{Hausman} (1981): falla en la pérdida irrecuperable.
   \end{itemize}
 \item \emph{¿Cuál usar?} Ordenar políticas: VE; compensar (\autor{Kaldor}-\autor{Hicks} \vertema{3.A.22}): VC. Exceso de gravamen $=-\mathrm{VE}-T$ \vertema{4.B.9}.
 \end{itemize}
-\subsub{c) Índices de precios}
+\subsubsub{Información incompleta e índices de coste de la vida}
 \begin{itemize}
 \item Solo con $\vect{x}^0$ y $\vect{x}^1$: \autor{Laspeyres} $L\leq\mathrm{VC}$, \autor{Paasche} $P\geq\mathrm{VE}$: \concepto{sesgo de sustitución}.
 \item \autor{Konüs} (1924), \concepto{índice verdadero de coste de la vida}:
@@ -324,12 +325,13 @@ $\mathrm{VE}=E(\vect{p}^0,\overline{U}^1)-\overline{W}=\displaystyle\int_{p_1^1}
   \item AIDS y microdatos;
   \item integrabilidad, \autor{Slutsky} y bienestar: VC, VE; $\Delta$EC aproxima; índices acotan.
   \end{itemize}
-\item \textbf{Relevancia}: de lo inobservable a restricciones sobre lo observable.
-\item \textbf{Extensiones}: \vertema{3.A.12} \vertema{3.A.16} \vertema{3.A.22} \vertema{4.B.6} \vertema{4.B.9} \vertema{4.A.1}.
+\item \textbf{Relevancia}: de lo inobservable a restricciones sobre lo observable y bienestar en euros: elasticidades fiscales, exceso de gravamen, proyectos, sesgo del IPC.
+\item \textbf{Extensiones}: empresa \vertema{3.A.12}; bienestar \vertema{3.A.16} \vertema{3.A.22} \vertema{3.A.24}; sector público \vertema{4.B.6} \vertema{4.B.9}; índices \vertema{3.A.30} \vertema{4.A.1}; riesgo y tiempo \vertema{3.A.10} \vertema{3.A.29}.
 \item \textbf{Opinión}: la teoría más abstracta, muy útil en la práctica; límite: consumidor estático; herencia de \autor{Deaton}: microdatos y heterogeneidad.
 \item \textbf{Idea final}: ¿euros para algo que solo se ordena? Sí: lo que cuesta alcanzar la utilidad.
   \begin{itemize}
-  \item Pensionista con la cesta del IPC: algo sobrecompensado (\autor{Laspeyres}); con otra cesta, puede quedarse corto; la exacta, la VC.
+  \item Pensionista con la cesta del IPC: algo sobrecompensado: \autor{Laspeyres} ignora que sustituye (\emph{a falta de pan, buenas son tortas}); con otra cesta, puede quedarse corto; la exacta, la VC.
+  \item Sumar el bienestar de personas distintas exige juicios de valor: economía del bienestar.
   \end{itemize}
 \end{itemize}
 
