@@ -232,3 +232,9 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - Antes: 2 viñetas largas. Después: 2 viñetas más cortas (flexibilidad como seguro; igualar el trato fiscal de deuda y fondos propios y abrir el mercado a las pymes).
 - Frase: no hay asignada; ninguna.
 - Ficha: «neutralizar» → «igualar».
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-22.** «La tesis tradicional sostenía que hay» pasa a «había».

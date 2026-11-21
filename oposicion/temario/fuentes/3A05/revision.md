@@ -295,3 +295,9 @@ No se convierten las notas de Nobel, las de «Para ampliar»/«Para ver» con en
 - 3 viñetas → 1 con subviñetas (instrucción de Víctor): «Las 2 escuelas tenían parte de razón» y, debajo, la síntesis (la demanda importa a corto plazo; la política puede estabilizar) y el monetarismo (sin atajos permanentes contra el paro; el dinero mal gestionado causa las peores crisis; pero la cantidad de dinero, mal objetivo), cada punto en su subviñeta.
 - Frase: no se añade la de Friedman sobre la inflación. Ya está en el cuerpo (II, «el dinero importa») y la conclusión ya tiene una frase célebre de Friedman en la idea final («en un sentido todos somos keynesianos»), que cuenta como la del tema.
 - Ficha al día.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto. No había citas literales con la palabra.

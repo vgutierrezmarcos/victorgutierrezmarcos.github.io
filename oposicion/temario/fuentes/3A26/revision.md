@@ -223,3 +223,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 
 - 2 viñetas → 2, recortadas (puzle de Shimer y la lección para España, sin «la lección es doble»).
 - Frase célebre: no tiene asignada; no se añade.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-21 (cifras que no cuadran).** El 16,5 comparaba los parados del 2T (no los 2.591.200 del 3T citados) con las vacantes del 2T. Comprobado: EPA 2T 2026, 2.495.300 parados (serie EPA424411); Eurostat `jvs_q_r21`, 150.765 vacantes en el 2T: 16,6 parados por vacante. El texto dice ya que la comparación es del 2T y da la cifra de parados; 16,6 también en la conclusión, el mapa del tema y la ficha. Eurostat publicó el 19/11/2026 el 3T (148.944 vacantes, 17,4 por vacante) pero la ETCL del INE aún no, así que sin doble comprobación se queda el 2T (anotado en `datos-actualizables.yaml`).

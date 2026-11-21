@@ -263,3 +263,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 
 - 2 viñetas → 2, más cortas y sin repetir la idea final: la clemencia sale de la opinión porque la idea final ya la cuenta (MAN); la primera viñeta dice ahora de qué depende el resultado (variable, orden, paciencia).
 - Frase célebre: no tiene asignada; no se añade.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-22 (isobeneficio de la líder).** La duda citaba el 3.A.20, pero la frase está en el 3.A.19 (Stackelberg lineal). «Por debajo» era correcto en el gráfico: con $(q_1,q_2)$, los isobeneficios de la líder más bajos dan más beneficio. Se reescribe para que no confunda: el isobeneficio vale 18, más que el 16 del de Cournot, y en el gráfico queda por debajo de él.

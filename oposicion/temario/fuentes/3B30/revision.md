@@ -161,3 +161,9 @@ Ninguna nota lo necesitaba.
 
 - Viñetas: 1 → 2 (partida en dos frases cortas).
 - Frase: no tenía asignada.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-21 (cifras que no cuadran).** La ficha daba una «movilización» de 112.000 M$ del BM que no está en el tema; pasa a la del tema, 108.700 M$ de financiación privada movilizada por los BMD e IFD en renta baja y media en 2024 (informe conjunto de 2026, comprobado).

@@ -319,3 +319,9 @@ Comparación de los enlaces del tema antiguo con el `.tex` y el `.bib` (CRITERIO
 ## Opinión (21/11/2026)
 
 2 viñetas → 2, más cortas (caja negra; lo de dentro, 3.A.15). Sin frase célebre (no hay asignada).
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-22 (cuadrantes).** Con el bien 1 solo factor y el 2 solo producto, el conjunto de producción ocupa el segundo cuadrante y, por la eliminación gratuita (axioma 3 del tema), también el tercero; la frontera está solo en el segundo. Se dice así.

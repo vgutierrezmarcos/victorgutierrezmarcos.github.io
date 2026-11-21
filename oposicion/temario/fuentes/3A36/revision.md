@@ -310,3 +310,7 @@ Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase 
   - Euro digital: el apartado pasa a ser «el dinero digital del banco central» (CBDC mayorista y minorista y sus efectos sobre la política monetaria); el calendario legislativo del euro digital se queda en el 3.B.43 y aquí va una frase con remisión.
 - Queda fuera de esta pasada el párrafo del euro digital del 3.A.35 (no me tocaba): es casi igual al del 3.B.43 y convendría dejarlo en la idea con remisión.
 - Los `\minutos` no cambian. La ficha de repaso no se ha tocado (su apartado del euro digital sigue siendo correcto).
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto y la ficha. No había citas literales con la palabra.

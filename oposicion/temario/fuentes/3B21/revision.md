@@ -188,3 +188,9 @@ Ninguna nota lo necesitaba.
 
 - Viñetas: 1 → 1 (ya era corta: el no sistema resiste por la cooperación de los bancos centrales y la confianza en el dólar). Sin cambios en el tema ni en la ficha.
 - Frase célebre: no (no tiene asignada).
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-21 (cifras que no cuadran).** El FSB reúne a 25 jurisdicciones contando la UE (así lo dice el FSB y así está en el 3.B.19); el texto decía «24 jurisdicciones … y de la UE». Ahora: «25 jurisdicciones (los 19 países del G-20, la UE, España, Hong Kong, los Países Bajos, Singapur y Suiza)».

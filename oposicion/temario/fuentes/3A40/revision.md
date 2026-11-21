@@ -297,3 +297,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Viñetas: 2 → 2; la segunda incorpora la red del BCE entre 2010-2013 y 2020.
 - Frase: Mario Draghi, Global Investment Conference, Londres, 26/7/2012: «Within our mandate, the ECB is ready to do whatever it takes to preserve the euro. And believe me, it will be enough». Comprobada en la web del BCE (sp120726). Cita `Draghi2012Speech`, ya en el .bib.
 - Ficha: la frase en la subviñeta de Europa.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto, la tabla, el mapa del tema, la ficha y `seo.json`. No había citas literales con la palabra.

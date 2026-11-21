@@ -864,3 +864,9 @@ Tras ver el borrador de 1 h 30 (sin renderizar de nuevo hasta que Víctor lo pid
   - `datos/tipos-bce.csv` se rehace con la serie del 3.B.43 (BCE, Data Portal: FM.B.U2.EUR.4F.KR.MRR_FR.LEV para el tipo fijo hasta el 27/6/2000 y desde el 15/10/2008, y FM.B.U2.EUR.4F.KR.MRR_MBR.LEV, tipo mínimo de puja, del 28/6/2000 al 14/10/2008; consulta 14/11/2026). Nueva columna `tipo_opf` (fijo/puja). La facilidad de depósito y la marginal no cambian; la OPF ahora sube a 4,50 % y 4,75 % en septiembre y octubre de 2000, baja a 2,00 % en junio de 2003 y sube a 4,25 % en julio de 2008, como en la tabla oficial del BCE.
   - `graficos/tipos-balance-bce.tex`: corchete bajo el eje de 28/6/2000 a 15/10/2008 con el rótulo «OPF: tipo mínimo de puja».
   - `datos-actualizables.yaml` (id `tipos-bce`): se añade la serie MRR_MBR.LEV.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el guion del cante (4 sitios; la guía y el resumen ya decían «dominancia»). No había citas literales con la palabra.

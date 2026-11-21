@@ -172,3 +172,7 @@ Todas las cifras que caducan están en `datos-actualizables.yaml`.
 ### Solapes
 
 - **GEN-06 (solape con el 3.A.13).** Stiglitz-Weiss queda en el resultado y la función clave, sin el gráfico y con remisión al 3.A.13; las implicaciones se rehacen como «lo que justifica la regulación»: garantías (y por qué no bastan), avales públicos y LTV, la Central de Información de Riesgos y el racionamiento en una crisis (el ajuste por cantidad, la política monetaria por el crédito, los avales de la covid-19). Se mantienen la dación en pago, las extensiones, la evidencia y la valoración.
+
+### Dudas generales
+
+- **GEN-22 (Basilea I y las hipotecas).** La tabla de Basilea I ya decía 50 %. El ejemplo del anexo C (que aplica los mínimos de Basilea III) usa el 35 % del método estándar de Basilea II, que mantiene el CRR: ahora lo dice, y que en Basilea I era del 50 %; en la ficha, donde el ejemplo cuelga de Basilea I, igual. Los números del ejemplo no cambian.

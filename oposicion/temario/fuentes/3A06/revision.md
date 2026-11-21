@@ -305,3 +305,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 ## Frase de Gell-Mann (20/11/2026)
 
 A petición de Víctor, se añade a la opinión como «atribuida» (3.ª viñeta, ligada a la crítica de Lucas), con la misma fuente que el 3B23: no hay texto ni conferencia de Gell-Mann que la contenga; la primera aparición escrita es Page (1999), *Complexity* 5(1), que se la atribuye. Usada en 2 temas (3A06 y 3B23).
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto y la ficha («dominación monetaria (o dominancia)» queda en «dominancia monetaria»). No había citas literales con la palabra.

@@ -381,3 +381,7 @@ Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase 
 - **GEN-02 (Mundell-Fleming, con el 3.B.15)**: el 3.A.32 sigue siendo el tema de referencia del modelo (los 4 casos, la tabla y el gráfico de las políticas se quedan aquí); el cambio se hizo en el 3.B.15.
 - Los `\minutos` no cambian; el cante gana unos segundos en el III.
 - Al acortarse el anexo A, el título del anexo E quedaba solo al pie de una página (lo marcaba verificar-tema.py): se añade un `\clearpage` antes de ese anexo. Páginas del tema: 33, sin cambios.
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto y la ficha. No había citas literales con la palabra.

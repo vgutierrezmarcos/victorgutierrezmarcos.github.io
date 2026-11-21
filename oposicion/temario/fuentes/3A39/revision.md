@@ -272,3 +272,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 - Viñetas: 2 → 2, más cortas (fuera «basada en el gasto menos productivo» y la remisión a la suavización impositiva).
 - Frase: Rudi Dornbusch, entrevista para *Frontline* (PBS), «Murder, Money and Mexico» (1997): «The crisis takes a much longer time coming than you think, and then it happens much faster than you would have thought». Comprobada en la transcripción de PBS (https://www.pbs.org/wgbh/pages/frontline/shows/mexico/interviews/dornbusch.html). Nueva entrada `Dornbusch1997Frontline` en el .bib.
 - Ficha: la frase en pocas palabras.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto, los títulos de sección, la tabla, el mapa del tema, la ficha y `seo.json`; el título oficial (`\tcetema`) sigue con «dominación», y una nota al pie en la definición lo explica. No había citas literales con la palabra.

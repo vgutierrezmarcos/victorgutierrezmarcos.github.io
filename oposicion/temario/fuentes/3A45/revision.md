@@ -370,3 +370,9 @@ Comentario de Víctor: «En las notas a pie de página también puede haber pár
 - Viñetas: 3 → 3: fuera «Las respuestas son más modestas que las preguntas»; entra la de Solow (la productividad tarda en responder: la paradoja se resolvió una década después y hoy vuelve con la IA).
 - Frase: Robert Solow, «We'd Better Watch Out», *New York Times Book Review*, 12/7/1987, p. 36: «You can see the computer age everywhere but in the productivity statistics». Comprobada (Brookings, Stand-Up Economist: no es la *New York Review of Books*, como se cita a menudo). Nueva entrada `Solow1987Watch`.
 - Ficha: la frase en pocas palabras.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-21 (cifras que no cuadran).** Bosworth y Collins (2003, tabla 1, comprobada en el PDF de Brookings): mundo 1960-2000, producción por trabajador 2,3 % con capital 1,0, educación 0,3 y PTF 0,9; la suma 2,2 es redondeo de la propia tabla. Se quitan los porcentajes calculados (43/13/39 %, que sumaban 95 %) y se avisa del redondeo en el tema y en la ficha («≈»).

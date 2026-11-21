@@ -275,3 +275,10 @@ Repaso de los enlaces del Word original (CRITERIOS § 4). Los demás enlaces del
 - Antes: 1 viñeta. Después: 2 viñetas cortas (la nueva teoría completa a la tradicional; los modelos cuantitativos actuales son ricardianos).
 - Frase: la de Samuelson a Ulam ya está en la Relevancia de la conclusión, con su cita: cuenta como la frase del tema y no se repite en la opinión.
 - Ficha: sin cambios.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-21 (cifras que no cuadran).** 57.055 M€ es el déficit oficial de 2025 (calculado sin redondear: 29.292 M€ energético y 27.762,8 M€ no energético); la resta de los redondeados da 57.054. Se deja el dato oficial y se explica entre paréntesis.
+- **GEN-22 (Hecksher).** Ya estaba como pide la opción (a): el título oficial (`\tcetema`) con «Hecksher», tal cual, y el cuerpo y la ficha con «Heckscher». Sin cambios.

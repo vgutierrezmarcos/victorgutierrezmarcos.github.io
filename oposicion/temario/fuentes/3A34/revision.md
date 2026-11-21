@@ -263,3 +263,7 @@ Encargo de Víctor: opinión más corta (2-4 viñetas) y, donde case, una frase 
 ### Solapes
 
 - **GEN-08 (solape con el 3.B.2).** El refrán «no por mucho madrugar amanece más temprano», que es el inicial del 3.B.2, se sustituye en el cuerpo, en la nota del cante y en la ficha por la vuelta al refrán propio del tema («a veces más vale tarde que pronto»). La regla, el ejemplo de Pindyck y las implicaciones macro se quedan aquí (tema de referencia); la extensión remite al 3.B.2 para la valoración de opciones reales con el árbol binomial.
+
+### Dudas generales
+
+- **GEN-21 (cifras que no cuadran).** «Siete de cada diez euros (71,9 %)» sumaba también los recursos biológicos cultivados: ahora dice 71,3 % (maquinaria 26,8 + propiedad intelectual 19,7 + no residencial 24,7) y añade los recursos biológicos (0,6 %), con lo que todo suma 100 con la vivienda (28,1 %). Comprobado en la API del INE (CNTR6974, 6787, 6790, 6793, 6803 y 6806, suma de 2025) el 21/11/2026; actualizado `datos-actualizables.yaml`.

@@ -248,3 +248,9 @@ Todas con la opción recomendada aplicada.
 
 - Viñetas: 2 → 2, sin cambios (ya era corta: la balanza de pagos se esconde en TARGET; mirar la posición y su composición).
 - Frase célebre: no tenía asignada.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-22 (Circular 4/2012).** Había 2 descripciones distintas de la periodicidad. Comprobada en el BOE (norma tercera): mensual desde 300 M€, trimestral de 100 a 300 M€, anual por debajo de 100 M€ y, hasta 1 M€, solo a requerimiento. Queda solo la del anexo de fuentes, que era la correcta; en el apartado de fuentes, una mención sin umbrales.

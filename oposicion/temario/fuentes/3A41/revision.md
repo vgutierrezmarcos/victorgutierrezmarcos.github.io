@@ -267,3 +267,9 @@ Se han repasado todas las notas del tema (la ficha no tiene notas). Ninguna nota
 - Viñetas: 1 (larga) → 3 cortas: el 2 % simétrico como compromiso; la frase de Friedman (a largo plazo responde el banco central); solo puede si es creíble y la fiscal es sostenible (remisión a 3.A.39).
 - Frase: Milton Friedman, *Inflation: Causes and Consequences* (1963): «Inflation is always and everywhere a monetary phenomenon». El cuerpo ya la cita (fundamentos); la de la opinión cierra el argumento. Cita `Friedman1963Inflation`, ya en el .bib.
 - Ficha: la frase en pocas palabras.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto y la ficha. No había citas literales con la palabra.

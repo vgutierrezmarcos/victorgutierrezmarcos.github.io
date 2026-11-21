@@ -252,3 +252,9 @@ Regla de Víctor: un refrán o dicho no se repite en temas distintos.
 - Viñetas: 1 (larga) → 2 cortas: consenso en la joroba y el retraso; menos en las compras de activos, con postura (el tipo, instrumento principal; el balance, para cuando el tipo toca su límite).
 - Frase célebre: ninguna (no hay asignada a este tema).
 - Ficha: opinión al día en una línea.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto. No había citas literales con la palabra.

@@ -301,3 +301,9 @@ Páginas del tema: 25 → 31 (anexos 3; bibliografía 6). \minutos sigue en 30. 
 
 - Viñetas: 2 → 3 cortas: cada generación de modelos explicó la crisis anterior y no la siguiente; la frase de Dornbusch; la defensa (política coherente con el régimen cambiario, banca supervisada, balances sanos, reservas), sin la coletilla del contagio.
 - Frase célebre: Rudi Dornbusch (1997), «la crisis tarda mucho más en llegar de lo que uno cree, y luego ocurre mucho más deprisa de lo que uno habría pensado». Comprobada en la transcripción de la entrevista de PBS *Frontline*, «Murder, Money & Mexico», emitido el 8 de abril de 1997 (https://www.pbs.org/wgbh/pages/frontline/shows/mexico/interviews/dornbusch.html); dicha a propósito de la crisis mexicana de 1994. Original en nota al pie y entrada `Dornbusch1997Frontline` en el .bib. La ficha la recoge en pocas palabras.
+
+## Pasada final (noviembre de 2026)
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto y la ficha. No había citas literales con la palabra.

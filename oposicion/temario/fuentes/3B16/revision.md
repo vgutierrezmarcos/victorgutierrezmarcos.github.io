@@ -297,3 +297,7 @@ Cada una con la opción aplicada:
 - La ficha de repaso sigue con el gráfico cerrado (`barro-gordon`); conviene cambiarlo por `barro-gordon-abierta` cuando se rehaga la ficha.
 - **GEN-15 (política fiscal en la unión monetaria, con el 3.A.32)**: aquí no cambia nada; el 3.A.32 se queda con una frase y remite a este tema.
 - Los `\minutos` no cambian.
+
+### Dudas generales
+
+- **GEN-23 (dominación o dominancia).** «Dominación fiscal» y «dominación monetaria» pasan a «dominancia», el término del Banco de España, del BCE y de la guía del dictamen, en el texto. No había citas literales con la palabra.
