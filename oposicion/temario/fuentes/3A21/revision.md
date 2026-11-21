@@ -219,6 +219,19 @@ Confirmadas las opciones recomendadas; las que piden un cambio, aplicadas el 16/
 
 - **Para Víctor** (no corregible aquí): 3 huecos en blanco por gráficos que no caben y saltan de página (pág. 14, media página antes de la caja de intercambio; pág. 16, el final de II.1; pág. 17, un tercio antes del punto fijo de Brouwer); no cambian el número de páginas. En el temario conviven las 2 formas del autor de las entradas del Nobel («Nobel Prize Outreach», 421; «The Nobel Prize», 317): conviene fijar una en el canon.
 
+### Ficha
+
+- **Estructura, refrán y minutos**: iguales que en el tema (I 11′, II 9′, III 6′30″, con los mismos subapartados y minutos del esquema); «Cada uno arrima el ascua a su sardina» en el enganche y en la idea final; las funciones clave (`\vect{z}(\vect{p})`, ley de Walras, definición del EGC) idénticas.
+- **Corregido con el cuerpo**:
+  - la condición de frontera decía «$z_k\to\infty$ si $p_k\to0$» (el mismo error que se corrigió en el tema): ahora «si algún precio tiende a 0, el exceso de demanda de *algún* bien crece sin límite»;
+  - el comportamiento estratégico: el monopolio en la caja (con el punto $M$, ahora en el anexo F.3) queda en una frase; se añaden Negishi (1961) y que el equilibrio de Cournot-Walras puede no existir;
+  - los rendimientos crecientes se explican como en el cuerpo (la empresa precio-aceptante pierde o querría crecer sin límite: monopolio natural o competencia imperfecta), no con el «CMg < CMe», que está en el anexo F.5;
+  - los usos de los MEGC: fuera el TLCAN (anexo F.7); UE-Mercosur con GTAP dinámico, DICE-2023 como modelo de evaluación integrada, REMS (2008) y EREMS con el Observatorio sobre el Ciclo.
+- **Fuera de la ficha** (pasó a los anexos de profundización): el «*on*» de Walras en el subastador (F.1) y, en «Datos clave», el T-MEC de la USITC (+0,35 % del PIB y 176.000 empleos, F.7).
+- **Datos**: Mercosur (+77.600 M€ y +39 %) igual que el tema; la línea del Observatorio (+1,3 y −1,1 puntos, mediados de 2026) dice ahora sobre qué se mide (el PIB por persona en edad de trabajar, frente a su media), «capital residencial» y la fuente (Observatorio sobre el Ciclo, oct. 2026) en lugar de «EREMS».
+- **Letra**: 9 pt, 4 páginas (la última columna, el anexo, al 60 %); para mantenerla se acortaron la valoración de los MEGC y la viñeta del subastador. `verificar-tema.py`: 0 errores, 0 avisos.
+- **Resuelta por Claude (pasada final):** el título de `BoscaEtAl2026CicloOct` («Descomposición del ciclo económico en España hasta el cuarto trimestre de 2026») es el de la portada del PDF del 20/10/2026: la descomposición llega hasta la previsión del 4T de 2026; el tema usa el dato observado de mediados de 2026. Sin cambios.
+
 ## Dudas abiertas
 
 12. **Edición de Segura**: el original dice 2004 y enlazaba un PDF de 1993; el `.bib` usa `Segura1986Analisis` (Alianza, 1986). ¿Qué edición tienes? (las páginas 282-287 del dinero dependen de ella). **Resuelta por Claude (pasada final):** respondida el 16/10/2026: Víctor maneja la 3.ª ed. de Alianza (1996), que es la que recoge ya `Segura1986Analisis` (`year = 1996`, `edition = 3`); el tema solo cita su cap.~7 en las fuentes de 3 gráficos y ya no cita las pp. 282-287 (III.3 no se apoya en Segura), así que no hay nada que cambiar.

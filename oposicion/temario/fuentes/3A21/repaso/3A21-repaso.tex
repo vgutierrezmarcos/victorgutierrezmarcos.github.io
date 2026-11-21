@@ -116,7 +116,7 @@ Empresas & \textcolor{tceedorado}{oferta} $q_j(p_j,\vect{w})$ & \textcolor{tceev
 \item \concepto{Exceso de demanda}: demanda $-$ oferta ($z_k>0$ falta, $<0$ sobra):
 \funcionclave{\vect{z}(\vect{p})=\sum_{i}\vect{x}_i\big(\vect{p},\overline{W}_i(\vect{p})\big)-\sum_{i}\vect{\omega}_i-\sum_{j}\vect{y}_j(\vect{p})}
 \item \emph{Ventaja}: todo el modelo en función de los precios.
-\item \emph{Propiedades}: (1) continua; (2) homogénea de grado 0; (3) ley de \autor{Walras}; (4) acotada inferiormente y \emph{condición de frontera} ($z_k\to\infty$ si $p_k\to0$).
+\item \emph{Propiedades}: (1) continua; (2) homogénea de grado 0; (3) ley de \autor{Walras}; (4) acotada inferiormente y \emph{condición de frontera}: si algún precio $\to0$, el exceso de demanda de \emph{algún} bien crece sin límite.
 \item \emph{Tipos de bienes} (\autor{Schlesinger}, \autor{Wald}, 1935):
   \begin{itemize}
   \item \concepto{económicos}: $p^*_k>0$, $z_k(\vect{p}^*)=0$ ($z_k$ corta el eje);
@@ -142,11 +142,8 @@ Empresas & \textcolor{tceedorado}{oferta} $q_j(p_j,\vect{w})$ & \textcolor{tceev
 \item \concepto{EGC} (walrasiano): $\vect{p}^*\geq\vect{0}$ y $(\vect{x}^*_i,\vect{y}^*_j)$; consumidores y empresas optimizan y todos los mercados se vacían:
 \funcionclave{z_k(\vect{p}^*)\leq0\quad\text{y}\quad p^*_k\,z_k(\vect{p}^*)=0,\quad k=1,\dots,n}
 \item \emph{En el 2×2×2×2}: $\mathrm{RMS}^A=\mathrm{RMS}^B=p_X/p_Y=\mathrm{RMT}$; $\mathrm{RMST}^X=\mathrm{RMST}^Y=w_L/w_K$.
-\item \emph{Formación de precios}: \concepto{subastador walrasiano}:
-  \begin{itemize}
-  \item anuncia precios, recoge planes, sube donde falta y baja donde sobra; \emph{sin transacciones fuera del equilibrio};
-  \item \autor{Walras} no habla de subastador («\emph{on}»): lo personifica la literatura.
-  \end{itemize}
+\item \emph{Formación de precios}: \concepto{subastador walrasiano}, que
+anuncia precios, recoge planes, sube donde falta y baja donde sobra; \emph{sin transacciones fuera del equilibrio}.
 \end{itemize}
 \subsub{Interpretación gráfica: la caja de \autor{Edgeworth} del intercambio}
 \begin{itemize}
@@ -297,15 +294,15 @@ El equilibrio walrasiano resiste quitar el subastador con muchos agentes (núcle
 \end{itemize}
 \subsub{b) Comportamiento estratégico}
 \begin{itemize}
-\item Pocos agentes $\Rightarrow$ influyen en los precios: monopolio en la caja ($B$ elige $M$ sobre $\mathrm{OD}_A$), ineficiente.
-\item \autor{Cournot}-\autor{Walras} (\autor{Gabszewicz}-\autor{Vial}, 1972): depende del numerario; el poder se diluye al crecer la economía (\autor{Roberts}-\autor{Postlewaite}, 1976).
+\item Pocos agentes influyen en los precios: quien fija el precio elige su punto en la OD del otro: ineficiente.
+\item \autor{Negishi} (1961); \autor{Cournot}-\autor{Walras} (\autor{Gabszewicz}-\autor{Vial}, 1972): depende del numerario, puede no existir; el poder se diluye al crecer la economía (\autor{Roberts}-\autor{Postlewaite}, 1976).
 \end{itemize}
 \subsub{c) No convexidades y equilibrios múltiples}
 \begin{itemize}
 \item Sin convexidad, saltos:
   \begin{itemize}
   \item preferencias no convexas: con muchos consumidores, equilibrios aproximados (\autor{Starr}, 1969);
-  \item \emph{rendim.\ crecientes}: $\mathrm{CMg}<\mathrm{CMe}$ $\Rightarrow$ pérdidas con $p=\mathrm{CMg}$ $\to$ monopolio natural \vertema{3.A.17}; no se diluyen.
+  \item \emph{rendim.\ crecientes}: el precio-aceptante pierde o querría crecer sin límite $\to$ monopolio natural \vertema{3.A.17} o competencia imperfecta \vertema{3.B.6}; no se diluyen.
   \end{itemize}
 \item \emph{Equilibrios múltiples}: \concepto{fallos de coordinación} (nadie invierte porque nadie compra; \autor{Cooper}-\autor{John}, 1988) \vertema{3.A.4}.
 \end{itemize}
@@ -364,11 +361,8 @@ El equilibrio walrasiano resiste quitar el subastador con muchos agentes (núcle
 \begin{itemize}
 \item \emph{Idea}: \concepto{MEGC} (CGE): equilibrio numérico con muchos sectores, hogares y países; algoritmo de \autor{Scarf} (1967; con \autor{Hansen}, 1973) + ordenadores.
 \item \emph{Metodología} (\autor{Shoven}-\autor{Whalley}, 1992): formas funcionales, \emph{calibración} a una matriz de contabilidad social, simulación = estática comparativa.
-\item \emph{Usos}: comercio (TLCAN infravaloró el comercio; UE-Mercosur con GTAP); clima (DICE, \autor{Nordhaus}); macro (REMS, EREMS) \vertema{3.A.6}.
-\item \emph{Valoración}: dependen de elasticidades y cierres; unicidad no garantizada.
-  \begin{itemize}
-  \item Recogen los efectos indirectos que el análisis mercado a mercado no ve.
-  \end{itemize}
+\item \emph{Usos}: comercio (UE-Mercosur, con GTAP dinámico); clima (DICE-2023, \autor{Nordhaus}: evaluación integrada); macro: DSGE, REMS (2008) y EREMS, del Observatorio sobre el Ciclo \vertema{3.A.6}.
+\item \emph{Valoración}: dependen de elasticidades y cierres; unicidad no garantizada; pero llevan la teoría a la evaluación de políticas.
 \end{itemize}
 
 % ==========================================================================
@@ -391,8 +385,7 @@ El equilibrio walrasiano resiste quitar el subastador con muchos agentes (núcle
 \bloque{Datos clave}
 \begin{itemize}
 \item UE-Mercosur: PIB de la UE \dato{+77.600 M€ hasta 2040}{CE, 2025}; exportaciones a la región \dato{+39 \%}{CE, 2025}.
-\item T-MEC: \dato{+0,35 \% del PIB real de EE.\,UU., 176.000~empleos}{USITC, 2019}.
-\item España, mediados de 2026: demanda y crédito \dato{+1,3 p.}{EREMS, 2026}; oferta (vivienda) \dato{$-$1,1~p.}{EREMS, 2026}.
+\item España, mediados de 2026, sobre el PIB por persona en edad de trabajar (frente a su media): demanda y crédito \dato{+1,3~p.}{}; oferta (capital residencial) \dato{$-$1,1~p.}{Observatorio sobre el Ciclo, oct. 2026}.
 \end{itemize}
 
 \bloque{Autores y fechas}

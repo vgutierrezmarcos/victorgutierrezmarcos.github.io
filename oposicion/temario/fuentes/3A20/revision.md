@@ -487,6 +487,14 @@ como elaboración propia.
   - **Bibliografía**: los Nobel salen con 2 autores distintos («Nobel Prize Outreach» y «The Nobel Prize») según la entrada; es cosmético y común a otros temas.
   - Sigue abierta la duda 16 (enganche con la factura de la luz).
 
+### Ficha
+
+- **Estructura, refrán y minutos**: iguales que en el tema (I 7′30″, II 8′, III 11′; «Ni tanto ni tan calvo» en el enganche y en la idea final, que ahora termina como el tema: «ni tanta ni tan poca»). En I.3, la falacia del celofán pasa a las implicaciones del modelo, como en el tema, y las extensiones y la valoración quedan en 2 líneas.
+- **Fuera de la ficha lo que el cuerpo ya no canta** (está en los anexos): los umbrales del IHH en concentraciones; el ½𝓛pq de Harberger y su «< 0,1 %», Tullock, Leibenstein, Schumpeter-Arrow y la U invertida; Selten, Kreps-Wilson, Milgrom-Roberts y Areeda-Turner; la multa de 151,9 M€ a Telefónica; Google Android en el SSNDQ; los CTC españoles (Ley 54/1997, 11.951 M€); el Lerner en las plataformas de 2 lados; el «ν ≥ 3/4» del cierre; los menús de Ofgem; Bernstein; Becker y la excepción ibérica (en el cuerpo, pero «no se cantan»); portabilidad, interoperabilidad y el 20 % de la DMA; NEBA por su nombre. En «Datos clave»: el gas (6,46 %), el DORA en euros (10,52 → 10,69), las multas de Apple, Meta y Google y el −40 % del ferrocarril.
+- **Puesto al día con el cuerpo**: los inconvenientes del *price cap* («un precio alto o una X baja dejan rentas; lo contrario, renegociar»; fuera «retrasar mejoras» y «más riesgo»); I.1 (motivos invocados frente a justificaciones técnicas, en lugar de «varios a la vez»); los precios predatorios (Chicago, McGee, frente a la reputación con información incompleta; AKZO); el estrechamiento de márgenes definido; las telecomunicaciones (los 3 pasos del Código, no «3 criterios»; el fin del acceso mayorista a la fibra de Telefónica); la DMA (desde mayo de 2023, 7 guardianes, conductas; Google Shopping y Android en el TJUE); la ECPR («da por bueno el precio final»); las plataformas (se regula el acceso); Renfe con Ouigo e Iryo; Guasch como evidencia y no como límite; Joskow como evidencia de los menús; los motivos de la captura; nueva línea «El *price cap* en la práctica» (RIIO, X = 1 %; DORA, X = 0,33 %).
+- **Sin discrepancias** en fórmulas, notación (`eq:lerner`, `eq:laffont-tirole` y `eq:price-cap` como `\funcionclave`), ejemplos de Redes del Valle ni autores y años.
+- **Letra**: 9 pt, 4 páginas (la última columna, el anexo, al 63 %). Para volver a 9 pt se estrecharon 3 figuras (SSNIP 0,72, algoritmo 0,72 y separación vertical 0,66 del ancho de columna). `verificar-tema.py`: 0 errores (solo los 2 avisos de la entrega 3).
+
 ## Dudas abiertas
 
 **Nuevas (23/10/2026), para que Víctor decida o confirme**:
