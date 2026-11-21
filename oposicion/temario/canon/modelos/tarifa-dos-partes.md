@@ -1,7 +1,7 @@
 # Tarifa en dos partes (Coase, 1946; Oi, 1971) y tarifas de punta y valle (Boiteux, 1949; Steiner, 1957)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (discriminación de precios, II.1.2; regulación del monopolio natural, II.2.3 y anexo A; revisado el 17/10/2026). Se queda en el 3.A.17 aunque prospere la propuesta D1 de pasar al 3.A.20 la regulación con información asimétrica.
-- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones); 4.A.5 (tarifas eléctricas) podría citarlo; 3.A.20 (resumen; hecho, 22/10/2026: I.3, T(q) = A + pq con A = CF/n y p = CMg, Coase, 1946, y Oi, 1971; punta y valle **de palabra**, sin p_p = b + β, para que β solo sea la eficiencia intrínseca; términos de potencia y de energía de la factura eléctrica).
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones); 4.A.5 (tarifas eléctricas) podría citarlo; 3.A.20 (resumen; hecho, 22/10/2026: II.2, T(q) = A + pq con A = CF/n y p = CMg, Coase, 1946, y Oi, 1971; punta y valle **de palabra**, sin p_p = b + β, para que β solo sea la eficiencia intrínseca; términos de potencia y de energía de la factura eléctrica).
 - **Manuales de referencia:** Coase (1946); Oi (1971), *QJE*; Boiteux (1949) y Steiner (1957), *QJE*, para punta y valle; Tirole, cap. 3; Viscusi, Harrington y Vernon, cap. 12.
 
 ## Presentación de referencia (3.A.17)

@@ -26,7 +26,7 @@ $$\frac{\partial\mathcal A}{\partial p}+\frac{\partial\mathcal A}{\partial B}\,B
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.20 | ¿Quién vigila al regulador? (teoría positiva) | desarrollo (hecho, 22/10/2026; II.5, 2′ con el compromiso) | Todo lo de arriba; Peltzman de palabra en el cante y con gráfico en el anexo | — |
+| 3.A.20 | ¿Quién vigila al regulador? (teoría positiva) | desarrollo (hecho, 22/10/2026; III.6, 1′ con el compromiso) | Todo lo de arriba; Peltzman de palabra en el cante y con gráfico en el anexo | — |
 | 4.B.2 | Grupos de interés | Resumen | Olson, Stigler, Becker; Peltzman en una línea, remitiendo al 3.A.20 para ampliar | El modelo de Peltzman |
 | 4.B.15 | Empresa pública y regulación | Resumen (hoy mención; D139 (13/10/2026)) | Stigler (1971): el regulador acaba sirviendo a la industria; argumento para reguladores independientes | La teoría completa |
 | 3.A.17 | Monopolio: regulación | mención en el anexo A (hecho, 17/10/2026); con `--fase coherencia`, **2 viñetas** (Stigler y la captura; Peltzman y Becker) con `\vertema{3.A.20}` \vertema{4.B.2} | Teoría positiva como resumen; la anotación de ProMarket y Stigler Center puede pasar al 3.A.20 | La teoría completa |

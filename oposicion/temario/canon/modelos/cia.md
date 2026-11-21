@@ -39,7 +39,7 @@ Con $i>0$ se cumple con igualdad; en el estado estacionario, $m=C$ y $u_{\text{o
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.35 | Demanda de dinero | desarrollo (hecho, 5/11/2026) | Las 2 variantes con sus condiciones, Lucas y Stokey, Cooley y Hansen, la regla de Friedman | — |
-| 3.A.21 | El dinero en el equilibrio general | mención (hecho) | El aforismo de Clower como una de las 4 vías; «restricción de pago por adelantado» (hoy «pago por anticipado», cosmético) | Las condiciones |
+| 3.A.21 | El dinero en el equilibrio general | mención (hecho) | El aforismo de Clower como una de las 4 vías; «restricción de pago por adelantado (*cash in advance*)», con `\vertema{3.A.35}` (aplicado en la pasada final, 21/11/2026) | Las condiciones |
 | 3.A.29 | Modelización dinámica | mención (hecho) | Ejemplo de agregado microfundamentado; «la restricción de pago por adelantado de Clower y Lucas, el tiempo de compra de McCallum y Goodfriend» (hoy «restricción de liquidez por adelantado» y «McCallum», cosmético) | — |
 | 3.A.6, 3.A.42 | Ciclo real | mención (hecho) | Cooley y Hansen (1989): con la restricción el dinero sigue casi neutral; `\vertema{3.A.35}` | — |
 | 3.A.39 | Señoreaje e impuesto inflacionario | mención (hecho) | Con la restricción, la inflación grava el consumo frente al ocio y reduce el trabajo (hoy «*cash-in-advance*» sin traducir, cosmético) | — |

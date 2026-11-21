@@ -419,37 +419,105 @@ como elaboración propia.
 |---|---|
 | Acortar mucho el anexo D (la regulación en la economía del bienestar), solo con lo relevante para el 3.A.20 y remitiendo a los temas para lo demás | Reducido a 3 apartados breves: por qué se regula (los 2 teoremas, qué fallos trata este tema, evolución de la teoría de la regulación), los fallos del sector público (información e incentivos, ligados a la captura y a Peltzman, y los mecanismos cuasi-competitivos en una frase) y los 5 criterios de Baldwin, Cave y Lodge en un párrafo (los cita el anexo de test). Fuera la historia de la economía del bienestar, el detalle de externalidades, bienes públicos, comunes e información asimétrica, el ciclo político, Niskanen, el Leviatán, la ilusión fiscal y la caja «Para ampliar», con remisiones a 3.A.22, 3.A.23, 3.A.13, 3.A.24, 4.B.2, 4.B.6 y 4.B.15. El título del último apartado pasa a «Los 5 criterios de una buena regulación» (cabía en una línea). Los gráficos `ciclo-politico`, `niskanen` y `leviatan.jpeg` quedan en `graficos/` sin usar. |
 
+## Pasada final (noviembre de 2026)
+
+### Dudas y refrán
+
+- **Dudas**: 16 de las 17 resueltas y marcadas «Resuelta por Claude (pasada final)» en «Dudas abiertas»: 1-15 y el bloque «Siguen abiertas de ayer». 4 ya no aplicaban, porque su nota salió del tema al acortar el anexo D el 11/11/2026: la 3, la 4, la 6 y la 10. Comprobado en la web el 21/11/2026: Exolum (CVC sigue con el 24,84 %) y la revisión de las directrices europeas de concentraciones (sin aprobar; cierre previsto en el 4.º trimestre de 2026). **Queda 1 para Víctor**: la 16 (A20-06, la factura de la luz en el enganche), con la opción recomendada.
+- **Dudas generales**: la única que toca el 3.A.20 es la GEN-22 (isobeneficio), que ya estaba resuelta y era del 3.A.19.
+- **Pendientes de coherencia del canon**: no hay ninguna entrada que cambie el propio 3.A.20. Las de «Pendiente del 3.A.20» (3.A.13, 3.A.17 y, opcionales, 3.A.12 y 3.A.22) son cambios en otros temas y se aplican con `--fase coherencia` cuando Víctor apruebe el 3.A.20; no se tocan. La del 3.A.14 ya estaba marcada.
+- **Numeración de los apartados** (pendiente de `_trabajo/canon-pendiente.md`): el esquema, el mapa, la ficha y los `\ref` del tema ya seguían la estructura del 9/11/2026, y no había numeración mal puesta. Sí estaban viejos los números de apartado y los minutos del 3.A.20 en 9 fichas del canon. Se han puesto al día: `averch-johnson` (III.1, 1′30″), `captura-regulador` (III.6), `laffont-tirole` (III.2-III.3), `mercado-relevante` (I.2 e I.3), `precio-acceso` (II.4, y II.2 para la tarifa en dos partes), `price-cap` (III.4), `yardstick` (III.5 y III.2), `tarifa-dos-partes` (II.2) y `eficiencia-frontera` (III.5).
+- **Refrán**: coherente, sin cambios. «Ni tanto ni tan calvo» resume el dilema entre el precio de monopolio y el coste marginal, la idea final lo retoma con la renta informativa, la ficha lo recoge y no abre ningún otro tema.
+
+### Extensión
+
+- **Páginas del tema: 46 → 40** (anexos: 10 → 20). No se ha borrado nada. Los `\minutos`, la estructura, la introducción y la conclusión no cambian. En el cuerpo queda la idea de cada bloque movido, con su remisión `(anexo~\ref{…})`. `verificar-tema.py`: 0 errores.
+- **A anexos que ya existían**:
+  - `anexo:usos-mercado`: los umbrales del IHH, de los acuerdos verticales y de *minimis*, con la nota de EE. UU. y la revisión de las directrices.
+  - `anexo:herramientas-mercado`: las elasticidades.
+  - `anexo:acceso`: el modelo de la ECPR completo, con sus supuestos, el ejemplo numérico, las implicaciones, la nota de M1/M2 y la valoración. En el cuerpo quedan la regla \eqref{eq:ecpr} y su lectura.
+  - `anexo:loeb-magat` (nuevo, dentro de las derivaciones): los supuestos, la ecuación, las implicaciones y la valoración.
+  - `anexo:baron-myerson`: el coste virtual y el cierre.
+  - `anexo:laffont-tirole`: el párrafo largo de la «Idea».
+  - `anexo:peltzman`, que pasa a «los modelos de Peltzman y Becker»: Becker, y una subsección nueva, `anexo:captura-evidencia`, con los precedentes (Bernstein y Posner), los motivos de la captura, la nota de Olson, la búsqueda de rentas con la nota de Mueller, el ejemplo de Redes del Valle, la evidencia, la valoración y la caja de ProMarket y Stigler Center.
+  - `anexo:bienestar-historia`: la nota de los motivos de la tabla, los sectores regulados por varios motivos y la regulación por el lado de la demanda.
+- **Anexos nuevos**:
+  - `anexo:poder-mercado-detalle`: las 3 ineficiencias (Harberger, Cowling y Mueller, ineficiencia X y U invertida), los precios predatorios (McGee, Selten, Kreps y Wilson, Areeda y Turner, AKZO) y el estrechamiento de márgenes de Telefónica.
+  - `anexo:mercado-extensiones`: las extensiones y la valoración del mercado relevante (SSNDQ, 2 lados, Farrell y Shapiro).
+  - `anexo:competencia-mercado`: Laffont y Tirole (1987), la maldición del ganador, Guasch, Laffont y Straub (2008), y las aportaciones y límites de los mercados impugnables.
+  - `anexo:extensiones-instrumentos`: extensiones y evidencia de la tasa de rentabilidad (desfase, calidad, contrastes, tasas españolas, inconvenientes), de Laffont y Tirole (dicotomía precios-incentivos, valor de la información, subastas y dinámica, Ofgem), del *price cap* (*revenue cap*, esquemas intermedios con $p=bF+(1-b)C$, calidad, inconvenientes, British Telecom) y del *yardstick* (heterogeneidad, choques comunes, DEA y SFA, Alemania, Jamasb y Pollitt).
+  - `anexo:separacion`: la historia de la liberalización (Carter, Reagan y Kahn, con la nota del avión) y los CTC; los ejemplos españoles completos (Telefónica y MARCo, ADIF y Renfe con las cuotas de 2025, Aena, CLH/Exolum con su accionariado); las formas débiles de separación, la nota de la separación operativa, el servicio universal y el Lerner en las plataformas de 2 lados.
+  - `anexo:aplicaciones-detalle`: la excepción ibérica, RIIO-3 y Aena, las redes eléctricas y gasistas, el DORA con la nota de la desindexación, las telecomunicaciones (los 3 pasos del Código, la Recomendación y NEBA) y los mercados digitales (multas a Google, umbrales y lista de guardianes, obligaciones y sanciones de la DMA).
+- **Gráficos**: la infografía de la separación vertical pasa a ir justo después de presentar las 6 formas, antes de la lista. No se mueve ningún gráfico a anexos. La tabla de instrumentos vuelve al final de III.7.
+- **Avisos que quedan** (para la fase de redacción):
+  - listas de más de 7 elementos en los anexos de test, normas y bloque, y en los de Baron-Myerson y la ECPR;
+  - 4 títulos de subapartado largos con «:».
+
+### Redacción
+
+- **Páginas del tema: 40** (anexos: 20 → 21; el cuerpo no crece: la última página sigue a medias). `verificar-tema.py`: 0 errores, sin avisos de listas, títulos ni párrafos (solo los de la entrega 3, vídeo). Sin cambios en cifras, citas, fórmulas, `\minutos`, rótulos fijos, notación ni gráficos.
+- **Avisos de la fase de extensión, resueltos**:
+  - **5 listas agrupadas** con rótulo por grupo: el anexo de test (18 elementos → poder de mercado y mercado relevante, información completa, información asimétrica, aplicaciones, fechas y trampas), las preguntas del tribunal (20 → 5 grupos por bloque), las normas de España (8 → competencia, energía e hidrocarburos, transporte y telecomunicaciones, precios públicos), el anexo del bloque (8 → tercer ejercicio y otros temas) y la derivación de Laffont-Tirole (8 → derivación con 2 tipos y complementos). La lista larga «de Baron-Myerson» era la de Laffont-Tirole (l. 1366); en la de Baron-Myerson sobraba el cierre repetido. La «de la ECPR» (l. 1776) era la de las normas de España.
+  - **4 títulos cortados con `\cortetitulo`** tras los dos puntos (I.2, II.4, III.3 y III.4), sin cambiar el texto.
+  - **Línea desbordada de 2,5 pt en la tabla de motivos**: la 2.ª columna pasa de 5,7 a 5,6 cm.
+- **Párrafos partidos**: 3. **Enumeraciones sacadas a viñetas**: 1 (las 3 ineficiencias de I.2). **Enumeraciones sacadas de gráficos o tablas**: 0 (las de la tabla de motivos, la de supuestos, la separación vertical y la tabla de instrumentos ya estaban en el texto). **Frases aligeradas**: 5. **Repeticiones fusionadas** en los anexos: 2 (el desfase regulatorio salía 2 veces en el de la tasa de rentabilidad; el cierre de Baron-Myerson, también). **Reordenados** a idea → mecanismo → evidencia → valoración: los anexos de la tasa de rentabilidad (evidencia al final), de la captura (los precedentes primero; mecanismos en una lista y evidencia y valoración en otra) y de la DMA (qué es, por qué, quién, umbrales, obligaciones y sanciones).
+- **Errata**: al final del *price cap* decía «la cuestión del apartado siguiente», pero el siguiente es el *yardstick*; ahora remite a `\ref{sec:compromiso-captura}`.
+- **Ejemplos** (antes → después):
+  - Conclusión anticipada del I: «…en uno, el poder de mercado; el poder de mercado aleja…; y la respuesta pública depende…, que es lo que ordena el algoritmo…» → «…en uno, el poder de mercado, que aleja… La respuesta pública depende… y la ordena el algoritmo…».
+  - Ineficiencias: «causa 3 ineficiencias…: *asignativa*, porque…; *productiva*, …; y *dinámica*, …» en una frase → 3 viñetas «*asignativa*: …», «*productiva*: …», «*dinámica*: …».
+  - Laffont-Tirole: «Es buscar el reparto del riesgo que dé incentivos…» → «El problema es repartir el riesgo de forma que la empresa tenga incentivos…».
+  - Tasa de rentabilidad: «datos contables que se auditan con facilidad, el beneficio y el capital» → «2 datos contables fáciles de auditar, el beneficio y el capital».
+  - I.1: «Conviene separar la regulación por eficiencia…» → «Hay que separar…»; captura: «…como se regula: según Stigler, …» → 2 frases.
+
+### Control de calidad
+
+- **Páginas del tema: 40** (anexos: 21; bibliografía: 11; total: 72), igual que tras la redacción: las correcciones no mueven ninguna página. `verificar-tema.py`: 0 errores; solo los 2 avisos de la entrega 3 (guion y vídeo). `\minutos` = 30. PDF revisado página a página (72) a 75 ppp; HTML leído como texto (título, resumen y pie de `seo.json`, sin `??` ni órdenes sin convertir, sin pizarra ni vídeo en el texto).
+- **Frente al anterior**: no hay `3A20-anterior.pdf` (en `main` no existe el 3.A.20 con la numeración nueva, y su `3A25.pdf` es otro tema, el mercado de trabajo). Comparado con la versión de la rama antes de la pasada final: 46 + 10 + 11 = 67 páginas → 40 + 21 + 11 = 72; el cuerpo baja 6 páginas y nada se ha borrado (ver «Extensión»).
+
+| Objetivo | Resultado | Corregido |
+|---|---|---|
+| a) Erratas | Sin palabras repetidas, espacios ante puntuación ni referencias rotas. Cuentas de los ejemplos rehechas: pérdida crítica (5/25 = 20 %; 5/55 ≈ 9 %), Baron-Myerson (q = 80 y 40, renta 800 frente a 1.200), Laffont-Tirole (e = 20 y 18, Φ(18) = 6,5, t = 16,5 y 8,1, pagos 96,5 y 100,1), *price cap* (40 × 1,01 = 40,40) y *yardstick* (23, 22, 21): todas cuadran. | 1 ambigüedad que era casi un error: en los inconvenientes del *price cap* (III.4, e) «si es alto deja rentas; si es bajo, la empresa querrá renegociar» se leía referido a X (al revés de la tabla de lo que observa el regulador) → «un precio alto o una X baja dejan rentas; lo contrario lleva a la empresa a renegociar». Mismas líneas. |
+| b) Título del programa de 2024 | Coincide letra por letra con `titulos.json`: «Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas.» Los 4 epígrafes tienen bloque (I.2, I.3, III, III.7). | — |
+| c) Datos al día y citados | Comprobados en la web el 21/11/2026, además de las directrices de concentraciones y Exolum: tasas de la CNMC (6,58 % electricidad 2026-2031; 6,46 % gas 2027-2032, Circular 5/2026, BOE 18/09/2026); DORA 2027-2031 (IMAP 2026 de 10,52 €, X = +0,33 %, BOE-A-2026-19507); RIIO-3 (5,70 % y 6,12 % reales, Ofgem, 4/12/2025); DMA (7 guardianes y 23 servicios, sin designaciones en 2026; última multa, Google, 890 M€, 23/07/2026); compromisos de Telefónica (sin resolver: sigue la prueba de mercado del 30/06/2026); sentencia Android del TJUE (2/07/2026, 4.125 M€) y Shopping (2024). Todos siguen vigentes y con su cita. | Las Directrices del art. 102 ya están en el Diario Oficial: se añade a su entrada del `.bib` «DO C/2026/4675, de 9.9.2026» (EUR-Lex). Cierra esa parte de «Siguen abiertas de ayer». |
+| d) Formato, ilustraciones y notación del canon | 13 figuras y gráficos numerados y citados; sin cajas ni tablas que se salgan, sin títulos huérfanos ni fórmulas rotas; títulos de 2 líneas bien cortados. Notación igual que el canon: `eq:lerner`, `eq:averch-johnson`, `eq:baron-myerson`, `eq:laffont-tirole`, `eq:price-cap`, `eq:yardstick` y `eq:ecpr` idénticas a sus fichas; λ en Ramsey-Boiteux y en Laffont-Tirole con su nota (como decide `laffont-tirole.md`). Las 9 fichas puestas al día cuadran con los apartados y los minutos del reparto. | 3 fichas del canon más con el número de apartado viejo del 3.A.20: `separacion-vertical` (III.3 → II.4), `ineficiencia-x` (I.1 → I.2) y `rent-seeking-tullock` (I.1 → I.2; II.5 → III.6 y `anexo:captura-evidencia`). |
+| e) Claridad sin alargar | Se lee de corrido; la fase de redacción dejó párrafos, listas y títulos dentro de los límites. Nada más que cambiar sin añadir líneas. | — (la del *price cap*, en a) |
+
+- **Para Víctor** (no se cambia sin él):
+  - **Huecos de maquetación**: la página 3 queda a media página (el mapa del tema no cabe tras el esquema) y la 5 también (la tabla de motivos ocupa la 6 entera y la del 1TFEB la 7). No cuestan páginas, pero se ven. Si se quiere, se puede probar a poner el mapa antes del esquema o la tabla del 1TFEB tras su primer párrafo, comprobando que el cuerpo no pase de 40.
+  - **Bibliografía**: los Nobel salen con 2 autores distintos («Nobel Prize Outreach» y «The Nobel Prize») según la entrada; es cosmético y común a otros temas.
+  - Sigue abierta la duda 16 (enganche con la factura de la luz).
+
 ## Dudas abiertas
 
 **Nuevas (23/10/2026), para que Víctor decida o confirme**:
 
 1. **«Modelos optimin optimout»** (preguntas de otros exámenes): no existe con ese nombre; se ha
    leído como *opt-in*/*opt-out* (opciones por defecto: Johnson y Goldstein, 2003; Madrian y Shea,
-   2001; Thaler y Sunstein, 2003). ¿De acuerdo?
+   2001; Thaler y Sunstein, 2003). ¿De acuerdo? **Resuelta por Claude (pasada final):** «opt-in/opt-out» es la única lectura con sentido (no existe un modelo «optimin optimout») y la pregunta del anexo de test lo explica con sus fuentes (Johnson y Goldstein, 2003; Madrian y Shea, 2001); se mantiene.
 2. **papeles42 de la UMA**: se cita como «Universidad de Málaga (2006), *La regulación económica: el
    problema del monopolio natural*», con la URL del Internet Archive y sin autor. La atribución a
    María del Carmen Ordóñez de Haro sale solo de los metadatos del PDF («Carmina ordoñez de
-   haro.doc»): ¿se añade el nombre?
+   haro.doc»): ¿se añade el nombre? **Resuelta por Claude (pasada final):** se mantiene sin autor: la atribución a Ordóñez de Haro sale solo de los metadatos del PDF y no se ha podido comprobar; citar a la Universidad de Málaga como autor institucional es correcto.
 3. **«Internet Chapter Two»** (nota 22): se cita con la URL archivada y sin autor; probablemente es
-   de *Public Finance in Canada* (Rosen, Wen, Snoddon, Dahlby y Smith), sin confirmar.
+   de *Public Finance in Canada* (Rosen, Wen, Snoddon, Dahlby y Smith), sin confirmar. **Resuelta por Claude (pasada final):** ya no aplica: la nota de la información incompleta salió del tema al acortar el anexo D (6.ª tanda, 11/11/2026); `ICUncertainty2002` queda en el .bib sin citar.
 4. **Muñoz Moldes (2018)** (nota 21): se conserva como en el original, junto a Ostrom (1990, pp.
-   61-65) y Netting (1981), pero no se ha identificado la obra (no está en la bibliografía).
+   61-65) y Netting (1981), pero no se ha identificado la obra (no está en la bibliografía). **Resuelta por Claude (pasada final):** ya no aplica: la nota de Törbel salió con el anexo D acortado (11/11/2026).
 5. **Carlos Rodríguez Braun** (nota 33): la frase se atribuye «según recoge» Rodríguez Herrera en
-   *Libertad Digital* (2014); no se ha encontrado el texto original (otras webs la citan al revés).
+   *Libertad Digital* (2014); no se ha encontrado el texto original (otras webs la citan al revés). **Resuelta por Claude (pasada final):** se mantiene «según recoge» Rodríguez Herrera (2014): es la forma correcta de citar una idea de la que solo se tiene la fuente secundaria; la nota está ahora en el anexo de la captura.
 6. **Atkinson y Stiglitz** (aversión al riesgo de los burócratas): se citan la lección 10, pp.
    259-263, y Mueller (2003, §16.4.2, p. 370) por los índices; el texto de esas páginas no se ha
-   leído. Si Víctor puede mirarlo en su ejemplar, se confirma.
+   leído. Si Víctor puede mirarlo en su ejemplar, se confirma. **Resuelta por Claude (pasada final):** ya no aplica: la aversión al riesgo de los burócratas salió con el anexo D acortado (11/11/2026).
 7. **Mueller (2003)**: van las cifras comprobadas por separado (7,3 % y 30-45 %); el 50 % del Word no
-   tiene fuente y sale. Las páginas de la tabla de Mueller (§15.6, pp. 355-358) son del índice.
+   tiene fuente y sale. Las páginas de la tabla de Mueller (§15.6, pp. 355-358) son del índice. **Resuelta por Claude (pasada final):** las 2 cifras van con sus fuentes primarias (Krueger, 1974; Mohammad y Whalley, 1984) y Mueller (2003) sin páginas, como obra general; nada que cambiar.
 8. **Vuelo Madrid-Londres de 700 €** (nota 36): sin fuente; la nota queda sin la cifra (ni el piano
-   en primera clase). Si Víctor tiene la fuente, se recupera.
+   en primera clase). Si Víctor tiene la fuente, se recupera. **Resuelta por Claude (pasada final):** la nota del avión (hoy al pie de la liberalización) queda sin la cifra: no hay fuente, y CRITERIOS §4 no admite cifras sin fuente.
 9. **Kahn (1988, vol. I, p. xxxvii)**: la cita va entre comillas con traducción fiel, comprobada en
-   Hempling (2021), que da la página, no en el libro.
+   Hempling (2021), que da la página, no en el libro. **Resuelta por Claude (pasada final):** la frase de Kahn es muy conocida y la traducción coincide con el original citado por Hempling (2021); se mantiene con la cita del libro.
 10. **Nota 30** (países nórdicos e imposición indirecta): sin fuente; va como «se suele citar». ¿Se
-    mantiene?
+    mantiene? **Resuelta por Claude (pasada final):** ya no aplica: la nota de los países nórdicos salió con el anexo D acortado (11/11/2026).
 11. **Baldwin, Cave y Lodge**: la página de la tabla 2.1 y la del *yardstick* (cap. 26) no se han
-    visto en el libro (capítulos de pago).
-12. **Exolum**: el paquete de CVC (24,84 %) está en venta; revisar el dato antes de publicar.
+    visto en el libro (capítulos de pago). **Resuelta por Claude (pasada final):** se cita el capítulo y la tabla, sin página; el *yardstick* va con `\nocite` del libro. Es suficiente para una remisión general y no se inventan páginas.
+12. **Exolum**: el paquete de CVC (24,84 %) está en venta; revisar el dato antes de publicar. **Resuelta por Claude (pasada final):** comprobado en la web de Exolum el 21/11/2026: CVC sigue con el 24,84 % (25,00 % de los votos); el dato del texto (ahora en el anexo de la separación vertical) es correcto.
 
 **Nuevas (9/11/2026, 2.ª tanda)**, con la opción aplicada:
 
@@ -457,19 +525,19 @@ como elaboración propia.
     mercado, externalidades, bienes públicos e información asimétrica; se ha seguido el orden del
     3.A.23 revisado (poder de mercado, información asimétrica, externalidades, bienes públicos), que
     va por el supuesto del 1TFEB que levanta cada uno (3, 5, 2, 2). Si prefiere su orden, basta con
-    mover 2 filas.
+    mover 2 filas. **Resuelta por Claude (pasada final):** se queda el orden del 3.A.23 (por el supuesto del 1TFEB que levanta cada fallo), por coherencia entre temas (CRITERIOS §6).
 14. **Filas de elaboración propia en la tabla de motivos**: el paternalismo (bienes preferentes) y
     los 2 motivos de estabilidad (estabilidad financiera, `\vertema{3.B.27}`; topes de precios en
     crisis de oferta, la excepción ibérica) no están en la tabla 2.1 de Baldwin, Cave y Lodge; la
     fuente lo dice. La continuidad del servicio y la racionalización van como «otros motivos de
-    eficiencia» (también tocan la equidad).
+    eficiencia» (también tocan la equidad). **Resuelta por Claude (pasada final):** informativa: la fuente de la tabla ya dice qué filas son de elaboración propia.
 15. **Punta y valle con gráfico**: para alargar el bloque II (lo pidió Víctor) se ha añadido la
     regla $p_v=b$, $p_p=b+\beta$ con el gráfico de referencia `pico-valle` del 3.A.17 (copia), y
-    el programa de Ramsey-Boiteux con `\optim`; la derivación sigue solo en el 3.A.17 (canon).
+    el programa de Ramsey-Boiteux con `\optim`; la derivación sigue solo en el 3.A.17 (canon). **Resuelta por Claude (pasada final):** informativa: la regla de punta y valle y su gráfico están en II.2, como pidió Víctor; la derivación sigue en el 3.A.17.
 
 **Nuevas (20/11/2026, refrán nuevo)**, con la opción aplicada:
 
-16. **A20-06 (término medio del enganche)**: con «Ni tanto ni tan calvo», el término medio se ilustra con la tarifa en dos partes de la factura de la luz (término de potencia y término de energía) y, de palabra, con la idea de Ramsey («cargar el margen donde menos distorsiona»), sin nombrarlo para no adelantar el bloque II. Se mantiene el dato de la CNMC (6,58 %) como 2.ª viñeta, porque responde al mismo refrán («¿es mucho o es poco?»). Alternativa: quitar la factura de la luz y dejar solo la tasa de retribución, para un enganche más corto.
+16. **A20-06 (término medio del enganche)**: con «Ni tanto ni tan calvo», el término medio se ilustra con la tarifa en dos partes de la factura de la luz (término de potencia y término de energía) y, de palabra, con la idea de Ramsey («cargar el margen donde menos distorsiona»), sin nombrarlo para no adelantar el bloque II. Se mantiene el dato de la CNMC (6,58 %) como 2.ª viñeta, porque responde al mismo refrán («¿es mucho o es poco?»). Alternativa: quitar la factura de la luz y dejar solo la tasa de retribución, para un enganche más corto. **Decide Víctor**: mantener la factura de la luz y la tasa de la CNMC (recomendado: el refrán queda ilustrado y la idea final lo retoma); alternativa, quitar la factura para acortar el enganche. Refrán revisado en la pasada final: coherente y único.
 
 **Decididas por Víctor el 23/10/2026** (se mantienen): el refrán «Tener la sartén por el mango» y
 sus pegatinas (A20-01); Baron-Myerson en el cuerpo (A20-02); el reparto 8′ / 11′ / 7′30″ (A20-02),
@@ -481,7 +549,7 @@ Forbes, el «desde 2029» y el 0,13 % del PIB, las *killer acquisitions*).
 **Siguen abiertas de ayer**: las páginas de Willig (1979); la referencia del DO de las Directrices
 del art. 102 de 2026 (se cita C(2026) 6118); si las directrices europeas de concentraciones se
 aprueban antes de publicar, revisar los umbrales del IHH; las directrices de EE. UU. de 2023 (IHH >
-1.800 y Δ > 100) sin segunda comprobación propia.
+1.800 y Δ > 100) sin segunda comprobación propia. **Resuelta por Claude (pasada final):** las páginas de Willig (1979) no se han podido comprobar y la obra se cita sin ellas (es una remisión general); las Directrices del art. 102 se citan por su número C(2026) 6118, que basta mientras no salgan en el DO; las directrices europeas de concentraciones siguen sin aprobarse a 21/11/2026 (página de la Comisión: cierre previsto en el 4.º trimestre de 2026), así que los umbrales del IHH del texto siguen en vigor; los de Estados Unidos de 2023 (IHH > 1.800 y Δ > 100) son los de la directriz 1 de las Merger Guidelines. Al publicar, si la Comisión aprueba las nuevas directrices, cambiar los umbrales del anexo del mercado relevante.
 
 ## Instrucciones para el vídeo
 

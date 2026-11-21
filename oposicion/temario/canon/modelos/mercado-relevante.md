@@ -18,14 +18,14 @@ $$\ell^c=\frac{\tau}{\tau+\mathcal L}$$
   - *iii) Implicaciones*: **falacia del celofán** (du Pont, 1956: cerca del 75 % del celofán; Comunicación de 2024, nota 55): a precios de monopolio, |ε_{q,p}| = 1/𝓛 > 1 y ninguna subida adicional es rentable (ℓ ≈ |ε|τ > ℓ^c para todo τ > 0): el mercado sale demasiado amplio; en los abusos, la referencia debería ser el precio competitivo. Definir el mercado es el primer paso, no el diagnóstico.
 - **c) Extensiones**: herramientas (elasticidades propia y cruzada, ratios de desvío, correlación de precios como condición necesaria, flujos de comercio, encuestas, costes de cambio); productos de precio cero: **SSNDQ** (*small but significant non-transitory decrease in quality*; caso Google Android); mercados de 2 lados: un mercado para la plataforma o uno por lado (Comunicación de 2024, puntos 94-98).
 - **d) Valoración**: definición binaria que exagera o subestima la competencia con productos diferenciados; medidas directas de la presión al alza sin definir el mercado (Farrell y Shapiro, 2010; directrices de EE. UU. de 2023); sigue siendo el punto de partida.
-- **Umbrales que se citan con la definición** (I.1 y anexo del 3.A.20): dominancia presunta con cuota ≥ 50 % (AKZO, 1991) e improbable por debajo del 40 % (Directrices de 2026 sobre abusos excluyentes, punto 24); IHH de las directrices horizontales de 2004 (< 1.000; 1.000-2.000 con Δ < 250; > 2.000 con Δ < 150; en revisión, adopción prevista en el 4.º trimestre de 2026); EE. UU. 2023 (> 1.800 con Δ > 100); acuerdos verticales hasta el 30 % (Reglamento (UE) 2022/720); *de minimis* 10 % y 15 % (Comunicación de 2014).
+- **Umbrales que se citan con la definición** (I.2 y anexo del 3.A.20): dominancia presunta con cuota ≥ 50 % (AKZO, 1991) e improbable por debajo del 40 % (Directrices de 2026 sobre abusos excluyentes, punto 24); IHH de las directrices horizontales de 2004 (< 1.000; 1.000-2.000 con Δ < 250; > 2.000 con Δ < 150; en revisión, adopción prevista en el 4.º trimestre de 2026); EE. UU. 2023 (> 1.800 con Δ > 100); acuerdos verticales hasta el 30 % (Reglamento (UE) 2022/720); *de minimis* 10 % y 15 % (Comunicación de 2014).
 
 **Gráfico de referencia:** `oposicion/temario/fuentes/3A20/graficos/ssnip.tex` (`fig:ssnip`: mercados candidatos concéntricos que se amplían hasta que la subida es rentable). Imprescindible en el cante del 3.A.20.
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.20 | ¿En qué mercado se mide el poder de mercado? | desarrollo (hecho, 22/10/2026; I.2, 2′30″, y anexo) | Todo lo de arriba | — |
+| 3.A.20 | ¿En qué mercado se mide el poder de mercado? | desarrollo (hecho, 22/10/2026; I.3, 2′, y anexo) | Todo lo de arriba | — |
 | 3.A.18 | Diferenciación del producto | mención (hecho, 19/10/2026; anexo G) | SSNIP con las mismas palabras, cadena de Robinson, correlación; ejemplo del carbón (propio del 3.A.18) | El celofán y la pérdida crítica |
 | 3.A.19 | Oligopolio | mención (hecho, 20/10/2026) | El IHH se calcula en un mercado ya definido | El test |
 | 3.A.15 | Organización industrial | mención (hecho, 20/10/2026) | Directrices de concentraciones de EE. UU. | El test |

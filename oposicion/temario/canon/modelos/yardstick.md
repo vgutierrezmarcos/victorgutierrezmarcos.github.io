@@ -22,7 +22,7 @@ $$p_i=\bar c_{-i}\equiv\frac{1}{N-1}\sum_{j\neq i}c_j,\qquad T_i=\bar R_{-i}\equ
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.20 | ¿Y si hay varias empresas reguladas parecidas? (III.5; antes III.1); ¿se puede regular sin conocer el coste? (Loeb-Magat, II.2) | desarrollo (hecho, 22/10/2026; III.1, 2′) | Todo lo de arriba | — |
+| 3.A.20 | ¿Y si hay varias empresas reguladas parecidas? (III.5; antes III.1); ¿se puede regular sin conocer el coste? (Loeb-Magat, III.2) | desarrollo (hecho, 22/10/2026; III.5, 1′) | Todo lo de arriba | — |
 | 3.A.17 | Regulación del monopolio natural con información asimétrica | hoy desarrollo en el anexo A (hecho, 17/10/2026); **pasa a mención** con `--fase coherencia` | 2 viñetas: Loeb-Magat (todo el EC, p = CMg, renta enorme) y competencia por comparación (Shleifer, 1985, con DEA o frontera estocástica, \vertema{3.A.12}); `\vertema{3.A.20}` | El modelo |
 | 3.A.12 | Medición de la eficiencia (IV.3) | mención (hecho, 14/10/2026) | Shleifer (1985) como uso de las fronteras de eficiencia; caso alemán con las mismas palabras que el 3.A.20; remite a 3.A.17 y 3.A.20 (con la referencia en el 3.A.20 basta `\vertema{3.A.20}`, opcional) | El mecanismo |
 | 4.B.15 | Empresa pública | resumen (hoy mención; D091, D139 (13/10/2026)) | Precio fijado por el coste medio de las demás empresas comparables: alternativa a la propiedad pública; remitir al 3.A.20 | El desarrollo |

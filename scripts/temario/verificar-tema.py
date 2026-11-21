@@ -78,6 +78,29 @@ def _sin_notas(texto):
     return ''.join(out)
 
 
+# Órdenes que abren algo que no es un párrafo de texto (títulos, cajas, figuras, tablas)
+ESTRUCTURA = ('part|chapter|section|subsection|subsubsection|paragraph|caption|label|includegraphics|centering|'
+              'vspace|hspace|minutos|graficonota|input|include|clearpage|newpage|appendix|maketitle|tableofcontents|'
+              'printbibliography|nocite|toprule|midrule|bottomrule|hline|multicolumn|resizebox|tikz|draw|node|'
+              'renewcommand|newcommand|setlength|small|footnotesize|noindent|bigskip|medskip|smallskip')
+
+
+def _blanquear_notas(texto):
+    """Como _sin_notas, pero deja espacios en lugar de la nota (conserva posiciones y saltos de línea)."""
+    out, i = [], 0
+    while True:
+        j = texto.find('\\footnote{', i)
+        if j < 0:
+            out.append(texto[i:]); break
+        out.append(texto[i:j]); k, prof = j + len('\\footnote{'), 1
+        while k < len(texto) and prof:
+            prof += {'{': 1, '}': -1}.get(texto[k], 0) if texto[k - 1] != '\\' else 0
+            k += 1
+        out.append(re.sub(r'[^\n]', ' ', texto[j:k]))
+        i = k
+    return ''.join(out)
+
+
 def _palabras(texto):
     t = re.sub(r'\\(?:footnote|nocite|label|ref|parencite|textcite|cite)\*?(?:\[[^\]]*\])*\{[^{}]*\}', ' ', texto)
     t = re.sub(r'\$[^$]*\$', ' x ', t)
@@ -89,16 +112,17 @@ def _palabras(texto):
 def comprobar_claridad(tema, tex, avisos):
     """Párrafos largos y listas con demasiados elementos en un mismo nivel (avisos)."""
     sin = re.sub(r'(?<!\\)%[^\n]*', '', tex)
-    cuerpo = _sin_notas(sin.split('\\begin{document}', 1)[-1])
+    # Las notas se blanquean sin mover el texto, para dar la línea buena del párrafo
+    blanco = _blanquear_notas(sin)
+    ini = max(blanco.find('\\begin{document}'), 0)
     largos = []
-    for m in re.finditer(r'(?:^|\n\s*\n|\\item\b)(.*?)(?=\n\s*\n|\\item\b|\\begin\{|\\end\{|$)', cuerpo, re.S):
+    for m in re.finditer(r'(?:^|\n\s*\n|\\item\b)(.*?)(?=\n\s*\n|\\item\b|\\begin\{|\\end\{|$)', blanco[ini:], re.S):
         trozo = m.group(1)
-        if trozo.strip().startswith('\\') and not trozo.strip().startswith(('\\textbf', '\\concepto', '\\emph', '\\autor')):
+        if re.match(r'\s*\\(?:' + ESTRUCTURA + r')\b', trozo):
             continue
         if _palabras(trozo) > MAX_PALABRAS_PARRAFO:
-            ini = trozo.strip()[:40]
-            pos = sin.find(ini)
-            largos.append(sin.count('\n', 0, pos) + 1 if pos >= 0 else 0)
+            pos = ini + m.start(1) + len(trozo) - len(trozo.lstrip())
+            largos.append(blanco.count('\n', 0, pos) + 1)
     if largos:
         avisos.append(f'{len(largos)} párrafos de más de {MAX_PALABRAS_PARRAFO} palabras (l. '
                       f'{", ".join(map(str, largos[:8]))}): partir en ideas (CRITERIOS §2, «Claridad y memorización»)')

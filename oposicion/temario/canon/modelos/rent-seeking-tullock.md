@@ -1,7 +1,7 @@
 # Búsqueda de rentas (Tullock, 1967; Krueger, 1974)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.2 — el que más lo trata.
-- **Temas que lo usan:** 4.B.2 (resumen), 4.B.5 (mención), 3.A.17 (mención: coste social del monopolio; hecho, 17/10/2026), 3.B.7/3.B.9 (mención: contingentes y licencias de importación); 3.A.23 (mención; hecho, 21/10/2026); 3.A.20 (mención; hecho, 22/10/2026: I.1, parte del rectángulo de beneficios, Tullock, 1967, y Posner, 1975; II.5, los recursos que se gastan en conseguir regulación).
+- **Temas que lo usan:** 4.B.2 (resumen), 4.B.5 (mención), 3.A.17 (mención: coste social del monopolio; hecho, 17/10/2026), 3.B.7/3.B.9 (mención: contingentes y licencias de importación); 3.A.23 (mención; hecho, 21/10/2026); 3.A.20 (mención; hecho, 22/10/2026: I.2, parte del rectángulo de beneficios, Tullock, 1967, y Posner, 1975; III.6 y anexo `anexo:captura-evidencia`, los recursos que se gastan en conseguir regulación).
 - **Manuales de referencia:** Tullock (1967), «The welfare costs of tariffs, monopolies, and theft», *Western Economic Journal*; Krueger (1974), «The political economy of the rent-seeking society», *AER*; Posner (1975), *JPE*; Mueller, *Public Choice III*, cap. 15.
 
 ## Presentación de referencia

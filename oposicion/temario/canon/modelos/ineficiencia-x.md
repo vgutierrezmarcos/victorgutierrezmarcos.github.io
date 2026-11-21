@@ -1,7 +1,7 @@
 # Ineficiencia X (Leibenstein, 1966)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.12 (Teoría de los costes; revisado el 14/10/2026, III.3.2, y su medición en IV.3) — es donde se cuestiona el supuesto de minimización de costes.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.17 (mención: pérdida de bienestar del monopolio; hecho, 17/10/2026), 3.A.15 (mención: bisagra entre los gerencialistas y la agencia; hecho, 20/10/2026; ficha `modelos-gerencialistas`), 3.B.39, 4.A.14, 4.A.15, 4.A.24, 4.A.25, 4.B.2, 4.B.15 (mención); 3.A.23 (mención; hecho, 21/10/2026); 3.A.20 (mención; hecho, 22/10/2026: I.1, ineficiencia productiva del poder de mercado y margen bajo que esconde poder, Leibenstein, 1966, `\vertema{3.A.12}`).
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.17 (mención: pérdida de bienestar del monopolio; hecho, 17/10/2026), 3.A.15 (mención: bisagra entre los gerencialistas y la agencia; hecho, 20/10/2026; ficha `modelos-gerencialistas`), 3.B.39, 4.A.14, 4.A.15, 4.A.24, 4.A.25, 4.B.2, 4.B.15 (mención); 3.A.23 (mención; hecho, 21/10/2026); 3.A.20 (mención; hecho, 22/10/2026: I.2, ineficiencia productiva del poder de mercado y margen bajo que esconde poder, Leibenstein, 1966, `\vertema{3.A.12}`).
 - **Manuales de referencia:** Leibenstein (1966), «Allocative efficiency vs. "X-efficiency"», *AER*; Leibenstein (1982); Hicks (1935) «vida tranquila»; Stigler (1976), «The Xistence of X-efficiency», *AER*; Nickell (1996), *JPE*; Bloom y Van Reenen (2007), *QJE*; Tirole, *The Theory of Industrial Organization*, introducción.
 
 ## Presentación de referencia

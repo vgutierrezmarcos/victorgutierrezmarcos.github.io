@@ -4,8 +4,8 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 
 - Temas: 90; sin refrán entre «»: 0 (ninguno)
 - Refranes iniciales repetidos: 0
-- No retomados en la idea final (por texto): 3A01, 3A02, 3A04, 3A10, 3A13, 3A15, 3A16, 3A21, 3A28, 3A31, 3A35, 3A39, 3A40, 3A41, 3B03, 3B06, 3B07, 3B18, 3B25, 3B26, 3B27, 3B29, 3B30, 3B44
-- Ficha sin el refrán: 3A08, 3A09, 3A11, 3A12
+- No retomados en la idea final (por texto): 3A01, 3A10, 3A15, 3A31, 3B03, 3B25, 3B26, 3B29, 3B30
+- Ficha sin el refrán: 3A11, 3A31
 
 ## 3A01 · 
 
@@ -182,7 +182,8 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 - Por eso la teoría de la demanda es el primer ladrillo del análisis de los mercados: sin ella no puede explicarse cómo se forman los precios, ni medirse la inflación con bienes cuya calidad cambia, ni valorarse el bienestar que una política gana o pierde.
 - Lo que esa coherencia no recoge (el riesgo, el tiempo o los sesgos) es lo que el resto de la teoría económica viene a explicar.
 
-**Ficha**: ¿puede una teoría explicar lo que elegimos sin ver lo que queremos?
+**Ficha**: «Sobre gustos no hay nada escrito»: lo que a cada uno le gusta nadie lo ve desde fuera.
+- ¿Puede una teoría explicar lo que elegimos sin ver lo que queremos?
 - Marshall (1890): «el estudio de la humanidad en los asuntos ordinarios de la vida»; pocas decisiones más ordinarias que qué comprar.
 
 ## 3A09 · 
@@ -192,8 +193,13 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 **Enganche**:
 
 - «A falta de pan, buenas son tortas», dice el refrán: cuando algo falta o se encarece, uno se apaña con otra cosa y puede quedar casi igual de bien.
-- Cada mes de enero, las pensiones contributivas se revalorizan con la media de las tasas interanuales del IPC de los doce meses anteriores; en 2026 han subido un 2,7 \%. ¿Basta esa subida para que un pensionista quede igual que estaba? La pregunta parece de sentido común, pero no lo es: cuando los precios suben de forma desigual, el consumidor sustituye los bienes que se encarecen por otros, y lo que importa no es cuánto cuesta su cesta antigua, sino cuánto cuesta volver a estar igual de bien.
-- Responderla exige otra pregunta: ¿se puede medir en euros algo que solo sabemos ordenar? La utilidad es ordinal: no se puede restar ni sumar, y hace falta una herramienta que la traduzca a unidades monetarias. Esa herramienta es la función de gasto, que aparece cuando se «da la vuelta» al problema del consumidor: en lugar de maximizar la utilidad con una renta dada, se minimiza el gasto necesario para alcanzar una utilidad dada. Es la dualidad, el centro de esta exposición.
+- Cada mes de enero, las pensiones contributivas se revalorizan con la media de las tasas interanuales del IPC de los doce meses anteriores; en 2026 han subido un 2,7 \%. ¿Basta esa subida para que un pensionista quede igual que estaba?
+- La pregunta parece de sentido común, pero no lo es: cuando los precios suben de forma desigual, el consumidor sustituye los bienes que se encarecen por otros.
+- Por eso lo que importa no es cuánto cuesta su cesta antigua, sino cuánto cuesta volver a estar igual de bien.
+- Responderla exige otra pregunta: ¿se puede medir en euros algo que solo sabemos ordenar?
+- La utilidad es ordinal: no se puede restar ni sumar, y hace falta una herramienta que la traduzca a unidades monetarias.
+- Esa herramienta es la función de gasto. Aparece cuando se «da la vuelta» al problema del consumidor: en lugar de maximizar la utilidad con una renta dada, se minimiza el gasto necesario para alcanzar una utilidad dada.
+- Es la dualidad, el centro de esta exposición.
 
 **Idea final**:
 
@@ -201,7 +207,8 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 - Con ella se responde al pensionista: si su cesta se parece a la del IPC, la subida le compensa algo más de lo necesario, porque un índice de Laspeyres ignora que el consumidor sustituye lo que se encarece: a falta de pan, buenas son tortas; si es distinta, puede quedarse corta, y la compensación exacta es la variación compensatoria.
 - Lo que esa traducción no permite es sumar el bienestar de personas distintas: para eso hacen falta juicios de valor, y ahí empieza la economía del bienestar.
 
-**Ficha**: pensiones revalorizadas con la media del IPC (+2,7 \% en 2026). ¿Basta para quedar igual?
+**Ficha**: «A falta de pan, buenas son tortas»: si algo se encarece, uno se apaña con otra cosa y queda casi igual de bien.
+- Pensiones revalorizadas con la media del IPC (+2,7 \% en 2026). ¿Basta para quedar igual?
 - Si los precios suben de forma desigual, se sustituye: importa cuánto cuesta volver a estar igual de bien.
 - Utilidad ordinal: ¿se puede medir en euros? $$ función de gasto $$ dualidad.
 
@@ -259,7 +266,9 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 **Enganche**:
 
 - «La práctica hace al maestro», dice el refrán, y pocas industrias lo demuestran mejor que la fotovoltaica.
-- Entre 2010 y 2025, el coste nivelado medio de la electricidad de las plantas fotovoltaicas nuevas del mundo bajó de 0,41 a 0,044 dólares por kWh (en dólares de 2025), un 89 \%, y cada vez que se ha duplicado la producción mundial acumulada de módulos su precio ha caído alrededor de un 27 \%. En España, la fotovoltaica ya es la tecnología con más potencia instalada, más de 41.500 MW, y en 2025 produjo el 18,4 \% de la electricidad [ver tema 4.A.5]. ¿Cuánto de esa caída se debe a la escala, cuánto al aprendizaje y cuánto a los precios de los factores?
+- Entre 2010 y 2025, el coste nivelado medio de la electricidad de las plantas fotovoltaicas nuevas del mundo bajó de 0,41 a 0,044 dólares por kWh (en dólares de 2025), un 89 \%, y cada vez que se ha duplicado la producción mundial acumulada de módulos su precio ha caído alrededor de un 27 \%.
+- En España, la fotovoltaica ya es la tecnología con más potencia instalada, más de 41.500 MW, y en 2025 produjo el 18,4 \% de la electricidad [ver tema 4.A.5].
+- ¿Cuánto de esa caída se debe a la escala, cuánto al aprendizaje y cuánto a los precios de los factores?
 - Detrás está la pregunta general de esta exposición: ¿qué nos dicen los costes de una empresa sobre su tecnología, sobre su conducta y sobre el mercado en que opera, y cómo se miden?
 - La teoría neoclásica responde desde el individualismo metodológico [ver tema 3.A.8]. La microeconomía estudia dos agentes, consumidores y productores, y aquí la empresa es un agente que optimiza sometido a 3 tipos de restricciones:
 - técnicas: qué combinaciones de factores y productos son posibles; es la teoría de la producción [ver tema 3.A.11];
@@ -274,7 +283,9 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 - Volviendo a la fotovoltaica, ¿cuánto de su abaratamiento se debe a la escala, al aprendizaje y a los precios de los factores? Su coste ha caído un 89 \% desde 2010 por la escala y, sobre todo, por el aprendizaje (la práctica hace al maestro), que desplaza la curva de costes hacia abajo; pero en 2025 los equipos se abarataron un 6 \% y el coste nivelado no bajó, porque subió el coste del capital.
 - La función de costes $C(w,q)$ recoge las tres cosas, tecnología, escala y precios de los factores, y la dualidad permite separarlas con datos: esa es la utilidad de la teoría de los costes.
 
-**Ficha**: fotovoltaica: coste nivelado $0,410,044$ \$/kWh (2010-2025, $-89$ \%); módulos $-27$ \% por cada duplicación de la producción acumulada.
+**Ficha**: «La práctica hace al maestro», y pocas industrias lo demuestran mejor que la fotovoltaica.
+- Coste nivelado $0,410,044$ \$/kWh (2010-2025, $-89$ \%); módulos $-27$ \% por cada duplicación de la producción acumulada.
+- España: primera por potencia (más de 41.500 MW), 18,4 \% de la electricidad en 2025 [ver tema 4.A.5].
 - ¿Cuánto se debe a la escala, cuánto al aprendizaje y cuánto a los precios de los factores?
 
 ## 3A13 · 
@@ -306,7 +317,7 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 
 **Enganche**:
 
-- «Hoy por ti, mañana por mí», dice el refrán. ¿Por qué ayudamos sin firmar nada al vecino, al compañero o al proveedor con el que vamos a volver a tratar, y no a un desconocido al que no veremos más? No hace falta suponer que somos mejores con unos que con otros: lo que cambia es el juego. La teoría de juegos responde que lo que hace cada uno depende de la estructura del juego: si se repite o no, qué sabe cada jugador, quién mueve primero y cuáles son las reglas.
+- «Hoy por ti, mañana por mí», dice el refrán. ¿Por qué ayudamos sin firmar nada al vecino, al compañero o al proveedor con el que vamos a volver a tratar, y no a un desconocido al que no veremos más? La teoría de juegos responde que no somos mejores con unos que con otros: lo que cambia es la estructura del juego, es decir, si se repite o no, qué sabe cada jugador, quién mueve primero y cuáles son las reglas.
 - Las reglas también las escribe el Estado. En julio de 2021 subastó la banda de 700 MHz para el 5G: tras 12 rondas de pujas, adjudicó concesiones por 1.010 millones de euros, apenas por encima del precio de salida de 995,5 millones. Ningún funcionario sabía cuánto valía ese espectro para cada operador; el formato de la subasta les obligó a revelarlo, al menos en parte, con sus pujas.
 - Detrás está la pregunta de esta exposición: ¿se puede predecir lo que harán agentes racionales cuyas decisiones dependen unas de otras y que se anticipan unos a otros? ¿Y se pueden diseñar las reglas para que, jugando en su propio interés, revelen lo que saben?
 
@@ -579,16 +590,16 @@ Generado con `python3 scripts/temario/refranes.py`. No editar a mano.
 **Enganche**:
 
 - «Cada oveja con su pareja», dice el refrán. En el mercado de trabajo, cada parado busca su puesto y cada empresa su trabajador, y no se encuentran a la primera.
-- En España había 2.591.200 parados en el tercer trimestre de 2026, el 10,18 \% de los activos, y a la vez las empresas tenían 150.765 puestos vacantes sin cubrir: unos 16,5 parados por vacante si se comparan los datos del mismo trimestre.
+- En España había 2.591.200 parados en el tercer trimestre de 2026, el 10,18 \% de los activos, y a la vez las empresas tenían 150.765 puestos vacantes sin cubrir en el segundo trimestre: unos 16,6 parados por vacante si se comparan los datos de ese mismo trimestre (2.495.300 parados).
 - Detrás está la pregunta de esta exposición: ¿cómo puede haber a la vez gente que busca trabajo y trabajo que busca gente? En el modelo de oferta y demanda, el salario se movería hasta que no sobrara nadie. Aquí veremos por qué no ocurre y qué consecuencias tiene.
 
 **Idea final**:
 
-- «Cada oveja con su pareja», decíamos al empezar; pero encontrar pareja lleva tiempo y cuesta, y hoy en España hay unos 16,5 parados por cada vacante.
+- «Cada oveja con su pareja», decíamos al empezar; pero encontrar pareja lleva tiempo y cuesta, y hoy en España hay unos 16,6 parados por cada vacante.
 - El paro friccional es el precio de que cada trabajador acabe en el puesto que le corresponde y no en el primero que pasa: la política no puede eliminarlo, pero sí abaratarlo, con mejores servicios de empleo, más movilidad y unos costes de ajuste que no carguen todo el peso sobre los mismos.
 
 **Ficha**: «cada oveja con su pareja»: cada parado busca su puesto y cada empresa su trabajador, y no se encuentran a la primera.
-- España: 10,18 \% de paroEPA 3T 2026 y 150.765 vacantesEurostat, 2T 2026: $16,5$ parados por vacante.
+- España: 10,18 \% de paroEPA 3T 2026 y 150.765 vacantesEurostat, 2T 2026: $16,6$ parados por vacante (2T).
 - ¿Cómo puede haber a la vez gente que busca trabajo y trabajo que busca gente?
 
 ## 3A27 · 

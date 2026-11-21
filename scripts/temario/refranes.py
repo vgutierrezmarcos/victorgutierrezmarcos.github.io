@@ -47,6 +47,20 @@ def refran(texto):
     return r.group(1).strip() if r else ''
 
 
+def _raices(texto):
+    """Raíces de 4 letras de las palabras de 4 o más (arrima/arrime, maestro/maestros)."""
+    import unicodedata
+    t = unicodedata.normalize('NFD', texto.lower())
+    t = ''.join(c for c in t if unicodedata.category(c) != 'Mn')
+    return {w[:4] for w in re.findall(r'[a-zñ]{4,}', t)}
+
+
+def retoma(ref, texto):
+    """El texto recoge el refrán si aparecen al menos el 75 % de sus raíces."""
+    r = _raices(ref)
+    return bool(r) and len(r & _raices(texto)) >= 0.75 * len(r)
+
+
 def leer_tema(t):
     d = os.path.join(FUENTES, t)
     ruta = os.path.join(d, f'{t}.tex')
@@ -68,8 +82,8 @@ def leer_tema(t):
         'tema': t, 'titulo': titulo,
         'refran': refran(eng), 'enganche': limpiar(eng),
         'idea_final': limpiar(fin), 'ficha': limpiar(ficha),
-        'retoma_en_final': bool(refran(eng)) and refran(eng)[:25].lower() in limpiar(fin).lower(),
-        'en_ficha': bool(refran(eng)) and refran(eng)[:25].lower() in limpiar(ficha).lower(),
+        'retoma_en_final': retoma(refran(eng), limpiar(fin)),
+        'en_ficha': retoma(refran(eng), limpiar(ficha)),
     }
 
 

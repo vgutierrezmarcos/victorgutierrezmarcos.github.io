@@ -1,7 +1,7 @@
 # Liberalización de industrias de red: separación vertical y acceso de terceros
 
 - **Área:** sector público · **Tema de referencia:** 4.B.15 (empresa pública; política de privatizaciones) — es el que lo desarrolla. La teoría del monopolio natural y su regulación está en 3.A.17/3.A.20.
-- **Temas que lo usan:** 4.B.15 (desarrollo), 4.A.12 (resumen: transporte: Renfe-Adif, Aena-Enaire, puertos *landlord*), 4.A.28 (resumen: liberalizaciones de los noventa), 4.A.5/4.A.15 (energía, telecomunicaciones, competencia; mención prevista), 3.A.20 (mención; hecho, 22/10/2026: III.3, separación contable, jurídica, funcional y de propiedad y acceso regulado de terceros, con *Redes del Valle* y la Ley 24/2013; la regla del precio de acceso, ficha nueva `precio-acceso`, referencia 3.A.20)
+- **Temas que lo usan:** 4.B.15 (desarrollo), 4.A.12 (resumen: transporte: Renfe-Adif, Aena-Enaire, puertos *landlord*), 4.A.28 (resumen: liberalizaciones de los noventa), 4.A.5/4.A.15 (energía, telecomunicaciones, competencia; mención prevista), 3.A.20 (mención; hecho, 22/10/2026: II.4, separación contable, jurídica, funcional y de propiedad y acceso regulado de terceros, con *Redes del Valle* y la Ley 24/2013; la regla del precio de acceso, ficha nueva `precio-acceso`, referencia 3.A.20)
 - **Manuales de referencia:** Armstrong, Cowan y Vickers, *Regulatory Reform* (1994); Laffont y Tirole, *Competition in Telecommunications* (2000); Viscusi, Harrington y Vernon, *Economics of Regulation and Antitrust*; Newbery, *Privatization, Restructuring, and Regulation of Network Utilities* (1999); CNMC, informes sectoriales.
 
 ## Presentación de referencia

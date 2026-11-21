@@ -27,7 +27,7 @@ $$\mathrm{RMST}_{LK}=\frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}=\frac{w_L}{w_K-\frac{
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.20 | ¿Qué hace el regulador que no conoce los costes y regula lo que ve (capital y beneficio contable)? | desarrollo (hecho, 22/10/2026; se canta en II.1, 2′) | Todo lo de arriba: a)-e), gráfico, `eq:averch-johnson`, derivación en el anexo, CNMC y ADIF, su lugar en la escala de la potencia | — |
+| 3.A.20 | ¿Qué hace el regulador que no conoce los costes y regula lo que ve (capital y beneficio contable)? | desarrollo (hecho, 22/10/2026; se canta en III.1, 1′30″) | Todo lo de arriba: a)-e), gráfico, `eq:averch-johnson`, derivación en el anexo, CNMC y ADIF, su lugar en la escala de la potencia | — |
 | 3.A.17 | Regulación del monopolio natural | hoy desarrollo en el anexo A (hecho, 17/10/2026); **pasa a mención** con `--fase coherencia` cuando Víctor apruebe el 3.A.20 | Una viñeta: limita el beneficio sobre el capital, s > w_K; sobrecapitaliza y no reduce costes; `\vertema{3.A.20}` (texto listo en `fuentes/3A20/_trabajo/propuestas-coherencia.md`, C8). Se quitan `fig:averch-johnson` y `anexo:aj` | Programa, gráfico y derivación |
 | 4.B.15 | Empresa pública frente a regulación | resumen (hoy mención; D139 (13/10/2026)) | Sobrecapitalización como coste de la regulación por rentabilidad, con la condición `eq:averch-johnson` sin derivar | Programa y gráfico (remitir a 3.A.20) |
 

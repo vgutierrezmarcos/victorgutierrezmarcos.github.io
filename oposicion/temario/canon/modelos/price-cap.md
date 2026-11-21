@@ -22,7 +22,7 @@ $$p_{t+1}\le p_t\,(1+\mathrm{IPC}_t-X)\qquad(\texttt{\textbackslash funcionclave
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.20 | Regulación por incentivos | desarrollo (hecho, 22/10/2026; II.4, 2′) | Todo lo de arriba, con la regla en la pizarra, el DORA y el RIIO, y su lugar en la escala de la potencia | — |
+| 3.A.20 | Regulación por incentivos | desarrollo (hecho, 22/10/2026; III.4, 1′30″) | Todo lo de arriba, con la regla en la pizarra, el DORA y el RIIO, y su lugar en la escala de la potencia | — |
 | 3.A.17 | Regulación por incentivos del monopolio natural | hoy desarrollo en el anexo A (hecho, 17/10/2026); **pasa a mención** con `--fase coherencia` cuando Víctor apruebe el 3.A.20 | Una viñeta: p_{t+1} ≤ p_t(1 + IPC_t − X) (Littlechild, 1983); la empresa se queda lo que ahorra, pero hay que fijar X y vigilar la calidad; `\vertema{3.A.20}` | Incentivos, duración, casos |
 | 3.A.15 | Escuela austriaca (anexo A) | mención (hecho, 20/10/2026) | Littlechild (1983) propone el *price cap* para la British Telecom | La regla |
 | 4.A.12 | Regulación sectorial | mención | Aplicación concreta (Telefónica hasta 2012; Aena y el DORA con la X de +0,33 % que se suma) con la regla canónica | Teoría |
