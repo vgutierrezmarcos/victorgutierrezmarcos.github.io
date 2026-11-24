@@ -1586,9 +1586,11 @@
         // Funciones para renderizar imágenes de preguntas
         function renderizarImagenes(pregunta) {
             if (!pregunta.imagenes || pregunta.imagenes.length === 0) return '';
+            // ancho: tamaño en pantalla; el archivo tiene el doble de píxeles para que se vea nítido (scripts/imagenes-test.py)
             return pregunta.imagenes.map(img => `
                 <div class="pregunta-imagen-container">
                     <img src="${img.src}" alt="${img.alt || 'Imagen de la pregunta'}"
+                         ${img.ancho ? `width="${img.ancho}"` : ''}
                          class="pregunta-imagen" loading="lazy"
                          onclick="abrirLightbox(this.src, '${(img.alt || '').replace(/'/g, "\\'")}')">
                 </div>

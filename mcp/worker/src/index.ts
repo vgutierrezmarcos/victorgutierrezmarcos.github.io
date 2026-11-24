@@ -8,13 +8,16 @@
 //   IA → GET /authorize (consentimiento) → POST /authorize (acepta) → login.html de la
 //   web (Google) → POST /callback/sesion (tokens de Firebase) → GET /callback → de vuelta a la IA.
 
+import { atenderDecisiones } from './decisiones';
 import { OAuthProvider, AuthorizationError, CimdFetchError, OAuthError, type OAuthHelpers, type OAuthProviderOptions, type OAuthResourceContext } from '@cloudflare/workers-oauth-provider';
 import { cifrar, descifrar, sha256 } from './cifrado';
+import { type EntornoConexion, anotarConexion, iaDe, olvidarConexion } from './conexion';
 import { Contenido } from './contenido';
 import { type PreguntaBanco, bancoPropioDe, temasDePreguntas } from './datos';
 import { datosDelIdToken, renovarIdToken } from './firebase';
 import { Firestore, type Json } from './firestore';
 import { htmlATexto, leerApuntesDrive } from './drive';
+import type { BancoPaises, MediosPrensa } from './practica';
 import { type Banco, type Contexto, ErrorSesion, type IndiceFuentes, type Oposicion, type PaqueteTextos } from './herramientas';
 import { responderMcp } from './mcp';
 import { paginaConsentimiento, paginaError, paginaMudanza, paginaPortada, traducirErrorOAuth } from './paginas';
@@ -35,6 +38,10 @@ export interface Env {
   URL_SKILL: string;
   /** Índice de fuentes por tema (scripts/fuentes-temas.py). */
   URL_FUENTES: string;
+  /** Banco de países de los dictámenes de práctica (scripts/paises-dictamen.py). */
+  URL_PAISES: string;
+  /** Medios de prensa por idioma con sus fuentes RSS (scripts/prensa.py). */
+  URL_PRENSA: string;
   ORIGENES_LOGIN: string;
   CLAVE_CIFRADO: string;
   /** Contadores anónimos de uso (Workers Analytics Engine): herramienta, IA, oposición, resultado y duración. Sin uid ni contenido. */
@@ -84,6 +91,7 @@ async function idTokenDe(env: Env, props: Props): Promise<string> {
 }
 
 let fuentesEnMemoria: { url: string; indice: IndiceFuentes } | null = null;
+let paisesEnMemoria: { url: string; hasta: number; banco: BancoPaises } | null = null;
 let bancoEnMemoria: { url: string; banco: Banco } | null = null;
 let bancoPropioEnMemoria: { hasta: number; preguntas: Map<number, PreguntaBanco> } | null = null;
 
@@ -106,12 +114,28 @@ async function bancoDePreguntas(env: Env): Promise<Banco> {
 }
 
 function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<unknown>) => void): Contexto {
+  const conexion = async (): Promise<EntornoConexion> => ({
+    marcas: env.SESIONES,
+    huella: await sha256(props.uid),
+    cuenta: async () => new Firestore(env.FIREBASE_PROJECT, await idTokenDe(env, props), `users/${props.uid}`),
+  });
   return {
     medir(d) {
+      // La marca de conexión de la cuenta (qué IA y cuándo), para la burbuja de la app: una vez al día y sin retrasar la respuesta.
+      if (d.ok && d.herramienta !== 'desconectar') {
+        const anotar = async () => anotarConexion(await conexion(), iaDe(clientId ? await env.OAUTH_PROVIDER.lookupClient(clientId).catch(() => null) : null), new Date().toISOString());
+        espera?.(anotar().catch(() => undefined));
+      }
       if (!env.USO) return;
       const apuntar = async () => env.USO!.writeDataPoint({ indexes: [d.herramienta], blobs: [d.herramienta, await this.cliente(), d.oposicion, d.ok ? 'ok' : 'error'], doubles: [d.ms] });
       const p = apuntar().catch(() => undefined);
       espera?.(p);
+    },
+    senal(d) {
+      if (!env.USO) return;
+      // Mismo conjunto que el uso, con el índice «senal»: material y tipo de duda, nada del usuario ni de lo que escribió.
+      const apuntar = async () => env.USO!.writeDataPoint({ indexes: ['senal'], blobs: ['senal', await this.cliente(), d.oposicion, d.recurso, d.tema, d.apartado.slice(0, 120), d.tipo], doubles: [1] });
+      espera?.(apuntar().catch(() => undefined));
     },
     uid: props.uid,
     email: props.email,
@@ -160,6 +184,33 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
       fuentesEnMemoria = { url: env.URL_FUENTES, indice };
       return indice;
     },
+    async paises() {
+      // Casi 1 MB: en memoria una hora mientras viva el aislado (cambia una vez por semana como mucho).
+      if (paisesEnMemoria?.url === env.URL_PAISES && paisesEnMemoria.hasta > Date.now()) return paisesEnMemoria.banco;
+      const r = await fetch(env.URL_PAISES, { cf: { cacheTtl: 3_600, cacheEverything: true } });
+      if (!r.ok) throw new Error(`no se ha podido leer el banco de países (${r.status})`);
+      const banco = (await r.json()) as BancoPaises;
+      paisesEnMemoria = { url: env.URL_PAISES, hasta: Date.now() + 3_600_000, banco };
+      return banco;
+    },
+    async prensa() {
+      const r = await fetch(env.URL_PRENSA, { cf: { cacheTtl: 3_600, cacheEverything: true } });
+      if (!r.ok) throw new Error(`no se ha podido leer la lista de medios (${r.status})`);
+      return (await r.json()) as MediosPrensa;
+    },
+    async rss(url: string) {
+      // Solo las fuentes de la lista de medios (lo comprueba la herramienta); media hora en la caché de Cloudflare.
+      try {
+        const r = await fetch(url, {
+          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; victorgutierrezmarcos.es prensa)', Accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*' },
+          cf: { cacheTtl: 1_800, cacheEverything: true },
+          signal: AbortSignal.timeout(8_000),
+        });
+        return r.ok ? await r.text() : null;
+      } catch {
+        return null;
+      }
+    },
     async skill(ruta: string) {
       const r = await fetch(env.URL_SKILL + ruta, { cf: { cacheTtl: 600, cacheEverything: true } });
       return r.ok ? r.text() : null;
@@ -180,6 +231,8 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
       return sha256(`${env.CLAVE_CIFRADO}:${texto}`);
     },
     async desconectar() {
+      // Antes de soltar la sesión: quitar la marca de la cuenta necesita el token del opositor.
+      await olvidarConexion(await conexion()).catch(() => undefined);
       await env.SESIONES.delete(`id:${await sha256(props.uid)}`);
       let cursor: string | undefined;
       do {
@@ -239,6 +292,9 @@ const defaultHandler = {
       if (!r.ok) return new Response('Sin icono', { status: 404 });
       return new Response(r.body, { headers: { 'Content-Type': svg ? 'image/svg+xml' : 'image/png', 'Cache-Control': 'public, max-age=86400' } });
     }
+    // Los botones del correo de sugerencias (informe del día y decisiones del autor): enlaces firmados, sin sesión.
+    const decision = await atenderDecisiones(request, env.SESIONES, env.CLAVE_CIFRADO);
+    if (decision) return decision;
     const oauth = env.OAUTH_PROVIDER;
     // Dirección antigua (…workers.dev): la autorización empezaría aquí y acabaría en el dominio nuevo, donde no está
     // la cookie que ata la sesión al navegador («not started in this browser»). Se explica el cambio en vez de fallar al final.

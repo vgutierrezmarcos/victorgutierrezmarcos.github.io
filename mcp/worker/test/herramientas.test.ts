@@ -6,6 +6,7 @@ import { Contenido } from '../src/contenido';
 import { bancoPropioDe, temasDePreguntas } from '../src/datos';
 import type { AlmacenDatos, Consulta, Json } from '../src/firestore';
 import { type Contexto, crearServidor, ErrorSesion } from '../src/herramientas';
+import { bancoPrueba, mediosPrueba } from './datos-practica';
 
 type Obj = { [k: string]: Json };
 
@@ -134,6 +135,14 @@ describe('herramientas', () => {
   explicaciones: async () => ({ '1': { clave: 'Porque sí.' } }),
   proceso: async () => ({ actualizado: 'hoy', tcee: { procesos: [{ convocatoria: '2025', url: 'https://ministerio', documentos: [{ seccion: 'Tercer ejercicio', titulo: 'Convocatoria', url: 'https://doc', desde: '2026-10-07' }, { seccion: 'Convocatoria', titulo: 'BOE', url: 'https://boe', desde: null }] }] } }),
       sello: async (t) => `sello-${t.length}-abcdefgh`,
+      paises: async () => bancoPrueba,
+      prensa: async () => mediosPrueba,
+      rss: async (url) =>
+        url === 'https://e/rss'
+          ? `<rss><channel><item><title>Tariff war</title><link>https://e/1</link><pubDate>${new Date().toUTCString()}</pubDate></item></channel></rss>`
+          : url === 'https://b/rss'
+            ? `<rss><channel><item><title>Bank of England holds rates</title><link>https://b/1</link><pubDate>${new Date().toUTCString()}</pubDate></item><item><title>Football</title><link>https://b/2</link></item></channel></rss>`
+            : null,
       desconectar: async () => {
         desconectado = true;
       },
@@ -143,7 +152,7 @@ describe('herramientas', () => {
   it('lista las herramientas del diseño', async () => {
     const c = await cliente(ctx);
     const nombres = (await c.listTools()).tools.map((t) => t.name).sort();
-    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'apuntar_test', 'reportar_pregunta', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes'].sort());
+    expect(nombres).toEqual(['borrar_datos_oposicion', 'desconectar', 'guardar_informe_cante', 'leer_skill', 'leer_metodo', 'preparar_clase', 'agendar_clase', 'fuentes_tema', 'buscar_temario', 'leer_fuente', 'leer_cantes', 'leer_canon', 'leer_cronograma', 'leer_ficha', 'leer_guia_dictamen', 'leer_progreso', 'leer_resultados_test', 'leer_tema', 'listar_temas_revisados', 'proponer_cronograma', 'empezar', 'leer_informes_cante', 'preguntas_test', 'test_interactivo', 'apuntar_test', 'reportar_pregunta', 'sugerir_mejora', 'mis_sugerencias', 'figura_test', 'leer_proceso', 'anotar_tema', 'leer_alumnos', 'leer_alumno', 'responder_reserva', 'guardar_nota_alumno', 'guardar_deberes', 'preparar_dictamen', 'guardar_dictamen', 'leer_dictamenes', 'articulos_idioma', 'guardar_suscripciones'].sort());
   });
 
   it('leer_skill carga SKILL.md con la nota del conector, los ficheros citados y rechaza rutas raras', async () => {
@@ -388,7 +397,7 @@ describe('herramientas', () => {
   it('las vistas interactivas: recursos ui:// con su página, y las herramientas que las declaran', async () => {
     const c = await cliente(ctx);
     const recursos = (await c.listResources()).resources;
-    expect(recursos.map((r) => r.uri).sort()).toEqual(['ui://economia/borrado.html', 'ui://economia/clase.html', 'ui://economia/cronograma.html', 'ui://economia/informe.html', 'ui://economia/test.html']);
+    expect(recursos.map((r) => r.uri).sort()).toEqual(['ui://economia/borrado.html', 'ui://economia/clase.html', 'ui://economia/cronograma.html', 'ui://economia/informe.html', 'ui://economia/sugerencia.html', 'ui://economia/test.html']);
     expect(recursos.every((r) => r.mimeType === 'text/html;profile=mcp-app')).toBe(true);
     const pagina = (await c.readResource({ uri: 'ui://economia/test.html' })).contents[0] as { text: string; mimeType: string; _meta?: { ui?: { csp?: { resourceDomains?: string[] } } } };
     expect(pagina.mimeType).toBe('text/html;profile=mcp-app');
@@ -403,6 +412,8 @@ describe('herramientas', () => {
       guardar_informe_cante: 'ui://economia/informe.html',
       agendar_clase: 'ui://economia/clase.html',
       borrar_datos_oposicion: 'ui://economia/borrado.html',
+      reportar_pregunta: 'ui://economia/sugerencia.html',
+      sugerir_mejora: 'ui://economia/sugerencia.html',
     });
     // La clave antigua («ui/resourceUri») también, para los clientes que aún la leen.
     expect(conVista.every((t) => (t._meta as Record<string, unknown>)['ui/resourceUri'] === (t._meta as { ui: { resourceUri: string } }).ui.resourceUri)).toBe(true);
@@ -522,6 +533,57 @@ describe('herramientas', () => {
     expect((await c.callTool({ name: 'figura_test', arguments: { url: 'banco:../indice.json' } })).isError).toBe(true);
   });
 
+  it('sugerir_mejora: la vista previa no escribe y deja la señal anónima; el envío va a los datos del usuario, sin correo', async () => {
+    const senales: Obj[] = [];
+    const c = await cliente({ ...ctx, senal: (d) => senales.push(d) });
+    const args = { tema: '3a8', apartado: 'I. Axiomas', tipo: 'no_explica', cita: 'Completitud.', propuesta: 'No dice qué pasa sin transitividad: añadir el ejemplo del ciclo.', duda: '¿Qué pasa si no hay transitividad?' };
+    const p = json(await c.callTool({ name: 'sugerir_mejora', arguments: { ...args, vistaPrevia: true } }));
+    expect(p).toMatchObject({ enviada: false, vistaPrevia: true, tema: '3.A.8', apartado: 'I. Axiomas (11′)', version: 'abc', titulo: 'Teoría de la demanda del consumidor (I)' });
+    expect(db.escrituras).toHaveLength(0);
+    expect(senales).toEqual([{ oposicion: 'tcee', recurso: 'tema', tema: '3.A.8', apartado: 'I. Axiomas (11′)', tipo: 'no_explica' }]);
+    // Lo que hace el botón de la vista (o la IA cuando el usuario contesta «sí»): la misma llamada sin vistaPrevia.
+    const r = json(await c.callTool({ name: 'sugerir_mejora', arguments: args }));
+    expect(r).toMatchObject({ enviada: true, tema: '3.A.8' });
+    const doc = db.docs.get(`sugerencias/${r.id}`)!;
+    expect(Object.keys(doc).sort()).toEqual(['apartado', 'cita', 'duda', 'estado', 'oposicion', 'origen', 'propuesta', 'recurso', 'tema', 'tipo', 'version']);
+    expect(doc).toMatchObject({ estado: 'recibida', origen: 'conector (Le Chat)', recurso: 'tema' });
+    expect(JSON.stringify(doc)).not.toContain('u1');
+    expect(senales).toHaveLength(1);
+    // La misma dos veces no se duplica; un tema que no existe o una ficha que no hay, error.
+    expect(json(await c.callTool({ name: 'sugerir_mejora', arguments: args }))).toMatchObject({ enviada: true, yaEstaba: true });
+    expect((await c.callTool({ name: 'sugerir_mejora', arguments: { ...args, tema: '9.Z.9' } })).isError).toBe(true);
+    expect((await c.callTool({ name: 'sugerir_mejora', arguments: { ...args, tema: '3.B.26', recurso: 'ficha' } })).isError).toBe(true);
+    expect(json(await c.callTool({ name: 'sugerir_mejora', arguments: { ...args, recurso: 'ficha', vistaPrevia: true } }))).toMatchObject({ recurso: 'ficha', apartado: '' });
+    // El tope diario.
+    const hoy = new Date().toISOString();
+    for (let k = 0; k < 20; k++) db.docs.set(`sugerencias/x${k}`, { tema: '3.A.1', recurso: 'tema', propuesta: `p${k}`, estado: 'recibida', creado: hoy });
+    expect((await c.callTool({ name: 'sugerir_mejora', arguments: { ...args, propuesta: 'Otra distinta, la que pasa del tope.' } })).isError).toBe(true);
+  });
+
+  it('mis_sugerencias y empezar cuentan las resueltas sin ver, y se marcan como vistas', async () => {
+    const c = await cliente(ctx);
+    db.docs.set('sugerencias/s1', { recurso: 'tema', tema: '3.A.8', apartado: '', tipo: 'error', propuesta: 'Cambiar el signo.', estado: 'aceptada', respuesta: 'Corregido.', creado: '2026-11-01T10:00:00Z' });
+    db.docs.set('sugerencias/s2', { recurso: 'ficha', tema: '3.A.8', apartado: '', tipo: 'errata', propuesta: 'Sobra una coma.', estado: 'recibida', creado: '2026-11-05T10:00:00Z' });
+    const e = json(await c.callTool({ name: 'empezar', arguments: {} })) as { sugerenciasResueltas: { cuantas: number; lista: Obj[] } };
+    expect(e.sugerenciasResueltas.cuantas).toBe(1);
+    expect(e.sugerenciasResueltas.lista[0]).toMatchObject({ id: 's1', estado: 'aceptada', respuesta: 'Corregido.' });
+    const m = json(await c.callTool({ name: 'mis_sugerencias', arguments: { marcarVistas: true } })) as { sugerencias: Obj[] };
+    expect(m).toMatchObject({ enviadas: 2, materialesMejorados: 1, resueltasSinVer: 1, marcadasComoVistas: 1 });
+    expect(m.sugerencias.map((s) => s.id)).toEqual(['s2', 's1']);
+    expect(db.docs.get('sugerencias/s1')).toMatchObject({ vista: true, estado: 'aceptada' });
+    expect(json(await c.callTool({ name: 'empezar', arguments: {} })).sugerenciasResueltas).toBeUndefined();
+  });
+
+  it('reportar_pregunta con vistaPrevia enseña el reporte y no lo envía', async () => {
+    const red = new FirestoreSimulado();
+    const senales: Obj[] = [];
+    const c = await cliente({ ...ctx, almacenEn: async () => red, senal: (d) => senales.push(d) });
+    const p = json(await c.callTool({ name: 'reportar_pregunta', arguments: { pregunta: 3, motivo: 'explicacion', comentario: 'La explicación confunde renta y sustitución.', vistaPrevia: true } }));
+    expect(p).toMatchObject({ reportado: false, vistaPrevia: true, motivo: 'explicacion', pregunta: { id: 3, cabecera: '3.A.8, 3.A.9 · 2025-marzo-A, pregunta 4' } });
+    expect(red.docs.size).toBe(0);
+    expect(senales.map((s) => s.tema)).toEqual(['3.A.8', '3.A.9']);
+  });
+
   it('con vistaPrevia, proponer_cronograma y guardar_informe_cante validan y enseñan, pero no escriben', async () => {
     const c = await cliente(ctx);
     const args = { ejercicio: 3, diaCante: 6, semanas: [{ cante: '2026-11-07', temas: ['3.A.8'] }, { cante: '2026-11-21', temas: ['3.A.9'] }] };
@@ -604,5 +666,50 @@ describe('herramientas', () => {
     const r = await c.callTool({ name: 'leer_progreso', arguments: {} });
     expect(r.isError).toBe(true);
     expect(texto(r)).toContain('vuelva a conectar');
+  });
+  it('preparar_dictamen da el cuadernillo con el país aparte y guardar/leer_dictamenes no lo enseñan sin revelar', async () => {
+    const c = await cliente(ctx);
+    const p = json(await c.callTool({ name: 'preparar_dictamen', arguments: { tipo: 'en_desarrollo' } }));
+    expect((p.oculto as Obj).pais).toBe('Kenia');
+    expect(typeof p.nombreFicticio).toBe('string');
+    expect(String(p.siguiente)).toContain('poner_dictamen');
+    const fuera = json(await c.callTool({ name: 'preparar_dictamen', arguments: { pais: 'Vanuatu' } }));
+    expect(fuera.fueraDelBanco).toBe(true);
+    expect(String(fuera.siguiente)).toContain('fuentesOficiales');
+
+    const sinCuadernillo = await c.callTool({ name: 'guardar_dictamen', arguments: { pais: 'Kenia' } });
+    expect(sinCuadernillo.isError).toBe(true);
+    const g = json(await c.callTool({ name: 'guardar_dictamen', arguments: { nombreFicticio: 'Velmora', pais: 'Kenia, 2025', configuracion: 'en desarrollo', cuadernillo: '# Cuadernillo' } }));
+    const id = String(g.id);
+    expect(db.docs.get(`dictamenes/${id}`)).toMatchObject({ pais: 'Kenia, 2025', cuadernillo: '# Cuadernillo', ia: 'Le Chat' });
+    await c.callTool({ name: 'guardar_dictamen', arguments: { id, nota: 5.5, informe: 'Bien' } });
+    expect(db.docs.get(`dictamenes/${id}`)).toMatchObject({ nota: 5.5, informe: 'Bien', cuadernillo: '# Cuadernillo' });
+
+    const lista = json(await c.callTool({ name: 'leer_dictamenes', arguments: {} }));
+    expect(lista).toMatchObject({ total: 1, notaMedia: 5.5 });
+    expect(JSON.stringify(lista)).not.toContain('Kenia');
+    expect(texto(await c.callTool({ name: 'leer_dictamenes', arguments: { id } }))).not.toContain('Kenia');
+    expect(texto(await c.callTool({ name: 'leer_dictamenes', arguments: { id, revelar: true } }))).toContain('País real: Kenia, 2025');
+    const otro = await c.callTool({ name: 'guardar_dictamen', arguments: { id: 'noexiste', nota: 3 } });
+    expect(otro.isError).toBe(true);
+  });
+
+  it('articulos_idioma filtra lo económico y guardar_suscripciones marca los medios del usuario', async () => {
+    const c = await cliente(ctx);
+    const r = json(await c.callTool({ name: 'articulos_idioma', arguments: { idioma: 'inglés' } }));
+    expect((r.articulos as Obj[]).map((a) => a.titulo)).toEqual(expect.arrayContaining(['Tariff war', 'Bank of England holds rates']));
+    expect((r.articulos as Obj[]).map((a) => a.titulo)).not.toContain('Football');
+    const libres = json(await c.callTool({ name: 'articulos_idioma', arguments: { idioma: 'en', acceso: 'libre' } }));
+    expect((libres.articulos as Obj[]).every((a) => a.acceso === 'libre')).toBe(true);
+    const malo = await c.callTool({ name: 'articulos_idioma', arguments: { idioma: 'klingon' } });
+    expect(malo.isError).toBe(true);
+
+    const s = json(await c.callTool({ name: 'guardar_suscripciones', arguments: { medios: ['The Economist', 'El Inventado'] } }));
+    expect(s).toMatchObject({ guardado: true, suscripciones: ['The Economist'], noEncontrados: ['El Inventado'] });
+    expect(db.docs.get('preferencias/prensa')).toMatchObject({ suscripciones: ['eco'] });
+    const mias = json(await c.callTool({ name: 'articulos_idioma', arguments: { idioma: 'en', acceso: 'mis_suscripciones' } }));
+    expect((mias.articulos as Obj[]).find((a) => a.medioId === 'eco')).toMatchObject({ tuSuscripcion: true });
+    const lista = json(await c.callTool({ name: 'articulos_idioma', arguments: { idioma: 'en', soloMedios: true } }));
+    expect((lista.medios as Obj[]).map((m) => m.id)).toEqual(['eco', 'bbc']);
   });
 });

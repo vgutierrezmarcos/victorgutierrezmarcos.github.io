@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tcee_app/app.dart';
+import 'package:tcee_app/core/ia.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/features/cantar/pizarra_page.dart';
@@ -91,6 +92,16 @@ void main() {
     // ------------------------------------------------------------------ Hoy
     await pestana('Hoy');
     await captura('hoy');
+    // La burbuja de la IA (Claude, ya conectada) con los accesos de Hoy.
+    final ia = ProviderScope.containerOf(tester.element(find.byType(MaterialApp))).read(iaProvider.notifier);
+    await ia.elegir(Ia.claude);
+    await ia.conectadaAMano(true);
+    await tester.pumpAndSettle();
+    await tocar(find.byTooltip('Tu IA: Claude'));
+    await captura('ia-hoy');
+    await tester.tapAt(const Offset(540, 600)); // cierra el menú
+    await ia.mostrarBurbuja(false); // el resto de capturas, como estaban
+    await tester.pumpAndSettle();
 
     // ------------------------------------------------------------- Estudiar
     Future<void> estudiar(String nombre) async {
@@ -308,6 +319,14 @@ void main() {
     sinAvisoDePdfx();
     await esperarPaginas();
     await captura('tema-revisado');
+    // La burbuja con los accesos del tema.
+    await ia.mostrarBurbuja(true);
+    await tester.pumpAndSettle();
+    await tocar(find.byTooltip('Tu IA: Claude'));
+    await captura('ia-tema');
+    await tester.tapAt(const Offset(540, 600)); // cierra el menú
+    await ia.mostrarBurbuja(false); // el resto de capturas, como estaban
+    await tester.pumpAndSettle();
     // Anotar: fosforito amarillo y verde, y bolígrafo rojo, con el dedo.
     await tocar(find.byTooltip('Pintar y subrayar'));
     await esperarPaginas();
@@ -490,6 +509,16 @@ void main() {
     await buscarEn<AjustesPreparadorPage>(find.text('Mis clases en Google Calendar'));
     await captura('calendario');
     await r.cerrar(find.byType(AjustesPreparadorPage));
+
+    // Tu IA: la elección de la IA en Más → EconomIA.
+    await ia.mostrarBurbuja(true);
+    await pestana('Más');
+    await buscar(find.text('EconomIA'));
+    await tocar(find.text('EconomIA'));
+    await buscar(find.text('Tu IA'));
+    await captura('ia-economia');
+    await atras();
+    await ia.mostrarBurbuja(false);
 
     // Una pregunta del simulador (pantalla completa: se deja para el final).
     await estudiar('Test');

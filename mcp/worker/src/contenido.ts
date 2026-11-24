@@ -29,7 +29,8 @@ export interface AlmacenContenido {
   get(clave: string, tipo: 'text'): Promise<string | null>;
 }
 
-export const documentosDictamen = ['guia-1D01', 'resumen-1D01', 'guion-1D01', 'examen-espana', 'solucion-espana'] as const;
+// El examen de ejemplo de España y su solución no se publican nunca (Víctor, 24/11/2026): ni aquí ni en el KV.
+export const documentosDictamen = ['guia-1D01', 'resumen-1D01', 'guion-1D01'] as const;
 export const documentosCanon = ['notacion', 'modelos-indice'] as const;
 
 /** «3.A.8», «3A08», «3a8», «3.a.08» → «3A08»; null si no es un código. */

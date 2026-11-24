@@ -37,13 +37,13 @@ LEEME = """# {titulo}
 
 Carpeta creada por la skill «EconomIA» el {fecha}. Los códigos de tema ({ejemplo}) van en los nombres de carpeta y de fichero: así la app y Claude encuentran cada cosa.
 
-- `0_organizacion/`: programa oficial, convocatoria, Excel de estrategia, la exportación de la app para Claude (`oposicion_{op}_para_claude.json`) y el cronograma acordado (`cronograma.txt`).
+- `0_organizacion/`: programa oficial, convocatoria, Excel de estrategia, la exportación de la app para la IA (`oposicion_{op}_para_ia.json`) y el cronograma acordado (`cronograma.txt`).
 - `1_primer_ejercicio/1_test/`: exámenes oficiales de test y plantillas; guarda aquí tus simulacros.
 - `1_primer_ejercicio/2_dictamen/`: esquema del dictamen y exámenes oficiales; en `simulacros/`, tus dictámenes (foto o PDF) con sus informes.
 - `3_tercer_ejercicio/A/3A08/` (y así cada tema): el tema de la web en PDF y Word, tus apuntes y, en `cantes/`, las transcripciones de la app y los informes de Claude (`2026-11-03.txt`, `2026-11-03-informe.pdf`).
 - Los materiales exclusivos (temas revisados, fichas de repaso, guía del dictamen 1D01) no se descargan: están en la app y dentro de la skill.
 
-Pídele a Claude, desde esta carpeta: «corrige el cante de hoy del 3A08 y guarda el informe en su carpeta», «replanifica con 0_organizacion/oposicion_{op}_para_claude.json» o «compara mis apuntes del 3A08 con la ficha del tema».
+Pídele a Claude, desde esta carpeta: «corrige el cante de hoy del 3A08 y guarda el informe en su carpeta», «replanifica con 0_organizacion/oposicion_{op}_para_ia.json» o «compara mis apuntes del 3A08 con la ficha del tema».
 """
 
 

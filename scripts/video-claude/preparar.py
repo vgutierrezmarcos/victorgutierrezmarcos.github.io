@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Prepara los recursos del vídeo «Prepara con Claude» (HyperFrames) en
+Prepara los recursos del vídeo de EconomIA (HyperFrames) en
 scripts/video-claude/assets/: fuentes (Pagella, Latin Modern para DCE y Source
 Sans 3), GSAP, el asterisco del logo de Claude (solo el símbolo: el nombre va
 en la letra del vídeo), el icono de la app, las capturas de la app y de
@@ -42,7 +42,7 @@ VISTAS = ['test-a', 'test-b', 'cronograma-a', 'cronograma-b', 'informe-a', 'info
 # Capturas de claude.ai en el móvil (cdp.mjs con CDP_MOVIL=1, en la carpeta de grabación): chat con el cante adjunto y respuesta
 MOVIL = {'claude-movil-1': 'movil-2.png', 'claude-movil-2': 'movil-4.png'}
 # Capturas de la app que usa la composición
-PANTALLAS = ['cantes-cantar', 'cantes-diario', 'agenda-reserva-pedida', 'cronograma-traer', 'cronograma-semanas', 'hoy', 'mas',
+PANTALLAS = ['ia-hoy', 'ia-tema', 'cantes-cantar', 'cantes-diario', 'agenda-reserva-pedida', 'cronograma-traer', 'cronograma-semanas', 'hoy', 'mas',
              'dce-cantar', 'dce-hoy', 'dce-temario', 'tema-revisado', 'test', 'organizacion', 'esquema', 'temario']
 ANCHO_MOVIL = 760
 

@@ -194,7 +194,7 @@ def mostrar():
     subprocess.run(['node', os.path.join(RAIZ, 'build-search-index.js')], check=True, cwd=RAIZ)
     subprocess.run([sys.executable, os.path.join(RAIZ, 'scripts', 'exclusivos.py')], check=True, cwd=RAIZ)
     print(f'Visible ({hoy}): novedad con fecha de hoy, sitemap, llms.txt, búsqueda y enlaces restaurados.')
-    print('Recuerda: quitar «hidden» del vídeo cuando exista la clave claude-prepara, y del apartado #conector cuando esté desplegado.')
+    print('Recuerda: quitar «hidden» del vídeo cuando exista la clave economia, y del apartado #conector cuando esté desplegado.')
 
 
 if __name__ == '__main__':

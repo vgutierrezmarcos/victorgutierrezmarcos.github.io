@@ -42,9 +42,10 @@ import 'visor_tema.dart';
 /// Si el tema está en el temario revisado (exclusivo de la app, ver
 /// `data/models/revisado.dart`), con sesión se abre la versión revisada (PDF
 /// con anotaciones propias, HTML, ficha de repaso y Word) y la anterior queda
-/// a un toque; sin sesión, solo el aviso para entrar con Google.
+/// a un toque; sin sesión, el aviso «Inicia sesión para ver el tema nuevo» con
+/// «Seguir con el tema antiguo» si lo había (Víctor, 24 nov. 2026).
 class TemaPage extends ConsumerStatefulWidget {
-  const TemaPage({super.key, required this.tema, this.esRecurso = false, this.nombreDescarga, this.reemplazaDescarga, this.paginaInicial});
+  const TemaPage({super.key, required this.tema, this.esRecurso = false, this.nombreDescarga, this.reemplazaDescarga, this.paginaInicial, this.soloLectura = false});
   final Tema tema;
   /// Página del PDF en la que abrir (el buscador de epígrafes).
   final int? paginaInicial;
@@ -53,6 +54,9 @@ class TemaPage extends ConsumerStatefulWidget {
   /// vale el de la URL: la ficha de repaso revisada.
   final String? nombreDescarga;
   final String? reemplazaDescarga;
+  /// Material exclusivo abierto como recurso (la ficha de repaso de un tema
+  /// exclusivo): se lee dentro de la app, sin compartir ni descargar anotado.
+  final bool soloLectura;
   @override
   ConsumerState<TemaPage> createState() => _TemaPageState();
 }
@@ -198,6 +202,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
           esRecurso: true,
           nombreDescarga: rev.nombreLocal(clase),
           reemplazaDescarga: rev.prefijoLocal(clase),
+          soloLectura: rev.exclusivo,
         ),
       ));
       return;
@@ -235,6 +240,21 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     _claveCargada = null;
     _pdf?.close();
     super.dispose();
+  }
+
+  /// Entrar con Google desde el aviso o la barra del tema revisado: al
+  /// entrar se abre la versión revisada (aunque estuviera en la antigua).
+  Future<void> _entrarConGoogle() async {
+    final err = await ref.read(sesionProvider.notifier).iniciarConGoogle();
+    if (!mounted) return;
+    if (err != null) {
+      ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('No se pudo iniciar sesión: $err')));
+      return;
+    }
+    setState(() {
+      _pideAnterior = false;
+      _verHtml = false;
+    });
   }
 
   void _alternarAnotar(FuentePizarra? anotaciones) {
@@ -322,8 +342,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final TemaRevisado? rv = eleccion.esRevisada ? rev : null;
     final revisada = rv != null;
     // Exclusivo (uso personal): se lee dentro de la app; sin compartir, sin Word y sin descargar anotado.
-    final exclusivo = rv?.exclusivo ?? false;
-    // Revisado y sin sesión: ni la versión anterior; solo el aviso para entrar.
+    final exclusivo = (rv?.exclusivo ?? false) || widget.soloLectura;
+    // Revisado y sin sesión: el aviso para entrar (y, si la había, seguir con la anterior).
     final bloqueado = eleccion.version == VersionTema.sinSesion;
     // Con sesión, se espera al manifiesto antes de abrir nada (para no bajar
     // la versión anterior y luego la revisada).
@@ -458,6 +478,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               _pideAnterior = !_pideAnterior;
               _verHtml = false;
             }),
+            entrar: _entrarConGoogle,
             abrir: (c) => _abrirFichero(rev, c),
             sugerir: sugerir,
           ),
@@ -502,7 +523,12 @@ class _TemaPageState extends ConsumerState<TemaPage> {
           child: !listo
               ? const Cargando()
               : bloqueado
-              ? _AvisoSinSesion(exclusivo: rev?.exclusivo ?? false)
+              ? _AvisoSinSesion(
+                  exclusivo: rev?.exclusivo ?? false,
+                  guia: rev?.esDictamen ?? false,
+                  entrar: _entrarConGoogle,
+                  seguirConAnterior: eleccion.hayAnterior ? () => setState(() => _pideAnterior = true) : null,
+                )
               : verHtml
               ? (_errorHtml != null
                   ? ErrorVista(error: _errorHtml!, reintentar: () => setState(() { _errorHtml = null; _shaHtml = null; }))
@@ -619,9 +645,11 @@ class _FilaMateriales extends ConsumerWidget {
 
 /// Distintivo del temario revisado sobre el tema: con sesión, «Revisado ·
 /// exclusivo de la app», la ficha de repaso, el Word y el paso a la versión
-/// anterior (y vuelta). Sin sesión no se pinta: lo dice [_AvisoSinSesion].
+/// anterior (y vuelta). Sin sesión, viendo la antigua, el botón para entrar y
+/// ver la nueva. Sin sesión y sin elegir, no se pinta: lo dice [_AvisoSinSesion].
 class _BarraRevisado extends StatelessWidget {
-  const _BarraRevisado({required this.revisado, required this.eleccion, required this.cambiar, required this.abrir, this.sugerir});
+  const _BarraRevisado({required this.revisado, required this.eleccion, required this.cambiar, required this.entrar, required this.abrir, this.sugerir});
+  final VoidCallback entrar;
   final VoidCallback? sugerir;
   final TemaRevisado revisado;
   final EleccionVersion eleccion;
@@ -661,8 +689,10 @@ class _BarraRevisado extends StatelessWidget {
       contenido = Row(children: [
         Icon(Icons.history, color: context.colores.textoClaro),
         const SizedBox(width: 10),
-        Expanded(child: Text('Estás viendo la versión anterior del tema.', style: textoPequeno)),
-        TextButton(style: compacto, onPressed: cambiar, child: const Text('Ver versión revisada')),
+        Expanded(child: Text(eleccion.invitarASesion ? (revisado.esDictamen ? 'Estás viendo la guía antigua.' : 'Estás viendo el tema antiguo.') : 'Estás viendo la versión anterior del tema.', style: textoPequeno)),
+        eleccion.invitarASesion
+            ? TextButton.icon(style: compacto, onPressed: entrar, icon: const Icon(Icons.login, size: 18), label: Text(revisado.esDictamen ? 'Inicia sesión para ver la guía nueva' : 'Inicia sesión para ver el tema nuevo'))
+            : TextButton(style: compacto, onPressed: cambiar, child: const Text('Ver versión revisada')),
       ]);
     }
     return SizedBox(
@@ -677,12 +707,18 @@ class _BarraRevisado extends StatelessWidget {
   static String _fecha(DateTime d) => '${d.day.toString().padLeft(2, '0')}/${d.month.toString().padLeft(2, '0')}/${d.year}';
 }
 
-/// Tema revisado sin sesión: en vez del PDF antiguo, solo este aviso con el
-/// botón de Google; al entrar, la página abre la versión revisada sola.
+/// Tema revisado sin sesión: «Inicia sesión para ver el tema nuevo» con el
+/// botón de Google (al entrar, la página abre la versión revisada sola) y, si
+/// el tema tenía versión anterior, «Seguir con el tema antiguo».
 class _AvisoSinSesion extends ConsumerWidget {
-  const _AvisoSinSesion({required this.exclusivo});
+  const _AvisoSinSesion({required this.exclusivo, required this.guia, required this.entrar, this.seguirConAnterior});
 
   final bool exclusivo;
+  /// La guía del dictamen (los textos hablan de «la guía»).
+  final bool guia;
+  final Future<void> Function() entrar;
+  /// null si el tema no tenía versión anterior.
+  final VoidCallback? seguirConAnterior;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -697,18 +733,23 @@ class _AvisoSinSesion extends ConsumerWidget {
               Icon(Icons.verified_outlined, size: 36, color: context.esquema.primary),
               const SizedBox(height: Espacio.e2),
               if (exclusivo) ...[Etiqueta('Exclusivo · uso personal'), const SizedBox(height: Espacio.e2)],
-              Text('Para ver la última versión de este tema inicia sesión con tu cuenta de Google', textAlign: TextAlign.center, style: context.textos.bodyMedium),
+              Text(guia ? 'Inicia sesión para ver la guía nueva' : 'Inicia sesión para ver el tema nuevo', textAlign: TextAlign.center, style: context.textos.titleMedium),
+              const SizedBox(height: Espacio.e2),
+              Text(
+                '${guia ? 'La guía está revisada' : 'El tema está revisado'} a fondo, con datos al día, gráficos nuevos y ${guia ? 'resumen' : 'ficha'} de repaso. Se lee con tu cuenta de Google.',
+                textAlign: TextAlign.center,
+                style: context.textos.bodySmall,
+              ),
               const SizedBox(height: Espacio.e3),
               FilledButton.icon(
-                onPressed: ocupado
-                    ? null
-                    : () async {
-                        final err = await ref.read(sesionProvider.notifier).iniciarConGoogle();
-                        if (err != null && context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('No se pudo iniciar sesión: $err')));
-                      },
+                onPressed: ocupado ? null : entrar,
                 icon: ocupado ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)) : const Icon(Icons.login),
                 label: const Text('Iniciar sesión con Google'),
               ),
+              if (seguirConAnterior != null) ...[
+                const SizedBox(height: Espacio.e2),
+                OutlinedButton(onPressed: seguirConAnterior, child: Text(guia ? 'Seguir con la guía antigua' : 'Seguir con el tema antiguo')),
+              ],
             ]),
           ),
         ),

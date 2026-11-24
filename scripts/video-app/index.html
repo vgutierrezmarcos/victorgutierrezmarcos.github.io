@@ -112,6 +112,19 @@
       .web .barra svg { width: 20px; height: 20px; flex: 0 0 auto; }
       .web p { margin: 0; padding: 18px 24px 22px; font-weight: 700; font-size: 25px; line-height: 1.18; letter-spacing: 0.01em; text-transform: uppercase; color: #00447c; }
 
+      /* IA: logos en las pastillas y ventana de chat */
+      .pastilla.ia { padding: 16px 30px 16px 22px; font-size: 34px; gap: 16px; }
+      .pastilla.ia .logo { height: 46px; border-radius: 10px; background: #fff; padding: 4px; box-sizing: border-box; }
+      .chat { position: absolute; width: 580px; border-radius: 22px; overflow: hidden; background: #fff; border: 1.5px solid var(--borde); box-shadow: 0 30px 70px rgba(46, 34, 53, 0.24); }
+      .chat .barra { display: flex; align-items: center; gap: 14px; height: 64px; box-sizing: border-box; padding: 0 22px; background: #f1ebf6; border-bottom: 1.5px solid var(--borde); font-weight: 600; font-size: 25px; color: var(--tinta); }
+      .chat .barra img { width: 34px; height: 34px; }
+      /* Las vistas van a su ancho, enteras: si una es más alta que la ventana, se corta por abajo, nunca por los lados */
+      .chat .vista { position: absolute; left: 0; right: 0; top: 64px; bottom: 0; background: #fff; }
+      .chat .vista img { position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block; background: #fff; }
+      .flecha { position: absolute; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--dorado); color: #fff; font-size: 40px; font-weight: 600; line-height: 1; box-shadow: 0 8px 22px rgba(46, 34, 53, 0.2); z-index: 2; }
+      /* El nombre de la marca, siempre con su caja (EconomIA), también dentro de un rótulo en versalitas */
+      .nombre { font-variant-caps: normal; letter-spacing: 0.04em; }
+
       /* Bolas del sorteo */
       .bola {
         position: absolute; width: 124px; height: 124px; box-sizing: border-box; border-radius: 50%;
@@ -192,11 +205,23 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="90">
-      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="90" data-track-index="9"></audio>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="118.4">
+      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="118.4" data-track-index="9"></audio>
+
+      <!-- Apertura: la frase que engancha -->
+      <section id="apertura" class="clip oscura" data-start="0.0000" data-duration="4.3636" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="centro">
+          <h2 id="apertura-l1" class="tit" style="font-size: 118px"><span class="l">La oposición</span><span class="l">no se prepara sola.</span></h2>
+        </div>
+        <div class="centro">
+          <h2 id="apertura-l2" class="tit" style="font-size: 150px"><span class="l">Tampoco <em>a solas.</em></span></h2>
+          <span id="apertura-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
+        </div>
+      </section>
 
       <!-- Portada -->
-      <section id="portada" class="clip oscura" data-start="0.0000" data-duration="4.3636" data-track-index="0">
+      <section id="portada" class="clip oscura" data-start="8.7273" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="centro">
           <div class="icono-caja">
@@ -207,7 +232,7 @@
           </div>
           <h1 id="portada-tit" class="tit" style="font-size: 104px"><span class="l">Oposición TCEE · DCE</span></h1>
           <span id="portada-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
-          <p id="portada-lema" class="lema">Para opositores y preparadores, en una sola app</p>
+          <p id="portada-lema" class="lema">Tu preparador, tu temario y tu IA, en una sola app. Gratis.</p>
         </div>
       </section>
 
@@ -228,7 +253,7 @@
       </section>
 
       <!-- Elegir oposición y papel -->
-      <section id="elegir" class="clip" data-start="8.7273" data-duration="4.3636" data-track-index="0">
+      <section id="elegir" class="clip" data-start="13.0909" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div id="elegir-mitad"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
@@ -249,7 +274,7 @@
       </section>
 
       <!-- Cronograma -->
-      <section id="organizacion" class="clip" data-start="67.6364" data-duration="4.3636" data-track-index="0">
+      <section id="organizacion" class="clip" data-start="80.7273" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto">
@@ -311,14 +336,14 @@
       </section>
 
       <!-- Temario revisado, exclusivo de la app -->
-      <section id="revisado" class="clip salvia" data-start="50.1818" data-duration="6.5455" data-track-index="0">
+      <section id="revisado" class="clip salvia" data-start="54.5455" data-duration="6.5455" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto"><div class="bloque">
-          <p class="rot">exclusivo de la app</p>
+          <p class="rot">material exclusivo</p>
           <h2 id="revisado-t1" class="tit" style="font-size: 80px"><span class="l">Temas revisados</span><span class="l">y actualizados.</span></h2>
-          <h2 id="revisado-t2" class="tit" style="font-size: 80px"><span class="l"><em>Solo en la app.</em></span></h2>
-          <p id="revisado-par" class="par">Se leen dentro de la app, con tu cuenta. No están en la web.</p>
+          <h2 id="revisado-t2" class="tit" style="font-size: 80px"><span class="l"><em>Con tu cuenta.</em></span></h2>
+          <p id="revisado-par" class="par">Se leen en la app y, con la sesión iniciada, también en la web.</p>
           <div class="formatos">
             <div id="revisado-f1" class="formato"><svg viewBox="0 0 24 24" fill="none" stroke="#b71c1c" stroke-width="2"><path d="M6 2h9l5 5v15H6z" /><path d="M15 2v5h5" /></svg>PDF</div>
             <div id="revisado-f2" class="formato"><svg viewBox="0 0 24 24" fill="none" stroke="#2b579a" stroke-width="2"><path d="M6 2h9l5 5v15H6z" /><path d="M9 12l1.5 6 1.5-4 1.5 4 1.5-6" /></svg>Word</div>
@@ -331,12 +356,12 @@
         </div></div>
         <div id="revisado-sello" class="sello" style="left: 930px; top: 150px">
           <svg viewBox="0 0 24 24" fill="none" stroke="#43294f" stroke-width="2"><path d="M12 2l2.4 2.1 3.2-.3.7 3.1 2.8 1.6-1.3 2.9 1.3 2.9-2.8 1.6-.7 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.7-3.1-2.8-1.6 1.3-2.9-1.3-2.9 2.8-1.6.7-3.1 3.2.3z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></svg>
-          Revisado · exclusivo de la app
+          Revisado · material exclusivo
         </div>
       </section>
 
       <!-- Estudiar: subrayar y el mapa de calor -->
-      <section id="estudiar" class="clip salvia" data-start="56.7273" data-duration="4.3636" data-track-index="0">
+      <section id="estudiar" class="clip salvia" data-start="61.0909" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto"><div class="bloque">
@@ -353,7 +378,7 @@
       </section>
 
       <!-- Cantes -->
-      <section id="cantes" class="clip salvia" data-start="61.0909" data-duration="6.5455" data-track-index="0">
+      <section id="cantes" class="clip salvia" data-start="65.4545" data-duration="6.5455" data-track-index="0">
         <div class="fondo"></div>
         <div id="cantes-movil" class="movil" style="left: 230px; top: 99px"><div class="pantalla">
           <img id="cantes-p1" src="assets/capturas/cantes-cantar.webp" alt="" />
@@ -385,7 +410,7 @@
       </section>
 
       <!-- Buscar preparador -->
-      <section id="mi_preparador" class="clip" data-start="13.0909" data-duration="4.3636" data-track-index="0">
+      <section id="mi_preparador" class="clip" data-start="17.4545" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto">
@@ -409,7 +434,7 @@
       </section>
 
       <!-- La clase, al día -->
-      <section id="clase_viva" class="clip" data-start="17.4545" data-duration="4.3636" data-track-index="0">
+      <section id="clase_viva" class="clip" data-start="21.8182" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto">
@@ -436,7 +461,7 @@
       </section>
 
       <!-- Pizarra -->
-      <section id="pizarra" class="clip" data-start="21.8182" data-duration="4.3636" data-track-index="0">
+      <section id="pizarra" class="clip" data-start="26.1818" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto" style="width: 560px"><div class="bloque">
@@ -456,7 +481,7 @@
       </section>
 
       <!-- Materiales -->
-      <section id="materiales" class="clip" data-start="26.1818" data-duration="4.3636" data-track-index="0">
+      <section id="materiales" class="clip" data-start="30.5455" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto"><div class="bloque">
@@ -474,7 +499,7 @@
       </section>
 
       <!-- Clases sueltas -->
-      <section id="clases" class="clip" data-start="37.0909" data-duration="4.3636" data-track-index="0">
+      <section id="clases" class="clip" data-start="41.4545" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto"><div class="bloque" style="gap: 22px">
@@ -497,7 +522,7 @@
       </section>
 
       <!-- Varios preparadores -->
-      <section id="varios" class="clip" data-start="30.5455" data-duration="6.5455" data-track-index="0">
+      <section id="varios" class="clip" data-start="34.9091" data-duration="6.5455" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto">
@@ -529,7 +554,7 @@
       </section>
 
       <!-- Si preparas a opositores: alta y código, tu semana y quién busca preparador -->
-      <section id="preparadores" class="clip oscura" data-start="41.4545" data-duration="8.7273" data-track-index="0">
+      <section id="preparadores" class="clip oscura" data-start="45.8182" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto" style="width: 760px">
@@ -563,7 +588,7 @@
       </section>
 
       <!-- Móvil y ordenador -->
-      <section id="ordenador" class="clip" data-start="80.7273" data-duration="4.3636" data-track-index="0">
+      <section id="ordenador" class="clip" data-start="109.0909" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
         <div class="texto" style="width: 640px"><div class="bloque">
@@ -583,7 +608,7 @@
       </section>
 
       <!-- Cierre -->
-      <section id="cierre" class="clip oscura" data-start="85.0909" data-duration="4.9091" data-track-index="0">
+      <section id="cierre" class="clip oscura" data-start="113.4545" data-duration="4.9455" data-track-index="0">
         <div class="fondo"></div>
         <div class="centro" style="gap: 26px">
           <div class="icono-caja">
@@ -599,14 +624,116 @@
         </div>
       </section>
 
+      <!-- Con tu IA · 1: el conector -->
+      <section id="ia_equipo" class="clip oscura" data-start="85.0909" data-duration="4.3636" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="centro" style="gap: 32px">
+          <p class="rot" style="margin: 0">nuevo · <span class="nombre">EconomIA</span></p>
+          <h2 id="ia_equipo-tit" class="tit" style="font-size: 124px"><span class="l">Y ahora, <em>con tu IA.</em></span></h2>
+          <span id="ia_equipo-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
+          <div id="ia_equipo-logos" style="display: flex; gap: 26px; margin-top: 6px">
+            <div class="pastilla ia" style="position: static"><img class="logo" src="assets/logos/ia-claude.png" alt="" />Claude</div>
+            <div class="pastilla ia" style="position: static"><img class="logo" src="assets/logos/ia-lechat.png" alt="" />Le Chat</div>
+            <div class="pastilla ia" style="position: static"><img class="logo" src="assets/logos/ia-chatgpt.png" alt="" />ChatGPT</div>
+            <div class="pastilla ia" style="position: static"><img class="logo" src="assets/logos/ia-gemini.png" alt="" />Gemini</div>
+          </div>
+          <p id="ia_equipo-par" class="nota-cierre" style="max-width: 1400px">Un conector gratuito une tu IA con la app: lee tu temario, tus cantes y tus tests, y guarda en ella lo que tú confirmas.</p>
+        </div>
+      </section>
+
+      <!-- Con tu IA · 2: el cronograma, del chat a la app -->
+      <section id="ia_cronograma" class="clip" data-start="89.4545" data-duration="6.5455" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
+        <div class="texto" style="width: 600px">
+          <div class="bloque" style="justify-content: flex-start; padding-top: 300px">
+            <p class="rot">el cronograma</p>
+            <div style="position: relative; height: 250px">
+              <h2 id="ia_cronograma-t1" class="tit" style="position: absolute; font-size: 84px"><span class="l">Pídeselo</span><span class="l"><em>a tu IA.</em></span></h2>
+              <h2 id="ia_cronograma-t2" class="tit" style="position: absolute; font-size: 84px"><span class="l">Y guárdalo</span><span class="l"><em>en la app.</em></span></h2>
+            </div>
+            <p id="ia_cronograma-par" class="par" style="max-width: 580px">Lo propone con tus fechas y lo que llevas estudiado. Lo revisas en el chat y, con un botón, queda en tu cronograma.</p>
+          </div>
+        </div>
+        <div id="ia_cronograma-chat" class="chat" style="left: 770px; top: 110px; height: 860px">
+          <div class="barra"><img src="assets/logos/ia-claude.png" alt="" />Tu IA, con el conector de la app</div>
+          <div class="vista">
+            <img id="ia_cronograma-v1" src="assets/vista-cronograma-a.webp" alt="" />
+            <img id="ia_cronograma-v2" src="assets/vista-cronograma-b.webp" alt="" />
+          </div>
+        </div>
+        <div id="ia_cronograma-flecha" class="flecha" style="left: 1378px; top: 500px">→</div>
+        <div id="ia_cronograma-movil" class="movil" style="left: 1450px; top: 99px"><div class="pantalla">
+          <img src="assets/capturas/cronograma-semanas.webp" alt="" />
+        </div></div>
+        <div id="ia_cronograma-ok" class="pastilla verde" style="left: 1500px; top: 1000px"><i></i>Guardado en la app</div>
+      </section>
+
+      <!-- Con tu IA · 3: el cante y el test, del chat a la app -->
+      <section id="ia_sync" class="clip" data-start="96.0000" data-duration="6.5455" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
+        <div class="texto" style="width: 630px">
+          <div class="bloque" style="justify-content: flex-start; padding-top: 330px">
+            <p class="rot">cantes y test</p>
+            <div style="position: relative; height: 170px">
+              <h2 id="ia_sync-t1" class="tit" style="position: absolute; font-size: 62px"><span class="l">Corrige tu cante.</span><span class="l"><em>Y queda en tu diario.</em></span></h2>
+              <h2 id="ia_sync-t2" class="tit" style="position: absolute; font-size: 62px"><span class="l">Haz el test en el chat.</span><span class="l"><em>Y cuenta en la app.</em></span></h2>
+            </div>
+            <p id="ia_sync-par" class="par" style="max-width: 580px">Con el temario revisado y lo que la app sabe de ti. Hasta pide clase a tu preparador, que la recibe en su app.</p>
+          </div>
+        </div>
+        <div id="ia_sync-chat" class="chat" style="left: 770px; top: 110px; height: 860px">
+          <div class="barra"><img src="assets/logos/ia-claude.png" alt="" />Tu IA, con el conector de la app</div>
+          <div class="vista">
+            <img id="ia_sync-v1" src="assets/vista-informe-a.webp" alt="" />
+            <img id="ia_sync-v2" src="assets/vista-test-a.webp" alt="" />
+          </div>
+        </div>
+        <div id="ia_sync-flecha" class="flecha" style="left: 1378px; top: 500px">→</div>
+        <div id="ia_sync-movil" class="movil" style="left: 1450px; top: 99px"><div class="pantalla">
+          <img id="ia_sync-p1" src="assets/capturas/cantes-diario.webp" alt="" />
+          <img id="ia_sync-p2" src="assets/capturas/test-estadisticas.webp" alt="" />
+        </div></div>
+      </section>
+
+      <!-- Con tu IA · 4: desde la app, y sugerir una mejora -->
+      <section id="ia_burbuja" class="clip" data-start="102.5455" data-duration="6.5455" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="marca"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div>
+        <div id="ia_burbuja-movil" class="movil" style="left: 230px; top: 99px"><div class="pantalla">
+          <img id="ia_burbuja-p1" src="assets/capturas/ia-hoy.webp" alt="" />
+          <img id="ia_burbuja-p2" src="assets/capturas/ia-tema.webp" alt="" />
+          <img id="ia_burbuja-p3" src="assets/capturas/tema-revisado.webp" alt="" />
+        </div></div>
+        <div class="texto" style="left: 800px; width: 1040px">
+          <div id="ia_burbuja-a" class="bloque" style="justify-content: flex-start; padding-top: 210px">
+            <p class="rot">desde la app</p>
+            <h2 class="tit" style="font-size: 66px"><span class="l">Pregunta lo que quieras a tu IA,</span><span class="l"><em>directamente desde la app.</em></span></h2>
+            <p class="par" style="max-width: 900px">En Hoy, en cada tema, tras un test, en el cronograma y en los cantes.</p>
+          </div>
+          <div id="ia_burbuja-b" class="bloque" style="justify-content: flex-start; padding-top: 210px">
+            <p class="rot">entre todos</p>
+            <h2 class="tit" style="font-size: 84px"><span class="l">¿Algo no se entiende?</span><span class="l"><em>Sugiere la mejora.</em></span></h2>
+            <p class="par" style="max-width: 900px">Desde la app o desde tu IA, de forma anónima. Le llega al autor y los apuntes mejoran para todos.</p>
+          </div>
+        </div>
+        <div id="ia_burbuja-a1" class="pastilla" style="left: 800px; top: 640px"><i></i>«Tengo una duda de este tema»</div>
+        <div id="ia_burbuja-a2" class="pastilla" style="left: 880px; top: 730px"><i></i>«Pregúntame como el tribunal»</div>
+        <div id="ia_burbuja-a3" class="pastilla" style="left: 960px; top: 820px"><i></i>«Repasa conmigo los fallos»</div>
+        <div id="ia_burbuja-m1" class="pastilla" style="left: 800px; top: 660px"><i></i>Sugerir una mejora</div>
+        <div id="ia_burbuja-m2" class="pastilla verde" style="left: 880px; top: 750px"><i></i>Aceptada: ya está en el tema</div>
+      </section>
+
       <!-- Capas comunes: rótulos de bloque y barrido -->
-      <div id="capa-capitulos" class="clip" data-start="0" data-duration="90" data-track-index="7" style="pointer-events: none">
+      <div id="capa-capitulos" class="clip" data-start="0" data-duration="118.4" data-track-index="7" style="pointer-events: none">
         <div class="capitulo" data-bloque="con_preparador">Para opositores · <span>Con tu preparador</span></div>
         <div class="capitulo oscuro" data-bloque="preparadores">Para preparadores · <span>Tus alumnos</span></div>
         <div class="capitulo" data-bloque="estudiar">Para opositores · <span>Estudiar</span></div>
+        <div class="capitulo" data-bloque="con_ia">Para opositores y preparadores · <span>Con tu IA</span></div>
         <div class="capitulo" data-bloque="organizarte">Para opositores · <span>Organizarte</span></div>
       </div>
-      <div id="capa-barrido" class="clip" data-start="0" data-duration="90" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
+      <div id="capa-barrido" class="clip" data-start="0" data-duration="118.4" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
     </div>
 
     <script>
@@ -614,10 +741,10 @@
       const P = 60 / 110, C = 4 * P, M = P / 2;
       const B = (n) => n * C;
       // Compás en que empieza cada escena (lo escribe preparar.py desde guion.json).
-      const E = { portada: 0, gancho: 2, elegir: 4, mi_preparador: 6, clase_viva: 8, pizarra: 10, materiales: 12, varios: 14, clases: 17, preparadores: 19, revisado: 23, estudiar: 26, cantes: 28, organizacion: 31, hoy: 33, proceso: 35, ordenador: 37, cierre: 39 }; // guion
+      const E = { apertura: 0, gancho: 2, portada: 4, elegir: 6, mi_preparador: 8, clase_viva: 10, pizarra: 12, materiales: 14, varios: 16, clases: 19, preparadores: 21, revisado: 25, estudiar: 28, cantes: 30, hoy: 33, proceso: 35, organizacion: 37, ia_equipo: 39, ia_cronograma: 41, ia_sync: 44, ia_burbuja: 47, ordenador: 50, cierre: 52 }; // guion
       // Bloque de cada escena (también lo escribe preparar.py).
-      const BLOQUE = { portada: "empezar", gancho: "empezar", elegir: "empezar", mi_preparador: "con_preparador", clase_viva: "con_preparador", pizarra: "con_preparador", materiales: "con_preparador", varios: "con_preparador", clases: "con_preparador", preparadores: "preparadores", revisado: "estudiar", estudiar: "estudiar", cantes: "estudiar", organizacion: "organizarte", hoy: "organizarte", proceso: "organizarte", ordenador: "final", cierre: "final" }; // guion
-      const DURACION = 90;
+      const BLOQUE = { apertura: "empezar", gancho: "empezar", portada: "empezar", elegir: "empezar", mi_preparador: "con_preparador", clase_viva: "con_preparador", pizarra: "con_preparador", materiales: "con_preparador", varios: "con_preparador", clases: "con_preparador", preparadores: "preparadores", revisado: "estudiar", estudiar: "estudiar", cantes: "estudiar", hoy: "organizarte", proceso: "organizarte", organizacion: "organizarte", ia_equipo: "ia_intro", ia_cronograma: "con_ia", ia_sync: "con_ia", ia_burbuja: "con_ia", ordenador: "final", cierre: "final" }; // guion
+      const DURACION = 118.4;
       const ORDEN = Object.keys(E).sort((a, b) => E[a] - E[b]);
       // Fin de una escena: el principio de la siguiente.
       const fin = (id) => {
@@ -690,14 +817,75 @@
         funde(c, fin(escenas[escenas.length - 1]) - 0.3, 0.3);
       });
 
+      // Apertura: la frase que engancha, en dos golpes
+      palabras("#apertura-l1", 0.25, 0.07);
+      funde("#apertura-l1", C + 0.2 * P - 0.25, 0.25);
+      palabras("#apertura-l2", C + 0.2 * P, M / 2);
+      filete("#apertura-filete", C + 1.2 * P);
+      sale("apertura");
+
       // Portada: los anillos salen de debajo del icono
       ["#portada-a1", "#portada-a2", "#portada-a3"].forEach((a, i) =>
-        tl.fromTo(a, { scale: 0.12, opacity: 0.8 }, { scale: 1.5, opacity: 0, duration: 2.2, ease: "power1.out" }, 0.5 + i * 0.18));
-      tl.fromTo("#portada-icono", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.8)" }, 0.45);
-      palabras("#portada-tit", 1.25, 0.12);
-      filete("#portada-filete", 1.9);
-      palabras("#portada-lema", 2.3, 0.05);
+        tl.fromTo(a, { scale: 0.12, opacity: 0.8 }, { scale: 1.5, opacity: 0, duration: 2.2, ease: "power1.out" }, B(E.portada) + 0.3 + i * 0.18));
+      tl.fromTo("#portada-icono", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.8)" }, B(E.portada) + 0.25);
+      palabras("#portada-tit", B(E.portada) + 0.9, 0.12);
+      filete("#portada-filete", B(E.portada) + 1.5);
+      palabras("#portada-lema", B(E.portada) + 1.9, 0.05);
       sale("portada");
+
+      // Con tu IA · 1: el conector y las cuatro IA
+      aparece("#ia_equipo .rot", B(E.ia_equipo), 0.45);
+      palabras("#ia_equipo-tit", B(E.ia_equipo) + 0.15, M / 2);
+      filete("#ia_equipo-filete", B(E.ia_equipo) + 2 * P);
+      tl.fromTo("#ia_equipo-logos .pastilla", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)", stagger: P / 3 }, B(E.ia_equipo) + 2 * P);
+      aparece("#ia_equipo-par", B(E.ia_equipo) + C);
+      sale("ia_equipo");
+
+      // Con tu IA · 2: el cronograma se pide en el chat y se guarda en la app
+      const sube2 = (sel, t) => tl.fromTo(sel, { opacity: 0, y: 90 }, { opacity: 1, y: 0, duration: 0.75, ease: "power3.out" }, t);
+      const IC = B(E.ia_cronograma);
+      aparece("#ia_cronograma .rot", IC, 0.45);
+      sube2("#ia_cronograma-chat", IC + 0.1);
+      palabras("#ia_cronograma-t1", IC + 0.1);
+      aparece("#ia_cronograma-par", IC + 0.7);
+      funde("#ia_cronograma-t1", IC + 1.5 * C - 0.25, 0.2);
+      palabras("#ia_cronograma-t2", IC + 1.5 * C);
+      pantalla("#ia_cronograma-v2", IC + 1.5 * C);
+      salta("#ia_cronograma-flecha", IC + 1.5 * C + 0.15);
+      movil("#ia_cronograma-movil", IC + 1.5 * C + 0.3);
+      salta("#ia_cronograma-ok", IC + 1.5 * C + 2 * P);
+      sale("ia_cronograma");
+
+      // Con tu IA · 3: el cante corregido va al diario y el test, al historial
+      const IS = B(E.ia_sync);
+      aparece("#ia_sync .rot", IS, 0.45);
+      sube2("#ia_sync-chat", IS + 0.1);
+      palabras("#ia_sync-t1", IS + 0.1);
+      aparece("#ia_sync-par", IS + 0.7);
+      salta("#ia_sync-flecha", IS + 2 * P);
+      movil("#ia_sync-movil", IS + 2 * P + 0.15);
+      funde("#ia_sync-t1", IS + 1.5 * C - 0.25, 0.2);
+      palabras("#ia_sync-t2", IS + 1.5 * C);
+      pantalla("#ia_sync-v2", IS + 1.5 * C);
+      pantalla("#ia_sync-p2", IS + 1.5 * C + 2 * P);
+      sale("ia_sync");
+
+      // Con tu IA · 4: preguntar desde la app y sugerir una mejora
+      const IB = B(E.ia_burbuja);
+      bloque("#ia_burbuja-a", IB);
+      textos("#ia_burbuja-a", IB);
+      movil("#ia_burbuja-movil", IB + 0.1);
+      pantalla("#ia_burbuja-p2", IB + 0.75 * C);
+      salta("#ia_burbuja-a1", IB + 0.75 * C);
+      salta("#ia_burbuja-a2", IB + 0.75 * C + P / 2);
+      salta("#ia_burbuja-a3", IB + 0.75 * C + P);
+      funde("#ia_burbuja-a, #ia_burbuja-a1, #ia_burbuja-a2, #ia_burbuja-a3", IB + 1.5 * C - 0.25, 0.25);
+      pantalla("#ia_burbuja-p3", IB + 1.5 * C);
+      bloque("#ia_burbuja-b", IB + 1.5 * C);
+      textos("#ia_burbuja-b", IB + 1.5 * C);
+      salta("#ia_burbuja-m1", IB + 1.5 * C + 2 * P);
+      salta("#ia_burbuja-m2", IB + 2.25 * C + P);
+      sale("ia_burbuja");
 
       // Gancho: tres líneas y «Ahora, todo en un solo sitio»
       palabras("#gancho-l1", B(E.gancho), 0.06);
@@ -880,8 +1068,9 @@
       bloque("#preparadores-a", PR);
       textos("#preparadores-a", PR);
       movil("#preparadores-movil", PR + 0.1);
-      pantalla("#preparadores-p2", PR + 3 * P);
-      salta("#preparadores-codigo", PR + 3 * P + 0.2);
+      pantalla("#preparadores-p2", PR + 1.6 * P);
+      // Antes del fundido de salida: si se pisan, la pastilla se queda en pantalla.
+      salta("#preparadores-codigo", PR + 1.8 * P);
       funde("#preparadores-a, #preparadores-movil, #preparadores-codigo", PR + C - 0.25, 0.25);
       bloque("#preparadores-b", PR + C);
       textos("#preparadores-b", PR + C);

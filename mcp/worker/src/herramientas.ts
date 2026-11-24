@@ -41,6 +41,7 @@ import { MINUTOS_CLASE, MODALIDADES, ahoraMadrid, construirReserva, construirSes
 import { type AlmacenDatos, ErrorFirestore, Firestore, type Json, marcaDeTiempo } from './firestore';
 import { borrarOposicion, recuentoOposicion } from './borrado';
 import { metaVista, registrarVistas } from './vistas';
+import { DIFICULTADES, REGIONES, TIPOS_PAIS, articulosDe, codigoIdioma, leerRss, mediosPara, prepararDictamen, type BancoPaises, type MediosPrensa } from './practica';
 
 export const OPOSICIONES = ['tcee', 'dce'] as const;
 export type Oposicion = (typeof OPOSICIONES)[number];
@@ -97,9 +98,22 @@ export interface Contexto {
   sello(texto: string): Promise<string>;
   /** Una figura del test (ruta «img/….webp» bajo la carpeta del test de la web) en base64, para las vistas que no pueden cargarla por su cuenta. */
   figura?(ruta: string): Promise<{ mime: string; base64: string } | null>;
+  /** Banco de países de los dictámenes de práctica (oposicion/datos/paises-dictamen.json). */
+  paises?(): Promise<BancoPaises>;
+  /** Medios de prensa por idioma (oposicion/datos/prensa-medios.json). */
+  prensa?(): Promise<MediosPrensa>;
+  /** El XML de una fuente RSS (null si no responde a tiempo). */
+  rss?(url: string): Promise<string | null>;
   /** Apunta el uso de una herramienta, sin nada que identifique al usuario (qué herramienta, si fue bien y cuánto tardó). */
   medir?(dato: { herramienta: string; oposicion: string; ok: boolean; ms: number }): void;
+  /** Cuenta que un apartado de un material ha dado pie a una duda o a una sugerencia: solo qué material y de qué tipo, sin texto ni usuario. */
+  senal?(dato: { oposicion: string; recurso: string; tema: string; apartado: string; tipo: string }): void;
 }
+
+/** Qué le pasa al material, en una sugerencia de mejora (las mismas claves en la app y en scripts/sugerencias.py). */
+export const TIPOS_SUGERENCIA = ['error', 'desactualizado', 'no_explica', 'poco_claro', 'falta', 'errata', 'otro'] as const;
+/** Sugerencias que un usuario puede mandar en un día (el conector no deja pasar más). */
+export const SUGERENCIAS_AL_DIA = 20;
 
 export class ErrorSesion extends Error {}
 
@@ -198,6 +212,8 @@ export const TAREAS = {
   informe_semanal: { titulo: 'Informe de la semana', cuando: 'pide el informe de la semana', ficheros: ['references/agentes/informe-semanal.md'] },
   agendar_clase: { titulo: 'Agendar una clase', cuando: 'pide agendar o reservar una clase con su preparador (o, si es preparador, con un alumno)', ficheros: ['references/agentes/agendar-clase.md'] },
   preparador: { titulo: 'Preparar la clase (preparadores)', cuando: 'es preparador y manda cantes o datos de sus alumnos o pide preparar la clase', ficheros: ['references/perfiles.md', 'references/agentes/preparador.md'] },
+  poner_dictamen: { titulo: 'Poner un dictamen de práctica', cuando: 'pide un dictamen de coyuntura para practicar, la guía de resolución de uno que le has puesto o que se lo corrijas', ficheros: ['references/agentes/generador-dictamen.md'] },
+  prensa_idiomas: { titulo: 'Prensa para los idiomas', cuando: 'pide artículos o prensa económica en inglés u otro idioma para practicar', ficheros: ['references/agentes/prensa-idiomas.md'] },
   documentos: { titulo: 'Gráficos y documentos', cuando: 'pide un gráfico, preguntas tipo test o cualquier documento (resumen, esquema, comparativa, PDF)', ficheros: ['references/documentos-y-graficos.md'] },
 } as const;
 export type Tarea = keyof typeof TAREAS;
@@ -285,7 +301,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. En los test hay tres tipos de pregunta, por este orden de preferencia: oficiales (de exámenes reales), del banco de EconomIA (no oficiales, revisadas) y generadas por ti al vuelo (sin revisar, solo si el usuario lo pide); di siempre de qué tipo es cada una y deja que elija. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase, apuntar_test, reportar_pregunta y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Algunas herramientas llevan una vista interactiva que ciertos clientes (Claude) pintan dentro del chat: test_interactivo (el usuario contesta con botones y, al terminar, el cuadro apunta el test en la app) y, con vistaPrevia: true, proponer_cronograma, guardar_informe_cante y agendar_clase (el usuario revisa y guarda él con un botón); como no puedes saber si tu cliente la pinta, di siempre al usuario qué va a ver y qué hacer si no ve ningún cuadro. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para las oposiciones a TCEE y DCE: un equipo de preparación (corrige cantes, dictámenes y escritos, resuelve dudas del temario, hace el cronograma, simula al tribunal, test, tarjetas, informes semanales y prepara clases para preparadores) con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Al empezar una conversación sobre la oposición llama a empezar (dice si es opositor o preparador, en qué oposición tiene datos, cuánto falta para el examen, qué toca esta semana y cómo le han ido los últimos cantes) y, ANTES de cualquier tarea, a leer_metodo(tarea) (sin tarea, la lista), y sigue ese método durante toda la conversación; los ficheros que cite (references/…, assets/…) se leen con leer_skill(ruta), y leer_skill() sin argumentos da las instrucciones generales. Si la skill «prepara-oposicion» ya está instalada, es la misma. Para recomendar fuentes de un tema usa fuentes_tema (y leer_fuente para leer, valorar o comparar cualquiera de esas fuentes), y para saber qué temas forman una materia o un bloque, buscar_temario. En los test hay tres tipos de pregunta, por este orden de preferencia: oficiales (de exámenes reales), del banco de EconomIA (no oficiales, revisadas) y generadas por ti al vuelo (sin revisar, solo si el usuario lo pide); di siempre de qué tipo es cada una y deja que elija. Usa estas herramientas solo para el usuario conectado; escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase, apuntar_test, reportar_pregunta y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando lo confirme. Los materiales mejoran con lo que avisan los usuarios: cuando, al resolver una duda o corregir un test, veas que un tema o una ficha no explica algo, es ambiguo, tiene un error, un dato viejo o una errata, o que la respuesta o la explicación de una pregunta no se sostiene, resuelve primero la duda y después ofrece mandárselo al autor con sugerir_mejora (temas y fichas) o reportar_pregunta (test), las dos con vistaPrevia: true: el usuario lo revisa y lo envía con un botón (o te contesta «sí»); una vez por hallazgo, sin insistir, y nunca con datos personales suyos. borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, y solo con la frase que el usuario escriba él mismo. Algunas herramientas llevan una vista interactiva que ciertos clientes (Claude) pintan dentro del chat: test_interactivo (el usuario contesta con botones y, al terminar, el cuadro apunta el test en la app) y, con vistaPrevia: true, proponer_cronograma, guardar_informe_cante y agendar_clase (el usuario revisa y guarda él con un botón), y sugerir_mejora y reportar_pregunta (el usuario revisa la sugerencia y la envía él con un botón); como no puedes saber si tu cliente la pinta, di siempre al usuario qué va a ver y qué hacer si no ve ningún cuadro. Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos se devuelven por tramos (desde/limite): pide un apartado concreto cuando puedas.',
     },
   );
 
@@ -859,7 +875,14 @@ export function crearServidor(ctx: Contexto): McpServer {
     async () =>
       protegido(async () => {
         const hoy = ahoraMadrid().slice(0, 10);
-        const [tcee, dce, indice, versionWeb] = await Promise.all([panorama('tcee', hoy), panorama('dce', hoy), ctx.contenido.indice(), ctx.skill('VERSION.txt').catch(() => null)]);
+        const [tcee, dce, indice, versionWeb, resueltas] = await Promise.all([
+          panorama('tcee', hoy),
+          panorama('dce', hoy),
+          ctx.contenido.indice(),
+          ctx.skill('VERSION.txt').catch(() => null),
+          // Lo que el autor ha contestado a sus sugerencias y aún no ha visto (si falla, no estorba el arranque).
+          Promise.all(OPOSICIONES.map((op) => sugerenciasDe(op).catch(() => []))).then((l) => l.flat().filter((s) => typeof s.datos.estado === 'string' && s.datos.estado !== 'recibida' && s.datos.vista !== true)),
+        ]);
         const con = [tcee, dce].filter((p): p is NonNullable<typeof p> => p !== null);
         const peso = (p: (typeof con)[number]) => p.cantesHechos * 3 + p.temasEstudiados + (p.cronograma ? 5 : 0) + p.testsUltimos7Dias.hechos;
         const principal = con.length ? [...con].sort((a, b) => peso(b) - peso(a))[0].oposicion : null;
@@ -872,6 +895,9 @@ export function crearServidor(ctx: Contexto): McpServer {
             : 'Este usuario aún no tiene datos en la app (ni cantes, ni cronograma, ni temas marcados): trabaja con lo que te cuente y propónle apuntarlo en la app. Antes de la tarea, leer_metodo(tarea).',
           ...(con.some((p) => p.esPreparador) ? { siEsPreparador: `Es preparador en ${con.filter((p) => p.esPreparador).map((p) => p.oposicion.toUpperCase()).join(' y ')}: sus alumnos, sus clases y las reservas que le piden están en leer_alumnos y leer_alumno (método: leer_metodo(«preparador»)).` } : {}),
           oposiciones: con,
+          ...(resueltas.length
+            ? { sugerenciasResueltas: { cuantas: resueltas.length, lista: resueltas.slice(0, 5).map((s) => resumenSugerencia(s.id, s.datos, s.creado)), queHacer: 'El autor ha contestado a sugerencias que este usuario mandó: díselo en una o dos líneas al empezar (qué tema y en qué ha quedado) y llama a mis_sugerencias con marcarVistas: true.' } }
+            : {}),
           contenido: indice ? { temasRevisados: indice.temas.map((t) => t.tema), dictamen: indice.dictamen.length > 0, version: indice.version ?? undefined, ...(version && indice.version && version !== indice.version ? { aviso: `El método publicado en la web es la versión ${version} y los temas del conector, la ${indice.version}: puede haber un tema recién aprobado que aún no esté aquí.` } : {}) } : null,
         });
       }),
@@ -1092,21 +1118,36 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Reportar un error en una pregunta de test',
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
       description:
-        'Envía a Víctor el aviso de que una pregunta de test (oficial o del banco de EconomIA), su respuesta o su explicación está mal planteada o desactualizada; es lo mismo que «Reportar» en la app. El cuadro de test_interactivo tiene su propio botón. Llámala tú solo cuando el usuario te lo pida o confirme, con su explicación en «comentario» (no la tuya sin que la haya visto). No sirve para las preguntas generadas por la IA.',
+        'Envía a Víctor el aviso de que una pregunta de test (oficial o del banco de EconomIA), su respuesta o su explicación está mal planteada o desactualizada; es lo mismo que «Reportar» en la app. El cuadro de test_interactivo tiene su propio botón. Ofrécela tú cuando, al corregir, veas que la respuesta dada por buena o la explicación no se sostienen (o cuando el usuario lo diga): redacta el aviso en «comentario» y llámala con vistaPrevia: true, que no envía nada: el usuario lo ve en un cuadro, lo retoca y lo envía él con un botón. Sin vistaPrevia, solo cuando ya lo ha visto y lo confirma. No sirve para las preguntas generadas por la IA.',
       inputSchema: {
         oposicion: oposicionParam,
         pregunta: z.number().int().min(1).describe('El «id» de la pregunta.'),
         motivo: z.enum(['respuesta', 'explicacion', 'enunciado', 'otro']).describe('Qué está mal: la respuesta dada por buena, la explicación, el enunciado u otra cosa.'),
         comentario: z.string().min(5).max(2000).describe('Qué está mal y por qué, con la fuente si la hay.'),
         elegida: z.string().regex(/^[a-eA-E]$/).optional().describe('La letra que marcó el usuario, si viene al caso.'),
+        vistaPrevia: VISTA_PREVIA('envía', 'Enviar al autor'),
       },
+      _meta: metaVista('sugerencia'),
     },
-    async ({ oposicion, pregunta, motivo, comentario, elegida }) =>
+    async ({ oposicion, pregunta, motivo, comentario, elegida, vistaPrevia }) =>
       protegido(async () => {
         const banco = await ctx.banco();
         const propio = (await ctx.bancoPropio?.().catch(() => null)) ?? new Map<number, PreguntaBanco>();
         const p = banco.preguntas?.get(pregunta) ?? propio.get(pregunta);
         if (!p) return error('Esa pregunta no es oficial ni del banco de EconomIA: no se puede reportar.');
+        if (vistaPrevia) {
+          for (const tema of p.temas.slice(0, 3)) ctx.senal?.({ oposicion, recurso: 'test', tema, apartado: '', tipo: motivo });
+          return json({
+            reportado: false,
+            vistaPrevia: true,
+            oposicion,
+            pregunta: { id: pregunta, cabecera: p.tipo === 'banco' ? `${p.temas.join(', ')} · banco de EconomIA` : `${p.temas.join(', ')} · ${p.examen}, pregunta ${p.numero}`, enunciado: p.enunciado.slice(0, 600), respuesta: p.respuesta },
+            motivo,
+            comentario,
+            elegida: (elegida ?? '').toLowerCase() || undefined,
+            siguiente: siguientePrevia('Enviar al autor'),
+          });
+        }
         const red = await ctx.almacenEn('');
         const id = `ia_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
         // Las mismas claves que escribe la app (las reglas no admiten otras); «creado» lo pone Firestore.
@@ -1118,6 +1159,105 @@ export function crearServidor(ctx: Contexto): McpServer {
           },
         ]);
         return json({ reportado: true, pregunta, tipo: p.tipo === 'banco' ? 'banco' : 'oficial', aviso: 'Enviado. Víctor lo revisa y, si procede, corrige la pregunta o la explicación.' });
+      }),
+  );
+
+  /** Las sugerencias del usuario en una oposición, de la más reciente a la más antigua. */
+  const sugerenciasDe = async (oposicion: Oposicion) =>
+    (await (await ctx.almacen(oposicion)).consultar('sugerencias', {})).sort((a, b) => String(b.creado ?? b.datos.creado ?? '').localeCompare(String(a.creado ?? a.datos.creado ?? '')));
+  const resumenSugerencia = (id: string, d: { [k: string]: Json }, creado?: string) => ({
+    id,
+    recurso: d.recurso,
+    tema: d.tema,
+    apartado: d.apartado || undefined,
+    tipo: d.tipo,
+    propuesta: typeof d.propuesta === 'string' ? d.propuesta.slice(0, 300) : '',
+    enviada: soloFecha(creado ?? (typeof d.creado === 'string' ? d.creado : null)) ?? undefined,
+    estado: typeof d.estado === 'string' ? d.estado : 'recibida',
+    respuesta: typeof d.respuesta === 'string' && d.respuesta ? d.respuesta : undefined,
+  });
+
+  server.registerTool(
+    'sugerir_mejora',
+    {
+      title: 'Sugerir al autor una mejora de un tema o de una ficha',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
+      description:
+        'Manda a Víctor, el autor, una sugerencia para mejorar un tema o su ficha de repaso: algo que el material no explica, que está poco claro, un error, un dato desactualizado, algo que falta o una errata. OFRÉCELA TÚ, sin que te la pidan, cuando al resolver una duda veas que el tema no la aclara o se equivoca: primero resuelve la duda y después, en una línea, di qué has visto y llama con vistaPrevia: true, que no envía nada: el usuario ve la sugerencia redactada en un cuadro, la retoca y la envía con un botón (en los clientes sin cuadros, enséñasela y envíala cuando conteste que sí, repitiendo la llamada sin vistaPrevia). Una vez por hallazgo y sin insistir si dice que no. Redáctala para quien va a corregir el tema: la cita literal del pasaje, qué le pasa y qué pondrías tú, con la fuente si la hay; nada del usuario (ni su nombre, ni su situación, ni la conversación). Es anónima para el autor: no ve quién la manda. El usuario ve luego qué ha pasado con ella (mis_sugerencias y la app). Para las preguntas de test y sus explicaciones usa reportar_pregunta.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        recurso: z.enum(['tema', 'ficha']).default('tema').describe('Qué material: el tema o su ficha de repaso.'),
+        tema: z.string().describe('Código del tema, «3.A.8».'),
+        apartado: z.string().max(200).default('').describe('Apartado del tema al que se refiere, con el título tal como lo da leer_tema («II. Estática comparativa»); vacío si es de todo el tema o de la ficha.'),
+        tipo: z.enum(TIPOS_SUGERENCIA).describe('Qué le pasa: «error» (dice algo incorrecto), «desactualizado» (dato o norma viejos), «no_explica» (no responde a una duda razonable), «poco_claro» (se entiende mal o es ambiguo), «falta» (falta algo que debería estar), «errata» u «otro».'),
+        cita: z.string().max(500).default('').describe('El pasaje del material, literal y corto, al que se refiere la sugerencia (vacío si lo que pasa es que falta algo).'),
+        propuesta: z.string().min(10).max(2000).describe('Qué está mal o qué falta y qué pondrías, en concreto, con la fuente si la hay.'),
+        duda: z.string().max(500).default('').describe('La duda que lo ha destapado, resumida en una frase y sin datos del usuario (ayuda a ver qué buscaba quien lee el tema).'),
+        vistaPrevia: VISTA_PREVIA('envía', 'Enviar al autor'),
+      },
+      _meta: metaVista('sugerencia'),
+    },
+    async ({ oposicion, recurso, tema, apartado, tipo, cita, propuesta, duda, vistaPrevia }) =>
+      protegido(async () => {
+        const cod = codigoTema(tema);
+        if (!cod) return error(`«${tema}» no parece un código de tema (por ejemplo, «3.A.8»).`);
+        const programa = await ctx.fuentes().then((i) => (oposicion === 'dce' ? i.dce : i.tcee)).catch(() => null);
+        const codigo = normalizarCodigo(cod)!;
+        const entrada = oposicion === 'tcee' ? (await ctx.contenido.indice())?.temas.find((t) => t.codigo === codigo) : undefined;
+        if (programa && !programa[cod] && !entrada) return error(`El tema ${cod} no está en el programa de ${oposicion.toUpperCase()}.`);
+        if (recurso === 'ficha' && !entrada?.ficha) return error(`El tema ${cod} no tiene ficha de repaso (mira listar_temas_revisados).`);
+        // El apartado, con el título exacto del tema revisado si se reconoce; si no, tal como llega.
+        let donde = recurso === 'ficha' ? '' : apartado.trim();
+        if (donde && entrada?.texto) {
+          const md = await ctx.contenido.tema(codigo, 'tema');
+          const parte = md ? extraerApartado(md, donde.replace(/^([IVX]+|[A-Z]|\d+)[.)]\s.*$/, '$1')) ?? extraerApartado(md, donde) : null;
+          if (parte) donde = parte.split('\n')[0].replace(/^## /, '').trim();
+        }
+        const borrador = { oposicion, recurso, tema: cod, apartado: donde, tipo, cita: cita.trim(), propuesta: propuesta.trim(), duda: duda.trim(), version: entrada?.version ?? '' };
+        const titulo = programa?.[cod]?.titulo ?? entrada?.titulo;
+        if (vistaPrevia) {
+          // La señal anónima: este apartado ha dado pie a una duda, se envíe o no la sugerencia.
+          ctx.senal?.({ oposicion, recurso, tema: cod, apartado: donde, tipo });
+          return json({ enviada: false, vistaPrevia: true, ...borrador, titulo, siguiente: siguientePrevia('Enviar al autor') });
+        }
+        const hoy = new Date().toISOString().slice(0, 10);
+        const mias = await sugerenciasDe(oposicion);
+        if (mias.filter((s) => String(s.creado ?? s.datos.creado ?? '').startsWith(hoy)).length >= SUGERENCIAS_AL_DIA) return error(`Hoy ya se han enviado ${SUGERENCIAS_AL_DIA} sugerencias desde esta cuenta: el resto, mañana.`);
+        const repetida = mias.find((s) => s.datos.tema === cod && s.datos.recurso === recurso && s.datos.propuesta === borrador.propuesta);
+        if (repetida) return json({ enviada: true, yaEstaba: true, id: repetida.id, tema: cod });
+        const id = `s_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+        // Sin correo ni nombre: va en los datos del propio usuario (solo él y la bandeja del autor la leen) y «creado» lo pone Firestore.
+        await (await ctx.almacen(oposicion)).lote([{ ruta: `sugerencias/${id}`, datos: { ...borrador, origen: `conector (${await ctx.cliente()})`, estado: 'recibida' }, ahora: ['creado'] }]);
+        return json({ enviada: true, id, tema: cod, titulo, aviso: 'Enviada. El autor la revisa sin ver quién la manda; cuando la acepte o la descarte, el usuario lo verá en la app (Más → Mis sugerencias) y aquí, al empezar otra conversación.' });
+      }),
+  );
+
+  server.registerTool(
+    'mis_sugerencias',
+    {
+      title: 'Ver qué ha pasado con las sugerencias enviadas',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+      description:
+        'Las sugerencias de mejora que el usuario ha mandado al autor (con sugerir_mejora o desde la app) y en qué han quedado: «recibida», «aceptada» (ya está o estará en el material), «descartada» o «duplicada», con la respuesta del autor si la hay y cuántos materiales ha ayudado a mejorar. Úsala cuando pregunte por ellas o cuando empezar diga que hay alguna resuelta que aún no ha visto: cuéntaselo en una o dos líneas y, con marcarVistas: true, quedan como vistas.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        marcarVistas: z.boolean().default(false).describe('true: las resueltas quedan marcadas como vistas (empezar deja de avisar de ellas).'),
+      },
+    },
+    async ({ oposicion, marcarVistas }) =>
+      protegido(async () => {
+        const todas = await sugerenciasDe(oposicion);
+        const sinVer = todas.filter((s) => s.datos.estado !== 'recibida' && typeof s.datos.estado === 'string' && s.datos.vista !== true);
+        if (marcarVistas && sinVer.length) await (await ctx.almacen(oposicion)).lote(sinVer.map((s) => ({ ruta: `sugerencias/${Firestore.tramo(s.id)}`, datos: { vista: true }, soloCampos: ['vista'] })));
+        return json({
+          oposicion,
+          enviadas: todas.length,
+          materialesMejorados: new Set(todas.filter((s) => s.datos.estado === 'aceptada').map((s) => `${s.datos.recurso}:${s.datos.tema}`)).size,
+          resueltasSinVer: sinVer.length,
+          ...(marcarVistas && sinVer.length ? { marcadasComoVistas: sinVer.length } : {}),
+          sugerencias: todas.slice(0, 30).map((s) => resumenSugerencia(s.id, s.datos, s.creado)),
+          ...(todas.length ? {} : { aviso: 'Aún no ha mandado ninguna sugerencia.' }),
+        });
       }),
   );
 
@@ -1234,7 +1374,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer la guía del dictamen de coyuntura',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'La guía del dictamen (1D01) y sus piezas: «guia-1D01» (la guía entera), «resumen-1D01» (resumen de 6-8 páginas), «guion-1D01» (guion del vídeo), «examen-espana» (examen de ejemplo) y «solucion-espana» (solución de máximos). Con «seccion» devuelve solo ese apartado de nivel 2 (lo normal: la guía entera ocupa unos 360.000 caracteres); sin ella, la lista de secciones y el documento por tramos (desde/limite). Material exclusivo.',
+        'La guía del dictamen (1D01) y sus piezas: «guia-1D01» (la guía entera), «resumen-1D01» (resumen de 6-8 páginas) y «guion-1D01» (guion del vídeo). Con «seccion» devuelve solo ese apartado de nivel 2 (lo normal: la guía entera ocupa unos 360.000 caracteres); sin ella, la lista de secciones y el documento por tramos (desde/limite). Material exclusivo.',
       inputSchema: {
         documento: z.enum(documentosDictamen).default('guia-1D01'),
         seccion: z.string().optional().describe('Apartado concreto (número, letra o parte del título); si falta, el documento por tramos.'),
@@ -1250,6 +1390,216 @@ export function crearServidor(ctx: Contexto): McpServer {
           return parte ? textoMd(`${AVISO_EXCLUSIVO}\n\n${parte}`) : error(`No hay ninguna sección «${seccion}». Secciones: ${apartadosDe(md).join(' · ')}`);
         }
         return tramoTexto(md, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\nSecciones: ${apartadosDe(md).join(' · ')}\n\n`, 'O pide solo la sección que necesites («seccion»): la guía entera es muy larga.');
+      }),
+  );
+
+  // ------------------------------------------------------- Dictamen de práctica
+
+  server.registerTool(
+    'preparar_dictamen',
+    {
+      title: 'Preparar un dictamen de coyuntura de práctica',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Datos para poner al opositor un dictamen de coyuntura de práctica sobre un país anonimizado, sacados del banco de países del conector (FMI, World Economic Outlook, y Banco Mundial, World Development Indicators; se actualiza solo cada semana). Lee antes el método: leer_metodo(«poner_dictamen»). Todo es opcional: sin nada, situación actual de un país avanzado o emergente fuera de la UE al azar, 1 h 45 min, 6 preguntas y nivel de examen; cambia solo lo que el opositor pida. Devuelve la configuración aplicada, un nombre ficticio, el cuadro de datos con los años como T−7 … T(+2 de proyección), las señales de desequilibrio que saltan y un bloque «oculto» con el país, los años reales, la moneda, el enlace al artículo IV y las variables que lo delatan: ese bloque NO se enseña hasta la guía de resolución. Si pide un país, un episodio o un año que no está en el banco, devuelve fueraDelBanco con las fuentes oficiales que puedes consultar tú.',
+      inputSchema: {
+        pais: z.string().optional().describe('País concreto (nombre en español o ISO3), solo si el opositor lo pide.'),
+        tipo: z.enum(TIPOS_PAIS).optional().describe('Tipo de economía: avanzado, emergente, en_desarrollo (renta baja) o materias_primas (exportador de materias primas de cualquier nivel).'),
+        region: z.enum(REGIONES).optional().describe('Región del mundo.'),
+        episodio: z.string().optional().describe('Un episodio histórico (crisis asiática, convertibilidad argentina, Islandia 2008, Grecia 2010, Sri Lanka 2022…; sin coincidencia, la lista de los que hay).'),
+        anio: z.number().int().min(1997).max(2100).optional().describe('Año T del cuadernillo (el último con datos observados), si no es la situación actual.'),
+        duracion: z.number().int().min(30).max(240).optional().describe('Minutos del ejercicio (por defecto 105, el del examen).'),
+        preguntas: z.number().int().min(2).max(8).optional().describe('Número de preguntas (por defecto 6).'),
+        dificultad: z.enum(DIFICULTADES).optional().describe('basica (para empezar: datos claros y preguntas guiadas), examen (por defecto) o exigente (señales cruzadas o contradictorias).'),
+        variables: z.array(z.string()).max(40).optional().describe('Ids de variables concretas del banco que quiere ver (por defecto, todas las que haya).'),
+        excluir: z.array(z.string()).max(30).optional().describe('Países que no deben salir (los de dictámenes anteriores: leer_dictamenes).'),
+      },
+    },
+    async (o) =>
+      protegido(async () => {
+        if (!ctx.paises) return error('El banco de países no está disponible en este servidor.');
+        const banco = await ctx.paises();
+        const r = prepararDictamen(banco, o);
+        if (!r.ok)
+          return json({
+            ...r,
+            siguiente:
+              'Díselo al opositor en una línea y ofrécele dos salidas: (1) que elijas otro país o episodio del banco (lista en «disponibles»), o (2) que busques tú los datos SOLO en las fuentes oficiales de «fuentesOficiales», citando serie, edición y fecha de cada cifra, sin inventar ni completar ninguna. Si tu entorno no puede buscar en la web, dilo y quédate con la opción 1. Sigue el método de leer_metodo(«poner_dictamen»).',
+          });
+        return json({
+          ...r.dictamen,
+          siguiente:
+            'Sigue el método de leer_metodo(«poner_dictamen»): di la configuración en una línea (sin el país) y que puede cambiarla; monta el cuadernillo con el nombre ficticio, los años T−n y los gráficos dibujados con código a partir del cuadro; si consultas el artículo IV, redibuja sus gráficos con sus datos y anonimizados. Antes de entregarlo, ofrece guardarlo en su cuenta (guardar_dictamen) para poder corregirlo después.',
+        });
+      }),
+  );
+
+  server.registerTool(
+    'guardar_dictamen',
+    {
+      title: 'Guardar un dictamen de práctica',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+      description:
+        'Guarda en la cuenta del opositor un dictamen de práctica (dictamenes/{id}): al ponerlo, el cuadernillo con el país oculto; después, con el mismo «id», la guía de resolución, su respuesta y la corrección con la nota. Solo cuando el opositor lo confirme. Lo que no se pasa no se toca.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        id: z.string().regex(/^[\w-]{4,40}$/).optional().describe('Id de un dictamen ya guardado (para añadir la guía, la respuesta o la corrección); sin él se crea uno nuevo.'),
+        nombreFicticio: z.string().max(40).optional().describe('El nombre ficticio del país en el cuadernillo.'),
+        pais: z.string().max(80).optional().describe('País real (del bloque oculto de preparar_dictamen o de tu búsqueda), con el año T: «Marruecos, T = 2025».'),
+        configuracion: z.string().max(400).optional().describe('La configuración en una línea (tipo, región, momento, duración, preguntas, dificultad).'),
+        cuadernillo: z.string().max(80_000).optional().describe('El cuadernillo en Markdown: datos, descripción de los gráficos y preguntas (obligatorio al crear).'),
+        guia: z.string().max(150_000).optional().describe('La guía de resolución (revela el país).'),
+        respuesta: z.string().max(80_000).optional().describe('La respuesta del opositor (transcrita si era a mano).'),
+        informe: z.string().max(80_000).optional().describe('El informe de corrección.'),
+        nota: z.number().min(0).max(10).optional().describe('La nota de 0 a 10 de la corrección.'),
+        minutos: z.number().int().min(1).max(300).optional().describe('Minutos que tardó el opositor.'),
+      },
+    },
+    async ({ oposicion, id, nombreFicticio, pais, configuracion, cuadernillo, guia, respuesta, informe, nota, minutos }) =>
+      protegido(async () => {
+        const db = await ctx.almacen(oposicion);
+        const marca = ahoraMadrid();
+        const cambios: { [k: string]: Json } = {};
+        for (const [k, v] of Object.entries({ nombreFicticio, pais, configuracion, cuadernillo, guia, respuesta, informe, nota, minutos })) if (v !== undefined) cambios[k] = v;
+        if (nota !== undefined) cambios.corregido = marca;
+        if (!id) {
+          if (!cuadernillo) return error('Para guardar un dictamen nuevo hace falta el cuadernillo.');
+          const nuevo = nuevoId();
+          await db.escribir(`dictamenes/${nuevo}`, { id: nuevo, creado: marca, actualizado: marca, ia: await ctx.cliente(), ...cambios });
+          return json({ guardado: true, id: nuevo, siguiente: 'Dile que está guardado en su cuenta y que, cuando lo haga, te mande su respuesta (texto, foto o PDF) para corregirla; la guía de resolución, cuando la pida.' });
+        }
+        const previo = await db.leer(`dictamenes/${id}`);
+        if (!previo) return error(`No hay ningún dictamen con id «${id}» (leer_dictamenes los lista).`);
+        if (!Object.keys(cambios).length) return error('No hay nada que guardar: pasa la guía, la respuesta, el informe o la nota.');
+        await db.escribir(`dictamenes/${id}`, { ...cambios, actualizado: marca }, [...Object.keys(cambios), 'actualizado']);
+        return json({ guardado: true, id, campos: Object.keys(cambios) });
+      }),
+  );
+
+  server.registerTool(
+    'leer_dictamenes',
+    {
+      title: 'Leer los dictámenes de práctica',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Los dictámenes de práctica guardados del opositor. Sin «id», la lista (fecha, nombre ficticio, configuración, nota) para ver su evolución o no repetir país; con «id», el cuadernillo, su respuesta y la corrección. El país real y la guía de resolución solo salen con revelar: true, y solo cuando el opositor pida la guía o la corrección.',
+      inputSchema: {
+        oposicion: oposicionParam,
+        id: z.string().regex(/^[\w-]{4,40}$/).optional(),
+        revelar: z.boolean().default(false).describe('true: incluye el país real y la guía (solo si el opositor ya ha pedido la guía o la corrección).'),
+        ...tramoParams,
+      },
+    },
+    async ({ oposicion, id, revelar, desde, limite }) =>
+      protegido(async () => {
+        const db = await ctx.almacen(oposicion);
+        if (!id) {
+          const lista = (await db.listar('dictamenes'))
+            .map(({ id: i, datos: d }) => ({
+              id: i,
+              creado: d.creado ?? null,
+              nombreFicticio: d.nombreFicticio ?? null,
+              configuracion: d.configuracion ?? null,
+              nota: typeof d.nota === 'number' ? d.nota : null,
+              corregido: d.corregido ?? null,
+              conRespuesta: typeof d.respuesta === 'string' || undefined,
+              ...(revelar ? { pais: d.pais ?? null } : {}),
+            }))
+            .sort((a, b) => String(b.creado).localeCompare(String(a.creado)));
+          const notas = lista.map((d) => d.nota).filter((n): n is number => n !== null);
+          return json({ total: lista.length, notaMedia: notas.length ? Math.round((notas.reduce((a, b) => a + b, 0) / notas.length) * 10) / 10 : null, dictamenes: lista });
+        }
+        const d = await db.leer(`dictamenes/${id}`);
+        if (!d) return error(`No hay ningún dictamen con id «${id}».`);
+        const partes = [
+          `# Dictamen de práctica «${d.nombreFicticio ?? id}»`,
+          `Creado: ${d.creado ?? '—'} · Configuración: ${d.configuracion ?? '—'}${typeof d.nota === 'number' ? ` · Nota: ${d.nota}` : ''}`,
+          revelar ? `País real: ${d.pais ?? 'no guardado'}` : '(País oculto: no lo menciones; sale con revelar: true cuando pida la guía o la corrección.)',
+          `## Cuadernillo\n\n${d.cuadernillo ?? '(no guardado)'}`,
+          typeof d.respuesta === 'string' ? `## Respuesta del opositor\n\n${d.respuesta}` : '',
+          typeof d.informe === 'string' ? `## Corrección\n\n${d.informe}` : '',
+          revelar && typeof d.guia === 'string' ? `## Guía de resolución\n\n${d.guia}` : '',
+        ].filter(Boolean);
+        return tramoTexto(partes.join('\n\n'), desde, limite);
+      }),
+  );
+
+  // ------------------------------------------------------- Prensa por idiomas
+
+  server.registerTool(
+    'articulos_idioma',
+    {
+      title: 'Artículos de prensa económica en un idioma',
+      annotations: { readOnlyHint: true, openWorldHint: true },
+      description:
+        'Artículos recientes de contenido económico en el idioma pedido (inglés, francés, alemán, italiano, portugués, ruso, chino, árabe o japonés: los del 2.º ejercicio), de una lista curada de medios de referencia e instituciones, para practicar la lectura. Lee antes leer_metodo(«prensa_idiomas»). Devuelve título, enlace, fecha, medio y si se lee gratis («libre»), con unos artículos gratis («limitado») o con suscripción («pago»); los medios de pago que el usuario tenga guardados como suyos salen marcados «tuSuscripcion». Solo enlaces: no resumas ni valores los artículos salvo que te lo pida. Con soloMedios: true, la lista de medios del idioma.',
+      inputSchema: {
+        idioma: z.string().min(2).max(20).describe('Idioma: «inglés», «fr», «German»…'),
+        tematica: z.enum(['macroeconomia', 'politica_monetaria', 'politica_fiscal', 'comercio', 'finanzas', 'energia', 'trabajo', 'union_europea', 'desarrollo']).optional().describe('Temática (sin ella, cualquier artículo económico).'),
+        acceso: z.enum(['libre', 'mis_suscripciones', 'todos']).default('todos').describe('libre: solo gratis; mis_suscripciones: gratis y los medios de pago del usuario; todos (por defecto): también los de pago, marcados.'),
+        dias: z.number().int().min(1).max(30).default(7).describe('Antigüedad máxima en días.'),
+        n: z.number().int().min(1).max(30).default(10).describe('Cuántos artículos.'),
+        soloMedios: z.boolean().default(false).describe('true: solo la lista de medios del idioma (sin leer artículos).'),
+      },
+    },
+    async ({ idioma, tematica, acceso, dias, n, soloMedios }) =>
+      protegido(async () => {
+        if (!ctx.prensa || !ctx.rss) return error('La lista de medios no está disponible en este servidor.');
+        const medios = await ctx.prensa();
+        const cod = codigoIdioma(medios, idioma);
+        if (!cod) return error(`No hay medios en «${idioma}». Idiomas: ${Object.values(medios.idiomas).join(', ')}.`);
+        const pref = await (await ctx.almacen('tcee')).leer('preferencias/prensa').catch(() => null);
+        const suscripciones = Array.isArray(pref?.suscripciones) ? pref.suscripciones.filter((x): x is string => typeof x === 'string') : [];
+        const lista = mediosPara(medios, { idioma: cod, acceso, suscripciones });
+        const ficha = (m: (typeof lista)[number]) => ({ id: m.id, nombre: m.nombre, pais: m.pais, acceso: m.acceso, tipo: m.tipo, ...(suscripciones.includes(m.id) ? { tuSuscripcion: true } : {}) });
+        if (soloMedios) return json({ idioma: medios.idiomas[cod], medios: mediosPara(medios, { idioma: cod, acceso: 'todos', suscripciones }).map(ficha), accesos: medios.accesos });
+        const leidas = await Promise.all(lista.map(async (m) => ({ medio: m, entradas: leerRss((await ctx.rss!(m.rss)) ?? '') })));
+        const articulos = articulosDe(medios, leidas, { idioma: cod, tematica, acceso, dias, n, suscripciones, ahora: new Date() });
+        const sinRespuesta = leidas.filter((l) => !l.entradas.length).map((l) => l.medio.nombre);
+        return json({
+          idioma: medios.idiomas[cod],
+          tematica: tematica ? medios.tematicas[tematica]?.nombre : 'cualquiera económica',
+          acceso,
+          articulos,
+          ...(articulos.length < n ? { aviso: `Solo hay ${articulos.length} artículo(s) con esos filtros en los últimos ${dias} días. Ofrece ampliar los días, quitar la temática o incluir medios de pago; no busques en medios fuera de la lista.` } : {}),
+          ...(sinRespuesta.length ? { sinRespuesta } : {}),
+          tusSuscripciones: suscripciones.length ? suscripciones : undefined,
+          siguiente: 'Enséñale la lista: título (enlazado), medio, fecha y acceso (🔓 libre, 🔑 limitado, 🔒 pago; ⭐ si es su suscripción). Sin resúmenes ni opiniones sobre lo que dicen; si pide trabajar un artículo, que lo pegue y sigue el método.',
+        });
+      }),
+  );
+
+  server.registerTool(
+    'guardar_suscripciones',
+    {
+      title: 'Guardar los medios de pago del usuario',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+      description:
+        'Guarda en la cuenta del usuario los medios de pago o limitados a los que está suscrito (The Economist, Le Monde…), para que articulos_idioma los incluya con acceso «mis_suscripciones» y los marque. Sustituye la lista anterior. Solo cuando el usuario lo diga o lo confirme. Ids o nombres de los medios (articulos_idioma con soloMedios: true los lista).',
+      inputSchema: {
+        medios: z.array(z.string().min(2).max(80)).max(60).describe('Medios suscritos (ids o nombres); lista vacía para borrar.'),
+      },
+    },
+    async ({ medios: pedidos }) =>
+      protegido(async () => {
+        if (!ctx.prensa) return error('La lista de medios no está disponible en este servidor.');
+        const medios = await ctx.prensa();
+        const sinTil = (t: string) => sinTildes(t).replace(/[^a-z0-9Ѐ-ӿ؀-ۿ぀-ヿ一-鿿]+/g, ' ').trim();
+        const ids: string[] = [];
+        const noEncontrados: string[] = [];
+        for (const p of pedidos) {
+          const t = sinTil(p);
+          const coinciden = medios.medios.filter((m) => m.id === p.toLowerCase() || sinTil(m.nombre) === t || sinTil(m.nombre).startsWith(`${t} `) || sinTil(m.nombre).includes(t));
+          if (!coinciden.length) noEncontrados.push(p);
+          for (const m of coinciden) if (!ids.includes(m.id)) ids.push(m.id);
+        }
+        const db = await ctx.almacen('tcee');
+        await db.escribir('preferencias/prensa', { suscripciones: ids, actualizado: ahoraMadrid() });
+        return json({
+          guardado: true,
+          suscripciones: ids.map((i) => medios.medios.find((m) => m.id === i)!.nombre),
+          ...(noEncontrados.length ? { noEncontrados, aviso: 'Esos no están en la lista de medios: díselo; no se añaden medios por petición.' } : {}),
+        });
       }),
   );
 

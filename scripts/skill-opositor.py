@@ -26,7 +26,8 @@ Qué genera (dentro de prepara-con-claude/references/):
   temas no revisados), frecuencia-test.md y proceso-y-cifras.md.
 - temas/<T>/: ficha.md (pandoc de la ficha de repaso .tex tras macros-repaso.tex),
   guion-cante.md (copia) y tema.md (pandoc del HTML del tema); temas/INDICE.md.
-- dictamen/: guia-1D01.md, resumen-1D01.md, examen-espana.md y solucion-espana.md.
+- dictamen/: guia-1D01.md, resumen-1D01.md y guion-1D01.md. El examen de ejemplo de España
+  y su solución no se publican nunca (Víctor, 24/11/2026): no entran y, si quedaron de antes, se borran.
 - canon/: notacion.md (copia) y modelos-indice.md (de mapa.yaml).
 
 Solo convierte lo que hay: entran los temas del manifiesto de la app
@@ -59,7 +60,7 @@ from datetime import datetime
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WT = os.environ.get('TCEE_WORKTREE_REVISION',
-                    os.path.join(os.path.dirname(RAIZ), 'victorgutierrezmarcos.github.io-revision'))
+                    os.path.join(os.path.dirname(RAIZ), 'victorgutierrezmarcos.github.io-revision-2'))
 REVISION = os.path.join(WT, 'oposicion', 'temario', 'app', 'revisados.json')
 FUENTES = os.path.join(WT, 'oposicion', 'temario', 'fuentes')
 CANON = os.path.join(WT, 'oposicion', 'temario', 'canon')
@@ -67,6 +68,8 @@ FUENTE_SKILL = os.path.join(RAIZ, 'claude', 'prepara-con-claude')
 MACROS = os.path.join(RAIZ, 'scripts', 'skill-opositor', 'macros-repaso.tex')
 ZIP_RUTA = 'oposicion/temario/app/prepara-con-claude.zip'
 ZIP_LIGERA = 'oposicion/temario/app/prepara-con-claude-ligera.zip'  # sin material exclusivo: lo sirve el conector MCP
+# Nunca se publican (Víctor, 24/11/2026): el examen de ejemplo del dictamen (España) y su solución.
+DICTAMEN_NUNCA = ('examen-espana.md', 'solucion-espana.md')
 TEST = os.path.join(RAIZ, 'oposicion', 'temario', 'primer-ejercicio', 'test')
 # Nombre técnico de la skill (carpeta dentro del ZIP y `name` de SKILL.md): Claude.ai
 # no admite la palabra «claude» en el nombre, así que el título «EconomIA»
@@ -1088,18 +1091,12 @@ def construir(args):
         guion = os.path.join(FUENTES, '1D01', 'guion-cante.md')
         if os.path.exists(guion):
             escribir(os.path.join(carpeta, 'guion-1D01.md'), guion_a_md(guion))
-        examen = os.path.join(FUENTES, '1D01', 'examen-espana')
-        if os.path.exists(os.path.join(examen, 'examen-espana.tex')):
-            try:
-                escribir(os.path.join(carpeta, 'examen-espana.md'), examen_a_md(examen))
-            except Exception as e:  # noqa: BLE001
-                aviso(f'examen-espana: {str(e)[:300]}')
-        if os.path.exists(os.path.join(examen, 'solucion', 'solucion-espana.tex')):
-            try:
-                escribir(os.path.join(carpeta, 'solucion-espana.md'), solucion_a_md(examen))
-            except Exception as e:  # noqa: BLE001
-                aviso(f'solucion-espana: {str(e)[:300]}')
-        print('  1D01: guía, resumen, examen y solución')
+        # El examen de ejemplo de España y su solución nunca se publican (Víctor, 24/11/2026):
+        # ni en la skill, ni en el ZIP, ni en el KV del conector. Se borran si quedaron de antes.
+        for nombre in DICTAMEN_NUNCA:
+            if os.path.exists(os.path.join(carpeta, nombre)):
+                os.remove(os.path.join(carpeta, nombre))
+        print('  1D01: guía, resumen y guion (sin el examen de España ni su solución)')
 
     # 6. Canon
     notacion = os.path.join(CANON, 'notacion.md')

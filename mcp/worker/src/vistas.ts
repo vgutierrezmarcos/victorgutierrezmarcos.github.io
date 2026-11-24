@@ -9,6 +9,7 @@ import borrado from './vistas/borrado.html';
 import clase from './vistas/clase.html';
 import cronograma from './vistas/cronograma.html';
 import informe from './vistas/informe.html';
+import sugerencia from './vistas/sugerencia.html';
 import test from './vistas/test.html';
 
 export const MIME_VISTA = 'text/html;profile=mcp-app';
@@ -28,6 +29,7 @@ export const VISTAS = {
   cronograma: { uri: 'ui://economia/cronograma.html', nombre: 'Cronograma', descripcion: 'El plan semana a semana, con el botón para guardarlo en la app.', cuerpo: cronograma, recursos: [] },
   informe: { uri: 'ui://economia/informe.html', nombre: 'Informe del cante', descripcion: 'Valoración, rúbrica, comentarios y tareas, editables antes de guardar.', cuerpo: informe, recursos: [] },
   clase: { uri: 'ui://economia/clase.html', nombre: 'Clase', descripcion: 'El resumen de la clase antes de pedirla o crearla.', cuerpo: clase, recursos: [] },
+  sugerencia: { uri: 'ui://economia/sugerencia.html', nombre: 'Sugerencia al autor', descripcion: 'La sugerencia de mejora o el reporte de una pregunta, para revisarlo y enviarlo.', cuerpo: sugerencia, recursos: [] },
   borrado: { uri: 'ui://economia/borrado.html', nombre: 'Borrar una oposición', descripcion: 'Lo que se borraría y la frase de confirmación.', cuerpo: borrado, recursos: [] },
 } satisfies Record<string, Vista>;
 

@@ -1,18 +1,18 @@
-# Vídeo «EconomIA» (clave `claude-prepara`)
+# Vídeo «EconomIA» (clave `economia`)
 
-Apaisado 1920×1080, tres minutos como máximo (2:59 desde el 11 nov.), sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `claude-prepara`) y lo enlazan `oposicion/economia.html`, `app/index.html#claude` y la app (Más → EconomIA).
+Apaisado 1920×1080, tres minutos como máximo (2:59 desde el 11 nov.), sin voz (rótulos y pantallas grabadas), con la música y la estética del promocional de la app (`scripts/video-app/`). Se publica con `/videos` (clave `economia`) y lo enlazan `oposicion/economia.html`, `app/index.html#claude` y la app (Más → EconomIA).
 
 Qué hace falta grabar (Víctor, con su cuenta de Claude.ai; grabación de pantalla a 1920×1080, sin voz, despacio, con el ratón visible):
 
 | # | Toma | Dónde | Segundos |
 |---|---|---|---|
-| G1 | Descargar la skill desde la web con la sesión iniciada (botón) y desde la app (Más → Prepara con Claude → Descargar) | web + móvil (grabación del móvil o emulador) | 15 |
+| G1 | Descargar la skill desde la web con la sesión iniciada (botón) y desde la app (Más → EconomIA → Descargar) | web + móvil (grabación del móvil o emulador) | 15 |
 | G2 | claude.ai: Ajustes → Skills → Añadir → Subir Skill → elegir el ZIP → Subir → aparece «prepara-oposicion» en «Tuyos» | claude.ai | 20 |
 | G3 | App: Cantar → «Transcribir» → reloj corriendo (acelerado) → guardar en el diario → «Enviar a Claude» | móvil | 20 |
 | G4 | claude.ai: chat nuevo, adjuntar el `.txt`, escribir «corrige este cante» → el informe aparece (scroll lento por las ocho secciones) → el PDF generado, abierto | claude.ai | 35 |
 | G5 | claude.ai: foto de un dictamen a mano + «corrige este dictamen» → informe | claude.ai | 20 |
 | G6 | claude.ai: «¿dónde se estudia la ecuación de Slutsky y con qué temas conecta?» → respuesta con las fuentes | claude.ai | 15 |
-| G7 | App: Más → Prepara con Claude → Exportar mis datos → claude.ai: «hazme el cronograma hasta el examen» → copiar el bloque → app: Cronograma → Traer el tuyo → pegar → el cronograma en Hoy | móvil + claude.ai | 35 |
+| G7 | App: Más → EconomIA → Exportar mis datos para la IA → claude.ai: «hazme el cronograma hasta el examen» → copiar el bloque → app: Cronograma → Traer el tuyo → pegar → el cronograma en Hoy | móvil + claude.ai | 35 |
 | G8 | El explorador de ficheros con la carpeta «Oposición TCEE» ordenada (0_organizacion, 1_primer_ejercicio, 3_tercer_ejercicio/A/3A08/cantes…) y Claude Desktop (o Claude Code) trabajando sobre ella: «corrige el cante de hoy y guarda el informe al lado» → el PDF aparece en `cantes/` del tema | escritorio | 30 |
 
 ## Cambio a «EconomIA» (30 oct., sin renderizar)
@@ -39,15 +39,19 @@ El 11 nov. se acortó de 4:39 a 2:59 y se añadieron las vistas interactivas del
 
 Quitadas: «Claude ya conoce tus datos» (lo dice el rótulo del cronograma), la toma G7b y «Al día» (su contenido va en la escena 3; la tarjeta de «material exclusivo» ya no sale).
 
+## Cambios del 11 nov. (tarde), con la burbuja de la app
+
+Sin cambiar la duración (2:59): la escena **en el móvil** pasa a ser **desde la app, a un toque** (la burbuja de la IA en Hoy y en el tema, capturas `ia-hoy` e `ia-tema` de `app/tool/capturas_test.dart`, y una de la app de Claude), y en **y mucho más** la sexta petición es «Esto del tema no se entiende: díselo al autor» (sugerencias de mejora). Renderizado y sin publicar: se sube con `/videos` el día del lanzamiento.
+
 ## Montaje (hecho el 28 oct. con HyperFrames)
 
-`index.html` es la composición (copiada del promocional `scripts/video-app/`: misma paleta, GSAP, rótulos de bloque y barrido dorado; la escena de DCE usa el granate, el azul y Latin Modern). `guion.json` fija el compás en que empieza cada escena; `preparar.py` lo lleva al HTML y prepara `assets/` (fuentes, el asterisco del logo de Claude —el nombre va siempre en Pagella, nunca con la letra de la marca; el icono de la app aparece aparte, en la portada y el cierre—, capturas de la app y de claude.ai en el móvil, páginas del informe en PDF, las tomas MP4 y la banda sonora de `musica.py`: la música del promocional compuesta de una pieza para esta duración, con un respiro en cada cambio de bloque, sin bucle ni cortes). La ventana de las tomas tiene su misma proporción (1912 × 948) y `object-fit: contain`, para que no se recorten los lados. El rótulo de bloque (arriba a la derecha) lleva solo el nombre del bloque; «Prepara con Claude» aparece una vez, en la marca de arriba a la izquierda. Las tomas se graban en un Edge aparte con `cdp.mjs` y se montan con `montar-toma.py` (carpeta `C:\Users\vgutierrez\AppData\Local\Temp\claude-video`); van en la raíz de `index.html`, fuera de las escenas, porque HyperFrames no admite un `<video data-start>` dentro de otro elemento con `data-start`. Rótulos sobre cada toma: qué está pasando y qué aporta.
+`index.html` es la composición (copiada del promocional `scripts/video-app/`: misma paleta, GSAP, rótulos de bloque y barrido dorado; la escena de DCE usa el granate, el azul y Latin Modern). `guion.json` fija el compás en que empieza cada escena; `preparar.py` lo lleva al HTML y prepara `assets/` (fuentes, el asterisco del logo de Claude —el nombre va siempre en Pagella, nunca con la letra de la marca; el icono de la app aparece aparte, en la portada y el cierre—, capturas de la app y de claude.ai en el móvil, páginas del informe en PDF, las tomas MP4 y la banda sonora de `musica.py`: la música del promocional compuesta de una pieza para esta duración, con un respiro en cada cambio de bloque, sin bucle ni cortes). La ventana de las tomas tiene su misma proporción (1912 × 948) y `object-fit: contain`, para que no se recorten los lados. El rótulo de bloque (arriba a la derecha) lleva solo el nombre del bloque; «EconomIA» aparece en la marca de arriba a la izquierda. Las tomas se graban en un Edge aparte con `cdp.mjs` y se montan con `montar-toma.py` (carpeta `C:\Users\vgutierrez\AppData\Local\Temp\claude-video`); van en la raíz de `index.html`, fuera de las escenas, porque HyperFrames no admite un `<video data-start>` dentro de otro elemento con `data-start`. Rótulos sobre cada toma: qué está pasando y qué aporta.
 
 ```bash
 python3 scripts/video-claude/vistas/capturar.py # solo si cambian las vistas del conector: rehace las capturas
 python3 scripts/video-claude/preparar.py        # recursos, compases, tomas aceleradas y música
-cd scripts/video-claude && npx hyperframes lint && npx hyperframes render -o ~/.local/share/oposicion-web/videos/claude-prepara-render.mp4
-python3 scripts/video-claude/publicar.py --render ~/.local/share/oposicion-web/videos/claude-prepara-render.mp4 --web --subir  # MP4 para la web, pósteres y YouTube (clave claude-prepara)
+cd scripts/video-claude && npx hyperframes lint && npx hyperframes render -o ~/.local/share/oposicion-web/videos/economia-render.mp4
+python3 scripts/video-claude/publicar.py --render ~/.local/share/oposicion-web/videos/economia-render.mp4 --web --subir  # MP4 para la web, pósteres y YouTube (clave economia)
 ```
 
 Después, quitar `hidden` a los reproductores de `oposicion/economia.html` y `app/index.html#claude` y hacer commit de `videos.json`. Nunca usar `scripts/montar-video-app.py`.

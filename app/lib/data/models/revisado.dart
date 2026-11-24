@@ -13,7 +13,8 @@ library;
 import 'esquema.dart';
 
 const _repo = 'vgutierrezmarcos/victorgutierrezmarcos.github.io';
-const _rama = 'revision-temario';
+/// Rama de publicación (se crea el día del lanzamiento desde la de trabajo, revision-temario-2).
+const _rama = 'temario-publicado';
 
 /// Dónde lee la app el manifiesto (caché de GitHub: 5 minutos).
 const urlManifiestoRevisados = 'https://raw.githubusercontent.com/$_repo/$_rama/oposicion/temario/app/revisados.json';
@@ -243,8 +244,8 @@ enum VersionTema {
   anterior,
   /// La revisada, exclusiva de la app.
   revisada,
-  /// Ninguna: hay revisada pero no hay sesión, y en vez del PDF antiguo se
-  /// pide entrar con Google.
+  /// Ninguna todavía: hay revisada pero no hay sesión; se pide entrar con
+  /// Google y, si el tema tenía versión anterior, se ofrece seguir con ella.
   sinSesion,
 }
 
@@ -253,7 +254,8 @@ class EleccionVersion {
   final VersionTema version;
   /// El tema tiene versión revisada (se pone el distintivo).
   final bool hayRevisada;
-  /// Hay versión revisada pero no hay sesión: no se abre nada y se pide entrar.
+  /// Hay versión revisada pero no hay sesión: se pide entrar (con el aviso o,
+  /// si ha elegido seguir con la anterior, desde la barra de encima).
   final bool invitarASesion;
   /// El tema tenía versión anterior (si no, no se ofrece «Ver versión anterior»).
   final bool hayAnterior;
@@ -273,13 +275,16 @@ class EleccionVersion {
   String toString() => 'EleccionVersion($version, hayRevisada: $hayRevisada, invitar: $invitarASesion, anterior: $hayAnterior)';
 }
 
-/// La revisada se abre por defecto, pero solo con sesión iniciada; sin sesión
-/// no se enseña ninguna (ni la anterior): solo el aviso para entrar con Google
-/// (decisión de Víctor, 20 nov. 2026). [pideAnterior]: el usuario ha
-/// tocado «Ver versión anterior»; sin [hayAnterior] (el tema no tenía PDF) no
-/// se ofrece.
+/// La revisada se abre por defecto, pero solo con sesión iniciada. Sin sesión,
+/// primero el aviso «Inicia sesión para ver el tema nuevo» y, si el tema tenía
+/// versión anterior, «Seguir con el tema antiguo» (Víctor, 24 nov. 2026; antes,
+/// el 20 nov., sin sesión no se enseñaba ninguna). [pideAnterior]: el usuario
+/// ha tocado «Ver versión anterior» o «Seguir con el tema antiguo»; sin
+/// [hayAnterior] (el tema no tenía PDF) no se ofrece.
 EleccionVersion elegirVersion({required TemaRevisado? revisado, required bool conSesion, bool pideAnterior = false, bool hayAnterior = true}) {
   if (revisado == null) return const EleccionVersion(version: VersionTema.anterior);
-  if (!conSesion) return EleccionVersion(version: VersionTema.sinSesion, hayRevisada: true, invitarASesion: true, hayAnterior: hayAnterior);
+  if (!conSesion) {
+    return EleccionVersion(version: pideAnterior && hayAnterior ? VersionTema.anterior : VersionTema.sinSesion, hayRevisada: true, invitarASesion: true, hayAnterior: hayAnterior);
+  }
   return EleccionVersion(version: pideAnterior && hayAnterior ? VersionTema.anterior : VersionTema.revisada, hayRevisada: true, hayAnterior: hayAnterior);
 }

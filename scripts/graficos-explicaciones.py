@@ -34,7 +34,7 @@ from PIL import Image
 
 RAIZ = Path(__file__).resolve().parents[1]
 GRAFICOS = RAIZ / 'oposicion/temario/primer-ejercicio/test/explicaciones/graficos'
-LATEX = os.environ.get('TCEE_LATEX', str(RAIZ) + '-revision/oposicion/temario/latex')
+LATEX = os.environ.get('TCEE_LATEX', str(RAIZ) + '-revision-2/oposicion/temario/latex')
 PDFLATEX = os.environ.get('TCEE_PDFLATEX', '/mnt/c/Users/vgutierrez/AppData/Local/Programs/MiKTeX/miktex/bin/x64/pdflatex.exe')
 PPP = 220          # nitidez en pantallas de móvil
 ANCHO_MAX = 1400   # px: los gráficos grandes se reducen

@@ -30,7 +30,7 @@ void main() {
   group('manifiesto', () {
     test('lee los temas con sus ficheros y las bases fijadas al commit', () {
       final m = ManifiestoRevisados.fromJson({
-        'rama': 'revision-temario',
+        'rama': 'temario-publicado',
         'commit': commit,
         'raw': raw,
         'cdn': cdn,
@@ -107,8 +107,8 @@ void main() {
       // El hash entra en un nombre de fichero: nada de barras ni puntos.
       expect(t.pdf.sha, 'x');
       // Sin bases en el manifiesto: las de la rama.
-      expect(t.url(t.pdf), startsWith('https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/'));
-      expect(t.urlDocumentoHtml, startsWith('https://raw.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/'));
+      expect(t.url(t.pdf), startsWith('https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/temario-publicado/'));
+      expect(t.urlDocumentoHtml, startsWith('https://raw.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/temario-publicado/'));
     });
 
     test('un manifiesto que no vale queda vacío', () {
@@ -165,14 +165,61 @@ void main() {
       expect(e.puedeCambiar, isFalse);
     });
 
-    test('sin sesión, ninguna versión (ni la anterior): solo el aviso para entrar', () {
+    test('sin sesión, primero el aviso para entrar (ni la revisada ni la anterior)', () {
+      final e = elegirVersion(revisado: rev, conSesion: false);
+      expect(e.version, VersionTema.sinSesion);
+      expect(e.esRevisada, isFalse);
+      expect(e.hayRevisada, isTrue);
+      expect(e.invitarASesion, isTrue);
+      expect(e.hayAnterior, isTrue);
+      expect(e.puedeCambiar, isFalse);
+    });
+
+    test('sin sesión, «Seguir con el tema antiguo» abre la anterior y sigue invitando a entrar', () {
+      final e = elegirVersion(revisado: rev, conSesion: false, pideAnterior: true);
+      expect(e.version, VersionTema.anterior);
+      expect(e.esRevisada, isFalse);
+      expect(e.hayRevisada, isTrue);
+      expect(e.invitarASesion, isTrue);
+      // Sin sesión no se pasa a la revisada con «Ver versión revisada»: hay que entrar.
+      expect(e.puedeCambiar, isFalse);
+    });
+
+    test('sin sesión y sin versión anterior, solo el aviso (no se ofrece seguir con la antigua)', () {
       for (final pide in [true, false]) {
-        final e = elegirVersion(revisado: rev, conSesion: false, pideAnterior: pide);
+        final e = elegirVersion(revisado: rev, conSesion: false, pideAnterior: pide, hayAnterior: false);
         expect(e.version, VersionTema.sinSesion);
-        expect(e.esRevisada, isFalse);
-        expect(e.hayRevisada, isTrue);
+        expect(e.hayAnterior, isFalse);
         expect(e.invitarASesion, isTrue);
-        expect(e.puedeCambiar, isFalse);
+      }
+    });
+
+    test('al entrar después de seguir con la antigua, la página vuelve a la revisada', () {
+      // tema_page pone pideAnterior a false al iniciar sesión desde el aviso o la barra.
+      final e = elegirVersion(revisado: rev, conSesion: true, pideAnterior: false);
+      expect(e.esRevisada, isTrue);
+      expect(e.invitarASesion, isFalse);
+    });
+
+    test('la guía del dictamen sigue la misma regla y su manifiesto no trae el examen de España', () {
+      final m = ManifiestoRevisados.fromJson({
+        'temas': [tema('3.A.12')],
+        'dictamen': {
+          'archivo': '1D01',
+          'titulo': 'Guía para el dictamen de coyuntura económica',
+          'aprobado': '2026-10-26',
+          'pdf': {'ruta': 'oposicion/temario/primer-ejercicio/1D01.pdf'},
+          'repaso': {'ruta': 'oposicion/temario/primer-ejercicio/1D01-repaso.pdf'},
+        },
+      });
+      final d = m.de(codigoDictamen)!;
+      expect(d.esDictamen, isTrue);
+      expect(elegirVersion(revisado: d, conSesion: false).version, VersionTema.sinSesion);
+      expect(elegirVersion(revisado: d, conSesion: false, pideAnterior: true).version, VersionTema.anterior);
+      expect(elegirVersion(revisado: d, conSesion: true).esRevisada, isTrue);
+      for (final c in ClaseFichero.values) {
+        final f = d.fichero(c);
+        if (f != null) expect(f.ruta, isNot(matches(RegExp(r'(examen|solucion)-espana'))));
       }
     });
   });

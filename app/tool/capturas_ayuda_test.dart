@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tcee_app/app.dart';
+import 'package:tcee_app/core/ia.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/data/models/preparador.dart';
@@ -101,6 +102,9 @@ void main() {
     if (antes != null) await antes(demo);
     Recorrido.vistaMovil(tester);
     await tester.pumpWidget(ProviderScope(overrides: [...demo.overrides, firestoreRelojProvider.overrideWithValue(demo.dbRed), ...extra], child: const TceeApp()));
+    await tester.pumpAndSettle();
+    // Sin la burbuja de la IA: los vídeos enseñan solo los pasos que cuentan.
+    await ProviderScope.containerOf(tester.element(find.byType(MaterialApp))).read(iaProvider.notifier).mostrarBurbuja(false);
     await tester.pumpAndSettle();
     return (demo, Recorrido(tester));
   }
@@ -266,7 +270,7 @@ void main() {
     await v.toque(find.text('Crear el cronograma'));
     await v.foto('creado');
     await r.pestana('Hoy');
-    await r.buscar(find.textContaining('te toca'));
+    await r.buscar(find.textContaining('te toca').first); // Hoy lo dice en más de un sitio
     await v.foto('hoy');
     v.terminar();
   });

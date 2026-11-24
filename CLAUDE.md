@@ -68,6 +68,9 @@ Static website for the Spanish civil service exam "Oposición a Técnico Comerci
 **Materiales exclusivos** (`oposicion/exclusivos.json`, `exclusivos.js`, `condiciones-materiales.html`)
 - Everything published or revised since 1 Oct 2026 is "exclusivo" (personal-use licence, not CC; TDM reservation in `/.well-known/tdmrep.json`). `python3 scripts/exclusivos.py` rebuilds the registry from the revision-branch manifest (`revisados.json`) plus the `WEB` list in the script; `exclusivos.js` reads it on every page (label, call to the app, the "Materiales exclusivos" section in `oposicion/temario.html`, the line on the homepage). Never mark pages by hand. `scripts/sellar-exclusivo.py` stamps web PDFs listed with `sellar` (none at the moment: the exam compilations are not exclusive). The revision-branch pipeline marks a tema as exclusive by its `\tcefecha` (`tcee-comun.sty`, `comun.py`), and the app reads `exclusivo` from the manifest (read-only: no share, Word or annotated download)
 
+**Sugerencias de mejora** (`scripts/sugerencias.py`, `scripts/enviar-sugerencias.py`, `.github/workflows/sugerencias.yml`, skill `/sugerencias`)
+- Users send improvement suggestions for topics and fichas from their AI (connector tool `sugerir_mejora`, which the AI offers with a one-click preview when a question reveals something unclear) and from the app («Sugerir una mejora»). They are stored in the user's own subtree (`…/sugerencias/{id}`), without name or email; the inbox (`python3 scripts/sugerencias.py`) drops the uid, so it is anonymous: never look up or record who sent one. Resolutions are recorded locally and `--enviar` dispatches the Action that writes the outcome back to the user. Test questions keep using `reportesTest` (`scripts/reportes-test.py`). `/revisartema` picks up a topic's suggestions with `--tema T`. A daily agent on Víctor's PC (`scripts/agente-sugerencias.py`, Windows scheduled task `AgenteSugerenciasTCEE`, `claude -p` with model by difficulty) triages them, resolves the obvious ones and emails the rest with signed Accept/Discard links served by the connector Worker (`mcp/worker/src/decisiones.ts`)
+
 **Cookie Consent** (`cookie-consent.js`)
 - GDPR-compliant banner managing Google Analytics consent (`G-ZC63ML9ECJ`)
 - Stores preferences in localStorage (`vgm_cookie_consent`)
@@ -91,6 +94,11 @@ node build-search-index.js
 # Regenerate the PDF outlines the app shows next to each tema (needs pypdf), after changing a PDF in oposicion/temario
 python3 scripts/esquemas-temario.py
 
+# Regenerate the test simulator's question images (test/img/) at 2x density: vector crops of examenes_oficiales_test.pdf,
+# raster crops at native resolution and old scans redrawn in test/img/tex/*.tex (MiKTeX). Writes «ancho» (CSS width) to preguntas.json.
+# New images with a figure: add them to VECTOR/NATIVO (or a .tex) and to ANCHO in the script
+python3 scripts/imagenes-test.py
+
 # Refresh the "Convocatoria en curso" block of oposicion/por-que-tcee.html from oposicion/proceso.json
 # (leer-proceso.yml runs it automatically; when a new convocatoria appears, add its plazas/tasas to CONVOCATORIAS in the script)
 python3 scripts/guia-convocatoria.py
@@ -102,6 +110,7 @@ python3 scripts/economia-visible.py --ocultar
 # Rebuild the index of other TCEE's notes from the ATCEE repository (apuntes-otros.json for oposicion/enlaces.html and references/apuntes-otros.md
 # of the skill, source and deployed copy); apuntes-otros.yml runs it every Monday. Needs gdown; --sin-drive skips listing the Drive folders
 python3 scripts/apuntes-otros.py
+python3 scripts/fuentes-temas.py   # then: one index of sources per topic (web, Manuel, ATCEE, manuals) for the Claude connector
 
 # Recompute "La oposición a TCEE en cifras" (oposicion/cifras.html, cifras.json and the summary in por-que-tcee.html)
 # after each convocatoria ends. Needs the OCR venv (uv venv ~/.local/share/oposicion-web/venv-ocr && uv pip install pymupdf rapidocr-onnxruntime pypdf)
@@ -114,6 +123,11 @@ python3 scripts/atcee-cuerpo.py      # first: promociones and asociados counts f
 python3 scripts/informe-web.py --datos          # then write valoracion.json and run --render <folder>
 python3 scripts/comprobar-seo.py                # technical SEO check with a 0-100 score (PageSpeed needs an API key)
 python3 scripts/estadisticas-app.py             # Play, app Analytics, APK downloads and the network (estadisticas-red.py)
+
+# Data for the connector's practice dictamen and language press (paises-dictamen.yml and prensa-medios.yml run them every Monday):
+# country bank from IMF WEO (api.imf.org SDMX) + World Bank -> oposicion/datos/paises-dictamen.json; curated press outlets by language -> oposicion/datos/prensa-medios.json
+python3 scripts/paises-dictamen.py
+python3 scripts/prensa.py --comprobar
 
 # Generate RSS feed manually
 node generate-rss.js

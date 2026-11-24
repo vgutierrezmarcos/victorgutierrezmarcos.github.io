@@ -279,7 +279,7 @@ class SearchUI {
             const onClick = isNoDisponible ? 'onclick="event.preventDefault(); alert(\'Este tema aún no está disponible.\')"' : '';
             
             return `
-                <a href="${href}" class="${itemClass}" data-index="${index}" target="${target}" ${onClick}>
+                <a href="${href}" class="${itemClass}" data-index="${index}" target="${target}"${result.numero ? ` data-tema="${result.numero}"` : ''} ${onClick}>
                     <div class="result-icon">${icon}</div>
                     <div class="result-content">
                         <div class="result-header">
@@ -376,6 +376,8 @@ class SearchUI {
     selectCurrentResult() {
         const selected = this.searchResults.querySelector('.search-result-item.selected');
         if (selected) {
+            // Tema con versión revisada: lo abre exclusivos.js (con sesión, la revisada; sin ella, el aviso)
+            if (window.tceeTemasRevisados && window.tceeTemasRevisados.abrir(selected)) return;
             // No hacer click si es un tema no disponible
             if (selected.classList.contains('no-disponible')) {
                 alert('Este tema aún no está disponible.');

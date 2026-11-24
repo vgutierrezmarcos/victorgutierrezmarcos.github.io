@@ -1,0 +1,50 @@
+name: Medios de prensa por idiomas
+
+# Cada lunes comprueba que las fuentes RSS de los medios de cada idioma sigan
+# respondiendo y reescribe oposicion/datos/prensa-medios.json (un medio que
+# falla dos semanas seguidas queda con ok: false y el conector se lo salta).
+# Los artículos no se guardan: el conector (articulos_idioma) los lee al momento.
+on:
+  schedule:
+    - cron: '23 7 * * 1'
+  push:
+    paths:
+      - 'scripts/prensa.py'
+      - '.github/workflows/prensa-medios.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: prensa-medios
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Comprobar las fuentes de cada medio
+        run: python3 scripts/prensa.py --comprobar
+
+      - name: Commit si hay datos nuevos
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add oposicion/datos/prensa-medios.json
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -m "Medios de prensa: fuentes comprobadas [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 10
+          done
+          exit 1

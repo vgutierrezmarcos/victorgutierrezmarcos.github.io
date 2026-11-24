@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
 Publica el último render del vídeo de EconomIA (renders/): lo recodifica
-para la web (H.264 + AAC) en ~/.local/share/oposicion-web/videos/claude-prepara.mp4
-(no se guarda en el repositorio: se sube a YouTube con la clave `claude-prepara`,
+para la web (H.264 + AAC) en ~/.local/share/oposicion-web/videos/economia.mp4
+(no se guarda en el repositorio: se sube a YouTube con la clave `economia`,
 skill /videos), y saca los pósteres que enlazan la página y la app:
-oposicion/img/claude/video.webp y app/promo/ayuda/claude-prepara.webp.
+oposicion/img/claude/video.webp y app/promo/ayuda/economia.webp.
 
     python3 scripts/video-claude/publicar.py [--render RUTA.mp4] [--web] [--subir]
-Con --web deja además una copia ligera en el repositorio (oposicion/img/claude/claude-prepara.mp4,
+Con --web deja además una copia ligera en el repositorio (oposicion/img/claude/economia.mp4,
 1080p a ~1 Mbps como app/promo/oposicion-tcee.mp4) para servirlo desde la propia página mientras
 no está en YouTube. --render toma ese fichero en vez del último de renders/ (el render se escribe
 fuera de C: cuando no hay sitio: npx hyperframes render -o ~/.local/share/oposicion-web/videos/x.mp4).
@@ -30,7 +30,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(os.path.dirname(AQUI))
 SALIDA = os.path.expanduser('~/.local/share/oposicion-web/videos')
 POSTER = 3.2  # segundo del póster: la portada ya entera
-CLAVE = 'claude-prepara'
+CLAVE = 'economia'
 TITULO = 'EconomIA: prepara la oposición a TCEE y DCE con tu IA'
 DESCRIPCION = ('Cómo usar EconomIA, el conector de victorgutierrezmarcos.es para Claude, Le Chat, ChatGPT y Gemini (con Claude, completo): '
                'tu IA conoce el temario y tus datos de la app, corrige cantes y dictámenes, resuelve dudas con gráficos como los del temario, '
@@ -41,9 +41,9 @@ DESCRIPCION = ('Cómo usar EconomIA, el conector de victorgutierrezmarcos.es par
 def main():
     p = argparse.ArgumentParser(description=__doc__.split('\n\n')[0])
     p.add_argument('--ffmpeg', default=os.environ.get('FFMPEG') or shutil.which('ffmpeg'))
-    p.add_argument('--subir', action='store_true', help='subirlo a YouTube con la clave claude-prepara')
+    p.add_argument('--subir', action='store_true', help='subirlo a YouTube con la clave economia')
     p.add_argument('--render', help='render de origen (por defecto, el último de renders/)')
-    p.add_argument('--web', action='store_true', help='copia ligera en oposicion/img/claude/claude-prepara.mp4 para la página')
+    p.add_argument('--web', action='store_true', help='copia ligera en oposicion/img/claude/economia.mp4 para la página')
     args = p.parse_args()
     if args.render:
         origen = args.render

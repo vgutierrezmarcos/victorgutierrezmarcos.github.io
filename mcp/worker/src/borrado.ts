@@ -28,6 +28,8 @@ export const COLECCIONES_OPOSICION: Record<string, string[]> = {
   tablon: [],
   coordinacion: [],
   anotaciones: ['paginas'],
+  sugerencias: [],
+  dictamenes: [],
 };
 
 /** Lo que el usuario entiende de cada colección, para enseñarle qué se borra. */
@@ -41,6 +43,8 @@ const NOMBRES: Record<string, string> = {
   cronogramas: 'cronogramas',
   cronogramasRecibidos: 'cronogramas recibidos de un preparador',
   anotaciones: 'temas con anotaciones a mano',
+  sugerencias: 'sugerencias enviadas al autor',
+  dictamenes: 'dictámenes de práctica',
 };
 
 /** Cuántos documentos hay en cada colección (solo las que tienen algo). */

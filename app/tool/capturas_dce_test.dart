@@ -26,6 +26,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
+import 'package:tcee_app/core/ia.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/data/models/estructura.dart';
@@ -252,6 +253,9 @@ void main() {
     ]);
     await preparador.guardarPerfil(PerfilPreparador(papelElegido: true, updatedAt: hoy));
     await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
+    await tester.pumpAndSettle();
+    // Sin la burbuja de la IA, como en capturas_test.dart (y en los vídeos de instalación).
+    await ProviderScope.containerOf(tester.element(find.byType(MaterialApp))).read(iaProvider.notifier).mostrarBurbuja(false);
     await tester.pumpAndSettle();
 
     Future<void> tocar(Finder f) async {

@@ -35,6 +35,9 @@ WORKER = os.path.join(RAIZ, 'mcp', 'worker')
 CARPETAS = ('temas', 'dictamen', 'canon')
 # KV admite valores de hasta 25 MB; los .md de un tema rondan los 100-300 kB.
 MAX_BYTES = 25 * 1024 * 1024
+# Nunca se publican (Víctor, 24/11/2026): el examen de ejemplo del dictamen (España) y su solución.
+# No se suben aunque estén en la carpeta y, en cada subida, se borran del KV por si quedaron de antes.
+NUNCA = ('dictamen/examen-espana.md', 'dictamen/solucion-espana.md')
 
 
 def leer(ruta):
@@ -87,6 +90,9 @@ def recoger():
                     continue
                 ruta = os.path.join(raiz, nombre)
                 clave = os.path.relpath(ruta, SKILL).replace(os.sep, '/')
+                if clave in NUNCA or 'espana' in nombre and clave.startswith('dictamen/'):
+                    print(f'  (fuera: {clave}, no se publica nunca)')
+                    continue
                 texto = leer(ruta)
                 if len(texto.encode('utf-8')) > MAX_BYTES:
                     sys.exit(f'{clave} supera los 25 MB de KV')
@@ -169,6 +175,14 @@ def main():
             wrangler('kv', 'bulk', 'delete', f.name, '--binding', args.binding, '--force', remoto=remoto)
             os.unlink(f.name)
         print(f'  borradas {len(claves)} claves')
+
+    # Lo que no se publica nunca se borra siempre (si no está, wrangler no se queja).
+    with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8') as f:
+        json.dump(list(NUNCA), f)
+    try:
+        wrangler('kv', 'bulk', 'delete', f.name, '--binding', args.binding, '--force', remoto=remoto)
+    finally:
+        os.unlink(f.name)
 
     with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8') as f:
         json.dump(bulk, f, ensure_ascii=False)

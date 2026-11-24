@@ -6,7 +6,7 @@ Servidor MCP remoto de la app «Oposición TCEE · DCE», como Cloudflare Worker
 
 | Ruta | Qué es |
 |---|---|
-| `worker/` | El Worker (TypeScript): `src/index.ts` (OAuth y rutas), `src/mcp.ts` (transporte MCP), `src/herramientas.ts` (las herramientas), `src/firestore.ts` (REST de Firestore), `src/datos.ts` (documentos de la app ↔ JSON de la skill), `src/firebase.ts` (Secure Token e Identity Toolkit), `src/cifrado.ts` (AES-GCM), `src/contenido.ts` (material exclusivo en KV), `src/paginas.ts` (consentimiento), `test/` (vitest sobre workerd) |
+| `worker/` | El Worker (TypeScript): `src/index.ts` (OAuth y rutas), `src/mcp.ts` (transporte MCP), `src/herramientas.ts` (las herramientas), `src/firestore.ts` (REST de Firestore), `src/datos.ts` (documentos de la app ↔ JSON de la skill), `src/firebase.ts` (Secure Token e Identity Toolkit), `src/cifrado.ts` (AES-GCM), `src/contenido.ts` (material exclusivo en KV), `src/practica.ts` (dictámenes de práctica y prensa por idiomas), `src/paginas.ts` (consentimiento), `test/` (vitest sobre workerd) |
 | `login.html` | Página de la web (`https://www.victorgutierrezmarcos.es/mcp/login.html`) que entra con Google (Firebase 8.10.1, como el resto de la web) y devuelve los tokens al Worker |
 | `publicar-contenido.py` | Sube al KV `CONTENIDO` los `.md` exclusivos de la skill (temas, dictamen y canon) desde la carpeta de construcción de `scripts/skill-opositor.py` (`~/.cache/skill-opositor/…`). La copia de la skill desplegada en la web **no** los lleva: solo se sirven con sesión |
 | `extraer-textos.py` | Sube a `CONTENIDO` las claves `textos/{tema}` (texto del PDF de la web y de los apuntes de la ATCEE en PDF o .doc) que usa `leer_fuente`. Solo funciona en el equipo de Víctor (usa `curl.exe` y rutas de Windows) |
@@ -32,7 +32,10 @@ Claude ──POST /mcp (Bearer)──► herramientas: Firestore REST con el ID 
 - **Tokens de Firebase**: el refresh token va cifrado con AES-GCM (`CLAVE_CIFRADO`) dentro de los `props` de la concesión (que la biblioteca cifra a su vez); el ID token (1 h) se renueva con la Secure Token API y se cachea cifrado 50 min en `SESIONES`. En cada renovación del token de Claude se comprueba que Firebase sigue aceptando el refresh token: si no (contraseña cambiada, cuenta borrada, «Desconectar Claude» en la app), la concesión se revoca con `invalid_grant` y Claude pide volver a conectar.
 - **Contenido exclusivo** en el KV `CONTENIDO`: solo se sirve con sesión válida, con el aviso de uso personal en cada respuesta.
 - Sin registros: `observability.enabled = false`; el Worker no guarda nada con datos personales salvo lo anterior (uid, correo y tokens cifrados en KV, con caducidad).
+- Marca de conexión (`src/conexion.ts`, 11 nov.): en la primera llamada correcta de cada día, el Worker apunta en la cuenta del propio usuario (`users/{uid}/cuenta/conector`, campo `ias.{claude|lechat|chatgpt|gemini|otra}.ultimoUso`, con su token y sin retrasar la respuesta) con qué IA usa el conector. La app lo lee para ofrecerle la burbuja que abre esa IA. Solo la IA y la fecha; una escritura al día por usuario e IA (clave `con:{sha256(uid)}:{ia}` en `SESIONES`, 24 h). `desconectar` borra el documento y las claves. La IA se deduce del nombre y del redirect del cliente OAuth (`iaDe`).
 - **Medición anónima** (Workers Analytics Engine, conjunto `analytics_mcp`): por cada llamada, la herramienta, el nombre de la IA cliente, la oposición, si fue bien y los milisegundos. Sin uid, correo ni contenido. Se consulta con la API SQL (`POST https://api.cloudflare.com/client/v4/accounts/<cuenta>/analytics_engine/sql`, p. ej. `SELECT blob1 AS herramienta, blob4 AS resultado, SUM(_sample_interval) AS llamadas FROM analytics_mcp WHERE timestamp > NOW() - INTERVAL '7' DAY GROUP BY herramienta, resultado ORDER BY llamadas DESC`).
+- **Señal de dudas** (mismo conjunto, índice `senal`): cada vez que la IA propone una sugerencia o un reporte (`vistaPrevia`), se envíe o no, se cuenta `blob3` oposición, `blob4` recurso (`tema`, `ficha`, `test`), `blob5` tema, `blob6` apartado y `blob7` tipo. Sin uid ni texto: sirve para ver qué apartados generan más dudas (`SELECT blob5 AS tema, blob6 AS apartado, blob7 AS tipo, SUM(_sample_interval) AS veces FROM analytics_mcp WHERE index1 = 'senal' GROUP BY tema, apartado, tipo ORDER BY veces DESC`).
+- **Decisiones del autor sobre las sugerencias** (`src/decisiones.ts`, rutas públicas con enlace firmado con `CLAVE_CIFRADO`, sin sesión): `GET /informe?c&f` sirve el informe del día que deja el agente (`scripts/agente-sugerencias.py`) y `GET /decidir?i&e&f` enseña una sugerencia y pide confirmar; solo el `POST /decidir` apunta la decisión (`decision:<id>` en `SESIONES`, 90 días), porque los filtros de correo abren los enlaces. Nada lleva datos de usuarios.
 - **Dirección antigua** (`…workers.dev`): sigue respondiendo, pero `/authorize` enseña una página que explica cómo volver a añadir el conector con `mcp.victorgutierrezmarcos.es` (la autorización empezada en un dominio no puede acabar en el otro).
 
 ## Herramientas
@@ -48,13 +51,18 @@ Lecturas (todas con `oposicion`: `tcee` por defecto o `dce`; si una sale vacía 
 | `preguntas_test(temas, n, modo)` | Preguntas oficiales de `preguntas.json` por tema, filtradas con `progress/spaced_repetition`, con la clave de `explicaciones/<examen>.json` |
 | `test_interactivo(temas, n, modo)` | Lo mismo que `preguntas_test`, con la vista interactiva del test (ver «Vistas interactivas») |
 | `apuntar_test(respuestas, segundos?, clave?)` | Apunta en la app un test hecho en el chat: lo corrige contra el banco, lo deja en `exam_results` (`origen: "ia"`) y actualiza el repaso espaciado (`progress/spaced_repetition`, misma regla que la app). La vista del test la llama sola al terminar; con `clave` no cuenta dos veces |
-| `reportar_pregunta(pregunta, motivo, comentario, elegida?)` | Reporta un error en una pregunta oficial o del banco (colección `reportesTest`, las mismas claves que la app; el correo lo manda `reportes-test.yml`). La vista del test tiene su botón |
+| `reportar_pregunta(pregunta, motivo, comentario, elegida?, vistaPrevia?)` | Reporta un error en una pregunta oficial o del banco (colección `reportesTest`, las mismas claves que la app; el correo lo manda `reportes-test.yml`). La vista del test tiene su botón; con `vistaPrevia: true` no envía nada y el usuario lo hace con el botón de la vista de sugerencias |
+| `sugerir_mejora(recurso, tema, apartado, tipo, cita, propuesta, duda, vistaPrevia?)` | Sugerencia al autor sobre un tema o su ficha. Va a los datos del propio usuario (`sugerencias/{id}` bajo su raíz), **sin correo ni nombre**: solo él y la bandeja del autor (`scripts/sugerencias.py`, que descarta el uid) la leen. La IA la ofrece sola cuando una duda destapa algo que mejorar. Tope: 20 al día por usuario; la misma dos veces no se duplica |
+| `mis_sugerencias(marcarVistas?)` | Las sugerencias del usuario y en qué han quedado (`estado`, `respuesta`); `empezar` avisa de las resueltas sin ver |
 | `figura_test(url)` | Solo para la vista del test (`visibility: ["app"]`): la imagen de una figura en base64 cuando el cliente no deja cargarla de la web |
 | `leer_proceso(seccion)` | `oposicion/proceso.json` (documentos del proceso selectivo en curso) |
 | `fuentes_tema(tema)`, `buscar_temario(consulta)`, `leer_fuente(enlace)` | `fuentes-temas.json`; la búsqueda mira también los apartados de cada PDF (`references/temario/indices-temas.md`); `leer_fuente` lee apuntes de la ATCEE, PDF de la web (`textos/{tema}` en KV) y páginas de Manuel |
 | `listar_temas_revisados`, `leer_tema`, `leer_ficha`, `leer_guia_dictamen`, `leer_canon` | KV `CONTENIDO`; por apartado o por tramos (`desde`/`limite`, 40.000 caracteres por defecto) |
 | `preparar_clase(con, dia)` | Preparadores, huecos, reservas, próximas clases y temas del cronograma para agendar |
 | `leer_alumnos`, `leer_alumno(alumno, n)` | Preparadores: `alumnos`, `sesiones`, `reservas` que le piden y, del alumno enlazado, lo que las reglas le dejan ver (`progress/settings`, cronograma compartido, informes de las clases que firma él) |
+| `preparar_dictamen(tipo, region, episodio, anio, …)` | Banco de países `oposicion/datos/paises-dictamen.json` (`URL_PAISES`; `scripts/paises-dictamen.py`, FMI WEO SDMX + Banco Mundial, `paises-dictamen.yml` cada lunes): elige el país (por defecto, avanzado o emergente fuera de la UE), lo anonimiza y separa lo que lo delata en `oculto` (`src/practica.ts`) |
+| `leer_dictamenes(id, revelar)` | `dictamenes/{id}`; el país y la guía solo con `revelar` |
+| `articulos_idioma(idioma, tematica, acceso)` | Lista de medios `oposicion/datos/prensa-medios.json` (`URL_PRENSA`; `scripts/prensa.py`, `prensa-medios.yml` comprueba las fuentes cada lunes) y sus RSS leídos al momento (caché de 30 min); `preferencias/prensa` para las suscripciones |
 
 Escrituras (siempre con confirmación del usuario: en la conversación o con el botón de la vista interactiva):
 
@@ -66,6 +74,8 @@ Escrituras (siempre con confirmación del usuario: en la conversación o con el 
 | `anotar_tema` | `notes/{tema}.pendientes` y, opcional, `temasEstudiados` / `temasEnRepaso` |
 | `agendar_clase` | Opositor: `reservas/{id}` y `temasClases`. Preparador: `sesiones/{id}` y la copia en los `cantes` del alumno |
 | `responder_reserva`, `guardar_nota_alumno`, `guardar_deberes` | Preparadores: estado de la reserva y la clase `res_{id}` en las dos agendas; `alumnos/{id}.notas`; `tareas` de la sesión y de su copia |
+| `guardar_dictamen` | `dictamenes/{id}`: el cuadernillo con el país; después la guía, la respuesta, el informe y la nota (solo los campos que llegan) |
+| `guardar_suscripciones` | `users/{uid}/preferencias/prensa.suscripciones` (ids de medios de la lista; sustituye la anterior) |
 | `desconectar(confirmar)` | Revoca las concesiones OAuth del usuario y borra su ID token cacheado |
 
 Las fechas se escriben como la app: hora de Madrid sin zona. Los ids que llegan de la IA se codifican antes de ir en una ruta.
@@ -83,13 +93,14 @@ Al apuntar un test, las oficiales van a `progress/spaced_repetition` (el que lee
 
 ## Vistas interactivas (MCP Apps, «interactive connectors»)
 
-Cinco herramientas declaran una vista (`_meta.ui.resourceUri`) que los clientes compatibles (Claude) pintan dentro del chat; los demás reciben el mismo texto de siempre. Las vistas son recursos `ui://economia/*.html` (`text/html;profile=mcp-app`) que salen de `src/vistas/*.html` (texto empaquetado con la regla `Text` de `wrangler.toml`) y `src/vistas.ts`: `comun.html` lleva los estilos y el puente con el cliente (JSON-RPC por `postMessage`, sin dependencias) y cada vista, su cuerpo.
+Siete herramientas declaran una vista (`_meta.ui.resourceUri`) que los clientes compatibles (Claude) pintan dentro del chat; los demás reciben el mismo texto de siempre. Las vistas son recursos `ui://economia/*.html` (`text/html;profile=mcp-app`) que salen de `src/vistas/*.html` (texto empaquetado con la regla `Text` de `wrangler.toml`) y `src/vistas.ts`: `comun.html` lleva los estilos y el puente con el cliente (JSON-RPC por `postMessage`, sin dependencias) y cada vista, su cuerpo.
 
 | Vista | Herramienta | Qué hace |
 |---|---|---|
 | `test.html` | `test_interactivo` | Una pregunta cada vez, con figura y fórmulas (MathJax de jsDelivr), corrección al momento y «¿Por qué?»; al final manda el resultado al chat y puede pedir más preguntas |
 | `cronograma.html` | `proponer_cronograma` | El plan por meses; con `vistaPrevia: true`, botón «Guardar en la app» |
 | `informe.html` | `guardar_informe_cante` | Valoración, rúbrica, comentarios y tareas editables; con `vistaPrevia: true`, botón «Guardar en la app» |
+| `sugerencia.html` | `sugerir_mejora`, `reportar_pregunta` | La sugerencia o el reporte ya redactados, con el tipo y el texto editables; con `vistaPrevia: true`, botón «Enviar al autor» |
 | `clase.html` | `agendar_clase` | El resumen de la clase y, si pisa otra, la casilla para seguir; con `vistaPrevia: true`, botón «Pedir la clase» o «Crear la clase» |
 | `borrado.html` | `borrar_datos_oposicion` | El recuento del paso 1 y el campo donde el usuario escribe la frase; el botón hace el paso 2 |
 

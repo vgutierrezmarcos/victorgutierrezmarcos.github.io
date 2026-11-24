@@ -1,0 +1,94 @@
+<style>
+  .campo { margin-top: 12px; }
+  .campo > label { display: block; margin-bottom: 4px; }
+  select { font: inherit; color: inherit; background: transparent; border: 1px solid var(--linea); border-radius: 4px; padding: 8px 10px; max-width: 100%; }
+  blockquote { margin: 10px 0 0; padding: 4px 0 4px 12px; border-left: 2px solid var(--linea); color: var(--apagado); font-size: 14px; }
+  .cuenta { font-size: 13px; text-align: right; }
+  textarea.alto { min-height: 120px; }
+</style>
+<div id="raiz"><p class="apagado">Preparando la sugerencia…</p></div>
+<script>
+  // Una sola vista para las dos formas de avisar al autor: sugerir_mejora (temas y fichas) y reportar_pregunta (test).
+  (function () {
+    var enviando = false;
+    var TIPOS = [['no_explica', 'No lo explica'], ['poco_claro', 'Está poco claro'], ['error', 'Hay un error'], ['desactualizado', 'Está desactualizado'], ['falta', 'Falta algo'], ['errata', 'Errata'], ['otro', 'Otra cosa']];
+    var MOTIVOS = [['respuesta', 'La respuesta dada por buena'], ['explicacion', 'La explicación'], ['enunciado', 'El enunciado o las opciones'], ['otro', 'Otra cosa']];
+
+    function desplegable(pares, valor, rotulo) {
+      var s = el('select', { 'aria-label': rotulo }, pares.map(function (p) { return el('option', { value: p[0], selected: p[0] === valor }, p[1]); }));
+      s.value = valor;
+      return s;
+    }
+
+    function hecho(texto) {
+      pintar([el('div', { class: 'sobre' }, 'Sugerencia al autor'), el('p', { class: 'aviso aviso--bien' }, texto), el('p', { class: 'apagado' }, 'Verás en qué queda en la app (Más → Mis sugerencias).')]);
+    }
+
+    function recibir(d, args) {
+      if (!d || d.error) {
+        pintar(el('p', { class: 'aviso aviso--mal' }, (d && d.error) || 'No hay sugerencia que enseñar.'));
+        return;
+      }
+      var esTest = !!d.pregunta || d.reportado !== undefined;
+      if (d.enviada === true || d.reportado === true || Vista.recordar('enviada') === '1') {
+        hecho(esTest ? 'Reporte enviado. Gracias: se revisará.' : 'Sugerencia enviada. Gracias: el autor la revisará' + (d.tema ? ' para el ' + d.tema : '') + '.');
+        return;
+      }
+
+      var maximo = 2000;
+      var texto = el('textarea', { class: 'alto', maxlength: String(maximo), id: 'texto' });
+      texto.value = (esTest ? d.comentario : d.propuesta) || '';
+      var cuenta = el('div', { class: 'cuenta apagado' }, texto.value.length + ' / ' + maximo);
+      texto.addEventListener('input', function () { cuenta.textContent = texto.value.length + ' / ' + maximo; });
+      var tipo = esTest ? desplegable(MOTIVOS, d.motivo, 'Qué está mal') : desplegable(TIPOS, d.tipo, 'Qué le pasa');
+      var estado = el('div', {});
+      var boton = el('button', { class: 'boton', type: 'button' }, 'Enviar al autor');
+
+      boton.addEventListener('click', function () {
+        if (enviando) return;
+        var escrito = texto.value.trim();
+        if (escrito.length < (esTest ? 5 : 10)) { estado.textContent = ''; estado.appendChild(el('p', { class: 'aviso aviso--mal' }, 'Cuenta qué habría que cambiar.')); return; }
+        enviando = true;
+        boton.disabled = true;
+        boton.textContent = 'Enviando…';
+        var a = {};
+        Object.keys(args || {}).forEach(function (k) { if (k !== 'vistaPrevia') a[k] = args[k]; });
+        if (esTest) { a.motivo = tipo.value; a.comentario = escrito; }
+        else { a.tipo = tipo.value; a.propuesta = escrito; a.apartado = d.apartado || ''; }
+        Vista.llamar(esTest ? 'reportar_pregunta' : 'sugerir_mejora', a).then(function (r) {
+          enviando = false;
+          if (r && (r.enviada || r.reportado)) {
+            Vista.recordar('enviada', '1');
+            Vista.contar('El usuario ha enviado al autor ' + (esTest ? 'el reporte de la pregunta ' + d.pregunta.id : 'la sugerencia sobre ' + (d.recurso === 'ficha' ? 'la ficha del ' : 'el ') + d.tema) + ' con el botón de la vista. No la envíes otra vez.');
+            hecho(esTest ? 'Reporte enviado. Gracias: se revisará.' : 'Sugerencia enviada. Gracias: el autor la revisará para el ' + d.tema + '.');
+          } else {
+            boton.disabled = false;
+            boton.textContent = 'Enviar al autor';
+            estado.textContent = '';
+            estado.appendChild(el('p', { class: 'aviso aviso--mal' }, (r && r.error) || 'No se ha podido enviar.'));
+          }
+        });
+      });
+
+      var cabecera = esTest
+        ? [el('div', { class: 'sobre' }, 'Reporte de una pregunta · sin enviar'), el('h1', {}, d.pregunta.cabecera), el('hr', { class: 'filete' }), el('blockquote', {}, d.pregunta.enunciado)]
+        : [
+            el('div', { class: 'sobre' }, (d.recurso === 'ficha' ? 'Sugerencia para la ficha' : 'Sugerencia para el tema') + ' · sin enviar'),
+            el('h1', {}, [el('span', { class: 'codigo' }, d.tema), d.titulo ? ' · ' + tituloCorto(d.titulo) : '']),
+            el('hr', { class: 'filete' }),
+            d.apartado ? el('div', { class: 'apagado' }, 'Apartado: ' + d.apartado) : null,
+            d.cita ? el('blockquote', {}, '«' + d.cita + '»') : null,
+          ];
+      pintar([
+        cabecera,
+        el('div', { class: 'campo' }, [el('label', { class: 'sobre' }, esTest ? 'Qué está mal' : 'Qué le pasa'), tipo]),
+        el('div', { class: 'campo' }, [el('label', { class: 'sobre', for: 'texto' }, esTest ? 'Por qué' : 'Qué habría que cambiar'), texto, cuenta]),
+        el('p', { class: 'apagado' }, esTest ? 'Puedes retocarlo antes de enviarlo.' : 'Puedes retocarla antes de enviarla. Es anónima: el autor no ve quién la manda.'),
+        el('div', { class: 'fila pie' }, boton),
+        estado,
+      ]);
+    }
+
+    Vista.alRecibir(recibir);
+  })();
+</script>

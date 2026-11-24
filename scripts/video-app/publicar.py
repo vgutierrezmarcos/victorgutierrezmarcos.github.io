@@ -5,7 +5,7 @@ oposicion-tcee.mp4 (H.264 + AAC, listo para la web), el póster (poster.jpg y
 poster.webp, un fotograma de la portada) y la versión ligera de cada captura
 (720 px, WebP) que usa app/index.html.
 
-    python3 scripts/video-app/publicar.py [--ffmpeg RUTA]
+    python3 scripts/video-app/publicar.py [--ffmpeg RUTA] [--sin-youtube]
 
 Autor: Víctor Gutiérrez Marcos
 """
@@ -22,7 +22,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(os.path.dirname(AQUI))
 PROMO = os.path.join(RAIZ, 'app', 'promo')
 CAPTURAS = os.path.join(PROMO, 'capturas')
-POSTER = 3.4  # segundo del póster: la portada ya entera
+POSTER = 12.3  # segundo del póster: la portada ya entera (va tras la apertura y el gancho)
 
 
 def a_youtube(claves):
@@ -37,6 +37,7 @@ def a_youtube(claves):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__.split('\n\n')[0])
+    p.add_argument('--sin-youtube', action='store_true', help='no subir el vídeo a YouTube (mientras no se lance)')
     p.add_argument('--ffmpeg', default=os.environ.get('FFMPEG') or shutil.which('ffmpeg'), help='ruta de ffmpeg')
     args = p.parse_args()
     if not args.ffmpeg:
@@ -62,7 +63,10 @@ def main():
             img = img.resize((720, round(img.height * 720 / img.width)), Image.LANCZOS)
             img.save(os.path.join(PROMO, fichero[:-4] + '.webp'), quality=82, method=6)
     print(f'{salida}: {os.path.getsize(salida) / 1e6:.1f} MB (desde {os.path.basename(origen)})')
-    a_youtube(['promo-app'])
+    if args.sin_youtube:
+        print('Sin subir a YouTube (--sin-youtube): hazlo al lanzar con «python3 scripts/publicar-videos-app.py promo-app».')
+    else:
+        a_youtube(['promo-app'])
 
 
 if __name__ == '__main__':

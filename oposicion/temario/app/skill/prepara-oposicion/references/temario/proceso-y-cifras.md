@@ -3,7 +3,7 @@
 
 # Convocatoria en curso, cifras de las últimas convocatorias y reglas del sorteo
 
-Proceso selectivo actualizado el 2026-11-05; cifras actualizadas el 2026-10-22 (BOE y Ministerio de Economía, Comercio y Empresa; cálculo propio).
+Proceso selectivo actualizado el 2026-11-20; cifras actualizadas el 2026-10-22 (BOE y Ministerio de Economía, Comercio y Empresa; cálculo propio).
 
 
 ## TCEE: convocatoria 2025 (en curso)
@@ -17,7 +17,7 @@ Página del Ministerio: https://portal.mineco.gob.es/es-es/ministerio/empleo/Pag
 
 ### Inscripción en el proceso selectivo
 
-- Pagar y enviar la inscripción a través de Internet (Con certificado digital) — https://ips.redsara.es/IPSC/secure/buscarConvocatorias?form=L
+- Pagar y enviar la inscripción a través de Internet (Con certificado digital) (publicado el 2026-11-03) — https://ips.redsara.es/IPSC/secure/buscarConvocatorias?form=L
 
 ### Proceso Selectivo
 
@@ -88,6 +88,12 @@ Página del Ministerio: https://portal.mineco.gob.es/es-es/ministerio/empleo/Pag
 ### Quinto ejercicio
 
 - Convocatoria (publicado el 2026-10-07) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025TECOS_Ej5_Convocatoria.pdf
+- Modificación sala (18.11.26) (publicado el 2026-11-16) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025TECOS_Ej5_Modificacion-sala.pdf
+- Lista de aprobados (publicado el 2026-11-19) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025TECOS_Ej5_Aprobados.pdf
+
+### Aprobados fase oposición
+
+- Aprobados fase oposición (publicado el 2026-11-19) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025TECOS_Aprobados_fase_oposici%C3%B3n.pdf
 
 Convocatorias anteriores con documentos en la web: 2024.
 

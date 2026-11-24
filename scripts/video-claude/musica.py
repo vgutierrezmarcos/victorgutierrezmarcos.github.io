@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Banda sonora del vídeo «Prepara con Claude» (HyperFrames): la misma música
+Banda sonora del vídeo de EconomIA (HyperFrames): la misma música
 electrónica del promocional de la app (110 pulsaciones por minuto, los
 instrumentos de scripts/montar-video-app.py), compuesta de una pieza para la
 duración de este vídeo, sin bucles ni cortes: intro en la portada, gancho,
