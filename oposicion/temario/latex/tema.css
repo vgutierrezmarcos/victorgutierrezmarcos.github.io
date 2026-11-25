@@ -1,0 +1,341 @@
+/* ==========================================================================
+   Página HTML de cada tema (generada por scripts/temario/construir-tema.py)
+   Misma estética que el PDF: Palatino, bandas moradas, cajas de nota.
+   Autor: Víctor Gutiérrez Marcos
+   ========================================================================== */
+
+.tema-layout {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Índice lateral */
+.tema-indice {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    background: var(--color-bg-cream);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 1rem 1rem 1rem 0.8rem;
+}
+.tema-indice-titulo {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.tema-indice ul { list-style: none; padding-left: 0.8rem; }
+.tema-indice > nav > ul, .tema-indice > ul { padding-left: 0; }
+.tema-indice li { margin: 0.25rem 0; }
+.tema-indice a { color: var(--color-text); text-decoration: none; }
+.tema-indice a:hover { color: var(--color-primary); }
+/* Los minutos van a la derecha de la primera línea de su propio título (con
+   float, un título largo los empujaba a la línea del apartado siguiente) */
+.tema-indice a:has(.minutos) { display: block; position: relative; padding-right: 2.7rem; }
+.tema-indice .minutos {
+    position: absolute;
+    top: 0.1em;
+    right: 0;
+    color: var(--color-text-light);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Documento */
+.tema-documento {
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 2.5rem 3rem 3rem;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    text-align: justify;
+    hyphens: auto;
+    min-width: 0;
+}
+.tema-cabecera { text-align: center; margin-bottom: 2rem; }
+.tema-codigo {
+    font-family: var(--font-ui);
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+.tema-cabecera .tema-titulo {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    color: var(--color-primary);
+    font-size: 1.45rem;
+    line-height: 1.35;
+    margin: 0.4rem 0 0.6rem;
+    text-align: center;
+}
+.tema-resumen {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-text-muted);
+    max-width: 42rem;
+    margin: 1rem auto 0;
+    line-height: 1.5;
+}
+.tema-meta { font-family: var(--font-ui); color: var(--color-text-muted); font-size: 0.85rem; }
+.tema-descargas { margin-top: 0.8rem; display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+.tema-descargas a {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    padding: 0.25rem 0.8rem;
+    text-decoration: none;
+}
+.tema-descargas a:hover { background: var(--color-primary); color: var(--color-on-primary); }
+
+/* Apartados (la página tiene un solo h1, el título del tema: los apartados
+   van de h2 a h6, --shift-heading-level-by=1 en construir-tema.py) */
+.tema-documento h2:not(.tema-pie-titulo) {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    margin: 2.2rem 0 1rem;
+    text-align: left;
+}
+/* Los niveles se distinguen como en el PDF (tcee.sty, Víctor 11/11/2026), de
+   más a menos peso: banda (h2), negrita grande subrayada (h3), negrita (h4),
+   negrita cursiva (h5) y cursiva (h6), cada uno más sangrado */
+.tema-documento h3 {
+    color: var(--color-primary);
+    font-size: 1.15rem;
+    margin: 1.8rem 0 0.6rem;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid var(--color-primary);
+    text-align: left;
+}
+.tema-documento h4 {
+    color: var(--color-primary);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.02rem;
+    margin: 1.3rem 0 0.5rem 1.2em;
+    text-align: left;
+}
+.tema-documento h5 {
+    color: var(--color-primary-dark);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 1rem 0 0.4rem 2.4em;
+    text-align: left;
+}
+.tema-documento h6 {
+    color: var(--color-primary-dark);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0.7rem 0 0.3rem 3.6em;
+    text-align: left;
+}
+/* Títulos: sin guiones, en las menos líneas posibles y sin una palabra sola en
+   la última */
+.tema-documento :is(h2, h3, h4, h5, h6) { hyphens: manual; text-wrap: pretty; }
+/* Dos títulos seguidos no suman su espacio: el segundo casi pegado al primero
+   (con --section-divs, cada título abre su <section>) */
+.tema-documento :is(h2, h3, h4, h5) + section > :is(h3, h4, h5, h6):first-child,
+.tema-documento :is(h2, h3, h4, h5) + :is(h3, h4, h5, h6) { margin-top: 0.4rem; }
+.tema-documento .numero { margin-right: 0.45em; }
+.tema-documento h2 .minutos, .tema-documento h3 .minutos {
+    float: right;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: none;
+    opacity: 0.85;
+}
+
+.tema-documento p { margin: 0.5rem 0; orphans: 2; widows: 2; }
+.tema-documento ul, .tema-documento ol { padding-left: 1.5rem; margin: 0.3rem 0; }
+.tema-documento li { margin: 0.2rem 0; }
+.tema-documento ul > li::marker { color: var(--color-primary); }
+.tema-documento ul { list-style-type: square; }
+.tema-documento ul ul { list-style-type: "– "; }
+.tema-documento ul ul ul { list-style-type: circle; }
+.tema-documento .smallcaps { font-variant: small-caps; }
+.tema-documento .vertema { color: var(--color-text-light); font-size: 0.92em; }
+/* \vertema enlazado al tema citado: gris como el texto de la remisión */
+.tema-documento a.vertema { color: var(--color-text-light); text-decoration: none; font-size: 1em; }
+.tema-documento a.vertema:hover { color: var(--color-primary); text-decoration: underline; }
+.tema-documento a.vertema:hover .vertema { color: inherit; }
+.tema-documento a { color: var(--color-primary); }
+
+/* Función clave (\funcionclave): ecuación recuadrada en morado, centrada */
+.tema-documento .funcionclave {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0.9rem auto;
+    padding: 0.15rem 0.9rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 4px;
+    background: var(--color-primary-pale);
+    color: var(--color-primary);
+    overflow-x: auto;
+}
+.tema-documento .funcionclave p { margin: 0; }
+.tema-documento .funcionclave mjx-container[display="true"] { margin: 0.5em 0; }
+/* Gráfico pequeño en una nota al pie (\graficonota) */
+.tema-documento .notagrafico { text-align: center; margin: 0.4rem 0; }
+.tema-documento .notagrafico img { width: 45%; min-width: 12rem; height: auto; }
+.tema-paginas { margin-top: 0.1rem; }
+
+/* Cajas */
+.notaopositor, .anotaciones, .ideaclave, .esquema {
+    border-radius: 3px;
+    padding: 0.6rem 1rem;
+    margin: 1rem 0;
+    font-size: 0.93rem;
+    text-align: left;
+}
+.notaopositor { background: var(--color-primary-pale); border-left: 4px solid var(--color-primary); }
+.notaopositor::before {
+    content: "Nota al opositor";
+    display: block;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+.anotaciones { background: rgba(231, 230, 230, 0.55); border: 1px solid #c9c7c7; font-size: 0.86rem; }
+.ideaclave { background: var(--color-bg); border: 1px solid var(--color-border); font-style: italic; }
+.esquema { background: var(--color-bg-cream); border: 1px solid var(--color-primary); }
+/* Minutos orientativos de cada parte en el esquema: a la derecha, pequeños y en gris.
+   Columna fija a la derecha (Víctor, 12/11/2026): el párrafo deja libre ese hueco
+   y los minutos se colocan en él, en la última línea del título, sin poder caer
+   en una línea aparte aunque el título se parta. */
+.esquema p { position: relative; padding-right: 4.5em; }
+.esquema .esq-tiempo { position: absolute; right: 0; font-size: 0.8em; font-style: italic; color: var(--color-text-light, #777); white-space: nowrap; }
+
+/* Figuras */
+.tema-documento figure { margin: 1.5rem auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.tema-documento figure > figcaption { order: -1; }
+.tema-documento figcaption {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    margin-bottom: 0.4rem;
+}
+.tema-documento figcaption .etiqueta, .tema-documento caption .etiqueta { color: var(--color-primary); font-weight: 700; }
+.tema-documento figure img { width: min(100%, 560px); max-width: 100%; height: auto; }
+/* Si el .tex fija el ancho (\grafico[0.85\textwidth]), pandoc lo pone en style: se respeta (hasta 900 px) */
+.tema-documento figure img[style*="width"] { max-width: min(100%, 900px); }
+.tema-documento .fuente { font-size: 0.82rem; font-style: italic; color: var(--color-text-muted); text-align: center; }
+
+/* Tablas */
+.tema-documento table { border-collapse: collapse; margin: 1rem auto; font-size: 0.9rem; max-width: 100%; display: block; overflow-x: auto; }
+.tema-documento table caption { font-family: var(--font-body); font-size: 0.92rem; margin-bottom: 0.4rem; text-align: center; }
+.tema-documento th { background: var(--color-primary); color: var(--color-on-primary); padding: 0.35rem 0.6rem; }
+.tema-documento td { border-bottom: 1px solid var(--color-border); padding: 0.35rem 0.6rem; vertical-align: top; }
+
+/* Matemáticas */
+.tema-documento mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
+
+/* Notas al pie y bibliografía */
+.tema-documento .footnotes { font-size: 0.86rem; border-top: 1px solid var(--color-border); margin-top: 2.5rem; }
+.tema-documento .footnote-ref sup { color: var(--color-primary); }
+.tema-documento #refs { font-size: 0.9rem; text-align: left; }
+.tema-documento .csl-entry { margin: 0.35rem 0; padding-left: 1.5em; text-indent: -1.5em; }
+
+/* Tema oscuro: los SVG de los gráficos tienen fondo transparente y trazo oscuro */
+[data-theme="dark"] .tema-documento figure img { background: #fafafa; border-radius: 4px; padding: 0.5rem; }
+[data-theme="dark"] .anotaciones { background: rgba(255, 255, 255, 0.06); border-color: var(--color-border); }
+
+/* Móvil */
+@media (max-width: 900px) {
+    .tema-layout { grid-template-columns: minmax(0, 1fr); padding: 1rem 0.6rem 2rem; }
+    .tema-indice { position: static; max-height: none; }
+    .tema-documento { padding: 1.4rem 1.1rem 2rem; text-align: left; }
+    .tema-documento h2 .minutos, .tema-documento h3 .minutos { float: none; display: block; }
+}
+
+/* Impresión */
+@media print {
+    .site-header, .main-nav, .sub-nav, .tema-indice, .site-footer, .tema-descargas { display: none; }
+    .tema-layout { display: block; padding: 0; }
+    .tema-documento { box-shadow: none; padding: 0; }
+}
+
+/* Nota pequeña bajo las tablas */
+.tema-documento .nota-tabla { font-size: 0.85em; color: var(--color-text-muted); }
+
+/* Pie del tema: la oposición y cómo citar */
+.tema-pie { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--color-border); font-size: 0.92rem; }
+.tema-pie section + section { margin-top: 1.2rem; }
+.tema-documento .tema-pie .tema-pie-titulo {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    border: none;
+    background: none;
+    margin: 0 0 0.4rem;
+    padding: 0;
+}
+.tema-cita p { overflow-wrap: anywhere; }
+.tema-cita .licencia-fin { margin-top: 0.6rem; padding-top: 0; border-top: none; font-size: 0.85rem; }
+
+/* Texto en color (\textcolor{tcee…}): los colores de los gráficos y las tablas
+   de clasificación (tcee-comun.sty), más claros en el tema oscuro */
+.tcee-morado { color: #5F2987; } .tcee-moradooscuro { color: #4A1F6B; }
+.tcee-verde { color: #3C7D3A; } .tcee-azul { color: #1F5F99; } .tcee-naranja { color: #E07B28; }
+.tcee-rojo { color: #B22222; } .tcee-dorado { color: #B8860B; } .tcee-gris { color: #767171; }
+[data-theme="dark"] .tcee-morado, [data-theme="dark"] .tcee-moradooscuro { color: #c3a2e0; }
+[data-theme="dark"] .tcee-verde { color: #86c583; } [data-theme="dark"] .tcee-azul { color: #86b8e8; }
+[data-theme="dark"] .tcee-naranja { color: #f2a56a; } [data-theme="dark"] .tcee-rojo { color: #f08a8a; }
+[data-theme="dark"] .tcee-dorado { color: #e2c46a; } [data-theme="dark"] .tcee-gris { color: #a9a3a3; }
+/* Celdas con fondo (\cellcolor, \rowcolor): fondo claro con texto oscuro también en el tema oscuro */
+.celda-tceesalvia { background: #E2EFD9; color: #222; }
+.celda-tceeazulpalido { background: #DDEBF7; color: #222; }
+.celda-tceesalmon { background: #FBE4D5; color: #222; }
+.celda-tceemoradopalido { background: #F3EEF7; color: #222; }
+.celda-tceegrisclaro { background: #E7E6E6; color: #222; }
+.celda-tceecrema { background: #FAF9F6; color: #222; }
+.celda-tceemorado { background: #5F2987; color: #fff; }
+.celda-tceeverde { background: #3C7D3A; color: #fff; }
+.celda-tceeazul { background: #1F5F99; color: #fff; }
+.celda-tceerojo { background: #B22222; color: #fff; }
+.celda-tceedorado { background: #B8860B; color: #fff; }
+.celda-tceenaranja { background: #E07B28; color: #fff; }
+.celda-tceegris { background: #767171; color: #fff; }
+/* ∎ de fin de demostración, a la derecha como en el PDF: al final de la última
+   línea si cabe y, si no, en una línea propia, siempre dentro de su párrafo
+   (flow-root), sin bajar al punto siguiente */
+.tema-documento .findemo { float: right; color: var(--color-primary); margin-left: 1em; }
+.tema-documento p:has(> .findemo) { display: flow-root; }
+
+/* Materiales exclusivos (desde el 1 de octubre de 2026): aviso de uso personal y etiqueta */
+.etiqueta-exclusivo { display: inline-block; vertical-align: 0.1em; padding: 0 0.45em; border: 1px solid var(--color-accent-gold, #b8860b); border-radius: 3px; font-family: var(--font-display, 'TeX Gyre Pagella', 'Palatino Linotype', serif); font-variant-caps: all-small-caps; font-weight: 600; font-size: 0.78em; letter-spacing: 0.06em; line-height: 1.45; color: var(--color-primary, #5F2987); white-space: nowrap; }
+.aviso-exclusivo { margin: 0 0 1.6rem; padding: 0.8rem 1.2rem; border-left: 3px solid var(--color-accent-gold, #b8860b); background: var(--color-primary-pale, #f1ebf6); border-radius: 0 6px 6px 0; font-family: var(--font-ui, 'Source Sans 3', sans-serif); font-size: 0.9rem; line-height: 1.55; color: var(--color-text-muted, #5e5866); }
+.aviso-exclusivo a { color: var(--color-primary, #5F2987); }
+
+/* Esquema del tema: cada línea enlaza con su apartado (comun.enlazar_esquema),
+   con el aspecto del texto; se subraya al pasar por encima */
+.tema-documento .esquema a { color: inherit; text-decoration: none; }
+.tema-documento .esquema a:hover, .tema-documento .esquema a:focus-visible { text-decoration: underline; text-decoration-color: var(--color-accent, #B8860B); }

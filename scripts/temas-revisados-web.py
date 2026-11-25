@@ -39,6 +39,7 @@ WT = os.environ.get('TCEE_WORKTREE_REVISION', RAIZ + '-revision-2')
 RAMA = 'temario-publicado'
 MANIFIESTO = 'oposicion/temario/app/revisados.json'
 INDICE = 'oposicion/temario/revisados-web.json'
+TEMA_CSS = 'oposicion/temario/latex/tema.css'
 GUIA = 'oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf'
 GUIA_RESUMEN = 'oposicion/temario/primer-ejercicio/esquema_dictamen_economico-resumen.pdf'
 # Apartados del índice que no dicen de qué trata el tema
@@ -211,6 +212,12 @@ def main():
             json.dump(indice, f, ensure_ascii=False, indent=1)
             f.write('\n')
     if not seco:
+        # La hoja de estilos de los temas, servida desde la propia web: el marco del tema la pedía a
+        # raw.githack.com y, cuando no responde, el tema sale sin formato (25/11/2026).
+        css = git_wt('show', f'{RAMA}:oposicion/temario/latex/tema.css')
+        os.makedirs('oposicion/temario/latex', exist_ok=True)
+        if not os.path.exists(TEMA_CSS) or open(TEMA_CSS, encoding='utf-8').read() != css:
+            open(TEMA_CSS, 'w', encoding='utf-8').write(css)
         llms(salida)
         for t in entradas:
             web_pdf = GUIA if t['archivo'] == '1D01' else t['pdf']['ruta']

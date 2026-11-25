@@ -449,7 +449,10 @@
         });
         Array.prototype.forEach.call(doc.querySelectorAll('link'), function (l) {
             var rel = l.getAttribute('rel') || '', href = l.getAttribute('href') || '';
-            if (/canonical|icon|manifest/.test(rel) || /(search-styles|cookie-consent)\.css$/.test(href)) l.parentNode.removeChild(l);
+            if (/canonical|icon|manifest/.test(rel) || /(search-styles|cookie-consent)\.css$/.test(href)) { l.parentNode.removeChild(l); return; }
+            // Las hojas de estilos, de la propia web y no de la rama (githack a veces no responde y el tema salía sin formato).
+            if (/stylesheet/.test(rel) && /(^|\/)styles\.css$/.test(href)) l.setAttribute('href', location.origin + '/styles.css');
+            else if (/stylesheet/.test(rel) && /(^|\/)tema\.css$/.test(href)) l.setAttribute('href', location.origin + '/oposicion/temario/latex/tema.css');
         });
         // Los PDF del temario (este tema, su ficha y las remisiones a otros temas), a su URL de la web:
         // se abren en el navegador y con la dirección de siempre. Las versiones anteriores y el Word, de la rama.
@@ -490,6 +493,12 @@
             "if(h.charAt(0)==='#'){e.preventDefault();var id=decodeURIComponent(h.slice(1));var d=document.getElementById(id)||document.getElementsByName(id)[0];if(d)d.scrollIntoView({behavior:'smooth',block:'start'});return;}" +
             "if(!a.hasAttribute('download')){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');}},true);";
         doc.body.appendChild(enlaces);
+        // Si githack no da un gráfico, el mismo fichero desde jsDelivr.
+        var respaldo = doc.createElement('script');
+        respaldo.textContent = "document.addEventListener('error',function(e){var i=e.target;if(!i||i.tagName!=='IMG'||i.dataset.respaldo)return;" +
+            "var m=/^https:\\/\\/raw\\.githack\\.com\\/([^/]+\\/[^/]+)\\/([^/]+)\\/(.*)$/.exec(i.src);if(!m)return;i.dataset.respaldo='1';" +
+            "i.src='https://cdn.jsdelivr.net/gh/'+m[1]+'@'+m[2]+'/'+m[3];},true);";
+        doc.head.appendChild(respaldo);
         var tema = document.documentElement.getAttribute('data-theme');
         if (tema) doc.documentElement.setAttribute('data-theme', tema); else doc.documentElement.removeAttribute('data-theme');
         return '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
