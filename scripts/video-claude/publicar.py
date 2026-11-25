@@ -33,7 +33,7 @@ POSTER = 3.2  # segundo del póster: la portada ya entera
 CLAVE = 'economia'
 TITULO = 'EconomIA: prepara la oposición a TCEE y DCE con tu IA'
 DESCRIPCION = ('Cómo usar EconomIA, el conector de victorgutierrezmarcos.es para Claude, Le Chat, ChatGPT y Gemini (con Claude, completo): '
-               'tu IA conoce el temario y tus datos de la app, corrige cantes y dictámenes, resuelve dudas con gráficos como los del temario, '
+               'tu IA conoce el temario y tus datos de la app, resuelve dudas con gráficos como los del temario, te hace un informe de evaluación de tus cantes y dictámenes, '
                'organiza el cronograma y te pide clase con tu preparador; también para DCE. No sustituye a un preparador para la oposición: lo complementa.\n\n'
                'https://victorgutierrezmarcos.es/oposicion/economia.html')
 

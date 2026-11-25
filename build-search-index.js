@@ -70,9 +70,9 @@ searchIndex.pages = [
     id: 'economia',
     title: 'EconomIA',
     url: '/oposicion/economia.html',
-    description: 'Conector para Claude, ChatGPT, Le Chat y Gemini que corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal',
-    keywords: ['ia', 'claude', 'chatgpt', 'le chat', 'mistral', 'gemini', 'conector', 'skill', 'inteligencia artificial', 'IA', 'corregir cante', 'corrector', 'dictamen', 'dudas', 'cronograma', 'tribunal', 'simulacro', 'test personal', 'anthropic', 'exportar datos'],
-    content: 'Qué hace cada agente, en qué IA funciona y qué plan pide cada una, cómo añadir el conector paso a paso, cómo corregir un cante y un dictamen, cómo hacer el cronograma, privacidad, licencia y preguntas frecuentes'
+    description: 'Conector para Claude, ChatGPT, Le Chat y Gemini que resuelve dudas con el temario, organiza tu cronograma, te pone test y te hace informes de evaluación de tus cantes y dictámenes; complementa a tu preparador',
+    keywords: ['ia', 'claude', 'chatgpt', 'le chat', 'mistral', 'gemini', 'conector', 'skill', 'inteligencia artificial', 'IA', 'informe de evaluación', 'cante', 'dictamen', 'dudas', 'cronograma', 'preguntas de repaso', 'test personal', 'anthropic', 'exportar datos'],
+    content: 'Qué hace cada agente, en qué IA funciona y qué plan pide cada una, cómo añadir el conector paso a paso, cómo pedir el informe de evaluación de un cante y de un dictamen, cómo hacer el cronograma, privacidad, licencia y preguntas frecuentes'
   },
   {
     id: 'enlaces',

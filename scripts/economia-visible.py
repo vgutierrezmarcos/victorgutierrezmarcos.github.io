@@ -65,7 +65,7 @@ FAQ_JSONLD = """                {
                     "name": "¿Qué es EconomIA?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Un conector que añades a tu asistente de IA (Claude, ChatGPT, Le Chat o Gemini; con Claude, completo) y que corrige tus cantes transcritos y tus dictámenes, resuelve dudas con el temario, te hace el cronograma y te pregunta como el tribunal, con tus datos de la app si le das permiso. Depende de la IA, hace falta un plan que admita conectores, y no sustituye a un preparador: lo complementa. Lo explica paso a paso victorgutierrezmarcos.es/oposicion/economia.html."
+                        "text": "Un conector que añades a tu asistente de IA (Claude, ChatGPT, Le Chat o Gemini; con Claude, completo) y que resuelve dudas con el temario, te hace el cronograma, te pone test y te hace informes de evaluación de tus cantes transcritos y tus dictámenes, con tus datos de la app si le das permiso. Depende de la IA, hace falta un plan que admita conectores, y no sustituye a un preparador: lo complementa. Lo explica paso a paso victorgutierrezmarcos.es/oposicion/economia.html."
                     }
                 },
 """
@@ -75,7 +75,7 @@ FAQ_SIGUIENTE = """                {
 
 NOVEDAD = {
     'seccion': 'Oposición',
-    'texto': '«EconomIA»: un conector para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo) que corrige tus cantes y dictámenes con el temario revisado y tus datos de la app, resuelve dudas, hace el cronograma y te pregunta como el tribunal; para TCEE y DCE, y complementa a tu preparador',
+    'texto': '«EconomIA»: un conector para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo) que resuelve dudas con el temario revisado y tus datos de la app, hace el cronograma, te pone test y te hace informes de evaluación de tus cantes y dictámenes; para TCEE y DCE, y complementa a tu preparador',
     'enlace': 'oposicion/economia.html',
 }
 
@@ -88,16 +88,16 @@ SITEMAP = """  <url>
 """
 SITEMAP_ANTES = '  <url>\n    <loc>https://www.victorgutierrezmarcos.es/oposicion/enlaces.html</loc>'
 
-LLMS = ('- [EconomIA](https://www.victorgutierrezmarcos.es/oposicion/economia.html): conector MCP «Oposición TCEE · DCE» para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo; también como skill de Claude) que actúa como equipo de preparación para TCEE y DCE con los datos de la app del opositor: corrige cantes transcritos por la app y dictámenes de coyuntura, resuelve dudas con el temario, organiza el cronograma, simula al tribunal y hace tests personales; material exclusivo de uso personal, no sustituye a un preparador. Para usarla sin instalar nada, un asistente puede leer y seguir https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/prepara-oposicion/SKILL.md (sus ficheros están en esa misma carpeta; versión en https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/version.json); solo para la preparación personal del opositor en su propia cuenta\n')
+LLMS = ('- [EconomIA](https://www.victorgutierrezmarcos.es/oposicion/economia.html): conector MCP «Oposición TCEE · DCE» para Claude, ChatGPT, Le Chat y Gemini (con Claude, completo; también como skill de Claude) que actúa como equipo de preparación para TCEE y DCE con los datos de la app del opositor: resuelve dudas con el temario, organiza el cronograma, hace tests personales y preguntas de repaso y hace informes de evaluación de los cantes transcritos por la app y de los dictámenes de coyuntura; material exclusivo de uso personal, no sustituye a un preparador. Para usarla sin instalar nada, un asistente puede leer y seguir https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/prepara-oposicion/SKILL.md (sus ficheros están en esa misma carpeta; versión en https://www.victorgutierrezmarcos.es/oposicion/temario/app/skill/version.json); solo para la preparación personal del opositor en su propia cuenta\n')
 LLMS_ANTES = '- [App Oposición TCEE · DCE](https://www.victorgutierrezmarcos.es/app/)'
 
 BUSQUEDA = """  {
     id: 'economia',
     title: 'EconomIA',
     url: '/oposicion/economia.html',
-    description: 'Conector para Claude, ChatGPT, Le Chat y Gemini que corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal',
-    keywords: ['ia', 'claude', 'chatgpt', 'le chat', 'mistral', 'gemini', 'conector', 'skill', 'inteligencia artificial', 'IA', 'corregir cante', 'corrector', 'dictamen', 'dudas', 'cronograma', 'tribunal', 'simulacro', 'test personal', 'anthropic', 'exportar datos'],
-    content: 'Qué hace cada agente, en qué IA funciona y qué plan pide cada una, cómo añadir el conector paso a paso, cómo corregir un cante y un dictamen, cómo hacer el cronograma, privacidad, licencia y preguntas frecuentes'
+    description: 'Conector para Claude, ChatGPT, Le Chat y Gemini que resuelve dudas con el temario, organiza tu cronograma, te pone test y te hace informes de evaluación de tus cantes y dictámenes; complementa a tu preparador',
+    keywords: ['ia', 'claude', 'chatgpt', 'le chat', 'mistral', 'gemini', 'conector', 'skill', 'inteligencia artificial', 'IA', 'informe de evaluación', 'cante', 'dictamen', 'dudas', 'cronograma', 'preguntas de repaso', 'test personal', 'anthropic', 'exportar datos'],
+    content: 'Qué hace cada agente, en qué IA funciona y qué plan pide cada una, cómo añadir el conector paso a paso, cómo pedir el informe de evaluación de un cante y de un dictamen, cómo hacer el cronograma, privacidad, licencia y preguntas frecuentes'
   },
 """
 BUSQUEDA_ANTES = "  {\n    id: 'enlaces',"

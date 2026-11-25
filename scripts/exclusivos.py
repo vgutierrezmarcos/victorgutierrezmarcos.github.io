@@ -96,7 +96,7 @@ def main():
             # registra en el manifiesto): material exclusivo con su propia licencia,
             # descargable desde la app o desde la web con sesión iniciada.
             base = (m.get('cdn') or m.get('raw') or '').rstrip('/')
-            materiales.append({'tipo': 'skill', 'codigo': 'prepara-con-claude', 'titulo': 'Skill de Claude de «EconomIA»: correctores de cantes y dictámenes, dudas, cronograma y simulacro de tribunal',
+            materiales.append({'tipo': 'skill', 'codigo': 'prepara-con-claude', 'titulo': 'Skill de Claude de «EconomIA»: dudas, cronograma, test e informes de evaluación de cantes y dictámenes',
                                'donde': 'app', 'fecha': (s.get('generado') or '')[:10], 'version': s.get('version'), 'formatos': ['zip'],
                                'url': f"{base}/{s['ruta']}" if base else None, 'tamano': s.get('tamano'), 'temas': len(s.get('temas') or []), 'sellar': False})
     materiales.append({'tipo': 'test', 'codigo': 'explicaciones', 'titulo': 'Explicaciones de las 1004 preguntas oficiales del test («¿Por qué?»), con 232 gráficos', 'donde': 'app', 'fecha': '2026-10-24', 'formatos': ['app']})
