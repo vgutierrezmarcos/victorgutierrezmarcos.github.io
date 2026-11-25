@@ -431,25 +431,33 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .highlight-box p { margin-bottom: 1rem; }
 .highlight-box p:last-child { margin-bottom: 0; }
 
-/* ECONOMIA EN LA PORTADA (index.html): aviso destacado, tinta morada sobre papel con filete dorado */
+/* ECONOMIA EN LA PORTADA (index.html): una capa más de la tarjeta de la app, a todo el ancho, con filete dorado */
 .economia-portada {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem;
-    margin: 0 0 2rem; padding: 1.4rem 1.6rem;
-    background: #5F2987; color: #fff; text-decoration: none;
-    border-radius: var(--radius-card); border-left: 6px solid var(--color-accent-gold);
-    box-shadow: var(--shadow-md);
+    position: relative; z-index: 1;   /* por encima del enlace estirado de .app-banner-enlace */
+    flex: 1 1 100%;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;
+    gap: var(--e3) var(--e6);
+    margin: var(--e1) -1.75rem -1.6rem;
+    padding: 1.25rem 1.75rem 1.35rem;
+    background: var(--color-primary-pale);
+    border-top: 2px solid var(--color-accent-gold);
+    color: var(--color-text); text-decoration: none;
 }
-.economia-portada:hover .economia-portada-tit { text-decoration: underline; text-underline-offset: 4px; }
-.economia-portada:focus-visible { outline: 3px solid var(--color-accent-gold); outline-offset: 3px; }
-.economia-portada-logo { width: 52px; height: 52px; flex: none; border-radius: 12px; background: #fff; padding: 4px; box-sizing: border-box; }
-.economia-portada-texto { flex: 1 1 320px; min-width: 0; display: grid; gap: 0.35rem; }
-.economia-portada-rot { font-family: var(--font-ui); font-variant-caps: all-small-caps; letter-spacing: 0.06em; font-size: 1rem; color: #F1D98A; }
-.economia-portada-tit { font-family: var(--font-display, inherit); font-size: 1.35rem; line-height: 1.25; color: #fff; }
-.economia-portada-sub { font-size: 0.98rem; line-height: 1.5; color: rgba(255, 255, 255, 0.9); }
-.economia-portada-ias { display: flex; gap: 0.6rem; margin-top: 0.3rem; }
-.economia-portada-ias img { width: 26px; height: 26px; background: #fff; border-radius: 6px; padding: 3px; }
-.economia-portada-boton { flex: none; background: #fff; color: #5F2987; border-color: #fff; }
-.economia-portada:hover .economia-portada-boton, .economia-portada-boton:hover { background: #fff; color: #5F2987; border-color: #fff; }
+.economia-portada-texto { display: grid; gap: 0.3rem; min-width: 0; }
+.economia-portada-rot { font-family: var(--font-ui); font-variant-caps: all-small-caps; letter-spacing: 0.06em; font-size: 0.95rem; color: var(--color-primary); }
+.economia-portada-tit { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; line-height: 1.25; color: var(--color-primary); }
+.economia-portada-sub { font-size: 0.98rem; line-height: 1.5; color: var(--color-text-muted); max-width: 62ch; }
+.economia-portada:hover .economia-portada-tit { text-decoration: underline; text-decoration-color: var(--color-accent-gold); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.economia-portada:focus-visible { outline: 2px solid var(--color-accent-gold); outline-offset: -4px; }
+.economia-portada-ias { display: flex; gap: var(--e2); margin-top: var(--e1); }
+.economia-portada-ias img { width: 22px; height: 22px; padding: 2px; background: #fff; border: 1px solid var(--color-border-light); border-radius: var(--radius-control); }
+.economia-portada-boton { flex: none; }
+.economia-portada:hover .economia-portada-boton { --b-fondo: color-mix(in srgb, var(--color-primary) 88%, black); }
+.app-banner:has(.economia-portada:hover) .app-banner-enlace { text-decoration: none; }
+@media (max-width: 640px) {
+    .economia-portada { grid-template-columns: 1fr; margin: var(--e1) -1.1rem -1.25rem; padding: 1.1rem 1.1rem 1.2rem; }
+    .economia-portada-boton { width: 100%; }
+}
 
 /* AVISO DE LA APP MÓVIL (index.html y oposicion/index.html; ver app-banner.js) */
 .app-banner {
@@ -723,8 +731,8 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .novedades-portada .app-banner:hover { border-color: transparent; }
 .novedades-franja {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
     gap: 0.5rem 1.75rem;
     padding: 1.1rem 1.75rem 1.25rem;
     border-top: 1px solid var(--color-border-light);
@@ -749,7 +757,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .novedad a:hover .novedad-texto { color: var(--color-primary); text-decoration: underline; text-decoration-color: var(--color-accent-gold); text-underline-offset: 3px; }
 .novedades-todas { white-space: nowrap; font-size: 0.9rem; padding-top: 0.1rem; }
 @media (max-width: 860px) {
-    .novedades-franja { grid-template-columns: 1fr; padding: 1rem 1.15rem 1.1rem; }
+    .novedades-franja { grid-template-columns: 1fr auto; padding: 1rem 1.15rem 1.1rem; }
     .novedades-portada-titulo { padding: 0.9rem 1.15rem 0; }
     .portada-entrada { padding: 1.25rem 1.15rem 1.35rem; }
     .novedades-lista { grid-template-columns: 1fr; gap: 0.75rem; }
@@ -1990,3 +1998,8 @@ body.vgm-con-fijo { overflow: hidden; }
     white-space: nowrap;
     border: 0;
 }
+
+/* Más novedades: rótulo y enlace en una fila, la lista a todo el ancho */
+.novedades-lista { grid-column: 1 / -1; }
+.novedades-franja .novedad-texto { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.novedades-franja .novedades-todas { grid-row: 1; grid-column: 2; }

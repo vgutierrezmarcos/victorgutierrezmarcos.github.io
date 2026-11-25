@@ -41,8 +41,7 @@ CIERRA = '</template><!-- /pcc -->'
 
 # Bloques HTML a envolver: fichero -> expresiones regulares (DOTALL) del bloque
 BLOQUES = {
-    'index.html': [r'<a class="app-banner-more" href="oposicion/economia\.html">.*?</a>',
-                   r'<a id="economia-portada" class="economia-portada".*?Conocer EconomIA</span>\s*</a>'],
+    'index.html': [r'<a id="economia-portada" class="economia-portada".*?Conocer EconomIA</span>\s*</a>'],
     'comunidad.html': [r'<div class="community-card">\s*<span class="community-icon">(?:(?!</div>).)*?<h3>EconomIA</h3>.*?</div>'],
     'app/index.html': [
         r'<section class="app-seccion revelar" id="claude">.*?</section>',
