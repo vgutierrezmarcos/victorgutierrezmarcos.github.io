@@ -265,6 +265,7 @@ def main():
     p.add_argument('--local', action='store_true', help='subir al KV local de wrangler dev en vez del remoto')
     p.add_argument('--limpiar', action='store_true', help='borrar antes las claves de temas, dictamen y canon')
     p.add_argument('--solo-json', metavar='FICHERO', help='escribir el fichero bulk y no subir nada')
+    p.add_argument('--todo', action='store_true', help='subir todas las claves aunque no hayan cambiado')
     p.add_argument('--origen', metavar='CARPETA', help='carpeta references/ de la skill completa (por defecto, la de construcción de skill-opositor.py)')
     args = p.parse_args()
     if args.origen:
@@ -275,6 +276,16 @@ def main():
     busqueda = indice_busqueda(pares, indice)
     print(f'Índice de búsqueda: {len(busqueda)} claves ({sum(1 for c, _ in busqueda if c.startswith("busqueda/t/"))} temas, {sum(1 for c, _ in busqueda if c.startswith("busqueda/i/"))} trozos del índice)')
     pares = pares + busqueda
+    # Solo lo que ha cambiado desde la última publicación (el plan gratuito de Cloudflare permite
+    # unas 1.000 escrituras al día en el KV; una publicación entera son ~350): huella de cada
+    # clave en ~/.cache/oposicion-web/kv-publicado.json. --todo sube todo otra vez.
+    import hashlib
+    huellas_ruta = os.path.expanduser('~/.cache/oposicion-web/kv-publicado.json')
+    antes = {} if args.todo or args.limpiar or args.local or not os.path.exists(huellas_ruta) else json.load(open(huellas_ruta))
+    ahora = {clave: hashlib.sha256(texto.encode('utf-8')).hexdigest()[:16] for clave, texto in pares}
+    sobran = sorted(set(antes) - set(ahora))
+    pares = [(c, t) for c, t in pares if antes.get(c) != ahora[c]]
+    print(f'{len(pares)} claves cambiadas (de {len(ahora)}){f"; {len(sobran)} que ya no están" if sobran else ""}')
     print(f'{len(pares) - 1} ficheros ({len(indice["temas"])} temas, {len(indice["dictamen"])} del dictamen, {len(indice["canon"])} del canon) + indice.json')
     bulk = [{'key': clave, 'value': texto} for clave, texto in pares]
 
@@ -297,7 +308,7 @@ def main():
             os.unlink(f.name)
         print(f'  borradas {len(claves)} claves')
 
-    # Lo que no se publica nunca se borra siempre (si no está, wrangler no se queja).
+    # Lo que no se publica nunca se borra (si no está, wrangler no se queja); con huellas guardadas, ya se borró.
     with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8') as f:
         json.dump(list(NUNCA), f)
     try:
@@ -305,12 +316,23 @@ def main():
     finally:
         os.unlink(f.name)
 
-    with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8') as f:
-        json.dump(bulk, f, ensure_ascii=False)
-    try:
-        wrangler('kv', 'bulk', 'put', f.name, '--binding', args.binding, remoto=remoto)
-    finally:
-        os.unlink(f.name)
+    if sobran:
+        with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8') as f:
+            json.dump(sobran, f)
+        try:
+            wrangler('kv', 'bulk', 'delete', f.name, '--binding', args.binding, '--force', remoto=remoto)
+        finally:
+            os.unlink(f.name)
+    if bulk:
+        with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8') as f:
+            json.dump(bulk, f, ensure_ascii=False)
+        try:
+            wrangler('kv', 'bulk', 'put', f.name, '--binding', args.binding, remoto=remoto)
+        finally:
+            os.unlink(f.name)
+    if not args.local:
+        os.makedirs(os.path.dirname(huellas_ruta), exist_ok=True)
+        json.dump(ahora, open(huellas_ruta, 'w'))
     print('Hecho. Comprueba con: npx wrangler kv key get indice.json --binding', args.binding, '--remote' if remoto else '')
 
 

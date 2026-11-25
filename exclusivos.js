@@ -468,15 +468,22 @@
         estilo.textContent = 'body{margin:0}.main-content{padding:0.5rem 1rem 2rem!important;margin-top:0!important}.main-content::before{display:none!important}' +
             'img,svg{max-width:100%;height:auto}html,body{overflow-x:clip}.tema-documento{min-width:0;overflow-wrap:break-word}' +
             // El índice lateral, fijo al bajar (overflow-x:hidden lo rompía); en el móvil, una barra plegable arriba.
+            // Sin fondo verde ni tarjeta propios: el tema va directamente en la tarjeta blanca de la página.
+            'html,body,.main-content{background:transparent!important;background-image:none!important}' +
+            '.tema-documento{box-shadow:none;border-radius:0;padding:.3rem 0 2rem;background:transparent}' +
+            '.tema-layout{padding:.4rem 0 2rem;gap:1.8rem}' +
             '.tema-indice{position:sticky;top:.6rem;max-height:calc(100vh - 1.2rem);overflow-y:auto}' +
-            '@media (max-width:900px){.tema-indice{position:sticky;top:0;z-index:5;max-height:2.6rem;overflow:hidden;padding:.7rem .9rem;margin:0 -.2rem;box-shadow:0 2px 6px rgba(22,19,26,.12);cursor:pointer}.tema-indice.abierto{padding-bottom:1rem}' +
-            '.tema-indice.abierto{max-height:70vh;overflow-y:auto}.tema-indice-titulo{margin:0;display:flex;justify-content:space-between}.tema-indice-titulo::after{content:"▾";color:var(--color-primary)}.tema-indice.abierto .tema-indice-titulo::after{content:"▴"}}' +
+            // El índice, a la izquierda también en pantallas medianas (tema.css lo subía arriba por debajo de 900 px).
+            '@media (min-width:561px) and (max-width:900px){.tema-layout{grid-template-columns:200px minmax(0,1fr);gap:1.2rem}.tema-indice{position:sticky;top:.6rem;max-height:calc(100vh - 1.2rem);overflow-y:auto;font-size:.8rem}.tema-documento{text-align:left}}' +
+            // En el móvil estrecho no cabe al lado: barra plegable fija arriba.
+            '@media (max-width:560px){.tema-layout{padding:0 0 2rem}.tema-indice{position:sticky;top:0;z-index:5;max-height:2.3rem;overflow:hidden;padding:.6rem .9rem;box-shadow:0 2px 6px rgba(22,19,26,.12);cursor:pointer}' +
+            '.tema-indice.abierto{max-height:70vh;overflow-y:auto;padding-bottom:1rem}.tema-indice-titulo{margin:0;display:flex;justify-content:space-between}.tema-indice-titulo::after{content:"▾";color:var(--color-primary)}.tema-indice.abierto .tema-indice-titulo::after{content:"▴"}}' +
             'mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;max-width:100%}table{display:block;max-width:100%;overflow-x:auto}';
         doc.head.appendChild(estilo);
         var indice = doc.createElement('script');
         indice.textContent = "(function(){var i=document.querySelector('.tema-indice');if(!i)return;var t=i.querySelector('.tema-indice-titulo');" +
             "if(t)t.addEventListener('click',function(){i.classList.toggle('abierto');});" +
-            "i.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a')&&window.innerWidth<=900)i.classList.remove('abierto');});})();";
+            "i.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a')&&window.innerWidth<=560)i.classList.remove('abierto');});})();";
         doc.body.appendChild(indice);
         var enlaces = doc.createElement('script');
         enlaces.textContent = "document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a)return;var h=a.getAttribute('href')||'';" +
