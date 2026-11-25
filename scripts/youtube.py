@@ -316,7 +316,9 @@ def comprobar(_):
 def purgar(a):
     r = leer()
     limite = date.today() - timedelta(days=a.dias)
-    viejos = [x for x in r['retirados'] if date.fromisoformat(x['retirado']) <= limite]
+    viejos = [x for x in r['retirados'] if date.fromisoformat(x['retirado']) <= limite
+              and (not a.clave or x['clave'].startswith(a.clave))
+              and (not a.sustituidos or x.get('sustituido_por'))]
     if not viejos:
         print(f'Ningún retirado con más de {a.dias} días.')
         return
@@ -378,6 +380,8 @@ def main():
     o = s.add_parser('purgar')
     o.add_argument('--dias', type=int, default=7)
     o.add_argument('--si', action='store_true')
+    o.add_argument('--clave', default='', help='solo los retirados cuya clave empieza así (p. ej. ayuda-)')
+    o.add_argument('--sustituidos', action='store_true', help='solo los que ya tienen otro vídeo que los sustituye')
     s.add_parser('quitar').add_argument('clave')
     a = p.parse_args()
     {'autorizar': lambda _: autorizar(), 'subir': lambda a: subir(a, 'subir'), 'sustituir': lambda a: subir(a, 'sustituir'),
