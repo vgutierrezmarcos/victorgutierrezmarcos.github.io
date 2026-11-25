@@ -431,6 +431,26 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .highlight-box p { margin-bottom: 1rem; }
 .highlight-box p:last-child { margin-bottom: 0; }
 
+/* ECONOMIA EN LA PORTADA (index.html): aviso destacado, tinta morada sobre papel con filete dorado */
+.economia-portada {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem;
+    margin: 0 0 2rem; padding: 1.4rem 1.6rem;
+    background: #5F2987; color: #fff; text-decoration: none;
+    border-radius: var(--radius-card); border-left: 6px solid var(--color-accent-gold);
+    box-shadow: var(--shadow-md);
+}
+.economia-portada:hover .economia-portada-tit { text-decoration: underline; text-underline-offset: 4px; }
+.economia-portada:focus-visible { outline: 3px solid var(--color-accent-gold); outline-offset: 3px; }
+.economia-portada-logo { width: 52px; height: 52px; flex: none; border-radius: 12px; background: #fff; padding: 4px; box-sizing: border-box; }
+.economia-portada-texto { flex: 1 1 320px; min-width: 0; display: grid; gap: 0.35rem; }
+.economia-portada-rot { font-family: var(--font-ui); font-variant-caps: all-small-caps; letter-spacing: 0.06em; font-size: 1rem; color: #F1D98A; }
+.economia-portada-tit { font-family: var(--font-display, inherit); font-size: 1.35rem; line-height: 1.25; color: #fff; }
+.economia-portada-sub { font-size: 0.98rem; line-height: 1.5; color: rgba(255, 255, 255, 0.9); }
+.economia-portada-ias { display: flex; gap: 0.6rem; margin-top: 0.3rem; }
+.economia-portada-ias img { width: 26px; height: 26px; background: #fff; border-radius: 6px; padding: 3px; }
+.economia-portada-boton { flex: none; background: #fff; color: #5F2987; border-color: #fff; }
+.economia-portada:hover .economia-portada-boton, .economia-portada-boton:hover { background: #fff; color: #5F2987; border-color: #fff; }
+
 /* AVISO DE LA APP MÓVIL (index.html y oposicion/index.html; ver app-banner.js) */
 .app-banner {
     display: flex;
