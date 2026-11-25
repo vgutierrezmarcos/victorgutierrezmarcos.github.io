@@ -7,7 +7,10 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 
 ## Para la siguiente versión en Google Play (1.26.0 publicada el 25 nov.)
 
-(Nada pendiente.)
+- (25 nov., siguiente versión) Buscar preparador: al publicar lo que buscas puedes presentarte (opcional) con la vuelta en la que vas, los ejercicios aprobados, las convocatorias, tu formación, tu dedicación y si has tenido preparador, más lo que quieras contarles; lo leen todos los preparadores antes de escribirte, y ves cómo te verán
+- (25 nov., siguiente versión) Online y presencial se marcan por separado y puedes decir «prefiero presencial, pero acepto online»; si pides solo presencial, la app te avisa de que fuera de Madrid es muy difícil encontrarlo (y en Madrid, de que con online tienes más donde elegir) y, si en dos semanas nadie te ha escrito, te sugiere añadir online
+- (25 nov., siguiente versión) EconomIA en la app: «Informe de mi último cante» en la burbuja y textos que dejan claro que complementa a tu preparador
+- Reglas de Firestore con `aceptaOnline` y `perfil` en las búsquedas: publicadas por Víctor el 25 nov.
 
 ## Publicado el 25 nov. 2026 (1.26.0 en producción)
 

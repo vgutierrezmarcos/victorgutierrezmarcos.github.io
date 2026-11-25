@@ -10,6 +10,7 @@ import '../../data/models/red.dart';
 import '../../data/repos/red_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import 'busquedas_page.dart';
 import 'directorio_page.dart';
 import 'disponibilidad_widget.dart';
 import 'red_widgets.dart';
@@ -233,8 +234,25 @@ class BusquedaFormPage extends ConsumerStatefulWidget {
 
 class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
   late final Set<int> _ejercicios = {...widget.busqueda?.ejercicios ?? [Oposiciones.actual.primerConTemas]};
-  late Modalidad _modalidad = widget.busqueda?.modalidad ?? Modalidad.sinIndicar;
+  // Online y presencial se marcan por separado (las dos = me da igual, salvo que prefiera presencial).
+  late bool _online = widget.busqueda == null || widget.busqueda!.modalidad != Modalidad.presencial || widget.busqueda!.aceptaOnline;
+  late bool _presencial = widget.busqueda != null && widget.busqueda!.modalidad != Modalidad.online;
+  late bool _prefiereVerse = widget.busqueda?.aceptaOnline ?? false;
   late final _ciudad = TextEditingController(text: widget.busqueda?.ciudad ?? '');
+  late String _vuelta = widget.busqueda?.perfil.vuelta ?? '';
+  late final Set<int> _aprobados = {...widget.busqueda?.perfil.aprobados ?? const []};
+  late int? _convocatorias = widget.busqueda?.perfil.convocatorias;
+  late String _formacion = widget.busqueda?.perfil.formacion ?? '';
+  late String _dedicacion = widget.busqueda?.perfil.dedicacion ?? '';
+  late bool? _preparadorAntes = widget.busqueda?.perfil.preparadorAntes;
+
+  Modalidad get _modalidad => _online && _presencial ? (_prefiereVerse ? Modalidad.presencial : Modalidad.sinIndicar) : _presencial ? Modalidad.presencial : Modalidad.online;
+
+  static const _ejemplosNota = [
+    'Me cuesta la teoría microeconómica y quiero un preparador que se encuentre cómodo con esos temas.',
+    'Llevo bien la parte A, pero la parte B se me hace cuesta arriba: busco a alguien fuerte en economía internacional.',
+    'Vengo de Derecho y la parte más matemática se me atraganta: me vendría bien alguien que la explique con calma.',
+  ];
   late Set<String> _disponibilidad = {...widget.busqueda?.disponibilidad ?? const []};
   late int _clases = widget.busqueda?.clasesPorSemana ?? 1;
   late DateTime? _desde = widget.busqueda?.desde;
@@ -255,12 +273,17 @@ class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
       messenger.mostrar(const SnackBar(content: Text('Elige al menos un ejercicio.')));
       return;
     }
+    if (!_online && !_presencial) {
+      messenger.mostrar(const SnackBar(content: Text('Marca online, presencial o las dos.')));
+      return;
+    }
     final red = ref.read(redRepoProvider);
     final temas = ref.read(ajustesProvider).temasEstudiados.length;
     final b = (widget.busqueda ?? Busqueda(id: 'bq_${nuevoId()}', alumno: red.uid ?? '', creada: DateTime.now())).copyWith(
       ejercicios: _ejercicios.toList()..sort(),
       modalidad: _modalidad,
-      ciudad: _modalidad == Modalidad.online ? '' : _ciudad.text.trim(),
+      aceptaOnline: _online && _presencial && _prefiereVerse,
+      ciudad: _presencial ? ciudadBonita(_ciudad.text) : '',
       disponibilidad: _disponibilidad.toList()..sort(),
       clasesPorSemana: _clases,
       temas: temas,
@@ -268,6 +291,7 @@ class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
       cuantoAntes: _desde == null,
       nota: _nota.text.trim(),
       estado: 'abierta',
+      perfil: PerfilBusqueda(vuelta: _vuelta, aprobados: _aprobados.toList()..sort(), convocatorias: _convocatorias, formacion: _formacion, dedicacion: _dedicacion, preparadorAntes: _preparadorAntes),
     );
     setState(() => _guardando = true);
     try {
@@ -285,6 +309,26 @@ class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
     }
   }
 
+  Widget _grupo(String titulo, List<Widget> chips) => Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(titulo, style: context.textos.labelMedium),
+          const SizedBox(height: 4),
+          Wrap(spacing: 6, runSpacing: 6, children: chips),
+        ]),
+      );
+
+  /// La tarjeta tal como la ven los preparadores en su tablón.
+  Widget _vistaPrevia(BuildContext context) {
+    final perfil = PerfilBusqueda(vuelta: _vuelta, aprobados: _aprobados.toList()..sort(), convocatorias: _convocatorias, formacion: _formacion, dedicacion: _dedicacion, preparadorAntes: _preparadorAntes);
+    final b = Busqueda(
+      id: '', alumno: '', ejercicios: _ejercicios.toList()..sort(), modalidad: _modalidad, aceptaOnline: _online && _presencial && _prefiereVerse,
+      ciudad: _presencial ? ciudadBonita(_ciudad.text) : '', clasesPorSemana: _clases, desde: _desde, nota: _nota.text.trim(), perfil: perfil,
+      temas: ref.read(ajustesProvider).temasEstudiados.length,
+    );
+    return Tarjeta(child: ResumenBusqueda(busqueda: b));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -296,26 +340,90 @@ class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Text('Lo verán los preparadores verificados de ${Oposiciones.actual.siglas}, sin tu nombre ni tu teléfono. Los que tengan hueco y les encaje te dejarán su contacto, y decides tú a quién escribes.', style: context.textos.bodySmall),
+          const TituloSeccion('Preséntate (opcional)'),
+          Text('La leen todos los preparadores verificados antes de decidir si te escriben, sin tu nombre ni tu teléfono. Rellena solo lo que quieras.', style: context.textos.labelSmall),
+          const SizedBox(height: 10),
+          _grupo('Vuelta', [
+            for (final e in PerfilBusqueda.vueltas.entries) ChoiceChip(label: Text(e.value), selected: _vuelta == e.key, onSelected: (v) => setState(() => _vuelta = v ? e.key : '')),
+          ]),
+          _grupo('Ejercicios aprobados en otras convocatorias', [
+            for (final e in Oposiciones.actual.ejercicios.map((x) => x.numero)) FilterChip(label: Text('$e.º'), selected: _aprobados.contains(e), onSelected: (v) => setState(() => v ? _aprobados.add(e) : _aprobados.remove(e))),
+          ]),
+          _grupo('Convocatorias a las que te has presentado', [
+            for (final (n, t) in const [(0, 'Ninguna'), (1, '1'), (2, '2'), (3, '3 o más')]) ChoiceChip(label: Text(t), selected: _convocatorias == n, onSelected: (v) => setState(() => _convocatorias = v ? n : null)),
+          ]),
+          _grupo('Formación', [
+            for (final e in PerfilBusqueda.formaciones.entries) ChoiceChip(label: Text(e.value), selected: _formacion == e.key, onSelected: (v) => setState(() => _formacion = v ? e.key : '')),
+          ]),
+          _grupo('Dedicación', [
+            for (final e in PerfilBusqueda.dedicaciones.entries) ChoiceChip(label: Text(e.value), selected: _dedicacion == e.key, onSelected: (v) => setState(() => _dedicacion = v ? e.key : '')),
+          ]),
+          _grupo('¿Has tenido preparador antes?', [
+            for (final (b, t) in const [(true, 'Sí'), (false, 'No')]) ChoiceChip(label: Text(t), selected: _preparadorAntes == b, onSelected: (v) => setState(() => _preparadorAntes = v ? b : null)),
+          ]),
+          const SizedBox(height: 6),
+          Text('Cuéntales algo más', style: context.textos.labelMedium),
+          const SizedBox(height: 6),
+          TextField(controller: _nota, minLines: 2, maxLines: 5, maxLength: 1000, textCapitalization: TextCapitalization.sentences, onChanged: (_) => setState(() {}), decoration: const InputDecoration(hintText: 'Qué temas te cuestan, qué buscas en un preparador, cuándo te viene mejor…')),
+          Text('Ideas (tócalas para añadirlas y cámbialas a tu gusto):', style: context.textos.labelSmall),
+          const SizedBox(height: 4),
+          for (final e in _ejemplosNota)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: ActionChip(
+                label: Text(e, style: context.textos.labelSmall, maxLines: 3),
+                onPressed: () => setState(() {
+                  final t = _nota.text.trim();
+                  _nota.text = t.isEmpty ? e : '$t $e';
+                  _nota.selection = TextSelection.collapsed(offset: _nota.text.length);
+                }),
+              ),
+            ),
           const TituloSeccion('Qué ejercicio'),
           Wrap(spacing: 6, runSpacing: 6, children: [
             for (final e in ejerciciosPreparables)
               FilterChip(label: Text(etiquetaEjercicioCante(e)), selected: _ejercicios.contains(e), onSelected: (v) => setState(() => v ? _ejercicios.add(e) : _ejercicios.remove(e))),
           ]),
-          const TituloSeccion('Online o presencial'),
-          SegmentedButton<Modalidad>(
-            showSelectedIcon: false,
-            segments: const [
-              ButtonSegment(value: Modalidad.sinIndicar, label: Text('Me da igual')),
-              ButtonSegment(value: Modalidad.online, label: Text('Online')),
-              ButtonSegment(value: Modalidad.presencial, label: Text('Presencial')),
-            ],
-            selected: {_modalidad},
-            onSelectionChanged: (s) => setState(() => _modalidad = s.first),
-            style: const ButtonStyle(visualDensity: VisualDensity.compact),
-          ),
-          if (_modalidad != Modalidad.online) ...[
+          const TituloSeccion('¿Cómo puedes dar clase?'),
+          Text('Marca todo lo que te valga: cuanto más abierto, más preparadores encajan contigo.', style: context.textos.labelSmall),
+          const SizedBox(height: 8),
+          Wrap(spacing: 6, runSpacing: 6, children: [
+            FilterChip(label: const Text('Online'), selected: _online, onSelected: (v) => setState(() => _online = v)),
+            FilterChip(label: const Text('Presencial'), selected: _presencial, onSelected: (v) => setState(() => _presencial = v)),
+          ]),
+          if (_presencial) ...[
             const SizedBox(height: 10),
-            TextField(controller: _ciudad, maxLength: 60, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Ciudad (si es presencial)', hintText: 'Madrid', counterText: '')),
+            TextField(
+              controller: _ciudad,
+              maxLength: 60,
+              textCapitalization: TextCapitalization.words,
+              onChanged: (_) => setState(() {}),
+              decoration: InputDecoration(
+                labelText: 'Ciudad para las clases presenciales',
+                hintText: 'Madrid',
+                counterText: '',
+                suffixIcon: esMadrid(_ciudad.text) ? null : TextButton(onPressed: () => setState(() => _ciudad.text = 'Madrid'), child: const Text('Madrid')),
+              ),
+            ),
+            if (_online)
+              SwitchListTile(
+                contentPadding: EdgeInsets.zero,
+                value: _prefiereVerse,
+                onChanged: (v) => setState(() => _prefiereVerse = v),
+                title: Text('Prefiero presencial, pero acepto online', style: context.textos.bodyMedium),
+                subtitle: Text('Los preparadores presenciales de tu ciudad te verán primero; los online, también.', style: context.textos.labelSmall),
+              ),
+            if (!_online) ...[
+              const SizedBox(height: 8),
+              Aviso(
+                tipo: esMadrid(_ciudad.text) ? TipoAviso.info : TipoAviso.aviso,
+                titulo: esMadrid(_ciudad.text) ? 'Añade online y tendrás más donde elegir' : 'Fuera de Madrid es muy difícil encontrar preparador presencial',
+                texto: esMadrid(_ciudad.text)
+                    ? 'En Madrid hay preparación presencial, pero si marcas también online, encajarás con bastantes más preparadores. Puedes decir que prefieres presencial.'
+                    : 'Casi toda la preparación presencial está en Madrid. Si marcas también online (puedes decir que prefieres presencial), tendrás muchas más opciones de encontrar preparador.',
+                accion: TextButton(onPressed: () => setState(() => _online = true), child: const Text('Añadir online')),
+              ),
+            ],
           ],
           const TituloSeccion('Cuándo puedes'),
           Text('Marca los tramos de la semana en los que podrías dar clase. Sirve para ordenar a los preparadores por lo que encajan contigo.', style: context.textos.labelSmall),
@@ -347,8 +455,8 @@ class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
               },
             ),
           ),
-          const TituloSeccion('Cuéntales algo (opcional)'),
-          TextField(controller: _nota, minLines: 2, maxLines: 5, maxLength: 1000, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Qué vuelta llevas, cómo te gustaría trabajar, si has tenido preparador antes…')),
+          const TituloSeccion('Así te verán los preparadores'),
+          _vistaPrevia(context),
           const SizedBox(height: 16),
           FilledButton.icon(onPressed: _guardando ? null : _guardar, icon: const Icon(Icons.campaign_outlined), label: Text(widget.busqueda == null ? 'Publicar' : 'Guardar')),
         ],

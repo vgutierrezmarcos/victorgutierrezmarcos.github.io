@@ -118,13 +118,7 @@ class _TarjetaBusqueda extends ConsumerWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Expanded(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(b.descripcion, style: context.textos.titleSmall),
-                if (b.disponibilidad.isNotEmpty) TextoDisponibilidad(b.disponibilidad),
-                if (b.temas > 0) Text('Lleva ${b.temas} temas preparados', style: context.textos.labelSmall),
-                if (b.empiezaMasAdelante) Text('Quiere empezar más adelante', style: context.textos.labelSmall?.copyWith(color: context.colores.dorado)),
-                if (b.nota.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('«${b.nota}»', style: context.textos.bodySmall)),
-              ]),
+              child: ResumenBusqueda(busqueda: b),
             ),
             Padding(padding: const EdgeInsets.only(left: 8), child: Compatibilidad(compat)),
           ]),
@@ -258,3 +252,37 @@ class _SeccionPlazasState extends ConsumerState<SeccionPlazas> {
 }
 
 String _mes(DateTime d) => const ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'][d.month - 1] + (d.year != DateTime.now().year ? ' de ${d.year}' : '');
+
+
+/// Lo que busca un opositor, como lo ve el preparador en su tablón (y el
+/// opositor en la vista previa de su búsqueda): qué y cómo, su presentación
+/// en etiquetas y lo que ha escrito, en un bloque aparte.
+class ResumenBusqueda extends StatelessWidget {
+  const ResumenBusqueda({super.key, required this.busqueda});
+  final Busqueda busqueda;
+
+  @override
+  Widget build(BuildContext context) {
+    final b = busqueda;
+    final etiquetas = b.perfil.etiquetas;
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(b.descripcion, style: context.textos.titleSmall),
+      if (b.disponibilidad.isNotEmpty) TextoDisponibilidad(b.disponibilidad),
+      if (b.temas > 0) Text('Lleva ${b.temas} temas preparados', style: context.textos.labelSmall),
+      if (b.empiezaMasAdelante) Text('Quiere empezar más adelante', style: context.textos.labelSmall?.copyWith(color: context.colores.dorado)),
+      if (etiquetas.isNotEmpty) ...[
+        const SizedBox(height: 6),
+        Wrap(spacing: 4, runSpacing: 4, children: [for (final e in etiquetas) Etiqueta(e)]),
+      ],
+      if (b.nota.isNotEmpty)
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(top: 8),
+          padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+          decoration: BoxDecoration(color: context.colores.fondoClaro, borderRadius: BorderRadius.circular(Radios.control)),
+          child: Text(b.nota, style: context.textos.bodySmall),
+        ),
+      if (etiquetas.isEmpty && b.nota.isEmpty) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Sin presentación', style: context.textos.labelSmall?.copyWith(fontStyle: FontStyle.italic))),
+    ]);
+  }
+}

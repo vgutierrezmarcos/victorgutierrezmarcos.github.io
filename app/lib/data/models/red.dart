@@ -421,6 +421,80 @@ String describirDisponibilidad(Iterable<String> claves) {
   return out.join('; ');
 }
 
+/// Presentación opcional del opositor en su búsqueda (Víctor, 25/11/2026): la
+/// ven todos los preparadores verificados antes de dejarle su contacto. Todo
+/// opcional; vacío = sin indicar.
+class PerfilBusqueda {
+  const PerfilBusqueda({this.vuelta = '', this.aprobados = const [], this.convocatorias, this.formacion = '', this.dedicacion = '', this.preparadorAntes});
+
+  /// 'cero', 'primera', 'segunda', 'repaso' o ''.
+  final String vuelta;
+  /// Ejercicios aprobados en convocatorias anteriores.
+  final List<int> aprobados;
+  /// Convocatorias a las que se ha presentado (3 = tres o más); null = sin indicar.
+  final int? convocatorias;
+  /// 'economia', 'ade', 'derecho', 'ingenieria', 'otra' o ''.
+  final String formacion;
+  /// 'exclusiva', 'compagina' o ''.
+  final String dedicacion;
+  final bool? preparadorAntes;
+
+  static const vueltas = {'cero': 'Empiezo de cero', 'primera': 'Primera vuelta', 'segunda': 'Segunda vuelta', 'repaso': 'Repaso'};
+  static const formaciones = {'economia': 'Economía', 'ade': 'ADE', 'derecho': 'Derecho', 'ingenieria': 'Ingeniería', 'otra': 'Otra'};
+  static const dedicaciones = {'exclusiva': 'Dedicación exclusiva', 'compagina': 'Compagino con trabajo'};
+
+  bool get vacio => vuelta.isEmpty && aprobados.isEmpty && convocatorias == null && formacion.isEmpty && dedicacion.isEmpty && preparadorAntes == null;
+
+  /// Etiquetas para leerlo de un vistazo: «Segunda vuelta», «Aprobado el 1.º», «2 convocatorias»…
+  List<String> get etiquetas => [
+        if (vueltas[vuelta] != null) vueltas[vuelta]!,
+        if (aprobados.isNotEmpty) 'Aprobado${aprobados.length > 1 ? 's' : ''} ${aprobados.map((e) => '$e.º').join(' y ')}',
+        if (convocatorias != null) switch (convocatorias!) { 0 => 'Primera convocatoria', 1 => '1 convocatoria antes', 2 => '2 convocatorias antes', _ => '3 o más convocatorias antes' },
+        if (formaciones[formacion] != null) 'Formación: ${formaciones[formacion]}',
+        if (dedicaciones[dedicacion] != null) dedicaciones[dedicacion]!,
+        if (preparadorAntes != null) preparadorAntes! ? 'Ha tenido preparador' : 'Sin preparador antes',
+      ];
+
+  Map<String, dynamic> toJson() => {
+        if (vuelta.isNotEmpty) 'vuelta': vuelta,
+        if (aprobados.isNotEmpty) 'aprobados': aprobados,
+        if (convocatorias != null) 'convocatorias': convocatorias,
+        if (formacion.isNotEmpty) 'formacion': formacion,
+        if (dedicacion.isNotEmpty) 'dedicacion': dedicacion,
+        if (preparadorAntes != null) 'preparadorAntes': preparadorAntes,
+      };
+
+  factory PerfilBusqueda.fromJson(Object? j) {
+    if (j is! Map) return const PerfilBusqueda();
+    String texto(String k, Map<String, String> validos) => validos.containsKey(j[k]) ? j[k] as String : '';
+    return PerfilBusqueda(
+      vuelta: texto('vuelta', vueltas),
+      aprobados: _enteros(j['aprobados']),
+      convocatorias: (j['convocatorias'] as num?)?.toInt().clamp(0, 3),
+      formacion: texto('formacion', formaciones),
+      dedicacion: texto('dedicacion', dedicaciones),
+      preparadorAntes: j['preparadorAntes'] is bool ? j['preparadorAntes'] as bool : null,
+    );
+  }
+}
+
+/// Ciudad escrita como se quiera («madrid», «MADRID », «Madrid capital») a una forma para comparar.
+String claveCiudad(String ciudad) {
+  var c = ciudad.trim().toLowerCase();
+  const tildes = {'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'ü': 'u'};
+  tildes.forEach((k, v) => c = c.replaceAll(k, v));
+  return c.replaceAll(RegExp(r'\s+(capital|ciudad|centro)$'), '').replaceAll(RegExp(r'\s+'), ' ');
+}
+
+/// La ciudad tal como se guarda: «madrid capital» → «Madrid capital», «MADRID» → «Madrid».
+String ciudadBonita(String ciudad) {
+  final c = ciudad.trim().replaceAll(RegExp(r'\s+'), ' ');
+  if (c.isEmpty) return c;
+  return c.split(' ').map((p) => p.length <= 2 && p == p.toLowerCase() ? p : p[0].toUpperCase() + p.substring(1).toLowerCase()).join(' ');
+}
+
+bool esMadrid(String ciudad) => claveCiudad(ciudad) == 'madrid';
+
 /// Lo que busca un opositor que necesita preparador. Va sin nombre ni
 /// teléfono: la ven los preparadores verificados, y es el opositor quien
 /// escribe a los que le interesen.
@@ -439,6 +513,8 @@ class Busqueda {
     this.estado = 'abierta',
     this.creada,
     this.updatedAt,
+    this.aceptaOnline = false,
+    this.perfil = const PerfilBusqueda(),
   });
 
   final String id;
@@ -446,6 +522,12 @@ class Busqueda {
   final List<int> ejercicios;
   /// Online, presencial o le da igual ([Modalidad.sinIndicar]).
   final Modalidad modalidad;
+  /// Con [Modalidad.presencial]: prefiere presencial pero acepta online.
+  final bool aceptaOnline;
+  /// Presentación opcional (vuelta, formación…).
+  final PerfilBusqueda perfil;
+  /// Solo presencial (sin la alternativa online).
+  bool get soloPresencial => modalidad == Modalidad.presencial && !aceptaOnline;
   final String ciudad;
   /// Claves «día-tramo» en las que puede dar clase.
   final List<String> disponibilidad;
@@ -463,7 +545,7 @@ class Busqueda {
   bool get empiezaMasAdelante => desde != null && desde!.isAfter(DateTime.now().add(const Duration(days: 30)));
 
   String get textoModalidad => switch (modalidad) {
-        Modalidad.presencial => 'Presencial${ciudad.isEmpty ? '' : ' en $ciudad'}',
+        Modalidad.presencial => 'Presencial${ciudad.isEmpty ? '' : ' en $ciudad'}${aceptaOnline ? ' (acepta online)' : ''}',
         Modalidad.online => 'Online',
         Modalidad.sinIndicar => ciudad.isEmpty ? 'Online o presencial' : 'Online o presencial en $ciudad',
       };
@@ -476,7 +558,7 @@ class Busqueda {
         if (desde != null) 'desde ${_mes(desde!)}',
       ].join(' · ');
 
-  Busqueda copyWith({List<int>? ejercicios, Modalidad? modalidad, String? ciudad, List<String>? disponibilidad, int? clasesPorSemana, int? temas, DateTime? desde, bool cuantoAntes = false, String? nota, String? estado}) => Busqueda(
+  Busqueda copyWith({List<int>? ejercicios, Modalidad? modalidad, String? ciudad, List<String>? disponibilidad, int? clasesPorSemana, int? temas, DateTime? desde, bool cuantoAntes = false, String? nota, String? estado, bool? aceptaOnline, PerfilBusqueda? perfil}) => Busqueda(
         id: id,
         alumno: alumno,
         ejercicios: ejercicios ?? this.ejercicios,
@@ -490,6 +572,8 @@ class Busqueda {
         estado: estado ?? this.estado,
         creada: creada,
         updatedAt: DateTime.now(),
+        aceptaOnline: aceptaOnline ?? this.aceptaOnline,
+        perfil: perfil ?? this.perfil,
       );
 
   Map<String, dynamic> toJson() => {
@@ -506,6 +590,8 @@ class Busqueda {
         'estado': estado,
         'creada': (creada ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
+        if (modalidad == Modalidad.presencial && aceptaOnline) 'aceptaOnline': true,
+        if (!perfil.vacio) 'perfil': perfil.toJson(),
       };
 
   factory Busqueda.fromJson(Map<dynamic, dynamic> j) => Busqueda(
@@ -522,6 +608,8 @@ class Busqueda {
         estado: j['estado'] as String? ?? 'abierta',
         creada: _fecha(j['creada']),
         updatedAt: _fecha(j['updatedAt']),
+        aceptaOnline: j['aceptaOnline'] == true,
+        perfil: PerfilBusqueda.fromJson(j['perfil']),
       );
 }
 
@@ -601,13 +689,17 @@ class Plazas {
 int compatibilidad(Busqueda b, PreparadorVerificado v, {Plazas? plazas}) {
   if (b.ejercicios.isNotEmpty && v.ejercicios.isNotEmpty && !b.ejercicios.any(v.ejercicios.contains)) return 0;
   var s = 40;
-  final mismaCiudad = b.ciudad.trim().isEmpty || v.ciudad.trim().isEmpty || b.ciudad.trim().toLowerCase() == v.ciudad.trim().toLowerCase();
+  final mismaCiudad = b.ciudad.trim().isEmpty || v.ciudad.trim().isEmpty || claveCiudad(b.ciudad) == claveCiudad(v.ciudad);
   final online = b.modalidad != Modalidad.presencial && v.daOnline;
   final presencial = b.modalidad != Modalidad.online && v.daPresencial && mismaCiudad;
+  // Prefiere presencial pero acepta online: encaja con quien da online, algo por debajo.
+  final onlineDeSegunda = b.modalidad == Modalidad.presencial && b.aceptaOnline && v.daOnline;
   if (v.modalidad.isEmpty) {
     s += 12;
   } else if (online || presencial) {
     s += 25;
+  } else if (onlineDeSegunda) {
+    s += 15;
   } else {
     return 0;
   }

@@ -171,8 +171,18 @@ service cloud.firestore {
     // Búsqueda de preparador: campos conocidos, sin nombre ni teléfono.
     function busquedaValida() {
       let d = request.resource.data;
-      return d.keys().hasOnly(['id', 'alumno', 'ejercicios', 'modalidad', 'ciudad', 'disponibilidad', 'clasesPorSemana', 'temas', 'desde', 'nota', 'estado', 'creada', 'updatedAt'])
+      return d.keys().hasOnly(['id', 'alumno', 'ejercicios', 'modalidad', 'ciudad', 'disponibilidad', 'clasesPorSemana', 'temas', 'desde', 'nota', 'estado', 'creada', 'updatedAt', 'aceptaOnline', 'perfil'])
         && d.estado in ['abierta', 'cerrada']
+        && d.get('aceptaOnline', false) is bool
+        // Presentación opcional del opositor (vuelta, aprobados, convocatorias, formación, dedicación, preparador antes).
+        && d.get('perfil', {}) is map
+        && d.get('perfil', {}).keys().hasOnly(['vuelta', 'aprobados', 'convocatorias', 'formacion', 'dedicacion', 'preparadorAntes'])
+        && d.get('perfil', {}).get('vuelta', '') in ['', 'cero', 'primera', 'segunda', 'repaso']
+        && d.get('perfil', {}).get('formacion', '') in ['', 'economia', 'ade', 'derecho', 'ingenieria', 'otra']
+        && d.get('perfil', {}).get('dedicacion', '') in ['', 'exclusiva', 'compagina']
+        && d.get('perfil', {}).get('aprobados', []) is list && d.get('perfil', {}).get('aprobados', []).size() <= 5
+        && d.get('perfil', {}).get('convocatorias', 0) is int && d.get('perfil', {}).get('convocatorias', 0) >= 0 && d.get('perfil', {}).get('convocatorias', 0) <= 3
+        && d.get('perfil', {}).get('preparadorAntes', false) is bool
         && d.get('nota', '') is string && d.get('nota', '').size() <= 1000
         && d.get('ciudad', '') is string && d.get('ciudad', '').size() <= 60;
     }

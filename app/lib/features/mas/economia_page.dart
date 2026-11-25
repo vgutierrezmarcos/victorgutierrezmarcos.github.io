@@ -44,7 +44,7 @@ class EconomiaPage extends ConsumerWidget {
               Text('Un equipo de preparación en tu IA', style: context.textos.titleMedium),
               const SizedBox(height: 6),
               Text(
-                'Con el conector «${Creditos.nombreApp}», tu asistente de IA corrige tus cantes y dictámenes con el temario revisado, te organiza el cronograma y te pregunta como el tribunal. Lee de la app tus temas, tus cantes, tus tests y tu cronograma, y guarda en ella el informe del cante o un cronograma nuevo cuando tú se lo confirmas.',
+                'Con el conector «${Creditos.nombreApp}», tu asistente de IA resuelve tus dudas con el temario revisado, te organiza el cronograma, te pone test y preguntas de repaso y te hace informes de evaluación de tus cantes y dictámenes. Complementa a tu preparador; no lo sustituye. Lee de la app tus temas, tus cantes, tus tests y tu cronograma, y guarda en ella el informe del cante o un cronograma nuevo cuando tú se lo confirmas.',
                 style: context.textos.bodySmall,
               ),
               const SizedBox(height: 12),

@@ -584,7 +584,19 @@ class RedRepo {
       }
       // Al opositor: preparadores a los que les interesa su búsqueda.
       for (final b in (await misBusquedas()).where((b) => b.abierta)) {
-        for (final i in await interesados(b.id)) {
+        final lista = await interesados(b.id);
+        // Solo presencial y nadie le ha escrito en casi dos semanas: que añada online.
+        if (b.soloPresencial && lista.isEmpty && (b.creada?.isBefore(ahora.subtract(const Duration(days: 12))) ?? false)) {
+          out.add(AvisoRed(
+            id: 'busqOnline:${b.id}',
+            titulo: 'Aún no te ha escrito ningún preparador',
+            texto: esMadrid(b.ciudad)
+                ? 'Buscas solo presencial. Si añades online (puedes decir que prefieres presencial), encajarás con bastantes más. Toca para cambiarlo.'
+                : 'Buscas solo presencial${b.ciudad.isEmpty ? '' : ' en ${b.ciudad}'}, y casi toda la preparación presencial está en Madrid. Si añades online, tendrás muchas más opciones. Toca para cambiarlo.',
+            ruta: '/buscar-preparador',
+          ));
+        }
+        for (final i in lista) {
           if (!(i.creado?.isAfter(reciente) ?? false)) continue;
           out.add(AvisoRed(id: 'int:${b.id}:${i.uid}', titulo: 'A ${i.nombre.isEmpty ? 'un preparador' : i.nombre} le interesa prepararte', texto: 'Toca para ver su perfil y escribirle.', ruta: '/buscar-preparador'));
         }

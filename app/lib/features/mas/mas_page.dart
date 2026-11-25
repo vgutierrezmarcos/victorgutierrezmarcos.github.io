@@ -105,7 +105,7 @@ class MasPage extends ConsumerWidget {
                 switch ((ref.watch(iaConfiguradaProvider), ref.watch(iaElegidaProvider))) {
                   (final Ia ia, _) => 'Configurada en ${ia.nombre}',
                   (null, final Ia ia) => 'Has elegido ${ia.nombre}: falta conectarla',
-                  _ => 'Tu IA corrige tus cantes, te organiza el cronograma y te pregunta como el tribunal. En Claude, Le Chat, ChatGPT y Gemini',
+                  _ => 'Tu IA resuelve tus dudas, te organiza el cronograma y te hace informes de evaluación de tus cantes; complementa a tu preparador. En Claude, Le Chat, ChatGPT y Gemini',
                 },
                 () => context.go('/mas/economia')),
           ]),

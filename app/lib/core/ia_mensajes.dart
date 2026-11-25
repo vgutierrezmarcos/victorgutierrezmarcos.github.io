@@ -59,7 +59,7 @@ class MensajesIa {
       ];
 
   List<AccionIa> get cantes => [
-        AccionIa('cante', Icons.rate_review_outlined, 'Corrige mi último cante', _con('Corrige mi último cante.')),
+        AccionIa('cante', Icons.rate_review_outlined, 'Informe de mi último cante', _con('Hazme el informe de evaluación de mi último cante.')),
         AccionIa('tribunal', Icons.gavel_outlined, 'Simula al tribunal', _con('Simula al tribunal con el tema de mi próximo cante.')),
       ];
 }

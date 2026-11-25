@@ -97,7 +97,7 @@ class _HojaConfigurarIa extends ConsumerWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: [
           Text('Configura EconomIA', style: context.textos.titleMedium),
           const SizedBox(height: 4),
-          Text('Elige la IA que usas y conéctala. Después, esta burbuja la abrirá con el mensaje ya escrito: dudas del tema que estás leyendo, preguntas como el tribunal, tests…', style: context.textos.bodySmall),
+          Text('Elige la IA que usas y conéctala. Después, esta burbuja la abrirá con el mensaje ya escrito: dudas del tema que estás leyendo, preguntas de repaso, tests…', style: context.textos.bodySmall),
           const SizedBox(height: 12),
           const SelectorIa(),
           const SizedBox(height: 12),
