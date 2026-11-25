@@ -179,6 +179,13 @@
       .vista .cab img { height: 24px; width: 24px; border-radius: 6px; }
       .vista .marco { position: relative; overflow: hidden; }
       .vista .marco img { position: absolute; left: 0; top: 0; width: 640px; height: auto; display: block; }
+      /* Vista de la sugerencia, hecha en HTML con el aspecto de las del conector */
+      .vista .sug { position: absolute; inset: 0; box-sizing: border-box; padding: 22px 26px; background: #fff; }
+      .sug-t { font-family: "Pagella", serif; font-weight: 700; font-size: 26px; color: var(--tinta); margin: 0 0 12px; }
+      .sug-c { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dorado); margin: 10px 0 2px; }
+      .sug-v { font-size: 19px; line-height: 1.4; color: var(--texto); margin: 0; }
+      .sug-n { font-size: 15px; color: var(--texto-suave); margin: 14px 0 0; }
+      .sug-b { position: absolute; right: 26px; bottom: 22px; padding: 10px 22px; border-radius: 10px; background: var(--morado); color: #fff; font-weight: 600; font-size: 18px; }
       .cursor { position: absolute; z-index: 6; left: 0; top: 0; width: 30px; height: 30px; }
       .cursor svg { display: block; width: 30px; height: 30px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)); }
       .cursor i { position: absolute; left: -17px; top: -17px; width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--dorado); opacity: 0; }
@@ -198,8 +205,8 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="178.9091">
-      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="178.9091" data-track-index="9" data-volume="0.35"></audio>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="189.8182">
+      <audio id="musica" src="assets/musica.wav" data-start="0" data-duration="189.8182" data-track-index="9" data-volume="0.35"></audio>
 
       <!-- Portada -->
       <section id="portada" class="clip oscura" data-start="0.0000" data-duration="4.3636" data-track-index="0">
@@ -303,7 +310,7 @@
       </section>
 
       <!-- Un cante: la app -->
-      <section id="cante_app" class="clip salvia" data-start="48.0000" data-duration="6.5455" data-track-index="0">
+      <section id="cante_app" class="clip salvia" data-start="65.4545" data-duration="6.5455" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
         <div class="texto"><div class="bloque">
@@ -317,7 +324,7 @@
       </section>
 
       <!-- Un cante: el chat (toma G4a) -->
-      <section id="cante_chat" class="clip" data-start="54.5455" data-duration="8.7273" data-track-index="0">
+      <section id="cante_chat" class="clip" data-start="72.0000" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">un cante · en claude.ai</p>
@@ -329,7 +336,7 @@
       </section>
 
       <!-- Un cante: el informe (toma G4b) -->
-      <section id="cante_informe" class="clip" data-start="63.2727" data-duration="8.7273" data-track-index="0">
+      <section id="cante_informe" class="clip" data-start="80.7273" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">un cante · el informe</p>
@@ -344,7 +351,7 @@
       </section>
 
       <!-- Un dictamen (tomas G5a y G5b) -->
-      <section id="dictamen" class="clip" data-start="72.0000" data-duration="13.0909" data-track-index="0">
+      <section id="dictamen" class="clip" data-start="89.4545" data-duration="13.0909" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
           <p class="rot">un dictamen</p>
@@ -357,10 +364,10 @@
       </section>
 
       <!-- Una duda (tomas G6a y G6b) -->
-      <section id="duda" class="clip" data-start="85.0909" data-duration="8.7273" data-track-index="0">
+      <section id="duda" class="clip" data-start="56.7273" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
-          <p class="rot">una duda</p>
+          <p class="rot">una duda · el temario entero</p>
           <h2 id="duda-tit" class="tit"><span class="l">Ve el temario en conjunto.</span></h2>
         </div>
         <div id="duda-ventana" class="ventana"></div>
@@ -369,10 +376,10 @@
       </section>
 
       <!-- Una duda con gráfico (tomas G10a y G10b) -->
-      <section id="duda_grafico" class="clip" data-start="93.8182" data-duration="8.7273" data-track-index="0">
+      <section id="duda_grafico" class="clip" data-start="48.0000" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="banda">
-          <p class="rot">una duda · con gráfico</p>
+          <p class="rot">una duda</p>
           <h2 id="duda_grafico-tit" class="tit"><span class="l">Te lo dibuja como en la pizarra.</span></h2>
         </div>
         <div id="duda_grafico-ventana" class="ventana"></div>
@@ -437,8 +444,26 @@
         <div id="reserva-r1" class="rotulo" style="left: 960px; max-width: 820px">Tu preparador la ve en su app y la acepta con un toque</div>
       </section>
 
+      <!-- Una mejora: la IA ofrece mandar al autor lo que el tema no explica (simulada: conversación de ejemplo y la vista de sugerir_mejora en HTML) -->
+      <section id="sugerencia" class="clip" data-start="144.0000" data-duration="10.9091" data-track-index="0">
+        <div class="fondo"></div>
+        <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
+        <div style="position: absolute; left: 120px; top: 120px; width: 1000px">
+          <p id="sugerencia-rot" class="rot">una mejora · para el autor</p>
+          <h2 id="sugerencia-tit" class="tit" style="font-size: 64px"><span class="l">¿No se entiende? <em>Díselo al autor.</em></span></h2>
+        </div>
+        <div class="chat" style="width: 880px">
+          <div id="sugerencia-b1" class="burbuja yo">En el 3.A.16, ¿por qué la oferta a largo plazo es horizontal con libre entrada?</div>
+          <div id="sugerencia-b2" class="burbuja ia"><span class="quien">Tu IA</span>Porque el precio vuelve siempre al mínimo del coste medio, si todas las empresas tienen los mismos costes. El tema no lo dice: ¿se lo mando al autor?</div>
+        </div>
+        <div id="sugerencia-vista" class="vista" style="zoom: 1.3; left: 800px; top: 215px"><div class="cab"><img src="assets/icono.png" alt="" />Oposición TCEE · DCE</div><div class="marco" style="height: 300px">
+          <div id="sugerencia-va" class="sug"><p class="sug-t">Sugerencia para el autor</p><p class="sug-c">Tema</p><p class="sug-v">3.A.16 · Análisis de plazos</p><p class="sug-c">Qué mejorar</p><p class="sug-v">Decir que la oferta a largo plazo es horizontal solo si todas las empresas tienen los mismos costes.</p><p class="sug-n">Sin tu nombre ni tu correo</p><span class="sug-b">Enviar al autor</span></div>
+          <div id="sugerencia-vb" class="sug"><p class="sug-t">✓ Enviada</p><p class="sug-v">Gracias. El autor la revisa y, cuando mejore el tema, te lo cuenta en «Mis sugerencias».</p></div>
+        </div><div id="sugerencia-cursor" class="cursor"><i></i><svg viewBox="0 0 24 24"><path d="M3 2l7.5 19 2.6-7.9L21 10.500z" fill="#2e2235" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div></div>
+        <div id="sugerencia-r1" class="rotulo" style="max-width: 1000px">Anónima: tú la revisas y la envías; el tema mejora para todos</div>
+      </section>
       <!-- Tu carpeta (toma G8) -->
-      <section id="carpeta" class="clip salvia" data-start="144.0000" data-duration="10.9091" data-track-index="0">
+      <section id="carpeta" class="clip salvia" data-start="154.9091" data-duration="10.9091" data-track-index="0">
         <div class="fondo"></div>
         <div id="carpeta-a">
           <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
@@ -465,7 +490,7 @@
       </section>
 
       <!-- En el móvil: el mismo conector en la app de tu IA -->
-      <section id="movil" class="clip salvia" data-start="154.9091" data-duration="6.5455" data-track-index="0">
+      <section id="movil" class="clip salvia" data-start="165.8182" data-duration="6.5455" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
         <div class="texto" style="width: 640px"><div class="bloque">
@@ -480,7 +505,7 @@
       </section>
 
       <!-- Y además -->
-      <section id="ademas" class="clip" data-start="161.4545" data-duration="8.7273" data-track-index="0">
+      <section id="ademas" class="clip" data-start="172.3636" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="marca"><img class="icono-marca" src="assets/icono.png" alt="" />EconomIA</div>
         <div class="texto" style="width: 640px"><div class="bloque">
@@ -489,18 +514,18 @@
           <p id="ademas-par" class="par">Siempre con tu temario y tu preparación; siempre con el aviso de que no sustituye a tu preparador.</p>
         </div></div>
         <div class="tarjetas" style="left: 840px; top: 170px; width: 960px; grid-template-columns: 1fr 1fr">
-          <div id="ademas-c1" class="tarjeta cita"><b>«Pregúntame como en el examen sobre el 3.A.16»</b></div>
+          <div id="ademas-c1" class="tarjeta cita"><b>«Hazme preguntas sobre el tema 3.A.16 como si fueras el tribunal»</b></div>
           <div id="ademas-c2" class="tarjeta cita"><b>«Soy preparador: prepárame la clase del lunes»</b></div>
           <div id="ademas-c3" class="tarjeta cita"><b>«¿Qué me toca hoy?»</b></div>
           <div id="ademas-c4" class="tarjeta cita"><b>«¿Qué fuente me recomiendas para el 3.B.26?»</b></div>
-          <div id="ademas-c5" class="tarjeta cita"><b>«Hazme el informe de este tema escrito del cuarto ejercicio»</b></div>
-          <div id="ademas-c6" class="tarjeta cita"><b>«Esto del tema no se entiende: díselo al autor»</b></div>
+          <div id="ademas-c5" class="tarjeta cita"><b>«Hazme tarjetas de memoria del 3.A.25»</b></div>
+          <div id="ademas-c6" class="tarjeta cita"><b>«¿Qué temas llevo más flojos?»</b></div>
         </div>
       </section>
 
 
       <!-- Cierre -->
-      <section id="cierre" class="clip oscura" data-start="170.1818" data-duration="8.7273" data-track-index="0">
+      <section id="cierre" class="clip oscura" data-start="181.0909" data-duration="8.7273" data-track-index="0">
         <div class="fondo"></div>
         <div class="centro" style="gap: 26px">
           <div class="icono-caja">
@@ -519,20 +544,20 @@
 
       <!-- Tomas grabadas en claude.ai y en el ordenador (fuera de las escenas: ver la nota de arriba), aceleradas por preparar.py; sus tiempos salen de guion.json -->
       <video id="toma-g2" class="toma" src="assets/tomas/r-G2c.mp4" muted playsinline data-start="35.4591" data-duration="12.5409" data-track-index="1"></video>
-      <video id="toma-g4a" class="toma" src="assets/tomas/r-G4a.mp4" muted playsinline data-start="54.8955" data-duration="8.3773" data-track-index="1"></video>
-      <video id="toma-g4b" class="toma" src="assets/tomas/r-G4b.mp4" muted playsinline data-start="63.5227" data-duration="8.4773" data-track-index="1"></video>
-      <video id="toma-g5a" class="toma" src="assets/tomas/r-G5a.mp4" muted playsinline data-start="72.2500" data-duration="3.35" data-track-index="1"></video>
-      <video id="toma-g5b" class="toma" src="assets/tomas/r-G5b.mp4" muted playsinline data-start="75.6000" data-duration="9.4909" data-track-index="1"></video>
-      <video id="toma-g6a" class="toma" src="assets/tomas/r-G6a.mp4" muted playsinline data-start="85.4409" data-duration="3.45" data-track-index="1"></video>
-      <video id="toma-g6b" class="toma" src="assets/tomas/r-G6b.mp4" muted playsinline data-start="88.8909" data-duration="4.9273" data-track-index="1"></video>
-      <video id="toma-g10a" class="toma" src="assets/tomas/r-G10a.mp4" muted playsinline data-start="94.1682" data-duration="3.05" data-track-index="1"></video>
-      <video id="toma-g10b" class="toma" src="assets/tomas/r-G10b.mp4" muted playsinline data-start="97.2182" data-duration="5.3273" data-track-index="1"></video>
+      <video id="toma-g4a" class="toma" src="assets/tomas/r-G4a.mp4" muted playsinline data-start="72.3500" data-duration="8.3773" data-track-index="1"></video>
+      <video id="toma-g4b" class="toma" src="assets/tomas/r-G4b.mp4" muted playsinline data-start="80.9773" data-duration="8.4773" data-track-index="1"></video>
+      <video id="toma-g5a" class="toma" src="assets/tomas/r-G5a.mp4" muted playsinline data-start="89.7045" data-duration="3.35" data-track-index="1"></video>
+      <video id="toma-g5b" class="toma" src="assets/tomas/r-G5b.mp4" muted playsinline data-start="93.0545" data-duration="9.4909" data-track-index="1"></video>
+      <video id="toma-g6a" class="toma" src="assets/tomas/r-G6a.mp4" muted playsinline data-start="57.0773" data-duration="3.45" data-track-index="1"></video>
+      <video id="toma-g6b" class="toma" src="assets/tomas/r-G6b.mp4" muted playsinline data-start="60.5273" data-duration="4.9273" data-track-index="1"></video>
+      <video id="toma-g10a" class="toma" src="assets/tomas/r-G10a.mp4" muted playsinline data-start="48.3500" data-duration="3.05" data-track-index="1"></video>
+      <video id="toma-g10b" class="toma" src="assets/tomas/r-G10b.mp4" muted playsinline data-start="51.4000" data-duration="5.3273" data-track-index="1"></video>
       <video id="toma-g9a" class="toma" src="assets/tomas/r-G9na.mp4" muted playsinline data-start="102.7955" data-duration="6.05" data-track-index="1"></video>
       <video id="toma-g9b" class="toma" src="assets/tomas/r-G9nb.mp4" muted playsinline data-start="108.8455" data-duration="6.7909" data-track-index="1"></video>
-      <video id="toma-g8" class="toma" src="assets/tomas/r-G8.mp4" muted playsinline data-start="146.9500" data-duration="7.9591" data-track-index="1"></video>
+      <video id="toma-g8" class="toma" src="assets/tomas/r-G8.mp4" muted playsinline data-start="157.8591" data-duration="7.9591" data-track-index="1"></video>
 
       <!-- Capas comunes: rótulos de bloque y barrido -->
-      <div id="capa-capitulos" class="clip" data-start="0" data-duration="178.9091" data-track-index="7" style="pointer-events: none">
+      <div id="capa-capitulos" class="clip" data-start="0" data-duration="189.8182" data-track-index="7" style="pointer-events: none">
         <div class="capitulo" data-bloque="instalar"><span>Conectar</span></div>
         <div class="capitulo" data-bloque="cante"><span>Un cante</span></div>
         <div class="capitulo" data-bloque="dictamen"><span>Un dictamen</span></div>
@@ -540,11 +565,12 @@
         <div class="capitulo" data-bloque="cronograma"><span>El cronograma</span></div>
         <div class="capitulo" data-bloque="test"><span>Un test</span></div>
         <div class="capitulo" data-bloque="clase"><span>Una clase</span></div>
+        <div class="capitulo" data-bloque="mejora"><span>Una mejora</span></div>
         <div class="capitulo" data-bloque="carpeta"><span>Tu carpeta</span></div>
         <div class="capitulo" data-bloque="movil"><span>Desde la app</span></div>
         <div class="capitulo" data-bloque="ademas"><span>Y además</span></div>
       </div>
-      <div id="capa-barrido" class="clip" data-start="0" data-duration="178.9091" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
+      <div id="capa-barrido" class="clip" data-start="0" data-duration="189.8182" data-track-index="6" style="pointer-events: none"><div id="barrido"></div></div>
     </div>
 
     <script>
@@ -552,10 +578,10 @@
       const P = 60 / 110, C = 4 * P, M = P / 2;
       const B = (n) => n * C;
       // Compás en que empieza cada escena (lo escribe preparar.py desde guion.json).
-      const E = { portada: 0, quehace: 2, porque: 6, memoria: 10, plataformas: 13, instalar: 16, cante_app: 22, cante_chat: 25, cante_informe: 29, dictamen: 33, duda: 39, duda_grafico: 43, cronograma_dce: 47, cronograma_app: 53, test: 57, reserva: 61, carpeta: 66, movil: 71, ademas: 74, cierre: 78 }; // guion
+      const E = { portada: 0, quehace: 2, porque: 6, memoria: 10, plataformas: 13, instalar: 16, duda_grafico: 22, duda: 26, cante_app: 30, cante_chat: 33, cante_informe: 37, dictamen: 41, cronograma_dce: 47, cronograma_app: 53, test: 57, reserva: 61, sugerencia: 66, carpeta: 71, movil: 76, ademas: 79, cierre: 83 }; // guion
       // Bloque de cada escena (también lo escribe preparar.py).
-      const BLOQUE = { portada: "empezar", quehace: "empezar", porque: "empezar", memoria: "empezar", plataformas: "empezar", instalar: "instalar", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", duda: "duda", duda_grafico: "duda", cronograma_dce: "cronograma", cronograma_app: "cronograma", test: "test", reserva: "clase", carpeta: "carpeta", movil: "movil", ademas: "ademas", cierre: "final" }; // guion
-      const DURACION = 178.9091;
+      const BLOQUE = { portada: "empezar", quehace: "empezar", porque: "empezar", memoria: "empezar", plataformas: "empezar", instalar: "instalar", duda_grafico: "duda", duda: "duda", cante_app: "cante", cante_chat: "cante", cante_informe: "cante", dictamen: "dictamen", cronograma_dce: "cronograma", cronograma_app: "cronograma", test: "test", reserva: "clase", sugerencia: "mejora", carpeta: "carpeta", movil: "movil", ademas: "ademas", cierre: "final" }; // guion
+      const DURACION = 189.8182;
       const ORDEN = Object.keys(E).sort((a, b) => E[a] - E[b]);
       const fin = (id) => { const i = ORDEN.indexOf(id); return i + 1 < ORDEN.length ? B(E[ORDEN[i + 1]]) : DURACION; };
 
@@ -782,6 +808,16 @@
       movil("#reserva-m1", RS + 6.2);
       rotulo("#reserva-r1", RS + 7.0, 3.6);
       sale("reserva");
+
+      // Una mejora: la conversación, la vista de la sugerencia y el envío
+      const SG = B(E.sugerencia);
+      aparece("#sugerencia-rot", SG, 0.45);
+      palabras("#sugerencia-tit", SG + 0.1);
+      tarjetas(["#sugerencia-b1"], SG + 0.8);
+      tarjetas(["#sugerencia-b2"], SG + 1.9);
+      vista("#sugerencia", SG + 3.6, SG + 6.2, [120, 120], [545, 302], { altoB: 140 });
+      rotulo("#sugerencia-r1", SG + 7.0, 3.5);
+      sale("sugerencia");
 
       // Tu carpeta: la estructura y la toma G8
       const R = B(E.carpeta);

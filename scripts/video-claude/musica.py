@@ -162,13 +162,15 @@ def banda_sonora(ruta):
     for k, h in enumerate((1.0, 0.45)):
         poner(efectos, m._madera(0.16 * h, 480), inicio('cante_informe') + 4.7 + k * 0.12)
     # Las vistas del conector: un toque al pulsar el botón y la campana cuando queda hecho.
-    for escena, clic in (('cante_informe', 7.0), ('cronograma_app', 3.4), ('test', 3.8), ('reserva', 5.4)):
+    for escena, clic in (('cante_informe', 7.0), ('cronograma_app', 3.4), ('test', 3.8), ('reserva', 5.4), ('sugerencia', 6.2)):
         poner(efectos, m._toque(0.06), inicio(escena) + clic)
         aviso(inicio(escena) + clic + 0.2, 0.045)
     # Cronograma y clase: los móviles de la app.
     entra_movil(inicio('cronograma_app') + 4.3)
     entra_movil(inicio('cronograma_app') + 4.7)
     entra_movil(inicio('reserva') + 6.2)
+    # La mejora: los dos bocadillos.
+    toques(inicio('sugerencia') + 0.8, 2, 1.1)
     # La carpeta: la estructura (cuatro tarjetas) y el informe que aparece.
     toques(inicio('carpeta') + 0.5, 4, 0.3)
     aviso(inicio('carpeta') + 8.4, 0.05)
