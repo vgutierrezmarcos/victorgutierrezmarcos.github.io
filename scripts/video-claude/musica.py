@@ -38,7 +38,8 @@ ESCENAS = {e['id']: e['compas'] for e in GUION['escenas']}
 BLOQUES = {e['id']: e['bloque'] for e in GUION['escenas']}
 ORDEN = sorted(ESCENAS, key=ESCENAS.get)
 CIERRE = ESCENAS['cierre']
-CUERPO = ESCENAS['quehace']  # el ritmo entra al acabar el gancho
+CUERPO = ESCENAS['quehace']  # el ritmo entra al acabar la portada (o el gancho, si lo hay)
+GANCHO = ESCENAS.get('gancho', CUERPO)
 # Primer compás de cada bloque (donde pasa el barrido dorado): la música respira ahí.
 CAMBIOS = [ESCENAS[e] for i, e in enumerate(ORDEN) if i and BLOQUES[e] != BLOQUES[ORDEN[i - 1]]]
 RESPIROS = {c for c in CAMBIOS if CUERPO < c < CIERRE}
@@ -71,7 +72,7 @@ def banda_sonora(ruta):
         t0 = m.compas(b)
         acorde = [m._nota(n) for n in m.ACORDES[b % 4]]
         raiz = m._nota(m.RAICES[b % 4])
-        intro, gancho, cierre = b < ESCENAS['gancho'], ESCENAS['gancho'] <= b < CUERPO, b >= CIERRE
+        intro, gancho, cierre = b < GANCHO, GANCHO <= b < CUERPO, b >= CIERRE
         cuerpo = not (intro or gancho or cierre)
         respiro, calma = b in RESPIROS, en(CALMA, b)
         vel = 0.12 if intro else (0.08 if gancho else (0.07 if cierre else (0.05 if calma else 0.04)))
@@ -141,11 +142,14 @@ def banda_sonora(ruta):
         if CUERPO < c <= CIERRE:
             poner(efectos, m._golpe(0.28), m.compas(c))
     # Gancho: la segunda línea y el titular.
-    poner(efectos, m._toque(0.05), inicio('gancho') + 1.2 * PULSO)
-    aviso(inicio('gancho') + 1.5 * COMPAS + 0.3, 0.06)
+    if 'gancho' in ESCENAS:
+        poner(efectos, m._toque(0.05), inicio('gancho') + 1.2 * PULSO)
+        aviso(inicio('gancho') + 1.5 * COMPAS + 0.3, 0.06)
     # Qué hace y por qué: una tarjeta, un toque.
     toques(inicio('quehace') + 0.8, 6, 0.9 * PULSO)
     toques(inicio('porque') + 0.9, 4, 1.3 * PULSO)
+    if 'memoria' in ESCENAS:
+        toques(inicio('memoria') + 0.9, 3, 1.3 * PULSO)
     toques(inicio('plataformas') + 0.9, 4, 1.1 * PULSO)
     # Conectar: los tres pasos.
     for t in (1.4, 5.9, 9.8):

@@ -79,9 +79,15 @@ def sincronizar_guion():
         sys.exit('No encuentro las capas de rótulos y barrido en index.html')
     # Cada toma empieza «desde» segundos después de su escena y se ve «dura» segundos (acelerada por ritmo()).
     empieza = {e['id']: e['compas'] * compas for e in escenas}
+    termina = {e['id']: (escenas[i + 1]['compas'] * compas if i + 1 < len(escenas) else guion['duracion']) for i, e in enumerate(escenas)}
     for t in guion['tomas']:
+        # Se ve hasta la siguiente toma de su escena o hasta el final de la escena (con el último fotograma
+        # quieto, tpad de ritmo()): antes se fundía antes y la ventana se quedaba vacía, como atascada.
+        inicio = empieza[t['escena']] + t['desde']
+        siguientes = [empieza[o['escena']] + o['desde'] for o in guion['tomas'] if o['escena'] == t['escena'] and o['desde'] > t['desde']]
+        visible = round(min(siguientes + [termina[t['escena']]]) - inicio, 4)
         html, n = re.subn(rf'(<video id="toma-{t["id"]}" class="toma" src=")[^"]*(" muted playsinline data-start=")[\d.]+(" data-duration=")[\d.]+',
-                          rf'\g<1>assets/tomas/r-{t["fichero"]}.mp4\g<2>{empieza[t["escena"]] + t["desde"]:.4f}\g<3>{t["dura"]}', html)
+                          rf'\g<1>assets/tomas/r-{t["fichero"]}.mp4\g<2>{inicio:.4f}\g<3>{visible}', html)
         if n != 1:
             sys.exit(f'No encuentro la toma «{t["id"]}» en index.html')
     with open(ruta, 'w', encoding='utf-8') as f:
@@ -103,7 +109,7 @@ def ritmo():
         a, b = t['corte']
         factor = (b - a) / t['dura']
         subprocess.run([ffmpeg, '-y', '-loglevel', 'error', '-ss', str(a), '-t', str(b - a), '-i', origen,
-                        '-vf', f'setpts=PTS/{factor:.5f},fps=30,tpad=stop_mode=clone:stop_duration=0.5', '-an',
+                        '-vf', f'setpts=PTS/{factor:.5f},fps=30,tpad=stop_mode=clone:stop_duration=8', '-an',
                         '-c:v', 'libx264', '-preset', 'slow', '-crf', '15', '-pix_fmt', 'yuv420p', '-g', '15',
                         os.path.join(ASSETS, 'tomas', 'r-' + t['fichero'] + '.mp4')], check=True)
         print(f'  {t["fichero"]}: ×{factor:.2f}')
