@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../data/models/oposicion.dart';
+import '../features/cantar/esquema_clase.dart';
 import 'notificaciones.dart';
 import 'vistos.dart';
 
@@ -67,12 +68,40 @@ Future<int> comprobarTemasAnticipados(FirebaseFirestore db, String uid, Oposicio
       vistos.add(clave);
       avisados++;
       final texto = t.texto;
-      // Cuenta atrás del esquema desde que llegan los temas (como en el examen).
-      final ejercicio = (j['ejercicio'] as num?)?.toInt() ?? 0;
-      final seg = oposicion.ejercicio(ejercicio)?.segundosEsquemaPara(t.temas.length) ?? 0;
-      await Notificaciones.avisoTema(canteId: d.id, de: t.preparadorNombre, texto: texto, tema: t.temas.join(','), sorteado: t.sorteado, esquemaHasta: seg > 0 ? cuando.add(Duration(seconds: seg)) : null);
+      // Cuenta atrás del esquema desde que llegan los temas (como en el
+      // examen), con el tiempo de esquema de esta clase.
+      final hasta = await finEsquemaDeClase(d.reference, j, temas: t.temas.length, oposicion: oposicion, llegada: cuando, ahora: hoy);
+      await Notificaciones.avisoTema(
+        canteId: d.id,
+        de: t.preparadorNombre,
+        texto: texto,
+        tema: t.temas.join(','),
+        sorteado: t.sorteado,
+        esquemaHasta: hasta,
+      );
     }
   } catch (_) {}
   if (avisados > 0) await guardarVistos(vistos, lista: 'temas_anticipados');
   return avisados;
+}
+
+/// Hasta cuándo dura el esquema de la clase [clase] (datos [j]) cuyos [temas]
+/// temas llegan en [llegada]: con el tiempo de esquema de su cronómetro si el
+/// preparador lo ha cambiado (o ya corre), si no el de la clase y si no el del
+/// examen. Null si no hay cuenta atrás que enseñar.
+Future<DateTime?> finEsquemaDeClase(DocumentReference<Map<String, dynamic>> clase, Map<String, dynamic> j, {required int temas, required Oposicion oposicion, required DateTime llegada, required DateTime ahora}) async {
+  Map<String, dynamic>? datos;
+  try {
+    datos = (await clase.collection('reloj').doc('estado').get()).data();
+  } catch (_) {
+    // Sin permiso o sin red: el de la clase o el del examen.
+  }
+  final guardado = relojGuardado(datos, ahora: ahora);
+  final ejercicio = (j['ejercicio'] as num?)?.toInt() ?? 0;
+  final seg = segundosEsquemaVigente(
+    reloj: guardado?.datos,
+    deLaClase: (j['segundosEsquema'] as num?)?.toInt(),
+    delExamen: oposicion.ejercicio(ejercicio)?.segundosEsquemaPara(temas) ?? 0,
+  );
+  return finDelEsquema(llegada: llegada, segundos: seg, reloj: guardado?.reloj, ahora: ahora);
 }

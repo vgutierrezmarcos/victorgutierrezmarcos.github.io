@@ -40,6 +40,7 @@ import '../preparador/tema_anticipado.dart' show leerAntelacion, textoAntelacion
 import 'probabilidades.dart';
 import 'reloj_cante.dart';
 import 'reloj_clase.dart' show modoRelojGuardado, guardarModoReloj;
+import 'reloj_flotante.dart';
 import 'reloj_compartido.dart';
 import 'pizarra_cante.dart';
 import 'pizarra_compartida.dart' show PizarraLocal;
@@ -179,13 +180,14 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   @override
   void initState() {
     super.initState();
+    _registroFlotante = ref.read(relojesEnCursoProvider);
     // Si se llega desde la agenda con un cante, el cronómetro toma su duración.
     final id = ref.read(canteEnCursoProvider);
     final cante = widget.sesion?.cante ?? ref.read(cantesProvider).where((c) => c.id == id).firstOrNull;
     if (cante != null) _minExposicion = cante.exposicion;
     // El preparador sin alumno no tiene temas estudiados propios: su bolsa es una lista.
     if (widget.sesion == null && ref.read(papelProvider) == Papel.preparador) _fuente = _Fuente.lista;
-    _segEsquema = _esquemaPorDefecto(cante == null || cante.ejercicio == 0 ? _ejercicio : cante.ejercicio, temas: _temasDe(cante));
+    _segEsquema = cante?.segundosEsquema ?? _esquemaPorDefecto(cante == null || cante.ejercicio == 0 ? _ejercicio : cante.ejercicio, temas: _temasDe(cante));
     _nuevoReloj();
     WidgetsBinding.instance.addPostFrameCallback((_) => _tomarTemaMandado());
   }
@@ -216,7 +218,8 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       // Los temas que manda el preparador se cantan todos, por orden: no se elige.
       _cantarTodos(temas);
       if (!_reloj.empezado && def != null && def.minutosEsquema > 0) {
-        _segEsquema = def.segundosEsquemaPara(temas.length);
+        // El de la clase si el preparador lo ha cambiado; si no, el del examen.
+        _segEsquema = _canteEnCurso()?.segundosEsquema ?? def.segundosEsquemaPara(temas.length);
         _nuevoReloj();
       }
     });
@@ -419,6 +422,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
 
   @override
   void dispose() {
+    _registroFlotante.poner(this, null);
     if (_compartiendo && !_reloj.corriendo) _compartido?.dejar();
     _escucha?.cancel();
     _tic?.cancel();
@@ -427,6 +431,25 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     _grabadoraPerezosa?.dispose();
     _reproductorPerezoso?.dispose();
     super.dispose();
+  }
+
+  // ------------------------------------------------------------ Mini reloj
+
+  late final RelojesEnCurso _registroFlotante;
+
+  /// Desde el mini reloj flotante: de vuelta a esta pantalla (cerrando lo
+  /// abierto encima y, si va en la pestaña Cantes, abriéndola en Cantar).
+  void _volverAqui() {
+    if (!mounted) return;
+    final ruta = ModalRoute.of(context);
+    if (widget.sesion != null) {
+      Navigator.of(context).popUntil((r) => r == ruta || r.isFirst);
+      return;
+    }
+    Navigator.of(context, rootNavigator: true).popUntil((r) => r.isFirst);
+    Navigator.of(context).popUntil((r) => r == ruta || r.isFirst);
+    ref.read(subpestanaCantesProvider.notifier).state = 1;
+    GoRouter.of(context).go('/cantes');
   }
 
   // ------------------------------------------------------------ Cronómetro
@@ -528,6 +551,12 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       _minExposicion = min;
       _nuevoReloj();
     });
+  }
+
+  /// El cante o la clase con que se ha llegado (o null).
+  Cante? _canteEnCurso() {
+    final id = ref.read(canteEnCursoProvider);
+    return widget.sesion?.cante ?? ref.read(cantesProvider).where((x) => x.id == id).firstOrNull;
   }
 
   int _ejercicioDelCante() {
@@ -868,6 +897,19 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
         ? (ref.watch(sesionesProvider).where((c) => c.id == sesion.cante.id).firstOrNull ?? sesion.cante)
         : (idCante == null ? null : ref.watch(cantesProvider).where((c) => c.id == idCante && c.pendiente).firstOrNull);
 
+    // El mini reloj flotante: con una clase en curso y el cronómetro en
+    // marcha o en pausa, se ve desde cualquier pantalla cuando esta no está
+    // a la vista.
+    final aLaVista = pantallaALaVista(context) && (sesion != null || ref.watch(subpestanaCantesProvider) == 1);
+    final deClase = cante != null && (sesion != null || cante.dePreparador);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _registroFlotante.poner(
+        this,
+        cante != null && deClase && _reloj.empezado ? RelojFlotante(clave: cante.id, fuente: this, abrir: _volverAqui, visible: aLaVista, fin: cante.fecha.add(Duration(minutes: cante.minutos))) : null,
+      );
+    });
+
     // Reloj compartido de la clase en curso (si la hay y es con preparador).
     final destino = _destinoCompartido(cante);
     _destinoOtro = destino?.otro;
@@ -889,7 +931,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       setState(() {
         _limpiarSorteo();
         _minExposicion = c.exposicion;
-        _segEsquema = _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio, temas: _temasDe(c));
+        _segEsquema = c.segundosEsquema ?? _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio, temas: _temasDe(c));
         _nuevoReloj();
       });
     });

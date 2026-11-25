@@ -1374,7 +1374,15 @@ class PreparadorRepo {
   Alumno? alumnoConUid(String uidAlumno) => alumnos().where((a) => a.uid == uidAlumno).firstOrNull;
 
   /// El preparador acepta una reserva: se crea la sesión (y llega a la agenda del alumno).
+  ///
+  /// Aceptarla dos veces no hace nada la segunda: si la clase ya existe, se
+  /// devuelve tal cual (con su evento de Google Calendar, su enlace y lo que
+  /// se le haya cambiado). Antes se volvía a guardar desde cero, sin el
+  /// evento, y el calendario creaba otro.
   Future<Cante> sesionDeReserva(Reserva r) async {
+    final previa = _sesiones.get('res_${r.id}') as Map?;
+    final ya = previa == null ? null : Cante.fromJson(previa);
+    if (ya != null && !ya.borrado) return ya;
     var a = alumnoConUid(r.alumno);
     if (a == null) {
       a = Alumno(id: r.alumno, uid: r.alumno, nombre: r.alumnoNombre.isEmpty ? 'Alumno' : r.alumnoNombre, creado: DateTime.now(), updatedAt: DateTime.now());

@@ -445,9 +445,16 @@ class SesionPage extends ConsumerWidget {
                 alumnoUid: alumno!.uid!,
                 claseId: s.id,
                 otroNombre: alumno.nombre,
-                esquema: Duration(seconds: Oposiciones.actual.ejercicio(s.ejercicio)?.segundosEsquemaPara(s.mandaTema ? s.temasMandados.length : s.numTemas) ?? 0),
+                esquema: Duration(seconds: s.segundosDeEsquema()),
                 exposicion: Duration(minutes: s.exposicion),
+                fin: s.fecha.add(Duration(minutes: s.minutos)),
                 onAbrir: () => cantar(conMandados: mandadosLlegados && !dictamen),
+                // El esquema queda en la clase: los avisos de los temas (al
+                // alumno y a ti) dicen este y no el del examen.
+                alCambiarTiempos: (esquema, exposicion) async {
+                  final actual = ref.read(sesionesProvider).where((x) => x.id == s.id).firstOrNull ?? s;
+                  await ref.read(sesionesProvider.notifier).guardar(actual.copyWith(segundosEsquema: esquema.inSeconds, exposicion: exposicion.inMinutes));
+                },
               )
             else
               TarjetaRelojAlumno(claseId: s.id, onAbrir: () => cantar()),

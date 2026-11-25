@@ -239,8 +239,9 @@ class CantePage extends ConsumerWidget {
               alumnoUid: usuario.uid,
               claseId: c.id,
               otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!,
-              esquema: Duration(seconds: Oposiciones.actual.ejercicio(c.ejercicio)?.segundosEsquemaPara(c.numTemas) ?? 0),
+              esquema: Duration(seconds: c.segundosDeEsquema(temas: c.numTemas)),
               exposicion: Duration(minutes: c.exposicion),
+              fin: c.fecha.add(Duration(minutes: c.minutos)),
               onAbrir: () => empezarCante(ref, GoRouter.of(context), c.id, tema: temasRecibidos?.temas.join(',')),
             ),
           if (c.cancelado && c.dePreparador)

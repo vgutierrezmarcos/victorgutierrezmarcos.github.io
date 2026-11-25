@@ -58,6 +58,15 @@ class CalendarioGoogle {
     }
   }
 
+  /// Id del evento de Google Calendar de la clase [claseId], siempre el mismo:
+  /// la clase en hexadecimal (Google admite ids propios con las letras a-v y
+  /// cifras, de 5 a 1024 caracteres). Con el prefijo, el del preparador y el
+  /// del opositor no coinciden aunque sea la misma clase y la misma cuenta.
+  /// Así, si la misma clase se manda dos veces (dos toques, dos dispositivos),
+  /// Google rechaza el segundo evento en vez de crear otro.
+  static String idEvento(String claseId, {String prefijo = 'cal:'}) =>
+      utf8.encode('$prefijo$claseId').map((b) => b.toRadixString(16).padLeft(2, '0')).join();
+
   /// El evento de la clase [c] con [alumno] (y su [email], si se le invita).
   /// [titulo] sustituye al nombre del evento (el opositor pone «Cante de TCEE»
   /// o «Clase de TCEE con Víctor»).
@@ -121,14 +130,14 @@ class CalendarioGoogle {
 
     Map<String, dynamic> r;
     if (c.eventoGoogle.isEmpty) {
-      r = await _crear(cuerpo, t);
+      r = await _crearUnaVez(c.id, cuerpo, t);
     } else {
       try {
         r = await _cambiar(c.eventoGoogle, cuerpo, t);
       } on DioException catch (e) {
         // Si el preparador lo borró a mano en su calendario, se vuelve a crear.
         if (e.response?.statusCode != 404 && e.response?.statusCode != 410) rethrow;
-        r = await _crear(cuerpo, t);
+        r = await _crearUnaVez(c.id, cuerpo, t);
       }
     }
     ultimoError = null;
@@ -154,6 +163,20 @@ class CalendarioGoogle {
   Future<Map<String, dynamic>> _crear(Map<String, dynamic> cuerpo, String t) async {
     final r = await _dio.post(_eventos, queryParameters: {'conferenceDataVersion': 1, 'sendUpdates': 'all'}, data: cuerpo, options: _opciones(t));
     return Map<String, dynamic>.from(r.data as Map);
+  }
+
+  /// Crea el evento de la clase con su id fijo ([idEvento]). Si ya existe
+  /// (409: otro envío de la misma clase se adelantó, o se borró y Google lo
+  /// guarda como cancelado), se cambia ese mismo y se deja confirmado: nunca
+  /// hay dos eventos de una clase.
+  Future<Map<String, dynamic>> _crearUnaVez(String claseId, Map<String, dynamic> cuerpo, String t) async {
+    final id = idEvento(claseId, prefijo: prefijo);
+    try {
+      return await _crear({...cuerpo, 'id': id}, t);
+    } on DioException catch (e) {
+      if (e.response?.statusCode != 409) rethrow;
+      return _cambiar(id, {...cuerpo, 'status': 'confirmed'}, t);
+    }
   }
 
   Future<Map<String, dynamic>> _cambiar(String id, Map<String, dynamic> cuerpo, String t) async {

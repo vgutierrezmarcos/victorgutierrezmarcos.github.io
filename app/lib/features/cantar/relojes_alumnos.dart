@@ -10,9 +10,11 @@ import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../preparador/tema_anticipado.dart' show leerAntelacion;
+import 'esquema_clase.dart';
 import 'reloj_cante.dart';
 import 'reloj_clase.dart';
 import 'reloj_compartido.dart';
+import 'reloj_flotante.dart';
 import 'reloj_grande_page.dart';
 
 /// El cronómetro que está usando cada alumno en su clase de ahora (por id de
@@ -25,6 +27,19 @@ final relojesAlumnosProvider = StateProvider<Map<String, ({String alumno, Estado
   if (r.esperandoExposicion(ahora)) return (fase: 'Esquema terminado', queda: Duration.zero, hasta: null, acabado: false);
   final queda = r.restanteFase(ahora);
   return (fase: r.enPreparacion(ahora) ? 'Esquema' : 'Exposición', queda: queda, hasta: r.corriendo ? ahora.add(queda) : null, acabado: false);
+}
+
+/// Texto de la notificación del cronómetro de la clase. Mientras corre no
+/// dice cuánto queda (eso lo cuenta el cronómetro nativo del aviso, que baja
+/// solo): un «le quedan 30:00» escrito se quedaba fijo mientras el tiempo
+/// pasaba. Dice hasta qué hora, que sigue siendo verdad.
+String textoAvisoReloj(RelojCante r, DateTime ahora, {String? elegido}) {
+  final f = faseDeReloj(r, ahora);
+  final tema = elegido == null ? '' : ' · tema $elegido';
+  if (f.acabado) return 'Ha cumplido el tiempo$tema.';
+  if (f.fase == 'Esquema terminado') return 'Va a empezar la exposición$tema.';
+  if (f.hasta != null) return '${f.fase} hasta las ${horaCorta(f.hasta!)}$tema.';
+  return 'En pausa: le quedan ${formatoReloj(f.queda, haciaArriba: true)}$tema.';
 }
 
 /// Mientras la app del preparador está abierta, escucha el cronómetro
@@ -98,10 +113,7 @@ class VigilanteRelojes {
   void _avisar(String id, String alumno, EstadoRelojCompartido e) {
     final ahora = DateTime.now();
     final f = faseDeReloj(e.reloj, ahora);
-    final tema = e.elegido == null ? '' : ' · tema ${e.elegido}';
-    final texto = f.acabado
-        ? 'Ha cumplido el tiempo$tema.'
-        : (f.fase == 'Esquema terminado' ? 'Va a empezar la exposición$tema.' : (e.reloj.corriendo ? 'Le quedan ${formatoReloj(f.queda, haciaArriba: true)}$tema.' : 'En pausa: le quedan ${formatoReloj(f.queda, haciaArriba: true)}$tema.'));
+    final texto = textoAvisoReloj(e.reloj, ahora, elegido: e.elegido);
     final clave = '${f.fase}|${e.reloj.corriendo}|${f.hasta == null ? '' : f.hasta!.millisecondsSinceEpoch ~/ 5000}|${e.elegido}';
     if (_avisado[id] != clave) {
       _avisado[id] = clave;
@@ -197,7 +209,7 @@ class _TarjetaRelojAlumnoState extends ConsumerState<TarjetaRelojAlumno> {
 /// se pone a pantalla completa. Si aún no se ha usado, lo prepara con el
 /// esquema y la exposición de la clase.
 class RelojDeClaseTarjeta extends ConsumerStatefulWidget {
-  const RelojDeClaseTarjeta({super.key, required this.alumnoUid, required this.claseId, required this.otroNombre, required this.esquema, required this.exposicion, required this.onAbrir});
+  const RelojDeClaseTarjeta({super.key, required this.alumnoUid, required this.claseId, required this.otroNombre, required this.esquema, required this.exposicion, required this.onAbrir, this.alCambiarTiempos, this.fin});
   final String alumnoUid;
   final String claseId;
   final String otroNombre;
@@ -205,17 +217,27 @@ class RelojDeClaseTarjeta extends ConsumerStatefulWidget {
   final Duration esquema;
   final Duration exposicion;
   final VoidCallback onAbrir;
+
+  /// Al poner otros tiempos: se guardan también en la clase, para que los
+  /// avisos de los temas digan este esquema y se vuelvan a programar.
+  final Future<void> Function(Duration esquema, Duration exposicion)? alCambiarTiempos;
+
+  /// Cuándo acaba la clase: después, el mini reloj ya no sale.
+  final DateTime? fin;
   @override
   ConsumerState<RelojDeClaseTarjeta> createState() => _RelojDeClaseTarjetaState();
 }
 
 class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
-  RelojCompartido? _reloj;
-  ControlRelojClase? _control;
-  StreamSubscription<EstadoRelojCompartido?>? _escucha;
-  bool _cargado = false;
-  String? _error;
+  /// El cronómetro de la clase, del registro común: sigue vivo al cerrar la
+  /// ficha si está en marcha (para el mini reloj flotante).
+  ClaseConReloj? _clase;
+  RelojesEnCurso? _registro;
   Timer? _tic;
+
+  ControlRelojClase? get _control => _clase?.control;
+  bool get _cargado => _clase?.cargado ?? false;
+  String? get _error => _clase?.error;
 
   @override
   void initState() {
@@ -224,38 +246,29 @@ class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
     if (yo == null || !ref.read(serviciosProvider).firebaseDisponible) return;
     final soyAlumno = yo.uid == widget.alumnoUid;
     final nombre = soyAlumno ? (yo.displayName ?? 'Tu alumno') : ref.read(perfilPreparadorProvider).nombre;
-    final reloj = _reloj = RelojCompartido.deClase(ref.read(firestoreRelojProvider), ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.claseId, miUid: yo.uid, miNombre: nombre.isEmpty ? 'Preparador' : nombre);
-    _control = ControlRelojClase(
-      esquemaPorDefecto: widget.esquema,
-      exposicionPorDefecto: widget.exposicion,
-      otroNombre: widget.otroNombre,
+    final registro = ref.read(relojesEnCursoProvider);
+    _registro = registro;
+    final clase = _clase = registro.clase(
+      db: ref.read(firestoreRelojProvider),
+      oposicion: ref.read(oposicionProvider),
+      alumnoUid: widget.alumnoUid,
+      claseId: widget.claseId,
       miUid: yo.uid,
-      publicador: (r, {temas = const [], elegido}) => reloj.publicar(r, temas: temas, elegido: elegido),
+      miNombre: nombre.isEmpty ? 'Preparador' : nombre,
+      otroNombre: widget.otroNombre,
+      esquema: widget.esquema,
+      exposicion: widget.exposicion,
+      ruta: soyAlumno ? 'ruta:/cantes?cante=${widget.claseId}' : 'ruta:/clase?id=${widget.claseId}',
+      fin: widget.fin,
       nombreTema: (c) {
         final t = ref.read(temarioProvider).valueOrNull?.tema(c);
         return t == null ? c : '${t.codigo} · ${t.titulo}';
       },
-      alAvisar: (texto, {required fin}) {
-        if (mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text(texto)));
-      },
-    )..addListener(_redibujar);
-    reloj.medirDesfase();
-    _escucha = reloj.escucharConErrores().listen(
-      (e) {
-        if (!mounted) return;
-        _cargado = true;
-        _error = null;
-        _control!.recibir(e);
-      },
-      onError: (Object e) {
-        if (mounted) {
-          setState(() {
-            _cargado = true;
-            _error = e.toString().contains('permission') ? 'sin permiso' : 'sin conexión';
-          });
-        }
-      },
     );
+    clase.alAvisar = (texto, {required fin}) {
+      if (mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text(texto)));
+    };
+    clase.addListener(_redibujar);
     _tic = Timer.periodic(const Duration(milliseconds: 500), (_) {
       final c = _control;
       if (!mounted || c == null || !c.reloj.corriendo) return;
@@ -270,9 +283,13 @@ class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
 
   @override
   void dispose() {
-    _escucha?.cancel();
     _tic?.cancel();
-    _control?.dispose();
+    final c = _clase;
+    if (c != null) {
+      c.removeListener(_redibujar);
+      c.alAvisar = null;
+      _registro?.soltar(c);
+    }
     super.dispose();
   }
 
@@ -313,12 +330,18 @@ class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
       return;
     }
     await c.ponerTiempos(esquema: Duration(seconds: seg), exposicion: Duration(minutes: min));
+    await widget.alCambiarTiempos?.call(Duration(seconds: seg), Duration(minutes: min));
   }
 
   @override
   Widget build(BuildContext context) {
     final c = _control;
-    if (_reloj == null || c == null) return const SizedBox.shrink();
+    if (_clase == null || c == null) return const SizedBox.shrink();
+    // Con la ficha a la vista no hace falta el mini reloj.
+    final aLaVista = pantallaALaVista(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _clase?.ponerVisible(aLaVista);
+    });
     final ahora = DateTime.now();
     final r = c.reloj;
     final empezado = r.empezado;

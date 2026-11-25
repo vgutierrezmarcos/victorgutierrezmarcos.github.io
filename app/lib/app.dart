@@ -57,6 +57,7 @@ import 'features/test/estadisticas_page.dart';
 import 'features/test/examen_page.dart';
 import 'features/test/motor_test.dart';
 import 'features/test/resultados_page.dart';
+import 'features/cantar/reloj_flotante.dart';
 import 'theme/app_theme.dart';
 import 'widgets/comunes.dart';
 
@@ -177,6 +178,8 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     );
     _programar();
     Notificaciones.alTocar = _alTocarNotificacion;
+    // El mini reloj flotante vuelve a la clase como al tocar su aviso.
+    ref.read(relojesEnCursoProvider).abrirContenido = _alTocarNotificacion;
     _relojes.empezar();
     ref.listenManual(sesionesProvider, (_, __) => _relojes.revisar());
     ref.listenManual(cantesProvider, (_, __) => _relojes.revisar());
@@ -463,7 +466,11 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         final tema = Theme.of(context);
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: estiloBarrasSistema(arriba: tema.scaffoldBackgroundColor, abajo: tema.navigationBarTheme.backgroundColor ?? tema.scaffoldBackgroundColor),
-          child: ref.watch(versionObsoletaProvider).valueOrNull ?? false ? const _VersionObsoleta() : child!,
+          child: ref.watch(versionObsoletaProvider).valueOrNull ?? false
+              ? const _VersionObsoleta()
+              // Encima de todo, el mini reloj de la clase en curso (solo sale
+              // con el cronómetro en marcha o en pausa y la clase fuera de la vista).
+              : Stack(children: [child!, const Positioned.fill(child: MiniRelojFlotante())]),
         );
       },
     );

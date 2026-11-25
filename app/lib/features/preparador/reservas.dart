@@ -88,32 +88,57 @@ class CamposPeticionClase extends ConsumerWidget {
 }
 
 /// Reserva pedida por un alumno, con Aceptar / Rechazar (lado del preparador).
+///
+/// Mientras se acepta o rechaza, los dos botones dan paso a un indicador y
+/// no se puede volver a tocar. Va con una clave por reserva
+/// ([FilaReservaPedida.clave]): al aceptarla, la clase nueva aparece encima en
+/// la lista, y sin clave la fila perdía su estado (volvía a salir el botón,
+/// como si el primer toque no hubiera hecho nada, y el segundo creaba la
+/// clase otra vez, con otro evento en Google Calendar).
 class FilaReservaPedida extends ConsumerStatefulWidget {
-  const FilaReservaPedida({super.key, required this.reserva});
+  FilaReservaPedida({Key? key, required this.reserva}) : super(key: key ?? clave(reserva));
   final Reserva reserva;
+
+  static Key clave(Reserva r) => ValueKey('reserva:${r.id}');
+
   @override
   ConsumerState<FilaReservaPedida> createState() => _FilaReservaPedidaState();
 }
 
 class _FilaReservaPedidaState extends ConsumerState<FilaReservaPedida> {
   bool _ocupado = false;
+  /// Ya respondida (mientras la lista se refresca y la fila desaparece).
+  String? _respondida;
 
   Future<void> _responder(bool aceptar) async {
+    if (_ocupado || _respondida != null) return;
     final messenger = ScaffoldMessenger.of(context);
+    // El contenedor, no `ref`: si la fila se desmonta mientras tanto, se
+    // puede seguir refrescando la lista (con `ref` fallaba y la reserva se
+    // quedaba como pendiente en pantalla).
+    final contenedor = ProviderScope.containerOf(context, listen: false);
     setState(() => _ocupado = true);
     try {
       final r = widget.reserva;
       if (aceptar) {
-        await ref.read(preparadorRepoProvider).sesionDeReserva(r);
-        ref.invalidate(sesionesProvider);
-        ref.invalidate(alumnosProvider);
+        // Idempotente: si la clase ya existe, no se vuelve a crear.
+        await contenedor.read(preparadorRepoProvider).sesionDeReserva(r);
       }
-      await ref.read(redRepoProvider).cambiarReserva(r, aceptar ? EstadoReserva.aceptada : EstadoReserva.rechazada);
-      ref.invalidate(reservasRecibidasProvider);
+      await contenedor.read(redRepoProvider).cambiarReserva(r, aceptar ? EstadoReserva.aceptada : EstadoReserva.rechazada);
+      if (aceptar) {
+        contenedor.invalidate(sesionesProvider);
+        contenedor.invalidate(alumnosProvider);
+      }
+      contenedor.invalidate(reservasRecibidasProvider);
+      if (mounted) {
+        setState(() {
+          _ocupado = false;
+          _respondida = aceptar ? 'Aceptada' : 'Rechazada';
+        });
+      }
       messenger.mostrar(SnackBar(content: Text(aceptar ? 'Reserva aceptada: ya está en tu agenda y en la del alumno' : 'Reserva rechazada')));
     } catch (e) {
       messenger.mostrar(SnackBar(content: Text('No se pudo: $e')));
-    } finally {
       if (mounted) setState(() => _ocupado = false);
     }
   }
@@ -137,7 +162,12 @@ class _FilaReservaPedidaState extends ConsumerState<FilaReservaPedida> {
             ]),
           ),
           if (_ocupado)
-            const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2))
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2, semanticsLabel: 'Respondiendo a la reserva')),
+            )
+          else if (_respondida != null)
+            Padding(padding: const EdgeInsets.symmetric(horizontal: 8), child: Text(_respondida!, style: context.textos.labelMedium))
           else ...[
             IconButton(tooltip: 'Rechazar', icon: Icon(Icons.close, color: context.esquema.error), onPressed: () => _responder(false)),
             IconButton(tooltip: 'Aceptar', icon: const Icon(Icons.check, color: Paleta.acierto), onPressed: () => _responder(true)),

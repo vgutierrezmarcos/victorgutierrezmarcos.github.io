@@ -15,6 +15,9 @@ import 'package:tcee_app/data/repos/preparador_repo.dart';
 class _GoogleFalso implements HttpClientAdapter {
   final peticiones = <({String metodo, String ruta, Map<String, dynamic> query, Map<String, dynamic>? cuerpo, String? auth})>[];
   final eventos = <String, Map<String, dynamic>>{};
+  /// Los borrados: Google los guarda como cancelados y no deja crear otro
+  /// con el mismo id (409), pero sí cambiarlos (y confirmarlos de nuevo).
+  final borrados = <String, Map<String, dynamic>>{};
   var siguiente = 1;
   /// Respuesta forzada para la siguiente petición (p. ej. 404).
   int? forzar;
@@ -34,18 +37,24 @@ class _GoogleFalso implements HttpClientAdapter {
     final id = partes.last == 'events' ? null : partes.last;
     switch (o.method) {
       case 'POST':
-        final nuevo = 'ev${siguiente++}';
+        // Con id propio (como la API): si ya existe o se borró, 409.
+        final propio = cuerpo?['id'] as String?;
+        if (propio != null && (eventos.containsKey(propio) || borrados.containsKey(propio))) return json(409, {'error': {'code': 409}});
+        final nuevo = propio ?? 'ev${siguiente++}';
         final ev = {...?cuerpo, 'id': nuevo};
         if (cuerpo?['conferenceData'] != null) ev['hangoutLink'] = 'https://meet.google.com/abc-defg-${nuevo.padLeft(3, '0')}';
         eventos[nuevo] = ev;
         return json(200, ev);
       case 'PATCH':
+        if (borrados.containsKey(id) && cuerpo?['status'] == 'confirmed') eventos[id!] = borrados.remove(id)!;
         if (!eventos.containsKey(id)) return json(404, {'error': {'code': 404}});
         eventos[id!] = {...eventos[id]!, ...?cuerpo};
         if (cuerpo?['conferenceData'] != null) eventos[id]!['hangoutLink'] = 'https://meet.google.com/xyz-$id';
         return json(200, eventos[id]);
       case 'DELETE':
-        if (eventos.remove(id) == null) return json(410, {'error': {'code': 410}});
+        final quitado = eventos.remove(id);
+        if (quitado == null) return json(410, {'error': {'code': 410}});
+        borrados[id!] = quitado;
         return json(204, null);
       case 'GET':
         return json(200, {'items': []});
@@ -104,7 +113,10 @@ void main() {
       expect(f.google.peticiones.single.metodo, 'POST');
       expect(f.google.peticiones.single.auth, 'Bearer tok');
       expect(f.google.peticiones.single.query, {'conferenceDataVersion': 1, 'sendUpdates': 'all'});
-      expect(creada!.eventoGoogle, 'ev1');
+      // Con el id fijo de la clase.
+      final idC1 = CalendarioGoogle.idEvento('c1');
+      expect(f.google.peticiones.single.cuerpo!['id'], idC1);
+      expect(creada!.eventoGoogle, idC1);
       expect(creada.enlace, startsWith('https://meet.google.com/'));
       // Igual que lo mandado: no se vuelve a llamar a Google.
       expect(await f.cal.sincronizar(creada, alumno: 'Lucía', email: 'lucia@gmail.com', siglas: 'TCEE', ahora: ahora), isNull);
@@ -113,9 +125,9 @@ void main() {
       final movida = creada.copyWith(fecha: DateTime(2026, 10, 16, 18));
       expect(await f.cal.sincronizar(movida, alumno: 'Lucía', email: 'lucia@gmail.com', siglas: 'TCEE', ahora: ahora), isNull);
       expect(f.google.peticiones.last.metodo, 'PATCH');
-      expect(f.google.peticiones.last.ruta, endsWith('/events/ev1'));
+      expect(f.google.peticiones.last.ruta, endsWith('/events/$idC1'));
       expect(f.google.peticiones.last.cuerpo!.containsKey('conferenceData'), isFalse);
-      expect(DateTime.parse(f.google.eventos['ev1']!['start']['dateTime'] as String).toLocal(), DateTime(2026, 10, 16, 18));
+      expect(DateTime.parse(f.google.eventos[idC1]!['start']['dateTime'] as String).toLocal(), DateTime(2026, 10, 16, 18));
       // Cancelada: DELETE con aviso al alumno y la clase sin evento.
       final cancelada = await f.cal.sincronizar(movida.copyWith(estado: EstadoCante.cancelado), ahora: ahora);
       expect(f.google.peticiones.last.metodo, 'DELETE');
@@ -127,10 +139,46 @@ void main() {
     test('si se borró a mano en el calendario, se vuelve a crear', () async {
       final f = calendario();
       final creada = (await f.cal.sincronizar(clase(enlace: 'https://meet.google.com/aaa-bbbb-ccc'), ahora: ahora))!;
-      f.google.eventos.clear(); // borrado a mano
+      f.google.eventos.clear(); // borrado a mano (sin rastro)
       final otra = await f.cal.sincronizar(creada.copyWith(minutos: 120), ahora: ahora);
       expect(f.google.peticiones.map((p) => p.metodo), ['POST', 'PATCH', 'POST']);
-      expect(otra!.eventoGoogle, 'ev2');
+      expect(otra, isNull); // el mismo id de siempre: nada que guardar
+      expect(f.google.eventos.keys, [creada.eventoGoogle]);
+    });
+
+    test('la misma clase mandada dos veces sin evento guardado: un solo evento', () async {
+      // Lo que pasaba al aceptar una reserva con dos toques: la segunda vez
+      // la clase se guardaba de nuevo sin el evento y se creaba otro.
+      final f = calendario();
+      final primera = (await f.cal.sincronizar(clase(), ahora: ahora))!;
+      final segunda = await f.cal.sincronizar(clase().copyWith(minutos: 120), ahora: ahora);
+      expect(f.google.peticiones.map((p) => p.metodo), ['POST', 'POST', 'PATCH']);
+      expect(f.google.peticiones[1].cuerpo!['id'], primera.eventoGoogle);
+      expect(f.google.eventos.length, 1);
+      expect(f.google.eventos.values.single['end'], isNotNull);
+      expect(segunda!.eventoGoogle, primera.eventoGoogle);
+    });
+
+    test('borrada en Google y vuelta a programar: se recupera el mismo evento', () async {
+      final f = calendario();
+      final creada = (await f.cal.sincronizar(clase(enlace: 'https://meet.google.com/aaa-bbbb-ccc'), ahora: ahora))!;
+      await f.cal.sincronizar(creada.copyWith(estado: EstadoCante.cancelado), ahora: ahora);
+      expect(f.google.eventos, isEmpty);
+      final otra = await f.cal.sincronizar(clase(enlace: 'https://meet.google.com/aaa-bbbb-ccc'), ahora: ahora);
+      expect(f.google.peticiones.map((p) => p.metodo), ['POST', 'DELETE', 'POST', 'PATCH']);
+      expect(f.google.peticiones.last.cuerpo!['status'], 'confirmed');
+      expect(otra!.eventoGoogle, creada.eventoGoogle);
+      expect(f.google.eventos.length, 1);
+    });
+
+    test('ids de evento válidos para Google y distintos para preparador y opositor', () {
+      final p = CalendarioGoogle.idEvento('res_abc-123');
+      final a = CalendarioGoogle.idEvento('res_abc-123', prefijo: 'cala:');
+      for (final id in [p, a]) {
+        expect(RegExp(r'^[a-v0-9]{5,1024}$').hasMatch(id), isTrue, reason: id);
+      }
+      expect(p, isNot(a));
+      expect(CalendarioGoogle.idEvento('res_abc-123'), p); // siempre el mismo
     });
 
     test('sin permiso, hecha o pasada: no llama a Google', () async {

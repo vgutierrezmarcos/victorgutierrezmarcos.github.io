@@ -10,6 +10,7 @@ import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 import 'instalacion.dart';
 import 'avisos_navegador.dart';
+import '../features/cantar/esquema_clase.dart';
 
 /// Notificaciones locales: recordatorio diario de estudio, avisos del
 /// cronómetro y recordatorios de los cantes programados. En el navegador son
@@ -379,14 +380,16 @@ class Notificaciones {
     var id = _idClases + _maxAvisosClase;
     for (final c in entregas.take(_maxAvisosTema)) {
       final manual = sinApp(c);
-      final seg = manual ? 0 : Oposiciones.actual.ejercicio(c.ejercicio)?.segundosEsquemaPara(c.temasMandados.length) ?? 0;
+      // El tiempo de esquema de esta clase (el que se le haya puesto, o el
+      // del examen): si cambia, la clase se guarda y esto se vuelve a programar.
+      final seg = manual ? 0 : c.segundosDeEsquema();
       final hasta = c.temaA!.add(Duration(seconds: seg));
       final temas = c.temaSorteado ? 'los temas sorteados' : (c.temasMandados.length == 1 ? 'el tema ${c.temasMandados.first}' : 'los temas ${c.temasMandados.join(' y ')}');
       final titulo = manual ? 'Toca mandar a ${alumno(c)} $temas' : 'A ${alumno(c)} le ${c.temasMandados.length == 1 && !c.temaSorteado ? 'ha llegado' : 'han llegado'} $temas';
       final texto = manual
           ? 'Abre la clase y envíaselos por WhatsApp con un toque (no tiene la app).'
           : seg > 0
-              ? 'Tiene ${seg ~/ 60} min de esquema, hasta las ${hasta.hour.toString().padLeft(2, '0')}:${hasta.minute.toString().padLeft(2, '0')}.'
+              ? 'Tiene ${textoEsquema(seg)} de esquema, hasta las ${horaCorta(hasta)}.'
               : 'Para la clase de las ${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}.';
       if (kIsWeb) {
         _programarWeb(id++, c.temaA!, titulo, texto, contenido: 'ruta:/clase?id=${c.id}');
@@ -478,20 +481,33 @@ class Notificaciones {
   static Future<void> avisoTema({required String canteId, required String de, required String texto, required String tema, bool sorteado = false, DateTime? esquemaHasta}) async {
     if (!disponibles) return;
     await iniciar();
-    if (kIsWeb) return mostrarAvisoNavegador(1000 + ('tema:$canteId'.hashCode & 0x7ffff), de, texto, contenido: 'ruta:/cantes?cante=$canteId&tema=$tema');
+    final id = 1000 + ('tema:$canteId'.hashCode & 0x7ffff);
+    final ahora = DateTime.now();
+    final cuentaAtras = esquemaHasta != null && esquemaHasta.isAfter(ahora);
+    final payload = 'ruta:/cantes?cante=$canteId&tema=$tema';
+    // En la web no hay cronómetro en el aviso: se dice hasta qué hora (un
+    // «quedan 22:30» se quedaría fijo y engañaría).
+    if (kIsWeb) return mostrarAvisoNavegador(id, de, cuentaAtras ? '$texto\n${hastaEsquema(esquemaHasta)}' : texto, contenido: payload);
     final persona = Person(name: de, key: de, important: true);
-    final cuentaAtras = esquemaHasta != null && esquemaHasta.isAfter(DateTime.now());
+    final cronometro = cuentaAtrasAviso(esquemaHasta, ahora);
     await _plugin.show(
-      1000 + ('tema:$canteId'.hashCode & 0x7ffff),
+      id,
       de,
       texto,
       NotificationDetails(
         android: AndroidNotificationDetails(color: _colorAviso, 
-          usesChronometer: cuentaAtras,
-          chronometerCountDown: cuentaAtras,
-          when: cuentaAtras ? esquemaHasta.millisecondsSinceEpoch : null,
-          showWhen: cuentaAtras,
+          // Cronómetro nativo hacia atrás hasta el fin del esquema: baja solo,
+          // con la app cerrada, sin tener que rehacer el aviso.
+          usesChronometer: cronometro.usesChronometer,
+          chronometerCountDown: cronometro.chronometerCountDown,
+          when: cronometro.when,
+          showWhen: cronometro.showWhen,
           ongoing: cuentaAtras,
+          onlyAlertOnce: true,
+          subText: cuentaAtras ? hastaEsquema(esquemaHasta) : null,
+          // Se quita sola al acabar el esquema (si no, el cronómetro de
+          // Android seguiría contando en negativo en un aviso fijo).
+          timeoutAfter: cuentaAtras ? esquemaHasta.difference(ahora).inMilliseconds : null,
           'temas',
           'Temas de tu preparador',
           channelDescription: 'El tema que te manda tu preparador antes de la clase',
@@ -501,14 +517,25 @@ class Notificaciones {
           styleInformation: MessagingStyleInformation(
             persona,
             conversationTitle: sorteado ? 'Ha salido esta bola' : null,
-            messages: [Message(texto, DateTime.now(), persona)],
+            messages: [Message(texto, ahora, persona)],
           ),
           actions: const [AndroidNotificationAction('esquema', 'Empezar el esquema', showsUserInterface: true)],
         ),
         iOS: const DarwinNotificationDetails(),
       ),
-      payload: 'ruta:/cantes?cante=$canteId&tema=$tema',
+      payload: payload,
     );
+  }
+
+  /// «Esquema hasta las 17:05».
+  static String hastaEsquema(DateTime hasta) => 'Esquema hasta las ${horaCorta(hasta)}';
+
+  /// Cómo va el cronómetro nativo de un aviso con cuenta atrás hasta [hasta]:
+  /// si aún no ha llegado, cuenta hacia atrás (`when` = el final); si no, ni
+  /// cronómetro ni hora.
+  static ({bool usesChronometer, bool chronometerCountDown, int? when, bool showWhen}) cuentaAtrasAviso(DateTime? hasta, DateTime ahora) {
+    final si = hasta != null && hasta.isAfter(ahora);
+    return (usesChronometer: si, chronometerCountDown: si, when: si ? hasta.millisecondsSinceEpoch : null, showWhen: si);
   }
 
   /// Al alumno, a la hora exacta a la que el preparador le manda los temas
@@ -579,7 +606,7 @@ class Notificaciones {
     await iniciar();
     final id = 1000 + ('reloj:$clave'.hashCode & 0x7ffff);
     if (kIsWeb) return mostrarAvisoNavegador(id, titulo, texto, contenido: 'ruta:$ruta');
-    final cuenta = hasta != null && hasta.isAfter(DateTime.now());
+    final c = cuentaAtrasAviso(hasta, DateTime.now());
     await _plugin.show(
       id,
       titulo,
@@ -590,12 +617,14 @@ class Notificaciones {
             importance: Importance.high,
             priority: Priority.high,
             onlyAlertOnce: true,
-            ongoing: cuenta,
+            ongoing: c.usesChronometer,
             autoCancel: false,
-            usesChronometer: cuenta,
-            chronometerCountDown: cuenta,
-            when: cuenta ? hasta.millisecondsSinceEpoch : null,
-            showWhen: cuenta),
+            // Lo que queda lo cuenta el cronómetro nativo (baja solo); el
+            // texto dice hasta qué hora, que no se queda viejo.
+            usesChronometer: c.usesChronometer,
+            chronometerCountDown: c.chronometerCountDown,
+            when: c.when,
+            showWhen: c.showWhen),
         iOS: const DarwinNotificationDetails(),
       ),
       payload: 'ruta:$ruta',

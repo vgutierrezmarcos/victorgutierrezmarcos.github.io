@@ -426,7 +426,20 @@ class Cante {
     this.propuestaTemasA,
     this.esquema = false,
     this.tareas = const [],
+    this.segundosEsquema,
   });
+
+  /// Tiempo de esquema de esta clase, en segundos, si el preparador (o el
+  /// alumno) lo ha cambiado en su cronómetro; null, el del examen para sus
+  /// temas. Lo usan los avisos de los temas (antes decían siempre el del
+  /// examen: 22'30" aunque la clase fuera con 30').
+  final int? segundosEsquema;
+
+  /// Segundos de esquema que tiene esta clase: los puestos en ella o, si no,
+  /// los del examen para [temas] temas (por defecto, los mandados o los que
+  /// se cantan).
+  int segundosDeEsquema({int? temas}) =>
+      segundosEsquema ?? Oposiciones.actual.ejercicio(ejercicio)?.segundosEsquemaPara(temas ?? (temasMandados.isNotEmpty ? temasMandados.length : numTemas)) ?? 0;
 
   /// Deberes para esta clase (los pone el preparador; el alumno los tacha).
   final List<Tarea> tareas;
@@ -595,6 +608,7 @@ class Cante {
     List<String>? temasPropuestos,
     DateTime? propuestaTemasA,
     bool sinPropuesta = false,
+    int? segundosEsquema,
   }) =>
       Cante(
         id: id,
@@ -634,6 +648,7 @@ class Cante {
         eventoGoogleAlumno: eventoGoogleAlumno ?? this.eventoGoogleAlumno,
         temasPropuestos: sinPropuesta ? const [] : (temasPropuestos ?? this.temasPropuestos),
         propuestaTemasA: sinPropuesta ? null : (propuestaTemasA ?? this.propuestaTemasA),
+        segundosEsquema: segundosEsquema ?? this.segundosEsquema,
       );
 
   Map<String, dynamic> toJson() => {
@@ -676,6 +691,7 @@ class Cante {
         if (eventoGoogleAlumno.isNotEmpty) 'eventoGoogleAlumno': eventoGoogleAlumno,
         if (temasPropuestos.isNotEmpty) 'temasPropuestos': temasPropuestos,
         if (propuestaTemasA != null) 'propuestaTemasA': propuestaTemasA!.toIso8601String(),
+        if (segundosEsquema != null) 'segundosEsquema': segundosEsquema,
       };
 
   factory Cante.fromJson(Map<dynamic, dynamic> j) {
@@ -718,6 +734,7 @@ class Cante {
         plataforma: j['plataforma'] as String? ?? '',
         esquema: j['esquema'] == true,
         tareas: Tarea.listaDeJson(j['tareas']),
+        segundosEsquema: (j['segundosEsquema'] as num?)?.toInt(),
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
         eventoGoogleAlumno: j['eventoGoogleAlumno'] as String? ?? '',
         temasPropuestos: ((j['temasPropuestos'] as List?) ?? []).map((e) => e.toString()).toList(),

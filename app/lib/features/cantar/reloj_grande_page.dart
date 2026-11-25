@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../theme/app_theme.dart';
 import 'reloj_cante.dart';
+import 'reloj_flotante.dart';
 
 /// Lo que la pantalla grande necesita de quien lleva el cronómetro (Cantar).
 abstract class FuenteReloj {
@@ -43,10 +45,17 @@ class RelojGrandePage extends StatefulWidget {
 
 class _RelojGrandePageState extends State<RelojGrandePage> {
   Timer? _tic;
+  RelojesEnCurso? _registro;
 
   @override
   void initState() {
     super.initState();
+    // Con el reloj grande delante no hace falta el mini reloj flotante.
+    try {
+      final r = ProviderScope.containerOf(context, listen: false).read(relojesEnCursoProvider);
+      r.pantallaGrande(widget.fuente, true);
+      _registro = r;
+    } catch (_) {}
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     _tic = Timer.periodic(const Duration(milliseconds: 250), (_) {
       if (mounted) setState(() {});
@@ -56,6 +65,7 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
   @override
   void dispose() {
     _tic?.cancel();
+    _registro?.pantallaGrande(widget.fuente, false);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     super.dispose();
   }

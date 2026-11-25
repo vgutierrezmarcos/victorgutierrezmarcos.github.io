@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/coordinacion.dart';
-import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/red.dart';
 import '../../data/models/temario.dart';
@@ -20,10 +19,11 @@ import '../mas/ayuda_videos.dart';
 
 /// Mensaje con los temas de la clase para un alumno sin la app: el preparador
 /// se lo manda por WhatsApp (o lo copia) a la hora programada, con el tiempo
-/// de esquema del examen para esos temas.
+/// de esquema de la clase (el del examen para esos temas, si no se ha cambiado).
 String mensajeTemasClase(Cante s, {String? Function(String codigo)? titulo}) {
   final n = s.temasMandados.length;
-  final seg = Oposiciones.actual.ejercicio(s.ejercicio)?.segundosEsquemaPara(n) ?? 0;
+  // El esquema de esta clase (el que se le haya puesto o el del examen).
+  final seg = s.segundosDeEsquema(temas: n);
   final lineas = [for (final t in s.temasMandados) '· $t${(titulo?.call(t) ?? '').isEmpty ? '' : ' ${titulo!(t)}'}'];
   final deberes = s.tareas.isEmpty ? '' : '\n\nPara esta clase: ${s.tareas.map((t) => t.etiqueta(tituloDe: titulo == null ? null : (c) => titulo(c) ?? '')).join('; ')}.';
   return 'Para la clase del ${cuandoTema(s.fecha)}, ${n == 1 ? 'el tema es' : 'los temas son'}:\n${lineas.join('\n')}'
