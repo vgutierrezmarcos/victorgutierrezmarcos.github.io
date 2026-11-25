@@ -29,12 +29,21 @@ _spec = importlib.util.spec_from_file_location('montaje', os.path.join(RAIZ, 'sc
 m = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(m)
 
-SR, PULSO, COMPAS, MEDIO = m.SR, m.PULSO, m.COMPAS, m.MEDIO
-
 with open(os.path.join(AQUI, 'guion.json'), encoding='utf-8') as f:
     GUION = json.load(f)
-DURACION = GUION['duracion']
-ESCENAS = {e['id']: e['compas'] for e in GUION['escenas']}
+# Montaje final (guion «final»): la música va a su tempo y cada escena empieza donde dice preparar.tiempos_finales;
+# los efectos se colocan en segundos compuestos (110 ppm) y se encogen con el factor de su escena (ver T).
+_p = importlib.util.spec_from_file_location('preparar', os.path.join(AQUI, 'preparar.py'))
+_prep = importlib.util.module_from_spec(_p)
+_p.loader.exec_module(_prep)
+FINALES, DURACION = _prep.tiempos_finales(GUION)
+if 'final' in GUION:
+    m.BPM = GUION['final']['bpm']
+    m.PULSO = 60 / m.BPM
+    m.COMPAS = 4 * m.PULSO
+    m.MEDIO = m.PULSO / 2
+SR, PULSO, COMPAS, MEDIO = m.SR, m.PULSO, m.COMPAS, m.MEDIO
+ESCENAS = {e['id']: FINALES[e['id']][0] / COMPAS for e in GUION['escenas']}  # en compases (pueden ser medios)
 BLOQUES = {e['id']: e['bloque'] for e in GUION['escenas']}
 ORDEN = sorted(ESCENAS, key=ESCENAS.get)
 CIERRE = ESCENAS['cierre']
@@ -50,8 +59,19 @@ ARPEGIO = [(ESCENAS['cante_app'], ESCENAS['dictamen']), (ESCENAS['cronograma_app
 CALMA = [(ESCENAS['porque'], ESCENAS['instalar']), (ESCENAS['cronograma_dce'], ESCENAS['cronograma_app'])]
 
 
+class T(float):
+    """Un instante dentro de una escena: lo que se le suma (segundos compuestos a 110 ppm) se encoge con su factor."""
+    def __new__(cls, t, f):
+        x = super().__new__(cls, t)
+        x.f = f
+        return x
+
+    def __add__(self, x):
+        return T(float(self) + x * self.f, self.f)
+
+
 def inicio(escena):
-    return m.compas(ESCENAS[escena])
+    return T(FINALES[escena][0], FINALES[escena][2])
 
 
 def en(tramos, b):
@@ -126,13 +146,13 @@ def banda_sonora(ruta):
 
     def toques(t0, n, paso, vel=0.05):
         for i in range(n):
-            poner(efectos, m._toque(vel), t0 + i * paso)
+            poner(efectos, m._toque(vel), t0 + i * paso)  # t0 es un T: el paso también se encoge
 
     def entra_movil(t):
         poner(efectos, m._subida(300, 900, 0.5, 0.025), t)
 
     # Logo al empezar y al cerrar; subida hacia el cuerpo; golpe en cada cambio de bloque (el barrido dorado).
-    for base, vel in ((0.0, 1.0), (m.compas(CIERRE), 1 / 1.3)):
+    for base, vel in ((inicio('portada'), 1.0), (inicio('cierre'), 1 / 1.3)):
         poner(efectos, m._golpe(0.4), base + 0.62 * vel)
         for desde, nota in ((0.5, 86), (0.68, 90), (0.86, 93)):
             poner(efectos, m._campana(m._nota(nota), 0.08), base + (desde + 0.12) * vel)

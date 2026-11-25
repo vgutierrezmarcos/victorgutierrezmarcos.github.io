@@ -47,59 +47,76 @@ PANTALLAS = ['ia-hoy', 'ia-tema', 'cantes-cantar', 'cantes-diario', 'agenda-rese
 ANCHO_MOVIL = 760
 
 
-def sincronizar_guion():
-    """Lleva a index.html los compases de guion.json (data-start y data-duration de
-    cada escena y de cada toma, las tablas E y BLOQUE y la duración)."""
-    with open(os.path.join(AQUI, 'guion.json'), encoding='utf-8') as f:
-        guion = json.load(f)
+def tiempos_finales(guion):
+    """Inicio, largo y factor (largo final / largo compuesto) de cada escena en el montaje final.
+    Las escenas se componen en compases de guion['bpm'] y, si hay guion['final'], se reproducen
+    en los segundos que dice ahí (el timeline maestro de index.html estira o encoge cada tramo)."""
     compas = 4 * 60 / guion['bpm']
     escenas = sorted(guion['escenas'], key=lambda e: e['compas'])
+    final = guion.get('final', {}).get('segundos')
+    salida, t = {}, 0.0
+    for i, e in enumerate(escenas):
+        orig = ((escenas[i + 1]['compas'] if i + 1 < len(escenas) else guion['duracion'] / compas) - e['compas']) * compas
+        largo = final[e['id']] if final else orig
+        salida[e['id']] = (t, largo, largo / orig)
+        t += largo
+    return salida, t
+
+
+def sincronizar_guion():
+    """Lleva a index.html los compases de guion.json (data-start y data-duration de
+    cada escena y de cada toma, las tablas E, BLOQUE y FINAL y las duraciones)."""
+    with open(os.path.join(AQUI, 'guion.json'), encoding='utf-8') as f:
+        guion = json.load(f)
+    escenas = sorted(guion['escenas'], key=lambda e: e['compas'])
+    finales, total = tiempos_finales(guion)
     ruta = os.path.join(AQUI, 'index.html')
     with open(ruta, encoding='utf-8') as f:
         html = f.read()
-    for i, e in enumerate(escenas):
-        inicio = e['compas'] * compas
-        fin = escenas[i + 1]['compas'] * compas if i + 1 < len(escenas) else guion['duracion']
+    for e in escenas:
+        inicio, largo, _ = finales[e['id']]
         html, n = re.subn(rf'(<section id="{e["id"]}" class="[^"]*" )data-start="[\d.]+" data-duration="[\d.]+"',
-                          rf'\g<1>data-start="{inicio:.4f}" data-duration="{fin - inicio:.4f}"', html)
+                          rf'\g<1>data-start="{inicio:.4f}" data-duration="{largo:.4f}"', html)
         if n != 1:
             sys.exit(f'No encuentro la escena «{e["id"]}» en index.html')
     tabla = ', '.join(f'{e["id"]}: {e["compas"]}' for e in escenas)
     html = re.sub(r'const E = \{[^}]*\}; // guion', f'const E = {{ {tabla} }}; // guion', html)
     tabla = ', '.join(f'{e["id"]}: "{e["bloque"]}"' for e in escenas)
     html = re.sub(r'const BLOQUE = \{[^}]*\}; // guion', f'const BLOQUE = {{ {tabla} }}; // guion', html)
+    tabla = ', '.join(f'{k}: {v[1]:.4f}' for k, v in finales.items())
+    html = re.sub(r'const FINAL = \{[^}]*\}; // guion', f'const FINAL = {{ {tabla} }}; // guion', html)
     html = re.sub(r'const DURACION = [\d.]+;', f'const DURACION = {guion["duracion"]};', html)
     html = re.sub(r'(data-composition-id="main" data-start="0" data-width="1920" data-height="1080" )data-duration="[\d.]+"',
-                  rf'\g<1>data-duration="{guion["duracion"]}"', html)
+                  rf'\g<1>data-duration="{total:.4f}"', html)
     html = re.sub(r'(<audio id="musica" src="assets/musica.wav" data-start="0" )data-duration="[\d.]+"',
-                  rf'\g<1>data-duration="{guion["duracion"]}"', html)
+                  rf'\g<1>data-duration="{total:.4f}"', html)
     html, n = re.subn(r'(id="capa-(?:capitulos|barrido)" class="clip" data-start="0" )data-duration="[\d.]+"',
-                      rf'\g<1>data-duration="{guion["duracion"]:.4f}"', html)
+                      rf'\g<1>data-duration="{total:.4f}"', html)
     if n != 2:
         sys.exit('No encuentro las capas de rótulos y barrido en index.html')
-    # Cada toma empieza «desde» segundos después de su escena y se ve «dura» segundos (acelerada por ritmo()).
-    empieza = {e['id']: e['compas'] * compas for e in escenas}
-    termina = {e['id']: (escenas[i + 1]['compas'] * compas if i + 1 < len(escenas) else guion['duracion']) for i, e in enumerate(escenas)}
+    # Cada toma empieza «desde» segundos (compuestos) después de su escena y se ve hasta la siguiente toma de
+    # su escena o hasta el final de la escena (con el último fotograma quieto, tpad de ritmo()).
     for t in guion['tomas']:
-        # Se ve hasta la siguiente toma de su escena o hasta el final de la escena (con el último fotograma
-        # quieto, tpad de ritmo()): antes se fundía antes y la ventana se quedaba vacía, como atascada.
-        inicio = empieza[t['escena']] + t['desde']
-        siguientes = [empieza[o['escena']] + o['desde'] for o in guion['tomas'] if o['escena'] == t['escena'] and o['desde'] > t['desde']]
-        visible = round(min(siguientes + [termina[t['escena']]]) - inicio, 4)
+        ini, largo, k = finales[t['escena']]
+        inicio = ini + t['desde'] * k
+        siguientes = [ini + o['desde'] * k for o in guion['tomas'] if o['escena'] == t['escena'] and o['desde'] > t['desde']]
+        visible = round(min(siguientes + [ini + largo]) - inicio, 4)
         html, n = re.subn(rf'(<video id="toma-{t["id"]}" class="toma" src=")[^"]*(" muted playsinline data-start=")[\d.]+(" data-duration=")[\d.]+',
                           rf'\g<1>assets/tomas/r-{t["fichero"]}.mp4\g<2>{inicio:.4f}\g<3>{visible}', html)
         if n != 1:
             sys.exit(f'No encuentro la toma «{t["id"]}» en index.html')
     with open(ruta, 'w', encoding='utf-8') as f:
         f.write(html)
-    return guion['duracion']
+    return total
 
 
 def ritmo():
     """Acelera cada toma para que su tramo («corte», en segundos de la grabación) quepa en lo que dura en el vídeo
     (guion.json): assets/tomas/r-<toma>.mp4, sin sonido, a 30 fotogramas y con el último fotograma sostenido."""
     with open(os.path.join(AQUI, 'guion.json'), encoding='utf-8') as f:
-        tomas = json.load(f)['tomas']
+        guion = json.load(f)
+    tomas = guion['tomas']
+    finales, _ = tiempos_finales(guion)
     ffmpeg = os.environ.get('FFMPEG') or shutil.which('ffmpeg')
     for t in tomas:
         origen = os.path.join(ASSETS, 'tomas', t['fichero'] + '.mp4')
@@ -107,7 +124,7 @@ def ritmo():
             print('Falta la toma', t['fichero'])
             continue
         a, b = t['corte']
-        factor = (b - a) / t['dura']
+        factor = (b - a) / (t['dura'] * finales[t['escena']][2])  # en el montaje final, la escena dura menos
         subprocess.run([ffmpeg, '-y', '-loglevel', 'error', '-ss', str(a), '-t', str(b - a), '-i', origen,
                         '-vf', f'setpts=PTS/{factor:.5f},fps=30,tpad=stop_mode=clone:stop_duration=8', '-an',
                         '-c:v', 'libx264', '-preset', 'slow', '-crf', '15', '-pix_fmt', 'yuv420p', '-g', '15',
