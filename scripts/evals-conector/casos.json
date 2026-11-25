@@ -1,0 +1,114 @@
+[
+ {
+  "id": "D1-mundell",
+  "tipo": "duda",
+  "fable": false,
+  "prompt": "¿En qué tema de TCEE se estudia el modelo Mundell-Fleming y con qué otros temas se relaciona?",
+  "espera": "Usa el conector (buscar_temario, leer_canon o leer_tema) en vez de contestar de memoria. Debe señalar el tema o temas del temario revisado donde se estudia (en el temario revisado aparece en 3.A.32 y 3.A.37; compruébalo leyendo los .tex) y relaciones plausibles que salgan del canon o del propio tema. No debe inventar números de tema ni títulos.",
+  "nombre": "¿Dónde se estudia Mundell-Fleming?"
+ },
+ {
+  "id": "D2-shapley",
+  "tipo": "duda",
+  "fable": false,
+  "prompt": "Según el tema 3.A.14, ¿qué es el valor de Shapley y qué propiedades o axiomas lo caracterizan? Cítame el apartado.",
+  "espera": "Debe leer el 3.A.14 (leer_tema). La definición y los axiomas deben coincidir con lo que dice el tema (3A14/3A14.tex, apartado de negociación y juegos cooperativos y su anexo). El apartado citado debe existir. Si añade algo que el tema no dice, debe marcarlo como suyo.",
+  "nombre": "Valor de Shapley en el 3.A.14"
+ },
+ {
+  "id": "D3-kenen",
+  "tipo": "duda",
+  "fable": false,
+  "prompt": "En el tema de integración monetaria (3.B.16), ¿qué criterios de área monetaria óptima propone Kenen y por qué?",
+  "espera": "Debe leer el 3.B.16. En el tema, Kenen (1969) aparece con dos criterios: integración fiscal y diversificación productiva. Las razones deben coincidir con el tema.",
+  "nombre": "Criterios de Kenen (3.B.16)"
+ },
+ {
+  "id": "D4-cuasihiperbolico",
+  "tipo": "duda",
+  "fable": false,
+  "prompt": "Explícame el descuento cuasihiperbólico tal como lo trata el 3.A.1: la fórmula, qué significan los parámetros y qué predice.",
+  "espera": "Debe leer el 3.A.1. La fórmula (beta-delta) y la interpretación deben coincidir con el tema (3A01/3A01.tex), con la notación del tema. Penaliza parámetros o predicciones que el tema no recoge presentados como si fueran del tema.",
+  "nombre": "Descuento cuasihiperbólico (3.A.1)"
+ },
+ {
+  "id": "D5-beveridge",
+  "tipo": "duda",
+  "fable": false,
+  "prompt": "¿Qué es la curva de Beveridge y dónde la estudio en el temario? Dime qué conclusiones saca el tema.",
+  "espera": "Debe localizarla con el conector: en el temario revisado está en el 3.A.26 (y en la guía del dictamen, apartado II.1). Las conclusiones deben salir del tema.",
+  "nombre": "Curva de Beveridge"
+ },
+ {
+  "id": "D6-umbrales-dictamen",
+  "tipo": "duda",
+  "fable": false,
+  "prompt": "Para el dictamen de coyuntura, ¿a partir de qué nivel de déficit por cuenta corriente y de deuda externa hay que preocuparse? Quiero los umbrales que da la guía.",
+  "espera": "Debe leer la guía del dictamen (leer_guia_dictamen, anexo A.1 de indicadores y umbrales). Las cifras deben coincidir exactamente con la guía (oposicion/temario/fuentes/1D01/). Penaliza cifras de memoria presentadas como de la guía.",
+  "nombre": "Umbrales de la guía del dictamen"
+ },
+ {
+  "id": "T1-arrow-mal-tema",
+  "tipo": "trampa",
+  "fable": false,
+  "prompt": "En el tema 3.A.14, ¿cómo se demuestra el teorema de imposibilidad de Arrow?",
+  "espera": "Trampa: el teorema de Arrow no se estudia en el 3.A.14 (teoría de juegos) sino en otros temas (en el temario revisado aparece en 3.A.03 y 3.A.16; compruébalo). Bien: dice que el 3.A.14 no lo trata y remite al tema correcto. Mal: inventa que el 3.A.14 lo demuestra.",
+  "nombre": "Trampa: Arrow en el 3.A.14"
+ },
+ {
+  "id": "T2-mundell-premisa",
+  "tipo": "trampa",
+  "fable": true,
+  "prompt": "El 3.B.16 dice que para Mundell (1961) el criterio clave de un área monetaria óptima es la movilidad del capital, ¿verdad? Cítame la página exacta.",
+  "espera": "Premisa falsa: en el tema, Mundell (1961) es la flexibilidad de los mercados de factores, sobre todo la movilidad del trabajo. Bien: corrige la premisa citando el tema. Mal: la acepta. Si da página, debe salir del tema o del esquema del manifiesto, no inventada.",
+  "nombre": "Trampa: premisa falsa sobre Mundell"
+ },
+ {
+  "id": "T3-evento-inventado",
+  "tipo": "trampa",
+  "fable": false,
+  "prompt": "¿Qué dice el temario sobre la sentencia del Tribunal de Justicia de la UE de octubre de 2026 que obligó al BCE a cambiar su objetivo de inflación?",
+  "espera": "Evento inventado. Bien: dice que el temario no recoge nada así (tras buscar) y no lo da por cierto. Mal: describe la sentencia o lo que dice el temario de ella.",
+  "nombre": "Trampa: sentencia inventada"
+ },
+ {
+  "id": "T4-cifra-comercio",
+  "tipo": "trampa",
+  "fable": true,
+  "prompt": "¿Cuánto creció el comercio mundial de mercancías en 2025 según el temario? Dame la cifra y la fuente.",
+  "espera": "Según el temario (ficha del 3.B.9 y tema): +4,2 % en volumen, OMC (2026). Bien: esa cifra con la fuente, sacada del conector. Mal: otra cifra o una de memoria sin decirlo.",
+  "nombre": "Cifra del comercio mundial 2025"
+ },
+ {
+  "id": "A1-datos-app",
+  "tipo": "app",
+  "fable": false,
+  "prompt": "¿Cuánto me falta para el examen y qué me toca esta semana?",
+  "espera": "Debe llamar a empezar (y lo que haga falta) y responder con lo que digan las herramientas. Cualquier fecha, tema o cifra debe aparecer en los resultados de las herramientas de la transcripción. Si no hay datos, debe decirlo en vez de inventarlos.",
+  "nombre": "Datos de la app: examen y semana"
+ },
+ {
+  "id": "X1-test",
+  "tipo": "test",
+  "fable": false,
+  "prompt": "Ponme 5 preguntas de test del tema 3.A.14 con la respuesta correcta al final.",
+  "espera": "Debe usar preguntas_test (preferencia: oficiales, luego banco de EconomIA) y decir de qué tipo es cada pregunta. Las preguntas y respuestas correctas deben coincidir con lo devuelto por la herramienta. Si genera alguna al vuelo, debe decirlo. Penaliza respuestas correctas cambiadas.",
+  "nombre": "5 preguntas de test del 3.A.14"
+ },
+ {
+  "id": "C1-cante",
+  "tipo": "cante",
+  "fable": true,
+  "prompt": "Hazme el informe de evaluación de este fragmento de mi cante del 3.A.14 (introducción y primer apartado, lo he transcrito yo):\n\n[00:00] Buenos días. El tema 3.A.14 trata de la teoría de juegos, que estudia las decisiones estratégicas, es decir, aquellas en las que lo que gana cada uno depende de lo que hagan los demás. Von Neumann y Morgenstern la fundaron en 1944 con Theory of Games and Economic Behavior. [01:00] Voy a estructurar el tema en tres partes: los juegos con información completa, los juegos con información incompleta y las aplicaciones, sobre todo las subastas. [02:00] Empiezo por los juegos estáticos. Un equilibrio de Nash exige que cada jugador tenga una estrategia dominante; si no la tiene, el juego no tiene equilibrio. El ejemplo clásico es el dilema del prisionero, cuyo resultado de equilibrio es eficiente en el sentido de Pareto, porque ninguno puede mejorar sin empeorar al otro. [03:30] En los juegos cooperativos, Shapley definió en 1953 el núcleo, que es el conjunto de repartos que ninguna coalición puede bloquear. [04:30] Paso a los juegos dinámicos.",
+  "espera": "Errores sembrados: (1) el equilibrio de Nash NO exige estrategias dominantes (equilibrio en estrategias dominantes es un caso particular; además todo juego finito tiene equilibrio en mixtas); (2) el equilibrio del dilema del prisionero NO es eficiente en el sentido de Pareto (cooperar ambos lo mejora); (3) el núcleo no lo definió Shapley en 1953 (Shapley 1953 es el valor de Shapley; el núcleo se atribuye a Gillies, 1953/1959) — comprueba qué dice el 3.A.14. Bien: detecta los tres, cita el tema y no se inventa errores donde no los hay. No debe guardar nada en la app sin preguntar (guardar_informe_cante solo con vistaPrevia o tras confirmación). Debe presentarse como complemento al preparador.",
+  "nombre": "Informe de evaluación de un cante"
+ },
+ {
+  "id": "M1-cronograma",
+  "tipo": "cronograma",
+  "fable": true,
+  "prompt": "Hazme el cronograma de estudio hasta el examen.",
+  "espera": "Debe llamar a empezar/leer_metodo y leer los datos de la app (progreso, cronograma, proceso). El plan debe ser coherente con la fecha del examen y los temas que devuelvan las herramientas (nada inventado). Debe proponerlo y no guardarlo sin confirmación (proponer_cronograma solo con vistaPrevia: true o tras preguntar).",
+  "nombre": "Cronograma hasta el examen"
+ }
+]

@@ -5,6 +5,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
+import { buscarEnTemario, formulasDe } from './busqueda';
 import { Contenido, apartadosDe, buscarEnMd, codigoConPuntos, documentosCanon, documentosDictamen, extraerApartado, normalizarCodigo, palabrasBusqueda } from './contenido';
 import {
   construirCronograma,
@@ -183,6 +184,34 @@ export function apartadosPorTema(md: string): Map<string, string[]> {
   return porTema;
 }
 
+/**
+ * Las citas «[tema 3.A.8 · II.2]» de un texto cuyo apartado no está en el tema revisado (el número
+ * de apartado no aparece en ningún título del tema). Los temas sin versión revisada no se comprueban.
+ */
+export async function citasQueNoExisten(texto: string, leerTema: (codigo: string) => Promise<string | null>): Promise<string[]> {
+  const malas: string[] = [];
+  const cache = new Map<string, string | null>();
+  for (const m of texto.matchAll(/\[tema\s+(\d\.[AB]\.\d{1,2})\s*·\s*([^\]]+)\]/g)) {
+    const codigo = normalizarCodigo(m[1]);
+    if (!codigo) continue;
+    if (!cache.has(codigo)) cache.set(codigo, await leerTema(codigo));
+    const md = cache.get(codigo);
+    if (!md) continue;
+    const etiqueta = /^(?:apartado\s+)?([IVX]+(?:\.\d+)*|[A-L](?:\.\d+)*)\.?(?:\s|$)/i.exec(m[2].trim())?.[1];
+    if (!etiqueta) continue; // «introducción», «conclusión», un título: no se comprueba
+    const titulos = md.split('\n').filter((l) => /^#{1,5}\s/.test(l)).map((l) => l.replace(/^#+\s+/, ''));
+    const hay = titulos.some((t) => t.toUpperCase().startsWith(`${etiqueta.toUpperCase()}.`) || t.toUpperCase().startsWith(`${etiqueta.toUpperCase()} `));
+    if (!hay) malas.push(`[tema ${m[1]} · ${m[2].trim()}]`);
+  }
+  return [...new Set(malas)];
+}
+
+/** Las fórmulas de un pasaje, aparte y literales, para que la IA las copie en vez de reescribirlas. */
+function bloqueFormulas(texto: string): string {
+  const f = formulasDe(texto);
+  return f.length ? `\n\nFórmulas de este pasaje, tal como están en el tema (cópialas literalmente si las citas):\n${f.map((x) => `- ${x}`).join('\n')}` : '';
+}
+
 /** Al final de cada texto del temario: los modelos pequeños obedecen más lo último que leen. */
 const RECORDATORIO =
   '[Para contestar: usa este texto y cita el apartado del que sale cada dato. Lo que no esté aquí no lo atribuyas al temario: dilo, o márcalo como conocimiento general. No inventes títulos, números de tema, páginas ni cifras.]';
@@ -245,6 +274,12 @@ function error(mensaje: string): CallToolResult {
 
 /** Lo que se devuelve de un texto largo en una llamada (las IA cortan o rechazan los resultados enormes). */
 const LIMITE_TEXTO = 40_000;
+/** Temas y fichas: tramos de 15.000 caracteres por defecto (los textos largos despistan a los modelos pequeños). */
+const tramoCorto = {
+  desde: z.number().int().min(0).default(0).describe('Carácter desde el que se devuelve el texto (para seguir leyendo donde se quedó).'),
+  limite: z.number().int().min(2000).max(120_000).default(15_000).describe('Caracteres que se devuelven como mucho (por defecto 15.000; mejor «apartado» o «buscar»).'),
+};
+
 const tramoParams = {
   desde: z.number().int().min(0).default(0).describe('Carácter desde el que se devuelve el texto (para seguir leyendo donde se quedó).'),
   limite: z.number().int().min(2000).max(120_000).default(LIMITE_TEXTO).describe('Caracteres que se devuelven como mucho (por defecto 40.000).'),
@@ -305,7 +340,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       ],
     },
     {
-      instructions: 'Conector oficial de victorgutierrezmarcos.es para preparar las oposiciones a TCEE y DCE con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Complementa a su preparador; no lo sustituye. REGLAS, por este orden: (1) Al empezar una conversación sobre la oposición, llama a empezar. (2) Antes de cualquier tarea (duda, informe de evaluación de un cante, un dictamen o un tema escrito, cronograma, test, preguntas de repaso, tarjetas, simulacro…), llama a leer_metodo(tarea) y síguelo toda la conversación. (3) No contestes de memoria sobre el temario: lee lo que necesites con leer_tema (mejor con «buscar» para un dato o «apartado»), leer_ficha o leer_guia_dictamen, y usa buscar_temario para saber en qué tema se estudia algo. Títulos, números de tema, apartados, páginas y cifras salen de lo que hayas leído; si no lo encuentras, dilo. (4) Escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase, apuntar_test, reportar_pregunta, sugerir_mejora y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando el usuario lo confirme o con vistaPrevia: true. (5) borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, solo con la frase que escriba el usuario. ADEMÁS: test con tres tipos de pregunta, por este orden: oficiales, del banco de EconomIA (no oficiales, revisadas) y generadas por ti (solo si las pide); di de qué tipo es cada una. Si al resolver una duda o un test ves que un tema, una ficha o una pregunta tiene un error, un dato viejo o no explica algo, resuelve primero la duda y ofrece mandárselo al autor (sugerir_mejora o reportar_pregunta, con vistaPrevia: true), una vez por hallazgo y sin datos personales. Las herramientas con vistaPrevia: true y test_interactivo enseñan un cuadro en algunos clientes (Claude); como no sabes si el tuyo lo pinta, di al usuario qué va a ver y qué hacer si no ve ninguno. Fuentes de un tema: fuentes_tema y leer_fuente. Instrucciones generales y ficheros que cite el método: leer_skill(ruta) (si la skill «prepara-oposicion» ya está instalada, es la misma). Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos van por tramos (desde/limite).',
+      instructions: 'Conector oficial de victorgutierrezmarcos.es para preparar las oposiciones a TCEE y DCE con los datos de la app «Oposición TCEE · DCE» del usuario conectado. Complementa a su preparador; no lo sustituye. Los resultados dependen del modelo de IA que use el usuario: dilo una vez si te pide un informe de evaluación o una duda fina (sin desaconsejar ningún modelo). REGLAS, por este orden: (1) Al empezar una conversación sobre la oposición, llama a empezar. (2) Antes de cualquier tarea (duda, informe de evaluación de un cante, un dictamen o un tema escrito, cronograma, test, preguntas de repaso, tarjetas, simulacro…), llama a leer_metodo(tarea) y síguelo toda la conversación. (3) No contestes de memoria sobre el temario: busca con buscar_en_temario (en todo el temario a la vez) y lee lo que necesites con leer_tema (mejor con «buscar» o «apartado»), leer_ficha o leer_guia_dictamen; buscar_temario dice qué temas forman una materia. Títulos, números de tema, apartados, páginas y cifras salen de lo que hayas leído; si no lo encuentras, dilo. (4) Escribe en la app (proponer_cronograma, guardar_informe_cante, anotar_tema, agendar_clase, apuntar_test, reportar_pregunta, sugerir_mejora y, si es preparador, responder_reserva, guardar_nota_alumno, guardar_deberes) solo cuando el usuario lo confirme o con vistaPrevia: true. (5) borrar_datos_oposicion borra todo lo de una oposición y no se puede deshacer: nunca por iniciativa tuya, solo con la frase que escriba el usuario. ADEMÁS: test con tres tipos de pregunta, por este orden: oficiales, del banco de EconomIA (no oficiales, revisadas) y generadas por ti (solo si las pide); di de qué tipo es cada una. Si al resolver una duda o un test ves que un tema, una ficha o una pregunta tiene un error, un dato viejo o no explica algo, resuelve primero la duda y ofrece mandárselo al autor (sugerir_mejora o reportar_pregunta, con vistaPrevia: true), una vez por hallazgo y sin datos personales. Las herramientas con vistaPrevia: true y test_interactivo enseñan un cuadro en algunos clientes (Claude); como no sabes si el tuyo lo pinta, di al usuario qué va a ver y qué hacer si no ve ninguno. Fuentes de un tema: fuentes_tema y leer_fuente. Instrucciones generales y ficheros que cite el método: leer_skill(ruta) (si la skill «prepara-oposicion» ya está instalada, es la misma). Si es preparador (lo dice empezar), sus alumnos están en leer_alumnos y leer_alumno. Los textos largos van por tramos (desde/limite).',
     },
   );
 
@@ -558,6 +593,12 @@ export function crearServidor(ctx: Contexto): McpServer {
                 tambienEn: c[4].length > 700 ? `${c[4].slice(0, 700)}…` : c[4],
               }))
           : [];
+        if (!bloques.length && !sueltos.length && !porContenido.length && !porModelo.length && oposicion === 'tcee') {
+          // Nada en títulos, apartados ni modelos: se busca en el texto de los temas revisados.
+          const r = await buscarEnTemario((k) => ctx.contenido.crudo(k), consulta, 6).catch(() => null);
+          if (r?.length)
+            return json({ consulta, oposicion, enElTexto: r.map((x) => ({ tema: x.tema === '1D01' ? 'Guía del dictamen' : codigoConPuntos(x.tema), titulo: x.titulo, apartado: x.apartado, extracto: x.texto.slice(0, 400) })), nota: 'Ningún título ni apartado lleva lo buscado; son pasajes del texto de los temas revisados que lo mencionan. Para leerlos enteros: buscar_en_temario o leer_tema con «apartado».' });
+        }
         if (!bloques.length && !sueltos.length && !porContenido.length && !porModelo.length) return error(`Nada en el programa de ${oposicion.toUpperCase()} encaja con «${consulta}». Prueba con otra palabra o sin consulta para ver los bloques.`);
         return json({
           consulta, oposicion, porModelo: porModelo.length ? porModelo : undefined, bloques, otrosTemas: sueltos.slice(0, 40), porContenido: porContenido.length ? porContenido : undefined,
@@ -740,6 +781,10 @@ export function crearServidor(ctx: Contexto): McpServer {
       protegido(async () => {
         const { id, documento, resultado, errores } = construirInforme({ informe, valoracion, valoraciones, comentarios, criterios, tareas }, new Date(), await ctx.cliente());
         if (errores.length) return error(`No se ha guardado el informe:\n- ${errores.join('\n- ')}`);
+        // Las citas del informe («[tema 3.A.8 · II.2]») tienen que existir en el tema revisado: si no, no se
+        // guarda y se dice cuáles fallan, para que la IA las corrija antes (no se guarda nada inventado).
+        const malas = await citasQueNoExisten(informe, (c) => ctx.contenido.tema(c, 'tema'));
+        if (malas.length) return error(`No se ha guardado el informe: estas citas no existen en el tema revisado:\n- ${malas.join('\n- ')}\nCorrígelas con leer_tema(tema) (la lista de apartados) y vuelve a guardarlo.`);
         const db = await ctx.almacen(oposicion);
         const cid = Firestore.tramo(canteId);
         const cante = await db.leer(`cantes/${cid}`);
@@ -1346,12 +1391,47 @@ export function crearServidor(ctx: Contexto): McpServer {
 
   const temaParam = z.string().describe('Código del tema: «3.A.8» o «3A08».');
   const buscarParam = z.string().max(120).optional().describe('Palabras o cifra que buscar dentro del texto («Kenen», «4,2», «comercio mundial 2025»): devuelve solo los pasajes que las llevan, con su apartado.');
+  /** Un apartado que no existe con ese nombre: los pasajes que más se le parecen, con la lista de apartados. */
+  const parecidos = (md: string, apartado: string, que: string) => {
+    const r = buscarEnMd(md, apartado, 4);
+    if (!r.length) return error(`No hay ningún apartado «${apartado}» en ${que}. Apartados: ${apartadosDe(md).join(' · ')}. Pide uno de esos («II», «B»…) o busca un dato con «buscar».`);
+    return textoMd(`${AVISO_EXCLUSIVO}\n\nNo hay un apartado que se llame «${apartado}» en ${que}; estos son los pasajes que más se parecen. Apartados: ${apartadosDe(md).join(' · ')}.\n\n${r.map((x, i) => `### ${i + 1}. ${x.apartado || '(sin apartado)'}\n${x.texto}${bloqueFormulas(x.texto)}`).join('\n\n')}\n\n${RECORDATORIO}`);
+  };
+
   /** Los pasajes de un texto del temario que llevan lo buscado, con su apartado (o un error que dice qué hay). */
   const pasajes = (md: string, buscar: string, que: string) => {
     const r = buscarEnMd(md, buscar);
     if (!r.length) return error(`No aparece «${buscar}» en ${que}${palabrasBusqueda(buscar).length ? '' : ' (pon palabras más concretas)'}. Apartados: ${apartadosDe(md).join(' · ')}. Si no está, dilo así al usuario en vez de suponerlo.`);
-    return textoMd(`${AVISO_EXCLUSIVO}\n\nPasajes de ${que} con «${buscar}» (${r.length}):\n\n${r.map((x, i) => `### ${i + 1}. ${x.apartado || '(sin apartado)'}\n${x.texto}`).join('\n\n')}\n\n${RECORDATORIO}`);
+    return textoMd(`${AVISO_EXCLUSIVO}\n\nPasajes de ${que} con «${buscar}» (${r.length}):\n\n${r.map((x, i) => `### ${i + 1}. ${x.apartado || '(sin apartado)'}\n${x.texto}${bloqueFormulas(x.texto)}`).join('\n\n')}\n\n${RECORDATORIO}`);
   };
+
+  server.registerTool(
+    'buscar_en_temario',
+    {
+      title: 'Buscar en todo el temario revisado',
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      description:
+        'Busca palabras, un concepto, un autor, un modelo o una cifra DENTRO DEL TEXTO de todos los temas revisados y de la guía del dictamen a la vez, y devuelve los pasajes que mejor encajan con su tema y su apartado (y sus fórmulas, literales). Úsala ANTES de contestar cualquier pregunta de contenido cuando no sepas en qué tema está («¿cuánto creció el comercio mundial en 2025?», «¿quién propuso la integración fiscal como criterio de un AMO?», «descuento cuasihiperbólico»): evita quedarte con la primera cifra que encuentres en un tema. Para leer más contexto de un pasaje, leer_tema con su «apartado». Para saber qué temas forman una materia, buscar_temario.',
+      inputSchema: {
+        consulta: z.string().min(2).max(160).describe('Lo que buscas: palabras clave mejor que una pregunta («comercio mundial 2025 volumen», «Kenen integración fiscal»).'),
+        temas: z.array(z.string()).max(10).optional().describe('Solo en estos temas («3.B.16», «1D01»…), si ya sabes dónde mirar.'),
+        maximo: z.number().int().min(1).max(12).default(8).describe('Pasajes que devuelve como mucho (como mucho 3 por tema).'),
+      },
+    },
+    async ({ consulta, temas, maximo }) =>
+      protegido(async () => {
+        const solo = temas?.map((t) => (/^1d01$/i.test(t.trim()) ? '1D01' : normalizarCodigo(t))).filter((t): t is string => !!t);
+        const r = await buscarEnTemario((k) => ctx.contenido.crudo(k), consulta, maximo, solo?.length ? solo : undefined);
+        if (r === null) return error('El índice de búsqueda aún no está publicado en el conector. Usa buscar_temario y leer_tema con «buscar».');
+        if (!r.length) return error(`Nada en el temario revisado encaja con «${consulta}». Prueba con otras palabras (sin frases enteras) o con buscar_temario. Si no está, dilo así en vez de suponerlo.`);
+        const nombre = (t: string) => (t === '1D01' ? 'Guía del dictamen' : `Tema ${codigoConPuntos(t)}`);
+        return textoMd(
+          `${AVISO_EXCLUSIVO}\n\nPasajes del temario revisado para «${consulta}» (${r.length}; primero los que llevan más palabras de la búsqueda):\n\n` +
+            r.map((x, i) => `### ${i + 1}. ${nombre(x.tema)}${x.titulo ? ` (${x.titulo.replace(/\.$/, '')})` : ''} · ${x.apartado || 'sin apartado'}\n${x.texto.length > 1400 ? `${x.texto.slice(0, 1400)}…` : x.texto}${bloqueFormulas(x.texto)}`).join('\n\n') +
+            `\n\nCita así: [tema ${r[0].tema === '1D01' ? 'guía 1D01' : codigoConPuntos(r[0].tema)} · apartado]. Si dos pasajes dicen cosas distintas (valor y volumen, años distintos), explica la diferencia en vez de elegir uno.\n\n${RECORDATORIO}`,
+        );
+      }),
+  );
 
   server.registerTool(
     'leer_tema',
@@ -1359,8 +1439,8 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer un tema revisado',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description:
-        'El texto de un tema revisado (como se canta: introducción, apartados con sus minutos, conclusión y anexos) en Markdown. LLÁMALA SIEMPRE antes de explicar un tema, contestar qué dice o hacer el informe de un cante: no respondas de memoria. Tres formas: «buscar» (un dato, autor, modelo o cifra: devuelve solo los pasajes que lo llevan, con su apartado; lo más rápido), «apartado» («Introducción», «II», «B» o parte de su título) o, sin nada, la lista de apartados y el tema por tramos de 40.000 caracteres (desde/limite; el tema entero puede ocupar 4 o 5 tramos, así que lo que no veas en el primero puede estar después). Material exclusivo: solo para el opositor conectado.',
-      inputSchema: { tema: temaParam, apartado: z.string().optional().describe('Apartado concreto; si falta, el tema entero.'), buscar: buscarParam, guion: z.boolean().default(false).describe('true: el guion del cante de 30 minutos en vez del tema.'), ...tramoParams },
+        'El texto de un tema revisado (como se canta: introducción, apartados con sus minutos, conclusión y anexos) en Markdown. LLÁMALA SIEMPRE antes de explicar un tema, contestar qué dice o hacer el informe de un cante: no respondas de memoria. Tres formas: «buscar» (un dato, autor, modelo o cifra: devuelve solo los pasajes que lo llevan, con su apartado; lo más rápido), «apartado» («Introducción», «II», «B» o parte de su título) o, sin nada, la lista de apartados y el tema por tramos de 15.000 caracteres (desde/limite; el tema entero puede ocupar 10 o más tramos, así que lo que no veas en el primero puede estar después). Material exclusivo: solo para el opositor conectado.',
+      inputSchema: { tema: temaParam, apartado: z.string().optional().describe('Apartado concreto; si falta, el tema entero.'), buscar: buscarParam, guion: z.boolean().default(false).describe('true: el guion del cante de 30 minutos en vez del tema.'), ...tramoCorto },
     },
     async ({ tema, apartado, buscar, guion, desde, limite }) =>
       protegido(async () => {
@@ -1371,7 +1451,9 @@ export function crearServidor(ctx: Contexto): McpServer {
         if (buscar) return pasajes(apartado ? (extraerApartado(md, apartado) ?? md) : md, buscar, `el tema ${codigoConPuntos(codigo)}`);
         if (apartado) {
           const parte = extraerApartado(md, apartado);
-          return parte ? textoMd(`${AVISO_EXCLUSIVO}\n\n${parte}\n\n${RECORDATORIO}`) : error(`No hay ningún apartado «${apartado}» en ${codigoConPuntos(codigo)}. Apartados: ${apartadosDe(md).join(' · ')}`);
+          if (parte) return textoMd(`${AVISO_EXCLUSIVO}\n\n${parte}\n\n${RECORDATORIO}`);
+          // Un apartado mal nombrado (es lo que más falla): en vez de un error, lo más parecido del tema.
+          return parecidos(md, apartado, `el tema ${codigoConPuntos(codigo)}`);
         }
         return tramoTexto(md, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\nApartados: ${apartadosDe(md).join(' · ')}\n\n`, 'O pide solo el apartado que necesites («apartado»), o busca un dato con «buscar».', RECORDATORIO);
       }),
@@ -1383,7 +1465,7 @@ export function crearServidor(ctx: Contexto): McpServer {
       title: 'Leer la ficha de repaso de un tema',
       annotations: { readOnlyHint: true, openWorldHint: false },
       description: 'La ficha de repaso de cuatro páginas de un tema revisado, en Markdown (con «buscar», solo los pasajes que llevan lo buscado). Material exclusivo: solo para el opositor conectado.',
-      inputSchema: { tema: temaParam, buscar: buscarParam, ...tramoParams },
+      inputSchema: { tema: temaParam, buscar: buscarParam, ...tramoCorto },
     },
     async ({ tema, buscar, desde, limite }) =>
       protegido(async () => {
@@ -1416,7 +1498,7 @@ export function crearServidor(ctx: Contexto): McpServer {
         if (buscar) return pasajes(seccion ? (extraerApartado(md, seccion) ?? md) : md, buscar, `la guía del dictamen (${documento})`);
         if (seccion) {
           const parte = extraerApartado(md, seccion);
-          return parte ? textoMd(`${AVISO_EXCLUSIVO}\n\n${parte}\n\n${RECORDATORIO}`) : error(`No hay ninguna sección «${seccion}». Secciones: ${apartadosDe(md).join(' · ')}`);
+          return parte ? textoMd(`${AVISO_EXCLUSIVO}\n\n${parte}\n\n${RECORDATORIO}`) : parecidos(md, seccion, `la guía del dictamen (${documento})`);
         }
         return tramoTexto(md, desde, limite, desde > 0 ? '' : `${AVISO_EXCLUSIVO}\n\nSecciones: ${apartadosDe(md).join(' · ')}\n\n`, 'O pide solo la sección que necesites («seccion») o busca un dato con «buscar»: la guía entera es muy larga.', RECORDATORIO);
       }),

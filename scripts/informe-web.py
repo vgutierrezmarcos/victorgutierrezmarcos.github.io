@@ -96,6 +96,12 @@ def resumen_para_valorar(d):
     out.append('Búsquedas: ' + '; '.join(f"{x['query']} {x['clics']}/{x['impresiones']} pos {x['posicion']}" for x in sc.get('busquedas', [])[:12]))
     out.append('Páginas (clics): ' + '; '.join(f"{x['page'].replace('https://www.victorgutierrezmarcos.es', '')} {x['clics']}/{x['impresiones']}" for x in sc.get('paginas', [])[:8]))
     out.append('DCE: ' + ('; '.join(f"{x['query']} {x['clics']}/{x['impresiones']} pos {x['posicion']}" for x in sc.get('busquedas_dce', [])[:6]) or 'ninguna búsqueda'))
+    c = d.get('conector') or {}
+    if c.get('porIa'):
+        out.append('Conector EconomIA por IA: ' + '; '.join(f"{ia} {v['llamadas']} llamadas, {v['tasaError']} % con error" for ia, v in c['porIa'].items())
+                   + ('. Herramientas con más errores: ' + '; '.join(f"{x['herramienta']} {x['errores']}/{x['llamadas']}" for x in c.get('conMasErrores', [])[:5]) if c.get('conMasErrores') else ''))
+    elif c.get('error'):
+        out.append('Conector EconomIA: ' + c['error'])
     if 'error' in ga:
         out.append('Analytics: ' + ga['error'])
     else:
@@ -171,9 +177,14 @@ def datos(dias):
     app = ejecutar('estadisticas-app.py', '--dias', str(dias))
     print('Comprobando el SEO…', file=sys.stderr)
     seo = ejecutar('comprobar-seo.py')
+    print('Leyendo el uso del conector EconomIA por IA…', file=sys.stderr)
+    try:
+        conector = ejecutar('estadisticas-conector.py', '--dias', str(dias))
+    except Exception as ex:  # sin red o sin token: el resto del informe sigue
+        conector = {'error': str(ex)[:200]}
     d = {'fecha': hoy, 'dias': dias,
          'periodo': web.get('search_console', {}).get('periodo', app.get('periodo', ['', ''])),
-         'web': web, 'app': app, 'seo': seo, 'evolucion': evolucion()}
+         'web': web, 'app': app, 'seo': seo, 'conector': conector, 'evolucion': evolucion()}
     (carpeta / 'datos.json').write_text(json.dumps(d, ensure_ascii=False, indent=1))
     print(f'Datos en {carpeta / "datos.json"}\n', file=sys.stderr)
     print(resumen_para_valorar(d))

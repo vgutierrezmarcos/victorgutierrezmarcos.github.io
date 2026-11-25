@@ -129,6 +129,12 @@ python3 scripts/estadisticas-app.py             # Play, app Analytics, APK downl
 python3 scripts/paises-dictamen.py
 python3 scripts/prensa.py --comprobar
 
+# EconomIA connector quality by Claude model (monthly or with each new model; uses the account's connector, ~40 min):
+# 14 fixed cases × Haiku/Sonnet/Opus, judged by Opus against the LaTeX sources; PDF in Downloads compared with the last run.
+# Results depend on the model: never cap models, measure and adjust the connector. Usage by AI (Claude/ChatGPT/Le Chat/Gemini): estadisticas-conector.py
+python3 scripts/evals-conector/evaluar.py
+python3 scripts/estadisticas-conector.py
+
 # Generate RSS feed manually
 node generate-rss.js
 

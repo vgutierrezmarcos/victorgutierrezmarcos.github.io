@@ -118,6 +118,14 @@
             },
             {
                 "@type": "Question",
+                "name": "¿Importa qué modelo de IA uses?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí. El conector da a todas las IA lo mismo (tus datos, los temas revisados y el método de cada tarea), pero lo bien que se usa depende del modelo: los más capaces leen mejor el tema, citan con más exactitud y cometen menos errores en los informes. Para test, tarjetas o el cronograma vale casi cualquiera; para los informes de evaluación de cantes y dictámenes y para las dudas finas del temario, usa el modelo más capaz que tenga tu plan, en la IA que prefieras. Los modelos cambian cada pocos meses: lo comprobamos con cada versión nueva y vamos ajustando el conector para que dependa cada vez menos del modelo."
+                }
+            },
+            {
+                "@type": "Question",
                 "name": "¿Por qué se recomienda Claude?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -464,6 +472,10 @@
         .tabla-ias tbody th { font-weight: 500; }
         .tabla-ias tbody tr:last-child > * { border-bottom: 0; }
         .plataformas { display: grid; gap: 0.7rem; margin: 1.2rem 0 0.8rem; }
+        .plataformas-consejos { margin: 1.2rem 0 0.8rem; padding: 1rem 1.3rem; border-left: 3px solid var(--color-accent-gold); background: var(--color-primary-pale); border-radius: 0 var(--radius-card) var(--radius-card) 0; }
+        .plataformas-consejos h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--color-primary); }
+        .plataformas-consejos ul { margin: 0; padding-left: 1.2rem; line-height: 1.6; }
+        .plataformas-consejos li { margin: 0.35rem 0; }
         .plataformas details { background: var(--color-bg-cream); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 0.9rem 1.2rem; }
         .plataformas summary { cursor: pointer; font-family: var(--font-display); font-size: 1.15rem; color: var(--color-primary); }
         .plataformas ol { margin: 0.8rem 0 0.6rem; padding-left: 1.3rem; line-height: 1.65; }
@@ -988,6 +1000,15 @@
                     <p>Cualquier programa que admita conectores MCP remotos con OAuth sirve, con la misma URL. En Claude Code: <code>claude mcp add --transport http oposicion-tcee-dce https://mcp.victorgutierrezmarcos.es/mcp</code>.</p>
                 </details>
             </div>
+            <div class="plataformas-consejos revelar">
+                <h3>Para sacarle más partido, en cualquier IA</h3>
+                <ul>
+                    <li><strong>El modelo importa.</strong> Para informes de evaluación y dudas finas, elige el modelo más capaz de tu plan (y, si tu IA lo ofrece, el modo de razonamiento o «pensamiento»); para test o tarjetas, vale cualquiera.</li>
+                    <li><strong>Que use el conector.</strong> En ChatGPT y Gemini hay que activarlo en cada conversación (menú <em>+</em> o de herramientas); si ves que contesta sin mirar el temario, pídele «búscalo en el temario con el conector».</li>
+                    <li><strong>Pide citas.</strong> «Dime de qué tema y apartado sale» hace que compruebe lo que dice; si algo no cuadra con el tema, pídele que lo vuelva a leer.</li>
+                    <li><strong>Una tarea por conversación.</strong> Un cante, una duda larga o un cronograma, cada uno en su chat: las conversaciones muy largas empeoran el resultado en todas las IA.</li>
+                </ul>
+            </div>
             <p class="app-nota revelar">Los menús de cada IA cambian a menudo. Si no los encuentras, busca «conector personalizado» o «MCP» en su ayuda.</p>
         </section>
 
@@ -1123,6 +1144,10 @@
                     <details>
                         <summary>¿Qué plan necesito?</summary>
                         <p>Depende de la IA. En Claude, uno de pago (Pro, unos 20 € al mes; también Max o Team). En Le Chat, también el gratuito. En ChatGPT y Gemini, los conectores propios están solo en algunos planes: lo tienes en la <a href="#plataformas">tabla</a>. El conector, la skill, el material y la app son gratuitos.</p>
+                    </details>
+                    <details>
+                        <summary>¿Importa qué modelo de IA uses?</summary>
+                        <p>Sí. El conector da a todas las IA lo mismo (tus datos, los temas revisados y el método de cada tarea), pero lo bien que se usa depende del modelo: los más capaces leen mejor el tema, citan con más exactitud y cometen menos errores en los informes. Para test, tarjetas o el cronograma vale casi cualquiera; para los informes de evaluación de cantes y dictámenes y para las dudas finas del temario, usa el modelo más capaz que tenga tu plan, en la IA que prefieras. Los modelos cambian cada pocos meses: lo comprobamos con cada versión nueva y vamos ajustando el conector para que dependa cada vez menos del modelo.</p>
                     </details>
                     <details>
                         <summary>¿Por qué se recomienda Claude?</summary>

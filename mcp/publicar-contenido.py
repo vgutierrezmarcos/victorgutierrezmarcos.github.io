@@ -20,6 +20,7 @@ o pasar --limpiar, que primero borra las claves de temas, dictamen y canon (no l
 """
 import argparse
 import json
+import time
 import os
 import re
 import subprocess
@@ -141,6 +142,123 @@ def wrangler(*args, remoto=True):
     subprocess.run(orden, cwd=WORKER, check=True, env=entorno())
 
 
+# ------------------------------------------------------------------ Búsqueda en todo el temario
+# Índice invertido para la herramienta buscar_en_temario del conector (Víctor, 25/11/2026): el Worker
+# no puede recorrer 90 temas en cada consulta (límite de CPU), así que aquí se parte cada tema en
+# pasajes y se apunta, por palabra, en qué pasajes sale. Las claves:
+#   busqueda/meta.json          número de pasajes, longitud media y títulos de los temas
+#   busqueda/t/<T>.json         pasajes de un tema: [[apartado, texto], …]
+#   busqueda/i/<2 letras>.json  {palabra: "T:i:tf:long,…"} (las dos primeras letras de la palabra)
+# La normalización (sin tildes, raíz corta) es la misma que la de src/busqueda.ts.
+VACIAS_BUSQUEDA = set('los las del una uno unos unas que con por para sus como sobre entre esta este estos estas cada mas más son sin pero sino tras ante bajo desde hasta segun según donde cuando cual cuales quien tema temas apartado tambien también muy hay han ser fue sea'.split())
+MAX_PASAJE = 1200
+
+
+def normalizar_palabra(w):
+    import unicodedata
+    w = ''.join(c for c in unicodedata.normalize('NFD', w.lower()) if unicodedata.category(c) != 'Mn')
+    if w.isdigit() or any(ch.isdigit() for ch in w):
+        return w
+    if len(w) > 5 and w.endswith('es'):
+        w = w[:-2]
+    elif len(w) > 4 and w.endswith('s'):
+        w = w[:-1]
+    return w[:9]
+
+
+def palabras_busqueda(texto):
+    salida = []
+    for w in re.findall(r'\d+(?:[.,]\d+)?|[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+', texto):
+        if len(w) < 3 and not w.isdigit() and not re.match(r'\d', w):
+            continue
+        n = normalizar_palabra(w)
+        if n and n not in VACIAS_BUSQUEDA:
+            salida.append(n)
+    return salida
+
+
+def pasajes_de(md):
+    """[(apartado, texto)] partiendo por títulos (##…#####) y en trozos de ~1.200 caracteres."""
+    ruta, actual, salida = [], [], []
+    def cerrar():
+        texto = '\n'.join(actual).strip()
+        actual.clear()
+        if len(texto) < 40:
+            return
+        apartado = ' › '.join(x for x in ruta if x)
+        trozo = ''
+        for parrafo in re.split(r'\n\s*\n', texto):
+            if trozo and len(trozo) + len(parrafo) > MAX_PASAJE:
+                salida.append((apartado, trozo.strip()))
+                trozo = ''
+            trozo += parrafo + '\n\n'
+        if trozo.strip():
+            salida.append((apartado, trozo.strip()))
+    for linea in md.split('\n'):
+        m = re.match(r'^(#{1,5})\s+(.*)$', linea)
+        if m:
+            cerrar()
+            nivel = len(m.group(1))
+            del ruta[nivel - 1:]
+            ruta.extend([''] * (nivel - 1 - len(ruta)))
+            ruta.append(m.group(2).strip())
+        elif not linea.startswith('<!--') and not linea.startswith('*Material exclusivo'):
+            actual.append(linea)
+    cerrar()
+    return salida
+
+
+def indice_busqueda(pares, indice):
+    """Las claves del índice de búsqueda a partir de los .md de los temas y de la guía del dictamen."""
+    titulos = {t['codigo']: t.get('titulo', '') for t in indice['temas']}
+    textos = {clave.split('/')[1]: texto for clave, texto in pares if re.match(r'^temas/[^/]+/tema\.md$', clave)}
+    for clave, texto in pares:
+        if clave == 'dictamen/guia-1D01.md':
+            textos['1D01'] = texto
+            titulos['1D01'] = 'Guía para el dictamen de coyuntura económica'
+    postings, claves, total, suma = {}, [], 0, 0
+    for codigo, md in sorted(textos.items()):
+        pasajes = pasajes_de(md)
+        claves.append((f'busqueda/t/{codigo}.json', json.dumps([[a, t] for a, t in pasajes], ensure_ascii=False)))
+        for i, (apartado, texto) in enumerate(pasajes):
+            ws = palabras_busqueda(apartado + ' ' + apartado + ' ' + texto)  # el apartado cuenta doble
+            total += 1
+            suma += len(ws)
+            cuenta = {}
+            for w in ws:
+                cuenta[w] = cuenta.get(w, 0) + 1
+            for w, tf in cuenta.items():
+                postings.setdefault(w, []).append(f'{codigo}:{i}:{tf}:{len(ws)}')
+    # Fuera las palabras que salen en más del 25 % de los pasajes: no distinguen nada.
+    postings = {w: l for w, l in postings.items() if len(l) <= total * 0.25}
+    por_pref = {}
+    for w, lista in postings.items():
+        por_pref.setdefault(w[:2], {})[w] = ','.join(lista)
+    # Los pares de letras muy frecuentes («co», «de»…) se parten por las tres primeras.
+    for pref in [p for p, d in por_pref.items() if sum(len(k) + len(v) + 6 for k, v in d.items()) > 200_000]:
+        for w, v in por_pref.pop(pref).items():
+            por_pref.setdefault(w[:3], {})[w] = v
+    # Las dos primeras letras se agrupan en trozos de ~250 KB (menos claves que escribir en el KV y
+    # poco que leer por consulta); meta.json dice en qué trozo está cada par de letras.
+    trozo_de, trozos, actual, tam, n = {}, [], {}, 0, 0
+    for pref in sorted(por_pref):
+        d = por_pref[pref]
+        t = sum(len(k) + len(v) + 6 for k, v in d.items())
+        if actual and tam + t > 250_000:
+            trozos.append(actual)
+            actual, tam = {}, 0
+        actual.update(d)
+        tam += t
+        trozo_de[pref] = len(trozos)
+    if actual:
+        trozos.append(actual)
+    for i, d in enumerate(trozos):
+        claves.append((f'busqueda/i/{i}.json', json.dumps(d, ensure_ascii=False, separators=(',', ':'))))
+    meta = {'pasajes': total, 'media': round(suma / max(total, 1), 1), 'titulos': titulos, 'trozos': trozo_de, 'generado': time.strftime('%Y-%m-%d')}
+    claves.append(('busqueda/meta.json', json.dumps(meta, ensure_ascii=False)))
+    return claves
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     p.add_argument('--binding', default='CONTENIDO', help='binding del KV en wrangler.toml (por defecto CONTENIDO)')
@@ -154,7 +272,10 @@ def main():
         SKILL = os.path.abspath(args.origen)
 
     pares, indice = recoger()
-    print(f'{len(pares) - 1} ficheros .md ({len(indice["temas"])} temas, {len(indice["dictamen"])} del dictamen, {len(indice["canon"])} del canon) + indice.json')
+    busqueda = indice_busqueda(pares, indice)
+    print(f'Índice de búsqueda: {len(busqueda)} claves ({sum(1 for c, _ in busqueda if c.startswith("busqueda/t/"))} temas, {sum(1 for c, _ in busqueda if c.startswith("busqueda/i/"))} trozos del índice)')
+    pares = pares + busqueda
+    print(f'{len(pares) - 1} ficheros ({len(indice["temas"])} temas, {len(indice["dictamen"])} del dictamen, {len(indice["canon"])} del canon) + indice.json')
     bulk = [{'key': clave, 'value': texto} for clave, texto in pares]
 
     if args.solo_json:

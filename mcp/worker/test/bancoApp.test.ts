@@ -19,7 +19,7 @@ describe('banco de EconomIA para la app', () => {
     const r = await atenderBancoApp(new Request('https://mcp.example/app/banco', { headers: { Authorization: 'Bearer t', Origin: 'https://www.victorgutierrezmarcos.es' } }), env({ 'banco/preguntas.json': banco }), firebase(true));
     expect(r!.status).toBe(200);
     expect(r!.headers.get('Access-Control-Allow-Origin')).toBe('https://www.victorgutierrezmarcos.es');
-    const src = (await r!.json()).preguntas[0].imagenes[0].src as string;
+    const src = ((await r!.json()) as { preguntas: Array<{ imagenes: Array<{ src: string }> }> }).preguntas[0].imagenes[0].src;
     expect(src).toBe(`https://mcp.example/app/banco/img/310811.webp?f=${await firmaFigura('310811.webp', 'secreto')}`);
     const e = env({ 'banco/img/310811.webp': 'IMG' });
     expect((await atenderBancoApp(new Request(src), e))!.status).toBe(200);
