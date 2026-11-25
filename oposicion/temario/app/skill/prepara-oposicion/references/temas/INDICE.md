@@ -11,14 +11,14 @@
 | 3.A.3 (3A03) | Los economistas neoclásicos. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.4 (3A04) | El pensamiento económico de Keynes. Referencia a la economía postkeynesiana y el desequilibrio. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.5 (3A05) | La síntesis neoclásica. El monetarismo. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.A.6 (3A06) | La nueva macroeconomía clásica. La hipótesis de las expectativas racionales; la crítica de Lucas; el surgimiento de los modelos dinámicos estocásticos de equilibrio general. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.A.6 (3A06) | La nueva macroeconomía clásica. La hipótesis de las expectativas racionales; la crítica de Lucas; el surgimiento de los modelos dinámicos estocásticos de equilibrio general. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.A.7 (3A07) | La nueva economía keynesiana. Primera y segunda generación. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.8 (3A08) | Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos. | sí | sí | sí (plan de pizarra en el guion) | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.9 (3A09) | Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar. | sí | sí | sí (plan de pizarra en el guion) | sí | 2026-11-25 | 3fef83b3 |
-| 3.A.10 (3A10) | Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.A.10 (3A10) | Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.A.11 (3A11) | Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta. | sí | sí | sí (plan de pizarra en el guion) | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.12 (3A12) | Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas. | sí | sí | sí (plan de pizarra en el guion) | sí | 2026-11-25 | 3fef83b3 |
-| 3.A.13 (3A13) | Economía de la información y teoría de la agencia: selección adversa y riesgo moral. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.A.13 (3A13) | Economía de la información y teoría de la agencia: selección adversa y riesgo moral. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.A.14 (3A14) | Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.15 (3A15) | La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción. La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.16 (3A16) | Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo; dinámicas de ajuste y estabilidad del equilibrio. Análisis de eficiencia y bienestar. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
@@ -38,7 +38,7 @@
 | 3.A.30 (3A30) | Magnitudes macroeconómicas y contabilidad nacional. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.31 (3A31) | Análisis de las tablas «input-output». | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.32 (3A32) | El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.A.33 (3A33) | Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.A.33 (3A33) | Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.A.34 (3A34) | Teorías de la inversión en bienes de equipo. Incertidumbre e irreversibilidad de la inversión. Implicaciones de política económica. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.35 (3A35) | Teorías de la demanda de dinero. Implicaciones de política económica. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.36 (3A36) | Política monetaria (I). El diseño y la instrumentación de la política monetaria. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
@@ -52,9 +52,9 @@
 | 3.A.44 (3A44) | Crecimiento económico (II). Modelos de crecimiento endógeno: rendimientos crecientes, capital humano e innovación tecnológica. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.A.45 (3A45) | Evidencia empírica sobre el crecimiento económico y la distribución de la renta entre los factores de producción. Contabilidad del crecimiento, con especial referencia a la productividad total de los factores. Convergencia económica internacional. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.1 (3B01) | La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.2 (3B02) | La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.B.2 (3B02) | La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.B.3 (3B03) | La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.4 (3B04) | Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.B.4 (3B04) | Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.B.5 (3B05) | Teoría del comercio internacional (I). La teoría ricardiana de la ventaja comparativa. Determinación de la relación real de intercambio. El modelo de factores específicos. El Modelo Hecksher-Ohlin-Samuelson (H-O-S); teoremas derivados del modelo y extensiones. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.6 (3B06) | Teoría del comercio internacional (II). Nueva teoría del comercio internacional. Especial referencia a la competencia imperfecta, los rendimientos crecientes y la heterogeneidad empresarial. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.7 (3B07) | La política comercial (I). Instrumentos y efectos. Barreras arancelarias y no arancelarias. Otros instrumentos tradicionales. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
@@ -65,7 +65,7 @@
 | 3.B.12 (3B12) | Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.13 (3B13) | Mercados de divisas: operaciones e instrumentos. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.14 (3B14) | Teorías de la determinación del tipo de cambio. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.15 (3B15) | Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.B.15 (3B15) | Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.B.16 (3B16) | Teoría de la integración monetaria. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.17 (3B17) | Teorías explicativas de las crisis de balanza de pagos. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.18 (3B18) | La nueva globalización económica y financiera. Determinantes y efectos de los movimientos internacionales de factores productivos: movilidad de trabajadores, inversión de cartera e inversión directa, con especial referencia a las cadenas globales de valor. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
@@ -73,10 +73,10 @@
 | 3.B.20 (3B20) | El sistema económico internacional desde el siglo XIX hasta la ruptura del sistema de Bretton-Woods. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.21 (3B21) | El sistema económico internacional desde la desaparición del sistema de Bretton-Woods. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.22 (3B22) | El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.23 (3B23) | Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.B.23 (3B23) | Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.B.24 (3B24) | Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.25 (3B25) | Análisis de los instrumentos y de los mercados de derivados. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.26 (3B26) | Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.B.26 (3B26) | Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | 3.B.27 (3B27) | Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.28 (3B28) | Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.29 (3B29) | La financiación exterior del desarrollo económico. El problema de la deuda externa. La ayuda al desarrollo. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
@@ -93,11 +93,11 @@
 | 3.B.40 (3B40) | La Cohesión Económica y Social en la Unión Europea: política regional e instrumentos presupuestarios y financieros. Política social y de empleo. El proceso de convergencia real en la Unión Europea. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.41 (3B41) | La política comercial de la Unión Europea. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
 | 3.B.42 (3B42) | Las relaciones económicas exteriores de la Unión Europea. La política de cooperación al desarrollo de la Unión Europea. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.43 (3B43) | El origen del euro: funcionamiento y evolución del Sistema Monetario Europeo. Los criterios de convergencia nominal. El Sistema Europeo de Bancos Centrales: objetivos e instrumentos. La política monetaria en la Eurozona desde 2009. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.44 (3B44) | La Unión Bancaria: Pilares y Código normativo único. La Unión de Mercados de Capitales. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
-| 3.B.45 (3B45) | La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento de Desequilibrios Macroeconómicos. El Mecanismo Europeo de Estabilidad. La respuesta común de política fiscal a partir de la covid-19. | sí | no | no | sí | 2026-11-25 | 3fef83b3 |
+| 3.B.43 (3B43) | El origen del euro: funcionamiento y evolución del Sistema Monetario Europeo. Los criterios de convergencia nominal. El Sistema Europeo de Bancos Centrales: objetivos e instrumentos. La política monetaria en la Eurozona desde 2009. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
+| 3.B.44 (3B44) | La Unión Bancaria: Pilares y Código normativo único. La Unión de Mercados de Capitales. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
+| 3.B.45 (3B45) | La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento de Desequilibrios Macroeconómicos. El Mecanismo Europeo de Estabilidad. La respuesta común de política fiscal a partir de la covid-19. | sí | no | no | sí | 2026-11-25 | cd4e0182 |
 | Dictamen (1D01) | Guía para el dictamen de coyuntura económica | sí (resumen) | sí | no | sí (guía) | 2026-11-25 | 3fef83b3 |
 
 «Pizarra» dice si el guion del cante trae un «Plan de pizarra» (qué dibujar en cada apartado y en qué minuto): `references/pizarra.md`.
 
-Manifiesto de la rama temario-publicado: commit f4779178b5 (generado el 2026-11-25T00:46); skill construida el 2026-11-25 09:37.
+Manifiesto de la rama temario-publicado: commit cd4e0182d9 (generado el 2026-11-25T17:26); skill construida el 2026-11-25 17:34.

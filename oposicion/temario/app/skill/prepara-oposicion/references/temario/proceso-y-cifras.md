@@ -170,6 +170,10 @@ Página del Ministerio: https://portal.mineco.gob.es/es-es/ministerio/empleo/Pag
 - Convocatoria de lecturas (publicado el 2026-10-20) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025DIPLOS_Ej4_Lecturas.pdf
 - Aprobados cuarto ejercicio (publicado el 2026-11-24) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025DIPLOS_Ej4_Aprobados.pdf
 
+### Aprobados
+
+- Lista de aprobados (publicado el 2026-11-25) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025DIPLOS_Aprobados.pdf
+
 Convocatorias anteriores con documentos en la web: 2024.
 
 ## TCEE: plazas, admitidos y tasas por ejercicio (turno libre) de las últimas convocatorias
