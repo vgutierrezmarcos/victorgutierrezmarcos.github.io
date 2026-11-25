@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Prueba de calidad del buscador: abre /scripts/buscador/probar.html con un servidor local en la raíz
+     (python3 -m http.server) y mira cuántas búsquedas de pruebas.json sacan lo esperado entre los 3 primeros. -->
+<html lang="es"><head><meta charset="utf-8"><title>Prueba del buscador</title></head><body>
+<pre id="o">Probando…</pre>
+<script>
+window.onerror = (m) => { document.getElementById('o').textContent += '\nERROR ' + m; };
+(async () => {
+  await new Promise(ok => { const s = document.createElement('script'); s.src = '/search-engine.js?v=' + Date.now(); s.onload = ok; document.head.appendChild(s); });
+  const casos = (await (await fetch('/scripts/buscador/pruebas.json')).json()).casos;
+  let ok = 0, out = '';
+  for (const [q, esperado] of casos) {
+    const r = await searchEngine.buscar(q);
+    const top = [...r.directos.map(d => d.numero), ...r.grupos.map(g => g.codigo ? g.codigo + ' ' + g.url : g.url)].slice(0, 3);
+    const bien = top.some(t => esperado.some(e => t.includes(e)));
+    if (bien) ok++;
+    out += (bien ? 'OK    ' : 'FALLA ') + q.padEnd(30) + top.map(t => t.slice(0, 40)).join(' | ') + '\n';
+    document.getElementById('o').textContent = 'en curso ' + ok + '\n' + out;
+  }
+  document.getElementById('o').textContent = `${ok}/${casos.length} búsquedas con lo esperado entre los 3 primeros\n\n` + out;
+})();
+</script></body></html>

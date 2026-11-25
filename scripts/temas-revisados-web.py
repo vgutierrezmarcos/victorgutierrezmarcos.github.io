@@ -127,6 +127,36 @@ def llms(temas):
     open('llms.txt', 'w', encoding='utf-8').write(s)
 
 
+PLANTILLA = 'oposicion/temario/tema-revisado.html'
+
+
+def pagina_tema(t, web_pdf):
+    """La página HTML de un tema revisado al lado de su PDF (…/3A14.html): la misma que
+    tema-revisado.html (el tema en la web, con sesión, con su barra de PDF, Word y ficha, y la
+    burbuja de EconomIA), con su título y su código; la rellena exclusivos.js."""
+    carpeta, nombre = os.path.split(web_pdf)
+    ruta = f'{carpeta}/{os.path.splitext(nombre)[0]}.html'
+    guia = t['archivo'] == '1D01'
+    titulo = 'Guía para el dictamen de coyuntura económica' if guia else f'Tema {t["codigo"]}: {t["titulo"].rstrip(".")}'
+    ejercicio = 'Primer ejercicio' if guia else 'Tercer ejercicio'
+    pag_ejercicio = 'primer-ejercicio.html' if guia else 'tercer-ejercicio.html'
+    h = open(PLANTILLA, encoding='utf-8').read()
+    # Una carpeta más abajo que la plantilla.
+    h = re.sub(r'(href|src)="\.\./', r'\1="../../', h)
+    esc = lambda x: x.replace('&', '&amp;').replace('<', '&lt;').replace('"', '&quot;')
+    h = re.sub(r'<title>.*?</title>', f'<title>{esc(titulo)} | Víctor Gutiérrez Marcos</title>', h, count=1, flags=re.S)
+    h = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{esc(titulo)}">', h, count=1)
+    h = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(titulo)}. Material exclusivo de la oposición TCEE para tu estudio personal, con tu cuenta de Google.">', h, count=1)
+    h = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{WEB}{ruta}">', h, count=1)
+    h = h.replace('<meta name="robots" content="noindex, nofollow">', '<meta name="robots" content="noindex, follow">')
+    h = h.replace('<div class="content-container" id="tema-revisado">', f'<div class="content-container" id="tema-revisado" data-tema="{t["archivo"]}">')
+    h = re.sub(r'<nav class="breadcrumb">.*?</nav>', f'<nav class="breadcrumb"><a href="../../temario.html">Temario</a><span>›</span><a href="../{pag_ejercicio}">{ejercicio}</a><span>›</span>{"Guía del dictamen" if guia else "Tema " + t["codigo"]}</nav>', h, count=1, flags=re.S)
+    h = re.sub(r'(<h1 class="tema-revisado-titulo" id="tema-revisado-titulo">).*?(</h1>)', lambda m: m.group(1) + esc(titulo) + m.group(2), h, count=1, flags=re.S)
+    h = h.replace('<iframe class="tema-revisado-marco" id="tema-revisado-marco" title="Tema revisado" hidden>', f'<iframe class="tema-revisado-marco" id="tema-revisado-marco" title="{esc(titulo)}" hidden>')
+    h = re.sub(r'<!-- Tema revisado \(exclusivo.*?-->', f'<!-- {esc(titulo)}: página generada por scripts/temas-revisados-web.py a partir de {PLANTILLA}; la rellena exclusivos.js. -->', h, count=1, flags=re.S)
+    return ruta, h
+
+
 def main():
     seco = '--seco' in sys.argv
     os.chdir(RAIZ)
@@ -164,6 +194,7 @@ def main():
                     f.write(git_wt('cat-file', 'blob', sha, binario=True))
             previo.setdefault('sha', {})[tipo] = sha
         salida.append({
+            'pagina': os.path.splitext(web['pdf'])[0] + '.html',
             'archivo': t['archivo'], 'codigo': t['codigo'], 'titulo': t.get('titulo', ''),
             'aprobado': t.get('aprobado') or t.get('fecha'),
             'pdf': web['pdf'], 'repaso': web['repaso'],
@@ -181,6 +212,12 @@ def main():
             f.write('\n')
     if not seco:
         llms(salida)
+        for t in entradas:
+            web_pdf = GUIA if t['archivo'] == '1D01' else t['pdf']['ruta']
+            ruta, h = pagina_tema(t, web_pdf)
+            if not os.path.exists(ruta) or open(ruta, encoding='utf-8').read() != h:
+                open(ruta, 'w', encoding='utf-8').write(h)
+        print(f'{len(entradas)} páginas HTML de tema junto a su PDF')
     print(f'{len(salida)} temas: {movidos} antiguos a anterior/, {copiados} PDF copiados' + (' (en seco)' if seco else ''))
 
 

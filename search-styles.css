@@ -521,3 +521,42 @@ mark {
     color: var(--color-text-muted);
     animation: pulse 1.5s ease-in-out infinite;
 }
+
+
+/* ------------------------------------------------------------------
+   Buscador con Pagefind (25/11/2026): filtros, grupos por tema,
+   fragmentos resaltados, página /buscar.html y caja de la portada
+   ------------------------------------------------------------------ */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.busqueda-filtros { display: flex; flex-wrap: wrap; gap: 0.35rem; padding: 0.2rem 0 0.7rem; }
+.busqueda-filtro { font-family: var(--font-ui); font-size: 0.85rem; padding: 0.25rem 0.75rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-white); color: var(--color-text); cursor: pointer; }
+.busqueda-filtro.activo { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+.busqueda-filtro:focus-visible { outline: 2px solid var(--color-accent-gold); outline-offset: 2px; }
+.busqueda-grupo { margin-bottom: 0.6rem; border: 1px solid var(--color-border-light); border-radius: 8px; overflow: hidden; }
+.busqueda-grupo .search-result-item { margin: 0; border-radius: 0; }
+.busqueda-grupo .busqueda-apartado { padding-left: 3.2rem; border-top: 1px solid var(--color-border-light); }
+.busqueda-apartado .result-title { font-size: 0.92rem; }
+.result-extracto { margin-top: 0.2rem; }
+.result-extracto mark { background: var(--color-primary-pale); color: inherit; padding: 0 0.1em; border-radius: 2px; font-weight: 600; }
+.results-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.busqueda-todos { font-family: var(--font-ui); font-size: 0.85rem; color: var(--color-primary); }
+.busqueda-sugerencia { background: none; border: 0; padding: 0; font: inherit; color: var(--color-primary); text-decoration: underline; text-decoration-color: var(--color-accent-gold); cursor: pointer; }
+.busqueda-caja { display: flex; gap: 0.5rem; margin: 1rem 0 0.4rem; }
+.busqueda-caja-input { flex: 1; min-width: 0; font-family: var(--font-ui); font-size: 1.05rem; padding: 0.75rem 1rem; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-white); color: var(--color-text); }
+.busqueda-caja-input:focus { outline: 2px solid var(--color-accent-gold); outline-offset: 1px; border-color: var(--color-primary); }
+.busqueda-ayuda { font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-text-muted); }
+.busqueda-resultados { margin-top: 1rem; }
+.busqueda-cargando { font-family: var(--font-ui); color: var(--color-text-muted); }
+@media (max-width: 560px) { .busqueda-caja .boton { padding-left: 0.9rem; padding-right: 0.9rem; } }
+
+/* Caja de la portada, al estilo de un buscador: barra redondeada con la lupa dentro */
+.busqueda-portada { width: 100%; max-width: 640px; margin: 1.8rem auto 0.6rem; text-align: center; box-sizing: border-box; }
+.busqueda-portada-barra { display: flex; align-items: center; gap: 0.6rem; height: 52px; padding: 0 1.1rem; border: 1px solid var(--color-border); border-radius: 26px; background: var(--color-white); transition: box-shadow var(--transition-fast), border-color var(--transition-fast); }
+.busqueda-portada-barra:hover, .busqueda-portada-barra:focus-within { border-color: transparent; box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); }
+.busqueda-portada-lupa { width: 20px; height: 20px; flex: none; color: var(--color-text-light); }
+.busqueda-portada-input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--color-text); font-family: var(--font-ui); font-size: 1.05rem; }
+.busqueda-portada-input::-webkit-search-cancel-button { cursor: pointer; }
+.busqueda-portada-botones { margin-top: 1rem; }
+.busqueda-ejemplos { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; margin: 1rem 0 0; font-family: var(--font-ui); font-size: 0.85rem; }
+.busqueda-ejemplos a { padding: 0.3rem 0.8rem; border: 1px solid var(--color-border-light); border-radius: 999px; color: var(--color-text-muted); text-decoration: none; background: var(--color-white); }
+.busqueda-ejemplos a:hover { border-color: var(--color-primary); color: var(--color-primary); }

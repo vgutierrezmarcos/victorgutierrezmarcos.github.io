@@ -601,6 +601,35 @@
             font-size: 0.92rem;
             line-height: 1.5;
         }
+        /* Pregunta suelta (?pregunta=<id>): enlace directo desde el buscador */
+        .pregunta-suelta-resultado {
+            margin: 0 0 1rem; padding: 0.7rem 1rem; font-family: var(--font-ui); font-size: 0.98rem;
+            border-left: 3px solid var(--color-border-strong);
+            border-radius: 0 var(--radius-control) var(--radius-control) 0;
+            background: var(--color-bg-light);
+        }
+        .pregunta-suelta-resultado.correct { border-left-color: var(--color-success); background: var(--color-success-bg); }
+        .pregunta-suelta-resultado.incorrect { border-left-color: var(--color-error); background: var(--color-error-bg); }
+        .pregunta-suelta-resultado.accepted { border-left-color: var(--color-accent-gold); background: var(--color-warning-bg); }
+        .explicacion-pregunta { margin-top: 1.25rem; line-height: 1.65; }
+        .explicacion-pregunta h2 { font-size: 1.2rem; margin: 0 0 0.6rem; color: var(--color-primary); }
+        .explicacion-pregunta h3 { font-size: 1rem; margin: 1.1rem 0 0.4rem; }
+        .explicacion-pregunta p, .explicacion-pregunta ul { margin: 0 0 0.75rem; }
+        .explicacion-pregunta ul { padding-left: 1.25rem; }
+        .explicacion-clave {
+            padding: 0.7rem 1rem; background: var(--color-primary-pale);
+            border-left: 2px solid var(--color-accent-gold);
+            border-radius: 0 var(--radius-control) var(--radius-control) 0;
+        }
+        .explicacion-ojo { padding: 0.5rem 0.8rem; background: var(--color-warning-bg); border-left: 2px solid var(--color-accent-gold); }
+        .explicacion-grafico { margin: 0 0 1rem; text-align: center; }
+        .explicacion-grafico img { max-width: 100%; height: auto; cursor: zoom-in; }
+        .explicacion-grafico figcaption { font-family: var(--font-ui); font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.35rem; }
+        .explicacion-opciones { list-style: none; padding-left: 0 !important; }
+        .explicacion-opciones li { margin-bottom: 0.45rem; }
+        .explicacion-fuentes { font-family: var(--font-ui); font-size: 0.85rem; color: var(--color-text-muted); }
+        .pregunta-suelta-acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+        .aviso-pregunta-suelta { margin: 0 0 1.25rem; }
         .temas-tag {
             display: inline-block;
             background: var(--color-primary-pale);
@@ -882,6 +911,25 @@
     <main class="main-content">
         <div class="content-container">
             <article class="page-content">
+                <!-- PREGUNTA SUELTA (?pregunta=<id>): una pregunta en modo estudio, enlazada desde el buscador -->
+                <div id="fase-pregunta" class="hidden test-container">
+                    <nav class="breadcrumb">
+                        <a href="../../../temario.html">Temario</a>
+                        <span>›</span>
+                        <a href="../../primer-ejercicio.html">Primer ejercicio</a>
+                        <span>›</span>
+                        <a href="simulador.html" id="miga-simulador">Simulador de test</a>
+                        <span>›</span>
+                        Pregunta
+                    </nav>
+                    <h1 class="section-title" id="pregunta-suelta-titulo">Pregunta del test</h1>
+                    <div class="pregunta-container" id="pregunta-suelta"></div>
+                    <div class="pregunta-suelta-acciones">
+                        <button type="button" class="boton" id="btn-test-tema">Hacer un test de este tema</button>
+                        <button type="button" class="boton boton--secundario" id="btn-volver-simulador">Volver al simulador</button>
+                    </div>
+                </div>
+
                 <!-- FASE 1: SELECCIÓN DE TEMAS Y CONFIGURACIÓN -->
                 <div id="fase-seleccion" class="test-container">
                     <nav class="breadcrumb">
@@ -1371,7 +1419,10 @@
                 actualizarBadgeRepaso();
                 loadingIndicator.style.display = 'none';
                 mainContent.style.display = 'block';
-                
+
+                // Enlace directo a una pregunta (?pregunta=<id>), p. ej. desde el buscador
+                abrirPreguntaDeEnlace();
+
             } catch (error) {
                 console.error('Error al cargar datos:', error);
                 loadingIndicator.innerHTML = `
@@ -1993,6 +2044,254 @@
         function repetirExamen() {
             comenzarExamen();
         }
+
+        // ============================================
+        // PREGUNTA SUELTA (?pregunta=<id>)
+        // El buscador de la web enlaza cada pregunta oficial a
+        // simulador.html?pregunta=<id>: se muestra sola, en modo estudio,
+        // con la corrección y la explicación de explicaciones/<examen>.json.
+        // ============================================
+
+        const cacheExplicaciones = {};
+        let preguntaSuelta = null;
+        const tituloOriginal = document.title;
+
+        // Pasa fórmulas pendientes por MathJax aunque aún esté cargando.
+        function tipografiar(el) {
+            if (!window.MathJax) return;
+            if (MathJax.startup && MathJax.startup.promise && MathJax.typesetPromise) {
+                MathJax.startup.promise.then(() => MathJax.typesetPromise([el])).catch(err => console.log('MathJax error:', err));
+            }
+            // Si MathJax no ha arrancado todavía, su primera pasada ya recoge el contenido.
+        }
+
+        function escaparHtml(texto) {
+            return String(texto).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        // Texto de una explicación: escapado, con **negrita** y saltos de línea.
+        function textoExplicacion(texto) {
+            return escaparHtml(texto).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+        }
+
+        // Párrafos del desarrollo (separados por una línea en blanco); las listas con «- » y los «Ojo:» aparte.
+        function desarrolloHtml(desarrollo) {
+            return String(desarrollo || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean).map(p => {
+                const lineas = p.split('\n');
+                if (lineas.every(l => /^\s*[-•]\s+/.test(l))) {
+                    return '<ul>' + lineas.map(l => `<li>${textoExplicacion(l.replace(/^\s*[-•]\s+/, ''))}</li>`).join('') + '</ul>';
+                }
+                const ojo = /^Ojo:/.test(p) ? ' class="explicacion-ojo"' : '';
+                return `<p${ojo}>${textoExplicacion(p)}</p>`;
+            }).join('');
+        }
+
+        async function cargarExplicacion(pregunta) {
+            if (!pregunta.examen) return null;
+            if (!(pregunta.examen in cacheExplicaciones)) {
+                cacheExplicaciones[pregunta.examen] = fetch(`explicaciones/${encodeURIComponent(pregunta.examen)}.json`)
+                    .then(r => r.ok ? r.json() : null)
+                    .catch(() => null);
+            }
+            const datos = await cacheExplicaciones[pregunta.examen];
+            return datos && datos.explicaciones ? datos.explicaciones[String(pregunta.id)] || null : null;
+        }
+
+        function explicacionHtml(e) {
+            let html = '<h2>¿Por qué?</h2>';
+            if (e.clave) html += `<p class="explicacion-clave">${textoExplicacion(e.clave)}</p>`;
+            (e.graficos || []).forEach(g => {
+                const alt = escaparHtml(g.alt || g.pie || 'Gráfico de la explicación').replace(/"/g, '&quot;');
+                html += `<figure class="explicacion-grafico">
+                    <img src="explicaciones/graficos/${encodeURIComponent(g.archivo)}.webp" alt="${alt}" loading="lazy"
+                         onclick="abrirLightbox(this.src, this.alt)">
+                    ${g.pie ? `<figcaption>${textoExplicacion(g.pie)}</figcaption>` : ''}
+                </figure>`;
+            });
+            html += desarrolloHtml(e.desarrollo);
+            const opciones = e.opciones || {};
+            const letras = ['a', 'b', 'c', 'd'].filter(l => opciones[l]);
+            if (letras.length) {
+                html += '<h3>Opción por opción</h3><ul class="explicacion-opciones">' + letras.map(l => {
+                    const o = opciones[l];
+                    const texto = typeof o === 'string' ? o : (o.texto || '');
+                    return `<li><strong>${l.toUpperCase()})</strong> ${textoExplicacion(texto)}</li>`;
+                }).join('') + '</ul>';
+            }
+            if (e.fuentes && e.fuentes.length) {
+                html += `<p class="explicacion-fuentes">Fuentes: ${e.fuentes.map(escaparHtml).join('; ')}.</p>`;
+            }
+            return html;
+        }
+
+        // Etiquetas de tema con enlace al PDF del tercer ejercicio (como en la revisión del examen).
+        function etiquetasTemas(pregunta) {
+            return pregunta.temas.map(t => {
+                const match = t.match(/3\.([AB])\.(\d+)/);
+                if (match) {
+                    const pdfFile = `3${match[1]}${match[2].padStart(2, '0')}.pdf`;
+                    return `<a href="../../tercer-ejercicio/${pdfFile}" target="_blank" class="temas-tag" title="Ver tema ${match[2]} del tercer ejercicio">${t}: ${datosTest.temas[t] || ''}</a>`;
+                }
+                return `<span class="temas-tag">${t}: ${datosTest.temas[t] || ''}</span>`;
+            }).join('');
+        }
+
+        function quitarParametroPregunta() {
+            const url = new URL(window.location.href);
+            if (url.searchParams.has('pregunta')) {
+                url.searchParams.delete('pregunta');
+                history.replaceState(null, '', url.pathname + url.search + url.hash);
+            }
+        }
+
+        function abrirPreguntaDeEnlace() {
+            const param = new URLSearchParams(window.location.search).get('pregunta');
+            if (param === null) return;
+            const id = parseInt(param, 10);
+            const pregunta = datosTest.preguntas.find(p => p.id === id);
+            if (!pregunta) {
+                const aviso = document.createElement('div');
+                aviso.className = 'aviso-puente-app aviso-pregunta-suelta';
+                aviso.setAttribute('role', 'status');
+                aviso.textContent = `No hay ninguna pregunta con el número ${param}. Puedes preparar un test con el simulador.`;
+                const mainContent = document.getElementById('main-content');
+                mainContent.parentNode.insertBefore(aviso, mainContent);
+                quitarParametroPregunta();
+                return;
+            }
+            mostrarPreguntaSuelta(pregunta);
+        }
+
+        function mostrarPreguntaSuelta(pregunta) {
+            preguntaSuelta = pregunta;
+            const examen = datosTest.examenes.find(e => e.id === pregunta.examen);
+            const origen = examen ? `${examen.nombre}, pregunta ${pregunta.numero}` : 'Pregunta de elaboración propia';
+            document.getElementById('pregunta-suelta-titulo').textContent = examen ? `Pregunta ${pregunta.numero} del test` : 'Pregunta del test';
+            document.title = `${examen ? examen.nombre + ', pregunta ' + pregunta.numero : 'Pregunta del test'} | Simulador de test`;
+
+            let opcionesHtml = '';
+            ['a', 'b', 'c', 'd'].forEach(letra => {
+                opcionesHtml += `
+                    <li class="opcion-item">
+                        <button type="button" class="opcion-btn" data-opcion="${letra}" aria-pressed="false">
+                            <span class="opcion-letra">${letra.toUpperCase()}</span>
+                            <span class="opcion-texto">${pregunta.opciones[letra]}</span>
+                        </button>
+                    </li>
+                `;
+            });
+
+            const container = document.getElementById('pregunta-suelta');
+            container.innerHTML = `
+                <div class="pregunta-numero">
+                    ${escaparHtml(origen)}
+                    ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">anulada</span>' : ''}
+                </div>
+                <div class="pregunta-enunciado">${pregunta.enunciado}</div>
+                ${renderizarImagenes(pregunta)}
+                <ul class="opciones-list" aria-label="Opciones">${opcionesHtml}</ul>
+                <div id="pregunta-suelta-correccion" aria-live="polite"></div>
+                <div class="revision-meta">
+                    <div style="margin-top: 0.5rem;">Temas: ${etiquetasTemas(pregunta)}</div>
+                    ${textoDificultad(pregunta) ? `<div class="dificultad-pregunta">${textoDificultad(pregunta)}</div>` : ''}
+                </div>
+            `;
+
+            container.querySelectorAll('.opcion-btn').forEach(btn => {
+                btn.addEventListener('click', () => corregirPreguntaSuelta(btn.dataset.opcion));
+            });
+
+            document.getElementById('fase-seleccion').classList.add('hidden');
+            document.getElementById('fase-examen').classList.add('hidden');
+            document.getElementById('fase-resultados').classList.add('hidden');
+            document.getElementById('fase-pregunta').classList.remove('hidden');
+            tipografiar(container);
+        }
+
+        async function corregirPreguntaSuelta(elegida) {
+            const pregunta = preguntaSuelta;
+            if (!pregunta) return;
+            const container = document.getElementById('pregunta-suelta');
+            const anulada = pregunta.tipo_pregunta === 'aceptada';
+            const acierto = anulada || pregunta.respuesta.includes(elegida);
+
+            container.querySelectorAll('.opcion-btn').forEach(btn => {
+                const letra = btn.dataset.opcion;
+                btn.classList.add('disabled');
+                btn.disabled = true;
+                btn.setAttribute('aria-pressed', letra === elegida ? 'true' : 'false');
+                if (letra === elegida) {
+                    btn.classList.add(acierto ? 'correct' : 'incorrect');
+                } else if (!anulada && pregunta.respuesta.includes(letra)) {
+                    btn.classList.add('was-correct');
+                }
+            });
+
+            const correctas = pregunta.respuesta.map(l => l.toUpperCase()).join(' o la ');
+            let resultado;
+            if (anulada) {
+                resultado = `<div class="pregunta-suelta-resultado accepted">Esta pregunta se anuló en el examen: cualquier respuesta cuenta como acierto.</div>`;
+            } else if (acierto) {
+                resultado = `<div class="pregunta-suelta-resultado correct"><strong>¡Correcto!</strong> La respuesta es la ${correctas}.</div>`;
+            } else {
+                resultado = `<div class="pregunta-suelta-resultado incorrect"><strong>No es esa.</strong> Has marcado la ${elegida.toUpperCase()}; la correcta es la ${correctas}.</div>`;
+            }
+            const nota = pregunta.nota ? `<div class="nota-pregunta"><strong>Nota:</strong> ${pregunta.nota}</div>` : '';
+            const correccion = document.getElementById('pregunta-suelta-correccion');
+            correccion.innerHTML = resultado + nota + '<div class="explicacion-pregunta" id="pregunta-suelta-explicacion"><p class="loading-message">Cargando la explicación...</p></div>';
+            tipografiar(correccion);
+
+            const explicacion = await cargarExplicacion(pregunta);
+            const caja = document.getElementById('pregunta-suelta-explicacion');
+            if (!caja) return;
+            if (explicacion) {
+                caja.innerHTML = explicacionHtml(explicacion);
+                tipografiar(caja);
+            } else {
+                caja.innerHTML = `<p class="puente-app">Esta pregunta aún no tiene explicación en la web. Las demás están en la app: <a href="${URL_APP_WEB}" target="_blank" rel="noopener">ábrela en el navegador</a>.</p>`;
+            }
+        }
+
+        function salirDePreguntaSuelta() {
+            document.getElementById('fase-pregunta').classList.add('hidden');
+            document.getElementById('fase-seleccion').classList.remove('hidden');
+            document.title = tituloOriginal;
+            quitarParametroPregunta();
+            window.scrollTo(0, 0);
+        }
+
+        // Deja el simulador listo con solo los temas de la pregunta; el usuario pulsa «Comenzar».
+        function prepararTestDelTema() {
+            const pregunta = preguntaSuelta;
+            if (!pregunta) return;
+            const temas = new Set(pregunta.temas);
+            document.querySelectorAll('#temas-parte-a input[type="checkbox"], #temas-parte-b input[type="checkbox"]').forEach(cb => {
+                cb.checked = temas.has(cb.value);
+                cb.closest('.tema-checkbox').classList.toggle('selected', cb.checked);
+                if (cb.checked) temasSeleccionados.add(cb.value); else temasSeleccionados.delete(cb.value);
+            });
+            if ([...temas].some(t => t.startsWith('3.A'))) document.getElementById('selector-parte-a').classList.remove('collapsed');
+            if ([...temas].some(t => t.startsWith('3.B'))) document.getElementById('selector-parte-b').classList.remove('collapsed');
+            actualizarContadores();
+            actualizarToggleAllText();
+
+            const nombres = pregunta.temas.map(t => `${t} (${(datosTest.temas[t] || '').replace(/\.$/, '')})`).join(', ');
+            let aviso = document.getElementById('aviso-test-tema');
+            if (!aviso) {
+                aviso = document.createElement('div');
+                aviso.id = 'aviso-test-tema';
+                aviso.className = 'aviso-puente-app aviso-pregunta-suelta';
+                aviso.setAttribute('role', 'status');
+                const mainContent = document.getElementById('main-content');
+                mainContent.parentNode.insertBefore(aviso, mainContent);
+            }
+            aviso.textContent = `Test preparado con ${temas.size > 1 ? 'los temas' : 'el tema'} ${nombres}: ${preguntasFiltradas.length} preguntas. Ajusta la configuración si quieres y pulsa «Comenzar examen».`;
+            salirDePreguntaSuelta();
+        }
+
+        document.getElementById('btn-test-tema').addEventListener('click', prepararTestDelTema);
+        document.getElementById('btn-volver-simulador').addEventListener('click', salirDePreguntaSuelta);
+        document.getElementById('miga-simulador').addEventListener('click', e => { e.preventDefault(); salirDePreguntaSuelta(); });
 
         // ============================================
         // REPETICIÓN ESPACIADA - UI

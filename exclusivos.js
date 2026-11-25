@@ -195,11 +195,15 @@
     }
 
     function urlTema(archivo) { return PAGINA_TEMA + '?tema=' + encodeURIComponent(archivo); }
-    /** Lo que abre un tema revisado con sesión: su PDF en la URL de siempre (o su Word nuevo, si el enlace era al Word). */
+    /** La página web de un tema revisado, junto a su PDF: …/tercer-ejercicio/3A14.html (la guía, …/esquema_dictamen_economico.html). */
+    function paginaWeb(archivo) {
+        return archivo === '1D01' ? RAIZ + GUIA_WEB.replace(/\.pdf$/, '.html') : RAIZ + 'oposicion/temario/tercer-ejercicio/' + archivo + '.html';
+    }
+    /** Lo que abre un tema revisado con sesión: su página web (con la burbuja de EconomIA), o su Word nuevo si el enlace era al Word. */
     function destinoRevisado(rev, word) {
         var m = manifiestoListo || {};
         if (word && rev.t.docx && rev.t.docx.ruta) return (m.raw || ('https://raw.githubusercontent.com/' + REPO + '/temario-publicado/')) + rev.t.docx.ruta;
-        return rev.t.pdf && rev.t.pdf.ruta ? pdfWeb(rev.t.pdf.ruta) : urlTema(rev.t.archivo);
+        return paginaWeb(rev.t.archivo || archivoDe(rev.t.codigo));
     }
 
     /** El tema al que lleva un enlace (su archivo), o null. */
@@ -475,11 +479,36 @@
         return '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
     }
 
-    /** La página oposicion/temario/tema-revisado.html?tema=3A08 (#tema-revisado). */
+    /**
+     * Baja al apartado del hash (#apartado=I.2. o parte de su título), dentro del marco del tema:
+     * lo usan los resultados del buscador.
+     */
+    function irAlApartado(marco) {
+        var m = /[#&]apartado=([^&]+)/.exec(location.hash);
+        var d = marco.contentDocument;
+        if (!m || !d) return;
+        var buscado = decodeURIComponent(m[1]).trim().toLowerCase();
+        var numero = (/^([IVXA-H]+(?:\.\d+)*\.)/i.exec(buscado) || [])[1];
+        var hs = d.querySelectorAll('h2, h3, h4');
+        for (var i = 0; i < hs.length; i++) {
+            var n = hs[i].querySelector('.numero');
+            var texto = hs[i].textContent.trim().toLowerCase();
+            if ((numero && n && n.textContent.trim().toLowerCase() === numero) || (!numero && texto.indexOf(buscado) === 0) || texto === buscado) {
+                // El marco tiene altura fija y se desplaza por dentro: primero el marco a la vista, luego el apartado.
+                marco.scrollIntoView({ block: 'start' });
+                hs[i].scrollIntoView({ block: 'start' });
+                return;
+            }
+        }
+    }
+
+    /** La página de un tema revisado: …/tercer-ejercicio/3A08.html (y la antigua tema-revisado.html?tema=3A08). */
     function paginaTema() {
         var cont = document.getElementById('tema-revisado');
         if (!cont) return;
-        var archivo = archivoDe(new URLSearchParams(location.search).get('tema'));
+        var archivo = archivoDe(cont.getAttribute('data-tema') || new URLSearchParams(location.search).get('tema'));
+        // Enlaces viejos (tema-revisado.html?tema=3A08): a la página del tema, junto a su PDF.
+        if (archivo && !cont.getAttribute('data-tema')) { location.replace(paginaWeb(archivo) + location.hash); return; }
         var estado = document.getElementById('tema-revisado-estado');
         var barra = document.getElementById('tema-revisado-barra');
         function mensaje(html) { estado.innerHTML = html; estado.hidden = false; }
@@ -502,7 +531,7 @@
             if (!rev) { if (antiguo) location.replace(antiguo); else mensaje('<p>Este tema aún no tiene versión revisada. Vuelve al <a href="../temario.html">temario</a>.</p>'); return; }
             var t = rev.t;
             var titulo = (guia ? 'Guía del dictamen' : 'Tema ' + t.codigo) + (t.titulo ? ': ' + t.titulo : '');
-            document.title = (guia ? 'Guía del dictamen de coyuntura' : 'Tema ' + t.codigo + (t.titulo ? ': ' + t.titulo.replace(/\.$/, '') : '')) + ' · Víctor Gutiérrez Marcos';
+            document.title = (guia ? 'Guía para el dictamen de coyuntura económica' : 'Tema ' + t.codigo + (t.titulo ? ': ' + t.titulo.replace(/\.$/, '') : '')) + ' | Víctor Gutiérrez Marcos';
             document.getElementById('tema-revisado-titulo').textContent = titulo;
             var cargado = false;
             var cerrarAviso = null;
@@ -533,6 +562,7 @@
                     barra.hidden = false;
                     var marco = document.getElementById('tema-revisado-marco');
                     marco.title = titulo;
+                    marco.onload = function () { irAlApartado(marco); };
                     marco.srcdoc = prepararHtml(html, cdn + t.html.ruta);
                     marco.hidden = false;
                     estado.hidden = true;
@@ -626,6 +656,14 @@
 
     interceptarEnlaces();
     paginaTema();
+
+    // La burbuja de EconomIA (economia-burbuja.js), en todas las páginas de la web.
+    if (!window.tceeBurbuja && !/\/app\/abrir\//.test(location.pathname)) {
+        var sb = document.createElement('script');
+        sb.src = RAIZ + 'economia-burbuja.js';
+        sb.defer = true;
+        document.head.appendChild(sb);
+    }
 
     fetch(RAIZ + 'oposicion/exclusivos.json', { cache: 'no-cache' })
         .then(function (r) { return r.ok ? r.json() : null; })

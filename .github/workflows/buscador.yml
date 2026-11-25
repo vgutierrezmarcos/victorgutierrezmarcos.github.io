@@ -1,0 +1,72 @@
+# Reconstruye el índice del buscador de la web (/pagefind/) cuando cambian los
+# temas en PDF, las páginas (a través del sitemap: no con cada HTML, porque cada
+# índice nuevo cambia muchos ficheros de pagefind/), las preguntas del test o sus explicaciones.
+# extraer.py saca el texto (scripts/buscador/registros.jsonl, fuera de git) e
+# indexar.mjs genera /pagefind/ con Pagefind; si cambia, se sube con [skip ci].
+name: Índice del buscador
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'oposicion/**/*.pdf'
+      - 'sitemap.xml'
+      - 'oposicion/temario/revisados-web.json'
+      - 'oposicion/temario/temario.json'
+      - 'oposicion/temario/primer-ejercicio/test/preguntas.json'
+      - 'oposicion/temario/primer-ejercicio/test/explicaciones/**'
+      - 'scripts/buscador/**'
+      - '.github/workflows/buscador.yml'
+  workflow_dispatch:
+
+# Dos ejecuciones seguidas no compiten por el push: la nueva espera a la anterior.
+concurrency:
+  group: buscador
+  cancel-in-progress: false
+
+jobs:
+  indexar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Instalar dependencias
+      run: |
+        pip install pymupdf
+        npm ci --prefix scripts/buscador
+
+    - name: Extraer el texto que se indexa
+      run: python3 scripts/buscador/extraer.py
+
+    - name: Generar el índice (pagefind/)
+      run: node scripts/buscador/indexar.mjs
+
+    - name: Commit and push if changed
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add -A pagefind
+        if git diff --staged --quiet; then
+          echo "El índice no ha cambiado."
+        else
+          git commit -m "Índice del buscador [skip ci]"
+          git pull --rebase origin main
+          git push
+        fi

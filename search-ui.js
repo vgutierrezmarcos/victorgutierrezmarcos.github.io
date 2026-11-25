@@ -11,6 +11,51 @@ const ICONOS_BUSQUEDA = {
     derecha: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>',
 };
 
+function escBusqueda(t) { return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+const TIPOS_BUSQUEDA = [['', 'Todo'], ['Temas', 'Temas'], ['Preguntas de test', 'Test'], ['Páginas', 'Páginas'], ['Blog', 'Blog']];
+
+/**
+ * Pinta los resultados del motor (search-engine.js) en [cont]: los temas por número
+ * primero, después los grupos (un tema con sus apartados y el fragmento resaltado, o
+ * una página o pregunta suelta). Lo usan la ventana del buscador y /buscar.html.
+ */
+function pintarResultados(cont, r, query, { filtro = '', alFiltrar, alSugerir, enlaceTodos = false } = {}) {
+    const fichas = TIPOS_BUSQUEDA.map(([v, t]) => `<button type="button" class="busqueda-filtro${v === filtro ? ' activo' : ''}" data-filtro="${v}" aria-pressed="${v === filtro}">${t}</button>`).join('');
+    const extracto = e => (e ? `<div class="result-description result-extracto">${e}</div>` : '');
+    const icono = g => (g.tipo === 'tema' ? ICONOS_BUSQUEDA.documento : g.tipo === 'test' ? ICONOS_BUSQUEDA.portapapeles : g.tipo === 'blog' ? ICONOS_BUSQUEDA.marcador : ICONOS_BUSQUEDA.casa);
+    const etiqueta = { tema: 'Tema', test: 'Test', blog: 'Blog', pagina: 'Página' };
+    const destinoAttr = pdf => (pdf ? ' target="_blank" rel="noopener"' : '');
+    let html = `<div class="busqueda-filtros" role="group" aria-label="Filtrar resultados">${fichas}</div>`;
+    const directos = r.directos.map(t => {
+        const url = searchEngine.urlTema(t);
+        const revisado = url && /\/tercer-ejercicio\/3[AB]\d\d\.pdf$/.test(url);
+        const href = revisado ? url.replace(/\.pdf$/, '.html') : url;
+        return url
+            ? `<a class="search-result-item" href="${escBusqueda(href)}"${destinoAttr(!revisado)}><div class="result-icon">${ICONOS_BUSQUEDA.documento}</div><div class="result-content"><div class="result-header"><span class="result-title">Tema ${escBusqueda(t.numero)}</span><span class="result-badge badge-tema">Tema</span></div><div class="result-description">${escBusqueda(t.title)}</div></div><div class="result-arrow">${ICONOS_BUSQUEDA.derecha}</div></a>`
+            : `<div class="search-result-item no-disponible"><div class="result-icon">${ICONOS_BUSQUEDA.bandeja}</div><div class="result-content"><div class="result-header"><span class="result-title">Tema ${escBusqueda(t.numero)}</span><span class="result-badge badge-no-disponible">No disponible</span></div><div class="result-description">${escBusqueda(t.title)}</div></div></div>`;
+    }).join('');
+    const grupos = r.grupos.map(g => {
+        if (g.tipo === 'tema') {
+            const subs = g.items.map(i => `<a class="search-result-item busqueda-apartado" href="${escBusqueda(i.url)}"${destinoAttr(i.pdf)}><div class="result-content"><div class="result-title">${escBusqueda(i.apartado)}</div>${extracto(i.extracto)}</div><div class="result-arrow">${ICONOS_BUSQUEDA.derecha}</div></a>`).join('');
+            return `<div class="busqueda-grupo"><a class="search-result-item busqueda-tema" href="${escBusqueda(g.url)}"${destinoAttr(g.pdf)}><div class="result-icon">${ICONOS_BUSQUEDA.documento}</div><div class="result-content"><div class="result-header"><span class="result-title">${escBusqueda(g.titulo)}</span><span class="result-badge badge-tema">Tema</span></div></div><div class="result-arrow">${ICONOS_BUSQUEDA.derecha}</div></a>${subs}</div>`;
+        }
+        return `<a class="search-result-item" href="${escBusqueda(g.url)}"${destinoAttr(g.pdf)}><div class="result-icon">${icono(g)}</div><div class="result-content"><div class="result-header"><span class="result-title">${escBusqueda(g.titulo)}</span><span class="result-badge badge-${g.tipo === 'test' ? 'ejercicio' : 'recurso'}">${etiqueta[g.tipo] || ''}</span></div>${extracto(g.extracto)}</div><div class="result-arrow">${ICONOS_BUSQUEDA.derecha}</div></a>`;
+    }).join('');
+    if (!directos && !grupos) {
+        html += `<div class="no-results"><h3>Sin resultados para «${escBusqueda(query)}»</h3>${r.sugerencia ? `<p>¿Quisiste decir <button type="button" class="boton--texto busqueda-sugerencia" data-q="${escBusqueda(r.sugerencia)}">${escBusqueda(r.sugerencia)}</button>?</p>` : '<p>Prueba con otra palabra, el número del tema o quita el filtro.</p>'}</div>`;
+    } else {
+        if (r.sugerencia) html += `<p class="busqueda-ayuda">¿Quisiste decir <button type="button" class="busqueda-sugerencia" data-q="${escBusqueda(r.sugerencia)}">${escBusqueda(r.sugerencia)}</button>?</p>`;
+        html += `<div class="results-header"><span class="results-count">${r.total + r.directos.length} resultado${r.total + r.directos.length !== 1 ? 's' : ''}</span>${enlaceTodos ? `<a class="busqueda-todos" href="/buscar.html?q=${encodeURIComponent(query)}${filtro ? '&tipo=' + encodeURIComponent(filtro) : ''}">Ver en una página</a>` : ''}</div>${directos}${grupos}`;
+    }
+    cont.innerHTML = html;
+    cont.querySelectorAll('.busqueda-filtro').forEach(b => b.addEventListener('click', () => alFiltrar && alFiltrar(b.getAttribute('data-filtro'))));
+    const sug = cont.querySelector('.busqueda-sugerencia');
+    if (sug) sug.addEventListener('click', () => alSugerir && alSugerir(sug.getAttribute('data-q')));
+    const primero = cont.querySelector('a.search-result-item');
+    if (primero) primero.classList.add('selected');
+}
+
 /**
  * Interfaz de búsqueda - UI y handlers
  * Actualizado para mostrar estado de disponibilidad
@@ -51,7 +96,7 @@ class SearchUI {
                             aria-label="Buscar temas, ejercicios y recursos" 
                             aria-controls="search-results" 
                             class="search-input" 
-                            placeholder="Buscar temas, ejercicios, recursos..."
+                            placeholder="Busca un tema, un concepto o una pregunta…"
                             autocomplete="off"
                             spellcheck="false"
                         />
@@ -63,7 +108,7 @@ class SearchUI {
                         </button>
                     </div>
                     <div class="search-tips">
-                        <span class="search-tip"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg> Consejo: Escribe el número del tema (ej: "3.A.5") o palabras clave</span>
+                        <span class="search-tip"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg> Busca dentro de todos los temas: un concepto («Marshall-Lerner»), un autor o el número del tema («3.A.5»)</span>
                     </div>
                 </div>
                 <div class="search-results-container">
@@ -193,168 +238,53 @@ class SearchUI {
     }
 
     showInitialSuggestions() {
-        const suggestions = `
+        const ej = ['equilibrio de Nash', '3.A.14', 'curva de Phillips', 'Marshall-Lerner', 'nota de corte', 'dictamen de coyuntura'];
+        this.searchResults.innerHTML = `
             <div class="search-suggestions">
                 <div class="suggestion-group">
-                    <h4>Búsquedas sugeridas</h4>
+                    <h4>Busca un tema, un concepto o una pregunta del test</h4>
                     <div class="suggestion-items">
-                        <button class="suggestion-btn" data-query="economía internacional">Economía internacional</button>
-                        <button class="suggestion-btn" data-query="política monetaria">Política monetaria</button>
-                        <button class="suggestion-btn" data-query="comercio">Comercio</button>
-                        <button class="suggestion-btn" data-query="keynes">Keynes</button>
-                        <button class="suggestion-btn" data-query="UE">Unión Europea</button>
+                        ${ej.map(q => `<button class="suggestion-btn" data-query="${q}">${q}</button>`).join('')}
                     </div>
                 </div>
-                <div class="suggestion-group">
-                    <h4>Accesos rápidos</h4>
-                    <div class="suggestion-items">
-                        <button class="suggestion-btn" data-query="tercer ejercicio">Tercer ejercicio</button>
-                        <button class="suggestion-btn" data-query="cuarto ejercicio">Cuarto ejercicio</button>
-                        <button class="suggestion-btn" data-query="test">Test</button>
-                        <button class="suggestion-btn" data-query="organización">Organización</button>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        this.searchResults.innerHTML = suggestions;
-
-        // Event listeners para los botones de sugerencias
+            </div>`;
         this.searchResults.querySelectorAll('.suggestion-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                const query = btn.getAttribute('data-query');
-                this.searchInput.value = query;
-                this.performSearch(query);
+                this.searchInput.value = btn.getAttribute('data-query');
+                this.performSearch(this.searchInput.value);
             });
         });
     }
 
-    performSearch(query) {
-        this.currentQuery = query;
+    // Analytics (solo si está aceptado: gtag lo carga cookie-consent.js): la búsqueda
+    // cuando el usuario deja de escribir, y aparte las que no dan nada.
+    medir(query, total) {
+        clearTimeout(this.medicion);
+        this.medicion = setTimeout(() => {
+            if (typeof window.gtag !== 'function' || !query || query.length < 3) return;
+            window.gtag('event', 'view_search_results', { search_term: query.slice(0, 100) });
+            if (!total) window.gtag('event', 'busqueda_sin_resultados', { search_term: query.slice(0, 100) });
+        }, 2000);
+    }
 
+    async performSearch(query) {
+        this.currentQuery = query;
         if (!query || query.trim().length < 2) {
             this.showInitialSuggestions();
             return;
         }
-
-        const results = searchEngine.search(query);
-
-        if (results.length === 0) {
-            this.searchResults.innerHTML = `
-                <div class="no-results">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
-                    </svg>
-                    <h3>No se encontraron resultados</h3>
-                    <p>Intenta con otros términos de búsqueda</p>
-                </div>
-            `;
-            return;
-        }
-
-        this.renderResults(results, query);
-    }
-
-    // Las URL del índice son relativas a /oposicion/ (salvo blog, sobre mí y las absolutas):
-    // se pasan a absolutas para que funcionen desde cualquier página
-    resolverUrl(url) {
-        if (/^(https?:)?\//.test(url)) return url;
-        if (url.startsWith('blog/') || url === 'sobre-mi.html') return '/' + url;
-        if (url === 'index.html') return '/oposicion/';
-        return '/oposicion/' + url;
-    }
-
-    renderResults(results, query) {
-        const html = results.map((result, index) => {
-            const icon = this.getIcon(result);
-            const badge = this.getBadge(result);
-            const description = result.description || result.content || '';
-            const isNoDisponible = result.disponible === false;
-            const itemClass = isNoDisponible ? 'search-result-item no-disponible' : 'search-result-item';
-            const target = result.url.endsWith('.pdf') ? '_blank' : '_self';
-            
-            // Si no está disponible, no hacer clickeable el enlace al PDF
-            const href = isNoDisponible ? '#' : this.resolverUrl(result.url);
-            const onClick = isNoDisponible ? 'onclick="event.preventDefault(); alert(\'Este tema aún no está disponible.\')"' : '';
-            
-            return `
-                <a href="${href}" class="${itemClass}" data-index="${index}" target="${target}"${result.numero ? ` data-tema="${result.numero}"` : ''} ${onClick}>
-                    <div class="result-icon">${icon}</div>
-                    <div class="result-content">
-                        <div class="result-header">
-                            <span class="result-title">${result.title}</span>
-                            ${badge}
-                        </div>
-                        ${result.numero ? `<div class="result-numero">${result.numero}</div>` : ''}
-                        ${result.ejercicio ? `<div class="result-ejercicio">${result.ejercicio}${result.grupo ? ' - ' + result.grupo : ''}</div>` : ''}
-                        ${description ? `<div class="result-description">${description}</div>` : ''}
-                    </div>
-                    <div class="result-arrow">${isNoDisponible ? ICONOS_BUSQUEDA.prohibido : ICONOS_BUSQUEDA.derecha}</div>
-                </a>
-            `;
-        }).join('');
-
-        this.searchResults.innerHTML = `
-            <div class="results-header">
-                <span class="results-count">${results.length} resultado${results.length !== 1 ? 's' : ''}</span>
-            </div>
-            ${html}
-        `;
-
-        // Highlight del primer resultado
-        const firstResult = this.searchResults.querySelector('.search-result-item');
-        if (firstResult) {
-            firstResult.classList.add('selected');
-        }
-    }
-
-    getIcon(result) {
-        // Si no está disponible, mostrar icono diferente
-        if (result.disponible === false) {
-            return ICONOS_BUSQUEDA.bandeja;
-        }
-        
-        const icons = {
-            ejercicio: ICONOS_BUSQUEDA.portapapeles,
-            tema: ICONOS_BUSQUEDA.documento,
-            subtema: ICONOS_BUSQUEDA.documento,
-            page: ICONOS_BUSQUEDA.casa,
-            excel: ICONOS_BUSQUEDA.tabla,
-            pdf: ICONOS_BUSQUEDA.documento,
-            presentacion: ICONOS_BUSQUEDA.pantalla,
-            word: ICONOS_BUSQUEDA.documento,
-            default: ICONOS_BUSQUEDA.marcador
-        };
-
-        return icons[result.type] || icons.default;
-    }
-
-    getBadge(result) {
-        let badges = '';
-        
-        // Badge de tipo
-        if (result.type === 'tema') {
-            badges += '<span class="result-badge badge-tema">Tema</span>';
-        } else if (result.type === 'ejercicio') {
-            badges += '<span class="result-badge badge-ejercicio">Ejercicio</span>';
-        } else if (result.category === 'organización') {
-            badges += '<span class="result-badge badge-recurso">Recurso</span>';
-        }
-        
-        // Badge de disponibilidad (solo para temas)
-        if (result.type === 'tema' && result.disponible === false) {
-            badges += '<span class="result-badge badge-no-disponible">No disponible</span>';
-        }
-        
-        return badges;
+        const turno = (this.turno = (this.turno || 0) + 1);
+        const r = await searchEngine.buscar(query.trim(), { tipo: this.filtro || '' });
+        if (turno !== this.turno) return; // ya se ha escrito otra cosa
+        this.medir(query.trim(), r.total + r.directos.length);
+        pintarResultados(this.searchResults, r, query.trim(), { filtro: this.filtro || '', alFiltrar: f => { this.filtro = f; this.performSearch(this.currentQuery); }, alSugerir: q => { this.searchInput.value = q; this.performSearch(q); }, enlaceTodos: true });
     }
 
     navigateResults(direction) {
-        const items = Array.from(this.searchResults.querySelectorAll('.search-result-item'));
+        const items = Array.from(this.searchResults.querySelectorAll('a.search-result-item'));
         if (items.length === 0) return;
 
-        const currentSelected = this.searchResults.querySelector('.search-result-item.selected');
+        const currentSelected = this.searchResults.querySelector('a.search-result-item.selected');
         let currentIndex = currentSelected ? items.indexOf(currentSelected) : -1;
 
         // Remover selección actual
@@ -374,18 +304,51 @@ class SearchUI {
     }
 
     selectCurrentResult() {
-        const selected = this.searchResults.querySelector('.search-result-item.selected');
+        const selected = this.searchResults.querySelector('a.search-result-item.selected');
         if (selected) {
-            // Tema con versión revisada: lo abre exclusivos.js (con sesión, la revisada; sin ella, el aviso)
-            if (window.tceeTemasRevisados && window.tceeTemasRevisados.abrir(selected)) return;
-            // No hacer click si es un tema no disponible
-            if (selected.classList.contains('no-disponible')) {
-                alert('Este tema aún no está disponible.');
-                return;
-            }
             selected.click();
         }
     }
+}
+
+/**
+ * Página /buscar.html?q=…&tipo=…: el mismo buscador en una página que se puede
+ * enlazar. Y la caja de búsqueda de la portada (#busqueda-portada), que lleva aquí.
+ */
+function paginaBuscar() {
+    const cont = document.getElementById('buscar-resultados');
+    const input = document.getElementById('buscar-q');
+    if (!cont || !input) return;
+    const params = new URLSearchParams(location.search);
+    let filtro = params.get('tipo') || '';
+    let turno = 0, medicion = null;
+    async function buscar(q, empujar) {
+        q = (q || '').trim();
+        if (empujar) {
+            const u = new URL(location.href);
+            q ? u.searchParams.set('q', q) : u.searchParams.delete('q');
+            filtro ? u.searchParams.set('tipo', filtro) : u.searchParams.delete('tipo');
+            history.replaceState(null, '', u);
+        }
+        if (q.length < 2) { cont.innerHTML = ''; return; }
+        cont.innerHTML = '<p class="busqueda-cargando">Buscando…</p>';
+        const t = ++turno;
+        const r = await searchEngine.buscar(q, { tipo: filtro, max: 60 });
+        if (t !== turno) return;
+        document.title = `«${q}» · Buscar | Víctor Gutiérrez Marcos`;
+        pintarResultados(cont, r, q, { filtro, alFiltrar: f => { filtro = f; buscar(input.value, true); }, alSugerir: s => { input.value = s; buscar(s, true); } });
+        clearTimeout(medicion);
+        medicion = setTimeout(() => {
+            if (typeof window.gtag !== 'function' || q.length < 3) return;
+            window.gtag('event', 'view_search_results', { search_term: q.slice(0, 100) });
+            if (!(r.total + r.directos.length)) window.gtag('event', 'busqueda_sin_resultados', { search_term: q.slice(0, 100) });
+        }, 1500);
+    }
+    input.value = params.get('q') || '';
+    let espera = null;
+    input.addEventListener('input', () => { clearTimeout(espera); espera = setTimeout(() => buscar(input.value, true), 250); });
+    input.form && input.form.addEventListener('submit', e => { e.preventDefault(); buscar(input.value, true); });
+    if (input.value) buscar(input.value, false); else input.focus();
 }
 
 // Inicializar cuando el DOM esté listo (solo si search-engine.js está cargado)
@@ -394,10 +357,12 @@ if (typeof searchEngine !== 'undefined') {
         document.addEventListener('DOMContentLoaded', () => {
             const searchUI = new SearchUI();
             searchUI.initialize();
+            paginaBuscar();
         });
     } else {
         const searchUI = new SearchUI();
         searchUI.initialize();
+        paginaBuscar();
     }
 }
 
