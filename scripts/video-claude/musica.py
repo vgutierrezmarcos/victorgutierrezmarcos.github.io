@@ -55,6 +55,9 @@ RESPIROS = {c for c in CAMBIOS if CUERPO < c < CIERRE}
 # Secciones con el arpegio de semicorcheas (las más activas); el resto lleva corcheas.
 ARPEGIO = [(ESCENAS['cante_app'], ESCENAS['dictamen']), (ESCENAS['cronograma_app'], ESCENAS['carpeta']),
            (ESCENAS['movil'], CIERRE)]
+# En el montaje rápido (guion «final»), sin semicorcheas: la música acompaña sin correr.
+if 'final' in GUION:
+    ARPEGIO = []
 # Tramos más calmados: sin palmadas y bombo a la mitad (la explicación, DCE y el final).
 CALMA = [(ESCENAS['porque'], ESCENAS['instalar']), (ESCENAS['cronograma_dce'], ESCENAS['cronograma_app'])]
 
@@ -145,6 +148,8 @@ def banda_sonora(ruta):
         poner(efectos, m._campana(m._nota(93), vel, 1.4), t + 0.13)
 
     def toques(t0, n, paso, vel=0.05):
+        if 'final' in GUION:
+            n = min(n, 2)  # en el montaje rápido, dos toques por grupo bastan
         for i in range(n):
             poner(efectos, m._toque(vel), t0 + i * paso)  # t0 es un T: el paso también se encoge
 
