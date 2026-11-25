@@ -135,6 +135,10 @@ python3 scripts/prensa.py --comprobar
 python3 scripts/evals-conector/evaluar.py
 python3 scripts/estadisticas-conector.py
 
+# Concepts of each revised topic linked to their Spanish Wikipedia/Wikidata article (hidden JSON-LD «about» of the exercise pages;
+# exact titles only, economics intro, bad matches go to EXCLUIR). Run after new revised topics, then datos-estructurados-temario.py
+python3 scripts/conceptos-wikipedia.py --listar
+
 # Generate RSS feed manually
 node generate-rss.js
 
