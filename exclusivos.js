@@ -264,7 +264,7 @@
         caja.innerHTML =
             '<p class="aviso-revisado-etiqueta"><span class="etiqueta-exclusivo">Exclusivo</span> Revisado' + (datos.fecha ? ' el ' + fechaCorta(datos.fecha) : '') + '</p>' +
             '<h2 id="aviso-revisado-titulo">Inicia sesión para ver ' + nuevo + '</h2>' +
-            '<p>' + nombre + ' está revisado a fondo: datos al día, gráficos nuevos y ' + (datos.guia ? 'resumen' : 'ficha') + ' de repaso, en página web, PDF y Word. ' +
+            '<p>' + nombre + ' está ' + (datos.guia ? 'revisada' : 'revisado') + ' a fondo: datos al día, gráficos nuevos y ' + (datos.guia ? 'resumen' : 'ficha') + ' de repaso, en página web, PDF y Word. ' +
             'Se lee con tu cuenta de Google y es para tu estudio personal (<a href="' + CONDICIONES + '">condiciones</a>).</p>' +
             '<div class="botones aviso-revisado-botones"></div>' +
             '<p class="aviso-revisado-error" role="alert" hidden></p>';
