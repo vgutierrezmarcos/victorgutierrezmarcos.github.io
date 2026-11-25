@@ -7,6 +7,7 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 
 ## Para la siguiente versión en Google Play (1.26.0 publicada el 25 nov.)
 
+- (25 nov., 1.27.0) Test: con tu cuenta, las más de 1.000 preguntas del banco de EconomIA (no oficiales, revisadas y con explicación) junto a las oficiales, desmarcando «Solo preguntas de exámenes oficiales» (la 1.26.0 lo anunciaba en sus notas, pero no lo traía)
 - (25 nov., siguiente versión) Buscar preparador: al publicar lo que buscas puedes presentarte (opcional) con la vuelta en la que vas, los ejercicios aprobados, las convocatorias, tu formación, tu dedicación y si has tenido preparador, más lo que quieras contarles; lo leen todos los preparadores antes de escribirte, y ves cómo te verán
 - (25 nov., siguiente versión) Online y presencial se marcan por separado y puedes decir «prefiero presencial, pero acepto online»; si pides solo presencial, la app te avisa de que fuera de Madrid es muy difícil encontrarlo (y en Madrid, de que con online tienes más donde elegir) y, si en dos semanas nadie te ha escrito, te sugiere añadir online
 - (25 nov., siguiente versión) EconomIA en la app: «Informe de mi último cante» en la burbuja y textos que dejan claro que complementa a tu preparador

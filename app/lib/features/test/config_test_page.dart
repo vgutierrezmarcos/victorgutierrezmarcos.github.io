@@ -278,6 +278,12 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
               child: CheckboxListTile(
                 controlAffinity: ListTileControlAffinity.leading,
                 title: Text('Solo preguntas de exámenes oficiales', style: context.textos.titleSmall),
+                subtitle: Text(
+                  ref.watch(bancoEconomiaProvider).valueOrNull?.preguntas.isNotEmpty ?? false
+                      ? 'Desmárcala para añadir las ${ref.watch(bancoEconomiaProvider).valueOrNull!.preguntas.length} del banco de EconomIA: no oficiales, revisadas y con explicación.'
+                      : 'Con tu cuenta, desmarcándola tienes también el banco de EconomIA: más de 1.000 preguntas no oficiales, revisadas y con explicación.',
+                  style: context.textos.labelSmall,
+                ),
                 value: _cfg.soloOficiales,
                 onChanged: (v) => setState(() => _cfg = _cfg.copyWith(soloOficiales: v ?? false)),
               ),

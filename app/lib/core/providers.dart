@@ -30,6 +30,7 @@ import '../data/models/frecuencia_test.dart';
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
+import '../data/repos/banco_economia.dart';
 import '../data/models/proceso.dart';
 import '../data/models/revisado.dart';
 import '../data/models/preparador.dart';
@@ -146,9 +147,20 @@ final versionContenidoProvider = Provider<int>((ref) {
   return c.cambios.value;
 });
 
-final preguntasProvider = FutureProvider<BancoPreguntas>((ref) {
+final preguntasProvider = FutureProvider<BancoPreguntas>((ref) async {
   ref.watch(versionContenidoProvider);
-  return ref.watch(contenidoProvider).preguntas();
+  final oficiales = await ref.watch(contenidoProvider).preguntas();
+  // Con sesión, también las del banco de EconomIA (no oficiales): el filtro
+  // «Solo preguntas de exámenes oficiales» decide si entran en cada test.
+  final banco = await ref.watch(bancoEconomiaProvider.future);
+  if (banco.preguntas.isEmpty) return oficiales;
+  return BancoPreguntas(preguntas: [...oficiales.preguntas, ...banco.preguntas], examenes: oficiales.examenes, temas: oficiales.temas);
+});
+
+/// El banco de EconomIA (1.002 preguntas revisadas), solo con sesión.
+final bancoEconomiaProvider = FutureProvider<BancoEconomia>((ref) {
+  final u = ref.watch(usuarioActualProvider);
+  return BancoEconomia.descargar(u);
 });
 final bloquesProvider = FutureProvider<Bloques>((ref) {
   ref.watch(versionContenidoProvider);
@@ -184,8 +196,9 @@ final temarioProvider = FutureProvider<Temario>((ref) {
   return ref.watch(contenidoProvider).temario();
 });
 /// Explicaciones de las preguntas de un examen (exclusivas de la app).
-final explicacionesProvider = FutureProvider.family<Map<int, Explicacion>, String>((ref, examen) {
+final explicacionesProvider = FutureProvider.family<Map<int, Explicacion>, String>((ref, examen) async {
   ref.watch(versionContenidoProvider);
+  if (examen == examenBancoEconomia) return (await ref.watch(bancoEconomiaProvider.future)).explicaciones;
   return ref.watch(contenidoProvider).explicaciones(examen);
 });
 /// Temas revisados, exclusivos de la app (manifiesto de la rama revision-temario).

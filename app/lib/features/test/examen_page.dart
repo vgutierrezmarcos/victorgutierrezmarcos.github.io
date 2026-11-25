@@ -228,11 +228,11 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
                             child: GestureDetector(
                               onTap: () => showDialog(
                                 context: context,
-                                builder: (_) => Dialog(child: InteractiveViewer(child: Image.network('${ref.read(oposicionProvider).urlImagenesTest}/${img.src.split('/').last}'))),
+                                builder: (_) => Dialog(child: InteractiveViewer(child: Image.network((img.src.startsWith('https://') ? img.src : '${ref.read(oposicionProvider).urlImagenesTest}/${img.src.split('/').last}')))),
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
-                                child: Image.network('${ref.read(oposicionProvider).urlImagenesTest}/${img.src.split('/').last}', semanticLabel: img.alt),
+                                child: Image.network((img.src.startsWith('https://') ? img.src : '${ref.read(oposicionProvider).urlImagenesTest}/${img.src.split('/').last}'), semanticLabel: img.alt),
                               ),
                             ),
                           ),

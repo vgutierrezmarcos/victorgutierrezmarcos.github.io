@@ -8,6 +8,7 @@
 //   IA → GET /authorize (consentimiento) → POST /authorize (acepta) → login.html de la
 //   web (Google) → POST /callback/sesion (tokens de Firebase) → GET /callback → de vuelta a la IA.
 
+import { atenderBancoApp } from './bancoApp';
 import { atenderDecisiones } from './decisiones';
 import { OAuthProvider, AuthorizationError, CimdFetchError, OAuthError, type OAuthHelpers, type OAuthProviderOptions, type OAuthResourceContext } from '@cloudflare/workers-oauth-provider';
 import { cifrar, descifrar, sha256 } from './cifrado';
@@ -295,6 +296,9 @@ const defaultHandler = {
     // Los botones del correo de sugerencias (informe del día y decisiones del autor): enlaces firmados, sin sesión.
     const decision = await atenderDecisiones(request, env.SESIONES, env.CLAVE_CIFRADO);
     if (decision) return decision;
+    // El banco de preguntas de EconomIA para la app y la web (con la sesión de Firebase).
+    const banco = await atenderBancoApp(request, env);
+    if (banco) return banco;
     const oauth = env.OAUTH_PROVIDER;
     // Dirección antigua (…workers.dev): la autorización empezaría aquí y acabaría en el dominio nuevo, donde no está
     // la cookie que ata la sesión al navegador («not started in this browser»). Se explica el cambio en vez de fallar al final.
