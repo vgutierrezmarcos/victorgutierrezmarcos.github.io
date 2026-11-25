@@ -38,8 +38,18 @@ def revisados_web():
     return salida
 
 
+def wikipedia():
+    """archivo del tema (3A14) → conceptos con su artículo de Wikipedia (conceptos-wikipedia.py)."""
+    ruta = os.path.join(RAIZ, 'oposicion', 'temario', 'conceptos-wikipedia.json')
+    if not os.path.exists(ruta):
+        return {}, 0
+    d = json.load(open(ruta, encoding='utf-8'))
+    return d.get('temas', {}), d.get('maximo', 4)
+
+
 def bloque(pagina, temas, revisados=None):
     revisados = revisados or {}
+    wiki, maximo = wikipedia()
     url_pagina = f'{WEB}/{pagina}'
     elementos = []
     for posicion, (ruta, (titulo, asunto, claves)) in enumerate(temas, 1):
@@ -71,6 +81,12 @@ def bloque(pagina, temas, revisados=None):
                 item['dateModified'] = rev['aprobado']
             if rev.get('apartados'):
                 item['teaches'] = rev['apartados']
+            # De qué trata, con el artículo de Wikipedia de cada concepto: Google y las IA lo asocian
+            # sin adivinar (nada visible; conceptos-wikipedia.py).
+            conceptos = wiki.get(rev.get('archivo', ''), [])[:maximo]
+            if conceptos:
+                item['about'] = [{'@type': 'Thing', 'name': c['nombre'],
+                                  'sameAs': [c['wikipedia'], 'https://www.wikidata.org/wiki/' + c['wikidata']]} for c in conceptos]
             if rev.get('repaso'):
                 item['hasPart'] = {'@type': 'LearningResource', 'name': f'Ficha de repaso: {titulo}',
                                    'url': f'{WEB}/{rev["repaso"]}', 'encodingFormat': 'application/pdf',
