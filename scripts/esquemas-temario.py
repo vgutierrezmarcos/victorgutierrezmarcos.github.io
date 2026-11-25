@@ -49,7 +49,11 @@ def esquema(ruta: Path) -> list:
 
 def main() -> None:
     resultado = {}
-    for pdf in sorted(TEMARIO.glob('*/*.pdf')):
+    # Los temas revisados están en la URL de siempre y el antiguo en anterior/: el
+    # esquema por nombre es el del antiguo, que es el que la app abre por temario.json
+    # (el del revisado viene en su manifiesto).
+    pdfs = sorted(TEMARIO.glob('*/*.pdf')) + sorted(TEMARIO.glob('*/anterior/*.pdf'))
+    for pdf in pdfs:
         if 'oculto' in pdf.parts:
             continue
         try:

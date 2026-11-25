@@ -128,7 +128,24 @@
     var REPO = 'vgutierrezmarcos/victorgutierrezmarcos.github.io';
     var MANIFIESTO = 'https://raw.githubusercontent.com/' + REPO + '/temario-publicado/oposicion/temario/app/revisados.json';
     var PAGINA_TEMA = RAIZ + 'oposicion/temario/tema-revisado.html';
-    var GUIA_ANTIGUA = RAIZ + 'oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf';
+    // Los PDF revisados están en la web con la URL de siempre (scripts/temas-revisados-web.py):
+    // tercer-ejercicio/3A08.pdf es el tema nuevo, 3A08-repaso.pdf su ficha y el antiguo
+    // pasa a tercer-ejercicio/anterior/3A08.pdf (la guía del dictamen, igual).
+    var GUIA_WEB = 'oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf';
+    var GUIA_ANTIGUA = RAIZ + 'oposicion/temario/primer-ejercicio/anterior/esquema_dictamen_economico.pdf';
+    /** La URL de la web de un PDF del manifiesto (tema o ficha). */
+    function pdfWeb(ruta) {
+        if (/\/1D01\.pdf$/.test(ruta)) ruta = GUIA_WEB;
+        else if (/\/1D01-repaso\.pdf$/.test(ruta)) ruta = GUIA_WEB.replace(/\.pdf$/, '-resumen.pdf');
+        return RAIZ + ruta;
+    }
+    /** …/tercer-ejercicio/3A08.pdf → …/tercer-ejercicio/anterior/3A08.pdf (ya en anterior/, igual). */
+    function aAnterior(url) {
+        if (!url || /\/anterior\//.test(url)) return url;
+        return url.replace(/\/(tercer-ejercicio\/3[AB]\d\d|primer-ejercicio\/esquema_dictamen_economico)\.pdf$/, function (_, r) {
+            return '/' + r.replace(/\/([^/]+)$/, '/anterior/$1') + '.pdf';
+        });
+    }
     var manifiesto = null;
     function leerManifiesto() {
         if (!manifiesto) {
@@ -191,7 +208,7 @@
     function antiguoDelEnlace(a) {
         var href = a.getAttribute('href') || '';
         if (!href || href === '#' || /tema-no-disponible\.html/.test(href)) return null;
-        return a.href;
+        return aAnterior(a.href);
     }
 
     // Sesión de Firebase: auth.js lo carga después de este script.
@@ -386,7 +403,7 @@
                 ((d && d.ejercicios) || []).forEach(function (ej) {
                     (ej.partes || []).forEach(function (p) {
                         (p.temas || []).forEach(function (t) {
-                            if (archivoDe(t.codigo) === archivo && t.disponible && t.url && /\.pdf$/.test(t.url)) url = t.url.replace(/^https:\/\/www\.victorgutierrezmarcos\.es\//, RAIZ.replace(/\/?$/, '/'));
+                            if (archivoDe(t.codigo) === archivo && t.disponible && t.url && /\.pdf$/.test(t.url)) url = aAnterior(t.url).replace(/^https:\/\/www\.victorgutierrezmarcos\.es\//, RAIZ.replace(/\/?$/, '/'));
                         });
                     });
                 });
@@ -414,6 +431,16 @@
         Array.prototype.forEach.call(doc.querySelectorAll('link'), function (l) {
             var rel = l.getAttribute('rel') || '', href = l.getAttribute('href') || '';
             if (/canonical|icon|manifest/.test(rel) || /(search-styles|cookie-consent)\.css$/.test(href)) l.parentNode.removeChild(l);
+        });
+        // Los PDF del temario (este tema, su ficha y las remisiones a otros temas), a su URL de la web:
+        // se abren en el navegador y con la dirección de siempre. Las versiones anteriores y el Word, de la rama.
+        Array.prototype.forEach.call(doc.querySelectorAll('a[href]'), function (a) {
+            var u;
+            try { u = new URL(a.getAttribute('href'), urlDocumento); } catch (e) { return; }
+            var i = u.href.indexOf('/oposicion/temario/');
+            if (u.origin === location.origin || i < 0 || !/\.pdf$/.test(u.pathname) || /-anterior\.pdf$/.test(u.pathname)) return;
+            var ruta = u.href.slice(i + 1).split(/[?#]/)[0];
+            if (/^oposicion\/temario\/(primer|tercer|cuarto|quinto)-ejercicio\/[^/]+\.pdf$/.test(ruta)) a.setAttribute('href', new URL(pdfWeb(ruta), location.href).href + u.hash); // absoluta: el marco lleva <base> de la rama
         });
         var base = doc.createElement('base');
         base.setAttribute('href', urlDocumento);
@@ -481,9 +508,9 @@
                 fetch(raw + t.html.ruta).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (html) {
                     // La barra: formatos que hay en el manifiesto y la versión antigua de la web.
                     var enlaces = [];
-                    if (t.pdf && t.pdf.ruta) enlaces.push('<a href="' + raw + t.pdf.ruta + '" target="_blank" rel="noopener">PDF</a>');
+                    if (t.pdf && t.pdf.ruta) enlaces.push('<a href="' + pdfWeb(t.pdf.ruta) + '" target="_blank" rel="noopener">PDF</a>');
                     if (t.docx && t.docx.ruta) enlaces.push('<a href="' + raw + t.docx.ruta + '" download>Word</a>');
-                    if (t.repaso && t.repaso.ruta) enlaces.push('<a href="' + raw + t.repaso.ruta + '" target="_blank" rel="noopener">' + (guia ? 'Resumen de repaso' : 'Ficha de repaso') + '</a>');
+                    if (t.repaso && t.repaso.ruta) enlaces.push('<a href="' + pdfWeb(t.repaso.ruta) + '" target="_blank" rel="noopener">' + (guia ? 'Resumen de repaso' : 'Ficha de repaso') + '</a>');
                     if (antiguo) enlaces.push('<a href="' + antiguo + '" target="_blank" rel="noopener">' + (guia ? 'Guía antigua' : 'Versión antigua') + '</a>');
                     barra.querySelector('.tema-revisado-formatos').innerHTML = enlaces.join('');
                     var fecha = barra.querySelector('.tema-revisado-fecha');

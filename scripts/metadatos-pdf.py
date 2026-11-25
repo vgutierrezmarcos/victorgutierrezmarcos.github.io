@@ -24,6 +24,7 @@ cambiar un PDF o una página de /oposicion/. A mano:
 """
 import html
 import io
+import json
 import os
 import re
 import subprocess
@@ -35,6 +36,11 @@ from pypdf.generic import BooleanObject, DictionaryObject, NameObject, StreamObj
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROPIOS = set()  # se rellena en main()
+EXCLUSIVOS = set()  # los PDF de los temas revisados (licencia de uso personal, no CC): main()
+REVISADOS_WEB = 'oposicion/temario/revisados-web.json'  # scripts/temas-revisados-web.py
+CONDICIONES = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html'
+EXCLUSIVO = 'material exclusivo para tu estudio personal; no se autoriza su incorporación a otras plataformas, aplicaciones o servicios'
+MAX_CLAVES = 1500  # caracteres de /Keywords (los conceptos del índice del tema)
 EJERCICIO = {'1': 'primer', '2': 'segundo', '3': 'tercer', '4': 'cuarto', '5': 'quinto'}
 OPO = 'oposición a Técnico Comercial y Economista del Estado (TCEE)'
 CLAVES = 'oposición TCEE, Técnico Comercial y Economista del Estado, TECO, temario TCEE, oposiciones de comercio'
@@ -114,6 +120,53 @@ def metadatos(ruta, texto):
             f'tema {ej}.{parte}.{num}, {EJERCICIO[ej]} ejercicio')
 
 
+def _claves(conceptos, base):
+    claves = base
+    for c in conceptos:
+        if len(claves) + len(c) + 2 > MAX_CLAVES:
+            break
+        claves += ', ' + c.replace(',', ' ')
+    return claves
+
+
+def revisados():
+    """Los temas revisados que están en la web (revisados-web.json): ruta → (título, asunto, claves).
+
+    El título y el epígrafe, del manifiesto (el temario de 2024); las palabras clave, los
+    conceptos del índice del tema, para que un buscador sepa qué explica cada PDF."""
+    if not os.path.exists(os.path.join(RAIZ, REVISADOS_WEB)):
+        return {}
+    salida = {}
+    for t in json.load(open(os.path.join(RAIZ, REVISADOS_WEB), encoding='utf-8'))['temas']:
+        apartados = '; '.join(t.get('apartados') or [])
+        if t['archivo'] == '1D01':
+            titulo, asunto, claves = FIJOS[t['pdf']]
+            claves = _claves(t.get('conceptos') or [], claves)
+            asunto = asunto + (f' Apartados: {apartados}.' if apartados else '')
+            salida[t['pdf']] = (titulo, asunto, claves)
+            if t.get('repaso'):
+                salida[t['repaso']] = ('Dictamen de coyuntura TCEE: resumen de repaso de la guía',
+                                       f'Resumen de repaso de la guía para el dictamen de coyuntura económica del primer ejercicio de la {OPO}.',
+                                       claves)
+            continue
+        titulo, asunto, claves = metadatos(t['pdf'], f'Tema {t["codigo"]}: {t["titulo"]}')
+        claves = _claves(t.get('conceptos') or [], claves)
+        salida[t['pdf']] = (titulo, asunto + (f' Apartados: {apartados}.' if apartados else ''), claves)
+        if t.get('repaso'):
+            ficha = titulo.replace(f'Tema {t["codigo"]} TCEE', f'Ficha de repaso del tema {t["codigo"]} TCEE', 1)
+            if len(ficha) > 120:
+                ficha = ficha[:117].rsplit(' ', 1)[0] + '…'
+            salida[t['repaso']] = (ficha, 'Ficha de repaso (4 páginas) para memorizar el ' + asunto[0].lower() + asunto[1:], claves)
+    return salida
+
+
+def titulados():
+    """Todos los PDF con título: los enlazados desde /oposicion/ y los temas revisados."""
+    salida = {ruta: metadatos(ruta, texto) for ruta, texto in enlaces().items()}
+    salida.update(revisados())
+    return salida
+
+
 def propios():
     """PDF de Víctor que llevan la licencia: los de /oposicion/ y /blog/, menos AJENOS."""
     rutas = subprocess.check_output(['git', 'ls-files', 'oposicion/*.pdf', 'blog/*.pdf'], text=True, cwd=RAIZ).split()
@@ -126,7 +179,9 @@ def anio_de(info):
     return m.group(1) if m else ''
 
 
-def derechos(anio):
+def derechos(anio, exclusivo=False):
+    if exclusivo:
+        return f'© {anio + " " if anio else ""}{AUTOR} · {EXCLUSIVO[0].upper() + EXCLUSIVO[1:]} ({CONDICIONES}).'
     return f'© {anio + " " if anio else ""}{AUTOR} · Licencia {LICENCIA} ({LICENCIA_URL}): {PERMISOS}.'
 
 
@@ -142,7 +197,7 @@ def _q(prefijo, nombre):
     return f'{{{NS[prefijo]}}}{nombre}'
 
 
-def xmp_con_licencia(xmp, titulo, texto):
+def xmp_con_licencia(xmp, titulo, texto, web=LICENCIA_URL_LEGAL):
     """El paquete XMP (bytes o None) con dc:title, dc:creator, dc:rights y xmpRights.
     Conserva el resto de propiedades; si no hay XMP o no se puede leer, crea uno."""
     raiz = None
@@ -187,14 +242,14 @@ def xmp_con_licencia(xmp, titulo, texto):
         ET.SubElement(ET.SubElement(ET.SubElement(nueva, _q('dc', 'creator')), _q('rdf', 'Seq')), _q('rdf', 'li')).text = AUTOR
     alt('rights', texto)
     ET.SubElement(nueva, _q('xmpRights', 'Marked')).text = 'True'
-    ET.SubElement(nueva, _q('xmpRights', 'WebStatement')).text = LICENCIA_URL_LEGAL
+    ET.SubElement(nueva, _q('xmpRights', 'WebStatement')).text = web
     cuerpo = ET.tostring(raiz, encoding='unicode')
     return ('<?xpacket begin="\ufeff" id="W5M0MpCehiHzreSzNTczkc9d"?>\n' + cuerpo + '\n'
             + (' ' * 99 + '\n') * 20 + '<?xpacket end="w"?>').encode('utf-8')
 
 
-def con_licencia(info):
-    return LICENCIA_URL_LEGAL in str(info.get('/Rights') or '')
+def con_licencia(info, exclusivo=False):
+    return (CONDICIONES if exclusivo else LICENCIA_URL_LEGAL) in str(info.get('/Rights') or '')
 
 
 def escribir(ruta, titulo=None, asunto=None, claves=None):
@@ -202,8 +257,10 @@ def escribir(ruta, titulo=None, asunto=None, claves=None):
     lector = PdfReader(ruta)
     info = lector.metadata or {}
     licencia = ruta in PROPIOS
-    falta_titulo = titulo is not None and info.get('/Title') != titulo
-    falta_licencia = licencia and not con_licencia(info)
+    exclusivo = ruta in EXCLUSIVOS
+    falta_titulo = titulo is not None and (info.get('/Title') != titulo or info.get('/Subject') != asunto
+                                           or info.get('/Keywords') != f'{claves}, {CLAVES}')
+    falta_licencia = licencia and not con_licencia(info, exclusivo)
     if not falta_titulo and not falta_licencia:
         return False
     escritor = PdfWriter(ruta, incremental=True)
@@ -212,12 +269,13 @@ def escribir(ruta, titulo=None, asunto=None, claves=None):
         datos.update({'/Title': titulo, '/Author': AUTOR, '/Subject': asunto,
                       '/Keywords': f'{claves}, {CLAVES}'})
     if licencia:
-        texto = derechos(anio_de(info))
-        datos.update({'/Copyright': texto, '/Rights': f'{LICENCIA} · {LICENCIA_URL_LEGAL}'})
+        texto = derechos(anio_de(info), exclusivo)
+        datos.update({'/Copyright': texto, '/Rights': f'Exclusivo · uso personal · {CONDICIONES}' if exclusivo
+                      else f'{LICENCIA} · {LICENCIA_URL_LEGAL}'})
         actual = lector.trailer['/Root'].get('/Metadata')
         xmp = actual.get_object().get_data() if actual is not None else None
         flujo = StreamObject()
-        flujo.set_data(xmp_con_licencia(xmp, datos.get('/Title'), texto))
+        flujo.set_data(xmp_con_licencia(xmp, datos.get('/Title'), texto, CONDICIONES if exclusivo else LICENCIA_URL_LEGAL))
         flujo[NameObject('/Type')] = NameObject('/Metadata')
         flujo[NameObject('/Subtype')] = NameObject('/XML')
         escritor._root_object[NameObject('/Metadata')] = escritor._add_object(flujo)
@@ -238,21 +296,21 @@ def escribir(ruta, titulo=None, asunto=None, claves=None):
 
 
 def main():
-    global PROPIOS
+    global PROPIOS, EXCLUSIVOS
     seco = '--seco' in sys.argv
     os.chdir(RAIZ)
     PROPIOS = set(propios())
+    EXCLUSIVOS = set(revisados())
     cambiados = 0
-    titulados = enlaces()
-    for ruta, texto in sorted(titulados.items()):
-        titulo, asunto, claves = metadatos(ruta, texto)
+    titulos = titulados()
+    for ruta, (titulo, asunto, claves) in sorted(titulos.items()):
         if seco:
             print(f'{titulo}  [{ruta}]{"  · licencia" if ruta in PROPIOS else ""}')
         elif escribir(ruta, titulo, asunto, claves):
             cambiados += 1
             print(f'✓ {ruta}: {titulo}')
     # Los PDF propios que no están enlazados (o no tienen título fijo): solo la licencia
-    for ruta in sorted(PROPIOS - set(titulados)):
+    for ruta in sorted(PROPIOS - set(titulos)):
         if seco:
             print(f'(sin título)  [{ruta}]  · licencia')
         elif escribir(ruta):

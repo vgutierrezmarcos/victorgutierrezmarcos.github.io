@@ -27,13 +27,24 @@ metadatos = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(metadatos)
 
 
-def bloque(pagina, temas):
+def revisados_web():
+    """ruta del PDF → entrada de revisados-web.json (temas revisados en la web)."""
+    ruta = os.path.join(RAIZ, metadatos.REVISADOS_WEB)
+    if not os.path.exists(ruta):
+        return {}
+    salida = {}
+    for t in json.load(open(ruta, encoding='utf-8'))['temas']:
+        salida[t['pdf']] = t
+    return salida
+
+
+def bloque(pagina, temas, revisados=None):
+    revisados = revisados or {}
     url_pagina = f'{WEB}/{pagina}'
     elementos = []
     for posicion, (ruta, (titulo, asunto, claves)) in enumerate(temas, 1):
-        elementos.append({
-            '@type': 'ListItem', 'position': posicion,
-            'item': {
+        rev = revisados.get(ruta)
+        item = {
                 '@type': 'LearningResource',
                 'name': titulo,
                 'description': asunto,
@@ -46,17 +57,37 @@ def bloque(pagina, temas):
                 'isAccessibleForFree': True,
                 'license': 'https://creativecommons.org/licenses/by-nc-nd/4.0/',
                 'author': {'@type': 'Person', '@id': f'{WEB}/#victor', 'name': 'Víctor Gutiérrez Marcos'},
-            },
-        })
+            }
+        if rev:
+            # Tema revisado: material exclusivo (condiciones propias, no CC), con lo que
+            # enseña (los apartados del índice), su fecha y su ficha de repaso.
+            # (Sin repetir en la descripción los apartados de «teaches» y con pocas palabras
+            # clave: la lista entera va dentro del PDF; aquí pesaría en todas las visitas.)
+            item['description'] = asunto.split(' Apartados:')[0]
+            item['keywords'] = ', '.join(claves.split(', ')[:14])
+            item['license'] = metadatos.CONDICIONES
+            item['educationalLevel'] = 'universitario'
+            if rev.get('aprobado'):
+                item['dateModified'] = rev['aprobado']
+            if rev.get('apartados'):
+                item['teaches'] = rev['apartados']
+            if rev.get('repaso'):
+                item['hasPart'] = {'@type': 'LearningResource', 'name': f'Ficha de repaso: {titulo}',
+                                   'url': f'{WEB}/{rev["repaso"]}', 'encodingFormat': 'application/pdf',
+                                   'learningResourceType': 'ficha de repaso', 'inLanguage': 'es'}
+        elementos.append({'@type': 'ListItem', 'position': posicion, 'item': item})
     datos = {'@context': 'https://schema.org', '@type': 'ItemList', '@id': f'{url_pagina}#temas',
              'url': url_pagina, 'numberOfItems': len(elementos), 'itemListElement': elementos}
-    cuerpo = json.dumps(datos, ensure_ascii=False, indent=4).replace('\n', '\n    ')
+    # Compacto, una línea por tema: con sangría pesaba el doble en cada visita
+    cuerpo = json.dumps(datos, ensure_ascii=False, separators=(',', ':'))
+    cuerpo = cuerpo.replace(',{"@type":"ListItem"', ',\n    {"@type":"ListItem"')
     return f'{INICIO}\n    <script type="application/ld+json">\n    {cuerpo}\n    </script>\n    {FIN}'
 
 
 def main():
     os.chdir(RAIZ)
-    textos = metadatos.enlaces()
+    titulos = metadatos.titulados()
+    revisados = revisados_web()
     for ejercicio in EJERCICIOS:
         pagina = f'oposicion/temario/{ejercicio}-ejercicio.html'
         fuente = open(pagina, encoding='utf-8').read()
@@ -64,11 +95,17 @@ def main():
         orden = []
         for href in re.findall(r'href="([^"#?]+\.pdf)"', fuente):
             ruta = os.path.normpath(os.path.join(os.path.dirname(pagina), href))
-            if ruta in textos and ruta not in orden:
+            if ruta in titulos and ruta not in orden:
                 orden.append(ruta)
-        temas = [(r, metadatos.metadatos(r, textos[r])) for r in orden]
+        # Los temas revisados de esa página que aún no se enlazan (no tenían versión antigua)
+        carpeta = f'oposicion/temario/{ejercicio}-ejercicio/'
+        for ruta in sorted(revisados):
+            if ruta.startswith(carpeta) and ruta not in orden and ruta in titulos and '/' not in ruta[len(carpeta):]:
+                orden.append(ruta)
+        orden.sort(key=lambda r: (os.path.basename(r)[:4] if re.match(r'^\d[AB]\d\d', os.path.basename(r)) else 'zz') if ejercicio == 'tercer' else 0)
+        temas = [(r, titulos[r]) for r in orden]
         # Sin PDF enlazados (segundo ejercicio), sin bloque
-        nuevo = bloque(pagina, temas) if temas else ''
+        nuevo = bloque(pagina, temas, revisados) if temas else ''
         if INICIO in fuente:
             fuente2 = re.sub(re.escape(INICIO) + r'.*?' + re.escape(FIN), lambda _: nuevo, fuente, flags=re.S)
         elif nuevo:

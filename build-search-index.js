@@ -329,6 +329,19 @@ function generarVariacionesNumero(numero) {
   ];
 }
 
+// Conceptos de los temas revisados (los apartados de su índice, de
+// oposicion/temario/revisados-web.json, scripts/temas-revisados-web.py): el
+// buscador encuentra el tema también por lo que explica.
+const CONCEPTOS = (() => {
+  const ruta = path.join(__dirname, 'oposicion/temario/revisados-web.json');
+  if (!fs.existsSync(ruta)) return {};
+  const salida = {};
+  for (const t of JSON.parse(fs.readFileSync(ruta, 'utf-8')).temas || []) {
+    salida[t.archivo] = (t.conceptos || []).map(c => c.toLowerCase());
+  }
+  return salida;
+})();
+
 // Función para procesar temas de un ejercicio
 function procesarTemas(temas, ejercicio, grupo, prefijo, baseUrl) {
   const keywords = [];
@@ -357,7 +370,8 @@ function procesarTemas(temas, ejercicio, grupo, prefijo, baseUrl) {
       keywords: [
         ...keywords,
         ...tema.titulo.toLowerCase().split(' ').filter(w => w.length > 2),
-        ...generarVariacionesNumero(numero)
+        ...generarVariacionesNumero(numero),
+        ...(CONCEPTOS[prefijo.replace(/\./g, '') + String(tema.num).padStart(2, '0')] || [])
       ],
       type: 'tema',
       parent: ejercicio,

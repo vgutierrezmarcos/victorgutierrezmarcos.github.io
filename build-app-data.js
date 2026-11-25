@@ -16,6 +16,15 @@ const path = require('path');
 const ROOT = __dirname;
 const BASE_URL = 'https://www.victorgutierrezmarcos.es';
 
+// Los temas revisados están en la URL de siempre y el antiguo en anterior/
+// (scripts/temas-revisados-web.py): la app y exclusivos.js usan «url» como la
+// versión antigua del tema, así que, si hay anterior/, apunta ahí.
+function conAnterior(rel) {
+    const m = rel.match(/^(.*\/)([^/]+\.pdf)$/);
+    if (m && fs.existsSync(path.join(ROOT, 'oposicion/temario', m[1], 'anterior', m[2]))) return `${m[1]}anterior/${m[2]}`;
+    return rel;
+}
+
 function leer(rel) {
     return fs.readFileSync(path.join(ROOT, rel), 'utf8');
 }
@@ -89,7 +98,7 @@ function parsearEjercicioConTemas(html, slug) {
                 titulo: tituloMatch ? limpiarTexto(tituloMatch[1]) : limpiarTexto(inner),
                 disponible,
                 temarioAnterior: temaAnterior,
-                url: disponible ? `${BASE_URL}/oposicion/temario/${href}` : null,
+                url: disponible ? `${BASE_URL}/oposicion/temario/${conAnterior(href)}` : null,
                 ...(docxMatch ? { urlDocx: `${BASE_URL}/oposicion/temario/${docxMatch[1]}` } : {})
             });
         }
@@ -156,7 +165,7 @@ function parsearQuinto(html) {
         const texto = limpiarTexto(it[2]);                         // "Parte A: Marketing internacional..."
         const letra = (texto.match(/Parte ([A-Z])/) || [])[1] || '';
         const disponible = !/tema-no-disponible\.html/.test(href);
-        const url = disponible ? `${BASE_URL}/oposicion/temario/${href}` : null;
+        const url = disponible ? `${BASE_URL}/oposicion/temario/${conAnterior(href)}` : null;
         partes.push({
             letra,
             nombre: texto.replace(/^Parte [A-Z]:\s*/, ''),
@@ -194,7 +203,7 @@ function construirTemario() {
                 { id: 'examenes', titulo: 'Exámenes oficiales de test (PDF, 11 MB)', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/examenes_oficiales_test.pdf` },
                 { id: 'examenes-dictamen', titulo: 'Exámenes oficiales del dictamen (PDF, 7 MB)', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/examenes_oficiales_dictamen.pdf` },
                 { id: 'plantillas', titulo: 'Plantillas para practicar test', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/plantillas_para_practicar_test.pdf` },
-                { id: 'dictamen', titulo: 'Esquema del dictamen económico', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf` },
+                { id: 'dictamen', titulo: 'Esquema del dictamen económico', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/${conAnterior('primer-ejercicio/esquema_dictamen_economico.pdf')}` },
                 { id: 'dictamen-docx', titulo: 'Esquema del dictamen económico 2025 (Word)', tipo: 'docx', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/esquema_dictamen_economico_2025.docx` }
             ];
         }
