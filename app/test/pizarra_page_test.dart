@@ -282,4 +282,55 @@ void main() {
     expect(texto, contains('LOG línea 4'));
     expect(texto, isNot(contains('línea 1')));
   });
+
+  testWidgets('la barra se pone arriba o suelta; suelta se arrastra y tocarla no pinta', (tester) async {
+    final fuente = await montar(tester);
+    Future<void> elegir(String opcion) async {
+      await tester.tap(find.byTooltip('Más herramientas y opciones'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Barra de herramientas'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(opcion));
+      await tester.pumpAndSettle();
+    }
+
+    final abajo = tester.getCenter(find.byTooltip('Deshacer (o dos toques con dos dedos)'));
+    await elegir('Arriba (lejos de la mano)');
+    final arriba = tester.getCenter(find.byTooltip('Deshacer (o dos toques con dos dedos)'));
+    expect(arriba.dy, lessThan(abajo.dy));
+
+    await elegir('Suelta: arrástrala donde quieras');
+    final asa = find.byIcon(Icons.drag_indicator);
+    expect(asa, findsOneWidget);
+    final antes = tester.getCenter(asa);
+    await tester.drag(asa, const Offset(120, 300));
+    await tester.pumpAndSettle();
+    final despues = tester.getCenter(asa);
+    expect(despues.dx, greaterThan(antes.dx + 100));
+    expect(despues.dy, greaterThan(antes.dy + 250));
+    // Tocar la paleta suelta con el lápiz elige la herramienta, no pinta en la página.
+    final g = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);
+    await g.down(tester.getCenter(find.byTooltip('Rehacer')));
+    await g.up();
+    await tester.pump(const Duration(milliseconds: 50));
+    expect(trazos(fuente), 0);
+  });
+
+  testWidgets('mientras el lápiz escribe, la palma sobre la barra no hace nada', (tester) async {
+    final fuente = await montar(tester);
+    final lapiz = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);
+    var t = await letra(tester, lapiz, _lienzo, const Duration(seconds: 1));
+    expect(trazos(fuente), 1);
+    // Empieza otra letra y, sin levantar el lápiz, la palma toca «Deshacer».
+    await lapiz.down(_lienzo + const Offset(60, 0), timeStamp: t + const Duration(milliseconds: 30));
+    await lapiz.moveTo(_lienzo + const Offset(70, 5), timeStamp: t + const Duration(milliseconds: 40));
+    await tester.pump(const Duration(milliseconds: 8));
+    final palma = await tester.createGesture(kind: PointerDeviceKind.touch, pointer: 2);
+    await palma.down(tester.getCenter(find.byTooltip('Deshacer (o dos toques con dos dedos)')));
+    await palma.up();
+    await tester.pump(const Duration(milliseconds: 8));
+    await lapiz.up(timeStamp: t + const Duration(milliseconds: 60));
+    await tester.pump(const Duration(milliseconds: 50));
+    expect(trazos(fuente), 2);
+  });
 }

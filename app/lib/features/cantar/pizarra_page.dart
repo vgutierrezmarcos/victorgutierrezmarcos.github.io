@@ -158,6 +158,12 @@ class _Gesto {
 
 const _claveExtras = 'pizarraExtras';
 const _claveFormas = 'pizarraFormas';
+const _claveBarra = 'pizarraBarra';
+const _clavePaleta = 'pizarraPaleta';
+
+/// Dónde va la barra de herramientas: abajo (como siempre), arriba (lejos de la mano
+/// que se apoya al escribir) o suelta, para arrastrarla donde moleste menos.
+enum PosicionBarra { abajo, arriba, suelta }
 const _claveAvisoScribble = 'pizarraAvisoScribble';
 
 class _PizarraPageState extends ConsumerState<PizarraPage> {
@@ -199,6 +205,14 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   /// Herramientas extra puestas en la paleta (se recuerdan en el móvil).
   Set<String> _extras = {};
   bool _formas = true;
+
+  /// Dónde va la barra y, si va suelta, dónde está la paleta (en fracción del área,
+  /// para que siga en su sitio al girar la pantalla). Se recuerdan en el móvil.
+  PosicionBarra _posBarra = PosicionBarra.abajo;
+  Offset _posPaleta = const Offset(0.5, 0.06);
+
+  /// Mientras el lápiz escribe, la barra no atiende a la palma que la roce.
+  final ValueNotifier<bool> _lapizEscribe = ValueNotifier(false);
 
   /// Si el dedo dibuja: sí hasta que aparece un lápiz (entonces el dedo solo
   /// mueve y amplía, y la palma apoyada no pinta), salvo que se elija a mano.
@@ -312,6 +326,9 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     try {
       _extras = {...((_caja?.get(_claveExtras) as List?) ?? const []).map((e) => e.toString())};
       _formas = _caja?.get(_claveFormas) as bool? ?? true;
+      _posBarra = PosicionBarra.values.asNameMap()[_caja?.get(_claveBarra)] ?? PosicionBarra.abajo;
+      final pp = _caja?.get(_clavePaleta) as List?;
+      if (pp != null && pp.length == 2) _posPaleta = Offset((pp[0] as num).toDouble(), (pp[1] as num).toDouble());
     } catch (_) {}
     _registro.activo = depuracionPedidaEnUrl;
     if (_registro.activo) {
@@ -352,6 +369,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (_fotogramas != null) SchedulerBinding.instance.removeTimingsCallback(_fotogramas!);
     _escucha?.cancel();
     _puntos.dispose();
+    _lapizEscribe.dispose();
     _pizarra?.vaciar();
     if (!kIsWeb) {
       SystemChrome.setPreferredOrientations([]);
@@ -430,6 +448,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     try {
       _caja?.put(_claveExtras, _extras.toList());
       _caja?.put(_claveFormas, _formas);
+      _caja?.put(_claveBarra, _posBarra.name);
+      _caja?.put(_clavePaleta, [_posPaleta.dx, _posPaleta.dy]);
     } catch (_) {}
   }
 
@@ -841,6 +861,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     final v = _dentro(_virtual(e.localPosition));
     _punteroDibujo = e.pointer;
     _tipoDibujo = e.kind;
+    _lapizEscribe.value = _esLapiz(e.kind);
     _inicioTrazo = e.timeStamp;
     _ultimoTiempo = e.timeStamp;
     _ultimaPantalla = e.localPosition;
@@ -872,6 +893,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
     if (_actual?.llena ?? false) {
       _punteroDibujo = null;
+      _lapizEscribe.value = false;
       setState(() => _avisar('Página llena: abre otra'));
       return;
     }
@@ -973,6 +995,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     _log('anular trazo (puntos=${_enCurso.length})');
     _temporizadorForma?.cancel();
     _punteroDibujo = null;
+    _lapizEscribe.value = false;
     if (_borrando) {
       _terminar();
       return;
@@ -988,6 +1011,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   void _terminar() {
     _temporizadorForma?.cancel();
     _punteroDibujo = null;
+    _lapizEscribe.value = false;
     if (_borrando) {
       _borrando = false;
       final c = _Cambio(_gestoQuitar.values.toList(), _gestoPoner.values.toList());
@@ -1538,6 +1562,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
           backgroundColor: fondoPizarra,
           body: SafeArea(
             child: Column(children: [
+              if (_posBarra != PosicionBarra.abajo) _sinPalma(_barra()),
               Expanded(
                 child: LayoutBuilder(builder: (context, c) {
                   final area = Size(c.maxWidth, c.maxHeight);
@@ -1552,7 +1577,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                     _t = _encajar(_t, _z);
                   }
                   final matriz = Matrix4.translationValues(_t.dx, _t.dy, 0)..multiply(Matrix4.diagonal3Values(_z, _z, 1));
-                  return Listener(
+                  final lienzo = Listener(
                     behavior: HitTestBehavior.opaque,
                     onPointerDown: _bajar,
                     onPointerMove: _mover,
@@ -1627,9 +1652,12 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                       ]),
                     ),
                   );
+                  // La paleta suelta va fuera del Listener: tocarla no pinta en la página.
+                  if (_posBarra != PosicionBarra.suelta || _soloLectura) return lienzo;
+                  return Stack(children: [Positioned.fill(child: lienzo), _paletaSuelta(area)]);
                 }),
               ),
-              _barra(),
+              if (_posBarra == PosicionBarra.abajo) _sinPalma(_barra()),
             ]),
           ),
         ),
@@ -1658,18 +1686,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   }
 
   Widget _barra() {
-    final colorElegido = _color[_ultimaTinta]! | 0xFF000000;
-    final hayColorRapido = coloresRapidos.contains(colorElegido);
     final paginas = max(_paginas.length, 1);
-    PuntaHerramienta punta(HerramientaPizarra h, String nombre) => PuntaHerramienta(
-          herramienta: h,
-          elegida: _herramienta == h,
-          color: h == HerramientaPizarra.texto ? _miColor : (_color[h] == null ? tintaBarra : Color(_color[h]!)),
-          grosor: _grosor[h] ?? 0,
-          nombre: nombre,
-          alTocar: _sinAcceso ? () {} : () => _elegir(h),
-          alMantener: () => _abrirAjustes(h),
-        );
     final navegacion = Row(mainAxisSize: MainAxisSize.min, children: [
       const SizedBox(width: 12),
       BotonBarra(icono: Icons.chevron_left, tooltip: 'Página anterior', alTocar: _pagina > 0 ? () => _irAPagina(_pagina - 1) : null),
@@ -1699,7 +1716,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
     return Container(
       color: fondoPizarra,
-      padding: const EdgeInsets.fromLTRB(4, 0, 4, 6),
+      padding: _posBarra == PosicionBarra.abajo ? const EdgeInsets.fromLTRB(4, 0, 4, 6) : const EdgeInsets.fromLTRB(4, 6, 4, 0),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: ConstrainedBox(
@@ -1750,7 +1767,68 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               ],
               const SizedBox(width: 12),
             ]),
-            PaletaFlotante(children: [
+            if (_posBarra != PosicionBarra.suelta) PaletaFlotante(children: _herramientas()),
+            navegacion,
+          ]),
+        ),
+      ),
+    );
+  }
+
+  /// La paleta suelta: se arrastra por el asa y se queda donde se suelte.
+  Widget _paletaSuelta(Size area) {
+    const margen = 4.0;
+    return Positioned(
+      left: (_posPaleta.dx * area.width).clamp(margen, max(margen, area.width - 120)),
+      top: (_posPaleta.dy * area.height).clamp(margen, max(margen, area.height - 64)),
+      child: _sinPalma(
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: max(160, area.width - 2 * margen)),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: PaletaFlotante(children: [
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onPanUpdate: (d) => setState(() {
+                  final x = (_posPaleta.dx * area.width + d.delta.dx).clamp(margen, max(margen, area.width - 120));
+                  final y = (_posPaleta.dy * area.height + d.delta.dy).clamp(margen, max(margen, area.height - 64));
+                  _posPaleta = Offset(x / area.width, y / area.height);
+                }),
+                onPanEnd: (_) => _guardarPreferencias(),
+                child: const Tooltip(
+                  message: 'Arrastra para mover la barra',
+                  child: Padding(padding: EdgeInsets.fromLTRB(0, 14, 6, 14), child: Icon(Icons.drag_indicator, color: Color(0x99000000))),
+                ),
+              ),
+              ..._herramientas(),
+            ]),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Mientras el lápiz escribe, la barra no responde (la palma apoyada no cambia de herramienta ni deshace).
+  Widget _sinPalma(Widget hijo) => ValueListenableBuilder<bool>(
+        valueListenable: _lapizEscribe,
+        builder: (context, escribe, child) => IgnorePointer(ignoring: escribe, child: child),
+        child: hijo,
+      );
+
+  /// Las herramientas, los colores y deshacer/rehacer de la paleta.
+  List<Widget> _herramientas() {
+    final colorElegido = _color[_ultimaTinta]! | 0xFF000000;
+    final hayColorRapido = coloresRapidos.contains(colorElegido);
+    PuntaHerramienta punta(HerramientaPizarra h, String nombre) => PuntaHerramienta(
+          herramienta: h,
+          elegida: _herramienta == h,
+          color: h == HerramientaPizarra.texto ? _miColor : (_color[h] == null ? tintaBarra : Color(_color[h]!)),
+          grosor: _grosor[h] ?? 0,
+          nombre: nombre,
+          alTocar: _sinAcceso ? () {} : () => _elegir(h),
+          alMantener: () => _abrirAjustes(h),
+        );
+    return [
               punta(HerramientaPizarra.boligrafo, 'Bolígrafo'),
               if (_extras.contains('rotulador')) punta(HerramientaPizarra.rotulador, 'Rotulador'),
               if (_extras.contains('fosforito')) punta(HerramientaPizarra.fosforito, 'Fosforito'),
@@ -1765,12 +1843,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               const SeparadorPaleta(),
               BotonBarra(icono: Icons.undo, tooltip: 'Deshacer (o dos toques con dos dedos)', alTocar: _puedeDeshacer && !_sinAcceso ? _deshacer : null),
               BotonBarra(icono: Icons.redo, tooltip: 'Rehacer', alTocar: _puedeRehacer && !_sinAcceso ? _rehacer : null),
-            ]),
-            navegacion,
-          ]),
-        ),
-      ),
-    );
+    ];
   }
 
   /// Menú ···: las herramientas extra, el papel, las formas, el dedo y
@@ -1801,6 +1874,25 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
             _guardarPreferencias();
           },
           child: const Text('Formas: mantén el lápiz al acabar'),
+        ),
+        SubmenuButton(
+          leadingIcon: const Icon(Icons.view_agenda_outlined),
+          menuChildren: [
+            for (final (valor, nombre) in [
+              (PosicionBarra.abajo, 'Abajo'),
+              (PosicionBarra.arriba, 'Arriba (lejos de la mano)'),
+              (PosicionBarra.suelta, 'Suelta: arrástrala donde quieras'),
+            ])
+              MenuItemButton(
+                leadingIcon: Icon(_posBarra == valor ? Icons.radio_button_checked : Icons.radio_button_unchecked),
+                onPressed: () {
+                  setState(() => _posBarra = valor);
+                  _guardarPreferencias();
+                },
+                child: Text(nombre),
+              ),
+          ],
+          child: const Text('Barra de herramientas'),
         ),
         CheckboxMenuButton(
           value: _dedoDibuja,
