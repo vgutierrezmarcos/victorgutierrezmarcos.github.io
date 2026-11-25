@@ -168,9 +168,8 @@ Required frontmatter fields for newsletter integration:
 - Requires secrets: `BREVO_API_KEY`, `BREVO_LIST_ID`
 
 **`.github/workflows/create-materials-zip.yml`**
-- Triggers on every push to main (and manual dispatch)
-- Creates ZIP of educational materials (PDFs) from `oposicion/`, stripping web assets
-- Creates GitHub release tagged `materiales-latest`
+- Builds the two ZIPs of the "Descargar todos los materiales" button in `oposicion/index.html` with `python3 scripts/materiales-zip.py` (by exercise, files named by topic number and title, PDF and Word): `materiales-tcee.zip` (CC material only) and `materiales-tcee-con-revisados.zip` (also the revised topics' PDFs and fichas; the button switches to it when signed in)
+- Runs on pushes that touch materials, nightly (the `[skip ci]` commits don't trigger it) and by hand; replaces the assets of release `materiales-latest` with `--clobber` only when the fingerprint (`--huella`) changes
 
 ## Navigation Pattern
 

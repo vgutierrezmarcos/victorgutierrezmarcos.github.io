@@ -1,140 +1,70 @@
 name: Zip desde GitHub
 
+# Los dos ZIP de «Descargar todos los materiales» (oposicion/index.html), montados por
+# scripts/materiales-zip.py: materiales-tcee.zip (todos) y materiales-tcee-con-revisados.zip
+# (con sesión iniciada). Se sustituyen dentro de la release materiales-latest sin borrarla,
+# para que el enlace no falle mientras se suben, y solo si ha cambiado algo (huella).
+# Además de los push que tocan materiales, corre cada noche: los commits [skip ci] de otras
+# acciones (metadatos de los PDF) no lo lanzan.
+
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'oposicion/organizacion/**'
+      - 'oposicion/temario/**/*.pdf'
+      - 'oposicion/temario/**/*.docx'
+      - 'oposicion/temario/temario.json'
+      - 'oposicion/temario/revisados-web.json'
+      - 'scripts/materiales-zip.py'
+      - '.github/workflows/create-materials-zip.yml'
+  schedule:
+    - cron: '30 3 * * *'
   workflow_dispatch:
+    inputs:
+      forzar:
+        description: 'Subir aunque la huella no haya cambiado'
+        type: boolean
+        default: false
+
+concurrency:
+  group: materiales-zip
+  cancel-in-progress: true
 
 jobs:
-  create-zip:
+  zip:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Create materials directory
-      run: mkdir -p materiales-tcee
+      - uses: actions/checkout@v4
 
-    - name: Copy only oposicion directory contents
-      run: |
-        # Copiar solo el contenido de la carpeta oposicion
-        if [ -d "oposicion" ]; then
-          cp -r oposicion/* materiales-tcee/ 2>/dev/null || true
-        else
-          echo "Error: La carpeta oposicion no existe"
-          exit 1
-        fi
-        
-    - name: Remove web assets from materials directory
-      run: |
-        cd materiales-tcee
-        
-        # Eliminar archivos web
-        find . -name "*.html" -type f -delete 2>/dev/null || true
-        find . -name "*.webmanifest" -type f -delete 2>/dev/null || true
-        find . -name "*.css" -type f -delete 2>/dev/null || true
-        find . -name "*.ico" -type f -delete 2>/dev/null || true
-        find . -name "*.svg" -type f -delete 2>/dev/null || true
-        find . -name "*.png" -type f -delete 2>/dev/null || true
-        find . -name "*.jpg" -type f -delete 2>/dev/null || true
-        find . -name "*.jpeg" -type f -delete 2>/dev/null || true
-        find . -name "*.gif" -type f -delete 2>/dev/null || true
-        find . -name "*.webp" -type f -delete 2>/dev/null || true
-        find . -name "*.xml" -type f -delete 2>/dev/null || true
-        find . -name "*.txt" -type f -delete 2>/dev/null || true
-        find . -name "*.js" -type f -delete 2>/dev/null || true
-        find . -name "*.json" -type f -delete 2>/dev/null || true
-        find . -name ".yml" -type f -delete 2>/dev/null || true
-        find . -name ".md" -type f -delete 2>/dev/null || true
-        find . -name ".gitignore" -type f -delete 2>/dev/null || true
-        find . -name "CNAME" -type f -delete 2>/dev/null || true
-        
-        # Eliminar carpetas que no deben incluirse
-        rm -rf .git .github 2>/dev/null || true
-        
-        cd ..
-        
-    - name: Check contents and create README if empty
-      run: |
-        cd materiales-tcee
-        
-        # Contar archivos
-        FILE_COUNT=$(find . -type f 2>/dev/null | wc -l)
-        echo "Archivos encontrados: $FILE_COUNT"
-        
-        if [ "$FILE_COUNT" -eq 0 ]; then
-          echo "No hay archivos educativos en el repositorio"
-          echo "Creando README explicativo..."
-          
-          cat > README.md << 'ENDOFFILE'
-        # Materiales TCEE - Víctor Gutiérrez Marcos
+      - name: ¿Ha cambiado algo?
+        id: huella
+        run: |
+          nueva=$(python3 scripts/materiales-zip.py --huella)
+          echo "nueva=$nueva" >> "$GITHUB_OUTPUT"
+          anterior=$(gh release view materiales-latest --json body --jq .body 2>/dev/null | grep -o 'huella [0-9a-f]*' | cut -d' ' -f2 || true)
+          echo "Huella nueva: $nueva; en la release: ${anterior:-ninguna}"
+          if [ "$nueva" = "$anterior" ] && [ "${{ inputs.forzar }}" != "true" ]; then
+            echo "subir=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "subir=si" >> "$GITHUB_OUTPUT"
+          fi
 
-        ## Acceso a los materiales
+      - name: Montar los ZIP
+        if: steps.huella.outputs.subir == 'si'
+        run: python3 scripts/materiales-zip.py --salida salida-zip
 
-        Los materiales educativos (PDFs, documentos, plantillas) están alojados en Google Drive.
-
-        ### Enlaces directos:
-
-        - Todos los materiales: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_
-        - Sitio web completo: https://victorgutierrezmarcos.es
-
-        ### Contenido disponible:
-
-        - Temario completo (5 ejercicios)
-        - Recursos de organización
-        - Plantillas de estudio
-        - Enlaces útiles
-
-        ---
-
-        Técnico Comercial y Economista del Estado - Promoción LXXIII
-        ENDOFFILE
-          
-          echo "README creado"
-        else
-          echo "Se incluiran $FILE_COUNT archivos en el ZIP"
-          echo ""
-          echo "Lista de archivos:"
-          find . -type f | sort
-        fi
-        
-        cd ..
-        
-    - name: Create ZIP file
-      run: |
-        zip -r materiales-tcee.zip materiales-tcee/
-        echo ""
-        echo "Informacion del ZIP:"
-        ls -lh materiales-tcee.zip
-        echo ""
-        echo "Contenido del ZIP (primeros 30 elementos):"
-        unzip -l materiales-tcee.zip | head -35
-        
-    - name: Get current date
-      id: date
-      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-        
-    - name: Delete existing release and tag
-      continue-on-error: true
-      run: |
-        echo "Limpiando release anterior..."
-        gh release delete materiales-latest --yes 2>/dev/null || echo "No hay release previo"
-        git tag -d materiales-latest 2>/dev/null || echo "No hay tag local"
-        git push origin --delete materiales-latest 2>/dev/null || echo "No hay tag remoto"
-        echo "Limpieza completada"
-      env:
-        GH_TOKEN: ${{ github.token }}
-        
-    - name: Wait before creating new release
-      run: sleep 3
-        
-    - name: Create new release
-      run: |
-        echo "Creando nuevo release..."
-        gh release create materiales-latest materiales-tcee.zip --title "Materiales TCEE - ${{ steps.date.outputs.date }}" --notes "Materiales para la Oposición TCEE - Víctor Gutiérrez Marcos (Promoción LXXIII). Los materiales principales están en Google Drive: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_. Sitio web: https://victorgutierrezmarcos.es. Actualizado: ${{ steps.date.outputs.date }}"
-        echo "Release creado exitosamente"
-      env:
-        GH_TOKEN: ${{ github.token }}
+      - name: Subir a la release materiales-latest
+        if: steps.huella.outputs.subir == 'si'
+        run: |
+          fecha=$(date +'%d/%m/%Y')
+          notas="Materiales para la oposición a TCEE de Víctor Gutiérrez Marcos (https://www.victorgutierrezmarcos.es/oposicion/). materiales-tcee.zip: todo lo de licencia CC BY-NC-ND 4.0. materiales-tcee-con-revisados.zip: además, los temas revisados (uso personal; https://www.victorgutierrezmarcos.es/condiciones-materiales.html). Actualizado el $fecha · huella ${{ steps.huella.outputs.nueva }}"
+          if ! gh release view materiales-latest >/dev/null 2>&1; then
+            gh release create materiales-latest --title "Materiales TCEE" --notes "$notas"
+          fi
+          gh release upload materiales-latest salida-zip/materiales-tcee.zip salida-zip/materiales-tcee-con-revisados.zip --clobber
+          gh release edit materiales-latest --title "Materiales TCEE · $fecha" --notes "$notas"
