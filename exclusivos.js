@@ -86,15 +86,17 @@
             items.forEach(function (m) {
                 var li = document.createElement('li');
                 if ((m.tipo === 'tema' || m.tipo === 'guia') && m.donde === 'app' && m.codigo) li.setAttribute('data-revisado', m.codigo);
-                var t = m.codigo && m.tipo === 'tema' ? '<strong>' + m.codigo + '</strong> · ' + m.titulo : m.titulo;
-                var det = [formatos(m.formatos), m.fecha ? (m.tipo === 'tema' || m.tipo === 'guia' ? 'revisado el ' : 'publicado el ') + fecha(m.revisado || m.fecha) : ''].filter(Boolean).join(' · ');
+                var t = m.codigo && m.tipo === 'tema' ? '<strong>' + m.codigo + '</strong> <span class="exclusivos-nombre">' + m.titulo.replace(/\.$/, '') + '</span>' : m.titulo;
+                var revisado = m.tipo === 'tema' || m.tipo === 'guia';
+                // En los temas y la guía los formatos son siempre los mismos: solo la fecha.
+                var det = [revisado ? '' : formatos(m.formatos), m.fecha ? (revisado ? 'Revisado el ' : 'publicado el ') + fecha(m.fecha || m.revisado) : ''].filter(Boolean).join(' · ');
                 if (m.tipo === 'skill') t = '<a href="' + RAIZ + 'oposicion/economia.html">' + m.titulo + '</a>';
-                li.innerHTML = (m.ruta ? '<a href="' + RAIZ + m.ruta + '" target="_blank">' + t + '</a>' : t) + ' <span class="etiqueta-exclusivo">Exclusivo</span>' + (det ? '<span class="exclusivos-detalle">' + det + '</span>' : '');
+                li.innerHTML = (m.ruta ? '<a href="' + RAIZ + m.ruta + '" target="_blank">' + t + '</a>' : t) + (det ? '<span class="exclusivos-detalle">' + det + '</span>' : '');
                 ul.appendChild(li);
             });
             cont.appendChild(ul);
         }
-        grupo('En la app y, con tu sesión, aquí', app, 'Temas revisados a fondo, con datos al día y gráficos nuevos, con su ficha de repaso; y las explicaciones del test. Se leen dentro de la app y, si inicias sesión con Google, también desde esta página.');
+        grupo('Con tu cuenta de Google, aquí y en la app', app, '');
         grupo('También en la web', web, 'Con el aviso de uso personal en la portada y en cada página.');
     }
 
@@ -557,7 +559,7 @@
             a.className = 'exclusivos-abrir';
             a.href = urlTema(archivo);
             // El código y el título juntos, como enlace.
-            while (li.firstChild && !(li.firstChild.className === 'etiqueta-exclusivo' || (li.firstChild.nodeType === 3 && li.firstChild.nextSibling && li.firstChild.nextSibling.className === 'etiqueta-exclusivo' && !li.firstChild.textContent.trim()))) {
+            while (li.firstChild && !(li.firstChild.className === 'exclusivos-detalle' || li.firstChild.className === 'etiqueta-exclusivo')) {
                 a.appendChild(li.firstChild);
             }
             li.insertBefore(a, li.firstChild);
