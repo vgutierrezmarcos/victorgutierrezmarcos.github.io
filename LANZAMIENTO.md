@@ -105,6 +105,38 @@ Pendiente:
 
 Las copias que alguien ya haya bajado no se pueden retirar.
 
+## Versión estable cerrada (25/11/2026)
+
+Víctor: «que quede todo en main; las ramas se crearán cuando haya que volver a
+hacer cosas». Queda así:
+
+- **`main`**: lo único en lo que se trabaja (web, app, scripts, conector). App
+  1.27.0 (70) en producción en Google Play, `versionActual` 1.27.0 y APK de
+  respaldo de la 1.27.0.
+- **`temario-publicado`**: no es una rama de trabajo, sino el almacén del temario
+  revisado que leen la app (desde la 1.26.0), la web (`exclusivos.js`,
+  `tema-revisado.html`) y los scripts. No cabe en `main` (unos 1,5 GB, y la web
+  de GitHub Pages tiene un tope de 1 GB). Nadie la toca a mano: la rehace
+  `scripts/rama-publicada.py`.
+- **`revision-temario-2`**: cerrada. Archivada en la etiqueta
+  `revision-temario-2-final` (8ed5c2b4) y borrada como rama. La carpeta del
+  worktree se ha movido a `../victorgutierrezmarcos.github.io-revision-2-archivo`
+  porque guarda material que no está en git: los `_trabajo/` de cada tema
+  (1,3 GB) y la copia ignorada del examen de España.
+- **`revision-temario`**: se queda en GitHub mientras haya gente con la app
+  anterior a la 1.26.0, que lee de ella los temas revisados.
+
+Para volver a revisar temas:
+
+    git worktree add ../victorgutierrezmarcos.github.io-revision-2 -b revision-temario-2 revision-temario-2-final
+    # y copiar del archivo las carpetas ignoradas que hagan falta:
+    #   oposicion/temario/fuentes/*/_trabajo/ y oposicion/temario/fuentes/1D01/examen-espana/
+
+Después, para publicar: `python3 scripts/rama-publicada.py`, `git -C <worktree>
+push --force origin temario-publicado` y `python3 scripts/rama-publicada.py
+--comprobar` (paso 4), y en `main` `python3 scripts/temas-revisados-web.py`
+(paso 10b).
+
 ## Después (no forma parte del lanzamiento)
 
 - Los PDF del temario son públicos en raw/githack (la sesión solo decide qué
