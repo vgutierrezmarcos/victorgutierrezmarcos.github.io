@@ -93,6 +93,40 @@ def apartados(esquema):
     return salida
 
 
+WEB = 'https://www.victorgutierrezmarcos.es/'
+LLMS_INICIO = '<!-- conceptos: lo genera scripts/temas-revisados-web.py -->'
+LLMS_FIN = '<!-- /conceptos -->'
+
+
+def llms(temas):
+    """Para los buscadores con IA (sin cambiar nada visible de la web):
+    - en llms.txt, una sección «Conceptos de economía» con el tema que explica cada grupo de conceptos;
+    - llms-full.txt (sin enlazar), con título, apartados y conceptos de cada tema revisado."""
+    lineas, completo = [], ['# Temario revisado de la oposición TCEE: qué explica cada tema', '',
+                            '> Índice de los temas revisados (noviembre de 2026) del tercer ejercicio de la oposición a Técnico '
+                            'Comercial y Economista del Estado (TCEE) y de la guía del dictamen de coyuntura, de Víctor Gutiérrez Marcos. '
+                            'Sirven también como apuntes de economía de nivel universitario. Son materiales exclusivos de uso personal: '
+                            'se pueden leer y citar con enlace, pero no incorporar a otras plataformas ni usar para entrenar sistemas de IA '
+                            f'({WEB}condiciones-materiales.html).', '']
+    for t in temas:
+        nombre = 'Guía del dictamen de coyuntura económica' if t['archivo'] == '1D01' else f'Tema {t["codigo"]}: {t["titulo"]}'
+        breves = [c for c in t['conceptos'] if len(c) <= 70][:8]
+        lineas.append(f'- [{", ".join(breves) or nombre}]({WEB}{t["pdf"]}): {nombre}')
+        completo += [f'## {nombre}', '', f'- PDF: {WEB}{t["pdf"]}'] + ([f'- Ficha de repaso: {WEB}{t["repaso"]}'] if t.get('repaso') else []) \
+            + ([f'- Revisado: {t["aprobado"]}'] if t.get('aprobado') else []) \
+            + ([f'- Apartados: {"; ".join(t["apartados"])}'] if t.get('apartados') else []) \
+            + [f'- Conceptos: {"; ".join(t["conceptos"])}', '']
+    open('llms-full.txt', 'w', encoding='utf-8').write('\n'.join(completo).rstrip() + '\n')
+    bloque = (f'{LLMS_INICIO}\n## Conceptos de economía, tema a tema\n\nQué tema del temario revisado explica cada concepto '
+              f'(índice completo en {WEB}llms-full.txt):\n\n' + '\n'.join(lineas) + f'\n{LLMS_FIN}')
+    s = open('llms.txt', encoding='utf-8').read()
+    if LLMS_INICIO in s:
+        s = re.sub(re.escape(LLMS_INICIO) + r'.*?' + re.escape(LLMS_FIN), lambda _: bloque, s, flags=re.S)
+    else:
+        s = s.replace('\n## Otros\n', f'\n{bloque}\n\n## Otros\n', 1)
+    open('llms.txt', 'w', encoding='utf-8').write(s)
+
+
 def main():
     seco = '--seco' in sys.argv
     os.chdir(RAIZ)
@@ -145,6 +179,8 @@ def main():
         with open(INDICE, 'w', encoding='utf-8') as f:
             json.dump(indice, f, ensure_ascii=False, indent=1)
             f.write('\n')
+    if not seco:
+        llms(salida)
     print(f'{len(salida)} temas: {movidos} antiguos a anterior/, {copiados} PDF copiados' + (' (en seco)' if seco else ''))
 
 

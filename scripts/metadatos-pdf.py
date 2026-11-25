@@ -125,7 +125,7 @@ def _claves(conceptos, base):
     for c in conceptos:
         if len(claves) + len(c) + 2 > MAX_CLAVES:
             break
-        claves += ', ' + c.replace(',', ' ')
+        claves += ', ' + re.sub(r'\s+', ' ', re.sub(r'\s*[,;]\s*', ' ', c)).strip()
     return claves
 
 
