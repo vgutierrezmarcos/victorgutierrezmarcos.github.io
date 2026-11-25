@@ -90,7 +90,7 @@ que es público, aunque no se enlazaban desde ningún sitio. Lo hecho el 24/11/2
 
 Pendiente:
 
-- (a) Pedir a GitHub Support que purgue las vistas en caché y los commits
+- (a) ~~Pedir a GitHub Support que purgue~~ Víctor decidió no pedirlo (26/11/2026). Era: que purgue las vistas en caché y los commits
   sueltos (ruta `oposicion/temario/fuentes/1D01/examen-espana/` y los `.md` del
   ZIP; ramas `revision-temario-2` y `revision-temario`).
 - (b) Quedan copias en la historia de `main`: las referencias de la skill
