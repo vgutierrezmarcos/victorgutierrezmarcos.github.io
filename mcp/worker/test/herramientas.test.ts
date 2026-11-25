@@ -168,8 +168,10 @@ describe('herramientas', () => {
     const falta = await c.callTool({ name: 'leer_skill', arguments: { ruta: 'references/no-existe.md' } });
     expect(falta.isError).toBe(true);
     const info = c.getInstructions();
-    expect(info).toContain('leer_skill()');
+    expect(info).toContain('leer_skill(ruta)');
     expect(info).toContain('leer_metodo(tarea)');
+    expect(info).toContain('Complementa a su preparador');
+    expect(info).not.toMatch(/tribunal/i);
   });
 
   it('leer_metodo da la lista de tareas y, para cada una, el agente con las reglas comunes', async () => {
@@ -243,7 +245,7 @@ describe('herramientas', () => {
     expect((tcee.examenes as Obj[])[0]).toMatchObject({ ejercicio: '3', fecha: '2027-06-15' });
     expect((tcee.ultimosCantes as Obj[])[0]).toMatchObject({ id: 'c1', valoracion: 2 });
     expect(dce.oposicion).toBe('dce');
-    expect((e.contenido as Obj).temasRevisados).toEqual(['3.A.8']);
+    expect((e.contenido as Obj).temasConMaterialRevisado).toEqual(['3.A.8']);
     // Y las correcciones guardadas se pueden releer, recortadas salvo que se pida entero
     const inf = json(await c.callTool({ name: 'leer_informes_cante', arguments: {} }));
     expect((inf.informes as Obj[])[0]).toMatchObject({ canteId: 'c1', hechoPor: 'Claude', valoracion: 2 });

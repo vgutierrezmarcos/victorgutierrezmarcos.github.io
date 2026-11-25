@@ -100,4 +100,4 @@
 
 «Pizarra» dice si el guion del cante trae un «Plan de pizarra» (qué dibujar en cada apartado y en qué minuto): `references/pizarra.md`.
 
-Manifiesto de la rama temario-publicado: commit f4779178b5 (generado el 2026-11-25T00:46); skill construida el 2026-11-25 00:55.
+Manifiesto de la rama temario-publicado: commit f4779178b5 (generado el 2026-11-25T00:46); skill construida el 2026-11-25 09:37.

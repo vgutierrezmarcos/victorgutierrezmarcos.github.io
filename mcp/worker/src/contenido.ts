@@ -113,3 +113,63 @@ export class Contenido {
     return this.kv.get(`canon/${documento}.md`, 'text');
   }
 }
+
+const VACIAS = new Set(['los', 'las', 'del', 'que', 'con', 'por', 'para', 'una', 'unos', 'unas', 'como', 'sobre', 'segun', 'tema', 'temario', 'dice', 'cual', 'cuales', 'donde', 'esta', 'este', 'entre', 'sus', 'mas']);
+
+/** Palabras de una búsqueda (sin tildes, sin vacías); las cifras («4,2») se quedan. */
+export function palabrasBusqueda(consulta: string): string[] {
+  return sinAcentos(consulta)
+    .split(/[^a-z0-9ñ,.%-]+/)
+    .map((p) => p.replace(/^[.,-]+|[.,-]+$/g, ''))
+    .filter((p) => (p.length > 2 || /\d/.test(p)) && !VACIAS.has(p));
+}
+
+export interface Pasaje {
+  apartado: string;
+  texto: string;
+  coincidencias: number;
+}
+
+/**
+ * Los pasajes de un Markdown (párrafos, o cada viñeta de primer nivel de una lista) que llevan
+ * todas las palabras de la consulta (o, si ninguno las lleva todas, los que llevan más), con la
+ * ruta de títulos del apartado en el que están. Para encontrar un dato sin leer el tema entero.
+ */
+export function buscarEnMd(md: string, consulta: string, maximo = 8): Pasaje[] {
+  const palabras = palabrasBusqueda(consulta);
+  if (!palabras.length) return [];
+  const raiz = (p: string) => (/\d/.test(p) ? p : p.slice(0, Math.max(4, p.length - 2)));
+  const ruta: string[] = [];
+  const bloques: Array<{ apartado: string; texto: string }> = [];
+  let actual: string[] = [];
+  const cerrar = () => {
+    const texto = actual.join('\n').trim();
+    if (texto) bloques.push({ apartado: ruta.filter(Boolean).join(' › '), texto });
+    actual = [];
+  };
+  for (const linea of md.split('\n')) {
+    const h = /^(#{1,5})\s+(.*)$/.exec(linea);
+    if (h) {
+      cerrar();
+      ruta.length = h[1].length;
+      ruta[h[1].length - 1] = h[2].trim();
+      continue;
+    }
+    if (!linea.trim() || /^[-*+]\s/.test(linea) || /^\d+[.)]\s/.test(linea)) cerrar();
+    if (linea.trim()) actual.push(linea);
+  }
+  cerrar();
+  const puntuados = bloques.map((b) => {
+    const t = sinAcentos(b.texto);
+    const hay = palabras.filter((p) => t.includes(raiz(p))).length;
+    const veces = palabras.reduce((n, p) => n + t.split(raiz(p)).length - 1, 0);
+    return { ...b, hay, veces };
+  });
+  const mejor = Math.max(0, ...puntuados.map((b) => b.hay));
+  if (mejor === 0 || mejor < Math.min(palabras.length, 2)) return [];
+  return puntuados
+    .filter((b) => b.hay === mejor)
+    .sort((a, b) => b.veces - a.veces)
+    .slice(0, maximo)
+    .map((b) => ({ apartado: b.apartado, texto: b.texto.length > 1500 ? `${b.texto.slice(0, 1500)}…` : b.texto, coincidencias: b.hay }));
+}

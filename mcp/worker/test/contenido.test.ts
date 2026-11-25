@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { apartadosDe, codigoConPuntos, extraerApartado, normalizarCodigo } from '../src/contenido';
+import { apartadosDe, codigoConPuntos, extraerApartado, normalizarCodigo , buscarEnMd } from '../src/contenido';
 
 const md = `# Tema 3.A.8. Teoría de la demanda
 
@@ -46,5 +46,20 @@ describe('apartados', () => {
     expect(extraerApartado(md, 'estatica comparativa')).toContain('Slutsky');
     expect(extraerApartado(md, 'I')).toContain('Axiomas');
     expect(extraerApartado(md, 'no existe')).toBeNull();
+  });
+});
+
+describe('buscarEnMd', () => {
+  const md = '# Tema\n\n## I. Comercio\n\n### I.1. Datos\n\nEl volumen del comercio mundial de mercancías creció un 4,2 % en 2025 (OMC, 2026).\n\n- Primera viñeta sobre aranceles.\n- Segunda viñeta: el comercio de servicios creció un 8 %.\n\n## II. Otra cosa\n\nNada que ver.\n';
+  it('devuelve el pasaje con su apartado y respeta las cifras', () => {
+    const r = buscarEnMd(md, 'comercio mundial 2025');
+    expect(r).toHaveLength(1);
+    expect(r[0].apartado).toBe('Tema › I. Comercio › I.1. Datos');
+    expect(r[0].texto).toContain('4,2 %');
+    expect(buscarEnMd(md, '4,2')[0].texto).toContain('OMC');
+  });
+  it('separa las viñetas y no inventa coincidencias', () => {
+    expect(buscarEnMd(md, 'servicios')[0].texto).toBe('- Segunda viñeta: el comercio de servicios creció un 8 %.');
+    expect(buscarEnMd(md, 'teorema de Arrow')).toEqual([]);
   });
 });

@@ -256,9 +256,25 @@ def limpiar_md(md):
     md = re.sub(r'</?span[^>]*>', '', md)
     md = re.sub(r'^&nbsp;[ \t]*\n', '', md, flags=re.M)           # separador de dos listas seguidas
     md = re.sub(r'<div[^>]*>|</div>', '', md)
+    md = re.sub(r'\\\\(\S+?)\\\$', _formula_rota, md)          # «\\I\$» → «$I$» (fórmula que pandoc no reconoció)
+    md = '\n'.join(_sin_cline(l) for l in md.split('\n'))
+    md = '\n'.join(l for l in md.split('\n') if not re.fullmatch(r'\|(\s*\|)+\s*', l))   # filas de tabla vacías
     md = re.sub(r'[ \t]+$', '', md, flags=re.M)
     md = re.sub(r'\n{3,}', '\n\n', md)
     return md.strip() + '\n'
+
+
+def _formula_rota(m):
+    """Una fórmula en línea que pandoc dejó como texto escapado («\\\\\\gamma\\>\\pi\\$»): vuelve a $…$
+    sin los escapes de Markdown que le puso dentro (los que son de LaTeX, como \\gamma, se quedan)."""
+    return '$' + re.sub(r'\\([*_>\[\]<|])', r'\1', m.group(1)) + '$'
+
+
+def _sin_cline(linea):
+    """Fila de tabla con el resto de un \\cline{2-3} al principio de la primera celda: se quita."""
+    if not linea.startswith('|'):
+        return linea
+    return re.sub(r'^\|(\s*)\d+-\d+(?=\s*\||\s+(?:\*\*|[A-ZÁÉÍÓÚ]))\s*', r'|\1', linea)
 
 
 # --- Fichas de repaso (LaTeX → Markdown) -------------------------------------------

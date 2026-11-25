@@ -3,7 +3,7 @@
 
 # Convocatoria en curso, cifras de las últimas convocatorias y reglas del sorteo
 
-Proceso selectivo actualizado el 2026-11-24; cifras actualizadas el 2026-10-22 (BOE y Ministerio de Economía, Comercio y Empresa; cálculo propio).
+Proceso selectivo actualizado el 2026-11-25; cifras actualizadas el 2026-10-22 (BOE y Ministerio de Economía, Comercio y Empresa; cálculo propio).
 
 
 ## TCEE: convocatoria 2025 (en curso)
