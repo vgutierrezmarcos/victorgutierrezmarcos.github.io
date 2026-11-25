@@ -38,6 +38,8 @@ const EXCLUDE_PATTERNS = [
     /404\.html$/,
     /tema-no-disponible\.html$/,
     /^scripts\//,
+    /^mcp\//,      // código del conector (plantillas del Worker, página de acceso con noindex)
+    /^claude\//,
     /^backup\//,
     /(^|\/)oculto\//,
     /(^|\/)anterior\//,   // versiones antiguas de los temas revisados (la URL de siempre lleva al nuevo)
