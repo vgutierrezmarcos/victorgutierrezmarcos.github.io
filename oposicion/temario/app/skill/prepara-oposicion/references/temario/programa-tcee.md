@@ -21,101 +21,101 @@ Recursos: Simulador de test (https://www.victorgutierrezmarcos.es/oposicion/tema
 
 | Código | Título oficial | Estado |
 |---|---|---|
-| 3.A.1 | Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía conductual. | disponible |
-| 3.A.2 | Los economistas clásicos y Marx. | disponible |
-| 3.A.3 | Los economistas neoclásicos. | disponible |
-| 3.A.4 | El pensamiento económico de Keynes. Referencia a la economía postkeynesiana y el desequilibrio. | disponible |
-| 3.A.5 | La síntesis neoclásica. El monetarismo. | no disponible |
-| 3.A.6 | La nueva macroeconomía clásica. La hipótesis de las expectativas racionales; la crítica de Lucas; el surgimiento de los modelos dinámicos estocásticos de equilibrio general. | disponible |
-| 3.A.7 | La nueva economía keynesiana. Primera y segunda generación. | disponible |
-| 3.A.8 | Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos. | revisado el 2026-10-17 (tema, ficha, guion: temas/3A08/) |
-| 3.A.9 | Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar. | revisado el 2026-10-17 (tema, ficha, guion: temas/3A09/) |
-| 3.A.10 | Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre. | revisado el 2026-10-19 (tema, ficha: temas/3A10/) |
-| 3.A.11 | Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta. | revisado el 2026-10-17 (tema, ficha, guion: temas/3A11/) |
-| 3.A.12 | Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas. | revisado el 2026-10-17 (tema, ficha, guion: temas/3A12/) |
-| 3.A.13 | Economía de la información y teoría de la agencia: selección adversa y riesgo moral. | revisado el 2026-10-19 (tema, ficha: temas/3A13/) |
-| 3.A.14 | Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas. | revisado el 2026-10-21 (tema, ficha: temas/3A14/) |
-| 3.A.15 | La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción. La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables. | revisado el 2026-10-21 (tema, ficha: temas/3A15/) |
-| 3.A.16 | Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo; dinámicas de ajuste y estabilidad del equilibrio. Análisis de eficiencia y bienestar. | revisado el 2026-10-18 (tema, ficha: temas/3A16/) |
-| 3.A.17 | Análisis de mercados (II). Teoría del monopolio. Discriminación de precios. Monopolio natural. Producción conjunta. Análisis de eficiencia y bienestar. Monopsonio. Monopolio bilateral. | revisado el 2026-10-18 (tema, ficha: temas/3A17/) |
-| 3.A.18 | Análisis de mercados (III). Diferenciación de productos: la teoría de la competencia monopolística y otros desarrollos. | revisado el 2026-10-21 (tema, ficha: temas/3A18/) |
-| 3.A.19 | Análisis de mercados (IV). Teoría del oligopolio: soluciones no cooperativas y soluciones cooperativas. | revisado el 2026-10-21 (tema, ficha: temas/3A19/) |
-| 3.A.20 | Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas. | no disponible |
-| 3.A.21 | La teoría del equilibrio general. | revisado el 2026-10-17 (tema, ficha, guion: temas/3A21/) |
-| 3.A.22 | Economía del bienestar (I). Los teoremas fundamentales del bienestar. Óptimo económico y «second-best». | revisado el 2026-10-21 (tema, ficha: temas/3A22/) |
-| 3.A.23 | Economía del bienestar (II). Fallos de mercado: externalidades y bienes públicos. Intervención y fallos del sector público. | revisado el 2026-10-21 (tema, ficha: temas/3A23/) |
-| 3.A.24 | Economía del bienestar (III). Las funciones de bienestar social. Teoría de la elección colectiva. El teorema de imposibilidad de Arrow y desarrollos posteriores. | revisado el 2026-10-23 (tema: temas/3A24/) |
-| 3.A.25 | La teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo. Teoría del capital humano. Función de ingresos de capital humano y evidencia empírica. | disponible |
-| 3.A.26 | Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides. Costes de ajuste y dinámica de la demanda de trabajo. | disponible |
-| 3.A.27 | Determinación de salarios: modelos de negociación, salarios de eficiencia y contratos implícitos. | disponible |
-| 3.A.28 | La tasa natural de paro y la NAIRU. La persistencia del desempleo. | no disponible |
-| 3.A.29 | Modelización dinámica de las tomas de decisiones. Modelos de horizonte infinito y modelos de generaciones solapadas. | disponible |
-| 3.A.30 | Magnitudes macroeconómicas y contabilidad nacional. | disponible |
-| 3.A.31 | Análisis de las tablas «input-output». | no disponible |
-| 3.A.32 | El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta. | no disponible |
-| 3.A.33 | Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica. | disponible |
-| 3.A.34 | Teorías de la inversión en bienes de equipo. Incertidumbre e irreversibilidad de la inversión. Implicaciones de política económica. | disponible |
-| 3.A.35 | Teorías de la demanda de dinero. Implicaciones de política económica. | disponible |
-| 3.A.36 | Política monetaria (I). El diseño y la instrumentación de la política monetaria. | disponible |
-| 3.A.37 | Política monetaria (II). Los mecanismos de transmisión de la política monetaria convencional. Rigideces de precios, rigideces de salarios y fricciones financieras. Los mecanismos de transmisión de la política monetaria no convencional. | disponible |
-| 3.A.38 | La política fiscal: efectos sobre el crecimiento económico y el ahorro. | disponible |
-| 3.A.39 | Déficit público. Conceptos. Financiación y sus consecuencias macroeconómicas. Dominación monetaria y dominación fiscal. La dinámica de la deuda pública y su sostenibilidad. | disponible |
-| 3.A.40 | Efectividad e interrelación de las políticas monetaria y fiscal en las principales economías desarrolladas desde la Gran Recesión de 2008. El valor de los multiplicadores fiscales. | no disponible |
-| 3.A.41 | La inflación: causas y efectos sobre la eficiencia económica y el bienestar. Hiperinflación y deflación. | disponible |
-| 3.A.42 | Teorías de los ciclos económicos: ciclos nominales y reales. Referencia al ciclo financiero y sus interrelaciones con el ciclo real. | disponible |
-| 3.A.43 | Crecimiento económico (I). Acumulación de capital y progreso técnico exógeno. El modelo de Solow. El modelo de Solow aumentado con acumulación de capital humano. El modelo de Ramsey-Cass-Koopmans. | disponible |
-| 3.A.44 | Crecimiento económico (II). Modelos de crecimiento endógeno: rendimientos crecientes, capital humano e innovación tecnológica. | disponible |
-| 3.A.45 | Evidencia empírica sobre el crecimiento económico y la distribución de la renta entre los factores de producción. Contabilidad del crecimiento, con especial referencia a la productividad total de los factores. Convergencia económica internacional. | disponible |
+| 3.A.1 | Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía conductual. | revisado el 2026-11-25 (tema, ficha: temas/3A01/) |
+| 3.A.2 | Los economistas clásicos y Marx. | revisado el 2026-11-25 (tema, ficha: temas/3A02/) |
+| 3.A.3 | Los economistas neoclásicos. | revisado el 2026-11-25 (tema, ficha: temas/3A03/) |
+| 3.A.4 | El pensamiento económico de Keynes. Referencia a la economía postkeynesiana y el desequilibrio. | revisado el 2026-11-25 (tema, ficha: temas/3A04/) |
+| 3.A.5 | La síntesis neoclásica. El monetarismo. | revisado el 2026-11-25 (tema, ficha: temas/3A05/) |
+| 3.A.6 | La nueva macroeconomía clásica. La hipótesis de las expectativas racionales; la crítica de Lucas; el surgimiento de los modelos dinámicos estocásticos de equilibrio general. | revisado el 2026-11-25 (tema, ficha: temas/3A06/) |
+| 3.A.7 | La nueva economía keynesiana. Primera y segunda generación. | revisado el 2026-11-25 (tema, ficha: temas/3A07/) |
+| 3.A.8 | Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos. | revisado el 2026-11-25 (tema, ficha, guion: temas/3A08/) |
+| 3.A.9 | Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar. | revisado el 2026-11-25 (tema, ficha, guion: temas/3A09/) |
+| 3.A.10 | Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre. | revisado el 2026-11-25 (tema, ficha: temas/3A10/) |
+| 3.A.11 | Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta. | revisado el 2026-11-25 (tema, ficha, guion: temas/3A11/) |
+| 3.A.12 | Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas. | revisado el 2026-11-25 (tema, ficha, guion: temas/3A12/) |
+| 3.A.13 | Economía de la información y teoría de la agencia: selección adversa y riesgo moral. | revisado el 2026-11-25 (tema, ficha: temas/3A13/) |
+| 3.A.14 | Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas. | revisado el 2026-11-25 (tema, ficha: temas/3A14/) |
+| 3.A.15 | La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción. La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables. | revisado el 2026-11-25 (tema, ficha: temas/3A15/) |
+| 3.A.16 | Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo; dinámicas de ajuste y estabilidad del equilibrio. Análisis de eficiencia y bienestar. | revisado el 2026-11-25 (tema, ficha: temas/3A16/) |
+| 3.A.17 | Análisis de mercados (II). Teoría del monopolio. Discriminación de precios. Monopolio natural. Producción conjunta. Análisis de eficiencia y bienestar. Monopsonio. Monopolio bilateral. | revisado el 2026-11-25 (tema, ficha: temas/3A17/) |
+| 3.A.18 | Análisis de mercados (III). Diferenciación de productos: la teoría de la competencia monopolística y otros desarrollos. | revisado el 2026-11-25 (tema, ficha: temas/3A18/) |
+| 3.A.19 | Análisis de mercados (IV). Teoría del oligopolio: soluciones no cooperativas y soluciones cooperativas. | revisado el 2026-11-25 (tema, ficha: temas/3A19/) |
+| 3.A.20 | Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas. | revisado el 2026-11-25 (tema, ficha: temas/3A20/) |
+| 3.A.21 | La teoría del equilibrio general. | revisado el 2026-11-25 (tema, ficha, guion: temas/3A21/) |
+| 3.A.22 | Economía del bienestar (I). Los teoremas fundamentales del bienestar. Óptimo económico y «second-best». | revisado el 2026-11-25 (tema, ficha: temas/3A22/) |
+| 3.A.23 | Economía del bienestar (II). Fallos de mercado: externalidades y bienes públicos. Intervención y fallos del sector público. | revisado el 2026-11-25 (tema, ficha: temas/3A23/) |
+| 3.A.24 | Economía del bienestar (III). Las funciones de bienestar social. Teoría de la elección colectiva. El teorema de imposibilidad de Arrow y desarrollos posteriores. | revisado el 2026-11-25 (tema, ficha: temas/3A24/) |
+| 3.A.25 | La teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo. Teoría del capital humano. Función de ingresos de capital humano y evidencia empírica. | revisado el 2026-11-25 (tema, ficha: temas/3A25/) |
+| 3.A.26 | Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides. Costes de ajuste y dinámica de la demanda de trabajo. | revisado el 2026-11-25 (tema, ficha: temas/3A26/) |
+| 3.A.27 | Determinación de salarios: modelos de negociación, salarios de eficiencia y contratos implícitos. | revisado el 2026-11-25 (tema, ficha: temas/3A27/) |
+| 3.A.28 | La tasa natural de paro y la NAIRU. La persistencia del desempleo. | revisado el 2026-11-25 (tema, ficha: temas/3A28/) |
+| 3.A.29 | Modelización dinámica de las tomas de decisiones. Modelos de horizonte infinito y modelos de generaciones solapadas. | revisado el 2026-11-25 (tema, ficha: temas/3A29/) |
+| 3.A.30 | Magnitudes macroeconómicas y contabilidad nacional. | revisado el 2026-11-25 (tema, ficha: temas/3A30/) |
+| 3.A.31 | Análisis de las tablas «input-output». | revisado el 2026-11-25 (tema, ficha: temas/3A31/) |
+| 3.A.32 | El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta. | revisado el 2026-11-25 (tema, ficha: temas/3A32/) |
+| 3.A.33 | Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica. | revisado el 2026-11-25 (tema, ficha: temas/3A33/) |
+| 3.A.34 | Teorías de la inversión en bienes de equipo. Incertidumbre e irreversibilidad de la inversión. Implicaciones de política económica. | revisado el 2026-11-25 (tema, ficha: temas/3A34/) |
+| 3.A.35 | Teorías de la demanda de dinero. Implicaciones de política económica. | revisado el 2026-11-25 (tema, ficha: temas/3A35/) |
+| 3.A.36 | Política monetaria (I). El diseño y la instrumentación de la política monetaria. | revisado el 2026-11-25 (tema, ficha: temas/3A36/) |
+| 3.A.37 | Política monetaria (II). Los mecanismos de transmisión de la política monetaria convencional. Rigideces de precios, rigideces de salarios y fricciones financieras. Los mecanismos de transmisión de la política monetaria no convencional. | revisado el 2026-11-25 (tema, ficha: temas/3A37/) |
+| 3.A.38 | La política fiscal: efectos sobre el crecimiento económico y el ahorro. | revisado el 2026-11-25 (tema, ficha: temas/3A38/) |
+| 3.A.39 | Déficit público. Conceptos. Financiación y sus consecuencias macroeconómicas. Dominación monetaria y dominación fiscal. La dinámica de la deuda pública y su sostenibilidad. | revisado el 2026-11-25 (tema, ficha: temas/3A39/) |
+| 3.A.40 | Efectividad e interrelación de las políticas monetaria y fiscal en las principales economías desarrolladas desde la Gran Recesión de 2008. El valor de los multiplicadores fiscales. | revisado el 2026-11-25 (tema, ficha: temas/3A40/) |
+| 3.A.41 | La inflación: causas y efectos sobre la eficiencia económica y el bienestar. Hiperinflación y deflación. | revisado el 2026-11-25 (tema, ficha: temas/3A41/) |
+| 3.A.42 | Teorías de los ciclos económicos: ciclos nominales y reales. Referencia al ciclo financiero y sus interrelaciones con el ciclo real. | revisado el 2026-11-25 (tema, ficha: temas/3A42/) |
+| 3.A.43 | Crecimiento económico (I). Acumulación de capital y progreso técnico exógeno. El modelo de Solow. El modelo de Solow aumentado con acumulación de capital humano. El modelo de Ramsey-Cass-Koopmans. | revisado el 2026-11-25 (tema, ficha: temas/3A43/) |
+| 3.A.44 | Crecimiento económico (II). Modelos de crecimiento endógeno: rendimientos crecientes, capital humano e innovación tecnológica. | revisado el 2026-11-25 (tema, ficha: temas/3A44/) |
+| 3.A.45 | Evidencia empírica sobre el crecimiento económico y la distribución de la renta entre los factores de producción. Contabilidad del crecimiento, con especial referencia a la productividad total de los factores. Convergencia económica internacional. | revisado el 2026-11-25 (tema, ficha: temas/3A45/) |
 
 ### Parte B. Economía Financiera, Economía Internacional y Relaciones Económicas Internacionales
 
 | Código | Título oficial | Estado |
 |---|---|---|
-| 3.B.1 | La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa. | disponible |
-| 3.B.2 | La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital. | disponible |
-| 3.B.3 | La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital. | disponible |
-| 3.B.4 | Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas. | disponible |
-| 3.B.5 | Teoría del comercio internacional (I). La teoría ricardiana de la ventaja comparativa. Determinación de la relación real de intercambio. El modelo de factores específicos. El Modelo Hecksher-Ohlin-Samuelson (H-O-S); teoremas derivados del modelo y extensiones. | disponible |
-| 3.B.6 | Teoría del comercio internacional (II). Nueva teoría del comercio internacional. Especial referencia a la competencia imperfecta, los rendimientos crecientes y la heterogeneidad empresarial. | disponible |
-| 3.B.7 | La política comercial (I). Instrumentos y efectos. Barreras arancelarias y no arancelarias. Otros instrumentos tradicionales. | disponible |
-| 3.B.8 | La política comercial (II). La política comercial estratégica. | disponible |
-| 3.B.9 | Comercio internacional y crecimiento económico. Especial referencia a los efectos del comercio sobre el crecimiento. | disponible |
-| 3.B.10 | Teoría de la integración económica. | disponible |
-| 3.B.11 | Balanza de pagos: concepto, medición e interpretación. | disponible |
-| 3.B.12 | Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior. | disponible |
-| 3.B.13 | Mercados de divisas: operaciones e instrumentos. | disponible |
-| 3.B.14 | Teorías de la determinación del tipo de cambio. | disponible |
-| 3.B.15 | Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio. | disponible |
-| 3.B.16 | Teoría de la integración monetaria. | disponible |
-| 3.B.17 | Teorías explicativas de las crisis de balanza de pagos. | disponible |
-| 3.B.18 | La nueva globalización económica y financiera. Determinantes y efectos de los movimientos internacionales de factores productivos: movilidad de trabajadores, inversión de cartera e inversión directa, con especial referencia a las cadenas globales de valor. | no disponible |
-| 3.B.19 | La coordinación internacional de políticas económicas. Aspectos teóricos y prácticos. El G-20, la OCDE y otros foros internacionales. | disponible |
-| 3.B.20 | El sistema económico internacional desde el siglo XIX hasta la ruptura del sistema de Bretton-Woods. | disponible |
-| 3.B.21 | El sistema económico internacional desde la desaparición del sistema de Bretton-Woods. | disponible |
-| 3.B.22 | El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis. | disponible |
-| 3.B.23 | Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico. | disponible |
-| 3.B.24 | Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad. | disponible |
-| 3.B.25 | Análisis de los instrumentos y de los mercados de derivados. | disponible |
-| 3.B.26 | Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras. | no disponible |
-| 3.B.27 | Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica. | disponible |
-| 3.B.28 | Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas. | disponible |
-| 3.B.29 | La financiación exterior del desarrollo económico. El problema de la deuda externa. La ayuda al desarrollo. | no disponible |
-| 3.B.30 | El Grupo del Banco Mundial, los Bancos Regionales de Desarrollo y otras instituciones financieras multilaterales de desarrollo. | no disponible |
-| 3.B.31 | El cambio climático y su impacto en la economía. Evidencia y modelos integrados de evaluación. Acuerdos internacionales y principales medidas adoptadas para hacer frente al cambio climático. | no disponible |
-| 3.B.32 | Perspectivas económicas mundiales. Estructura sectorial y geográfica de los flujos comerciales y financieros internacionales. Las nuevas áreas emergentes. | no disponible |
-| 3.B.33 | La OMC. Antecedentes y Organización actual. El GATT y los Acuerdos sobre el comercio de mercancías. Situación actual. | disponible |
-| 3.B.34 | La OMC. Los acuerdos distintos de los de mercancías. | disponible |
-| 3.B.35 | Procesos de integración no comunitarios. | disponible |
-| 3.B.36 | Tratados, orden jurídico e instituciones de la Unión Europea. | disponible |
-| 3.B.37 | Las finanzas de la Unión Europea y el presupuesto comunitario. El marco financiero plurianual actual. | disponible |
-| 3.B.38 | La política agrícola de la Unión Europea. Problemas económicos y procesos de reforma. La política pesquera común. | no disponible |
-| 3.B.39 | El mercado único de la Unión Europea. El principio de libre circulación de mercancías, servicios, personas y capitales. La política de competencia. | disponible |
-| 3.B.40 | La Cohesión Económica y Social en la Unión Europea: política regional e instrumentos presupuestarios y financieros. Política social y de empleo. El proceso de convergencia real en la Unión Europea. | disponible |
-| 3.B.41 | La política comercial de la Unión Europea. | disponible |
-| 3.B.42 | Las relaciones económicas exteriores de la Unión Europea. La política de cooperación al desarrollo de la Unión Europea. | disponible |
-| 3.B.43 | El origen del euro: funcionamiento y evolución del Sistema Monetario Europeo. Los criterios de convergencia nominal. El Sistema Europeo de Bancos Centrales: objetivos e instrumentos. La política monetaria en la Eurozona desde 2009. | no disponible |
-| 3.B.44 | La Unión Bancaria: Pilares y Código normativo único. La Unión de Mercados de Capitales. | no disponible |
-| 3.B.45 | La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento de Desequilibrios Macroeconómicos. El Mecanismo Europeo de Estabilidad. La respuesta común de política fiscal a partir de la covid-19. | no disponible |
+| 3.B.1 | La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa. | revisado el 2026-11-25 (tema, ficha: temas/3B01/) |
+| 3.B.2 | La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital. | revisado el 2026-11-25 (tema, ficha: temas/3B02/) |
+| 3.B.3 | La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital. | revisado el 2026-11-25 (tema, ficha: temas/3B03/) |
+| 3.B.4 | Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas. | revisado el 2026-11-25 (tema, ficha: temas/3B04/) |
+| 3.B.5 | Teoría del comercio internacional (I). La teoría ricardiana de la ventaja comparativa. Determinación de la relación real de intercambio. El modelo de factores específicos. El Modelo Hecksher-Ohlin-Samuelson (H-O-S); teoremas derivados del modelo y extensiones. | revisado el 2026-11-25 (tema, ficha: temas/3B05/) |
+| 3.B.6 | Teoría del comercio internacional (II). Nueva teoría del comercio internacional. Especial referencia a la competencia imperfecta, los rendimientos crecientes y la heterogeneidad empresarial. | revisado el 2026-11-25 (tema, ficha: temas/3B06/) |
+| 3.B.7 | La política comercial (I). Instrumentos y efectos. Barreras arancelarias y no arancelarias. Otros instrumentos tradicionales. | revisado el 2026-11-25 (tema, ficha: temas/3B07/) |
+| 3.B.8 | La política comercial (II). La política comercial estratégica. | revisado el 2026-11-25 (tema, ficha: temas/3B08/) |
+| 3.B.9 | Comercio internacional y crecimiento económico. Especial referencia a los efectos del comercio sobre el crecimiento. | revisado el 2026-11-25 (tema, ficha: temas/3B09/) |
+| 3.B.10 | Teoría de la integración económica. | revisado el 2026-11-25 (tema, ficha: temas/3B10/) |
+| 3.B.11 | Balanza de pagos: concepto, medición e interpretación. | revisado el 2026-11-25 (tema, ficha: temas/3B11/) |
+| 3.B.12 | Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior. | revisado el 2026-11-25 (tema, ficha: temas/3B12/) |
+| 3.B.13 | Mercados de divisas: operaciones e instrumentos. | revisado el 2026-11-25 (tema, ficha: temas/3B13/) |
+| 3.B.14 | Teorías de la determinación del tipo de cambio. | revisado el 2026-11-25 (tema, ficha: temas/3B14/) |
+| 3.B.15 | Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio. | revisado el 2026-11-25 (tema, ficha: temas/3B15/) |
+| 3.B.16 | Teoría de la integración monetaria. | revisado el 2026-11-25 (tema, ficha: temas/3B16/) |
+| 3.B.17 | Teorías explicativas de las crisis de balanza de pagos. | revisado el 2026-11-25 (tema, ficha: temas/3B17/) |
+| 3.B.18 | La nueva globalización económica y financiera. Determinantes y efectos de los movimientos internacionales de factores productivos: movilidad de trabajadores, inversión de cartera e inversión directa, con especial referencia a las cadenas globales de valor. | revisado el 2026-11-25 (tema, ficha: temas/3B18/) |
+| 3.B.19 | La coordinación internacional de políticas económicas. Aspectos teóricos y prácticos. El G-20, la OCDE y otros foros internacionales. | revisado el 2026-11-25 (tema, ficha: temas/3B19/) |
+| 3.B.20 | El sistema económico internacional desde el siglo XIX hasta la ruptura del sistema de Bretton-Woods. | revisado el 2026-11-25 (tema, ficha: temas/3B20/) |
+| 3.B.21 | El sistema económico internacional desde la desaparición del sistema de Bretton-Woods. | revisado el 2026-11-25 (tema, ficha: temas/3B21/) |
+| 3.B.22 | El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis. | revisado el 2026-11-25 (tema, ficha: temas/3B22/) |
+| 3.B.23 | Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico. | revisado el 2026-11-25 (tema, ficha: temas/3B23/) |
+| 3.B.24 | Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad. | revisado el 2026-11-25 (tema, ficha: temas/3B24/) |
+| 3.B.25 | Análisis de los instrumentos y de los mercados de derivados. | revisado el 2026-11-25 (tema, ficha: temas/3B25/) |
+| 3.B.26 | Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras. | revisado el 2026-11-25 (tema, ficha: temas/3B26/) |
+| 3.B.27 | Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica. | revisado el 2026-11-25 (tema, ficha: temas/3B27/) |
+| 3.B.28 | Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas. | revisado el 2026-11-25 (tema, ficha: temas/3B28/) |
+| 3.B.29 | La financiación exterior del desarrollo económico. El problema de la deuda externa. La ayuda al desarrollo. | revisado el 2026-11-25 (tema, ficha: temas/3B29/) |
+| 3.B.30 | El Grupo del Banco Mundial, los Bancos Regionales de Desarrollo y otras instituciones financieras multilaterales de desarrollo. | revisado el 2026-11-25 (tema, ficha: temas/3B30/) |
+| 3.B.31 | El cambio climático y su impacto en la economía. Evidencia y modelos integrados de evaluación. Acuerdos internacionales y principales medidas adoptadas para hacer frente al cambio climático. | revisado el 2026-11-25 (tema, ficha: temas/3B31/) |
+| 3.B.32 | Perspectivas económicas mundiales. Estructura sectorial y geográfica de los flujos comerciales y financieros internacionales. Las nuevas áreas emergentes. | revisado el 2026-11-25 (tema, ficha: temas/3B32/) |
+| 3.B.33 | La OMC. Antecedentes y Organización actual. El GATT y los Acuerdos sobre el comercio de mercancías. Situación actual. | revisado el 2026-11-25 (tema, ficha: temas/3B33/) |
+| 3.B.34 | La OMC. Los acuerdos distintos de los de mercancías. | revisado el 2026-11-25 (tema, ficha: temas/3B34/) |
+| 3.B.35 | Procesos de integración no comunitarios. | revisado el 2026-11-25 (tema, ficha: temas/3B35/) |
+| 3.B.36 | Tratados, orden jurídico e instituciones de la Unión Europea. | revisado el 2026-11-25 (tema, ficha: temas/3B36/) |
+| 3.B.37 | Las finanzas de la Unión Europea y el presupuesto comunitario. El marco financiero plurianual actual. | revisado el 2026-11-25 (tema, ficha: temas/3B37/) |
+| 3.B.38 | La política agrícola de la Unión Europea. Problemas económicos y procesos de reforma. La política pesquera común. | revisado el 2026-11-25 (tema, ficha: temas/3B38/) |
+| 3.B.39 | El mercado único de la Unión Europea. El principio de libre circulación de mercancías, servicios, personas y capitales. La política de competencia. | revisado el 2026-11-25 (tema, ficha: temas/3B39/) |
+| 3.B.40 | La Cohesión Económica y Social en la Unión Europea: política regional e instrumentos presupuestarios y financieros. Política social y de empleo. El proceso de convergencia real en la Unión Europea. | revisado el 2026-11-25 (tema, ficha: temas/3B40/) |
+| 3.B.41 | La política comercial de la Unión Europea. | revisado el 2026-11-25 (tema, ficha: temas/3B41/) |
+| 3.B.42 | Las relaciones económicas exteriores de la Unión Europea. La política de cooperación al desarrollo de la Unión Europea. | revisado el 2026-11-25 (tema, ficha: temas/3B42/) |
+| 3.B.43 | El origen del euro: funcionamiento y evolución del Sistema Monetario Europeo. Los criterios de convergencia nominal. El Sistema Europeo de Bancos Centrales: objetivos e instrumentos. La política monetaria en la Eurozona desde 2009. | revisado el 2026-11-25 (tema, ficha: temas/3B43/) |
+| 3.B.44 | La Unión Bancaria: Pilares y Código normativo único. La Unión de Mercados de Capitales. | revisado el 2026-11-25 (tema, ficha: temas/3B44/) |
+| 3.B.45 | La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento de Desequilibrios Macroeconómicos. El Mecanismo Europeo de Estabilidad. La respuesta común de política fiscal a partir de la covid-19. | revisado el 2026-11-25 (tema, ficha: temas/3B45/) |
 
 ## Cuarto ejercicio: Economía Española y Hacienda Pública
 

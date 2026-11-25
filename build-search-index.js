@@ -67,6 +67,14 @@ searchIndex.pages = [
     content: 'Estrategia, cronogramas, plantillas y recursos para organizar el estudio'
   },
   {
+    id: 'economia',
+    title: 'EconomIA',
+    url: '/oposicion/economia.html',
+    description: 'Conector para Claude, ChatGPT, Le Chat y Gemini que corrige tus cantes y dictámenes, resuelve dudas con el temario, organiza tu cronograma y te pregunta como el tribunal',
+    keywords: ['ia', 'claude', 'chatgpt', 'le chat', 'mistral', 'gemini', 'conector', 'skill', 'inteligencia artificial', 'IA', 'corregir cante', 'corrector', 'dictamen', 'dudas', 'cronograma', 'tribunal', 'simulacro', 'test personal', 'anthropic', 'exportar datos'],
+    content: 'Qué hace cada agente, en qué IA funciona y qué plan pide cada una, cómo añadir el conector paso a paso, cómo corregir un cante y un dictamen, cómo hacer el cronograma, privacidad, licencia y preguntas frecuentes'
+  },
+  {
     id: 'enlaces',
     title: 'Enlaces',
     url: 'enlaces.html',

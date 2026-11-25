@@ -35,7 +35,7 @@ SALIDA = os.path.join(RAIZ, 'oposicion', 'exclusivos.json')
 REVISION = os.path.join(os.path.dirname(RAIZ), 'victorgutierrezmarcos.github.io-revision-2', 'oposicion', 'temario', 'app', 'revisados.json')
 # Códigos que no se listan en la web (los pone y quita scripts/prepara-con-claude-visible.py); el fichero sigue
 # llevando el material, con su url, para que el botón de descarga de su página funcione
-OCULTOS = {'prepara-con-claude'}
+OCULTOS = set()
 REVISION_RAW = 'https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/temario-publicado/oposicion/temario/app/revisados.json'
 
 CORTE = '2026-10-01'

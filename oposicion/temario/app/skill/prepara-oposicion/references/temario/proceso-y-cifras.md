@@ -3,7 +3,7 @@
 
 # Convocatoria en curso, cifras de las últimas convocatorias y reglas del sorteo
 
-Proceso selectivo actualizado el 2026-11-20; cifras actualizadas el 2026-10-22 (BOE y Ministerio de Economía, Comercio y Empresa; cálculo propio).
+Proceso selectivo actualizado el 2026-11-24; cifras actualizadas el 2026-10-22 (BOE y Ministerio de Economía, Comercio y Empresa; cálculo propio).
 
 
 ## TCEE: convocatoria 2025 (en curso)
@@ -168,6 +168,7 @@ Página del Ministerio: https://portal.mineco.gob.es/es-es/ministerio/empleo/Pag
 
 - Convocatoria e instrucciones (publicado el 2026-10-14) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025DIPLOS_Ej4_CONV_Instrucciones.pdf
 - Convocatoria de lecturas (publicado el 2026-10-20) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025DIPLOS_Ej4_Lecturas.pdf
+- Aprobados cuarto ejercicio (publicado el 2026-11-24) — https://portal.mineco.gob.es/RecursosEmpleo/mineco/ministerio/empleo/ficheros/OEP2025DIPLOS_Ej4_Aprobados.pdf
 
 Convocatorias anteriores con documentos en la web: 2024.
 

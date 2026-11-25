@@ -124,7 +124,7 @@
     // URL directa no pasan por aquí (son ficheros estáticos).
     // Interruptor (scripts/temas-web-visible.py --mostrar | --ocultar): con false,
     // todo sigue como antes y los temas revisados solo se leen en la app.
-    var TEMAS_EN_WEB = false;
+    var TEMAS_EN_WEB = true;
     var REPO = 'vgutierrezmarcos/victorgutierrezmarcos.github.io';
     var MANIFIESTO = 'https://raw.githubusercontent.com/' + REPO + '/temario-publicado/oposicion/temario/app/revisados.json';
     var PAGINA_TEMA = RAIZ + 'oposicion/temario/tema-revisado.html';
