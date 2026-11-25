@@ -11,7 +11,7 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 
 ## Publicado el 25 nov. 2026 (1.26.0 en producción)
 
-Novedad en `novedades.json`: «La app, en su versión 1.26.0 de Google Play: los 90 temas revisados del tercer ejercicio y la guía del dictamen con tu cuenta de Google; tu IA a un toque con EconomIA; «Sugerir una mejora» en cada tema y ficha; transcribir el cante y grabar la pizarra para que tu IA lo corrija; clases presenciales u online con los temas que quieres cantar y un cronómetro nuevo; y borrar tus datos de una oposición». Resumía:
+Novedad en `novedades.json`: «Nueva versión de la app «Oposición TCEE · DCE» (1.26.0 en Google Play): EconomIA integrada y un banco de más de 1.000 preguntas de test revisadas de los 90 temas, además de las de los exámenes oficiales». Resumía:
 
 - (20 nov., siguiente versión) La burbuja de EconomIA sale desde el principio en Inicio, los temas, los tests, el cronograma y los cantes: la primera vez te ayuda a elegir y conectar tu IA, y luego la abre con el mensaje ya escrito (en un tema, «Tengo una duda de este tema»). Se oculta en Más → EconomIA, que ahora dice arriba en qué IA lo tienes configurado
 - (20 nov., siguiente versión) Los temas revisados (exclusivos) piden iniciar sesión con Google para leerlos, en vez de abrir la versión antigua
