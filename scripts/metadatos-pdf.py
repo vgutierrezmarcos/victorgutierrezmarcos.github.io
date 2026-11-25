@@ -40,6 +40,7 @@ EXCLUSIVOS = set()  # los PDF de los temas revisados (licencia de uso personal, 
 REVISADOS_WEB = 'oposicion/temario/revisados-web.json'  # scripts/temas-revisados-web.py
 CONDICIONES = 'https://www.victorgutierrezmarcos.es/condiciones-materiales.html'
 EXCLUSIVO = 'material exclusivo para tu estudio personal; no se autoriza su incorporación a otras plataformas, aplicaciones o servicios'
+CLAVES_ANTERIOR = 'versión anterior del tema'
 MAX_CLAVES = 1500  # caracteres de /Keywords (los conceptos del índice del tema)
 EJERCICIO = {'1': 'primer', '2': 'segundo', '3': 'tercer', '4': 'cuarto', '5': 'quinto'}
 OPO = 'oposición a Técnico Comercial y Economista del Estado (TCEE)'
@@ -163,7 +164,16 @@ def revisados():
 def titulados():
     """Todos los PDF con título: los enlazados desde /oposicion/ y los temas revisados."""
     salida = {ruta: metadatos(ruta, texto) for ruta, texto in enlaces().items()}
-    salida.update(revisados())
+    nuevos = revisados()
+    salida.update(nuevos)
+    # Las versiones antiguas (anterior/): el mismo título con «(versión anterior)», que es lo que
+    # enseña la pestaña del navegador. Siguen con su licencia CC (no están en EXCLUSIVOS).
+    if os.path.exists(os.path.join(RAIZ, REVISADOS_WEB)):
+        for t in json.load(open(os.path.join(RAIZ, REVISADOS_WEB), encoding='utf-8'))['temas']:
+            if t.get('anterior') and t['pdf'] in nuevos:
+                titulo, asunto, _ = nuevos[t['pdf']]
+                salida[t['anterior']] = (f'{titulo} (versión anterior)',
+                                         'Versión anterior. ' + asunto.split(' Apartados:')[0], CLAVES_ANTERIOR)
     return salida
 
 

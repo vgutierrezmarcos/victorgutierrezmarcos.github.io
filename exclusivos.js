@@ -74,6 +74,9 @@
     function lista(datos) {
         var cont = document.getElementById('exclusivos-lista');
         if (!cont) return;
+        // Desplegable cerrado al final de /oposicion/temario.html: si se llega con #materiales-exclusivos, abierto.
+        var caja = document.getElementById('materiales-exclusivos');
+        if (caja && caja.tagName === 'DETAILS' && location.hash === '#materiales-exclusivos') caja.open = true;
         var app = datos.materiales.filter(function (m) { return m.donde === 'app' && !m.oculto; });
         var web = datos.materiales.filter(function (m) { return m.donde === 'web' && !m.oculto; });
         function grupo(titulo, items, nota) {
@@ -89,7 +92,7 @@
                 var t = m.codigo && m.tipo === 'tema' ? '<strong>' + m.codigo + '</strong> <span class="exclusivos-nombre">' + m.titulo.replace(/\.$/, '') + '</span>' : m.titulo;
                 var revisado = m.tipo === 'tema' || m.tipo === 'guia';
                 // En los temas y la guía los formatos son siempre los mismos: solo la fecha.
-                var det = [revisado ? '' : formatos(m.formatos), m.fecha ? (revisado ? 'Revisado el ' : 'publicado el ') + fecha(m.fecha || m.revisado) : ''].filter(Boolean).join(' · ');
+                var det = revisado ? '' : [formatos(m.formatos), m.fecha ? (revisado ? 'Revisado el ' : 'publicado el ') + fecha(m.fecha || m.revisado) : ''].filter(Boolean).join(' · ');
                 if (m.tipo === 'skill') t = '<a href="' + RAIZ + 'oposicion/economia.html">' + m.titulo + '</a>';
                 li.innerHTML = (m.ruta ? '<a href="' + RAIZ + m.ruta + '" target="_blank">' + t + '</a>' : t) + (det ? '<span class="exclusivos-detalle">' + det + '</span>' : '');
                 ul.appendChild(li);
@@ -192,6 +195,12 @@
     }
 
     function urlTema(archivo) { return PAGINA_TEMA + '?tema=' + encodeURIComponent(archivo); }
+    /** Lo que abre un tema revisado con sesión: su PDF en la URL de siempre (o su Word nuevo, si el enlace era al Word). */
+    function destinoRevisado(rev, word) {
+        var m = manifiestoListo || {};
+        if (word && rev.t.docx && rev.t.docx.ruta) return (m.raw || ('https://raw.githubusercontent.com/' + REPO + '/temario-publicado/')) + rev.t.docx.ruta;
+        return rev.t.pdf && rev.t.pdf.ruta ? pdfWeb(rev.t.pdf.ruta) : urlTema(rev.t.archivo);
+    }
 
     /** El tema al que lleva un enlace (su archivo), o null. */
     function temaDelEnlace(a) {
@@ -199,7 +208,7 @@
         var u;
         try { u = new URL(a.getAttribute('href'), location.href); } catch (e) { return null; }
         if (u.origin !== location.origin) return null;
-        var p = u.pathname, m = p.match(/\/temario\/tercer-ejercicio\/(3[AB]\d\d)\.pdf$/);
+        var p = u.pathname, m = p.match(/\/temario\/tercer-ejercicio\/(3[AB]\d\d)\.(?:pdf|docx)$/);
         if (m) return m[1];
         if (/\/tema-no-disponible\.html$/.test(p)) return archivoDe(u.searchParams.get('tema'));
         if (/\/temario\/primer-ejercicio\/esquema_dictamen_economico\.pdf$/.test(p)) return '1D01';
@@ -210,7 +219,7 @@
     function antiguoDelEnlace(a) {
         var href = a.getAttribute('href') || '';
         if (!href || href === '#' || /tema-no-disponible\.html/.test(href)) return null;
-        return aAnterior(a.href);
+        return /\.docx$/.test(a.href) ? a.href : aAnterior(a.href);
     }
 
     // Sesión de Firebase: auth.js lo carga después de este script.
@@ -281,9 +290,9 @@
         var nombre = datos.guia ? 'La guía del dictamen' : 'El tema ' + (datos.codigo || '');
         var nuevo = datos.guia ? 'la guía nueva' : 'el tema nuevo';
         caja.innerHTML =
-            '<p class="aviso-revisado-etiqueta"><span class="etiqueta-exclusivo">Exclusivo</span> Revisado' + (datos.fecha ? ' el ' + fechaCorta(datos.fecha) : '') + '</p>' +
+            '<p class="aviso-revisado-etiqueta"><span class="etiqueta-exclusivo">Exclusivo</span>' + (datos.fecha ? ' ' + fechaCorta(datos.fecha) : '') + '</p>' +
             '<h2 id="aviso-revisado-titulo">Inicia sesión para ver ' + nuevo + '</h2>' +
-            '<p>' + nombre + ' está ' + (datos.guia ? 'revisada' : 'revisado') + ' a fondo: datos al día, gráficos nuevos y ' + (datos.guia ? 'resumen' : 'ficha') + ' de repaso, en página web, PDF y Word. ' +
+            '<p>' + nombre + ' tiene versión nueva: datos al día, gráficos nuevos y ' + (datos.guia ? 'resumen' : 'ficha') + ' de repaso. ' +
             'Se lee con tu cuenta de Google y es para tu estudio personal (<a href="' + CONDICIONES + '">condiciones</a>).</p>' +
             '<div class="botones aviso-revisado-botones"></div>' +
             '<p class="aviso-revisado-error" role="alert" hidden></p>';
@@ -300,7 +309,7 @@
             antiguo.className = 'boton boton--secundario';
             antiguo.href = datos.antiguo;
             if (datos.destino) { antiguo.target = datos.destino; antiguo.rel = 'noopener'; }
-            antiguo.textContent = datos.guia ? 'Seguir con la guía antigua' : 'Seguir con el tema antiguo';
+            antiguo.textContent = 'Seguir con la versión anterior';
             antiguo.addEventListener('click', function () { cerrar(); });
             botones.appendChild(antiguo);
         }
@@ -361,12 +370,16 @@
         if (!rev) return false;
         if (evento) { evento.preventDefault(); evento.stopPropagation(); }
         var nueva = a.target === '_blank' || (evento && (evento.ctrlKey || evento.metaKey || evento.shiftKey || evento.button === 1));
+        var word = /\.docx(?:$|[?#])/.test(a.getAttribute('href') || '');
+        var destino = destinoRevisado(rev, word);
         function abrir() {
             if (usuario()) {
-                if (nueva && sesionResuelta) window.open(urlTema(archivo), '_blank', 'noopener');
-                else location.href = urlTema(archivo);
+                if (word) location.href = destino;
+                else if (nueva && sesionResuelta) window.open(destino, '_blank', 'noopener');
+                else location.href = destino;
             } else {
-                avisoSesion({ archivo: archivo, guia: rev.guia, codigo: rev.t.codigo, fecha: rev.t.aprobado || rev.t.fecha, antiguo: antiguoDelEnlace(a), destino: a.target || '' });
+                avisoSesion({ archivo: archivo, guia: rev.guia, codigo: rev.t.codigo, fecha: rev.t.aprobado || rev.t.fecha, antiguo: antiguoDelEnlace(a), destino: a.target || '',
+                              alEntrar: function () { if (word || !nueva) location.href = destino; else window.open(destino, '_blank', 'noopener'); } });
             }
         }
         // Si viene del buscador, se cierra (el aviso va encima de la página).
@@ -391,7 +404,7 @@
         // tema-no-disponible.html?tema=… de un tema que ya tiene versión revisada.
         if (/\/tema-no-disponible\.html$/.test(location.pathname)) {
             var archivo = archivoDe(new URLSearchParams(location.search).get('tema'));
-            if (archivo) leerManifiesto().then(function (m) { if (revisadoDe(m, archivo)) location.replace(urlTema(archivo)); });
+            if (archivo) leerManifiesto().then(function (m) { var r = revisadoDe(m, archivo); if (r) { manifiestoListo = m; location.replace(destinoRevisado(r, false)); } });
         }
     }
 
@@ -489,15 +502,15 @@
             if (!rev) { if (antiguo) location.replace(antiguo); else mensaje('<p>Este tema aún no tiene versión revisada. Vuelve al <a href="../temario.html">temario</a>.</p>'); return; }
             var t = rev.t;
             var titulo = (guia ? 'Guía del dictamen' : 'Tema ' + t.codigo) + (t.titulo ? ': ' + t.titulo : '');
-            document.title = (guia ? 'Guía del dictamen de coyuntura' : 'Tema ' + t.codigo) + ' (revisado) · Víctor Gutiérrez Marcos';
+            document.title = (guia ? 'Guía del dictamen de coyuntura' : 'Tema ' + t.codigo + (t.titulo ? ': ' + t.titulo.replace(/\.$/, '') : '')) + ' · Víctor Gutiérrez Marcos';
             document.getElementById('tema-revisado-titulo').textContent = titulo;
             var cargado = false;
             var cerrarAviso = null;
             alCambiarSesion(function (u) {
                 if (!u) {
                     if (cargado) { location.reload(); return; } // ha cerrado la sesión
-                    mensaje('<p>Inicia sesión con Google (arriba, «Acceder») para leer ' + nombre + (guia ? ' revisada' : ' revisado') + '.</p>' +
-                        (antiguo ? '<p><a class="boton boton--secundario" href="' + antiguo + '" target="_blank" rel="noopener">' + (guia ? 'Seguir con la guía antigua' : 'Seguir con el tema antiguo') + '</a></p>' : ''));
+                    mensaje('<p>Inicia sesión con Google (arriba, «Acceder») para leer ' + nombre + '.</p>' +
+                        (antiguo ? '<p><a class="boton boton--secundario" href="' + antiguo + '" target="_blank" rel="noopener">Seguir con la versión anterior</a></p>' : ''));
                     cerrarAviso = avisoSesion({ archivo: archivo, guia: guia, codigo: t.codigo, fecha: t.aprobado || t.fecha, antiguo: antiguo, destino: '_blank', alEntrar: function () {} });
                     return;
                 }
@@ -513,10 +526,10 @@
                     if (t.pdf && t.pdf.ruta) enlaces.push('<a href="' + pdfWeb(t.pdf.ruta) + '" target="_blank" rel="noopener">PDF</a>');
                     if (t.docx && t.docx.ruta) enlaces.push('<a href="' + raw + t.docx.ruta + '" download>Word</a>');
                     if (t.repaso && t.repaso.ruta) enlaces.push('<a href="' + pdfWeb(t.repaso.ruta) + '" target="_blank" rel="noopener">' + (guia ? 'Resumen de repaso' : 'Ficha de repaso') + '</a>');
-                    if (antiguo) enlaces.push('<a href="' + antiguo + '" target="_blank" rel="noopener">' + (guia ? 'Guía antigua' : 'Versión antigua') + '</a>');
+                    if (antiguo) enlaces.push('<a href="' + antiguo + '" target="_blank" rel="noopener">Versión anterior</a>');
                     barra.querySelector('.tema-revisado-formatos').innerHTML = enlaces.join('');
                     var fecha = barra.querySelector('.tema-revisado-fecha');
-                    if (fecha && (t.aprobado || t.fecha)) fecha.textContent = 'Revisado el ' + fechaCorta(t.aprobado || t.fecha);
+                    if (fecha) fecha.textContent = '';
                     barra.hidden = false;
                     var marco = document.getElementById('tema-revisado-marco');
                     marco.title = titulo;
@@ -557,7 +570,9 @@
             if (!archivo || li.querySelector('a.exclusivos-abrir')) return;
             var a = document.createElement('a');
             a.className = 'exclusivos-abrir';
-            a.href = urlTema(archivo);
+            // El PDF en su URL de siempre: el clic lo recoge abrirDesdeEnlace (sesión o aviso).
+            a.href = archivo === '1D01' ? RAIZ + GUIA_WEB : RAIZ + 'oposicion/temario/tercer-ejercicio/' + archivo + '.pdf';
+            a.target = '_blank';
             // El código y el título juntos, como enlace.
             while (li.firstChild && !(li.firstChild.className === 'exclusivos-detalle' || li.firstChild.className === 'etiqueta-exclusivo')) {
                 a.appendChild(li.firstChild);
