@@ -5,17 +5,23 @@ publican **juntas, en una sola novedad**, cada vez que una versión llega a Goog
 Play (solo con lo que importe al opositor). La app está en producción en Google
 Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 
-## Para la siguiente versión en Google Play (1.26.0 publicada el 25 nov.)
+## Para la siguiente versión en Google Play (1.27.0 publicada el 25 nov.)
 
-- (25 nov., 1.27.0) Test: con tu cuenta, las más de 1.000 preguntas del banco de EconomIA (no oficiales, revisadas y con explicación) junto a las oficiales, desmarcando «Solo preguntas de exámenes oficiales» (la 1.26.0 lo anunciaba en sus notas, pero no lo traía)
-- (25 nov., siguiente versión) Buscar preparador: al publicar lo que buscas puedes presentarte (opcional) con la vuelta en la que vas, los ejercicios aprobados, las convocatorias, tu formación, tu dedicación y si has tenido preparador, más lo que quieras contarles; lo leen todos los preparadores antes de escribirte, y ves cómo te verán
-- (25 nov., siguiente versión) Online y presencial se marcan por separado y puedes decir «prefiero presencial, pero acepto online»; si pides solo presencial, la app te avisa de que fuera de Madrid es muy difícil encontrarlo (y en Madrid, de que con online tienes más donde elegir) y, si en dos semanas nadie te ha escrito, te sugiere añadir online
-- (25 nov., siguiente versión) EconomIA en la app: «Informe de mi último cante» en la burbuja y textos que dejan claro que complementa a tu preparador
+Confirmado en `main` (c65b55d6 y 40b5e8b0), sin versión nueva ni AAB todavía:
+
 - (25 nov., siguiente versión) Pizarra: la barra de herramientas se puede poner arriba, lejos de la mano que apoyas al escribir, o suelta, para arrastrarla donde moleste menos (··· → Barra de herramientas; se recuerda). Mientras escribes con el lápiz, la barra no hace caso a la palma que la roce: ya no se cambia de herramienta, se borra ni se deshace sin querer
 - (25 nov., siguiente versión) Clases: el aviso de que te han llegado los temas dice el tiempo de esquema de esa clase (el que haya puesto tu preparador en el cronómetro, p. ej. 30'), no siempre el del examen (22'30"); si lo cambia antes de la clase, el aviso se vuelve a programar con el nuevo
 - (25 nov., siguiente versión) Clases: en los avisos del cronómetro (esquema y exposición) la cuenta atrás baja sola en Android, y el texto dice hasta qué hora («Esquema hasta las 17:35») en vez de un «quedan 30:00» que se quedaba fijo; el aviso de los temas se quita solo al acabar el esquema
 - (25 nov., siguiente versión) Preparadores: aceptar una reserva se hace con un solo toque (se ve que está trabajando y no se puede tocar dos veces) y la clase sale una sola vez en tu Google Calendar, aunque se mande dos veces
 - (25 nov., siguiente versión) Clases: con el cronómetro de la clase en marcha o en pausa, un mini reloj flotante se ve desde cualquier pantalla (un tema, el temario, un test…), en el móvil y en el ordenador: enseña el esquema o la exposición y el tiempo, se pausa y se continúa desde él (lo ve igual tu alumno o tu preparador) y, al tocarlo, vuelves a la clase; se arrastra a donde moleste menos y se recuerda el sitio
+## Publicado el 25 nov. 2026 (1.27.0 en producción)
+
+Novedad en `novedades.json`: «Versión 1.27.0 de la app: el banco de más de 1.000 preguntas de EconomIA ya sale en el test con tu cuenta, te presentas al buscar preparador, presencial u online por separado e «Informe de mi último cante» en la burbuja de EconomIA». Resumía:
+
+- (25 nov., 1.27.0) Test: con tu cuenta, las más de 1.000 preguntas del banco de EconomIA (no oficiales, revisadas y con explicación) junto a las oficiales, desmarcando «Solo preguntas de exámenes oficiales» (la 1.26.0 lo anunciaba en sus notas, pero no lo traía)
+- (25 nov., 1.27.0) Buscar preparador: al publicar lo que buscas puedes presentarte (opcional) con la vuelta en la que vas, los ejercicios aprobados, las convocatorias, tu formación, tu dedicación y si has tenido preparador, más lo que quieras contarles; lo leen todos los preparadores antes de escribirte, y ves cómo te verán
+- (25 nov., 1.27.0) Online y presencial se marcan por separado y puedes decir «prefiero presencial, pero acepto online»; si pides solo presencial, la app te avisa de que fuera de Madrid es muy difícil encontrarlo (y en Madrid, de que con online tienes más donde elegir) y, si en dos semanas nadie te ha escrito, te sugiere añadir online
+- (25 nov., 1.27.0) EconomIA en la app: «Informe de mi último cante» en la burbuja y textos que dejan claro que complementa a tu preparador
 - Reglas de Firestore con `aceptaOnline` y `perfil` en las búsquedas: publicadas por Víctor el 25 nov.
 
 ## Publicado el 25 nov. 2026 (1.26.0 en producción)
