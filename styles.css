@@ -431,32 +431,39 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .highlight-box p { margin-bottom: 1rem; }
 .highlight-box p:last-child { margin-bottom: 0; }
 
-/* ECONOMIA EN LA PORTADA (index.html): una capa más de la tarjeta de la app, a todo el ancho, con filete dorado */
+/* ECONOMIA EN LA PORTADA (index.html): una capa más de la tarjeta de la app, a todo el ancho, con filete dorado.
+   El hilo dibuja la conexión: la app → la burbuja ✦ (economia-burbuja.js) → tu IA. */
 .economia-portada {
     position: relative; z-index: 1;   /* por encima del enlace estirado de .app-banner-enlace */
     flex: 1 1 100%;
     display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;
     gap: var(--e3) var(--e6);
     margin: var(--e1) -1.75rem -1.6rem;
-    padding: 1.25rem 1.75rem 1.35rem;
+    padding: 1.1rem 1.75rem 1.35rem;
     background: var(--color-primary-pale);
     border-top: 2px solid var(--color-accent-gold);
-    color: var(--color-text); text-decoration: none;
+    color: var(--color-text);
 }
+.economia-portada-hilo { grid-column: 1 / -1; display: flex; align-items: center; gap: var(--e2); }
+.economia-portada-hilo > img { width: 34px; height: 34px; border-radius: 8px; flex: none; }
+.economia-portada-linea { flex: 0 1 4.5rem; min-width: 1.25rem; border-top: 2px dashed var(--color-accent-gold); }
+.economia-portada-chispa { flex: none; width: 34px; height: 34px; border-radius: 50%; background: #5F2987; color: #fff; border: 1px solid var(--color-accent-gold); display: inline-flex; align-items: center; justify-content: center; }
+.economia-portada-chispa svg { width: 18px; height: 18px; }
+.economia-portada-mini { display: inline-flex; vertical-align: -0.2em; width: 1.25em; height: 1.25em; border-radius: 50%; background: #5F2987; color: #fff; align-items: center; justify-content: center; }
+.economia-portada-mini svg { width: 0.75em; height: 0.75em; }
+.economia-portada-ias { display: flex; gap: var(--e2); }
+.economia-portada-ias img { width: 22px; height: 22px; padding: 2px; background: #fff; border: 1px solid var(--color-border-light); border-radius: var(--radius-control); }
 .economia-portada-texto { display: grid; gap: 0.3rem; min-width: 0; }
 .economia-portada-rot { font-family: var(--font-ui); font-variant-caps: all-small-caps; letter-spacing: 0.06em; font-size: 0.95rem; color: var(--color-primary); }
-.economia-portada-tit { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; line-height: 1.25; color: var(--color-primary); }
-.economia-portada-sub { font-size: 0.98rem; line-height: 1.5; color: var(--color-text-muted); max-width: 62ch; }
-.economia-portada:hover .economia-portada-tit { text-decoration: underline; text-decoration-color: var(--color-accent-gold); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.economia-portada:focus-visible { outline: 2px solid var(--color-accent-gold); outline-offset: -4px; }
-.economia-portada-ias { display: flex; gap: var(--e2); margin-top: var(--e1); }
-.economia-portada-ias img { width: 22px; height: 22px; padding: 2px; background: #fff; border: 1px solid var(--color-border-light); border-radius: var(--radius-control); }
-.economia-portada-boton { flex: none; }
-.economia-portada:hover .economia-portada-boton { --b-fondo: color-mix(in srgb, var(--color-primary) 88%, black); }
+.economia-portada-tit { margin: 0; font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
+.economia-portada-tit a { color: var(--color-primary); text-decoration: none; }
+.economia-portada-tit a:hover { text-decoration: underline; text-decoration-color: var(--color-accent-gold); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.economia-portada-sub { margin: 0; font-size: 0.98rem; line-height: 1.5; color: var(--color-text-muted); max-width: 64ch; }
+.economia-portada-acciones { display: flex; flex-direction: column; align-items: stretch; gap: var(--e2); text-align: center; }
 .app-banner:has(.economia-portada:hover) .app-banner-enlace { text-decoration: none; }
 @media (max-width: 640px) {
-    .economia-portada { grid-template-columns: 1fr; margin: var(--e1) -1.1rem -1.25rem; padding: 1.1rem 1.1rem 1.2rem; }
-    .economia-portada-boton { width: 100%; }
+    .economia-portada { grid-template-columns: 1fr; margin: var(--e1) -1.1rem -1.25rem; padding: 1rem 1.1rem 1.2rem; }
+    .economia-portada-linea { flex-basis: 2rem; }
 }
 
 /* AVISO DE LA APP MÓVIL (index.html y oposicion/index.html; ver app-banner.js) */

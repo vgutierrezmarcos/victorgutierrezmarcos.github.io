@@ -229,16 +229,25 @@
             </div>
             <p class="app-banner-exclusivos" id="exclusivos-portada" hidden></p>
             <p class="app-banner-note">Sin anuncios y sin pagar nada. Tus datos solo los ves tú.<span id="app-banner-note"> En Android se descarga un fichero APK: al abrirlo, el móvil pedirá permiso para instalar aplicaciones de origen desconocido.</span></p>
-            <!-- EconomIA, dentro de la tarjeta de la app -->
-            <a id="economia-portada" class="economia-portada" href="oposicion/economia.html">
-                <span class="economia-portada-texto">
-                    <span class="economia-portada-rot">Nuevo · gratis</span>
-                    <strong class="economia-portada-tit">EconomIA: tu equipo de preparación, dentro de tu IA</strong>
-                    <span class="economia-portada-sub">Resuelve dudas con el temario revisado, te hace el informe de tus cantes y dictámenes, tu cronograma y test en el chat. Conectada con tu app.</span>
-                    <span class="economia-portada-ias"><img src="oposicion/img/ia/claude.svg" alt="Claude" width="26" height="26"><img src="oposicion/img/ia/mistral.svg" alt="Le Chat" width="26" height="26"><img class="ia-openai" src="oposicion/img/ia/openai.svg" alt="ChatGPT" width="26" height="26"><img src="oposicion/img/ia/gemini.svg" alt="Gemini" width="26" height="26"></span>
-                </span>
-                <span class="boton economia-portada-boton">Conocer EconomIA</span>
-            </a>
+            <!-- EconomIA, dentro de la tarjeta de la app: el hilo app → burbuja → tu IA, y «Probar ahora» abre la burbuja (economia-burbuja.js) -->
+            <div id="economia-portada" class="economia-portada">
+                <div class="economia-portada-hilo" aria-hidden="true">
+                    <img src="app/favicon/favicon.svg" alt="" width="34" height="34">
+                    <span class="economia-portada-linea"></span>
+                    <span class="economia-portada-chispa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+                    <span class="economia-portada-linea"></span>
+                    <span class="economia-portada-ias"><img src="oposicion/img/ia/claude.svg" alt="" width="22" height="22"><img src="oposicion/img/ia/mistral.svg" alt="" width="22" height="22"><img class="ia-openai" src="oposicion/img/ia/openai.svg" alt="" width="22" height="22"><img src="oposicion/img/ia/gemini.svg" alt="" width="22" height="22"></span>
+                </div>
+                <div class="economia-portada-texto">
+                    <span class="economia-portada-rot">Nuevo · conectada con la app</span>
+                    <h3 class="economia-portada-tit"><a href="oposicion/economia.html">EconomIA: tu app, también dentro de tu IA</a></h3>
+                    <p class="economia-portada-sub">Claude, Le Chat, ChatGPT o Gemini leen tu cronograma, tus cantes y tus test de la app y responden con el temario revisado. Se abre desde la burbuja <span class="economia-portada-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18 15l.8 2.2 2.2.8-2.2.8L18 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg></span> de abajo a la derecha, en cualquier página.</p>
+                </div>
+                <div class="economia-portada-acciones">
+                    <a class="boton economia-portada-probar" href="oposicion/economia.html" data-abrir-burbuja>Probar ahora</a>
+                    <a class="boton boton--texto" href="oposicion/economia.html">Qué es EconomIA</a>
+                </div>
+            </div>
         </div>
 
         <!-- novedades:portada:inicio -->

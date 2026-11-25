@@ -202,7 +202,19 @@
             '.ia-conectar{margin:.2rem .2rem .6rem;padding:.6rem .7rem;border-left:3px solid var(--color-accent-gold,#b8913a);background:var(--color-primary-pale,#f1eaf6);border-radius:0 6px 6px 0;font-size:.88rem}' +
             '.ia-burbuja-aviso{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:1200;background:#2b2530;color:#fff;padding:.6rem 1rem;border-radius:6px;font-family:var(--font-ui,sans-serif);font-size:.9rem}' +
             '@media (max-width:640px){.ia-burbuja{right:calc(1rem + env(safe-area-inset-right,0px));bottom:calc(1rem + 52px + env(safe-area-inset-bottom,0px));width:48px;height:48px}.ia-panel{right:1rem;bottom:calc(1rem + 108px + env(safe-area-inset-bottom,0px))}}' +
-            '@media print{.ia-burbuja,.ia-panel{display:none}}';
+            // En la portada: un globo junto a la burbuja y un anillo que late, ligados a la tarjeta de EconomIA.
+            '.ia-burbuja::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--color-accent-gold,#b8913a);opacity:0;pointer-events:none}' +
+            '.ia-burbuja--llama::after{animation:ia-latido 1.6s ease-out 3}' +
+            '.ia-burbuja--enlazada::after{opacity:1;animation:none}' +
+            '@keyframes ia-latido{0%{opacity:.9;inset:-2px}100%{opacity:0;inset:-14px}}' +
+            '.ia-burbuja-globo{position:fixed;right:calc(1.5rem + 64px + env(safe-area-inset-right,0px));bottom:calc(1.5rem + 56px + env(safe-area-inset-bottom,0px));z-index:899;max-width:min(270px,calc(100vw - 6.5rem));display:flex;align-items:flex-start;gap:.5rem;padding:.6rem .7rem .6rem .9rem;background:var(--color-white,#fff);color:var(--color-text,#2b2530);border:1px solid var(--color-border,#d9d2df);border-left:3px solid var(--color-accent-gold,#b8913a);border-radius:8px;box-shadow:0 6px 18px rgba(22,19,26,.18);font-family:var(--font-ui,"Source Sans 3",sans-serif);font-size:.9rem;line-height:1.35;cursor:pointer;opacity:0;transition:opacity .35s ease}' +
+            '.ia-burbuja-globo.visible{opacity:1}' +
+            '.ia-burbuja-globo strong{color:var(--color-primary,#5F2987);font-family:var(--font-display,inherit)}' +
+            '.ia-burbuja-globo button{flex:none;background:none;border:0;padding:0 .1rem;font:inherit;font-size:1.1rem;line-height:1;color:var(--color-text-muted,#6b6372);cursor:pointer}' +
+            '.ia-burbuja-globo::after{content:"";position:absolute;right:-7px;bottom:18px;width:12px;height:12px;background:var(--color-white,#fff);border-right:1px solid var(--color-border,#d9d2df);border-top:1px solid var(--color-border,#d9d2df);transform:rotate(45deg)}' +
+            '@media (max-width:640px){.ia-burbuja-globo{max-width:calc(100vw - 9rem);right:calc(1rem + 58px + env(safe-area-inset-right,0px));bottom:calc(1rem + 52px + env(safe-area-inset-bottom,0px))}}' +
+            '@media (prefers-reduced-motion:reduce){.ia-burbuja--llama::after{animation:none;opacity:1}.ia-burbuja-globo{transition:none}}' +
+            '@media print{.ia-burbuja,.ia-panel,.ia-burbuja-globo{display:none}}';
         document.head.appendChild(css);
     }
 
@@ -226,7 +238,7 @@
         document.body.appendChild(boton);
         pintar();
     }
-    function mostrar() { pintarPanel(); panel.hidden = false; boton.setAttribute('aria-expanded', 'true'); var f = panel.querySelector('button, a'); if (f) f.focus(); }
+    function mostrar() { quitarGlobo(true); pintarPanel(); panel.hidden = false; boton.setAttribute('aria-expanded', 'true'); var f = panel.querySelector('button, a'); if (f) f.focus(); }
     function ocultar() { panel.hidden = true; boton.setAttribute('aria-expanded', 'false'); }
 
     function pintar() {
@@ -282,6 +294,58 @@
         });
     }
 
+    // ------------------------------------------------------------------ Portada: la tarjeta de EconomIA y la burbuja, enlazadas
+
+    var globo = null, GLOBO = 'tcee_ia_globo';
+    function quitarGlobo(recordar) {
+        if (recordar) { try { localStorage.setItem(GLOBO, '1'); } catch (e) { /* */ } }
+        if (globo && globo.parentNode) globo.parentNode.removeChild(globo);
+        globo = null;
+    }
+    function latir() {
+        if (!boton) return;
+        boton.classList.remove('ia-burbuja--llama');
+        void boton.offsetWidth; // reinicia la animación
+        boton.classList.add('ia-burbuja--llama');
+    }
+    function portada() {
+        var tarjeta = document.getElementById('economia-portada');
+        if (!tarjeta || !boton) return;
+        // «Probar ahora» abre la burbuja (si está oculta, el enlace lleva a la página de EconomIA).
+        Array.prototype.forEach.call(tarjeta.querySelectorAll('[data-abrir-burbuja]'), function (a) {
+            a.addEventListener('click', function (e) {
+                if (boton.hidden) return;
+                e.preventDefault();
+                e.stopPropagation();
+                medir(iaElegida() || 'ninguna', 'portada_probar');
+                mostrar();
+            });
+        });
+        // Al pasar por la tarjeta, la burbuja se enciende: se ve que es lo mismo.
+        tarjeta.addEventListener('mouseenter', function () { boton.classList.add('ia-burbuja--enlazada'); });
+        tarjeta.addEventListener('mouseleave', function () { boton.classList.remove('ia-burbuja--enlazada'); });
+        // Late al cargar y cada vez que la tarjeta entra en pantalla.
+        latir();
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) latir(); }); }, { threshold: 0.6 }).observe(tarjeta);
+        }
+        // Un globo junto a la burbuja, desde arriba de la página, hasta que se abra o se cierre una vez.
+        var visto = false;
+        try { visto = localStorage.getItem(GLOBO) === '1'; } catch (e) { /* */ }
+        if (visto || boton.hidden) return;
+        setTimeout(function () {
+            if (!panel.hidden || boton.hidden) return;
+            globo = document.createElement('div');
+            globo.className = 'ia-burbuja-globo';
+            globo.setAttribute('role', 'note');
+            globo.innerHTML = '<span><strong>EconomIA</strong> · Pregunta a tu IA con tus datos de la app: dudas, test, tu cronograma…</span><button type="button" aria-label="Cerrar">×</button>';
+            globo.querySelector('button').addEventListener('click', function (e) { e.stopPropagation(); quitarGlobo(true); });
+            globo.addEventListener('click', function (e) { e.stopPropagation(); mostrar(); });
+            document.body.appendChild(globo);
+            requestAnimationFrame(function () { if (globo) globo.classList.add('visible'); });
+        }, 1200);
+    }
+
     // En la página de EconomIA, si está oculta, un enlace para volver a mostrarla.
     function enlaceMostrar() {
         if (!/\/oposicion\/economia\.html$/.test(location.pathname) || estado.burbuja !== false) return;
@@ -293,6 +357,6 @@
         if (main) main.insertBefore(p, main.firstChild);
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { crear(); enlaceMostrar(); });
-    else { crear(); enlaceMostrar(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { crear(); enlaceMostrar(); portada(); });
+    else { crear(); enlaceMostrar(); portada(); }
 })();
