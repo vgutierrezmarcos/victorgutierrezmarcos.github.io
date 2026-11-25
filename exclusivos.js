@@ -204,10 +204,23 @@
         var intentos = 0;
         (function espera() {
             if (window.firebase && firebase.apps && firebase.apps.length && firebase.auth) {
+                var porTiempo = false;
                 firebase.auth().onAuthStateChanged(function (u) {
+                    // Tras el plazo de abajo ya se pintó «sin sesión»: no se repite.
+                    if (porTiempo && !u) { porTiempo = false; return; }
+                    porTiempo = false;
                     sesionResuelta = true;
                     oyentesSesion.forEach(function (f) { f(u); });
                 });
+                // Si el navegador bloquea el almacenamiento de Firebase (prevención de
+                // seguimiento estricta de Edge, por ejemplo), onAuthStateChanged puede no
+                // llegar nunca: a los 6 s se trata como sin sesión (si llega luego, se repinta).
+                setTimeout(function () {
+                    if (sesionResuelta) return;
+                    sesionResuelta = true;
+                    porTiempo = true;
+                    oyentesSesion.forEach(function (f) { f(usuario()); });
+                }, 6000);
             } else if (intentos++ < 100) {
                 setTimeout(espera, 150);
             } else {
@@ -334,7 +347,7 @@
                 if (nueva && sesionResuelta) window.open(urlTema(archivo), '_blank', 'noopener');
                 else location.href = urlTema(archivo);
             } else {
-                avisoSesion({ archivo: archivo, guia: rev.guia, codigo: rev.t.codigo, fecha: rev.t.fecha || rev.t.aprobado, antiguo: antiguoDelEnlace(a), destino: a.target || '' });
+                avisoSesion({ archivo: archivo, guia: rev.guia, codigo: rev.t.codigo, fecha: rev.t.aprobado || rev.t.fecha, antiguo: antiguoDelEnlace(a), destino: a.target || '' });
             }
         }
         // Si viene del buscador, se cierra (el aviso va encima de la página).
@@ -456,7 +469,7 @@
                     if (cargado) { location.reload(); return; } // ha cerrado la sesión
                     mensaje('<p>Inicia sesión con Google (arriba, «Acceder») para leer ' + nombre + (guia ? ' revisada' : ' revisado') + '.</p>' +
                         (antiguo ? '<p><a class="boton boton--secundario" href="' + antiguo + '" target="_blank" rel="noopener">' + (guia ? 'Seguir con la guía antigua' : 'Seguir con el tema antiguo') + '</a></p>' : ''));
-                    cerrarAviso = avisoSesion({ archivo: archivo, guia: guia, codigo: t.codigo, fecha: t.fecha || t.aprobado, antiguo: antiguo, destino: '_blank', alEntrar: function () {} });
+                    cerrarAviso = avisoSesion({ archivo: archivo, guia: guia, codigo: t.codigo, fecha: t.aprobado || t.fecha, antiguo: antiguo, destino: '_blank', alEntrar: function () {} });
                     return;
                 }
                 if (cerrarAviso) { cerrarAviso(); cerrarAviso = null; }
@@ -474,7 +487,7 @@
                     if (antiguo) enlaces.push('<a href="' + antiguo + '" target="_blank" rel="noopener">' + (guia ? 'Guía antigua' : 'Versión antigua') + '</a>');
                     barra.querySelector('.tema-revisado-formatos').innerHTML = enlaces.join('');
                     var fecha = barra.querySelector('.tema-revisado-fecha');
-                    if (fecha && (t.fecha || t.aprobado)) fecha.textContent = 'Revisado el ' + fechaCorta(t.fecha || t.aprobado);
+                    if (fecha && (t.aprobado || t.fecha)) fecha.textContent = 'Revisado el ' + fechaCorta(t.aprobado || t.fecha);
                     barra.hidden = false;
                     var marco = document.getElementById('tema-revisado-marco');
                     marco.title = titulo;
