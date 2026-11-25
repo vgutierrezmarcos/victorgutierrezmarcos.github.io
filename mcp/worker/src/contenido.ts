@@ -159,10 +159,13 @@ export function buscarEnMd(md: string, consulta: string, maximo = 8): Pasaje[] {
     if (linea.trim()) actual.push(linea);
   }
   cerrar();
+  // Solo al principio de una palabra: «Arrow» no puede encontrar «desarrollo».
+  const escapar = (x: string) => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const patrones = palabras.map((p) => new RegExp(`(?<![a-z0-9ñ])${escapar(raiz(p))}`, 'g'));
   const puntuados = bloques.map((b) => {
     const t = sinAcentos(b.texto);
-    const hay = palabras.filter((p) => t.includes(raiz(p))).length;
-    const veces = palabras.reduce((n, p) => n + t.split(raiz(p)).length - 1, 0);
+    const hay = patrones.filter((r) => t.search(r) >= 0).length;
+    const veces = patrones.reduce((n, r) => n + (t.match(r)?.length ?? 0), 0);
     return { ...b, hay, veces };
   });
   const mejor = Math.max(0, ...puntuados.map((b) => b.hay));

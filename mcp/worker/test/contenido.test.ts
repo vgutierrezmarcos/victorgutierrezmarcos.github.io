@@ -61,5 +61,7 @@ describe('buscarEnMd', () => {
   it('separa las viñetas y no inventa coincidencias', () => {
     expect(buscarEnMd(md, 'servicios')[0].texto).toBe('- Segunda viñeta: el comercio de servicios creció un 8 %.');
     expect(buscarEnMd(md, 'teorema de Arrow')).toEqual([]);
+    expect(buscarEnMd('## I\n\nEl desarrollo del tema.\n', 'Arrow')).toEqual([]);
+    expect(buscarEnMd('## I\n\nEl teorema de Arrow (1951).\n', 'Arrow')[0].apartado).toBe('I');
   });
 });
