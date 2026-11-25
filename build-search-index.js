@@ -358,7 +358,12 @@ function procesarTemas(temas, ejercicio, grupo, prefijo, baseUrl) {
   return temas.map(tema => {
     const numero = `${prefijo}.${tema.num}`;
     const id = numero.toLowerCase().replace(/\./g, '');
-    const url = tema.disponible ? `${baseUrl}/${tema.file}` : 'temario/tema-no-disponible.html';
+    // Los temas revisados (revisados-web.json) están todos en la web, aunque la lista de abajo
+    // aún los tenga como no disponibles: su PDF en la URL de siempre (el buscador lleva a su página).
+    const archivo = prefijo.replace(/\./g, '') + String(tema.num).padStart(2, '0');
+    const revisado = Boolean(CONCEPTOS[archivo]);
+    const disponible = tema.disponible || revisado;
+    const url = revisado ? `${baseUrl}/${archivo}.pdf` : tema.disponible ? `${baseUrl}/${tema.file}` : 'temario/tema-no-disponible.html';
     
     return {
       id,
@@ -375,7 +380,7 @@ function procesarTemas(temas, ejercicio, grupo, prefijo, baseUrl) {
       ],
       type: 'tema',
       parent: ejercicio,
-      disponible: tema.disponible
+      disponible
     };
   });
 }
