@@ -198,7 +198,7 @@ def banda_sonora(ruta):
     toques(inicio('sugerencia') + 0.8, 2, 1.1)
     # La carpeta: la estructura (cuatro tarjetas) y el informe que aparece.
     toques(inicio('carpeta') + 0.5, 4, 0.3)
-    aviso(inicio('carpeta') + 8.4, 0.05)
+    aviso(inicio('carpeta') + 10.6, 0.05)
     # El móvil: los tres teléfonos.
     for i in range(3):
         entra_movil(inicio('movil') + 0.2 + i * 0.6)
