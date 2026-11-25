@@ -221,7 +221,7 @@
 
                 <div class="content-text">
                     <div class="highlight-box">
-                        <p id="zip-texto">Todos los materiales de licencia libre (temas en PDF y Word, test, dictamen y organización), por ejercicio y con el título de cada tema, en un ZIP. Los temas revisados se descargan también si inicias sesión.</p>
+                        <p>Todos los materiales, organizados por ejercicio, se pueden descargar en un ZIP:</p>
                         <a id="zip-materiales" href="https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/releases/download/materiales-latest/materiales-tcee.zip" download class="highlight-link"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg> <span id="zip-etiqueta">Descargar todos los materiales (ZIP, unos 580 MB)</span></a>
                     </div>
 
@@ -328,11 +328,8 @@
                 if (!a) return;
                 a.href = base + (u ? 'materiales-tcee-con-revisados.zip' : 'materiales-tcee.zip');
                 document.getElementById('zip-etiqueta').textContent = u
-                    ? 'Descargar todos los materiales, con los temas revisados (ZIP, unos 715 MB)'
+                    ? 'Descargar todos los materiales (ZIP, unos 715 MB)'
                     : 'Descargar todos los materiales (ZIP, unos 580 MB)';
-                document.getElementById('zip-texto').textContent = u
-                    ? 'Todos los materiales por ejercicio y con el título de cada tema, en un ZIP: los temas en PDF y Word, test, dictamen y organización, y además los temas revisados y sus fichas de repaso (solo para tu uso personal).'
-                    : 'Todos los materiales de licencia libre (temas en PDF y Word, test, dictamen y organización), por ejercicio y con el título de cada tema, en un ZIP. Los temas revisados se descargan también si inicias sesión.';
             });
         })();
     </script>
