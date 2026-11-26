@@ -67,6 +67,11 @@ def manifiesto():
         with urllib.request.urlopen(REVISION_RAW, timeout=20) as r:
             return json.load(r), 'raw'
     except Exception as e:  # noqa: BLE001
+        # Sin conector (la red del Ministerio lo bloquea): el de la rama del repositorio privado, si está bajada.
+        r = subprocess.run(['git', '-C', RAIZ, 'show', 'privado/temario-publicado:oposicion/temario/app/revisados.json'], capture_output=True)
+        if r.returncode == 0:
+            print(f'Aviso: el conector no responde ({e}); manifiesto de privado/temario-publicado.', file=sys.stderr)
+            return json.loads(r.stdout), 'privado'
         # Sin manifiesto, el registro saldría casi vacío (y la web dejaría de marcar los exclusivos): no se escribe.
         sys.exit(f'Sin manifiesto de la app ({e}): no se toca oposicion/exclusivos.json. '
                  'Desde la red del Ministerio el conector está bloqueado: repítelo desde otra red.')
