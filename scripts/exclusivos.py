@@ -36,7 +36,8 @@ REVISION = os.path.join(os.path.dirname(RAIZ), 'victorgutierrezmarcos.github.io-
 # Códigos que no se listan en la web (los pone y quita scripts/prepara-con-claude-visible.py); el fichero sigue
 # llevando el material, con su url, para que el botón de descarga de su página funcione
 OCULTOS = set()
-REVISION_RAW = 'https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/temario-publicado/oposicion/temario/app/revisados.json'
+# El manifiesto, del conector (la rama temario-publicado ya solo está en el repositorio privado, 26/11/2026)
+REVISION_RAW = 'https://mcp.victorgutierrezmarcos.es/temario/manifiesto'
 
 CORTE = '2026-10-01'
 AVISO = ('Material exclusivo de victorgutierrezmarcos.es y la app Oposición TCEE · DCE. '
@@ -66,8 +67,9 @@ def manifiesto():
         with urllib.request.urlopen(REVISION_RAW, timeout=20) as r:
             return json.load(r), 'raw'
     except Exception as e:  # noqa: BLE001
-        print(f'Aviso: sin manifiesto de la app ({e}); solo los ficheros de la web.', file=sys.stderr)
-        return None, None
+        # Sin manifiesto, el registro saldría casi vacío (y la web dejaría de marcar los exclusivos): no se escribe.
+        sys.exit(f'Sin manifiesto de la app ({e}): no se toca oposicion/exclusivos.json. '
+                 'Desde la red del Ministerio el conector está bloqueado: repítelo desde otra red.')
 
 
 def main():
@@ -98,7 +100,8 @@ def main():
             base = (m.get('cdn') or m.get('raw') or '').rstrip('/')
             materiales.append({'tipo': 'skill', 'codigo': 'prepara-con-claude', 'titulo': 'Skill de Claude de «EconomIA»: dudas, cronograma, test e informes de evaluación de cantes y dictámenes',
                                'donde': 'app', 'fecha': (s.get('generado') or '')[:10], 'version': s.get('version'), 'formatos': ['zip'],
-                               'url': f"{base}/{s['ruta']}" if base else None, 'tamano': s.get('tamano'), 'temas': len(s.get('temas') or []), 'sellar': False})
+                               # La skill sale del almacén privado con la sesión (exclusivos.js); aquí solo su ruta.
+                               'url': f"privado:{s['ruta']}", 'tamano': s.get('tamano'), 'temas': len(s.get('temas') or []), 'sellar': False})
     materiales.append({'tipo': 'test', 'codigo': 'explicaciones', 'titulo': 'Explicaciones de las 1004 preguntas oficiales del test («¿Por qué?»), con 232 gráficos', 'donde': 'app', 'fecha': '2026-10-24', 'formatos': ['app']})
     for m_ in materiales:
         if m_.get('codigo') in OCULTOS:

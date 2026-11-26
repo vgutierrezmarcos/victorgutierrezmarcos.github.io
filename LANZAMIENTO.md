@@ -157,7 +157,26 @@ conector, comprobando la cuenta de Google». Cómo queda:
   El ZIP público (GitHub) no lleva revisados; el de la sesión sale del conector.
 - **App 1.28.0**: lee el manifiesto del conector y baja con `AccesoTemario` (dirección firmada).
 
-**El día que Play apruebe la 1.28.0** (la 1.27.0 aún lee de `temario-publicado`):
+**El día que Play apruebe la 1.28.0** (aprobada el 26/11/2026; estado del cierre):
+
+- Hecho el 26/11: paso 1 (sin el APK de respaldo: la red del Ministerio corta las subidas
+  grandes; repetir `python3 scripts/apk-respaldo.py` desde otra red), paso 2 (repositorio
+  privado `vgutierrezmarcos/tcee-temario`, remoto `privado`, con `temario-publicado`,
+  `revision-temario`, `archivo-revision-temario-2` y la etiqueta, subidos por tramos), paso 3
+  (borradas del público las dos ramas y la etiqueta) y paso 5. Scripts al día:
+  `rama-publicada.py` sube a `privado`, `temario-privado.py` lee `privado/temario-publicado`.
+- Falta, desde una red que no sea la del Ministerio (bloquea el conector y corta las subidas
+  grandes): `python3 scripts/exclusivos.py` (la skill pasa a «privado:»), el APK de respaldo
+  y el paso 4.
+- Para reescribir la historia (paso 4) hace falta `git-filter-repo` (`pip install --user
+  git-filter-repo`, lo instala Víctor) y una red que no corte las subidas (el push forzado
+  sube toda la historia). Lista de versiones de PDF revisados que hay que quitar: las de las
+  rutas de abajo que aparecen entre 06882a30d^ y d9fb37f92^ y no estaban en 06882a30d^ (386).
+  Rutas que quitar de toda la historia: `oposicion/temario/primer-ejercicio/test/explicaciones/`,
+  `oposicion/temario/app/autoevaluacion/`, `oposicion/temario/app/*.zip`,
+  `oposicion/temario/app/skill/prepara-oposicion/references/{dictamen,canon}/`,
+  `…/references/temas/*/` y todo lo que lleve `examen-espana` o `solucion-espana`.
+
 
 1. `versionActual` y `versionMinima` 1.28.0 en `oposicion/app-config.json` (las apps viejas
    piden actualizar), novedad, `apk-respaldo.py` y push.

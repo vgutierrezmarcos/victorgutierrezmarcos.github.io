@@ -4,7 +4,7 @@
 Víctor (26/11/2026): los temas revisados se protegen de verdad: no están en ningún sitio
 público y solo los sirve el Worker (mcp/worker/src/temarioPrivado.ts) a quien ha iniciado
 sesión con Google. Este script los lleva allí desde la rama de publicación (una referencia
-de git: hoy temario-publicado; desde el cierre, la del repositorio privado):
+de git: temario-publicado del repositorio privado vgutierrezmarcos/tcee-temario, remoto «privado»):
 
   - manifiesto.json   el de la rama, sin las bases raw/cdn de GitHub (lo lee la app 1.28
                       y la web en /temario/manifiesto)
@@ -22,7 +22,7 @@ de git: hoy temario-publicado; desde el cierre, la del repositorio privado):
 Solo sube lo que ha cambiado (huella de git o sha256) y borra del almacén lo que ya no
 está. Necesita el secreto de subida en ~/.config/oposicion-red/temario-admin.token.
 
-    python3 scripts/temario-privado.py                    # desde temario-publicado
+    python3 scripts/temario-privado.py                    # desde privado/temario-publicado (git fetch privado antes)
     python3 scripts/temario-privado.py --ref <ref>        # otra referencia de git
     python3 scripts/temario-privado.py --git-dir <ruta>   # otro repositorio (el privado)
     python3 scripts/temario-privado.py --sin-zip          # sin rehacer el ZIP con revisados
@@ -142,7 +142,7 @@ def materiales_zip_con(revisados_dir, salida):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
-    ap.add_argument('--ref', default='origin/temario-publicado')
+    ap.add_argument('--ref', default='privado/temario-publicado')
     ap.add_argument('--git-dir')
     ap.add_argument('--sin-zip', action='store_true')
     ap.add_argument('--seco', action='store_true')

@@ -2,7 +2,8 @@
 """Crea la rama de publicación del temario (temario-publicado) SIN lo que nunca se publica.
 
 Víctor (24/11/2026): «Para el dictamen, el ejemplo de España y su solución no lo subas en
-ningún caso». La rama temario-publicado es pública (GitHub, servida por raw/githack): la
+ningún caso». La rama temario-publicado vive en el repositorio privado vgutierrezmarcos/tcee-temario
+(remoto «privado», desde el 26/11/2026; antes era pública en este repositorio): la
 leen la app, la web (exclusivos.js) y los scripts. Por eso no se publica empujando la rama
 de trabajo (revision-temario-2) tal cual, sino una instantánea sin historia:
 
@@ -19,7 +20,8 @@ de trabajo (revision-temario-2) tal cual, sino una instantánea sin historia:
 Se niega si algún ZIP del árbol (la skill) lleva dentro el examen o la solución.
 
     python3 scripts/rama-publicada.py                     # crea o rehace la rama local
-    git -C ../victorgutierrezmarcos.github.io-revision-2 push --force origin temario-publicado
+    git -C ../victorgutierrezmarcos.github.io-revision-2 push --force privado temario-publicado
+    python3 scripts/temario-privado.py                    # y al almacén del conector
     python3 scripts/rama-publicada.py --comprobar         # rama local y la de GitHub: sin nada de NUNCA
     python3 scripts/rama-publicada.py --origen <ref> --rama <nombre>   # para probar con otra rama
 
@@ -117,15 +119,15 @@ def crear(origen, rama):
         sys.exit('La rama ha quedado con rutas prohibidas (no la empujes):\n  ' + '\n  '.join(malos[:20]))
     print(f'Rama local {rama} = {commit_b[:10]} (instantánea {commit_a[:10]} de {origen} {sha_origen[:10]}; '
           f'{len(fuera)} rutas del examen de España fuera; manifiesto fijado a {commit_a[:10]}).')
-    print(f'Falta el push (lo hace Víctor):  git -C {WT} push --force origin {rama}')
+    print(f'Falta el push:  git -C {WT} push --force privado {rama}  y  python3 scripts/temario-privado.py')
 
 
 def comprobar(rama):
     fallos = 0
-    for ref in (rama, f'origin/{rama}'):
-        if ref.startswith('origin/'):
+    for ref in (rama, f'privado/{rama}'):
+        if ref.startswith('privado/'):
             try:
-                git('fetch', '--quiet', 'origin', f'+refs/heads/{rama}:refs/remotes/origin/{rama}')
+                git('fetch', '--quiet', 'privado', f'+refs/heads/{rama}:refs/remotes/privado/{rama}')
             except RuntimeError:
                 print(f'--    {ref}: no existe en GitHub')
                 continue

@@ -117,8 +117,8 @@
     }
 
     // ---- Temas revisados en la web, con sesión (Víctor, 24/11/2026) ----
-    // Al abrir un tema que tiene versión revisada (en el manifiesto de la rama
-    // temario-publicado, el mismo que lee la app):
+    // Al abrir un tema que tiene versión revisada (en el manifiesto del conector,
+    // el mismo que lee la app):
     //   - con sesión, se abre directamente la versión revisada (página
     //     oposicion/temario/tema-revisado.html, con todos sus formatos y la
     //     versión anterior);
