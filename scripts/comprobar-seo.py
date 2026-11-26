@@ -127,10 +127,50 @@ class Pagina(HTMLParser):
             self.texto.append(d)
 
 
+def bloqueos_robots():
+    """Reglas Disallow/Allow de robots.txt para todos los rastreadores («User-agent: *»)."""
+    reglas, para_todos = [], False
+    f = RAIZ / 'robots.txt'
+    for linea in (f.read_text(encoding='utf-8').splitlines() if f.is_file() else []):
+        linea = linea.split('#', 1)[0].strip()
+        if ':' not in linea:
+            continue
+        campo, valor = (x.strip() for x in linea.split(':', 1))
+        campo = campo.lower()
+        if campo == 'user-agent':
+            para_todos = valor == '*'
+        elif para_todos and campo in ('disallow', 'allow') and valor:
+            patron = re.escape(valor).replace(r'\*', '.*')
+            if patron.endswith(r'\$'):
+                patron = patron[:-2] + '$'
+            reglas.append((campo == 'allow', len(valor), re.compile(patron)))
+    return reglas
+
+
+def bloqueada_por_robots(rel, reglas):
+    """Como Google: gana la regla más larga que encaja; a igualdad, Allow."""
+    ruta = '/' + rel
+    encajan = [(largo, permite) for permite, largo, r in reglas if r.match(ruta)]
+    return bool(encajan) and not max(encajan)[1]
+
+
 def paginas_del_sitio():
-    for p in sorted(RAIZ.rglob('*.html')):
-        rel = p.relative_to(RAIZ).as_posix()
-        if any(rel == e or rel.startswith(e + '/') for e in EXCLUIR) or p.name.startswith('_'):
+    """Solo lo que se publica: ficheros del repositorio (git ls-files; nada de node_modules
+    ni copias locales), fuera de EXCLUIR y no bloqueados por robots.txt (el código del
+    conector, por ejemplo, no es web aunque GitHub Pages lo sirva)."""
+    try:
+        salida = os.popen(f'git -C "{RAIZ}" ls-files -z -- "*.html"').read()
+        rutas = sorted(x for x in salida.split('\0') if x)
+    except OSError:
+        rutas = []
+    if not rutas:
+        rutas = sorted(p.relative_to(RAIZ).as_posix() for p in RAIZ.rglob('*.html'))
+    reglas = bloqueos_robots()
+    for rel in rutas:
+        p = RAIZ / rel
+        if not p.is_file() or any(rel == e or rel.startswith(e + '/') for e in EXCLUIR) or p.name.startswith('_'):
+            continue
+        if bloqueada_por_robots(rel, reglas):
             continue
         yield rel, p
 
@@ -305,9 +345,17 @@ def analizar_sitio(resumen):
 
 # ---------------------------------------------------------------- En línea
 
+# En la red del Ministerio un proxy rehace el TLS: si existe su almacén de certificados
+# y no se ha indicado otro (SSL_CERT_FILE), se usa; si no, las comprobaciones en línea
+# fallaban y restaban puntos que no eran de la web.
+CAS_MINISTERIO = Path.home() / '.local/share/tcee-herramientas/certificados/cas.pem'
+_CONTEXTO = ssl.create_default_context(cafile=str(CAS_MINISTERIO)) \
+    if CAS_MINISTERIO.is_file() and not os.environ.get('SSL_CERT_FILE') else None
+
+
 def _get(url, timeout=25, cabeceras=None):
     r = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (comprobar-seo)', **(cabeceras or {})})
-    return urllib.request.urlopen(r, timeout=timeout)
+    return urllib.request.urlopen(r, timeout=timeout, context=_CONTEXTO)
 
 
 def comprobar_en_linea():

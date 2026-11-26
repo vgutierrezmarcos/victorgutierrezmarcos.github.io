@@ -309,7 +309,8 @@
 
     /**
      * Aviso para entrar con Google. [datos]: {archivo, guia, titulo, fecha,
-     * antiguo (URL o null), destino (target del enlace antiguo), alEntrar}.
+     * antiguo (URL o null), destino (target del enlace antiguo), alEntrar,
+     * esquema (función que abre el esquema público de la página, si lo hay)}.
      */
     function avisoSesion(datos) {
         var previo = document.getElementById('aviso-revisado');
@@ -348,6 +349,14 @@
             antiguo.textContent = 'Seguir con la versión anterior';
             antiguo.addEventListener('click', function () { cerrar(); });
             botones.appendChild(antiguo);
+        }
+        if (datos.esquema) {
+            var verEsquema = document.createElement('button');
+            verEsquema.type = 'button';
+            verEsquema.className = 'boton boton--secundario';
+            verEsquema.textContent = 'Ver el esquema';
+            verEsquema.addEventListener('click', function () { cerrar(); datos.esquema(); });
+            botones.appendChild(verEsquema);
         }
         var cerrarBoton = document.createElement('button');
         cerrarBoton.type = 'button';
@@ -560,6 +569,15 @@
         if (archivo && !cont.getAttribute('data-tema')) { location.replace(paginaWeb(archivo) + location.hash); return; }
         var estado = document.getElementById('tema-revisado-estado');
         var barra = document.getElementById('tema-revisado-barra');
+        // Esquema público (apartados, autores y minutos; scripts/temas-revisados-web.py): para
+        // quien no inicia sesión ni quiere la versión antigua. Con sesión se esconde.
+        var esquema = document.getElementById('tema-esquema');
+        function abrirEsquema() {
+            if (!esquema) return;
+            esquema.hidden = false;
+            esquema.open = true;
+            esquema.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        }
         function mensaje(html) { estado.innerHTML = html; estado.hidden = false; }
         if (!archivo) { mensaje('<p>No se ha indicado ningún tema. Vuelve al <a href="../temario.html">temario</a>.</p>'); return; }
         var guia = archivo === '1D01';
@@ -588,11 +606,26 @@
                 if (!u) {
                     if (cargado) { location.reload(); return; } // ha cerrado la sesión
                     mensaje('<p>Inicia sesión con Google (arriba, «Acceder») para leer ' + nombre + '.</p>' +
-                        (antiguo ? '<p><a class="boton boton--secundario" href="' + antiguo + '" target="_blank" rel="noopener">Seguir con la versión anterior</a></p>' : ''));
-                    cerrarAviso = avisoSesion({ archivo: archivo, guia: guia, codigo: t.codigo, fecha: t.aprobado || t.fecha, antiguo: antiguo, destino: '_blank', alEntrar: function () {} });
+                        '<p class="botones">' +
+                        (antiguo ? '<a class="boton boton--secundario" href="' + antiguo + '" target="_blank" rel="noopener">Seguir con la versión anterior</a> ' : '') +
+                        (esquema ? '<button type="button" class="boton boton--secundario" id="tema-ver-esquema">Ver el esquema</button>' : '') +
+                        '</p>');
+                    var ver = document.getElementById('tema-ver-esquema');
+                    if (ver) ver.addEventListener('click', abrirEsquema);
+                    if (esquema) {
+                        var entrarEsquema = esquema.querySelector('.tema-esquema-entrar');
+                        if (entrarEsquema) {
+                            entrarEsquema.hidden = false;
+                            entrarEsquema.querySelector('button').onclick = function () {
+                                cerrarAviso = avisoSesion({ archivo: archivo, guia: guia, codigo: t.codigo, fecha: t.aprobado || t.fecha, antiguo: antiguo, destino: '_blank', alEntrar: function () {} });
+                            };
+                        }
+                    }
+                    cerrarAviso = avisoSesion({ archivo: archivo, guia: guia, codigo: t.codigo, fecha: t.aprobado || t.fecha, antiguo: antiguo, destino: '_blank', alEntrar: function () {}, esquema: esquema ? abrirEsquema : null });
                     return;
                 }
                 if (cerrarAviso) { cerrarAviso(); cerrarAviso = null; }
+                if (esquema) esquema.hidden = true;
                 if (cargado) return;
                 cargado = true;
                 mensaje('<p>Cargando ' + nombre + '…</p>');

@@ -1885,6 +1885,40 @@ details.materiales-exclusivos[open] { padding-bottom: 1.2rem; }
 .tema-revisado-estado[hidden] { display: none; }
 .tema-revisado-marco { display: block; width: 100%; height: calc(100vh - 6rem); min-height: 480px; border: 0; border-top: 1px solid var(--color-border-light); background: var(--color-white); }
 .tema-revisado-marco[hidden] { display: none; }
+/* Esquema público del tema (scripts/temas-revisados-web.py; exclusivos.js lo ofrece sin sesión) */
+.tema-esquema { margin: 1rem 0 0; border-top: 2px solid var(--color-accent-gold); font-family: var(--font-body); }
+.tema-esquema[hidden] { display: none; }
+.tema-esquema > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; padding: 0.9rem 0; cursor: pointer; list-style: none; }
+.tema-esquema > summary::-webkit-details-marker { display: none; }
+.tema-esquema > summary::after { content: '+'; margin-left: auto; font-family: var(--font-ui); font-size: 1.4rem; line-height: 1; color: var(--color-primary); }
+.tema-esquema[open] > summary::after { content: '−'; }
+.tema-esquema-titulo { margin: 0; font-size: 1.25rem; color: var(--color-primary); }
+.tema-esquema-subtitulo { font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-text-muted); }
+.tema-esquema-cuerpo { padding: 0 0 1rem; max-width: 900px; }
+.tema-esquema-cuerpo h3 { margin: 1.4rem 0 0.5rem; font-size: 1.05rem; color: var(--color-primary); }
+.tema-esquema-aviso { margin: 0 0 1rem; color: var(--color-text-muted); line-height: 1.55; }
+.tema-esquema-refran { margin: 0 0 1.1rem; padding-left: 0.9rem; border-left: 2px solid var(--color-accent-gold); font-style: italic; }
+.tema-esquema-etiqueta { display: block; font-style: normal; font-family: var(--font-ui); font-size: 0.85rem; font-variant-caps: all-small-caps; letter-spacing: 0.03em; color: var(--color-text-muted); }
+.tema-esquema-lista, .tema-esquema-lista ol { list-style: none; margin: 0; padding: 0; }
+.tema-esquema-lista ol { padding-left: 1.2rem; border-left: 1px solid var(--color-border-light); margin: 0.15rem 0 0.35rem 0.3rem; }
+.tema-esquema-lista > li { margin: 0.55rem 0; }
+.tema-esquema-lista li { line-height: 1.45; }
+.tema-esquema-lista ol li { margin: 0.18rem 0; }
+.tema-esquema-lista > li > .tema-esquema-apartado { font-weight: 700; }
+.tema-esquema-salto { list-style: none; }
+.tema-esquema-apartado .numero { color: var(--color-primary); font-variant-numeric: tabular-nums; margin-right: 0.15rem; }
+.tema-esquema-minutos { margin-left: 0.35rem; font-family: var(--font-ui); font-size: 0.85rem; color: var(--color-primary); white-space: nowrap; }
+.tema-esquema-autores { display: block; font-size: 0.9rem; font-style: italic; color: var(--color-text-muted); }
+.tema-esquema-anexos { margin: 0; padding-left: 1.2rem; }
+.tema-esquema-anexos li { margin: 0.3rem 0; line-height: 1.45; }
+.tema-esquema-anexos .tema-esquema-apartado { font-weight: 600; }
+.tema-esquema-conceptos { line-height: 1.8; }
+.tema-esquema-conceptos a, .tema-esquema-relacionados a, .tema-esquema-anterior a { color: var(--color-primary); }
+.tema-esquema-relacionados { margin: 0; padding-left: 1.2rem; }
+.tema-esquema-relacionados li { margin: 0.25rem 0; line-height: 1.45; }
+.tema-esquema-anterior { margin-top: 1.2rem; }
+.tema-esquema-entrar { margin-top: 1.2rem; }
+.tema-esquema-entrar[hidden] { display: none; }
 
 /* ---- Vídeos de YouTube por su clave (videos.js y videos.json) ---- */
 .video-yt { position: relative; overflow: hidden; }

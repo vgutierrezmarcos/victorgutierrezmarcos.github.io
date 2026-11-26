@@ -44,7 +44,6 @@ const EXCLUDE_PATTERNS = [
     /^claude\//,
     /^backup\//,
     /(^|\/)oculto\//,
-    /(^|\/)anterior\//,   // versiones antiguas de los temas revisados (la URL de siempre lleva al nuevo)
     /^politica-cookies\.html$/,  // lleva noindex
     /^temario(\/|\.html$)/,      // páginas puente de direcciones antiguas
     /^(enlaces|organizacion)\.html$/,
@@ -131,12 +130,12 @@ function pdfsEnlazados(paginas) {
             enlazados.add(path.posix.normalize(decodeURIComponent(destino)));
         }
     }
-    // Los temas revisados y sus fichas de repaso están en la web aunque la página no los
-    // enlace aún (scripts/temas-revisados-web.py): también se anuncian
+    // La versión antigua (pública) de cada tema revisado: la enlaza su página de tema
+    // (scripts/temas-revisados-web.py). El tema revisado no está en la web.
     const revisados = path.join(ROOT_DIR, 'oposicion/temario/revisados-web.json');
     if (fs.existsSync(revisados)) {
         for (const t of JSON.parse(fs.readFileSync(revisados, 'utf-8')).temas || []) {
-            for (const r of [t.pdf, t.repaso]) if (r && fs.existsSync(path.join(ROOT_DIR, r))) enlazados.add(r);
+            if (t.anterior && fs.existsSync(path.join(ROOT_DIR, t.anterior))) enlazados.add(t.anterior);
         }
     }
     return enlazados;
