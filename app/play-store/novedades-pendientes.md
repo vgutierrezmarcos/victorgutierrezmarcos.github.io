@@ -5,15 +5,18 @@ publican **juntas, en una sola novedad**, cada vez que una versión llega a Goog
 Play (solo con lo que importe al opositor). La app está en producción en Google
 Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 
-## Para la siguiente versión en Google Play (1.27.0 publicada el 25 nov.)
+## Para la siguiente versión en Google Play (1.28.0 publicada el 26 nov.)
 
-Confirmado en `main` (c65b55d6 y 40b5e8b0), sin versión nueva ni AAB todavía:
+## Publicado el 26 nov. 2026 (1.28.0 en producción)
 
-- (25 nov., siguiente versión) Pizarra: la barra de herramientas se puede poner arriba, lejos de la mano que apoyas al escribir, o suelta, para arrastrarla donde moleste menos (··· → Barra de herramientas; se recuerda). Mientras escribes con el lápiz, la barra no hace caso a la palma que la roce: ya no se cambia de herramienta, se borra ni se deshace sin querer
-- (25 nov., siguiente versión) Clases: el aviso de que te han llegado los temas dice el tiempo de esquema de esa clase (el que haya puesto tu preparador en el cronómetro, p. ej. 30'), no siempre el del examen (22'30"); si lo cambia antes de la clase, el aviso se vuelve a programar con el nuevo
-- (25 nov., siguiente versión) Clases: en los avisos del cronómetro (esquema y exposición) la cuenta atrás baja sola en Android, y el texto dice hasta qué hora («Esquema hasta las 17:35») en vez de un «quedan 30:00» que se quedaba fijo; el aviso de los temas se quita solo al acabar el esquema
-- (25 nov., siguiente versión) Preparadores: aceptar una reserva se hace con un solo toque (se ve que está trabajando y no se puede tocar dos veces) y la clase sale una sola vez en tu Google Calendar, aunque se mande dos veces
-- (25 nov., siguiente versión) Clases: con el cronómetro de la clase en marcha o en pausa, un mini reloj flotante se ve desde cualquier pantalla (un tema, el temario, un test…), en el móvil y en el ordenador: enseña el esquema o la exposición y el tiempo, se pausa y se continúa desde él (lo ve igual tu alumno o tu preparador) y, al tocarlo, vuelves a la clase; se arrastra a donde moleste menos y se recuerda el sitio
+Novedad en `novedades.json`: «Versión 1.28.0 de la app en Google Play: pizarra con la barra donde quieras y sin hacer caso a la palma, mini reloj de la clase, avisos con el tiempo de esquema de esa clase y aceptar una reserva con un toque». Además, los temas revisados, las explicaciones del test y la autoevaluación llegan del almacén privado del conector con tu cuenta (no sale en la novedad: es por dentro). Resumía:
+
+- (25 nov., 1.28.0) Pizarra: la barra de herramientas se puede poner arriba, lejos de la mano que apoyas al escribir, o suelta, para arrastrarla donde moleste menos (··· → Barra de herramientas; se recuerda). Mientras escribes con el lápiz, la barra no hace caso a la palma que la roce: ya no se cambia de herramienta, se borra ni se deshace sin querer
+- (25 nov., 1.28.0) Clases: el aviso de que te han llegado los temas dice el tiempo de esquema de esa clase (el que haya puesto tu preparador en el cronómetro, p. ej. 30'), no siempre el del examen (22'30"); si lo cambia antes de la clase, el aviso se vuelve a programar con el nuevo
+- (25 nov., 1.28.0) Clases: en los avisos del cronómetro (esquema y exposición) la cuenta atrás baja sola en Android, y el texto dice hasta qué hora («Esquema hasta las 17:35») en vez de un «quedan 30:00» que se quedaba fijo; el aviso de los temas se quita solo al acabar el esquema
+- (25 nov., 1.28.0) Preparadores: aceptar una reserva se hace con un solo toque (se ve que está trabajando y no se puede tocar dos veces) y la clase sale una sola vez en tu Google Calendar, aunque se mande dos veces
+- (25 nov., 1.28.0) Clases: con el cronómetro de la clase en marcha o en pausa, un mini reloj flotante se ve desde cualquier pantalla (un tema, el temario, un test…), en el móvil y en el ordenador: enseña el esquema o la exposición y el tiempo, se pausa y se continúa desde él (lo ve igual tu alumno o tu preparador) y, al tocarlo, vuelves a la clase; se arrastra a donde moleste menos y se recuerda el sitio
+
 ## Publicado el 25 nov. 2026 (1.27.0 en producción)
 
 Novedad en `novedades.json`: «Versión 1.27.0 de la app: el banco de más de 1.000 preguntas de EconomIA ya sale en el test con tu cuenta, te presentas al buscar preparador, presencial u online por separado e «Informe de mi último cante» en la burbuja de EconomIA». Resumía:
