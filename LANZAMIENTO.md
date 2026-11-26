@@ -171,9 +171,9 @@ conector, comprobando la cuenta de Google». Cómo queda:
   examen de España ni los índices antiguos del buscador; mismo contenido actual (árbol
   idéntico) y push forzado con `--force-with-lease`. Filtro en `~/reescritura-aux/filtro.py`.
   Las copias que tuviera alguien de antes hay que volver a clonarlas.
-- Falta: el APK de respaldo de la 1.28.0 (`python3 scripts/apk-respaldo.py` desde otra red).
-  GitHub sigue sirviendo los commits antiguos a quien sepa su identificador hasta que haga su
-  limpieza interna (solo GitHub Support la adelanta, y Víctor decidió no pedirla).
+- APK de respaldo de la 1.28.0 subido el 26/11 (al tercer intento). Cierre completo. GitHub
+  sirve los commits antiguos solo a quien sepa su identificador hasta su limpieza interna;
+  Víctor confirma que nadie los tiene ni hay copias antiguas del repositorio.
 - Para reescribir la historia (paso 4) hace falta `git-filter-repo` (`pip install --user
   git-filter-repo`, lo instala Víctor) y una red que no corte las subidas (el push forzado
   sube toda la historia). Lista de versiones de PDF revisados que hay que quitar: las de las
