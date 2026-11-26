@@ -510,7 +510,7 @@ void main() {
     expect(find.text('Exclusivo · revisado'), findsOneWidget);
     // Sin cuenta: ni la versión anterior (aquí, la agenda: no tiene PDF); solo el aviso y el botón de Google.
     await tocar(tester, find.textContaining('5.C.4 ·'));
-    expect(find.text('Para ver la última versión de este tema inicia sesión con tu cuenta de Google'), findsOneWidget);
+    expect(find.text('Inicia sesión para ver el tema nuevo'), findsOneWidget);
     expect(find.text('Iniciar sesión con Google'), findsOneWidget);
     expect(find.text('Para la próxima vuelta'), findsNothing);
     expect(find.text('Ver versión anterior'), findsNothing);

@@ -1,8 +1,9 @@
 name: Zip desde GitHub
 
-# Los dos ZIP de «Descargar todos los materiales» (oposicion/index.html), montados por
-# scripts/materiales-zip.py: materiales-tcee.zip (todos) y materiales-tcee-con-revisados.zip
-# (con sesión iniciada). Se sustituyen dentro de la release materiales-latest sin borrarla,
+# El ZIP público de «Descargar todos los materiales» (oposicion/index.html), montado por
+# scripts/materiales-zip.py: materiales-tcee.zip (solo lo de licencia CC). El de quien ha iniciado
+# sesión (con los temas revisados) no es público: lo monta y sube scripts/temario-privado.py al
+# almacén privado del conector. Se sustituye dentro de la release materiales-latest sin borrarla,
 # para que el enlace no falle mientras se suben, y solo si ha cambiado algo (huella).
 # Además de los push que tocan materiales, corre cada noche: los commits [skip ci] de otras
 # acciones (metadatos de los PDF) no lo lanzan.
@@ -54,7 +55,7 @@ jobs:
             echo "subir=si" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Montar los ZIP
+      - name: Montar el ZIP
         if: steps.huella.outputs.subir == 'si'
         run: python3 scripts/materiales-zip.py --salida salida-zip
 
@@ -62,9 +63,9 @@ jobs:
         if: steps.huella.outputs.subir == 'si'
         run: |
           fecha=$(date +'%d/%m/%Y')
-          notas="Materiales para la oposición a TCEE de Víctor Gutiérrez Marcos (https://www.victorgutierrezmarcos.es/oposicion/). materiales-tcee.zip: todo lo de licencia CC BY-NC-ND 4.0. materiales-tcee-con-revisados.zip: además, los temas revisados (uso personal; https://www.victorgutierrezmarcos.es/condiciones-materiales.html). Actualizado el $fecha · huella ${{ steps.huella.outputs.nueva }}"
+          notas="Materiales para la oposición a TCEE de Víctor Gutiérrez Marcos (https://www.victorgutierrezmarcos.es/oposicion/), con licencia CC BY-NC-ND 4.0. Los temas revisados se descargan en la web con la sesión iniciada. Actualizado el $fecha · huella ${{ steps.huella.outputs.nueva }}"
           if ! gh release view materiales-latest >/dev/null 2>&1; then
             gh release create materiales-latest --title "Materiales TCEE" --notes "$notas"
           fi
-          gh release upload materiales-latest salida-zip/materiales-tcee.zip salida-zip/materiales-tcee-con-revisados.zip --clobber
+          gh release upload materiales-latest salida-zip/materiales-tcee.zip --clobber
           gh release edit materiales-latest --title "Materiales TCEE · $fecha" --notes "$notas"

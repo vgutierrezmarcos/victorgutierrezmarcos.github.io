@@ -43,9 +43,15 @@ void main() {
       expect(t.titulo, 'Título de 3.A.12');
       expect(t.aprobado, DateTime(2026, 10, 17));
       expect(t.version, '1a3f226');
-      expect(t.url(t.pdf), '${raw}oposicion/temario/tercer-ejercicio/3A12.pdf');
-      // El CDN del HTML es githack fijado al commit (jsDelivr, el del manifiesto, da 503 con este repositorio).
-      expect(t.urlDocumentoHtml, 'https://rawcdn.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/$commit/oposicion/temario/tercer-ejercicio/3A12.html');
+      // Los ficheros salen del almacén privado del conector, con la dirección firmada (no de GitHub).
+      AccesoTemario.fijarParaPruebas('https://mcp.victorgutierrezmarcos.es/t/9999999999.abc/', 9999999999);
+      expect(t.url(t.pdf), 'https://mcp.victorgutierrezmarcos.es/t/9999999999.abc/oposicion/temario/tercer-ejercicio/3A12.pdf');
+      expect(t.urlDocumentoHtml, 'https://mcp.victorgutierrezmarcos.es/t/9999999999.abc/oposicion/temario/tercer-ejercicio/3A12.html');
+      // Caducada, no hay base: no se baja nada sin pedir otra.
+      AccesoTemario.fijarParaPruebas('https://mcp.victorgutierrezmarcos.es/t/1.abc/', 1);
+      expect(AccesoTemario.vigente, isFalse);
+      expect(t.url(t.pdf), 'oposicion/temario/tercer-ejercicio/3A12.pdf');
+      AccesoTemario.olvidar();
       expect(t.repaso!.tamano, 491508);
       expect(t.docx!.extension, 'docx');
       expect(m.de('3.A.21')!.repaso, isNull);
@@ -106,9 +112,6 @@ void main() {
       expect(t.pdf.tamano, 0);
       // El hash entra en un nombre de fichero: nada de barras ni puntos.
       expect(t.pdf.sha, 'x');
-      // Sin bases en el manifiesto: las de la rama.
-      expect(t.url(t.pdf), startsWith('https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/temario-publicado/'));
-      expect(t.urlDocumentoHtml, startsWith('https://raw.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/temario-publicado/'));
     });
 
     test('un manifiesto que no vale queda vacío', () {
@@ -118,16 +121,12 @@ void main() {
       expect(ManifiestoRevisados.fromJson({}).isEmpty, isTrue);
     });
 
-    test('solo se aceptan bases https (y se les pone la barra final)', () {
-      final m = ManifiestoRevisados.fromJson({
-        'raw': 'http://ejemplo.com/',
-        'cdn': 'https://cdn.jsdelivr.net/gh/otro@abc',
-        'temas': [tema('3.A.12')],
-      });
+    test('las bases de GitHub del manifiesto antiguo se ignoran', () {
+      final m = ManifiestoRevisados.fromJson({'raw': raw, 'cdn': cdn, 'temas': [tema('3.A.12')]});
       final t = m.de('3.A.12')!;
-      expect(t.url(t.pdf), startsWith('https://raw.githubusercontent.com/'));
-      // Un CDN de jsDelivr se cambia por githack con la misma referencia.
-      expect(t.urlDocumentoHtml, 'https://raw.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/abc/oposicion/temario/tercer-ejercicio/3A12.html');
+      AccesoTemario.olvidar();
+      expect(t.url(t.pdf), isNot(contains('github')));
+      expect(t.urlDocumentoHtml, isNot(contains('githack')));
     });
   });
 

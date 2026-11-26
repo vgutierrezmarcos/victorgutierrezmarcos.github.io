@@ -40,7 +40,6 @@ const EXCLUDE_PATTERNS = [
     /^scripts\//,
     /^mcp\//,
     /^buscar\.html$/,   // página de resultados (noindex)
-    /^oposicion\/temario\/(primer|tercer)-ejercicio\/[^/]+\.html$/,   // páginas de tema que cargan el revisado con sesión (noindex)
     /^pagefind\//,      // código del conector (plantillas del Worker, página de acceso con noindex)
     /^claude\//,
     /^backup\//,

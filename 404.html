@@ -14,6 +14,10 @@
         n = n.replace(/^\/oposicion\/temario\/([a-z]+-ejercicio)\/?$/, '/oposicion/temario/$1.html');
         n = n.replace(/^\/blog\/20260128_post_bienvenida\.html$/, '/blog/20260128_articulo_de_bienvenida.html');
         n = n.replace(/^\/blog\/newsletter\/(index\.html)?$/, '/blog/');
+        // Los temas revisados ya no tienen PDF público (los sirve el conector con la sesión): la URL
+        // de siempre lleva a la página del tema, que pide iniciar sesión o abre la versión antigua.
+        n = n.replace(/^\/oposicion\/temario\/tercer-ejercicio\/(3[AB]\d\d)(-repaso)?\.pdf$/, '/oposicion/temario/tercer-ejercicio/$1.html');
+        n = n.replace(/^\/oposicion\/temario\/primer-ejercicio\/esquema_dictamen_economico(-resumen)?\.pdf$/, '/oposicion/temario/primer-ejercicio/esquema_dictamen_economico.html');
         if (n !== p) location.replace(n + location.search + location.hash);
     })();
     </script>

@@ -33,7 +33,7 @@ void main() {
     expect(entradaEnPagina(l, 0), -1);
   });
 
-  test('el tema revisado trae su esquema y su CDN es githack fijado al commit (jsDelivr daba 503)', () {
+  test('el tema revisado trae su esquema y sus ficheros salen del almacén privado', () {
     final m = ManifiestoRevisados.fromJson({
       'commit': '0b1db3dda31df16affec595d4eb7dd2863cd418b',
       'raw': 'https://raw.githubusercontent.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/0b1db3dda31df16affec595d4eb7dd2863cd418b/',
@@ -48,17 +48,11 @@ void main() {
       ],
     });
     final t = m.temas['3.A.8']!;
-    expect(t.urlDocumentoHtml, 'https://rawcdn.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/0b1db3dda31df16affec595d4eb7dd2863cd418b/oposicion/temario/tercer-ejercicio/3A08.html');
-    expect(t.url(t.pdf), startsWith('https://raw.githubusercontent.com/'));
+    // Los ficheros, del almacén privado del conector (dirección firmada), nunca de GitHub.
+    AccesoTemario.fijarParaPruebas('https://mcp.victorgutierrezmarcos.es/t/9999999999.f/', 9999999999);
+    expect(t.urlDocumentoHtml, 'https://mcp.victorgutierrezmarcos.es/t/9999999999.f/oposicion/temario/tercer-ejercicio/3A08.html');
+    expect(t.url(t.pdf), 'https://mcp.victorgutierrezmarcos.es/t/9999999999.f/oposicion/temario/tercer-ejercicio/3A08.pdf');
+    AccesoTemario.olvidar();
     expect(t.esquema.map((e) => e.titulo), ['Introducción', 'I. Análisis']);
-    // Sin commit, la rama por githack (nunca jsDelivr).
-    final sinCommit = ManifiestoRevisados.fromJson({
-      'cdn': 'https://cdn.jsdelivr.net/gh/vgutierrezmarcos/victorgutierrezmarcos.github.io@revision-temario/',
-      'temas': [
-        {'codigo': '3.A.9', 'pdf': {'ruta': 'p.pdf', 'sha': 'a'}, 'html': {'ruta': 'p.html', 'sha': 'b'}},
-      ],
-    });
-    expect(sinCommit.temas['3.A.9']!.urlDocumentoHtml, 'https://raw.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/revision-temario/p.html');
-    expect(sinCommit.temas['3.A.9']!.esquema, isEmpty);
   });
 }

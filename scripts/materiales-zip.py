@@ -24,7 +24,8 @@ vídeos, la skill ni las fuentes LaTeX.
                                                       # resubir si nada ha cambiado)
     python3 scripts/materiales-zip.py --lista         # qué entra en cada uno
 
-Lo usa .github/workflows/create-materials-zip.yml.
+El público lo monta .github/workflows/create-materials-zip.yml; el de los revisados,
+scripts/temario-privado.py (los revisados ya no están en el repositorio público).
 
 Autor: Víctor Gutiérrez Marcos
 """
@@ -44,6 +45,10 @@ CARPETA = 'Materiales TCEE - Víctor Gutiérrez Marcos'
 PUBLICO = 'materiales-tcee.zip'
 REVISADOS = 'materiales-tcee-con-revisados.zip'
 YA_COMPRIMIDOS = ('.pdf', '.docx', '.xlsm', '.ppsx', '.dotx')
+# Carpeta con los PDF revisados (las mismas rutas que en revisados-web.json): la pone
+# scripts/temario-privado.py, que es quien monta el ZIP con revisados desde el almacén
+# privado. Sin ella, los revisados no entran en ningún ZIP.
+PRIVADO = None
 NOMBRES_EJERCICIO = {1: '1 Primer ejercicio', 3: '3 Tercer ejercicio',
                      4: '4 Cuarto ejercicio', 5: '5 Quinto ejercicio'}
 
@@ -85,7 +90,11 @@ def materiales():
     filas = []
 
     def anade(destino, origen, solo_revisados=False):
-        if existe(origen):
+        if solo_revisados:
+            if not PRIVADO or not origen or not os.path.isfile(os.path.join(PRIVADO, origen)):
+                return
+            origen = os.path.join(PRIVADO, origen)
+        if solo_revisados or existe(origen):
             filas.append((f'{CARPETA}/{destino}', origen, solo_revisados))
 
     # Organización
@@ -255,7 +264,8 @@ def main():
         return
     os.makedirs(a.salida, exist_ok=True)
     escribir(os.path.join(a.salida, PUBLICO), filas, False, revisados)
-    escribir(os.path.join(a.salida, REVISADOS), filas, True, revisados)
+    if PRIVADO:
+        escribir(os.path.join(a.salida, REVISADOS), filas, True, revisados)
     with open(os.path.join(a.salida, 'huella.txt'), 'w') as f:
         f.write(huella(filas) + '\n')
 

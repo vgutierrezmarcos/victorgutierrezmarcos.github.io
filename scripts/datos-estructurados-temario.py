@@ -58,8 +58,8 @@ def bloque(pagina, temas, revisados=None):
                 '@type': 'LearningResource',
                 'name': titulo,
                 'description': asunto,
-                'url': f'{WEB}/{ruta}',
-                'encodingFormat': 'application/pdf',
+                'url': f'{WEB}/{rev["pagina"] if rev else ruta}',
+                'encodingFormat': 'text/html' if rev else 'application/pdf',
                 'inLanguage': 'es',
                 'learningResourceType': 'apuntes',
                 'educationalUse': 'preparación de oposiciones',
@@ -87,10 +87,9 @@ def bloque(pagina, temas, revisados=None):
             if conceptos:
                 item['about'] = [{'@type': 'Thing', 'name': c['nombre'],
                                   'sameAs': [c['wikipedia'], 'https://www.wikidata.org/wiki/' + c['wikidata']]} for c in conceptos]
-            if rev.get('repaso'):
-                item['hasPart'] = {'@type': 'LearningResource', 'name': f'Ficha de repaso: {titulo}',
-                                   'url': f'{WEB}/{rev["repaso"]}', 'encodingFormat': 'application/pdf',
-                                   'learningResourceType': 'ficha de repaso', 'inLanguage': 'es'}
+            # Se lee en su página con cuenta de Google (el PDF no es público desde el 26/11/2026).
+            item['isAccessibleForFree'] = True
+            item['conditionsOfAccess'] = 'Con cuenta de Google, para uso personal'
         elementos.append({'@type': 'ListItem', 'position': posicion, 'item': item})
     datos = {'@context': 'https://schema.org', '@type': 'ItemList', '@id': f'{url_pagina}#temas',
              'url': url_pagina, 'numberOfItems': len(elementos), 'itemListElement': elementos}
@@ -102,7 +101,7 @@ def bloque(pagina, temas, revisados=None):
 
 def main():
     os.chdir(RAIZ)
-    titulos = metadatos.titulados()
+    titulos = metadatos.titulados(todos=True)
     revisados = revisados_web()
     for ejercicio in EJERCICIOS:
         pagina = f'oposicion/temario/{ejercicio}-ejercicio.html'

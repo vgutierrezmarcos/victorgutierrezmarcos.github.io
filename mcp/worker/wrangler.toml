@@ -53,6 +53,13 @@ ORIGENES_LOGIN = "https://www.victorgutierrezmarcos.es,https://victorgutierrezma
 # Secretos (npx wrangler secret put NOMBRE):
 #   CLAVE_CIFRADO  32 bytes en base64 (openssl rand -base64 32): cifra el refresh token de Firebase
 #                  antes de guardarlo (además del cifrado propio de workers-oauth-provider).
+#   ADMIN_TEMARIO  secreto de subida al almacén del temario (~/.config/oposicion-red/temario-admin.token).
+
+[[r2_buckets]]
+# Temas revisados, sus fichas, Word y HTML, la guía del dictamen, la skill y el ZIP con revisados (material exclusivo):
+# solo salen por /t/… con la sesión de Google (src/temarioPrivado.ts). Los sube ../../scripts/temario-privado.py.
+binding = "TEMARIO"
+bucket_name = "tcee-temario"
 
 [[kv_namespaces]]
 # Clientes, concesiones y tokens OAuth (los maneja @cloudflare/workers-oauth-provider).

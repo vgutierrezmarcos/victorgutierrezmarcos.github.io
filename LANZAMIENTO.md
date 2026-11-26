@@ -137,6 +137,43 @@ push --force origin temario-publicado` y `python3 scripts/rama-publicada.py
 --comprobar` (paso 4), y en `main` `python3 scripts/temas-revisados-web.py`
 (paso 10b).
 
+## Temas revisados protegidos (26/11/2026)
+
+Víctor: «proteger de verdad tanto los temas como el ZIP sirviéndolos desde el servidor del
+conector, comprobando la cuenta de Google». Cómo queda:
+
+- **Almacén privado** R2 `tcee-temario` del Worker (`mcp/worker/src/temarioPrivado.ts`):
+  manifiesto público (`/temario/manifiesto`, sin contenido); `/temario/acceso` con el ID token
+  de Firebase (solo cuentas de Google o Apple) da una base firmada `/t/<caducidad>.<firma>/`
+  de 12 horas; con ella salen PDF, Word, HTML con sus gráficos, fichas, guía del dictamen,
+  la skill y `zip/materiales-tcee-con-revisados.zip`.
+- **Subida**: `python3 scripts/temario-privado.py [--ref <ref>] [--git-dir <repo>]` (secreto en
+  `~/.config/oposicion-red/temario-admin.token`; solo sube lo cambiado). Hay que lanzarlo cada vez
+  que cambie el temario revisado, después de rehacer la rama de publicación.
+- **Web**: `exclusivos.js` lee el manifiesto y los ficheros del conector. Los PDF revisados ya
+  no están en main; la URL de siempre (`…/3A08.pdf`) da 404 y `404.html` lleva a la página del
+  tema (iniciar sesión o versión antigua). `temas-revisados-web.py` ya no copia PDF. El buscador
+  solo indexa título, apartados y conceptos de los revisados (las versiones antiguas, con texto).
+  El ZIP público (GitHub) no lleva revisados; el de la sesión sale del conector.
+- **App 1.28.0**: lee el manifiesto del conector y baja con `AccesoTemario` (dirección firmada).
+
+**El día que Play apruebe la 1.28.0** (la 1.27.0 aún lee de `temario-publicado`):
+
+1. `versionActual` y `versionMinima` 1.28.0 en `oposicion/app-config.json` (las apps viejas
+   piden actualizar), novedad, `apk-respaldo.py` y push.
+2. Repositorio privado `vgutierrezmarcos/tcee-temario`: subir allí `temario-publicado`,
+   `revision-temario` y la etiqueta `revision-temario-2-final`; añadirlo como remoto `privado`.
+3. Borrar del público la rama `temario-publicado`, la rama `revision-temario` y la etiqueta.
+4. Reescribir la historia de `main` para quitar los PDF revisados que estuvieron en la web
+   del 25 al 26/11/2026 (`tercer-ejercicio/3[AB]NN.pdf` y `-repaso.pdf`, la guía y su resumen
+   **solo en esos commits**: antes del 25/11 esas rutas tenían el tema antiguo) y el ZIP de la
+   skill; push --force y avisar de que los clones viejos hay que volver a bajarlos.
+5. `exclusivos.py` sin la URL de githack de la skill; el conector (`publicar-contenido.py`) y
+   `temario-privado.py` leyendo del remoto privado.
+
+Lo que no se puede retirar: lo que alguien ya bajara, y la caché permanente de
+rawcdn.githack.com de los commits que llegó a servir.
+
 ## Después (no forma parte del lanzamiento)
 
 - Los PDF del temario son públicos en raw/githack (la sesión solo decide qué

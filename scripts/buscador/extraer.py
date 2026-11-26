@@ -3,8 +3,9 @@
 
 Registros (uno por línea en scripts/buscador/registros.jsonl, fuera de git):
   - tema:     cada apartado de cada tema en PDF (el índice del PDF da la página; los PDF sin
-              índice, por bloques de 2 páginas). Los temas revisados del 3.º y la guía del
-              dictamen, de la URL de siempre (no las versiones de anterior/).
+              índice, por bloques de 2 páginas), con su texto. De los temas revisados del 3.º
+              y de la guía del dictamen, solo el título, los apartados y los conceptos (no son
+              públicos: el resultado lleva a su página); su versión antigua, con el texto.
   - pagina:   las páginas HTML del sitemap (solo el contenido de <main>).
   - test:     las preguntas oficiales del test, con la idea clave de su explicación.
 
@@ -61,22 +62,38 @@ def registros_tema(ruta, codigo, titulo_tema, url, revisado):
         }
 
 
+def registros_revisado(t):
+    """Un tema revisado, sin su texto (Víctor, 26/11/2026: el índice es público y los temas
+    revisados solo se leen con sesión): se encuentra por su título, sus apartados y los conceptos
+    de su índice, y el resultado lleva a su página (que pide iniciar sesión o da la antigua)."""
+    guia = t['archivo'] == '1D01'
+    codigo = 'Dictamen' if guia else t['codigo']
+    titulo = 'Guía para el dictamen de coyuntura económica' if guia else f"Tema {t['codigo']}: {t['titulo'].rstrip('.')}"
+    pagina = WEB + t['pagina']
+    comun = {'tipo': 'tema', 'titulo': titulo, 'codigo': codigo, 'ejercicio': EJERCICIO['1' if guia else t['codigo'][0]],
+             'revisado': True, 'pdf': pagina, 'pagina': 1}
+    yield {**comun, 'url': pagina, 'apartado': 'Conceptos del tema', 'texto': '; '.join(t.get('conceptos') or [])[:MAX_TEXTO]}
+    for apartado in t.get('apartados') or []:
+        yield {**comun, 'url': f"{pagina}#apartado={apartado}", 'apartado': apartado, 'texto': apartado}
+
+
 def temas():
     revisados = json.load(open(os.path.join(RAIZ, 'oposicion/temario/revisados-web.json'), encoding='utf-8'))['temas']
     ya = set()
     for t in revisados:
-        url = WEB + t['pdf']
-        ya.add(url)
-        if t['archivo'] == '1D01':
-            yield from registros_tema(t['pdf'], 'Dictamen', 'Guía para el dictamen de coyuntura económica', url, True)
-        else:
-            yield from registros_tema(t['pdf'], t['codigo'], t['titulo'].rstrip('.'), url, True)
+        yield from registros_revisado(t)
+        # La versión antigua (licencia CC, pública), con su texto completo
+        if t.get('anterior') and os.path.exists(os.path.join(RAIZ, t['anterior'])):
+            url = WEB + t['anterior']
+            ya.add(url)
+            nombre = 'Guía para el dictamen de coyuntura económica (versión anterior)' if t['archivo'] == '1D01' else f"{t['titulo'].rstrip('.')} (versión anterior)"
+            yield from registros_tema(t['anterior'], 'Dictamen' if t['archivo'] == '1D01' else t['codigo'], nombre, url, False)
     temario = json.load(open(os.path.join(RAIZ, 'oposicion/temario/temario.json'), encoding='utf-8'))
     for ej in temario['ejercicios']:
         for parte in ej.get('partes', []):
             for t in parte.get('temas', []):
                 url = t.get('url') or ''
-                if not t.get('disponible') or not url.endswith('.pdf') or '/anterior/' in url or url in ya:
+                if not t.get('disponible') or not url.endswith('.pdf') or url in ya:
                     continue
                 ruta = url.replace(WEB, '')
                 if os.path.exists(os.path.join(RAIZ, ruta)):

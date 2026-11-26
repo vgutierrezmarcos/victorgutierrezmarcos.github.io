@@ -6,7 +6,7 @@
 //   GET /app/banco                 → { generado, aviso, preguntas: [...] } (imagenes con URL firmada)
 //   GET /app/banco/img/<fichero>?f=<firma>
 
-import { datosDelIdToken } from './firebase';
+import { cuentaDelIdToken } from './firebase';
 import { sha256 } from './cifrado';
 
 export interface EnvBancoApp {
@@ -50,7 +50,7 @@ export async function atenderBancoApp(request: Request, env: EnvBancoApp, fetchF
   }
 
   const token = /^Bearer\s+(.+)$/i.exec(request.headers.get('Authorization') ?? '')?.[1];
-  const usuario = token ? await datosDelIdToken(env.FIREBASE_API_KEY, token, fetchFn) : null;
+  const usuario = token ? await cuentaDelIdToken(env.FIREBASE_API_KEY, token, fetchFn) : null;
   if (!usuario) return new Response(JSON.stringify({ error: 'Inicia sesión con Google para ver el banco de preguntas de EconomIA.' }), { status: 401, headers: { ...cabeceras, 'Content-Type': 'application/json; charset=utf-8' } });
   const texto = await env.CONTENIDO.get('banco/preguntas.json', 'text');
   if (!texto) return new Response(JSON.stringify({ error: 'El banco no está publicado.' }), { status: 503, headers: { ...cabeceras, 'Content-Type': 'application/json; charset=utf-8' } });

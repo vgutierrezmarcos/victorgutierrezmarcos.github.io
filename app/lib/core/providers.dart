@@ -402,6 +402,7 @@ class SesionNotifier extends Notifier<bool> {
         if (!kIsWeb) await GoogleSignIn().signOut();
       } catch (_) {}
       await FirebaseAuth.instance.signOut();
+      AccesoTemario.olvidar();
       await programarAvisosEnSegundoPlano(activar: false);
       ref.invalidate(historialProvider);
     } finally {

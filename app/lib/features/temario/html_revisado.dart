@@ -4,7 +4,7 @@
 /// - Quita lo que es de la web: cabecera, menús, migas, pie, botones de
 ///   descarga (la app tiene los suyos), el párrafo con enlaces al resto de la
 ///   web y los scripts del sitio (buscador, cookies y Analytics, Firebase).
-/// - Añade `<base href>` con la URL del HTML en el CDN (githack): los gráficos (SVG) y
+/// - Añade `<base href>` con la URL del HTML en el almacén privado del conector (dirección firmada): los gráficos (SVG) y
 ///   las hojas de estilo relativas se cargan de ahí con su tipo correcto
 ///   (raw.githubusercontent.com los serviría como texto y no se verían).
 /// - Añade un script que lleva los enlaces internos (#…) al punto de la página

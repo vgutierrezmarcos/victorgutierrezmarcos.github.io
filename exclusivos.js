@@ -130,19 +130,47 @@
     // Interruptor (scripts/temas-web-visible.py --mostrar | --ocultar): con false,
     // todo sigue como antes y los temas revisados solo se leen en la app.
     var TEMAS_EN_WEB = true;
-    var REPO = 'vgutierrezmarcos/victorgutierrezmarcos.github.io';
-    var MANIFIESTO = 'https://raw.githubusercontent.com/' + REPO + '/temario-publicado/oposicion/temario/app/revisados.json';
+    // Los temas revisados no están en ningún sitio público (Víctor, 26/11/2026): los sirve el
+    // conector (mcp/worker/src/temarioPrivado.ts) desde su almacén privado, a quien ha iniciado
+    // sesión con Google. El manifiesto (títulos y tamaños, sin contenido) es público; los ficheros
+    // salen de una dirección firmada que caduca (acceso()). La URL de siempre de cada PDF
+    // (tercer-ejercicio/3A08.pdf) ya no existe: 404.html lleva a la página del tema.
+    var SERVIDOR = 'https://mcp.victorgutierrezmarcos.es';
+    var MANIFIESTO = SERVIDOR + '/temario/manifiesto';
     var PAGINA_TEMA = RAIZ + 'oposicion/temario/tema-revisado.html';
-    // Los PDF revisados están en la web con la URL de siempre (scripts/temas-revisados-web.py):
-    // tercer-ejercicio/3A08.pdf es el tema nuevo, 3A08-repaso.pdf su ficha y el antiguo
-    // pasa a tercer-ejercicio/anterior/3A08.pdf (la guía del dictamen, igual).
+    // La versión antigua de cada tema sigue en la web: tercer-ejercicio/anterior/3A08.pdf (la guía del dictamen, igual).
     var GUIA_WEB = 'oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf';
     var GUIA_ANTIGUA = RAIZ + 'oposicion/temario/primer-ejercicio/anterior/esquema_dictamen_economico.pdf';
-    /** La URL de la web de un PDF del manifiesto (tema o ficha). */
-    function pdfWeb(ruta) {
-        if (/\/1D01\.pdf$/.test(ruta)) ruta = GUIA_WEB;
-        else if (/\/1D01-repaso\.pdf$/.test(ruta)) ruta = GUIA_WEB.replace(/\.pdf$/, '-resumen.pdf');
-        return RAIZ + ruta;
+    var accesoGuardado = null;
+    /** Base firmada del almacén privado (…/t/<caducidad>.<firma>/), con la sesión de Firebase. */
+    function acceso() {
+        var ahora = Date.now() / 1000;
+        if (!accesoGuardado) {
+            try {
+                var g = JSON.parse(sessionStorage.getItem('tcee_acceso') || 'null');
+                if (g && g.expira - 300 > ahora && g.base) accesoGuardado = Promise.resolve(g);
+            } catch (e) { /* sin almacenamiento */ }
+        }
+        if (accesoGuardado) {
+            return accesoGuardado.then(function (g) {
+                if (g && g.expira - 300 > Date.now() / 1000) return g.base;
+                accesoGuardado = null;
+                return acceso();
+            });
+        }
+        var u = usuario();
+        if (!u) return Promise.reject(new Error('sin sesión'));
+        accesoGuardado = u.getIdToken().then(function (token) {
+            return fetch(SERVIDOR + '/temario/acceso', { headers: { Authorization: 'Bearer ' + token } });
+        }).then(function (r) {
+            if (!r.ok) throw new Error('acceso ' + r.status);
+            return r.json();
+        }).then(function (g) {
+            try { sessionStorage.setItem('tcee_acceso', JSON.stringify(g)); } catch (e) { /* lleno o bloqueado */ }
+            return g;
+        });
+        accesoGuardado.catch(function () { accesoGuardado = null; });
+        return accesoGuardado.then(function (g) { return g.base; });
     }
     /** …/tercer-ejercicio/3A08.pdf → …/tercer-ejercicio/anterior/3A08.pdf (ya en anterior/, igual). */
     function aAnterior(url) {
@@ -156,7 +184,7 @@
         if (!manifiesto) {
             // Diez minutos en sessionStorage: no se pide a GitHub en cada página.
             try {
-                var guardado = JSON.parse(sessionStorage.getItem('tcee_revisados') || 'null');
+                var guardado = JSON.parse(sessionStorage.getItem('tcee_revisados2') || 'null');
                 if (guardado && Date.now() - guardado.t < 600000 && guardado.m) manifiesto = Promise.resolve(guardado.m);
             } catch (e) { /* sin almacenamiento */ }
         }
@@ -164,7 +192,7 @@
             manifiesto = fetch(MANIFIESTO)
                 .then(function (r) { return r.ok ? r.json() : null; })
                 .then(function (m) {
-                    if (m && m.temas) { try { sessionStorage.setItem('tcee_revisados', JSON.stringify({ t: Date.now(), m: m })); } catch (e) { /* lleno o bloqueado */ } }
+                    if (m && m.temas) { try { sessionStorage.setItem('tcee_revisados2', JSON.stringify({ t: Date.now(), m: m })); } catch (e) { /* lleno o bloqueado */ } }
                     else manifiesto = null;
                     return m;
                 })
@@ -199,11 +227,15 @@
     function paginaWeb(archivo) {
         return archivo === '1D01' ? RAIZ + GUIA_WEB.replace(/\.pdf$/, '.html') : RAIZ + 'oposicion/temario/tercer-ejercicio/' + archivo + '.html';
     }
-    /** Lo que abre un tema revisado con sesión: su página web (con la burbuja de EconomIA), o su Word nuevo si el enlace era al Word. */
-    function destinoRevisado(rev, word) {
-        var m = manifiestoListo || {};
-        if (word && rev.t.docx && rev.t.docx.ruta) return (m.raw || ('https://raw.githubusercontent.com/' + REPO + '/temario-publicado/')) + rev.t.docx.ruta;
+    /** Lo que abre un tema revisado con sesión: su página web (con la burbuja de EconomIA). */
+    function destinoRevisado(rev) {
         return paginaWeb(rev.t.archivo || archivoDe(rev.t.codigo));
+    }
+    /** El Word nuevo, del almacén privado (con sesión); si no se puede, la página del tema. */
+    function abrirWord(rev) {
+        if (!rev.t.docx || !rev.t.docx.ruta) { location.href = destinoRevisado(rev); return; }
+        acceso().then(function (base) { location.href = base + rev.t.docx.ruta; })
+            .catch(function () { location.href = destinoRevisado(rev); });
     }
 
     /** El tema al que lleva un enlace (su archivo), o null. */
@@ -375,15 +407,15 @@
         if (evento) { evento.preventDefault(); evento.stopPropagation(); }
         var nueva = a.target === '_blank' || (evento && (evento.ctrlKey || evento.metaKey || evento.shiftKey || evento.button === 1));
         var word = /\.docx(?:$|[?#])/.test(a.getAttribute('href') || '');
-        var destino = destinoRevisado(rev, word);
+        var destino = destinoRevisado(rev);
         function abrir() {
             if (usuario()) {
-                if (word) location.href = destino;
+                if (word) abrirWord(rev);
                 else if (nueva && sesionResuelta) window.open(destino, '_blank', 'noopener');
                 else location.href = destino;
             } else {
                 avisoSesion({ archivo: archivo, guia: rev.guia, codigo: rev.t.codigo, fecha: rev.t.aprobado || rev.t.fecha, antiguo: antiguoDelEnlace(a), destino: a.target || '',
-                              alEntrar: function () { if (word || !nueva) location.href = destino; else window.open(destino, '_blank', 'noopener'); } });
+                              alEntrar: function () { if (word) abrirWord(rev); else if (!nueva) location.href = destino; else window.open(destino, '_blank', 'noopener'); } });
             }
         }
         // Si viene del buscador, se cierra (el aviso va encima de la página).
@@ -392,7 +424,7 @@
         if (sesionResuelta) abrir(); else alCambiarSesion(function () { if (abrir) { var f = abrir; abrir = null; f(); } });
         return true;
     }
-    window.tceeTemasRevisados = { abrir: function (a) { return abrirDesdeEnlace(a, null); } };
+    window.tceeTemasRevisados = { abrir: function (a) { return abrirDesdeEnlace(a, null); }, acceso: acceso };
 
     function interceptarEnlaces() {
         if (!TEMAS_EN_WEB) return;
@@ -408,7 +440,7 @@
         // tema-no-disponible.html?tema=… de un tema que ya tiene versión revisada.
         if (/\/tema-no-disponible\.html$/.test(location.pathname)) {
             var archivo = archivoDe(new URLSearchParams(location.search).get('tema'));
-            if (archivo) leerManifiesto().then(function (m) { var r = revisadoDe(m, archivo); if (r) { manifiestoListo = m; location.replace(destinoRevisado(r, false)); } });
+            if (archivo) leerManifiesto().then(function (m) { var r = revisadoDe(m, archivo); if (r) { manifiestoListo = m; location.replace(destinoRevisado(r)); } });
         }
     }
 
@@ -450,19 +482,17 @@
         Array.prototype.forEach.call(doc.querySelectorAll('link'), function (l) {
             var rel = l.getAttribute('rel') || '', href = l.getAttribute('href') || '';
             if (/canonical|icon|manifest/.test(rel) || /(search-styles|cookie-consent)\.css$/.test(href)) { l.parentNode.removeChild(l); return; }
-            // Las hojas de estilos, de la propia web y no de la rama (githack a veces no responde y el tema salía sin formato).
+            // Las hojas de estilos, de la propia web.
             if (/stylesheet/.test(rel) && /(^|\/)styles\.css$/.test(href)) l.setAttribute('href', location.origin + '/styles.css');
             else if (/stylesheet/.test(rel) && /(^|\/)tema\.css$/.test(href)) l.setAttribute('href', location.origin + '/oposicion/temario/latex/tema.css');
         });
-        // Los PDF del temario (este tema, su ficha y las remisiones a otros temas), a su URL de la web:
-        // se abren en el navegador y con la dirección de siempre. Las versiones anteriores y el Word, de la rama.
+        // Las remisiones a otro tema revisado (3B24.html, relativas al almacén privado), a su página
+        // de la web, que lo abre con la sesión. Los PDF y el Word quedan en el almacén (dirección firmada).
         Array.prototype.forEach.call(doc.querySelectorAll('a[href]'), function (a) {
             var u;
             try { u = new URL(a.getAttribute('href'), urlDocumento); } catch (e) { return; }
-            var i = u.href.indexOf('/oposicion/temario/');
-            if (u.origin === location.origin || i < 0 || !/\.pdf$/.test(u.pathname) || /-anterior\.pdf$/.test(u.pathname)) return;
-            var ruta = u.href.slice(i + 1).split(/[?#]/)[0];
-            if (/^oposicion\/temario\/(primer|tercer|cuarto|quinto)-ejercicio\/[^/]+\.pdf$/.test(ruta)) a.setAttribute('href', new URL(pdfWeb(ruta), location.href).href + u.hash); // absoluta: el marco lleva <base> de la rama
+            var m = /\/oposicion\/temario\/tercer-ejercicio\/(3[AB]\d\d)\.html$/.exec(u.pathname);
+            if (m && u.origin !== location.origin) a.setAttribute('href', location.origin + '/oposicion/temario/tercer-ejercicio/' + m[1] + '.html' + u.hash);
         });
         var base = doc.createElement('base');
         base.setAttribute('href', urlDocumento);
@@ -493,12 +523,6 @@
             "if(h.charAt(0)==='#'){e.preventDefault();var id=decodeURIComponent(h.slice(1));var d=document.getElementById(id)||document.getElementsByName(id)[0];if(d)d.scrollIntoView({behavior:'smooth',block:'start'});return;}" +
             "if(!a.hasAttribute('download')){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');}},true);";
         doc.body.appendChild(enlaces);
-        // Si githack no da un gráfico, el mismo fichero desde jsDelivr.
-        var respaldo = doc.createElement('script');
-        respaldo.textContent = "document.addEventListener('error',function(e){var i=e.target;if(!i||i.tagName!=='IMG'||i.dataset.respaldo)return;" +
-            "var m=/^https:\\/\\/raw\\.githack\\.com\\/([^/]+\\/[^/]+)\\/([^/]+)\\/(.*)$/.exec(i.src);if(!m)return;i.dataset.respaldo='1';" +
-            "i.src='https://cdn.jsdelivr.net/gh/'+m[1]+'@'+m[2]+'/'+m[3];},true);";
-        doc.head.appendChild(respaldo);
         var tema = document.documentElement.getAttribute('data-theme');
         if (tema) doc.documentElement.setAttribute('data-theme', tema); else doc.documentElement.removeAttribute('data-theme');
         return '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
@@ -572,14 +596,16 @@
                 if (cargado) return;
                 cargado = true;
                 mensaje('<p>Cargando ' + nombre + '…</p>');
-                var raw = m.raw || ('https://raw.githubusercontent.com/' + REPO + '/temario-publicado/');
-                var cdn = m.cdn || ('https://raw.githack.com/' + REPO + '/temario-publicado/');
-                fetch(raw + t.html.ruta).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (html) {
+                var base = null;
+                acceso().then(function (b) {
+                    base = b;
+                    return fetch(base + t.html.ruta);
+                }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (html) {
                     // La barra: formatos que hay en el manifiesto y la versión antigua de la web.
                     var enlaces = [];
-                    if (t.pdf && t.pdf.ruta) enlaces.push('<a href="' + pdfWeb(t.pdf.ruta) + '" target="_blank" rel="noopener">PDF</a>');
-                    if (t.docx && t.docx.ruta) enlaces.push('<a href="' + raw + t.docx.ruta + '" download>Word</a>');
-                    if (t.repaso && t.repaso.ruta) enlaces.push('<a href="' + pdfWeb(t.repaso.ruta) + '" target="_blank" rel="noopener">' + (guia ? 'Resumen de repaso' : 'Ficha de repaso') + '</a>');
+                    if (t.pdf && t.pdf.ruta) enlaces.push('<a href="' + base + t.pdf.ruta + '" target="_blank" rel="noopener">PDF</a>');
+                    if (t.docx && t.docx.ruta) enlaces.push('<a href="' + base + t.docx.ruta + '" download>Word</a>');
+                    if (t.repaso && t.repaso.ruta) enlaces.push('<a href="' + base + t.repaso.ruta + '" target="_blank" rel="noopener">' + (guia ? 'Resumen de repaso' : 'Ficha de repaso') + '</a>');
                     if (antiguo) enlaces.push('<a href="' + antiguo + '" target="_blank" rel="noopener">Versión anterior</a>');
                     barra.querySelector('.tema-revisado-formatos').innerHTML = enlaces.join('');
                     var fecha = barra.querySelector('.tema-revisado-fecha');
@@ -588,7 +614,7 @@
                     var marco = document.getElementById('tema-revisado-marco');
                     marco.title = titulo;
                     marco.onload = function () { irAlApartado(marco); };
-                    marco.srcdoc = prepararHtml(html, cdn + t.html.ruta);
+                    marco.srcdoc = prepararHtml(html, base + t.html.ruta);
                     marco.hidden = false;
                     estado.hidden = true;
                     // El modo claro u oscuro de la web (search-ui.js) pasa al tema.
@@ -625,9 +651,8 @@
             if (!archivo || li.querySelector('a.exclusivos-abrir')) return;
             var a = document.createElement('a');
             a.className = 'exclusivos-abrir';
-            // El PDF en su URL de siempre: el clic lo recoge abrirDesdeEnlace (sesión o aviso).
-            a.href = archivo === '1D01' ? RAIZ + GUIA_WEB : RAIZ + 'oposicion/temario/tercer-ejercicio/' + archivo + '.pdf';
-            a.target = '_blank';
+            // La página del tema (pide sesión si hace falta y da la versión antigua).
+            a.href = paginaWeb(archivo);
             // El código y el título juntos, como enlace.
             while (li.firstChild && !(li.firstChild.className === 'exclusivos-detalle' || li.firstChild.className === 'etiqueta-exclusivo')) {
                 a.appendChild(li.firstChild);
@@ -657,7 +682,10 @@
         fila.parentNode.insertBefore(nota, fila.nextSibling);
         function pinta(usuario) {
             if (usuario) {
-                boton.href = s.url;
+                // Del almacén privado, con una dirección firmada (la de exclusivos.json es la de antes).
+                boton.href = '#';
+                acceso().then(function (base) { boton.href = base + 'oposicion/temario/app/prepara-con-claude.zip'; })
+                    .catch(function () { boton.href = APP; });
                 boton.setAttribute('download', 'prepara-con-claude.zip');
                 boton.textContent = 'Descargar la skill (ZIP' + (s.tamano ? ', ' + Math.round(s.tamano / 1024 / 1024 * 10) / 10 + ' MB' : '') + ')';
                 nota.textContent = 'Versión ' + (s.version || '') + (s.temas ? ' · ' + s.temas + ' temas revisados' : '') + ' · Para tu uso personal; la copia va ligada a tu cuenta.';

@@ -172,6 +172,28 @@ class _TemaPageState extends ConsumerState<TemaPage> {
 
   /// El HTML del tema revisado, preparado para leerlo en la app (en el móvil
   /// queda guardado para leerlo sin red; los gráficos necesitan red la primera vez).
+  /// El tema revisado sale del almacén privado del conector con una dirección
+  /// firmada que caduca (AccesoTemario): si no la hay, se pide y se repinta.
+  bool _pidiendoAcceso = false;
+  bool _accesoListo(TemaRevisado? rv) {
+    if (rv == null || AccesoTemario.vigente) return true;
+    if (!_pidiendoAcceso && !_errorAcceso) {
+      _pidiendoAcceso = true;
+      AccesoTemario.asegurar().then((ok) {
+        _pidiendoAcceso = false;
+        if (!mounted) return;
+        if (ok) {
+          setState(() {});
+        } else {
+          setState(() => _errorAcceso = true);
+        }
+      });
+    }
+    return false;
+  }
+
+  bool _errorAcceso = false;
+
   Future<void> _cargarHtml(TemaRevisado rev) async {
     final f = rev.html;
     // Ya cargado, cargándose o con error (se reintenta con «Reintentar»).
@@ -182,6 +204,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
       _errorHtml = null;
     });
     try {
+      if (!await AccesoTemario.asegurar()) throw StateError('Sin acceso al tema: inicia sesión y comprueba la conexión.');
       final bytes = await ref.read(descargasProvider).bytes(rev.url(f), nombre: rev.nombreLocal(ClaseFichero.html), reemplaza: rev.prefijoLocal(ClaseFichero.html));
       final html = utf8.decode(bytes, allowMalformed: true);
       if (mounted && _shaHtml == f.sha) setState(() => _htmlCrudo = html);
@@ -196,6 +219,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final f = rev.fichero(clase);
     if (f == null) return;
     if (clase == ClaseFichero.repaso) {
+      await AccesoTemario.asegurar();
+      if (!mounted) return;
       Navigator.of(context).push(MaterialPageRoute(
         builder: (_) => TemaPage(
           tema: Tema(codigo: '${rev.codigo}-repaso', titulo: rev.esDictamen ? 'Resumen de repaso de la guía del dictamen' : 'Ficha de repaso del tema ${rev.codigo}', disponible: true, temarioAnterior: false, url: rev.url(f)),
@@ -210,6 +235,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final messenger = ScaffoldMessenger.of(context);
     messenger.mostrar(SnackBar(content: Text(kIsWeb ? 'Descargando el Word…' : 'Preparando el Word…'), duration: const Duration(seconds: 2)));
     try {
+      if (!await AccesoTemario.asegurar()) throw StateError('Sin acceso al tema: inicia sesión y comprueba la conexión.');
       final bytes = await ref.read(descargasProvider).bytes(rev.url(f), nombre: rev.nombreLocal(clase), reemplaza: rev.prefijoLocal(clase));
       await guardarBytes(
         nombre: rev.nombreVisible(clase),
@@ -347,7 +373,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final bloqueado = eleccion.version == VersionTema.sinSesion;
     // Con sesión, se espera al manifiesto antes de abrir nada (para no bajar
     // la versión anterior y luego la revisada).
-    final listo = estadoRevisados == null || !conSesion || estadoRevisados.hasValue || estadoRevisados.hasError;
+    final listo = (estadoRevisados == null || !conSesion || estadoRevisados.hasValue || estadoRevisados.hasError) && _accesoListo(rv);
 
     final sinPdf = !revisada && !bloqueado && widget.tema.url == null;
     final web = !revisada && !bloqueado && widget.tema.esPaginaWeb;
@@ -554,6 +580,10 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                   ),
                   Expanded(child: AgendaTemaVista(tema: widget.tema)),
                 ])
+              : _errorAcceso && revisada
+              ? ErrorVista(
+                  error: StateError('No se ha podido abrir el tema revisado: comprueba la conexión y que has iniciado sesión con Google.'),
+                  reintentar: () => setState(() => _errorAcceso = false))
               : _error != null
               ? ErrorVista(error: _error!, detalle: true, reintentar: () => setState(() { _error = null; _claveCargada = null; }))
               : _pdf == null

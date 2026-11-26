@@ -319,18 +319,30 @@
     <script src="../firebase-config.js"></script>
     <script src="../auth.js"></script>
     <script>
-        // Con sesión iniciada, el ZIP lleva también los temas revisados (scripts/materiales-zip.py)
+        // Con sesión iniciada, el ZIP lleva también los temas revisados: sale del almacén privado
+        // del conector con una dirección firmada (exclusivos.js); sin sesión, el de GitHub (solo CC).
         (function () {
-            if (typeof firebase === 'undefined' || !firebase.auth) return;
-            var base = 'https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/releases/download/materiales-latest/';
-            firebase.auth().onAuthStateChanged(function (u) {
+            var publico = 'https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/releases/download/materiales-latest/materiales-tcee.zip';
+            var intentos = 0;
+            (function espera() {
+                if (window.firebase && firebase.apps && firebase.apps.length && firebase.auth && window.tceeTemasRevisados) {
+                    firebase.auth().onAuthStateChanged(pinta);
+                } else if (intentos++ < 60) {
+                    setTimeout(espera, 200);
+                }
+            })();
+            function pinta(u) {
                 var a = document.getElementById('zip-materiales');
+                var etiqueta = document.getElementById('zip-etiqueta');
                 if (!a) return;
-                a.href = base + (u ? 'materiales-tcee-con-revisados.zip' : 'materiales-tcee.zip');
-                document.getElementById('zip-etiqueta').textContent = u
-                    ? 'Descargar todos los materiales (ZIP, unos 715 MB)'
-                    : 'Descargar todos los materiales (ZIP, unos 580 MB)';
-            });
+                a.href = publico;
+                etiqueta.textContent = 'Descargar todos los materiales (ZIP, unos 580 MB)';
+                if (!u) return;
+                window.tceeTemasRevisados.acceso().then(function (base) {
+                    a.href = base + 'zip/materiales-tcee-con-revisados.zip';
+                    etiqueta.textContent = 'Descargar todos los materiales (ZIP, unos 715 MB)';
+                }).catch(function () { /* sin acceso: el público */ });
+            }
         })();
     </script>
 </body>

@@ -47,3 +47,25 @@ export async function datosDelIdToken(apiKey: string, idToken: string, fetchFn: 
   const u = cuerpo.users?.[0];
   return u?.localId ? { uid: u.localId, email: u.email ?? '' } : null;
 }
+
+/** Proveedores con los que se entra en la web y la app (Apple, para cuando haya iPhone). */
+const PROVEEDORES_CUENTA = ['google.com', 'apple.com'];
+
+/**
+ * uid y correo si el ID token es de una cuenta de Google (o Apple), no anónima ni de correo y
+ * contraseña: el material exclusivo pide «tu cuenta de Google», y la clave pública del proyecto
+ * permitiría a cualquiera sacar un token de otro tipo si esos métodos se activaran en Firebase.
+ */
+export async function cuentaDelIdToken(apiKey: string, idToken: string, fetchFn: typeof fetch = fetch): Promise<{ uid: string; email: string } | null> {
+  const r = await fetchFn(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${encodeURIComponent(apiKey)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ idToken }),
+  });
+  if (!r.ok) return null;
+  const cuerpo = (await r.json().catch(() => ({}))) as { users?: Array<{ localId?: string; email?: string; disabled?: boolean; providerUserInfo?: Array<{ providerId?: string }> }> };
+  const u = cuerpo.users?.[0];
+  if (!u?.localId || u.disabled) return null;
+  const proveedores = (u.providerUserInfo ?? []).map((p) => p.providerId ?? '');
+  return proveedores.some((p) => PROVEEDORES_CUENTA.includes(p)) ? { uid: u.localId, email: u.email ?? '' } : null;
+}

@@ -130,7 +130,7 @@ def _claves(conceptos, base):
     return claves
 
 
-def revisados():
+def revisados(todos=False):
     """Los temas revisados que están en la web (revisados-web.json): ruta → (título, asunto, claves).
 
     El título y el epígrafe, del manifiesto (el temario de 2024); las palabras clave, los
@@ -139,9 +139,13 @@ def revisados():
         return {}
     salida = {}
     for t in json.load(open(os.path.join(RAIZ, REVISADOS_WEB), encoding='utf-8'))['temas']:
+        # Desde el 26/11/2026 los PDF revisados no están en la web (almacén privado del conector):
+        # no hay nada que sellar; con todos=True se devuelven igual (títulos para los datos estructurados).
+        if not todos and not os.path.exists(os.path.join(RAIZ, t['pdf'])):
+            continue
         apartados = '; '.join(t.get('apartados') or [])
         if t['archivo'] == '1D01':
-            titulo, asunto, claves = FIJOS[t['pdf']]
+            titulo, asunto, claves = FIJOS['oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf']
             claves = _claves(t.get('conceptos') or [], claves)
             asunto = asunto + (f' Apartados: {apartados}.' if apartados else '')
             salida[t['pdf']] = (titulo, asunto, claves)
@@ -161,17 +165,18 @@ def revisados():
     return salida
 
 
-def titulados():
+def titulados(todos=False):
     """Todos los PDF con título: los enlazados desde /oposicion/ y los temas revisados."""
     salida = {ruta: metadatos(ruta, texto) for ruta, texto in enlaces().items()}
-    nuevos = revisados()
+    nuevos = revisados(todos)
     salida.update(nuevos)
     # Las versiones antiguas (anterior/): el mismo título con «(versión anterior)», que es lo que
     # enseña la pestaña del navegador. Siguen con su licencia CC (no están en EXCLUSIVOS).
     if os.path.exists(os.path.join(RAIZ, REVISADOS_WEB)):
+        todos_rev = revisados(True)
         for t in json.load(open(os.path.join(RAIZ, REVISADOS_WEB), encoding='utf-8'))['temas']:
-            if t.get('anterior') and t['pdf'] in nuevos:
-                titulo, asunto, _ = nuevos[t['pdf']]
+            if t.get('anterior') and t['pdf'] in todos_rev:
+                titulo, asunto, _ = todos_rev[t['pdf']]
                 salida[t['anterior']] = (f'{titulo} (versión anterior)',
                                          'Versión anterior. ' + asunto.split(' Apartados:')[0], CLAVES_ANTERIOR)
     return salida

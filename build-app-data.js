@@ -19,7 +19,15 @@ const BASE_URL = 'https://www.victorgutierrezmarcos.es';
 // Los temas revisados están en la URL de siempre y el antiguo en anterior/
 // (scripts/temas-revisados-web.py): la app y exclusivos.js usan «url» como la
 // versión antigua del tema, así que, si hay anterior/, apunta ahí.
+// Desde el 26/11/2026 los temas revisados no tienen PDF público: la lista enlaza su página
+// (tercer-ejercicio/3A08.html) y aquí se da la versión antigua, o null si no la había (la app
+// y la web abren el revisado desde el manifiesto del conector, con sesión).
 function conAnterior(rel) {
+    const pagina = rel.match(/^(.*\/)(3[AB]\d\d)\.html$/);
+    if (pagina) {
+        const pdf = `${pagina[1]}anterior/${pagina[2]}.pdf`;
+        return fs.existsSync(path.join(ROOT, 'oposicion/temario', pdf)) ? pdf : null;
+    }
     const m = rel.match(/^(.*\/)([^/]+\.pdf)$/);
     if (m && fs.existsSync(path.join(ROOT, 'oposicion/temario', m[1], 'anterior', m[2]))) return `${m[1]}anterior/${m[2]}`;
     return rel;
@@ -88,7 +96,8 @@ function parsearEjercicioConTemas(html, slug) {
             const href = it[1];
             const inner = it[2];
             const docxMatch = (it[3] || '').match(/class="tema-item-docx" href="([^"]+)"/);
-            const disponible = !/tema-no-disponible\.html/.test(href);
+            const destino = /tema-no-disponible\.html/.test(href) ? null : conAnterior(href);
+            const disponible = destino !== null;
             const codigoMatch = inner.match(/Tema\s+(\d+\.[A-Z]\.\d+)/);
             const tituloMatch = inner.match(/<span class="tema-item-title">([\s\S]*?)<\/span>/);
             if (!codigoMatch) continue;
@@ -98,7 +107,7 @@ function parsearEjercicioConTemas(html, slug) {
                 titulo: tituloMatch ? limpiarTexto(tituloMatch[1]) : limpiarTexto(inner),
                 disponible,
                 temarioAnterior: temaAnterior,
-                url: disponible ? `${BASE_URL}/oposicion/temario/${conAnterior(href)}` : null,
+                url: disponible ? `${BASE_URL}/oposicion/temario/${destino}` : null,
                 ...(docxMatch ? { urlDocx: `${BASE_URL}/oposicion/temario/${docxMatch[1]}` } : {})
             });
         }

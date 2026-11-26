@@ -9,6 +9,7 @@
 //   web (Google) → POST /callback/sesion (tokens de Firebase) → GET /callback → de vuelta a la IA.
 
 import { atenderBancoApp } from './bancoApp';
+import { atenderTemario } from './temarioPrivado';
 import { atenderDecisiones } from './decisiones';
 import { OAuthProvider, AuthorizationError, CimdFetchError, OAuthError, type OAuthHelpers, type OAuthProviderOptions, type OAuthResourceContext } from '@cloudflare/workers-oauth-provider';
 import { cifrar, descifrar, sha256 } from './cifrado';
@@ -45,6 +46,10 @@ export interface Env {
   URL_PRENSA: string;
   ORIGENES_LOGIN: string;
   CLAVE_CIFRADO: string;
+  /** Almacén privado (R2) de los temas revisados: solo sale por /t/… con la sesión (temarioPrivado.ts). */
+  TEMARIO?: R2Bucket;
+  /** Secreto de subida al almacén del temario (scripts/temario-privado.py). */
+  ADMIN_TEMARIO?: string;
   /** Contadores anónimos de uso (Workers Analytics Engine): herramienta, IA, oposición, resultado y duración. Sin uid ni contenido. */
   USO?: AnalyticsEngineDataset;
 }
@@ -299,6 +304,9 @@ const defaultHandler = {
     // El banco de preguntas de EconomIA para la app y la web (con la sesión de Firebase).
     const banco = await atenderBancoApp(request, env);
     if (banco) return banco;
+    // Los temas revisados (PDF, Word, HTML, ZIP) desde el almacén privado, con la sesión de Firebase.
+    const temario = await atenderTemario(request, env);
+    if (temario) return temario;
     const oauth = env.OAUTH_PROVIDER;
     // Dirección antigua (…workers.dev): la autorización empezaría aquí y acabaría en el dominio nuevo, donde no está
     // la cookie que ata la sesión al navegador («not started in this browser»). Se explica el cambio en vez de fallar al final.

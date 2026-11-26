@@ -1,31 +1,75 @@
 /// Temario revisado, exclusivo de la app.
 ///
-/// Los temas que Víctor revisa (rama `revision-temario` del repositorio de la
-/// web) no se publican en la web: la app los ofrece, con sesión iniciada, a
-/// partir del manifiesto `oposicion/temario/app/revisados.json` de esa rama
-/// (lo genera `scripts/temario/manifiesto-app.py`). Sin Firebase Storage: los
-/// ficheros se bajan de raw.githubusercontent.com, fijados al commit del
-/// manifiesto, y los estilos y gráficos del HTML, de githack (que los sirve
-/// con su tipo; jsDelivr daba 503 con este repositorio, que es muy grande, y
-/// el tema salía sin formato).
+/// Los temas que Víctor revisa no son públicos (26/11/2026): los sirve el
+/// conector (mcp/worker/src/temarioPrivado.ts) desde su almacén privado a quien
+/// ha iniciado sesión con Google. El manifiesto (títulos, tamaños, huellas y
+/// esquemas; sin contenido) es público en /temario/manifiesto; los ficheros se
+/// bajan de una dirección firmada que caduca (AccesoTemario), en la que el HTML
+/// resuelve también sus gráficos.
 library;
+
+import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'esquema.dart';
 
-const _repo = 'vgutierrezmarcos/victorgutierrezmarcos.github.io';
-/// Rama de publicación (se crea el día del lanzamiento desde la de trabajo, revision-temario-2).
-const _rama = 'temario-publicado';
+const _servidor = 'https://mcp.victorgutierrezmarcos.es';
 
-/// Dónde lee la app el manifiesto (caché de GitHub: 5 minutos).
-const urlManifiestoRevisados = 'https://raw.githubusercontent.com/$_repo/$_rama/oposicion/temario/app/revisados.json';
+/// Dónde lee la app el manifiesto (caché del conector: 5 minutos).
+const urlManifiestoRevisados = '$_servidor/temario/manifiesto';
 
-/// Bases por defecto si el manifiesto no trae las suyas (la rama, sin fijar).
-const _rawPorDefecto = 'https://raw.githubusercontent.com/$_repo/$_rama/';
-const _cdnPorDefecto = 'https://raw.githack.com/$_repo/$_rama/';
+/// La dirección firmada del almacén privado del temario (…/t/<caducidad>.<firma>/),
+/// que da el conector con el token de Firebase del usuario y vale unas horas.
+class AccesoTemario {
+  AccesoTemario._();
 
-/// CDN fijado a un commit (rawcdn.githack.com guarda para siempre lo que sirve
-/// de un commit, así que vale cualquier caché).
-String cdnDelCommit(String commit) => 'https://rawcdn.githack.com/$_repo/$commit/';
+  static String _base = '';
+  static int _expira = 0;
+  static Future<bool>? _enCurso;
+
+  /// La base vigente ('' si no hay sesión o aún no se ha pedido).
+  static String get base => vigente ? _base : '';
+
+  static bool get vigente => _base.isNotEmpty && _expira - 300 > DateTime.now().millisecondsSinceEpoch ~/ 1000;
+
+  /// Pide una base nueva si no hay o va a caducar; false sin sesión o sin red.
+  static Future<bool> asegurar({Dio? dio, User? usuario}) {
+    if (vigente) return Future.value(true);
+    return _enCurso ??= _pedir(dio: dio, usuario: usuario).whenComplete(() => _enCurso = null);
+  }
+
+  static Future<bool> _pedir({Dio? dio, User? usuario}) async {
+    try {
+      final u = usuario ?? FirebaseAuth.instance.currentUser;
+      if (u == null) return false;
+      final token = await u.getIdToken();
+      final r = await (dio ?? Dio()).get<Map<String, dynamic>>(
+        '$_servidor/temario/acceso',
+        options: Options(headers: {'Authorization': 'Bearer $token'}, responseType: ResponseType.json, receiveTimeout: const Duration(seconds: 20)),
+      );
+      final base = r.data?['base'];
+      final expira = r.data?['expira'];
+      if (base is! String || !base.startsWith('$_servidor/t/') || expira is! num) return false;
+      _base = base.endsWith('/') ? base : '$base/';
+      _expira = expira.toInt();
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Al cerrar la sesión.
+  static void olvidar() {
+    _base = '';
+    _expira = 0;
+  }
+
+  /// Para las pruebas.
+  static void fijarParaPruebas(String base, int expira) {
+    _base = base;
+    _expira = expira;
+  }
+}
 
 /// Un fichero del tema revisado: ruta desde la raíz del repositorio, tamaño en
 /// bytes y hash corto de su contenido (cambia si cambia el fichero).
@@ -72,8 +116,6 @@ class TemaRevisado {
     this.html,
     this.repaso,
     this.esquema = const [],
-    this.raw = _rawPorDefecto,
-    this.cdn = _cdnPorDefecto,
     this.exclusivo = true,
   });
 
@@ -101,9 +143,6 @@ class TemaRevisado {
   final FicheroRevisado? html;
   /// Ficha de repaso (solo si está aprobada).
   final FicheroRevisado? repaso;
-  /// Bases de descarga (con barra final), fijadas al commit del manifiesto.
-  final String raw;
-  final String cdn;
 
   FicheroRevisado? fichero(ClaseFichero c) => switch (c) {
         ClaseFichero.pdf => pdf,
@@ -112,12 +151,13 @@ class TemaRevisado {
         ClaseFichero.repaso => repaso,
       };
 
-  /// URL de descarga (raw.githubusercontent.com).
-  String url(FicheroRevisado f) => '$raw${f.ruta}';
+  /// URL de descarga: la dirección firmada del almacén privado (AccesoTemario);
+  /// sin ella, solo la ruta (no se descarga nada: hay que llamar antes a
+  /// AccesoTemario.asegurar()). El nombre local va por la huella, no por la URL.
+  String url(FicheroRevisado f) => '${AccesoTemario.base}${f.ruta}';
 
-  /// URL del HTML en el CDN (githack): contra ella se resuelven sus gráficos
-  /// (SVG) y estilos, que raw.githubusercontent.com serviría como texto.
-  String? get urlDocumentoHtml => html == null ? null : '$cdn${html!.ruta}';
+  /// URL del HTML: contra ella se resuelven sus gráficos (SVG), en el mismo almacén.
+  String? get urlDocumentoHtml => html == null ? null : '${AccesoTemario.base}${html!.ruta}';
 
   /// Nombre del fichero en la carpeta de descargas del móvil. Lleva el hash
   /// del contenido: si el tema cambia, el nombre cambia y se vuelve a bajar.
@@ -148,7 +188,7 @@ class TemaRevisado {
       };
 
   /// null si falta lo imprescindible (código y PDF).
-  static TemaRevisado? fromJson(Object? j, {String raw = _rawPorDefecto, String cdn = _cdnPorDefecto}) {
+  static TemaRevisado? fromJson(Object? j) {
     if (j is! Map) return null;
     final codigo = j['codigo'];
     // «Dictamen» es la guía del dictamen de coyuntura (clave `dictamen` del manifiesto).
@@ -171,8 +211,6 @@ class TemaRevisado {
       html: FicheroRevisado.fromJson(j['html']),
       repaso: FicheroRevisado.fromJson(j['repaso']),
       esquema: EntradaEsquema.listaDeJson(j['esquema']),
-      raw: raw,
-      cdn: cdn,
       exclusivo: j['exclusivo'] is bool ? j['exclusivo'] as bool : !(j['aprobado'] is String && DateTime.tryParse(j['aprobado'] as String) != null && DateTime.parse(j['aprobado'] as String).isBefore(corteExclusivo)),
     );
   }
@@ -211,29 +249,17 @@ class ManifiestoRevisados {
   /// tumba las demás) y, si el JSON entero no vale, queda vacío.
   factory ManifiestoRevisados.fromJson(Object? j) {
     if (j is! Map) return vacio;
-    String base(Object? v, String porDefecto) {
-      if (v is! String) return porDefecto;
-      final u = Uri.tryParse(v.trim());
-      if (u == null || u.scheme != 'https' || u.host.isEmpty) return porDefecto;
-      return v.trim().endsWith('/') ? v.trim() : '${v.trim()}/';
-    }
-
-    final raw = base(j['raw'], _rawPorDefecto);
-    // El manifiesto trae jsDelivr como CDN, que no sirve este repositorio
-    // (503): se usa githack con el mismo commit.
-    final commit = j['commit'];
-    final cdn = commit is String && RegExp(r'^[0-9a-f]{7,40}$').hasMatch(commit) ? cdnDelCommit(commit) : base(j['cdn'], _cdnPorDefecto).replaceFirst(RegExp(r'^https://cdn\.jsdelivr\.net/gh/[^@]+@'), 'https://raw.githack.com/$_repo/');
     final temas = <String, TemaRevisado>{};
     final lista = j['temas'];
     if (lista is List) {
       for (final e in lista) {
-        final t = TemaRevisado.fromJson(e, raw: raw, cdn: cdn);
+        final t = TemaRevisado.fromJson(e);
         if (t != null) temas[t.codigo] = t;
       }
     }
     final condiciones = j['condiciones'];
     final d = j['dictamen'];
-    final dictamen = d is Map ? TemaRevisado.fromJson({...d, 'codigo': codigoDictamen}, raw: raw, cdn: cdn) : null;
+    final dictamen = d is Map ? TemaRevisado.fromJson({...d, 'codigo': codigoDictamen}) : null;
     return ManifiestoRevisados(temas: temas, dictamen: dictamen, commit: j['commit'] is String ? j['commit'] as String : '', condiciones: condiciones is String && condiciones.startsWith('https://') ? condiciones : urlCondicionesMateriales);
   }
 }

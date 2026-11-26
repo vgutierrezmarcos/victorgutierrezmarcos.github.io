@@ -5,7 +5,7 @@ const kv = (datos: Record<string, string>) =>
   ({ get: async (k: string, tipo?: string) => (k in datos ? (tipo === 'arrayBuffer' ? new TextEncoder().encode(datos[k]).buffer : datos[k]) : null) }) as unknown as KVNamespace;
 const env = (datos: Record<string, string>) => ({ CONTENIDO: kv(datos), FIREBASE_API_KEY: 'k', CLAVE_CIFRADO: 'secreto', URL_WORKER: 'https://mcp.example' });
 const banco = JSON.stringify({ generado: '2026-11-25', preguntas: [{ id: 1, imagenes: [{ src: 'banco:310811.webp', alt: 'x' }] }] });
-const firebase = (ok: boolean) => (async () => new Response(JSON.stringify(ok ? { users: [{ localId: 'u1', email: 'a@b.c' }] } : { error: {} }), { status: ok ? 200 : 400 })) as unknown as typeof fetch;
+const firebase = (ok: boolean) => (async () => new Response(JSON.stringify(ok ? { users: [{ localId: 'u1', email: 'a@b.c', providerUserInfo: [{ providerId: 'google.com' }] }] } : { error: {} }), { status: ok ? 200 : 400 })) as unknown as typeof fetch;
 
 describe('banco de EconomIA para la app', () => {
   it('no es suya otra ruta', async () => {

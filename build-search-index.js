@@ -359,11 +359,11 @@ function procesarTemas(temas, ejercicio, grupo, prefijo, baseUrl) {
     const numero = `${prefijo}.${tema.num}`;
     const id = numero.toLowerCase().replace(/\./g, '');
     // Los temas revisados (revisados-web.json) están todos en la web, aunque la lista de abajo
-    // aún los tenga como no disponibles: su PDF en la URL de siempre (el buscador lleva a su página).
+    // aún los tenga como no disponibles: su página, que pide iniciar sesión (el PDF no es público).
     const archivo = prefijo.replace(/\./g, '') + String(tema.num).padStart(2, '0');
     const revisado = Boolean(CONCEPTOS[archivo]);
     const disponible = tema.disponible || revisado;
-    const url = revisado ? `${baseUrl}/${archivo}.pdf` : tema.disponible ? `${baseUrl}/${tema.file}` : 'temario/tema-no-disponible.html';
+    const url = revisado ? `${baseUrl}/${archivo}.html` : tema.disponible ? `${baseUrl}/${tema.file}` : 'temario/tema-no-disponible.html';
     
     return {
       id,
