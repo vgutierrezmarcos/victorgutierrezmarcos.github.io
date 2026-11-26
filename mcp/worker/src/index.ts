@@ -165,9 +165,10 @@ function contextoDe(env: Env, props: Props, clientId = '', espera?: (p: Promise<
     },
     async explicaciones(examen: string) {
       if (!/^[\w-]{4,60}$/.test(examen)) return {};
-      const r = await fetch(new URL(`explicaciones/${examen}.json`, env.URL_PREGUNTAS).toString(), { cf: { cacheTtl: 86_400, cacheEverything: true } });
-      if (!r.ok) return {};
-      return ((await r.json()) as { explicaciones?: Record<string, { clave?: string }> }).explicaciones ?? {};
+      // Material exclusivo: del almacén privado (ya no está en la web desde el 26/11/2026).
+      const o = await env.TEMARIO?.get(`oposicion/temario/primer-ejercicio/test/explicaciones/${examen}.json`);
+      if (!o) return {};
+      return ((await o.json()) as { explicaciones?: Record<string, { clave?: string }> }).explicaciones ?? {};
     },
     async proceso() {
       const r = await fetch(env.URL_PROCESO, { cf: { cacheTtl: 900, cacheEverything: true } });

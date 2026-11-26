@@ -47,13 +47,18 @@ class CacheHttp {
 
   /// Obtiene el texto del recurso. Si [preferirCache] y hay copia, la
   /// devuelve sin red. Si no hay red y hay copia, devuelve la copia.
-  Future<String> texto(String url, {bool preferirCache = false, bool forzar = false}) async {
-    final cacheado = textoEnCache(url);
+  ///
+  /// [clave]: con qué se guarda la copia si no es la propia URL (las direcciones
+  /// firmadas del almacén privado cambian cada pocas horas y la copia sin
+  /// conexión tiene que seguir valiendo).
+  Future<String> texto(String url, {bool preferirCache = false, bool forzar = false, String? clave}) async {
+    final k = clave ?? url;
+    final cacheado = textoEnCache(k);
     if (preferirCache && cacheado != null && !forzar) return cacheado;
 
     final headers = <String, String>{};
-    final etag = _caja.get('$url#etag') as String?;
-    final lastMod = _caja.get('$url#lastmod') as String?;
+    final etag = _caja.get('$k#etag') as String?;
+    final lastMod = _caja.get('$k#lastmod') as String?;
     if (_condicional && !forzar && cacheado != null) {
       if (etag != null) headers['If-None-Match'] = etag;
       if (lastMod != null) headers['If-Modified-Since'] = lastMod;
@@ -69,15 +74,15 @@ class CacheHttp {
         ),
       );
       if (resp.statusCode == 304 && cacheado != null) {
-        await _caja.put('$url#ts', DateTime.now().millisecondsSinceEpoch);
+        await _caja.put('$k#ts', DateTime.now().millisecondsSinceEpoch);
         return cacheado;
       }
       final cuerpo = resp.data ?? '';
       await _caja.putAll({
-        '$url#body': cuerpo,
-        '$url#etag': resp.headers.value('etag'),
-        '$url#lastmod': resp.headers.value('last-modified'),
-        '$url#ts': DateTime.now().millisecondsSinceEpoch,
+        '$k#body': cuerpo,
+        '$k#etag': resp.headers.value('etag'),
+        '$k#lastmod': resp.headers.value('last-modified'),
+        '$k#ts': DateTime.now().millisecondsSinceEpoch,
       });
       return cuerpo;
     } on DioException {
@@ -86,8 +91,8 @@ class CacheHttp {
     }
   }
 
-  Future<Map<String, dynamic>> json(String url, {bool preferirCache = false, bool forzar = false}) async {
-    final t = await texto(url, preferirCache: preferirCache, forzar: forzar);
+  Future<Map<String, dynamic>> json(String url, {bool preferirCache = false, bool forzar = false, String? clave}) async {
+    final t = await texto(url, preferirCache: preferirCache, forzar: forzar, clave: clave);
     return jsonDecode(t) as Map<String, dynamic>;
   }
 

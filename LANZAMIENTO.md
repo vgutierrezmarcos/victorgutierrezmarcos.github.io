@@ -168,7 +168,14 @@ conector, comprobando la cuenta de Google». Cómo queda:
    del 25 al 26/11/2026 (`tercer-ejercicio/3[AB]NN.pdf` y `-repaso.pdf`, la guía y su resumen
    **solo en esos commits**: antes del 25/11 esas rutas tenían el tema antiguo) y el ZIP de la
    skill; push --force y avisar de que los clones viejos hay que volver a bajarlos.
-5. `exclusivos.py` sin la URL de githack de la skill; el conector (`publicar-contenido.py`) y
+5. Fuera de git (y a `.gitignore`) las explicaciones del test con sus gráficos
+   (`oposicion/temario/primer-ejercicio/test/explicaciones/`) y la autoevaluación
+   (`oposicion/temario/app/autoevaluacion/`): ya están en el almacén y la 1.28.0, el
+   simulador y el conector los leen de ahí; la 1.27.0 aún los lee de la web. Se quedan en el
+   ordenador (los generan explicaciones-test.py, graficos-explicaciones.py y autoevaluacion.py)
+   y se suben con `temario-privado.py`; copia en el repositorio privado. Incluirlos en la
+   reescritura del paso 4.
+6. `exclusivos.py` sin la URL de githack de la skill; el conector (`publicar-contenido.py`) y
    `temario-privado.py` leyendo del remoto privado.
 
 Lo que no se puede retirar: lo que alguien ya bajara, y la caché permanente de

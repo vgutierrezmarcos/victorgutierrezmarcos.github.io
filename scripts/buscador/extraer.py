@@ -7,7 +7,7 @@ Registros (uno por línea en scripts/buscador/registros.jsonl, fuera de git):
               y de la guía del dictamen, solo el título, los apartados y los conceptos (no son
               públicos: el resultado lleva a su página); su versión antigua, con el texto.
   - pagina:   las páginas HTML del sitemap (solo el contenido de <main>).
-  - test:     las preguntas oficiales del test, con la idea clave de su explicación.
+  - test:     las preguntas oficiales del test (sin su explicación, que es exclusiva).
 
     python3 scripts/buscador/extraer.py
     node scripts/buscador/indexar.mjs
@@ -162,11 +162,8 @@ def test():
     base = os.path.join(RAIZ, 'oposicion/temario/primer-ejercicio/test')
     datos = json.load(open(os.path.join(base, 'preguntas.json'), encoding='utf-8'))
     examenes = {e['id']: e for e in datos.get('examenes', [])}
+    # Sin las explicaciones: son material exclusivo (solo con sesión) y el índice es público.
     claves = {}
-    for f in os.listdir(os.path.join(base, 'explicaciones')):
-        if f.endswith('.json'):
-            for k, v in json.load(open(os.path.join(base, 'explicaciones', f), encoding='utf-8')).get('explicaciones', {}).items():
-                claves[int(k)] = v.get('clave', '')
     for p in datos['preguntas']:
         ex = examenes.get(p.get('examen'), {})
         opciones = ' '.join(f'{k}) {v}' for k, v in (p.get('opciones') or {}).items())

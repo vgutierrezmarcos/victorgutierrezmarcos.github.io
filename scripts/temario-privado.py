@@ -15,6 +15,9 @@ de git: hoy temario-publicado; desde el cierre, la del repositorio privado):
     web, porque el HTML se sirve desde el Worker
   - el ZIP de la skill (oposicion/temario/app/prepara-con-claude.zip)
   - zip/materiales-tcee-con-revisados.zip (scripts/materiales-zip.py con estos PDF)
+  - del árbol de trabajo de main (fuera de git desde el 26/11/2026): las explicaciones del
+    test con sus gráficos (oposicion/temario/primer-ejercicio/test/explicaciones/*.json y
+    graficos/*.webp) y la autoevaluación (oposicion/temario/app/autoevaluacion/*.json)
 
 Solo sube lo que ha cambiado (huella de git o sha256) y borra del almacén lo que ya no
 está. Necesita el secreto de subida en ~/.config/oposicion-red/temario-admin.token.
@@ -49,6 +52,13 @@ MANIFIESTO = 'oposicion/temario/app/revisados.json'
 TOKEN = os.path.expanduser('~/.config/oposicion-red/temario-admin.token')
 PARTE = 50 * 1024 * 1024
 ENLACE = re.compile(r'(\s(?:src|href)=")([^"]+)(")')
+# Material exclusivo que se genera en main (scripts/explicaciones-test.py, graficos-explicaciones.py,
+# autoevaluacion.py) y no se sube a git: carpeta → extensiones que van al almacén.
+LOCALES = {
+    'oposicion/temario/primer-ejercicio/test/explicaciones': ('.json',),
+    'oposicion/temario/primer-ejercicio/test/explicaciones/graficos': ('.webp',),
+    'oposicion/temario/app/autoevaluacion': ('.json',),
+}
 
 
 class Git:
@@ -169,6 +179,18 @@ def main():
         if g in git.blobs:
             ficheros[g] = (lambda r=g: git.leer(r), git.blobs[g][0])
 
+    for carpeta, extensiones in LOCALES.items():
+        absoluta = os.path.join(RAIZ, carpeta)
+        if not os.path.isdir(absoluta):
+            print(f'Ojo: no está {carpeta} (se dejan en el almacén las que hubiera)')
+            continue
+        for nombre in sorted(os.listdir(absoluta)):
+            if nombre.endswith(extensiones):
+                ruta = f'{carpeta}/{nombre}'
+                with open(os.path.join(RAIZ, ruta), 'rb') as fh:
+                    sha = hashlib.sha256(fh.read()).hexdigest()[:40]
+                ficheros[ruta] = (lambda r=ruta: open(os.path.join(RAIZ, r), 'rb').read(), sha)
+
     publico = dict(manifiesto)
     for k in ('raw', 'cdn'):
         publico.pop(k, None)
@@ -203,7 +225,9 @@ def main():
     if a.sin_zip and 'zip/materiales-tcee-con-revisados.zip' in hay:
         ficheros.setdefault('zip/materiales-tcee-con-revisados.zip', (None, hay['zip/materiales-tcee-con-revisados.zip']))
     nuevos = [k for k, (_, sha) in ficheros.items() if hay.get(k) != sha and k != 'manifiesto.json']
-    sobran = [k for k in hay if k not in ficheros]
+    # Lo local que no está (carpeta ausente) no se borra del almacén
+    ausentes = [c for c in LOCALES if not os.path.isdir(os.path.join(RAIZ, c))]
+    sobran = [k for k in hay if k not in ficheros and not any(k.startswith(c + '/') for c in ausentes)]
     cambia_manifiesto = hay.get('manifiesto.json') != ficheros['manifiesto.json'][1]
     print(f'{len(ficheros)} ficheros; {len(nuevos)} por subir, {len(sobran)} por borrar, manifiesto {"nuevo" if cambia_manifiesto else "igual"}')
     if faltan:

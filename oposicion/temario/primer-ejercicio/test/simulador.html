@@ -2086,12 +2086,42 @@
             }).join('');
         }
 
+        // Las explicaciones son material exclusivo (26/11/2026): no están en la web, las sirve el
+        // conector con la sesión de Google (exclusivos.js da la dirección firmada). Sin sesión, null.
+        let baseExplicaciones = '';
+        const RUTA_EXPLICACIONES = 'oposicion/temario/primer-ejercicio/test/explicaciones/';
+        function hayUsuario() {
+            return !!(window.firebase && firebase.apps && firebase.apps.length && firebase.auth && firebase.auth().currentUser);
+        }
+        // La primera respuesta de Firebase sobre la sesión (como mucho 6 s): al abrir la página aún no se sabe.
+        let sesionLista = null;
+        function esperarSesion() {
+            if (!sesionLista) {
+                sesionLista = new Promise(resolver => {
+                    let intentos = 0;
+                    (function espera() {
+                        if (window.firebase && firebase.apps && firebase.apps.length && firebase.auth) {
+                            const quitar = firebase.auth().onAuthStateChanged(() => { quitar(); resolver(); });
+                        } else if (intentos++ < 40) {
+                            setTimeout(espera, 150);
+                        } else {
+                            resolver();
+                        }
+                    })();
+                    setTimeout(resolver, 6000);
+                });
+            }
+            return sesionLista;
+        }
         async function cargarExplicacion(pregunta) {
             if (!pregunta.examen) return null;
+            await esperarSesion();
+            if (!hayUsuario() || !window.tceeTemasRevisados) return null;
             if (!(pregunta.examen in cacheExplicaciones)) {
-                cacheExplicaciones[pregunta.examen] = fetch(`explicaciones/${encodeURIComponent(pregunta.examen)}.json`)
+                cacheExplicaciones[pregunta.examen] = window.tceeTemasRevisados.acceso()
+                    .then(base => { baseExplicaciones = base; return fetch(`${base}${RUTA_EXPLICACIONES}${encodeURIComponent(pregunta.examen)}.json`); })
                     .then(r => r.ok ? r.json() : null)
-                    .catch(() => null);
+                    .catch(() => { delete cacheExplicaciones[pregunta.examen]; return null; });
             }
             const datos = await cacheExplicaciones[pregunta.examen];
             return datos && datos.explicaciones ? datos.explicaciones[String(pregunta.id)] || null : null;
@@ -2103,7 +2133,7 @@
             (e.graficos || []).forEach(g => {
                 const alt = escaparHtml(g.alt || g.pie || 'Gráfico de la explicación').replace(/"/g, '&quot;');
                 html += `<figure class="explicacion-grafico">
-                    <img src="explicaciones/graficos/${encodeURIComponent(g.archivo)}.webp" alt="${alt}" loading="lazy"
+                    <img src="${baseExplicaciones}${RUTA_EXPLICACIONES}graficos/${encodeURIComponent(g.archivo)}.webp" alt="${alt}" loading="lazy"
                          onclick="abrirLightbox(this.src, this.alt)">
                     ${g.pie ? `<figcaption>${textoExplicacion(g.pie)}</figcaption>` : ''}
                 </figure>`;
@@ -2247,8 +2277,10 @@
             if (explicacion) {
                 caja.innerHTML = explicacionHtml(explicacion);
                 tipografiar(caja);
+            } else if (!hayUsuario()) {
+                caja.innerHTML = `<p class="puente-app">La explicación de cada pregunta («¿Por qué?») se ve con tu cuenta de Google: inicia sesión arriba, en «Acceder». También está en la <a href="${URL_APP_WEB}" target="_blank" rel="noopener">app</a>.</p>`;
             } else {
-                caja.innerHTML = `<p class="puente-app">Esta pregunta aún no tiene explicación en la web. Las demás están en la app: <a href="${URL_APP_WEB}" target="_blank" rel="noopener">ábrela en el navegador</a>.</p>`;
+                caja.innerHTML = `<p class="puente-app">Esta pregunta aún no tiene explicación. Las demás están también en la app: <a href="${URL_APP_WEB}" target="_blank" rel="noopener">ábrela en el navegador</a>.</p>`;
             }
         }
 

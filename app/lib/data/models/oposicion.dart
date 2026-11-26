@@ -275,9 +275,6 @@ class Oposicion {
   /// Cuántos fallan cada pregunta (scripts/dificultad-test.py; solo TCEE).
   String get urlDificultad => '$urlTest/dificultad.json';
   String get urlImagenesTest => '$urlTest/img';
-  /// Explicaciones de las preguntas de un examen (solo las lee la app).
-  String urlExplicaciones(String examen) => '$urlTest/explicaciones/$examen.json';
-  String urlGraficoExplicacion(String archivo) => '$urlTest/explicaciones/graficos/$archivo.webp';
   String get urlSimuladorWeb => '$urlTest/simulador.html';
   String get urlTemario => '$_base/temario/temario.json';
   String get urlEnlaces => '$_base/enlaces.json';
@@ -293,9 +290,6 @@ class Oposicion {
   /// Cuadro de coyuntura de España (scripts/coyuntura.py): uno para todas las oposiciones.
   String get urlCoyuntura => '${Oposiciones.tcee._base}/coyuntura.json';
 
-  /// Autoevaluación de los temas revisados (scripts/autoevaluacion.py; solo TCEE).
-  String get urlIndiceAutoevaluacion => '$_base/temario/app/autoevaluacion/indice.json';
-  String urlAutoevaluacion(String archivo) => '$_base/temario/app/autoevaluacion/$archivo.json';
   String get urlComoCantarUnTema => comoCantarUnTema.startsWith('http') ? comoCantarUnTema : '$_base/$comoCantarUnTema';
   bool get comoCantarEsPdf => comoCantarUnTema.toLowerCase().endsWith('.pdf');
 

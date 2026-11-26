@@ -56,11 +56,24 @@ class ContenidoRepo {
     }
   }
 
-  /// Qué temas revisados tienen autoevaluación (vacío fuera de TCEE o sin datos).
+  /// Material exclusivo del almacén privado del conector (autoevaluación y
+  /// explicaciones del test): se pide con la dirección firmada de la sesión y la
+  /// copia se guarda con la ruta, que no cambia. Sin sesión ni copia, falla.
+  Future<Map<String, dynamic>> _privado(String ruta, {required bool forzar}) async {
+    final clave = 'privado:$ruta';
+    if (!forzar && _http.tieneCache(clave)) return _http.json(clave, preferirCache: true, clave: clave);
+    if (!await AccesoTemario.asegurar()) {
+      if (_http.tieneCache(clave)) return _http.json(clave, preferirCache: true, clave: clave);
+      throw StateError('Sin sesión: material exclusivo');
+    }
+    return _http.json('${AccesoTemario.base}$ruta', preferirCache: !forzar, forzar: forzar, clave: clave);
+  }
+
+  /// Qué temas revisados tienen autoevaluación (vacío fuera de TCEE, sin sesión o sin datos).
   Future<IndiceAutoevaluacion> indiceAutoevaluacion({bool forzar = false}) async {
     if (!oposicion.esPrincipal) return IndiceAutoevaluacion.vacio;
     try {
-      return IndiceAutoevaluacion.fromJson(await _http.json(oposicion.urlIndiceAutoevaluacion, preferirCache: !forzar, forzar: forzar));
+      return IndiceAutoevaluacion.fromJson(await _privado(rutaAutoevaluacion('indice'), forzar: forzar));
     } catch (_) {
       return IndiceAutoevaluacion.vacio;
     }
@@ -69,7 +82,7 @@ class ContenidoRepo {
   /// Las preguntas de autoevaluación de un tema (null sin red ni copia).
   Future<Autoevaluacion?> autoevaluacion(String archivo, {bool forzar = false}) async {
     try {
-      return Autoevaluacion.fromJson(await _http.json(oposicion.urlAutoevaluacion(archivo), preferirCache: !forzar, forzar: forzar));
+      return Autoevaluacion.fromJson(await _privado(rutaAutoevaluacion(archivo), forzar: forzar));
     } catch (_) {
       return null;
     }
@@ -84,10 +97,11 @@ class ContenidoRepo {
     }
   }
 
-  /// Explicaciones de las preguntas de un examen; vacío si aún no las hay o sin red ni copia.
+  /// Explicaciones de las preguntas de un examen; vacío si aún no las hay, sin sesión o sin red ni copia.
   Future<Map<int, Explicacion>> explicaciones(String examen, {bool forzar = false}) async {
+    if (!oposicion.esPrincipal) return const {};
     try {
-      return Explicacion.deExamen(await _http.json(oposicion.urlExplicaciones(examen), preferirCache: !forzar, forzar: forzar));
+      return Explicacion.deExamen(await _privado(rutaExplicaciones(examen), forzar: forzar));
     } catch (_) {
       return const {};
     }
@@ -166,7 +180,7 @@ class ContenidoRepo {
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
     var hayNuevo = false;
-    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest, if (oposicion.esPrincipal) oposicion.urlDificultad, oposicion.urlIndiceAutoevaluacion, oposicion.urlCoyuntura, if (oposicion.esPrincipal) urlManifiestoRevisados]) {
+    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest, if (oposicion.esPrincipal) oposicion.urlDificultad, oposicion.urlCoyuntura, if (oposicion.esPrincipal) urlManifiestoRevisados]) {
       if (await _http.refrescar(u)) hayNuevo = true;
     }
     if (hayNuevo) cambios.value++;

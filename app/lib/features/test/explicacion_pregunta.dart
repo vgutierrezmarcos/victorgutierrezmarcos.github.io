@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
+import '../../data/models/revisado.dart';
 import '../../data/models/explicacion.dart';
 import '../../data/models/pregunta.dart';
 import '../../theme/app_theme.dart';
@@ -121,7 +122,8 @@ class _ExplicacionPreguntaState extends ConsumerState<ExplicacionPregunta> {
 /// impresa); al tocarlo se abre a pantalla completa para ampliarlo.
 Widget _grafico(BuildContext context, GraficoExplicacion g) {
   return Consumer(builder: (context, ref, _) {
-    final url = ref.read(oposicionProvider).urlGraficoExplicacion(g.archivo);
+    // Del almacén privado del conector, con la dirección firmada de la sesión (la que ha traído la explicación).
+    final url = '${AccesoTemario.base}${rutaGraficoExplicacion(g.archivo)}';
     final imagen = Image.network(
       url,
       semanticLabel: g.alt,

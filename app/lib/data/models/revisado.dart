@@ -18,6 +18,11 @@ const _servidor = 'https://mcp.victorgutierrezmarcos.es';
 /// Dónde lee la app el manifiesto (caché del conector: 5 minutos).
 const urlManifiestoRevisados = '$_servidor/temario/manifiesto';
 
+/// Rutas del almacén privado de otros materiales exclusivos (no están en la web).
+String rutaExplicaciones(String examen) => 'oposicion/temario/primer-ejercicio/test/explicaciones/${Uri.encodeComponent(examen)}.json';
+String rutaGraficoExplicacion(String archivo) => 'oposicion/temario/primer-ejercicio/test/explicaciones/graficos/${Uri.encodeComponent(archivo)}.webp';
+String rutaAutoevaluacion(String archivo) => 'oposicion/temario/app/autoevaluacion/$archivo.json';
+
 /// La dirección firmada del almacén privado del temario (…/t/<caducidad>.<firma>/),
 /// que da el conector con el token de Firebase del usuario y vale unas horas.
 class AccesoTemario {

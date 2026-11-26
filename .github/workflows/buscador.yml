@@ -1,6 +1,6 @@
 # Reconstruye el índice del buscador de la web (/pagefind/) cuando cambian los
 # temas en PDF, las páginas (a través del sitemap: no con cada HTML, porque cada
-# índice nuevo cambia muchos ficheros de pagefind/), las preguntas del test o sus explicaciones.
+# índice nuevo cambia muchos ficheros de pagefind/), o las preguntas del test.
 # extraer.py saca el texto (scripts/buscador/registros.jsonl, fuera de git) e
 # indexar.mjs genera /pagefind/ con Pagefind; si cambia, se sube con [skip ci].
 name: Índice del buscador
@@ -15,7 +15,6 @@ on:
       - 'oposicion/temario/revisados-web.json'
       - 'oposicion/temario/temario.json'
       - 'oposicion/temario/primer-ejercicio/test/preguntas.json'
-      - 'oposicion/temario/primer-ejercicio/test/explicaciones/**'
       - 'scripts/buscador/**'
       - '.github/workflows/buscador.yml'
   workflow_dispatch:
