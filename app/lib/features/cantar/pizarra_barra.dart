@@ -13,28 +13,49 @@ const tintaBarra = Color(0xFF1C1C1E);
 /// Herramientas que se eligen en la paleta.
 enum HerramientaPizarra { boligrafo, rotulador, fosforito, borrador, lazo, texto }
 
-/// La paleta: blanca, redondeada y con sombra.
+/// El borde junto al que va la paleta: las puntas de las herramientas miran
+/// hacia el papel (abajo, hacia arriba; a la izquierda, hacia la derecha…).
+enum LadoPaleta { abajo, arriba, izquierda, derecha }
+
+extension LadoPaletaX on LadoPaleta {
+  bool get vertical => this == LadoPaleta.izquierda || this == LadoPaleta.derecha;
+
+  /// Cuartos de vuelta de cada punta para que mire hacia el papel.
+  int get giros => switch (this) { LadoPaleta.abajo => 0, LadoPaleta.arriba => 2, LadoPaleta.izquierda => 1, LadoPaleta.derecha => 3 };
+}
+
+/// La paleta: blanca, redondeada y con sombra; en fila o, junto a un lado, en columna.
 class PaletaFlotante extends StatelessWidget {
-  const PaletaFlotante({super.key, required this.children});
+  const PaletaFlotante({super.key, required this.children, this.lado = LadoPaleta.abajo});
   final List<Widget> children;
+  final LadoPaleta lado;
 
   @override
   Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: lado.vertical ? const EdgeInsets.symmetric(vertical: 10) : const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           color: fondoPaleta,
           borderRadius: BorderRadius.circular(18),
           boxShadow: const [BoxShadow(color: Color(0x22000000), blurRadius: 12, offset: Offset(0, 2))],
         ),
-        child: Row(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.end, children: children),
+        child: Flex(
+          direction: lado.vertical ? Axis.vertical : Axis.horizontal,
+          mainAxisSize: MainAxisSize.min,
+          // Las herramientas salen del lado pegado al borde.
+          crossAxisAlignment: lado == LadoPaleta.abajo || lado == LadoPaleta.derecha ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          children: children,
+        ),
       );
 }
 
-/// Separador vertical fino dentro de la paleta.
+/// Separador fino dentro de la paleta (horizontal si la paleta va en columna).
 class SeparadorPaleta extends StatelessWidget {
-  const SeparadorPaleta({super.key});
+  const SeparadorPaleta({super.key, this.vertical = false});
+  final bool vertical;
   @override
-  Widget build(BuildContext context) => Container(width: 1, height: 28, margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12), color: const Color(0x1F000000));
+  Widget build(BuildContext context) => vertical
+      ? Container(width: 28, height: 1, margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8), color: const Color(0x1F000000))
+      : Container(width: 1, height: 28, margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12), color: const Color(0x1F000000));
 }
 
 /// Una herramienta como la punta de un lápiz que asoma de la paleta; la
@@ -49,9 +70,12 @@ class PuntaHerramienta extends StatelessWidget {
     required this.nombre,
     required this.alTocar,
     this.alMantener,
+    this.giros = 0,
   });
 
   final HerramientaPizarra herramienta;
+  /// Cuartos de vuelta (la paleta junto a otro borde: la punta mira al papel).
+  final int giros;
   final bool elegida;
   final Color color;
 
@@ -72,15 +96,18 @@ class PuntaHerramienta extends StatelessWidget {
             onTap: alTocar,
             onLongPress: alMantener,
             borderRadius: BorderRadius.circular(8),
-            child: SizedBox(
-              width: 34,
-              height: 52,
-              child: ClipRect(
-                child: AnimatedSlide(
-                  duration: const Duration(milliseconds: 160),
-                  curve: Curves.easeOut,
-                  offset: Offset(0, elegida ? 0.04 : 0.32),
-                  child: CustomPaint(painter: _PintorPunta(herramienta, color, grosor)),
+            child: RotatedBox(
+              quarterTurns: giros,
+              child: SizedBox(
+                width: 34,
+                height: 52,
+                child: ClipRect(
+                  child: AnimatedSlide(
+                    duration: const Duration(milliseconds: 160),
+                    curve: Curves.easeOut,
+                    offset: Offset(0, elegida ? 0.04 : 0.32),
+                    child: CustomPaint(painter: _PintorPunta(herramienta, color, grosor)),
+                  ),
                 ),
               ),
             ),
@@ -189,8 +216,9 @@ class _PintorPunta extends CustomPainter {
 /// Un color a un toque: con un borde fino (para el blanco y el negro) y un
 /// aro cuando está elegido.
 class MuestraColor extends StatelessWidget {
-  const MuestraColor({super.key, required this.color, required this.elegido, required this.nombre, required this.alTocar});
+  const MuestraColor({super.key, required this.color, required this.elegido, required this.nombre, required this.alTocar, this.vertical = false});
   final Color color;
+  final bool vertical;
   final bool elegido;
   final String nombre;
   final VoidCallback alTocar;
@@ -206,7 +234,7 @@ class MuestraColor extends StatelessWidget {
             onTap: alTocar,
             radius: 20,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 13),
+              padding: vertical ? const EdgeInsets.symmetric(horizontal: 13, vertical: 4) : const EdgeInsets.symmetric(horizontal: 4, vertical: 13),
               child: Container(
                 width: 26,
                 height: 26,
@@ -224,8 +252,9 @@ class MuestraColor extends StatelessWidget {
 
 /// La rueda de todos los colores (abre el selector).
 class RuedaColor extends StatelessWidget {
-  const RuedaColor({super.key, required this.elegido, required this.color, required this.alTocar});
+  const RuedaColor({super.key, required this.elegido, required this.color, required this.alTocar, this.vertical = false});
   final bool elegido;
+  final bool vertical;
   final Color color;
   final VoidCallback alTocar;
 
@@ -239,7 +268,7 @@ class RuedaColor extends StatelessWidget {
             onTap: alTocar,
             radius: 20,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 13),
+              padding: vertical ? const EdgeInsets.symmetric(horizontal: 13, vertical: 4) : const EdgeInsets.symmetric(horizontal: 4, vertical: 13),
               child: Container(
                 width: 26,
                 height: 26,

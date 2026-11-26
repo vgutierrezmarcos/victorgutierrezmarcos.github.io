@@ -160,11 +160,23 @@ const _claveExtras = 'pizarraExtras';
 const _claveFormas = 'pizarraFormas';
 const _claveBarra = 'pizarraBarra';
 const _clavePaleta = 'pizarraPaleta';
+const _claveLadoPaleta = 'pizarraPaletaLado';
+const _claveSitioPaleta = 'pizarraPaletaSitio';
 
-/// Dónde va la barra de herramientas: abajo (como siempre), arriba (lejos de la mano
-/// que se apoya al escribir) o suelta, para arrastrarla donde moleste menos.
-enum PosicionBarra { abajo, arriba, suelta }
+/// Dónde va la barra de arriba o de abajo (salir, páginas, menú): abajo (como
+/// siempre) o arriba (lejos de la mano que se apoya al escribir).
+enum PosicionBarra { abajo, arriba }
 const _claveAvisoScribble = 'pizarraAvisoScribble';
+
+/// El borde más cercano a un punto (en fracción del área, 0-1) y el sitio a lo
+/// largo de ese borde, para pegar la paleta al soltarla.
+(LadoPaleta, double) ladoMasCercano(double x, double y) {
+  x = x.clamp(0.0, 1.0);
+  y = y.clamp(0.0, 1.0);
+  final distancias = {LadoPaleta.arriba: y, LadoPaleta.abajo: 1 - y, LadoPaleta.izquierda: x, LadoPaleta.derecha: 1 - x};
+  final lado = distancias.entries.reduce((a, b) => b.value < a.value ? b : a).key;
+  return (lado, lado.vertical ? y : x);
+}
 
 class _PizarraPageState extends ConsumerState<PizarraPage> {
   FuentePizarra? _pizarra;
@@ -206,10 +218,18 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   Set<String> _extras = {};
   bool _formas = true;
 
-  /// Dónde va la barra y, si va suelta, dónde está la paleta (en fracción del área,
-  /// para que siga en su sitio al girar la pantalla). Se recuerdan en el móvil.
+  /// Dónde va la barra y la paleta (herramientas y colores): en la barra (null) o
+  /// fijada a un borde de la pizarra, en columna si es el izquierdo o el derecho.
+  /// Se mueve manteniéndola pulsada y arrastrándola; al soltarla se pega al borde
+  /// más cercano ([_sitioPaleta]: dónde, a lo largo de ese borde, de 0 a 1). Se
+  /// recuerdan en el móvil.
   PosicionBarra _posBarra = PosicionBarra.abajo;
-  Offset _posPaleta = const Offset(0.5, 0.06);
+  LadoPaleta? _ladoPaleta;
+  double _sitioPaleta = 0.5;
+  final GlobalKey _claveArea = GlobalKey();
+  final GlobalKey _clavePaletaMovil = GlobalKey();
+  /// Dónde está el dedo mientras se arrastra la paleta (decide dónde se queda).
+  Offset? _dedoPaleta;
 
   /// Mientras el lápiz escribe, la barra no atiende a la palma que la roce.
   final ValueNotifier<bool> _lapizEscribe = ValueNotifier(false);
@@ -326,9 +346,18 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     try {
       _extras = {...((_caja?.get(_claveExtras) as List?) ?? const []).map((e) => e.toString())};
       _formas = _caja?.get(_claveFormas) as bool? ?? true;
-      _posBarra = PosicionBarra.values.asNameMap()[_caja?.get(_claveBarra)] ?? PosicionBarra.abajo;
+      final barra = _caja?.get(_claveBarra);
+      _posBarra = PosicionBarra.values.asNameMap()[barra] ?? PosicionBarra.abajo;
+      _ladoPaleta = LadoPaleta.values.asNameMap()[_caja?.get(_claveLadoPaleta)];
+      _sitioPaleta = ((_caja?.get(_claveSitioPaleta) as num?)?.toDouble() ?? 0.5).clamp(0.0, 1.0);
+      // La paleta «suelta» de la 1.28.0: al borde más cercano de donde estaba.
       final pp = _caja?.get(_clavePaleta) as List?;
-      if (pp != null && pp.length == 2) _posPaleta = Offset((pp[0] as num).toDouble(), (pp[1] as num).toDouble());
+      if (barra == 'suelta' && _ladoPaleta == null && pp != null && pp.length == 2) {
+        final x = (pp[0] as num).toDouble(), y = (pp[1] as num).toDouble();
+        final (lado, sitio) = ladoMasCercano(x, y);
+        _ladoPaleta = lado;
+        _sitioPaleta = sitio;
+      }
     } catch (_) {}
     _registro.activo = depuracionPedidaEnUrl;
     if (_registro.activo) {
@@ -449,7 +478,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       _caja?.put(_claveExtras, _extras.toList());
       _caja?.put(_claveFormas, _formas);
       _caja?.put(_claveBarra, _posBarra.name);
-      _caja?.put(_clavePaleta, [_posPaleta.dx, _posPaleta.dy]);
+      _caja?.put(_claveLadoPaleta, _ladoPaleta?.name);
+      _caja?.put(_claveSitioPaleta, _sitioPaleta);
     } catch (_) {}
   }
 
@@ -1652,9 +1682,11 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                       ]),
                     ),
                   );
-                  // La paleta suelta va fuera del Listener: tocarla no pinta en la página.
-                  if (_posBarra != PosicionBarra.suelta || _soloLectura) return lienzo;
-                  return Stack(children: [Positioned.fill(child: lienzo), _paletaSuelta(area)]);
+                  // La paleta fijada a un borde va fuera del Listener: tocarla no pinta en la página.
+                  return Stack(key: _claveArea, children: [
+                    Positioned.fill(child: lienzo),
+                    if (_ladoPaleta != null && !_soloLectura) _paletaEnBorde(_ladoPaleta!, area),
+                  ]);
                 }),
               ),
               if (_posBarra == PosicionBarra.abajo) _sinPalma(_barra()),
@@ -1767,7 +1799,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               ],
               const SizedBox(width: 12),
             ]),
-            if (_posBarra != PosicionBarra.suelta) PaletaFlotante(children: _herramientas()),
+            if (_ladoPaleta == null) _paletaMovil(_posBarra == PosicionBarra.abajo ? LadoPaleta.abajo : LadoPaleta.arriba),
             navegacion,
           ]),
         ),
@@ -1775,37 +1807,74 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     );
   }
 
-  /// La paleta suelta: se arrastra por el asa y se queda donde se suelte.
-  Widget _paletaSuelta(Size area) {
-    const margen = 4.0;
-    return Positioned(
-      left: (_posPaleta.dx * area.width).clamp(margen, max(margen, area.width - 120)),
-      top: (_posPaleta.dy * area.height).clamp(margen, max(margen, area.height - 64)),
-      child: _sinPalma(
-        ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: max(160, area.width - 2 * margen)),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: PaletaFlotante(children: [
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onPanUpdate: (d) => setState(() {
-                  final x = (_posPaleta.dx * area.width + d.delta.dx).clamp(margen, max(margen, area.width - 120));
-                  final y = (_posPaleta.dy * area.height + d.delta.dy).clamp(margen, max(margen, area.height - 64));
-                  _posPaleta = Offset(x / area.width, y / area.height);
-                }),
-                onPanEnd: (_) => _guardarPreferencias(),
-                child: const Tooltip(
-                  message: 'Arrastra para mover la barra',
-                  child: Padding(padding: EdgeInsets.fromLTRB(0, 14, 6, 14), child: Icon(Icons.drag_indicator, color: Color(0x99000000))),
-                ),
-              ),
-              ..._herramientas(),
-            ]),
+  /// La paleta fijada a un borde de la pizarra, en el sitio de [_sitioPaleta].
+  Widget _paletaEnBorde(LadoPaleta lado, Size area) {
+    const margen = 6.0;
+    final x = lado == LadoPaleta.izquierda ? -1.0 : lado == LadoPaleta.derecha ? 1.0 : _sitioPaleta * 2 - 1;
+    final y = lado == LadoPaleta.arriba ? -1.0 : lado == LadoPaleta.abajo ? 1.0 : _sitioPaleta * 2 - 1;
+    return Positioned.fill(
+      child: Padding(
+        padding: const EdgeInsets.all(margen),
+        child: AnimatedAlign(
+          duration: const Duration(milliseconds: 180),
+          curve: Curves.easeOut,
+          alignment: Alignment(x, y),
+          child: ConstrainedBox(
+            constraints: lado.vertical ? BoxConstraints(maxHeight: max(120, area.height - 2 * margen)) : BoxConstraints(maxWidth: max(160, area.width - 2 * margen)),
+            child: SingleChildScrollView(scrollDirection: lado.vertical ? Axis.vertical : Axis.horizontal, child: _paletaMovil(lado)),
           ),
         ),
       ),
     );
+  }
+
+  /// La paleta que se mueve: manteniéndola pulsada se levanta y se arrastra; al
+  /// soltarla se pega al borde más cercano (o vuelve a la barra si se suelta encima).
+  /// Mantener pulsada ya no abre los ajustes: se abren tocando otra vez la herramienta
+  /// elegida. Las ayudas, solo al pasar el ratón (el toque largo es para moverla).
+  Widget _paletaMovil(LadoPaleta lado) {
+    final paleta = PaletaFlotante(lado: lado, children: _herramientas(lado));
+    return _sinPalma(
+      TooltipTheme(
+        data: TooltipTheme.of(context).copyWith(triggerMode: TooltipTriggerMode.manual),
+        child: Listener(
+          key: _clavePaletaMovil,
+          onPointerDown: (e) => _dedoPaleta = e.position,
+          onPointerMove: (e) => _dedoPaleta = e.position,
+          child: LongPressDraggable<String>(
+            data: 'paleta',
+            hapticFeedbackOnStart: true,
+            feedback: Material(type: MaterialType.transparency, child: Opacity(opacity: 0.92, child: Transform.scale(scale: 1.04, child: paleta))),
+            childWhenDragging: Opacity(opacity: 0.3, child: paleta),
+            onDragEnd: (d) => _soltarPaleta(d.offset),
+            child: Semantics(hint: 'Mantén pulsada la paleta para moverla', child: paleta),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Dónde queda la paleta al soltarla: junto al borde más cercano al dedo
+  /// ([arriba]: la esquina de la paleta, por si no se sabe dónde estaba el dedo).
+  void _soltarPaleta(Offset arriba) {
+    final caja = _claveArea.currentContext?.findRenderObject() as RenderBox?;
+    final tam = _clavePaletaMovil.currentContext?.size;
+    if (caja == null || !caja.hasSize || tam == null) return;
+    final centro = caja.globalToLocal(_dedoPaleta ?? arriba + Offset(tam.width / 2, tam.height / 2));
+    _dedoPaleta = null;
+    final w = caja.size.width, h = caja.size.height;
+    setState(() {
+      if (centro.dy < 0 || centro.dy > h) {
+        // Encima de la barra (arriba o abajo): vuelve a ella.
+        _ladoPaleta = null;
+        _posBarra = centro.dy < 0 ? PosicionBarra.arriba : PosicionBarra.abajo;
+      } else {
+        final (lado, sitio) = ladoMasCercano(centro.dx / w, centro.dy / h);
+        _ladoPaleta = lado;
+        _sitioPaleta = sitio;
+      }
+    });
+    _guardarPreferencias();
   }
 
   /// Mientras el lápiz escribe, la barra no responde (la palma apoyada no cambia de herramienta ni deshace).
@@ -1815,8 +1884,10 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
         child: hijo,
       );
 
-  /// Las herramientas, los colores y deshacer/rehacer de la paleta.
-  List<Widget> _herramientas() {
+  /// Las herramientas, los colores y deshacer/rehacer de la paleta (las puntas
+  /// miran al papel desde el [lado] en el que está).
+  List<Widget> _herramientas([LadoPaleta lado = LadoPaleta.abajo]) {
+    final vertical = lado.vertical;
     final colorElegido = _color[_ultimaTinta]! | 0xFF000000;
     final hayColorRapido = coloresRapidos.contains(colorElegido);
     PuntaHerramienta punta(HerramientaPizarra h, String nombre) => PuntaHerramienta(
@@ -1826,7 +1897,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
           grosor: _grosor[h] ?? 0,
           nombre: nombre,
           alTocar: _sinAcceso ? () {} : () => _elegir(h),
-          alMantener: () => _abrirAjustes(h),
+          giros: lado.giros,
         );
     return [
               punta(HerramientaPizarra.boligrafo, 'Bolígrafo'),
@@ -1836,11 +1907,11 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               if (_extras.contains('lazo')) punta(HerramientaPizarra.lazo, 'Lazo: rodea trazos para moverlos'),
               if (_extras.contains('texto')) punta(HerramientaPizarra.texto, 'Texto: toca donde quieras escribir con el teclado'),
               if (_extras.contains('regla')) BotonBarra(icono: Icons.straighten, tooltip: _regla == null ? 'Poner la regla' : 'Quitar la regla', activo: _regla != null, alTocar: () => setState(() => _regla = _regla == null ? Regla(centro: _virtual(Offset(_area.width / 2, _area.height / 2))) : null)),
-              const SeparadorPaleta(),
+              SeparadorPaleta(vertical: vertical),
               for (var i = 0; i < coloresRapidos.length; i++)
-                MuestraColor(color: Color(coloresRapidos[i]), nombre: nombresColoresRapidos[i], elegido: _esTinta && colorElegido == coloresRapidos[i], alTocar: () => _elegirColor(coloresRapidos[i])),
-              RuedaColor(elegido: _esTinta && !hayColorRapido, color: Color(colorElegido), alTocar: _otroColor),
-              const SeparadorPaleta(),
+                MuestraColor(color: Color(coloresRapidos[i]), nombre: nombresColoresRapidos[i], elegido: _esTinta && colorElegido == coloresRapidos[i], alTocar: () => _elegirColor(coloresRapidos[i]), vertical: vertical),
+              RuedaColor(elegido: _esTinta && !hayColorRapido, color: Color(colorElegido), alTocar: _otroColor, vertical: vertical),
+              SeparadorPaleta(vertical: vertical),
               BotonBarra(icono: Icons.undo, tooltip: 'Deshacer (o dos toques con dos dedos)', alTocar: _puedeDeshacer && !_sinAcceso ? _deshacer : null),
               BotonBarra(icono: Icons.redo, tooltip: 'Rehacer', alTocar: _puedeRehacer && !_sinAcceso ? _rehacer : null),
     ];
@@ -1878,10 +1949,14 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
         SubmenuButton(
           leadingIcon: const Icon(Icons.view_agenda_outlined),
           menuChildren: [
+            const MenuItemButton(
+              leadingIcon: Icon(Icons.pan_tool_alt_outlined),
+              onPressed: null,
+              child: Text('Mantén pulsada la paleta para moverla a cualquier borde'),
+            ),
             for (final (valor, nombre) in [
-              (PosicionBarra.abajo, 'Abajo'),
-              (PosicionBarra.arriba, 'Arriba (lejos de la mano)'),
-              (PosicionBarra.suelta, 'Suelta: arrástrala donde quieras'),
+              (PosicionBarra.abajo, 'Barra abajo'),
+              (PosicionBarra.arriba, 'Barra arriba (lejos de la mano)'),
             ])
               MenuItemButton(
                 leadingIcon: Icon(_posBarra == valor ? Icons.radio_button_checked : Icons.radio_button_unchecked),
@@ -1891,6 +1966,16 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                 },
                 child: Text(nombre),
               ),
+            MenuItemButton(
+              leadingIcon: const Icon(Icons.vertical_align_bottom),
+              onPressed: _ladoPaleta == null
+                  ? null
+                  : () {
+                      setState(() => _ladoPaleta = null);
+                      _guardarPreferencias();
+                    },
+              child: const Text('Volver a poner la paleta en la barra'),
+            ),
           ],
           child: const Text('Barra de herramientas'),
         ),

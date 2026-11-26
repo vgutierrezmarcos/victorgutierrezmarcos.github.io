@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/features/cantar/pizarra_compartida.dart';
+import 'package:tcee_app/features/cantar/pizarra_barra.dart';
 import 'package:tcee_app/features/cantar/pizarra_page.dart';
 import 'package:tcee_app/features/cantar/pizarra_registro.dart';
 import 'package:tcee_app/features/cantar/pizarra_trazos.dart';
@@ -283,7 +284,15 @@ void main() {
     expect(texto, isNot(contains('línea 1')));
   });
 
-  testWidgets('la barra se pone arriba o suelta; suelta se arrastra y tocarla no pinta', (tester) async {
+  test('la paleta se pega al borde más cercano, con su sitio a lo largo de él', () {
+    expect(ladoMasCercano(0.5, 0.95), (LadoPaleta.abajo, 0.5));
+    expect(ladoMasCercano(0.3, 0.02), (LadoPaleta.arriba, 0.3));
+    expect(ladoMasCercano(0.04, 0.6), (LadoPaleta.izquierda, 0.6));
+    expect(ladoMasCercano(0.97, 0.25), (LadoPaleta.derecha, 0.25));
+    expect(ladoMasCercano(-3, 0.5), (LadoPaleta.izquierda, 0.5), reason: 'fuera del área, al borde');
+  });
+
+  testWidgets('la paleta: barra arriba o abajo; mantenida pulsada se mueve a cualquier borde, en vertical a los lados, y vuelve a la barra', (tester) async {
     final fuente = await montar(tester);
     Future<void> elegir(String opcion) async {
       await tester.tap(find.byTooltip('Más herramientas y opciones'));
@@ -294,26 +303,52 @@ void main() {
       await tester.pumpAndSettle();
     }
 
-    final abajo = tester.getCenter(find.byTooltip('Deshacer (o dos toques con dos dedos)'));
-    await elegir('Arriba (lejos de la mano)');
-    final arriba = tester.getCenter(find.byTooltip('Deshacer (o dos toques con dos dedos)'));
-    expect(arriba.dy, lessThan(abajo.dy));
+    Future<void> moverPaleta(Offset hasta) async {
+      final desde = tester.getCenter(find.byTooltip('Rehacer'));
+      final g = await tester.startGesture(desde);
+      await tester.pump(const Duration(milliseconds: 700)); // mantener pulsada
+      for (var k = 1; k <= 10; k++) {
+        await g.moveTo(Offset.lerp(desde, hasta, k / 10)!);
+        await tester.pump(const Duration(milliseconds: 16));
+      }
+      await g.up();
+      await tester.pumpAndSettle();
+    }
 
-    await elegir('Suelta: arrástrala donde quieras');
-    final asa = find.byIcon(Icons.drag_indicator);
-    expect(asa, findsOneWidget);
-    final antes = tester.getCenter(asa);
-    await tester.drag(asa, const Offset(120, 300));
-    await tester.pumpAndSettle();
-    final despues = tester.getCenter(asa);
-    expect(despues.dx, greaterThan(antes.dx + 100));
-    expect(despues.dy, greaterThan(antes.dy + 250));
-    // Tocar la paleta suelta con el lápiz elige la herramienta, no pinta en la página.
-    final g = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);
-    await g.down(tester.getCenter(find.byTooltip('Rehacer')));
-    await g.up();
+    final deshacer = find.byTooltip('Deshacer (o dos toques con dos dedos)');
+    final abajo = tester.getCenter(deshacer);
+    await elegir('Barra arriba (lejos de la mano)');
+    expect(tester.getCenter(deshacer).dy, lessThan(abajo.dy));
+    await elegir('Barra abajo');
+
+    final pantalla = tester.getSize(find.byType(Scaffold));
+    // Al borde izquierdo: en columna (el bolígrafo encima de deshacer, casi en la misma vertical).
+    await moverPaleta(Offset(30, pantalla.height / 2));
+    final boli = tester.getCenter(find.byTooltip('Bolígrafo'));
+    final des = tester.getCenter(deshacer);
+    expect(boli.dx, lessThan(pantalla.width * 0.2));
+    expect((boli.dx - des.dx).abs(), lessThan(20));
+    expect(boli.dy, lessThan(des.dy));
+    // Tocarla con el lápiz elige, no pinta en la página.
+    final lapiz = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 9);
+    await lapiz.down(tester.getCenter(find.byTooltip('Rehacer')));
+    await lapiz.up();
     await tester.pump(const Duration(milliseconds: 50));
     expect(trazos(fuente), 0);
+
+    // Al borde derecho, y arriba: en fila, encima del papel.
+    await moverPaleta(Offset(pantalla.width - 30, pantalla.height * 0.4));
+    expect(tester.getCenter(find.byTooltip('Bolígrafo')).dx, greaterThan(pantalla.width * 0.8));
+    await moverPaleta(Offset(pantalla.width / 2, 80));
+    final b2 = tester.getCenter(find.byTooltip('Bolígrafo'));
+    final d2 = tester.getCenter(deshacer);
+    expect((b2.dy - d2.dy).abs(), lessThan(30), reason: 'en fila');
+    expect(b2.dx, lessThan(d2.dx));
+    expect(tester.getCenter(find.byTooltip('Salir')).dy, greaterThan(pantalla.height / 2), reason: 'fijada arriba, sobre el papel: la barra sigue abajo');
+
+    // Soltada sobre la barra de abajo, vuelve a ella.
+    await moverPaleta(Offset(pantalla.width / 2, pantalla.height - 10));
+    expect(tester.getCenter(deshacer).dy, closeTo(abajo.dy, 30));
   });
 
   testWidgets('mientras el lápiz escribe, la palma sobre la barra no hace nada', (tester) async {

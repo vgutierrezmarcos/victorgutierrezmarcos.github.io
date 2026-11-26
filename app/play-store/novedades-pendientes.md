@@ -7,6 +7,8 @@ Play desde el 26 oct. 2026 (1.19.2, 57); esa novedad ya salió. Norma de Víctor
 
 ## Para la siguiente versión en Google Play (1.28.0 publicada el 26 nov.)
 
+- (26 nov., siguiente versión) Pizarra y notas del preparador: mantén pulsada la paleta (herramientas y colores) y arrástrala; al soltarla se pega al borde más cercano (arriba, abajo, a la izquierda o a la derecha) y en los lados se pone en columna, con las puntas mirando al papel; soltada sobre la barra, vuelve a ella. Los ajustes de cada herramienta se abren tocándola otra vez
+
 ## Publicado el 26 nov. 2026 (1.28.0 en producción)
 
 Novedad en `novedades.json`: «Versión 1.28.0 de la app en Google Play: pizarra con la barra donde quieras y sin hacer caso a la palma, mini reloj de la clase, avisos con el tiempo de esquema de esa clase y aceptar una reserva con un toque». Además, los temas revisados, las explicaciones del test y la autoevaluación llegan del almacén privado del conector con tu cuenta (no sale en la novedad: es por dentro). Resumía:
