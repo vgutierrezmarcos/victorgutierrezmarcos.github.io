@@ -165,9 +165,15 @@ conector, comprobando la cuenta de Google». Cómo queda:
   `revision-temario`, `archivo-revision-temario-2` y la etiqueta, subidos por tramos), paso 3
   (borradas del público las dos ramas y la etiqueta) y paso 5. Scripts al día:
   `rama-publicada.py` sube a `privado`, `temario-privado.py` lee `privado/temario-publicado`.
-- Falta, desde una red que no sea la del Ministerio (bloquea el conector y corta las subidas
-  grandes): `python3 scripts/exclusivos.py` (la skill pasa a «privado:»), el APK de respaldo
-  y el paso 4.
+- Hecho también el 26/11: `exclusivos.py` (skill «privado:») y el paso 4, con `git filter-branch`
+  (git-filter-repo no estaba): main y las etiquetas `app-latest` y `materiales-latest` sin los
+  386 PDF revisados, las explicaciones, la autoevaluación, la skill exclusiva, sus ZIP, el
+  examen de España ni los índices antiguos del buscador; mismo contenido actual (árbol
+  idéntico) y push forzado con `--force-with-lease`. Filtro en `~/reescritura-aux/filtro.py`.
+  Las copias que tuviera alguien de antes hay que volver a clonarlas.
+- Falta: el APK de respaldo de la 1.28.0 (`python3 scripts/apk-respaldo.py` desde otra red).
+  GitHub sigue sirviendo los commits antiguos a quien sepa su identificador hasta que haga su
+  limpieza interna (solo GitHub Support la adelanta, y Víctor decidió no pedirla).
 - Para reescribir la historia (paso 4) hace falta `git-filter-repo` (`pip install --user
   git-filter-repo`, lo instala Víctor) y una red que no corte las subidas (el push forzado
   sube toda la historia). Lista de versiones de PDF revisados que hay que quitar: las de las
